@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4F24CC433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2020 09:40:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F1A35C433E1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2020 09:40:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1DE40206F1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2020 09:40:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B732C206B6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2020 09:40:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="K4b6u4CM"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1DE40206F1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nmChbFtB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B732C206B6
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=the-dreams.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,35 +25,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1ukxJwbuhyw4Ug2pnCbkVKk2eGUtGQrr2sKoMM7Ycig=; b=K4b6u4CM8llSycyk5SQ6kCbYp
-	wbJlGaTwQg4x3nilfIuIJRS4TyZlzMrFXj07nvCFdJ3UVdIzYKhGGSni7Rp/48itnIMWevQZ2Xsh2
-	2vHj5aX6WNkB58MTeqJ4Jm7yS9fMD59gwEFYgev22YB8Dru2w61lroMDnCWZ4gKMMSCGr/FCvkLeu
-	FPYo31qe6kS+Dn34xccooy4jfMS23fEBF4dTApvpCL24d5R9bleIyujz0iv6R9LDxTSfG93DuLXcP
-	Qqcy+6sUmU9TkbwWHXEjDTWyr4WpsuA107EgHpaO0yhS+SWSGZNEjZTW+7Tv4/QBLfLC+1UYybRxO
-	eI/t5iZ0A==;
+	 bh=cG++8GBObvacSPD4hOh2nmw3yrkK10V3x8HUSHmBCKg=; b=nmChbFtBTzLy8Qevt+4jGKimK
+	Cv0YmB6n9IFSguTIS9Ocp8jUeSarwbTmw++M0l+y/ZuKxyo8W+QFk0ZvFu5ORNcOaykhlIv86UYDi
+	DMfd2mNA3xMEwxmIpV2SJirFZd1HveyuULQ/ykuasl4GAR/fbnijR37giwNdlaIJHENcKsRp/V+KC
+	MlFirtGDnjHUY1BpinRmbQb2Su4AGoSXszPfQGPOyWYPF+/yvQcki4mkTHdTmz1pTLlgbq/mXAldV
+	REGg7cM/yH9m2/z9RMojNIp9FI38Q+AeFXKeXtmqFXM5uaF4RBAyz1moIHzRHvw1tTTQcSTY80eW7
+	dLXge6Z2w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZWpS-00005H-SF; Fri, 15 May 2020 09:40:30 +0000
+	id 1jZWpb-0000IQ-Ou; Fri, 15 May 2020 09:40:39 +0000
 Received: from sauhun.de ([88.99.104.3] helo=pokefinder.org)
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZWpD-0008Id-Uc; Fri, 15 May 2020 09:40:17 +0000
+ id 1jZWpF-0008LK-7l; Fri, 15 May 2020 09:40:18 +0000
 Received: from localhost (p5486CC07.dip0.t-ipconnect.de [84.134.204.7])
- by pokefinder.org (Postfix) with ESMTPSA id C49A12C1F6B;
- Fri, 15 May 2020 11:40:11 +0200 (CEST)
-Date: Fri, 15 May 2020 11:40:11 +0200
+ by pokefinder.org (Postfix) with ESMTPSA id 3463C2C2051;
+ Fri, 15 May 2020 11:40:15 +0200 (CEST)
+Date: Fri, 15 May 2020 11:40:14 +0200
 From: Wolfram Sang <wsa@the-dreams.de>
 To: Qii Wang <qii.wang@mediatek.com>
-Subject: Re: [PATCH v2 1/2] MAINTAINERS: add maintainer for mediatek i2c
- controller driver
-Message-ID: <20200515094011.GF2077@ninjato>
+Subject: Re: [PATCH v2 2/2] i2c: mediatek: Add i2c ac-timing adjust support
+Message-ID: <20200515094014.GG2077@ninjato>
 References: <1589461844-15614-1-git-send-email-qii.wang@mediatek.com>
- <1589461844-15614-2-git-send-email-qii.wang@mediatek.com>
+ <1589461844-15614-3-git-send-email-qii.wang@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <1589461844-15614-2-git-send-email-qii.wang@mediatek.com>
+In-Reply-To: <1589461844-15614-3-git-send-email-qii.wang@mediatek.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200515_024016_135557_11C07E38 
-X-CRM114-Status: UNSURE (   6.02  )
+X-CRM114-CacheID: sfid-20200515_024017_421436_6EBBA4E1 
+X-CRM114-Status: UNSURE (   6.88  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -70,54 +69,55 @@ Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
  leilk.liu@mediatek.com, linux-kernel@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============8474595399162023185=="
+Content-Type: multipart/mixed; boundary="===============2815024161687050612=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============8474595399162023185==
+--===============2815024161687050612==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ni93GHxFvA+th69W"
+	protocol="application/pgp-signature"; boundary="HKEL+t8MFpg/ASTE"
 Content-Disposition: inline
 
 
---ni93GHxFvA+th69W
+--HKEL+t8MFpg/ASTE
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, May 14, 2020 at 09:09:04PM +0800, Qii Wang wrote:
-> Add Qii Wang as maintainer for mediatek i2c controller driver.
+On Thu, May 14, 2020 at 09:09:05PM +0800, Qii Wang wrote:
+> This patch adds a algorithm to calculate some ac-timing parameters
+> which can fully meet I2C Spec.
 >=20
 > Signed-off-by: Qii Wang <qii.wang@mediatek.com>
 
-Applied to for-current, thanks for stepping up!
+Applied to for-next, thanks!
 
 
---ni93GHxFvA+th69W
+--HKEL+t8MFpg/ASTE
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl6+Y3sACgkQFA3kzBSg
-KbZugg//TK0hfveJTlzciqv+okPXLT19EfLiDbZcb1Vd4QOqHwyzVuswobDqKlb5
-FYUJwJ4mGytlwxPqa39dZKzCtwQlE/xPjISB+oPyiuESDrnlU/xXNIH6+prfbG7X
-dbJkgNqpAg6hsaWlDh6QzZa+rr+TsBbmF3pm3q6SPZpXXUvp79YPgSE4k2RJJ5Ev
-mF2QFCP88zK/0MsP1+/Dq0G51TE4Qzku8D35ysOB0ENIvtlCQp5RfeSX4OnhXzuP
-Ne5dztd9S6HxoPKKyB0XNtSu1t0nf0Omsd+zagDLTVFJORe3D7MDxCLrAARWdPvA
-c04rpnRuTewEihDJtyNJg3DovgqqGrN4sA4GINzIKkb9wV0L7mH1/4TU30OyhCRS
-ZMce3FcP5gCg70L5E7pNy05EX3xMY8IltUok2AvWEpae6PnuauaxKLJjfgcxLtwz
-xrNlNbZEsbvzAwdmGLZ6+PJMfa5tgEs1Wf0yfqgBrVPModxblx4Z+OrY/xt8rZz1
-8zfQPQYIEeHArP07FIx7TzcdPCG8afJls2o9N6mzo84pJ8kLBOR/6yWGEUb1AuPV
-A+gpFzP+XkrKf648i2YRE8EDVWnJkh42aiyZSBJZgsjYvej65W6nsLkpW5su2KUP
-+f0Bf0k+9a6FF9ph+L8s1IRfrFoSzTT5X/Iay5Utatv/zF2ETP8=
-=Bb7H
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl6+Y34ACgkQFA3kzBSg
+KbYUSg//XhO3MQxenuSju7wYsEkq/XyaVAfqH+foUu4RPONPXv04M4Owx+6UdCek
+8EjevvFVM5f9Ir47WkKKJkt4mlmsEV8ndKjwZyY7h1A5Ocna2bQ15pGFxpQ20oe1
+DT5X4s/7HsTQIubSWGbDLSujQ8xHjrT3kDFBfEh6HxBGxsuHNLCP6WjLTHZbFN18
+B87VCpVFINlqCHiX/ZAKTHN6HSF00+IwENs3zMCKfE10cVuqF4OaoVNSvQyDS64y
+w9erXur3M7s8ijhnHWgmSz0Vs8xAuPwWmzBlHYFAmh4bJxpFpMkDuPQU8n1aAffT
+IijkylZYp5vuQu93n1tkShlo+MOgHcmEA2uCoCOb9jMJOFO6wM3AeBRzSmpTCtnn
+dZLUNy7asSTYtTrEpXGmaKg2l1gEKDt3Kn99OfV+hrdquJyzljY6+Z4B4WbIDtIN
+BUU+XM0JUVttFDT8Y03LEb/a49c1f+SAtzu3gmHnjwVajXwghG/xXqm1Ux8hKqcZ
+BRowZ2LNDub5N58kfMtRifOXAEfLwl7gsrj6TnO9MkiZ8NpEyBJUaVK2pn3VWc+g
+O8Mye8aADI4A1NPuexyCiF3awZAOiT7iEZOUWJte9VaOULGs51C8ifddMN+RgbLY
+6BnDf0z49UE/IoTvvMNCoxE8/fwXd16eFvqUnq1UgY5lZRG89ls=
+=SLRe
 -----END PGP SIGNATURE-----
 
---ni93GHxFvA+th69W--
+--HKEL+t8MFpg/ASTE--
 
 
---===============8474595399162023185==
+--===============2815024161687050612==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -128,5 +128,5 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---===============8474595399162023185==--
+--===============2815024161687050612==--
 
