@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A633C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2020 15:28:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D9874C433E1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2020 15:33:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3E6DF20671
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2020 15:28:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A970F20671
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2020 15:33:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CP31KxqK";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="q+70W3zH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3E6DF20671
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="A+mrGcME";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Ai1MfX0N"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A970F20671
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,55 +27,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BOkcArBPJS51J6xt3vxIlLVZWNAmuaaupUZpbFYR3B4=; b=CP31KxqKJC0Vdk
-	9ux1tKmISPyJjcdM7yumcTadtAFTDbH0zcIMEMVfOj0qFwzmj2AsgSJEWeG+K8/4C7WpxmmdZwdiX
-	/U5GMXCxOtgIxUNRta+xuh2ysZwFgr6Q/FlWX7LMFGmbNYuLRq0B9cJEHqkVs9ISaCcHBwQa/RWbl
-	bi/7WKogwSSyJc6S4gtUdCRl8QoW5YN89ShhsAjhGBO1T4Pkn4v7iFdPg8ljJQ5/xQMi9rzpN045s
-	wkM72XZ7MXJPuTJkGkU6urfHqAmZsnc5jxlpYE23ycKKb1LvjmpbhevTatk2pWn8HBzudqBUOPaCI
-	/h8VwzOUwQYJ80K7H+gg==;
+	List-Owner; bh=esliRMXgL6yE6gpF1W9QUVUXHr64uBnJnDoF6mawItg=; b=A+mrGcMEKXmCAC
+	zgCXTgfN93ubdi+gR3yQuoHn4tf2ShB4Nds1v2NN/n6rhbTUW1XeAuIDCsKfPkm+KGBegNQFVPpUB
+	gkGDavzFKn8rKZuzZVfRCsxjuHA0X5X/P1omJhbzz3sLXMMLgdoR/Vgv0JhuWO/cgSaYCtKMRUP+h
+	877Oqx8jWh+D920bhkFQHF6X+wXhGkz9UKL7z2/8uLMB/2d1R+MgMbDPmhMXUlC5Ye1+rtdlO2jwQ
+	OC5v9qC7fNm2JBgAGAmwiW/WzAmKyL1dW8vkKB6DEJEN7+j1R8/SWfBStj8hiutPoSFWFam9dbh3k
+	Bnt2h7uGZLjb8n9kNBRw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZcGA-0008KF-Ds; Fri, 15 May 2020 15:28:26 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1jZcLC-0003Xu-SZ; Fri, 15 May 2020 15:33:38 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZcG7-0008JJ-UU; Fri, 15 May 2020 15:28:25 +0000
-Received: by mail-wm1-x341.google.com with SMTP id u188so3126448wmu.1;
- Fri, 15 May 2020 08:28:23 -0700 (PDT)
+ id 1jZcLA-0003Wu-8v; Fri, 15 May 2020 15:33:37 +0000
+Received: by mail-wr1-x443.google.com with SMTP id l17so4060326wrr.4;
+ Fri, 15 May 2020 08:33:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=nc4/6rFJrGyzoM3eW0hhC9aBV/CPQ65QBG7TQF9r7Rc=;
- b=q+70W3zHb3Hn5IynZhwg66OIDBr7DZRc5351Hrat65IgVA92o3EZbo3x8H4SwNVBNb
- SwVokn1eLiPC4GXY9gl09uVKAFAwIBIsvFJDDmfMS9PY7UXoVii47pRp9klb185jSexz
- LFovv//q3X3VQzeOYCcmAo88zXZ6YCynqWvtov+WwFaXGVX6aZ2aK1roFwmDTLR3kOnf
- pv77/SGP8nqOIglg4GCGiS8ut+16WhcyJH1/hFyM8BURNf/o8t0/OkYmuHmV3zCtuRD4
- hKZ8NitOG4lXCfQaecfu6oWA3/kJOzooKadoywe+H6DXkSRii60DcPBY9ab82obCNYcI
- 5jtg==
+ bh=9Bszcdm8rAKne12ogdriQoF78H0+EQvpFbUS01vAHEc=;
+ b=Ai1MfX0Nxn+0N2Nu4n7LYWJ9GWokV2wkOu2mEtjx1dIA/YLKV4xaAwXmNl/Q6qxfsQ
+ tP0XgMn2BNddDjGkPUEz5IBL3f1vgiqf7dDQQRxAYrX23xdsYvGevhmWe/gKJyxurSVF
+ hSmR/4enrRVMNCGDtEO5uKk9h6LfCOKMIEW/e3LS7il1GFFP2EzI6xvbDOJ4llaQICFT
+ /UeN47NTsnk21m+gaiqpPGa6xvz2qHbFIBmUG9pcscqvLhaNTw0Tkxpn2U8wTW2GOl2Q
+ 8uTGQrIBkdNAGc7nb1t8f3kYa0imOqMinGfRcEM36TBXk+zOho3k27ZtIb6ttkoZe8EZ
+ dJTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=nc4/6rFJrGyzoM3eW0hhC9aBV/CPQ65QBG7TQF9r7Rc=;
- b=R9h8XQZcn73uTPjJ2ppyefcdQxO5iJx4HxSsv8Xho3+8WACYid1iZlLUcwQHTzW9yJ
- 1souEMRK+Ia5q8hWq8BRekCAAzU410TNaW+VQesaq8ToX1mCwyKT+qHxJ9vi1dCl0mvA
- aS91x6xZoq5L41NlwT96xuy9XUBkAfscpWTphkRBKI+Z0nEKtw8a7kC/EYaMOB6+mNBt
- 0M1TrtgC3yqZPko/1UtwK+Y3hwWwPdzwXJUXX5LL5rwTZN5ZpmutvGzbizlRQvXFr2WD
- /fnRpehNOoHKOFw1EhA68M2K4rUckwVUTEmpGxtGu10ltcDw7IkpcgoD7qTXb1RppTWd
- h/tQ==
-X-Gm-Message-State: AOAM531oB3mlkU8feIPw2abCzOuds4m8SVErCslz1Hg21Nlz7RN60haw
- NqBFOPFCi2FSFGOYFX5Rb7U=
-X-Google-Smtp-Source: ABdhPJzkjlUyZdAv4aYJ9PcudVx8NcXSRuxedHBKlAuuOoA740tyNCewDyRkPpxanVZZC4GwT1tWWA==
-X-Received: by 2002:a05:600c:2614:: with SMTP id
- h20mr4744497wma.155.1589556502635; 
- Fri, 15 May 2020 08:28:22 -0700 (PDT)
+ bh=9Bszcdm8rAKne12ogdriQoF78H0+EQvpFbUS01vAHEc=;
+ b=a4Ornn1n42tqtXG4KFUB8mEpu+Mk4V+LzRFmVa0zXoZNejL7F5o8ftPhEuF6L3Eihb
+ O7uLtlwM67d2rTMXQJhNi6Ck5ytfo7frYHImBUSAyBBbBEA74Sj/HHrFiSGCUPvT8ryu
+ BgBnVG10OHjJMg9aH+E8DO9UfkkYxrpfmYyT0qCfjdVUO1EHXWzcv5fNomiAViVixXCW
+ 9vXEaMLA2VCDicW9qka2nYRMVCHWkiR9e8gcLBVpr04AaMO6MfxG12uR9eTnEIzSe90Q
+ 4BiBD5GmyS/tL3d9iSM9d5ofWsM6nmIbFcyhZ5hHxpRaHJdtuPUb+eaG0WQmF0y29wL1
+ UbTQ==
+X-Gm-Message-State: AOAM532xaUA1at9YVJugJz4T2xUFSR9GAbMA58URQ89NpZtk9JhbiUgk
+ syyAwiteoKIeyi0zCVc+qJRt0ups
+X-Google-Smtp-Source: ABdhPJwyZfWELMTFyRg2jPVUVMIInUGcjz+oVnvl2RIDLrZ5whxCfyb+PzC7iso0QfXV1BOxcihSZA==
+X-Received: by 2002:adf:a118:: with SMTP id o24mr4690403wro.330.1589556814609; 
+ Fri, 15 May 2020 08:33:34 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id s67sm4041595wmf.3.2020.05.15.08.28.21
+ by smtp.gmail.com with ESMTPSA id t71sm4180867wmt.31.2020.05.15.08.33.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 15 May 2020 08:28:21 -0700 (PDT)
-Subject: Re: [PATCH] arm64: dts: mt8173: fix vcodec-enc clock
-To: Hsin-Yi Wang <hsinyi@chromium.org>, linux-arm-kernel@lists.infradead.org
-References: <20200504124442.208004-1-hsinyi@chromium.org>
+ Fri, 15 May 2020 08:33:33 -0700 (PDT)
+Subject: Re: [PATCH] [RESEND] arm64: dts: mt8173: fix cooling device range
+To: Michael Kao <michael.kao@mediatek.com>, Zhang Rui <rui.zhang@intel.com>,
+ Eduardo Valentin <edubezval@gmail.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Rob Herring
+ <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ hsinyi@chromium.org, linux-pm@vger.kernel.org, srv_heupstream@mediatek.com
+References: <20200424082340.4127-1-michael.kao@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -151,16 +154,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <3769d9da-9465-61ca-7ae5-39ef4ef52e85@gmail.com>
-Date: Fri, 15 May 2020 17:28:20 +0200
+Message-ID: <8e8a17ef-6919-0aef-2e8c-4ce6bb388bec@gmail.com>
+Date: Fri, 15 May 2020 17:33:32 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200504124442.208004-1-hsinyi@chromium.org>
+In-Reply-To: <20200424082340.4127-1-michael.kao@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200515_082823_992493_A8F09D52 
-X-CRM114-Status: GOOD (  17.44  )
+X-CRM114-CacheID: sfid-20200515_083336_334145_0608B372 
+X-CRM114-Status: GOOD (  16.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -172,10 +175,8 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gtk_ruiwang <gtk_ruiwang@mediatek.com>, devicetree@vger.kernel.org,
- Yunfei Dong <yunfei.dong@mediatek.com>, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Qianqian Yan <qianqian.yan@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -183,51 +184,57 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 04/05/2020 14:44, Hsin-Yi Wang wrote:
-> Fix the assigned-clock-parents to higher frequency clock to avoid h264
-> encode timeout:
+On 24/04/2020 10:23, Michael Kao wrote:
+> When thermal reaches target temperature,it would be pinned to state 0
+> (max frequency and power).
+> Fix the throttling range to no limit.
 > 
-> [  134.763465] mtk_vpu 10020000.vpu: vpu ipi 4 ack time out !
-> [  134.769008] [MTK_VCODEC][ERROR][18]: vpu_enc_send_msg() vpu_ipi_send msg_id c002 len 32 fail -5
-> [  134.777707] [MTK_VCODEC][ERROR][18]: vpu_enc_encode() AP_IPIMSG_ENC_ENCODE 0 fail
-> 
-> venc_sel is the clock used by h264 encoder, and venclt_sel is the clock
-> used by vp8 encoder. Assign venc_sel to vcodecpll_ck and venclt_sel to
-> vcodecpll_370p5.
-> 
->     vcodecpll                         1482000000
->        vcodecpll_ck                    494000000
->           venc_sel                     494000000
-> ...
->        vcodecpll_370p5                 370500000
->           venclt_sel                   370500000
-> 
-> Fixes: fbbad0287cec ("arm64: dts: Using standard CCF interface to set vcodec clk")
 > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
 
-Applied to v5.7-fixes
+applied to v5.7-next/dts64
 
 Thanks!
 
 > ---
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 13 +++++++++----
+>  1 file changed, 9 insertions(+), 4 deletions(-)
 > 
 > diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index a212bf124e81..d0e9a2aada2e 100644
+> index ccb8e88a60c5..cae2cec46cdc 100644
 > --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
 > +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -1422,8 +1422,8 @@ vcodec_enc: vcodec@18002000 {
->  				      "venc_lt_sel";
->  			assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>,
->  					  <&topckgen CLK_TOP_VENC_LT_SEL>;
-> -			assigned-clock-parents = <&topckgen CLK_TOP_VENCPLL_D2>,
-> -						 <&topckgen CLK_TOP_UNIVPLL1_D2>;
-> +			assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL>,
-> +						 <&topckgen CLK_TOP_VCODECPLL_370P5>;
->  		};
+> @@ -19,6 +19,7 @@
+>  #include <dt-bindings/power/mt8173-power.h>
+>  #include <dt-bindings/reset/mt8173-resets.h>
+>  #include <dt-bindings/gce/mt8173-gce.h>
+> +#include <dt-bindings/thermal/thermal.h>
+>  #include "mt8173-pinfunc.h"
 >  
->  		jpegdec: jpegdec@18004000 {
+>  / {
+> @@ -294,14 +295,18 @@
+>  			cooling-maps {
+>  				map@0 {
+>  					trip = <&target>;
+> -					cooling-device = <&cpu0 0 0>,
+> -							 <&cpu1 0 0>;
+> +					cooling-device = <&cpu0 THERMAL_NO_LIMIT
+> +							  THERMAL_NO_LIMIT>,
+> +							 <&cpu1 THERMAL_NO_LIMIT
+> +							  THERMAL_NO_LIMIT>;
+>  					contribution = <3072>;
+>  				};
+>  				map@1 {
+>  					trip = <&target>;
+> -					cooling-device = <&cpu2 0 0>,
+> -							 <&cpu3 0 0>;
+> +					cooling-device = <&cpu2 THERMAL_NO_LIMIT
+> +							  THERMAL_NO_LIMIT>,
+> +							 <&cpu3 THERMAL_NO_LIMIT
+> +							  THERMAL_NO_LIMIT>;
+>  					contribution = <1024>;
+>  				};
+>  			};
 > 
 
 _______________________________________________
