@@ -2,73 +2,76 @@ Return-Path: <SRS0=cOAS=65=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E630C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2020 08:10:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C7E28C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2020 09:30:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CD04720657
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2020 08:10:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8FDD1206F1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2020 09:30:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="isQnqYkN";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="fBojTk2D"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD04720657
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QfAmOCCM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8FDD1206F1
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=uxWAJ8ztcVdF8OAcng5k7ye8Jn3YZkPegp/Fm0E658I=; b=isQnqYkNmgJDtR
-	3LepsXvjS1/uNPk9cCjbCqDWifi50IGE6gb+Sy/rqcn7+IEPPY8BNcH/rNt8mU1mDBUnzp3sfPynG
-	9wpU+OtO6gl0Nixa0yeK5pJn6bRmNpXQ/0vWMKILZNqeyvBaROswIMdItd0sSXvmctURZHcyo55Ab
-	TMmydD0ecVrGe6E5qlF2ovmrUqHczUOZEi1aZ7Z38Rp641LLEjND51FhOGH2djGpQ5TLQrjFsKlWw
-	3VuvG9YEQthrLCUjeYqvtO48GBk/+2+ZUtEp2eKAyjFPqgrv3Sin7e8+r7KpmBeB9upZvb28fKZQa
-	d7IVy3pxN5j2TnJf8xDQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=sJhiBbt/0NtjOlQv6mRBlSxIgdQpkEOQ3kqW1C5HSyU=; b=QfAmOCCM2qH9tU
+	n69qzWg48xRHK7M9MA2T6vz90DvI0HsqzLXeyP8EO/2dvHRaPot3fJPP0z/iMbGlC2c89YmnfloNl
+	aJaMZMbQYBo1MktZwuRTvw/oWnLy9jrbPWcVypXy7XYDjlMVypK7JbdUgYTXxHpqdQMYWGRDStZy+
+	xaQXttKaKEk3kboJKDfhwQVmHXhvpdQaSnNOg36GJ6Pw4BCnnE/e67F/NBYrxvLchdvg9MX/wKza5
+	I2CnenBY57bJcPueTgzikQPjgKxqDFdxqqOIQhDZU14+lZHOzRvnl9PVG2DLADF/7cnSOjv1MIErC
+	nh59vAzSsrO9ljJZJmvA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZVQH-0001U9-8W; Fri, 15 May 2020 08:10:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jZWfw-0000ap-TI; Fri, 15 May 2020 09:30:40 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZVQB-0001E8-U4; Fri, 15 May 2020 08:10:23 +0000
-X-UUID: ff8fd57cede444ccbcfc61eccd06ad01-20200515
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=SnHDXWhq13xkpGV5Y45+FAXrSStxnyI/+HVQz04AZ8A=; 
- b=fBojTk2DxPktUP23pOO4TfvbwyleUQOuKl7YxSW0Ac0PofkKjTTEFgBtILTqUoNRQ94VE87st62W4Oayc4xx3L6IwYQtX5isjHrIel3iEkF6jXVsZQISpD9MkUP+yzGJSgsOeKOiDuMSR017PR3YiPAODC85KvLm9WfcDNjsoHg=;
-X-UUID: ff8fd57cede444ccbcfc61eccd06ad01-20200515
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 508734190; Fri, 15 May 2020 00:10:31 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 15 May 2020 01:10:14 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 15 May 2020 16:10:11 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 15 May 2020 16:10:10 +0800
-From: Yong Wu <yong.wu@mediatek.com>
-To: Joerg Roedel <joro@8bytes.org>
-Subject: [PATCH] iommu/mediatek-v1: Add def_domain_type
-Date: Fri, 15 May 2020 16:08:43 +0800
-Message-ID: <1589530123-30240-1-git-send-email-yong.wu@mediatek.com>
-X-Mailer: git-send-email 1.9.1
+ id 1jZWfm-0000Qz-Vd
+ for linux-mediatek@lists.infradead.org; Fri, 15 May 2020 09:30:35 +0000
+Received: from pty.hi.pengutronix.de ([2001:67c:670:100:1d::c5])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <mfe@pengutronix.de>)
+ id 1jZWfa-00072c-2b; Fri, 15 May 2020 11:30:18 +0200
+Received: from mfe by pty.hi.pengutronix.de with local (Exim 4.89)
+ (envelope-from <mfe@pengutronix.de>)
+ id 1jZWfY-0002sW-Be; Fri, 15 May 2020 11:30:16 +0200
+Date: Fri, 15 May 2020 11:30:16 +0200
+From: Marco Felsch <m.felsch@pengutronix.de>
+To: Fengping Yu <fengping.yu@mediatek.com>
+Subject: Re: [PATCH v8 2/3] drivers: input: keyboard: Add mtk keypad driver
+Message-ID: <20200515093016.rw5bmvoumgzvkqrc@pengutronix.de>
+References: <20200515062007.28346-1-fengping.yu@mediatek.com>
+ <20200515062007.28346-3-fengping.yu@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20200515062007.28346-3-fengping.yu@mediatek.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 10:13:08 up 181 days, 23:31, 197 users,  load average: 1.21, 0.99,
+ 0.55
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c5
+X-SA-Exim-Mail-From: mfe@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200515_011019_986237_8101F5D4 
-X-CRM114-Status: GOOD (  12.42  )
+X-CRM114-CacheID: sfid-20200515_023031_178263_22293BD4 
+X-CRM114-Status: GOOD (  24.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,90 +83,362 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, anan.sun@mediatek.com, srv_heupstream@mediatek.com,
- Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org,
- iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- yong.wu@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>,
- Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek V1 IOMMU is arm32 whose default domain type is
-IOMMU_DOMAIN_UNMANAGED. Add this to satisfy the bus_iommu_probe to
-enter "probe_finalize".
+Hi,
 
-The iommu framework will create a iommu domain for each a device.
-But all the devices share a iommu domain here, thus we skip all the
-other domains in the "attach_device" except the domain we create
-internally with arm_iommu_create_mapping.
+On 20-05-15 14:20, Fengping Yu wrote:
+> From: "fengping.yu" <fengping.yu@mediatek.com>
+> 
+> This adds matrix keypad support for Mediatek SoCs.
+> 
+> Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
+> ---
+>  drivers/input/keyboard/Kconfig   |   9 ++
+>  drivers/input/keyboard/Makefile  |   1 +
+>  drivers/input/keyboard/mtk-kpd.c | 231 +++++++++++++++++++++++++++++++
+>  3 files changed, 241 insertions(+)
+>  create mode 100644 drivers/input/keyboard/mtk-kpd.c
+> 
+> diff --git a/drivers/input/keyboard/Kconfig b/drivers/input/keyboard/Kconfig
+> index 28de965a08d5..2b42015e6923 100644
+> --- a/drivers/input/keyboard/Kconfig
+> +++ b/drivers/input/keyboard/Kconfig
+> @@ -782,6 +782,15 @@ config KEYBOARD_BCM
+>  	  To compile this driver as a module, choose M here: the
+>  	  module will be called bcm-keypad.
+>  
+> +config KEYBOARD_MTK_KPD
+> +	tristate "MediaTek Keypad Support"
+> +	depends on OF && HAVE_CLK
 
-Also a minor change: in the attach_device, "data" always is not null.
-Remove "if (!data) return".
+Please drop those deps and instead use:
+depends on ARCH_MEDIATEK && ARM64
 
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
----
-a. rebase on linux-next.
-b. After this patch and fixed the mutex issue(locally I only move
-   mutex_unlock(&group->mutex) before __iommu_group_dma_attach(group)),
-   the mtk_iommu_v1.c could work normally.
----
- drivers/iommu/mtk_iommu_v1.c | 16 +++++++++++-----
- 1 file changed, 11 insertions(+), 5 deletions(-)
+There are still some missing deps:
 
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 7bdd74c..f353b07 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -265,10 +265,13 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- {
- 	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
- 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-+	struct dma_iommu_mapping *mtk_mapping;
- 	int ret;
- 
--	if (!data)
--		return -ENODEV;
-+	/* Only allow the domain created internally. */
-+	mtk_mapping = data->dev->archdata.iommu;
-+	if (mtk_mapping->domain != domain)
-+		return 0;
- 
- 	if (!data->m4u_dom) {
- 		data->m4u_dom = dom;
-@@ -288,9 +291,6 @@ static void mtk_iommu_detach_device(struct iommu_domain *domain,
- {
- 	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
- 
--	if (!data)
--		return;
--
- 	mtk_iommu_config(data, dev, false);
- }
- 
-@@ -416,6 +416,11 @@ static int mtk_iommu_create_mapping(struct device *dev,
- 	return 0;
- }
- 
-+static int mtk_iommu_def_domain_type(struct device *dev)
-+{
-+	return IOMMU_DOMAIN_UNMANAGED;
-+}
-+
- static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
- {
- 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-@@ -525,6 +530,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
- 	.probe_device	= mtk_iommu_probe_device,
- 	.probe_finalize = mtk_iommu_probe_finalize,
- 	.release_device	= mtk_iommu_release_device,
-+	.def_domain_type = mtk_iommu_def_domain_type,
- 	.device_group	= generic_device_group,
- 	.pgsize_bitmap	= ~0UL << MT2701_IOMMU_PAGE_SHIFT,
- };
--- 
-1.9.1
+select CONFIG_REGMAP_MMIO
+select INPUT_MATRIXKMAP
+
+and check which clock driver must be enabled:
+
+COMMON_CLK_MT6779_MMSYS
+COMMON_CLK_MT6779_IMGSYS
+COMMON_CLK_MT6779_IPESYS
+COMMON_CLK_MT6779_CAMSYS
+COMMON_CLK_MT6779_VDECSYS
+COMMON_CLK_MT6779_VENCSYS
+COMMON_CLK_MT6779_MFGCFG
+COMMON_CLK_MT6779_AUDSYS
+
+
+> +	help
+> +	  Say Y here if you want to use the keypad on MediaTek SoCs.
+> +	  If unsure, say N.
+> +	  To compile this driver as a module, choose M here: the
+> +	  module will be called mtk-kpd.
+> +
+>  config KEYBOARD_MTK_PMIC
+>  	tristate "MediaTek PMIC keys support"
+>  	depends on MFD_MT6397
+> diff --git a/drivers/input/keyboard/Makefile b/drivers/input/keyboard/Makefile
+> index 1d689fdd5c00..6c9d852c377e 100644
+> --- a/drivers/input/keyboard/Makefile
+> +++ b/drivers/input/keyboard/Makefile
+> @@ -43,6 +43,7 @@ obj-$(CONFIG_KEYBOARD_MATRIX)		+= matrix_keypad.o
+>  obj-$(CONFIG_KEYBOARD_MAX7359)		+= max7359_keypad.o
+>  obj-$(CONFIG_KEYBOARD_MCS)		+= mcs_touchkey.o
+>  obj-$(CONFIG_KEYBOARD_MPR121)		+= mpr121_touchkey.o
+> +obj-$(CONFIG_KEYBOARD_MTK_KPD)		+= mtk-kpd.o
+>  obj-$(CONFIG_KEYBOARD_MTK_PMIC) 	+= mtk-pmic-keys.o
+>  obj-$(CONFIG_KEYBOARD_NEWTON)		+= newtonkbd.o
+>  obj-$(CONFIG_KEYBOARD_NOMADIK)		+= nomadik-ske-keypad.o
+> diff --git a/drivers/input/keyboard/mtk-kpd.c b/drivers/input/keyboard/mtk-kpd.c
+> new file mode 100644
+> index 000000000000..66c70c475ee2
+> --- /dev/null
+> +++ b/drivers/input/keyboard/mtk-kpd.c
+> @@ -0,0 +1,231 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (C) 2019 MediaTek Inc.
+> + * Author Terry Chang <terry.chang@mediatek.com>
+> + */
+> +#include <linux/bitops.h>
+> +#include <linux/clk.h>
+> +#include <linux/input/matrix_keypad.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/module.h>
+> +#include <linux/property.h>
+> +#include <linux/pinctrl/consumer.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/regmap.h>
+> +
+> +#define MTK_KPD_NAME			"mtk-kpd"
+> +#define MTK_KPD_MEM			0x0004
+> +#define MTK_KPD_DEBOUNCE		0x0018
+> +#define MTK_KPD_DEBOUNCE_MASK		GENMASK(13, 0)
+> +#define MTK_KPD_DEBOUNCE_MAX_US		256000 /*256ms */
+
+Thanks for aligning the defines but the 256ms comment is still useless
+as Andy already said.
+
+> +#define MTK_KPD_NUM_MEMS		5
+> +#define MTK_KPD_NUM_BITS		136	/* 4*32+8 MEM5 only use 8 BITS */
+> +
+> +struct mtk_keypad {
+> +	struct regmap *regmap;
+> +	struct input_dev *input_dev;
+> +	struct clk *clk;
+> +	void __iomem *base;
+> +	bool wakeup;
+> +	u32 n_rows;
+> +	u32 n_cols;
+> +	DECLARE_BITMAP(keymap_state, MTK_KPD_NUM_BITS);
+> +};
+> +
+> +static const struct regmap_config keypad_regmap_cfg = {
+> +	.reg_bits = 32,
+> +	.val_bits = 32,
+> +	.reg_stride = sizeof(u32),
+> +	.max_register = 36,
+> +};
+> +
+> +static irqreturn_t kpd_irq_handler(int irq, void *dev_id)
+> +{
+> +	struct mtk_keypad *keypad = dev_id;
+> +	unsigned short *keycode = keypad->input_dev->keycode;
+> +	DECLARE_BITMAP(new_state, MTK_KPD_NUM_BITS);
+> +	DECLARE_BITMAP(change, MTK_KPD_NUM_BITS);
+> +	int bit_nr;
+> +	int pressed;
+> +	unsigned short code;
+> +
+> +	regmap_raw_read(keypad->regmap, MTK_KPD_MEM, new_state, MTK_KPD_NUM_MEMS);
+> +
+> +	bitmap_xor(change, new_state, keypad->keymap_state, MTK_KPD_NUM_BITS);
+> +
+> +	for_each_set_bit(bit_nr, change, MTK_KPD_NUM_BITS) {
+> +		/* 1: not pressed, 0: pressed */
+> +		pressed = !test_bit(bit_nr, new_state);
+> +		dev_dbg(&keypad->input_dev->dev, "%s",
+> +			pressed ? "pressed" : "released");
+> +
+> +		/* 32bit register only use low 16bit as keypad mem register */
+> +		code = keycode[bit_nr - 16 * (BITS_TO_U32(bit_nr) - 1)];
+> +
+> +		input_report_key(keypad->input_dev, code, pressed);
+> +		input_sync(keypad->input_dev);
+> +
+> +		dev_dbg(&keypad->input_dev->dev,
+> +			"report Linux keycode = %d\n", code);
+> +	}
+> +
+> +	bitmap_copy(keypad->keymap_state, new_state, MTK_KPD_NUM_BITS);
+> +
+> +	return IRQ_HANDLED;
+> +}
+> +
+> +static int kpd_probe_clock(struct platform_device *pdev, struct clk *clk)
+> +{
+> +	int ret;
+> +
+> +	clk = devm_clk_get(&pdev->dev, "kpd");
+> +	if (IS_ERR(clk))
+> +		return clk;
+> +
+> +	ret = clk_prepare_enable(clk);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "cannot prepare/enable keypad clock\n");
+> +		return ret;
+> +	}
+> +
+> +	ret = devm_add_action_or_reset(&pdev->dev,
+> +					(void (*)(void *))clk_disable_unprepare,
+							^
+						Please avoid this and
+						instead use a driver
+						internal function.
+
+> +					clk);
+> +
+> +	return ret;
+> +}
+
+That was not my intention. You can do all the stuff within the probe()
+routine.
+
+> +
+> +static int kpd_pdrv_probe(struct platform_device *pdev)
+> +{
+> +	struct mtk_keypad *keypad;
+> +	struct pinctrl *keypad_pinctrl;
+> +	struct pinctrl_state *kpd_default;
+> +	unsigned int irqnr;
+> +	u32 debounce;
+> +	int ret;
+> +
+> +	keypad = devm_kzalloc(&pdev->dev, sizeof(*keypad), GFP_KERNEL);
+> +	if (!keypad)
+> +		return -ENOMEM;
+> +
+> +	keypad->base = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(keypad->base))
+> +		return PTR_ERR(keypad->base);
+> +
+> +	keypad->regmap = devm_regmap_init_mmio(&pdev->dev,
+> +						keypad->base,
+> +						&keypad_regmap_cfg);
+> +	if (IS_ERR(keypad->regmap)) {
+> +		dev_err(&pdev->dev,
+> +			"regmap init failed:%ld\n", PTR_ERR(keypad->regmap));
+> +		return PTR_ERR(keypad->regmap);
+> +	}
+> +
+> +	bitmap_fill(keypad->keymap_state, MTK_KPD_NUM_BITS);
+> +
+> +	keypad->input_dev = devm_input_allocate_device(&pdev->dev);
+> +	if (!keypad->input_dev) {
+> +		dev_err(&pdev->dev, "Failed to allocate input dev\n");
+> +		return -ENOMEM;
+> +	}
+> +
+> +	keypad->input_dev->name = MTK_KPD_NAME;
+> +	keypad->input_dev->id.bustype = BUS_HOST;
+> +
+> +	ret = matrix_keypad_parse_properties(&pdev->dev, &keypad->n_rows,
+> +					     &keypad->n_cols);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Failed to parse keypad params\n");
+> +		return ret;
+> +	}
+> +
+> +	if (device_property_read_u32(&pdev->dev, "mediatek,debounce-us",
+> +					&debounce))
+
+Did you executed checkpatch.pl here? There are a few more style issues
+within the patch.
+
+> +		debounce = 16000;
+> +
+> +	if (debounce > MTK_KPD_DEBOUNCE_MAX_US) {
+> +		dev_err(&pdev->dev, "Debounce time exceeds the maximum allowed time 256ms\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	keypad->wakeup = device_property_read_bool(&pdev->dev, "wakeup-source");
+> +
+> +	dev_dbg(&pdev->dev, "n_row=%d n_col=%d debounce=%d\n",
+> +		keypad->n_rows, keypad->n_cols, debounce);
+> +
+> +	ret = matrix_keypad_build_keymap(NULL, NULL,
+> +					keypad->n_rows,
+> +					keypad->n_cols,
+> +					NULL,
+> +					keypad->input_dev);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Failed to build keymap\n");
+> +		return ret;
+> +	}
+> +
+> +	input_set_drvdata(keypad->input_dev, keypad);
+
+This is useless.
+
+> +
+> +	regmap_write(keypad->regmap, KP_DEBOUNCE,
+> +		     debounce * 32 / 1000 & MTK_KPD_DEBOUNCE_MASK);
+> +
+> +	if (kpd_probe_clock(pdev, keypad->clk)) {
+> +		dev_err(&pdev->dev, "Failed to enable clock\n");
+> +		return ret;
+> +	}
+> +
+> +	keypad_pinctrl = devm_pinctrl_get(&pdev->dev);
+> +	if (IS_ERR(keypad_pinctrl))
+> +		return PTR_ERR(keypad_pinctrl);
+> +
+> +	kpd_default = pinctrl_lookup_state(keypad_pinctrl, "default");
+> +	if (IS_ERR(kpd_default)) {
+> +		dev_err(&pdev->dev, "No default pinctrl state\n");
+> +		return PTR_ERR(kpd_default);
+> +	}
+> +
+> +	pinctrl_select_state(keypad_pinctrl, kpd_default);
+> +
+> +	irqnr = platform_get_irq(pdev, 0);
+> +	if (irqnr < 0) {
+> +		dev_err(&pdev->dev, "Failed to get irq\n");
+
+Andy already said that platform_get_irq() prints a error so you can just
+'return -irqnr'.
+
+> +		return -irqnr;
+> +	}
+> +
+> +	ret = devm_request_threaded_irq(&pdev->dev, irqnr,
+> +				NULL, kpd_irq_handler, 0,
+> +				MTK_KPD_NAME, keypad);
+
+Still missaligned, pls use checkpatch.pl
+
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Failed to request IRQ#%d:%d\n",
+> +						irqnr, ret);
+> +		return ret;
+> +	}
+> +
+> +	ret = input_register_device(keypad->input_dev);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Failed to register device\n");
+> +		return ret;
+> +	}
+> +
+> +	device_init_wakeup(&pdev->dev, keypad->wakeup);
+> +
+> +	return 0;
+
+Here we can 'return device_init_wakeup(&pdev->dev, keypad->wakeup);'
+
+> +}
+> +
+> +static const struct of_device_id kpd_of_match[] = {
+> +	{.compatible = "mediatek, mt6779-keypad"},
+> +	{.compatible = "mediatek,kp"},
+				 ^
+                         Missing whitespace
+
+> +	{/*sentinel*/}
+         ^	     ^
+	 Missing whitespaces
+
+Regards,
+  Marco
+
+> +};
+> +
+> +static struct platform_driver kpd_pdrv = {
+> +	.probe = kpd_pdrv_probe,
+> +	.driver = {
+> +		   .name = MTK_KPD_NAME,
+> +		   .of_match_table = kpd_of_match,
+> +	},
+> +};
+> +module_platform_driver(kpd_pdrv);
+> +
+> +MODULE_AUTHOR("Mediatek Corporation");
+> +MODULE_DESCRIPTION("MTK Keypad (KPD) Driver");
+> +MODULE_LICENSE("GPL");
+> -- 
+> 2.18.0
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
