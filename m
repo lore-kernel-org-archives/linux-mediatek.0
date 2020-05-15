@@ -6,17 +6,17 @@ X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 16AD8C433E3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2020 15:06:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 80366C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2020 15:20:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E1F712075F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2020 15:06:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 50F0920671
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2020 15:20:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nCckB+IA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E1F712075F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Xln47b1C"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 50F0920671
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baikalelectronics.ru
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -24,52 +24,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EYqYCFoAEW2UHo+RZy4ZsQhZpmg8sS97xtfPfU5qFLE=; b=nCckB+IAMT5P1I
-	Aog1f4VZNpb3IXv5KNtEAqSzzoHp1DwQE9x4xOxwHN8NpsFzL7xZD6JdN0Yhih798ixWFOoNBI+4x
-	rUzRfmJnBcJSopdxErnk49ggSOepu4yXZ4yxTJ8ms+QHyScuCvfETAsXEavb0uGbNtkyXMOcv7dMT
-	SGC8VvLcVke/PqM2kiraiOA7/qmLmTHgwAJMCAm7zJJKPdCXn/v3KDeDcwAmbH+RO1rKpiSgFMX90
-	zsNzXXwV5HV8hdFbryqpngorZByZ4JrL87EyV6fTNJCZWJL2jC5fRW7v6m9Fx3OJHWCxvDoaYqLh+
-	A/44Ctg4IZBTfHB1vOww==;
+	List-Owner; bh=QvzXAe7Zbv1sSd6oR5UAie5C3c/7OjKAJJ3sFJxTfYo=; b=Xln47b1CcIdPAP
+	VOFacit09VVm62ZRjHnrNzs2v0u9tY2kI6IwynT7NxE+kwwIcuKcAgVOPU3QAlzZe+Dn0rCcbKyJm
+	leOJAE2pfmogRINCbEVc6Nk1gmR6w+JiYTAwEmp/u/sfcZCzzdn4jfBgFRoHpNvW6b2LY9xI9VL1U
+	q7BSmH+tsbcdcah5UVn3i0g8Y/WzM7/sMakjaweJSoeJLygTYMihWCarXsTAEjl3IShpRD0yYn2+s
+	wA66S9FpH1d8nGIJJfkG6xw4wAiWbNFG7cxqlLinjQT9UuQYlLzF0CvPRAxwXDhjFwot1/OVgdbG1
+	aDFJ10NgNyZU7+rrzC/Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZbuT-0006UH-5t; Fri, 15 May 2020 15:06:01 +0000
-Received: from mga11.intel.com ([192.55.52.93])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZbuF-0006KG-If; Fri, 15 May 2020 15:05:48 +0000
-IronPort-SDR: 4xaC1kudpJFFgAkHpf713fyW1qgYTCRPIfQ5TcL9q/n7f6B2yIfAu1xhO1zQUl48kPf218XWoU
- W8ZNjE3N/PfA==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 May 2020 08:05:46 -0700
-IronPort-SDR: EX+/kA0HXNH84sqyToqDVeH2rEi9LIuOqiQ6K0oN24pfAe2f1Rat9eUkw4gWcL3iD9ayQ886Np
- VcYqaY6I9WsQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,395,1583222400"; d="scan'208";a="252057189"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by orsmga007.jf.intel.com with ESMTP; 15 May 2020 08:05:40 -0700
-Received: from andy by smile with local (Exim 4.93)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1jZbuA-006tTf-Vz; Fri, 15 May 2020 18:05:42 +0300
-Date: Fri, 15 May 2020 18:05:42 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Serge Semin <Sergey.Semin@baikalelectronics.ru>
-Subject: Re: [PATCH v3 3/4] serial: 8250_dw: Simplify the ref clock rate
- setting procedure
-Message-ID: <20200515150542.GN1634618@smile.fi.intel.com>
+	id 1jZc8M-0001dF-2B; Fri, 15 May 2020 15:20:22 +0000
+Received: from mail.baikalelectronics.com ([87.245.175.226]
+ helo=mail.baikalelectronics.ru)
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jZc7w-0007TD-4w; Fri, 15 May 2020 15:19:57 +0000
+Received: from localhost (unknown [127.0.0.1])
+ by mail.baikalelectronics.ru (Postfix) with ESMTP id 534A98029EC9;
+ Fri, 15 May 2020 15:19:55 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at baikalelectronics.ru
+Received: from mail.baikalelectronics.ru ([127.0.0.1])
+ by localhost (mail.baikalelectronics.ru [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id pnymTfqmVuML; Fri, 15 May 2020 18:19:51 +0300 (MSK)
+Date: Fri, 15 May 2020 18:19:48 +0300
+From: Serge Semin <Sergey.Semin@baikalelectronics.ru>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Subject: Re: [PATCH v3 4/4] serial: 8250_dw: Fix common clocks usage race
+ condition
+Message-ID: <20200515151948.264q2uktwv6xjgle@mobilestation>
 References: <20200323024611.16039-1-Sergey.Semin@baikalelectronics.ru>
  <20200506233136.11842-1-Sergey.Semin@baikalelectronics.ru>
- <20200506233136.11842-4-Sergey.Semin@baikalelectronics.ru>
- <20200515140547.GE1634618@smile.fi.intel.com>
- <20200515145007.xjrx5mminxrh374d@mobilestation>
+ <20200506233136.11842-5-Sergey.Semin@baikalelectronics.ru>
+ <20200515141046.GF1634618@smile.fi.intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200515145007.xjrx5mminxrh374d@mobilestation>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <20200515141046.GF1634618@smile.fi.intel.com>
+X-ClientProxiedBy: MAIL.baikal.int (192.168.51.25) To mail (192.168.51.25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200515_080547_631659_958FE732 
-X-CRM114-Status: GOOD (  20.01  )
+X-CRM114-CacheID: sfid-20200515_081956_550583_A3943897 
+X-CRM114-Status: GOOD (  21.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,72 +90,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 15, 2020 at 05:50:07PM +0300, Serge Semin wrote:
-> On Fri, May 15, 2020 at 05:05:47PM +0300, Andy Shevchenko wrote:
-> > On Thu, May 07, 2020 at 02:31:34AM +0300, Serge Semin wrote:
-> > > Really instead of twice checking the clk_round_rate() return value
-> > > we could do it once, and if it isn't error the clock rate can be changed.
-> > > By doing so we decrease a number of ret-value tests and remove a weird
-> > > goto-based construction implemented in the dw8250_set_termios() method.
-> > 
-> > >  	rate = clk_round_rate(d->clk, baud * 16);
-> > > -	if (rate < 0)
-> > > -		ret = rate;
-> > 
-> > > -	else if (rate == 0)
-> > > -		ret = -ENOENT;
-> > 
-> > This case now handled differently.
-> > I don't think it's good idea to change semantics.
-> > 
-> > So, I don't see how this, after leaving the rate==0 case, would be better than
-> > original one.
+On Fri, May 15, 2020 at 05:10:46PM +0300, Andy Shevchenko wrote:
+> On Thu, May 07, 2020 at 02:31:35AM +0300, Serge Semin wrote:
+> > The race condition may happen if the UART reference clock is shared with
+> > some other device (on Baikal-T1 SoC it's another DW UART port). In this
+> > case if that device changes the clock rate while serial console is using
+> > it the DW 8250 UART port might not only end up with an invalid uartclk
+> > value saved, but may also experience a distorted output data since
+> > baud-clock could have been changed. In order to fix this lets at least
+> > try to adjust the 8250 port setting like UART clock rate in case if the
+> > reference clock rate change is discovered. The driver will call the new
+> > method to update 8250 UART port clock rate settings. It's done by means of
+> > the clock event notifier registered at the port startup and unregistered
+> > in the shutdown callback method.
 > 
-> Semantic doesn't change. The code does exactly the same as before. If it didn't
-> I either would have provided a comment about this or just didn't introduce the
-> change in the first place. I guess you just don't see the whole picture of the
-> method. Take a look in the code. The ret variable's been used to skip the
-> "p->uartclk = rate" assignment. That's it. So the (rate == 0) will still be
-> considered as error condition, which causes the clock rate left unchanged.
-> Here is the code diff so you wouldn't need to dive deep into the driver
-> sources:
+> I'm wondering if clock framework itself can provide such a notifier?
 > 
-> <	clk_disable_unprepare(d->clk);
-> <	rate = clk_round_rate(d->clk, baud * 16);
-> <	if (rate < 0)
-> <		ret = rate;
-> <	else if (rate == 0)
-> <		ret = -ENOENT;
-> <	else
-> <		ret = clk_set_rate(d->clk, rate);
-> <	clk_prepare_enable(d->clk);
-> <
-> <	if (ret)
-> <		goto out;
-> <
-> <	p->uartclk = rate;
-> <
-> <out:
-> ---
-> >       clk_disable_unprepare(d->clk);
-> >       rate = clk_round_rate(d->clk, baud * 16);
-> >       if (rate > 0) {
-> >              ret = clk_set_rate(d->clk, rate);
-> >              if (!ret)
-> >                      p->uartclk = rate;
-> >       }
-> >       clk_prepare_enable(d->clk);
+> > Note 1. In order to avoid deadlocks we had to execute the UART port update
+> > method in a dedicated deferred work. This is due to (in my opinion
+> > redundant) the clock update implemented in the dw8250_set_termios()
+> > method.
+> 
+> So, and how you propose to update the clock when ->set_termios() is called?
 
-Thanks.
-Indeed, in the above it looks clear.
+First of all If you are worried about the current implementation, please don't,
+it still updates the clock in set_termios (please see the set_termios
+code). The method hasn't changed much and does the updating the same way it did
+before.
 
+Secondly, 8250 driver should be using the same reference clock as it is
+pre-defined by the platform with no change. The baud rate updates are supposed to
+be performed by the divider embedded into the 8250 controller, otherwise the
+divisor functionality is left completely unused. If a platform engineer needs to
+speed the uart up, the ref clock rate can be tuned by for instance the
+"assigned-clock-rates" property.
 
+> 
+> > Note 2. Before the ref clock is manually changed by the custom
+> > set_termios() function we swap the port uartclk value with new rate
+> > adjusted to be suitable for the requested baud. It is necessary in
+> > order to effectively disable a functionality of the ref clock events
+> > handler for the current UART port, since uartclk update will be done
+> > a bit further in the generic serial8250_do_set_termios() function.
+> 
+> ...
+> 
+> > +	struct notifier_block	clk_notifier;
+> > +	struct work_struct	clk_work;
+> 
+> Oh, this seems too much.
+> Perhaps, the compatible based quirk with your initial approach is much better for time being.
 
--- 
-With Best Regards,
-Andy Shevchenko
+It's already in 8250_dw, useful not for a single platform and won't hurt any
+other one. So I'll leave it here and wait for the Greg feedback.
 
+-Sergey
 
+> 
+> -- 
+> With Best Regards,
+> Andy Shevchenko
+> 
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
