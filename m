@@ -6,19 +6,19 @@ X-Spam-Status: No, score=-12.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,
 	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9CF70C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 19:55:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E3F9C433DF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 20:04:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6454920709
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 19:55:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 175A520709
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 20:04:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lBaLAqH0";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="iOFEME5J"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6454920709
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mCk3iOnx";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="fxEPjo6G"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 175A520709
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,54 +27,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:Subject:
 	From:To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jiuspXMgDv0DZqR/lJKggm1uarAKfgP8pRt6FqvEHWg=; b=lBaLAqH0hf9oL1
-	To1Sj9F2OcdHFzPw1PDXpdGHsFDUwznyyL2k6TB9KxaAk1tsQ2g/thkkk1Q7ZFGyLGd5xAgwo/bEh
-	AT80B9A4e3Fj3Yus06xqNHsHlidBYwjCobBKoQGmgt6/q33GbWNneRwtdW39ZnN+oBaA6JwH2v7ve
-	5SRZ/DgKzfmqpVjbo+74Vo6vKa0UDJBB5tw8561ZQ0bciXpXJo6+pu53xhvHQtGLaqughLIEIijMv
-	rZFsatHQYefsC8h+HG2aVs8kSN6svRq1JCbqtIbvr3fhO0gsY0XPEHHyv/wQvu8YUMQROTUQXeK93
-	kAkewunKyORhV4LBUYbA==;
+	List-Owner; bh=YG/v3smPMO1hfRIT63lXWVyAP3uM6JgLBVSpaqrLQXE=; b=mCk3iOnxGgYXwI
+	vmlAicI6P8XDSRvdD13Iz7sp1Odsk3LPFtHfF5GTZSo7aBQYqOu7ocbqCwGiz/gcjzPTFNZ5vc+PA
+	pPsLneDYiGVHEUQHoAIFNqTJ9lmT3ZVLuSZjeiLszXcx6t4+31XBPi4wca3ss097xIvi4OBonIDJ6
+	21R5842l3xdK7WhnjnYX6UamSawr2+Wl1nY2KBKlIgaa68L7DAT0nycNYVq526qSWuC9NcXWZP5zD
+	k62XrNkxj8Qm9IDiBuuDBJmukxEK1KhEL0izzraF93oT7+O1dLDW3tRJw5QNeyQ36rY/xVdRcIY9o
+	50Z5PSILbz6U5Rv3ZEPw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ja2uD-0005X1-JL; Sat, 16 May 2020 19:55:33 +0000
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244])
+	id 1ja32h-0000RB-E1; Sat, 16 May 2020 20:04:19 +0000
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ja2uB-0005WZ-IW; Sat, 16 May 2020 19:55:32 +0000
-Received: by mail-oi1-x244.google.com with SMTP id y85so695607oie.11;
- Sat, 16 May 2020 12:55:31 -0700 (PDT)
+ id 1ja32e-0000Qk-Fq; Sat, 16 May 2020 20:04:18 +0000
+Received: by mail-oi1-x243.google.com with SMTP id i22so5477806oik.10;
+ Sat, 16 May 2020 13:04:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:cc:from:subject:autocrypt:message-id:date:user-agent
+ h=to:from:subject:autocrypt:cc:message-id:date:user-agent
  :mime-version:content-language:content-transfer-encoding;
- bh=V2xTvdpQ3ybeAAw0y8ttM2CwbaMVPIV+S9uw8x30+n8=;
- b=iOFEME5JggmtuMxfQS+RSJc8+UtD/tRTN/GAaqHOP/eBde1kW79FqFBc3lF64oM8PQ
- r9HPLRayZlQTkiDHAqz3N6SOE4wkrFX9FediUWBY5s3VD8adDnKOvDKnewo/AQ6KBsNa
- zjRUmmmq4m1Je6tJWokj72bovTCY2Ig4Zxv8Qo4dVWaiS8v+Q6sGl/l1aEs8CNolHhYo
- FGxeKK1clvl7K19mAzvhyqn/PUoibn0b4XJ8mmEpOypQWOiAQcSo8kNGLGopH85SciE1
- D1GApfZPD4mey/sW2bDg71hLUrecwkkrFRICkTymTioK1JYnJeYRatUg4O6DqjuXIDyH
- 0dtg==
+ bh=34LgWJZ4gK/xsz56iZB1XxASII2FaMFp9R5VglP+pnE=;
+ b=fxEPjo6Gd7AjTkOmyrCvegSy8/OJ8l1o+8eOEVjTECw52mxx0xlWOLaeLpAqItTnTR
+ uZUmWAKfTdA+dRpuVHUstTKo9dYXanILatEeRQWm7Tm3Zr8Cukj9EZJywJGxsaulxvBo
+ USEOYPf9BtpKHavCmiXP6UICz8xjz+KqpDLCbSW0mKMgtRlgPLRI266YMm24JIFklubD
+ Jr1BgnVNjZuIJcu0RSQORBasL4zrAulwoHV84RqpM+RB3JAt/44dURfKjU6MMl30Pwg1
+ bQV46aCxvAsbVocOozMTfd8rA7Sche+FjL4IEe2etCRbeXcWuaOPM0qnho5Y3RN3nWMj
+ VRCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:to:cc:from:subject:autocrypt:message-id:date
+ h=x-gm-message-state:to:from:subject:autocrypt:cc:message-id:date
  :user-agent:mime-version:content-language:content-transfer-encoding;
- bh=V2xTvdpQ3ybeAAw0y8ttM2CwbaMVPIV+S9uw8x30+n8=;
- b=PbDI/wnkaWc1CT0oKmeePm67eO/wBNEcGt+/hXSQtOMeW0m1fXqbujjMq1IJrleeim
- EPAEaFZQrgoHqChpdP4dOqJPCr3hvxAKBYxrjs/8OPRpK165wgOiiNl7GDo/YAiWV6Ap
- ENsKjYQNLfHUTiWE/5nuqlKxGwc2MNLXRwn2N/spfbmQkqlMKeWaaC0w8L/k3ly24JLO
- 2ntVe59m4QfuenefUhtvdB95ujJk5y+XuR5YrOMErlP4osSPOTGiBPffwgj+IuRMpYxm
- GCsoCxVPnmTiSa5uM8ghwlBCExlIykSKHjlLhQRu+RkM2sMtWMAf2EPhM+aveu61Jeri
- iEPw==
-X-Gm-Message-State: AOAM533fFhpJHgsKEvZCHuQwkPHZ0zuQrY09QAa4Ob64kP3Xd14QLPTX
- 7U1RGUpg+Z3uaG2hs0NEgLYiehBm
-X-Google-Smtp-Source: ABdhPJwScv13eKaLWm5S6tXUdwsEBvlzEVwqGsaQklzg103F5g0gXfMkokX/l7Jur2+4cX732b8MeA==
-X-Received: by 2002:aca:ac4c:: with SMTP id v73mr1589713oie.132.1589658930162; 
- Sat, 16 May 2020 12:55:30 -0700 (PDT)
+ bh=34LgWJZ4gK/xsz56iZB1XxASII2FaMFp9R5VglP+pnE=;
+ b=JbFZ7AadoFVgi/KvIzgDm0Qvp33VHdp0aZU/cN2YBIfYCm997UvcmJBEBnuxf2awnI
+ hiyVeT/oQIJxAZCi35xCJqRmKP7mlEBNpKJHGBLV2ddlbxw4lXwuzH/3xhWQ/Pjzt9aA
+ 8b9D2S01fIrJksiewxo3sT1e2zH5zaj8wqfpygGQ0L5dZQ6BYiqVW2lu3UF2hmlorhgb
+ yoiq1WTTlui+Bq+5/MfTqnmYIG8sjv0l7IM4m1ZLmCZOY13+G0/xun4NX1TQXyQBVv6t
+ T2gRWKJREl/7Aqb0bvNgYUZA29O66b3+JTkE8fH1jv+ZpCRiwOatMb6Ot8PJqO+aiwPC
+ R5DA==
+X-Gm-Message-State: AOAM530y0pfyU/OO9oOHvaiYI1kx2cuYX0nqb6j/d0IbW2dP0l6tJz9r
+ AZzxYScvTayTAFLxxaQlc8Q=
+X-Google-Smtp-Source: ABdhPJwUKDLsTZ55/MXqr69T9uuO5aU4nBQxgc+qbHYuA1/TQqhR0BAxuzVobnekzmaDrczmVxJMSw==
+X-Received: by 2002:aca:4785:: with SMTP id u127mr6423776oia.2.1589659455378; 
+ Sat, 16 May 2020 13:04:15 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id d10sm1613229otp.19.2020.05.16.12.55.28
+ by smtp.gmail.com with ESMTPSA id 95sm1622579otf.72.2020.05.16.13.04.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 16 May 2020 12:55:29 -0700 (PDT)
+ Sat, 16 May 2020 13:04:13 -0700 (PDT)
 List-Id: <soc.lore.kernel.org>
 To: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] ARM: mediatek: arm 32-bit updates for v5.8
+Subject: [GIT PULL] arm64: mediatek: updates for v5.8
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
  fL3eT7ZsYV5nur7zctmJ+vbszoOASXUpfq8M+S5hU2w7sBaVk5rpH9yW8CUWz2+ZpQXPJcFa
@@ -149,15 +149,15 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <ec17cf62-5463-9537-6618-2db9b2b5036e@gmail.com>
-Date: Sat, 16 May 2020 21:55:26 +0200
+Message-ID: <2794a8db-c14f-ac34-9e28-9f3700db6c4c@gmail.com>
+Date: Sat, 16 May 2020 22:04:09 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200516_125531_629400_278E7A3E 
-X-CRM114-Status: GOOD (  15.85  )
+X-CRM114-CacheID: sfid-20200516_130416_583427_CEBF7F6F 
+X-CRM114-Status: GOOD (  19.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -169,17 +169,25 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Michael Kao <michael.kao@mediatek.com>,
+ Ulrich Hecht <ulrich.hecht+renesas@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Ikjoon Jang <ikjn@chromium.org>,
  "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd and Olof,
+Hi Olof,
+Hi Arnd,
 
-Please have a look at the following pull request which includes arm32 changes.
+Please have a look on the device tree changes for 64-bit platforms. The
+highlight for me is the support for the support for the MT8173 based Chromebooks
+(like the Acer R13). This has been around for quite some time, but in the end we
+took up the work between several people to get it all ready for upstream.
 
 Regards,
 Matthias
@@ -193,37 +201,86 @@ The following changes since commit 8f3d9f354286745c751374f5f1fcafee6b3f3136:
 are available in the Git repository at:
 
   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-tags/v5.7-next-dts32
+tags/v5.7-next-dts64
 
-for you to fetch changes up to 189881af810d452b592ee958db43eb4c57df9803:
+for you to fetch changes up to f0e5405b9ebf084c34c41f5d38a0013bee166f4d:
 
-  arm: dts: mt2701: Add usb2 device nodes (2020-05-16 21:03:06 +0200)
-
-----------------------------------------------------------------
-MT2701:
-- add MUSB device to the SoC and the EVB
-
-MT7623:
-- add Mali-450 device node and bindings
-- add phy to gmac2
+  arm64: dts: mt8173: Add capacity-dmips-mhz attributes (2020-05-16 18:36:40 +0200)
 
 ----------------------------------------------------------------
-Min Guo (1):
-      arm: dts: mt2701: Add usb2 device nodes
+MT2712:
+- replace deprecated compatible for the usb PHY
+
+MT6797:
+- switch to SPDX identifier
+- add and enable I2C device for x20 development board
+- add I2C compatible to the binding description
+
+MT7622:
+- add Wi-Fi device and enable it for the Bananpi-R64
+
+MT8173:
+- add CPU capacities based on Dhryston benchmark
+- fix DT build warnings
+- set throtteling range to limitless
+- add Elm and Hana devices on which several chromebooks are based
+- add Global Command Queue entries to the users
+
+MT8183:
+- split cpuidle states in two as the clusters have different target residencies
+
+----------------------------------------------------------------
+Chunfeng Yun (1):
+      arm64: dts: mt2712: use non-empty ranges for usb-phy
+
+Hsin-Yi Wang (6):
+      arm64: dts: mt8173: Add gce setting in mmsys and display node
+      dt-bindings: arm64: dts: mediatek: Add mt8173 elm and hana
+      arm64: dts: mt8173: add uart aliases
+      arm64: dts: mt8173: fix unit name warnings
+      arm64: dts: mediatek: add mt8173 elm and hana board
+      arm64: dts: mt8173: fix mdp aliases property name
+
+Ikjoon Jang (1):
+      arm64: dts: mt8183: adjust cpuidle target residency
+
+Manivannan Sadhasivam (4):
+      dt-bindings: i2c: Document I2C controller binding for MT6797 SoC
+      arm64: dts: mediatek: Add I2C support for MT6797 SoC
+      arm64: dts: mediatek: Enable I2C support for 96Boards X20 Development board
+      arm64: dts: mediatek: Switch to SPDX license identifier for MT6797 SoC
+
+Michael Kao (1):
+      arm64: dts: mt8173: fix cooling device range
 
 Ryder Lee (1):
-      arm: dts: mt7623: add Mali-450 device node
+      arm64: dts: mt7622: add built-in Wi-Fi device nodes
 
-Sean Wang (2):
-      arm: dts: mt7623: add phy-mode property for gmac2
-      dt-bindings: gpu: mali-utgard: add mediatek, mt7623-mali compatible
+Ulrich Hecht (1):
+      arm64: dts: mt8173: Add capacity-dmips-mhz attributes
 
- .../devicetree/bindings/gpu/arm,mali-utgard.yaml   |  2 ++
- arch/arm/boot/dts/mt2701-evb.dts                   | 21 ++++++++++++++
- arch/arm/boot/dts/mt2701.dtsi                      | 33 ++++++++++++++++++++++
- arch/arm/boot/dts/mt7623.dtsi                      | 25 ++++++++++++++++
- arch/arm/boot/dts/mt7623n-rfb-emmc.dts             |  1 +
- 5 files changed, 82 insertions(+)
+ .../devicetree/bindings/arm/mediatek.yaml          |   22 +
+ .../devicetree/bindings/i2c/i2c-mt65xx.txt         |    1 +
+ arch/arm64/boot/dts/mediatek/Makefile              |    3 +
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi          |   42 +-
+ arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts    |   49 +
+ arch/arm64/boot/dts/mediatek/mt6797.dtsi           |  229 +++-
+ .../boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts  |    4 +
+ arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts       |    4 +
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi           |   11 +
+ .../boot/dts/mediatek/mt8173-elm-hana-rev7.dts     |   27 +
+ arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dts   |   14 +
+ arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi  |   70 ++
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dts        |   14 +
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi       | 1173 ++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |   78 +-
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi           |   26 +-
+ 16 files changed, 1705 insertions(+), 62 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8173-elm-hana-rev7.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8173-elm.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
 
 _______________________________________________
 Linux-mediatek mailing list
