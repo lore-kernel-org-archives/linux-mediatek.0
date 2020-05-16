@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0D136C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:52:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5624FC433E0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 17:31:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8CFC02065C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:52:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 240712065C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 17:31:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rgxjWBPg";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="nXHK7aqt"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8CFC02065C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fXWmZbxh";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="b1CjCe1d"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 240712065C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,58 +27,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1HNRqBN8USijtNJOT1HNd+myZ/HYA3OiG0CzExq4Svw=; b=rgxjWBPg3Rd9tW
-	e4mbRwvrezLwDpuzwR+nsrl3TFQXPcOrA5+iZGkpy3jk2soAbQkMrMgEkq8XxUwPcHYjAh5unNdcs
-	/CQqSBgMCvYPKyoIMGon8XIBIacYxf/NxpsAbU5Sfysby3Y8UpNvzxddEZWG2o5k4RsT2I9gaWnDf
-	p69+GmhNWiPPGDZK0JMeYMCRBUU4mrCzuSckGEQIAX/tL1q7WQ+eDXmTkghtp16B+CbJskBidOQ1E
-	a90PDurtLUHgsC/eM4NzZLG7g1yttur+oBGQkgFSPhazdi1S8Gm5eH/4DzMIs4LkKqWPL3hNqvCz3
-	IS2/gz7sqWMco59sexvQ==;
+	List-Owner; bh=gNlWUyey/fmkeGrBx4UBnx/icTQjfEOrbyF7IulvJLA=; b=fXWmZbxhISZFlM
+	iSbcNmHmeWgqHNF/ZwBmN5CoGgRwwUvhvJ7LI++4PmoRxPm20uQGJtm3LpDb9X2J+GPyNd4iXvyhc
+	F4g8mvtxUSw1yIL6fnKv7UhVjtvZT8hZ8grgDZAIDizMiffcU53u9b5SzNNnL8Gb+myzqfhjD9qve
+	y83SvqBewgD5Ezop8/CSUf0KGbKRGSDPMp4Z0QkrX2MlxfLY/COGHtyduOXU1lBbzocWKUsh2GyE8
+	aIHtxIlV9jJ21NbQW3VuNCOy1G74POZQikYqgC4/IGQp8xMRFfYMlw+7xXRLt3RgXPog6a1EgpDwY
+	TGSG615RDxZ57OrCTQUA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ja03L-0005bG-Kn; Sat, 16 May 2020 16:52:47 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1ja0eb-0005mG-SG; Sat, 16 May 2020 17:31:17 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ja03I-0005af-Pt; Sat, 16 May 2020 16:52:46 +0000
-Received: by mail-wm1-x343.google.com with SMTP id k12so5205759wmj.3;
- Sat, 16 May 2020 09:52:44 -0700 (PDT)
+ id 1ja0eZ-0005lI-AV; Sat, 16 May 2020 17:31:16 +0000
+Received: by mail-wr1-x442.google.com with SMTP id y3so7083832wrt.1;
+ Sat, 16 May 2020 10:31:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=dn/Sg6uzKdYGjK59PnQCWCFVALJTBbaUyCz7aHTrynM=;
- b=nXHK7aqt1SCxk1vPa1K9Uf1tKqZ4X2iY+Y6yfNAwx9J/+f7LhjvLnMd12WeDN47XVT
- ZLE8HkjMlliIwNOJp+OwbcwrpMhbMnZR0LnnqxJj4r1vfloJc6lIYhvsrohq/0kNYuf9
- y22hp2LqQHV0AIpSMSgSuMQWlBmO4yZ1Mu8xUbR9OPTgWhg9UJsZoNBaVcQPRkBaAM2b
- 68jx5eNJc/NJV+UUZGV0Eu16iiJ1rpi9M6VQ25IFTSrGVGWx36ygEUkVfybN8rm90FWo
- yxS677HLaAMvuedR3Z7a2sFzddzB3VPZ5ZQGA4sB5I4KfbBkaXNQaUGwGLAlyekD5o7T
- aoCQ==
+ bh=KTU7NTpAFJkVH7oWKOmEldGpkgu/thmJgGpYK77O3tU=;
+ b=b1CjCe1dEcnbju+WTVgFvnDhINqVotbwLWQhkowXogmE87vFafk24Sb/OqvAjm1vCJ
+ TMhPaW0rwxCBm2WoD6qu3stsVLtjnhXsznfpG4Z9hdTMAA99beIXegbioG9K6M/208a4
+ isggmrWRi4WBC3v5lp0zaY7RmRutRjMl4MgWCsFcVG46n1wDjSHCCKzF2r2OQjLf0QXB
+ SY4DuZD8JfwTXPsw+hvf3VID4KN/KB8ZBrgvWzH0xdtVG49PLrGikncnQgwdXtgWGS0X
+ Ir3xCrJ/rdSxr6BMMMk0DHy5UcXFIouztlaEybKZxtdhspIq9XXxsZLOGthmI5mXuRmJ
+ PaEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=dn/Sg6uzKdYGjK59PnQCWCFVALJTBbaUyCz7aHTrynM=;
- b=HgWcMsZfIE866QIx/gjV01htFndee02lfLeWkRxCGXmCyJGSrBEB99rcfBkpbISa6Z
- 7ExACD/qGfck+F3vtQnQ+3F8qr8zfaSPUl5nmd5wVfrhVtSQGFkRrMXdNOgB0faJkE8j
- Ee7h5nLj5Rb2mzsJ2fESx0/fRWhINeQVT1odBlKvCyXGJUM3Df87HcIdquUqDxLIfRQY
- czSFYF4+yhOb6GuLWKrfSDJKRxCdN82lY4XaAz1AtZ8Q0zQmDTU6/QW5rWBuCuEhcuyn
- rmkEiaP6eBIOh5iZAuBwL/NfWK5fQFOAZGYmkkO4gjlus1aVXl70LkHHeU0DUare45oN
- f7NQ==
-X-Gm-Message-State: AOAM5328KSBtQICi0m5bKY4F8qQKq1mEvlcSWq57RgPkEHE1rL+7Fw9x
- jOcM8MVgaUWDFJW13A5Re1s=
-X-Google-Smtp-Source: ABdhPJz+ushoEN1UKmWbh5uohNTqLWOR+W62I6eeEv9KgDef5XLMfaVVjo4FY75xKu2kDxknDS87fg==
-X-Received: by 2002:a7b:c198:: with SMTP id y24mr9905456wmi.186.1589647963242; 
- Sat, 16 May 2020 09:52:43 -0700 (PDT)
+ bh=KTU7NTpAFJkVH7oWKOmEldGpkgu/thmJgGpYK77O3tU=;
+ b=hKHmB0FhEnWBNNnBcXPzC9qUcVKC96yYIb31oJWY6EyJabWenzq0ypQ8kaNGhlltic
+ ZBswc/dS8lZe5+1J2dHvI/LamBlDxJJ+qwKS/wzqO3SxRWDq/nBQEG8xN1vD+NIyCEdN
+ x5+OkEBzmM9vS/ur6t1pxm6w++SGVRXAxVIOshvkVCdWC5tob0yL4TsK+zXLdWOlYigR
+ m8YWsO9D5vKla9dW289Eto1CDg4NQeflW4w8kuFDvj7s7LbF5ww8woQ6tR9vRL6Y1hQG
+ CBck3U6T+vfbF5A2JJsWXLW+aEIIFQ6ydHiU5gKpo6NIVn/2MVbmWXxV73t0FXccW58E
+ 1iWg==
+X-Gm-Message-State: AOAM530G5DuspccfL//ebt+uqCMy4hQZ3kVWGS3+Xbty8GB2zyYQ0agv
+ O6IEh3XYRY8fFx10gZYzFpY=
+X-Google-Smtp-Source: ABdhPJzg+puNPU94pMz43XrE+hUUlYK9uiCg50YU4Ec8dE5WUHeTFdqwojT8qpRbRYMY9G6FCHrKOA==
+X-Received: by 2002:a5d:5105:: with SMTP id s5mr10572770wrt.202.1589650273971; 
+ Sat, 16 May 2020 10:31:13 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id 18sm8385399wmj.19.2020.05.16.09.52.41
+ by smtp.gmail.com with ESMTPSA id c140sm3323240wmd.18.2020.05.16.10.31.12
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 16 May 2020 09:52:42 -0700 (PDT)
-Subject: Re: [PATCH v13 1/2] arm: dts: mt2712: add uart APDMA to device tree
-To: Long Cheng <long.cheng@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- Randy Dunlap <rdunlap@infradead.org>, Rob Herring <robh+dt@kernel.org>,
- Mark Rutland <mark.rutland@arm.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Sean Wang <sean.wang@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
-References: <1558596909-14084-1-git-send-email-long.cheng@mediatek.com>
- <1558596909-14084-2-git-send-email-long.cheng@mediatek.com>
+ Sat, 16 May 2020 10:31:13 -0700 (PDT)
+Subject: Re: [PATCH v9 2/6] arm: dts: mt2701: Add usb2 device nodes
+To: min.guo@mediatek.com, Bin Liu <b-liu@ti.com>,
+ Rob Herring <robh+dt@kernel.org>
+References: <20191211015446.11477-1-min.guo@mediatek.com>
+ <20191211015446.11477-3-min.guo@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -154,16 +152,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <85c03ada-6454-9cae-8a46-7512f7de33bd@gmail.com>
-Date: Sat, 16 May 2020 18:52:40 +0200
+Message-ID: <5b5d2339-1179-72ee-f503-701860664eeb@gmail.com>
+Date: Sat, 16 May 2020 19:31:11 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <1558596909-14084-2-git-send-email-long.cheng@mediatek.com>
+In-Reply-To: <20191211015446.11477-3-min.guo@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200516_095244_842130_F4B0EF04 
-X-CRM114-Status: GOOD (  17.23  )
+X-CRM114-CacheID: sfid-20200516_103115_385754_9106C45F 
+X-CRM114-Status: GOOD (  17.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -175,13 +173,11 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Zhenbao Liu <zhenbao.liu@mediatek.com>, devicetree@vger.kernel.org,
- srv_heupstream@mediatek.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org,
- Jiri Slaby <jslaby@suse.com>, dmaengine@vger.kernel.org,
- Yingjoe Chen <yingjoe.chen@mediatek.com>,
- Dan Williams <dan.j.williams@intel.com>, linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ tony@atomide.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, hdegoede@redhat.com,
+ Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -189,126 +185,135 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 23/05/2019 09:35, Long Cheng wrote:
-> 1. add uart APDMA controller device node
-> 2. add uart 0/1/2/3/4/5 DMA function
-
-Due to the fact that 2/2 is not yet applied, please rephrase the commit message
-and rebase on current mainline kernel.
-
-Thanks
-Matthias
-
+On 11/12/2019 02:54, min.guo@mediatek.com wrote:
+> From: Min Guo <min.guo@mediatek.com>
 > 
-> Signed-off-by: Long Cheng <long.cheng@mediatek.com>
+> Add musb nodes and usb2 phy nodes for MT2701
+> 
+> Signed-off-by: Min Guo <min.guo@mediatek.com>
+
+Applied now to v5.7-next/dts32
+
+Sorry for the long delay!
+
 > ---
->  arch/arm64/boot/dts/mediatek/mt2712e.dtsi |   51 +++++++++++++++++++++++++++++
->  1 file changed, 51 insertions(+)
+> changes in v9:
+> 1. Add usb-role-switch
+> 2. Remove label of usb connector child node
+> 3. Change usb connector child node compatible as "gpio-usb-b-connector", "usb-b-connector";
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> index 43307ba..a7a7362 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> @@ -300,6 +300,9 @@
->  		interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
->  		clocks = <&baud_clk>, <&sys_clk>;
->  		clock-names = "baud", "bus";
-> +		dmas = <&apdma 10
-> +			&apdma 11>;
-> +		dma-names = "tx", "rx";
->  		status = "disabled";
+> changes in v8:
+> 1. no changes
+> 
+> changes in v7:
+> 1. Change usb connector child node compatible as "gpio-usb-b-connector" 
+> 
+> changes in v6:
+> 1. Modify usb connector child node
+> 
+> changes in v5:
+> 1. Add usb connector child node
+> 
+> changes in v4:
+> 1. no changes
+> 
+> changes in v3:
+> 1. no changes
+> 
+> changes in v2:
+> 1. Remove phy-names
+> ---
+>  arch/arm/boot/dts/mt2701-evb.dts | 21 ++++++++++++++++++++
+>  arch/arm/boot/dts/mt2701.dtsi    | 33 ++++++++++++++++++++++++++++++++
+>  2 files changed, 54 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/mt2701-evb.dts b/arch/arm/boot/dts/mt2701-evb.dts
+> index be0edb3dae6c..844ed3f971fe 100644
+> --- a/arch/arm/boot/dts/mt2701-evb.dts
+> +++ b/arch/arm/boot/dts/mt2701-evb.dts
+> @@ -6,6 +6,7 @@
+>   */
+>  
+>  /dts-v1/;
+> +#include <dt-bindings/gpio/gpio.h>
+>  #include "mt2701.dtsi"
+>  
+>  / {
+> @@ -60,6 +61,15 @@ backlight_lcd: backlight_lcd {
+>  		>;
+>  		default-brightness-level = <9>;
+>  	};
+> +
+> +	usb_vbus: regulator@0 {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "usb_vbus";
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		gpio = <&pio 45 GPIO_ACTIVE_HIGH>;
+> +		enable-active-high;
+> +	};
+>  };
+>  
+>  &auxadc {
+> @@ -229,3 +239,14 @@ pins1 {
+>  &uart0 {
+>  	status = "okay";
+>  };
+> +
+> +&usb2 {
+> +	status = "okay";
+> +	usb-role-switch;
+> +	connector{
+> +		compatible = "gpio-usb-b-connector", "usb-b-connector";
+> +		type = "micro";
+> +		id-gpios = <&pio 44 GPIO_ACTIVE_HIGH>;
+> +		vbus-supply = <&usb_vbus>;
+> +	};
+> +};
+> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
+> index 180377e56ef4..a6b1434e83fb 100644
+> --- a/arch/arm/boot/dts/mt2701.dtsi
+> +++ b/arch/arm/boot/dts/mt2701.dtsi
+> @@ -670,6 +670,39 @@ u3port1: usb-phy@1a244900 {
+>  		};
 >  	};
 >  
-> @@ -369,6 +372,39 @@
->  			 (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_HIGH)>;
->  	};
->  
-> +	apdma: dma-controller@11000400 {
-> +		compatible = "mediatek,mt2712-uart-dma",
-> +			     "mediatek,mt6577-uart-dma";
-> +		reg = <0 0x11000400 0 0x80>,
-> +		      <0 0x11000480 0 0x80>,
-> +		      <0 0x11000500 0 0x80>,
-> +		      <0 0x11000580 0 0x80>,
-> +		      <0 0x11000600 0 0x80>,
-> +		      <0 0x11000680 0 0x80>,
-> +		      <0 0x11000700 0 0x80>,
-> +		      <0 0x11000780 0 0x80>,
-> +		      <0 0x11000800 0 0x80>,
-> +		      <0 0x11000880 0 0x80>,
-> +		      <0 0x11000900 0 0x80>,
-> +		      <0 0x11000980 0 0x80>;
-> +		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 105 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 106 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 107 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 108 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 109 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 111 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 112 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 113 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 114 IRQ_TYPE_LEVEL_LOW>;
-> +		dma-requests = <12>;
-> +		clocks = <&pericfg CLK_PERI_AP_DMA>;
-> +		clock-names = "apdma";
-> +		#dma-cells = <1>;
+> +	usb2: usb@11200000 {
+> +		compatible = "mediatek,mt2701-musb",
+> +			     "mediatek,mtk-musb";
+> +		reg = <0 0x11200000 0 0x1000>;
+> +		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_LOW>;
+> +		interrupt-names = "mc";
+> +		phys = <&u2port2 PHY_TYPE_USB2>;
+> +		dr_mode = "otg";
+> +		clocks = <&pericfg CLK_PERI_USB0>,
+> +			 <&pericfg CLK_PERI_USB0_MCU>,
+> +			 <&pericfg CLK_PERI_USB_SLV>;
+> +		clock-names = "main","mcu","univpll";
+> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
+> +		status = "disabled";
 > +	};
 > +
->  	auxadc: adc@11001000 {
->  		compatible = "mediatek,mt2712-auxadc";
->  		reg = <0 0x11001000 0 0x1000>;
-> @@ -385,6 +421,9 @@
->  		interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
->  		clocks = <&baud_clk>, <&sys_clk>;
->  		clock-names = "baud", "bus";
-> +		dmas = <&apdma 0
-> +			&apdma 1>;
-> +		dma-names = "tx", "rx";
->  		status = "disabled";
->  	};
->  
-> @@ -395,6 +434,9 @@
->  		interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
->  		clocks = <&baud_clk>, <&sys_clk>;
->  		clock-names = "baud", "bus";
-> +		dmas = <&apdma 2
-> +			&apdma 3>;
-> +		dma-names = "tx", "rx";
->  		status = "disabled";
->  	};
->  
-> @@ -405,6 +447,9 @@
->  		interrupts = <GIC_SPI 93 IRQ_TYPE_LEVEL_LOW>;
->  		clocks = <&baud_clk>, <&sys_clk>;
->  		clock-names = "baud", "bus";
-> +		dmas = <&apdma 4
-> +			&apdma 5>;
-> +		dma-names = "tx", "rx";
->  		status = "disabled";
->  	};
->  
-> @@ -415,6 +460,9 @@
->  		interrupts = <GIC_SPI 94 IRQ_TYPE_LEVEL_LOW>;
->  		clocks = <&baud_clk>, <&sys_clk>;
->  		clock-names = "baud", "bus";
-> +		dmas = <&apdma 6
-> +			&apdma 7>;
-> +		dma-names = "tx", "rx";
->  		status = "disabled";
->  	};
->  
-> @@ -629,6 +677,9 @@
->  		interrupts = <GIC_SPI 126 IRQ_TYPE_LEVEL_LOW>;
->  		clocks = <&baud_clk>, <&sys_clk>;
->  		clock-names = "baud", "bus";
-> +		dmas = <&apdma 8
-> +			&apdma 9>;
-> +		dma-names = "tx", "rx";
->  		status = "disabled";
->  	};
->  
+> +	u2phy0: usb-phy@11210000 {
+> +		compatible = "mediatek,generic-tphy-v1";
+> +		reg = <0 0x11210000 0 0x0800>;
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +		status = "okay";
+> +
+> +		u2port2: usb-phy@1a1c4800 {
+> +			reg = <0 0x11210800 0 0x0100>;
+> +			clocks = <&topckgen CLK_TOP_USB_PHY48M>;
+> +			clock-names = "ref";
+> +			#phy-cells = <1>;
+> +			status = "okay";
+> +		};
+> +	};
+> +
+>  	ethsys: syscon@1b000000 {
+>  		compatible = "mediatek,mt2701-ethsys", "syscon";
+>  		reg = <0 0x1b000000 0 0x1000>;
 > 
 
 _______________________________________________
