@@ -2,67 +2,169 @@ Return-Path: <SRS0=ODC1=66=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AF14EC433DF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 12:56:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9CF5EC433E0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 15:05:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 869FB20671
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 12:56:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 68FB820709
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 15:05:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OJyfORUX";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="jhiDY1Dx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 869FB20671
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="A42fQrFx";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="quOjtm1A"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 68FB820709
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/inp6unu4E91EyPv01QX1kBDK7mGQHA8ut/4imN7xGo=; b=OJyfORUXtolUUX
-	rNalvHEuo6X10XR3Uwf4g6KL1PdK6UXzS2TdQARS7EzhM5bXGZOOXgQH6siw/vcOkvpSiwLBs6WCd
-	rJmJRcf5dFq96vRvWyhuUwdPVN/ZIxFGVavsnOXov2UMZndIHI8sAAu+fWD5adfjFd1i0DK3RtALU
-	WOqLnscQxReNxXRHyn2xH1yKiMVXAzIGjc1bYtnMHVBykscDJYFvDgSt8E+JC4rfRYe1C6T9FE9yY
-	wcowzZUwagzYyjdYUqO3r5TtepL/aY6cAdzWk3SgGcE1bajRNrO7M1PcCZJwsp9js3yvolWxMPBLU
-	Aff/Q1QURdgb4JkDxTmw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=I2GzNOFyUHCtOx/ISz+3KIMrOtSgxbEp19orIqXPPxQ=; b=A42fQrFxb5hQNK
+	X8AQS+4qzCuou0tDRITQAnLBe35YndWrTN6+fce/qBkon+J8KNbEDCthk4mhzpWi51u/PRr9BpevI
+	yr1xJVhh+OhX1BbY8/dU6Y9DQZs1pPmG7rQvC6NFC1Ng+JbobUJXGzqkpzDTU2vnWA29/7gx76gMv
+	Tg5aItV5Pp3/5yARoWaGcEfVsd01UKA7tPBJZblB1kMrn+exSXA/yxas27GdOzV4/cu6xv7jJfbYN
+	VpjD570O8KfmU/bp4rT4cP+J5ghZGI5xTCDl1gQVCJbuwc6FhipArdoN7OQMQ5iyY6nCG7Sx/8cOh
+	H8MYOea+LHZGHsjo0xvQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZwMt-0002Ej-2q; Sat, 16 May 2020 12:56:43 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jZyNT-00047p-Ls; Sat, 16 May 2020 15:05:27 +0000
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZwMq-0002ER-1S
- for linux-mediatek@lists.infradead.org; Sat, 16 May 2020 12:56:41 +0000
-Received: from localhost.localdomain (unknown [151.48.155.206])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6C71620671;
- Sat, 16 May 2020 12:56:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1589633799;
- bh=t1XK2P4v4ACNzk5jRcoLJ1olEixLcO+jtsKU3wNsse8=;
- h=From:To:Cc:Subject:Date:From;
- b=jhiDY1DxcEh9Kp7JuGGL8g+hqTEANRYTTVS4NF1vKpmnf9LEAUh/EerjZ5RaVWw0G
- AH5ohlXvCIIPiYMEwMSY4xzV37twS1jbGmfGHtatAZzMQTyjin3f4Pf29hMx+TCeOg
- dNXYUj9VCFAmgffRvPF2FKgLVC8XUDcOINjmq5t4=
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: nbd@nbd.name
-Subject: [PATCH] mt76: mt7615: fix NULL pointer deref in
- mt7615_register_ext_phy
-Date: Sat, 16 May 2020 14:56:33 +0200
-Message-Id: <c6f649da8d09ca2c879a9f475a097c8c38b18963.1589633280.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.26.2
+ id 1jZyNR-00046m-4W; Sat, 16 May 2020 15:05:26 +0000
+Received: by mail-oi1-x241.google.com with SMTP id o24so5069673oic.0;
+ Sat, 16 May 2020 08:05:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=swrL0qy5YTu/Pvi+LL+YkeSXyhnWJoQTQfA2Bb2I9Gk=;
+ b=quOjtm1AsIRh4fH/SveTGYdw91+G7PEiDUVMBDAzvJ7WHMCAVeZ20ytAbqoSKGHkKz
+ ZVAJgtKBKjRwysixMT9MYEiLJbEE4b3IaOGGBDXmpojEpdQRxzki0ABQMVRCNyOO6ZFT
+ Otxr0D2D10BKj9QxkxrEkZamMlX2uLoQJMWuODjxWLhGviiidy6i65g72A1Sm3YEHYip
+ hctjD0+m7JIz+ykohlm0Sh9dHRsOf/Xp8TXGl643U28zFJt41iAtq4xVVJWVzfhtTYgH
+ FcEGQiyNtee4u2LJGwt/iBrof4ztDgvWfpEpcwvVlVlgLJVqT48nBMYFi7s2YGuAlTdP
+ ZJHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=swrL0qy5YTu/Pvi+LL+YkeSXyhnWJoQTQfA2Bb2I9Gk=;
+ b=IELrnOuDFBcBuKlKp9WqNk0BBdJse82p1O5PtTRo6nmm6fTZK21xfKQ2gVO0TwiNSH
+ eXVGe/BvT+5inR9DX4pkHl+P0NpmKcQposvWDCw50WwGbMWmTP3UqWj3cObjH2k+pKRM
+ mK6A0/YZu0WZzsZFnYVLZ2qHcOSS90gpRozJSLdOZEYZff8QI0mnDXbkSscCdztmR2Aj
+ moNrATBHdHoNb7XPT0l+xkIfnc9Dj1eokGKAyjbSdGJ6BNUQU6xUVXmYZoXRObk7fl62
+ JH9Of8Z2xlFMJERCbP4dIFfgASF74pOoXimGXE4k2DdqIzR7a1YlQ9uusLWwxVDTazOz
+ WLyg==
+X-Gm-Message-State: AOAM5313q5mZovUoBoTeW4s+HHvGSxq4BbthSxSzQfKJYBe7XPVe0doX
+ R12FgHD//iNTxX4/SwZ9BTc=
+X-Google-Smtp-Source: ABdhPJySMRXj6vY38ZcSYybRnBYMOM3Lz3UCi7C2cTamcQEmjYeBG6N29Opd744N5A/zIW8cetXPSg==
+X-Received: by 2002:aca:1916:: with SMTP id l22mr5858843oii.87.1589641523146; 
+ Sat, 16 May 2020 08:05:23 -0700 (PDT)
+Received: from ziggy.stardust ([213.195.113.243])
+ by smtp.gmail.com with ESMTPSA id h9sm1427080otb.73.2020.05.16.08.05.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 16 May 2020 08:05:22 -0700 (PDT)
+Subject: Re: [PATCH 1/4] dt-bindings: i2c: Document I2C controller binding for
+ MT6797 SoC
+To: Wolfram Sang <wsa@the-dreams.de>
+References: <20200222162444.11590-1-manivannan.sadhasivam@linaro.org>
+ <20200222162444.11590-2-manivannan.sadhasivam@linaro.org>
+ <20200226222330.GA9392@bogus>
+ <aa9ea456-dbee-229c-aea0-4860c6eb7adf@gmail.com>
+ <20200515165605.GA19423@ninjato>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <b1061325-2001-8d25-2791-8a968a6fd7d9@gmail.com>
+Date: Sat, 16 May 2020 17:05:18 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
+In-Reply-To: <20200515165605.GA19423@ninjato>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200516_055640_124792_6C40B260 
-X-CRM114-Status: UNSURE (   8.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200516_080525_196249_E389C1DF 
+X-CRM114-Status: GOOD (  14.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,103 +176,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
- ryder.lee@mediatek.com, linux-wireless@vger.kernel.org
+Cc: Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ adamboardman@gmail.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix following NULL pointer dereference in mt7615_register_ext_phy routine
 
-[   27.648860] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000060
-[   27.657697] Mem abort info:
-[   27.660495]   ESR = 0x96000046
-[   27.663549]   EC = 0x25: DABT (current EL), IL = 32 bits
-[   27.668857]   SET = 0, FnV = 0
-[   27.671910]   EA = 0, S1PTW = 0
-[   27.675040] Data abort info:
-[   27.677918]   ISV = 0, ISS = 0x00000046
-[   27.681751]   CM = 0, WnR = 1
-[   27.684717] user pgtable: 4k pages, 39-bit VAs, pgdp=000000007d8cc000
-[   27.691156] [0000000000000060] pgd=000000007d281003, pud=000000007d281003, pmd=0000000000000000
-[   27.699857] Internal error: Oops: 96000046 [#1] SMP
-[   27.774939] CPU: 1 PID: 701 Comm: ash Not tainted 5.4.41 #0
-[   27.780500] Hardware name: Bananapi BPI-R64 (DT)
-[   27.785108] pstate: 60000005 (nZCv daif -PAN -UAO)
-[   27.789897] pc : mt7615_register_ext_phy+0x60/0x2c8 [mt7615_common]
-[   27.796156] lr : mt7615_init_debugfs+0x99c/0x18e0 [mt7615_common]
-[   27.802237] sp : ffffffc0115dbcb0
-[   27.805541] x29: ffffffc0115dbcb0 x28: ffffff803e309600
-[   27.810843] x27: 0000000000000000 x26: 0000000000000000
-[   27.816144] x25: ffffff803d936928 x24: ffffff803d936950
-[   27.821447] x23: 0000000000000000 x22: 0000000fffffffe0
-[   27.826749] x21: 0000000000000002 x20: ffffff8001e82620
-[   27.832050] x19: 0000000000000000 x18: 0000000000000000
-[   27.837352] x17: 0000000000000000 x16: 0000000000000000
-[   27.842653] x15: 0000000000000000 x14: 0000000000000000
-[   27.847955] x13: 0000000000000000 x12: 0000000000000000
-[   27.853256] x11: 0000000000000000 x10: 0000000000000040
-[   27.858558] x9 : ffffffc0112b3eb0 x8 : ffffffc0112b3ea8
-[   27.863859] x7 : ffffff803e400048 x6 : 0000000000000000
-[   27.869161] x5 : ffffff803e400000 x4 : 0000000000000000
-[   27.874462] x3 : 0000000000000001 x2 : 0000000000007615
-[   27.879764] x1 : 0000000000000068 x0 : ffffffc0088ccc58
-[   27.885066] Call trace:
-[   27.887505]  mt7615_register_ext_phy+0x60/0x2c8 [mt7615_common]
-[   27.893416]  mt7615_init_debugfs+0x99c/0x18e0 [mt7615_common]
-[   27.899156]  simple_attr_write+0xf0/0x178
-[   27.903158]  debugfs_attr_write+0x4c/0x70
-[   27.907159]  full_proxy_write+0x60/0x90
-[   27.910987]  __vfs_write+0x18/0x40
-[   27.914379]  vfs_write+0xb0/0x1b8
-[   27.917685]  ksys_write+0x4c/0xc8
-[   27.920989]  __arm64_sys_write+0x18/0x20
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- .../net/wireless/mediatek/mt76/mt7615/init.c   | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+On 15/05/2020 18:56, Wolfram Sang wrote:
+> On Fri, May 15, 2020 at 04:48:28PM +0200, Matthias Brugger wrote:
+>> Hi Wolfram,
+>>
+>> On 26/02/2020 23:23, Rob Herring wrote:
+>>> On Sat, 22 Feb 2020 21:54:41 +0530, Manivannan Sadhasivam wrote:
+>>>> I2C controller driver for MT6577 SoC is reused for MT6797 SoC.
+>>>> Hence, document that in DT binding.
+>>>>
+>>>> Signed-off-by: Manivannan Sadhasivam
+>>>> <manivannan.sadhasivam@linaro.org> ---
+>>>> Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt | 1 + 1 file
+>>>> changed, 1 insertion(+)
+>>>>
+>>>
+>>> Acked-by: Rob Herring <robh@kernel.org>
+>>>
+>>
+>> Do you want to take this thorough your tree or are you OK if I take it
+>> thorough mine?
+>
+> The I2C list is neither in the CC field, nor is the patch in patchwork.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-index a9f4a2286454..caefa4d37a90 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-@@ -373,15 +373,6 @@ int mt7615_register_ext_phy(struct mt7615_dev *dev)
- 	if (phy)
- 		return 0;
- 
--	INIT_DELAYED_WORK(&phy->mac_work, mt7615_mac_work);
--	INIT_DELAYED_WORK(&phy->scan_work, mt7615_scan_work);
--	skb_queue_head_init(&phy->scan_event_list);
--
--	INIT_WORK(&phy->ps_work, mt7615_ps_work);
--	INIT_WORK(&phy->roc_work, mt7615_roc_work);
--	timer_setup(&phy->roc_timer, mt7615_roc_timer, 0);
--	init_waitqueue_head(&phy->roc_wait);
--
- 	mt7615_cap_dbdc_enable(dev);
- 	mphy = mt76_alloc_phy(&dev->mt76, sizeof(*phy), &mt7615_ops);
- 	if (!mphy)
-@@ -394,6 +385,15 @@ int mt7615_register_ext_phy(struct mt7615_dev *dev)
- 	mphy->antenna_mask = BIT(hweight8(phy->chainmask)) - 1;
- 	mt7615_init_wiphy(mphy->hw);
- 
-+	INIT_DELAYED_WORK(&phy->mac_work, mt7615_mac_work);
-+	INIT_DELAYED_WORK(&phy->scan_work, mt7615_scan_work);
-+	skb_queue_head_init(&phy->scan_event_list);
-+
-+	INIT_WORK(&phy->ps_work, mt7615_ps_work);
-+	INIT_WORK(&phy->roc_work, mt7615_roc_work);
-+	timer_setup(&phy->roc_timer, mt7615_roc_timer, 0);
-+	init_waitqueue_head(&phy->roc_wait);
-+
- 	mt7615_mac_set_scs(phy, true);
- 
- 	/*
--- 
-2.26.2
+Right didn't check that.
 
+> I suggest you take it.
+>
+> Acked-by: Wolfram Sang <wsa@kernel.org>
+>
+
+Thanks Wolfram.
+Now queued in v5.7-next/dts64
 
 _______________________________________________
 Linux-mediatek mailing list
