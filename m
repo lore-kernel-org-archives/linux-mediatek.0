@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 28FB9C433DF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:22:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D3253C433E0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:23:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DFBAC2076A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:22:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A2F51206D8
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:23:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Qp+2Ajee";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="rzcLjUSh"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DFBAC2076A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="i8rio7mB";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="R7739GHu"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A2F51206D8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,54 +27,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w1GdD2XUWDixv+IT6N3QMvWpYcruC95gYbDxRSc244s=; b=Qp+2AjeeA+YE+s
-	C/XcoTIIORr3G7lKQ8YXevNZKqeOYrHAjnxEq2hu/XVW5FwD17euBhUkgScKGTpCrfVyJBz3KI3JL
-	BH+M/Mls4vqt7+1fIlB/CQZVou0K4HlILJrZyEeWJJxbypUeRZse2bPQByiRMOVoUjbh4EHy43TjR
-	5Ls85byLCka3ADpiPCF6xR/wvF0Ksyk/qb3259QCiX/jyjyEWRyx3ZgXos7eneSUyDV7jD9DSXxyy
-	HImarz2WVEvpJ4/tk6g4FQrhLIrsOxnjJOoxMqQJKQXQn15gB8PaQarx+PGDPhOguUOh5fUZJrPDE
-	WKOO6HLgBf5Cflx0TCrw==;
+	List-Owner; bh=AETOML6PZ7JCMpv43Ww0OY2BrK0EJHVLtlPlbAvPHXI=; b=i8rio7mBQ3t3ta
+	+iLLKujEWrfdl43aJPgnCEHnkcHcTV2NYHalQy7+WSOJHM5Rjuf2rlqg5xw5CbN8XegAzIO1qUnyJ
+	aMaS5WKHhkqmbsgyebYcErUQKk7raGbUv/QthAHWzOAy8l7M6f2cZ7k8MlhSCvCoUo/cOzpGtnAh+
+	p4922KKmzGc6iCdB3TNw1QXGOuEOnD/e8rwVHWBn/DcIdfDkzRtQzd+4g310GiKG1CWlmOJ+i95g2
+	TIfypkuGr4IE1jvszy2oQiwJWfLEhUinBtGXDwlpw9w4SFojgLAjNbMHMEB48kQWNUImd8RXNdA6S
+	YdMCSWky7vzGSLvGcuhw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZzZs-0003mw-JL; Sat, 16 May 2020 16:22:20 +0000
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241])
+	id 1jZzaM-00048j-Dr; Sat, 16 May 2020 16:22:50 +0000
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZzZp-0003mE-MF; Sat, 16 May 2020 16:22:18 +0000
-Received: by mail-oi1-x241.google.com with SMTP id j145so5171599oib.5;
- Sat, 16 May 2020 09:22:17 -0700 (PDT)
+ id 1jZzaI-00047l-NU; Sat, 16 May 2020 16:22:47 +0000
+Received: by mail-ot1-x344.google.com with SMTP id a68so4472722otb.10;
+ Sat, 16 May 2020 09:22:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=I7e2w2QTpdl7eacHOOJOMgvm6z0ZpEJherbyeCCSlrk=;
- b=rzcLjUShbk9Z/0KcAF1n+Kj/wHo1g8PHLNe/KSm5AkQzgk3+AmQCuIyDG+mvSzzQlq
- 2ENx39tNckwm48doNBwt4CJUfwL6pbDDJNI71+0IaEQlxHwm0ERPSRE4TmRJ5jUZuE/z
- ig3jY2A+BhhVU0aO38t2DrF4JsCEZ/CogCtobFr/zyi14zM15pONx7Wv68ILjWsOKCu0
- zP4GHkOEbU9m2PQNDQDpM0PssDrYdntPmcWUc15YfzyF8AgHpWSlHcLDjI9e2D3Q+5lf
- JzQ7dPJYKPEH34IJqS5a/3dLzFb4ul90HG3vXKC/JT3w8TZQURKfv2e4kqt26cBJEQMc
- Xcrg==
+ bh=VFty43rXbiMZvIA7+14gX7fJkEO3wJPCGcshfLQ7hNo=;
+ b=R7739GHu1nimbtD2XZWhDqZfEVhZwdfrUKZYTvPM9xmTpp6sldojfjx/bFlzwlObJm
+ eRCcD0suEHzXYGFtFxtpDbBRG5UtDZtzf/GU4U3ggisTLORZr2+cd7EoMRBaMxnmX7fZ
+ 14DeqVk3aaYHaAqxnIfcCg9mqs8g8a15rVAk27QG0VQ30k27I8CqjA6jvX6+QCInISqC
+ Cad/Lcu8Jjuur41kHa53TdIoy1zPR66oEcQB3k8CPbl5n3jqJPZa/ivn9uzdpnu3gS46
+ s6SWCVedyccqOP9FulbMldYRtIu282OyE8jQULhEpfpRlhuQdLanhVC/qiJobwdpEvyH
+ U0uA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=I7e2w2QTpdl7eacHOOJOMgvm6z0ZpEJherbyeCCSlrk=;
- b=KNAoOh5j8IBTzbJYRw/7K12F7HM+0a8ze+v1u+DswEjJ9hrJCtVcCM1OR81OO9EUYn
- FSWLEYGDuTBEiPlBP5kThQN7jB1c+a7B7HPdD+f5kWMJBeBzGw4BgPfmo/RuMrlu4Kl/
- /FlfnhjIiPv4BQxY7NXR+BpflDsjJcrkHdacs7PIP+gCoLPQpQ6kineOH9aInKRTe0X2
- sNoFLx1TJEmB3yWrFRBBVULvYlLGigEmqUK9d73t4jx74nzGaBW4k3hrBR94Q0AUFkeN
- TEeNJdHre5SF6DyNgRMms4hpl91hzgrd/dPspRGaO0WZLTArWPr8qrFmkMonx8LirTFJ
- dLuQ==
-X-Gm-Message-State: AOAM531MnEQD3I7RVlhbdf04PDXQVdPc2jERD9hSAgGbRAlcaI8HHaVB
- 4G+XpMekJUz/SiKcHhG2uTw=
-X-Google-Smtp-Source: ABdhPJzZ+ao+xaakGDM01pzPbq+6EV62i9TbE3s7jQ/78XtzoGWnzEvcs6bRD8JK4dAzuQE/Lsjxnw==
-X-Received: by 2002:aca:5e0b:: with SMTP id s11mr5456099oib.160.1589646136660; 
- Sat, 16 May 2020 09:22:16 -0700 (PDT)
+ bh=VFty43rXbiMZvIA7+14gX7fJkEO3wJPCGcshfLQ7hNo=;
+ b=c9sRV7PU0+gI4rvXWGLW1qRhUUoGXicId6eXaigoLvrDdWoC2BDSlDbCo8buYAWVVL
+ exAyGOzvFQy7hTdP8OkECwNGCPdfVjjmDwfOVtAaUZh6FPAK5g7iPnUSVTc6Z/hcS2Ic
+ 0JVL3yjJik305TIZmtaGIdW+vy0a4jG2QTAAOIOULVQhJY8vCj7l1icTTKIkNmHXmu09
+ LfGUei21ACaVHDP9VDSnOKPdG60QPj/tyNpjjLUH+kmXmfpy2/JISsAz5SP/azVuKL7H
+ oYgoQmN/jh4/zq9+1LMfpRuqf4wBn9M9XKcLJwJAnwVUroijcdKc4wnp84y+35IJToRc
+ FPvg==
+X-Gm-Message-State: AOAM533ygFZB1Dh1xH6f/rHhKgHo7PC7nfQXqahrdelrUBUxOOHlLqAF
+ WM+NWAyb2qzTipRX3BMBKCQ3hfsb
+X-Google-Smtp-Source: ABdhPJzeNelxpEdvx3UqS8cZ+G9E0wQD0NZCWPcSo3f+IlPHZ2sqMdTyKs/WECrJR7wd0o4htIHTNw==
+X-Received: by 2002:a9d:2f45:: with SMTP id h63mr5341309otb.300.1589646165703; 
+ Sat, 16 May 2020 09:22:45 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id 21sm1591811oiy.11.2020.05.16.09.22.13
+ by smtp.gmail.com with ESMTPSA id u45sm1537489ooi.41.2020.05.16.09.22.43
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 16 May 2020 09:22:15 -0700 (PDT)
-Subject: Re: [PATCH 1/2] arm: dts: mt7623: add Mali-450 device node
+ Sat, 16 May 2020 09:22:45 -0700 (PDT)
+Subject: Re: [PATCH 2/2] dt-bindings: gpu: mali-utgard: add mediatek,
+ mt7623-mali compatible
 To: ryder.lee@kernel.org, Rob Herring <robh+dt@kernel.org>
 References: <af7b5a2e00eb3a4b6262807c378e43afd5f74779.1563867856.git.ryder.lee@mediatek.com>
+ <efeadefe3895bcadf1d2e9847b82206dd8c7ec35.1563867856.git.ryder.lee@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -150,16 +152,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <fddec6eb-92b4-dace-4148-796e1caea383@gmail.com>
-Date: Sat, 16 May 2020 18:22:12 +0200
+Message-ID: <1c9fc937-16a0-8d9b-3720-c32228005a5b@gmail.com>
+Date: Sat, 16 May 2020 18:22:42 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <af7b5a2e00eb3a4b6262807c378e43afd5f74779.1563867856.git.ryder.lee@mediatek.com>
+In-Reply-To: <efeadefe3895bcadf1d2e9847b82206dd8c7ec35.1563867856.git.ryder.lee@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200516_092217_748432_2ED00B0C 
-X-CRM114-Status: GOOD (  17.57  )
+X-CRM114-CacheID: sfid-20200516_092246_765605_BC3982C5 
+X-CRM114-Status: GOOD (  18.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -182,65 +184,47 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 24/07/2019 11:00, ryder.lee@kernel.org wrote:
-> From: Ryder Lee <ryder.lee@mediatek.com>
+On 24/07/2019 11:01, ryder.lee@kernel.org wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Add a node for Mali-450.
+> The MediaTek MT7623 SoC contains a Mali-450, so add a compatible for it
+> and define its own vendor-specific properties.
 > 
 > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
 
-Applied to v5.7-next/dts32
+I ported the changes to the new yaml file and applied them to v5.7-next/dts32
+
+Thanks
 
 > ---
-> kmscube as well as X11 EGL tests work fine (use Lima driver).
-> ---
->  arch/arm/boot/dts/mt7623.dtsi | 25 +++++++++++++++++++++++++
->  1 file changed, 25 insertions(+)
+>  Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt | 5 +++++
+>  1 file changed, 5 insertions(+)
 > 
-> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-> index a79f0b6c3429..6a9c5afb9a36 100644
-> --- a/arch/arm/boot/dts/mt7623.dtsi
-> +++ b/arch/arm/boot/dts/mt7623.dtsi
-> @@ -3,6 +3,7 @@
->   * Copyright (c) 2017-2018 MediaTek Inc.
->   * Author: John Crispin <john@phrozen.org>
->   *	   Sean Wang <sean.wang@mediatek.com>
-> + *	   Ryder Lee <ryder.lee@mediatek.com>
->   *
->   */
+> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt b/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
+> index ae63f09fda7d..73021e2dda25 100644
+> --- a/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
+> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
+> @@ -17,6 +17,7 @@ Required properties:
+>        + amlogic,meson8b-mali
+>        + amlogic,meson-gxbb-mali
+>        + amlogic,meson-gxl-mali
+> +      + mediatek,mt7623-mali
+>        + rockchip,rk3036-mali
+>        + rockchip,rk3066-mali
+>        + rockchip,rk3188-mali
+> @@ -88,6 +89,10 @@ to specify one more vendor-specific compatible, among:
+>      Required properties:
+>        * resets: phandle to the reset line for the GPU
 >  
-> @@ -733,6 +734,30 @@
->  		#reset-cells = <1>;
->  	};
->  
-> +	mali: gpu@13040000 {
-> +		compatible = "mediatek,mt7623-mali", "arm,mali-450";
-> +		reg = <0 0x13040000 0 0x30000>;
-> +		interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 171 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 172 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 173 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 174 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 175 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 176 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 177 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 178 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 179 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 180 IRQ_TYPE_LEVEL_LOW>;
-> +		interrupt-names = "gp", "gpmmu", "pp0", "ppmmu0", "pp1",
-> +				  "ppmmu1", "pp2", "ppmmu2", "pp3", "ppmmu3",
-> +				  "pp";
-> +		clocks = <&topckgen CLK_TOP_MMPLL>,
-> +			 <&g3dsys CLK_G3DSYS_CORE>;
-> +		clock-names = "bus", "core";
-> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_MFG>;
-> +		resets = <&g3dsys MT2701_G3DSYS_CORE_RST>;
-> +	};
+> +  - mediatek,mt7623-mali
+> +     Required properties:
+> +      * resets: phandle to the reset line for the GPU
 > +
->  	mmsys: syscon@14000000 {
->  		compatible = "mediatek,mt7623-mmsys",
->  			     "mediatek,mt2701-mmsys",
+>    - Rockchip variants:
+>      Required properties:
+>        * resets: phandle to the reset line for the GPU
 > 
 
 _______________________________________________
