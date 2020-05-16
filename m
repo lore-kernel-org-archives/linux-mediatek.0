@@ -8,75 +8,74 @@ X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F731C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:37:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B5FF5C433E0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:48:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4D2052053B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:37:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 74B78206D4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:48:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ASYlJwfQ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="KpxTj09v"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4D2052053B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mHVLiCUH";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="nBLkylU4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 74B78206D4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Cc:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=VM+erDhK6U7kFcOGIhkkUk+C1rQnv3poh0+j4pkL7go=; b=ASYlJwfQ06l6ntub0cboCd3DFL
-	sbr5b3ajOG0+60GGM7dBwL3E3nLPA98uLxQGrVOr0J+vzOcwMA/nQAtAtTrMxAwGNTbVUIQO5cPNr
-	WszeW2k/oVaIeFbMGb8Vp5hZCoLe5RHscQeilrRNXZKW6F7WAtliCzOW39yE1uGgUWbnKceW2WYL6
-	gBzmnuEAHFAiDLCcyfYjuMzOausPQQTgu45gx4noksq1D6+6ghT9kp3OtSxOaHtxJCwqczzzeUd7/
-	/Hn4lSfjLNTeZi8VTrLpFl723d4/sD8UTZBiUpk+gEFVgZ+JszWu3X2QirSORSukc3p/QrePUYyG5
-	qFR3EfwA==;
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QmhThUu/lUKuGdxobsMNUaGuLA16ttm4qof0jSRm6B8=; b=mHVLiCUHpp/Vzq
+	+70oyqNNZ2t18rdJ49JLZ0nBxgUfLlnrbidVg8UWrNW0kQIqB1QD6/o+lUTkMO29Jda0hJ/kRp3nk
+	FKrG6oDWRm58Brzlw6Pq/9NA1YHchu5NRzKZWHOX+KbhxabFrkQ0dvdGDORMZkL3L5vGAGTMQMTDa
+	xf6fJ9Qs2T2x9hnPXnRIZXOEZegB9DpLUi5fEfwpMQSgrKM5jnD5bErFCicSnx77a06AM0HOg+NRi
+	vpy9iQF4rASDlxc7HlsDa9kGxNrqeVgcOcXrgNOGecLLs5DFlAlOrRVtuWcNoPUc2yLN4A+0DeQ6K
+	f4bAJKSDw38Jq/sbkQig==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZzo8-0004iL-Ui; Sat, 16 May 2020 16:37:04 +0000
+	id 1jZzyp-0002wW-Ds; Sat, 16 May 2020 16:48:07 +0000
 Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZzo6-0004hq-DE
- for linux-mediatek@lists.infradead.org; Sat, 16 May 2020 16:37:03 +0000
-Received: by mail-wr1-x442.google.com with SMTP id k13so4849534wrx.3
- for <linux-mediatek@lists.infradead.org>; Sat, 16 May 2020 09:37:01 -0700 (PDT)
+ id 1jZzym-0002vx-I6
+ for linux-mediatek@lists.infradead.org; Sat, 16 May 2020 16:48:06 +0000
+Received: by mail-wr1-x442.google.com with SMTP id w7so6909433wre.13
+ for <linux-mediatek@lists.infradead.org>; Sat, 16 May 2020 09:48:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:references:from:autocrypt:message-id:date:user-agent
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=qr86PqpzJOSPRiNAHUZPjNWARi0vclvlExQ7Q7d7zI0=;
- b=KpxTj09voFpRgmjx2RLMiRIhuPRgAakatGjr3VHycct4gfAu8E1yGejrA06c1qpG7A
- lXPFkirLGR6xy7HlG1KW5fRAkGdd9Uub3zs0qyVuPkDtSdsuO4xuykf2Gzmte/hcwEzk
- m0yGvUQr67/Spqp9+ZmHX9BE21qtMoWw2zZYLi4jX5Uw/SNP5FygUuGute5SQAq4PM1J
- 6mDNG4O+gdadzd4WhugBGpBPmHkiqyL4PWTvmSBE6yBabqasWeZTNlb9mOcHihUw4Jwk
- VGwhxCSQ5tNOcKqKSr90D2uCCQVPU+9NibTPMhFYoa3LJSnSuzd5TNvllV+fXiZxbPx+
- caoA==
+ bh=vyXaylWwp5mEFmSN189+QjFX88zUbmb9Ujp8cd68l5Y=;
+ b=nBLkylU4acI+q/wN6bpa7cEmYDgalK/iVBl7NqvN3WZOF2uS6TaFR838ZTY6a7ssBj
+ 79+QmbGwUKgboTNXZzwp6rRj42QW82yjO15v+iRI1mxl9xTHs+hzUDQeZTm9v5FCS6CS
+ hLEnpjzy/aamfj0kYTvNF4NNbL+awQQmf4IbWnTmXK4pRR6rPcfaqs/Qoi96PFBWBGZk
+ z/i+Xra75yKtBmGlVCQIIppbrJ67oJtZREi6Cl6SYE1DQELdM9/gDxCLWg2uvg9eylnn
+ 5iCXeoRKrdlAAzwe9fFGtcOIhAjWEhqXIt5443FT4XtFj51VZBpokNzN2Rn8lJId35sO
+ +Qqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:autocrypt:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=qr86PqpzJOSPRiNAHUZPjNWARi0vclvlExQ7Q7d7zI0=;
- b=NZQa5siZrLMJzfmNrG1CTO6T8bu8GvPZerAcgrMkQZvZTmsMBjUgreT4skyeZNAZ8S
- VT2d5rjRPofmLDEJF/TNeOqulBVBkbl4FJG/1LTYWF0XZgs53YjdpWDpOctT83aO7Jwj
- 3/770IC617B36dQ64R9oxawmr1w6Ur3xIntVDV7+w8U0eBTsWeLNWp1SFaGKIQomrCW+
- LBzjNkejF3kSxHBTBz2pJkUMgktLbGKTRxbafL1CSZoOLrVsG9ikFOVCSTlyTLXFv8Ml
- zj3kjUvUzGCjvbahu78J/w0XVgvX7y1iO7ytvewhV59OPywmrfGtbUbD7/mh3GGOAFm5
- w4ow==
-X-Gm-Message-State: AOAM530fpBqKdmnEqzNqP2Uo5mP3koNOtOx+2duh54xzvqnxrxkgkIij
- RYWdBIywS/WgYpOEcfHRcT0EPvT1
-X-Google-Smtp-Source: ABdhPJxvrHPV4Parc3We7FKfibX2YARtCr2tN6RHm6s20rDiOW6BQL71W2WDjjSSPEpxm8p73pQHWw==
-X-Received: by 2002:adf:fdd0:: with SMTP id i16mr10311595wrs.389.1589647020434; 
- Sat, 16 May 2020 09:37:00 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=vyXaylWwp5mEFmSN189+QjFX88zUbmb9Ujp8cd68l5Y=;
+ b=Ho1OGY3xW/FKMcbporXcB55BjUqSG5m9nmiFirAjPQbfLVGZ7ecipn+xgAbrUrhEkb
+ F4gzFb6LGsfxRfHLfrgaz4NapJDyVx2jADetRrj9n1+MbhUu0t0cCtUygUcU2NVmm0on
+ nHjka6lWIqeFCmtBav1VYcSi/lYnN7ScSJ7NDCFvnltCBahBlfVVtU9tM/PHI0iCNdR9
+ 3UQsEgPItlOtwLTgQwwYH1Apj8xR6mWx8x6EF+/iN51T76LsX18yiUfS+XQo0smPaO50
+ a5el8vHeJAhvwRTaQijx8mF148gAJNpeKqjM2HHH8IZMwG8C+4DxlOCfJvNyJD6J1S9G
+ rkbQ==
+X-Gm-Message-State: AOAM531acw7qV5pHjKT5Sq/qeUo8rt2UyUWChNGBSev5sK8vIv6iJz+s
+ Xsd7K/bQ1Z3ueR/4hTQpK5wqdIRb
+X-Google-Smtp-Source: ABdhPJxAHkB5NVhyTws34iIDX641b527nze1ZVPLU0bCTaOESNg+C3+wcFRaJKG4FlRmaoWoT46b4A==
+X-Received: by 2002:adf:a1cb:: with SMTP id v11mr11214418wrv.39.1589647682657; 
+ Sat, 16 May 2020 09:48:02 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id o15sm7492584wrw.65.2020.05.16.09.36.59
+ by smtp.gmail.com with ESMTPSA id x6sm8202288wrv.57.2020.05.16.09.48.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 16 May 2020 09:36:59 -0700 (PDT)
-Subject: Re: [PATCH] arm64: dts: mt8173: Add capacity-dmips-mhz attributes
-To: Ulrich Hecht <uli@fpond.eu>, linux-mediatek@lists.infradead.org
-References: <1563529816-3992-1-git-send-email-uli@fpond.eu>
+ Sat, 16 May 2020 09:48:02 -0700 (PDT)
+Subject: Re: [PATCH] arm64: dts: add audio node
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>, robh+dt@kernel.org
+References: <1559360354-22974-1-git-send-email-jiaxin.yu@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -152,16 +151,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <16951de1-5b38-7284-c5ac-022c5cb49439@gmail.com>
-Date: Sat, 16 May 2020 18:36:58 +0200
+Message-ID: <9720d589-4131-dc3e-0d7d-4751f136ca77@gmail.com>
+Date: Sat, 16 May 2020 18:48:00 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <1563529816-3992-1-git-send-email-uli@fpond.eu>
+In-Reply-To: <1559360354-22974-1-git-send-email-jiaxin.yu@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200516_093702_449891_65243754 
-X-CRM114-Status: GOOD (  13.29  )
+X-CRM114-CacheID: sfid-20200516_094804_600465_B95E6391 
+X-CRM114-Status: GOOD (  16.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -173,6 +172,8 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: erin.lo@mediatek.com, eddie.huang@mediatek.com,
+ linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -180,55 +181,138 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 19/07/2019 11:50, Ulrich Hecht wrote:
-> Dhrystone benchmark on Acer Chromebook R13 CB5-312T:
-> A72: 15698587 dps @ 1807 MHz
-> A53:  7598784 dps @ 1703 MHz
+On 01/06/2019 05:39, Jiaxin Yu wrote:
+> Add audio note for MT8183.
 > 
-> Signed-off-by: Ulrich Hecht <uli@fpond.eu>
 
-Applied to v5.7-next/dts64
+Please extend the commit message and the subject line. Subject line should
+include at least mt8183.
 
+
+> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
 > ---
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 4 ++++
->  1 file changed, 4 insertions(+)
+> Hi,
+> 	This patch is based on 5.2-rc1 and these patches:
+> 	https://patchwork.kernel.org/patch/10962375/
+> 	https://patchwork.kernel.org/patch/10858941/
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index 15f1842..0b590fa 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -161,6 +161,7 @@
->  				 <&apmixedsys CLK_APMIXED_MAINPLL>;
->  			clock-names = "cpu", "intermediate";
->  			operating-points-v2 = <&cluster0_opp>;
-> +			capacity-dmips-mhz = <526>;
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 93 +++++++++++++++++++++++++++++++-
+>  1 file changed, 91 insertions(+), 2 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 75c4881..b48194f 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -298,11 +298,100 @@
+>  			clock-names = "baud", "bus";
+>  			status = "disabled";
+>  		};
+> -
+> -		audiosys: syscon@11220000 {
+> +		audiosys: audiosys@11220000 {
+
+Having a look at the binding descritpion it should be "clock-controller".
+
+Regards,
+Matthias
+
+>  			compatible = "mediatek,mt8183-audiosys", "syscon";
+>  			reg = <0 0x11220000 0 0x1000>;
+>  			#clock-cells = <1>;
+> +			afe: mt8183-afe-pcm {
+> +				compatible = "mediatek,mt8183-audio";
+> +				interrupts = <GIC_SPI 161 IRQ_TYPE_LEVEL_LOW>;
+> +				power-domains =
+> +					<&scpsys MT8183_POWER_DOMAIN_AUDIO>;
+> +				clocks = <&audiosys CLK_AUDIO_AFE>,
+> +					 <&audiosys CLK_AUDIO_DAC>,
+> +					 <&audiosys CLK_AUDIO_DAC_PREDIS>,
+> +					 <&audiosys CLK_AUDIO_ADC>,
+> +					 <&audiosys CLK_AUDIO_PDN_ADDA6_ADC>,
+> +					 <&audiosys CLK_AUDIO_22M>,
+> +					 <&audiosys CLK_AUDIO_24M>,
+> +					 <&audiosys CLK_AUDIO_APLL_TUNER>,
+> +					 <&audiosys CLK_AUDIO_APLL2_TUNER>,
+> +					 <&audiosys CLK_AUDIO_I2S1>,
+> +					 <&audiosys CLK_AUDIO_I2S2>,
+> +					 <&audiosys CLK_AUDIO_I2S3>,
+> +					 <&audiosys CLK_AUDIO_I2S4>,
+> +					 <&audiosys CLK_AUDIO_TDM>,
+> +					 <&audiosys CLK_AUDIO_TML>,
+> +					 <&infracfg CLK_INFRA_AUDIO>,
+> +					 <&infracfg CLK_INFRA_AUDIO_26M_BCLK>,
+> +					 <&topckgen CLK_TOP_MUX_AUDIO>,
+> +					 <&topckgen CLK_TOP_MUX_AUD_INTBUS>,
+> +					 <&topckgen CLK_TOP_SYSPLL_D2_D4>,
+> +					 <&topckgen CLK_TOP_MUX_AUD_1>,
+> +					 <&topckgen CLK_TOP_APLL1_CK>,
+> +					 <&topckgen CLK_TOP_MUX_AUD_2>,
+> +					 <&topckgen CLK_TOP_APLL2_CK>,
+> +					 <&topckgen CLK_TOP_MUX_AUD_ENG1>,
+> +					 <&topckgen CLK_TOP_APLL1_D8>,
+> +					 <&topckgen CLK_TOP_MUX_AUD_ENG2>,
+> +					 <&topckgen CLK_TOP_APLL2_D8>,
+> +					 <&topckgen CLK_TOP_MUX_APLL_I2S0>,
+> +					 <&topckgen CLK_TOP_MUX_APLL_I2S1>,
+> +					 <&topckgen CLK_TOP_MUX_APLL_I2S2>,
+> +					 <&topckgen CLK_TOP_MUX_APLL_I2S3>,
+> +					 <&topckgen CLK_TOP_MUX_APLL_I2S4>,
+> +					 <&topckgen CLK_TOP_MUX_APLL_I2S5>,
+> +					 <&topckgen CLK_TOP_APLL12_DIV0>,
+> +					 <&topckgen CLK_TOP_APLL12_DIV1>,
+> +					 <&topckgen CLK_TOP_APLL12_DIV2>,
+> +					 <&topckgen CLK_TOP_APLL12_DIV3>,
+> +					 <&topckgen CLK_TOP_APLL12_DIV4>,
+> +					 <&topckgen CLK_TOP_APLL12_DIVB>,
+> +					 /*<&topckgen CLK_TOP_APLL12_DIV5>,*/
+> +					 <&clk26m>;
+> +				clock-names = "aud_afe_clk",
+> +						  "aud_dac_clk",
+> +						  "aud_dac_predis_clk",
+> +						  "aud_adc_clk",
+> +						  "aud_adc_adda6_clk",
+> +						  "aud_apll22m_clk",
+> +						  "aud_apll24m_clk",
+> +						  "aud_apll1_tuner_clk",
+> +						  "aud_apll2_tuner_clk",
+> +						  "aud_i2s1_bclk_sw",
+> +						  "aud_i2s2_bclk_sw",
+> +						  "aud_i2s3_bclk_sw",
+> +						  "aud_i2s4_bclk_sw",
+> +						  "aud_tdm_clk",
+> +						  "aud_tml_clk",
+> +						  "aud_infra_clk",
+> +						  "mtkaif_26m_clk",
+> +						  "top_mux_audio",
+> +						  "top_mux_aud_intbus",
+> +						  "top_syspll_d2_d4",
+> +						  "top_mux_aud_1",
+> +						  "top_apll1_ck",
+> +						  "top_mux_aud_2",
+> +						  "top_apll2_ck",
+> +						  "top_mux_aud_eng1",
+> +						  "top_apll1_d8",
+> +						  "top_mux_aud_eng2",
+> +						  "top_apll2_d8",
+> +						  "top_i2s0_m_sel",
+> +						  "top_i2s1_m_sel",
+> +						  "top_i2s2_m_sel",
+> +						  "top_i2s3_m_sel",
+> +						  "top_i2s4_m_sel",
+> +						  "top_i2s5_m_sel",
+> +						  "top_apll12_div0",
+> +						  "top_apll12_div1",
+> +						  "top_apll12_div2",
+> +						  "top_apll12_div3",
+> +						  "top_apll12_div4",
+> +						  "top_apll12_divb",
+> +						  /*"top_apll12_div5",*/
+> +						  "top_clk26m_clk";
+> +			};
 >  		};
 >  
->  		cpu1: cpu@1 {
-> @@ -174,6 +175,7 @@
->  				 <&apmixedsys CLK_APMIXED_MAINPLL>;
->  			clock-names = "cpu", "intermediate";
->  			operating-points-v2 = <&cluster0_opp>;
-> +			capacity-dmips-mhz = <526>;
->  		};
->  
->  		cpu2: cpu@100 {
-> @@ -187,6 +189,7 @@
->  				 <&apmixedsys CLK_APMIXED_MAINPLL>;
->  			clock-names = "cpu", "intermediate";
->  			operating-points-v2 = <&cluster1_opp>;
-> +			capacity-dmips-mhz = <1024>;
->  		};
->  
->  		cpu3: cpu@101 {
-> @@ -200,6 +203,7 @@
->  				 <&apmixedsys CLK_APMIXED_MAINPLL>;
->  			clock-names = "cpu", "intermediate";
->  			operating-points-v2 = <&cluster1_opp>;
-> +			capacity-dmips-mhz = <1024>;
->  		};
->  
->  		idle-states {
+>  		mfgcfg: syscon@13000000 {
 > 
 
 _______________________________________________
