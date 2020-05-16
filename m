@@ -8,75 +8,75 @@ X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D3253C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:23:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F731C433E0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:37:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A2F51206D8
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:23:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4D2052053B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:37:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="i8rio7mB";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="R7739GHu"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A2F51206D8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ASYlJwfQ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="KpxTj09v"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4D2052053B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AETOML6PZ7JCMpv43Ww0OY2BrK0EJHVLtlPlbAvPHXI=; b=i8rio7mBQ3t3ta
-	+iLLKujEWrfdl43aJPgnCEHnkcHcTV2NYHalQy7+WSOJHM5Rjuf2rlqg5xw5CbN8XegAzIO1qUnyJ
-	aMaS5WKHhkqmbsgyebYcErUQKk7raGbUv/QthAHWzOAy8l7M6f2cZ7k8MlhSCvCoUo/cOzpGtnAh+
-	p4922KKmzGc6iCdB3TNw1QXGOuEOnD/e8rwVHWBn/DcIdfDkzRtQzd+4g310GiKG1CWlmOJ+i95g2
-	TIfypkuGr4IE1jvszy2oQiwJWfLEhUinBtGXDwlpw9w4SFojgLAjNbMHMEB48kQWNUImd8RXNdA6S
-	YdMCSWky7vzGSLvGcuhw==;
+	Message-ID:From:References:To:Subject:Reply-To:Cc:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=VM+erDhK6U7kFcOGIhkkUk+C1rQnv3poh0+j4pkL7go=; b=ASYlJwfQ06l6ntub0cboCd3DFL
+	sbr5b3ajOG0+60GGM7dBwL3E3nLPA98uLxQGrVOr0J+vzOcwMA/nQAtAtTrMxAwGNTbVUIQO5cPNr
+	WszeW2k/oVaIeFbMGb8Vp5hZCoLe5RHscQeilrRNXZKW6F7WAtliCzOW39yE1uGgUWbnKceW2WYL6
+	gBzmnuEAHFAiDLCcyfYjuMzOausPQQTgu45gx4noksq1D6+6ghT9kp3OtSxOaHtxJCwqczzzeUd7/
+	/Hn4lSfjLNTeZi8VTrLpFl723d4/sD8UTZBiUpk+gEFVgZ+JszWu3X2QirSORSukc3p/QrePUYyG5
+	qFR3EfwA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZzaM-00048j-Dr; Sat, 16 May 2020 16:22:50 +0000
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
+	id 1jZzo8-0004iL-Ui; Sat, 16 May 2020 16:37:04 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZzaI-00047l-NU; Sat, 16 May 2020 16:22:47 +0000
-Received: by mail-ot1-x344.google.com with SMTP id a68so4472722otb.10;
- Sat, 16 May 2020 09:22:46 -0700 (PDT)
+ id 1jZzo6-0004hq-DE
+ for linux-mediatek@lists.infradead.org; Sat, 16 May 2020 16:37:03 +0000
+Received: by mail-wr1-x442.google.com with SMTP id k13so4849534wrx.3
+ for <linux-mediatek@lists.infradead.org>; Sat, 16 May 2020 09:37:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ h=subject:to:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=VFty43rXbiMZvIA7+14gX7fJkEO3wJPCGcshfLQ7hNo=;
- b=R7739GHu1nimbtD2XZWhDqZfEVhZwdfrUKZYTvPM9xmTpp6sldojfjx/bFlzwlObJm
- eRCcD0suEHzXYGFtFxtpDbBRG5UtDZtzf/GU4U3ggisTLORZr2+cd7EoMRBaMxnmX7fZ
- 14DeqVk3aaYHaAqxnIfcCg9mqs8g8a15rVAk27QG0VQ30k27I8CqjA6jvX6+QCInISqC
- Cad/Lcu8Jjuur41kHa53TdIoy1zPR66oEcQB3k8CPbl5n3jqJPZa/ivn9uzdpnu3gS46
- s6SWCVedyccqOP9FulbMldYRtIu282OyE8jQULhEpfpRlhuQdLanhVC/qiJobwdpEvyH
- U0uA==
+ bh=qr86PqpzJOSPRiNAHUZPjNWARi0vclvlExQ7Q7d7zI0=;
+ b=KpxTj09voFpRgmjx2RLMiRIhuPRgAakatGjr3VHycct4gfAu8E1yGejrA06c1qpG7A
+ lXPFkirLGR6xy7HlG1KW5fRAkGdd9Uub3zs0qyVuPkDtSdsuO4xuykf2Gzmte/hcwEzk
+ m0yGvUQr67/Spqp9+ZmHX9BE21qtMoWw2zZYLi4jX5Uw/SNP5FygUuGute5SQAq4PM1J
+ 6mDNG4O+gdadzd4WhugBGpBPmHkiqyL4PWTvmSBE6yBabqasWeZTNlb9mOcHihUw4Jwk
+ VGwhxCSQ5tNOcKqKSr90D2uCCQVPU+9NibTPMhFYoa3LJSnSuzd5TNvllV+fXiZxbPx+
+ caoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=VFty43rXbiMZvIA7+14gX7fJkEO3wJPCGcshfLQ7hNo=;
- b=c9sRV7PU0+gI4rvXWGLW1qRhUUoGXicId6eXaigoLvrDdWoC2BDSlDbCo8buYAWVVL
- exAyGOzvFQy7hTdP8OkECwNGCPdfVjjmDwfOVtAaUZh6FPAK5g7iPnUSVTc6Z/hcS2Ic
- 0JVL3yjJik305TIZmtaGIdW+vy0a4jG2QTAAOIOULVQhJY8vCj7l1icTTKIkNmHXmu09
- LfGUei21ACaVHDP9VDSnOKPdG60QPj/tyNpjjLUH+kmXmfpy2/JISsAz5SP/azVuKL7H
- oYgoQmN/jh4/zq9+1LMfpRuqf4wBn9M9XKcLJwJAnwVUroijcdKc4wnp84y+35IJToRc
- FPvg==
-X-Gm-Message-State: AOAM533ygFZB1Dh1xH6f/rHhKgHo7PC7nfQXqahrdelrUBUxOOHlLqAF
- WM+NWAyb2qzTipRX3BMBKCQ3hfsb
-X-Google-Smtp-Source: ABdhPJzeNelxpEdvx3UqS8cZ+G9E0wQD0NZCWPcSo3f+IlPHZ2sqMdTyKs/WECrJR7wd0o4htIHTNw==
-X-Received: by 2002:a9d:2f45:: with SMTP id h63mr5341309otb.300.1589646165703; 
- Sat, 16 May 2020 09:22:45 -0700 (PDT)
+ h=x-gm-message-state:subject:to:references:from:autocrypt:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=qr86PqpzJOSPRiNAHUZPjNWARi0vclvlExQ7Q7d7zI0=;
+ b=NZQa5siZrLMJzfmNrG1CTO6T8bu8GvPZerAcgrMkQZvZTmsMBjUgreT4skyeZNAZ8S
+ VT2d5rjRPofmLDEJF/TNeOqulBVBkbl4FJG/1LTYWF0XZgs53YjdpWDpOctT83aO7Jwj
+ 3/770IC617B36dQ64R9oxawmr1w6Ur3xIntVDV7+w8U0eBTsWeLNWp1SFaGKIQomrCW+
+ LBzjNkejF3kSxHBTBz2pJkUMgktLbGKTRxbafL1CSZoOLrVsG9ikFOVCSTlyTLXFv8Ml
+ zj3kjUvUzGCjvbahu78J/w0XVgvX7y1iO7ytvewhV59OPywmrfGtbUbD7/mh3GGOAFm5
+ w4ow==
+X-Gm-Message-State: AOAM530fpBqKdmnEqzNqP2Uo5mP3koNOtOx+2duh54xzvqnxrxkgkIij
+ RYWdBIywS/WgYpOEcfHRcT0EPvT1
+X-Google-Smtp-Source: ABdhPJxvrHPV4Parc3We7FKfibX2YARtCr2tN6RHm6s20rDiOW6BQL71W2WDjjSSPEpxm8p73pQHWw==
+X-Received: by 2002:adf:fdd0:: with SMTP id i16mr10311595wrs.389.1589647020434; 
+ Sat, 16 May 2020 09:37:00 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id u45sm1537489ooi.41.2020.05.16.09.22.43
+ by smtp.gmail.com with ESMTPSA id o15sm7492584wrw.65.2020.05.16.09.36.59
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 16 May 2020 09:22:45 -0700 (PDT)
-Subject: Re: [PATCH 2/2] dt-bindings: gpu: mali-utgard: add mediatek,
- mt7623-mali compatible
-To: ryder.lee@kernel.org, Rob Herring <robh+dt@kernel.org>
-References: <af7b5a2e00eb3a4b6262807c378e43afd5f74779.1563867856.git.ryder.lee@mediatek.com>
- <efeadefe3895bcadf1d2e9847b82206dd8c7ec35.1563867856.git.ryder.lee@mediatek.com>
+ Sat, 16 May 2020 09:36:59 -0700 (PDT)
+Subject: Re: [PATCH] arm64: dts: mt8173: Add capacity-dmips-mhz attributes
+To: Ulrich Hecht <uli@fpond.eu>, linux-mediatek@lists.infradead.org
+References: <1563529816-3992-1-git-send-email-uli@fpond.eu>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -152,16 +152,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <1c9fc937-16a0-8d9b-3720-c32228005a5b@gmail.com>
-Date: Sat, 16 May 2020 18:22:42 +0200
+Message-ID: <16951de1-5b38-7284-c5ac-022c5cb49439@gmail.com>
+Date: Sat, 16 May 2020 18:36:58 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <efeadefe3895bcadf1d2e9847b82206dd8c7ec35.1563867856.git.ryder.lee@mediatek.com>
+In-Reply-To: <1563529816-3992-1-git-send-email-uli@fpond.eu>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200516_092246_765605_BC3982C5 
-X-CRM114-Status: GOOD (  18.10  )
+X-CRM114-CacheID: sfid-20200516_093702_449891_65243754 
+X-CRM114-Status: GOOD (  13.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -173,10 +173,6 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Weijie Gao <weijie.gao@mediatek.com>,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -184,47 +180,55 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 24/07/2019 11:01, ryder.lee@kernel.org wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
+On 19/07/2019 11:50, Ulrich Hecht wrote:
+> Dhrystone benchmark on Acer Chromebook R13 CB5-312T:
+> A72: 15698587 dps @ 1807 MHz
+> A53:  7598784 dps @ 1703 MHz
 > 
-> The MediaTek MT7623 SoC contains a Mali-450, so add a compatible for it
-> and define its own vendor-specific properties.
-> 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
+> Signed-off-by: Ulrich Hecht <uli@fpond.eu>
 
-I ported the changes to the new yaml file and applied them to v5.7-next/dts32
-
-Thanks
+Applied to v5.7-next/dts64
 
 > ---
->  Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt | 5 +++++
->  1 file changed, 5 insertions(+)
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 4 ++++
+>  1 file changed, 4 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt b/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
-> index ae63f09fda7d..73021e2dda25 100644
-> --- a/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
-> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
-> @@ -17,6 +17,7 @@ Required properties:
->        + amlogic,meson8b-mali
->        + amlogic,meson-gxbb-mali
->        + amlogic,meson-gxl-mali
-> +      + mediatek,mt7623-mali
->        + rockchip,rk3036-mali
->        + rockchip,rk3066-mali
->        + rockchip,rk3188-mali
-> @@ -88,6 +89,10 @@ to specify one more vendor-specific compatible, among:
->      Required properties:
->        * resets: phandle to the reset line for the GPU
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index 15f1842..0b590fa 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -161,6 +161,7 @@
+>  				 <&apmixedsys CLK_APMIXED_MAINPLL>;
+>  			clock-names = "cpu", "intermediate";
+>  			operating-points-v2 = <&cluster0_opp>;
+> +			capacity-dmips-mhz = <526>;
+>  		};
 >  
-> +  - mediatek,mt7623-mali
-> +     Required properties:
-> +      * resets: phandle to the reset line for the GPU
-> +
->    - Rockchip variants:
->      Required properties:
->        * resets: phandle to the reset line for the GPU
+>  		cpu1: cpu@1 {
+> @@ -174,6 +175,7 @@
+>  				 <&apmixedsys CLK_APMIXED_MAINPLL>;
+>  			clock-names = "cpu", "intermediate";
+>  			operating-points-v2 = <&cluster0_opp>;
+> +			capacity-dmips-mhz = <526>;
+>  		};
+>  
+>  		cpu2: cpu@100 {
+> @@ -187,6 +189,7 @@
+>  				 <&apmixedsys CLK_APMIXED_MAINPLL>;
+>  			clock-names = "cpu", "intermediate";
+>  			operating-points-v2 = <&cluster1_opp>;
+> +			capacity-dmips-mhz = <1024>;
+>  		};
+>  
+>  		cpu3: cpu@101 {
+> @@ -200,6 +203,7 @@
+>  				 <&apmixedsys CLK_APMIXED_MAINPLL>;
+>  			clock-names = "cpu", "intermediate";
+>  			operating-points-v2 = <&cluster1_opp>;
+> +			capacity-dmips-mhz = <1024>;
+>  		};
+>  
+>  		idle-states {
 > 
 
 _______________________________________________
