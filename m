@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C82BEC433DF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 12:51:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 042C8C433E0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 12:51:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 950BA20671
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 12:51:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C7AFE20671
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 12:51:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aRd1Biem";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Wfmkk6YL"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 950BA20671
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rMc8Vjcj";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="SqOx1Fs0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C7AFE20671
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,63 +27,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gdIwtNUxW2QYvga3c0rQC+9t8ojH9UPs9+GBTEldUGU=; b=aRd1BiemV97tEs
-	YNXFgfsodV9JX1rP8dHCP3cJW6sHp2y2Gg4D3Otqc6OkV5BnmxCP/h44BlXiS+mGTeFxy9VmnN0zF
-	yjILt+iH0EdK0jqnOeo2no/ZffvWjP3x3suiEIAiGJHq/5AwQvwim8oXil2X6ONde+JDhgYnBoFNa
-	Kg04oXGdPwrdFnnrkIYtD4ieHN4Gsgn2jxVeBWHDqyqaEfQ5YzSVR+kWroG4FQ//0mZO3KtO5N/uN
-	1P41LdKQJaRPCEWJJu4QfkXQsWy/09sKojekyLbjJX64Mzxx97Cb8HgDb/W2qSGS0A0zrlcyWCzL1
-	O05zvKXSuofv376x8HlQ==;
+	List-Owner; bh=ApsErFAjRgrchTO6zLpIp/CC0rndtEASsUzV4ipIV8I=; b=rMc8Vjcj9ItKHq
+	OXLo8GZgag/1YroE8p7+EDZhBPX0bJoF8PQ7q38LRuNGwLOp9kClICG8FwiaAYkPcPAOg/snRxSQA
+	rLRI6lLiqOILNq+QVYuDeXMYK5izpI52qdGXu2dCU0L9O2cvteZE6LF8bSJeWp9xArvVDxysjrpRj
+	xbVE6cN5wIu8vzXqDJdR4Ps1/VGegNJOtuZguvqbK6BWvrH2u9thenjcsrfRqjdT8ebt3wSqVIKJp
+	Mk/5nsvUcwf8X5TiMT/iXy3MzKh7jr2pIKNXSRX6CVM9edBex5oqCpRwbC4H0TS2TIm4WiN2A8IwR
+	NmjkSb8keAZG9daUMdvA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZwHL-0006Jf-EC; Sat, 16 May 2020 12:50:59 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1jZwHY-0006YK-VN; Sat, 16 May 2020 12:51:12 +0000
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZwGZ-0003B2-L0; Sat, 16 May 2020 12:50:13 +0000
-Received: by mail-pg1-x543.google.com with SMTP id n11so2357944pgl.9;
- Sat, 16 May 2020 05:50:11 -0700 (PDT)
+ id 1jZwGe-0003GE-1E; Sat, 16 May 2020 12:50:17 +0000
+Received: by mail-pl1-x644.google.com with SMTP id k22so2074710pls.10;
+ Sat, 16 May 2020 05:50:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=3Z6dDEgJ8JOKztYXxydgUej7Z//VJ8spR5lsEGk0ThA=;
- b=Wfmkk6YLVQyys3v12FMJyKSckjTTVNq2Ei/+qQ9hyv9vpR/RMpkRz/hBkEe2dapNid
- IVsTNI1hHNfkQLlg1NxoxI1q+Z51znwv+LyW1iO/OOFMr7xFIbVRNI+brXpKPjX5MENB
- ajGEQcanj1mDwOiASbV84kEpQjOwAAWYtEwcYciYO5lXsEnQl++umR+MXOwihDIY/ZPy
- nkXdGJfLwLcoiVY1YMp6m1DpPyYz3WDPDd3kwAfpdjwBaxvLfP5rejq4Se/XSGj21P/c
- 5uHmd2WrY5io8clRne5suBQYEIwgcAK1+r5ZTClo6qiArJfMJSWRlr1rmwwPVMTlYqW+
- WwqQ==
+ bh=Pj+H0XRs7BZqevflwkq03eXzGKUz5DncbQ0n+P/Er7k=;
+ b=SqOx1Fs0PYZCUFSLq4NUzY0q2y7WznWgqRu3dFYQKg0y2ottvIvnL8mVcbedHe+iup
+ bnxY4njYqa6N6zPPJJxUjYLtaWqa7xhOTdBvxy/FyZzOdJGtDaHkDB7d0XQLGpV2O0P0
+ zcCFTK/1eMWxsBJYwit6KmiGTY0+V/+UJJmdQtmngbr7sVU+GCFkYZPiiUuNEroVNlgg
+ 4i1wl/TyUV0dQ9s3bRigv74/tR0siF5T+RGHAzqovmZ0Ss1iYoZML/Gcf9yYZdITEuTn
+ zOfUTo8MpdCkM3jLcevUXNLKURZY1KlpFkS+kjP3n+v8x6CN2DEV9OvFvejrRs7nJeKt
+ 50nQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=3Z6dDEgJ8JOKztYXxydgUej7Z//VJ8spR5lsEGk0ThA=;
- b=d2bMcaLjcaPpIH+1G/7rd73IcfJN0Y1rUSLkpjU1NQfjZnzK8hkV+raea/j1YXzWL+
- 4rMHR+gHwrv2+CduhCRKBeEVls1c/iju5XKCRiuvtmOjbmiKiRqqGaYDxr8hDf03aoPR
- KM/zDnDe0W2LpX77zX1GCCw1GS5PUrI+/q9wkGovx+ust9JnfgdHiwCEuRA25oyyUY3e
- 4+F1YxalnGuoHS0F5fFK5Da2lZLwSSX7FXQRLTpjp042SYwzTtkW9oKrt0aZehrIR34E
- WrOBn/RZmttkWFwy1PqSRKhdsJifkwhINIIwnU2quff3c/YopSiHE5w6rvSXmw04bBKF
- 0oNg==
-X-Gm-Message-State: AOAM532r+3EnrMmkYjZ6C2zPw0hnNChiH1IMyDhbJPkb/0Q/H9iNe7Qj
- CGkELYy3mgn6s0+XjgPLvKg=
-X-Google-Smtp-Source: ABdhPJwTurwJxVNlU96gRcq5LNsYIbq02ALyV5Dcv7PzRcjk9FXAX24fNayH3a4igWL0noCY6Oz53w==
-X-Received: by 2002:a62:e402:: with SMTP id r2mr8634666pfh.300.1589633410908; 
- Sat, 16 May 2020 05:50:10 -0700 (PDT)
+ bh=Pj+H0XRs7BZqevflwkq03eXzGKUz5DncbQ0n+P/Er7k=;
+ b=NkxFURsz3krieBZCIcgtXkOFCxnjMzaCABVoytjjAFcEOB3xfSY/ZRSdJ86/u0rKHT
+ +4DmFel+bCOyn8CRB+xfN1GbpmpiP2BUi9qWKwtzddrROWm5ZPeIn80umOl0BVeaGdhz
+ tP8y4QkLthkhTDGTCVAO9yvJSimjX9rov96PZ6GTgAWyrOlVKgSUKn4UKIi6YmFBRvF1
+ umzEA1NuHdYAqA+QaguwbchwjmWGebAY/os4QPt/ruGhnl8LSUnw3S50T2LYKR6APyi5
+ 1UqDqGoEnV1Hdfc1rh8L1uYaSPGtnmzDyzqdllBlaGu9IoiQdK0vtbzqcTA6Q06eGzQG
+ 1O7w==
+X-Gm-Message-State: AOAM531d6DSBzLKcLPjn8TkoYeLe6skMsQwK4S5yu4pxsXkxzHFqJN79
+ nITWd8tjLFi+q5iX5Ne/B60=
+X-Google-Smtp-Source: ABdhPJyAN5qZYimmiLJsxFBo/5zvTCga+8G7/eOmKCQTEdGPpNyZdtuU/fUbzfII9WcvK1fEqIuA4Q==
+X-Received: by 2002:a17:902:bccc:: with SMTP id
+ o12mr7435028pls.162.1589633415208; 
+ Sat, 16 May 2020 05:50:15 -0700 (PDT)
 Received: from localhost.localdomain (61-228-240-171.dynamic-ip.hinet.net.
  [61.228.240.171])
- by smtp.gmail.com with ESMTPSA id k27sm3768323pgb.30.2020.05.16.05.50.06
+ by smtp.gmail.com with ESMTPSA id k27sm3768323pgb.30.2020.05.16.05.50.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 16 May 2020 05:50:10 -0700 (PDT)
+ Sat, 16 May 2020 05:50:14 -0700 (PDT)
 From: Lecopzer Chen <lecopzer@gmail.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH 2/3] arm64: perf: Support NMI context for perf event ISR
-Date: Sat, 16 May 2020 20:48:56 +0800
-Message-Id: <20200516124857.75004-3-lecopzer@gmail.com>
+Subject: [PATCH 3/3] arm64: Kconfig: Add support for the Perf NMI
+Date: Sat, 16 May 2020 20:48:57 +0800
+Message-Id: <20200516124857.75004-4-lecopzer@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200516124857.75004-1-lecopzer@gmail.com>
 References: <20200516124857.75004-1-lecopzer@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200516_055011_702507_560D08F0 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20200516_055016_145227_DAA9CDC6 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,118 +107,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Perf ISR doesn't support for NMI context, thus add some necessary
-condition-if to handle NMI context:
+This is an extending function for Pseudo NMI that registering
+Perf events interrupts as NMI.
 
-- We should not hold pmu_lock since it may have already been acquired
-before NMI triggered.
-- irq_work should not run at NMI context.
+It's helpful for sampling irq-off context when using perf.
 
 Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
 ---
- arch/arm64/kernel/perf_event.c | 36 +++++++++++++++++++++++++---------
- 1 file changed, 27 insertions(+), 9 deletions(-)
+ arch/arm64/Kconfig | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/arch/arm64/kernel/perf_event.c b/arch/arm64/kernel/perf_event.c
-index 4d7879484cec..94b404509f02 100644
---- a/arch/arm64/kernel/perf_event.c
-+++ b/arch/arm64/kernel/perf_event.c
-@@ -313,6 +313,23 @@ static inline bool armv8pmu_event_is_chained(struct perf_event *event)
- 	       (idx != ARMV8_IDX_CYCLE_COUNTER);
- }
+diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
+index 40fb05d96c60..f89c169771a0 100644
+--- a/arch/arm64/Kconfig
++++ b/arch/arm64/Kconfig
+@@ -1679,6 +1679,16 @@ config ARM64_PSEUDO_NMI
+ 	  If unsure, say N
  
-+/*
-+ * NMI Perf interrupts may be triggered during kernel holding
-+ * same lock.
-+ * Avoid acquiring lock again in NMI context.
-+ */
-+#define armv8pmu_lock(lock, flags)				\
-+	do {							\
-+		if (!in_nmi())					\
-+			raw_spin_lock_irqsave(lock, flags);	\
-+	} while (0)
+ if ARM64_PSEUDO_NMI
++config ARM64_PSEUDO_NMI_PERF
++	bool "Register Perf interrupts as Pseudo NMI"
++	depends on HW_PERF_EVENTS
++	depends on ARM_PMU
++	select HAVE_PERF_EVENTS_NMI
++	help
++	  This registers Perf interrupts to NMI when Pseudo NMI is active.
++	  This option is helpful when you need to debug any context disabled
++	  irq and get more inforamtion.
 +
-+#define armv8pmu_unlock(lock, flags)				\
-+	do {							\
-+		if (!in_nmi())					\
-+			raw_spin_unlock_irqrestore(lock, flags);\
-+	} while (0)
++	  If unsure, say N
 +
- /*
-  * ARMv8 low level PMU access
-  */
-@@ -589,7 +606,7 @@ static void armv8pmu_enable_event(struct perf_event *event)
- 	 * Enable counter and interrupt, and set the counter to count
- 	 * the event that we're interested in.
- 	 */
--	raw_spin_lock_irqsave(&events->pmu_lock, flags);
-+	armv8pmu_lock(&events->pmu_lock, flags);
- 
- 	/*
- 	 * Disable counter
-@@ -611,7 +628,7 @@ static void armv8pmu_enable_event(struct perf_event *event)
- 	 */
- 	armv8pmu_enable_event_counter(event);
- 
--	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
-+	armv8pmu_unlock(&events->pmu_lock, flags);
- }
- 
- static void armv8pmu_disable_event(struct perf_event *event)
-@@ -623,7 +640,7 @@ static void armv8pmu_disable_event(struct perf_event *event)
- 	/*
- 	 * Disable counter and interrupt
- 	 */
--	raw_spin_lock_irqsave(&events->pmu_lock, flags);
-+	armv8pmu_lock(&events->pmu_lock, flags);
- 
- 	/*
- 	 * Disable counter
-@@ -635,7 +652,7 @@ static void armv8pmu_disable_event(struct perf_event *event)
- 	 */
- 	armv8pmu_disable_event_irq(event);
- 
--	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
-+	armv8pmu_unlock(&events->pmu_lock, flags);
- }
- 
- static void armv8pmu_start(struct arm_pmu *cpu_pmu)
-@@ -643,10 +660,10 @@ static void armv8pmu_start(struct arm_pmu *cpu_pmu)
- 	unsigned long flags;
- 	struct pmu_hw_events *events = this_cpu_ptr(cpu_pmu->hw_events);
- 
--	raw_spin_lock_irqsave(&events->pmu_lock, flags);
-+	armv8pmu_lock(&events->pmu_lock, flags);
- 	/* Enable all counters */
- 	armv8pmu_pmcr_write(armv8pmu_pmcr_read() | ARMV8_PMU_PMCR_E);
--	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
-+	armv8pmu_unlock(&events->pmu_lock, flags);
- }
- 
- static void armv8pmu_stop(struct arm_pmu *cpu_pmu)
-@@ -654,10 +671,10 @@ static void armv8pmu_stop(struct arm_pmu *cpu_pmu)
- 	unsigned long flags;
- 	struct pmu_hw_events *events = this_cpu_ptr(cpu_pmu->hw_events);
- 
--	raw_spin_lock_irqsave(&events->pmu_lock, flags);
-+	armv8pmu_lock(&events->pmu_lock, flags);
- 	/* Disable all counters */
- 	armv8pmu_pmcr_write(armv8pmu_pmcr_read() & ~ARMV8_PMU_PMCR_E);
--	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
-+	armv8pmu_unlock(&events->pmu_lock, flags);
- }
- 
- static irqreturn_t armv8pmu_handle_irq(struct arm_pmu *cpu_pmu)
-@@ -722,7 +739,8 @@ static irqreturn_t armv8pmu_handle_irq(struct arm_pmu *cpu_pmu)
- 	 * platforms that can have the PMU interrupts raised as an NMI, this
- 	 * will not work.
- 	 */
--	irq_work_run();
-+	if (!armpmu_support_nmi())
-+		irq_work_run();
- 
- 	return IRQ_HANDLED;
- }
+ config ARM64_DEBUG_PRIORITY_MASKING
+ 	bool "Debug interrupt priority masking"
+ 	help
 -- 
 2.25.1
 
