@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E110C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 18:23:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C9144C433DF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 18:30:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2C6EC206D4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 18:23:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 99B25206D4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 18:30:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EHxvTXbQ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="LuT37uTr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C6EC206D4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="d2XZ5KsI";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="tcS66oXO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 99B25206D4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,59 +27,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/73K7koIaZ0vEx/uHYjF/jKgkQdY/h90fdOnJU1Ohr4=; b=EHxvTXbQ9Q3Q7r
-	7z6iM+34D/yIFACC7C4Pqg5a8+7Sk0xea9nlu9QJwm493rFLMQYOpW/c06LsWUoGkm0kSlxxfnVMz
-	fhAzYKgl6oAxVNGwz2L1d8ml8TEO6heoGnP/xoqZ8+MKBvhyhUFrwSLhHXPRLhQ42YQGT0TXmMHJd
-	s5+KKXvtSivWguBh674AsQNjNMvIU2rdkbi9/CFp6vnqi+fmUa2OSKBTZCZP4bS227C/xyOTBajsc
-	lYHn2mUdjmWBuyexYQHij9/fPO5F7Xch7V1UA5wN1Qu4kf1riH0vS35H3MtJasONlcXVgo4OlyIu4
-	Tfj9Y+sPDB3FpEbLxguA==;
+	List-Owner; bh=EoGT4aS8cSTGF/n2x3eDiAfS0XJITqnYDIu0fEpdQR0=; b=d2XZ5KsIcDdj+u
+	B7C3qUU06F4a0s9I+LZwdjMon6o83cASHb/E/ggJrVmhsjZMFRYAZP/tae2DSaK8QBa8mOMt8/CRO
+	6qrQf2obFmdQogQg/l7pYvI+hcdGFWY1EBPj5g3Eo8/5Te/LvE8Ofxpuj3hVCWu04+3qbJWQPUSB1
+	adjIwX9NFkRFarNqq8YnwNwnHJZVQNjbusSVmDhQv3mfqsvmVSScGTjST3eMPvI5MPHCVZn8Q4ilw
+	4Udwgbl3+LxlljqW0Y0Xla+R5oAgsx2eUA1rikfMu1eUHYH1EvPRXmnjUMdhRqx0xQmqx2Ho9rGYo
+	A+IT63QoFL4c88Kk7JOA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ja1SV-0004KZ-06; Sat, 16 May 2020 18:22:51 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1ja1Zn-00022u-Jf; Sat, 16 May 2020 18:30:23 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ja1SK-0004Aq-LA; Sat, 16 May 2020 18:22:41 +0000
-Received: by mail-wm1-x343.google.com with SMTP id w64so5940483wmg.4;
- Sat, 16 May 2020 11:22:40 -0700 (PDT)
+ id 1ja1Ze-0001uZ-6r; Sat, 16 May 2020 18:30:16 +0000
+Received: by mail-wm1-x344.google.com with SMTP id z4so4181786wmi.2;
+ Sat, 16 May 2020 11:30:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=aUu+nUGLfa9M1mFGSDJvE5s50hzzFRC1h5qpy5bm3h8=;
- b=LuT37uTrvyyowdFfHC8vC4r6kD9SrNO8cpr0FP8XIuuk/GI6xnRph0RF6JbG+t1Qoy
- IfffSlMCglkR9ROuaSPd14ERiNb6qfUXqFAPktHtMdKiYlKWkDtVEFKZx0ifZdPsrFmE
- xYTDl4dOCE01jHxJ7h7T46KqcSapbZwI6n1sYJaG0ZsogocWEUzo3ENiCUzNM5+Bp8IC
- XEOtI6SVyG7UYjB/kN5tOFeuZx/OBA/Pg/8EQREZJgp2KoeNL+bXVPS2JHzjfhk9ZMUP
- bUVzTsES1YfFd964iJ9EociAZmx2nWn7en1z6tBmCw3os4ZFdP0qRdoZuKxY57T33HAO
- 7Gkw==
+ bh=cqBxLLoZWoyJdDWDCVfirdzLlngn3wx7TytonCeZ/z0=;
+ b=tcS66oXOdEJmjNuXWB8MIZdxa4S4PWoAbRz0EvbSV72FvuQlHAs+AemP8rnCKmodNk
+ 8n/Zyy/ynY3F9Y/0+3vpFYtziBM90abUz7n81wLlDq0puklkf51gGhzJEHmk7gmJV29w
+ bpp2Dj+0PZNj2wvFKqJVLFxgqMtDnsbGReSYWnJ72uWIN9/Xb5OO1SxNjGp4hK5jvfWg
+ Nh5zZiB04uJWVsbEKreKtc04vjt81s+6EHs2IDUbkaQHKuHP1XevnjJ5oM90WELSSXSv
+ gPXCqLB0AGpY8MMQUMvFy5cseKacnpWG6u7hiVM3qOBopfECmTsJq4icGTb8i8bcuvKq
+ 7pMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=aUu+nUGLfa9M1mFGSDJvE5s50hzzFRC1h5qpy5bm3h8=;
- b=ftinFrw/y6oGx/FtBGCcosKsJ2a27yly9CVFn+/MMAPguDI2Aj1qUa5klaLAO4PaiR
- 3i9GvRafmQXAGSrgpwh3A4nMxQ0HbVpR7XVkpLljQ7X+ApsepwYElH93OfTGSBvIktZJ
- iGoGuwn1z/VSbBYcuMsEWw6A7zRkrP3WjrWLJTUeQDbb/wpJshJ0QP7DZhlKZy7Wi+Fo
- lZfU9F4zKfGfQQ/QHbZZobAk85OPyIP4dwcvlzHF9A0d8Bq4RWLon+6rx3UXm1q1U4lv
- d5NhAHFLe8Qk72eZ5hcK5WCH95NkweLmiVEvz/n1XLiX4jNsmRJvbOH9C8jKPy05fNYg
- mcAQ==
-X-Gm-Message-State: AOAM531UNnGNxDQuk9VPY9PJ2uLei5YLE1G6vKE89ssaPv5K/ISNjrlr
- xz19XtJQZl/+o14xrBCiloA=
-X-Google-Smtp-Source: ABdhPJxV/ME8iIccvAkIL/NOcm5Bp68DVn+wUFtjP6hxgGYfL4tSuwJsfLk5IAxp08cOjbsrj95dtQ==
-X-Received: by 2002:a1c:1b0d:: with SMTP id b13mr10747668wmb.171.1589653359340; 
- Sat, 16 May 2020 11:22:39 -0700 (PDT)
+ bh=cqBxLLoZWoyJdDWDCVfirdzLlngn3wx7TytonCeZ/z0=;
+ b=ng5WcAwWmjjHS0K9oEJsQkyFP0mJ+QcHHSY5ZUMUbDcGYV91M7UO2/VOYFbg4shc/c
+ LAJ2wCs9KcuBPRYhmdFBDOAOVRSUQjecJX8P4Blhdj5/lqYdc4yrH/ZeNK+mUY3sC6J7
+ W9e1qH69TqecIXqeEWWWnIbkPWhRwQuYDoUyjTxz20pJRhquxl+p7Ne31LCdRrwq7yvD
+ aDg2awuHZuhZtzEIHwsmFu94JiJtf78UX3Zc3XEzCHbjiJdXEEMPNVr1rfBoy2SF7783
+ 1fjW+6NdzSPAeOhOYjbPiT1fgc2WWUYPkmny7iqnLN6iUJm9lahIbekoRqVnIPGor91+
+ IpGw==
+X-Gm-Message-State: AOAM5325yq0GN0bjZRX8QrE/NsKjm/neQ8hTvaGtDWq8z4i2RZqntFvp
+ TYlNe4zcz+q/eSVEEjaUUVrdNB23hy0=
+X-Google-Smtp-Source: ABdhPJzpFNDy6syoM2HkITSsgtsfTZddwcFQwCCE3I6uFweCLvCJfZNF8ibr2fZKW3T9l6m9ARnqiw==
+X-Received: by 2002:a1c:6042:: with SMTP id u63mr10317586wmb.65.1589653812460; 
+ Sat, 16 May 2020 11:30:12 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id x6sm8485780wrv.57.2020.05.16.11.22.37
+ by smtp.gmail.com with ESMTPSA id 94sm9262437wrf.74.2020.05.16.11.30.10
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 16 May 2020 11:22:38 -0700 (PDT)
-Subject: Re: [PATCH v5 10/13] soc: mediatek: cmdq: export finalize function
+ Sat, 16 May 2020 11:30:11 -0700 (PDT)
+Subject: Re: [PATCH v5 12/13] soc: mediatek: cmdq: add clear option in
+ cmdq_pkt_wfe api
 To: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>,
  Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
  Jassi Brar <jassisinghbrar@gmail.com>, Philipp Zabel
  <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
  Daniel Vetter <daniel@ffwll.ch>
 References: <1583664775-19382-1-git-send-email-dennis-yc.hsieh@mediatek.com>
- <1583664775-19382-11-git-send-email-dennis-yc.hsieh@mediatek.com>
+ <1583664775-19382-13-git-send-email-dennis-yc.hsieh@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -155,16 +156,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <5d6b61b2-23c9-647f-fa22-73e779010bd8@gmail.com>
-Date: Sat, 16 May 2020 20:22:37 +0200
+Message-ID: <6029e0eb-70fa-825f-7fd4-f5127384bd8d@gmail.com>
+Date: Sat, 16 May 2020 20:30:10 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <1583664775-19382-11-git-send-email-dennis-yc.hsieh@mediatek.com>
+In-Reply-To: <1583664775-19382-13-git-send-email-dennis-yc.hsieh@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200516_112240_696546_0166CAA4 
-X-CRM114-Status: GOOD (  21.16  )
+X-CRM114-CacheID: sfid-20200516_113014_312662_41D53A39 
+X-CRM114-Status: GOOD (  21.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -189,84 +190,89 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 08/03/2020 11:52, Dennis YC Hsieh wrote:
-> Export finalize function to client which helps append eoc and jump
-> command to pkt. Let client decide call finalize or not.
+> Add clear parameter to let client decide if
+> event should be clear to 0 after GCE receive it.
 > 
 > Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 1 +
->  drivers/soc/mediatek/mtk-cmdq-helper.c  | 7 ++-----
->  include/linux/soc/mediatek/mtk-cmdq.h   | 8 ++++++++
->  3 files changed, 11 insertions(+), 5 deletions(-)
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c  | 2 +-
+>  drivers/soc/mediatek/mtk-cmdq-helper.c   | 5 +++--
+>  include/linux/mailbox/mtk-cmdq-mailbox.h | 3 +--
+>  include/linux/soc/mediatek/mtk-cmdq.h    | 5 +++--
+>  4 files changed, 8 insertions(+), 7 deletions(-)
 > 
 > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> index 0dfcd1787e65..7daaabc26eb1 100644
+> index 7daaabc26eb1..a065b3a412cf 100644
 > --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
 > +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -490,6 +490,7 @@ static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
+> @@ -488,7 +488,7 @@ static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
+>  	if (mtk_crtc->cmdq_client) {
+>  		cmdq_handle = cmdq_pkt_create(mtk_crtc->cmdq_client, PAGE_SIZE);
 >  		cmdq_pkt_clear_event(cmdq_handle, mtk_crtc->cmdq_event);
->  		cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event);
+> -		cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event);
+> +		cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event, false);
 >  		mtk_crtc_ddp_config(crtc, cmdq_handle);
-> +		cmdq_pkt_finalize(cmdq_handle);
+>  		cmdq_pkt_finalize(cmdq_handle);
 >  		cmdq_pkt_flush_async(cmdq_handle, ddp_cmdq_cb, cmdq_handle);
->  	}
->  #endif
 
-This should be a independent patch.
-Other then that patch looks good.
+This should be an independent patch
 
 > diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index a9ebbabb7439..59bc1164b411 100644
+> index bb5be20fc70a..ec5637d43254 100644
 > --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
 > +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -372,7 +372,7 @@ int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value)
+> @@ -296,15 +296,16 @@ int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
 >  }
->  EXPORT_SYMBOL(cmdq_pkt_assign);
+>  EXPORT_SYMBOL(cmdq_pkt_write_s_value);
 >  
-> -static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
-> +int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
+> -int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event)
+> +int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear)
 >  {
 >  	struct cmdq_instruction inst = { {0} };
->  	int err;
-> @@ -392,6 +392,7 @@ static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
+> +	u32 clear_option = clear ? CMDQ_WFE_UPDATE : 0;
 >  
->  	return err;
->  }
-> +EXPORT_SYMBOL(cmdq_pkt_finalize);
+>  	if (event >= CMDQ_MAX_EVENT)
+>  		return -EINVAL;
 >  
->  static void cmdq_pkt_flush_async_cb(struct cmdq_cb_data data)
->  {
-> @@ -426,10 +427,6 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
->  	unsigned long flags = 0;
->  	struct cmdq_client *client = (struct cmdq_client *)pkt->cl;
+>  	inst.op = CMDQ_CODE_WFE;
+> -	inst.value = CMDQ_WFE_OPTION;
+> +	inst.value = CMDQ_WFE_OPTION | clear_option;
+>  	inst.event = event;
 >  
-> -	err = cmdq_pkt_finalize(pkt);
-> -	if (err < 0)
-> -		return err;
-> -
->  	pkt->cb.cb = cb;
->  	pkt->cb.data = data;
->  	pkt->async_cb.cb = cmdq_pkt_flush_async_cb;
+>  	return cmdq_pkt_append_command(pkt, inst);
+> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
+> index 3f6bc0dfd5da..42d2a30e6a70 100644
+> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
+> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+> @@ -27,8 +27,7 @@
+>   * bit 16-27: update value
+>   * bit 31: 1 - update, 0 - no update
+>   */
+> -#define CMDQ_WFE_OPTION			(CMDQ_WFE_UPDATE | CMDQ_WFE_WAIT | \
+> -					CMDQ_WFE_WAIT_VALUE)
+> +#define CMDQ_WFE_OPTION			(CMDQ_WFE_WAIT | CMDQ_WFE_WAIT_VALUE)
+>  
+>  /** cmdq event maximum */
+>  #define CMDQ_MAX_EVENT			0x3ff
 > diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-> index fec292aac83c..99e77155f967 100644
+> index 1a6c56f3bec1..d63749440697 100644
 > --- a/include/linux/soc/mediatek/mtk-cmdq.h
 > +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-> @@ -213,6 +213,14 @@ int cmdq_pkt_poll_mask(struct cmdq_pkt *pkt, u8 subsys,
->   */
->  int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value);
->  
-> +/**
-> + * cmdq_pkt_finalize() - Append EOC and jump command to pkt.
-> + * @pkt:	the CMDQ packet
-> + *
-> + * Return: 0 for success; else the error code is returned
-> + */
-> +int cmdq_pkt_finalize(struct cmdq_pkt *pkt);
-> +
+> @@ -152,11 +152,12 @@ int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
 >  /**
->   * cmdq_pkt_flush_async() - trigger CMDQ to asynchronously execute the CMDQ
->   *                          packet and call back at the end of done packet
+>   * cmdq_pkt_wfe() - append wait for event command to the CMDQ packet
+>   * @pkt:	the CMDQ packet
+> - * @event:	the desired event type to "wait and CLEAR"
+> + * @event:	the desired event type to wait
+> + * @clear:	clear event or not after event arrive
+>   *
+>   * Return: 0 for success; else the error code is returned
+>   */
+> -int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event);
+> +int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear);
+>  
+>  /**
+>   * cmdq_pkt_clear_event() - append clear event command to the CMDQ packet
 > 
 
 _______________________________________________
