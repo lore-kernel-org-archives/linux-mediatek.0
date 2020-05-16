@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-12.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8BD7FC433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 18:48:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9CF70C433E0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 19:55:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 28F2B20727
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 18:48:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6454920709
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 19:55:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="n4Ob/QUE";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ezcA15wI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 28F2B20727
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lBaLAqH0";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="iOFEME5J"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6454920709
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,54 +27,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:Subject:
 	From:To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=z+ahGHDWE/YdtVzT6LUvSWtiq7SMR68QExSwJpUxEgI=; b=n4Ob/QUE4dlWNb
-	TGhd5zg9+oJbSes8iaOzF41xoqsWLuBi7C0vS8pwzC/yclRHjKYMilO/xiHc7mcIxrhbsZ67zuoh7
-	Fwk/kJT6dNqAdSLmZKhsiHMNYO3bXVFplABocNuSdnRBG4aHlVnobJ41LIHByds+uVkRHCTePUy3Q
-	rKRo98Ka70fMlcf+VJIJFYFpM/Camp6GB3riVlSDyREQiJ0nKi1fapA4jIubGrjS9e7uGas/a0JhO
-	02HGy8kr8GqwgrP/eLu4r550WT5B3LEuQavkVsWYzsLxFoR2ODpHURDzJPcxSfeGrJIy55A51d8xq
-	wxhRRplDQASK2wgxlbjw==;
+	List-Owner; bh=jiuspXMgDv0DZqR/lJKggm1uarAKfgP8pRt6FqvEHWg=; b=lBaLAqH0hf9oL1
+	To1Sj9F2OcdHFzPw1PDXpdGHsFDUwznyyL2k6TB9KxaAk1tsQ2g/thkkk1Q7ZFGyLGd5xAgwo/bEh
+	AT80B9A4e3Fj3Yus06xqNHsHlidBYwjCobBKoQGmgt6/q33GbWNneRwtdW39ZnN+oBaA6JwH2v7ve
+	5SRZ/DgKzfmqpVjbo+74Vo6vKa0UDJBB5tw8561ZQ0bciXpXJo6+pu53xhvHQtGLaqughLIEIijMv
+	rZFsatHQYefsC8h+HG2aVs8kSN6svRq1JCbqtIbvr3fhO0gsY0XPEHHyv/wQvu8YUMQROTUQXeK93
+	kAkewunKyORhV4LBUYbA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ja1rN-0003fB-5H; Sat, 16 May 2020 18:48:33 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1ja2uD-0005X1-JL; Sat, 16 May 2020 19:55:33 +0000
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ja1rL-0003eo-Fk; Sat, 16 May 2020 18:48:32 +0000
-Received: by mail-wr1-x442.google.com with SMTP id l17so7190361wrr.4;
- Sat, 16 May 2020 11:48:31 -0700 (PDT)
+ id 1ja2uB-0005WZ-IW; Sat, 16 May 2020 19:55:32 +0000
+Received: by mail-oi1-x244.google.com with SMTP id y85so695607oie.11;
+ Sat, 16 May 2020 12:55:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=to:cc:from:subject:autocrypt:message-id:date:user-agent
  :mime-version:content-language:content-transfer-encoding;
- bh=UzVsHXBPbRNgh89kRJmPvtH/tPXUT+LyOIZHePLJ5Ic=;
- b=ezcA15wIp/lixAHAQKvwPBxj7eOZk2Uo2xbD2yoc4JQz8YMC41m+jUiyDZmG08iubx
- ujDFYPRVkd6317+Wkc2YO9Wd+ecCPlX/74waYxt642l8Wb8/Kra/qoUtw53BTohTOGrT
- M8mBH62aDLNgSkHs9IjR7imcrUlGVDCHdb0Ad8T4ROLygn8pgB3ctw97EXm3wKElpR6y
- HgCDc7S7pjNQMaoSMYqjOckq/5U951o3vvlzvrSzG/XNb9hqI6x86TMJMaiBDUuZU/UU
- DO50kHdGfQhLVK3TWFiyTUS46pUz5XGtfS+DIZlBLYk567ijYILk7NI6of9895Khm5Ck
- lICg==
+ bh=V2xTvdpQ3ybeAAw0y8ttM2CwbaMVPIV+S9uw8x30+n8=;
+ b=iOFEME5JggmtuMxfQS+RSJc8+UtD/tRTN/GAaqHOP/eBde1kW79FqFBc3lF64oM8PQ
+ r9HPLRayZlQTkiDHAqz3N6SOE4wkrFX9FediUWBY5s3VD8adDnKOvDKnewo/AQ6KBsNa
+ zjRUmmmq4m1Je6tJWokj72bovTCY2Ig4Zxv8Qo4dVWaiS8v+Q6sGl/l1aEs8CNolHhYo
+ FGxeKK1clvl7K19mAzvhyqn/PUoibn0b4XJ8mmEpOypQWOiAQcSo8kNGLGopH85SciE1
+ D1GApfZPD4mey/sW2bDg71hLUrecwkkrFRICkTymTioK1JYnJeYRatUg4O6DqjuXIDyH
+ 0dtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:to:cc:from:subject:autocrypt:message-id:date
  :user-agent:mime-version:content-language:content-transfer-encoding;
- bh=UzVsHXBPbRNgh89kRJmPvtH/tPXUT+LyOIZHePLJ5Ic=;
- b=W+j1BDbp/o/3fObq4jnuYAoUPCuIbOzBvO2+CuND2Artw5ppuWJhAQ9NKCJJG6xKK0
- qYkrHhlH9viHhwvsuz0EPR6j3uLj6F/t17YO+rtbhV5XQjwVgVTNdfr4/KcKpabF77DO
- Qy0y2lSOm8aWhgdLS/vw0jjthQ4mDnP9riYNBBmqYrLyZXwuhYRirZPQ/GMAFtdB1wk7
- /M0qL/Aw6prKHrXcgYvJgAQll5Bax9z40oXsEGl/TiTgGIiBLUugO+FNLvWCSu5kHAjm
- BrOSU2XSJjmX6DDZsG6Roi/VZhrKZOA8/25I+0d6YsQ9QT4RBS2TD3Rg8UDUYaCiNilZ
- lD6g==
-X-Gm-Message-State: AOAM5316a1GPSdrfeuB53WGZg+ap5CqLU/NaKT+z2OHpV8rwZCWNc9Rr
- atU2Ga2HY+UEIYFWqYSs4q4=
-X-Google-Smtp-Source: ABdhPJx9aw1Sz60UEVwl8jkNq8nBdIePaU7cs2YrqSzPlXjoEGaIbCKHaNWYwJB8d8wHY48GxTwZ/A==
-X-Received: by 2002:a5d:5706:: with SMTP id a6mr10306920wrv.141.1589654910109; 
- Sat, 16 May 2020 11:48:30 -0700 (PDT)
+ bh=V2xTvdpQ3ybeAAw0y8ttM2CwbaMVPIV+S9uw8x30+n8=;
+ b=PbDI/wnkaWc1CT0oKmeePm67eO/wBNEcGt+/hXSQtOMeW0m1fXqbujjMq1IJrleeim
+ EPAEaFZQrgoHqChpdP4dOqJPCr3hvxAKBYxrjs/8OPRpK165wgOiiNl7GDo/YAiWV6Ap
+ ENsKjYQNLfHUTiWE/5nuqlKxGwc2MNLXRwn2N/spfbmQkqlMKeWaaC0w8L/k3ly24JLO
+ 2ntVe59m4QfuenefUhtvdB95ujJk5y+XuR5YrOMErlP4osSPOTGiBPffwgj+IuRMpYxm
+ GCsoCxVPnmTiSa5uM8ghwlBCExlIykSKHjlLhQRu+RkM2sMtWMAf2EPhM+aveu61Jeri
+ iEPw==
+X-Gm-Message-State: AOAM533fFhpJHgsKEvZCHuQwkPHZ0zuQrY09QAa4Ob64kP3Xd14QLPTX
+ 7U1RGUpg+Z3uaG2hs0NEgLYiehBm
+X-Google-Smtp-Source: ABdhPJwScv13eKaLWm5S6tXUdwsEBvlzEVwqGsaQklzg103F5g0gXfMkokX/l7Jur2+4cX732b8MeA==
+X-Received: by 2002:aca:ac4c:: with SMTP id v73mr1589713oie.132.1589658930162; 
+ Sat, 16 May 2020 12:55:30 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id r11sm9191826wma.35.2020.05.16.11.48.29
+ by smtp.gmail.com with ESMTPSA id d10sm1613229otp.19.2020.05.16.12.55.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 16 May 2020 11:48:29 -0700 (PDT)
+ Sat, 16 May 2020 12:55:29 -0700 (PDT)
 List-Id: <soc.lore.kernel.org>
-To: SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>
+To: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] arm: mediatek fixes for v5.7
+Subject: [GIT PULL] ARM: mediatek: arm 32-bit updates for v5.8
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
  fL3eT7ZsYV5nur7zctmJ+vbszoOASXUpfq8M+S5hU2w7sBaVk5rpH9yW8CUWz2+ZpQXPJcFa
@@ -149,15 +149,15 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <33a0556a-e2a3-7f0b-b09b-4516642a4bfe@gmail.com>
-Date: Sat, 16 May 2020 20:48:28 +0200
+Message-ID: <ec17cf62-5463-9537-6618-2db9b2b5036e@gmail.com>
+Date: Sat, 16 May 2020 21:55:26 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200516_114831_545054_9275D55A 
-X-CRM114-Status: GOOD (  14.16  )
+X-CRM114-CacheID: sfid-20200516_125531_629400_278E7A3E 
+X-CRM114-Status: GOOD (  15.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -169,11 +169,9 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support"
+Cc: "moderated list:ARM/Mediatek SoC support"
  <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -181,35 +179,51 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Arnd and Olof,
 
-Please take these two fixes into account for v5.7
+Please have a look at the following pull request which includes arm32 changes.
 
-Thanks,
+Regards,
 Matthias
 
 ---
 
-The following changes since commit 2ef96a5bb12be62ef75b5828c0aab838ebb29cb8:
+The following changes since commit 8f3d9f354286745c751374f5f1fcafee6b3f3136:
 
-  Linux 5.7-rc5 (2020-05-10 15:16:58 -0700)
+  Linux 5.7-rc1 (2020-04-12 12:35:55 -0700)
 
 are available in the Git repository at:
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/ v5.7-fixes
+  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
+tags/v5.7-next-dts32
 
-for you to fetch changes up to 34c4e4072603ff5c174df73b973896abb76cbb51:
+for you to fetch changes up to 189881af810d452b592ee958db43eb4c57df9803:
 
-  soc: mediatek: cmdq: return send msg error code (2020-05-16 19:55:50 +0200)
+  arm: dts: mt2701: Add usb2 device nodes (2020-05-16 21:03:06 +0200)
 
 ----------------------------------------------------------------
-Dennis YC Hsieh (1):
-      soc: mediatek: cmdq: return send msg error code
+MT2701:
+- add MUSB device to the SoC and the EVB
 
-Hsin-Yi Wang (1):
-      arm64: dts: mt8173: fix vcodec-enc clock
+MT7623:
+- add Mali-450 device node and bindings
+- add phy to gmac2
 
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 4 ++--
- drivers/soc/mediatek/mtk-cmdq-helper.c   | 4 +++-
- 2 files changed, 5 insertions(+), 3 deletions(-)
+----------------------------------------------------------------
+Min Guo (1):
+      arm: dts: mt2701: Add usb2 device nodes
+
+Ryder Lee (1):
+      arm: dts: mt7623: add Mali-450 device node
+
+Sean Wang (2):
+      arm: dts: mt7623: add phy-mode property for gmac2
+      dt-bindings: gpu: mali-utgard: add mediatek, mt7623-mali compatible
+
+ .../devicetree/bindings/gpu/arm,mali-utgard.yaml   |  2 ++
+ arch/arm/boot/dts/mt2701-evb.dts                   | 21 ++++++++++++++
+ arch/arm/boot/dts/mt2701.dtsi                      | 33 ++++++++++++++++++++++
+ arch/arm/boot/dts/mt7623.dtsi                      | 25 ++++++++++++++++
+ arch/arm/boot/dts/mt7623n-rfb-emmc.dts             |  1 +
+ 5 files changed, 82 insertions(+)
 
 _______________________________________________
 Linux-mediatek mailing list
