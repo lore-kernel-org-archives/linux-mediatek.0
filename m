@@ -2,22 +2,23 @@ Return-Path: <SRS0=ODC1=66=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8C64BC433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 15:06:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 83BAFC433DF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 15:09:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5AB3520709
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 15:06:15 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 54830206F4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 15:09:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="K79UX8pu";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="q3r347y/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5AB3520709
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pZGJZnFR";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="rCGR/Ogf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 54830206F4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,56 +27,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yiWrUoBcrOp1OI6dywu9Qm+Hx01iphVH2su5a31757w=; b=K79UX8puPS7t2R
-	bUbtc/8RBce25ZJYTm9Sqm5QZPlO22QTz+ZcZF9o8CYQZJNYQZIR0LwPavm0p3VbNNbo8Mo9fEbHD
-	tszh4mBWCsQShdfwe1ieZsjt6FKUJgwxWWory83hfTRRrE3/QSa6aAurpdElJyd6P63mLpWfEIKCP
-	+ZydIIg1SNn6ITprRy0MlNKjqEqoNfNLI5SF6oKMb138mZAk4AWU+8miUBnq1p5GB4zkNe+12OGx6
-	ye12mJj9aSYUQggr6j435xTj/8+kEtjSzr76fG7hZCyO4NDiHEAtcdJsQmrxWQhR+Lfy4UU8F8H5h
-	YK8eS+7aQVwH71hxVjzA==;
+	List-Owner; bh=AkU+igmNfu83JfQ3CT9XTVzzTuOY0AqtBokgcXaqJ3U=; b=pZGJZnFRHRiXy+
+	MC751rHSVsSSB+67GXbGV2uBv2knyz9IUiRIZcY2oi7gCwbY3ifphk3kKbhTxHtATJmklU44uZrsC
+	RFTseqEPg5mAB5Psx89bPOTbE4IjEl1R9xfShKE40L6H7kEKuU+8X7ZIHWz79U+4r16u7YlCEZcJf
+	hFnyHq+9dUHg3zNg4y2g6mj5smFMcQWQEBueHrKxxa52p0NO8k3e2autvtbLMgRq8tynB31eb4emx
+	H3mIqKAdhtFKVWoxXcMc052tZeXHGe10FgElrX63KEAoqREhkeTZss7NRjyWLgutH6heNkZa9VTz4
+	8GAAM1bt7WlfV1CU90Mw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZyO6-0004Um-Rh; Sat, 16 May 2020 15:06:06 +0000
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
+	id 1jZyRe-0005ZG-Sj; Sat, 16 May 2020 15:09:46 +0000
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZyO5-0004UG-2f; Sat, 16 May 2020 15:06:06 +0000
-Received: by mail-ot1-x344.google.com with SMTP id v17so4416101ote.0;
- Sat, 16 May 2020 08:06:04 -0700 (PDT)
+ id 1jZyRb-0005Yk-Mi; Sat, 16 May 2020 15:09:44 +0000
+Received: by mail-oi1-x241.google.com with SMTP id r25so5055196oij.4;
+ Sat, 16 May 2020 08:09:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=PE1zTfOVbmhWIZ5WEwelfXqYK+lhXNUdRZtVI9kAnGc=;
- b=q3r347y/nnJbWTqW+uZj1JfmldosoihFPSV9aYwQznF5WMYfK2mrOVqCEUynKGPdi6
- 66uNPD8sKSbgN+RYHRfg/edLMzCQ3KwbJqbavyP+15SfxcYlbUAXKCsC7WKdUy7oDXVo
- ecFjaz2EajpO83pzuD68RyUWHDxBJm8o8YvcI9PQjwq6kI6spuJ+xkSJYWfnSByndf5t
- GbEGpNbZNVkMuGOMyjMBLhlkA5MLV+dSqRZ/we97p0lP4HKj6Uj7Xk3d0wexOYlyDKJ1
- PW7oY1zkjEUufp9V1exQWoBXYg4Aj1pHJiZ5FwJEEv1ArjHA796XRgIASi2ou6vToxDp
- /DMw==
+ bh=CWKr1dm/dGs/SAQr2A86gqzkLCoaeZJZ7mzh4t7OOXE=;
+ b=rCGR/OgfPa5FYNa5ha0ZvecPQd3eGprLBcmgiqEv+9qYWESTT/GIggBS5UQdoZDcG+
+ 559GEEQwgE8tVKhTrFTFeqB6LcGdsIgyNJFev3fwGve7OhkPAmLPhHeJBQck44dYm6tz
+ NIaEVm6hxwIP8xu9aKkRLtL4da3vUHthosBdmok1O8/NGZR/rsI3UticDBHYXhUTHlwj
+ D0wn4rCk4lvT1kNJbE5EU3ZOiZf3uPFJEhq+MOYRdmCnVVjWJU17NbtrilU0KpRb2MTC
+ xnSGIJogjzr7Cf6aa0Fy2iquNto5b4G8LFvmQEtjAwqQi0lgBretgm8ngGQF9N70LPiY
+ FE7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=PE1zTfOVbmhWIZ5WEwelfXqYK+lhXNUdRZtVI9kAnGc=;
- b=so+HjLMcAtK/tKzCM5m31hHumr91mRKpdHIZXGRGZ9m2OMYlOICG7mJlzkBW/U4U/u
- rYy6CRAkwLnjB6toWrqyXCsLm1hHFlaDGigcbSVGPU0N3/s4KJjkq+/wpflWdqC91wax
- JJmXVuy/H4WnXwqdNmz3ZcEPI8O6b+018jcFpRKt2LVIwmzqZYdoWLwJLsul5RGZxI/H
- Ic7hqzlPzML1s7CgIkJ0r8vXrG78sdbrUS0TkYVxFDW5aGaSQRbaXovkJLp25DII7gC2
- koyE6cWFqPFatKJIwiSt49bbSv+TY6S/mhyMu9Ayn/OPTFIiE7iYpHJ2/NuKPyEAG8iP
- 3yjg==
-X-Gm-Message-State: AOAM531Qdgc8m6UGnPNlj38r8N6vGok4e+v5hrO/gmE5Bsw2HQxcUIa+
- gp3reAGjSqsnxju4qG1EQaE=
-X-Google-Smtp-Source: ABdhPJyojyc2rrkh5JlImVwpXVQuLyETgbcVPNFAi2Y0JPOLocOnoN0du3EeD2ECiCO0wCxbAl7ejg==
-X-Received: by 2002:a05:6830:1598:: with SMTP id
- i24mr6257736otr.259.1589641563394; 
- Sat, 16 May 2020 08:06:03 -0700 (PDT)
+ bh=CWKr1dm/dGs/SAQr2A86gqzkLCoaeZJZ7mzh4t7OOXE=;
+ b=IHWwbAGkRmop+dxr0/wOtbMo9ESBqzNrT5ZoqJUAJBU65KbroBZMe8pBguyWLrIGLS
+ +krrNVTj7T6xnIYC7Dji6JoDYfmqR0EKgsUAuyjIH8zVe5EG6Em1lPjXsIH9/D5XrTB5
+ p9ahdAccYpztvN9VKZJ7tZZdoCZtfSCw3PEUOEGNI5pzgds+siFk19FGZMJZDQt8nsqM
+ 4QsCupqW2aMpDNuYDEK0esLlsKFjPCzwWN/IG/09+jpSHpaSFsKUxwnL6NWi8roln5Ca
+ 7cDIEui4aq1skhIQUCsLg6s3tWPWyJ9HqN3zTRLU4KCFM3n4aWVEtc5TvLHp7UvKtfdv
+ xbrw==
+X-Gm-Message-State: AOAM533nPeO7JVjmZ6GaB21fhu3ybV5fhTMyKMj6sxbnrdwekQ4CtOWv
+ NMGz4iIr5Q+qpeYlHIgmB0Q=
+X-Google-Smtp-Source: ABdhPJyL6WtYw+OJ6FjMtVoO6da+rp41GGXRLKhEoF8/vmzhBiXisiMmZ9ea9qvzEyGz/oh+6uUCpg==
+X-Received: by 2002:aca:1313:: with SMTP id e19mr5617815oii.74.1589641783037; 
+ Sat, 16 May 2020 08:09:43 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id t22sm1510951ooc.37.2020.05.16.08.06.01
+ by smtp.gmail.com with ESMTPSA id j23sm1435800otl.64.2020.05.16.08.09.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 16 May 2020 08:06:02 -0700 (PDT)
-Subject: Re: [PATCH 0/4] Add I2C controller support for MT6797 SoC
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- robh+dt@kernel.org
-References: <20200222162444.11590-1-manivannan.sadhasivam@linaro.org>
+ Sat, 16 May 2020 08:09:42 -0700 (PDT)
+Subject: Re: [PATCH 1/2] arm64: dts: mt8173: fix mdp aliases property name
+To: Hans Verkuil <hverkuil@xs4all.nl>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20200414030815.192104-1-hsinyi@chromium.org>
+ <4e335bc7-a45d-4688-a578-1e9793a61229@xs4all.nl>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -151,16 +152,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <62630359-0365-6bc1-d49d-7b74d3d158ad@gmail.com>
-Date: Sat, 16 May 2020 17:05:59 +0200
+Message-ID: <c82b3f81-b75e-38ca-d03e-baec2c3e5f84@gmail.com>
+Date: Sat, 16 May 2020 17:09:38 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200222162444.11590-1-manivannan.sadhasivam@linaro.org>
+In-Reply-To: <4e335bc7-a45d-4688-a578-1e9793a61229@xs4all.nl>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200516_080605_117925_BD9704E9 
-X-CRM114-Status: GOOD (  17.02  )
+X-CRM114-CacheID: sfid-20200516_080943_744918_7FC4DDA9 
+X-CRM114-Status: GOOD (  15.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -172,9 +173,11 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, adamboardman@gmail.com,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Houlong Wei <houlong.wei@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -182,41 +185,57 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 22/02/2020 17:24, Manivannan Sadhasivam wrote:
-> Hello,
+On 16/04/2020 10:41, Hans Verkuil wrote:
+> On 14/04/2020 05:08, Hsin-Yi Wang wrote:
+>> Fix warning:
+>> Warning (alias_paths): /aliases: aliases property name must include only lowercase and '-'
+>>
+>> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+>> ---
+>>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 16 ++++++++--------
+>>  1 file changed, 8 insertions(+), 8 deletions(-)
 > 
-> This patchset adds I2C controller support for Mediatek MT6797 SoC. There
-> are a total of 8 I2C controllers in this SoC (2 being shared) and they are
-> same as the controllers present in MT6577 SoC. Hence, the driver support is
-> added with DT fallback method.
+> I'll merge patch 2/2 for 5.8. I assume that this dtsi patch is merged through
+> a mediatek subsystem?
 > 
-> As per the datasheet, there are controllers with _imm prefix like i2c2_imm
-> and i2c3_imm. These appears to be in different memory regions but sharing
-> the same pins with i2c2 and i2c3 respectively. Since there is no clear
-> evidence of what they really are, I've adapted the numbering/naming scheme
-> from the downstream code by Mediatek.
-> 
-> This patchset has been tested on 96Boards X20 development board.
-> 
-> Thanks,
-> Mani
-> 
-> Manivannan Sadhasivam (4):
->   dt-bindings: i2c: Document I2C controller binding for MT6797 SoC
->   arm64: dts: mediatek: Add I2C support for MT6797 SoC
->   arm64: dts: mediatek: Enable I2C support for 96Boards X20 Development
->     board
->   arm64: dts: mediatek: Switch to SPDX license identifier for MT6797 SoC
 
-All four queued now in v5.7-next/dts64
+Correct. Now queued in v5.7-next/dts64
 
 Thanks!
 
+> Regards,
 > 
->  .../devicetree/bindings/i2c/i2c-mt65xx.txt    |   1 +
->  .../boot/dts/mediatek/mt6797-x20-dev.dts      |  49 ++++
->  arch/arm64/boot/dts/mediatek/mt6797.dtsi      | 229 +++++++++++++++++-
->  3 files changed, 271 insertions(+), 8 deletions(-)
+> 	Hans
+> 
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+>> index a212bf124e81..d1e9c41004b4 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+>> @@ -42,14 +42,14 @@ aliases {
+>>  		dpi0 = &dpi0;
+>>  		dsi0 = &dsi0;
+>>  		dsi1 = &dsi1;
+>> -		mdp_rdma0 = &mdp_rdma0;
+>> -		mdp_rdma1 = &mdp_rdma1;
+>> -		mdp_rsz0 = &mdp_rsz0;
+>> -		mdp_rsz1 = &mdp_rsz1;
+>> -		mdp_rsz2 = &mdp_rsz2;
+>> -		mdp_wdma0 = &mdp_wdma0;
+>> -		mdp_wrot0 = &mdp_wrot0;
+>> -		mdp_wrot1 = &mdp_wrot1;
+>> +		mdp-rdma0 = &mdp_rdma0;
+>> +		mdp-rdma1 = &mdp_rdma1;
+>> +		mdp-rsz0 = &mdp_rsz0;
+>> +		mdp-rsz1 = &mdp_rsz1;
+>> +		mdp-rsz2 = &mdp_rsz2;
+>> +		mdp-wdma0 = &mdp_wdma0;
+>> +		mdp-wrot0 = &mdp_wrot0;
+>> +		mdp-wrot1 = &mdp_wrot1;
+>>  		serial0 = &uart0;
+>>  		serial1 = &uart1;
+>>  		serial2 = &uart2;
+>>
 > 
 
 _______________________________________________
