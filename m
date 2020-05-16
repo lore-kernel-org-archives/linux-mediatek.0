@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 15994C433E2
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:10:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 28FB9C433DF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:22:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D801220727
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:10:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DFBAC2076A
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2020 16:22:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hcUw+kUX";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="NNH9yXgF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D801220727
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Qp+2Ajee";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="rzcLjUSh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DFBAC2076A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,60 +27,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zga2QupPLIC0+xqFZzTGY/IETEqa3fPUCOODu6bdXI0=; b=hcUw+kUXE0w8sL
-	rYUdjiH6GbjHD9fpxZJrO0bGKZiyc++DNkYctFSK9WsasaKp5E0ryhckiMK1cbC7UDzjNQiFcygiE
-	4v8s9ScqYqP6NT6oCOQeKRNMWyRIdb1B6OLs+yNJx2F15e+BIbC5yRrLLyAPAQ3PLPk3nBi+qMp/w
-	1/M5yIzg7wHCMkEnRA29J9olH27eMtoIqz+xttB73ZB17H7Tk54EOLCqwyJrCGKUnyXOVyn6QlGyA
-	u11NRJ5038lOyE7bEiBm2ns+yfImrXm323HSHOKL5X4AWC+TYVZlnLEtYglQO7n8ilXOAFQAyRvfn
-	3W5XvAggoTBMDOiUTO/g==;
+	List-Owner; bh=w1GdD2XUWDixv+IT6N3QMvWpYcruC95gYbDxRSc244s=; b=Qp+2AjeeA+YE+s
+	C/XcoTIIORr3G7lKQ8YXevNZKqeOYrHAjnxEq2hu/XVW5FwD17euBhUkgScKGTpCrfVyJBz3KI3JL
+	BH+M/Mls4vqt7+1fIlB/CQZVou0K4HlILJrZyEeWJJxbypUeRZse2bPQByiRMOVoUjbh4EHy43TjR
+	5Ls85byLCka3ADpiPCF6xR/wvF0Ksyk/qb3259QCiX/jyjyEWRyx3ZgXos7eneSUyDV7jD9DSXxyy
+	HImarz2WVEvpJ4/tk6g4FQrhLIrsOxnjJOoxMqQJKQXQn15gB8PaQarx+PGDPhOguUOh5fUZJrPDE
+	WKOO6HLgBf5Cflx0TCrw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZzOP-0004Tw-Hi; Sat, 16 May 2020 16:10:29 +0000
-Received: from mail-oo1-xc41.google.com ([2607:f8b0:4864:20::c41])
+	id 1jZzZs-0003mw-JL; Sat, 16 May 2020 16:22:20 +0000
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZzOJ-0004Om-0E; Sat, 16 May 2020 16:10:24 +0000
-Received: by mail-oo1-xc41.google.com with SMTP id c83so1131169oob.6;
- Sat, 16 May 2020 09:10:22 -0700 (PDT)
+ id 1jZzZp-0003mE-MF; Sat, 16 May 2020 16:22:18 +0000
+Received: by mail-oi1-x241.google.com with SMTP id j145so5171599oib.5;
+ Sat, 16 May 2020 09:22:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=EacKjSDopXWyW8JoiO70qr07SPwYhYpatq/0eY+a1eU=;
- b=NNH9yXgFK+d5gov4vMTntUA9vwX4zVohtYBOM/gkZPOTtCw+ziH747SpaWnyWW5ylP
- xHQvxnNPvKxvwXm1PTKaeE4NJjwdfXwkOoV9FyTdFwVxRBVFZVJB0DDUM0fVqtOJxkU+
- MF+E9iBP4TxCgLIZcej461qTxU4IlQ/8/mA8Wkv0mtklp0N7TmzJFZvQFISavJVKDrGg
- Q1b7c/5YATICUn6j5uVT2oceL9+9R/KMKPpqPC4t+dQF36s2JMNPP9Z8G2CHBDuNigOd
- wc5H7vI8XhlEbUAIFqrv3whjtGVXfqaPERduLikNaCIm01wPGpgQk8i5mECUThebO9Pi
- ygNA==
+ bh=I7e2w2QTpdl7eacHOOJOMgvm6z0ZpEJherbyeCCSlrk=;
+ b=rzcLjUShbk9Z/0KcAF1n+Kj/wHo1g8PHLNe/KSm5AkQzgk3+AmQCuIyDG+mvSzzQlq
+ 2ENx39tNckwm48doNBwt4CJUfwL6pbDDJNI71+0IaEQlxHwm0ERPSRE4TmRJ5jUZuE/z
+ ig3jY2A+BhhVU0aO38t2DrF4JsCEZ/CogCtobFr/zyi14zM15pONx7Wv68ILjWsOKCu0
+ zP4GHkOEbU9m2PQNDQDpM0PssDrYdntPmcWUc15YfzyF8AgHpWSlHcLDjI9e2D3Q+5lf
+ JzQ7dPJYKPEH34IJqS5a/3dLzFb4ul90HG3vXKC/JT3w8TZQURKfv2e4kqt26cBJEQMc
+ Xcrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=EacKjSDopXWyW8JoiO70qr07SPwYhYpatq/0eY+a1eU=;
- b=Iy5oRVV1YbJEUfckOH9/H/ZcWI34//Ks67mC8pf15NHSnnX9zjZbl3TVFd4WcqCLRF
- 1c2TZk/uFx/6JINbqE/KfyTTe819AbHsM41/veAbDibNz43qEm7nxcmlD++G3RqqJdlt
- sHV1wfFIBqBWoGr+z72l0DAvQKFPim4ydRjGJAnfk1Ixr/xD6sYHV+Fu++mlL8NYyMRw
- x8EupojFzEmofeKytkHWUjTyAOyqUPQYI3wYpI61JA4NrizI1lqexvhyx6KjBxdWyRU+
- XHBaruw5U7HVM0NSIRQlAIruik5fnXr9DKE/QedRU950K15jK7ItQqqZ3AZUjDLcCXwk
- Ph5A==
-X-Gm-Message-State: AOAM530UArvCF/+FccdiNolUxVbCyNFpqd8VAIc/rSXFD9va/U0gaRwG
- WRuSWCaNX55TxJrdZGhOTeY=
-X-Google-Smtp-Source: ABdhPJwjoY5UTtSd4WAUE0adW6nCGFeCTzy/hfbySAkry2wU8dbZQNgTsz1ziHIgfXvWtOnd3c9E4w==
-X-Received: by 2002:a4a:956a:: with SMTP id n39mr6703896ooi.64.1589645422115; 
- Sat, 16 May 2020 09:10:22 -0700 (PDT)
+ bh=I7e2w2QTpdl7eacHOOJOMgvm6z0ZpEJherbyeCCSlrk=;
+ b=KNAoOh5j8IBTzbJYRw/7K12F7HM+0a8ze+v1u+DswEjJ9hrJCtVcCM1OR81OO9EUYn
+ FSWLEYGDuTBEiPlBP5kThQN7jB1c+a7B7HPdD+f5kWMJBeBzGw4BgPfmo/RuMrlu4Kl/
+ /FlfnhjIiPv4BQxY7NXR+BpflDsjJcrkHdacs7PIP+gCoLPQpQ6kineOH9aInKRTe0X2
+ sNoFLx1TJEmB3yWrFRBBVULvYlLGigEmqUK9d73t4jx74nzGaBW4k3hrBR94Q0AUFkeN
+ TEeNJdHre5SF6DyNgRMms4hpl91hzgrd/dPspRGaO0WZLTArWPr8qrFmkMonx8LirTFJ
+ dLuQ==
+X-Gm-Message-State: AOAM531MnEQD3I7RVlhbdf04PDXQVdPc2jERD9hSAgGbRAlcaI8HHaVB
+ 4G+XpMekJUz/SiKcHhG2uTw=
+X-Google-Smtp-Source: ABdhPJzZ+ao+xaakGDM01pzPbq+6EV62i9TbE3s7jQ/78XtzoGWnzEvcs6bRD8JK4dAzuQE/Lsjxnw==
+X-Received: by 2002:aca:5e0b:: with SMTP id s11mr5456099oib.160.1589646136660; 
+ Sat, 16 May 2020 09:22:16 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id v8sm1590217oos.0.2020.05.16.09.10.18
+ by smtp.gmail.com with ESMTPSA id 21sm1591811oiy.11.2020.05.16.09.22.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 16 May 2020 09:10:21 -0700 (PDT)
-Subject: Re: [PATCH v5 03/13] mailbox: cmdq: support mt6779 gce platform
- definition
-To: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- Jassi Brar <jassisinghbrar@gmail.com>, Philipp Zabel
- <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>
-References: <1583664775-19382-1-git-send-email-dennis-yc.hsieh@mediatek.com>
- <1583664775-19382-4-git-send-email-dennis-yc.hsieh@mediatek.com>
+ Sat, 16 May 2020 09:22:15 -0700 (PDT)
+Subject: Re: [PATCH 1/2] arm: dts: mt7623: add Mali-450 device node
+To: ryder.lee@kernel.org, Rob Herring <robh+dt@kernel.org>
+References: <af7b5a2e00eb3a4b6262807c378e43afd5f74779.1563867856.git.ryder.lee@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -156,16 +150,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <07f2898b-1e00-cb73-00d1-91910f87a227@gmail.com>
-Date: Sat, 16 May 2020 18:10:16 +0200
+Message-ID: <fddec6eb-92b4-dace-4148-796e1caea383@gmail.com>
+Date: Sat, 16 May 2020 18:22:12 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <1583664775-19382-4-git-send-email-dennis-yc.hsieh@mediatek.com>
+In-Reply-To: <af7b5a2e00eb3a4b6262807c378e43afd5f74779.1563867856.git.ryder.lee@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200516_091023_063109_1BDB6746 
-X-CRM114-Status: GOOD (  15.10  )
+X-CRM114-CacheID: sfid-20200516_092217_748432_2ED00B0C 
+X-CRM114-Status: GOOD (  17.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -177,11 +171,10 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- HS Liao <hs.liao@mediatek.com>, linux-mediatek@lists.infradead.org,
- Houlong Wei <houlong.wei@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>,
- CK Hu <ck.hu@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Weijie Gao <weijie.gao@mediatek.com>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -189,35 +182,65 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 08/03/2020 11:52, Dennis YC Hsieh wrote:
-> Add gce v4 hardware support with different thread number and shift.
+On 24/07/2019 11:00, ryder.lee@kernel.org wrote:
+> From: Ryder Lee <ryder.lee@mediatek.com>
 > 
-> Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> Add a node for Mali-450.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Applied to v5.7-next/dts32
 
 > ---
->  drivers/mailbox/mtk-cmdq-mailbox.c | 2 ++
->  1 file changed, 2 insertions(+)
+> kmscube as well as X11 EGL tests work fine (use Lima driver).
+> ---
+>  arch/arm/boot/dts/mt7623.dtsi | 25 +++++++++++++++++++++++++
+>  1 file changed, 25 insertions(+)
 > 
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-> index 4dbee9258127..9994ac9426d6 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -572,10 +572,12 @@ static const struct dev_pm_ops cmdq_pm_ops = {
+> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> index a79f0b6c3429..6a9c5afb9a36 100644
+> --- a/arch/arm/boot/dts/mt7623.dtsi
+> +++ b/arch/arm/boot/dts/mt7623.dtsi
+> @@ -3,6 +3,7 @@
+>   * Copyright (c) 2017-2018 MediaTek Inc.
+>   * Author: John Crispin <john@phrozen.org>
+>   *	   Sean Wang <sean.wang@mediatek.com>
+> + *	   Ryder Lee <ryder.lee@mediatek.com>
+>   *
+>   */
 >  
->  static const struct gce_plat gce_plat_v2 = {.thread_nr = 16};
->  static const struct gce_plat gce_plat_v3 = {.thread_nr = 24};
-> +static const struct gce_plat gce_plat_v4 = {.thread_nr = 24, .shift = 3};
+> @@ -733,6 +734,30 @@
+>  		#reset-cells = <1>;
+>  	};
 >  
->  static const struct of_device_id cmdq_of_ids[] = {
->  	{.compatible = "mediatek,mt8173-gce", .data = (void *)&gce_plat_v2},
->  	{.compatible = "mediatek,mt8183-gce", .data = (void *)&gce_plat_v3},
-> +	{.compatible = "mediatek,mt6779-gce", .data = (void *)&gce_plat_v4},
->  	{}
->  };
->  
+> +	mali: gpu@13040000 {
+> +		compatible = "mediatek,mt7623-mali", "arm,mali-450";
+> +		reg = <0 0x13040000 0 0x30000>;
+> +		interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 171 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 172 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 173 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 174 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 175 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 176 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 177 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 178 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 179 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 180 IRQ_TYPE_LEVEL_LOW>;
+> +		interrupt-names = "gp", "gpmmu", "pp0", "ppmmu0", "pp1",
+> +				  "ppmmu1", "pp2", "ppmmu2", "pp3", "ppmmu3",
+> +				  "pp";
+> +		clocks = <&topckgen CLK_TOP_MMPLL>,
+> +			 <&g3dsys CLK_G3DSYS_CORE>;
+> +		clock-names = "bus", "core";
+> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_MFG>;
+> +		resets = <&g3dsys MT2701_G3DSYS_CORE_RST>;
+> +	};
+> +
+>  	mmsys: syscon@14000000 {
+>  		compatible = "mediatek,mt7623-mmsys",
+>  			     "mediatek,mt2701-mmsys",
 > 
 
 _______________________________________________
