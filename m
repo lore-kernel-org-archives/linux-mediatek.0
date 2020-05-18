@@ -2,91 +2,63 @@ Return-Path: <SRS0=JQKK=7A=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5FA91C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 14:20:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 462CBC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 14:20:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 033C5207C4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 14:20:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0391B20657
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 14:20:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eUkLqEqo";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Trzgw0WU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 033C5207C4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bglo+hCC"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0391B20657
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fcEs0Lw0CtE06yP/p5xybMTCIWiA/aeswP+BikeYf00=; b=eUkLqEqofExvWK
-	jAfAg/E5BaJtmWuklRDuFIUni78M057cCt3hhaEi2vKv1FQg1HwONBFOcf3JgRh3e/N88u7moOw7W
-	1wEPafUzTmaN5IvI4+Rx0FY2KzsALXvb4bhLUX8G7hukB3mgzr8vKUVjbNLlekSBPMlFVzD9dSI54
-	xghIQ7nbwnXTQcGWzmTMveu1N04g/Q7OWzC2dzv0TpR78yY6/QvMeNXxV8md9WLgFb2b+b7b1cDoT
-	WYX/xC8YUUaYAF8nbAp3qr+DzVvoWASQsyZs/e+oDldrsu5OpEap9Vsfp+FQQ9DpSqosCEj880Jfq
-	JSTHIndcRxKDt+tRgfgA==;
+	List-Owner; bh=UrlIgSL5AsuyG563b9DoekDSkSY03danz9EYVIgaSlw=; b=bglo+hCCrWOwjB
+	duXsEQ+RTOCTus4ZOdQiGEe5BjFjS5Y/MvFVzfTQUM7480botvHQiHGiq2gpU3ABnfHV071xb30F7
+	ldpp9WNVysrSrebirKmoqQPDeBhot3KrVkD7+IBgdpQzAY+ja1GoLGHN3iJshMQUfdbPl1YopitSP
+	CjbqO4wqHe7nxdB+iT9tPHR4hLy/PHup2jrtoz0kvMkHiZ2dudEVvMzFOMPn58ZwXwBzO5wD+dMGj
+	TbmiMPJUqcVReK+1ogwYMf20RuHmlCnxW3G8yPRHu1nmtSPG301gU1DOUHIWbvBMEwWjIPuylTwyU
+	jiV0MCgrTyYV8ai+bvuw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jagcZ-0007HO-33; Mon, 18 May 2020 14:19:59 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jagcW-0007Gg-SD
- for linux-mediatek@lists.infradead.org; Mon, 18 May 2020 14:19:58 +0000
-Received: by mail-ej1-x634.google.com with SMTP id x1so8939925ejd.8
- for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2020 07:19:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=EOqD4aL6wgxE/26j8f+FbycNWDDRoPpe8vcK7EunO4g=;
- b=Trzgw0WUAhFHQ2PwkPVg1lg3ZEy4Auicl4vZkQda/lJq7cE2GAPUdYk7oor8fdGER6
- 3vQq9ZLD4v6xhSuJfufMqMbdB4vMSsXwGRnEjD6jrOPmkhIOkG6h9p1mBEYh64EbJHow
- mzm/O7XfIUlxFfMAOPjMW/nVBQUghtBlFwA8A=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=EOqD4aL6wgxE/26j8f+FbycNWDDRoPpe8vcK7EunO4g=;
- b=G/B+e+U7zzwmAYaL7SbGaViO3WBX1vCKknFwkK7y0io/s0V5pf3iK9HAt6TIsyJxZG
- tD4Y1ZcCfCIjJjekacGj6YoF6jMqLReoueoQQVwOCm1v9UMsC93Ku83lzjQzv9PKbGJa
- vksadhETuMJ3Uy+y8cBwCq7KY/mPuE3Q/c7ef3dX5UorQwOxVnwVxMefvXDBzZK4y0tW
- NXD7tqdXNGaiHoiyHXu3UqsinlkIbywH6+sKY/Rv20DlmzFqKMeu6i4HnvYm40r+9VDc
- iAEST+AZGCMk1ORMDPoW9GnxNl7vig8/THTXlRivvcoFjhzEHsvouPMbf/j3U+pCMaLt
- 20ow==
-X-Gm-Message-State: AOAM532DoDes0rRY3ajcidk0GhmIF9KcBAkvr/rdmW29s3vBHSftP3s3
- QKVjQIxai6EfJyW+VGua5/S60skK+3pv/Q==
-X-Google-Smtp-Source: ABdhPJyuuPR+uYRd/QOtmLGRUFC0eOiK5UaYCmhgZHk6eDL49v5NVsH2kU/7OjA634s6fR5TpC3ybw==
-X-Received: by 2002:a17:906:70c2:: with SMTP id
- g2mr15727609ejk.207.1589811591444; 
- Mon, 18 May 2020 07:19:51 -0700 (PDT)
-Received: from mail-wm1-f46.google.com (mail-wm1-f46.google.com.
- [209.85.128.46])
- by smtp.gmail.com with ESMTPSA id se2sm1161574ejb.42.2020.05.18.07.19.51
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 18 May 2020 07:19:51 -0700 (PDT)
-Received: by mail-wm1-f46.google.com with SMTP id f134so9489197wmf.1
- for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2020 07:19:51 -0700 (PDT)
-X-Received: by 2002:a1c:56c1:: with SMTP id k184mr4680947wmb.183.1589811158595; 
- Mon, 18 May 2020 07:12:38 -0700 (PDT)
+	id 1jagcs-0001QE-70; Mon, 18 May 2020 14:20:18 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jagcZ-0007Gz-4r; Mon, 18 May 2020 14:20:00 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 6E3C2101E;
+ Mon, 18 May 2020 07:19:56 -0700 (PDT)
+Received: from C02TD0UTHF1T.local (unknown [10.57.29.34])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B7F9E3F52E;
+ Mon, 18 May 2020 07:19:52 -0700 (PDT)
+Date: Mon, 18 May 2020 15:19:46 +0100
+From: Mark Rutland <mark.rutland@arm.com>
+To: Sumit Garg <sumit.garg@linaro.org>
+Subject: Re: [PATCH 0/3] arm64: perf: Add support for Perf NMI interrupts
+Message-ID: <20200518141946.GA3164@C02TD0UTHF1T.local>
+References: <20200516124857.75004-1-lecopzer@gmail.com>
+ <CAFA6WYNwp+_ENiS8QDao5+RXyt5ofJZyq6c5CKG_d0CNEmBNYg@mail.gmail.com>
+ <CANr2M19unLW8n0P2DiOYEZ=GZcaD-L2ygPht_5HNtNZ6e4h6xQ@mail.gmail.com>
+ <20200518104524.GA1224@C02TD0UTHF1T.local>
+ <a9002b5e-aec5-b6e0-7174-87b93351d60c@arm.com>
+ <CAFA6WYPKD0Kkn5yQiKZQkM+tT0iW4oPnndegD-iau9EwB5DYog@mail.gmail.com>
 MIME-Version: 1.0
-References: <20200518132731.20855-1-dongchun.zhu@mediatek.com>
- <20200518132731.20855-2-dongchun.zhu@mediatek.com>
-In-Reply-To: <20200518132731.20855-2-dongchun.zhu@mediatek.com>
-From: Tomasz Figa <tfiga@chromium.org>
-Date: Mon, 18 May 2020 16:12:28 +0200
-X-Gmail-Original-Message-ID: <CAAFQd5Byvc8Fb0f3_81xSKsuyvsQJm-8g8y1Kx2aUcC=PwpS7w@mail.gmail.com>
-Message-ID: <CAAFQd5Byvc8Fb0f3_81xSKsuyvsQJm-8g8y1Kx2aUcC=PwpS7w@mail.gmail.com>
-Subject: Re: [V6, 1/2] media: dt-bindings: media: i2c: Document DW9768 bindings
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <CAFA6WYPKD0Kkn5yQiKZQkM+tT0iW4oPnndegD-iau9EwB5DYog@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200518_071956_931393_B59C85BB 
-X-CRM114-Status: GOOD (  16.48  )
+X-CRM114-CacheID: sfid-20200518_071959_285130_A3BD3895 
+X-CRM114-Status: GOOD (  24.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,141 +70,77 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Nicolas Boichat <drinkcat@chromium.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- linux-devicetree <devicetree@vger.kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?B?U2hlbmduYW4gV2FuZyAo546L5Zyj55S3KQ==?= <shengnan.wang@mediatek.com>,
- Louis Kuo <louis.kuo@mediatek.com>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
- Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: Jian-Lin Chen <lecopzer.chen@mediatek.com>, Will Deacon <will@kernel.org>,
+ alexander.shishkin@linux.intel.com, Catalin Marinas <catalin.marinas@arm.com>,
+ jolsa@redhat.com, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ acme@kernel.org, Lecopzer Chen <lecopzer@gmail.com>,
+ Peter Zijlstra <peterz@infradead.org>, mingo@redhat.com,
+ linux-mediatek@lists.infradead.org,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ matthias.bgg@gmail.com, namhyung@kernel.org,
+ Alexandru Elisei <alexandru.elisei@arm.com>, yj.chiang@mediatek.com,
+ julien.thierry.kdev@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dongchun,
+On Mon, May 18, 2020 at 07:39:23PM +0530, Sumit Garg wrote:
+> On Mon, 18 May 2020 at 16:47, Alexandru Elisei <alexandru.elisei@arm.com> wrote:
+> > On 5/18/20 11:45 AM, Mark Rutland wrote:
+> > > On Mon, May 18, 2020 at 02:26:00PM +0800, Lecopzer Chen wrote:
+> > >> HI Sumit,
+> > >>
+> > >> Thanks for your information.
+> > >>
+> > >> I've already implemented IPI (same as you did [1], little difference
+> > >> in detail), hardlockup detector and perf in last year(2019) for
+> > >> debuggability.
+> > >> And now we tend to upstream to reduce kernel maintaining effort.
+> > >> I'm glad if someone in ARM can do this work :)
+> > >>
+> > >> Hi Julien,
+> > >>
+> > >> Does any Arm maintainers can proceed this action?
+> > > Alexandru (Cc'd) has been rebasing and reworking Julien's patches, which
+> > > is my preferred approach.
+> > >
+> > > I understand that's not quite ready for posting since he's investigating
+> > > some of the nastier subtleties (e.g. mutual exclusion with the NMI), but
+> > > maybe we can put the work-in-progress patches somewhere in the mean
+> > > time.
+> > >
+> > > Alexandru, do you have an idea of what needs to be done, and/or when you
+> > > expect you could post that?
+> >
+> > I'm currently working on rebasing the patches on top of 5.7-rc5, when I have
+> > something usable I'll post a link (should be a couple of days). After that I will
+> > address the review comments, and I plan to do a thorough testing because I'm not
+> > 100% confident that some of the assumptions around the locks that were removed are
+> > correct. My guess is this will take a few weeks.
+> >
+> 
+> Thanks Mark, Alex for the status updates on perf NMI feature.
+> 
+> Alex,
+> 
+> As the hard-lockup detection patch [1] has a dependency on perf NMI
+> patch-set, I will rebase and test hard-lockup detector when you have
+> got a working tree. But due to the dependency, I think patch [1]
+> should be accepted along with perf NMI patch-set. So would you be open
+> to include this patch as part of your series?
+> 
+> [1] http://lists.infradead.org/pipermail/linux-arm-kernel/2020-May/732227.html
 
-On Mon, May 18, 2020 at 3:29 PM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
->
-> Add DeviceTree binding documentation for Dongwoon Anatech DW9768 voice
-> coil actuator.
+While it depends on the perf NMI bits, I don't think it makes sense to
+tie that into the series given it's trying to achieve something very
+different.
 
-Thanks for the patch. Please see my comments below.
+I think that should be reposted separately once the perf NMI bits are in
+shape.
 
->
-> Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
-
-This version includes significant changes, so the reviewed-by tag
-shouldn't have been carried out.
-
-> ---
->  .../bindings/media/i2c/dongwoon,dw9768.yaml        | 105 +++++++++++++++++++++
->  MAINTAINERS                                        |   7 ++
->  2 files changed, 112 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
->
-> diff --git a/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml b/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
-> new file mode 100644
-> index 0000000..b909e83
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
-> @@ -0,0 +1,105 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +# Copyright (c) 2020 MediaTek Inc.
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/i2c/dongwoon,dw9768.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Dongwoon Anatech DW9768 Voice Coil Motor (VCM) Lens Device Tree Bindings
-> +
-> +maintainers:
-> +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
-> +
-> +description: |-
-> +  The Dongwoon DW9768 is a single 10-bit digital-to-analog (DAC) converter
-> +  with 100 mA output current sink capability. VCM current is controlled with
-> +  a linear mode driver. The DAC is controlled via a 2-wire (I2C-compatible)
-> +  serial interface that operates at clock rates up to 1MHz. This chip
-> +  integrates Advanced Actuator Control (AAC) technology and is intended for
-> +  driving voice coil lenses in camera modules.
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      # for DW9768 VCM
-> +      - dongwoon,dw9768
-> +      # for GT9769 VCM
-> +      - giantec,gt9769
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  vin-supply:
-> +    description:
-> +      Definition of the regulator used as I2C I/O interface power supply.
-> +
-> +  vdd-supply:
-> +    description:
-> +      Definition of the regulator used as VCM chip power supply.
-> +
-> +  dongwoon,aac-mode:
-> +    description:
-> +      Indication of AAC mode select.
-> +    allOf:
-> +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> +      - enum:
-> +          - 0    #  Direct (default)
-> +          - 1    #  AAC2 (operation time# 0.48 x Tvib)
-> +          - 2    #  AAC3 (operation time# 0.70 x Tvib)
-> +          - 3    #  AAC4 (operation time# 0.75 x Tvib)
-> +          - 4    #  Reserved
-> +          - 5    #  AAC8 (operation time# 1.13 x Tvib)
-> +          - 6    #  Reserved
-> +          - 7    #  Reserved
-
-I'll ultimately leave it to DT maintainers, but is there any reason to
-define the reserved values?
-
-> +
-> +  dongwoon,aac-timing:
-> +    description:
-> +      Indication of AAC Timing count, unit of 0.1 milliseconds.
-> +      Valid values vary from 0 to 63 (default 32).
-> +    allOf:
-> +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> +
-> +  dongwoon,clock-dividing-rate:
-> +    description:
-> +      Indication of VCM internal clock dividing rate select, as one multiple
-> +      factor to calculate VCM ring periodic time Tvib.
-> +    allOf:
-> +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> +      - enum:
-> +          - 0    #  Dividing Rate -  2
-> +          - 1    #  Dividing Rate -  1 (default)
-> +          - 2    #  Dividing Rate -  1/2
-> +          - 3    #  Dividing Rate -  1/4
-> +          - 4    #  Dividing Rate -  8
-> +          - 5    #  Dividing Rate -  4
-> +          - 6    #  Dividing Rate -  Reserved
-> +          - 7    #  Dividing Rate -  Reserved
-
-Ditto.
-
-Best regards,
-Tomasz
+Thanks,
+Mark.
 
 _______________________________________________
 Linux-mediatek mailing list
