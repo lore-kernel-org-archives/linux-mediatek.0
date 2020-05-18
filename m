@@ -2,78 +2,91 @@ Return-Path: <SRS0=JQKK=7A=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DB3B6C433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 09:32:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 77F46C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 10:05:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B0BCB207ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 09:32:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 460D62081A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 10:05:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PuptVQlZ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ijH2jf8G"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B0BCB207ED
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZGEvFjwN";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="fy0kdcuo"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 460D62081A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r7KEyM+UiBEa2tfXJkCWuiXW3TQGDbbRPP3UyAD2Eog=; b=PuptVQlZVJ+StA
-	OeSmqhX06uFodotCoQM4GyMyis4WL2DNViRGZ+eW/seazDdd5930L1GykPU2zLtmhGdGNrzMI057z
-	t3scJgyXn/wIZn+0ZLjLYq23rQHTAqmNesazPwC/T6HAjAySMbwGGQ6VAcdxwPE8IX7n8THrc5Q3w
-	us5yNmriwHl6bVoY7FApOmtXKjUNHTExarZfa2xug0xg8Erf5aqfuMDyA/BKgIP53dvI1xT8DmGhD
-	Cx7R+rOdCiTVNf+EnpytPN3wi4KOX02RJAK23Fp4SW8WnVErGamBG/bBkrG8BhZZjs2qV9C7iPibG
-	rxxlNv9nXdzuLulXH/8Q==;
+	List-Owner; bh=mnwJXlP2Spga+CIDInSB1zzBpNSmKNjM/y2gX2tWioE=; b=ZGEvFjwNMMTL+i
+	HarZnA4ZuRb7aaKkv9MVccrTkSWSNlDPJAcGR6PZWXIet8y49dU22VwQ0PpLQyTz1jq52sLLHWd6O
+	bi4sF4itziHlKQurR2Y92Np8I2si/TktZmYTrnuUcLfaWo+clVAPNB32tqsdR9rI00bwHbO95RzRC
+	caLMgeFUJgiV4DkKqSYX7mdjjFeYj0PEv9C/Lwh5fJJWkTuHUtkqLI43k5u5PpKH0abdz9Vz0vO1O
+	AkQlAzm3OqzcICbduDR9QkXM+96p7dLvdREAnIHkfJkmvnZjsI5qAFwO6C8AOyIQXpLEN+uxImE6s
+	ugbmkMKYZDGzZsmuN7Jw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jac8L-0004lW-Rf; Mon, 18 May 2020 09:32:29 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jacdl-00080E-0s; Mon, 18 May 2020 10:04:57 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jac8A-0004Zj-2n; Mon, 18 May 2020 09:32:19 +0000
-X-UUID: 07c50fd863a341f68c2551c2cf86a654-20200518
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=XWQIwQIcTzHBiRtT8y/pLH7l27zFDZIQLPPN6nq9RoU=; 
- b=ijH2jf8Gu0Dws658PLhy3sOJ7wTBz0p7YGQungC2Z2rGkpPNmdvU5fd/J4Q0q7jKekEgGVyFAk82mx9rBrpnZ0cIbxftSrRZzcDjOcwL1dKKgyRDGWkruUAE8doWTlZ3aHU+7TmeGykIEan+AV8UGg/3LaJiph2m286D4GByh1E=;
-X-UUID: 07c50fd863a341f68c2551c2cf86a654-20200518
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <roger.lu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 168725983; Mon, 18 May 2020 01:32:11 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 18 May 2020 02:24:56 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 18 May 2020 17:24:47 +0800
-Received: from mtksdaap41.mediatek.inc (172.21.77.4) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 18 May 2020 17:24:47 +0800
-From: Roger Lu <roger.lu@mediatek.com>
-To: Kevin Hilman <khilman@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Nicolas Boichat <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>
-Subject: [PATCH v8 2/3] arm64: dts: mt8183: add svs device information
-Date: Mon, 18 May 2020 17:24:03 +0800
-Message-ID: <20200518092403.22647-3-roger.lu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200518092403.22647-1-roger.lu@mediatek.com>
-References: <20200518092403.22647-1-roger.lu@mediatek.com>
+ id 1jacdi-0007zZ-Ak
+ for linux-mediatek@lists.infradead.org; Mon, 18 May 2020 10:04:55 +0000
+Received: by mail-io1-xd44.google.com with SMTP id t15so3078665ios.4
+ for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2020 03:04:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=RKROO8T8T/wRvHNAyo40LMuoZm+6bud6XqpTFz5/h4w=;
+ b=fy0kdcuoeSucOVpB37b28WEy2Z7BTjSQPoaSXSZqfWX5PynLzWLa06IIOmSb47HQfk
+ Nk7Lz8qUhRmZt6Uqw/+gbocUoU6pJc8rWwzPJwyXSzPNmym88rVnFeD71u5olQiXqTch
+ i6vC8EcjOjdQRWfG5xjD03JaXffn85wsZgbw4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=RKROO8T8T/wRvHNAyo40LMuoZm+6bud6XqpTFz5/h4w=;
+ b=RzHo/c6K+hC2kaVSyNC2EDXk5edan5vCjkcCIrQ5izwt2DNbQmRQdNVlzw9x3rdMn5
+ /XhninFLMzvyDkqoOfjum/4CApylEwASWF+nJ4a8gDD6ZeLBFyKS0kLd/3r0aM5h31CK
+ htjqb0jFQRxac/b7hpjdAC2CR84iqxPCM4mrEvYbi/KWg4CK7H9/HgOUN151J1n64tHb
+ 8FCx/oDKqKcuLYsnoJUQi4LDpPim8wcJILq4iTrB2iYwRg6aTVdSvhSv1/+J5mHX78U/
+ 4RdVxyxFuMijKB531HU1Ys72JTQm0zkoLlZA8f/pfyI8ZT+qBQH0js8GA2hCQ1wc8oI7
+ X6zg==
+X-Gm-Message-State: AOAM531Fuvn5xq2Q4CM5ae950Z6OfaLJqbrwVHvFfqbNjEnsypy0zsvv
+ GFL/Tg7NgS0meSjKOqojaVACKRNU7PQ=
+X-Google-Smtp-Source: ABdhPJzsfnRsvnN7NXzF82DKWLsaqoILCoCIQtPq3LkXrQNm+Ok3lffawgT4bOqvq3XM+AgTcRWm8g==
+X-Received: by 2002:a5e:8411:: with SMTP id h17mr13802985ioj.1.1589796292756; 
+ Mon, 18 May 2020 03:04:52 -0700 (PDT)
+Received: from mail-il1-f182.google.com (mail-il1-f182.google.com.
+ [209.85.166.182])
+ by smtp.gmail.com with ESMTPSA id l3sm1114831iow.55.2020.05.18.03.04.51
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 18 May 2020 03:04:51 -0700 (PDT)
+Received: by mail-il1-f182.google.com with SMTP id 4so9290431ilg.1
+ for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2020 03:04:51 -0700 (PDT)
+X-Received: by 2002:a92:b001:: with SMTP id x1mr5174498ilh.18.1589796290578;
+ Mon, 18 May 2020 03:04:50 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 470799B14A663516422E7C38CC9E7744BC9531C9C7DF9683D475CD2044EBF24B2000:8
-X-MTK: N
+References: <20200506072314.112409-1-tientzu@chromium.org>
+ <20200506072314.112409-2-tientzu@chromium.org>
+ <20200515124621.GB1888557@kroah.com>
+In-Reply-To: <20200515124621.GB1888557@kroah.com>
+From: Claire Chang <tientzu@chromium.org>
+Date: Mon, 18 May 2020 18:04:39 +0800
+X-Gmail-Original-Message-ID: <CALiNf2_ukL1Ogk3MW5_DSCXHcVxTaE2Rv_JkF+hi7E-8XfrBxw@mail.gmail.com>
+Message-ID: <CALiNf2_ukL1Ogk3MW5_DSCXHcVxTaE2Rv_JkF+hi7E-8XfrBxw@mail.gmail.com>
+Subject: Re: [PATCH 1/3] serdev: ttyport: add devt for tty port
+To: Greg KH <gregkh@linuxfoundation.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200518_023218_123517_880ED22D 
-X-CRM114-Status: UNSURE (   9.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200518_030454_386705_2E18E767 
+X-CRM114-Status: GOOD (  10.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,118 +98,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
- Angus Lin <Angus.Lin@mediatek.com>, devicetree@vger.kernel.org,
- linux-pm@vger.kernel.org, Roger Lu <roger.lu@mediatek.com>,
- linux-kernel@vger.kernel.org, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
- YT Lee <yt.lee@mediatek.com>, Fan Chen <fan.chen@mediatek.com>,
- linux-mediatek@lists.infradead.org, HenryC Chen <HenryC.Chen@mediatek.com>,
- Charles Yang <Charles.Yang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: robh@kernel.org, changqi.hu@mediatek.com,
+ lkml <linux-kernel@vger.kernel.org>, long.cheng@mediatek.com,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-serial@vger.kernel.org, jslaby@suse.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add pmic/clock/irq/efuse setting in svs node
+On Fri, May 15, 2020 at 8:46 PM Greg KH <gregkh@linuxfoundation.org> wrote:
+>
+> On Wed, May 06, 2020 at 03:23:12PM +0800, Claire Chang wrote:
+> > serial_match_port() uses devt to match devices. However, when serdev
+> > registers a tty port, devt has never been set. This makes
+> > device_find_child() always return NULL.
+> >
+> > Assign devt in serdev_tty_port_register() to fix this.
+> >
+> > Signed-off-by: Claire Chang <tientzu@chromium.org>
+> > ---
+> >  drivers/tty/serdev/serdev-ttyport.c | 2 ++
+> >  1 file changed, 2 insertions(+)
+>
+> So is existing code broken because of this?  Or does no one ever call
+> device_find_child() on this?  Who needs/uses this?
+>
+> thanks,
+>
+> greg k-h
 
-Signed-off-by: Roger Lu <roger.lu@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8183-evb.dts | 16 ++++++++
- arch/arm64/boot/dts/mediatek/mt8183.dtsi    | 41 +++++++++++++++++++++
- 2 files changed, 57 insertions(+)
+I'm not sure. Our use case is to control the wake on bluetooth
+behavior by the power/wakeup node.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-index 1fb195c683c3..6ae1d9a1bcbf 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-@@ -231,6 +231,22 @@
- 
- };
- };
- 
-+&svs_cpu_little {
-+	vcpu-little-supply = <&mt6358_vproc12_reg>;
-+};
-+
-+&svs_cpu_big {
-+	vcpu-big-supply = <&mt6358_vproc11_reg>;
-+};
-+
-+&svs_cci {
-+	vcci-supply = <&mt6358_vproc12_reg>;
-+};
-+
-+&svs_gpu {
-+	vgpu-spply = <&mt6358_vgpu_reg>;
-+};
-+
- &uart0 {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 97863adb7bc0..6b6b8dc1824f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -453,6 +453,39 @@
- 			status = "disabled";
- 		};
- 
- 
-+		svs: svs@1100b000 {
-+			compatible = "mediatek,mt8183-svs";
-+			reg = <0 0x1100b000 0 0x1000>;
-+			interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&infracfg CLK_INFRA_THERM>;
-+			clock-names = "main";
-+			nvmem-cells = <&svs_calibration>,
-+				      <&thermal_calibration>;
-+			nvmem-cell-names = "svs-calibration-data",
-+					   "calibration-data";
-+
-+			svs_cpu_little: svs-cpu-little {
-+				compatible = "mediatek,mt8183-svs-cpu-little";
-+				operating-points-v2 = <&cluster0_opp>;
-+			};
-+
-+			svs_cpu_big: svs-cpu-big {
-+				compatible = "mediatek,mt8183-svs-cpu-big";
-+				operating-points-v2 = <&cluster1_opp>;
-+			};
-+
-+			svs_cci: svs-cci {
-+				compatible = "mediatek,mt8183-svs-cci";
-+				operating-points-v2 = <&cci_opp>;
-+			};
-+
-+			svs_gpu: svs-gpu {
-+				compatible = "mediatek,mt8183-svs-gpu";
-+				power-domains = <&scpsys MT8183_POWER_DOMAIN_MFG_2D>;
-+				operating-points-v2 = <&gpu_opp_table>;
-+			};
-+		};
-+
- 		i2c3: i2c@1100f000 {
- 			compatible = "mediatek,mt8183-i2c";
- 			reg = <0 0x1100f000 0 0x1000>,
-@@ -644,6 +677,14 @@
- 			compatible = "mediatek,mt8183-efuse",
- 				     "mediatek,efuse";
- 			reg = <0 0x11f10000 0 0x1000>;
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+			thermal_calibration: calib@180 {
-+				reg = <0x180 0xc>;
-+			};
-+			svs_calibration: calib@580 {
-+				reg = <0x580 0x64>;
-+			};
- 		};
- 
- 		mfgcfg: syscon@13000000 {
--- 
-2.18.0
+`readlink -f /sys/class/bluetooth/hci0`
+/sys/devices/platform/soc/11003000.serial/serial0/serial0-0/bluetooth/hci0
+
+and we'd like to use
+`/sys/devices/platform/soc/11003000.serial/serial0/power/wakeup` to
+decide whether to enable the in-band wakeup on uart host side.
+
+Thanks,
+Claire
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
