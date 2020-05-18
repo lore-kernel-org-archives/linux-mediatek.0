@@ -2,81 +2,60 @@ Return-Path: <SRS0=JQKK=7A=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6E01EC433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 10:21:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BF929C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 10:45:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3CB1B2081A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 10:21:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 92EB420657
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 10:45:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YcHAMO/7";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="XrEl9sHF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3CB1B2081A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nQerMo+h"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 92EB420657
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Adc1W7ylXAzQpl4Duu0NUqQOrTERO9B7dXY02NtBC5w=; b=YcHAMO/7P/IW7j
-	YNtol5u0YvmMD9aJXP+sTZx6VL3QN2fafPTHW3epWr8KdFXL5W8I1jOWOdTKQzTHX9VKfdCi83qPZ
-	Iur8jhXcPTYmvn0Ww7UlzukiLDq0RHCKd7CAha7qdazlBq7hCCqa8/OijdCd1IboSbGq2rVzfueYU
-	2/GhdunNzldOL+Lb+/jjzeJQpZm+7U6GC5xyczWFGHEKUtgj9hFEKtvEBJK7uqYl21g4VaIenD1ZY
-	d599vbU5pWkiwUnAvUjlsT/DcUx7YHho9cQ+tie6TlCt9Qz0E5P6W1L/fqx71Fe1/YPE/j30Q3oYz
-	hwcpB+w6qfC4aw8lCI9A==;
+	List-Owner; bh=xklTUJaOfhf9F72GWJwpYtfbrf2EYvYR0m6e+uVAWPA=; b=nQerMo+hK4TzDc
+	RuO2PTJoe8YGTuCX4qloBeRpiDzR5/dwTdPnvKv9Tuf0OtUZP4hoG4iHgC+UkGDiQBE/nabSeDP4e
+	jvE/96zzQyPczym/iLCiWfxDywlZfuVCGVeqOv1HEEeimYLvCsFPd9aIyda306TqMh1a4oHaCvh6j
+	TO9guqck7yeVvAVxsza5IPyJHbrxN+X2r2MAV9Qu2UyKCMt7DWXZ3BHXG4gRHHTLzmd5Rg3pPCfEH
+	FaKxoflzPw7uKRaOl5YLqMHn6u42aDVqURZdut1rSfJ3luwu4+ih25hvW3zNj6a1nuBhkCnC5lwhw
+	+hPF4vqxeVdQ23lbJvNw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jacty-0003pV-9v; Mon, 18 May 2020 10:21:42 +0000
-Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jacto-0003gl-RL
- for linux-mediatek@lists.infradead.org; Mon, 18 May 2020 10:21:34 +0000
-Received: by mail-qv1-xf43.google.com with SMTP id dh1so533373qvb.13
- for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2020 03:21:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4UrcruNgjCGo7KZXCgHiav/SoRCLnqO+sVxO468jQxk=;
- b=XrEl9sHFgivtGiowFoKRu5yIVdUWcaZJdjFIXahTi0v6zxZopJjqS+otsRjUQ0uzI0
- UaQVSNdIw3+kjD3YpjRPmBQ3TqveF6YF10CWA1br/+YLHZ4FSfqHDm1qF1SqIYC0IqFI
- ElcZCUsjbZ1RguikKV5X9z2YWiX3+pnPfuj2GvmcKjtUXFaR2VpOseS/LbtDHhpoCAoW
- dbN+WMRk18FgeQfVgc1G/WSgpNq9Tg4rc5pANHZKRGc2Pz80r1PBGmJ1HsTSr4LOd4/M
- vwhHbgQaKqW3bkoFhCqMbZygOJJ28YHvnNkBkja+Lhl+p+4jPBJFFk0kTLQthpdoqHHc
- Ltaw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4UrcruNgjCGo7KZXCgHiav/SoRCLnqO+sVxO468jQxk=;
- b=hLrt9jj3whxu8QQ2yRNdcfWo7ZoDfddkXn7VtdUvl4brRZxZcgP7uK1j0myiUDynM/
- qUrNJhGUnEpHy6wN1QZu+V0tYjVSDcpCrmnbzk8vzVPCyoFMcrLth4aVY9d2m84lJgxl
- Zs5NjRZ0vtCBgWMdF4U1yYC/LGy0cVJxKFszabsHisWXJ3VNRuGcHPhbRGQTikXCfeAZ
- OSm86xGMAaV/ADDK6QSam7Ux+lQWb61p4AExJ+7HrX+1/G+TCQicD80BV21DTdQu9PQM
- TvMF7GfHQgcL3TU0zhq1f0LKXqKU0uKmvvILd5alsd2UMh+iDxXeIdhvAwaT8QUT8kMZ
- kUSA==
-X-Gm-Message-State: AOAM533d6inqv7oVeOpypgJVjYlhQ+mI7IvjjAXRirAkLIGJ12jxjX9L
- YWDOipaIMCk+DOc4qPMdFLGCpQxy1PHo9JUFNbZrWA==
-X-Google-Smtp-Source: ABdhPJyNyqADDvdIZsxbu7Busv3cV/81dNCg8TDFn1vl3XaGowalaeZmbhQgFSNC5s7z33HHXZTX/YiuAZGYuQ18zkc=
-X-Received: by 2002:a0c:db03:: with SMTP id d3mr15524799qvk.80.1589797291392; 
- Mon, 18 May 2020 03:21:31 -0700 (PDT)
+	id 1jadHL-0001QV-UH; Mon, 18 May 2020 10:45:51 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jadHC-0001J1-Bw; Mon, 18 May 2020 10:45:44 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 52543101E;
+ Mon, 18 May 2020 03:45:37 -0700 (PDT)
+Received: from C02TD0UTHF1T.local (unknown [172.31.20.19])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DBF4B3F52E;
+ Mon, 18 May 2020 03:45:33 -0700 (PDT)
+Date: Mon, 18 May 2020 11:45:24 +0100
+From: Mark Rutland <mark.rutland@arm.com>
+To: Lecopzer Chen <lecopzer@gmail.com>, alexandru.elisei@arm.com
+Subject: Re: [PATCH 0/3] arm64: perf: Add support for Perf NMI interrupts
+Message-ID: <20200518104524.GA1224@C02TD0UTHF1T.local>
+References: <20200516124857.75004-1-lecopzer@gmail.com>
+ <CAFA6WYNwp+_ENiS8QDao5+RXyt5ofJZyq6c5CKG_d0CNEmBNYg@mail.gmail.com>
+ <CANr2M19unLW8n0P2DiOYEZ=GZcaD-L2ygPht_5HNtNZ6e4h6xQ@mail.gmail.com>
 MIME-Version: 1.0
-References: <20200518062603.4570-1-walter-zh.wu@mediatek.com>
-In-Reply-To: <20200518062603.4570-1-walter-zh.wu@mediatek.com>
-From: Dmitry Vyukov <dvyukov@google.com>
-Date: Mon, 18 May 2020 12:21:19 +0200
-Message-ID: <CACT4Y+aSmcoSeC7J7RgoVV8CanwCrEz=zNZYG=_8KX3U-57A5Q@mail.gmail.com>
-Subject: Re: [PATCH v3 1/4] rcu/kasan: record and print call_rcu() call stack
-To: Walter Wu <walter-zh.wu@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <CANr2M19unLW8n0P2DiOYEZ=GZcaD-L2ygPht_5HNtNZ6e4h6xQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200518_032132_889435_9F0CC034 
-X-CRM114-Status: GOOD (  28.73  )
+X-CRM114-CacheID: sfid-20200518_034542_493031_6E8CF4A3 
+X-CRM114-Status: GOOD (  24.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,245 +67,81 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream <wsd_upstream@mediatek.com>,
- "Paul E . McKenney" <paulmck@kernel.org>, Linux-MM <linux-mm@kvack.org>,
- Lai Jiangshan <jiangshanlai@gmail.com>, Josh Triplett <josh@joshtriplett.org>,
- kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>,
- Joel Fernandes <joel@joelfernandes.org>, linux-mediatek@lists.infradead.org,
- Alexander Potapenko <glider@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Sumit Garg <sumit.garg@linaro.org>,
+ Jian-Lin Chen <lecopzer.chen@mediatek.com>, Will Deacon <will@kernel.org>,
+ alexander.shishkin@linux.intel.com, Catalin Marinas <catalin.marinas@arm.com>,
+ yj.chiang@mediatek.com,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, acme@kernel.org,
+ Peter Zijlstra <peterz@infradead.org>, mingo@redhat.com,
+ linux-mediatek@lists.infradead.org,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ matthias.bgg@gmail.com, namhyung@kernel.org, jolsa@redhat.com,
+ julien.thierry.kdev@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 18, 2020 at 8:26 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
->
-> This feature will record the last two call_rcu() call stack and
-> prints up to 2 call_rcu() call stacks in KASAN report.
->
-> When call_rcu() is called, we store the call_rcu() call stack into
-> slub alloc meta-data, so that the KASAN report can print rcu stack.
->
-> [1]https://bugzilla.kernel.org/show_bug.cgi?id=198437
-> [2]https://groups.google.com/forum/#!searchin/kasan-dev/better$20stack$20traces$20for$20rcu%7Csort:date/kasan-dev/KQsjT_88hDE/7rNUZprRBgAJ
->
-> Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> Suggested-by: Dmitry Vyukov <dvyukov@google.com>
-> Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
-> Cc: Dmitry Vyukov <dvyukov@google.com>
-> Cc: Alexander Potapenko <glider@google.com>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: Paul E. McKenney <paulmck@kernel.org>
-> Cc: Josh Triplett <josh@joshtriplett.org>
-> Cc: Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
-> Cc: Lai Jiangshan <jiangshanlai@gmail.com>
-> Cc: Joel Fernandes <joel@joelfernandes.org>
-> ---
->  include/linux/kasan.h |  2 ++
->  kernel/rcu/tree.c     |  2 ++
->  lib/Kconfig.kasan     |  2 ++
->  mm/kasan/common.c     |  4 ++--
->  mm/kasan/generic.c    | 20 ++++++++++++++++++++
->  mm/kasan/kasan.h      | 10 ++++++++++
->  mm/kasan/report.c     | 24 ++++++++++++++++++++++++
->  7 files changed, 62 insertions(+), 2 deletions(-)
->
-> diff --git a/include/linux/kasan.h b/include/linux/kasan.h
-> index 31314ca7c635..23b7ee00572d 100644
-> --- a/include/linux/kasan.h
-> +++ b/include/linux/kasan.h
-> @@ -174,11 +174,13 @@ static inline size_t kasan_metadata_size(struct kmem_cache *cache) { return 0; }
->
->  void kasan_cache_shrink(struct kmem_cache *cache);
->  void kasan_cache_shutdown(struct kmem_cache *cache);
-> +void kasan_record_aux_stack(void *ptr);
->
->  #else /* CONFIG_KASAN_GENERIC */
->
->  static inline void kasan_cache_shrink(struct kmem_cache *cache) {}
->  static inline void kasan_cache_shutdown(struct kmem_cache *cache) {}
-> +static inline void kasan_record_aux_stack(void *ptr) {}
->
->  #endif /* CONFIG_KASAN_GENERIC */
->
-> diff --git a/kernel/rcu/tree.c b/kernel/rcu/tree.c
-> index 06548e2ebb72..36a4ff7f320b 100644
-> --- a/kernel/rcu/tree.c
-> +++ b/kernel/rcu/tree.c
-> @@ -57,6 +57,7 @@
->  #include <linux/slab.h>
->  #include <linux/sched/isolation.h>
->  #include <linux/sched/clock.h>
-> +#include <linux/kasan.h>
->  #include "../time/tick-internal.h"
->
->  #include "tree.h"
-> @@ -2668,6 +2669,7 @@ __call_rcu(struct rcu_head *head, rcu_callback_t func)
->         head->func = func;
->         head->next = NULL;
->         local_irq_save(flags);
-> +       kasan_record_aux_stack(head);
->         rdp = this_cpu_ptr(&rcu_data);
->
->         /* Add the callback to our list. */
-> diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
-> index 81f5464ea9e1..4e83cf6e3caa 100644
-> --- a/lib/Kconfig.kasan
-> +++ b/lib/Kconfig.kasan
-> @@ -58,6 +58,8 @@ config KASAN_GENERIC
->           For better error detection enable CONFIG_STACKTRACE.
->           Currently CONFIG_KASAN_GENERIC doesn't work with CONFIG_DEBUG_SLAB
->           (the resulting kernel does not boot).
-> +         In generic mode KASAN prints the last two call_rcu() call stacks in
-> +         reports.
->
->  config KASAN_SW_TAGS
->         bool "Software tag-based mode"
-> diff --git a/mm/kasan/common.c b/mm/kasan/common.c
-> index 2906358e42f0..8bc618289bb1 100644
-> --- a/mm/kasan/common.c
-> +++ b/mm/kasan/common.c
-> @@ -41,7 +41,7 @@
->  #include "kasan.h"
->  #include "../slab.h"
->
-> -static inline depot_stack_handle_t save_stack(gfp_t flags)
-> +depot_stack_handle_t kasan_save_stack(gfp_t flags)
->  {
->         unsigned long entries[KASAN_STACK_DEPTH];
->         unsigned int nr_entries;
-> @@ -54,7 +54,7 @@ static inline depot_stack_handle_t save_stack(gfp_t flags)
->  static inline void set_track(struct kasan_track *track, gfp_t flags)
->  {
->         track->pid = current->pid;
-> -       track->stack = save_stack(flags);
-> +       track->stack = kasan_save_stack(flags);
->  }
->
->  void kasan_enable_current(void)
-> diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
-> index 56ff8885fe2e..78d8e0a75a8a 100644
-> --- a/mm/kasan/generic.c
-> +++ b/mm/kasan/generic.c
-> @@ -325,3 +325,23 @@ DEFINE_ASAN_SET_SHADOW(f2);
->  DEFINE_ASAN_SET_SHADOW(f3);
->  DEFINE_ASAN_SET_SHADOW(f5);
->  DEFINE_ASAN_SET_SHADOW(f8);
-> +
-> +void kasan_record_aux_stack(void *addr)
-> +{
-> +       struct page *page = kasan_addr_to_page(addr);
-> +       struct kmem_cache *cache;
-> +       struct kasan_alloc_meta *alloc_info;
-> +       void *object;
-> +
-> +       if (!(page && PageSlab(page)))
-> +               return;
-> +
-> +       cache = page->slab_cache;
-> +       object = nearest_obj(cache, page, addr);
-> +       alloc_info = get_alloc_info(cache, object);
-> +
-> +       /* record last two call_rcu() call stacks */
-> +       if (alloc_info->rcu_stack[0])
-
-Do we need this if?
-
-If we do "alloc_info->rcu_stack[1] = alloc_info->rcu_stack[0]"
-unconditionally, then we will just move 0 from [0] to [1], which
-should be 0 at this point anyway.
-
-I think it will be more reasonable to rename rcu_stack to aux_stack,
-the function that stores the stacks is kasan_record_aux_stack.
-
-> +               alloc_info->rcu_stack[1] = alloc_info->rcu_stack[0];
-> +       alloc_info->rcu_stack[0] = kasan_save_stack(GFP_NOWAIT);
-> +}
-> diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-> index e8f37199d885..870c5dd07756 100644
-> --- a/mm/kasan/kasan.h
-> +++ b/mm/kasan/kasan.h
-> @@ -104,7 +104,15 @@ struct kasan_track {
->
->  struct kasan_alloc_meta {
->         struct kasan_track alloc_track;
-> +#ifdef CONFIG_KASAN_GENERIC
-> +       /*
-> +        * call_rcu() call stack is stored into struct kasan_alloc_meta.
-> +        * The free stack is stored into struct kasan_free_meta.
-> +        */
-> +       depot_stack_handle_t rcu_stack[2];
-> +#else
->         struct kasan_track free_track[KASAN_NR_FREE_STACKS];
-> +#endif
->  #ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
->         u8 free_pointer_tag[KASAN_NR_FREE_STACKS];
->         u8 free_track_idx;
-> @@ -159,6 +167,8 @@ void kasan_report_invalid_free(void *object, unsigned long ip);
->
->  struct page *kasan_addr_to_page(const void *addr);
->
-> +depot_stack_handle_t kasan_save_stack(gfp_t flags);
-> +
->  #if defined(CONFIG_KASAN_GENERIC) && \
->         (defined(CONFIG_SLAB) || defined(CONFIG_SLUB))
->  void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache);
-> diff --git a/mm/kasan/report.c b/mm/kasan/report.c
-> index 80f23c9da6b0..5ee66cf7e27c 100644
-> --- a/mm/kasan/report.c
-> +++ b/mm/kasan/report.c
-> @@ -179,6 +179,17 @@ static struct kasan_track *kasan_get_free_track(struct kmem_cache *cache,
->         return &alloc_meta->free_track[i];
->  }
->
-> +#ifdef CONFIG_KASAN_GENERIC
-> +static void print_stack(depot_stack_handle_t stack)
-> +{
-> +       unsigned long *entries;
-> +       unsigned int nr_entries;
-> +
-> +       nr_entries = stack_depot_fetch(stack, &entries);
-> +       stack_trace_print(entries, nr_entries, 0);
-> +}
-> +#endif
-> +
->  static void describe_object(struct kmem_cache *cache, void *object,
->                                 const void *addr, u8 tag)
->  {
-> @@ -192,6 +203,19 @@ static void describe_object(struct kmem_cache *cache, void *object,
->                 free_track = kasan_get_free_track(cache, object, tag);
->                 print_track(free_track, "Freed");
->                 pr_err("\n");
-> +
-> +#ifdef CONFIG_KASAN_GENERIC
-> +               if (alloc_info->rcu_stack[0]) {
-> +                       pr_err("Last one call_rcu() call stack:\n");
-> +                       print_stack(alloc_info->rcu_stack[0]);
-> +                       pr_err("\n");
-> +               }
-> +               if (alloc_info->rcu_stack[1]) {
-> +                       pr_err("Second to last call_rcu() call stack:\n");
-> +                       print_stack(alloc_info->rcu_stack[1]);
-> +                       pr_err("\n");
-> +               }
-> +#endif
->         }
->
->         describe_object_addr(cache, object, addr);
-> --
-> 2.18.0
->
-> --
-> You received this message because you are subscribed to the Google Groups "kasan-dev" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/20200518062603.4570-1-walter-zh.wu%40mediatek.com.
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgYWxsLAoKT24gTW9uLCBNYXkgMTgsIDIwMjAgYXQgMDI6MjY6MDBQTSArMDgwMCwgTGVjb3B6
+ZXIgQ2hlbiB3cm90ZToKPiBISSBTdW1pdCwKPiAKPiBUaGFua3MgZm9yIHlvdXIgaW5mb3JtYXRp
+b24uCj4gCj4gSSd2ZSBhbHJlYWR5IGltcGxlbWVudGVkIElQSSAoc2FtZSBhcyB5b3UgZGlkIFsx
+XSwgbGl0dGxlIGRpZmZlcmVuY2UKPiBpbiBkZXRhaWwpLCBoYXJkbG9ja3VwIGRldGVjdG9yIGFu
+ZCBwZXJmIGluIGxhc3QgeWVhcigyMDE5KSBmb3IKPiBkZWJ1Z2dhYmlsaXR5Lgo+IEFuZCBub3cg
+d2UgdGVuZCB0byB1cHN0cmVhbSB0byByZWR1Y2Uga2VybmVsIG1haW50YWluaW5nIGVmZm9ydC4K
+PiBJJ20gZ2xhZCBpZiBzb21lb25lIGluIEFSTSBjYW4gZG8gdGhpcyB3b3JrIDopCj4gCj4gSGkg
+SnVsaWVuLAo+IAo+IERvZXMgYW55IEFybSBtYWludGFpbmVycyBjYW4gcHJvY2VlZCB0aGlzIGFj
+dGlvbj8KCkFsZXhhbmRydSAoQ2MnZCkgaGFzIGJlZW4gcmViYXNpbmcgYW5kIHJld29ya2luZyBK
+dWxpZW4ncyBwYXRjaGVzLCB3aGljaAppcyBteSBwcmVmZXJyZWQgYXBwcm9hY2guCgpJIHVuZGVy
+c3RhbmQgdGhhdCdzIG5vdCBxdWl0ZSByZWFkeSBmb3IgcG9zdGluZyBzaW5jZSBoZSdzIGludmVz
+dGlnYXRpbmcKc29tZSBvZiB0aGUgbmFzdGllciBzdWJ0bGV0aWVzIChlLmcuIG11dHVhbCBleGNs
+dXNpb24gd2l0aCB0aGUgTk1JKSwgYnV0Cm1heWJlIHdlIGNhbiBwdXQgdGhlIHdvcmstaW4tcHJv
+Z3Jlc3MgcGF0Y2hlcyBzb21ld2hlcmUgaW4gdGhlIG1lYW4KdGltZS4KCkFsZXhhbmRydSwgZG8g
+eW91IGhhdmUgYW4gaWRlYSBvZiB3aGF0IG5lZWRzIHRvIGJlIGRvbmUsIGFuZC9vciB3aGVuIHlv
+dQpleHBlY3QgeW91IGNvdWxkIHBvc3QgdGhhdD8KClRoYW5rcywKTWFyay4KCj4gVGhpcyBpcyBy
+ZWFsbHkgdXNlZnVsIGluIGRlYnVnZ2luZy4KPiBUaGFuayB5b3UhIQo+IAo+IAo+IAo+IFsxXSBo
+dHRwczovL2xrbWwub3JnL2xrbWwvMjAyMC80LzI0LzMyOAo+IAo+IAo+IExlY29wemVyCj4gCj4g
+U3VtaXQgR2FyZyA8c3VtaXQuZ2FyZ0BsaW5hcm8ub3JnPiDmlrwgMjAyMOW5tDXmnIgxOOaXpSDp
+gLHkuIAg5LiL5Y2IMTo0NuWvq+mBk++8mgo+ID4KPiA+ICsgSnVsaWVuCj4gPgo+ID4gSGkgTGVj
+b3B6ZXIsCj4gPgo+ID4gT24gU2F0LCAxNiBNYXkgMjAyMCBhdCAxODoyMCwgTGVjb3B6ZXIgQ2hl
+biA8bGVjb3B6ZXJAZ21haWwuY29tPiB3cm90ZToKPiA+ID4KPiA+ID4gVGhlc2Ugc2VyaWVzIGlt
+cGxlbWVudCBQZXJmIE5NSSBmdW54dGlvbmFsaXR5IGFuZCBkZXBlbmRzIG9uCj4gPiA+IFBzZXVk
+byBOTUkgWzFdIHdoaWNoIGhhcyBiZWVuIHVwc3RyZWFtZWQuCj4gPiA+Cj4gPiA+IEluIGFybTY0
+IHdpdGggR0lDdjMsIFBzZXVkbyBOTUkgd2FzIGltcGxlbWVudGVkIGZvciBOTUktbGlrZSBpbnRl
+cnJ1dHMuCj4gPiA+IFRoYXQgY2FuIGJlIGV4dGVuZGVkIHRvIFBlcmYgTk1JIHdoaWNoIGlzIHRo
+ZSBwcmVyZXF1aXNpdGUgZm9yIGhhcmQtbG9ja3VwCj4gPiA+IGRldGVjdG9yIHdoaWNoIGhhZCBh
+bHJlYWR5IGEgc3RhbmRhcmQgaW50ZXJmYWNlIGluc2lkZSBMaW51eC4KPiA+ID4KPiA+ID4gVGh1
+cyB0aGUgZmlyc3Qgc3RlcCB3ZSBuZWVkIHRvIGltcGxlbWVudCBwZXJmIE5NSSBpbnRlcmZhY2Ug
+YW5kIG1ha2Ugc3VyZQo+ID4gPiBpdCB3b3JrcyBmaW5lLgo+ID4gPgo+ID4KPiA+IFRoaXMgaXMg
+c29tZXRoaW5nIHRoYXQgaXMgYWxyZWFkeSBpbXBsZW1lbnRlZCB2aWEgSnVsaWVuJ3MgcGF0Y2gt
+c2V0Cj4gPiBbMV0uIEl0cyB2NCBoYXMgYmVlbiBmbG9hdGluZyBzaW5jZSBKdWx5LCAyMDE5IGFu
+ZCBJIGNvdWxkbid0IGZpbmQgYW55Cj4gPiBtYWpvciBibG9ja2luZyBjb21tZW50cyBidXQgbm90
+IHN1cmUgd2h5IHRoaW5ncyBoYXZlbid0IHByb2dyZXNzZWQKPiA+IGZ1cnRoZXIuCj4gPgo+ID4g
+TWF5YmUgSnVsaWVuIG9yIEFybSBtYWludGFpbmVycyBjYW4gcHJvdmlkZSB1cGRhdGVzIG9uIGV4
+aXN0aW5nCj4gPiBwYXRjaC1zZXQgWzFdIGFuZCBob3cgd2Ugc2hvdWxkIHByb2NlZWQgZnVydGhl
+ciB3aXRoIHRoaXMgaW50ZXJlc3RpbmcKPiA+IGZlYXR1cmUuCj4gPgo+ID4gQW5kIHJlZ2FyZGlu
+ZyBoYXJkLWxvY2t1cCBkZXRlY3Rpb24sIEkgaGF2ZSBiZWVuIGFibGUgdG8gZW5hYmxlIGl0Cj4g
+PiBiYXNlZCBvbiBwZXJmIE5NSSBldmVudHMgdXNpbmcgSnVsaWVuJ3MgcGVyZiBwYXRjaC1zZXQg
+WzFdLiBIYXZlIGEKPiA+IGxvb2sgYXQgdGhlIHBhdGNoIGhlcmUgWzJdLgo+ID4KPiA+IFsxXSBo
+dHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL2NvdmVyLzExMDQ3NDA3Lwo+ID4gWzJdIGh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL3BpcGVybWFpbC9saW51eC1hcm0ta2VybmVsLzIwMjAtTWF5
+LzczMjIyNy5odG1sCj4gPgo+ID4gLVN1bWl0Cj4gPgo+ID4gPiBQZXJmIE5NSSBoYXMgYmVlbiB0
+ZXN0IGJ5IGRkIGlmPS9kZXYvdXJhbmRvbSBvZj0vZGV2L251bGwgbGlrZSB0aGUgbGluayBbMl0K
+PiA+ID4gZGlkLgo+ID4gPgo+ID4gPiBbMV0gaHR0cHM6Ly9sa21sLm9yZy9sa21sLzIwMTkvMS8z
+MS81MzUKPiA+ID4gWzJdIGh0dHBzOi8vd3d3LmxpbmFyby5vcmcvYmxvZy9kZWJ1Z2dpbmctYXJt
+LWtlcm5lbHMtdXNpbmctbm1pZmlxCj4gPiA+Cj4gPiA+Cj4gPiA+IExlY29wemVyIENoZW4gKDMp
+Ogo+ID4gPiAgIGFybV9wbXU6IEFkZCBzdXBwb3J0IGZvciBwZXJmIE5NSSBpbnRlcnJ1cHRzIHJl
+Z2lzdHJhdGlvbgo+ID4gPiAgIGFybTY0OiBwZXJmOiBTdXBwb3J0IE5NSSBjb250ZXh0IGZvciBw
+ZXJmIGV2ZW50IElTUgo+ID4gPiAgIGFybTY0OiBLY29uZmlnOiBBZGQgc3VwcG9ydCBmb3IgdGhl
+IFBlcmYgTk1JCj4gPiA+Cj4gPiA+ICBhcmNoL2FybTY0L0tjb25maWcgICAgICAgICAgICAgfCAx
+MCArKysrKysrCj4gPiA+ICBhcmNoL2FybTY0L2tlcm5lbC9wZXJmX2V2ZW50LmMgfCAzNiArKysr
+KysrKysrKysrKysrKystLS0tLS0KPiA+ID4gIGRyaXZlcnMvcGVyZi9hcm1fcG11LmMgICAgICAg
+ICB8IDUxICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0tLS0KPiA+ID4gIGluY2x1ZGUv
+bGludXgvcGVyZi9hcm1fcG11LmggICB8ICA2ICsrKysKPiA+ID4gIDQgZmlsZXMgY2hhbmdlZCwg
+ODggaW5zZXJ0aW9ucygrKSwgMTUgZGVsZXRpb25zKC0pCj4gPiA+Cj4gPiA+IC0tCj4gPiA+IDIu
+MjUuMQo+ID4gPgo+ID4gPgo+ID4gPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwo+ID4gPiBsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdAo+ID4gPiBs
+aW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKPiA+ID4gaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
+aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
