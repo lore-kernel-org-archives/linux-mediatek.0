@@ -2,80 +2,76 @@ Return-Path: <SRS0=JQKK=7A=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
-	version=3.4.0
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A2752C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 06:55:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2BDDAC433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 09:25:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7ABB9207D4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 06:55:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E618B20787
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 09:25:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uVTrchL7";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ptpOJFQJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7ABB9207D4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Rz4VyDhn";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Va6hluz4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E618B20787
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i0eHyN6rbSnluA7Nw75SJM3xm3CaO3L0rSyMeQT5Rfw=; b=uVTrchL7m+PlXx
-	wI4/GRYPs0dT+AD0hyZztDxjX0Vun4xCaXp53alLD7EAwBw50EJhuur3pLH7xwzTdo+0fnTHW76Y4
-	Getx/rbRDnAAzzs4MDmUKIH8GZmEMydKVdDbQPiX0W2Y7FdrfBAbPGQA22N2YFEXIaTdso/kBxHbq
-	yqaaAFzZRIq2lBTEJpR0D6JFgi2pAcvvyTfnLNj/coA7ekSwKE5yqHIjKhhTnOC+vQOBMUCT/C/YX
-	0I3VYLTE7ofY/ih0A+mooOFHG4GR4ECL1BFniOnuU+sT4uQi7oOm6WN7a7UIkvvCQUv5JUkBnWL5P
-	lClm4dv9PCCN0HtYkqgQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=uUmALTM3pXb2ECK/v5MZUKT1MY8w/4xAj+r/jipuf+s=; b=Rz4VyDhnBVyetH
+	N7tPYttFA6Ed4RfNo1Fgkx7MOdg/X3FM3TmPcoOlforDk5ZbHja4nm1Yst/W8Rzm7gdOrfCTg8ir4
+	O/JDzZkRKVJ26KX9OsrEbWGq9xE/bVfndwrO5FX3VqutpvGoMhwURm8KFbHqmFlbhrN3LSpMclJr3
+	HBeeId/hCmbxs+LFQclnZ+Gs0JE+rkUgnUFk4S0iPBp6WU11KjfC8DJxTqHTovWDOpssNlABtkijd
+	Q4jKmMdd4VdGNaU7WxJsOm0jfoQovXetud1YBuZGJtq8zeUyBhNuGNzVXdyPBOAWtaHi/+jDrZ8jK
+	TaQXoUfwRDvZuwe9pg2A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jaZge-0004pr-9X; Mon, 18 May 2020 06:55:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jac16-00068y-3b; Mon, 18 May 2020 09:25:00 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jaZga-0004pF-Ol
- for linux-mediatek@lists.infradead.org; Mon, 18 May 2020 06:55:42 +0000
-X-UUID: dcc079fdc6d143b6982f9aa4130ba5f6-20200517
+ id 1jac13-00067o-KJ; Mon, 18 May 2020 09:24:59 +0000
+X-UUID: 6b503ae948b542649b259568cd64efcf-20200518
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=BE27p8cgAXdiOJaTc4rLjiLgh00VCcwZpGfoS4OOzsM=; 
- b=ptpOJFQJPFBPL0cXkOqi5XQq0/yJTcAYzd6Xd1kQWwUg4VdHh2mnbGPt0mbD9ULSgjuY9RuCQsxe6WDM+RcppeVDqP5klDWQdDGAiu8iiqef6Im9IPnivLimwGbVBzh1ZnPdTsfZL3fSYtLAJ1PlFQquB/C2sLu1OEw+FwOZ+Sc=;
-X-UUID: dcc079fdc6d143b6982f9aa4130ba5f6-20200517
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=0DTYtg7DH/aaZsHajF1M0GEhpPDj6HE4U9Su4EW4ZBg=; 
+ b=Va6hluz4/bYSptacD8bkhsa7nqDZ2RFMyTranQOalM8PvJkJFDufyvfFqfxrt16Eu3JTqNK1zXkkWjaYPe4/rTWrbAF32VKsT7VVlBavvczJ9jN19kkFozRrtllCR0Kyh2vL+FHwLlmDezX0unYUnglb0LuuuzxNYqAEFeq5e5w=;
+X-UUID: 6b503ae948b542649b259568cd64efcf-20200518
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <roger.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 847130598; Sun, 17 May 2020 22:55:16 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ with ESMTP id 546234437; Mon, 18 May 2020 01:24:44 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 17 May 2020 23:52:52 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 18 May 2020 14:52:46 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 18 May 2020 14:52:46 +0800
-Message-ID: <1589784680.15083.19.camel@mhfsdcap03>
-Subject: Re: [PATCH v2 23/33] iommu/mediatek-v1 Convert to
- probe/release_device() call-backs
-From: Yong Wu <yong.wu@mediatek.com>
-To: Joerg Roedel <joro@8bytes.org>
-Date: Mon, 18 May 2020 14:51:20 +0800
-In-Reply-To: <20200515100718.GS18353@8bytes.org>
-References: <20200414131542.25608-1-joro@8bytes.org>
- <20200414131542.25608-24-joro@8bytes.org>
- <1589528699.26119.9.camel@mhfsdcap03> <20200515100718.GS18353@8bytes.org>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ 15.0.1497.2; Mon, 18 May 2020 02:24:48 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 18 May 2020 17:24:45 +0800
+Received: from mtksdaap41.mediatek.inc (172.21.77.4) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 18 May 2020 17:24:45 +0800
+From: Roger Lu <roger.lu@mediatek.com>
+To: Kevin Hilman <khilman@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Nicolas Boichat <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>
+Subject: [PATCH v8 0/3] PM / AVS: SVS: Introduce SVS engine
+Date: Mon, 18 May 2020 17:24:01 +0800
+Message-ID: <20200518092403.22647-1-roger.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 645326C83BAFED16ABAF80B4AAC8D7BA842597586DFE9CAF78B92A85A256ADAF2000:8
+X-TM-SNTS-SMTP: 5934DDCDEAF0C437AC4DD8F51EBED5FD5EACA359D2BA842B5D2816D48513A4412000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200517_235540_814932_50CA4522 
-X-CRM114-Status: GOOD (  22.59  )
+X-CRM114-CacheID: sfid-20200518_022457_664592_2F9B343D 
+X-CRM114-Status: UNSURE (   8.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,136 +83,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Joerg Roedel <jroedel@suse.de>, Robin Murphy <robin.murphy@arm.com>,
- linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Will Deacon <will@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
+ Angus Lin <Angus.Lin@mediatek.com>, devicetree@vger.kernel.org,
+ linux-pm@vger.kernel.org, Roger Lu <roger.lu@mediatek.com>,
+ linux-kernel@vger.kernel.org, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
+ YT Lee <yt.lee@mediatek.com>, Fan Chen <fan.chen@mediatek.com>,
+ linux-mediatek@lists.infradead.org, HenryC Chen <HenryC.Chen@mediatek.com>,
+ Charles Yang <Charles.Yang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-05-15 at 12:07 +0200, Joerg Roedel wrote:
-> Hi,
-> 
-> On Fri, May 15, 2020 at 03:44:59PM +0800, Yong Wu wrote:
-> > On Tue, 2020-04-14 at 15:15 +0200, Joerg Roedel wrote:
-> > > -	return iommu_device_link(&data->iommu, dev);
-> > > +	err = arm_iommu_attach_device(dev, mtk_mapping);
-> > > +	if (err)
-> > > +		dev_err(dev, "Can't create IOMMU mapping - DMA-OPS will not work\n");
-> > 
-> > 
-> > Hi Joerg,
-> > 
-> >      Thanks very much for this patch.
-> > 
-> >      This arm_iommu_attach_device is called just as we expected.
-> > 
-> >      But it will fail in this callstack as the group->mutex was tried to
-> > be re-locked...
-> > 
-> > [<c0938e8c>] (iommu_attach_device) from [<c0317590>]
-> > (__arm_iommu_attach_device+0x34/0x90)
-> > [<c0317590>] (__arm_iommu_attach_device) from [<c03175f8>]
-> > (arm_iommu_attach_device+0xc/0x20)
-> > [<c03175f8>] (arm_iommu_attach_device) from [<c09432cc>]
-> > (mtk_iommu_probe_finalize+0x34/0x50)
-> > [<c09432cc>] (mtk_iommu_probe_finalize) from [<c093a8ac>]
-> > (bus_iommu_probe+0x2a8/0x2c4)
-> > [<c093a8ac>] (bus_iommu_probe) from [<c093a950>] (bus_set_iommu
-> > +0x88/0xd4)
-> > [<c093a950>] (bus_set_iommu) from [<c0943c74>] (mtk_iommu_probe
-> > +0x2f8/0x364)
-> 
-> Thanks for the report, is
-> 
-> 	https://lore.kernel.org/lkml/1589530123-30240-1-git-send-email-yong.wu@mediatek.com/
-> 
-> The fix for this issue or is something else required?
+1. SVS driver use OPP adjust event in [1] to update OPP table voltage part.
+2. SVS dts node refers to CPU opp table [2] and GPU opp table [3].
+3. SVS and thermal dts use the same thermal efuse [4].
+4. SVS dts needs power-domain [5][6] and PMIC regulator [7].
 
-No. That patch only adjust the internal flow to satisfy the latest
-framework, it's not for fixing this mutex issue. 
+[1] https://patchwork.kernel.org/patch/11193513/
+[2] https://patchwork.kernel.org/patch/11304935/
+[3] https://patchwork.kernel.org/patch/11423009/
+[4] https://patchwork.kernel.org/patch/11316495/
+[5] https://lore.kernel.org/patchwork/patch/1236875/
+[6] https://lore.kernel.org/patchwork/patch/1236878/
+[7] https://patchwork.kernel.org/patch/11284617/
 
-Here I only reported this issue.
+pending discussion:
+- SVS sub-node architecture concern in below patch.
+https://lore.kernel.org/patchwork/patch/1175994/
+https://lore.kernel.org/patchwork/patch/1175994/
 
-below is my local patch. split "dma_attach" to attach_device and
-probe_finalize. About attach_device, Use the existed
-__iommu_attach_group instead. Then rename from the "dma_attach" to
-"probe_finalize" to do the probe_finalize job. And move it outside of
-the mutex_unlock.
+changes since v7:
+- Add "mtk_svs.yaml" for device-tree binding document.
+- Add svs_add_thermal_device_link() in driver for svs device (consumer)
+to link thermal device (supplier).
+- replace pm_qos_add_request() with cpu_latency_qos_add_request() for
+letting CPUs leave idle-off state.
 
-I'm not sure if it is right. and of course I will test if you have any
-other solution. Thanks.
+Roger Lu (3):
+  dt-bindings: power: avs: add mtk svs dt-bindings
+  arm64: dts: mt8183: add svs device information
+  PM / AVS: SVS: Introduce SVS engine
 
-
---- a/drivers/iommu/iommu.c
-+++ b/drivers/iommu/iommu.c
-@@ -1665,26 +1665,20 @@ static void probe_alloc_default_domain(struct
-bus_type *bus,
- 
- }
- 
--static int iommu_group_do_dma_attach(struct device *dev, void *data)
-+static int iommu_group_do_probe_finalize(struct device *dev, void
-*data)
- {
- 	struct iommu_domain *domain = data;
--	const struct iommu_ops *ops;
--	int ret;
--
--	ret = __iommu_attach_device(domain, dev);
--
--	ops = domain->ops;
-+	const struct iommu_ops *ops = domain->ops;
- 
--	if (ret == 0 && ops->probe_finalize)
-+	if (ops->probe_finalize)
- 		ops->probe_finalize(dev);
--
--	return ret;
-+	return 0;
- }
- 
--static int __iommu_group_dma_attach(struct iommu_group *group)
-+static int iommu_group_probe_finalize(struct iommu_group *group)
- {
- 	return __iommu_group_for_each_dev(group, group->default_domain,
--					  iommu_group_do_dma_attach);
-+					  iommu_group_do_probe_finalize);
- }
- 
- static int iommu_do_create_direct_mappings(struct device *dev, void
-*data)
-@@ -1731,12 +1725,14 @@ int bus_iommu_probe(struct bus_type *bus)
- 
- 		iommu_group_create_direct_mappings(group);
- 
--		ret = __iommu_group_dma_attach(group);
-+		ret = __iommu_attach_group(group->default_domain, group);
- 
- 		mutex_unlock(&group->mutex);
- 
- 		if (ret)
- 			break;
-+
-+		iommu_group_probe_finalize(group);
- 	}
- 
- 	return ret;
--- 
-
-> 
-> 
-> Thanks,
-> 
-> 	Joerg
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
+ .../bindings/power/avs/mtk_svs.yaml           |  141 ++
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts   |   16 +
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      |   41 +
+ drivers/power/avs/Kconfig                     |   10 +
+ drivers/power/avs/Makefile                    |    1 +
+ drivers/power/avs/mtk_svs.c                   | 2119 +++++++++++++++++
+ include/linux/power/mtk_svs.h                 |   23 +
+ 7 files changed, 2351 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/power/avs/mtk_svs.yaml
+ create mode 100644 drivers/power/avs/mtk_svs.c
+ create mode 100644 include/linux/power/mtk_svs.h
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
