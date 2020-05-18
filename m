@@ -2,80 +2,82 @@ Return-Path: <SRS0=JQKK=7A=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B0FCDC433E1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 14:32:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D1EB1C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 14:38:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 873F120671
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 14:32:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9E303206D4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 14:38:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CbzHYnhk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 873F120671
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LKU14JmL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9E303206D4
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arndb.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RyRpevojLOu/ZyfWjZPkUkvdd3KUIj7Nm5qcXoQobk0=; b=CbzHYnhkWRwPO2
-	8gbvCt0u1GstDomHNQ7UJbSjfOHDOMJkNDZfP59cvurF8IOaIirzbQLymriRwMH0krrVwNysNK/mv
-	JV0VGsKRVzUGwsLBF25Ugg0Eswm1LNAn2n2h4WS10mF98VEC3KlsgSTXV1pkEqXq3qyPzAFOLY+nM
-	r+dYaj+9y1+Hlh+EgZhHwKpT3tdEjA8rrLeekCDqIOuAVyn4FBpMn10Iq09Dmu0FPqA23/X8nR9GT
-	+fM6rfccpJ3UcZ/H7625aWeuPC0O1SyeGYgOgKZs0edsZ6P9jkyWg2Gi0iGgmJ4uH3N8XeeugxaaF
-	McAntRkkhO/xHrVHqAZw==;
+	List-Owner; bh=aR4u5n4NUhy1ptiR2R6YEJMHgi8/gWies6tcrE8tmsA=; b=LKU14JmL+DgHbF
+	exRPZ3EJLBevfid307spIWaNqbiKRCJ5E5yWP822oUUaGLqgWI7nnMC8FYJwcDhnuomSarr1Lnx66
+	qMv2tV8KACT8E4kh5S1Z34IzAeYc5jrTKkwy2jCndhKr0CqR0p/PVtjZVDBEz2QBEP0Q5RoK1YPaY
+	xIM7oTlxvmbjpeRbjE/1C4Mz5hc/1NFvqv9n7RoYv8LrcD5mHwW8MxTbWgHeJCOMITPxg8ojzTfRn
+	EciZ7rnIPyk5hnslXX77LE7wzlIzM9kSlMTpv1JywoKnCDyau7jVTbSpmIbwWuaAjQuho+SLXufX4
+	RQW4HWtXo+KDWEDMSCBA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jagoI-0008DD-6f; Mon, 18 May 2020 14:32:06 +0000
-Received: from mail-io1-f67.google.com ([209.85.166.67])
+	id 1jaguo-0003E9-Kx; Mon, 18 May 2020 14:38:50 +0000
+Received: from mout.kundenserver.de ([212.227.126.131])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jagoG-0008Cn-2f; Mon, 18 May 2020 14:32:05 +0000
-Received: by mail-io1-f67.google.com with SMTP id s10so10779521iog.7;
- Mon, 18 May 2020 07:32:03 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=MpT+nu7nNOLKspYEkQrWYjY1RVTqlNGjWcECXgpB5yE=;
- b=fMtaWbDBkHkN3cfwJovXwHWrQUxftkAO3K2hMCMsmkkocKZPWq558mrbT8IH+Rw3iM
- tNrr1SNEtQf7znWEpfTPj/OZ/LCp1WEK9qY2XEenTpSdrNJyf3trYqn4CoF3Q0X1v8cm
- VZgAWid2FQfT0j2kEHSHJduipezI4A3v8L50UdTVWTqqmsMKkaEyUfLIei59rS03mqBd
- 0kQxiElhWycgyMiR3VuxgOLIneXVqhJkYswttdClh/9x1nlkprJQIUat21dvdQpNfbO/
- qqG6OX2iclqvNEQSE9/wuL4j/E5ve8UkapYSftxhjTWfz8Sff0dtwAA11A//XCnJ8d2c
- oY9w==
-X-Gm-Message-State: AOAM5339g6EbfuNkN9gv5zsTglg3JGwqq/MU/E0hcf6uQqVXMjeGMBX7
- f/IrLJVoHaNxBruiHkLjZg==
-X-Google-Smtp-Source: ABdhPJwvbWX1i1YobTWJ2sW5L/vNBdw/cQ7LkbFo2JKkW8/BcRUhpnwK4wzuSXXypB3KuWClTxgjbA==
-X-Received: by 2002:a6b:500e:: with SMTP id e14mr13295274iob.47.1589812322692; 
- Mon, 18 May 2020 07:32:02 -0700 (PDT)
-Received: from rob-hp-laptop ([64.188.179.252])
- by smtp.gmail.com with ESMTPSA id a17sm1572365ild.31.2020.05.18.07.31.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 May 2020 07:31:49 -0700 (PDT)
-Received: (nullmailer pid 24775 invoked by uid 1000);
- Mon, 18 May 2020 14:31:48 -0000
-Date: Mon, 18 May 2020 08:31:48 -0600
-From: Rob Herring <robh@kernel.org>
-To: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [V6, 1/2] media: dt-bindings: media: i2c: Document DW9768 bindings
-Message-ID: <20200518143148.GA18032@bogus>
-References: <20200518132731.20855-1-dongchun.zhu@mediatek.com>
- <20200518132731.20855-2-dongchun.zhu@mediatek.com>
- <CAAFQd5Byvc8Fb0f3_81xSKsuyvsQJm-8g8y1Kx2aUcC=PwpS7w@mail.gmail.com>
+ id 1jagum-0003DB-Kb; Mon, 18 May 2020 14:38:50 +0000
+Received: from mail-qk1-f171.google.com ([209.85.222.171]) by
+ mrelayeu.kundenserver.de (mreue010 [212.227.15.129]) with ESMTPSA (Nemesis)
+ id 1M8QiW-1jf4cv0BBw-004XAr; Mon, 18 May 2020 16:38:45 +0200
+Received: by mail-qk1-f171.google.com with SMTP id y22so10279317qki.3;
+ Mon, 18 May 2020 07:38:43 -0700 (PDT)
+X-Gm-Message-State: AOAM5306K5u2iWpfwIs3Ntrqe/F1D4b4MuCt8Axei6wVSJ4Y1WO0l6TM
+ Fy/4/Um3qYhrN7Cchb4rIGdf3v4bBCUSkylN9/U=
+X-Google-Smtp-Source: ABdhPJxzhsnxVhq8ZSNDtJoBCI07uV5rPB2Xy6wBijq3wixD3dVCpTMzBq7wTOe/KdpPc4bGdgY7xrXJK4eQYms1WB8=
+X-Received: by 2002:a37:aa82:: with SMTP id t124mr15128415qke.3.1589812722617; 
+ Mon, 18 May 2020 07:38:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAAFQd5Byvc8Fb0f3_81xSKsuyvsQJm-8g8y1Kx2aUcC=PwpS7w@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20200514075942.10136-1-brgl@bgdev.pl>
+ <20200514075942.10136-11-brgl@bgdev.pl>
+ <CAK8P3a0XgJtZNKePZUUpzADO25-JZKyDiVHFS_yuHRXTjvjDwg@mail.gmail.com>
+ <CAMRc=MeVyNzTWw_hk=J9kX1NE9reCE_O4P3wrNpMMc9z4xA_DA@mail.gmail.com>
+In-Reply-To: <CAMRc=MeVyNzTWw_hk=J9kX1NE9reCE_O4P3wrNpMMc9z4xA_DA@mail.gmail.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Mon, 18 May 2020 16:38:25 +0200
+X-Gmail-Original-Message-ID: <CAK8P3a1xaWE0gNx-PnJz08XzUkPW6YB7U6NfFS+Y1VXwG+VR+w@mail.gmail.com>
+Message-ID: <CAK8P3a1xaWE0gNx-PnJz08XzUkPW6YB7U6NfFS+Y1VXwG+VR+w@mail.gmail.com>
+Subject: Re: [PATCH v3 10/15] net: ethernet: mtk-eth-mac: new driver
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+X-Provags-ID: V03:K1:JNTZ3sqNdk5D+8w2BvCzgGr3slwRLu6SKTQu7fezHsTMDQTgtYd
+ S8YUUJCNh5dmIyLK7E6koQVs16dAM5DdXgnihWkESR0iLp7KbwEUv0spdJqhs4DfFrr5jtq
+ HQty8bygDjt/vjZ0YzxvngeVS/ygDSSUn3qcP8nKix8tuc6kgR07BSnae0Ka3wn+Ld/AcQP
+ TfFrqpJ7v/lOkq39kkfjg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:bBdzMXl1Xzs=:FrEksEBt03Hvs16s/Aie9d
+ /zS/P8FZpuC/TsmH8OxhjEwYclYhdFCAyZyYt5nQ8uMjcVggIk3SvdBs8ErVxn8rMjojqOd/q
+ htDd6kR+z3ZnPcTqolO/ZxefcN6eVuyRgywwvvIXlrxhoZ62BMlpCQC0PzGgeXvfvi5JHXatm
+ YaJ2u71MuLneQSjAcpzhS3Nz6G0B8sHde2Nvhhmi05Ej0wG0jKDHR3FCMF4UTbbYd8qpuOQyr
+ KLm+DgAMSLWKM2fsytQgZplaaV4Ti6wQlPrT8+oUsLA6YLdhbBdXmC7382Xv4b3pGynBHeDNt
+ owTRWjo/VwnXrpRg+W7UkP1YUiEgm1/eq4m3aioglX4cVWZ5nMi6/Gtu8LRmuiLMeT6ikWnIo
+ 4SIeRa979r0dwAbmV3j1hgsEEh8FHumPI/KA9JmtFwU6vGsnMdL4I9U9eawQEAyWSeRilJDMr
+ OqSc2ToL+/f9RvhehOPiWR9sWahg08DQv026aFRfKLMqCM9Nc8J9jFTUB5V5redN/LN0qyHlB
+ Zf6qp2ihCH2U+ukgUExZSxYQg7RBjX0mHGCPClmupcgeGFWGGMNaVGpE0qaBhF97ZSEGC4Gx0
+ qoI2XzuEjLJnU+dINmFAuIlXOmB87i/H0DEfjRCC+a0xnx+HQ0as989qyMdeV0iq74bRnhtOn
+ ZP9ml/RfArXVAamVItUyuH4jZBCzMTKnRiEvu7sqR/8ovBFcTU6dMqvbvYy9GAJmq1cw5CBst
+ f0PQx4SkM18fjDI12d9omf6dfck+j6kOiislOQW1pTlm7ue0ZBBSg2SMd6r+UmOrzkE5sLF7r
+ tAJUINiKlR+bcd7FsE8MEX3FrnxJF0BdcbhdfWgZnVWSobHrwI=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200518_073204_120115_C6C650D1 
-X-CRM114-Status: GOOD (  20.66  )
+X-CRM114-CacheID: sfid-20200518_073848_966341_718DC531 
+X-CRM114-Status: GOOD (  19.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,156 +89,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- linux-devicetree <devicetree@vger.kernel.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- Shengnan Wang =?utf-8?B?KOeOi+Wco+eUtyk=?= <shengnan.wang@mediatek.com>,
- Louis Kuo <louis.kuo@mediatek.com>,
+Cc: Edwin Peer <edwin.peer@broadcom.com>, DTML <devicetree@vger.kernel.org>,
  Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Sj Huang <sj.huang@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Dongchun Zhu <dongchun.zhu@mediatek.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
- Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Stephane Le Provost <stephane.leprovost@mediatek.com>,
+ Jonathan Corbet <corbet@lwn.net>, Networking <netdev@vger.kernel.org>,
+ Sean Wang <sean.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Pedro Tsai <pedro.tsai@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ Andrew Perepech <andrew.perepech@mediatek.com>,
+ John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, "David S . Miller" <davem@davemloft.net>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Heiner Kallweit <hkallweit1@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 18, 2020 at 04:12:28PM +0200, Tomasz Figa wrote:
-> Hi Dongchun,
-> 
-> On Mon, May 18, 2020 at 3:29 PM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
-> >
-> > Add DeviceTree binding documentation for Dongwoon Anatech DW9768 voice
-> > coil actuator.
-> 
-> Thanks for the patch. Please see my comments below.
-> 
-> >
-> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > Reviewed-by: Rob Herring <robh@kernel.org>
-> 
-> This version includes significant changes, so the reviewed-by tag
-> shouldn't have been carried out.
-> 
-> > ---
-> >  .../bindings/media/i2c/dongwoon,dw9768.yaml        | 105 +++++++++++++++++++++
-> >  MAINTAINERS                                        |   7 ++
-> >  2 files changed, 112 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
-> >
-> > diff --git a/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml b/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
-> > new file mode 100644
-> > index 0000000..b909e83
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
-> > @@ -0,0 +1,105 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +# Copyright (c) 2020 MediaTek Inc.
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/media/i2c/dongwoon,dw9768.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Dongwoon Anatech DW9768 Voice Coil Motor (VCM) Lens Device Tree Bindings
-> > +
-> > +maintainers:
-> > +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > +
-> > +description: |-
-> > +  The Dongwoon DW9768 is a single 10-bit digital-to-analog (DAC) converter
-> > +  with 100 mA output current sink capability. VCM current is controlled with
-> > +  a linear mode driver. The DAC is controlled via a 2-wire (I2C-compatible)
-> > +  serial interface that operates at clock rates up to 1MHz. This chip
-> > +  integrates Advanced Actuator Control (AAC) technology and is intended for
-> > +  driving voice coil lenses in camera modules.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    enum:
-> > +      # for DW9768 VCM
-> > +      - dongwoon,dw9768
-> > +      # for GT9769 VCM
-> > +      - giantec,gt9769
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  vin-supply:
-> > +    description:
-> > +      Definition of the regulator used as I2C I/O interface power supply.
-> > +
-> > +  vdd-supply:
-> > +    description:
-> > +      Definition of the regulator used as VCM chip power supply.
-> > +
-> > +  dongwoon,aac-mode:
-> > +    description:
-> > +      Indication of AAC mode select.
-> > +    allOf:
-> > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> > +      - enum:
-> > +          - 0    #  Direct (default)
-
-Default can be expressed as 'default: 0'.
-
-> > +          - 1    #  AAC2 (operation time# 0.48 x Tvib)
-> > +          - 2    #  AAC3 (operation time# 0.70 x Tvib)
-> > +          - 3    #  AAC4 (operation time# 0.75 x Tvib)
-> > +          - 4    #  Reserved
-> > +          - 5    #  AAC8 (operation time# 1.13 x Tvib)
-> > +          - 6    #  Reserved
-> > +          - 7    #  Reserved
-> 
-> I'll ultimately leave it to DT maintainers, but is there any reason to
-> define the reserved values?
-
-No.
-
-> 
-> > +
-> > +  dongwoon,aac-timing:
-> > +    description:
-> > +      Indication of AAC Timing count, unit of 0.1 milliseconds.
-
-Why not just use standard units (-us)?
-
-> > +      Valid values vary from 0 to 63 (default 32).
-
-Looks like constraints.
-
-> > +    allOf:
-> > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> > +
-> > +  dongwoon,clock-dividing-rate:
-> > +    description:
-> > +      Indication of VCM internal clock dividing rate select, as one multiple
-> > +      factor to calculate VCM ring periodic time Tvib.
-> > +    allOf:
-> > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> > +      - enum:
-> > +          - 0    #  Dividing Rate -  2
-> > +          - 1    #  Dividing Rate -  1 (default)
-> > +          - 2    #  Dividing Rate -  1/2
-> > +          - 3    #  Dividing Rate -  1/4
-> > +          - 4    #  Dividing Rate -  8
-> > +          - 5    #  Dividing Rate -  4
-> > +          - 6    #  Dividing Rate -  Reserved
-> > +          - 7    #  Dividing Rate -  Reserved
-> 
-> Ditto.
-> 
-> Best regards,
-> Tomasz
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gTW9uLCBNYXkgMTgsIDIwMjAgYXQgNDowNyBQTSBCYXJ0b3N6IEdvbGFzemV3c2tpIDxicmds
+QGJnZGV2LnBsPiB3cm90ZToKPiBwdC4sIDE1IG1haiAyMDIwIG8gMTU6MzIgQXJuZCBCZXJnbWFu
+biA8YXJuZEBhcm5kYi5kZT4gbmFwaXNhxYIoYSk6Cgo+ID4gSSB3b3VsZCBnZXQgcmlkIG9mIHRo
+ZSAnY291bnQnIGhlcmUsIGFzIGl0IGR1cGxpY2F0ZXMgdGhlIGluZm9ybWF0aW9uCj4gPiB0aGF0
+IGlzIGFscmVhZHkga25vd24gZnJvbSB0aGUgZGlmZmVyZW5jZSBiZXR3ZWVuIGhlYWQgYW5kIHRh
+aWwsIGFuZCB5b3UKPiA+IGNhbid0IHVwZGF0ZSBpdCBhdG9taWNhbGx5IHdpdGhvdXQgaG9sZGlu
+ZyBhIGxvY2sgYXJvdW5kIHRoZSBhY2Nlc3MgdG8KPiA+IHRoZSByaW5nLiBUaGUgd2F5IEknZCBk
+byB0aGlzIGlzIHRvIGhhdmUgdGhlIGhlYWQgYW5kIHRhaWwgcG9pbnRlcnMKPiA+IGluIHNlcGFy
+YXRlIGNhY2hlIGxpbmVzLCBhbmQgdGhlbiB1c2UgUkVBRF9PTkNFL1dSSVRFX09OQ0UKPiA+IGFu
+ZCBzbXAgYmFycmllcnMgdG8gYWNjZXNzIHRoZW0sIHdpdGggZWFjaCBvbmUgdXBkYXRlZCBvbiBv
+bmUKPiA+IHRocmVhZCBidXQgcmVhZCBieSB0aGUgb3RoZXIuCj4gPgo+Cj4gWW91ciBwcmV2aW91
+cyBzb2x1dGlvbiBzZWVtcyBtdWNoIG1vcmUgcmVsaWFibGUgdGhvdWdoLiBGb3IgaW5zdGFuY2UK
+PiBpbiB0aGUgYWJvdmU6IHdoZW4gd2UncmUgZG9pbmcgdGhlIFRYIGNsZWFudXAgKHdlIGdvdCB0
+aGUgVFggcmVhZHkKPiBpcnEsIHdlJ3JlIGl0ZXJhdGluZyBvdmVyIGRlc2NyaXB0b3JzIHVudGls
+IHdlIGtub3cgdGhlcmUgYXJlIG5vIG1vcmUKPiBwYWNrZXRzIHNjaGVkdWxlZCAoY291bnQgPT0g
+MCkgb3Igd2UgZW5jb3VudGVyIG9uZSB0aGF0J3Mgc3RpbGwgb3duZWQKPiBieSBETUEpLCBhIHBh
+cmFsbGVsIFRYIHBhdGggY2FuIHNjaGVkdWxlIG5ldyBwYWNrZXRzIHRvIGJlIHNlbnQgYW5kIEkK
+PiBkb24ndCBzZWUgaG93IHdlIGNhbiBhdG9taWNhbGx5IGNoZWNrIHRoZSBjb3VudCAodW5kZXJz
+dG9vZCBhcyBhCj4gZGlmZmVyZW5jZSBiZXR3ZWVuIHRhaWwgYW5kIGhlYWQpIGFuZCBydW4gYSBu
+ZXcgaXRlcmF0aW9uICh3aGVyZSB3ZSdkCj4gbW9kaWZ5IHRoZSBoZWFkIG9yIHRhaWwpIHdpdGhv
+dXQgcmlza2luZyB0aGUgb3RoZXIgcGF0aCBnZXR0aW5nIGluIHRoZQo+IHdheS4gV2UnZCBoYXZl
+IHRvIGFsd2F5cyBjaGVjayB0aGUgZGVzY3JpcHRvci4KCkl0IHNob3VsZCBiZSBlbm91Z2ggdG8g
+cmVhZCBib3RoIHBvaW50ZXJzIG9uY2UgYXQgdGhlIHN0YXJ0IG9mIGVhY2gKc2lkZSwgdGhlbiBk
+byB3aGF0ZXZlciB3b3JrIHlvdSB3YW50IHRvIGRvIChjbGVhbmluZywgc2VuZGluZywKcmVjZWl2
+aW5nLCByZWZpbGxpbmcpIGFuZCBmaW5hbGx5IHVwZGF0aW5nIHRoZSBvbmUgcG9pbnRlciB0aGF0
+IGNoYW5nZWQuCklmIGJvdGggc2lkZXMgZG8gdGhhdCwgeW91IG1pbmltaXplIHRoZSBjYWNoZSBs
+aW5lIGJvdW5jaW5nIGFuZAphbHdheXMgZG8gYSB1c2VmdWwgYW1vdW50IG9mIHdvcmsgdGhhdCBn
+dWFyYW50ZWVzIGZvcndhcmQgcHJvZ3Jlc3MKYW5kIGRvZXMgbm90IGludGVyZmVyZSB3aXRoIHRo
+ZSBvdGhlciBzaWRlLgoKPiBJIGV4cGVyaW1lbnRlZCBhIGJpdCB3aXRoIHRoaXMgYW5kIGNvdWxk
+bid0IGNvbWUgdXAgd2l0aCBhbnl0aGluZyB0aGF0Cj4gd291bGQgcGFzcyBhbnkgc3RyZXNzIHRl
+c3QuCj4KPiBPbiB0aGUgb3RoZXIgaGFuZDogc3Bpbl9sb2NrX2JoKCkgd29ya3MgZmluZSBhbmQg
+SSBsaWtlIHlvdXIgYXBwcm9hY2gKPiBmcm9tIHRoZSBwcmV2aW91cyBlLW1haWwgLSBleGNlcHQg
+Zm9yIHRoZSB3b3JrIGZvciB1cGRhdGluZyBzdGF0cyBhcwo+IHdlIGNvdWxkIHBvdGVudGlhbGx5
+IGxvc2Ugc29tZSBzdGF0cyB3aGVuIHdlJ3JlIHVwZGF0aW5nIGluIHByb2Nlc3MKPiBjb250ZXh0
+IHdpdGggUlgvVFggcGF0aHMgcnVubmluZyBpbiBwYXJhbGxlbCBpbiBuYXBpIGNvbnRleHQgYnV0
+IHRoYXQKPiB3b3VsZCBiZSByYXJlIGVub3VnaCB0byBvdmVybG9vayBpdC4KPgo+IEkgaG9wZSB2
+NCB3aWxsIGJlIGdvb2QgZW5vdWdoIGV2ZW4gd2l0aCBzcGlubG9ja3MuIDopCgpZZXMsIGl0IHNo
+b3VsZCBiZSBmaW5lLiBBdm9pZGluZyBhbGwgdGhlIGxvY2tzIGlzIG1haW5seSBhbiBvcHRpbWl6
+YXRpb24KZm9yIHRoZSBudW1iZXIgb2YgQ1BVIGN5Y2xlcyBzcGVudCBwZXIgcGFja2V0LCB0aGUg
+b3RoZXIgcG9pbnRzCmFyZSBtb3JlIGltcG9ydGFudCB0byBnZXQgcmlnaHQsIGluIHBhcnRpY3Vs
+YXIgdGhlIGZsb3cgY29udHJvbC4KCiAgICAgIEFybmQKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51
+eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
