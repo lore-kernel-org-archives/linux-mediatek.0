@@ -2,22 +2,22 @@ Return-Path: <SRS0=JQKK=7A=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C293DC433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 06:33:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 99903C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 06:37:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 932CA2070A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 06:33:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 679B5207C4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 06:37:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UVtyDCJN";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="pUDdCIu7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 932CA2070A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="A86jh10E";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Zw4ceQI4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 679B5207C4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=tbx2sKMerXvx/8r2ADxl8/4cQ8UDRUcEPeGzlrpKdYs=; b=UVtyDCJNr9YM+o
-	BTw2N+7UaaEzuXoOVmgNY6g6Q9UNZHx1JyMZl4thaEcaBLDw6uT1QMrDSRJ4Bj7J+HbUVkYZqb6h6
-	w5PlGOWkbpZbDAPbuPUpD4cerSlCMuPsxnkZxPNjebftgtvDt3N4BgxS5rC2waXvQpRopHgXMS3tO
-	4GZLVZzivx2CEbI/f1KTCijA6P/EOzVlPKxyPEiHPni/XTv3ZpJ+WrCF5nlg+UIWRHtIg4r5O4Ms8
-	IAzuiD8h+goS8YSYrhiZG3nTPoHG3mhjlWGSlJZSv11npGPyTdR4NbXEyLbC+xTQL/IiISvhdr3E4
-	xceTZkbJGFE+U9TMUiEA==;
+	List-Owner; bh=UlTWc4M6IzupMZ6kFfzsTBBM8D7X0NID+n7JwDjD44A=; b=A86jh10EFVUYaw
+	jrRkB/6yzOYFNbMjL16OHQAEalhhRg86H8v0DEe6uJBRDci1EIHyyIHLZigP5E4Q+pPOXyLqVibi0
+	JLayv9PsThzUPKlqcyXCB+LiHI0h/LuKypVs+qB2/tCD/a3yaAQiZsqdBRz8nv5YXNzKsUKEsZt00
+	mdPzKSgQ7CSbLtEO5gY3y6m61i7Ph3C2Pcqit8scsZFjpHcsPu3ClDPnSYl4+jm1weu5aeo3JORTv
+	YTLg9v20j1N6C1ps2LYMPQXW2lN3TtlAZmIeyroOIH2+5HWfOII+R8skdeo5ZFr0DYGZsQknZzWwq
+	8x5zmrxcfd3ev4T2mIEA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jaZL4-0006Ia-9Q; Mon, 18 May 2020 06:33:26 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jaZPI-00014O-5k; Mon, 18 May 2020 06:37:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jaZKv-0006AO-1a; Mon, 18 May 2020 06:33:18 +0000
-X-UUID: 1b93a2fe59f843a9bf893bcef2c6ff51-20200517
+ id 1jaZP7-0000ux-T7; Mon, 18 May 2020 06:37:39 +0000
+X-UUID: 8d8c107b79a8499b846b1ab9ba93d1b5-20200517
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=YxP6/pRzTiTVu/hcxWJ9yeQQWJwxGnsvUO9djcnnF3g=; 
- b=pUDdCIu7od2N6fthFPhJ6qVt3MzgouNWoKuzZGYtmw4wo2YE4k16Yh8DEiWKPKZYjXgh4EII1CUy+1xj12oA+NifwiqT53AFS/8zd+LSelTArrb4eo85G5WcYnVKNqSICK+0UszdZ5ua7wgHsNg8Q+LAsV435lSAx6qNFHrUOfQ=;
-X-UUID: 1b93a2fe59f843a9bf893bcef2c6ff51-20200517
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=YlRyO64pnH8FZf+sdaf75snQYwi8eIDYf2MbHf8zjzk=; 
+ b=Zw4ceQI4fkwRd/lVZVeswq+EIGM7t5YruYR0e9O4yR7VY3NULyfx5oW8ELZyRWBQzmqEd3zCV5q2c2MMdVIPZyswJ6KWVNFTdqF9Q5VFjHUK5W9k5dEgy3za62GXabDRkpetoal7co6vo4/g2hHuE7X2sIFFeWipNHr+CND46+o=;
+X-UUID: 8d8c107b79a8499b846b1ab9ba93d1b5-20200517
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <walter-zh.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 662579786; Sun, 17 May 2020 22:32:53 -0800
+ with ESMTP id 1265183518; Sun, 17 May 2020 22:37:14 -0800
 Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 17 May 2020 23:24:34 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 17 May 2020 23:30:19 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 18 May 2020 14:24:33 +0800
+ 15.0.1497.2; Mon, 18 May 2020 14:30:19 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 18 May 2020 14:24:31 +0800
+ Frontend Transport; Mon, 18 May 2020 14:30:17 +0800
 From: Walter Wu <walter-zh.wu@mediatek.com>
 To: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko
  <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, "Paul E . McKenney" <paulmck@kernel.org>, "Josh
- Triplett" <josh@joshtriplett.org>, Mathieu Desnoyers
- <mathieu.desnoyers@efficios.com>, Lai Jiangshan <jiangshanlai@gmail.com>,
- Joel Fernandes <joel@joelfernandes.org>, Andrew Morton
- <akpm@linux-foundation.org>
-Subject: [PATCH v3 0/4] kasan: memorize and print call_rcu stack
-Date: Mon, 18 May 2020 14:24:32 +0800
-Message-ID: <20200518062432.4508-1-walter-zh.wu@mediatek.com>
+ <matthias.bgg@gmail.com>
+Subject: [PATCH v3 3/4] kasan: add tests for call_rcu stack recording
+Date: Mon, 18 May 2020 14:30:17 +0800
+Message-ID: <20200518063017.4766-1-walter-zh.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200517_233317_088505_124700DF 
-X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-CacheID: sfid-20200517_233737_945166_9127118D 
+X-CRM114-Status: UNSURE (   8.85  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -96,69 +92,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patchset improves KASAN reports by making them to have
-call_rcu() call stack information. It is useful for programmers
-to solve use-after-free or double-free memory issue.
+Test call_rcu() call stack recording whether it correctly is printed
+in KASAN report.
 
-The KASAN report was as follows(cleaned up slightly):
+Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
+Cc: Dmitry Vyukov <dvyukov@google.com>
+Cc: Alexander Potapenko <glider@google.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+---
+ lib/test_kasan.c | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
 
-BUG: KASAN: use-after-free in kasan_rcu_reclaim+0x58/0x60
-
-Freed by task 0:
- kasan_save_stack+0x24/0x50
- kasan_set_track+0x24/0x38
- kasan_set_free_info+0x18/0x20
- __kasan_slab_free+0x10c/0x170
- kasan_slab_free+0x10/0x18
- kfree+0x98/0x270
- kasan_rcu_reclaim+0x1c/0x60
-
-Last one call_rcu() call stack:
- kasan_save_stack+0x24/0x50
- kasan_record_aux_stack+0xbc/0xd0
- call_rcu+0x8c/0x580
- kasan_rcu_uaf+0xf4/0xf8
-
-Generic KASAN will record the last two call_rcu() call stacks and
-print up to 2 call_rcu() call stacks in KASAN report. it is only
-suitable for generic KASAN.
-
-This feature considers the size of struct kasan_alloc_meta and
-kasan_free_meta, we try to optimize the structure layout and size
-, let it get better memory consumption.
-
-[1]https://bugzilla.kernel.org/show_bug.cgi?id=198437
-[2]https://groups.google.com/forum/#!searchin/kasan-dev/better$20stack$20traces$20for$20rcu%7Csort:date/kasan-dev/KQsjT_88hDE/7rNUZprRBgAJ
-
-Changes since v2:
-- remove new config option, default enable it in generic KASAN
-- test this feature in SLAB/SLUB, it is pass.
-- modify macro to be more clearly
-- modify documentation
-
-Changes since v3:
-- change recording from first/last to the last two call stacks
-- move free track into kasan free meta
-- init slab_free_meta on object slot creation
-- modify documentation
-
-Walter Wu (4):
-rcu/kasan: record and print call_rcu() call stack
-kasan: record and print the free track
-kasan: add tests for call_rcu stack recording
-kasan: update documentation for generic kasan
-
-Documentation/dev-tools/kasan.rst |  3 +++
-include/linux/kasan.h             |  2 ++
-kernel/rcu/tree.c                 |  2 ++
-lib/Kconfig.kasan                 |  2 ++
-lib/test_kasan.c                  | 30 ++++++++++++++++++++++++++++++
-mm/kasan/common.c                 | 37 ++++++++++++-------------------------
-mm/kasan/generic.c                | 38 ++++++++++++++++++++++++++++++++++++++
-mm/kasan/kasan.h                  | 17 +++++++++++++++++
-mm/kasan/report.c                 | 36 ++++++++++++++++++++----------------
-mm/kasan/tags.c                   | 37 +++++++++++++++++++++++++++++++++++++
-10 files changed, 163 insertions(+), 41 deletions(-)
+diff --git a/lib/test_kasan.c b/lib/test_kasan.c
+index e3087d90e00d..0e9ff02f0a8b 100644
+--- a/lib/test_kasan.c
++++ b/lib/test_kasan.c
+@@ -792,6 +792,35 @@ static noinline void __init vmalloc_oob(void)
+ static void __init vmalloc_oob(void) {}
+ #endif
+ 
++static struct kasan_rcu_info {
++	int i;
++	struct rcu_head rcu;
++} *global_ptr;
++
++static noinline void __init kasan_rcu_reclaim(struct rcu_head *rp)
++{
++	struct kasan_rcu_info *fp = container_of(rp,
++						struct kasan_rcu_info, rcu);
++
++	kfree(fp);
++	fp->i = 1;
++}
++
++static noinline void __init kasan_rcu_uaf(void)
++{
++	struct kasan_rcu_info *ptr;
++
++	pr_info("use-after-free in kasan_rcu_reclaim\n");
++	ptr = kmalloc(sizeof(struct kasan_rcu_info), GFP_KERNEL);
++	if (!ptr) {
++		pr_err("Allocation failed\n");
++		return;
++	}
++
++	global_ptr = rcu_dereference_protected(ptr, NULL);
++	call_rcu(&global_ptr->rcu, kasan_rcu_reclaim);
++}
++
+ static int __init kmalloc_tests_init(void)
+ {
+ 	/*
+@@ -839,6 +868,7 @@ static int __init kmalloc_tests_init(void)
+ 	kasan_bitops();
+ 	kmalloc_double_kzfree();
+ 	vmalloc_oob();
++	kasan_rcu_uaf();
+ 
+ 	kasan_restore_multi_shot(multishot);
+ 
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
