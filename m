@@ -2,71 +2,166 @@ Return-Path: <SRS0=JQKK=7A=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CBF02C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 15:44:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AFB4EC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 15:57:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4EE6420657
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 15:44:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7D2D120758
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2020 15:57:48 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rHljspH3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4EE6420657
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linux-m68k.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="c7esVjOy";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="OFWTSL+b"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7D2D120758
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FweVJWiTEB63aoX30RAYm/xqnSaAQf0ny+O7S7sQ8wk=; b=rHljspH3BE7U88
-	x2003EdyXijDlhrgaVqF3P7Z+5u/Pm/7/sn3bUt58hofLtZDcFQ0yqPBt+LVgkD5Y5PmajaGhtCzn
-	6Je+bh/3K36obr3iIiOUalPxqt/XGr9JsYh5z8tF8MAS51VsLe3uvhaAM73rdXyHE+NUEp/Ja/xWM
-	ssujSwBajKFhBH+VVoZa/GN+2rx2/smnWxspWFBHJDMOPa6RXpG5n+5RCzi/Tb0iGjs7A/u7rFkKE
-	ny4LNuRJnxFqIcOT+pTwe3mRDja0aCXz651UjPf0O2Jq5iGIX/+4HJoAudpUqrz4E020GMCHLTnfs
-	zrd42effcEyvVIBp4xnA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=roH2utl5aD52hDqRk1EX+oWet3Z9kERyRQC0fL/Qs14=; b=c7esVjOywODGaY
+	lk55ya23r2ZP1Z7PhjUXSdV1cF5Yqn1/eUQCGWdIUMfk+T3zcBQyZoKunBLTm7L29+ydGLKLHJ9cK
+	CSi8SjoKjrtNXt/kON3EgLgwYTFried2t5PUQhAHR/9WoU4enwpg+zWjDVSAiioyMpZEuCOIrx0E1
+	ZzW5mmxKapPRnhVZJ2af4VR/Axnt2IdgxdXQ8StykPQcG4V4lCVYjh/ACzzRTP8VnzqTOoip2o5YS
+	t/RfMA5/4KUiZnQxyVk6f2hwdOzt6IvKKvk0MvigX3vnqp6Oh5YYvxaYT72tAzxYwmFFiZ6j3JI4k
+	VRr+P+J49/NHF8MA9IOw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jahwP-0007We-G4; Mon, 18 May 2020 15:44:33 +0000
-Received: from mail-oi1-f193.google.com ([209.85.167.193])
+	id 1jai98-0001VI-Aj; Mon, 18 May 2020 15:57:42 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jahwM-0007Vf-Ii; Mon, 18 May 2020 15:44:32 +0000
-Received: by mail-oi1-f193.google.com with SMTP id x23so2769337oic.3;
- Mon, 18 May 2020 08:44:29 -0700 (PDT)
+ id 1jai8v-0001LT-Su; Mon, 18 May 2020 15:57:31 +0000
+Received: by mail-wm1-x344.google.com with SMTP id z4so39712wmi.2;
+ Mon, 18 May 2020 08:57:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=gh+W4KrBfrTWIjHTbRc07vJVQnhS7W3gVWqnNaNXtV8=;
+ b=OFWTSL+bQqslrj47jSH0x9+iGBwndVSxp5+ECtCqHMh/o0Z6n2AkUU0rMO0VGla6Z1
+ Ip0eePJ9i5A+36scgXyb2MoFjSx4jRKapgjclom/oMoEz8uCz+EJ2Rr9aopy7NnoNwVe
+ MlAJmJYiGxa6QDxftsQqUsBW3nbQ+/vHkaLyxMyz9R7C6KRJrEfVqXgyPGTVPPWNsjlM
+ g8kxY7qdrFXnlATNe2BuoIi6KIgz20oVNfyRsnqnf3b76uBpvAVsRK1xPQBpzqBTg/5W
+ jYhooJES8DQj4vuJqFcbicIx6hLOEmmE1TYBOVtFMngoMx87w8LMkbRhXkv5WwL00MOS
+ VkVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Zmc+aX1vQ2DoVqQHld2NGpTEXaFRkMWY7XPbs/Yym5g=;
- b=jg122jgVrNTArNr+euvwuYVz/nLhvKJM2+w/czTlDDjKIh9dfTun+Fv+NCFupl8bJo
- jdtSUYW4j1D4zb2+bCj6LteYxhLh/snmiQOYfQB8y5TxYuEVkvdFpGQZ4sed+Jei5FaB
- oZijHGC3gD2bo4rZG6y2L/2B1ePOWBN1w/4AnvZ4RhhA5gzR8P6cbiTuJA92aS9d94BU
- bGFNZ6XsxaRoQdzfy3Zvw8IGxn2gTmziV6dqE8na8ZRy37XcocuLuHtQwQ//KMhBBzRU
- 4HSSJObM59/iXZiihF3Anx5vTKzSjj+WL6D/JzGcL7uBVwgTbaKmRfbikfGkaicYTWN6
- heJA==
-X-Gm-Message-State: AOAM532L4E9JuBGhUMzrK6DOBNU1yUH55n/2J3LI7gdZEHMjdjYwHSlr
- jlUu18mGT6Cf27z+RCZ6Z9AbkKz88/mTtZ5SMn8=
-X-Google-Smtp-Source: ABdhPJy2nzNFTl+3u/yZOZKPJD6snXgr3/xAOGW+7fC9tpBtXaFCbD/tlFqxKMUwcf8LG/1SZLomAT8oopgBVFdHLgs=
-X-Received: by 2002:aca:895:: with SMTP id 143mr10832413oii.153.1589816669165; 
- Mon, 18 May 2020 08:44:29 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=gh+W4KrBfrTWIjHTbRc07vJVQnhS7W3gVWqnNaNXtV8=;
+ b=OdmmuF7Rc09mBEJ+mlfyfYX7rm/vC8BlbJzGAgSaMQS0MkDCtjdWTC1kbldXer+cN4
+ EM5bt0Uqq+0g87w8mFqaQAHbI+mWsLhgsLh1OT97Ksd+2ciqGl2ormsCSccBd7bBkWWV
+ rGZw3xQe+51I841LBc7imrVw2BNLnkBUJy+8uoXWr8kw7Z6Tt7S/MA/k4EjAx1yWyPl5
+ fHbZAHVo8dxnBdWLZrh3UXAHJNi33jvf1T3v42GhpX2v/oIOuCQCcFfa4QqYhjBFYFUg
+ liAWx+tytEGzUtA9dguoWm+5zwWhIGalIfcdR10VvmYSL+sgPXdZ5Xy/IupyAoBEB7zs
+ /PtA==
+X-Gm-Message-State: AOAM5302xYMmToju7zdc9WC+0SoOOycAsE8YJWW69gx4TdZt3qKEHO9/
+ T9+WEZRwdhWloGGh/eQRTWk=
+X-Google-Smtp-Source: ABdhPJy7fLeUKEGfrbDcTHMLEyRn6Q6jMdSZaK1jBJiOWdyUHiE/jIE+Ud0PC5K/aipfdBIfiZ7G7w==
+X-Received: by 2002:a1c:6344:: with SMTP id x65mr37795wmb.51.1589817448125;
+ Mon, 18 May 2020 08:57:28 -0700 (PDT)
+Received: from ziggy.stardust ([213.195.113.243])
+ by smtp.gmail.com with ESMTPSA id v131sm17999920wmb.27.2020.05.18.08.57.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 18 May 2020 08:57:27 -0700 (PDT)
+Subject: Re: [PATCH 1/4] clk/soc: mediatek: mt8183: Bind clock driver from
+ platform device
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, matthias.bgg@kernel.org
+References: <20200518113156.25009-1-matthias.bgg@kernel.org>
+ <CAAOTY_9-_fy4oGTBLPsXkWJ2ihL7k2hzfwiTorit+YkNi_SeMw@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <d95bf802-4a9d-9791-cb0b-ba804d649045@gmail.com>
+Date: Mon, 18 May 2020 17:57:25 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-References: <1589461844-15614-1-git-send-email-qii.wang@mediatek.com>
- <1589461844-15614-3-git-send-email-qii.wang@mediatek.com>
-In-Reply-To: <1589461844-15614-3-git-send-email-qii.wang@mediatek.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 18 May 2020 17:44:17 +0200
-Message-ID: <CAMuHMdXjLakWDDEy=02prC7XjAs_xBnt2mArPFNwyHgUoWw6-g@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] i2c: mediatek: Add i2c ac-timing adjust support
-To: Qii Wang <qii.wang@mediatek.com>
+In-Reply-To: <CAAOTY_9-_fy4oGTBLPsXkWJ2ihL7k2hzfwiTorit+YkNi_SeMw@mail.gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200518_084430_618553_61DE8DE8 
-X-CRM114-Status: GOOD (  16.92  )
+X-CRM114-CacheID: sfid-20200518_085729_932637_91A4DAF6 
+X-CRM114-Status: GOOD (  20.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,116 +173,83 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, srv_heupstream@mediatek.com,
- Wolfram Sang <wsa@the-dreams.de>, leilk.liu@mediatek.com,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-mediatek@lists.infradead.org, Linux I2C <linux-i2c@vger.kernel.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Kate Stewart <kstewart@linuxfoundation.org>, devicetree@vger.kernel.org,
+ Stephen Boyd <sboyd@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Michael Turquette <mturquette@baylibre.com>,
+ linux-kernel <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Allison Randal <allison@lohutok.net>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ mtk01761 <wendell.lin@mediatek.com>, Thomas Gleixner <tglx@linutronix.de>,
+ linux-clk@vger.kernel.org, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 14, 2020 at 3:13 PM Qii Wang <qii.wang@mediatek.com> wrote:
-> This patch adds a algorithm to calculate some ac-timing parameters
-> which can fully meet I2C Spec.
->
-> Signed-off-by: Qii Wang <qii.wang@mediatek.com>
-> ---
->  drivers/i2c/busses/i2c-mt65xx.c | 328 +++++++++++++++++++++++++++++++++-------
->  1 file changed, 277 insertions(+), 51 deletions(-)
->
-> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-> index 0ca6c38a..7020618 100644
-> --- a/drivers/i2c/busses/i2c-mt65xx.c
-> +++ b/drivers/i2c/busses/i2c-mt65xx.c
-
-> +/*
-> + * Check and Calculate i2c ac-timing
-> + *
-> + * Hardware design:
-> + * sample_ns = (1000000000 * (sample_cnt + 1)) / clk_src
-> + * xxx_cnt_div =  spec->min_xxx_ns / sample_ns
-> + *
-> + * Sample_ns is rounded down for xxx_cnt_div would be greater
-> + * than the smallest spec.
-> + * The sda_timing is chosen as the middle value between
-> + * the largest and smallest.
-> + */
-> +static int mtk_i2c_check_ac_timing(struct mtk_i2c *i2c,
-> +                                  unsigned int clk_src,
-> +                                  unsigned int check_speed,
-> +                                  unsigned int step_cnt,
-> +                                  unsigned int sample_cnt)
-> +{
-> +       const struct i2c_spec_values *spec;
-> +       unsigned int su_sta_cnt, low_cnt, high_cnt, max_step_cnt;
-> +       unsigned int sda_max, sda_min, clk_ns, max_sta_cnt = 0x3f;
-> +       long long sample_ns = (1000000000 * (sample_cnt + 1)) / clk_src;
-
-So sample_ns is a 64-bit value. Is that really needed?
-
-> +       if (!i2c->dev_comp->timing_adjust)
-> +               return 0;
-> +
-> +       if (i2c->dev_comp->ltiming_adjust)
-> +               max_sta_cnt = 0x100;
-> +
-> +       spec = mtk_i2c_get_spec(check_speed);
-> +
-> +       if (i2c->dev_comp->ltiming_adjust)
-> +               clk_ns = 1000000000 / clk_src;
-> +       else
-> +               clk_ns = sample_ns / 2;
-> +
-> +       su_sta_cnt = DIV_ROUND_UP(spec->min_su_sta_ns, clk_ns);
-> +       if (su_sta_cnt > max_sta_cnt)
-> +               return -1;
-> +
-> +       low_cnt = DIV_ROUND_UP(spec->min_low_ns, sample_ns);
-
-So this is a 32-bit by 64-bit division (indeed, not 64-by-32!)
-
-noreply@ellerman.id.au reports:
-
-    ERROR: modpost: "__udivdi3" [drivers/i2c/busses/i2c-mt65xx.ko] undefined!
-    ERROR: modpost: "__divdi3" [drivers/i2c/busses/i2c-mt65xx.ko] undefined!
-
-for 32-bit builds.
-
-> +       max_step_cnt = mtk_i2c_max_step_cnt(check_speed);
-> +       if ((2 * step_cnt) > low_cnt && low_cnt < max_step_cnt) {
-> +               if (low_cnt > step_cnt) {
-> +                       high_cnt = 2 * step_cnt - low_cnt;
-> +               } else {
-> +                       high_cnt = step_cnt;
-> +                       low_cnt = step_cnt;
-> +               }
-> +       } else {
-> +               return -2;
-> +       }
-> +
-> +       sda_max = spec->max_hd_dat_ns / sample_ns;
-> +       if (sda_max > low_cnt)
-> +               sda_max = 0;
-> +
-> +       sda_min = DIV_ROUND_UP(spec->min_su_dat_ns, sample_ns);
-
-One more.
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+CgpPbiAxOC8wNS8yMDIwIDE3OjMwLCBDaHVuLUt1YW5nIEh1IHdyb3RlOgo+IEhpLCBNYXR0aGlh
+czoKPiAKPiA8bWF0dGhpYXMuYmdnQGtlcm5lbC5vcmc+IOaWvCAyMDIw5bm0NeaciDE45pelIOmA
+seS4gCDkuIvljYg3OjMy5a+r6YGT77yaCj4+Cj4+IEZyb206IE1hdHRoaWFzIEJydWdnZXIgPG1h
+dHRoaWFzLmJnZ0BnbWFpbC5jb20+Cj4+Cj4+IFRoZSBtbXN5cyBkcml2ZXIgaXMgbm93IHRoZSB0
+b3AgbGV2ZWwgZW50cnkgcG9pbnQgZm9yIHRoZSBtdWx0aW1lZGlhCj4+IHN5c3RlbSAobW1zeXMp
+LCB3ZSBiaW5kIHRoZSBjbG9jayBkcml2ZXIgYnkgY3JlYXRpbmcgYSBwbGF0Zm9ybSBkZXZpY2Uu
+Cj4+IFdlIGFsc28gYmluZCB0aGUgTWVkaWFUZWsgRFJNIGRyaXZlciB3aGljaCBpcyBub3QgeWV0
+IGltcGxlbWVudCBhbmQKPj4gdGhlcmVmb3Igd2lsbCBlcnJyb3Igb3V0IGZvciBub3cuCj4gCj4g
+WW91IG1heSBuZWVkIHRvIGxldCBDT05GSUdfTVRLX01NU1lTIGRlcGVuZHMgb24KPiBDT05GSUdf
+Q09NTU9OX0NMS19NVDgxNzNfTU1TWVMgfHwgQ09ORklHX0NPTU1PTl9DTEtfTVQ4MTgzX01NU1lT
+Cj4gCgpUaGF0IHdpbGwgYmUgZml4ZWQgYnk6Cmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcv
+cGF0Y2gvMTE0Njk1MjEvCgpPdGhlcndpc2UgdGhpcyB3b24ndCBzY2FsZSBhcyB3ZSB3b3VsZCBu
+ZWVkIHRvIGFkZCB0aGUgU29DcyB1c2luZyB0aGUgbXRrLW1tc3lzCmRyaXZlciBhbmQgdGhpcyB3
+aWxsIGJlIGEgbG90IGlmIG5vdCBhbGwuCgpSZWdhcmRzLApNYXR0aGlhcwoKPiBSZWdhcmRzLAo+
+IENodW4tS3VhbmcuCj4gCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IE1hdHRoaWFzIEJydWdnZXIgPG1h
+dHRoaWFzLmJnZ0BnbWFpbC5jb20+Cj4+IC0tLQo+Pgo+PiAgZHJpdmVycy9jbGsvbWVkaWF0ZWsv
+Y2xrLW10ODE4My1tbS5jIHwgOSArKy0tLS0tLS0KPj4gIGRyaXZlcnMvc29jL21lZGlhdGVrL210
+ay1tbXN5cy5jICAgICB8IDggKysrKysrKysKPj4gIDIgZmlsZXMgY2hhbmdlZCwgMTAgaW5zZXJ0
+aW9ucygrKSwgNyBkZWxldGlvbnMoLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvY2xrL21l
+ZGlhdGVrL2Nsay1tdDgxODMtbW0uYyBiL2RyaXZlcnMvY2xrL21lZGlhdGVrL2Nsay1tdDgxODMt
+bW0uYwo+PiBpbmRleCA3MjBjNjk2YjUwNmQuLjlkNjBlMDk2MTljMSAxMDA2NDQKPj4gLS0tIGEv
+ZHJpdmVycy9jbGsvbWVkaWF0ZWsvY2xrLW10ODE4My1tbS5jCj4+ICsrKyBiL2RyaXZlcnMvY2xr
+L21lZGlhdGVrL2Nsay1tdDgxODMtbW0uYwo+PiBAQCAtODQsOCArODQsOSBAQCBzdGF0aWMgY29u
+c3Qgc3RydWN0IG10a19nYXRlIG1tX2Nsa3NbXSA9IHsKPj4KPj4gIHN0YXRpYyBpbnQgY2xrX210
+ODE4M19tbV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+PiAgewo+PiArICAg
+ICAgIHN0cnVjdCBkZXZpY2UgKmRldiA9ICZwZGV2LT5kZXY7Cj4+ICsgICAgICAgc3RydWN0IGRl
+dmljZV9ub2RlICpub2RlID0gZGV2LT5wYXJlbnQtPm9mX25vZGU7Cj4+ICAgICAgICAgc3RydWN0
+IGNsa19vbmVjZWxsX2RhdGEgKmNsa19kYXRhOwo+PiAtICAgICAgIHN0cnVjdCBkZXZpY2Vfbm9k
+ZSAqbm9kZSA9IHBkZXYtPmRldi5vZl9ub2RlOwo+Pgo+PiAgICAgICAgIGNsa19kYXRhID0gbXRr
+X2FsbG9jX2Nsa19kYXRhKENMS19NTV9OUl9DTEspOwo+Pgo+PiBAQCAtOTUsMTYgKzk2LDEwIEBA
+IHN0YXRpYyBpbnQgY2xrX210ODE4M19tbV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpw
+ZGV2KQo+PiAgICAgICAgIHJldHVybiBvZl9jbGtfYWRkX3Byb3ZpZGVyKG5vZGUsIG9mX2Nsa19z
+cmNfb25lY2VsbF9nZXQsIGNsa19kYXRhKTsKPj4gIH0KPj4KPj4gLXN0YXRpYyBjb25zdCBzdHJ1
+Y3Qgb2ZfZGV2aWNlX2lkIG9mX21hdGNoX2Nsa19tdDgxODNfbW1bXSA9IHsKPj4gLSAgICAgICB7
+IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE4My1tbXN5cyIsIH0sCj4+IC0gICAgICAge30K
+Pj4gLX07Cj4+IC0KPj4gIHN0YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIGNsa19tdDgxODNf
+bW1fZHJ2ID0gewo+PiAgICAgICAgIC5wcm9iZSA9IGNsa19tdDgxODNfbW1fcHJvYmUsCj4+ICAg
+ICAgICAgLmRyaXZlciA9IHsKPj4gICAgICAgICAgICAgICAgIC5uYW1lID0gImNsay1tdDgxODMt
+bW0iLAo+PiAtICAgICAgICAgICAgICAgLm9mX21hdGNoX3RhYmxlID0gb2ZfbWF0Y2hfY2xrX210
+ODE4M19tbSwKPj4gICAgICAgICB9LAo+PiAgfTsKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+c29jL21lZGlhdGVrL210ay1tbXN5cy5jIGIvZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRrLW1tc3lz
+LmMKPj4gaW5kZXggY2FjYWZlMjNjODIzLi43ODNjM2RkMDA4YjIgMTAwNjQ0Cj4+IC0tLSBhL2Ry
+aXZlcnMvc29jL21lZGlhdGVrL210ay1tbXN5cy5jCj4+ICsrKyBiL2RyaXZlcnMvc29jL21lZGlh
+dGVrL210ay1tbXN5cy5jCj4+IEBAIC05Miw2ICs5MiwxMCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0
+IG10a19tbXN5c19kcml2ZXJfZGF0YSBtdDgxNzNfbW1zeXNfZHJpdmVyX2RhdGEgPSB7Cj4+ICAg
+ICAgICAgLmNsa19kcml2ZXIgPSAiY2xrLW10ODE3My1tbSIsCj4+ICB9Owo+Pgo+PiArc3RhdGlj
+IGNvbnN0IHN0cnVjdCBtdGtfbW1zeXNfZHJpdmVyX2RhdGEgbXQ4MTgzX21tc3lzX2RyaXZlcl9k
+YXRhID0gewo+PiArICAgICAgIC5jbGtfZHJpdmVyID0gImNsay1tdDgxODMtbW0iLAo+PiArfTsK
+Pj4gKwo+PiAgc3RhdGljIHVuc2lnbmVkIGludCBtdGtfbW1zeXNfZGRwX21vdXRfZW4oZW51bSBt
+dGtfZGRwX2NvbXBfaWQgY3VyLAo+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICBlbnVtIG10a19kZHBfY29tcF9pZCBuZXh0LAo+PiAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICB1bnNpZ25lZCBpbnQgKmFkZHIpCj4+IEBAIC0zMzksNiAr
+MzQzLDEwIEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIG9mX21hdGNoX210a19t
+bXN5c1tdID0gewo+PiAgICAgICAgICAgICAgICAgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4
+MTczLW1tc3lzIiwKPj4gICAgICAgICAgICAgICAgIC5kYXRhID0gJm10ODE3M19tbXN5c19kcml2
+ZXJfZGF0YSwKPj4gICAgICAgICB9LAo+PiArICAgICAgIHsKPj4gKyAgICAgICAgICAgICAgIC5j
+b21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE4My1tbXN5cyIsCj4+ICsgICAgICAgICAgICAgICAu
+ZGF0YSA9ICZtdDgxODNfbW1zeXNfZHJpdmVyX2RhdGEsCj4+ICsgICAgICAgfSwKPj4gICAgICAg
+ICB7IH0KPj4gIH07Cj4+Cj4+IC0tCj4+IDIuMjYuMgo+Pgo+Pgo+PiBfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+PiBMaW51eC1tZWRpYXRlayBtYWlsaW5n
+IGxpc3QKPj4gTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwo+PiBodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBt
+YWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
