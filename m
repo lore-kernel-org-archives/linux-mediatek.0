@@ -2,70 +2,87 @@ Return-Path: <SRS0=0J5R=7B=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A13D3C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2020 15:48:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 159DFC433E1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2020 16:29:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5DBE820709
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2020 15:48:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AA629207D3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2020 16:29:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LsPqRVgK";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="bn/NLnfD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5DBE820709
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KF6tJf3/";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="bfmm5oXd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AA629207D3
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:
-	References:Message-ID:Subject:To:From:Date:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j0cTAi3+L425Yl+AlzQE+/Xoo0G1Bu2FlhOjdVcZDk4=; b=LsPqRVgK7tyck+
-	efSlu7u89IjzAyB2vngpx0Yrr+0sPhrrBesaBelWkTX8iGjyTdKJw6PXIfYdZQGisCahfbAI94m5b
-	S6gsvEJOUzPpSOuphYpGL18dk9Oox/5n95nRorVufWl2e3poSphpCC3sX1gOus0uuryaC8jBeLXVi
-	l7X1H13uFyYExLwpZDoGEcOG8fSeDmdBwweJ/wQGCXmI3TbIRhaMdokoX1Q91zHH2MJhkSEtGJeCc
-	uzRVw9pTdyOraq0QSvg+pkOPbSfQ22iKizEl+gys+88svGJtMm8Z0oPiybD1b4484C3NWikTOasRo
-	Nu7HAwfmek3AOKotxs6Q==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=WVRaY/RuHZAz4Y96NTdzauHPcWssoCm+yTZW+B4mJUU=; b=KF6tJf3/INk5NhU5uBctz1Gd/
+	wTl/+ig5rSgeZMoM218NeR48h3sYr9o5T2Dqn7paMI/KEXhHEy11ImhpfvNuFYfYn083v9m5JntBx
+	fQwuHJtSyYqu4AZto8uCAE72PqFEZbbiyLkgGVNnkEkFezPCrFTHkvNuInnIu+LM3SxY35aYXG+T4
+	uOYz3Ttfcb81Jq+3Fh2DscdITSbrGsUspfQw4tGHgROb0gJXtgyWai51Ux4P8RkFd3zwvIcXsEnHd
+	9k2WX3qzCLqVTj1oNx3W8c1u/dkUS6BaOQ2BtXgDeeBE53oTi/JiHH88SlFAAZiYtuHn23/J+fNWk
+	XpB5GVpCQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jb4Ts-0007E1-1v; Tue, 19 May 2020 15:48:36 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jb56y-0005kI-18; Tue, 19 May 2020 16:29:00 +0000
+Received: from mail26.static.mailgun.info ([104.130.122.26])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jb4Tc-00072P-1S; Tue, 19 May 2020 15:48:21 +0000
-Received: from paulmck-ThinkPad-P72.home (50-39-105-78.bvtn.or.frontiernet.net
- [50.39.105.78])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7C5C920709;
- Tue, 19 May 2020 15:48:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1589903299;
- bh=7sGpmOemTKou1SkDOKuXUD9OFaVHO0iNug1vnMIT5to=;
- h=Date:From:To:Cc:Subject:Reply-To:References:In-Reply-To:From;
- b=bn/NLnfD8LOiAz71tCS0RtryozPQl84Nu0NRP0BGsk1fO1GXShtAuOLDKIgFn1vdY
- tOeY+ce5lZc0xezqWV/1dnupSBYngrB+um0EVwD1wwEhotgZPeP2+GO8QagrhBzB3F
- ZkV591g7MAtER5EKyCFrBfL6VTpYNZXN58AfrNbM=
-Received: by paulmck-ThinkPad-P72.home (Postfix, from userid 1000)
- id 649EE3523462; Tue, 19 May 2020 08:48:19 -0700 (PDT)
-Date: Tue, 19 May 2020 08:48:19 -0700
-From: "Paul E. McKenney" <paulmck@kernel.org>
-To: Walter Wu <walter-zh.wu@mediatek.com>
-Subject: Re: [PATCH v4 1/4] rcu/kasan: record and print call_rcu() call stack
-Message-ID: <20200519154819.GJ2869@paulmck-ThinkPad-P72>
-References: <20200519022359.24115-1-walter-zh.wu@mediatek.com>
+ id 1jb55p-0004fm-R2
+ for linux-mediatek@lists.infradead.org; Tue, 19 May 2020 16:27:53 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1589905671; h=Content-Transfer-Encoding: Content-Type:
+ In-Reply-To: MIME-Version: Date: Message-ID: From: References: Cc: To:
+ Subject: Sender; bh=6X9hMFobMkVLgkXSvHsdTSvgP/JXFdU8N066HN1mPZs=;
+ b=bfmm5oXdVPNcBF51ntpyQ7kFj9G/dcXo2uxKGdyPHF8SyM9vposMxuq2QtnCBsiPyI4TeOP3
+ oQMN5qv+NArt8LazP5YkAmEPRD9swftnbvK5vMHVGRd0xf6a21CLAVXqp/8u9d0ceq2PmPnL
+ M0vZ+MCCvFLab6c0gxdiQI8C1gE=
+X-Mailgun-Sending-Ip: 104.130.122.26
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
+ by mxa.mailgun.org with ESMTP id 5ec408fe.7f9bafb84a40-smtp-out-n01;
+ Tue, 19 May 2020 16:27:42 -0000 (UTC)
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 48B0BC00449; Tue, 19 May 2020 16:27:41 +0000 (UTC)
+Received: from [192.168.8.176] (cpe-70-95-149-85.san.res.rr.com [70.95.149.85])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: asutoshd)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 7A312C433F2;
+ Tue, 19 May 2020 16:27:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 7A312C433F2
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=none smtp.mailfrom=asutoshd@codeaurora.org
+Subject: Re: [PATCH v3 5/5] scsi: ufs: Fix possible VCC power drain during
+ runtime suspend
+To: Stanley Chu <stanley.chu@mediatek.com>, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com
+References: <20200516174615.15445-1-stanley.chu@mediatek.com>
+ <20200516174615.15445-6-stanley.chu@mediatek.com>
+From: "Asutosh Das (asd)" <asutoshd@codeaurora.org>
+Message-ID: <6d32fba1-f7c3-f043-42b6-0da065e9795b@codeaurora.org>
+Date: Tue, 19 May 2020 09:27:37 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200519022359.24115-1-walter-zh.wu@mediatek.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20200516174615.15445-6-stanley.chu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200519_084820_126399_724F768B 
-X-CRM114-Status: GOOD (  22.89  )
+X-CRM114-CacheID: sfid-20200519_092751_580854_8FA5F8D2 
+X-CRM114-Status: GOOD (  29.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,230 +94,196 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: paulmck@kernel.org
-Cc: wsd_upstream <wsd_upstream@mediatek.com>, linux-mm@kvack.org,
- Lai Jiangshan <jiangshanlai@gmail.com>, Josh Triplett <josh@joshtriplett.org>,
- kasan-dev@googlegroups.com, linux-kernel@vger.kernel.org,
- Joel Fernandes <joel@joelfernandes.org>, linux-mediatek@lists.infradead.org,
- Alexander Potapenko <glider@google.com>, linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>,
- Andrew Morton <akpm@linux-foundation.org>, Dmitry Vyukov <dvyukov@google.com>,
- Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: bvanassche@acm.org, andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
+ beanhuo@micron.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 19, 2020 at 10:23:59AM +0800, Walter Wu wrote:
-> This feature will record the last two call_rcu() call stacks and
-> prints up to 2 call_rcu() call stacks in KASAN report.
-> 
-> When call_rcu() is called, we store the call_rcu() call stack into
-> slub alloc meta-data, so that the KASAN report can print rcu stack.
-> 
-> [1]https://bugzilla.kernel.org/show_bug.cgi?id=198437
-> [2]https://groups.google.com/forum/#!searchin/kasan-dev/better$20stack$20traces$20for$20rcu%7Csort:date/kasan-dev/KQsjT_88hDE/7rNUZprRBgAJ
-> 
-> Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> Suggested-by: Dmitry Vyukov <dvyukov@google.com>
-> Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
-> Cc: Dmitry Vyukov <dvyukov@google.com>
-> Cc: Alexander Potapenko <glider@google.com>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: Paul E. McKenney <paulmck@kernel.org>
-> Cc: Josh Triplett <josh@joshtriplett.org>
-> Cc: Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
-> Cc: Lai Jiangshan <jiangshanlai@gmail.com>
-> Cc: Joel Fernandes <joel@joelfernandes.org>
+Hi Stanley,
 
-From an RCU perspective:
-
-Acked-by: Paul E. McKenney <paulmck@kernel.org>
-
+On 5/16/2020 10:46 AM, Stanley Chu wrote:
+> The commit "scsi: ufs: Fix WriteBooster flush during runtime
+> suspend" promises essential resource, i.e., for UFS devices doing
+> WriteBooster buffer flush and Auto BKOPs. However if device
+> finishes its job but not resumed for a very long time, system
+> will have unnecessary power drain because VCC is still supplied.
+> 
+> To fix this, a method to recheck the threshold of keeping VCC
+> supply is required. However, the threshold recheck needs to
+> re-activate the link because the decision depends on the device
+> status.
+> 
+> Introduce a delayed work to force runtime resume after a certain
+> delay during runtime suspend. This makes threshold recheck simpler
+> which will be done in the next runtime-suspend.
+> 
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 > ---
->  include/linux/kasan.h |  2 ++
->  kernel/rcu/tree.c     |  2 ++
->  lib/Kconfig.kasan     |  2 ++
->  mm/kasan/common.c     |  4 ++--
->  mm/kasan/generic.c    | 19 +++++++++++++++++++
->  mm/kasan/kasan.h      | 10 ++++++++++
->  mm/kasan/report.c     | 24 ++++++++++++++++++++++++
->  7 files changed, 61 insertions(+), 2 deletions(-)
+
+Is there a reason to have this code as a separate patch?
+[1] Commit: "scsi: ufs: Fix WriteBooster flush during runtime suspend" 
+introduces 'keep_curr_dev_pwr_mode' and the very next change (this one) 
+removes it.
+Do you think this change and [1] should be merged?
+
+>   drivers/scsi/ufs/ufs.h    |  1 +
+>   drivers/scsi/ufs/ufshcd.c | 43 ++++++++++++++++++++++++++++++++++-----
+>   drivers/scsi/ufs/ufshcd.h |  1 +
+>   3 files changed, 40 insertions(+), 5 deletions(-)
 > 
-> diff --git a/include/linux/kasan.h b/include/linux/kasan.h
-> index 31314ca7c635..23b7ee00572d 100644
-> --- a/include/linux/kasan.h
-> +++ b/include/linux/kasan.h
-> @@ -174,11 +174,13 @@ static inline size_t kasan_metadata_size(struct kmem_cache *cache) { return 0; }
->  
->  void kasan_cache_shrink(struct kmem_cache *cache);
->  void kasan_cache_shutdown(struct kmem_cache *cache);
-> +void kasan_record_aux_stack(void *ptr);
->  
->  #else /* CONFIG_KASAN_GENERIC */
->  
->  static inline void kasan_cache_shrink(struct kmem_cache *cache) {}
->  static inline void kasan_cache_shutdown(struct kmem_cache *cache) {}
-> +static inline void kasan_record_aux_stack(void *ptr) {}
->  
->  #endif /* CONFIG_KASAN_GENERIC */
->  
-> diff --git a/kernel/rcu/tree.c b/kernel/rcu/tree.c
-> index 06548e2ebb72..36a4ff7f320b 100644
-> --- a/kernel/rcu/tree.c
-> +++ b/kernel/rcu/tree.c
-> @@ -57,6 +57,7 @@
->  #include <linux/slab.h>
->  #include <linux/sched/isolation.h>
->  #include <linux/sched/clock.h>
-> +#include <linux/kasan.h>
->  #include "../time/tick-internal.h"
->  
->  #include "tree.h"
-> @@ -2668,6 +2669,7 @@ __call_rcu(struct rcu_head *head, rcu_callback_t func)
->  	head->func = func;
->  	head->next = NULL;
->  	local_irq_save(flags);
-> +	kasan_record_aux_stack(head);
->  	rdp = this_cpu_ptr(&rcu_data);
->  
->  	/* Add the callback to our list. */
-> diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
-> index 81f5464ea9e1..4e83cf6e3caa 100644
-> --- a/lib/Kconfig.kasan
-> +++ b/lib/Kconfig.kasan
-> @@ -58,6 +58,8 @@ config KASAN_GENERIC
->  	  For better error detection enable CONFIG_STACKTRACE.
->  	  Currently CONFIG_KASAN_GENERIC doesn't work with CONFIG_DEBUG_SLAB
->  	  (the resulting kernel does not boot).
-> +	  In generic mode KASAN prints the last two call_rcu() call stacks in
-> +	  reports.
->  
->  config KASAN_SW_TAGS
->  	bool "Software tag-based mode"
-> diff --git a/mm/kasan/common.c b/mm/kasan/common.c
-> index 2906358e42f0..8bc618289bb1 100644
-> --- a/mm/kasan/common.c
-> +++ b/mm/kasan/common.c
-> @@ -41,7 +41,7 @@
->  #include "kasan.h"
->  #include "../slab.h"
->  
-> -static inline depot_stack_handle_t save_stack(gfp_t flags)
-> +depot_stack_handle_t kasan_save_stack(gfp_t flags)
->  {
->  	unsigned long entries[KASAN_STACK_DEPTH];
->  	unsigned int nr_entries;
-> @@ -54,7 +54,7 @@ static inline depot_stack_handle_t save_stack(gfp_t flags)
->  static inline void set_track(struct kasan_track *track, gfp_t flags)
->  {
->  	track->pid = current->pid;
-> -	track->stack = save_stack(flags);
-> +	track->stack = kasan_save_stack(flags);
->  }
->  
->  void kasan_enable_current(void)
-> diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
-> index 56ff8885fe2e..3372bdcaf92a 100644
-> --- a/mm/kasan/generic.c
-> +++ b/mm/kasan/generic.c
-> @@ -325,3 +325,22 @@ DEFINE_ASAN_SET_SHADOW(f2);
->  DEFINE_ASAN_SET_SHADOW(f3);
->  DEFINE_ASAN_SET_SHADOW(f5);
->  DEFINE_ASAN_SET_SHADOW(f8);
+> diff --git a/drivers/scsi/ufs/ufs.h b/drivers/scsi/ufs/ufs.h
+> index db07eedfed96..c70845d41449 100644
+> --- a/drivers/scsi/ufs/ufs.h
+> +++ b/drivers/scsi/ufs/ufs.h
+> @@ -574,6 +574,7 @@ struct ufs_dev_info {
+>   	u32 d_ext_ufs_feature_sup;
+>   	u8 b_wb_buffer_type;
+>   	u32 d_wb_alloc_units;
+> +	bool b_rpm_dev_flush_capable;
+>   	u8 b_presrv_uspc_en;
+>   };
+>   
+> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+> index f4f2c7b5ab0a..a137553f9b41 100644
+> --- a/drivers/scsi/ufs/ufshcd.c
+> +++ b/drivers/scsi/ufs/ufshcd.c
+> @@ -94,6 +94,9 @@
+>   /* default delay of autosuspend: 2000 ms */
+>   #define RPM_AUTOSUSPEND_DELAY_MS 2000
+>   
+> +/* Default delay of RPM device flush delayed work */
+> +#define RPM_DEV_FLUSH_RECHECK_WORK_DELAY_MS 5000
 > +
-> +void kasan_record_aux_stack(void *addr)
+>   /* Default value of wait time before gating device ref clock */
+>   #define UFSHCD_REF_CLK_GATING_WAIT_US 0xFF /* microsecs */
+>   
+> @@ -5310,7 +5313,7 @@ static bool ufshcd_wb_presrv_usrspc_keep_vcc_on(struct ufs_hba *hba,
+>   	return false;
+>   }
+>   
+> -static bool ufshcd_wb_keep_vcc_on(struct ufs_hba *hba)
+> +static bool ufshcd_wb_need_flush(struct ufs_hba *hba)
+>   {
+>   	int ret;
+>   	u32 avail_buf;
+> @@ -5348,6 +5351,21 @@ static bool ufshcd_wb_keep_vcc_on(struct ufs_hba *hba)
+>   	return ufshcd_wb_presrv_usrspc_keep_vcc_on(hba, avail_buf);
+>   }
+>   
+> +static void ufshcd_rpm_dev_flush_recheck_work(struct work_struct *work)
 > +{
-> +	struct page *page = kasan_addr_to_page(addr);
-> +	struct kmem_cache *cache;
-> +	struct kasan_alloc_meta *alloc_info;
-> +	void *object;
-> +
-> +	if (!(page && PageSlab(page)))
-> +		return;
-> +
-> +	cache = page->slab_cache;
-> +	object = nearest_obj(cache, page, addr);
-> +	alloc_info = get_alloc_info(cache, object);
-> +
-> +	/* record the last two call_rcu() call stacks */
-> +	alloc_info->aux_stack[1] = alloc_info->aux_stack[0];
-> +	alloc_info->aux_stack[0] = kasan_save_stack(GFP_NOWAIT);
-> +}
-> diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-> index e8f37199d885..a7391bc83070 100644
-> --- a/mm/kasan/kasan.h
-> +++ b/mm/kasan/kasan.h
-> @@ -104,7 +104,15 @@ struct kasan_track {
->  
->  struct kasan_alloc_meta {
->  	struct kasan_track alloc_track;
-> +#ifdef CONFIG_KASAN_GENERIC
+> +	struct ufs_hba *hba = container_of(to_delayed_work(work),
+> +					   struct ufs_hba,
+> +					   rpm_dev_flush_recheck_work);
 > +	/*
-> +	 * call_rcu() call stack is stored into struct kasan_alloc_meta.
-> +	 * The free stack is stored into struct kasan_free_meta.
+> +	 * To prevent unnecessary VCC power drain after device finishes
+> +	 * WriteBooster buffer flush or Auto BKOPs, force runtime resume
+> +	 * after a certain delay to recheck the threshold by next runtime
+> +	 * supsend.
 > +	 */
-> +	depot_stack_handle_t aux_stack[2];
-> +#else
->  	struct kasan_track free_track[KASAN_NR_FREE_STACKS];
-> +#endif
->  #ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
->  	u8 free_pointer_tag[KASAN_NR_FREE_STACKS];
->  	u8 free_track_idx;
-> @@ -159,6 +167,8 @@ void kasan_report_invalid_free(void *object, unsigned long ip);
->  
->  struct page *kasan_addr_to_page(const void *addr);
->  
-> +depot_stack_handle_t kasan_save_stack(gfp_t flags);
-> +
->  #if defined(CONFIG_KASAN_GENERIC) && \
->  	(defined(CONFIG_SLAB) || defined(CONFIG_SLUB))
->  void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache);
-> diff --git a/mm/kasan/report.c b/mm/kasan/report.c
-> index 80f23c9da6b0..6f8f2bf8f53b 100644
-> --- a/mm/kasan/report.c
-> +++ b/mm/kasan/report.c
-> @@ -179,6 +179,17 @@ static struct kasan_track *kasan_get_free_track(struct kmem_cache *cache,
->  	return &alloc_meta->free_track[i];
->  }
->  
-> +#ifdef CONFIG_KASAN_GENERIC
-> +static void print_stack(depot_stack_handle_t stack)
-> +{
-> +	unsigned long *entries;
-> +	unsigned int nr_entries;
-> +
-> +	nr_entries = stack_depot_fetch(stack, &entries);
-> +	stack_trace_print(entries, nr_entries, 0);
+> +	pm_runtime_get_sync(hba->dev);
+> +	pm_runtime_put_sync(hba->dev);
 > +}
-> +#endif
 > +
->  static void describe_object(struct kmem_cache *cache, void *object,
->  				const void *addr, u8 tag)
->  {
-> @@ -192,6 +203,19 @@ static void describe_object(struct kmem_cache *cache, void *object,
->  		free_track = kasan_get_free_track(cache, object, tag);
->  		print_track(free_track, "Freed");
->  		pr_err("\n");
+>   /**
+>    * ufshcd_exception_event_handler - handle exceptions raised by device
+>    * @work: pointer to work data
+> @@ -8164,7 +8182,6 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>   	enum ufs_pm_level pm_lvl;
+>   	enum ufs_dev_pwr_mode req_dev_pwr_mode;
+>   	enum uic_link_state req_link_state;
+> -	bool keep_curr_dev_pwr_mode = false;
+>   
+>   	hba->pm_op_in_progress = 1;
+>   	if (!ufshcd_is_shutdown_pm(pm_op)) {
+> @@ -8224,11 +8241,12 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>   		 * Hibern8, keep device power mode as "active power mode"
+>   		 * and VCC supply.
+>   		 */
+> -		keep_curr_dev_pwr_mode = hba->auto_bkops_enabled ||
+> +		hba->dev_info.b_rpm_dev_flush_capable =
+> +			hba->auto_bkops_enabled ||
+>   			(((req_link_state == UIC_LINK_HIBERN8_STATE) ||
+>   			((req_link_state == UIC_LINK_ACTIVE_STATE) &&
+>   			ufshcd_is_auto_hibern8_enabled(hba))) &&
+> -			ufshcd_wb_keep_vcc_on(hba));
+> +			ufshcd_wb_need_flush(hba));
+>   	}
+>   
+>   	if (req_dev_pwr_mode != hba->curr_dev_pwr_mode) {
+> @@ -8238,7 +8256,7 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>   			ufshcd_disable_auto_bkops(hba);
+>   		}
+>   
+> -		if (!keep_curr_dev_pwr_mode) {
+> +		if (!hba->dev_info.b_rpm_dev_flush_capable) {
+>   			ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
+>   			if (ret)
+>   				goto enable_gating;
+> @@ -8295,9 +8313,16 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>   	if (hba->clk_scaling.is_allowed)
+>   		ufshcd_resume_clkscaling(hba);
+>   	hba->clk_gating.is_suspended = false;
+> +	hba->dev_info.b_rpm_dev_flush_capable = false;
+>   	ufshcd_release(hba);
+>   out:
+> +	if (hba->dev_info.b_rpm_dev_flush_capable) {
+> +		schedule_delayed_work(&hba->rpm_dev_flush_recheck_work,
+> +			msecs_to_jiffies(RPM_DEV_FLUSH_RECHECK_WORK_DELAY_MS));
+> +	}
 > +
-> +#ifdef CONFIG_KASAN_GENERIC
-> +		if (alloc_info->aux_stack[0]) {
-> +			pr_err("Last one call_rcu() call stack:\n");
-> +			print_stack(alloc_info->aux_stack[0]);
-> +			pr_err("\n");
-> +		}
-> +		if (alloc_info->aux_stack[1]) {
-> +			pr_err("Second to last call_rcu() call stack:\n");
-> +			print_stack(alloc_info->aux_stack[1]);
-> +			pr_err("\n");
-> +		}
-> +#endif
->  	}
->  
->  	describe_object_addr(cache, object, addr);
-> -- 
-> 2.18.0
+>   	hba->pm_op_in_progress = 0;
+> +
+Nitpick; newline, perhaps?
+
+>   	if (ret)
+>   		ufshcd_update_reg_hist(&hba->ufs_stats.suspend_err, (u32)ret);
+>   	return ret;
+> @@ -8386,6 +8411,11 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>   	/* Enable Auto-Hibernate if configured */
+>   	ufshcd_auto_hibern8_enable(hba);
+>   
+> +	if (hba->dev_info.b_rpm_dev_flush_capable) {
+> +		hba->dev_info.b_rpm_dev_flush_capable = false;
+> +		cancel_delayed_work(&hba->rpm_dev_flush_recheck_work);
+> +	}
+> +
+>   	/* Schedule clock gating in case of no access to UFS device yet */
+>   	ufshcd_release(hba);
+>   
+> @@ -8859,6 +8889,9 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
+>   						UFS_SLEEP_PWR_MODE,
+>   						UIC_LINK_HIBERN8_STATE);
+>   
+> +	INIT_DELAYED_WORK(&hba->rpm_dev_flush_recheck_work,
+> +			  ufshcd_rpm_dev_flush_recheck_work);
+> +
+>   	/* Set the default auto-hiberate idle timer value to 150 ms */
+>   	if (ufshcd_is_auto_hibern8_supported(hba) && !hba->ahit) {
+>   		hba->ahit = FIELD_PREP(UFSHCI_AHIBERN8_TIMER_MASK, 150) |
+> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+> index 8db7a6101892..9acd437037e8 100644
+> --- a/drivers/scsi/ufs/ufshcd.h
+> +++ b/drivers/scsi/ufs/ufshcd.h
+> @@ -745,6 +745,7 @@ struct ufs_hba {
+>   	struct request_queue	*bsg_queue;
+>   	bool wb_buf_flush_enabled;
+>   	bool wb_enabled;
+> +	struct delayed_work rpm_dev_flush_recheck_work;
+>   };
+>   
+>   /* Returns true if clocks can be gated. Otherwise false */
+> 
+
+
+-- 
+The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
+Linux Foundation Collaborative Project
 
 _______________________________________________
 Linux-mediatek mailing list
