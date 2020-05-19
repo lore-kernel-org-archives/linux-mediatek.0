@@ -2,22 +2,22 @@ Return-Path: <SRS0=0J5R=7B=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A3C5DC433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2020 06:48:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AA2FBC433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2020 07:15:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6A2322075F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2020 06:48:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 812FB2070A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2020 07:15:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OSJ86Rit";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="tuHZnLrA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6A2322075F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QbQ0xMQy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 812FB2070A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linux-m68k.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -25,63 +25,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=39irdrNrVhkfb3kWygDB4TIKcE1bt8byXP4LFcK8Ulg=; b=OSJ86Rit1tESBS
-	1BaatjhggQlFAPr/1careOuTaJlCLFUYvVaV1AQNIdFBYH6NyHMPi+J35wEHK6v4fM/6hZYdhH+jH
-	XN83mD9HoeK997USxfVwtrT6NRcInsnQMRZo1Q7kbNapMDAfdtAOMcgfrm7oH3PJIASACgbMNyj+K
-	Bt7oPEYBgIBt1fHMyeBBUoB4ZhCjTqCTDHOudzZsb+br7vzp5YygL/WoYYE2GCbKt99bwkIZUiauE
-	kc5poIwkdzj1wOjBmq66IAd/KeQ/5y5fU7LfVIGYEhkSshDNGA/HxUhMnC3o6ktt4ZnYnXx68UeCv
-	zauLvHHuXlJV4vcY5ixQ==;
+	List-Owner; bh=tIemcVqiNwiTX0Y2XPgoYKOnSRKz2Xu+5e9wdzSCRXo=; b=QbQ0xMQyRldrMd
+	220/vo74ZVdbx59NbLil3eommhm9zC91wSBMjFfFnDQ/R6kkVItqO+LOpDXgogQElj60eaL4U/S5r
+	Wd3VlSbDvPfpCRMfwXhthYhW377+khlu57E5bupKxS8AWRwNZBOUcrNR1ExBLQmJLdcZOiYdC5L3o
+	jgbsbXgfgrsa2iXZoFNQn8NUX3uvnJV9XFjh1SpVLmP83VlH8SuoxVJY8xVSX/S8PtYPwnZYLjmnO
+	KufOKIkIYr9B9IcKSk/iDBbpXuTQFrXwrDgIX4CBIP6cDiBl31kJC9cNxwSA/SPQ6s3Y0spql/O+L
+	Y8BDyAbFM1X/MiGNVSpA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jaw38-000144-Qz; Tue, 19 May 2020 06:48:26 +0000
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
+	id 1jawSi-0000Cq-H8; Tue, 19 May 2020 07:14:53 +0000
+Received: from mail-oi1-f194.google.com ([209.85.167.194])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jaw2z-0000vi-9R
- for linux-mediatek@lists.infradead.org; Tue, 19 May 2020 06:48:18 +0000
-Received: by mail-lj1-x243.google.com with SMTP id g4so12475796ljl.2
- for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2020 23:48:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=WsAbqI29raOKmaDZfzjwRCgLNeDp8dAj/rKR6c3lLhM=;
- b=tuHZnLrABgGUIvnnLmYJt3ZG2g313FM2F48OHFYb9BTOD95F6kXtuV01EGVKlYM8a5
- J9pubY/erz1bGwNuDcCt9AHO32hvzOKxal6lbrpIHokmHaXUYTWuymjz//iJAlmoED3k
- 0J+horHcMIcVSn9is7eHpgmMMQnSJYOoc6g8v7L8iA0wXwNiX7v72JblBSCXMXzE+U9j
- aY3sgZZML/R5BZTRTbXVssNN39bAYPP87ciVQMsukfx2+gxCinuoIhgeKH8LliSNh8Vy
- tmPZSh+FrHIJ9lCyddYCVUR6x8oDW3ovx7rMRsNFQm+eGwfp2d1V5S2ZV4tSPDg8qzvX
- BkEg==
+ id 1jawSU-0008Ou-Rx; Tue, 19 May 2020 07:14:40 +0000
+Received: by mail-oi1-f194.google.com with SMTP id s198so11477945oie.6;
+ Tue, 19 May 2020 00:14:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=WsAbqI29raOKmaDZfzjwRCgLNeDp8dAj/rKR6c3lLhM=;
- b=dNsVnzEGVm+KUWzRk/Z0OmHjs8Rx/txNyKS6JD+fwHdZ3AYsc8oDxDNZguYpw9EZYs
- d8gWVNd0snURdRwND838vmqEJKwOiGUpFvaxMnBqZarimpbungVoLq3f4l7pBDeENrSV
- wF6NCXWwqfg3mcIbJwMrPT2I0rYVQodJfv158Onl5nnKTybWjEWQVwLmOIbuyZCO0TvA
- vYsluiC9NqdQFTVnEkLzGHdgEdw/lN17GWQxxMoIEAPGL7hr8YmOGiiqVJA2q67IZ+3b
- E/KE3VCnvt2QzMzHMIwE+O32/pZVllw4QSFlMJRXXa9pQ/1EVL7YLfGtAbx4xOfi0u5c
- 7nlA==
-X-Gm-Message-State: AOAM530tmL/YdfF63qFFwOHz9UlJyfyiQb9GLjmjFiPXapmV3xuYRAii
- Dg/J8g+kTisNBYp48UnXpoZaG2CJ+GjkiYcl0kyg3A==
-X-Google-Smtp-Source: ABdhPJw0NjDCoXpLPMqsNAxi9sVRj6FK14oxPqb/GSvWHxxxbkhsVgnm03D1EwJ3jx+RIMYeGCIHEy6X/IXdyEruNZQ=
-X-Received: by 2002:a2e:9907:: with SMTP id v7mr3773551lji.0.1589870895203;
- Mon, 18 May 2020 23:48:15 -0700 (PDT)
+ bh=TwCQPIVjOeXgiPme8eAiiVzkt9402jNeI90NBkXCFv8=;
+ b=mbZXYXtybH6dVVgjVCX3mJxgIO156zRXOJCTdpa2eI9xy4juwXPJlQ33VtwHxkiUBQ
+ vWckW8kk4l8nPFQb7T4GS8mtQt6WPbkkeZ8auxY7Jy2NLZtSy0SB8qyWJVfoVf8QB4R7
+ xzYeGnMrQ7XgoFHCLGuBpI9uF/ceLve2c4deK/1zLWgvc1cc1mI28QV7qPLdAbhW1bl5
+ PUcqcgMN4be9F3j6/alIUrMb1U69tfcOolLFYU9ZHFLgTYud7n0zqArTVkoecx/qmNRP
+ np8lFIL1Hx5i+tnFi094PawmmSsjSe8S057D+wd2veroJQyN1he7dfSOxevu1fXufvP4
+ 3rJQ==
+X-Gm-Message-State: AOAM530H0xBZajwJ43yiUKnmabbw06e6WGiYmOQY6H83c0CYrtqQ4iZo
+ RxTr8WLcVGm+SMsqJ+in6s6zPdyDY8mR9QWv/iop+sqH
+X-Google-Smtp-Source: ABdhPJzEx85PiYVtErTopPhUEJtAuIq0qK2XpMHBFrrin1JGOJsWb/O3ZzhWo+FahHzulYroimH7reXMovFJNlrID2Q=
+X-Received: by 2002:aca:895:: with SMTP id 143mr2104387oii.153.1589872477377; 
+ Tue, 19 May 2020 00:14:37 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200516124857.75004-1-lecopzer@gmail.com>
- <CAFA6WYNwp+_ENiS8QDao5+RXyt5ofJZyq6c5CKG_d0CNEmBNYg@mail.gmail.com>
- <CANr2M19unLW8n0P2DiOYEZ=GZcaD-L2ygPht_5HNtNZ6e4h6xQ@mail.gmail.com>
- <20200518104524.GA1224@C02TD0UTHF1T.local>
- <a9002b5e-aec5-b6e0-7174-87b93351d60c@arm.com>
- <CAFA6WYPKD0Kkn5yQiKZQkM+tT0iW4oPnndegD-iau9EwB5DYog@mail.gmail.com>
- <20200518141946.GA3164@C02TD0UTHF1T.local>
-In-Reply-To: <20200518141946.GA3164@C02TD0UTHF1T.local>
-From: Sumit Garg <sumit.garg@linaro.org>
-Date: Tue, 19 May 2020 12:18:04 +0530
-Message-ID: <CAFA6WYP7QhcQZrWua7NOqaqOO8Zd8QeWpHr4_QbDZFgjQ+Qung@mail.gmail.com>
-Subject: Re: [PATCH 0/3] arm64: perf: Add support for Perf NMI interrupts
-To: Mark Rutland <mark.rutland@arm.com>
+References: <1589461844-15614-1-git-send-email-qii.wang@mediatek.com>
+ <1589461844-15614-3-git-send-email-qii.wang@mediatek.com>
+ <CAMuHMdXjLakWDDEy=02prC7XjAs_xBnt2mArPFNwyHgUoWw6-g@mail.gmail.com>
+ <1589857073.25512.34.camel@mhfsdcap03>
+In-Reply-To: <1589857073.25512.34.camel@mhfsdcap03>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Tue, 19 May 2020 09:14:25 +0200
+Message-ID: <CAMuHMdXgp85PVteunxrHYcMTqFgQWHmXXCVJM_KX76xkCADMpw@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] i2c: mediatek: Add i2c ac-timing adjust support
+To: Qii Wang <qii.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200518_234817_324374_0E9595C0 
-X-CRM114-Status: GOOD (  25.72  )
+X-CRM114-CacheID: sfid-20200519_001438_913378_665230D5 
+X-CRM114-Status: GOOD (  22.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,84 +80,129 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Jian-Lin Chen <lecopzer.chen@mediatek.com>, Will Deacon <will@kernel.org>,
- alexander.shishkin@linux.intel.com, Catalin Marinas <catalin.marinas@arm.com>,
- jolsa@redhat.com, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- acme@kernel.org, Lecopzer Chen <lecopzer@gmail.com>,
- Peter Zijlstra <peterz@infradead.org>, mingo@redhat.com,
- linux-mediatek@lists.infradead.org,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- matthias.bgg@gmail.com, namhyung@kernel.org,
- Alexandru Elisei <alexandru.elisei@arm.com>, yj.chiang@mediatek.com,
- julien.thierry.kdev@gmail.com
+Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, srv_heupstream@mediatek.com,
+ Wolfram Sang <wsa@the-dreams.de>, leilk.liu@mediatek.com,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-mediatek@lists.infradead.org, Linux I2C <linux-i2c@vger.kernel.org>,
+ Joe Perches <joe@perches.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 18 May 2020 at 19:49, Mark Rutland <mark.rutland@arm.com> wrote:
->
-> On Mon, May 18, 2020 at 07:39:23PM +0530, Sumit Garg wrote:
-> > On Mon, 18 May 2020 at 16:47, Alexandru Elisei <alexandru.elisei@arm.com> wrote:
-> > > On 5/18/20 11:45 AM, Mark Rutland wrote:
-> > > > On Mon, May 18, 2020 at 02:26:00PM +0800, Lecopzer Chen wrote:
-> > > >> HI Sumit,
-> > > >>
-> > > >> Thanks for your information.
-> > > >>
-> > > >> I've already implemented IPI (same as you did [1], little difference
-> > > >> in detail), hardlockup detector and perf in last year(2019) for
-> > > >> debuggability.
-> > > >> And now we tend to upstream to reduce kernel maintaining effort.
-> > > >> I'm glad if someone in ARM can do this work :)
-> > > >>
-> > > >> Hi Julien,
-> > > >>
-> > > >> Does any Arm maintainers can proceed this action?
-> > > > Alexandru (Cc'd) has been rebasing and reworking Julien's patches, which
-> > > > is my preferred approach.
-> > > >
-> > > > I understand that's not quite ready for posting since he's investigating
-> > > > some of the nastier subtleties (e.g. mutual exclusion with the NMI), but
-> > > > maybe we can put the work-in-progress patches somewhere in the mean
-> > > > time.
-> > > >
-> > > > Alexandru, do you have an idea of what needs to be done, and/or when you
-> > > > expect you could post that?
+Hi Qii,
+
+On Tue, May 19, 2020 at 4:59 AM Qii Wang <qii.wang@mediatek.com> wrote:
+> On Mon, 2020-05-18 at 17:44 +0200, Geert Uytterhoeven wrote:
+> > On Thu, May 14, 2020 at 3:13 PM Qii Wang <qii.wang@mediatek.com> wrote:
+> > > This patch adds a algorithm to calculate some ac-timing parameters
+> > > which can fully meet I2C Spec.
 > > >
-> > > I'm currently working on rebasing the patches on top of 5.7-rc5, when I have
-> > > something usable I'll post a link (should be a couple of days). After that I will
-> > > address the review comments, and I plan to do a thorough testing because I'm not
-> > > 100% confident that some of the assumptions around the locks that were removed are
-> > > correct. My guess is this will take a few weeks.
+> > > Signed-off-by: Qii Wang <qii.wang@mediatek.com>
+> > > ---
+> > >  drivers/i2c/busses/i2c-mt65xx.c | 328 +++++++++++++++++++++++++++++++++-------
+> > >  1 file changed, 277 insertions(+), 51 deletions(-)
 > > >
+> > > diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> > > index 0ca6c38a..7020618 100644
+> > > --- a/drivers/i2c/busses/i2c-mt65xx.c
+> > > +++ b/drivers/i2c/busses/i2c-mt65xx.c
 > >
-> > Thanks Mark, Alex for the status updates on perf NMI feature.
+> > > +/*
+> > > + * Check and Calculate i2c ac-timing
+> > > + *
+> > > + * Hardware design:
+> > > + * sample_ns = (1000000000 * (sample_cnt + 1)) / clk_src
+> > > + * xxx_cnt_div =  spec->min_xxx_ns / sample_ns
+> > > + *
+> > > + * Sample_ns is rounded down for xxx_cnt_div would be greater
+> > > + * than the smallest spec.
+> > > + * The sda_timing is chosen as the middle value between
+> > > + * the largest and smallest.
+> > > + */
+> > > +static int mtk_i2c_check_ac_timing(struct mtk_i2c *i2c,
+> > > +                                  unsigned int clk_src,
+> > > +                                  unsigned int check_speed,
+> > > +                                  unsigned int step_cnt,
+> > > +                                  unsigned int sample_cnt)
+> > > +{
+> > > +       const struct i2c_spec_values *spec;
+> > > +       unsigned int su_sta_cnt, low_cnt, high_cnt, max_step_cnt;
+> > > +       unsigned int sda_max, sda_min, clk_ns, max_sta_cnt = 0x3f;
+> > > +       long long sample_ns = (1000000000 * (sample_cnt + 1)) / clk_src;
 > >
-> > Alex,
+> > So sample_ns is a 64-bit value. Is that really needed?
 > >
-> > As the hard-lockup detection patch [1] has a dependency on perf NMI
-> > patch-set, I will rebase and test hard-lockup detector when you have
-> > got a working tree. But due to the dependency, I think patch [1]
-> > should be accepted along with perf NMI patch-set. So would you be open
-> > to include this patch as part of your series?
-> >
-> > [1] http://lists.infradead.org/pipermail/linux-arm-kernel/2020-May/732227.html
 >
-> While it depends on the perf NMI bits, I don't think it makes sense to
-> tie that into the series given it's trying to achieve something very
-> different.
+> (1000000000 * (sample_cnt + 1)) / clk_src value is a 32-bit, (1000000000
+> * (sample_cnt + 1)) will over 32-bit if sample_cnt is 7.
+
+The intermediate value will indeed not fit in 32-bit.
+But that doesn't mean the end result won't fit in 32-bit.
+As you divide spec->min_low_ns and spec->min_su_dat_ns (which I assume
+are small numbers) by sample_ns below, sample_ns cannot be very large,
+or the quotient will be zero anyway.
+So just doing the multiplication in 64-bit, followed by a 64-by-32
+division is probably fine:
+
+    unsigned int sample_ns = div_u64(1000000000ULL * (sample_cnt + 1), clk_src);
+
+You may want to take precautions for the case where the passed value of
+clk_src is a small number (can that happen?).
+
+BTW, clk_get_rate() returns "unsigned long", while mtk_i2c_set_speed()
+takes an "unsigned int" parent_clk, which may cause future issues.
+You may want to change that to "unsigned long", along the whole
+propagation path, and use div64_ul() instead of div_u64() above.
+
+> I think 1000000000 and clk_src is too big, maybe I can reduce then with
+> be divided all by 1000.
+> example:
 >
-> I think that should be reposted separately once the perf NMI bits are in
-> shape.
+> unsigned int sample_ns;
+> unsigned int clk_src_khz = clk_src / 1000;
 
-Okay, fair enough. Will keep it as a separate patch then.
-
--Sumit
+That may cause too much loss of precision.
 
 >
-> Thanks,
-> Mark.
+> if(clk_src_khz)
+>         sample_ns = (1000000 * (sample_cnt + 1)) / clk_src_khz;
+> else
+>         return -EINVAL;
+>
+> > > +       if (!i2c->dev_comp->timing_adjust)
+> > > +               return 0;
+> > > +
+> > > +       if (i2c->dev_comp->ltiming_adjust)
+> > > +               max_sta_cnt = 0x100;
+> > > +
+> > > +       spec = mtk_i2c_get_spec(check_speed);
+> > > +
+> > > +       if (i2c->dev_comp->ltiming_adjust)
+> > > +               clk_ns = 1000000000 / clk_src;
+> > > +       else
+> > > +               clk_ns = sample_ns / 2;
+> > > +
+> > > +       su_sta_cnt = DIV_ROUND_UP(spec->min_su_sta_ns, clk_ns);
+> > > +       if (su_sta_cnt > max_sta_cnt)
+> > > +               return -1;
+> > > +
+> > > +       low_cnt = DIV_ROUND_UP(spec->min_low_ns, sample_ns);
+> >
+> > So this is a 32-bit by 64-bit division (indeed, not 64-by-32!)
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
 _______________________________________________
 Linux-mediatek mailing list
