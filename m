@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-5.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D4E7C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 10:54:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AEF8CC433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 10:54:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 12ABE20823
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 10:54:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 715F120823
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 10:54:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="V7y3nx0z";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="B2uhBzsm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 12ABE20823
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="H80bieyN";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="X8AEIbJL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 715F120823
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,58 +27,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RjIdSpQBh4d897hG/Vr4OPizM7OZlJLNbTy3DBUA9aA=; b=V7y3nx0zyZfJFR
-	inFEGx8IqaiqusnDW+5+6UDeU8vQXYn5UA8xw3YpW1n6LmvpJtXPUVFgrRIW/jiGfwcXaI/FY+9n2
-	qUhf6Z+qoet/PG3yVZU1DpDFAsY9YMrFmayn7qcFW3SL0Axexzgjy23SuGCpnT6Q7w9RqnOg7P3nZ
-	AnjYZAaZEurSCeaBU5IVqt2EgK5Kf1k/AFGKv7io1VUbTf+5AzkPz8GVM+3M7vnfbshI5Eq4l8zEe
-	Jlfk0LFl/ptHP4VmvwTRWOVQBF05m/fDfkHO7+JA8Jy4+5sKTszoz2D/UeWzxJGQ04h9crYggQVy0
-	uDoeV5Zbite16aAKlGDw==;
+	List-Owner; bh=vvJ5rk+u4NisFQyVE9Hs5bY69xhPw22hdx4XHUTKxW0=; b=H80bieyNQ/u86W
+	pDw1V/CeUjKVBLD7VDeV8G0NXjPIRP1QlxnF1qnBmaCtDvbSXCCt2FhJm0KNabppmpSfKBy77JsDX
+	LmW+/SGCcfs09fE7wH8pD2TkqWXkzJTitnCpKhby9kmt+tdRfT+Bv6Kb/llvisS+v1u83ObLTi8S/
+	bplWMstcPXHhfFGUtFw0JpqMufz39mtI9u1t0mb3+ixSQ4VQPPHs7IyRDn13UKG0aV11EQViVCUfG
+	ed/bWQrHGaWghlhKrwn4lUgwz+G2jtYbWmISQQagf9MSm56sUyfH7/J4itdWtoFU0/HVhXwjtffjh
+	xMD/BWAE6V2EvjQZOUPg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbMMH-0005DN-Mb; Wed, 20 May 2020 10:53:57 +0000
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343])
+	id 1jbMMw-0005d3-OE; Wed, 20 May 2020 10:54:38 +0000
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbMM4-00051j-8i; Wed, 20 May 2020 10:53:45 +0000
-Received: by mail-ot1-x343.google.com with SMTP id o13so2090308otl.5;
- Wed, 20 May 2020 03:53:43 -0700 (PDT)
+ id 1jbMMh-0005RV-ON; Wed, 20 May 2020 10:54:24 +0000
+Received: by mail-ot1-x344.google.com with SMTP id 63so2075111oto.8;
+ Wed, 20 May 2020 03:54:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Uo2IvVF99WCeacc6Vvk0OLPGGgAJAoufosXm9+M1IcI=;
- b=B2uhBzsmyGVsVtF88hh8IoR3qbGAmfEb1EyHXzQ+07LG9CjmeK5aniUJq8r4lDFIZH
- ReDkh0Z/mWbs/4HxADXFn1QfNryJRNNTMf8wR4HPHwQQmG/xxEHxwOXzFfiOpEXNs5tz
- rVUCeYPxYXU5w0aOWGHE81T+G1lTRyYQqiQVjbR0Lg6gPBJQ/CrOCE1nwe6WeN3Q6vwK
- Wp2AV8z1U7VecQXuo6+IFdOCld8OGH3eX4XGdVVWmEpgU/XveXvPsLsLMBCMwpY92Lsy
- ruW/WQ+rMHcWBIGqgAt4vA0iJU4Xm7oUr/8JA39GAsFa/nUCln2E7Fxk9HwwS36jzlBU
- M1KA==
+ bh=nqXCwIldH4FavBD4hykx1Fj0fxifKXNdT/BTK4Kwo7U=;
+ b=X8AEIbJLA3DQIY2HkUAkUgsmWfo6rqFMqRLgjKDaWiVM+UzqRC+Z6Xp+kwXPubaEyo
+ JVvy3wM9oouI9BsPwcP52prWe6PHN+2hEAO+Ai74K48KuEKRORSMGLCq+bySouQ0bSeT
+ LblIHgoIycnEnNztT9f1y5byfGJC4e/ikHzFYQRLowPeRklqdIw6i3U18DUQNDH40WEW
+ CY+mlju/lyBdrUwN0EC09PSg9g+hFh6MjGZaaUmlplvb3b7A2bsMmQ09LsB7gvtSz/XG
+ r8V85gmEDHalvISie4Rijec3w6lMnbFP8rzoxGTT2rfphrJU+h2XF8POod4u8SZP4FFG
+ L3Iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=Uo2IvVF99WCeacc6Vvk0OLPGGgAJAoufosXm9+M1IcI=;
- b=EUP1C6u7zt6a0W7KDctFPvsS4peu/ZQHKn1QtWePkUFYVW/QQY3K5R7qNzwE9k+uC4
- x8vuYQuhP+jxSHTwnE9XrmV6UJTlRq8Wpd3iAMoHjJ+OD649tBs2591S02A/bGZr5xZX
- LjPjUiL5deh7OrBzIYJISbsmLwZEK1BtkAUR470qgB/QRn07RrfCP4EU3lAlkjsbdEyS
- pvARiUxtVt/h0kumy7lEEsfxIHsOeOeiQ5UuafLCxBzJdO9SfI3j8SVRFpXgdoYVL/Ld
- NGGlD7GNhoouVjudvwe132UPL0xP1sddvIbjVrmUz4eodeyNxp3v7W+YZEU2E3RkqGq/
- bVJQ==
-X-Gm-Message-State: AOAM530VT2CyXb46csM/kZkOuINB9QuDgGPZlzXfxtrPpz8/i6M9RcQd
- 5re3t3zWXs3oVSDGNB3Q5vp9LRgc
-X-Google-Smtp-Source: ABdhPJwPQxKPUzMCI/gGmmDXo+bjGOcdHM3EDYwFCekFxABrLQep52XoiwtttDZ8+O9NZ6vCGxAgxQ==
-X-Received: by 2002:a9d:6557:: with SMTP id q23mr2643750otl.93.1589972023011; 
- Wed, 20 May 2020 03:53:43 -0700 (PDT)
+ bh=nqXCwIldH4FavBD4hykx1Fj0fxifKXNdT/BTK4Kwo7U=;
+ b=fHoJ/opvCsU03+2Vrae0wwuOCqw8gCD/43qq7/Pso7XeWL/Cfk6FWTRwiZQwSH1HwZ
+ C4G7nyXVnD3Orvpw6eYYkqCrNLA5RC5/VRhJ1MIzY7st99mHbaf0xFD7pbnFZduhprrq
+ In2Nqk/15lA/D5RdRCu8Dw3o/up+gmV5UM08I/A/F+iZKxNHs8FKAbfkbyAuQQNU0W8r
+ Y3vRh20VuJ0PnPdwVeMRGqJJt7RDdoZ0ihFPkAPBNu4hypthu3wzhU8DY7g0hmgqL/K4
+ dLL0AYeB44P0R2At1VoGNlvDWV5EuzynHDn/cKbSJMCD529ZacX+D4BHgYtZptveBpIf
+ 23vA==
+X-Gm-Message-State: AOAM531NEY2cIcrB5xvMX8HXpC7PIu3gNGll1ClLK05Hur2QTBtlL5Rq
+ u4voAOo4bjof89+lWrJsJdAXns0I
+X-Google-Smtp-Source: ABdhPJxfcLMFpOQOl9GprTyZ1tlz6Lk0/vLJSwLGeeX5CKxL+3yEWsvZXmHiK7XoC4kFsyKfeSiLEw==
+X-Received: by 2002:a9d:2041:: with SMTP id n59mr2525764ota.252.1589972062788; 
+ Wed, 20 May 2020 03:54:22 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id b17sm708792oop.6.2020.05.20.03.53.39
+ by smtp.gmail.com with ESMTPSA id u45sm677233ooi.41.2020.05.20.03.54.19
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 20 May 2020 03:53:42 -0700 (PDT)
-Subject: Re: [PATCH 1/4] clk/soc: mediatek: mt8183: Bind clock driver from
+ Wed, 20 May 2020 03:54:22 -0700 (PDT)
+Subject: Re: [PATCH 3/4] clk/soc: mediatek: mt6779: Bind clock driver from
  platform device
 To: Stephen Boyd <sboyd@kernel.org>,
  Michael Turquette <mturquette@baylibre.com>, Rob Herring
  <robh+dt@kernel.org>, matthias.bgg@kernel.org
 References: <20200518113156.25009-1-matthias.bgg@kernel.org>
- <158996969738.215346.5933135216459465754@swboyd.mtv.corp.google.com>
+ <20200518113156.25009-3-matthias.bgg@kernel.org>
+ <158996971719.215346.12802870863066637932@swboyd.mtv.corp.google.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -154,15 +155,15 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <4e163b03-2dac-b731-6302-cac00e82ed5a@gmail.com>
-Date: Wed, 20 May 2020 12:53:38 +0200
+Message-ID: <45fcf31f-918b-fbc6-5c55-5fa74e3a7002@gmail.com>
+Date: Wed, 20 May 2020 12:54:18 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <158996969738.215346.5933135216459465754@swboyd.mtv.corp.google.com>
+In-Reply-To: <158996971719.215346.12802870863066637932@swboyd.mtv.corp.google.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200520_035344_307095_ED057797 
+X-CRM114-CacheID: sfid-20200520_035423_794533_E92B3522 
 X-CRM114-Status: GOOD (  12.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -187,8 +188,8 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 20/05/2020 12:14, Stephen Boyd wrote:
-> Quoting matthias.bgg@kernel.org (2020-05-18 04:31:53)
+On 20/05/2020 12:15, Stephen Boyd wrote:
+> Quoting matthias.bgg@kernel.org (2020-05-18 04:31:55)
 >> From: Matthias Brugger <matthias.bgg@gmail.com>
 >>
 >> The mmsys driver is now the top level entry point for the multimedia
