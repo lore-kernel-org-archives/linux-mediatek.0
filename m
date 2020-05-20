@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-5.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 70DBBC433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 10:51:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C151BC433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 10:51:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 42E8A20849
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 10:51:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 711FD207D3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 10:51:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Cmo1lVOw";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="UPG4thKH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 42E8A20849
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WVfvjNUY";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="li8yuBGp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 711FD207D3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,59 +27,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/cZwg5kM14mNHsKZS5ul9OyqxB0VoRzRiHiwdfufy2U=; b=Cmo1lVOwKNlZfd
-	SjF5fAIKWkDpBX5qo3egOLPsh63c33L0z6ygUCzTCinbleXFjhcd+oNPqOFpm+iUOCGZxSeve9EUB
-	nLeKXH+23SNZCyYNw/P4nqwM8lRM06DcYOVipjs4YMc+VmM7E/4Q8v1BsaOX765SsgZ+qXtToMR44
-	G6o899ptLm9kqh+UnTOb14qz2I0Sebfm8fuKNNIh75yBN1ZJd+PF0IUVy4pMjV480RiVsyVPv3zBU
-	CFTL0Tm6aHZW6a64KIkl3PMyjmIfigEmW9MossJ+vqAMQNNytHGxcparkQn9x3D3VmWFm8mRD/gzE
-	5vkNaUrQvHgaJsqgKwaw==;
+	List-Owner; bh=2Yi/V6pRERYC9hAsfh4DyQFQpyBPupVtmG000R5Drsw=; b=WVfvjNUYaXF/IV
+	xSCC8ka8zNpagvfVFhIBGlmeILy0KMMpnMY5qDeM238j/n7oOqBGt11MoRNdjIXwFtk0tegnfshMs
+	asBaUfpDgZNQo4RSPA370QdEndX5ziuVzU39rJrp4aCdI3oJGXcSjWpn5oBv3+vUfCd9nB+5UPnh3
+	luw0KIYm9GBzoIRz5KA4LKFrPOt4QHDf1N0EIOw/RmCloCMO6IFnlQH+5ziXVqjneHcvZB5kw6VB2
+	sIv8YCESQSTJ60uOpXyduKQnAnjvW2ahuzpic75coPXI3Vpw3nLZZ0fSoKIK6f9sWM9PbEEEFL7o1
+	/F8a0tep11zGQfv7BuLg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbMJj-0003Vt-Cy; Wed, 20 May 2020 10:51:19 +0000
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244])
+	id 1jbMJv-0003jv-DF; Wed, 20 May 2020 10:51:31 +0000
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbMJh-0003V7-34; Wed, 20 May 2020 10:51:18 +0000
-Received: by mail-oi1-x244.google.com with SMTP id l6so2498363oic.9;
- Wed, 20 May 2020 03:51:16 -0700 (PDT)
+ id 1jbMJr-0003eR-NU; Wed, 20 May 2020 10:51:29 +0000
+Received: by mail-oi1-x243.google.com with SMTP id r25so2532289oij.4;
+ Wed, 20 May 2020 03:51:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Lmmfbn4mr6A0h7hmwd/l0uk/axIob7xQ0gsYq9RKwYo=;
- b=UPG4thKHcxjXahgGtsfBX30nxv+Ur7nvMNVZhrDgP/hKP2nE5OtDcVNXC5DsBEMBDd
- JylqL6k2tmF0uNWoXLRAKTG0gJZEpjLDz8sX/fDCZ8cp8lhwdDE7ZNlqemjS8BA3DNkx
- rZVI/UMjfmgnjeTLdxk0A/zO3ZcAlJiPDOiHHATWaN0jSGLV0jNpLav99elMDlbC+wAx
- RNv/nlWBvM5k2jHwRM07h/NSM/2RGpH98KjXQIzlLDlldNCnlDTD+SZgJ7NZFJ3qM9J3
- tiuXRfddG95S8AvHgYS17tgFnjMfhtEK3Jbq6AeunOd9ndE3NaCObDCFk91q/ilt8OQ6
- E3QA==
+ bh=MfSjPcEt/nAwSUypHPmchEB/Dcbe/ptEf9XnM1/0FSQ=;
+ b=li8yuBGpjb3sRMpEiqvdB7JOszWNjMTkmgEHRypt7SsR/yyvEemHYYoa+Qj1cpEUOK
+ ebQimIrcPqkkQ7Zrh8rZe1Th0uxS4UD6wrLEuIJrpZgbKwUE4IqNF26/Rd5eHQro76n+
+ d2QeXbeuBI9aYXXAzZFAPBY6s1Q4R2a3yBwc1she/4rVILbgXIO+W9hOYMfsSXuwSUws
+ zXG0lj+rD4pPZesmmWhNU/u4G7XR+VE3ko+ROQAs45oorfY5G510851YiHxF1Jab+IJ8
+ TOP795cHZDeeV1Ikm5hFj87WpgEdILmlo0qQT6Kl7EP4uqqpk5Ec7j0FrclA9AZZcg1W
+ F4qw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=Lmmfbn4mr6A0h7hmwd/l0uk/axIob7xQ0gsYq9RKwYo=;
- b=OjecmyJHomQUNl+dSkkxpITTJAXjBPn/+GPsPbHohxURemNl4Vd0jULDRxNwo5HUGO
- sQKdmxukil9XwE8DEG0HOAub5Gf8iGdwVLv6b9HH9CFUJkF+ztRkeOgUguyBPyHTVatJ
- fstaDUqV6z2W7qcabJH9UblwW0y3gXW17WgT5jctFjSPOt/6+YkLf1YdbBpf8vdM0iWV
- 4zczvn/IQ2CtIjroYm+baDaPDY0jAd69xrO5H8WPNpbyvEEbCJ/KYhLGWNVuVCyoZmBP
- /XDhkhJjf1499dmLTaZnTnOv07GyZXOw2WW2y7DWWNErHfx7Cqex9wpB4bnIK5n7cpGl
- s2/A==
-X-Gm-Message-State: AOAM532bTpJlclpDV/T+K1dnbSMNEBiU9QChCJNIkNvLnTChvKERpjwK
- /QJZ7STBbj1XMOiQP2V0LrI=
-X-Google-Smtp-Source: ABdhPJzFlBY4grTJUCu25VM0gtQbIpQo+JhGRTrcttwJSXb2e0cw0aSlDvog3evuCWv4k3108nEQLw==
-X-Received: by 2002:aca:2b04:: with SMTP id i4mr2775589oik.39.1589971875510;
- Wed, 20 May 2020 03:51:15 -0700 (PDT)
+ bh=MfSjPcEt/nAwSUypHPmchEB/Dcbe/ptEf9XnM1/0FSQ=;
+ b=eQ8jABpr1xOPoFpqpiUiAbeZgoRkqhGkREg76J3bxOVOQADi4L+efTFyDr+Kp+hWSC
+ oB5XIJj5gShTRsFlw59rLoPMOdmr36vaAruC9yg22mUCHdxNZu0lI0qma8NrO88e6+vh
+ uQ8eYCTKPS/QMymm3k55hnepJGyTOtudlWdfXTc3nV5m6H+FxMV5T4Cj4tn3NOPv7CTz
+ PfsHP5vTxim8qBtA0L4g7Rw3HtX6dKZlN76+PwmfE5fefjZ0bH8p0iFWPJydnNdiW75b
+ 6rKEv/xsQJSw9kY1dS+Nb9i/NcF+HOo9dgysJoky9wg3AKlYAscVX6ILo9HWL+gQ3Wzd
+ TFzA==
+X-Gm-Message-State: AOAM532WLq+qcPWkN0FZgeheP7JrLuYtkwRwy3dg98qgK0Hr5L1k/Tmx
+ C+9y6o3pe3LdamLOA0dpUUQ=
+X-Google-Smtp-Source: ABdhPJyaoaOnIGiW5mF96QInJyUdWgU8IB9+8+A5dwmeq88FK5NIoagPCIjs2hg3ZiDysDU5DDBV9A==
+X-Received: by 2002:aca:c341:: with SMTP id t62mr2787934oif.5.1589971886521;
+ Wed, 20 May 2020 03:51:26 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id p67sm692741oic.46.2020.05.20.03.51.10
+ by smtp.gmail.com with ESMTPSA id g90sm45950otg.75.2020.05.20.03.51.18
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 20 May 2020 03:51:14 -0700 (PDT)
-Subject: Re: [PATCH v2 2/4] clk / soc: mediatek: Bind clock and gpu driver for
- mt2712
+ Wed, 20 May 2020 03:51:25 -0700 (PDT)
+Subject: Re: [PATCH v2 3/4] clk / soc: mediatek: Bind clock and gpu driver for
+ mt2701
 To: Stephen Boyd <sboyd@kernel.org>,
  Enric Balletbo i Serra <enric.balletbo@collabora.com>, ck.hu@mediatek.com,
  mark.rutland@arm.com, ulrich.hecht+renesas@gmail.com
 References: <20200401201736.2980433-1-enric.balletbo@collabora.com>
- <20200401201736.2980433-2-enric.balletbo@collabora.com>
- <158996963088.215346.15782560941924531394@swboyd.mtv.corp.google.com>
+ <20200401201736.2980433-3-enric.balletbo@collabora.com>
+ <158996963892.215346.7498020261398211458@swboyd.mtv.corp.google.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -155,16 +155,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <6ce1ac7b-2519-5a44-fa8c-0745cc1ed042@gmail.com>
-Date: Wed, 20 May 2020 12:51:09 +0200
+Message-ID: <11ad0061-f0b3-a0ed-a216-f77eb45bcda1@gmail.com>
+Date: Wed, 20 May 2020 12:51:17 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <158996963088.215346.15782560941924531394@swboyd.mtv.corp.google.com>
+In-Reply-To: <158996963892.215346.7498020261398211458@swboyd.mtv.corp.google.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200520_035117_149623_9C5D2D18 
-X-CRM114-Status: GOOD (  12.37  )
+X-CRM114-CacheID: sfid-20200520_035127_787672_6A41DE28 
+X-CRM114-Status: GOOD (  12.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -176,8 +176,8 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, drinkcat@chromium.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+Cc: Kate Stewart <kstewart@linuxfoundation.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, drinkcat@chromium.org,
  Michael Turquette <mturquette@baylibre.com>, matthias.bgg@kernel.org,
  linux-kernel@vger.kernel.org, Richard Fontana <rfontana@redhat.com>,
  Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org,
@@ -193,12 +193,11 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 20/05/2020 12:13, Stephen Boyd wrote:
-> Quoting Enric Balletbo i Serra (2020-04-01 13:17:34)
+> Quoting Enric Balletbo i Serra (2020-04-01 13:17:35)
 >> Now that the mmsys driver is the top-level entry point for the
 >> multimedia subsystem, we could bind the clock and the gpu driver on
 >> those devices that is expected to work, so the drm driver is
->> intantiated by the mmsys driver and display, hopefully, working again on
->> those devices.
+>> intantiated by the mmsys driver and display, hopefully, working again.
 >>
 >> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 >> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
