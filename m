@@ -2,80 +2,68 @@ Return-Path: <SRS0=i2Ig=7C=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0D258C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 09:25:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4225DC433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 09:41:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 62D28207D3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 09:25:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 08240207F9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 09:41:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qxXWqgKy";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="n8zrKAPP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 62D28207D3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="J8fTP23/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 08240207F9
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=mxic.com.tw
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Date:From:Message-ID:MIME-Version:
+	Subject:To:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nzvwhgXCjRR2bLUSmcTQA5srAa26gL1YI956aukAYQ8=; b=qxXWqgKyszDSwY
-	WBzXUEOAH1rISZjHHhrjVEtqazz2r4WhE3djicla2AMe23Z73kXdRH6WfPo486g+pMciqeUWWqcu0
-	DpF+SBTbOTyEZlbBeSmm59nFGCW2ph0g2KFzxDmQw8CxrOe5YtJoJdqX5aik/FEKq7dwqmL9eFvrg
-	MsohsLKz/3s7Z/nrGBBYQ5PrhofoywIbNcBFkqAhMqsQ/V+8kOBLuaHVwoEnyh0guGUx5ltvB2QFD
-	Po1ulozISZKd+ftwOILsvorfHOkQgOPXriPatXT0PckBUuIy7GXjo2dPhde/mR4twEyl9qTPDQ3/n
-	eHYeQeVQmZOxOUxJWIBQ==;
+	List-Owner; bh=UASd4qAEoV4PdZlH85MUNF8E3w22VjXlrh2Fy5XZYyM=; b=J8fTP23/xAhUdo
+	y3QM4D9BXqWcniyXM6F49LgTfegS4gg/N88J7MJW3+jKOmZT8dveDo+Ptc1ZjRXBEC+YNXtlqt7Ep
+	DqhvJ+5h2+5CdC+I5raEossmOEH6WYpF439jSiL8/HVN2ZVQg033JliOCPrhY4rQK03x5peg+idEv
+	wRYXQduVZd3Z+OBwL3lPCrmRpYQMCCgQEPPrPkk4SXwmRwhVIJnODYOpTp+xAPicECxESL7UkUD+H
+	y9jB9e1b3BU57JZ8f+gs+/CGHDzQPayVRslhlBUi+SSXrqM9soz/WHYCzt4wK0Pwb1DT9dYXaQifA
+	kxJFqSB7mCUWrEJE/vww==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbKyd-00041X-Qw; Wed, 20 May 2020 09:25:27 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jbLDk-0006qQ-4E; Wed, 20 May 2020 09:41:04 +0000
+Received: from twhmllg3.macronix.com ([122.147.135.201])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbKyO-0003IY-34; Wed, 20 May 2020 09:25:16 +0000
-X-UUID: 753a4a3f399b438b91bf3dfc9cbc9ef8-20200520
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=GgFKY5TA54aiL2c8IIB1pKoJZCio1gYPWkrJIRlvhOo=; 
- b=n8zrKAPPp2S82/vlyzOc1N4a7QwnTMgcdBEa48mrJoXw2q7PsFE+I6Dp3eOq++8ze/iXFL6FOXdW03UU4uIUcHsGQ4a0wDjAkP8fYdmBDlxbrWiJ43X6b0KeKJsiRnT3KzjB9oZFnVY4FD3Q4ePEJf1/iZdMAJwutMKqsdGYO3k=;
-X-UUID: 753a4a3f399b438b91bf3dfc9cbc9ef8-20200520
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <walter-zh.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1880571526; Wed, 20 May 2020 01:25:10 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 May 2020 02:17:07 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 May 2020 17:17:00 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 20 May 2020 17:16:59 +0800
-Message-ID: <1589966220.14692.24.camel@mtksdccf07>
-Subject: Re: [PATCH v4 2/4] kasan: record and print the free track
-From: Walter Wu <walter-zh.wu@mediatek.com>
-To: Dmitry Vyukov <dvyukov@google.com>
-Date: Wed, 20 May 2020 17:17:00 +0800
-In-Reply-To: <CACT4Y+Z42fQe4ijnA7HksAqrnpyzGU5pyY2bRFBETsL-mkB9_g@mail.gmail.com>
-References: <20200519022517.24182-1-walter-zh.wu@mediatek.com>
- <CACT4Y+aJDO+2kSgNpcvHksfn+bZaFWPoGj3-55-dyjLHcHbFUg@mail.gmail.com>
- <1589947387.29577.35.camel@mtksdccf07>
- <CACT4Y+Zy0O3brZRvN5jbdXMosBv+aFgRGSubbhCwzOSUftGoeA@mail.gmail.com>
- <1589951659.4440.4.camel@mtksdccf07> <1589955526.4440.22.camel@mtksdccf07>
- <CACT4Y+Z42fQe4ijnA7HksAqrnpyzGU5pyY2bRFBETsL-mkB9_g@mail.gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1jbLDX-0006gC-6X; Wed, 20 May 2020 09:40:53 +0000
+Received: from twhfmlp1.macronix.com (twhfmlp1.macronix.com [172.17.20.91])
+ by TWHMLLG3.macronix.com with ESMTP id 04K9eIBI083374;
+ Wed, 20 May 2020 17:40:18 +0800 (GMT-8)
+ (envelope-from masonccyang@mxic.com.tw)
+Received: from MXML06C.mxic.com.tw (mxml06c.macronix.com [172.17.14.55])
+ by Forcepoint Email with ESMTP id A1FE788066B5031CEC31;
+ Wed, 20 May 2020 17:40:18 +0800 (CST)
+In-Reply-To: <20200520085534.yra4f5ww5xs23c4j@ti.com>
+References: <20200519142642.24131-1-p.yadav@ti.com>
+ <20200519142642.24131-10-p.yadav@ti.com>
+ <OF83616464.480FA751-ON4825856E.002A4483-4825856E.002BE6AF@mxic.com.tw>
+ <20200520085534.yra4f5ww5xs23c4j@ti.com>
+To: "Pratyush Yadav" <p.yadav@ti.com>
+Subject: Re: [PATCH v5 09/19] mtd: spi-nor: sfdp: parse xSPI Profile 1.0 table
 MIME-Version: 1.0
-X-MTK: N
+X-KeepSent: 98344913:4BF4C313-4825856E:0032A810;
+ type=4; name=$KeepSent
+X-Mailer: Lotus Notes Release 8.5.3FP4 SHF90 June 10, 2013
+Message-ID: <OF98344913.4BF4C313-ON4825856E.0032A810-4825856E.00352141@mxic.com.tw>
+From: masonccyang@mxic.com.tw
+Date: Wed, 20 May 2020 17:40:19 +0800
+X-MIMETrack: Serialize by Router on MXML06C/TAIWAN/MXIC(Release 9.0.1FP10
+ HF265|July 25, 2018) at 2020/05/20 PM 05:40:18,
+ Serialize complete at 2020/05/20 PM 05:40:18
+X-MAIL: TWHMLLG3.macronix.com 04K9eIBI083374
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200520_022512_177672_C7F346E2 
-X-CRM114-Status: GOOD (  18.75  )
+X-CRM114-CacheID: sfid-20200520_024051_536580_F9A824D2 
+X-CRM114-Status: GOOD (  25.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,357 +75,189 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream <wsd_upstream@mediatek.com>,
- linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>,
- kasan-dev <kasan-dev@googlegroups.com>, Linux-MM <linux-mm@kvack.org>,
- Alexander Potapenko <glider@google.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Vignesh Raghavendra <vigneshr@ti.com>,
+ Tudor Ambarus <tudor.ambarus@microchip.com>, juliensu@mxic.com.tw,
+ Richard Weinberger <richard@nod.at>, Mark Brown <broonie@kernel.org>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>, Sekhar Nori <nsekhar@ti.com>,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ linux-mediatek@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> On Wed, May 20, 2020 at 8:18 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
-> >
-> > On Wed, 2020-05-20 at 13:14 +0800, Walter Wu wrote:
-> > > > On Wed, May 20, 2020 at 6:03 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
-> > > > >
-> > > > > > On Tue, May 19, 2020 at 4:25 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
-> > > > > > >
-> > > > > > > Move free track from slub alloc meta-data to slub free meta-data in
-> > > > > > > order to make struct kasan_free_meta size is 16 bytes. It is a good
-> > > > > > > size because it is the minimal redzone size and a good number of
-> > > > > > > alignment.
-> > > > > > >
-> > > > > > > For free track in generic KASAN, we do the modification in struct
-> > > > > > > kasan_alloc_meta and kasan_free_meta:
-> > > > > > > - remove free track from kasan_alloc_meta.
-> > > > > > > - add free track into kasan_free_meta.
-> > > > > > >
-> > > > > > > [1]https://bugzilla.kernel.org/show_bug.cgi?id=198437
-> > > > > > >
-> > > > > > > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> > > > > > > Suggested-by: Dmitry Vyukov <dvyukov@google.com>
-> > > > > > > Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
-> > > > > > > Cc: Dmitry Vyukov <dvyukov@google.com>
-> > > > > > > Cc: Alexander Potapenko <glider@google.com>
-> > > > > > > ---
-> > > > > > >  mm/kasan/common.c  | 22 ++--------------------
-> > > > > > >  mm/kasan/generic.c | 18 ++++++++++++++++++
-> > > > > > >  mm/kasan/kasan.h   |  7 +++++++
-> > > > > > >  mm/kasan/report.c  | 20 --------------------
-> > > > > > >  mm/kasan/tags.c    | 37 +++++++++++++++++++++++++++++++++++++
-> > > > > > >  5 files changed, 64 insertions(+), 40 deletions(-)
-> > > > > > >
-> > > > > > > diff --git a/mm/kasan/common.c b/mm/kasan/common.c
-> > > > > > > index 8bc618289bb1..47b53912f322 100644
-> > > > > > > --- a/mm/kasan/common.c
-> > > > > > > +++ b/mm/kasan/common.c
-> > > > > > > @@ -51,7 +51,7 @@ depot_stack_handle_t kasan_save_stack(gfp_t flags)
-> > > > > > >         return stack_depot_save(entries, nr_entries, flags);
-> > > > > > >  }
-> > > > > > >
-> > > > > > > -static inline void set_track(struct kasan_track *track, gfp_t flags)
-> > > > > > > +void kasan_set_track(struct kasan_track *track, gfp_t flags)
-> > > > > > >  {
-> > > > > > >         track->pid = current->pid;
-> > > > > > >         track->stack = kasan_save_stack(flags);
-> > > > > > > @@ -299,24 +299,6 @@ struct kasan_free_meta *get_free_info(struct kmem_cache *cache,
-> > > > > > >         return (void *)object + cache->kasan_info.free_meta_offset;
-> > > > > > >  }
-> > > > > > >
-> > > > > > > -
-> > > > > > > -static void kasan_set_free_info(struct kmem_cache *cache,
-> > > > > > > -               void *object, u8 tag)
-> > > > > > > -{
-> > > > > > > -       struct kasan_alloc_meta *alloc_meta;
-> > > > > > > -       u8 idx = 0;
-> > > > > > > -
-> > > > > > > -       alloc_meta = get_alloc_info(cache, object);
-> > > > > > > -
-> > > > > > > -#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
-> > > > > > > -       idx = alloc_meta->free_track_idx;
-> > > > > > > -       alloc_meta->free_pointer_tag[idx] = tag;
-> > > > > > > -       alloc_meta->free_track_idx = (idx + 1) % KASAN_NR_FREE_STACKS;
-> > > > > > > -#endif
-> > > > > > > -
-> > > > > > > -       set_track(&alloc_meta->free_track[idx], GFP_NOWAIT);
-> > > > > > > -}
-> > > > > > > -
-> > > > > > >  void kasan_poison_slab(struct page *page)
-> > > > > > >  {
-> > > > > > >         unsigned long i;
-> > > > > > > @@ -492,7 +474,7 @@ static void *__kasan_kmalloc(struct kmem_cache *cache, const void *object,
-> > > > > > >                 KASAN_KMALLOC_REDZONE);
-> > > > > > >
-> > > > > > >         if (cache->flags & SLAB_KASAN)
-> > > > > > > -               set_track(&get_alloc_info(cache, object)->alloc_track, flags);
-> > > > > > > +               kasan_set_track(&get_alloc_info(cache, object)->alloc_track, flags);
-> > > > > > >
-> > > > > > >         return set_tag(object, tag);
-> > > > > > >  }
-> > > > > > > diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
-> > > > > > > index 3372bdcaf92a..763d8a13e0ac 100644
-> > > > > > > --- a/mm/kasan/generic.c
-> > > > > > > +++ b/mm/kasan/generic.c
-> > > > > > > @@ -344,3 +344,21 @@ void kasan_record_aux_stack(void *addr)
-> > > > > > >         alloc_info->aux_stack[1] = alloc_info->aux_stack[0];
-> > > > > > >         alloc_info->aux_stack[0] = kasan_save_stack(GFP_NOWAIT);
-> > > > > > >  }
-> > > > > > > +
-> > > > > > > +void kasan_set_free_info(struct kmem_cache *cache,
-> > > > > > > +                               void *object, u8 tag)
-> > > > > > > +{
-> > > > > > > +       struct kasan_free_meta *free_meta;
-> > > > > > > +
-> > > > > > > +       free_meta = get_free_info(cache, object);
-> > > > > > > +       kasan_set_track(&free_meta->free_track, GFP_NOWAIT);
-> > > > > > > +}
-> > > > > > > +
-> > > > > > > +struct kasan_track *kasan_get_free_track(struct kmem_cache *cache,
-> > > > > > > +                               void *object, u8 tag)
-> > > > > > > +{
-> > > > > > > +       struct kasan_free_meta *free_meta;
-> > > > > > > +
-> > > > > > > +       free_meta = get_free_info(cache, object);
-> > > > > > > +       return &free_meta->free_track;
-> > > > > > > +}
-> > > > > > > diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-> > > > > > > index a7391bc83070..ad897ec36545 100644
-> > > > > > > --- a/mm/kasan/kasan.h
-> > > > > > > +++ b/mm/kasan/kasan.h
-> > > > > > > @@ -127,6 +127,9 @@ struct kasan_free_meta {
-> > > > > > >          * Otherwise it might be used for the allocator freelist.
-> > > > > > >          */
-> > > > > > >         struct qlist_node quarantine_link;
-> > > > > > > +#ifdef CONFIG_KASAN_GENERIC
-> > > > > > > +       struct kasan_track free_track;
-> > > > > > > +#endif
-> > > > > > >  };
-> > > > > > >
-> > > > > > >  struct kasan_alloc_meta *get_alloc_info(struct kmem_cache *cache,
-> > > > > > > @@ -168,6 +171,10 @@ void kasan_report_invalid_free(void *object, unsigned long ip);
-> > > > > > >  struct page *kasan_addr_to_page(const void *addr);
-> > > > > > >
-> > > > > > >  depot_stack_handle_t kasan_save_stack(gfp_t flags);
-> > > > > > > +void kasan_set_track(struct kasan_track *track, gfp_t flags);
-> > > > > > > +void kasan_set_free_info(struct kmem_cache *cache, void *object, u8 tag);
-> > > > > > > +struct kasan_track *kasan_get_free_track(struct kmem_cache *cache,
-> > > > > > > +                               void *object, u8 tag);
-> > > > > > >
-> > > > > > >  #if defined(CONFIG_KASAN_GENERIC) && \
-> > > > > > >         (defined(CONFIG_SLAB) || defined(CONFIG_SLUB))
-> > > > > > > diff --git a/mm/kasan/report.c b/mm/kasan/report.c
-> > > > > > > index 6f8f2bf8f53b..96d2657fe70f 100644
-> > > > > > > --- a/mm/kasan/report.c
-> > > > > > > +++ b/mm/kasan/report.c
-> > > > > > > @@ -159,26 +159,6 @@ static void describe_object_addr(struct kmem_cache *cache, void *object,
-> > > > > > >                 (void *)(object_addr + cache->object_size));
-> > > > > > >  }
-> > > > > > >
-> > > > > > > -static struct kasan_track *kasan_get_free_track(struct kmem_cache *cache,
-> > > > > > > -               void *object, u8 tag)
-> > > > > > > -{
-> > > > > > > -       struct kasan_alloc_meta *alloc_meta;
-> > > > > > > -       int i = 0;
-> > > > > > > -
-> > > > > > > -       alloc_meta = get_alloc_info(cache, object);
-> > > > > > > -
-> > > > > > > -#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
-> > > > > > > -       for (i = 0; i < KASAN_NR_FREE_STACKS; i++) {
-> > > > > > > -               if (alloc_meta->free_pointer_tag[i] == tag)
-> > > > > > > -                       break;
-> > > > > > > -       }
-> > > > > > > -       if (i == KASAN_NR_FREE_STACKS)
-> > > > > > > -               i = alloc_meta->free_track_idx;
-> > > > > > > -#endif
-> > > > > > > -
-> > > > > > > -       return &alloc_meta->free_track[i];
-> > > > > > > -}
-> > > > > > > -
-> > > > > > >  #ifdef CONFIG_KASAN_GENERIC
-> > > > > > >  static void print_stack(depot_stack_handle_t stack)
-> > > > > > >  {
-> > > > > > > diff --git a/mm/kasan/tags.c b/mm/kasan/tags.c
-> > > > > > > index 25b7734e7013..201dee5d6ae0 100644
-> > > > > > > --- a/mm/kasan/tags.c
-> > > > > > > +++ b/mm/kasan/tags.c
-> > > > > > > @@ -162,3 +162,40 @@ void __hwasan_tag_memory(unsigned long addr, u8 tag, unsigned long size)
-> > > > > > >         kasan_poison_shadow((void *)addr, size, tag);
-> > > > > > >  }
-> > > > > > >  EXPORT_SYMBOL(__hwasan_tag_memory);
-> > > > > > > +
-> > > > > > > +void kasan_set_free_info(struct kmem_cache *cache,
-> > > > > > > +                               void *object, u8 tag)
-> > > > > > > +{
-> > > > > > > +       struct kasan_alloc_meta *alloc_meta;
-> > > > > > > +       u8 idx = 0;
-> > > > > > > +
-> > > > > > > +       alloc_meta = get_alloc_info(cache, object);
-> > > > > > > +
-> > > > > > > +#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
-> > > > > > > +       idx = alloc_meta->free_track_idx;
-> > > > > > > +       alloc_meta->free_pointer_tag[idx] = tag;
-> > > > > > > +       alloc_meta->free_track_idx = (idx + 1) % KASAN_NR_FREE_STACKS;
-> > > > > > > +#endif
-> > > > > > > +
-> > > > > > > +       kasan_set_track(&alloc_meta->free_track[idx], GFP_NOWAIT);
-> > > > > > > +}
-> > > > > > > +
-> > > > > > > +struct kasan_track *kasan_get_free_track(struct kmem_cache *cache,
-> > > > > > > +                               void *object, u8 tag)
-> > > > > > > +{
-> > > > > > > +       struct kasan_alloc_meta *alloc_meta;
-> > > > > > > +       int i = 0;
-> > > > > > > +
-> > > > > > > +       alloc_meta = get_alloc_info(cache, object);
-> > > > > > > +
-> > > > > > > +#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
-> > > > > > > +       for (i = 0; i < KASAN_NR_FREE_STACKS; i++) {
-> > > > > > > +               if (alloc_meta->free_pointer_tag[i] == tag)
-> > > > > > > +                       break;
-> > > > > > > +       }
-> > > > > > > +       if (i == KASAN_NR_FREE_STACKS)
-> > > > > > > +               i = alloc_meta->free_track_idx;
-> > > > > > > +#endif
-> > > > > > > +
-> > > > > > > +       return &alloc_meta->free_track[i];
-> > > > > > > +}
-> > > > > >
-> > > > > > Hi Walter,
-> > > > > >
-> > > > > > FTR I've uploaded this for review purposes here:
-> > > > > > https://linux-review.googlesource.com/c/linux/kernel/git/torvalds/linux/+/2458
-> > > > > >
-> > > > > > Diff from the previous version is available as:
-> > > > > > https://linux-review.googlesource.com/c/linux/kernel/git/torvalds/linux/+/2458/1..2
-> > > > > >
-> > > > > > I've tested this locally and with syzkaller. This is :
-> > > > > >
-> > > > > > [   80.583021][    C3] Freed by task 0:
-> > > > > > [   80.583480][    C3]  kasan_save_stack+0x1b/0x40 mm/kasan/common.c:49
-> > > > > > [   80.584056][    C3]  kasan_set_track+0x1c/0x30 mm/kasan/common.c:57
-> > > > > > [   80.584617][    C3]  kasan_set_free_info+0x1b/0x30 mm/kasan/generic.c:354
-> > > > > > [   80.585221][    C3]  __kasan_slab_free+0xd8/0x120 mm/kasan/common.c:438
-> > > > > > [   80.585814][    C3]  __cache_free mm/slab.c:3426 [inline]
-> > > > > > [   80.585814][    C3]  kfree+0x10b/0x2b0 mm/slab.c:3757
-> > > > > > [   80.586291][    C3]  kasan_rcu_reclaim+0x16/0x43 [test_kasan]
-> > > > > > [   80.587009][    C3]  rcu_do_batch kernel/rcu/tree.c:2207 [inline]
-> > > > > > [   80.587009][    C3]  rcu_core+0x59f/0x1370 kernel/rcu/tree.c:2434
-> > > > > > [   80.587537][    C3]  __do_softirq+0x26c/0x9fa kernel/softirq.c:292
-> > > > > > [   80.588085][    C3]
-> > > > > > [   80.588367][    C3] Last one call_rcu() call stack:
-> > > > > > [   80.589052][    C3]  kasan_save_stack+0x1b/0x40 mm/kasan/common.c:49
-> > > > > > [   80.589622][    C3]  kasan_record_aux_stack+0x82/0xb0 mm/kasan/generic.c:345
-> > > > > > [   80.590254][    C3]  __call_rcu kernel/rcu/tree.c:2672 [inline]
-> > > > > > [   80.590254][    C3]  call_rcu+0x14f/0x7f0 kernel/rcu/tree.c:2746
-> > > > > > [   80.590782][    C3]  kasan_rcu_uaf+0xe4/0xeb [test_kasan]
-> > > > > > [   80.591697][    C3]  kmalloc_tests_init+0xbc/0x1097 [test_kasan]
-> > > > > > [   80.592900][    C3]  do_one_initcall+0x10a/0x7d0 init/main.c:1196
-> > > > > > [   80.593494][    C3]  do_init_module+0x1e6/0x6d0 kernel/module.c:3539
-> > > > > > [   80.594066][    C3]  load_module+0x7464/0x9450 kernel/module.c:3890
-> > > > > > [   80.594626][    C3]  __do_sys_init_module+0x1e3/0x220 kernel/module.c:3953
-> > > > > > [   80.595265][    C3]  do_syscall_64+0xf6/0x7d0 arch/x86/entry/common.c:295
-> > > > > > [   80.595822][    C3]  entry_SYSCALL_64_after_hwframe+0x49/0xb3
-> > > > > >
-> > > > > >
-> > > > > > Overall this looks very good to me.
-> > > > > > But there is one aspect that bothers me. In the previous patch you had
-> > > > > > code that returned NULL from kasan_get_free_track() if the object is
-> > > > > > live (which means free meta is not available, it's occupied by object
-> > > > > > data). Now you dropped that code, but I think we still need it.
-> > > > > > Otherwise we cast user object data to free meta and print the free
-> > > > > > stack/pid from whatever garbage is there. This may lead to very
-> > > > > > confusing output and potentially to crashes in stackdepot.
-> > > > > >
-> > > > >
-> > > > > Yes, I totally agree with you. In the previous email I thought that
-> > > > > there is a problem with free track, but I did not point it out. Thank
-> > > > > you for pointing this problem. As you mentioned, we should fix it.
-> > > > >
-> > > > > > What do you think about this patch on top of your patches?
-> > > > > > https://linux-review.googlesource.com/c/linux/kernel/git/torvalds/linux/+/2478
-> > > > > > This way we very precisely mark the period of time when the object has
-> > > > > > free track live and set.
-> > > > > > If it looks good to you, feel free to incorporate it into your series.
-> > > > > >
-> > > > >
-> > > > > Thank you for providing good idea solution.
-> > > > >
-> > > > > I saw this patch, that is a great patch. I think it can fix the issue
-> > > > > which has garbage stack. it should work as described below.
-> > > > >
-> > > > > 1). When object is live, then don't print free stack.
-> > > > > 2). When object is NOT alive, after free object:
-> > > > > 2a). when object is in quarantine, then it can print free stack
-> > > > > 2b). when object is NOT in quarantine, then it can NOT print free stack.
-> > > > >
-> > > > > I have a question about 2), why we don't directly use
-> > > > > KASAN_KMALLOC_FREE? if we directly use it, then 2b) can print free
-> > > > > stack? 2b) may has use-after-free? so that it may need free stack.
-> > > >
-> >
-> > About 2b), I see another question. When do qlink_free(), it will be
-> > written KASAN_KMALLOC_FREE from KASAN_KMALLOC_FREETRACK? if we don't
-> > write shadow memory, it is still KASAN_KMALLOC_FREETRACK, then 2b) will
-> > have free stack? Because I see you add KASAN_KMALLOC_FREETRACK to get
-> > use-after-free in get_shadow_bug_type(). so should it not write
-> > KASAN_KMALLOC_FREE?
-> 
-> It may or may not work.
-> The potential problem is that when qlink_free calls ___cache_free,
-> slab/slub may start using object memory for its own purposes, e.g.
-> store the next link. This next link may overwrite part of free meta.
-> It actually may work because the slab/slib next link is likely to
-> overlap with kasan_free_meta.quarantine_link only. And we may have
-> kasan_free_meta.free_track intact while KASAN_KMALLOC_FREE is set. But
-> this needs careful checking for both slab and slub and if they may use
-> more than 1 word in some configurations.
-> 
 
-This problem looks like existing, even without this change? currently
-KASAN may get wrong free stack?
+Hi Pratyush, 
+ 
+> > > +/**
+> > > + * spi_nor_parse_profile1() - parse the xSPI Profile 1.0 table
+> > > + * @nor:      pointer to a 'struct spi_nor'
+> > > + * @param_header:   pointer to the 'struct sfdp_parameter_header' 
+> > describing
+> > > + *         the 4-Byte Address Instruction Table length and version.
+> > > + * @params:      pointer to the 'struct spi_nor_flash_parameter' to 
+be.
+> > > + *
+> > > + * Return: 0 on success, -errno otherwise.
+> > > + */
+> > > +static int spi_nor_parse_profile1(struct spi_nor *nor,
+> > > +              const struct sfdp_parameter_header *profile1_header,
+> > > +              struct spi_nor_flash_parameter *params)
+> > > +{
+> > > +   u32 *table, opcode, addr;
+> > > +   size_t len;
+> > > +   int ret, i;
+> > > +
+> > > +   len = profile1_header->length * sizeof(*table);
+> > > +   table = kmalloc(len, GFP_KERNEL);
+> > > +   if (!table)
+> > > +      return -ENOMEM;
+> > > +
+> > > +   addr = SFDP_PARAM_HEADER_PTP(profile1_header);
+> > > +   ret = spi_nor_read_sfdp(nor, addr, len, table);
+> > > +   if (ret)
+> > > +      goto out;
+> > > +
+> > > +   /* Fix endianness of the table DWORDs. */
+> > > +   for (i = 0; i < profile1_header->length; i++)
+> > > +      table[i] = le32_to_cpu(table[i]);
+> > > +
+> > > +   /* Get 8D-8D-8D fast read opcode and dummy cycles. */
+> > > +   opcode = FIELD_GET(PROFILE1_DWORD1_RD_FAST_CMD, table[0]);
+> > > +
+> > > +   /*
+> > > +    * Update the fast read settings. We set the default dummy 
+cycles to 
+> > 20
+> > > +    * here. Flashes can change this value if they need to when 
+enabling
+> > > +    * octal mode.
+> > > +    */
+> > > + spi_nor_set_read_settings(&params->reads[SNOR_CMD_READ_8_8_8_DTR],
+> > > +              0, 20, opcode,
+> > > +              SNOR_PROTO_8_8_8_DTR);
+> > > +
+> > 
+> > 
+> > I thought we have a agreement that only do parse here, no other read 
+> > parameters setting.
+> 
+> Yes, and I considered it. But it didn't make much sense to me to 
+> introduce an extra member in struct spi_nor just to make this call in 
+> some other function later.
+> 
+> Why exactly do you think doing this here is bad? The way I see it, we 
+> avoid carrying around an extra member in spi_nor and this also allows 
+> flashes to change the read settings easily in a post-sfdp hook. The 
+> 4bait parsing function does something similar.
 
-Regardless of whether the shadow memory content is
-KASAN_KMALLOC_FREETRACK or KASAN_KMALLOC_FREE, it may have this problem?
-But because of kasan_get_free_track() have conditions to get free track,
-so that if shadow memory content is KASAN_KMALLOC_FREE, then it will
-avoid this problem and always print right free stack.
+I think it's not a question for good or bad. 
+
+4bait parsing function parse the 4-Byte Address Instruction Table
+and set up read/pp parameters there for sure.
+
+Here we give the function name spi_nor_parse_profile1() but also 
+do others setting that has nothing to do with it, 
+it seems not good for SW module design. 
+oh, it's my humble opinion.
+
 
 > 
-> > > > We can't use KASAN_KMALLOC_FREE because of this part:
-> > > >
-> > > > static bool __kasan_slab_free(struct kmem_cache *cache, void *object,
-> > > >                   unsigned long ip, bool quarantine)
-> > > > {
-> > > > ...
-> > > >     kasan_poison_shadow(object, rounded_up_size, KASAN_KMALLOC_FREE);
-> > > >
-> > > >     if ((IS_ENABLED(CONFIG_KASAN_GENERIC) && !quarantine) ||
-> > > >             unlikely(!(cache->flags & SLAB_KASAN)))
-> > > >         return false;
-> > > >
-> > > >     kasan_set_free_info(cache, object, tag);
-> > > > ...
-> > > >
-> > >
-> > > Ok, I see. When return false, then the shadow memory content has
-> > > KASAN_KMALLOC_FREE, but it doesn't set free stack, so that we need to
-> > > avoid this situation. Thank for you reminder.
-> > >
-> > > >
-> > > > We may set KASAN_KMALLOC_FREE, but not set the track (or even have
-> > > > memory for the track!).
-> > > > The object may not have free meta allocated at all, e.g. very large
-> > > > object with ctor (no place to store meta), or it may be in a mempool:
-> > > > https://elixir.bootlin.com/linux/v5.7-rc6/source/mm/mempool.c#L109
-> > > > and mempool may be using the object memory itself (for its own next
-> > > > link or something).
-> > > >
-> > > > KASAN_KMALLOC_FREETRACK very explicitly tracks the exact condition we
-> > > > want: we have meta info live now and we have free track set.
+> What are the benefits of doing it otherwise?
+
+For other Octal Flash like mx25*
+
 > 
+> Note that I did remove HWCAPS selection from here, which did seem like a 
+
+> sane idea.
+> 
+> > Driver should get dummy cycles used for various frequencies 
+> > from 4th and 5th DWORD of xSPI table.[1]
+> > 
+> > [1] 
+> > 
+https://patchwork.ozlabs.org/project/linux-mtd/patch/1587451187-6889-3-git-
+
+> send-email-masonccyang@mxic.com.tw/ 
+> > 
+> > 
+> > In addition, 20 dummy cycles is for 200MHz but not for 100MHz, 133MHz 
+and 
+> > 166MHz
+> > in case of read performance concern.
+> > 
+> > Given a correct dummy cycles for a specific device. [2] 
+> > 
+> > [2] 
+> > 
+https://patchwork.ozlabs.org/project/linux-mtd/patch/1587451187-6889-5-git-
+
+> send-email-masonccyang@mxic.com.tw/ 
+> 
+> The problem is that we don't know what speed the controller is driving 
+> the flash at, and whether it is using Data Strobe. BFPT tells us the 
+> maximum speed of the flash based on if Data Strobe is being used. The 
+> controller can also drive it slower than the maximum. And it can drive 
+> it with or without DS.
+
+This is for flash, not every Octal flash could work in 200MHz,
+The Max operation speeds for other Octal Flash is 100, 133 , or 166MHz.
+
+If a specific Octal Flash could work in 166MHz(Max), and driver setup the
+correct 16 dummy cycles for it rather than 20 dummy cycles.
+it's for performance concern.
+
+> 
+> So, we have to be conservative and just use the dummy cycles for the 
+> maximum speed so we can at least make sure the flash works, albeit at 
+> slightly less efficiency. I hard-coded it to 20 but I suppose we can 
+> find it out from the Profile 1.0 table and use that (though we'd have to 
+
+> round it to an even value to avoid tripping up controllers). Will fix in 
+
+> next version (or, Tudor if you're fine with fixup! patches, I can send 
+> that too because I suspect it will be a small change).
+> 
+> > 
+
+thanks & best regards,
+Mason
+
+
+CONFIDENTIALITY NOTE:
+
+This e-mail and any attachments may contain confidential information 
+and/or personal data, which is protected by applicable laws. Please be 
+reminded that duplication, disclosure, distribution, or use of this e-mail 
+(and/or its attachments) or any part thereof is prohibited. If you receive 
+this e-mail in error, please notify us immediately and delete this mail as 
+well as its attachment(s) from your system. In addition, please be 
+informed that collection, processing, and/or use of personal data is 
+prohibited unless expressly permitted by personal data protection laws. 
+Thank you for your attention and cooperation.
+
+Macronix International Co., Ltd.
+
+=====================================================================
+
+
+
+============================================================================
+
+CONFIDENTIALITY NOTE:
+
+This e-mail and any attachments may contain confidential information and/or personal data, which is protected by applicable laws. Please be reminded that duplication, disclosure, distribution, or use of this e-mail (and/or its attachments) or any part thereof is prohibited. If you receive this e-mail in error, please notify us immediately and delete this mail as well as its attachment(s) from your system. In addition, please be informed that collection, processing, and/or use of personal data is prohibited unless expressly permitted by personal data protection laws. Thank you for your attention and cooperation.
+
+Macronix International Co., Ltd.
+
+=====================================================================
+
 
 _______________________________________________
 Linux-mediatek mailing list
