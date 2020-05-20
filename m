@@ -2,79 +2,66 @@ Return-Path: <SRS0=i2Ig=7C=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A2ACC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 07:34:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 46B7FC433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 08:00:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 284D820671
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 07:34:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 13AEB207E8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 08:00:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iT++0P+t";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="UYcl7bgT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 284D820671
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kO+bpv0G"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 13AEB207E8
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=mxic.com.tw
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Date:From:Message-ID:MIME-Version:
+	Subject:To:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hMB1kESzcAQ61TY3cKw+PjIbUSTTdz7gPtLNbuIaZds=; b=iT++0P+tgTuVIC
-	ntewbkRNEElBdr+iEEyzNZKL3J+LTVqg0w+Rj9EFBkFC7kCp7Prpdi2hh0XjkpUU6n5paJUr7lSml
-	NZCM1oiTXDbxnBaGJBUiUc2uUF4XGR9H1xOhLE7YIWUeVgu987eAMiSRcf5QdTW2TEwh+X77WEazB
-	SwK9GpWRpHplPlz5jpj4R5d3XzcS0ATi/ciJyylu86nKhscIdKn7R+eQuO+YfMZiGT+ULTyNknEPb
-	YukM3xsz9TWLDJ3gw8cTF63SPWPdXSB2wDrDtrer/92MDUmGiDVt5l4vk26EnA8w133M9djBCmPMz
-	ohDj6p2nYE/5D19QSc1Q==;
+	List-Owner; bh=zPjVRGHv7FrCUrEfaSgcnY24wIXuAUenU65h6H+Adjs=; b=kO+bpv0GX5ZASs
+	DpshG26EjiJDyJbG/CQKbHuojcSAkUzKtF908D1Df/XNEdqBQ+OHM+D+L1i1rrQxFdyOTLzNctz5b
+	yLdW39vcpnkDpd07/3lWmy22ETVrzJUc7PKutS+mWbYa7qVBocgzEyDHSs4uP5zAyKTMc76S9I7EQ
+	HEWGFcKn/VRvBethOK6Gva1n8CmCaKD2Y5+Go+Jf6Zqc2KypGJPgC1xDfxrV1kjRlmgx7zdzoO8KW
+	YnnOLp8KHDSdL5ZyoQ6vvJJ0z0dqFSE2xowm91sTXJCPxpUmlb0bx5k1CXI+jTnymuft5cuj5vAN9
+	5z+/DP1wz8ehkLm/R6qw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbJEu-00033c-Qr; Wed, 20 May 2020 07:34:08 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jbJeM-0006rS-Bz; Wed, 20 May 2020 08:00:26 +0000
+Received: from twhmllg3.macronix.com ([211.75.127.131])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbJET-0002Yj-On; Wed, 20 May 2020 07:33:43 +0000
-X-UUID: 7a7cded23036422bbf1ec14a41dae522-20200519
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=x7Ix7wIXALpP6Po6n+AWWCWKLuf6w1Ut3QGKm4+Qrs0=; 
- b=UYcl7bgTL/NsBWttvF9QFjJqD3OpeqXG7MKxvQ0jiRNwzfb3ucqS9ZA26MT5VeAzaWnCGukE344gyp4OucduX0fF5B8migELtKICRDjMkHLLXvtqGkzxfcCt8so8vjsJm2JWCtnbZ9zSXO1CXLt66biAbOXc5EtnWN656nJrPXs=;
-X-UUID: 7a7cded23036422bbf1ec14a41dae522-20200519
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 93966226; Tue, 19 May 2020 23:33:40 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 May 2020 00:23:35 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 May 2020 15:23:27 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 20 May 2020 15:23:27 +0800
-Message-ID: <1589959408.7715.7.camel@mtkswgap22>
-Subject: Re: [PATCH v3 5/5] scsi: ufs: Fix possible VCC power drain during
- runtime suspend
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: "Asutosh Das (asd)" <asutoshd@codeaurora.org>
-Date: Wed, 20 May 2020 15:23:28 +0800
-In-Reply-To: <6d32fba1-f7c3-f043-42b6-0da065e9795b@codeaurora.org>
-References: <20200516174615.15445-1-stanley.chu@mediatek.com>
- <20200516174615.15445-6-stanley.chu@mediatek.com>
- <6d32fba1-f7c3-f043-42b6-0da065e9795b@codeaurora.org>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1jbJdz-00047e-W7; Wed, 20 May 2020 08:00:05 +0000
+Received: from twhfmlp1.macronix.com (twhfmlp1.macronix.com [172.17.20.91])
+ by TWHMLLG3.macronix.com with ESMTP id 04K7xUdE096136;
+ Wed, 20 May 2020 15:59:30 +0800 (GMT-8)
+ (envelope-from masonccyang@mxic.com.tw)
+Received: from MXML06C.mxic.com.tw (mxml06c.mxic.com.tw [172.17.14.55])
+ by Forcepoint Email with ESMTP id B9D79C5271EE9FAE1410;
+ Wed, 20 May 2020 15:59:30 +0800 (CST)
+In-Reply-To: <20200519142642.24131-10-p.yadav@ti.com>
+References: <20200519142642.24131-1-p.yadav@ti.com>
+ <20200519142642.24131-10-p.yadav@ti.com>
+To: "Pratyush Yadav" <p.yadav@ti.com>
+Subject: Re: [PATCH v5 09/19] mtd: spi-nor: sfdp: parse xSPI Profile 1.0 table
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 3B5D2DD1F965F138CE1099F2E31E5F9F6B99042E6C4CAF4988037835AD6A6D8E2000:8
-X-MTK: N
+X-KeepSent: 83616464:480FA751-4825856E:002A4483;
+ type=4; name=$KeepSent
+X-Mailer: Lotus Notes Release 8.5.3FP4 SHF90 June 10, 2013
+Message-ID: <OF83616464.480FA751-ON4825856E.002A4483-4825856E.002BE6AF@mxic.com.tw>
+From: masonccyang@mxic.com.tw
+Date: Wed, 20 May 2020 15:59:31 +0800
+X-MIMETrack: Serialize by Router on MXML06C/TAIWAN/MXIC(Release 9.0.1FP10
+ HF265|July 25, 2018) at 2020/05/20 PM 03:59:30,
+ Serialize complete at 2020/05/20 PM 03:59:30
+X-MAIL: TWHMLLG3.macronix.com 04K7xUdE096136
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200520_003341_865656_9BDC2408 
-X-CRM114-Status: GOOD (  26.46  )
+X-CRM114-CacheID: sfid-20200520_010004_287484_6A8D0C85 
+X-CRM114-Status: GOOD (  10.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,208 +73,144 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-scsi@vger.kernel.org, martin.petersen@oracle.com,
- andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, avri.altman@wdc.com,
- cang@codeaurora.org, linux-mediatek@lists.infradead.org,
- peter.wang@mediatek.com, alim.akhtar@samsung.com, matthias.bgg@gmail.com,
- bvanassche@acm.org, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Vignesh Raghavendra <vigneshr@ti.com>,
+ Tudor Ambarus <tudor.ambarus@microchip.com>, juliensu@mxic.com.tw,
+ Richard Weinberger <richard@nod.at>, Mark Brown <broonie@kernel.org>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>, Sekhar Nori <nsekhar@ti.com>,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ linux-mediatek@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org,
+ Pratyush Yadav <p.yadav@ti.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Asutosh,
 
-Thanks for your review.
+Hi Pratyush, 
 
-On Tue, 2020-05-19 at 09:27 -0700, Asutosh Das (asd) wrote:
-> Hi Stanley,
-> 
-> On 5/16/2020 10:46 AM, Stanley Chu wrote:
-> > The commit "scsi: ufs: Fix WriteBooster flush during runtime
-> > suspend" promises essential resource, i.e., for UFS devices doing
-> > WriteBooster buffer flush and Auto BKOPs. However if device
-> > finishes its job but not resumed for a very long time, system
-> > will have unnecessary power drain because VCC is still supplied.
-> > 
-> > To fix this, a method to recheck the threshold of keeping VCC
-> > supply is required. However, the threshold recheck needs to
-> > re-activate the link because the decision depends on the device
-> > status.
-> > 
-> > Introduce a delayed work to force runtime resume after a certain
-> > delay during runtime suspend. This makes threshold recheck simpler
-> > which will be done in the next runtime-suspend.
-> > 
-> > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> > ---
-> 
-> Is there a reason to have this code as a separate patch?
-> [1] Commit: "scsi: ufs: Fix WriteBooster flush during runtime suspend" 
-> introduces 'keep_curr_dev_pwr_mode' and the very next change (this one) 
-> removes it.
-> Do you think this change and [1] should be merged?
+> +/**
+> + * spi_nor_parse_profile1() - parse the xSPI Profile 1.0 table
+> + * @nor:      pointer to a 'struct spi_nor'
+> + * @param_header:   pointer to the 'struct sfdp_parameter_header' 
+describing
+> + *         the 4-Byte Address Instruction Table length and version.
+> + * @params:      pointer to the 'struct spi_nor_flash_parameter' to be.
+> + *
+> + * Return: 0 on success, -errno otherwise.
+> + */
+> +static int spi_nor_parse_profile1(struct spi_nor *nor,
+> +              const struct sfdp_parameter_header *profile1_header,
+> +              struct spi_nor_flash_parameter *params)
+> +{
+> +   u32 *table, opcode, addr;
+> +   size_t len;
+> +   int ret, i;
+> +
+> +   len = profile1_header->length * sizeof(*table);
+> +   table = kmalloc(len, GFP_KERNEL);
+> +   if (!table)
+> +      return -ENOMEM;
+> +
+> +   addr = SFDP_PARAM_HEADER_PTP(profile1_header);
+> +   ret = spi_nor_read_sfdp(nor, addr, len, table);
+> +   if (ret)
+> +      goto out;
+> +
+> +   /* Fix endianness of the table DWORDs. */
+> +   for (i = 0; i < profile1_header->length; i++)
+> +      table[i] = le32_to_cpu(table[i]);
+> +
+> +   /* Get 8D-8D-8D fast read opcode and dummy cycles. */
+> +   opcode = FIELD_GET(PROFILE1_DWORD1_RD_FAST_CMD, table[0]);
+> +
+> +   /*
+> +    * Update the fast read settings. We set the default dummy cycles to 
+20
+> +    * here. Flashes can change this value if they need to when enabling
+> +    * octal mode.
+> +    */
+> +   spi_nor_set_read_settings(&params->reads[SNOR_CMD_READ_8_8_8_DTR],
+> +              0, 20, opcode,
+> +              SNOR_PROTO_8_8_8_DTR);
+> +
 
-Yes, these 2 patches shall be merged. I will do it in next version.
 
-> 
-> >   drivers/scsi/ufs/ufs.h    |  1 +
-> >   drivers/scsi/ufs/ufshcd.c | 43 ++++++++++++++++++++++++++++++++++-----
-> >   drivers/scsi/ufs/ufshcd.h |  1 +
-> >   3 files changed, 40 insertions(+), 5 deletions(-)
-> > 
-> > diff --git a/drivers/scsi/ufs/ufs.h b/drivers/scsi/ufs/ufs.h
-> > index db07eedfed96..c70845d41449 100644
-> > --- a/drivers/scsi/ufs/ufs.h
-> > +++ b/drivers/scsi/ufs/ufs.h
-> > @@ -574,6 +574,7 @@ struct ufs_dev_info {
-> >   	u32 d_ext_ufs_feature_sup;
-> >   	u8 b_wb_buffer_type;
-> >   	u32 d_wb_alloc_units;
-> > +	bool b_rpm_dev_flush_capable;
-> >   	u8 b_presrv_uspc_en;
-> >   };
-> >   
-> > diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> > index f4f2c7b5ab0a..a137553f9b41 100644
-> > --- a/drivers/scsi/ufs/ufshcd.c
-> > +++ b/drivers/scsi/ufs/ufshcd.c
-> > @@ -94,6 +94,9 @@
-> >   /* default delay of autosuspend: 2000 ms */
-> >   #define RPM_AUTOSUSPEND_DELAY_MS 2000
-> >   
-> > +/* Default delay of RPM device flush delayed work */
-> > +#define RPM_DEV_FLUSH_RECHECK_WORK_DELAY_MS 5000
-> > +
-> >   /* Default value of wait time before gating device ref clock */
-> >   #define UFSHCD_REF_CLK_GATING_WAIT_US 0xFF /* microsecs */
-> >   
-> > @@ -5310,7 +5313,7 @@ static bool ufshcd_wb_presrv_usrspc_keep_vcc_on(struct ufs_hba *hba,
-> >   	return false;
-> >   }
-> >   
-> > -static bool ufshcd_wb_keep_vcc_on(struct ufs_hba *hba)
-> > +static bool ufshcd_wb_need_flush(struct ufs_hba *hba)
-> >   {
-> >   	int ret;
-> >   	u32 avail_buf;
-> > @@ -5348,6 +5351,21 @@ static bool ufshcd_wb_keep_vcc_on(struct ufs_hba *hba)
-> >   	return ufshcd_wb_presrv_usrspc_keep_vcc_on(hba, avail_buf);
-> >   }
-> >   
-> > +static void ufshcd_rpm_dev_flush_recheck_work(struct work_struct *work)
-> > +{
-> > +	struct ufs_hba *hba = container_of(to_delayed_work(work),
-> > +					   struct ufs_hba,
-> > +					   rpm_dev_flush_recheck_work);
-> > +	/*
-> > +	 * To prevent unnecessary VCC power drain after device finishes
-> > +	 * WriteBooster buffer flush or Auto BKOPs, force runtime resume
-> > +	 * after a certain delay to recheck the threshold by next runtime
-> > +	 * supsend.
-> > +	 */
-> > +	pm_runtime_get_sync(hba->dev);
-> > +	pm_runtime_put_sync(hba->dev);
-> > +}
-> > +
-> >   /**
-> >    * ufshcd_exception_event_handler - handle exceptions raised by device
-> >    * @work: pointer to work data
-> > @@ -8164,7 +8182,6 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
-> >   	enum ufs_pm_level pm_lvl;
-> >   	enum ufs_dev_pwr_mode req_dev_pwr_mode;
-> >   	enum uic_link_state req_link_state;
-> > -	bool keep_curr_dev_pwr_mode = false;
-> >   
-> >   	hba->pm_op_in_progress = 1;
-> >   	if (!ufshcd_is_shutdown_pm(pm_op)) {
-> > @@ -8224,11 +8241,12 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
-> >   		 * Hibern8, keep device power mode as "active power mode"
-> >   		 * and VCC supply.
-> >   		 */
-> > -		keep_curr_dev_pwr_mode = hba->auto_bkops_enabled ||
-> > +		hba->dev_info.b_rpm_dev_flush_capable =
-> > +			hba->auto_bkops_enabled ||
-> >   			(((req_link_state == UIC_LINK_HIBERN8_STATE) ||
-> >   			((req_link_state == UIC_LINK_ACTIVE_STATE) &&
-> >   			ufshcd_is_auto_hibern8_enabled(hba))) &&
-> > -			ufshcd_wb_keep_vcc_on(hba));
-> > +			ufshcd_wb_need_flush(hba));
-> >   	}
-> >   
-> >   	if (req_dev_pwr_mode != hba->curr_dev_pwr_mode) {
-> > @@ -8238,7 +8256,7 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
-> >   			ufshcd_disable_auto_bkops(hba);
-> >   		}
-> >   
-> > -		if (!keep_curr_dev_pwr_mode) {
-> > +		if (!hba->dev_info.b_rpm_dev_flush_capable) {
-> >   			ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
-> >   			if (ret)
-> >   				goto enable_gating;
-> > @@ -8295,9 +8313,16 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
-> >   	if (hba->clk_scaling.is_allowed)
-> >   		ufshcd_resume_clkscaling(hba);
-> >   	hba->clk_gating.is_suspended = false;
-> > +	hba->dev_info.b_rpm_dev_flush_capable = false;
-> >   	ufshcd_release(hba);
-> >   out:
-> > +	if (hba->dev_info.b_rpm_dev_flush_capable) {
-> > +		schedule_delayed_work(&hba->rpm_dev_flush_recheck_work,
-> > +			msecs_to_jiffies(RPM_DEV_FLUSH_RECHECK_WORK_DELAY_MS));
-> > +	}
-> > +
-> >   	hba->pm_op_in_progress = 0;
-> > +
-> Nitpick; newline, perhaps?
+I thought we have a agreement that only do parse here, no other read 
+parameters setting.
 
-Thanks, I Will remove it.
+Driver should get dummy cycles used for various frequencies 
+from 4th and 5th DWORD of xSPI table.[1]
+ 
+[1] 
+https://patchwork.ozlabs.org/project/linux-mtd/patch/1587451187-6889-3-git-send-email-masonccyang@mxic.com.tw/ 
 
-> 
-> >   	if (ret)
-> >   		ufshcd_update_reg_hist(&hba->ufs_stats.suspend_err, (u32)ret);
-> >   	return ret;
-> > @@ -8386,6 +8411,11 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
-> >   	/* Enable Auto-Hibernate if configured */
-> >   	ufshcd_auto_hibern8_enable(hba);
-> >   
-> > +	if (hba->dev_info.b_rpm_dev_flush_capable) {
-> > +		hba->dev_info.b_rpm_dev_flush_capable = false;
-> > +		cancel_delayed_work(&hba->rpm_dev_flush_recheck_work);
-> > +	}
-> > +
-> >   	/* Schedule clock gating in case of no access to UFS device yet */
-> >   	ufshcd_release(hba);
-> >   
-> > @@ -8859,6 +8889,9 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
-> >   						UFS_SLEEP_PWR_MODE,
-> >   						UIC_LINK_HIBERN8_STATE);
-> >   
-> > +	INIT_DELAYED_WORK(&hba->rpm_dev_flush_recheck_work,
-> > +			  ufshcd_rpm_dev_flush_recheck_work);
-> > +
-> >   	/* Set the default auto-hiberate idle timer value to 150 ms */
-> >   	if (ufshcd_is_auto_hibern8_supported(hba) && !hba->ahit) {
-> >   		hba->ahit = FIELD_PREP(UFSHCI_AHIBERN8_TIMER_MASK, 150) |
-> > diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-> > index 8db7a6101892..9acd437037e8 100644
-> > --- a/drivers/scsi/ufs/ufshcd.h
-> > +++ b/drivers/scsi/ufs/ufshcd.h
-> > @@ -745,6 +745,7 @@ struct ufs_hba {
-> >   	struct request_queue	*bsg_queue;
-> >   	bool wb_buf_flush_enabled;
-> >   	bool wb_enabled;
-> > +	struct delayed_work rpm_dev_flush_recheck_work;
-> >   };
-> >   
-> >   /* Returns true if clocks can be gated. Otherwise false */
-> > 
-> 
-> 
 
-Thanks,
-Stanley Chu
+In addition, 20 dummy cycles is for 200MHz but not for 100MHz, 133MHz and 
+166MHz
+in case of read performance concern.
+
+Given a correct dummy cycles for a specific device. [2] 
+
+[2] 
+https://patchwork.ozlabs.org/project/linux-mtd/patch/1587451187-6889-5-git-send-email-masonccyang@mxic.com.tw/ 
+
+
+
+> +   /*
+> +    * Set the Read Status Register dummy cycles and dummy address 
+bytes.
+> +    */
+> +   if (table[0] & PROFILE1_DWORD1_RDSR_DUMMY)
+> +      params->rdsr_dummy = 8;
+> +   else
+> +      params->rdsr_dummy = 4;
+> +
+> +   if (table[0] & PROFILE1_DWORD1_RDSR_ADDR_BYTES)
+> +      params->rdsr_addr_nbytes = 4;
+> +   else
+> +      params->rdsr_addr_nbytes = 0;
+> +
+> +out:
+> +   kfree(table);
+> +   return ret;
+> +}
+> +
+
+thanks & best regards,
+Mason
+
+
+CONFIDENTIALITY NOTE:
+
+This e-mail and any attachments may contain confidential information 
+and/or personal data, which is protected by applicable laws. Please be 
+reminded that duplication, disclosure, distribution, or use of this e-mail 
+(and/or its attachments) or any part thereof is prohibited. If you receive 
+this e-mail in error, please notify us immediately and delete this mail as 
+well as its attachment(s) from your system. In addition, please be 
+informed that collection, processing, and/or use of personal data is 
+prohibited unless expressly permitted by personal data protection laws. 
+Thank you for your attention and cooperation.
+
+Macronix International Co., Ltd.
+
+=====================================================================
+
+
+
+============================================================================
+
+CONFIDENTIALITY NOTE:
+
+This e-mail and any attachments may contain confidential information and/or personal data, which is protected by applicable laws. Please be reminded that duplication, disclosure, distribution, or use of this e-mail (and/or its attachments) or any part thereof is prohibited. If you receive this e-mail in error, please notify us immediately and delete this mail as well as its attachment(s) from your system. In addition, please be informed that collection, processing, and/or use of personal data is prohibited unless expressly permitted by personal data protection laws. Thank you for your attention and cooperation.
+
+Macronix International Co., Ltd.
+
+=====================================================================
 
 
 _______________________________________________
