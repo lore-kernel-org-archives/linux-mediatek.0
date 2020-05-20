@@ -2,80 +2,83 @@ Return-Path: <SRS0=i2Ig=7C=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8406EC433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 08:44:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6B4EBC433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 08:56:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5124B207ED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 08:44:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 381E1207F9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 08:56:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZTRPm4vh";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="luKthv+e"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5124B207ED
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZLwTDlWo";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="R96242wJ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 381E1207F9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9AXFxLSTQWg7cxNPCQKkMy3YBaGWdODwZBh9dlg8Lt4=; b=ZTRPm4vhzxxtV1
-	7u6VnMHoAq3ft5H8+2xww6iNCXzBKxDam/qy5JHFP1abSkRpTuTUg6cJxxfGhJflqbjHnwlKNLoVR
-	94uqnrOtKp67Z11PiYnVt1bCG42AEoW1nbAX+S1miwOOt8HsKloRjJVoPwUBrPM1ge4y+A8kS2cBs
-	7tZ8YKGtsXtczg3cUqb49YRGpcqRJwPTUU8XSgDp6a3So3JuSV8Ciw4gNAx5lyByL+Zuow2884yGm
-	vVU+qSbpKtqe7h3gGqEJtaaAJ7Qc7whmxx/lpsE9XjqeNnhWP0AhKoHrupl/Jz1TdWYamfX6o7eS4
-	yRLw7Gf5mHO06zpdN30w==;
+	List-Owner; bh=68kna4jNQgUQ4lxz4pEtxAAtOaNYn55Fij7sbA4VpoA=; b=ZLwTDlWos+IWsN
+	SMRtVrE5r6w+MWF20ldaVRX3AdlOpJ6wetAFEYGqejEn0/I7vrgWZJ1GHMfHyG7y3UN33W40+IpUw
+	x2udqCrxwSAXoluIqumjCgLLp+n4d1USegFoeV2zORsRPeYKOeRFxibPLu/tmJYukUFJy4YfLIkuS
+	OWr93Kr08Rq8Pfxj+u4rlTfftwPTkGcZ4k0j+HsFRBhW7LA4GpaqrtG06qRYWBuIJr+W7zNnbLlrw
+	cbrN7/E+MO+V+39Jc3J7nYRKyBOeGzZc/8pBYP0qzSaSgWv5ZD7gVhgK0otWZjNi6888/ZkcHl+2Z
+	ZNieNoykvT6Zj46aE4bg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbKKc-0004YI-S4; Wed, 20 May 2020 08:44:06 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jbKW5-0007lD-97; Wed, 20 May 2020 08:55:57 +0000
+Received: from fllv0016.ext.ti.com ([198.47.19.142])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbKKZ-0004XU-N9; Wed, 20 May 2020 08:44:05 +0000
-X-UUID: d3f0d11871f44e949601b0de0728d015-20200520
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=u0K9CvT5HV61VJXYYwxkYfqIusTCbFNVtZQAS+tl34Q=; 
- b=luKthv+eR0xrTVxdbHlaDd4k9oQjtvxMr/QNDzQKGBVUKw9IbG4QylxeWXGAnoUEIq/uuYTOjxDKqm+S7hmCBRf1LP5w90XZzJ/qxaky9IISaUKd/S1BYII6L8HUemO/mjkt0y2GYvQKFekhcMC1h6UiyTaAxcoNwHWFRhpoCf4=;
-X-UUID: d3f0d11871f44e949601b0de0728d015-20200520
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <qii.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 864790960; Wed, 20 May 2020 00:43:59 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 May 2020 01:43:54 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31DR.mediatek.inc
- (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 20 May 2020 16:42:35 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 20 May 2020 16:42:34 +0800
-Message-ID: <1589964062.25512.67.camel@mhfsdcap03>
-Subject: Re: [PATCH v2 2/2] i2c: mediatek: Add i2c ac-timing adjust support
-From: Qii Wang <qii.wang@mediatek.com>
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Wed, 20 May 2020 16:41:02 +0800
-In-Reply-To: <CAMuHMdXgp85PVteunxrHYcMTqFgQWHmXXCVJM_KX76xkCADMpw@mail.gmail.com>
-References: <1589461844-15614-1-git-send-email-qii.wang@mediatek.com>
- <1589461844-15614-3-git-send-email-qii.wang@mediatek.com>
- <CAMuHMdXjLakWDDEy=02prC7XjAs_xBnt2mArPFNwyHgUoWw6-g@mail.gmail.com>
- <1589857073.25512.34.camel@mhfsdcap03>
- <CAMuHMdXgp85PVteunxrHYcMTqFgQWHmXXCVJM_KX76xkCADMpw@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jbKVt-0007bQ-LM; Wed, 20 May 2020 08:55:47 +0000
+Received: from lelv0266.itg.ti.com ([10.180.67.225])
+ by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 04K8tcIM082933;
+ Wed, 20 May 2020 03:55:38 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1589964938;
+ bh=94NnytqBpqUf8R7aIslBZEl7hkdO4TQ/1RS1F+OZnXY=;
+ h=Date:From:To:CC:Subject:References:In-Reply-To;
+ b=R96242wJFEmcM0aj2vJcZbs7z2iJai3xa6+nTl2PNPwCa7dJd+YHwCBDwVk5cVnAB
+ HJ0Q5qttvfiqBtgMjqqLq3b2VsBp64C88XDxyHe/itTNMObzQyPHkUIyD00OmljnrV
+ ilc3aKwnEeUx0GicoDmkcTBerP8SeIo7+gfNYNGo=
+Received: from DLEE113.ent.ti.com (dlee113.ent.ti.com [157.170.170.24])
+ by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 04K8tbB8044324
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 20 May 2020 03:55:38 -0500
+Received: from DLEE101.ent.ti.com (157.170.170.31) by DLEE113.ent.ti.com
+ (157.170.170.24) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Wed, 20
+ May 2020 03:55:37 -0500
+Received: from fllv0040.itg.ti.com (10.64.41.20) by DLEE101.ent.ti.com
+ (157.170.170.31) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
+ Frontend Transport; Wed, 20 May 2020 03:55:37 -0500
+Received: from localhost (ileax41-snat.itg.ti.com [10.172.224.153])
+ by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 04K8taiv093353;
+ Wed, 20 May 2020 03:55:37 -0500
+Date: Wed, 20 May 2020 14:25:36 +0530
+From: Pratyush Yadav <p.yadav@ti.com>
+To: <masonccyang@mxic.com.tw>
+Subject: Re: [PATCH v5 09/19] mtd: spi-nor: sfdp: parse xSPI Profile 1.0 table
+Message-ID: <20200520085534.yra4f5ww5xs23c4j@ti.com>
+References: <20200519142642.24131-1-p.yadav@ti.com>
+ <20200519142642.24131-10-p.yadav@ti.com>
+ <OF83616464.480FA751-ON4825856E.002A4483-4825856E.002BE6AF@mxic.com.tw>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 419D878692A456EACB25265C39EB5C4831837D6DCD95B04EF9B86113CAB6032B2000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <OF83616464.480FA751-ON4825856E.002A4483-4825856E.002BE6AF@mxic.com.tw>
+User-Agent: NeoMutt/20171215
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200520_014403_762923_A44E607F 
-X-CRM114-Status: GOOD (  27.66  )
+X-CRM114-CacheID: sfid-20200520_015545_820562_DCEA9784 
+X-CRM114-Status: GOOD (  23.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,136 +90,148 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "open list:OPEN FIRMWARE AND FLATTENED
- DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, srv_heupstream@mediatek.com,
- Wolfram Sang <wsa@the-dreams.de>, leilk.liu@mediatek.com,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-mediatek@lists.infradead.org, Linux
- I2C <linux-i2c@vger.kernel.org>, Joe Perches <joe@perches.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Vignesh Raghavendra <vigneshr@ti.com>,
+ Tudor Ambarus <tudor.ambarus@microchip.com>, juliensu@mxic.com.tw,
+ Richard Weinberger <richard@nod.at>, Mark Brown <broonie@kernel.org>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>, Sekhar Nori <nsekhar@ti.com>,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ linux-mediatek@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Geert,
+Hi Mason,
 
-On Tue, 2020-05-19 at 09:14 +0200, Geert Uytterhoeven wrote:
-> Hi Qii,
+On 20/05/20 03:59PM, masonccyang@mxic.com.tw wrote:
 > 
-> On Tue, May 19, 2020 at 4:59 AM Qii Wang <qii.wang@mediatek.com> wrote:
-> > On Mon, 2020-05-18 at 17:44 +0200, Geert Uytterhoeven wrote:
-> > > On Thu, May 14, 2020 at 3:13 PM Qii Wang <qii.wang@mediatek.com> wrote:
-> > > > This patch adds a algorithm to calculate some ac-timing parameters
-> > > > which can fully meet I2C Spec.
-> > > >
-> > > > Signed-off-by: Qii Wang <qii.wang@mediatek.com>
-> > > > ---
-> > > >  drivers/i2c/busses/i2c-mt65xx.c | 328 +++++++++++++++++++++++++++++++++-------
-> > > >  1 file changed, 277 insertions(+), 51 deletions(-)
-> > > >
-> > > > diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-> > > > index 0ca6c38a..7020618 100644
-> > > > --- a/drivers/i2c/busses/i2c-mt65xx.c
-> > > > +++ b/drivers/i2c/busses/i2c-mt65xx.c
-> > >
-> > > > +/*
-> > > > + * Check and Calculate i2c ac-timing
-> > > > + *
-> > > > + * Hardware design:
-> > > > + * sample_ns = (1000000000 * (sample_cnt + 1)) / clk_src
-> > > > + * xxx_cnt_div =  spec->min_xxx_ns / sample_ns
-> > > > + *
-> > > > + * Sample_ns is rounded down for xxx_cnt_div would be greater
-> > > > + * than the smallest spec.
-> > > > + * The sda_timing is chosen as the middle value between
-> > > > + * the largest and smallest.
-> > > > + */
-> > > > +static int mtk_i2c_check_ac_timing(struct mtk_i2c *i2c,
-> > > > +                                  unsigned int clk_src,
-> > > > +                                  unsigned int check_speed,
-> > > > +                                  unsigned int step_cnt,
-> > > > +                                  unsigned int sample_cnt)
-> > > > +{
-> > > > +       const struct i2c_spec_values *spec;
-> > > > +       unsigned int su_sta_cnt, low_cnt, high_cnt, max_step_cnt;
-> > > > +       unsigned int sda_max, sda_min, clk_ns, max_sta_cnt = 0x3f;
-> > > > +       long long sample_ns = (1000000000 * (sample_cnt + 1)) / clk_src;
-> > >
-> > > So sample_ns is a 64-bit value. Is that really needed?
-> > >
-> >
-> > (1000000000 * (sample_cnt + 1)) / clk_src value is a 32-bit, (1000000000
-> > * (sample_cnt + 1)) will over 32-bit if sample_cnt is 7.
+> Hi Pratyush, 
 > 
-> The intermediate value will indeed not fit in 32-bit.
-> But that doesn't mean the end result won't fit in 32-bit.
-> As you divide spec->min_low_ns and spec->min_su_dat_ns (which I assume
-> are small numbers) by sample_ns below, sample_ns cannot be very large,
-> or the quotient will be zero anyway.
-> So just doing the multiplication in 64-bit, followed by a 64-by-32
-> division is probably fine:
+> > +/**
+> > + * spi_nor_parse_profile1() - parse the xSPI Profile 1.0 table
+> > + * @nor:      pointer to a 'struct spi_nor'
+> > + * @param_header:   pointer to the 'struct sfdp_parameter_header' 
+> describing
+> > + *         the 4-Byte Address Instruction Table length and version.
+> > + * @params:      pointer to the 'struct spi_nor_flash_parameter' to be.
+> > + *
+> > + * Return: 0 on success, -errno otherwise.
+> > + */
+> > +static int spi_nor_parse_profile1(struct spi_nor *nor,
+> > +              const struct sfdp_parameter_header *profile1_header,
+> > +              struct spi_nor_flash_parameter *params)
+> > +{
+> > +   u32 *table, opcode, addr;
+> > +   size_t len;
+> > +   int ret, i;
+> > +
+> > +   len = profile1_header->length * sizeof(*table);
+> > +   table = kmalloc(len, GFP_KERNEL);
+> > +   if (!table)
+> > +      return -ENOMEM;
+> > +
+> > +   addr = SFDP_PARAM_HEADER_PTP(profile1_header);
+> > +   ret = spi_nor_read_sfdp(nor, addr, len, table);
+> > +   if (ret)
+> > +      goto out;
+> > +
+> > +   /* Fix endianness of the table DWORDs. */
+> > +   for (i = 0; i < profile1_header->length; i++)
+> > +      table[i] = le32_to_cpu(table[i]);
+> > +
+> > +   /* Get 8D-8D-8D fast read opcode and dummy cycles. */
+> > +   opcode = FIELD_GET(PROFILE1_DWORD1_RD_FAST_CMD, table[0]);
+> > +
+> > +   /*
+> > +    * Update the fast read settings. We set the default dummy cycles to 
+> 20
+> > +    * here. Flashes can change this value if they need to when enabling
+> > +    * octal mode.
+> > +    */
+> > +   spi_nor_set_read_settings(&params->reads[SNOR_CMD_READ_8_8_8_DTR],
+> > +              0, 20, opcode,
+> > +              SNOR_PROTO_8_8_8_DTR);
+> > +
 > 
->     unsigned int sample_ns = div_u64(1000000000ULL * (sample_cnt + 1), clk_src);
 > 
-> You may want to take precautions for the case where the passed value of
-> clk_src is a small number (can that happen?).
+> I thought we have a agreement that only do parse here, no other read 
+> parameters setting.
+
+Yes, and I considered it. But it didn't make much sense to me to 
+introduce an extra member in struct spi_nor just to make this call in 
+some other function later.
+
+Why exactly do you think doing this here is bad? The way I see it, we 
+avoid carrying around an extra member in spi_nor and this also allows 
+flashes to change the read settings easily in a post-sfdp hook. The 
+4bait parsing function does something similar.
+
+What are the benefits of doing it otherwise?
+
+Note that I did remove HWCAPS selection from here, which did seem like a 
+sane idea.
+ 
+> Driver should get dummy cycles used for various frequencies 
+> from 4th and 5th DWORD of xSPI table.[1]
+>  
+> [1] 
+> https://patchwork.ozlabs.org/project/linux-mtd/patch/1587451187-6889-3-git-send-email-masonccyang@mxic.com.tw/ 
 > 
-> BTW, clk_get_rate() returns "unsigned long", while mtk_i2c_set_speed()
-> takes an "unsigned int" parent_clk, which may cause future issues.
-> You may want to change that to "unsigned long", along the whole
-> propagation path, and use div64_ul() instead of div_u64() above.
+> 
+> In addition, 20 dummy cycles is for 200MHz but not for 100MHz, 133MHz and 
+> 166MHz
+> in case of read performance concern.
+> 
+> Given a correct dummy cycles for a specific device. [2] 
+> 
+> [2] 
+> https://patchwork.ozlabs.org/project/linux-mtd/patch/1587451187-6889-5-git-send-email-masonccyang@mxic.com.tw/ 
+
+The problem is that we don't know what speed the controller is driving 
+the flash at, and whether it is using Data Strobe. BFPT tells us the 
+maximum speed of the flash based on if Data Strobe is being used. The 
+controller can also drive it slower than the maximum. And it can drive 
+it with or without DS.
+
+So, we have to be conservative and just use the dummy cycles for the 
+maximum speed so we can at least make sure the flash works, albeit at 
+slightly less efficiency. I hard-coded it to 20 but I suppose we can 
+find it out from the Profile 1.0 table and use that (though we'd have to 
+round it to an even value to avoid tripping up controllers). Will fix in 
+next version (or, Tudor if you're fine with fixup! patches, I can send 
+that too because I suspect it will be a small change).
+ 
+> 
+> > +   /*
+> > +    * Set the Read Status Register dummy cycles and dummy address 
+> bytes.
+> > +    */
+> > +   if (table[0] & PROFILE1_DWORD1_RDSR_DUMMY)
+> > +      params->rdsr_dummy = 8;
+> > +   else
+> > +      params->rdsr_dummy = 4;
+> > +
+> > +   if (table[0] & PROFILE1_DWORD1_RDSR_ADDR_BYTES)
+> > +      params->rdsr_addr_nbytes = 4;
+> > +   else
+> > +      params->rdsr_addr_nbytes = 0;
+> > +
+> > +out:
+> > +   kfree(table);
+> > +   return ret;
+> > +}
+> > +
 > 
 
-The return type of div_u64 is u64(unsigned long long), there is a
-compulsory type conversion operator. Do you think it is needed?
-BTW, we just need to change the type of sample_ns to unsigned int, no
-matter which method is used, what is your opinion?
-
-> > I think 1000000000 and clk_src is too big, maybe I can reduce then with
-> > be divided all by 1000.
-> > example:
-> >
-> > unsigned int sample_ns;
-> > unsigned int clk_src_khz = clk_src / 1000;
-> 
-> That may cause too much loss of precision.
-> 
-
-clk_src is more than MHz and less than GHZ for MTK i2c controller, so it
-wouldn't cause too much loss of precision.
-
-> >
-> > if(clk_src_khz)
-> >         sample_ns = (1000000 * (sample_cnt + 1)) / clk_src_khz;
-> > else
-> >         return -EINVAL;
-> >
-> > > > +       if (!i2c->dev_comp->timing_adjust)
-> > > > +               return 0;
-> > > > +
-> > > > +       if (i2c->dev_comp->ltiming_adjust)
-> > > > +               max_sta_cnt = 0x100;
-> > > > +
-> > > > +       spec = mtk_i2c_get_spec(check_speed);
-> > > > +
-> > > > +       if (i2c->dev_comp->ltiming_adjust)
-> > > > +               clk_ns = 1000000000 / clk_src;
-> > > > +       else
-> > > > +               clk_ns = sample_ns / 2;
-> > > > +
-> > > > +       su_sta_cnt = DIV_ROUND_UP(spec->min_su_sta_ns, clk_ns);
-> > > > +       if (su_sta_cnt > max_sta_cnt)
-> > > > +               return -1;
-> > > > +
-> > > > +       low_cnt = DIV_ROUND_UP(spec->min_low_ns, sample_ns);
-> > >
-> > > So this is a 32-bit by 64-bit division (indeed, not 64-by-32!)
-> 
-> Gr{oetje,eeting}s,
-> 
->                         Geert
-> 
+-- 
+Regards,
+Pratyush Yadav
+Texas Instruments India
 
 _______________________________________________
 Linux-mediatek mailing list
