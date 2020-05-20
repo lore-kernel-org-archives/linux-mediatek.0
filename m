@@ -2,23 +2,23 @@ Return-Path: <SRS0=i2Ig=7C=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C151BC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 10:51:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 33203C433E1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 10:52:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 711FD207D3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 10:51:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id ECDE4207F9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 10:51:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WVfvjNUY";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="li8yuBGp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 711FD207D3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="c+e5td97";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="OnII1InU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ECDE4207F9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,59 +27,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2Yi/V6pRERYC9hAsfh4DyQFQpyBPupVtmG000R5Drsw=; b=WVfvjNUYaXF/IV
-	xSCC8ka8zNpagvfVFhIBGlmeILy0KMMpnMY5qDeM238j/n7oOqBGt11MoRNdjIXwFtk0tegnfshMs
-	asBaUfpDgZNQo4RSPA370QdEndX5ziuVzU39rJrp4aCdI3oJGXcSjWpn5oBv3+vUfCd9nB+5UPnh3
-	luw0KIYm9GBzoIRz5KA4LKFrPOt4QHDf1N0EIOw/RmCloCMO6IFnlQH+5ziXVqjneHcvZB5kw6VB2
-	sIv8YCESQSTJ60uOpXyduKQnAnjvW2ahuzpic75coPXI3Vpw3nLZZ0fSoKIK6f9sWM9PbEEEFL7o1
-	/F8a0tep11zGQfv7BuLg==;
+	List-Owner; bh=f0LyzETSPRZYETclneVq6zhiAVXx54jcQnALlM5bAqQ=; b=c+e5td97CajW0b
+	2JtpNXkh7xBfcrXQEd/fgU1Pg53RjE0x202BTq3AwHPTWQ4I/9fmWhSDh4xAAkjc8P0nhbEhA9hsk
+	wTZ4wlfOYUd2eCHwcCdFU0W13vuFSSqVd4lFKIPkUmzzhEDcNpnFw6NN53+0wJeZu1DqyctZgUGpK
+	7Nmf2G9GNuTnNBvaw2INQBjQeTlMazU9YVM5fAcUoMFkuYN9VPWhKGk32Kadv1fqsEUQCJx1jbm9Q
+	5OGo3iRIeKeLt57G5iaT19Y+UwY3TWAwTXzDOMNEgAlWdIBa8qipWhQRKdwLsg9RzLDcafRCUIzYk
+	lOdwanOfxFDu2nNt46vQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbMJv-0003jv-DF; Wed, 20 May 2020 10:51:31 +0000
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243])
+	id 1jbMKE-00040R-8H; Wed, 20 May 2020 10:51:50 +0000
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbMJr-0003eR-NU; Wed, 20 May 2020 10:51:29 +0000
-Received: by mail-oi1-x243.google.com with SMTP id r25so2532289oij.4;
- Wed, 20 May 2020 03:51:27 -0700 (PDT)
+ id 1jbMK8-0003uh-Te; Wed, 20 May 2020 10:51:46 +0000
+Received: by mail-ot1-x344.google.com with SMTP id d26so2067770otc.7;
+ Wed, 20 May 2020 03:51:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=MfSjPcEt/nAwSUypHPmchEB/Dcbe/ptEf9XnM1/0FSQ=;
- b=li8yuBGpjb3sRMpEiqvdB7JOszWNjMTkmgEHRypt7SsR/yyvEemHYYoa+Qj1cpEUOK
- ebQimIrcPqkkQ7Zrh8rZe1Th0uxS4UD6wrLEuIJrpZgbKwUE4IqNF26/Rd5eHQro76n+
- d2QeXbeuBI9aYXXAzZFAPBY6s1Q4R2a3yBwc1she/4rVILbgXIO+W9hOYMfsSXuwSUws
- zXG0lj+rD4pPZesmmWhNU/u4G7XR+VE3ko+ROQAs45oorfY5G510851YiHxF1Jab+IJ8
- TOP795cHZDeeV1Ikm5hFj87WpgEdILmlo0qQT6Kl7EP4uqqpk5Ec7j0FrclA9AZZcg1W
- F4qw==
+ bh=+pHFuQZ2r4Z0DaeMsdsoXYaEy9WRSH2ny3D42qCYq9E=;
+ b=OnII1InUbJ08I7/tADo25PRGg3ZkO5cp7KXxbaCMAmhNETuVjb6aLL8k7r/ASEcn78
+ sle5yKUBlPt88sOdpSPok/fqHjQAkfMwpIaXDMyDb+ykPpKhjreCM0CbB5Uscmm4LIKj
+ 38euJjg9wNrOm1YUyRBfu+BSUg70zeHsSUMEk6xb5CwAB8DnRWNLTooS8OWqtPDLgxgR
+ TRYfuL0mZWtl2Qvn/gFTozIMJwRfpw05VgzmWjUBfPneJOlu5exggJd+L71owiWzzNV9
+ EoJ2DQxqfPVkNmul/C0IJPOlGAG0e7oeCPjsmZlR/Ayi6XJcpxCcM2MqlJSfnKQg/KMy
+ 0nEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=MfSjPcEt/nAwSUypHPmchEB/Dcbe/ptEf9XnM1/0FSQ=;
- b=eQ8jABpr1xOPoFpqpiUiAbeZgoRkqhGkREg76J3bxOVOQADi4L+efTFyDr+Kp+hWSC
- oB5XIJj5gShTRsFlw59rLoPMOdmr36vaAruC9yg22mUCHdxNZu0lI0qma8NrO88e6+vh
- uQ8eYCTKPS/QMymm3k55hnepJGyTOtudlWdfXTc3nV5m6H+FxMV5T4Cj4tn3NOPv7CTz
- PfsHP5vTxim8qBtA0L4g7Rw3HtX6dKZlN76+PwmfE5fefjZ0bH8p0iFWPJydnNdiW75b
- 6rKEv/xsQJSw9kY1dS+Nb9i/NcF+HOo9dgysJoky9wg3AKlYAscVX6ILo9HWL+gQ3Wzd
- TFzA==
-X-Gm-Message-State: AOAM532WLq+qcPWkN0FZgeheP7JrLuYtkwRwy3dg98qgK0Hr5L1k/Tmx
- C+9y6o3pe3LdamLOA0dpUUQ=
-X-Google-Smtp-Source: ABdhPJyaoaOnIGiW5mF96QInJyUdWgU8IB9+8+A5dwmeq88FK5NIoagPCIjs2hg3ZiDysDU5DDBV9A==
-X-Received: by 2002:aca:c341:: with SMTP id t62mr2787934oif.5.1589971886521;
- Wed, 20 May 2020 03:51:26 -0700 (PDT)
+ bh=+pHFuQZ2r4Z0DaeMsdsoXYaEy9WRSH2ny3D42qCYq9E=;
+ b=kFyIbyMADITfm02fwkHb6cyx/q5YPJdNUqIYpjxlnwiiyN7aoVPCPxqEaAgh74Qy6K
+ iBPnCwRoK1q1MvaQDMoO/uCRUyVatu8bXAWneee4QnUzH0wymlINVkydth10RyhYU15d
+ YDMw7n++QSfXH0k1RObR9WTGv5kTMvckQTKrECeXc7QuIlWbAge7WmwIavGI2aJutNtF
+ t4hUAmYacdhgzAKoE9UaNut4rAIwU0xjCqteeXY96osm4dOyLYC11iFCqf8ay6cdlj5U
+ f5uNBitaeS3tkJ5w33o2yl28VX4ghxRjEdt/1AXS8egg+eTeuiEdOikRrkmX1fUQD7yk
+ oGUQ==
+X-Gm-Message-State: AOAM53178MmbUqN0IeHac1Gn6mak07ioLzNH+piwMAJsinV9XvAZwaw0
+ omTcr1qMtdk3DxPu30+Qz1s=
+X-Google-Smtp-Source: ABdhPJwiSES5f0ZAZs/ZpOezXeN2unkBHAzi9blokicRcLkIDVzLIHGxKleQ6sIvqzP5uaM9pAY1Rg==
+X-Received: by 2002:a9d:3b36:: with SMTP id z51mr2585846otb.343.1589971903571; 
+ Wed, 20 May 2020 03:51:43 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id g90sm45950otg.75.2020.05.20.03.51.18
+ by smtp.gmail.com with ESMTPSA id u75sm110015oie.54.2020.05.20.03.51.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 20 May 2020 03:51:25 -0700 (PDT)
-Subject: Re: [PATCH v2 3/4] clk / soc: mediatek: Bind clock and gpu driver for
- mt2701
-To: Stephen Boyd <sboyd@kernel.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>, ck.hu@mediatek.com,
- mark.rutland@arm.com, ulrich.hecht+renesas@gmail.com
+ Wed, 20 May 2020 03:51:42 -0700 (PDT)
+Subject: Re: [PATCH v2 1/4] soc: mediatek: Enable mmsys driver by default if
+ Mediatek arch is selected
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ mark.rutland@arm.com, ck.hu@mediatek.com, sboyd@kernel.org,
+ ulrich.hecht+renesas@gmail.com
 References: <20200401201736.2980433-1-enric.balletbo@collabora.com>
- <20200401201736.2980433-3-enric.balletbo@collabora.com>
- <158996963892.215346.7498020261398211458@swboyd.mtv.corp.google.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -155,16 +153,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <11ad0061-f0b3-a0ed-a216-f77eb45bcda1@gmail.com>
-Date: Wed, 20 May 2020 12:51:17 +0200
+Message-ID: <1432dfb1-19c9-8c81-34a1-7b76077da46a@gmail.com>
+Date: Wed, 20 May 2020 12:51:38 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <158996963892.215346.7498020261398211458@swboyd.mtv.corp.google.com>
+In-Reply-To: <20200401201736.2980433-1-enric.balletbo@collabora.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200520_035127_787672_6A41DE28 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20200520_035144_975082_9176D2B2 
+X-CRM114-Status: GOOD (  20.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -176,13 +174,9 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Kate Stewart <kstewart@linuxfoundation.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, drinkcat@chromium.org,
- Michael Turquette <mturquette@baylibre.com>, matthias.bgg@kernel.org,
- linux-kernel@vger.kernel.org, Richard Fontana <rfontana@redhat.com>,
- Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org,
- Allison Randal <allison@lohutok.net>, hsinyi@chromium.org,
- Thomas Gleixner <tglx@linutronix.de>,
+Cc: drinkcat@chromium.org, matthias.bgg@kernel.org,
+ linux-kernel@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>,
+ linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
  Collabora Kernel ML <kernel@collabora.com>, linux-clk@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
@@ -192,23 +186,43 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 20/05/2020 12:13, Stephen Boyd wrote:
-> Quoting Enric Balletbo i Serra (2020-04-01 13:17:35)
->> Now that the mmsys driver is the top-level entry point for the
->> multimedia subsystem, we could bind the clock and the gpu driver on
->> those devices that is expected to work, so the drm driver is
->> intantiated by the mmsys driver and display, hopefully, working again.
->>
->> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
->> ---
+On 01/04/2020 22:17, Enric Balletbo i Serra wrote:
+> The mmsys driver supports only MT8173 device for now, but like other system
+> controllers is an important piece for other Mediatek devices. Actually
+> it depends on the mt8173 clock specific driver but that dependency is
+> not real as it can build without the clock driver. Instead of depends on
+> a specific model, make the driver depends on the generic ARCH_MEDIATEK and
+> enable by default so other Mediatek devices can start using it without
+> flood the Kconfig.
 > 
-> Acked-by: Stephen Boyd <sboyd@kernel.org>
-> 
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> ---
 
 Now queued for v5.7-next/soc
 
 Thanks!
+
+> 
+> Changes in v2: None
+> 
+>  drivers/soc/mediatek/Kconfig | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+> index e84513318725..59a56cd790ec 100644
+> --- a/drivers/soc/mediatek/Kconfig
+> +++ b/drivers/soc/mediatek/Kconfig
+> @@ -46,8 +46,7 @@ config MTK_SCPSYS
+>  
+>  config MTK_MMSYS
+>  	bool "MediaTek MMSYS Support"
+> -	depends on COMMON_CLK_MT8173_MMSYS
+> -	default COMMON_CLK_MT8173_MMSYS
+> +	default ARCH_MEDIATEK
+>  	help
+>  	  Say yes here to add support for the MediaTek Multimedia
+>  	  Subsystem (MMSYS).
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
