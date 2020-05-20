@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E4B15C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 12:10:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 24ADBC433E1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 12:12:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B9B8920758
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 12:10:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E36D4207D4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 12:12:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AKqbZpSt";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="w+/y6zSL"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B9B8920758
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hAn6maS8";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="TT0I6I7K"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E36D4207D4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,72 +26,72 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
 	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=E8Ba2mEXDJBXHQnOrik+BN92EQ7XpqTL7QQKeuCeuMw=; b=AKqbZpStLMQ48O
-	l+3B3VskeZH3reSMvuWbpZn/anSPc0z2n38n86Fex/fnmRxLt6/iuWAnwXwbTK5OETvFlNu6aGKvp
-	rokhiQAjxcF8PeCuIiByQL2axnazO7BurLzZ0KMfT8jZw/51I9EWVGUjJ06imSPIpGihkmeGTAQGW
-	P/zaexAdSYvUo0X2URdMhLRNEPoFfXUlS/eVZPEIn6vHOtdXU6GhLGBUblasjrDa3j5oRdeYZQwZT
-	IDxq+cyyO2tFztXh1rjYxE5lOVw0DDsyFwv350/TD+aNUEjzQGiWOVHP62qdxGSKhauLJ24BqqYV5
-	cBbe2IVQNeeI8C7SzFWQ==;
+	List-Owner; bh=ZJe6ycb6A1AM/um8vOGj0IzbqBHzjJf+abHRVo4JsaI=; b=hAn6maS8/oecJh
+	l+1yO4uha9785S73Qeuq0JpMDB2p1AJZsB+55q5sIrXjSdDzCFOLIr28Pb7lNT8X3yNH5dELiYylQ
+	I+SyVaRwi1FIr6Ub8zthfijOKuztTqBjmHm/dCgbG9fRP143IPdr0YrVIFmPFauRK+jzxv4wxC2C6
+	wbYJSviEyNAeeQHKIDxbw+7ll+XWUlLl1LpAAjZs8Tw3KOtMkB9YTnHSaoucDoJ2KhAMH+i/aNa9z
+	TRgbql1Fg0IO+rx0oZTqkdMfAs+2gfZxr/bVZ+VnlgOeVKl2TGOq3OGjrcOqGQiC2CgqtMHE2VVEB
+	qK8mrEbWD2Ou1n1zbQ9Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbNYT-0001N8-0M; Wed, 20 May 2020 12:10:37 +0000
+	id 1jbNZj-0001w8-QR; Wed, 20 May 2020 12:11:55 +0000
 Received: from userp2120.oracle.com ([156.151.31.85])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbNYQ-0001Mi-5M
- for linux-mediatek@lists.infradead.org; Wed, 20 May 2020 12:10:35 +0000
+ id 1jbNZW-0001ii-8I
+ for linux-mediatek@lists.infradead.org; Wed, 20 May 2020 12:11:43 +0000
 Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04KC7Qr2191920;
- Wed, 20 May 2020 12:10:33 GMT
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04KC7VE0191979;
+ Wed, 20 May 2020 12:11:41 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=date : from : to : cc
  : subject : message-id : mime-version : content-type; s=corp-2020-01-29;
- bh=irXy5qR4OqDLQFwI1T4hA3X4qeNb8B2ztZ5Le3JbTRg=;
- b=w+/y6zSLgHc/ranXjBAkzKFcV/xGO4BzuFZ+eGYi3OzoFc7PxVitHKtiRJ1euHzIcvpu
- hAA+u86bT4Jq7sfiWXADQaaLuyTV9ptCeB8HmbSa3egDMpHDkJTXCMTRFTjyOsYdOWoh
- rXrguINwI39YwZ4kRo2gEURQ0TmSTLtIDpoc64p/lUC+pgMScnntlo2j+wYFfjFJFcCg
- kJwmdE2gnf+dbGNRgsMAjyDP6pFzKR9HV4uQfoUu7FqNUpGlI1Wf3OM7XAPO0udr5/SH
- t2fAGKdK/RAIk0xCkOBKFCXXPQCDBdH/AyDN2oMMMKg4MdBNZVL6/QNGpredxpoIUTa2 HA== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2120.oracle.com with ESMTP id 31501r98a6-1
+ bh=Sxm3BevQoxnZLIyVzRYA3qn4bXDWkSjkHWdHjyCXzB8=;
+ b=TT0I6I7KyYPKgLGKvtqwfnaI5gA8BTO9BkOD9W9F/HJeDdosr+pAPneWm4Arh6im0gry
+ 2QSu6rNlP9VPhxXQk9sHmRG3FzjmPIEjyKKXtqrLRlUWY5tTV43OLmotpxvfahOk2MMB
+ 9qmZkm+BdmUQj4T7B2i2OU3JLeDvBXor+/EsJ9wlIjhj6IWhTq0xiH9rQ9G0HjAI6Awo
+ ivXRaY9/TKGlNTK1AUdt71f4nJz4wju35xccul+ncmPnlHrQ5BE9QqXTdVXFe53cuvk7
+ GiaJDoA+a1+Fxn4QxBaFZp+1NS1nfVeTSqw7WPdbTLZY9T0/Aq/dTNn5k61S0dnE9418 +Q== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2120.oracle.com with ESMTP id 31501r98gr-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 20 May 2020 12:10:33 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04KC8Sid161806;
- Wed, 20 May 2020 12:08:33 GMT
+ Wed, 20 May 2020 12:11:41 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04KC9BNF125260;
+ Wed, 20 May 2020 12:09:41 GMT
 Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3030.oracle.com with ESMTP id 314gm6yd7c-1
+ by userp3020.oracle.com with ESMTP id 315020669j-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 20 May 2020 12:08:32 +0000
-Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 04KC8Vkx007064;
- Wed, 20 May 2020 12:08:32 GMT
+ Wed, 20 May 2020 12:09:41 +0000
+Received: from abhmp0010.oracle.com (abhmp0010.oracle.com [141.146.116.16])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 04KC9elu007528;
+ Wed, 20 May 2020 12:09:40 GMT
 Received: from mwanda (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 20 May 2020 05:08:31 -0700
-Date: Wed, 20 May 2020 15:08:26 +0300
+ with ESMTP ; Wed, 20 May 2020 05:09:39 -0700
+Date: Wed, 20 May 2020 15:09:33 +0300
 From: Dan Carpenter <dan.carpenter@oracle.com>
 To: ryder.lee@mediatek.com
-Subject: [bug report] mt76: add mac80211 driver for MT7915 PCIe-based chipsets
-Message-ID: <20200520120826.GJ172354@mwanda>
+Subject: [bug report] mt76: mt7915: fix possible deadlock in mt7915_stop
+Message-ID: <20200520120845.GK172354@mwanda>
 MIME-Version: 1.0
 Content-Disposition: inline
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9626
  signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- mlxlogscore=951
- adultscore=0 phishscore=0 mlxscore=0 spamscore=0 suspectscore=3
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2005200106
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ mlxscore=0 mlxlogscore=738
+ adultscore=0 bulkscore=0 suspectscore=3 phishscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
+ definitions=main-2005200106
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9626
  signatures=668686
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
  lowpriorityscore=0 spamscore=0
- mlxlogscore=972 clxscore=1015 priorityscore=1501 cotscore=-2147483648
+ mlxlogscore=759 clxscore=1015 priorityscore=1501 cotscore=-2147483648
  impostorscore=0 bulkscore=0 adultscore=0 malwarescore=0 phishscore=0
  mlxscore=0 suspectscore=3 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2004280000 definitions=main-2005200106
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200520_051034_334638_233529C8 
-X-CRM114-Status: UNSURE (   8.85  )
+X-CRM114-CacheID: sfid-20200520_051142_424037_EEE2339A 
+X-CRM114-Status: UNSURE (   8.75  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -113,40 +113,45 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hello Ryder Lee,
 
-The patch e57b7901469f: "mt76: add mac80211 driver for MT7915
-PCIe-based chipsets" from Apr 25, 2020, leads to the following static
-checker warning:
+The patch 57b9df6fa5f5: "mt76: mt7915: fix possible deadlock in
+mt7915_stop" from May 12, 2020, leads to the following static checker
+warning:
 
-	drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:1576 mt7915_mcu_add_smps()
-	error: 'wtbl_hdr' dereferencing possible ERR_PTR()
+    drivers/net/wireless/mediatek/mt76/mt7915/init.c:595 mt7915_register_ext_phy()
+    error: we previously assumed 'phy' could be null (see line 592)
 
-drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-  1558  int mt7915_mcu_add_smps(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-  1559                          struct ieee80211_sta *sta)
-  1560  {
-  1561          struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
-  1562          struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
-  1563          struct wtbl_req_hdr *wtbl_hdr;
-  1564          struct tlv *sta_wtbl;
-  1565          struct sk_buff *skb;
-  1566  
-  1567          skb = mt7915_mcu_alloc_sta_req(dev, mvif, msta,
-  1568                                         MT7915_STA_UPDATE_MAX_SIZE);
-  1569          if (IS_ERR(skb))
-  1570                  return PTR_ERR(skb);
-  1571  
-  1572          sta_wtbl = mt7915_mcu_add_tlv(skb, STA_REC_WTBL, sizeof(struct tlv));
-  1573  
-  1574          wtbl_hdr = mt7915_mcu_alloc_wtbl_req(dev, msta, WTBL_SET, sta_wtbl,
-                ^^^^^^^^
-No error handling.
+    drivers/net/wireless/mediatek/mt76/mt7615/init.c:371 mt7615_register_ext_phy()
+    error: we previously assumed 'phy' could be null (see line 368)
 
-  1575                                               &skb);
-  1576          mt7915_mcu_wtbl_smps_tlv(skb, sta, sta_wtbl, wtbl_hdr);
-  1577  
-  1578          return __mt76_mcu_skb_send_msg(&dev->mt76, skb,
-  1579                                         MCU_EXT_CMD_STA_REC_UPDATE, true);
-  1580  }
+drivers/net/wireless/mediatek/mt76/mt7915/init.c
+   589          if (test_bit(MT76_STATE_RUNNING, &dev->mphy.state))
+   590                  return -EINVAL;
+   591  
+   592          if (phy)
+                    ^^^
+   593                  return 0;
+   594  
+   595          INIT_DELAYED_WORK(&phy->mac_work, mt7915_mac_work);
+                                  ^^^^^^^^^^^^^^
+This will Oops.
+
+   596          mt7915_cap_dbdc_enable(dev);
+   597          mphy = mt76_alloc_phy(&dev->mt76, sizeof(*phy), &mt7915_ops);
+   598          if (!mphy)
+   599                  return -ENOMEM;
+   600  
+   601          phy = mphy->priv;
+                ^^^^^^^^^^^^^^^^
+phy is set here again.
+
+   602          phy->dev = dev;
+   603          phy->mt76 = mphy;
+   604          phy->chainmask = dev->chainmask & ~dev->phy.chainmask;
+   605          mphy->antenna_mask = BIT(hweight8(phy->chainmask)) - 1;
+   606          mt7915_init_wiphy(mphy->hw);
+
+See also:
+drivers/net/wireless/mediatek/mt76/mt7615/init.c:371 mt7615_register_ext_phy() error: we previously assumed 'phy' could be null (see line 368)
 
 regards,
 dan carpenter
