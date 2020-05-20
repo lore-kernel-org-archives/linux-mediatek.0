@@ -2,22 +2,22 @@ Return-Path: <SRS0=i2Ig=7C=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 85ED4C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 12:06:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E1A8BC433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 12:09:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 361BA20758
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 12:06:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B6B2020758
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 12:09:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DIB9QUzO";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="lUuK5vDV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 361BA20758
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GpGmagek";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="JDiPGMla"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B6B2020758
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,73 +26,73 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
 	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=m8hRzdt6Q1UK8UAYwvE6OLib6wYLOxwkVgW136prAL8=; b=DIB9QUzO81swDT
-	ANHiwdv2XpyJkU7Fc75sqaMluPtQJYRoS2HmBqMtnGhXvgqmuUNXfBwJ1w290xcryaQUK7BNlWdG3
-	GUR6xZF3FBLrpf2P1L2HpMvyQnKUXyO8ZDADFP3+eJE8ezS3LBcLafk2as6WR5FuZIhz0x/3mrK3E
-	Qc3JTwbew1aZoDhf+3rviVx2zAeQS7bM15Kn+rX7PAQzfmqcTOHvpcg3AzoXXclPkBmEuJraDPPtk
-	HwXYoujypbXtbrITV3+hsRA+VnH6dnaskzOVZU1eb15qeEUlFW0kcEDDsw867HYydlTbKpkgdKYfP
-	qpgLyNMTijVPIms/AZPQ==;
+	List-Owner; bh=FR5I16acy4VbCt5RIV2J63QK766FzfFGOinPKfUQDMk=; b=GpGmagekBbJkTh
+	+X2KgwX6xCxzhXLYHn1uq7p/+ooFMgWEu3LcdjB5bDnjarybMOLQeE+XlNQ+ygAYb0nkzBIe0AO25
+	s1n9Jr+Yq0YHt5rcVlEINvzt3MGXGkADhqIWnMIoWNih25TBiz549LuZ8oY2x10EgH1ewQIrL8qU1
+	GaMWU7H5w822DOmP2Vc5Ib5tVqof/QHtxq4A8x4hFMO71FIA7MTz4bBGRaWYE1KFrNmUrRiODmIjS
+	UFoZlpof7bBf5WAh3kLjeuhfCQgQnc7K/YPsRRXihKHRSZJJ2JRYpF31sVH+Tfce0eTZ8ex4fYslf
+	el75P302oP+NfpBKLY6g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbNUB-0006Yq-Gq; Wed, 20 May 2020 12:06:11 +0000
-Received: from userp2130.oracle.com ([156.151.31.86])
+	id 1jbNXA-00071S-TC; Wed, 20 May 2020 12:09:16 +0000
+Received: from aserp2120.oracle.com ([141.146.126.78])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbNU8-0006X0-EQ
- for linux-mediatek@lists.infradead.org; Wed, 20 May 2020 12:06:09 +0000
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04KC3F3Z151918;
- Wed, 20 May 2020 12:06:02 GMT
+ id 1jbNX7-00070a-Pl
+ for linux-mediatek@lists.infradead.org; Wed, 20 May 2020 12:09:15 +0000
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04KC8SMR120219;
+ Wed, 20 May 2020 12:09:13 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=date : from : to : cc
  : subject : message-id : mime-version : content-type; s=corp-2020-01-29;
- bh=yZ4iTAxcmb9BmNsSUTH20REYWMTGdIsUfcYaP4mTS5s=;
- b=lUuK5vDVMpXEslMAplMqdkjdsg53Rx8Tp/ZKb1YyZ3oxf7SLLoPEyH+3SH3rXIs3WUxo
- dSHNYTZx+ctplo6INqf0bvA/SUOtp8NUQRZX18TBN4zd13ykkwUQtWYZxwpctwxx4JHU
- 6+zxDoXbGnbfB7xe8swPq3oNx4JN1WfsXOCka6XX03eK9n0UrWYJi8c/ATYgCY+Rjrfd
- iOIOk75Vy293QvjjJitlNmSU6CK2gTWZgXm16WwFNj8ys5gCoKASrvsgLHR/7VGEfcu1
- ArcjgExsS6wZv2uk2r1xdXLdcilUYp3xjToXj4l1SetSuJJ+c+zH8i21ZvFgFg6HO8wH Dg== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2130.oracle.com with ESMTP id 3127kraqp0-1
+ bh=KVoMHFSe7TOQiFQ+wI6NI/ZmHeDHo8k+OZvvPj/vpCY=;
+ b=JDiPGMlaWOlXk0If30I9s2nvxe1wWZlobXEt+fhRf24cZf4TnwUk5eslpKSdHNJphVkk
+ cHaYsUvMwJMdmrc5wVLIyXRIy8QNzWk+iSuTw8hIipAjIpISpxaSpyxDyyn9gnpF/95E
+ Pm5BoVZE4GHNJ5YUSD/sPGdGssWbgNzSgqlIefklQCnQXsWtwcrLhEI7hphPbUIlE3Ou
+ 2D2oHG5t9Vr2gFiiBEMHERqMyssCPSubygJmeC8qxaf2Wqczh8Wu91jdHtXPYJ0x/2tq
+ u977FTuUcBwof6lPR+Ie3QPf3J0ZCe/y5YPeAuhHaDJMDRtr0Nhwp8cpexq4J3f0Pc93 uQ== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by aserp2120.oracle.com with ESMTP id 31284m2q8j-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 20 May 2020 12:06:02 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04KC397m104555;
- Wed, 20 May 2020 12:06:02 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3020.oracle.com with ESMTP id 3150205y6p-1
+ Wed, 20 May 2020 12:09:13 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04KC99wr107096;
+ Wed, 20 May 2020 12:09:12 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by aserp3020.oracle.com with ESMTP id 312t37f5tq-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 20 May 2020 12:06:01 +0000
-Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 04KC5xVd016623;
- Wed, 20 May 2020 12:05:59 GMT
+ Wed, 20 May 2020 12:09:12 +0000
+Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 04KC90AU007292;
+ Wed, 20 May 2020 12:09:00 GMT
 Received: from mwanda (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 20 May 2020 05:05:59 -0700
-Date: Wed, 20 May 2020 15:05:51 +0300
+ with ESMTP ; Wed, 20 May 2020 05:09:00 -0700
+Date: Wed, 20 May 2020 15:08:54 +0300
 From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH] mt76: mt7915: fix locking bug in mt7915_sta_rc_update()
-Message-ID: <20200520120551.GG172354@mwanda>
+To: ryder.lee@mediatek.com
+Subject: [bug report] mt76: adjust wcid size to support new 802.11ax generation
+Message-ID: <20200520120854.GA161324@mwanda>
 MIME-Version: 1.0
 Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9626
  signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- mlxscore=0 mlxlogscore=999
- adultscore=0 bulkscore=0 suspectscore=0 phishscore=0 malwarescore=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ spamscore=0 mlxlogscore=999
+ phishscore=0 mlxscore=0 malwarescore=0 suspectscore=3 adultscore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2005200105
+ definitions=main-2005200106
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9626
  signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- phishscore=0 spamscore=0
- bulkscore=0 clxscore=1011 priorityscore=1501 mlxscore=0 impostorscore=0
- suspectscore=0 mlxlogscore=999 malwarescore=0 cotscore=-2147483648
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2005200105
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=3
+ mlxscore=0
+ cotscore=-2147483648 impostorscore=0 malwarescore=0 mlxlogscore=999
+ lowpriorityscore=0 phishscore=0 spamscore=0 bulkscore=0 adultscore=0
+ priorityscore=1501 clxscore=1015 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2004280000 definitions=main-2005200106
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200520_050608_566502_4FA486DD 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20200520_050913_922200_09DE3AA7 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,42 +104,156 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-wireless@vger.kernel.org,
- YF Luo <yf.luo@mediatek.com>, Chih-Min Chen <chih-min.chen@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Yiwei Chung <yiwei.chung@mediatek.com>, linux-mediatek@lists.infradead.org,
- Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
- Jakub Kicinski <kuba@kernel.org>, Kalle Valo <kvalo@codeaurora.org>,
- Shayne Chen <shayne.chen@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>,
+ linux-wireless@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This function calls rcu_read_lock() twice instead of unlocking.
+Hello Ryder Lee,
 
-Fixes: e57b7901469f ("mt76: add mac80211 driver for MT7915 PCIe-based chipsets")
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
----
- drivers/net/wireless/mediatek/mt76/mt7915/main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+The patch 49e649c3e0a6: "mt76: adjust wcid size to support new
+802.11ax generation" from Apr 25, 2020, leads to the following static
+checker warning:
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index 98567374c2c9..3f00f5439c7c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -790,7 +790,7 @@ mt7915_sta_rc_update(struct ieee80211_hw *hw,
- 		rcu_read_unlock();
- 		return;
- 	}
--	rcu_read_lock();
-+	rcu_read_unlock();
- 
- 	set_bit(changed, &msta->stats.changed);
- 	ieee80211_queue_work(hw, &msta->stats_work);
--- 
-2.26.2
+    drivers/net/wireless/mediatek/mt76/mt76x02.h:249 mt76x02_rx_get_sta()
+    warn: impossible condition '(idx >= (2304 / 8 + (0))) => (0-255 >= 288)'
 
+    drivers/net/wireless/mediatek/mt76/mt7603/mac.c:476 mt7603_rx_get_wcid()
+    warn: impossible condition '(idx >= (2304 / 8 + (0))) => (0-255 >= 288)'
+
+    drivers/net/wireless/mediatek/mt76/mt7603/mac.c:1241 mt7603_mac_add_txs()
+    warn: impossible condition '(wcidx >= (2304 / 8 + (0))) => (0-255 >= 288)'
+
+    drivers/net/wireless/mediatek/mt76/mt7615/mac.c:64 mt7615_rx_get_wcid()
+    warn: impossible condition '(idx >= (2304 / 8 + (0))) => (0-255 >= 288)'
+
+    drivers/net/wireless/mediatek/mt76/mt7615/mac.c:1305 mt7615_mac_add_txs()
+    warn: impossible condition '(wcidx >= (2304 / 8 + (0))) => (0-255 >= 288)'
+
+    drivers/net/wireless/mediatek/mt76/mt76x02_mac.c:564 mt76x02_send_tx_status()
+    warn: always true condition '(stat->wcid < (2304 / 8 + (0))) => (0-255 < 288)'
+
+vers/net/wireless/mediatek/mt76/mt76x02.h
+   244  static inline struct mt76x02_sta *
+   245  mt76x02_rx_get_sta(struct mt76_dev *dev, u8 idx)
+   246  {
+   247          struct mt76_wcid *wcid;
+   248  
+   249          if (idx >= ARRAY_SIZE(dev->wcid))
+
+The dev->wcid[] array used to have 128 elements but now it has 288 so
+a u8 idx isn't large enough.
+
+   250                  return NULL;
+   251  
+   252          wcid = rcu_dereference(dev->wcid[idx]);
+   253          if (!wcid)
+   254                  return NULL;
+   255  
+   256          return container_of(wcid, struct mt76x02_sta, wcid);
+   257  }
+...
+   470  static struct mt76_wcid *
+   471  mt7603_rx_get_wcid(struct mt7603_dev *dev, u8 idx, bool unicast)
+   472  {
+   473          struct mt7603_sta *sta;
+   474          struct mt76_wcid *wcid;
+   475  
+   476          if (idx >= ARRAY_SIZE(dev->mt76.wcid))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Same.
+
+   477                  return NULL;
+   478  
+   479          wcid = rcu_dereference(dev->mt76.wcid[idx]);
+   480          if (unicast || !wcid)
+   481                  return wcid;
+   482  
+   483          if (!wcid->sta)
+   484                  return NULL;
+   485  
+   486          sta = container_of(wcid, struct mt7603_sta, wcid);
+   487          if (!sta->vif)
+   488                  return NULL;
+   489  
+   490          return &sta->vif->sta.wcid;
+   491  }
+...
+  1236          wcidx = FIELD_GET(MT_TXS3_WCID, txs);
+                                  ^^^^^^^^^^^^
+This is bits 24-31 so it may need to be adjusted.
+
+  1237  
+  1238          if (pid == MT_PACKET_ID_NO_ACK)
+  1239                  return;
+  1240  
+  1241          if (wcidx >= ARRAY_SIZE(dev->mt76.wcid))
+                    ^^^^^
+u8 type.
+
+  1242                  return;
+  1243  
+  1244          rcu_read_lock();
+
+drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+    58  static struct mt76_wcid *mt7615_rx_get_wcid(struct mt7615_dev *dev,
+    59                                              u8 idx, bool unicast)
+    60  {
+    61          struct mt7615_sta *sta;
+    62          struct mt76_wcid *wcid;
+    63  
+    64          if (idx >= ARRAY_SIZE(dev->mt76.wcid))
+                    ^^^
+It's the same thing.  The type and the mask used (MT_RXD2_NORMAL_WLAN_IDX)
+make this condition impossible.
+
+    65                  return NULL;
+    66  
+
+See drivers/net/wireless/mediatek/mt76/mt7615/mac.c:1305 mt7615_mac_add_txs() warn: impossible condition '(wcidx >= (2304 / 8 + (0))) => (0-255 >= 288)'
+
+drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
+   551          struct mt76x02_sta *msta = NULL;
+   552          struct mt76_dev *mdev = &dev->mt76;
+   553          struct sk_buff_head list;
+   554          u32 duration = 0;
+   555          u8 cur_pktid;
+   556          u32 ac = 0;
+   557          int len = 0;
+   558  
+   559          if (stat->pktid == MT_PACKET_ID_NO_ACK)
+   560                  return;
+   561  
+   562          rcu_read_lock();
+   563  
+   564          if (stat->wcid < ARRAY_SIZE(dev->mt76.wcid))
+                    ^^^^^^^^^^
+This is a u8 as well.
+
+   565                  wcid = rcu_dereference(dev->mt76.wcid[stat->wcid]);
+   566  
+   567          if (wcid && wcid->sta) {
+   568                  void *priv;
+   569  
+   570                  priv = msta = container_of(wcid, struct mt76x02_sta, wcid);
+   571                  status.sta = container_of(priv, struct ieee80211_sta,
+   572                                            drv_priv);
+   573          }
+...
+   796  
+   797          wcid = FIELD_GET(MT_RXWI_CTL_WCID, ctl);
+                ^^^^             ^^^^^^^^^^^^^^^^
+Here "wcid" is a u8 and MT_RXWI_CTL_WCID is bits 0-7 so both of these
+may need to be adjusted.
+
+   798          sta = mt76x02_rx_get_sta(&dev->mt76, wcid);
+   799          status->wcid = mt76x02_rx_get_sta_wcid(sta, unicast);
+   800  
+
+regards,
+dan carpenter
 
 _______________________________________________
 Linux-mediatek mailing list
