@@ -2,75 +2,57 @@ Return-Path: <SRS0=i2Ig=7C=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E5EDFC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 12:50:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A7BAC433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 13:29:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A00492070A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 12:50:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3951B20748
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 13:29:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s5RhyvTx";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="hwtd7E49"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A00492070A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gKeN3X5b"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3951B20748
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=the-dreams.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=zGnBgnYgtPuyxt1+UtAGBPV7WGyGNsGBDC34dzI4dQ8=; b=s5RhyvTx1xoH5Q
-	ELhNJxJ08XEnhuSLHIam7maaDjrwk/enPJUmaeEwgSbYkUSY1cJzIQYfHvczRxqZfNmBrzQHBuGAt
-	02gdSeIlCbZKPLVrEnr3MKeOYGG8S9HoAJA6nxzhii8Wih1JE0FXHrVErXV/BeCaqzXgOxPBOreEo
-	zqfXnXVaO4SNI06edg+YbHRuw4h0E5xZ1ZnhCFlSP2dGvZW/fFLSVrJ6enmKqzy3LHTA+3RhnfRon
-	hehOyliwmmF1hyxRfiPKzv0XxTfUxc3P0gNsWp2Z82sZmA1qnEB3KBKwpQRxKakj9057O1b2uThzJ
-	eYRoTQhrLwFHVNcb30bQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=uxeyD5Qi3VUvHjr0KC2yasgoIkQ65jeD75R6YC7QC2M=; b=gKeN3X5bJTJ73q5s7VotnpIjB
+	d+9Sfai/rcGd/R3gAdXi608MDNm1gE3G6H1morB0uJWLQHmQ9JXXl8teZa67D1NWc6W+r4RM3AgXw
+	bx5bV+2nYXn+reHZ9t3jVkiVqJpPeGD9fYPaFU7srbx9diMLfplTYflrCZdnrxOWb7OYBEWdN96nQ
+	KIyiM3dIZ4FtqP/ZWDZTOjwpCQ4oPINB8QGHoTnESy7YWg0cKHwE+jcD8TgxzzPHB2vnn7moryGMz
+	CHsuNu6hpCQ4wRzsbcHfzuspUY5BCvApqwBRCSGcBAIrkYAY+1xjNi4pMxaax9Z8wKGZMWblOXnCo
+	Mlei+lgyg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbOAx-0003Ms-Vx; Wed, 20 May 2020 12:50:24 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbO8n-0007hs-2H; Wed, 20 May 2020 12:48:31 +0000
-X-UUID: a8bb79da574e4cc1b584d4df2b37af48-20200520
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=DbdlJu8vuZUyyQAeAhd6YD50kjTkWp9bEKvDh4VAu5A=; 
- b=hwtd7E49qjyaQZ1xwNX/EPiogC+TOQ0cerQ//A/k5Cwg0kyIYQFTftKM5AbfA+55Nkt4iVL79T1xiFKu9hzwO9hH+UH7iZS5B503FiB4DeDPBeZl3ZCRZzMJpwFPuWEIIv3jkGpYyB1xMzOeRKJ2+HRcq0IsJx4r8i4iQTYYo24=;
-X-UUID: a8bb79da574e4cc1b584d4df2b37af48-20200520
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <walter-zh.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1410901991; Wed, 20 May 2020 04:48:06 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 May 2020 05:38:05 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 May 2020 20:38:03 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 20 May 2020 20:38:02 +0800
-From: Walter Wu <walter-zh.wu@mediatek.com>
-To: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko
- <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger
- <matthias.bgg@gmail.com>
-Subject: [PATCH v5 3/4] kasan: add tests for call_rcu stack recording
-Date: Wed, 20 May 2020 20:37:45 +0800
-Message-ID: <20200520123745.4024-1-walter-zh.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1jbOmw-0002Vk-O5; Wed, 20 May 2020 13:29:38 +0000
+Received: from sauhun.de ([88.99.104.3] helo=pokefinder.org)
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jbOmo-0002Pb-CN; Wed, 20 May 2020 13:29:32 +0000
+Received: from localhost (p5486cd24.dip0.t-ipconnect.de [84.134.205.36])
+ by pokefinder.org (Postfix) with ESMTPSA id 98CC72C1FD1;
+ Wed, 20 May 2020 15:29:13 +0200 (CEST)
+Date: Wed, 20 May 2020 15:29:13 +0200
+From: Wolfram Sang <wsa@the-dreams.de>
+To: qii.wang@mediatek.com
+Subject: Re: [next] i2c: mediatek: Use div_u64 for 64-bit division to fix
+ 32-bit kernels
+Message-ID: <20200520132913.GB5759@ninjato>
+References: <1589970713-19944-1-git-send-email-qii.wang@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <1589970713-19944-1-git-send-email-qii.wang@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200520_054809_164637_8065C26B 
-X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-CacheID: sfid-20200520_062930_571338_7D796742 
+X-CRM114-Status: UNSURE (   7.15  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -83,78 +65,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Walter Wu <walter-zh.wu@mediatek.com>,
- wsd_upstream <wsd_upstream@mediatek.com>, linux-kernel@vger.kernel.org,
- kasan-dev@googlegroups.com, linux-mm@kvack.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ leilk.liu@mediatek.com, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============2703720941032650607=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Test call_rcu() call stack recording and verify whether it correctly
-is printed in KASAN report.
 
-Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
-Cc: Dmitry Vyukov <dvyukov@google.com>
-Cc: Alexander Potapenko <glider@google.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
----
- lib/test_kasan.c | 30 ++++++++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+--===============2703720941032650607==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="ZoaI/ZTpAVc4A5k6"
+Content-Disposition: inline
 
-diff --git a/lib/test_kasan.c b/lib/test_kasan.c
-index e3087d90e00d..6e5fb05d42d8 100644
---- a/lib/test_kasan.c
-+++ b/lib/test_kasan.c
-@@ -792,6 +792,35 @@ static noinline void __init vmalloc_oob(void)
- static void __init vmalloc_oob(void) {}
- #endif
- 
-+static struct kasan_rcu_info {
-+	int i;
-+	struct rcu_head rcu;
-+} *global_ptr;
-+
-+static noinline void __init kasan_rcu_reclaim(struct rcu_head *rp)
-+{
-+	struct kasan_rcu_info *fp = container_of(rp,
-+						struct kasan_rcu_info, rcu);
-+
-+	kfree(fp);
-+	fp->i = 1;
-+}
-+
-+static noinline void __init kasan_rcu_uaf(void)
-+{
-+	struct kasan_rcu_info *ptr;
-+
-+	pr_info("use-after-free in kasan_rcu_reclaim\n");
-+	ptr = kmalloc(sizeof(struct kasan_rcu_info), GFP_KERNEL);
-+	if (!ptr) {
-+		pr_err("Allocation failed\n");
-+		return;
-+	}
-+
-+	global_ptr = rcu_dereference_protected(ptr, NULL);
-+	call_rcu(&global_ptr->rcu, kasan_rcu_reclaim);
-+}
-+
- static int __init kmalloc_tests_init(void)
- {
- 	/*
-@@ -839,6 +868,7 @@ static int __init kmalloc_tests_init(void)
- 	kasan_bitops();
- 	kmalloc_double_kzfree();
- 	vmalloc_oob();
-+	kasan_rcu_uaf();
- 
- 	kasan_restore_multi_shot(multishot);
- 
--- 
-2.18.0
+
+--ZoaI/ZTpAVc4A5k6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, May 20, 2020 at 06:31:53PM +0800, qii.wang@mediatek.com wrote:
+> From: Qii Wang <qii.wang@mediatek.com>
+>=20
+> Use div_u64 for 64-bit division, and change sample_ns type to
+> unsigned int. Otherwise, the module will reference __udivdi3
+> under 32-bit kernels, which is not allowed in kernel space.
+>=20
+> Signed-off-by: Qii Wang <qii.wang@mediatek.com>
+
+Applied to for-next by squashing it into the relevant commit, thanks!
+
+
+--ZoaI/ZTpAVc4A5k6
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl7FMKkACgkQFA3kzBSg
+KbbynRAAmwCukXP9v4Fs9sjBIrxVil2vgnjXCEmpHgr7IZ37e9uoqxlUndj/oHhs
+YuDiSBGBVXU/ZYFP2VDsUdMRBa11pyoNALMiO0uIThiQ4gkn132Ej4DJ+s9o54cz
+nh74h8be69a0EmvvYY99oBfIFZ7ORRtvL5lIktHUaP9h4YvU1CC/neJ5o97q4bVU
+GBugpXgWfXEBApFPyXr3ShOaUyxnCJKYHAFyHShqoEtgIwXlyurDYG9yzkeI3d6w
+U5jKdhAp97EwNf+b1iLj/2EEOpE0G1wEWke8rTL1mjJMJRVCwUQqzeFzPORfGMK+
+YpphdJtvU6mvl2wjnybBcc4gb9WoQP7wRkb7lEdgW9kmlNIqPgzuds7F6ePHMNRD
+GxdMBnOiLFC6UnTih18N4gMnH9AwjX/1Hz4k8g9riHdF1+BGpcytZsosCXXE7n7C
+9rVPE/9HE9juuEWLBTqdonrOje8DOtOtOqX1b7DwEbHotanakMQY1C5xPbX6Wzr3
+QnKeVyuTbd0nUVkLgMCOJP/d9/1mJWWNvJSKdG/7zRyyz2nhOr4C8lJhLLH14Hub
+XKK5/K8qiufXzdhryt/EmiThF5WbhcRHQ4HH+irt9droO08MkBlZfnuW7NT0NPuY
+uk3OkrWasxCtb9udRSUrM6rGmfcueB//OzLR3xiq8GH/AykuwaM=
+=gKRd
+-----END PGP SIGNATURE-----
+
+--ZoaI/ZTpAVc4A5k6--
+
+
+--===============2703720941032650607==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============2703720941032650607==--
+
