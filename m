@@ -2,84 +2,169 @@ Return-Path: <SRS0=i2Ig=7C=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BC031C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 10:38:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 70DBBC433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 10:51:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C9AE207C4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 10:38:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 42E8A20849
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 10:51:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZbCfdSP9";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="Mc56S6dJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C9AE207C4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Cmo1lVOw";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="UPG4thKH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 42E8A20849
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xy9Veg4CQyvaNjAI7EFz6C1bfJNh0sGQceoz1fmP7rk=; b=ZbCfdSP9cX3QM0
-	L6GfXZFqiRGfvqRUKwk0NrK/kKOM4+cjYZUDqYQH0ilj2Dwock5C4FC5eMxFPW9WIxBfx7vQfH+fj
-	wTPKJn6W97qrQHTjAcU5MNM7SQ8lxIM9EVgJagoXMXAUTxAOy1+bf5nbf/Dx7M+MDSuFbEk6ewpkM
-	a7W+ANHiZqBLG2Wst3p6Nd/tc+xa2AvvTEdHb2+xbCyrMSEopH9+Gt/BINxTONdzVZ54+r5LSHE3e
-	7Frs2VCJGZNByBdQgtrTB1ubKZG7PogM/YRjlIt6z6KYFXC3Qcn4QgDjiBC+cpmrB+7pG5UZn8bL2
-	RAb503mec4myu8IHBHHw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/cZwg5kM14mNHsKZS5ul9OyqxB0VoRzRiHiwdfufy2U=; b=Cmo1lVOwKNlZfd
+	SjF5fAIKWkDpBX5qo3egOLPsh63c33L0z6ygUCzTCinbleXFjhcd+oNPqOFpm+iUOCGZxSeve9EUB
+	nLeKXH+23SNZCyYNw/P4nqwM8lRM06DcYOVipjs4YMc+VmM7E/4Q8v1BsaOX765SsgZ+qXtToMR44
+	G6o899ptLm9kqh+UnTOb14qz2I0Sebfm8fuKNNIh75yBN1ZJd+PF0IUVy4pMjV480RiVsyVPv3zBU
+	CFTL0Tm6aHZW6a64KIkl3PMyjmIfigEmW9MossJ+vqAMQNNytHGxcparkQn9x3D3VmWFm8mRD/gzE
+	5vkNaUrQvHgaJsqgKwaw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbM6j-0001bo-4Q; Wed, 20 May 2020 10:37:53 +0000
-Received: from fllv0016.ext.ti.com ([198.47.19.142])
+	id 1jbMJj-0003Vt-Cy; Wed, 20 May 2020 10:51:19 +0000
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbM6W-0001Rs-4e; Wed, 20 May 2020 10:37:42 +0000
-Received: from lelv0266.itg.ti.com ([10.180.67.225])
- by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 04KAbWLQ107478;
- Wed, 20 May 2020 05:37:32 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1589971052;
- bh=+KF9k6cB/JfAPmPQy9MafpFdMwFT47tOFEMgTwRcw9M=;
- h=Date:From:To:CC:Subject:References:In-Reply-To;
- b=Mc56S6dJwa52OQndl3nGDOF8ZS6pRdbj54zRKH0Qk1G1vNJkapaLZEUp1JxevQGmV
- RKngxvJDyRnBBS6bG5jWfjHen+AK0SKDiWGSL4ufV6lWPofk9t83hgyhWRYSzhm7JU
- pCV5jP/4zlTMk2N6hpgLtId95Q8gn6m0trDx3xRw=
-Received: from DLEE115.ent.ti.com (dlee115.ent.ti.com [157.170.170.26])
- by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 04KAbWc3060215
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 20 May 2020 05:37:32 -0500
-Received: from DLEE109.ent.ti.com (157.170.170.41) by DLEE115.ent.ti.com
- (157.170.170.26) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Wed, 20
- May 2020 05:37:31 -0500
-Received: from lelv0326.itg.ti.com (10.180.67.84) by DLEE109.ent.ti.com
- (157.170.170.41) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Wed, 20 May 2020 05:37:31 -0500
-Received: from localhost (ileax41-snat.itg.ti.com [10.172.224.153])
- by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 04KAbVvo036664;
- Wed, 20 May 2020 05:37:31 -0500
-Date: Wed, 20 May 2020 16:07:30 +0530
-From: Pratyush Yadav <p.yadav@ti.com>
-To: <masonccyang@mxic.com.tw>
-Subject: Re: [PATCH v5 09/19] mtd: spi-nor: sfdp: parse xSPI Profile 1.0 table
-Message-ID: <20200520103728.jtbslowdfrv3o5yz@ti.com>
-References: <20200519142642.24131-1-p.yadav@ti.com>
- <20200519142642.24131-10-p.yadav@ti.com>
- <OF83616464.480FA751-ON4825856E.002A4483-4825856E.002BE6AF@mxic.com.tw>
- <20200520085534.yra4f5ww5xs23c4j@ti.com>
- <OF98344913.4BF4C313-ON4825856E.0032A810-4825856E.00352141@mxic.com.tw>
+ id 1jbMJh-0003V7-34; Wed, 20 May 2020 10:51:18 +0000
+Received: by mail-oi1-x244.google.com with SMTP id l6so2498363oic.9;
+ Wed, 20 May 2020 03:51:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Lmmfbn4mr6A0h7hmwd/l0uk/axIob7xQ0gsYq9RKwYo=;
+ b=UPG4thKHcxjXahgGtsfBX30nxv+Ur7nvMNVZhrDgP/hKP2nE5OtDcVNXC5DsBEMBDd
+ JylqL6k2tmF0uNWoXLRAKTG0gJZEpjLDz8sX/fDCZ8cp8lhwdDE7ZNlqemjS8BA3DNkx
+ rZVI/UMjfmgnjeTLdxk0A/zO3ZcAlJiPDOiHHATWaN0jSGLV0jNpLav99elMDlbC+wAx
+ RNv/nlWBvM5k2jHwRM07h/NSM/2RGpH98KjXQIzlLDlldNCnlDTD+SZgJ7NZFJ3qM9J3
+ tiuXRfddG95S8AvHgYS17tgFnjMfhtEK3Jbq6AeunOd9ndE3NaCObDCFk91q/ilt8OQ6
+ E3QA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=Lmmfbn4mr6A0h7hmwd/l0uk/axIob7xQ0gsYq9RKwYo=;
+ b=OjecmyJHomQUNl+dSkkxpITTJAXjBPn/+GPsPbHohxURemNl4Vd0jULDRxNwo5HUGO
+ sQKdmxukil9XwE8DEG0HOAub5Gf8iGdwVLv6b9HH9CFUJkF+ztRkeOgUguyBPyHTVatJ
+ fstaDUqV6z2W7qcabJH9UblwW0y3gXW17WgT5jctFjSPOt/6+YkLf1YdbBpf8vdM0iWV
+ 4zczvn/IQ2CtIjroYm+baDaPDY0jAd69xrO5H8WPNpbyvEEbCJ/KYhLGWNVuVCyoZmBP
+ /XDhkhJjf1499dmLTaZnTnOv07GyZXOw2WW2y7DWWNErHfx7Cqex9wpB4bnIK5n7cpGl
+ s2/A==
+X-Gm-Message-State: AOAM532bTpJlclpDV/T+K1dnbSMNEBiU9QChCJNIkNvLnTChvKERpjwK
+ /QJZ7STBbj1XMOiQP2V0LrI=
+X-Google-Smtp-Source: ABdhPJzFlBY4grTJUCu25VM0gtQbIpQo+JhGRTrcttwJSXb2e0cw0aSlDvog3evuCWv4k3108nEQLw==
+X-Received: by 2002:aca:2b04:: with SMTP id i4mr2775589oik.39.1589971875510;
+ Wed, 20 May 2020 03:51:15 -0700 (PDT)
+Received: from ziggy.stardust ([213.195.113.243])
+ by smtp.gmail.com with ESMTPSA id p67sm692741oic.46.2020.05.20.03.51.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 20 May 2020 03:51:14 -0700 (PDT)
+Subject: Re: [PATCH v2 2/4] clk / soc: mediatek: Bind clock and gpu driver for
+ mt2712
+To: Stephen Boyd <sboyd@kernel.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>, ck.hu@mediatek.com,
+ mark.rutland@arm.com, ulrich.hecht+renesas@gmail.com
+References: <20200401201736.2980433-1-enric.balletbo@collabora.com>
+ <20200401201736.2980433-2-enric.balletbo@collabora.com>
+ <158996963088.215346.15782560941924531394@swboyd.mtv.corp.google.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <6ce1ac7b-2519-5a44-fa8c-0745cc1ed042@gmail.com>
+Date: Wed, 20 May 2020 12:51:09 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <OF98344913.4BF4C313-ON4825856E.0032A810-4825856E.00352141@mxic.com.tw>
-User-Agent: NeoMutt/20171215
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+In-Reply-To: <158996963088.215346.15782560941924531394@swboyd.mtv.corp.google.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200520_033740_282763_4563922F 
-X-CRM114-Status: GOOD (  33.71  )
+X-CRM114-CacheID: sfid-20200520_035117_149623_9C5D2D18 
+X-CRM114-Status: GOOD (  12.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,179 +176,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Vignesh Raghavendra <vigneshr@ti.com>,
- Tudor Ambarus <tudor.ambarus@microchip.com>, juliensu@mxic.com.tw,
- Richard Weinberger <richard@nod.at>, Mark Brown <broonie@kernel.org>,
- Nicolas Ferre <nicolas.ferre@microchip.com>, Sekhar Nori <nsekhar@ti.com>,
- linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- linux-mediatek@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org,
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, drinkcat@chromium.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Michael Turquette <mturquette@baylibre.com>, matthias.bgg@kernel.org,
+ linux-kernel@vger.kernel.org, Richard Fontana <rfontana@redhat.com>,
+ Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org,
+ Allison Randal <allison@lohutok.net>, hsinyi@chromium.org,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Collabora Kernel ML <kernel@collabora.com>, linux-clk@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/05/20 05:40PM, masonccyang@mxic.com.tw wrote:
-> 
-> Hi Pratyush, 
->  
-> > > > +/**
-> > > > + * spi_nor_parse_profile1() - parse the xSPI Profile 1.0 table
-> > > > + * @nor:      pointer to a 'struct spi_nor'
-> > > > + * @param_header:   pointer to the 'struct sfdp_parameter_header' 
-> > > describing
-> > > > + *         the 4-Byte Address Instruction Table length and version.
-> > > > + * @params:      pointer to the 'struct spi_nor_flash_parameter' to 
-> be.
-> > > > + *
-> > > > + * Return: 0 on success, -errno otherwise.
-> > > > + */
-> > > > +static int spi_nor_parse_profile1(struct spi_nor *nor,
-> > > > +              const struct sfdp_parameter_header *profile1_header,
-> > > > +              struct spi_nor_flash_parameter *params)
-> > > > +{
-> > > > +   u32 *table, opcode, addr;
-> > > > +   size_t len;
-> > > > +   int ret, i;
-> > > > +
-> > > > +   len = profile1_header->length * sizeof(*table);
-> > > > +   table = kmalloc(len, GFP_KERNEL);
-> > > > +   if (!table)
-> > > > +      return -ENOMEM;
-> > > > +
-> > > > +   addr = SFDP_PARAM_HEADER_PTP(profile1_header);
-> > > > +   ret = spi_nor_read_sfdp(nor, addr, len, table);
-> > > > +   if (ret)
-> > > > +      goto out;
-> > > > +
-> > > > +   /* Fix endianness of the table DWORDs. */
-> > > > +   for (i = 0; i < profile1_header->length; i++)
-> > > > +      table[i] = le32_to_cpu(table[i]);
-> > > > +
-> > > > +   /* Get 8D-8D-8D fast read opcode and dummy cycles. */
-> > > > +   opcode = FIELD_GET(PROFILE1_DWORD1_RD_FAST_CMD, table[0]);
-> > > > +
-> > > > +   /*
-> > > > +    * Update the fast read settings. We set the default dummy 
-> cycles to 
-> > > 20
-> > > > +    * here. Flashes can change this value if they need to when 
-> enabling
-> > > > +    * octal mode.
-> > > > +    */
-> > > > + spi_nor_set_read_settings(&params->reads[SNOR_CMD_READ_8_8_8_DTR],
-> > > > +              0, 20, opcode,
-> > > > +              SNOR_PROTO_8_8_8_DTR);
-> > > > +
-> > > 
-> > > 
-> > > I thought we have a agreement that only do parse here, no other read 
-> > > parameters setting.
-> > 
-> > Yes, and I considered it. But it didn't make much sense to me to 
-> > introduce an extra member in struct spi_nor just to make this call in 
-> > some other function later.
-> > 
-> > Why exactly do you think doing this here is bad? The way I see it, we 
-> > avoid carrying around an extra member in spi_nor and this also allows 
-> > flashes to change the read settings easily in a post-sfdp hook. The 
-> > 4bait parsing function does something similar.
-> 
-> I think it's not a question for good or bad. 
-> 
-> 4bait parsing function parse the 4-Byte Address Instruction Table
-> and set up read/pp parameters there for sure.
-> 
-> Here we give the function name spi_nor_parse_profile1() but also 
 
-But the function that parses 4bait table is also called 
-spi_nor_parse_4bait(). 
 
-> do others setting that has nothing to do with it, 
+On 20/05/2020 12:13, Stephen Boyd wrote:
+> Quoting Enric Balletbo i Serra (2020-04-01 13:17:34)
+>> Now that the mmsys driver is the top-level entry point for the
+>> multimedia subsystem, we could bind the clock and the gpu driver on
+>> those devices that is expected to work, so the drm driver is
+>> intantiated by the mmsys driver and display, hopefully, working again on
+>> those devices.
+>>
+>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+>> ---
+> 
+> Acked-by: Stephen Boyd <sboyd@kernel.org>
+> 
 
-Why has setting read opcode and dummy cycles got nothing to do with it? 
-The purpose of the Profile 1.0 table is to tell us the Read Fast command 
-and dummy cycles, among other things. I think it _does_ have something 
-to do with it.
+Now queued for v5.7-next/soc
 
-Just like the 4bait table tells us the 4-byte opcodes and we set them up 
-in our data structures, the profile 1.0 table tells us the 8D read 
-opcode and dummy cycles, and we set them up in our data structures.
-
-> it seems not good for SW module design. 
-> oh, it's my humble opinion.
-> 
-> > 
-> > What are the benefits of doing it otherwise?
-> 
-> For other Octal Flash like mx25*
-
-I mean from a design perspective. How does it make the code better, or 
-the job of people who need to read/change it easier?
-
-> > 
-> > Note that I did remove HWCAPS selection from here, which did seem like a 
-> 
-> > sane idea.
-> > 
-> > > Driver should get dummy cycles used for various frequencies 
-> > > from 4th and 5th DWORD of xSPI table.[1]
-> > > 
-> > > [1] 
-> > > 
-> https://patchwork.ozlabs.org/project/linux-mtd/patch/1587451187-6889-3-git-
-> 
-> > send-email-masonccyang@mxic.com.tw/ 
-> > > 
-> > > 
-> > > In addition, 20 dummy cycles is for 200MHz but not for 100MHz, 133MHz 
-> and 
-> > > 166MHz
-> > > in case of read performance concern.
-> > > 
-> > > Given a correct dummy cycles for a specific device. [2] 
-> > > 
-> > > [2] 
-> > > 
-> https://patchwork.ozlabs.org/project/linux-mtd/patch/1587451187-6889-5-git-
-> 
-> > send-email-masonccyang@mxic.com.tw/ 
-> > 
-> > The problem is that we don't know what speed the controller is driving 
-> > the flash at, and whether it is using Data Strobe. BFPT tells us the 
-> > maximum speed of the flash based on if Data Strobe is being used. The 
-> > controller can also drive it slower than the maximum. And it can drive 
-> > it with or without DS.
-> 
-> This is for flash, not every Octal flash could work in 200MHz,
-> The Max operation speeds for other Octal Flash is 100, 133 , or 166MHz.
-> 
-> If a specific Octal Flash could work in 166MHz(Max), and driver setup the
-> correct 16 dummy cycles for it rather than 20 dummy cycles.
-> it's for performance concern.
-
-Agreed. Like I mentioned in the next paragraph, will fix.
- 
-> > 
-> > So, we have to be conservative and just use the dummy cycles for the 
-> > maximum speed so we can at least make sure the flash works, albeit at 
-> > slightly less efficiency. I hard-coded it to 20 but I suppose we can 
-> > find it out from the Profile 1.0 table and use that (though we'd have to 
-> 
-> > round it to an even value to avoid tripping up controllers). Will fix in 
-> 
-> > next version (or, Tudor if you're fine with fixup! patches, I can send 
-> > that too because I suspect it will be a small change).
-> > 
-
--- 
-Regards,
-Pratyush Yadav
-Texas Instruments India
+Thanks!
 
 _______________________________________________
 Linux-mediatek mailing list
