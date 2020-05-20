@@ -2,76 +2,83 @@ Return-Path: <SRS0=i2Ig=7C=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 041EFC433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 04:03:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 61CC9C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 04:45:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C85EA2075F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 04:03:37 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2156D207C4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 04:45:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hxiHAzHD";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="W6sEy9ac"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C85EA2075F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MoS1SgZu";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="IksOG6lq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2156D207C4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F029g2m5tt9pg6iUG1dW5oIh8MRh4oVjRjFgSX1g8xw=; b=hxiHAzHDi5fJ8g
-	Qmux19kJ5y+NCLPwqJE9Qi2YptN06GEKS/BSPjdRg1GOZcgQ8TERaYGKcPFOGieeGntLNi5TNz2Fk
-	FUGW2riBr4qR6x1IMEAsC2rvsf7OgfiEQpfQ6sL/faoqRzMMTs6mSOVyMuXclgcrnXLGMaSn7WG2M
-	drZzjOdGQ4e94nZCZc37gEF2zf3IXM8iMVTlWP4qQD3BlfBnw0QtqkSlUv09I2+iLEOMNVQpDxOEI
-	+LnITH27QrCTwhKngZLCXEXS1NFfUgAFT94DBfYRBKOfIwtwcwIgQTezC3QfThIMY71xY8XYcZTfS
-	Ph1SwFob+7dB1pHxFNJQ==;
+	List-Owner; bh=DnIWKG9deeIgiWgXEwAH2nna08RXdnqPPaxG1V3LDsg=; b=MoS1SgZusHSuhC
+	CS2tZGYg4uJ2NOQFv+WEh+um2BB3lmMKOQ8ztH1iKFORKQUQjqmmfGzbRKIyJsFh8Yo5FSYe1R10j
+	qNYmK6WZEHCMvs+unZBc9aGnRVBJz0gVzFWXg4GYX2hhz2VXj54YkaLAO1wVbdATzF6LYFpuL1c7S
+	YxS+n7yrilxKVLAVWog/IInyZ51rwBCWumtPyobT/UaeOUOZMhzkYaFC49RgMEZ68zETDjWJwRdNm
+	JISASW7t2mM+OtevMTH2g8Y1kr9KsX6IAEO0CcmN8eNAlB5+vCMA7POUFLhkKGGaEIqV4sH3A9Gv3
+	U7yXMn/p6X5TMxpMP+tw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbFwz-0000pN-A9; Wed, 20 May 2020 04:03:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jbGba-00033T-7D; Wed, 20 May 2020 04:45:22 +0000
+Received: from mail-qv1-xf41.google.com ([2607:f8b0:4864:20::f41])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbFwm-0000el-R8; Wed, 20 May 2020 04:03:14 +0000
-X-UUID: b52e8864ec994c15a14eb3c876deb1e3-20200519
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=TmRVvVdb3wuVxMBsQEcmlWS8GtzHpKrc/mM7HRLXBeU=; 
- b=W6sEy9ac+c/QgV2lt93teHgv70BLt6tXfF1lgPZmp17q7sW7kWTIfppojJyZBef4RHkOyCQjcNR5WrnpRFwNwRX60xTP+c5iMbA+Fay2gVXBXyIij+V3ZPgzB6zOpR6CIxgN1Nmcl0tIn4sL6o3pSUn86wP/doZ1mHEY1i+HtvI=;
-X-UUID: b52e8864ec994c15a14eb3c876deb1e3-20200519
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <walter-zh.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1970475230; Tue, 19 May 2020 20:03:13 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 19 May 2020 21:03:09 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 May 2020 12:03:07 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 20 May 2020 12:03:07 +0800
-Message-ID: <1589947387.29577.35.camel@mtksdccf07>
-Subject: Re: [PATCH v4 2/4] kasan: record and print the free track
-From: Walter Wu <walter-zh.wu@mediatek.com>
-To: Dmitry Vyukov <dvyukov@google.com>
-Date: Wed, 20 May 2020 12:03:07 +0800
-In-Reply-To: <CACT4Y+aJDO+2kSgNpcvHksfn+bZaFWPoGj3-55-dyjLHcHbFUg@mail.gmail.com>
+ id 1jbGbX-0002Wt-2v
+ for linux-mediatek@lists.infradead.org; Wed, 20 May 2020 04:45:21 +0000
+Received: by mail-qv1-xf41.google.com with SMTP id er16so778653qvb.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 19 May 2020 21:45:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=SNby9Ybh2Qrd4287Y3ZzbQLjxz1GHTGW0zNl9NdTkP0=;
+ b=IksOG6lqm3kxNh7uPbJz8mL/02gwoLveO2rUXhNLb950S584/AWZ8lopuGUFPJuWsM
+ Xa8/knGXPAI5S9yLJnkMnDS+0M2PGSERtmlhh5Vkx4+aMdTAUQsAwIFHKe6XgfrmJLN2
+ +HRxXQuHjLeq6DNH/8VesQgUOwMWBgakWYuhhob0ZEMnZbZGWliBOBau/jLhMc5NXF19
+ zT5N0Y7TQUdk4Fu0OEM+PYoTZdxA+PWAyozjisUPmA9iEk06hhhXJG+etiOTGEjvegmu
+ MVdrGShTbqqhWpqDwgtRLrKR19OUJc/OTdK3YEWM5ykam6MQmnVAfo1IDAiNNMtQ3oE+
+ ZSjw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=SNby9Ybh2Qrd4287Y3ZzbQLjxz1GHTGW0zNl9NdTkP0=;
+ b=dRa8GO4hHui5QgysWqTYsRHU7pyXIDk5USBSTKlvuKu2AnsfO6JeZudVoHGr0mUCl4
+ ExoRG+55H2ZMZgwhwi/GdPTQcl85Dj3hFldTtpglB9lAuc3PPxZaKtBJa5GKBU9B7sM8
+ cXb0/aAcP56EViTl/IQZtd6ImDHSsCEPeP3RTdRJxhrRNFcJWsstjM1mtcOiqtKFJaB9
+ WUrVzlxM+gn7+G2rOaW1f42b+qkKGH//z0O05FjWMnSJZ0bKzpLafwi6qV9LU2oBoUXk
+ 0HMS09mzZyaa0OORlPM4WF4NgtAnjmJj76VwLd1tBTvQ4MshW8uEle1EeEeTB0befSiw
+ BZiQ==
+X-Gm-Message-State: AOAM533NQc6A56QlBZt6zXZ74kgWfm+UFrvMe17tGO2hGON8Z7AP/ZNM
+ eZeMPmRssBRBmZX0SVioJsDsIzgFHgO4lyeoT/a/nw==
+X-Google-Smtp-Source: ABdhPJzcgfZnMxpvonX+fPxLM4xpBpLm8XlltEuajLADGFv3ZFOj8evWjq6+N6YWZxgf/DG5sL+RGRNz7I8Mq5yfcgc=
+X-Received: by 2002:a0c:db03:: with SMTP id d3mr3196334qvk.80.1589949911824;
+ Tue, 19 May 2020 21:45:11 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200519022517.24182-1-walter-zh.wu@mediatek.com>
  <CACT4Y+aJDO+2kSgNpcvHksfn+bZaFWPoGj3-55-dyjLHcHbFUg@mail.gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
-MIME-Version: 1.0
-X-MTK: N
+ <1589947387.29577.35.camel@mtksdccf07>
+In-Reply-To: <1589947387.29577.35.camel@mtksdccf07>
+From: Dmitry Vyukov <dvyukov@google.com>
+Date: Wed, 20 May 2020 06:45:00 +0200
+Message-ID: <CACT4Y+Zy0O3brZRvN5jbdXMosBv+aFgRGSubbhCwzOSUftGoeA@mail.gmail.com>
+Subject: Re: [PATCH v4 2/4] kasan: record and print the free track
+To: Walter Wu <walter-zh.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200519_210312_892946_A06CB7D1 
-X-CRM114-Status: GOOD (  20.80  )
+X-CRM114-CacheID: sfid-20200519_214519_171139_13D1AAE1 
+X-CRM114-Status: GOOD (  34.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,216 +96,316 @@ Cc: wsd_upstream <wsd_upstream@mediatek.com>,
  Alexander Potapenko <glider@google.com>,
  Andrey Ryabinin <aryabinin@virtuozzo.com>,
  Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-PiBPbiBUdWUsIE1heSAxOSwgMjAyMCBhdCA0OjI1IEFNIFdhbHRlciBXdSA8d2FsdGVyLXpoLnd1
-QG1lZGlhdGVrLmNvbT4gd3JvdGU6DQo+ID4NCj4gPiBNb3ZlIGZyZWUgdHJhY2sgZnJvbSBzbHVi
-IGFsbG9jIG1ldGEtZGF0YSB0byBzbHViIGZyZWUgbWV0YS1kYXRhIGluDQo+ID4gb3JkZXIgdG8g
-bWFrZSBzdHJ1Y3Qga2FzYW5fZnJlZV9tZXRhIHNpemUgaXMgMTYgYnl0ZXMuIEl0IGlzIGEgZ29v
-ZA0KPiA+IHNpemUgYmVjYXVzZSBpdCBpcyB0aGUgbWluaW1hbCByZWR6b25lIHNpemUgYW5kIGEg
-Z29vZCBudW1iZXIgb2YNCj4gPiBhbGlnbm1lbnQuDQo+ID4NCj4gPiBGb3IgZnJlZSB0cmFjayBp
-biBnZW5lcmljIEtBU0FOLCB3ZSBkbyB0aGUgbW9kaWZpY2F0aW9uIGluIHN0cnVjdA0KPiA+IGth
-c2FuX2FsbG9jX21ldGEgYW5kIGthc2FuX2ZyZWVfbWV0YToNCj4gPiAtIHJlbW92ZSBmcmVlIHRy
-YWNrIGZyb20ga2FzYW5fYWxsb2NfbWV0YS4NCj4gPiAtIGFkZCBmcmVlIHRyYWNrIGludG8ga2Fz
-YW5fZnJlZV9tZXRhLg0KPiA+DQo+ID4gWzFdaHR0cHM6Ly9idWd6aWxsYS5rZXJuZWwub3JnL3No
-b3dfYnVnLmNnaT9pZD0xOTg0MzcNCj4gPg0KPiA+IFNpZ25lZC1vZmYtYnk6IFdhbHRlciBXdSA8
-d2FsdGVyLXpoLnd1QG1lZGlhdGVrLmNvbT4NCj4gPiBTdWdnZXN0ZWQtYnk6IERtaXRyeSBWeXVr
-b3YgPGR2eXVrb3ZAZ29vZ2xlLmNvbT4NCj4gPiBDYzogQW5kcmV5IFJ5YWJpbmluIDxhcnlhYmlu
-aW5AdmlydHVvenpvLmNvbT4NCj4gPiBDYzogRG1pdHJ5IFZ5dWtvdiA8ZHZ5dWtvdkBnb29nbGUu
-Y29tPg0KPiA+IENjOiBBbGV4YW5kZXIgUG90YXBlbmtvIDxnbGlkZXJAZ29vZ2xlLmNvbT4NCj4g
-PiAtLS0NCj4gPiAgbW0va2FzYW4vY29tbW9uLmMgIHwgMjIgKystLS0tLS0tLS0tLS0tLS0tLS0t
-LQ0KPiA+ICBtbS9rYXNhbi9nZW5lcmljLmMgfCAxOCArKysrKysrKysrKysrKysrKysNCj4gPiAg
-bW0va2FzYW4va2FzYW4uaCAgIHwgIDcgKysrKysrKw0KPiA+ICBtbS9rYXNhbi9yZXBvcnQuYyAg
-fCAyMCAtLS0tLS0tLS0tLS0tLS0tLS0tLQ0KPiA+ICBtbS9rYXNhbi90YWdzLmMgICAgfCAzNyAr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrDQo+ID4gIDUgZmlsZXMgY2hhbmdl
-ZCwgNjQgaW5zZXJ0aW9ucygrKSwgNDAgZGVsZXRpb25zKC0pDQo+ID4NCj4gPiBkaWZmIC0tZ2l0
-IGEvbW0va2FzYW4vY29tbW9uLmMgYi9tbS9rYXNhbi9jb21tb24uYw0KPiA+IGluZGV4IDhiYzYx
-ODI4OWJiMS4uNDdiNTM5MTJmMzIyIDEwMDY0NA0KPiA+IC0tLSBhL21tL2thc2FuL2NvbW1vbi5j
-DQo+ID4gKysrIGIvbW0va2FzYW4vY29tbW9uLmMNCj4gPiBAQCAtNTEsNyArNTEsNyBAQCBkZXBv
-dF9zdGFja19oYW5kbGVfdCBrYXNhbl9zYXZlX3N0YWNrKGdmcF90IGZsYWdzKQ0KPiA+ICAgICAg
-ICAgcmV0dXJuIHN0YWNrX2RlcG90X3NhdmUoZW50cmllcywgbnJfZW50cmllcywgZmxhZ3MpOw0K
-PiA+ICB9DQo+ID4NCj4gPiAtc3RhdGljIGlubGluZSB2b2lkIHNldF90cmFjayhzdHJ1Y3Qga2Fz
-YW5fdHJhY2sgKnRyYWNrLCBnZnBfdCBmbGFncykNCj4gPiArdm9pZCBrYXNhbl9zZXRfdHJhY2so
-c3RydWN0IGthc2FuX3RyYWNrICp0cmFjaywgZ2ZwX3QgZmxhZ3MpDQo+ID4gIHsNCj4gPiAgICAg
-ICAgIHRyYWNrLT5waWQgPSBjdXJyZW50LT5waWQ7DQo+ID4gICAgICAgICB0cmFjay0+c3RhY2sg
-PSBrYXNhbl9zYXZlX3N0YWNrKGZsYWdzKTsNCj4gPiBAQCAtMjk5LDI0ICsyOTksNiBAQCBzdHJ1
-Y3Qga2FzYW5fZnJlZV9tZXRhICpnZXRfZnJlZV9pbmZvKHN0cnVjdCBrbWVtX2NhY2hlICpjYWNo
-ZSwNCj4gPiAgICAgICAgIHJldHVybiAodm9pZCAqKW9iamVjdCArIGNhY2hlLT5rYXNhbl9pbmZv
-LmZyZWVfbWV0YV9vZmZzZXQ7DQo+ID4gIH0NCj4gPg0KPiA+IC0NCj4gPiAtc3RhdGljIHZvaWQg
-a2FzYW5fc2V0X2ZyZWVfaW5mbyhzdHJ1Y3Qga21lbV9jYWNoZSAqY2FjaGUsDQo+ID4gLSAgICAg
-ICAgICAgICAgIHZvaWQgKm9iamVjdCwgdTggdGFnKQ0KPiA+IC17DQo+ID4gLSAgICAgICBzdHJ1
-Y3Qga2FzYW5fYWxsb2NfbWV0YSAqYWxsb2NfbWV0YTsNCj4gPiAtICAgICAgIHU4IGlkeCA9IDA7
-DQo+ID4gLQ0KPiA+IC0gICAgICAgYWxsb2NfbWV0YSA9IGdldF9hbGxvY19pbmZvKGNhY2hlLCBv
-YmplY3QpOw0KPiA+IC0NCj4gPiAtI2lmZGVmIENPTkZJR19LQVNBTl9TV19UQUdTX0lERU5USUZZ
-DQo+ID4gLSAgICAgICBpZHggPSBhbGxvY19tZXRhLT5mcmVlX3RyYWNrX2lkeDsNCj4gPiAtICAg
-ICAgIGFsbG9jX21ldGEtPmZyZWVfcG9pbnRlcl90YWdbaWR4XSA9IHRhZzsNCj4gPiAtICAgICAg
-IGFsbG9jX21ldGEtPmZyZWVfdHJhY2tfaWR4ID0gKGlkeCArIDEpICUgS0FTQU5fTlJfRlJFRV9T
-VEFDS1M7DQo+ID4gLSNlbmRpZg0KPiA+IC0NCj4gPiAtICAgICAgIHNldF90cmFjaygmYWxsb2Nf
-bWV0YS0+ZnJlZV90cmFja1tpZHhdLCBHRlBfTk9XQUlUKTsNCj4gPiAtfQ0KPiA+IC0NCj4gPiAg
-dm9pZCBrYXNhbl9wb2lzb25fc2xhYihzdHJ1Y3QgcGFnZSAqcGFnZSkNCj4gPiAgew0KPiA+ICAg
-ICAgICAgdW5zaWduZWQgbG9uZyBpOw0KPiA+IEBAIC00OTIsNyArNDc0LDcgQEAgc3RhdGljIHZv
-aWQgKl9fa2FzYW5fa21hbGxvYyhzdHJ1Y3Qga21lbV9jYWNoZSAqY2FjaGUsIGNvbnN0IHZvaWQg
-Km9iamVjdCwNCj4gPiAgICAgICAgICAgICAgICAgS0FTQU5fS01BTExPQ19SRURaT05FKTsNCj4g
-Pg0KPiA+ICAgICAgICAgaWYgKGNhY2hlLT5mbGFncyAmIFNMQUJfS0FTQU4pDQo+ID4gLSAgICAg
-ICAgICAgICAgIHNldF90cmFjaygmZ2V0X2FsbG9jX2luZm8oY2FjaGUsIG9iamVjdCktPmFsbG9j
-X3RyYWNrLCBmbGFncyk7DQo+ID4gKyAgICAgICAgICAgICAgIGthc2FuX3NldF90cmFjaygmZ2V0
-X2FsbG9jX2luZm8oY2FjaGUsIG9iamVjdCktPmFsbG9jX3RyYWNrLCBmbGFncyk7DQo+ID4NCj4g
-PiAgICAgICAgIHJldHVybiBzZXRfdGFnKG9iamVjdCwgdGFnKTsNCj4gPiAgfQ0KPiA+IGRpZmYg
-LS1naXQgYS9tbS9rYXNhbi9nZW5lcmljLmMgYi9tbS9rYXNhbi9nZW5lcmljLmMNCj4gPiBpbmRl
-eCAzMzcyYmRjYWY5MmEuLjc2M2Q4YTEzZTBhYyAxMDA2NDQNCj4gPiAtLS0gYS9tbS9rYXNhbi9n
-ZW5lcmljLmMNCj4gPiArKysgYi9tbS9rYXNhbi9nZW5lcmljLmMNCj4gPiBAQCAtMzQ0LDMgKzM0
-NCwyMSBAQCB2b2lkIGthc2FuX3JlY29yZF9hdXhfc3RhY2sodm9pZCAqYWRkcikNCj4gPiAgICAg
-ICAgIGFsbG9jX2luZm8tPmF1eF9zdGFja1sxXSA9IGFsbG9jX2luZm8tPmF1eF9zdGFja1swXTsN
-Cj4gPiAgICAgICAgIGFsbG9jX2luZm8tPmF1eF9zdGFja1swXSA9IGthc2FuX3NhdmVfc3RhY2so
-R0ZQX05PV0FJVCk7DQo+ID4gIH0NCj4gPiArDQo+ID4gK3ZvaWQga2FzYW5fc2V0X2ZyZWVfaW5m
-byhzdHJ1Y3Qga21lbV9jYWNoZSAqY2FjaGUsDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICB2b2lkICpvYmplY3QsIHU4IHRhZykNCj4gPiArew0KPiA+ICsgICAgICAgc3RydWN0
-IGthc2FuX2ZyZWVfbWV0YSAqZnJlZV9tZXRhOw0KPiA+ICsNCj4gPiArICAgICAgIGZyZWVfbWV0
-YSA9IGdldF9mcmVlX2luZm8oY2FjaGUsIG9iamVjdCk7DQo+ID4gKyAgICAgICBrYXNhbl9zZXRf
-dHJhY2soJmZyZWVfbWV0YS0+ZnJlZV90cmFjaywgR0ZQX05PV0FJVCk7DQo+ID4gK30NCj4gPiAr
-DQo+ID4gK3N0cnVjdCBrYXNhbl90cmFjayAqa2FzYW5fZ2V0X2ZyZWVfdHJhY2soc3RydWN0IGtt
-ZW1fY2FjaGUgKmNhY2hlLA0KPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdm9p
-ZCAqb2JqZWN0LCB1OCB0YWcpDQo+ID4gK3sNCj4gPiArICAgICAgIHN0cnVjdCBrYXNhbl9mcmVl
-X21ldGEgKmZyZWVfbWV0YTsNCj4gPiArDQo+ID4gKyAgICAgICBmcmVlX21ldGEgPSBnZXRfZnJl
-ZV9pbmZvKGNhY2hlLCBvYmplY3QpOw0KPiA+ICsgICAgICAgcmV0dXJuICZmcmVlX21ldGEtPmZy
-ZWVfdHJhY2s7DQo+ID4gK30NCj4gPiBkaWZmIC0tZ2l0IGEvbW0va2FzYW4va2FzYW4uaCBiL21t
-L2thc2FuL2thc2FuLmgNCj4gPiBpbmRleCBhNzM5MWJjODMwNzAuLmFkODk3ZWMzNjU0NSAxMDA2
-NDQNCj4gPiAtLS0gYS9tbS9rYXNhbi9rYXNhbi5oDQo+ID4gKysrIGIvbW0va2FzYW4va2FzYW4u
-aA0KPiA+IEBAIC0xMjcsNiArMTI3LDkgQEAgc3RydWN0IGthc2FuX2ZyZWVfbWV0YSB7DQo+ID4g
-ICAgICAgICAgKiBPdGhlcndpc2UgaXQgbWlnaHQgYmUgdXNlZCBmb3IgdGhlIGFsbG9jYXRvciBm
-cmVlbGlzdC4NCj4gPiAgICAgICAgICAqLw0KPiA+ICAgICAgICAgc3RydWN0IHFsaXN0X25vZGUg
-cXVhcmFudGluZV9saW5rOw0KPiA+ICsjaWZkZWYgQ09ORklHX0tBU0FOX0dFTkVSSUMNCj4gPiAr
-ICAgICAgIHN0cnVjdCBrYXNhbl90cmFjayBmcmVlX3RyYWNrOw0KPiA+ICsjZW5kaWYNCj4gPiAg
-fTsNCj4gPg0KPiA+ICBzdHJ1Y3Qga2FzYW5fYWxsb2NfbWV0YSAqZ2V0X2FsbG9jX2luZm8oc3Ry
-dWN0IGttZW1fY2FjaGUgKmNhY2hlLA0KPiA+IEBAIC0xNjgsNiArMTcxLDEwIEBAIHZvaWQga2Fz
-YW5fcmVwb3J0X2ludmFsaWRfZnJlZSh2b2lkICpvYmplY3QsIHVuc2lnbmVkIGxvbmcgaXApOw0K
-PiA+ICBzdHJ1Y3QgcGFnZSAqa2FzYW5fYWRkcl90b19wYWdlKGNvbnN0IHZvaWQgKmFkZHIpOw0K
-PiA+DQo+ID4gIGRlcG90X3N0YWNrX2hhbmRsZV90IGthc2FuX3NhdmVfc3RhY2soZ2ZwX3QgZmxh
-Z3MpOw0KPiA+ICt2b2lkIGthc2FuX3NldF90cmFjayhzdHJ1Y3Qga2FzYW5fdHJhY2sgKnRyYWNr
-LCBnZnBfdCBmbGFncyk7DQo+ID4gK3ZvaWQga2FzYW5fc2V0X2ZyZWVfaW5mbyhzdHJ1Y3Qga21l
-bV9jYWNoZSAqY2FjaGUsIHZvaWQgKm9iamVjdCwgdTggdGFnKTsNCj4gPiArc3RydWN0IGthc2Fu
-X3RyYWNrICprYXNhbl9nZXRfZnJlZV90cmFjayhzdHJ1Y3Qga21lbV9jYWNoZSAqY2FjaGUsDQo+
-ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2b2lkICpvYmplY3QsIHU4IHRhZyk7
-DQo+ID4NCj4gPiAgI2lmIGRlZmluZWQoQ09ORklHX0tBU0FOX0dFTkVSSUMpICYmIFwNCj4gPiAg
-ICAgICAgIChkZWZpbmVkKENPTkZJR19TTEFCKSB8fCBkZWZpbmVkKENPTkZJR19TTFVCKSkNCj4g
-PiBkaWZmIC0tZ2l0IGEvbW0va2FzYW4vcmVwb3J0LmMgYi9tbS9rYXNhbi9yZXBvcnQuYw0KPiA+
-IGluZGV4IDZmOGYyYmY4ZjUzYi4uOTZkMjY1N2ZlNzBmIDEwMDY0NA0KPiA+IC0tLSBhL21tL2th
-c2FuL3JlcG9ydC5jDQo+ID4gKysrIGIvbW0va2FzYW4vcmVwb3J0LmMNCj4gPiBAQCAtMTU5LDI2
-ICsxNTksNiBAQCBzdGF0aWMgdm9pZCBkZXNjcmliZV9vYmplY3RfYWRkcihzdHJ1Y3Qga21lbV9j
-YWNoZSAqY2FjaGUsIHZvaWQgKm9iamVjdCwNCj4gPiAgICAgICAgICAgICAgICAgKHZvaWQgKiko
-b2JqZWN0X2FkZHIgKyBjYWNoZS0+b2JqZWN0X3NpemUpKTsNCj4gPiAgfQ0KPiA+DQo+ID4gLXN0
-YXRpYyBzdHJ1Y3Qga2FzYW5fdHJhY2sgKmthc2FuX2dldF9mcmVlX3RyYWNrKHN0cnVjdCBrbWVt
-X2NhY2hlICpjYWNoZSwNCj4gPiAtICAgICAgICAgICAgICAgdm9pZCAqb2JqZWN0LCB1OCB0YWcp
-DQo+ID4gLXsNCj4gPiAtICAgICAgIHN0cnVjdCBrYXNhbl9hbGxvY19tZXRhICphbGxvY19tZXRh
-Ow0KPiA+IC0gICAgICAgaW50IGkgPSAwOw0KPiA+IC0NCj4gPiAtICAgICAgIGFsbG9jX21ldGEg
-PSBnZXRfYWxsb2NfaW5mbyhjYWNoZSwgb2JqZWN0KTsNCj4gPiAtDQo+ID4gLSNpZmRlZiBDT05G
-SUdfS0FTQU5fU1dfVEFHU19JREVOVElGWQ0KPiA+IC0gICAgICAgZm9yIChpID0gMDsgaSA8IEtB
-U0FOX05SX0ZSRUVfU1RBQ0tTOyBpKyspIHsNCj4gPiAtICAgICAgICAgICAgICAgaWYgKGFsbG9j
-X21ldGEtPmZyZWVfcG9pbnRlcl90YWdbaV0gPT0gdGFnKQ0KPiA+IC0gICAgICAgICAgICAgICAg
-ICAgICAgIGJyZWFrOw0KPiA+IC0gICAgICAgfQ0KPiA+IC0gICAgICAgaWYgKGkgPT0gS0FTQU5f
-TlJfRlJFRV9TVEFDS1MpDQo+ID4gLSAgICAgICAgICAgICAgIGkgPSBhbGxvY19tZXRhLT5mcmVl
-X3RyYWNrX2lkeDsNCj4gPiAtI2VuZGlmDQo+ID4gLQ0KPiA+IC0gICAgICAgcmV0dXJuICZhbGxv
-Y19tZXRhLT5mcmVlX3RyYWNrW2ldOw0KPiA+IC19DQo+ID4gLQ0KPiA+ICAjaWZkZWYgQ09ORklH
-X0tBU0FOX0dFTkVSSUMNCj4gPiAgc3RhdGljIHZvaWQgcHJpbnRfc3RhY2soZGVwb3Rfc3RhY2tf
-aGFuZGxlX3Qgc3RhY2spDQo+ID4gIHsNCj4gPiBkaWZmIC0tZ2l0IGEvbW0va2FzYW4vdGFncy5j
-IGIvbW0va2FzYW4vdGFncy5jDQo+ID4gaW5kZXggMjViNzczNGU3MDEzLi4yMDFkZWU1ZDZhZTAg
-MTAwNjQ0DQo+ID4gLS0tIGEvbW0va2FzYW4vdGFncy5jDQo+ID4gKysrIGIvbW0va2FzYW4vdGFn
-cy5jDQo+ID4gQEAgLTE2MiwzICsxNjIsNDAgQEAgdm9pZCBfX2h3YXNhbl90YWdfbWVtb3J5KHVu
-c2lnbmVkIGxvbmcgYWRkciwgdTggdGFnLCB1bnNpZ25lZCBsb25nIHNpemUpDQo+ID4gICAgICAg
-ICBrYXNhbl9wb2lzb25fc2hhZG93KCh2b2lkICopYWRkciwgc2l6ZSwgdGFnKTsNCj4gPiAgfQ0K
-PiA+ICBFWFBPUlRfU1lNQk9MKF9faHdhc2FuX3RhZ19tZW1vcnkpOw0KPiA+ICsNCj4gPiArdm9p
-ZCBrYXNhbl9zZXRfZnJlZV9pbmZvKHN0cnVjdCBrbWVtX2NhY2hlICpjYWNoZSwNCj4gPiArICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHZvaWQgKm9iamVjdCwgdTggdGFnKQ0KPiA+ICt7
-DQo+ID4gKyAgICAgICBzdHJ1Y3Qga2FzYW5fYWxsb2NfbWV0YSAqYWxsb2NfbWV0YTsNCj4gPiAr
-ICAgICAgIHU4IGlkeCA9IDA7DQo+ID4gKw0KPiA+ICsgICAgICAgYWxsb2NfbWV0YSA9IGdldF9h
-bGxvY19pbmZvKGNhY2hlLCBvYmplY3QpOw0KPiA+ICsNCj4gPiArI2lmZGVmIENPTkZJR19LQVNB
-Tl9TV19UQUdTX0lERU5USUZZDQo+ID4gKyAgICAgICBpZHggPSBhbGxvY19tZXRhLT5mcmVlX3Ry
-YWNrX2lkeDsNCj4gPiArICAgICAgIGFsbG9jX21ldGEtPmZyZWVfcG9pbnRlcl90YWdbaWR4XSA9
-IHRhZzsNCj4gPiArICAgICAgIGFsbG9jX21ldGEtPmZyZWVfdHJhY2tfaWR4ID0gKGlkeCArIDEp
-ICUgS0FTQU5fTlJfRlJFRV9TVEFDS1M7DQo+ID4gKyNlbmRpZg0KPiA+ICsNCj4gPiArICAgICAg
-IGthc2FuX3NldF90cmFjaygmYWxsb2NfbWV0YS0+ZnJlZV90cmFja1tpZHhdLCBHRlBfTk9XQUlU
-KTsNCj4gPiArfQ0KPiA+ICsNCj4gPiArc3RydWN0IGthc2FuX3RyYWNrICprYXNhbl9nZXRfZnJl
-ZV90cmFjayhzdHJ1Y3Qga21lbV9jYWNoZSAqY2FjaGUsDQo+ID4gKyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICB2b2lkICpvYmplY3QsIHU4IHRhZykNCj4gPiArew0KPiA+ICsgICAgICAg
-c3RydWN0IGthc2FuX2FsbG9jX21ldGEgKmFsbG9jX21ldGE7DQo+ID4gKyAgICAgICBpbnQgaSA9
-IDA7DQo+ID4gKw0KPiA+ICsgICAgICAgYWxsb2NfbWV0YSA9IGdldF9hbGxvY19pbmZvKGNhY2hl
-LCBvYmplY3QpOw0KPiA+ICsNCj4gPiArI2lmZGVmIENPTkZJR19LQVNBTl9TV19UQUdTX0lERU5U
-SUZZDQo+ID4gKyAgICAgICBmb3IgKGkgPSAwOyBpIDwgS0FTQU5fTlJfRlJFRV9TVEFDS1M7IGkr
-Kykgew0KPiA+ICsgICAgICAgICAgICAgICBpZiAoYWxsb2NfbWV0YS0+ZnJlZV9wb2ludGVyX3Rh
-Z1tpXSA9PSB0YWcpDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgYnJlYWs7DQo+ID4gKyAg
-ICAgICB9DQo+ID4gKyAgICAgICBpZiAoaSA9PSBLQVNBTl9OUl9GUkVFX1NUQUNLUykNCj4gPiAr
-ICAgICAgICAgICAgICAgaSA9IGFsbG9jX21ldGEtPmZyZWVfdHJhY2tfaWR4Ow0KPiA+ICsjZW5k
-aWYNCj4gPiArDQo+ID4gKyAgICAgICByZXR1cm4gJmFsbG9jX21ldGEtPmZyZWVfdHJhY2tbaV07
-DQo+ID4gK30NCj4gDQo+IEhpIFdhbHRlciwNCj4gDQo+IEZUUiBJJ3ZlIHVwbG9hZGVkIHRoaXMg
-Zm9yIHJldmlldyBwdXJwb3NlcyBoZXJlOg0KPiBodHRwczovL2xpbnV4LXJldmlldy5nb29nbGVz
-b3VyY2UuY29tL2MvbGludXgva2VybmVsL2dpdC90b3J2YWxkcy9saW51eC8rLzI0NTgNCj4gDQo+
-IERpZmYgZnJvbSB0aGUgcHJldmlvdXMgdmVyc2lvbiBpcyBhdmFpbGFibGUgYXM6DQo+IGh0dHBz
-Oi8vbGludXgtcmV2aWV3Lmdvb2dsZXNvdXJjZS5jb20vYy9saW51eC9rZXJuZWwvZ2l0L3RvcnZh
-bGRzL2xpbnV4LysvMjQ1OC8xLi4yDQo+IA0KPiBJJ3ZlIHRlc3RlZCB0aGlzIGxvY2FsbHkgYW5k
-IHdpdGggc3l6a2FsbGVyLiBUaGlzIGlzIPCflKXwn5Sl8J+UpToNCj4gDQo+IFsgICA4MC41ODMw
-MjFdWyAgICBDM10gRnJlZWQgYnkgdGFzayAwOg0KPiBbICAgODAuNTgzNDgwXVsgICAgQzNdICBr
-YXNhbl9zYXZlX3N0YWNrKzB4MWIvMHg0MCBtbS9rYXNhbi9jb21tb24uYzo0OQ0KPiBbICAgODAu
-NTg0MDU2XVsgICAgQzNdICBrYXNhbl9zZXRfdHJhY2srMHgxYy8weDMwIG1tL2thc2FuL2NvbW1v
-bi5jOjU3DQo+IFsgICA4MC41ODQ2MTddWyAgICBDM10gIGthc2FuX3NldF9mcmVlX2luZm8rMHgx
-Yi8weDMwIG1tL2thc2FuL2dlbmVyaWMuYzozNTQNCj4gWyAgIDgwLjU4NTIyMV1bICAgIEMzXSAg
-X19rYXNhbl9zbGFiX2ZyZWUrMHhkOC8weDEyMCBtbS9rYXNhbi9jb21tb24uYzo0MzgNCj4gWyAg
-IDgwLjU4NTgxNF1bICAgIEMzXSAgX19jYWNoZV9mcmVlIG1tL3NsYWIuYzozNDI2IFtpbmxpbmVd
-DQo+IFsgICA4MC41ODU4MTRdWyAgICBDM10gIGtmcmVlKzB4MTBiLzB4MmIwIG1tL3NsYWIuYzoz
-NzU3DQo+IFsgICA4MC41ODYyOTFdWyAgICBDM10gIGthc2FuX3JjdV9yZWNsYWltKzB4MTYvMHg0
-MyBbdGVzdF9rYXNhbl0NCj4gWyAgIDgwLjU4NzAwOV1bICAgIEMzXSAgcmN1X2RvX2JhdGNoIGtl
-cm5lbC9yY3UvdHJlZS5jOjIyMDcgW2lubGluZV0NCj4gWyAgIDgwLjU4NzAwOV1bICAgIEMzXSAg
-cmN1X2NvcmUrMHg1OWYvMHgxMzcwIGtlcm5lbC9yY3UvdHJlZS5jOjI0MzQNCj4gWyAgIDgwLjU4
-NzUzN11bICAgIEMzXSAgX19kb19zb2Z0aXJxKzB4MjZjLzB4OWZhIGtlcm5lbC9zb2Z0aXJxLmM6
-MjkyDQo+IFsgICA4MC41ODgwODVdWyAgICBDM10NCj4gWyAgIDgwLjU4ODM2N11bICAgIEMzXSBM
-YXN0IG9uZSBjYWxsX3JjdSgpIGNhbGwgc3RhY2s6DQo+IFsgICA4MC41ODkwNTJdWyAgICBDM10g
-IGthc2FuX3NhdmVfc3RhY2srMHgxYi8weDQwIG1tL2thc2FuL2NvbW1vbi5jOjQ5DQo+IFsgICA4
-MC41ODk2MjJdWyAgICBDM10gIGthc2FuX3JlY29yZF9hdXhfc3RhY2srMHg4Mi8weGIwIG1tL2th
-c2FuL2dlbmVyaWMuYzozNDUNCj4gWyAgIDgwLjU5MDI1NF1bICAgIEMzXSAgX19jYWxsX3JjdSBr
-ZXJuZWwvcmN1L3RyZWUuYzoyNjcyIFtpbmxpbmVdDQo+IFsgICA4MC41OTAyNTRdWyAgICBDM10g
-IGNhbGxfcmN1KzB4MTRmLzB4N2YwIGtlcm5lbC9yY3UvdHJlZS5jOjI3NDYNCj4gWyAgIDgwLjU5
-MDc4Ml1bICAgIEMzXSAga2FzYW5fcmN1X3VhZisweGU0LzB4ZWIgW3Rlc3Rfa2FzYW5dDQo+IFsg
-ICA4MC41OTE2OTddWyAgICBDM10gIGttYWxsb2NfdGVzdHNfaW5pdCsweGJjLzB4MTA5NyBbdGVz
-dF9rYXNhbl0NCj4gWyAgIDgwLjU5MjkwMF1bICAgIEMzXSAgZG9fb25lX2luaXRjYWxsKzB4MTBh
-LzB4N2QwIGluaXQvbWFpbi5jOjExOTYNCj4gWyAgIDgwLjU5MzQ5NF1bICAgIEMzXSAgZG9faW5p
-dF9tb2R1bGUrMHgxZTYvMHg2ZDAga2VybmVsL21vZHVsZS5jOjM1MzkNCj4gWyAgIDgwLjU5NDA2
-Nl1bICAgIEMzXSAgbG9hZF9tb2R1bGUrMHg3NDY0LzB4OTQ1MCBrZXJuZWwvbW9kdWxlLmM6Mzg5
-MA0KPiBbICAgODAuNTk0NjI2XVsgICAgQzNdICBfX2RvX3N5c19pbml0X21vZHVsZSsweDFlMy8w
-eDIyMCBrZXJuZWwvbW9kdWxlLmM6Mzk1Mw0KPiBbICAgODAuNTk1MjY1XVsgICAgQzNdICBkb19z
-eXNjYWxsXzY0KzB4ZjYvMHg3ZDAgYXJjaC94ODYvZW50cnkvY29tbW9uLmM6Mjk1DQo+IFsgICA4
-MC41OTU4MjJdWyAgICBDM10gIGVudHJ5X1NZU0NBTExfNjRfYWZ0ZXJfaHdmcmFtZSsweDQ5LzB4
-YjMNCj4gDQo+IA0KPiBPdmVyYWxsIHRoaXMgbG9va3MgdmVyeSBnb29kIHRvIG1lLg0KPiBCdXQg
-dGhlcmUgaXMgb25lIGFzcGVjdCB0aGF0IGJvdGhlcnMgbWUuIEluIHRoZSBwcmV2aW91cyBwYXRj
-aCB5b3UgaGFkDQo+IGNvZGUgdGhhdCByZXR1cm5lZCBOVUxMIGZyb20ga2FzYW5fZ2V0X2ZyZWVf
-dHJhY2soKSBpZiB0aGUgb2JqZWN0IGlzDQo+IGxpdmUgKHdoaWNoIG1lYW5zIGZyZWUgbWV0YSBp
-cyBub3QgYXZhaWxhYmxlLCBpdCdzIG9jY3VwaWVkIGJ5IG9iamVjdA0KPiBkYXRhKS4gTm93IHlv
-dSBkcm9wcGVkIHRoYXQgY29kZSwgYnV0IEkgdGhpbmsgd2Ugc3RpbGwgbmVlZCBpdC4NCj4gT3Ro
-ZXJ3aXNlIHdlIGNhc3QgdXNlciBvYmplY3QgZGF0YSB0byBmcmVlIG1ldGEgYW5kIHByaW50IHRo
-ZSBmcmVlDQo+IHN0YWNrL3BpZCBmcm9tIHdoYXRldmVyIGdhcmJhZ2UgaXMgdGhlcmUuIFRoaXMg
-bWF5IGxlYWQgdG8gdmVyeQ0KPiBjb25mdXNpbmcgb3V0cHV0IGFuZCBwb3RlbnRpYWxseSB0byBj
-cmFzaGVzIGluIHN0YWNrZGVwb3QuDQo+IA0KDQpZZXMsIEkgdG90YWxseSBhZ3JlZSB3aXRoIHlv
-dS4gSW4gdGhlIHByZXZpb3VzIGVtYWlsIEkgdGhvdWdodCB0aGF0DQp0aGVyZSBpcyBhIHByb2Js
-ZW0gd2l0aCBmcmVlIHRyYWNrLCBidXQgSSBkaWQgbm90IHBvaW50IGl0IG91dC4gVGhhbmsNCnlv
-dSBmb3IgcG9pbnRpbmcgdGhpcyBwcm9ibGVtLiBBcyB5b3UgbWVudGlvbmVkLCB3ZSBzaG91bGQg
-Zml4IGl0Lg0KDQo+IFdoYXQgZG8geW91IHRoaW5rIGFib3V0IHRoaXMgcGF0Y2ggb24gdG9wIG9m
-IHlvdXIgcGF0Y2hlcz8NCj4gaHR0cHM6Ly9saW51eC1yZXZpZXcuZ29vZ2xlc291cmNlLmNvbS9j
-L2xpbnV4L2tlcm5lbC9naXQvdG9ydmFsZHMvbGludXgvKy8yNDc4DQo+IFRoaXMgd2F5IHdlIHZl
-cnkgcHJlY2lzZWx5IG1hcmsgdGhlIHBlcmlvZCBvZiB0aW1lIHdoZW4gdGhlIG9iamVjdCBoYXMN
-Cj4gZnJlZSB0cmFjayBsaXZlIGFuZCBzZXQuDQo+IElmIGl0IGxvb2tzIGdvb2QgdG8geW91LCBm
-ZWVsIGZyZWUgdG8gaW5jb3Jwb3JhdGUgaXQgaW50byB5b3VyIHNlcmllcy4NCj4gDQoNClRoYW5r
-IHlvdSBmb3IgcHJvdmlkaW5nIGdvb2QgaWRlYSBzb2x1dGlvbi4NCg0KSSBzYXcgdGhpcyBwYXRj
-aCwgdGhhdCBpcyBhIGdyZWF0IHBhdGNoLiBJIHRoaW5rIGl0IGNhbiBmaXggdGhlIGlzc3VlDQp3
-aGljaCBoYXMgZ2FyYmFnZSBzdGFjay4gaXQgc2hvdWxkIHdvcmsgYXMgZGVzY3JpYmVkIGJlbG93
-Lg0KDQoxKS4gV2hlbiBvYmplY3QgaXMgbGl2ZSwgdGhlbiBkb24ndCBwcmludCBmcmVlIHN0YWNr
-Lg0KMikuIFdoZW4gb2JqZWN0IGlzIE5PVCBhbGl2ZSwgYWZ0ZXIgZnJlZSBvYmplY3Q6DQoyYSku
-IHdoZW4gb2JqZWN0IGlzIGluIHF1YXJhbnRpbmUsIHRoZW4gaXQgY2FuIHByaW50IGZyZWUgc3Rh
-Y2sNCjJiKS4gd2hlbiBvYmplY3QgaXMgTk9UIGluIHF1YXJhbnRpbmUsIHRoZW4gaXQgY2FuIE5P
-VCBwcmludCBmcmVlIHN0YWNrLg0KDQpJIGhhdmUgYSBxdWVzdGlvbiBhYm91dCAyKSwgd2h5IHdl
-IGRvbid0IGRpcmVjdGx5IHVzZQ0KS0FTQU5fS01BTExPQ19GUkVFPyBpZiB3ZSBkaXJlY3RseSB1
-c2UgaXQsIHRoZW4gMmIpIGNhbiBwcmludCBmcmVlDQpzdGFjaz8gMmIpIG1heSBoYXMgdXNlLWFm
-dGVyLWZyZWU/IHNvIHRoYXQgaXQgbWF5IG5lZWQgZnJlZSBzdGFjay4NCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcg
-bGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Wed, May 20, 2020 at 6:03 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+>
+> > On Tue, May 19, 2020 at 4:25 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+> > >
+> > > Move free track from slub alloc meta-data to slub free meta-data in
+> > > order to make struct kasan_free_meta size is 16 bytes. It is a good
+> > > size because it is the minimal redzone size and a good number of
+> > > alignment.
+> > >
+> > > For free track in generic KASAN, we do the modification in struct
+> > > kasan_alloc_meta and kasan_free_meta:
+> > > - remove free track from kasan_alloc_meta.
+> > > - add free track into kasan_free_meta.
+> > >
+> > > [1]https://bugzilla.kernel.org/show_bug.cgi?id=198437
+> > >
+> > > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> > > Suggested-by: Dmitry Vyukov <dvyukov@google.com>
+> > > Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
+> > > Cc: Dmitry Vyukov <dvyukov@google.com>
+> > > Cc: Alexander Potapenko <glider@google.com>
+> > > ---
+> > >  mm/kasan/common.c  | 22 ++--------------------
+> > >  mm/kasan/generic.c | 18 ++++++++++++++++++
+> > >  mm/kasan/kasan.h   |  7 +++++++
+> > >  mm/kasan/report.c  | 20 --------------------
+> > >  mm/kasan/tags.c    | 37 +++++++++++++++++++++++++++++++++++++
+> > >  5 files changed, 64 insertions(+), 40 deletions(-)
+> > >
+> > > diff --git a/mm/kasan/common.c b/mm/kasan/common.c
+> > > index 8bc618289bb1..47b53912f322 100644
+> > > --- a/mm/kasan/common.c
+> > > +++ b/mm/kasan/common.c
+> > > @@ -51,7 +51,7 @@ depot_stack_handle_t kasan_save_stack(gfp_t flags)
+> > >         return stack_depot_save(entries, nr_entries, flags);
+> > >  }
+> > >
+> > > -static inline void set_track(struct kasan_track *track, gfp_t flags)
+> > > +void kasan_set_track(struct kasan_track *track, gfp_t flags)
+> > >  {
+> > >         track->pid = current->pid;
+> > >         track->stack = kasan_save_stack(flags);
+> > > @@ -299,24 +299,6 @@ struct kasan_free_meta *get_free_info(struct kmem_cache *cache,
+> > >         return (void *)object + cache->kasan_info.free_meta_offset;
+> > >  }
+> > >
+> > > -
+> > > -static void kasan_set_free_info(struct kmem_cache *cache,
+> > > -               void *object, u8 tag)
+> > > -{
+> > > -       struct kasan_alloc_meta *alloc_meta;
+> > > -       u8 idx = 0;
+> > > -
+> > > -       alloc_meta = get_alloc_info(cache, object);
+> > > -
+> > > -#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
+> > > -       idx = alloc_meta->free_track_idx;
+> > > -       alloc_meta->free_pointer_tag[idx] = tag;
+> > > -       alloc_meta->free_track_idx = (idx + 1) % KASAN_NR_FREE_STACKS;
+> > > -#endif
+> > > -
+> > > -       set_track(&alloc_meta->free_track[idx], GFP_NOWAIT);
+> > > -}
+> > > -
+> > >  void kasan_poison_slab(struct page *page)
+> > >  {
+> > >         unsigned long i;
+> > > @@ -492,7 +474,7 @@ static void *__kasan_kmalloc(struct kmem_cache *cache, const void *object,
+> > >                 KASAN_KMALLOC_REDZONE);
+> > >
+> > >         if (cache->flags & SLAB_KASAN)
+> > > -               set_track(&get_alloc_info(cache, object)->alloc_track, flags);
+> > > +               kasan_set_track(&get_alloc_info(cache, object)->alloc_track, flags);
+> > >
+> > >         return set_tag(object, tag);
+> > >  }
+> > > diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
+> > > index 3372bdcaf92a..763d8a13e0ac 100644
+> > > --- a/mm/kasan/generic.c
+> > > +++ b/mm/kasan/generic.c
+> > > @@ -344,3 +344,21 @@ void kasan_record_aux_stack(void *addr)
+> > >         alloc_info->aux_stack[1] = alloc_info->aux_stack[0];
+> > >         alloc_info->aux_stack[0] = kasan_save_stack(GFP_NOWAIT);
+> > >  }
+> > > +
+> > > +void kasan_set_free_info(struct kmem_cache *cache,
+> > > +                               void *object, u8 tag)
+> > > +{
+> > > +       struct kasan_free_meta *free_meta;
+> > > +
+> > > +       free_meta = get_free_info(cache, object);
+> > > +       kasan_set_track(&free_meta->free_track, GFP_NOWAIT);
+> > > +}
+> > > +
+> > > +struct kasan_track *kasan_get_free_track(struct kmem_cache *cache,
+> > > +                               void *object, u8 tag)
+> > > +{
+> > > +       struct kasan_free_meta *free_meta;
+> > > +
+> > > +       free_meta = get_free_info(cache, object);
+> > > +       return &free_meta->free_track;
+> > > +}
+> > > diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
+> > > index a7391bc83070..ad897ec36545 100644
+> > > --- a/mm/kasan/kasan.h
+> > > +++ b/mm/kasan/kasan.h
+> > > @@ -127,6 +127,9 @@ struct kasan_free_meta {
+> > >          * Otherwise it might be used for the allocator freelist.
+> > >          */
+> > >         struct qlist_node quarantine_link;
+> > > +#ifdef CONFIG_KASAN_GENERIC
+> > > +       struct kasan_track free_track;
+> > > +#endif
+> > >  };
+> > >
+> > >  struct kasan_alloc_meta *get_alloc_info(struct kmem_cache *cache,
+> > > @@ -168,6 +171,10 @@ void kasan_report_invalid_free(void *object, unsigned long ip);
+> > >  struct page *kasan_addr_to_page(const void *addr);
+> > >
+> > >  depot_stack_handle_t kasan_save_stack(gfp_t flags);
+> > > +void kasan_set_track(struct kasan_track *track, gfp_t flags);
+> > > +void kasan_set_free_info(struct kmem_cache *cache, void *object, u8 tag);
+> > > +struct kasan_track *kasan_get_free_track(struct kmem_cache *cache,
+> > > +                               void *object, u8 tag);
+> > >
+> > >  #if defined(CONFIG_KASAN_GENERIC) && \
+> > >         (defined(CONFIG_SLAB) || defined(CONFIG_SLUB))
+> > > diff --git a/mm/kasan/report.c b/mm/kasan/report.c
+> > > index 6f8f2bf8f53b..96d2657fe70f 100644
+> > > --- a/mm/kasan/report.c
+> > > +++ b/mm/kasan/report.c
+> > > @@ -159,26 +159,6 @@ static void describe_object_addr(struct kmem_cache *cache, void *object,
+> > >                 (void *)(object_addr + cache->object_size));
+> > >  }
+> > >
+> > > -static struct kasan_track *kasan_get_free_track(struct kmem_cache *cache,
+> > > -               void *object, u8 tag)
+> > > -{
+> > > -       struct kasan_alloc_meta *alloc_meta;
+> > > -       int i = 0;
+> > > -
+> > > -       alloc_meta = get_alloc_info(cache, object);
+> > > -
+> > > -#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
+> > > -       for (i = 0; i < KASAN_NR_FREE_STACKS; i++) {
+> > > -               if (alloc_meta->free_pointer_tag[i] == tag)
+> > > -                       break;
+> > > -       }
+> > > -       if (i == KASAN_NR_FREE_STACKS)
+> > > -               i = alloc_meta->free_track_idx;
+> > > -#endif
+> > > -
+> > > -       return &alloc_meta->free_track[i];
+> > > -}
+> > > -
+> > >  #ifdef CONFIG_KASAN_GENERIC
+> > >  static void print_stack(depot_stack_handle_t stack)
+> > >  {
+> > > diff --git a/mm/kasan/tags.c b/mm/kasan/tags.c
+> > > index 25b7734e7013..201dee5d6ae0 100644
+> > > --- a/mm/kasan/tags.c
+> > > +++ b/mm/kasan/tags.c
+> > > @@ -162,3 +162,40 @@ void __hwasan_tag_memory(unsigned long addr, u8 tag, unsigned long size)
+> > >         kasan_poison_shadow((void *)addr, size, tag);
+> > >  }
+> > >  EXPORT_SYMBOL(__hwasan_tag_memory);
+> > > +
+> > > +void kasan_set_free_info(struct kmem_cache *cache,
+> > > +                               void *object, u8 tag)
+> > > +{
+> > > +       struct kasan_alloc_meta *alloc_meta;
+> > > +       u8 idx = 0;
+> > > +
+> > > +       alloc_meta = get_alloc_info(cache, object);
+> > > +
+> > > +#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
+> > > +       idx = alloc_meta->free_track_idx;
+> > > +       alloc_meta->free_pointer_tag[idx] = tag;
+> > > +       alloc_meta->free_track_idx = (idx + 1) % KASAN_NR_FREE_STACKS;
+> > > +#endif
+> > > +
+> > > +       kasan_set_track(&alloc_meta->free_track[idx], GFP_NOWAIT);
+> > > +}
+> > > +
+> > > +struct kasan_track *kasan_get_free_track(struct kmem_cache *cache,
+> > > +                               void *object, u8 tag)
+> > > +{
+> > > +       struct kasan_alloc_meta *alloc_meta;
+> > > +       int i = 0;
+> > > +
+> > > +       alloc_meta = get_alloc_info(cache, object);
+> > > +
+> > > +#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
+> > > +       for (i = 0; i < KASAN_NR_FREE_STACKS; i++) {
+> > > +               if (alloc_meta->free_pointer_tag[i] == tag)
+> > > +                       break;
+> > > +       }
+> > > +       if (i == KASAN_NR_FREE_STACKS)
+> > > +               i = alloc_meta->free_track_idx;
+> > > +#endif
+> > > +
+> > > +       return &alloc_meta->free_track[i];
+> > > +}
+> >
+> > Hi Walter,
+> >
+> > FTR I've uploaded this for review purposes here:
+> > https://linux-review.googlesource.com/c/linux/kernel/git/torvalds/linux/+/2458
+> >
+> > Diff from the previous version is available as:
+> > https://linux-review.googlesource.com/c/linux/kernel/git/torvalds/linux/+/2458/1..2
+> >
+> > I've tested this locally and with syzkaller. This is :
+> >
+> > [   80.583021][    C3] Freed by task 0:
+> > [   80.583480][    C3]  kasan_save_stack+0x1b/0x40 mm/kasan/common.c:49
+> > [   80.584056][    C3]  kasan_set_track+0x1c/0x30 mm/kasan/common.c:57
+> > [   80.584617][    C3]  kasan_set_free_info+0x1b/0x30 mm/kasan/generic.c:354
+> > [   80.585221][    C3]  __kasan_slab_free+0xd8/0x120 mm/kasan/common.c:438
+> > [   80.585814][    C3]  __cache_free mm/slab.c:3426 [inline]
+> > [   80.585814][    C3]  kfree+0x10b/0x2b0 mm/slab.c:3757
+> > [   80.586291][    C3]  kasan_rcu_reclaim+0x16/0x43 [test_kasan]
+> > [   80.587009][    C3]  rcu_do_batch kernel/rcu/tree.c:2207 [inline]
+> > [   80.587009][    C3]  rcu_core+0x59f/0x1370 kernel/rcu/tree.c:2434
+> > [   80.587537][    C3]  __do_softirq+0x26c/0x9fa kernel/softirq.c:292
+> > [   80.588085][    C3]
+> > [   80.588367][    C3] Last one call_rcu() call stack:
+> > [   80.589052][    C3]  kasan_save_stack+0x1b/0x40 mm/kasan/common.c:49
+> > [   80.589622][    C3]  kasan_record_aux_stack+0x82/0xb0 mm/kasan/generic.c:345
+> > [   80.590254][    C3]  __call_rcu kernel/rcu/tree.c:2672 [inline]
+> > [   80.590254][    C3]  call_rcu+0x14f/0x7f0 kernel/rcu/tree.c:2746
+> > [   80.590782][    C3]  kasan_rcu_uaf+0xe4/0xeb [test_kasan]
+> > [   80.591697][    C3]  kmalloc_tests_init+0xbc/0x1097 [test_kasan]
+> > [   80.592900][    C3]  do_one_initcall+0x10a/0x7d0 init/main.c:1196
+> > [   80.593494][    C3]  do_init_module+0x1e6/0x6d0 kernel/module.c:3539
+> > [   80.594066][    C3]  load_module+0x7464/0x9450 kernel/module.c:3890
+> > [   80.594626][    C3]  __do_sys_init_module+0x1e3/0x220 kernel/module.c:3953
+> > [   80.595265][    C3]  do_syscall_64+0xf6/0x7d0 arch/x86/entry/common.c:295
+> > [   80.595822][    C3]  entry_SYSCALL_64_after_hwframe+0x49/0xb3
+> >
+> >
+> > Overall this looks very good to me.
+> > But there is one aspect that bothers me. In the previous patch you had
+> > code that returned NULL from kasan_get_free_track() if the object is
+> > live (which means free meta is not available, it's occupied by object
+> > data). Now you dropped that code, but I think we still need it.
+> > Otherwise we cast user object data to free meta and print the free
+> > stack/pid from whatever garbage is there. This may lead to very
+> > confusing output and potentially to crashes in stackdepot.
+> >
+>
+> Yes, I totally agree with you. In the previous email I thought that
+> there is a problem with free track, but I did not point it out. Thank
+> you for pointing this problem. As you mentioned, we should fix it.
+>
+> > What do you think about this patch on top of your patches?
+> > https://linux-review.googlesource.com/c/linux/kernel/git/torvalds/linux/+/2478
+> > This way we very precisely mark the period of time when the object has
+> > free track live and set.
+> > If it looks good to you, feel free to incorporate it into your series.
+> >
+>
+> Thank you for providing good idea solution.
+>
+> I saw this patch, that is a great patch. I think it can fix the issue
+> which has garbage stack. it should work as described below.
+>
+> 1). When object is live, then don't print free stack.
+> 2). When object is NOT alive, after free object:
+> 2a). when object is in quarantine, then it can print free stack
+> 2b). when object is NOT in quarantine, then it can NOT print free stack.
+>
+> I have a question about 2), why we don't directly use
+> KASAN_KMALLOC_FREE? if we directly use it, then 2b) can print free
+> stack? 2b) may has use-after-free? so that it may need free stack.
+
+
+We can't use KASAN_KMALLOC_FREE because of this part:
+
+static bool __kasan_slab_free(struct kmem_cache *cache, void *object,
+                  unsigned long ip, bool quarantine)
+{
+...
+    kasan_poison_shadow(object, rounded_up_size, KASAN_KMALLOC_FREE);
+
+    if ((IS_ENABLED(CONFIG_KASAN_GENERIC) && !quarantine) ||
+            unlikely(!(cache->flags & SLAB_KASAN)))
+        return false;
+
+    kasan_set_free_info(cache, object, tag);
+...
+
+
+We may set KASAN_KMALLOC_FREE, but not set the track (or even have
+memory for the track!).
+The object may not have free meta allocated at all, e.g. very large
+object with ctor (no place to store meta), or it may be in a mempool:
+https://elixir.bootlin.com/linux/v5.7-rc6/source/mm/mempool.c#L109
+and mempool may be using the object memory itself (for its own next
+link or something).
+
+KASAN_KMALLOC_FREETRACK very explicitly tracks the exact condition we
+want: we have meta info live now and we have free track set.
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
