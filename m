@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 08D8EC433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 11:29:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CEB15C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 11:30:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B5E76207F9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 11:29:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 88B5020758
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2020 11:30:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OMDxLcG2";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="gskof8By"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B5E76207F9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BpjLrNBW";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="DCTR0x8T"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 88B5020758
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bgdev.pl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ewjEEU1MlD9XSDaowpdwULfxBsdBaibUAs/LA0VQY4c=; b=OMDxLcG2O1Tz8U
-	cn/94Jokq8ro4NkaV60KG1rHSAZYasLnIHd3phf046rvRThKqvo0/lptr3P8dPpNoWe9jPfJs4cCm
-	wwaZXMc+AdKcNSBmVUc4K+o8eV4G5xACW/V3BF1aQgnvAI3ra8DCJCyW9ldw1kPOXMNpu/xaRJnkQ
-	rCacZl9DE7XvqwmTU1UBL4SLk2OM2j9QBNzk9NaenhpRP54oZHDafTCyX4iSBwYBo0IdZsAdjnYcF
-	rZe9ZlXUIfC4Ej/VxCSpHX/X8ckwszkhebcHb2AEjF6wbrNE6o4RptLeW+038u0WsZu/sW3QfQo1L
-	joPfgjo41pyRH9gc0lfw==;
+	List-Owner; bh=1UlWu62d+cechifTho4MA+f+fkn+zrgI0g1cGWrsiPw=; b=BpjLrNBWlqUsgz
+	KH2L/B5Iz3lU/CdRb6ufRh53gib3L853BctNmlHTychblPrPMmQNadH+X6udMIy+XS49FYbJesySW
+	/0QTg/1WPg9xBYGkALHvQxc973VMx93ihq/t+cr6IdIOQwUs6RKzd6thBJu/S0X2aW0E92iMdhchg
+	fHlFsARJr/YB3T6pUjwkb1LsUJxNdpbH3ldd0dWkHFOZXmmYm+XAM3yso6s/WqVCdXapQq2pWE2hP
+	AgSVDhUofH8crxLagpHXJxTbeumV1jm6glt16SafgtlAyBUY+vKwEUoO8MwPI+TxDcD+tLcEz9+tO
+	Pv7icydsCzYkMdZ9ae7g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbMuR-0001Vg-DO; Wed, 20 May 2020 11:29:15 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1jbMv7-00022R-FS; Wed, 20 May 2020 11:29:57 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbMr6-00075G-II
+ id 1jbMr7-00076l-TG
  for linux-mediatek@lists.infradead.org; Wed, 20 May 2020 11:25:54 +0000
-Received: by mail-wm1-x341.google.com with SMTP id m12so2209291wmc.0
- for <linux-mediatek@lists.infradead.org>; Wed, 20 May 2020 04:25:48 -0700 (PDT)
+Received: by mail-wm1-x343.google.com with SMTP id h4so2188503wmb.4
+ for <linux-mediatek@lists.infradead.org>; Wed, 20 May 2020 04:25:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=KiLRpfO6b7G+PZFXWrA65hqZV6E46x1U4Qg5U0775pc=;
- b=gskof8By63+0KDD0DdUs0emDDhPZad4DsU+WhXpPPj2iCFcQBV8IAhix7s9OuBI8sF
- FviIaCv4wlLAN0CX1SzhYWJ+ytJkU63OctfconMXzNUhgqh7/eP3s0pp6d2lO6riWM5i
- QzEFy9o8v3BFNvOjfiNOt7hPupLGEitK5tSVjVytErQ0Uf4A6a6Cc6pqURjYroF0xGFj
- JXLWZ7fMxCFLTDWF239HN5D+wphw1HGN5u0IEseg2S4FYh+M38w8DPk/n7Xn2jIWWb80
- laDuvRZpyjA5gIkZnU/Sp7NnoG+Nl+P6F1Pm0n4hY2wZEewn93GLh3Fo9KXPaRRgL/g/
- NHJw==
+ bh=nZF4M1Ryr6CWnpRgUMWuRsLTKn/UHmWXZ3+MZTEjA0A=;
+ b=DCTR0x8TJBa8+opcAvlYBjrh/vCYQMQoQ3RQ14CYFtSRQpZI/qhI4oIh4w0OI3jZxY
+ lUOXz7W+Pz6EP2XZ9uKzLEWgEH6gMU4ZNlDHEeOk5LmpYDOTtu19/ow+Uwlh5LBJZlgA
+ vze8VuncLa9NqJBxeRh9BoF6r/IyN/fJQ7/eytgThQv2cbdvbG0e6Rr9ZZMfGKx2P+zQ
+ yUmZmjfLffCCnwhOJ2L9/fDLMJtsbDO0OehqMKyXxypBkg7w5SuC58HzlZzSp3c1g15c
+ qkyU+xehJAV9meR5oFN4BX2lxYb1JrUCkes4m9UtJFVNZwHqMFRNHnCgzNKwrqTzj0lL
+ B6YQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=KiLRpfO6b7G+PZFXWrA65hqZV6E46x1U4Qg5U0775pc=;
- b=Rd3K16/fQqwXIyU4zZ2hJ9V7Ldl7iX1jJSsGM3qLLQu6uuq6vkSIlQZK5orPCSyKZx
- SB80qTZDOwPFseetyAw6UO/OhPZRYcEwjKlBCy3sJtLfqVnJW0s56sJkda8fBiW5f9Mj
- Te0rdMJy54+V2CgOH8qm8C/UcEeE6v9GKx5Po4zIDwD51Jwu2gpivp+0QTkYA54Gjvpi
- Gpk194qn5YQbQbISYy5rT1O2Z+KHZ/J4+r616bvnd0zCa2pzHuPTF8Hvcrw205G/jwv7
- wZ+7Kjb2kPNroixNcM3GYp9ZBwu8ipoVKVfRnVqpyMwO2WvBkJFRADPjUFXMTpc1JIfu
- ILNw==
-X-Gm-Message-State: AOAM533Waq0WEd5JoqRTNXt0lpY5XfZwzqwgTjqlEhVHDauT4Vkg4S96
- 2+xl5ljd/Zka5C1W83Yt3tD89g==
-X-Google-Smtp-Source: ABdhPJz0ZhvCEVA3BYC4i510rBDYS5vNUPdwWlMfTD8jHQeyLe6hAQkKC4vL1pXZbA/yRsghalkFmw==
-X-Received: by 2002:a1c:b60b:: with SMTP id g11mr4282669wmf.49.1589973947229; 
- Wed, 20 May 2020 04:25:47 -0700 (PDT)
+ bh=nZF4M1Ryr6CWnpRgUMWuRsLTKn/UHmWXZ3+MZTEjA0A=;
+ b=PI9IQyCigwxOqy//pya+Ny8DRAvWE/Ibi8XaY9ChcgJ1nqv3VokgEY7EtKC2VtJZFG
+ 3EooTj8XQPj4gREE+kTFwL8945EHOk91v9cnc2Ib8K1lnqUkfQ8DspDcg1g+PA8oXf9z
+ ltmxXn0D+mBpSk8ATMIwX2EAC9NtNJN3iJLBhGQc6hEBCD2/qI3hDKUyXWiCvHhBiQ5f
+ 7MfAPPCM6xHp4lKRssvhB7fVVb55F6o3pvZLDDRM6AZK4axmclxTIbqIPmM/RcFdxI+F
+ c584BAj5LAKGZIe90F0HAwQe+xwftTKK+tYPWWDcmkNLlgu3pjj0wxTTizQv1OQOm41N
+ eZXA==
+X-Gm-Message-State: AOAM530iCSwPIqlQ0dnLV42May8G7gS8PCUFGKG12x616iZCsadSNYhD
+ SdX0s/4RoF+7WF0p3CJc9c3COg==
+X-Google-Smtp-Source: ABdhPJyxQ3juEFptHcCtPg6At1kWItPyvN042bhzhG99WFO1SSzV77tG4mYBDeWML0N22iIOVzKg5g==
+X-Received: by 2002:a1c:6706:: with SMTP id b6mr4265142wmc.54.1589973948657;
+ Wed, 20 May 2020 04:25:48 -0700 (PDT)
 Received: from localhost.localdomain (lfbn-nic-1-65-232.w2-15.abo.wanadoo.fr.
  [2.15.156.232])
- by smtp.gmail.com with ESMTPSA id v22sm2729265wml.21.2020.05.20.04.25.45
+ by smtp.gmail.com with ESMTPSA id v22sm2729265wml.21.2020.05.20.04.25.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 May 2020 04:25:46 -0700 (PDT)
+ Wed, 20 May 2020 04:25:48 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
 To: Rob Herring <robh+dt@kernel.org>, "David S . Miller" <davem@davemloft.net>,
  Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <john@phrozen.org>,
@@ -81,17 +81,17 @@ To: Rob Herring <robh+dt@kernel.org>, "David S . Miller" <davem@davemloft.net>,
  Fabien Parent <fparent@baylibre.com>,
  Heiner Kallweit <hkallweit1@gmail.com>,
  Edwin Peer <edwin.peer@broadcom.com>
-Subject: [PATCH v4 10/11] ARM64: dts: mediatek: add ethernet pins for pumpkin
+Subject: [PATCH v4 11/11] ARM64: dts: mediatek: enable ethernet on pumpkin
  boards
-Date: Wed, 20 May 2020 13:25:22 +0200
-Message-Id: <20200520112523.30995-11-brgl@bgdev.pl>
+Date: Wed, 20 May 2020 13:25:23 +0200
+Message-Id: <20200520112523.30995-12-brgl@bgdev.pl>
 X-Mailer: git-send-email 2.25.0
 In-Reply-To: <20200520112523.30995-1-brgl@bgdev.pl>
 References: <20200520112523.30995-1-brgl@bgdev.pl>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200520_042548_669809_A6C8F38D 
-X-CRM114-Status: UNSURE (   8.84  )
+X-CRM114-CacheID: sfid-20200520_042550_094404_46C300C9 
+X-CRM114-Status: UNSURE (   9.57  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -117,37 +117,42 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 
-Setup the pin control for the Ethernet MAC.
+Add remaining properties to the ethernet node and enable it.
 
 Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 ---
- arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ .../boot/dts/mediatek/pumpkin-common.dtsi      | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-index 97d9b000c37e..4b1d5f69aba6 100644
+index 4b1d5f69aba6..dfceffe6950a 100644
 --- a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-@@ -219,4 +219,19 @@ gpio_mux_int_n_pin {
- 			bias-pull-up;
- 		};
- 	};
+@@ -167,6 +167,24 @@ &uart0 {
+ 	status = "okay";
+ };
+ 
++&ethernet {
++	pinctrl-names = "default";
++	pinctrl-0 = <&ethernet_pins_default>;
++	phy-handle = <&eth_phy>;
++	phy-mode = "rmii";
++	mac-address = [00 00 00 00 00 00];
++	status = "okay";
 +
-+	ethernet_pins_default: ethernet {
-+		pins_ethernet {
-+			pinmux = <MT8516_PIN_0_EINT0__FUNC_EXT_TXD0>,
-+				 <MT8516_PIN_1_EINT1__FUNC_EXT_TXD1>,
-+				 <MT8516_PIN_5_EINT5__FUNC_EXT_RXER>,
-+				 <MT8516_PIN_6_EINT6__FUNC_EXT_RXC>,
-+				 <MT8516_PIN_7_EINT7__FUNC_EXT_RXDV>,
-+				 <MT8516_PIN_8_EINT8__FUNC_EXT_RXD0>,
-+				 <MT8516_PIN_9_EINT9__FUNC_EXT_RXD1>,
-+				 <MT8516_PIN_12_EINT12__FUNC_EXT_TXEN>,
-+				 <MT8516_PIN_38_MRG_DI__FUNC_EXT_MDIO>,
-+				 <MT8516_PIN_39_MRG_DO__FUNC_EXT_MDC>;
++	mdio {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		eth_phy: ethernet-phy@0 {
++			reg = <0>;
 +		};
 +	};
- };
++};
++
+ &usb0 {
+ 	status = "okay";
+ 	dr_mode = "peripheral";
 -- 
 2.25.0
 
