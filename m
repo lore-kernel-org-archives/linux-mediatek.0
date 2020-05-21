@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F0DEEC433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 09:18:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C572BC433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 09:18:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C3FBA206BE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 09:18:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9BD9520759
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 09:18:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DrIUETa3";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Wahn+Jk1"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C3FBA206BE
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FAS+Y/AB";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="JHix4rt3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9BD9520759
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,56 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/TGrEWdr1b3TyZwKCILEIVu6qcEPOquvDlmKYgm3yyQ=; b=DrIUETa3NeRSfi
-	hcxK0mtgtLritzityFtHz3LJosQ+o8L1ekvZTiJDAecBn/QfBAJ5p9Bn8wc9dB8VVswODMFlYp7rI
-	7kTXtYG+eyqYJ7GfV71bz3nBjNwaXKmaBRRHF492wxgzVQpvNIeTQ34igMNJ6pQMGspgNaFiNPiJL
-	aLIfGSIDTbKB/XaoQQmdJIc2RGnbYu5w+wVHz4BV2Krp/d9qm25RFETrB0l2Uwq9rE4Fg1QiR6Iap
-	EB0Mf7A/PhK+2ZukI2HCOCNH9RnjHE9edgQ69DMN7KB9x/md9e9LdVhKcu5EDxOoTdu0p7QGwdEji
-	bOZV3fbT/qpPZWu9pwew==;
+	List-Owner; bh=SycgFlk87dsB2UI70lPpK9hQvHKqleBfzZqPI0sqFmw=; b=FAS+Y/ABfvYF0p
+	l800RufZmHSBDDlzV+Cj4mwSot29UDuPyGdL40+UdsEOW0ugnJ83aXh2zc2QIUNLFiFF/D3y5q498
+	HVFUZ1QRxMObACXyuYgHwUeeEM7jaSErpFNoQkqeGS1rFnwB1XWGz7+7ax1Gid4nGziLrEWSm8Y5z
+	ewHB4MJPc489uJRV0OBANLBGHzx4ZDS7wcts5Fvw60hpV7jRfTqZyYBpRuEAybqAXL1DEJ/Z4W4eD
+	PW0vBQUE6PsiXUyV2Xz9onggU8rX5M9TW+bKloLp7I0z/I9uRG2zYgHm4C3YN7bl2RCvmF0uMHHwl
+	U2czcY+77mOPriH3aOLQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbhLA-0004P3-Vq; Thu, 21 May 2020 09:18:12 +0000
+	id 1jbhLF-0004SF-7i; Thu, 21 May 2020 09:18:17 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbhJh-0003EK-5N; Thu, 21 May 2020 09:16:43 +0000
-X-UUID: a8a9952e8c5c463e8fbeedc337c5e0a2-20200521
+ id 1jbhJj-0003EK-Ek; Thu, 21 May 2020 09:16:45 +0000
+X-UUID: 29f4786d510445a48d27b5ce0382fe77-20200521
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=zwbXzk/BSIeNIvvjRJzpvop3PJsR4Rm3BIH0SLVJuBU=; 
- b=Wahn+Jk1fTh/MROBT5iSyLPSkm9INuhxrpFMxRMI/DBwuVwLufTWT5x87jfCUglaWdRwOSk+sRJCh2v6acibVQhdv9I6n5Z5clVE2y8ZH365uFbNzfv+qnZ2Jigf1oulKXg5cImcm3qLk33NQULzti74bRtt/zJ0fAiQo2wuDlM=;
-X-UUID: a8a9952e8c5c463e8fbeedc337c5e0a2-20200521
+ bh=0rM0q4hkZ0DNqIzZUdev1uMbsurkkv21fpGoS3vOqow=; 
+ b=JHix4rt3mDM6HVF2DzodHSwwmPMm2Dk4xequGXxWAXH+7AxcaBRZ+ttvXuSfQZ7xsoizcTHBUlmdP6r5QfclfhFTCxPsZLCyKqlCRXCIbrMAOnnieceAD9bzFizZRFgnHfG1hUp6pPvf64DhmlRRfBuv90C501QTHbADWCnlL+0=;
+X-UUID: 29f4786d510445a48d27b5ce0382fe77-20200521
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1305585473; Thu, 21 May 2020 01:16:33 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ with ESMTP id 613238491; Thu, 21 May 2020 01:16:33 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 21 May 2020 02:06:39 -0700
+ 15.0.1497.2; Thu, 21 May 2020 02:06:33 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 21 May 2020 17:06:30 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 21 May 2020 17:06:29 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 21 May 2020 17:06:30 +0800
+ Frontend Transport; Thu, 21 May 2020 17:06:29 +0800
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Enric Balletbo Serra <eballetbo@gmail.com>, Matthias Brugger
  <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, "Rob
  Herring" <robh@kernel.org>, Sascha Hauer <kernel@pengutronix.de>
-Subject: [PATCH v15 10/11] arm64: dts: Add power controller device node of
- MT8183
-Date: Thu, 21 May 2020 17:06:23 +0800
-Message-ID: <1590051985-29149-11-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v15 06/11] soc: mediatek: Add subsys clock control for bus
+ protection
+Date: Thu, 21 May 2020 17:06:19 +0800
+Message-ID: <1590051985-29149-7-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1590051985-29149-1-git-send-email-weiyi.lu@mediatek.com>
 References: <1590051985-29149-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 963B7AC0DEC99ADE267355ECEDD96D6BE2A8F32A693226180D074175C532F9E52000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_021641_260443_C1D24A0B 
-X-CRM114-Status: UNSURE (   8.04  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200521_021643_515668_4E7028CE 
+X-CRM114-Status: GOOD (  15.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,102 +94,147 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add power controller node and smi-common node for MT8183
-In scpsys node, it contains clocks and regmapping of
-infracfg and smi-common for bus protection.
+For the bus protection operations, some subsys clocks need to be enabled
+before releasing the protection, and vice versa.
+But those subsys clocks could only be controlled once its corresponding
+power domain is turned on first.
+In this patch, we add the subsys clock control into its relevant steps.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 62 ++++++++++++++++++++++++++++++++
- 1 file changed, 62 insertions(+)
+ drivers/soc/mediatek/mtk-scpsys.c | 62 +++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 60 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 97863ad..ff7fe0c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -8,6 +8,7 @@
- #include <dt-bindings/clock/mt8183-clk.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/power/mt8183-power.h>
- #include <dt-bindings/reset-controller/mt8183-resets.h>
- #include "mt8183-pinfunc.h"
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index 59a525a..ef2c668 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -97,6 +97,7 @@
+ #define MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT	BIT(23)
  
-@@ -301,6 +302,62 @@
- 			#interrupt-cells = <2>;
- 		};
+ #define MAX_CLKS	3
++#define MAX_SUBSYS_CLKS 10
  
-+		scpsys: power-controller@10006000 {
-+			compatible = "mediatek,mt8183-scpsys", "syscon";
-+			#power-domain-cells = <1>;
-+			reg = <0 0x10006000 0 0x1000>;
-+			clocks = <&topckgen CLK_TOP_MUX_AUD_INTBUS>,
-+				 <&infracfg CLK_INFRA_AUDIO>,
-+				 <&infracfg CLK_INFRA_AUDIO_26M_BCLK>,
-+				 <&topckgen CLK_TOP_MUX_MFG>,
-+				 <&topckgen CLK_TOP_MUX_MM>,
-+				 <&topckgen CLK_TOP_MUX_CAM>,
-+				 <&topckgen CLK_TOP_MUX_IMG>,
-+				 <&topckgen CLK_TOP_MUX_IPU_IF>,
-+				 <&topckgen CLK_TOP_MUX_DSP>,
-+				 <&topckgen CLK_TOP_MUX_DSP1>,
-+				 <&topckgen CLK_TOP_MUX_DSP2>,
-+				 <&mmsys CLK_MM_SMI_COMMON>,
-+				 <&mmsys CLK_MM_SMI_LARB0>,
-+				 <&mmsys CLK_MM_SMI_LARB1>,
-+				 <&mmsys CLK_MM_GALS_COMM0>,
-+				 <&mmsys CLK_MM_GALS_COMM1>,
-+				 <&mmsys CLK_MM_GALS_CCU2MM>,
-+				 <&mmsys CLK_MM_GALS_IPU12MM>,
-+				 <&mmsys CLK_MM_GALS_IMG2MM>,
-+				 <&mmsys CLK_MM_GALS_CAM2MM>,
-+				 <&mmsys CLK_MM_GALS_IPU2MM>,
-+				 <&imgsys CLK_IMG_LARB5>,
-+				 <&imgsys CLK_IMG_LARB2>,
-+				 <&camsys CLK_CAM_LARB6>,
-+				 <&camsys CLK_CAM_LARB3>,
-+				 <&camsys CLK_CAM_SENINF>,
-+				 <&camsys CLK_CAM_CAMSV0>,
-+				 <&camsys CLK_CAM_CAMSV1>,
-+				 <&camsys CLK_CAM_CAMSV2>,
-+				 <&camsys CLK_CAM_CCU>,
-+				 <&ipu_conn CLK_IPU_CONN_IPU>,
-+				 <&ipu_conn CLK_IPU_CONN_AHB>,
-+				 <&ipu_conn CLK_IPU_CONN_AXI>,
-+				 <&ipu_conn CLK_IPU_CONN_ISP>,
-+				 <&ipu_conn CLK_IPU_CONN_CAM_ADL>,
-+				 <&ipu_conn CLK_IPU_CONN_IMG_ADL>;
-+			clock-names = "audio", "audio1", "audio2",
-+				      "mfg", "mm", "cam",
-+				      "isp", "vpu", "vpu1",
-+				      "vpu2", "vpu3", "mm-0",
-+				      "mm-1", "mm-2", "mm-3",
-+				      "mm-4", "mm-5", "mm-6",
-+				      "mm-7", "mm-8", "mm-9",
-+				      "isp-0", "isp-1", "cam-0",
-+				      "cam-1", "cam-2", "cam-3",
-+				      "cam-4", "cam-5", "cam-6",
-+				      "vpu-0", "vpu-1", "vpu-2",
-+				      "vpu-3", "vpu-4", "vpu-5";
-+			infracfg = <&infracfg>;
-+			mediatek,smi = <&smi_common>;
-+		};
+ #define MAX_STEPS	4
+ 
+@@ -145,6 +146,8 @@ struct bus_prot {
+  * @sram_pdn_bits: The mask for sram power control bits.
+  * @sram_pdn_ack_bits: The mask for sram power control acked bits.
+  * @basic_clk_name: The basic clocks required by this power domain.
++ * @subsys_clk_prefix: The prefix name of the clocks need to be enabled
++ *                     before releasing bus protection.
+  * @caps: The flag for active wake-up action.
+  * @bp_table: The mask table for multiple step bus protection.
+  */
+@@ -155,6 +158,7 @@ struct scp_domain_data {
+ 	u32 sram_pdn_bits;
+ 	u32 sram_pdn_ack_bits;
+ 	const char *basic_clk_name[MAX_CLKS];
++	const char *subsys_clk_prefix;
+ 	u8 caps;
+ 	struct bus_prot bp_table[MAX_STEPS];
+ };
+@@ -165,6 +169,7 @@ struct scp_domain {
+ 	struct generic_pm_domain genpd;
+ 	struct scp *scp;
+ 	struct clk *clk[MAX_CLKS];
++	struct clk *subsys_clk[MAX_SUBSYS_CLKS];
+ 	const struct scp_domain_data *data;
+ 	struct regulator *supply;
+ };
+@@ -425,16 +430,22 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 	val |= PWR_RST_B_BIT;
+ 	writel(val, ctl_addr);
+ 
+-	ret = scpsys_sram_enable(scpd, ctl_addr);
++	ret = scpsys_clk_enable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
+ 	if (ret < 0)
+ 		goto err_pwr_ack;
+ 
++	ret = scpsys_sram_enable(scpd, ctl_addr);
++	if (ret < 0)
++		goto err_sram;
 +
- 		watchdog: watchdog@10007000 {
- 			compatible = "mediatek,mt8183-wdt",
- 				     "mediatek,mt6589-wdt";
-@@ -658,6 +715,11 @@
- 			#clock-cells = <1>;
- 		};
+ 	ret = scpsys_bus_protect_disable(scpd);
+ 	if (ret < 0)
+-		goto err_pwr_ack;
++		goto err_sram;
  
-+		smi_common: smi@14019000 {
-+			compatible = "mediatek,mt8183-smi-common", "syscon";
-+			reg = <0 0x14019000 0 0x1000>;
-+		};
+ 	return 0;
+ 
++err_sram:
++	scpsys_clk_disable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
+ err_pwr_ack:
+ 	scpsys_clk_disable(scpd->clk, MAX_CLKS);
+ err_clk:
+@@ -461,6 +472,8 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+ 	if (ret < 0)
+ 		goto out;
+ 
++	scpsys_clk_disable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
 +
- 		imgsys: syscon@15020000 {
- 			compatible = "mediatek,mt8183-imgsys", "syscon";
- 			reg = <0 0x15020000 0 0x1000>;
+ 	/* subsys power off */
+ 	val = readl(ctl_addr);
+ 	val |= PWR_ISO_BIT;
+@@ -498,6 +511,39 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+ 	return ret;
+ }
+ 
++static int init_subsys_clks(struct platform_device *pdev,
++		const char *prefix, struct clk **clk)
++{
++	struct device_node *node = pdev->dev.of_node;
++	u32 prefix_len, sub_clk_cnt = 0;
++	struct property *prop;
++	const char *clk_name;
++
++	prefix_len = strlen(prefix);
++
++	of_property_for_each_string(node, "clock-names", prop, clk_name) {
++		if (!strncmp(clk_name, prefix, prefix_len) &&
++				(clk_name[prefix_len] == '-')) {
++			if (sub_clk_cnt >= MAX_SUBSYS_CLKS) {
++				dev_err(&pdev->dev,
++					"subsys clk out of range %d\n",
++					sub_clk_cnt);
++				return -EINVAL;
++			}
++
++			clk[sub_clk_cnt] = devm_clk_get(&pdev->dev,
++						clk_name);
++
++			if (IS_ERR(clk[sub_clk_cnt]))
++				return PTR_ERR(clk[sub_clk_cnt]);
++
++			sub_clk_cnt++;
++		}
++	}
++
++	return sub_clk_cnt;
++}
++
+ static int init_basic_clks(struct platform_device *pdev, struct clk **clk,
+ 			const char * const *name)
+ {
+@@ -596,6 +642,18 @@ static struct scp *init_scp(struct platform_device *pdev,
+ 		if (ret)
+ 			return ERR_PTR(ret);
+ 
++		if (data->subsys_clk_prefix) {
++			ret = init_subsys_clks(pdev,
++					data->subsys_clk_prefix,
++					scpd->subsys_clk);
++			if (ret < 0) {
++				dev_err(&pdev->dev,
++					"%s: subsys clk unavailable\n",
++					data->name);
++				return ERR_PTR(ret);
++			}
++		}
++
+ 		genpd->name = data->name;
+ 		genpd->power_off = scpsys_power_off;
+ 		genpd->power_on = scpsys_power_on;
 -- 
 1.8.1.1.dirty
 _______________________________________________
