@@ -2,23 +2,23 @@ Return-Path: <SRS0=x8tw=7D=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-5.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EFB47C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 09:38:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8411EC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 09:39:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 97B842072C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 09:38:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 482C320721
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 09:39:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XabRTtWy";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="JdxO/adJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 97B842072C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fVPlICI0";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Il4rxdZq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 482C320721
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,57 +27,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EwXnQetwhL2RdO8DHYYZhM4OmDQhfeO36fc8591A/yo=; b=XabRTtWyzNKmQf
-	aiXCLsjgWkhH0GWZ3Yujk1rcwlgwZj5pVqHzbl/yfFqn90A7wXMCGOU1XKH1cO80e6nsw5NnqUW+I
-	PtgPKI3CqEMkEQZMN2CWgYyoMvHELifafkgr1vD5y1SYzYPphKrG55vEHGX61yNiRsGfULRRilYQo
-	ov15gOSaywqSAKZGOE0hlSo3+bWRiF/ah7/KxlPpsiYRdGcN8T7XAktlXzM9AUGCfzBx7dIrpc5x0
-	bxD8Nq99CZx9lAmY0ViYlDQ+7AC5UptpsZ5Zp4Jgt3mUBXk/Sx5+R7b3tiMlDzX9WK8SYb9rTGJKh
-	8SYBv2aSCSvBE/WDfRWQ==;
+	List-Owner; bh=Wl6yZ91GJCPj//9E5CaHahn1x6tnoUC35SJO2bN1yQE=; b=fVPlICI0b6O65W
+	5NBQSEqkA8wjRqW7bt4U0TR2Gb+71nDAtLNoA6pxwpnQBvRhS+kxTWkzXtDZu1sxnKh99SdbzZwA4
+	mYA3pEl17vHKE2BnR/yYgT2uaJ0Y9cHN0zVqQfyJTVZxlDVs3Wa9UspeSPQUT+5oUplsEx7E94gen
+	gFTbG6q8JhtFY3LxNl+KILymTxF5hIRFASCxcjCzCon2Gup2YDfLKEveTtfs+rwqdoGYkLzKpSAr+
+	nDLE9+MLsV0Eqi+IAdLww8KbA6nBhC4l2sX92ChksQmIhAny7L/mQO9cTV24MgFMmeInK79HDmXrZ
+	d9Yb9EDria+HHKm78dQg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbhf1-00044j-Lp; Thu, 21 May 2020 09:38:43 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1jbhfR-0004Ob-T7; Thu, 21 May 2020 09:39:09 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbhex-00043W-MV; Thu, 21 May 2020 09:38:41 +0000
-Received: by mail-wr1-x443.google.com with SMTP id l18so5999267wrn.6;
- Thu, 21 May 2020 02:38:36 -0700 (PDT)
+ id 1jbhf8-00049D-M7; Thu, 21 May 2020 09:38:52 +0000
+Received: by mail-wr1-x442.google.com with SMTP id e16so5983296wra.7;
+ Thu, 21 May 2020 02:38:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=IjIynyFwjf26UwcjQuyqUboBX8U9yn2u5B30EEyrNQ8=;
- b=JdxO/adJ3fPA7wQNwUb3KP7PToBjvulh0L8amrdXULsYDPbE99HYM6DxzWHQcANF6M
- AwG+3A5zQg7CEaH2Lu0ar3AuBzfQYj+cpxdoXzqoE7WLEfFXY42BrbtwOGtegUJO9Nkg
- 2aSR60B6i8/f7AGTn/S8e889e7bJvBrLhx+Waxq+swP1VYRP4AAVC0sSp9aLFPX+HM2p
- Dmob0CEJvc49kDfQIs9MiDu2wBQ/gRaoHpmX/NwA8dBieTRrUFyS50o+ZE5nQeJjdSB5
- 1finPez0mOiXEAMnq7rsCEqJrrEpnbx93Ld8iOnI2OQaRSH4Zwqk329llzIYBmsU2iyy
- lBhw==
+ bh=C7yQ0ptbZU7KZnOlxUVIZpP6EXczodGdgmJQdoW6NPg=;
+ b=Il4rxdZqAwPWu6MpGCvSdPJVldDI6qGUzV6YCpjPoUJrx7WxA3Pzo/Wr4kPFUs1YhR
+ Pxj4L1WPVzDewsAGX7Pajd0O01+mPpE1TJwS/dsVDmi2YAEa1dlfDmmUMKt4YSY3WEev
+ HoTiyrI3NoCRPNacN/4N0s0BdmAsl6zVqCcCVK5eqgt6toJScP9jk/5Hlqw0Wtk+M6Ka
+ yFTdipAeXr2c9mX4zPJxfQw59ei69d9gYzIpSDhKa9H2LYJDr98nES87qAsAQ5TOe4Jo
+ jR23AWof40JfaSgxxpYl0u44fiPt2lr+wPxrqsTB9Diw60zQYujua5RDmRWcAGOKZ2OM
+ h2VQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=IjIynyFwjf26UwcjQuyqUboBX8U9yn2u5B30EEyrNQ8=;
- b=NvEVgBoDC92P3uiZUEJ9zsgiGafnFCgMSJ4x2LwOSdXF3NQyyEGi4/wUtFqpKS1s90
- BBM5HDeFXOr5Apw8zg3QqgT0RXzGo4ZZ9xHMt4VGIXBmVQabWiPhOCdxadRA+uP/b825
- euMspnlzhCQi+kUBgs1dYfbjkql5xrsKA2kOu+wiN+ETd7PLQ//cDkP8JDK0UkxjPojc
- 89Sk9hnKUUIOpq5A2NT0wTYYoaoECAam1WPSMGlidD7kK1jxJ/1tqeqw8lT4sWcrdHGu
- LvqkAa9URIOOqsmjTCmx8XXKvutYOsRcjYys1UlTcfmQJzrYIVKZhzpzy1fO2HRHhoQH
- 1o9A==
-X-Gm-Message-State: AOAM530xsG5zHB7pf4PDJ9ph45eWS3dbnGHq7Tzq3vb6ZCNJZk+LhwiL
- CF6MFkgJhb09yaBD9xoShGU=
-X-Google-Smtp-Source: ABdhPJySJPLAsYHqliY9um18QDi2CpLJ45pMjJkSEbNL871bR0CB21Kqoqo6M1ErOgcdIqKGngD5Rg==
-X-Received: by 2002:adf:82c3:: with SMTP id 61mr8265605wrc.326.1590053915713; 
- Thu, 21 May 2020 02:38:35 -0700 (PDT)
+ bh=C7yQ0ptbZU7KZnOlxUVIZpP6EXczodGdgmJQdoW6NPg=;
+ b=YKiS7TE5h/gqmU/GVHO9k1N4L8MjLiECkflNrX73UsdYzqUEEtjxQxZ2/t4Bwn1Q0S
+ U6WE8p+W47Z1pftL6FHMK57FwfT5AnTxWbDrRpI9ECVfSL/XaYCVJmgZyceq4uaeOavM
+ 1hB3Loolxmj83XOvGCMm5Dv41jdbNabfMUIGbyGpN7Srg+lgzML7K8TZ7AIwpvsWuTEx
+ /oV0tKua12j7ynn4q1F2xMhS+46cR2+shsmfUJ8W68R2yUtXyg2KDDpqySIKI5tmkylc
+ E45b8cPDlMaa9FqKtnec7GH1t25Bh0UZRO8g4+40w/i9Tw0hNpUsXANy18HcaXOnMAia
+ utAQ==
+X-Gm-Message-State: AOAM530L2i3Tyk349AAMMDP7M+gFglSMUM4V/fWc5oTr8+nJZ0NsEE7c
+ o7QNfkgmigFsAoyV0UTHlqg=
+X-Google-Smtp-Source: ABdhPJyN6sxJp3xEIh+JPBeCNNk7peJGmsQowVToar1yZ794e2EOEDpZLrKi9XY9ErENsvv14XbzAA==
+X-Received: by 2002:adf:f4d0:: with SMTP id h16mr315735wrp.230.1590053928141; 
+ Thu, 21 May 2020 02:38:48 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id h137sm11971318wme.0.2020.05.21.02.38.34
+ by smtp.gmail.com with ESMTPSA id z7sm5818784wrl.88.2020.05.21.02.38.46
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 21 May 2020 02:38:34 -0700 (PDT)
-Subject: Re: [PATCH v13 6/6] arm64: dts: mt6358: add PMIC MT6358 related nodes
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
- Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>
+ Thu, 21 May 2020 02:38:47 -0700 (PDT)
+Subject: Re: [PATCH v13 5/6] rtc: mt6397: Add support for the MediaTek MT6358
+ RTC
+To: Lee Jones <lee.jones@linaro.org>
 References: <1587438012-24832-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1587438012-24832-7-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1587438012-24832-6-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <27c107b3-6ea8-e6f9-697c-7c3c4479008c@gmail.com>
+ <20200521074718.GN271301@dell>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -153,16 +154,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <1020bb5d-ff0f-7d34-5c6a-d9cfe38f912a@gmail.com>
-Date: Thu, 21 May 2020 11:38:33 +0200
+Message-ID: <e3e29827-002d-0013-b0a0-675673afbac7@gmail.com>
+Date: Thu, 21 May 2020 11:38:46 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <1587438012-24832-7-git-send-email-hsin-hsiung.wang@mediatek.com>
+In-Reply-To: <20200521074718.GN271301@dell>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_023839_938537_22F25FD9 
-X-CRM114-Status: GOOD (  17.29  )
+X-CRM114-CacheID: sfid-20200521_023850_763796_2135820A 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -175,14 +176,16 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: linux-rtc@vger.kernel.org, Alessandro Zummo <a.zummo@towertech.it>,
- Josef Friedl <josef.friedl@speed.at>, drinkcat@chromium.org,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, drinkcat@chromium.org,
  srv_heupstream@mediatek.com, Frank Wunderlich <frank-w@public-files.de>,
- Ran Bi <ran.bi@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Sebastian Reichel <sre@kernel.org>, linux-kernel@vger.kernel.org,
- Richard Fontana <rfontana@redhat.com>, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
- Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>,
- linux-arm-kernel@lists.infradead.org
+ Josef Friedl <josef.friedl@speed.at>, Ran Bi <ran.bi@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Sebastian Reichel <sre@kernel.org>,
+ linux-kernel@vger.kernel.org, Richard Fontana <rfontana@redhat.com>,
+ devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-pm@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>,
+ Eddie Huang <eddie.huang@mediatek.com>,
+ Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -190,399 +193,37 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 21/04/2020 05:00, Hsin-Hsiung Wang wrote:
-> add PMIC MT6358 related nodes which is for MT8183 platform
+On 21/05/2020 09:47, Lee Jones wrote:
+> On Sat, 16 May 2020, Matthias Brugger wrote:
 > 
-> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> ---
-
-Now queued for v5.7-next/dts64
+>> Hi Lee,
+>>
+>> On 21/04/2020 05:00, Hsin-Hsiung Wang wrote:
+>>> From: Ran Bi <ran.bi@mediatek.com>
+>>>
+>>> This add support for the MediaTek MT6358 RTC. Driver using
+>>> compatible data to store different RTC_WRTGR address offset.
+>>> This replace RTC_WRTGR to RTC_WRTGR_MT6323 in mt6323-poweroff
+>>> driver which only needed by armv7 CPU without ATF.
+>>>
+>>> Signed-off-by: Ran Bi <ran.bi@mediatek.com>
+>>> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+>>> Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
+>>> Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
+>>> Acked-by: Sebastian Reichel <sre@kernel.org>
+>>> Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+>>
+>> We have Acked-by from rtc and reset drivers maintainers. Are you OK to take them
+>> through your mfd branch?
+>>
+>> Are you planning to queue them for v5.8?
+>>
+>> Just asking because if so I'd queue patch 6 through my tree.
+> 
+> Yes, please take patch 6.
+> 
 
 Thanks!
-
-
->  arch/arm64/boot/dts/mediatek/mt6358.dtsi    | 358 ++++++++++++++++++++++++++++
->  arch/arm64/boot/dts/mediatek/mt8183-evb.dts |   1 +
->  2 files changed, 359 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt6358.dtsi
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6358.dtsi b/arch/arm64/boot/dts/mediatek/mt6358.dtsi
-> new file mode 100644
-> index 0000000..9361ada
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt6358.dtsi
-> @@ -0,0 +1,358 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright (c) 2020 MediaTek Inc.
-> + */
-> +
-> +&pwrap {
-> +	pmic: mt6358 {
-> +		compatible = "mediatek,mt6358";
-> +		interrupt-controller;
-> +		interrupt-parent = <&pio>;
-> +		interrupts = <182 IRQ_TYPE_LEVEL_HIGH>;
-> +		#interrupt-cells = <2>;
-> +
-> +		mt6358codec: mt6358codec {
-> +			compatible = "mediatek,mt6358-sound";
-> +		};
-> +
-> +		mt6358regulator: mt6358regulator {
-> +			mt6358_vdram1_reg: buck_vdram1 {
-> +				regulator-name = "vdram1";
-> +				regulator-min-microvolt = <500000>;
-> +				regulator-max-microvolt = <2087500>;
-> +				regulator-ramp-delay = <12500>;
-> +				regulator-enable-ramp-delay = <0>;
-> +				regulator-always-on;
-> +				regulator-allowed-modes = <0 1>;
-> +			};
-> +
-> +			mt6358_vcore_reg: buck_vcore {
-> +				regulator-name = "vcore";
-> +				regulator-min-microvolt = <500000>;
-> +				regulator-max-microvolt = <1293750>;
-> +				regulator-ramp-delay = <6250>;
-> +				regulator-enable-ramp-delay = <200>;
-> +				regulator-always-on;
-> +				regulator-allowed-modes = <0 1>;
-> +			};
-> +
-> +			mt6358_vpa_reg: buck_vpa {
-> +				regulator-name = "vpa";
-> +				regulator-min-microvolt = <500000>;
-> +				regulator-max-microvolt = <3650000>;
-> +				regulator-ramp-delay = <50000>;
-> +				regulator-enable-ramp-delay = <250>;
-> +				regulator-allowed-modes = <0 1>;
-> +			};
-> +
-> +			mt6358_vproc11_reg: buck_vproc11 {
-> +				regulator-name = "vproc11";
-> +				regulator-min-microvolt = <500000>;
-> +				regulator-max-microvolt = <1293750>;
-> +				regulator-ramp-delay = <6250>;
-> +				regulator-enable-ramp-delay = <200>;
-> +				regulator-always-on;
-> +				regulator-allowed-modes = <0 1>;
-> +			};
-> +
-> +			mt6358_vproc12_reg: buck_vproc12 {
-> +				regulator-name = "vproc12";
-> +				regulator-min-microvolt = <500000>;
-> +				regulator-max-microvolt = <1293750>;
-> +				regulator-ramp-delay = <6250>;
-> +				regulator-enable-ramp-delay = <200>;
-> +				regulator-always-on;
-> +				regulator-allowed-modes = <0 1>;
-> +			};
-> +
-> +			mt6358_vgpu_reg: buck_vgpu {
-> +				regulator-name = "vgpu";
-> +				regulator-min-microvolt = <500000>;
-> +				regulator-max-microvolt = <1293750>;
-> +				regulator-ramp-delay = <6250>;
-> +				regulator-enable-ramp-delay = <200>;
-> +				regulator-allowed-modes = <0 1>;
-> +			};
-> +
-> +			mt6358_vs2_reg: buck_vs2 {
-> +				regulator-name = "vs2";
-> +				regulator-min-microvolt = <500000>;
-> +				regulator-max-microvolt = <2087500>;
-> +				regulator-ramp-delay = <12500>;
-> +				regulator-enable-ramp-delay = <0>;
-> +				regulator-always-on;
-> +			};
-> +
-> +			mt6358_vmodem_reg: buck_vmodem {
-> +				regulator-name = "vmodem";
-> +				regulator-min-microvolt = <500000>;
-> +				regulator-max-microvolt = <1293750>;
-> +				regulator-ramp-delay = <6250>;
-> +				regulator-enable-ramp-delay = <900>;
-> +				regulator-always-on;
-> +				regulator-allowed-modes = <0 1>;
-> +			};
-> +
-> +			mt6358_vs1_reg: buck_vs1 {
-> +				regulator-name = "vs1";
-> +				regulator-min-microvolt = <1000000>;
-> +				regulator-max-microvolt = <2587500>;
-> +				regulator-ramp-delay = <12500>;
-> +				regulator-enable-ramp-delay = <0>;
-> +				regulator-always-on;
-> +			};
-> +
-> +			mt6358_vdram2_reg: ldo_vdram2 {
-> +				regulator-name = "vdram2";
-> +				regulator-min-microvolt = <600000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-enable-ramp-delay = <3300>;
-> +			};
-> +
-> +			mt6358_vsim1_reg: ldo_vsim1 {
-> +				regulator-name = "vsim1";
-> +				regulator-min-microvolt = <1700000>;
-> +				regulator-max-microvolt = <3100000>;
-> +				regulator-enable-ramp-delay = <540>;
-> +			};
-> +
-> +			mt6358_vibr_reg: ldo_vibr {
-> +				regulator-name = "vibr";
-> +				regulator-min-microvolt = <1200000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-enable-ramp-delay = <60>;
-> +			};
-> +
-> +			mt6358_vrf12_reg: ldo_vrf12 {
-> +				compatible = "regulator-fixed";
-> +				regulator-name = "vrf12";
-> +				regulator-min-microvolt = <1200000>;
-> +				regulator-max-microvolt = <1200000>;
-> +				regulator-enable-ramp-delay = <120>;
-> +			};
-> +
-> +			mt6358_vio18_reg: ldo_vio18 {
-> +				compatible = "regulator-fixed";
-> +				regulator-name = "vio18";
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-enable-ramp-delay = <2700>;
-> +				regulator-always-on;
-> +			};
-> +
-> +			mt6358_vusb_reg: ldo_vusb {
-> +				regulator-name = "vusb";
-> +				regulator-min-microvolt = <3000000>;
-> +				regulator-max-microvolt = <3100000>;
-> +				regulator-enable-ramp-delay = <270>;
-> +				regulator-always-on;
-> +			};
-> +
-> +			mt6358_vcamio_reg: ldo_vcamio {
-> +				compatible = "regulator-fixed";
-> +				regulator-name = "vcamio";
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-enable-ramp-delay = <325>;
-> +			};
-> +
-> +			mt6358_vcamd_reg: ldo_vcamd {
-> +				regulator-name = "vcamd";
-> +				regulator-min-microvolt = <900000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-enable-ramp-delay = <325>;
-> +			};
-> +
-> +			mt6358_vcn18_reg: ldo_vcn18 {
-> +				compatible = "regulator-fixed";
-> +				regulator-name = "vcn18";
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-enable-ramp-delay = <270>;
-> +			};
-> +
-> +			mt6358_vfe28_reg: ldo_vfe28 {
-> +				compatible = "regulator-fixed";
-> +				regulator-name = "vfe28";
-> +				regulator-min-microvolt = <2800000>;
-> +				regulator-max-microvolt = <2800000>;
-> +				regulator-enable-ramp-delay = <270>;
-> +			};
-> +
-> +			mt6358_vsram_proc11_reg: ldo_vsram_proc11 {
-> +				regulator-name = "vsram_proc11";
-> +				regulator-min-microvolt = <500000>;
-> +				regulator-max-microvolt = <1293750>;
-> +				regulator-ramp-delay = <6250>;
-> +				regulator-enable-ramp-delay = <240>;
-> +				regulator-always-on;
-> +			};
-> +
-> +			mt6358_vcn28_reg: ldo_vcn28 {
-> +				compatible = "regulator-fixed";
-> +				regulator-name = "vcn28";
-> +				regulator-min-microvolt = <2800000>;
-> +				regulator-max-microvolt = <2800000>;
-> +				regulator-enable-ramp-delay = <270>;
-> +			};
-> +
-> +			mt6358_vsram_others_reg: ldo_vsram_others {
-> +				regulator-name = "vsram_others";
-> +				regulator-min-microvolt = <500000>;
-> +				regulator-max-microvolt = <1293750>;
-> +				regulator-ramp-delay = <6250>;
-> +				regulator-enable-ramp-delay = <240>;
-> +				regulator-always-on;
-> +			};
-> +
-> +			mt6358_vsram_gpu_reg: ldo_vsram_gpu {
-> +				regulator-name = "vsram_gpu";
-> +				regulator-min-microvolt = <500000>;
-> +				regulator-max-microvolt = <1293750>;
-> +				regulator-ramp-delay = <6250>;
-> +				regulator-enable-ramp-delay = <240>;
-> +			};
-> +
-> +			mt6358_vxo22_reg: ldo_vxo22 {
-> +				compatible = "regulator-fixed";
-> +				regulator-name = "vxo22";
-> +				regulator-min-microvolt = <2200000>;
-> +				regulator-max-microvolt = <2200000>;
-> +				regulator-enable-ramp-delay = <120>;
-> +				regulator-always-on;
-> +			};
-> +
-> +			mt6358_vefuse_reg: ldo_vefuse {
-> +				regulator-name = "vefuse";
-> +				regulator-min-microvolt = <1700000>;
-> +				regulator-max-microvolt = <1900000>;
-> +				regulator-enable-ramp-delay = <270>;
-> +			};
-> +
-> +			mt6358_vaux18_reg: ldo_vaux18 {
-> +				compatible = "regulator-fixed";
-> +				regulator-name = "vaux18";
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-enable-ramp-delay = <270>;
-> +			};
-> +
-> +			mt6358_vmch_reg: ldo_vmch {
-> +				regulator-name = "vmch";
-> +				regulator-min-microvolt = <2900000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-enable-ramp-delay = <60>;
-> +			};
-> +
-> +			mt6358_vbif28_reg: ldo_vbif28 {
-> +				compatible = "regulator-fixed";
-> +				regulator-name = "vbif28";
-> +				regulator-min-microvolt = <2800000>;
-> +				regulator-max-microvolt = <2800000>;
-> +				regulator-enable-ramp-delay = <270>;
-> +			};
-> +
-> +			mt6358_vsram_proc12_reg: ldo_vsram_proc12 {
-> +				regulator-name = "vsram_proc12";
-> +				regulator-min-microvolt = <500000>;
-> +				regulator-max-microvolt = <1293750>;
-> +				regulator-ramp-delay = <6250>;
-> +				regulator-enable-ramp-delay = <240>;
-> +				regulator-always-on;
-> +			};
-> +
-> +			mt6358_vcama1_reg: ldo_vcama1 {
-> +				regulator-name = "vcama1";
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <3000000>;
-> +				regulator-enable-ramp-delay = <325>;
-> +			};
-> +
-> +			mt6358_vemc_reg: ldo_vemc {
-> +				regulator-name = "vemc";
-> +				regulator-min-microvolt = <2900000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-enable-ramp-delay = <60>;
-> +			};
-> +
-> +			mt6358_vio28_reg: ldo_vio28 {
-> +				compatible = "regulator-fixed";
-> +				regulator-name = "vio28";
-> +				regulator-min-microvolt = <2800000>;
-> +				regulator-max-microvolt = <2800000>;
-> +				regulator-enable-ramp-delay = <270>;
-> +			};
-> +
-> +			mt6358_va12_reg: ldo_va12 {
-> +				compatible = "regulator-fixed";
-> +				regulator-name = "va12";
-> +				regulator-min-microvolt = <1200000>;
-> +				regulator-max-microvolt = <1200000>;
-> +				regulator-enable-ramp-delay = <270>;
-> +				regulator-always-on;
-> +			};
-> +
-> +			mt6358_vrf18_reg: ldo_vrf18 {
-> +				compatible = "regulator-fixed";
-> +				regulator-name = "vrf18";
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-enable-ramp-delay = <120>;
-> +			};
-> +
-> +			mt6358_vcn33_bt_reg: ldo_vcn33_bt {
-> +				regulator-name = "vcn33_bt";
-> +				regulator-min-microvolt = <3300000>;
-> +				regulator-max-microvolt = <3500000>;
-> +				regulator-enable-ramp-delay = <270>;
-> +			};
-> +
-> +			mt6358_vcn33_wifi_reg: ldo_vcn33_wifi {
-> +				regulator-name = "vcn33_wifi";
-> +				regulator-min-microvolt = <3300000>;
-> +				regulator-max-microvolt = <3500000>;
-> +				regulator-enable-ramp-delay = <270>;
-> +			};
-> +
-> +			mt6358_vcama2_reg: ldo_vcama2 {
-> +				regulator-name = "vcama2";
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <3000000>;
-> +				regulator-enable-ramp-delay = <325>;
-> +			};
-> +
-> +			mt6358_vmc_reg: ldo_vmc {
-> +				regulator-name = "vmc";
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-enable-ramp-delay = <60>;
-> +			};
-> +
-> +			mt6358_vldo28_reg: ldo_vldo28 {
-> +				regulator-name = "vldo28";
-> +				regulator-min-microvolt = <2800000>;
-> +				regulator-max-microvolt = <3000000>;
-> +				regulator-enable-ramp-delay = <270>;
-> +			};
-> +
-> +			mt6358_vaud28_reg: ldo_vaud28 {
-> +				compatible = "regulator-fixed";
-> +				regulator-name = "vaud28";
-> +				regulator-min-microvolt = <2800000>;
-> +				regulator-max-microvolt = <2800000>;
-> +				regulator-enable-ramp-delay = <270>;
-> +			};
-> +
-> +			mt6358_vsim2_reg: ldo_vsim2 {
-> +				regulator-name = "vsim2";
-> +				regulator-min-microvolt = <1700000>;
-> +				regulator-max-microvolt = <3100000>;
-> +				regulator-enable-ramp-delay = <540>;
-> +			};
-> +		};
-> +
-> +		mt6358rtc: mt6358rtc {
-> +			compatible = "mediatek,mt6358-rtc";
-> +		};
-> +	};
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> index 1fb195c..9eb84d7 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> @@ -7,6 +7,7 @@
->  
->  /dts-v1/;
->  #include "mt8183.dtsi"
-> +#include "mt6358.dtsi"
->  
->  / {
->  	model = "MediaTek MT8183 evaluation board";
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
