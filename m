@@ -2,91 +2,70 @@ Return-Path: <SRS0=x8tw=7D=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0023FC433E2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 07:47:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D04CC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 08:11:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BA7C82065F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 07:47:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DCBCB20759
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 08:11:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="p3YKt1X3";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="vqpwnjz8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BA7C82065F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FneZqoks"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DCBCB20759
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=mxic.com.tw
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Date:From:Message-ID:MIME-Version:
+	Subject:To:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=++GZTNEYC/p0wkWIsObZwK8Ozu8Nfy9rbCYhHdGTZ2k=; b=p3YKt1X3xyci+M
-	FITaB75KuHp68SToq16KeoiR73VSduQW18OlrReyqkcGIEG2XLwmSOygovEgD0KJdR0uSctvaJhtx
-	eXLUqyDLCEqeOu76IuChX89b4Pl3ROGqrDBgoLXIxEv5NxL206DajqroTK9xqlyFcRbpMgSf9YtRT
-	bzDog1PsvzNmLQt81QAI1DGipVBKun4JNbg1LXdVWGBLUWTHEXvh/echWtRSiHQjZCCgwTGuePgAl
-	20bTlX7dUeUMzN73zm4/n5pCwVoqXopZpnfCoOyA/92ZoyoLcnAd0/tDi0C4Xzzpord3hnYXaTTwb
-	ogIvYAlgE5oBkh3T2M2A==;
+	List-Owner; bh=Hb8DWYuDbvEY5ebN8BRhu2F+3ChY2zPlsjtWBJHbxuI=; b=FneZqoks7JbAsR
+	892R8rVh0Fh9ULEV3MfL+r5c2f46du5CpEeRFE2xZVhLBgsgysceSkioWLHt8l4VRZyncTLfNitnO
+	7qjt2q2WF4m4NvsGW7EvTalZh9khhDamnuQj4RJ75HQ80mwL4Zo71vg5B0Gl0v90+4uhHPnOWWm9k
+	msQh0yj9YANzmvP8HIPSvMT+nAtYibJeON2MvH+BkdvYx4gzoX8pLEI170fXj/8G5QuGr1CMBP8vb
+	iOW6c6cCliGt1ATYkEgND9zEIaWqaY1xlM18UEkHxVwrhFx4FZnwRXWz6LDClyKbbhhyNntvS9lYs
+	FQG/wlJcv2Qe/EYKbhHQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbfvd-0001zk-Sy; Thu, 21 May 2020 07:47:45 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1jbgI0-0000hW-8l; Thu, 21 May 2020 08:10:52 +0000
+Received: from twhmllg3.macronix.com ([122.147.135.201])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbfvQ-0001pe-OY
- for linux-mediatek@lists.infradead.org; Thu, 21 May 2020 07:47:34 +0000
-Received: by mail-wr1-x444.google.com with SMTP id e1so5690058wrt.5
- for <linux-mediatek@lists.infradead.org>; Thu, 21 May 2020 00:47:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=scVYFjBGBAzKQ/hMy8PhK3pElGqsrP2y83QVfuiAxH4=;
- b=vqpwnjz86M45u3Gnp4IxKufT5KEo7fxf+vl36qzM3nHslyhDCEJIEgQAXKyrOkPOzr
- sxkJdaadCkojgsCryJFV/NsqAGAwrjmBPRNvm9KBnA7Rh2O1j/zY5DwTpPhcFG/rXfkM
- 6S23fM0SLLJ7TiHNbL0XWiLK7+upJ5+t62Ye2cO2Wkc0mHW9D9DAJ/WC/rz68M4FmrLX
- k27QqVbp3qP4CmlFWSn5xCNh4GWwvUfMdUElIrpD+rHd5Pa/4AMCOHm/zmAtjuENvG0C
- TUv6XE2S4gfjQ9slqcNHl1ztwdytcQWprTsMRJNpfjLkzetO4LLbY5K/5RpxkGAy8lfS
- nK7Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=scVYFjBGBAzKQ/hMy8PhK3pElGqsrP2y83QVfuiAxH4=;
- b=uKp05jsIFaDobGE1H9Sm6WIlwVSJetnEV/4iwG1xvvG6eGBj/SkRKlB2tpLJ8YroOZ
- lITaFrHvs2T8mrpE3y/7BIjxSAlzdB8I1C7w4lZNfKSIHDNyyQIsLum9WXA2rPI53+zJ
- aaUC6fYhgIypVXoqfrksjnbv0n45h2G7zIuNFxpAu1rZSFCHtqMAnVIeynIxQ606fR74
- 5mGA9zyXms/2tamfV1uyJZKW8VerkzI7eYhROvPzd1yGDw4LI0Cc67YT2kzgbGf3uky5
- uQkcBV9oegnPIb9IoG/6PCGYFf0ickfl1Y+H2CgszhaCVtS546BlsN0PbejIx0QpXYKM
- Nqig==
-X-Gm-Message-State: AOAM5303K7cvUIXmss9uIvyXdPG0Z1Cs78wQv8svP8+h/OEqW+RAjFge
- 5xmuw46ggyNQ3JKKZlcsl9xG7w==
-X-Google-Smtp-Source: ABdhPJxcZ6ZWteBLNFuVjrXs9CMtGph22AZeEwlyAM3AdFye7vHS83vjlNDUgEYM0NT1woW4CXf4Zg==
-X-Received: by 2002:adf:9010:: with SMTP id h16mr7329094wrh.412.1590047241123; 
- Thu, 21 May 2020 00:47:21 -0700 (PDT)
-Received: from dell ([95.149.164.102])
- by smtp.gmail.com with ESMTPSA id h20sm5542798wma.6.2020.05.21.00.47.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 May 2020 00:47:20 -0700 (PDT)
-Date: Thu, 21 May 2020 08:47:18 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v13 5/6] rtc: mt6397: Add support for the MediaTek MT6358
- RTC
-Message-ID: <20200521074718.GN271301@dell>
-References: <1587438012-24832-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1587438012-24832-6-git-send-email-hsin-hsiung.wang@mediatek.com>
- <27c107b3-6ea8-e6f9-697c-7c3c4479008c@gmail.com>
+ id 1jbgHf-0000NA-Dt; Thu, 21 May 2020 08:10:37 +0000
+Received: from twhfmlp1.macronix.com (twhfmlp1.macronix.com [172.17.20.91])
+ by TWHMLLG3.macronix.com with ESMTP id 04L89rJP053197;
+ Thu, 21 May 2020 16:09:53 +0800 (GMT-8)
+ (envelope-from masonccyang@mxic.com.tw)
+Received: from MXML06C.mxic.com.tw (mxml06c.macronix.com [172.17.14.55])
+ by Forcepoint Email with ESMTP id 7422D97B974B4667C822;
+ Thu, 21 May 2020 16:09:53 +0800 (CST)
+In-Reply-To: <20200520103728.jtbslowdfrv3o5yz@ti.com>
+References: <20200519142642.24131-1-p.yadav@ti.com>
+ <20200519142642.24131-10-p.yadav@ti.com>
+ <OF83616464.480FA751-ON4825856E.002A4483-4825856E.002BE6AF@mxic.com.tw>
+ <20200520085534.yra4f5ww5xs23c4j@ti.com>
+ <OF98344913.4BF4C313-ON4825856E.0032A810-4825856E.00352141@mxic.com.tw>
+ <20200520103728.jtbslowdfrv3o5yz@ti.com>
+To: "Pratyush Yadav" <p.yadav@ti.com>
+Subject: Re: [PATCH v5 09/19] mtd: spi-nor: sfdp: parse xSPI Profile 1.0 table
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <27c107b3-6ea8-e6f9-697c-7c3c4479008c@gmail.com>
+X-KeepSent: F5A6BA99:395182B5-4825856F:002B2F98;
+ type=4; name=$KeepSent
+X-Mailer: Lotus Notes Release 8.5.3FP4 SHF90 June 10, 2013
+Message-ID: <OFF5A6BA99.395182B5-ON4825856F.002B2F98-4825856F.002CD973@mxic.com.tw>
+From: masonccyang@mxic.com.tw
+Date: Thu, 21 May 2020 16:09:52 +0800
+X-MIMETrack: Serialize by Router on MXML06C/TAIWAN/MXIC(Release 9.0.1FP10
+ HF265|July 25, 2018) at 2020/05/21 PM 04:09:53,
+ Serialize complete at 2020/05/21 PM 04:09:53
+X-MAIL: TWHMLLG3.macronix.com 04L89rJP053197
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_004732_802635_8F93C39D 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20200521_011031_809726_8C959B48 
+X-CRM114-Status: GOOD (  21.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,43 +77,177 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-rtc@vger.kernel.org, Alessandro Zummo <a.zummo@towertech.it>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>, drinkcat@chromium.org,
- srv_heupstream@mediatek.com, Frank Wunderlich <frank-w@public-files.de>,
- Josef Friedl <josef.friedl@speed.at>, Ran Bi <ran.bi@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Sebastian Reichel <sre@kernel.org>,
- linux-kernel@vger.kernel.org, Richard Fontana <rfontana@redhat.com>,
- devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-pm@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>,
- Eddie Huang <eddie.huang@mediatek.com>,
- Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Vignesh Raghavendra <vigneshr@ti.com>,
+ Tudor Ambarus <tudor.ambarus@microchip.com>, juliensu@mxic.com.tw,
+ Richard Weinberger <richard@nod.at>, Mark Brown <broonie@kernel.org>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>, Sekhar Nori <nsekhar@ti.com>,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ linux-mediatek@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gU2F0LCAxNiBNYXkgMjAyMCwgTWF0dGhpYXMgQnJ1Z2dlciB3cm90ZToKCj4gSGkgTGVlLAo+
-IAo+IE9uIDIxLzA0LzIwMjAgMDU6MDAsIEhzaW4tSHNpdW5nIFdhbmcgd3JvdGU6Cj4gPiBGcm9t
-OiBSYW4gQmkgPHJhbi5iaUBtZWRpYXRlay5jb20+Cj4gPiAKPiA+IFRoaXMgYWRkIHN1cHBvcnQg
-Zm9yIHRoZSBNZWRpYVRlayBNVDYzNTggUlRDLiBEcml2ZXIgdXNpbmcKPiA+IGNvbXBhdGlibGUg
-ZGF0YSB0byBzdG9yZSBkaWZmZXJlbnQgUlRDX1dSVEdSIGFkZHJlc3Mgb2Zmc2V0Lgo+ID4gVGhp
-cyByZXBsYWNlIFJUQ19XUlRHUiB0byBSVENfV1JUR1JfTVQ2MzIzIGluIG10NjMyMy1wb3dlcm9m
-Zgo+ID4gZHJpdmVyIHdoaWNoIG9ubHkgbmVlZGVkIGJ5IGFybXY3IENQVSB3aXRob3V0IEFURi4K
-PiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogUmFuIEJpIDxyYW4uYmlAbWVkaWF0ZWsuY29tPgo+ID4g
-U2lnbmVkLW9mZi1ieTogSHNpbi1Ic2l1bmcgV2FuZyA8aHNpbi1oc2l1bmcud2FuZ0BtZWRpYXRl
-ay5jb20+Cj4gPiBSZXZpZXdlZC1ieTogTmljb2xhcyBCb2ljaGF0IDxkcmlua2NhdEBjaHJvbWl1
-bS5vcmc+Cj4gPiBBY2tlZC1ieTogQWxleGFuZHJlIEJlbGxvbmkgPGFsZXhhbmRyZS5iZWxsb25p
-QGJvb3RsaW4uY29tPgo+ID4gQWNrZWQtYnk6IFNlYmFzdGlhbiBSZWljaGVsIDxzcmVAa2VybmVs
-Lm9yZz4KPiA+IFJldmlld2VkLWJ5OiBZaW5nam9lIENoZW4gPHlpbmdqb2UuY2hlbkBtZWRpYXRl
-ay5jb20+Cj4gCj4gV2UgaGF2ZSBBY2tlZC1ieSBmcm9tIHJ0YyBhbmQgcmVzZXQgZHJpdmVycyBt
-YWludGFpbmVycy4gQXJlIHlvdSBPSyB0byB0YWtlIHRoZW0KPiB0aHJvdWdoIHlvdXIgbWZkIGJy
-YW5jaD8KPiAKPiBBcmUgeW91IHBsYW5uaW5nIHRvIHF1ZXVlIHRoZW0gZm9yIHY1Ljg/Cj4gCj4g
-SnVzdCBhc2tpbmcgYmVjYXVzZSBpZiBzbyBJJ2QgcXVldWUgcGF0Y2ggNiB0aHJvdWdoIG15IHRy
-ZWUuCgpZZXMsIHBsZWFzZSB0YWtlIHBhdGNoIDYuCgotLSAKTGVlIEpvbmVzIFvmnY7nkLzmlq9d
-CkxpbmFybyBTZXJ2aWNlcyBUZWNobmljYWwgTGVhZApMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJj
-ZSBzb2Z0d2FyZSBmb3IgQVJNIFNvQ3MKRm9sbG93IExpbmFybzogRmFjZWJvb2sgfCBUd2l0dGVy
-IHwgQmxvZwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1t
-ZWRpYXRlawo=
+
+Hi Pratyush, 
+
+> > 
+> > > > > +/**
+> > > > > + * spi_nor_parse_profile1() - parse the xSPI Profile 1.0 table
+> > > > > + * @nor:      pointer to a 'struct spi_nor'
+> > > > > + * @param_header:   pointer to the 'struct 
+sfdp_parameter_header' 
+> > > > describing
+> > > > > + *         the 4-Byte Address Instruction Table length and 
+version.
+> > > > > + * @params:      pointer to the 'struct 
+spi_nor_flash_parameter' to 
+> > be.
+> > > > > + *
+> > > > > + * Return: 0 on success, -errno otherwise.
+> > > > > + */
+> > > > > +static int spi_nor_parse_profile1(struct spi_nor *nor,
+> > > > > +              const struct sfdp_parameter_header 
+*profile1_header,
+> > > > > +              struct spi_nor_flash_parameter *params)
+> > > > > +{
+> > > > > +   u32 *table, opcode, addr;
+> > > > > +   size_t len;
+> > > > > +   int ret, i;
+> > > > > +
+> > > > > +   len = profile1_header->length * sizeof(*table);
+> > > > > +   table = kmalloc(len, GFP_KERNEL);
+> > > > > +   if (!table)
+> > > > > +      return -ENOMEM;
+> > > > > +
+> > > > > +   addr = SFDP_PARAM_HEADER_PTP(profile1_header);
+> > > > > +   ret = spi_nor_read_sfdp(nor, addr, len, table);
+> > > > > +   if (ret)
+> > > > > +      goto out;
+> > > > > +
+> > > > > +   /* Fix endianness of the table DWORDs. */
+> > > > > +   for (i = 0; i < profile1_header->length; i++)
+> > > > > +      table[i] = le32_to_cpu(table[i]);
+> > > > > +
+> > > > > +   /* Get 8D-8D-8D fast read opcode and dummy cycles. */
+> > > > > +   opcode = FIELD_GET(PROFILE1_DWORD1_RD_FAST_CMD, table[0]);
+> > > > > +
+> > > > > +   /*
+> > > > > +    * Update the fast read settings. We set the default dummy 
+> > cycles to 
+> > > > 20
+> > > > > +    * here. Flashes can change this value if they need to when 
+> > enabling
+> > > > > +    * octal mode.
+> > > > > +    */
+> > > > > + 
+spi_nor_set_read_settings(&params->reads[SNOR_CMD_READ_8_8_8_DTR],
+> > > > > +              0, 20, opcode,
+> > > > > +              SNOR_PROTO_8_8_8_DTR);
+> > > > > +
+> > > > 
+> > > > 
+> > > > I thought we have a agreement that only do parse here, no other 
+read 
+> > > > parameters setting.
+> > > 
+> > > Yes, and I considered it. But it didn't make much sense to me to 
+> > > introduce an extra member in struct spi_nor just to make this call 
+in 
+> > > some other function later.
+> > > 
+> > > Why exactly do you think doing this here is bad? The way I see it, 
+we 
+> > > avoid carrying around an extra member in spi_nor and this also 
+allows 
+> > > flashes to change the read settings easily in a post-sfdp hook. The 
+> > > 4bait parsing function does something similar.
+> > 
+> > I think it's not a question for good or bad. 
+> > 
+> > 4bait parsing function parse the 4-Byte Address Instruction Table
+> > and set up read/pp parameters there for sure.
+> > 
+> > Here we give the function name spi_nor_parse_profile1() but also 
+> 
+> But the function that parses 4bait table is also called 
+> spi_nor_parse_4bait(). 
+> 
+> > do others setting that has nothing to do with it, 
+> 
+> Why has setting read opcode and dummy cycles got nothing to do with it? 
+> The purpose of the Profile 1.0 table is to tell us the Read Fast command 
+
+> and dummy cycles, among other things. I think it _does_ have something 
+> to do with it.
+
+As you know I mean this function just do parse parameter of profile 1 
+table
+and keep these value data for later usage.
+
+A device supports xSPI profile table could work in either 8S-8S-8S or 
+8D-8D-8D mode.
+It seems to setup these parameters somewhere out here is betters.
+
+> 
+> Just like the 4bait table tells us the 4-byte opcodes and we set them up 
+
+> in our data structures, the profile 1.0 table tells us the 8D read 
+> opcode and dummy cycles, and we set them up in our data structures.
+> 
+> > it seems not good for SW module design. 
+> > oh, it's my humble opinion.
+> > 
+> > > 
+> > > What are the benefits of doing it otherwise?
+> > 
+> > For other Octal Flash like mx25*
+> 
+> I mean from a design perspective. How does it make the code better, or 
+> the job of people who need to read/change it easier?
+
+yes, agreed.
+I also need to patch for 8S-8S-8S mode, not only 8D-8D-8D mode.
+That's why we have some discussions.
+
+thanks & best regards,
+Mason
+
+CONFIDENTIALITY NOTE:
+
+This e-mail and any attachments may contain confidential information 
+and/or personal data, which is protected by applicable laws. Please be 
+reminded that duplication, disclosure, distribution, or use of this e-mail 
+(and/or its attachments) or any part thereof is prohibited. If you receive 
+this e-mail in error, please notify us immediately and delete this mail as 
+well as its attachment(s) from your system. In addition, please be 
+informed that collection, processing, and/or use of personal data is 
+prohibited unless expressly permitted by personal data protection laws. 
+Thank you for your attention and cooperation.
+
+Macronix International Co., Ltd.
+
+=====================================================================
+
+
+
+============================================================================
+
+CONFIDENTIALITY NOTE:
+
+This e-mail and any attachments may contain confidential information and/or personal data, which is protected by applicable laws. Please be reminded that duplication, disclosure, distribution, or use of this e-mail (and/or its attachments) or any part thereof is prohibited. If you receive this e-mail in error, please notify us immediately and delete this mail as well as its attachment(s) from your system. In addition, please be informed that collection, processing, and/or use of personal data is prohibited unless expressly permitted by personal data protection laws. Thank you for your attention and cooperation.
+
+Macronix International Co., Ltd.
+
+=====================================================================
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
