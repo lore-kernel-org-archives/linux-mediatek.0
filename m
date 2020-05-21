@@ -2,23 +2,23 @@ Return-Path: <SRS0=x8tw=7D=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4FF31C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 10:17:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 53ED7C433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 10:25:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 23941207D3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 10:17:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 139B42070A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 10:25:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hEPmbqig";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="bEztHYvG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 23941207D3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qi7j39E3";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="L9+l3YHx"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 139B42070A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,55 +27,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=08H7nLc+P9pPMwKaq4ovGborewtUcN8V+S0KsYPeIis=; b=hEPmbqigpn2Ur5
-	UvRQBhbyIvjuvF2GfvlHk5hMPHJQmCI4+YbJn4CT6Kxj3Wpg4kMYjXGkZZKoSpGojnaPgK9y2jOiV
-	RBI8yVhdYIOMKAfN5Dqky5uVT1gM7yXL3rw6UeRTcjPn2jIH3H0Rxkk1leOqu7TxMYS7iOCsZ/JLV
-	tetafRGMXns7ObcsvHQKvdKEvjna3UTzS5PJMJZtEyGeBw4nESgwVKNdVrGiwxfkcG4ghWzK+cZpK
-	f1eMoubZoIN4kVrTP1oodACUhG3gHIqqpdgfNBejyE8nYVL/3gKjmiHZqCtaC5oGZtc0gf3fyECj/
-	L7MqJ75mVuvaMVxYMfLQ==;
+	List-Owner; bh=E43xQMh+9PGZaIwuXqbRW/S1U9BWH2ll7wiWXRtJ/mc=; b=qi7j39E3awakvI
+	JJ+wJWsGf3FZ77a0AfVhLMEBiXmf5oJ6wGL2JRJPX93ZDrNpmOlWLz6J5uJu1uj/9ixG1x+awlNbC
+	HgANprlVEBB+c9imUcjyYR5J78OWHrCVkuz2xoGJbUu9yKQHFD4cGZwBeBdq7XolnuJA9rfe4wM0M
+	2WUjyQi1SQSKOaXyqsyqhWXKx0SV3O02And/9SaUHipFSUoePiau88GkNbdRoGOPmvoyj2GheUlOS
+	ELntmeHcWKenTpGVjZbVDyH2R5VY24hCQ7SyRUlzedz6SQuKSBg7oy08lKEam9Ob+7UNWpHaeFUaV
+	vMYuDIAavlXFypqYXz/Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbiG0-0003Vr-7g; Thu, 21 May 2020 10:16:56 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1jbiOJ-0001U9-HS; Thu, 21 May 2020 10:25:31 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbiFw-0003Rl-6o; Thu, 21 May 2020 10:16:53 +0000
-Received: by mail-wr1-x443.google.com with SMTP id e1so6116251wrt.5;
- Thu, 21 May 2020 03:16:51 -0700 (PDT)
+ id 1jbiOE-0001SS-Gh; Thu, 21 May 2020 10:25:30 +0000
+Received: by mail-wm1-x343.google.com with SMTP id g14so1938774wme.1;
+ Thu, 21 May 2020 03:25:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=I/hIlElrGauCOonA9Qh0OoczYwQmNz/aL31WHXkZMiI=;
- b=bEztHYvGkqW+VrjT0Aiawj6QrAs1NAEtuxkGkHLS7yR2GOEV6YVsbNaUexTseDKOAB
- UU0jFPK4IMiHBtkOISiWwoHpYkuooCtub0PgROBrcTM3MFEUsyhvsiHMmfbhWKwuOZsQ
- sUQEYObekNHxEhHI7ko9oPlbJ0X7mbIDrAfVp1WY55Ufg17Zp8Lh5z6kPAzcryHREPsf
- TcXpVCT00qb41FlPphJ1aJzwden/IVwYoLbvJlUt0kUaloDy+SdfuafcFGB5uOqyKTvj
- bAwLhfGySSKW0d+0REWkRUiYinFZ7gMTgkjlGjnoJbdipBf1ZO4zuJFCQULA+ZcejqBb
- 1FIA==
+ bh=GffMNgQRsIRxtQq2pj6h0TutYxk1IVYKcYTeNXIC640=;
+ b=L9+l3YHxWGnFHJDEQaO8FgD5mey6YNp+6FYRnc/J/z8ZdnUVWfbURuAeQz5lC1OVCR
+ UQxWMdT8YJYQYR6/tccEfZdpHHhcqMl7+DdpZdOxLy2vpeX4pjmaupV8+DO89d3kxT10
+ PUfAI/YCs0M3DTJAVZ4W/dZornSxDuo1mqAMTdFXeFr/XL+bNVWeOaR9agzilnFpt0t5
+ XRAMKKedqW+d6b5KxDR9ygFMT2Jow55TZXx0Ya2VXY1ZBcdjF2uhoPYhs8k7kVtnpV2x
+ gAcEQkMNnrKsD2XIX7kUa5aLBpjUSCOMc5gqdJFw5Ppf/wDcucGYPSlaraErfdQUdvG5
+ 61HA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=I/hIlElrGauCOonA9Qh0OoczYwQmNz/aL31WHXkZMiI=;
- b=GtEJXJckEeZM7l7tdAYPoNV0lt0VrhDkB8OhouijxgNuOrq0uktFwLGYv5gyFcXzFM
- agXsAnLEWQxeoTlHe31cw1NqaiSbl2azi4UyaVCLuOLK0XLI2Aj9DYMvb9dDFS3X+fdk
- yV8PRJOlGVNk1fv+EobKSRCSJDpV2+hLm5luvBMXBb8L9wyW/1QWcnlhMVdQ+S17Y7ky
- qHF+f8dkDssDk1sMsiOXTZhMVCb+B6lljJL2PC14k3BBM4xWW3iHWc4E30anRgRpNFQ5
- bRn/1jymnUw1DMUjZM+tK0rwpu6b1IXr0W0kROP9svw1UVODGwO5yw027qF4b6gFEzRv
- R/mw==
-X-Gm-Message-State: AOAM532rLp5Vep7+7X0/iiRfFFBkDnzOyKX1OfamtLPakgxwo41ALXwv
- vPjxhpDlc1piMpa1UZS1OtaU+9JR
-X-Google-Smtp-Source: ABdhPJxqICJ77m7Hzn+B4B0huTTaSJXhRY7f7TumYFdKyVgKGqZuc+NAOZ8eoNaooMxBg84Slk7F9g==
-X-Received: by 2002:a5d:610f:: with SMTP id v15mr280598wrt.52.1590056210352;
- Thu, 21 May 2020 03:16:50 -0700 (PDT)
+ bh=GffMNgQRsIRxtQq2pj6h0TutYxk1IVYKcYTeNXIC640=;
+ b=gnm2Pjgi9y6VmykcElPjqwsK1Qg+dURaaE3dmqtpYPQ+M86iH+0bquAM8yXUJsGyaW
+ IQdz7G7BYqZ9hJPT2ZaMA1y05/joqZEv3glMfr4NXN+SS3UuTvacY10Rj5/hG1CVPule
+ UitnrHnWsJo2oz4DbbtKUPP4RJx8m4NkGLh1SLLFTXK0PTmDbznCOgxJWlOhRjwSw4Qc
+ 61xyymiyjZhFHOCdSISG/lsWs4ceKf+QuYHdLAWnNQVDx974PcvDk/e6zFRIbfJ+KYpq
+ 88NEEa/z7bw1Ox4tKjlstSQ+K93JA9vxwN/ZtbztgSE32XPfu0kWYjbSXX4VJIIDP1Ez
+ UpHw==
+X-Gm-Message-State: AOAM531xzimtfBQ6UcmyS7y6SOcEOK1PKveUoyhmHR+8KpHDUrgbMBik
+ UsWNuDgFjKiCxCD/UL7ngv0=
+X-Google-Smtp-Source: ABdhPJwGd4f0Xr0dKJxEkRC3mz+5c9kwW1cIcYnYO25Q+7zMm42Z5nAY9Z7u53b4YK0ftmyWqy5jKg==
+X-Received: by 2002:a1c:4b0e:: with SMTP id y14mr8740159wma.170.1590056724830; 
+ Thu, 21 May 2020 03:25:24 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id p23sm5976853wma.17.2020.05.21.03.16.49
+ by smtp.gmail.com with ESMTPSA id s11sm5900101wrp.79.2020.05.21.03.25.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 21 May 2020 03:16:49 -0700 (PDT)
-Subject: Re: [PATCH] dt-bindings: mfd: mediatek: Add MT6397 Pin Controller
-To: matthias.bgg@kernel.org, Lee Jones <lee.jones@linaro.org>
-References: <20200110145952.9720-1-matthias.bgg@kernel.org>
- <20200115151938.GA8182@bogus>
+ Thu, 21 May 2020 03:25:24 -0700 (PDT)
+Subject: Re: [PATCH V3] arm64: dts: mediatek: add cpufreq and cci devfreq
+ nodes for mt8183
+To: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ devicetree@vger.kernel.org
+References: <1576826785-3867-1-git-send-email-andrew-sh.cheng@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -151,16 +153,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <ce3747e5-41db-a168-0602-37337d8530f2@gmail.com>
-Date: Thu, 21 May 2020 12:16:48 +0200
+Message-ID: <753e91a6-6765-ee3a-462f-d07f60af2de9@gmail.com>
+Date: Thu, 21 May 2020 12:25:22 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200115151938.GA8182@bogus>
+In-Reply-To: <1576826785-3867-1-git-send-email-andrew-sh.cheng@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_031652_284166_E997AEAF 
-X-CRM114-Status: GOOD (  14.38  )
+X-CRM114-CacheID: sfid-20200521_032528_353556_7207CA57 
+X-CRM114-Status: GOOD (  17.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -172,39 +174,394 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh@kernel.org>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Lee,
 
-On 15/01/2020 16:19, Rob Herring wrote:
-> On Fri, 10 Jan 2020 15:59:51 +0100, matthias.bgg@kernel.org wrote:
->> From: Matthias Brugger <matthias.bgg@gmail.com>
->>
->> The MT6397 mfd includes a pin controller. Add binding
->> a description for it.
->>
->> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
->>
->> ---
->>
->>  Documentation/devicetree/bindings/mfd/mt6397.txt | 5 +++++
->>  1 file changed, 5 insertions(+)
->>
+
+On 20/12/2019 08:26, Andrew-sh.Cheng wrote:
+> From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
 > 
-> Acked-by: Rob Herring <robh@kernel.org>
+> add cpufreq and cci devfreq nodes for mt8183
 > 
+> Depend on regulator node patch:
+> https://patchwork.kernel.org/patch/11284617/
+> 
+> Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+> ---
 
-It looks like this fall through the cracks.
-Would you consider to queue it or do you have further comments?
+Now queued for v5.7-next/dts64
 
-Regards,
-Matthias
+Thanks!
+
+>  arch/arm64/boot/dts/mediatek/mt8183-evb.dts |  36 ++++
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi    | 245 ++++++++++++++++++++++++++++
+>  2 files changed, 281 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> index 1fb195c..ca5c0b2 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> @@ -231,6 +231,42 @@
+>  
+>  };
+>  
+> +&cci {
+> +	proc-supply = <&mt6358_vproc12_reg>;
+> +};
+> +
+> +&cpu0 {
+> +	proc-supply = <&mt6358_vproc12_reg>;
+> +};
+> +
+> +&cpu1 {
+> +	proc-supply = <&mt6358_vproc12_reg>;
+> +};
+> +
+> +&cpu2 {
+> +	proc-supply = <&mt6358_vproc12_reg>;
+> +};
+> +
+> +&cpu3 {
+> +	proc-supply = <&mt6358_vproc12_reg>;
+> +};
+> +
+> +&cpu4 {
+> +	proc-supply = <&mt6358_vproc11_reg>;
+> +};
+> +
+> +&cpu5 {
+> +	proc-supply = <&mt6358_vproc11_reg>;
+> +};
+> +
+> +&cpu6 {
+> +	proc-supply = <&mt6358_vproc11_reg>;
+> +};
+> +
+> +&cpu7 {
+> +	proc-supply = <&mt6358_vproc11_reg>;
+> +};
+> +
+>  &uart0 {
+>  	status = "okay";
+>  };
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 10b3247..d260a5a 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -31,6 +31,219 @@
+>  		i2c11 = &i2c11;
+>  	};
+>  
+> +	cluster0_opp: opp_table0 {
+> +		compatible = "operating-points-v2";
+> +		opp-shared;
+> +		opp00 {
+> +			opp-hz = /bits/ 64 <793000000>;
+> +			opp-microvolt = <650000>;
+> +		};
+> +		opp01 {
+> +			opp-hz = /bits/ 64 <910000000>;
+> +			opp-microvolt = <687500>;
+> +		};
+> +		opp02 {
+> +			opp-hz = /bits/ 64 <1014000000>;
+> +			opp-microvolt = <718750>;
+> +		};
+> +		opp03 {
+> +			opp-hz = /bits/ 64 <1131000000>;
+> +			opp-microvolt = <756250>;
+> +		};
+> +		opp04 {
+> +			opp-hz = /bits/ 64 <1248000000>;
+> +			opp-microvolt = <800000>;
+> +		};
+> +		opp05 {
+> +			opp-hz = /bits/ 64 <1326000000>;
+> +			opp-microvolt = <818750>;
+> +		};
+> +		opp06 {
+> +			opp-hz = /bits/ 64 <1417000000>;
+> +			opp-microvolt = <850000>;
+> +		};
+> +		opp07 {
+> +			opp-hz = /bits/ 64 <1508000000>;
+> +			opp-microvolt = <868750>;
+> +		};
+> +		opp08 {
+> +			opp-hz = /bits/ 64 <1586000000>;
+> +			opp-microvolt = <893750>;
+> +		};
+> +		opp09 {
+> +			opp-hz = /bits/ 64 <1625000000>;
+> +			opp-microvolt = <906250>;
+> +		};
+> +		opp10 {
+> +			opp-hz = /bits/ 64 <1677000000>;
+> +			opp-microvolt = <931250>;
+> +		};
+> +		opp11 {
+> +			opp-hz = /bits/ 64 <1716000000>;
+> +			opp-microvolt = <943750>;
+> +		};
+> +		opp12 {
+> +			opp-hz = /bits/ 64 <1781000000>;
+> +			opp-microvolt = <975000>;
+> +		};
+> +		opp13 {
+> +			opp-hz = /bits/ 64 <1846000000>;
+> +			opp-microvolt = <1000000>;
+> +		};
+> +		opp14 {
+> +			opp-hz = /bits/ 64 <1924000000>;
+> +			opp-microvolt = <1025000>;
+> +		};
+> +		opp15 {
+> +			opp-hz = /bits/ 64 <1989000000>;
+> +			opp-microvolt = <1050000>;
+> +		};	};
+> +
+> +	cluster1_opp: opp_table1 {
+> +		compatible = "operating-points-v2";
+> +		opp-shared;
+> +		opp00 {
+> +			opp-hz = /bits/ 64 <793000000>;
+> +			opp-microvolt = <700000>;
+> +		};
+> +		opp01 {
+> +			opp-hz = /bits/ 64 <910000000>;
+> +			opp-microvolt = <725000>;
+> +		};
+> +		opp02 {
+> +			opp-hz = /bits/ 64 <1014000000>;
+> +			opp-microvolt = <750000>;
+> +		};
+> +		opp03 {
+> +			opp-hz = /bits/ 64 <1131000000>;
+> +			opp-microvolt = <775000>;
+> +		};
+> +		opp04 {
+> +			opp-hz = /bits/ 64 <1248000000>;
+> +			opp-microvolt = <800000>;
+> +		};
+> +		opp05 {
+> +			opp-hz = /bits/ 64 <1326000000>;
+> +			opp-microvolt = <825000>;
+> +		};
+> +		opp06 {
+> +			opp-hz = /bits/ 64 <1417000000>;
+> +			opp-microvolt = <850000>;
+> +		};
+> +		opp07 {
+> +			opp-hz = /bits/ 64 <1508000000>;
+> +			opp-microvolt = <875000>;
+> +		};
+> +		opp08 {
+> +			opp-hz = /bits/ 64 <1586000000>;
+> +			opp-microvolt = <900000>;
+> +		};
+> +		opp09 {
+> +			opp-hz = /bits/ 64 <1625000000>;
+> +			opp-microvolt = <912500>;
+> +		};
+> +		opp10 {
+> +			opp-hz = /bits/ 64 <1677000000>;
+> +			opp-microvolt = <931250>;
+> +		};
+> +		opp11 {
+> +			opp-hz = /bits/ 64 <1716000000>;
+> +			opp-microvolt = <950000>;
+> +		};
+> +		opp12 {
+> +			opp-hz = /bits/ 64 <1781000000>;
+> +			opp-microvolt = <975000>;
+> +		};
+> +		opp13 {
+> +			opp-hz = /bits/ 64 <1846000000>;
+> +			opp-microvolt = <1000000>;
+> +		};
+> +		opp14 {
+> +			opp-hz = /bits/ 64 <1924000000>;
+> +			opp-microvolt = <1025000>;
+> +		};
+> +		opp15 {
+> +			opp-hz = /bits/ 64 <1989000000>;
+> +			opp-microvolt = <1050000>;
+> +		};
+> +	};
+> +
+> +	cci_opp: opp_table2 {
+> +		compatible = "operating-points-v2";
+> +		opp-shared;
+> +		opp00 {
+> +			opp-hz = /bits/ 64 <273000000>;
+> +			opp-microvolt = <650000>;
+> +		};
+> +		opp01 {
+> +			opp-hz = /bits/ 64 <338000000>;
+> +			opp-microvolt = <687500>;
+> +		};
+> +		opp02 {
+> +			opp-hz = /bits/ 64 <403000000>;
+> +			opp-microvolt = <718750>;
+> +		};
+> +		opp03 {
+> +			opp-hz = /bits/ 64 <463000000>;
+> +			opp-microvolt = <756250>;
+> +		};
+> +		opp04 {
+> +			opp-hz = /bits/ 64 <546000000>;
+> +			opp-microvolt = <800000>;
+> +		};
+> +		opp05 {
+> +			opp-hz = /bits/ 64 <624000000>;
+> +			opp-microvolt = <818750>;
+> +		};
+> +		opp06 {
+> +			opp-hz = /bits/ 64 <689000000>;
+> +			opp-microvolt = <850000>;
+> +		};
+> +		opp07 {
+> +			opp-hz = /bits/ 64 <767000000>;
+> +			opp-microvolt = <868750>;
+> +		};
+> +		opp08 {
+> +			opp-hz = /bits/ 64 <845000000>;
+> +			opp-microvolt = <893750>;
+> +		};
+> +		opp09 {
+> +			opp-hz = /bits/ 64 <871000000>;
+> +			opp-microvolt = <906250>;
+> +		};
+> +		opp10 {
+> +			opp-hz = /bits/ 64 <923000000>;
+> +			opp-microvolt = <931250>;
+> +		};
+> +		opp11 {
+> +			opp-hz = /bits/ 64 <962000000>;
+> +			opp-microvolt = <943750>;
+> +		};
+> +		opp12 {
+> +			opp-hz = /bits/ 64 <1027000000>;
+> +			opp-microvolt = <975000>;
+> +		};
+> +		opp13 {
+> +			opp-hz = /bits/ 64 <1092000000>;
+> +			opp-microvolt = <1000000>;
+> +		};
+> +		opp14 {
+> +			opp-hz = /bits/ 64 <1144000000>;
+> +			opp-microvolt = <1025000>;
+> +		};
+> +		opp15 {
+> +			opp-hz = /bits/ 64 <1196000000>;
+> +			opp-microvolt = <1050000>;
+> +		};
+> +	};
+> +
+> +	cci: cci {
+> +		compatible = "mediatek,mt8183-cci";
+> +		clocks = <&apmixedsys CLK_APMIXED_CCIPLL>;
+> +		clock-names = "cci_clock";
+> +		operating-points-v2 = <&cci_opp>;
+> +	};
+> +
+>  	cpus {
+>  		#address-cells = <1>;
+>  		#size-cells = <0>;
+> @@ -73,6 +286,10 @@
+>  			reg = <0x000>;
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <741>;
+> +			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
+> +				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
+> +			clock-names = "cpu", "intermediate";
+> +			operating-points-v2 = <&cluster0_opp>;
+>  		};
+>  
+>  		cpu1: cpu@1 {
+> @@ -81,6 +298,10 @@
+>  			reg = <0x001>;
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <741>;
+> +			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
+> +				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
+> +			clock-names = "cpu", "intermediate";
+> +			operating-points-v2 = <&cluster0_opp>;
+>  		};
+>  
+>  		cpu2: cpu@2 {
+> @@ -89,6 +310,10 @@
+>  			reg = <0x002>;
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <741>;
+> +			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
+> +				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
+> +			clock-names = "cpu", "intermediate";
+> +			operating-points-v2 = <&cluster0_opp>;
+>  		};
+>  
+>  		cpu3: cpu@3 {
+> @@ -97,6 +322,10 @@
+>  			reg = <0x003>;
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <741>;
+> +			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
+> +				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
+> +			clock-names = "cpu", "intermediate";
+> +			operating-points-v2 = <&cluster0_opp>;
+>  		};
+>  
+>  		cpu4: cpu@100 {
+> @@ -105,6 +334,10 @@
+>  			reg = <0x100>;
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <1024>;
+> +			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
+> +				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
+> +			clock-names = "cpu", "intermediate";
+> +			operating-points-v2 = <&cluster1_opp>;
+>  		};
+>  
+>  		cpu5: cpu@101 {
+> @@ -113,6 +346,10 @@
+>  			reg = <0x101>;
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <1024>;
+> +			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
+> +				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
+> +			clock-names = "cpu", "intermediate";
+> +			operating-points-v2 = <&cluster1_opp>;
+>  		};
+>  
+>  		cpu6: cpu@102 {
+> @@ -121,6 +358,10 @@
+>  			reg = <0x102>;
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <1024>;
+> +			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
+> +				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
+> +			clock-names = "cpu", "intermediate";
+> +			operating-points-v2 = <&cluster1_opp>;
+>  		};
+>  
+>  		cpu7: cpu@103 {
+> @@ -129,6 +370,10 @@
+>  			reg = <0x103>;
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <1024>;
+> +			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
+> +				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
+> +			clock-names = "cpu", "intermediate";
+> +			operating-points-v2 = <&cluster1_opp>;
+>  		};
+>  	};
+>  
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
