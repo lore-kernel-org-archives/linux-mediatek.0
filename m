@@ -2,23 +2,23 @@ Return-Path: <SRS0=x8tw=7D=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D7ED9C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 12:52:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B3A90C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 13:45:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A09C72072C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 12:52:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 73E2A20721
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 13:45:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="g97AA40B";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="B6AX0Bme"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A09C72072C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oEKZD26M";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="dGmoucgr"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 73E2A20721
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -26,59 +26,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T09+pA7+jNW0bh6beRR/JYesohRB/sWFiIgtPfbh+7I=; b=g97AA40Br1DHy5
-	zxFNuBA/AB5nGal9t9VtWGF3GCAnFQsy4U5gaMVNn5wybFyefL95zOUS6ao0GuSK3Mg5Yp7LWGP5K
-	R29nttGeYyaVmQ5CAxRfTWs6Riq+d/tto5ZUpQ/ILcxj3dKIXERvEenKqWltylBpymL06IcqzS4Cc
-	fuq4USMQGu3q5TtwWqgmF0AqOrXgcLf91eEeNwPmTMaX8KTKWHDveS2tD3hNh6LKfkuqFDQpdn3FC
-	yQft+2S7fMOE5UbTaue18ycRO9IIaTn68GlBMZsNm7XnpQJEh0bcwgbzjQlZl1SJat3VJMqY34dEA
-	fRNW1jaX/ujCR4w42g8g==;
+	List-Owner; bh=ycBEtMZnOeCV8QCqJxz4KR81sx+8EdvuAMae3GM+gJs=; b=oEKZD26MSAUZym
+	67kKrTSEz71c1AeA9Hf9H9+hJaZuptFdTZrr+OqHO6bNfcHkuyagyLM+5zfLrhrzL5pE+DrgmK++P
+	N3klVic+vCiUwioM703LpRQkI84co+cRqFvtb87xU98AKfO9Nb9grEXB9FtWVjIH6J6QfKy0SwUvv
+	jEh0qHQMhhtnf5VsJMwJtJ6OEn2MnMs9Im2T+ovRM7fOQWW+zj3M2je4KelFDmF5oN/gdCWsfSczV
+	ZiIlMEeP6yBDRAQOOgSREloHOC2dPUNTJiqsl7PtUP1Oq4VBMbJwKoGn2R2AhGQkhHvU5aBLKNuTK
+	POm8MjVWdQXXBb5R3jIg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbkgn-0002El-FY; Thu, 21 May 2020 12:52:45 +0000
-Received: from lelv0143.ext.ti.com ([198.47.23.248])
+	id 1jblW2-0005Xo-Uv; Thu, 21 May 2020 13:45:42 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbkgc-00025l-8r; Thu, 21 May 2020 12:52:35 +0000
-Received: from lelv0265.itg.ti.com ([10.180.67.224])
- by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 04LCqQBM073519;
- Thu, 21 May 2020 07:52:26 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1590065547;
- bh=HhdS0k1uvFyYcnFyKdAE7u2FGKBzACV32jA6ddp5U90=;
- h=Date:From:To:CC:Subject:References:In-Reply-To;
- b=B6AX0BmewPmUOKJI5DJ3cIZn+mQtSxDXO9Avzp912H0DIeRRFYLdBCq5F1P0K/PX7
- ZBFr4KNidcljuogeJKGXNVIzLhPqoT8rUaNRB9jQktX4F+5LUYW8hpz+7HKo+ea875
- 9xBCwVXNAZY05h0iL5muyCMfD/8jR9tAittuvtXQ=
-Received: from DLEE115.ent.ti.com (dlee115.ent.ti.com [157.170.170.26])
- by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 04LCqQkD089935
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Thu, 21 May 2020 07:52:26 -0500
-Received: from DLEE102.ent.ti.com (157.170.170.32) by DLEE115.ent.ti.com
- (157.170.170.26) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Thu, 21
- May 2020 07:52:26 -0500
-Received: from fllv0039.itg.ti.com (10.64.41.19) by DLEE102.ent.ti.com
- (157.170.170.32) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Thu, 21 May 2020 07:52:26 -0500
-Received: from localhost (ileax41-snat.itg.ti.com [10.172.224.153])
- by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 04LCqPlK071033;
- Thu, 21 May 2020 07:52:26 -0500
-Date: Thu, 21 May 2020 18:22:25 +0530
-From: Pratyush Yadav <p.yadav@ti.com>
-To: <masonccyang@mxic.com.tw>
-Subject: Re: [PATCH v5 05/19] mtd: spi-nor: add support for DTR protocol
-Message-ID: <20200521125225.odxcdjkoy5lckrbx@ti.com>
-References: <20200519142642.24131-1-p.yadav@ti.com>
- <20200519142642.24131-6-p.yadav@ti.com>
- <OF6C754784.29BF11CD-ON4825856F.0032D83F-4825856F.0033A4F1@mxic.com.tw>
+ id 1jblVs-0005Eo-SU
+ for linux-mediatek@lists.infradead.org; Thu, 21 May 2020 13:45:34 +0000
+Received: by mail-wm1-x341.google.com with SMTP id u12so1622743wmd.3
+ for <linux-mediatek@lists.infradead.org>; Thu, 21 May 2020 06:45:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=MIZbow6oCp6jhBPcKsqdy9EnMAR8LQb1Wb+CIClZf0I=;
+ b=dGmoucgrWl3fcaqDll9a/qRPLlA7s730yc2z/WBzNFxuL2a+M1qwz4OOCwGd++fhKy
+ p8H1ZqTfH5xn8dw70XzKJISp6Vd7YqNQ/dPn7g8DE4Th7Ys7glQVxU1ajIvWn44+3/e0
+ 7gWzJKL3HsAPQXv9L62UgO6S71k5LFILN3dbQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=MIZbow6oCp6jhBPcKsqdy9EnMAR8LQb1Wb+CIClZf0I=;
+ b=W6JCT6PpnfAxBtkYrMBnYiT4DJ/JT1znddNhRZLaBO73Nlfx79Zj4ZuENmXi0aboY7
+ 4csxt5bpWZ7VmTXgBdRhdB4DKVeQwU5VYNeDNl14f87Qtv0UlJAMldzaKWoybNnooryF
+ hrCkjrwF7ibxhU3F6NhIwuzzhztMKfQR9+Z3GYs+FRT3CP1fnGDY24f3WQCHHeAhxb01
+ e62U7wRFsYd14V1sJp2iybFUANnFsZQ13w0otVA9U+FIBvOv7lG0FHT/O7lkjHld1TuT
+ HF5etTrqIHQrU5BxiMDv3PWL/e09/8VEheCEgyPsFxgyaB1Q7U3+qfUoHhXdyaniqW35
+ 2KqA==
+X-Gm-Message-State: AOAM5302VNAMSPIimR+Wc+gpC1dL2YI3M86ANvtEyrTtWowcsdCayfps
+ WPLNrTPMiZ/Qp4HUjAyjjQ8jYQ==
+X-Google-Smtp-Source: ABdhPJzga0snvqqhabMrMb1GYaE9P70IQw0mFqh2Y8F+1nN0c5PVJEQNf6mkgxlQ/6SKai9ltVpOxA==
+X-Received: by 2002:a7b:c4cc:: with SMTP id g12mr8844805wmk.168.1590068728336; 
+ Thu, 21 May 2020 06:45:28 -0700 (PDT)
+Received: from chromium.org (205.215.190.35.bc.googleusercontent.com.
+ [35.190.215.205])
+ by smtp.gmail.com with ESMTPSA id e29sm296309wra.7.2020.05.21.06.45.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 21 May 2020 06:45:27 -0700 (PDT)
+Date: Thu, 21 May 2020 13:45:26 +0000
+From: Tomasz Figa <tfiga@chromium.org>
+To: Xia Jiang <xia.jiang@mediatek.com>
+Subject: Re: [PATCH v8 01/14] media: platform: Improve subscribe event flow
+ for bug fixing
+Message-ID: <20200521134526.GA209565@chromium.org>
+References: <20200403094033.8288-1-xia.jiang@mediatek.com>
+ <20200403094033.8288-2-xia.jiang@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <OF6C754784.29BF11CD-ON4825856F.0032D83F-4825856F.0033A4F1@mxic.com.tw>
-User-Agent: NeoMutt/20171215
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+In-Reply-To: <20200403094033.8288-2-xia.jiang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_055234_431777_E895E230 
-X-CRM114-Status: GOOD (  10.58  )
+X-CRM114-CacheID: sfid-20200521_064532_919889_9652E244 
+X-CRM114-Status: UNSURE (   9.12  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,52 +95,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Vignesh Raghavendra <vigneshr@ti.com>,
- Tudor Ambarus <tudor.ambarus@microchip.com>,
- Richard Weinberger <richard@nod.at>, Mark Brown <broonie@kernel.org>,
- Nicolas Ferre <nicolas.ferre@microchip.com>, Sekhar Nori <nsekhar@ti.com>,
- linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- linux-mediatek@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: drinkcat@chromium.org, devicetree@vger.kernel.org, mojahsu@chromium.org,
+ srv_heupstream@mediatek.com, Rick Chang <rick.chang@mediatek.com>,
+ senozhatsky@chromium.org, linux-kernel@vger.kernel.org,
+ maoguang.meng@mediatek.com, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ sj.huang@mediatek.com, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-mediatek@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Xia,
 
-On 21/05/20 05:24PM, masonccyang@mxic.com.tw wrote:
+On Fri, Apr 03, 2020 at 05:40:20PM +0800, Xia Jiang wrote:
+> Let v4l2_ctrl_subscribe_event() do the job for other types except
+> V4L2_EVENT_SOURCE_CHANGE.
 > 
-> Hi Pratyush,
-> 
-> 
-> > @@ -311,6 +313,7 @@ struct flash_info {
-> >                  * BP3 is bit 6 of status register.
-> >                  * Must be used with SPI_NOR_4BIT_BP.
-> >                  */
-> > +#define SPI_NOR_OCTAL_DTR_READ   BIT(19) /* Flash supports octal DTR 
-> Read. */
-> 
-> #define SPI_NOR_OCTAL_DTR_RDWR  BIT(19) /* Support Octal DTR Read & Write 
-> */
-
-This flag only enables SNOR_HWCAPS_READ_8_8_8_DTR. It does not affect 
-SNOR_HWCAPS_PP_8_8_8_DTR. So it shouldn't be called RDWR.
- 
-> more precisely and clearly ?
-> 
-> thanks,
-> Mason
+> Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
+> ---
+> v8: no changes
+> ---
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
 
--- 
-Regards,
-Pratyush Yadav
-Texas Instruments India
+Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+
+Best regards,
+Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
