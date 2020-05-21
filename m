@@ -2,23 +2,23 @@ Return-Path: <SRS0=x8tw=7D=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BDCE0C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 19:35:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 94BE9C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 19:42:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8815820814
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 19:35:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5961120814
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 19:42:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Q2epGluX";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Mn2izAUa"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8815820814
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UvE7ZQWk";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="LaEMkyjk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5961120814
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -26,64 +26,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0wveGcbDqDKop426Q8hP9HpXjAZ0XFN7IYbs6PuDmcc=; b=Q2epGluXNnmvWJ
-	oFQShupwuY/WFkiQgsfhMzE1mVQbE+4tu9TaGVdvnCuQVD3+KgKCQo5rt4KuZ9WlqM29mUrUEQfNm
-	OY62mbrHELKvFx/5mTGLd8AdBqHVUiGUjpDyrng4saZrgYm+vCDNiMIhDF8HCXJOratPMKXYZcbfH
-	yjvUYMC/995bMiASryVR4aLkEU/5X8HaB473veO3h3QmwFgoqh7h7vPUCHMhSxX0WyhaoNRUOpxnu
-	V20FPS4dDRtY/WLbR9SkH5jwWzMTpm+ItEEIbgrg7A5C96egIu71M9GVmG9lG0wZekpFQ1RoWWH1H
-	inwGg7/OqApLVjV3gsog==;
+	List-Owner; bh=8q9Vg54UQgH4GnNKEsR+GhwEr2ET5XBOuclke8ntmbE=; b=UvE7ZQWkDaVB4M
+	19unnKKkDtGVZabeKMiV5zhwgoMxhWVmTrIXsM9e8ofIorvvKnq9fxgAPQTrCzbFiUSva/ueUKy8M
+	NHQCmjOh8FImfXc71UxC68Iyp6gC//eKoQouNhsslJ+/Cgm4Kql5/9agVbT6TeKtbxfSqeps3iJnr
+	GolQv3lXi3BdASVW7698BT5wODNwo6ikgPaJ5+eC6Zch5hGrRaKM0noDIBA4DOwtuf0BcGV7M81Gk
+	9+/ArxO1Kw7snv4keWj+rt5khE03caS6P8vr1WtJnevgYR2mMFcgCfuMtUR6qUVeh2Y5afaFLkZ6+
+	rIrrDlQW5OVqs5RUuEPw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbqyi-0007Kd-3p; Thu, 21 May 2020 19:35:40 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1jbr4w-0002Y5-Nh; Thu, 21 May 2020 19:42:07 +0000
+Received: from lelv0142.ext.ti.com ([198.47.23.249])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbqyW-00079R-KU
- for linux-mediatek@lists.infradead.org; Thu, 21 May 2020 19:35:30 +0000
-Received: by mail-wr1-x443.google.com with SMTP id i15so7780084wrx.10
- for <linux-mediatek@lists.infradead.org>; Thu, 21 May 2020 12:35:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=0PiSvAPliSpHmXCPHW82OGwvgeGu3nV4fisqX0ukMVE=;
- b=Mn2izAUaruoDbLEVtEGYwGj8L0xkVVzhfObauat4/vcNCP+EPMEoexK54nlo2t3NO0
- LTIUQPGxAXNwtxA3U2FY3JUp36JClziXCcHERZ6A90YjM36CtMX2opVFVkMQ4L3e/C1r
- 9uUYpJi87nLJ5Do9/kd318Qkzfn2oKXsfkMJQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=0PiSvAPliSpHmXCPHW82OGwvgeGu3nV4fisqX0ukMVE=;
- b=PtGf96ppfyxUQZQkhASJOjKj9yJusH9qYo5OMpbtKII4xrKUrj1dDalQEEfzNHW3GX
- 68Q55Yd13OSpLl/4/zzaq/xhRcMxuSeVLb8vH9tuS2oV4w2A2rEG8XwyaRb5fN7nHDDv
- BfPmV0cYAmDCT3ht2TPCq9+yymaX7YmueahkXl8exjTB5DjE1h/JI4SQjejHfTRWi1uR
- Oupk9a3gjeu3B3jcWzfJ1F6Cs9kBeVw4joJdfeohK5aouYTCoTgIUehCi+8U/35aFBWA
- DfTfSGTo1FPqogAsU93JEgfWOEET0hT6vh/qn2NRfaeGuCNOlVs+3kKnjvdp72/bUyFG
- Vy7w==
-X-Gm-Message-State: AOAM530PFEyrviH5Lg/jUw9M2NGHXCSj2HRsZZawOxsrkxArJmJlbKQl
- jmG2w4rC4PLskPzBZufYUBCJBg==
-X-Google-Smtp-Source: ABdhPJwRx3aYOU3qs7IEJXRm00NEpqShHLzsIlN+v+IXDKvfgZ02NPQmcQhc20kurysHzVjxZtUHQg==
-X-Received: by 2002:adf:d0cb:: with SMTP id z11mr182088wrh.116.1590089727185; 
- Thu, 21 May 2020 12:35:27 -0700 (PDT)
-Received: from chromium.org (205.215.190.35.bc.googleusercontent.com.
- [35.190.215.205])
- by smtp.gmail.com with ESMTPSA id d126sm7967920wmd.32.2020.05.21.12.35.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 May 2020 12:35:26 -0700 (PDT)
-Date: Thu, 21 May 2020 19:35:25 +0000
-From: Tomasz Figa <tfiga@chromium.org>
-To: Rob Herring <robh@kernel.org>
-Subject: Re: [V8, 1/2] media: dt-bindings: media: i2c: Document OV02A10
- bindings
-Message-ID: <20200521193525.GB14214@chromium.org>
-References: <20200509080627.23222-1-dongchun.zhu@mediatek.com>
- <20200509080627.23222-2-dongchun.zhu@mediatek.com>
- <20200511160207.GA32476@bogus>
+ id 1jbr4V-00027l-SE; Thu, 21 May 2020 19:41:43 +0000
+Received: from lelv0266.itg.ti.com ([10.180.67.225])
+ by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 04LJfXvW046430;
+ Thu, 21 May 2020 14:41:33 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1590090093;
+ bh=PNXaUPHJ9MT7IaWjYaNMQgErZ+4WK83l/f5BSRG5/Zg=;
+ h=Date:From:To:CC:Subject:References:In-Reply-To;
+ b=LaEMkyjkNTDCDEWDDp31lORujmHiVKA/2vJtN2mJjXFkjy1sOkxZsAm82Xw7wGuui
+ 69EZD96vjmoNJRVE95cZQrm9dtQPYwjpoRz7B3rw8KKyjIe3gt1un5O6xP4Cb2A8mB
+ 3R79KcPi8SHUP7bB+deqAqZihVbBjFg13aghM+2o=
+Received: from DFLE115.ent.ti.com (dfle115.ent.ti.com [10.64.6.36])
+ by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 04LJfXPa013452
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Thu, 21 May 2020 14:41:33 -0500
+Received: from DFLE109.ent.ti.com (10.64.6.30) by DFLE115.ent.ti.com
+ (10.64.6.36) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Thu, 21
+ May 2020 14:41:32 -0500
+Received: from fllv0040.itg.ti.com (10.64.41.20) by DFLE109.ent.ti.com
+ (10.64.6.30) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
+ Frontend Transport; Thu, 21 May 2020 14:41:32 -0500
+Received: from localhost (ileax41-snat.itg.ti.com [10.172.224.153])
+ by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 04LJfWZ9096717;
+ Thu, 21 May 2020 14:41:32 -0500
+Date: Fri, 22 May 2020 01:11:31 +0530
+From: Pratyush Yadav <p.yadav@ti.com>
+To: Boris Brezillon <boris.brezillon@collabora.com>
+Subject: Re: [PATCH v6 04/19] spi: spi-mem: allow specifying a command's
+ extension
+Message-ID: <20200521194129.3lqdormmcs4zadh2@ti.com>
+References: <20200520163053.24357-1-p.yadav@ti.com>
+ <20200520163053.24357-5-p.yadav@ti.com>
+ <20200521202256.5816eb32@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200511160207.GA32476@bogus>
+In-Reply-To: <20200521202256.5816eb32@collabora.com>
+User-Agent: NeoMutt/20171215
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_123528_668935_BEC36D6F 
-X-CRM114-Status: GOOD (  16.50  )
+X-CRM114-CacheID: sfid-20200521_124139_993094_B38C70E4 
+X-CRM114-Status: GOOD (  23.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,112 +91,105 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org,
- andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
- linus.walleij@linaro.org, shengnan.wang@mediatek.com, louis.kuo@mediatek.com,
- bgolaszewski@baylibre.com, sj.huang@mediatek.com, drinkcat@chromium.org,
- linux-mediatek@lists.infradead.org, Dongchun Zhu <dongchun.zhu@mediatek.com>,
- sakari.ailus@linux.intel.com, matthias.bgg@gmail.com, bingbu.cao@intel.com,
- mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Mason Yang <masonccyang@mxic.com.tw>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Tudor Ambarus <tudor.ambarus@microchip.com>,
+ Richard Weinberger <richard@nod.at>, Sekhar Nori <nsekhar@ti.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>, linux-kernel@vger.kernel.org,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Mark Brown <broonie@kernel.org>, linux-mtd@lists.infradead.org,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
-
-On Mon, May 11, 2020 at 11:02:07AM -0500, Rob Herring wrote:
-> On Sat, May 09, 2020 at 04:06:26PM +0800, Dongchun Zhu wrote:
-> > Add DT bindings documentation for Omnivision OV02A10 image sensor.
+On 21/05/20 08:22PM, Boris Brezillon wrote:
+> On Wed, 20 May 2020 22:00:38 +0530
+> Pratyush Yadav <p.yadav@ti.com> wrote:
+> 
+> > In xSPI mode, flashes expect 2-byte opcodes. The second byte is called
+> > the "command extension". There can be 3 types of extensions in xSPI:
+> > repeat, invert, and hex. When the extension type is "repeat", the same
+> > opcode is sent twice. When it is "invert", the second byte is the
+> > inverse of the opcode. When it is "hex" an additional opcode byte based
+> > is sent with the command whose value can be anything.
 > > 
-> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > So, make opcode a 16-bit value and add a 'nbytes', similar to how
+> > multiple address widths are handled.
+> > 
+> > Signed-off-by: Pratyush Yadav <p.yadav@ti.com>
 > > ---
-> >  .../bindings/media/i2c/ovti,ov02a10.yaml           | 184 +++++++++++++++++++++
-> >  MAINTAINERS                                        |   7 +
-> >  2 files changed, 191 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> >  include/linux/spi/spi-mem.h | 5 ++++-
+> >  1 file changed, 4 insertions(+), 1 deletion(-)
 > > 
-> > diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > new file mode 100644
-> > index 0000000..5468d1b
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > @@ -0,0 +1,184 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +# Copyright (c) 2020 MediaTek Inc.
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/media/i2c/ovti,ov02a10.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Omnivision OV02A10 CMOS Sensor Device Tree Bindings
-> > +
-> > +maintainers:
-> > +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > +
-> > +description: |-
-> > +  The Omnivision OV02A10 is a low-cost, high performance, 1/5-inch, 2 megapixel
-> > +  image sensor, which is the latest production derived from Omnivision's CMOS
-> > +  image sensor technology. Ihis chip supports high frame rate speeds up to 30fps
-> > +  @ 1600x1200 (UXGA) resolution transferred over a 1-lane MIPI interface. The
-> > +  sensor output is available via CSI-2 serial data output.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: ovti,ov02a10
-> > +
-> > +  reg:
-> > +    description: I2C device address
+> > diff --git a/include/linux/spi/spi-mem.h b/include/linux/spi/spi-mem.h
+> > index e3dcb956bf61..731bb64c6ba6 100644
+> > --- a/include/linux/spi/spi-mem.h
+> > +++ b/include/linux/spi/spi-mem.h
+> > @@ -69,6 +69,8 @@ enum spi_mem_data_dir {
+> >  
+> >  /**
+> >   * struct spi_mem_op - describes a SPI memory operation
+> > + * @cmd.nbytes: number of opcode bytes (only 1 or 2 are valid). The opcode is
+> > + *		sent MSB-first.
+> >   * @cmd.buswidth: number of IO lines used to transmit the command
+> >   * @cmd.opcode: operation opcode
+> >   * @cmd.dtr: whether the command opcode should be sent in DTR mode or not
+> > @@ -94,9 +96,10 @@ enum spi_mem_data_dir {
+> >   */
+> >  struct spi_mem_op {
+> >  	struct {
+> > +		u8 nbytes;
+> >  		u8 buswidth;
+> >  		u8 dtr : 1;
+> > -		u8 opcode;
+> > +		u16 opcode;
+> >  	} cmd;
+> >  
+> >  	struct {
 > 
-> Drop this. Nothing specific to this device.
-> 
-> > +    maxItems: 1
-> > +
-> > +  clocks:
-> > +    items:
-> > +      - description: top mux camtg clock
-> > +      - description: devider clock
-> 
-> typo
-> 
-> > +
-> > +  clock-names:
-> > +    items:
-> > +      - const: eclk
-> > +      - const: freq_mux
-> > +
-> > +  clock-frequency:
-> > +    description:
-> > +      Frequency of the eclk clock in Hertz.
-> > +
-> > +  dovdd-supply:
-> > +    description:
-> > +      Definition of the regulator used as interface power supply.
-> > +
-> > +  avdd-supply:
-> > +    description:
-> > +      Definition of the regulator used as analog power supply.
-> > +
-> > +  dvdd-supply:
-> > +    description:
-> > +      Definition of the regulator used as digital power supply.
-> > +
-> > +  powerdown-gpios:
-> > +    maxItems: 1
-> > +
-> > +  reset-gpios:
-> > +    maxItems: 1
+> As mentioned in one of my previous review, you should patch the mxic
+> driver before extending the opcode field:
 
-I asked a question about defining GPIO polarities some time ago, but I
-guess it slipped through.
+IIUC, this patchset doesn't break original functionality of the driver. 
+It will work like before with 1-byte opcodes. So I don't think it is the 
+responsibility of this patchset to enhance the driver. It didn't work 
+before with 2-byte opcodes, it won't work now. IMO this should be a 
+separate, independent change.
+ 
+> --->8---
+> diff --git a/drivers/spi/spi-mxic.c b/drivers/spi/spi-mxic.c
+> index 69491f3a515d..c3f4136a7c1d 100644
+> --- a/drivers/spi/spi-mxic.c
+> +++ b/drivers/spi/spi-mxic.c
+> @@ -356,6 +356,7 @@ static int mxic_spi_mem_exec_op(struct spi_mem *mem,
+>         int nio = 1, i, ret;
+>         u32 ss_ctrl;
+>         u8 addr[8];
+> +       u8 cmd[2];
+>  
+>         ret = mxic_spi_set_freq(mxic, mem->spi->max_speed_hz);
+>         if (ret)
+> @@ -393,7 +394,10 @@ static int mxic_spi_mem_exec_op(struct spi_mem *mem,
+>         writel(readl(mxic->regs + HC_CFG) | HC_CFG_MAN_CS_ASSERT,
+>                mxic->regs + HC_CFG);
+>  
+> -       ret = mxic_spi_data_xfer(mxic, &op->cmd.opcode, NULL, 1);
+> +       for (i = 0; i < op->cmd.nbytes; i++)
+> +               cmd[i] = op->cmd.opcode >> (8 * (op->cmd.nbytes - i - 1));
+> +
+> +       ret = mxic_spi_data_xfer(mxic, cmd, NULL, op->cmd.nbytes);
+>         if (ret)
+>                 goto out;
+>  
 
-The chip documentation calls the reset pin as "RST_PAD (low level
-reset)". Where should the inversion be handled, in the driver or here,
-by having the DT include a necessary flag in the specifier?
-
-Best regards,
-Tomasz
+-- 
+Regards,
+Pratyush Yadav
+Texas Instruments India
 
 _______________________________________________
 Linux-mediatek mailing list
