@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C572BC433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 09:18:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 44B58C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 09:18:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9BD9520759
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 09:18:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 08560206BE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 09:18:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FAS+Y/AB";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="JHix4rt3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9BD9520759
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dUl+U01R";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="H5L30Om0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 08560206BE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,34 +26,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SycgFlk87dsB2UI70lPpK9hQvHKqleBfzZqPI0sqFmw=; b=FAS+Y/ABfvYF0p
-	l800RufZmHSBDDlzV+Cj4mwSot29UDuPyGdL40+UdsEOW0ugnJ83aXh2zc2QIUNLFiFF/D3y5q498
-	HVFUZ1QRxMObACXyuYgHwUeeEM7jaSErpFNoQkqeGS1rFnwB1XWGz7+7ax1Gid4nGziLrEWSm8Y5z
-	ewHB4MJPc489uJRV0OBANLBGHzx4ZDS7wcts5Fvw60hpV7jRfTqZyYBpRuEAybqAXL1DEJ/Z4W4eD
-	PW0vBQUE6PsiXUyV2Xz9onggU8rX5M9TW+bKloLp7I0z/I9uRG2zYgHm4C3YN7bl2RCvmF0uMHHwl
-	U2czcY+77mOPriH3aOLQ==;
+	List-Owner; bh=7I/0pAFva9jz6ZGFuBGIA6wG/i8mHr7Q5afSWC19gyg=; b=dUl+U01RScIb9S
+	9K9mPgpNXDuzsyae3uUfhhpohAxVnqho2Tk7aYaEiOhFv9Ub473TUPl9rqyZRjb6aCUDFYLApII6P
+	mtdmjESieUuLXEh6eXt2HD+8uFJGYIh+sLNx53He01bJ1aik1eZn7jjh68WevM3zSTKizZmGZ8E27
+	9hEpvLuzox+57jxOSNYuWM3sLXqf4cd1H2DmJbi3lsd74tATdiu1lDrxmdcMOsCKRXlc4ochEnzYq
+	7W/SaEG26oq7+QKLVHyuK/k86jhENX7pzOC+Q6iA+xxJgiC44GYNVQ7xtpjXm8ZZ4Ka2G2ybb9/60
+	d4vbvjXhr/wO5WhgMNjw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbhLF-0004SF-7i; Thu, 21 May 2020 09:18:17 +0000
+	id 1jbhLG-0004TV-OV; Thu, 21 May 2020 09:18:18 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbhJj-0003EK-Ek; Thu, 21 May 2020 09:16:45 +0000
-X-UUID: 29f4786d510445a48d27b5ce0382fe77-20200521
+ id 1jbhJj-0003EJ-V4; Thu, 21 May 2020 09:16:46 +0000
+X-UUID: f3c039fcc8804579abf8cda0a5845e54-20200521
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=0rM0q4hkZ0DNqIzZUdev1uMbsurkkv21fpGoS3vOqow=; 
- b=JHix4rt3mDM6HVF2DzodHSwwmPMm2Dk4xequGXxWAXH+7AxcaBRZ+ttvXuSfQZ7xsoizcTHBUlmdP6r5QfclfhFTCxPsZLCyKqlCRXCIbrMAOnnieceAD9bzFizZRFgnHfG1hUp6pPvf64DhmlRRfBuv90C501QTHbADWCnlL+0=;
-X-UUID: 29f4786d510445a48d27b5ce0382fe77-20200521
+ bh=X1NDBhTPonNFCyfn+Vu9nt4rKMEPznMllsnD3UGUKPo=; 
+ b=H5L30Om0EgPfzh0R72HinzGZgUfg5Ow+DEXd4k3s9/6xflhmaeFIiEeDRInnJCQKCXIuW1oq+C6Kx33yKkJz42N7Qr40qkS3ucr34rqBqRKDGKRTyKQCY0CE+SY3MAsrGbCpXpkfFaXvaJwOkd4vHxivtLFCmLBkV88kFEIrv7A=;
+X-UUID: f3c039fcc8804579abf8cda0a5845e54-20200521
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 613238491; Thu, 21 May 2020 01:16:33 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 995068462; Thu, 21 May 2020 01:16:33 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 21 May 2020 02:06:33 -0700
+ 15.0.1497.2; Thu, 21 May 2020 02:06:32 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Thu, 21 May 2020 17:06:29 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -62,18 +62,17 @@ From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Enric Balletbo Serra <eballetbo@gmail.com>, Matthias Brugger
  <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, "Rob
  Herring" <robh@kernel.org>, Sascha Hauer <kernel@pengutronix.de>
-Subject: [PATCH v15 06/11] soc: mediatek: Add subsys clock control for bus
- protection
-Date: Thu, 21 May 2020 17:06:19 +0800
-Message-ID: <1590051985-29149-7-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v15 03/11] soc: mediatek: Add basic_clk_name to scp_power_data
+Date: Thu, 21 May 2020 17:06:16 +0800
+Message-ID: <1590051985-29149-4-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1590051985-29149-1-git-send-email-weiyi.lu@mediatek.com>
 References: <1590051985-29149-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_021643_515668_4E7028CE 
-X-CRM114-Status: GOOD (  15.67  )
+X-CRM114-CacheID: sfid-20200521_021644_093942_2641AFFA 
+X-CRM114-Status: GOOD (  12.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,147 +93,522 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For the bus protection operations, some subsys clocks need to be enabled
-before releasing the protection, and vice versa.
-But those subsys clocks could only be controlled once its corresponding
-power domain is turned on first.
-In this patch, we add the subsys clock control into its relevant steps.
+Try to stop extending the clk_id or clk_names if there are
+more and more new BASIC clocks. To get its own clocks by the
+basic_clk_name of each power domain.
+And then use basic_clk_name strings for all compatibles, instead of
+mixing clk_id and clk_name.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
 ---
- drivers/soc/mediatek/mtk-scpsys.c | 62 +++++++++++++++++++++++++++++++++++++--
- 1 file changed, 60 insertions(+), 2 deletions(-)
+ drivers/soc/mediatek/mtk-scpsys.c | 134 ++++++++++++--------------------------
+ 1 file changed, 41 insertions(+), 93 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index 59a525a..ef2c668 100644
+index f669d37..c9c3cf7 100644
 --- a/drivers/soc/mediatek/mtk-scpsys.c
 +++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -97,6 +97,7 @@
- #define MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT	BIT(23)
+@@ -78,34 +78,6 @@
+ #define PWR_STATUS_HIF1			BIT(26)	/* MT7622 */
+ #define PWR_STATUS_WB			BIT(27)	/* MT7622 */
  
+-enum clk_id {
+-	CLK_NONE,
+-	CLK_MM,
+-	CLK_MFG,
+-	CLK_VENC,
+-	CLK_VENC_LT,
+-	CLK_ETHIF,
+-	CLK_VDEC,
+-	CLK_HIFSEL,
+-	CLK_JPGDEC,
+-	CLK_AUDIO,
+-	CLK_MAX,
+-};
+-
+-static const char * const clk_names[] = {
+-	NULL,
+-	"mm",
+-	"mfg",
+-	"venc",
+-	"venc_lt",
+-	"ethif",
+-	"vdec",
+-	"hif_sel",
+-	"jpgdec",
+-	"audio",
+-	NULL,
+-};
+-
  #define MAX_CLKS	3
-+#define MAX_SUBSYS_CLKS 10
  
- #define MAX_STEPS	4
- 
-@@ -145,6 +146,8 @@ struct bus_prot {
+ /**
+@@ -116,7 +88,7 @@ enum clk_id {
   * @sram_pdn_bits: The mask for sram power control bits.
   * @sram_pdn_ack_bits: The mask for sram power control acked bits.
-  * @basic_clk_name: The basic clocks required by this power domain.
-+ * @subsys_clk_prefix: The prefix name of the clocks need to be enabled
-+ *                     before releasing bus protection.
+  * @bus_prot_mask: The mask for single step bus protection.
+- * @clk_id: The basic clocks required by this power domain.
++ * @basic_clk_name: The basic clocks required by this power domain.
   * @caps: The flag for active wake-up action.
-  * @bp_table: The mask table for multiple step bus protection.
   */
-@@ -155,6 +158,7 @@ struct scp_domain_data {
+ struct scp_domain_data {
+@@ -126,7 +98,7 @@ struct scp_domain_data {
  	u32 sram_pdn_bits;
  	u32 sram_pdn_ack_bits;
- 	const char *basic_clk_name[MAX_CLKS];
-+	const char *subsys_clk_prefix;
+ 	u32 bus_prot_mask;
+-	enum clk_id clk_id[MAX_CLKS];
++	const char *basic_clk_name[MAX_CLKS];
  	u8 caps;
- 	struct bus_prot bp_table[MAX_STEPS];
  };
-@@ -165,6 +169,7 @@ struct scp_domain {
- 	struct generic_pm_domain genpd;
- 	struct scp *scp;
- 	struct clk *clk[MAX_CLKS];
-+	struct clk *subsys_clk[MAX_SUBSYS_CLKS];
- 	const struct scp_domain_data *data;
- 	struct regulator *supply;
- };
-@@ -425,16 +430,22 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	val |= PWR_RST_B_BIT;
- 	writel(val, ctl_addr);
  
--	ret = scpsys_sram_enable(scpd, ctl_addr);
-+	ret = scpsys_clk_enable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
- 	if (ret < 0)
- 		goto err_pwr_ack;
- 
-+	ret = scpsys_sram_enable(scpd, ctl_addr);
-+	if (ret < 0)
-+		goto err_sram;
-+
- 	ret = scpsys_bus_protect_disable(scpd);
- 	if (ret < 0)
--		goto err_pwr_ack;
-+		goto err_sram;
- 
- 	return 0;
- 
-+err_sram:
-+	scpsys_clk_disable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
- err_pwr_ack:
- 	scpsys_clk_disable(scpd->clk, MAX_CLKS);
- err_clk:
-@@ -461,6 +472,8 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	if (ret < 0)
- 		goto out;
- 
-+	scpsys_clk_disable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
-+
- 	/* subsys power off */
- 	val = readl(ctl_addr);
- 	val |= PWR_ISO_BIT;
-@@ -498,6 +511,39 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+@@ -411,12 +383,19 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
  	return ret;
  }
  
-+static int init_subsys_clks(struct platform_device *pdev,
-+		const char *prefix, struct clk **clk)
-+{
-+	struct device_node *node = pdev->dev.of_node;
-+	u32 prefix_len, sub_clk_cnt = 0;
-+	struct property *prop;
-+	const char *clk_name;
+-static void init_clks(struct platform_device *pdev, struct clk **clk)
++static int init_basic_clks(struct platform_device *pdev, struct clk **clk,
++			const char * const *name)
+ {
+ 	int i;
+ 
+-	for (i = CLK_NONE + 1; i < CLK_MAX; i++)
+-		clk[i] = devm_clk_get(&pdev->dev, clk_names[i]);
++	for (i = 0; i < MAX_CLKS && name[i]; i++) {
++		clk[i] = devm_clk_get(&pdev->dev, name[i]);
 +
-+	prefix_len = strlen(prefix);
-+
-+	of_property_for_each_string(node, "clock-names", prop, clk_name) {
-+		if (!strncmp(clk_name, prefix, prefix_len) &&
-+				(clk_name[prefix_len] == '-')) {
-+			if (sub_clk_cnt >= MAX_SUBSYS_CLKS) {
-+				dev_err(&pdev->dev,
-+					"subsys clk out of range %d\n",
-+					sub_clk_cnt);
-+				return -EINVAL;
-+			}
-+
-+			clk[sub_clk_cnt] = devm_clk_get(&pdev->dev,
-+						clk_name);
-+
-+			if (IS_ERR(clk[sub_clk_cnt]))
-+				return PTR_ERR(clk[sub_clk_cnt]);
-+
-+			sub_clk_cnt++;
-+		}
++		if (IS_ERR(clk[i]))
++			return PTR_ERR(clk[i]);
 +	}
 +
-+	return sub_clk_cnt;
-+}
-+
- static int init_basic_clks(struct platform_device *pdev, struct clk **clk,
- 			const char * const *name)
- {
-@@ -596,6 +642,18 @@ static struct scp *init_scp(struct platform_device *pdev,
- 		if (ret)
- 			return ERR_PTR(ret);
++	return 0;
+ }
  
-+		if (data->subsys_clk_prefix) {
-+			ret = init_subsys_clks(pdev,
-+					data->subsys_clk_prefix,
-+					scpd->subsys_clk);
-+			if (ret < 0) {
-+				dev_err(&pdev->dev,
-+					"%s: subsys clk unavailable\n",
-+					data->name);
-+				return ERR_PTR(ret);
-+			}
-+		}
-+
+ static struct scp *init_scp(struct platform_device *pdev,
+@@ -426,9 +405,8 @@ static struct scp *init_scp(struct platform_device *pdev,
+ {
+ 	struct genpd_onecell_data *pd_data;
+ 	struct resource *res;
+-	int i, j;
++	int i, ret;
+ 	struct scp *scp;
+-	struct clk *clk[CLK_MAX];
+ 
+ 	scp = devm_kzalloc(&pdev->dev, sizeof(*scp), GFP_KERNEL);
+ 	if (!scp)
+@@ -481,8 +459,6 @@ static struct scp *init_scp(struct platform_device *pdev,
+ 
+ 	pd_data->num_domains = num;
+ 
+-	init_clks(pdev, clk);
+-
+ 	for (i = 0; i < num; i++) {
+ 		struct scp_domain *scpd = &scp->domains[i];
+ 		struct generic_pm_domain *genpd = &scpd->genpd;
+@@ -493,17 +469,9 @@ static struct scp *init_scp(struct platform_device *pdev,
+ 
+ 		scpd->data = data;
+ 
+-		for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
+-			struct clk *c = clk[data->clk_id[j]];
+-
+-			if (IS_ERR(c)) {
+-				dev_err(&pdev->dev, "%s: clk unavailable\n",
+-					data->name);
+-				return ERR_CAST(c);
+-			}
+-
+-			scpd->clk[j] = c;
+-		}
++		ret = init_basic_clks(pdev, scpd->clk, data->basic_clk_name);
++		if (ret)
++			return ERR_PTR(ret);
+ 
  		genpd->name = data->name;
  		genpd->power_off = scpsys_power_off;
- 		genpd->power_on = scpsys_power_on;
+@@ -560,7 +528,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_CONN_PWR_CON,
+ 		.bus_prot_mask = MT2701_TOP_AXI_PROT_EN_CONN_M |
+ 				 MT2701_TOP_AXI_PROT_EN_CONN_S,
+-		.clk_id = {CLK_NONE},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2701_POWER_DOMAIN_DISP] = {
+@@ -568,7 +535,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.sta_mask = PWR_STATUS_DISP,
+ 		.ctl_offs = SPM_DIS_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+-		.clk_id = {CLK_MM},
++		.basic_clk_name = {"mm"},
+ 		.bus_prot_mask = MT2701_TOP_AXI_PROT_EN_MM_M0,
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+@@ -578,7 +545,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_MFG_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+-		.clk_id = {CLK_MFG},
++		.basic_clk_name = {"mfg"},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2701_POWER_DOMAIN_VDEC] = {
+@@ -587,7 +554,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_VDE_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+-		.clk_id = {CLK_MM},
++		.basic_clk_name = {"mm"},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2701_POWER_DOMAIN_ISP] = {
+@@ -596,7 +563,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_ISP_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(13, 12),
+-		.clk_id = {CLK_MM},
++		.basic_clk_name = {"mm"},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2701_POWER_DOMAIN_BDP] = {
+@@ -604,7 +571,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.sta_mask = PWR_STATUS_BDP,
+ 		.ctl_offs = SPM_BDP_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+-		.clk_id = {CLK_NONE},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2701_POWER_DOMAIN_ETH] = {
+@@ -613,7 +579,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_ETH_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {CLK_ETHIF},
++		.basic_clk_name = {"ethif"},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2701_POWER_DOMAIN_HIF] = {
+@@ -622,14 +588,13 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_HIF_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {CLK_ETHIF},
++		.basic_clk_name = {"ethif"},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2701_POWER_DOMAIN_IFR_MSC] = {
+ 		.name = "ifr_msc",
+ 		.sta_mask = PWR_STATUS_IFR_MSC,
+ 		.ctl_offs = SPM_IFR_MSC_PWR_CON,
+-		.clk_id = {CLK_NONE},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ };
+@@ -644,7 +609,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_DIS_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+-		.clk_id = {CLK_MM},
++		.basic_clk_name = {"mm"},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_VDEC] = {
+@@ -653,7 +618,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_VDE_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+-		.clk_id = {CLK_MM, CLK_VDEC},
++		.basic_clk_name = {"mm", "vdec"},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_VENC] = {
+@@ -662,7 +627,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_VEN_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {CLK_MM, CLK_VENC, CLK_JPGDEC},
++		.basic_clk_name = {"mm", "venc", "jpgdec"},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_ISP] = {
+@@ -671,7 +636,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_ISP_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(13, 12),
+-		.clk_id = {CLK_MM},
++		.basic_clk_name = {"mm"},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_AUDIO] = {
+@@ -680,7 +645,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_AUDIO_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {CLK_AUDIO},
++		.basic_clk_name = {"audio"},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_USB] = {
+@@ -689,7 +654,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_USB_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(10, 8),
+ 		.sram_pdn_ack_bits = GENMASK(14, 12),
+-		.clk_id = {CLK_NONE},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_USB2] = {
+@@ -698,7 +662,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_USB2_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(10, 8),
+ 		.sram_pdn_ack_bits = GENMASK(14, 12),
+-		.clk_id = {CLK_NONE},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_MFG] = {
+@@ -707,7 +670,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_MFG_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(16, 16),
+-		.clk_id = {CLK_MFG},
++		.basic_clk_name = {"mfg"},
+ 		.bus_prot_mask = BIT(14) | BIT(21) | BIT(23),
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+@@ -717,7 +680,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = 0x02c0,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(16, 16),
+-		.clk_id = {CLK_NONE},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_MFG_SC2] = {
+@@ -726,7 +688,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = 0x02c4,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(16, 16),
+-		.clk_id = {CLK_NONE},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT2712_POWER_DOMAIN_MFG_SC3] = {
+@@ -735,7 +696,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = 0x01f8,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(16, 16),
+-		.clk_id = {CLK_NONE},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ };
+@@ -760,7 +720,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = 0x300,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+-		.clk_id = {CLK_VDEC},
++		.basic_clk_name = {"vdec"},
+ 	},
+ 	[MT6797_POWER_DOMAIN_VENC] = {
+ 		.name = "venc",
+@@ -768,7 +728,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = 0x304,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {CLK_NONE},
+ 	},
+ 	[MT6797_POWER_DOMAIN_ISP] = {
+ 		.name = "isp",
+@@ -776,7 +735,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = 0x308,
+ 		.sram_pdn_bits = GENMASK(9, 8),
+ 		.sram_pdn_ack_bits = GENMASK(13, 12),
+-		.clk_id = {CLK_NONE},
+ 	},
+ 	[MT6797_POWER_DOMAIN_MM] = {
+ 		.name = "mm",
+@@ -784,7 +742,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = 0x30C,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+-		.clk_id = {CLK_MM},
++		.basic_clk_name = {"mm"},
+ 		.bus_prot_mask = (BIT(1) | BIT(2)),
+ 	},
+ 	[MT6797_POWER_DOMAIN_AUDIO] = {
+@@ -793,7 +751,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = 0x314,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {CLK_NONE},
+ 	},
+ 	[MT6797_POWER_DOMAIN_MFG_ASYNC] = {
+ 		.name = "mfg_async",
+@@ -801,7 +758,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = 0x334,
+ 		.sram_pdn_bits = 0,
+ 		.sram_pdn_ack_bits = 0,
+-		.clk_id = {CLK_MFG},
++		.basic_clk_name = {"mfg"},
+ 	},
+ 	[MT6797_POWER_DOMAIN_MJC] = {
+ 		.name = "mjc",
+@@ -809,7 +766,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = 0x310,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+-		.clk_id = {CLK_NONE},
+ 	},
+ };
+ 
+@@ -834,7 +790,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_ETHSYS_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {CLK_NONE},
+ 		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_ETHSYS,
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+@@ -844,7 +799,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_HIF0_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {CLK_HIFSEL},
++		.basic_clk_name = {"hif_sel"},
+ 		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_HIF0,
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+@@ -854,7 +809,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_HIF1_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {CLK_HIFSEL},
++		.basic_clk_name = {"hif_sel"},
+ 		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_HIF1,
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+@@ -864,7 +819,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_WB_PWR_CON,
+ 		.sram_pdn_bits = 0,
+ 		.sram_pdn_ack_bits = 0,
+-		.clk_id = {CLK_NONE},
+ 		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_WB,
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP | MTK_SCPD_FWAIT_SRAM,
+ 	},
+@@ -881,7 +835,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_CONN_PWR_CON,
+ 		.bus_prot_mask = MT2701_TOP_AXI_PROT_EN_CONN_M |
+ 				 MT2701_TOP_AXI_PROT_EN_CONN_S,
+-		.clk_id = {CLK_NONE},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT7623A_POWER_DOMAIN_ETH] = {
+@@ -890,7 +843,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_ETH_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {CLK_ETHIF},
++		.basic_clk_name = {"ethif"},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT7623A_POWER_DOMAIN_HIF] = {
+@@ -899,14 +852,13 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_HIF_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {CLK_ETHIF},
++		.basic_clk_name = {"ethif"},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT7623A_POWER_DOMAIN_IFR_MSC] = {
+ 		.name = "ifr_msc",
+ 		.sta_mask = PWR_STATUS_IFR_MSC,
+ 		.ctl_offs = SPM_IFR_MSC_PWR_CON,
+-		.clk_id = {CLK_NONE},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ };
+@@ -922,7 +874,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_VDE_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+-		.clk_id = {CLK_MM},
++		.basic_clk_name = {"mm"},
+ 	},
+ 	[MT8173_POWER_DOMAIN_VENC] = {
+ 		.name = "venc",
+@@ -930,7 +882,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_VEN_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {CLK_MM, CLK_VENC},
++		.basic_clk_name = {"mm", "venc"},
+ 	},
+ 	[MT8173_POWER_DOMAIN_ISP] = {
+ 		.name = "isp",
+@@ -938,7 +890,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_ISP_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(13, 12),
+-		.clk_id = {CLK_MM},
++		.basic_clk_name = {"mm"},
+ 	},
+ 	[MT8173_POWER_DOMAIN_MM] = {
+ 		.name = "mm",
+@@ -946,7 +898,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_DIS_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+-		.clk_id = {CLK_MM},
++		.basic_clk_name = {"mm"},
+ 		.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MM_M0 |
+ 			MT8173_TOP_AXI_PROT_EN_MM_M1,
+ 	},
+@@ -956,7 +908,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_VEN2_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {CLK_MM, CLK_VENC_LT},
++		.basic_clk_name = {"mm", "venc_lt"},
+ 	},
+ 	[MT8173_POWER_DOMAIN_AUDIO] = {
+ 		.name = "audio",
+@@ -964,7 +916,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_AUDIO_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {CLK_NONE},
+ 	},
+ 	[MT8173_POWER_DOMAIN_USB] = {
+ 		.name = "usb",
+@@ -972,7 +923,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_USB_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {CLK_NONE},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
+ 	[MT8173_POWER_DOMAIN_MFG_ASYNC] = {
+@@ -981,7 +931,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_MFG_ASYNC_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = 0,
+-		.clk_id = {CLK_MFG},
++		.basic_clk_name = {"mfg"},
+ 	},
+ 	[MT8173_POWER_DOMAIN_MFG_2D] = {
+ 		.name = "mfg_2d",
+@@ -989,7 +939,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_MFG_2D_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(13, 12),
+-		.clk_id = {CLK_NONE},
+ 	},
+ 	[MT8173_POWER_DOMAIN_MFG] = {
+ 		.name = "mfg",
+@@ -997,7 +946,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.ctl_offs = SPM_MFG_PWR_CON,
+ 		.sram_pdn_bits = GENMASK(13, 8),
+ 		.sram_pdn_ack_bits = GENMASK(21, 16),
+-		.clk_id = {CLK_NONE},
+ 		.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MFG_S |
+ 			MT8173_TOP_AXI_PROT_EN_MFG_M0 |
+ 			MT8173_TOP_AXI_PROT_EN_MFG_M1 |
 -- 
 1.8.1.1.dirty
 _______________________________________________
