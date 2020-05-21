@@ -2,89 +2,81 @@ Return-Path: <SRS0=x8tw=7D=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 59516C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 14:10:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C9AFC433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 14:34:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 171242083E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 14:10:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D13F52072C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 14:34:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="j753xJ1v";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="n6+WXUkl"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 171242083E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eQ6hXPxX";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="uQv6Lq5c"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D13F52072C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Cc:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=rQOvIpq/prSYcr/MiV8fspSrOqcUi2hIVwh4LOa8y7g=; b=j753xJ1vkJN1npV13I8BgvvU7u
-	+10kVogQ0sx1bejO3SBbZ2dxVlk2P4hpjegctg6Y8asTHV6kr1ncDPVIB8t/FYUKa+F/kvbNppXiR
-	+hcsWjyfmVJhI+sKwbSBGB1/GZnS8czsHAcf4c4nOgJR+G8M1Muho09n5CK3gqaoNVJ8VTVkRV4XD
-	w85yOrnB8PmP8i34yqnmQqQXDo99qNy7dFdO82l/ah1hi9R2gJcw+GvqcKgnjQ5NsxzbowzM5fXyf
-	lwL+kfES5PuI7twxB/6hlhdm4Pf/N/FOLJuI6l3kanh+54ayR4sibt6FkAHsx1KJukUaai3Q4/96M
-	soNv4MRw==;
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=riCFzZvZHj6LigKhOJbrMZmspEaZl9QKCkQfQR8K8o8=; b=eQ6hXPxXSt4gXV
+	9iSynX/5JYEk+gnL069a2ObceHFaaSbUqQy9u3BfjW2VgJf3Qm0ou3Ta+yfgh34JejN4l6Lq4VAxY
+	EdjMhrnh6sJxL/e8w8a8lQHsVag8oPN1ZbEZfNQuSQwSjisaWhpZTIoS34vAx2e2rSqysgYh+t3qB
+	x8cuJcKtTAdeqVHMW3GrAZZIJ2iCD1lPaj00thAODNTYuJ8PcBEcaxfidPBkMTUBwOsmaaPaFpNek
+	CC6NpR+0e0Q2+H7a7+oEQsCcpH5LgZwYxzcBL+iBAoH1uQafJVIb9LLygDsN8Rf7EYJPl0lCd+tFc
+	1WZ2p5ybyw9iDpVubwgg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbltT-0003zq-QS; Thu, 21 May 2020 14:09:55 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1jbmHO-0003q8-2U; Thu, 21 May 2020 14:34:38 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbltQ-0003zE-F4; Thu, 21 May 2020 14:09:53 +0000
-Received: by mail-wr1-x444.google.com with SMTP id x14so1417082wrp.2;
- Thu, 21 May 2020 07:09:51 -0700 (PDT)
+ id 1jbmHK-0003pK-FN
+ for linux-mediatek@lists.infradead.org; Thu, 21 May 2020 14:34:37 +0000
+Received: by mail-wm1-x343.google.com with SMTP id f13so5744196wmc.5;
+ Thu, 21 May 2020 07:34:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:references:from:autocrypt:message-id:date:user-agent
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=KDX16XCnRl7eQ/dyVs1XNgsl7hOV/GRuFmtxFKaevRA=;
- b=n6+WXUklmhLvERUIyot3KggnD8v664lwamukbEBFtVRWsB/fkqwjH1W3e47Bv6GtGu
- a6Y6c7KNuphNp+zC5nNfsT1NOvfemaaRWclLBxBbwLfUR4HR/w+SjuePFHjO84knx14N
- FsX436A/SkjX143MzZDLfSkxhRsKYXnCmm3tF0UqHw6qzQ4KFdwz5gZbNnxPiScVkFYD
- 6gYmKfAcI2HjpFsZNvLyygK725nSCbTUP2MhiyunE13uZ0/kHyvW/KO8NNRpWB5kl/lW
- 7kucSrRH8LlXsnt041/H6slNDRUxGNFqmIqz05McW4crf+AEMuAEOk4KujazFSlsLqkx
- mC5A==
+ bh=tGKKjFMFC+sKVknptE7avSq6dI51LoeJ7RfKG7AjW6c=;
+ b=uQv6Lq5coSn4/zosnKstvXy2IF6rJa4HzZfK7QuvIpPJbOeSgT9jdkfwVntAtm/JXJ
+ TUQBb5PUXBhJILJScCwlqr7VnVca5oVJgWRUivc9n5c19wWnWEzgZd8kNIx8eBdZNaSn
+ TpOh11MBdVTvJbt7RSIyk1GOC3GWq4u5UFdDwMLuoexW8TgoO3LkoDZ6Z3/CMWC/Bxyl
+ tI53uBvKnzUnd1pY12BGz0nVo3u7yOAKD1034kmLHYjbCpzgrBmnyh0waaKFERrtGwBN
+ TrC+bxL2p9K3LJi/g4FR5hvH8yKMaDxX+xcRG08KKwq4SsBIUxuhrC4DNA3E/DeWQFBf
+ KkIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:autocrypt:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=KDX16XCnRl7eQ/dyVs1XNgsl7hOV/GRuFmtxFKaevRA=;
- b=jn3Ftr41jPJkPc/xFXv6dM89MZlCBdXyrX3zsMs/p1qB9HGCthspaHEYLw7CHh6Tp1
- K9wz5NIxgwAx56m8qHqDifenvP2XlGaZJgDwMlA52cnQPmnkXCRYlB5E1MG8vdGjYtzA
- LLFxRKp4SGwrhFaWs4F1v3/mb6XXJbi0R1jS2mktWX2nAZNo6CJ3RobshBCAxjkjsWow
- fPwYam6JBqcpYyEJQvWin5oeP6Me0gIwQL+0feEXbEMYcJop1YX3AF1EvOjiu/eljqSH
- JY7JMrQT/E1vzXrHwjUr5IoKwdytl+cgSXOKcSW09Knlu1iU4rOl8om+cUtj2tucB51U
- YFbw==
-X-Gm-Message-State: AOAM531Gavy1b3+vnXL5hFGNDXotClym+28fl35cl6vunksix0EIO2R7
- /InMXQlvqQbmg+ebyuuiMJU=
-X-Google-Smtp-Source: ABdhPJzP1UBaa3gM2Favmpl0ir/se+uD70D5ODl0LMfn/RGc1N/jG/7AM+rQzt4XDOTKsZ1AzhfU2Q==
-X-Received: by 2002:adf:80f0:: with SMTP id 103mr8273768wrl.232.1590070190430; 
- Thu, 21 May 2020 07:09:50 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=tGKKjFMFC+sKVknptE7avSq6dI51LoeJ7RfKG7AjW6c=;
+ b=O34opMmEgJinGqBB6I9ew10dVW6fVaqIJddPwtbZEHcdfSNhBu4Pvn4oVFAr6oK+sx
+ YTrmDTHOBBXLTTvo04tNLvwcJh+/DyHqwmePsPYUtsl4i39Qa6N0LaoXJjgWI/nNCP64
+ EdNNlvRUgGeUWwIV/uPF/5fIewT2qgB4P9mQwasrE0t4IN8qwJK82ig6ilL9BwufAeLA
+ B2sDJ/EZK/knj13YIjRbu9lZeOsacE/zZ/tNrj+pFYvBEDiShIC0Zz+6HnFxw+AOFIPb
+ zgbCbnPZRMuJCDJ3IaLx83CpyhgoIyVetiW9eqwoBph8PZhC+nMaGBUV3GTkFUsIBUsd
+ xgEw==
+X-Gm-Message-State: AOAM533vkcHTATWKcceEavkT85CsiPsXSxQHVY7cuFcVIpL+nRvSsVaR
+ bcHrmayqNOYz3KUdZOmRA5c=
+X-Google-Smtp-Source: ABdhPJw+wktKRIU8cY5UYoDcI7dM1Rqx9qTh+82Va77h33m0BmvccjxP1lXTr8+CN9t5+mDpBU+4Vg==
+X-Received: by 2002:a1c:46c1:: with SMTP id t184mr9938825wma.185.1590071669014; 
+ Thu, 21 May 2020 07:34:29 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id r11sm4999027wre.25.2020.05.21.07.09.49
+ by smtp.gmail.com with ESMTPSA id h137sm12843428wme.0.2020.05.21.07.34.27
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 21 May 2020 07:09:49 -0700 (PDT)
-Subject: Re: [PATCH v1 2/4] arm: dts: mt7623: add display subsystem related
- device nodes
-To: Frank Wunderlich <frank-w@public-files.de>, CK Hu <ck.hu@mediatek.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- chunhui dai <chunhui.dai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Bibby Hsieh <bibby.hsieh@mediatek.com>
-References: <20190416145848.11932-1-frank-w@public-files.de>
- <20190416145848.11932-3-frank-w@public-files.de>
+ Thu, 21 May 2020 07:34:28 -0700 (PDT)
+Subject: Re: [PATCH] arm64: dts: mt8183: add mmc node
+To: Jjian Zhou <jjian.zhou@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Mark Rutland <mark.rutland@arm.com>
+References: <1554888341-5249-1-git-send-email-jjian.zhou@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -160,16 +152,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <84938d21-84bd-a99b-c34a-e850cade7098@gmail.com>
-Date: Thu, 21 May 2020 16:09:48 +0200
+Message-ID: <87b4bf7f-8504-3d01-c7d9-63ed1856c02f@gmail.com>
+Date: Thu, 21 May 2020 16:34:27 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20190416145848.11932-3-frank-w@public-files.de>
+In-Reply-To: <1554888341-5249-1-git-send-email-jjian.zhou@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_070952_524481_153893BA 
-X-CRM114-Status: GOOD (  13.73  )
+X-CRM114-CacheID: sfid-20200521_073435_566002_ED6892CF 
+X-CRM114-Status: GOOD (  18.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -181,55 +173,243 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: =linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ wsd_upstream@mediatek.com, srv_heupstream@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Frank,
 
-On 16/04/2019 16:58, Frank Wunderlich wrote:
-> From: Ryder Lee <ryder.lee@mediatek.com>
+
+On 10/04/2019 11:25, Jjian Zhou wrote:
+> From: jjian zhou <jjian.zhou@mediatek.com>
 > 
-> Add display subsystem related device nodes for MT7623.
+> Add mmc DTS node to the mt8183 and mt8183-evb.
 > 
-> Cc: CK Hu <ck.hu@mediatek.com>
-> Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
-> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
+> ---
+> This patch is based on v5.1-rc1 and these patches:
+> http://lists.infradead.org/pipermail/linux-mediatek/2019-March/017963.html
+> https://patchwork.kernel.org/patch/10856987/
+> https://patchwork.kernel.org/cover/10879001/
+> https://patchwork.kernel.org/cover/10846677/
+
+These requirements are now fulfilled.
+Applied now to v5.7-next/dts64
+
+Thanks!
+
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8183-evb.dts | 149 ++++++++++++++++++++++++++++
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi    |  24 +++++
+>  2 files changed, 173 insertions(+)
 > 
-> additional fixes:
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> index 9b52559..465cdab 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> @@ -7,6 +7,7 @@
 > 
-> [hdmi,dts] fixed dts-warnings
-> author: Bibby Hsieh <bibby.hsieh@mediatek.com>
+>  /dts-v1/;
+>  #include "mt8183.dtsi"
+> +#include "mt6358.dtsi"
 > 
-> [dtsi] fix dpi0-node
-> author: Ryder Lee <ryder.lee@mediatek.com>
+>  / {
+>  	model = "MediaTek MT8183 evaluation board";
+> @@ -26,6 +27,154 @@
+>  	};
+>  };
 > 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> Tested-by: Frank Wunderlich <frank-w@public-files.de>
-> =2D--
->  arch/arm/boot/dts/mt7623.dtsi                 | 177 ++++++++++++++++++
->  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts |  85 +++++++++
->  arch/arm/boot/dts/mt7623n-rfb-emmc.dts        |  85 +++++++++
->  3 files changed, 347 insertions(+)
-> 
-[...]
-> 
-> +	display_components: dispsys@14000000 {
-> +		compatible =3D "mediatek,mt7623-mmsys",
-> +			     "mediatek,mt2701-mmsys";
-> +		reg =3D <0 0x14000000 0 0x1000>;
-> +		power-domains =3D <&scpsys MT2701_POWER_DOMAIN_DISP>;
+> +&mmc0 {
+> +	status = "okay";
+> +	pinctrl-names = "default", "state_uhs";
+> +	pinctrl-0 = <&mmc0_pins_default>;
+> +	pinctrl-1 = <&mmc0_pins_uhs>;
+> +	bus-width = <8>;
+> +	max-frequency = <200000000>;
+> +	cap-mmc-highspeed;
+> +	mmc-hs200-1_8v;
+> +	mmc-hs400-1_8v;
+> +	cap-mmc-hw-reset;
+> +	no-sdio;
+> +	no-sd;
+> +	hs400-ds-delay = <0x12814>;
+> +	vmmc-supply = <&mt6358_vemc_reg>;
+> +	vqmmc-supply = <&mt6358_vio18_reg>;
+> +	assigned-clocks = <&topckgen CLK_TOP_MUX_MSDC50_0>;
+> +	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL_CK>;
+> +	non-removable;
+> +};
+> +
+> +&mmc1 {
+> +	status = "okay";
+> +	pinctrl-names = "default", "state_uhs";
+> +	pinctrl-0 = <&mmc1_pins_default>;
+> +	pinctrl-1 = <&mmc1_pins_uhs>;
+> +	bus-width = <4>;
+> +	max-frequency = <200000000>;
+> +	cap-sd-highspeed;
+> +	sd-uhs-sdr50;
+> +	sd-uhs-sdr104;
+> +	cap-sdio-irq;
+> +	no-mmc;
+> +	no-sd;
+> +	vmmc-supply = <&mt6358_vmch_reg>;
+> +	vqmmc-supply = <&mt6358_vmc_reg>;
+> +	keep-power-in-suspend;
+> +	enable-sdio-wakeup;
+> +	non-removable;
+> +};
+> +
+> +&pio {
+> +	mmc0_pins_default: mmc0default {
+> +		pins_cmd_dat {
+> +			pinmux = <PINMUX_GPIO123__FUNC_MSDC0_DAT0>,
+> +				 <PINMUX_GPIO128__FUNC_MSDC0_DAT1>,
+> +				 <PINMUX_GPIO125__FUNC_MSDC0_DAT2>,
+> +				 <PINMUX_GPIO132__FUNC_MSDC0_DAT3>,
+> +				 <PINMUX_GPIO126__FUNC_MSDC0_DAT4>,
+> +				 <PINMUX_GPIO129__FUNC_MSDC0_DAT5>,
+> +				 <PINMUX_GPIO127__FUNC_MSDC0_DAT6>,
+> +				 <PINMUX_GPIO130__FUNC_MSDC0_DAT7>,
+> +				 <PINMUX_GPIO122__FUNC_MSDC0_CMD>;
+> +			input-enable;
+> +			bias-pull-up;
+> +		};
+> +
+> +		pins_clk {
+> +			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
+> +			bias-pull-down;
+> +		};
+> +
+> +		pins_rst {
+> +			pinmux = <PINMUX_GPIO133__FUNC_MSDC0_RSTB>;
+> +			bias-pull-up;
+> +		};
 > +	};
 > +
-
-mmsys problem is fixed now, so feel free to rebase your patches on linux-next or
-my for-next branch and resend.
-Would love to see graphics being supported on the bananapi-r2.
-
-Regards,
-Matthias
+> +	mmc0_pins_uhs: mmc0@0{
+> +		pins_cmd_dat {
+> +			pinmux = <PINMUX_GPIO123__FUNC_MSDC0_DAT0>,
+> +				 <PINMUX_GPIO128__FUNC_MSDC0_DAT1>,
+> +				 <PINMUX_GPIO125__FUNC_MSDC0_DAT2>,
+> +				 <PINMUX_GPIO132__FUNC_MSDC0_DAT3>,
+> +				 <PINMUX_GPIO126__FUNC_MSDC0_DAT4>,
+> +				 <PINMUX_GPIO129__FUNC_MSDC0_DAT5>,
+> +				 <PINMUX_GPIO127__FUNC_MSDC0_DAT6>,
+> +				 <PINMUX_GPIO130__FUNC_MSDC0_DAT7>,
+> +				 <PINMUX_GPIO122__FUNC_MSDC0_CMD>;
+> +			input-enable;
+> +			drive-strength = <MTK_DRIVE_10mA>;
+> +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
+> +		};
+> +
+> +		pins_clk {
+> +			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
+> +			drive-strength = <MTK_DRIVE_10mA>;
+> +			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
+> +		};
+> +
+> +		pins_ds {
+> +			pinmux = <PINMUX_GPIO131__FUNC_MSDC0_DSL>;
+> +			drive-strength = <MTK_DRIVE_10mA>;
+> +			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
+> +		};
+> +
+> +		pins_rst {
+> +			pinmux = <PINMUX_GPIO133__FUNC_MSDC0_RSTB>;
+> +			drive-strength = <MTK_DRIVE_10mA>;
+> +			bias-pull-up;
+> +		};
+> +	};
+> +
+> +	mmc1_pins_default: mmc1default {
+> +		pins_cmd_dat {
+> +			pinmux = <PINMUX_GPIO31__FUNC_MSDC1_CMD>,
+> +				   <PINMUX_GPIO32__FUNC_MSDC1_DAT0>,
+> +				   <PINMUX_GPIO34__FUNC_MSDC1_DAT1>,
+> +				   <PINMUX_GPIO33__FUNC_MSDC1_DAT2>,
+> +				   <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
+> +			input-enable;
+> +			bias-pull-up;
+> +		};
+> +
+> +		pins_clk {
+> +			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
+> +			input-enable;
+> +			bias-pull-down;
+> +		};
+> +
+> +		pins_pmu {
+> +			pinmux = <PINMUX_GPIO178__FUNC_GPIO178>,
+> +				   <PINMUX_GPIO166__FUNC_GPIO166>;
+> +			output-high;
+> +		};
+> +	};
+> +
+> +	mmc1_pins_uhs: mmc1@0{
+> +		pins_cmd_dat {
+> +			pinmux = <PINMUX_GPIO31__FUNC_MSDC1_CMD>,
+> +				   <PINMUX_GPIO32__FUNC_MSDC1_DAT0>,
+> +				   <PINMUX_GPIO34__FUNC_MSDC1_DAT1>,
+> +				   <PINMUX_GPIO33__FUNC_MSDC1_DAT2>,
+> +				   <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
+> +			drive-strength = <MTK_DRIVE_6mA>;
+> +			input-enable;
+> +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
+> +		};
+> +
+> +		pins_clk {
+> +			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
+> +			drive-strength = <MTK_DRIVE_6mA>;
+> +			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
+> +			input-enable;
+> +		};
+> +	};
+> +};
+> +
+>  &uart0 {
+>  	status = "okay";
+>  };
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 482e451..38cec41 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -273,6 +273,30 @@
+>  			#clock-cells = <1>;
+>  		};
+> 
+> +		mmc0: mmc@11230000 {
+> +			compatible = "mediatek,mt8183-mmc";
+> +			reg = <0 0x11230000 0 0x1000>,
+> +			      <0 0x11f50000 0 0x1000>;
+> +			interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&topckgen CLK_TOP_MUX_MSDC50_0>,
+> +				 <&infracfg CLK_INFRA_MSDC0>,
+> +				 <&infracfg CLK_INFRA_MSDC0_SCK>;
+> +			clock-names = "source", "hclk", "source_cg";
+> +			status = "disabled";
+> +		};
+> +
+> +		mmc1: mmc@11240000 {
+> +			compatible = "mediatek,mt8183-mmc";
+> +			reg = <0 0x11240000 0 0x1000>,
+> +			      <0 0x11e10000 0 0x1000>;
+> +			interrupts = <GIC_SPI 78 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&topckgen CLK_TOP_MUX_MSDC30_1>,
+> +				 <&infracfg CLK_INFRA_MSDC1>,
+> +				 <&infracfg CLK_INFRA_MSDC1_SCK>;
+> +			clock-names = "source", "hclk", "source_cg";
+> +			status = "disabled";
+> +		};
+> +
+>  		mfgcfg: syscon@13000000 {
+>  			compatible = "mediatek,mt8183-mfgcfg", "syscon";
+>  			reg = <0 0x13000000 0 0x1000>;
+> --
+> 1.9.1
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
