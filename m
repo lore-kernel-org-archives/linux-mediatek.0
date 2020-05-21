@@ -2,78 +2,72 @@ Return-Path: <SRS0=x8tw=7D=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6D569C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 01:50:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D4CBC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 03:01:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2EFB520748
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 01:50:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D6C09206F6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 03:01:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="P5R99cSE";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ThZVrXEX"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2EFB520748
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="u7lfZhRi"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D6C09206F6
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=hisilicon.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pYcJIgz+MKRhQ4F99pCw6JuMhvD9pBLXLRPfw6xMJLI=; b=P5R99cSEhKzGi2
-	6f+YVZXMkKurpeGd/8213fWe4kx5OrUoPlKigYW3oSUt1aqE/URTMyuYV+dqDFX4G4Kfk55vrRjxR
-	xHl0exZAfXDJ+7hnmJALsKZq7jELAd5dN60fvoNgQZ/OWtM8j0CsSdi4TM+FCRIS3pqH11ypjzom7
-	EqvYIZ59A8meBkyXRGJEwODodCh+eeUo3lJFj1zHa+FpfqxFMi0wD/KkB7SYm6n5gi8Oy1qT1VZdl
-	JHk5Vniiu1hYJvz4LvsdAc7ZmdQSyPTJWWBM2GHyeYqKMiBxsh22/w8guX7KkKQdbGOB4CmI+axOC
-	mGxTMLc+qJxHKEGxVpMw==;
+	List-Owner; bh=ilxkHQT1eDILQzrM+QWnSFA0jqw7/Ok++YWlIN9qcL0=; b=u7lfZhRiCRVbJK
+	GSiGNIjkCKi+r88dZWL37bdhU1R/aERRWkrkks+hzlZrApTQ9dVfpmTfGzohCYgmS/9fPeyuAhgdL
+	Ym6ecTDCI3lxKu5KxqWYfq25XOWByR08JcbUvqXdunirAHaMYp7WYs1jwAJMryvM4PUe8lBO71NHt
+	zfoWJWwy1nk1ooCAip0jysbTW3KQYlof+we4w/13Wk3QxdPix/ycNOZqFzeufjRneYBqZqvKAyBbI
+	EMJSigKst8CIO/Ugw+lwTD9Ojndl6No/phqJ1e4u4VHDspKB4wPLT9Z1fzFK96fyQaBrRM5lCWfqU
+	lVNONR6fC4Xw70QaR05A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbaM7-0007kS-4m; Thu, 21 May 2020 01:50:43 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jbbSZ-0008Cm-Fm; Thu, 21 May 2020 03:01:27 +0000
+Received: from szxga08-in.huawei.com ([45.249.212.255] helo=huawei.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbaLw-0007c1-0H; Thu, 21 May 2020 01:50:33 +0000
-X-UUID: 2a7d3d6f708242ef832624eae674aa38-20200520
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=iA3rm6tm1TCbtJYi3Z4bsuX93wDGi5lZZQ8BBM1TLr4=; 
- b=ThZVrXEX0fa53G2rS34K2Fa8DaXcIoQB6srBKTr+lR1DkRftl73LO5tTQk3QHEXIaGAtbjw3KHPI8CsflqErN+jz+WAg4wNPTQW5swfh/TI3P5pLeROi3NwBh8SODirjd0Q8ktGR/hpJUOIHREnPA/CoMYzhivgxUgOlaNyl3eQ=;
-X-UUID: 2a7d3d6f708242ef832624eae674aa38-20200520
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <andrew-sh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 423449908; Wed, 20 May 2020 17:50:30 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 May 2020 18:50:26 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 21 May 2020 09:50:27 +0800
-Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 21 May 2020 09:50:27 +0800
-Message-ID: <1590025827.17518.2.camel@mtksdaap41>
-Subject: Re: [PATCH 01/12] OPP: Allow required-opps even if the device
- doesn't have power-domains
-From: andrew-sh.cheng <andrew-sh.cheng@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Date: Thu, 21 May 2020 09:50:27 +0800
-In-Reply-To: <b667fff9-50ae-bff2-ae17-1cf0ca1a08a5@gmail.com>
-References: <20200520034307.20435-1-andrew-sh.cheng@mediatek.com>
- <20200520034307.20435-2-andrew-sh.cheng@mediatek.com>
- <b667fff9-50ae-bff2-ae17-1cf0ca1a08a5@gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jbbSP-00085H-OO; Thu, 21 May 2020 03:01:20 +0000
+Received: from dggemi406-hub.china.huawei.com (unknown [172.30.72.55])
+ by Forcepoint Email with ESMTP id 7E246397595705ECA5FA;
+ Thu, 21 May 2020 11:01:04 +0800 (CST)
+Received: from DGGEMI525-MBS.china.huawei.com ([169.254.6.191]) by
+ dggemi406-hub.china.huawei.com ([10.3.17.144]) with mapi id 14.03.0487.000;
+ Thu, 21 May 2020 11:00:57 +0800
+From: "Song Bao Hua (Barry Song)" <song.bao.hua@hisilicon.com>
+To: Alexandru Elisei <alexandru.elisei@arm.com>, Mark Rutland
+ <mark.rutland@arm.com>, Lecopzer Chen <lecopzer@gmail.com>
+Subject: RE: [PATCH 0/3] arm64: perf: Add support for Perf NMI interrupts
+Thread-Topic: [PATCH 0/3] arm64: perf: Add support for Perf NMI interrupts
+Thread-Index: AQHWK4CVzuSk3r9OTUuU9MOLmvQA7qis0jIAgAALFQCAAEh6AIAACRWAgAMXfYCAAZjBIA==
+Date: Thu, 21 May 2020 03:00:57 +0000
+Message-ID: <B926444035E5E2439431908E3842AFD24B2728@DGGEMI525-MBS.china.huawei.com>
+References: <20200516124857.75004-1-lecopzer@gmail.com>
+ <CAFA6WYNwp+_ENiS8QDao5+RXyt5ofJZyq6c5CKG_d0CNEmBNYg@mail.gmail.com>
+ <CANr2M19unLW8n0P2DiOYEZ=GZcaD-L2ygPht_5HNtNZ6e4h6xQ@mail.gmail.com>
+ <20200518104524.GA1224@C02TD0UTHF1T.local>
+ <a9002b5e-aec5-b6e0-7174-87b93351d60c@arm.com>
+ <8a1022c0-da2b-c83d-81cd-44b11149496b@arm.com>
+In-Reply-To: <8a1022c0-da2b-c83d-81cd-44b11149496b@arm.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.126.200.188]
 MIME-Version: 1.0
-X-MTK: N
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200520_185032_052795_DA19B040 
-X-CRM114-Status: GOOD (  21.07  )
+X-CRM114-CacheID: sfid-20200520_200118_129847_1CF49CB1 
+X-CRM114-Status: GOOD (  28.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,97 +79,112 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>, Saravana
- Kannan <saravanak@google.com>, srv_heupstream@mediatek.com,
- linux-pm@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>,
- Viresh Kumar <viresh.kumar@linaro.org>, Mark Brown <broonie@kernel.org>,
- "Rafael J
- . Wysocki" <rjw@rjwysocki.net>, Liam Girdwood <lgirdwood@gmail.com>, Rob
- Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
- Chanwoo Choi <cw00.choi@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Sumit Garg <sumit.garg@linaro.org>,
+ Jian-Lin Chen <lecopzer.chen@mediatek.com>, Will Deacon <will@kernel.org>,
+ "alexander.shishkin@linux.intel.com" <alexander.shishkin@linux.intel.com>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ "yj.chiang@mediatek.com" <yj.chiang@mediatek.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ "acme@kernel.org" <acme@kernel.org>, Linuxarm <linuxarm@huawei.com>, Peter
+ Zijlstra <peterz@infradead.org>, "mingo@redhat.com" <mingo@redhat.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "namhyung@kernel.org" <namhyung@kernel.org>,
+ "jolsa@redhat.com" <jolsa@redhat.com>,
+ "julien.thierry.kdev@gmail.com" <julien.thierry.kdev@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2020-05-20 at 16:54 +0200, Matthias Brugger wrote:
-> 
-> On 20/05/2020 05:42, Andrew-sh.Cheng wrote:
-> > From: Saravana Kannan <saravanak@google.com>
-> > 
-> > A Device-A can have a (minimum) performance requirement on another
-> > Device-B to be able to function correctly. This performance requirement
-> > on Device-B can also change based on the current performance level of
-> > Device-A.
-> > 
-> > The existing required-opps feature fits well to describe this need. So,
-> > instead of limiting required-opps to point to only PM-domain devices,
-> > allow it to point to any device.
-> > 
-> > Signed-off-by: Saravana Kannan <saravanak@google.com>
-> 
-> Please check all patches, they are missing your
-> Signed-off-by
-> 
-> Regards,
-> Matthias
-
-Hi Matthias,
-
-I modify patch [6/12] to meet kernel-5.7 data structure and add
-signed-off.
-For [1/12] to [5/12], I didn't modify them.
-Should I also add signed-off ?
-
-BR,
-Andrew-sh.Cheng
-> 
-> > ---
-> >  drivers/opp/core.c |  2 +-
-> >  drivers/opp/of.c   | 11 -----------
-> >  2 files changed, 1 insertion(+), 12 deletions(-)
-> > 
-> > diff --git a/drivers/opp/core.c b/drivers/opp/core.c
-> > index ba43e6a3dc0a..51403c1f2481 100644
-> > --- a/drivers/opp/core.c
-> > +++ b/drivers/opp/core.c
-> > @@ -755,7 +755,7 @@ static int _set_required_opps(struct device *dev,
-> >  		return 0;
-> >  
-> >  	/* Single genpd case */
-> > -	if (!genpd_virt_devs) {
-> > +	if (!genpd_virt_devs && required_opp_tables[0]->is_genpd) {
-> >  		pstate = likely(opp) ? opp->required_opps[0]->pstate : 0;
-> >  		ret = dev_pm_genpd_set_performance_state(dev, pstate);
-> >  		if (ret) {
-> > diff --git a/drivers/opp/of.c b/drivers/opp/of.c
-> > index 9cd8f0adacae..6d33de668a7b 100644
-> > --- a/drivers/opp/of.c
-> > +++ b/drivers/opp/of.c
-> > @@ -195,17 +195,6 @@ static void _opp_table_alloc_required_tables(struct opp_table *opp_table,
-> >  
-> >  		if (IS_ERR(required_opp_tables[i]))
-> >  			goto free_required_tables;
-> > -
-> > -		/*
-> > -		 * We only support genpd's OPPs in the "required-opps" for now,
-> > -		 * as we don't know how much about other cases. Error out if the
-> > -		 * required OPP doesn't belong to a genpd.
-> > -		 */
-> > -		if (!required_opp_tables[i]->is_genpd) {
-> > -			dev_err(dev, "required-opp doesn't belong to genpd: %pOF\n",
-> > -				required_np);
-> > -			goto free_required_tables;
-> > -		}
-> >  	}
-> >  
-> >  	goto put_np;
-> > 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogbGludXgtYXJtLWtlcm5l
+bCBbbWFpbHRvOmxpbnV4LWFybS1rZXJuZWwtYm91bmNlc0BsaXN0cy5pbmZyYWRlYWQub3JnXQ0K
+PiBPbiBCZWhhbGYgT2YgQWxleGFuZHJ1IEVsaXNlaQ0KPiBTZW50OiBXZWRuZXNkYXksIE1heSAy
+MCwgMjAyMCAxMDozMSBQTT4gDQo+IEhpLA0KPiANCj4gT24gNS8xOC8yMCAxMjoxNyBQTSwgQWxl
+eGFuZHJ1IEVsaXNlaSB3cm90ZToNCj4gPiBIaSwNCj4gPg0KPiA+IE9uIDUvMTgvMjAgMTE6NDUg
+QU0sIE1hcmsgUnV0bGFuZCB3cm90ZToNCj4gPj4gSGkgYWxsLA0KPiA+Pg0KPiA+PiBPbiBNb24s
+IE1heSAxOCwgMjAyMCBhdCAwMjoyNjowMFBNICswODAwLCBMZWNvcHplciBDaGVuIHdyb3RlOg0K
+PiA+Pj4gSEkgU3VtaXQsDQo+ID4+Pg0KPiA+Pj4gVGhhbmtzIGZvciB5b3VyIGluZm9ybWF0aW9u
+Lg0KPiA+Pj4NCj4gPj4+IEkndmUgYWxyZWFkeSBpbXBsZW1lbnRlZCBJUEkgKHNhbWUgYXMgeW91
+IGRpZCBbMV0sIGxpdHRsZSBkaWZmZXJlbmNlDQo+ID4+PiBpbiBkZXRhaWwpLCBoYXJkbG9ja3Vw
+IGRldGVjdG9yIGFuZCBwZXJmIGluIGxhc3QgeWVhcigyMDE5KSBmb3INCj4gPj4+IGRlYnVnZ2Fi
+aWxpdHkuDQo+ID4+PiBBbmQgbm93IHdlIHRlbmQgdG8gdXBzdHJlYW0gdG8gcmVkdWNlIGtlcm5l
+bCBtYWludGFpbmluZyBlZmZvcnQuDQo+ID4+PiBJJ20gZ2xhZCBpZiBzb21lb25lIGluIEFSTSBj
+YW4gZG8gdGhpcyB3b3JrIDopDQo+ID4+Pg0KPiA+Pj4gSGkgSnVsaWVuLA0KPiA+Pj4NCj4gPj4+
+IERvZXMgYW55IEFybSBtYWludGFpbmVycyBjYW4gcHJvY2VlZCB0aGlzIGFjdGlvbj8NCj4gPj4g
+QWxleGFuZHJ1IChDYydkKSBoYXMgYmVlbiByZWJhc2luZyBhbmQgcmV3b3JraW5nIEp1bGllbidz
+IHBhdGNoZXMsDQo+ID4+IHdoaWNoIGlzIG15IHByZWZlcnJlZCBhcHByb2FjaC4NCj4gPj4NCj4g
+Pj4gSSB1bmRlcnN0YW5kIHRoYXQncyBub3QgcXVpdGUgcmVhZHkgZm9yIHBvc3Rpbmcgc2luY2Ug
+aGUncw0KPiA+PiBpbnZlc3RpZ2F0aW5nIHNvbWUgb2YgdGhlIG5hc3RpZXIgc3VidGxldGllcyAo
+ZS5nLiBtdXR1YWwgZXhjbHVzaW9uDQo+ID4+IHdpdGggdGhlIE5NSSksIGJ1dCBtYXliZSB3ZSBj
+YW4gcHV0IHRoZSB3b3JrLWluLXByb2dyZXNzIHBhdGNoZXMNCj4gPj4gc29tZXdoZXJlIGluIHRo
+ZSBtZWFuIHRpbWUuDQo+ID4+DQo+ID4+IEFsZXhhbmRydSwgZG8geW91IGhhdmUgYW4gaWRlYSBv
+ZiB3aGF0IG5lZWRzIHRvIGJlIGRvbmUsIGFuZC9vciB3aGVuDQo+ID4+IHlvdSBleHBlY3QgeW91
+IGNvdWxkIHBvc3QgdGhhdD8NCj4gPiBJJ20gY3VycmVudGx5IHdvcmtpbmcgb24gcmViYXNpbmcg
+dGhlIHBhdGNoZXMgb24gdG9wIG9mIDUuNy1yYzUsIHdoZW4NCj4gPiBJIGhhdmUgc29tZXRoaW5n
+IHVzYWJsZSBJJ2xsIHBvc3QgYSBsaW5rIChzaG91bGQgYmUgYSBjb3VwbGUgb2YgZGF5cykuDQo+
+ID4gQWZ0ZXIgdGhhdCBJIHdpbGwgYWRkcmVzcyB0aGUgcmV2aWV3IGNvbW1lbnRzLCBhbmQgSSBw
+bGFuIHRvIGRvIGENCj4gPiB0aG9yb3VnaCB0ZXN0aW5nIGJlY2F1c2UgSSdtIG5vdCAxMDAlIGNv
+bmZpZGVudCB0aGF0IHNvbWUgb2YgdGhlDQo+ID4gYXNzdW1wdGlvbnMgYXJvdW5kIHRoZSBsb2Nr
+cyB0aGF0IHdlcmUgcmVtb3ZlZCBhcmUgY29ycmVjdC4gTXkgZ3Vlc3MgaXMNCj4gdGhpcyB3aWxs
+IHRha2UgYSBmZXcgd2Vla3MuDQo+IA0KPiBQdXNoZWQgYSBXSVAgYnJhbmNoIG9uIGxpbnV4LWFy
+bS5vcmcgWzFdOg0KPiANCj4gZ2l0IGNsb25lIC1iIFdJUC1wbXUtbm1pIGdpdDovL2xpbnV4LWFy
+bS5vcmcvbGludXgtYWUNCj4gDQo+IFByYWN0aWNhbGx5IHVudGVzdGVkLCBJIG9ubHkgZGlkIHBl
+cmYgcmVjb3JkIG9uIGEgZGVmY29uZmlnIGtlcm5lbCBydW5uaW5nIG9uIHRoZQ0KPiBtb2RlbC4N
+Cj4gDQo+IFsxXQ0KPiBodHRwOi8vd3d3LmxpbnV4LWFybS5vcmcvZ2l0P3A9bGludXgtYWUuZ2l0
+O2E9c2hvcnRsb2c7aD1yZWZzL2hlYWRzL1dJUC1wbQ0KPiB1LW5taQ0KDQpGb3J0dW5hdGVseSwg
+aXQgZG9lcyB3b3JrLiBJIHVzZWQgdGhpcyB0cmVlIHRvIHBlcmYgYW5ub3RhdGUgYXJtX3NtbXVf
+Y21kcV9pc3N1ZV9jbWRsaXN0KCkgd2hpY2gNCmlzIGNvbXBsZXRlbHkgZGlzYWJsaW5nIElSUS4g
+THVja2lseSwgaXQgcmVwb3J0cyBjb3JyZWN0IGRhdGEuIEJlZm9yZSB0aGF0LCBpdCByZXBvcnRl
+ZCBhbGwgdGltZSB3YXMgc3BlbnQgYnkNCnRoZSBjb2RlIHdoaWNoIGVuYWJsZWQgSVJRIC4NCg0K
+DQpCYXJyeQ0KDQo+IA0KPiBUaGFua3MsDQo+IEFsZXgNCj4gPg0KPiA+IFRoYW5rcywNCj4gPiBB
+bGV4DQo+ID4+IFRoYW5rcywNCj4gPj4gTWFyay4NCj4gPj4NCj4gPj4+IFRoaXMgaXMgcmVhbGx5
+IHVzZWZ1bCBpbiBkZWJ1Z2dpbmcuDQo+ID4+PiBUaGFuayB5b3UhIQ0KPiA+Pj4NCj4gPj4+DQo+
+ID4+Pg0KPiA+Pj4gWzFdIGh0dHBzOi8vbGttbC5vcmcvbGttbC8yMDIwLzQvMjQvMzI4DQo+ID4+
+Pg0KPiA+Pj4NCj4gPj4+IExlY29wemVyDQo+ID4+Pg0KPiA+Pj4gU3VtaXQgR2FyZyA8c3VtaXQu
+Z2FyZ0BsaW5hcm8ub3JnPiDmlrwgMjAyMOW5tDXmnIgxOOaXpSDpgLHkuIAg5LiL5Y2IDQo+IDE6
+NDblr6vpgZPvvJoNCj4gPj4+PiArIEp1bGllbg0KPiA+Pj4+DQo+ID4+Pj4gSGkgTGVjb3B6ZXIs
+DQo+ID4+Pj4NCj4gPj4+PiBPbiBTYXQsIDE2IE1heSAyMDIwIGF0IDE4OjIwLCBMZWNvcHplciBD
+aGVuIDxsZWNvcHplckBnbWFpbC5jb20+DQo+IHdyb3RlOg0KPiA+Pj4+PiBUaGVzZSBzZXJpZXMg
+aW1wbGVtZW50IFBlcmYgTk1JIGZ1bnh0aW9uYWxpdHkgYW5kIGRlcGVuZHMgb24NCj4gPj4+Pj4g
+UHNldWRvIE5NSSBbMV0gd2hpY2ggaGFzIGJlZW4gdXBzdHJlYW1lZC4NCj4gPj4+Pj4NCj4gPj4+
+Pj4gSW4gYXJtNjQgd2l0aCBHSUN2MywgUHNldWRvIE5NSSB3YXMgaW1wbGVtZW50ZWQgZm9yIE5N
+SS1saWtlDQo+IGludGVycnV0cy4NCj4gPj4+Pj4gVGhhdCBjYW4gYmUgZXh0ZW5kZWQgdG8gUGVy
+ZiBOTUkgd2hpY2ggaXMgdGhlIHByZXJlcXVpc2l0ZSBmb3INCj4gPj4+Pj4gaGFyZC1sb2NrdXAg
+ZGV0ZWN0b3Igd2hpY2ggaGFkIGFscmVhZHkgYSBzdGFuZGFyZCBpbnRlcmZhY2UgaW5zaWRlDQo+
+IExpbnV4Lg0KPiA+Pj4+Pg0KPiA+Pj4+PiBUaHVzIHRoZSBmaXJzdCBzdGVwIHdlIG5lZWQgdG8g
+aW1wbGVtZW50IHBlcmYgTk1JIGludGVyZmFjZSBhbmQNCj4gPj4+Pj4gbWFrZSBzdXJlIGl0IHdv
+cmtzIGZpbmUuDQo+ID4+Pj4+DQo+ID4+Pj4gVGhpcyBpcyBzb21ldGhpbmcgdGhhdCBpcyBhbHJl
+YWR5IGltcGxlbWVudGVkIHZpYSBKdWxpZW4ncw0KPiA+Pj4+IHBhdGNoLXNldCBbMV0uIEl0cyB2
+NCBoYXMgYmVlbiBmbG9hdGluZyBzaW5jZSBKdWx5LCAyMDE5IGFuZCBJDQo+ID4+Pj4gY291bGRu
+J3QgZmluZCBhbnkgbWFqb3IgYmxvY2tpbmcgY29tbWVudHMgYnV0IG5vdCBzdXJlIHdoeSB0aGlu
+Z3MNCj4gPj4+PiBoYXZlbid0IHByb2dyZXNzZWQgZnVydGhlci4NCj4gPj4+Pg0KPiA+Pj4+IE1h
+eWJlIEp1bGllbiBvciBBcm0gbWFpbnRhaW5lcnMgY2FuIHByb3ZpZGUgdXBkYXRlcyBvbiBleGlz
+dGluZw0KPiA+Pj4+IHBhdGNoLXNldCBbMV0gYW5kIGhvdyB3ZSBzaG91bGQgcHJvY2VlZCBmdXJ0
+aGVyIHdpdGggdGhpcw0KPiA+Pj4+IGludGVyZXN0aW5nIGZlYXR1cmUuDQo+ID4+Pj4NCj4gPj4+
+PiBBbmQgcmVnYXJkaW5nIGhhcmQtbG9ja3VwIGRldGVjdGlvbiwgSSBoYXZlIGJlZW4gYWJsZSB0
+byBlbmFibGUgaXQNCj4gPj4+PiBiYXNlZCBvbiBwZXJmIE5NSSBldmVudHMgdXNpbmcgSnVsaWVu
+J3MgcGVyZiBwYXRjaC1zZXQgWzFdLiBIYXZlIGENCj4gPj4+PiBsb29rIGF0IHRoZSBwYXRjaCBo
+ZXJlIFsyXS4NCj4gPj4+Pg0KPiA+Pj4+IFsxXSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3Jn
+L2NvdmVyLzExMDQ3NDA3Lw0KPiA+Pj4+IFsyXQ0KPiA+Pj4+IGh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL3BpcGVybWFpbC9saW51eC1hcm0ta2VybmVsLzIwMjAtTWF5LzczMjINCj4gPj4+PiAy
+Ny5odG1sDQo+ID4+Pj4NCj4gPj4+PiAtU3VtaXQNCj4gPj4+Pg0KPiA+Pj4+PiBQZXJmIE5NSSBo
+YXMgYmVlbiB0ZXN0IGJ5IGRkIGlmPS9kZXYvdXJhbmRvbSBvZj0vZGV2L251bGwgbGlrZSB0aGUN
+Cj4gPj4+Pj4gbGluayBbMl0gZGlkLg0KPiA+Pj4+Pg0KPiA+Pj4+PiBbMV0gaHR0cHM6Ly9sa21s
+Lm9yZy9sa21sLzIwMTkvMS8zMS81MzUNCj4gPj4+Pj4gWzJdIGh0dHBzOi8vd3d3LmxpbmFyby5v
+cmcvYmxvZy9kZWJ1Z2dpbmctYXJtLWtlcm5lbHMtdXNpbmctbm1pZmlxDQo+ID4+Pj4+DQo+ID4+
+Pj4+DQo+ID4+Pj4+IExlY29wemVyIENoZW4gKDMpOg0KPiA+Pj4+PiAgIGFybV9wbXU6IEFkZCBz
+dXBwb3J0IGZvciBwZXJmIE5NSSBpbnRlcnJ1cHRzIHJlZ2lzdHJhdGlvbg0KPiA+Pj4+PiAgIGFy
+bTY0OiBwZXJmOiBTdXBwb3J0IE5NSSBjb250ZXh0IGZvciBwZXJmIGV2ZW50IElTUg0KPiA+Pj4+
+PiAgIGFybTY0OiBLY29uZmlnOiBBZGQgc3VwcG9ydCBmb3IgdGhlIFBlcmYgTk1JDQo+ID4+Pj4+
+DQo+ID4+Pj4+ICBhcmNoL2FybTY0L0tjb25maWcgICAgICAgICAgICAgfCAxMCArKysrKysrDQo+
+ID4+Pj4+ICBhcmNoL2FybTY0L2tlcm5lbC9wZXJmX2V2ZW50LmMgfCAzNiArKysrKysrKysrKysr
+KysrKystLS0tLS0NCj4gPj4+Pj4gIGRyaXZlcnMvcGVyZi9hcm1fcG11LmMgICAgICAgICB8IDUx
+DQo+ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0tLS0NCj4gPj4+Pj4gIGluY2x1ZGUv
+bGludXgvcGVyZi9hcm1fcG11LmggICB8ICA2ICsrKysNCj4gPj4+Pj4gIDQgZmlsZXMgY2hhbmdl
+ZCwgODggaW5zZXJ0aW9ucygrKSwgMTUgZGVsZXRpb25zKC0pDQo+ID4+Pj4+DQo+ID4+Pj4+IC0t
+DQo+ID4+Pj4+IDIuMjUuMQ0KDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LW1lZGlhdGVrCg==
