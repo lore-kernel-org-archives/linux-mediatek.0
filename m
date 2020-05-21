@@ -2,72 +2,80 @@ Return-Path: <SRS0=x8tw=7D=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D4CBC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 03:01:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C057DC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 03:29:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D6C09206F6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 03:01:36 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 84BB120738
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 03:29:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="u7lfZhRi"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D6C09206F6
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=hisilicon.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="O/CNCT+q";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GCQ3Hsvo"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 84BB120738
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ilxkHQT1eDILQzrM+QWnSFA0jqw7/Ok++YWlIN9qcL0=; b=u7lfZhRiCRVbJK
-	GSiGNIjkCKi+r88dZWL37bdhU1R/aERRWkrkks+hzlZrApTQ9dVfpmTfGzohCYgmS/9fPeyuAhgdL
-	Ym6ecTDCI3lxKu5KxqWYfq25XOWByR08JcbUvqXdunirAHaMYp7WYs1jwAJMryvM4PUe8lBO71NHt
-	zfoWJWwy1nk1ooCAip0jysbTW3KQYlof+we4w/13Wk3QxdPix/ycNOZqFzeufjRneYBqZqvKAyBbI
-	EMJSigKst8CIO/Ugw+lwTD9Ojndl6No/phqJ1e4u4VHDspKB4wPLT9Z1fzFK96fyQaBrRM5lCWfqU
-	lVNONR6fC4Xw70QaR05A==;
+	List-Owner; bh=p1IHDmsslbKYVx0bN0C78s5virFlz0vZDmyB4JYE6NA=; b=O/CNCT+q6qvTk3
+	cxKnUSy0AADbqoPiKIYKu6nG9VaCn/QeNJubZhLRrricEFZN2rqqyTTWBeQ3+X50faJlajKarLU2/
+	udUkllA8PAEl0XaCmI0dQS1a6qxjQVqA8k2GLCpu9PXi3y4N/TIfWtrOlhMRXz+/57I9fnXvHsyin
+	xZhUl1TdFcSv+ARzRJO+A9kl7ISSU5ptpY0RPkluS9ynfjKuIJB3KBLqLHibBiYeOt39uZRNrADis
+	RMd59M9zJzk3HFYWk4/6Cks/C9GwUoP6gbp77J/nztmgOEiq+yEGXNmIipfpttpomtls9r2x+T2zK
+	iUZPkjQVvMT0u0XT7dQw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbbSZ-0008Cm-Fm; Thu, 21 May 2020 03:01:27 +0000
-Received: from szxga08-in.huawei.com ([45.249.212.255] helo=huawei.com)
+	id 1jbbtS-00074d-OB; Thu, 21 May 2020 03:29:14 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbbSP-00085H-OO; Thu, 21 May 2020 03:01:20 +0000
-Received: from dggemi406-hub.china.huawei.com (unknown [172.30.72.55])
- by Forcepoint Email with ESMTP id 7E246397595705ECA5FA;
- Thu, 21 May 2020 11:01:04 +0800 (CST)
-Received: from DGGEMI525-MBS.china.huawei.com ([169.254.6.191]) by
- dggemi406-hub.china.huawei.com ([10.3.17.144]) with mapi id 14.03.0487.000;
- Thu, 21 May 2020 11:00:57 +0800
-From: "Song Bao Hua (Barry Song)" <song.bao.hua@hisilicon.com>
-To: Alexandru Elisei <alexandru.elisei@arm.com>, Mark Rutland
- <mark.rutland@arm.com>, Lecopzer Chen <lecopzer@gmail.com>
-Subject: RE: [PATCH 0/3] arm64: perf: Add support for Perf NMI interrupts
-Thread-Topic: [PATCH 0/3] arm64: perf: Add support for Perf NMI interrupts
-Thread-Index: AQHWK4CVzuSk3r9OTUuU9MOLmvQA7qis0jIAgAALFQCAAEh6AIAACRWAgAMXfYCAAZjBIA==
-Date: Thu, 21 May 2020 03:00:57 +0000
-Message-ID: <B926444035E5E2439431908E3842AFD24B2728@DGGEMI525-MBS.china.huawei.com>
-References: <20200516124857.75004-1-lecopzer@gmail.com>
- <CAFA6WYNwp+_ENiS8QDao5+RXyt5ofJZyq6c5CKG_d0CNEmBNYg@mail.gmail.com>
- <CANr2M19unLW8n0P2DiOYEZ=GZcaD-L2ygPht_5HNtNZ6e4h6xQ@mail.gmail.com>
- <20200518104524.GA1224@C02TD0UTHF1T.local>
- <a9002b5e-aec5-b6e0-7174-87b93351d60c@arm.com>
- <8a1022c0-da2b-c83d-81cd-44b11149496b@arm.com>
-In-Reply-To: <8a1022c0-da2b-c83d-81cd-44b11149496b@arm.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.126.200.188]
+ id 1jbbtO-00073T-Tz; Thu, 21 May 2020 03:29:13 +0000
+X-UUID: b56350b251484776865834adb5a89855-20200520
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=/HKKyRrVUbiWfvKCrXHATyO2NgGyKxmnEG4fgx95eYc=; 
+ b=GCQ3HsvoPuYHhlmaGYQpV9OmlLoRLRUQdbqwstWmNDOX8hZK2FI8gkvn4Fn5qLFgL3qYdbLP9oiWAIDlbcN4HNodbLUsjIQOTQqqrtbNx9cEyt0135daAMyfcMJZJi0hMCoEx0FxF37K0FxSLCZCxVkpOMlvtTymsTJWXTEXw0Q=;
+X-UUID: b56350b251484776865834adb5a89855-20200520
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <weiyi.lu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1583469607; Wed, 20 May 2020 19:29:00 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 20 May 2020 20:28:59 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 21 May 2020 11:28:57 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 21 May 2020 11:28:57 +0800
+Message-ID: <1590031737.26404.26.camel@mtksdaap41>
+Subject: Re: [PATCH v14 03/11] soc: mediatek: Add basic_clk_name to
+ scp_power_data
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Date: Thu, 21 May 2020 11:28:57 +0800
+In-Reply-To: <c510cc46-3285-fa53-b2e1-0420b0bfb61c@collabora.com>
+References: <1588752963-19934-1-git-send-email-weiyi.lu@mediatek.com>
+ <1588752963-19934-4-git-send-email-weiyi.lu@mediatek.com>
+ <7ad67855-a3f8-f979-8849-3765bd8289d3@collabora.com>
+ <1589176947.21832.9.camel@mtksdaap41> <1589513724.16252.3.camel@mtksdaap41>
+ <c510cc46-3285-fa53-b2e1-0420b0bfb61c@collabora.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200520_200118_129847_1CF49CB1 
-X-CRM114-Status: GOOD (  28.69  )
+X-CRM114-CacheID: sfid-20200520_202910_980482_4DC298EE 
+X-CRM114-Status: GOOD (  30.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,112 +87,351 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sumit Garg <sumit.garg@linaro.org>,
- Jian-Lin Chen <lecopzer.chen@mediatek.com>, Will Deacon <will@kernel.org>,
- "alexander.shishkin@linux.intel.com" <alexander.shishkin@linux.intel.com>,
- Catalin Marinas <catalin.marinas@arm.com>,
- "yj.chiang@mediatek.com" <yj.chiang@mediatek.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "acme@kernel.org" <acme@kernel.org>, Linuxarm <linuxarm@huawei.com>, Peter
- Zijlstra <peterz@infradead.org>, "mingo@redhat.com" <mingo@redhat.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "namhyung@kernel.org" <namhyung@kernel.org>,
- "jolsa@redhat.com" <jolsa@redhat.com>,
- "julien.thierry.kdev@gmail.com" <julien.thierry.kdev@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: James Liao <jamesjj.liao@mediatek.com>,
+ Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
+ Rob Herring <robh@kernel.org>, Enric Balletbo Serra <eballetbo@gmail.com>,
+ linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>,
+ linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogbGludXgtYXJtLWtlcm5l
-bCBbbWFpbHRvOmxpbnV4LWFybS1rZXJuZWwtYm91bmNlc0BsaXN0cy5pbmZyYWRlYWQub3JnXQ0K
-PiBPbiBCZWhhbGYgT2YgQWxleGFuZHJ1IEVsaXNlaQ0KPiBTZW50OiBXZWRuZXNkYXksIE1heSAy
-MCwgMjAyMCAxMDozMSBQTT4gDQo+IEhpLA0KPiANCj4gT24gNS8xOC8yMCAxMjoxNyBQTSwgQWxl
-eGFuZHJ1IEVsaXNlaSB3cm90ZToNCj4gPiBIaSwNCj4gPg0KPiA+IE9uIDUvMTgvMjAgMTE6NDUg
-QU0sIE1hcmsgUnV0bGFuZCB3cm90ZToNCj4gPj4gSGkgYWxsLA0KPiA+Pg0KPiA+PiBPbiBNb24s
-IE1heSAxOCwgMjAyMCBhdCAwMjoyNjowMFBNICswODAwLCBMZWNvcHplciBDaGVuIHdyb3RlOg0K
-PiA+Pj4gSEkgU3VtaXQsDQo+ID4+Pg0KPiA+Pj4gVGhhbmtzIGZvciB5b3VyIGluZm9ybWF0aW9u
-Lg0KPiA+Pj4NCj4gPj4+IEkndmUgYWxyZWFkeSBpbXBsZW1lbnRlZCBJUEkgKHNhbWUgYXMgeW91
-IGRpZCBbMV0sIGxpdHRsZSBkaWZmZXJlbmNlDQo+ID4+PiBpbiBkZXRhaWwpLCBoYXJkbG9ja3Vw
-IGRldGVjdG9yIGFuZCBwZXJmIGluIGxhc3QgeWVhcigyMDE5KSBmb3INCj4gPj4+IGRlYnVnZ2Fi
-aWxpdHkuDQo+ID4+PiBBbmQgbm93IHdlIHRlbmQgdG8gdXBzdHJlYW0gdG8gcmVkdWNlIGtlcm5l
-bCBtYWludGFpbmluZyBlZmZvcnQuDQo+ID4+PiBJJ20gZ2xhZCBpZiBzb21lb25lIGluIEFSTSBj
-YW4gZG8gdGhpcyB3b3JrIDopDQo+ID4+Pg0KPiA+Pj4gSGkgSnVsaWVuLA0KPiA+Pj4NCj4gPj4+
-IERvZXMgYW55IEFybSBtYWludGFpbmVycyBjYW4gcHJvY2VlZCB0aGlzIGFjdGlvbj8NCj4gPj4g
-QWxleGFuZHJ1IChDYydkKSBoYXMgYmVlbiByZWJhc2luZyBhbmQgcmV3b3JraW5nIEp1bGllbidz
-IHBhdGNoZXMsDQo+ID4+IHdoaWNoIGlzIG15IHByZWZlcnJlZCBhcHByb2FjaC4NCj4gPj4NCj4g
-Pj4gSSB1bmRlcnN0YW5kIHRoYXQncyBub3QgcXVpdGUgcmVhZHkgZm9yIHBvc3Rpbmcgc2luY2Ug
-aGUncw0KPiA+PiBpbnZlc3RpZ2F0aW5nIHNvbWUgb2YgdGhlIG5hc3RpZXIgc3VidGxldGllcyAo
-ZS5nLiBtdXR1YWwgZXhjbHVzaW9uDQo+ID4+IHdpdGggdGhlIE5NSSksIGJ1dCBtYXliZSB3ZSBj
-YW4gcHV0IHRoZSB3b3JrLWluLXByb2dyZXNzIHBhdGNoZXMNCj4gPj4gc29tZXdoZXJlIGluIHRo
-ZSBtZWFuIHRpbWUuDQo+ID4+DQo+ID4+IEFsZXhhbmRydSwgZG8geW91IGhhdmUgYW4gaWRlYSBv
-ZiB3aGF0IG5lZWRzIHRvIGJlIGRvbmUsIGFuZC9vciB3aGVuDQo+ID4+IHlvdSBleHBlY3QgeW91
-IGNvdWxkIHBvc3QgdGhhdD8NCj4gPiBJJ20gY3VycmVudGx5IHdvcmtpbmcgb24gcmViYXNpbmcg
-dGhlIHBhdGNoZXMgb24gdG9wIG9mIDUuNy1yYzUsIHdoZW4NCj4gPiBJIGhhdmUgc29tZXRoaW5n
-IHVzYWJsZSBJJ2xsIHBvc3QgYSBsaW5rIChzaG91bGQgYmUgYSBjb3VwbGUgb2YgZGF5cykuDQo+
-ID4gQWZ0ZXIgdGhhdCBJIHdpbGwgYWRkcmVzcyB0aGUgcmV2aWV3IGNvbW1lbnRzLCBhbmQgSSBw
-bGFuIHRvIGRvIGENCj4gPiB0aG9yb3VnaCB0ZXN0aW5nIGJlY2F1c2UgSSdtIG5vdCAxMDAlIGNv
-bmZpZGVudCB0aGF0IHNvbWUgb2YgdGhlDQo+ID4gYXNzdW1wdGlvbnMgYXJvdW5kIHRoZSBsb2Nr
-cyB0aGF0IHdlcmUgcmVtb3ZlZCBhcmUgY29ycmVjdC4gTXkgZ3Vlc3MgaXMNCj4gdGhpcyB3aWxs
-IHRha2UgYSBmZXcgd2Vla3MuDQo+IA0KPiBQdXNoZWQgYSBXSVAgYnJhbmNoIG9uIGxpbnV4LWFy
-bS5vcmcgWzFdOg0KPiANCj4gZ2l0IGNsb25lIC1iIFdJUC1wbXUtbm1pIGdpdDovL2xpbnV4LWFy
-bS5vcmcvbGludXgtYWUNCj4gDQo+IFByYWN0aWNhbGx5IHVudGVzdGVkLCBJIG9ubHkgZGlkIHBl
-cmYgcmVjb3JkIG9uIGEgZGVmY29uZmlnIGtlcm5lbCBydW5uaW5nIG9uIHRoZQ0KPiBtb2RlbC4N
-Cj4gDQo+IFsxXQ0KPiBodHRwOi8vd3d3LmxpbnV4LWFybS5vcmcvZ2l0P3A9bGludXgtYWUuZ2l0
-O2E9c2hvcnRsb2c7aD1yZWZzL2hlYWRzL1dJUC1wbQ0KPiB1LW5taQ0KDQpGb3J0dW5hdGVseSwg
-aXQgZG9lcyB3b3JrLiBJIHVzZWQgdGhpcyB0cmVlIHRvIHBlcmYgYW5ub3RhdGUgYXJtX3NtbXVf
-Y21kcV9pc3N1ZV9jbWRsaXN0KCkgd2hpY2gNCmlzIGNvbXBsZXRlbHkgZGlzYWJsaW5nIElSUS4g
-THVja2lseSwgaXQgcmVwb3J0cyBjb3JyZWN0IGRhdGEuIEJlZm9yZSB0aGF0LCBpdCByZXBvcnRl
-ZCBhbGwgdGltZSB3YXMgc3BlbnQgYnkNCnRoZSBjb2RlIHdoaWNoIGVuYWJsZWQgSVJRIC4NCg0K
-DQpCYXJyeQ0KDQo+IA0KPiBUaGFua3MsDQo+IEFsZXgNCj4gPg0KPiA+IFRoYW5rcywNCj4gPiBB
-bGV4DQo+ID4+IFRoYW5rcywNCj4gPj4gTWFyay4NCj4gPj4NCj4gPj4+IFRoaXMgaXMgcmVhbGx5
-IHVzZWZ1bCBpbiBkZWJ1Z2dpbmcuDQo+ID4+PiBUaGFuayB5b3UhIQ0KPiA+Pj4NCj4gPj4+DQo+
-ID4+Pg0KPiA+Pj4gWzFdIGh0dHBzOi8vbGttbC5vcmcvbGttbC8yMDIwLzQvMjQvMzI4DQo+ID4+
-Pg0KPiA+Pj4NCj4gPj4+IExlY29wemVyDQo+ID4+Pg0KPiA+Pj4gU3VtaXQgR2FyZyA8c3VtaXQu
-Z2FyZ0BsaW5hcm8ub3JnPiDmlrwgMjAyMOW5tDXmnIgxOOaXpSDpgLHkuIAg5LiL5Y2IDQo+IDE6
-NDblr6vpgZPvvJoNCj4gPj4+PiArIEp1bGllbg0KPiA+Pj4+DQo+ID4+Pj4gSGkgTGVjb3B6ZXIs
-DQo+ID4+Pj4NCj4gPj4+PiBPbiBTYXQsIDE2IE1heSAyMDIwIGF0IDE4OjIwLCBMZWNvcHplciBD
-aGVuIDxsZWNvcHplckBnbWFpbC5jb20+DQo+IHdyb3RlOg0KPiA+Pj4+PiBUaGVzZSBzZXJpZXMg
-aW1wbGVtZW50IFBlcmYgTk1JIGZ1bnh0aW9uYWxpdHkgYW5kIGRlcGVuZHMgb24NCj4gPj4+Pj4g
-UHNldWRvIE5NSSBbMV0gd2hpY2ggaGFzIGJlZW4gdXBzdHJlYW1lZC4NCj4gPj4+Pj4NCj4gPj4+
-Pj4gSW4gYXJtNjQgd2l0aCBHSUN2MywgUHNldWRvIE5NSSB3YXMgaW1wbGVtZW50ZWQgZm9yIE5N
-SS1saWtlDQo+IGludGVycnV0cy4NCj4gPj4+Pj4gVGhhdCBjYW4gYmUgZXh0ZW5kZWQgdG8gUGVy
-ZiBOTUkgd2hpY2ggaXMgdGhlIHByZXJlcXVpc2l0ZSBmb3INCj4gPj4+Pj4gaGFyZC1sb2NrdXAg
-ZGV0ZWN0b3Igd2hpY2ggaGFkIGFscmVhZHkgYSBzdGFuZGFyZCBpbnRlcmZhY2UgaW5zaWRlDQo+
-IExpbnV4Lg0KPiA+Pj4+Pg0KPiA+Pj4+PiBUaHVzIHRoZSBmaXJzdCBzdGVwIHdlIG5lZWQgdG8g
-aW1wbGVtZW50IHBlcmYgTk1JIGludGVyZmFjZSBhbmQNCj4gPj4+Pj4gbWFrZSBzdXJlIGl0IHdv
-cmtzIGZpbmUuDQo+ID4+Pj4+DQo+ID4+Pj4gVGhpcyBpcyBzb21ldGhpbmcgdGhhdCBpcyBhbHJl
-YWR5IGltcGxlbWVudGVkIHZpYSBKdWxpZW4ncw0KPiA+Pj4+IHBhdGNoLXNldCBbMV0uIEl0cyB2
-NCBoYXMgYmVlbiBmbG9hdGluZyBzaW5jZSBKdWx5LCAyMDE5IGFuZCBJDQo+ID4+Pj4gY291bGRu
-J3QgZmluZCBhbnkgbWFqb3IgYmxvY2tpbmcgY29tbWVudHMgYnV0IG5vdCBzdXJlIHdoeSB0aGlu
-Z3MNCj4gPj4+PiBoYXZlbid0IHByb2dyZXNzZWQgZnVydGhlci4NCj4gPj4+Pg0KPiA+Pj4+IE1h
-eWJlIEp1bGllbiBvciBBcm0gbWFpbnRhaW5lcnMgY2FuIHByb3ZpZGUgdXBkYXRlcyBvbiBleGlz
-dGluZw0KPiA+Pj4+IHBhdGNoLXNldCBbMV0gYW5kIGhvdyB3ZSBzaG91bGQgcHJvY2VlZCBmdXJ0
-aGVyIHdpdGggdGhpcw0KPiA+Pj4+IGludGVyZXN0aW5nIGZlYXR1cmUuDQo+ID4+Pj4NCj4gPj4+
-PiBBbmQgcmVnYXJkaW5nIGhhcmQtbG9ja3VwIGRldGVjdGlvbiwgSSBoYXZlIGJlZW4gYWJsZSB0
-byBlbmFibGUgaXQNCj4gPj4+PiBiYXNlZCBvbiBwZXJmIE5NSSBldmVudHMgdXNpbmcgSnVsaWVu
-J3MgcGVyZiBwYXRjaC1zZXQgWzFdLiBIYXZlIGENCj4gPj4+PiBsb29rIGF0IHRoZSBwYXRjaCBo
-ZXJlIFsyXS4NCj4gPj4+Pg0KPiA+Pj4+IFsxXSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3Jn
-L2NvdmVyLzExMDQ3NDA3Lw0KPiA+Pj4+IFsyXQ0KPiA+Pj4+IGh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL3BpcGVybWFpbC9saW51eC1hcm0ta2VybmVsLzIwMjAtTWF5LzczMjINCj4gPj4+PiAy
-Ny5odG1sDQo+ID4+Pj4NCj4gPj4+PiAtU3VtaXQNCj4gPj4+Pg0KPiA+Pj4+PiBQZXJmIE5NSSBo
-YXMgYmVlbiB0ZXN0IGJ5IGRkIGlmPS9kZXYvdXJhbmRvbSBvZj0vZGV2L251bGwgbGlrZSB0aGUN
-Cj4gPj4+Pj4gbGluayBbMl0gZGlkLg0KPiA+Pj4+Pg0KPiA+Pj4+PiBbMV0gaHR0cHM6Ly9sa21s
-Lm9yZy9sa21sLzIwMTkvMS8zMS81MzUNCj4gPj4+Pj4gWzJdIGh0dHBzOi8vd3d3LmxpbmFyby5v
-cmcvYmxvZy9kZWJ1Z2dpbmctYXJtLWtlcm5lbHMtdXNpbmctbm1pZmlxDQo+ID4+Pj4+DQo+ID4+
-Pj4+DQo+ID4+Pj4+IExlY29wemVyIENoZW4gKDMpOg0KPiA+Pj4+PiAgIGFybV9wbXU6IEFkZCBz
-dXBwb3J0IGZvciBwZXJmIE5NSSBpbnRlcnJ1cHRzIHJlZ2lzdHJhdGlvbg0KPiA+Pj4+PiAgIGFy
-bTY0OiBwZXJmOiBTdXBwb3J0IE5NSSBjb250ZXh0IGZvciBwZXJmIGV2ZW50IElTUg0KPiA+Pj4+
-PiAgIGFybTY0OiBLY29uZmlnOiBBZGQgc3VwcG9ydCBmb3IgdGhlIFBlcmYgTk1JDQo+ID4+Pj4+
-DQo+ID4+Pj4+ICBhcmNoL2FybTY0L0tjb25maWcgICAgICAgICAgICAgfCAxMCArKysrKysrDQo+
-ID4+Pj4+ICBhcmNoL2FybTY0L2tlcm5lbC9wZXJmX2V2ZW50LmMgfCAzNiArKysrKysrKysrKysr
-KysrKystLS0tLS0NCj4gPj4+Pj4gIGRyaXZlcnMvcGVyZi9hcm1fcG11LmMgICAgICAgICB8IDUx
-DQo+ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0tLS0NCj4gPj4+Pj4gIGluY2x1ZGUv
-bGludXgvcGVyZi9hcm1fcG11LmggICB8ICA2ICsrKysNCj4gPj4+Pj4gIDQgZmlsZXMgY2hhbmdl
-ZCwgODggaW5zZXJ0aW9ucygrKSwgMTUgZGVsZXRpb25zKC0pDQo+ID4+Pj4+DQo+ID4+Pj4+IC0t
-DQo+ID4+Pj4+IDIuMjUuMQ0KDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Mon, 2020-05-18 at 19:52 +0200, Enric Balletbo i Serra wrote:
+> Hi Weiyi,
+> 
+> On 15/5/20 5:35, Weiyi Lu wrote:
+> > On Mon, 2020-05-11 at 14:02 +0800, Weiyi Lu wrote:
+> >> On Wed, 2020-05-06 at 23:01 +0200, Enric Balletbo i Serra wrote:
+> >>> Hi Weiyi,
+> >>>
+> >>> Thank you for your patch.
+> >>>
+> >>> On 6/5/20 10:15, Weiyi Lu wrote:
+> >>>> Try to stop extending the clk_id or clk_names if there are
+> >>>> more and more new BASIC clocks. To get its own clocks by the
+> >>>> basic_clk_name of each power domain.
+> >>>> And then use basic_clk_name strings for all compatibles, instead of
+> >>>> mixing clk_id and clk_name.
+> >>>>
+> >>>> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> >>>> Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
+> >>>> ---
+> >>>>  drivers/soc/mediatek/mtk-scpsys.c | 134 ++++++++++++--------------------------
+> >>>>  1 file changed, 41 insertions(+), 93 deletions(-)
+> >>>>
+> >>>> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> >>>> index f669d37..c9c3cf7 100644
+> >>>> --- a/drivers/soc/mediatek/mtk-scpsys.c
+> >>>> +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> >>>> @@ -78,34 +78,6 @@
+> >>>>  #define PWR_STATUS_HIF1			BIT(26)	/* MT7622 */
+> >>>>  #define PWR_STATUS_WB			BIT(27)	/* MT7622 */
+> >>>>  
+> >>>> -enum clk_id {
+> >>>> -	CLK_NONE,
+> >>>> -	CLK_MM,
+> >>>> -	CLK_MFG,
+> >>>> -	CLK_VENC,
+> >>>> -	CLK_VENC_LT,
+> >>>> -	CLK_ETHIF,
+> >>>> -	CLK_VDEC,
+> >>>> -	CLK_HIFSEL,
+> >>>> -	CLK_JPGDEC,
+> >>>> -	CLK_AUDIO,
+> >>>> -	CLK_MAX,
+> >>>> -};
+> >>>> -
+> >>>> -static const char * const clk_names[] = {
+> >>>> -	NULL,
+> >>>> -	"mm",
+> >>>> -	"mfg",
+> >>>> -	"venc",
+> >>>> -	"venc_lt",
+> >>>> -	"ethif",
+> >>>> -	"vdec",
+> >>>> -	"hif_sel",
+> >>>> -	"jpgdec",
+> >>>> -	"audio",
+> >>>> -	NULL,
+> >>>> -};
+> >>>> -
+> >>>>  #define MAX_CLKS	3
+> >>>>  
+> >>>>  /**
+> >>>> @@ -116,7 +88,7 @@ enum clk_id {
+> >>>>   * @sram_pdn_bits: The mask for sram power control bits.
+> >>>>   * @sram_pdn_ack_bits: The mask for sram power control acked bits.
+> >>>>   * @bus_prot_mask: The mask for single step bus protection.
+> >>>> - * @clk_id: The basic clocks required by this power domain.
+> >>>> + * @basic_clk_name: The basic clocks required by this power domain.
+> >>>>   * @caps: The flag for active wake-up action.
+> >>>>   */
+> >>>>  struct scp_domain_data {
+> >>>> @@ -126,7 +98,7 @@ struct scp_domain_data {
+> >>>>  	u32 sram_pdn_bits;
+> >>>>  	u32 sram_pdn_ack_bits;
+> >>>>  	u32 bus_prot_mask;
+> >>>> -	enum clk_id clk_id[MAX_CLKS];
+> >>>> +	const char *basic_clk_name[MAX_CLKS];
+> >>>
+> >>> I only reviewed v13, so sorry if this was already discussed. I am wondering if
+> >>> would be better take advantage of the devm_clk_bulk_get() function instead of
+> >>> kind of reimplementing the same, something like this
+> >>>
+> >>> 	const struct clk_bulk_data *basic_clocks;
+> >>>
+> >>
+> >> I thought it should be const struct clk_bulk_data
+> >> basic_clocks[MAX_CLKS]; instead of const struct clk_bulk_data
+> >> *basic_clocks; in struct scp_domain_data data type
+> >>
+> >>>>  	u8 caps;
+> >>>>  };
+> >>>>  
+> >>>> @@ -411,12 +383,19 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+> >>>>  	return ret;
+> >>>>  }
+> >>>>  
+> >>>> -static void init_clks(struct platform_device *pdev, struct clk **clk)
+> >>>> +static int init_basic_clks(struct platform_device *pdev, struct clk **clk,
+> >>>> +			const char * const *name)
+> >>>>  {
+> >>>>  	int i;
+> >>>>  
+> >>>> -	for (i = CLK_NONE + 1; i < CLK_MAX; i++)
+> >>>> -		clk[i] = devm_clk_get(&pdev->dev, clk_names[i]);
+> >>>> +	for (i = 0; i < MAX_CLKS && name[i]; i++) {
+> >>>> +		clk[i] = devm_clk_get(&pdev->dev, name[i]);
+> >>>> +
+> >>>> +		if (IS_ERR(clk[i]))
+> >>>> +			return PTR_ERR(clk[i]);
+> >>>> +	}
+> >>>
+> >>> You will be able to remove this function, see below ...
+> >>>
+> >>>> +
+> >>>> +	return 0;
+> >>>>  }
+> >>>>  
+> >>>>  static struct scp *init_scp(struct platform_device *pdev,
+> >>>> @@ -426,9 +405,8 @@ static struct scp *init_scp(struct platform_device *pdev,
+> >>>>  {
+> >>>>  	struct genpd_onecell_data *pd_data;
+> >>>>  	struct resource *res;
+> >>>> -	int i, j;
+> >>>> +	int i, ret;
+> >>>>  	struct scp *scp;
+> >>>> -	struct clk *clk[CLK_MAX];
+> >>>>  
+> >>>>  	scp = devm_kzalloc(&pdev->dev, sizeof(*scp), GFP_KERNEL);
+> >>>>  	if (!scp)
+> >>>> @@ -481,8 +459,6 @@ static struct scp *init_scp(struct platform_device *pdev,
+> >>>>  
+> >>>>  	pd_data->num_domains = num;
+> >>>>  
+> >>>> -	init_clks(pdev, clk);
+> >>>> -
+> >>>>  	for (i = 0; i < num; i++) {
+> >>>>  		struct scp_domain *scpd = &scp->domains[i];
+> >>>>  		struct generic_pm_domain *genpd = &scpd->genpd;
+> >>>> @@ -493,17 +469,9 @@ static struct scp *init_scp(struct platform_device *pdev,
+> >>>>  
+> >>>>  		scpd->data = data;
+> >>>>  
+> >>>> -		for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
+> >>>> -			struct clk *c = clk[data->clk_id[j]];
+> >>>> -
+> >>>> -			if (IS_ERR(c)) {
+> >>>> -				dev_err(&pdev->dev, "%s: clk unavailable\n",
+> >>>> -					data->name);
+> >>>> -				return ERR_CAST(c);
+> >>>> -			}
+> >>>> -
+> >>>> -			scpd->clk[j] = c;
+> >>>> -		}
+> >>>> +		ret = init_basic_clks(pdev, scpd->clk, data->basic_clk_name);
+> >>>> +		if (ret)
+> >>>> +			return ERR_PTR(ret);
+> >>>
+> >>> Just call:
+> >>>
+> >>> 	ret = devm_clk_bulk_get(&pdev->dev, ARRAY_SIZE(basic_clocks),
+> >>> 				data->basic_clocks);
+> >>> 	if (ret)
+> >>> 		return ERR_PTR(ret);
+> >>>
+> >>>>  
+> >>>>  		genpd->name = data->name;
+> >>>>  		genpd->power_off = scpsys_power_off;
+> >>>> @@ -560,7 +528,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+> >>>>  		.ctl_offs = SPM_CONN_PWR_CON,
+> >>>>  		.bus_prot_mask = MT2701_TOP_AXI_PROT_EN_CONN_M |
+> >>>>  				 MT2701_TOP_AXI_PROT_EN_CONN_S,
+> >>>> -		.clk_id = {CLK_NONE},
+> >>>>  		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+> >>>>  	},
+> >>>>  	[MT2701_POWER_DOMAIN_DISP] = {
+> >>>> @@ -568,7 +535,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+> >>>>  		.sta_mask = PWR_STATUS_DISP,
+> >>>>  		.ctl_offs = SPM_DIS_PWR_CON,
+> >>>>  		.sram_pdn_bits = GENMASK(11, 8),
+> >>>> -		.clk_id = {CLK_MM},
+> >>>> +		.basic_clk_name = {"mm"},
+> >>>
+> >>> 		.basic_clocks[] = {
+> >>> 			{ .id = "mm" },
+> >>> 		};
+> >>>
+> >>
+> >> Those basic clocks without given a name (name: null) would get incorrect
+> >> clock via clk_bulk_get(...) due to 
+> >>
+> >> /**
+> >>  * of_parse_clkspec() - Parse a DT clock specifier for a given device
+> >> node
+> >>  * @np: device node to parse clock specifier from
+> >>  * @index: index of phandle to parse clock out of. If index < 0, @name
+> >> is used
+> >>  * @name: clock name to find and parse. If name is NULL, the index is
+> >> used
+> >>
+> >> And the index is 0 here in this callstack
+> >>
+> >> I guess something need to be improved before we use the clk_bulk_ APIs.
+> >>
+> > 
+> > Hi Enric,
+> > 
+> > According to the result above, is it necessary to change the APIs or
+> > maybe I should send the next version v15 first to fix other problems you
+> > mentioned? Many thanks.
+> > 
+> 
+> It is fine to send a next version without changing the APIs, it depends on the
+> extra work if you are fine with the change. To be honest I didn't see the
+> problem above but I think can be fixed.
+> 
+> Cheers,
+>  Enric
+> 
+
+Hi Enric,
+
+Got it, I'll send a next version without changing the APIs.
+And please let me explain it again.
+If anything wrong, feel free to correct me.
+
+First, the clock mapping in the dts
+e.g. 
+clocks = <&topckgen CLK_TOP_MUX_AUD_INTBUS>, <= index 0
+	 <&infracfg CLK_INFRA_AUDIO>,
+	 <&infracfg CLK_INFRA_AUDIO_26M_BCLK>,
+	 <&topckgen CLK_TOP_MUX_MFG>,
+	 <&topckgen CLK_TOP_MUX_MM>;
+
+clock-names = "audio",
+	      "audio1",
+	      "audio2",
+	      "mfg",
+	      "mm";
+
+
+And then, in struct scp_domain_data data structure we might need to use
+const struct clk_bulk_data basic_clocks[MAX_CLKS]; rather than const
+struct clk_bulk_data *basic_clocks;
+
+So what
+
+.basic_clocks = {
+	{ .id = "mm" },
+};
+
+is certainly like below
+
+.basic_clocks = {
+	{ .id = "mm" },
+	{ .id = null },
+	{ .id = null },
+};
+
+And using devm_clk_bulk_get(...); to get the clock resource will result
+in
+
+basic_clocks = {
+	{ .id = "mm", . clk = <&topckgen CLK_TOP_MUX_MM>},
+	{ .id = null, . clk = <&topckgen CLK_TOP_MUX_AUD_INTBUS>},
+	{ .id = null, . clk = <&topckgen CLK_TOP_MUX_AUD_INTBUS>},
+};
+
+I thought it's incorrect for my usage inside the mtk-scpsys.c
+and currently how devm_clk_bulk_get(...) will get the clock resource is
+by API of_parse_clksepc()
+
+/**
+ * of_parse_clkspec() - Parse a DT clock specifier for a given device
+ node
+  * @np: device node to parse clock specifier from
+  * @index: index of phandle to parse clock out of. If index < 0, @name
+ is used
+  * @name: clock name to find and parse. If name is NULL, the index is
+ used
+
+And for clocks without given a name first(id=null), will use the index 0
+to get the clock. In this example, the index 0 will map to <&topckgen
+CLK_TOP_MUX_AUD_INTBUS>
+
+If we ignore the problem and use clk_bulk_prepare()/_enable() to control
+the clock, so far, clk_bulk_enable will traverse all the iterator and
+enable the unexpected clocks without check if the clock id(name) is
+valid or not.
+
+Right now, I'm not sure why of_parse_clkspec() assume to use the index 0
+if the name is NULL. I might need some time to dig it out. If you have
+some information about this part, please share it to me. Many thanks.
+
+
+> 
+> >>
+> >>>>  		.bus_prot_mask = MT2701_TOP_AXI_PROT_EN_MM_M0,
+> >>>>  		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+> >>>>  	},
+> >>>> @@ -578,7 +545,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+> >>>>  		.ctl_offs = SPM_MFG_PWR_CON,
+> >>>>  		.sram_pdn_bits = GENMASK(11, 8),
+> >>>>  		.sram_pdn_ack_bits = GENMASK(12, 12),
+> >>>> -		.clk_id = {CLK_MFG},
+> >>>> +		.basic_clk_name = {"mfg"},
+> >>>
+> >>> 		.basic_clocks[] = {
+> >>> 			{ .id = "mfg" },
+> >>> 		};
+> >>>
+> >>>>  		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+> >>>>  	},
+> >>>>  	[MT2701_POWER_DOMAIN_VDEC] = {
+> >>>> @@ -587,7 +554,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+> >>>>  		.ctl_offs = SPM_VDE_PWR_CON,
+> >>>>  		.sram_pdn_bits = GENMASK(11, 8),
+> >>>>  		.sram_pdn_ack_bits = GENMASK(12, 12),
+> >>>> -		.clk_id = {CLK_MM},
+> >>>> +		.basic_clk_name = {"mm"},
+> >>>
+> >>> ...
+> >>>
+> >>> [snip]
+> >>
+> >>
+> > 
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
