@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EF347C433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 14:41:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 05798C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 15:06:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B72C220671
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 14:41:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BD6DA2072C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 15:06:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kjRx3yX9";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Pi/q46Cj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B72C220671
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AIKi4/n2";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Gl57U2x/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD6DA2072C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,60 +27,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i9wlRFZOZh/bOj0NagygfYE8zJRjuf+CL6JsA77gGIQ=; b=kjRx3yX9iXbnKu
-	K/AMXO1rTc7tytyQoUMCOilGka0tQgK8tXszrnae50YBsOUl1lN4njDEoB2Go+oK/ZiqHdeFdjLP1
-	ARbEXP+IgIEfguuyhIyGm+WzxPevgq853TUk8vpGLiMLL6TaQ3T3dMXvK0n2DiIiQM2glz3MymgkX
-	jIvjDUFRJBd/F6JuSUXE61RPrFC+Q6F+ZhkpbYXnPh7QA6fJTzayZFBvH0FYc3b2xpCRWM178Qzkj
-	qnvAMjF17MNpqoH1FNEXPdkqVK+fDG5Af+JF5ULy2Ze7vgOihiruyWwxwqloYFittKR2CWYxt0LF7
-	tboIHzeF2k3uqiqgDp7g==;
+	List-Owner; bh=LdKKPDQtvqR0zLn1gy+q7LpqQDGW8dc5o3ou1BqlQvU=; b=AIKi4/n2yGVJpb
+	fdi3nGYitAO+YhNeeb+D4vAs+BI1wEQxQ6qqcdO1Bb22QqZpi3IqXTUekLsXuZWG2lce/UmKq6qxs
+	6s0jOCx3cHOwIIJgApl82SEqD1df8kWYswWIEUp2AOCXP1wzobLYSTgvpiwu1a7d6ZWaz7wxEUdOJ
+	cmpcfiuQkQHt4DlSpcTgauywbe7a4W6XjaWv6n2SwidhkqlnSP4a4uZz2DVwcWyF2KVqZ2vhQ1+6m
+	/X1I1K4d2gsRRRrxezKA2JFkek+2gh4ry4FcW1KR8k/zTTZvEBN2GmqwvjZAJsXE0xEkV3jAwvaB6
+	WZUhq+41mp9YXkrQmMWw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbmNW-0001tp-TT; Thu, 21 May 2020 14:40:58 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1jbmm7-0001Rz-Lz; Thu, 21 May 2020 15:06:23 +0000
+Received: from mail-oo1-xc41.google.com ([2607:f8b0:4864:20::c41])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbmNU-0001tR-DI
- for linux-mediatek@lists.infradead.org; Thu, 21 May 2020 14:40:57 +0000
-Received: by mail-wm1-x341.google.com with SMTP id t8so2386318wmi.0
- for <linux-mediatek@lists.infradead.org>; Thu, 21 May 2020 07:40:56 -0700 (PDT)
+ id 1jbmm4-0001RH-Ng; Thu, 21 May 2020 15:06:22 +0000
+Received: by mail-oo1-xc41.google.com with SMTP id q6so1512694oot.0;
+ Thu, 21 May 2020 08:06:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=8A5KPXsgqIXJKD4Ayde8UBdKAPMdpbzHvWz0KmO/tcw=;
- b=Pi/q46CjJbPiXDGNoV7TJCoIjP5myYu2wndV5dQ7x0tp1DkR+ZZKT5PKWZnOEFnNoI
- sDxNpAqn8szMx+wSeNRYKE4g0SgmFoeiQuvnjMihxC+zrLpc2o8MT7UUj3orzWT5b+1g
- 0ZAeytkjM2718h+P9Dzb3nwcwNTRUeMUK9ivpvDNZu9XZjNWmLO1EscSBLJrVxU+2StS
- 0YEMUXh9c4r9PaQMfbZB5dQbg2ZKidk7rgFkN4tHGt7dY/GdaODB+kxDYEqvQsiVQhhi
- ++k+pUFvda81IDf9DZUMgp/fhNfqoxMuG2F3ZgMGONvCnssMhBUJBHrS81iGqCprpAYk
- wYiw==
+ bh=+Za7SrO4qn8XtzrO1qNLjs5yd6uVoYKW4nq+Ui1HK+U=;
+ b=Gl57U2x/Km8DZ+EE/uEo3P0o+N5ayoNL67CPCDW/1jadrTx01G4TAQiGNXZNusuRye
+ uHXFypN40jjcNDjo7SwTFPQwsoMxx9NUK1wTejbONmlIp/lubG1pia0mGGjHBn5K2kOA
+ WhFHeRKYLu1uY5B8vQFrNU/F4JkFHB7gg9KyBJGR5S7f3PogzA5sbyrK10Z/JC6wdFb7
+ cXL7xIqRllMYiuTWv/B8z3n4AcZrToiuJ5HE+wFKj9MWqXHJ4F3823sLMArxadlx0UyM
+ PVcr5IK8WSxPwN8tOwDrorZNOkv5kVF5KV6sSUsGqQhXf2+F+14hz6EQfb/aYyG3z7co
+ OBbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=8A5KPXsgqIXJKD4Ayde8UBdKAPMdpbzHvWz0KmO/tcw=;
- b=K3pCgd42bIKKqBPhlRSy11r2CX/801Z2tG/Wgnx7H+5mNUqvpUxaznPTrmxh8OspJI
- JnfvtPeiFy66eX4LDcrW5+i0S2hf8khhFR6mC0bJsncANRKvot2gMKbFaW3KEP9eEP6S
- swgZYaGOX1WqifE9theg3M8zrplDO/Wril6W2lKhgiWTOCM/sxYGYbDwefyfhkTY3eT6
- vBt5wPPqTDSecToLbzYUDI19bmGov+eGIto8jVR9G8O1Su8t4GL4HG4CImziLq59iO2/
- 0Dr5tsqbEVSs5YpaNOqIUnetfSeJ/lfMt8y/aJpDUs4MiPRSVImzlI9amBNbeLPlyaxa
- Qjzw==
-X-Gm-Message-State: AOAM532V5cbKSsBEOdatAzFgVzKcq118x0Ugu7qLFAGn1EMdz4edGSib
- QPT8Adxx3TkNnn9slmOMrdM=
-X-Google-Smtp-Source: ABdhPJzrTMSWQPfb1BasarV3yUrNf+20YqM1s1Dvw0R6nVsBgfh4DFoUWW1Up0p2kB9SMuvdRQk99Q==
-X-Received: by 2002:a05:600c:2041:: with SMTP id
- p1mr10020922wmg.152.1590072055076; 
- Thu, 21 May 2020 07:40:55 -0700 (PDT)
+ bh=+Za7SrO4qn8XtzrO1qNLjs5yd6uVoYKW4nq+Ui1HK+U=;
+ b=qvgDVZXLB1YMqqUeDDYc4jrKOwT2zRYkr5BpkUDn+9Gfv3QNF3fMtbDm3/6nAsJy7B
+ nM5NhmvjQKSrEsUJoLAnRg/Vc3hS6+xpyuxoEhKRKSG1TaK0+m9AdviBAbR0HV9C/WWH
+ SYFzHjg2mxROYLMjXLRX+60yHlRe5yvvHkWFr+nnlMnNWVGBNbU21mtGNnpbGBhRLMWn
+ /an+getPus5y10vl5IgwdtuAatPVfClYEuaSq4uQcviVbQj1bYA8qmVfdA65FiCy/Ayt
+ 5juhkDSHRqEszQn90lm9uJPZLp7wWFiHf8rCjAVr0Z9y0c6p6ENrW158gwuux/PnSGET
+ LGtw==
+X-Gm-Message-State: AOAM531gUO4o0wiep2ZqWOydtrczu422BbNAi0qxrtcnZPkxWWr3YX3Z
+ Naoc99P5O9kH6hRRALTCvME=
+X-Google-Smtp-Source: ABdhPJw0iR09fQcrMPCdaS54L6NRmZfxw/WdoX1jFmKTCggawwLEiBk1exB8SKwfmhBTXGgRlly7og==
+X-Received: by 2002:a4a:91c2:: with SMTP id e2mr7621457ooh.45.1590073577431;
+ Thu, 21 May 2020 08:06:17 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id 94sm6893745wrf.74.2020.05.21.07.40.54
+ by smtp.gmail.com with ESMTPSA id y205sm1722572oie.27.2020.05.21.08.06.14
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 21 May 2020 07:40:54 -0700 (PDT)
-Subject: Re: [PATCH 2/2] dt-bindings: nvmem: mediatek: add support for
- MediaTek mt8183 SoC
-To: michael.mei@mediatek.com, orz811017@gmail.com,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Thu, 21 May 2020 08:06:16 -0700 (PDT)
+Subject: Re: [PATCH v3 5/7] arm64: dts: mt8183: add usb and phy nodes
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Rob Herring <robh+dt@kernel.org>
-References: <20190416081922.21711-1-michael.mei@mediatek.com>
- <20190416081922.21711-3-michael.mei@mediatek.com>
+References: <1567150854-30033-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1567150854-30033-6-git-send-email-chunfeng.yun@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -156,16 +153,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <8d0d607a-2f02-ffd2-b531-b44812eb5f0b@gmail.com>
-Date: Thu, 21 May 2020 16:40:53 +0200
+Message-ID: <9517d625-f55e-c0f1-8e8d-b3882189e175@gmail.com>
+Date: Thu, 21 May 2020 17:06:13 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20190416081922.21711-3-michael.mei@mediatek.com>
+In-Reply-To: <1567150854-30033-6-git-send-email-chunfeng.yun@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_074056_466939_41D712B6 
-X-CRM114-Status: GOOD (  17.58  )
+X-CRM114-CacheID: sfid-20200521_080620_823971_A928A74C 
+X-CRM114-Status: GOOD (  19.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -177,54 +174,166 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>,
- linux-mediatek@lists.infradead.org,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- srv_heupstream@mediatek.com
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[adding the corresponding maintainer]
 
-On 16/04/2019 10:19, michael.mei@mediatek.com wrote:
-> From: Michael Mei <michael.mei@mediatek.com>
+
+On 30/08/2019 09:40, Chunfeng Yun wrote:
+> Add USB related nodes for MT8183, set it as host mode by default.
 > 
-> This updates dt-binding documentation for MediaTek mt8183
-> For the both SoCs supported all rely on the fallback binding
-> of the generic case with "mediatek,efuse".
-> 
-> Signed-off-by: Michael Mei <michael.mei@mediatek.com>
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 > ---
-> This patch is based on v5.1-rc1 and these patches:
-> 
-> https://patchwork.kernel.org/patch/10856987/
-> https://patchwork.kernel.org/patch/10839021/
-> https://patchwork.kernel.org/patch/10879015/
-> https://patchwork.kernel.org/patch/10878999/
-> https://patchwork.kernel.org/patch/10858941/
-> https://patchwork.kernel.org/patch/10846685/
-> https://patchwork.kernel.org/patch/10893519
+> v2~v3: no changes
 > ---
->  Documentation/devicetree/bindings/nvmem/mtk-efuse.txt | 1 +
->  1 file changed, 1 insertion(+)
+>  arch/arm64/boot/dts/mediatek/mt8183-evb.dts | 22 +++++++++
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi    | 55 +++++++++++++++++++++
+>  2 files changed, 77 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
-> index 0668c45a156d..b4d448bb60ce 100644
-> --- a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
-> +++ b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
-> @@ -7,6 +7,7 @@ Required properties:
->  	      "mediatek,mt7622-efuse", "mediatek,efuse": for MT7622
->  	      "mediatek,mt7623-efuse", "mediatek,efuse": for MT7623
->  	      "mediatek,mt8173-efuse" or "mediatek,efuse": for MT8173
-> +	      "mediatek,mt8183-efuse" or "mediatek,efuse": for MT8183
->  - reg: Should contain registers location and length
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> index d8e555cbb5d3..142ff52f0f42 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> @@ -6,7 +6,9 @@
+>   */
 >  
->  = Data cells =
+>  /dts-v1/;
+> +#include <dt-bindings/gpio/gpio.h>
+>  #include "mt8183.dtsi"
+> +#include "mt6358.dtsi"
+
+mt6358.dtsi is accepted upstream now.
+While the rest of the series implements wake up function, I understand that this
+patch is independent and enables USB without wake up.
+
+If so, let me know and I can take it now.
+
+Regards,
+Matthias
+
+>  
+>  / {
+>  	model = "MediaTek MT8183 evaluation board";
+> @@ -24,6 +26,16 @@
+>  	chosen {
+>  		stdout-path = "serial0:921600n8";
+>  	};
+> +
+> +	usb_vbus: regulator@0 {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "p0_vbus";
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		gpio = <&pio 42 GPIO_ACTIVE_HIGH>;
+> +		enable-active-high;
+> +		regulator-always-on;
+> +	};
+>  };
+>  
+>  &auxadc {
+> @@ -135,6 +147,16 @@
+>  
+>  };
+>  
+> +&ssusb {
+> +	vusb33-supply = <&mt6358_vusb_reg>;
+> +	dr_mode = "host";
+> +	status = "okay";
+> +};
+> +
+> +&usb_host {
+> +	status = "okay";
+> +};
+> +
+>  &uart0 {
+>  	status = "okay";
+>  };
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index c2749c4631bc..28da334237c6 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -8,6 +8,7 @@
+>  #include <dt-bindings/clock/mt8183-clk.h>
+>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+>  #include <dt-bindings/interrupt-controller/irq.h>
+> +#include <dt-bindings/phy/phy.h>
+>  #include "mt8183-pinfunc.h"
+>  
+>  / {
+> @@ -372,6 +373,35 @@
+>  			status = "disabled";
+>  		};
+>  
+> +		ssusb: usb@11201000 {
+> +			compatible = "mediatek,mt8183-mtu3", "mediatek,mtu3";
+> +			reg = <0 0x11201000 0 0x2e00>,
+> +			      <0 0x11203e00 0 0x0100>;
+> +			reg-names = "mac", "ippc";
+> +			interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_LOW>;
+> +			phys = <&u2port0 PHY_TYPE_USB2>,
+> +			       <&u3port0 PHY_TYPE_USB3>;
+> +			clocks = <&infracfg CLK_INFRA_UNIPRO_SCK>,
+> +				 <&infracfg CLK_INFRA_USB>;
+> +			clock-names = "sys_ck", "ref_ck";
+> +			#address-cells = <2>;
+> +			#size-cells = <2>;
+> +			ranges;
+> +			status = "disabled";
+> +
+> +			usb_host: xhci@11200000 {
+> +				compatible = "mediatek,mt8183-xhci",
+> +					     "mediatek,mtk-xhci";
+> +				reg = <0 0x11200000 0 0x1000>;
+> +				reg-names = "mac";
+> +				interrupts = <GIC_SPI 73 IRQ_TYPE_LEVEL_LOW>;
+> +				clocks = <&infracfg CLK_INFRA_UNIPRO_SCK>,
+> +					 <&infracfg CLK_INFRA_USB>;
+> +				clock-names = "sys_ck", "ref_ck";
+> +				status = "disabled";
+> +			};
+> +		};
+> +
+>  		audiosys: syscon@11220000 {
+>  			compatible = "mediatek,mt8183-audiosys", "syscon";
+>  			reg = <0 0x11220000 0 0x1000>;
+> @@ -384,6 +414,31 @@
+>  			reg = <0 0x11f10000 0 0x1000>;
+>  		};
+>  
+> +		u3phy: usb-phy@11f40000 {
+> +			compatible = "mediatek,mt8183-tphy",
+> +				     "mediatek,generic-tphy-v2";
+> +			#address-cells = <1>;
+> +			#size-cells = <1>;
+> +			ranges = <0 0 0x11f40000 0x1000>;
+> +			status = "okay";
+> +
+> +			u2port0: usb-phy@0 {
+> +				reg = <0x0 0x700>;
+> +				clocks = <&clk26m>;
+> +				clock-names = "ref";
+> +				#phy-cells = <1>;
+> +				status = "okay";
+> +			};
+> +
+> +			u3port0: usb-phy@0700 {
+> +				reg = <0x0700 0x900>;
+> +				clocks = <&clk26m>;
+> +				clock-names = "ref";
+> +				#phy-cells = <1>;
+> +				status = "okay";
+> +			};
+> +		};
+> +
+>  		mfgcfg: syscon@13000000 {
+>  			compatible = "mediatek,mt8183-mfgcfg", "syscon";
+>  			reg = <0 0x13000000 0 0x1000>;
 > 
 
 _______________________________________________
