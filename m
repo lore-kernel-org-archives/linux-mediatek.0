@@ -2,89 +2,68 @@ Return-Path: <SRS0=x8tw=7D=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PULL_REQUEST,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EF0AFC433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 08:16:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 72F25C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 08:28:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B187620738
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 08:16:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E35572070A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 08:28:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BhhB4Sn/";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="fGuo2D4q"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B187620738
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="P1+Fd8iy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E35572070A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=mxic.com.tw
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Date:From:Message-ID:MIME-Version:
+	Subject:To:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xt2vkcc/MlTg8e4BpHUeZCZul6lBT7p3L/g7hdG2BSI=; b=BhhB4Sn/qPhXm2
-	vi/BkiWwh5GiUwlbvQ493iiwxxtqY8rtG/xi84BZOeBOWQ3WjBrvmSaF0fZKa/gGMI7GVbyfrZiKY
-	VrVZ1aZP3r+5X94jmBmowKDalMwTAcjl6ilXFwE3ryV0r+JOvo+5a4EHn21qxKrqqzxSou6qZ4NUD
-	DZVxW2rMRwXzxosPSM+cL16RAtVCjN0VkgyVgNnNa5FvvBxl4JaRQwHgOEt62INynIRu3xt21Jhtu
-	r0/O8sWObrISF24pzG9cU/osgQglsso22UsRGVonv/5PWp0xTMK6b8uXmbCV1Z1kJTlIRRir9O3ih
-	QTr1ZLwPo3TXI1sMOeHA==;
+	List-Owner; bh=ZeVkLBTHwU6ZBorOlOOIjQCxOTc6ogNjaIoxphIL0bM=; b=P1+Fd8iy0oKwMA
+	bbcwNJ32kEz3hXwV1SCiArjxJHG7hkEYj+mRFbi80XxXU9rMD5Q6bd99QPxkNrbLXxRUFfGq7qcIo
+	9Nb1QDX01JQbSG4RiwBnpJ3MeIh5D2xZplVUQ5VHedySDk7i0sKg7+HGXl9NYmad8JAWxk4N2+kdY
+	4b48GiUAffvJO79OHnc+hXpx4hA3MFg+CdMMe4pvbvvBI7utKA8a7j0g8dXo5kBIU2j1l59Y99mVK
+	MUVb8g2RYmqje74IxEp8wLgpbMy2IluNt4wIMSim14Nxn8ieNKUOtQ4R6Ol+uVFLpuKFxSDSjGZZJ
+	czPvNK9hvV1aXJlqjIwA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbgNI-000449-7c; Thu, 21 May 2020 08:16:20 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1jbgZ4-0002bA-9J; Thu, 21 May 2020 08:28:30 +0000
+Received: from twhmllg3.macronix.com ([211.75.127.131])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbgNF-00043P-GQ
- for linux-mediatek@lists.infradead.org; Thu, 21 May 2020 08:16:18 +0000
-Received: by mail-wr1-x441.google.com with SMTP id l11so5807334wru.0
- for <linux-mediatek@lists.infradead.org>; Thu, 21 May 2020 01:16:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=KPDqb+DCYxxpSLeq6U5D/jKybkhAzjGZ8QLA5YedgMg=;
- b=fGuo2D4qqxs0LddmHxyYtVQK3DJjuNDPbTrhoeOfUGD4FH/OI2BX/z8FrTVVetWfeL
- yxSdMCpaMuE0CT59NPSdKGWvlF/wEwwbQIo/ENQXqs6MPPqzlC/hfUJ3ybypKqgN2S5M
- o/mvlR8mPiBPU+NJuQj2pwYDEzhalaTyOIGNdYlQJhhErXNjxuG9Jr41mL5qO2wLTlAk
- 8jKD8MUO2AnEnULwDQ+r5sELmzj3LIdAlcvGtV/Ye4p5M8rstCcL499Gc/SDCczcfnCn
- U27GrGfii48SZIS+mbiHKcAl19InSZu9c9q8PSO1K6Rmk6MnZfOSiC2DrSOTeJm/M082
- QFKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=KPDqb+DCYxxpSLeq6U5D/jKybkhAzjGZ8QLA5YedgMg=;
- b=ODFhgH3CowA/6K7xbZN8TtxwB7jxhsOuVpFMZHTxSIMw0pIs1Pkue4/JGf+jvKixSY
- joMxC9xjB0zRpe2Rqdi58aMkpY31PyCzS61iJc/V97XQpBu4cY798TBOlrcyGOnJV6JV
- vesJkZf9njfPquIzgArl7tE6px88I+QD0VcM9gqyDXnQGGF6TDeYmTNo7K37DaHs7nwI
- YFPHdBF44mOyMadCQ0gYWR+NS7tRJcdy4jw3nMsJ8+moSr8+/mB42q+2cjFMOQk6/OUH
- KldPggXl6ha5GLusud/ESq5AzruciuhF6qAnM4ZjJWX1wsYj2vujlLe1S61qeXWTn+Dy
- WX0g==
-X-Gm-Message-State: AOAM532qeJURAE4ufB0bFtw/35VOK5thSh///6K2GnT6M4UJsCMyDPn1
- MjLEDde+fkYmWcQbfJcIleKVPg==
-X-Google-Smtp-Source: ABdhPJxUykPWBMpDxCLK97UyXMlHnRBvfRJh1k/pbvLfDpfppBXa1QMSqiirA7kcWucM6FnWvj4LJA==
-X-Received: by 2002:adf:dcc8:: with SMTP id x8mr7439168wrm.404.1590048975850; 
- Thu, 21 May 2020 01:16:15 -0700 (PDT)
-Received: from dell ([95.149.164.102])
- by smtp.gmail.com with ESMTPSA id j190sm5848242wmb.33.2020.05.21.01.16.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 May 2020 01:16:15 -0700 (PDT)
-Date: Thu, 21 May 2020 09:16:12 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Subject: [GIT PULL] Immutable branch between MFD, Power and RTC due for the
- v5.8 merge window
-Message-ID: <20200521081612.GO271301@dell>
-References: <1587438012-24832-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ id 1jbgYr-0002RQ-Av; Thu, 21 May 2020 08:28:19 +0000
+Received: from twhfmlp1.macronix.com (twhfmlp1.macronix.com [172.17.20.91])
+ by TWHMLLG3.macronix.com with ESMTP id 04L8RljY069236;
+ Thu, 21 May 2020 16:27:47 +0800 (GMT-8)
+ (envelope-from masonccyang@mxic.com.tw)
+Received: from MXML06C.mxic.com.tw (mxml06c.macronix.com [172.17.14.55])
+ by Forcepoint Email with ESMTP id 1B985808C8C345E414D3;
+ Thu, 21 May 2020 16:27:48 +0800 (CST)
+In-Reply-To: <20200519142642.24131-2-p.yadav@ti.com>
+References: <20200519142642.24131-1-p.yadav@ti.com>
+ <20200519142642.24131-2-p.yadav@ti.com>
+To: "Pratyush Yadav" <p.yadav@ti.com>
+Subject: Re: [PATCH v5 01/19] spi: spi-mem: allow specifying whether an op is
+ DTR or not
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1587438012-24832-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+X-KeepSent: 1FE36FB9:9FBEFCD6-4825856F:002D767F;
+ type=4; name=$KeepSent
+X-Mailer: Lotus Notes Release 8.5.3FP4 SHF90 June 10, 2013
+Message-ID: <OF1FE36FB9.9FBEFCD6-ON4825856F.002D767F-4825856F.002E7D42@mxic.com.tw>
+From: masonccyang@mxic.com.tw
+Date: Thu, 21 May 2020 16:27:47 +0800
+X-MIMETrack: Serialize by Router on MXML06C/TAIWAN/MXIC(Release 9.0.1FP10
+ HF265|July 25, 2018) at 2020/05/21 PM 04:27:48,
+ Serialize complete at 2020/05/21 PM 04:27:48
+X-MAIL: TWHMLLG3.macronix.com 04L8RljY069236
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_011617_555032_8739FC2E 
-X-CRM114-Status: GOOD (  12.29  )
+X-CRM114-CacheID: sfid-20200521_012817_629006_E61FDACE 
+X-CRM114-Status: GOOD (  17.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,58 +75,177 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-rtc@vger.kernel.org, Alessandro Zummo <a.zummo@towertech.it>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>, drinkcat@chromium.org,
- srv_heupstream@mediatek.com, Frank Wunderlich <frank-w@public-files.de>,
- Josef Friedl <josef.friedl@speed.at>, Ran Bi <ran.bi@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Sebastian Reichel <sre@kernel.org>,
- linux-kernel@vger.kernel.org, Richard Fontana <rfontana@redhat.com>,
- devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Vignesh Raghavendra <vigneshr@ti.com>,
+ Tudor Ambarus <tudor.ambarus@microchip.com>, juliensu@mxic.com.tw,
+ Richard Weinberger <richard@nod.at>, Mark Brown <broonie@kernel.org>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>, Sekhar Nori <nsekhar@ti.com>,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ linux-mediatek@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org,
+ Pratyush Yadav <p.yadav@ti.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RW5qb3khCgpUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0IDhmM2Q5ZjM1NDI4Njc0
-NWM3NTEzNzRmNWYxZmNhZmVlNmIzZjMxMzY6CgogIExpbnV4IDUuNy1yYzEgKDIwMjAtMDQtMTIg
-MTI6MzU6NTUgLTA3MDApCgphcmUgYXZhaWxhYmxlIGluIHRoZSBHaXQgcmVwb3NpdG9yeSBhdDoK
-CiAgZ2l0Oi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L2xlZS9tZmQu
-Z2l0IGliLW1mZC1wb3dlci1ydGMtdjUuOAoKZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRv
-IDI5ZWU0MDA5MWUyNzYxNTUzMGMwYmE3NzczYTI4NzlkODI2NjM4MWU6CgogIHJ0YzogbXQ2Mzk3
-OiBBZGQgc3VwcG9ydCBmb3IgdGhlIE1lZGlhVGVrIE1UNjM1OCBSVEMgKDIwMjAtMDUtMjEgMDg6
-NTU6NDggKzAxMDApCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tCkltbXV0YWJsZSBicmFuY2ggYmV0d2VlbiBNRkQsIFBvd2Vy
-IGFuZCBSVEMgZHVlIGZvciB0aGUgdjUuOCBtZXJnZSB3aW5kb3cKCi0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KSHNpbi1Ic2l1
-bmcgV2FuZyAoNCk6CiAgICAgIG1mZDogbXQ2Mzk3OiBNb2RpZnkgc3VzcGVuZC9yZXN1bWUgYmVo
-YXZpb3IKICAgICAgbWZkOiBtdDYzOTc6IFRyaW0gcHJvYmUgZnVuY3Rpb24gdG8gc3VwcG9ydCBk
-aWZmZXJlbnQgY2hpcHMgbW9yZSBjbGVhbmx5CiAgICAgIGR0LWJpbmRpbmdzOiBtZmQ6IEFkZCBj
-b21wYXRpYmxlIGZvciB0aGUgTWVkaWFUZWsgTVQ2MzU4IFBNSUMKICAgICAgbWZkOiBBZGQgc3Vw
-cG9ydCBmb3IgdGhlIE1lZGlhVGVrIE1UNjM1OCBQTUlDCgpSYW4gQmkgKDEpOgogICAgICBydGM6
-IG10NjM5NzogQWRkIHN1cHBvcnQgZm9yIHRoZSBNZWRpYVRlayBNVDYzNTggUlRDCgogRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21mZC9tdDYzOTcudHh0IHwgIDE0ICstCiBkcml2
-ZXJzL21mZC9NYWtlZmlsZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDIgKy0KIGRy
-aXZlcnMvbWZkL210NjM1OC1pcnEuYyAgICAgICAgICAgICAgICAgICAgICAgICB8IDIzNSArKysr
-KysrKysrKysrKysrKysrCiBkcml2ZXJzL21mZC9tdDYzOTctY29yZS5jICAgICAgICAgICAgICAg
-ICAgICAgICAgfCAxMDEgKysrKy0tLS0KIGRyaXZlcnMvbWZkL210NjM5Ny1pcnEuYyAgICAgICAg
-ICAgICAgICAgICAgICAgICB8ICAzNSArKy0KIGRyaXZlcnMvcG93ZXIvcmVzZXQvbXQ2MzIzLXBv
-d2Vyb2ZmLmMgICAgICAgICAgICB8ICAgMiArLQogZHJpdmVycy9ydGMvcnRjLW10NjM5Ny5jICAg
-ICAgICAgICAgICAgICAgICAgICAgIHwgIDE4ICstCiBpbmNsdWRlL2xpbnV4L21mZC9tdDYzNTgv
-Y29yZS5oICAgICAgICAgICAgICAgICAgfCAxNTggKysrKysrKysrKysrKwogaW5jbHVkZS9saW51
-eC9tZmQvbXQ2MzU4L3JlZ2lzdGVycy5oICAgICAgICAgICAgIHwgMjgyICsrKysrKysrKysrKysr
-KysrKysrKysrCiBpbmNsdWRlL2xpbnV4L21mZC9tdDYzOTcvY29yZS5oICAgICAgICAgICAgICAg
-ICAgfCAgIDUgKwogaW5jbHVkZS9saW51eC9tZmQvbXQ2Mzk3L3J0Yy5oICAgICAgICAgICAgICAg
-ICAgIHwgICA5ICstCiAxMSBmaWxlcyBjaGFuZ2VkLCA3OTkgaW5zZXJ0aW9ucygrKSwgNjIgZGVs
-ZXRpb25zKC0pCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9tZmQvbXQ2MzU4LWlycS5jCiBj
-cmVhdGUgbW9kZSAxMDA2NDQgaW5jbHVkZS9saW51eC9tZmQvbXQ2MzU4L2NvcmUuaAogY3JlYXRl
-IG1vZGUgMTAwNjQ0IGluY2x1ZGUvbGludXgvbWZkL210NjM1OC9yZWdpc3RlcnMuaAoKLS0gCkxl
-ZSBKb25lcyBb5p2O55C85pavXQpMaW5hcm8gU2VydmljZXMgVGVjaG5pY2FsIExlYWQKTGluYXJv
-Lm9yZyDilIIgT3BlbiBzb3VyY2Ugc29mdHdhcmUgZm9yIEFSTSBTb0NzCkZvbGxvdyBMaW5hcm86
-IEZhY2Vib29rIHwgVHdpdHRlciB8IEJsb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRp
-YXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+
+Hi Pratyush,
+
+Given cmd.nbytes a initial value & check it !
+
+> 
+> [PATCH v5 01/19] spi: spi-mem: allow specifying whether an op is DTR or 
+not
+> 
+> Each phase is given a separate 'dtr' field so mixed protocols like
+> 4S-4D-4D can be supported.
+> 
+> Signed-off-by: Pratyush Yadav <p.yadav@ti.com>
+> ---
+>  drivers/spi/spi-mem.c       | 3 +++
+>  include/linux/spi/spi-mem.h | 8 ++++++++
+>  2 files changed, 11 insertions(+)
+> 
+> diff --git a/drivers/spi/spi-mem.c b/drivers/spi/spi-mem.c
+> index 9a86cc27fcc0..93e255287ab9 100644
+> --- a/drivers/spi/spi-mem.c
+> +++ b/drivers/spi/spi-mem.c
+> @@ -156,6 +156,9 @@ bool spi_mem_default_supports_op(struct spi_mem 
+*mem,
+>                 op->data.dir == SPI_MEM_DATA_OUT))
+>        return false;
+> 
+> +   if (op->cmd.dtr || op->addr.dtr || op->dummy.dtr || op->data.dtr)
+> +      return false;
+> +
+
++       if (op->cmd.nbytes != 1)
++               return false;
+
+>     return true;
+>  }
+>  EXPORT_SYMBOL_GPL(spi_mem_default_supports_op);
+
+
+ static int spi_mem_check_op(const struct spi_mem_op *op)
+ {
+-                if (!op->cmd.buswidth)
++                if (!op->cmd.buswidth || op->cmd.nbytes < 1 || 
+op->cmd.nbytes > 2)
+                                 return -EINVAL;
+
+
+> diff --git a/include/linux/spi/spi-mem.h b/include/linux/spi/spi-mem.h
+> index af9ff2f0f1b2..e3dcb956bf61 100644
+> --- a/include/linux/spi/spi-mem.h
+> +++ b/include/linux/spi/spi-mem.h
+
+#define SPI_MEM_OP_CMD(__opcode, __buswidth)                    \
+         {                                                       \
+                 .buswidth = __buswidth,                         \
+                 .opcode = __opcode,                             \
++                .nbytes = 1,                                    \
+         }
+
+
+
+> @@ -71,9 +71,11 @@ enum spi_mem_data_dir {
+>   * struct spi_mem_op - describes a SPI memory operation
+>   * @cmd.buswidth: number of IO lines used to transmit the command
+>   * @cmd.opcode: operation opcode
+> + * @cmd.dtr: whether the command opcode should be sent in DTR mode or 
+not
+>   * @addr.nbytes: number of address bytes to send. Can be zero if the 
+operation
+>   *       does not need to send an address
+>   * @addr.buswidth: number of IO lines used to transmit the address 
+cycles
+> + * @addr.dtr: whether the address should be sent in DTR mode or not
+>   * @addr.val: address value. This value is always sent MSB first on the 
+bus.
+>   *         Note that only @addr.nbytes are taken into account in this
+>   *         address value, so users should make sure the value fits in 
+the
+> @@ -81,7 +83,9 @@ enum spi_mem_data_dir {
+>   * @dummy.nbytes: number of dummy bytes to send after an opcode or 
+address. Can
+>   *        be zero if the operation does not require dummy bytes
+>   * @dummy.buswidth: number of IO lanes used to transmit the dummy bytes
+> + * @dummy.dtr: whether the dummy bytes should be sent in DTR mode or 
+not
+>   * @data.buswidth: number of IO lanes used to send/receive the data
+> + * @data.dtr: whether the data should be sent in DTR mode or not
+>   * @data.dir: direction of the transfer
+>   * @data.nbytes: number of data bytes to send/receive. Can be zero if 
+the
+>   *       operation does not involve transferring data
+> @@ -91,22 +95,26 @@ enum spi_mem_data_dir {
+>  struct spi_mem_op {
+>     struct {
+>        u8 buswidth;
+> +      u8 dtr : 1;
+>        u8 opcode;
+>     } cmd;
+> 
+>     struct {
+>        u8 nbytes;
+>        u8 buswidth;
+> +      u8 dtr : 1;
+>        u64 val;
+>     } addr;
+> 
+>     struct {
+>        u8 nbytes;
+>        u8 buswidth;
+> +      u8 dtr : 1;
+>     } dummy;
+> 
+>     struct {
+>        u8 buswidth;
+> +      u8 dtr : 1;
+>        enum spi_mem_data_dir dir;
+>        unsigned int nbytes;
+>        union {
+> -- 
+> 2.26.2
+> 
+
+thanks & best regards,
+Mason
+
+CONFIDENTIALITY NOTE:
+
+This e-mail and any attachments may contain confidential information 
+and/or personal data, which is protected by applicable laws. Please be 
+reminded that duplication, disclosure, distribution, or use of this e-mail 
+(and/or its attachments) or any part thereof is prohibited. If you receive 
+this e-mail in error, please notify us immediately and delete this mail as 
+well as its attachment(s) from your system. In addition, please be 
+informed that collection, processing, and/or use of personal data is 
+prohibited unless expressly permitted by personal data protection laws. 
+Thank you for your attention and cooperation.
+
+Macronix International Co., Ltd.
+
+=====================================================================
+
+
+
+============================================================================
+
+CONFIDENTIALITY NOTE:
+
+This e-mail and any attachments may contain confidential information and/or personal data, which is protected by applicable laws. Please be reminded that duplication, disclosure, distribution, or use of this e-mail (and/or its attachments) or any part thereof is prohibited. If you receive this e-mail in error, please notify us immediately and delete this mail as well as its attachment(s) from your system. In addition, please be informed that collection, processing, and/or use of personal data is prohibited unless expressly permitted by personal data protection laws. Thank you for your attention and cooperation.
+
+Macronix International Co., Ltd.
+
+=====================================================================
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
