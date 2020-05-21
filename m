@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B3A90C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 13:45:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B25DBC433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 13:46:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 73E2A20721
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 13:45:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7F6F220721
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 13:46:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oEKZD26M";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="dGmoucgr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 73E2A20721
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="epyAp6ti";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Z/tzAhAz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7F6F220721
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,63 +26,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ycBEtMZnOeCV8QCqJxz4KR81sx+8EdvuAMae3GM+gJs=; b=oEKZD26MSAUZym
-	67kKrTSEz71c1AeA9Hf9H9+hJaZuptFdTZrr+OqHO6bNfcHkuyagyLM+5zfLrhrzL5pE+DrgmK++P
-	N3klVic+vCiUwioM703LpRQkI84co+cRqFvtb87xU98AKfO9Nb9grEXB9FtWVjIH6J6QfKy0SwUvv
-	jEh0qHQMhhtnf5VsJMwJtJ6OEn2MnMs9Im2T+ovRM7fOQWW+zj3M2je4KelFDmF5oN/gdCWsfSczV
-	ZiIlMEeP6yBDRAQOOgSREloHOC2dPUNTJiqsl7PtUP1Oq4VBMbJwKoGn2R2AhGQkhHvU5aBLKNuTK
-	POm8MjVWdQXXBb5R3jIg==;
+	List-Owner; bh=l7F3uV0/T4VQaph0eeHa2XhtmSBJGNrZt7ro5Mzlx90=; b=epyAp6tirj6LFJ
+	X8xwwEJTPug1eLlutBczXYTVLAX3EG1mvNOKFgTFoBYKP6Fy0b76uM4Yh5EkJDIobcNssF83LMqc5
+	IzP32yMz0SPUNng549RQAErgdblkTtQ7HwjZN2zp/tw9k5Hb9ox1fDGbDZ0vmdaAAKNIyn8yPMmXp
+	+wc+wtPmHloRoxpeC7m/a56FHcjzU3Nu1aXJWMU901xzpD24oVQSZYYfydxnLbWAbvvb9O05Rjq86
+	ixbQDENS+7NLN0Du9vkgsWJngS6St1A/cqbkWEa1h+uISpovhFAiqj9uUodbRIDrnbkzXDaUPn8X5
+	IyPw9gNt+rFzsNBczw5Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jblW2-0005Xo-Uv; Thu, 21 May 2020 13:45:42 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1jblWx-0005vq-SA; Thu, 21 May 2020 13:46:39 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jblVs-0005Eo-SU
- for linux-mediatek@lists.infradead.org; Thu, 21 May 2020 13:45:34 +0000
-Received: by mail-wm1-x341.google.com with SMTP id u12so1622743wmd.3
- for <linux-mediatek@lists.infradead.org>; Thu, 21 May 2020 06:45:29 -0700 (PDT)
+ id 1jblWu-0005uM-W9
+ for linux-mediatek@lists.infradead.org; Thu, 21 May 2020 13:46:38 +0000
+Received: by mail-wr1-x443.google.com with SMTP id e16so6703126wra.7
+ for <linux-mediatek@lists.infradead.org>; Thu, 21 May 2020 06:46:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=MIZbow6oCp6jhBPcKsqdy9EnMAR8LQb1Wb+CIClZf0I=;
- b=dGmoucgrWl3fcaqDll9a/qRPLlA7s730yc2z/WBzNFxuL2a+M1qwz4OOCwGd++fhKy
- p8H1ZqTfH5xn8dw70XzKJISp6Vd7YqNQ/dPn7g8DE4Th7Ys7glQVxU1ajIvWn44+3/e0
- 7gWzJKL3HsAPQXv9L62UgO6S71k5LFILN3dbQ=
+ bh=ioC6Q3HVvwh9td7JcekYBXwgG6Rm0JWudJ5rZTXChDU=;
+ b=Z/tzAhAz8W/eG2mYxcKFp8KKWJhs36XabdHfyuvXnPY8DOreXETPs/WweazwIgydiJ
+ jpbDx3OyuHOM1EtBdf1/4JLco99/fbJ06XTQ32t3r8hNyvFhLtEUM/0lGWROiBSNYLTc
+ ExFC7STIDBPFVHvsLzXEMa9T35z6/KZzKV7Uk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=MIZbow6oCp6jhBPcKsqdy9EnMAR8LQb1Wb+CIClZf0I=;
- b=W6JCT6PpnfAxBtkYrMBnYiT4DJ/JT1znddNhRZLaBO73Nlfx79Zj4ZuENmXi0aboY7
- 4csxt5bpWZ7VmTXgBdRhdB4DKVeQwU5VYNeDNl14f87Qtv0UlJAMldzaKWoybNnooryF
- hrCkjrwF7ibxhU3F6NhIwuzzhztMKfQR9+Z3GYs+FRT3CP1fnGDY24f3WQCHHeAhxb01
- e62U7wRFsYd14V1sJp2iybFUANnFsZQ13w0otVA9U+FIBvOv7lG0FHT/O7lkjHld1TuT
- HF5etTrqIHQrU5BxiMDv3PWL/e09/8VEheCEgyPsFxgyaB1Q7U3+qfUoHhXdyaniqW35
- 2KqA==
-X-Gm-Message-State: AOAM5302VNAMSPIimR+Wc+gpC1dL2YI3M86ANvtEyrTtWowcsdCayfps
- WPLNrTPMiZ/Qp4HUjAyjjQ8jYQ==
-X-Google-Smtp-Source: ABdhPJzga0snvqqhabMrMb1GYaE9P70IQw0mFqh2Y8F+1nN0c5PVJEQNf6mkgxlQ/6SKai9ltVpOxA==
-X-Received: by 2002:a7b:c4cc:: with SMTP id g12mr8844805wmk.168.1590068728336; 
- Thu, 21 May 2020 06:45:28 -0700 (PDT)
+ bh=ioC6Q3HVvwh9td7JcekYBXwgG6Rm0JWudJ5rZTXChDU=;
+ b=IJj2IjW5+/6Y2OiJQslysYyd/bxQG8wixLOYxz+XKHJnNW/crP5yoD4TJvCHd9k85B
+ k2MGX3k9zyR1xLSq1iQO0PkoAm9M7pZ20IzBPvMSDp/gI5EBfyU8qo4SSgcdQsoY9Uyi
+ a0GHLzDKiBQYlZbln+1QAoQvXfZV2Ymc7f537sTocEt9aRjflKGpevGfxQcbjcoTbRzP
+ 3NNnXX8fvjL6kGzIXjhwS19cCYDyoiOHAw5E8fdau7ZwRkUdLfhnupbFVYo58b8RdKzd
+ Wn+Jlx4xkoYPtCN/uHOcRUp0CJQpLysgPiO8aFuH6MUruBoaY+YudSmQ2IYia/BpSXt5
+ mj2g==
+X-Gm-Message-State: AOAM532AV81QM1G3Jgq3Zlv+te+iX95zY7z8gAMeej8li7eOkz8DW36s
+ h2uvk51f3rM/OEx9m2JcrTGePQ==
+X-Google-Smtp-Source: ABdhPJw4SaKtpUrlRa8kqBZdL7Myt7YbEIE8Xk1YTd7NT9wAik061SrpazfKJ0RlkFO65Y19ocCOGA==
+X-Received: by 2002:adf:9507:: with SMTP id 7mr4462650wrs.63.1590068795524;
+ Thu, 21 May 2020 06:46:35 -0700 (PDT)
 Received: from chromium.org (205.215.190.35.bc.googleusercontent.com.
  [35.190.215.205])
- by smtp.gmail.com with ESMTPSA id e29sm296309wra.7.2020.05.21.06.45.27
+ by smtp.gmail.com with ESMTPSA id g69sm1720399wmg.15.2020.05.21.06.46.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 May 2020 06:45:27 -0700 (PDT)
-Date: Thu, 21 May 2020 13:45:26 +0000
+ Thu, 21 May 2020 06:46:35 -0700 (PDT)
+Date: Thu, 21 May 2020 13:46:33 +0000
 From: Tomasz Figa <tfiga@chromium.org>
 To: Xia Jiang <xia.jiang@mediatek.com>
-Subject: Re: [PATCH v8 01/14] media: platform: Improve subscribe event flow
- for bug fixing
-Message-ID: <20200521134526.GA209565@chromium.org>
+Subject: Re: [PATCH v8 02/14] media: platform: Improve queue set up flow for
+ bug fixing
+Message-ID: <20200521134633.GB209565@chromium.org>
 References: <20200403094033.8288-1-xia.jiang@mediatek.com>
- <20200403094033.8288-2-xia.jiang@mediatek.com>
+ <20200403094033.8288-3-xia.jiang@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200403094033.8288-2-xia.jiang@mediatek.com>
+In-Reply-To: <20200403094033.8288-3-xia.jiang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_064532_919889_9652E244 
-X-CRM114-Status: UNSURE (   9.12  )
+X-CRM114-CacheID: sfid-20200521_064637_031223_9F9E30AD 
+X-CRM114-Status: UNSURE (   8.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -109,18 +109,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Xia,
-
-On Fri, Apr 03, 2020 at 05:40:20PM +0800, Xia Jiang wrote:
-> Let v4l2_ctrl_subscribe_event() do the job for other types except
-> V4L2_EVENT_SOURCE_CHANGE.
+On Fri, Apr 03, 2020 at 05:40:21PM +0800, Xia Jiang wrote:
+> Add checking created buffer size follow in mtk_jpeg_queue_setup().
 > 
 > Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
 > ---
 > v8: no changes
 > ---
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
 > 
 
 Reviewed-by: Tomasz Figa <tfiga@chromium.org>
