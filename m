@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C9AFC433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 14:34:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EF347C433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 14:41:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D13F52072C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 14:34:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B72C220671
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 14:41:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eQ6hXPxX";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="uQv6Lq5c"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D13F52072C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kjRx3yX9";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Pi/q46Cj"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B72C220671
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,56 +27,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=riCFzZvZHj6LigKhOJbrMZmspEaZl9QKCkQfQR8K8o8=; b=eQ6hXPxXSt4gXV
-	9iSynX/5JYEk+gnL069a2ObceHFaaSbUqQy9u3BfjW2VgJf3Qm0ou3Ta+yfgh34JejN4l6Lq4VAxY
-	EdjMhrnh6sJxL/e8w8a8lQHsVag8oPN1ZbEZfNQuSQwSjisaWhpZTIoS34vAx2e2rSqysgYh+t3qB
-	x8cuJcKtTAdeqVHMW3GrAZZIJ2iCD1lPaj00thAODNTYuJ8PcBEcaxfidPBkMTUBwOsmaaPaFpNek
-	CC6NpR+0e0Q2+H7a7+oEQsCcpH5LgZwYxzcBL+iBAoH1uQafJVIb9LLygDsN8Rf7EYJPl0lCd+tFc
-	1WZ2p5ybyw9iDpVubwgg==;
+	List-Owner; bh=i9wlRFZOZh/bOj0NagygfYE8zJRjuf+CL6JsA77gGIQ=; b=kjRx3yX9iXbnKu
+	K/AMXO1rTc7tytyQoUMCOilGka0tQgK8tXszrnae50YBsOUl1lN4njDEoB2Go+oK/ZiqHdeFdjLP1
+	ARbEXP+IgIEfguuyhIyGm+WzxPevgq853TUk8vpGLiMLL6TaQ3T3dMXvK0n2DiIiQM2glz3MymgkX
+	jIvjDUFRJBd/F6JuSUXE61RPrFC+Q6F+ZhkpbYXnPh7QA6fJTzayZFBvH0FYc3b2xpCRWM178Qzkj
+	qnvAMjF17MNpqoH1FNEXPdkqVK+fDG5Af+JF5ULy2Ze7vgOihiruyWwxwqloYFittKR2CWYxt0LF7
+	tboIHzeF2k3uqiqgDp7g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbmHO-0003q8-2U; Thu, 21 May 2020 14:34:38 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1jbmNW-0001tp-TT; Thu, 21 May 2020 14:40:58 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbmHK-0003pK-FN
- for linux-mediatek@lists.infradead.org; Thu, 21 May 2020 14:34:37 +0000
-Received: by mail-wm1-x343.google.com with SMTP id f13so5744196wmc.5;
- Thu, 21 May 2020 07:34:34 -0700 (PDT)
+ id 1jbmNU-0001tR-DI
+ for linux-mediatek@lists.infradead.org; Thu, 21 May 2020 14:40:57 +0000
+Received: by mail-wm1-x341.google.com with SMTP id t8so2386318wmi.0
+ for <linux-mediatek@lists.infradead.org>; Thu, 21 May 2020 07:40:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=tGKKjFMFC+sKVknptE7avSq6dI51LoeJ7RfKG7AjW6c=;
- b=uQv6Lq5coSn4/zosnKstvXy2IF6rJa4HzZfK7QuvIpPJbOeSgT9jdkfwVntAtm/JXJ
- TUQBb5PUXBhJILJScCwlqr7VnVca5oVJgWRUivc9n5c19wWnWEzgZd8kNIx8eBdZNaSn
- TpOh11MBdVTvJbt7RSIyk1GOC3GWq4u5UFdDwMLuoexW8TgoO3LkoDZ6Z3/CMWC/Bxyl
- tI53uBvKnzUnd1pY12BGz0nVo3u7yOAKD1034kmLHYjbCpzgrBmnyh0waaKFERrtGwBN
- TrC+bxL2p9K3LJi/g4FR5hvH8yKMaDxX+xcRG08KKwq4SsBIUxuhrC4DNA3E/DeWQFBf
- KkIA==
+ bh=8A5KPXsgqIXJKD4Ayde8UBdKAPMdpbzHvWz0KmO/tcw=;
+ b=Pi/q46CjJbPiXDGNoV7TJCoIjP5myYu2wndV5dQ7x0tp1DkR+ZZKT5PKWZnOEFnNoI
+ sDxNpAqn8szMx+wSeNRYKE4g0SgmFoeiQuvnjMihxC+zrLpc2o8MT7UUj3orzWT5b+1g
+ 0ZAeytkjM2718h+P9Dzb3nwcwNTRUeMUK9ivpvDNZu9XZjNWmLO1EscSBLJrVxU+2StS
+ 0YEMUXh9c4r9PaQMfbZB5dQbg2ZKidk7rgFkN4tHGt7dY/GdaODB+kxDYEqvQsiVQhhi
+ ++k+pUFvda81IDf9DZUMgp/fhNfqoxMuG2F3ZgMGONvCnssMhBUJBHrS81iGqCprpAYk
+ wYiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=tGKKjFMFC+sKVknptE7avSq6dI51LoeJ7RfKG7AjW6c=;
- b=O34opMmEgJinGqBB6I9ew10dVW6fVaqIJddPwtbZEHcdfSNhBu4Pvn4oVFAr6oK+sx
- YTrmDTHOBBXLTTvo04tNLvwcJh+/DyHqwmePsPYUtsl4i39Qa6N0LaoXJjgWI/nNCP64
- EdNNlvRUgGeUWwIV/uPF/5fIewT2qgB4P9mQwasrE0t4IN8qwJK82ig6ilL9BwufAeLA
- B2sDJ/EZK/knj13YIjRbu9lZeOsacE/zZ/tNrj+pFYvBEDiShIC0Zz+6HnFxw+AOFIPb
- zgbCbnPZRMuJCDJ3IaLx83CpyhgoIyVetiW9eqwoBph8PZhC+nMaGBUV3GTkFUsIBUsd
- xgEw==
-X-Gm-Message-State: AOAM533vkcHTATWKcceEavkT85CsiPsXSxQHVY7cuFcVIpL+nRvSsVaR
- bcHrmayqNOYz3KUdZOmRA5c=
-X-Google-Smtp-Source: ABdhPJw+wktKRIU8cY5UYoDcI7dM1Rqx9qTh+82Va77h33m0BmvccjxP1lXTr8+CN9t5+mDpBU+4Vg==
-X-Received: by 2002:a1c:46c1:: with SMTP id t184mr9938825wma.185.1590071669014; 
- Thu, 21 May 2020 07:34:29 -0700 (PDT)
+ bh=8A5KPXsgqIXJKD4Ayde8UBdKAPMdpbzHvWz0KmO/tcw=;
+ b=K3pCgd42bIKKqBPhlRSy11r2CX/801Z2tG/Wgnx7H+5mNUqvpUxaznPTrmxh8OspJI
+ JnfvtPeiFy66eX4LDcrW5+i0S2hf8khhFR6mC0bJsncANRKvot2gMKbFaW3KEP9eEP6S
+ swgZYaGOX1WqifE9theg3M8zrplDO/Wril6W2lKhgiWTOCM/sxYGYbDwefyfhkTY3eT6
+ vBt5wPPqTDSecToLbzYUDI19bmGov+eGIto8jVR9G8O1Su8t4GL4HG4CImziLq59iO2/
+ 0Dr5tsqbEVSs5YpaNOqIUnetfSeJ/lfMt8y/aJpDUs4MiPRSVImzlI9amBNbeLPlyaxa
+ Qjzw==
+X-Gm-Message-State: AOAM532V5cbKSsBEOdatAzFgVzKcq118x0Ugu7qLFAGn1EMdz4edGSib
+ QPT8Adxx3TkNnn9slmOMrdM=
+X-Google-Smtp-Source: ABdhPJzrTMSWQPfb1BasarV3yUrNf+20YqM1s1Dvw0R6nVsBgfh4DFoUWW1Up0p2kB9SMuvdRQk99Q==
+X-Received: by 2002:a05:600c:2041:: with SMTP id
+ p1mr10020922wmg.152.1590072055076; 
+ Thu, 21 May 2020 07:40:55 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id h137sm12843428wme.0.2020.05.21.07.34.27
+ by smtp.gmail.com with ESMTPSA id 94sm6893745wrf.74.2020.05.21.07.40.54
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 21 May 2020 07:34:28 -0700 (PDT)
-Subject: Re: [PATCH] arm64: dts: mt8183: add mmc node
-To: Jjian Zhou <jjian.zhou@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Mark Rutland <mark.rutland@arm.com>
-References: <1554888341-5249-1-git-send-email-jjian.zhou@mediatek.com>
+ Thu, 21 May 2020 07:40:54 -0700 (PDT)
+Subject: Re: [PATCH 2/2] dt-bindings: nvmem: mediatek: add support for
+ MediaTek mt8183 SoC
+To: michael.mei@mediatek.com, orz811017@gmail.com,
+ Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>
+References: <20190416081922.21711-1-michael.mei@mediatek.com>
+ <20190416081922.21711-3-michael.mei@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -152,16 +156,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <87b4bf7f-8504-3d01-c7d9-63ed1856c02f@gmail.com>
-Date: Thu, 21 May 2020 16:34:27 +0200
+Message-ID: <8d0d607a-2f02-ffd2-b531-b44812eb5f0b@gmail.com>
+Date: Thu, 21 May 2020 16:40:53 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <1554888341-5249-1-git-send-email-jjian.zhou@mediatek.com>
+In-Reply-To: <20190416081922.21711-3-michael.mei@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_073435_566002_ED6892CF 
-X-CRM114-Status: GOOD (  18.91  )
+X-CRM114-CacheID: sfid-20200521_074056_466939_41D712B6 
+X-CRM114-Status: GOOD (  17.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -173,242 +177,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: =linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- wsd_upstream@mediatek.com, srv_heupstream@mediatek.com
+Cc: "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>,
+ linux-mediatek@lists.infradead.org,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ srv_heupstream@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+[adding the corresponding maintainer]
 
+On 16/04/2019 10:19, michael.mei@mediatek.com wrote:
+> From: Michael Mei <michael.mei@mediatek.com>
+> 
+> This updates dt-binding documentation for MediaTek mt8183
+> For the both SoCs supported all rely on the fallback binding
+> of the generic case with "mediatek,efuse".
+> 
+> Signed-off-by: Michael Mei <michael.mei@mediatek.com>
 
-On 10/04/2019 11:25, Jjian Zhou wrote:
-> From: jjian zhou <jjian.zhou@mediatek.com>
-> 
-> Add mmc DTS node to the mt8183 and mt8183-evb.
-> 
-> Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
 > ---
 > This patch is based on v5.1-rc1 and these patches:
-> http://lists.infradead.org/pipermail/linux-mediatek/2019-March/017963.html
+> 
 > https://patchwork.kernel.org/patch/10856987/
-> https://patchwork.kernel.org/cover/10879001/
-> https://patchwork.kernel.org/cover/10846677/
-
-These requirements are now fulfilled.
-Applied now to v5.7-next/dts64
-
-Thanks!
-
+> https://patchwork.kernel.org/patch/10839021/
+> https://patchwork.kernel.org/patch/10879015/
+> https://patchwork.kernel.org/patch/10878999/
+> https://patchwork.kernel.org/patch/10858941/
+> https://patchwork.kernel.org/patch/10846685/
+> https://patchwork.kernel.org/patch/10893519
 > ---
->  arch/arm64/boot/dts/mediatek/mt8183-evb.dts | 149 ++++++++++++++++++++++++++++
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi    |  24 +++++
->  2 files changed, 173 insertions(+)
+>  Documentation/devicetree/bindings/nvmem/mtk-efuse.txt | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> index 9b52559..465cdab 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> @@ -7,6 +7,7 @@
-> 
->  /dts-v1/;
->  #include "mt8183.dtsi"
-> +#include "mt6358.dtsi"
-> 
->  / {
->  	model = "MediaTek MT8183 evaluation board";
-> @@ -26,6 +27,154 @@
->  	};
->  };
-> 
-> +&mmc0 {
-> +	status = "okay";
-> +	pinctrl-names = "default", "state_uhs";
-> +	pinctrl-0 = <&mmc0_pins_default>;
-> +	pinctrl-1 = <&mmc0_pins_uhs>;
-> +	bus-width = <8>;
-> +	max-frequency = <200000000>;
-> +	cap-mmc-highspeed;
-> +	mmc-hs200-1_8v;
-> +	mmc-hs400-1_8v;
-> +	cap-mmc-hw-reset;
-> +	no-sdio;
-> +	no-sd;
-> +	hs400-ds-delay = <0x12814>;
-> +	vmmc-supply = <&mt6358_vemc_reg>;
-> +	vqmmc-supply = <&mt6358_vio18_reg>;
-> +	assigned-clocks = <&topckgen CLK_TOP_MUX_MSDC50_0>;
-> +	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL_CK>;
-> +	non-removable;
-> +};
-> +
-> +&mmc1 {
-> +	status = "okay";
-> +	pinctrl-names = "default", "state_uhs";
-> +	pinctrl-0 = <&mmc1_pins_default>;
-> +	pinctrl-1 = <&mmc1_pins_uhs>;
-> +	bus-width = <4>;
-> +	max-frequency = <200000000>;
-> +	cap-sd-highspeed;
-> +	sd-uhs-sdr50;
-> +	sd-uhs-sdr104;
-> +	cap-sdio-irq;
-> +	no-mmc;
-> +	no-sd;
-> +	vmmc-supply = <&mt6358_vmch_reg>;
-> +	vqmmc-supply = <&mt6358_vmc_reg>;
-> +	keep-power-in-suspend;
-> +	enable-sdio-wakeup;
-> +	non-removable;
-> +};
-> +
-> +&pio {
-> +	mmc0_pins_default: mmc0default {
-> +		pins_cmd_dat {
-> +			pinmux = <PINMUX_GPIO123__FUNC_MSDC0_DAT0>,
-> +				 <PINMUX_GPIO128__FUNC_MSDC0_DAT1>,
-> +				 <PINMUX_GPIO125__FUNC_MSDC0_DAT2>,
-> +				 <PINMUX_GPIO132__FUNC_MSDC0_DAT3>,
-> +				 <PINMUX_GPIO126__FUNC_MSDC0_DAT4>,
-> +				 <PINMUX_GPIO129__FUNC_MSDC0_DAT5>,
-> +				 <PINMUX_GPIO127__FUNC_MSDC0_DAT6>,
-> +				 <PINMUX_GPIO130__FUNC_MSDC0_DAT7>,
-> +				 <PINMUX_GPIO122__FUNC_MSDC0_CMD>;
-> +			input-enable;
-> +			bias-pull-up;
-> +		};
-> +
-> +		pins_clk {
-> +			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
-> +			bias-pull-down;
-> +		};
-> +
-> +		pins_rst {
-> +			pinmux = <PINMUX_GPIO133__FUNC_MSDC0_RSTB>;
-> +			bias-pull-up;
-> +		};
-> +	};
-> +
-> +	mmc0_pins_uhs: mmc0@0{
-> +		pins_cmd_dat {
-> +			pinmux = <PINMUX_GPIO123__FUNC_MSDC0_DAT0>,
-> +				 <PINMUX_GPIO128__FUNC_MSDC0_DAT1>,
-> +				 <PINMUX_GPIO125__FUNC_MSDC0_DAT2>,
-> +				 <PINMUX_GPIO132__FUNC_MSDC0_DAT3>,
-> +				 <PINMUX_GPIO126__FUNC_MSDC0_DAT4>,
-> +				 <PINMUX_GPIO129__FUNC_MSDC0_DAT5>,
-> +				 <PINMUX_GPIO127__FUNC_MSDC0_DAT6>,
-> +				 <PINMUX_GPIO130__FUNC_MSDC0_DAT7>,
-> +				 <PINMUX_GPIO122__FUNC_MSDC0_CMD>;
-> +			input-enable;
-> +			drive-strength = <MTK_DRIVE_10mA>;
-> +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-> +		};
-> +
-> +		pins_clk {
-> +			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
-> +			drive-strength = <MTK_DRIVE_10mA>;
-> +			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-> +		};
-> +
-> +		pins_ds {
-> +			pinmux = <PINMUX_GPIO131__FUNC_MSDC0_DSL>;
-> +			drive-strength = <MTK_DRIVE_10mA>;
-> +			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-> +		};
-> +
-> +		pins_rst {
-> +			pinmux = <PINMUX_GPIO133__FUNC_MSDC0_RSTB>;
-> +			drive-strength = <MTK_DRIVE_10mA>;
-> +			bias-pull-up;
-> +		};
-> +	};
-> +
-> +	mmc1_pins_default: mmc1default {
-> +		pins_cmd_dat {
-> +			pinmux = <PINMUX_GPIO31__FUNC_MSDC1_CMD>,
-> +				   <PINMUX_GPIO32__FUNC_MSDC1_DAT0>,
-> +				   <PINMUX_GPIO34__FUNC_MSDC1_DAT1>,
-> +				   <PINMUX_GPIO33__FUNC_MSDC1_DAT2>,
-> +				   <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
-> +			input-enable;
-> +			bias-pull-up;
-> +		};
-> +
-> +		pins_clk {
-> +			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
-> +			input-enable;
-> +			bias-pull-down;
-> +		};
-> +
-> +		pins_pmu {
-> +			pinmux = <PINMUX_GPIO178__FUNC_GPIO178>,
-> +				   <PINMUX_GPIO166__FUNC_GPIO166>;
-> +			output-high;
-> +		};
-> +	};
-> +
-> +	mmc1_pins_uhs: mmc1@0{
-> +		pins_cmd_dat {
-> +			pinmux = <PINMUX_GPIO31__FUNC_MSDC1_CMD>,
-> +				   <PINMUX_GPIO32__FUNC_MSDC1_DAT0>,
-> +				   <PINMUX_GPIO34__FUNC_MSDC1_DAT1>,
-> +				   <PINMUX_GPIO33__FUNC_MSDC1_DAT2>,
-> +				   <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
-> +			drive-strength = <MTK_DRIVE_6mA>;
-> +			input-enable;
-> +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-> +		};
-> +
-> +		pins_clk {
-> +			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
-> +			drive-strength = <MTK_DRIVE_6mA>;
-> +			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-> +			input-enable;
-> +		};
-> +	};
-> +};
-> +
->  &uart0 {
->  	status = "okay";
->  };
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 482e451..38cec41 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -273,6 +273,30 @@
->  			#clock-cells = <1>;
->  		};
-> 
-> +		mmc0: mmc@11230000 {
-> +			compatible = "mediatek,mt8183-mmc";
-> +			reg = <0 0x11230000 0 0x1000>,
-> +			      <0 0x11f50000 0 0x1000>;
-> +			interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_LOW>;
-> +			clocks = <&topckgen CLK_TOP_MUX_MSDC50_0>,
-> +				 <&infracfg CLK_INFRA_MSDC0>,
-> +				 <&infracfg CLK_INFRA_MSDC0_SCK>;
-> +			clock-names = "source", "hclk", "source_cg";
-> +			status = "disabled";
-> +		};
-> +
-> +		mmc1: mmc@11240000 {
-> +			compatible = "mediatek,mt8183-mmc";
-> +			reg = <0 0x11240000 0 0x1000>,
-> +			      <0 0x11e10000 0 0x1000>;
-> +			interrupts = <GIC_SPI 78 IRQ_TYPE_LEVEL_LOW>;
-> +			clocks = <&topckgen CLK_TOP_MUX_MSDC30_1>,
-> +				 <&infracfg CLK_INFRA_MSDC1>,
-> +				 <&infracfg CLK_INFRA_MSDC1_SCK>;
-> +			clock-names = "source", "hclk", "source_cg";
-> +			status = "disabled";
-> +		};
-> +
->  		mfgcfg: syscon@13000000 {
->  			compatible = "mediatek,mt8183-mfgcfg", "syscon";
->  			reg = <0 0x13000000 0 0x1000>;
-> --
-> 1.9.1
+> diff --git a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+> index 0668c45a156d..b4d448bb60ce 100644
+> --- a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+> +++ b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+> @@ -7,6 +7,7 @@ Required properties:
+>  	      "mediatek,mt7622-efuse", "mediatek,efuse": for MT7622
+>  	      "mediatek,mt7623-efuse", "mediatek,efuse": for MT7623
+>  	      "mediatek,mt8173-efuse" or "mediatek,efuse": for MT8173
+> +	      "mediatek,mt8183-efuse" or "mediatek,efuse": for MT8183
+>  - reg: Should contain registers location and length
+>  
+>  = Data cells =
 > 
 
 _______________________________________________
