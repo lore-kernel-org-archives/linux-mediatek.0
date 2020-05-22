@@ -2,76 +2,78 @@ Return-Path: <SRS0=9rwW=7E=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 21163C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 08:37:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 76F2AC433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 08:37:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DC8BB20757
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 08:36:59 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 309E720812
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 08:37:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LOsnickP";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="KM38vZCs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DC8BB20757
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fPd/dqgp";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="TOhoowSb"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 309E720812
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=aXj7tKGq8IF5tfxdSC1IdPqKOsZ8K+3mQBdKqg2IHqU=; b=LOsnickPX/U0df
-	3qWysg4ijXeEtbDJQQWmjl5dJK4VUmZNDYBGBU1DRMAFzvoY2lInJMHROqq4ICaowpakyu+iem+IJ
-	+Trw9lpGfQ8YbBXv2i8ilPfMc0SvAqMpwAtUiN8oEWVd7T3yI/jIpqMgLO7nJG4NZA5M+9w0cAZZ2
-	Kj41wIZ88Khyt0a80jfG0/k9uUAzLZ6B/bVglvS1bQMjP9nyxVLbNBgoaXa0yxME81CwRskWtL5+d
-	l534YrZEP6tsama9bxUmfL5IsVjaHHqnjgxXeEUeHjIjfcfd+hBfRkBKEaHv+ERb+Ut/SwJ90cMtu
-	AvJIbQdAGGU7XUkph6og==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4uYZzeoxK7/VQPcuG5a+Hkp3xzD5g4bVm/fxfevNWCI=; b=fPd/dqgpK3egUA
+	s/QonDOE68E7huEu1CSGgMTGgceiW8xWSOtViVvZAutxRp3WgySneACchIeKHL5qFP0g+urOsVS+w
+	80DMgDbg+AXxqa9km9qqo8I29yoOSLwIHRAGDtSITYqA+hv50fmIR8S2cR5SJ/lwVtGtXFscAX4dm
+	lhbNjERMj+vV8Zjb1POdzIvs5XySiUP/m0KFY5/f20MVtkouiUMayWciimNrM6WGsDAsj/3J528AR
+	3et7F2przzll/H5atSK/TuTCnbq71iHcTJ2Qjun0ZId8J/7g8iFRkMXjQKotzZzVNUEet8dvGuIhE
+	kWD7LnCvgZHkkKC35MLA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jc3Ae-0004C8-O8; Fri, 22 May 2020 08:36:48 +0000
+	id 1jc3As-0004Pi-3M; Fri, 22 May 2020 08:37:02 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jc3AL-0003wP-0d; Fri, 22 May 2020 08:36:33 +0000
-X-UUID: f71fff2af026491699130e1fcd614630-20200522
+ id 1jc3AO-0003w8-EG; Fri, 22 May 2020 08:36:34 +0000
+X-UUID: 0852713061ac41848037483374487e53-20200522
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=CeRdUazTRZ6Q4UL/01a41bh8OpjiO6wKwUAXb2WuqdM=; 
- b=KM38vZCs3L7nB88xu/BGflp6r00GI5kWsTrb31dLpxdGIcYnQr1KUryCugVG0EA2+k9g3gzYY5tjqLPu1nf6Bo4iP9MYAnJwzZbyH87L+Elgn3IxmPC6MDCEK++wIqc4JqTTxojSxaKN5Ur1bRZEOvhTLMyahduQOkQ/ckVNkVo=;
-X-UUID: f71fff2af026491699130e1fcd614630-20200522
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=GB2siZ1aCshncN85D71R5V/xJ8ZgYKphiAMj7ygmguo=; 
+ b=TOhoowSb/WFg70kkRFJzpEp1n+CAu1bOU+b+e7HNXVnoleBxi8UdKHrpTeStOwhoYpVfJl3Mij/ojhwpAN1HzINMizw1MT87f2HPJepb+AwDaqdkFiVFUz57eFOxlUDnrjwbrOyRUR5tVN+BN7XA6iIGvM3D2fR1ybMlBNuCQJw=;
+X-UUID: 0852713061ac41848037483374487e53-20200522
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 436070000; Fri, 22 May 2020 00:36:04 -0800
+ with ESMTP id 934678020; Fri, 22 May 2020 00:36:04 -0800
 Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 22 May 2020 01:32:15 -0700
+ 15.0.1497.2; Fri, 22 May 2020 01:32:16 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 22 May 2020 16:32:14 +0800
+ 15.0.1497.2; Fri, 22 May 2020 16:32:15 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 22 May 2020 16:32:13 +0800
+ Frontend Transport; Fri, 22 May 2020 16:32:14 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
  <asutoshd@codeaurora.org>
-Subject: [PATCH v4 0/4] scsi: ufs: Fix WriteBooster and cleanup UFS driver
-Date: Fri, 22 May 2020 16:32:08 +0800
-Message-ID: <20200522083212.4008-1-stanley.chu@mediatek.com>
+Subject: [PATCH v4 4/4] scsi: ufs: Fix WriteBooster flush during runtime
+ suspend
+Date: Fri, 22 May 2020 16:32:12 +0800
+Message-ID: <20200522083212.4008-5-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20200522083212.4008-1-stanley.chu@mediatek.com>
+References: <20200522083212.4008-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200522_013629_064407_A5626C9D 
-X-CRM114-Status: UNSURE (   6.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200522_013632_491616_425DF3FD 
+X-CRM114-Status: GOOD (  19.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,33 +95,216 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Currently UFS host driver promises VCC supply if UFS device
+needs to do WriteBooster flush during runtime suspend.
 
-This patch set fixes some WriteBooster issues and do small cleanup in UFS driver
+However the UFS specification mentions,
 
-v3 -> v4
-  - Squash patch [4] and [5] (Asutosh)
-  - Fix commit message in patch [4]
+"While the flushing operation is in progress, the device is
+in Active power mode."
 
-v2 -> v3
-  - Introduce patch [5] to fix possible VCC power drain during runtime suspend (Asutosh)
+Therefore UFS host driver needs to promise more: Keep UFS
+device as "Active power mode", otherwise UFS device shall not
+do any flush if device enters Sleep or PowerDown power mode.
+Similarly, the same promises shall be applied if device needs
+urgent BKOP during runtime suspend.
 
-v1 -> v2
-  - Remove dummy new line in patch [4] (Asutosh)
-  - Add more limitation to allow WriteBooster flush during Hibern8 in runtime-suspend. Now the device power mode is kept as Active power mode only if link is put in Hibern8 or Auto-Hibern8 is enabled during runtime-suspend (Asutosh)
+Fix this by not changing device power mode if WriteBooster
+flush or urgent BKOP is required in ufshcd_suspend().
 
-Stanley Chu (4):
-  scsi: ufs: Remove unnecessary memset for dev_info
-  scsi: ufs: Allow WriteBooster on UFS 2.2 devices
-  scsi: ufs: Fix index of attributes query for WriteBooster feature
-  scsi: ufs: Fix WriteBooster flush during runtime suspend
+Now, if device finishes its job but not resumed for a very
+long time, system will have unnecessary power drain because
+VCC is still supplied. A method to re-check the threshold of
+keeping VCC supply is required to fix the power drain. However,
+the threshold re-check needs to re-activate the link first
+because the decision depends on the latest device status.
 
- drivers/scsi/ufs/ufs-sysfs.c | 13 ++++-
- drivers/scsi/ufs/ufs.h       |  2 +-
- drivers/scsi/ufs/ufshcd.c    | 99 +++++++++++++++++++++++++-----------
- drivers/scsi/ufs/ufshcd.h    |  3 +-
- 4 files changed, 82 insertions(+), 35 deletions(-)
+So, also introduce a delayed work to force runtime resume
+after a certain delay during runtime suspend. This makes
+threshold re-check happen natually in the entrance of next
+runtime-suspend. The device can continue its WriteBooster flush
+or urgent BKOP jobs soon after resumed if device has no upcoming
+requests and link enters hibern8 state either by Auto-Hibern8
+or hibern8 during clk-gating scheme. This solution not only
+prevents power drain but also makes as much use of time as
+possible for device's background jobs.
 
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/scsi/ufs/ufs.h    |  2 +-
+ drivers/scsi/ufs/ufshcd.c | 79 ++++++++++++++++++++++++++++-----------
+ drivers/scsi/ufs/ufshcd.h |  1 +
+ 3 files changed, 59 insertions(+), 23 deletions(-)
+
+diff --git a/drivers/scsi/ufs/ufs.h b/drivers/scsi/ufs/ufs.h
+index fadba3a3bbcd..c70845d41449 100644
+--- a/drivers/scsi/ufs/ufs.h
++++ b/drivers/scsi/ufs/ufs.h
+@@ -574,7 +574,7 @@ struct ufs_dev_info {
+ 	u32 d_ext_ufs_feature_sup;
+ 	u8 b_wb_buffer_type;
+ 	u32 d_wb_alloc_units;
+-	bool keep_vcc_on;
++	bool b_rpm_dev_flush_capable;
+ 	u8 b_presrv_uspc_en;
+ };
+ 
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 3262ac0e39d4..94782b9b33c1 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -94,6 +94,9 @@
+ /* default delay of autosuspend: 2000 ms */
+ #define RPM_AUTOSUSPEND_DELAY_MS 2000
+ 
++/* Default delay of RPM device flush delayed work */
++#define RPM_DEV_FLUSH_RECHECK_WORK_DELAY_MS 5000
++
+ /* Default value of wait time before gating device ref clock */
+ #define UFSHCD_REF_CLK_GATING_WAIT_US 0xFF /* microsecs */
+ 
+@@ -5314,7 +5317,7 @@ static bool ufshcd_wb_presrv_usrspc_keep_vcc_on(struct ufs_hba *hba,
+ 	return false;
+ }
+ 
+-static bool ufshcd_wb_keep_vcc_on(struct ufs_hba *hba)
++static bool ufshcd_wb_need_flush(struct ufs_hba *hba)
+ {
+ 	int ret;
+ 	u32 avail_buf;
+@@ -5352,6 +5355,21 @@ static bool ufshcd_wb_keep_vcc_on(struct ufs_hba *hba)
+ 	return ufshcd_wb_presrv_usrspc_keep_vcc_on(hba, avail_buf);
+ }
+ 
++static void ufshcd_rpm_dev_flush_recheck_work(struct work_struct *work)
++{
++	struct ufs_hba *hba = container_of(to_delayed_work(work),
++					   struct ufs_hba,
++					   rpm_dev_flush_recheck_work);
++	/*
++	 * To prevent unnecessary VCC power drain after device finishes
++	 * WriteBooster buffer flush or Auto BKOPs, force runtime resume
++	 * after a certain delay to recheck the threshold by next runtime
++	 * supsend.
++	 */
++	pm_runtime_get_sync(hba->dev);
++	pm_runtime_put_sync(hba->dev);
++}
++
+ /**
+  * ufshcd_exception_event_handler - handle exceptions raised by device
+  * @work: pointer to work data
+@@ -8099,8 +8117,7 @@ static void ufshcd_vreg_set_lpm(struct ufs_hba *hba)
+ 	    !hba->dev_info.is_lu_power_on_wp) {
+ 		ufshcd_setup_vreg(hba, false);
+ 	} else if (!ufshcd_is_ufs_dev_active(hba)) {
+-		if (!hba->dev_info.keep_vcc_on)
+-			ufshcd_toggle_vreg(hba->dev, hba->vreg_info.vcc, false);
++		ufshcd_toggle_vreg(hba->dev, hba->vreg_info.vcc, false);
+ 		if (!ufshcd_is_link_active(hba)) {
+ 			ufshcd_config_vreg_lpm(hba, hba->vreg_info.vccq);
+ 			ufshcd_config_vreg_lpm(hba, hba->vreg_info.vccq2);
+@@ -8225,27 +8242,30 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 			ufshcd_disable_auto_bkops(hba);
+ 		}
+ 		/*
+-		 * With wb enabled, if the bkops is enabled or if the
+-		 * configured WB type is 70% full, keep vcc ON
+-		 * for the device to flush the wb buffer
++		 * If device needs to do BKOP or WB buffer flush during
++		 * Hibern8, keep device power mode as "active power mode"
++		 * and VCC supply.
+ 		 */
+-		if ((hba->auto_bkops_enabled && ufshcd_is_wb_allowed(hba)) ||
+-		    ufshcd_wb_keep_vcc_on(hba))
+-			hba->dev_info.keep_vcc_on = true;
+-		else
+-			hba->dev_info.keep_vcc_on = false;
+-	} else {
+-		hba->dev_info.keep_vcc_on = false;
+-	}
++		hba->dev_info.b_rpm_dev_flush_capable =
++			hba->auto_bkops_enabled ||
++			(((req_link_state == UIC_LINK_HIBERN8_STATE) ||
++			((req_link_state == UIC_LINK_ACTIVE_STATE) &&
++			ufshcd_is_auto_hibern8_enabled(hba))) &&
++			ufshcd_wb_need_flush(hba));
++	}
++
++	if (req_dev_pwr_mode != hba->curr_dev_pwr_mode) {
++		if ((ufshcd_is_runtime_pm(pm_op) && !hba->auto_bkops_enabled) ||
++		    !ufshcd_is_runtime_pm(pm_op)) {
++			/* ensure that bkops is disabled */
++			ufshcd_disable_auto_bkops(hba);
++		}
+ 
+-	if ((req_dev_pwr_mode != hba->curr_dev_pwr_mode) &&
+-	    ((ufshcd_is_runtime_pm(pm_op) && !hba->auto_bkops_enabled) ||
+-	    !ufshcd_is_runtime_pm(pm_op))) {
+-		/* ensure that bkops is disabled */
+-		ufshcd_disable_auto_bkops(hba);
+-		ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
+-		if (ret)
+-			goto enable_gating;
++		if (!hba->dev_info.b_rpm_dev_flush_capable) {
++			ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
++			if (ret)
++				goto enable_gating;
++		}
+ 	}
+ 
+ 	flush_work(&hba->eeh_work);
+@@ -8298,9 +8318,16 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 	if (hba->clk_scaling.is_allowed)
+ 		ufshcd_resume_clkscaling(hba);
+ 	hba->clk_gating.is_suspended = false;
++	hba->dev_info.b_rpm_dev_flush_capable = false;
+ 	ufshcd_release(hba);
+ out:
++	if (hba->dev_info.b_rpm_dev_flush_capable) {
++		schedule_delayed_work(&hba->rpm_dev_flush_recheck_work,
++			msecs_to_jiffies(RPM_DEV_FLUSH_RECHECK_WORK_DELAY_MS));
++	}
++
+ 	hba->pm_op_in_progress = 0;
++
+ 	if (ret)
+ 		ufshcd_update_reg_hist(&hba->ufs_stats.suspend_err, (u32)ret);
+ 	return ret;
+@@ -8389,6 +8416,11 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 	/* Enable Auto-Hibernate if configured */
+ 	ufshcd_auto_hibern8_enable(hba);
+ 
++	if (hba->dev_info.b_rpm_dev_flush_capable) {
++		hba->dev_info.b_rpm_dev_flush_capable = false;
++		cancel_delayed_work(&hba->rpm_dev_flush_recheck_work);
++	}
++
+ 	/* Schedule clock gating in case of no access to UFS device yet */
+ 	ufshcd_release(hba);
+ 
+@@ -8862,6 +8894,9 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
+ 						UFS_SLEEP_PWR_MODE,
+ 						UIC_LINK_HIBERN8_STATE);
+ 
++	INIT_DELAYED_WORK(&hba->rpm_dev_flush_recheck_work,
++			  ufshcd_rpm_dev_flush_recheck_work);
++
+ 	/* Set the default auto-hiberate idle timer value to 150 ms */
+ 	if (ufshcd_is_auto_hibern8_supported(hba) && !hba->ahit) {
+ 		hba->ahit = FIELD_PREP(UFSHCI_AHIBERN8_TIMER_MASK, 150) |
+diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+index 9acaeaf94d29..bf97d616e597 100644
+--- a/drivers/scsi/ufs/ufshcd.h
++++ b/drivers/scsi/ufs/ufshcd.h
+@@ -745,6 +745,7 @@ struct ufs_hba {
+ 	struct request_queue	*bsg_queue;
+ 	bool wb_buf_flush_enabled;
+ 	bool wb_enabled;
++	struct delayed_work rpm_dev_flush_recheck_work;
+ };
+ 
+ /* Returns true if clocks can be gated. Otherwise false */
 -- 
 2.18.0
 _______________________________________________
