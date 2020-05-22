@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E8F36C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 12:19:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B775C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 12:19:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B0271207F7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 12:19:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6421920757
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 12:19:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FW5Zhxaa";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="BLpJJxi1"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B0271207F7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="S286eUed";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="n81B/JDE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6421920757
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,34 +26,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N1NYaKAVIFULuZH3UoNOip/N+UnY/yZEiJH1VSrnmmo=; b=FW5ZhxaaAIcJ3j
-	SdSvkAwUrLS+VI/Gv31C6P5hh80ORJCcBhltndoa9M3apHbZybRVAO/4qVBmysEsHEyG1IP84Ejws
-	MXA3teG7T6z/5GaO90wx7WTRCt2yymjUaPgDqxoBBHzCGkG1HrzZvOohBjT4QqlZL3AmkcZ/vOYWq
-	yKbOcCHW3TVirbWaGWHcwpLMm9Bv7Rd8C6o1UK4FuA+0JG1T3Lbu1LDGwQpfb80g7UNThHjEWjW60
-	xuHnKfpi2p41o4rLi9/zVXfUVA6K1auH7EoBHLYFGxu7U0lACtt9sdSxAXdQB7KYI9F6RA5ihQqi0
-	KXnGzrUQB/KsP97TaXnA==;
+	List-Owner; bh=NX/A/bu5nRVlpwgpQjntX66Mb//vIo7nq8yKtC4wBXI=; b=S286eUedbabMwt
+	cXBLljuS5Jb/65GrfeHNnRkl7zfg8DtOL5Xn4KJkoGnRHHPrlpTL5aLiREKOr+EWeS464ja3NqaQC
+	0WeNgEw0sP+ekEUOazNVEmsIQ9C+f+icfhD/Mw+1ji/mFnClk5lytqEiC/1lKfb49T6NXBkk3BheZ
+	43Cp5/430WLS9zIDGRFAVeTMxH6RA9whHdHN7+jo1PM/xcoQr1aV1URXdiNNVuh5YCMWeWluLE//7
+	4xr9cFgautATsJCMkW1IyxQrT1/gsKzp+LQtCrnRBcATYHtkjyQCSoAlb88BfHiahtqawcXgY26ot
+	JLPHsnvmxEZzuagH+rJQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jc6eG-0000Ec-1v; Fri, 22 May 2020 12:19:36 +0000
+	id 1jc6eE-0000CY-39; Fri, 22 May 2020 12:19:34 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jc6dG-0007gR-R3; Fri, 22 May 2020 12:18:36 +0000
-X-UUID: dd6b623707d04d63a9b9f6fe9eb949cb-20200522
+ id 1jc6dE-0007gF-Mt; Fri, 22 May 2020 12:18:34 +0000
+X-UUID: 0948415ff9674799b7280c12784eabc1-20200522
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=uzfw9R1d1VOhip5QwrPTSrk84wKyVcP93tK5NZw6nGU=; 
- b=BLpJJxi1IjZdL0cEF2GFjzEPODJltsDzQTdlJucro3rJA20EQaX989v0FtuN7pyYVa0UH8+rPhK3TqWHPzt7q6bc7XDRWyWULHgyfOFcZ1Naxc9cJrdVGEju/aLcfwFy89m29biRIhf1uNewGwl3PRqPe88VmgyUnFHmjtmdALU=;
-X-UUID: dd6b623707d04d63a9b9f6fe9eb949cb-20200522
+ bh=ckHEM7GVI4e4nimxXTABhbmcvCORVQbBj1jfInkgoAg=; 
+ b=n81B/JDEMXzSi0diDNXDhCFgfIYXJp3X+8YMHa2xMVSdwxEmbSUOkp0CBaez8Ex/nmQBnNcjWMNjqyb9+b5pNfOCmGZ3GMVCxjXbL9NqcBeQisT1cOATNBKlF2exr9PJfrZ9/BjoNceCbHvtX4g56CdpXG9Lq9CBTZUNuwf4TOo=;
+X-UUID: 0948415ff9674799b7280c12784eabc1-20200522
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 533513452; Fri, 22 May 2020 04:18:17 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 22 May 2020 05:18:23 -0700
+ with ESMTP id 1295323001; Fri, 22 May 2020 04:18:17 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 22 May 2020 05:18:24 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 22 May 2020 20:18:15 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -61,19 +61,18 @@ Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v1 1/3] scsi: ufs-mediatek: Fix imprecise waiting time for
- ref-clk control
-Date: Fri, 22 May 2020 20:18:12 +0800
-Message-ID: <20200522121814.9100-2-stanley.chu@mediatek.com>
+Subject: [PATCH v1 3/3] scsi: ufs-mediatek: Introduce low-power mode for
+ device power supply
+Date: Fri, 22 May 2020 20:18:14 +0800
+Message-ID: <20200522121814.9100-4-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200522121814.9100-1-stanley.chu@mediatek.com>
 References: <20200522121814.9100-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 8E20C3BE527EDE48EA17F920BA9BB87F4E19F2B413C4AA9717BBA79D358E36422000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200522_051834_965531_88ABF931 
-X-CRM114-Status: UNSURE (   9.11  )
+X-CRM114-CacheID: sfid-20200522_051832_875661_0A4DD7BA 
+X-CRM114-Status: UNSURE (   9.85  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -98,64 +97,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently ref-clk control timeout is implemented by Jiffies. However
-jiffies is not accurate enough thus "false timeout" may happen.
-
-Use more accurate delay mechanism instead, for example, ktime.
+Allow device power supply to enter low-power mode if device will
+do nothing to save more power.
 
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-Reviewed-by: Andy Teng <andy.teng@mediatek.com>
+Reviewed-by: Pengshun Zhao <pengshun.zhao@mediatek.com>
 ---
- drivers/scsi/ufs/ufs-mediatek.c | 7 ++++---
- drivers/scsi/ufs/ufs-mediatek.h | 2 +-
- 2 files changed, 5 insertions(+), 4 deletions(-)
+ drivers/scsi/ufs/ufs-mediatek.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
 diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-index d56ce8d97d4e..523ee5573921 100644
+index 3c85f5e97dea..5f41b7b7db8f 100644
 --- a/drivers/scsi/ufs/ufs-mediatek.c
 +++ b/drivers/scsi/ufs/ufs-mediatek.c
-@@ -120,7 +120,7 @@ static int ufs_mtk_setup_ref_clk(struct ufs_hba *hba, bool on)
- {
- 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
- 	struct arm_smccc_res res;
--	unsigned long timeout;
-+	ktime_t timeout, time_checked;
- 	u32 value;
+@@ -12,6 +12,7 @@
+ #include <linux/of_address.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
++#include <linux/regulator/consumer.h>
+ #include <linux/soc/mediatek/mtk_sip_svc.h>
  
- 	if (host->ref_clk_enabled == on)
-@@ -135,8 +135,9 @@ static int ufs_mtk_setup_ref_clk(struct ufs_hba *hba, bool on)
+ #include "ufshcd.h"
+@@ -521,6 +522,19 @@ static int ufs_mtk_link_set_lpm(struct ufs_hba *hba)
+ 	return 0;
+ }
+ 
++static void ufs_mtk_vreg_set_lpm(struct ufs_hba *hba, bool lpm)
++{
++	if (!hba->vreg_info.vccq2)
++		return;
++
++	if (lpm & !hba->vreg_info.vcc->enabled)
++		regulator_set_mode(hba->vreg_info.vccq2->reg,
++				   REGULATOR_MODE_IDLE);
++	else if (!lpm)
++		regulator_set_mode(hba->vreg_info.vccq2->reg,
++				   REGULATOR_MODE_NORMAL);
++}
++
+ static int ufs_mtk_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ {
+ 	int err;
+@@ -537,6 +551,12 @@ static int ufs_mtk_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 			ufshcd_set_link_off(hba);
+ 			return -EAGAIN;
+ 		}
++		/*
++		 * Make sure no error will be returned to prevent
++		 * ufshcd_suspend() re-enabling regulators while vreg is still
++		 * in low-power mode.
++		 */
++		ufs_mtk_vreg_set_lpm(hba, true);
  	}
  
- 	/* Wait for ack */
--	timeout = jiffies + msecs_to_jiffies(REFCLK_REQ_TIMEOUT_MS);
-+	timeout = ktime_add_us(ktime_get(), REFCLK_REQ_TIMEOUT_US);
- 	do {
-+		time_checked = ktime_get();
- 		value = ufshcd_readl(hba, REG_UFS_REFCLK_CTRL);
+ 	if (!ufshcd_is_link_active(hba))
+@@ -554,6 +574,7 @@ static int ufs_mtk_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 		phy_power_on(host->mphy);
  
- 		/* Wait until ack bit equals to req bit */
-@@ -144,7 +145,7 @@ static int ufs_mtk_setup_ref_clk(struct ufs_hba *hba, bool on)
- 			goto out;
- 
- 		usleep_range(100, 200);
--	} while (time_before(jiffies, timeout));
-+	} while (ktime_before(time_checked, timeout));
- 
- 	dev_err(hba->dev, "missing ack of refclk req, reg: 0x%x\n", value);
- 
-diff --git a/drivers/scsi/ufs/ufs-mediatek.h b/drivers/scsi/ufs/ufs-mediatek.h
-index 5bbd3e9cbae2..fc42dcbfd800 100644
---- a/drivers/scsi/ufs/ufs-mediatek.h
-+++ b/drivers/scsi/ufs/ufs-mediatek.h
-@@ -28,7 +28,7 @@
- #define REFCLK_REQUEST              BIT(0)
- #define REFCLK_ACK                  BIT(1)
- 
--#define REFCLK_REQ_TIMEOUT_MS       3
-+#define REFCLK_REQ_TIMEOUT_US       3000
- 
- /*
-  * Vendor specific pre-defined parameters
+ 	if (ufshcd_is_link_hibern8(hba)) {
++		ufs_mtk_vreg_set_lpm(hba, false);
+ 		err = ufs_mtk_link_set_hpm(hba);
+ 		if (err) {
+ 			err = ufshcd_link_recovery(hba);
 -- 
 2.18.0
 _______________________________________________
