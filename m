@@ -2,23 +2,23 @@ Return-Path: <SRS0=9rwW=7E=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-12.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0D723C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 15:38:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 65969C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 15:58:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D6BB821475
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 15:38:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2C15720663
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 15:58:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Zni1GRfl";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Maet0jYB"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D6BB821475
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="N2TZcqlW";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Uw78nHbf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C15720663
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,58 +27,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jMNIj3xuvtu8PyC/2lwFbevFC1fQLIWu9GhCdv5HQYI=; b=Zni1GRflyPZFZ6
-	KHWDe3j0pQIcKNO6gq1nycKrK4/buMAqw5uy74qPNU4EfJ67KZuWYohgSAkQlPpIYhMI4nrNb+tII
-	neB3me5/9srkZmhfRRp7VFDVEYw0sorF/yVXb4QbsrikofkSWP3rdawS2F8/PSYUtoCFdUEMRZd4i
-	AA1gRJghxi3FF4GBdyuGwga+6g5qA8WFywY9o3668L4yRUTPh6t5MWSk2h+8gFZmmLjc/BNZT3FdL
-	6Uk/eNWgtBCxXMW82cnEU0EBHpFSjRphJ7X0YAGd3xoChvAlIxiL1m2Dai2S9aK7/I2BGdfmAXoFg
-	VcO8E4YZ2TBOPq9dAjHA==;
+	List-Owner; bh=MzmSGCic0kyiBcQMliuMr73tlQXVMsSC+zZc1faYo0Q=; b=N2TZcqlWJ6JO55
+	YiMYXO7KFi2Ajri8+kDEIMfKB9BQthg7sxXQ/eAel7hva40XySKxXSutoga8wCGH8YalPxdh4g29p
+	fcurqxJ1pfw+HbCYDmxs4FRV/OH4MqC7BhJLXdylNUirOUbWnwEUTcTwLHN0EedMadmGW3SNvohnZ
+	+9bWXqPHdjUhIxPOfnbJPkpS3ugboQRWReEymhxxlEzeqL0VwsRPgarTeGhVlelxefvQuKgMuAbNa
+	jScLoZuAmHQFJ9XqB1v25FUoq5xi1KLI0NjC6umccof2U/51GODtVDGvR60jljZ0YVfg4o1MXJz19
+	sp4brpKNO5Pw+rbExDsQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jc9kw-00088P-Pt; Fri, 22 May 2020 15:38:42 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1jcA43-0005YI-Ny; Fri, 22 May 2020 15:58:27 +0000
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jc9kc-0007tf-F6; Fri, 22 May 2020 15:38:24 +0000
-Received: by mail-wr1-x444.google.com with SMTP id l11so10637314wru.0;
- Fri, 22 May 2020 08:38:22 -0700 (PDT)
+ id 1jcA41-0005Xa-J7
+ for linux-mediatek@lists.infradead.org; Fri, 22 May 2020 15:58:27 +0000
+Received: by mail-oi1-x242.google.com with SMTP id d191so9665414oib.12
+ for <linux-mediatek@lists.infradead.org>; Fri, 22 May 2020 08:58:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=En8ZDEzcLbAeuTI5D0xEPaBrQHbpj1ERdOhqo1dr+r8=;
- b=Maet0jYB2Ziw+jAZixcFkMD7SlYDYi10f7LbCxcQyEVpW73PX3rTAtRn9pY/ATGuND
- CZrOiwD1w72ZEVA9FI1UMMz76MCqIEQb2creMzRyVznwM2DHdZoNFy+AmoZjtbcknaJJ
- YGQvBCyzQcwhaiPDnBXL2r4OvbcdmGZ5+sx2vTCn1xEVGpEZC2SVV1LS+BHkWqLMssIy
- a8Kq6NlUsYCHJvx7Yqf0YU9XjCgMlPLlUGcg65jKkrMcBcWHlxUiPTFFPYCORQvfULL6
- Cy/VVf/61vU5AwFmjfvoLollxiAObPQQRHIykOUM4RuTlofc+p6XRn9DwBcgEKDjA05c
- IemA==
+ bh=kB92KXud+U6Elfbzq8iP3Kt/n8MB5vO+wjW4WyEOyAM=;
+ b=Uw78nHbf2x1ctnv6c7ZI51fxT0HGMfIAUgZtHQwrNRdZitHzSW+j8yyPh3iQs6yy0k
+ od1dUThDRk0i6THMEFLN+g2OX6dP3kBQUhdApbycSzgpyfYQxDS1l+unuVZoXxVqvq0J
+ cYlL09Tx0MHilJuhmO7IQAPly/E14edDAEEX6W/rAGEHw1gchj0ZlVqNAxAuwVREglia
+ GdUMWX9QkiA7pja9hZ+h2Xl3vS+leKx04joQmc1VCeRjumBKqcwSoUexxpmGT/CTdtvq
+ 7vSvL3mkmFxUOWRnI0uM6eqpP0RYxDaxyuOJdL4uor29C5Dgyq7QgpV9MK988+98dKHV
+ tRFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=En8ZDEzcLbAeuTI5D0xEPaBrQHbpj1ERdOhqo1dr+r8=;
- b=YFDLiQ5/kdeVwuO/4g7uPgrBAgpe7Xa0waKOwCu34Cha9SwzmPwQa8TjRATuE2VoKp
- FN+JvsnhQ7HXIu6C8dZC22juN0y1rOci0C40RW0pepAo/c+l8Ivc+mBkAmpbrHzx1/ZK
- Xa4pAWaxCMP9dkn2nef2kM5H/GHDgRFBwdu6M2Em71qE4s0n0GBdBrB2eU7/86b9PxQg
- DX8WVzA1PGg6fdkfYGKJqSzH2M/BJMI3biHnLvRig5EHMoyIz2Do45/rXRebyl1knnfl
- CYgq1io2rh69v9e6X81CwTPCYVI6E7QipAqZYKHuWOJImsfAZ4KTTc9OngGYfXQivkp6
- BNvQ==
-X-Gm-Message-State: AOAM533TCGXvDOXwJIH/d/Qp747UIoXJR7hVzv7tYUfah72QrsBxeiJx
- jsxmFQnuhRbzC3J2X7kfx+gFIZzrg6g=
-X-Google-Smtp-Source: ABdhPJx0CsXJEAx4ihSfjjcd18gWgluoE61/HcXLEiO24nOqUV2+UgcKmG9ekSVcZvUpfCDm8TEn8Q==
-X-Received: by 2002:adf:f783:: with SMTP id q3mr3829441wrp.348.1590161900546; 
- Fri, 22 May 2020 08:38:20 -0700 (PDT)
+ bh=kB92KXud+U6Elfbzq8iP3Kt/n8MB5vO+wjW4WyEOyAM=;
+ b=WtPOIaQSY0G6o7rONa3tCjmYivM1KKznGynFpihIUIyRVDlx7XnOn7Z3vigNVsQ/Yx
+ pBz8VSkJSyYt3GYoRBt43S4oHeH7wBOOqJha956fpOCvyO10MTMQvJEgHWNa0JjNisn4
+ 1AQPCR6xr4gDV0IhSgMWdTypoI2wrt426ZI5WMXSB4xOxo6SwZK3Uwpz9WmB47u6Aec8
+ yG3rcaLTQulsvSRVIKs9B5nAH1RhhDGMuHuAFfW2ue90FMqaIdSzkNU8wV9Nzr//4lmG
+ YI2XlTPGqK6KC9JeWGlDNN9+TyXujtqCxrH58R6X3l6lPSGD+s5cEYBRcoV7rDkqc3IN
+ N5pg==
+X-Gm-Message-State: AOAM531B1N2YN6wEc4FXra67V7nEIGNqOIX93Vkp7d4dHlm17KxSpf1j
+ C8aQbzULUeiG9Mv+Yba81BY=
+X-Google-Smtp-Source: ABdhPJxAkoKVqlcHEJAtaZcWDerMSckOohsV65CLz8gAZiTulpInCEXRJd8+B1myiokXarlvx47Ekw==
+X-Received: by 2002:a54:4382:: with SMTP id u2mr3054064oiv.88.1590163104307;
+ Fri, 22 May 2020 08:58:24 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id e21sm9658808wme.34.2020.05.22.08.38.18
+ by smtp.gmail.com with ESMTPSA id x191sm2680870oix.35.2020.05.22.08.58.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 22 May 2020 08:38:19 -0700 (PDT)
-Subject: Re: [PATCH v8 3/3] PM / AVS: SVS: Introduce SVS engine
-To: Roger Lu <roger.lu@mediatek.com>,
- Enric Balletbo Serra <eballetbo@gmail.com>
-References: <20200518092403.22647-1-roger.lu@mediatek.com>
- <20200518092403.22647-4-roger.lu@mediatek.com>
- <CAFqH_527ZJEmsvrk-n-uNSc+Bx87ZVppn=rNKDWPGYUuf+gvPA@mail.gmail.com>
- <1590140434.4392.22.camel@mtksdaap41>
+ Fri, 22 May 2020 08:58:23 -0700 (PDT)
+Subject: Re: [GIT PULL v2] mediatek drm next for 5.8
+To: Dave Airlie <airlied@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
+References: <CAAOTY_8tz9nNbCHFJhk9xX8fm9Jd8ETcdNCQfE31AOjZLpNKog@mail.gmail.com>
+ <CAPM=9txm_fdy_+Kg=cdXe5SosbYBoXHtsDWYMFm2WQh1QtC_YQ@mail.gmail.com>
+ <CAPM=9tzqQ5G82mSACX5speUF2j-8vz7SrOcj7XLsKCjhe3GT6A@mail.gmail.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -154,16 +153,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <3b810588-ac4a-7fec-2163-38555dd83928@gmail.com>
-Date: Fri, 22 May 2020 17:38:18 +0200
+Message-ID: <9870ea53-cdd9-e34c-dcbd-f087f5abf619@gmail.com>
+Date: Fri, 22 May 2020 17:58:19 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <1590140434.4392.22.camel@mtksdaap41>
+In-Reply-To: <CAPM=9tzqQ5G82mSACX5speUF2j-8vz7SrOcj7XLsKCjhe3GT6A@mail.gmail.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200522_083822_508077_FC9A6AEE 
-X-CRM114-Status: GOOD (  27.39  )
+X-CRM114-CacheID: sfid-20200522_085825_632716_5DB46D15 
+X-CRM114-Status: GOOD (  17.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -175,17 +174,13 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@google.com>,
- Nishanth Menon <nm@ti.com>, Kevin Hilman <khilman@kernel.org>,
- Stephen Boyd <sboyd@kernel.org>, Linux PM list <linux-pm@vger.kernel.org>,
- Angus Lin <Angus.Lin@mediatek.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
- linux-kernel <linux-kernel@vger.kernel.org>, Fan Chen <fan.chen@mediatek.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
+Cc: Jitao Shi <jitao.shi@mediatek.com>, David Airlie <airlied@linux.ie>,
+ Bernard Zhao <bernard@vivo.com>, YueHaibing <yuehaibing@huawei.com>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- HenryC Chen <HenryC.Chen@mediatek.com>,
- Charles Yang <Charles.Yang@mediatek.com>, YT Lee <yt.lee@mediatek.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+ Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Anand K Mistry <amistry@chromium.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -193,528 +188,60 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 22/05/2020 11:40, Roger Lu wrote:
-> 
-> Hi Enric,
-> 
-> On Tue, 2020-05-19 at 17:30 +0200, Enric Balletbo Serra wrote:
->> Hi Roger,
+On 20/05/2020 07:46, Dave Airlie wrote:
+> On Wed, 20 May 2020 at 15:44, Dave Airlie <airlied@gmail.com> wrote:
 >>
->> Thank you for your patch. I have the feeling that this driver is
->> complex and difficult to follow and I am wondering if it wouldn't be
->> better if you can send a version that simply adds basic functionality
->> for now. Some comments below.
-> 
-> Thanks for the advices. I'll submit SVS v9 with basic functionality
-> patch + step by step functionalities' patches. 
-> 
->>
->> Missatge de Roger Lu <roger.lu@mediatek.com> del dia dl., 18 de maig
->> 2020 a les 11:25:
+>> On Mon, 18 May 2020 at 10:06, Chun-Kuang Hu <chunkuang.hu@kernel.org> wrote:
 >>>
->>> The SVS (Smart Voltage Scaling) engine is a piece
->>> of hardware which is used to calculate optimized
->>> voltage values of several power domains,
->>> e.g. CPU/GPU/CCI, according to chip process corner,
->>> temperatures, and other factors. Then DVFS driver
->>> could apply those optimized voltage values to reduce
->>> power consumption.
+>>> Hi, Dave & Daniel:
 >>>
->>> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
->>> ---
->>>  drivers/power/avs/Kconfig     |   10 +
->>>  drivers/power/avs/Makefile    |    1 +
->>>  drivers/power/avs/mtk_svs.c   | 2119 +++++++++++++++++++++++++++++++++
->>>  include/linux/power/mtk_svs.h |   23 +
->>>  4 files changed, 2153 insertions(+)
->>>  create mode 100644 drivers/power/avs/mtk_svs.c
->>>  create mode 100644 include/linux/power/mtk_svs.h
+>>> This include dpi pin mode swap, config mipi_tx current and impedance,
+>>> and some fixup. I drop drm_bridge patches in this version.
 >>>
->>> diff --git a/drivers/power/avs/Kconfig b/drivers/power/avs/Kconfig
->>> index cdb4237bfd02..67089ac6040e 100644
->>> --- a/drivers/power/avs/Kconfig
->>> +++ b/drivers/power/avs/Kconfig
->>> @@ -35,3 +35,13 @@ config ROCKCHIP_IODOMAIN
->>>           Say y here to enable support io domains on Rockchip SoCs. It is
->>>           necessary for the io domain setting of the SoC to match the
->>>           voltage supplied by the regulators.
->>> +
->>> +config MTK_SVS
->>> +       bool "MediaTek Smart Voltage Scaling(SVS)"
+>>> The following changes since commit 8f3d9f354286745c751374f5f1fcafee6b3f3136:
+>>>   Linux 5.7-rc1 (2020-04-12 12:35:55 -0700)
+>>> are available in the Git repository at:
+>>>   https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git
+>>> tags/mediatek-drm-next-5.8
+>>> for you to fetch changes up to 007d274a017bb4e2ef7b922c2f54f40cf2073664:
 >>
->> Can't be this a module? Why? In such case, you should use tristate option
+>> Did you edit this by hand or pass it through some mailserver that
+>> chewed it up, I had to reconstruct this pull from the above bits, I've
+>> no idea why it's so messed up in the first place.
 > 
-> Generally, MTK_SVS is needed in MTK SoC(mt81xx) products. So, we don't provide
-> module option in config. If, somehow, SVS isn't needed, we suggest
-> CONFIG_MTK_SVS=n to be set.
+> and why does it contain an unexplained backmerge?
 > 
+>  Merge tag 'v5.7-next-drm-stable' of
+> ssh://gitolite.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux
+> into mediatek-drm-next
+> 
+> Please don't ever backmerge fixes into next pull, without a long
+> explaination or if you really need it ask us first,
 
-The question here is if it needs to be probed before we probe the modules. If
-not, we should add a Kconfig option for MT81xx SoCs to select MTK_SVS.
+It's not fixes. I suppose my tagging strategy helps to create confusion. The tag
+is v5.7-*next*, which relates to v5.8 (next version after v5.7). Maybe not the
+best way to do it.
 
->>
->>> +       depends on POWER_AVS && MTK_EFUSE && NVMEM
->>> +       help
->>> +         The SVS engine is a piece of hardware which is used to calculate
->>> +         optimized voltage values of several power domains, e.g.
->>> +         CPU clusters/GPU/CCI, according to chip process corner, temperatures,
->>> +         and other factors. Then DVFS driver could apply those optimized voltage
->>> +         values to reduce power consumption.
->>> diff --git a/drivers/power/avs/Makefile b/drivers/power/avs/Makefile
->>> index 9007d05853e2..231adf078582 100644
->>> --- a/drivers/power/avs/Makefile
->>> +++ b/drivers/power/avs/Makefile
->>> @@ -2,3 +2,4 @@
->>>  obj-$(CONFIG_POWER_AVS_OMAP)           += smartreflex.o
->>>  obj-$(CONFIG_QCOM_CPR)                 += qcom-cpr.o
->>>  obj-$(CONFIG_ROCKCHIP_IODOMAIN)                += rockchip-io-domain.o
->>> +obj-$(CONFIG_MTK_SVS)                  += mtk_svs.o
->>
->> Will this driver be SoC specific or the idea is to support different
->> SoCs? If the answer to the first question is yes, please name the file
->> with the SoC prefix (i.e mt8183_svs). However, If the answer to the
->> second question is yes, make sure you prefix common
->> functions/structs/defines with a generic prefix mtk_svs but use the
->> SoC prefix for the ones you expect will be different between SoC, i.e
->> mt8183_svs_. This helps the readability of the driver. Also, try to
->> avoid too generic names.
-> 
-> MTK_SVS is designed for supporting different MTK SoCs.Therefore, the answer is second
-> question and thanks for the heads-up.
-> 
->>
->>> diff --git a/drivers/power/avs/mtk_svs.c b/drivers/power/avs/mtk_svs.c
->>> new file mode 100644
->>> index 000000000000..a4083b3ef175
->>> --- /dev/null
->>> +++ b/drivers/power/avs/mtk_svs.c
->>> @@ -0,0 +1,2119 @@
->>> +// SPDX-License-Identifier: GPL-2.0
->>
->> I suspect you want this only GPLv2 compliant. Use GPL-2.0-only
-> 
-> OK. I'll use GPL-2.0-only.Thanks.
-> 
->>
->>> +/*
->>> + * Copyright (C) 2020 MediaTek Inc.
->>> + */
->>> +
->>> +#define pr_fmt(fmt)    "[mtk_svs] " fmt
->>
->> I don't see any reason to use pr_fmt in this driver. Use dev_*
->> functions instead and remove the above.
-> 
-> Ok. I will remove it. Thanks.
-> 
->>
->>> +
->>> +#include <linux/bits.h>
->>> +#include <linux/clk.h>
->>> +#include <linux/completion.h>
->>> +#include <linux/init.h>
->>> +#include <linux/interrupt.h>
->>> +#include <linux/kernel.h>
->>> +#include <linux/kthread.h>
->>> +#include <linux/module.h>
->>> +#include <linux/mutex.h>
->>> +#include <linux/nvmem-consumer.h>
->>> +#include <linux/of_address.h>
->>> +#include <linux/of_irq.h>
->>> +#include <linux/of_platform.h>
->>> +#include <linux/platform_device.h>
->>> +#include <linux/pm_domain.h>
->>> +#include <linux/pm_opp.h>
->>> +#include <linux/pm_qos.h>
->>> +#include <linux/pm_runtime.h>
->>> +#include <linux/power/mtk_svs.h>
->>> +#include <linux/proc_fs.h>
->>> +#include <linux/regulator/consumer.h>
->>> +#include <linux/reset.h>
->>> +#include <linux/seq_file.h>
->>> +#include <linux/slab.h>
->>> +#include <linux/spinlock.h>
->>> +#include <linux/thermal.h>
->>> +#include <linux/uaccess.h>
->>> +
->>> +/* svs 1-line sw id */
->>> +#define SVS_CPU_LITTLE                 BIT(0)
->>> +#define SVS_CPU_BIG                    BIT(1)
->>> +#define SVS_CCI                                BIT(2)
->>> +#define SVS_GPU                                BIT(3)
->>> +
->>> +/* svs bank mode support */
->>> +#define SVSB_MODE_ALL_DISABLE          (0)
->>
->> nit: SVS_BMODE_?
-> 
-> Oh. If we add bank wording like SVS_Bxxx, it might cause some confusion when B combines
-> with other words. So, I'll keep SVSB for SVS Bank representation.
-> E.g: SVS_BDC_SIGNED_BIT might lead to be explained differently ("SVS bank + DC_SIGNED_BIT" or "SVS + BDC_SIGNED_BIT")
->      - "SVS bank + DC_SIGNED_BIT" is what we want for naming SVS_BDC_SIGNED_BIT but it might be misunderstood.
-> 
->>
->>> +#define SVSB_MODE_INIT01               BIT(1)
->>> +#define SVSB_MODE_INIT02               BIT(2)
->>> +#define SVSB_MODE_MON                  BIT(3)
->>> +
->>> +/* svs bank init01 condition */
->>> +#define SVSB_INIT01_VOLT_IGNORE                BIT(1)
->>> +#define SVSB_INIT01_VOLT_INC_ONLY      BIT(2)
->>> +
->>> +/* svs bank common setting */
->>> +#define HIGH_TEMP_MAX                  (U32_MAX)
->>
->> nit: SVS_*
-> 
-> ok. I will add SVS or SVSB when it refers to SVS BANK.
-> 
->>
->>> +#define RUNCONFIG_DEFAULT              (0x80000000)
->>
->> Btw, there is any public datasheet where I can see those addresses and
->> registers and bit fields?
-> 
-> Excuse us, there is no public datasheet. We can reply it on patchwork. Thanks.
-> 
->>
->>> +#define DC_SIGNED_BIT                  (0x8000)
->>> +#define INTEN_INIT0x                   (0x00005f01)
->>> +#define INTEN_MONVOPEN                 (0x00ff0000)
->>> +#define SVSEN_OFF                      (0x0)
->>> +#define SVSEN_MASK                     (0x7)
->>> +#define SVSEN_INIT01                   (0x1)
->>> +#define SVSEN_INIT02                   (0x5)
->>> +#define SVSEN_MON                      (0x2)
->>> +#define INTSTS_MONVOP                  (0x00ff0000)
->>> +#define INTSTS_COMPLETE                        (0x1)
->>> +#define INTSTS_CLEAN                   (0x00ffffff)
->>> +
->>> +#define proc_fops_rw(name) \
->>> +       static int name ## _proc_open(struct inode *inode,      \
->>> +                                     struct file *file)        \
->>> +       {                                                       \
->>> +               return single_open(file, name ## _proc_show,    \
->>> +                                  PDE_DATA(inode));            \
->>> +       }                                                       \
->>> +       static const struct proc_ops name ## _proc_fops = {     \
->>> +               .proc_open      = name ## _proc_open,           \
->>> +               .proc_read      = seq_read,                     \
->>> +               .proc_lseek     = seq_lseek,                    \
->>> +               .proc_release   = single_release,               \
->>> +               .proc_write     = name ## _proc_write,          \
->>> +       }
->>> +
->>> +#define proc_fops_ro(name) \
->>> +       static int name ## _proc_open(struct inode *inode,      \
->>> +                                     struct file *file)        \
->>> +       {                                                       \
->>> +               return single_open(file, name ## _proc_show,    \
->>> +                                  PDE_DATA(inode));            \
->>> +       }                                                       \
->>> +       static const struct proc_ops name ## _proc_fops = {     \
->>> +               .proc_open      = name ## _proc_open,           \
->>> +               .proc_read      = seq_read,                     \
->>> +               .proc_lseek     = seq_lseek,                    \
->>> +               .proc_release   = single_release,               \
->>> +       }
->>> +
->>> +#define proc_entry(name)       {__stringify(name), &name ## _proc_fops}
->>> +
->>
->> /proc is usually the old way of exporting files to userspace, so
->> unless you have a really good reason use sysfs instead, or even
->> better, if it is only for debug purposes use debugfs. Also, you should
->> document the entries in Documentation.
-> 
-> Ok. I'll change it to debugfs and could you give us an example about entries in documentation?
-> We can follow them. Thanks.
-> 
->>
->>> +static DEFINE_SPINLOCK(mtk_svs_lock);
->>> +struct mtk_svs;
->>> +
->>> +enum svsb_phase {
->>
->> nit: mtk_svs_bphase?
-> 
-> ditto
-> 
->>
->>> +       SVSB_PHASE_INIT01 = 0,
->>
->> nit: SVS_BPHASE_?
-> 
-> ditto
-> 
->>
->>> +       SVSB_PHASE_INIT02,
->>> +       SVSB_PHASE_MON,
->>> +       SVSB_PHASE_ERROR,
->>> +};
->>> +
->>> +enum reg_index {
->>
->> nit: svs_reg_index?
-> 
-> OK. Thanks.
-> 
->>
->>> +       TEMPMONCTL0 = 0,
->>> +       TEMPMONCTL1,
->>> +       TEMPMONCTL2,
->>> +       TEMPMONINT,
->>> +       TEMPMONINTSTS,
->>> +       TEMPMONIDET0,
->>> +       TEMPMONIDET1,
->>> +       TEMPMONIDET2,
->>> +       TEMPH2NTHRE,
->>> +       TEMPHTHRE,
->>> +       TEMPCTHRE,
->>> +       TEMPOFFSETH,
->>> +       TEMPOFFSETL,
->>> +       TEMPMSRCTL0,
->>> +       TEMPMSRCTL1,
->>> +       TEMPAHBPOLL,
->>> +       TEMPAHBTO,
->>> +       TEMPADCPNP0,
->>> +       TEMPADCPNP1,
->>> +       TEMPADCPNP2,
->>> +       TEMPADCMUX,
->>> +       TEMPADCEXT,
->>> +       TEMPADCEXT1,
->>> +       TEMPADCEN,
->>> +       TEMPPNPMUXADDR,
->>> +       TEMPADCMUXADDR,
->>> +       TEMPADCEXTADDR,
->>> +       TEMPADCEXT1ADDR,
->>> +       TEMPADCENADDR,
->>> +       TEMPADCVALIDADDR,
->>> +       TEMPADCVOLTADDR,
->>> +       TEMPRDCTRL,
->>> +       TEMPADCVALIDMASK,
->>> +       TEMPADCVOLTAGESHIFT,
->>> +       TEMPADCWRITECTRL,
->>> +       TEMPMSR0,
->>> +       TEMPMSR1,
->>> +       TEMPMSR2,
->>> +       TEMPADCHADDR,
->>> +       TEMPIMMD0,
->>> +       TEMPIMMD1,
->>> +       TEMPIMMD2,
->>> +       TEMPMONIDET3,
->>> +       TEMPADCPNP3,
->>> +       TEMPMSR3,
->>> +       TEMPIMMD3,
->>> +       TEMPPROTCTL,
->>> +       TEMPPROTTA,
->>> +       TEMPPROTTB,
->>> +       TEMPPROTTC,
->>> +       TEMPSPARE0,
->>> +       TEMPSPARE1,
->>> +       TEMPSPARE2,
->>> +       TEMPSPARE3,
->>> +       TEMPMSR0_1,
->>> +       TEMPMSR1_1,
->>> +       TEMPMSR2_1,
->>> +       TEMPMSR3_1,
->>> +       DESCHAR,
->>> +       TEMPCHAR,
->>> +       DETCHAR,
->>> +       AGECHAR,
->>> +       DCCONFIG,
->>> +       AGECONFIG,
->>> +       FREQPCT30,
->>> +       FREQPCT74,
->>> +       LIMITVALS,
->>> +       VBOOT,
->>> +       DETWINDOW,
->>> +       CONFIG,
->>> +       TSCALCS,
->>> +       RUNCONFIG,
->>> +       SVSEN,
->>> +       INIT2VALS,
->>> +       DCVALUES,
->>> +       AGEVALUES,
->>> +       VOP30,
->>> +       VOP74,
->>> +       TEMP,
->>> +       INTSTS,
->>> +       INTSTSRAW,
->>> +       INTEN,
->>> +       CHKINT,
->>> +       CHKSHIFT,
->>> +       STATUS,
->>> +       VDESIGN30,
->>> +       VDESIGN74,
->>> +       DVT30,
->>> +       DVT74,
->>> +       AGECOUNT,
->>> +       SMSTATE0,
->>> +       SMSTATE1,
->>> +       CTL0,
->>> +       DESDETSEC,
->>> +       TEMPAGESEC,
->>> +       CTRLSPARE0,
->>> +       CTRLSPARE1,
->>> +       CTRLSPARE2,
->>> +       CTRLSPARE3,
->>> +       CORESEL,
->>> +       THERMINTST,
->>> +       INTST,
->>> +       THSTAGE0ST,
->>> +       THSTAGE1ST,
->>> +       THSTAGE2ST,
->>> +       THAHBST0,
->>> +       THAHBST1,
->>> +       SPARE0,
->>> +       SPARE1,
->>> +       SPARE2,
->>> +       SPARE3,
->>> +       THSLPEVEB,
->>> +       reg_num,
->>> +};
->>> +
->>> +static const u32 svs_regs_v2[] = {
->>
->> Is this SoC specific or shared between SoCs?
-> 
-> Shared between SoCs. Some SVS in MTK SoCs use v2 register map.
-> 
+We had to merge a series that changed the drivers/gpu/drm, drivers/soc and
+drivers/clk.
+So I took the series through my branch and Chun-Kuang merged a stable tag in his
+branch so that he can take commits on top of this changes.
 
-And which silicon uses v1 then? Is v2 a MediaTek internal naming you want to keep?
-
->>
->>> +       [TEMPMONCTL0]           = 0x000,
->>> +       [TEMPMONCTL1]           = 0x004,
->>> +       [TEMPMONCTL2]           = 0x008,
->>> +       [TEMPMONINT]            = 0x00c,
->>> +       [TEMPMONINTSTS]         = 0x010,
->>> +       [TEMPMONIDET0]          = 0x014,
->>> +       [TEMPMONIDET1]          = 0x018,
->>> +       [TEMPMONIDET2]          = 0x01c,
->>> +       [TEMPH2NTHRE]           = 0x024,
->>> +       [TEMPHTHRE]             = 0x028,
->>> +       [TEMPCTHRE]             = 0x02c,
->>> +       [TEMPOFFSETH]           = 0x030,
->>> +       [TEMPOFFSETL]           = 0x034,
->>> +       [TEMPMSRCTL0]           = 0x038,
->>> +       [TEMPMSRCTL1]           = 0x03c,
->>> +       [TEMPAHBPOLL]           = 0x040,
->>> +       [TEMPAHBTO]             = 0x044,
->>> +       [TEMPADCPNP0]           = 0x048,
->>> +       [TEMPADCPNP1]           = 0x04c,
->>> +       [TEMPADCPNP2]           = 0x050,
->>> +       [TEMPADCMUX]            = 0x054,
->>> +       [TEMPADCEXT]            = 0x058,
->>> +       [TEMPADCEXT1]           = 0x05c,
->>> +       [TEMPADCEN]             = 0x060,
->>> +       [TEMPPNPMUXADDR]        = 0x064,
->>> +       [TEMPADCMUXADDR]        = 0x068,
->>> +       [TEMPADCEXTADDR]        = 0x06c,
->>> +       [TEMPADCEXT1ADDR]       = 0x070,
->>> +       [TEMPADCENADDR]         = 0x074,
->>> +       [TEMPADCVALIDADDR]      = 0x078,
->>> +       [TEMPADCVOLTADDR]       = 0x07c,
->>> +       [TEMPRDCTRL]            = 0x080,
->>> +       [TEMPADCVALIDMASK]      = 0x084,
->>> +       [TEMPADCVOLTAGESHIFT]   = 0x088,
->>> +       [TEMPADCWRITECTRL]      = 0x08c,
->>> +       [TEMPMSR0]              = 0x090,
->>> +       [TEMPMSR1]              = 0x094,
->>> +       [TEMPMSR2]              = 0x098,
->>> +       [TEMPADCHADDR]          = 0x09c,
->>> +       [TEMPIMMD0]             = 0x0a0,
->>> +       [TEMPIMMD1]             = 0x0a4,
->>> +       [TEMPIMMD2]             = 0x0a8,
->>> +       [TEMPMONIDET3]          = 0x0b0,
->>> +       [TEMPADCPNP3]           = 0x0b4,
->>> +       [TEMPMSR3]              = 0x0b8,
->>> +       [TEMPIMMD3]             = 0x0bc,
->>> +       [TEMPPROTCTL]           = 0x0c0,
->>> +       [TEMPPROTTA]            = 0x0c4,
->>> +       [TEMPPROTTB]            = 0x0c8,
->>> +       [TEMPPROTTC]            = 0x0cc,
->>> +       [TEMPSPARE0]            = 0x0f0,
->>> +       [TEMPSPARE1]            = 0x0f4,
->>> +       [TEMPSPARE2]            = 0x0f8,
->>> +       [TEMPSPARE3]            = 0x0fc,
->>> +       [TEMPMSR0_1]            = 0x190,
->>> +       [TEMPMSR1_1]            = 0x194,
->>> +       [TEMPMSR2_1]            = 0x198,
->>> +       [TEMPMSR3_1]            = 0x1b8,
->>> +       [DESCHAR]               = 0xc00,
->>> +       [TEMPCHAR]              = 0xc04,
->>> +       [DETCHAR]               = 0xc08,
->>> +       [AGECHAR]               = 0xc0c,
->>> +       [DCCONFIG]              = 0xc10,
->>> +       [AGECONFIG]             = 0xc14,
->>> +       [FREQPCT30]             = 0xc18,
->>> +       [FREQPCT74]             = 0xc1c,
->>> +       [LIMITVALS]             = 0xc20,
->>> +       [VBOOT]                 = 0xc24,
->>> +       [DETWINDOW]             = 0xc28,
->>> +       [CONFIG]                = 0xc2c,
->>> +       [TSCALCS]               = 0xc30,
->>> +       [RUNCONFIG]             = 0xc34,
->>> +       [SVSEN]                 = 0xc38,
->>> +       [INIT2VALS]             = 0xc3c,
->>> +       [DCVALUES]              = 0xc40,
->>> +       [AGEVALUES]             = 0xc44,
->>> +       [VOP30]                 = 0xc48,
->>> +       [VOP74]                 = 0xc4c,
->>> +       [TEMP]                  = 0xc50,
->>> +       [INTSTS]                = 0xc54,
->>> +       [INTSTSRAW]             = 0xc58,
->>> +       [INTEN]                 = 0xc5c,
->>> +       [CHKINT]                = 0xc60,
->>> +       [CHKSHIFT]              = 0xc64,
->>> +       [STATUS]                = 0xc68,
->>> +       [VDESIGN30]             = 0xc6c,
->>> +       [VDESIGN74]             = 0xc70,
->>> +       [DVT30]                 = 0xc74,
->>> +       [DVT74]                 = 0xc78,
->>> +       [AGECOUNT]              = 0xc7c,
->>> +       [SMSTATE0]              = 0xc80,
->>> +       [SMSTATE1]              = 0xc84,
->>> +       [CTL0]                  = 0xc88,
->>> +       [DESDETSEC]             = 0xce0,
->>> +       [TEMPAGESEC]            = 0xce4,
->>> +       [CTRLSPARE0]            = 0xcf0,
->>> +       [CTRLSPARE1]            = 0xcf4,
->>> +       [CTRLSPARE2]            = 0xcf8,
->>> +       [CTRLSPARE3]            = 0xcfc,
->>> +       [CORESEL]               = 0xf00,
->>> +       [THERMINTST]            = 0xf04,
->>> +       [INTST]                 = 0xf08,
->>> +       [THSTAGE0ST]            = 0xf0c,
->>> +       [THSTAGE1ST]            = 0xf10,
->>> +       [THSTAGE2ST]            = 0xf14,
->>> +       [THAHBST0]              = 0xf18,
->>> +       [THAHBST1]              = 0xf1c,
->>> +       [SPARE0]                = 0xf20,
->>> +       [SPARE1]                = 0xf24,
->>> +       [SPARE2]                = 0xf28,
->>> +       [SPARE3]                = 0xf2c,
->>> +       [THSLPEVEB]             = 0xf30,
->>> +};
->>> +
->>> +struct thermal_parameter {
->>
->> In general, not only in this struct, would be good have some
->> documentation to have a better undestanding of the fields. That makes
->> the job of the reviewer a bit easier.
-> 
-> Ok. Could you share a documentation example to us? We'll share the
-> information as much as we can. Thanks a lot.
-> 
-
-you should find that in all drivers, eg:
-https://elixir.bootlin.com/linux/latest/source/drivers/soc/mediatek/mtk-scpsys.c#L111
-
+Maybe the explanation comes too late, but I just wanted to clarify.
 
 Regards,
 Matthias
+
+> 
+> Please resend this again cleaned up.
+> 
+> Dave.
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
