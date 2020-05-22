@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D1549C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 21:37:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F228FC433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 22:37:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 97A0920679
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 21:37:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BA16A207D8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 22:37:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bexNyvFe"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 97A0920679
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rJhHMptm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BA16A207D8
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=davemloft.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,41 +24,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
 	From:Subject:To:Message-Id:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M+JFyaQ0yABArbTSnyPJgpdkR0Qb4JpPbv/JSZJb8SM=; b=bexNyvFe7cORjU
-	fhvgIxt8reGKAJjWgoUP0Qz4ODUHAh3T7yyry0pSTQCwC+fsdFcAlUUGfArmYkXkaIa5VR4kyg6g9
-	q7zGT1gj0pbRbSoQh1qrInveSvfVM4bGA3yQfJz9Yl9V4ge+OpIspqdxIBBfUStYyhy9+RXSJX5dh
-	TH+zqYnieATShE6cDoSiMq7eh9dqhYJPrm1TWIigUmnP4/GMHiO4pd42HN5+ni1DZGe86JOFleJc+
-	sMr0s0AyG5398m/5xk53+14969U4t2GAu3ycuiaFv5STEdpC/UzkVhf3+4juQkD3zZ6b4WT66fvHA
-	gOUr4h0AcoDRNE+CTUYw==;
+	List-Owner; bh=Xj1GPrQyQ14HHIsw9lECsqlREJPEGCM7druErItOnZs=; b=rJhHMptmH80von
+	yooS8A4CfMHjr4Y9x/kEZ6VNiuMs+2pE8jtrYwLwICsv/LnRDhBKHe1WSNFVHfg7PhCictdJVHn3G
+	kt6Hfw5ZN2UJxVieO4LMvPFywi/dJtxq0TpxhY/jeXlFPnKZD73g3iVb0pBss/OKI1vj3wJy4pEaX
+	URKH1LSy+6IRawk3qgwRGNosePHarG4OTX1TzQGXdxXZH8O9Ei6YURf0Q9zj67IDkTzYIjl6a9s3r
+	UneWlUcrLd01hKSLkOjEv+WIRC4WESSTAbqhtZaarSCm9RUYxR85onC1P/TacNg52jYclQCikNhSQ
+	KkeCotvc+akN16tb+PpQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jcFLl-0006KX-Ka; Fri, 22 May 2020 21:37:05 +0000
+	id 1jcGHx-00085V-8u; Fri, 22 May 2020 22:37:13 +0000
 Received: from shards.monkeyblade.net ([2620:137:e000::1:9])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jcFLe-0006Cm-AD; Fri, 22 May 2020 21:36:59 +0000
+ id 1jcGHn-0007y1-Fa; Fri, 22 May 2020 22:37:04 +0000
 Received: from localhost (unknown [IPv6:2601:601:9f00:477::3d5])
  (using TLSv1 with cipher AES256-SHA (256/256 bits))
  (Client did not present a certificate)
  (Authenticated sender: davem-davemloft)
- by shards.monkeyblade.net (Postfix) with ESMTPSA id D6961127298FB;
- Fri, 22 May 2020 14:36:56 -0700 (PDT)
-Date: Fri, 22 May 2020 14:36:56 -0700 (PDT)
-Message-Id: <20200522.143656.1986528672037093503.davem@davemloft.net>
-To: matthias.bgg@gmail.com
-Subject: Re: [PATCH v5 00/11] mediatek: add support for MediaTek Ethernet MAC
+ by shards.monkeyblade.net (Postfix) with ESMTPSA id B0F6412738EE0;
+ Fri, 22 May 2020 15:36:54 -0700 (PDT)
+Date: Fri, 22 May 2020 15:36:53 -0700 (PDT)
+Message-Id: <20200522.153653.998395486877096103.davem@davemloft.net>
+To: brgl@bgdev.pl
+Subject: Re: [PATCH 0/5] net: provide a devres variant of register_netdev()
 From: David Miller <davem@davemloft.net>
-In-Reply-To: <1f941213-7ca2-c138-3530-85c34ebf0d53@gmail.com>
-References: <20200522120700.838-1-brgl@bgdev.pl>
- <20200522.142031.1631406151370247419.davem@davemloft.net>
- <1f941213-7ca2-c138-3530-85c34ebf0d53@gmail.com>
+In-Reply-To: <20200520114415.13041-1-brgl@bgdev.pl>
+References: <20200520114415.13041-1-brgl@bgdev.pl>
 X-Mailer: Mew version 6.8 on Emacs 26.3
 Mime-Version: 1.0
 X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.5.12
  (shards.monkeyblade.net [149.20.54.216]);
- Fri, 22 May 2020 14:36:57 -0700 (PDT)
+ Fri, 22 May 2020 15:36:55 -0700 (PDT)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200522_143658_351158_B4B0595B 
-X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-CacheID: sfid-20200522_153703_521093_4E3E4DFA 
+X-CRM114-Status: UNSURE (   3.88  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -72,11 +70,11 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: edwin.peer@broadcom.com, devicetree@vger.kernel.org,
- stephane.leprovost@mediatek.com, arnd@arndb.de, bgolaszewski@baylibre.com,
- netdev@vger.kernel.org, brgl@bgdev.pl, sean.wang@mediatek.com,
- linux-kernel@vger.kernel.org, pedro.tsai@mediatek.com, fparent@baylibre.com,
- robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
- andrew.perepech@mediatek.com, john@phrozen.org, kuba@kernel.org,
+ bgolaszewski@baylibre.com, stephane.leprovost@mediatek.com, arnd@arndb.de,
+ corbet@lwn.net, netdev@vger.kernel.org, sean.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, fparent@baylibre.com, pedro.tsai@mediatek.com,
+ linux-mediatek@lists.infradead.org, andrew.perepech@mediatek.com,
+ john@phrozen.org, matthias.bgg@gmail.com, kuba@kernel.org,
  Mark-MC.Lee@mediatek.com, linux-arm-kernel@lists.infradead.org,
  hkallweit1@gmail.com
 Content-Type: text/plain; charset="us-ascii"
@@ -84,32 +82,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Date: Fri, 22 May 2020 23:31:50 +0200
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Wed, 20 May 2020 13:44:10 +0200
 
-> 
-> 
-> On 22/05/2020 23:20, David Miller wrote:
->> From: Bartosz Golaszewski <brgl@bgdev.pl>
->> Date: Fri, 22 May 2020 14:06:49 +0200
->> 
->>> This series adds support for the STAR Ethernet Controller present on MediaTeK
->>> SoCs from the MT8* family.
->> 
->> Series applied to net-next, thank you.
->> 
-> 
-> If you say "series applied" do you mean you also applied the device tree parts?
-> These should go through my branch, because there could be conflicts if there are
-> other device tree patches from other series, not related with network, touching
-> the same files.
+>   net: ethernet: mtk_eth_mac: use devm_register_netdev()
 
-It's starting to get rediculous and tedious to manage the DT changes
-when they are tied to new networking drivers and such.
+This patch doesn't apply to net-next.
 
-And in any event, it is the patch series submitter's responsibility to
-sort these issues out, separate the patches based upon target tree, and
-clearly indicate this in the introductory posting and Subject lines.
+Neither the source file drivers/net/ethernet/mediatek/mtk_eth_mac.c,
+nor the function mtk_mac_probe() even exist in the net-next GIT
+tree.
 
 _______________________________________________
 Linux-mediatek mailing list
