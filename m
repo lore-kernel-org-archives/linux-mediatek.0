@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E8791C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 12:10:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B0919C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 12:10:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B7368206C3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 12:10:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5056F206B6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 12:10:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EcqtYWJO";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="Sn/1CrJl"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B7368206C3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="H0Sph9G9";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="VhVGCTS4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5056F206B6
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bgdev.pl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UsnyaVkn6vys0ET0yeWzl/eMoV7ln8pbsPWjkaja5mQ=; b=EcqtYWJODIXiSR
-	RUTVF99ZRuSzJxQYwnS+pJiobURvHh13boA9EwjChbfMPe1N2IGKKfw/oMn9CQ3kUl4SY/RZ8kRR5
-	YO82nT2MmGnOnwq9IDWk3C/hvZeStzFKQqUDGJUJ4Gd/B5kR60Gu2WUUZjlEoF+gN4ms8Sf0W7jIv
-	jRriDRyTkADF6YNUrZiLKBKGA1ZyfkMDBf41y1Xe7DtqEjvuesdS2mu7BKVtgSGpDQdRMGzgDLnR+
-	8xpm4C1RtLd59qQ4pgRjwLw9RNcRKmpR7Z+/klLy69LL4E2whDtnuxpNCG9sCaC/SdH9gaalaQ6ff
-	+bv2kzN6+qxiEsdN5hog==;
+	List-Owner; bh=rB/QYMKvJuLMt1uKsrnMb1Wd6aOdfEMqRzSZl1Cgrjo=; b=H0Sph9G9c5DcMy
+	2F0NJdh1AUHRCriH3rIdUup42ttFMN9BjRgbhdOjXWyp7Bo+6PDgqo7lt+a1MbvLJuozTUgTZx+tn
+	DN1XscLsacoZUbT/JyvfjX5F9d2GJel2uD9nqZ6qjxzfwlnl1GZLB+pUOmSvwvqaVMdcKWNRAaDwy
+	f3ZCRIuJctc4qDELaum53ff6gxtMWAzrUAQaYr1ZoFQ2qNqNTSEJtuNkMU/m+h8UNGnTuWwwVg4zj
+	EmafGSHZ/mgiRQdKgZ5x4N9uNeIMDnoGe5BjUVnWEWl6ryHHc+T5iZjmARZLiQ6TbPaWOa/LdO7SY
+	A2oZmS1QBlqQHf32fNVQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jc6Va-00007Y-DO; Fri, 22 May 2020 12:10:38 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1jc6Vf-0000EE-EJ; Fri, 22 May 2020 12:10:43 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jc6Sc-0003Rz-Ai
+ id 1jc6Sc-0003SN-Vh
  for linux-mediatek@lists.infradead.org; Fri, 22 May 2020 12:07:40 +0000
-Received: by mail-wm1-x342.google.com with SMTP id h4so8418582wmb.4
+Received: by mail-wr1-x441.google.com with SMTP id c11so436369wrn.6
  for <linux-mediatek@lists.infradead.org>; Fri, 22 May 2020 05:07:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=cLB08H4ZIlTMzvj5hInDPm3tTNq7mk/XtYoMNSk6v2w=;
- b=Sn/1CrJlRf1gaXAt7BzExoLU8RuOHChRbTQLpaUrzwFYqGsov68ZYpiUu778e1h74U
- EG8H1AkAkI/Dvmx5QKB9iXaqQh4CeJTf3KZiOAOTno9BIiFgfkjQQ3V4IRkEH4GAPrLA
- maiOekJ94V3I7H6hUXcjbEOxaDc55leACFe7VuKpdTyg7O80elge/QfPQjJeWku+bhMk
- /BOFybbSX0X7y3Qvi81k2fAIAzdXkIexmNVingkHUbHWITInUkDyAjfPXgMuJPMXVerx
- QZT3djIizjK6MVClkQM2eCBMIBdSWPweS9uJyC7sYma38spotFpi6WHBHlfhEvvRmcPV
- FXNg==
+ bh=1qePp19LiRiOBXtccpgQ+eI6GUOhz0auoBWQ11adkXY=;
+ b=VhVGCTS4grQt6k3HIErrSSbtbGv1Wb2NV++azMsGdLYYMvxxpy9bDLN55ZLzINOV9k
+ FA4B2MGWBaHYAgatvgf2dGYKrGO8xWsZ4QKI9fTkogQYBe2HwRX4p37rG6SYWT43qr9m
+ rzKobBuagWzGznsZIFsj05iy4OgSMBAR8TGedQokwHS8EPC5GmcC3wXUr9VaTZVsqePl
+ FEcg341dLTGcYR88SzS5d1jPHMbs60ufBgTrfl+nqj5vy+SytnzIR3P34AHGt0pyfmvL
+ djl2y9/l9gHpLihRw3dgb1o44HKCoGq741hEmx2t9uXgkpbm6wlqvo9SaJ7s0OIIeCWx
+ mAIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=cLB08H4ZIlTMzvj5hInDPm3tTNq7mk/XtYoMNSk6v2w=;
- b=jWOI7t05th7M+GdI3Kyex1XhkMAir/Axqx4xbTWQtxyO4St9Rfx2asqUr+zD+ZJ2td
- R/XaDq4uUV7vIlsvN/dkknBteZTOKyT9mV21noPHVpdXf3qVdKxNkmSUWDxi2dmCwj3I
- vWCkC3tlb0fNRRe5alX6WJnLJo+GuO4PusE/Uv1HoCA+lq9VU62TpeL82It+cM8bXF9m
- TIAuyqraIN+5NGjTb0DoFjB8mAos+Evo2sM6bWCx1tdCBkgGBQli8QuwEMD3pQs4TYAR
- +ldXYDWnROnFlYqDO6tG5LU6FrUpciWtR7tRnPL9JxH2GePa41/fQAjzdPfCaRO6C4s2
- Y3+A==
-X-Gm-Message-State: AOAM531snCzCYkRcs1e8ZUij9w+2Cy/ZogivtlpT5ergkjHnwtCYuCS7
- wOGnT/2w34/862BWEqvjX/c8cA==
-X-Google-Smtp-Source: ABdhPJy2DwWygp0CZukF1c5MDhWbG3suEHoLEk61djOMVZnj0q+0DRdXHTp94SuAfm6DtS52JEtM4Q==
-X-Received: by 2002:a1c:4857:: with SMTP id v84mr13962835wma.106.1590149252025; 
- Fri, 22 May 2020 05:07:32 -0700 (PDT)
+ bh=1qePp19LiRiOBXtccpgQ+eI6GUOhz0auoBWQ11adkXY=;
+ b=WR0ezJU6NCgyby3T3WFVO54pzzmPlA7i3E2PZch5wBZGOpgv4ZkcjeAX2eibst1qJq
+ o6s65Fcjtt/OCNcsq+hr9QUZsMjV+MydddKYQVzQNmDbOSREblsODhMnNbWkMmc6gYSk
+ AoRIBQiizpGkhOkYdPiKYg2Kecb4h9brPFH7CA/oYXlUo6aE8AytVGkEOd8GS6diLqCm
+ fRFkXBqocNQWtEOrWgMiE5IPFfyITPF8bt3Lr58NN5l0fTYmPGp5+4CScXQRt1grlxiv
+ ZkcP29FbFWu/o8d9gGvmejsPM4v9veHDxMsbJ+oEbPSOmZ9tjW/iTjRvL7Zfs8M3bhtN
+ FIJg==
+X-Gm-Message-State: AOAM533p7B3C3qpS57YkfIoYoFAatxQT8JHvew9kC7XBQwEtRurGZAd/
+ F+0plf8tQdslwSnx8qTKyk+dVQ==
+X-Google-Smtp-Source: ABdhPJzG2w/6WApFpPLpfPz5eZ2F69IZCZdA6mR68/WmlVPBV46pTlpI4dGghrWp/qiA5FGADLqR8Q==
+X-Received: by 2002:a5d:4f0d:: with SMTP id c13mr3365938wru.357.1590149253506; 
+ Fri, 22 May 2020 05:07:33 -0700 (PDT)
 Received: from localhost.localdomain (lfbn-nic-1-65-232.w2-15.abo.wanadoo.fr.
  [2.15.156.232])
- by smtp.gmail.com with ESMTPSA id f128sm9946233wme.1.2020.05.22.05.07.30
+ by smtp.gmail.com with ESMTPSA id f128sm9946233wme.1.2020.05.22.05.07.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 May 2020 05:07:31 -0700 (PDT)
+ Fri, 22 May 2020 05:07:33 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
 To: Rob Herring <robh+dt@kernel.org>, "David S . Miller" <davem@davemloft.net>,
  Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <john@phrozen.org>,
@@ -81,17 +81,17 @@ To: Rob Herring <robh+dt@kernel.org>, "David S . Miller" <davem@davemloft.net>,
  Fabien Parent <fparent@baylibre.com>,
  Heiner Kallweit <hkallweit1@gmail.com>,
  Edwin Peer <edwin.peer@broadcom.com>
-Subject: [PATCH v5 08/11] ARM64: dts: mediatek: add the ethernet node to
- mt8516.dtsi
-Date: Fri, 22 May 2020 14:06:57 +0200
-Message-Id: <20200522120700.838-9-brgl@bgdev.pl>
+Subject: [PATCH v5 09/11] ARM64: dts: mediatek: add an alias for ethernet0 for
+ pumpkin boards
+Date: Fri, 22 May 2020 14:06:58 +0200
+Message-Id: <20200522120700.838-10-brgl@bgdev.pl>
 X-Mailer: git-send-email 2.25.0
 In-Reply-To: <20200522120700.838-1-brgl@bgdev.pl>
 References: <20200522120700.838-1-brgl@bgdev.pl>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200522_050734_462433_263E2177 
-X-CRM114-Status: UNSURE (   9.24  )
+X-CRM114-CacheID: sfid-20200522_050735_098802_30B54DDF 
+X-CRM114-Status: UNSURE (   9.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -117,37 +117,26 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 
-Add the Ethernet MAC node to mt8516.dtsi. This defines parameters common
-to all the boards based on this SoC.
+Add the ethernet0 alias for ethernet so that u-boot can find this node
+and fill in the MAC address.
 
 Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8516.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8516.dtsi b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-index 8cedaf74ae86..89af661e7f63 100644
---- a/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-@@ -406,6 +406,18 @@ mmc2: mmc@11170000 {
- 			status = "disabled";
- 		};
+diff --git a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
+index a31093d7142b..97d9b000c37e 100644
+--- a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
++++ b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
+@@ -9,6 +9,7 @@
+ / {
+ 	aliases {
+ 		serial0 = &uart0;
++		ethernet0 = &ethernet;
+ 	};
  
-+		ethernet: ethernet@11180000 {
-+			compatible = "mediatek,mt8516-eth";
-+			reg = <0 0x11180000 0 0x1000>;
-+			mediatek,pericfg = <&pericfg>;
-+			interrupts = <GIC_SPI 111 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&topckgen CLK_TOP_RG_ETH>,
-+				 <&topckgen CLK_TOP_66M_ETH>,
-+				 <&topckgen CLK_TOP_133M_ETH>;
-+			clock-names = "core", "reg", "trans";
-+			status = "disabled";
-+		};
-+
- 		rng: rng@1020c000 {
- 			compatible = "mediatek,mt8516-rng",
- 				     "mediatek,mt7623-rng";
+ 	chosen {
 -- 
 2.25.0
 
