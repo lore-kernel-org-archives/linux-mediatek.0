@@ -2,77 +2,170 @@ Return-Path: <SRS0=9rwW=7E=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3CB13C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 14:21:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 55AE5C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 15:06:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EED012245F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 14:21:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E253E205CB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 15:06:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KCVXzv8P";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="euRrR6yk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EED012245F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ahIgMn/x";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ZzQUSc6B"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E253E205CB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pspplheWxdx8TfgDHxqUkRI+1USuHKkAr425H+eGvCk=; b=KCVXzv8PGsiM7z
-	05PsTW6ZtH3lj9dsTmWl96EBKHosm82guNUGRykbDxvwjpjmWRSbddGvJRQaBbWMVVsrwb5Fxa0eR
-	vCTZlhXbHX/SrX+TktT4lKcyn8j4aoHx9/nkruNunIojT9zqEJobZuhWE+QrcKmBOQ9Duf9m7Kuai
-	ZvXZkuHABAA9mjs+knO/ySqlB94DthJJDg/s55EGQw6wmpeGAP3CTbD+/jB3Gwq1A2pAiERK6x6Hx
-	DgdNC68HFPfHuV64onzB8TVO3eyBiEUnC+OGD5yazB5hSY1ZcWbJhMnSsGcfswfIq1/idqRrqC1JZ
-	u3QXwU+1s+63v+ki1F3Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=SAsx1HEl/j7Kl6fFTdJn8nh8hlIXAxtkBlM7iaWOyXk=; b=ahIgMn/xO9wPEG
+	sybGxbhwNqob0ZMqGUksdSEanWfCp760xKYK8FkpPVg9WIDyikEJl13y3QLpmK0Hn9606PhvDjZEf
+	eaSQ4kzzuMni+L2EBEdnb9Q2d9xxzZjRh8wDc8VXCz/Ss+RxS0cF8AeQVwKCI641/3qRL1FBS2WFf
+	AH7h6ua4WIilGq2mjQP2NY+19mnNRHNebJfacnulMeav5hbXjBQU2NBgQGsRfBiiNawVQw66nZJzY
+	kKKps3usc5OSYsXNnrCOjIiV397niwH1Hu8ZWUvop5YUPciAAc0ZxdFHVd2m9Nvk4TpRH6EoFgZmf
+	W44ASfiHTotOg2OZNYaA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jc8Xy-0004jA-R0; Fri, 22 May 2020 14:21:14 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jc9G0-0002F1-HP; Fri, 22 May 2020 15:06:44 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jc8Xt-0004iJ-RS; Fri, 22 May 2020 14:21:12 +0000
-X-UUID: e30fc0b0d0fb4d3995e101d7598b6c9e-20200522
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=O6kJJyACUJalT+c1EmXfnkhAwzGhDrPE+kC/YlUnpFQ=; 
- b=euRrR6ykCaGMem3OCznfB4XIJ5FX+rNOJBxp0UFgjM/RV9YQdTtKwq+ozeyrnqzYlkiyoy/zjpi6KrQyEQtjBb9+crg4FjdXWOxe+EZQkCfgHbpPYIJx3SsS24NNID/PvLkB8joGMElI64JCUG9uvurcL+XILSX+93hgHM5QxCQ=;
-X-UUID: e30fc0b0d0fb4d3995e101d7598b6c9e-20200522
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jerry-ch.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1563402749; Fri, 22 May 2020 06:20:46 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 22 May 2020 07:10:57 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 22 May 2020 22:10:56 +0800
-Received: from [172.21.84.99] (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 22 May 2020 22:10:55 +0800
-Message-ID: <1590156658.27807.84.camel@mtksdccf07>
-Subject: Re: [RFC PATCH V4 4/4] platform: mtk-isp: Add Mediatek FD driver
-From: Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>
-To: Tomasz Figa <tfiga@chromium.org>
-Date: Fri, 22 May 2020 22:10:58 +0800
-In-Reply-To: <20200521182825.GA249683@chromium.org>
-References: <20191204124732.10932-1-Jerry-Ch.chen@mediatek.com>
- <20191204124732.10932-5-Jerry-Ch.chen@mediatek.com>
- <20200521182825.GA249683@chromium.org>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1jc9Fu-0002DH-BY; Fri, 22 May 2020 15:06:42 +0000
+Received: by mail-wm1-x344.google.com with SMTP id z4so8950729wmi.2;
+ Fri, 22 May 2020 08:06:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=5/3S3YctHzzKlt9Eudes14oucA/ApPf00bDsbbKr4EI=;
+ b=ZzQUSc6BMj5QPtPsAIb6ATLW7X8tdqv7jOdH+FIq5FRXKiXsf4iVlOsdnGoIUAXzs2
+ mm960fX/bG/Z3kMrIJxl8gjY++GjIHRpE/scxDxQtL5J/jR1bJttY9zDdrCyvj9A//F8
+ WepwThKtM8m9ORBQILtL+4/sv7ATwxvieOphXIUqkTNC7QA3I21n+AUABd61TAnkQtUT
+ Xu8vFJLF6VNO7VXZLsUvfrr7Pv9s8IHJKnGQ+JB99wA4h6U34Ym3WTnsI9WgLMY+n5qY
+ gJnIc0EC1ugb7OPhWBgVgfvtopmI7c6hcoqmCSviYUqCdA8WADFSSFBknt+QQ3voJi7f
+ IWvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=5/3S3YctHzzKlt9Eudes14oucA/ApPf00bDsbbKr4EI=;
+ b=t+/ZeyC/GUgH2Rnv6FNsKTTxaU07wkizHNSQfn7+ppBcbiPF7ABte6oaVtkwMEwkT7
+ Lnwphb7tjwsivbW+FQZOwr0kdl7kq+1T18mtALyfZ5tSTLOF0kfxbTDbBopiFcJjpLeC
+ zOpHB2lpHz02+EomiuQGbW4De7bBMgUH8PmzWaX/9A37rjDmjbcThd4crfeSJ1OsgdbS
+ 6QeHxztc3HRMibrnbI9ZQhrIi73eTSHXQ0yFnspvYgq+f0kj6YtYrjO6KcQ5yu3UriAM
+ vNV8yT7x4PVlNmd0bKw9hZTRCiSTPN7LJYUwQlJI80zOjngaEocKMxiXViLISU93rOmn
+ 4PCg==
+X-Gm-Message-State: AOAM53108oRwlCDW60zTONEmgxrTvalP0mFAXAQN749rqcpH59bzaI/i
+ 169b0eM9AgJ8UkMu88zRAdU=
+X-Google-Smtp-Source: ABdhPJzZxDd8ih8e/dQL+0u1vZv3hT56b5VS+qXQYGT7Y05vy2S/kw8iCuPCNYTKojCxQhs1ZJeWNw==
+X-Received: by 2002:a7b:c0c9:: with SMTP id s9mr13442297wmh.59.1590159996202; 
+ Fri, 22 May 2020 08:06:36 -0700 (PDT)
+Received: from ziggy.stardust ([213.195.113.243])
+ by smtp.gmail.com with ESMTPSA id c25sm9421152wmb.44.2020.05.22.08.06.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 22 May 2020 08:06:35 -0700 (PDT)
+Subject: Re: [PATCH v5 06/11] net: ethernet: mtk-star-emac: new driver
+To: Bartosz Golaszewski <brgl@bgdev.pl>, Rob Herring <robh+dt@kernel.org>,
+ "David S . Miller" <davem@davemloft.net>, John Crispin <john@phrozen.org>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Jakub Kicinski <kuba@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+ Fabien Parent <fparent@baylibre.com>, Heiner Kallweit
+ <hkallweit1@gmail.com>, Edwin Peer <edwin.peer@broadcom.com>
+References: <20200522120700.838-1-brgl@bgdev.pl>
+ <20200522120700.838-7-brgl@bgdev.pl>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <5627e304-3463-9229-fa86-d7d31cad7a61@gmail.com>
+Date: Fri, 22 May 2020 17:06:34 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20200522120700.838-7-brgl@bgdev.pl>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200522_072110_070357_211AC7E5 
-X-CRM114-Status: GOOD (  33.05  )
+X-CRM114-CacheID: sfid-20200522_080638_433112_18099451 
+X-CRM114-Status: GOOD (  20.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,900 +177,1746 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sean.Cheng@mediatek.com,
- laurent.pinchart+renesas@ideasonboard.com, Rynn.Wu@mediatek.com,
- zwisler@chromium.org, srv_heupstream@mediatek.com, christie.yu@mediatek.com,
- jerry-ch.chen@mediatek.com, hverkuil@xs4all.nl, jungo.lin@mediatek.com,
- sj.huang@mediatek.com, yuzhao@chromium.org, hans.verkuil@cisco.com,
- pihsun@chromium.org, frederic.chen@mediatek.com, matthias.bgg@gmail.com,
- linux-mediatek@lists.infradead.org, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: devicetree@vger.kernel.org,
+ Stephane Le Provost <stephane.leprovost@mediatek.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ linux-mediatek@lists.infradead.org,
+ Andrew Perepech <andrew.perepech@mediatek.com>,
+ Pedro Tsai <pedro.tsai@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Tomasz,
-
-On Thu, 2020-05-21 at 18:28 +0000, Tomasz Figa wrote:
-> Hi Jerry,
-> 
-> On Wed, Dec 04, 2019 at 08:47:32PM +0800, Jerry-ch Chen wrote:
-> > From: Jerry-ch Chen <jerry-ch.chen@mediatek.com>
-> > 
-> > This patch adds the driver of Face Detection (FD) unit in
-> > Mediatek camera system, providing face detection function.
-> > 
-> > The mtk-isp directory will contain drivers for multiple IP
-> > blocks found in Mediatek ISP system. It will include ISP Pass 1
-> > driver (CAM), sensor interface driver, DIP driver and face
-> > detection driver.
-> > 
-> > Signed-off-by: Jerry-ch Chen <jerry-ch.chen@mediatek.com>
-> > ---
-> >  drivers/media/platform/Kconfig                |    2 +
-> >  drivers/media/platform/Makefile               |    2 +
-> >  drivers/media/platform/mtk-isp/fd/Kconfig     |   19 +
-> >  drivers/media/platform/mtk-isp/fd/Makefile    |    5 +
-> >  drivers/media/platform/mtk-isp/fd/mtk_fd.h    |  149 ++
-> >  drivers/media/platform/mtk-isp/fd/mtk_fd_40.c | 1279 +++++++++++++++++
-> >  include/uapi/linux/v4l2-controls.h            |    4 +
-> >  include/uapi/linux/videodev2.h                |    3 +
-> >  8 files changed, 1463 insertions(+)
-> >  create mode 100644 drivers/media/platform/mtk-isp/fd/Kconfig
-> >  create mode 100644 drivers/media/platform/mtk-isp/fd/Makefile
-> >  create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd.h
-> >  create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd_40.c
-> > 
-> 
-> Thank you for the patch. Please see my comments inline. Really sorry for
-> the much delayed review.
-> 
-
-I appreciate your comments, here's the reply
-
-> [snip]
-> > +config VIDEO_MEDIATEK_FD
-> > +	tristate "Mediatek face detection processing function"
-> > +	depends on VIDEO_V4L2
-> > +	depends on ARCH_MEDIATEK
-> > +	select VIDEOBUF2_DMA_CONTIG
-> > +	select VIDEOBUF2_CORE
-> > +	select VIDEOBUF2_V4L2
-> > +	select VIDEOBUF2_MEMOPS
-> > +	select MEDIA_CONTROLLER
-> > +	select MTK_SCP
-> > +
-> > +	default n
-> > +	help
-> > +		Support the Face Detection (FD) feature in the Mediatek
-> > +		mt8183 Soc.
-> 
-> MT8183?
-Fixed.
-
-> 
-> > +
-> > +		FD driver is a V4L2 memory-to-memory device driver which
-> > +		provides hardware accelerated face detection function,
-> > +		it can detect different sizes of faces in a raw image.
-> 
-> A YUV image I guess?
-Fixed
-
-> 
-> [snip]
-> > diff --git a/drivers/media/platform/mtk-isp/fd/mtk_fd.h b/drivers/media/platform/mtk-isp/fd/mtk_fd.h
-> > new file mode 100644
-> > index 000000000000..d85bdcb70d6d
-> > --- /dev/null
-> > +++ b/drivers/media/platform/mtk-isp/fd/mtk_fd.h
-> > @@ -0,0 +1,149 @@
-> > +/* SPDX-License-Identifier: GPL-2.0 */
-> > +//
-> > +// Copyright (c) 2018 MediaTek Inc.
-> > +
-> > +#ifndef __MTK_FD_HW_H__
-> > +#define __MTK_FD_HW_H__
-> > +
-> > +#include <linux/completion.h>
-> > +#include <linux/io.h>
-> > +#include <linux/types.h>
-> > +#include <linux/platform_device.h>
-> > +#include <media/v4l2-ctrls.h>
-> > +#include <media/v4l2-device.h>
-> > +#include <media/videobuf2-v4l2.h>
-> > +
-> > +#define MTK_FD_OUTPUT_MIN_WIDTH			26U
-> > +#define MTK_FD_OUTPUT_MIN_HEIGHT		26U
-> > +#define MTK_FD_OUTPUT_MAX_WIDTH			640U
-> > +#define MTK_FD_OUTPUT_MAX_HEIGHT		480U
-> > +
-> > +#define MTK_FD_HW_FMT_VYUY			2
-> > +#define MTK_FD_HW_FMT_UYVY			3
-> > +#define MTK_FD_HW_FMT_YVYU			4
-> > +#define MTK_FD_HW_FMT_YUYV			5
-> > +#define MTK_FD_HW_FMT_YVU_2P			6
-> > +#define MTK_FD_HW_FMT_YUV_2P			7
-> > +#define MTK_FD_HW_FMT_UNKNOWN			8
-> 
-> What is an unknown format?
-It's used in translate v4l2 pixel format to the value that FD HW
-recognized. But I think the case of UNKNWOWN shouldn't happened.
-I will remove it
-
-> 
-> > +
-> > +#define MTK_FD_IPI_CMD_INIT			0
-> > +#define MTK_FD_IPI_CMD_INIT_ACK			1
-> > +#define MTK_FD_IPI_CMD_ENQUEUE			2
-> > +#define MTK_FD_IPI_CMD_ENQ_ACK			3
-> > +#define MTK_FD_IPI_CMD_EXIT			4
-> > +#define MTK_FD_IPI_CMD_EXIT_ACK			5
-> > +#define MTK_FD_IPI_CMD_RESET			6
-> > +#define MTK_FD_IPI_CMD_RESET_ACK		7
-> > +
-> > +#define MTK_FD_REG_OFFSET_HW_ENABLE		0x4
-> > +#define MTK_FD_REG_OFFSET_INT_EN		0x15c
-> > +#define MTK_FD_REG_OFFSET_INT_VAL		0x168
-> > +#define MTK_FD_REG_OFFSET_RESULT		0x178
-> > +
-> > +#define MTK_FD_SET_HW_ENABLE			0x111
-> > +#define MTK_FD_RS_BUF_SIZE			2289664
-> > +#define MTK_FD_HW_WORK_BUF_SIZE			0x100000
-> 
-> How about using the SZ_1M?
-> 
-yes, fixed.
-> > +#define MTK_FD_MAX_SPEEDUP			7
-> > +#define MTK_FD_MAX_RESULT_NUM			1026
-> 
-> Perhaps NUM_RESULTS?
-> 
-fixed as MTK_FD_MAX_NUM_RESULT.
-
-> > +
-> > +/* Max scale size counts */
-> > +#define MTK_FD_SCALE_ARR_NUM			15
-> 
-> Perhaps NUM_SCALE_SIZES?
-> 
-fixed as MTK_FD_NUM_SCALE_SIZE
-
-> > +
-> > +#define MTK_FD_HW_TIMEOUT			1000
-> 
-> What's the unit?
-it's in milliseconds, I would like to rename it to
-MTK_FD_HW_TIMEOUT_MSEC
-
-> 
-> > +
-> > +enum face_angle {
-> > +	MTK_FD_FACE_FRONT,
-> > +	MTK_FD_FACE_RIGHT_50,
-> > +	MTK_FD_FACE_LEFT_50,
-> > +	MTK_FD_FACE_RIGHT_90,
-> > +	MTK_FD_FACE_LEFT_90,
-> > +	MTK_FD_FACE_ANGLE_NUM,
-> > +};
-> 
-> This enum seems to define values for the V4L2_CID_MTK_FD_DETECT_POSE
-> control. Considering that this is an enumeration and the values are
-> actually integers (-90, -50, 0, 50, 90), perhaps this should be an
-> INTEGER_MENU control instead?
-> 
-
-this ioctl let user select multiple face positions(combination of angles
-and directions) to be detected. so I thought I am not able to use the
-INTEGER_MENU for this purpose.
-
-A bit-field as following should be used by user.
-I consider adding it to uapi.
-
-struct face_direction_def {
-__u16 MTK_FD_FACE_DIR_0 : 1,
-	MTK_FD_FACE_DIR_30 : 1,
-	MTK_FD_FACE_DIR_60 : 1,
-	MTK_FD_FACE_DIR_90 : 1,
-	MTK_FD_FACE_DIR_120 : 1,
-	MTK_FD_FACE_DIR_150 : 1,
-	MTK_FD_FACE_DIR_180 : 1,
-	MTK_FD_FACE_DIR_210 : 1,
-	MTK_FD_FACE_DIR_240 : 1,
-	MTK_FD_FACE_DIR_270 : 1,
-	MTK_FD_FACE_DIR_300 : 1,
-	MTK_FD_FACE_DIR_330 : 1,
-	: 4;
-};
-
-User can also select some face directions of each face angle in one
-ioctl, for example:
-
-/* 
- * u16 face_directions[MTK_FD_FACE_ANGLE_NUM] = {0};
- *
- *	face_directions[MTK_FD_FACE_FRONT] = 0x7; //angle:0, dir:0,30,60
- *	face_directions[MTK_FACE_RIGHT_50] = 0x2; //angle:50, dir:30 
- * 
- */
-
-> > +
-> > +struct fd_buffer {
-> > +	__u32 scp_addr;	/* used by SCP */
-> > +	__u32 dma_addr;	/* used by DMA HW */
-> > +} __packed;
-fd buffer is used for scp ipi
-
-> > +
-> > +struct fd_face_result {
-> > +	char data[16];
-> > +};
-fd_face_result is used for user, so it should be moved to
-include/uapi/linux.
-In fact, it has bit-field definition for user, so I would like to define
-it in include/uapi/linux as following:
-
-struct fd_face_result {
-  __u64 face_idx : 12,
-	type : 1,
-	x0 : 10,
-	y0 : 10,
-	x1 : 10,
-	y1 : 10,
-	fcv1 : 11;
-  __u64 fcv2 : 7,
-	rip_dir : 4,
-	rop_dir : 3,
-	det_size : 5;
-};
 
 
-> > +
-> > +struct fd_user_output {
-> > +	struct fd_face_result results[MTK_FD_MAX_RESULT_NUM];
-> > +	__u16 number;
+On 22/05/2020 14:06, Bartosz Golaszewski wrote:
+> From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 > 
-> Is this perhaps the number of results? If so, would num_results be a better
-> name?
-> 
-yes, fixed.
-> > +};
-> 
-> Since this struct is the meta buffer format, it is a part of the userspace
-> interface and should be defined in a header under include/uapi/linux/.
-> 
-Ok, I will create include/uapi/linux/mtk_fd_40.h
-which suppose to include structures that userspace will use.
-should the private IOCTLs be placed in it together?
+> This adds the driver for the MediaTek STAR Ethernet MAC currently used
+> on the MT8* SoC family. For now we only support full-duplex.
 
-
-> > +
-> > +struct user_param {
-> > +	u8 fd_speedup;
-> > +	u8 fd_extra_model;
-> > +	u8 scale_img_num;
-> > +	u8 src_img_fmt;
-> > +	__u16 scale_img_width[MTK_FD_SCALE_ARR_NUM];
-> > +	__u16 scale_img_height[MTK_FD_SCALE_ARR_NUM];
-> > +	__u16 face_directions[MTK_FD_FACE_ANGLE_NUM];
-> 
-> Is this a user-facing definition or an interface between the kernel driver
-> and firmware? If the latter, the __ types shouldn't be used.
-> 
-It's the later, I'll fix it.
-
-
-> > +} __packed;
-> > +
-> > +struct fd_init_param {
-> > +	struct fd_buffer fd_manager;
-> > +	__u32 rs_dma_addr;
-> 
-> Ditto.
-> 
-done.
-
-> > +} __packed;
-> > +
-> > +struct fd_enq_param {
-> > +	__u64 output_vaddr;
-> 
-> Ditto.
-done.
+MT85** SoC family, AFAIU it's not used on MT81** devices. Correct?
 
 > 
-> > +	struct fd_buffer src_img[2];
-> > +	struct fd_buffer user_result;
-> > +	struct user_param user_param;
-> > +} __packed;
-> > +
-> > +struct fd_ack_param {
-> > +	__u32 ret_code;
-> > +	__u32 ret_msg;
+> Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+> ---
+>  drivers/net/ethernet/mediatek/Kconfig         |    7 +
+>  drivers/net/ethernet/mediatek/Makefile        |    1 +
+>  drivers/net/ethernet/mediatek/mtk_star_emac.c | 1678 +++++++++++++++++
+>  3 files changed, 1686 insertions(+)
+>  create mode 100644 drivers/net/ethernet/mediatek/mtk_star_emac.c
 > 
-> Ditto.
-done.
-
+> diff --git a/drivers/net/ethernet/mediatek/Kconfig b/drivers/net/ethernet/mediatek/Kconfig
+> index 5079b8090f16..500c15e7ea4a 100644
+> --- a/drivers/net/ethernet/mediatek/Kconfig
+> +++ b/drivers/net/ethernet/mediatek/Kconfig
+> @@ -14,4 +14,11 @@ config NET_MEDIATEK_SOC
+>  	  This driver supports the gigabit ethernet MACs in the
+>  	  MediaTek SoC family.
+>  
+> +config NET_MEDIATEK_STAR_EMAC
+> +	tristate "MediaTek STAR Ethernet MAC support"
+> +	select PHYLIB
+> +	help
+> +	  This driver supports the ethernet MAC IP first used on
+> +	  MediaTek MT85** SoCs.
+> +
+>  endif #NET_VENDOR_MEDIATEK
+> diff --git a/drivers/net/ethernet/mediatek/Makefile b/drivers/net/ethernet/mediatek/Makefile
+> index 3362fb7ef859..3a777b4a6cd3 100644
+> --- a/drivers/net/ethernet/mediatek/Makefile
+> +++ b/drivers/net/ethernet/mediatek/Makefile
+> @@ -5,3 +5,4 @@
+>  
+>  obj-$(CONFIG_NET_MEDIATEK_SOC) += mtk_eth.o
+>  mtk_eth-y := mtk_eth_soc.o mtk_sgmii.o mtk_eth_path.o
+> +obj-$(CONFIG_NET_MEDIATEK_STAR_EMAC) += mtk_star_emac.o
+> diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+> new file mode 100644
+> index 000000000000..789c77af501f
+> --- /dev/null
+> +++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+> @@ -0,0 +1,1678 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/*
+> + * Copyright (c) 2020 MediaTek Corporation
+> + * Copyright (c) 2020 BayLibre SAS
+> + *
+> + * Author: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+> + */
+> +
+> +#include <linux/bits.h>
+> +#include <linux/clk.h>
+> +#include <linux/compiler.h>
+> +#include <linux/dma-mapping.h>
+> +#include <linux/etherdevice.h>
+> +#include <linux/kernel.h>
+> +#include <linux/mfd/syscon.h>
+> +#include <linux/mii.h>
+> +#include <linux/module.h>
+> +#include <linux/netdevice.h>
+> +#include <linux/of.h>
+> +#include <linux/of_mdio.h>
+> +#include <linux/of_net.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/pm.h>
+> +#include <linux/regmap.h>
+> +#include <linux/skbuff.h>
+> +#include <linux/spinlock.h>
+> +#include <linux/workqueue.h>
+> +
+> +#define MTK_STAR_DRVNAME			"mtk_star_emac"
+> +
+> +#define MTK_STAR_WAIT_TIMEOUT			300
+> +#define MTK_STAR_MAX_FRAME_SIZE			1514
+> +#define MTK_STAR_SKB_ALIGNMENT			16
+> +#define MTK_STAR_NAPI_WEIGHT			64
+> +#define MTK_STAR_HASHTABLE_MC_LIMIT		256
+> +#define MTK_STAR_HASHTABLE_SIZE_MAX		512
+> +
+> +/* Normally we'd use NET_IP_ALIGN but on arm64 its value is 0 and it doesn't
+> + * work for this controller.
+> + */
+> +#define MTK_STAR_IP_ALIGN			2
+> +
+> +static const char *const mtk_star_clk_names[] = { "core", "reg", "trans" };
+> +#define MTK_STAR_NCLKS ARRAY_SIZE(mtk_star_clk_names)
+> +
+> +/* PHY Control Register 0 */
+> +#define MTK_STAR_REG_PHY_CTRL0			0x0000
+> +#define MTK_STAR_BIT_PHY_CTRL0_WTCMD		BIT(13)
+> +#define MTK_STAR_BIT_PHY_CTRL0_RDCMD		BIT(14)
+> +#define MTK_STAR_BIT_PHY_CTRL0_RWOK		BIT(15)
+> +#define MTK_STAR_MSK_PHY_CTRL0_PREG		GENMASK(12, 8)
+> +#define MTK_STAR_OFF_PHY_CTRL0_PREG		8
+> +#define MTK_STAR_MSK_PHY_CTRL0_RWDATA		GENMASK(31, 16)
+> +#define MTK_STAR_OFF_PHY_CTRL0_RWDATA		16
+> +
+> +/* PHY Control Register 1 */
+> +#define MTK_STAR_REG_PHY_CTRL1			0x0004
+> +#define MTK_STAR_BIT_PHY_CTRL1_LINK_ST		BIT(0)
+> +#define MTK_STAR_BIT_PHY_CTRL1_AN_EN		BIT(8)
+> +#define MTK_STAR_OFF_PHY_CTRL1_FORCE_SPD	9
+> +#define MTK_STAR_VAL_PHY_CTRL1_FORCE_SPD_10M	0x00
+> +#define MTK_STAR_VAL_PHY_CTRL1_FORCE_SPD_100M	0x01
+> +#define MTK_STAR_VAL_PHY_CTRL1_FORCE_SPD_1000M	0x02
+> +#define MTK_STAR_BIT_PHY_CTRL1_FORCE_DPX	BIT(11)
+> +#define MTK_STAR_BIT_PHY_CTRL1_FORCE_FC_RX	BIT(12)
+> +#define MTK_STAR_BIT_PHY_CTRL1_FORCE_FC_TX	BIT(13)
+> +
+> +/* MAC Configuration Register */
+> +#define MTK_STAR_REG_MAC_CFG			0x0008
+> +#define MTK_STAR_OFF_MAC_CFG_IPG		10
+> +#define MTK_STAR_VAL_MAC_CFG_IPG_96BIT		GENMASK(4, 0)
+> +#define MTK_STAR_BIT_MAC_CFG_MAXLEN_1522	BIT(16)
+> +#define MTK_STAR_BIT_MAC_CFG_AUTO_PAD		BIT(19)
+> +#define MTK_STAR_BIT_MAC_CFG_CRC_STRIP		BIT(20)
+> +#define MTK_STAR_BIT_MAC_CFG_VLAN_STRIP		BIT(22)
+> +#define MTK_STAR_BIT_MAC_CFG_NIC_PD		BIT(31)
+> +
+> +/* Flow-Control Configuration Register */
+> +#define MTK_STAR_REG_FC_CFG			0x000c
+> +#define MTK_STAR_BIT_FC_CFG_BP_EN		BIT(7)
+> +#define MTK_STAR_BIT_FC_CFG_UC_PAUSE_DIR	BIT(8)
+> +#define MTK_STAR_OFF_FC_CFG_SEND_PAUSE_TH	16
+> +#define MTK_STAR_MSK_FC_CFG_SEND_PAUSE_TH	GENMASK(27, 16)
+> +#define MTK_STAR_VAL_FC_CFG_SEND_PAUSE_TH_2K	0x800
+> +
+> +/* ARL Configuration Register */
+> +#define MTK_STAR_REG_ARL_CFG			0x0010
+> +#define MTK_STAR_BIT_ARL_CFG_HASH_ALG		BIT(0)
+> +#define MTK_STAR_BIT_ARL_CFG_MISC_MODE		BIT(4)
+> +
+> +/* MAC High and Low Bytes Registers */
+> +#define MTK_STAR_REG_MY_MAC_H			0x0014
+> +#define MTK_STAR_REG_MY_MAC_L			0x0018
+> +
+> +/* Hash Table Control Register */
+> +#define MTK_STAR_REG_HASH_CTRL			0x001c
+> +#define MTK_STAR_MSK_HASH_CTRL_HASH_BIT_ADDR	GENMASK(8, 0)
+> +#define MTK_STAR_BIT_HASH_CTRL_HASH_BIT_DATA	BIT(12)
+> +#define MTK_STAR_BIT_HASH_CTRL_ACC_CMD		BIT(13)
+> +#define MTK_STAR_BIT_HASH_CTRL_CMD_START	BIT(14)
+> +#define MTK_STAR_BIT_HASH_CTRL_BIST_OK		BIT(16)
+> +#define MTK_STAR_BIT_HASH_CTRL_BIST_DONE	BIT(17)
+> +#define MTK_STAR_BIT_HASH_CTRL_BIST_EN		BIT(31)
+> +
+> +/* TX DMA Control Register */
+> +#define MTK_STAR_REG_TX_DMA_CTRL		0x0034
+> +#define MTK_STAR_BIT_TX_DMA_CTRL_START		BIT(0)
+> +#define MTK_STAR_BIT_TX_DMA_CTRL_STOP		BIT(1)
+> +#define MTK_STAR_BIT_TX_DMA_CTRL_RESUME		BIT(2)
+> +
+> +/* RX DMA Control Register */
+> +#define MTK_STAR_REG_RX_DMA_CTRL		0x0038
+> +#define MTK_STAR_BIT_RX_DMA_CTRL_START		BIT(0)
+> +#define MTK_STAR_BIT_RX_DMA_CTRL_STOP		BIT(1)
+> +#define MTK_STAR_BIT_RX_DMA_CTRL_RESUME		BIT(2)
+> +
+> +/* DMA Address Registers */
+> +#define MTK_STAR_REG_TX_DPTR			0x003c
+> +#define MTK_STAR_REG_RX_DPTR			0x0040
+> +#define MTK_STAR_REG_TX_BASE_ADDR		0x0044
+> +#define MTK_STAR_REG_RX_BASE_ADDR		0x0048
+> +
+> +/* Interrupt Status Register */
+> +#define MTK_STAR_REG_INT_STS			0x0050
+> +#define MTK_STAR_REG_INT_STS_PORT_STS_CHG	BIT(2)
+> +#define MTK_STAR_REG_INT_STS_MIB_CNT_TH		BIT(3)
+> +#define MTK_STAR_BIT_INT_STS_FNRC		BIT(6)
+> +#define MTK_STAR_BIT_INT_STS_TNTC		BIT(8)
+> +
+> +/* Interrupt Mask Register */
+> +#define MTK_STAR_REG_INT_MASK			0x0054
+> +#define MTK_STAR_BIT_INT_MASK_FNRC		BIT(6)
+> +
+> +/* Misc. Config Register */
+> +#define MTK_STAR_REG_TEST1			0x005c
+> +#define MTK_STAR_BIT_TEST1_RST_HASH_MBIST	BIT(31)
+> +
+> +/* Extended Configuration Register */
+> +#define MTK_STAR_REG_EXT_CFG			0x0060
+> +#define MTK_STAR_OFF_EXT_CFG_SND_PAUSE_RLS	16
+> +#define MTK_STAR_MSK_EXT_CFG_SND_PAUSE_RLS	GENMASK(26, 16)
+> +#define MTK_STAR_VAL_EXT_CFG_SND_PAUSE_RLS_1K	0x400
+> +
+> +/* EthSys Configuration Register */
+> +#define MTK_STAR_REG_SYS_CONF			0x0094
+> +#define MTK_STAR_BIT_MII_PAD_OUT_ENABLE		BIT(0)
+> +#define MTK_STAR_BIT_EXT_MDC_MODE		BIT(1)
+> +#define MTK_STAR_BIT_SWC_MII_MODE		BIT(2)
+> +
+> +/* MAC Clock Configuration Register */
+> +#define MTK_STAR_REG_MAC_CLK_CONF		0x00ac
+> +#define MTK_STAR_MSK_MAC_CLK_CONF		GENMASK(7, 0)
+> +#define MTK_STAR_BIT_CLK_DIV_10			0x0a
+> +
+> +/* Counter registers. */
+> +#define MTK_STAR_REG_C_RXOKPKT			0x0100
+> +#define MTK_STAR_REG_C_RXOKBYTE			0x0104
+> +#define MTK_STAR_REG_C_RXRUNT			0x0108
+> +#define MTK_STAR_REG_C_RXLONG			0x010c
+> +#define MTK_STAR_REG_C_RXDROP			0x0110
+> +#define MTK_STAR_REG_C_RXCRC			0x0114
+> +#define MTK_STAR_REG_C_RXARLDROP		0x0118
+> +#define MTK_STAR_REG_C_RXVLANDROP		0x011c
+> +#define MTK_STAR_REG_C_RXCSERR			0x0120
+> +#define MTK_STAR_REG_C_RXPAUSE			0x0124
+> +#define MTK_STAR_REG_C_TXOKPKT			0x0128
+> +#define MTK_STAR_REG_C_TXOKBYTE			0x012c
+> +#define MTK_STAR_REG_C_TXPAUSECOL		0x0130
+> +#define MTK_STAR_REG_C_TXRTY			0x0134
+> +#define MTK_STAR_REG_C_TXSKIP			0x0138
+> +#define MTK_STAR_REG_C_TX_ARP			0x013c
+> +#define MTK_STAR_REG_C_RX_RERR			0x01d8
+> +#define MTK_STAR_REG_C_RX_UNI			0x01dc
+> +#define MTK_STAR_REG_C_RX_MULTI			0x01e0
+> +#define MTK_STAR_REG_C_RX_BROAD			0x01e4
+> +#define MTK_STAR_REG_C_RX_ALIGNERR		0x01e8
+> +#define MTK_STAR_REG_C_TX_UNI			0x01ec
+> +#define MTK_STAR_REG_C_TX_MULTI			0x01f0
+> +#define MTK_STAR_REG_C_TX_BROAD			0x01f4
+> +#define MTK_STAR_REG_C_TX_TIMEOUT		0x01f8
+> +#define MTK_STAR_REG_C_TX_LATECOL		0x01fc
+> +#define MTK_STAR_REG_C_RX_LENGTHERR		0x0214
+> +#define MTK_STAR_REG_C_RX_TWIST			0x0218
+> +
+> +/* Ethernet CFG Control */
+> +#define MTK_PERICFG_REG_NIC_CFG_CON		0x03c4
+> +#define MTK_PERICFG_MSK_NIC_CFG_CON_CFG_MII	GENMASK(3, 0)
+> +#define MTK_PERICFG_BIT_NIC_CFG_CON_RMII	BIT(0)
+> +
+> +/* Represents the actual structure of descriptors used by the MAC. We can
+> + * reuse the same structure for both TX and RX - the layout is the same, only
+> + * the flags differ slightly.
+> + */
+> +struct mtk_star_ring_desc {
+> +	/* Contains both the status flags as well as packet length. */
+> +	u32 status;
+> +	u32 data_ptr;
+> +	u32 vtag;
+> +	u32 reserved;
+> +};
+> +
+> +#define MTK_STAR_DESC_MSK_LEN			GENMASK(15, 0)
+> +#define MTK_STAR_DESC_BIT_RX_CRCE		BIT(24)
+> +#define MTK_STAR_DESC_BIT_RX_OSIZE		BIT(25)
+> +#define MTK_STAR_DESC_BIT_INT			BIT(27)
+> +#define MTK_STAR_DESC_BIT_LS			BIT(28)
+> +#define MTK_STAR_DESC_BIT_FS			BIT(29)
+> +#define MTK_STAR_DESC_BIT_EOR			BIT(30)
+> +#define MTK_STAR_DESC_BIT_COWN			BIT(31)
+> +
+> +/* Helper structure for storing data read from/written to descriptors in order
+> + * to limit reads from/writes to DMA memory.
+> + */
+> +struct mtk_star_ring_desc_data {
+> +	unsigned int len;
+> +	unsigned int flags;
+> +	dma_addr_t dma_addr;
+> +	struct sk_buff *skb;
+> +};
+> +
+> +#define MTK_STAR_RING_NUM_DESCS			128
+> +#define MTK_STAR_NUM_TX_DESCS			MTK_STAR_RING_NUM_DESCS
+> +#define MTK_STAR_NUM_RX_DESCS			MTK_STAR_RING_NUM_DESCS
+> +#define MTK_STAR_NUM_DESCS_TOTAL		(MTK_STAR_RING_NUM_DESCS * 2)
+> +#define MTK_STAR_DMA_SIZE \
+> +		(MTK_STAR_NUM_DESCS_TOTAL * sizeof(struct mtk_star_ring_desc))
+> +
+> +struct mtk_star_ring {
+> +	struct mtk_star_ring_desc *descs;
+> +	struct sk_buff *skbs[MTK_STAR_RING_NUM_DESCS];
+> +	dma_addr_t dma_addrs[MTK_STAR_RING_NUM_DESCS];
+> +	unsigned int head;
+> +	unsigned int tail;
+> +};
+> +
+> +struct mtk_star_priv {
+> +	struct net_device *ndev;
+> +
+> +	struct regmap *regs;
+> +	struct regmap *pericfg;
+> +
+> +	struct clk_bulk_data clks[MTK_STAR_NCLKS];
+> +
+> +	void *ring_base;
+> +	struct mtk_star_ring_desc *descs_base;
+> +	dma_addr_t dma_addr;
+> +	struct mtk_star_ring tx_ring;
+> +	struct mtk_star_ring rx_ring;
+> +
+> +	struct mii_bus *mii;
+> +	struct napi_struct napi;
+> +
+> +	struct device_node *phy_node;
+> +	phy_interface_t phy_intf;
+> +	struct phy_device *phydev;
+> +	unsigned int link;
+> +	int speed;
+> +	int duplex;
+> +	int pause;
+> +
+> +	/* Protects against concurrent descriptor access. */
+> +	spinlock_t lock;
+> +
+> +	struct rtnl_link_stats64 stats;
+> +	struct work_struct stats_work;
+> +};
+> +
+> +static struct device *mtk_star_get_dev(struct mtk_star_priv *priv)
+> +{
+> +	return priv->ndev->dev.parent;
+> +}
+> +
+> +static const struct regmap_config mtk_star_regmap_config = {
+> +	.reg_bits		= 32,
+> +	.val_bits		= 32,
+> +	.reg_stride		= 4,
+> +	.disable_locking	= true,
+> +};
+> +
+> +static void mtk_star_ring_init(struct mtk_star_ring *ring,
+> +			       struct mtk_star_ring_desc *descs)
+> +{
+> +	memset(ring, 0, sizeof(*ring));
+> +	ring->descs = descs;
+> +	ring->head = 0;
+> +	ring->tail = 0;
+> +}
+> +
+> +static int mtk_star_ring_pop_tail(struct mtk_star_ring *ring,
+> +				  struct mtk_star_ring_desc_data *desc_data)
+> +{
+> +	struct mtk_star_ring_desc *desc = &ring->descs[ring->tail];
+> +	unsigned int status;
+> +
+> +	status = READ_ONCE(desc->status);
+> +	dma_rmb(); /* Make sure we read the status bits before checking it. */
+> +
+> +	if (!(status & MTK_STAR_DESC_BIT_COWN))
+> +		return -1;
+> +
+> +	desc_data->len = status & MTK_STAR_DESC_MSK_LEN;
+> +	desc_data->flags = status & ~MTK_STAR_DESC_MSK_LEN;
+> +	desc_data->dma_addr = ring->dma_addrs[ring->tail];
+> +	desc_data->skb = ring->skbs[ring->tail];
+> +
+> +	ring->dma_addrs[ring->tail] = 0;
+> +	ring->skbs[ring->tail] = NULL;
+> +
+> +	status &= MTK_STAR_DESC_BIT_COWN | MTK_STAR_DESC_BIT_EOR;
+> +
+> +	WRITE_ONCE(desc->data_ptr, 0);
+> +	WRITE_ONCE(desc->status, status);
+> +
+> +	ring->tail = (ring->tail + 1) % MTK_STAR_RING_NUM_DESCS;
+> +
+> +	return 0;
+> +}
+> +
+> +static void mtk_star_ring_push_head(struct mtk_star_ring *ring,
+> +				    struct mtk_star_ring_desc_data *desc_data,
+> +				    unsigned int flags)
+> +{
+> +	struct mtk_star_ring_desc *desc = &ring->descs[ring->head];
+> +	unsigned int status;
+> +
+> +	status = READ_ONCE(desc->status);
+> +
+> +	ring->skbs[ring->head] = desc_data->skb;
+> +	ring->dma_addrs[ring->head] = desc_data->dma_addr;
+> +
+> +	status |= desc_data->len;
+> +	if (flags)
+> +		status |= flags;
+> +
+> +	WRITE_ONCE(desc->data_ptr, desc_data->dma_addr);
+> +	WRITE_ONCE(desc->status, status);
+> +	status &= ~MTK_STAR_DESC_BIT_COWN;
+> +	/* Flush previous modifications before ownership change. */
+> +	dma_wmb();
+> +	WRITE_ONCE(desc->status, status);
+> +
+> +	ring->head = (ring->head + 1) % MTK_STAR_RING_NUM_DESCS;
+> +}
+> +
+> +static void
+> +mtk_star_ring_push_head_rx(struct mtk_star_ring *ring,
+> +			   struct mtk_star_ring_desc_data *desc_data)
+> +{
+> +	mtk_star_ring_push_head(ring, desc_data, 0);
+> +}
+> +
+> +static void
+> +mtk_star_ring_push_head_tx(struct mtk_star_ring *ring,
+> +			   struct mtk_star_ring_desc_data *desc_data)
+> +{
+> +	static const unsigned int flags = MTK_STAR_DESC_BIT_FS |
+> +					  MTK_STAR_DESC_BIT_LS |
+> +					  MTK_STAR_DESC_BIT_INT;
+> +
+> +	mtk_star_ring_push_head(ring, desc_data, flags);
+> +}
+> +
+> +static unsigned int mtk_star_ring_num_used_descs(struct mtk_star_ring *ring)
+> +{
+> +	return abs(ring->head - ring->tail);
+> +}
+> +
+> +static bool mtk_star_ring_full(struct mtk_star_ring *ring)
+> +{
+> +	return mtk_star_ring_num_used_descs(ring) == MTK_STAR_RING_NUM_DESCS;
+> +}
+> +
+> +static bool mtk_star_ring_descs_available(struct mtk_star_ring *ring)
+> +{
+> +	return mtk_star_ring_num_used_descs(ring) > 0;
+> +}
+> +
+> +static dma_addr_t mtk_star_dma_map_rx(struct mtk_star_priv *priv,
+> +				      struct sk_buff *skb)
+> +{
+> +	struct device *dev = mtk_star_get_dev(priv);
+> +
+> +	/* Data pointer for the RX DMA descriptor must be aligned to 4N + 2. */
+> +	return dma_map_single(dev, skb_tail_pointer(skb) - 2,
+> +			      skb_tailroom(skb), DMA_FROM_DEVICE);
+> +}
+> +
+> +static void mtk_star_dma_unmap_rx(struct mtk_star_priv *priv,
+> +				  struct mtk_star_ring_desc_data *desc_data)
+> +{
+> +	struct device *dev = mtk_star_get_dev(priv);
+> +
+> +	dma_unmap_single(dev, desc_data->dma_addr,
+> +			 skb_tailroom(desc_data->skb), DMA_FROM_DEVICE);
+> +}
+> +
+> +static dma_addr_t mtk_star_dma_map_tx(struct mtk_star_priv *priv,
+> +				      struct sk_buff *skb)
+> +{
+> +	struct device *dev = mtk_star_get_dev(priv);
+> +
+> +	return dma_map_single(dev, skb->data, skb_headlen(skb), DMA_TO_DEVICE);
+> +}
+> +
+> +static void mtk_star_dma_unmap_tx(struct mtk_star_priv *priv,
+> +				  struct mtk_star_ring_desc_data *desc_data)
+> +{
+> +	struct device *dev = mtk_star_get_dev(priv);
+> +
+> +	return dma_unmap_single(dev, desc_data->dma_addr,
+> +				skb_headlen(desc_data->skb), DMA_TO_DEVICE);
+> +}
+> +
+> +static void mtk_star_nic_disable_pd(struct mtk_star_priv *priv)
+> +{
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_MAC_CFG,
+> +			   MTK_STAR_BIT_MAC_CFG_NIC_PD, 0);
+> +}
+> +
+> +/* Unmask the three interrupts we care about, mask all others. */
+> +static void mtk_star_intr_enable(struct mtk_star_priv *priv)
+> +{
+> +	unsigned int val = MTK_STAR_BIT_INT_STS_TNTC |
+> +			   MTK_STAR_BIT_INT_STS_FNRC |
+> +			   MTK_STAR_REG_INT_STS_MIB_CNT_TH;
+> +
+> +	regmap_write(priv->regs, MTK_STAR_REG_INT_MASK, ~val);
+> +}
+> +
+> +static void mtk_star_intr_disable(struct mtk_star_priv *priv)
+> +{
+> +	regmap_write(priv->regs, MTK_STAR_REG_INT_MASK, ~0);
+> +}
+> +
+> +static void mtk_star_intr_enable_tx(struct mtk_star_priv *priv)
+> +{
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_INT_MASK,
+> +			   MTK_STAR_BIT_INT_STS_TNTC, 0);
+> +}
+> +
+> +static void mtk_star_intr_enable_rx(struct mtk_star_priv *priv)
+> +{
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_INT_MASK,
+> +			   MTK_STAR_BIT_INT_STS_FNRC, 0);
+> +}
+> +
+> +static void mtk_star_intr_enable_stats(struct mtk_star_priv *priv)
+> +{
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_INT_MASK,
+> +			   MTK_STAR_REG_INT_STS_MIB_CNT_TH, 0);
+> +}
+> +
+> +static void mtk_star_intr_disable_tx(struct mtk_star_priv *priv)
+> +{
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_INT_MASK,
+> +			   MTK_STAR_BIT_INT_STS_TNTC,
+> +			   MTK_STAR_BIT_INT_STS_TNTC);
+> +}
+> +
+> +static void mtk_star_intr_disable_rx(struct mtk_star_priv *priv)
+> +{
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_INT_MASK,
+> +			   MTK_STAR_BIT_INT_STS_FNRC,
+> +			   MTK_STAR_BIT_INT_STS_FNRC);
+> +}
+> +
+> +static void mtk_star_intr_disable_stats(struct mtk_star_priv *priv)
+> +{
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_INT_MASK,
+> +			   MTK_STAR_REG_INT_STS_MIB_CNT_TH,
+> +			   MTK_STAR_REG_INT_STS_MIB_CNT_TH);
+> +}
+> +
+> +static unsigned int mtk_star_intr_read(struct mtk_star_priv *priv)
+> +{
+> +	unsigned int val;
+> +
+> +	regmap_read(priv->regs, MTK_STAR_REG_INT_STS, &val);
+> +
+> +	return val;
+> +}
+> +
+> +static unsigned int mtk_star_intr_ack_all(struct mtk_star_priv *priv)
+> +{
+> +	unsigned int val;
+> +
+> +	val = mtk_star_intr_read(priv);
+> +	regmap_write(priv->regs, MTK_STAR_REG_INT_STS, val);
+> +
+> +	return val;
+> +}
+> +
+> +static void mtk_star_dma_init(struct mtk_star_priv *priv)
+> +{
+> +	struct mtk_star_ring_desc *desc;
+> +	unsigned int val;
+> +	int i;
+> +
+> +	priv->descs_base = (struct mtk_star_ring_desc *)priv->ring_base;
+> +
+> +	for (i = 0; i < MTK_STAR_NUM_DESCS_TOTAL; i++) {
+> +		desc = &priv->descs_base[i];
+> +
+> +		memset(desc, 0, sizeof(*desc));
+> +		desc->status = MTK_STAR_DESC_BIT_COWN;
+> +		if ((i == MTK_STAR_NUM_TX_DESCS - 1) ||
+> +		    (i == MTK_STAR_NUM_DESCS_TOTAL - 1))
+> +			desc->status |= MTK_STAR_DESC_BIT_EOR;
+> +	}
+> +
+> +	mtk_star_ring_init(&priv->tx_ring, priv->descs_base);
+> +	mtk_star_ring_init(&priv->rx_ring,
+> +			   priv->descs_base + MTK_STAR_NUM_TX_DESCS);
+> +
+> +	/* Set DMA pointers. */
+> +	val = (unsigned int)priv->dma_addr;
+> +	regmap_write(priv->regs, MTK_STAR_REG_TX_BASE_ADDR, val);
+> +	regmap_write(priv->regs, MTK_STAR_REG_TX_DPTR, val);
+> +
+> +	val += sizeof(struct mtk_star_ring_desc) * MTK_STAR_NUM_TX_DESCS;
+> +	regmap_write(priv->regs, MTK_STAR_REG_RX_BASE_ADDR, val);
+> +	regmap_write(priv->regs, MTK_STAR_REG_RX_DPTR, val);
+> +}
+> +
+> +static void mtk_star_dma_start(struct mtk_star_priv *priv)
+> +{
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_TX_DMA_CTRL,
+> +			   MTK_STAR_BIT_TX_DMA_CTRL_START,
+> +			   MTK_STAR_BIT_TX_DMA_CTRL_START);
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_RX_DMA_CTRL,
+> +			   MTK_STAR_BIT_RX_DMA_CTRL_START,
+> +			   MTK_STAR_BIT_RX_DMA_CTRL_START);
+> +}
+> +
+> +static void mtk_star_dma_stop(struct mtk_star_priv *priv)
+> +{
+> +	regmap_write(priv->regs, MTK_STAR_REG_TX_DMA_CTRL,
+> +		     MTK_STAR_BIT_TX_DMA_CTRL_STOP);
+> +	regmap_write(priv->regs, MTK_STAR_REG_RX_DMA_CTRL,
+> +		     MTK_STAR_BIT_RX_DMA_CTRL_STOP);
+> +}
+> +
+> +static void mtk_star_dma_disable(struct mtk_star_priv *priv)
+> +{
+> +	int i;
+> +
+> +	mtk_star_dma_stop(priv);
+> +
+> +	/* Take back all descriptors. */
+> +	for (i = 0; i < MTK_STAR_NUM_DESCS_TOTAL; i++)
+> +		priv->descs_base[i].status |= MTK_STAR_DESC_BIT_COWN;
+> +}
+> +
+> +static void mtk_star_dma_resume_rx(struct mtk_star_priv *priv)
+> +{
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_RX_DMA_CTRL,
+> +			   MTK_STAR_BIT_RX_DMA_CTRL_RESUME,
+> +			   MTK_STAR_BIT_RX_DMA_CTRL_RESUME);
+> +}
+> +
+> +static void mtk_star_dma_resume_tx(struct mtk_star_priv *priv)
+> +{
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_TX_DMA_CTRL,
+> +			   MTK_STAR_BIT_TX_DMA_CTRL_RESUME,
+> +			   MTK_STAR_BIT_TX_DMA_CTRL_RESUME);
+> +}
+> +
+> +static void mtk_star_set_mac_addr(struct net_device *ndev)
+> +{
+> +	struct mtk_star_priv *priv = netdev_priv(ndev);
+> +	u8 *mac_addr = ndev->dev_addr;
+> +	unsigned int high, low;
+> +
+> +	high = mac_addr[0] << 8 | mac_addr[1] << 0;
+> +	low = mac_addr[2] << 24 | mac_addr[3] << 16 |
+> +	      mac_addr[4] << 8 | mac_addr[5];
+> +
+> +	regmap_write(priv->regs, MTK_STAR_REG_MY_MAC_H, high);
+> +	regmap_write(priv->regs, MTK_STAR_REG_MY_MAC_L, low);
+> +}
+> +
+> +static void mtk_star_reset_counters(struct mtk_star_priv *priv)
+> +{
+> +	static const unsigned int counter_regs[] = {
+> +		MTK_STAR_REG_C_RXOKPKT,
+> +		MTK_STAR_REG_C_RXOKBYTE,
+> +		MTK_STAR_REG_C_RXRUNT,
+> +		MTK_STAR_REG_C_RXLONG,
+> +		MTK_STAR_REG_C_RXDROP,
+> +		MTK_STAR_REG_C_RXCRC,
+> +		MTK_STAR_REG_C_RXARLDROP,
+> +		MTK_STAR_REG_C_RXVLANDROP,
+> +		MTK_STAR_REG_C_RXCSERR,
+> +		MTK_STAR_REG_C_RXPAUSE,
+> +		MTK_STAR_REG_C_TXOKPKT,
+> +		MTK_STAR_REG_C_TXOKBYTE,
+> +		MTK_STAR_REG_C_TXPAUSECOL,
+> +		MTK_STAR_REG_C_TXRTY,
+> +		MTK_STAR_REG_C_TXSKIP,
+> +		MTK_STAR_REG_C_TX_ARP,
+> +		MTK_STAR_REG_C_RX_RERR,
+> +		MTK_STAR_REG_C_RX_UNI,
+> +		MTK_STAR_REG_C_RX_MULTI,
+> +		MTK_STAR_REG_C_RX_BROAD,
+> +		MTK_STAR_REG_C_RX_ALIGNERR,
+> +		MTK_STAR_REG_C_TX_UNI,
+> +		MTK_STAR_REG_C_TX_MULTI,
+> +		MTK_STAR_REG_C_TX_BROAD,
+> +		MTK_STAR_REG_C_TX_TIMEOUT,
+> +		MTK_STAR_REG_C_TX_LATECOL,
+> +		MTK_STAR_REG_C_RX_LENGTHERR,
+> +		MTK_STAR_REG_C_RX_TWIST,
+> +	};
+> +
+> +	unsigned int i, val;
+> +
+> +	for (i = 0; i < ARRAY_SIZE(counter_regs); i++)
+> +		regmap_read(priv->regs, counter_regs[i], &val);
+> +}
+> +
+> +static void mtk_star_update_stat(struct mtk_star_priv *priv,
+> +				 unsigned int reg, u64 *stat)
+> +{
+> +	unsigned int val;
+> +
+> +	regmap_read(priv->regs, reg, &val);
+> +	*stat += val;
+> +}
+> +
+> +/* Try to get as many stats as possible from the internal registers instead
+> + * of tracking them ourselves.
+> + */
+> +static void mtk_star_update_stats(struct mtk_star_priv *priv)
+> +{
+> +	struct rtnl_link_stats64 *stats = &priv->stats;
+> +
+> +	/* OK packets and bytes. */
+> +	mtk_star_update_stat(priv, MTK_STAR_REG_C_RXOKPKT, &stats->rx_packets);
+> +	mtk_star_update_stat(priv, MTK_STAR_REG_C_TXOKPKT, &stats->tx_packets);
+> +	mtk_star_update_stat(priv, MTK_STAR_REG_C_RXOKBYTE, &stats->rx_bytes);
+> +	mtk_star_update_stat(priv, MTK_STAR_REG_C_TXOKBYTE, &stats->tx_bytes);
+> +
+> +	/* RX & TX multicast. */
+> +	mtk_star_update_stat(priv, MTK_STAR_REG_C_RX_MULTI, &stats->multicast);
+> +	mtk_star_update_stat(priv, MTK_STAR_REG_C_TX_MULTI, &stats->multicast);
+> +
+> +	/* Collisions. */
+> +	mtk_star_update_stat(priv, MTK_STAR_REG_C_TXPAUSECOL,
+> +			     &stats->collisions);
+> +	mtk_star_update_stat(priv, MTK_STAR_REG_C_TX_LATECOL,
+> +			     &stats->collisions);
+> +	mtk_star_update_stat(priv, MTK_STAR_REG_C_RXRUNT, &stats->collisions);
+> +
+> +	/* RX Errors. */
+> +	mtk_star_update_stat(priv, MTK_STAR_REG_C_RX_LENGTHERR,
+> +			     &stats->rx_length_errors);
+> +	mtk_star_update_stat(priv, MTK_STAR_REG_C_RXLONG,
+> +			     &stats->rx_over_errors);
+> +	mtk_star_update_stat(priv, MTK_STAR_REG_C_RXCRC, &stats->rx_crc_errors);
+> +	mtk_star_update_stat(priv, MTK_STAR_REG_C_RX_ALIGNERR,
+> +			     &stats->rx_frame_errors);
+> +	mtk_star_update_stat(priv, MTK_STAR_REG_C_RXDROP,
+> +			     &stats->rx_fifo_errors);
+> +	/* Sum of the general RX error counter + all of the above. */
+> +	mtk_star_update_stat(priv, MTK_STAR_REG_C_RX_RERR, &stats->rx_errors);
+> +	stats->rx_errors += stats->rx_length_errors;
+> +	stats->rx_errors += stats->rx_over_errors;
+> +	stats->rx_errors += stats->rx_crc_errors;
+> +	stats->rx_errors += stats->rx_frame_errors;
+> +	stats->rx_errors += stats->rx_fifo_errors;
+> +}
+> +
+> +/* This runs in process context and parallel TX and RX paths executing in
+> + * napi context may result in losing some stats data but this should happen
+> + * seldom enough to be acceptable.
+> + */
+> +static void mtk_star_update_stats_work(struct work_struct *work)
+> +{
+> +	struct mtk_star_priv *priv = container_of(work, struct mtk_star_priv,
+> +						 stats_work);
+> +
+> +	mtk_star_update_stats(priv);
+> +	mtk_star_reset_counters(priv);
+> +	mtk_star_intr_enable_stats(priv);
+> +}
+> +
+> +static struct sk_buff *mtk_star_alloc_skb(struct net_device *ndev)
+> +{
+> +	uintptr_t tail, offset;
+> +	struct sk_buff *skb;
+> +
+> +	skb = dev_alloc_skb(MTK_STAR_MAX_FRAME_SIZE);
+> +	if (!skb)
+> +		return NULL;
+> +
+> +	/* Align to 16 bytes. */
+> +	tail = (uintptr_t)skb_tail_pointer(skb);
+> +	if (tail & (MTK_STAR_SKB_ALIGNMENT - 1)) {
+> +		offset = tail & (MTK_STAR_SKB_ALIGNMENT - 1);
+> +		skb_reserve(skb, MTK_STAR_SKB_ALIGNMENT - offset);
+> +	}
+> +
+> +	/* Ensure 16-byte alignment of the skb pointer: eth_type_trans() will
+> +	 * extract the Ethernet header (14 bytes) so we need two more bytes.
+> +	 */
+> +	skb_reserve(skb, MTK_STAR_IP_ALIGN);
+> +
+> +	return skb;
+> +}
+> +
+> +static int mtk_star_prepare_rx_skbs(struct net_device *ndev)
+> +{
+> +	struct mtk_star_priv *priv = netdev_priv(ndev);
+> +	struct mtk_star_ring *ring = &priv->rx_ring;
+> +	struct device *dev = mtk_star_get_dev(priv);
+> +	struct mtk_star_ring_desc *desc;
+> +	struct sk_buff *skb;
+> +	dma_addr_t dma_addr;
+> +	int i;
+> +
+> +	for (i = 0; i < MTK_STAR_NUM_RX_DESCS; i++) {
+> +		skb = mtk_star_alloc_skb(ndev);
+> +		if (!skb)
+> +			return -ENOMEM;
+> +
+> +		dma_addr = mtk_star_dma_map_rx(priv, skb);
+> +		if (dma_mapping_error(dev, dma_addr)) {
+> +			dev_kfree_skb(skb);
+> +			return -ENOMEM;
+> +		}
+> +
+> +		desc = &ring->descs[i];
+> +		desc->data_ptr = dma_addr;
+> +		desc->status |= skb_tailroom(skb) & MTK_STAR_DESC_MSK_LEN;
+> +		desc->status &= ~MTK_STAR_DESC_BIT_COWN;
+> +		ring->skbs[i] = skb;
+> +		ring->dma_addrs[i] = dma_addr;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static void
+> +mtk_star_ring_free_skbs(struct mtk_star_priv *priv, struct mtk_star_ring *ring,
+> +			void (*unmap_func)(struct mtk_star_priv *,
+> +					   struct mtk_star_ring_desc_data *))
+> +{
+> +	struct mtk_star_ring_desc_data desc_data;
+> +	struct mtk_star_ring_desc *desc;
+> +	int i;
+> +
+> +	for (i = 0; i < MTK_STAR_RING_NUM_DESCS; i++) {
+> +		if (!ring->dma_addrs[i])
+> +			continue;
+> +
+> +		desc = &ring->descs[i];
+> +
+> +		desc_data.dma_addr = ring->dma_addrs[i];
+> +		desc_data.skb = ring->skbs[i];
+> +
+> +		unmap_func(priv, &desc_data);
+> +		dev_kfree_skb(desc_data.skb);
+> +	}
+> +}
+> +
+> +static void mtk_star_free_rx_skbs(struct mtk_star_priv *priv)
+> +{
+> +	struct mtk_star_ring *ring = &priv->rx_ring;
+> +
+> +	mtk_star_ring_free_skbs(priv, ring, mtk_star_dma_unmap_rx);
+> +}
+> +
+> +static void mtk_star_free_tx_skbs(struct mtk_star_priv *priv)
+> +{
+> +	struct mtk_star_ring *ring = &priv->tx_ring;
+> +
+> +	mtk_star_ring_free_skbs(priv, ring, mtk_star_dma_unmap_tx);
+> +}
+> +
+> +/* All processing for TX and RX happens in the napi poll callback. */
+> +static irqreturn_t mtk_star_handle_irq(int irq, void *data)
+> +{
+> +	struct mtk_star_priv *priv;
+> +	struct net_device *ndev;
+> +	bool need_napi = false;
+> +	unsigned int status;
+> +
+> +	ndev = data;
+> +	priv = netdev_priv(ndev);
+> +
+> +	if (netif_running(ndev)) {
+> +		status = mtk_star_intr_read(priv);
+> +
+> +		if (status & MTK_STAR_BIT_INT_STS_TNTC) {
+> +			mtk_star_intr_disable_tx(priv);
+> +			need_napi = true;
+> +		}
+> +
+> +		if (status & MTK_STAR_BIT_INT_STS_FNRC) {
+> +			mtk_star_intr_disable_rx(priv);
+> +			need_napi = true;
+> +		}
+> +
+> +		if (need_napi)
+> +			napi_schedule(&priv->napi);
+> +
+> +		/* One of the counters reached 0x8000000 - update stats and
+> +		 * reset all counters.
+> +		 */
+> +		if (unlikely(status & MTK_STAR_REG_INT_STS_MIB_CNT_TH)) {
+> +			mtk_star_intr_disable_stats(priv);
+> +			schedule_work(&priv->stats_work);
+> +		}
+> +
+> +		mtk_star_intr_ack_all(priv);
+> +	}
+> +
+> +	return IRQ_HANDLED;
+> +}
+> +
+> +/* Wait for the completion of any previous command - CMD_START bit must be
+> + * cleared by hardware.
+> + */
+> +static int mtk_star_hash_wait_cmd_start(struct mtk_star_priv *priv)
+> +{
+> +	unsigned int val;
+> +
+> +	return regmap_read_poll_timeout_atomic(priv->regs,
+> +				MTK_STAR_REG_HASH_CTRL, val,
+> +				!(val & MTK_STAR_BIT_HASH_CTRL_CMD_START),
+> +				10, MTK_STAR_WAIT_TIMEOUT);
+> +}
+> +
+> +static int mtk_star_hash_wait_ok(struct mtk_star_priv *priv)
+> +{
+> +	unsigned int val;
+> +	int ret;
+> +
+> +	/* Wait for BIST_DONE bit. */
+> +	ret = regmap_read_poll_timeout_atomic(priv->regs,
+> +					MTK_STAR_REG_HASH_CTRL, val,
+> +					val & MTK_STAR_BIT_HASH_CTRL_BIST_DONE,
+> +					10, MTK_STAR_WAIT_TIMEOUT);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* Check the BIST_OK bit. */
+> +	regmap_read(priv->regs, MTK_STAR_REG_HASH_CTRL, &val);
+> +	if (!(val & MTK_STAR_BIT_HASH_CTRL_BIST_OK))
+> +		return -EIO;
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_star_set_hashbit(struct mtk_star_priv *priv,
+> +				unsigned int hash_addr)
+> +{
+> +	unsigned int val;
+> +	int ret;
+> +
+> +	ret = mtk_star_hash_wait_cmd_start(priv);
+> +	if (ret)
+> +		return ret;
+> +
+> +	val = hash_addr & MTK_STAR_MSK_HASH_CTRL_HASH_BIT_ADDR;
+> +	val |= MTK_STAR_BIT_HASH_CTRL_ACC_CMD;
+> +	val |= MTK_STAR_BIT_HASH_CTRL_CMD_START;
+> +	val |= MTK_STAR_BIT_HASH_CTRL_BIST_EN;
+> +	val |= MTK_STAR_BIT_HASH_CTRL_HASH_BIT_DATA;
+> +	regmap_write(priv->regs, MTK_STAR_REG_HASH_CTRL, val);
+> +
+> +	return mtk_star_hash_wait_ok(priv);
+> +}
+> +
+> +static int mtk_star_reset_hash_table(struct mtk_star_priv *priv)
+> +{
+> +	int ret;
+> +
+> +	ret = mtk_star_hash_wait_cmd_start(priv);
+> +	if (ret)
+> +		return ret;
+> +
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_HASH_CTRL,
+> +			   MTK_STAR_BIT_HASH_CTRL_BIST_EN,
+> +			   MTK_STAR_BIT_HASH_CTRL_BIST_EN);
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_TEST1,
+> +			   MTK_STAR_BIT_TEST1_RST_HASH_MBIST,
+> +			   MTK_STAR_BIT_TEST1_RST_HASH_MBIST);
+> +
+> +	return mtk_star_hash_wait_ok(priv);
+> +}
+> +
+> +static void mtk_star_phy_config(struct mtk_star_priv *priv)
+> +{
+> +	unsigned int val;
+> +
+> +	if (priv->speed == SPEED_1000)
+> +		val = MTK_STAR_VAL_PHY_CTRL1_FORCE_SPD_1000M;
+> +	else if (priv->speed == SPEED_100)
+> +		val = MTK_STAR_VAL_PHY_CTRL1_FORCE_SPD_100M;
+> +	else
+> +		val = MTK_STAR_VAL_PHY_CTRL1_FORCE_SPD_10M;
+> +	val <<= MTK_STAR_OFF_PHY_CTRL1_FORCE_SPD;
+> +
+> +	val |= MTK_STAR_BIT_PHY_CTRL1_AN_EN;
+> +	val |= MTK_STAR_BIT_PHY_CTRL1_FORCE_FC_RX;
+> +	val |= MTK_STAR_BIT_PHY_CTRL1_FORCE_FC_TX;
+> +	/* Only full-duplex supported for now. */
+> +	val |= MTK_STAR_BIT_PHY_CTRL1_FORCE_DPX;
+> +
+> +	regmap_write(priv->regs, MTK_STAR_REG_PHY_CTRL1, val);
+> +
+> +	if (priv->pause) {
+> +		val = MTK_STAR_VAL_FC_CFG_SEND_PAUSE_TH_2K;
+> +		val <<= MTK_STAR_OFF_FC_CFG_SEND_PAUSE_TH;
+> +		val |= MTK_STAR_BIT_FC_CFG_UC_PAUSE_DIR;
+> +	} else {
+> +		val = 0;
+> +	}
+> +
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_FC_CFG,
+> +			   MTK_STAR_MSK_FC_CFG_SEND_PAUSE_TH |
+> +			   MTK_STAR_BIT_FC_CFG_UC_PAUSE_DIR, val);
+> +
+> +	if (priv->pause) {
+> +		val = MTK_STAR_VAL_EXT_CFG_SND_PAUSE_RLS_1K;
+> +		val <<= MTK_STAR_OFF_EXT_CFG_SND_PAUSE_RLS;
+> +	} else {
+> +		val = 0;
+> +	}
+> +
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_EXT_CFG,
+> +			   MTK_STAR_MSK_EXT_CFG_SND_PAUSE_RLS, val);
+> +}
+> +
+> +static void mtk_star_adjust_link(struct net_device *ndev)
+> +{
+> +	struct mtk_star_priv *priv = netdev_priv(ndev);
+> +	struct phy_device *phydev = priv->phydev;
+> +	bool new_state = false;
+> +
+> +	if (phydev->link) {
+> +		if (!priv->link) {
+> +			priv->link = phydev->link;
+> +			new_state = true;
+> +		}
+> +
+> +		if (priv->speed != phydev->speed) {
+> +			priv->speed = phydev->speed;
+> +			new_state = true;
+> +		}
+> +
+> +		if (priv->pause != phydev->pause) {
+> +			priv->pause = phydev->pause;
+> +			new_state = true;
+> +		}
+> +	} else {
+> +		if (priv->link) {
+> +			priv->link = phydev->link;
+> +			new_state = true;
+> +		}
+> +	}
+> +
+> +	if (new_state) {
+> +		if (phydev->link)
+> +			mtk_star_phy_config(priv);
+> +
+> +		phy_print_status(ndev->phydev);
+> +	}
+> +}
+> +
+> +static void mtk_star_init_config(struct mtk_star_priv *priv)
+> +{
+> +	unsigned int val;
+> +
+> +	val = (MTK_STAR_BIT_MII_PAD_OUT_ENABLE |
+> +	       MTK_STAR_BIT_EXT_MDC_MODE |
+> +	       MTK_STAR_BIT_SWC_MII_MODE);
+> +
+> +	regmap_write(priv->regs, MTK_STAR_REG_SYS_CONF, val);
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_MAC_CLK_CONF,
+> +			   MTK_STAR_MSK_MAC_CLK_CONF,
+> +			   MTK_STAR_BIT_CLK_DIV_10);
+> +}
+> +
+> +static void mtk_star_set_mode_rmii(struct mtk_star_priv *priv)
+> +{
+> +	regmap_update_bits(priv->pericfg, MTK_PERICFG_REG_NIC_CFG_CON,
+> +			   MTK_PERICFG_MSK_NIC_CFG_CON_CFG_MII,
+> +			   MTK_PERICFG_BIT_NIC_CFG_CON_RMII);
+> +}
+> +
+> +static int mtk_star_enable(struct net_device *ndev)
+> +{
+> +	struct mtk_star_priv *priv = netdev_priv(ndev);
+> +	unsigned int val;
+> +	int ret;
+> +
+> +	mtk_star_nic_disable_pd(priv);
+> +	mtk_star_intr_disable(priv);
+> +	mtk_star_dma_stop(priv);
+> +
+> +	mtk_star_set_mac_addr(ndev);
+> +
+> +	/* Configure the MAC */
+> +	val = MTK_STAR_VAL_MAC_CFG_IPG_96BIT;
+> +	val <<= MTK_STAR_OFF_MAC_CFG_IPG;
+> +	val |= MTK_STAR_BIT_MAC_CFG_MAXLEN_1522;
+> +	val |= MTK_STAR_BIT_MAC_CFG_AUTO_PAD;
+> +	val |= MTK_STAR_BIT_MAC_CFG_CRC_STRIP;
+> +	regmap_write(priv->regs, MTK_STAR_REG_MAC_CFG, val);
+> +
+> +	/* Enable Hash Table BIST and reset it */
+> +	ret = mtk_star_reset_hash_table(priv);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* Setup the hashing algorithm */
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_ARL_CFG,
+> +			   MTK_STAR_BIT_ARL_CFG_HASH_ALG |
+> +			   MTK_STAR_BIT_ARL_CFG_MISC_MODE, 0);
+> +
+> +	/* Don't strip VLAN tags */
+> +	regmap_update_bits(priv->regs, MTK_STAR_REG_MAC_CFG,
+> +			   MTK_STAR_BIT_MAC_CFG_VLAN_STRIP, 0);
+> +
+> +	/* Setup DMA */
+> +	mtk_star_dma_init(priv);
+> +
+> +	ret = mtk_star_prepare_rx_skbs(ndev);
+> +	if (ret)
+> +		goto err_out;
+> +
+> +	/* Request the interrupt */
+> +	ret = request_irq(ndev->irq, mtk_star_handle_irq,
+> +			  IRQF_TRIGGER_FALLING, ndev->name, ndev);
+> +	if (ret)
+> +		goto err_free_skbs;
+> +
+> +	napi_enable(&priv->napi);
+> +
+> +	mtk_star_intr_ack_all(priv);
+> +	mtk_star_intr_enable(priv);
+> +
+> +	/* Connect to and start PHY */
+> +	priv->phydev = of_phy_connect(ndev, priv->phy_node,
+> +				      mtk_star_adjust_link, 0, priv->phy_intf);
+> +	if (!priv->phydev) {
+> +		netdev_err(ndev, "failed to connect to PHY\n");
+> +		goto err_free_irq;
+> +	}
+> +
+> +	mtk_star_dma_start(priv);
+> +	phy_start(priv->phydev);
+> +	netif_start_queue(ndev);
+> +
+> +	return 0;
+> +
+> +err_free_irq:
+> +	free_irq(ndev->irq, ndev);
+> +err_free_skbs:
+> +	mtk_star_free_rx_skbs(priv);
+> +err_out:
+> +	return ret;
+> +}
+> +
+> +static void mtk_star_disable(struct net_device *ndev)
+> +{
+> +	struct mtk_star_priv *priv = netdev_priv(ndev);
+> +
+> +	netif_stop_queue(ndev);
+> +	napi_disable(&priv->napi);
+> +	mtk_star_intr_disable(priv);
+> +	mtk_star_dma_disable(priv);
+> +	mtk_star_intr_ack_all(priv);
+> +	phy_stop(priv->phydev);
+> +	phy_disconnect(priv->phydev);
+> +	free_irq(ndev->irq, ndev);
+> +	mtk_star_free_rx_skbs(priv);
+> +	mtk_star_free_tx_skbs(priv);
+> +}
+> +
+> +static int mtk_star_netdev_open(struct net_device *ndev)
+> +{
+> +	return mtk_star_enable(ndev);
+> +}
+> +
+> +static int mtk_star_netdev_stop(struct net_device *ndev)
+> +{
+> +	mtk_star_disable(ndev);
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_star_netdev_ioctl(struct net_device *ndev,
+> +				 struct ifreq *req, int cmd)
+> +{
+> +	if (!netif_running(ndev))
+> +		return -EINVAL;
+> +
+> +	return phy_mii_ioctl(ndev->phydev, req, cmd);
+> +}
+> +
+> +static int mtk_star_netdev_start_xmit(struct sk_buff *skb,
+> +				      struct net_device *ndev)
+> +{
+> +	struct mtk_star_priv *priv = netdev_priv(ndev);
+> +	struct mtk_star_ring *ring = &priv->tx_ring;
+> +	struct device *dev = mtk_star_get_dev(priv);
+> +	struct mtk_star_ring_desc_data desc_data;
+> +
+> +	desc_data.dma_addr = mtk_star_dma_map_tx(priv, skb);
+> +	if (dma_mapping_error(dev, desc_data.dma_addr))
+> +		goto err_drop_packet;
+> +
+> +	desc_data.skb = skb;
+> +	desc_data.len = skb->len;
+> +
+> +	spin_lock_bh(&priv->lock);
+> +
+> +	mtk_star_ring_push_head_tx(ring, &desc_data);
+> +
+> +	netdev_sent_queue(ndev, skb->len);
+> +
+> +	if (mtk_star_ring_full(ring))
+> +		netif_stop_queue(ndev);
+> +
+> +	spin_unlock_bh(&priv->lock);
+> +
+> +	mtk_star_dma_resume_tx(priv);
+> +
+> +	return NETDEV_TX_OK;
+> +
+> +err_drop_packet:
+> +	dev_kfree_skb(skb);
+> +	ndev->stats.tx_dropped++;
+> +	return NETDEV_TX_BUSY;
+> +}
+> +
+> +/* Returns the number of bytes sent or a negative number on the first
+> + * descriptor owned by DMA.
+> + */
+> +static int mtk_star_tx_complete_one(struct mtk_star_priv *priv)
+> +{
+> +	struct mtk_star_ring *ring = &priv->tx_ring;
+> +	struct mtk_star_ring_desc_data desc_data;
+> +	int ret;
+> +
+> +	ret = mtk_star_ring_pop_tail(ring, &desc_data);
+> +	if (ret)
+> +		return ret;
+> +
+> +	mtk_star_dma_unmap_tx(priv, &desc_data);
+> +	ret = desc_data.skb->len;
+> +	dev_kfree_skb_irq(desc_data.skb);
+> +
+> +	return ret;
+> +}
+> +
+> +static void mtk_star_tx_complete_all(struct mtk_star_priv *priv)
+> +{
+> +	struct mtk_star_ring *ring = &priv->tx_ring;
+> +	struct net_device *ndev = priv->ndev;
+> +	int ret, pkts_compl, bytes_compl;
+> +	bool wake = false;
+> +
+> +	spin_lock(&priv->lock);
+> +
+> +	for (pkts_compl = 0, bytes_compl = 0;;
+> +	     pkts_compl++, bytes_compl += ret, wake = true) {
+> +		if (!mtk_star_ring_descs_available(ring))
+> +			break;
+> +
+> +		ret = mtk_star_tx_complete_one(priv);
+> +		if (ret < 0)
+> +			break;
+> +	}
+> +
+> +	netdev_completed_queue(ndev, pkts_compl, bytes_compl);
+> +
+> +	if (wake && netif_queue_stopped(ndev))
+> +		netif_wake_queue(ndev);
+> +
+> +	mtk_star_intr_enable_tx(priv);
+> +
+> +	spin_unlock(&priv->lock);
+> +}
+> +
+> +static void mtk_star_netdev_get_stats64(struct net_device *ndev,
+> +					struct rtnl_link_stats64 *stats)
+> +{
+> +	struct mtk_star_priv *priv = netdev_priv(ndev);
+> +
+> +	mtk_star_update_stats(priv);
+> +
+> +	memcpy(stats, &priv->stats, sizeof(*stats));
+> +}
+> +
+> +static void mtk_star_set_rx_mode(struct net_device *ndev)
+> +{
+> +	struct mtk_star_priv *priv = netdev_priv(ndev);
+> +	struct netdev_hw_addr *hw_addr;
+> +	unsigned int hash_addr, i;
+> +	int ret;
+> +
+> +	if (ndev->flags & IFF_PROMISC) {
+> +		regmap_update_bits(priv->regs, MTK_STAR_REG_ARL_CFG,
+> +				   MTK_STAR_BIT_ARL_CFG_MISC_MODE,
+> +				   MTK_STAR_BIT_ARL_CFG_MISC_MODE);
+> +	} else if (netdev_mc_count(ndev) > MTK_STAR_HASHTABLE_MC_LIMIT ||
+> +		   ndev->flags & IFF_ALLMULTI) {
+> +		for (i = 0; i < MTK_STAR_HASHTABLE_SIZE_MAX; i++) {
+> +			ret = mtk_star_set_hashbit(priv, i);
+> +			if (ret)
+> +				goto hash_fail;
+> +		}
+> +	} else {
+> +		/* Clear previous settings. */
+> +		ret = mtk_star_reset_hash_table(priv);
+> +		if (ret)
+> +			goto hash_fail;
+> +
+> +		netdev_for_each_mc_addr(hw_addr, ndev) {
+> +			hash_addr = (hw_addr->addr[0] & 0x01) << 8;
+> +			hash_addr += hw_addr->addr[5];
+> +			ret = mtk_star_set_hashbit(priv, hash_addr);
+> +			if (ret)
+> +				goto hash_fail;
+> +		}
+> +	}
+> +
+> +	return;
+> +
+> +hash_fail:
+> +	if (ret == -ETIMEDOUT)
+> +		netdev_err(ndev, "setting hash bit timed out\n");
+> +	else
+> +		/* Should be -EIO */
+> +		netdev_err(ndev, "unable to set hash bit");
+> +}
+> +
+> +static const struct net_device_ops mtk_star_netdev_ops = {
+> +	.ndo_open		= mtk_star_netdev_open,
+> +	.ndo_stop		= mtk_star_netdev_stop,
+> +	.ndo_start_xmit		= mtk_star_netdev_start_xmit,
+> +	.ndo_get_stats64	= mtk_star_netdev_get_stats64,
+> +	.ndo_set_rx_mode	= mtk_star_set_rx_mode,
+> +	.ndo_do_ioctl		= mtk_star_netdev_ioctl,
+> +	.ndo_set_mac_address	= eth_mac_addr,
+> +	.ndo_validate_addr	= eth_validate_addr,
+> +};
+> +
+> +static void mtk_star_get_drvinfo(struct net_device *dev,
+> +				 struct ethtool_drvinfo *info)
+> +{
+> +	strlcpy(info->driver, MTK_STAR_DRVNAME, sizeof(info->driver));
+> +}
+> +
+> +/* TODO Add ethtool stats. */
+> +static const struct ethtool_ops mtk_star_ethtool_ops = {
+> +	.get_drvinfo		= mtk_star_get_drvinfo,
+> +	.get_link		= ethtool_op_get_link,
+> +	.get_link_ksettings	= phy_ethtool_get_link_ksettings,
+> +	.set_link_ksettings	= phy_ethtool_set_link_ksettings,
+> +};
+> +
+> +static int mtk_star_receive_packet(struct mtk_star_priv *priv)
+> +{
+> +	struct mtk_star_ring *ring = &priv->rx_ring;
+> +	struct device *dev = mtk_star_get_dev(priv);
+> +	struct mtk_star_ring_desc_data desc_data;
+> +	struct net_device *ndev = priv->ndev;
+> +	struct sk_buff *curr_skb, *new_skb;
+> +	dma_addr_t new_dma_addr;
+> +	int ret;
+> +
+> +	spin_lock(&priv->lock);
+> +	ret = mtk_star_ring_pop_tail(ring, &desc_data);
+> +	spin_unlock(&priv->lock);
+> +	if (ret)
+> +		return -1;
+> +
+> +	curr_skb = desc_data.skb;
+> +
+> +	if ((desc_data.flags & MTK_STAR_DESC_BIT_RX_CRCE) ||
+> +	    (desc_data.flags & MTK_STAR_DESC_BIT_RX_OSIZE)) {
+> +		/* Error packet -> drop and reuse skb. */
+> +		new_skb = curr_skb;
+> +		goto push_new_skb;
+> +	}
+> +
+> +	/* Prepare new skb before receiving the current one. Reuse the current
+> +	 * skb if we fail at any point.
+> +	 */
+> +	new_skb = mtk_star_alloc_skb(ndev);
+> +	if (!new_skb) {
+> +		ndev->stats.rx_dropped++;
+> +		new_skb = curr_skb;
+> +		goto push_new_skb;
+> +	}
+> +
+> +	new_dma_addr = mtk_star_dma_map_rx(priv, new_skb);
+> +	if (dma_mapping_error(dev, new_dma_addr)) {
+> +		ndev->stats.rx_dropped++;
+> +		dev_kfree_skb(new_skb);
+> +		new_skb = curr_skb;
+> +		netdev_err(ndev, "DMA mapping error of RX descriptor\n");
+> +		goto push_new_skb;
+> +	}
+> +
+> +	/* We can't fail anymore at this point: it's safe to unmap the skb. */
+> +	mtk_star_dma_unmap_rx(priv, &desc_data);
+> +
+> +	skb_put(desc_data.skb, desc_data.len);
+> +	desc_data.skb->ip_summed = CHECKSUM_NONE;
+> +	desc_data.skb->protocol = eth_type_trans(desc_data.skb, ndev);
+> +	desc_data.skb->dev = ndev;
+> +	netif_receive_skb(desc_data.skb);
+> +
+> +push_new_skb:
+> +	desc_data.dma_addr = new_dma_addr;
+> +	desc_data.len = skb_tailroom(new_skb);
+> +	desc_data.skb = new_skb;
+> +
+> +	spin_lock(&priv->lock);
+> +	mtk_star_ring_push_head_rx(ring, &desc_data);
+> +	spin_unlock(&priv->lock);
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_star_process_rx(struct mtk_star_priv *priv, int budget)
+> +{
+> +	int received, ret;
+> +
+> +	for (received = 0, ret = 0; received < budget && ret == 0; received++)
+> +		ret = mtk_star_receive_packet(priv);
+> +
+> +	mtk_star_dma_resume_rx(priv);
+> +
+> +	return received;
+> +}
+> +
+> +static int mtk_star_poll(struct napi_struct *napi, int budget)
+> +{
+> +	struct mtk_star_priv *priv;
+> +	int received = 0;
+> +
+> +	priv = container_of(napi, struct mtk_star_priv, napi);
+> +
+> +	/* Clean-up all TX descriptors. */
+> +	mtk_star_tx_complete_all(priv);
+> +	/* Receive up to $budget packets. */
+> +	received = mtk_star_process_rx(priv, budget);
+> +
+> +	if (received < budget) {
+> +		napi_complete_done(napi, received);
+> +		mtk_star_intr_enable_rx(priv);
+> +	}
+> +
+> +	return received;
+> +}
+> +
+> +static void mtk_star_mdio_rwok_clear(struct mtk_star_priv *priv)
+> +{
+> +	regmap_write(priv->regs, MTK_STAR_REG_PHY_CTRL0,
+> +		     MTK_STAR_BIT_PHY_CTRL0_RWOK);
+> +}
+> +
+> +static int mtk_star_mdio_rwok_wait(struct mtk_star_priv *priv)
+> +{
+> +	unsigned int val;
+> +
+> +	return regmap_read_poll_timeout(priv->regs, MTK_STAR_REG_PHY_CTRL0,
+> +					val, val & MTK_STAR_BIT_PHY_CTRL0_RWOK,
+> +					10, MTK_STAR_WAIT_TIMEOUT);
+> +}
+> +
+> +static int mtk_star_mdio_read(struct mii_bus *mii, int phy_id, int regnum)
+> +{
+> +	struct mtk_star_priv *priv = mii->priv;
+> +	unsigned int val, data;
+> +	int ret;
+> +
+> +	if (regnum & MII_ADDR_C45)
+> +		return -EOPNOTSUPP;
+> +
+> +	mtk_star_mdio_rwok_clear(priv);
+> +
+> +	val = (regnum << MTK_STAR_OFF_PHY_CTRL0_PREG);
+> +	val &= MTK_STAR_MSK_PHY_CTRL0_PREG;
+> +	val |= MTK_STAR_BIT_PHY_CTRL0_RDCMD;
+> +
+> +	regmap_write(priv->regs, MTK_STAR_REG_PHY_CTRL0, val);
+> +
+> +	ret = mtk_star_mdio_rwok_wait(priv);
+> +	if (ret)
+> +		return ret;
+> +
+> +	regmap_read(priv->regs, MTK_STAR_REG_PHY_CTRL0, &data);
+> +
+> +	data &= MTK_STAR_MSK_PHY_CTRL0_RWDATA;
+> +	data >>= MTK_STAR_OFF_PHY_CTRL0_RWDATA;
+> +
+> +	return data;
+> +}
+> +
+> +static int mtk_star_mdio_write(struct mii_bus *mii, int phy_id,
+> +			       int regnum, u16 data)
+> +{
+> +	struct mtk_star_priv *priv = mii->priv;
+> +	unsigned int val;
+> +
+> +	if (regnum & MII_ADDR_C45)
+> +		return -EOPNOTSUPP;
+> +
+> +	mtk_star_mdio_rwok_clear(priv);
+> +
+> +	val = data;
+> +	val <<= MTK_STAR_OFF_PHY_CTRL0_RWDATA;
+> +	val &= MTK_STAR_MSK_PHY_CTRL0_RWDATA;
+> +	regnum <<= MTK_STAR_OFF_PHY_CTRL0_PREG;
+> +	regnum &= MTK_STAR_MSK_PHY_CTRL0_PREG;
+> +	val |= regnum;
+> +	val |= MTK_STAR_BIT_PHY_CTRL0_WTCMD;
+> +
+> +	regmap_write(priv->regs, MTK_STAR_REG_PHY_CTRL0, val);
+> +
+> +	return mtk_star_mdio_rwok_wait(priv);
+> +}
+> +
+> +static int mtk_star_mdio_init(struct net_device *ndev)
+> +{
+> +	struct mtk_star_priv *priv = netdev_priv(ndev);
+> +	struct device *dev = mtk_star_get_dev(priv);
+> +	struct device_node *of_node, *mdio_node;
+> +	int ret;
+> +
+> +	of_node = dev->of_node;
+> +
+> +	mdio_node = of_get_child_by_name(of_node, "mdio");
+> +	if (!mdio_node)
+> +		return -ENODEV;
+> +
+> +	if (!of_device_is_available(mdio_node)) {
+> +		ret = -ENODEV;
+> +		goto out_put_node;
+> +	}
+> +
+> +	priv->mii = devm_mdiobus_alloc(dev);
+> +	if (!priv->mii) {
+> +		ret = -ENOMEM;
+> +		goto out_put_node;
+> +	}
+> +
+> +	snprintf(priv->mii->id, MII_BUS_ID_SIZE, "%s", dev_name(dev));
+> +	priv->mii->name = "mtk-mac-mdio";
+> +	priv->mii->parent = dev;
+> +	priv->mii->read = mtk_star_mdio_read;
+> +	priv->mii->write = mtk_star_mdio_write;
+> +	priv->mii->priv = priv;
+> +
+> +	ret = of_mdiobus_register(priv->mii, mdio_node);
+> +
+> +out_put_node:
+> +	of_node_put(mdio_node);
+> +	return ret;
+> +}
+> +
+> +static int mtk_star_suspend(struct device *dev)
+> +{
+> +	struct mtk_star_priv *priv;
+> +	struct net_device *ndev;
+> +
+> +	ndev = dev_get_drvdata(dev);
+> +	priv = netdev_priv(ndev);
+> +
+> +	if (netif_running(ndev))
+> +		mtk_star_disable(ndev);
+> +
+> +	clk_bulk_disable_unprepare(MTK_STAR_NCLKS, priv->clks);
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_star_resume(struct device *dev)
+> +{
+> +	struct mtk_star_priv *priv;
+> +	struct net_device *ndev;
+> +	int ret;
+> +
+> +	ndev = dev_get_drvdata(dev);
+> +	priv = netdev_priv(ndev);
+> +
+> +	ret = clk_bulk_prepare_enable(MTK_STAR_NCLKS, priv->clks);
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (netif_running(ndev)) {
+> +		ret = mtk_star_enable(ndev);
+> +		if (ret)
+> +			clk_bulk_disable_unprepare(MTK_STAR_NCLKS, priv->clks);
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+> +static void mtk_star_clk_disable_unprepare(void *data)
+> +{
+> +	struct mtk_star_priv *priv = data;
+> +
+> +	clk_bulk_disable_unprepare(MTK_STAR_NCLKS, priv->clks);
+> +}
+> +
+> +static void mtk_star_mdiobus_unregister(void *data)
+> +{
+> +	struct mtk_star_priv *priv = data;
+> +
+> +	mdiobus_unregister(priv->mii);
+> +}
+> +
+> +static void mtk_star_unregister_netdev(void *data)
+> +{
+> +	struct net_device *ndev = data;
+> +
+> +	unregister_netdev(ndev);
+> +}
+> +
+> +static int mtk_star_probe(struct platform_device *pdev)
+> +{
+> +	struct device_node *of_node;
+> +	struct mtk_star_priv *priv;
+> +	struct net_device *ndev;
+> +	struct device *dev;
+> +	void __iomem *base;
+> +	int ret, i;
+> +
+> +	dev = &pdev->dev;
+> +	of_node = dev->of_node;
+> +
+> +	ndev = devm_alloc_etherdev(dev, sizeof(*priv));
+> +	if (!ndev)
+> +		return -ENOMEM;
+> +
+> +	priv = netdev_priv(ndev);
+> +	priv->ndev = ndev;
+> +	SET_NETDEV_DEV(ndev, dev);
+> +	platform_set_drvdata(pdev, ndev);
+> +
+> +	ndev->min_mtu = ETH_ZLEN;
+> +	ndev->max_mtu = MTK_STAR_MAX_FRAME_SIZE;
+> +
+> +	spin_lock_init(&priv->lock);
+> +	INIT_WORK(&priv->stats_work, mtk_star_update_stats_work);
+> +
+> +	base = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(base))
+> +		return PTR_ERR(base);
+> +
+> +	/* We won't be checking the return values of regmap read & write
+> +	 * functions. They can only fail for mmio if there's a clock attached
+> +	 * to regmap which is not the case here.
+> +	 */
+> +	priv->regs = devm_regmap_init_mmio(dev, base,
+> +					   &mtk_star_regmap_config);
+> +	if (IS_ERR(priv->regs))
+> +		return PTR_ERR(priv->regs);
+> +
+> +	priv->pericfg = syscon_regmap_lookup_by_phandle(of_node,
+> +							"mediatek,pericfg");
+> +	if (IS_ERR(priv->pericfg)) {
+> +		dev_err(dev, "Failed to lookup the PERICFG syscon\n");
+> +		return PTR_ERR(priv->pericfg);
+> +	}
+> +
+> +	ndev->irq = platform_get_irq(pdev, 0);
+> +	if (ndev->irq < 0)
+> +		return ndev->irq;
+> +
+> +	for (i = 0; i < MTK_STAR_NCLKS; i++)
+> +		priv->clks[i].id = mtk_star_clk_names[i];
+> +	ret = devm_clk_bulk_get(dev, MTK_STAR_NCLKS, priv->clks);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = clk_bulk_prepare_enable(MTK_STAR_NCLKS, priv->clks);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = devm_add_action_or_reset(dev,
+> +				       mtk_star_clk_disable_unprepare, priv);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = of_get_phy_mode(of_node, &priv->phy_intf);
+> +	if (ret) {
+> +		return ret;
+> +	} else if (priv->phy_intf != PHY_INTERFACE_MODE_RMII) {
+> +		dev_err(dev, "unsupported phy mode: %s\n",
+> +			phy_modes(priv->phy_intf));
+> +		return -EINVAL;
+> +	}
+> +
+> +	priv->phy_node = of_parse_phandle(of_node, "phy-handle", 0);
+> +	if (!priv->phy_node) {
+> +		dev_err(dev, "failed to retrieve the phy handle from device tree\n");
+> +		return -ENODEV;
+> +	}
+> +
+> +	mtk_star_set_mode_rmii(priv);
+> +
+> +	ret = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(32));
+> +	if (ret) {
+> +		dev_err(dev, "unsupported DMA mask\n");
+> +		return ret;
+> +	}
+> +
+> +	priv->ring_base = dmam_alloc_coherent(dev, MTK_STAR_DMA_SIZE,
+> +					      &priv->dma_addr,
+> +					      GFP_KERNEL | GFP_DMA);
+> +	if (!priv->ring_base)
+> +		return -ENOMEM;
+> +
+> +	mtk_star_nic_disable_pd(priv);
+> +	mtk_star_init_config(priv);
+> +
+> +	ret = mtk_star_mdio_init(ndev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = devm_add_action_or_reset(dev, mtk_star_mdiobus_unregister, priv);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = eth_platform_get_mac_address(dev, ndev->dev_addr);
+> +	if (ret || !is_valid_ether_addr(ndev->dev_addr))
+> +		eth_hw_addr_random(ndev);
+> +
+> +	ndev->netdev_ops = &mtk_star_netdev_ops;
+> +	ndev->ethtool_ops = &mtk_star_ethtool_ops;
+> +
+> +	netif_napi_add(ndev, &priv->napi, mtk_star_poll, MTK_STAR_NAPI_WEIGHT);
+> +
+> +	ret = register_netdev(ndev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = devm_add_action_or_reset(dev, mtk_star_unregister_netdev, ndev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct of_device_id mtk_star_of_match[] = {
+> +	{ .compatible = "mediatek,mt8516-eth", },
+> +	{ .compatible = "mediatek,mt8518-eth", },
+> +	{ .compatible = "mediatek,mt8175-eth", },
+> +	{ }
+> +};
+> +MODULE_DEVICE_TABLE(of, mtk_star_of_match);
+> +
+> +static SIMPLE_DEV_PM_OPS(mtk_star_pm_ops,
+> +			 mtk_star_suspend, mtk_star_resume);
+> +
+> +static struct platform_driver mtk_star_driver = {
+> +	.driver = {
+> +		.name = MTK_STAR_DRVNAME,
+> +		.pm = &mtk_star_pm_ops,
+> +		.of_match_table = of_match_ptr(mtk_star_of_match),
+> +	},
+> +	.probe = mtk_star_probe,
+> +};
+> +module_platform_driver(mtk_star_driver);
+> +
+> +MODULE_AUTHOR("Bartosz Golaszewski <bgolaszewski@baylibre.com>");
+> +MODULE_DESCRIPTION("Mediatek STAR Ethernet MAC Driver");
+> +MODULE_LICENSE("GPL");
 > 
-> > +} __packed;
-> [snip]
-> > +/*  */
-> 
-> Was there supposed to be a comment here? :)
-Ooops, no, it should be removed.
-> 
-> > +static int mtk_fd_hw_alloc_rs_dma_addr(struct mtk_fd_dev *fd)
-> > +{
-> > +	struct device *dev = fd->dev;
-> > +	void *va;
-> > +	dma_addr_t dma_handle;
-> > +
-> > +	va = dma_alloc_coherent(dev, MTK_FD_RS_BUF_SIZE, &dma_handle,
-> > +				GFP_KERNEL);
-> > +	if (!va) {
-> > +		dev_err(dev, "dma_alloc null va\n");
-> 
-> No need to print errors for memory allocation failures, because one will be
-> printed automatically.
-Ok, log removed.
-> 
-> [snip]
-> > +static int mtk_fd_hw_connect(struct mtk_fd_dev *fd)
-> > +{
-> > +	int ret;
-> > +
-> > +	ret = rproc_boot(fd->rproc_handle);
-> > +
-> 
-> nit: Unnecessary blank line.
-> 
-fixed.
-
-> [snip]
-> > +static int mtk_fd_vb2_queue_setup(struct vb2_queue *vq,
-> > +				  unsigned int *num_buffers,
-> > +				  unsigned int *num_planes,
-> > +				  unsigned int sizes[],
-> > +				  struct device *alloc_devs[])
-> > +{
-> > +	struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vq);
-> > +	unsigned int size[2];
-> > +	unsigned int plane;
-> > +
-> > +	switch (vq->type) {
-> > +	case V4L2_BUF_TYPE_META_CAPTURE:
-> > +		size[0] = ctx->dst_fmt.buffersize;
-> > +		break;
-> > +	case V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE:
-> > +		size[0] = ctx->src_fmt.plane_fmt[0].sizeimage;
-> > +		if (*num_planes == 2)
-> > +			size[1] = ctx->src_fmt.plane_fmt[1].sizeimage;
-> > +		break;
-> > +	}
-> 
-> Is this code above needed? The code below sets sizes[] and it uses a for loop,
-> without opencoded assignment for the second plane.
-> 
-
-Looks like not really useful here,
-it should check sizes and num_planes if num_plane not zero,
-and for V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE, it will at most have 2
-planes, maybe no need for loop as well.
-I will refine this function as following:
-mtk_fd_vb2_queue_setup(...)
-{
-	struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vq);
-
-	if (*num_planes == 0) {
-		if (vq->type == V4L2_BUF_TYPE_META_CAPTURE) {
-			sizes[0] = ctx->dst_fmt.buffersize;
-			*num_planes = 1;
-			return 0;
-		} else if (vq->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
-			*num_planes = ctx->src_fmt.num_planes;
-			sizes[0] = ctx->src_fmt.plane_fmt[0].sizeimage;
-			if (*num_planes == 2)
-				sizes[1] = ctx->src_fmt.plane_fmt[1].sizeimage;
-			return 0;
-		}
-		return -EINVAL;
-	}
-
-	/* If num_plane not zero, check the num_plane and sizes*/
-	if (vq->type == V4L2_BUF_TYPE_META_CAPTURE) {
-		if ((*num_planes == 1) &&
-		    (sizes[0] <= ctx->dst_fmt.buffersize))
-			return 0;
-		else
-			return -EINVAL;
-	}
-	if (vq->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
-		if ((*num_planes == 1) &&
-		    (sizes[0] <= ctx->src_fmt.plane_fmt[0].sizeimage))
-			return 0;
-		else if ((*num_planes == 2) &&
-			 (sizes[0] <= ctx->src_fmt.plane_fmt[0].sizeimage) &&
-			 (sizes[1] <= ctx->src_fmt.plane_fmt[1].sizeimage))
-			return 0;
-		else
-			return -EINVAL;
-
-	}
-	return 0;
-}
-
-> > +
-> > +	if (*num_planes > 2)
-> > +		return -EINVAL;
-> > +	if (*num_planes == 0) {
-> > +		if (vq->type == V4L2_BUF_TYPE_META_CAPTURE) {
-> > +			sizes[0] = ctx->dst_fmt.buffersize;
-> > +			*num_planes = 1;
-> > +			return 0;
-> > +		 }
-> > +
-> > +		*num_planes = ctx->src_fmt.num_planes;
-> > +		for (plane = 0; plane < *num_planes; plane++)
-> > +			sizes[plane] = ctx->src_fmt.plane_fmt[plane].sizeimage;
-> > +		return 0;
-> > +	}
-> > +
-> > +	for (plane = 0; plane < *num_planes; plane++) {
-> > +		if (sizes[plane] < size[plane])
-> > +			return -EINVAL;
-> > +	}
-> > +	return 0;
-> > +}
-> [snip]
-> > +static int mtk_fd_enum_fmt_out_mp(struct file *file, void *fh,
-> > +				  struct v4l2_fmtdesc *f)
-> > +{
-> > +	if (f->index >= NUM_FORMATS)
-> 
-> Please use ARRAY_SIZE().
-fixed.
-
-> 
-> > +		return -EINVAL;
-> > +
-> > +	f->pixelformat = mtk_fd_img_fmts[f->index].pixelformat;
-> > +	return 0;
-> > +}
-> > +
-> > +static void mtk_fd_fill_pixfmt_mp(struct v4l2_pix_format_mplane *dfmt,
-> > +				  const struct v4l2_pix_format_mplane *sfmt)
-> > +{
-> > +	dfmt->field = V4L2_FIELD_NONE;
-> > +	dfmt->colorspace = V4L2_COLORSPACE_BT2020;
-> > +	dfmt->num_planes = sfmt->num_planes;
-> > +	dfmt->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
-> > +	dfmt->quantization = V4L2_QUANTIZATION_DEFAULT;
-> > +	dfmt->xfer_func =
-> > +		V4L2_MAP_XFER_FUNC_DEFAULT(dfmt->colorspace);
-> > +
-> > +	/* Keep user setting as possible */
-> > +	dfmt->width = clamp(dfmt->width,
-> > +			    MTK_FD_OUTPUT_MIN_WIDTH,
-> > +			    MTK_FD_OUTPUT_MAX_WIDTH);
-> > +	dfmt->height = clamp(dfmt->height,
-> > +			     MTK_FD_OUTPUT_MIN_HEIGHT,
-> > +			     MTK_FD_OUTPUT_MAX_HEIGHT);
-> > +
-> > +	if (sfmt->num_planes == 2) {
-> > +		/* NV16M and NV61M has 1 byte per pixel */
-> > +		dfmt->plane_fmt[0].bytesperline = dfmt->width;
-> > +		dfmt->plane_fmt[1].bytesperline = dfmt->width;
-> > +	} else {
-> > +		/* 2 bytes per pixel */
-> > +		dfmt->plane_fmt[0].bytesperline = dfmt->width * 2;
-> > +	}
-> > +
-> > +	dfmt->plane_fmt[0].sizeimage =
-> > +		dfmt->height * dfmt->plane_fmt[0].bytesperline;
-> 
-> Could some of the code above be replaced with v4l2_fill_pixfmt_mp()?
-> 
-I would like to refine as following
-
-mtk_fd_fill_pixfmt_mp(...){
-	v4l2_fill_pixfmt_mp(dfmt, sfmt->pixelformat, dfmt->width,
-dfmt->height);
-
-	dfmt->field = V4L2_FIELD_NONE;
-	dfmt->colorspace = V4L2_COLORSPACE_BT2020;
-	dfmt->num_planes = sfmt->num_planes;
-	dfmt->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
-	dfmt->quantization = V4L2_QUANTIZATION_DEFAULT;
-	dfmt->xfer_func =
-		V4L2_MAP_XFER_FUNC_DEFAULT(dfmt->colorspace);
-}
-
-
-> > +}
-> > +
-> > +static const struct v4l2_pix_format_mplane *mtk_fd_find_fmt(u32 format)
-> > +{
-> > +	unsigned int i;
-> > +	const struct v4l2_pix_format_mplane *dev_fmt;
-> > +
-> > +	for (i = 0; i < NUM_FORMATS; i++) {
-> 
-> Please use ARRAY_SIZE rather than a custom macro.
-fixed.
-
-> 
-> > +		dev_fmt = &mtk_fd_img_fmts[i];
-> > +		if (dev_fmt->pixelformat == format)
-> > +			return dev_fmt;
-> > +	}
-> > +
-> > +	return NULL;
-> > +}
-> > +
-> > +static int mtk_fd_try_fmt_out_mp(struct file *file,
-> > +				 void *fh,
-> > +				 struct v4l2_format *f)
-> > +{
-> > +	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
-> > +	const struct v4l2_pix_format_mplane *fmt;
-> > +
-> > +	fmt = mtk_fd_find_fmt(pix_mp->pixelformat);
-> > +	if (!fmt)
-> > +		fmt = &mtk_fd_img_fmts[0];	/* Get default img fmt */
-> 
-> nit: Please move the comment to a separate line and add braces.
-> 
-fixed.
-
-> > +
-> > +	mtk_fd_fill_pixfmt_mp(pix_mp, fmt);
-> > +	return 0;
-> > +}
-> [snip]
-> > +static unsigned int get_fd_img_fmt(unsigned int fourcc)
-> > +{
-> > +	switch (fourcc) {
-> > +	case V4L2_PIX_FMT_VYUY:
-> > +		return MTK_FD_HW_FMT_VYUY;
-> > +	case V4L2_PIX_FMT_YUYV:
-> > +		return MTK_FD_HW_FMT_YUYV;
-> > +	case V4L2_PIX_FMT_YVYU:
-> > +		return MTK_FD_HW_FMT_YVYU;
-> > +	case V4L2_PIX_FMT_UYVY:
-> > +		return MTK_FD_HW_FMT_UYVY;
-> > +	case V4L2_PIX_FMT_NV16M:
-> > +		return MTK_FD_HW_FMT_YUV_2P;
-> > +	case V4L2_PIX_FMT_NV61M:
-> > +		return MTK_FD_HW_FMT_YVU_2P;
-> > +	default:
-> > +		return MTK_FD_HW_FMT_UNKNOWN;
-> 
-> If we want to be paranoid, we can just add a WARN here and return 0.
-> Shouldn't be a need to define an unknown format.
-Ok, I will refine as following:
-	
-default:
-	dev_warn(dev, "%s: Unsupported V4L2_PIX_FMT\n", __func__);
-	return 0;
-> 
-> [snip]
-> > +static void mtk_fd_fill_user_param(struct user_param *user_param,
-> > +				   struct v4l2_ctrl_handler *hdl)
-> > +{
-> > +	struct v4l2_ctrl *ctrl;
-> > +	int i;
-> > +
-> > +	ctrl = v4l2_ctrl_find(hdl, V4L2_CID_MTK_FD_SCALE_DOWN_IMG_WIDTH);
-> > +	if (ctrl)
-> > +		for (i = 0; i < ctrl->elems; i++)
-> > +			user_param->scale_img_width[i] = ctrl->p_new.p_u16[i];
-> > +	ctrl = v4l2_ctrl_find(hdl, V4L2_CID_MTK_FD_SCALE_DOWN_IMG_HEIGHT);
-> > +	if (ctrl)
-> > +		for (i = 0; i < ctrl->elems; i++)
-> > +			user_param->scale_img_height[i] = ctrl->p_new.p_u16[i];
-> > +	ctrl = v4l2_ctrl_find(hdl, V4L2_CID_MTK_FD_SCALE_IMG_NUM);
-> > +	if (ctrl)
-> > +		user_param->scale_img_num = ctrl->val;
-> > +
-> 
-> nit: Either separate the code dealing with all controls from each other, or
-> none.
-> 
-Fixed. 
-
-> > +	ctrl = v4l2_ctrl_find(hdl, V4L2_CID_MTK_FD_DETECT_POSE);
-> > +	if (ctrl)
-> > +		for (i = 0; i < ctrl->elems; i++)
-> > +			user_param->face_directions[i] = ctrl->p_new.p_u16[i];
-> > +	ctrl = v4l2_ctrl_find(hdl, V4L2_CID_MTK_FD_DETECT_SPEED);
-> > +	if (ctrl)
-> > +		user_param->fd_speedup = ctrl->val;
-> > +	ctrl = v4l2_ctrl_find(hdl, V4L2_CID_MTK_FD_DETECTION_MODEL);
-> > +	if (ctrl)
-> > +		user_param->fd_extra_model = ctrl->val;
-> > +}
-> > +
-> > +static void mtk_fd_device_run(void *priv)
-> > +{
-> > +	struct mtk_fd_ctx *ctx = priv;
-> > +	struct mtk_fd_dev *fd = ctx->fd_dev;
-> > +	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-> > +	struct fd_enq_param fd_param;
-> > +	void *plane_vaddr;
-> > +
-> > +	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
-> > +	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-> > +
-> > +	fd_param.src_img[0].dma_addr =
-> > +		vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, 0);
-> > +	fd_param.user_result.dma_addr =
-> > +		vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
-> > +	plane_vaddr = vb2_plane_vaddr(&dst_buf->vb2_buf, 0);
-> > +	fd_param.output_vaddr = (u64)(unsigned long)plane_vaddr;
-> 
-> Why is the vaddr needed here? Specfically, it could pose a security problem
-> if CPU virtual addresses are exchanged with firmware.
-> 
-This should be removed... SCP side as well. 
-
-> > +	fd_param.user_param.src_img_fmt =
-> > +		get_fd_img_fmt(ctx->src_fmt.pixelformat);
-> > +	if (ctx->src_fmt.num_planes == 2)
-> > +		fd_param.src_img[1].dma_addr =
-> > +			vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, 1);
-> 
-> nit: Could this be moved above, to be just below src_img[0] initialization,
-> for readability reasons?
-> 
-Ok, this function will be refined as 
-
-static void mtk_fd_device_run(void *priv)
-{
-	struct mtk_fd_ctx *ctx = priv;
-	struct mtk_fd_dev *fd = ctx->fd_dev;
-	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-	struct fd_enq_param fd_param;
-
-	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
-	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-
-	fd_param.src_img[0].dma_addr =
-		vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, 0);
-	if (ctx->src_fmt.num_planes == 2)
-		fd_param.src_img[1].dma_addr =
-			vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, 1);
-	fd_param.user_result.dma_addr =
-		vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
-	fd_param.user_param.src_img_fmt =
-		get_fd_img_fmt(fd->dev, ctx->src_fmt.pixelformat);
-
-	mtk_fd_fill_user_param(&fd_param.user_param, &ctx->hdl);
-
-	/* Complete request controls if any */
-	v4l2_ctrl_request_complete(src_buf->vb2_buf.req_obj.req, &ctx->hdl);
-
-	fd->output = vb2_plane_vaddr(&dst_buf->vb2_buf, 0);
-	mtk_fd_hw_job_exec(fd, &fd_param);
-}
-> > +	mtk_fd_fill_user_param(&fd_param.user_param, &ctx->hdl);
-> > +
-> > +	/* Complete request controls if any */
-> > +	v4l2_ctrl_request_complete(src_buf->vb2_buf.req_obj.req, &ctx->hdl);
-> > +
-> > +	fd->output = plane_vaddr;
-> > +	mtk_fd_hw_job_exec(fd, &fd_param);
-> > +}
-> > +
-> > +static struct v4l2_m2m_ops fd_m2m_ops = {
-> > +	.device_run = mtk_fd_device_run,
-> > +};
-> > +
-> > +static const struct media_device_ops fd_m2m_media_ops = {
-> > +	.req_validate	= vb2_request_validate,
-> > +	.req_queue	= v4l2_m2m_request_queue,
-> > +};
-> > +
-> > +static int mtk_fd_video_device_register(struct mtk_fd_dev *fd)
-> > +{
-> > +	struct video_device *vfd = &fd->vfd;
-> > +	struct v4l2_m2m_dev *m2m_dev = fd->m2m_dev;
-> > +	struct device *dev = fd->dev;
-> > +	int ret;
-> > +
-> > +	vfd->fops = &fd_video_fops;
-> > +	vfd->release = video_device_release;
-> > +	vfd->lock = &fd->vfd_lock;
-> > +	vfd->v4l2_dev = &fd->v4l2_dev;
-> > +	vfd->vfl_dir = VFL_DIR_M2M;
-> > +	vfd->device_caps = V4L2_CAP_STREAMING | V4L2_CAP_VIDEO_OUTPUT_MPLANE |
-> > +		V4L2_CAP_META_CAPTURE;
-> > +	vfd->ioctl_ops = &mtk_fd_v4l2_video_out_ioctl_ops;
-> > +
-> > +	strscpy(vfd->name, dev_driver_string(dev), sizeof(vfd->name));
-> > +
-> > +	video_set_drvdata(vfd, fd);
-> > +
-> > +	ret = video_register_device(vfd, VFL_TYPE_GRABBER, 0);
-> > +	if (ret) {
-> > +		dev_err(dev, "Failed to register video device\n");
-> > +		goto err_free_dev;
-> > +	}
-> > +
-> > +	ret = v4l2_m2m_register_media_controller(m2m_dev, vfd,
-> > +					     MEDIA_ENT_F_PROC_VIDEO_STATISTICS);
-> > +	if (ret) {
-> > +		dev_err(dev, "Failed to init mem2mem media controller\n");
-> > +		goto err_unreg_video;
-> > +	}
-> > +	return 0;
-> > +
-> > +err_unreg_video:
-> > +	video_unregister_device(vfd);
-> > +err_free_dev:
-> > +	video_device_release(vfd);
-> > +	return ret;
-> > +}
-> > +
-> > +static int mtk_fd_dev_v4l2_init(struct mtk_fd_dev *fd)
-> > +{
-> > +	struct media_device *mdev = &fd->mdev;
-> > +	struct device *dev = fd->dev;
-> > +	int ret;
-> > +
-> > +	ret = v4l2_device_register(dev, &fd->v4l2_dev);
-> > +	if (ret) {
-> > +		dev_err(dev, "Failed to register v4l2 device\n");
-> > +		return ret;
-> > +	}
-> > +
-> > +	fd->m2m_dev = v4l2_m2m_init(&fd_m2m_ops);
-> > +	if (IS_ERR(fd->m2m_dev)) {
-> > +		dev_err(dev, "Failed to init mem2mem device\n");
-> > +		ret = PTR_ERR(fd->m2m_dev);
-> > +		goto err_unreg_v4l2_dev;
-> > +	}
-> > +
-> > +	mdev->dev = dev;
-> > +	strscpy(mdev->model, dev_driver_string(dev), sizeof(mdev->model));
-> > +	snprintf(mdev->bus_info, sizeof(mdev->bus_info),
-> > +		 "platform:%s", dev_name(dev));
-> > +	media_device_init(mdev);
-> > +	mdev->ops = &fd_m2m_media_ops;
-> > +	fd->v4l2_dev.mdev = mdev;
-> > +
-> > +	ret = mtk_fd_video_device_register(fd);
-> > +	if (ret) {
-> > +		dev_err(dev, "Failed to register video device\n");
-> > +		goto err_cleanup_mdev;
-> > +	}
-> > +
-> > +	ret = media_device_register(mdev);
-> > +	if (ret) {
-> > +		dev_err(dev, "Failed to register mem2mem media device\n");
-> > +		goto err_unreg_vdev;
-> > +	}
-> > +
-> > +	return 0;
-> > +
-> > +err_unreg_vdev:
-> > +	v4l2_m2m_unregister_media_controller(fd->m2m_dev);
-> > +	video_unregister_device(&fd->vfd);
-> > +	video_device_release(&fd->vfd);
-> 
-> This is inconsistent with the registration, which registers all of these in
-> a function. Perhaps it would be worth to move this cleanup to a
-> mtk_fd_video_device_unregister() function?
-> 
-Fixed.
-
-> > +err_cleanup_mdev:
-> > +	media_device_cleanup(mdev);
-> > +	v4l2_m2m_release(fd->m2m_dev);
-> > +err_unreg_v4l2_dev:
-> > +	v4l2_device_unregister(&fd->v4l2_dev);
-> > +	return ret;
-> > +}
-> > +
-> > +static void mtk_fd_dev_v4l2_release(struct mtk_fd_dev *fd)
-> > +{
-> > +	v4l2_m2m_unregister_media_controller(fd->m2m_dev);
-> > +	video_unregister_device(&fd->vfd);
-> > +	video_device_release(&fd->vfd);
-> > +	media_device_cleanup(&fd->mdev);
-> > +	v4l2_m2m_release(fd->m2m_dev);
-> > +	v4l2_device_unregister(&fd->v4l2_dev);
-> > +}
-> > +
-> > +static irqreturn_t mtk_fd_irq(int irq, void *data)
-> > +{
-> > +	struct mtk_fd_dev *fd = (struct mtk_fd_dev *)data;
-> > +
-> > +	/* must read this register otherwise HW will keep sending irq */
-> > +	readl(fd->fd_base + MTK_FD_REG_OFFSET_INT_VAL);
-> > +	fd->output->number = readl(fd->fd_base + MTK_FD_REG_OFFSET_RESULT);
-> > +	dev_dbg(fd->dev, "mtk_fd_face_num:%d\n", fd->output->number);
-> > +
-> > +	mtk_fd_hw_done(fd, VB2_BUF_STATE_DONE);
-> > +	return IRQ_HANDLED;
-> > +}
-> > +
-> > +static int mtk_fd_hw_get_scp_mem(struct mtk_fd_dev *fd)
-> > +{
-> > +	struct device *dev = fd->dev;
-> > +	dma_addr_t addr;
-> > +	void *ptr;
-> > +	u32 ret;
-> > +
-> > +	/*
-> > +	 * Allocate coherent reserved memory for SCP firmware usage.
-> > +	 * The size of SCP composer's memory is fixed to 0x100000
-> > +	 * for the requirement of firmware.
-> > +	 */
-> > +	ptr = dma_alloc_coherent(&fd->scp_pdev->dev,
-> > +				 MTK_FD_HW_WORK_BUF_SIZE, &addr, GFP_KERNEL);
-> > +	if (!ptr)
-> > +		return -ENOMEM;
-> > +
-> > +	fd->scp_mem.scp_addr = addr;
-> > +	fd->scp_mem_virt_addr = ptr;
-> > +	dev_info(dev, "scp addr:%pad va:%pK\n", &addr, ptr);
-> 
-> These addresses are nothing a user should be concerned about, so please
-> don't use the _info level here. If you think this is an important debugging
-> information, please make it dev_dbg(). Otherwise, please just remove.
-> 
-Removed.
-
-> > +
-> > +	/*
-> > +	 * This reserved memory is also be used by FD HW.
-> > +	 * Need to get iova address for FD DMA.
-> > +	 */
-> > +	addr = dma_map_resource(dev, addr, MTK_FD_HW_WORK_BUF_SIZE,
-> > +				DMA_TO_DEVICE, DMA_ATTR_SKIP_CPU_SYNC);
-> 
-> Note that the second argument to dma_map_resource() is phys_addr_t, but the
-> code above passes a DMA address. This works only by luck, because both
-> physical and SCP DMA address space have the same addresses. To be fully
-> correct, dma_map_single() needs to be used, with the kernel virtual address
-> passed to it, but currently it doesn't handle the memory from a reserved
-> pool. Thus, we can only keep the hack as is, but please add a comment
-> explaining it, e.g.
-> 
-> /*
->  * FIXME: Assume SCP DMA and physical addresses are the same until
->  * dma_map_single() is fixed to handle reserved memory allocations.
->  */
-> 
-Ok, I've insert it above the comments there.
-as following:
-
-/*
- * FIXME: Assume SCP DMA and physical addresses are the same until
- * dma_map_single() is fixed to handle reserved memory allocations.
- *
- * This reserved memory will also be used by FD HW.
- * Need to get iova address for FD DMA.
- */
-
-> > +	if (dma_mapping_error(dev, addr)) {
-> > +		dev_err(dev, "Failed to map scp iova\n");
-> > +		ret = -ENOMEM;
-> > +		goto fail_free_mem;
-> > +	}
-> > +	fd->scp_mem.dma_addr = addr;
-> > +	dev_info(dev, "scp iova addr:%pad\n", &addr);
-> 
-> Ditto.
-fixed.
-
-> 
-> Best regards,
-> Tomasz
-
-Thanks and best regards,
-Jerry
 
 _______________________________________________
 Linux-mediatek mailing list
