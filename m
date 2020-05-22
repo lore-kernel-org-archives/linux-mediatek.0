@@ -2,79 +2,85 @@ Return-Path: <SRS0=9rwW=7E=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 624A3C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 09:46:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CF76FC433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 10:11:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2663D20723
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 09:46:36 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8E9FF205CB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 10:11:53 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eUDn/wFh";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="lqQkVcav"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2663D20723
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nHCJTiqU";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="dR5wbfMQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E9FF205CB
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
+	Date:References:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jLGcADLR6+g+QZNVCfeuc3cW5aDv9TXYF9ydsVx2rAE=; b=eUDn/wFhW0nsql
-	DdTeUO+USXkRN8mpVVBn/z8oiiinoV01lfYZHMazqTDRBffM+ssLHL/sE25hke6l3SKlg9795q20F
-	QkEifsKMNq/ZTD8pCtW2fe2QIvS2DauON58fkzpkVnmGtzLXbqqW8dUvsGDTIRbo5jRbKXtn4ND6X
-	vu8nv6gWaXomwT+zGM8ye3VupvO8jCRg5x5UQuWLHMpP+Zq9hi7gRleEvXAD1y4zmJIuZe7EAxqai
-	dBozxrQC+C45ya5syV7I2NXLgwtDQgj8hKnZFAKvHzIGixitcBi+KFVc57wKeP+mTFIWmhSXJO1zn
-	A4crquXlmkMJMPC9fnRA==;
+	List-Owner; bh=auQ859j+8ubZ4kxp39IYvVJKdQb938JG4B8uuWDAAoA=; b=nHCJTiqULnKwp1
+	Gi0/Ez5Q8i1gTHhUuEOYO0H7FnVwYblcDnNLAHwTtH8LAXkbhrlAQ7+8jQ3d4ynnS15nzVX30SGwx
+	pwD4ZhBYnOAaUIVQ5ADNZbJgFBo/p9nShkVXN036JYNnE+gh8GwwLrLd4NlwlGfE8RKhN//Ev7GUp
+	VINhZq/bzBqLkSXo5CyU1nTy5VElBH6WmjPy7GZ48xw1mhG7ixECX3SblBjRzqSts58ZWlygUR/R+
+	8R/pQuk5shENMUd5+PMhgzfi5ZtYvClK7fjd4gunUa4YU03qG4riCL5AtXbvaDmKs+dUwCSwDx8gS
+	q0iVSNbcRY5xFefTJotg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jc4G1-0002jI-4B; Fri, 22 May 2020 09:46:25 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jc4eV-0001VJ-Rw; Fri, 22 May 2020 10:11:43 +0000
+Received: from mail27.static.mailgun.info ([104.130.122.27])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jc4Fy-0002ie-A0; Fri, 22 May 2020 09:46:23 +0000
-X-UUID: ed81c43588ec405eadbeee74b6ff8f03-20200522
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=tF2iza3+T10u3OYpCiSW5Eyu/FLsGC6AH37q0WErEYM=; 
- b=lqQkVcavQp7yKMnO1Nr4beSI13g7xmJpXAOih7nVVPXmlCiObzzYg0RZG5sm27BH2NuTmciQ5r1gGmX7XOlJxD468rbhJsVqVZUG1l15zmzaTQVAe+0VuL8smX56ra1tuoQfq7+6jUXQXuD4Vy1/NmkS65nbi4dIKmycCMWXkJ8=;
-X-UUID: ed81c43588ec405eadbeee74b6ff8f03-20200522
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <dongchun.zhu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1386406660; Fri, 22 May 2020 01:46:00 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 22 May 2020 02:46:14 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31DR.mediatek.inc
- (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 22 May 2020 17:46:08 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 22 May 2020 17:46:07 +0800
-Message-ID: <1590140674.8804.401.camel@mhfsdcap03>
-Subject: Re: [V8, 1/2] media: dt-bindings: media: i2c: Document OV02A10
- bindings
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: Tomasz Figa <tfiga@chromium.org>
-Date: Fri, 22 May 2020 17:44:34 +0800
-In-Reply-To: <20200521193525.GB14214@chromium.org>
-References: <20200509080627.23222-1-dongchun.zhu@mediatek.com>
- <20200509080627.23222-2-dongchun.zhu@mediatek.com>
- <20200511160207.GA32476@bogus> <20200521193525.GB14214@chromium.org>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jc4eQ-0001UZ-BB
+ for linux-mediatek@lists.infradead.org; Fri, 22 May 2020 10:11:43 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1590142301; h=Content-Transfer-Encoding: Content-Type:
+ MIME-Version: Message-ID: In-Reply-To: Date: References: Subject: Cc:
+ To: From: Sender; bh=NW8Jsqkb6pnbBs1zr+nqGOErhbAaUKt/K4f9G+vJyjQ=;
+ b=dR5wbfMQS4WM/3XICegkmMXplMn/Uu/rQ2x/owhbF4ehSkoeJ2ITOkNBdlpHUTnpA3B7Uq9l
+ fWSz4ul47JMTjj7pQ+wmUYMDHs7dVcgUYFauxMVQlRJwIiaGwzBlp6P+FuEKSWbAo0eeRyWE
+ veTgH3Rxt1jgHW+V2sP2ymcIMPU=
+X-Mailgun-Sending-Ip: 104.130.122.27
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
+ smtp-out-n04.prod.us-west-2.postgun.com with SMTP id
+ 5ec7a54f569a62550d9406f1 (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Fri, 22 May 2020 10:11:27
+ GMT
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id D87CDC433CA; Fri, 22 May 2020 10:11:27 +0000 (UTC)
+Received: from potku.adurom.net (88-114-240-156.elisa-laajakaista.fi
+ [88.114.240.156])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: kvalo)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id DB89FC433C8;
+ Fri, 22 May 2020 10:11:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org DB89FC433C8
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=none smtp.mailfrom=kvalo@codeaurora.org
+From: Kalle Valo <kvalo@codeaurora.org>
+To: YueHaibing <yuehaibing@huawei.com>
+Subject: Re: [PATCH -next] mt76: mt7915: Fix build error
+References: <20200522034533.61716-1-yuehaibing@huawei.com>
+Date: Fri, 22 May 2020 13:11:16 +0300
+In-Reply-To: <20200522034533.61716-1-yuehaibing@huawei.com>
+ (yuehaibing@huawei.com's message of "Fri, 22 May 2020 11:45:33 +0800")
+Message-ID: <87a720b7p7.fsf@codeaurora.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: D5065D85BB825F36842C4C8BA7BA18E92E4A289B7885F1D5FAF1F8151DF263B12000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200522_024622_352818_A54D890C 
-X-CRM114-Status: GOOD (  18.42  )
+X-CRM114-CacheID: sfid-20200522_031141_834516_37411EF1 
+X-CRM114-Status: GOOD (  10.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,126 +92,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, Rob Herring <robh@kernel.org>,
- andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org, linus.walleij@linaro.org,
- shengnan.wang@mediatek.com, louis.kuo@mediatek.com, bgolaszewski@baylibre.com,
- sj.huang@mediatek.com, drinkcat@chromium.org,
- linux-mediatek@lists.infradead.org, dongchun.zhu@mediatek.com,
- sakari.ailus@linux.intel.com, matthias.bgg@gmail.com, bingbu.cao@intel.com,
- mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: ryder.lee@mediatek.com, linux-wireless@vger.kernel.org, yf.luo@mediatek.com,
+ chih-min.chen@mediatek.com, linux-kernel@vger.kernel.org,
+ matthias.bgg@gmail.com, yiwei.chung@mediatek.com,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ lorenzo.bianconi83@gmail.com, kuba@kernel.org, shayne.chen@mediatek.com,
+ davem@davemloft.net, linux-arm-kernel@lists.infradead.org, nbd@nbd.name
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Tomasz, Rob,
-
-On Thu, 2020-05-21 at 19:35 +0000, Tomasz Figa wrote:
-> Hi Rob,
-> 
-> On Mon, May 11, 2020 at 11:02:07AM -0500, Rob Herring wrote:
-> > On Sat, May 09, 2020 at 04:06:26PM +0800, Dongchun Zhu wrote:
-> > > Add DT bindings documentation for Omnivision OV02A10 image sensor.
-> > > 
-> > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > ---
-> > >  .../bindings/media/i2c/ovti,ov02a10.yaml           | 184 +++++++++++++++++++++
-> > >  MAINTAINERS                                        |   7 +
-> > >  2 files changed, 191 insertions(+)
-> > >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > new file mode 100644
-> > > index 0000000..5468d1b
-> > > --- /dev/null
-> > > +++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > @@ -0,0 +1,184 @@
-> > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > > +# Copyright (c) 2020 MediaTek Inc.
-> > > +%YAML 1.2
-> > > +---
-> > > +$id: http://devicetree.org/schemas/media/i2c/ovti,ov02a10.yaml#
-> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > +
-> > > +title: Omnivision OV02A10 CMOS Sensor Device Tree Bindings
-> > > +
-> > > +maintainers:
-> > > +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > +
-> > > +description: |-
-> > > +  The Omnivision OV02A10 is a low-cost, high performance, 1/5-inch, 2 megapixel
-> > > +  image sensor, which is the latest production derived from Omnivision's CMOS
-> > > +  image sensor technology. Ihis chip supports high frame rate speeds up to 30fps
-> > > +  @ 1600x1200 (UXGA) resolution transferred over a 1-lane MIPI interface. The
-> > > +  sensor output is available via CSI-2 serial data output.
-> > > +
-> > > +properties:
-> > > +  compatible:
-> > > +    const: ovti,ov02a10
-> > > +
-> > > +  reg:
-> > > +    description: I2C device address
-> > 
-> > Drop this. Nothing specific to this device.
-> > 
-> > > +    maxItems: 1
-> > > +
-> > > +  clocks:
-> > > +    items:
-> > > +      - description: top mux camtg clock
-> > > +      - description: devider clock
-> > 
-> > typo
-> > 
-> > > +
-> > > +  clock-names:
-> > > +    items:
-> > > +      - const: eclk
-> > > +      - const: freq_mux
-> > > +
-> > > +  clock-frequency:
-> > > +    description:
-> > > +      Frequency of the eclk clock in Hertz.
-> > > +
-> > > +  dovdd-supply:
-> > > +    description:
-> > > +      Definition of the regulator used as interface power supply.
-> > > +
-> > > +  avdd-supply:
-> > > +    description:
-> > > +      Definition of the regulator used as analog power supply.
-> > > +
-> > > +  dvdd-supply:
-> > > +    description:
-> > > +      Definition of the regulator used as digital power supply.
-> > > +
-> > > +  powerdown-gpios:
-> > > +    maxItems: 1
-> > > +
-> > > +  reset-gpios:
-> > > +    maxItems: 1
-> 
-> I asked a question about defining GPIO polarities some time ago, but I
-> guess it slipped through.
-> 
-> The chip documentation calls the reset pin as "RST_PAD (low level
-> reset)". Where should the inversion be handled, in the driver or here,
-> by having the DT include a necessary flag in the specifier?
-> 
-> Best regards,
-> Tomasz
-
-For powerdown-gpios and reset-gpios, I actually defined two totally
-different GPIO polarities in DT according to OV02A10 chip documentation.
-One is GPIO_ACTIVE_LOW, the other is GPIO_ACTIVE_HIGH (see examples
-below).
-
-So I'm wondering if we could add such one polarity-flag that Tomasz
-suggested.
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+WXVlSGFpYmluZyA8eXVlaGFpYmluZ0BodWF3ZWkuY29tPiB3cml0ZXM6Cgo+IEluIGZpbGUgaW5j
+bHVkZWQgZnJvbSAuL2luY2x1ZGUvbGludXgvZmlybXdhcmUuaDo2OjAsCj4gICAgICAgICAgICAg
+ICAgICBmcm9tIGRyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3OTE1L21jdS5j
+OjQ6Cj4gSW4gZnVuY3Rpb24g4oCYX19tdDc5MTVfbWN1X21zZ19zZW5k4oCZLAo+ICAgICBpbmxp
+bmVkIGZyb20g4oCYbXQ3OTE1X21jdV9zZW5kX21lc3NhZ2XigJkgYXQgZHJpdmVycy9uZXQvd2ly
+ZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc5MTUvbWN1LmM6MzcwOjY6Cj4gLi9pbmNsdWRlL2xpbnV4
+L2NvbXBpbGVyLmg6Mzk2OjM4OiBlcnJvcjogY2FsbCB0byDigJhfX2NvbXBpbGV0aW1lX2Fzc2Vy
+dF81NDXigJkgZGVjbGFyZWQgd2l0aCBhdHRyaWJ1dGUgZXJyb3I6IEJVSUxEX0JVR19PTiBmYWls
+ZWQ6IGNtZCA9PSBNQ1VfRVhUX0NNRF9FRlVTRV9BQ0NFU1MgJiYgbWN1X3R4ZC0+c2V0X3F1ZXJ5
+ICE9IE1DVV9RX1FVRVJZCj4gICBfY29tcGlsZXRpbWVfYXNzZXJ0KGNvbmRpdGlvbiwgbXNnLCBf
+X2NvbXBpbGV0aW1lX2Fzc2VydF8sIF9fQ09VTlRFUl9fKQo+ICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgXgo+IC4vaW5jbHVkZS9saW51eC9jb21waWxlci5oOjM3Nzo0OiBu
+b3RlOiBpbiBkZWZpbml0aW9uIG9mIG1hY3JvIOKAmF9fY29tcGlsZXRpbWVfYXNzZXJ04oCZCj4g
+ICAgIHByZWZpeCAjIyBzdWZmaXgoKTsgICAgXAo+ICAgICBefn5+fn4KPiAuL2luY2x1ZGUvbGlu
+dXgvY29tcGlsZXIuaDozOTY6Mjogbm90ZTogaW4gZXhwYW5zaW9uIG9mIG1hY3JvIOKAmF9jb21w
+aWxldGltZV9hc3NlcnTigJkKPiAgIF9jb21waWxldGltZV9hc3NlcnQoY29uZGl0aW9uLCBtc2cs
+IF9fY29tcGlsZXRpbWVfYXNzZXJ0XywgX19DT1VOVEVSX18pCj4gICBefn5+fn5+fn5+fn5+fn5+
+fn5+Cj4gLi9pbmNsdWRlL2xpbnV4L2J1aWxkX2J1Zy5oOjM5OjM3OiBub3RlOiBpbiBleHBhbnNp
+b24gb2YgbWFjcm8g4oCYY29tcGlsZXRpbWVfYXNzZXJ04oCZCj4gICNkZWZpbmUgQlVJTERfQlVH
+X09OX01TRyhjb25kLCBtc2cpIGNvbXBpbGV0aW1lX2Fzc2VydCghKGNvbmQpLCBtc2cpCj4gICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fgo+IC4v
+aW5jbHVkZS9saW51eC9idWlsZF9idWcuaDo1MDoyOiBub3RlOiBpbiBleHBhbnNpb24gb2YgbWFj
+cm8g4oCYQlVJTERfQlVHX09OX01TR+KAmQo+ICAgQlVJTERfQlVHX09OX01TRyhjb25kaXRpb24s
+ICJCVUlMRF9CVUdfT04gZmFpbGVkOiAiICNjb25kaXRpb24pCj4gICBefn5+fn5+fn5+fn5+fn5+
+Cj4gZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc5MTUvbWN1LmM6MjgwOjI6
+IG5vdGU6IGluIGV4cGFuc2lvbiBvZiBtYWNybyDigJhCVUlMRF9CVUdfT07igJkKPiAgIEJVSUxE
+X0JVR19PTihjbWQgPT0gTUNVX0VYVF9DTURfRUZVU0VfQUNDRVNTICYmCj4gICBefn5+fn5+fn5+
+fn4KPgo+IEJVSUxEX0JVR19PTiBpcyBtZWFuaW5nbGVzcyBoZXJlLCBjaGFuZyBpdCB0byBXQVJO
+X09OLgo+Cj4gRml4ZXM6IGU1N2I3OTAxNDY5ZiAoIm10NzY6IGFkZCBtYWM4MDIxMSBkcml2ZXIg
+Zm9yIE1UNzkxNSBQQ0llLWJhc2VkIGNoaXBzZXRzIikKPiBTaWduZWQtb2ZmLWJ5OiBZdWVIYWli
+aW5nIDx5dWVoYWliaW5nQGh1YXdlaS5jb20+CgpJJ20gY3VyaW91cyB3aHkgSSBkb24ndCBzZWUg
+dGhpcyBidWlsZCBlcnJvcj8gSSB3YXMgYWJvdXQgdG8gc2VuZCBhIHB1bGwKcmVxdWVzdCB0byBE
+YXZlLCBzaG91bGQgSSBob2xkIG9mZiB0aGUgcHVsbCByZXF1ZXN0IGR1ZSB0byB0aGlzIHByb2Js
+ZW0/CgotLSAKaHR0cHM6Ly93aXJlbGVzcy53aWtpLmtlcm5lbC5vcmcvZW4vZGV2ZWxvcGVycy9k
+b2N1bWVudGF0aW9uL3N1Ym1pdHRpbmdwYXRjaGVzCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgt
+bWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
