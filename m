@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4BB34C433E1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 12:08:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A9EACC433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 12:08:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 16A1B206F6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 12:08:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 453A1206F6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 12:08:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VxC7Nnjl";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="i0LAaJO4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16A1B206F6
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XLpg8Cr9";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="z09pplDz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 453A1206F6
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bgdev.pl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I9Vu3cc4c5hXgh4NMd8T1Hxqavi19cvjIsCUCHrknRw=; b=VxC7Nnjlu+w600
-	bUH/GKja7WzbP7MT/cVb6hVdiX1wwPqkvjRWDm2VukACNlkPmVJYnmrW7JzbEd8tNPrQO8D33139p
-	8x8QeTkCqfZMsip0RVwKFkRxyH2b7vd1liBB4XgxKClH16nSLiQedDzSa+xboLV/wMtRJmfZ2/VI3
-	IhbZuabrOC0jwnRSBe0JS4iECAxc4R8RZJcJU7+6kk/veyOn6bMMlG+nGspr/e5EfmKUFhKpulfzv
-	VYljrPsZY4MpKXxluDOX5FxbsZY8tYRNEeA1VmogvUxpUlX2f1I2RbhSdO2Wxs4d/3XlrIW0bZRYh
-	u91hbRf1rl8TkOV9E7rw==;
+	List-Owner; bh=9pIm6ZOmA18jlcOeA9K6ngrKqdElRzO5VhQ6KwLvyRk=; b=XLpg8Cr9R8taiN
+	zB3JgEjsttysdmAczG/dyYmNb08GjJGhmeNE0pTCkhbi4aBTAw8lR2yKua8mMapJQ0MNYnBdceEYV
+	by1PxB+sHXXDE2v4oK822pKFUegW6UdqzlQahABq9CfCzh73h05dGryVWQkgiL84EqwzaZLXbYrLH
+	NMAJwVfLucD4ZOd8eFcisuyThDl52nisRDg/9XwtYsDVD76sxll7KQKhoNd4PbxXczK5orAlNOKaf
+	6I/3vJttjhC4rb0QLX01SLAoqGe2ln5cBamkXjRRV27IxNDqexP6pj8uwLQLSOmocX7arB7Ba7PIy
+	XmThQyYMz8bMpw0rNIjw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jc6Sq-0003fv-39; Fri, 22 May 2020 12:07:48 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1jc6Td-0004QU-1f; Fri, 22 May 2020 12:08:37 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jc6ST-0003IK-RH
- for linux-mediatek@lists.infradead.org; Fri, 22 May 2020 12:07:27 +0000
-Received: by mail-wr1-x441.google.com with SMTP id y17so1533790wrn.11
- for <linux-mediatek@lists.infradead.org>; Fri, 22 May 2020 05:07:25 -0700 (PDT)
+ id 1jc6SU-0003Hg-MA
+ for linux-mediatek@lists.infradead.org; Fri, 22 May 2020 12:07:29 +0000
+Received: by mail-wm1-x344.google.com with SMTP id f5so1335921wmh.2
+ for <linux-mediatek@lists.infradead.org>; Fri, 22 May 2020 05:07:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=/pmWjPydDcH2ECRLQQUecpuUxdBwIQiF7KV5PtBBYA0=;
- b=i0LAaJO4/OsiG8tHqQqh8QMJFnyB9fw0SVJmnxPGwVTC6c84IGU5mK5QyKhXXyAdJY
- gwxhvTbndWQZIPz4rlVu6qopD/zba+IYsJRc0V8W25aObCVlipS1HOIqHGeuz4IRwc0C
- 3WkftM8s+RgwQxuqLazSX/TOdAZqK2SNnCMJCce1G8I5UroZMlsPaWtI1A3KC0M35wNv
- 5PTjSWIHb9XdOhVpsE/mAichJ+oodz+TsK9zHPZGJCX7A4uGLz0CCB5ySpw+QlijqLzE
- utvl5/7gbRxf6t+9Os+RqahStxHmEBlGoJ9zX+YiptZIfhJagdJ0rLderVS/L4oc62u1
- vMHg==
+ bh=SYamWCGpGqZL1TdMciPU3s1N0hd2ppZ++0/IfJ1caGY=;
+ b=z09pplDzbGu8zzHYZwmUG8WYuN5QnZoIThbQYmhBMWEdeanmgiQmeEaOJAAsMBH5co
+ Vc9SJuMdt4nXdaLIqtA5xDnvUSVBnfcy8+HUHt+7XekAI9e36/NJH0qHuP3oPkZSLY28
+ LxPlZYlsDw4W1ckHD0Es7lqGaXILSlhaTD2WhJ45RQCKFru6rVsyfbYXPtNE6rVrSQRh
+ IE0Bnp/5oPPCepTQASBnHTtpJDXwfdNkKtDoTYs/yLZbblVMktuo8Y5utgxPeh07MRaN
+ 2JzjgOFu1d/xixp3xct7DO4Siv8YXryeMOIM+u9ZZWnonUMTeRGBc7bTnOhr9As4Kam8
+ 2eFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=/pmWjPydDcH2ECRLQQUecpuUxdBwIQiF7KV5PtBBYA0=;
- b=F+ZUbpZ0h1WzXNuNM3R8QObISj5jAdq0RXckGlTnLz3Z/MIb1p11ysLIZFYi8MBBR2
- b9QMKSwTqWS7atuX7Y9es2auWYlzOjaQhMVg5ag2vkSOaTFANM/2x6YLY8PDPwqO8fp2
- VyK5JxdXB1fER14qKKpQyaMZoJVUaP5a5pIyZ99woY1Zm9JwHs/GU0VpaZSuVSemWTMi
- pagwlAPENhSmVojNx2bt7VV5rSDdCjgHYgVIlHEQbolkFU67ELDsO9Z4ae7pKx1eJLw8
- YDsVqSuBPpRQeRFWVuSo6a1jBZUxpav3UfsQz9axssniPPRM8avEtehz7+o/aZcsNq9K
- sKaw==
-X-Gm-Message-State: AOAM530SwFyku/24/mU52gzpLy/vIXbi2IUmoBQDjQuXN8x6AskOYd+P
- xp0NiIbKMAdqVVeJ9255/9XDfg==
-X-Google-Smtp-Source: ABdhPJyhBs1vuweSsT6UnZzHIxmupzWKr/Mklf9iaHHEzRP3oB0F6VGJEWNBq1p2UGylX27IQJUkew==
-X-Received: by 2002:a5d:4dd0:: with SMTP id f16mr1475060wru.117.1590149244637; 
- Fri, 22 May 2020 05:07:24 -0700 (PDT)
+ bh=SYamWCGpGqZL1TdMciPU3s1N0hd2ppZ++0/IfJ1caGY=;
+ b=OFKykYk5RMivsFQE4qFkPU70rJ6Zly4AZ3byC5XTg9INzkMzLziHwawm9OHSm5xPPo
+ HRhCe8jWJDN3o27wHAJCfcKQXyptTN904nIqBCku+uL8mEdph14mYpePqIGgG8XtnZH6
+ UZvm/8pYU3wL8SX7YWRqagxDIXaA+dHUgr1HOZkeDLRpZOnC6jbrfWEF216MdDE+sYh1
+ R9c0XUZAOOoBHR7qfxeSUe4ZO12PMM6Bh7dt8rCwCIXK0p2AtUGZLVAZKUWDSrtN29sC
+ tVDVCuZBh+XdqYR+iUb6d4ECXusH10Oc/kvdL8PY4+1HysoEaoTxMsLAk9mB/3hXCnVu
+ vCPQ==
+X-Gm-Message-State: AOAM531wap+UxGcc0/ZSPej15waOsvNy2P8a/4qWKnn1SWiyDVoXfhLq
+ bVgusaoHKqE5Q/hQfHtRUQRMKA==
+X-Google-Smtp-Source: ABdhPJw0hJl3cQP5flK/6nQax5Ceb2AK3ZRifZ2de+tpHbVYDyDSC0mU0F2KKkWDNbi4cMfQO0bWhg==
+X-Received: by 2002:a1c:5402:: with SMTP id i2mr14046163wmb.185.1590149243221; 
+ Fri, 22 May 2020 05:07:23 -0700 (PDT)
 Received: from localhost.localdomain (lfbn-nic-1-65-232.w2-15.abo.wanadoo.fr.
  [2.15.156.232])
- by smtp.gmail.com with ESMTPSA id f128sm9946233wme.1.2020.05.22.05.07.23
+ by smtp.gmail.com with ESMTPSA id f128sm9946233wme.1.2020.05.22.05.07.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 May 2020 05:07:24 -0700 (PDT)
+ Fri, 22 May 2020 05:07:22 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
 To: Rob Herring <robh+dt@kernel.org>, "David S . Miller" <davem@davemloft.net>,
  Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <john@phrozen.org>,
@@ -81,17 +81,17 @@ To: Rob Herring <robh+dt@kernel.org>, "David S . Miller" <davem@davemloft.net>,
  Fabien Parent <fparent@baylibre.com>,
  Heiner Kallweit <hkallweit1@gmail.com>,
  Edwin Peer <edwin.peer@broadcom.com>
-Subject: [PATCH v5 03/11] dt-bindings: net: add a binding document for
- MediaTek STAR Ethernet MAC
-Date: Fri, 22 May 2020 14:06:52 +0200
-Message-Id: <20200522120700.838-4-brgl@bgdev.pl>
+Subject: [PATCH v5 02/11] dt-bindings: add new compatible to mediatek,pericfg
+Date: Fri, 22 May 2020 14:06:51 +0200
+Message-Id: <20200522120700.838-3-brgl@bgdev.pl>
 X-Mailer: git-send-email 2.25.0
 In-Reply-To: <20200522120700.838-1-brgl@bgdev.pl>
 References: <20200522120700.838-1-brgl@bgdev.pl>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200522_050725_891311_5906780E 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20200522_050726_740143_CBB9C94A 
+X-CRM114-Status: UNSURE (   8.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,110 +116,26 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 
-This adds yaml DT bindings for the MediaTek STAR Ethernet MAC present
-on the mt8* family of SoCs.
+The PERICFG controller is present on the MT8516 SoC. Add an appropriate
+compatible variant.
 
 Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 ---
- .../bindings/net/mediatek,eth-mac.yaml        | 89 +++++++++++++++++++
- 1 file changed, 89 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/net/mediatek,eth-mac.yaml
+ .../devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml       | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/net/mediatek,eth-mac.yaml b/Documentation/devicetree/bindings/net/mediatek,eth-mac.yaml
-new file mode 100644
-index 000000000000..f85d91a9d6e5
---- /dev/null
-+++ b/Documentation/devicetree/bindings/net/mediatek,eth-mac.yaml
-@@ -0,0 +1,89 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/net/mediatek,eth-mac.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek STAR Ethernet MAC Controller
-+
-+maintainers:
-+  - Bartosz Golaszewski <bgolaszewski@baylibre.com>
-+
-+description:
-+  This Ethernet MAC is used on the MT8* family of SoCs from MediaTek.
-+  It's compliant with 802.3 standards and supports half- and full-duplex
-+  modes with flow-control as well as CRC offloading and VLAN tags.
-+
-+allOf:
-+  - $ref: "ethernet-controller.yaml#"
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt8516-eth
-+      - mediatek,mt8518-eth
-+      - mediatek,mt8175-eth
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    minItems: 3
-+    maxItems: 3
-+
-+  clock-names:
-+    additionalItems: false
-+    items:
-+      - const: core
-+      - const: reg
-+      - const: trans
-+
-+  mediatek,pericfg:
-+    $ref: /schemas/types.yaml#definitions/phandle
-+    description:
-+      Phandle to the device containing the PERICFG register range. This is used
-+      to control the MII mode.
-+
-+  mdio:
-+    type: object
-+    description:
-+      Creates and registers an MDIO bus.
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - clocks
-+  - clock-names
-+  - mediatek,pericfg
-+  - phy-handle
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/clock/mt8516-clk.h>
-+
-+    ethernet: ethernet@11180000 {
-+        compatible = "mediatek,mt8516-eth";
-+        reg = <0x11180000 0x1000>;
-+        mediatek,pericfg = <&pericfg>;
-+        interrupts = <GIC_SPI 111 IRQ_TYPE_LEVEL_LOW>;
-+        clocks = <&topckgen CLK_TOP_RG_ETH>,
-+                 <&topckgen CLK_TOP_66M_ETH>,
-+                 <&topckgen CLK_TOP_133M_ETH>;
-+        clock-names = "core", "reg", "trans";
-+        phy-handle = <&eth_phy>;
-+        phy-mode = "rmii";
-+
-+        mdio {
-+            #address-cells = <1>;
-+            #size-cells = <0>;
-+
-+            eth_phy: ethernet-phy@0 {
-+                reg = <0>;
-+            };
-+        };
-+    };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
+index 1340c6288024..55209a2baedc 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
+@@ -25,6 +25,7 @@ properties:
+           - mediatek,mt8135-pericfg
+           - mediatek,mt8173-pericfg
+           - mediatek,mt8183-pericfg
++          - mediatek,mt8516-pericfg
+         - const: syscon
+       - items:
+         # Special case for mt7623 for backward compatibility
 -- 
 2.25.0
 
