@@ -2,67 +2,90 @@ Return-Path: <SRS0=9rwW=7E=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BA6FC433E1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 06:31:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A857C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 07:37:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6AAD3207BC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 06:31:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 57A782065C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 07:37:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cXCUFOc1"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6AAD3207BC
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=mxic.com.tw
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TsXHIM4I";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="s2XwS2bD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 57A782065C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:From:Message-ID:MIME-Version:
-	Subject:To:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kJGZBm+N+iWOz1SHXD6qQSJwrncVeyxyzJBEuNNEtVU=; b=cXCUFOc1dr975W
-	gIFndlL/KiK9UNv/J/fa0UM7fZBFPxvsAs5qD7KtcNRzLG/rer/1WHRORNVL/DWiSEn0XmAEhOnvt
-	khcRaOyv7KumDIzCTQiqAvj6UfTebjuRJYaTcKd/JfGyFjsfU9Wvcz/vT3dMLks8DXffcAXXRZIor
-	ZLLIMppok3Xn/DIkb9kfgbT/3pqqM4dnVRzpNGQDRmfDBTqMhnA+3WZulQs0dwFd+9OgLFEBppQWr
-	J3vzdk7t9ZczcELxzvBc5thAmepExEcgieuW5wBptoVttYxoqbhbno70TJhtArwm0kgat5QIeoFzy
-	5NPW3pAH6vM/vxTl14wQ==;
+	List-Owner; bh=dGc6xcvUH3pXmBOaV82V9XU7hyXAmyT8Izo4jlxLjl8=; b=TsXHIM4I2/bo4r
+	emP0qrzpp6X3xGb2UvQksKthsS2duqnwIPYArV9AKgd4MGNuOHZq2m6HZAy/9JTQqXp9pSSwSGdPT
+	Utaom647yNgDByjmjKWzSBgLCFxMgf0Hia0mFy3PP2Z2z4cZIKKQQRo1cLS5OTT8jwwroRFUp3CmM
+	QEMhyvT52ogVL9628rn+szmO/yJbARQPf3qhHfX1h/shi/L7XivAdnRlCQhMUfYzZphR0ecLbkcoB
+	AZaHL7+5MxYENgQQjTcy2uiTJUNIfQl1YsfTaqC8AXszM7SUk750/U9ucOw+d7UWfV/wewFpwxjWY
+	63ciNsn+C9cvyp5dgdHA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jc1Dg-000748-0B; Fri, 22 May 2020 06:31:48 +0000
-Received: from twhmllg4.macronix.com ([211.75.127.132])
+	id 1jc2FN-0005Kj-6O; Fri, 22 May 2020 07:37:37 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jc1DP-0006t8-C9; Fri, 22 May 2020 06:31:32 +0000
-Received: from twhfm1p2.macronix.com (twhfmlp2.macronix.com [172.17.20.92])
- by TWHMLLG4.macronix.com with ESMTP id 04M6Uv0L024143;
- Fri, 22 May 2020 14:30:57 +0800 (GMT-8)
- (envelope-from masonccyang@mxic.com.tw)
-Received: from MXML06C.mxic.com.tw (mxml06c.mxic.com.tw [172.17.14.55])
- by Forcepoint Email with ESMTP id 392FE906D490C16CE7F1;
- Fri, 22 May 2020 14:30:58 +0800 (CST)
-In-Reply-To: <20200519142642.24131-6-p.yadav@ti.com>
-References: <20200519142642.24131-1-p.yadav@ti.com>
- <20200519142642.24131-6-p.yadav@ti.com>
-To: "Pratyush Yadav" <p.yadav@ti.com>
-Subject: Re: [PATCH v5 05/19] mtd: spi-nor: add support for DTR protocol
+ id 1jc2FD-0005CY-D1
+ for linux-mediatek@lists.infradead.org; Fri, 22 May 2020 07:37:28 +0000
+Received: by mail-wm1-x341.google.com with SMTP id h4so7741313wmb.4
+ for <linux-mediatek@lists.infradead.org>; Fri, 22 May 2020 00:37:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=FxhyYotOdsb3Prsxlw/PCmLh9cDfCT3MjS19m7K8Q5o=;
+ b=s2XwS2bDg3iy2QFTSYYUp2zSt1XfNkCltyHI70cuooryTjTrmQxbyoYtC7EKyK4J/A
+ CMELJ8ZUfGTSxOg6AYlN57glArOF+Ly3LjBs501uqsGcZR+l5Ibxqj5DBoVL8XlApo+b
+ atG2eMn0WIvN4x1PzdTxcIHXw7mmI8zyZgEqdH4lRMCpbTWYzhSglv9A05yWl0+Rvm4o
+ a1TeQChSuAktfp1bMBydXDruT0T7jEQlllRF0IEpKC1x+j4OCj2MCcDtMbvOQOrfVMww
+ V3l5bx0/GQmy7oWXfKlljrEXIicKaJzqGjj0q/1VOv2DQAj2EGtyTx5RDElE8IrTsPbQ
+ hSlg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=FxhyYotOdsb3Prsxlw/PCmLh9cDfCT3MjS19m7K8Q5o=;
+ b=eIWxRYkGLu2RYSGiqPMD0QPfEAf1f930XvnFmMj6S4ph5Ku8nDiMbGebjPM9nvthtZ
+ 5o2ihKz1UAfnL7Kf0jXGqcAWVG0HynWDwcxwMlViamh98XxyVromimZxuXJf92eS4ERK
+ nWRR1g4gkAqkAox/7De05BPeLsnAcpOVEl6xEvqmzfgAvLTYrGlxjNHtgZDMNQiLS1aH
+ yIIA4VUfO7/46eIiFecfKbJncvp5PpNd6W8X0FK9CWnyBArLvob+joVnnHqvzf+nIjbm
+ rEJh0tU4+XvBCXz8B/5pAqbO97TiBZydpjl441vVlxdh0J07XkrWd+nPKVop1dyXmvfk
+ 4f2w==
+X-Gm-Message-State: AOAM531dndRSlEbVJ7rZwxy5SLxx1C3B2R6z6P9tEYs5KC1tkfczr0kR
+ IfYsPAeeWJZpinFqkRwPvdxHHA==
+X-Google-Smtp-Source: ABdhPJxs2hJYnfDm6N4+o9/p+SF/UJ8IDcPxC+ZnYoNz7e9Bj+uhDyIZoQpHZd769I0Jckb0UavO0Q==
+X-Received: by 2002:a1c:6042:: with SMTP id u63mr12028802wmb.65.1590133045474; 
+ Fri, 22 May 2020 00:37:25 -0700 (PDT)
+Received: from dell ([95.149.164.102])
+ by smtp.gmail.com with ESMTPSA id l19sm9221775wmj.14.2020.05.22.00.37.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 22 May 2020 00:37:24 -0700 (PDT)
+Date: Fri, 22 May 2020 08:37:22 +0100
+From: Lee Jones <lee.jones@linaro.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] dt-bindings: mfd: mediatek: Add MT6397 Pin Controller
+Message-ID: <20200522073722.GP271301@dell>
+References: <20200110145952.9720-1-matthias.bgg@kernel.org>
+ <20200115151938.GA8182@bogus>
+ <ce3747e5-41db-a168-0602-37337d8530f2@gmail.com>
 MIME-Version: 1.0
-X-KeepSent: AC48157A:F337A12A-48258570:0021F23B;
- type=4; name=$KeepSent
-X-Mailer: Lotus Notes Release 8.5.3FP4 SHF90 June 10, 2013
-Message-ID: <OFAC48157A.F337A12A-ON48258570.0021F23B-48258570.0023CB62@mxic.com.tw>
-From: masonccyang@mxic.com.tw
-Date: Fri, 22 May 2020 14:30:58 +0800
-X-MIMETrack: Serialize by Router on MXML06C/TAIWAN/MXIC(Release 9.0.1FP10
- HF265|July 25, 2018) at 2020/05/22 PM 02:30:58,
- Serialize complete at 2020/05/22 PM 02:30:58
-X-MAIL: TWHMLLG4.macronix.com 04M6Uv0L024143
+Content-Disposition: inline
+In-Reply-To: <ce3747e5-41db-a168-0602-37337d8530f2@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_233131_676622_28B0BCEF 
-X-CRM114-Status: UNSURE (   8.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200522_003727_435742_3FE2AE10 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,119 +97,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Vignesh Raghavendra <vigneshr@ti.com>,
- Tudor Ambarus <tudor.ambarus@microchip.com>, juliensu@mxic.com.tw,
- Richard Weinberger <richard@nod.at>, Mark Brown <broonie@kernel.org>,
- Nicolas Ferre <nicolas.ferre@microchip.com>, Sekhar Nori <nsekhar@ti.com>,
- linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- linux-mediatek@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org,
- Pratyush Yadav <p.yadav@ti.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh@kernel.org>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@kernel.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-Hi Pratyush,
-
-
-> +/**
-> + * spi_nor_spimem_setup_op() - Set up common properties of a spi-mem 
-op.
-> + * @nor:      pointer to a 'struct spi_nor'
-> + * @op:         pointer to the 'struct spi_mem_op' whose properties
-> + *         need to be initialized.
-> + * @proto:      the protocol from which the properties need to be set.
-> + */
-> +void spi_nor_spimem_setup_op(const struct spi_nor *nor,
-> +              struct spi_mem_op *op,
-> +              const enum spi_nor_protocol proto)
-> +{
-> +   u8 ext;
-> +
-> +   op->cmd.buswidth = spi_nor_get_protocol_inst_nbits(proto);
-> +
-> +   if (op->addr.nbytes)
-> +      op->addr.buswidth = spi_nor_get_protocol_addr_nbits(proto);
-> +
-> +   if (op->dummy.nbytes)
-> +      op->dummy.buswidth = spi_nor_get_protocol_addr_nbits(proto);
-> +
-> +   if (op->data.nbytes)
-> +      op->data.buswidth = spi_nor_get_protocol_data_nbits(proto);
-> +
-> +   if (spi_nor_protocol_is_dtr(proto)) {
-
-As mentioned before that I am also patching mx25* which supports 8S-8S-8S 
-and 
-8D-8D-8D mode.
-
-please patch to spi_nor_protocol_is_8_8_8(proto) for 8S-8S-8S mode 
-support.
-
-> +      /*
-> +       * spi-mem supports mixed DTR modes, but right now we can only
-> +       * have all phases either DTR or STR. IOW, spi-mem can have
-> +       * something like 4S-4D-4D, but spi-nor can't. So, set all 4
-> +       * phases to either DTR or STR.
-> +       */
-
-        if (spi_nor_protocol_is_8D_8D_8D(proto) {
-
-> +      op->cmd.dtr = op->addr.dtr = op->dummy.dtr
-> +                = op->data.dtr = true;
-> +
-> +      /* 2 bytes per clock cycle in DTR mode. */
-> +      op->dummy.nbytes *= 2;
-
-        }
-
-> +
-> +      ext = spi_nor_get_cmd_ext(nor, op);
-> +      op->cmd.opcode = (op->cmd.opcode << 8) | ext;
-> +      op->cmd.nbytes = 2;
-> +   }
-> +}
-> +
-
-thanks & best regards,
-Mason
-
-
-CONFIDENTIALITY NOTE:
-
-This e-mail and any attachments may contain confidential information 
-and/or personal data, which is protected by applicable laws. Please be 
-reminded that duplication, disclosure, distribution, or use of this e-mail 
-(and/or its attachments) or any part thereof is prohibited. If you receive 
-this e-mail in error, please notify us immediately and delete this mail as 
-well as its attachment(s) from your system. In addition, please be 
-informed that collection, processing, and/or use of personal data is 
-prohibited unless expressly permitted by personal data protection laws. 
-Thank you for your attention and cooperation.
-
-Macronix International Co., Ltd.
-
-=====================================================================
-
-
-
-============================================================================
-
-CONFIDENTIALITY NOTE:
-
-This e-mail and any attachments may contain confidential information and/or personal data, which is protected by applicable laws. Please be reminded that duplication, disclosure, distribution, or use of this e-mail (and/or its attachments) or any part thereof is prohibited. If you receive this e-mail in error, please notify us immediately and delete this mail as well as its attachment(s) from your system. In addition, please be informed that collection, processing, and/or use of personal data is prohibited unless expressly permitted by personal data protection laws. Thank you for your attention and cooperation.
-
-Macronix International Co., Ltd.
-
-=====================================================================
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gVGh1LCAyMSBNYXkgMjAyMCwgTWF0dGhpYXMgQnJ1Z2dlciB3cm90ZToKCj4gSGkgTGVlLAo+
+IAo+IE9uIDE1LzAxLzIwMjAgMTY6MTksIFJvYiBIZXJyaW5nIHdyb3RlOgo+ID4gT24gRnJpLCAx
+MCBKYW4gMjAyMCAxNTo1OTo1MSArMDEwMCwgbWF0dGhpYXMuYmdnQGtlcm5lbC5vcmcgd3JvdGU6
+Cj4gPj4gRnJvbTogTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4KPiA+
+Pgo+ID4+IFRoZSBNVDYzOTcgbWZkIGluY2x1ZGVzIGEgcGluIGNvbnRyb2xsZXIuIEFkZCBiaW5k
+aW5nCj4gPj4gYSBkZXNjcmlwdGlvbiBmb3IgaXQuCj4gPj4KPiA+PiBTaWduZWQtb2ZmLWJ5OiBN
+YXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPgo+ID4+Cj4gPj4gLS0tCj4g
+Pj4KPiA+PiAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21mZC9tdDYzOTcudHh0
+IHwgNSArKysrKwo+ID4+ICAxIGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCspCj4gPj4KPiA+
+IAo+ID4gQWNrZWQtYnk6IFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+Cj4gPiAKPiAKPiBJ
+dCBsb29rcyBsaWtlIHRoaXMgZmFsbCB0aHJvdWdoIHRoZSBjcmFja3MuCj4gV291bGQgeW91IGNv
+bnNpZGVyIHRvIHF1ZXVlIGl0IG9yIGRvIHlvdSBoYXZlIGZ1cnRoZXIgY29tbWVudHM/CgpUaGVy
+ZSBpcyBhIGN1cnJlbnQgaXNzdWUgd2hlcmUgUm9iIGFuZCBJIGFyZSBib3RoIHRha2luZyBwYXRj
+aGVzLgpTb21ldGltZXMgd2UgYm90aCBhc3N1bWUgdGhlIG90aGVyIHdpbGwgdGFrZSB0aGUgcGF0
+Y2guCgpBcG9sb2dpZXMuCgotLSAKTGVlIEpvbmVzIFvmnY7nkLzmlq9dCkxpbmFybyBTZXJ2aWNl
+cyBUZWNobmljYWwgTGVhZApMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBmb3Ig
+QVJNIFNvQ3MKRm9sbG93IExpbmFybzogRmFjZWJvb2sgfCBUd2l0dGVyIHwgQmxvZwoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsg
+bWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
