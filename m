@@ -1,66 +1,79 @@
-Return-Path: <SRS0=x8tw=7D=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=9rwW=7E=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_2 autolearn=unavailable
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 221FEC433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 20:17:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6C43EC433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 01:09:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 85D76207D3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2020 20:17:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 294A62072C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 01:09:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CsvN68RV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 85D76207D3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OvXfwjPD";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ROVHPn8i"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 294A62072C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=J7+6+mrsk9F5BoyVGYipIWTg8e9tF5ETA5asBRyfEN8=; b=CsvN68RVm4pW44
-	avDr+N2IkA9ZwPPlWGorx04bjx8rTgLER619hTYvjXIuaKKwWOJ8F5FhCquTPI1ps9SavUfMECn11
-	rptNQ+4owat4E89tjFoVFz0JRXGQm4/4ag3Pr3JWx2rC0+6H7506oCCQtwGYQglBYiSy8z9rTEVzq
-	eJ1r6PutAcgzAcdtjv2Pvo3HuRAedp73h+zEyfWwOEx+jOkPs1W8HPcWH27LYGySUYK/BBwkzXfah
-	iLTJ31YdWe2coq4NdRrXzmpplCpw5w+JNlqdAHux+5bP190vH/C2GrzyctA5/g1BFhEw4bAHtVAMp
-	YBanoJFq1GKAckpTY4Aw==;
+	List-Owner; bh=0f8y1Ba0SKrgCSEHKRQUbiDBv+ogzjbvp0FBbcPtDGA=; b=OvXfwjPDq/JbXL
+	a6ZvkkzZe+WqxG5ftv4wfQr26seGW3tVAzs6F4fwnptYNPaOtOl4ml9ryNJCEODIdnPHAHzbojBPz
+	NKGDuTVIuAhc/56GUE9uTY2dM8yyEfI0PHCjffIz4NLUZuZy7TejWAJ7+iU5gjSlBOzlHfGtXgbyO
+	vpnOmbURlXKZrQKwyrnGC4q6TXRWJRsCQsd61xnI9RzBigKOJEVEN4Jji3QRGBTy+IAFyP7N2h74F
+	RbXAI2I6vtVDHGza84XJ8jwv8YSRvKrYLZ6YE9MlxkwbGsw8RDF6YpWYtBifflMMuyPLHsz5wBCCW
+	LQh9I16chWG2qNWit9pQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbrcy-00009U-9q; Thu, 21 May 2020 20:17:16 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1jbwBJ-0000ZK-Ng; Fri, 22 May 2020 01:09:01 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbrcm-0008Ra-Dp; Thu, 21 May 2020 20:17:06 +0000
-Received: from localhost (unknown [IPv6:2a01:e0a:2c:6930:5cf4:84a1:2763:fe0d])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- (Authenticated sender: bbrezillon)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id D0AD82A0667;
- Thu, 21 May 2020 21:17:01 +0100 (BST)
-Date: Thu, 21 May 2020 22:16:58 +0200
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Pratyush Yadav <p.yadav@ti.com>
-Subject: Re: [PATCH v6 04/19] spi: spi-mem: allow specifying a command's
- extension
-Message-ID: <20200521221658.037b802b@collabora.com>
-In-Reply-To: <20200521200313.bnil6a4u3dhiizr4@ti.com>
-References: <20200520163053.24357-1-p.yadav@ti.com>
- <20200520163053.24357-5-p.yadav@ti.com>
- <20200521202256.5816eb32@collabora.com>
- <20200521194129.3lqdormmcs4zadh2@ti.com>
- <20200521200313.bnil6a4u3dhiizr4@ti.com>
-Organization: Collabora
-X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+ id 1jbwB6-0000Lz-Ul; Fri, 22 May 2020 01:08:50 +0000
+X-UUID: 421719b9c7224a9d8bd8ed97aedd6d24-20200521
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=oO4SaPPTxCTE7bONxyRSPlLMv4RJZyUeyjDZC6W1AEY=; 
+ b=ROVHPn8iwca7HZzyKWs2KF9hhqwvvnFRObwGofNd4GBJJfcYd1Q2tSlaUYJIVI1P31DREcOb+bwmVKI2M1jh8bhiXMPnPg9nzhmHSur3L4SFkD7aI8DjWoofPPqIwdPXga+KWwx3LWDqxKP9O3c/1j8epjyPIImdGQc7NtbHYi8=;
+X-UUID: 421719b9c7224a9d8bd8ed97aedd6d24-20200521
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1726016359; Thu, 21 May 2020 17:08:34 -0800
+Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 21 May 2020 18:08:40 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N1.mediatek.inc
+ (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 22 May 2020 09:08:31 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 22 May 2020 09:08:34 +0800
+Message-ID: <1590109620.5899.18.camel@mhfsdcap03>
+Subject: Re: [PATCH v3 0/7] add support USB for MT8183
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Date: Fri, 22 May 2020 09:07:00 +0800
+In-Reply-To: <2e98982b-ab8a-9fa9-0903-881ebce916a5@gmail.com>
+References: <1567150854-30033-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1567562067.7317.52.camel@mhfsdcap03>
+ <2e98982b-ab8a-9fa9-0903-881ebce916a5@gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: D722D1425AC6E7F67072680642C70D142CB6E1803E9F058E532825CF51FE18462000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_131704_601700_2B3FF85A 
-X-CRM114-Status: GOOD (  25.32  )
+X-CRM114-CacheID: sfid-20200521_180848_993714_FCA3A10D 
+X-CRM114-Status: GOOD (  17.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,112 +85,86 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Mason Yang <masonccyang@mxic.com.tw>, Vignesh Raghavendra <vigneshr@ti.com>,
- Tudor Ambarus <tudor.ambarus@microchip.com>,
- Richard Weinberger <richard@nod.at>, Sekhar Nori <nsekhar@ti.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>, linux-kernel@vger.kernel.org,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Mark Brown <broonie@kernel.org>, linux-mtd@lists.infradead.org,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Mathias Nyman <mathias.nyman@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 22 May 2020 01:33:15 +0530
-Pratyush Yadav <p.yadav@ti.com> wrote:
+Hi Matthias,
 
-> On 22/05/20 01:11AM, Pratyush Yadav wrote:
-> > On 21/05/20 08:22PM, Boris Brezillon wrote:  
-> > > On Wed, 20 May 2020 22:00:38 +0530
-> > > Pratyush Yadav <p.yadav@ti.com> wrote:
-> > >   
-> > > > In xSPI mode, flashes expect 2-byte opcodes. The second byte is called
-> > > > the "command extension". There can be 3 types of extensions in xSPI:
-> > > > repeat, invert, and hex. When the extension type is "repeat", the same
-> > > > opcode is sent twice. When it is "invert", the second byte is the
-> > > > inverse of the opcode. When it is "hex" an additional opcode byte based
-> > > > is sent with the command whose value can be anything.
-> > > > 
-> > > > So, make opcode a 16-bit value and add a 'nbytes', similar to how
-> > > > multiple address widths are handled.
-> > > > 
-> > > > Signed-off-by: Pratyush Yadav <p.yadav@ti.com>
-> > > > ---
-> > > >  include/linux/spi/spi-mem.h | 5 ++++-
-> > > >  1 file changed, 4 insertions(+), 1 deletion(-)
-> > > > 
-> > > > diff --git a/include/linux/spi/spi-mem.h b/include/linux/spi/spi-mem.h
-> > > > index e3dcb956bf61..731bb64c6ba6 100644
-> > > > --- a/include/linux/spi/spi-mem.h
-> > > > +++ b/include/linux/spi/spi-mem.h
-> > > > @@ -69,6 +69,8 @@ enum spi_mem_data_dir {
-> > > >  
-> > > >  /**
-> > > >   * struct spi_mem_op - describes a SPI memory operation
-> > > > + * @cmd.nbytes: number of opcode bytes (only 1 or 2 are valid). The opcode is
-> > > > + *		sent MSB-first.
-> > > >   * @cmd.buswidth: number of IO lines used to transmit the command
-> > > >   * @cmd.opcode: operation opcode
-> > > >   * @cmd.dtr: whether the command opcode should be sent in DTR mode or not
-> > > > @@ -94,9 +96,10 @@ enum spi_mem_data_dir {
-> > > >   */
-> > > >  struct spi_mem_op {
-> > > >  	struct {
-> > > > +		u8 nbytes;
-> > > >  		u8 buswidth;
-> > > >  		u8 dtr : 1;
-> > > > -		u8 opcode;
-> > > > +		u16 opcode;
-> > > >  	} cmd;
-> > > >  
-> > > >  	struct {  
-> > > 
-> > > As mentioned in one of my previous review, you should patch the mxic
-> > > driver before extending the opcode field:  
+On Thu, 2020-05-21 at 14:41 +0200, Matthias Brugger wrote:
+> Hi Chungfeng,
+> 
+> On 04/09/2019 03:54, Chunfeng Yun wrote:
+> > Hi Greg,
 > > 
-> > IIUC, this patchset doesn't break original functionality of the driver. 
-> > It will work like before with 1-byte opcodes. So I don't think it is the 
-> > responsibility of this patchset to enhance the driver. It didn't work 
-> > before with 2-byte opcodes, it won't work now. IMO this should be a 
-> > separate, independent change.  
+> > 
+> >   Please don't try to pick up this series, the dependent ones are still
+> > under public review, I'll fix build warning and send out new version
+> > after the dependent ones are applied
+> >   Sorry for inconvenience
+> > 
 > 
-> Scratch that. Big/little endian issue. If you'd drop your Signed-off-by, 
-> I'll write the commit message and patch it in.
-
-Just add a Suggested-by, that should be fine.
-
->   
-> > > --->8---  
-> > > diff --git a/drivers/spi/spi-mxic.c b/drivers/spi/spi-mxic.c
-> > > index 69491f3a515d..c3f4136a7c1d 100644
-> > > --- a/drivers/spi/spi-mxic.c
-> > > +++ b/drivers/spi/spi-mxic.c
-> > > @@ -356,6 +356,7 @@ static int mxic_spi_mem_exec_op(struct spi_mem *mem,
-> > >         int nio = 1, i, ret;
-> > >         u32 ss_ctrl;
-> > >         u8 addr[8];
-> > > +       u8 cmd[2];
-> > >  
-> > >         ret = mxic_spi_set_freq(mxic, mem->spi->max_speed_hz);
-> > >         if (ret)
-> > > @@ -393,7 +394,10 @@ static int mxic_spi_mem_exec_op(struct spi_mem *mem,
-> > >         writel(readl(mxic->regs + HC_CFG) | HC_CFG_MAN_CS_ASSERT,
-> > >                mxic->regs + HC_CFG);
-> > >  
-> > > -       ret = mxic_spi_data_xfer(mxic, &op->cmd.opcode, NULL, 1);
-> > > +       for (i = 0; i < op->cmd.nbytes; i++)
-> > > +               cmd[i] = op->cmd.opcode >> (8 * (op->cmd.nbytes - i - 1));
-> > > +
-> > > +       ret = mxic_spi_data_xfer(mxic, cmd, NULL, op->cmd.nbytes);
-> > >         if (ret)
-> > >                 goto out;
-> > >    
+> I think the pmic driver is upstream now and show up in linux-next soon.
 > 
+> I propose to rebase the series and send it again.
+Ok, I'll resend this series, thanks a lot
 
+> 
+> Regards,
+> Matthias
+> 
+> > Thanks
+> > 
+> > On Fri, 2019-08-30 at 15:40 +0800, Chunfeng Yun wrote:
+> >> This series support USB DRD controller and enable it's remote
+> >> wakeup functoin for MT8183, they depend on the following
+> >> series patches:
+> >>
+> >> 1. this series add support MT6358 PMIC
+> >>   [v5,01/10] mfd: mt6397: clean up code
+> >>   https://patchwork.kernel.org/patch/11110487/
+> >>
+> >> 2. this series add support pericfg syscon
+> >>   [v2,1/2] dt-bindings: clock: mediatek: add pericfg for MT8183
+> >>   https://patchwork.kernel.org/patch/11118183/
+> >>
+> >> 3. add property mediatek,discth for tphy
+> >>   [06/11] phy: phy-mtk-tphy: add a property for disconnect threshold
+> >>   https://patchwork.kernel.org/patch/11110695/
+> >>
+> >> v3 changes:
+> >>   1. changes micros define
+> >>   2. remove #reset-cell
+> >>   3. update dependent series
+> >>
+> >> v2 changes:
+> >>   add patch [7/7]
+> >>
+> >> Chunfeng Yun (7):
+> >>   dt-bindings: usb: mtu3: support USB wakeup for MT8183
+> >>   dt-bindings: usb: mtk-xhci: support USB wakeup for MT8183
+> >>   usb: mtu3: support ip-sleep wakeup for MT8183
+> >>   usb: mtk-xhci: support ip-sleep wakeup for MT8183
+> >>   arm64: dts: mt8183: add usb and phy nodes
+> >>   arm64: dts: mt8183: enable USB remote wakeup
+> >>   arm64: dts: mt8183: tune disconnect threshold of u2phy
+> >>
+> >>  .../bindings/usb/mediatek,mtk-xhci.txt        |  1 +
+> >>  .../devicetree/bindings/usb/mediatek,mtu3.txt |  1 +
+> >>  arch/arm64/boot/dts/mediatek/mt8183-evb.dts   | 23 +++++++
+> >>  arch/arm64/boot/dts/mediatek/mt8183.dtsi      | 63 +++++++++++++++++++
+> >>  drivers/usb/host/xhci-mtk.c                   | 14 ++++-
+> >>  drivers/usb/mtu3/mtu3_host.c                  | 14 ++++-
+> >>  6 files changed, 114 insertions(+), 2 deletions(-)
+> >>
+> > 
+> > 
 
 _______________________________________________
 Linux-mediatek mailing list
