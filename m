@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 43E74C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 10:24:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DD0F9C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 10:24:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 129952072C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 10:24:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9F4BE2072C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 10:24:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LU/lQe9k";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="KBM95l4Y"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 129952072C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lYcwHwlX";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="BYFX+3fn"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9F4BE2072C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,43 +26,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b6nEjeILuCqmYoLZvOwowN3t8koTpPOmkwIIf56DmlA=; b=LU/lQe9k2E3R3i
-	FDLekO9oTZDsQZsVPZUjo5AoCMFbTVX7D63did2JISUKMCyyP89VB9IJAAzr24NGpLT5LXZW3+vSN
-	Ajr+OovPSUBZcm2fUcFMn2VCnm5ZzAG97INJzAb0FwL+AZRzxFChFLCZXs6GZaNpHZh7UpCkj43v7
-	bKarbB79SpkFfXw/pVV5s8L4c6EX1O/umbcBHND5cUDIkiaYlJ1V2pUC8AkMrYTfpVaWxV0r+UidH
-	ecUltkuNyB2szLVpq56ZXMkWJowhVd/ekhv7Gl3g9Oyj6zhzLx0QFy2ZxrzRd1yJyzeUV3pAgAuvB
-	9oKohZaA0WWGCX+ewuVg==;
+	List-Owner; bh=v6O7mFFjW/REIKX0eaERoMsOYjPWEQ7keem9ITzOxys=; b=lYcwHwlXq2nV7Y
+	MB5+tj4Ts4KVNOSwN2GH6QVid4Tj1A7ZyxAxAA1OzB3PSPavgNDoSE2PWUoLIttIajJnd8A0wyssY
+	cQJf6ybz0rY+NEVtfufxhrAMVyeiu6VO0G/jqngz2yXn8Hw7gL5nS8mhYTShzwZVyyF3ipepd7XM6
+	VZce0hnOotoJth/5UGv0oEkPi3oZkacmUFlv4ECWQLYZSq7IDZe6wiUwm5lQsqcL7ij3jM04pmpPh
+	Ox5IGKdsB3mWVl2eiJpJAYOQ2lPRJCa/6Y6JdsiHwS+L4A0DXMK/k8e02D2LQqj5cYAsG8B/YutmG
+	IWafYjBlO1MVSZ+ZMxVw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jc4qQ-00079k-HR; Fri, 22 May 2020 10:24:02 +0000
+	id 1jc4qv-0007gW-KE; Fri, 22 May 2020 10:24:33 +0000
 Received: from lelv0143.ext.ti.com ([198.47.23.248])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jc4hC-0002ub-DE; Fri, 22 May 2020 10:14:31 +0000
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
- by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 04MAEP8G009165;
- Fri, 22 May 2020 05:14:25 -0500
+ id 1jc4hH-0002z1-PS; Fri, 22 May 2020 10:14:37 +0000
+Received: from lelv0265.itg.ti.com ([10.180.67.224])
+ by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 04MAEUU0009182;
+ Fri, 22 May 2020 05:14:30 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1590142465;
- bh=JF+D0P9IlTXPAfVYCw880QogymYkRdaUdIkcXPWXVR0=;
+ s=ti-com-17Q1; t=1590142470;
+ bh=ZfUbh82N6QxYzzf9GICZYBFd0OVcUih5gJ0g44AGOsU=;
  h=From:To:CC:Subject:Date:In-Reply-To:References;
- b=KBM95l4YHTN+GSrGV7hGpioTAS9sR4/Pude9r+AfdwGYzCCgV6bRqK6kGrPQY425z
- DEfWg5J8DwUtlwY4K+Y/G9JFfpBWqR4TYvCQd/7T1t7T8vkcd6uO3853vmDWgK1jTa
- rQ/LGuQ0UPSALrVTfkXjwF92FeYXOWjwGJ9pqlyQ=
-Received: from DFLE103.ent.ti.com (dfle103.ent.ti.com [10.64.6.24])
- by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTP id 04MAEPg4050019;
- Fri, 22 May 2020 05:14:25 -0500
-Received: from DFLE114.ent.ti.com (10.64.6.35) by DFLE103.ent.ti.com
- (10.64.6.24) with Microsoft SMTP Server (version=TLS1_2,
+ b=BYFX+3fnKWFqRaDS44aUxAD3zFtXltR1urt6B6ZbPQOHheIoFc+j2B3uTyhyDRX+R
+ 1LVzBMfZUNSeb2S3QH/2REWz4FyHTr5qND5oRpM6c0PvvczIH52y7tXGkTix27Q2EA
+ 3a02uOSCqPSxq9DVoe2N/g9kpj9EW77vTr99bLLU=
+Received: from DLEE104.ent.ti.com (dlee104.ent.ti.com [157.170.170.34])
+ by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 04MAEUqM082702
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Fri, 22 May 2020 05:14:30 -0500
+Received: from DLEE100.ent.ti.com (157.170.170.30) by DLEE104.ent.ti.com
+ (157.170.170.34) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Fri, 22
- May 2020 05:14:25 -0500
-Received: from fllv0040.itg.ti.com (10.64.41.20) by DFLE114.ent.ti.com
- (10.64.6.35) with Microsoft SMTP Server (version=TLS1_2,
+ May 2020 05:14:30 -0500
+Received: from fllv0040.itg.ti.com (10.64.41.20) by DLEE100.ent.ti.com
+ (157.170.170.30) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Fri, 22 May 2020 05:14:25 -0500
+ Frontend Transport; Fri, 22 May 2020 05:14:30 -0500
 Received: from pratyush-OptiPlex-790.dhcp.ti.com (ileax41-snat.itg.ti.com
  [10.172.224.153])
- by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 04MAD1aG041179;
- Fri, 22 May 2020 05:14:20 -0500
+ by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 04MAD1aH041179;
+ Fri, 22 May 2020 05:14:25 -0500
 From: Pratyush Yadav <p.yadav@ti.com>
 To: Tudor Ambarus <tudor.ambarus@microchip.com>, Miquel Raynal
  <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, Vignesh
@@ -74,18 +75,17 @@ To: Tudor Ambarus <tudor.ambarus@microchip.com>, Miquel Raynal
  <linux-mtd@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <linux-spi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v7 15/20] mtd: spi-nor: sfdp: detect Soft Reset sequence
- support from BFPT
-Date: Fri, 22 May 2020 15:42:56 +0530
-Message-ID: <20200522101301.26909-16-p.yadav@ti.com>
+Subject: [PATCH v7 16/20] mtd: spi-nor: core: perform a Soft Reset on shutdown
+Date: Fri, 22 May 2020 15:42:57 +0530
+Message-ID: <20200522101301.26909-17-p.yadav@ti.com>
 X-Mailer: git-send-email 2.25.0
 In-Reply-To: <20200522101301.26909-1-p.yadav@ti.com>
 References: <20200522101301.26909-1-p.yadav@ti.com>
 MIME-Version: 1.0
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200522_031430_560836_C8F37647 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20200522_031436_047085_4CEB81E3 
+X-CRM114-Status: GOOD (  13.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,57 +105,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A Soft Reset sequence will return the flash to Power-on-Reset (POR)
-state. It consists of two commands: Soft Reset Enable and Soft Reset.
-Find out if the sequence is supported from BFPT DWORD 16.
+Perform a Soft Reset on shutdown on flashes that support it so that the
+flash can be reset to its initial state and any configurations made by
+spi-nor (given that they're only done in volatile registers) will be
+reset. This will hand back the flash in pristine state for any further
+operations on it.
 
 Signed-off-by: Pratyush Yadav <p.yadav@ti.com>
 ---
- drivers/mtd/spi-nor/core.h | 1 +
- drivers/mtd/spi-nor/sfdp.c | 4 ++++
- drivers/mtd/spi-nor/sfdp.h | 2 ++
- 3 files changed, 7 insertions(+)
+ drivers/mtd/spi-nor/core.c  | 42 +++++++++++++++++++++++++++++++++++++
+ include/linux/mtd/spi-nor.h |  2 ++
+ 2 files changed, 44 insertions(+)
 
-diff --git a/drivers/mtd/spi-nor/core.h b/drivers/mtd/spi-nor/core.h
-index 6338d32a0d77..79ce952c0539 100644
---- a/drivers/mtd/spi-nor/core.h
-+++ b/drivers/mtd/spi-nor/core.h
-@@ -26,6 +26,7 @@ enum spi_nor_option_flags {
- 	SNOR_F_HAS_SR_TB_BIT6	= BIT(11),
- 	SNOR_F_HAS_4BIT_BP      = BIT(12),
- 	SNOR_F_HAS_SR_BP3_BIT6  = BIT(13),
-+	SNOR_F_SOFT_RESET	= BIT(14),
- };
+diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
+index a94376344be5..68559386f6f8 100644
+--- a/drivers/mtd/spi-nor/core.c
++++ b/drivers/mtd/spi-nor/core.c
+@@ -40,6 +40,9 @@
  
- struct spi_nor_read_command {
-diff --git a/drivers/mtd/spi-nor/sfdp.c b/drivers/mtd/spi-nor/sfdp.c
-index 9fd3d8d9a127..11109969dc3a 100644
---- a/drivers/mtd/spi-nor/sfdp.c
-+++ b/drivers/mtd/spi-nor/sfdp.c
-@@ -618,6 +618,10 @@ static int spi_nor_parse_bfpt(struct spi_nor *nor,
- 		break;
- 	}
+ #define SPI_NOR_MAX_ADDR_WIDTH	4
  
-+	/* Soft Reset support. */
-+	if (bfpt.dwords[BFPT_DWORD(16)] & BFPT_DWORD16_SOFT_RST)
-+		nor->flags |= SNOR_F_SOFT_RESET;
++#define SPI_NOR_SRST_SLEEP_MIN 200
++#define SPI_NOR_SRST_SLEEP_MAX 400
 +
- 	/* Stop here if JESD216 rev B. */
- 	if (bfpt_header->length == BFPT_DWORD_MAX_JESD216B)
- 		return spi_nor_post_bfpt_fixups(nor, bfpt_header, &bfpt,
-diff --git a/drivers/mtd/spi-nor/sfdp.h b/drivers/mtd/spi-nor/sfdp.h
-index e15e30796d62..d1d43ee09a0a 100644
---- a/drivers/mtd/spi-nor/sfdp.h
-+++ b/drivers/mtd/spi-nor/sfdp.h
-@@ -84,6 +84,8 @@ struct sfdp_bfpt {
- #define BFPT_DWORD15_QER_SR2_BIT1_NO_RD		(0x4UL << 20)
- #define BFPT_DWORD15_QER_SR2_BIT1		(0x5UL << 20) /* Spansion */
+ /**
+  * spi_nor_get_cmd_ext() - Get the command opcode extension based on the
+  *			   extension type.
+@@ -3201,6 +3204,41 @@ static int spi_nor_init(struct spi_nor *nor)
+ 	return 0;
+ }
  
-+#define BFPT_DWORD16_SOFT_RST			BIT(12)
++static void spi_nor_soft_reset(struct spi_nor *nor)
++{
++	struct spi_mem_op op;
++	int ret;
 +
- #define BFPT_DWORD18_CMD_EXT_MASK		GENMASK(30, 29)
- #define BFPT_DWORD18_CMD_EXT_REP		(0x0UL << 29) /* Repeat */
- #define BFPT_DWORD18_CMD_EXT_INV		(0x1UL << 29) /* Invert */
++	op = (struct spi_mem_op)SPI_MEM_OP(SPI_MEM_OP_CMD(SPINOR_OP_SRSTEN, 8),
++			SPI_MEM_OP_NO_DUMMY,
++			SPI_MEM_OP_NO_ADDR,
++			SPI_MEM_OP_NO_DATA);
++	spi_nor_spimem_setup_op(nor, &op, SNOR_PROTO_8_8_8_DTR);
++	ret = spi_mem_exec_op(nor->spimem, &op);
++	if (ret) {
++		dev_warn(nor->dev, "Software reset failed: %d\n", ret);
++		return;
++	}
++
++	op = (struct spi_mem_op)SPI_MEM_OP(SPI_MEM_OP_CMD(SPINOR_OP_SRST, 8),
++			SPI_MEM_OP_NO_DUMMY,
++			SPI_MEM_OP_NO_ADDR,
++			SPI_MEM_OP_NO_DATA);
++	spi_nor_spimem_setup_op(nor, &op, SNOR_PROTO_8_8_8_DTR);
++	ret = spi_mem_exec_op(nor->spimem, &op);
++	if (ret) {
++		dev_warn(nor->dev, "Software reset failed: %d\n", ret);
++		return;
++	}
++
++	/*
++	 * Software Reset is not instant, and the delay varies from flash to
++	 * flash. Looking at a few flashes, most range somewhere below 100
++	 * microseconds. So, sleep for a range of 200-400 us.
++	 */
++	usleep_range(SPI_NOR_SRST_SLEEP_MIN, SPI_NOR_SRST_SLEEP_MAX);
++}
++
+ /* mtd resume handler */
+ static void spi_nor_resume(struct mtd_info *mtd)
+ {
+@@ -3220,6 +3258,10 @@ void spi_nor_restore(struct spi_nor *nor)
+ 	if (nor->addr_width == 4 && !(nor->flags & SNOR_F_4B_OPCODES) &&
+ 	    nor->flags & SNOR_F_BROKEN_RESET)
+ 		nor->params->set_4byte_addr_mode(nor, false);
++
++	if (nor->info->flags & SPI_NOR_OCTAL_DTR_READ &&
++	    nor->flags & SNOR_F_SOFT_RESET)
++		spi_nor_soft_reset(nor);
+ }
+ EXPORT_SYMBOL_GPL(spi_nor_restore);
+ 
+diff --git a/include/linux/mtd/spi-nor.h b/include/linux/mtd/spi-nor.h
+index d251a5d02be2..06884a188315 100644
+--- a/include/linux/mtd/spi-nor.h
++++ b/include/linux/mtd/spi-nor.h
+@@ -51,6 +51,8 @@
+ #define SPINOR_OP_CLFSR		0x50	/* Clear flag status register */
+ #define SPINOR_OP_RDEAR		0xc8	/* Read Extended Address Register */
+ #define SPINOR_OP_WREAR		0xc5	/* Write Extended Address Register */
++#define SPINOR_OP_SRSTEN	0x66	/* Software Reset Enable */
++#define SPINOR_OP_SRST		0x99	/* Software Reset */
+ 
+ /* 4-byte address opcodes - used on Spansion and some Macronix flashes. */
+ #define SPINOR_OP_READ_4B	0x13	/* Read data bytes (low frequency) */
 -- 
 2.26.2
 
