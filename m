@@ -2,93 +2,78 @@ Return-Path: <SRS0=9rwW=7E=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6BDC6C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 09:23:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 82BA6C433E1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 09:38:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2D5DA206C3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 09:23:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5668A207CB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2020 09:38:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="svwMF6mY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2D5DA206C3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=analog.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aeXr6aQx";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dmWushCp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5668A207CB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=siYHwUL+qI6jZs4VmzuN02bs/CuYpPya7lvwioQVIUM=; b=svwMF6mYJ2diHt
-	Yeh+RlKxneuLjZEVMNDFaLlZLL/WSplLZsH+TUZeZK4T2ZcMpEAPgMLmSadn5fTmDaMzaV/6HpzOK
-	D4qWU9GY0Jdy0nnhiBasan4DBciOxf+Tz+LNEbZhk60huibT/5LjiiLM7Xd+v9ffTX2OF28ffMImd
-	PpOrFEJqX0ZXiK/qyA3kUC492xMYnSaDnJB9TZDCF71VHwoII450l+X7ktzeEKoNRuyFeMskbubDW
-	/B1Bt3ipL9II/8P1lcEuFJs7/QfUdOkB3cYYaNe6jYqpsq/r9IHDPjC+zQRNvSU4xooY0nxQJpCrF
-	e7XFDU5EpL3R3UObrH/g==;
+	List-Owner; bh=rdd0zmK9YroJq8OeZLDPxyl13hbGIymkQ8xYGTkwOvk=; b=aeXr6aQxq8luwh
+	gmnzLiLXRepJTLR7OZWkc8jDhlpG3cNj1XLhdUZJtDdHPpC6xlGwWCnewZS7dIDC8B/t5RcdaWaYO
+	6tG/YE5YPw/PlUYh/+crXfGheqBqFcDshm/8z5FrvD9+VBGrQQfHqGdICDQTCc0cGoE7QP/ZEaubE
+	Dz7kP46prjiOeBps9StZh5ntM6ZHm3Op4Vm+Bk6M+NBsPuSWDOWP1BdoZ459BZJQKRz73rAuwVlca
+	obBjLsEBjuQZpc+gXOStST/oOGYOyqVbZ7HwPNuvEopboZjPEfr5pCQNme7KFqJcO5xT4AoTItl+2
+	G6YADTCPnLsqoExxurtg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jc3tO-0003db-5t; Fri, 22 May 2020 09:23:02 +0000
-Received: from mx0a-00128a01.pphosted.com ([148.163.135.77])
+	id 1jc47m-0004WN-WC; Fri, 22 May 2020 09:37:55 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jc3tE-0003Rb-CP; Fri, 22 May 2020 09:22:54 +0000
-Received: from pps.filterd (m0167089.ppops.net [127.0.0.1])
- by mx0a-00128a01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 04M8XAYq016246; Fri, 22 May 2020 04:36:32 -0400
-Received: from nwd2mta4.analog.com ([137.71.173.58])
- by mx0a-00128a01.pphosted.com with ESMTP id 312d3655pf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 22 May 2020 04:36:32 -0400
-Received: from ASHBMBX8.ad.analog.com (ashbmbx8.ad.analog.com [10.64.17.5])
- by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 04M8aU1a063059
- (version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=FAIL); 
- Fri, 22 May 2020 04:36:30 -0400
-Received: from ASHBMBX9.ad.analog.com (10.64.17.10) by ASHBMBX8.ad.analog.com
- (10.64.17.5) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1779.2; Fri, 22 May
- 2020 04:36:29 -0400
-Received: from zeus.spd.analog.com (10.64.82.11) by ASHBMBX9.ad.analog.com
- (10.64.17.10) with Microsoft SMTP Server id 15.1.1779.2 via Frontend
- Transport; Fri, 22 May 2020 04:36:29 -0400
-Received: from saturn.ad.analog.com ([10.48.65.112])
- by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 04M8ZhUS005306;
- Fri, 22 May 2020 04:36:20 -0400
-From: Alexandru Ardelean <alexandru.ardelean@analog.com>
-To: <bcm-kernel-feedback-list@broadcom.com>, <linux-iio@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-stm32@st-md-mailman.stormreply.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-input@vger.kernel.org>,
- <linux-aspeed@lists.ozlabs.org>, <linux-samsung-soc@vger.kernel.org>,
- <linux-amlogic@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>, <linux-pm@vger.kernel.org>,
- <platform-driver-x86@vger.kernel.org>, <devel@driverdev.osuosl.org>
-Subject: [PATCH 5/5] iio: remove left-over parent assignments
-Date: Fri, 22 May 2020 11:22:08 +0300
-Message-ID: <20200522082208.383631-5-alexandru.ardelean@analog.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200522082208.383631-1-alexandru.ardelean@analog.com>
-References: <20200522082208.383631-1-alexandru.ardelean@analog.com>
+ id 1jc47f-0004M9-FE; Fri, 22 May 2020 09:37:49 +0000
+X-UUID: 378d75413cd44fa5a6f6a3187e34db12-20200522
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=hepUThaabfGUaHmDa2AneBNj6YVAHDrku45pJkqhJeQ=; 
+ b=dmWushCpg647SzPfU4TDBhnnynHvSymCQQWl8GrvjhLPRZ7ulZUayXryH9l+Ipaa30MJ71ypsFqPoYKa+oFRE/tZHPFh+xJM68UHK4DhHFDo3bkcm7JQafK+wVNBCFjCPxgYA0gFkqkNMpuhb2X+4NZG6KKjmOyg7kmlxr8D994=;
+X-UUID: 378d75413cd44fa5a6f6a3187e34db12-20200522
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <dongchun.zhu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 513997193; Fri, 22 May 2020 01:37:25 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 22 May 2020 02:27:38 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 22 May 2020 17:27:36 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 22 May 2020 17:27:34 +0800
+Message-ID: <1590139561.8804.390.camel@mhfsdcap03>
+Subject: Re: [V6, 2/2] media: i2c: dw9768: Add DW9768 VCM driver
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+To: Tomasz Figa <tfiga@chromium.org>
+Date: Fri, 22 May 2020 17:26:01 +0800
+In-Reply-To: <20200521195113.GC14214@chromium.org>
+References: <20200518132731.20855-1-dongchun.zhu@mediatek.com>
+ <20200518132731.20855-3-dongchun.zhu@mediatek.com>
+ <20200521195113.GC14214@chromium.org>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-ADIRoutedOnPrem: True
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.216, 18.0.676
- definitions=2020-05-22_05:2020-05-21,
- 2020-05-22 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxlogscore=999
- suspectscore=0 bulkscore=0 mlxscore=0 phishscore=0 cotscore=-2147483648
- impostorscore=0 priorityscore=1501 lowpriorityscore=0 spamscore=0
- clxscore=1015 adultscore=0 malwarescore=0 classifier=spam adjust=0
- reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2005220070
+X-TM-SNTS-SMTP: C375D294F8C3D466CDBF9572F1CDB2C97B12F5CF0762092D09378AB0F1CADBCA2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200522_022252_466853_C5EF7E5F 
-X-CRM114-Status: UNSURE (   9.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200522_023747_557658_773EB2C0 
+X-CRM114-Status: GOOD (  22.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,397 +85,270 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: milo.kim@ti.com, tomislav.denis@avl.com, dan@dlrobertson.com,
- heiko@sntech.de, linus.walleij@linaro.org, eajames@linux.ibm.com,
- bjorn.andersson@linaro.org, paul@crapouillou.net, lorenzo.bianconi83@gmail.com,
- srinivas.pandruvada@linux.intel.com, khilman@baylibre.com, krzk@kernel.org,
- wens@csie.org, kgene@kernel.org, slemieux.tyco@gmail.com, orsonzhai@gmail.com,
- Alexandru Ardelean <alexandru.ardelean@analog.com>, alexandre.torgue@st.com,
- tduszyns@gmail.com, rjui@broadcom.com, s.hauer@pengutronix.de,
- jikos@kernel.org, vilhelm.gray@gmail.com, mripard@kernel.org, vz@mleia.com,
- hdegoede@redhat.com, ak@it-klinger.de, matthias.bgg@gmail.com,
- fabrice.gasnier@st.com, sbranden@broadcom.com, rmfrfs@gmail.com,
- syednwaris@gmail.com, dmitry.torokhov@gmail.com, coproscefalo@gmail.com,
- agross@kernel.org, songqiang1304521@gmail.com, mcoquelin.stm32@gmail.com,
- zhang.lyra@gmail.com, baolin.wang7@gmail.com, ktsai@capellamicro.com,
- shawnguo@kernel.org, peda@axentia.se, jic23@kernel.org
+Cc: mark.rutland@arm.com, drinkcat@chromium.org,
+ andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
+ devicetree@vger.kernel.org, linus.walleij@linaro.org,
+ shengnan.wang@mediatek.com, louis.kuo@mediatek.com, bgolaszewski@baylibre.com,
+ sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
+ dongchun.zhu@mediatek.com, sakari.ailus@linux.intel.com,
+ matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-These were found by doing some shell magic:
-------------
-for file in $(git grep -w devm_iio_device_alloc | cut -d: -f1 | sort | uniq) ; do
-	if grep 'parent =' $file | grep -v trig | grep -vq devm_; then
-		echo "$file -> $(grep "parent =" $file)"
-	fi
-done
------------
+Hi Tomasz,
 
-The output is bearable [after the semantic patch is applied].
-There is a mix of trigger assignments with some iio device parent
-assignments that are removed via this patch.
+Thanks for the review. My replies are as below.
 
-Signed-off-by: Alexandru Ardelean <alexandru.ardelean@analog.com>
----
- drivers/iio/accel/kxcjk-1013.c                    | 1 -
- drivers/iio/accel/mma8452.c                       | 1 -
- drivers/iio/accel/mma9553.c                       | 1 -
- drivers/iio/adc/ad7192.c                          | 1 -
- drivers/iio/adc/hx711.c                           | 1 -
- drivers/iio/adc/max1363.c                         | 2 --
- drivers/iio/adc/mcp3911.c                         | 1 -
- drivers/iio/adc/qcom-spmi-iadc.c                  | 1 -
- drivers/iio/amplifiers/ad8366.c                   | 1 -
- drivers/iio/chemical/vz89x.c                      | 1 -
- drivers/iio/dac/ad5770r.c                         | 1 -
- drivers/iio/health/afe4403.c                      | 1 -
- drivers/iio/health/afe4404.c                      | 1 -
- drivers/iio/humidity/dht11.c                      | 1 -
- drivers/iio/humidity/hts221_core.c                | 1 -
- drivers/iio/imu/inv_mpu6050/inv_mpu_core.c        | 1 -
- drivers/iio/light/cm3605.c                        | 1 -
- drivers/iio/light/ltr501.c                        | 1 -
- drivers/iio/magnetometer/ak8975.c                 | 1 -
- drivers/iio/orientation/hid-sensor-rotation.c     | 1 -
- drivers/iio/potentiostat/lmp91000.c               | 1 -
- drivers/iio/proximity/ping.c                      | 1 -
- drivers/iio/proximity/pulsedlight-lidar-lite-v2.c | 1 -
- drivers/iio/proximity/srf04.c                     | 1 -
- drivers/iio/proximity/srf08.c                     | 1 -
- drivers/iio/temperature/tsys01.c                  | 1 -
- drivers/staging/iio/addac/adt7316.c               | 1 -
- 27 files changed, 28 deletions(-)
+On Thu, 2020-05-21 at 19:51 +0000, Tomasz Figa wrote:
+> Hi Dongchun, Sakari,
+> 
+> On Mon, May 18, 2020 at 09:27:31PM +0800, Dongchun Zhu wrote:
+> > Add a V4L2 sub-device driver for DW9768 voice coil motor, providing
+> > control to set the desired focus via IIC serial interface.
+> > 
+> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > ---
+> >  MAINTAINERS                |   1 +
+> >  drivers/media/i2c/Kconfig  |  13 ++
+> >  drivers/media/i2c/Makefile |   1 +
+> >  drivers/media/i2c/dw9768.c | 515 +++++++++++++++++++++++++++++++++++++++++++++
+> >  4 files changed, 530 insertions(+)
+> >  create mode 100644 drivers/media/i2c/dw9768.c
+> [snip]
+> > +/*
+> > + * DW9768_AAC_PRESC_REG & DW9768_AAC_TIME_REG determine VCM operation time.
+> > + * If DW9768_AAC_PRESC_REG is 0x41, and DW9768_AAC_TIME_REG is 0x39, VCM mode
+> > + * would be AAC3, Operation Time would be 0.70xTvib, that is 8.40ms.
+> > + */
+> > +#define DW9768_MOVE_DELAY_US			8400
+> > +#define DW9768_STABLE_TIME_US			20000
+> 
+> These times are only valid with the specific settings mentioned in the
+> comment. If one sets different settings in DT, the driver would apply
+> incorrect delays. Rather than hardcoded, they should be computed based
+> on the configured values.
+> 
+> That said, I wonder if we're not digging too deep now. Sakari, do you
+> think we could take a step back, remove the optional DT properties and
+> just support the fixed values for now, so that we can get a basic driver
+> upstream first without doubling the effort?
+> 
 
-diff --git a/drivers/iio/accel/kxcjk-1013.c b/drivers/iio/accel/kxcjk-1013.c
-index c9924a65c32a..6b93521c0e17 100644
---- a/drivers/iio/accel/kxcjk-1013.c
-+++ b/drivers/iio/accel/kxcjk-1013.c
-@@ -1311,7 +1311,6 @@ static int kxcjk1013_probe(struct i2c_client *client,
- 
- 	mutex_init(&data->mutex);
- 
--	indio_dev->dev.parent = &client->dev;
- 	indio_dev->channels = kxcjk1013_channels;
- 	indio_dev->num_channels = ARRAY_SIZE(kxcjk1013_channels);
- 	indio_dev->available_scan_masks = kxcjk1013_scan_masks;
-diff --git a/drivers/iio/accel/mma8452.c b/drivers/iio/accel/mma8452.c
-index 00e100fc845a..ef3df402fc3c 100644
---- a/drivers/iio/accel/mma8452.c
-+++ b/drivers/iio/accel/mma8452.c
-@@ -1592,7 +1592,6 @@ static int mma8452_probe(struct i2c_client *client,
- 	i2c_set_clientdata(client, indio_dev);
- 	indio_dev->info = &mma8452_info;
- 	indio_dev->name = id->name;
--	indio_dev->dev.parent = &client->dev;
- 	indio_dev->modes = INDIO_DIRECT_MODE;
- 	indio_dev->channels = data->chip_info->channels;
- 	indio_dev->num_channels = data->chip_info->num_channels;
-diff --git a/drivers/iio/accel/mma9553.c b/drivers/iio/accel/mma9553.c
-index 312070dcf035..c15908faa381 100644
---- a/drivers/iio/accel/mma9553.c
-+++ b/drivers/iio/accel/mma9553.c
-@@ -1103,7 +1103,6 @@ static int mma9553_probe(struct i2c_client *client,
- 	if (ret < 0)
- 		return ret;
- 
--	indio_dev->dev.parent = &client->dev;
- 	indio_dev->channels = mma9553_channels;
- 	indio_dev->num_channels = ARRAY_SIZE(mma9553_channels);
- 	indio_dev->name = name;
-diff --git a/drivers/iio/adc/ad7192.c b/drivers/iio/adc/ad7192.c
-index 08ba1a8f05eb..a0837d7e9176 100644
---- a/drivers/iio/adc/ad7192.c
-+++ b/drivers/iio/adc/ad7192.c
-@@ -970,7 +970,6 @@ static int ad7192_probe(struct spi_device *spi)
- 
- 	spi_set_drvdata(spi, indio_dev);
- 	st->chip_info = of_device_get_match_data(&spi->dev);
--	indio_dev->dev.parent = &spi->dev;
- 	indio_dev->name = st->chip_info->name;
- 	indio_dev->modes = INDIO_DIRECT_MODE;
- 
-diff --git a/drivers/iio/adc/hx711.c b/drivers/iio/adc/hx711.c
-index c8686558429b..6a173531d355 100644
---- a/drivers/iio/adc/hx711.c
-+++ b/drivers/iio/adc/hx711.c
-@@ -551,7 +551,6 @@ static int hx711_probe(struct platform_device *pdev)
- 	platform_set_drvdata(pdev, indio_dev);
- 
- 	indio_dev->name = "hx711";
--	indio_dev->dev.parent = &pdev->dev;
- 	indio_dev->info = &hx711_iio_info;
- 	indio_dev->modes = INDIO_DIRECT_MODE;
- 	indio_dev->channels = hx711_chan_spec;
-diff --git a/drivers/iio/adc/max1363.c b/drivers/iio/adc/max1363.c
-index 9d92017c79b2..cc1ba7bfc8e6 100644
---- a/drivers/iio/adc/max1363.c
-+++ b/drivers/iio/adc/max1363.c
-@@ -1652,8 +1652,6 @@ static int max1363_probe(struct i2c_client *client,
- 	if (ret)
- 		goto error_disable_reg;
- 
--	/* Establish that the iio_dev is a child of the i2c device */
--	indio_dev->dev.parent = &client->dev;
- 	indio_dev->dev.of_node = client->dev.of_node;
- 	indio_dev->name = id->name;
- 	indio_dev->channels = st->chip_info->channels;
-diff --git a/drivers/iio/adc/mcp3911.c b/drivers/iio/adc/mcp3911.c
-index dd52f08ec82e..818b92518c66 100644
---- a/drivers/iio/adc/mcp3911.c
-+++ b/drivers/iio/adc/mcp3911.c
-@@ -293,7 +293,6 @@ static int mcp3911_probe(struct spi_device *spi)
- 	if (ret)
- 		goto clk_disable;
- 
--	indio_dev->dev.parent = &spi->dev;
- 	indio_dev->dev.of_node = spi->dev.of_node;
- 	indio_dev->name = spi_get_device_id(spi)->name;
- 	indio_dev->modes = INDIO_DIRECT_MODE;
-diff --git a/drivers/iio/adc/qcom-spmi-iadc.c b/drivers/iio/adc/qcom-spmi-iadc.c
-index 46858eddf1c3..1c90ad33a881 100644
---- a/drivers/iio/adc/qcom-spmi-iadc.c
-+++ b/drivers/iio/adc/qcom-spmi-iadc.c
-@@ -553,7 +553,6 @@ static int iadc_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
--	indio_dev->dev.parent = dev;
- 	indio_dev->dev.of_node = node;
- 	indio_dev->name = pdev->name;
- 	indio_dev->modes = INDIO_DIRECT_MODE;
-diff --git a/drivers/iio/amplifiers/ad8366.c b/drivers/iio/amplifiers/ad8366.c
-index 62167b87caea..2595e9cb0b2d 100644
---- a/drivers/iio/amplifiers/ad8366.c
-+++ b/drivers/iio/amplifiers/ad8366.c
-@@ -274,7 +274,6 @@ static int ad8366_probe(struct spi_device *spi)
- 	}
- 
- 	st->info = &ad8366_infos[st->type];
--	indio_dev->dev.parent = &spi->dev;
- 	indio_dev->name = spi_get_device_id(spi)->name;
- 	indio_dev->info = &ad8366_info;
- 	indio_dev->modes = INDIO_DIRECT_MODE;
-diff --git a/drivers/iio/chemical/vz89x.c b/drivers/iio/chemical/vz89x.c
-index 415b39339d4e..5586eb8e12cd 100644
---- a/drivers/iio/chemical/vz89x.c
-+++ b/drivers/iio/chemical/vz89x.c
-@@ -382,7 +382,6 @@ static int vz89x_probe(struct i2c_client *client,
- 	data->last_update = jiffies - HZ;
- 	mutex_init(&data->lock);
- 
--	indio_dev->dev.parent = &client->dev;
- 	indio_dev->info = &vz89x_info;
- 	indio_dev->name = dev_name(&client->dev);
- 	indio_dev->modes = INDIO_DIRECT_MODE;
-diff --git a/drivers/iio/dac/ad5770r.c b/drivers/iio/dac/ad5770r.c
-index 2d7623b9b2c0..84dcf149261f 100644
---- a/drivers/iio/dac/ad5770r.c
-+++ b/drivers/iio/dac/ad5770r.c
-@@ -651,7 +651,6 @@ static int ad5770r_probe(struct spi_device *spi)
- 		}
- 	}
- 
--	indio_dev->dev.parent = &spi->dev;
- 	indio_dev->name = spi_get_device_id(spi)->name;
- 	indio_dev->info = &ad5770r_info;
- 	indio_dev->modes = INDIO_DIRECT_MODE;
-diff --git a/drivers/iio/health/afe4403.c b/drivers/iio/health/afe4403.c
-index e9f87e42ff4f..ed230f12b2f8 100644
---- a/drivers/iio/health/afe4403.c
-+++ b/drivers/iio/health/afe4403.c
-@@ -509,7 +509,6 @@ static int afe4403_probe(struct spi_device *spi)
- 	}
- 
- 	indio_dev->modes = INDIO_DIRECT_MODE;
--	indio_dev->dev.parent = afe->dev;
- 	indio_dev->channels = afe4403_channels;
- 	indio_dev->num_channels = ARRAY_SIZE(afe4403_channels);
- 	indio_dev->name = AFE4403_DRIVER_NAME;
-diff --git a/drivers/iio/health/afe4404.c b/drivers/iio/health/afe4404.c
-index e728bbb21ca8..3a3efae4695a 100644
---- a/drivers/iio/health/afe4404.c
-+++ b/drivers/iio/health/afe4404.c
-@@ -517,7 +517,6 @@ static int afe4404_probe(struct i2c_client *client,
- 	}
- 
- 	indio_dev->modes = INDIO_DIRECT_MODE;
--	indio_dev->dev.parent = afe->dev;
- 	indio_dev->channels = afe4404_channels;
- 	indio_dev->num_channels = ARRAY_SIZE(afe4404_channels);
- 	indio_dev->name = AFE4404_DRIVER_NAME;
-diff --git a/drivers/iio/humidity/dht11.c b/drivers/iio/humidity/dht11.c
-index d05c6fdb758b..9a7819817488 100644
---- a/drivers/iio/humidity/dht11.c
-+++ b/drivers/iio/humidity/dht11.c
-@@ -321,7 +321,6 @@ static int dht11_probe(struct platform_device *pdev)
- 	init_completion(&dht11->completion);
- 	mutex_init(&dht11->lock);
- 	iio->name = pdev->name;
--	iio->dev.parent = &pdev->dev;
- 	iio->info = &dht11_iio_info;
- 	iio->modes = INDIO_DIRECT_MODE;
- 	iio->channels = dht11_chan_spec;
-diff --git a/drivers/iio/humidity/hts221_core.c b/drivers/iio/humidity/hts221_core.c
-index 9003671f14fb..c5d9bd0ee9a6 100644
---- a/drivers/iio/humidity/hts221_core.c
-+++ b/drivers/iio/humidity/hts221_core.c
-@@ -572,7 +572,6 @@ int hts221_probe(struct device *dev, int irq, const char *name,
- 		return err;
- 
- 	iio_dev->modes = INDIO_DIRECT_MODE;
--	iio_dev->dev.parent = hw->dev;
- 	iio_dev->available_scan_masks = hts221_scan_masks;
- 	iio_dev->channels = hts221_channels;
- 	iio_dev->num_channels = ARRAY_SIZE(hts221_channels);
-diff --git a/drivers/iio/imu/inv_mpu6050/inv_mpu_core.c b/drivers/iio/imu/inv_mpu6050/inv_mpu_core.c
-index 4d604fe842e5..153f855db8d6 100644
---- a/drivers/iio/imu/inv_mpu6050/inv_mpu_core.c
-+++ b/drivers/iio/imu/inv_mpu6050/inv_mpu_core.c
-@@ -1530,7 +1530,6 @@ int inv_mpu_core_probe(struct regmap *regmap, int irq, const char *name,
- 	}
- 
- 	dev_set_drvdata(dev, indio_dev);
--	indio_dev->dev.parent = dev;
- 	/* name will be NULL when enumerated via ACPI */
- 	if (name)
- 		indio_dev->name = name;
-diff --git a/drivers/iio/light/cm3605.c b/drivers/iio/light/cm3605.c
-index 964ede49f662..4c83953672be 100644
---- a/drivers/iio/light/cm3605.c
-+++ b/drivers/iio/light/cm3605.c
-@@ -239,7 +239,6 @@ static int cm3605_probe(struct platform_device *pdev)
- 	led_trigger_register_simple("cm3605", &cm3605->led);
- 	led_trigger_event(cm3605->led, LED_FULL);
- 
--	indio_dev->dev.parent = dev;
- 	indio_dev->info = &cm3605_info;
- 	indio_dev->name = "cm3605";
- 	indio_dev->channels = cm3605_channels;
-diff --git a/drivers/iio/light/ltr501.c b/drivers/iio/light/ltr501.c
-index 5a3fcb127cd2..4bac0646398d 100644
---- a/drivers/iio/light/ltr501.c
-+++ b/drivers/iio/light/ltr501.c
-@@ -1480,7 +1480,6 @@ static int ltr501_probe(struct i2c_client *client,
- 	if ((partid >> 4) != data->chip_info->partid)
- 		return -ENODEV;
- 
--	indio_dev->dev.parent = &client->dev;
- 	indio_dev->info = data->chip_info->info;
- 	indio_dev->channels = data->chip_info->channels;
- 	indio_dev->num_channels = data->chip_info->no_channels;
-diff --git a/drivers/iio/magnetometer/ak8975.c b/drivers/iio/magnetometer/ak8975.c
-index 3c881541ae72..a5f67db11754 100644
---- a/drivers/iio/magnetometer/ak8975.c
-+++ b/drivers/iio/magnetometer/ak8975.c
-@@ -922,7 +922,6 @@ static int ak8975_probe(struct i2c_client *client,
- 	}
- 
- 	mutex_init(&data->lock);
--	indio_dev->dev.parent = &client->dev;
- 	indio_dev->channels = ak8975_channels;
- 	indio_dev->num_channels = ARRAY_SIZE(ak8975_channels);
- 	indio_dev->info = &ak8975_info;
-diff --git a/drivers/iio/orientation/hid-sensor-rotation.c b/drivers/iio/orientation/hid-sensor-rotation.c
-index b99f41240e3e..23bc61a7f018 100644
---- a/drivers/iio/orientation/hid-sensor-rotation.c
-+++ b/drivers/iio/orientation/hid-sensor-rotation.c
-@@ -281,7 +281,6 @@ static int hid_dev_rot_probe(struct platform_device *pdev)
- 	}
- 
- 	indio_dev->num_channels = ARRAY_SIZE(dev_rot_channels);
--	indio_dev->dev.parent = &pdev->dev;
- 	indio_dev->info = &dev_rot_info;
- 	indio_dev->name = name;
- 	indio_dev->modes = INDIO_DIRECT_MODE;
-diff --git a/drivers/iio/potentiostat/lmp91000.c b/drivers/iio/potentiostat/lmp91000.c
-index 2cb11da18e0f..2d601889c8c0 100644
---- a/drivers/iio/potentiostat/lmp91000.c
-+++ b/drivers/iio/potentiostat/lmp91000.c
-@@ -321,7 +321,6 @@ static int lmp91000_probe(struct i2c_client *client,
- 	indio_dev->channels = lmp91000_channels;
- 	indio_dev->num_channels = ARRAY_SIZE(lmp91000_channels);
- 	indio_dev->name = LMP91000_DRV_NAME;
--	indio_dev->dev.parent = &client->dev;
- 	indio_dev->modes = INDIO_DIRECT_MODE;
- 	i2c_set_clientdata(client, indio_dev);
- 
-diff --git a/drivers/iio/proximity/ping.c b/drivers/iio/proximity/ping.c
-index 12b893c5b0ee..abd92caebfbb 100644
---- a/drivers/iio/proximity/ping.c
-+++ b/drivers/iio/proximity/ping.c
-@@ -310,7 +310,6 @@ static int ping_probe(struct platform_device *pdev)
- 	platform_set_drvdata(pdev, indio_dev);
- 
- 	indio_dev->name = "ping";
--	indio_dev->dev.parent = &pdev->dev;
- 	indio_dev->info = &ping_iio_info;
- 	indio_dev->modes = INDIO_DIRECT_MODE;
- 	indio_dev->channels = ping_chan_spec;
-diff --git a/drivers/iio/proximity/pulsedlight-lidar-lite-v2.c b/drivers/iio/proximity/pulsedlight-lidar-lite-v2.c
-index 5b369645ef49..a8e716dbd24e 100644
---- a/drivers/iio/proximity/pulsedlight-lidar-lite-v2.c
-+++ b/drivers/iio/proximity/pulsedlight-lidar-lite-v2.c
-@@ -270,7 +270,6 @@ static int lidar_probe(struct i2c_client *client,
- 	indio_dev->name = LIDAR_DRV_NAME;
- 	indio_dev->channels = lidar_channels;
- 	indio_dev->num_channels = ARRAY_SIZE(lidar_channels);
--	indio_dev->dev.parent = &client->dev;
- 	indio_dev->modes = INDIO_DIRECT_MODE;
- 
- 	i2c_set_clientdata(client, indio_dev);
-diff --git a/drivers/iio/proximity/srf04.c b/drivers/iio/proximity/srf04.c
-index 568b76e06385..2a3acff431d7 100644
---- a/drivers/iio/proximity/srf04.c
-+++ b/drivers/iio/proximity/srf04.c
-@@ -317,7 +317,6 @@ static int srf04_probe(struct platform_device *pdev)
- 	platform_set_drvdata(pdev, indio_dev);
- 
- 	indio_dev->name = "srf04";
--	indio_dev->dev.parent = &pdev->dev;
- 	indio_dev->info = &srf04_iio_info;
- 	indio_dev->modes = INDIO_DIRECT_MODE;
- 	indio_dev->channels = srf04_chan_spec;
-diff --git a/drivers/iio/proximity/srf08.c b/drivers/iio/proximity/srf08.c
-index b23ce446b7be..6677221d5818 100644
---- a/drivers/iio/proximity/srf08.c
-+++ b/drivers/iio/proximity/srf08.c
-@@ -483,7 +483,6 @@ static int srf08_probe(struct i2c_client *client,
- 	}
- 
- 	indio_dev->name = id->name;
--	indio_dev->dev.parent = &client->dev;
- 	indio_dev->modes = INDIO_DIRECT_MODE;
- 	indio_dev->channels = srf08_channels;
- 	indio_dev->num_channels = ARRAY_SIZE(srf08_channels);
-diff --git a/drivers/iio/temperature/tsys01.c b/drivers/iio/temperature/tsys01.c
-index d41f050c2fea..2c631a1ca33b 100644
---- a/drivers/iio/temperature/tsys01.c
-+++ b/drivers/iio/temperature/tsys01.c
-@@ -160,7 +160,6 @@ static int tsys01_probe(struct iio_dev *indio_dev, struct device *dev)
- 
- 	indio_dev->info = &tsys01_info;
- 	indio_dev->name = dev->driver->name;
--	indio_dev->dev.parent = dev;
- 	indio_dev->modes = INDIO_DIRECT_MODE;
- 	indio_dev->channels = tsys01_channels;
- 	indio_dev->num_channels = ARRAY_SIZE(tsys01_channels);
-diff --git a/drivers/staging/iio/addac/adt7316.c b/drivers/staging/iio/addac/adt7316.c
-index 9cb3d0e42c38..ccbafcaaf27e 100644
---- a/drivers/staging/iio/addac/adt7316.c
-+++ b/drivers/staging/iio/addac/adt7316.c
-@@ -2171,7 +2171,6 @@ int adt7316_probe(struct device *dev, struct adt7316_bus *bus,
- 	if ((chip->id & ID_FAMILY_MASK) == ID_ADT75XX)
- 		chip->int_mask |= ADT7516_AIN_INT_MASK;
- 
--	indio_dev->dev.parent = dev;
- 	if ((chip->id & ID_FAMILY_MASK) == ID_ADT75XX)
- 		indio_dev->info = &adt7516_info;
- 	else
--- 
-2.25.1
+Thanks for the reminder.
+Yes, here DW9768_MOVE_DELAY_US actually represents Operation Time,
+which is dependent upon board-specific settings that defined in DT.
+For instance, for one given board, if aac-mode is 2, aac-timing is 0x39,
+clock-presc is 1, then Operation Time would be 0.70*(6.3ms+57*0.1ms)*1 =
+8.4ms.
 
+> > +
+> > +static const char * const dw9768_supply_names[] = {
+> > +	"vin",	/* I2C I/O interface power */
+> > +	"vdd",	/* VCM power */
+> > +};
+> > +
+> > +/* dw9768 device structure */
+> > +struct dw9768 {
+> > +	struct regulator_bulk_data supplies[ARRAY_SIZE(dw9768_supply_names)];
+> > +	struct v4l2_ctrl_handler ctrls;
+> > +	struct v4l2_ctrl	*focus;
+> > +	struct v4l2_subdev	sd;
+> > +
+> > +	u32			aac_mode;
+> > +	u32			aac_timing;
+> > +	u32			clock_dividing_rate;
+> > +	bool			aac_mode_control_enable;
+> > +	bool			aact_cnt_select_enable;
+> > +	bool			clock_dividing_rate_select_enable;
+> 
+> nit: Separate types from names with just 1 space.
+> 
+
+Fixed in next release.
+
+> > +};
+> > +
+> > +static inline struct dw9768 *sd_to_dw9768(struct v4l2_subdev *subdev)
+> > +{
+> > +	return container_of(subdev, struct dw9768, sd);
+> > +}
+> > +
+> > +struct regval_list {
+> > +	u8 reg_num;
+> > +	u8 value;
+> > +};
+> > +
+> > +static int dw9768_read_smbus(struct dw9768 *dw9768, unsigned char reg,
+> > +			     unsigned char *val)
+> > +{
+> > +	struct i2c_client *client = v4l2_get_subdevdata(&dw9768->sd);
+> > +	int ret;
+> > +
+> > +	ret = i2c_smbus_read_byte_data(client, reg);
+> > +
+> > +	if (ret < 0)
+> > +		return ret;
+> > +
+> > +	*val = (unsigned char)ret;
+> > +
+> > +	return 0;
+> > +}
+> 
+> Why do we need this function? Couldn't we just call
+> i2c_smbus_read_byte_data() directly?
+> 
+
+Fixed in next release.
+
+> [snip]
+> > +static int dw9768_probe(struct i2c_client *client)
+> > +{
+> > +	struct device *dev = &client->dev;
+> > +	struct dw9768 *dw9768;
+> > +	unsigned int aac_mode_select;
+> > +	unsigned int aac_timing_select;
+> > +	unsigned int clock_dividing_rate_select;
+> > +	unsigned int i;
+> > +	int ret;
+> > +
+> > +	dw9768 = devm_kzalloc(dev, sizeof(*dw9768), GFP_KERNEL);
+> > +	if (!dw9768)
+> > +		return -ENOMEM;
+> > +
+> > +	v4l2_i2c_subdev_init(&dw9768->sd, client, &dw9768_ops);
+> > +	dw9768->aac_mode_control_enable = false;
+> > +	dw9768->aact_cnt_select_enable = false;
+> > +	dw9768->clock_dividing_rate_select_enable = false;
+> 
+> devm_kzalloc() initializes the memory to zero, so no need to set anything
+> to false explicitly.
+> 
+
+Thanks for the reminder.
+Yes, these parameters shall not be needed to initialized as zeros.
+
+> > +
+> > +	/* Optional indication of AAC mode select */
+> > +	ret = fwnode_property_read_u32(dev_fwnode(dev), "dongwoon,aac-mode",
+> > +				       &aac_mode_select);
+> > +
+> > +	if (!ret) {
+> > +		dw9768->aac_mode_control_enable = true;
+> > +		dw9768->aac_mode = aac_mode_select;
+> 
+> How about making aac_mode a signed int and assigning -1 by
+> default? Then we don't need two separate fields in the struct.
+> 
+
+Good idea.
+
+> > +	}
+> > +
+> > +	/* Optional indication of VCM internal clock dividing rate select */
+> > +	ret = fwnode_property_read_u32(dev_fwnode(dev),
+> > +				       "dongwoon,clock-dividing-rate",
+> > +				       &clock_dividing_rate_select);
+> > +
+> > +	if (!ret) {
+> > +		dw9768->clock_dividing_rate_select_enable = true;
+> > +		dw9768->clock_dividing_rate = clock_dividing_rate_select;
+> 
+> Ditto.
+> 
+
+Got it.
+
+> > +	}
+> > +
+> > +	/* Optional indication of AAC Timing */
+> > +	ret = fwnode_property_read_u32(dev_fwnode(dev), "dongwoon,aac-timing",
+> > +				       &aac_timing_select);
+> > +
+> > +	if (!ret) {
+> > +		dw9768->aact_cnt_select_enable = true;
+> > +		dw9768->aac_timing = aac_timing_select;
+> 
+> Ditto.
+> 
+
+Got it.
+
+> > +	}
+> > +
+> > +	for (i = 0; i < ARRAY_SIZE(dw9768_supply_names); i++)
+> > +		dw9768->supplies[i].supply = dw9768_supply_names[i];
+> > +
+> > +	ret = devm_regulator_bulk_get(dev, ARRAY_SIZE(dw9768_supply_names),
+> > +				      dw9768->supplies);
+> > +	if (ret) {
+> > +		dev_err(dev, "failed to get regulators\n");
+> > +		return ret;
+> > +	}
+> > +
+> > +	ret = dw9768_init_controls(dw9768);
+> > +	if (ret)
+> > +		goto entity_cleanup;
+> > +
+> > +	dw9768->sd.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
+> > +	dw9768->sd.internal_ops = &dw9768_int_ops;
+> > +
+> > +	ret = media_entity_pads_init(&dw9768->sd.entity, 0, NULL);
+> > +	if (ret < 0)
+> > +		goto entity_cleanup;
+> > +
+> > +	dw9768->sd.entity.function = MEDIA_ENT_F_LENS;
+> > +
+> > +	pm_runtime_enable(dev);
+> > +	if (!pm_runtime_enabled(dev)) {
+> > +		ret = dw9768_runtime_resume(dev);
+> > +		if (ret < 0) {
+> > +			dev_err(dev, "failed to power on: %d\n", ret);
+> > +			goto entity_cleanup;
+> > +		}
+> > +	}
+> > +
+> > +	ret = v4l2_async_register_subdev(&dw9768->sd);
+> > +	if (ret < 0)
+> > +		goto entity_cleanup;
+> > +
+> > +	return 0;
+> > +
+> > +entity_cleanup:
+> 
+> Need to power off if the code above powered on.
+> 
+
+Thanks for the reminder.
+If there is something wrong with runtime PM, actuator is to be powered
+on via dw9768_runtime_resume() API.
+When actuator sub-device is powered on completely and async registered
+successfully, we shall power off it afterwards.
+
+> > +	v4l2_ctrl_handler_free(&dw9768->ctrls);
+> > +	media_entity_cleanup(&dw9768->sd.entity);
+> > +	return ret;
+> > +}
+> > +
+> > +static int dw9768_remove(struct i2c_client *client)
+> > +{
+> > +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> > +	struct dw9768 *dw9768 = sd_to_dw9768(sd);
+> > +
+> > +	pm_runtime_disable(&client->dev);
+> 
+> First the device must be unregistered from the userspace. Otherwise there
+> is a race condition that risks the userspace accessing the device while the
+> deinitialization is happening.
+> 
+
+Fixed in next release by adjusting the sequence of unregistering and
+runtime PM disable.
+
+> Best regards,
+> Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
