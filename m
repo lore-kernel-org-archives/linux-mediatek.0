@@ -2,84 +2,94 @@ Return-Path: <SRS0=+XBv=7F=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 92F55C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 May 2020 13:15:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3B2B6C433E0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 May 2020 13:27:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 618B4207F9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 May 2020 13:15:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1039D20727
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 May 2020 13:27:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FQ7fs5GI";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="Up30C1YR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 618B4207F9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FdYFgBXT";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="aZv6u+u9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1039D20727
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bgdev.pl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WIjzJysbHfCo6H13OuQuoq/JG3f6sUvkvWt3UpD2CTg=; b=FQ7fs5GI0xvv7G
-	rexogs5YRz++gk9wdheOO/5YFknLGNfFvyonnSplD4HRj5zKiDTks9gT+FrATyNj/X4Z0momfF1Yu
-	vvjM6ptueNIGzGb9xJB1mnRZEa7wt+rDxdvMds3jARJ4sEeo4SFTJzBemoxKN9whjdj2V3OvNR718
-	osqYXjGwyk8qMPAc7J3TM55Lyd5EatyjuvIZsrtqIAmdV5mYyGcJ1JizucHPNggP1Sa68iAMQ/J3H
-	HuOTu1Y98rBQYmB+VnFpJbxvkViEVOOmN43B5uxqRY1B4t18vp7jAc2aYUJX7j32mgZph8kSVp6fJ
-	fPVLWly5vM0PnZZBDTJg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=AfDlaquNacXOnVt/RmjX0ibjNzme+EbettEZfkn4bqc=; b=FdYFgBXTDfoev4
+	YY1PKeKcZMDhvhjEUSonwNo0KdoZ5Hd+qouSpVej0W2z0mSjGSH/hweuU4Kuxdcop0QDBxTqyy5FA
+	EWNq3QUC0WkxOR/BfDx75LwH17Lk0G3kO+1C3ZBIZ9Tq237hDbZcJ3Z3YdXA2RxxJOIfVXRRvE6iW
+	adM64seesbP4xDgaPhczEDu0AevQehyOsxnga/jlToJaa8h4POge1FbUpWjppz4SMZ7904ogwCh+5
+	Nu2zP5HtJpVcfCKjQ1uYjerhR6JfPLg6v9KPYtNr551r9ihcd3G/Y9hPBX+L925fT29+9I3fFqaiZ
+	Qb/cm2+o31CwunUZmO5Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jcTzZ-000403-Re; Sat, 23 May 2020 13:15:09 +0000
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
+	id 1jcUBP-0002xJ-Mx; Sat, 23 May 2020 13:27:23 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jcTz9-0002ni-Tp
- for linux-mediatek@lists.infradead.org; Sat, 23 May 2020 13:14:47 +0000
-Received: by mail-io1-xd43.google.com with SMTP id p20so1036235iop.11
- for <linux-mediatek@lists.infradead.org>; Sat, 23 May 2020 06:14:41 -0700 (PDT)
+ id 1jcUBM-0002w6-Ro
+ for linux-mediatek@lists.infradead.org; Sat, 23 May 2020 13:27:22 +0000
+Received: by mail-wm1-x342.google.com with SMTP id u13so2535758wml.1
+ for <linux-mediatek@lists.infradead.org>; Sat, 23 May 2020 06:27:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Qqk95wVsZmzmcuIGFt4zOLnbm5tsZjHScQ5kWL0ptlo=;
- b=Up30C1YRhvWB57ye1T2UrlkPecgpMbEt23MMyafxVtj4AWCFG/FP7d50A6YnKzg9yp
- G2totyxkDwGSHGb7MyOfkpg+yi5yX1RK12jEKRrBkpHP6ZfWVKTJC9sYB2brG+MairoD
- nVu7qav8lKDiem0EWG8cq+eNzX0PIUp92pXJJ05sgDL2eFgGXNL7w4o15p6olun3W+Xq
- AWP/WTLrrm5Q2J98rGCkDUk465WESwOxdkOm+R3HSYg8UezUHHjE5f7UmhvYqSJEI9jC
- dDMgCm+myuFjb6RIyGffd1PFIclibonFoPKs1bF6NUkiv9nFwsu5JVO3a0xShNsc/Nwh
- 1GHw==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=vkX2gAQLIXJ9uj3WUomW1bZyEutKwO7zwPcKUvDNbGs=;
+ b=aZv6u+u9OcqamzTM8oSsMQCNupHcwIZaVmUQ/fuDEAEexf93ZxyIIjhx/CDw4aXOgv
+ NOPwijbXQXl+FdHr6Gj5klzGzceksP3UAh/tC40uAT6uib99m4ACrWQjfI0LuP1TDWvz
+ R+rymcQKGqccVYvw53qMdoLS3UoIPQ63N4laBhqwXtg+r8GnxpHw89Odof1q5alrLC9i
+ m1uJD4F8+Sp2as/kHK7dAxCVLkML/rW+rE9amtXsHc+eeINmpPp0wVCw0REwh1uCTivn
+ owbwr8iy0v3xnFeZaNjnOMrfR7o9IAhLk9WBAE8IPU+/QUkYsJcKepvoMR0SNAPBPs+8
+ mKwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Qqk95wVsZmzmcuIGFt4zOLnbm5tsZjHScQ5kWL0ptlo=;
- b=FZA/yfFFoWgCt+ZbeRwrx07kDdzHRJDq9Wm9EhYpt1FJMCP1ofJHHQLiy3ro26Ango
- ZQAXhaFwSaq+zcqKWuGRXkqHFepKtD2IeDzlGR13ARgvRuvBrRkCIrjUi2Vg8y1yOO4g
- 3bYW1+VkK8S+sDoBOymoJJvLRqUDLcITAvLxDVhIRrMTkU52YgNt9DLzF05x816A570n
- 6ubJVpfapaAIKOkcIVXcUL7HsIQFF1CvuckTr+c6S69beKWKB8d/epHyLOKRNgtf4Yss
- KVFj/jEnzlwdOvy2N6+h/rEqdgAp9kn+KujhvTo7i/fYRHyfVmJ6bxY2U9KJ5aWfpu1t
- X7gg==
-X-Gm-Message-State: AOAM533oiWqf0F1PZ+At874y6wojCS4ZUZXlhRIsALzf601SHxpBt5wS
- CSUd9+Fq8frpXlT9pN3ixs9ypN7dvZ4ip+Gg5sQOFQ==
-X-Google-Smtp-Source: ABdhPJy3r7ROG2Dd7iXkJwzhgssNgb6WC0TdCHVJoxGhMF/mvblnvGscUx3CvN8/kuZuYuZPjaHAQSC9J4+TMor5GdA=
-X-Received: by 2002:a05:6638:b:: with SMTP id
- z11mr1909060jao.114.1590239680686; 
- Sat, 23 May 2020 06:14:40 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200520114415.13041-1-brgl@bgdev.pl>
- <20200522.153653.998395486877096103.davem@davemloft.net>
-In-Reply-To: <20200522.153653.998395486877096103.davem@davemloft.net>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=vkX2gAQLIXJ9uj3WUomW1bZyEutKwO7zwPcKUvDNbGs=;
+ b=QNhqQwR52guhkxfG4sLch0Om1a1dzYSNB01PGlm4aYCfUBAKTNJjm+XlgSxEiMvS83
+ rVTfXqBA5wEBvOiuV2Tpo6OUSt1gcZJRVS/7rTXikQcsRRT6GmSMQ9XlXBJkMA0h9cYt
+ VxXVWBk0Vw2LbNTqTENHV3T/R0yY7JWOrar765LALpxIHfbQJUHMZD4RDJmRh5m1FU0X
+ d7UVspratQtt6h36hocJNeQhSotRuyKAkyT2q/B+Cz5zSyqRSV6W86kYY8pfgsMs/WK5
+ wq41wDSjLhJvuOl8GXUJp3JLiLR57A0/BdcrdrbmU/WUy0yt544bqqOMKgiSNOZokzvh
+ CX8Q==
+X-Gm-Message-State: AOAM530Co9MDCpHyIYK7/YiWvX7N+EFSqtXjV42BDByz8UY02FSP1BWF
+ XDGLKTW5WPIgxW7L90xZjvVjlg==
+X-Google-Smtp-Source: ABdhPJxC8nZI33xT+XlLdoH7IBEbX8XggatVzrK5OwzBh8IMeKhz7+y+q4FCGYH/str1A7VuWBOXaw==
+X-Received: by 2002:a05:600c:20ca:: with SMTP id
+ y10mr18295681wmm.126.1590240439200; 
+ Sat, 23 May 2020 06:27:19 -0700 (PDT)
+Received: from localhost.localdomain (lfbn-nic-1-65-232.w2-15.abo.wanadoo.fr.
+ [2.15.156.232])
+ by smtp.gmail.com with ESMTPSA id g69sm8098703wmg.15.2020.05.23.06.27.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 23 May 2020 06:27:18 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Sat, 23 May 2020 15:14:29 +0200
-Message-ID: <CAMRc=MdQo1faFjUzS0z5VmihZ3dfiuHiXozxQUkOhAi1n5tkcQ@mail.gmail.com>
-Subject: Re: [PATCH 0/5] net: provide a devres variant of register_netdev()
-To: David Miller <davem@davemloft.net>
+To: Jonathan Corbet <corbet@lwn.net>, "David S . Miller" <davem@davemloft.net>,
+ Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <john@phrozen.org>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Jakub Kicinski <kuba@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+ Fabien Parent <fparent@baylibre.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>,
+ Edwin Peer <edwin.peer@broadcom.com>
+Subject: [PATCH v2 0/5] net: provide a devres variant of register_netdev()
+Date: Sat, 23 May 2020 15:27:06 +0200
+Message-Id: <20200523132711.30617-1-brgl@bgdev.pl>
+X-Mailer: git-send-email 2.25.0
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200523_061443_981894_4DF099E3 
-X-CRM114-Status: UNSURE (   8.81  )
+X-CRM114-CacheID: sfid-20200523_062720_901745_8F75442E 
+X-CRM114-Status: UNSURE (   7.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -92,36 +102,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Edwin Peer <edwin.peer@broadcom.com>,
- devicetree <devicetree@vger.kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Stephane Le Provost <stephane.leprovost@mediatek.com>,
- Arnd Bergmann <arnd@arndb.de>, Jonathan Corbet <corbet@lwn.net>,
- netdev <netdev@vger.kernel.org>, Sean Wang <sean.wang@mediatek.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Fabien Parent <fparent@baylibre.com>, Pedro Tsai <pedro.tsai@mediatek.com>,
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+Cc: devicetree@vger.kernel.org,
+ Stephane Le Provost <stephane.leprovost@mediatek.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ linux-mediatek@lists.infradead.org,
  Andrew Perepech <andrew.perepech@mediatek.com>,
- John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Jakub Kicinski <kuba@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Heiner Kallweit <hkallweit1@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ Pedro Tsai <pedro.tsai@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-c29iLiwgMjMgbWFqIDIwMjAgbyAwMDozNiBEYXZpZCBNaWxsZXIgPGRhdmVtQGRhdmVtbG9mdC5u
-ZXQ+IG5hcGlzYcWCKGEpOgo+Cj4gRnJvbTogQmFydG9zeiBHb2xhc3pld3NraSA8YnJnbEBiZ2Rl
-di5wbD4KPiBEYXRlOiBXZWQsIDIwIE1heSAyMDIwIDEzOjQ0OjEwICswMjAwCj4KPiA+ICAgbmV0
-OiBldGhlcm5ldDogbXRrX2V0aF9tYWM6IHVzZSBkZXZtX3JlZ2lzdGVyX25ldGRldigpCj4KPiBU
-aGlzIHBhdGNoIGRvZXNuJ3QgYXBwbHkgdG8gbmV0LW5leHQuCj4KPiBOZWl0aGVyIHRoZSBzb3Vy
-Y2UgZmlsZSBkcml2ZXJzL25ldC9ldGhlcm5ldC9tZWRpYXRlay9tdGtfZXRoX21hYy5jLAo+IG5v
-ciB0aGUgZnVuY3Rpb24gbXRrX21hY19wcm9iZSgpIGV2ZW4gZXhpc3QgaW4gdGhlIG5ldC1uZXh0
-IEdJVAo+IHRyZWUuCgpJbmRlZWQuIFRoZSBkcml2ZXIgZ290IHJlbmFtZWQgaW4gdjUuIEkgZGlk
-bid0IHJlc2VuZCBhIG5ldyB2ZXJzaW9uIG9mCnRoaXMgc2VyaWVzIGJlY2F1c2UgSSB0aG91Z2h0
-IHRoZXJlIHdvdWxkIGJlIGEgZGlzY3Vzc2lvbiBhYm91dCBpdHMKdXNlZnVsbmVzcy4gSSdsbCBz
-ZW5kIGEgcmViYXNlZCB2ZXJzaW9uIHRoZW4uCgpCYXJ0b3N6CgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QK
-TGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+
+Using devres helpers allows to shrink the probing code, avoid memory leaks in
+error paths make sure the order in which resources are freed is the exact
+opposite of their allocation. This series proposes to add a devres variant
+of register_netdev() that will only work with net_device structures whose
+memory is also managed.
+
+First we add the missing documentation entry for the only other networking
+devres helper: devm_alloc_etherdev().
+
+Next we move devm_alloc_etherdev() into a separate source file.
+
+We then use a proxy structure in devm_alloc_etherdev() to improve readability.
+
+Last: we implement devm_register_netdev() and use it in mtk-eth-mac driver.
+
+v1 -> v2:
+- rebase on top of net-next after driver rename, no functional changes
+
+Bartosz Golaszewski (5):
+  Documentation: devres: add a missing section for networking helpers
+  net: move devres helpers into a separate source file
+  net: devres: define a separate devres structure for
+    devm_alloc_etherdev()
+  net: devres: provide devm_register_netdev()
+  net: ethernet: mtk_star_emac: use devm_register_netdev()
+
+ .../driver-api/driver-model/devres.rst        |  5 +
+ drivers/net/ethernet/mediatek/mtk_star_emac.c | 17 +---
+ include/linux/netdevice.h                     |  2 +
+ net/Makefile                                  |  2 +-
+ net/devres.c                                  | 95 +++++++++++++++++++
+ net/ethernet/eth.c                            | 28 ------
+ 6 files changed, 104 insertions(+), 45 deletions(-)
+ create mode 100644 net/devres.c
+
+-- 
+2.25.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
