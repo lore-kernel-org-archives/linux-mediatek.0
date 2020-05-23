@@ -2,90 +2,78 @@ Return-Path: <SRS0=+XBv=7F=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 28BFAC433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 May 2020 04:19:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E420C433DF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 May 2020 05:02:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E4F94207DA
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 May 2020 04:19:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BDCF1204EA
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 May 2020 05:02:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dN8RmhCe";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="brjn7n8m"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E4F94207DA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZBPbC8uu";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="VARCN4/w"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BDCF1204EA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3V0ZPGAIyLYO1COFvVKZAVfFP0cJ0LJPN2gRaX14Zn8=; b=dN8RmhCeFdIpGn
-	fAt+WlGvEq7QZMbNf4VOOaHWfP4zaGp0O8zmA3QS9r/3tliz4SUMKynDkakPtyBTqOw2bbXq74/YK
-	CGc9oiJjQzJcXAaZEwaTUl9oLafomS5fG8szAjqk41uIEzriZUIXyIEflq/VOSZgSSwQ3FNZH+NrG
-	6qOlek/S7M86f6FDauRk8KlXVnha7F6Se31ERxH67iCq4dKzL2+YdyqphJEDgmzhC0N6RqZ+Nql81
-	ibdXbl9J+LH3fe/WWlo9rzkzub/nSnXqjh1gRhWlMOi3Ily47t6xfJVLphzN4+xg/2D4qKY4W8mGb
-	wtJR2+Y3CF060c+I998A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ISqHKcrxvXX4ljLM4qvp814FxePyscalA0V5dhH4IdY=; b=ZBPbC8uuVWvsDd
+	OlqA7ct4EcypOJ/Xnt4SzSytSTwzbOkr6DblgT9OdkknyDDoldLr7XQWiAxytZGxSIS5z4Wv1+1aN
+	RZLMPWcG6hTJloL66MgRn9PjT/WfDcAbrw6ybE0kJvJSC96brqYB4IL378IE3DNSPtqiSC8DEJj8h
+	JOka9yOi7tRxMdo+yo0QPKuFJESsmf2mB71zBkOniLskaMnkh4//JhKswWnZLoZM50U/6nMCGG8GT
+	sUEdgbrq7Xeh3hNQioXqkLmxbffRDYygSeX6/ifsaD6M6HpDtc8XnYrx/rW02FfP+qhcRVSoYKeNt
+	v7tj61qiceiYd7orNnVw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jcLdM-0005er-Js; Sat, 23 May 2020 04:19:40 +0000
-Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
+	id 1jcMIS-0005g4-D8; Sat, 23 May 2020 05:02:08 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jcLdJ-0005eF-4J
- for linux-mediatek@lists.infradead.org; Sat, 23 May 2020 04:19:38 +0000
-Received: by mail-pj1-x1042.google.com with SMTP id q9so5914149pjm.2
- for <linux-mediatek@lists.infradead.org>; Fri, 22 May 2020 21:19:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=lnKO8mEgKG0cuqfZGwVZY3dnnPkJgdITjBuWRWcUqiQ=;
- b=brjn7n8mURXe0FKXGVqBamb/EFgvxQBFyCyv8KRwVVLButg24bt1mO+ShPhCfc8b7b
- qyF0yYPI78ty562/3Y8jNL82dtOcK6AafaszzzWi/T4Q9iy6J1c6Qy8gaFoqzSoKzKNY
- f+mRVVq3hOSP3hmyktnJxhQiFm1YR2Ja2S7zfpuiqFXG1AfMQVJK8IIurdw8PzAXvztH
- OgNBa+L+q9gj/7prZDr7VvFi/Z9UjQnwklLZVdrktiW/83F+jpJ1/3Vv6gqLS9uEpkjg
- 3yqgo99VvvnpNWibMzYlO0TrgNKAObuJsEzyJJa4H9Fwf9N9x10aKc1z8WfDnp3SMogA
- WR9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=lnKO8mEgKG0cuqfZGwVZY3dnnPkJgdITjBuWRWcUqiQ=;
- b=CORCpGwgw4wrQ2QSIzm44+VlEzdh8582lr45ui4FzxJEbvhOubBwpHHgYmk0+LDyXu
- nlxKJgrg2s0VsR1d1cOL3RUI76UW5wjTvr+QLH+QDrazgz8sPaszm+0qDRc5usfrokBu
- 1ChViurmsHcRTZkmWip3l9d4/zMUUG42iJSYlwWTQA8II83XDi7tvCxQCZgmxhemK7Da
- k5pRX+mcJwkFwOqCBeQs/O85xmNyOKi8wPBtlnq4dhsw74i9+2rXzdaprnMFpLHNvmQO
- aohCRoAqC9O3e0m084fgbAIBnhjhkcr1zVBGAfx69wHHj8OTnybxdhQhQMmP7rkZtBhB
- yxLQ==
-X-Gm-Message-State: AOAM533OZ24SZscdPfRmd0W5RowM2t1j+H+kSrNC/xhx6tIwLi8g1VqZ
- mDx0PuISI5UNYp0oz/ov4Z0=
-X-Google-Smtp-Source: ABdhPJysX9LqXvkIYAcO2nda8F8H3jXr/8IwdGUWf9qFEo01Q6E3ECDmQaGCBwTTxTKz38LznCi7FA==
-X-Received: by 2002:a17:902:bd07:: with SMTP id
- p7mr17186991pls.293.1590207573197; 
- Fri, 22 May 2020 21:19:33 -0700 (PDT)
-Received: from localhost.localdomain ([2604:1380:4111:8b00::1])
- by smtp.gmail.com with ESMTPSA id g18sm8202317pfq.146.2020.05.22.21.19.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 May 2020 21:19:32 -0700 (PDT)
-From: Nathan Chancellor <natechancellor@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>
-Subject: [PATCH] mt76: mt7915: Use proper enum type in __mt7915_mcu_msg_send
-Date: Fri, 22 May 2020 21:19:23 -0700
-Message-Id: <20200523041923.3332257-1-natechancellor@gmail.com>
-X-Mailer: git-send-email 2.27.0.rc0
+ id 1jcMIO-0005fc-GX; Sat, 23 May 2020 05:02:07 +0000
+X-UUID: f3b41726dbbd4c5880702c6f1618f044-20200522
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=dnTm8HUmypyj5j0I+htnf2ClWM82adsQJc7IwlsKpmY=; 
+ b=VARCN4/wz6J8GQRZ0BiYMbSkf+XPK/1vClBEZ9+g3VDG6+/yFonjaxAI8ptE4cD4isexIQNUyyn0g5ePdzPlbuca/52ViUiD7HxpiS4NPKtruUiJCMh+zXNPdraKwRGAHsgxoBkHrZJjbr9RKTwTATPgUxRuFLsm9uP5evTOPf8=;
+X-UUID: f3b41726dbbd4c5880702c6f1618f044-20200522
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <dongchun.zhu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1841490374; Fri, 22 May 2020 21:01:57 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 22 May 2020 21:51:55 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sat, 23 May 2020 12:51:52 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 23 May 2020 12:51:52 +0800
+Message-ID: <1590209415.8804.431.camel@mhfsdcap03>
+Subject: Re: [V8, 2/2] media: i2c: ov02a10: Add OV02A10 image sensor driver
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+To: Tomasz Figa <tfiga@chromium.org>
+Date: Sat, 23 May 2020 12:50:15 +0800
+In-Reply-To: <20200521193204.GA14214@chromium.org>
+References: <20200509080627.23222-1-dongchun.zhu@mediatek.com>
+ <20200509080627.23222-3-dongchun.zhu@mediatek.com>
+ <20200521193204.GA14214@chromium.org>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-Patchwork-Bot: notify
+X-TM-SNTS-SMTP: 9A86533426CDD4D676F6555BAB3271DB8156DEA8DF906B43C0B17F3476DEA68B2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200522_211937_187757_D129B20C 
-X-CRM114-Status: UNSURE (   9.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200522_220204_567781_71C0355F 
+X-CRM114-Status: GOOD (  29.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,67 +85,469 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- clang-built-linux@googlegroups.com, linux-mediatek@lists.infradead.org,
- Nathan Chancellor <natechancellor@gmail.com>
+Cc: mark.rutland@arm.com, drinkcat@chromium.org,
+ andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
+ devicetree@vger.kernel.org, linus.walleij@linaro.org,
+ shengnan.wang@mediatek.com, louis.kuo@mediatek.com, bgolaszewski@baylibre.com,
+ sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
+ dongchun.zhu@mediatek.com, sakari.ailus@linux.intel.com,
+ matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Clang warns:
+Hi Tomasz,
 
-drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:232:9: warning: implicit
-conversion from enumeration type 'enum mt76_txq_id' to different
-enumeration type 'enum mt7915_txq_id' [-Wenum-conversion]
-                txq = MT_TXQ_FWDL;
-                    ~ ^~~~~~~~~~~
-drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:239:9: warning: implicit
-conversion from enumeration type 'enum mt76_txq_id' to different
-enumeration type 'enum mt7915_txq_id' [-Wenum-conversion]
-                txq = MT_TXQ_MCU_WA;
-                    ~ ^~~~~~~~~~~~~
-drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:243:9: warning: implicit
-conversion from enumeration type 'enum mt76_txq_id' to different
-enumeration type 'enum mt7915_txq_id' [-Wenum-conversion]
-                txq = MT_TXQ_MCU;
-                    ~ ^~~~~~~~~~
-drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:287:36: warning:
-implicit conversion from enumeration type 'enum mt7915_txq_id' to
-different enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
-        return mt76_tx_queue_skb_raw(dev, txq, skb, 0);
-               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+Thanks for the review. My replies are as below.
 
-txq should be a "enum mt76_txq_id" as values of that type are the only
-ones assigned to it and that is the type that mt76_tx_queue_skb_raw
-expects.
+On Thu, 2020-05-21 at 19:32 +0000, Tomasz Figa wrote:
+> Hi Dongchun,
+> 
+> On Sat, May 09, 2020 at 04:06:27PM +0800, Dongchun Zhu wrote:
+> > Add a V4L2 sub-device driver for OV02A10 image sensor.
+> > 
+> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > ---
+> >  MAINTAINERS                 |    1 +
+> >  drivers/media/i2c/Kconfig   |   13 +
+> >  drivers/media/i2c/Makefile  |    1 +
+> >  drivers/media/i2c/ov02a10.c | 1094 +++++++++++++++++++++++++++++++++++++++++++
+> >  4 files changed, 1109 insertions(+)
+> >  create mode 100644 drivers/media/i2c/ov02a10.c
+> > 
+> 
+> Thank you for the patch. Please see my comments inline.
+> 
+> [snip]
+> > +struct ov02a10 {
+> > +	u32			eclk_freq;
+> > +	u32                     mipi_clock_tx_speed;
+> > +
+> > +	struct clk		*eclk;
+> > +	struct gpio_desc	*pd_gpio;
+> > +	struct gpio_desc	*n_rst_gpio;
+> > +	struct regulator_bulk_data supplies[OV02A10_NUM_SUPPLIES];
+> > +
+> > +	bool			streaming;
+> > +	bool			upside_down;
+> > +	bool			mipi_clock_tx_speed_select_enable;
+> > +	bool			mipi_clock_hs_mode_enable;
+> > +
+> > +	/*
+> > +	 * Serialize control access, get/set format, get selection
+> > +	 * and start streaming.
+> > +	 */
+> > +	struct mutex		mutex;
+> > +	struct v4l2_subdev	subdev;
+> > +	struct media_pad	pad;
+> > +	struct v4l2_ctrl	*anal_gain;
+> > +	struct v4l2_ctrl	*exposure;
+> > +	struct v4l2_ctrl	*hblank;
+> > +	struct v4l2_ctrl	*vblank;
+> > +	struct v4l2_ctrl	*test_pattern;
+> > +	struct v4l2_mbus_framefmt	fmt;
+> 
+> nit: Remove the tabs between types and names and use single spaces. As you
+> can see above, even tabs don't guarantee equal alignment. And they actually
+> make adding fields more difficult, because if a longer field is added, the
+> alignment breaks.
+> 
 
-Fixes: e57b7901469f ("mt76: add mac80211 driver for MT7915 PCIe-based chipsets")
-Link: https://github.com/ClangBuiltLinux/linux/issues/1035
-Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
----
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks for sharing the rule of adding new fields.
+Fixed in next release.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index f00ad2b66761..916f664e964e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -220,7 +220,7 @@ static int __mt7915_mcu_msg_send(struct mt7915_dev *dev, struct sk_buff *skb,
- {
- 	struct mt7915_mcu_txd *mcu_txd;
- 	u8 seq, pkt_fmt, qidx;
--	enum mt7915_txq_id txq;
-+	enum mt76_txq_id txq;
- 	__le32 *txd;
- 	u32 val;
- 
+> [snip]
+> > +static int ov02a10_read_smbus(struct ov02a10 *ov02a10, unsigned char reg,
+> > +			      unsigned char *val)
+> > +{
+> > +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +	int ret;
+> > +
+> > +	ret = i2c_smbus_read_byte_data(client, reg);
+> > +
+> 
+> nit: Unnecessary blank line.
+> 
 
-base-commit: c11d28ab4a691736e30b49813fb801847bd44e83
--- 
-2.27.0.rc0
+Sorry for the carelessness.
+Fixed in next release.
 
+> > +	if (ret < 0)
+> > +		return ret;
+> > +
+> > +	*val = (unsigned char)ret;
+> > +
+> > +	return 0;
+> > +}
+> [snip]
+> > +static int __maybe_unused ov02a10_power_on(struct device *dev)
+> 
+> How is it possible that this function may be unused? If this driver allows
+> disabling runtime PM, then there is still a need to configure the clock,
+> regulator and GPIO. If not, there shouldn't be a case where this function
+> is unused.
+> 
+
+Thanks for the reminder.
+Modifier __maybe_unused would be removed in next release.
+
+> > +{
+> > +	struct i2c_client *client = to_i2c_client(dev);
+> > +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> > +	struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > +	int ret;
+> > +
+> > +	gpiod_set_value_cansleep(ov02a10->n_rst_gpio, 0);
+> > +	gpiod_set_value_cansleep(ov02a10->pd_gpio, 0);
+> > +
+> > +	ret = clk_prepare_enable(ov02a10->eclk);
+> > +	if (ret < 0) {
+> > +		dev_err(dev, "failed to enable eclk\n");
+> > +		return ret;
+> > +	}
+> > +
+> > +	ret = regulator_bulk_enable(OV02A10_NUM_SUPPLIES, ov02a10->supplies);
+> > +	if (ret < 0) {
+> > +		dev_err(dev, "failed to enable regulators\n");
+> > +		goto disable_clk;
+> > +	}
+> > +	usleep_range(5000, 6000);
+> > +
+> > +	gpiod_set_value_cansleep(ov02a10->pd_gpio, 1);
+> 
+> This is a "powerdown" GPIO. It must be set to 0 if the sensor is to be
+> powered on.
+> 
+
+The value set by gpiod_set_value_cansleep() API actually depends upon
+GPIO polarity defined in DT.
+Since I set GPIO_ACTIVE_LOW to powerdown,
+gpiod_set_value_cansleep(gpio_desc, value) would set !value to
+gpio_desc.
+Thus here powerdown would be low-state when sensor is powered on.
+For GPIO polarity, I also post a comment to the binding patch.
+
+> > +	usleep_range(5000, 6000);
+> > +
+> > +	gpiod_set_value_cansleep(ov02a10->n_rst_gpio, 1);
+> > +	usleep_range(5000, 6000);
+> > +
+> > +	ret = ov02a10_check_sensor_id(ov02a10);
+> > +	if (ret)
+> > +		goto disable_regulator;
+> > +
+> > +	return 0;
+> > +
+> > +disable_regulator:
+> > +	regulator_bulk_disable(OV02A10_NUM_SUPPLIES, ov02a10->supplies);
+> > +disable_clk:
+> > +	clk_disable_unprepare(ov02a10->eclk);
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static int __maybe_unused ov02a10_power_off(struct device *dev)
+> > +{
+> > +	struct i2c_client *client = to_i2c_client(dev);
+> > +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> > +	struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > +
+> > +	gpiod_set_value_cansleep(ov02a10->n_rst_gpio, 0);
+> > +	clk_disable_unprepare(ov02a10->eclk);
+> > +	gpiod_set_value_cansleep(ov02a10->pd_gpio, 0);
+> 
+> Similar comment as above. To power off the sensor, the "powerdown" GPIO
+> needs to be active, i.e. 1.
+> 
+
+Similar setting.
+It depends upon GPIO polarity.
+
+> [snip]
+> > +/*
+> > + * ov02a10_set_exposure - Function called when setting exposure time
+> > + * @priv: Pointer to device structure
+> > + * @val: Variable for exposure time, in the unit of micro-second
+> > + *
+> > + * Set exposure time based on input value.
+> > + *
+> > + * Return: 0 on success
+> > + */
+> > +static int ov02a10_set_exposure(struct ov02a10 *ov02a10, int val)
+> > +{
+> > +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +	int ret;
+> > +
+> > +	ret = i2c_smbus_write_byte_data(client, REG_PAGE_SWITCH, REG_ENABLE);
+> > +	if (ret < 0)
+> > +		return ret;
+> 
+> How does this page switch work? According to the documentation I have, the
+> register allows selecting between a few different pages. However, there
+> should be two page pointers - one for the AP and the other for the sensor,
+> so that when the AP is programming page X, the sensor can have consistent
+> settings from page Y. But here we only set one register and always with
+> page 1.
+> 
+
+Thanks for the carefully observation.
+The style or requirement of register setting here is suggested by OV
+vendor.
+From hardware signal behavior and effect-test, this setting should be
+right.
+But for your concern, we can also dig into it with OV.
+Let's have time to talk with OV.
+
+> > +
+> > +	ret = i2c_smbus_write_byte_data(client, OV02A10_REG_EXPOSURE_H,
+> > +					val >> OV02A10_EXP_SHIFT);
+> > +	if (ret < 0)
+> > +		return ret;
+> > +
+> > +	ret = i2c_smbus_write_byte_data(client, OV02A10_REG_EXPOSURE_L, val);
+> > +	if (ret < 0)
+> > +		return ret;
+> > +
+> > +	return i2c_smbus_write_byte_data(client, REG_GLOBAL_EFFECTIVE,
+> > +					 REG_ENABLE);
+> 
+> This patch defines REG_GLOBAL_EFFECTIVE to 0x01. I don't see such register
+> mentioned in the documentation.
+> 
+
+There may be several editions of sensor documentation.
+From OV, 0x01 is one register shall be updated to keep
+exposure/gain/test pattern... register settings effective.
+
+> > +}
+> > +
+> > +static int ov02a10_set_gain(struct ov02a10 *ov02a10, int val)
+> > +{
+> > +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +	int ret;
+> > +
+> > +	ret = i2c_smbus_write_byte_data(client, REG_PAGE_SWITCH, REG_ENABLE);
+> > +	if (ret < 0)
+> > +		return ret;
+> > +
+> > +	ret = i2c_smbus_write_byte_data(client, OV02A10_REG_GAIN, val);
+> > +	if (ret < 0)
+> > +		return ret;
+> > +
+> > +	return i2c_smbus_write_byte_data(client, REG_GLOBAL_EFFECTIVE,
+> > +					 REG_ENABLE);
+> > +}
+> > +
+> > +static int ov02a10_set_vblank(struct ov02a10 *ov02a10, int val)
+> > +{
+> > +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +	u32 vts = val + ov02a10->cur_mode->height - OV02A10_BASIC_LINE;
+> > +	int ret;
+> > +
+> > +	ret = i2c_smbus_write_byte_data(client, REG_PAGE_SWITCH, REG_ENABLE);
+> > +	if (ret < 0)
+> > +		return ret;
+> > +
+> > +	ret = i2c_smbus_write_byte_data(client, OV02A10_REG_VTS_H,
+> > +					vts >> OV02A10_VTS_SHIFT);
+> > +	if (ret < 0)
+> > +		return ret;
+> > +
+> > +	ret = i2c_smbus_write_byte_data(client, OV02A10_REG_VTS_L, vts);
+> > +	if (ret < 0)
+> > +		return ret;
+> > +
+> > +	return i2c_smbus_write_byte_data(client, REG_GLOBAL_EFFECTIVE,
+> > +					 REG_ENABLE);
+> > +}
+> > +
+> > +static int ov02a10_set_test_pattern(struct ov02a10 *ov02a10, int pattern)
+> > +{
+> > +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +	int ret;
+> > +
+> > +	if (pattern)
+> > +		pattern = OV02A10_TEST_PATTERN_ENABLE;
+> 
+> Is this necessary? Our control can be 0 for disabled and 1 for color bars.
+> The latter is the same as the above macro.
+> 
+
+Yes. It looks redundant here.
+Fixed in next release.
+
+> [snip]
+> > +static int ov02a10_initialize_controls(struct ov02a10 *ov02a10)
+> > +{
+> > +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +	const struct ov02a10_mode *mode;
+> > +	struct v4l2_ctrl_handler *handler;
+> > +	struct v4l2_ctrl *ctrl;
+> > +	u64 exposure_max;
+> > +	u32 pixel_rate, h_blank;
+> > +	int ret;
+> > +
+> > +	handler = &ov02a10->ctrl_handler;
+> > +	mode = ov02a10->cur_mode;
+> > +	ret = v4l2_ctrl_handler_init(handler, 7);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	handler->lock = &ov02a10->mutex;
+> > +
+> > +	ctrl = v4l2_ctrl_new_int_menu(handler, NULL, V4L2_CID_LINK_FREQ, 0, 0,
+> > +				      link_freq_menu_items);
+> > +	if (ctrl)
+> > +		ctrl->flags |= V4L2_CTRL_FLAG_READ_ONLY;
+> > +
+> > +	pixel_rate = to_pixel_rate(0);
+> > +	v4l2_ctrl_new_std(handler, NULL, V4L2_CID_PIXEL_RATE, 0, pixel_rate, 1,
+> > +			  pixel_rate);
+> > +
+> > +	h_blank = mode->hts_def - mode->width;
+> > +	ov02a10->hblank = v4l2_ctrl_new_std(handler, NULL, V4L2_CID_HBLANK,
+> > +					    h_blank, h_blank, 1, h_blank);
+> > +	if (ov02a10->hblank)
+> > +		ov02a10->hblank->flags |= V4L2_CTRL_FLAG_READ_ONLY;
+> > +
+> 
+> Do we need to hold a pointer to this control? We don't seem to ever access
+> it anywhere else in the driver.
+> 
+
+No.
+These lines would be removed in next release.
+
+> > +	ov02a10->vblank = v4l2_ctrl_new_std(handler, &ov02a10_ctrl_ops,
+> > +					    V4L2_CID_VBLANK, mode->vts_def -
+> > +					    mode->height,
+> > +					    OV02A10_VTS_MAX - mode->height, 1,
+> > +					    mode->vts_def - mode->height);
+> > +
+> 
+> Ditto.
+> 
+
+These lines would be removed in next release.
+
+> > +	exposure_max = mode->vts_def - 4;
+> > +	ov02a10->exposure = v4l2_ctrl_new_std(handler, &ov02a10_ctrl_ops,
+> > +					      V4L2_CID_EXPOSURE,
+> > +					      OV02A10_EXPOSURE_MIN,
+> > +					      exposure_max,
+> > +					      OV02A10_EXPOSURE_STEP,
+> > +					      mode->exp_def);
+> > +
+> > +	ov02a10->anal_gain = v4l2_ctrl_new_std(handler, &ov02a10_ctrl_ops,
+> > +					       V4L2_CID_ANALOGUE_GAIN,
+> > +					       OV02A10_GAIN_MIN,
+> > +					       OV02A10_GAIN_MAX,
+> > +					       OV02A10_GAIN_STEP,
+> > +					       OV02A10_GAIN_DEFAULT);
+> 
+> Ditto.
+> 
+
+Fields: exposure and anal_gain would be removed in next release.
+But v4l2_ctrl_new_std remains, as user may set exp/gain. 
+
+> > +
+> > +	ov02a10->test_pattern =
+> > +		v4l2_ctrl_new_std_menu_items(handler, &ov02a10_ctrl_ops,
+> > +					     V4L2_CID_TEST_PATTERN,
+> > +					     ARRAY_SIZE(ov02a10_test_pattern_menu) -
+> > +					     1, 0, 0,
+> > +					     ov02a10_test_pattern_menu);
+> 
+> Ditto.
+> 
+
+Fields: test_pattern would be removed in next release.
+But v4l2_ctrl_new_std_menu_items remains.
+
+> [snip]
+> > +	ov02a10->pd_gpio = devm_gpiod_get(dev, "powerdown", GPIOD_OUT_HIGH);
+> > +	if (IS_ERR(ov02a10->pd_gpio)) {
+> > +		ret = PTR_ERR(ov02a10->pd_gpio);
+> > +		dev_err(dev, "failed to get powerdown-gpios %d\n", ret);
+> > +		return ret;
+> > +	}
+> > +
+> > +	ov02a10->n_rst_gpio = devm_gpiod_get(dev, "reset", GPIOD_OUT_LOW);
+> 
+> I've asked a question about the right convention to define active low pins,
+> but I don't remember seeing an answer. We need to clarify this to avoid
+> confusion. Especially since the current binding documentation doesn't
+> mention anything about the sensor being active low. Let me also post a
+> comment to the binding patch.
+> 
+
+It depends upon GPIO polarity, however, which may not be emphasized in
+current DT version.
+
+> > +	if (IS_ERR(ov02a10->n_rst_gpio)) {
+> > +		ret = PTR_ERR(ov02a10->n_rst_gpio);
+> > +		dev_err(dev, "failed to get reset-gpios %d\n", ret);
+> > +		return ret;
+> > +	}
+> > +
+> > +	for (i = 0; i < OV02A10_NUM_SUPPLIES; i++)
+> > +		ov02a10->supplies[i].supply = ov02a10_supply_names[i];
+> > +
+> > +	ret = devm_regulator_bulk_get(dev, OV02A10_NUM_SUPPLIES,
+> > +				      ov02a10->supplies);
+> > +	if (ret) {
+> > +		dev_err(dev, "failed to get regulators\n");
+> > +		return ret;
+> > +	}
+> > +
+> > +	mutex_init(&ov02a10->mutex);
+> > +	ov02a10->cur_mode = &supported_modes[0];
+> > +	ret = ov02a10_initialize_controls(ov02a10);
+> > +	if (ret) {
+> > +		dev_err(dev, "failed to initialize controls\n");
+> > +		goto err_destroy_mutex;
+> > +	}
+> > +
+> > +	ov02a10->subdev.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
+> > +	ov02a10->subdev.entity.ops = &ov02a10_subdev_entity_ops;
+> > +	ov02a10->subdev.entity.function = MEDIA_ENT_F_CAM_SENSOR;
+> > +	ov02a10->pad.flags = MEDIA_PAD_FL_SOURCE;
+> > +	ret = media_entity_pads_init(&ov02a10->subdev.entity, 1, &ov02a10->pad);
+> > +	if (ret < 0) {
+> > +		dev_err(dev, "failed to init entity pads: %d", ret);
+> > +		goto err_free_handler;
+> > +	}
+> > +
+> > +	pm_runtime_enable(dev);
+> > +	if (!pm_runtime_enabled(dev)) {
+> > +		ret = ov02a10_power_on(dev);
+> > +		if (ret < 0) {
+> > +			dev_err(dev, "failed to power on: %d\n", ret);
+> > +			goto err_clean_entity;
+> > +		}
+> > +	}
+> > +
+> > +	ret = v4l2_async_register_subdev(&ov02a10->subdev);
+> > +	if (ret) {
+> > +		dev_err(dev, "failed to register V4L2 subdev: %d", ret);
+> > +		goto err_clean_entity;
+> > +	}
+> > +
+> > +	return 0;
+> > +
+> > +err_clean_entity:
+> 
+> Need to power off if !pm_runtime_enabled().
+> 
+
+Thanks for the reminder.
+Fixed in next release by adding power off into err_clean_entity.
+
+> Best regards,
+> Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
