@@ -2,86 +2,76 @@ Return-Path: <SRS0=6j47=7G=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ACEF1C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 May 2020 03:41:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A881C433E0
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 May 2020 10:25:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7B27720878
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 May 2020 03:41:37 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 441552077D
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 May 2020 10:25:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BNunnPZE";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="O6IKWbPR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B27720878
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qt0ytbJJ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="S1HfFC78"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 441552077D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LcDxoo8qE+QpVdI+1cmt8ahR254DkCXZb0z16fRz7bM=; b=BNunnPZEVzYaoe
-	M97VkxX3RA/F2BS6I9aBgndMK7kukqYRFmiHHJOEGr9fR9uq6K/THRg8Av3OuGIHc9/MnRt6qni34
-	uRdtAehQ71oGehegTP0eEU3e3bFOufZbaY5b2qq92a7u5yMNsxToFBaSPyyiRfRP9H/HbECqf5jAC
-	7adIyZi+BOEc0750NQacXQXqo4/0TD/eLk4tyoGTN+0qh+cbV0CFJD+os0YgAUHCnrzWYydLB2bLd
-	eAvE4mx2XBsAw2OeS0pqpf0RdJtwqIsrYfHfCYbgykJ4SaAFYabervOh076Wn9VR1XWz5uys3SSct
-	QKtYyt92OBNTnvbelUpQ==;
+	List-Owner; bh=K7OTitYOuWLTdfhHgJwR7tzJqI8vFuk6Q8oj96v9nK8=; b=qt0ytbJJdLnxWI
+	AsU0ZkjY7o7oZylxuJ1yYkmVnqsLtXkqT626VZ/+pJuDG+o0369Ab92ZuKHxDANGxmLi6eEiXPD2f
+	io8ZumJlAaSV0wnL6zDSXFR3TGQoG+hj9U0lSEfcZl/+mIvFHYxXe+qEw1r+hilxaCyLfUtwNYeoa
+	qW1NrNiUCFP42p48Ky3alRyL5kjYFgTeAwLXf3YJoe8Ipd/oNqRbua3YDyoj4lWaj+jtD8kCX3jMa
+	BKPHAzlIuGy+Yi6LzAWRfIvJnXLnUSh+HA5q8w9fgB4Wuv8Ewjspgfo2fnYiWU7j/fxCjvjeEUWam
+	WtmkRAA3PB8Q5rU9UDOg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jchVw-0002vJ-Lc; Sun, 24 May 2020 03:41:28 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1jcnoW-0001O7-JR; Sun, 24 May 2020 10:25:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jchVm-0002lx-Dk; Sun, 24 May 2020 03:41:19 +0000
-Received: by mail-pg1-x543.google.com with SMTP id p30so6963884pgl.11;
- Sat, 23 May 2020 20:41:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=8eMD4gjKr8w7ES8m7Hmp8yAct3lfQLGVQ1XuSFyG9tI=;
- b=O6IKWbPRvbAPxRcZ+pceLqhRgfqs87MXSJ6uuLtp1cm3lCA5/rz+OrsPJrmeHhA9af
- l6XPcNfWnet7iJXQVymQoZ/m7/rRlU+Q9ZTMKR/Mr52qnCP890Cor16tlVlwM2Mhl4Cy
- ClzvVVNWDGgir2UeztTbfiVsQT/luk9dLaLupZn9cnwOuAEA8pqeRHIAjPznpSajY6nu
- dfdCK4zRPXsppVab2u+vSlKEk4XX0/4z3t/hLgb/PBPGGJ1c06b1gz99+rMRh8gxKJlY
- ch9U9xG+++fzwUa66Fc+fglm7JJQtILd4pT+m2yjqcpBlibzuahUd+xQXi/7gRRgeGWv
- 4JIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=8eMD4gjKr8w7ES8m7Hmp8yAct3lfQLGVQ1XuSFyG9tI=;
- b=X9hqirhfhTBQAOtW/I5uMt4lwKElT1PCAeB/ZNHEKhAWBiLNuy7KzPMgLR8S9JoDO9
- w4zUScijppUIvKwIADN92z59s6CLcliL2eC+EjE7lclkeno4MWgMFOqDGtC0+qiTjELC
- K2tuDEULQrYhdP60sy5DAysZL5KgVFSNUBRO2ymsJtQxyvjkVfGiwKzpUi3dcpCLsqz3
- Zd66kmqRJeD1VcUDj9BWFHSaJTQt3tDQQvViZfQxmKhvzvz5vDUotVV/JwK0PWxsMomy
- 49I7X6emUsuP/1RCUZDnJ6gGzer8gokBaE8W9skM3aFbFqqZzqQHRT3gt0KpOsgJZOlG
- V0wg==
-X-Gm-Message-State: AOAM532sHTyGeAZSKiq5ULj7QdZjnB6bu7bAVlCrea/8JYtsQM/VyLcM
- OpbJRKqII3aoV5j58pJcZtI=
-X-Google-Smtp-Source: ABdhPJyCQWddL3N25pvS87265x5l2BRfUe1I2MLdXuJSd3WNUb8aDwvdmru8Rh5S08G+rwg0DYNdEw==
-X-Received: by 2002:a62:4e91:: with SMTP id
- c139mr11294084pfb.285.1590291676735; 
- Sat, 23 May 2020 20:41:16 -0700 (PDT)
-Received: from P65xSA.lan ([128.199.164.101])
- by smtp.gmail.com with ESMTPSA id 25sm9753421pjk.50.2020.05.23.20.41.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 23 May 2020 20:41:15 -0700 (PDT)
-From: DENG Qingfang <dqfext@gmail.com>
-To: linux-wireless@vger.kernel.org
-Subject: [PATCH v2] mt76: mt7615: add support for MT7611N
-Date: Sun, 24 May 2020 11:41:10 +0800
-Message-Id: <20200524034110.22576-1-dqfext@gmail.com>
-X-Mailer: git-send-email 2.26.2
+ id 1jcnoT-0000gb-67
+ for linux-mediatek@lists.infradead.org; Sun, 24 May 2020 10:25:03 +0000
+X-UUID: 61c2e8797e164de3bb7401ec4f659275-20200524
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=hOzMYCZ3qsvYgw8bs4JJEy5VmWKuRRy/5B9rA8cNlEE=; 
+ b=S1HfFC78PLVuX2afd0UtVEi3+KZBJwc7t3mHpuswpYkzDBqlHFKK8LFReCGTV6VI6MtZQgeQiLOIoud5lVuPzypa4uBpz1HBqB99DKV7TlmRtwME5eiVnJMhhJH14A6uMtkmRiQH+JpuCKG/FICqg5Vxaickk5lyTEtGyfOZUNU=;
+X-UUID: 61c2e8797e164de3bb7401ec4f659275-20200524
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 700518193; Sun, 24 May 2020 02:24:47 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 24 May 2020 03:14:51 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 24 May 2020 18:14:41 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sun, 24 May 2020 18:14:40 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+Subject: [PATCH] mt76: fix BUG: spinlock bad magic in mt76_dma_init
+Date: Sun, 24 May 2020 18:14:41 +0800
+Message-ID: <54dc821bf69fe8e7ae017f221069a4f41ae37893.1590260648.git.sean.wang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 4D90F55D31A314470E2E0E7DED0FDB3AADD4CE3F33CA5DB2C81192D7CF81C5A82000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200523_204118_481022_78FD9652 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20200524_032501_238340_BA1CDBC9 
+X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,94 +83,77 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: ryder.lee@mediatek.com, matthias.bgg@gmail.com,
- linux-mediatek@lists.infradead.org, kvalo@codeaurora.org, royluo@google.com,
- lorenzo.bianconi83@gmail.com, linux-arm-kernel@lists.infradead.org,
- nbd@nbd.name
+Cc: linux-mediatek@lists.infradead.org, sean.wang@mediatek.com,
+ linux-wireless@vger.kernel.org, ryder.lee@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT7611N is basically the same as MT7615N, except it only supports 5GHz
-It is used by some TP-Link and Mercury wireless routers
+From: Sean Wang <sean.wang@mediatek.com>
 
-Signed-off-by: DENG Qingfang <dqfext@gmail.com>
+dma init should be done when dma have been allocated
+
+[    2.361127] BUG: spinlock bad magic on CPU#0, modprobe/456
+[    2.361583]  lock: 0xffffa1287525b3b8, .magic: 00000000, .owner: <none>/-1, .owner_cpu: 0
+[    2.362250] CPU: 0 PID: 456 Comm: modprobe Not tainted 4.14.177 #5
+[    2.362751] Hardware name: HP Meep/Meep, BIOS Google_Meep.11297.75.0 06/17/2019
+[    2.363343] Call Trace:
+[    2.363552]  dump_stack+0x97/0xdb
+[    2.363826]  ? spin_bug+0xa6/0xb3
+[    2.364096]  do_raw_spin_lock+0x6a/0x9a
+[    2.364417]  mt76_dma_rx_fill+0x44/0x1de [mt76]
+[    2.364787]  ? mt76_dma_kick_queue+0x18/0x18 [mt76]
+[    2.365184]  mt76_dma_init+0x53/0x85 [mt76]
+[    2.365532]  mt7615_dma_init+0x3d7/0x546 [mt7615e]
+[    2.365928]  mt7615_register_device+0xe6/0x1a0 [mt7615e]
+[    2.366364]  mt7615_mmio_probe+0x14b/0x171 [mt7615e]
+[    2.366771]  mt7615_pci_probe+0x118/0x13b [mt7615e]
+[    2.367169]  pci_device_probe+0xaf/0x13d
+[    2.367491]  driver_probe_device+0x284/0x2ca
+[    2.367840]  __driver_attach+0x7a/0x9e
+[    2.368146]  ? driver_attach+0x1f/0x1f
+[    2.368451]  bus_for_each_dev+0xa0/0xdb
+[    2.368765]  bus_add_driver+0x132/0x204
+[    2.369078]  driver_register+0x8e/0xcd
+[    2.369384]  do_one_initcall+0x160/0x257
+[    2.369706]  ? 0xffffffffc0240000
+[    2.369980]  do_init_module+0x60/0x1bb
+[    2.370286]  load_module+0x18c2/0x1a2b
+[    2.370596]  ? kernel_read_file+0x141/0x1b9
+[    2.370937]  ? kernel_read_file_from_fd+0x46/0x71
+[    2.371320]  SyS_finit_module+0xcc/0xf0
+[    2.371636]  do_syscall_64+0x6b/0xf7
+[    2.371930]  entry_SYSCALL_64_after_hwframe+0x3d/0xa2
+[    2.372344] RIP: 0033:0x7da218ae4199
+[    2.372637] RSP: 002b:00007fffd0608398 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    2.373252] RAX: ffffffffffffffda RBX: 00005a705449df90 RCX: 00007da218ae4199
+[    2.373833] RDX: 0000000000000000 RSI: 00005a7052e73bd8 RDI: 0000000000000006
+[    2.374411] RBP: 00007fffd06083e0 R08: 0000000000000000 R09: 00005a705449d540
+[    2.374989] R10: 0000000000000006 R11: 0000000000000246 R12: 0000000000000000
+[    2.375569] R13: 00005a705449def0 R14: 00005a7052e73bd8 R15: 0000000000000000
+
+Fixes: d3377b78cec6 ("mt76: add HE phy modes and hardware queue")
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
-v1 -> v2:
-make is_mt7615(&dev->mt76) return true for mt7611
+ drivers/net/wireless/mediatek/mt76/dma.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c | 7 +++++++
- drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h | 7 ++++++-
- drivers/net/wireless/mediatek/mt76/mt7615/pci.c    | 1 +
- 3 files changed, 14 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
-index 6a5ae047c63b..edac37e7847b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
-@@ -111,6 +111,12 @@ mt7615_eeprom_parse_hw_band_cap(struct mt7615_dev *dev)
- 		return;
- 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
+index 75e659774e07..eca39799f050 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/dma.c
+@@ -576,7 +576,7 @@ mt76_dma_init(struct mt76_dev *dev)
  
-+	if (is_mt7611(&dev->mt76)) {
-+		/* 5GHz only */
-+		dev->mt76.cap.has_5ghz = true;
-+		return;
-+	}
-+
- 	val = FIELD_GET(MT_EE_NIC_WIFI_CONF_BAND_SEL,
- 			eeprom[MT_EE_WIFI_CONF]);
- 	switch (val) {
-@@ -310,6 +316,7 @@ static void mt7615_cal_free_data(struct mt7615_dev *dev)
- 		mt7622_apply_cal_free_data(dev);
- 		break;
- 	case 0x7615:
-+	case 0x7611:
- 		mt7615_apply_cal_free_data(dev);
- 		break;
- 	}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-index ebdfca64b079..4ce8b379a147 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-@@ -411,7 +411,7 @@ static inline bool is_mt7622(struct mt76_dev *dev)
+ 	init_dummy_netdev(&dev->napi_dev);
  
- static inline bool is_mt7615(struct mt76_dev *dev)
- {
--	return mt76_chip(dev) == 0x7615;
-+	return mt76_chip(dev) == 0x7615 || mt76_chip(dev) == 0x7611;
- }
- 
- static inline bool is_mt7663(struct mt76_dev *dev)
-@@ -419,6 +419,11 @@ static inline bool is_mt7663(struct mt76_dev *dev)
- 	return mt76_chip(dev) == 0x7663;
- }
- 
-+static inline bool is_mt7611(struct mt76_dev *dev)
-+{
-+	return mt76_chip(dev) == 0x7611;
-+}
-+
- static inline void mt7615_irq_enable(struct mt7615_dev *dev, u32 mask)
- {
- 	mt76_set_irq_mask(&dev->mt76, 0, 0, mask);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
-index 88ff14564521..b09d08d0dac9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
-@@ -14,6 +14,7 @@
- static const struct pci_device_id mt7615_pci_device_table[] = {
- 	{ PCI_DEVICE(0x14c3, 0x7615) },
- 	{ PCI_DEVICE(0x14c3, 0x7663) },
-+	{ PCI_DEVICE(0x14c3, 0x7611) },
- 	{ },
- };
- 
+-	for (i = 0; i < ARRAY_SIZE(dev->q_rx); i++) {
++	for (i = 0; i < ARRAY_SIZE(dev->q_rx) && dev->q_rx[i].desc; i++) {
+ 		netif_napi_add(&dev->napi_dev, &dev->napi[i], mt76_dma_rx_poll,
+ 			       64);
+ 		mt76_dma_rx_fill(dev, &dev->q_rx[i]);
 -- 
-2.26.2
-
-
+2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
