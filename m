@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AB04AC433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 May 2020 08:40:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 11DF5C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 May 2020 09:09:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 10577207FB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 May 2020 08:40:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D82392068D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 May 2020 09:09:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gTJ37pPO";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="q2ulrqsD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 10577207FB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="goAEmfar";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="VZr/HpcN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D82392068D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,59 +27,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hvJrTLp/urIaYgn/nrqF0K0g2sX2fXhBiVjtepTX/Lc=; b=gTJ37pPOX5OyVA
-	D8BXPaU1iB+5pULmSfTNwo+ubNNMewPR8s51WNsQmHHwohSQdoDYiPqMSoqIsd6GVmgbblaShv/kZ
-	lkHZkmr7FYIYZvd6l2WPA+UsOXJqjoiryVK7VP+753kRjoBzhrIndkAFCT6wG+WIOmGmITRzzn9IG
-	BP+MfeUGOqBAvKJfUzaXq2ghxPPg9xN9PK39k6/5j/0Y2SAE8XSfoQmNsWUDfJJwzxkdj9EKVeee7
-	EperIR8dbGgri05Io22xr/XlGb+/E/TRKOl4R31bgb8HJ/yZ3JF/T5QWWMBwWtJ2H7lsRtgeQyZg3
-	ljiePLo2yne4rI9UdhHw==;
+	List-Owner; bh=J9qEDYjhpNm+Q6gOEV61oWtq+zf1y5l3SAjsQZPKZtM=; b=goAEmfarHosnor
+	NDtYDzVRyZCGUzxn7MJQ/WPjCzviRAtqF/ktB410cYS2TsphyCiAylG+WnRAwGl2vl3G9lylC1/9l
+	/1G/c15RwVilcf3RHQGYdNkB8TvyUAOJD3+QeC80mfPouBUCfLVEBQNNCklH+LHYW0fgUfNji2+jo
+	jBCUgZw5kw/Ff50JY5gOvZBDQL/7kx9OUEb+sVIXt3YYENBaM8EMN1CGWAgqgN9siBLVlo/rhGI56
+	qXDyiinmgioRSGQLjWZGacIlGcOOLdm/LOJ4WE9hThj249TyZSbE+ffCGkGX+roVlWVfQVe4Pc3/b
+	I9FpiQXP48eKs+5DRfyg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jd8f1-00009Y-3m; Mon, 25 May 2020 08:40:39 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1jd96I-00007k-Jw; Mon, 25 May 2020 09:08:50 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jd8eL-0005no-HH; Mon, 25 May 2020 08:40:10 +0000
-Received: by mail-wm1-x342.google.com with SMTP id f5so7688771wmh.2;
- Mon, 25 May 2020 01:39:57 -0700 (PDT)
+ id 1jd962-0008Md-8D; Mon, 25 May 2020 09:08:35 +0000
+Received: by mail-wr1-x443.google.com with SMTP id e1so16398676wrt.5;
+ Mon, 25 May 2020 02:08:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=FgCVbDd/rHUj4UYDvQc/HOrenT5Dxta9RUiD0g0ktS0=;
- b=q2ulrqsDhdwpio/ci2FTD77FCrElQXRl/p50G+vjeAt4xxu4YTFhB0zxbZHSoh1ymG
- YzB0GgEIQgiZYw2MhOk1EzAEBJe43sMr6+HuEGqdXhdrFyCpcbkCVMVMIYRajOvANT1T
- GIgGVVTWbsjYGAutf1Y+5HjFFi3A+PZJ24uAb59L483PrmQuExVXkzWY6tMT4G2yhcQ3
- JjBgEvG1u/lYzzWG4ZcLz34lXGyMFyThvdxblYQkqKl5npPLSGKBReQ9u+JKd3+UGAZm
- SnJsqY2sCews9tNbVLvFDckHJdLoSDgDZ19WMrR9jK2qWiqk0uyyHRD5p2CYlsCAjBqG
- PDVQ==
+ bh=yGhACQsCOG27ERpi2pAIQYtzAf0zn8OqHZ2XyIZcb+0=;
+ b=VZr/HpcN3bbW62uh1YyDlEEuUTqCzNvAEmgIRM8rG7Ti48dL28gQozkicb3LdWZYcx
+ dEUKiUz0Xc3GCHY4kVGBHjtDM8lR1tjaS2H0OVDDa5CDk8X83ePlqxoxAsJFBRn5T9AL
+ 1ReX2pIciw0383CPh3qqULotIPfsGw2spdZlS+u+gn1PxvcqZ4Cg9iRYUWo8fyQE+VMJ
+ zxzukIGINtbwIy62PCX22qFrV6+JRLJ/TlCG3c9LiuhHEjD22xynf8IwzMEDtPDzKATs
+ bk19rBC0Rg/ErCyaH3SVQVjf2BczdP5NMpPnCPMeRkZy7L/nVmIpU8remk/ITZFhN3kH
+ vKvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=FgCVbDd/rHUj4UYDvQc/HOrenT5Dxta9RUiD0g0ktS0=;
- b=Rz/FWdiodzOTAvVB61Ra0e0uy3U/8Zrb1qjaq/1EBvc3CaBRBenkwGoqYbpS8p6lrO
- MkzQ3y3suEvilbLCpJTEfTGQUusADIsIVHkBbfXYoDxd9KC+xUMvt9kBIGimdWb1v4tk
- Rh3PxjI5qU8/qo53D/61yR5VRANJ+hprPXXw41XS+6Ty9IRa2U5UP5lFx7fvHBn5k+mV
- 1/qY+q/Fc7GNAuk+ELd1NDIAjGb4n+25qqUE32Vnsg9QV+gL0wgA4KBMNtPLr6kmuOxq
- mC11OMWYgrdPyrJ6QN+Tay2hoBaZ1ZISC7Yar8Wh09RlpvcgncRZy8yn20MDyDM57qTq
- 9QUw==
-X-Gm-Message-State: AOAM531kc1YpCI9ZbY0LPk6a9v08ON+K7TZo3VdVBbO+XHtq/pS59ZMm
- AfaKTbuzD9dnTAVgE788qlU=
-X-Google-Smtp-Source: ABdhPJziZNMsGJHaqi+mGUla1Vkrz+NpPEesiM4d39ge5LQpr0zcMFCCsLjsSQB3yHOh+XZx7sO1Wg==
-X-Received: by 2002:a1c:80d4:: with SMTP id b203mr4017283wmd.138.1590395995882; 
- Mon, 25 May 2020 01:39:55 -0700 (PDT)
+ bh=yGhACQsCOG27ERpi2pAIQYtzAf0zn8OqHZ2XyIZcb+0=;
+ b=t2NeEDesgLiBhV0tj+co71xaS7jAoCMlVqdCIJrFpCA6Y4WRKKH+Zx2qc/QqorB7Au
+ xZbE5oM7cjVPDMNgpkqQGTsRqCWTnbWhDh/fs9nlIBteS3K9qjK0fI1NOCS5CvBv9rs8
+ TvdytwqzRa/k8QHKT2fZfM5a7qaVJXBvWgHsxZ9SoifQvNcNzN985aZcTap8i4WkvTZe
+ fRLCao2kLIyOcpWFXVBkwHhTDp0aHOo7XPR0+1IcIOfCMyph3iKLwKSGGygQ1IuKCZSz
+ EO78B0kATKWS7W861gp3n6mofU+y+2kTJ03YvTR1HtAPCteIDCB0tGRszztFeu71T84J
+ CIFg==
+X-Gm-Message-State: AOAM532i6hLeypW59f9uvJFtGrVAyVOYD0TDji/TGUw9h/szqGNuilm5
+ vKflBBiLBGQnnn8qC8TemUdRvZHL
+X-Google-Smtp-Source: ABdhPJz2mcgcd3CCMeD/KyUFpjBDPNC3zdvEg0XNy9CgjxubabWUBe3onSXDWHOwddm+Q42SPAK/Kw==
+X-Received: by 2002:adf:ca0e:: with SMTP id o14mr15413789wrh.254.1590397712622; 
+ Mon, 25 May 2020 02:08:32 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id t129sm19803531wmg.27.2020.05.25.01.39.54
+ by smtp.gmail.com with ESMTPSA id z3sm18106187wrm.81.2020.05.25.02.08.31
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 25 May 2020 01:39:55 -0700 (PDT)
-Subject: Re: [PATCH v5 09/13] soc: mediatek: cmdq: add write_s value function
-To: Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>
-References: <1583664775-19382-1-git-send-email-dennis-yc.hsieh@mediatek.com>
- <1583664775-19382-10-git-send-email-dennis-yc.hsieh@mediatek.com>
- <f9fd9ea8-f706-ed4a-4c83-c53ad092035c@gmail.com>
- <1590341462.31286.19.camel@mtkswgap22>
- <eb604637-28f0-fa8f-ce4b-3e87f6c944ad@gmail.com>
- <1590373621.31522.7.camel@mtkswgap22>
+ Mon, 25 May 2020 02:08:31 -0700 (PDT)
+Subject: Re: [PATCH v1] clk: mediatek: assign the initial value to
+ clk_init_data of mtk_mux
+To: Weiyi Lu <weiyi.lu@mediatek.com>, Nicolas Boichat
+ <drinkcat@chromium.org>, Stephen Boyd <sboyd@kernel.org>
+References: <1590388889-28382-1-git-send-email-weiyi.lu@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -155,16 +152,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <68535bf6-9824-5077-4811-374c893cdc03@gmail.com>
-Date: Mon, 25 May 2020 10:39:54 +0200
+Message-ID: <1abb3571-75ad-10d8-ff62-17be270b5b71@gmail.com>
+Date: Mon, 25 May 2020 11:08:30 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <1590373621.31522.7.camel@mtkswgap22>
+In-Reply-To: <1590388889-28382-1-git-send-email-weiyi.lu@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200525_013957_608815_8ADC75F4 
-X-CRM114-Status: GOOD (  22.58  )
+X-CRM114-CacheID: sfid-20200525_020834_318284_02C5F01E 
+X-CRM114-Status: GOOD (  16.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -176,14 +173,11 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Philipp Zabel <p.zabel@pengutronix.de>, wsd_upstream@mediatek.com,
- David Airlie <airlied@linux.ie>, Jassi Brar <jassisinghbrar@gmail.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- HS Liao <hs.liao@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Houlong Wei <houlong.wei@mediatek.com>,
- Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>,
- Bibby Hsieh <bibby.hsieh@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: James Liao <jamesjj.liao@mediatek.com>, srv_heupstream@mediatek.com,
+ linux-kernel@vger.kernel.org, stable@vger.kernel.org,
+ Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Owen Chen <owen.chen@mediatek.com>, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -191,135 +185,42 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 25/05/2020 04:27, Dennis-YC Hsieh wrote:
+On 25/05/2020 08:41, Weiyi Lu wrote:
+> It'd be dangerous when struct clk_core have new memebers.
+> Add the missing initial value to clk_init_data.
 > 
-> On Sun, 2020-05-24 at 20:13 +0200, Matthias Brugger wrote:
->>
->> On 24/05/2020 19:31, Dennis-YC Hsieh wrote:
->>> Hi Matthias,
->>>
->>> Thanks for your comment.
->>>
->>> On Sat, 2020-05-16 at 20:20 +0200, Matthias Brugger wrote:
->>>>
->>>> On 08/03/2020 11:52, Dennis YC Hsieh wrote:
->>>>> add write_s function in cmdq helper functions which
->>>>> writes a constant value to address with large dma
->>>>> access support.
->>>>>
->>>>> Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
->>>>> Reviewed-by: CK Hu <ck.hu@mediatek.com>
->>>>> ---
->>>>>  drivers/soc/mediatek/mtk-cmdq-helper.c | 26 ++++++++++++++++++++++++++
->>>>>  include/linux/soc/mediatek/mtk-cmdq.h  | 14 ++++++++++++++
->>>>>  2 files changed, 40 insertions(+)
->>>>>
->>>>> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
->>>>> index 03c129230cd7..a9ebbabb7439 100644
->>>>> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
->>>>> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
->>>>> @@ -269,6 +269,32 @@ int cmdq_pkt_write_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
->>>>>  }
->>>>>  EXPORT_SYMBOL(cmdq_pkt_write_s);
->>>>>  
->>>>> +int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
->>>>> +			   u16 addr_low, u32 value, u32 mask)
->>>>> +{
->>>>> +	struct cmdq_instruction inst = { {0} };
->>>>> +	int err;
->>>>> +
->>>>> +	if (mask != U32_MAX) {
->>>>> +		inst.op = CMDQ_CODE_MASK;
->>>>> +		inst.mask = ~mask;
->>>>> +		err = cmdq_pkt_append_command(pkt, inst);
->>>>> +		if (err < 0)
->>>>> +			return err;
->>>>> +
->>>>> +		inst.op = CMDQ_CODE_WRITE_S_MASK;
->>>>> +	} else {
->>>>> +		inst.op = CMDQ_CODE_WRITE_S;
->>>>> +	}
->>>>> +
->>>>> +	inst.sop = high_addr_reg_idx;
->>>>
->>>> Writing u16 value in a 5 bit wide variable?
->>>
->>> We need only 5 bits in this case. I'll change high_addr_reg_idx
->>> parameter to u8.
->>>
->>
->> Ok, please make sure to mask the value, so that it's explicit in the code that
->> we only use the lowest 5 bits of high_addr_reg_idx.
-> 
-> Is it necessary to mask the value?
-> Since sop already defined as "u8 sop:5;", I thought it is explicit that
-> only use 5 bits and compiler should do the rest jobs.
 
-Yes but it makes the code more explicit if we have a
-inst.sop = high_addr_reg_idx & 0x1f;
+Sorry I don't really understand this commit message, can please explain.
+In any case if this is a problem, then we probably we should fix it for all drivers.
+Apart from drivers/clk/mediatek/clk-cpumux.c
 
-What do you think?
+It's a widely used pattern:
+$ git grep "struct clk_init_data init;"| wc -l
+235
 
 Regards,
 Matthias
 
+> Fixes: a3ae549917f1 ("clk: mediatek: Add new clkmux register API")
+> Cc: <stable@vger.kernel.org>
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> ---
+>  drivers/clk/mediatek/clk-mux.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> 
-> Regards,
-> Dennis
-> 
->>
->> Regards,
->> Matthias
->>
->>>>
->>>>> +	inst.offset = addr_low;
->>>>> +	inst.value = value;
->>>>> +
->>>>> +	return cmdq_pkt_append_command(pkt, inst);
->>>>> +}
->>>>> +EXPORT_SYMBOL(cmdq_pkt_write_s_value);
->>>>> +
->>>>>  int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event)
->>>>>  {
->>>>>  	struct cmdq_instruction inst = { {0} };
->>>>> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
->>>>> index 01b4184af310..fec292aac83c 100644
->>>>> --- a/include/linux/soc/mediatek/mtk-cmdq.h
->>>>> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
->>>>> @@ -135,6 +135,20 @@ int cmdq_pkt_read_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx, u16 addr_low,
->>>>>  int cmdq_pkt_write_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
->>>>>  		     u16 addr_low, u16 src_reg_idx, u32 mask);
->>>>>  
->>>>> +/**
->>>>> + * cmdq_pkt_write_s_value() - append write_s command with mask to the CMDQ
->>>>> + *			      packet which write value to a physical address
->>>>> + * @pkt:	the CMDQ packet
->>>>> + * @high_addr_reg_idx:	internal regisger ID which contains high address of pa
->>>>
->>>> register
->>>
->>> will fix
->>>
->>>
->>> Regards,
->>> Dennis
->>>
->>>>
->>>>> + * @addr_low:	low address of pa
->>>>> + * @value:	the specified target value
->>>>> + * @mask:	the specified target mask
->>>>> + *
->>>>> + * Return: 0 for success; else the error code is returned
->>>>> + */
->>>>> +int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
->>>>> +			   u16 addr_low, u32 value, u32 mask);
->>>>> +
->>>>>  /**
->>>>>   * cmdq_pkt_wfe() - append wait for event command to the CMDQ packet
->>>>>   * @pkt:	the CMDQ packet
->>>>>
->>>
+> diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
+> index 76f9cd0..14e127e 100644
+> --- a/drivers/clk/mediatek/clk-mux.c
+> +++ b/drivers/clk/mediatek/clk-mux.c
+> @@ -160,7 +160,7 @@ struct clk *mtk_clk_register_mux(const struct mtk_mux *mux,
+>  				 spinlock_t *lock)
+>  {
+>  	struct mtk_clk_mux *clk_mux;
+> -	struct clk_init_data init;
+> +	struct clk_init_data init = {};
+>  	struct clk *clk;
+>  
+>  	clk_mux = kzalloc(sizeof(*clk_mux), GFP_KERNEL);
 > 
 
 _______________________________________________
