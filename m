@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F721C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 May 2020 06:13:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9EE3EC433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 May 2020 06:25:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 017772071A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 May 2020 06:13:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 756A5207DA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 May 2020 06:25:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gOkppqND";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="nZpWku+X"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 017772071A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="a+/DjBX5";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="vFQKB6uI"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 756A5207DA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hzqIUEIJSACLdNDl8UP/q0CjyqwnEnjxZFZIB67jQn8=; b=gOkppqNDEKX/MN
-	2VY/Hle7jdrQZqExLiO/c9ne34r5+Mm1idO2OXwo8Nl3+/NDXZEOrA84yLoAgMLBwCZb3b5ni88w7
-	36OfV9r71flN4lHWkLX90ECa6rVUUvQFsyIAzf7byKEBinh5m48tcaXv9WouuYfLqstekKxquH3PE
-	p0fHvOiNkkM+SsyZD3nlz/1ziAvG/vZuY3scFiUijCCrZ5dEIznYUoyRnnFyM1i/3T00x0qd3HQCY
-	1eHPHZig0wU8XBH1CiUT3X5nFF1Pstlr+Zx5osWEP4fUArRrtJDqaKQnVjLrmoRt1Ym6sGCzBHphE
-	NpTHZpNiaCvVCadx2SfA==;
+	List-Owner; bh=HipbThMlDDy8aPAw4xXPh2m6+DcAX3CBupoKRUw/6DY=; b=a+/DjBX5d5P5Z4
+	zMLKew0f3qKwp+XDW7YVDjec3Iop72CaxAa72QOrZArQ8P+hY6MqMO3GykigIJgxirhyrznqepZsr
+	NQ6QDzCqnCE1CApn+zdBUz3XYZZDXfSEXcK172QgKNXTWucbv8GidPWmusopGxe3jR77I+JUCBmps
+	t5K152etMADpp6XVq/i084Rii6zp+8Bt5NX/d1fWcYl1aE6f2DSQ8hdcAgtLJhj6y9+FrSmp2txnJ
+	sR4BL+mvpPKU15OEs0VgdMN7jEi0TY3lcUnXI/PxeSJyecyQY92qvhrIM+zmS0TPzjtq7SgUb0wMt
+	7FHIUw3WkfnLQoxPQA5Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jd6Mb-0001Zk-NG; Mon, 25 May 2020 06:13:29 +0000
+	id 1jd6YE-0002WV-0Q; Mon, 25 May 2020 06:25:30 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jd6MY-0001Ye-P9; Mon, 25 May 2020 06:13:28 +0000
-X-UUID: 24f877816aa444ceb2dcb59c3f258e11-20200524
+ id 1jd6YB-0002Vt-E5; Mon, 25 May 2020 06:25:28 +0000
+X-UUID: 14c4849fba09432d947b986e256a57d2-20200524
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=4/4tyFF13ExXdeCjudAPME2PjshhSd+G5yUb+3jQX6c=; 
- b=nZpWku+XTtMahBn/LjboqmblxblN2CRw87eFqZhwAYFVTTjkpCOBlQfpygSMc8ZtYkpj8+EnvIfCZEXZG6K3Fn3JONHhns8bX4IanYFlVyjZDPJ3czfKKOW0BhK5kdR38uRrXIfCDbUAytZjuyTxhuBFM0iWtIQ0UtgKyBrn8mE=;
-X-UUID: 24f877816aa444ceb2dcb59c3f258e11-20200524
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ bh=3hx+xuZwk+qJ8HxGZOVEgrk/RUaXq486bK4HGdRWFOY=; 
+ b=vFQKB6uIpltNUP1R8bR+gKN4Z3eBtERsgIOhoVCsnC4fmBZoGA5mq7uvzd9fdfELiFFYuB+xAtBMFuBbBC0gnwOyMEFNxzizMuDAIEwUUdAnhYje6SVJEb4qnlk/BWAb/dPt9Kw8GA1lInFq7pFVCcz/pslO/hYAkwytA4RwycE=;
+X-UUID: 14c4849fba09432d947b986e256a57d2-20200524
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1275175774; Sun, 24 May 2020 22:13:13 -0800
+ with ESMTP id 1038143137; Sun, 24 May 2020 22:25:21 -0800
 Received: from MTKMBS32N2.mediatek.inc (172.27.4.72) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 24 May 2020 23:13:12 -0700
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 24 May 2020 23:16:20 -0700
 Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32N2.mediatek.inc
  (172.27.4.72) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 25 May 2020 14:13:08 +0800
+ Mon, 25 May 2020 14:16:17 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 25 May 2020 14:13:07 +0800
-Message-ID: <1590387086.13912.4.camel@mhfsdcap03>
-Subject: Re: [PATCH v3 2/7] iommu/mediatek: Rename the register
- STANDARD_AXI_MODE(0x48) to MISC_CTRL
+ Transport; Mon, 25 May 2020 14:16:16 +0800
+Message-ID: <1590387275.13912.7.camel@mhfsdcap03>
+Subject: Re: [PATCH v3 3/7] iommu/mediatek: Disable STANDARD_AXI_MODE in
+ MISC_CTRL
 From: Yong Wu <yong.wu@mediatek.com>
 To: Chao Hao <chao.hao@mediatek.com>
-Date: Mon, 25 May 2020 14:11:26 +0800
-In-Reply-To: <20200509083654.5178-3-chao.hao@mediatek.com>
+Date: Mon, 25 May 2020 14:14:35 +0800
+In-Reply-To: <20200509083654.5178-4-chao.hao@mediatek.com>
 References: <20200509083654.5178-1-chao.hao@mediatek.com>
- <20200509083654.5178-3-chao.hao@mediatek.com>
+ <20200509083654.5178-4-chao.hao@mediatek.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 9F19ACAE1B3DEF7E5400D3D9BC819389FFCDC31F868E03319EA154150F0F08962000:8
+X-TM-SNTS-SMTP: A8DD666DEB4BBAC87549C627945CC7E41AC0342C681DB12F322F811B674E33472000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200524_231326_825635_32089064 
-X-CRM114-Status: GOOD (  17.63  )
+X-CRM114-CacheID: sfid-20200524_232527_479794_1C3AD684 
+X-CRM114-Status: GOOD (  15.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,81 +97,68 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On Sat, 2020-05-09 at 16:36 +0800, Chao Hao wrote:
-> For iommu offset=0x48 register, only the previous mt8173/mt8183 use the
-> name STANDARD_AXI_MODE, all the latest SoC extend the register more
-> feature by different bits, for example: axi_mode, in_order_en, coherent_en
-> and so on. So rename REG_MMU_MISC_CTRL may be more proper.
-> 
-> This patch only rename the register name, no functional change.
+> In order to improve performance, we always disable STANDARD_AXI_MODE in
+> MISC_CTRL.
 > 
 > Signed-off-by: Chao Hao <chao.hao@mediatek.com>
-
-Reviewed-by: Yong Wu <yong.wu@mediatek.com>
-
 > ---
->  drivers/iommu/mtk_iommu.c | 14 +++++++-------
->  drivers/iommu/mtk_iommu.h |  2 +-
->  2 files changed, 8 insertions(+), 8 deletions(-)
+>  drivers/iommu/mtk_iommu.c | 8 +++++++-
+>  drivers/iommu/mtk_iommu.h | 1 +
+>  2 files changed, 8 insertions(+), 1 deletion(-)
 > 
 > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 5f4d6df59cf6..e7e7c7695ed1 100644
+> index e7e7c7695ed1..9ede327a418d 100644
 > --- a/drivers/iommu/mtk_iommu.c
 > +++ b/drivers/iommu/mtk_iommu.c
-> @@ -41,7 +41,7 @@
->  #define F_INVLD_EN0				BIT(0)
+> @@ -42,6 +42,8 @@
 >  #define F_INVLD_EN1				BIT(1)
 >  
-> -#define REG_MMU_STANDARD_AXI_MODE		0x048
-> +#define REG_MMU_MISC_CTRL			0x048
+>  #define REG_MMU_MISC_CTRL			0x048
+> +#define F_MMU_STANDARD_AXI_MODE_BIT		(BIT(3) | BIT(19))
+> +
 >  #define REG_MMU_DCM_DIS				0x050
 >  
 >  #define REG_MMU_CTRL_REG			0x110
-> @@ -585,8 +585,10 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+> @@ -585,7 +587,11 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
 >  	}
 >  	writel_relaxed(0, data->base + REG_MMU_DCM_DIS);
 >  
-> -	if (data->plat_data->reset_axi)
-> -		writel_relaxed(0, data->base + REG_MMU_STANDARD_AXI_MODE);
-> +	if (data->plat_data->reset_axi) {
-> +		/* The register is called STANDARD_AXI_MODE in this case */
-> +		writel_relaxed(0, data->base + REG_MMU_MISC_CTRL);
-> +	}
->  
->  	if (devm_request_irq(data->dev, data->irq, mtk_iommu_isr, 0,
->  			     dev_name(data->dev), (void *)data)) {
-> @@ -730,8 +732,7 @@ static int __maybe_unused mtk_iommu_suspend(struct device *dev)
->  	struct mtk_iommu_suspend_reg *reg = &data->reg;
->  	void __iomem *base = data->base;
->  
-> -	reg->standard_axi_mode = readl_relaxed(base +
-> -					       REG_MMU_STANDARD_AXI_MODE);
-> +	reg->misc_ctrl = readl_relaxed(base + REG_MMU_MISC_CTRL);
->  	reg->dcm_dis = readl_relaxed(base + REG_MMU_DCM_DIS);
->  	reg->ctrl_reg = readl_relaxed(base + REG_MMU_CTRL_REG);
->  	reg->int_control0 = readl_relaxed(base + REG_MMU_INT_CONTROL0);
-> @@ -755,8 +756,7 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
->  		dev_err(data->dev, "Failed to enable clk(%d) in resume\n", ret);
->  		return ret;
+> -	if (data->plat_data->reset_axi) {
+> +	if (data->plat_data->has_misc_ctrl) {
+> +		regval = readl_relaxed(data->base + REG_MMU_MISC_CTRL);
+> +		regval &= ~F_MMU_STANDARD_AXI_MODE_BIT;
+> +		writel_relaxed(regval, data->base + REG_MMU_MISC_CTRL);
+> +	} else if (data->plat_data->reset_axi) {
+>  		/* The register is called STANDARD_AXI_MODE in this case */
+>  		writel_relaxed(0, data->base + REG_MMU_MISC_CTRL);
 >  	}
-> -	writel_relaxed(reg->standard_axi_mode,
-> -		       base + REG_MMU_STANDARD_AXI_MODE);
-> +	writel_relaxed(reg->misc_ctrl, base + REG_MMU_MISC_CTRL);
->  	writel_relaxed(reg->dcm_dis, base + REG_MMU_DCM_DIS);
->  	writel_relaxed(reg->ctrl_reg, base + REG_MMU_CTRL_REG);
->  	writel_relaxed(reg->int_control0, base + REG_MMU_INT_CONTROL0);
+
+
+0x48 is either STANDARD_AXI_MODE or MISC_CTRL.
+
+Thus, 
+
+if (data->plat_data->reset_axi) {
+   xxx
+} else {  /* MISC_CTRL */
+   xxx
+}
+
+No need add "has_misc_ctrl".
+
+
 > diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> index ea949a324e33..1b6ea839b92c 100644
+> index 1b6ea839b92c..d711ac630037 100644
 > --- a/drivers/iommu/mtk_iommu.h
 > +++ b/drivers/iommu/mtk_iommu.h
-> @@ -18,7 +18,7 @@
->  #include <soc/mediatek/smi.h>
+> @@ -40,6 +40,7 @@ struct mtk_iommu_plat_data {
 >  
->  struct mtk_iommu_suspend_reg {
-> -	u32				standard_axi_mode;
-> +	u32				misc_ctrl;
->  	u32				dcm_dis;
->  	u32				ctrl_reg;
->  	u32				int_control0;
+>  	/* HW will use the EMI clock if there isn't the "bclk". */
+>  	bool                has_bclk;
+> +	bool		    has_misc_ctrl;
+>  	bool                has_vld_pa_rng;
+>  	bool                reset_axi;
+>  	unsigned char       larbid_remap[MTK_LARB_NR_MAX];
 
 _______________________________________________
 Linux-mediatek mailing list
