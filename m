@@ -2,171 +2,82 @@ Return-Path: <SRS0=WPHR=7H=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0D831C433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 May 2020 14:00:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DFE3BC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 May 2020 17:37:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CA18E2071A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 May 2020 14:00:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AE7BD2078B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 May 2020 17:37:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Wq0JPKzH";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Hx7fneHx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA18E2071A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FlnX5dRT";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="vrKxB8Ua"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AE7BD2078B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rc3MMZ4aI3yWFWIEWcd/eHwz5rS94feJBvVzetEkGGA=; b=Wq0JPKzH0TzA24
-	7KAFKHa3oUzW/ljn0z91xpfXxyFsMyd0NOMcDBWyjsqQPVibEqpXcgPN27ISQboKe/lpq4CsrsCiJ
-	eoSyX+KcJ/jo2ipaXW5UX9d+H16LjQjxIrp8JO1SsB3nyyDJ7Lxw7GI4pUJ2HGght6nIqrmghkhl5
-	K1klppfELi6G24soz+W022jE8CqkyjPy9b++AlHIPralNLhbvLqaRBfaYOVv4CjRIc0t1nhA8yckj
-	PCVhq9A797tTopn1Ph5BT9NGscOmyqnCwQhTviuxP8kS/CXFVXv1woRzfFbFDrx9PFO0WgBrGBVg/
-	/AVdR9h9Z1/ryUEHPLfw==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2jdh68WZ/QGzT6m9sG0ETwuUjcShI1k2+rchW043Lj8=; b=FlnX5dRT3lGgPd
+	7mkKLSrRi4S0zcXm3rKxC9c7MmrPW1PSe7DAMwCUK/PkSpqDOzhmY6+yLSnoHNx/xNPwkil6XBEJX
+	SxyOycR/IR3MjzqTr3RUrzGgWoZZpe3RAxiacN+X+RCKRc5Oo86Zvd9rYIW7Be6gR3EZ19JgHoVFe
+	/oQpYgriRVAPUzzeAacVvjCYtTIVGw1pkHDErK9+dm0fssKRBq8HQ2fNM12P6z5GTgWXBL65GAMbJ
+	1CqFuJCUEVWITLxndyFR+ZIB86qng8xW0U7wxZIABLmfpImXdR+ggISxfJjVSAZRr3Ykj7ZAF0VF5
+	WIzI+x9zmpUbYj90M1Dw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jdDeK-0002kg-Ox; Mon, 25 May 2020 14:00:16 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1jdH28-0008TQ-Rr; Mon, 25 May 2020 17:37:04 +0000
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jdDdv-0000Uf-5b; Mon, 25 May 2020 13:59:52 +0000
-Received: by mail-wr1-x444.google.com with SMTP id x13so2518437wrv.4;
- Mon, 25 May 2020 06:59:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=1rA/a1hCm3X6sBZmVF3e0aJbOQHAtZjGlTmrN6ALxbc=;
- b=Hx7fneHxP1kGTVYQAVhZeNg7a5hb+wNVINNvrB9ynSF7m0kefEoc+slB5Pyq6/PhRV
- cqhY3zEqxNZwoMD5+AZa4h7JvKNbSQChi2mdkKETpbMWZMZt4LZ5VWRsFjXkutzpGD3z
- pm7nGDpArEhbEtdSplO3Mbr1hsntuyGfvenKntpyKRjV/kUU6ly7DhtZ1AKmZYE084nk
- Qy8BSztXOuI3v+fU736ycUS5fz5gIWgMV+3nKWbg6N1ey3uqzZymoYPYnIzaZwDZF92q
- N1dXxEONkxSC7WsO0gFhumdDu3i8VRDxeCxixOO+q3HjrtpoiszANOIMTBkeb5DNM8af
- ASTQ==
+ id 1jdH1m-00087o-Hr
+ for linux-mediatek@lists.infradead.org; Mon, 25 May 2020 17:36:44 +0000
+Received: by mail-pl1-x642.google.com with SMTP id t7so7691232plr.0
+ for <linux-mediatek@lists.infradead.org>; Mon, 25 May 2020 10:36:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=IJjU5AD78PQmMgIoxlhUE3XdqOGH2pnJ5GvxPy/ZWeA=;
+ b=vrKxB8Ua+XZv4ykKGQgav6FhXKVJzsqZQi6l56ji2rRpxEXy+U0uFSAqqvLXB59YM0
+ 2msyq81bVTgHfqK1FdOumNDJOpeqzHcN+anyUyzdYd1b44EJu0EE+KyyQGK2cmGJCoIG
+ ctxMlfJr9abZC4SFziuymzvUKKJ3ffJQ51PZUNeRBB084rim2V8/Aiq2ro76qwYi4XMO
+ eHmtL/MBn5MCH5n6wnNm607QikhtfJzzD/tQLjCxlPOyYb9rfABOUj02gOqim7FQMVPb
+ xd9nqr3CPh4Zc2mpGJTmD1gG6o+DuyFWZxpTMcTd86jxAvYgrndO34XI5WQhegqcftN7
+ iV1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=1rA/a1hCm3X6sBZmVF3e0aJbOQHAtZjGlTmrN6ALxbc=;
- b=SHgS5e84V5+QQ8K2zxuP0aJKBiMTuv3w/J59A1cOlD86Nvhhk78qr8hz5LUgoDMHxm
- +w4dZZfJKcmnwtmDb/owbHiOBErPx8e/tntseU1eoUyIb0hGVYhe3dcXLYG+C/8tno6b
- V7o03FvPc+xIIv3cJnyOX8AjIWlfUS4hYv3PUauKgyQM2GYqolJuviBIJhkAUI+DPSVp
- hI/MVlNYl7Vo3Mh2TfL5D/OmgK5MR96YTwozkW+TRb4V6FKSe6RYgZy1q53NGilHBFMw
- mIJ2ZSANt2SVVGuV48GiRSi9m1TLaPIKwQvWEcKhbYyhFvCBGsYOABguAjiqJacXjJBz
- bACg==
-X-Gm-Message-State: AOAM532Xv9UdPwPcaDZpjX0chFQaIVGNXdo2tR8gYMGUXMU5vlH3QT/4
- qobOCXWae8zLQR9OpnMsloY=
-X-Google-Smtp-Source: ABdhPJzcle065qlHS41xkpJbqMos7x7jnVAIeo1KrxxhKLCYKH2GY5QgPS+kavecKgZU7yNnOKBoxQ==
-X-Received: by 2002:adf:eb47:: with SMTP id u7mr15257321wrn.14.1590415189588; 
- Mon, 25 May 2020 06:59:49 -0700 (PDT)
-Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id p1sm10098062wrx.44.2020.05.25.06.59.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 25 May 2020 06:59:48 -0700 (PDT)
-Subject: Re: [PATCH v5 09/13] soc: mediatek: cmdq: add write_s value function
-To: Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>
-References: <1583664775-19382-1-git-send-email-dennis-yc.hsieh@mediatek.com>
- <1583664775-19382-10-git-send-email-dennis-yc.hsieh@mediatek.com>
- <f9fd9ea8-f706-ed4a-4c83-c53ad092035c@gmail.com>
- <1590341462.31286.19.camel@mtkswgap22>
- <eb604637-28f0-fa8f-ce4b-3e87f6c944ad@gmail.com>
- <1590373621.31522.7.camel@mtkswgap22>
- <68535bf6-9824-5077-4811-374c893cdc03@gmail.com>
- <1590403125.11988.5.camel@mtkswgap22>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <0dc8537e-f894-2bdc-d197-8f2ed01d52dc@gmail.com>
-Date: Mon, 25 May 2020 15:59:47 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=IJjU5AD78PQmMgIoxlhUE3XdqOGH2pnJ5GvxPy/ZWeA=;
+ b=sTr7kercnQkwM+YE0nSftuZMzAiXieokXpP3xdBktlv2clUg8LxPmwCYVzYQL59rdo
+ mFoNm91kDyeyPYVsIn1dKbt62GR2BZs5vfFa+QybV0IWecBkipxzwQHNefqD29Xpfh6x
+ yHnYrYucnjlRk1nBxqLpEU0IebOjT3oUkFBS7mzmEOm/erbpYQmkuYcGNtfEaM5zBpx9
+ cc9zG0sqOPhgXADHeXLE5TRbWeLrETyrS3x2tg5JcD5jXui8LchEP6lXBmGgCtdN7e97
+ 3xAbo4DFOho0JkRedFcmvHvu6VpfPr9OQu59tuQEsLOL1SGhvOE/6aVo4XelDgJITJkW
+ lHYA==
+X-Gm-Message-State: AOAM5304CndPjfsALWh3QdGmJSttBeTTUzsdcfV3iRV6MMBe1GT0JA4x
+ u6ozhAcw6RLYfFMO7x/+QJ7amij22ul+TmicfpAdAg==
+X-Google-Smtp-Source: ABdhPJz0kSa4s6ANDBb+YqExevdOdc33aV3eoTivjXP7z1lS4l97h5suRM2uOi232ee0BDQo2/+CwFWu+Jw4ExRID7M=
+X-Received: by 2002:a17:90b:1994:: with SMTP id
+ mv20mr21281595pjb.41.1590428198538; 
+ Mon, 25 May 2020 10:36:38 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1590403125.11988.5.camel@mtkswgap22>
-Content-Language: en-US
+References: <20200522015757.22267-1-walter-zh.wu@mediatek.com>
+In-Reply-To: <20200522015757.22267-1-walter-zh.wu@mediatek.com>
+From: Andrey Konovalov <andreyknvl@google.com>
+Date: Mon, 25 May 2020 19:36:27 +0200
+Message-ID: <CAAeHK+y9qz5P-WCWEGwUx__XVzPXTddcOXsFDnFvh_1-k4Opxw@mail.gmail.com>
+Subject: Re: [PATCH v6 0/4] kasan: memorize and print call_rcu stack
+To: Walter Wu <walter-zh.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200525_065951_215803_3F26D763 
-X-CRM114-Status: GOOD (  21.06  )
+X-CRM114-CacheID: sfid-20200525_103642_660581_E172B91E 
+X-CRM114-Status: GOOD (  21.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -178,103 +89,115 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Philipp Zabel <p.zabel@pengutronix.de>, wsd_upstream@mediatek.com,
- David Airlie <airlied@linux.ie>, Jassi Brar <jassisinghbrar@gmail.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- HS Liao <hs.liao@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Houlong Wei <houlong.wei@mediatek.com>,
- Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>,
- Bibby Hsieh <bibby.hsieh@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: wsd_upstream <wsd_upstream@mediatek.com>,
+ "Paul E . McKenney" <paulmck@kernel.org>,
+ Linux Memory Management List <linux-mm@kvack.org>,
+ Lai Jiangshan <jiangshanlai@gmail.com>, Josh Triplett <josh@joshtriplett.org>,
+ kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>,
+ Joel Fernandes <joel@joelfernandes.org>, linux-mediatek@lists.infradead.org,
+ Alexander Potapenko <glider@google.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Andrey Ryabinin <aryabinin@virtuozzo.com>,
+ Andrew Morton <akpm@linux-foundation.org>, Dmitry Vyukov <dvyukov@google.com>,
+ Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, May 22, 2020 at 3:58 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+>
+> This patchset improves KASAN reports by making them to have
+> call_rcu() call stack information. It is useful for programmers
+> to solve use-after-free or double-free memory issue.
+>
+> The KASAN report was as follows(cleaned up slightly):
+>
+> BUG: KASAN: use-after-free in kasan_rcu_reclaim+0x58/0x60
+>
+> Freed by task 0:
+>  kasan_save_stack+0x24/0x50
+>  kasan_set_track+0x24/0x38
+>  kasan_set_free_info+0x18/0x20
+>  __kasan_slab_free+0x10c/0x170
+>  kasan_slab_free+0x10/0x18
+>  kfree+0x98/0x270
+>  kasan_rcu_reclaim+0x1c/0x60
+>
+> Last call_rcu():
+>  kasan_save_stack+0x24/0x50
+>  kasan_record_aux_stack+0xbc/0xd0
+>  call_rcu+0x8c/0x580
+>  kasan_rcu_uaf+0xf4/0xf8
+>
+> Generic KASAN will record the last two call_rcu() call stacks and
+> print up to 2 call_rcu() call stacks in KASAN report. it is only
+> suitable for generic KASAN.
+>
+> This feature considers the size of struct kasan_alloc_meta and
+> kasan_free_meta, we try to optimize the structure layout and size
+> , let it get better memory consumption.
+>
+> [1]https://bugzilla.kernel.org/show_bug.cgi?id=198437
+> [2]https://groups.google.com/forum/#!searchin/kasan-dev/better$20stack$20traces$20for$20rcu%7Csort:date/kasan-dev/KQsjT_88hDE/7rNUZprRBgAJ
 
+Reviewed-by: Andrey Konovalov <andreyknvl@google.com>
 
-On 25/05/2020 12:38, Dennis-YC Hsieh wrote:
-> 
-> On Mon, 2020-05-25 at 10:39 +0200, Matthias Brugger wrote:
->>
->> On 25/05/2020 04:27, Dennis-YC Hsieh wrote:
->>>
->>> On Sun, 2020-05-24 at 20:13 +0200, Matthias Brugger wrote:
->>>>
->>>> On 24/05/2020 19:31, Dennis-YC Hsieh wrote:
->>>>> Hi Matthias,
->>>>>
->>>>> Thanks for your comment.
->>>>>
->>>>> On Sat, 2020-05-16 at 20:20 +0200, Matthias Brugger wrote:
->>>>>>
->>>>>> On 08/03/2020 11:52, Dennis YC Hsieh wrote:
->>>>>>> add write_s function in cmdq helper functions which
->>>>>>> writes a constant value to address with large dma
->>>>>>> access support.
->>>>>>>
->>>>>>> Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
->>>>>>> Reviewed-by: CK Hu <ck.hu@mediatek.com>
->>>>>>> ---
->>>>>>>  drivers/soc/mediatek/mtk-cmdq-helper.c | 26 ++++++++++++++++++++++++++
->>>>>>>  include/linux/soc/mediatek/mtk-cmdq.h  | 14 ++++++++++++++
->>>>>>>  2 files changed, 40 insertions(+)
->>>>>>>
->>>>>>> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
->>>>>>> index 03c129230cd7..a9ebbabb7439 100644
->>>>>>> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
->>>>>>> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
->>>>>>> @@ -269,6 +269,32 @@ int cmdq_pkt_write_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
->>>>>>>  }
->>>>>>>  EXPORT_SYMBOL(cmdq_pkt_write_s);
->>>>>>>  
->>>>>>> +int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
->>>>>>> +			   u16 addr_low, u32 value, u32 mask)
->>>>>>> +{
->>>>>>> +	struct cmdq_instruction inst = { {0} };
->>>>>>> +	int err;
->>>>>>> +
->>>>>>> +	if (mask != U32_MAX) {
->>>>>>> +		inst.op = CMDQ_CODE_MASK;
->>>>>>> +		inst.mask = ~mask;
->>>>>>> +		err = cmdq_pkt_append_command(pkt, inst);
->>>>>>> +		if (err < 0)
->>>>>>> +			return err;
->>>>>>> +
->>>>>>> +		inst.op = CMDQ_CODE_WRITE_S_MASK;
->>>>>>> +	} else {
->>>>>>> +		inst.op = CMDQ_CODE_WRITE_S;
->>>>>>> +	}
->>>>>>> +
->>>>>>> +	inst.sop = high_addr_reg_idx;
->>>>>>
->>>>>> Writing u16 value in a 5 bit wide variable?
->>>>>
->>>>> We need only 5 bits in this case. I'll change high_addr_reg_idx
->>>>> parameter to u8.
->>>>>
->>>>
->>>> Ok, please make sure to mask the value, so that it's explicit in the code that
->>>> we only use the lowest 5 bits of high_addr_reg_idx.
->>>
->>> Is it necessary to mask the value?
->>> Since sop already defined as "u8 sop:5;", I thought it is explicit that
->>> only use 5 bits and compiler should do the rest jobs.
->>
->> Yes but it makes the code more explicit if we have a
->> inst.sop = high_addr_reg_idx & 0x1f;
->>
->> What do you think?
-> 
-> The value assign to sop will restrict by hardware spec. Clients call
-> this function will define constant value and use it as parameter. So I
-> think we don't worry about client call this api with wrong value.
-> 
+for the series.
 
-Ok, then let's change the parameter to u8 and don't add a mask.
+Thanks!
 
-Regards,
-Matthias
+>
+> Changes since v2:
+> - remove new config option, default enable it in generic KASAN
+> - test this feature in SLAB/SLUB, it is pass.
+> - modify macro to be more clearly
+> - modify documentation
+>
+> Changes since v3:
+> - change recording from first/last to the last two call stacks
+> - move free track into kasan free meta
+> - init slab_free_meta on object slot creation
+> - modify documentation
+>
+> Changes since v4:
+> - change variable name to be more clearly
+> - remove the redundant condition
+> - remove init free meta-data and increasing object condition
+>
+> Changes since v5:
+> - add a macro KASAN_KMALLOC_FREETRACK in order to check whether
+>   print free stack
+> - change printing message
+> - remove descriptions in Kocong.kasan
+>
+> Changes since v6:
+> - reuse print_stack() in print_track()
+>
+> Walter Wu (4):
+> rcu/kasan: record and print call_rcu() call stack
+> kasan: record and print the free track
+> kasan: add tests for call_rcu stack recording
+> kasan: update documentation for generic kasan
+>
+> Documentation/dev-tools/kasan.rst |  3 +++
+> include/linux/kasan.h             |  2 ++
+> kernel/rcu/tree.c                 |  2 ++
+> lib/test_kasan.c                  | 30 ++++++++++++++++++++++++++++++
+> mm/kasan/common.c                 | 26 ++++----------------------
+> mm/kasan/generic.c                | 43 +++++++++++++++++++++++++++++++++++++++++++
+> mm/kasan/generic_report.c         |  1 +
+> mm/kasan/kasan.h                  | 23 +++++++++++++++++++++--
+> mm/kasan/quarantine.c             |  1 +
+> mm/kasan/report.c                 | 54 +++++++++++++++++++++++++++---------------------------
+> mm/kasan/tags.c                   | 37 +++++++++++++++++++++++++++++++++++++
+> 11 files changed, 171 insertions(+), 51 deletions(-)
+>
+> --
+> You received this message because you are subscribed to the Google Groups "kasan-dev" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/20200522015757.22267-1-walter-zh.wu%40mediatek.com.
 
 _______________________________________________
 Linux-mediatek mailing list
