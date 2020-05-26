@@ -1,83 +1,77 @@
-Return-Path: <SRS0=WPHR=7H=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=I26f=7I=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DFE3BC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 May 2020 17:37:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 11E2FC433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2020 01:46:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AE7BD2078B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 May 2020 17:37:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D1BBA2071C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2020 01:46:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FlnX5dRT";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="vrKxB8Ua"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AE7BD2078B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Lb48iZuv";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="AG81D6CA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D1BBA2071C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2jdh68WZ/QGzT6m9sG0ETwuUjcShI1k2+rchW043Lj8=; b=FlnX5dRT3lGgPd
-	7mkKLSrRi4S0zcXm3rKxC9c7MmrPW1PSe7DAMwCUK/PkSpqDOzhmY6+yLSnoHNx/xNPwkil6XBEJX
-	SxyOycR/IR3MjzqTr3RUrzGgWoZZpe3RAxiacN+X+RCKRc5Oo86Zvd9rYIW7Be6gR3EZ19JgHoVFe
-	/oQpYgriRVAPUzzeAacVvjCYtTIVGw1pkHDErK9+dm0fssKRBq8HQ2fNM12P6z5GTgWXBL65GAMbJ
-	1CqFuJCUEVWITLxndyFR+ZIB86qng8xW0U7wxZIABLmfpImXdR+ggISxfJjVSAZRr3Ykj7ZAF0VF5
-	WIzI+x9zmpUbYj90M1Dw==;
+	List-Owner; bh=lm1v5G6BJvHjJF4e0yvvsa9RxC0KDROMHjXtdo0+ws4=; b=Lb48iZuvZBPvxc
+	AGNCAJkrxdpAz6+Y2zu06CGGrov37X5xZSysZjSqvHP/iLk6rwQa8QdsCcakjc7NLop8nC/lIOBZ2
+	RNw0dnM2j8Pu67jM+9JkO69WSCyvz6dbtsaxxayh2E4Q18Pg+7WalaITy6MWeCR9OV2W19linjj+q
+	rFjfB06EhT9l9NnG0/IEf3iW9Tc2VCu/lXQ51l8rXYauTo7i4TeCYlJYp/rvYv/BmRQf8JYFsodJL
+	wXv3nbsjDaTnFh9gfywCnZVz+bmn8iTwDpUdhaOOzoLu7FQQqqjQ8av/3HvS0MHRWzdmIjpjTGM9l
+	TlYgWg5bzHkSfybF7U5w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jdH28-0008TQ-Rr; Mon, 25 May 2020 17:37:04 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1jdOf8-0000dk-5o; Tue, 26 May 2020 01:45:50 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jdH1m-00087o-Hr
- for linux-mediatek@lists.infradead.org; Mon, 25 May 2020 17:36:44 +0000
-Received: by mail-pl1-x642.google.com with SMTP id t7so7691232plr.0
- for <linux-mediatek@lists.infradead.org>; Mon, 25 May 2020 10:36:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=IJjU5AD78PQmMgIoxlhUE3XdqOGH2pnJ5GvxPy/ZWeA=;
- b=vrKxB8Ua+XZv4ykKGQgav6FhXKVJzsqZQi6l56ji2rRpxEXy+U0uFSAqqvLXB59YM0
- 2msyq81bVTgHfqK1FdOumNDJOpeqzHcN+anyUyzdYd1b44EJu0EE+KyyQGK2cmGJCoIG
- ctxMlfJr9abZC4SFziuymzvUKKJ3ffJQ51PZUNeRBB084rim2V8/Aiq2ro76qwYi4XMO
- eHmtL/MBn5MCH5n6wnNm607QikhtfJzzD/tQLjCxlPOyYb9rfABOUj02gOqim7FQMVPb
- xd9nqr3CPh4Zc2mpGJTmD1gG6o+DuyFWZxpTMcTd86jxAvYgrndO34XI5WQhegqcftN7
- iV1g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=IJjU5AD78PQmMgIoxlhUE3XdqOGH2pnJ5GvxPy/ZWeA=;
- b=sTr7kercnQkwM+YE0nSftuZMzAiXieokXpP3xdBktlv2clUg8LxPmwCYVzYQL59rdo
- mFoNm91kDyeyPYVsIn1dKbt62GR2BZs5vfFa+QybV0IWecBkipxzwQHNefqD29Xpfh6x
- yHnYrYucnjlRk1nBxqLpEU0IebOjT3oUkFBS7mzmEOm/erbpYQmkuYcGNtfEaM5zBpx9
- cc9zG0sqOPhgXADHeXLE5TRbWeLrETyrS3x2tg5JcD5jXui8LchEP6lXBmGgCtdN7e97
- 3xAbo4DFOho0JkRedFcmvHvu6VpfPr9OQu59tuQEsLOL1SGhvOE/6aVo4XelDgJITJkW
- lHYA==
-X-Gm-Message-State: AOAM5304CndPjfsALWh3QdGmJSttBeTTUzsdcfV3iRV6MMBe1GT0JA4x
- u6ozhAcw6RLYfFMO7x/+QJ7amij22ul+TmicfpAdAg==
-X-Google-Smtp-Source: ABdhPJz0kSa4s6ANDBb+YqExevdOdc33aV3eoTivjXP7z1lS4l97h5suRM2uOi232ee0BDQo2/+CwFWu+Jw4ExRID7M=
-X-Received: by 2002:a17:90b:1994:: with SMTP id
- mv20mr21281595pjb.41.1590428198538; 
- Mon, 25 May 2020 10:36:38 -0700 (PDT)
+ id 1jdOeV-00071C-2e; Tue, 26 May 2020 01:45:14 +0000
+X-UUID: 36055f6d47c74c1aad0892c4e9cb955b-20200525
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=ueSBcAd3PluSlVN5bpFI2LrWqNDxT0TcwE09/a4ZIpc=; 
+ b=AG81D6CAsb4uQJ3952Xiki9aYDaWeVe8uJQjQsOBmKEIs8Kzu6bAw7EtE2jb4+uQCqWt82sOPm2JxSYpkJo/ck+TXLUBk53A4X8Pku1RTz9A1EOxc+QkIvK4UjiqzSjJc7ICAWBE6+zvHQiAQmFmgr2c0diZhFlspj16kr2Dsz4=;
+X-UUID: 36055f6d47c74c1aad0892c4e9cb955b-20200525
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <walter-zh.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1610499720; Mon, 25 May 2020 17:44:59 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 25 May 2020 18:34:57 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 26 May 2020 09:34:55 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 26 May 2020 09:34:56 +0800
+Message-ID: <1590456895.7226.11.camel@mtksdccf07>
+Subject: Re: [PATCH v6 1/4] rcu/kasan: record and print call_rcu() call stack
+From: Walter Wu <walter-zh.wu@mediatek.com>
+To: Dmitry Vyukov <dvyukov@google.com>
+Date: Tue, 26 May 2020 09:34:55 +0800
+In-Reply-To: <CACT4Y+Zn9eMAPwCMEo710NnsUEoXP+H7xge8a1essu2F9DeFRw@mail.gmail.com>
+References: <20200522020059.22332-1-walter-zh.wu@mediatek.com>
+ <CACT4Y+Zn9eMAPwCMEo710NnsUEoXP+H7xge8a1essu2F9DeFRw@mail.gmail.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-References: <20200522015757.22267-1-walter-zh.wu@mediatek.com>
-In-Reply-To: <20200522015757.22267-1-walter-zh.wu@mediatek.com>
-From: Andrey Konovalov <andreyknvl@google.com>
-Date: Mon, 25 May 2020 19:36:27 +0200
-Message-ID: <CAAeHK+y9qz5P-WCWEGwUx__XVzPXTddcOXsFDnFvh_1-k4Opxw@mail.gmail.com>
-Subject: Re: [PATCH v6 0/4] kasan: memorize and print call_rcu stack
-To: Walter Wu <walter-zh.wu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200525_103642_660581_E172B91E 
-X-CRM114-Status: GOOD (  21.70  )
+X-CRM114-CacheID: sfid-20200525_184511_428959_41827175 
+X-CRM114-Status: GOOD (  27.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,115 +83,247 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream <wsd_upstream@mediatek.com>,
- "Paul E . McKenney" <paulmck@kernel.org>,
- Linux Memory Management List <linux-mm@kvack.org>,
+Cc: wsd_upstream <wsd_upstream@mediatek.com>, "Paul E .
+ McKenney" <paulmck@kernel.org>, Linux-MM <linux-mm@kvack.org>,
+ Andrey Konovalov <andreyknvl@google.com>,
  Lai Jiangshan <jiangshanlai@gmail.com>, Josh Triplett <josh@joshtriplett.org>,
  kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>,
  Joel Fernandes <joel@joelfernandes.org>, linux-mediatek@lists.infradead.org,
  Alexander Potapenko <glider@google.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>,
- Andrew Morton <akpm@linux-foundation.org>, Dmitry Vyukov <dvyukov@google.com>,
+ Andrey Ryabinin <aryabinin@virtuozzo.com>, Andrew
+ Morton <akpm@linux-foundation.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
  Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 22, 2020 at 3:58 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
->
-> This patchset improves KASAN reports by making them to have
-> call_rcu() call stack information. It is useful for programmers
-> to solve use-after-free or double-free memory issue.
->
-> The KASAN report was as follows(cleaned up slightly):
->
-> BUG: KASAN: use-after-free in kasan_rcu_reclaim+0x58/0x60
->
-> Freed by task 0:
->  kasan_save_stack+0x24/0x50
->  kasan_set_track+0x24/0x38
->  kasan_set_free_info+0x18/0x20
->  __kasan_slab_free+0x10c/0x170
->  kasan_slab_free+0x10/0x18
->  kfree+0x98/0x270
->  kasan_rcu_reclaim+0x1c/0x60
->
-> Last call_rcu():
->  kasan_save_stack+0x24/0x50
->  kasan_record_aux_stack+0xbc/0xd0
->  call_rcu+0x8c/0x580
->  kasan_rcu_uaf+0xf4/0xf8
->
-> Generic KASAN will record the last two call_rcu() call stacks and
-> print up to 2 call_rcu() call stacks in KASAN report. it is only
-> suitable for generic KASAN.
->
-> This feature considers the size of struct kasan_alloc_meta and
-> kasan_free_meta, we try to optimize the structure layout and size
-> , let it get better memory consumption.
->
-> [1]https://bugzilla.kernel.org/show_bug.cgi?id=198437
-> [2]https://groups.google.com/forum/#!searchin/kasan-dev/better$20stack$20traces$20for$20rcu%7Csort:date/kasan-dev/KQsjT_88hDE/7rNUZprRBgAJ
+On Mon, 2020-05-25 at 11:56 +0200, Dmitry Vyukov wrote:
+> On Fri, May 22, 2020 at 4:01 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+> >
+> > This feature will record the last two call_rcu() call stacks and
+> > prints up to 2 call_rcu() call stacks in KASAN report.
+> >
+> > When call_rcu() is called, we store the call_rcu() call stack into
+> > slub alloc meta-data, so that the KASAN report can print rcu stack.
+> >
+> > [1]https://bugzilla.kernel.org/show_bug.cgi?id=198437
+> > [2]https://groups.google.com/forum/#!searchin/kasan-dev/better$20stack$20traces$20for$20rcu%7Csort:date/kasan-dev/KQsjT_88hDE/7rNUZprRBgAJ
+> 
+> Hi Walter,
+> 
+> The series look good to me. Thanks for bearing with me. I am eager to
+> see this in syzbot reports.
+> 
+> Reviewed-and-tested-by: Dmitry Vyukov <dvyukov@google.com>
+> 
 
-Reviewed-by: Andrey Konovalov <andreyknvl@google.com>
+Hi Dmitry,
 
-for the series.
+I appreciate for your response. This patches make KASAN report more
+better and let me learn a lot. Thank you for good suggestion and
+detailed explanation.
 
-Thanks!
+Walter
 
->
-> Changes since v2:
-> - remove new config option, default enable it in generic KASAN
-> - test this feature in SLAB/SLUB, it is pass.
-> - modify macro to be more clearly
-> - modify documentation
->
-> Changes since v3:
-> - change recording from first/last to the last two call stacks
-> - move free track into kasan free meta
-> - init slab_free_meta on object slot creation
-> - modify documentation
->
-> Changes since v4:
-> - change variable name to be more clearly
-> - remove the redundant condition
-> - remove init free meta-data and increasing object condition
->
-> Changes since v5:
-> - add a macro KASAN_KMALLOC_FREETRACK in order to check whether
->   print free stack
-> - change printing message
-> - remove descriptions in Kocong.kasan
->
-> Changes since v6:
-> - reuse print_stack() in print_track()
->
-> Walter Wu (4):
-> rcu/kasan: record and print call_rcu() call stack
-> kasan: record and print the free track
-> kasan: add tests for call_rcu stack recording
-> kasan: update documentation for generic kasan
->
-> Documentation/dev-tools/kasan.rst |  3 +++
-> include/linux/kasan.h             |  2 ++
-> kernel/rcu/tree.c                 |  2 ++
-> lib/test_kasan.c                  | 30 ++++++++++++++++++++++++++++++
-> mm/kasan/common.c                 | 26 ++++----------------------
-> mm/kasan/generic.c                | 43 +++++++++++++++++++++++++++++++++++++++++++
-> mm/kasan/generic_report.c         |  1 +
-> mm/kasan/kasan.h                  | 23 +++++++++++++++++++++--
-> mm/kasan/quarantine.c             |  1 +
-> mm/kasan/report.c                 | 54 +++++++++++++++++++++++++++---------------------------
-> mm/kasan/tags.c                   | 37 +++++++++++++++++++++++++++++++++++++
-> 11 files changed, 171 insertions(+), 51 deletions(-)
->
-> --
-> You received this message because you are subscribed to the Google Groups "kasan-dev" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/20200522015757.22267-1-walter-zh.wu%40mediatek.com.
+> > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> > Suggested-by: Dmitry Vyukov <dvyukov@google.com>
+> > Acked-by: Paul E. McKenney <paulmck@kernel.org>
+> > Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
+> > Cc: Dmitry Vyukov <dvyukov@google.com>
+> > Cc: Alexander Potapenko <glider@google.com>
+> > Cc: Andrew Morton <akpm@linux-foundation.org>
+> > Cc: Josh Triplett <josh@joshtriplett.org>
+> > Cc: Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
+> > Cc: Lai Jiangshan <jiangshanlai@gmail.com>
+> > Cc: Joel Fernandes <joel@joelfernandes.org>
+> > Cc: Andrey Konovalov <andreyknvl@google.com>
+> > ---
+> >  include/linux/kasan.h |  2 ++
+> >  kernel/rcu/tree.c     |  2 ++
+> >  mm/kasan/common.c     |  4 ++--
+> >  mm/kasan/generic.c    | 21 +++++++++++++++++++++
+> >  mm/kasan/kasan.h      | 10 ++++++++++
+> >  mm/kasan/report.c     | 28 +++++++++++++++++++++++-----
+> >  6 files changed, 60 insertions(+), 7 deletions(-)
+> >
+> > diff --git a/include/linux/kasan.h b/include/linux/kasan.h
+> > index 31314ca7c635..23b7ee00572d 100644
+> > --- a/include/linux/kasan.h
+> > +++ b/include/linux/kasan.h
+> > @@ -174,11 +174,13 @@ static inline size_t kasan_metadata_size(struct kmem_cache *cache) { return 0; }
+> >
+> >  void kasan_cache_shrink(struct kmem_cache *cache);
+> >  void kasan_cache_shutdown(struct kmem_cache *cache);
+> > +void kasan_record_aux_stack(void *ptr);
+> >
+> >  #else /* CONFIG_KASAN_GENERIC */
+> >
+> >  static inline void kasan_cache_shrink(struct kmem_cache *cache) {}
+> >  static inline void kasan_cache_shutdown(struct kmem_cache *cache) {}
+> > +static inline void kasan_record_aux_stack(void *ptr) {}
+> >
+> >  #endif /* CONFIG_KASAN_GENERIC */
+> >
+> > diff --git a/kernel/rcu/tree.c b/kernel/rcu/tree.c
+> > index 06548e2ebb72..36a4ff7f320b 100644
+> > --- a/kernel/rcu/tree.c
+> > +++ b/kernel/rcu/tree.c
+> > @@ -57,6 +57,7 @@
+> >  #include <linux/slab.h>
+> >  #include <linux/sched/isolation.h>
+> >  #include <linux/sched/clock.h>
+> > +#include <linux/kasan.h>
+> >  #include "../time/tick-internal.h"
+> >
+> >  #include "tree.h"
+> > @@ -2668,6 +2669,7 @@ __call_rcu(struct rcu_head *head, rcu_callback_t func)
+> >         head->func = func;
+> >         head->next = NULL;
+> >         local_irq_save(flags);
+> > +       kasan_record_aux_stack(head);
+> >         rdp = this_cpu_ptr(&rcu_data);
+> >
+> >         /* Add the callback to our list. */
+> > diff --git a/mm/kasan/common.c b/mm/kasan/common.c
+> > index 2906358e42f0..8bc618289bb1 100644
+> > --- a/mm/kasan/common.c
+> > +++ b/mm/kasan/common.c
+> > @@ -41,7 +41,7 @@
+> >  #include "kasan.h"
+> >  #include "../slab.h"
+> >
+> > -static inline depot_stack_handle_t save_stack(gfp_t flags)
+> > +depot_stack_handle_t kasan_save_stack(gfp_t flags)
+> >  {
+> >         unsigned long entries[KASAN_STACK_DEPTH];
+> >         unsigned int nr_entries;
+> > @@ -54,7 +54,7 @@ static inline depot_stack_handle_t save_stack(gfp_t flags)
+> >  static inline void set_track(struct kasan_track *track, gfp_t flags)
+> >  {
+> >         track->pid = current->pid;
+> > -       track->stack = save_stack(flags);
+> > +       track->stack = kasan_save_stack(flags);
+> >  }
+> >
+> >  void kasan_enable_current(void)
+> > diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
+> > index 56ff8885fe2e..8acf48882ba2 100644
+> > --- a/mm/kasan/generic.c
+> > +++ b/mm/kasan/generic.c
+> > @@ -325,3 +325,24 @@ DEFINE_ASAN_SET_SHADOW(f2);
+> >  DEFINE_ASAN_SET_SHADOW(f3);
+> >  DEFINE_ASAN_SET_SHADOW(f5);
+> >  DEFINE_ASAN_SET_SHADOW(f8);
+> > +
+> > +void kasan_record_aux_stack(void *addr)
+> > +{
+> > +       struct page *page = kasan_addr_to_page(addr);
+> > +       struct kmem_cache *cache;
+> > +       struct kasan_alloc_meta *alloc_info;
+> > +       void *object;
+> > +
+> > +       if (!(page && PageSlab(page)))
+> > +               return;
+> > +
+> > +       cache = page->slab_cache;
+> > +       object = nearest_obj(cache, page, addr);
+> > +       alloc_info = get_alloc_info(cache, object);
+> > +
+> > +       /*
+> > +        * record the last two call_rcu() call stacks.
+> > +        */
+> > +       alloc_info->aux_stack[1] = alloc_info->aux_stack[0];
+> > +       alloc_info->aux_stack[0] = kasan_save_stack(GFP_NOWAIT);
+> > +}
+> > diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
+> > index e8f37199d885..a7391bc83070 100644
+> > --- a/mm/kasan/kasan.h
+> > +++ b/mm/kasan/kasan.h
+> > @@ -104,7 +104,15 @@ struct kasan_track {
+> >
+> >  struct kasan_alloc_meta {
+> >         struct kasan_track alloc_track;
+> > +#ifdef CONFIG_KASAN_GENERIC
+> > +       /*
+> > +        * call_rcu() call stack is stored into struct kasan_alloc_meta.
+> > +        * The free stack is stored into struct kasan_free_meta.
+> > +        */
+> > +       depot_stack_handle_t aux_stack[2];
+> > +#else
+> >         struct kasan_track free_track[KASAN_NR_FREE_STACKS];
+> > +#endif
+> >  #ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
+> >         u8 free_pointer_tag[KASAN_NR_FREE_STACKS];
+> >         u8 free_track_idx;
+> > @@ -159,6 +167,8 @@ void kasan_report_invalid_free(void *object, unsigned long ip);
+> >
+> >  struct page *kasan_addr_to_page(const void *addr);
+> >
+> > +depot_stack_handle_t kasan_save_stack(gfp_t flags);
+> > +
+> >  #if defined(CONFIG_KASAN_GENERIC) && \
+> >         (defined(CONFIG_SLAB) || defined(CONFIG_SLUB))
+> >  void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache);
+> > diff --git a/mm/kasan/report.c b/mm/kasan/report.c
+> > index 80f23c9da6b0..2421a4bd9227 100644
+> > --- a/mm/kasan/report.c
+> > +++ b/mm/kasan/report.c
+> > @@ -105,15 +105,20 @@ static void end_report(unsigned long *flags)
+> >         kasan_enable_current();
+> >  }
+> >
+> > +static void print_stack(depot_stack_handle_t stack)
+> > +{
+> > +       unsigned long *entries;
+> > +       unsigned int nr_entries;
+> > +
+> > +       nr_entries = stack_depot_fetch(stack, &entries);
+> > +       stack_trace_print(entries, nr_entries, 0);
+> > +}
+> > +
+> >  static void print_track(struct kasan_track *track, const char *prefix)
+> >  {
+> >         pr_err("%s by task %u:\n", prefix, track->pid);
+> >         if (track->stack) {
+> > -               unsigned long *entries;
+> > -               unsigned int nr_entries;
+> > -
+> > -               nr_entries = stack_depot_fetch(track->stack, &entries);
+> > -               stack_trace_print(entries, nr_entries, 0);
+> > +               print_stack(track->stack);
+> >         } else {
+> >                 pr_err("(stack is not available)\n");
+> >         }
+> > @@ -192,6 +197,19 @@ static void describe_object(struct kmem_cache *cache, void *object,
+> >                 free_track = kasan_get_free_track(cache, object, tag);
+> >                 print_track(free_track, "Freed");
+> >                 pr_err("\n");
+> > +
+> > +#ifdef CONFIG_KASAN_GENERIC
+> > +               if (alloc_info->aux_stack[0]) {
+> > +                       pr_err("Last call_rcu():\n");
+> > +                       print_stack(alloc_info->aux_stack[0]);
+> > +                       pr_err("\n");
+> > +               }
+> > +               if (alloc_info->aux_stack[1]) {
+> > +                       pr_err("Second to last call_rcu():\n");
+> > +                       print_stack(alloc_info->aux_stack[1]);
+> > +                       pr_err("\n");
+> > +               }
+> > +#endif
+> >         }
+> >
+> >         describe_object_addr(cache, object, addr);
+> > --
+> > 2.18.0
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "kasan-dev" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/20200522020059.22332-1-walter-zh.wu%40mediatek.com.
 
 _______________________________________________
 Linux-mediatek mailing list
