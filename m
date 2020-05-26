@@ -2,87 +2,79 @@ Return-Path: <SRS0=I26f=7I=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0DF8EC433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2020 17:26:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B6A42C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2020 18:03:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C6101204EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2020 17:26:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7AB6920721
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2020 18:03:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Y/5E9Rgc";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="qhKcNS80"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C6101204EF
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iGn0xNf7"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7AB6920721
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rSymzBA/Az5vQksDtz/pCkzfL8yWiVvdjR4tEz3gvq8=; b=Y/5E9RgcLYlZgwBBG5OoUQZl+
-	MZO6l5NfFiEYKJOTJGS6l36nuMh5X21p5UnlO+hmlPTIRzvwEfBJvlo8TQe3cvzTWwLSpVcxvjfl2
-	jEZQuRr070lN/IH1Ngbf3jJQOQC9hAzDk399XnZ/+S2ehJAni3BbefP0LfdIZaDvs444xvLInFMS8
-	B3tSLD76ISosUcM5PFj5EO1EXZSnfjx2+e1XUaheP06M5tcftPI6Z1DP8+CN4FlCcwzOwBGyrDaJf
-	31bsDJqfmCMW3cwrF6VoTf7bFwgWOfX5NdsVaAjH6L6hUJYQ//LTlRfFJHM2ufYFJM45PCD1fx4Bf
-	xu4UYvN8Q==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VtXM0bAtXT7+KaaTlZqaPsITiiPEUkXf95f1AS7s3IE=; b=iGn0xNf7hKdy85
+	z5bDqfYBF4YQ/UuHK7qS68B6aw7E0Lo2kREBaFZG4/MGUPLzk/5ADxwH8rXTVgkJF8IsTHGm7fzKI
+	azs4w5Arb37rrZRB+3oMx9M+dq/WwEIwURw617Tiyp5jRyghK1SgJ8u29TjT6o2sVaUYjJ6h80d0z
+	rW1BQHVy77c7bJq1zSlOjWPaaALjtCKzj6wEwUjNWClPJa5w6Y5IJaLsYrKESYGv3Ud7sBNm/90LF
+	0yFSirPfYx6BzzuwsvzfXPo1o52fK0zHBSfvPGFF5hoquG7w3oyYKe+dyBpI8ZwMuDHKFX59iz2HZ
+	wSBrtvl2/T7zcMfNyheg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jddLB-0002GB-R7; Tue, 26 May 2020 17:26:13 +0000
-Received: from mail26.static.mailgun.info ([104.130.122.26])
+	id 1jdduc-0001c7-Uh; Tue, 26 May 2020 18:02:50 +0000
+Received: from mail-il1-f194.google.com ([209.85.166.194])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jddKu-00023s-P2
- for linux-mediatek@lists.infradead.org; Tue, 26 May 2020 17:26:03 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1590513962; h=Content-Transfer-Encoding: Content-Type:
- In-Reply-To: MIME-Version: Date: Message-ID: From: References: Cc: To:
- Subject: Sender; bh=Im6hIGPpJqtxzbNyAwrxrzA8oUaUroHuS60646TlJzw=;
- b=qhKcNS80sACOUarsU5NEFM6LA72VIv5jG7u+qyKDbtkzXGwym4NpXohqluEPTq+Gg6ZVgh5y
- yOwTD9fY02uabGz32D8WIDUXE9nSwJIRIWyMO77V1+Oh9VFK30waUhIuaJWmhndmeUIu/6bA
- MCj4M6KlYEVuiXh4a25qa3FcmDY=
-X-Mailgun-Sending-Ip: 104.130.122.26
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n01.prod.us-west-2.postgun.com with SMTP id
- 5ecd511837a454afcb5bf44a (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 26 May 2020 17:25:44
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 61B0FC433A1; Tue, 26 May 2020 17:25:44 +0000 (UTC)
-Received: from [192.168.8.176] (cpe-70-95-149-85.san.res.rr.com [70.95.149.85])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: asutoshd)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 85926C433CA;
- Tue, 26 May 2020 17:25:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 85926C433CA
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=none smtp.mailfrom=asutoshd@codeaurora.org
-Subject: Re: [PATCH v4 0/4] scsi: ufs: Fix WriteBooster and cleanup UFS driver
-To: Stanley Chu <stanley.chu@mediatek.com>, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-References: <20200522083212.4008-1-stanley.chu@mediatek.com>
-From: "Asutosh Das (asd)" <asutoshd@codeaurora.org>
-Message-ID: <a18ed057-e35b-b1b9-9ce2-718d7c3961fd@codeaurora.org>
-Date: Tue, 26 May 2020 10:25:41 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.1
+ id 1jddua-0001bJ-Sc; Tue, 26 May 2020 18:02:50 +0000
+Received: by mail-il1-f194.google.com with SMTP id q18so283348ilm.5;
+ Tue, 26 May 2020 11:02:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=YebaOmD7Ju0D8dp8+Jh6rQ27XVMpKBTe+xY/yyi+R5c=;
+ b=NNA7vXlIxRNPOK/CkGKLWYvzhWEXMn5KyFTPbk3rnc2cxKEeixOp5U8r1Hz3ZJEsyC
+ 56xq/W7KwQEYSInvwZfzWmL7LutqXWuXuJM325lStnq3r6dzaU5vG1vH+tMWolTOHWTD
+ iVyVHBE+6dD7Pc8fFB9K1e18K79GJLDmmyY87OLD+QuytygGtp61ljnx8jkHBQ6/Z1Hb
+ 7u67+xf0fUSlE8lrp7hPvEy8ZGy2YLcbix1TvF+jnzp2UyJeFWrVMqs6EX2ovmoRMYzo
+ lpyKC4DHuA5bJiUEJELa4NnyiU8ZJcqND8IkfOR0+WZbYTrNy4RzX4NOgS2bN7OamERw
+ It3w==
+X-Gm-Message-State: AOAM531OBciPIp4wBoiKNHrpNpkM5NB8UT+K26O/3mHBjE+XzUy+hk1G
+ HCCbHe881vi4xFAlftwfcA==
+X-Google-Smtp-Source: ABdhPJzHpsHTbs1kNcS5W7S2W7j2Tz56qjTVrOe7LVapF32Ul2j79RUmxJxaOWK3AAyJg24lmEWqow==
+X-Received: by 2002:a92:ce8e:: with SMTP id r14mr2366787ilo.265.1590516164859; 
+ Tue, 26 May 2020 11:02:44 -0700 (PDT)
+Received: from xps15 ([64.188.179.252])
+ by smtp.gmail.com with ESMTPSA id j90sm339624ilg.70.2020.05.26.11.02.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 May 2020 11:02:44 -0700 (PDT)
+Received: (nullmailer pid 76101 invoked by uid 1000);
+ Tue, 26 May 2020 18:02:43 -0000
+Date: Tue, 26 May 2020 12:02:43 -0600
+From: Rob Herring <robh@kernel.org>
+To: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: Re: [PATCH v15 01/11] dt-bindings: mediatek: Add property to mt8183
+ smi-common
+Message-ID: <20200526180243.GA75958@bogus>
+References: <1590051985-29149-1-git-send-email-weiyi.lu@mediatek.com>
+ <1590051985-29149-2-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <20200522083212.4008-1-stanley.chu@mediatek.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1590051985-29149-2-git-send-email-weiyi.lu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200526_102602_359549_3B1CF6C9 
-X-CRM114-Status: GOOD (  15.30  )
+X-CRM114-CacheID: sfid-20200526_110248_920940_F25CE81E 
+X-CRM114-Status: UNSURE (   8.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,51 +86,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Virtual_Global_UFS_Upstream@mediatek.com, bvanassche@acm.org,
- linux-kernel@vger.kernel.org, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>,
+ srv_heupstream@mediatek.com, James Liao <jamesjj.liao@mediatek.com>,
+ Enric Balletbo Serra <eballetbo@gmail.com>, linux-kernel@vger.kernel.org,
+ Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Sascha Hauer <kernel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/22/2020 1:32 AM, Stanley Chu wrote:
-> Hi,
+On Thu, 21 May 2020 17:06:14 +0800, Weiyi Lu wrote:
+> For scpsys driver using regmap based syscon driver API.
 > 
-> This patch set fixes some WriteBooster issues and do small cleanup in UFS driver
-> 
-> v3 -> v4
->    - Squash patch [4] and [5] (Asutosh)
->    - Fix commit message in patch [4]
-> 
-> v2 -> v3
->    - Introduce patch [5] to fix possible VCC power drain during runtime suspend (Asutosh)
-> 
-> v1 -> v2
->    - Remove dummy new line in patch [4] (Asutosh)
->    - Add more limitation to allow WriteBooster flush during Hibern8 in runtime-suspend. Now the device power mode is kept as Active power mode only if link is put in Hibern8 or Auto-Hibern8 is enabled during runtime-suspend (Asutosh)
-> 
-> Stanley Chu (4):
->    scsi: ufs: Remove unnecessary memset for dev_info
->    scsi: ufs: Allow WriteBooster on UFS 2.2 devices
->    scsi: ufs: Fix index of attributes query for WriteBooster feature
->    scsi: ufs: Fix WriteBooster flush during runtime suspend
-> 
->   drivers/scsi/ufs/ufs-sysfs.c | 13 ++++-
->   drivers/scsi/ufs/ufs.h       |  2 +-
->   drivers/scsi/ufs/ufshcd.c    | 99 +++++++++++++++++++++++++-----------
->   drivers/scsi/ufs/ufshcd.h    |  3 +-
->   4 files changed, 82 insertions(+), 35 deletions(-)
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> ---
+>  .../devicetree/bindings/memory-controllers/mediatek,smi-common.txt      | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 
-This set looks good to me.
-
-Reviewed-by: Asutosh Das <asutoshd@codeaurora.org>
-
--- 
-The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
-Linux Foundation Collaborative Project
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
