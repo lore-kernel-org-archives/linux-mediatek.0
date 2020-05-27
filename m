@@ -2,92 +2,84 @@ Return-Path: <SRS0=IT6v=7J=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27B28C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 16:54:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AE96BC433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 17:06:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C489C20787
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 16:54:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8423220873
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 17:06:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Xjln4aoa";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="1pg7ZmKY";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="ziHCJc/B"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C489C20787
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aFB/Nzq2";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="yPtc2Wor"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8423220873
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+Jy96k0MYu1PlCY5i+fwMSBCCXb0Olgp77G2HaErZBQ=; b=Xjln4aoakbrWAb4VX5VcPmJyZ
-	/I9cHVrm/pJQBDGcB1ub0SHhoWq5Nc42c+BHr7LE8bedwIiv5571bKOWgky1/kDZi5viCIdfxCmeR
-	ARz8Ev703cW6zgD5/rKr1pHwoxMNoQC4HG2LYHDPpl7uN3/3djYsaMPctvv7OoCttTl8xawMSL3eU
-	3unCxfuk05RGStf3gimNxEvpo75VKH4/tsixThJZix8e40Xfh2P4AzqOp/VfvRvr7S+hSV/ZXwrJ5
-	XTtPdG5AzgI+geO8Gxo2dYK0pcg/sC7LFBespb9LjPh8nsjRtKUcNbImdEpcXfjiP8xrtqvXqPsOk
-	0LB3TA64A==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bYWvUkxVWhwjp//JRFPM5fbxA30MPjGq2CV3ZYljxJk=; b=aFB/Nzq2tuX0Lp
+	CsvDcxxqCxJcJ3ehnNicgtuXKAkfkm3ktXblTH9RtJK9fnHvVnU3uQOWuJkOXexBL6kZgSL6YqaFr
+	I/64VW4TewAUGb+BkYmOF8YnxffvDbykK5JvFjFl6L78OVz9KUulDAmXRt841V/6pf0E51SN11yeD
+	2aBGsyzoyN4flQ33FJAp4SsPBbMZjq/HfrcXfd631jQzQ0pncfH9cB4CkuCC8guBSzLVxBSSDTUcY
+	f6cvN8Mmyj9Jjee/w51oYOWG6kJDZWYD2cBlw3wo1Dh7lKvXTITWdZjTsq69lU9QSqLZVjHBwsUqJ
+	j7mmduLyA6nJXM1iIGlQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jdzJa-00053A-Iq; Wed, 27 May 2020 16:54:02 +0000
-Received: from merlin.infradead.org ([205.233.59.134])
+	id 1jdzVx-00070L-Tl; Wed, 27 May 2020 17:06:49 +0000
+Received: from mail-qt1-x843.google.com ([2607:f8b0:4864:20::843])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jdzJP-0004cH-6L; Wed, 27 May 2020 16:53:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=Message-ID:References:In-Reply-To:
- Subject:Cc:To:From:Date:Content-Transfer-Encoding:Content-Type:MIME-Version:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=xy+PfdK7YcU+GoHJR/8613zlxNxsTfUuJJMNWDIOEsU=; b=1pg7ZmKY6IuO4JL4XQ/oq57prU
- MVQHCbZw3k1NwX8fg+29SagPs6z2vnnIF7GfnQofB9aTUIwkzNC3/3LFNL9w6AsT7d5EyR2Wp+xQa
- Y38IY/aO8V6XhduSMA2dukhF+ZRekfYqdD1Cg+S7eMlMDnJ2dwvaRnZ1VnPifAhmJ5a/979zATFJR
- GE13bZKshpyIGerNzUUdFyRRV8Esxfz5J6Ocl6Bh5Nj2JEZxrL/AssIuwkuxkNMcohcIs1yczstUf
- VRHgern67rkNOgSX3AR3BXABrnZ2JJj2mUy9QeOx3VunqxdABLSQVYe62X6Ze2rZDLxdB/KK+e1l4
- WWCOBCXA==;
-Received: from mail.kernel.org ([198.145.29.99])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jdz4y-0002us-8t; Wed, 27 May 2020 16:38:57 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6249F2084C;
- Wed, 27 May 2020 16:38:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1590597534;
- bh=HImJ4+KBT1EItcn7tHo4ZDvj8h7g5bsCnSP3idyTnU8=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=ziHCJc/BkN4BvcBfyp/vV678CKeJooERoRC/JHPfVI9uPFNE7ChPPE7R71siTdQ6T
- eDlmgsW+zRblIqKUT6Sz2ocsAh5noae3yuV9twRi95GCuRjNeeItJF7oczZwe2nJfv
- +yOmrJLGSpSBagyJ0EJQpyFCk/SP5A24OdyZK8s0=
-Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
- by disco-boy.misterjones.org with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
- (envelope-from <maz@kernel.org>)
- id 1jdz4u-00FlZB-JU; Wed, 27 May 2020 17:38:52 +0100
+ id 1jdzVn-0006rz-As
+ for linux-mediatek@lists.infradead.org; Wed, 27 May 2020 17:06:41 +0000
+Received: by mail-qt1-x843.google.com with SMTP id c12so9908974qtq.11
+ for <linux-mediatek@lists.infradead.org>; Wed, 27 May 2020 10:06:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=2Lhu2ZcEcwwrOR37CL1brFOzPiOBufKSZIC4FQQB508=;
+ b=yPtc2Wor4aOKqJgM9mCqbJiYDKwPnGCFGYXNxj12SXW369UtlgQZGLVdXV30NwYzZO
+ xOPRn6AmKsb53FSpNBpXSjdR7FkAeWtZQfeFNThPDTZ/zYr+b0vRman0zIjoUfQoW5qZ
+ xIHzSEuTDr68Xsyul5g7SSQnsI9O8JPUFz/TkKbNQ6fsO4MZ5Bt+HVOsqzKnZ7XF1L5l
+ BexiMBwU9qQeCUB+L9tgJGedJHoQwuRNZso/rQIerZHTtzLdBZUdqde0hGTbv4aQxgO6
+ HAUaM1GCCknfDzepc8ifaHScr+mr2SbwKX0HYEQRZMyuMN9DVgeK5trZQbWZQrU5o+A8
+ N6JA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=2Lhu2ZcEcwwrOR37CL1brFOzPiOBufKSZIC4FQQB508=;
+ b=cru+/WggGb6kJElXf8Qd8NR4H6yn3WDsxAbPj4p6PMeoqOqjuoTj3iPw/NIW3gZqdg
+ jjKwUiwpaxbbhrwBJ8UGWVJM5TonMDsnjclGRK93wQVuAohFEgxrGDmHdBDheo4tY9Bo
+ 2CrJHAazP1EPvJvwLlW9Eh3GZc/eKOvoxfheVlqr+u2cA/qN68PA55JJx8yQhsk3Zyu7
+ 75s6qZr1oVlAqSJxWGWgoJ1r3aK+WxeJP/lVd/zqYLCY7fIgQGAgkuNuwD04xNaKPLUA
+ aj1WAANeqDLx4JIPTL4soBkuYWOnv3AshZFvWo2yWcL+788lcGkXl0CMn+3dAl+ElR9e
+ MtsA==
+X-Gm-Message-State: AOAM531bz0xBsmbcz4gfOdtRV4I2HK7+i3qJhTuXAKjssfQDAC7k4gkY
+ 0u48tp3E+NyBbi2Lh6aCNup0FSl1pgShvsKgnxg7tg==
+X-Google-Smtp-Source: ABdhPJxROTeFQEz0Kn+FsZBDkx+YaHV9yORoWcoDONnKZ1wtXCH8knWZXCjA6zt9CuIPkUvqUfwQCzIFXddHejoBTyI=
+X-Received: by 2002:ac8:718d:: with SMTP id w13mr5369489qto.131.1590599197938; 
+ Wed, 27 May 2020 10:06:37 -0700 (PDT)
 MIME-Version: 1.0
-Date: Wed, 27 May 2020 17:38:52 +0100
-From: Marc Zyngier <maz@kernel.org>
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Subject: Re: [PATCH] irqchip/irq-mtk-sysirq: drop unnecessary spinlock
-In-Reply-To: <20200527161743.15972-1-brgl@bgdev.pl>
 References: <20200527161743.15972-1-brgl@bgdev.pl>
-User-Agent: Roundcube Webmail/1.4.4
-Message-ID: <58fca7418c8d18392562aaad2c3a6634@kernel.org>
-X-Sender: maz@kernel.org
-X-SA-Exim-Connect-IP: 51.254.78.96
-X-SA-Exim-Rcpt-To: brgl@bgdev.pl, tglx@linutronix.de, jason@lakedaemon.net,
- matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- fparent@baylibre.com, stephane.leprovost@mediatek.com, pedro.tsai@mediatek.com,
- andrew.perepech@mediatek.com, bgolaszewski@baylibre.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+ <58fca7418c8d18392562aaad2c3a6634@kernel.org>
+In-Reply-To: <58fca7418c8d18392562aaad2c3a6634@kernel.org>
+From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+Date: Wed, 27 May 2020 19:06:26 +0200
+Message-ID: <CAMpxmJVPB2+hD8mZ+Bo9=UVEist7BSJrZej5O9_9a_SmWyTanA@mail.gmail.com>
+Subject: Re: [PATCH] irqchip/irq-mtk-sysirq: drop unnecessary spinlock
+To: Marc Zyngier <maz@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20200527_100639_433971_3BD5F251 
+X-CRM114-Status: UNSURE (   7.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,134 +93,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: Jason Cooper <jason@lakedaemon.net>,
  Stephane Le Provost <stephane.leprovost@mediatek.com>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Pedro Tsai <pedro.tsai@mediatek.com>, linux-kernel@vger.kernel.org,
- Fabien Parent <fparent@baylibre.com>, linux-mediatek@lists.infradead.org,
+ Pedro Tsai <pedro.tsai@mediatek.com>, Bartosz Golaszewski <brgl@bgdev.pl>,
+ LKML <linux-kernel@vger.kernel.org>, Fabien Parent <fparent@baylibre.com>,
+ linux-mediatek@lists.infradead.org,
  Andrew Perepech <andrew.perepech@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+ Thomas Gleixner <tglx@linutronix.de>,
+ arm-soc <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-05-27 17:17, Bartosz Golaszewski wrote:
-> From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-> 
-> This driver takes a regular spinlock when a raw spinlock is already
-> taken which results in the following lockdep splat:
-> 
-> =============================
-> [ BUG: Invalid wait context ]
-> 5.7.0-rc6-02446-gb9827c0a9fe7-dirty #1 Not tainted
-> -----------------------------
-> swapper/0/0 is trying to lock:
-> ffffff800303b798 (&chip_data->lock){....}-{3:3}, at:
-> mtk_sysirq_set_type+0x48/0xc0
-> other info that might help us debug this:
-> context-{5:5}
-> 2 locks held by swapper/0/0:
->  #0: ffffff800302ee68 (&desc->request_mutex){....}-{4:4}, at:
-> __setup_irq+0xc4/0x8a0
->  #1: ffffff800302ecf0 (&irq_desc_lock_class){....}-{2:2}, at:
-> __setup_irq+0xe4/0x8a0
-> stack backtrace:
-> CPU: 0 PID: 0 Comm: swapper/0 Not tainted 
-> 5.7.0-rc6-02446-gb9827c0a9fe7-dirty #1
-> Hardware name: Pumpkin MT8516 (DT)
-> Call trace:
->  dump_backtrace+0x0/0x180
->  show_stack+0x14/0x20
->  dump_stack+0xd0/0x118
->  __lock_acquire+0x8c8/0x2270
->  lock_acquire+0xf8/0x470
->  _raw_spin_lock_irqsave+0x50/0x78
->  mtk_sysirq_set_type+0x48/0xc0
->  __irq_set_trigger+0x58/0x170
->  __setup_irq+0x420/0x8a0
->  request_threaded_irq+0xd8/0x190
->  timer_of_init+0x1e8/0x2c4
->  mtk_gpt_init+0x5c/0x1dc
->  timer_probe+0x74/0xf4
->  time_init+0x14/0x44
->  start_kernel+0x394/0x4f0
-> 
-> We don't need the spinlock here - the irq_set_type() callback is always
-> called with the irq_desc->lock taken. This removes the spinlock 
-> entirely.
-
-It looks really great. Not.
-
-> 
-> Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-> ---
->  drivers/irqchip/irq-mtk-sysirq.c | 6 ------
->  1 file changed, 6 deletions(-)
-> 
-> diff --git a/drivers/irqchip/irq-mtk-sysirq.c 
-> b/drivers/irqchip/irq-mtk-sysirq.c
-> index 73eae5966a40..da2fc4809222 100644
-> --- a/drivers/irqchip/irq-mtk-sysirq.c
-> +++ b/drivers/irqchip/irq-mtk-sysirq.c
-> @@ -12,10 +12,8 @@
->  #include <linux/of_address.h>
->  #include <linux/io.h>
->  #include <linux/slab.h>
-> -#include <linux/spinlock.h>
-> 
->  struct mtk_sysirq_chip_data {
-> -	spinlock_t lock;
->  	u32 nr_intpol_bases;
->  	void __iomem **intpol_bases;
->  	u32 *intpol_words;
-> @@ -30,14 +28,12 @@ static int mtk_sysirq_set_type(struct irq_data
-> *data, unsigned int type)
->  	u8 intpol_idx = chip_data->intpol_idx[hwirq];
->  	void __iomem *base;
->  	u32 offset, reg_index, value;
-> -	unsigned long flags;
->  	int ret;
-> 
->  	base = chip_data->intpol_bases[intpol_idx];
->  	reg_index = chip_data->which_word[hwirq];
->  	offset = hwirq & 0x1f;
-> 
-> -	spin_lock_irqsave(&chip_data->lock, flags);
->  	value = readl_relaxed(base + reg_index * 4);
->  	if (type == IRQ_TYPE_LEVEL_LOW || type == IRQ_TYPE_EDGE_FALLING) {
->  		if (type == IRQ_TYPE_LEVEL_LOW)
-> @@ -53,7 +49,6 @@ static int mtk_sysirq_set_type(struct irq_data
-> *data, unsigned int type)
-> 
->  	data = data->parent_data;
->  	ret = data->chip->irq_set_type(data, type);
-> -	spin_unlock_irqrestore(&chip_data->lock, flags);
->  	return ret;
->  }
-> 
-> @@ -212,7 +207,6 @@ static int __init mtk_sysirq_of_init(struct
-> device_node *node,
->  		ret = -ENOMEM;
->  		goto out_free_which_word;
->  	}
-> -	spin_lock_init(&chip_data->lock);
-> 
->  	return 0;
-
-Sight... Do you realize that these two locks do not protect the same
-thing at all? One protects the interrupt data, and the other protects
-the MMIO register which is shared between multiple interrupts, and
-on which the driver performs a RMW.
-
-Thanks to the removal of this spinlock, two irq_set_type() can execute
-in parallel and silently corrupt the register. Not exactly an 
-improvement.
-
-         M.
--- 
-Jazz is not dead. It just smells funny...
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+xZtyLiwgMjcgbWFqIDIwMjAgbyAxODozOCBNYXJjIFp5bmdpZXIgPG1hekBrZXJuZWwub3JnPiBu
+YXBpc2HFgihhKToKPgo+IFNpZ2h0Li4uIERvIHlvdSByZWFsaXplIHRoYXQgdGhlc2UgdHdvIGxv
+Y2tzIGRvIG5vdCBwcm90ZWN0IHRoZSBzYW1lCj4gdGhpbmcgYXQgYWxsPyBPbmUgcHJvdGVjdHMg
+dGhlIGludGVycnVwdCBkYXRhLCBhbmQgdGhlIG90aGVyIHByb3RlY3RzCj4gdGhlIE1NSU8gcmVn
+aXN0ZXIgd2hpY2ggaXMgc2hhcmVkIGJldHdlZW4gbXVsdGlwbGUgaW50ZXJydXB0cywgYW5kCj4g
+b24gd2hpY2ggdGhlIGRyaXZlciBwZXJmb3JtcyBhIFJNVy4KPgo+IFRoYW5rcyB0byB0aGUgcmVt
+b3ZhbCBvZiB0aGlzIHNwaW5sb2NrLCB0d28gaXJxX3NldF90eXBlKCkgY2FuIGV4ZWN1dGUKPiBp
+biBwYXJhbGxlbCBhbmQgc2lsZW50bHkgY29ycnVwdCB0aGUgcmVnaXN0ZXIuIE5vdCBleGFjdGx5
+IGFuCj4gaW1wcm92ZW1lbnQuCj4KCkVlayBJIG1pc3NlZCB0aGUgZmFjdCB0aGF0IHRoZSBpbnRl
+cm5hbCBsb2NrIGlzIHRpZWQgdG8gdGhlIGNoaXAsIG5vdAp0aGUgaW50ZXJydXB0LiBJbiB0aGF0
+IGNhc2UgSSdsbCBjb252ZXJ0IHRoaXMgc3BpbmxvY2sgdG8gYSByYXcgb25lLgoKQmFydAoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0
+ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
+L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
