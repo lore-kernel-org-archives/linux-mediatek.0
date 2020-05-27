@@ -2,23 +2,23 @@ Return-Path: <SRS0=IT6v=7J=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 90E0FC433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 06:49:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A68B7C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 07:32:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5E1632078C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 06:49:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 788CF2073B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 07:32:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YZSlDnuZ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="SmaCrk1L"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E1632078C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="U8KS9XYO";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="S+SvSCvK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 788CF2073B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -26,65 +26,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ALkVlPZYML9wfuq+Bn7JxjnqMxmefKK1/eLCrtqjDnQ=; b=YZSlDnuZwsFY36
-	1uz1lytF70NJL921lPNL15+kXiS601x0KQPAsZx1JEymZXlWfffhloo31pVyqcAvdsxgvjiTWE5B5
-	X2mhD1o+psnGV7oxsCHzhNk27CCbOl7vp7oH76dMchZknaQIFZS3OvYZNTATePz/tXHrJptlPsYGN
-	wkBNKydQ32LXb/sC1woqVc5NlwiRKtMT83cr3P0eEG1s9BNtugOHNtkHNHkfdMDoWIAEwVv52XDSb
-	oFn1T9qf8+uZJv6HRYhjWJUtE7s4MlwAtI81m3oMpW/biFA5ZgAa9CwZoaLzuF57YhL18AlcYl3EL
-	hqB6hJToGIdVOCXHfmwg==;
+	List-Owner; bh=sXdDhwfhjl3Hx8OFahk8gm6ntKh2LeWMutG029diZso=; b=U8KS9XYOllegUg
+	KQrhiOb+sMO68tYhOkEMDE9zHJAp4GlFd9kGJLx6ddpgcQeANjHt0MzB2EkGAKIKFbe5bUCny70pF
+	ZFE4HsBxC/XEr2O3Xq3dbbboEhZrsE49G4E5rmGybvobqpf0/TW0jmOk4epaXq1ACwztmCRxLUQuz
+	r9Tr0N+tnHovUXVNwc5CvxXB44q7oTapxA902oY/5vhc1UTlBoPoqrzr+wn64NvKUn0ePCNG+BHQB
+	qfQ9dHkgDpla9W6iPaCpk4nNhGawuJ7GOcFZd1Crsy/4CKD8b6e57UYFxX7Xcz3WDymq7yX+309Xc
+	EbRz0eXChXwiynFDP6Zw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jdpsX-0002EC-Vy; Wed, 27 May 2020 06:49:29 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1jdqXp-0000Ce-SY; Wed, 27 May 2020 07:32:09 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jdprn-0001pI-Qj
- for linux-mediatek@lists.infradead.org; Wed, 27 May 2020 06:48:45 +0000
-Received: by mail-wr1-x442.google.com with SMTP id e1so22857462wrt.5
- for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2020 23:48:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ id 1jdqXc-0008U1-0K; Wed, 27 May 2020 07:31:57 +0000
+Received: by mail-pg1-x542.google.com with SMTP id p30so11369297pgl.11;
+ Wed, 27 May 2020 00:31:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=7LeU+UdXoVHvFWpsdH5qXrt3tNYpvrrAzAhZwkjADGQ=;
- b=SmaCrk1LUTHh/o2KutIjiCIhUy4p30yQHnviy8ti4ZwcaHDwd6ws2zOoJXCD1GtH3d
- bHfOzstoNYWWf7Q0flomJc9/Nz+vo3BqmAUBxCS0XMXl/rFW+XzLLki0gr7egFYM4P16
- ykY1ein2Dd/+QdRZP7Lj2vHJfNOuWhM/Hhe3V8kkLDmFgm8fI4a48i9UKy0hlQC9tDmv
- +rSsqKf89zwOk29h+O6fEh8kYjKHu7igS1L3wGnbGxpU0tu1Pr4gzG9pcwYJzVZ36Zfp
- L7LGDbBn4PknYChrdqbWJYYZ9/kDIpS7Z/A+FGhPT8UEZFhhDetJW0xIkcc668cFQHu8
- g8TQ==
+ :content-disposition:in-reply-to;
+ bh=dDm+9Z+VPJSjQt7jMvgBvDOrkZkCZvbOfUxGN5gTgvk=;
+ b=S+SvSCvKaczRkh6E5rg4fK7H9JKrdv2NKFW/1Jl8phKXX0v58SP3vNScUBJJeZ1jiH
+ 9wLuz07hmh7lsd6yMzwVIkkkVf8ceMzdc0Yr6NBA6knAhwlR7t2dO3BIjvTCJ3OLCbD2
+ eiX5wWpq6qq7lit0AHrOMDrsc9wZAA/LPJbP3dVzoWAMjMaPLScRQHGXskjrUV5c3sb7
+ t/0QV6wVICKk9vPcOmHRH9xT2sdZam18hOEPpAHY8rWLzwzdQxnWPKS9L1QVix2lwmEo
+ IrwgiicjTwyOegjjNIG+cM8VayUT02sRe5t6mz8WhQ577Wlpb7Kl0FtGgsbzhKr0iCcx
+ MPXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=7LeU+UdXoVHvFWpsdH5qXrt3tNYpvrrAzAhZwkjADGQ=;
- b=aY34J9YW0OWTKTJqWOIJXek/5arPkCloagpLQUqaT8RR947SgcUs6rXlcZwv8KZJr3
- P+hkJBttbAmDVa4tU5JjUhD81QvBgVByOKtr2R5pI2dEQLSbTy6EF0us8wcwVYOg1XdZ
- Wg8JA4ax/C4XcKUw85DkUdkXDmjr5vKDjF+kc4NAhZBTUM0+aD9DuAF69QJxMEhmIVJa
- up833r+yPMffSUdvtz4nLHPd19p9EQFe6D8+MZbouCJoEL4cYQxjMKjo8bmQlp1Ebknk
- Tq1OYh/t5xi6b6Y3D4x4BOYdFvoVvYDnJO6Is+xlkXXDPbLGTh+s6lNZtN/cIMyj8UhQ
- J+Rg==
-X-Gm-Message-State: AOAM533J1GgxoTY67Gqd74r+mfqkkGdcsWTCZH29suHGC8bN3FilgiGx
- RErorBMIV529Dg2RiuVgddX/LQ==
-X-Google-Smtp-Source: ABdhPJzRJyz8F0b7HQ/1rq5CWl6Hbi5Qoq1hArVmbFt9djqf5RvekT+nqWLxuMM5Mz4mMLZA+HquTw==
-X-Received: by 2002:adf:a157:: with SMTP id r23mr9862016wrr.92.1590562121246; 
- Tue, 26 May 2020 23:48:41 -0700 (PDT)
-Received: from dell ([95.149.164.102])
- by smtp.gmail.com with ESMTPSA id j4sm1924642wrx.24.2020.05.26.23.48.40
+ :mime-version:content-disposition:in-reply-to;
+ bh=dDm+9Z+VPJSjQt7jMvgBvDOrkZkCZvbOfUxGN5gTgvk=;
+ b=axd8fdcbp+g7aopnVHkYdYtTx1kW0Mu2r3WOJCF7c1BUsTGv0mRU3VknlyvDADs9xS
+ 7Rk1/w+xNZQtYSLCHKfRM2+UYiGQMVTBvQshITRS0Xy5SJjAWcNpPadUKyOXoQgOmF0r
+ UA1bantGl6y+D53nJNDDqpkXVnrpTdd5mXkYBY3TJeEHblisrrAsCbNbOnYwcZ7kv78l
+ HAOCyrYXpPtpLwMZT1FtFVJPkC1NWs4Bd2G04MAhGc6w49YRsKZrqT0keqGdWAKOEM1w
+ ntbXCybG7arVP/BF/yLOQjI8SO3wQcNwQOj1C57LgePGDo+hALMZMnRVsNEuROQNvhDB
+ tPCw==
+X-Gm-Message-State: AOAM532iJInQUnRNIc7Hh/cCcDHIcEfixeN30917axHwYLbjUJwPEIqV
+ hALbK6tPkuNSuPWGytKZEYo=
+X-Google-Smtp-Source: ABdhPJzvlSTCcW6WROkDcDvZLRqu96Xzc6vtJDJ3FS/a0I++olF+01zUgD6+TMAJ9TnmwyAr3yE5Dg==
+X-Received: by 2002:a65:498f:: with SMTP id r15mr2697101pgs.345.1590564714992; 
+ Wed, 27 May 2020 00:31:54 -0700 (PDT)
+Received: from ubuntu-s3-xlarge-x86 ([2604:1380:4111:8b00::1])
+ by smtp.gmail.com with ESMTPSA id u14sm1371787pfc.87.2020.05.27.00.31.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 May 2020 23:48:40 -0700 (PDT)
-Date: Wed, 27 May 2020 07:48:39 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: Gene Chen <gene.chen.richtek@gmail.com>
-Subject: Re: [PATCH v9] mfd: mt6360: add pmic mt6360 driver
-Message-ID: <20200527064839.GO3628@dell>
-References: <1587641093-25441-1-git-send-email-gene.chen.richtek@gmail.com>
+ Wed, 27 May 2020 00:31:53 -0700 (PDT)
+Date: Wed, 27 May 2020 00:31:50 -0700
+From: Nathan Chancellor <natechancellor@gmail.com>
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Subject: Re: [PATCH v5 06/11] net: ethernet: mtk-star-emac: new driver
+Message-ID: <20200527073150.GA3384158@ubuntu-s3-xlarge-x86>
+References: <20200522120700.838-1-brgl@bgdev.pl>
+ <20200522120700.838-7-brgl@bgdev.pl>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1587641093-25441-1-git-send-email-gene.chen.richtek@gmail.com>
+In-Reply-To: <20200522120700.838-7-brgl@bgdev.pl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200526_234843_958022_71A6E230 
-X-CRM114-Status: UNSURE (   8.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200527_003156_055723_7354F853 
+X-CRM114-Status: GOOD (  17.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,30 +94,158 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- Wilma.Wu@mediatek.com, linux-arm-kernel@lists.infradead.org,
- shufan_lee@richtek.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Edwin Peer <edwin.peer@broadcom.com>, devicetree@vger.kernel.org,
+ Stephane Le Provost <stephane.leprovost@mediatek.com>,
+ Arnd Bergmann <arnd@arndb.de>, Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
+ linux-kernel@vger.kernel.org, Pedro Tsai <pedro.tsai@mediatek.com>,
+ "David S . Miller" <davem@davemloft.net>, Fabien Parent <fparent@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ clang-built-linux@googlegroups.com,
+ Andrew Perepech <andrew.perepech@mediatek.com>,
+ John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMyBBcHIgMjAyMCwgR2VuZSBDaGVuIHdyb3RlOgoKPiBBZGQgbWZkIGRyaXZlciBm
-b3IgbXQ2MzYwIHBtaWMgY2hpcCBpbmNsdWRlCj4gQmF0dGVyeSBDaGFyZ2VyL1VTQl9QRC9GbGFz
-aCBMRUQvUkdCIExFRC9MRE8vQnVjawoKSSBjaGFuZ2VkIHRoZSBzdWJqZWN0IGxpbmUgYW5kIGNv
-bW1pdCBsb2cgYSBiaXQuCgo+IFNpZ25lZC1vZmYtYnk6IEdlbmUgQ2hlbiA8Z2VuZV9jaGVuQHJp
-Y2h0ZWsuY29tPgo+IEFja2VkLWZvci1NRkQtYnk6IExlZSBKb25lcyA8bGVlLmpvbmVzQGxpbmFy
-by5vcmc+Cj4gLS0tCj4gIGRyaXZlcnMvbWZkL0tjb25maWcgICAgICAgIHwgIDEyICsrCj4gIGRy
-aXZlcnMvbWZkL01ha2VmaWxlICAgICAgIHwgICAxICsKPiAgZHJpdmVycy9tZmQvbXQ2MzYwLWNv
-cmUuYyAgfCA0MjUgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-Cj4gIGluY2x1ZGUvbGludXgvbWZkL210NjM2MC5oIHwgMjQwICsrKysrKysrKysrKysrKysrKysr
-KysrKysKPiAgNCBmaWxlcyBjaGFuZ2VkLCA2NzggaW5zZXJ0aW9ucygrKQo+ICBjcmVhdGUgbW9k
-ZSAxMDA2NDQgZHJpdmVycy9tZmQvbXQ2MzYwLWNvcmUuYwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQg
-aW5jbHVkZS9saW51eC9tZmQvbXQ2MzYwLmgKCkFwcGxpZWQsIHRoYW5rcy4KCi0tIApMZWUgSm9u
-ZXMgW+adjueQvOaWr10KTGluYXJvIFNlcnZpY2VzIFRlY2huaWNhbCBMZWFkCkxpbmFyby5vcmcg
-4pSCIE9wZW4gc291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29DcwpGb2xsb3cgTGluYXJvOiBGYWNl
-Ym9vayB8IFR3aXR0ZXIgfCBCbG9nCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Fri, May 22, 2020 at 02:06:55PM +0200, Bartosz Golaszewski wrote:
+
+<snip>
+
+> diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+> new file mode 100644
+> index 000000000000..789c77af501f
+> --- /dev/null
+> +++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+> @@ -0,0 +1,1678 @@
+
+<snip>
+
+I've searched netdev and I cannot find any reports from others but this
+function introduces a clang warning:
+
+drivers/net/ethernet/mediatek/mtk_star_emac.c:1296:6: warning: variable 'new_dma_addr' is used uninitialized whenever 'if' condition is true [-Wsometimes-uninitialized]
+        if (!new_skb) {
+            ^~~~~~~~
+drivers/net/ethernet/mediatek/mtk_star_emac.c:1321:23: note: uninitialized use occurs here
+        desc_data.dma_addr = new_dma_addr;
+                             ^~~~~~~~~~~~
+drivers/net/ethernet/mediatek/mtk_star_emac.c:1296:2: note: remove the 'if' if its condition is always false
+        if (!new_skb) {
+        ^~~~~~~~~~~~~~~
+drivers/net/ethernet/mediatek/mtk_star_emac.c:1285:6: warning: variable 'new_dma_addr' is used uninitialized whenever 'if' condition is true [-Wsometimes-uninitialized]
+        if ((desc_data.flags & MTK_STAR_DESC_BIT_RX_CRCE) ||
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+drivers/net/ethernet/mediatek/mtk_star_emac.c:1321:23: note: uninitialized use occurs here
+        desc_data.dma_addr = new_dma_addr;
+                             ^~~~~~~~~~~~
+drivers/net/ethernet/mediatek/mtk_star_emac.c:1285:2: note: remove the 'if' if its condition is always false
+        if ((desc_data.flags & MTK_STAR_DESC_BIT_RX_CRCE) ||
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+drivers/net/ethernet/mediatek/mtk_star_emac.c:1285:6: warning: variable 'new_dma_addr' is used uninitialized whenever '||' condition is true [-Wsometimes-uninitialized]
+        if ((desc_data.flags & MTK_STAR_DESC_BIT_RX_CRCE) ||
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+drivers/net/ethernet/mediatek/mtk_star_emac.c:1321:23: note: uninitialized use occurs here
+        desc_data.dma_addr = new_dma_addr;
+                             ^~~~~~~~~~~~
+drivers/net/ethernet/mediatek/mtk_star_emac.c:1285:6: note: remove the '||' if its condition is always false
+        if ((desc_data.flags & MTK_STAR_DESC_BIT_RX_CRCE) ||
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+drivers/net/ethernet/mediatek/mtk_star_emac.c:1274:25: note: initialize the variable 'new_dma_addr' to silence this warning
+        dma_addr_t new_dma_addr;
+                               ^
+                                = 0
+3 warnings generated.
+
+> +static int mtk_star_receive_packet(struct mtk_star_priv *priv)
+> +{
+> +	struct mtk_star_ring *ring = &priv->rx_ring;
+> +	struct device *dev = mtk_star_get_dev(priv);
+> +	struct mtk_star_ring_desc_data desc_data;
+> +	struct net_device *ndev = priv->ndev;
+> +	struct sk_buff *curr_skb, *new_skb;
+> +	dma_addr_t new_dma_addr;
+
+Uninitialized here
+
+> +	int ret;
+> +
+> +	spin_lock(&priv->lock);
+> +	ret = mtk_star_ring_pop_tail(ring, &desc_data);
+> +	spin_unlock(&priv->lock);
+> +	if (ret)
+> +		return -1;
+> +
+> +	curr_skb = desc_data.skb;
+> +
+> +	if ((desc_data.flags & MTK_STAR_DESC_BIT_RX_CRCE) ||
+> +	    (desc_data.flags & MTK_STAR_DESC_BIT_RX_OSIZE)) {
+> +		/* Error packet -> drop and reuse skb. */
+> +		new_skb = curr_skb;
+> +		goto push_new_skb;
+
+this goto
+
+> +	}
+> +
+> +	/* Prepare new skb before receiving the current one. Reuse the current
+> +	 * skb if we fail at any point.
+> +	 */
+> +	new_skb = mtk_star_alloc_skb(ndev);
+> +	if (!new_skb) {
+> +		ndev->stats.rx_dropped++;
+> +		new_skb = curr_skb;
+> +		goto push_new_skb;
+
+and this goto
+
+> +	}
+> +
+> +	new_dma_addr = mtk_star_dma_map_rx(priv, new_skb);
+> +	if (dma_mapping_error(dev, new_dma_addr)) {
+> +		ndev->stats.rx_dropped++;
+> +		dev_kfree_skb(new_skb);
+> +		new_skb = curr_skb;
+> +		netdev_err(ndev, "DMA mapping error of RX descriptor\n");
+> +		goto push_new_skb;
+> +	}
+> +
+> +	/* We can't fail anymore at this point: it's safe to unmap the skb. */
+> +	mtk_star_dma_unmap_rx(priv, &desc_data);
+> +
+> +	skb_put(desc_data.skb, desc_data.len);
+> +	desc_data.skb->ip_summed = CHECKSUM_NONE;
+> +	desc_data.skb->protocol = eth_type_trans(desc_data.skb, ndev);
+> +	desc_data.skb->dev = ndev;
+> +	netif_receive_skb(desc_data.skb);
+> +
+> +push_new_skb:
+> +	desc_data.dma_addr = new_dma_addr;
+
+assign it uninitialized here.
+
+> +	desc_data.len = skb_tailroom(new_skb);
+> +	desc_data.skb = new_skb;
+> +
+> +	spin_lock(&priv->lock);
+> +	mtk_star_ring_push_head_rx(ring, &desc_data);
+> +	spin_unlock(&priv->lock);
+> +
+> +	return 0;
+> +}
+
+I don't know if there should be a new label that excludes that
+assignment for those particular gotos or if new_dma_addr should
+be initialized to something at the top. Please take a look at
+addressing this when you get a chance.
+
+Cheers,
+Nathan
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
