@@ -2,76 +2,89 @@ Return-Path: <SRS0=IT6v=7J=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E6E99C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 06:26:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 90E0FC433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 06:49:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B92E12078C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 06:26:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5E1632078C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 06:49:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WXHqzYSv";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qa3bSPrv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B92E12078C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YZSlDnuZ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="SmaCrk1L"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E1632078C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=g8Xz4H+gFiKxSc2hcQTRYOvZuRdu0CNuX2zGhQwLhbo=; b=WXHqzYSvTbn+wu
-	qzZh2ahs4aJTQ/IocecMvuYrzjNz/JvQ+ziAXFl/gIeCIDpcMvq37JhcKckC3mplgq2M3RIeLarJR
-	09u/EGFQTRgMTxsdEaARkfYErRmbswGF4UwoEtE49yciqz1XASSBVhyvJsvdw3pg/gSdH4o8Dvolo
-	bC2x22HLR2T/8Gy1FeM6KLlJ/kGSOeBQXJiBCNCfXtMxS7tqbWRNiJky2nUeBs3D1ueEIxWD3tS4s
-	U0dwkpNepsOiYChWHzQkftwRCNAUcnzIupcV/BJkvqOjr54xA/IPmTX6BzQz7n4iSJ3fvPiZYWjU8
-	qYMi4KS/pssxw5sFiZRg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ALkVlPZYML9wfuq+Bn7JxjnqMxmefKK1/eLCrtqjDnQ=; b=YZSlDnuZwsFY36
+	1uz1lytF70NJL921lPNL15+kXiS601x0KQPAsZx1JEymZXlWfffhloo31pVyqcAvdsxgvjiTWE5B5
+	X2mhD1o+psnGV7oxsCHzhNk27CCbOl7vp7oH76dMchZknaQIFZS3OvYZNTATePz/tXHrJptlPsYGN
+	wkBNKydQ32LXb/sC1woqVc5NlwiRKtMT83cr3P0eEG1s9BNtugOHNtkHNHkfdMDoWIAEwVv52XDSb
+	oFn1T9qf8+uZJv6HRYhjWJUtE7s4MlwAtI81m3oMpW/biFA5ZgAa9CwZoaLzuF57YhL18AlcYl3EL
+	hqB6hJToGIdVOCXHfmwg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jdpW9-0005ih-PX; Wed, 27 May 2020 06:26:21 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jdpsX-0002EC-Vy; Wed, 27 May 2020 06:49:29 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jdpVy-0005ZQ-MG; Wed, 27 May 2020 06:26:12 +0000
-X-UUID: f015e84058bb43428e434ba0bdb2fae5-20200526
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=3JgPtKgRdy8ddR7xtaWXijDFOHGnyaGurBt3CDZDbJc=; 
- b=qa3bSPrvl0ZaXE29kjfi/OCbwK/CBns3iU/bn193BTzTIC8m9KXM7e+ODSYjAyw4m/MhHBZ64uESU0j3wJdPRzr2SXv3k15qGdBMpe6favG1RWr12y3QHPawBEzy0oMy/v1gokoVwDoouJLug0hDk5423JdQnefmWRUEb6k0DFA=;
-X-UUID: f015e84058bb43428e434ba0bdb2fae5-20200526
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <weiyi.lu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1518370596; Tue, 26 May 2020 22:25:54 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 26 May 2020 23:25:59 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 27 May 2020 14:25:52 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 27 May 2020 14:25:52 +0800
-From: Weiyi Lu <weiyi.lu@mediatek.com>
-To: Nicolas Boichat <drinkcat@chromium.org>, Stephen Boyd <sboyd@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v2] clk: mediatek: assign the initial value to clk_init_data
- of mtk_mux
-Date: Wed, 27 May 2020 14:25:49 +0800
-Message-ID: <1590560749-29136-1-git-send-email-weiyi.lu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
+ id 1jdprn-0001pI-Qj
+ for linux-mediatek@lists.infradead.org; Wed, 27 May 2020 06:48:45 +0000
+Received: by mail-wr1-x442.google.com with SMTP id e1so22857462wrt.5
+ for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2020 23:48:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=7LeU+UdXoVHvFWpsdH5qXrt3tNYpvrrAzAhZwkjADGQ=;
+ b=SmaCrk1LUTHh/o2KutIjiCIhUy4p30yQHnviy8ti4ZwcaHDwd6ws2zOoJXCD1GtH3d
+ bHfOzstoNYWWf7Q0flomJc9/Nz+vo3BqmAUBxCS0XMXl/rFW+XzLLki0gr7egFYM4P16
+ ykY1ein2Dd/+QdRZP7Lj2vHJfNOuWhM/Hhe3V8kkLDmFgm8fI4a48i9UKy0hlQC9tDmv
+ +rSsqKf89zwOk29h+O6fEh8kYjKHu7igS1L3wGnbGxpU0tu1Pr4gzG9pcwYJzVZ36Zfp
+ L7LGDbBn4PknYChrdqbWJYYZ9/kDIpS7Z/A+FGhPT8UEZFhhDetJW0xIkcc668cFQHu8
+ g8TQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=7LeU+UdXoVHvFWpsdH5qXrt3tNYpvrrAzAhZwkjADGQ=;
+ b=aY34J9YW0OWTKTJqWOIJXek/5arPkCloagpLQUqaT8RR947SgcUs6rXlcZwv8KZJr3
+ P+hkJBttbAmDVa4tU5JjUhD81QvBgVByOKtr2R5pI2dEQLSbTy6EF0us8wcwVYOg1XdZ
+ Wg8JA4ax/C4XcKUw85DkUdkXDmjr5vKDjF+kc4NAhZBTUM0+aD9DuAF69QJxMEhmIVJa
+ up833r+yPMffSUdvtz4nLHPd19p9EQFe6D8+MZbouCJoEL4cYQxjMKjo8bmQlp1Ebknk
+ Tq1OYh/t5xi6b6Y3D4x4BOYdFvoVvYDnJO6Is+xlkXXDPbLGTh+s6lNZtN/cIMyj8UhQ
+ J+Rg==
+X-Gm-Message-State: AOAM533J1GgxoTY67Gqd74r+mfqkkGdcsWTCZH29suHGC8bN3FilgiGx
+ RErorBMIV529Dg2RiuVgddX/LQ==
+X-Google-Smtp-Source: ABdhPJzRJyz8F0b7HQ/1rq5CWl6Hbi5Qoq1hArVmbFt9djqf5RvekT+nqWLxuMM5Mz4mMLZA+HquTw==
+X-Received: by 2002:adf:a157:: with SMTP id r23mr9862016wrr.92.1590562121246; 
+ Tue, 26 May 2020 23:48:41 -0700 (PDT)
+Received: from dell ([95.149.164.102])
+ by smtp.gmail.com with ESMTPSA id j4sm1924642wrx.24.2020.05.26.23.48.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 May 2020 23:48:40 -0700 (PDT)
+Date: Wed, 27 May 2020 07:48:39 +0100
+From: Lee Jones <lee.jones@linaro.org>
+To: Gene Chen <gene.chen.richtek@gmail.com>
+Subject: Re: [PATCH v9] mfd: mt6360: add pmic mt6360 driver
+Message-ID: <20200527064839.GO3628@dell>
+References: <1587641093-25441-1-git-send-email-gene.chen.richtek@gmail.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: BFDC40E46F0324815F4D3721A56AD387881A75494A619CD8E2BD5B4CD48C0DC62000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1587641093-25441-1-git-send-email-gene.chen.richtek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200526_232610_731022_FEBD8D5D 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20200526_234843_958022_71A6E230 
+X-CRM114-Status: UNSURE (   8.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,48 +96,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>,
- srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
- stable@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>,
- linux-mediatek@lists.infradead.org, Owen Chen <owen.chen@mediatek.com>,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: gene_chen@richtek.com, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ Wilma.Wu@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ shufan_lee@richtek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When some new clock supports are introduced, e.g. [1]
-it might lead to an error although it should be NULL because
-clk_init_data is on the stack and it might have random values
-if using without initialization.
-Add the missing initial value to clk_init_data.
-
-[1] https://android-review.googlesource.com/c/kernel/common/+/1278046
-
-Fixes: a3ae549917f1 ("clk: mediatek: Add new clkmux register API")
-Cc: <stable@vger.kernel.org>
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
----
- drivers/clk/mediatek/clk-mux.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
-index 76f9cd0..14e127e 100644
---- a/drivers/clk/mediatek/clk-mux.c
-+++ b/drivers/clk/mediatek/clk-mux.c
-@@ -160,7 +160,7 @@ struct clk *mtk_clk_register_mux(const struct mtk_mux *mux,
- 				 spinlock_t *lock)
- {
- 	struct mtk_clk_mux *clk_mux;
--	struct clk_init_data init;
-+	struct clk_init_data init = {};
- 	struct clk *clk;
- 
- 	clk_mux = kzalloc(sizeof(*clk_mux), GFP_KERNEL);
--- 
-1.8.1.1.dirty
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gVGh1LCAyMyBBcHIgMjAyMCwgR2VuZSBDaGVuIHdyb3RlOgoKPiBBZGQgbWZkIGRyaXZlciBm
+b3IgbXQ2MzYwIHBtaWMgY2hpcCBpbmNsdWRlCj4gQmF0dGVyeSBDaGFyZ2VyL1VTQl9QRC9GbGFz
+aCBMRUQvUkdCIExFRC9MRE8vQnVjawoKSSBjaGFuZ2VkIHRoZSBzdWJqZWN0IGxpbmUgYW5kIGNv
+bW1pdCBsb2cgYSBiaXQuCgo+IFNpZ25lZC1vZmYtYnk6IEdlbmUgQ2hlbiA8Z2VuZV9jaGVuQHJp
+Y2h0ZWsuY29tPgo+IEFja2VkLWZvci1NRkQtYnk6IExlZSBKb25lcyA8bGVlLmpvbmVzQGxpbmFy
+by5vcmc+Cj4gLS0tCj4gIGRyaXZlcnMvbWZkL0tjb25maWcgICAgICAgIHwgIDEyICsrCj4gIGRy
+aXZlcnMvbWZkL01ha2VmaWxlICAgICAgIHwgICAxICsKPiAgZHJpdmVycy9tZmQvbXQ2MzYwLWNv
+cmUuYyAgfCA0MjUgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+Cj4gIGluY2x1ZGUvbGludXgvbWZkL210NjM2MC5oIHwgMjQwICsrKysrKysrKysrKysrKysrKysr
+KysrKysKPiAgNCBmaWxlcyBjaGFuZ2VkLCA2NzggaW5zZXJ0aW9ucygrKQo+ICBjcmVhdGUgbW9k
+ZSAxMDA2NDQgZHJpdmVycy9tZmQvbXQ2MzYwLWNvcmUuYwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQg
+aW5jbHVkZS9saW51eC9tZmQvbXQ2MzYwLmgKCkFwcGxpZWQsIHRoYW5rcy4KCi0tIApMZWUgSm9u
+ZXMgW+adjueQvOaWr10KTGluYXJvIFNlcnZpY2VzIFRlY2huaWNhbCBMZWFkCkxpbmFyby5vcmcg
+4pSCIE9wZW4gc291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29DcwpGb2xsb3cgTGluYXJvOiBGYWNl
+Ym9vayB8IFR3aXR0ZXIgfCBCbG9nCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtA
+bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
