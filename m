@@ -2,89 +2,88 @@ Return-Path: <SRS0=IT6v=7J=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CC32FC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 16:36:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6DA68C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 16:40:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 76FAE20899
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 16:36:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 36F482065C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 16:40:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Kct2kH4R";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="PAMb3Gig"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 76FAE20899
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Hatg2N3s";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="ptX7rsY0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 36F482065C
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bgdev.pl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rItjM7hoOMLGSn38I4DlWwUhEESYuLd0IZIejp4umWs=; b=Kct2kH4RYOtRoY
-	GtU8JFYkJJ7YKLMOP6KIXVk45wPmGnWczmLcopBX08oUdHi/fZ3xsbw+Jnlh6gibL8e74gG3Ny7RV
-	ByCJ1b/We4EUnonl5fJUtx2kDXVIRENjBqCNLfeRrmRHqehH4+lwCPIr264PBAVDaI5W3iXbMma1N
-	nImM7/pakdZZlGoLWmlZsc444AnblaBFurtQwIjJjqSDWy3ONx7MD3ByvjRbESoPyKKNmOII5iGSg
-	vOmBmudem8pgtJ9nX1jJXbcZLsFVJ4eQD6vAJODKEBFWaL/+KjBChxJQtx9i9EJw0Cfx+j9a5M3qX
-	FI7Teez2lWkCGb2af+ew==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=oZOSAn1UbuWcDk/xEUFPqJbsXndEW1zMyAVYqPCJI/M=; b=Hatg2N3sbTAkfN
+	hfGLwVRxV/8F0ImRRJE4xbceIlhF+EdzGUXaj2F04Eu/VWJfZ3nZt0vrGeAIGBSwRvwDYBM3yqJOS
+	bMXVQMdHNhPkcCPld0CAwUjPWTmSs5C/1JfIP+0TF9d5SL5WYyzJ6hEIL8j+nVcB0NWXM2iUUiStL
+	hVJsJt7TxGDgl9+5fuEycZfxjrIdrsVfKWuw3BCeruFqOnxeIILcDqCRd1kZRuZgb3BHQKoo2W5sf
+	JPnUAKYKd8oyueUXdfyLFcxMaU3wsZHPf0uRPf4wjW6FdppcBYf2GNy4jcwqkkulv5IfBaXETE05g
+	+Ej8Kwn10XNb4tQA9WfQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jdz2M-0006lU-0U; Wed, 27 May 2020 16:36:14 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1jdz6Y-0004Ve-4r; Wed, 27 May 2020 16:40:34 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jdyOK-0004Er-IF; Wed, 27 May 2020 15:54:54 +0000
-Received: by mail-pl1-x642.google.com with SMTP id m7so10281311plt.5;
- Wed, 27 May 2020 08:54:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=nkIhbxtFT/sWyLG+CNPMvzFZfh5YwCelX3IPeKtDVng=;
- b=PAMb3Gighhz0cCKhjZLQ89rDfM+umkVZTkpYgFwBdzZ9PIGR1KNuJfANRSBsICHGU1
- 9GFY4+NhktZozymnBZgQaGPkn8QdPxDOXGhFk13RvLQfW7JVN2KYbsdVXfBT1OinJLIp
- zrRy0l+YVDGcMRQy8Ldm4ZecscejFQHzikG3HLWm++8UC3ai8KnWZCyKH6z7T/HA1xRI
- Wp+WUBUbWpR2kBaZ0JpFXShORG+eXejQ1vCRS83kPuIkPDQqhhjsTVcFK0GFU7CbfTMs
- dACufN3iOpLHsbWp1FGFQTUumq0BZHbJAIhG4FZ5GeQo+es6H96EK3UqJhZ/+Te+5OLe
- Y23A==
+ id 1jdykb-0007ou-1o
+ for linux-mediatek@lists.infradead.org; Wed, 27 May 2020 16:18:19 +0000
+Received: by mail-wr1-x441.google.com with SMTP id y17so16205859wrn.11
+ for <linux-mediatek@lists.infradead.org>; Wed, 27 May 2020 09:17:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=qSgUFPU/lmBJj5c376kcW/aHDA5eHqQfL3OqaeYjnYo=;
+ b=ptX7rsY0ZtKBP9iNOKmKbnieslpshoIG/AuK/vjmExfbtz91dlVxapurUhIt8TSL2m
+ HToH7PGQncAnPCXVB22Wt5lTZpNNph3feLKP7ck5Hlsc3UkBkIjPa9ik8UcCQqzUbJ+/
+ 9rLZ+0kpIxzsVKEkFdZGSFY8PWDa0fEm5/nUjbSrO9CCHUYyzjBzFpPrYv4Fedkfg9sf
+ p55JFi3GQ9zxbfrNcP0trL1zs+e7Fk5JpTrCGS3yt/tc4gONsA1umQxkFTirQM9YNDg2
+ dmgNSyiytQQCRM4GcZhEM+6u74vyWbyZ0VnrSZ8+iN6AJ33YV/9sD8BiZecdK1u1ceNy
+ OOCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=nkIhbxtFT/sWyLG+CNPMvzFZfh5YwCelX3IPeKtDVng=;
- b=JAEhq6OwdEVRH3LtcwGd7voD0W3QZCA6KG4xc+mzfGRcBXUgjzGdbxc85inywLRCZd
- 40jZ9Cbx2aTXiczp0ds0NQ50+MuAEG7CtIfGbuvU09BW0Tou6yeyAeL71KIBzEyjecw4
- 9vvIBKBEuae9qwBd7fyfyfPRK6T+uADY653sWzWrHT4KjBLdj44EzBbHyw7CxUQH10cJ
- q9f0wjH2fPo5y3qjS5JwP1egKaO6+qR/R9nvVArTyQqoFM1mnVOR1f8PJ7nvtzxe4SG4
- CdiNc1rWeWGKmA1KagjH7a5tp6q/8ywkYiZPVJMKigGh9pBHZiSgfU1UHAKrF1XwxyGF
- jcsQ==
-X-Gm-Message-State: AOAM5326ZGpJgz7RNhGqOH/t3eQSm92dfeJHspl9K5ZCJnSq8AvQ5E3X
- rn7J92orMcGAWTrbdxhqNogrl0q602A=
-X-Google-Smtp-Source: ABdhPJxjWquEPV+JeRdzbhyTylh3GgQILPCaziRrufi5RFxgpIErfBy/fC56S/kQiDi7y42BfuoXZQ==
-X-Received: by 2002:a17:902:9882:: with SMTP id
- s2mr6368400plp.184.1590594891507; 
- Wed, 27 May 2020 08:54:51 -0700 (PDT)
-Received: from ubuntu-s3-xlarge-x86 ([2604:1380:4111:8b00::1])
- by smtp.gmail.com with ESMTPSA id q44sm3286859pja.2.2020.05.27.08.54.49
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=qSgUFPU/lmBJj5c376kcW/aHDA5eHqQfL3OqaeYjnYo=;
+ b=KI864LMXzN/XWrO+icLYhSis/TemfD1An5FMDQ2zBnevA6kfnAXkTr7y3ANpUQn+MP
+ kHhO9JTAUESBWCVVLaQjdHsAYbC0YsGLJxdGyWp/ctOZc0hbzeyzUqpqf/UEgnBNe9Sl
+ gfnt7HxfIpHKXvsrPlm0OpuCdLIYlp/uK0CCFES+CZ3+77WJOFWVPfrhY59DV85azuJ7
+ iaaOuUbfFhJr8zEKSJc3r5zj1ZvwH6ymU00GSZ2ZhTZwwtWaGT0/QoJDVkPQYrsSyxeY
+ rgYFiaZgfZ8pBmQ0zyI2wzLr5NPufAynAgUPdBSBwSe4iPJqgI3SOVYR99zH712PIo6u
+ b/EA==
+X-Gm-Message-State: AOAM532NafMXzruGgGHOo7fndjOxzlzUdqJpDSafQyvl63UrNgovNM8y
+ JiqnPBX8UTP4xDYiPrUJm2BtAQ==
+X-Google-Smtp-Source: ABdhPJwkfI8vfcy2wHmTP3rC760TSjRdMUEuJibRF0yfB2ObnbADS8LUP77SQMPqRpunP/H6g3ssJg==
+X-Received: by 2002:adf:e751:: with SMTP id c17mr10340714wrn.134.1590596271251; 
+ Wed, 27 May 2020 09:17:51 -0700 (PDT)
+Received: from localhost.localdomain (lfbn-nic-1-65-232.w2-15.abo.wanadoo.fr.
+ [2.15.156.232])
+ by smtp.gmail.com with ESMTPSA id w12sm3364038wmk.12.2020.05.27.09.17.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 May 2020 08:54:50 -0700 (PDT)
-Date: Wed, 27 May 2020 08:54:47 -0700
-From: Nathan Chancellor <natechancellor@gmail.com>
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Subject: Re: [PATCH] net: ethernet: mtk-star-emac: fix error path in RX
- handling
-Message-ID: <20200527155447.GA568403@ubuntu-s3-xlarge-x86>
-References: <20200527092404.3567-1-brgl@bgdev.pl>
+ Wed, 27 May 2020 09:17:50 -0700 (PDT)
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+To: Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>,
+ Marc Zyngier <maz@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH] irqchip/irq-mtk-sysirq: drop unnecessary spinlock
+Date: Wed, 27 May 2020 18:17:43 +0200
+Message-Id: <20200527161743.15972-1-brgl@bgdev.pl>
+X-Mailer: git-send-email 2.25.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200527092404.3567-1-brgl@bgdev.pl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200527_085452_713059_49544BA6 
-X-CRM114-Status: GOOD (  15.49  )
+X-CRM114-CacheID: sfid-20200527_091753_105220_EA6CF7D4 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,61 +96,109 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: Stephane Le Provost <stephane.leprovost@mediatek.com>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>, netdev@vger.kernel.org,
- Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
- Mark Lee <Mark-MC.Lee@mediatek.com>, Fabien Parent <fparent@baylibre.com>,
- Pedro Tsai <pedro.tsai@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Pedro Tsai <pedro.tsai@mediatek.com>, linux-kernel@vger.kernel.org,
+ Fabien Parent <fparent@baylibre.com>, linux-mediatek@lists.infradead.org,
  Andrew Perepech <andrew.perepech@mediatek.com>,
- John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Jakub Kicinski <kuba@kernel.org>, "David S . Miller" <davem@davemloft.net>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 27, 2020 at 11:24:04AM +0200, Bartosz Golaszewski wrote:
-> From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-> 
-> The dma_addr field in desc_data must not be overwritten until after the
-> new skb is mapped. Currently we do replace it with uninitialized value
-> in error path. This change fixes it by moving the assignment before the
-> label to which we jump after mapping or allocation errors.
-> 
-> Fixes: 8c7bd5a454ff ("net: ethernet: mtk-star-emac: new driver")
-> Reported-by: Nathan Chancellor <natechancellor@gmail.com>
-> Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 
-Tested-by: Nathan Chancellor <natechancellor@gmail.com> # build
+This driver takes a regular spinlock when a raw spinlock is already
+taken which results in the following lockdep splat:
 
-> ---
->  drivers/net/ethernet/mediatek/mtk_star_emac.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-> index b74349cede28..72bb624a6a68 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-> @@ -1308,6 +1308,8 @@ static int mtk_star_receive_packet(struct mtk_star_priv *priv)
->  		goto push_new_skb;
->  	}
->  
-> +	desc_data.dma_addr = new_dma_addr;
-> +
->  	/* We can't fail anymore at this point: it's safe to unmap the skb. */
->  	mtk_star_dma_unmap_rx(priv, &desc_data);
->  
-> @@ -1318,7 +1320,6 @@ static int mtk_star_receive_packet(struct mtk_star_priv *priv)
->  	netif_receive_skb(desc_data.skb);
->  
->  push_new_skb:
-> -	desc_data.dma_addr = new_dma_addr;
->  	desc_data.len = skb_tailroom(new_skb);
->  	desc_data.skb = new_skb;
->  
-> -- 
-> 2.25.0
-> 
+=============================
+[ BUG: Invalid wait context ]
+5.7.0-rc6-02446-gb9827c0a9fe7-dirty #1 Not tainted
+-----------------------------
+swapper/0/0 is trying to lock:
+ffffff800303b798 (&chip_data->lock){....}-{3:3}, at: mtk_sysirq_set_type+0x48/0xc0
+other info that might help us debug this:
+context-{5:5}
+2 locks held by swapper/0/0:
+ #0: ffffff800302ee68 (&desc->request_mutex){....}-{4:4}, at: __setup_irq+0xc4/0x8a0
+ #1: ffffff800302ecf0 (&irq_desc_lock_class){....}-{2:2}, at: __setup_irq+0xe4/0x8a0
+stack backtrace:
+CPU: 0 PID: 0 Comm: swapper/0 Not tainted 5.7.0-rc6-02446-gb9827c0a9fe7-dirty #1
+Hardware name: Pumpkin MT8516 (DT)
+Call trace:
+ dump_backtrace+0x0/0x180
+ show_stack+0x14/0x20
+ dump_stack+0xd0/0x118
+ __lock_acquire+0x8c8/0x2270
+ lock_acquire+0xf8/0x470
+ _raw_spin_lock_irqsave+0x50/0x78
+ mtk_sysirq_set_type+0x48/0xc0
+ __irq_set_trigger+0x58/0x170
+ __setup_irq+0x420/0x8a0
+ request_threaded_irq+0xd8/0x190
+ timer_of_init+0x1e8/0x2c4
+ mtk_gpt_init+0x5c/0x1dc
+ timer_probe+0x74/0xf4
+ time_init+0x14/0x44
+ start_kernel+0x394/0x4f0
+
+We don't need the spinlock here - the irq_set_type() callback is always
+called with the irq_desc->lock taken. This removes the spinlock entirely.
+
+Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+---
+ drivers/irqchip/irq-mtk-sysirq.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/drivers/irqchip/irq-mtk-sysirq.c b/drivers/irqchip/irq-mtk-sysirq.c
+index 73eae5966a40..da2fc4809222 100644
+--- a/drivers/irqchip/irq-mtk-sysirq.c
++++ b/drivers/irqchip/irq-mtk-sysirq.c
+@@ -12,10 +12,8 @@
+ #include <linux/of_address.h>
+ #include <linux/io.h>
+ #include <linux/slab.h>
+-#include <linux/spinlock.h>
+ 
+ struct mtk_sysirq_chip_data {
+-	spinlock_t lock;
+ 	u32 nr_intpol_bases;
+ 	void __iomem **intpol_bases;
+ 	u32 *intpol_words;
+@@ -30,14 +28,12 @@ static int mtk_sysirq_set_type(struct irq_data *data, unsigned int type)
+ 	u8 intpol_idx = chip_data->intpol_idx[hwirq];
+ 	void __iomem *base;
+ 	u32 offset, reg_index, value;
+-	unsigned long flags;
+ 	int ret;
+ 
+ 	base = chip_data->intpol_bases[intpol_idx];
+ 	reg_index = chip_data->which_word[hwirq];
+ 	offset = hwirq & 0x1f;
+ 
+-	spin_lock_irqsave(&chip_data->lock, flags);
+ 	value = readl_relaxed(base + reg_index * 4);
+ 	if (type == IRQ_TYPE_LEVEL_LOW || type == IRQ_TYPE_EDGE_FALLING) {
+ 		if (type == IRQ_TYPE_LEVEL_LOW)
+@@ -53,7 +49,6 @@ static int mtk_sysirq_set_type(struct irq_data *data, unsigned int type)
+ 
+ 	data = data->parent_data;
+ 	ret = data->chip->irq_set_type(data, type);
+-	spin_unlock_irqrestore(&chip_data->lock, flags);
+ 	return ret;
+ }
+ 
+@@ -212,7 +207,6 @@ static int __init mtk_sysirq_of_init(struct device_node *node,
+ 		ret = -ENOMEM;
+ 		goto out_free_which_word;
+ 	}
+-	spin_lock_init(&chip_data->lock);
+ 
+ 	return 0;
+ 
+-- 
+2.25.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
