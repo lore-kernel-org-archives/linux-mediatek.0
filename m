@@ -2,79 +2,101 @@ Return-Path: <SRS0=IT6v=7J=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 01ACEC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 01:54:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 88D1FC433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 02:15:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C58892073B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 01:54:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5D9052075F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 02:15:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KpFlbjnQ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="XUpTR3U9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C58892073B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jxIn+P6Y";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="fPS3SYDV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5D9052075F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ftTEK39ruTFApqDmiyA6xry2bdx79AUkyEI/e9EvkOw=; b=KpFlbjnQ67+F8t
-	LfYMU6QdxY4hq1ZGLeqNzzSSNh1rmKLMC349uY0K4G6ker9BJtF3tN/+2+I4fC9oLJTXTUMMhQPc3
-	si6lNYmPplT+Z63A2hTqci2EYFpVWi3SiZA2lsAyxruoLZOeTX0ojjYMoVXvlvhSlLCCQDu4mgA04
-	m1lxLk4pJ+u+9BVA43NdhO+f93JWbUHJBkZgt/GCFpxHyyPRdq2AxfZ392CypQBito8aYw50Dn20i
-	BCBX0Do56T+AHsHP3lJiV8oPTw8Nq+Nd5EH2G6rBRyBXhRlf9+ySQrYuNVDlQotzHV7krs3SlLIXA
-	S26JDB8wzzeqFPae/w8g==;
+	List-Owner; bh=HWdnQafyIywsvcp8Vp8IEHPRN9BCTp8QNQtO8Sn5270=; b=jxIn+P6Y8HtTCP
+	ToAB0OxWFKhwjlbxSn38vLAyU3Y/bHO8u8DZYTn6T6xvR6pNI09L1EDIl1tfkgBgddSbk3FG3jtyg
+	QSyHWhdwg193TsVLumlyFzUvUDYOpXpNSUpKVXZSe1rWjiarL/Xew+EFJqpCduCFn8VKk05eVCY6w
+	N3WqlYunegOg/42PQeEY/FcpFD9LhA7Xsf4k1UNHo3gayp6m0U1Ubn0C/42qgXonHV6w+fTR0tSQr
+	p4vQM91TrPiFc+SxCzXOKZEgadnNN7ljZXNY8kFHgei795ePFQgqu3lFbpWQY9oandMFtlmTTJWX7
+	5tp5ABho2uHwD5qXIkIg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jdlGZ-0007Uq-9Q; Wed, 27 May 2020 01:53:59 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jdlbM-00059x-SB; Wed, 27 May 2020 02:15:28 +0000
+Received: from userp2120.oracle.com ([156.151.31.85])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jdlGW-0007Tv-F9; Wed, 27 May 2020 01:53:58 +0000
-X-UUID: 70968973716b4ec48519c7d51480beb1-20200526
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=ZKrqKJ1L5uEpCnzzklpqeT5Qk2zFyQCkc/heYv9ITnM=; 
- b=XUpTR3U9I2ql6YbBD1AN1sf+a1IszagSd55v/wuip50S9/YIF8rA9dVIwyETT7qsAB4UioxxjiJl2jorkFc3bTQscHdkOM5PYG3KJALZhcLw5rs7aCpEHTRlLV/5R55JuwVqICKGca09ozObWc59DmiNt3f5/kisqeSm05yxpfA=;
-X-UUID: 70968973716b4ec48519c7d51480beb1-20200526
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <xia.jiang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 328047851; Tue, 26 May 2020 17:53:47 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 26 May 2020 18:53:43 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31DR.mediatek.inc
- (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 27 May 2020 09:53:46 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 27 May 2020 09:53:45 +0800
-Message-ID: <1590544320.12671.10.camel@mhfsdcap03>
-Subject: Re: [PATCH v8 06/14] media: platform: Improve the implementation of
- the system PM ops
-From: Xia Jiang <xia.jiang@mediatek.com>
-To: Tomasz Figa <tfiga@chromium.org>
-Date: Wed, 27 May 2020 09:52:00 +0800
-In-Reply-To: <20200521153257.GF209565@chromium.org>
-References: <20200403094033.8288-1-xia.jiang@mediatek.com>
- <20200403094033.8288-7-xia.jiang@mediatek.com>
- <20200521153257.GF209565@chromium.org>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jdlbK-00059X-AM; Wed, 27 May 2020 02:15:27 +0000
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04R2BjPs057175;
+ Wed, 27 May 2020 02:15:16 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding; s=corp-2020-01-29;
+ bh=p4qvcrtuW2bQGADmeQqiBGaWVrsj08iNi0oxkXFi0eQ=;
+ b=fPS3SYDVFsh+c3H8EZcys574JlA89oAGvHnq3N3ieIOzmgxz2cKa/sLsZfIwHbKvqRqy
+ tcKIPfofusdABQBRqsHSknxoAsTvhi72bvbGV0MGM7j8bXFKM3axK1kN5XlunQbsD9Sb
+ MO+Wdy9IdZeBlUJXcGwXtjglTuN9QQKmkUdriBfSG13SJKCxAPtaGC94PvfHTpxAvn6c
+ nGYqspb79ICwJr2vT2qGc9S7xt14tRJqWijl3vPIFcOXKN//zpmTSKsSIjgpqnrSOE2F
+ kjWL/yvLAGdI4Ygon5MRsUkh6CA+xag5vfCOVBtwC1vYmj2OHapEhZYmaJRZRpG5e01D KQ== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by userp2120.oracle.com with ESMTP id 318xbjvyqx-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 27 May 2020 02:15:16 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04R27ZGl133300;
+ Wed, 27 May 2020 02:13:15 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3020.oracle.com with ESMTP id 317j5q908d-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 27 May 2020 02:13:15 +0000
+Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 04R2DEwN024111;
+ Wed, 27 May 2020 02:13:14 GMT
+Received: from ca-mkp.ca.oracle.com (/10.156.108.201)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 26 May 2020 19:13:14 -0700
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: avri.altman@wdc.com, asutoshd@codeaurora.org, linux-scsi@vger.kernel.org, 
+ alim.akhtar@samsung.com, jejb@linux.ibm.com,
+ Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH v4 0/4] scsi: ufs: Fix WriteBooster and cleanup UFS driver
+Date: Tue, 26 May 2020 22:12:59 -0400
+Message-Id: <159054550935.12032.12783598826763830376.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200522083212.4008-1-stanley.chu@mediatek.com>
+References: <20200522083212.4008-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 31B56BA102CB296BF42975F3308432FBE35B5776613BCF49476A31BDC9D305D32000:8
-X-MTK: N
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9633
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ spamscore=0 suspectscore=0
+ mlxlogscore=999 mlxscore=0 adultscore=0 phishscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
+ definitions=main-2005270012
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9633
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ spamscore=0 mlxscore=0
+ lowpriorityscore=0 priorityscore=1501 phishscore=0 cotscore=-2147483648
+ suspectscore=0 bulkscore=0 clxscore=1011 impostorscore=0 malwarescore=0
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2004280000 definitions=main-2005270013
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200526_185356_517193_3EB30BA8 
-X-CRM114-Status: GOOD (  23.46  )
+X-CRM114-CacheID: sfid-20200526_191526_443287_D4326742 
+X-CRM114-Status: GOOD (  13.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,117 +108,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: drinkcat@chromium.org, devicetree@vger.kernel.org, mojahsu@chromium.org,
- srv_heupstream@mediatek.com, Rick Chang <rick.chang@mediatek.com>,
- senozhatsky@chromium.org, linux-kernel@vger.kernel.org,
- maoguang.meng@mediatek.com, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- sj.huang@mediatek.com, Rob Herring <robh+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- linux-mediatek@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: Virtual_Global_UFS_Upstream@mediatek.com, bvanassche@acm.org,
+ "Martin K . Petersen" <martin.petersen@oracle.com>,
+ linux-kernel@vger.kernel.org, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2020-05-21 at 15:32 +0000, Tomasz Figa wrote:
-> Hi Xia,
-> 
-> On Fri, Apr 03, 2020 at 05:40:25PM +0800, Xia Jiang wrote:
-> > Cancel reset hw operation in suspend and resume function because this
-> > will be done in device_run().
-> 
-> This and...
-> 
-> > Add spin_lock and unlock operation in irq and resume function to make
-> > sure that the current frame is processed completely before suspend.
-> 
-> ...this are two separate changes. Please split.
-> 
-> > 
-> > Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
-> > ---
-> >  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 11 +++++++++--
-> >  1 file changed, 9 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-> > index dd5cadd101ef..2fa3711fdc9b 100644
-> > --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-> > +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-> > @@ -911,6 +911,8 @@ static irqreturn_t mtk_jpeg_dec_irq(int irq, void *priv)
-> >  	u32 dec_ret;
-> >  	int i;
-> >  
-> > +	spin_lock(&jpeg->hw_lock);
-> > +
-> 
-> nit: For consistency, it is recommended to always use the same, i.e. the
-> strongest, spin_(un)lock_ primitives when operating on the same spinlock.
-> In this case it would be the irqsave(restore) variants.
-> 
-> >  	dec_ret = mtk_jpeg_dec_get_int_status(jpeg->dec_reg_base);
-> >  	dec_irq_ret = mtk_jpeg_dec_enum_result(dec_ret);
-> >  	ctx = v4l2_m2m_get_curr_priv(jpeg->m2m_dev);
-> > @@ -941,6 +943,7 @@ static irqreturn_t mtk_jpeg_dec_irq(int irq, void *priv)
-> >  	v4l2_m2m_buf_done(src_buf, buf_state);
-> >  	v4l2_m2m_buf_done(dst_buf, buf_state);
-> >  	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
-> > +	spin_unlock(&jpeg->hw_lock);
-> >  	pm_runtime_put_sync(ctx->jpeg->dev);
-> >  	return IRQ_HANDLED;
-> >  }
-> > @@ -1191,7 +1194,6 @@ static __maybe_unused int mtk_jpeg_pm_suspend(struct device *dev)
-> >  {
-> >  	struct mtk_jpeg_dev *jpeg = dev_get_drvdata(dev);
-> >  
-> > -	mtk_jpeg_dec_reset(jpeg->dec_reg_base);
-> >  	mtk_jpeg_clk_off(jpeg);
-> >  
-> >  	return 0;
-> > @@ -1202,19 +1204,24 @@ static __maybe_unused int mtk_jpeg_pm_resume(struct device *dev)
-> >  	struct mtk_jpeg_dev *jpeg = dev_get_drvdata(dev);
-> >  
-> >  	mtk_jpeg_clk_on(jpeg);
-> > -	mtk_jpeg_dec_reset(jpeg->dec_reg_base);
-> >  
-> >  	return 0;
-> >  }
-> >  
-> >  static __maybe_unused int mtk_jpeg_suspend(struct device *dev)
-> >  {
-> > +	struct mtk_jpeg_dev *jpeg = dev_get_drvdata(dev);
-> > +	unsigned long flags;
-> >  	int ret;
-> >  
-> >  	if (pm_runtime_suspended(dev))
-> >  		return 0;
-> >  
-> > +	spin_lock_irqsave(&jpeg->hw_lock, flags);
-> 
-> What does this spinlock protect us from? I can see that it would prevent
-> the interrupt handler from being called, but is it okay to suspend the
-> system without handling the interrupt?
-Dear Tomasz,
-I mean that if current image is processed in irq handler,suspend
-function can not get the lock(it was locked in irq handler).Should I
-move the spin_lock_irqsave(&jpeg->hw_lock, flags) to the start location
-of suspend function or use wait_event_timeout() to handle the interrupt
-before suspend?
+On Fri, 22 May 2020 16:32:08 +0800, Stanley Chu wrote:
 
-Best Regards,
-Xia Jiang
+> This patch set fixes some WriteBooster issues and do small cleanup in UFS driver
 > 
-> > +
-> >  	ret = mtk_jpeg_pm_suspend(dev);
-> > +
+> v3 -> v4
+>   - Squash patch [4] and [5] (Asutosh)
+>   - Fix commit message in patch [4]
 > 
-> Looking at the implementation of mtk_jpeg_pm_suspend(), all it does is
-> disabling the clock. How do we make sure that there is no frame currently
-> being processed by the hardware?
+> v2 -> v3
+>   - Introduce patch [5] to fix possible VCC power drain during runtime suspend (Asutosh)
 > 
-> Best regards,
-> Tomasz
+> [...]
+
+Applied to 5.8/scsi-queue, thanks!
+
+[1/4] scsi: ufs: Remove unnecessary memset for dev_info
+      https://git.kernel.org/mkp/scsi/c/3a66ae512b09
+[2/4] scsi: ufs: Allow WriteBooster on UFS 2.2 devices
+      https://git.kernel.org/mkp/scsi/c/c7cee3e746a5
+[3/4] scsi: ufs: Fix index of attributes query for WriteBooster feature
+      https://git.kernel.org/mkp/scsi/c/e31011ab3709
+[4/4] scsi: ufs: Fix WriteBooster flush during runtime suspend
+      https://git.kernel.org/mkp/scsi/c/51dd905bd2f6
+
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
 _______________________________________________
 Linux-mediatek mailing list
