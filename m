@@ -2,63 +2,82 @@ Return-Path: <SRS0=IT6v=7J=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5EA20C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 10:03:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B128C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 11:33:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2E6DA2084C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 10:03:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 70AFB206DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 11:33:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ho7NQsfa"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2E6DA2084C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LiTV3Vl9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 70AFB206DF
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arndb.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=ya6/yn6X8iA046w1qZpQuZprmj1DzrJhHOG30MSki8E=; b=ho7NQsfaWZq47YKKs0FIpt61o7
-	Amo/w6rzRY+hXNBSGDS4lwpaU9vVLnI90iCzOeU7nSqHdkGgIpZdWAKVQVmOHZaJdyunUawFGbfMp
-	Qbg5kjAb8axoh1scgRpyDxaaSRo2vXdmufWAhAotrvMww2NL/YtPjWlODmlTrlBY4Y2V/Tk4t2ZFc
-	qGS8tJurZLUnqKXQLUQi5BqjqZ0vJCYKzPwzfPOW4bI3RRrvmu/sDcaSkioHQW+5a+yQQdAX2ic+L
-	IsZLQ11JjzNhb0OUNol/oNpriGnTi4D3Q/nZ3UVZKiQWq5qi8LIDCwaoqBlcSLjmru2pwZV1ooHbc
-	SPm6vlnw==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=OQEJjNBbZNQt++M5pS5dhU++aiYLu57FIxYqIhtGwck=; b=LiTV3Vl9y8DW9V
+	rluyJgVaNNILfFD6eXRzgDQPyZXvWck2f2KhqWasIa6jwKxoOWtciGw/urt/WfZM/Wz3pB5nENsTD
+	1GvaMeR8EO3xjxoGLCeODKn6N6Gljr0HNekWYraC6ojpo54mPIjoG46ptvZTrpQrtGeKyrrCZ7EYz
+	9W0iJnJEJNlFCMkfdi6LVd7/z7tn0CNzy+CX4H5eAOZ4N/FAUFyxYIIfX2b56eHkoZ44WhuUH3nOO
+	Y8oIE6gUNmNL+lcN5D23syLwdEJkS/4vG1+INqb8DOJ3Nqm9XcpkmFmfcul36Od5s7Bk3LkMy5KpW
+	EgilS7ZYt6LgQUYy3uNQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jdsuZ-0000Bp-BK; Wed, 27 May 2020 10:03:47 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jdssX-0006gw-PG; Wed, 27 May 2020 10:01:56 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 44B0C55D;
- Wed, 27 May 2020 03:01:41 -0700 (PDT)
-Received: from e123648.arm.com (unknown [10.37.12.61])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 218023F6C4;
- Wed, 27 May 2020 03:01:30 -0700 (PDT)
-From: Lukasz Luba <lukasz.luba@arm.com>
-To: linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org,
- linux-omap@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-imx@nxp.com
-Subject: [PATCH v8 8/8] OPP: refactor dev_pm_opp_of_register_em() and update
- related drivers
-Date: Wed, 27 May 2020 10:58:54 +0100
-Message-Id: <20200527095854.21714-9-lukasz.luba@arm.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200527095854.21714-1-lukasz.luba@arm.com>
-References: <20200527095854.21714-1-lukasz.luba@arm.com>
+	id 1jduJT-00089Q-Uu; Wed, 27 May 2020 11:33:35 +0000
+Received: from mout.kundenserver.de ([212.227.126.133])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jduJR-00088f-22; Wed, 27 May 2020 11:33:34 +0000
+Received: from mail-qt1-f171.google.com ([209.85.160.171]) by
+ mrelayeu.kundenserver.de (mreue010 [212.227.15.129]) with ESMTPSA (Nemesis)
+ id 1M1q4e-1jbiS21Iz2-002Iqz; Wed, 27 May 2020 13:33:30 +0200
+Received: by mail-qt1-f171.google.com with SMTP id x29so5620850qtv.4;
+ Wed, 27 May 2020 04:33:28 -0700 (PDT)
+X-Gm-Message-State: AOAM530aJj+acd0H4fv+RPZHvQYJ/yd23YzTVWllgKA4sY+ltI0hky5m
+ YMVKaRwyZ1IBjcyTS96K158NaEe/JGHptC/HuFA=
+X-Google-Smtp-Source: ABdhPJytr2bjG8wmbrwCUlNw85Yc0YEiejDsr/eUYMM1igF/l+KazWx6+Wav70gPMdZ6TcuTfzx28axhkOZA5yS1Tu0=
+X-Received: by 2002:ac8:306d:: with SMTP id g42mr3579966qte.18.1590579208037; 
+ Wed, 27 May 2020 04:33:28 -0700 (PDT)
+MIME-Version: 1.0
+References: <20200522120700.838-1-brgl@bgdev.pl>
+ <20200522120700.838-7-brgl@bgdev.pl>
+ <20200527073150.GA3384158@ubuntu-s3-xlarge-x86>
+ <CAMRc=MevVsYZFDQif+8Zyv41sSkbS8XqWbKGdCvHooneXz88hg@mail.gmail.com>
+In-Reply-To: <CAMRc=MevVsYZFDQif+8Zyv41sSkbS8XqWbKGdCvHooneXz88hg@mail.gmail.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Wed, 27 May 2020 13:33:11 +0200
+X-Gmail-Original-Message-ID: <CAK8P3a3WXGZpeX0E8Kyuo5Rkv5acdkZN6_HNS61Y1=Jh+G+pRQ@mail.gmail.com>
+Message-ID: <CAK8P3a3WXGZpeX0E8Kyuo5Rkv5acdkZN6_HNS61Y1=Jh+G+pRQ@mail.gmail.com>
+Subject: Re: [PATCH v5 06/11] net: ethernet: mtk-star-emac: new driver
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+X-Provags-ID: V03:K1:GhgBGcrEKue7zQIt37KlPJb4zB1eIdQk+s9xAKstD34DQOmFpqO
+ vyattr7Cj7E1Rqp39yuusONKOEVk2KNfNjnsALyavrD4gxU64v3Wt1IaGP9bRNpNp+rLnfj
+ 4n4XB8rr9sTxbbUKm8IoaifmXuzVKR4Gl7twl6MhMZdRW4vdYo1QK4Pl7bVhvqT7ySE8Hn9
+ 5fQFYPrj0UBqLwNPu9gXA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:bTdEw4cmaJQ=:YSz3sJLaA1oQYm4qIEJtcs
+ aoeULM4czKiP0YC+KVcHxkfvwJE2T1YAbeuIgD3BwkqsrWEYPDaXda/zb4yn+uy16aiDWAn7q
+ TxBCaA3jDzJ0bMIOTxnkSqScYDc/HG4Nu0mWOvWFL5ZdxqLnzzV1ovvYsvv+211fxY2NdsyUm
+ DHLBSbNtl0xMlOTCuhLsON+W9iKyobr8p8j8X/VLZv0L723qNg+dPq6U8cq2qM885KgzR4xx8
+ eZ2zUi5oemuwzcpYa0Qsy6vps0PSu4LjIocSftvotLB0gG0XenTlMlGRdQU8BvBO/TIjnvYU4
+ P+BQvBoPdfOxNgWkSA+1//etC4rbSNtpWLeCAsPmmNnTYjbrstkPTj+jRnkbZ6F2kfrYkhbcc
+ yNsnTg+7N9R9Pi2EuowTYYoaXQ70fJdG6R7UEQ1e2Hu2wlYD+5P7pdcHt/7frrTRsPcknN5g2
+ loVCNwp9P7JZXRjYo16/TTFVtjMnbuAIe3WDNHiooLvgdLCFlleqz2cSJ4twLAmyR9QZpepVF
+ PXU6bFlQHznuE97BhKoGZqZU1S+4xm/IKe0LSYJUEkbZmuIjjB5pA6zEhEVhU0b0ZBe1kW060
+ Prcs9d5dsZBcMXGy/SR7YS4omrLixNyEJ7ZzQdjPL0oWw2ty/jpxs+TqdfzEoVMA23B+ybWqK
+ hjaSlWZ+psN1YUYYcU25dr6rGv69Xehu1p/2/T5wfpCPLGp760izZ0zwaYoq/1BNwiyDYxdGk
+ MVZKWSR7+QZug1m3emJN/BnlaYSt3xZsP5ary/JmCeJq4gecayR2vib/PvHdRiJZm/7245wi3
+ +uDrmrIKrMZXInr/WvauzeOD7455vnAZK8QQ7gSjZIddlBz87w=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200527_030141_917783_CC87DF45 
-X-CRM114-Status: GOOD (  19.59  )
+X-CRM114-CacheID: sfid-20200527_043333_392367_1D04899C 
+X-CRM114-Status: GOOD (  13.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,303 +89,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: nm@ti.com, juri.lelli@redhat.com, peterz@infradead.org,
- viresh.kumar@linaro.org, liviu.dudau@arm.com, bjorn.andersson@linaro.org,
- bsegall@google.com, festevam@gmail.com, mka@chromium.org, robh@kernel.org,
- amit.kucheria@verdurent.com, lorenzo.pieralisi@arm.com,
- vincent.guittot@linaro.org, khilman@kernel.org, daniel.lezcano@linaro.org,
- steven.price@arm.com, cw00.choi@samsung.com, mingo@redhat.com, mgorman@suse.de,
- rui.zhang@intel.com, alyssa.rosenzweig@collabora.com, orjan.eide@arm.com,
- daniel@ffwll.ch, b.zolnierkie@samsung.com, s.hauer@pengutronix.de,
- rostedt@goodmis.org, matthias.bgg@gmail.com, Dietmar.Eggemann@arm.com,
- airlied@linux.ie, tomeu.vizoso@collabora.com, qperret@google.com,
- sboyd@kernel.org, rdunlap@infradead.org, rjw@rjwysocki.net, agross@kernel.org,
- kernel@pengutronix.de, sudeep.holla@arm.com, patrick.bellasi@matbug.net,
- shawnguo@kernel.org, lukasz.luba@arm.com
-MIME-Version: 1.0
+Cc: Edwin Peer <edwin.peer@broadcom.com>,
+ devicetree <devicetree@vger.kernel.org>,
+ Stephane Le Provost <stephane.leprovost@mediatek.com>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ netdev <netdev@vger.kernel.org>, Sean Wang <sean.wang@mediatek.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Pedro Tsai <pedro.tsai@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ clang-built-linux <clang-built-linux@googlegroups.com>,
+ Andrew Perepech <andrew.perepech@mediatek.com>,
+ John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, Nathan Chancellor <natechancellor@gmail.com>,
+ "David S . Miller" <davem@davemloft.net>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Heiner Kallweit <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Energy Model framework supports not only CPU devices. Drop the CPU
-specific interface with cpumask and add struct device. Add also a return
-value, user might use it. This new interface provides easy way to create
-a simple Energy Model, which then might be used by e.g. thermal subsystem.
+On Wed, May 27, 2020 at 10:46 AM Bartosz Golaszewski <brgl@bgdev.pl> wrote:
 
-Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
----
- drivers/cpufreq/cpufreq-dt.c           |  2 +-
- drivers/cpufreq/imx6q-cpufreq.c        |  2 +-
- drivers/cpufreq/mediatek-cpufreq.c     |  2 +-
- drivers/cpufreq/omap-cpufreq.c         |  2 +-
- drivers/cpufreq/qcom-cpufreq-hw.c      |  2 +-
- drivers/cpufreq/scpi-cpufreq.c         |  2 +-
- drivers/cpufreq/vexpress-spc-cpufreq.c |  2 +-
- drivers/opp/of.c                       | 71 ++++++++++++++++----------
- include/linux/pm_opp.h                 | 15 +++++-
- 9 files changed, 65 insertions(+), 35 deletions(-)
+> > I don't know if there should be a new label that excludes that
+> > assignment for those particular gotos or if new_dma_addr should
+> > be initialized to something at the top. Please take a look at
+> > addressing this when you get a chance.
+> >
+> > Cheers,
+> > Nathan
+>
+> Hi Nathan,
+>
+> Thanks for reporting this! I have a fix ready and will send it shortly.
 
-diff --git a/drivers/cpufreq/cpufreq-dt.c b/drivers/cpufreq/cpufreq-dt.c
-index 26fe8dfb9ce6..f9f03fd49b83 100644
---- a/drivers/cpufreq/cpufreq-dt.c
-+++ b/drivers/cpufreq/cpufreq-dt.c
-@@ -275,7 +275,7 @@ static int cpufreq_init(struct cpufreq_policy *policy)
- 	policy->cpuinfo.transition_latency = transition_latency;
- 	policy->dvfs_possible_from_any_cpu = true;
- 
--	dev_pm_opp_of_register_em(policy->cpus);
-+	dev_pm_opp_of_register_em(cpu_dev, policy->cpus);
- 
- 	return 0;
- 
-diff --git a/drivers/cpufreq/imx6q-cpufreq.c b/drivers/cpufreq/imx6q-cpufreq.c
-index fdb2ffffbd15..ef7b34c1fd2b 100644
---- a/drivers/cpufreq/imx6q-cpufreq.c
-+++ b/drivers/cpufreq/imx6q-cpufreq.c
-@@ -193,7 +193,7 @@ static int imx6q_cpufreq_init(struct cpufreq_policy *policy)
- 	policy->clk = clks[ARM].clk;
- 	cpufreq_generic_init(policy, freq_table, transition_latency);
- 	policy->suspend_freq = max_freq;
--	dev_pm_opp_of_register_em(policy->cpus);
-+	dev_pm_opp_of_register_em(cpu_dev, policy->cpus);
- 
- 	return 0;
- }
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index 0c98dd08273d..7d1212c9b7c8 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -448,7 +448,7 @@ static int mtk_cpufreq_init(struct cpufreq_policy *policy)
- 	policy->driver_data = info;
- 	policy->clk = info->cpu_clk;
- 
--	dev_pm_opp_of_register_em(policy->cpus);
-+	dev_pm_opp_of_register_em(info->cpu_dev, policy->cpus);
- 
- 	return 0;
- }
-diff --git a/drivers/cpufreq/omap-cpufreq.c b/drivers/cpufreq/omap-cpufreq.c
-index 8d14b42a8c6f..3694bb030df3 100644
---- a/drivers/cpufreq/omap-cpufreq.c
-+++ b/drivers/cpufreq/omap-cpufreq.c
-@@ -131,7 +131,7 @@ static int omap_cpu_init(struct cpufreq_policy *policy)
- 
- 	/* FIXME: what's the actual transition time? */
- 	cpufreq_generic_init(policy, freq_table, 300 * 1000);
--	dev_pm_opp_of_register_em(policy->cpus);
-+	dev_pm_opp_of_register_em(mpu_dev, policy->cpus);
- 
- 	return 0;
- }
-diff --git a/drivers/cpufreq/qcom-cpufreq-hw.c b/drivers/cpufreq/qcom-cpufreq-hw.c
-index fc92a8842e25..0a04b6f03b9a 100644
---- a/drivers/cpufreq/qcom-cpufreq-hw.c
-+++ b/drivers/cpufreq/qcom-cpufreq-hw.c
-@@ -238,7 +238,7 @@ static int qcom_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
- 		goto error;
- 	}
- 
--	dev_pm_opp_of_register_em(policy->cpus);
-+	dev_pm_opp_of_register_em(cpu_dev, policy->cpus);
- 
- 	policy->fast_switch_possible = true;
- 
-diff --git a/drivers/cpufreq/scpi-cpufreq.c b/drivers/cpufreq/scpi-cpufreq.c
-index 20d1f85d5f5a..b0f5388b8854 100644
---- a/drivers/cpufreq/scpi-cpufreq.c
-+++ b/drivers/cpufreq/scpi-cpufreq.c
-@@ -167,7 +167,7 @@ static int scpi_cpufreq_init(struct cpufreq_policy *policy)
- 
- 	policy->fast_switch_possible = false;
- 
--	dev_pm_opp_of_register_em(policy->cpus);
-+	dev_pm_opp_of_register_em(cpu_dev, policy->cpus);
- 
- 	return 0;
- 
-diff --git a/drivers/cpufreq/vexpress-spc-cpufreq.c b/drivers/cpufreq/vexpress-spc-cpufreq.c
-index 83c85d3d67e3..4e8b1dee7c9a 100644
---- a/drivers/cpufreq/vexpress-spc-cpufreq.c
-+++ b/drivers/cpufreq/vexpress-spc-cpufreq.c
-@@ -450,7 +450,7 @@ static int ve_spc_cpufreq_init(struct cpufreq_policy *policy)
- 	policy->freq_table = freq_table[cur_cluster];
- 	policy->cpuinfo.transition_latency = 1000000; /* 1 ms */
- 
--	dev_pm_opp_of_register_em(policy->cpus);
-+	dev_pm_opp_of_register_em(cpu_dev, policy->cpus);
- 
- 	if (is_bL_switching_enabled())
- 		per_cpu(cpu_last_req_freq, policy->cpu) =
-diff --git a/drivers/opp/of.c b/drivers/opp/of.c
-index 5b75829a915d..4500ce46d476 100644
---- a/drivers/opp/of.c
-+++ b/drivers/opp/of.c
-@@ -1036,18 +1036,18 @@ EXPORT_SYMBOL_GPL(dev_pm_opp_get_of_node);
- 
- /*
-  * Callback function provided to the Energy Model framework upon registration.
-- * This computes the power estimated by @CPU at @kHz if it is the frequency
-+ * This computes the power estimated by @dev at @kHz if it is the frequency
-  * of an existing OPP, or at the frequency of the first OPP above @kHz otherwise
-  * (see dev_pm_opp_find_freq_ceil()). This function updates @kHz to the ceiled
-  * frequency and @mW to the associated power. The power is estimated as
-- * P = C * V^2 * f with C being the CPU's capacitance and V and f respectively
-- * the voltage and frequency of the OPP.
-+ * P = C * V^2 * f with C being the device's capacitance and V and f
-+ * respectively the voltage and frequency of the OPP.
-  *
-- * Returns -ENODEV if the CPU device cannot be found, -EINVAL if the power
-- * calculation failed because of missing parameters, 0 otherwise.
-+ * Returns -EINVAL if the power calculation failed because of missing
-+ * parameters, 0 otherwise.
-  */
--static int __maybe_unused _get_cpu_power(unsigned long *mW, unsigned long *kHz,
--					 struct device *cpu_dev)
-+static int __maybe_unused _get_power(unsigned long *mW, unsigned long *kHz,
-+				     struct device *dev)
- {
- 	struct dev_pm_opp *opp;
- 	struct device_node *np;
-@@ -1056,7 +1056,7 @@ static int __maybe_unused _get_cpu_power(unsigned long *mW, unsigned long *kHz,
- 	u64 tmp;
- 	int ret;
- 
--	np = of_node_get(cpu_dev->of_node);
-+	np = of_node_get(dev->of_node);
- 	if (!np)
- 		return -EINVAL;
- 
-@@ -1066,7 +1066,7 @@ static int __maybe_unused _get_cpu_power(unsigned long *mW, unsigned long *kHz,
- 		return -EINVAL;
- 
- 	Hz = *kHz * 1000;
--	opp = dev_pm_opp_find_freq_ceil(cpu_dev, &Hz);
-+	opp = dev_pm_opp_find_freq_ceil(dev, &Hz);
- 	if (IS_ERR(opp))
- 		return -EINVAL;
- 
-@@ -1086,30 +1086,38 @@ static int __maybe_unused _get_cpu_power(unsigned long *mW, unsigned long *kHz,
- 
- /**
-  * dev_pm_opp_of_register_em() - Attempt to register an Energy Model
-- * @cpus	: CPUs for which an Energy Model has to be registered
-+ * @dev		: Device for which an Energy Model has to be registered
-+ * @cpus	: CPUs for which an Energy Model has to be registered. For
-+ *		other type of devices it should be set to NULL.
-  *
-  * This checks whether the "dynamic-power-coefficient" devicetree property has
-  * been specified, and tries to register an Energy Model with it if it has.
-+ * Having this property means the voltages are known for OPPs and the EM
-+ * might be calculated.
-  */
--void dev_pm_opp_of_register_em(struct cpumask *cpus)
-+int dev_pm_opp_of_register_em(struct device *dev, struct cpumask *cpus)
- {
--	struct em_data_callback em_cb = EM_DATA_CB(_get_cpu_power);
--	int ret, nr_opp, cpu = cpumask_first(cpus);
--	struct device *cpu_dev;
-+	struct em_data_callback em_cb = EM_DATA_CB(_get_power);
- 	struct device_node *np;
-+	int ret, nr_opp;
- 	u32 cap;
- 
--	cpu_dev = get_cpu_device(cpu);
--	if (!cpu_dev)
--		return;
-+	if (IS_ERR_OR_NULL(dev)) {
-+		ret = -EINVAL;
-+		goto failed;
-+	}
- 
--	nr_opp = dev_pm_opp_get_opp_count(cpu_dev);
--	if (nr_opp <= 0)
--		return;
-+	nr_opp = dev_pm_opp_get_opp_count(dev);
-+	if (nr_opp <= 0) {
-+		ret = -EINVAL;
-+		goto failed;
-+	}
- 
--	np = of_node_get(cpu_dev->of_node);
--	if (!np)
--		return;
-+	np = of_node_get(dev->of_node);
-+	if (!np) {
-+		ret = -EINVAL;
-+		goto failed;
-+	}
- 
- 	/*
- 	 * Register an EM only if the 'dynamic-power-coefficient' property is
-@@ -1120,9 +1128,20 @@ void dev_pm_opp_of_register_em(struct cpumask *cpus)
- 	 */
- 	ret = of_property_read_u32(np, "dynamic-power-coefficient", &cap);
- 	of_node_put(np);
--	if (ret || !cap)
--		return;
-+	if (ret || !cap) {
-+		dev_dbg(dev, "Couldn't find proper 'dynamic-power-coefficient' in DT\n");
-+		ret = -EINVAL;
-+		goto failed;
-+	}
- 
--	em_dev_register_perf_domain(cpu_dev, nr_opp, &em_cb, cpus);
-+	ret = em_dev_register_perf_domain(dev, nr_opp, &em_cb, cpus);
-+	if (ret)
-+		goto failed;
-+
-+	return 0;
-+
-+failed:
-+	dev_dbg(dev, "Couldn't register Energy Model %d\n", ret);
-+	return ret;
- }
- EXPORT_SYMBOL_GPL(dev_pm_opp_of_register_em);
-diff --git a/include/linux/pm_opp.h b/include/linux/pm_opp.h
-index 747861816f4f..8df8b82054e5 100644
---- a/include/linux/pm_opp.h
-+++ b/include/linux/pm_opp.h
-@@ -11,6 +11,7 @@
- #ifndef __LINUX_OPP_H__
- #define __LINUX_OPP_H__
- 
-+#include <linux/energy_model.h>
- #include <linux/err.h>
- #include <linux/notifier.h>
- 
-@@ -360,7 +361,11 @@ int dev_pm_opp_of_get_sharing_cpus(struct device *cpu_dev, struct cpumask *cpuma
- struct device_node *dev_pm_opp_of_get_opp_desc_node(struct device *dev);
- struct device_node *dev_pm_opp_get_of_node(struct dev_pm_opp *opp);
- int of_get_required_opp_performance_state(struct device_node *np, int index);
--void dev_pm_opp_of_register_em(struct cpumask *cpus);
-+int dev_pm_opp_of_register_em(struct device *dev, struct cpumask *cpus);
-+static inline void dev_pm_opp_of_unregister_em(struct device *dev)
-+{
-+	em_dev_unregister_perf_domain(dev);
-+}
- #else
- static inline int dev_pm_opp_of_add_table(struct device *dev)
- {
-@@ -400,7 +405,13 @@ static inline struct device_node *dev_pm_opp_get_of_node(struct dev_pm_opp *opp)
- 	return NULL;
- }
- 
--static inline void dev_pm_opp_of_register_em(struct cpumask *cpus)
-+static inline int dev_pm_opp_of_register_em(struct device *dev,
-+					    struct cpumask *cpus)
-+{
-+	return -ENOTSUPP;
-+}
-+
-+static inline void dev_pm_opp_of_unregister_em(struct device *dev)
- {
- }
- 
--- 
-2.17.1
+I already have a workaround for this bug as well as another one
+in my tree that I'll send later today after some more testing.
 
+Feel free to wait for that, or just ignore mine if you already have a fix.
+
+       Arnd
 
 _______________________________________________
 Linux-mediatek mailing list
