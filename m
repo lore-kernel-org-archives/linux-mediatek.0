@@ -2,80 +2,76 @@ Return-Path: <SRS0=IT6v=7J=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2EE42C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 08:51:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 042C9C433E1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 09:01:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C2AE820723
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 08:51:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C10EA20723
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2020 09:01:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jZ02gwJm";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="eU3f/RWo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C2AE820723
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jadTQr2b"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C10EA20723
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4KEEt5rX+6dLlKFwhC4rn50qzREU0PLRdWDmF7SSiC8=; b=jZ02gwJmYVj6S1
-	roXICyB/wHnk3BB1bvZKWyDNmzyxKCBuVtJsoqfEQoMSzzxlVeQ9mVCQCBt75xRZc7fxtx8WrbSY0
-	AqPvT4lAZc+RDAfCtkAXcGRS2LVUgtWLB5CsemrR/T4b12/JmD3nRwbW1d/ISHo1QtqmfukWNmwnk
-	hyNdlG1yuO79cv0ZUEXzPMmNXSN9hdPbOYUmogsO4TG44vYY9tTWI2Q62d7SVJ90WevnILUStQVrs
-	4iAdRg6zpZaB0emI7Gpuet+ImOeQZnccTJzErIQ9X1AukXTKINutBis4jJrAQ9p8sMOn/f0L5WRhW
-	BPuXCNlJ0xF9ZI10f27A==;
+	List-Owner; bh=B/bu3VMKoRdgSl0zw51zAqupS/vCMnf+tLo10tOnin0=; b=jadTQr2bRhb6Mz
+	3hEUCWiFKOMeFARJMGZZ2tKhZAuUvscDt8zWuptWAYYmVhfbPvagePVqUPMOM1gfDYVGsTcySLDC3
+	t/T3Pd6A5IjWekagOb24M4wS+AfBhqSIMhScOFGu5mEHdm43rSh9A3Sx6BJfabE+esFDfiBrCqSfV
+	G68v8KAC9aurdLDb4dL/pRNp46g7TbIaSCZk5D1/TlMvMcj/ZIle8kLka7ORkwUe0QVuovulAZ+gC
+	tVv4N4RaTaCVSP5TlPoyCqRDPh7p1y+dIOBpcenha1xYPcESLfe3LeT7wzDMVlszlnJhMc1SLfWtn
+	Q6jQFb5/0CRcmu9St3Ig==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jdrmM-00079m-V0; Wed, 27 May 2020 08:51:14 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jdrvp-0006FU-8q; Wed, 27 May 2020 09:01:01 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jdrmJ-00078b-N1; Wed, 27 May 2020 08:51:13 +0000
-X-UUID: 09a57e3aa8be45eb998480bb912e113d-20200527
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=DiIMoPScyJ+50+VuuFYsWXLfNu4cJqcpxf3a1uqkMkU=; 
- b=eU3f/RWoPtgfwpRGeA1wMlQzowmLByuQGBg7n7V2abuZ0e5Virmd/QqCGOAJyDP2pO/EL8yqGgjHt+cZlW8N3BCLQPCiL1kJwuHpItgKxYlLNW1P7op3BgO9zbFO7bEGxiUG3dsaSyBZnLPiPpcZfKATq2k+djrwhNKtd9jFTUw=;
-X-UUID: 09a57e3aa8be45eb998480bb912e113d-20200527
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <dongchun.zhu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1578637235; Wed, 27 May 2020 00:50:56 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 27 May 2020 01:51:04 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 27 May 2020 16:51:00 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 27 May 2020 16:50:59 +0800
-Message-ID: <1590569355.8804.448.camel@mhfsdcap03>
-Subject: Re: [V9, 1/2] media: dt-bindings: media: i2c: Document OV02A10
- bindings
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-Date: Wed, 27 May 2020 16:49:15 +0800
-In-Reply-To: <20200526182847.GA92449@bogus>
-References: <20200523084103.31276-1-dongchun.zhu@mediatek.com>
- <20200523084103.31276-2-dongchun.zhu@mediatek.com>
- <20200526182847.GA92449@bogus>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jdrvm-0006Ed-Sp
+ for linux-mediatek@lists.infradead.org; Wed, 27 May 2020 09:01:00 +0000
+Received: from pty.hi.pengutronix.de ([2001:67c:670:100:1d::c5])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <mfe@pengutronix.de>)
+ id 1jdrvc-00014I-WC; Wed, 27 May 2020 11:00:49 +0200
+Received: from mfe by pty.hi.pengutronix.de with local (Exim 4.89)
+ (envelope-from <mfe@pengutronix.de>)
+ id 1jdrvc-00073C-2l; Wed, 27 May 2020 11:00:48 +0200
+Date: Wed, 27 May 2020 11:00:48 +0200
+From: Marco Felsch <m.felsch@pengutronix.de>
+To: Fengping Yu <fengping.yu@mediatek.com>
+Subject: Re: [PATCH v9 2/3] drivers: input: keyboard: Add mtk keypad driver
+Message-ID: <20200527090048.wawdb5qkkhroyjtf@pengutronix.de>
+References: <20200527083137.56566-1-fengping.yu@mediatek.com>
+ <20200527083137.56566-3-fengping.yu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: FD690253A9D5A698FD78664998AEEA2DFF479A4CE4320FD38196C8F592345D0D2000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20200527083137.56566-3-fengping.yu@mediatek.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 10:38:45 up 193 days, 23:57, 193 users,  load average: 0.13, 0.11,
+ 0.09
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c5
+X-SA-Exim-Mail-From: mfe@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200527_015111_757138_3F4FDB60 
-X-CRM114-Status: GOOD (  23.93  )
+X-CRM114-CacheID: sfid-20200527_020059_090851_1C6EA191 
+X-CRM114-Status: GOOD (  23.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,283 +83,319 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org,
- andriy.shevchenko@linux.intel.com, louis.kuo@mediatek.com,
- srv_heupstream@mediatek.com, linus.walleij@linaro.org,
- shengnan.wang@mediatek.com, tfiga@chromium.org, bgolaszewski@baylibre.com,
- sj.huang@mediatek.com, drinkcat@chromium.org,
- linux-mediatek@lists.infradead.org, dongchun.zhu@mediatek.com,
- sakari.ailus@linux.intel.com, matthias.bgg@gmail.com, bingbu.cao@intel.com,
- mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ linux-input@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+Hi,
 
-Thanks for the review. Please see my replies below.
+we are in a very good state now :)
 
-On Tue, 2020-05-26 at 12:28 -0600, Rob Herring wrote:
-> On Sat, May 23, 2020 at 04:41:02PM +0800, Dongchun Zhu wrote:
-> > Add DT bindings documentation for Omnivision OV02A10 image sensor.
-> > 
-> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > ---
-> >  .../bindings/media/i2c/ovti,ov02a10.yaml           | 172 +++++++++++++++++++++
-> >  MAINTAINERS                                        |   7 +
-> >  2 files changed, 179 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > new file mode 100644
-> > index 0000000..56f31b5
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > @@ -0,0 +1,172 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +# Copyright (c) 2020 MediaTek Inc.
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/media/i2c/ovti,ov02a10.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Omnivision OV02A10 CMOS Sensor Device Tree Bindings
-> > +
-> > +maintainers:
-> > +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > +
-> > +description: |-
-> > +  The Omnivision OV02A10 is a low-cost, high performance, 1/5-inch, 2 megapixel
-> > +  image sensor, which is the latest production derived from Omnivision's CMOS
-> > +  image sensor technology. Ihis chip supports high frame rate speeds up to 30fps
-> > +  @ 1600x1200 (UXGA) resolution transferred over a 1-lane MIPI interface. The
-> > +  sensor output is available via CSI-2 serial data output.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: ovti,ov02a10
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  clocks:
-> > +    items:
-> > +      - description: top mux camtg clock
-> > +      - description: divider clock
-> > +
-> > +  clock-names:
-> > +    items:
-> > +      - const: eclk
-> > +      - const: freq_mux
-> > +
-> > +  clock-frequency:
-> > +    description:
-> > +      Frequency of the eclk clock in Hertz.
-> > +
-
-Rob, shall we use 'maxItems: 1' to constrain property: clock-frequency?
-Or could we adopt 'clock-frequency: true' directly here?
-
-> > +  dovdd-supply:
-> > +    description:
-> > +      Definition of the regulator used as Digital I/O voltage supply.
-> > +
-
-Shall we add 'maxItems: 1' here?
-
-> > +  avdd-supply:
-> > +    description:
-> > +      Definition of the regulator used as Analog voltage supply.
-> > +
-
-Ditto.
-
-> > +  dvdd-supply:
-> > +    description:
-> > +      Definition of the regulator used as Digital core voltage supply.
-> > +
-
-Ditto.
-
-> > +  powerdown-gpios:
-> > +    description:
-> > +      Must be the device tree identifier of the GPIO connected to the
-> > +      PD_PAD pin. This pin is used to place the OV02A10 into Standby mode
-> > +      or Shutdown mode. As the line is active low, it should be
-> > +      marked GPIO_ACTIVE_LOW.
+On 20-05-27 16:31, Fengping Yu wrote:
+> From: "fengping.yu" <fengping.yu@mediatek.com>
 > 
-> Need to define how many GPIOs ('maxItems: 1')
+> This adds matrix keypad support for Mediatek SoCs.
 > 
-
-It would be fixed like this in next release.
-powerdown-gpios:
-  maxItems: 1
-  description:
-    Must be the device tree identifier of the GPIO connected to the
-    PD_PAD pin. This pin is used to place the OV02A10 into Standby mode
-    or Shutdown mode. As the line is active low, it should be
-    marked GPIO_ACTIVE_LOW.
-
-> > +
-> > +  reset-gpios:
-> > +    description:
-> > +      Must be the device tree identifier of the GPIO connected to the
-> > +      RST_PD pin. If specified, it will be asserted during driver probe.
-> > +      As the line is active high, it should be marked GPIO_ACTIVE_HIGH.
+> Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
+> ---
+>  drivers/input/keyboard/Kconfig   |  11 ++
+>  drivers/input/keyboard/Makefile  |   1 +
+>  drivers/input/keyboard/mtk-kpd.c | 219 +++++++++++++++++++++++++++++++
+>  3 files changed, 231 insertions(+)
+>  create mode 100644 drivers/input/keyboard/mtk-kpd.c
 > 
-> Here too.
-> 
+> diff --git a/drivers/input/keyboard/Kconfig b/drivers/input/keyboard/Kconfig
+> index 28de965a08d5..f4f58320d14f 100644
+> --- a/drivers/input/keyboard/Kconfig
+> +++ b/drivers/input/keyboard/Kconfig
+> @@ -782,6 +782,17 @@ config KEYBOARD_BCM
+>  	  To compile this driver as a module, choose M here: the
+>  	  module will be called bcm-keypad.
+>  
+> +config KEYBOARD_MTK_KPD
+> +	tristate "MediaTek Keypad Support"
+> +	depends on (ARCH_MEDIATEK && ARM) || COMPILE_TEST
 
-Similar as 'powerdown-gpios'.
-Fixed in next release.
+So the driver is only for 32bit Mediatek SoC's?
 
-> > +
-> > +  rotation:
-> > +    description:
-> > +      Definition of the sensor's placement.
-> > +    allOf:
-> > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> > +      - enum:
-> > +          - 0    # Sensor Mounted Upright
-> > +          - 180  # Sensor Mounted Upside Down
-> > +        default: 0
-> > +
-> > +  ovti,mipi-tx-speed:
-> > +    description:
-> > +      Indication of MIPI transmission speed select, which is to control D-PHY
-> > +      timing setting by adjusting MIPI clock voltage to improve the clock
-> > +      driver capability.
-> > +    allOf:
-> > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> > +      - enum:
-> > +          - 0    #  20MHz -  30MHz
-> > +          - 1    #  30MHz -  50MHz
-> > +          - 2    #  50MHz -  75MHz
-> > +          - 3    #  75MHz - 100MHz
-> > +          - 4    # 100MHz - 130MHz
-> > +        default: 3
-> > +
-> > +  # See ../video-interfaces.txt for details
-> > +  port:
-> > +    type: object
-> > +    additionalProperties: false
-> 
-> Should have a description of what data the port has.
-> 
+> +	select CONFIG_REGMAP_MMIO
+> +	select INPUT_MATRIXKMAP
+> +	help
+> +	  Say Y here if you want to use the keypad on MediaTek SoCs.
+> +	  If unsure, say N.
+> +	  To compile this driver as a module, choose M here: the
+> +	  module will be called mtk-kpd.
+> +
+>  config KEYBOARD_MTK_PMIC
+>  	tristate "MediaTek PMIC keys support"
+>  	depends on MFD_MT6397
+> diff --git a/drivers/input/keyboard/Makefile b/drivers/input/keyboard/Makefile
+> index 1d689fdd5c00..6c9d852c377e 100644
+> --- a/drivers/input/keyboard/Makefile
+> +++ b/drivers/input/keyboard/Makefile
+> @@ -43,6 +43,7 @@ obj-$(CONFIG_KEYBOARD_MATRIX)		+= matrix_keypad.o
+>  obj-$(CONFIG_KEYBOARD_MAX7359)		+= max7359_keypad.o
+>  obj-$(CONFIG_KEYBOARD_MCS)		+= mcs_touchkey.o
+>  obj-$(CONFIG_KEYBOARD_MPR121)		+= mpr121_touchkey.o
+> +obj-$(CONFIG_KEYBOARD_MTK_KPD)		+= mtk-kpd.o
+>  obj-$(CONFIG_KEYBOARD_MTK_PMIC) 	+= mtk-pmic-keys.o
+>  obj-$(CONFIG_KEYBOARD_NEWTON)		+= newtonkbd.o
+>  obj-$(CONFIG_KEYBOARD_NOMADIK)		+= nomadik-ske-keypad.o
+> diff --git a/drivers/input/keyboard/mtk-kpd.c b/drivers/input/keyboard/mtk-kpd.c
+> new file mode 100644
+> index 000000000000..6e18aad1f476
+> --- /dev/null
+> +++ b/drivers/input/keyboard/mtk-kpd.c
+> @@ -0,0 +1,219 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (C) 2019 MediaTek Inc.
+> + * Author Terry Chang <terry.chang@mediatek.com>
+> + */
+> +#include <linux/bitops.h>
+> +#include <linux/clk.h>
+> +#include <linux/input/matrix_keypad.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/module.h>
+> +#include <linux/property.h>
+> +#include <linux/pinctrl/consumer.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/regmap.h>
+> +
+> +#define MTK_KPD_NAME		"mtk-kpd"
+> +#define MTK_KPD_MEM		0x0004
+> +#define MTK_KPD_DEBOUNCE	0x0018
+> +#define MTK_KPD_DEBOUNCE_MASK	GENMASK(13, 0)
+> +#define MTK_KPD_DEBOUNCE_MAX_US	256000
+> +#define MTK_KPD_NUM_MEMS	5
+> +#define MTK_KPD_NUM_BITS	136	/* 4*32+8 MEM5 only use 8 BITS */
+> +
+> +struct mtk_keypad {
+> +	struct regmap *regmap;
+> +	struct input_dev *input_dev;
+> +	struct clk *clk;
+> +	void __iomem *base;
+> +	bool wakeup;
 
-It would be updated as below in next release.
-port:
-  type: object
-  additionalProperties: false
-  description:
-    Input port node, single endpoint describing the CSI-2 transmitter.
+Nitpick:
+The wakeup member is only used during probe() so this can probably
+removed from the driver struct. This should only be addressed if you
+need to send a v10.
 
-> > +
-> > +    properties:
-> > +      endpoint:
-> > +        type: object
-> > +        additionalProperties: false
-> > +
-> > +        properties:
+> +	u32 n_rows;
+> +	u32 n_cols;
+> +	DECLARE_BITMAP(keymap_state, MTK_KPD_NUM_BITS);
+> +};
+> +
+> +static const struct regmap_config keypad_regmap_cfg = {
+> +	.reg_bits = 32,
+> +	.val_bits = 32,
+> +	.reg_stride = sizeof(u32),
+> +	.max_register = 36,
+> +};
+> +
+> +static irqreturn_t kpd_irq_handler(int irq, void *dev_id)
+> +{
+> +	struct mtk_keypad *keypad = dev_id;
+> +	unsigned short *keycode = keypad->input_dev->keycode;
+> +	DECLARE_BITMAP(new_state, MTK_KPD_NUM_BITS);
+> +	DECLARE_BITMAP(change, MTK_KPD_NUM_BITS);
+> +	int bit_nr;
+> +	int pressed;
+> +	unsigned short code;
+> +
+> +	regmap_raw_read(keypad->regmap, MTK_KPD_MEM,
+> +			new_state, MTK_KPD_NUM_MEMS);
+> +
+> +	bitmap_xor(change, new_state, keypad->keymap_state, MTK_KPD_NUM_BITS);
+> +
+> +	for_each_set_bit(bit_nr, change, MTK_KPD_NUM_BITS) {
+> +		/* 1: not pressed, 0: pressed */
+> +		pressed = !test_bit(bit_nr, new_state);
+> +		dev_dbg(&keypad->input_dev->dev, "%s",
+> +			pressed ? "pressed" : "released");
+> +
+> +		/* 32bit register only use low 16bit as keypad mem register */
+> +		code = keycode[bit_nr - 16 * (BITS_TO_U32(bit_nr) - 1)];
+> +
+> +		input_report_key(keypad->input_dev, code, pressed);
+> +		input_sync(keypad->input_dev);
+> +
+> +		dev_dbg(&keypad->input_dev->dev,
+> +			"report Linux keycode = %d\n", code);
+> +	}
+> +
+> +	bitmap_copy(keypad->keymap_state, new_state, MTK_KPD_NUM_BITS);
+> +
+> +	return IRQ_HANDLED;
+> +}
+> +
+> +static void kpd_clk_disable(void *data)
+> +{
+> +	clk_disable_unprepare(data);
+> +}
+> +
+> +static int kpd_pdrv_probe(struct platform_device *pdev)
+> +{
+> +	struct mtk_keypad *keypad;
+> +	struct pinctrl *keypad_pinctrl;
+> +	struct pinctrl_state *kpd_default;
+> +	unsigned int irqnr;
+> +	u32 debounce;
+> +	int ret;
+> +
+> +	keypad = devm_kzalloc(&pdev->dev, sizeof(*keypad), GFP_KERNEL);
+> +	if (!keypad)
+> +		return -ENOMEM;
+> +
+> +	keypad->base = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(keypad->base))
+> +		return PTR_ERR(keypad->base);
+> +
+> +	keypad->regmap = devm_regmap_init_mmio(&pdev->dev,
+> +						keypad->base,
+> +						&keypad_regmap_cfg);
+> +	if (IS_ERR(keypad->regmap)) {
+> +		dev_err(&pdev->dev,
+> +			"regmap init failed:%ld\n", PTR_ERR(keypad->regmap));
+> +		return PTR_ERR(keypad->regmap);
+> +	}
+> +
+> +	bitmap_fill(keypad->keymap_state, MTK_KPD_NUM_BITS);
+> +
+> +	keypad->input_dev = devm_input_allocate_device(&pdev->dev);
+> +	if (!keypad->input_dev) {
+> +		dev_err(&pdev->dev, "Failed to allocate input dev\n");
+> +		return -ENOMEM;
+> +	}
+> +
+> +	keypad->input_dev->name = MTK_KPD_NAME;
+> +	keypad->input_dev->id.bustype = BUS_HOST;
+> +
+> +	ret = matrix_keypad_parse_properties(&pdev->dev, &keypad->n_rows,
+> +					     &keypad->n_cols);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Failed to parse keypad params\n");
+> +		return ret;
+> +	}
+> +
+> +	if (device_property_read_u32(&pdev->dev, "mediatek,debounce-us",
+> +				     &debounce))
+> +		debounce = 16000;
+> +
+> +	if (debounce > MTK_KPD_DEBOUNCE_MAX_US) {
+> +		dev_err(&pdev->dev, "Debounce time exceeds the maximum allowed time %dus\n",
+> +			MTK_KPD_DEBOUNCE_MAX_US);
+> +		return -EINVAL;
+> +	}
+> +
+> +	keypad->wakeup = device_property_read_bool(&pdev->dev, "wakeup-source");
+> +
+> +	dev_dbg(&pdev->dev, "n_row=%d n_col=%d debounce=%d\n",
+> +		keypad->n_rows, keypad->n_cols, debounce);
+> +
+> +	ret = matrix_keypad_build_keymap(NULL, NULL,
+> +					keypad->n_rows,
+> +					keypad->n_cols,
+> +					NULL,
+> +					keypad->input_dev);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Failed to build keymap\n");
+> +		return ret;
+> +	}
+> +
+> +	regmap_write(keypad->regmap, KP_DEBOUNCE,
+> +		     debounce * 32 / 1000 & MTK_KPD_DEBOUNCE_MASK);
+> +
+> +	keypad->clk = devm_clk_get(&pdev->dev, "kpd");
+> +	if (IS_ERR(clk))
+> +		return clk;
+> +
+> +	ret = clk_prepare_enable(keypad->clk);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "cannot prepare/enable keypad clock\n");
+> +		return ret;
+> +	}
+> +
+> +	ret = devm_add_action_or_reset(&pdev->dev, kpd_clk_disable,
+> +					keypad->clk);
+> +	if (ret)
+> +		return ret;
+> +
+> +	keypad_pinctrl = devm_pinctrl_get(&pdev->dev);
+> +	if (IS_ERR(keypad_pinctrl))
+> +		return PTR_ERR(keypad_pinctrl);
+> +
+> +	kpd_default = pinctrl_lookup_state(keypad_pinctrl, "default");
+> +	if (IS_ERR(kpd_default))
+> +		return PTR_ERR(kpd_default);
+> +
+> +	pinctrl_select_state(keypad_pinctrl, kpd_default);
 
-Actually I wonder whether we need to declare 'clock-lanes' here?
+You only request the "default" state here. This is handled by the driver
+core (pinctrl_bind_pins()) and can be dropped here and we can also
+remove the "linux/pinctrl/consumer.h" include. Sorry for this late finding.
 
-> > +          data-lanes:
-> > +            maxItems: 1
-> > +
-> > +          link-frequencies: true
-> > +          remote-endpoint: true
-> > +
-> > +        required:
+> +
+> +	irqnr = platform_get_irq(pdev, 0);
+> +	if (irqnr < 0)
+> +		return -irqnr;
+		       ^
+		       irqnr is already negative
 
-Ditto.
+> +	ret = devm_request_threaded_irq(&pdev->dev, irqnr,
+> +					NULL, kpd_irq_handler, 0,
+> +					MTK_KPD_NAME, keypad);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Failed to request IRQ#%d:%d\n",
+> +						irqnr, ret);
 
-> > +          - data-lanes
-> > +          - link-frequencies
-> > +          - remote-endpoint
-> > +
-> > +    required:
-> > +      - endpoint
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - clocks
-> > +  - clock-names
-> > +  - clock-frequency
-> > +  - dovdd-supply
-> > +  - avdd-supply
-> > +  - dvdd-supply
-> > +  - powerdown-gpios
-> > +  - reset-gpios
-> > +  - port
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +
-> > +    #include <dt-bindings/clock/mt8183-clk.h>
-> > +    #include <dt-bindings/gpio/gpio.h>
-> > +
-> > +    i2c {
-> > +        #address-cells = <1>;
-> > +        #size-cells = <0>;
-> > +
-> > +        ov02a10: camera-sensor@3d {
-> > +            compatible = "ovti,ov02a10";
-> > +            reg = <0x3d>;
-> > +            pinctrl-names = "default";
-> > +            pinctrl-0 = <&clk_24m_cam>;
-> > +
-> > +            clocks = <&topckgen CLK_TOP_MUX_CAMTG>,
-> > +                     <&topckgen CLK_TOP_UNIVP_192M_D8>;
-> > +            clock-names = "eclk", "freq_mux";
-> > +            clock-frequency = <24000000>;
-> > +
-> > +            rotation = <180>;
-> > +            ovti,mipi-tx-speed = <4>;
-> > +
-> > +            dovdd-supply = <&mt6358_vcamio_reg>;
-> > +            avdd-supply = <&mt6358_vcama1_reg>;
-> > +            dvdd-supply = <&mt6358_vcn18_reg>;
-> > +
-> > +            powerdown-gpios = <&pio 107 GPIO_ACTIVE_LOW>;
-> > +            reset-gpios = <&pio 109 GPIO_ACTIVE_HIGH>;
-> > +
-> > +            port {
-> > +                wcam_out: endpoint {
-> > +                    data-lanes = <1>;
-> > +                    link-frequencies = /bits/ 64 <390000000>;
-> > +                    remote-endpoint = <&mipi_in_wcam>;
-> > +                };
-> > +            };
-> > +        };
-> > +    };
-> > +
-> > +...
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index e64e5db..63a2335 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -12389,6 +12389,13 @@ M:	Harald Welte <laforge@gnumonks.org>
-> >  S:	Maintained
-> >  F:	drivers/char/pcmcia/cm4040_cs.*
-> >  
-> > +OMNIVISION OV02A10 SENSOR DRIVER
-> > +M:	Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > +L:	linux-media@vger.kernel.org
-> > +S:	Maintained
-> > +T:	git git://linuxtv.org/media_tree.git
-> > +F:	Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > +
-> >  OMNIVISION OV13858 SENSOR DRIVER
-> >  M:	Sakari Ailus <sakari.ailus@linux.intel.com>
-> >  L:	linux-media@vger.kernel.org
-> > -- 
-> > 2.9.2
+Still not alligned.
+
+> +		return ret;
+> +	}
+> +
+> +	ret = input_register_device(keypad->input_dev);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Failed to register device\n");
+> +		return ret;
+> +	}
+> +
+> +	return device_init_wakeup(&pdev->dev, keypad->wakeup);
+> +}
+> +
+> +static const struct of_device_id kpd_of_match[] = {
+> +	{.compatible = "mediatek, mt6779-keypad"},
+> +	{.compatible = "mediatek,kp"},
+> +	{/* sentinel */}
+
+There are still missing whitespaces and checkpatch should complain
+about all three entries, again please use it! 
+
+Regards,
+  Marco
+
+> +};
+> +
+> +static struct platform_driver kpd_pdrv = {
+> +	.probe = kpd_pdrv_probe,
+> +	.driver = {
+> +		   .name = MTK_KPD_NAME,
+> +		   .of_match_table = kpd_of_match,
+> +	},
+> +};
+> +module_platform_driver(kpd_pdrv);
+> +
+> +MODULE_AUTHOR("Mediatek Corporation");
+> +MODULE_DESCRIPTION("MTK Keypad (KPD) Driver");
+> +MODULE_LICENSE("GPL");
+> -- 
+> 2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
