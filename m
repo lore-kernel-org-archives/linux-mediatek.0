@@ -2,76 +2,146 @@ Return-Path: <SRS0=lKUU=7K=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5C423C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 07:24:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BED22C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 07:26:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2BD38207BC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 07:24:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 82D89207BC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 07:26:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CM0DPwXm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2BD38207BC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VQ7h8DeT";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="gzzRRRew"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 82D89207BC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
+	Date:Message-ID:From:To:Subject:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8oKynY3y4cX/RvH8AZJsczzu7/ac37zAYCjz+NjjoLY=; b=CM0DPwXm4MxiJw
-	PxokAoP4twsIs5x3vewrqnKLWmKh6oI0lDikhNVOJZkASqO6Pi4hD7u7D1YnOWiRRYRU6RDf90F4g
-	+z5D2+j98wvyhUqBpBDBIU1rNbk4ysFdmPrxjvtl/+5ZwYzUAeoZl3PNp4WGJw3TH95OCgGFtbdqA
-	ZYzMbLtAJ7QJQNS1c3aMhvxjIvRKVthsSeMNdVJBmMkSFUM4bdPWfdpsYEg9nJqIpI+1XkkPZttRQ
-	rwSUOT+hFBI7BQ5CulVhmmOsBxvFNZyoQ+uGEFW5INm0HWAireqKXAo8ajJy8SnhNE7b6oEEspFgR
-	6PDAbJa/PVjYFXDjh+VQ==;
+	List-Owner; bh=aSw3nqFUuxfx8CCfhHHB19JcLvkj3rmivAHPc0jZ528=; b=VQ7h8DeT5RK1U/
+	ZEOtH1otVHUpVgPS0+Tosm8W1M9UAx1MCqJxiJCeAkmqyLbjN+HGqeFIdl0JCUgBDXvv+SEk1OV6L
+	k8JsxSk8KLJx+GbZwUGugsMPRFtPJJpVrUQuj0ii8sPX87iSLIuSjzY61g7CLxBry4GwqUwbNTu0/
+	Z260hD2cL7F6RPjrmnyWzbebCZLu5vuCVA7/e4BLyzIsfmJIdFDpjr1dr6024e/YjBT+cDulrZpJV
+	iyQHgDIgYtytYcmlPIV3vlhXXClYTmCM1fIgQThJezvWn/pTBCyZyrgaghKVy0GzqiO4oRkDyicmg
+	5buqoWX3Tt/ADqTLL2og==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jeCtR-0007zP-61; Thu, 28 May 2020 07:23:57 +0000
-Received: from mga01.intel.com ([192.55.52.88])
+	id 1jeCvR-0003gS-CX; Thu, 28 May 2020 07:26:01 +0000
+Received: from mailout1.samsung.com ([203.254.224.24])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jeCt9-0007m2-4v; Thu, 28 May 2020 07:23:41 +0000
-IronPort-SDR: 1YvWrmrmQ5Fq5ZlsXn7INZVwu+ueRZ3P2koKvqS3pnJxfZRR4RvauYmN0qGlJKZfsOOUbR78Ly
- EHuMGFHb5NoA==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 May 2020 00:23:38 -0700
-IronPort-SDR: Cq682KuSibl51HWgu35fWEi3NwANS2Mgne5bhc3ZisPoIf3Lu3h3gtstnZAyvyo6tm9/DTiOWg
- UT0E4D4DZGkA==
-X-IronPort-AV: E=Sophos;i="5.73,443,1583222400"; d="scan'208";a="291904084"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 May 2020 00:23:34 -0700
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id 283F1206EA; Thu, 28 May 2020 10:23:32 +0300 (EEST)
-Date: Thu, 28 May 2020 10:23:32 +0300
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Subject: Re: [V9, 1/2] media: dt-bindings: media: i2c: Document OV02A10
- bindings
-Message-ID: <20200528072332.GW7618@paasikivi.fi.intel.com>
-References: <20200523084103.31276-1-dongchun.zhu@mediatek.com>
- <20200523084103.31276-2-dongchun.zhu@mediatek.com>
- <20200526182847.GA92449@bogus>
- <1590569355.8804.448.camel@mhfsdcap03>
- <CAL_Jsq+sN0SVidTrY0ODXEkzkxYFvG1FTnL0oRQBSKf=ynLdyQ@mail.gmail.com>
- <20200527211628.GT7618@paasikivi.fi.intel.com>
- <1590636882.8804.474.camel@mhfsdcap03>
+ id 1jeCum-00038f-B9
+ for linux-mediatek@lists.infradead.org; Thu, 28 May 2020 07:25:23 +0000
+Received: from epcas1p2.samsung.com (unknown [182.195.41.46])
+ by mailout1.samsung.com (KnoxPortal) with ESMTP id
+ 20200528072516epoutp01965da00ff3a83f7117b9f8e9d11e2c20~TIGZCaUgD2802228022epoutp01R
+ for <linux-mediatek@lists.infradead.org>; Thu, 28 May 2020 07:25:16 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.samsung.com
+ 20200528072516epoutp01965da00ff3a83f7117b9f8e9d11e2c20~TIGZCaUgD2802228022epoutp01R
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1590650717;
+ bh=63sggEwMXFg5//iy9mkhqyXY/p5ye2eUye4JI3aTFNA=;
+ h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
+ b=gzzRRRewTL8AIphaaUgjbLkvqTt87CD7NN3eScUgUUcfC7a2JYDYTRzlW6sO6N5Ah
+ 1OXDJf5fsWVnPVAUujo57rjLzqtD/UbDAXSGrgVtz6ouFYx8CY1EKtMxZ3u76t5rS2
+ v7HBLV80AYDTI43JklQ/xza8d4rDg8cYqujRJSPs=
+Received: from epsnrtp4.localdomain (unknown [182.195.42.165]) by
+ epcas1p3.samsung.com (KnoxPortal) with ESMTP id
+ 20200528072516epcas1p38cb7bc241406202fa3d3619e1e3f5f7b~TIGYoNgOh0411404114epcas1p35;
+ Thu, 28 May 2020 07:25:16 +0000 (GMT)
+Received: from epsmges1p1.samsung.com (unknown [182.195.40.156]) by
+ epsnrtp4.localdomain (Postfix) with ESMTP id 49XfNm60qLzMqYkk; Thu, 28 May
+ 2020 07:25:12 +0000 (GMT)
+Received: from epcas1p1.samsung.com ( [182.195.41.45]) by
+ epsmges1p1.samsung.com (Symantec Messaging Gateway) with SMTP id
+ F4.A2.04388.8576FCE5; Thu, 28 May 2020 16:25:12 +0900 (KST)
+Received: from epsmtrp2.samsung.com (unknown [182.195.40.14]) by
+ epcas1p1.samsung.com (KnoxPortal) with ESMTPA id
+ 20200528072512epcas1p14d1270ffbc287a95423f195c2cd7c163~TIGU9DDpf0387903879epcas1p1a;
+ Thu, 28 May 2020 07:25:12 +0000 (GMT)
+Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
+ epsmtrp2.samsung.com (KnoxPortal) with ESMTP id
+ 20200528072512epsmtrp240f422f53f859ac2b0ef15a9fc0e2169~TIGU7c6-L0618806188epsmtrp2u;
+ Thu, 28 May 2020 07:25:12 +0000 (GMT)
+X-AuditID: b6c32a35-77bff70000001124-27-5ecf67586260
+Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
+ epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 96.05.08382.8576FCE5; Thu, 28 May 2020 16:25:12 +0900 (KST)
+Received: from [10.113.221.102] (unknown [10.113.221.102]) by
+ epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
+ 20200528072512epsmtip1a21d95c302e8e9fe3f4f911374c2d3fa~TIGUj993O3158331583epsmtip1j;
+ Thu, 28 May 2020 07:25:12 +0000 (GMT)
+Subject: Re: [PATCH 09/12] devfreq: add mediatek cci devfreq
+To: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>, MyungJoo Ham
+ <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob
+ Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, "Rafael J . Wysocki" <rjw@rjwysocki.net>,
+ Viresh Kumar <viresh.kumar@linaro.org>, Nishanth Menon <nm@ti.com>, Stephen
+ Boyd <sboyd@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
+ <broonie@kernel.org>
+From: Chanwoo Choi <cw00.choi@samsung.com>
+Organization: Samsung Electronics
+Message-ID: <c39e4f30-805a-78c4-b1c4-e55a03e2408e@samsung.com>
+Date: Thu, 28 May 2020 16:35:33 +0900
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101
+ Thunderbird/59.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1590636882.8804.474.camel@mhfsdcap03>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20200520034307.20435-10-andrew-sh.cheng@mediatek.com>
+Content-Language: en-US
+X-Brightmail-Tracker: H4sIAAAAAAAAA01Tf0wTZxjed3c9DrLq5yHzG384OPUPidUete5zAbNNslwyF4lOYsxCd6G3
+ Quiv9FodW1QERgHnInNO6ajMTKcii1KZ/JiViE0MUUBAEMcYgkSZQxbp2jRbsq3HYcZ/z/u+
+ z/O+7/P9YEh2jk5liuxuyWUXrRydRF29uVan223py9ef6+Fx66VpDT4+MUXjhlCvBveUzSTg
+ 6L0qAgceDWvwYEc9jQfL+wEOHwkBfPZ+P4HLKgx49NB5Gs/Eegh85/aABn8WDCXgf4abKXxi
+ jMXNEeFNVmg61QSEdt9YghBorKaFX4av0cKVMweFiu5OSmgZ8lLCFy2NQLg10koI4cDK3KQ9
+ xVmFkmiWXGmSvcBhLrJbsrl3d5q2moyb9LyO34xf59Lsok3K5nK25ereKbLGLXFpe0WrJ57K
+ FWWZ27Aly+XwuKW0QofszuYkp9nq3OxcL4s22WO3rC9w2N7g9fpMY5z4YXHh94cjlDOc+3Hv
+ QBsoBT+9VQMSGQQ3ov6yy3QNSGJY2AZQXcBPqcEcQF9f8y9UogDFaseoF5LJ4acLrCBAZx78
+ ANTgD4DOx+7RCisZZqFzp8s0Cl4OR0l09Jv3FRIJbwB0YqCfUAo0zECd0yPzgqUwHQ3FHsU7
+ MYwWbkHRqKSkKbgGzU6MzvdJgXmo+2oFULAWLkPddVPzGyXCrcjbd5xUMAlXoJ+nGggVv4Za
+ n9WTylwEjyUi74h/wUIOuvjgrwQVJ6Ont1oWcCoKzwZpFX+KLnSHaFVcBVBL512NWjCgzrPH
+ CGVREq5Flzo2qOl01P63H6iDl6DZyOcahYKgFlVVsiplFRp8OEao+FX0nbeaPgo43yI7vkUW
+ fIss+P4f9i2gGsErklO2WSSZd/KLrzsA5t97hrENfNW7rQtABnAva/VCbz6rEffKJbYugBiS
+ W659u+d2Pqs1iyWfSC6HyeWxSnIXMMZPu5ZMTSlwxH+P3W3ijZkGgwFv5DcZeZ5boW2I3cln
+ oUV0S8WS5JRcL3QEk5haClLy/OM/vrQrZ7VQ2rjdQFeXm8HO9sx/O2qT3frLhDUaHK8JXtFN
+ nHJOTz6vFFfaTOvC79U1GT9Y8/jArv0371fsYJ88WZ23e11waZGPf5ZezlX6m8cf18/9KV/v
+ azI3DJ3ct6NyJmDcH/FMHvGeLjnwW3PKR78uOfS7GIocJq/LX3KUXCjyGaRLFv8DR32ctQUE
+ AAA=
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrAIsWRmVeSWpSXmKPExsWy7bCSnG5E+vk4g6Y7Ehbb179gtZj68Amb
+ xfwj51gtzja9Ybf4dqWDyWLT42usFpd3zWGzuNx8kdHic+8RRoul1y8yWTS1GFvcblzBZvHm
+ x1kmizOnL7FatO49wm7x79pGFovpd4UsNn71cBDyWDNvDaPHzll32T02repk87hzbQ+bx+Yl
+ 9R4tJ/ezeGy52s7i0bdlFaPH8RvbmTw+b5IL4IrisklJzcksSy3St0vgyljW/ZWl4HNAxblL
+ OxgbGHc7djFyckgImEg8uvaKpYuRi0NIYDejxNru2ywQCUmJaRePMncxcgDZwhKHDxdD1Lxl
+ lDg26y9YjbCAjcTyhU2sIAkRgfvMEsvvXmUDcZgFDjJKPOv+ww7Rco5R4v2eDYwgLWwCWhL7
+ X9xgA7H5BRQlrv54zAiyglfATuLbt1SQMIuAqsS7h7dZQWxRgTCJnUseM4HYvAKCEidnPgHb
+ zCngLNF+fioziM0soC7xZ94lKFtc4taT+UwQtrzE9rdzmCcwCs9C0j4LScssJC2zkLQsYGRZ
+ xSiZWlCcm55bbFhgmJdarlecmFtcmpeul5yfu4kRHOlamjsYt6/6oHeIkYmD8RCjBAezkgiv
+ 09nTcUK8KYmVValF+fFFpTmpxYcYpTlYlMR5bxQujBMSSE8sSc1OTS1ILYLJMnFwSjUwTVzC
+ fO3kTnfBwh+3/NLeWqrdTn3jNiFrW5IPc+SX/0H72Gs2lFzZHfJwc1L35OT1ixctyDm9zLAt
+ pE4sluF+Xsc1qy5Z//+/J1f8TmB7mqjtpHuKV8JHPW2q2nvRZ0HVCcfV+2Kvsx/dJhZ1yTtC
+ V+K16MEzC9/VX0y4FnF6g2vKwhdqp974vuT5z9jIc8js9B0OkwPhpyOMPnyd9uL40namgN4M
+ DiXHs8sX32LcZ/FESrJApkzZVLrmAC/f51kvPa5EvMkM+zEz8fuPe98/vlWf9qfom0Y2m+D+
+ 6++O/4zVkYrSDKx7O0840aDYKFoyUlzIKbK3/pF9aRTj5K6Zd/QPMyv3vL9kY2Q35bSwEktx
+ RqKhFnNRcSIAxBSLJGMDAAA=
+X-CMS-MailID: 20200528072512epcas1p14d1270ffbc287a95423f195c2cd7c163
+X-Msg-Generator: CA
+X-Sendblock-Type: SVC_REQ_APPROVE
+CMS-TYPE: 101P
+DLP-Filter: Pass
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20200520034338epcas1p1b3c7eb91a37dfd1d9cfc150a2310f120
+References: <20200520034307.20435-1-andrew-sh.cheng@mediatek.com>
+ <CGME20200520034338epcas1p1b3c7eb91a37dfd1d9cfc150a2310f120@epcas1p1.samsung.com>
+ <20200520034307.20435-10-andrew-sh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200528_002339_248011_C163469B 
-X-CRM114-Status: GOOD (  23.13  )
+X-CRM114-CacheID: sfid-20200528_002520_824279_45249866 
+X-CRM114-Status: GOOD (  36.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,86 +153,372 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh@kernel.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- srv_heupstream <srv_heupstream@mediatek.com>, devicetree@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>,
- Shengnan Wang =?utf-8?B?KOeOi+Wco+eUtyk=?= <shengnan.wang@mediatek.com>,
- Tomasz Figa <tfiga@chromium.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Sj Huang <sj.huang@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Louis Kuo <louis.kuo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Cao Bing Bu <bingbu.cao@intel.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dongchun,
+Hi Andrew-sh.Cheng,
 
-On Thu, May 28, 2020 at 11:34:42AM +0800, Dongchun Zhu wrote:
-> Hi Sakari, Rob,
+On 5/20/20 12:43 PM, Andrew-sh.Cheng wrote:
+> This adds a devfreq driver for the Cache Coherent Interconnect (CCI)
+> of the Mediatek MT8183.
 > 
-> On Thu, 2020-05-28 at 00:16 +0300, Sakari Ailus wrote:
-> > Hi Rob, Dongchun,
-> > 
-> > On Wed, May 27, 2020 at 09:27:22AM -0600, Rob Herring wrote:
-> > > > > > +    properties:
-> > > > > > +      endpoint:
-> > > > > > +        type: object
-> > > > > > +        additionalProperties: false
-> > > > > > +
-> > > > > > +        properties:
-> > > >
-> > > > Actually I wonder whether we need to declare 'clock-lanes' here?
-> > > 
-> > > Yes, if you are using it.
-> > 
-> > Dongchun, can you confirm the chip has a single data and a single clock
-> > lane and that it does not support lane reordering?
-> > 
+> On the MT8183 the CCI is supplied by the same regulator as the LITTLE
+> cores. The driver is notified when the regulator voltage changes
+> (driven by cpufreq) and adjusts the CCI frequency to the maximum
+> possible value.
 > 
-> From the datasheet, 'MIPI inside the OV02A10 provides one single
-> uni-directional clock lane and one bi-directional data lane solution for
-> communication links between components inside a mobile device.
-> The data lane has full support for HS(uni-directional) and
-> LP(bi-directional) data transfer mode.'
-> 
-> The sensor doesn't support lane reordering, so 'clock-lanes' property
-> would not be added in next release.
-> 
-> > So if there's nothing to convey to the driver, also the data-lanes should
-> > be removed IMO.
-> > 
-> 
-> However, 'data-lanes' property may still be required.
-> It is known that either data-lanes or clock-lanes is an array of
-> physical data lane indexes. Position of an entry determines the logical
-> lane number, while the value of an entry indicates physical lane, e.g.,
-> for 1-lane MIPI CSI-2 bus we could have "data-lanes = <1>;", assuming
-> the clock lane is on hardware lane 0.
-> 
-> As mentioned earlier, the OV02A10 sensor supports only 1C1D and does not
-> support lane reordering, so here we shall use 'data-lanes = <1>' as
-> there is only a clock lane for OV02A10.
-> 
-> Reminder:
-> If 'data-lanes' property is not present, the driver would assume
-> four-lane operation. This means for one-lane or two-lane operation, this
-> property must be present and set to the right physical lane indexes.
-> If the hardware does not support lane reordering, monotonically
-> incremented values shall be used from 0 or 1 onwards, depending on
-> whether or not there is also a clock lane.
+> Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+> ---
+>  drivers/devfreq/Kconfig              |  10 ++
+>  drivers/devfreq/Makefile             |   1 +
+>  drivers/devfreq/mt8183-cci-devfreq.c | 206 +++++++++++++++++++++++++++++++++++
 
-How can the driver use four lanes, considering the device only supports a
-single lane??
+The mt8183-cci.c is enough for driver name.
+
+>  3 files changed, 217 insertions(+)
+>  create mode 100644 drivers/devfreq/mt8183-cci-devfreq.c
+> 
+> diff --git a/drivers/devfreq/Kconfig b/drivers/devfreq/Kconfig
+> index d9067950af6a..4ed7116271ee 100644
+> --- a/drivers/devfreq/Kconfig
+> +++ b/drivers/devfreq/Kconfig
+> @@ -103,6 +103,16 @@ config ARM_IMX8M_DDRC_DEVFREQ
+>  	  This adds the DEVFREQ driver for the i.MX8M DDR Controller. It allows
+>  	  adjusting DRAM frequency.
+>  
+> +config ARM_MT8183_CCI_DEVFREQ
+> +	tristate "MT8183 CCI DEVFREQ Driver"
+> +	depends on ARM_MEDIATEK_CPUFREQ
+> +	help
+> +		This adds a devfreq driver for Cache Coherent Interconnect
+> +		of Mediatek MT8183, which is shared the same regulator
+> +		with cpu cluster.
+> +		It can track buck voltage and update a proper cci frequency.
+
+s/cci/CCI
+
+> +		Use notification to get regulator status.
+> +
+>  config ARM_TEGRA_DEVFREQ
+>  	tristate "NVIDIA Tegra30/114/124/210 DEVFREQ Driver"
+>  	depends on ARCH_TEGRA_3x_SOC || ARCH_TEGRA_114_SOC || \
+> diff --git a/drivers/devfreq/Makefile b/drivers/devfreq/Makefile
+> index 3eb4d5e6635c..5b1b670c954d 100644
+> --- a/drivers/devfreq/Makefile
+> +++ b/drivers/devfreq/Makefile
+> @@ -10,6 +10,7 @@ obj-$(CONFIG_DEVFREQ_GOV_PASSIVE)	+= governor_passive.o
+>  # DEVFREQ Drivers
+>  obj-$(CONFIG_ARM_EXYNOS_BUS_DEVFREQ)	+= exynos-bus.o
+>  obj-$(CONFIG_ARM_IMX8M_DDRC_DEVFREQ)	+= imx8m-ddrc.o
+> +obj-$(CONFIG_ARM_MT8183_CCI_DEVFREQ)	+= mt8183-cci-devfreq.o
+>  obj-$(CONFIG_ARM_RK3399_DMC_DEVFREQ)	+= rk3399_dmc.o
+>  obj-$(CONFIG_ARM_TEGRA_DEVFREQ)		+= tegra30-devfreq.o
+>  obj-$(CONFIG_ARM_TEGRA20_DEVFREQ)	+= tegra20-devfreq.o
+> diff --git a/drivers/devfreq/mt8183-cci-devfreq.c b/drivers/devfreq/mt8183-cci-devfreq.c
+> new file mode 100644
+> index 000000000000..cd7929a83bf8
+> --- /dev/null
+> +++ b/drivers/devfreq/mt8183-cci-devfreq.c
+> @@ -0,0 +1,206 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2019 MediaTek Inc.
+
+s/2019/2020
+
+> +
+> + * Author: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+> + */
+> +
+> +#include <linux/clk.h>
+> +#include <linux/devfreq.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/regulator/consumer.h>
+> +#include <linux/time.h>
+> +
+> +#include "governor.h"
+
+It is not needed. Please remove it.
+
+> +
+> +#define MAX_VOLT_LIMIT		(1150000)
+> +
+> +struct cci_devfreq {
+> +	struct devfreq *devfreq;
+> +	struct regulator *proc_reg;
+
+'proc' means the 'processor'?
+Instead of 'proc_reg', you better to use 'cpu_reg'.
+
+> +	struct clk *cci_clk;
+> +	int old_vproc;
+> +	unsigned long old_freq;
+> +};
+> +
+> +static int mtk_cci_set_voltage(struct cci_devfreq *cci_df, int vproc)
+> +{
+> +	int ret;
+> +
+> +	ret = regulator_set_voltage(cci_df->proc_reg, vproc,
+> +				    MAX_VOLT_LIMIT);
+> +	if (!ret)
+> +		cci_df->old_vproc = vproc;
+> +	return ret;
+> +}
+> +
+> +static int mtk_cci_devfreq_target(struct device *dev, unsigned long *freq,
+> +				  u32 flags)
+> +{
+> +	int ret;
+> +	struct cci_devfreq *cci_df = dev_get_drvdata(dev);
+> +	struct dev_pm_opp *opp;
+> +	unsigned long opp_rate, opp_voltage, old_voltage;
+> +
+> +	if (!cci_df)
+> +		return -EINVAL;
+> +
+> +	if (cci_df->old_freq == *freq)
+> +		return 0;
+> +
+> +	opp_rate = *freq;
+> +	opp = dev_pm_opp_find_freq_floor(dev, &opp_rate);
+> +	opp_voltage = dev_pm_opp_get_voltage(opp);
+> +	dev_pm_opp_put(opp);
+
+
+You can use the helper function for getting the rate 
+with devfreq_recommended_opp(). You can refer the following code
+in drivers/devfreq/exynos-bus.c
+
+	opp = devfreq_recommended_opp(dev, freq, flags);
+	if (IS_ERR(opp)) {
+		dev_err(dev, "failed to get recommended opp instance\n");
+		return PTR_ERR(opp);
+	}
+	dev_pm_opp_put(opp);
+
+> +
+> +	old_voltage = cci_df->old_vproc;
+> +	if (old_voltage == 0)
+> +		old_voltage = regulator_get_voltage(cci_df->proc_reg);
+> +
+> +	// scale up: set voltage first then freq
+> +	if (opp_voltage > old_voltage) {
+> +		ret = mtk_cci_set_voltage(cci_df, opp_voltage);
+> +		if (ret) {
+> +			pr_err("cci: failed to scale up voltage\n");
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	ret = clk_set_rate(cci_df->cci_clk, *freq);
+> +	if (ret) {
+> +		pr_err("%s: failed cci to set rate: %d\n", __func__,
+> +		       ret);
+> +		mtk_cci_set_voltage(cci_df, old_voltage);
+> +		return ret;
+> +	}
+> +
+> +	// scale down: set freq first then voltage
+> +	if (opp_voltage < old_voltage) {
+> +		ret = mtk_cci_set_voltage(cci_df, opp_voltage);
+> +		if (ret) {
+> +			pr_err("cci: failed to scale down voltage\n");
+> +			clk_set_rate(cci_df->cci_clk, cci_df->old_freq);
+> +			return ret;
+> +		}
+> +	}
+
+
+I recommend that dev_pm_opp_set_rate() and dev_pm_opp_set_regulator()
+instead of 'clk_set_rate' and 'regulator_set_voltage'.
+In the dev_pm_opp_set_rate(), handle the these sequence.
+You can refer the merged patch[1].
+
+[1] commit 4294a779bd8dff6c65e7e85ffe7a1ea236e92a68
+- PM / devfreq: exynos-bus: Convert to use dev_pm_opp_set_rate()
+
+
+> +
+> +	cci_df->old_freq = *freq;
+> +
+> +	return 0;
+> +}
+> +
+> +static struct devfreq_dev_profile cci_devfreq_profile = {
+> +	.target = mtk_cci_devfreq_target,
+
+Need to add '.exit' for calling dev_pm_opp_of_remove_table().
+You can refer the merged devfreq patches like exynos_bus.c, imx-bus.c.
+
+> +};
+> +
+> +static int mtk_cci_devfreq_probe(struct platform_device *pdev)
+> +{
+> +	struct device *cci_dev = &pdev->dev;
+> +	struct cci_devfreq *cci_df;
+> +	struct devfreq_passive_data *passive_data;
+> +	int ret;
+> +
+> +	cci_df = devm_kzalloc(cci_dev, sizeof(*cci_df), GFP_KERNEL);
+> +	if (!cci_df)
+> +		return -ENOMEM;
+> +
+> +	cci_df->cci_clk = devm_clk_get(cci_dev, "cci_clock");
+> +	ret = PTR_ERR_OR_ZERO(cci_df->cci_clk);
+> +	if (ret) {
+> +		if (ret != -EPROBE_DEFER)
+> +			dev_err(cci_dev, "failed to get clock for CCI: %d\n",
+> +				ret);
+> +		return ret;
+> +	}
+> +	cci_df->proc_reg = devm_regulator_get_optional(cci_dev, "proc");
+> +	ret = PTR_ERR_OR_ZERO(cci_df->proc_reg);
+> +	if (ret) {
+> +		if (ret != -EPROBE_DEFER)
+> +			dev_err(cci_dev, "failed to get regulator for CCI: %d\n",
+> +				ret);
+> +		return ret;
+> +	}
+
+I recommend that use dev_pm_opp_set_regulators.
+You can refer the merged patch[1].
+
+[1] commit 4294a779bd8dff6c65e7e85ffe7a1ea236e92a68
+- PM / devfreq: exynos-bus: Convert to use dev_pm_opp_set_rate()
+
+
+> +	ret = regulator_enable(cci_df->proc_reg);
+> +	if (ret) {
+> +		pr_warn("enable buck for cci fail\n");
+
+Use dev_err instead of 'pr_warn'.
+
+> +		return ret;
+> +	}
+> +
+> +	ret = dev_pm_opp_of_add_table(cci_dev);
+> +	if (ret) {
+> +		dev_err(cci_dev, "Fail to init CCI OPP table: %d\n", ret);
+
+How about changing the error log as following
+because in this driver, use the 'failed to' sentence for error handling?
+
+	failed to get OPP table for CCI:L %d
+
+> +		return ret;
+> +	}
+> +
+> +	platform_set_drvdata(pdev, cci_df);
+> +
+> +	passive_data = devm_kzalloc(cci_dev, sizeof(*passive_data), GFP_KERNEL);
+> +	if (!passive_data)
+> +		return -ENOMEM;
+
+On this error case, you have to call dev_pm_opp_of_remove_table().
+You better to make the 'err_opp' jump lable and then add 'goto err_opp'.
+
+> +
+> +	passive_data->parent_type = CPUFREQ_PARENT_DEV;
+> +
+> +	cci_df->devfreq = devm_devfreq_add_device(cci_dev,
+> +						  &cci_devfreq_profile,
+> +						  DEVFREQ_GOV_PASSIVE,
+> +						  passive_data);
+> +	if (IS_ERR(cci_df->devfreq)) {
+> +		ret = PTR_ERR(cci_df->devfreq);
+> +		dev_err(cci_dev, "cannot create cci devfreq device:%d\n", ret);
+> +		dev_pm_opp_of_remove_table(cci_dev);
+
+Instead of direct call, use 'goto err_opp'.
+
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_cci_devfreq_remove(struct platform_device *pdev)
+> +{
+> +	struct device *cci_dev = &pdev->dev;
+> +	struct cci_devfreq *cci_df;
+> +	struct notifier_block *opp_nb;
+> +
+> +	cci_df = platform_get_drvdata(pdev);
+> +	opp_nb = &cci_df->opp_nb;
+> +
+> +	dev_pm_opp_unregister_notifier(cci_dev, opp_nb);
+
+This patch doesn't call the dev_pm_opp_register_notifier.
+Please remove it.
+
+> +	devm_devfreq_remove_device(cci_dev, cci_df->devfreq);
+
+Don't need to call this function because you used devm_devfreq_add_device().
+
+> +	dev_pm_opp_of_remove_table(cci_dev)> +	regulator_disable(cci_df->proc_reg);
+> +
+> +	return 0;
+> +}
+> +
+> +static const __maybe_unused struct of_device_id
+> +	mediatek_cci_devfreq_of_match[] = {
+
+Make it on one line and remove '__maybe_unused' keyword.
+- mediatek_cci_devfreq_of_match-> mediatek_cci_of_match
+
+> +	{ .compatible = "mediatek,mt8183-cci" },
+> +	{ },
+> +};
+> +MODULE_DEVICE_TABLE(of, mediatek_cci_devfreq_of_match);
+
+ditto.
+
+> +
+> +static struct platform_driver cci_devfreq_driver = {
+> +	.probe	= mtk_cci_devfreq_probe,
+> +	.remove	= mtk_cci_devfreq_remove,
+> +	.driver = {
+> +		.name = "mediatek-cci-devfreq",
+> +		.of_match_table = of_match_ptr(mediatek_cci_devfreq_of_match),
+
+ditto.
+
+> +	},
+> +};
+> +
+> +static int __init mtk_cci_devfreq_init(void)
+> +{
+> +	return platform_driver_register(&cci_devfreq_driver);
+> +}
+> +module_init(mtk_cci_devfreq_init)
+> +
+> +static void __exit mtk_cci_devfreq_exit(void)
+> +{
+> +	platform_driver_unregister(&cci_devfreq_driver);
+> +}
+> +module_exit(mtk_cci_devfreq_exit)
+
+Use 'module_platform_driver' instead of module_init and module_exit.
+
+> +
+> +MODULE_DESCRIPTION("Mediatek CCI devfreq driver");
+> +MODULE_AUTHOR("Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>");
+> +MODULE_LICENSE("GPL v2");
+> 
+
 
 -- 
-Sakari Ailus
+Best Regards,
+Chanwoo Choi
+Samsung Electronics
 
 _______________________________________________
 Linux-mediatek mailing list
