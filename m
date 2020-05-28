@@ -2,80 +2,85 @@ Return-Path: <SRS0=lKUU=7K=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 43B39C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 05:56:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D6D77C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 06:01:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 10E102084C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 05:56:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A3E7C2071A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 06:01:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jHmdqixi";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="O9DKw2sx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 10E102084C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="X+JaboD2";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="AqgX9832"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A3E7C2071A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WFsUHHfkTUF+ivfnfTxVxLpyfsNNGRIQHmIUEqFsDlo=; b=jHmdqixiqKQGdL
-	re+0x/AaAT0rLuAvBYd2uu+UwwOqRgBjnxYEMR3CwX1WoDiI6p+o2yDyg3wVyu/GZxHLZAbXEyzcg
-	Fw0FjxvZInnoQZpw8fTJfA5jSsYnajqJIARRDBvvZIEU4qZglhQsuH5loqmuEAc9I18qsG4evSL73
-	BXuPTcGGg0LURohs3LDDHiT4twuBr30titKQ5r3y89uDkYavdCEnU4kpD8x5NgRqax9EzVbSNem7b
-	ORwmHdKygy75aYpV/4JNcYbiKEsk9Zy89L8F8XUbiI+Pqpw+4jSGhw/q2wxNHcQasaBFOswrE2QD9
-	0QqsBVUCWyGY7umT2J5g==;
+	List-Owner; bh=Frs1780hJ2sfKv04lHqySxtBVMpfqgyhhP0lCdj3ols=; b=X+JaboD2ZVlfmO
+	SkaJoRw5RQFU4WBCbei/TMR37DtKbYJYnlmYnp6LdDj8IgLCMlBPp2o70Le/BgPBTX2KriXXbUr5d
+	xbMvbONKV+PpY+pPKbV6ftcy0uIjToF46ThbOm2hoCnA1/KQUDXcad0NnCa9h/9QBkribgMq0S/na
+	wOcYXIDsGK+GNI0I+5foZCyt5F3iabYnPZJE59cQyMs98ceG5mGooOA/U05b728t0q+Lcyb96Mg4t
+	nps2f0niHNBBfjLbePh8B9CN25HfEv+HtvmYAjhbvUggAE6DmWfV9sw8lzO3eW05k6JtE0FSmSw4h
+	AJ68pomOyJNZ/sO0HrlA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jeBWU-0004LG-T7; Thu, 28 May 2020 05:56:10 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jeBc0-0008Dk-2J; Thu, 28 May 2020 06:01:52 +0000
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jeBWR-0004Jd-Ia; Thu, 28 May 2020 05:56:09 +0000
-X-UUID: 5dbe97a447524cdea5a3f7ac24e028fa-20200527
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=GKJ7cZiMqfb2VfBlip933OA74rr18gz1+qPKGEU9fns=; 
- b=O9DKw2sxmT4kSvKbsn+cpmAeOQjHHq3SitDDUCsUvY2FzyzsSK5L3n9/90S7ppUkDsHd1Vx+VA9NWAg9PhrhW70tNFTqgJDtAUZSWEsUnOKNUg7iGi/V8dgzlreIdppBeiIv0w2sWAKGgUxhFYthqwBmOzs4hfjQFBXYs6h4+qY=;
-X-UUID: 5dbe97a447524cdea5a3f7ac24e028fa-20200527
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <dongchun.zhu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 293861917; Wed, 27 May 2020 21:56:02 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 27 May 2020 22:55:58 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31DR.mediatek.inc
- (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 28 May 2020 13:55:50 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 28 May 2020 13:55:31 +0800
-Message-ID: <1590645223.8804.498.camel@mhfsdcap03>
-Subject: Re: [V9, 1/2] media: dt-bindings: media: i2c: Document OV02A10
- bindings
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-Date: Thu, 28 May 2020 13:53:43 +0800
-In-Reply-To: <CAL_Jsq+sN0SVidTrY0ODXEkzkxYFvG1FTnL0oRQBSKf=ynLdyQ@mail.gmail.com>
-References: <20200523084103.31276-1-dongchun.zhu@mediatek.com>
- <20200523084103.31276-2-dongchun.zhu@mediatek.com>
- <20200526182847.GA92449@bogus> <1590569355.8804.448.camel@mhfsdcap03>
- <CAL_Jsq+sN0SVidTrY0ODXEkzkxYFvG1FTnL0oRQBSKf=ynLdyQ@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jeBbx-0008DE-8W
+ for linux-mediatek@lists.infradead.org; Thu, 28 May 2020 06:01:50 +0000
+Received: by mail-ed1-x543.google.com with SMTP id c35so5870992edf.5
+ for <linux-mediatek@lists.infradead.org>; Wed, 27 May 2020 23:01:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=+4G7LztfhKefqislvGUwGcaLm9pBFDOhcjn0F/Q53GA=;
+ b=AqgX98324qc7v88oMBNXmxv6ZIWYQ8Q91wG8IRXL86xb3RDlvEjUyyUIfkNMbTZa87
+ 3aLiJZWfASX81Lh6axF218c69z186jXm1r3nX+w0XFcXm//gwlBuiBQprYUpGvNwtQF1
+ 7v9qN9dRsqT3mC4foN6sj/rLbegA1ZZgbhTAtoCG1a4xApPa1Fm+ADtgnNcVlQQWOGuD
+ EwCNWZtHmuDFiT1pyLNb7gj3n8sCyqCMA/+piGrolDYHymQq+rH0XifEvcbGcFP1JMN3
+ p3BRLpG9QtrJEBDe2RNTA/efIUT69m16YzqQ4tskKpTEKsB8+wCmAD7hL9rdutuYxP8t
+ GTzA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=+4G7LztfhKefqislvGUwGcaLm9pBFDOhcjn0F/Q53GA=;
+ b=LICJnXldLR+FwcWwTq0CFvU/gRdyr2R3PMu3fDJwypGcfQOnL0rjn95g3otBh0LF4F
+ g91P6PdX396QmPgnrnP/kWFfvg5Nj2cB7VKhHWYIwqLKbwmqd1+tTDV5uqBXA3H8nkp6
+ xu5r36nf8kSTR2bh1xgYfR6e/3Oumd23UIBHexphc73+XNlh4AX1PMQZ5La8wClKwugr
+ 8nirLaj0OZZkffri1MEM+0ATVAuKWertlkLwwo8AVenukvYskJkWuhdr75OzZG4hq+Y6
+ Acfq1GS7myQeeToeGDpEYhbcI+nCIjLFW43n1DdyFprneX6zvSwS9czPpoR+jsVWLNHJ
+ PTVg==
+X-Gm-Message-State: AOAM531u7EvSKBXUu0jfgeW8enficizEr6sHN36vmT3o7pMim7EXZxMJ
+ OokCR1xHc67aRmM6FH4MVZCPc+qLYJWT3HIkPtg=
+X-Google-Smtp-Source: ABdhPJwIk1Z2LwvbqGSnf8PWVoUKndg0g1dzxhJ5rxuKA894xH0b5zaDXP/mOvPqmIXLsQ2D8KrHPxM8vVGTDq9e1aA=
+X-Received: by 2002:a50:9547:: with SMTP id v7mr1564141eda.78.1590645706837;
+ Wed, 27 May 2020 23:01:46 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 5202DC9C4A6DAD8E5332356556DAFB0DC31C7CBC60798AF4CE88C6F8C832C7CA2000:8
-X-MTK: N
+References: <CAAOTY_8tz9nNbCHFJhk9xX8fm9Jd8ETcdNCQfE31AOjZLpNKog@mail.gmail.com>
+ <CAPM=9txm_fdy_+Kg=cdXe5SosbYBoXHtsDWYMFm2WQh1QtC_YQ@mail.gmail.com>
+ <CAPM=9tzqQ5G82mSACX5speUF2j-8vz7SrOcj7XLsKCjhe3GT6A@mail.gmail.com>
+ <9870ea53-cdd9-e34c-dcbd-f087f5abf619@gmail.com>
+In-Reply-To: <9870ea53-cdd9-e34c-dcbd-f087f5abf619@gmail.com>
+From: Dave Airlie <airlied@gmail.com>
+Date: Thu, 28 May 2020 16:01:34 +1000
+Message-ID: <CAPM=9tw9zn5tCw_tGVgn53Si2NXsVC35JmU_NwBE3NKVvfsfCw@mail.gmail.com>
+Subject: Re: [GIT PULL v2] mediatek drm next for 5.8
+To: Matthias Brugger <matthias.bgg@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200527_225607_625042_B4B7F7BE 
-X-CRM114-Status: GOOD (  28.55  )
+X-CRM114-CacheID: sfid-20200527_230149_302506_17B1B253 
+X-CRM114-Status: GOOD (  19.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,247 +92,75 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Louis Kuo <louis.kuo@mediatek.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- Linus Walleij <linus.walleij@linaro.org>, Shengnan
- Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=A3=E7=94=B7=29?=
- <shengnan.wang@mediatek.com>, Tomasz Figa <tfiga@chromium.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Sj Huang <sj.huang@mediatek.com>, Nicolas
- Boichat <drinkcat@chromium.org>, "moderated list:ARM/Mediatek
- SoC support" <linux-mediatek@lists.infradead.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>, dongchun.zhu@medaitek.com,
- Matthias
- Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, "moderated
- list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Jitao Shi <jitao.shi@mediatek.com>,
+ David Airlie <airlied@linux.ie>, Bernard Zhao <bernard@vivo.com>,
+ YueHaibing <yuehaibing@huawei.com>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Anand K Mistry <amistry@chromium.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+On Sat, 23 May 2020 at 01:58, Matthias Brugger <matthias.bgg@gmail.com> wrote:
+>
+>
+>
+> On 20/05/2020 07:46, Dave Airlie wrote:
+> > On Wed, 20 May 2020 at 15:44, Dave Airlie <airlied@gmail.com> wrote:
+> >>
+> >> On Mon, 18 May 2020 at 10:06, Chun-Kuang Hu <chunkuang.hu@kernel.org> wrote:
+> >>>
+> >>> Hi, Dave & Daniel:
+> >>>
+> >>> This include dpi pin mode swap, config mipi_tx current and impedance,
+> >>> and some fixup. I drop drm_bridge patches in this version.
+> >>>
+> >>> The following changes since commit 8f3d9f354286745c751374f5f1fcafee6b3f3136:
+> >>>   Linux 5.7-rc1 (2020-04-12 12:35:55 -0700)
+> >>> are available in the Git repository at:
+> >>>   https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git
+> >>> tags/mediatek-drm-next-5.8
+> >>> for you to fetch changes up to 007d274a017bb4e2ef7b922c2f54f40cf2073664:
+> >>
+> >> Did you edit this by hand or pass it through some mailserver that
+> >> chewed it up, I had to reconstruct this pull from the above bits, I've
+> >> no idea why it's so messed up in the first place.
+> >
+> > and why does it contain an unexplained backmerge?
+> >
+> >  Merge tag 'v5.7-next-drm-stable' of
+> > ssh://gitolite.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux
+> > into mediatek-drm-next
+> >
+> > Please don't ever backmerge fixes into next pull, without a long
+> > explaination or if you really need it ask us first,
+>
+> It's not fixes. I suppose my tagging strategy helps to create confusion. The tag
+> is v5.7-*next*, which relates to v5.8 (next version after v5.7). Maybe not the
+> best way to do it.
+>
+> We had to merge a series that changed the drivers/gpu/drm, drivers/soc and
+> drivers/clk.
+> So I took the series through my branch and Chun-Kuang merged a stable tag in his
+> branch so that he can take commits on top of this changes.
+>
+> Maybe the explanation comes too late, but I just wanted to clarify.
 
-On Wed, 2020-05-27 at 09:27 -0600, Rob Herring wrote:
-> On Wed, May 27, 2020 at 2:51 AM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
-> >
-> > Hi Rob,
-> >
-> > Thanks for the review. Please see my replies below.
-> >
-> > On Tue, 2020-05-26 at 12:28 -0600, Rob Herring wrote:
-> > > On Sat, May 23, 2020 at 04:41:02PM +0800, Dongchun Zhu wrote:
-> > > > Add DT bindings documentation for Omnivision OV02A10 image sensor.
-> > > >
-> > > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > > ---
-> > > >  .../bindings/media/i2c/ovti,ov02a10.yaml           | 172 +++++++++++++++++++++
-> > > >  MAINTAINERS                                        |   7 +
-> > > >  2 files changed, 179 insertions(+)
-> > > >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > >
-> > > > diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > > new file mode 100644
-> > > > index 0000000..56f31b5
-> > > > --- /dev/null
-> > > > +++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > > @@ -0,0 +1,172 @@
-> > > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > > > +# Copyright (c) 2020 MediaTek Inc.
-> > > > +%YAML 1.2
-> > > > +---
-> > > > +$id: http://devicetree.org/schemas/media/i2c/ovti,ov02a10.yaml#
-> > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > > +
-> > > > +title: Omnivision OV02A10 CMOS Sensor Device Tree Bindings
-> > > > +
-> > > > +maintainers:
-> > > > +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > > +
-> > > > +description: |-
-> > > > +  The Omnivision OV02A10 is a low-cost, high performance, 1/5-inch, 2 megapixel
-> > > > +  image sensor, which is the latest production derived from Omnivision's CMOS
-> > > > +  image sensor technology. Ihis chip supports high frame rate speeds up to 30fps
-> > > > +  @ 1600x1200 (UXGA) resolution transferred over a 1-lane MIPI interface. The
-> > > > +  sensor output is available via CSI-2 serial data output.
-> > > > +
-> > > > +properties:
-> > > > +  compatible:
-> > > > +    const: ovti,ov02a10
-> > > > +
-> > > > +  reg:
-> > > > +    maxItems: 1
-> > > > +
-> > > > +  clocks:
-> > > > +    items:
-> > > > +      - description: top mux camtg clock
-> > > > +      - description: divider clock
-> > > > +
-> > > > +  clock-names:
-> > > > +    items:
-> > > > +      - const: eclk
-> > > > +      - const: freq_mux
-> > > > +
-> > > > +  clock-frequency:
-> > > > +    description:
-> > > > +      Frequency of the eclk clock in Hertz.
-> > > > +
-> >
-> > Rob, shall we use 'maxItems: 1' to constrain property: clock-frequency?
-> 
-> No, because it is a scalar, not an array.
-> 
+Okay so whenever a submaintainer tree has a merge in it, two things
+need to happen.
 
-Got it.
+a) the merge needs a commit msg explaining what it is, why it's there.
+b) the subsequent pull request should mention it's existence.
 
-> > Or could we adopt 'clock-frequency: true' directly here?
-> 
-> As-is is fine.
-> 
+I'm not used to pulling trees from submaintainers with merges in them
+and usually it's a red flag that they've backmerged something they
+shouldn't have.
 
-Understood.
-
-> > > > +  dovdd-supply:
-> > > > +    description:
-> > > > +      Definition of the regulator used as Digital I/O voltage supply.
-> > > > +
-> >
-> > Shall we add 'maxItems: 1' here?
-> 
-> No, supplies are always singular.
-> 
-
-Fine.
-
-> >
-> > > > +  avdd-supply:
-> > > > +    description:
-> > > > +      Definition of the regulator used as Analog voltage supply.
-> > > > +
-> >
-> > Ditto.
-> >
-> > > > +  dvdd-supply:
-> > > > +    description:
-> > > > +      Definition of the regulator used as Digital core voltage supply.
-> > > > +
-> >
-> > Ditto.
-> >
-> > > > +  powerdown-gpios:
-> > > > +    description:
-> > > > +      Must be the device tree identifier of the GPIO connected to the
-> > > > +      PD_PAD pin. This pin is used to place the OV02A10 into Standby mode
-> > > > +      or Shutdown mode. As the line is active low, it should be
-> > > > +      marked GPIO_ACTIVE_LOW.
-> > >
-> > > Need to define how many GPIOs ('maxItems: 1')
-> > >
-> >
-> > It would be fixed like this in next release.
-> > powerdown-gpios:
-> >   maxItems: 1
-> >   description:
-> >     Must be the device tree identifier of the GPIO connected to the
-> >     PD_PAD pin. This pin is used to place the OV02A10 into Standby mode
-> >     or Shutdown mode. As the line is active low, it should be
-> >     marked GPIO_ACTIVE_LOW.
-> >
-
-Tomasz, I don't know whether you noticed this description.
-Here I simply defined one necessary GPIO polarity in DT which driver
-settings need to follow.
-
-> > > > +
-> > > > +  reset-gpios:
-> > > > +    description:
-> > > > +      Must be the device tree identifier of the GPIO connected to the
-> > > > +      RST_PD pin. If specified, it will be asserted during driver probe.
-> > > > +      As the line is active high, it should be marked GPIO_ACTIVE_HIGH.
-> > >
-> > > Here too.
-> > >
-> >
-> > Similar as 'powerdown-gpios'.
-> > Fixed in next release.
-> >
-> > > > +
-> > > > +  rotation:
-> > > > +    description:
-> > > > +      Definition of the sensor's placement.
-> > > > +    allOf:
-> > > > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> > > > +      - enum:
-> > > > +          - 0    # Sensor Mounted Upright
-> > > > +          - 180  # Sensor Mounted Upside Down
-> > > > +        default: 0
-> > > > +
-> > > > +  ovti,mipi-tx-speed:
-> > > > +    description:
-> > > > +      Indication of MIPI transmission speed select, which is to control D-PHY
-> > > > +      timing setting by adjusting MIPI clock voltage to improve the clock
-> > > > +      driver capability.
-> > > > +    allOf:
-> > > > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> > > > +      - enum:
-> > > > +          - 0    #  20MHz -  30MHz
-> > > > +          - 1    #  30MHz -  50MHz
-> > > > +          - 2    #  50MHz -  75MHz
-> > > > +          - 3    #  75MHz - 100MHz
-> > > > +          - 4    # 100MHz - 130MHz
-> > > > +        default: 3
-> > > > +
-> > > > +  # See ../video-interfaces.txt for details
-> > > > +  port:
-> > > > +    type: object
-> > > > +    additionalProperties: false
-> > >
-> > > Should have a description of what data the port has.
-> > >
-> >
-> > It would be updated as below in next release.
-> > port:
-> >   type: object
-> >   additionalProperties: false
-> >   description:
-> >     Input port node, single endpoint describing the CSI-2 transmitter.
-> 
-> Output?
-> 
-
-Sorry for the typo.
-Yes, this should be output port node.
-
-> >
-> > > > +
-> > > > +    properties:
-> > > > +      endpoint:
-> > > > +        type: object
-> > > > +        additionalProperties: false
-> > > > +
-> > > > +        properties:
-> >
-> > Actually I wonder whether we need to declare 'clock-lanes' here?
-> 
-> Yes, if you are using it.
-> 
-
-Looking back to the upstreamed patches, it seems that there is a deep
-divide in the setting of 'clock-lanes' property.
-
-As the last comment I just posed, for OV02A10, 'clock-lanes' should be
-set to <0> (clock lane on hardware lane 0).
-But here we may follow IMX219 patch, which removed 'clock-lanes'
-property due to the fact that sensor hardware does not support lane
-reordering.
-
-Rob, Sakari, what's your opinions?
-
-> Rob
+Dave.
 
 _______________________________________________
 Linux-mediatek mailing list
