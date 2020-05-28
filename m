@@ -2,146 +2,62 @@ Return-Path: <SRS0=lKUU=7K=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A90E6C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 07:50:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B52B4C433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 08:08:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 73AEF20899
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 07:50:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8C5172088E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 08:08:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ueu0RqJd";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="UkMAW1vw"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 73AEF20899
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jsrw734j"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8C5172088E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
-	Date:Message-ID:To:From:Subject:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c4mX3I+tCD/Aoyb3Y7CWMB1BjngwSK0fbpXfLLghU0I=; b=ueu0RqJdI+WVp5
-	zSmSqrvUVOpFeWZvxDG1KTH9x6t/PFEXA04yeGyPunjaMa/lITHhlNZuuUr0k+iUX+utbgMdQ3ACo
-	UWLPwQia4NW4XoQAZVsrA+1h2qgUqLNVyNVvYekNJbDEtbRJGJoil8w6lqYxXx5VP41ybBd8IVO67
-	LGI0O5xnN/VHDZUXg/BAgQdmEiV6xjonBWij2KP3XG8jfoU5Nkf/tuZLR2nkk2Y6/WecYtjT5JFqm
-	wtTbh1EYHkodPR9VaOwS2kjc5tTL1nkhfPWzRRoVPxQ+Ik4vXYp9kGQJo6r07YNcc98TjF04Y6/1Y
-	eVhSPpUxRWIgo4vv6JvQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HbeMJH2E+1z7INADobn/IjBU+Owqv1sVr2nNv5AMYo0=; b=jsrw734j5lOJGK
+	z/6nncx+//ANvSMR14o/UnjE3ndoi723pfZM6oKmb1VMPqZhoafnFs9DykYdkywV+eOMlkV39lu3g
+	KXv+r2o3RtZPc3q4nPHNbAAiPp1qaxMttYyGJA+GukxFHCSCQcb3qWs/2bMd0l6n/T9pQylfpJiwp
+	X3avPdmpBkldL/JWjwiHfjb9VneWMiFQc5xP9xrPjCRm3IodIJYB8IM45lL3e3Ze/QsmUBl2BHcft
+	Lx4w21UynXp8ckSIq6+VSTNbOmuyqX/qhuaejioOhDtiEsQvCPqSYWcm6EBp5ENaTd5ReaBNCVqng
+	UfqW+rnNL8++IxGIT2iQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jeDIY-0008DM-6c; Thu, 28 May 2020 07:49:54 +0000
-Received: from mailout3.samsung.com ([203.254.224.33])
+	id 1jeDaV-00011v-AO; Thu, 28 May 2020 08:08:27 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jeDIU-0008CB-RJ
- for linux-mediatek@lists.infradead.org; Thu, 28 May 2020 07:49:53 +0000
-Received: from epcas1p3.samsung.com (unknown [182.195.41.47])
- by mailout3.samsung.com (KnoxPortal) with ESMTP id
- 20200528074946epoutp03dd6b0c5ca4519b3ae759d514f5d51162~TIbxXETEH2977729777epoutp036
- for <linux-mediatek@lists.infradead.org>; Thu, 28 May 2020 07:49:46 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout3.samsung.com
- 20200528074946epoutp03dd6b0c5ca4519b3ae759d514f5d51162~TIbxXETEH2977729777epoutp036
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1590652186;
- bh=w3hreuHdGghvCf2Cl/nWNgKq1iwxko3TlSXpUoS52lM=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
- b=UkMAW1vwFpypFoFOaDfPTBXoG3fSc7H0rZBF/YQ/uPFwc8ko6+gT90eV8w/2uyTVg
- RZoltUBuDxjMu5xzPXofGsRG99NrKKhSEAcqVSgA2eJt4/OjU7y02ehaKeA59+XU08
- OxXV5sDqMxu4iIr5K0mSlEwiUKQrLhrULEXheKnU=
-Received: from epsnrtp4.localdomain (unknown [182.195.42.165]) by
- epcas1p1.samsung.com (KnoxPortal) with ESMTP id
- 20200528074945epcas1p172b17c4112659cf6dabc62c9f20b7370~TIbwhnbd52989429894epcas1p16;
- Thu, 28 May 2020 07:49:45 +0000 (GMT)
-Received: from epsmges1p2.samsung.com (unknown [182.195.40.156]) by
- epsnrtp4.localdomain (Postfix) with ESMTP id 49Xfx117FLzMqYkk; Thu, 28 May
- 2020 07:49:41 +0000 (GMT)
-Received: from epcas1p3.samsung.com ( [182.195.41.47]) by
- epsmges1p2.samsung.com (Symantec Messaging Gateway) with SMTP id
- D3.6B.04645.51D6FCE5; Thu, 28 May 2020 16:49:41 +0900 (KST)
-Received: from epsmtrp1.samsung.com (unknown [182.195.40.13]) by
- epcas1p2.samsung.com (KnoxPortal) with ESMTPA id
- 20200528074939epcas1p2ca03b0b59c893dc7ddfa8234a3695ada~TIbreJvlm2019520195epcas1p2H;
- Thu, 28 May 2020 07:49:39 +0000 (GMT)
-Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
- epsmtrp1.samsung.com (KnoxPortal) with ESMTP id
- 20200528074939epsmtrp197bdf2aa05e142c1a9eaf872a5e7ee7b~TIbrdGRMc3121731217epsmtrp1i;
- Thu, 28 May 2020 07:49:39 +0000 (GMT)
-X-AuditID: b6c32a36-f67ff70000001225-e5-5ecf6d155cea
-Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
- epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
- 1E.07.08382.31D6FCE5; Thu, 28 May 2020 16:49:39 +0900 (KST)
-Received: from [10.113.221.102] (unknown [10.113.221.102]) by
- epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20200528074939epsmtip1f20abb71f55e25d652757989898ee798~TIbrJ4l_71298712987epsmtip1v;
- Thu, 28 May 2020 07:49:39 +0000 (GMT)
-Subject: Re: [PATCH 09/12] devfreq: add mediatek cci devfreq
-From: Chanwoo Choi <cw00.choi@samsung.com>
-To: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>, MyungJoo Ham
- <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob
- Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, "Rafael J . Wysocki" <rjw@rjwysocki.net>,
- Viresh Kumar <viresh.kumar@linaro.org>, Nishanth Menon <nm@ti.com>, Stephen
- Boyd <sboyd@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
- <broonie@kernel.org>
-Organization: Samsung Electronics
-Message-ID: <75e95e7f-6038-fd5a-3d2c-37df2c6b2cc8@samsung.com>
-Date: Thu, 28 May 2020 17:00:00 +0900
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101
- Thunderbird/59.0
+ id 1jeDaR-00011F-5a
+ for linux-mediatek@lists.infradead.org; Thu, 28 May 2020 08:08:25 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id CCF942A3CA1
+Subject: Re: [BUG] Cannot boot on MT8173 if Mediatek thermal is enabled
+To: Michael Kao <michael.kao@mediatek.com>
+References: <8d66199a-84cb-5080-cd24-f746d1db5c5a@collabora.com>
+ <34c9fc56-ca19-cf59-af71-4273f91338b9@gmail.com>
+ <56e774bc-5029-5836-2da1-dcabe3143d29@collabora.com>
+ <c01722de-7ef3-f43a-8bc9-cd6581004dba@collabora.com>
+ <1590634780.22554.1.camel@mtksdccf07>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Message-ID: <39c5d33a-d8ef-31d0-6864-62a62e12b2b1@collabora.com>
+Date: Thu, 28 May 2020 10:08:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <c39e4f30-805a-78c4-b1c4-e55a03e2408e@samsung.com>
+In-Reply-To: <1590634780.22554.1.camel@mtksdccf07>
 Content-Language: en-US
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFvrIJsWRmVeSWpSXmKPExsWy7bCmvq5o7vk4gy8/2Cy2r3/BajH14RM2
- i/lHzrFanG16w27x7UoHk8Wmx9dYLS7vmsNmcbn5IqPF594jjBZLr19ksmhqMba43biCzeLN
- j7NMFmdOX2K1aN17hN3i37WNLBbT7wpZbPzq4SDksWbeGkaPnbPusntsWtXJ5nHn2h42j81L
- 6j1aTu5n8dhytZ3Fo2/LKkaP4ze2M3l83iQXwBWVbZORmpiSWqSQmpecn5KZl26r5B0c7xxv
- amZgqGtoaWGupJCXmJtqq+TiE6DrlpkD9JKSQlliTilQKCCxuFhJ386mKL+0JFUhI7+4xFYp
- tSAlp8CyQK84Mbe4NC9dLzk/18rQwMDIFKgwITuj43Una8H5iIoPKzrZGhhvuncxcnJICJhI
- fHt1gQnEFhLYwSjx5kFoFyMXkP2JUWLSj7lMEM43Ron5678ywnQ8vnaDDSKxl1Fi0+Z9UFXv
- GSXeP90MNktYwEZi+cImVhCbTUBLYv8LkA5ODhGB28wSE2aHgDQwCxxklJh+6SJYA7+AosTV
- H4/BVvAK2Em0/l4FFOfgYBFQldh8vBIkLCoQJnFyWwtUiaDEyZlPWEBsTgF7idmLO8F2MQuI
- S9x6Mp8JwpaX2P52DjPILgmBfk6Ju6f/s0O84CJx9ONHKFtY4tXxLVC2lMTL/jYou1pi5ckj
- bBDNHYwSW/ZfYIVIGEvsXzoZ7DhmAU2J9bv0IcKKEjt/z2WEWMwn8e5rDytIiYQAr0RHmxBE
- ibLE5Qd3mSBsSYnF7Z1sExiVZiF5ZxaSF2YheWEWwrIFjCyrGMVSC4pz01OLDQuMkGN7EyM4
- uWuZ7WBcdM7nEKMAB6MSD2+H17k4IdbEsuLK3EOMEhzMSiK8TmdPxwnxpiRWVqUW5ccXleak
- Fh9iNAUG9kRmKdHkfGDmySuJNzQ1MjY2tjAxNDM1NFQS553/40yckEB6YklqdmpqQWoRTB8T
- B6dUA+M6IT/O+hVJ/9ZXhtqqyvxS237J+fSyZyaP9ZRiLbpXhyScj1r4NL3mp7BNbJFT8saQ
- NDs7S/GY1qb9QvpZIb+LWjgPqojcVq09oGsX5WBWbz7rkvZb9ozLLB7fL3H9Xr0/pIrh/ayI
- yf4KreKB38SPf1paecXrvKjMpuSF3oe+sBrz1XEeU2Ipzkg01GIuKk4EANdo+O0EBAAA
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrAIsWRmVeSWpSXmKPExsWy7bCSnK5w7vk4g1ev9Cy2r3/BajH14RM2
- i/lHzrFanG16w27x7UoHk8Wmx9dYLS7vmsNmcbn5IqPF594jjBZLr19ksmhqMba43biCzeLN
- j7NMFmdOX2K1aN17hN3i37WNLBbT7wpZbPzq4SDksWbeGkaPnbPusntsWtXJ5nHn2h42j81L
- 6j1aTu5n8dhytZ3Fo2/LKkaP4ze2M3l83iQXwBXFZZOSmpNZllqkb5fAldHxupO14HxExYcV
- nWwNjDfduxg5OSQETCQeX7vB1sXIxSEksJtRYs3cH+wQCUmJaRePMncxcgDZwhKHDxdD1Lxl
- lNh74w8jSI2wgI3E8oVNrCA2m4CWxP4XEINEBO4zSyy/exXMYRY4yCjxrPsPO0R7M5NE653H
- zCAt/AKKEld/PAYbxStgJ9H6exUTyDoWAVWJzccrQcKiAmESO5c8ZoIoEZQ4OfMJC4jNKWAv
- MXtxJ9hmZgF1iT/zLjFD2OISt57MZ4Kw5SW2v53DPIFReBaS9llIWmYhaZmFpGUBI8sqRsnU
- guLc9NxiwwLDvNRyveLE3OLSvHS95PzcTYzgSNfS3MG4fdUHvUOMTByMhxglOJiVRHidzp6O
- E+JNSaysSi3Kjy8qzUktPsQozcGiJM57o3BhnJBAemJJanZqakFqEUyWiYNTqoFpCZvH5KV7
- uQw+2075vqHe89mNDvs1FfJnnQuWv29+dHHdkfSFXw57sruxvNmndkAz12HZqVmWb+KVb23h
- OHG50dt0rZ3etNnnvyz5UcG6wSgid233apYPym/0dk/cPourJSxMtZLV9JwN49Kpqq09xcce
- eAmt1Z/ozJHC735LQd9bTnZRqwGPA2d0je6/oJcy05scNtt8bH5+/bBf6P8XWYebk0+s2HZ6
- fsu+wyI+PDMs2Rl1fxz+Gj99IluTwKycX2n3bm5lfhNz8GO/YkyN+4M5K1+FGEnrMbzOX+q8
- Xi1V78Fpi3/mR50D9m82MtL9EM489dg53RSpVtuzj0o2fVx1Tf7Gl7kMR6eu6UqMU2Ipzkg0
- 1GIuKk4EAGBovQVjAwAA
-X-CMS-MailID: 20200528074939epcas1p2ca03b0b59c893dc7ddfa8234a3695ada
-X-Msg-Generator: CA
-X-Sendblock-Type: SVC_REQ_APPROVE
-CMS-TYPE: 101P
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20200520034338epcas1p1b3c7eb91a37dfd1d9cfc150a2310f120
-References: <20200520034307.20435-1-andrew-sh.cheng@mediatek.com>
- <CGME20200520034338epcas1p1b3c7eb91a37dfd1d9cfc150a2310f120@epcas1p1.samsung.com>
- <20200520034307.20435-10-andrew-sh.cheng@mediatek.com>
- <c39e4f30-805a-78c4-b1c4-e55a03e2408e@samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200528_004951_302107_47FF077A 
-X-CRM114-Status: GOOD (  33.26  )
+X-CRM114-CacheID: sfid-20200528_010823_473900_C195139B 
+X-CRM114-Status: GOOD (  24.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -153,388 +69,247 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: "drinkcat@chromium.org" <drinkcat@chromium.org>, roger.lu@mediatek.com,
+ renze@rnplus.nl,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andrew-sh.Cheng,
+Hi Michael,
 
-On 5/28/20 4:35 PM, Chanwoo Choi wrote:
-> Hi Andrew-sh.Cheng,
-> 
-> On 5/20/20 12:43 PM, Andrew-sh.Cheng wrote:
->> This adds a devfreq driver for the Cache Coherent Interconnect (CCI)
->> of the Mediatek MT8183.
+On 28/5/20 4:59, Michael Kao wrote:
+> On Wed, 2020-05-20 at 18:12 +0200, Enric Balletbo i Serra wrote:
+>> Hi Matthias et all,
 >>
->> On the MT8183 the CCI is supplied by the same regulator as the LITTLE
->> cores. The driver is notified when the regulator voltage changes
->> (driven by cpufreq) and adjusts the CCI frequency to the maximum
->> possible value.
-
-I understood that the mt8183-cci.c and mt8183 cpufreq driver (ARM_MEDIATEK_CPUFREQ)
-shared the same regulator. So, when mt8183 cpufreq driver
-changes the CPU frequency and voltage, the mt8183-cci.c
-changes the CCI frequency according to the new mt8183 frequency
-with passive governor. 
-
-I think that mt8183-cci.c don't need to change the voltage
-because already mt8183 cpufreq changed the voltage of shared regulator.
-Why do you change the voltage in this driver?
-
+>> On 20/5/20 17:25, Enric Balletbo i Serra wrote:
+>>>
+>>>
+>>> On 20/5/20 17:21, Matthias Brugger wrote:
+>>>>
+>>>>
+>>>> On 20/05/2020 17:09, Enric Balletbo i Serra wrote:
+>>>>> Dear all,
+>>>>>
+>>>>> I've been testing the Acer Chromebook R 13 (elm - MT8173) for a while. Today I
+>>>>> enabled the Mediatek thermal driver (CONFIG_MTK_THERMAL=y) and I started to get
+>>>>> that hang [1]
+>>>>>
+>>>>
+>>>> Did you try to bisect to find out what broke it?
+>>>>
+>>>
+>>> I don't even know if this worked at some point, I was running/testing my kernels
+>>> with CONFIG_MTK_THERMAL disabled. From the log doesn't seem to have a lot of
+>>> changes so I suspect this issue is there since long time.
+>>>
 >>
->> Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
->> ---
->>  drivers/devfreq/Kconfig              |  10 ++
->>  drivers/devfreq/Makefile             |   1 +
->>  drivers/devfreq/mt8183-cci-devfreq.c | 206 +++++++++++++++++++++++++++++++++++
-> 
-> The mt8183-cci.c is enough for driver name.
-> 
->>  3 files changed, 217 insertions(+)
->>  create mode 100644 drivers/devfreq/mt8183-cci-devfreq.c
+>> So the commit that introduces the problem is:
 >>
->> diff --git a/drivers/devfreq/Kconfig b/drivers/devfreq/Kconfig
->> index d9067950af6a..4ed7116271ee 100644
->> --- a/drivers/devfreq/Kconfig
->> +++ b/drivers/devfreq/Kconfig
->> @@ -103,6 +103,16 @@ config ARM_IMX8M_DDRC_DEVFREQ
->>  	  This adds the DEVFREQ driver for the i.MX8M DDR Controller. It allows
->>  	  adjusting DRAM frequency.
->>  
->> +config ARM_MT8183_CCI_DEVFREQ
->> +	tristate "MT8183 CCI DEVFREQ Driver"
->> +	depends on ARM_MEDIATEK_CPUFREQ
->> +	help
->> +		This adds a devfreq driver for Cache Coherent Interconnect
->> +		of Mediatek MT8183, which is shared the same regulator
->> +		with cpu cluster.
->> +		It can track buck voltage and update a proper cci frequency.
-> 
-> s/cci/CCI
-> 
->> +		Use notification to get regulator status.
->> +
->>  config ARM_TEGRA_DEVFREQ
->>  	tristate "NVIDIA Tegra30/114/124/210 DEVFREQ Driver"
->>  	depends on ARCH_TEGRA_3x_SOC || ARCH_TEGRA_114_SOC || \
->> diff --git a/drivers/devfreq/Makefile b/drivers/devfreq/Makefile
->> index 3eb4d5e6635c..5b1b670c954d 100644
->> --- a/drivers/devfreq/Makefile
->> +++ b/drivers/devfreq/Makefile
->> @@ -10,6 +10,7 @@ obj-$(CONFIG_DEVFREQ_GOV_PASSIVE)	+= governor_passive.o
->>  # DEVFREQ Drivers
->>  obj-$(CONFIG_ARM_EXYNOS_BUS_DEVFREQ)	+= exynos-bus.o
->>  obj-$(CONFIG_ARM_IMX8M_DDRC_DEVFREQ)	+= imx8m-ddrc.o
->> +obj-$(CONFIG_ARM_MT8183_CCI_DEVFREQ)	+= mt8183-cci-devfreq.o
->>  obj-$(CONFIG_ARM_RK3399_DMC_DEVFREQ)	+= rk3399_dmc.o
->>  obj-$(CONFIG_ARM_TEGRA_DEVFREQ)		+= tegra30-devfreq.o
->>  obj-$(CONFIG_ARM_TEGRA20_DEVFREQ)	+= tegra20-devfreq.o
->> diff --git a/drivers/devfreq/mt8183-cci-devfreq.c b/drivers/devfreq/mt8183-cci-devfreq.c
->> new file mode 100644
->> index 000000000000..cd7929a83bf8
->> --- /dev/null
->> +++ b/drivers/devfreq/mt8183-cci-devfreq.c
->> @@ -0,0 +1,206 @@
->> +// SPDX-License-Identifier: GPL-2.0
->> +/*
->> + * Copyright (c) 2019 MediaTek Inc.
-> 
-> s/2019/2020
-> 
->> +
->> + * Author: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
->> + */
->> +
->> +#include <linux/clk.h>
->> +#include <linux/devfreq.h>
->> +#include <linux/module.h>
->> +#include <linux/of.h>
->> +#include <linux/platform_device.h>
->> +#include <linux/regulator/consumer.h>
->> +#include <linux/time.h>
->> +
->> +#include "governor.h"
-> 
-> It is not needed. Please remove it.
-> 
->> +
->> +#define MAX_VOLT_LIMIT		(1150000)
->> +
->> +struct cci_devfreq {
->> +	struct devfreq *devfreq;
->> +	struct regulator *proc_reg;
-> 
-> 'proc' means the 'processor'?
-> Instead of 'proc_reg', you better to use 'cpu_reg'.
-> 
->> +	struct clk *cci_clk;
->> +	int old_vproc;
->> +	unsigned long old_freq;
->> +};
->> +
->> +static int mtk_cci_set_voltage(struct cci_devfreq *cci_df, int vproc)
->> +{
->> +	int ret;
->> +
->> +	ret = regulator_set_voltage(cci_df->proc_reg, vproc,
->> +				    MAX_VOLT_LIMIT);
->> +	if (!ret)
->> +		cci_df->old_vproc = vproc;
->> +	return ret;
->> +}
->> +
->> +static int mtk_cci_devfreq_target(struct device *dev, unsigned long *freq,
->> +				  u32 flags)
->> +{
->> +	int ret;
->> +	struct cci_devfreq *cci_df = dev_get_drvdata(dev);
->> +	struct dev_pm_opp *opp;
->> +	unsigned long opp_rate, opp_voltage, old_voltage;
->> +
->> +	if (!cci_df)
->> +		return -EINVAL;
->> +
->> +	if (cci_df->old_freq == *freq)
->> +		return 0;
->> +
->> +	opp_rate = *freq;
->> +	opp = dev_pm_opp_find_freq_floor(dev, &opp_rate);
->> +	opp_voltage = dev_pm_opp_get_voltage(opp);
->> +	dev_pm_opp_put(opp);
-> 
-> 
-> You can use the helper function for getting the rate 
-> with devfreq_recommended_opp(). You can refer the following code
-> in drivers/devfreq/exynos-bus.c
-> 
-> 	opp = devfreq_recommended_opp(dev, freq, flags);
-> 	if (IS_ERR(opp)) {
-> 		dev_err(dev, "failed to get recommended opp instance\n");
-> 		return PTR_ERR(opp);
-> 	}
-> 	dev_pm_opp_put(opp);
-> 
->> +
->> +	old_voltage = cci_df->old_vproc;
->> +	if (old_voltage == 0)
->> +		old_voltage = regulator_get_voltage(cci_df->proc_reg);
->> +
->> +	// scale up: set voltage first then freq
->> +	if (opp_voltage > old_voltage) {
->> +		ret = mtk_cci_set_voltage(cci_df, opp_voltage);
->> +		if (ret) {
->> +			pr_err("cci: failed to scale up voltage\n");
->> +			return ret;
->> +		}
->> +	}
->> +
->> +	ret = clk_set_rate(cci_df->cci_clk, *freq);
->> +	if (ret) {
->> +		pr_err("%s: failed cci to set rate: %d\n", __func__,
->> +		       ret);
->> +		mtk_cci_set_voltage(cci_df, old_voltage);
->> +		return ret;
->> +	}
->> +
->> +	// scale down: set freq first then voltage
->> +	if (opp_voltage < old_voltage) {
->> +		ret = mtk_cci_set_voltage(cci_df, opp_voltage);
->> +		if (ret) {
->> +			pr_err("cci: failed to scale down voltage\n");
->> +			clk_set_rate(cci_df->cci_clk, cci_df->old_freq);
->> +			return ret;
->> +		}
->> +	}
-> 
-> 
-> I recommend that dev_pm_opp_set_rate() and dev_pm_opp_set_regulator()
-> instead of 'clk_set_rate' and 'regulator_set_voltage'.
-> In the dev_pm_opp_set_rate(), handle the these sequence.
-> You can refer the merged patch[1].
-> 
-> [1] commit 4294a779bd8dff6c65e7e85ffe7a1ea236e92a68
-> - PM / devfreq: exynos-bus: Convert to use dev_pm_opp_set_rate()
-> 
-> 
->> +
->> +	cci_df->old_freq = *freq;
->> +
->> +	return 0;
->> +}
->> +
->> +static struct devfreq_dev_profile cci_devfreq_profile = {
->> +	.target = mtk_cci_devfreq_target,
-> 
-> Need to add '.exit' for calling dev_pm_opp_of_remove_table().
-> You can refer the merged devfreq patches like exynos_bus.c, imx-bus.c.
-> 
->> +};
->> +
->> +static int mtk_cci_devfreq_probe(struct platform_device *pdev)
->> +{
->> +	struct device *cci_dev = &pdev->dev;
->> +	struct cci_devfreq *cci_df;
->> +	struct devfreq_passive_data *passive_data;
->> +	int ret;
->> +
->> +	cci_df = devm_kzalloc(cci_dev, sizeof(*cci_df), GFP_KERNEL);
->> +	if (!cci_df)
->> +		return -ENOMEM;
->> +
->> +	cci_df->cci_clk = devm_clk_get(cci_dev, "cci_clock");
->> +	ret = PTR_ERR_OR_ZERO(cci_df->cci_clk);
->> +	if (ret) {
->> +		if (ret != -EPROBE_DEFER)
->> +			dev_err(cci_dev, "failed to get clock for CCI: %d\n",
->> +				ret);
->> +		return ret;
->> +	}
->> +	cci_df->proc_reg = devm_regulator_get_optional(cci_dev, "proc");
->> +	ret = PTR_ERR_OR_ZERO(cci_df->proc_reg);
->> +	if (ret) {
->> +		if (ret != -EPROBE_DEFER)
->> +			dev_err(cci_dev, "failed to get regulator for CCI: %d\n",
->> +				ret);
->> +		return ret;
->> +	}
-> 
-> I recommend that use dev_pm_opp_set_regulators.
-> You can refer the merged patch[1].
-> 
-> [1] commit 4294a779bd8dff6c65e7e85ffe7a1ea236e92a68
-> - PM / devfreq: exynos-bus: Convert to use dev_pm_opp_set_rate()
-> 
-> 
->> +	ret = regulator_enable(cci_df->proc_reg);
->> +	if (ret) {
->> +		pr_warn("enable buck for cci fail\n");
-> 
-> Use dev_err instead of 'pr_warn'.
-> 
->> +		return ret;
->> +	}
->> +
->> +	ret = dev_pm_opp_of_add_table(cci_dev);
->> +	if (ret) {
->> +		dev_err(cci_dev, "Fail to init CCI OPP table: %d\n", ret);
-> 
-> How about changing the error log as following
-> because in this driver, use the 'failed to' sentence for error handling?
-> 
-> 	failed to get OPP table for CCI:L %d
-> 
->> +		return ret;
->> +	}
->> +
->> +	platform_set_drvdata(pdev, cci_df);
->> +
->> +	passive_data = devm_kzalloc(cci_dev, sizeof(*passive_data), GFP_KERNEL);
->> +	if (!passive_data)
->> +		return -ENOMEM;
-> 
-> On this error case, you have to call dev_pm_opp_of_remove_table().
-> You better to make the 'err_opp' jump lable and then add 'goto err_opp'.
-> 
->> +
->> +	passive_data->parent_type = CPUFREQ_PARENT_DEV;
->> +
->> +	cci_df->devfreq = devm_devfreq_add_device(cci_dev,
->> +						  &cci_devfreq_profile,
->> +						  DEVFREQ_GOV_PASSIVE,
->> +						  passive_data);
->> +	if (IS_ERR(cci_df->devfreq)) {
->> +		ret = PTR_ERR(cci_df->devfreq);
->> +		dev_err(cci_dev, "cannot create cci devfreq device:%d\n", ret);
->> +		dev_pm_opp_of_remove_table(cci_dev);
-> 
-> Instead of direct call, use 'goto err_opp'.
-> 
->> +		return ret;
->> +	}
->> +
->> +	return 0;
->> +}
->> +
->> +static int mtk_cci_devfreq_remove(struct platform_device *pdev)
->> +{
->> +	struct device *cci_dev = &pdev->dev;
->> +	struct cci_devfreq *cci_df;
->> +	struct notifier_block *opp_nb;
->> +
->> +	cci_df = platform_get_drvdata(pdev);
->> +	opp_nb = &cci_df->opp_nb;
->> +
->> +	dev_pm_opp_unregister_notifier(cci_dev, opp_nb);
-> 
-> This patch doesn't call the dev_pm_opp_register_notifier.
-> Please remove it.
-> 
->> +	devm_devfreq_remove_device(cci_dev, cci_df->devfreq);
-> 
-> Don't need to call this function because you used devm_devfreq_add_device().
-> 
->> +	dev_pm_opp_of_remove_table(cci_dev)> +	regulator_disable(cci_df->proc_reg);
->> +
->> +	return 0;
->> +}
->> +
->> +static const __maybe_unused struct of_device_id
->> +	mediatek_cci_devfreq_of_match[] = {
-> 
-> Make it on one line and remove '__maybe_unused' keyword.
-> - mediatek_cci_devfreq_of_match-> mediatek_cci_of_match
-> 
->> +	{ .compatible = "mediatek,mt8183-cci" },
->> +	{ },
->> +};
->> +MODULE_DEVICE_TABLE(of, mediatek_cci_devfreq_of_match);
-> 
-> ditto.
-> 
->> +
->> +static struct platform_driver cci_devfreq_driver = {
->> +	.probe	= mtk_cci_devfreq_probe,
->> +	.remove	= mtk_cci_devfreq_remove,
->> +	.driver = {
->> +		.name = "mediatek-cci-devfreq",
->> +		.of_match_table = of_match_ptr(mediatek_cci_devfreq_of_match),
-> 
-> ditto.
-> 
->> +	},
->> +};
->> +
->> +static int __init mtk_cci_devfreq_init(void)
->> +{
->> +	return platform_driver_register(&cci_devfreq_driver);
->> +}
->> +module_init(mtk_cci_devfreq_init)
->> +
->> +static void __exit mtk_cci_devfreq_exit(void)
->> +{
->> +	platform_driver_unregister(&cci_devfreq_driver);
->> +}
->> +module_exit(mtk_cci_devfreq_exit)
-> 
-> Use 'module_platform_driver' instead of module_init and module_exit.
-> 
->> +
->> +MODULE_DESCRIPTION("Mediatek CCI devfreq driver");
->> +MODULE_AUTHOR("Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>");
->> +MODULE_LICENSE("GPL v2");
+>> commit eb9aecd90d1a39601e91cd08b90d5fee51d321a6
+>> Author: Michael Kao <michael.kao@mediatek.com>
+>> Date:   Fri Feb 1 15:38:07 2019 +0800
 >>
+>>     thermal: mediatek: fix register index error
+>>
+>>     The index of msr and adcpnp should match the sensor
+>>     which belongs to the selected bank in the for loop.
+>>
+>>     Fixes: b7cf0053738c ("thermal: Add Mediatek thermal driver for mt2701.")
+>>     Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+>>     Signed-off-by: Eduardo Valentin <edubezval@gmail.com>
+>>
+>>
+>>>
+>>>> Regards,
+>>>> Matthias
+>>>>
+>>>>> The stacktrace points point to this function:
+>>>>>
+>>>>> static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+>>>>>
+>>>>> More precisely to this call:
+>>>>>
+>>>>> 		raw = readl(mt->thermal_base +
+>>>>> 			    conf->msr[conf->bank_data[bank->id].sensors[i]]);
+>>>>>
+>>>>> this call, is in a loop and ends trying to access to conf->msr[4]
+>>>>> (conf->msr[MT8173_TSABB]) which doesn't exist as per the following struct
+>>>>>
+>>>>> static const int mt8173_msr[MT8173_NUM_SENSORS_PER_ZONE] = {
+>>>>> 	TEMP_MSR0, TEMP_MSR1, TEMP_MSR2, TEMP_MSR3
+>>>>> };
+>>>>>
+>>>>> I think the datasheet will help here to clarify what is happening but is not
+>>>>> public, so I can really check. Anyway seems that or the mt8173_msr struct is
+>>>>> wrong or the mt8173_bank_data is wrong or there is something else.
+>>>>>
+>>>>> Could anyone with the information or with this hardwware knowledge take a look,
+>>>>> please.
+>>>>>
+>>>>> Thanks,
+>>>>>  Enric
+>>>>>
+>>>>>
+>>>>> [1]
+>>>>> [    2.222488] Unable to handle kernel paging request at virtual address
+>>>>> ffff8000125f5001
+>>>>> [    2.230421] Mem abort info:
+>>>>> [    2.233207]   ESR = 0x96000021
+>>>>> [    2.236261]   EC = 0x25: DABT (current EL), IL = 32 bits
+>>>>> [    2.241571]   SET = 0, FnV = 0
+>>>>> [    2.244623]   EA = 0, S1PTW = 0
+>>>>> [    2.247762] Data abort info:
+>>>>> [    2.250640]   ISV = 0, ISS = 0x00000021
+>>>>> [    2.254473]   CM = 0, WnR = 0
+>>>>> [    2.257544] swapper pgtable: 4k pages, 48-bit VAs, pgdp=0000000041850000
+>>>>> [    2.264251] [ffff8000125f5001] pgd=000000013ffff003, pud=000000013fffe003,
+>>>>> pmd=000000013fff9003, pte=006800001100b707
+>>>>> [    2.274867] Internal error: Oops: 96000021 [#1] PREEMPT SMP
+>>>>> [    2.280432] Modules linked in:
+>>>>> [    2.283483] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.7.0-rc6+ #162
+>>>>> [    2.289914] Hardware name: Google Elm (DT)
+>>>>> [    2.294003] pstate: 20000005 (nzCv daif -PAN -UAO)
+>>>>> [    2.298792] pc : mtk_read_temp+0xb8/0x1c8
+>>>>> [    2.302793] lr : mtk_read_temp+0x7c/0x1c8
+>>>>> [    2.306794] sp : ffff80001003b930
+>>>>> [    2.310100] x29: ffff80001003b930 x28: 0000000000000000
+>>>>> [    2.315404] x27: 0000000000000002 x26: ffff0000f9550b10
+>>>>> [    2.320709] x25: ffff0000f9550a80 x24: 0000000000000090
+>>>>> [    2.326014] x23: ffff80001003ba24 x22: 00000000610344c0
+>>>>> [    2.331318] x21: 0000000000002710 x20: 00000000000001f4
+>>>>> [    2.336622] x19: 0000000000030d40 x18: ffff800011742ec0
+>>>>> [    2.341926] x17: 0000000000000001 x16: 0000000000000001
+>>>>> [    2.347230] x15: ffffffffffffffff x14: ffffff0000000000
+>>>>> [    2.352535] x13: ffffffffffffffff x12: 0000000000000028
+>>>>> [    2.357839] x11: 0000000000000003 x10: ffff800011295ec8
+>>>>> [    2.363143] x9 : 000000000000291b x8 : 0000000000000002
+>>>>> [    2.368447] x7 : 00000000000000a8 x6 : 0000000000000004
+>>>>> [    2.373751] x5 : 0000000000000000 x4 : ffff800011295cb0
+>>>>> [    2.379055] x3 : 0000000000000002 x2 : ffff8000125f5001
+>>>>> [    2.384359] x1 : 0000000000000001 x0 : ffff0000f9550a80
+>>>>> [    2.389665] Call trace:
+>>>>> [    2.392105]  mtk_read_temp+0xb8/0x1c8
+>>>>> [    2.395760]  of_thermal_get_temp+0x2c/0x40
+>>>>> [    2.399849]  thermal_zone_get_temp+0x78/0x160
+>>>>> [    2.404198]  thermal_zone_device_update.part.0+0x3c/0x1f8
+>>>>> [    2.409589]  thermal_zone_device_update+0x34/0x48
+>>>>> [    2.414286]  of_thermal_set_mode+0x58/0x88
+>>>>> [    2.418375]  thermal_zone_of_sensor_register+0x1a8/0x1d8
+>>>>> [    2.423679]  devm_thermal_zone_of_sensor_register+0x64/0xb0
+>>>>> [    2.429242]  mtk_thermal_probe+0x690/0x7d0
+>>>>> [    2.433333]  platform_drv_probe+0x5c/0xb0
+>>>>> [    2.437335]  really_probe+0xe4/0x448
+>>>>> [    2.440901]  driver_probe_device+0xe8/0x140
+>>>>> [    2.445077]  device_driver_attach+0x7c/0x88
+>>>>> [    2.449252]  __driver_attach+0xac/0x178
+>>>>> [    2.453082]  bus_for_each_dev+0x78/0xc8
+>>>>> [    2.456909]  driver_attach+0x2c/0x38
+>>>>> [    2.460476]  bus_add_driver+0x14c/0x230
+>>>>> [    2.464304]  driver_register+0x6c/0x128
+>>>>> [    2.468131]  __platform_driver_register+0x50/0x60
+>>>>> [    2.472831]  mtk_thermal_driver_init+0x24/0x30
+>>>>> [    2.477268]  do_one_initcall+0x50/0x298
+>>>>> [    2.481098]  kernel_init_freeable+0x1ec/0x264
+>>>>> [    2.485450]  kernel_init+0x1c/0x110
+>>>>> [    2.488931]  ret_from_fork+0x10/0x1c
+>>>>> [    2.492502] Code: f9401081 f9400402 b8a67821 8b010042 (b9400042)
+>>>>> [    2.498599] ---[ end trace e43e3105ed27dc99 ]---
+>>>>> [    2.503367] Kernel panic - not syncing: Attempted to kill init!
+>>>>> exitcode=0x0000000b
+>>>>> [    2.511020] SMP: stopping secondary CPUs
+>>>>> [    2.514941] Kernel Offset: disabled
+>>>>> [    2.518421] CPU features: 0x090002,25006005
+>>>>> [    2.522595] Memory Limit: none
+>>>>> [    2.525644] ---[ end Kernel panic - not syncing: Attempted to kill init!
+>>>>> exitcode=0x0000000b ]---
+>>>>>
 > 
+>> Hi Enric,
+> I will help to fix this crash. If it is urgent, you can revert the patch
+> locally first for mt8173.
 > 
 
+Thanks, the reverted patch is what I am carrying ;-)
 
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
+It'd be nice have this fixed for next MR or during the upcoming release cycle,
+it will probably start next week. During the next merge window will land the
+support for MT8173 Elm and Hana, so those boards will be affected by this and
+will break. Actually, there is no much boards supported in mainline using MT8183
+(only EVB), so in the worse case I can send a revert or a partial revert of the
+patch.
+
+Thanks,
+ Enric
+
+> The last sensor in mt8173_bank_data[2] is MT8173_TSABB.
+> Its index is 4. But there is not index 4 in mt8173_msr and
+> mt8173_adcpnp.
+> That is the root cause for your reference.
+> 
+> static const struct mtk_thermal_data mt8173_thermal_data = {
+> 	.auxadc_channel = MT8173_TEMP_AUXADC_CHANNEL,
+> 	.num_banks = MT8173_NUM_ZONES,
+> 	.num_sensors = MT8173_NUM_SENSORS,
+> 	.vts_index = mt8173_vts_index,
+> 	.cali_val = MT8173_CALIBRATION,
+> 	.num_controller = MT8173_NUM_CONTROLLER,
+> 	.controller_offset = mt8173_tc_offset,
+> 	.need_switch_bank = true,
+> 	.bank_data = {
+> 		{
+> 			.num_sensors = 2,
+> 			.sensors = mt8173_bank_data[0],
+> 		}, {
+> 			.num_sensors = 2,
+> 			.sensors = mt8173_bank_data[1],
+> 		}, {
+> 			.num_sensors = 3,
+> 			.sensors = mt8173_bank_data[2],
+> 		}, {
+> 			.num_sensors = 1,
+> 			.sensors = mt8173_bank_data[3],
+> 		},
+> 	},
+> 	.msr = mt8173_msr,
+> 	.adcpnp = mt8173_adcpnp,
+> 	.sensor_mux_values = mt8173_mux_values,
+> };
+> 
+> 
+> 
+> /* MT8173 thermal sensor data */
+> static const int mt8173_bank_data[MT8173_NUM_ZONES][3] = {
+> 	{ MT8173_TS2, MT8173_TS3 },
+> 	{ MT8173_TS2, MT8173_TS4 },
+> 	{ MT8173_TS1, MT8173_TS2, MT8173_TSABB },
+> 	{ MT8173_TS2 },
+> };
+> 
+> static const int mt8173_msr[MT8173_NUM_SENSORS_PER_ZONE] = {
+> 	TEMP_MSR0, TEMP_MSR1, TEMP_MSR2, TEMP_MSR3
+> };
+> 
+> static const int mt8173_adcpnp[MT8173_NUM_SENSORS_PER_ZONE] = {
+> 	TEMP_ADCPNP0, TEMP_ADCPNP1, TEMP_ADCPNP2, TEMP_ADCPNP3
+> };
+> 
+> /* MT8173 thermal sensors */
+> #define MT8173_TS1	0
+> #define MT8173_TS2	1
+> #define MT8173_TS3	2
+> #define MT8173_TS4	3
+> #define MT8173_TSABB	4
+> 
+> Best Regards,
+> Michael
+>> _______________________________________________
+>> Linux-mediatek mailing list
+>> Linux-mediatek@lists.infradead.org
+>> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
