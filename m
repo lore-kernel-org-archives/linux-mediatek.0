@@ -2,70 +2,137 @@ Return-Path: <SRS0=oumW=7L=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-1.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.0 required=3.0 tests=DKIM_SIGNED,DKIM_VALID,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6149FC433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2020 16:18:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B9704C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2020 16:40:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0C8942077D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2020 16:18:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 81A892077D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2020 16:40:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YDg76xhA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0C8942077D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SaYcd+h9";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=web.de header.i=@web.de header.b="g+g9aK35"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 81A892077D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=web.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+W80aD/X2XU9nIJtW4oZzAHrWztbQOHM7u7h3cbU0Dg=; b=YDg76xhA0lnbjs
-	8l6AMd1pmFlyEvEK4OqLzURDRx+Ieull1O476dlfAZCzEeAdbdzm6crJvD3O7wbJ6PhIXQJ63xW13
-	gbTXrpe8lHjOp8GPJQgRT31r9GcHg5IUwmVOUjaxOSyT+h9F4joXVCVu51zRWFmhn3oY4dnJV6j5y
-	/Ln47IVxb0eFtPc8i+HrJMVKGZ+D0k5Db34UJdnKFRVz6eaxsndchN98LeLZz3knDS+Dy9nTfK/7Z
-	Qf66agVY+sYyJrND7ejF+0J2VVuknTmLJI22LhtLBJE5FtlwxXZ8U5DeHW0RYtLZ5PYutLztdfNPn
-	F0jtv4gbE3KaCS8yKtuA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:To:From:
+	Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=6cW47v71SlMTQNhgACQgj6j1w0s/4mcf3i0MAvPcLds=; b=SaYcd+h962FZF6
+	ZDRx7099re9+OkpzZY0yTR4XrBL7VbQ5JKHXG8/S+yqhKq8jTljK4KLjspV9jFJbs51me2ilOoZMD
+	CZ68SC/nc4INZZrjAERwGTlk6nrtHDNPfHbdEF14wGqh/L2PDhOO0nBY+xO9IJES8dNmT0xlUPSe/
+	o6tISAYInSmsWIpJKyOX6cQThW3VDTwtsozrlXac4IxO5hX8kClN37RV0atAhw0Nmgnkc5FBGS6Xj
+	UNle7TFM3YKtV4vKuhce1HmWEgaHyb0M4FQR5g4fNaia168CIish2prINFbkWHeT9/O+wQyvt1yxa
+	w2W9L/JQhvwSIIAeweQg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jehiK-00034a-4a; Fri, 29 May 2020 16:18:32 +0000
-Received: from mail-oi1-f193.google.com ([209.85.167.193])
+	id 1jei31-0000pC-GQ; Fri, 29 May 2020 16:39:55 +0000
+Received: from mout.web.de ([212.227.15.14])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jehi9-0002uR-9X; Fri, 29 May 2020 16:18:23 +0000
-Received: by mail-oi1-f193.google.com with SMTP id i22so3022498oik.10;
- Fri, 29 May 2020 09:18:18 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=zCKRRe7FwZhejdctsJhwzQtwJFTHGD8RGi5WeD/f/w0=;
- b=GLoj03xShllVxj5ReAGXlW3+BbO0Ksuvqa7VgzWvWd9suW+DlYWqxt+73ylJjp/Lx5
- 8XCB37d9cDVHzYTfsWl7Nv4WjLC7Z+1HBHHZ4On6T2/bCtF64vQMnLzgXKlb4ENb8QfE
- Dg3yyopbes0wfc5exncD0y6gPqdyCzEuuVrzzpFsvlzfJv3hJnGDddeQF+dzAl992q6Y
- 9ay5x3ZKiVH9X98nZ5nj8cb6HYFhgSO2INyv1v7EhOTd4kUv4qs1lnpKi61IWcm23dXJ
- F3hfE0ampTaLVsKDGrKkl2tcCgOiJw9hFq20UTyxoxCy2mDIfXMpfjBjZDztO2WhXUGy
- g2Zw==
-X-Gm-Message-State: AOAM53248BVIKGwUBe/Y6zumHjaPjPvgJrO5fWrJJPqMH2Q4NX2hVCt/
- jNe61/O4zDzgqn8YBQ5bbJxQ0W7OrzDh31iUCcHf8A==
-X-Google-Smtp-Source: ABdhPJxIPIXsXf4jLYLEBb/1WBoIj43Ang4WatokkbfhBp4dzFCXQVyui/zzlBPpl6Uh6FpjdetZ4E5goPLNut+9on0=
-X-Received: by 2002:aca:4254:: with SMTP id p81mr6231320oia.68.1590769097929; 
- Fri, 29 May 2020 09:18:17 -0700 (PDT)
+ id 1jeM24-0003hk-4e; Thu, 28 May 2020 17:09:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
+ s=dbaedf251592; t=1590685759;
+ bh=p69aR/nzaRPTpqEpuHitn5IvyCINJBKAMa323BW+lFY=;
+ h=X-UI-Sender-Class:Cc:Subject:From:To:Date;
+ b=g+g9aK35W80VreSFHoYkUcbrmKo3i8elKoo4gS2qujGz4g/zIaT/XIeWEyWvD6AWX
+ F5GCTvolFCT8AE1syLLEdTn1HHxzWmQOzwYiiBx4vz9z5ahfZu7DsXgVG021vAXBo+
+ jYkQQBNDAba3T1YSuWb5QTHi69j0kbAYi2OeJMbY=
+X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
+Received: from [192.168.1.3] ([2.244.30.242]) by smtp.web.de (mrweb005
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 1MsJP4-1ikc4q3nPG-00tgiv; Thu, 28
+ May 2020 19:09:19 +0200
+Subject: Re: [PATCH] Bluetooth: btmtkuart: Improve exception handling in
+ btmtuart_probe()
+From: Markus Elfring <Markus.Elfring@web.de>
+Autocrypt: addr=Markus.Elfring@web.de; prefer-encrypt=mutual; keydata=
+ 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 FEE=
+To: Chuhong Yuan <hslester96@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Message-ID: <dd458e1d-26cf-2cc6-4fdb-fb464f9c3ac6@web.de>
+Date: Thu, 28 May 2020 19:09:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-References: <20200527095854.21714-1-lukasz.luba@arm.com>
- <8fca24a1-93f7-f859-bd1f-b7bf484737f4@arm.com>
-In-Reply-To: <8fca24a1-93f7-f859-bd1f-b7bf484737f4@arm.com>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Fri, 29 May 2020 18:18:06 +0200
-Message-ID: <CAJZ5v0g5whSUMkd4majCGj0j9TMeO+fCfhxB6FNWoaLpPsi6UA@mail.gmail.com>
-Subject: Re: [PATCH v8 0/8] Add support for devices in the Energy Model
-To: Lukasz Luba <lukasz.luba@arm.com>
+Content-Language: en-GB
+X-Provags-ID: V03:K1:HFJVBKBfwx0BNkuJVnzSfsep+qen5ugQ2lnxQrmomHOtQfGba7Z
+ rJiWEr4b3kJL2GNgc9vP/hSOvBCEdkSuGQ3jHIVvxslVHZc5VZ/0qNPkKN3UlaAg2VSefSj
+ ejdyEEA3yBSElB/TBHtYbcVt2e3tqsCZrEHKSLlmFTcHLUTui1WLpsywmVS7aT484Cx5MlP
+ EuPm7xaDFTuFWLXCjZCsw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:LZNn0mmb3u0=:6LsgHWgEz2hDXrj8PKKaB+
+ U50BTzHMVQh30L6ETjehkxyOXZRwf8wuCYIYMvBU8TV/4hFYjid9h8cJTaONmYr4umbUSc3vP
+ GyldNHjjwZxT6LUBujJvU/JtgefcORHdCc31XRo+nLjLKaJQB5O1qlXt4dTHevrOvsH4dZdpR
+ cR1FuAusyTes0KtBWEuWgnWy539s8ltkf67JUNGmNK2U3r27nsCQprynQVE09QxcguNGCXq8g
+ vXs+hJM9fabWY5PiNwVF+P4A0m+jRYzFjNDwh41dkSy5xz2N1R1b1jdRQViVdPcbMeIqf8W7G
+ DyX86uPfk9kc/5lUGDE4Px2n3SCI9FtOxs9roputVg+H9accphilh6t+xgZQ01VlhcD6y95Cq
+ ayqdKdlJxg2fZAqW44i506OYQpSpZVZxEXOS4Oh12sxpsDYpp5Lm/B9BKhA2gUj89ioOoa61a
+ mstAEa/eUgDYllnvwCXNYHhoFn2o0S3yMbqLG3WkEjSbJvY8mDccQNFKwl2qNcQhNZcDM0LtP
+ k5gmO/OxPPh3pF0Q6kJur7876DcEfo4JCWmR4qJCovu8M2nqC62LnrIIKeRhOiDpcVVYXyRzr
+ of9w2SNvMJ4sPPxE7vubDU5nMou9gL+jyUZsdUE3+Nz5hPHgHty5MhlUhVZHGIihK7YXbmpcL
+ T6asi8L3WdYPW1awMBay9mCa3hMr3cr8F1Js8aDV5Z9Mf5tdLKyGErrUtSpFXbkFs8weMObST
+ RAEnaxWMv78xGlz4Gh4JekK2cKzKmbL72EoaQdLJRIADnqTw5bT8EckGyC/CNUWvnJktJSDg+
+ pG8BubmpVF2qAGpWMavUtzuP7l2EG0o8vphzEKylV9kxNADg4+FDPsGgg9KNzBllUWEcVHDhq
+ PPz+GGNrQhVkOenHkUHMY3XwTa7Pj/Hn/pgxP3Gf1zYofYoM0aWoIeHJdtluI9FrJHkBr6pSp
+ 7ZVvor7o+xIDXjel1Fy4AM3Ilz8p/DDrJytakNvs27e9rWNyAKlJW0WEwxXLoqGbouWNKqVRG
+ Fyn0lqHnMA/M5t85U3ATOTwxNBOVpoT1EkGi9eCTjGacsuFgqHw+7XB/w8sxgQWvOnvK13kFv
+ yvVmW7nqvLKxoR09Oz3XRn1Agor+saY6SsXJ05qZQSLZ46Mu09jj4drm48K73bEyu/R2YAUSV
+ 9LBlmkW2SmcmsdSETolSTsYMHzGgnTdroJ6PeCNTa/itA7S1LMQF920kyVlohc22UwgC1Ikxa
+ IZpoYBPXhEiAC5fzc
+X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200529_091821_330377_F69DB4AC 
-X-CRM114-Status: GOOD (  21.79  )
+X-CRM114-CacheID: sfid-20200528_100928_516054_057FD6A2 
+X-CRM114-Status: UNSURE (   8.23  )
+X-CRM114-Notice: Please train this message.
+X-Mailman-Approved-At: Fri, 29 May 2020 09:39:54 -0700
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,89 +144,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nishanth Menon <nm@ti.com>, Juri Lelli <juri.lelli@redhat.com>,
- Peter Zijlstra <peterz@infradead.org>, Viresh Kumar <viresh.kumar@linaro.org>,
- Liviu Dudau <liviu.dudau@arm.com>, dri-devel <dri-devel@lists.freedesktop.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Benjamin Segall <bsegall@google.com>, alyssa.rosenzweig@collabora.com,
- Fabio Estevam <festevam@gmail.com>, Matthias Kaehlcke <mka@chromium.org>,
- Rob Herring <robh@kernel.org>, Amit Kucheria <amit.kucheria@verdurent.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Vincent Guittot <vincent.guittot@linaro.org>,
- Kevin Hilman <khilman@kernel.org>, Andy Gross <agross@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, steven.price@arm.com,
- Chanwoo Choi <cw00.choi@samsung.com>, Ingo Molnar <mingo@redhat.com>,
- dl-linux-imx <linux-imx@nxp.com>, "Zhang, Rui" <rui.zhang@intel.com>,
- Mel Gorman <mgorman@suse.de>, orjan.eide@arm.com,
- Daniel Vetter <daniel@ffwll.ch>, Linux PM <linux-pm@vger.kernel.org>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Steven Rostedt <rostedt@goodmis.org>,
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux OMAP Mailing List <linux-omap@vger.kernel.org>,
- Dietmar Eggemann <Dietmar.Eggemann@arm.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- David Airlie <airlied@linux.ie>, Tomeu Vizoso <tomeu.vizoso@collabora.com>,
- Quentin Perret <qperret@google.com>, Stephen Boyd <sboyd@kernel.org>,
- Randy Dunlap <rdunlap@infradead.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Sascha Hauer <kernel@pengutronix.de>, Sudeep Holla <sudeep.holla@arm.com>,
- patrick.bellasi@matbug.net, Shawn Guo <shawnguo@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Johan Hedberg <johan.hedberg@gmail.com>,
+ Marcel Holtmann <marcel@holtmann.org>, Sean Wang <sean.wang@mediatek.com>,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 29, 2020 at 5:01 PM Lukasz Luba <lukasz.luba@arm.com> wrote:
->
-> Hi Rafael,
->
->
-> On 5/27/20 10:58 AM, Lukasz Luba wrote:
-> > Hi all,
-> >
-> > Background of this version:
-> > This is the v8 of the patch set and is has smaller scope. I had to split
-> > the series into two: EM changes and thermal changes due to devfreq
-> > dependencies. The patches from v7 9-14 which change devfreq cooling are
-> > going to be sent in separate patch series, just after this set get merged
-> > into mainline. These patches related to EM got acks and hopefully can go
-> > through linux-pm tree. The later thermal patches will go through thermal
-> > tree.
-> >
-> > The idea and purpose of the Energy Model framework changes:
-> > This patch set introduces support for devices in the Energy Model (EM)
-> > framework. It will unify the power model for thermal subsystem. It will
-> > make simpler to add support for new devices willing to use more
-> > advanced features (like Intelligent Power Allocation). Now it should
-> > require less knowledge and effort for driver developer to add e.g.
-> > GPU driver with simple energy model. A more sophisticated energy model
-> > in the thermal framework is also possible, driver needs to provide
-> > a dedicated callback function. More information can be found in the
-> > updated documentation file.
-> >
-> > First 7 patches are refactoring Energy Model framework to add support
-> > of other devices that CPUs. They change:
-> > - naming convention from 'capacity' to 'performance' state,
-> > - API arguments adding device pointer and not rely only on cpumask,
-> > - change naming when 'cpu' was used, now it's a 'device'
-> > - internal structure to maintain registered devices
-> > - update users to the new API
-> > Patch 8 updates OPP framework helper function to be more generic, not
-> > CPU specific.
-> >
-> > The patch set is based on linux-pm branch linux-next 813946019dfd.
-> >
->
-> Could you take the patch set via your linux-pm?
-
-I can do that, but I didn't realize that it was targeted at me, so I
-need some more time to review the patches.
-
-Thanks!
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+PiBidG10dWFydF9wcm9iZSgpIG1pc3NlcyBzZXZlcmFsIGZ1bmN0aW9uIGNhbGxzIGluIGl0cyBl
+cnJvciBwYXRocywKPiBpbmNsdWRpbmcgaGNpX2ZyZWVfZGV2KCkgYW5kIGNsa19kaXNhYmxlX3Vu
+cHJlcGFyZSgpLgo+IFJlZmFjdG9yIHRoZSBjb2RlIGFuZCBjYWxsIGNvcnJlY3QgdW5kbyBmdW5j
+dGlvbnMgdG8gZml4IHRoZSBlcnJvcgo+IHBhdGhzLgoKSG93IGRvIHlvdSB0aGluayBhYm91dCBh
+IHdvcmRpbmcgdmFyaWFudCBsaWtlIHRoZSBmb2xsb3dpbmc/CgogICBDaGFuZ2UgZGVzY3JpcHRp
+b246CiAgIENhbGxzIG9mIHRoZSBmdW5jdGlvbnMg4oCcY2xrX2Rpc2FibGVfdW5wcmVwYXJl4oCd
+IGFuZCDigJxoY2lfZnJlZV9kZXbigJ0KICAgd2VyZSBtaXNzaW5nIGZvciB0aGUgZXhjZXB0aW9u
+IGhhbmRsaW5nLgogICBUaHVzIGFkZCB0aGUgbWlzc2VkIGZ1bmN0aW9uIGNhbGxzIHRvZ2V0aGVy
+IHdpdGggY29ycmVzcG9uZGluZwogICBqdW1wIHRhcmdldHMuCgoKV291bGQgeW91IGxpa2UgdG8g
+YWRkIHRoZSB0YWcg4oCcRml4ZXPigJ0gdG8gdGhlIGNvbW1pdCBtZXNzYWdlPwoKUmVnYXJkcywK
+TWFya3VzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1l
+ZGlhdGVrCg==
