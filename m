@@ -2,62 +2,83 @@ Return-Path: <SRS0=lKUU=7K=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B52B4C433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 08:08:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E550FC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 08:13:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8C5172088E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 08:08:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B51AF20B80
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 08:13:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jsrw734j"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8C5172088E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cDW2CENw";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ZmuMmaRW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B51AF20B80
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HbeMJH2E+1z7INADobn/IjBU+Owqv1sVr2nNv5AMYo0=; b=jsrw734j5lOJGK
-	z/6nncx+//ANvSMR14o/UnjE3ndoi723pfZM6oKmb1VMPqZhoafnFs9DykYdkywV+eOMlkV39lu3g
-	KXv+r2o3RtZPc3q4nPHNbAAiPp1qaxMttYyGJA+GukxFHCSCQcb3qWs/2bMd0l6n/T9pQylfpJiwp
-	X3avPdmpBkldL/JWjwiHfjb9VneWMiFQc5xP9xrPjCRm3IodIJYB8IM45lL3e3Ze/QsmUBl2BHcft
-	Lx4w21UynXp8ckSIq6+VSTNbOmuyqX/qhuaejioOhDtiEsQvCPqSYWcm6EBp5ENaTd5ReaBNCVqng
-	UfqW+rnNL8++IxGIT2iQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=X+zoQCKp6ZOD5/Zmocarz0xs2V2uBmPsNoLffZs3Ihw=; b=cDW2CENwSDSmjG
+	UH7t2BvF+12xjJCwC8g3h8FlQFK2O76ANo9pS25WngxLCBUbfPp9xs9VeJcOae/kl18nhSH+RJYLu
+	+Jal3JZxJMYXdF5ZdAOlo1GPWFTEEIIQrCltMiHz3GkVsR1WEm+0CmvKDyx+MSVEzgy04KYJSy5Pq
+	yPg/xnt93J5eBOiGKn5FhjT0QBT/aSrGB7Ktjf7/Plx7HhYjqIulOyggLiu6IzumOgX+d8ee6OVGU
+	1eXKk1w/e1RM8P6r/by8lfj91mc8QaEwM3DS9TdMk9NMgGybaKqGq8kOm1eXIa7673yt7nQfMdTzt
+	tWCbKLZXJhnKY619iVWw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jeDaV-00011v-AO; Thu, 28 May 2020 08:08:27 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1jeDf0-0006rY-6a; Thu, 28 May 2020 08:13:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jeDaR-00011F-5a
- for linux-mediatek@lists.infradead.org; Thu, 28 May 2020 08:08:25 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id CCF942A3CA1
-Subject: Re: [BUG] Cannot boot on MT8173 if Mediatek thermal is enabled
-To: Michael Kao <michael.kao@mediatek.com>
-References: <8d66199a-84cb-5080-cd24-f746d1db5c5a@collabora.com>
- <34c9fc56-ca19-cf59-af71-4273f91338b9@gmail.com>
- <56e774bc-5029-5836-2da1-dcabe3143d29@collabora.com>
- <c01722de-7ef3-f43a-8bc9-cd6581004dba@collabora.com>
- <1590634780.22554.1.camel@mtksdccf07>
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <39c5d33a-d8ef-31d0-6864-62a62e12b2b1@collabora.com>
-Date: Thu, 28 May 2020 10:08:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ id 1jeDeo-0006eg-TP; Thu, 28 May 2020 08:12:58 +0000
+X-UUID: 6b86cc787cd640b095d3642c22018e83-20200528
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=vdtwpDh+BfZcY9fDqODOL1gT1h9erHJDlZqiyVdKXQw=; 
+ b=ZmuMmaRWWGZgcQs1oemoalKmlFPS239xjO4kzXUxQ2ijMGIE2B9pR68jSteAK4O3voBy+yB0o4hl6mv+Jof6BmPRE2IIe2O1oSGfv5BdDjRwAcvZBe57vU7xtG9vZz9V/NV7j/3kJinFgEOQlN8P99ns6a6hWGxDf6yoBD+daQw=;
+X-UUID: 6b86cc787cd640b095d3642c22018e83-20200528
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <dongchun.zhu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1776174737; Thu, 28 May 2020 00:12:53 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 28 May 2020 01:06:33 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 28 May 2020 16:06:29 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 28 May 2020 16:06:30 +0800
+Message-ID: <1590653082.8804.517.camel@mhfsdcap03>
+Subject: Re: [V9, 1/2] media: dt-bindings: media: i2c: Document OV02A10
+ bindings
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Date: Thu, 28 May 2020 16:04:42 +0800
+In-Reply-To: <20200528072332.GW7618@paasikivi.fi.intel.com>
+References: <20200523084103.31276-1-dongchun.zhu@mediatek.com>
+ <20200523084103.31276-2-dongchun.zhu@mediatek.com>
+ <20200526182847.GA92449@bogus> <1590569355.8804.448.camel@mhfsdcap03>
+ <CAL_Jsq+sN0SVidTrY0ODXEkzkxYFvG1FTnL0oRQBSKf=ynLdyQ@mail.gmail.com>
+ <20200527211628.GT7618@paasikivi.fi.intel.com>
+ <1590636882.8804.474.camel@mhfsdcap03>
+ <20200528072332.GW7618@paasikivi.fi.intel.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <1590634780.22554.1.camel@mtksdccf07>
-Content-Language: en-US
+X-TM-SNTS-SMTP: 40A29D3792692DD8CE5B51233948BE224921176E99DFDF64883FC26B2B3119662000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200528_010823_473900_C195139B 
-X-CRM114-Status: GOOD (  24.11  )
+X-CRM114-CacheID: sfid-20200528_011255_249854_F4934AFD 
+X-CRM114-Status: GOOD (  23.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,248 +90,98 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "drinkcat@chromium.org" <drinkcat@chromium.org>, roger.lu@mediatek.com,
- renze@rnplus.nl,
+Cc: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh@kernel.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>, devicetree@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Shengnan Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=A3=E7=94=B7=29?=
+ <shengnan.wang@mediatek.com>, Tomasz Figa <tfiga@chromium.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Sj Huang <sj.huang@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>
+ Louis Kuo <louis.kuo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Cao Bing Bu <bingbu.cao@intel.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "moderated list:ARM/FREESCALE IMX / MXC
+ ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
+Hi Sakari,
 
-On 28/5/20 4:59, Michael Kao wrote:
-> On Wed, 2020-05-20 at 18:12 +0200, Enric Balletbo i Serra wrote:
->> Hi Matthias et all,
->>
->> On 20/5/20 17:25, Enric Balletbo i Serra wrote:
->>>
->>>
->>> On 20/5/20 17:21, Matthias Brugger wrote:
->>>>
->>>>
->>>> On 20/05/2020 17:09, Enric Balletbo i Serra wrote:
->>>>> Dear all,
->>>>>
->>>>> I've been testing the Acer Chromebook R 13 (elm - MT8173) for a while. Today I
->>>>> enabled the Mediatek thermal driver (CONFIG_MTK_THERMAL=y) and I started to get
->>>>> that hang [1]
->>>>>
->>>>
->>>> Did you try to bisect to find out what broke it?
->>>>
->>>
->>> I don't even know if this worked at some point, I was running/testing my kernels
->>> with CONFIG_MTK_THERMAL disabled. From the log doesn't seem to have a lot of
->>> changes so I suspect this issue is there since long time.
->>>
->>
->> So the commit that introduces the problem is:
->>
->> commit eb9aecd90d1a39601e91cd08b90d5fee51d321a6
->> Author: Michael Kao <michael.kao@mediatek.com>
->> Date:   Fri Feb 1 15:38:07 2019 +0800
->>
->>     thermal: mediatek: fix register index error
->>
->>     The index of msr and adcpnp should match the sensor
->>     which belongs to the selected bank in the for loop.
->>
->>     Fixes: b7cf0053738c ("thermal: Add Mediatek thermal driver for mt2701.")
->>     Signed-off-by: Michael Kao <michael.kao@mediatek.com>
->>     Signed-off-by: Eduardo Valentin <edubezval@gmail.com>
->>
->>
->>>
->>>> Regards,
->>>> Matthias
->>>>
->>>>> The stacktrace points point to this function:
->>>>>
->>>>> static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
->>>>>
->>>>> More precisely to this call:
->>>>>
->>>>> 		raw = readl(mt->thermal_base +
->>>>> 			    conf->msr[conf->bank_data[bank->id].sensors[i]]);
->>>>>
->>>>> this call, is in a loop and ends trying to access to conf->msr[4]
->>>>> (conf->msr[MT8173_TSABB]) which doesn't exist as per the following struct
->>>>>
->>>>> static const int mt8173_msr[MT8173_NUM_SENSORS_PER_ZONE] = {
->>>>> 	TEMP_MSR0, TEMP_MSR1, TEMP_MSR2, TEMP_MSR3
->>>>> };
->>>>>
->>>>> I think the datasheet will help here to clarify what is happening but is not
->>>>> public, so I can really check. Anyway seems that or the mt8173_msr struct is
->>>>> wrong or the mt8173_bank_data is wrong or there is something else.
->>>>>
->>>>> Could anyone with the information or with this hardwware knowledge take a look,
->>>>> please.
->>>>>
->>>>> Thanks,
->>>>>  Enric
->>>>>
->>>>>
->>>>> [1]
->>>>> [    2.222488] Unable to handle kernel paging request at virtual address
->>>>> ffff8000125f5001
->>>>> [    2.230421] Mem abort info:
->>>>> [    2.233207]   ESR = 0x96000021
->>>>> [    2.236261]   EC = 0x25: DABT (current EL), IL = 32 bits
->>>>> [    2.241571]   SET = 0, FnV = 0
->>>>> [    2.244623]   EA = 0, S1PTW = 0
->>>>> [    2.247762] Data abort info:
->>>>> [    2.250640]   ISV = 0, ISS = 0x00000021
->>>>> [    2.254473]   CM = 0, WnR = 0
->>>>> [    2.257544] swapper pgtable: 4k pages, 48-bit VAs, pgdp=0000000041850000
->>>>> [    2.264251] [ffff8000125f5001] pgd=000000013ffff003, pud=000000013fffe003,
->>>>> pmd=000000013fff9003, pte=006800001100b707
->>>>> [    2.274867] Internal error: Oops: 96000021 [#1] PREEMPT SMP
->>>>> [    2.280432] Modules linked in:
->>>>> [    2.283483] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.7.0-rc6+ #162
->>>>> [    2.289914] Hardware name: Google Elm (DT)
->>>>> [    2.294003] pstate: 20000005 (nzCv daif -PAN -UAO)
->>>>> [    2.298792] pc : mtk_read_temp+0xb8/0x1c8
->>>>> [    2.302793] lr : mtk_read_temp+0x7c/0x1c8
->>>>> [    2.306794] sp : ffff80001003b930
->>>>> [    2.310100] x29: ffff80001003b930 x28: 0000000000000000
->>>>> [    2.315404] x27: 0000000000000002 x26: ffff0000f9550b10
->>>>> [    2.320709] x25: ffff0000f9550a80 x24: 0000000000000090
->>>>> [    2.326014] x23: ffff80001003ba24 x22: 00000000610344c0
->>>>> [    2.331318] x21: 0000000000002710 x20: 00000000000001f4
->>>>> [    2.336622] x19: 0000000000030d40 x18: ffff800011742ec0
->>>>> [    2.341926] x17: 0000000000000001 x16: 0000000000000001
->>>>> [    2.347230] x15: ffffffffffffffff x14: ffffff0000000000
->>>>> [    2.352535] x13: ffffffffffffffff x12: 0000000000000028
->>>>> [    2.357839] x11: 0000000000000003 x10: ffff800011295ec8
->>>>> [    2.363143] x9 : 000000000000291b x8 : 0000000000000002
->>>>> [    2.368447] x7 : 00000000000000a8 x6 : 0000000000000004
->>>>> [    2.373751] x5 : 0000000000000000 x4 : ffff800011295cb0
->>>>> [    2.379055] x3 : 0000000000000002 x2 : ffff8000125f5001
->>>>> [    2.384359] x1 : 0000000000000001 x0 : ffff0000f9550a80
->>>>> [    2.389665] Call trace:
->>>>> [    2.392105]  mtk_read_temp+0xb8/0x1c8
->>>>> [    2.395760]  of_thermal_get_temp+0x2c/0x40
->>>>> [    2.399849]  thermal_zone_get_temp+0x78/0x160
->>>>> [    2.404198]  thermal_zone_device_update.part.0+0x3c/0x1f8
->>>>> [    2.409589]  thermal_zone_device_update+0x34/0x48
->>>>> [    2.414286]  of_thermal_set_mode+0x58/0x88
->>>>> [    2.418375]  thermal_zone_of_sensor_register+0x1a8/0x1d8
->>>>> [    2.423679]  devm_thermal_zone_of_sensor_register+0x64/0xb0
->>>>> [    2.429242]  mtk_thermal_probe+0x690/0x7d0
->>>>> [    2.433333]  platform_drv_probe+0x5c/0xb0
->>>>> [    2.437335]  really_probe+0xe4/0x448
->>>>> [    2.440901]  driver_probe_device+0xe8/0x140
->>>>> [    2.445077]  device_driver_attach+0x7c/0x88
->>>>> [    2.449252]  __driver_attach+0xac/0x178
->>>>> [    2.453082]  bus_for_each_dev+0x78/0xc8
->>>>> [    2.456909]  driver_attach+0x2c/0x38
->>>>> [    2.460476]  bus_add_driver+0x14c/0x230
->>>>> [    2.464304]  driver_register+0x6c/0x128
->>>>> [    2.468131]  __platform_driver_register+0x50/0x60
->>>>> [    2.472831]  mtk_thermal_driver_init+0x24/0x30
->>>>> [    2.477268]  do_one_initcall+0x50/0x298
->>>>> [    2.481098]  kernel_init_freeable+0x1ec/0x264
->>>>> [    2.485450]  kernel_init+0x1c/0x110
->>>>> [    2.488931]  ret_from_fork+0x10/0x1c
->>>>> [    2.492502] Code: f9401081 f9400402 b8a67821 8b010042 (b9400042)
->>>>> [    2.498599] ---[ end trace e43e3105ed27dc99 ]---
->>>>> [    2.503367] Kernel panic - not syncing: Attempted to kill init!
->>>>> exitcode=0x0000000b
->>>>> [    2.511020] SMP: stopping secondary CPUs
->>>>> [    2.514941] Kernel Offset: disabled
->>>>> [    2.518421] CPU features: 0x090002,25006005
->>>>> [    2.522595] Memory Limit: none
->>>>> [    2.525644] ---[ end Kernel panic - not syncing: Attempted to kill init!
->>>>> exitcode=0x0000000b ]---
->>>>>
+On Thu, 2020-05-28 at 10:23 +0300, Sakari Ailus wrote:
+> Hi Dongchun,
 > 
->> Hi Enric,
-> I will help to fix this crash. If it is urgent, you can revert the patch
-> locally first for mt8173.
+> On Thu, May 28, 2020 at 11:34:42AM +0800, Dongchun Zhu wrote:
+> > Hi Sakari, Rob,
+> > 
+> > On Thu, 2020-05-28 at 00:16 +0300, Sakari Ailus wrote:
+> > > Hi Rob, Dongchun,
+> > > 
+> > > On Wed, May 27, 2020 at 09:27:22AM -0600, Rob Herring wrote:
+> > > > > > > +    properties:
+> > > > > > > +      endpoint:
+> > > > > > > +        type: object
+> > > > > > > +        additionalProperties: false
+> > > > > > > +
+> > > > > > > +        properties:
+> > > > >
+> > > > > Actually I wonder whether we need to declare 'clock-lanes' here?
+> > > > 
+> > > > Yes, if you are using it.
+> > > 
+> > > Dongchun, can you confirm the chip has a single data and a single clock
+> > > lane and that it does not support lane reordering?
+> > > 
+> > 
+> > From the datasheet, 'MIPI inside the OV02A10 provides one single
+> > uni-directional clock lane and one bi-directional data lane solution for
+> > communication links between components inside a mobile device.
+> > The data lane has full support for HS(uni-directional) and
+> > LP(bi-directional) data transfer mode.'
+> > 
+> > The sensor doesn't support lane reordering, so 'clock-lanes' property
+> > would not be added in next release.
+> > 
+> > > So if there's nothing to convey to the driver, also the data-lanes should
+> > > be removed IMO.
+> > > 
+> > 
+> > However, 'data-lanes' property may still be required.
+> > It is known that either data-lanes or clock-lanes is an array of
+> > physical data lane indexes. Position of an entry determines the logical
+> > lane number, while the value of an entry indicates physical lane, e.g.,
+> > for 1-lane MIPI CSI-2 bus we could have "data-lanes = <1>;", assuming
+> > the clock lane is on hardware lane 0.
+> > 
+> > As mentioned earlier, the OV02A10 sensor supports only 1C1D and does not
+> > support lane reordering, so here we shall use 'data-lanes = <1>' as
+> > there is only a clock lane for OV02A10.
+> > 
+> > Reminder:
+> > If 'data-lanes' property is not present, the driver would assume
+> > four-lane operation. This means for one-lane or two-lane operation, this
+> > property must be present and set to the right physical lane indexes.
+> > If the hardware does not support lane reordering, monotonically
+> > incremented values shall be used from 0 or 1 onwards, depending on
+> > whether or not there is also a clock lane.
+> 
+> How can the driver use four lanes, considering the device only supports a
+> single lane??
 > 
 
-Thanks, the reverted patch is what I am carrying ;-)
+I understood your meaning.
+If we omit the property 'data-lanes', the sensor should work still.
+But then what's the meaning of the existence of 'data-lanes'?
+If this property 'data-lanes' is always optional, then why dt-bindings
+provide the interface?
 
-It'd be nice have this fixed for next MR or during the upcoming release cycle,
-it will probably start next week. During the next merge window will land the
-support for MT8173 Elm and Hana, so those boards will be affected by this and
-will break. Actually, there is no much boards supported in mainline using MT8183
-(only EVB), so in the worse case I can send a revert or a partial revert of the
-patch.
-
-Thanks,
- Enric
-
-> The last sensor in mt8173_bank_data[2] is MT8173_TSABB.
-> Its index is 4. But there is not index 4 in mt8173_msr and
-> mt8173_adcpnp.
-> That is the root cause for your reference.
-> 
-> static const struct mtk_thermal_data mt8173_thermal_data = {
-> 	.auxadc_channel = MT8173_TEMP_AUXADC_CHANNEL,
-> 	.num_banks = MT8173_NUM_ZONES,
-> 	.num_sensors = MT8173_NUM_SENSORS,
-> 	.vts_index = mt8173_vts_index,
-> 	.cali_val = MT8173_CALIBRATION,
-> 	.num_controller = MT8173_NUM_CONTROLLER,
-> 	.controller_offset = mt8173_tc_offset,
-> 	.need_switch_bank = true,
-> 	.bank_data = {
-> 		{
-> 			.num_sensors = 2,
-> 			.sensors = mt8173_bank_data[0],
-> 		}, {
-> 			.num_sensors = 2,
-> 			.sensors = mt8173_bank_data[1],
-> 		}, {
-> 			.num_sensors = 3,
-> 			.sensors = mt8173_bank_data[2],
-> 		}, {
-> 			.num_sensors = 1,
-> 			.sensors = mt8173_bank_data[3],
-> 		},
-> 	},
-> 	.msr = mt8173_msr,
-> 	.adcpnp = mt8173_adcpnp,
-> 	.sensor_mux_values = mt8173_mux_values,
-> };
-> 
-> 
-> 
-> /* MT8173 thermal sensor data */
-> static const int mt8173_bank_data[MT8173_NUM_ZONES][3] = {
-> 	{ MT8173_TS2, MT8173_TS3 },
-> 	{ MT8173_TS2, MT8173_TS4 },
-> 	{ MT8173_TS1, MT8173_TS2, MT8173_TSABB },
-> 	{ MT8173_TS2 },
-> };
-> 
-> static const int mt8173_msr[MT8173_NUM_SENSORS_PER_ZONE] = {
-> 	TEMP_MSR0, TEMP_MSR1, TEMP_MSR2, TEMP_MSR3
-> };
-> 
-> static const int mt8173_adcpnp[MT8173_NUM_SENSORS_PER_ZONE] = {
-> 	TEMP_ADCPNP0, TEMP_ADCPNP1, TEMP_ADCPNP2, TEMP_ADCPNP3
-> };
-> 
-> /* MT8173 thermal sensors */
-> #define MT8173_TS1	0
-> #define MT8173_TS2	1
-> #define MT8173_TS3	2
-> #define MT8173_TS4	3
-> #define MT8173_TSABB	4
-> 
-> Best Regards,
-> Michael
->> _______________________________________________
->> Linux-mediatek mailing list
->> Linux-mediatek@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> 
-
+In the meantime, if omitting 'data-lanes' for one sensor(transmitter)
+that has only one physical data lane, MIPI receiver(e.g., MIPI CSI-2)
+shall enable four-lane configuration, which may increase consumption of
+both power and resource in the process of IIC communication.
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
