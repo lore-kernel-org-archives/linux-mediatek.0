@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-3.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EDC4BC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 09:12:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 998E1C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 09:12:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BA4A1208E4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 09:12:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6A43E208E4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2020 09:12:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LXeBQEVW";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dLzEB+WG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BA4A1208E4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="G/bP7IMZ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="AClwao4M"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6A43E208E4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,51 +26,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=TbMc/su8delC6tF2oOFIbBJtYGFRT7WEIgG72XnwdkU=; b=LXeBQEVWwXMeRC
-	lnyZhd21P05S5pVoOV7ISCstGTr5NLIzJBu9DOgmwZr74fuOIfdRQB/XE51xXm6f2qsTVuUe+Asy/
-	1MAwRYC5jquecHrCUlRFa1mTkY6M+DwXX9espR4tIi3WstlPCaCJZxIkTunoPZlQDZCN/cp1v4CFx
-	2tfnU+237g/zqzcweYazSrFlsg/iBCz1Bx92ijAK6PEI33C8blprg4oI2VO6IgWHkGmTWnSja34JX
-	KCEVeeHdcumYmaIXMISQNrU4aG6RBZUAWEFwZdu6L08z0D0TnpwKl2hBwr+vBhRhOJorb0W6J+QTY
-	6cfXi6x0wxfCENiZZ53A==;
+	List-Owner; bh=egwdPSvyc9rBqdcKbCnf+QQXyYPOVgg4TOrfZeNEfu8=; b=G/bP7IMZHoHMN0
+	nXE2J3JqEzqAjDebTAdjbTqw6aeIMU3jxYET+5JPuiMw6nQuhm6HqOgpS3gmepIHjcnVmFsaofnqp
+	JjeZr4IxqCUEPEtZOmDLzAsAz8MMUKXfi7f+DxsfWYhckZkwtGEfE8e4rXq/22cit/iszBpFs9l6O
+	ix+NgeL3N4iIerkoINh4yto+RvGT6UCsW5gfIR2ogxJdn8LV3+7SMUoqZNIshyKfwFhpOB4i41n07
+	q8XJs6KZNgLNPfOsjpCWOdKmttzke7U5mf0b9nveI9tCzx0L18QAukCMXIVby6fjF2XJgTsDxdpIw
+	lHHK4jHQiJ4AHjpIa1wA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jeEaB-0001wq-4D; Thu, 28 May 2020 09:12:11 +0000
+	id 1jeEaN-0002DT-8S; Thu, 28 May 2020 09:12:23 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jeEa8-0001vu-W8; Thu, 28 May 2020 09:12:10 +0000
-X-UUID: d387325bb65d4f668d2cd4ffc88b4d6c-20200528
+ id 1jeEa9-0001w9-Rn; Thu, 28 May 2020 09:12:11 +0000
+X-UUID: 9b74364624344293b47bed35b5ea425f-20200528
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=e3fxIIj58bRpUFvDB85psWO2i4+DCFFpHdpTJRE6p4k=; 
- b=dLzEB+WGhac726H+9eCpH3U/J0aBBfilqkMSZyYbwlYw3mU+PfRay5zekcb+ahhaBID9qG5/x9oLAtuS5eUMhJvT3KiirRINcGXix6yAq+rG1NA4qTyUOjpL7VgQweWqi9iATU/IDGr+aY/Rasm9QTE5NNVQFrFB/vsMj4noyIM=;
-X-UUID: d387325bb65d4f668d2cd4ffc88b4d6c-20200528
+ bh=CEyczhGcIBHIfsym2XRqySGH4dvwQoU66NsgzcC4tto=; 
+ b=AClwao4M+r4IjJYEsOmsnHAhFsjWYom0wB2WiX9vZq49OE6JRMUh0yfjzyTBxwuXbP+eGzTru/LyAlhgTGPXVwH650E3wFwpfwO6v3+w2NCFKVokWpc4QzqhQPUW/0kbjr9RvK16br4PMKVUbSPSuwjX6SLHq9Hxv8r6o0oq6No=;
+X-UUID: 9b74364624344293b47bed35b5ea425f-20200528
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <fengping.yu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1069242999; Thu, 28 May 2020 01:12:08 -0800
+ with ESMTP id 950179093; Thu, 28 May 2020 01:12:08 -0800
 Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 28 May 2020 02:08:03 -0700
+ 15.0.1497.2; Thu, 28 May 2020 02:02:05 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 28 May 2020 17:08:01 +0800
+ 15.0.1497.2; Thu, 28 May 2020 17:02:03 +0800
 Received: from localhost.localdomain (10.15.43.140) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 28 May 2020 17:08:00 +0800
+ Transport; Thu, 28 May 2020 17:02:02 +0800
 From: Fengping Yu <fengping.yu@mediatek.com>
 To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Dmitry Torokhov
  <dmitry.torokhov@gmail.com>, Andy Shevchenko
  <andriy.shevchenko@linux.intel.com>, Marco Felsch <m.felsch@pengutronix.de>
 Subject: [RESEND PATCH v11] Add matrix keypad driver support for Mediatek SoCs
-Date: Thu, 28 May 2020 17:07:54 +0800
-Message-ID: <20200528090757.54355-1-fengping.yu@mediatek.com>
+Date: Thu, 28 May 2020 17:01:42 +0800
+Message-ID: <20200528090144.54033-1-fengping.yu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: A2B28C3C59F4912E39A544B073903EAB9AB3C6FD0DAF84ACB756925C08D07D6B2000:8
+X-TM-SNTS-SMTP: 8BB79A2A68B472B71DC37E982F864F1B3062B1DBE30F6FC6EE6719529D102EC62000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200528_021209_039879_89685271 
+X-CRM114-CacheID: sfid-20200528_021209_896685_E781B728 
 X-CRM114-Status: UNSURE (   6.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -111,7 +111,6 @@ fengping.yu (3):
 
 -- 
 2.18.0
-
 
 _______________________________________________
 Linux-mediatek mailing list
