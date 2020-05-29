@@ -2,81 +2,70 @@ Return-Path: <SRS0=oumW=7L=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-1.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 798BDC433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2020 15:59:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6149FC433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2020 16:18:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 48CF6207F9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2020 15:59:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0C8942077D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2020 16:18:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FqrTZPUy";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="Gyr13u2x"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 48CF6207F9
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YDg76xhA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0C8942077D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=juZF+1O/T2OVo3t178xTl7+NqgpSTOMt/4+qR974zPA=; b=Fqr
-	TZPUy2EXgp2WCTy35p1HCKcgsdV7oYXlXldsACKMBMz4uYFbBuj1AI2ztwKAuI8L9BuyX3Ng8beLK
-	nQ9mz4JFTqeQQsNpH0g2983cXW5i+JhQucTSQ4Fa6smrrsrBLQm5NxDUJhuHDUG3TYGTfYQ78W5wP
-	/VoZirfcKY82g7KUCVN/CI4h1ZsapnmSAUaT8u4qjfKt9cr4uR6QgDxc7sTLc1fXkk21o8WQUi8kW
-	xy9iNIwU3T1gyaNUyJufxR0HGbntip3DEzLoE0mul9aLz/AKsKwNFob7Q0pKcp9yrofDpSiiogKy/
-	fn92Ih+oDdd2iF3LZDWj326HAQcaMsg==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+W80aD/X2XU9nIJtW4oZzAHrWztbQOHM7u7h3cbU0Dg=; b=YDg76xhA0lnbjs
+	8l6AMd1pmFlyEvEK4OqLzURDRx+Ieull1O476dlfAZCzEeAdbdzm6crJvD3O7wbJ6PhIXQJ63xW13
+	gbTXrpe8lHjOp8GPJQgRT31r9GcHg5IUwmVOUjaxOSyT+h9F4joXVCVu51zRWFmhn3oY4dnJV6j5y
+	/Ln47IVxb0eFtPc8i+HrJMVKGZ+D0k5Db34UJdnKFRVz6eaxsndchN98LeLZz3knDS+Dy9nTfK/7Z
+	Qf66agVY+sYyJrND7ejF+0J2VVuknTmLJI22LhtLBJE5FtlwxXZ8U5DeHW0RYtLZ5PYutLztdfNPn
+	F0jtv4gbE3KaCS8yKtuA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jehQ1-0000Aw-4C; Fri, 29 May 2020 15:59:37 +0000
-Received: from m43-7.mailgun.net ([69.72.43.7])
+	id 1jehiK-00034a-4a; Fri, 29 May 2020 16:18:32 +0000
+Received: from mail-oi1-f193.google.com ([209.85.167.193])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jehPg-0008Pf-S4
- for linux-mediatek@lists.infradead.org; Fri, 29 May 2020 15:59:23 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1590767962; h=Message-Id: Date: Subject: Cc: To: From:
- Sender; bh=D/JMvgaJGqi1jK8NRGNKnGGrv9rdFQusuj9ABakOAT0=;
- b=Gyr13u2xQMzMm6TaVio3BC6DOjA0cPSLsWt8rk4rG9tYMfNR94HhIHEWTHQF4H0Z5CkWK4ZZ
- UO5vpSz9va5faZMCPOf72hOI8Kiu3Yl0I7RHxHZnQfAOUnxaJU/hyTOblh3tJBUr/VrJxkuo
- rV83yqIvfdrTcfNK7GIggiel8Tk=
-X-Mailgun-Sending-Ip: 69.72.43.7
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n04.prod.us-west-2.postgun.com with SMTP id
- 5ed13148c6d4683243d85dac (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Fri, 29 May 2020 15:59:04
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id D100BC433CB; Fri, 29 May 2020 15:59:04 +0000 (UTC)
-Received: from zijuhu-gv.qualcomm.com (unknown [180.166.53.21])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: zijuhu)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id B3176C433C6;
- Fri, 29 May 2020 15:59:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org B3176C433C6
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=none smtp.mailfrom=zijuhu@codeaurora.org
-From: Zijun Hu <zijuhu@codeaurora.org>
-To: sean.wang@mediatek.com, marcel@holtmann.org, johan.hedberg@gmail.com,
- matthias.bgg@gmail.com
-Subject: [PATCH v1] Bluetooth: btmtkuart: Use serdev_device_write_buf()
- instead of serdev_device_write()
-Date: Fri, 29 May 2020 23:58:56 +0800
-Message-Id: <1590767936-21907-1-git-send-email-zijuhu@codeaurora.org>
-X-Mailer: git-send-email 2.7.4
+ id 1jehi9-0002uR-9X; Fri, 29 May 2020 16:18:23 +0000
+Received: by mail-oi1-f193.google.com with SMTP id i22so3022498oik.10;
+ Fri, 29 May 2020 09:18:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=zCKRRe7FwZhejdctsJhwzQtwJFTHGD8RGi5WeD/f/w0=;
+ b=GLoj03xShllVxj5ReAGXlW3+BbO0Ksuvqa7VgzWvWd9suW+DlYWqxt+73ylJjp/Lx5
+ 8XCB37d9cDVHzYTfsWl7Nv4WjLC7Z+1HBHHZ4On6T2/bCtF64vQMnLzgXKlb4ENb8QfE
+ Dg3yyopbes0wfc5exncD0y6gPqdyCzEuuVrzzpFsvlzfJv3hJnGDddeQF+dzAl992q6Y
+ 9ay5x3ZKiVH9X98nZ5nj8cb6HYFhgSO2INyv1v7EhOTd4kUv4qs1lnpKi61IWcm23dXJ
+ F3hfE0ampTaLVsKDGrKkl2tcCgOiJw9hFq20UTyxoxCy2mDIfXMpfjBjZDztO2WhXUGy
+ g2Zw==
+X-Gm-Message-State: AOAM53248BVIKGwUBe/Y6zumHjaPjPvgJrO5fWrJJPqMH2Q4NX2hVCt/
+ jNe61/O4zDzgqn8YBQ5bbJxQ0W7OrzDh31iUCcHf8A==
+X-Google-Smtp-Source: ABdhPJxIPIXsXf4jLYLEBb/1WBoIj43Ang4WatokkbfhBp4dzFCXQVyui/zzlBPpl6Uh6FpjdetZ4E5goPLNut+9on0=
+X-Received: by 2002:aca:4254:: with SMTP id p81mr6231320oia.68.1590769097929; 
+ Fri, 29 May 2020 09:18:17 -0700 (PDT)
+MIME-Version: 1.0
+References: <20200527095854.21714-1-lukasz.luba@arm.com>
+ <8fca24a1-93f7-f859-bd1f-b7bf484737f4@arm.com>
+In-Reply-To: <8fca24a1-93f7-f859-bd1f-b7bf484737f4@arm.com>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Fri, 29 May 2020 18:18:06 +0200
+Message-ID: <CAJZ5v0g5whSUMkd4majCGj0j9TMeO+fCfhxB6FNWoaLpPsi6UA@mail.gmail.com>
+Subject: Re: [PATCH v8 0/8] Add support for devices in the Energy Model
+To: Lukasz Luba <lukasz.luba@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200529_085922_503281_F259FA4B 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20200529_091821_330377_F69DB4AC 
+X-CRM114-Status: GOOD (  21.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,43 +77,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org,
- mka@chromium.org, linux-mediatek@lists.infradead.org, zijuhu@codeaurora.org,
- linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
+Cc: Nishanth Menon <nm@ti.com>, Juri Lelli <juri.lelli@redhat.com>,
+ Peter Zijlstra <peterz@infradead.org>, Viresh Kumar <viresh.kumar@linaro.org>,
+ Liviu Dudau <liviu.dudau@arm.com>, dri-devel <dri-devel@lists.freedesktop.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Benjamin Segall <bsegall@google.com>, alyssa.rosenzweig@collabora.com,
+ Fabio Estevam <festevam@gmail.com>, Matthias Kaehlcke <mka@chromium.org>,
+ Rob Herring <robh@kernel.org>, Amit Kucheria <amit.kucheria@verdurent.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Vincent Guittot <vincent.guittot@linaro.org>,
+ Kevin Hilman <khilman@kernel.org>, Andy Gross <agross@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, steven.price@arm.com,
+ Chanwoo Choi <cw00.choi@samsung.com>, Ingo Molnar <mingo@redhat.com>,
+ dl-linux-imx <linux-imx@nxp.com>, "Zhang, Rui" <rui.zhang@intel.com>,
+ Mel Gorman <mgorman@suse.de>, orjan.eide@arm.com,
+ Daniel Vetter <daniel@ffwll.ch>, Linux PM <linux-pm@vger.kernel.org>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Steven Rostedt <rostedt@goodmis.org>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux OMAP Mailing List <linux-omap@vger.kernel.org>,
+ Dietmar Eggemann <Dietmar.Eggemann@arm.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ David Airlie <airlied@linux.ie>, Tomeu Vizoso <tomeu.vizoso@collabora.com>,
+ Quentin Perret <qperret@google.com>, Stephen Boyd <sboyd@kernel.org>,
+ Randy Dunlap <rdunlap@infradead.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+ Sascha Hauer <kernel@pengutronix.de>, Sudeep Holla <sudeep.holla@arm.com>,
+ patrick.bellasi@matbug.net, Shawn Guo <shawnguo@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-serdev_device_write() is not appropriate at here because
-serdev_device_write_wakeup() is not used to release completion hold
-by the former at @write_wakeup member of struct serdev_device_ops.
+On Fri, May 29, 2020 at 5:01 PM Lukasz Luba <lukasz.luba@arm.com> wrote:
+>
+> Hi Rafael,
+>
+>
+> On 5/27/20 10:58 AM, Lukasz Luba wrote:
+> > Hi all,
+> >
+> > Background of this version:
+> > This is the v8 of the patch set and is has smaller scope. I had to split
+> > the series into two: EM changes and thermal changes due to devfreq
+> > dependencies. The patches from v7 9-14 which change devfreq cooling are
+> > going to be sent in separate patch series, just after this set get merged
+> > into mainline. These patches related to EM got acks and hopefully can go
+> > through linux-pm tree. The later thermal patches will go through thermal
+> > tree.
+> >
+> > The idea and purpose of the Energy Model framework changes:
+> > This patch set introduces support for devices in the Energy Model (EM)
+> > framework. It will unify the power model for thermal subsystem. It will
+> > make simpler to add support for new devices willing to use more
+> > advanced features (like Intelligent Power Allocation). Now it should
+> > require less knowledge and effort for driver developer to add e.g.
+> > GPU driver with simple energy model. A more sophisticated energy model
+> > in the thermal framework is also possible, driver needs to provide
+> > a dedicated callback function. More information can be found in the
+> > updated documentation file.
+> >
+> > First 7 patches are refactoring Energy Model framework to add support
+> > of other devices that CPUs. They change:
+> > - naming convention from 'capacity' to 'performance' state,
+> > - API arguments adding device pointer and not rely only on cpumask,
+> > - change naming when 'cpu' was used, now it's a 'device'
+> > - internal structure to maintain registered devices
+> > - update users to the new API
+> > Patch 8 updates OPP framework helper function to be more generic, not
+> > CPU specific.
+> >
+> > The patch set is based on linux-pm branch linux-next 813946019dfd.
+> >
+>
+> Could you take the patch set via your linux-pm?
 
-Fix by using serdev_device_write_buf() instead of serdev_device_write().
+I can do that, but I didn't realize that it was targeted at me, so I
+need some more time to review the patches.
 
-Signed-off-by: Zijun Hu <zijuhu@codeaurora.org>
----
- drivers/bluetooth/btmtkuart.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/bluetooth/btmtkuart.c b/drivers/bluetooth/btmtkuart.c
-index 8a81fbca5c9d..6c40bc75fb5b 100644
---- a/drivers/bluetooth/btmtkuart.c
-+++ b/drivers/bluetooth/btmtkuart.c
-@@ -695,8 +695,7 @@ static int btmtkuart_change_baudrate(struct hci_dev *hdev)
- 
- 	/* Send a dummy byte 0xff to activate the new baudrate */
- 	param = 0xff;
--	err = serdev_device_write(bdev->serdev, &param, sizeof(param),
--				  MAX_SCHEDULE_TIMEOUT);
-+	err = serdev_device_write_buf(bdev->serdev, &param, sizeof(param));
- 	if (err < 0 || err < sizeof(param))
- 		return err;
- 
--- 
-2.7.4
-
+Thanks!
 
 _______________________________________________
 Linux-mediatek mailing list
