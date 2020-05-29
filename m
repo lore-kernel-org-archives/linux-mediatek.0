@@ -2,133 +2,79 @@ Return-Path: <SRS0=oumW=7L=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F2F7C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2020 11:55:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9C1AEC433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2020 12:26:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3E179206B6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2020 11:55:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6A4BC2075A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2020 12:26:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kYdKWTLc";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=analog.onmicrosoft.com header.i=@analog.onmicrosoft.com header.b="oMhko7lg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3E179206B6
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=analog.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hFjVsaqs";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="DPuKFP5C"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6A4BC2075A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tSH4jhR7xNuqIvBb77Tsy0tA4HcjB9TgN6O5veR8WCc=; b=kYdKWTLcciPkwD
-	5HOaGRBIQJ9Y1JyzsN5ypCf1dxZAdW+7LehzNkPbP5ZqSjWaGUnxwt8G/6ZmFkRwOBDGLW5MnQ1gK
-	cRPRPBaw39iOQc6sD6YU11F4Dv/JS8xS8aVTdZRkGAKwRileZ/NTIQ9S1STOjkkpQGMluQsRAaPco
-	0nXcj9qDqIcM95eTmAfJoU4IUaAl/MmxgxqM6eXKeCxF+6oPgFya04hhu2xRGv4ULzPbP8vtZKEdC
-	vpMbxeYMZv51OxCOuEjXHmz4hweDdXnBOAhuILIY5UCpu/4M6wfAhhsO4sr7IZqz9Ep0oLrhkxh1W
-	Fsvc0HG+3CRocnPvTWsg==;
+	List-Owner; bh=Lej92+90R/7PjQoaZ+UdURYfW4L/PGN1anen1+UVa4c=; b=hFjVsaqsiOAbZc
+	YN4AueVXQgQUTx84rfcCquv8EsYGb6yAdaUVn99MAl3kXmODUq+yBrLDO1PabSlbhJ2QLL9O5gIZq
+	HTuZOvz3vW08lwSlJ7d2xIIPelQZ5pVZycoOmalyQPsjbgiSHpXZ273710/08E6U6S3vIfJGEbvG6
+	0in3o1Mwcv8mQZ6m4ZEjnE6mMyo/hktXCfL18sJwvOK64MlMDJuKtvxHhMbsfG/aD3+ukwoVWxMO3
+	tbzYhCfe05iR1efYNXaTH3XyNXPeXjLzSlH0DFR8cZq+AKUBj4pL/CXV8wAHDy5v4JZ9hZZTqEs+B
+	C3xQ1B8T7m+BGsXMQ9TQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jedbT-0007BM-RQ; Fri, 29 May 2020 11:55:11 +0000
-Received: from mx0a-00128a01.pphosted.com ([148.163.135.77])
+	id 1jee5Y-0001TE-QC; Fri, 29 May 2020 12:26:16 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jedbO-0005nV-Cd; Fri, 29 May 2020 11:55:08 +0000
-Received: from pps.filterd (m0167088.ppops.net [127.0.0.1])
- by mx0a-00128a01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 04TAxrAT026418; Fri, 29 May 2020 07:08:42 -0400
-Received: from nam02-bl2-obe.outbound.protection.outlook.com
- (mail-bl2nam02lp2053.outbound.protection.outlook.com [104.47.38.53])
- by mx0a-00128a01.pphosted.com with ESMTP id 316wp8brjs-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 29 May 2020 07:08:41 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ZHk+n904bo3KoBm7gE5qhev6sa4ZhebXu6kSU5l/aa/PNLFvAOeGmreY+JwpA0qYIPS2VScCxB3dop6P+jEkENcAJM9V/ePVhQK/Z5hbfqw2UMAfOVRPiwUUQziuYhAX+flyvOn4bS9i8QNoV+eNdAlMb/22NNK03ScTY/vMbMNwz95m6KgczUehdroBlMyF8e2ETnvUiTdVS1632fHtsugxtrgm2xTGxkSLct/BBhxytJ42ZwNxqCUt2Bgr0eez3cicD9qWKYqfihgtGV964GmR/ZhiPlMDYvJlTjmUlar2gvZo/NxGk9Ibrmt6stlhFG+RtC5E8RRvWE9IjurHog==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9BweM9eA1kr78dAafyPIy5UypVpgM5fs7nVfSvD3PuY=;
- b=JheeoFz5DnPPhkoddIqvSUQVQe0eQAnWtDSmvPfjS7fgdD23FBEzSc+ko1OahEH7pvW25xGYovVniCeCSWlJqKRGhdKZz3ZX6Z4bUki+V4d3SCczmlXEWW0IORnqjajeDysw2WuRnfPVmT3QXXWegBH9f53EC/IgVAxOUe+ODOXkHy5fWnSuQOGYJt/BaFqLeUsmb2Wv54dOECSWxcGzzDwcXpHzBLUDz1QQGunE2+T1uYvjvYuqgn1GgjzxCHUVyiEQmyQf5gZUHw3jpKZz7MGyjnzP7XWAKKMDHxsqI38cmw4ZbwXElBSbVzPmqNq7rCZxYJOEwVC3NlHecQuqsg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=analog.com; dmarc=pass action=none header.from=analog.com;
- dkim=pass header.d=analog.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=analog.onmicrosoft.com; s=selector2-analog-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9BweM9eA1kr78dAafyPIy5UypVpgM5fs7nVfSvD3PuY=;
- b=oMhko7lgwTTwwLeXMm+E0ttRv00/adq0Mf0aSy1TzgjLZfN8whssGUgRnnWppVmpGliK+/31lK99lz2oUwnhjY5UWp1FVSTxWHd0/Dhw2AItOTCQaPKZQ7gc11I7QjIadwmcGMou9rwwPpCujZ+Yr1JOLs82At+gUjosUOB8yXM=
-Received: from BYAPR03MB4407.namprd03.prod.outlook.com (2603:10b6:a03:c5::24)
- by BYAPR03MB4582.namprd03.prod.outlook.com (2603:10b6:a03:c5::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3045.19; Fri, 29 May
- 2020 11:08:39 +0000
-Received: from BYAPR03MB4407.namprd03.prod.outlook.com
- ([fe80::18cb:6059:b74f:73a0]) by BYAPR03MB4407.namprd03.prod.outlook.com
- ([fe80::18cb:6059:b74f:73a0%7]) with mapi id 15.20.3045.018; Fri, 29 May 2020
- 11:08:39 +0000
-From: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>
-To: "johan@kernel.org" <johan@kernel.org>
-Subject: Re: [PATCH 4/5] iio: light: lm3533-als: remove explicit parent
- assignment
-Thread-Topic: [PATCH 4/5] iio: light: lm3533-als: remove explicit parent
- assignment
-Thread-Index: AQHWMBQTKJFuUy7W6E2X8purierYqqi+5C4AgAAOtAA=
-Date: Fri, 29 May 2020 11:08:38 +0000
-Message-ID: <05500c815f4881a6aa86c809c5ac53e8af3f3e91.camel@analog.com>
-References: <20200522082208.383631-1-alexandru.ardelean@analog.com>
- <20200522082208.383631-4-alexandru.ardelean@analog.com>
- <20200529101608.GC19480@localhost>
-In-Reply-To: <20200529101608.GC19480@localhost>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: kernel.org; dkim=none (message not signed)
- header.d=none;kernel.org; dmarc=none action=none header.from=analog.com;
-x-originating-ip: [137.71.226.54]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: e6543637-aa9e-4673-dbf6-08d803c0a3f1
-x-ms-traffictypediagnostic: BYAPR03MB4582:
-x-microsoft-antispam-prvs: <BYAPR03MB45829E414C05156BB5960DCFF98F0@BYAPR03MB4582.namprd03.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:7219;
-x-forefront-prvs: 04180B6720
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: Pvy3gsIQUEU12Ty6pkWokVypxBGcELJ34XKnn9quFT0hVs+UFf+JaTdWXbHEQb28X4FtEOQlDw6/CX0LvFFF/znh6Osh367zhQJWNjGhOsfTUGKC2mmrceD1NX1yP++0oTKFThJFKwaLLpO/NN/MBbjQ4ZUE1frBzKNvjNSzaHL//sXmzDYEFHb9jqRxEsqAjNs6gJnGNN2xWXRSnpPMVwSr2+020nKkGDUAGgSgqXu5wRnB+k0dRF9DWd4sIK65Aq8EuAsU3p1T+qPuO4I69T5CTkHVmPaqakNy9bO44aqnZy/IT0XwsWVtzF0PHHHge4ylgmqi3FwYo1XAiCgq7A==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR03MB4407.namprd03.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(346002)(396003)(136003)(366004)(39860400002)(376002)(91956017)(66556008)(54906003)(4326008)(316002)(76116006)(66446008)(6506007)(64756008)(8936002)(6916009)(2616005)(83380400001)(8676002)(6512007)(7366002)(186003)(66946007)(66476007)(478600001)(26005)(86362001)(71200400001)(6486002)(36756003)(5660300002)(7406005)(7416002)(2906002);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: nDFaIjJOTh/KO2gQZICr1bGxEqH/m4+iduILwhoFJ86cF2vzlXtribqRbYIC70dpldg9ZHq/pWc6LNPs3yqQD05k6g31M9H2m45ZorRMpMGq+aIPHqx1kgvDMNXrZoNK7FRT1NBzDXbp+wt5EcgeS+Pf88NNRVEuY6d7Q0H+kJq4XpuGLVx3NDhjcW+bMIfzbbVHLabwnq0IZy9tZNy++mv3ZAVoLqbds8mYLgfw+f5EW6XlijisUKF6sMZB965+fiNDGc4fI4PbUpuxgby/qsWNBv6IuVlg+gXYJ/lSlBmdv4mJdoM1+Z8U4efm5u7IbNILO/RB+fdfDB+fYe0ubQu5hw4VPwEGqxspzdJLX5k2P2tLsa+SJXArk2hmShBucRosHg7il25VNde5uU0NSIlsg6a2Q3ETUePISTUD2fWba7s9YSwthor8698bWoZLhw+ruS7tOo43kY7ul6thmHFOnjBh42pnfz7lzGQIgq4=
-x-ms-exchange-transport-forked: True
-Content-ID: <C6D081712A43FD4B9CD4A682AA944F89@namprd03.prod.outlook.com>
+ id 1jee5V-0001SZ-5j; Fri, 29 May 2020 12:26:15 +0000
+X-UUID: d00eae95229d4aac84bf76508c30060c-20200529
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=zfpxSkdpO7rTfqKhocwmN5eNlOC3rZRkTd4ySCjxGpY=; 
+ b=DPuKFP5Cx/YjCKUixvhFSZPzFaU52LR/wTgMr8pKfN/svxjsK6R3wk4K6qO+TKhf025oPrLgjY4fcSK8Ob29Du8IPpYu2TGgqFEUSqweLKo0wZ1Atu0OXG5b+YNmDOqlScPbZTuLQryEzMl7POPK+KsazNnHAxmVXLHFPTkUBQo=;
+X-UUID: d00eae95229d4aac84bf76508c30060c-20200529
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <jerry-ch.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 2124535601; Fri, 29 May 2020 04:25:54 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 29 May 2020 05:26:01 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 29 May 2020 20:26:01 +0800
+Received: from [172.21.84.99] (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 29 May 2020 20:26:01 +0800
+Message-ID: <1590755163.23156.24.camel@mtksdccf07>
+Subject: Re: [RFC PATCH V4 4/4] platform: mtk-isp: Add Mediatek FD driver
+From: Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>
+To: Tomasz Figa <tfiga@chromium.org>
+Date: Fri, 29 May 2020 20:26:03 +0800
+In-Reply-To: <CAAFQd5DodDfWsHkhQZP-M70k9_2sUwwb4zHtWfTx5EDyEKkwow@mail.gmail.com>
+References: <20191204124732.10932-1-Jerry-Ch.chen@mediatek.com>
+ <20191204124732.10932-5-Jerry-Ch.chen@mediatek.com>
+ <20200521182825.GA249683@chromium.org>
+ <1590156658.27807.84.camel@mtksdccf07>
+ <CAAFQd5DodDfWsHkhQZP-M70k9_2sUwwb4zHtWfTx5EDyEKkwow@mail.gmail.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-OriginatorOrg: analog.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e6543637-aa9e-4673-dbf6-08d803c0a3f1
-X-MS-Exchange-CrossTenant-originalarrivaltime: 29 May 2020 11:08:38.7175 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: eaa689b4-8f87-40e0-9c6f-7228de4d754a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: SW+hVDmgLYi3/thy6Uk0Na0lBfw/jLF/wpJ1LCkcRXYxWJ/unGYyJQb7EVTXm6HS/hs4SLD06hC7otcCx85V7QZDg0MSDuqwfVvKhmXSgbc=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR03MB4582
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.216, 18.0.687
- definitions=2020-05-29_06:2020-05-28,
- 2020-05-29 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 bulkscore=0
- phishscore=0 adultscore=0 mlxlogscore=999 impostorscore=0 clxscore=1011
- malwarescore=0 mlxscore=0 lowpriorityscore=0 cotscore=-2147483648
- spamscore=0 priorityscore=1501 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2004280000 definitions=main-2005290088
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200529_045506_526827_735235F1 
-X-CRM114-Status: GOOD (  19.26  )
+X-CRM114-CacheID: sfid-20200529_052613_226161_68B546A9 
+X-CRM114-Status: GOOD (  34.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -140,125 +86,457 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "milo.kim@ti.com" <milo.kim@ti.com>,
- "tomislav.denis@avl.com" <tomislav.denis@avl.com>,
- "dan@dlrobertson.com" <dan@dlrobertson.com>,
- "heiko@sntech.de" <heiko@sntech.de>,
- "linux-aspeed@lists.ozlabs.org" <linux-aspeed@lists.ozlabs.org>,
- "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
- "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
- "eajames@linux.ibm.com" <eajames@linux.ibm.com>,
- "platform-driver-x86@vger.kernel.org" <platform-driver-x86@vger.kernel.org>,
- "paul@crapouillou.net" <paul@crapouillou.net>,
- "lorenzo.bianconi83@gmail.com" <lorenzo.bianconi83@gmail.com>,
- "fabrice.gasnier@st.com" <fabrice.gasnier@st.com>,
- "srinivas.pandruvada@linux.intel.com" <srinivas.pandruvada@linux.intel.com>,
- "linux-stm32@st-md-mailman.stormreply.com"
- <linux-stm32@st-md-mailman.stormreply.com>,
- "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
- "zhang.lyra@gmail.com" <zhang.lyra@gmail.com>,
- "tduszyns@gmail.com" <tduszyns@gmail.com>, "krzk@kernel.org" <krzk@kernel.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "wens@csie.org" <wens@csie.org>, "kgene@kernel.org" <kgene@kernel.org>,
- "bcm-kernel-feedback-list@broadcom.com"
- <bcm-kernel-feedback-list@broadcom.com>,
- "agross@kernel.org" <agross@kernel.org>,
- "slemieux.tyco@gmail.com" <slemieux.tyco@gmail.com>,
- "orsonzhai@gmail.com" <orsonzhai@gmail.com>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "linux-input@vger.kernel.org" <linux-input@vger.kernel.org>,
- "alexandre.torgue@st.com" <alexandre.torgue@st.com>,
- "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
- "rjui@broadcom.com" <rjui@broadcom.com>,
- "s.hauer@pengutronix.de" <s.hauer@pengutronix.de>,
- "jikos@kernel.org" <jikos@kernel.org>,
- "vilhelm.gray@gmail.com" <vilhelm.gray@gmail.com>,
- "mripard@kernel.org" <mripard@kernel.org>, "vz@mleia.com" <vz@mleia.com>,
- "rmfrfs@gmail.com" <rmfrfs@gmail.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "ak@it-klinger.de" <ak@it-klinger.de>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-amlogic@lists.infradead.org" <linux-amlogic@lists.infradead.org>,
- "coproscefalo@gmail.com" <coproscefalo@gmail.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "sbranden@broadcom.com" <sbranden@broadcom.com>,
- "hdegoede@redhat.com" <hdegoede@redhat.com>,
- "syednwaris@gmail.com" <syednwaris@gmail.com>,
- "dmitry.torokhov@gmail.com" <dmitry.torokhov@gmail.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "songqiang1304521@gmail.com" <songqiang1304521@gmail.com>,
- "bjorn.andersson@linaro.org" <bjorn.andersson@linaro.org>,
- "mcoquelin.stm32@gmail.com" <mcoquelin.stm32@gmail.com>,
- "khilman@baylibre.com" <khilman@baylibre.com>,
- "baolin.wang7@gmail.com" <baolin.wang7@gmail.com>,
- "ktsai@capellamicro.com" <ktsai@capellamicro.com>,
- "shawnguo@kernel.org" <shawnguo@kernel.org>,
- "peda@axentia.se" <peda@axentia.se>, "jic23@kernel.org" <jic23@kernel.org>
+Cc: linux-devicetree <devicetree@vger.kernel.org>,
+ Sean Cheng =?UTF-8?Q?=28=E9=84=AD=E6=98=87=E5=BC=98=29?=
+ <Sean.Cheng@mediatek.com>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ zwisler@chromium.org, srv_heupstream <srv_heupstream@mediatek.com>,
+ Christie Yu =?UTF-8?Q?=28=E6=B8=B8=E9=9B=85=E6=83=A0=29?=
+ <christie.yu@mediatek.com>, jerry-ch.chen@mediatek.com,
+ Hans Verkuil <hverkuil@xs4all.nl>,
+ Jungo Lin =?UTF-8?Q?=28=E6=9E=97=E6=98=8E=E4=BF=8A=29?=
+ <jungo.lin@mediatek.com>, Sj
+ Huang <sj.huang@mediatek.com>, yuzhao@chromium.org,
+ Hans Verkuil <hans.verkuil@cisco.com>, Pi-Hsun Shih <pihsun@chromium.org>,
+ Frederic Chen =?UTF-8?Q?=28=E9=99=B3=E4=BF=8A=E5=85=83=29?=
+ <frederic.chen@mediatek.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek
+ SoC support" <linux-mediatek@lists.infradead.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, "list@263.net:IOMMU
+ DRIVERS <iommu@lists.linux-foundation.org>,  Joerg  Roedel
+ <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-05-29 at 12:16 +0200, Johan Hovold wrote:
-> [External]
-> 
-> On Fri, May 22, 2020 at 11:22:07AM +0300, Alexandru Ardelean wrote:
-> > This assignment is the more peculiar of the bunch as it assigns the parent
-> > of the platform-device's device (i.e. pdev->dev.parent) as the IIO device's
-> > parent.
-> > 
-> > It's unclear whether this is intentional or not.
-> > Hence it is in it's own patch.
-> 
-> Yeah, we have a few mfd drivers whose child drivers registers their
-> class devices directly under the parent mfd device rather than the
-> corresponding child platform device.
-> 
-> Since it's done consistently I think you need to update them all if you
-> really want to change this. 
-> 
-> And it may not be worth it since at least in theory someone could now be
-> relying on this topology.
+Hi Tomasz,
 
-Thanks for the feedback.
-I guess, it could make sense to do here:
-      devm_iio_device_alloc(pdev->dev.parent, ...)
+I Appreciate your review comments, here's the reply.
 
-Currently it's:
-      devm_iio_device_alloc(&pdev->dev, ...)
+On Mon, 2020-05-25 at 14:24 +0200, Tomasz Figa wrote:
+> r
+> 
+> On Fri, May 22, 2020 at 4:11 PM Jerry-ch Chen
+> <Jerry-ch.Chen@mediatek.com> wrote:
+> >
+> > Hi Tomasz,
+> >
+> > On Thu, 2020-05-21 at 18:28 +0000, Tomasz Figa wrote:
+> > > Hi Jerry,
+> > >
+> > > On Wed, Dec 04, 2019 at 08:47:32PM +0800, Jerry-ch Chen wrote:
+> [snip]
+> > > > +
+> > > > +enum face_angle {
+> > > > +   MTK_FD_FACE_FRONT,
+> > > > +   MTK_FD_FACE_RIGHT_50,
+> > > > +   MTK_FD_FACE_LEFT_50,
+> > > > +   MTK_FD_FACE_RIGHT_90,
+> > > > +   MTK_FD_FACE_LEFT_90,
+> > > > +   MTK_FD_FACE_ANGLE_NUM,
+> > > > +};
+> > >
+> > > This enum seems to define values for the V4L2_CID_MTK_FD_DETECT_POSE
+> > > control. Considering that this is an enumeration and the values are
+> > > actually integers (-90, -50, 0, 50, 90), perhaps this should be an
+> > > INTEGER_MENU control instead?
+> > >
+> >
+> > this ioctl let user select multiple face positions(combination of angles
+> > and directions) to be detected. so I thought I am not able to use the
+> > INTEGER_MENU for this purpose.
+> 
+> Ah, okay, I thought there is only one selection possible.
+> 
+> >
+> > A bit-field as following should be used by user.
+> > I consider adding it to uapi.
+> >
+> > struct face_direction_def {
+> > __u16 MTK_FD_FACE_DIR_0 : 1,
+> >         MTK_FD_FACE_DIR_30 : 1,
+> >         MTK_FD_FACE_DIR_60 : 1,
+> >         MTK_FD_FACE_DIR_90 : 1,
+> >         MTK_FD_FACE_DIR_120 : 1,
+> >         MTK_FD_FACE_DIR_150 : 1,
+> >         MTK_FD_FACE_DIR_180 : 1,
+> >         MTK_FD_FACE_DIR_210 : 1,
+> >         MTK_FD_FACE_DIR_240 : 1,
+> >         MTK_FD_FACE_DIR_270 : 1,
+> >         MTK_FD_FACE_DIR_300 : 1,
+> >         MTK_FD_FACE_DIR_330 : 1,
+> >         : 4;
+> > };
+> 
+> Note that bit fields are not recommended in UAPI because of not being
+> well specified by the language. Instead bits should be defined using
+> macros with explicit masks or sometimes enums.
+> 
+Ok, I'll define them in macro with masks.
 
-That would make it slightly more consistent.
-i.e. the life-time of the object would be attached to the parent of the platform
-device, versus the platform-device.
+> >
+> > User can also select some face directions of each face angle in one
+> > ioctl, for example:
+> >
+> > /*
+> >  * u16 face_directions[MTK_FD_FACE_ANGLE_NUM] = {0};
+> >  *
+> >  *      face_directions[MTK_FD_FACE_FRONT] = 0x7; //angle:0, dir:0,30,60
+> >  *      face_directions[MTK_FACE_RIGHT_50] = 0x2; //angle:50, dir:30
+> >  *
+> >  */
+> 
+> Makes sense, thanks.
+> 
+> >
+> > > > +
+> > > > +struct fd_buffer {
+> > > > +   __u32 scp_addr; /* used by SCP */
+> > > > +   __u32 dma_addr; /* used by DMA HW */
+> > > > +} __packed;
+> > fd buffer is used for scp ipi
+> >
+> > > > +
+> > > > +struct fd_face_result {
+> > > > +   char data[16];
+> > > > +};
+> > fd_face_result is used for user, so it should be moved to
+> > include/uapi/linux.
+> > In fact, it has bit-field definition for user, so I would like to define
+> > it in include/uapi/linux as following:
+> >
+> > struct fd_face_result {
+> >   __u64 face_idx : 12,
+> >         type : 1,
+> >         x0 : 10,
+> >         y0 : 10,
+> >         x1 : 10,
+> >         y1 : 10,
+> >         fcv1 : 11;
+> >   __u64 fcv2 : 7,
+> >         rip_dir : 4,
+> >         rop_dir : 3,
+> >         det_size : 5;
+> > };
+> >
+> 
+> Indeed this should be defined, but as per my comment above, please
+> avoid using the bitfield construct and define shifts and masks
+> instead.
+> 
+Ok, I'll fix it.
 
-Currently, as it is, the allocation [of the IIO device] is tied the platform-
-device, and the IIO registration to the parent (of the platform-device).
-I'm not super-familiar with the internals here, but does this sound a bit wrong?
-Is there a chance where the IIO device could be de-allocated, while registered?
+> >
+> > > > +
+> > > > +struct fd_user_output {
+> > > > +   struct fd_face_result results[MTK_FD_MAX_RESULT_NUM];
+> > > > +   __u16 number;
+> > >
+> > > Is this perhaps the number of results? If so, would num_results be a better
+> > > name?
+> > >
+> > yes, fixed.
+> > > > +};
+> > >
+> > > Since this struct is the meta buffer format, it is a part of the userspace
+> > > interface and should be defined in a header under include/uapi/linux/.
+> > >
+> > Ok, I will create include/uapi/linux/mtk_fd_40.h
+> > which suppose to include structures that userspace will use.
+> > should the private IOCTLs be placed in it together?
+> >
+> 
+> Sorry, what private IOCTLs are you referring to? If you mean private
+> control IDs, then yes, they should go to that header.
+yes, the IDs, sorry for the wrong expression.
+
+> 
+> [snip]
+> > > > +static int mtk_fd_vb2_queue_setup(struct vb2_queue *vq,
+> > > > +                             unsigned int *num_buffers,
+> > > > +                             unsigned int *num_planes,
+> > > > +                             unsigned int sizes[],
+> > > > +                             struct device *alloc_devs[])
+> > > > +{
+> > > > +   struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vq);
+> > > > +   unsigned int size[2];
+> > > > +   unsigned int plane;
+> > > > +
+> > > > +   switch (vq->type) {
+> > > > +   case V4L2_BUF_TYPE_META_CAPTURE:
+> > > > +           size[0] = ctx->dst_fmt.buffersize;
+> > > > +           break;
+> > > > +   case V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE:
+> > > > +           size[0] = ctx->src_fmt.plane_fmt[0].sizeimage;
+> > > > +           if (*num_planes == 2)
+> > > > +                   size[1] = ctx->src_fmt.plane_fmt[1].sizeimage;
+> > > > +           break;
+> > > > +   }
+> > >
+> > > Is this code above needed? The code below sets sizes[] and it uses a for loop,
+> > > without opencoded assignment for the second plane.
+> > >
+> >
+> > Looks like not really useful here,
+> > it should check sizes and num_planes if num_plane not zero,
+> > and for V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE, it will at most have 2
+> > planes, maybe no need for loop as well.
+> 
+> Loops generally make the code cleaner and there might be some desire
+> to add support for more formats in the future, e.g. in case a next
+> generation of the hardware shows up.
+> 
+Ok, got it.
+
+> > I will refine this function as following:
+> > mtk_fd_vb2_queue_setup(...)
+> > {
+> >         struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vq);
+> >
+> >         if (*num_planes == 0) {
+> >                 if (vq->type == V4L2_BUF_TYPE_META_CAPTURE) {
+> >                         sizes[0] = ctx->dst_fmt.buffersize;
+> >                         *num_planes = 1;
+> >                         return 0;
+> >                 } else if (vq->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
+> >                         *num_planes = ctx->src_fmt.num_planes;
+> >                         sizes[0] = ctx->src_fmt.plane_fmt[0].sizeimage;
+> >                         if (*num_planes == 2)
+> >                                 sizes[1] = ctx->src_fmt.plane_fmt[1].sizeimage;
+> >                         return 0;
+> >                 }
+> >                 return -EINVAL;
+> >         }
+> >
+> >         /* If num_plane not zero, check the num_plane and sizes*/
+> >         if (vq->type == V4L2_BUF_TYPE_META_CAPTURE) {
+> >                 if ((*num_planes == 1) &&
+> >                     (sizes[0] <= ctx->dst_fmt.buffersize))
+> >                         return 0;
+> 
+> nit: The typical convention is to check for problems and return the
+> error code earlier, with the success handled at the end of the block.
+> 
+Got it.
+
+> >                 else
+> >                         return -EINVAL;
+> >         }
+> >         if (vq->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
+> >                 if ((*num_planes == 1) &&
+> >                     (sizes[0] <= ctx->src_fmt.plane_fmt[0].sizeimage))
+> >                         return 0;
+> >                 else if ((*num_planes == 2) &&
+> >                          (sizes[0] <= ctx->src_fmt.plane_fmt[0].sizeimage) &&
+> >                          (sizes[1] <= ctx->src_fmt.plane_fmt[1].sizeimage))
+> >                         return 0;
+> 
+> Wouldn't a loop eliminate the need to if/else if through the various
+> supported cases and duplicate the size checks?
+> 
+> >                 else
+> >                         return -EINVAL;
+> >
+> >         }
+> >         return 0;
+> > }
+> 
+> How about the following?
+> 
+> mtk_fd_vb2_queue_setup(...)
+> {
+>         struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vq);
+> 
+>         if (vq->type == V4L2_BUF_TYPE_META_CAPTURE) {
+>                 if (*num_planes == 0) {
+>                         *num_planes = 1;
+>                         sizes[0] = ctx->dst_fmt.buffersize;
+>                         return 0;
+>                 }
+> 
+>                 if (*num_planes != 1 || sizes[0] < ctx->dst_fmt.buffersize)
+>                                 return -EINVAL;
+> 
+>                 return 0;
+>         }
+> 
+>         /* V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE */
+>         if (*num_planes == 0) {
+>                         *num_planes = ctx->src_fmt.num_planes;
+>                         for (i = 0; i < ctx->src_fmt.num_planes; ++i)
+>                                 sizes[i] = ctx->src_fmt.plane_fmt[i].sizeimage;
+>                         return 0;
+>         }
+> 
+>         if (*num_planes < ctx->src_fmt.num_planes)
+>                 return -EINVAL;
+> 
+>         for (i = 0; i < ctx->src_fmt.num_planes; ++i)
+>                 if (sizes[i] < ctx->src_fmt.plane_fmt[i].sizeimage)
+>                         return -EINVAL;
+> 
+>         return 0;
+> }
+> 
+> Note that it fully separates the code dealing with each queue and thus
+> improves the readability.
+> 
+> In this case, it could actually be beneficial to split the vb2_ops
+> implementation into one that deals only with video_output_mplane and
+> one only with meta_capture. This would allow eliminating the special
+> casing based on vq->type and thus further simplify the code. Not sure
+> if it applies to the other vb2 callbacks, though.
+> 
+Got it, thanks for the comments.
+
+> [snip]
+> > > > +static void mtk_fd_fill_pixfmt_mp(struct v4l2_pix_format_mplane *dfmt,
+> > > > +                             const struct v4l2_pix_format_mplane *sfmt)
+> > > > +{
+> > > > +   dfmt->field = V4L2_FIELD_NONE;
+> > > > +   dfmt->colorspace = V4L2_COLORSPACE_BT2020;
+> > > > +   dfmt->num_planes = sfmt->num_planes;
+> > > > +   dfmt->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
+> > > > +   dfmt->quantization = V4L2_QUANTIZATION_DEFAULT;
+> > > > +   dfmt->xfer_func =
+> > > > +           V4L2_MAP_XFER_FUNC_DEFAULT(dfmt->colorspace);
+> > > > +
+> > > > +   /* Keep user setting as possible */
+> > > > +   dfmt->width = clamp(dfmt->width,
+> > > > +                       MTK_FD_OUTPUT_MIN_WIDTH,
+> > > > +                       MTK_FD_OUTPUT_MAX_WIDTH);
+> > > > +   dfmt->height = clamp(dfmt->height,
+> > > > +                        MTK_FD_OUTPUT_MIN_HEIGHT,
+> > > > +                        MTK_FD_OUTPUT_MAX_HEIGHT);
+> > > > +
+> > > > +   if (sfmt->num_planes == 2) {
+> > > > +           /* NV16M and NV61M has 1 byte per pixel */
+> > > > +           dfmt->plane_fmt[0].bytesperline = dfmt->width;
+> > > > +           dfmt->plane_fmt[1].bytesperline = dfmt->width;
+> > > > +   } else {
+> > > > +           /* 2 bytes per pixel */
+> > > > +           dfmt->plane_fmt[0].bytesperline = dfmt->width * 2;
+> > > > +   }
+> > > > +
+> > > > +   dfmt->plane_fmt[0].sizeimage =
+> > > > +           dfmt->height * dfmt->plane_fmt[0].bytesperline;
+> > >
+> > > Could some of the code above be replaced with v4l2_fill_pixfmt_mp()?
+> > >
+> > I would like to refine as following
+> >
+> > mtk_fd_fill_pixfmt_mp(...){
+> >         v4l2_fill_pixfmt_mp(dfmt, sfmt->pixelformat, dfmt->width,
+> > dfmt->height);
+> >
+> >         dfmt->field = V4L2_FIELD_NONE;
+> >         dfmt->colorspace = V4L2_COLORSPACE_BT2020;
+> >         dfmt->num_planes = sfmt->num_planes;
+> 
+> num_planes should be already filled in by the helper. That actually
+> raises a question on whether there is any need to have sfmt passed to
+> this function at all. Perhaps all we need is the value of pixelformat?
+> 
+Yes, I'll replace sfmt with u32 pixfmt.
+
+> >         dfmt->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
+> >         dfmt->quantization = V4L2_QUANTIZATION_DEFAULT;
+> >         dfmt->xfer_func =
+> >                 V4L2_MAP_XFER_FUNC_DEFAULT(dfmt->colorspace);
+> > }
+> >
+> 
+> Isn't still a need to clamp() width and height to min/max, though?
+Yes, I'll add them back.
+
+This function will be refined as :
+
+static void mtk_fd_fill_pixfmt_mp(struct v4l2_pix_format_mplane *dfmt,
+                                  u32 pixfmt)
+{
+        v4l2_fill_pixfmt_mp(dfmt, pixfmt, dfmt->width, dfmt->height);
+
+        dfmt->field = V4L2_FIELD_NONE;
+        dfmt->colorspace = V4L2_COLORSPACE_BT2020;
+        dfmt->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
+        dfmt->quantization = V4L2_QUANTIZATION_DEFAULT;
+        dfmt->xfer_func = V4L2_MAP_XFER_FUNC_DEFAULT(dfmt->colorspace);
+
+        /* Keep user setting as possible */
+        dfmt->width = clamp(dfmt->width,
+                            MTK_FD_OUTPUT_MIN_WIDTH,
+                            MTK_FD_OUTPUT_MAX_WIDTH);
+        dfmt->height = clamp(dfmt->height,
+                             MTK_FD_OUTPUT_MIN_HEIGHT,
+                             MTK_FD_OUTPUT_MAX_HEIGHT);
+}
 
 
 > 
-> > Signed-off-by: Alexandru Ardelean <alexandru.ardelean@analog.com>
-> > ---
-> >  drivers/iio/light/lm3533-als.c | 1 -
-> >  1 file changed, 1 deletion(-)
-> > 
-> > diff --git a/drivers/iio/light/lm3533-als.c b/drivers/iio/light/lm3533-als.c
-> > index bc196c212881..0f380ec8d30c 100644
-> > --- a/drivers/iio/light/lm3533-als.c
-> > +++ b/drivers/iio/light/lm3533-als.c
-> > @@ -852,7 +852,6 @@ static int lm3533_als_probe(struct platform_device
-> > *pdev)
-> >  	indio_dev->channels = lm3533_als_channels;
-> >  	indio_dev->num_channels = ARRAY_SIZE(lm3533_als_channels);
-> >  	indio_dev->name = dev_name(&pdev->dev);
-> > -	indio_dev->dev.parent = pdev->dev.parent;
-> >  	indio_dev->modes = INDIO_DIRECT_MODE;
-> >  
-> >  	als = iio_priv(indio_dev);
+> [snip]
+> > > > +   fd_param.user_param.src_img_fmt =
+> > > > +           get_fd_img_fmt(ctx->src_fmt.pixelformat);
+> > > > +   if (ctx->src_fmt.num_planes == 2)
+> > > > +           fd_param.src_img[1].dma_addr =
+> > > > +                   vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, 1);
+> > >
+> > > nit: Could this be moved above, to be just below src_img[0] initialization,
+> > > for readability reasons?
+> > >
+> > Ok, this function will be refined as
+> >
+> > static void mtk_fd_device_run(void *priv)
+> > {
+> >         struct mtk_fd_ctx *ctx = priv;
+> >         struct mtk_fd_dev *fd = ctx->fd_dev;
+> >         struct vb2_v4l2_buffer *src_buf, *dst_buf;
+> >         struct fd_enq_param fd_param;
+> >
+> >         src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> >         dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+> >
+> >         fd_param.src_img[0].dma_addr =
+> >                 vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, 0);
+> >         if (ctx->src_fmt.num_planes == 2)
+> >                 fd_param.src_img[1].dma_addr =
+> >                         vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, 1);
 > 
-> Johan
+> How about making this a loop in terms of ctx->src_fmt.num_planes?
+> 
+yes, it will be refined as following, I use the src_vb2_buf to reduce
+the length for fitting 80 columns
+
+src_vb2_buf = &src_buf->vb2_buf;
+dst_vb2_buf = &dst_buf->vb2_buf;
+
+for (i = 0; i < ctx->src_fmt.num_planes; i++)
+	fd_param.src_img[i].dma_addr =
+		vb2_dma_contig_plane_dma_addr(src_vb2_buf,i);
+
+fd_param.user_result.dma_addr =
+	vb2_dma_contig_plane_dma_addr(dst_vb2_buf, 0);
+
+> >         fd_param.user_result.dma_addr =
+> >                 vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
+> >         fd_param.user_param.src_img_fmt =
+> >                 get_fd_img_fmt(fd->dev, ctx->src_fmt.pixelformat);
+> >
+> >         mtk_fd_fill_user_param(&fd_param.user_param, &ctx->hdl);
+> >
+> >         /* Complete request controls if any */
+> >         v4l2_ctrl_request_complete(src_buf->vb2_buf.req_obj.req, &ctx->hdl);
+> >
+> >         fd->output = vb2_plane_vaddr(&dst_buf->vb2_buf, 0);
+> >         mtk_fd_hw_job_exec(fd, &fd_param);
+> > }
+> 
+> Best regards,
+> Tomasz
+
+Thanks and Best regards,
+Jerry
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
