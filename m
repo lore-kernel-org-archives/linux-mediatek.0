@@ -2,20 +2,20 @@ Return-Path: <SRS0=oumW=7L=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 50CF2C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2020 19:25:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 51E53C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2020 19:27:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2291A20810
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2020 19:25:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 267FE20810
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2020 19:27:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gCMTSM0D"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2291A20810
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bpSYIO+M"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 267FE20810
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,56 +24,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H0XNkiIzU0Oueow02/mL2fYejhgDfi60SRmFLcVHhOg=; b=gCMTSM0DLxY2tu
-	1SSuNqCgFjkooZ1+wppale4DrZ3xy2VyWCjkR8JBEDENNW4Dnv5w+T9gZRU/gmw4bIWBgkh2V1jzq
-	LX6kqt16qn93aqk3ndNDVQiuLfjR4g+5UF0Ot1fPMY57Fg1QNbi8urbgm7HYw0UatAynr7nCs0SjP
-	gRI1oqbfHEb7d7dJLKUOeLQiGLS+i9GiMl5EthkslwxLXWNtN4gNykdj1xxB7m0b89++Wkqz8HUxt
-	VedEj+bT2Pm6Nl77UWEkqZmdRxDcssFFHXn09VCvzgtak2J4OPYoxKOficlveApAcOEMC80G2QGLG
-	31baFb8uCOY1HhqPIIGg==;
+	List-Owner; bh=r1r+/0etarKeYkSyMxFNdomKZp3SADt1LtmdpoLkeaI=; b=bpSYIO+M3tl5qh
+	yU/pPTK6GchqmTy7Fr1U4bJLre80lWTs2+dWvyVn5zG55cskW954dnqGMpzyfwx+BNPB85/BmYZEp
+	rzSlmI4xYD7O6tgN1sjHDGv0wnT7LKsWALX+9dtRYkx9KzdJ2UTCyKFoUAsB/18oIElFul+QTyhZ+
+	IWe8pbm3MxXAcIYBrt0pt/PBabwHTW0mrzLhJ+X1ZYNKc79AJFUjv7SFndgUI0TdrgDVZ3u9LGDiw
+	hlquulIvZJ+ElrDb36mYmwerWp8RtAAOI+iD7ofPaOksrj69535RCcgqYGVhsJHnk4FJTwLjuL9sd
+	M6pTfi8pW3Ij8rJFTs4Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jekcr-00088B-50; Fri, 29 May 2020 19:25:05 +0000
-Received: from mail-io1-f66.google.com ([209.85.166.66])
+	id 1jekfC-0002KZ-1k; Fri, 29 May 2020 19:27:30 +0000
+Received: from mail-io1-f68.google.com ([209.85.166.68])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jekcb-0007it-FL; Fri, 29 May 2020 19:24:50 +0000
-Received: by mail-io1-f66.google.com with SMTP id p20so506952iop.11;
- Fri, 29 May 2020 12:24:47 -0700 (PDT)
+ id 1jekf0-00023o-Mu; Fri, 29 May 2020 19:27:19 +0000
+Received: by mail-io1-f68.google.com with SMTP id j8so507062iog.13;
+ Fri, 29 May 2020 12:27:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=ncA1UY1KFuVSo+dgrM2Ia9S54/5AbQa0Xrtk2pQ7Rpg=;
- b=T0xWl0Ws+mb6EMCNQqVN/JvQlfHg3cjQ1Vwq8sf63PrdcGy+ngsQnlIdmSLLrN2n1S
- rYj9KqcSUexY4QCzByTB0kVQMctSF+8Naog8MEXiK3wtbFkBC0wAdBvWOLPDFicMM4Pq
- tr99nNfLlXpZA9UqW8invIJB+PUO034rvCq0XFS7GhhVYZtczYYKzRXMioq2j2l+E9c+
- qVHpNQBi6j0ZtdhTamoqsEmklG8QP9dTI1NzagmNekI2XHFSXyni9drdv0KVec9RT8qW
- upswftaAiNhTG5fRjSP0EXqMhwihsu+8N4t6m5C/4XKdltInAHNZMgEMQ6I3U+M8UcdO
- 44iw==
-X-Gm-Message-State: AOAM530f7nha8IdPNAruyX663GDDX7dnr+ThzMCibyJ+ohUts0xF8u6X
- ZtYYSn9MYItIstsXlArs4w==
-X-Google-Smtp-Source: ABdhPJwqvXK5Nh8UeEPtncN2XbompTf/OSEA4G54suYQIG3STlJL/YnP452nV6nfPe4nUqyJuC6XDw==
-X-Received: by 2002:a6b:e714:: with SMTP id b20mr8135145ioh.195.1590780287110; 
- Fri, 29 May 2020 12:24:47 -0700 (PDT)
+ bh=/aw5rjkKZ1aNLtzNBPRgdXUzA/GNRGygjmxINK2X5fA=;
+ b=K8j4Xapt7DOs4R9rFNd9Ggz3gGUtggw7WkryoXu0SNUX8NPj4hmLRkFNF+mkpNDZaE
+ 2U0/BoX6N8OAocjAuvnMDFrvR8SxpyYOG43wKzwznE+AN1kX5Py2q3kyyKj/hljMe+yA
+ zNfcUrMtuYB75ghGfrJvRjX4GhTDw1fngoI4rys313sJlN2p/N5RUeMDch5kvIjJCl6c
+ hhUC+dd4BG1eKx7oODgQ3tW6zXNM+g7pFFRlBbYxuhmTV5SeYCNucOWtp20s4TC3q8yU
+ nE2cGcv7G1LijlDQP6lKUg6p+25p9vvICOPqWP4lWAp94IgoPkOsDem8+DJFKKcoQE6B
+ AuQA==
+X-Gm-Message-State: AOAM533093rOBCXrmx4oiZt/wnF6qsF2Lo2n1c/8ZiWghvwPSabzjsMK
+ XR9UwhRnhMiY80zNBD4lXQ==
+X-Google-Smtp-Source: ABdhPJzI+XOVZoeOXsD31yjOKfbl4d6VkVa2jbPtpd2RLN5CANUU/Kj27igKjwRkwCJ3YG/2Z4DjRQ==
+X-Received: by 2002:a02:90cd:: with SMTP id c13mr8587847jag.83.1590780437502; 
+ Fri, 29 May 2020 12:27:17 -0700 (PDT)
 Received: from xps15 ([64.188.179.252])
- by smtp.gmail.com with ESMTPSA id p3sm4241556iog.31.2020.05.29.12.24.45
+ by smtp.gmail.com with ESMTPSA id v76sm5436198ill.73.2020.05.29.12.27.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 May 2020 12:24:45 -0700 (PDT)
-Received: (nullmailer pid 2795396 invoked by uid 1000);
- Fri, 29 May 2020 19:24:43 -0000
-Date: Fri, 29 May 2020 13:24:43 -0600
+ Fri, 29 May 2020 12:27:16 -0700 (PDT)
+Received: (nullmailer pid 2799831 invoked by uid 1000);
+ Fri, 29 May 2020 19:27:15 -0000
+Date: Fri, 29 May 2020 13:27:15 -0600
 From: Rob Herring <robh@kernel.org>
-To: EastL <EastL.Lee@mediatek.com>
-Subject: Re: [PATCH v4 1/4] dt-bindings: dmaengine: Add MediaTek
- Command-Queue DMA controller bindings
-Message-ID: <20200529192443.GA2785767@bogus>
-References: <1590659832-31476-1-git-send-email-EastL.Lee@mediatek.com>
- <1590659832-31476-2-git-send-email-EastL.Lee@mediatek.com>
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Subject: Re: [PATCH net-next v2] dt-bindings: net: rename the bindings
+ document for MediaTek STAR EMAC
+Message-ID: <20200529192715.GA2799386@bogus>
+References: <20200528135902.14041-1-brgl@bgdev.pl>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1590659832-31476-2-git-send-email-EastL.Lee@mediatek.com>
+In-Reply-To: <20200528135902.14041-1-brgl@bgdev.pl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200529_122449_512024_41627945 
-X-CRM114-Status: GOOD (  17.90  )
+X-CRM114-CacheID: sfid-20200529_122718_746155_1B16FD9B 
+X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,167 +85,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
- Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
- dmaengine@vger.kernel.org, vkoul@kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
+ Stephane Le Provost <stephane.leprovost@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>, Pedro Tsai <pedro.tsai@mediatek.com>,
+ linux-kernel@vger.kernel.org, Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Andrew Perepech <andrew.perepech@mediatek.com>, netdev@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ "David S . Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 28, 2020 at 05:57:09PM +0800, EastL wrote:
-> Document the devicetree bindings for MediaTek Command-Queue DMA controller
-> which could be found on MT6779 SoC or other similar Mediatek SoCs.
+On Thu, 28 May 2020 15:59:02 +0200, Bartosz Golaszewski wrote:
+> From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 > 
-> Signed-off-by: EastL <EastL.Lee@mediatek.com>
-
-Need a full name.
-
+> The driver itself was renamed before getting merged into mainline, but
+> the binding document kept the old name. This makes both names consistent.
+> 
+> Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 > ---
->  .../devicetree/bindings/dma/mtk-cqdma.yaml         | 100 +++++++++++++++++++++
->  1 file changed, 100 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/dma/mtk-cqdma.yaml
+> v1 -> v2:
+> - update the id field as well
 > 
-> diff --git a/Documentation/devicetree/bindings/dma/mtk-cqdma.yaml b/Documentation/devicetree/bindings/dma/mtk-cqdma.yaml
-> new file mode 100644
-> index 0000000..045aa0c
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/dma/mtk-cqdma.yaml
-> @@ -0,0 +1,100 @@
-> +# SPDX-License-Identifier: GPL-2.0
+>  .../net/{mediatek,eth-mac.yaml => mediatek,star-emac.yaml}      | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>  rename Documentation/devicetree/bindings/net/{mediatek,eth-mac.yaml => mediatek,star-emac.yaml} (96%)
+> 
 
-Dual license new bindings:
-
-(GPL-2.0-only OR BSD-2-Clause)
-
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/dma/mtk-cqdma.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek Command-Queue DMA controller Device Tree Binding
-> +
-> +maintainers:
-> +  - EastL <EastL.Lee@mediatek.com>
-> +
-> +description:
-> +  MediaTek Command-Queue DMA controller (CQDMA) on Mediatek SoC
-> +  is dedicated to memory-to-memory transfer through queue based
-> +  descriptor management.
-> +
-
-Need a $ref to dma-controller.yaml
-
-> +properties:
-> +  "#dma-cells":
-> +    minimum: 1
-> +    # Should be enough
-> +    maximum: 255
-> +    description:
-> +      Used to provide DMA controller specific information.
-> +
-> +  compatible:
-> +    const: mediatek,cqdma
-
-Needs SoC specific compatible string(s).
-
-> +
-> +  reg:
-> +    minItems: 1
-> +    maxItems: 255
-
-You can have 255 register regions?
-
-You need to define what each region is if more than 1.
-
-> +
-> +  interrupts:
-> +    minItems: 1
-> +    maxItems: 255
-
-255 interrupts?
-
-> +
-> +  clocks:
-> +    maxItems: 1
-> +
-> +  clock-names:
-> +    const: cqdma
-> +
-> +  dma-channel-mask:
-> +    description:
-> +      Bitmask of available DMA channels in ascending order that are
-> +      not reserved by firmware and are available to the
-> +      kernel. i.e. first channel corresponds to LSB.
-> +      The first item in the array is for channels 0-31, the second is for
-> +      channels 32-63, etc.
-> +    allOf:
-> +      - $ref: /schemas/types.yaml#/definitions/uint32-array
-> +    items:
-> +      minItems: 1
-> +      # Should be enough
-> +      maxItems: 255
-
-This already has a definition in dma-common.yaml. Don't copy-n-paste 
-it. Just add any constraints you have. Like what is the max number of 
-channels?
-
-> +
-> +  dma-channels:
-> +    $ref: /schemas/types.yaml#definitions/uint32
-> +    description:
-> +      Number of DMA channels supported by the controller.
-> +
-> +  dma-requests:
-> +    $ref: /schemas/types.yaml#definitions/uint32
-> +    description:
-> +      Number of DMA request signals supported by the controller.
-
-Same comment on these 2.
-
-> +
-> +required:
-> +  - "#dma-cells"
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - clocks
-> +  - clock-names
-> +  - dma-channel-mask
-> +  - dma-channels
-> +  - dma-requests
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/clock/mt6779-clk.h>
-> +    cqdma: dma-controller@10212000 {
-> +        compatible = "mediatek,cqdma";
-> +        reg = <0 0x10212000 0 0x80>,
-> +            <0 0x10212080 0 0x80>,
-> +            <0 0x10212100 0 0x80>;
-
-Examples default to 1 cell each for address and size.
-
-> +        interrupts = <GIC_SPI 139 IRQ_TYPE_LEVEL_LOW>,
-> +            <GIC_SPI 140 IRQ_TYPE_LEVEL_LOW>,
-> +            <GIC_SPI 141 IRQ_TYPE_LEVEL_LOW>;
-> +        clocks = <&infracfg_ao CLK_INFRA_CQ_DMA>;
-> +        clock-names = "cqdma";
-> +        dma-channel-mask = <63>;
-> +        dma-channels = <3>;
-> +        dma-requests = <32>;
-> +        #dma-cells = <1>;
-> +    };
-> +
-> +...
-> -- 
-> 1.9.1
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
