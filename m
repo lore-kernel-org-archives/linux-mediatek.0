@@ -3,22 +3,22 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 35918C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2020 20:38:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 167F8C433E0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2020 20:43:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0751B2074A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2020 20:38:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DAEE42074A
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2020 20:43:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LC3tl+H2";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="NILCm+8u";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="BnEyiUqW"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0751B2074A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NumaP7eX";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="bgIt0gR5";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="rrY+Y8Hw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DAEE42074A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,78 +27,76 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cOuyn4lharzdcUYsP9WhJh/Nou0na4e2JDZORzs24Ho=; b=LC3tl+H2l4/VMY
-	QbCqJgnEyUw9eBMwO6eb1019s/vq6bnnX7Fv/aEy8zIBzg8+EDaEPd1kMs9rQA+g+yeSIepm5fkxG
-	9dKXjocGfYgpoRCE1uD0uOl/PuHBxAT9tagsaxVU1Y+nyJIi2xPI4kHt79etusgRcY5kzwnsoLjS5
-	VMKJtLNLkf+mchIeFfzfrFsEQwbME32KrhwgrkzCYuA+lNkuomgp0ADA1z5KOagqY0Fa2nYlhpTfm
-	x7VG9bX/r/5L6AlNBxcVusUhC+1hEX5UIkXU0eqhiMRdfqrSY1vWncCzsIEl2KFJQ0UxIyYYbVeAJ
-	rgscXdXdAsB94u+mK0cg==;
+	List-Owner; bh=E6CXQjY1L+TmJdaleR7/9EmTZ5tXqc56Vbrx6Nwo3hI=; b=NumaP7eX2GX2y8
+	sJ6++TzEcPdWX3nr6L9TXUteCGF3Hz077RnPd+cJkufjBBaDjy7KEtScRLXJpIPLbzF5fHLKYwUvN
+	qyCmwC9YOGOKf3RciCIoOaFUNoztbbzkqEZzBnMELjEnuj6eTYZO6xSnFSxiI3mWA1DPGEITX+XpF
+	yWF42X+LzE86lX8cR8C4vzH7fZF9srmL43TKCZ8YHKR/hvynUrQ6NeH+61+HDSwaVg3Q1Zb8F9oz5
+	hCNMP9KCmeMXFhZUZkvIEclTz5govToQHdz8kIoJEwq8LSLbP39eHsRe/yMir6ZkghNvYumvkNBTD
+	y1s92gqaI3tCQWA5bZlQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jf8F4-0005hC-N8; Sat, 30 May 2020 20:38:06 +0000
-Received: from esa2.hgst.iphmx.com ([68.232.143.124])
+	id 1jf8KI-0000pO-7u; Sat, 30 May 2020 20:43:30 +0000
+Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jf8F1-0005gY-5h; Sat, 30 May 2020 20:38:05 +0000
+ id 1jf8KG-0000oh-KS; Sat, 30 May 2020 20:43:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1590871104; x=1622407104;
+ t=1590871409; x=1622407409;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=8BiLFCBkL+XnOf1HHoA9Rc/8Hd0LDHzcqPI16UkgvG4=;
- b=NILCm+8u4jM5bnozUrDWZaANQX/aCH+7riBRp19OyVenwV0Zl7bKikt3
- 5rxAHYs7Uvwo1KbjcIkdFUX6jF2Y8B/FQ17ktweliJq9scytpILEz7i+m
- KgylNykV+7gL0q9I1Mayg8d3kj8vw4EMTj5D7+cIgaKCJwPKCd1uU2eL5
- +fEM+0JWFiGfmYx052h+GnJq10pfuVnJtrQrW0ru8F6cN/kE7i0BPYlnJ
- iLRLlM+nL3fA8idOAw/pp67gF9mIAERgSBhlIblY4NaAdgp6mwtTeecSJ
- LJkxliy054v2gyJMI8EYQ0bGmIx03D0z1iKa0Up5tSp6SydUvTwfs8V6L A==;
-IronPort-SDR: +6ysK6XMZGmn5u0X0ySNtEFyM7psZ0dkANh066O3sE32GNpCGDCT0NuhDg55ivHebT/euf/Kh5
- Woy8YGPP8w6PNIeXkugAMEG8ikK1m0+kHzUFqieq32FxtRmYkh/6uIplX6+TxrMV1Ovtun0Mgn
- FzGzQkCIAAqaumEaZs1NP1CXMruNtPiAO6BoXdz7nshnx7AbZdA2yK144hFtja+fTN8f5kJJ7Q
- ODYHlfy0S1NNOEzkAKwJtEIszTtId0UC6tP8M0Ixh2iuDrcY1PP/Cf2DBacYexaDLn7v8ZKfZX
- uV4=
-X-IronPort-AV: E=Sophos;i="5.73,454,1583164800"; d="scan'208";a="241707897"
-Received: from mail-mw2nam10lp2103.outbound.protection.outlook.com (HELO
- NAM10-MW2-obe.outbound.protection.outlook.com) ([104.47.55.103])
- by ob1.hgst.iphmx.com with ESMTP; 31 May 2020 04:38:21 +0800
+ bh=JSWXZ1asivqI/Bn+lwzUAb94SWA5UJ9jNigR3k+tsWY=;
+ b=bgIt0gR5nDmxd52fSjnTyCiKgHO+6aWQ+4iMEc7NUeGjARLHIU3t4PHk
+ 9NBhY88awz7RhWZWcN9pnk6hqcxfE6I7exkwOOvjnsiQm0ZjuAf/kjCJU
+ NYVD3ttrIbPq+qQvcoIXi5J1EX+3vV11xGEOzHsYT4uG4MEOU5quQf98A
+ NBRS1vTIOQlv2dUXUibS54YIAzcXAAJ4U/G+NP4ymnorfnjerZK9CbclY
+ BO9PWa7LY7dO41Sq8QDKubolRTRcxdEkawDptC7wgswYdA/MYoT5h51rz
+ d7Xqoe314uJL4+3JdhZXR2b3qX+PmE/MhfRhGBYDgcJPV0w4+oIsizaqx w==;
+IronPort-SDR: JjzEGWZlt95Yz1k4vKfHIbrdCwQNsITk+U9gm5JokzFiAH9u8zvHHH/6Fipe6DXVp1abgmJ4gt
+ AAsoOcAr9NU4y2NVgYmSnWXY0W0w4F2MWn2FKeFYUBASxPUUvtAucOOJIrP6u6CIrnIKnq6Gwj
+ 47BP5F0W+nnOgEjwVp0Nvbl2f6suv7NAgWxK1ZUxWvCbaQQUVi1CcyDeeYTeHOW9iR/XdsxkBO
+ k1sFdvrSWYfKDH2leOxIvVEgZIUDPtwFP5Z6UJ4Q/VgObtXrJkd/VeZUFR+U3vs1+96vM/tCk9
+ F18=
+X-IronPort-AV: E=Sophos;i="5.73,454,1583164800"; d="scan'208";a="140285836"
+Received: from mail-sn1nam02lp2053.outbound.protection.outlook.com (HELO
+ NAM02-SN1-obe.outbound.protection.outlook.com) ([104.47.36.53])
+ by ob1.hgst.iphmx.com with ESMTP; 31 May 2020 04:43:25 +0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=X82G0BBG6Q5bPVWSBnU0z6TxOgx6Z54dNlIqvLLvcszm6WfQPAcqGF3mhaOdkHZS7lUXeeC0EJHIDhm4DE9zxukGRu/fs8NLVdqefvp8dtLIaaC3hId75M3syVymC1BrKAy9zHRRyz0gGt9kWHF+sXGCYIGnvTIBzq2INH2zTHzVIGUUJb8AftCXKumzVy5ddGzHS88C0LeORky2UysOi6yhtOKN/F3RijUHNbowgrLwXEGNGXantatD/kUHsl1QI8HkfYvYWeVV/xxef5XqR5GKs0/EspuVHKD+fbZzZhXtKyY0VFjdy5aESgWir5T4F+ccr5PgOoKxfi8bul5vVw==
+ b=EurVlIPeKY/ejD/cT8uCcQnc6tH7eBnQZVJCZprWDdPL0emeWoJ4bgOnKlb77oPNcMEqFbLSOSnvRTsQddnikYVN3IytgSlyURFW0VxqN7fc9bU+AytoVXxojXUZ88pArijpH7v14eYX5q7NtRw0GYMWtuLk2mDioNR08hAMkxqJjNI67JyfRxeOekLzbxfLJeZNWsl6gl3WjqS8cE3MBQ41nd8/xs256I6Uk16G4tXWZIZN3ZmWBq3u5tJ2/JfZPYPsAeaayE1Z90dbajMMYtRxNqKJuXcpcFg9jTn/cMCxTrTVekB0I89KAtnWpGx9SA1sMVEppLssoxzst1Ry8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Wpfgxi24WL33phAyME1DCOrxSIyIK4rqeaSdrztVxaU=;
- b=Qh8Ok93NLYpU2CmbeiQdwXAOLylBBCID6fEuHljR1JjCJPlQc80bZc1qFMnXeqj7i3aTsbZeHdfiZ7LfJSbSzApxn2/eMLYwNyJWxeqkTQAQ7RqPc54hEEtFzGexKcdhByHsj/tpybAjriYoBO9ts91AyZi3WxGq3WKZTw4hYr3oxo5N7MdG6NhyM1HgXdbWXrVlb6WXB19EXMcf+GgBme2itKgde0KWvEUOwRPAQWK2BytlhS5HayZOBPZnJ2dZHbXBnn7MJQKyBmgKrZN3K0e5Cl4lU0AjQ9LUnTsL2mGU4aFhbFbZkhdCj5EQRwlrHirdCsGsSPMCX31QlzB5oA==
+ bh=JSWXZ1asivqI/Bn+lwzUAb94SWA5UJ9jNigR3k+tsWY=;
+ b=KUWax2Lq94ec9MVb8fubueuqWnO65z12gwOXUF92V67s4zJmprt2XzYpoE6Wr4Q5IR8LeaRmCrYDS+0EeG9rjE64V5pIORp1qtQK4muOSRLJFrYw3kg7tTaIcilFxFu/QrA4pj+7INBO+qlP9QEqxK9bFIItO1Xdxt/Ps9qVlPrjqVbPYgNvz2t4PNmIkP3cDmbgvbVRrh61HvtRUt6RBhF5xcabfq2ip+P1rdFOHk/EWiS0UHhkTyrEHL70iQOwHLTfAxxRcgvV+Q1WgMC6a8HDlfVSZGv6pyHewos3PHYqagNoPP+wQnLd4DaIazCtnE9veUfAXoaOKBAU7LmeOw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
  header.d=wdc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Wpfgxi24WL33phAyME1DCOrxSIyIK4rqeaSdrztVxaU=;
- b=BnEyiUqWdDQjJ9pZey90rVVRCjV9AbKcSpgKfwX3jMWCD99fjK9dxLlrPfDe8cQRWz1s8P1zT/bCjJKoJzx66uRky5jD9dM81cwZUgwK0VK3p+hNlwiYTyiHPcJcTZ+wEKoJYAvAgv5mUrPPlbjUEudg0MmBaAMunXXnBDalBwQ=
+ bh=JSWXZ1asivqI/Bn+lwzUAb94SWA5UJ9jNigR3k+tsWY=;
+ b=rrY+Y8Hw41SrfMlAbU+Qa9+46CD0hj6or3iNwoxg8mV683lVOo1fTMj4Ba62yH7nTIo0vkArwLW+3hmbKiAJqx1GYg3Zao8awl4fSk5Aw7p97jwefOv/jDQ4Q0/OD2WW1jN4jx0r3gZ7HYQXQgGwX1Tm6aQQI8U/d9URLJrn5PU=
 Received: from SN6PR04MB4640.namprd04.prod.outlook.com (2603:10b6:805:a4::19)
  by SN6PR04MB5070.namprd04.prod.outlook.com (2603:10b6:805:9e::30)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3045.21; Sat, 30 May
- 2020 20:37:57 +0000
+ 2020 20:43:23 +0000
 Received: from SN6PR04MB4640.namprd04.prod.outlook.com
  ([fe80::9cbe:995f:c25f:d288]) by SN6PR04MB4640.namprd04.prod.outlook.com
  ([fe80::9cbe:995f:c25f:d288%6]) with mapi id 15.20.3045.022; Sat, 30 May 2020
- 20:37:57 +0000
+ 20:43:23 +0000
 From: Avri Altman <Avri.Altman@wdc.com>
 To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
  <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
  <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
  <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>
-Subject: RE: [PATCH v1 1/2] scsi: ufs: Support WriteBooster on Samsung UFS
- devices
-Thread-Topic: [PATCH v1 1/2] scsi: ufs: Support WriteBooster on Samsung UFS
- devices
-Thread-Index: AQHWNpT3Vi/TzAb5lEy8ZsLwGGZsRajBERRQ
-Date: Sat, 30 May 2020 20:37:57 +0000
-Message-ID: <SN6PR04MB46400873245235EA56838A19FC8C0@SN6PR04MB4640.namprd04.prod.outlook.com>
-References: <20200530151337.6182-1-stanley.chu@mediatek.com>
- <20200530151337.6182-2-stanley.chu@mediatek.com>
-In-Reply-To: <20200530151337.6182-2-stanley.chu@mediatek.com>
+Subject: RE: [PATCH] scsi: ufs: Remove redundant urgent_bkop_lvl initialization
+Thread-Topic: [PATCH] scsi: ufs: Remove redundant urgent_bkop_lvl
+ initialization
+Thread-Index: AQHWNoxVzZCnTk5hMEqJuDv2sCuWsKjBGI0w
+Date: Sat, 30 May 2020 20:43:23 +0000
+Message-ID: <SN6PR04MB4640DB0A4B72E086B851D287FC8C0@SN6PR04MB4640.namprd04.prod.outlook.com>
+References: <20200530141200.4616-1-stanley.chu@mediatek.com>
+In-Reply-To: <20200530141200.4616-1-stanley.chu@mediatek.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -108,34 +106,35 @@ authentication-results: mediatek.com; dkim=none (message not signed)
 x-originating-ip: [77.138.4.172]
 x-ms-publictraffictype: Email
 x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 4c2e3a2c-f906-40c1-a775-08d804d9563f
+x-ms-office365-filtering-correlation-id: e6978894-7656-4b2c-a1a6-08d804da1864
 x-ms-traffictypediagnostic: SN6PR04MB5070:
-x-microsoft-antispam-prvs: <SN6PR04MB5070F195D45B3FCCEF891F28FC8C0@SN6PR04MB5070.namprd04.prod.outlook.com>
+x-microsoft-antispam-prvs: <SN6PR04MB50709CD858D22571EA6C611BFC8C0@SN6PR04MB5070.namprd04.prod.outlook.com>
 wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:849;
+x-ms-oob-tlc-oobclassifiers: OLM:4303;
 x-forefront-prvs: 041963B986
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: W7GcxjGCtRJBa1XIp/vDvJTIP+J3RfdskcI60PJkzFDakJ2Uej0X8fplgIWvxmJCx23DGYBe+GQ4t2XG67Co3w11jo14j97XwFvIV8R3DwHBKe4kKs9fBD6PKovA0gSC3jOQvGAVadfRi8nz1MWkDVKMS74WC8m9a+ARPOHk5LC9sFMJaP5U4CCTFMFliWgwdFxjkdvM8mBrTTFDjk5kqxpmCmhRZkW0LFOGc3fLtgRvLTyX4Bnk2rzEzZ4lOJtwysNubcbETyLFig0U+X8cNRyjLQvJJOLaHG8vTs0MiXs4HXXEVsFU1CkfIETAkkxyytboXinxjFLhAzy007umDQ==
+x-microsoft-antispam-message-info: u1472h3i3t1EqrcFSINRmohDAPXiqnycJUzkd/Lih8yoBxCqAzpr+2zU+1YrTBK71m2ObkxBmLoJaiLDI2fk9iMM6pRCMDHD8n807HMFEBxRTGAuQO7jrQAtSnIsl0i9NeaOOa8+uma9Cav4wabX+wxHjOS8UsIY0liq7O394dhQPQf3qXwlUwnsnV6vIebFhQCildSlsrLKyNJiIdZQHsWG+S3tgK0iPX6tVWDb0NNHt/rwfMJW2T5H9Utu6OT1zbydgHYaSh8XuFVqpq5AohRYqC6rSLDg8HtQkdLvDo4O4pTghU8PJnvRs9+V3ibT6zXg/c9S4lPNik0OFsWckQ==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:SN6PR04MB4640.namprd04.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(4636009)(346002)(396003)(376002)(136003)(366004)(39860400002)(6506007)(64756008)(4326008)(2906002)(110136005)(8936002)(86362001)(316002)(52536014)(66556008)(7696005)(71200400001)(54906003)(66446008)(8676002)(83380400001)(9686003)(478600001)(55016002)(33656002)(5660300002)(66946007)(76116006)(66476007)(7416002)(26005)(186003);
+ SFS:(4636009)(346002)(396003)(376002)(136003)(366004)(39860400002)(6506007)(64756008)(4326008)(2906002)(110136005)(8936002)(86362001)(316002)(52536014)(66556008)(7696005)(71200400001)(54906003)(66446008)(8676002)(83380400001)(9686003)(478600001)(55016002)(33656002)(5660300002)(66946007)(76116006)(4744005)(66476007)(7416002)(26005)(186003);
  DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: +ddPBFk3kPg+OjxiZnZ+01tLHj5p9X4r+b0rUV+Pir0STD1M482lN/5uOvVjC7m0mzmnvi4qt8ULYxDgYp4IWsMIu1Sp9Vo889QNYVJTA6mINCGHFPOWwjrvKuM3a2rT0CNqzxHpYltnHlpz2BtdlcclcLCc5vGO6syc551h33Vo9CqofRZi23nA4Va+bxPD8dpPdm7QB2FuCJtgRq34Oels9LUzFiucaXk87cKmUDDSM0PzyHy03Zn2JbQie2uxW9tudQr5JD+Wh1zSpLxOxhG/rb4sOKXiK5QWSaOYDeC1ZM64UeHGjmVEjWrZjGw7SX8+yxJsgejYiqwcLgs8dCwE/Hjzg6Dtg0mdbMR+ZPuneqdHXskdP0I/kgxwg0cIf3sI6l7pPk08lACkRNlx7EdoU+HmNx5fBeXusLWOFM0G+zlMYG6s0D0CrjXnYEM3ap5HnIwu/f26/gmp08RovWNxDRwZzfrmzHaydxXJkxQ=
+x-ms-exchange-antispam-messagedata: vLnW+wdtxKNGnH52LF/moAv98ZCFY9DXLzTWeYyMPCx6u8lPHjYgN7QRmSa/+DpqRlGL5c7OzlcoAsMBmuBpaeu3xqsIsh77bNybOUwonh3+0oz7Zzlypj8qP/3t9iDeFJIKZGSmvTKtLZc/wKuNz5c5RXGSd6Kf9ziqGCUwy8oKdaMjGcy1ys3fqV6AKdOd1SS6TiWmfu7h5GwCWP2xnx+5ffS7QStcUn078pWQyXj8XELNff3YBjmW6QO9qOefI7lmo8Hz0C/6V1VNIhF6vgyJ2Y+1/qpI0zwYuyp23AwtPIJCcPWFXaTpzPl6fdtsmkQSNHcZVQO5uiQ1JRRUADxx9DpVvHhIH0Q5TQJKsp4A34/OZ9oda0y+xMze/wbgpye2lL3JkI8rWq0BzP5719ZAwCThDP/48Of2OgNereYWoerYvEtrSmUSHD+qR4yceUBP5vXsl+H8D2h/WfeKx3eiJW9IvV6O4+igKRMP/Lc=
 x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4c2e3a2c-f906-40c1-a775-08d804d9563f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 May 2020 20:37:57.3202 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: e6978894-7656-4b2c-a1a6-08d804da1864
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 May 2020 20:43:23.0225 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Tz0fHFYpBGNYRh5tnggMOuaEq3CWXtGqLBtAjqBw6PC2Zu6d0sSyGMpYS9Nzh1umB9L8A0ZtMdp8dpDjZhPLGw==
+X-MS-Exchange-CrossTenant-userprincipalname: c3mFjrpBVXI3NdEJh1t3YhWxGt2pqDqZXI4HGq5SUznxkbN/TF8M4Wd+BF6P1XDedIZQa5PF5Wm1rHUNVlS69Q==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB5070
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200530_133803_312602_464A0E79 
-X-CRM114-Status: GOOD (  17.39  )
+X-CRM114-CacheID: sfid-20200530_134328_762197_B3F39DB7 
+X-CRM114-Status: UNSURE (   9.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -167,147 +166,14 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
  
-> @@ -2801,11 +2801,17 @@ int ufshcd_query_flag(struct ufs_hba *hba, enum
-> query_opcode opcode,
->  {
->         struct ufs_query_req *request = NULL;
->         struct ufs_query_res *response = NULL;
-> -       int err, selector = 0;
-> +       int err;
->         int timeout = QUERY_REQ_TIMEOUT;
-> +       u8 selector = 0;
 > 
->         BUG_ON(!hba);
+> In ufshcd_probe_hba(), all BKOP SW tracking variables can be reset
+> together in ufshcd_force_reset_auto_bkops(), thus urgent_bkop_lvl
+> initialization in the beginning of ufshcd_probe_hba() can be merged
+> into ufshcd_force_reset_auto_bkops().
 > 
-> +       if (hba->dev_quirks & UFS_DEVICE_QUIRK_WB_SPECIAL_SELECTOR) {
-> +               if (ufshcd_is_wb_flags(idn))
-> +                       selector = 1;
-> +       }
-> +
-Why not make the caller set the applicable selector,
-Instead of checking this for every flag?
-
->         ufshcd_hold(hba, false);
->         mutex_lock(&hba->dev_cmd.lock);
->         ufshcd_init_query(hba, &request, &response, opcode, idn, index,
-> @@ -2882,6 +2888,11 @@ int ufshcd_query_attr(struct ufs_hba *hba, enum
-> query_opcode opcode,
->                 goto out;
->         }
-> 
-> +       if (hba->dev_quirks & UFS_DEVICE_QUIRK_WB_SPECIAL_SELECTOR) {
-> +               if (ufshcd_is_wb_attrs(idn))
-> +                       selector = 1;
-> +       }
-> +
-Same here
-
->         mutex_lock(&hba->dev_cmd.lock);
->         ufshcd_init_query(hba, &request, &response, opcode, idn, index,
->                         selector);
-> @@ -3042,6 +3053,11 @@ int ufshcd_query_descriptor_retry(struct ufs_hba
-> *hba,
->         int err;
->         int retries;
-> 
-> +       if (hba->dev_quirks & UFS_DEVICE_QUIRK_WB_SPECIAL_SELECTOR) {
-> +               if (ufshcd_is_wb_desc(idn, index))
-> +                       selector = 1;
-> +       }
-> +
-And here.
-But this can't be true - 
-Are you setting the selector = 1 for reading any field for those descriptors?
-Shouldn't it be for the wb specific fields?
- 
-
->         for (retries = QUERY_REQ_RETRIES; retries > 0; retries--) {
->                 err = __ufshcd_query_descriptor(hba, opcode, idn, index,
->                                                 selector, desc_buf, buf_len);
-> @@ -6907,8 +6923,10 @@ static int ufs_get_device_desc(struct ufs_hba *hba)
->         size_t buff_len;
->         u8 model_index;
->         u8 *desc_buf;
-> +       u8 retry_cnt = 0;
->         struct ufs_dev_info *dev_info = &hba->dev_info;
-> 
-> +retry:
->         buff_len = max_t(size_t, hba->desc_size.dev_desc,
->                          QUERY_DESC_MAX_SIZE + 1);
->         desc_buf = kmalloc(buff_len, GFP_KERNEL);
-> @@ -6948,6 +6966,29 @@ static int ufs_get_device_desc(struct ufs_hba *hba)
-> 
->         ufs_fixup_device_setup(hba);
-> 
-> +       if (!retry_cnt && (hba->dev_quirks &
-> +               UFS_DEVICE_QUIRK_WB_SPECIAL_SELECTOR)) {
-If you only want to enter this clause once - you should use something other than retry_cnt,
-Which the reader expects to performs retries....
-
-Also, this is becoming too wired - 
-From your commit log I get that for specific Samsung devices,
-You need to query wb descriptor fields/attributes/flags using selectore = 1.
-But what it has to do with descriptor sizes?
-
-> +               /*
-> +                * Update WriteBooster related descriptor length with specific
-> +                * seletor used.
-> +                */
-> +               ufshcd_read_desc_length(hba, QUERY_DESC_IDN_DEVICE, 0,
-> +                                       &hba->desc_size.dev_desc);
-> +               ufshcd_read_desc_length(hba, QUERY_DESC_IDN_CONFIGURATION,
-> 0,
-> +                                       &hba->desc_size.conf_desc);
-> +               ufshcd_read_desc_length(hba, QUERY_DESC_IDN_UNIT, 0,
-> +                                       &hba->desc_size.unit_desc);
-> +               ufshcd_read_desc_length(hba, QUERY_DESC_IDN_GEOMETRY, 0,
-> +                                       &hba->desc_size.geom_desc);
-> +               /*
-> +                * Read device descriptor again with specific selector used to
-> +                * get WriteBooster related fileds.
-> +                */
-> +               kfree(desc_buf);
-> +               retry_cnt++;
-> +               goto retry;
-> +       }
-> +
->         /*
->          * Probe WB only for UFS-3.1 devices or UFS devices with quirk
->          * UFS_DEVICE_QUIRK_SUPPORT_EXTENDED_FEATURES enabled
-> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-> index bf97d616e597..d850c47e8ae0 100644
-> --- a/drivers/scsi/ufs/ufshcd.h
-> +++ b/drivers/scsi/ufs/ufshcd.h
-> @@ -876,6 +876,26 @@ static inline u8 ufshcd_wb_get_query_index(struct
-> ufs_hba *hba)
->         return 0;
->  }
-> 
-> +static inline bool ufshcd_is_wb_attrs(enum attr_idn idn)
-> +{
-> +       return ((idn >= QUERY_ATTR_IDN_WB_FLUSH_STATUS) &&
-> +               (idn <= QUERY_ATTR_IDN_CURR_WB_BUFF_SIZE));
-> +}
-> +
-> +static inline bool ufshcd_is_wb_desc(enum desc_idn idn, u8 index)
-> +{
-> +       return (idn <= QUERY_DESC_IDN_CONFIGURATION) ||
-> +               ((idn == QUERY_DESC_IDN_UNIT) &&
-> +               (index != UFS_UPIU_RPMB_QUERY_INDEX)) ||
-> +               (idn == QUERY_DESC_IDN_GEOMETRY);
-> +}
-> +
-> +static inline bool ufshcd_is_wb_flags(enum flag_idn idn)
-> +{
-> +       return ((idn >= QUERY_FLAG_IDN_WB_EN) &&
-> +               (idn <= QUERY_FLAG_IDN_WB_BUFF_FLUSH_DURING_HIBERN8));
-> +}
-> +
->  extern int ufshcd_runtime_suspend(struct ufs_hba *hba);
->  extern int ufshcd_runtime_resume(struct ufs_hba *hba);
->  extern int ufshcd_runtime_idle(struct ufs_hba *hba);
-> --
-> 2.18.0
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Avri Altman <avri.altman@wdc.com>
 
 _______________________________________________
 Linux-mediatek mailing list
