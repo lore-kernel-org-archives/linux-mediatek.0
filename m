@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A6858C433DF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2020 08:25:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ACF07C433E1
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2020 08:26:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6D34D2070E
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2020 08:25:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 57FFA2070E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2020 08:26:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dHOFXOMS";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="hQvOF71K"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D34D2070E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ojwo4icl";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EQ/AeGy1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 57FFA2070E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,52 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f7l0kEgEpO1Ns1NRHxlIIku1j6SwHEABjtms0MAOeNI=; b=dHOFXOMS7StbNq
-	lvQpH6iGJotG5nedTenfRRE3V4abFfM+2TbEYmd2r0nTrBXk5Pa3jgogIbbkQ51Egt63umjAtt2Br
-	rYYoh7K9McUvoRT3pCZ/A/gpjbf1B1hlJ+4e2KY4A0lhXq51t5jDOK45G6falhsgsdYxdXeAW+HD5
-	uvBSegc/KhvQOexBrhdTRmrd5SBxqvO7ZB1nzE/EaW6g0OKcFTPID2udHEd92o4M1zGD8aNaW3pVH
-	YlyU5mpuJWgCEmO3lQmCjTqzrYd+RG2dC+nwA9go+9u8ewQlogbqwamQhF/QU0LzUGvVorYR76SYv
-	t7a3c9sZIYK2KoyTcx6A==;
+	List-Owner; bh=dawhDbAg0AhgoT5F/BVSlIc9n7wPaAgAVq/7tE0Do64=; b=Ojwo4iclDGY3mH
+	r9aH0lVE8Xalkg88CzR+7luAp9tQ9ktc/em2REfgNUMGcOf37yZHFfG6ak8dtSKQfIRWcMV5DnpQd
+	+BahjjFxkZJeNhZAmUhO9JJdqDa280j+VGhc3cKfW1g1jNvQJ2n9547ITH68GWTngA7xGpbh68gjl
+	Y4LsxDAtNrg/NneAXyUffBxIutOwrtdfDwEbHzxDpmQRJn5PktkFl+GDWnVt6m4pLikX2Iyh76uOh
+	opeQAuc+tfBOboCZqVvBapFKH+yhkmADa508RAktBW869zR8efjkJXuAbMgBWnuo8TdtdKVJI9147
+	ujYH6FOQAWY1/lSE2Yfw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jewnQ-0006Tz-4n; Sat, 30 May 2020 08:24:48 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jewoa-0001I9-O1; Sat, 30 May 2020 08:26:00 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jewlL-0004YH-HN; Sat, 30 May 2020 08:22:42 +0000
-X-UUID: c7c68e6640c545199547576e246fe635-20200530
+ id 1jewmc-0005hy-OO; Sat, 30 May 2020 08:24:02 +0000
+X-UUID: f43815ad9b734339a401425801ccdca3-20200530
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=woRB42GOP9qjDXW9aHZHkmqZIGzuEYzWf3H2RFksJJY=; 
- b=hQvOF71KXtm/CmjBImRG1nVFHB06DXipezYG+0o9vKRDfe3jh1adNasnLH8HLy0PVGJoHpCa4ki6dKsIoT5xcDipqsKn8h05h47zY8Jg+TNfoaPsRDDVbK6bh4l+CqsQJ/DwUtFZ4AuEoUGUBfFL9x2uftcEzRHNjl7UB02IftA=;
-X-UUID: c7c68e6640c545199547576e246fe635-20200530
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=UzfE6L+Q+N5T60qWBYKFvl/nWB8dnMHgO4HFEf6j0Lk=; 
+ b=EQ/AeGy179Ew+/hKZOBs/oIb1tNjzQNd1dAKioPKcPdTY4A6ZhTV5Qftx+4OUTssOYtDOwju6HaYVANLy2vex0E16BVgTaQ4H5ppayeFIPbOKeVb/HGzv/fQfCP+hbFyjaGQ1KeMGT0YOTRbgeR9w2LT2hL/wa7nKlXWrJHZ7Nk=;
+X-UUID: f43815ad9b734339a401425801ccdca3-20200530
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2112609477; Sat, 30 May 2020 00:22:27 -0800
+ with ESMTP id 534912164; Sat, 30 May 2020 00:23:49 -0800
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 30 May 2020 01:13:32 -0700
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 30 May 2020 01:14:51 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 30 May 2020 16:13:31 +0800
+ 15.0.1497.2; Sat, 30 May 2020 16:14:50 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 30 May 2020 16:13:31 +0800
+ Transport; Sat, 30 May 2020 16:14:50 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, 
  Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v4 08/17] media: mtk-vcodec: separate mtk-vcodec-enc node.
-Date: Sat, 30 May 2020 16:10:09 +0800
-Message-ID: <1590826218-23653-9-git-send-email-yong.wu@mediatek.com>
+Subject: [PATCH v4 16/17] arm64: dts: mt8173: Separate mtk-vcodec-enc node
+Date: Sat, 30 May 2020 16:10:17 +0800
+Message-ID: <1590826218-23653-17-git-send-email-yong.wu@mediatek.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1590826218-23653-1-git-send-email-yong.wu@mediatek.com>
 References: <1590826218-23653-1-git-send-email-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200530_012239_624705_852D0C9A 
-X-CRM114-Status: GOOD (  20.68  )
+X-CRM114-CacheID: sfid-20200530_012358_816238_3C300306 
+X-CRM114-Status: GOOD (  10.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,8 +83,7 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Maoguang Meng <maoguang.meng@mediatek.com>,
- Will Deacon <will.deacon@arm.com>, youlin.pei@mediatek.com,
+Cc: Will Deacon <will.deacon@arm.com>, youlin.pei@mediatek.com,
  Irui Wang <irui.wang@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>,
  Evan Green <evgreen@chromium.org>, eizan@chromium.org,
  Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org,
@@ -100,507 +99,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Maoguang Meng <maoguang.meng@mediatek.com>
+From: Irui Wang <irui.wang@mediatek.com>
 
-MTK H264 Encoder(VENC_SYS) and VP8 Encoder(VENC_LT_SYS) are two
-independent hardware instance. They have their owner interrupt,
-register mapping, and special clocks.
+There are two separate hardware encoder blocks inside MT8173. Split
+the current mtk-vcodec-enc node to match the hardware architecture.
 
-This patch seperates the two instance. This is a preparing patch for
-adding device_link between the larbs and venc-device. It's mainly for
-fixing the problem:
-https://lkml.org/lkml/2019/9/3/316
-
-User Call "VIDIOC_QUERYCAP":
-H264 Encoder return driver name "mtk-vcodec-enc";
-VP8 Encoder return driver name "mtk-venc-vp8.
-
-Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h |  10 +-
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c |  23 +++-
- .../media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c | 127 +++++++++------------
- .../media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c  |  31 +----
- .../media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h  |   1 -
- .../media/platform/mtk-vcodec/venc/venc_vp8_if.c   |   4 +-
- 6 files changed, 80 insertions(+), 116 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 60 +++++++++++++++++---------------
+ 1 file changed, 31 insertions(+), 29 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-index a2716117..52d1ce1 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-@@ -19,6 +19,7 @@
- #define MTK_VCODEC_DRV_NAME	"mtk_vcodec_drv"
- #define MTK_VCODEC_DEC_NAME	"mtk-vcodec-dec"
- #define MTK_VCODEC_ENC_NAME	"mtk-vcodec-enc"
-+#define MTK_VENC_VP8_NAME	"mtk-venc-vp8"
- #define MTK_PLATFORM_STR	"platform:mt8173"
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index fb21a6b..9fccbec 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -1364,13 +1364,10 @@
+ 		};
  
- #define MTK_VCODEC_MAX_PLANES	3
-@@ -193,7 +194,6 @@ struct mtk_vcodec_pm {
+ 		vcodec_enc: vcodec@18002000 {
+-			compatible = "mediatek,mt8173-vcodec-enc";
+-			reg = <0 0x18002000 0 0x1000>,	/* VENC_SYS */
+-			      <0 0x19002000 0 0x1000>;	/* VENC_LT_SYS */
+-			interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>,
+-				     <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
+-			mediatek,larb = <&larb3>,
+-					<&larb5>;
++			compatible = "mediatek,mt8173-vcodec-avc-enc";
++			reg = <0 0x18002000 0 0x1000>;	/* VENC_SYS */
++			interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>;
++			mediatek,larb = <&larb3>;
+ 			iommus = <&iommu M4U_PORT_VENC_RCPU>,
+ 				 <&iommu M4U_PORT_VENC_REC>,
+ 				 <&iommu M4U_PORT_VENC_BSDMA>,
+@@ -1381,29 +1378,12 @@
+ 				 <&iommu M4U_PORT_VENC_REF_LUMA>,
+ 				 <&iommu M4U_PORT_VENC_REF_CHROMA>,
+ 				 <&iommu M4U_PORT_VENC_NBM_RDMA>,
+-				 <&iommu M4U_PORT_VENC_NBM_WDMA>,
+-				 <&iommu M4U_PORT_VENC_RCPU_SET2>,
+-				 <&iommu M4U_PORT_VENC_REC_FRM_SET2>,
+-				 <&iommu M4U_PORT_VENC_BSDMA_SET2>,
+-				 <&iommu M4U_PORT_VENC_SV_COMA_SET2>,
+-				 <&iommu M4U_PORT_VENC_RD_COMA_SET2>,
+-				 <&iommu M4U_PORT_VENC_CUR_LUMA_SET2>,
+-				 <&iommu M4U_PORT_VENC_CUR_CHROMA_SET2>,
+-				 <&iommu M4U_PORT_VENC_REF_LUMA_SET2>,
+-				 <&iommu M4U_PORT_VENC_REC_CHROMA_SET2>;
++				 <&iommu M4U_PORT_VENC_NBM_WDMA>;
+ 			mediatek,vpu = <&vpu>;
+-			clocks = <&topckgen CLK_TOP_VENCPLL_D2>,
+-				 <&topckgen CLK_TOP_VENC_SEL>,
+-				 <&topckgen CLK_TOP_UNIVPLL1_D2>,
+-				 <&topckgen CLK_TOP_VENC_LT_SEL>;
+-			clock-names = "venc_sel_src",
+-				      "venc_sel",
+-				      "venc_lt_sel_src",
+-				      "venc_lt_sel";
+-			assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>,
+-					  <&topckgen CLK_TOP_VENC_LT_SEL>;
+-			assigned-clock-parents = <&topckgen CLK_TOP_VENCPLL_D2>,
+-						 <&topckgen CLK_TOP_UNIVPLL1_D2>;
++			clocks = <&topckgen CLK_TOP_VENC_SEL>;
++			clock-names = "venc_sel";
++			assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>;
++			assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL>;
+ 		};
  
- 	struct mtk_vcodec_clk	venc_clk;
- 	struct device	*larbvenc;
--	struct device	*larbvenclt;
- 	struct device	*dev;
- 	struct mtk_vcodec_dev	*mtkdev;
- };
-@@ -311,25 +311,27 @@ enum mtk_chip {
-  * @chip: chip this encoder is compatible with
-  *
-  * @uses_ext: whether the encoder uses the extended firmware messaging format
-- * @has_lt_irq: whether the encoder uses the LT irq
-+ * @name: whether the encoder core is vp8
-  * @min_birate: minimum supported encoding bitrate
-  * @max_bitrate: maximum supported encoding bitrate
-  * @capture_formats: array of supported capture formats
-  * @num_capture_formats: number of entries in capture_formats
-  * @output_formats: array of supported output formats
-  * @num_output_formats: number of entries in output_formats
-+ * @core_id: stand for h264 or vp8 encode index
-  */
- struct mtk_vcodec_enc_pdata {
- 	enum mtk_chip chip;
- 
- 	bool uses_ext;
--	bool has_lt_irq;
-+	const char *name;
- 	unsigned long min_bitrate;
- 	unsigned long max_bitrate;
- 	const struct mtk_video_fmt *capture_formats;
- 	size_t num_capture_formats;
- 	const struct mtk_video_fmt *output_formats;
- 	size_t num_output_formats;
-+	int core_id;
- };
- 
- /**
-@@ -359,7 +361,6 @@ struct mtk_vcodec_enc_pdata {
-  *
-  * @dec_irq: decoder irq resource
-  * @enc_irq: h264 encoder irq resource
-- * @enc_lt_irq: vp8 encoder irq resource
-  *
-  * @dec_mutex: decoder hardware lock
-  * @enc_mutex: encoder hardware lock.
-@@ -395,7 +396,6 @@ struct mtk_vcodec_dev {
- 
- 	int dec_irq;
- 	int enc_irq;
--	int enc_lt_irq;
- 
- 	struct mutex dec_mutex;
- 	struct mutex enc_mutex;
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-index f0af78f..5301dca 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-@@ -9,6 +9,7 @@
- #include <media/v4l2-mem2mem.h>
- #include <media/videobuf2-dma-contig.h>
- #include <soc/mediatek/smi.h>
-+#include <linux/pm_runtime.h>
- 
- #include "mtk_vcodec_drv.h"
- #include "mtk_vcodec_enc.h"
-@@ -174,7 +175,10 @@ static int vidioc_enum_fmt_vid_out(struct file *file, void *priv,
- static int vidioc_venc_querycap(struct file *file, void *priv,
- 				struct v4l2_capability *cap)
- {
--	strscpy(cap->driver, MTK_VCODEC_ENC_NAME, sizeof(cap->driver));
-+	const struct mtk_vcodec_enc_pdata *pdata =
-+		fh_to_ctx(priv)->dev->venc_pdata;
+ 		jpegdec: jpegdec@18004000 {
+@@ -1435,6 +1415,28 @@
+ 				 <&vencltsys CLK_VENCLT_CKE0>;
+ 			clock-names = "apb", "smi";
+ 		};
 +
-+	strscpy(cap->driver, pdata->name, sizeof(cap->driver));
- 	strscpy(cap->bus_info, MTK_PLATFORM_STR, sizeof(cap->bus_info));
- 	strscpy(cap->card, MTK_PLATFORM_STR, sizeof(cap->card));
- 
-@@ -788,7 +792,7 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
- 	  */
- 	if ((ctx->state == MTK_STATE_ABORT) || (ctx->state == MTK_STATE_FREE)) {
- 		ret = -EIO;
--		goto err_set_param;
-+		goto err_start_stream;
- 	}
- 
- 	/* Do the initialization when both start_streaming have been called */
-@@ -800,6 +804,12 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
- 			return 0;
- 	}
- 
-+	ret = pm_runtime_get_sync(&ctx->dev->plat_dev->dev);
-+	if (ret < 0) {
-+		mtk_v4l2_err("pm_runtime_get_sync fail %d", ret);
-+		goto err_start_stream;
-+	}
-+
- 	mtk_venc_set_param(ctx, &param);
- 	ret = venc_if_set_param(ctx, VENC_SET_PARAM_ENC, &param);
- 	if (ret) {
-@@ -826,6 +836,11 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
- 	return 0;
- 
- err_set_param:
-+	ret = pm_runtime_put(&ctx->dev->plat_dev->dev);
-+	if (ret < 0)
-+		mtk_v4l2_err("pm_runtime_put fail %d", ret);
-+
-+err_start_stream:
- 	for (i = 0; i < q->num_buffers; ++i) {
- 		struct vb2_buffer *buf = vb2_get_buffer(q, i);
- 
-@@ -879,6 +894,10 @@ static void vb2ops_venc_stop_streaming(struct vb2_queue *q)
- 	if (ret)
- 		mtk_v4l2_err("venc_if_deinit failed=%d", ret);
- 
-+	ret = pm_runtime_put(&ctx->dev->plat_dev->dev);
-+	if (ret < 0)
-+		mtk_v4l2_err("pm_runtime_put fail %d", ret);
-+
- 	ctx->state = MTK_STATE_FREE;
- }
- 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-index b8fe408..fe17f0c 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-@@ -49,12 +49,15 @@
- 	},
++		vcodec_enc_lt: vcodec@19002000 {
++			compatible = "mediatek,mt8173-vcodec-vp8-enc";
++			reg =  <0 0x19002000 0 0x1000>;	/* VENC_LT_SYS */
++			interrupts = <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
++			iommus = <&iommu M4U_PORT_VENC_RCPU_SET2>,
++				 <&iommu M4U_PORT_VENC_REC_FRM_SET2>,
++				 <&iommu M4U_PORT_VENC_BSDMA_SET2>,
++				 <&iommu M4U_PORT_VENC_SV_COMA_SET2>,
++				 <&iommu M4U_PORT_VENC_RD_COMA_SET2>,
++				 <&iommu M4U_PORT_VENC_CUR_LUMA_SET2>,
++				 <&iommu M4U_PORT_VENC_CUR_CHROMA_SET2>,
++				 <&iommu M4U_PORT_VENC_REF_LUMA_SET2>,
++				 <&iommu M4U_PORT_VENC_REC_CHROMA_SET2>;
++			mediatek,larb = <&larb5>;
++			mediatek,vpu = <&vpu>;
++			clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
++			clock-names = "venc_lt_sel";
++			assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
++			assigned-clock-parents = <&topckgen
++						  CLK_TOP_VCODECPLL_370P5>;
++		};
+ 	};
  };
  
--static const struct mtk_video_fmt mtk_video_formats_capture_mt8173[] =  {
-+static const struct mtk_video_fmt mtk_video_formats_capture_mt8173_h264[] =  {
- 	{
- 		.fourcc = V4L2_PIX_FMT_H264,
- 		.type = MTK_FMT_ENC,
- 		.num_planes = 1,
- 	},
-+};
-+
-+static const struct mtk_video_fmt mtk_video_formats_capture_mt8173_vp8[] =  {
- 	{
- 		.fourcc = V4L2_PIX_FMT_VP8,
- 		.type = MTK_FMT_ENC,
-@@ -110,35 +113,13 @@ static irqreturn_t mtk_vcodec_enc_irq_handler(int irq, void *priv)
- 	ctx = dev->curr_ctx;
- 	spin_unlock_irqrestore(&dev->irqlock, flags);
- 
--	mtk_v4l2_debug(1, "id=%d", ctx->id);
--	addr = dev->reg_base[VENC_SYS] + MTK_VENC_IRQ_ACK_OFFSET;
--
--	ctx->irq_status = readl(dev->reg_base[VENC_SYS] +
--				(MTK_VENC_IRQ_STATUS_OFFSET));
--
--	clean_irq_status(ctx->irq_status, addr);
--
--	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED);
--	return IRQ_HANDLED;
--}
--
--static irqreturn_t mtk_vcodec_enc_lt_irq_handler(int irq, void *priv)
--{
--	struct mtk_vcodec_dev *dev = priv;
--	struct mtk_vcodec_ctx *ctx;
--	unsigned long flags;
--	void __iomem *addr;
--
--	spin_lock_irqsave(&dev->irqlock, flags);
--	ctx = dev->curr_ctx;
--	spin_unlock_irqrestore(&dev->irqlock, flags);
-+	mtk_v4l2_debug(1, "id=%d coreid:%d", ctx->id, dev->venc_pdata->core_id);
-+	addr = dev->reg_base[dev->venc_pdata->core_id] +
-+				MTK_VENC_IRQ_ACK_OFFSET;
- 
--	mtk_v4l2_debug(1, "id=%d", ctx->id);
--	ctx->irq_status = readl(dev->reg_base[VENC_LT_SYS] +
-+	ctx->irq_status = readl(dev->reg_base[dev->venc_pdata->core_id] +
- 				(MTK_VENC_IRQ_STATUS_OFFSET));
- 
--	addr = dev->reg_base[VENC_LT_SYS] + MTK_VENC_IRQ_ACK_OFFSET;
--
- 	clean_irq_status(ctx->irq_status, addr);
- 
- 	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED);
-@@ -265,7 +246,8 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 	struct resource *res;
- 	phandle rproc_phandle;
- 	enum mtk_vcodec_fw_type fw_type;
--	int i, j, ret;
-+	int ret;
-+	void __iomem *reg_base;
- 
- 	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
- 	if (!dev)
-@@ -291,63 +273,39 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 	dev->venc_pdata = of_device_get_match_data(&pdev->dev);
- 	ret = mtk_vcodec_init_enc_pm(dev);
- 	if (ret < 0) {
--		dev_err(&pdev->dev, "Failed to get mt vcodec clock source!");
-+		dev_err(&pdev->dev, "Failed to get mtk vcodec clock source!");
- 		goto err_enc_pm;
- 	}
- 
--	for (i = VENC_SYS, j = 0; i < NUM_MAX_VCODEC_REG_BASE; i++, j++) {
--		res = platform_get_resource(pdev, IORESOURCE_MEM, j);
--		dev->reg_base[i] = devm_ioremap_resource(&pdev->dev, res);
--		if (IS_ERR((__force void *)dev->reg_base[i])) {
--			ret = PTR_ERR((__force void *)dev->reg_base[i]);
--			goto err_res;
--		}
--		mtk_v4l2_debug(2, "reg[%d] base=0x%p", i, dev->reg_base[i]);
--	}
-+	pm_runtime_enable(&pdev->dev);
-+
-+	snprintf(dev->v4l2_dev.name, sizeof(dev->v4l2_dev.name), "%s",
-+		 dev->venc_pdata->name);
- 
--	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
--	if (res == NULL) {
--		dev_err(&pdev->dev, "failed to get irq resource");
--		ret = -ENOENT;
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	reg_base = devm_ioremap_resource(&pdev->dev, res);
-+	if (IS_ERR((__force void *)reg_base)) {
-+		ret = PTR_ERR((__force void *)reg_base);
- 		goto err_res;
- 	}
-+	dev->reg_base[dev->venc_pdata->core_id] = reg_base;
- 
- 	dev->enc_irq = platform_get_irq(pdev, 0);
- 	ret = devm_request_irq(&pdev->dev, dev->enc_irq,
- 			       mtk_vcodec_enc_irq_handler,
- 			       0, pdev->name, dev);
- 	if (ret) {
--		dev_err(&pdev->dev, "Failed to install dev->enc_irq %d (%d)",
--			dev->enc_irq,
--			ret);
-+		dev_err(&pdev->dev,
-+			"Failed to install dev->enc_irq %d (%d) core_id:%d",
-+			dev->enc_irq, ret, dev->venc_pdata->core_id);
- 		ret = -EINVAL;
- 		goto err_res;
- 	}
- 	disable_irq(dev->enc_irq);
- 
--	if (dev->venc_pdata->has_lt_irq) {
--		dev->enc_lt_irq = platform_get_irq(pdev, 1);
--		ret = devm_request_irq(&pdev->dev,
--				       dev->enc_lt_irq,
--				       mtk_vcodec_enc_lt_irq_handler,
--				       0, pdev->name, dev);
--		if (ret) {
--			dev_err(&pdev->dev,
--				"Failed to install dev->enc_lt_irq %d (%d)",
--				dev->enc_lt_irq, ret);
--			ret = -EINVAL;
--			goto err_res;
--		}
--		disable_irq(dev->enc_lt_irq); /* VENC_LT */
--	}
--
- 	mutex_init(&dev->enc_mutex);
- 	mutex_init(&dev->dev_mutex);
- 	spin_lock_init(&dev->irqlock);
--
--	snprintf(dev->v4l2_dev.name, sizeof(dev->v4l2_dev.name), "%s",
--		 "[MTK_V4L2_VENC]");
--
- 	ret = v4l2_device_register(&pdev->dev, &dev->v4l2_dev);
- 	if (ret) {
- 		mtk_v4l2_err("v4l2_device_register err=%d", ret);
-@@ -373,7 +331,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 					V4L2_CAP_STREAMING;
- 
- 	snprintf(vfd_enc->name, sizeof(vfd_enc->name), "%s",
--		 MTK_VCODEC_ENC_NAME);
-+			dev->venc_pdata->name);
- 	video_set_drvdata(vfd_enc, dev);
- 	dev->vfd_enc = vfd_enc;
- 	platform_set_drvdata(pdev, dev);
-@@ -401,8 +359,8 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 		goto err_enc_reg;
- 	}
- 
--	mtk_v4l2_debug(0, "encoder registered as /dev/video%d",
--			vfd_enc->num);
-+	mtk_v4l2_debug(0, "encoder %d registered as /dev/video%d",
-+		       dev->venc_pdata->core_id, vfd_enc->num);
- 
- 	return 0;
- 
-@@ -415,26 +373,39 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- err_enc_alloc:
- 	v4l2_device_unregister(&dev->v4l2_dev);
- err_res:
--	mtk_vcodec_release_enc_pm(dev);
-+	pm_runtime_disable(&pdev->dev);
- err_enc_pm:
- 	mtk_vcodec_fw_release(dev->fw_handler);
- 	return ret;
- }
- 
--static const struct mtk_vcodec_enc_pdata mt8173_pdata = {
-+static const struct mtk_vcodec_enc_pdata mt8173_avc_pdata = {
-+	.chip = MTK_MT8173,
-+	.name = MTK_VCODEC_ENC_NAME,
-+	.capture_formats = mtk_video_formats_capture_mt8173_h264,
-+	.num_capture_formats = 1,
-+	.output_formats = mtk_video_formats_output_mt8173,
-+	.num_output_formats = ARRAY_SIZE(mtk_video_formats_output_mt8173),
-+	.min_bitrate = 1,
-+	.max_bitrate = 4000000,
-+	.core_id = VENC_SYS,
-+};
-+
-+static const struct mtk_vcodec_enc_pdata mt8173_vp8_pdata = {
- 	.chip = MTK_MT8173,
--	.has_lt_irq = true,
--	.capture_formats = mtk_video_formats_capture_mt8173,
--	.num_capture_formats = ARRAY_SIZE(mtk_video_formats_capture_mt8173),
-+	.name = MTK_VENC_VP8_NAME,
-+	.capture_formats = mtk_video_formats_capture_mt8173_vp8,
-+	.num_capture_formats = 1,
- 	.output_formats = mtk_video_formats_output_mt8173,
- 	.num_output_formats = ARRAY_SIZE(mtk_video_formats_output_mt8173),
- 	.min_bitrate = 1,
- 	.max_bitrate = 4000000,
-+	.core_id = VENC_LT_SYS,
- };
- 
- static const struct mtk_vcodec_enc_pdata mt8183_pdata = {
- 	.chip = MTK_MT8183,
--	.has_lt_irq = false,
-+	.name = MTK_VCODEC_ENC_NAME,
- 	.uses_ext = true,
- 	.capture_formats = mtk_video_formats_capture_mt8183,
- 	.num_capture_formats = ARRAY_SIZE(mtk_video_formats_capture_mt8183),
-@@ -443,10 +414,14 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 	.num_output_formats = ARRAY_SIZE(mtk_video_formats_output_mt8173),
- 	.min_bitrate = 64,
- 	.max_bitrate = 40000000,
-+	.core_id = VENC_SYS,
- };
- 
- static const struct of_device_id mtk_vcodec_enc_match[] = {
--	{.compatible = "mediatek,mt8173-vcodec-enc", .data = &mt8173_pdata},
-+	{.compatible = "mediatek,mt8173-vcodec-avc-enc",
-+			.data = &mt8173_avc_pdata},
-+	{.compatible = "mediatek,mt8173-vcodec-vp8-enc",
-+			.data = &mt8173_vp8_pdata},
- 	{.compatible = "mediatek,mt8183-vcodec-enc", .data = &mt8183_pdata},
- 	{},
- };
-@@ -466,7 +441,7 @@ static int mtk_vcodec_enc_remove(struct platform_device *pdev)
- 		video_unregister_device(dev->vfd_enc);
- 
- 	v4l2_device_unregister(&dev->v4l2_dev);
--	mtk_vcodec_release_enc_pm(dev);
-+	pm_runtime_disable(&pdev->dev);
- 	mtk_vcodec_fw_release(dev->fw_handler);
- 	return 0;
- }
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-index ee22902..01c6a55 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-@@ -43,21 +43,6 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
- 		return -ENODEV;
- 	}
- 	pm->larbvenc = &pdev->dev;
--
--	node = of_parse_phandle(dev->of_node, "mediatek,larb", 1);
--	if (!node) {
--		mtk_v4l2_err("no mediatek,larb found");
--		return -ENODEV;
--	}
--
--	pdev = of_find_device_by_node(node);
--	of_node_put(node);
--	if (!pdev) {
--		mtk_v4l2_err("no mediatek,larb device found");
--		return -ENODEV;
--	}
--
--	pm->larbvenclt = &pdev->dev;
- 	pdev = mtkdev->plat_dev;
- 	pm->dev = &pdev->dev;
- 
-@@ -94,11 +79,6 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
- 	return ret;
- }
- 
--void mtk_vcodec_release_enc_pm(struct mtk_vcodec_dev *mtkdev)
--{
--}
--
--
- void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
- {
- 	struct mtk_vcodec_clk *enc_clk = &pm->venc_clk;
-@@ -116,18 +96,10 @@ void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
- 	ret = mtk_smi_larb_get(pm->larbvenc);
- 	if (ret) {
- 		mtk_v4l2_err("mtk_smi_larb_get larb3 fail %d", ret);
--		goto larbvencerr;
--	}
--	ret = mtk_smi_larb_get(pm->larbvenclt);
--	if (ret) {
--		mtk_v4l2_err("mtk_smi_larb_get larb4 fail %d", ret);
--		goto larbvenclterr;
-+		goto clkerr;
- 	}
- 	return;
- 
--larbvenclterr:
--	mtk_smi_larb_put(pm->larbvenc);
--larbvencerr:
- clkerr:
- 	for (i -= 1; i >= 0; i--)
- 		clk_disable_unprepare(enc_clk->clk_info[i].vcodec_clk);
-@@ -139,7 +111,6 @@ void mtk_vcodec_enc_clock_off(struct mtk_vcodec_pm *pm)
- 	int i = 0;
- 
- 	mtk_smi_larb_put(pm->larbvenc);
--	mtk_smi_larb_put(pm->larbvenclt);
- 	for (i = enc_clk->clk_num - 1; i >= 0; i--)
- 		clk_disable_unprepare(enc_clk->clk_info[i].vcodec_clk);
- }
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h
-index b7ecdfd..c1b5986 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h
-@@ -10,7 +10,6 @@
- #include "mtk_vcodec_drv.h"
- 
- int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *dev);
--void mtk_vcodec_release_enc_pm(struct mtk_vcodec_dev *dev);
- 
- void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm);
- void mtk_vcodec_enc_clock_off(struct mtk_vcodec_pm *pm);
-diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-index 11abb19..8267a9c 100644
---- a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-+++ b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-@@ -367,7 +367,7 @@ static int vp8_enc_encode(void *handle,
- 
- 	mtk_vcodec_debug_enter(inst);
- 
--	enable_irq(ctx->dev->enc_lt_irq);
-+	enable_irq(ctx->dev->enc_irq);
- 
- 	switch (opt) {
- 	case VENC_START_OPT_ENCODE_FRAME:
-@@ -386,7 +386,7 @@ static int vp8_enc_encode(void *handle,
- 
- encode_err:
- 
--	disable_irq(ctx->dev->enc_lt_irq);
-+	disable_irq(ctx->dev->enc_irq);
- 	mtk_vcodec_debug_leave(inst);
- 
- 	return ret;
 -- 
 1.9.1
 _______________________________________________
