@@ -2,76 +2,147 @@ Return-Path: <SRS0=uE9q=7M=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 25858C433DF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2020 15:24:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 29AFEC433DF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2020 18:43:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EE9B820774
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2020 15:24:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F0D2E20723
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2020 18:43:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qdIX9vSb";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="fIPOrWEh"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EE9B820774
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="phQODIma";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=microchip.com header.i=@microchip.com header.b="HnD/cXCE";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=microchiptechnology.onmicrosoft.com header.i=@microchiptechnology.onmicrosoft.com header.b="Glmjl7cC"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F0D2E20723
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=microchip.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=x7KOEYkdUiESPbgLSt7NyWAMT8qkdmNpPk8YonA7ZgU=; b=qdIX9vSb7lsEJl
-	8+mNJh4iL0ULyfmBRI4C8r1mKhRx4CZ59f6qrsoJFggKgRA9uJaVL9D9exlyQZxgK7+wQW1x/c2uO
-	IjsFEMJelCrh1h+TdKodkcZF43/u9XIeF/m5DHihtw6ulDhwBGzSfJEoKy77496cnLTFy+X8HjCyk
-	+nz76LmU1Bw0yOdmAYL4l8yMQjOpvZ+Lv0c2MRW6BsK6NMA+hSXkr7k8Mp6Gwa430CfOkhpV6Ma6g
-	KMlL0rzxteGHoNEZ6JkvGpV+U1Vz24pP3cIh2DFfQrsD9qDYS21oSy5bFLPBhOJXmnOQOORbwa5m1
-	XoapSiHvAkFtNjkDCTUA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VBdZ+wrmls7mHx6PfDoUc5utVCNniReIkjTi8/a4B2U=; b=phQODIma3IsHPi
+	qTKSXZp3qFr8pCGo8SwXQxIhPqM0YgjZiQl6//Z4RxWmr9BgY/uiGkDStvAtXaDcgG7JktkETWWUQ
+	VR7eWSXLnUKKS6ki7CBzS2LaP9et20aSfHPU855w0cFphQfY5doXiKjPh1jltnUEhmGp52uBI5UYp
+	8MTT29JO/SsVEnBcCi8o2rlaZqf604sKLZXJYHR5C99feOH3P0RH6pHFBR//VbotylXNJ+bmDDadB
+	s1bCQ1KQtA7Aji2UjT0pQbzkomWo2RsOmIMHfgImyARLtcEAr8j22HUnY8VVtbRCnH2KhUxOjdRht
+	W3mK5+OeAZdZ2nKqIKxg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jf3LK-0002m3-0q; Sat, 30 May 2020 15:24:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jf6Rk-00062s-H6; Sat, 30 May 2020 18:43:04 +0000
+Received: from esa3.microchip.iphmx.com ([68.232.153.233])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jf3L9-0002Zy-Dy; Sat, 30 May 2020 15:24:04 +0000
-X-UUID: 11b993649c9c4ae0a6a36f0af0255626-20200530
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=TG3MGGEKF/HqosfrebB3c9qNzlnnNnjoxDaBqGy6cyo=; 
- b=fIPOrWEh/YuDwU9XjMAbkNjgpWXGdmMxvGn8IpvEPqclehZhRvUcuoQecN2I4EEearbPAeEad1F/BIEjmTg8w5H+69PHf3/2sBzJ1XQSnmb/+WEP0ZHnvOSufjmACXz98lAnrf0armmRJoShx3vmYnLfclrIRFuBDfRVR/U1iP0=;
-X-UUID: 11b993649c9c4ae0a6a36f0af0255626-20200530
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 218737930; Sat, 30 May 2020 07:23:23 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 30 May 2020 08:13:51 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 30 May 2020 23:13:36 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 30 May 2020 23:13:36 +0800
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
- <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v1 0/2] scsi: ufs: Support WriteBooster on Samsung UFS devices
-Date: Sat, 30 May 2020 23:13:35 +0800
-Message-ID: <20200530151337.6182-1-stanley.chu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1jf6RK-0005h0-SW; Sat, 30 May 2020 18:42:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+ t=1590864158; x=1622400158;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-id:content-transfer-encoding: mime-version;
+ bh=3X0HkmmwdYlt3B8YQ7a5lZOsqG1PbFwvQ0cBVECn3kg=;
+ b=HnD/cXCED0z1xwMAw4fhbymTRCTEXT9YUJBacF9qnUGLvZZKwvQhw0m+
+ 0lnnH+wBbxHh4sXjitvDcDREh3x2EVg4C304t02j0xE0OL48i+9ACVpZS
+ veVTBlSSqzkvZYb+bTKPtywTdO7bftQwn3SGlmxj+aR3xZqvTL6l8T7EY
+ U9XBZA+a8Mkkl1wxDvrmd55Xv1YcfH9FB3RsFgrFhNGjNxfa9ntJVzjxY
+ 5X/N1Xc5v0w7tNk1YU03kwOmicr9Hsac3acRmYzijlPgfT+Ofe6xyTjz7
+ 8L1cQoNt8CR8rvMgDK2TedOBv3XXzYKaP3b6aSj6qsZTjjKf6HVcuNf0l Q==;
+IronPort-SDR: lIu9cni9mwU1E0ORGOylyPMw1OQ4+cy/7ubHowjGyplj5HIPAIC0hBgZmiRXLZLO5f286ICepz
+ MvJ2Vay8lOsKvS3KbI3yPEMk3LrmCXlVJjjg262VgqgNOvClKoLRGNyUZgRttUtQbw/4SMVK80
+ lYa7YNlCaooW+Rh23zRul4zNXFYVQ5hU6gKSwBnBS87pyKgM+wLcTK4u7viMa0LwoZumLghCgd
+ /3CWwH7KPUvRng6c/ehthXZfuaT0ljCT1m/QFiVPfkH4C0Mts2Z6Rf/WVF/Cw1ZTK9H5t9CK1E
+ K38=
+X-IronPort-AV: E=Sophos;i="5.73,452,1583218800"; d="scan'208";a="78368972"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 30 May 2020 11:42:30 -0700
+Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
+ chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Sat, 30 May 2020 11:42:33 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.71) with Microsoft SMTP Server
+ (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5 via Frontend
+ Transport; Sat, 30 May 2020 11:42:20 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=BwlZ9lSnhf4OuTV0y+VmBMR+yAqlrZ1ULQwi/ZqHJdQ00cbnvVEP+TLr2+gN9bxYobJf+wN5X9HPghrxRC00Vt+DD5cWqLSj8no2ZM5jgQGt1tsbj3r9lowFX/tqerlpyA74ZINt6s8zf+nxGR9kvBPRaFeWXEcF1AKy+2XdpACW0S79ItG/VJl8Khds6dr6HI3cRH1fEGTa81zrY2KkzCq8J5KlqUMF0DA9nAW9fbrSHkdYpwHOEzbWd3lhOYx0ZsKSCRMzSmhwLfquBBzs455sU5Nn1h0a5gPoDnOx9BykgemQdeEnmsvrHfhZ5JMITir0A/BYjfWHdoV5+o1FpQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8sTQKSvperSBJ1cOluezahYZ9bKqYVueX8+oKlr8zGg=;
+ b=lOkjK7Bzb8J0HFZiXcUu5Q1zjmgjnptbSV1v7W5VorGfPvPbZ9wU6PEVk1hsxGT9zhByhX+0angCkuUJ1ktftlyFmQUezQ9hGXP2mtZnsQzEnAzuJsEHPPdtTwg2R//VSHDWNWNxvu5AFBYN4RFMbfW+ePVeUR8LuAlduHTj2fVdFzk4KgWvmnYKRBLAwacUVhSFWdIZ4ok+qontTW9vdsoLtPFZ2HDbR019d8I8bzLG5YQPHfs4XoRe/oEfJCiCPBMRBBj3zfu6CIl2I+DkN4e5tpGBBzIWh6y65Di9E9JnEROLUB4hor+2YgbSgZyrnbPSLU9/5vrJ1H0+R+U0sQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microchip.com; dmarc=pass action=none
+ header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector2-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8sTQKSvperSBJ1cOluezahYZ9bKqYVueX8+oKlr8zGg=;
+ b=Glmjl7cCMLqK9QTP3xWNx+wg0L6NIEZIJIw4AdDZjEuxOG6UBjOBGfp/OGDhm9lXBc6lHDclfoxcftQhv2wfdCygxD4Vo1WDx7DlxRkJwcKjDQJ11fhFyBq64eTjIJuyZBqDkXHb5K7EH/T7PG0Pk9pWOW/IqzuAK4py3XvBJMI=
+Received: from BY5PR11MB4419.namprd11.prod.outlook.com (2603:10b6:a03:1c8::13)
+ by BY5PR11MB4241.namprd11.prod.outlook.com (2603:10b6:a03:1ca::13)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3045.19; Sat, 30 May
+ 2020 18:42:26 +0000
+Received: from BY5PR11MB4419.namprd11.prod.outlook.com
+ ([fe80::d847:5d58:5325:c536]) by BY5PR11MB4419.namprd11.prod.outlook.com
+ ([fe80::d847:5d58:5325:c536%7]) with mapi id 15.20.3045.018; Sat, 30 May 2020
+ 18:42:25 +0000
+From: <Tudor.Ambarus@microchip.com>
+To: <p.yadav@ti.com>
+Subject: Re: [PATCH v9 13/19] mtd: spi-nor: sfdp: do not make invalid quad
+ enable fatal
+Thread-Topic: [PATCH v9 13/19] mtd: spi-nor: sfdp: do not make invalid quad
+ enable fatal
+Thread-Index: AQHWMnVIZMEYjFqkx0Olg5PzC+IdA6jA/zMA
+Date: Sat, 30 May 2020 18:42:25 +0000
+Message-ID: <2267830.vuSd8QnXzO@192.168.0.120>
+References: <20200525091544.17270-1-p.yadav@ti.com>
+ <20200525091544.17270-14-p.yadav@ti.com>
+In-Reply-To: <20200525091544.17270-14-p.yadav@ti.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: ti.com; dkim=none (message not signed)
+ header.d=none;ti.com; dmarc=none action=none header.from=microchip.com;
+x-originating-ip: [94.177.32.156]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: ced1d5d5-284d-4cda-5fda-08d804c932c1
+x-ms-traffictypediagnostic: BY5PR11MB4241:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BY5PR11MB4241E672821EC385C242CFB9F08C0@BY5PR11MB4241.namprd11.prod.outlook.com>
+x-bypassexternaltag: True
+x-ms-oob-tlc-oobclassifiers: OLM:5516;
+x-forefront-prvs: 041963B986
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: gZwxSVRrO35JyKderyiQQdXs4lq7ih00xDcQrgznTOk5LwTAQxqWpPpqc43eeIxO1NlpwnL9TiImSgPhhMcH1xtdA+nq6wvszc5Vn/JLtlZETRC5yx43PfoTJ3uCIjleFA9n5IMnekFz+xin7nQcmBErFftO/2fwOtSFZFEazy4FuB39Y8cZK0OFDRH7vWj0uTilkjnDGSD+h8D21vzGoP/z6NEaFZovWhgyiNFZAVQ+chsOcWL6DUYZaTkb/daM0ih9eC01P+S04gsrRdC6y1atrJBjIQmgv3BzDQ7JxA6waxdCS+XWLIZ0u4ezDtlTzcYTC1o2CLAOAiKFdpfXmY4hUslFooM0ubNjyPeMCGuhckyQiFCT5hdW4jFklQNL
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR11MB4419.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(136003)(346002)(376002)(366004)(396003)(39850400004)(76116006)(6916009)(91956017)(8936002)(478600001)(66476007)(66946007)(64756008)(66556008)(66446008)(7416002)(54906003)(26005)(71200400001)(2906002)(83380400001)(186003)(8676002)(6486002)(316002)(5660300002)(6512007)(9686003)(86362001)(14286002)(53546011)(4326008)(6506007)(39026012);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata: wbLTqMlkieEw4dS9HrNYsU6xXWfX6FfumzTQ+gdi+SGxKvHMXcAE6mklM7HO6cbbnQUvUzaRCK5jtY7C0yXVGxMmKwnNCJ/jQ79+U6LHFgZpWagcqBoJRJGDJuVitcEOi51bc0dg2upvYE/8f+IQfjhjRdxfdtwE/i8ckm6GPuFUJDnYhRmUw5Mq8BQ8qMDtnZy82DwgB3jMVd//Q/w3IQGKHKdI/xxTME6ZtDWmDI9YpWskIWi+kDhg7d0eek+BzPGzzwx+ugJmIkZDNCxvW7LHhex9X1Zy+ZzhGiEKVIZmpnCCLtEIFGekVXrzDtFNUWJgGKjolprhMwGcZSN9Zd19hDWBnPuzxFeDf0BgNXUgyF478sTn3+m1av5Yxuk/P+bugM9gn00Ix2Uh3l3UHq+AgSH3ZsRMAbRfSqJI7F8VbZcBlxRekjQc1pMID11PI7EeVvbGBAE7L7jvEdL9aNoMG2BsBv5IsFdGhf5vpFo=
+Content-ID: <9626737D8CDCAE47BA3681563B01A1D7@namprd11.prod.outlook.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: BEBA1EC4334FD6D47E55445D4CD1D1D6C3162BAA74DD7D92426F224804E3E0D72000:8
-X-MTK: N
+X-MS-Exchange-CrossTenant-Network-Message-Id: ced1d5d5-284d-4cda-5fda-08d804c932c1
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 May 2020 18:42:25.8057 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: wKE+ZMPzkmlQjpVc+sfcl3IIL9Kd9OomJq0OW9NEjk23cNvTDWMr/nSRbLp9gebBwZyslr9TJFdaXf+qKSh9NRzM096Vbl0B4r4ICow8O1k=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR11MB4241
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200530_082403_474080_8493B52A 
-X-CRM114-Status: UNSURE (   5.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200530_114239_199989_1D4B98BD 
+X-CRM114-Status: GOOD (  15.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,36 +154,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Stanley Chu <stanley.chu@mediatek.com>, bvanassche@acm.org,
- andy.teng@mediatek.com, cc.chou@mediatek.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, beanhuo@micron.com, chaotian.jing@mediatek.com,
- linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
+Cc: alexandre.belloni@bootlin.com, masonccyang@mxic.com.tw, vigneshr@ti.com,
+ richard@nod.at, nsekhar@ti.com, Nicolas.Ferre@microchip.com,
+ boris.brezillon@collabora.com, michal.simek@xilinx.com,
+ Ludovic.Desroches@microchip.com, broonie@kernel.org,
+ linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ miquel.raynal@bootlin.com, matthias.bgg@gmail.com,
+ linux-mediatek@lists.infradead.org, linux-spi@vger.kernel.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-Samsung UFS devices are widely used in the market, however these devices need some special handling to support WriteBooster. Introduce a device quirk to handle this special requirement.
+On Monday, May 25, 2020 12:15:38 PM EEST Pratyush Yadav wrote:
+> EXTERNAL EMAIL: Do not click links or open attachments unless you know the
+> content is safe
+> 
+> The Micron MT35XU512ABA flash does not support the quad enable bit. But
+> instead of programming the Quad Enable Require field to 000b ("Device
+> does not have a QE bit"), it is programmed to 111b ("Reserved").
+> 
+> While this is technically incorrect, it is not reason enough to abort
+> BFPT parsing. Instead, continue BFPT parsing assuming there is no quad
+> enable bit present.
+> 
+> Signed-off-by: Pratyush Yadav <p.yadav@ti.com>
+> ---
+>  drivers/mtd/spi-nor/sfdp.c | 8 +++-----
+>  1 file changed, 3 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/mtd/spi-nor/sfdp.c b/drivers/mtd/spi-nor/sfdp.c
+> index 052cabb52df9..9fd3d8d9a127 100644
+> --- a/drivers/mtd/spi-nor/sfdp.c
+> +++ b/drivers/mtd/spi-nor/sfdp.c
+> @@ -576,10 +576,6 @@ static int spi_nor_parse_bfpt(struct spi_nor *nor,
+> 
+>         /* Quad Enable Requirements. */
+>         switch (bfpt.dwords[BFPT_DWORD(15)] & BFPT_DWORD15_QER_MASK) {
+> -       case BFPT_DWORD15_QER_NONE:
+> -               params->quad_enable = NULL;
+> -               break;
+> -
+>         case BFPT_DWORD15_QER_SR2_BIT1_BUGGY:
+>                 /*
+>                  * Writing only one byte to the Status Register has the
+> @@ -616,8 +612,10 @@ static int spi_nor_parse_bfpt(struct spi_nor *nor,
+>                 params->quad_enable = spi_nor_sr2_bit1_quad_enable;
+>                 break;
+> 
+> +       case BFPT_DWORD15_QER_NONE:
+>         default:
+> -               return -EINVAL;
+> +               params->quad_enable = NULL;
+> +               break;
 
-Currently Bean Huo is doing some nice cleanup work for device descriptor length so our series will have merge conflict. I would like to submit this series first for review and then resend with conflict fix after Bean's series gets accepted.
+I would just add a dev_dbg message and break the switch.
+	dev_dbg(nor->dev, "BFPT QER reserved value used.\n");
+	break;
 
-Stanley Chu (2):
-  scsi: ufs: Support WriteBooster on Samsung UFS devices
-  scsi: ufs-mediatek: Support WriteBooster on Samsung UFS devices
+You will then have to set params->quad_enable = NULL; in a post_bfpt hook.
 
- drivers/scsi/ufs/ufs-mediatek.c |  3 +++
- drivers/scsi/ufs/ufs-sysfs.c    | 12 ---------
- drivers/scsi/ufs/ufs.h          |  1 +
- drivers/scsi/ufs/ufs_quirks.h   |  7 +++++
- drivers/scsi/ufs/ufshcd.c       | 45 ++++++++++++++++++++++++++++++++-
- drivers/scsi/ufs/ufshcd.h       | 20 +++++++++++++++
- 6 files changed, 75 insertions(+), 13 deletions(-)
+Cheers,
+ta
 
--- 
-2.18.0
+
+
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
