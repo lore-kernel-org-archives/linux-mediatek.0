@@ -1,24 +1,24 @@
-Return-Path: <SRS0=uE9q=7M=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=vJVy=7N=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 167F8C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2020 20:43:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B257C433E0
+	for <linux-mediatek@archiver.kernel.org>; Sun, 31 May 2020 07:10:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DAEE42074A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2020 20:43:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 54979207BC
+	for <linux-mediatek@archiver.kernel.org>; Sun, 31 May 2020 07:10:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NumaP7eX";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="bgIt0gR5";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="rrY+Y8Hw"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DAEE42074A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ly4idjHd";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="iqwy57cv";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="aQ5f3tsd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 54979207BC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,114 +27,115 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E6CXQjY1L+TmJdaleR7/9EmTZ5tXqc56Vbrx6Nwo3hI=; b=NumaP7eX2GX2y8
-	sJ6++TzEcPdWX3nr6L9TXUteCGF3Hz077RnPd+cJkufjBBaDjy7KEtScRLXJpIPLbzF5fHLKYwUvN
-	qyCmwC9YOGOKf3RciCIoOaFUNoztbbzkqEZzBnMELjEnuj6eTYZO6xSnFSxiI3mWA1DPGEITX+XpF
-	yWF42X+LzE86lX8cR8C4vzH7fZF9srmL43TKCZ8YHKR/hvynUrQ6NeH+61+HDSwaVg3Q1Zb8F9oz5
-	hCNMP9KCmeMXFhZUZkvIEclTz5govToQHdz8kIoJEwq8LSLbP39eHsRe/yMir6ZkghNvYumvkNBTD
-	y1s92gqaI3tCQWA5bZlQ==;
+	List-Owner; bh=R2gqxKj1kZ+8I8dt8o9Xb4wAlxTRoDwiOmbcHBxqQCM=; b=ly4idjHd2k8lOt
+	YS/QDsem40mk3L/aM3CLuAyegdMq/7iRwKa612ehimjBNn41HT6qJ2cOgIx3CHXWv3Dg8yTT7nmQ5
+	Vlt1mOvIG574ncm+Gd/ix1AP2Jf49qXU/RSoo/Iq2rx6CBgdFgkUHVmj6CSroPHM6jzR5k2pWmq1Z
+	Idl191UFxaPRdM3bESXT0hJ5bDq1tdJa6E+emX1GLdc1O7GZvRGZ0VmkkB2eZhDVQw7fDM8u/UiGx
+	Y1yYdycRlySBHVABmM23GHSPMzMn4JdTnQJRafpmRLGvno8YRlm5MSqEAR5W/vbGWAum644EcwhQN
+	E7OfU5Jso0yepvdwGZYg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jf8KI-0000pO-7u; Sat, 30 May 2020 20:43:30 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1jfI7B-0000nN-Bb; Sun, 31 May 2020 07:10:37 +0000
+Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jf8KG-0000oh-KS; Sat, 30 May 2020 20:43:29 +0000
+ id 1jfI78-0000mm-BQ; Sun, 31 May 2020 07:10:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1590871409; x=1622407409;
+ t=1590909034; x=1622445034;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=JSWXZ1asivqI/Bn+lwzUAb94SWA5UJ9jNigR3k+tsWY=;
- b=bgIt0gR5nDmxd52fSjnTyCiKgHO+6aWQ+4iMEc7NUeGjARLHIU3t4PHk
- 9NBhY88awz7RhWZWcN9pnk6hqcxfE6I7exkwOOvjnsiQm0ZjuAf/kjCJU
- NYVD3ttrIbPq+qQvcoIXi5J1EX+3vV11xGEOzHsYT4uG4MEOU5quQf98A
- NBRS1vTIOQlv2dUXUibS54YIAzcXAAJ4U/G+NP4ymnorfnjerZK9CbclY
- BO9PWa7LY7dO41Sq8QDKubolRTRcxdEkawDptC7wgswYdA/MYoT5h51rz
- d7Xqoe314uJL4+3JdhZXR2b3qX+PmE/MhfRhGBYDgcJPV0w4+oIsizaqx w==;
-IronPort-SDR: JjzEGWZlt95Yz1k4vKfHIbrdCwQNsITk+U9gm5JokzFiAH9u8zvHHH/6Fipe6DXVp1abgmJ4gt
- AAsoOcAr9NU4y2NVgYmSnWXY0W0w4F2MWn2FKeFYUBASxPUUvtAucOOJIrP6u6CIrnIKnq6Gwj
- 47BP5F0W+nnOgEjwVp0Nvbl2f6suv7NAgWxK1ZUxWvCbaQQUVi1CcyDeeYTeHOW9iR/XdsxkBO
- k1sFdvrSWYfKDH2leOxIvVEgZIUDPtwFP5Z6UJ4Q/VgObtXrJkd/VeZUFR+U3vs1+96vM/tCk9
- F18=
-X-IronPort-AV: E=Sophos;i="5.73,454,1583164800"; d="scan'208";a="140285836"
-Received: from mail-sn1nam02lp2053.outbound.protection.outlook.com (HELO
- NAM02-SN1-obe.outbound.protection.outlook.com) ([104.47.36.53])
- by ob1.hgst.iphmx.com with ESMTP; 31 May 2020 04:43:25 +0800
+ bh=fG0JEIqXnV4y9i65wTBe4BIVP3DkW9SRn4rn99xTo84=;
+ b=iqwy57cvOCMxP0gaKPxqvqi1khN6L+PdP9oxnAHCqryfRD7xX0G2Xnzn
+ vTwfoBOWJAAJjy6k3Xk8mGM8wfAdMb/HD216+JelMyXVaKj75TUS9NOQi
+ GjMWFBYZssDC1d0C4PdNoWHQQbnZBhKcsuNy9IXwG1BWDYsozPqIFiKvn
+ 0G+z5q3l2ESfNBfL7ShX7kLbyoe1jjZjsWjqWWlxpAwV9t/MTTXrj9Uw7
+ YW8HKaaQY4d1oP+aiZpqVno+bXjPBE5HXHL7TTdYjp6H4zjC2alu9Z6MJ
+ pCm2zA27Al7oZUTkVyIuQkx4ICed1AUmGBH8LhaNwRykgCNiqZZ+KRcW9 Q==;
+IronPort-SDR: XJjxKy93/8U+s3QHfR4OYzyPFoBcuZ+h9h+vFmoXVlf9p/jY24q+QSGh7vtw8Ct1JTR5VfqcA9
+ 0kopqxfJmuJG/3SKoqqoiWTmd4BGTk/WOP0rIMZS2l8oh9VW4VLx1NVhZ2I9/qZuLLsRBzj2wi
+ BTBrgoI2j3YWkGv4us5Nf+i6b25S3hbSdfZSynnNYlqr0UJT6mBGddu7rLWgbews/M3ycsCxKi
+ 4Rk1rYYSEFfo8xi/vH7zDFo+lGNMRqYztM5pS1b/NDAWgp1nphpepzSd+Y9bOQmTxWhUfQRMQC
+ uA8=
+X-IronPort-AV: E=Sophos;i="5.73,455,1583164800"; d="scan'208";a="143207807"
+Received: from mail-dm6nam11lp2175.outbound.protection.outlook.com (HELO
+ NAM11-DM6-obe.outbound.protection.outlook.com) ([104.47.57.175])
+ by ob1.hgst.iphmx.com with ESMTP; 31 May 2020 15:10:25 +0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=EurVlIPeKY/ejD/cT8uCcQnc6tH7eBnQZVJCZprWDdPL0emeWoJ4bgOnKlb77oPNcMEqFbLSOSnvRTsQddnikYVN3IytgSlyURFW0VxqN7fc9bU+AytoVXxojXUZ88pArijpH7v14eYX5q7NtRw0GYMWtuLk2mDioNR08hAMkxqJjNI67JyfRxeOekLzbxfLJeZNWsl6gl3WjqS8cE3MBQ41nd8/xs256I6Uk16G4tXWZIZN3ZmWBq3u5tJ2/JfZPYPsAeaayE1Z90dbajMMYtRxNqKJuXcpcFg9jTn/cMCxTrTVekB0I89KAtnWpGx9SA1sMVEppLssoxzst1Ry8Q==
+ b=TI5b/L5PsKcsBOCoiefuCR5zPFUHKuWutd0uOn+a8PeHuAKzCKCT+lxWrfQEgxb+L7fNMY2d2Pz4GxBEZLUBuffY+doY0uNJAMMZHgxkjLJ64aYZk/Ur3fbmq0mfKrGRQrEscPTTTjQisVUYT2qq455Hcnuf8/36YOfGPm+saPs0u9Qaisn8cLcj9WSajLcuDIAcrQL1RbSEl89Xr004y5ULfnKM7FXkdvyJOc7lYHLpnkxBPCCGXdXWIdiYF4COwkfHM/yuyNT6M4Dl/QZv17KaP+Q0DeJM62PUWK6iWcXMqxNGeZecROBWy0f0EMWQJMXCq8D08gpyI6x5JlZ5Lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JSWXZ1asivqI/Bn+lwzUAb94SWA5UJ9jNigR3k+tsWY=;
- b=KUWax2Lq94ec9MVb8fubueuqWnO65z12gwOXUF92V67s4zJmprt2XzYpoE6Wr4Q5IR8LeaRmCrYDS+0EeG9rjE64V5pIORp1qtQK4muOSRLJFrYw3kg7tTaIcilFxFu/QrA4pj+7INBO+qlP9QEqxK9bFIItO1Xdxt/Ps9qVlPrjqVbPYgNvz2t4PNmIkP3cDmbgvbVRrh61HvtRUt6RBhF5xcabfq2ip+P1rdFOHk/EWiS0UHhkTyrEHL70iQOwHLTfAxxRcgvV+Q1WgMC6a8HDlfVSZGv6pyHewos3PHYqagNoPP+wQnLd4DaIazCtnE9veUfAXoaOKBAU7LmeOw==
+ bh=kDsm991YBM5V6T+/nY1mlYwBIeM8ixosoK0GhYvrE0M=;
+ b=U9VYRdFtomgwZ4xv7XgR3RrlhVMU5hRFx8Ed60ZcT7s7EH6bzjSdPMKTGKRx9o4cU4pBhHSDkmcFPx3pzgBQdbxA2qvPU2QmDlUV3CZJcp7NpZ5YeM+dcBE7CG69+PdDdCXgeroB006VOPsg3sERw4j5FjjWrt6UFko2lQjUJtqtanGj8htsm39iP3k1OZ0jVdEIe8HRNS9c9oC9M6ssvvVtlnMAM+x9H21FqSK+BvKjp6LhPfYiUkoEK2V/A2j9g5xADZi5q42NwghNpnXuqe/R1mFYhrVKN6SqW5m3M2VDf00krVSh486/nbZpXKiCw/4UoeL/YxuKw0HcNdEYJw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
  header.d=wdc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JSWXZ1asivqI/Bn+lwzUAb94SWA5UJ9jNigR3k+tsWY=;
- b=rrY+Y8Hw41SrfMlAbU+Qa9+46CD0hj6or3iNwoxg8mV683lVOo1fTMj4Ba62yH7nTIo0vkArwLW+3hmbKiAJqx1GYg3Zao8awl4fSk5Aw7p97jwefOv/jDQ4Q0/OD2WW1jN4jx0r3gZ7HYQXQgGwX1Tm6aQQI8U/d9URLJrn5PU=
+ bh=kDsm991YBM5V6T+/nY1mlYwBIeM8ixosoK0GhYvrE0M=;
+ b=aQ5f3tsdgub5hA8Pkql40/exgtxxvWj2GNUyfzOp48lffvP09/G5ledPe8RyIo+SYF5IlxRkwWBjlJo2NF0/MsBuNimtaBPnGRfZuzOI1cVPlGXPn86J4EMpZldjhTFGVCXsQn9bTMW16jdtj8uMECiLjEPdhEnJ9VazVEEJuuY=
 Received: from SN6PR04MB4640.namprd04.prod.outlook.com (2603:10b6:805:a4::19)
- by SN6PR04MB5070.namprd04.prod.outlook.com (2603:10b6:805:9e::30)
+ by SN6PR04MB4960.namprd04.prod.outlook.com (2603:10b6:805:98::16)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3045.21; Sat, 30 May
- 2020 20:43:23 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3045.19; Sun, 31 May
+ 2020 07:10:23 +0000
 Received: from SN6PR04MB4640.namprd04.prod.outlook.com
  ([fe80::9cbe:995f:c25f:d288]) by SN6PR04MB4640.namprd04.prod.outlook.com
- ([fe80::9cbe:995f:c25f:d288%6]) with mapi id 15.20.3045.022; Sat, 30 May 2020
- 20:43:23 +0000
+ ([fe80::9cbe:995f:c25f:d288%6]) with mapi id 15.20.3045.022; Sun, 31 May 2020
+ 07:10:23 +0000
 From: Avri Altman <Avri.Altman@wdc.com>
 To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
  <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
  <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
  <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>
-Subject: RE: [PATCH] scsi: ufs: Remove redundant urgent_bkop_lvl initialization
-Thread-Topic: [PATCH] scsi: ufs: Remove redundant urgent_bkop_lvl
- initialization
-Thread-Index: AQHWNoxVzZCnTk5hMEqJuDv2sCuWsKjBGI0w
-Date: Sat, 30 May 2020 20:43:23 +0000
-Message-ID: <SN6PR04MB4640DB0A4B72E086B851D287FC8C0@SN6PR04MB4640.namprd04.prod.outlook.com>
-References: <20200530141200.4616-1-stanley.chu@mediatek.com>
-In-Reply-To: <20200530141200.4616-1-stanley.chu@mediatek.com>
+Subject: RE: [PATCH v2 1/5] scsi: ufs-mediatek: Fix imprecise waiting time for
+ ref-clk control
+Thread-Topic: [PATCH v2 1/5] scsi: ufs-mediatek: Fix imprecise waiting time
+ for ref-clk control
+Thread-Index: AQHWNZrO/+hW/sT/fkuA3Q4XuyNplKjByVwQ
+Date: Sun, 31 May 2020 07:10:23 +0000
+Message-ID: <SN6PR04MB464015BDF84DF7A9779BEB41FC8D0@SN6PR04MB4640.namprd04.prod.outlook.com>
+References: <20200529092310.1106-1-stanley.chu@mediatek.com>
+ <20200529092310.1106-2-stanley.chu@mediatek.com>
+In-Reply-To: <20200529092310.1106-2-stanley.chu@mediatek.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 authentication-results: mediatek.com; dkim=none (message not signed)
  header.d=none;mediatek.com; dmarc=none action=none header.from=wdc.com;
-x-originating-ip: [77.138.4.172]
+x-originating-ip: [212.25.79.133]
 x-ms-publictraffictype: Email
 x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: e6978894-7656-4b2c-a1a6-08d804da1864
-x-ms-traffictypediagnostic: SN6PR04MB5070:
-x-microsoft-antispam-prvs: <SN6PR04MB50709CD858D22571EA6C611BFC8C0@SN6PR04MB5070.namprd04.prod.outlook.com>
+x-ms-office365-filtering-correlation-id: 4dcef128-856b-40b5-c5d1-08d80531b000
+x-ms-traffictypediagnostic: SN6PR04MB4960:
+x-microsoft-antispam-prvs: <SN6PR04MB49607C408C43D7E830FC9217FC8D0@SN6PR04MB4960.namprd04.prod.outlook.com>
 wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:4303;
-x-forefront-prvs: 041963B986
+x-ms-oob-tlc-oobclassifiers: OLM:5516;
+x-forefront-prvs: 0420213CCD
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: u1472h3i3t1EqrcFSINRmohDAPXiqnycJUzkd/Lih8yoBxCqAzpr+2zU+1YrTBK71m2ObkxBmLoJaiLDI2fk9iMM6pRCMDHD8n807HMFEBxRTGAuQO7jrQAtSnIsl0i9NeaOOa8+uma9Cav4wabX+wxHjOS8UsIY0liq7O394dhQPQf3qXwlUwnsnV6vIebFhQCildSlsrLKyNJiIdZQHsWG+S3tgK0iPX6tVWDb0NNHt/rwfMJW2T5H9Utu6OT1zbydgHYaSh8XuFVqpq5AohRYqC6rSLDg8HtQkdLvDo4O4pTghU8PJnvRs9+V3ibT6zXg/c9S4lPNik0OFsWckQ==
+x-microsoft-antispam-message-info: /+tI1TaDy5PDCJlBW+NWsqLw4ZAkXTWcJE6vWif7TAgHxtnQjgXt9ZoEB0imLj6nZp9d43BcMVGW8MvWOjy5q+AYPxH83W+z0chv5UdqZhSC/nfnQvmsnMH/M1Nv4tz1Ons0GG+5YmARvYeEcE2QbPIkV9LXL6jK7OsK0c4X8yXfPgXr7TotrJJs4yKMuDo+kxk0jvp/xotS1SyCffSH8iyeKKUfaxUsFoyFiizdU3WXTdwLEmLK0WJJwU2gJLWuuOqolVv3eIU0Wjoz7pgCnniab0YrvWnMOqpNcraiM6uYogxD0x2uYVGmozX1Sorf
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:SN6PR04MB4640.namprd04.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(4636009)(346002)(396003)(376002)(136003)(366004)(39860400002)(6506007)(64756008)(4326008)(2906002)(110136005)(8936002)(86362001)(316002)(52536014)(66556008)(7696005)(71200400001)(54906003)(66446008)(8676002)(83380400001)(9686003)(478600001)(55016002)(33656002)(5660300002)(66946007)(76116006)(4744005)(66476007)(7416002)(26005)(186003);
+ SFS:(4636009)(366004)(39860400002)(396003)(376002)(346002)(136003)(478600001)(4326008)(8936002)(2906002)(186003)(33656002)(83380400001)(7416002)(54906003)(110136005)(26005)(86362001)(316002)(66556008)(6506007)(7696005)(66446008)(8676002)(64756008)(52536014)(76116006)(71200400001)(5660300002)(55016002)(9686003)(66946007)(66476007);
  DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: vLnW+wdtxKNGnH52LF/moAv98ZCFY9DXLzTWeYyMPCx6u8lPHjYgN7QRmSa/+DpqRlGL5c7OzlcoAsMBmuBpaeu3xqsIsh77bNybOUwonh3+0oz7Zzlypj8qP/3t9iDeFJIKZGSmvTKtLZc/wKuNz5c5RXGSd6Kf9ziqGCUwy8oKdaMjGcy1ys3fqV6AKdOd1SS6TiWmfu7h5GwCWP2xnx+5ffS7QStcUn078pWQyXj8XELNff3YBjmW6QO9qOefI7lmo8Hz0C/6V1VNIhF6vgyJ2Y+1/qpI0zwYuyp23AwtPIJCcPWFXaTpzPl6fdtsmkQSNHcZVQO5uiQ1JRRUADxx9DpVvHhIH0Q5TQJKsp4A34/OZ9oda0y+xMze/wbgpye2lL3JkI8rWq0BzP5719ZAwCThDP/48Of2OgNereYWoerYvEtrSmUSHD+qR4yceUBP5vXsl+H8D2h/WfeKx3eiJW9IvV6O4+igKRMP/Lc=
+x-ms-exchange-antispam-messagedata: gJ1Ag+p1/IyicQn8bNSp7Cu2mT2JJy/Y/du03DZ1v4eLbBW3Hq9KmjrIQbqvlsu/NrKRbywVSctwO8h7TwtqmlhvaWMJNsYNpOx+DjoSeIAJlM0QJ2cla5/oVg8isC5yDG4XF5hBW1zwPK2M6G+DC7tKdKlfKY/Zv3L6Bg74fsmhz644TjJOc/CFwNp/P/jq2LZ/f5WP8Af40TbC8FIPpV/No60jzWuX7z8RYSURrKTiw2/CuND2qqtMWwTMCnB2a5AQopO3SiX0DOCYwrXP5iFWi0HAX1H1eENvfj0AbYTviuBblg2nKTjCfq/1aKQVNELZPSdFnfbOmb4y821+k1uEJsE6+fIqTUJzo19W0brxqSVVD/Iw+ln73ZU/bSGa0Ap6F7E1fxR9mdl7nHD+2HHLREseKcB3ZFQSnZL2W7zLIC8BsZklK6ssnEHKAvLXXGa/Md4HoeyKg3fPAWZKhR265yeFF0ro1aDjx1qNacc=
 x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e6978894-7656-4b2c-a1a6-08d804da1864
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 May 2020 20:43:23.0225 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4dcef128-856b-40b5-c5d1-08d80531b000
+X-MS-Exchange-CrossTenant-originalarrivaltime: 31 May 2020 07:10:23.5663 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: c3mFjrpBVXI3NdEJh1t3YhWxGt2pqDqZXI4HGq5SUznxkbN/TF8M4Wd+BF6P1XDedIZQa5PF5Wm1rHUNVlS69Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB5070
+X-MS-Exchange-CrossTenant-userprincipalname: AtPQ7jNFvbtqPlu22JJcyQsyM2SHFu88wMCZzkss7H9SDsjyBNOwmQXDJh+iqa+lMZaDj2y8TpyO/G/LJsLnWA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB4960
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200530_134328_762197_B3F39DB7 
-X-CRM114-Status: UNSURE (   9.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200531_001034_432482_6890B009 
+X-CRM114-Status: GOOD (  17.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -146,7 +147,8 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "bvanassche@acm.org" <bvanassche@acm.org>,
+Cc: "pengshun.zhao@mediatek.com" <pengshun.zhao@mediatek.com>,
+ "bvanassche@acm.org" <bvanassche@acm.org>,
  "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
  "cc.chou@mediatek.com" <cc.chou@mediatek.com>,
  "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
@@ -167,13 +169,76 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
  
 > 
-> In ufshcd_probe_hba(), all BKOP SW tracking variables can be reset
-> together in ufshcd_force_reset_auto_bkops(), thus urgent_bkop_lvl
-> initialization in the beginning of ufshcd_probe_hba() can be merged
-> into ufshcd_force_reset_auto_bkops().
+> Currently ref-clk control timeout is implemented by Jiffies. However
+> jiffies is not accurate enough thus "false timeout" may happen.
+> 
+> Use more accurate delay mechanism instead, for example, ktime.
 > 
 > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> Reviewed-by: Andy Teng <andy.teng@mediatek.com>
 Reviewed-by: Avri Altman <avri.altman@wdc.com>
+
+> ---
+>  drivers/scsi/ufs/ufs-mediatek.c | 7 ++++---
+>  drivers/scsi/ufs/ufs-mediatek.h | 2 +-
+>  2 files changed, 5 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+> index d56ce8d97d4e..523ee5573921 100644
+> --- a/drivers/scsi/ufs/ufs-mediatek.c
+> +++ b/drivers/scsi/ufs/ufs-mediatek.c
+> @@ -120,7 +120,7 @@ static int ufs_mtk_setup_ref_clk(struct ufs_hba *hba,
+> bool on)
+>  {
+>         struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+>         struct arm_smccc_res res;
+> -       unsigned long timeout;
+> +       ktime_t timeout, time_checked;
+>         u32 value;
+> 
+>         if (host->ref_clk_enabled == on)
+> @@ -135,8 +135,9 @@ static int ufs_mtk_setup_ref_clk(struct ufs_hba *hba,
+> bool on)
+>         }
+> 
+>         /* Wait for ack */
+> -       timeout = jiffies + msecs_to_jiffies(REFCLK_REQ_TIMEOUT_MS);
+> +       timeout = ktime_add_us(ktime_get(), REFCLK_REQ_TIMEOUT_US);
+>         do {
+> +               time_checked = ktime_get();
+>                 value = ufshcd_readl(hba, REG_UFS_REFCLK_CTRL);
+> 
+>                 /* Wait until ack bit equals to req bit */
+> @@ -144,7 +145,7 @@ static int ufs_mtk_setup_ref_clk(struct ufs_hba *hba,
+> bool on)
+>                         goto out;
+> 
+>                 usleep_range(100, 200);
+> -       } while (time_before(jiffies, timeout));
+> +       } while (ktime_before(time_checked, timeout));
+Nit: you could get rid of time_checked if you would use ktime_compare(ktime_get(), timeout) > 0
+
+Thanks,
+Avri
+
+> 
+>         dev_err(hba->dev, "missing ack of refclk req, reg: 0x%x\n", value);
+> 
+> diff --git a/drivers/scsi/ufs/ufs-mediatek.h b/drivers/scsi/ufs/ufs-mediatek.h
+> index 5bbd3e9cbae2..fc42dcbfd800 100644
+> --- a/drivers/scsi/ufs/ufs-mediatek.h
+> +++ b/drivers/scsi/ufs/ufs-mediatek.h
+> @@ -28,7 +28,7 @@
+>  #define REFCLK_REQUEST              BIT(0)
+>  #define REFCLK_ACK                  BIT(1)
+> 
+> -#define REFCLK_REQ_TIMEOUT_MS       3
+> +#define REFCLK_REQ_TIMEOUT_US       3000
+> 
+>  /*
+>   * Vendor specific pre-defined parameters
+> --
+> 2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
