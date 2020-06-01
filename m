@@ -2,23 +2,22 @@ Return-Path: <SRS0=JxEE=7O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D06FC433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 05:10:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C7771C433E1
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 05:19:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0DCC0206C3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 05:10:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1C29D2073E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 05:19:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="el8fARdo";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Z6IQTTG7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0DCC0206C3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="edzuDdj6";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="DoVUV87u"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1C29D2073E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,55 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SlLDS/PMFgklEr3yh42vemDoee6ojFvtSrBzoyL7N/4=; b=el8fARdolnM4XP
-	d5mdXc8Q2u2zFq/FzLMG4bMqUeTpcmXLWU7kCXbp0ljLSkhEh3JfNk1TUVgDnjU+wfKxbbG8zQRzc
-	P8wIrv5W+YoPM4WhacMQ4MEhmHBT/Et1Ic18SbhbDYfO3KzW35JvpGMFFwI3HFcMbT9QEvJtb9hVG
-	eDvDIwgB5LzFIGVQVTdZmgArSPv4m/om3Suy8LMs6ZlbbRrsW9G5d4C6W8XyzTwTYDPqSq4GzHOlq
-	VSWAYDDG62f0x936u94iHd0hNi0kzjno/L9bjSyeBjvVK+h9Q/MwBZDrK6rmxFkleuvsoeb+lR4uR
-	GvhBTRE2jMUABBFm0HwQ==;
+	List-Owner; bh=5z4/OtN9UMGGEqJfqfebqhAQsZT43HBLClFv9dke3SY=; b=edzuDdj6mn4TmF
+	EWjN/oIyJBxeK7S2Bl9PjFbp8Vo1MSTLeHsI/g8DMkl7so+6+q4KyKBrlcn++n1loEUhapaPtrIXD
+	UtUuLAm7xO3A2ERAE6c4/MxQD2NTDY0WVHIrZMyGCHsnZhCp1hKt8r5AztHMfwrKjDMj5Ol4wBMab
+	CpsyWMAfETWZ0Jy/BUXY3yJRfIQUlOQyacFFVdrS6yOeUhf1cT3J4/r7yqinYvsPU20LrbipSkbiC
+	bFw00p8DZvwbl4N9l9FeQ3oz1QAa/2bSZ/a5UkcQkL/daI8nFvBXtxWou1GlvkH6/MjTqMlYYKLum
+	/kjwp0X2Fjd8SK2SeraQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jfchu-0000nB-6m; Mon, 01 Jun 2020 05:09:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jfcqv-0007SK-TT; Mon, 01 Jun 2020 05:19:13 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jfchf-0000bp-BL; Mon, 01 Jun 2020 05:09:40 +0000
-X-UUID: 59d42904da2342c19f4468e3bcf68f8f-20200531
+ id 1jfcql-0007I1-G1; Mon, 01 Jun 2020 05:19:04 +0000
+X-UUID: 84cd71ba3368496883757330a86e0670-20200531
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=RNWE5TJREuUvwLyEEAgmJnR4EeREVK9B/oaXuDbjwU8=; 
- b=Z6IQTTG7N+PfGJiY2aw8KHy6ac4Ip6/PQr7413+yA+Enmwq0Bs4oiB4HZVW4XtBURaSP95pOjGAjV6vo/PsFNt8X8LscmUsDap1dxbsUvmSZzusaYDbfnPrGm575I84T0LI24aN4ZRol3dMWnhy79JDSjRKEBVldrf7G4Qb3eZM=;
-X-UUID: 59d42904da2342c19f4468e3bcf68f8f-20200531
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ bh=yDR7fBW0w3Clej91Pw1AhT0fTfnOfzcSfnAFnKMCDeY=; 
+ b=DoVUV87uBxkEMmplz4/xEp9cu/u1MtfoPsZnxc8qj6gmpZbdnqzzt5wyLPDMWDKogyz9GJgBoHlZOwPorARoytXhxe0aeVSrn4toZuDySoMBGbEpYNyGjAdB9IHSLZPLcgksYcX97rLZVdqarAovJ2alQqRnpct0GLhqHwwgBQ8=;
+X-UUID: 84cd71ba3368496883757330a86e0670-20200531
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <walter-zh.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2144253022; Sun, 31 May 2020 21:09:14 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 31 May 2020 22:09:24 -0700
+ with ESMTP id 1201449112; Sun, 31 May 2020 21:18:42 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 31 May 2020 22:10:55 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 1 Jun 2020 13:09:23 +0800
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 1 Jun 2020 13:10:41 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 1 Jun 2020 13:09:22 +0800
+ Frontend Transport; Mon, 1 Jun 2020 13:10:41 +0800
 From: Walter Wu <walter-zh.wu@mediatek.com>
 To: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko
  <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, "Paul E . McKenney" <paulmck@kernel.org>, "Josh
- Triplett" <josh@joshtriplett.org>, Mathieu Desnoyers
- <mathieu.desnoyers@efficios.com>, Lai Jiangshan <jiangshanlai@gmail.com>,
- Joel Fernandes <joel@joelfernandes.org>, Andrew Morton
- <akpm@linux-foundation.org>, Andrey Konovalov <andreyknvl@google.com>
-Subject: [PATCH v7 1/4] rcu: kasan: record and print call_rcu() call stack
-Date: Mon, 1 Jun 2020 13:09:27 +0800
-Message-ID: <20200601050927.1153-1-walter-zh.wu@mediatek.com>
+ <matthias.bgg@gmail.com>
+Subject: [PATCH v7 3/4] kasan: add tests for call_rcu stack recording
+Date: Mon, 1 Jun 2020 13:10:45 +0800
+Message-ID: <20200601051045.1294-1-walter-zh.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: D8A8F87A7EBE82FF4344D1D95091710F4072036184D117EAF9E3DB45434009172000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200531_220939_391171_1317B47D 
-X-CRM114-Status: GOOD (  15.24  )
+X-CRM114-CacheID: sfid-20200531_221903_539815_5BC2EFA1 
+X-CRM114-Status: UNSURE (   9.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,209 +93,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This feature will record the last two call_rcu() call stacks and
-prints up to 2 call_rcu() call stacks in KASAN report.
-
-When call_rcu() is called, we store the call_rcu() call stack into
-slub alloc meta-data, so that the KASAN report can print rcu stack.
-
-[1]https://bugzilla.kernel.org/show_bug.cgi?id=198437
-[2]https://groups.google.com/forum/#!searchin/kasan-dev/better$20stack$20traces$20for$20rcu%7Csort:date/kasan-dev/KQsjT_88hDE/7rNUZprRBgAJ
+Test call_rcu() call stack recording and verify whether it correctly
+is printed in KASAN report.
 
 Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-Suggested-by: Dmitry Vyukov <dvyukov@google.com>
-Acked-by: Paul E. McKenney <paulmck@kernel.org>
 Reviewed-and-tested-by: Dmitry Vyukov <dvyukov@google.com>
 Reviewed-by: Andrey Konovalov <andreyknvl@google.com>
 Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
 Cc: Alexander Potapenko <glider@google.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>
-Cc: Josh Triplett <josh@joshtriplett.org>
-Cc: Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
-Cc: Lai Jiangshan <jiangshanlai@gmail.com>
-Cc: Joel Fernandes <joel@joelfernandes.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
 ---
 
 Changes since v6:
-- fix typo
+- renamed the variable name in testcase
 
 ---
- include/linux/kasan.h |  2 ++
- kernel/rcu/tree.c     |  2 ++
- mm/kasan/common.c     |  4 ++--
- mm/kasan/generic.c    | 21 +++++++++++++++++++++
- mm/kasan/kasan.h      | 10 ++++++++++
- mm/kasan/report.c     | 28 +++++++++++++++++++++++-----
- 6 files changed, 60 insertions(+), 7 deletions(-)
+ lib/test_kasan.c | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
 
-diff --git a/include/linux/kasan.h b/include/linux/kasan.h
-index 31314ca7c635..23b7ee00572d 100644
---- a/include/linux/kasan.h
-+++ b/include/linux/kasan.h
-@@ -174,11 +174,13 @@ static inline size_t kasan_metadata_size(struct kmem_cache *cache) { return 0; }
+diff --git a/lib/test_kasan.c b/lib/test_kasan.c
+index e3087d90e00d..19c72c1501ef 100644
+--- a/lib/test_kasan.c
++++ b/lib/test_kasan.c
+@@ -792,6 +792,35 @@ static noinline void __init vmalloc_oob(void)
+ static void __init vmalloc_oob(void) {}
+ #endif
  
- void kasan_cache_shrink(struct kmem_cache *cache);
- void kasan_cache_shutdown(struct kmem_cache *cache);
-+void kasan_record_aux_stack(void *ptr);
- 
- #else /* CONFIG_KASAN_GENERIC */
- 
- static inline void kasan_cache_shrink(struct kmem_cache *cache) {}
- static inline void kasan_cache_shutdown(struct kmem_cache *cache) {}
-+static inline void kasan_record_aux_stack(void *ptr) {}
- 
- #endif /* CONFIG_KASAN_GENERIC */
- 
-diff --git a/kernel/rcu/tree.c b/kernel/rcu/tree.c
-index 06548e2ebb72..36a4ff7f320b 100644
---- a/kernel/rcu/tree.c
-+++ b/kernel/rcu/tree.c
-@@ -57,6 +57,7 @@
- #include <linux/slab.h>
- #include <linux/sched/isolation.h>
- #include <linux/sched/clock.h>
-+#include <linux/kasan.h>
- #include "../time/tick-internal.h"
- 
- #include "tree.h"
-@@ -2668,6 +2669,7 @@ __call_rcu(struct rcu_head *head, rcu_callback_t func)
- 	head->func = func;
- 	head->next = NULL;
- 	local_irq_save(flags);
-+	kasan_record_aux_stack(head);
- 	rdp = this_cpu_ptr(&rcu_data);
- 
- 	/* Add the callback to our list. */
-diff --git a/mm/kasan/common.c b/mm/kasan/common.c
-index 2906358e42f0..8bc618289bb1 100644
---- a/mm/kasan/common.c
-+++ b/mm/kasan/common.c
-@@ -41,7 +41,7 @@
- #include "kasan.h"
- #include "../slab.h"
- 
--static inline depot_stack_handle_t save_stack(gfp_t flags)
-+depot_stack_handle_t kasan_save_stack(gfp_t flags)
- {
- 	unsigned long entries[KASAN_STACK_DEPTH];
- 	unsigned int nr_entries;
-@@ -54,7 +54,7 @@ static inline depot_stack_handle_t save_stack(gfp_t flags)
- static inline void set_track(struct kasan_track *track, gfp_t flags)
- {
- 	track->pid = current->pid;
--	track->stack = save_stack(flags);
-+	track->stack = kasan_save_stack(flags);
- }
- 
- void kasan_enable_current(void)
-diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
-index 56ff8885fe2e..8acf48882ba2 100644
---- a/mm/kasan/generic.c
-+++ b/mm/kasan/generic.c
-@@ -325,3 +325,24 @@ DEFINE_ASAN_SET_SHADOW(f2);
- DEFINE_ASAN_SET_SHADOW(f3);
- DEFINE_ASAN_SET_SHADOW(f5);
- DEFINE_ASAN_SET_SHADOW(f8);
++static struct kasan_rcu_info {
++	int i;
++	struct rcu_head rcu;
++} *global_rcu_ptr;
 +
-+void kasan_record_aux_stack(void *addr)
++static noinline void __init kasan_rcu_reclaim(struct rcu_head *rp)
 +{
-+	struct page *page = kasan_addr_to_page(addr);
-+	struct kmem_cache *cache;
-+	struct kasan_alloc_meta *alloc_info;
-+	void *object;
++	struct kasan_rcu_info *fp = container_of(rp,
++						struct kasan_rcu_info, rcu);
 +
-+	if (!(page && PageSlab(page)))
++	kfree(fp);
++	fp->i = 1;
++}
++
++static noinline void __init kasan_rcu_uaf(void)
++{
++	struct kasan_rcu_info *ptr;
++
++	pr_info("use-after-free in kasan_rcu_reclaim\n");
++	ptr = kmalloc(sizeof(struct kasan_rcu_info), GFP_KERNEL);
++	if (!ptr) {
++		pr_err("Allocation failed\n");
 +		return;
++	}
 +
-+	cache = page->slab_cache;
-+	object = nearest_obj(cache, page, addr);
-+	alloc_info = get_alloc_info(cache, object);
-+
-+	/*
-+	 * record the last two call_rcu() call stacks.
-+	 */
-+	alloc_info->aux_stack[1] = alloc_info->aux_stack[0];
-+	alloc_info->aux_stack[0] = kasan_save_stack(GFP_NOWAIT);
-+}
-diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-index e8f37199d885..a7391bc83070 100644
---- a/mm/kasan/kasan.h
-+++ b/mm/kasan/kasan.h
-@@ -104,7 +104,15 @@ struct kasan_track {
- 
- struct kasan_alloc_meta {
- 	struct kasan_track alloc_track;
-+#ifdef CONFIG_KASAN_GENERIC
-+	/*
-+	 * call_rcu() call stack is stored into struct kasan_alloc_meta.
-+	 * The free stack is stored into struct kasan_free_meta.
-+	 */
-+	depot_stack_handle_t aux_stack[2];
-+#else
- 	struct kasan_track free_track[KASAN_NR_FREE_STACKS];
-+#endif
- #ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
- 	u8 free_pointer_tag[KASAN_NR_FREE_STACKS];
- 	u8 free_track_idx;
-@@ -159,6 +167,8 @@ void kasan_report_invalid_free(void *object, unsigned long ip);
- 
- struct page *kasan_addr_to_page(const void *addr);
- 
-+depot_stack_handle_t kasan_save_stack(gfp_t flags);
-+
- #if defined(CONFIG_KASAN_GENERIC) && \
- 	(defined(CONFIG_SLAB) || defined(CONFIG_SLUB))
- void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache);
-diff --git a/mm/kasan/report.c b/mm/kasan/report.c
-index 80f23c9da6b0..2421a4bd9227 100644
---- a/mm/kasan/report.c
-+++ b/mm/kasan/report.c
-@@ -105,15 +105,20 @@ static void end_report(unsigned long *flags)
- 	kasan_enable_current();
- }
- 
-+static void print_stack(depot_stack_handle_t stack)
-+{
-+	unsigned long *entries;
-+	unsigned int nr_entries;
-+
-+	nr_entries = stack_depot_fetch(stack, &entries);
-+	stack_trace_print(entries, nr_entries, 0);
++	global_rcu_ptr = rcu_dereference_protected(ptr, NULL);
++	call_rcu(&global_rcu_ptr->rcu, kasan_rcu_reclaim);
 +}
 +
- static void print_track(struct kasan_track *track, const char *prefix)
+ static int __init kmalloc_tests_init(void)
  {
- 	pr_err("%s by task %u:\n", prefix, track->pid);
- 	if (track->stack) {
--		unsigned long *entries;
--		unsigned int nr_entries;
--
--		nr_entries = stack_depot_fetch(track->stack, &entries);
--		stack_trace_print(entries, nr_entries, 0);
-+		print_stack(track->stack);
- 	} else {
- 		pr_err("(stack is not available)\n");
- 	}
-@@ -192,6 +197,19 @@ static void describe_object(struct kmem_cache *cache, void *object,
- 		free_track = kasan_get_free_track(cache, object, tag);
- 		print_track(free_track, "Freed");
- 		pr_err("\n");
-+
-+#ifdef CONFIG_KASAN_GENERIC
-+		if (alloc_info->aux_stack[0]) {
-+			pr_err("Last call_rcu():\n");
-+			print_stack(alloc_info->aux_stack[0]);
-+			pr_err("\n");
-+		}
-+		if (alloc_info->aux_stack[1]) {
-+			pr_err("Second to last call_rcu():\n");
-+			print_stack(alloc_info->aux_stack[1]);
-+			pr_err("\n");
-+		}
-+#endif
- 	}
+ 	/*
+@@ -839,6 +868,7 @@ static int __init kmalloc_tests_init(void)
+ 	kasan_bitops();
+ 	kmalloc_double_kzfree();
+ 	vmalloc_oob();
++	kasan_rcu_uaf();
  
- 	describe_object_addr(cache, object, addr);
+ 	kasan_restore_multi_shot(multishot);
+ 
 -- 
 2.18.0
 _______________________________________________
