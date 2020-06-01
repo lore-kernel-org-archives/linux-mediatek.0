@@ -2,136 +2,100 @@ Return-Path: <SRS0=JxEE=7O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B4C6C433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 13:17:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 06133C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 18:18:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CCE49207DF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 13:17:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C8B602068D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 18:18:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lBBm1mdd";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="S/JfOFba"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CCE49207DF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Xd5/G6AX";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="krEtW7JM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C8B602068D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Cc:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=D4xfvnsWlK/z6H+sQGwbGJZPRTxMp9wvxgHNRRBX3R4=; b=lBBm1mdd0k3D5MTaYlZQPmhql
-	9LJ36f1GLO9fvogrj3DUxlv2K0E1/LZCAAMY2e0O9krJkbO/RcLw5fuRyB5EvkhqPPH8gUFvl/roz
-	XTfuXUR5X2WttqetsglDiyM/NpkIqAxqNnP2K3HVEDwKaV/p/M4H2iKFhim0/cEb48xSL0Mrk6KZ2
-	1/WehUhSzgyaKELv24GLAnww6VNPpDj0rw3SvYxuuWhMCR+GEC5q5h3WJGweOKToLIETpCApH0jE4
-	uVIpaLK5NnFQ+Kqeze8kkZIrBZJMJNc6gsq2B5wbX0KcGQUsYbtYn5Sv+ltcsUExbD25kgVyX60aX
-	CyRZY6tPQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=k8RChO9nWywkHvAoR0qX56ddEKkzYr/wkjxnXzH8A14=; b=Xd5/G6AXOlkzKB
+	pwKvfz1iHZsmoklfLrB0AN+fhVVtf0rzaXVbi4HHMnGURJq/bxuiiX8KREifhVRHJlKY8dbnIvLL+
+	d9DuOiSUIikmRgpq1LinHBJ9iNRZvCt91YVZtS/OKZHmVbyER3hXGl/lJQgKyX1MscPusHdHFaEOn
+	TQOzcf6+MWAnHEeCBze3bQnZJnC153wdhS09++Puwo7akZZDYlzcoHFa46GajyrweX8WeB9tp+EcI
+	nLsG8DU8eSZ5FFO1OkZQMvg3g/ZO2EWHWK+yNgPTN+P6jLhITCjptde8Lpsvz+ca65zfwmIyelbjv
+	8Z10FKKkc+ky+Zw63cbg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jfkJb-0001tu-1L; Mon, 01 Jun 2020 13:17:19 +0000
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]
- helo=us-smtp-1.mimecast.com)
+	id 1jfp15-0004ij-82; Mon, 01 Jun 2020 18:18:31 +0000
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jfkJX-0001si-4x
- for linux-mediatek@lists.infradead.org; Mon, 01 Jun 2020 13:17:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591017432;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=bTjB8qfrHTSFjfUbutxvl/qwCsz3nerFRx3HPBX7A6Q=;
- b=S/JfOFbasRfNkNF9W59HtZI0O6axEa+LknXGz6r8HXoFLliGjE49Hh2h6eqA+X2J8PfOKG
- jgBzq+ZXHmBfvrN9nJFU2s9QExokmWR60k4p3IHPmlm97W5Bzb2ltqxZpra5aVKL8BXvkP
- rHnOyMuCHLRkjqInqgJ4efV23x+uYsw=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-60-pgnNVJGiPjOnk65z7rm6sA-1; Mon, 01 Jun 2020 09:17:06 -0400
-X-MC-Unique: pgnNVJGiPjOnk65z7rm6sA-1
-Received: by mail-qv1-f70.google.com with SMTP id s15so7324534qvo.6
- for <linux-mediatek@lists.infradead.org>; Mon, 01 Jun 2020 06:17:06 -0700 (PDT)
+ id 1jfp12-0004hb-6s
+ for linux-mediatek@lists.infradead.org; Mon, 01 Jun 2020 18:18:29 +0000
+Received: by mail-ed1-x542.google.com with SMTP id g9so7978800edw.10
+ for <linux-mediatek@lists.infradead.org>; Mon, 01 Jun 2020 11:18:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Ktf8hdQ0/bBZ1rrqyUokS+zLJv4wCtg8txRgNdj1RPs=;
+ b=krEtW7JMlTpPiCKTfkH45ggYkkj3H9lMw3FHZ+1Nxnk3MzT/QKbhGGtK42nirA8MFn
+ 8G8AE9vCtYO/pcHXfz0lHK5hnvODHlSFgnXWwVwztN5SNCHF6uSpFZSNBGwod3CN8UPc
+ 7Rxz2QyGs/IN647KyZ76Gh0/KSl4VBY2OXwuE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:subject:message-id:reply-to
- :mail-followup-to:references:mime-version:content-disposition
- :in-reply-to;
- bh=bTjB8qfrHTSFjfUbutxvl/qwCsz3nerFRx3HPBX7A6Q=;
- b=n0Ie/mnD65R8Ng9twRY5HDVWXGWkZ38w38P6TCrJpJmLZyGjJwGaCn6pxWmqXcA3RH
- hAeay67hSrAGQHdndksC5aYZoroLjZKf2vSo5ff9zQqmHjNY7PWhV2fjbu3rxziUjeQ2
- uCUJ8TJDEBYS8D22MAnmI68VukWYRtdoTX+SgNMjoaCToZwvrpG9JR28APGt72c4YZd4
- wzqkcqdegfNwCC1e/gFMsD/hYk8X1gJ/IeVYqDzmGxA9OY5lRD2fH2Vup+qp1eo9mPue
- 198Z971EMkrUqA09Yevy0rZuc5Jsi/41YCL+Ixg+6IatbalYEtss7li4qT0w+fFIovQA
- Gnvw==
-X-Gm-Message-State: AOAM533bOagXKzYRYwXANWmrdCUddoo04VxruLLxuIi7+jc+EDkUbL09
- JRux9f6AVL4jtJFc2CGRtCgeYq10Q0DzlOmlaa4r6Az+r0XVl/+rGFZ4LvWuxRFoY536bt/f6Ig
- sgq3tLFZ12QoqgkLU48/X++FB3tqX2ksq
-X-Received: by 2002:a0c:ee25:: with SMTP id l5mr20058558qvs.5.1591017425785;
- Mon, 01 Jun 2020 06:17:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxfI03wn2xa5VbguB4ZgxB0Liv4dY32KsoEfpHfoc+ZEMln7Vo+khXJZaEY6bPHZ9c8b/Aysw==
-X-Received: by 2002:a0c:ee25:: with SMTP id l5mr20058438qvs.5.1591017424552;
- Mon, 01 Jun 2020 06:17:04 -0700 (PDT)
-Received: from localhost (ip70-163-223-149.ph.ph.cox.net. [70.163.223.149])
- by smtp.gmail.com with ESMTPSA id r77sm12075150qke.6.2020.06.01.06.17.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Jun 2020 06:17:03 -0700 (PDT)
-Date: Mon, 1 Jun 2020 06:17:02 -0700
-From: Jerry Snitselaar <jsnitsel@redhat.com>
-To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- David Woodhouse <dwmw2@infradead.org>,
- Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Gerald Schaefer <gerald.schaefer@de.ibm.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
- virtualization@lists.linux-foundation.org,
- linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v2 00/33] iommu: Move iommu_group setup to IOMMU core code
-Message-ID: <20200601131702.4ksimsjvnsmo3mvn@cantor>
-Mail-Followup-To: Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Kukjin Kim <kgene@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- David Woodhouse <dwmw2@infradead.org>,
- Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Gerald Schaefer <gerald.schaefer@de.ibm.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
- virtualization@lists.linux-foundation.org,
- linux-rockchip@lists.infradead.org,
- iommu@lists.linux-foundation.org,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org
-References: <20200414131542.25608-1-joro@8bytes.org>
- <20200529221623.qc6twmpzryh7nkvb@cantor>
- <20200601104240.7f5xhz7gooqhaq4n@cantor>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Ktf8hdQ0/bBZ1rrqyUokS+zLJv4wCtg8txRgNdj1RPs=;
+ b=TM0aCzW+Xe1V5QKBUwvxcENGVjrQnxFR6dNycmCRVZ8jQsvIAhqam/CsoXlSVebYcz
+ Zrd/R//+LkU32IHVloP6R09DvgdknpL9AOO0u9k8FMyojIDwg/gJSsEicRt09h9ILyQc
+ Zbh7o0Yf1xWXROr6y2ipJoDGSA7hcHlHeOwutt9MAXgfU+qKkTNLmkwVr1G43Mrq/wFX
+ MEHqaj1qFFO2TFGsFgiUU7bkyX6K/JB9O2x2HDUd5B6HKFobQozQbsehhE8ADt96AZLV
+ t4QjibB7rqNPQDjtw2BeE2QfBITi+p+0wTu0ezWAA6rAshm9YUw1TO4Ym8kR4tRyg9DC
+ WTZg==
+X-Gm-Message-State: AOAM530HRzgBuSthZZ9LQNc8m3QyxFKLt9QrNBYneFvPCKBCoxZ2gcNe
+ YbQ1AGS5sQFNKkPp3e7hjCIXGkPGqg4=
+X-Google-Smtp-Source: ABdhPJwley0N4iTz5g0oqOsLaAeVzMVqFl9AXeQKlXG6yJvh/XznR8UjZyRqCe8ZNl6gX38X7ZlsNg==
+X-Received: by 2002:a05:6402:642:: with SMTP id
+ u2mr9717485edx.230.1591035505178; 
+ Mon, 01 Jun 2020 11:18:25 -0700 (PDT)
+Received: from mail-wm1-f42.google.com (mail-wm1-f42.google.com.
+ [209.85.128.42])
+ by smtp.gmail.com with ESMTPSA id j16sm71087edp.35.2020.06.01.11.18.23
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 01 Jun 2020 11:18:24 -0700 (PDT)
+Received: by mail-wm1-f42.google.com with SMTP id q25so500587wmj.0
+ for <linux-mediatek@lists.infradead.org>; Mon, 01 Jun 2020 11:18:23 -0700 (PDT)
+X-Received: by 2002:a1c:b155:: with SMTP id a82mr509536wmf.46.1591035503038;
+ Mon, 01 Jun 2020 11:18:23 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200601104240.7f5xhz7gooqhaq4n@cantor>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
+References: <20200523084103.31276-1-dongchun.zhu@mediatek.com>
+ <20200523084103.31276-2-dongchun.zhu@mediatek.com>
+ <20200526182847.GA92449@bogus>
+ <1590569355.8804.448.camel@mhfsdcap03>
+ <CAL_Jsq+sN0SVidTrY0ODXEkzkxYFvG1FTnL0oRQBSKf=ynLdyQ@mail.gmail.com>
+ <20200527211628.GT7618@paasikivi.fi.intel.com>
+ <1590636882.8804.474.camel@mhfsdcap03>
+ <20200528072332.GW7618@paasikivi.fi.intel.com>
+ <1590653082.8804.517.camel@mhfsdcap03>
+ <CAAFQd5AuHDpQN8xZsWgnAt6m2reAYJbs9nBp0+mBo7_FS81LbQ@mail.gmail.com>
+ <1590978816.8804.523.camel@mhfsdcap03>
+In-Reply-To: <1590978816.8804.523.camel@mhfsdcap03>
+From: Tomasz Figa <tfiga@chromium.org>
+Date: Mon, 1 Jun 2020 20:18:10 +0200
+X-Gmail-Original-Message-ID: <CAAFQd5AY9gejoiwxojvvG0FaVfEAf8gCqOddvo-dxemQWFksVw@mail.gmail.com>
+Message-ID: <CAAFQd5AY9gejoiwxojvvG0FaVfEAf8gCqOddvo-dxemQWFksVw@mail.gmail.com>
+Subject: Re: [V9,
+ 1/2] media: dt-bindings: media: i2c: Document OV02A10 bindings
+To: Dongchun Zhu <dongchun.zhu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200601_061715_263706_362525EC 
-X-CRM114-Status: GOOD (  20.09  )
+X-CRM114-CacheID: sfid-20200601_111828_260238_0C0AC965 
+X-CRM114-Status: GOOD (  29.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -143,161 +107,134 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: Jerry Snitselaar <jsnitsel@redhat.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh@kernel.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ linux-devicetree <devicetree@vger.kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?B?U2hlbmduYW4gV2FuZyAo546L5Zyj55S3KQ==?= <shengnan.wang@mediatek.com>,
+ Louis Kuo <louis.kuo@mediatek.com>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Sj Huang <sj.huang@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon Jun 01 20, Jerry Snitselaar wrote:
->On Fri May 29 20, Jerry Snitselaar wrote:
->>On Tue Apr 14 20, Joerg Roedel wrote:
->>>Hi,
->>>
->>>here is the second version of this patch-set. The first version with
->>>some more introductory text can be found here:
->>>
->>>	https://lore.kernel.org/lkml/20200407183742.4344-1-joro@8bytes.org/
->>>
->>>Changes v1->v2:
->>>
->>>	* Rebased to v5.7-rc1
->>>
->>>	* Re-wrote the arm-smmu changes as suggested by Robin Murphy
->>>
->>>	* Re-worked the Exynos patches to hopefully not break the
->>>	  driver anymore
->>>
->>>	* Fixed a missing mutex_unlock() reported by Marek Szyprowski,
->>>	  thanks for that.
->>>
->>>There is also a git-branch available with these patches applied:
->>>
->>>	https://git.kernel.org/pub/scm/linux/kernel/git/joro/linux.git/log/?h=iommu-probe-device-v2
->>>
->>>Please review.
->>>
->>>Thanks,
->>>
->>>	Joerg
->>>
->>>Joerg Roedel (32):
->>>iommu: Move default domain allocation to separate function
->>>iommu/amd: Implement iommu_ops->def_domain_type call-back
->>>iommu/vt-d: Wire up iommu_ops->def_domain_type
->>>iommu/amd: Remove dma_mask check from check_device()
->>>iommu/amd: Return -ENODEV in add_device when device is not handled by
->>>  IOMMU
->>>iommu: Add probe_device() and remove_device() call-backs
->>>iommu: Move default domain allocation to iommu_probe_device()
->>>iommu: Keep a list of allocated groups in __iommu_probe_device()
->>>iommu: Move new probe_device path to separate function
->>>iommu: Split off default domain allocation from group assignment
->>>iommu: Move iommu_group_create_direct_mappings() out of
->>>  iommu_group_add_device()
->>>iommu: Export bus_iommu_probe() and make is safe for re-probing
->>>iommu/amd: Remove dev_data->passthrough
->>>iommu/amd: Convert to probe/release_device() call-backs
->>>iommu/vt-d: Convert to probe/release_device() call-backs
->>>iommu/arm-smmu: Convert to probe/release_device() call-backs
->>>iommu/pamu: Convert to probe/release_device() call-backs
->>>iommu/s390: Convert to probe/release_device() call-backs
->>>iommu/virtio: Convert to probe/release_device() call-backs
->>>iommu/msm: Convert to probe/release_device() call-backs
->>>iommu/mediatek: Convert to probe/release_device() call-backs
->>>iommu/mediatek-v1 Convert to probe/release_device() call-backs
->>>iommu/qcom: Convert to probe/release_device() call-backs
->>>iommu/rockchip: Convert to probe/release_device() call-backs
->>>iommu/tegra: Convert to probe/release_device() call-backs
->>>iommu/renesas: Convert to probe/release_device() call-backs
->>>iommu/omap: Remove orphan_dev tracking
->>>iommu/omap: Convert to probe/release_device() call-backs
->>>iommu/exynos: Use first SYSMMU in controllers list for IOMMU core
->>>iommu/exynos: Convert to probe/release_device() call-backs
->>>iommu: Remove add_device()/remove_device() code-paths
->>>iommu: Unexport iommu_group_get_for_dev()
->>>
->>>Sai Praneeth Prakhya (1):
->>>iommu: Add def_domain_type() callback in iommu_ops
->>>
->>>drivers/iommu/amd_iommu.c       |  97 ++++----
->>>drivers/iommu/amd_iommu_types.h |   1 -
->>>drivers/iommu/arm-smmu-v3.c     |  38 +--
->>>drivers/iommu/arm-smmu.c        |  39 ++--
->>>drivers/iommu/exynos-iommu.c    |  24 +-
->>>drivers/iommu/fsl_pamu_domain.c |  22 +-
->>>drivers/iommu/intel-iommu.c     |  68 +-----
->>>drivers/iommu/iommu.c           | 393 +++++++++++++++++++++++++-------
->>>drivers/iommu/ipmmu-vmsa.c      |  60 ++---
->>>drivers/iommu/msm_iommu.c       |  34 +--
->>>drivers/iommu/mtk_iommu.c       |  24 +-
->>>drivers/iommu/mtk_iommu_v1.c    |  50 ++--
->>>drivers/iommu/omap-iommu.c      |  99 ++------
->>>drivers/iommu/qcom_iommu.c      |  24 +-
->>>drivers/iommu/rockchip-iommu.c  |  26 +--
->>>drivers/iommu/s390-iommu.c      |  22 +-
->>>drivers/iommu/tegra-gart.c      |  24 +-
->>>drivers/iommu/tegra-smmu.c      |  31 +--
->>>drivers/iommu/virtio-iommu.c    |  41 +---
->>>include/linux/iommu.h           |  21 +-
->>>20 files changed, 533 insertions(+), 605 deletions(-)
->>>
->>>-- 
->>>2.17.1
->>>
->>>_______________________________________________
->>>iommu mailing list
->>>iommu@lists.linux-foundation.org
->>>https://lists.linuxfoundation.org/mailman/listinfo/iommu
->>>
->>
->>Hi Joerg,
->>
->>With this patchset, I have an epyc system where if I boot with
->>iommu=nopt and force a dump I will see some io page faults for a nic
->>on the system. The vmcore is harvested and the system reboots. I
->>haven't reproduced it on other systems yet, but without the patchset I
->>don't see the io page faults during the kdump.
->>
->>Regards,
->>Jerry
+On Mon, Jun 1, 2020 at 4:35 AM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
 >
->I just hit an issue on a separate intel based system (kdump iommu=nopt),
->where it panics in during intel_iommu_attach_device, in is_aux_domain,
->due to device_domain_info being DEFER_DEVICE_DOMAIN_INFO. That doesn't
->get set to a valid address until the domain_add_dev_info call.
+> Hi Tomasz,
 >
->Is it as simple as the following?
+> On Fri, 2020-05-29 at 15:43 +0200, Tomasz Figa wrote:
+> > On Thu, May 28, 2020 at 10:06 AM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
+> > >
+> > > Hi Sakari,
+> > >
+> > > On Thu, 2020-05-28 at 10:23 +0300, Sakari Ailus wrote:
+> > > > Hi Dongchun,
+> > > >
+> > > > On Thu, May 28, 2020 at 11:34:42AM +0800, Dongchun Zhu wrote:
+> > > > > Hi Sakari, Rob,
+> > > > >
+> > > > > On Thu, 2020-05-28 at 00:16 +0300, Sakari Ailus wrote:
+> > > > > > Hi Rob, Dongchun,
+> > > > > >
+> > > > > > On Wed, May 27, 2020 at 09:27:22AM -0600, Rob Herring wrote:
+> > > > > > > > > > +    properties:
+> > > > > > > > > > +      endpoint:
+> > > > > > > > > > +        type: object
+> > > > > > > > > > +        additionalProperties: false
+> > > > > > > > > > +
+> > > > > > > > > > +        properties:
+> > > > > > > >
+> > > > > > > > Actually I wonder whether we need to declare 'clock-lanes' here?
+> > > > > > >
+> > > > > > > Yes, if you are using it.
+> > > > > >
+> > > > > > Dongchun, can you confirm the chip has a single data and a single clock
+> > > > > > lane and that it does not support lane reordering?
+> > > > > >
+> > > > >
+> > > > > From the datasheet, 'MIPI inside the OV02A10 provides one single
+> > > > > uni-directional clock lane and one bi-directional data lane solution for
+> > > > > communication links between components inside a mobile device.
+> > > > > The data lane has full support for HS(uni-directional) and
+> > > > > LP(bi-directional) data transfer mode.'
+> > > > >
+> > > > > The sensor doesn't support lane reordering, so 'clock-lanes' property
+> > > > > would not be added in next release.
+> > > > >
+> > > > > > So if there's nothing to convey to the driver, also the data-lanes should
+> > > > > > be removed IMO.
+> > > > > >
+> > > > >
+> > > > > However, 'data-lanes' property may still be required.
+> > > > > It is known that either data-lanes or clock-lanes is an array of
+> > > > > physical data lane indexes. Position of an entry determines the logical
+> > > > > lane number, while the value of an entry indicates physical lane, e.g.,
+> > > > > for 1-lane MIPI CSI-2 bus we could have "data-lanes = <1>;", assuming
+> > > > > the clock lane is on hardware lane 0.
+> > > > >
+> > > > > As mentioned earlier, the OV02A10 sensor supports only 1C1D and does not
+> > > > > support lane reordering, so here we shall use 'data-lanes = <1>' as
+> > > > > there is only a clock lane for OV02A10.
+> > > > >
+> > > > > Reminder:
+> > > > > If 'data-lanes' property is not present, the driver would assume
+> > > > > four-lane operation. This means for one-lane or two-lane operation, this
+> > > > > property must be present and set to the right physical lane indexes.
+> > > > > If the hardware does not support lane reordering, monotonically
+> > > > > incremented values shall be used from 0 or 1 onwards, depending on
+> > > > > whether or not there is also a clock lane.
+> > > >
+> > > > How can the driver use four lanes, considering the device only supports a
+> > > > single lane??
+> > > >
+> > >
+> > > I understood your meaning.
+> > > If we omit the property 'data-lanes', the sensor should work still.
+> > > But then what's the meaning of the existence of 'data-lanes'?
+> > > If this property 'data-lanes' is always optional, then why dt-bindings
+> > > provide the interface?
+> > >
+> > > In the meantime, if omitting 'data-lanes' for one sensor(transmitter)
+> > > that has only one physical data lane, MIPI receiver(e.g., MIPI CSI-2)
+> > > shall enable four-lane configuration, which may increase consumption of
+> > > both power and resource in the process of IIC communication.
+> >
+> > Wouldn't the receiver still have the data-lanes property under its
+> > endpoint node, telling it how many lanes and in which order should be
+> > used?
+> >
 >
->diff --git a/drivers/iommu/intel-iommu.c b/drivers/iommu/intel-iommu.c
->index 29d3940847d3..f1bbeed46a4c 100644
->--- a/drivers/iommu/intel-iommu.c
->+++ b/drivers/iommu/intel-iommu.c
->@@ -5053,8 +5053,8 @@ is_aux_domain(struct device *dev, struct iommu_domain *domain)
-> {
->        struct device_domain_info *info = dev->archdata.iommu;
->-       return info && info->auxd_enabled &&
->-                       domain->type == IOMMU_DOMAIN_UNMANAGED;
->+       return info && info != DEFER_DEVICE_DOMAIN_INFO &&
->+               info->auxd_enabled && domain->type == IOMMU_DOMAIN_UNMANAGED;
-> }
-> static void auxiliary_link_device(struct dmar_domain *domain,
->
->
->Regards,
->Jerry
->
+> The MIPI receiver(RX) shall use
+> v4l2_async_notifier_add_fwnode_remote_subdev() API to parse the property
+> "data-lanes" under sensor output port.
 
-With the patch, I avoid the panic, but I'm seeing an issue similar to the epyc system.
-I'm getting dmar faults from a couple of nics and the hp ilo. The addresses in question
-were in e820 reserved sections, but there aren't rmrr covering those addresses. The system
-manages to harvest the vmcore and reboot like the epyc. Without the patches I don't see
-the dmar faults. I needed to give this system back, but I'll try to poke at it some more
-in the next couple of days.
+That's not true. The MIPI receiver driver parses its own port node
+corresponding to the sensor. Also quoting the documentation [1]:
 
-Regards,
-Jerry
+"An endpoint subnode of a device contains all properties needed for
+_configuration of this device_ for data exchange with other device. In most
+cases properties at the peer 'endpoint' nodes will be identical, however they
+might need to be different when there is any signal modifications on the bus
+between two devices, e.g. there are logic signal inverters on the lines."
 
+In this case, there is such a signal modification if the sensor has a
+1-lane bus and the receiver more lines, so the data-lanes properties
+would be different on both sides.
+
+[1] https://elixir.bootlin.com/linux/v5.7/source/Documentation/devicetree/bindings/media/video-interfaces.txt
+
+Best regards,
+Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
