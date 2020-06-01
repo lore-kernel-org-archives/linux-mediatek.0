@@ -2,68 +2,71 @@ Return-Path: <SRS0=JxEE=7O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6396AC433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 09:21:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 88909C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 09:32:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3442F20734
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 09:21:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5A706206A4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 09:32:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rlY3kCjp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3442F20734
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="M4/QtfmE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5A706206A4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jsuli0gxtpzBZgPsiNDNx4ourn/atQ1znQmFRAx47+w=; b=rlY3kCjphHrbdYH02aJccwvhk
-	/xDnkA//5xVB/RY/QgfI91ok3qP0iZ7+SfPIDwvlIysk4rd6R4tGR7TarwQEjpP4BaVk2XxsT36u1
-	IwP/hhj4XVj1s0AOMNJ3W4hYMLk1pypQZbYh0pSZmSzD7pvkq4eNiY45u13nyaN/F5M+eIDT9VoAc
-	GoWwRrW53YPy9Tm5SLEQxpIbb9Q5OOf45UudYIcySl/Dij+J/atFNAQ/YZtRCmHt5LzoGVQxaqu/x
-	7n58J55T8oFD5sudWpaEQfwX6jsD6zm8+Js1b1ahpUsoiDkh1jKvq4Akp0kECeRHAetHlzLD0dqJw
-	QlpqunWjg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=gPTtm1wEm65fr3uyBWVg8nEVp71GHgZjMLlgldCkqu0=; b=M4/QtfmEShgMYS
+	HowXU12boBLZzVo/49pcywPc4g2o55qKeji96XkeUdnB4f/Ws2d6VS2KOJd9jn/Z8KTBk1jqRUAaC
+	Ah9MX2VUxfM/JQ7QQQLssmv1DdFBrHSxH1l3prPpwgyAdXkBRb9zdRlVRX2GG427TXQwoXAkrucGC
+	OWY4U+tspVrdX89E4O/YgW3b0zUWQeQ6FE1RUtLtEccSCCWb4kyz0caNsHE+EQCMimmEF01t5VpDs
+	+XxmxosObPav61lupD+rLa2vvIMuV9sZEMYfWcFmhdhMPttwVOwAOJRIqLBB7UCyjOCNuhPtlwzU0
+	Rrt52reijk1HvQvpmYEQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jfgdD-0003IQ-VQ; Mon, 01 Jun 2020 09:21:20 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jfgd7-0003BQ-Fw; Mon, 01 Jun 2020 09:21:14 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 6D6B41FB;
- Mon,  1 Jun 2020 02:21:11 -0700 (PDT)
-Received: from [10.37.12.87] (unknown [10.37.12.87])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 2CF523F305;
- Mon,  1 Jun 2020 02:21:00 -0700 (PDT)
-Subject: Re: [PATCH v8 3/8] PM / EM: update callback structure and add device
- pointer
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, linux-kernel@vger.kernel.org, 
- linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- dri-devel@lists.freedesktop.org, linux-omap@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-imx@nxp.com
-References: <20200527095854.21714-1-lukasz.luba@arm.com>
- <20200527095854.21714-4-lukasz.luba@arm.com>
- <666b2f9e-d7ed-6ddb-80aa-e63ab9909ee6@linaro.org>
-From: Lukasz Luba <lukasz.luba@arm.com>
-Message-ID: <3a7d1261-df40-4b3a-14c2-6c6d18b5b5c1@arm.com>
-Date: Mon, 1 Jun 2020 10:20:58 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+	id 1jfgnp-0001gi-Gq; Mon, 01 Jun 2020 09:32:17 +0000
+Received: from mga04.intel.com ([192.55.52.120])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jfgni-0001bI-Pq; Mon, 01 Jun 2020 09:32:11 +0000
+IronPort-SDR: Y1drMRaHti6N0vPmghbBJhvVipiYSPwSQiFFABUcBLSretjG2dLHtZXltba91/TOBTH3m0OaD9
+ E5yKPOEU993Q==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Jun 2020 02:32:09 -0700
+IronPort-SDR: /ujC3+DghISsUsonHBJPV5Gk1lF8j7sRohgtk5GOx7IvnSaAXmCHl6B6CxQWao4yIOCr0yCDB7
+ OVC2kkPKlCsA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,460,1583222400"; d="scan'208";a="470229648"
+Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
+ by fmsmga006.fm.intel.com with ESMTP; 01 Jun 2020 02:32:07 -0700
+Received: from andy by smile with local (Exim 4.93)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1jfgni-00AC6i-VN; Mon, 01 Jun 2020 12:32:10 +0300
+Date: Mon, 1 Jun 2020 12:32:10 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Fengping Yu <fengping.yu@mediatek.com>
+Subject: Re: [PATCH v13 3/3] configs: defconfig: Add CONFIG_KEYBOARD_MTK_KPD=m
+Message-ID: <20200601093210.GA2428291@smile.fi.intel.com>
+References: <20200601022548.18213-1-fengping.yu@mediatek.com>
+ <20200601022548.18213-4-fengping.yu@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <666b2f9e-d7ed-6ddb-80aa-e63ab9909ee6@linaro.org>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20200601022548.18213-4-fengping.yu@mediatek.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200601_022113_575327_0AA76ABD 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20200601_023210_849966_0E4D2DDC 
+X-CRM114-Status: GOOD (  12.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,45 +78,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: nm@ti.com, juri.lelli@redhat.com, peterz@infradead.org,
- viresh.kumar@linaro.org, liviu.dudau@arm.com, bjorn.andersson@linaro.org,
- bsegall@google.com, festevam@gmail.com, mka@chromium.org, robh@kernel.org,
- amit.kucheria@verdurent.com, lorenzo.pieralisi@arm.com,
- vincent.guittot@linaro.org, khilman@kernel.org, steven.price@arm.com,
- cw00.choi@samsung.com, mingo@redhat.com, mgorman@suse.de, rui.zhang@intel.com,
- alyssa.rosenzweig@collabora.com, orjan.eide@arm.com, daniel@ffwll.ch,
- b.zolnierkie@samsung.com, s.hauer@pengutronix.de, rostedt@goodmis.org,
- matthias.bgg@gmail.com, Dietmar.Eggemann@arm.com, airlied@linux.ie,
- tomeu.vizoso@collabora.com, qperret@google.com, sboyd@kernel.org,
- rdunlap@infradead.org, rjw@rjwysocki.net, agross@kernel.org,
- kernel@pengutronix.de, sudeep.holla@arm.com, patrick.bellasi@matbug.net,
- shawnguo@kernel.org
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Marco Felsch <m.felsch@pengutronix.de>, linux-mediatek@lists.infradead.org,
+ linux-input@vger.kernel.org, Yingjoe Chen <yingjoe.chen@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 5/29/20 6:43 PM, Daniel Lezcano wrote:
-> On 27/05/2020 11:58, Lukasz Luba wrote:
->> The Energy Model framework is going to support devices other that CPUs. In
->> order to make this happen change the callback function and add pointer to
->> a device as an argument.
->>
->> Update the related users to use new function and new callback from the
->> Energy Model.
->>
->> Acked-by: Quentin Perret <qperret@google.com>
->> Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
+On Mon, Jun 01, 2020 at 10:25:51AM +0800, Fengping Yu wrote:
+> From: "fengping.yu" <fengping.yu@mediatek.com>
 > 
-> Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> Add Mediatek matrix keypad support in defconfig.
+
+I didn't review this either, but it's fine to me.
+
+> Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
+> Reviewed-by: Marco Felsch <m.felsch@pengutronix.de>
+> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> ---
+>  arch/arm64/configs/defconfig | 1 +
+>  1 file changed, 1 insertion(+)
 > 
+> diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+> index 24e534d85045..112ced090b21 100644
+> --- a/arch/arm64/configs/defconfig
+> +++ b/arch/arm64/configs/defconfig
+> @@ -349,6 +349,7 @@ CONFIG_KEYBOARD_GPIO=y
+>  CONFIG_KEYBOARD_SNVS_PWRKEY=m
+>  CONFIG_KEYBOARD_IMX_SC_KEY=m
+>  CONFIG_KEYBOARD_CROS_EC=y
+> +CONFIG_KEYBOARD_MTK_KPD=m
+>  CONFIG_INPUT_TOUCHSCREEN=y
+>  CONFIG_TOUCHSCREEN_ATMEL_MXT=m
+>  CONFIG_INPUT_MISC=y
+> -- 
+> 2.18.0
 
-Thank you Daniel!
+-- 
+With Best Regards,
+Andy Shevchenko
 
-Regards,
-Lukasz
+
 
 _______________________________________________
 Linux-mediatek mailing list
