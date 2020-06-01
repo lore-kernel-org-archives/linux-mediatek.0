@@ -2,84 +2,68 @@ Return-Path: <SRS0=JxEE=7O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7AF4CC433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 08:59:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6396AC433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 09:21:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3FBC4206C3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 08:59:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3442F20734
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 09:21:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aaY05MRM";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="m5Qq5qb7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3FBC4206C3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rlY3kCjp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3442F20734
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QG5FWUIDKiSeODwpU4lUE6VmMLdetjBVOtuv9Dj5SKs=; b=aaY05MRM5L9igr
-	3wgp2Rc7tT1CFamTpiae7THoQjLNp3hSKP1YmKzfieCNh5jgpxyvl+oAs1G1p93hqULTAYnthlxSk
-	8ZO3OcdwhCf436i08sfBBmg3mZ6TEjEJj9th367PYG+evLOTF8pttbfShn42ysQM/mvTw6wgH8V1o
-	KQPA7ychbskL1uO2vzETdxAMgJKEXj6uV5MKxMhogfpfEThTIsYKN6/N3W7WGcnqasYu5X3kUe6OJ
-	zWMrkdpMCIbCrE6xDBbqXFXYST7GCxo84ilHaAHopVwBCsIlkrbLI04hBQ5acofXt08GL3cWDysWb
-	9RYdPbHjg3TzyBbqrC3Q==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=jsuli0gxtpzBZgPsiNDNx4ourn/atQ1znQmFRAx47+w=; b=rlY3kCjphHrbdYH02aJccwvhk
+	/xDnkA//5xVB/RY/QgfI91ok3qP0iZ7+SfPIDwvlIysk4rd6R4tGR7TarwQEjpP4BaVk2XxsT36u1
+	IwP/hhj4XVj1s0AOMNJ3W4hYMLk1pypQZbYh0pSZmSzD7pvkq4eNiY45u13nyaN/F5M+eIDT9VoAc
+	GoWwRrW53YPy9Tm5SLEQxpIbb9Q5OOf45UudYIcySl/Dij+J/atFNAQ/YZtRCmHt5LzoGVQxaqu/x
+	7n58J55T8oFD5sudWpaEQfwX6jsD6zm8+Js1b1ahpUsoiDkh1jKvq4Akp0kECeRHAetHlzLD0dqJw
+	QlpqunWjg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jfgI1-0001xP-9p; Mon, 01 Jun 2020 08:59:25 +0000
-Received: from lelv0143.ext.ti.com ([198.47.23.248])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jfgHs-0001cl-0q; Mon, 01 Jun 2020 08:59:17 +0000
-Received: from fllv0034.itg.ti.com ([10.64.40.246])
- by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 0518wsLQ099629;
- Mon, 1 Jun 2020 03:58:54 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1591001934;
- bh=lGlyZcBPTfIHV1CPcNrc05ZOhHwMY7+8yiwU4k+Xhg0=;
- h=Date:From:To:CC:Subject:References:In-Reply-To;
- b=m5Qq5qb7OFtWluux14ydZvYIB+t2mYHHOthas1jkOapNLeJlaFRvONQYEkz26llr9
- EFGeFBlqJEAHl4OeX/VV2UTqZi5O9lrZ5mjMMnXcpcxzL+ItRg7yv/dVP7HVzsLlgO
- BOIF2Pr24g5StH8GbC7rs1773ZevkHhWdx8O9Zzw=
-Received: from DLEE108.ent.ti.com (dlee108.ent.ti.com [157.170.170.38])
- by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 0518wsv0092753
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Mon, 1 Jun 2020 03:58:54 -0500
-Received: from DLEE104.ent.ti.com (157.170.170.34) by DLEE108.ent.ti.com
- (157.170.170.38) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Mon, 1 Jun
- 2020 03:58:53 -0500
-Received: from fllv0039.itg.ti.com (10.64.41.19) by DLEE104.ent.ti.com
- (157.170.170.34) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Mon, 1 Jun 2020 03:58:53 -0500
-Received: from localhost (ileax41-snat.itg.ti.com [10.172.224.153])
- by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0518wqOG104672;
- Mon, 1 Jun 2020 03:58:53 -0500
-Date: Mon, 1 Jun 2020 14:28:52 +0530
-From: Pratyush Yadav <p.yadav@ti.com>
-To: <Tudor.Ambarus@microchip.com>
-Subject: Re: [PATCH v9 13/19] mtd: spi-nor: sfdp: do not make invalid quad
- enable fatal
-Message-ID: <20200601085850.um32giucfcvh5oke@ti.com>
-References: <20200525091544.17270-1-p.yadav@ti.com>
- <20200525091544.17270-14-p.yadav@ti.com>
- <2267830.vuSd8QnXzO@192.168.0.120>
+	id 1jfgdD-0003IQ-VQ; Mon, 01 Jun 2020 09:21:20 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jfgd7-0003BQ-Fw; Mon, 01 Jun 2020 09:21:14 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 6D6B41FB;
+ Mon,  1 Jun 2020 02:21:11 -0700 (PDT)
+Received: from [10.37.12.87] (unknown [10.37.12.87])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 2CF523F305;
+ Mon,  1 Jun 2020 02:21:00 -0700 (PDT)
+Subject: Re: [PATCH v8 3/8] PM / EM: update callback structure and add device
+ pointer
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, linux-kernel@vger.kernel.org, 
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ dri-devel@lists.freedesktop.org, linux-omap@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-imx@nxp.com
+References: <20200527095854.21714-1-lukasz.luba@arm.com>
+ <20200527095854.21714-4-lukasz.luba@arm.com>
+ <666b2f9e-d7ed-6ddb-80aa-e63ab9909ee6@linaro.org>
+From: Lukasz Luba <lukasz.luba@arm.com>
+Message-ID: <3a7d1261-df40-4b3a-14c2-6c6d18b5b5c1@arm.com>
+Date: Mon, 1 Jun 2020 10:20:58 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <2267830.vuSd8QnXzO@192.168.0.120>
-User-Agent: NeoMutt/20171215
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+In-Reply-To: <666b2f9e-d7ed-6ddb-80aa-e63ab9909ee6@linaro.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200601_015916_187246_2FF60562 
-X-CRM114-Status: GOOD (  20.47  )
+X-CRM114-CacheID: sfid-20200601_022113_575327_0AA76ABD 
+X-CRM114-Status: GOOD (  11.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,80 +75,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alexandre.belloni@bootlin.com, masonccyang@mxic.com.tw, vigneshr@ti.com,
- richard@nod.at, nsekhar@ti.com, Nicolas.Ferre@microchip.com,
- boris.brezillon@collabora.com, michal.simek@xilinx.com,
- Ludovic.Desroches@microchip.com, broonie@kernel.org,
- linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- miquel.raynal@bootlin.com, matthias.bgg@gmail.com,
- linux-mediatek@lists.infradead.org, linux-spi@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: nm@ti.com, juri.lelli@redhat.com, peterz@infradead.org,
+ viresh.kumar@linaro.org, liviu.dudau@arm.com, bjorn.andersson@linaro.org,
+ bsegall@google.com, festevam@gmail.com, mka@chromium.org, robh@kernel.org,
+ amit.kucheria@verdurent.com, lorenzo.pieralisi@arm.com,
+ vincent.guittot@linaro.org, khilman@kernel.org, steven.price@arm.com,
+ cw00.choi@samsung.com, mingo@redhat.com, mgorman@suse.de, rui.zhang@intel.com,
+ alyssa.rosenzweig@collabora.com, orjan.eide@arm.com, daniel@ffwll.ch,
+ b.zolnierkie@samsung.com, s.hauer@pengutronix.de, rostedt@goodmis.org,
+ matthias.bgg@gmail.com, Dietmar.Eggemann@arm.com, airlied@linux.ie,
+ tomeu.vizoso@collabora.com, qperret@google.com, sboyd@kernel.org,
+ rdunlap@infradead.org, rjw@rjwysocki.net, agross@kernel.org,
+ kernel@pengutronix.de, sudeep.holla@arm.com, patrick.bellasi@matbug.net,
+ shawnguo@kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Tudor,
 
-On 30/05/20 06:42PM, Tudor.Ambarus@microchip.com wrote:
-> On Monday, May 25, 2020 12:15:38 PM EEST Pratyush Yadav wrote:
-> > EXTERNAL EMAIL: Do not click links or open attachments unless you know the
-> > content is safe
-> > 
-> > The Micron MT35XU512ABA flash does not support the quad enable bit. But
-> > instead of programming the Quad Enable Require field to 000b ("Device
-> > does not have a QE bit"), it is programmed to 111b ("Reserved").
-> > 
-> > While this is technically incorrect, it is not reason enough to abort
-> > BFPT parsing. Instead, continue BFPT parsing assuming there is no quad
-> > enable bit present.
-> > 
-> > Signed-off-by: Pratyush Yadav <p.yadav@ti.com>
-> > ---
-> >  drivers/mtd/spi-nor/sfdp.c | 8 +++-----
-> >  1 file changed, 3 insertions(+), 5 deletions(-)
-> > 
-> > diff --git a/drivers/mtd/spi-nor/sfdp.c b/drivers/mtd/spi-nor/sfdp.c
-> > index 052cabb52df9..9fd3d8d9a127 100644
-> > --- a/drivers/mtd/spi-nor/sfdp.c
-> > +++ b/drivers/mtd/spi-nor/sfdp.c
-> > @@ -576,10 +576,6 @@ static int spi_nor_parse_bfpt(struct spi_nor *nor,
-> > 
-> >         /* Quad Enable Requirements. */
-> >         switch (bfpt.dwords[BFPT_DWORD(15)] & BFPT_DWORD15_QER_MASK) {
-> > -       case BFPT_DWORD15_QER_NONE:
-> > -               params->quad_enable = NULL;
-> > -               break;
-> > -
-> >         case BFPT_DWORD15_QER_SR2_BIT1_BUGGY:
-> >                 /*
-> >                  * Writing only one byte to the Status Register has the
-> > @@ -616,8 +612,10 @@ static int spi_nor_parse_bfpt(struct spi_nor *nor,
-> >                 params->quad_enable = spi_nor_sr2_bit1_quad_enable;
-> >                 break;
-> > 
-> > +       case BFPT_DWORD15_QER_NONE:
-> >         default:
-> > -               return -EINVAL;
-> > +               params->quad_enable = NULL;
-> > +               break;
+
+On 5/29/20 6:43 PM, Daniel Lezcano wrote:
+> On 27/05/2020 11:58, Lukasz Luba wrote:
+>> The Energy Model framework is going to support devices other that CPUs. In
+>> order to make this happen change the callback function and add pointer to
+>> a device as an argument.
+>>
+>> Update the related users to use new function and new callback from the
+>> Energy Model.
+>>
+>> Acked-by: Quentin Perret <qperret@google.com>
+>> Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
 > 
-> I would just add a dev_dbg message and break the switch.
-> 	dev_dbg(nor->dev, "BFPT QER reserved value used.\n");
-> 	break;
+> Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
 > 
-> You will then have to set params->quad_enable = NULL; in a post_bfpt hook.
 
-Ok. Will re-roll.
+Thank you Daniel!
 
-BTW, are you planning to pick up the xSPI/8D support for 5.8? It has 
-been outstanding for quite some time now and it would be great if it can 
-make it through this merge window.
-
--- 
 Regards,
-Pratyush Yadav
-Texas Instruments India
+Lukasz
 
 _______________________________________________
 Linux-mediatek mailing list
