@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6AC3FC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 02:39:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E1A6FC433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 02:51:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3B20820679
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 02:39:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9E88C206A4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 02:51:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WKyff+dt";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="oow2KW+Z"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B20820679
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="I0hb7Rqf";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qOCe4LpU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9E88C206A4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,61 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RhOut5hxc9P7auFVF0qRL4KaafGCr7+0lcoTAXGgZLM=; b=WKyff+dtxgMiz0
-	QE23hA86keHdfhIOItZQ54Q4Jfgi1WqOUBRN+W4ovKW0CbeXqzTNRjPdB61ZRSrr0S3bDOV9rzJgd
-	5pShDhaDC0q2X6EAHv4ryvw39kLd3MWac4laHqIk14reLElBLnw7pWYCs+sE/463snER62qq9Mbty
-	au6pM9Ba0VDF4YAR59H3zawrV65ogb6c+7RcxFQFGc4NtRIGg5ktV+yhQr4ZQcZjOg19MiKwYdpga
-	1H+L3uHWcZaNQ0lEB7yauLgu4ZwLnduDczt9yVBP9k3VT80+HFNe5OAVXP4EL6c9mMvbgq0fvXCZn
-	b24yGZzivBuwWAcvmhDA==;
+	List-Owner; bh=XwxLrdJWnqycAtjN1irLAqheZMlqBUEoy6XnQXlbqAg=; b=I0hb7RqfcUibuX
+	BcNzNrRscUvzsEtaGR4llBzUqqNBjfizrpzyl5ntXWtTMMT9mS68D5+h817AzBm0koPV91ZoshSbI
+	n7yDV7HXhq4ubcc9mvrmiq3odso/eS8uY8BgCGppE/FVdESgcQ7oiNxkfkfAkzdbAqK9SsXYILXu0
+	3+ZM4Gm4z3ZnawbNWQhHX1xPPdetApyG7mv0Jdn1J2Sfovge0zjksOAvd0uQLBm8Z06al+VM+aeo6
+	F+C//VWFP9glq2xA1yeAQbjb6HVaJ43ebrZFccuaVRYInszvxiirPxZ91v7lxU6cr14KZ7rsbqykD
+	pQXGzMZfcTiXnmzywm3w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jfaMF-0007Bt-3H; Mon, 01 Jun 2020 02:39:23 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jfaXr-0007G0-TU; Mon, 01 Jun 2020 02:51:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jfaMC-0007BI-8e; Mon, 01 Jun 2020 02:39:21 +0000
-X-UUID: 603ed80d6f8047248518a1865637d0ea-20200531
+ id 1jfaXp-0007FQ-BE; Mon, 01 Jun 2020 02:51:22 +0000
+X-UUID: fe1fab3fc3524ebbbf146d8040fc23ca-20200531
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=8KXVcKiNS9g9+0ZRyD+sPi3/ylxB1CS4SKdXzmdFHCQ=; 
- b=oow2KW+ZPflIIuyQz65Pgw570WW3ryB4wBUvur8+WyBiwdfghTjYG3cc0GRAZ0HWfb5HlXXPRREiq8SMXjwcCurZuzzFd40dI1FkdhjRnfDhYDQEB9uQpAHnFsEEzhf8mhaU1gUmOi1NWznIDeRoPdUMg6XwiS8oKm4cT1OuuZI=;
-X-UUID: 603ed80d6f8047248518a1865637d0ea-20200531
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <dongchun.zhu@mediatek.com>)
+ bh=5OOtmndFogETs8MsnbhnGCSCp5lzPK/Ub28tiH9HSm4=; 
+ b=qOCe4LpUd6d5OFeHIjXgXEd/HYSO3uLFU5JBSAVcw3RvIDOtb4IG+P2dzNy/kf89qqg4lfFazYiZdCrdroVm4Dsgz4ptdKi5tUw4Sae2vSNm+LwHQXylTHu1fkfY/qBeeXpmksf7/RbgPS56a5Vp9T2wjivjUXWuFnXEuBRRTAE=;
+X-UUID: fe1fab3fc3524ebbbf146d8040fc23ca-20200531
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <dennis-yc.hsieh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1925988858; Sun, 31 May 2020 18:39:19 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 31 May 2020 19:35:34 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 1 Jun 2020 10:35:32 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 1 Jun 2020 10:35:31 +0800
-Message-ID: <1590978816.8804.523.camel@mhfsdcap03>
-Subject: Re: [V9, 1/2] media: dt-bindings: media: i2c: Document OV02A10
- bindings
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: Tomasz Figa <tfiga@chromium.org>
-Date: Mon, 1 Jun 2020 10:33:36 +0800
-In-Reply-To: <CAAFQd5AuHDpQN8xZsWgnAt6m2reAYJbs9nBp0+mBo7_FS81LbQ@mail.gmail.com>
-References: <20200523084103.31276-1-dongchun.zhu@mediatek.com>
- <20200523084103.31276-2-dongchun.zhu@mediatek.com>
- <20200526182847.GA92449@bogus> <1590569355.8804.448.camel@mhfsdcap03>
- <CAL_Jsq+sN0SVidTrY0ODXEkzkxYFvG1FTnL0oRQBSKf=ynLdyQ@mail.gmail.com>
- <20200527211628.GT7618@paasikivi.fi.intel.com>
- <1590636882.8804.474.camel@mhfsdcap03>
- <20200528072332.GW7618@paasikivi.fi.intel.com>
- <1590653082.8804.517.camel@mhfsdcap03>
- <CAAFQd5AuHDpQN8xZsWgnAt6m2reAYJbs9nBp0+mBo7_FS81LbQ@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ with ESMTP id 1768681985; Sun, 31 May 2020 18:51:19 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 31 May 2020 19:41:15 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 1 Jun 2020 10:41:08 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 1 Jun 2020 10:41:07 +0800
+Message-ID: <1590979273.15486.0.camel@mtkswgap22>
+Subject: Re: [PATCH v6] support gce on mt6779 platform
+From: Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>
+Date: Mon, 1 Jun 2020 10:41:13 +0800
+In-Reply-To: <CABb+yY16FzgafSYRo8DuVMttqUR5JVzXDsaP2rX+UnrNOD6k2A@mail.gmail.com>
+References: <1590685491-17107-1-git-send-email-dennis-yc.hsieh@mediatek.com>
+ <CABb+yY16FzgafSYRo8DuVMttqUR5JVzXDsaP2rX+UnrNOD6k2A@mail.gmail.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: DCC16DA201AA794175D589CDB204CA0D2D14521CE435DCDA57662523486617452000:8
+X-TM-SNTS-SMTP: 23F5E0BF1671CC4EE062D7B349A502EB7F010BB185DCAB11634C1C6C2FE40B6C2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200531_193920_311329_C757E40F 
-X-CRM114-Status: GOOD (  26.77  )
+X-CRM114-CacheID: sfid-20200531_195121_392589_1B9C8819 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,117 +84,83 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh@kernel.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- linux-devicetree <devicetree@vger.kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Shengnan Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=A3=E7=94=B7=29?=
- <shengnan.wang@mediatek.com>, Louis Kuo <louis.kuo@mediatek.com>, Bartosz
- Golaszewski <bgolaszewski@baylibre.com>, Sj Huang <sj.huang@mediatek.com>,
- Nicolas Boichat <drinkcat@chromium.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- dongchun.zhu@mediatek.com, Sakari Ailus <sakari.ailus@linux.intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- "moderated list:ARM/FREESCALE IMX / MXC
- ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Devicetree List <devicetree@vger.kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, wsd_upstream@mediatek.com,
+ David Airlie <airlied@linux.ie>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ dri-devel@lists.freedesktop.org, HS Liao <hs.liao@mediatek.com>,
+ CK Hu <ck.hu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Houlong Wei <houlong.wei@mediatek.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Bibby Hsieh <bibby.hsieh@mediatek.com>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Tomasz,
+Hi Jassi,
 
-On Fri, 2020-05-29 at 15:43 +0200, Tomasz Figa wrote:
-> On Thu, May 28, 2020 at 10:06 AM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
+Thanks for your comment
+
+On Sat, 2020-05-30 at 15:34 -0500, Jassi Brar wrote:
+> On Thu, May 28, 2020 at 12:05 PM Dennis YC Hsieh
+> <dennis-yc.hsieh@mediatek.com> wrote:
 > >
-> > Hi Sakari,
+> > This patch support gce on mt6779 platform.
 > >
-> > On Thu, 2020-05-28 at 10:23 +0300, Sakari Ailus wrote:
-> > > Hi Dongchun,
-> > >
-> > > On Thu, May 28, 2020 at 11:34:42AM +0800, Dongchun Zhu wrote:
-> > > > Hi Sakari, Rob,
-> > > >
-> > > > On Thu, 2020-05-28 at 00:16 +0300, Sakari Ailus wrote:
-> > > > > Hi Rob, Dongchun,
-> > > > >
-> > > > > On Wed, May 27, 2020 at 09:27:22AM -0600, Rob Herring wrote:
-> > > > > > > > > +    properties:
-> > > > > > > > > +      endpoint:
-> > > > > > > > > +        type: object
-> > > > > > > > > +        additionalProperties: false
-> > > > > > > > > +
-> > > > > > > > > +        properties:
-> > > > > > >
-> > > > > > > Actually I wonder whether we need to declare 'clock-lanes' here?
-> > > > > >
-> > > > > > Yes, if you are using it.
-> > > > >
-> > > > > Dongchun, can you confirm the chip has a single data and a single clock
-> > > > > lane and that it does not support lane reordering?
-> > > > >
-> > > >
-> > > > From the datasheet, 'MIPI inside the OV02A10 provides one single
-> > > > uni-directional clock lane and one bi-directional data lane solution for
-> > > > communication links between components inside a mobile device.
-> > > > The data lane has full support for HS(uni-directional) and
-> > > > LP(bi-directional) data transfer mode.'
-> > > >
-> > > > The sensor doesn't support lane reordering, so 'clock-lanes' property
-> > > > would not be added in next release.
-> > > >
-> > > > > So if there's nothing to convey to the driver, also the data-lanes should
-> > > > > be removed IMO.
-> > > > >
-> > > >
-> > > > However, 'data-lanes' property may still be required.
-> > > > It is known that either data-lanes or clock-lanes is an array of
-> > > > physical data lane indexes. Position of an entry determines the logical
-> > > > lane number, while the value of an entry indicates physical lane, e.g.,
-> > > > for 1-lane MIPI CSI-2 bus we could have "data-lanes = <1>;", assuming
-> > > > the clock lane is on hardware lane 0.
-> > > >
-> > > > As mentioned earlier, the OV02A10 sensor supports only 1C1D and does not
-> > > > support lane reordering, so here we shall use 'data-lanes = <1>' as
-> > > > there is only a clock lane for OV02A10.
-> > > >
-> > > > Reminder:
-> > > > If 'data-lanes' property is not present, the driver would assume
-> > > > four-lane operation. This means for one-lane or two-lane operation, this
-> > > > property must be present and set to the right physical lane indexes.
-> > > > If the hardware does not support lane reordering, monotonically
-> > > > incremented values shall be used from 0 or 1 onwards, depending on
-> > > > whether or not there is also a clock lane.
-> > >
-> > > How can the driver use four lanes, considering the device only supports a
-> > > single lane??
-> > >
+> > Change since v5:
+> > - spearate address shift code in client helper and mailbox controller
+> > - separate write_s/write_s_mask and write_s_value/write_s_mask_value so that
+> >   client can decide use mask or not
+> > - fix typo in header
 > >
-> > I understood your meaning.
-> > If we omit the property 'data-lanes', the sensor should work still.
-> > But then what's the meaning of the existence of 'data-lanes'?
-> > If this property 'data-lanes' is always optional, then why dt-bindings
-> > provide the interface?
+> > Change since v4:
+> > - do not clear disp event again in drm driver
+> > - symbolize value 1 to jump relative
 > >
-> > In the meantime, if omitting 'data-lanes' for one sensor(transmitter)
-> > that has only one physical data lane, MIPI receiver(e.g., MIPI CSI-2)
-> > shall enable four-lane configuration, which may increase consumption of
-> > both power and resource in the process of IIC communication.
+> > [... snip ...]
+> >
+> >
+> >
+> > Dennis YC Hsieh (16):
+> >   dt-binding: gce: add gce header file for mt6779
+> >   mailbox: cmdq: variablize address shift in platform
+> >   mailbox: cmdq: support mt6779 gce platform definition
+> >   mailbox: mediatek: cmdq: clear task in channel before shutdown
+> >   soc: mediatek: cmdq: return send msg error code
+> >   soc: mediatek: cmdq: add address shift in jump
+> >   soc: mediatek: cmdq: add assign function
+> >   soc: mediatek: cmdq: add write_s function
+> >   soc: mediatek: cmdq: add write_s_mask function
+> >   soc: mediatek: cmdq: add read_s function
+> >   soc: mediatek: cmdq: add write_s value function
+> >   soc: mediatek: cmdq: add write_s_mask value function
+> >   soc: mediatek: cmdq: export finalize function
+> >   soc: mediatek: cmdq: add jump function
+> >   soc: mediatek: cmdq: add clear option in cmdq_pkt_wfe api
+> >   soc: mediatek: cmdq: add set event function
+> >
+> >  .../devicetree/bindings/mailbox/mtk-gce.txt   |   8 +-
+> >  drivers/gpu/drm/mediatek/mtk_drm_crtc.c       |   3 +-
+> >  drivers/mailbox/mtk-cmdq-mailbox.c            | 101 ++++++--
+> >  drivers/soc/mediatek/mtk-cmdq-helper.c        | 163 ++++++++++++-
+> >  include/dt-bindings/gce/mt6779-gce.h          | 222 ++++++++++++++++++
+> >  include/linux/mailbox/mtk-cmdq-mailbox.h      |  10 +-
+> >  include/linux/soc/mediatek/mtk-cmdq.h         | 125 +++++++++-
+> >
+> Please break the patchset into two. The lower mailbox related changes
+> with soc changes on top.
+
+Ok, I'll separate patches into two patchset, thanks.
+
+
+Regards,
+Dennis
+
 > 
-> Wouldn't the receiver still have the data-lanes property under its
-> endpoint node, telling it how many lanes and in which order should be
-> used?
-> 
-
-The MIPI receiver(RX) shall use
-v4l2_async_notifier_add_fwnode_remote_subdev() API to parse the property
-"data-lanes" under sensor output port.
-
-> Best regards,
-> Tomasz
+> thanks
 
 _______________________________________________
 Linux-mediatek mailing list
