@@ -2,77 +2,85 @@ Return-Path: <SRS0=JxEE=7O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C1E7C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 02:36:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6AC3FC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 02:39:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D116B20679
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 02:36:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3B20820679
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2020 02:39:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ENj2IPKh";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="TMGvSpr/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D116B20679
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WKyff+dt";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="oow2KW+Z"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B20820679
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9YFlyKBFLC6TJrz2TwJ5B2h/mZBGfqXM4WeakiR5Wag=; b=ENj2IPKhNrrkXX
-	jCp9bpavHNZkAT4CNFGVUbYFnLRjNfRLCCjCvQxAl+sK+FIJV+szDFPiB9ZzoPzFIiVNH9AKVhaEj
-	HW6qOfu9BRtI/e7Wr+lczMDDyNc/qcpH8i1AD1aq0hcfKAo5nZODY0jReykgGrxVCMn33keoWtaLP
-	RYBlcGiVphkKgfmEg/9D2bu8zrCbeycBnNe6vBKwHsJBTJwOHqAUWBDihBG7pXvSRCAf4gC67AQ+T
-	ZbdLeghB68nTJ27jK7XmxBW4XGzDZer637ay7TNeLtMOrezATuOh9S3lY5Uqx3i+AlurhWsmSt18B
-	m3E1+HEaWBZMQNIoZFaQ==;
+	List-Owner; bh=RhOut5hxc9P7auFVF0qRL4KaafGCr7+0lcoTAXGgZLM=; b=WKyff+dtxgMiz0
+	QE23hA86keHdfhIOItZQ54Q4Jfgi1WqOUBRN+W4ovKW0CbeXqzTNRjPdB61ZRSrr0S3bDOV9rzJgd
+	5pShDhaDC0q2X6EAHv4ryvw39kLd3MWac4laHqIk14reLElBLnw7pWYCs+sE/463snER62qq9Mbty
+	au6pM9Ba0VDF4YAR59H3zawrV65ogb6c+7RcxFQFGc4NtRIGg5ktV+yhQr4ZQcZjOg19MiKwYdpga
+	1H+L3uHWcZaNQ0lEB7yauLgu4ZwLnduDczt9yVBP9k3VT80+HFNe5OAVXP4EL6c9mMvbgq0fvXCZn
+	b24yGZzivBuwWAcvmhDA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jfaIl-0006Z0-Mb; Mon, 01 Jun 2020 02:35:47 +0000
+	id 1jfaMF-0007Bt-3H; Mon, 01 Jun 2020 02:39:23 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jfaIU-0006Ma-JH; Mon, 01 Jun 2020 02:35:34 +0000
-X-UUID: 35aa7c95935b46fb8497d9b3b30b6da5-20200531
+ id 1jfaMC-0007BI-8e; Mon, 01 Jun 2020 02:39:21 +0000
+X-UUID: 603ed80d6f8047248518a1865637d0ea-20200531
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=1404sPVEs2A3c8LShds91FXFSUwUoP4YiTOdVivR5Ns=; 
- b=TMGvSpr/PelEheBFO5mBacvcK5Iba8BQtTo1ybstsskIA7nU0Nub+lJJw87VcM3uoKnwD2ge9De913F/t2GTDKyF62Ow2QGyZbpm53ln1HvT8sOYXjGaFMOeHPXHAA2fxy/WoM4HGEQzvA4bDEgsgVxx584nO2+gCKH9lQOw/to=;
-X-UUID: 35aa7c95935b46fb8497d9b3b30b6da5-20200531
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=8KXVcKiNS9g9+0ZRyD+sPi3/ylxB1CS4SKdXzmdFHCQ=; 
+ b=oow2KW+ZPflIIuyQz65Pgw570WW3ryB4wBUvur8+WyBiwdfghTjYG3cc0GRAZ0HWfb5HlXXPRREiq8SMXjwcCurZuzzFd40dI1FkdhjRnfDhYDQEB9uQpAHnFsEEzhf8mhaU1gUmOi1NWznIDeRoPdUMg6XwiS8oKm4cT1OuuZI=;
+X-UUID: 603ed80d6f8047248518a1865637d0ea-20200531
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <fengping.yu@mediatek.com>)
+ (envelope-from <dongchun.zhu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 466263886; Sun, 31 May 2020 18:35:26 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 31 May 2020 19:27:31 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 1 Jun 2020 10:27:24 +0800
-Received: from localhost.localdomain (10.15.43.140) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 1 Jun 2020 10:27:23 +0800
-From: Fengping Yu <fengping.yu@mediatek.com>
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Dmitry Torokhov
- <dmitry.torokhov@gmail.com>, Andy Shevchenko
- <andriy.shevchenko@linux.intel.com>, Marco Felsch <m.felsch@pengutronix.de>
-Subject: [PATCH v13 1/3] dt-bindings: Add keypad devicetree documentation
-Date: Mon, 1 Jun 2020 10:25:47 +0800
-Message-ID: <20200601022548.18213-2-fengping.yu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200601022548.18213-1-fengping.yu@mediatek.com>
-References: <20200601022548.18213-1-fengping.yu@mediatek.com>
+ with ESMTP id 1925988858; Sun, 31 May 2020 18:39:19 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 31 May 2020 19:35:34 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 1 Jun 2020 10:35:32 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 1 Jun 2020 10:35:31 +0800
+Message-ID: <1590978816.8804.523.camel@mhfsdcap03>
+Subject: Re: [V9, 1/2] media: dt-bindings: media: i2c: Document OV02A10
+ bindings
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+To: Tomasz Figa <tfiga@chromium.org>
+Date: Mon, 1 Jun 2020 10:33:36 +0800
+In-Reply-To: <CAAFQd5AuHDpQN8xZsWgnAt6m2reAYJbs9nBp0+mBo7_FS81LbQ@mail.gmail.com>
+References: <20200523084103.31276-1-dongchun.zhu@mediatek.com>
+ <20200523084103.31276-2-dongchun.zhu@mediatek.com>
+ <20200526182847.GA92449@bogus> <1590569355.8804.448.camel@mhfsdcap03>
+ <CAL_Jsq+sN0SVidTrY0ODXEkzkxYFvG1FTnL0oRQBSKf=ynLdyQ@mail.gmail.com>
+ <20200527211628.GT7618@paasikivi.fi.intel.com>
+ <1590636882.8804.474.camel@mhfsdcap03>
+ <20200528072332.GW7618@paasikivi.fi.intel.com>
+ <1590653082.8804.517.camel@mhfsdcap03>
+ <CAAFQd5AuHDpQN8xZsWgnAt6m2reAYJbs9nBp0+mBo7_FS81LbQ@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: DCC16DA201AA794175D589CDB204CA0D2D14521CE435DCDA57662523486617452000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200531_193530_642052_4556F5C0 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20200531_193920_311329_C757E40F 
+X-CRM114-Status: GOOD (  26.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,129 +92,118 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "fengping.yu" <fengping.yu@mediatek.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-input@vger.kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh@kernel.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ linux-devicetree <devicetree@vger.kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Shengnan Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=A3=E7=94=B7=29?=
+ <shengnan.wang@mediatek.com>, Louis Kuo <louis.kuo@mediatek.com>, Bartosz
+ Golaszewski <bgolaszewski@baylibre.com>, Sj Huang <sj.huang@mediatek.com>,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ dongchun.zhu@mediatek.com, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "moderated list:ARM/FREESCALE IMX / MXC
+ ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "fengping.yu" <fengping.yu@mediatek.com>
+Hi Tomasz,
 
-Add Mediatek matrix keypad dt-bindings doc as yaml schema.
+On Fri, 2020-05-29 at 15:43 +0200, Tomasz Figa wrote:
+> On Thu, May 28, 2020 at 10:06 AM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
+> >
+> > Hi Sakari,
+> >
+> > On Thu, 2020-05-28 at 10:23 +0300, Sakari Ailus wrote:
+> > > Hi Dongchun,
+> > >
+> > > On Thu, May 28, 2020 at 11:34:42AM +0800, Dongchun Zhu wrote:
+> > > > Hi Sakari, Rob,
+> > > >
+> > > > On Thu, 2020-05-28 at 00:16 +0300, Sakari Ailus wrote:
+> > > > > Hi Rob, Dongchun,
+> > > > >
+> > > > > On Wed, May 27, 2020 at 09:27:22AM -0600, Rob Herring wrote:
+> > > > > > > > > +    properties:
+> > > > > > > > > +      endpoint:
+> > > > > > > > > +        type: object
+> > > > > > > > > +        additionalProperties: false
+> > > > > > > > > +
+> > > > > > > > > +        properties:
+> > > > > > >
+> > > > > > > Actually I wonder whether we need to declare 'clock-lanes' here?
+> > > > > >
+> > > > > > Yes, if you are using it.
+> > > > >
+> > > > > Dongchun, can you confirm the chip has a single data and a single clock
+> > > > > lane and that it does not support lane reordering?
+> > > > >
+> > > >
+> > > > From the datasheet, 'MIPI inside the OV02A10 provides one single
+> > > > uni-directional clock lane and one bi-directional data lane solution for
+> > > > communication links between components inside a mobile device.
+> > > > The data lane has full support for HS(uni-directional) and
+> > > > LP(bi-directional) data transfer mode.'
+> > > >
+> > > > The sensor doesn't support lane reordering, so 'clock-lanes' property
+> > > > would not be added in next release.
+> > > >
+> > > > > So if there's nothing to convey to the driver, also the data-lanes should
+> > > > > be removed IMO.
+> > > > >
+> > > >
+> > > > However, 'data-lanes' property may still be required.
+> > > > It is known that either data-lanes or clock-lanes is an array of
+> > > > physical data lane indexes. Position of an entry determines the logical
+> > > > lane number, while the value of an entry indicates physical lane, e.g.,
+> > > > for 1-lane MIPI CSI-2 bus we could have "data-lanes = <1>;", assuming
+> > > > the clock lane is on hardware lane 0.
+> > > >
+> > > > As mentioned earlier, the OV02A10 sensor supports only 1C1D and does not
+> > > > support lane reordering, so here we shall use 'data-lanes = <1>' as
+> > > > there is only a clock lane for OV02A10.
+> > > >
+> > > > Reminder:
+> > > > If 'data-lanes' property is not present, the driver would assume
+> > > > four-lane operation. This means for one-lane or two-lane operation, this
+> > > > property must be present and set to the right physical lane indexes.
+> > > > If the hardware does not support lane reordering, monotonically
+> > > > incremented values shall be used from 0 or 1 onwards, depending on
+> > > > whether or not there is also a clock lane.
+> > >
+> > > How can the driver use four lanes, considering the device only supports a
+> > > single lane??
+> > >
+> >
+> > I understood your meaning.
+> > If we omit the property 'data-lanes', the sensor should work still.
+> > But then what's the meaning of the existence of 'data-lanes'?
+> > If this property 'data-lanes' is always optional, then why dt-bindings
+> > provide the interface?
+> >
+> > In the meantime, if omitting 'data-lanes' for one sensor(transmitter)
+> > that has only one physical data lane, MIPI receiver(e.g., MIPI CSI-2)
+> > shall enable four-lane configuration, which may increase consumption of
+> > both power and resource in the process of IIC communication.
+> 
+> Wouldn't the receiver still have the data-lanes property under its
+> endpoint node, telling it how many lanes and in which order should be
+> used?
+> 
 
-Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
-Reviewed-by: Marco Felsch <m.felsch@pengutronix.de>
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
----
- .../devicetree/bindings/input/mtk-kpd.yaml    | 95 +++++++++++++++++++
- 1 file changed, 95 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/input/mtk-kpd.yaml
+The MIPI receiver(RX) shall use
+v4l2_async_notifier_add_fwnode_remote_subdev() API to parse the property
+"data-lanes" under sensor output port.
 
-diff --git a/Documentation/devicetree/bindings/input/mtk-kpd.yaml b/Documentation/devicetree/bindings/input/mtk-kpd.yaml
-new file mode 100644
-index 000000000000..586cd196dd00
---- /dev/null
-+++ b/Documentation/devicetree/bindings/input/mtk-kpd.yaml
-@@ -0,0 +1,95 @@
-+# SPDX-License-Identifier: GPL-2.0
-+%YAML 1.2
-+---
-+version: 1
-+
-+$id: http://devicetree.org/schemas/input/mtk-keypad.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek's Keypad Controller device tree bindings
-+
-+maintainer:
-+  - Fengping Yu <fengping.yu@mediatek.com>
-+
-+description: |
-+  Mediatek's Keypad controller is used to interface a SoC with a matrix-type
-+  keypad device. The keypad controller supports multiple row and column lines.
-+  A key can be placed at each intersection of a unique row and a unique column.
-+  The keypad controller can sense a key-press and key-release and report the
-+  event using a interrupt to the cpu.
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - const: "mediatek,mt6779-keypad"
-+      - const: "mediatek,mt6873-keypad"
-+
-+  clock-names:
-+    description: Names of the clocks listed in clocks property in the same order
-+    maxItems: 1
-+
-+  clocks:
-+    description: Must contain one entry, for the module clock
-+    refs: devicetree/bindings/clocks/clock-bindings.txt for details.
-+
-+  interrupts:
-+    description: A single interrupt specifier
-+    maxItems: 1
-+
-+  linux,keymap:
-+    description: The keymap for keys as described in the binding document
-+    refs: devicetree/bindings/input/matrix-keymap.txt
-+    minItems: 1
-+    maxItems: 16
-+
-+  pinctrl-0:
-+    description: Specify pin control groups used for this controller
-+    refs: devicetree/bindings/pinctrl/pinctrl-bindings.txt
-+
-+  pinctrl-names:
-+    description: Names for optional pin modes
-+    maxItems: 1
-+
-+  reg:
-+    description: The base address of the Keypad register bank
-+    maxItems: 1
-+
-+  wakeup-source:
-+    description: use any event on keypad as wakeup event
-+    type: boolean
-+
-+  keypad,num-columns:
-+    description: Number of column lines connected to the keypad controller,
-+    it is not equal to PCB columns number, instead you should add required value
-+    for each IC
-+
-+  keypad,num-rows:
-+    description: Number of row lines connected to the keypad controller, it is
-+    not equal to PCB rows number, instead you should add required value for each IC
-+
-+  mediatek,debounce-us:
-+    description: Debounce interval in microseconds
-+    maximum: 256000
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - linux,keymap
-+  - pinctrl
-+  - clocks
-+  - clock-names
-+
-+examples:
-+  - |
-+
-+  keypad: kp@10010000 {
-+    compatible = "mediatek,mt6779-keypad";
-+    reg = <0 0x10010000 0 0x1000>;
-+    linux,keymap = < MATRIX_KEY(0x00, 0x00, KEY_VOLUMEDOWN) >;
-+    interrupts = <GIC_SPI 75 IRQ_TYPE_EDGE_FALLING>;
-+    clocks = <&clk26m>;
-+    clock-names = "kpd";
-+    pinctrl-names = "default";
-+    pinctrl-0 = <&kpd_gpios_def_cfg>;
-+  };
--- 
-2.18.0
+> Best regards,
+> Tomasz
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
