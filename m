@@ -2,87 +2,78 @@ Return-Path: <SRS0=f9HX=7P=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 248CDC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2020 06:17:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EEA5CC433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2020 08:15:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E477C20734
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2020 06:17:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C390820659
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2020 08:15:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eyxJqFjo";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="brkEbC7P"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E477C20734
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XDWWLa62";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="efQKRy60"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C390820659
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=klDWfsKXaYdi4ipBbJvBC5kjoTDoPAap3d8GUD+PPqg=; b=eyxJqFjoWuH+9B
-	vUdLZjvmEuQn7Tj4s2Dp15KVudhI7DDjo9JQ5gZfp8iM4yCBqBzcaLWTm76srSM/RR4wIccPXSnsj
-	bywti7RXMctAYeJJepihaeaJR5Dog5f6ld8RPxCztnx4/ggHPgCYfrAmeIDltJlsRUE14+TMvtuLW
-	i7h1c/ydO9Zi1ntBnmeO94eb6lMpRxwnNvS73aFg1ab78NnBv4NXSFWfnrdj4ytK8BA+JY4EBffQS
-	XAwczCr4EyrD2G0qp4gSMBOid8OsXBo8zstmUrJctJLKjX0OeIw6v36E5US4fh9TUtfBWb7m3Btq9
-	Z00VcTYMWQ450LGQ9jhg==;
+	List-Owner; bh=7rE0ee82ZzQaausNBWAUwr64Zc4IwY6d16T+3xCKfss=; b=XDWWLa62QFQecp
+	WOCK4hxNKueawVcW03lAAKJskNPHoVghCH7ROPrw0KjACHjcmZV0VxW3OOEeS36XriQf+UgfrBNU3
+	VImLVtBKZedX8K34N0bvj3aaFQhK2FMSyVm3+PcJi931ZPWtm3MOLZmd21K8syy98RzGwL2sKJpRY
+	31IIlKAHpAvZlv3GcGqG0Mo0AluAW3/yNlhNJX7+dW8gDyNiQ71oEq7jWUVJ0by+aO1MVf1UOhIht
+	St0G7txoYIlq0oMhzqZqWAeEa3LD5IK05vC/W2fwtqwC3GOeEN854xgxcLx8QILf1nBWo4hoHUuKO
+	18oSbrMIWr6kfk6ro9ug==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jg0Ec-0003ww-Aw; Tue, 02 Jun 2020 06:17:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jg24m-0006P0-IZ; Tue, 02 Jun 2020 08:15:12 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jg0EZ-0003w0-LG; Tue, 02 Jun 2020 06:17:13 +0000
-X-UUID: 4e6c9ac029b04959aa5da090be7d0dc2-20200601
+ id 1jg24i-0004z6-Oj; Tue, 02 Jun 2020 08:15:10 +0000
+X-UUID: 1f61be47b7c84ee1a0bf9dc199cbe9a8-20200602
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=52LMWjXgcgHTMdeFN/WLfv0/xMo/B6WtU8uG4FMZzUc=; 
- b=brkEbC7PQ7BPyK0asQ7MLzoRxPDxiDKLca0AlxvlyJf31gWXk6MSkxDPSbGhI7Mg0f7aRgf672qvljYfh6JVNyCBa3RcyY0W7C+ounm6Ux0ON5TDxpjCAbzW/t7GKw60jqPXQ3mzrQHe3kRiZfReb9WSTCNHEijTaY4eWcA0XuM=;
-X-UUID: 4e6c9ac029b04959aa5da090be7d0dc2-20200601
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <dongchun.zhu@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=MbF+LRzExa+XY/pBtDs6ophTBP7J5P1UhRlTOBIVSUM=; 
+ b=efQKRy60hw1KplC6/kQqXKjW66LqR+aLwMJt0z4mRRe2AMeRx3rmM+pK2/5CNRH9pMm1IgOKlaxbjLuHq/udbLfw5UJxWOX2EQH6ogPsECB31MnJ+uEF6KMQVAEUXRj2Bi6dBJ7cULhsSC1YQTk4zc5TOjGn8mVI+1q7SQyr78k=;
+X-UUID: 1f61be47b7c84ee1a0bf9dc199cbe9a8-20200602
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <neal.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 544322756; Mon, 01 Jun 2020 22:17:07 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 1 Jun 2020 23:17:03 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 2 Jun 2020 14:16:59 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 2 Jun 2020 14:16:58 +0800
-Message-ID: <1591078501.8804.539.camel@mhfsdcap03>
-Subject: Re: [V9, 1/2] media: dt-bindings: media: i2c: Document OV02A10
- bindings
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: Tomasz Figa <tfiga@chromium.org>
-Date: Tue, 2 Jun 2020 14:15:01 +0800
-In-Reply-To: <CAAFQd5AY9gejoiwxojvvG0FaVfEAf8gCqOddvo-dxemQWFksVw@mail.gmail.com>
-References: <20200523084103.31276-1-dongchun.zhu@mediatek.com>
- <20200523084103.31276-2-dongchun.zhu@mediatek.com>
- <20200526182847.GA92449@bogus> <1590569355.8804.448.camel@mhfsdcap03>
- <CAL_Jsq+sN0SVidTrY0ODXEkzkxYFvG1FTnL0oRQBSKf=ynLdyQ@mail.gmail.com>
- <20200527211628.GT7618@paasikivi.fi.intel.com>
- <1590636882.8804.474.camel@mhfsdcap03>
- <20200528072332.GW7618@paasikivi.fi.intel.com>
- <1590653082.8804.517.camel@mhfsdcap03>
- <CAAFQd5AuHDpQN8xZsWgnAt6m2reAYJbs9nBp0+mBo7_FS81LbQ@mail.gmail.com>
- <1590978816.8804.523.camel@mhfsdcap03>
- <CAAFQd5AY9gejoiwxojvvG0FaVfEAf8gCqOddvo-dxemQWFksVw@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ with ESMTP id 532629394; Tue, 02 Jun 2020 00:15:02 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 2 Jun 2020 01:15:00 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 2 Jun 2020 16:14:59 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 2 Jun 2020 16:14:58 +0800
+From: Neal Liu <neal.liu@mediatek.com>
+To: Matt Mackall <mpm@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>, 
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@kernel.org>, Arnd Bergmann <arnd@arndb.de>, "Greg
+ Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [PATCH v6 1/2] dt-bindings: rng: add bindings for sec-rng
+Date: Tue, 2 Jun 2020 16:14:37 +0800
+Message-ID: <1591085678-22764-2-git-send-email-neal.liu@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1591085678-22764-1-git-send-email-neal.liu@mediatek.com>
+References: <1591085678-22764-1-git-send-email-neal.liu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: A9AC065C4A1F08B9E7B8B0326C91B759B13EEBC728E9C857B02494DBE22A12912000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200601_231711_704763_FCFAC4B2 
-X-CRM114-Status: GOOD (  30.80  )
+X-CRM114-CacheID: sfid-20200602_011508_845320_5C93CD05 
+X-CRM114-Status: GOOD (  10.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,159 +85,85 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh@kernel.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- linux-devicetree <devicetree@vger.kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Shengnan Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=A3=E7=94=B7=29?=
- <shengnan.wang@mediatek.com>, Louis Kuo <louis.kuo@mediatek.com>, Bartosz
- Golaszewski <bgolaszewski@baylibre.com>, Sj Huang <sj.huang@mediatek.com>,
- Nicolas Boichat <drinkcat@chromium.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- "moderated list:ARM/FREESCALE IMX / MXC
- ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ lkml <linux-kernel@vger.kernel.org>, Crystal Guo <Crystal.Guo@mediatek.com>,
+ linux-mediatek@lists.infradead.org, linux-crypto@vger.kernel.org,
+ Neal Liu <neal.liu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Tomasz, Sakari,
+Add bindings for ARM TrustZone based Security Random
+Number Generator.
 
-On Mon, 2020-06-01 at 20:18 +0200, Tomasz Figa wrote:
-> On Mon, Jun 1, 2020 at 4:35 AM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
-> >
-> > Hi Tomasz,
-> >
-> > On Fri, 2020-05-29 at 15:43 +0200, Tomasz Figa wrote:
-> > > On Thu, May 28, 2020 at 10:06 AM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
-> > > >
-> > > > Hi Sakari,
-> > > >
-> > > > On Thu, 2020-05-28 at 10:23 +0300, Sakari Ailus wrote:
-> > > > > Hi Dongchun,
-> > > > >
-> > > > > On Thu, May 28, 2020 at 11:34:42AM +0800, Dongchun Zhu wrote:
-> > > > > > Hi Sakari, Rob,
-> > > > > >
-> > > > > > On Thu, 2020-05-28 at 00:16 +0300, Sakari Ailus wrote:
-> > > > > > > Hi Rob, Dongchun,
-> > > > > > >
-> > > > > > > On Wed, May 27, 2020 at 09:27:22AM -0600, Rob Herring wrote:
-> > > > > > > > > > > +    properties:
-> > > > > > > > > > > +      endpoint:
-> > > > > > > > > > > +        type: object
-> > > > > > > > > > > +        additionalProperties: false
-> > > > > > > > > > > +
-> > > > > > > > > > > +        properties:
-> > > > > > > > >
-> > > > > > > > > Actually I wonder whether we need to declare 'clock-lanes' here?
-> > > > > > > >
-> > > > > > > > Yes, if you are using it.
-> > > > > > >
-> > > > > > > Dongchun, can you confirm the chip has a single data and a single clock
-> > > > > > > lane and that it does not support lane reordering?
-> > > > > > >
-> > > > > >
-> > > > > > From the datasheet, 'MIPI inside the OV02A10 provides one single
-> > > > > > uni-directional clock lane and one bi-directional data lane solution for
-> > > > > > communication links between components inside a mobile device.
-> > > > > > The data lane has full support for HS(uni-directional) and
-> > > > > > LP(bi-directional) data transfer mode.'
-> > > > > >
-> > > > > > The sensor doesn't support lane reordering, so 'clock-lanes' property
-> > > > > > would not be added in next release.
-> > > > > >
-> > > > > > > So if there's nothing to convey to the driver, also the data-lanes should
-> > > > > > > be removed IMO.
-> > > > > > >
-> > > > > >
-> > > > > > However, 'data-lanes' property may still be required.
-> > > > > > It is known that either data-lanes or clock-lanes is an array of
-> > > > > > physical data lane indexes. Position of an entry determines the logical
-> > > > > > lane number, while the value of an entry indicates physical lane, e.g.,
-> > > > > > for 1-lane MIPI CSI-2 bus we could have "data-lanes = <1>;", assuming
-> > > > > > the clock lane is on hardware lane 0.
-> > > > > >
-> > > > > > As mentioned earlier, the OV02A10 sensor supports only 1C1D and does not
-> > > > > > support lane reordering, so here we shall use 'data-lanes = <1>' as
-> > > > > > there is only a clock lane for OV02A10.
-> > > > > >
-> > > > > > Reminder:
-> > > > > > If 'data-lanes' property is not present, the driver would assume
-> > > > > > four-lane operation. This means for one-lane or two-lane operation, this
-> > > > > > property must be present and set to the right physical lane indexes.
-> > > > > > If the hardware does not support lane reordering, monotonically
-> > > > > > incremented values shall be used from 0 or 1 onwards, depending on
-> > > > > > whether or not there is also a clock lane.
-> > > > >
-> > > > > How can the driver use four lanes, considering the device only supports a
-> > > > > single lane??
-> > > > >
-> > > >
-> > > > I understood your meaning.
-> > > > If we omit the property 'data-lanes', the sensor should work still.
-> > > > But then what's the meaning of the existence of 'data-lanes'?
-> > > > If this property 'data-lanes' is always optional, then why dt-bindings
-> > > > provide the interface?
-> > > >
-> > > > In the meantime, if omitting 'data-lanes' for one sensor(transmitter)
-> > > > that has only one physical data lane, MIPI receiver(e.g., MIPI CSI-2)
-> > > > shall enable four-lane configuration, which may increase consumption of
-> > > > both power and resource in the process of IIC communication.
-> > >
-> > > Wouldn't the receiver still have the data-lanes property under its
-> > > endpoint node, telling it how many lanes and in which order should be
-> > > used?
-> > >
-> >
-> > The MIPI receiver(RX) shall use
-> > v4l2_async_notifier_add_fwnode_remote_subdev() API to parse the property
-> > "data-lanes" under sensor output port.
-> 
-> That's not true. The MIPI receiver driver parses its own port node
-> corresponding to the sensor. Also quoting the documentation [1]:
-> 
-> "An endpoint subnode of a device contains all properties needed for
-> _configuration of this device_ for data exchange with other device. In most
-> cases properties at the peer 'endpoint' nodes will be identical, however they
-> might need to be different when there is any signal modifications on the bus
-> between two devices, e.g. there are logic signal inverters on the lines."
-> 
-> In this case, there is such a signal modification if the sensor has a
-> 1-lane bus and the receiver more lines, so the data-lanes properties
-> would be different on both sides.
-> 
-> [1] https://elixir.bootlin.com/linux/v5.7/source/Documentation/devicetree/bindings/media/video-interfaces.txt
-> 
+Signed-off-by: Neal Liu <neal.liu@mediatek.com>
+---
+ Documentation/devicetree/bindings/rng/sec-rng.yaml |   53 ++++++++++++++++++++
+ 1 file changed, 53 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/rng/sec-rng.yaml
 
-Sorry for the misunderstanding.
-After doing some experiments about the data-lanes property under sensor
-i2c node, we found the API
-v4l2_async_notifier_add_fwnode_remote_subdev() that MIPI receiver driver
-used indeed parses the data-lanes under its own port node.
-
-Sorry make a mistake for the use case of sensor data-lanes previously.
-Now We may encounter one new question for this patch.
-In practice we haven't used the data-lanes under sensor i2c node
-anywhere, if sensor driver itself doesn't parse that.
-
-But there is still one reason to keep the exactly right data-lanes in
-DT. That is, the data-lanes under sensor i2c node could be used as a
-reference for MIPI receiver driver.
-Just as Tomasz said, 'The MIPI receiver driver parses its own port node
-corresponding to the sensor'.
-
-Sakari, Tomasz, what's your opinions about the present of data-lanes
-under sensor node or not?
-
-> Best regards,
-> Tomasz
-
+diff --git a/Documentation/devicetree/bindings/rng/sec-rng.yaml b/Documentation/devicetree/bindings/rng/sec-rng.yaml
+new file mode 100644
+index 0000000..7f4ae50
+--- /dev/null
++++ b/Documentation/devicetree/bindings/rng/sec-rng.yaml
+@@ -0,0 +1,53 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++# # Copyright 2020 MediaTek Inc.
++%YAML 1.2
++---
++$id: "http://devicetree.org/schemas/rng/sec-rng.yaml#"
++$schema: "http://devicetree.org/meta-schemas/core.yaml#"
++
++title: Security Random Number Generator
++
++description: |
++  sec-rng is a security random number generator which provides a generic
++  interface to get hardware rnd from Secure state. The Secure state can be
++  Arm Trusted Firmware(ATF), Trusted Execution Environment(TEE), or even
++  EL2 hypervisor.
++
++maintainer:
++  - Neal Liu <neal.liu@mediatek.com>
++
++properties:
++  compatible:
++    enum:
++      - arm,sec-rng
++
++  method:
++    description: The method of calling to Secure state
++    enum:
++      - smc
++      - hvc
++
++  method-fid:
++    description: The function number within the SMC and HVC function identifier
++    maxItems: 1
++
++  quality:
++    description: Estimation of true entropy in RNG's bitstream per 1024 bits
++    maxItems: 1
++
++required:
++  - compatible
++  - methods
++  - method-fid
++  - quality
++
++additionalProperties: false
++
++examples:
++  - |
++    hwrng: hwrng {
++            compatible = "arm,sec-rng";
++            method = "smc";
++            method-fid = /bits/ 16 <0x26a>;
++            quality = /bits/ 16 <900>;
++    };
+-- 
+1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
