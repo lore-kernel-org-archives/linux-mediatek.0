@@ -2,59 +2,59 @@ Return-Path: <SRS0=f9HX=7P=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D7442C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2020 08:25:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 52D6AC433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2020 08:25:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6799620674
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2020 08:25:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 25CBB2072F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2020 08:25:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HXZY4c7P";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="juOEJE4Q"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6799620674
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="V7P5rLBT";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="jbX9s15L"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 25CBB2072F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Pn+OkcwV2ebxX06VYTRK8aSxcXiEjjfAoxKTXVYISys=; b=HXZY4c7P1m2RX2
-	dqCgFy9UvE0kotrqtA+iGyTWUy3mThxE8oCpaOMPYRln4Os6gh2HW1vWZqjjxG2tdVdF9vx9W6vfQ
-	ZZoJ605UUFug6EmuunpxsdNvlEGL/hE7n5rNR2vyKJWkpb1IyocXgKrxJjhmr58ICgrHjDc62H+Mv
-	KdbnQik0WFeYIWFWrF37tAClpLQTGA3SihH8QJZMkZbWY4gmlX7NfCczOM63U/5XcpiYHUmJX6XTw
-	yOwOQlkOM9zr2HTBRi8uz6n1/rRm1+gC+rv1paSgSSMbI5hK/7Gi7GpFMYTAo7OLgFADfB87SZwwx
-	mTc3k7HKB51AU8FmujTw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QwiZW4O4YQ/N1GDv8McvijREZUJ11CMuKNCAVCn0VSo=; b=V7P5rLBT9SoOPf
+	LZ6I+WDGhc//9r+NcLvPb+HfKS61ae5o3IZvy1HLkgP+3aXPFV8JPzS1RMjUlBiStRo6GFUh3uryO
+	jPGuuCUpHkoMUhS+cW12K6kogukUEOyOkKTjCniQRncthiEAuNbwmTaqWvIO7yqL5QxKc5SppqDri
+	YtYVMIHVuD02/zqpW6IIHGzK5HNQW0arNJxRLxQRMZn3kJxQrPTG0LWFvUjH2guK6qoW6MKXwKbFF
+	3bSnQAyQ/kb4GDX3AcDgq8dHjTIB3LyDEnmoFVrd3ELRCoRXxAgd2tKNnztjcWsvfRKqfFQYAiRd0
+	kpjDRLgXHXmCN9dLEMoA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jg2Eb-0004zV-4C; Tue, 02 Jun 2020 08:25:21 +0000
+	id 1jg2Ep-0005CA-4S; Tue, 02 Jun 2020 08:25:35 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jg2EX-0004yN-Rd; Tue, 02 Jun 2020 08:25:19 +0000
-X-UUID: 5a959a0cd4d64fe1ba78d4874ab525f7-20200602
+ id 1jg2EY-0004ye-I3; Tue, 02 Jun 2020 08:25:20 +0000
+X-UUID: 1534da590d414aaeaf5a5b60ce0eac3e-20200602
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=KYrBaNtif/3VCFCQAyrN/XFfbiRCsls3LdboJ24kUjg=; 
- b=juOEJE4Qtr7VKR/aVy3s1kn/1VNq/I3Adeoc9nU+V9GAZAh9O0Mss+7phmRlvfDmzs96Ak8Q6VDcjykrdXQMT1UEyFrJ6jvODM3xwlfE6MHVFnirP7Y7iCgdKZ3QkOaQ/7DzVZuoafdK3zcfs6AqwzDKYfiBUcSSAEgRhRVmPJM=;
-X-UUID: 5a959a0cd4d64fe1ba78d4874ab525f7-20200602
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=L04bYCk8wivAACUMFnflEPSxZwU86UwuPofSNkaCMCU=; 
+ b=jbX9s15LImbS1lMlL4qHc72C4/E7MkqS/qkQri6OS47xtgGtW6E7PrMgmuxo/TvBiI1wfLaXbxVs3fvoNnrdWM+hOCLRKPWQwiTahehaPEqmaPt7aRojDe6CytW4yT0PwniCGciFiCu0K8/X+sninvj15NtsUF5w2jNCXSq+Lg8=;
+X-UUID: 1534da590d414aaeaf5a5b60ce0eac3e-20200602
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <neal.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1610587597; Tue, 02 Jun 2020 00:25:16 -0800
+ with ESMTP id 1968415831; Tue, 02 Jun 2020 00:25:16 -0800
 Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 2 Jun 2020 01:15:11 -0700
+ 15.0.1497.2; Tue, 2 Jun 2020 01:15:12 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 2 Jun 2020 16:14:58 +0800
+ 15.0.1497.2; Tue, 2 Jun 2020 16:14:59 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Tue, 2 Jun 2020 16:14:58 +0800
@@ -63,17 +63,18 @@ To: Matt Mackall <mpm@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>,
  Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  Sean Wang <sean.wang@kernel.org>, Arnd Bergmann <arnd@arndb.de>, "Greg
  Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: Security Random Number Generator support
-Date: Tue, 2 Jun 2020 16:14:36 +0800
-Message-ID: <1591085678-22764-1-git-send-email-neal.liu@mediatek.com>
+Subject: [PATCH v6 2/2] hwrng: add sec-rng driver
+Date: Tue, 2 Jun 2020 16:14:38 +0800
+Message-ID: <1591085678-22764-3-git-send-email-neal.liu@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1591085678-22764-1-git-send-email-neal.liu@mediatek.com>
+References: <1591085678-22764-1-git-send-email-neal.liu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 94F4E944B9EF29E1123C6BE1784E0CFC99BCFFF856242D1AE2433041B1BDFE682000:8
+X-TM-SNTS-SMTP: 909ABA3B6E64AD00041CC4B3A9BF7D20E656DA2E14FD0DBC349B80906CF174CA2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200602_012517_899170_1A2DF627 
-X-CRM114-Status: UNSURE (   9.06  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200602_012518_602880_D9150D9A 
+X-CRM114-Status: GOOD (  16.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,56 +95,216 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-These patch series introduce a security random number generator
-which provides a generic interface to get hardware rnd from Secure
-state. The Secure state can be Arm Trusted Firmware(ATF), Trusted
-Execution Environment(TEE), or even EL2 hypervisor.
-
-Patch #1..2 adds sec-rng kernel driver for Trustzone based SoCs.
 For security awareness SoCs on ARMv8 with TrustZone enabled,
 peripherals like entropy sources is not accessible from normal world
 (linux) and rather accessible from secure world (HYP/ATF/TEE) only.
 This driver aims to provide a generic interface to Arm Trusted
 Firmware or Hypervisor rng service.
 
-
-changes since v1:
-- rename mt67xx-rng to mtk-sec-rng since all MediaTek ARMv8 SoCs can reuse
-  this driver.
-  - refine coding style and unnecessary check.
-
-  changes since v2:
-  - remove unused comments.
-  - remove redundant variable.
-
-  changes since v3:
-  - add dt-bindings for MediaTek rng with TrustZone enabled.
-  - revise HWRNG SMC call fid.
-
-  changes since v4:
-  - move bindings to the arm/firmware directory.
-  - revise driver init flow to check more property.
-
-  changes since v5:
-  - refactor to more generic security rng driver which
-    is not platform specific.
-
-*** BLURB HERE ***
-
-Neal Liu (2):
-  dt-bindings: rng: add bindings for sec-rng
-  hwrng: add sec-rng driver
-
- .../devicetree/bindings/rng/sec-rng.yaml      |  53 ++++++
- drivers/char/hw_random/Kconfig                |  13 ++
- drivers/char/hw_random/Makefile               |   1 +
- drivers/char/hw_random/sec-rng.c              | 155 ++++++++++++++++++
- 4 files changed, 222 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/rng/sec-rng.yaml
+Signed-off-by: Neal Liu <neal.liu@mediatek.com>
+---
+ drivers/char/hw_random/Kconfig   |   13 ++++
+ drivers/char/hw_random/Makefile  |    1 +
+ drivers/char/hw_random/sec-rng.c |  155 ++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 169 insertions(+)
  create mode 100644 drivers/char/hw_random/sec-rng.c
 
+diff --git a/drivers/char/hw_random/Kconfig b/drivers/char/hw_random/Kconfig
+index 9bc46da..cb9c8a9 100644
+--- a/drivers/char/hw_random/Kconfig
++++ b/drivers/char/hw_random/Kconfig
+@@ -474,6 +474,19 @@ config HW_RANDOM_KEYSTONE
+ 	help
+ 	  This option enables Keystone's hardware random generator.
+ 
++config HW_RANDOM_SECURE
++	tristate "Arm Security Random Number Generator support"
++	depends on HAVE_ARM_SMCCC || COMPILE_TEST
++	default HW_RANDOM
++	help
++	  This driver provides kernel-side support for the Arm Security
++	  Random Number Generator.
++
++	  To compile this driver as a module, choose M here. the
++	  module will be called sec-rng.
++
++	  If unsure, say Y.
++
+ endif # HW_RANDOM
+ 
+ config UML_RANDOM
+diff --git a/drivers/char/hw_random/Makefile b/drivers/char/hw_random/Makefile
+index a7801b4..04533d1 100644
+--- a/drivers/char/hw_random/Makefile
++++ b/drivers/char/hw_random/Makefile
+@@ -41,3 +41,4 @@ obj-$(CONFIG_HW_RANDOM_S390) += s390-trng.o
+ obj-$(CONFIG_HW_RANDOM_KEYSTONE) += ks-sa-rng.o
+ obj-$(CONFIG_HW_RANDOM_OPTEE) += optee-rng.o
+ obj-$(CONFIG_HW_RANDOM_NPCM) += npcm-rng.o
++obj-$(CONFIG_HW_RANDOM_SECURE) += sec-rng.o
+diff --git a/drivers/char/hw_random/sec-rng.c b/drivers/char/hw_random/sec-rng.c
+new file mode 100644
+index 0000000..c6d3872
+--- /dev/null
++++ b/drivers/char/hw_random/sec-rng.c
+@@ -0,0 +1,155 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (C) 2020 MediaTek Inc.
++ */
++
++#include <linux/arm-smccc.h>
++#include <linux/hw_random.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
++
++#define SMC_RET_NUM	4
++#define SEC_RND_SIZE	(sizeof(u32) * SMC_RET_NUM)
++
++#define HWRNG_SMC_FAST_CALL_VAL(func_num) \
++	ARM_SMCCC_CALL_VAL(ARM_SMCCC_FAST_CALL, ARM_SMCCC_SMC_32, \
++			   ARM_SMCCC_OWNER_SIP, (func_num))
++
++#define to_sec_rng(p)	container_of(p, struct sec_rng_priv, rng)
++
++typedef void (sec_rng_fn)(unsigned long, unsigned long, unsigned long,
++			  unsigned long, unsigned long, unsigned long,
++			  unsigned long, unsigned long,
++			  struct arm_smccc_res *);
++
++struct sec_rng_priv {
++	u16 func_num;
++	sec_rng_fn *rng_fn;
++	struct hwrng rng;
++};
++
++/* Simple wrapper functions to be able to use a function pointer */
++static void sec_rng_smc(unsigned long a0, unsigned long a1,
++			unsigned long a2, unsigned long a3,
++			unsigned long a4, unsigned long a5,
++			unsigned long a6, unsigned long a7,
++			struct arm_smccc_res *res)
++{
++	arm_smccc_smc(a0, a1, a2, a3, a4, a5, a6, a7, res);
++}
++
++static void sec_rng_hvc(unsigned long a0, unsigned long a1,
++			unsigned long a2, unsigned long a3,
++			unsigned long a4, unsigned long a5,
++			unsigned long a6, unsigned long a7,
++			struct arm_smccc_res *res)
++{
++	arm_smccc_hvc(a0, a1, a2, a3, a4, a5, a6, a7, res);
++}
++
++static bool __sec_get_rnd(struct sec_rng_priv *priv, uint32_t *val)
++{
++	struct arm_smccc_res res;
++
++	priv->rng_fn(HWRNG_SMC_FAST_CALL_VAL(priv->func_num),
++			0, 0, 0, 0, 0, 0, 0, &res);
++
++	if (!res.a0 && !res.a1 && !res.a2 && !res.a3)
++		return false;
++
++	val[0] = res.a0;
++	val[1] = res.a1;
++	val[2] = res.a2;
++	val[3] = res.a3;
++
++	return true;
++}
++
++static int sec_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
++{
++	struct sec_rng_priv *priv = to_sec_rng(rng);
++	u32 val[4] = {0};
++	int retval = 0;
++	int i;
++
++	while (max >= SEC_RND_SIZE) {
++		if (!__sec_get_rnd(priv, val))
++			return retval;
++
++		for (i = 0; i < SMC_RET_NUM; i++) {
++			*(u32 *)buf = val[i];
++			buf += sizeof(u32);
++		}
++
++		retval += SEC_RND_SIZE;
++		max -= SEC_RND_SIZE;
++	}
++
++	return retval;
++}
++
++static int sec_rng_probe(struct platform_device *pdev)
++{
++	struct sec_rng_priv *priv;
++	const char *method;
++	int ret;
++
++	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	if (of_property_read_string(pdev->dev.of_node, "method", &method))
++		return -ENXIO;
++
++	if (!strncmp("smc", method, strlen("smc")))
++		priv->rng_fn = sec_rng_smc;
++	else if (!strncmp("hvc", method, strlen("hvc")))
++		priv->rng_fn = sec_rng_hvc;
++
++	if (IS_ERR(priv->rng_fn)) {
++		dev_err(&pdev->dev, "method %s is not supported\n", method);
++		return -EINVAL;
++	}
++
++	if (of_property_read_u16(pdev->dev.of_node, "method-fid",
++				 &priv->func_num))
++		return -ENXIO;
++
++	if (of_property_read_u16(pdev->dev.of_node, "quality",
++				 &priv->rng.quality))
++		return -ENXIO;
++
++	priv->rng.name = pdev->name;
++	priv->rng.read = sec_rng_read;
++	priv->rng.priv = (unsigned long)&pdev->dev;
++
++	ret = devm_hwrng_register(&pdev->dev, &priv->rng);
++	if (ret) {
++		dev_err(&pdev->dev, "failed to register rng device: %d\n", ret);
++		return ret;
++	}
++
++	return 0;
++}
++
++static const struct of_device_id sec_rng_match[] = {
++	{ .compatible = "arm,sec-rng", },
++	{}
++};
++MODULE_DEVICE_TABLE(of, sec_rng_match);
++
++static struct platform_driver sec_rng_driver = {
++	.probe = sec_rng_probe,
++	.driver = {
++		.name = KBUILD_MODNAME,
++		.owner = THIS_MODULE,
++		.of_match_table = sec_rng_match,
++	},
++};
++
++module_platform_driver(sec_rng_driver);
++
++MODULE_DESCRIPTION("Security Random Number Generator Driver");
++MODULE_AUTHOR("Neal Liu <neal.liu@mediatek.com>");
++MODULE_LICENSE("GPL");
 -- 
-2.18.0
+1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
