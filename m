@@ -2,70 +2,77 @@ Return-Path: <SRS0=f9HX=7P=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 51724C433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2020 13:03:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EB45CC433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2020 14:23:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2888B20663
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2020 13:03:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BF133206C3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2020 14:23:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="im6WWM6E"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2888B20663
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=misterjones.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oJNd0pfW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BF133206C3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bjN+r0BvwfDObE88KMG1TrTx9ZsISXgggatA+x2VySI=; b=im6WWM6EjzV/J7KgOHO4+k6O+
-	btJjbYR+Rqhl2fsXgwSqmDKiJIA+6yr/x57qlIU1SKXYSSpO5xcajNVeuFg4v1JfJZrdSMIjpVziE
-	abdrmMnNqjwo873PPU+9JyO642xtPiUtDz1pXoh1/jnmtOXBUN0qvprRfZRKYaV9m7LbDQKfVy0wq
-	mNKaiV9a37gPfEPLJd49DGQiOoQzXZJMBZdQAqZC1lhs8NHyXlvkZ0lWHE0dB3nGDCZMJUBA/JxiH
-	CSYlulCG650i89V+8TmTKWQrHGOY0Azp/IbW2HQnIzhVqCVA6ghhYy/COuugIyAxlPPvR9hkoawoV
-	lauuatSQg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+OeSMFL4OLWyFqqxlQOrPZc7ojrkOPf+frWj1Uh2Qsg=; b=oJNd0pfWMpH8JB
+	4+AjoQqGwa6E6RiIcKe7qvkrXDFXyMWZ4Sti9Ljj293pqYbQlF035gvGYeAujDodVOrp6TBu8Y7to
+	8ooR4f7IIUTylSRukxmWctxOJ9qcMjWKbWVnFF48qayCxVMF01wF6ZoP6VNWaltT4+kqZp8pWfKfa
+	EgOO4x8Td1m07sd3fL5LaqEyfXcE95tfAhJyi5KpU5YYNFyk+lp71QdIfr7uZP/3na341aToTgU3S
+	xnMSQwpfrB7cEwhdIzOWVEZyY+Apkpp65QoRDmnVlLKgvgax2Phs45dUtak64YKENR3JyiyQnoUUm
+	qcBmCKxGE9LHsqh1pr4g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jg6ZX-0001uo-3V; Tue, 02 Jun 2020 13:03:15 +0000
-Received: from disco-boy.misterjones.org ([51.254.78.96])
+	id 1jg7pA-0003yH-TX; Tue, 02 Jun 2020 14:23:28 +0000
+Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
+ helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jg6ZU-0001uH-Jh; Tue, 02 Jun 2020 13:03:14 +0000
-Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
- by disco-boy.misterjones.org with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
- (envelope-from <maz@misterjones.org>)
- id 1jg6Z5-00HBxM-LQ; Tue, 02 Jun 2020 14:02:47 +0100
+ id 1jg7p8-0003xM-K2; Tue, 02 Jun 2020 14:23:28 +0000
+Received: by theia.8bytes.org (Postfix, from userid 1000)
+ id 6498A2A6; Tue,  2 Jun 2020 16:23:14 +0200 (CEST)
+Date: Tue, 2 Jun 2020 16:23:12 +0200
+From: Joerg Roedel <joro@8bytes.org>
+To: Lu Baolu <baolu.lu@linux.intel.com>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ David Woodhouse <dwmw2@infradead.org>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ virtualization@lists.linux-foundation.org,
+ linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org
+Subject: Re: [PATCH v2 00/33] iommu: Move iommu_group setup to IOMMU core code
+Message-ID: <20200602142312.GJ14598@8bytes.org>
+References: <20200414131542.25608-1-joro@8bytes.org>
+ <20200529221623.qc6twmpzryh7nkvb@cantor>
+ <20200601104240.7f5xhz7gooqhaq4n@cantor>
+ <47711845-98ee-95b8-aa95-423a36ed9741@linux.intel.com>
+ <20200602000236.j4m3jvluzdhjngdc@cantor>
 MIME-Version: 1.0
-Date: Tue, 02 Jun 2020 14:02:47 +0100
-From: Marc Zyngier <maz@misterjones.org>
-To: Ard Biesheuvel <ardb@kernel.org>
-Subject: Re: Security Random Number Generator support
-In-Reply-To: <CAMj1kXHjAdk5=-uSh_=S9j5cz42zr3h6t+YYGy+obevuQDp0fg@mail.gmail.com>
-References: <1591085678-22764-1-git-send-email-neal.liu@mediatek.com>
- <CAMj1kXHjAdk5=-uSh_=S9j5cz42zr3h6t+YYGy+obevuQDp0fg@mail.gmail.com>
-User-Agent: Roundcube Webmail/1.4.4
-Message-ID: <85dfc0142d3879d50c0ba18bcc71e199@misterjones.org>
-X-Sender: maz@misterjones.org
-X-SA-Exim-Connect-IP: 51.254.78.96
-X-SA-Exim-Rcpt-To: ardb@kernel.org, neal.liu@mediatek.com,
- devicetree@vger.kernel.org, herbert@gondor.apana.org.au, arnd@arndb.de,
- gregkh@linuxfoundation.org, sean.wang@kernel.org, linux-kernel@vger.kernel.org,
- wsd_upstream@mediatek.com, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, linux-crypto@vger.kernel.org,
- mpm@selenic.com, matthias.bgg@gmail.com, Crystal.Guo@mediatek.com,
- linux-arm-kernel@lists.infradead.org
-X-SA-Exim-Mail-From: maz@misterjones.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+Content-Disposition: inline
+In-Reply-To: <20200602000236.j4m3jvluzdhjngdc@cantor>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200602_060312_645149_548C4111 
-X-CRM114-Status: GOOD (  10.46  )
+X-CRM114-CacheID: sfid-20200602_072326_850332_955147FD 
+X-CRM114-Status: GOOD (  11.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,81 +84,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "open list:OPEN FIRMWARE AND FLATTENED
- DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
- Herbert Xu <herbert@gondor.apana.org.au>, Arnd Bergmann <arnd@arndb.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sean Wang <sean.wang@kernel.org>, lkml <linux-kernel@vger.kernel.org>,
- wsd_upstream@mediatek.com, Crystal Guo <Crystal.Guo@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, Neal Liu <neal.liu@mediatek.com>,
- Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
- Matt Mackall <mpm@selenic.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-06-02 13:14, Ard Biesheuvel wrote:
-> On Tue, 2 Jun 2020 at 10:15, Neal Liu <neal.liu@mediatek.com> wrote:
->> 
->> These patch series introduce a security random number generator
->> which provides a generic interface to get hardware rnd from Secure
->> state. The Secure state can be Arm Trusted Firmware(ATF), Trusted
->> Execution Environment(TEE), or even EL2 hypervisor.
->> 
->> Patch #1..2 adds sec-rng kernel driver for Trustzone based SoCs.
->> For security awareness SoCs on ARMv8 with TrustZone enabled,
->> peripherals like entropy sources is not accessible from normal world
->> (linux) and rather accessible from secure world (HYP/ATF/TEE) only.
->> This driver aims to provide a generic interface to Arm Trusted
->> Firmware or Hypervisor rng service.
->> 
->> 
->> changes since v1:
->> - rename mt67xx-rng to mtk-sec-rng since all MediaTek ARMv8 SoCs can 
->> reuse
->>   this driver.
->>   - refine coding style and unnecessary check.
->> 
->>   changes since v2:
->>   - remove unused comments.
->>   - remove redundant variable.
->> 
->>   changes since v3:
->>   - add dt-bindings for MediaTek rng with TrustZone enabled.
->>   - revise HWRNG SMC call fid.
->> 
->>   changes since v4:
->>   - move bindings to the arm/firmware directory.
->>   - revise driver init flow to check more property.
->> 
->>   changes since v5:
->>   - refactor to more generic security rng driver which
->>     is not platform specific.
->> 
->> *** BLURB HERE ***
->> 
->> Neal Liu (2):
->>   dt-bindings: rng: add bindings for sec-rng
->>   hwrng: add sec-rng driver
->> 
+Hi Jerry,
+
+On Mon, Jun 01, 2020 at 05:02:36PM -0700, Jerry Snitselaar wrote:
 > 
-> There is no reason to model a SMC call as a driver, and represent it
-> via a DT node like this.
+> Yeah, that will solve the panic.
+>
 
-+1.
+If you still see the kdump faults, can you please try with the attached
+diff? I was not able to reproduce them in my setup.
 
-> It would be much better if this SMC interface is made truly generic,
-> and wired into the arch_get_random() interface, which can be used much
-> earlier.
+Regards,
 
-Wasn't there a plan to standardize a SMC call to rule them all?
+	Joerg
 
-         M.
--- 
-Who you jivin' with that Cosmik Debris?
+diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+index b5ea203f6c68..5a6d509f72b6 100644
+--- a/drivers/iommu/iommu.c
++++ b/drivers/iommu/iommu.c
+@@ -1680,8 +1680,12 @@ static void probe_alloc_default_domain(struct bus_type *bus,
+ static int iommu_group_do_dma_attach(struct device *dev, void *data)
+ {
+ 	struct iommu_domain *domain = data;
++	int ret = 0;
+ 
+-	return __iommu_attach_device(domain, dev);
++	if (!iommu_is_attach_deferred(group->domain, dev))
++		ret = __iommu_attach_device(group->domain, dev);
++
++	return ret;
+ }
+ 
+ static int __iommu_group_dma_attach(struct iommu_group *group)
 
 _______________________________________________
 Linux-mediatek mailing list
