@@ -2,79 +2,88 @@ Return-Path: <SRS0=f9HX=7P=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+X-Spam-Status: No, score=-8.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 52D6AC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2020 08:25:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C76D5C433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2020 08:28:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 25CBB2072F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2020 08:25:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 997ED2072F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2020 08:28:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="V7P5rLBT";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="jbX9s15L"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 25CBB2072F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nmeVEeMi";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="Z2jt/IiE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 997ED2072F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QwiZW4O4YQ/N1GDv8McvijREZUJ11CMuKNCAVCn0VSo=; b=V7P5rLBT9SoOPf
-	LZ6I+WDGhc//9r+NcLvPb+HfKS61ae5o3IZvy1HLkgP+3aXPFV8JPzS1RMjUlBiStRo6GFUh3uryO
-	jPGuuCUpHkoMUhS+cW12K6kogukUEOyOkKTjCniQRncthiEAuNbwmTaqWvIO7yqL5QxKc5SppqDri
-	YtYVMIHVuD02/zqpW6IIHGzK5HNQW0arNJxRLxQRMZn3kJxQrPTG0LWFvUjH2guK6qoW6MKXwKbFF
-	3bSnQAyQ/kb4GDX3AcDgq8dHjTIB3LyDEnmoFVrd3ELRCoRXxAgd2tKNnztjcWsvfRKqfFQYAiRd0
-	kpjDRLgXHXmCN9dLEMoA==;
+	List-Owner; bh=n0aNVsfa67WkwDMIbhfa6S4ML6fZBJdd+IRXSVxZniE=; b=nmeVEeMi6Xh6IR
+	tfjk+szoAzQ5OhI4tIiEcXoOVFT6pgpTVyd4WPvu0ETWAIYB4K6zm5AxgMplAdFZL0Pu3AcgUBU3Q
+	mIirFoLj3/sToSohdH6s4FEfCzFCTqkaJohaQqup12jn6uOYLpHVKJ1gPmejhvPzSoGWOhgv6Eckd
+	LvnfrhhrHWNlnzBQzcrXzJbrWOtCkvjp8knA7S2l7jIvlQKG9KMrWemGcpU62SXv4Oeao3LLulzmo
+	70JnHHmiYKFIjPZJv118CampCWIWy/u/AVkdn51AOc8vk3cC7Iacx2E1SMuIr0u+BpcpAvuaTZIfJ
+	tQVtl5CzoizqMY3Bj7+A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jg2Ep-0005CA-4S; Tue, 02 Jun 2020 08:25:35 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jg2Hc-0006y5-Iq; Tue, 02 Jun 2020 08:28:28 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jg2EY-0004ye-I3; Tue, 02 Jun 2020 08:25:20 +0000
-X-UUID: 1534da590d414aaeaf5a5b60ce0eac3e-20200602
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=L04bYCk8wivAACUMFnflEPSxZwU86UwuPofSNkaCMCU=; 
- b=jbX9s15LImbS1lMlL4qHc72C4/E7MkqS/qkQri6OS47xtgGtW6E7PrMgmuxo/TvBiI1wfLaXbxVs3fvoNnrdWM+hOCLRKPWQwiTahehaPEqmaPt7aRojDe6CytW4yT0PwniCGciFiCu0K8/X+sninvj15NtsUF5w2jNCXSq+Lg8=;
-X-UUID: 1534da590d414aaeaf5a5b60ce0eac3e-20200602
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <neal.liu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1968415831; Tue, 02 Jun 2020 00:25:16 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 2 Jun 2020 01:15:12 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 2 Jun 2020 16:14:59 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 2 Jun 2020 16:14:58 +0800
-From: Neal Liu <neal.liu@mediatek.com>
-To: Matt Mackall <mpm@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>, 
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@kernel.org>, Arnd Bergmann <arnd@arndb.de>, "Greg
- Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [PATCH v6 2/2] hwrng: add sec-rng driver
-Date: Tue, 2 Jun 2020 16:14:38 +0800
-Message-ID: <1591085678-22764-3-git-send-email-neal.liu@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1591085678-22764-1-git-send-email-neal.liu@mediatek.com>
-References: <1591085678-22764-1-git-send-email-neal.liu@mediatek.com>
+ id 1jg2HU-0006nf-CK
+ for linux-mediatek@lists.infradead.org; Tue, 02 Jun 2020 08:28:21 +0000
+Received: by mail-wr1-x444.google.com with SMTP id t18so2434408wru.6
+ for <linux-mediatek@lists.infradead.org>; Tue, 02 Jun 2020 01:28:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=THpbqsIqcsaX8JFjkYqBpTRk1wV1aSkOMzOPc76FV+E=;
+ b=Z2jt/IiEH08fKBjSDJW/rFkEDpi1SROeqBKQwYrsMkbHq7Dk0FvTxMe18SCdyWn6DA
+ cA7BkgouNeJ2A7P1omaDU8w8B91/5SCDKgmVGagtq0OQs8PrixL9xFUzs+pALxIKecSU
+ vOHjiyh7QDf/XqPep7KcBc6jTB9OaU9RYAQ+HSgUTVGn4lLHChfpp4t1Tn9XktuWJbc1
+ u9GwPRfQV65HNE4RYo03toMPhu9gqrAotSVEmwwNKMIGcE32PgYrdRKt6LGFszNh4OMG
+ tZc6ajirZPPYUDTwyrN/iyIE3WKyotRCT6gJqNAfvU4tXgrLZfMg8HloFXERP7qv8th3
+ rILg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=THpbqsIqcsaX8JFjkYqBpTRk1wV1aSkOMzOPc76FV+E=;
+ b=VmKVdUZPzpOGK4RPWku8Tp9fU768IIXYgfe3MTjsrmVM1SEPvPRXbtU0xVr4H3ng3L
+ 1PWYCM7Ly0L8LzqVzPzAiZdmj98zinGFXGXy92vo2PUxmtFxwlNsNI2GJc7noeHjJ71c
+ rRnoGYNa5anDejGHgK3Qoe1UrnU2tbUTBhqVsAqILmSEX2C2ry5xYsBLm2wj9EgnQWSd
+ TE7js5e56s7lFqF9zZSXGPhpOd9jsAcvSVONmDLmf/DnDodJYIGQHvD8lGLRviKrp64W
+ z0fzEMqIPwD8UeK6s5UvBCcbEujF5P6HJ90KOs99rXFcJ9VmbFzOmrGaV9SKLFen9xDR
+ 2a9Q==
+X-Gm-Message-State: AOAM5307uFxs3itx99kajoA1j1S3OYAlIO50GMAK8EjUMlg3clWoz8Oi
+ Td3x892D2glSoSZZimJ86Lf+mg==
+X-Google-Smtp-Source: ABdhPJyfWM51ssitVrKZ+ILxEdr3bQxiA49aRTHpesRfUbEo6cvOqTynK9IKviDUA5E06Y92l1RKIg==
+X-Received: by 2002:adf:fd41:: with SMTP id h1mr26422025wrs.374.1591086498236; 
+ Tue, 02 Jun 2020 01:28:18 -0700 (PDT)
+Received: from dell ([95.147.198.92])
+ by smtp.gmail.com with ESMTPSA id l2sm2480817wru.58.2020.06.02.01.28.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 02 Jun 2020 01:28:17 -0700 (PDT)
+Date: Tue, 2 Jun 2020 09:28:16 +0100
+From: Lee Jones <lee.jones@linaro.org>
+To: Gene Chen <gene.chen.richtek@gmail.com>
+Subject: Re: [PATCH v10] mfd: mt6360: add pmic mt6360 driver
+Message-ID: <20200602082816.GC3714@dell>
+References: <1591070142-7653-1-git-send-email-gene.chen.richtek@gmail.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 909ABA3B6E64AD00041CC4B3A9BF7D20E656DA2E14FD0DBC349B80906CF174CA2000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1591070142-7653-1-git-send-email-gene.chen.richtek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200602_012518_602880_D9150D9A 
-X-CRM114-Status: GOOD (  16.75  )
+X-CRM114-CacheID: sfid-20200602_012820_418355_82F4D88E 
+X-CRM114-Status: GOOD (  11.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,226 +95,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
- lkml <linux-kernel@vger.kernel.org>, Crystal Guo <Crystal.Guo@mediatek.com>,
- linux-mediatek@lists.infradead.org, linux-crypto@vger.kernel.org,
- Neal Liu <neal.liu@mediatek.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: gene_chen@richtek.com, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ Wilma.Wu@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ shufan_lee@richtek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For security awareness SoCs on ARMv8 with TrustZone enabled,
-peripherals like entropy sources is not accessible from normal world
-(linux) and rather accessible from secure world (HYP/ATF/TEE) only.
-This driver aims to provide a generic interface to Arm Trusted
-Firmware or Hypervisor rng service.
-
-Signed-off-by: Neal Liu <neal.liu@mediatek.com>
----
- drivers/char/hw_random/Kconfig   |   13 ++++
- drivers/char/hw_random/Makefile  |    1 +
- drivers/char/hw_random/sec-rng.c |  155 ++++++++++++++++++++++++++++++++++++++
- 3 files changed, 169 insertions(+)
- create mode 100644 drivers/char/hw_random/sec-rng.c
-
-diff --git a/drivers/char/hw_random/Kconfig b/drivers/char/hw_random/Kconfig
-index 9bc46da..cb9c8a9 100644
---- a/drivers/char/hw_random/Kconfig
-+++ b/drivers/char/hw_random/Kconfig
-@@ -474,6 +474,19 @@ config HW_RANDOM_KEYSTONE
- 	help
- 	  This option enables Keystone's hardware random generator.
- 
-+config HW_RANDOM_SECURE
-+	tristate "Arm Security Random Number Generator support"
-+	depends on HAVE_ARM_SMCCC || COMPILE_TEST
-+	default HW_RANDOM
-+	help
-+	  This driver provides kernel-side support for the Arm Security
-+	  Random Number Generator.
-+
-+	  To compile this driver as a module, choose M here. the
-+	  module will be called sec-rng.
-+
-+	  If unsure, say Y.
-+
- endif # HW_RANDOM
- 
- config UML_RANDOM
-diff --git a/drivers/char/hw_random/Makefile b/drivers/char/hw_random/Makefile
-index a7801b4..04533d1 100644
---- a/drivers/char/hw_random/Makefile
-+++ b/drivers/char/hw_random/Makefile
-@@ -41,3 +41,4 @@ obj-$(CONFIG_HW_RANDOM_S390) += s390-trng.o
- obj-$(CONFIG_HW_RANDOM_KEYSTONE) += ks-sa-rng.o
- obj-$(CONFIG_HW_RANDOM_OPTEE) += optee-rng.o
- obj-$(CONFIG_HW_RANDOM_NPCM) += npcm-rng.o
-+obj-$(CONFIG_HW_RANDOM_SECURE) += sec-rng.o
-diff --git a/drivers/char/hw_random/sec-rng.c b/drivers/char/hw_random/sec-rng.c
-new file mode 100644
-index 0000000..c6d3872
---- /dev/null
-+++ b/drivers/char/hw_random/sec-rng.c
-@@ -0,0 +1,155 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (C) 2020 MediaTek Inc.
-+ */
-+
-+#include <linux/arm-smccc.h>
-+#include <linux/hw_random.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+
-+#define SMC_RET_NUM	4
-+#define SEC_RND_SIZE	(sizeof(u32) * SMC_RET_NUM)
-+
-+#define HWRNG_SMC_FAST_CALL_VAL(func_num) \
-+	ARM_SMCCC_CALL_VAL(ARM_SMCCC_FAST_CALL, ARM_SMCCC_SMC_32, \
-+			   ARM_SMCCC_OWNER_SIP, (func_num))
-+
-+#define to_sec_rng(p)	container_of(p, struct sec_rng_priv, rng)
-+
-+typedef void (sec_rng_fn)(unsigned long, unsigned long, unsigned long,
-+			  unsigned long, unsigned long, unsigned long,
-+			  unsigned long, unsigned long,
-+			  struct arm_smccc_res *);
-+
-+struct sec_rng_priv {
-+	u16 func_num;
-+	sec_rng_fn *rng_fn;
-+	struct hwrng rng;
-+};
-+
-+/* Simple wrapper functions to be able to use a function pointer */
-+static void sec_rng_smc(unsigned long a0, unsigned long a1,
-+			unsigned long a2, unsigned long a3,
-+			unsigned long a4, unsigned long a5,
-+			unsigned long a6, unsigned long a7,
-+			struct arm_smccc_res *res)
-+{
-+	arm_smccc_smc(a0, a1, a2, a3, a4, a5, a6, a7, res);
-+}
-+
-+static void sec_rng_hvc(unsigned long a0, unsigned long a1,
-+			unsigned long a2, unsigned long a3,
-+			unsigned long a4, unsigned long a5,
-+			unsigned long a6, unsigned long a7,
-+			struct arm_smccc_res *res)
-+{
-+	arm_smccc_hvc(a0, a1, a2, a3, a4, a5, a6, a7, res);
-+}
-+
-+static bool __sec_get_rnd(struct sec_rng_priv *priv, uint32_t *val)
-+{
-+	struct arm_smccc_res res;
-+
-+	priv->rng_fn(HWRNG_SMC_FAST_CALL_VAL(priv->func_num),
-+			0, 0, 0, 0, 0, 0, 0, &res);
-+
-+	if (!res.a0 && !res.a1 && !res.a2 && !res.a3)
-+		return false;
-+
-+	val[0] = res.a0;
-+	val[1] = res.a1;
-+	val[2] = res.a2;
-+	val[3] = res.a3;
-+
-+	return true;
-+}
-+
-+static int sec_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
-+{
-+	struct sec_rng_priv *priv = to_sec_rng(rng);
-+	u32 val[4] = {0};
-+	int retval = 0;
-+	int i;
-+
-+	while (max >= SEC_RND_SIZE) {
-+		if (!__sec_get_rnd(priv, val))
-+			return retval;
-+
-+		for (i = 0; i < SMC_RET_NUM; i++) {
-+			*(u32 *)buf = val[i];
-+			buf += sizeof(u32);
-+		}
-+
-+		retval += SEC_RND_SIZE;
-+		max -= SEC_RND_SIZE;
-+	}
-+
-+	return retval;
-+}
-+
-+static int sec_rng_probe(struct platform_device *pdev)
-+{
-+	struct sec_rng_priv *priv;
-+	const char *method;
-+	int ret;
-+
-+	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	if (of_property_read_string(pdev->dev.of_node, "method", &method))
-+		return -ENXIO;
-+
-+	if (!strncmp("smc", method, strlen("smc")))
-+		priv->rng_fn = sec_rng_smc;
-+	else if (!strncmp("hvc", method, strlen("hvc")))
-+		priv->rng_fn = sec_rng_hvc;
-+
-+	if (IS_ERR(priv->rng_fn)) {
-+		dev_err(&pdev->dev, "method %s is not supported\n", method);
-+		return -EINVAL;
-+	}
-+
-+	if (of_property_read_u16(pdev->dev.of_node, "method-fid",
-+				 &priv->func_num))
-+		return -ENXIO;
-+
-+	if (of_property_read_u16(pdev->dev.of_node, "quality",
-+				 &priv->rng.quality))
-+		return -ENXIO;
-+
-+	priv->rng.name = pdev->name;
-+	priv->rng.read = sec_rng_read;
-+	priv->rng.priv = (unsigned long)&pdev->dev;
-+
-+	ret = devm_hwrng_register(&pdev->dev, &priv->rng);
-+	if (ret) {
-+		dev_err(&pdev->dev, "failed to register rng device: %d\n", ret);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id sec_rng_match[] = {
-+	{ .compatible = "arm,sec-rng", },
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, sec_rng_match);
-+
-+static struct platform_driver sec_rng_driver = {
-+	.probe = sec_rng_probe,
-+	.driver = {
-+		.name = KBUILD_MODNAME,
-+		.owner = THIS_MODULE,
-+		.of_match_table = sec_rng_match,
-+	},
-+};
-+
-+module_platform_driver(sec_rng_driver);
-+
-+MODULE_DESCRIPTION("Security Random Number Generator Driver");
-+MODULE_AUTHOR("Neal Liu <neal.liu@mediatek.com>");
-+MODULE_LICENSE("GPL");
--- 
-1.7.9.5
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gVHVlLCAwMiBKdW4gMjAyMCwgR2VuZSBDaGVuIHdyb3RlOgoKPiBGcm9tOiBHZW5lIENoZW4g
+PGdlbmVfY2hlbkByaWNodGVrLmNvbT4KPiAKPiBBZGQgTUZEIGRyaXZlciBmb3IgbXQ2MzYwIHBt
+aWMgY2hpcCBpbmNsdWRlIEJhdHRlcnkgQ2hhcmdlci8KPiBVU0JfUEQvRmxhc2gsIExFRC9SR0Ig
+YW5kIExFRC9MRE8vQnVjawo+IAo+IFNpZ25lZC1vZmYtYnk6IEdlbmUgQ2hlbiA8Z2VuZV9jaGVu
+QHJpY2h0ZWsuY29tPgo+IFNpZ25lZC1vZmYtYnk6IExlZSBKb25lcyA8bGVlLmpvbmVzQGxpbmFy
+by5vcmc+CgpJIGRpZCBub3Qgc2lnbiB0aGlzIG9mZi4KCj4gLS0tCj4gIGRyaXZlcnMvbWZkL0tj
+b25maWcgICAgICAgIHwgIDEyICsrCj4gIGRyaXZlcnMvbWZkL01ha2VmaWxlICAgICAgIHwgICAx
+ICsKPiAgZHJpdmVycy9tZmQvbXQ2MzYwLWNvcmUuYyAgfCA0MjQgKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gIGluY2x1ZGUvbGludXgvbWZkL210NjM2MC5o
+IHwgMjQwICsrKysrKysrKysrKysrKysrKysrKysrKysKPiAgNCBmaWxlcyBjaGFuZ2VkLCA2Nzcg
+aW5zZXJ0aW9ucygrKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9tZmQvbXQ2MzYwLWNv
+cmUuYwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgaW5jbHVkZS9saW51eC9tZmQvbXQ2MzYwLmgKPiAK
+PiBjaGFuZ2Vsb2dzIGJldHdlZW4gdjEgJiB2Mgo+IC0gaW5jbHVkZSBtaXNzaW5nIGhlYWRlciBm
+aWxlCj4gCj4gY2hhbmdlbG9ncyBiZXR3ZWVuIHYyICYgdjMKPiAtIGFkZCBjaGFuZ2Vsb2dzCj4g
+Cj4gY2hhbmdlbG9ncyBiZXR3ZWVuIHYzICYgdjQKPiAtIGZpeCBLY29uZmlnIGRlc2NyaXB0aW9u
+Cj4gLSByZXBsYWNlIG10NjM2MF9wbXVfaW5mbyB3aXRoIG10NjM2MF9wbXVfZGF0YQo+IC0gcmVw
+bGFjZSBwcm9iZSB3aXRoIHByb2JlX25ldwo+IC0gcmVtb3ZlIHVubmVjZXNzYXJ5IGlycV9jaGlw
+IHZhcmlhYmxlCj4gLSByZW1vdmUgYW5ub3RhdGlvbgo+IC0gcmVwbGFjZSBNVDYzNjBfTUZEX0NF
+TEwgd2l0aCBPRl9NRkRfQ0VMTAo+IAo+IGNoYW5nZWxvZ3MgYmV0d2VlbiB2NCAmIHY1Cj4gLSBy
+ZW1vdmUgdW5uZWNlc3NhcnkgcGFyc2UgZHQgZnVuY3Rpb24KPiAtIHVzZSBkZXZtX2kyY19uZXdf
+ZHVtbXlfZGV2aWNlCj4gLSBhZGQgYmFzZS1jb21taXQgbWVzc2FnZQo+IAo+IGNoYW5nZWxvZ3Mg
+YmV0d2VlbiB2NSAmIHY2Cj4gLSByZXZpZXcgcmV0dXJuIHZhbHVlCj4gLSByZW1vdmUgaTJjIGlk
+X3RhYmxlCj4gLSB1c2UgR1BMIGxpY2Vuc2UgdjIKPiAKPiBjaGFuZ2Vsb2dzIGJldHdlZW4gdjYg
+JiB2Nwo+IC0gYWRkIGF1dGhvciBkZXNjcmlwdGlvbgo+IC0gcmVwbGFjZSBNVDYzNjBfUkVHTUFQ
+X0lSUV9SRUcgYnkgUkVHTUFQX0lSUV9SRUdfTElORQo+IC0gcmVtb3ZlIG10NjM2MC1wcml2YXRl
+LmgKPiAKPiBjaGFuZ2Vsb2dzIGJldHdlZW4gdjcgJiB2OAo+IC0gZml4IGtidWlsZCBhdXRvIHJl
+Ym9vdCBieSBpbmNsdWRlIGludGVycnVwdCBoZWFkZXIKPiAKPiBjaGFuZ2Vsb2dzIGJldHdlZW4g
+djggJiB2OQo+IC0gZml4IEdQTCBsaWNlbnNlIG91dCBvZiBkYXRlCj4gLSBhZGQgY29tbWl0IG1l
+c3NhZ2UgYWJvdXQgQWNrZWQtZm9yLU1GRC1ieQo+IAo+IGNoYW5nZWxvZ3MgYmV0d2VlbiB2OSAm
+IHYxMAoKdjkgb2YgdGhpcyBwYXRjaCBpcyBhbHJlYWR5IGFwcGxpZWQuCgpZb3UgY2Fubm90IHNl
+bmQgYSB2MTAuCgo+IC0gZml4IGR1cGxpY2F0ZSBkZWZpbmUgb2Yga2J1aWxkIHRlc3QgcmVib290
+IGluaXRpYWxpemVyLW92ZXJyaWRlcwoKSSBmaXhlZCB0aGlzIGFscmVhZHkuCgpodHRwczovL2dp
+dC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9sZWUvbWZkLmdpdC9jb21taXQv
+P2g9Zm9yLW1mZC1uZXh0JmlkPTA5OGM0YWRmMjQ5YzE5ODUxOWE0YWJlYmU0ODJiMWU2YjhjNTBl
+NDcKCj4gLSBzeW5jIGNvbW1pdCBtZXNzYWdlIGZvcm1hdAoKLS0gCkxlZSBKb25lcyBb5p2O55C8
+5pavXQpMaW5hcm8gU2VydmljZXMgVGVjaG5pY2FsIExlYWQKTGluYXJvLm9yZyDilIIgT3BlbiBz
+b3VyY2Ugc29mdHdhcmUgZm9yIEFSTSBTb0NzCkZvbGxvdyBMaW5hcm86IEZhY2Vib29rIHwgVHdp
+dHRlciB8IEJsb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtbWVkaWF0ZWsK
