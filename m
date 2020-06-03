@@ -2,61 +2,78 @@ Return-Path: <SRS0=Qq0i=7Q=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D8080C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 08:46:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 49E53C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 08:53:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A953820734
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 08:46:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 18D9A20678
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 08:53:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eIn4zw0X"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A953820734
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kAh32ltF";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EglGzROt"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 18D9A20678
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Subject:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gMfCmVSWNM2WOGsTfyhBtqlg21WfXB5a1Gh8553Z9C4=; b=eIn4zw0XSe+ZW9
-	KYporqkFa/QkT08ZUjod8M3G1Ttgar4w15LSOftsVsj0lwAeHmZ7mORBMWKEWkY6PBeJ+iTZ9iFjX
-	3c3guwmgVa2jwCt5W6J8dgn46ybLsRmbhAw12y/KWVZ0DdvCt5v9yj+ZoYNc5Z20tcaFE/Ri5uEKp
-	SNjWqkA1hjC0DyUdf6wY+3bvynDriyiY2YmINpyU+8Xw6pNpZOvivcjksYEmoi/XpiacU091n+5I6
-	UxCckTj318MFj4G18siQFo0pReQPFviytHfvoZTA4thlpzpj9O0WMX+1Y4vvQPIPecV1DhH0QAeUi
-	nZp0g9T5DXL/OxZK07mw==;
+	List-Owner; bh=FHur9//uKZwTj3Vk6dAy1H2ChxylIT5yt2KEG8sxNLc=; b=kAh32ltFIudRp0
+	xtBXc/m2cFBdOo4HLR2tKEFAMC9MZ0V9spRylbnCOOJy51h+7B40C6Iobpi7/FQF90g3DEHPfmbwq
+	tL6SCP88cv5l6cKc9c01xbZQjBcYV3gcUchhYYvXjuQ02FBWSjiixWnLHl4UUfeNqaNyHhyeGs3wx
+	qOVdO4OwEgEJP0Y2Lu2tP6KfxE1dZ1RItla9ZDa5sVumTza+Go2JFaAU/GhJcP2kEaYfuYcy1PJOl
+	fyvLmghVrxO+/mRXYLIGXgxIkqEWmDFDoU/1WX3y+BqUIt2PlULAHN+CrhJ6Zdo3yivlIV+d5dWHy
+	M5bjEcTqVxe6upD5CM2g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jgP25-0005Lw-Mg; Wed, 03 Jun 2020 08:45:57 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1jgP9E-0000Mq-Ft; Wed, 03 Jun 2020 08:53:20 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jgP1s-0005Av-Ci; Wed, 03 Jun 2020 08:45:46 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 77D98ACCC;
- Wed,  3 Jun 2020 08:45:45 +0000 (UTC)
-Date: Wed, 03 Jun 2020 10:45:41 +0200
-Message-ID: <s5h367cfsga.wl-tiwai@suse.de>
-From: Takashi Iwai <tiwai@suse.de>
+ id 1jgP94-0000ET-SW; Wed, 03 Jun 2020 08:53:12 +0000
+X-UUID: 5be725479fcb482d99c5fd8e1ac9a491-20200603
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=GqhgG6L1zGtST6u5yF493LQmjohmvvIpbn2zNdLG3lI=; 
+ b=EglGzROtLnjGP6UZ7vtLOLO5lL7jNEVYEoUCIoIuLfLHEOTqUvF9DjQG4pbPUSbhipRSvqUq/8y9yfbB3PixdysjiKhpCwP1Kc8RRtA3Om4bWvICDizKNaBk7433ramkhTVmPUezXbIx6d7GXgKnXMF0Pujhp2WqTGC92QMAMlc=;
+X-UUID: 5be725479fcb482d99c5fd8e1ac9a491-20200603
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 353105554; Wed, 03 Jun 2020 00:53:00 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 3 Jun 2020 01:45:34 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs01n2.mediatek.inc
+ (172.21.101.79) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 3 Jun 2020 16:45:26 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 3 Jun 2020 16:45:26 +0800
+Message-ID: <1591173806.15527.1.camel@mhfsdcap03>
+Subject: Re: [PATCH v2] usb: host: xhci-mtk: avoid runtime suspend when
+ removing hcd
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Macpaul Lin <macpaul.lin@mediatek.com>
-Subject: Re: [PATCH] sound: usb: pcm: fix incorrect power state when playing
- sound after PM_AUTO suspend
-In-Reply-To: <s5hblm0fxl0.wl-tiwai@suse.de>
-References: <s5hpnahhbz8.wl-tiwai@suse.de>
- <1591153515.23525.50.camel@mtkswgap22>
- <s5heeqwfyti.wl-tiwai@suse.de> <s5hblm0fxl0.wl-tiwai@suse.de>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI/1.14.6 (Maruoka)
- FLIM/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL/10.8 Emacs/25.3
- (x86_64-suse-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI 1.14.6 - "Maruoka")
+Date: Wed, 3 Jun 2020 16:43:26 +0800
+In-Reply-To: <1590726778-29065-1-git-send-email-macpaul.lin@mediatek.com>
+References: <1590726569-28248-1-git-send-email-macpaul.lin@mediatek.com>
+ <1590726778-29065-1-git-send-email-macpaul.lin@mediatek.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
+MIME-Version: 1.0
+X-TM-SNTS-SMTP: CA6D6B5CA1B57E8E80E8EA32F96818490747DA2EE90F21A39CF72B716572D3462000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200603_014544_722210_4CEF0B90 
-X-CRM114-Status: GOOD (  20.21  )
+X-CRM114-CacheID: sfid-20200603_015310_932823_59C5B526 
+X-CRM114-Status: GOOD (  12.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,117 +85,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org,
+Cc: Mathias Nyman <mathias.nyman@intel.com>,
  Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
- Johan Hovold <johan@kernel.org>, Takashi Iwai <tiwai@suse.com>,
- Hui Wang <hui.wang@canonical.com>, Alexander Tsoy <alexander@tsoy.me>,
- linux-mediatek@lists.infradead.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  Matthias Brugger <matthias.bgg@gmail.com>, Macpaul Lin <macpaul.lin@gmail.com>,
- Jaroslav Kysela <perex@perex.cz>,
- Szabolcs =?UTF-8?B?U3rFkWtl?= <szszoke.code@gmail.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 03 Jun 2020 08:54:51 +0200,
-Takashi Iwai wrote:
+On Fri, 2020-05-29 at 12:32 +0800, Macpaul Lin wrote:
+> When runtime suspend was enabled, runtime suspend might happened
+> when xhci is removing hcd. This might cause kernel panic when hcd
+> has been freed but runtime pm suspend related handle need to
+> reference it.
 > 
-> On Wed, 03 Jun 2020 08:28:09 +0200,
-> Takashi Iwai wrote:
-> > 
-> > And, the most suspicious case is the last one,
-> > chip->num_suspended-intf.  It means that the device has multiple
-> > USB interfaces and they went to suspend, while the resume isn't
-> > performed for the all suspended interfaces in return.
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> ---
+>  drivers/usb/host/xhci-mtk.c |    5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
 > 
-> If this is the cause, a patch like below might help.
-> It gets/puts the all assigned interfaced instead of only the primary
-> one.
+> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+> index bfbdb3c..641d24e 100644
+> --- a/drivers/usb/host/xhci-mtk.c
+> +++ b/drivers/usb/host/xhci-mtk.c
+> @@ -587,6 +587,9 @@ static int xhci_mtk_remove(struct platform_device *dev)
+>  	struct xhci_hcd	*xhci = hcd_to_xhci(hcd);
+>  	struct usb_hcd  *shared_hcd = xhci->shared_hcd;
+>  
+> +	pm_runtime_put_sync(&dev->dev);
+> +	pm_runtime_disable(&dev->dev);
+> +
+>  	usb_remove_hcd(shared_hcd);
+>  	xhci->shared_hcd = NULL;
+>  	device_init_wakeup(&dev->dev, false);
+> @@ -597,8 +600,6 @@ static int xhci_mtk_remove(struct platform_device *dev)
+>  	xhci_mtk_sch_exit(mtk);
+>  	xhci_mtk_clks_disable(mtk);
+>  	xhci_mtk_ldos_disable(mtk);
+> -	pm_runtime_put_sync(&dev->dev);
+> -	pm_runtime_disable(&dev->dev);
+>  
+>  	return 0;
+>  }
 
-... and considering of the problem again, rather the patch below might
-be the right answer.  Now the driver tries to remember at which state
-it entered into the system-suspend.  Upon resume, in return, when the
-state reaches back to that point, set the card state to D0.
+Reviewed-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
-The previous patch can be applied on the top, too, and it might be
-worth to apply both.
+Thanks
 
-Let me know if any of those actually helps.
-
-
-Takashi
-
----
-diff --git a/sound/usb/card.c b/sound/usb/card.c
---- a/sound/usb/card.c
-+++ b/sound/usb/card.c
-@@ -843,9 +843,6 @@ static int usb_audio_suspend(struct usb_interface *intf, pm_message_t message)
- 	if (chip == (void *)-1L)
- 		return 0;
- 
--	chip->autosuspended = !!PMSG_IS_AUTO(message);
--	if (!chip->autosuspended)
--		snd_power_change_state(chip->card, SNDRV_CTL_POWER_D3hot);
- 	if (!chip->num_suspended_intf++) {
- 		list_for_each_entry(as, &chip->pcm_list, list) {
- 			snd_usb_pcm_suspend(as);
-@@ -858,6 +855,11 @@ static int usb_audio_suspend(struct usb_interface *intf, pm_message_t message)
- 			snd_usb_mixer_suspend(mixer);
- 	}
- 
-+	if (!PMSG_IS_AUTO(message) && !chip->system_suspend) {
-+		snd_power_change_state(chip->card, SNDRV_CTL_POWER_D3hot);
-+		chip->system_suspend = chip->num_suspended_intf;
-+	}
-+
- 	return 0;
- }
- 
-@@ -871,10 +873,10 @@ static int __usb_audio_resume(struct usb_interface *intf, bool reset_resume)
- 
- 	if (chip == (void *)-1L)
- 		return 0;
--	if (--chip->num_suspended_intf)
--		return 0;
- 
- 	atomic_inc(&chip->active); /* avoid autopm */
-+	if (chip->num_suspended_intf > 1)
-+		goto out;
- 
- 	list_for_each_entry(as, &chip->pcm_list, list) {
- 		err = snd_usb_pcm_resume(as);
-@@ -896,9 +898,12 @@ static int __usb_audio_resume(struct usb_interface *intf, bool reset_resume)
- 		snd_usbmidi_resume(p);
- 	}
- 
--	if (!chip->autosuspended)
-+ out:
-+	if (chip->num_suspended_intf == chip->system_suspend) {
- 		snd_power_change_state(chip->card, SNDRV_CTL_POWER_D0);
--	chip->autosuspended = 0;
-+		chip->system_suspend = 0;
-+	}
-+	chip->num_suspended_intf--;
- 
- err_out:
- 	atomic_dec(&chip->active); /* allow autopm after this point */
-diff --git a/sound/usb/usbaudio.h b/sound/usb/usbaudio.h
-index 1c892c7f14d7..e0ebfb25fbd5 100644
---- a/sound/usb/usbaudio.h
-+++ b/sound/usb/usbaudio.h
-@@ -26,7 +26,7 @@ struct snd_usb_audio {
- 	struct usb_interface *pm_intf;
- 	u32 usb_id;
- 	struct mutex mutex;
--	unsigned int autosuspended:1;	
-+	unsigned int system_suspend;
- 	atomic_t active;
- 	atomic_t shutdown;
- 	atomic_t usage_count;
 
 _______________________________________________
 Linux-mediatek mailing list
