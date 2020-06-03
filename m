@@ -2,79 +2,61 @@ Return-Path: <SRS0=Qq0i=7Q=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 86A6CC433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 08:04:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D8080C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 08:46:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 56BD4206C3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 08:04:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A953820734
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 08:46:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dw/DoZOS";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="rHr5kn9o"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 56BD4206C3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eIn4zw0X"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A953820734
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Subject:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1JU6BYm097FTkN3qvaUk8HxbWY8sO8OKcv9uJdy15uQ=; b=dw/DoZOSGBqFBr
-	efILc35yLe0VAo0tma7/WA0TMoWhyQJBNOQMEKKx9fP/wpO+dqDWjOkP5J+R1cjRiy4bLnXT2uTGl
-	PBfDs37G5mC1wb8Z5q9XYCSHr8Qhtx76j9OWWgfJKaubRcI4BkQ3oFaxt8lzxUW90p3FSS7YXgoyR
-	A6lg/JVZHQMI4h9n40YFE8XQUe1LK801s55ySYIYzCLaNI4iTZzikMV9RhZAGSRUzTV4ytsiN8XgL
-	d3SXesWB9Yxn6QivIVUUcrGDA5PQ2/446Cstxm444JVDSt7+B1LIp/D/v1qsIa4b+UeZb7t5uRN40
-	V8ZbOjLqJNy8A6NUPrAw==;
+	List-Owner; bh=gMfCmVSWNM2WOGsTfyhBtqlg21WfXB5a1Gh8553Z9C4=; b=eIn4zw0XSe+ZW9
+	KYporqkFa/QkT08ZUjod8M3G1Ttgar4w15LSOftsVsj0lwAeHmZ7mORBMWKEWkY6PBeJ+iTZ9iFjX
+	3c3guwmgVa2jwCt5W6J8dgn46ybLsRmbhAw12y/KWVZ0DdvCt5v9yj+ZoYNc5Z20tcaFE/Ri5uEKp
+	SNjWqkA1hjC0DyUdf6wY+3bvynDriyiY2YmINpyU+8Xw6pNpZOvivcjksYEmoi/XpiacU091n+5I6
+	UxCckTj318MFj4G18siQFo0pReQPFviytHfvoZTA4thlpzpj9O0WMX+1Y4vvQPIPecV1DhH0QAeUi
+	nZp0g9T5DXL/OxZK07mw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jgOO2-0000K6-Lf; Wed, 03 Jun 2020 08:04:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jgP25-0005Lw-Mg; Wed, 03 Jun 2020 08:45:57 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jgONz-0000JO-BD; Wed, 03 Jun 2020 08:04:33 +0000
-X-UUID: 0b9ac466551f46e1bf1b3aeee38c3cd1-20200603
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=07Kpr56aB3PFy6IWckMxSvdLdNklg9y3xgmgR9sXxKc=; 
- b=rHr5kn9ofuNPAE/oxBhtz2Bn5mwE11DrgVafexCGqE0he1Y5+7YUnEK9U6h+MV4DCUeksNhAbGVLc5bWCzgNZWuRevU81yG70v6gdmtfUfIZI6oxZvFvmG1WQgKsZSQ/YW/9Yp1NmJKb+OQWUUuX9kBCSb4hIC6AzPhFIdjX/f4=;
-X-UUID: 0b9ac466551f46e1bf1b3aeee38c3cd1-20200603
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <neal.liu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 306737306; Wed, 03 Jun 2020 00:04:22 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 3 Jun 2020 00:54:24 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 3 Jun 2020 15:54:16 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 3 Jun 2020 15:54:16 +0800
-Message-ID: <1591170857.19414.5.camel@mtkswgap22>
-Subject: Re: Security Random Number Generator support
-From: Neal Liu <neal.liu@mediatek.com>
-To: Marc Zyngier <maz@kernel.org>
-Date: Wed, 3 Jun 2020 15:54:17 +0800
-In-Reply-To: <fcbe37f6f9cbcde24f9c28bc504f1f0e@kernel.org>
-References: <1591085678-22764-1-git-send-email-neal.liu@mediatek.com>
- <CAMj1kXHjAdk5=-uSh_=S9j5cz42zr3h6t+YYGy+obevuQDp0fg@mail.gmail.com>
- <85dfc0142d3879d50c0ba18bcc71e199@misterjones.org>
- <1591169342.4878.9.camel@mtkswgap22>
- <fcbe37f6f9cbcde24f9c28bc504f1f0e@kernel.org>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
-MIME-Version: 1.0
-X-MTK: N
+ id 1jgP1s-0005Av-Ci; Wed, 03 Jun 2020 08:45:46 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx2.suse.de (Postfix) with ESMTP id 77D98ACCC;
+ Wed,  3 Jun 2020 08:45:45 +0000 (UTC)
+Date: Wed, 03 Jun 2020 10:45:41 +0200
+Message-ID: <s5h367cfsga.wl-tiwai@suse.de>
+From: Takashi Iwai <tiwai@suse.de>
+To: Macpaul Lin <macpaul.lin@mediatek.com>
+Subject: Re: [PATCH] sound: usb: pcm: fix incorrect power state when playing
+ sound after PM_AUTO suspend
+In-Reply-To: <s5hblm0fxl0.wl-tiwai@suse.de>
+References: <s5hpnahhbz8.wl-tiwai@suse.de>
+ <1591153515.23525.50.camel@mtkswgap22>
+ <s5heeqwfyti.wl-tiwai@suse.de> <s5hblm0fxl0.wl-tiwai@suse.de>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI/1.14.6 (Maruoka)
+ FLIM/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL/10.8 Emacs/25.3
+ (x86_64-suse-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI 1.14.6 - "Maruoka")
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200603_010431_393966_D2E8787B 
-X-CRM114-Status: GOOD (  21.09  )
+X-CRM114-CacheID: sfid-20200603_014544_722210_4CEF0B90 
+X-CRM114-Status: GOOD (  20.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,106 +68,117 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE
- TREE BINDINGS" <devicetree@vger.kernel.org>, Julius Werner <jwerner@google.com>,
- Herbert Xu <herbert@gondor.apana.org.au>, Arnd Bergmann <arnd@arndb.de>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, Sean Wang <sean.wang@kernel.org>,
- lkml <linux-kernel@vger.kernel.org>, wsd_upstream <wsd_upstream@mediatek.com>,
- Crystal Guo =?UTF-8?Q?=28=E9=83=AD=E6=99=B6=29?= <Crystal.Guo@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, Neal Liu <neal.liu@mediatek.com>,
- Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
- Matt Mackall <mpm@selenic.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Ard
- Biesheuvel <ardb@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: alsa-devel@alsa-project.org,
+ Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
+ linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
+ Johan Hovold <johan@kernel.org>, Takashi Iwai <tiwai@suse.com>,
+ Hui Wang <hui.wang@canonical.com>, Alexander Tsoy <alexander@tsoy.me>,
+ linux-mediatek@lists.infradead.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Macpaul Lin <macpaul.lin@gmail.com>,
+ Jaroslav Kysela <perex@perex.cz>,
+ Szabolcs =?UTF-8?B?U3rFkWtl?= <szszoke.code@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2020-06-03 at 08:40 +0100, Marc Zyngier wrote:
-> On 2020-06-03 08:29, Neal Liu wrote:
-> > On Tue, 2020-06-02 at 21:02 +0800, Marc Zyngier wrote:
-> >> On 2020-06-02 13:14, Ard Biesheuvel wrote:
-> >> > On Tue, 2 Jun 2020 at 10:15, Neal Liu <neal.liu@mediatek.com> wrote:
-> >> >>
-> >> >> These patch series introduce a security random number generator
-> >> >> which provides a generic interface to get hardware rnd from Secure
-> >> >> state. The Secure state can be Arm Trusted Firmware(ATF), Trusted
-> >> >> Execution Environment(TEE), or even EL2 hypervisor.
-> >> >>
-> >> >> Patch #1..2 adds sec-rng kernel driver for Trustzone based SoCs.
-> >> >> For security awareness SoCs on ARMv8 with TrustZone enabled,
-> >> >> peripherals like entropy sources is not accessible from normal world
-> >> >> (linux) and rather accessible from secure world (HYP/ATF/TEE) only.
-> >> >> This driver aims to provide a generic interface to Arm Trusted
-> >> >> Firmware or Hypervisor rng service.
-> >> >>
-> >> >>
-> >> >> changes since v1:
-> >> >> - rename mt67xx-rng to mtk-sec-rng since all MediaTek ARMv8 SoCs can
-> >> >> reuse
-> >> >>   this driver.
-> >> >>   - refine coding style and unnecessary check.
-> >> >>
-> >> >>   changes since v2:
-> >> >>   - remove unused comments.
-> >> >>   - remove redundant variable.
-> >> >>
-> >> >>   changes since v3:
-> >> >>   - add dt-bindings for MediaTek rng with TrustZone enabled.
-> >> >>   - revise HWRNG SMC call fid.
-> >> >>
-> >> >>   changes since v4:
-> >> >>   - move bindings to the arm/firmware directory.
-> >> >>   - revise driver init flow to check more property.
-> >> >>
-> >> >>   changes since v5:
-> >> >>   - refactor to more generic security rng driver which
-> >> >>     is not platform specific.
-> >> >>
-> >> >> *** BLURB HERE ***
-> >> >>
-> >> >> Neal Liu (2):
-> >> >>   dt-bindings: rng: add bindings for sec-rng
-> >> >>   hwrng: add sec-rng driver
-> >> >>
-> >> >
-> >> > There is no reason to model a SMC call as a driver, and represent it
-> >> > via a DT node like this.
-> >> 
-> >> +1.
-> >> 
-> >> > It would be much better if this SMC interface is made truly generic,
-> >> > and wired into the arch_get_random() interface, which can be used much
-> >> > earlier.
-> >> 
-> >> Wasn't there a plan to standardize a SMC call to rule them all?
-> >> 
-> >>          M.
+On Wed, 03 Jun 2020 08:54:51 +0200,
+Takashi Iwai wrote:
+> 
+> On Wed, 03 Jun 2020 08:28:09 +0200,
+> Takashi Iwai wrote:
 > > 
-> > Could you give us a hint how to make this SMC interface more generic in
-> > addition to my approach?
-> > There is no (easy) way to get platform-independent SMC function ID,
-> > which is why we encode it into device tree, and provide a generic
-> > driver. In this way, different devices can be mapped and then get
-> > different function ID internally.
+> > And, the most suspicious case is the last one,
+> > chip->num_suspended-intf.  It means that the device has multiple
+> > USB interfaces and they went to suspend, while the resume isn't
+> > performed for the all suspended interfaces in return.
 > 
-> The idea is simply to have *one* single ID that caters for all
-> implementations, just like we did for PSCI at the time. This
-> requires ARM to edict a standard, which is what I was referring
-> to above.
-> 
-> There is zero benefit in having a platform-dependent ID. It just
-> pointlessly increases complexity, and means we cannot use the RNG
-> before the firmware tables are available (yes, we need it that
-> early).
-> 
->          M.
+> If this is the cause, a patch like below might help.
+> It gets/puts the all assigned interfaced instead of only the primary
+> one.
 
-Do you know which ARM expert could edict this standard?
-Or is there any chance that we can make one? And be reviewed by
-maintainers?
+... and considering of the problem again, rather the patch below might
+be the right answer.  Now the driver tries to remember at which state
+it entered into the system-suspend.  Upon resume, in return, when the
+state reaches back to that point, set the card state to D0.
 
+The previous patch can be applied on the top, too, and it might be
+worth to apply both.
+
+Let me know if any of those actually helps.
+
+
+Takashi
+
+---
+diff --git a/sound/usb/card.c b/sound/usb/card.c
+--- a/sound/usb/card.c
++++ b/sound/usb/card.c
+@@ -843,9 +843,6 @@ static int usb_audio_suspend(struct usb_interface *intf, pm_message_t message)
+ 	if (chip == (void *)-1L)
+ 		return 0;
+ 
+-	chip->autosuspended = !!PMSG_IS_AUTO(message);
+-	if (!chip->autosuspended)
+-		snd_power_change_state(chip->card, SNDRV_CTL_POWER_D3hot);
+ 	if (!chip->num_suspended_intf++) {
+ 		list_for_each_entry(as, &chip->pcm_list, list) {
+ 			snd_usb_pcm_suspend(as);
+@@ -858,6 +855,11 @@ static int usb_audio_suspend(struct usb_interface *intf, pm_message_t message)
+ 			snd_usb_mixer_suspend(mixer);
+ 	}
+ 
++	if (!PMSG_IS_AUTO(message) && !chip->system_suspend) {
++		snd_power_change_state(chip->card, SNDRV_CTL_POWER_D3hot);
++		chip->system_suspend = chip->num_suspended_intf;
++	}
++
+ 	return 0;
+ }
+ 
+@@ -871,10 +873,10 @@ static int __usb_audio_resume(struct usb_interface *intf, bool reset_resume)
+ 
+ 	if (chip == (void *)-1L)
+ 		return 0;
+-	if (--chip->num_suspended_intf)
+-		return 0;
+ 
+ 	atomic_inc(&chip->active); /* avoid autopm */
++	if (chip->num_suspended_intf > 1)
++		goto out;
+ 
+ 	list_for_each_entry(as, &chip->pcm_list, list) {
+ 		err = snd_usb_pcm_resume(as);
+@@ -896,9 +898,12 @@ static int __usb_audio_resume(struct usb_interface *intf, bool reset_resume)
+ 		snd_usbmidi_resume(p);
+ 	}
+ 
+-	if (!chip->autosuspended)
++ out:
++	if (chip->num_suspended_intf == chip->system_suspend) {
+ 		snd_power_change_state(chip->card, SNDRV_CTL_POWER_D0);
+-	chip->autosuspended = 0;
++		chip->system_suspend = 0;
++	}
++	chip->num_suspended_intf--;
+ 
+ err_out:
+ 	atomic_dec(&chip->active); /* allow autopm after this point */
+diff --git a/sound/usb/usbaudio.h b/sound/usb/usbaudio.h
+index 1c892c7f14d7..e0ebfb25fbd5 100644
+--- a/sound/usb/usbaudio.h
++++ b/sound/usb/usbaudio.h
+@@ -26,7 +26,7 @@ struct snd_usb_audio {
+ 	struct usb_interface *pm_intf;
+ 	u32 usb_id;
+ 	struct mutex mutex;
+-	unsigned int autosuspended:1;	
++	unsigned int system_suspend;
+ 	atomic_t active;
+ 	atomic_t shutdown;
+ 	atomic_t usage_count;
 
 _______________________________________________
 Linux-mediatek mailing list
