@@ -2,146 +2,60 @@ Return-Path: <SRS0=Qq0i=7Q=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 49D4DC433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 04:02:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8DC87C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 06:28:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1CB8D20674
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 04:02:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 60F6A20679
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 06:28:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="O8hKRUcY";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="Tj+1w+Rn"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1CB8D20674
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MK+utPcP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 60F6A20679
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
-	Date:Message-ID:From:To:Subject:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Subject:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jUqxvMM9WtIIX8bwFjw0S8q6A+jsPRAc6dufLvXspCA=; b=O8hKRUcYAPBoez
-	90KU4DbuQNjjAmTHf1gN+fT+gAqTi2JCYqCtq3U6nd/7WccTLXjhfdUJKWxNn0chXd6jTuxjDgAxo
-	Of5/WYxE9TXfWBLzEEmcPUFsTeW4BVdFSne1ONyv3vDfvg8Kt+qYj1RX3dLgjhidKi4Fps50Gt2ic
-	WfxlK+Vqr+eQR1LW8DKlqa9T5VuuV4dJitOXoIbPxPis+25en9fox+/kfFqdY2Z9gEbOyC6/MWIb7
-	+KYkc6AoqThEsY2OSwLngoKtLEm3LISgoTF+6xglieRppsAIaPnxYAJsEzZ+UI97xoYIr+ujfFwd7
-	eso82LeaWp5tA17HKqlg==;
+	List-Owner; bh=BYAjz+c4znwBxBEZ03Hp/It0M7utCGxPWQFh2NxtV4E=; b=MK+utPcPBQw8uo
+	orZjev4UGnRTPbau20IGI3B6vCU+qM+jvElT1WSApChJgaS1Ds+dWzQplHUMJf58qgufRBH67AXFw
+	xwKijaxv82rytWL9ChRvyI9T3tVnQ0TZM7Fd2gCrpO9JIedlOXo59wfkz22aRdMURcQKuWf8G38uL
+	RSx3NH5hUo6W+Yt51Jt1ENdHTZs1iSqIdPGTVqELkOSpmavO88ecpEtebJqU0cdzs/qdFbZmcEtmZ
+	SmJjC1Zh2GGOhyHwv2/aNEVBigy2hOqTZxDCkAeXk41h4XwfthRaLrbje7NtjMnZgncVJI1X1SdPf
+	WznMzPjkghDPPJo0BSvw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jgKbq-0007d0-5W; Wed, 03 Jun 2020 04:02:34 +0000
-Received: from mailout3.samsung.com ([203.254.224.33])
+	id 1jgMsz-00013G-Kt; Wed, 03 Jun 2020 06:28:25 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jgKbn-0007au-Uq
- for linux-mediatek@lists.infradead.org; Wed, 03 Jun 2020 04:02:33 +0000
-Received: from epcas1p1.samsung.com (unknown [182.195.41.45])
- by mailout3.samsung.com (KnoxPortal) with ESMTP id
- 20200603040226epoutp038af3a8e890b17a4d80aab936581ed96a~U7NAD2jYm2412224122epoutp03J
- for <linux-mediatek@lists.infradead.org>; Wed,  3 Jun 2020 04:02:26 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout3.samsung.com
- 20200603040226epoutp038af3a8e890b17a4d80aab936581ed96a~U7NAD2jYm2412224122epoutp03J
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1591156946;
- bh=8DzpvgsCYbB55jRT92lei5XQhwUZ2CriPqL7BXIekdM=;
- h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
- b=Tj+1w+RnWa5i85nv3Sq2alEqdTa0HKukvsWC1e3JVh54hbOMDDvhBS79WB04/LTuB
- j2jnD46iHKStHDcBE7AnGG9wo5SDgOwqTaaMDRDiIjO/7ejST+1vVZk4nzg29MCuJy
- 0tvQ/TsQE/Cl7YzvVpQrb3gFJu+0LI5pouJJB2sI=
-Received: from epsnrtp3.localdomain (unknown [182.195.42.164]) by
- epcas1p1.samsung.com (KnoxPortal) with ESMTP id
- 20200603040226epcas1p132d5aec7e1972ef6b5a66067188550e3~U7M-mzEBi3046630466epcas1p1I;
- Wed,  3 Jun 2020 04:02:26 +0000 (GMT)
-Received: from epsmges1p3.samsung.com (unknown [182.195.40.156]) by
- epsnrtp3.localdomain (Postfix) with ESMTP id 49cFbz31qpzMqYkk; Wed,  3 Jun
- 2020 04:02:23 +0000 (GMT)
-Received: from epcas1p4.samsung.com ( [182.195.41.48]) by
- epsmges1p3.samsung.com (Symantec Messaging Gateway) with SMTP id
- 18.28.29173.FC027DE5; Wed,  3 Jun 2020 13:02:23 +0900 (KST)
-Received: from epsmtrp2.samsung.com (unknown [182.195.40.14]) by
- epcas1p4.samsung.com (KnoxPortal) with ESMTPA id
- 20200603040222epcas1p4dcac72b1d620804fc9a148db59beb71b~U7M8nBQtF0693606936epcas1p4H;
- Wed,  3 Jun 2020 04:02:22 +0000 (GMT)
-Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
- epsmtrp2.samsung.com (KnoxPortal) with ESMTP id
- 20200603040222epsmtrp2b66c310760f383b730d6af6c69dd22bd~U7M8mDcRo0224702247epsmtrp2B;
- Wed,  3 Jun 2020 04:02:22 +0000 (GMT)
-X-AuditID: b6c32a37-9b7ff700000071f5-a2-5ed720cf86be
-Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
- epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
- F1.D1.08382.EC027DE5; Wed,  3 Jun 2020 13:02:22 +0900 (KST)
-Received: from [10.113.221.102] (unknown [10.113.221.102]) by
- epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20200603040222epsmtip128ab7f0c28d350ec69647bd75a9cd6cc~U7M8G82ag2616926169epsmtip1s;
- Wed,  3 Jun 2020 04:02:22 +0000 (GMT)
-Subject: Re: [PATCH 06/12] PM / devfreq: Add cpu based scaling support to
- passive_governor
-To: "andrew-sh.cheng" <andrew-sh.cheng@mediatek.com>
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Organization: Samsung Electronics
-Message-ID: <89ecb940-d613-1b18-c7fc-abab4d4264c2@samsung.com>
-Date: Wed, 3 Jun 2020 13:12:54 +0900
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101
- Thunderbird/59.0
-MIME-Version: 1.0
-In-Reply-To: <1591100614.1804.1.camel@mtksdaap41>
-Content-Language: en-US
-X-Brightmail-Tracker: H4sIAAAAAAAAA01Te0xTVxzeuW0vLQS9FJBjI4h3WzarQGspHAkwccbdyTZItpHFOLDATUso
- bddbFtwSxgTGI4qwOcTycooyGExFwis8AsI6mG5Cx0MGCQ6GDAqVIZZp9mh7WcZ/3/ed77u/
- fL9zLp8jtOIiforGQOs1CjWJu3Jbbu+VBPzkPx4vKTXvQK3XF3joywdzOKru/5GH7p62uKAn
- P+djqGl2jIfMHRU4MmcPA7R2th+gq+PDGDqdI0O/fPo1jiwbdzF054cRHsrt6ndBf4/d5KKx
- r6w8dGFaiG6uU4c8qYaqBkCZi85iVLtx2oVqqi/AqamxTpy6VfMJlTPYw6WaR/O4VFFzPaBM
- E60YtdbkF+t2PDVcRSuSab0/rUnSJqdolBFk9NsJrybIQyTSAOlBFEr6axRpdAR55I3YgKMp
- ans50v9DhTrdLsUqGIYMigzXa9MNtL9KyxgiSFqXrNYd1AUyijQmXaMMTNKmhUklkgNyu/Fk
- qqp8LZujq3DL6LWZQBb4h18IBHxIBMOnXa1YIXDlC4k2AGuqyrgs+QPA3jwLjyVPAPxr9Xs7
- 4TsjE+P7WL0LwKHL0y4ssQJ4bm2I5/iuJ3ECWrrOcRzYyx5ou1gOHCYOUcSD4w0WpwknxLBn
- YQJ34O3EHji6MQsc2J2IhLbaLKeHS7wAZx7fdnq8iTg42JKz6fGAgxfnuA4sIKSwc67W6eEQ
- PnByrhpj8W7YulzBcQyGxAUBXOqeB2zrI7DjfCHOYk+4aGp2YbEIrq10beofw7rBfpwN5wPY
- 3HOPxx7IYM/VLzDHLjjEXni9I4iV98D2Z5WAHbwNrqyf2VyXO8z/TMhanofmmWmMxTvhlbwC
- vBiQxi11jFsqGLdUMP4/7BLg1oMdtI5JU9KMVCfbet1NwPnyxaFtoHT5UWAfwPigD0A+h/Ry
- D/Mdixe6JytOfUTrtQn6dDXN9AG5fcElHJF3ktb+62gMCVL5AZlMhoKlIXKplPRxfzPsXryQ
- UCoMdCpN62j9fzmMLxBlYb6Z65bfh0Y+iFvtWfQVhr/zKFO8b/JWtOsriW9Bt2+Gn01WTvVe
- UpbMx5RVWuXR317h3K++7/eyJExYfi3xvfdL+ZEds4biBY/t8UdDCugbVdTlmajs1WPdBt27
- RJRfyJCtXVw8sFQd2J+kXpTM48cbm1Bj8NKCoOaxdeDQKXWL52GmLKaO23lCF7j0m1exqvvk
- Lv13USU3conMOHHvxkOA9uc1jniXvR56zFUpenGOsQ020lye2fSg4bVduzNWVE/rag+vJg58
- Xm6KjHvufHfQQ+yMbX/t1M7lYo+MJdvMtbhft4leEgpifMrIoPnsXMvoHVPAeEtnPbPyZ1SV
- 0VpEchmVQirm6BnFv/YDblmCBAAA
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrJIsWRmVeSWpSXmKPExsWy7bCSnO45hetxBve7VSy2r3/BajH14RM2
- i/lHzrFanG16w27x7UoHk8Wmx9dYLS7vmsNmcbn5IqPF594jjBZLr19ksmhqMba43biCzeLN
- j7NMFmdOX2K1aN17hN3i37WNLBbXFr5ntZh+V8hi41cPB2GPNfPWMHpc7utl8tg56y67x6ZV
- nWwed67tYfPYvKTeo+XkfhaPLVfbWTz6tqxi9Dh+YzuTx+dNcgHcUVw2Kak5mWWpRfp2CVwZ
- sz83MxfM4a44+P04YwPjf44uRg4OCQETiRvXtbsYuTiEBHYzSnx6vp29i5ETKC4pMe3iUWaI
- GmGJw4eLIWreAtV0HGQDqREWiJF4s7efGcQWAZqzY+ZsRpAiZoEJrBI9B56yQXTcY5L4OekK
- WAebgJbE/hc3wGx+AUWJqz8eM4LYvAJ2Et+XN7CC2CwCKhIPvhwGqxEVCJPYueQxE0SNoMTJ
- mU9YQGxOAUOJPU+Wg9UwC6hL/Jl3iRnCFpe49WQ+E4QtL7H97RzmCYzCs5C0z0LSMgtJyywk
- LQsYWVYxSqYWFOem5xYbFhjmpZbrFSfmFpfmpesl5+duYgTHvpbmDsbtqz7oHWJk4mA8xCjB
- wawkwmsley1OiDclsbIqtSg/vqg0J7X4EKM0B4uSOO+NwoVxQgLpiSWp2ampBalFMFkmDk6p
- BqbJoffKvi79rMBdsDhIIuXrMplF2/o6f8w+ULrusUDBJOYnf92dvcWuFpv+3X7MgvHmpxX9
- PnGfPqQeKIiSeJDg4ie7ia/TJ/PRovfbXblmqJhJtUaHzYz+ePv4y3RtptKroUsvVPGe915X
- MdM027PIQXH1dq3f7L2My6b5fnE/8N2DObXd+EfkE403jumRh95nWjHlKeUoCszQf37+bm7Q
- b//a5QbfRQ9EdM/mM296s/7+3NAN72MfJYjel3Mu3nop7nndEdcH2ucF76tbsdrHeLpemt7Y
- xrUri39+YV5xnny44zc2ZvEKj/zHd80Zuk8b8b50PbjKf8c5z5aDIkqCzdetHPxuWcS473/9
- XImlOCPRUIu5qDgRAKpCScVsAwAA
-X-CMS-MailID: 20200603040222epcas1p4dcac72b1d620804fc9a148db59beb71b
-X-Msg-Generator: CA
-X-Sendblock-Type: SVC_REQ_APPROVE
-CMS-TYPE: 101P
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20200520034335epcas1p45a321a1a878fb7cd7b9c9ada0a474ef7
-References: <20200520034307.20435-1-andrew-sh.cheng@mediatek.com>
- <CGME20200520034335epcas1p45a321a1a878fb7cd7b9c9ada0a474ef7@epcas1p4.samsung.com>
- <20200520034307.20435-7-andrew-sh.cheng@mediatek.com>
- <64b81eea-641c-811d-9830-718b28db4188@samsung.com>
- <7ad35770-9327-084a-d2ca-1646cabd0a4d@samsung.com>
- <1591100614.1804.1.camel@mtksdaap41>
+ id 1jgMso-0000vI-Iv; Wed, 03 Jun 2020 06:28:18 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx2.suse.de (Postfix) with ESMTP id C4442AD10;
+ Wed,  3 Jun 2020 06:28:13 +0000 (UTC)
+Date: Wed, 03 Jun 2020 08:28:09 +0200
+Message-ID: <s5heeqwfyti.wl-tiwai@suse.de>
+From: Takashi Iwai <tiwai@suse.de>
+To: Macpaul Lin <macpaul.lin@mediatek.com>
+Subject: Re: [PATCH] sound: usb: pcm: fix incorrect power state when playing
+ sound after PM_AUTO suspend
+In-Reply-To: <1591153515.23525.50.camel@mtkswgap22>
+References: <s5hpnahhbz8.wl-tiwai@suse.de>
+ <1591153515.23525.50.camel@mtkswgap22>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI/1.14.6 (Maruoka)
+ FLIM/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL/10.8 Emacs/25.3
+ (x86_64-suse-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI 1.14.6 - "Maruoka")
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200602_210232_240100_52B2450C 
-X-CRM114-Status: GOOD (  18.37  )
+X-CRM114-CacheID: sfid-20200602_232814_916679_FDE69D54 
+X-CRM114-Status: GOOD (  32.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -153,64 +67,143 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
- srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
- Stephen Boyd <sboyd@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>,
- Mark Brown <broonie@kernel.org>, linux-pm@vger.kernel.org, "Rafael J
- . Wysocki" <rjw@rjwysocki.net>, Liam Girdwood <lgirdwood@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
- Kyungmin Park <kyungmin.park@samsung.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>, linux-mediatek@lists.infradead.org,
- Sibi Sankar <sibis@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+Cc: alsa-devel@alsa-project.org,
+ Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
+ linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
+ Johan Hovold <johan@kernel.org>, Takashi Iwai <tiwai@suse.com>,
+ Hui Wang <hui.wang@canonical.com>, Alexander Tsoy <alexander@tsoy.me>,
+ linux-mediatek@lists.infradead.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Macpaul Lin <macpaul.lin@gmail.com>,
+ Jaroslav Kysela <perex@perex.cz>,
+ Szabolcs =?UTF-8?B?U3rFkWtl?= <szszoke.code@gmail.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andrew-sh.Cheng,
+On Wed, 03 Jun 2020 05:05:15 +0200,
+Macpaul Lin wrote:
+> 
+> On Tue, 2020-06-02 at 14:46 +0200, Takashi Iwai wrote:
+> > On Tue, 02 Jun 2020 13:53:41 +0200,
+> > Macpaul Lin wrote:
+> > > 
+> > > This patch fix incorrect power state changed by usb_audio_suspend()
+> > > when CONFIG_PM is enabled.
+> > > 
+> > > After receiving suspend PM message with auto flag, usb_audio_suspend()
+> > > change card's power state to SNDRV_CTL_POWER_D3hot. Only when the other
+> > > resume PM message with auto flag can change power state to
+> > > SNDRV_CTL_POWER_D0 in __usb_audio_resume().
+> > > 
+> > > However, when system is not under auto suspend, resume PM message with
+> > > auto flag might not be able to receive on time which cause the power
+> > > state was incorrect. At this time, if a player starts to play sound,
+> > > will cause snd_usb_pcm_open() to access the card and setup_hw_info() will
+> > > resume the card.
+> > > 
+> > > But even the card is back to work and all function normal, the power
+> > > state is still in SNDRV_CTL_POWER_D3hot.
+> > 
+> > Hm, in exactly which situation does this happen?  I still don't get
+> > it.  Could you elaborate how to trigger this?
+> 
+> I'm not sure if this will happen on laptop or on PC.
+> We've found this issue on Android phone (I'm not sure if each Android
+> phone can reproduce this.).
+> 
+> After booting the android phone, insert type-c headset without charging
+> and play music at any duration, say, 1 second, then stop. Put phone away
+> to idle about 17~18 minutes. Wait auto pm happened and the power state
+> change to SNDRV_CTL_POWER_D3hot in sound/usb/card.c. Then wake up the
+> phone, play music again. Then you'll probably found the music was not
+> playing and the progress bar keep at the same position. It only happen 
+> when power state is SNDRV_CTL_POWER_D3hot. If not (the power state is
+> SNDRV_CTL_POWER_D0), repeat the steps for several times, then it will be
+> produced at some time.
+> 
+> When it happened, sound_usb_pcm_open() will wake up the sound card by 
+> setup_hw_info()->__usb_audio_resume(). However, the card and the
+> interface is function properly right now, the power state keeps remain
+> SNDRV_CTL_POWER_D3hot.
 
-On 6/2/20 9:23 PM, andrew-sh.cheng wrote:
-> On Thu, 2020-05-28 at 16:17 +0900, Chanwoo Choi wrote:
->> Hi Andrew-sh.Cheng,
->>
->> The exynos-bus.c used the passive governor.
->> Even if don't make the problem because DEVFREQ_PARENT_DEV is zero,
->> you need to initialize the parent_type with DEVFREQ_PARENT_DEV as following:
->>
->> diff --git a/drivers/devfreq/exynos-bus.c b/drivers/devfreq/exynos-bus.c
->> index 8fa8eb541373..1c71c47bc2ac 100644
->> --- a/drivers/devfreq/exynos-bus.c
->> +++ b/drivers/devfreq/exynos-bus.c
->> @@ -369,6 +369,7 @@ static int exynos_bus_profile_init_passive(struct exynos_bus *bus,
->>                 return -ENOMEM;
->>  
->>         passive_data->parent = parent_devfreq;
->> +       passive_data->parent_type = DEVFREQ_PARENT_DEV;
->>  
->>         /* Add devfreq device for exynos bus with passive governor */
->>         bus->devfreq = devm_devfreq_add_device(dev, profile, DEVFREQ_GOV_PASSIVE,
-> Hi Chanwoo Choi,
-> Do you just remind me to initialize it to DEVFREQ_PARENT_DEV whn use
-> this governor?
+And at this point it's already something wrong.  We need to check why
+SNDRV_CTL_POWER_D3hot is kept there, instead of working around the
+rest behavior.
 
-Yes. This change was not included in this patchset.
+> The suggestive parameter settings from upper
+> sound request will be pending since later snd_power_wait() call will
+> still wait the card awaken. Ideally, auto PM should be recovered by
+> sound card itself. But once the card is awaken at this circumstance, it
+> looks like there are not more auto pm event. And the sound system of
+> this interface will stuck here forever until user plug out the headset
+> (reset the hardware).
+> 
+> The root cause is that once the card has been resumed, it should inform
+> auto pm change the state back into SNDRV_CTL_POWER_D0 and mark the
+> device is using by some one.
+> 
+> > > Which cause the infinite loop
+> > > happened in snd_power_wait() to check the power state. Thus the
+> > > successive setting ioctl cannot be passed to card.
+> > > 
+> > > Hence we suggest to change power state to SNDRV_CTL_POWER_D0 when card
+> > > has been resumed successfully.
+> > 
+> > This doesn't look like a right solution for the problem, sorry.
+> > The card PM status must be recovered to D0 when the autoresume
+> > succeeds.  If not, something is broken there, and it must be fixed
+> > instead of fiddling the status flag externally.
+> 
+> Yes, I agreed, but after checking the code in sound drivers, 
+> it looks like there is only chance that auto pm triggered by low-level
+> code in sound/usb/card.c. In kernel 4.14, auto pm suspend is triggered
+> by snd_pcm_suspend_all(). In later kernel, it is triggered by
+> snd_usb_pcm_suspend(). However, it looks like there are no any resume
+> trigger to recover auto pm state when the card has been waken by
+> sound_usb_pcm_open().
 
-> I will do it and thank you for reminding.
+If a running PCM stream has been suspended, the stream needs to be
+resumed manually by user-space.  There is no automatic resume.  You
+can forget about it and skip scratching that surface.
 
-Thanks.
+Again, the point to be checked is why D3hot is kept after
+snd_usb_autoresume() is called.
 
-(snip)
+It's Android, and I wonder whether the system does the system-suspend
+(S3), or it's all runtime PM?  Basically D3hot is set only for the
+former, the system suspend, where the driver's PM callback is called
+with PMSG_SUSPEND.  Please check this at first.  That is,
+usb_audio_suspend() receives PMSG_SUSPEND or such, which makes
+chip->autosuspended=1.  The D3hot flag is set only in this condition.
+
+Then, check the resume patterns.  The usb-audio suspend/resume has
+multiple refcounts.  One is the Linux device PM refcount, and
+chip->active refcount, and chip->num_suspended_intf refcount.
+
+The first one (PM refount) is the primary refcount to manage the whole
+system, and this is incremented / decremented by the standard PM
+calls.  The second one, chip->active, is a temporary flag to avoid the
+re-entrance of the PM callbacks, and incremented at the probe enter
+and __usb_audio_resume(), and decremented at the probe exit and
+__usb_audio_resume() exist.  The last one, chip->num_suspended_intf is
+a refcount for the multiple interfaces assigned to a single card.
+
+And, the most suspicious case is the last one,
+chip->num_suspended-intf.  It means that the device has multiple
+USB interfaces and they went to suspend, while the resume isn't
+performed for the all suspended interfaces in return.
+
+If that's the case, you need to check where the suspend gets called to
+which USB-interface (and which pm_message_t) and whether the resume
+gets called for those.
 
 
-And, this patchset doesn't include the dt-binding example
-and any real example in devicetree. If possible, I recommend
-you better to update dt-binding document with example.
+thanks,
 
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
+Takashi
 
 _______________________________________________
 Linux-mediatek mailing list
