@@ -2,102 +2,77 @@ Return-Path: <SRS0=Qq0i=7Q=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ABA1CC433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 02:32:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 209CCC433E1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 03:07:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 82C6D2077D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 02:32:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EA1AC206E9
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 03:07:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="a9SrdC5o";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="kcVvjWPA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 82C6D2077D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rZxmYaej";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="bsqU+vnO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA1AC206E9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7Stm0MWP2/gZVE6jZBXdMcbmDFFBj0DCFRE2XMrZ8NE=; b=a9SrdC5oZuFKzq
-	EBa9vSrVqW54HXpQDmNStS4deTUqUWAlNCY/6Z0i+1Lpwok6M69f/EXE9/PeGfgMge8RJ8LlbnCrw
-	VzxBs5YqW/34N6kUgY+C5ZzhGSgv5SnbQ0zBRTJYAn7lVeblxutUd39mYePcoauwgLjSxqqN/Pkf6
-	peq+HHWVLcswvUeStHAT5L259BCofzd3ouM6V4IasEo5ayu3vNMQj/cqFdRSz0GFvgZJN0kifjTug
-	yxG2z6635SmJ+BVzx6Y7X1CuCLBzYAU9+v6TnCARbneR9cBQYHMNvJWyy6isqdIDjC7dqfDAL3wYm
-	ALTqxansmUgfVtuqCirQ==;
+	List-Owner; bh=pDpmx5kW+807XTpnvy5mDszDAiW/xFPrd2/8mW4My9E=; b=rZxmYaejLjnaLx
+	ke1PLYi5fQZhO/OTbLDxTTTDtHnHdhyZezN+AT/mNRpDKMUPMPc9sfwyG77eLDhPYJjwzkrUH42OM
+	xyUqbfAmmFSlr1/lDExINhQEkoPdi5+7gN15/ykkJsEwC34dBIY5WeeyjMhXH6X8t/IdxJO3vfo05
+	OZpIJuDnQ+WectDNwyNIvjJaF8tqjr8/zZK12TpVDWGbMqomnM4yPdaPFcEronsbfjDfTjkg0VE+K
+	j0Q2bN0stFuRVYKnQt4kUcoRWdk28nOPagluGdUjy6wiWnk7shOr25sQ6c9/WudfjhnYjtxlYxLix
+	OZrHXV8EwMMS7xrDyw+g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jgJCW-0003Hx-Hk; Wed, 03 Jun 2020 02:32:20 +0000
-Received: from aserp2120.oracle.com ([141.146.126.78])
+	id 1jgJkN-0006xF-Hg; Wed, 03 Jun 2020 03:07:19 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jgJCT-0003GR-WF; Wed, 03 Jun 2020 02:32:19 +0000
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0532QVmr187569;
- Wed, 3 Jun 2020 02:31:50 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding; s=corp-2020-01-29;
- bh=cJZJ6Aemad1d2VN1fwzQIoXZHDszWIODTXRnH8VAsQo=;
- b=kcVvjWPAJ4lmtKEbJXD+WlDXIVCFMMHnjWMAO6LbG0h+AsBi+iHosXwow+Ac7fWNgRtH
- LGIDm/tsI3QaGrU+s1pTAZ5BS52SdYDAKtefH2iULK7Y6p/fRRLlhN3KVXiPutLHHbJB
- NxYz37iXvjvQM3qQj90k86lHeKRjQfzdxhm5Zk60uoYZDAFPmoeqpImzq7yXEVarbRI3
- k5/fm4mDP5Am47EXUpBwRh6djaRHjPyf4VxodjkqRbFHOUzQj4sPScyDR+iiPXHFHcWm
- x6L25QNWabEyMA7weqqS/gbiehUR3nyK0F1QBy8wE1sel0BCHaLG3eucBAIXcUylBjUv 0Q== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by aserp2120.oracle.com with ESMTP id 31bfem6s9k-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 03 Jun 2020 02:31:50 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0532TQZP164353;
- Wed, 3 Jun 2020 02:31:50 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3030.oracle.com with ESMTP id 31c12q5cuf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 03 Jun 2020 02:31:50 +0000
-Received: from abhmp0013.oracle.com (abhmp0013.oracle.com [141.146.116.19])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 0532Vlbq032618;
- Wed, 3 Jun 2020 02:31:47 GMT
-Received: from ca-mkp.ca.oracle.com (/10.156.108.201)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 02 Jun 2020 19:31:46 -0700
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: avri.altman@wdc.com, linux-scsi@vger.kernel.org,
- Stanley Chu <stanley.chu@mediatek.com>, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-Subject: Re: [PATCH] scsi: ufs: Remove redundant urgent_bkop_lvl initialization
-Date: Tue,  2 Jun 2020 22:31:36 -0400
-Message-Id: <159114947917.26776.10217919465331125285.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200530141200.4616-1-stanley.chu@mediatek.com>
-References: <20200530141200.4616-1-stanley.chu@mediatek.com>
+ id 1jgJkJ-0006wm-J2; Wed, 03 Jun 2020 03:07:17 +0000
+X-UUID: 1c24df93793b4c6ba72102acfa4547fb-20200602
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=W7tF7Mgc/fvciJgJ7QAqTgTQjhCvBLQ6CPGKAAjG2D8=; 
+ b=bsqU+vnOXHhQMebXF/xNC92/xnQyY4mX2G8GXAquFzljwBgCumvf8HWzFMf9wUb20RRVPtPhBk0sw/DLu4uWDQ6jefnnU1d15PMvlgwl83BknphlRhk/6l3NaIwluCJjkJpIviBh9f0Lw9tt63SVRebUqkYRRidWFX3QwhKNzwk=;
+X-UUID: 1c24df93793b4c6ba72102acfa4547fb-20200602
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <macpaul.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1423210677; Tue, 02 Jun 2020 19:07:08 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 2 Jun 2020 20:05:19 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 3 Jun 2020 11:05:10 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 3 Jun 2020 11:05:10 +0800
+Message-ID: <1591153515.23525.50.camel@mtkswgap22>
+Subject: Re: [PATCH] sound: usb: pcm: fix incorrect power state when playing
+ sound after PM_AUTO suspend
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Takashi Iwai <tiwai@suse.de>
+Date: Wed, 3 Jun 2020 11:05:15 +0800
+In-Reply-To: <s5hpnahhbz8.wl-tiwai@suse.de>
+References: <s5hpnahhbz8.wl-tiwai@suse.de>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9640
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- phishscore=0 malwarescore=0
- adultscore=0 suspectscore=0 spamscore=0 bulkscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2006030018
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9640
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- suspectscore=0
- mlxlogscore=999 priorityscore=1501 bulkscore=0 phishscore=0 clxscore=1011
- impostorscore=0 adultscore=0 spamscore=0 mlxscore=0 lowpriorityscore=0
- cotscore=-2147483648 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2006030017
+X-TM-SNTS-SMTP: 586FA4C026DBFAB221D5480D4E6A63BFED753ABF860C0F7D852D822E2AAFD11B2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200602_193218_126036_CDF7ECBE 
-X-CRM114-Status: UNSURE (   9.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200602_200715_632616_2BFCA477 
+X-CRM114-Status: GOOD (  25.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,32 +84,119 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: bvanassche@acm.org, "Martin K . Petersen" <martin.petersen@oracle.com>,
- andy.teng@mediatek.com, cc.chou@mediatek.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, peter.wang@mediatek.com,
- linux-kernel@vger.kernel.org, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, chaotian.jing@mediatek.com,
- matthias.bgg@gmail.com, asutoshd@codeaurora.org,
- linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Cc: alsa-devel@alsa-project.org, Mediatek WSD
+ Upstream <wsd_upstream@mediatek.com>, linux-kernel@vger.kernel.org,
+ linux-usb@vger.kernel.org, Johan
+ Hovold <johan@kernel.org>, Takashi Iwai <tiwai@suse.com>,
+ Hui Wang <hui.wang@canonical.com>, Alexander Tsoy <alexander@tsoy.me>,
+ linux-mediatek@lists.infradead.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Macpaul Lin <macpaul.lin@gmail.com>,
+ Jaroslav Kysela <perex@perex.cz>,
+ Szabolcs =?UTF-8?Q?Sz=C5=91ke?= <szszoke.code@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 30 May 2020 22:12:00 +0800, Stanley Chu wrote:
+On Tue, 2020-06-02 at 14:46 +0200, Takashi Iwai wrote:
+> On Tue, 02 Jun 2020 13:53:41 +0200,
+> Macpaul Lin wrote:
+> > 
+> > This patch fix incorrect power state changed by usb_audio_suspend()
+> > when CONFIG_PM is enabled.
+> > 
+> > After receiving suspend PM message with auto flag, usb_audio_suspend()
+> > change card's power state to SNDRV_CTL_POWER_D3hot. Only when the other
+> > resume PM message with auto flag can change power state to
+> > SNDRV_CTL_POWER_D0 in __usb_audio_resume().
+> > 
+> > However, when system is not under auto suspend, resume PM message with
+> > auto flag might not be able to receive on time which cause the power
+> > state was incorrect. At this time, if a player starts to play sound,
+> > will cause snd_usb_pcm_open() to access the card and setup_hw_info() will
+> > resume the card.
+> > 
+> > But even the card is back to work and all function normal, the power
+> > state is still in SNDRV_CTL_POWER_D3hot.
+> 
+> Hm, in exactly which situation does this happen?  I still don't get
+> it.  Could you elaborate how to trigger this?
 
-> In ufshcd_probe_hba(), all BKOP SW tracking variables can be reset
-> together in ufshcd_force_reset_auto_bkops(), thus urgent_bkop_lvl
-> initialization in the beginning of ufshcd_probe_hba() can be merged
-> into ufshcd_force_reset_auto_bkops().
+I'm not sure if this will happen on laptop or on PC.
+We've found this issue on Android phone (I'm not sure if each Android
+phone can reproduce this.).
 
-Applied to 5.8/scsi-queue, thanks!
+After booting the android phone, insert type-c headset without charging
+and play music at any duration, say, 1 second, then stop. Put phone away
+to idle about 17~18 minutes. Wait auto pm happened and the power state
+change to SNDRV_CTL_POWER_D3hot in sound/usb/card.c. Then wake up the
+phone, play music again. Then you'll probably found the music was not
+playing and the progress bar keep at the same position. It only happen 
+when power state is SNDRV_CTL_POWER_D3hot. If not (the power state is
+SNDRV_CTL_POWER_D0), repeat the steps for several times, then it will be
+produced at some time.
 
-[1/1] scsi: ufs: Remove redundant urgent_bkop_lvl initialization
-      https://git.kernel.org/mkp/scsi/c/7b6668d8b806
+When it happened, sound_usb_pcm_open() will wake up the sound card by 
+setup_hw_info()->__usb_audio_resume(). However, the card and the
+interface is function properly right now, the power state keeps remain
+SNDRV_CTL_POWER_D3hot. The suggestive parameter settings from upper
+sound request will be pending since later snd_power_wait() call will
+still wait the card awaken. Ideally, auto PM should be recovered by
+sound card itself. But once the card is awaken at this circumstance, it
+looks like there are not more auto pm event. And the sound system of
+this interface will stuck here forever until user plug out the headset
+(reset the hardware).
 
--- 
-Martin K. Petersen	Oracle Linux Engineering
+The root cause is that once the card has been resumed, it should inform
+auto pm change the state back into SNDRV_CTL_POWER_D0 and mark the
+device is using by some one.
+
+> > Which cause the infinite loop
+> > happened in snd_power_wait() to check the power state. Thus the
+> > successive setting ioctl cannot be passed to card.
+> > 
+> > Hence we suggest to change power state to SNDRV_CTL_POWER_D0 when card
+> > has been resumed successfully.
+> 
+> This doesn't look like a right solution for the problem, sorry.
+> The card PM status must be recovered to D0 when the autoresume
+> succeeds.  If not, something is broken there, and it must be fixed
+> instead of fiddling the status flag externally.
+
+Yes, I agreed, but after checking the code in sound drivers, 
+it looks like there is only chance that auto pm triggered by low-level
+code in sound/usb/card.c. In kernel 4.14, auto pm suspend is triggered
+by snd_pcm_suspend_all(). In later kernel, it is triggered by
+snd_usb_pcm_suspend(). However, it looks like there are no any resume
+trigger to recover auto pm state when the card has been waken by
+sound_usb_pcm_open(). The remain resume trigger in
+sound/core/pcm_native.c were all static. I've tried to use these resume
+function in sound/usb/card.c but it seems cannot get better result than
+changing the power state when sound card is in use. 
+
+I've replied another mail earlier includes debug patch and the other
+work around to verify this issue. The issue has been found on
+kernel-4.14, but check the code logic here in sound/usb/card.c and
+sound/usb/pcm.c, I think the same problem still existed in 4.19, 5.4
+(used by android), and in current kernel tree.
+
+
+> thanks,
+> 
+> Takashi
+
+If the above explanation were not clear enough, I'll try my best to
+explain it in more detail. Maybe the better way is to send both auto pm
+resume and runtime resume when sound_usb_pcm_open() is called. But
+according to the current codes in card.c, we might need to call
+__usb_audio_resume() twice in setup_hw_info().
+
+Thanks
+Macpaul Lin
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
