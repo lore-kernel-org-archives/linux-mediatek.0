@@ -2,68 +2,128 @@ Return-Path: <SRS0=Qq0i=7Q=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 31776C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 16:13:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 137D0C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 16:17:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F3794206E6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 16:13:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DDC8D206E6
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 16:17:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZZHYfoB7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F3794206E6
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="B05qXBpp";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Ci/Y3rBR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DDC8D206E6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uv+XCuHaHSaB76xk+7z2yRr02AuSqlIL7yKOEPtr9JY=; b=ZZHYfoB78g7JumwkxjMMR7wv4
-	WWPuPOivpSJmJ0Z7/qIQ1Wc4nw/chewIuLJDk5U3MEUhkSpLWyl2WnILRIcz17tsMUKOpNKgDETXR
-	tMtzRcNhFiaBHUnfOoBQ45/I9IlIX2LW3bunwp3MsIZTqdBmzEIgVIuD+ur1k/BD1BMWQCsNKYs4y
-	LqoPM2lIulum7aa3JN6Klz4P0ojgpmR4aSf4U1Rze5TBEb5iPvqzbb5O5h0Y6sOUuFFFD/JNLDNvY
-	oAD7/SmsxrgOEoOimhNB+kQg4gi/BGh7M9M6AKz64QUTVD5BbWYq1N8iPo51ZgShOKamKm7oBkWtz
-	Mw4GecwKw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=b6KA9/J5leXVsX0tieQbG++Pjf0lUty1fVfjZcWSAHI=; b=B05qXBppU3Ko8D
+	7b8RsHQpOwFK6GzphB3npalmPl2eeyJk8EW1uMQhJyKMDKalHOt3RLqKXJ7KWGFsr/d5wn1wWPAsd
+	icwldPmmOrUrBqVYdR4CUDPMvGad4pYJhp7e5sSjGCVbydESZ9lxHu/aUqF34oEDBJA/N5IbbqTTc
+	/hLJ7O6fDSRbAk8VrBxi9C2YHrAFFhVD8bzeTWR9u5p6aif+Hg1ZUC4ep401JxjmA5f22YfRJ2QVE
+	xdTAFZ4XMA7rYuqij2NjSNch2geGNPx3SZHnJqDWjFxRRPRtsk7nXZ5ofDzochZ2l1TgGsOkF0ekw
+	UIvl/uzhOF+2c/GdFv3w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jgW0c-00075i-9G; Wed, 03 Jun 2020 16:12:54 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jgW0S-0006xs-W2; Wed, 03 Jun 2020 16:12:46 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id AB8CA55D;
- Wed,  3 Jun 2020 09:12:43 -0700 (PDT)
-Received: from [10.37.12.87] (unknown [10.37.12.87])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 05E993F52E;
- Wed,  3 Jun 2020 09:12:32 -0700 (PDT)
-Subject: Re: [PATCH v8 4/8] PM / EM: add support for other devices than CPUs
- in Energy Model
-To: "Rafael J. Wysocki" <rafael@kernel.org>
-References: <20200527095854.21714-1-lukasz.luba@arm.com>
- <20200527095854.21714-5-lukasz.luba@arm.com>
- <d45e5592-8e11-858b-d3a3-2ec9ce1d1f54@linaro.org>
- <7201e161-6952-6e28-4036-bd0f0353ec30@arm.com>
- <CAJZ5v0jwoNSYOz3nGqNshd=5btsLxOp-di-Dot+cHqAQZEQVRw@mail.gmail.com>
- <d6a0d345-53ef-523c-836d-3bc4ea4c6e66@arm.com>
- <CAJZ5v0iDNH7tZmKsYgW1xp-g3WmOod+Wo-AzJmszXuv_wztwwA@mail.gmail.com>
-From: Lukasz Luba <lukasz.luba@arm.com>
-Message-ID: <d0894383-1362-fdea-f74c-7dd8ecdc33ca@arm.com>
-Date: Wed, 3 Jun 2020 17:12:31 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+	id 1jgW4g-0001vX-Jb; Wed, 03 Jun 2020 16:17:06 +0000
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]
+ helo=us-smtp-delivery-1.mimecast.com)
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jgW4V-0001lX-Q9
+ for linux-mediatek@lists.infradead.org; Wed, 03 Jun 2020 16:16:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591201013;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=vSikr6xbZnA95Bp36UZKiXnO9Jo/eUqwqwA+BJtCOpw=;
+ b=Ci/Y3rBR47Kp4IOXUO122mW/TdleoZGxY313l5GpN45V5j+qKjcJx8wsHBBbRnJkY546AW
+ WTBk6IryhpkWSWitNzdVO23UsABthOEaHI9+VUBf2oYNeYXQIXNaMkAmnKgFmZTkJC3WVv
+ 0ztuvwUhjgghIpb1hK8URntNx91adgQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-24-CtZO5kMvNKqSkjcTLFuRrA-1; Wed, 03 Jun 2020 12:16:51 -0400
+X-MC-Unique: CtZO5kMvNKqSkjcTLFuRrA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C974A1005510;
+ Wed,  3 Jun 2020 16:16:49 +0000 (UTC)
+Received: from [10.36.113.192] (ovpn-113-192.ams2.redhat.com [10.36.113.192])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E306160BF4;
+ Wed,  3 Jun 2020 16:16:47 +0000 (UTC)
+Subject: Re: [PATCH] mm/memblock: export max_pfn for kernel modules
+To: Miles Chen <miles.chen@mediatek.com>, Mike Rapoport <rppt@linux.ibm.com>, 
+ Andrew Morton <akpm@linux-foundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+References: <20200603161132.2441-1-miles.chen@mediatek.com>
+From: David Hildenbrand <david@redhat.com>
+Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat GmbH
+Message-ID: <23a9a2cc-3461-52bb-4285-b063a01bd7c6@redhat.com>
+Date: Wed, 3 Jun 2020 18:16:47 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <CAJZ5v0iDNH7tZmKsYgW1xp-g3WmOod+Wo-AzJmszXuv_wztwwA@mail.gmail.com>
+In-Reply-To: <20200603161132.2441-1-miles.chen@mediatek.com>
 Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200603_091245_122750_F75727CE 
-X-CRM114-Status: GOOD (  29.30  )
+X-CRM114-CacheID: sfid-20200603_091655_926714_4D2EE652 
+X-CRM114-Status: GOOD (  18.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,160 +135,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nishanth Menon <nm@ti.com>, Juri Lelli <juri.lelli@redhat.com>,
- Peter Zijlstra <peterz@infradead.org>, Viresh Kumar <viresh.kumar@linaro.org>,
- Liviu Dudau <liviu.dudau@arm.com>, dri-devel <dri-devel@lists.freedesktop.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Benjamin Segall <bsegall@google.com>, alyssa.rosenzweig@collabora.com,
- Fabio Estevam <festevam@gmail.com>, Matthias Kaehlcke <mka@chromium.org>,
- Rob Herring <robh@kernel.org>, Amit Kucheria <amit.kucheria@verdurent.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Vincent Guittot <vincent.guittot@linaro.org>,
- Kevin Hilman <khilman@kernel.org>, Andy Gross <agross@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, steven.price@arm.com,
- Chanwoo Choi <cw00.choi@samsung.com>, Ingo Molnar <mingo@redhat.com>,
- dl-linux-imx <linux-imx@nxp.com>, "Zhang, Rui" <rui.zhang@intel.com>,
- Mel Gorman <mgorman@suse.de>, orjan.eide@arm.com,
- Daniel Vetter <daniel@ffwll.ch>, Linux PM <linux-pm@vger.kernel.org>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Steven Rostedt <rostedt@goodmis.org>,
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux OMAP Mailing List <linux-omap@vger.kernel.org>,
- Dietmar Eggemann <Dietmar.Eggemann@arm.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- David Airlie <airlied@linux.ie>, Tomeu Vizoso <tomeu.vizoso@collabora.com>,
- Quentin Perret <qperret@google.com>, Stephen Boyd <sboyd@kernel.org>,
- Randy Dunlap <rdunlap@infradead.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Sascha Hauer <kernel@pengutronix.de>, Sudeep Holla <sudeep.holla@arm.com>,
- patrick.bellasi@matbug.net, Shawn Guo <shawnguo@kernel.org>
+Cc: linux-mm@kvack.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ wsd_upstream@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 6/3/20 4:40 PM, Rafael J. Wysocki wrote:
-> On Wed, Jun 3, 2020 at 5:26 PM Lukasz Luba <lukasz.luba@arm.com> wrote:
->>
->>
->>
->> On 6/3/20 4:13 PM, Rafael J. Wysocki wrote:
->>> On Tue, Jun 2, 2020 at 1:31 PM Lukasz Luba <lukasz.luba@arm.com> wrote:
->>>>
->>>> Hi Daniel,
->>>>
->>>> On 6/1/20 10:44 PM, Daniel Lezcano wrote:
->>>>> On 27/05/2020 11:58, Lukasz Luba wrote:
->>>>>> Add support for other devices than CPUs. The registration function
->>>>>> does not require a valid cpumask pointer and is ready to handle new
->>>>>> devices. Some of the internal structures has been reorganized in order to
->>>>>> keep consistent view (like removing per_cpu pd pointers).
->>>>>>
->>>>>> Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
->>>>>> ---
->>>>>
->>>>> [ ... ]
->>>>>
->>>>>>     }
->>>>>>     EXPORT_SYMBOL_GPL(em_register_perf_domain);
->>>>>> +
->>>>>> +/**
->>>>>> + * em_dev_unregister_perf_domain() - Unregister Energy Model (EM) for a device
->>>>>> + * @dev             : Device for which the EM is registered
->>>>>> + *
->>>>>> + * Try to unregister the EM for the specified device (but not a CPU).
->>>>>> + */
->>>>>> +void em_dev_unregister_perf_domain(struct device *dev)
->>>>>> +{
->>>>>> +    if (IS_ERR_OR_NULL(dev) || !dev->em_pd)
->>>>>> +            return;
->>>>>> +
->>>>>> +    if (_is_cpu_device(dev))
->>>>>> +            return;
->>>>>> +
->>>>>> +    mutex_lock(&em_pd_mutex);
->>>>>
->>>>> Is the mutex really needed?
->>>>
->>>> I just wanted to align this unregister code with register. Since there
->>>> is debugfs dir lookup and the device's EM existence checks I thought it
->>>> wouldn't harm just to lock for a while and make sure the registration
->>>> path is not used. These two paths shouldn't affect each other, but with
->>>> modules loading/unloading I wanted to play safe.
->>>>
->>>> I can change it maybe to just dmb() and the end of the function if it's
->>>> a big performance problem in this unloading path. What do you think?
->>>
->>> I would rather leave the mutex locking as is.
->>>
->>> However, the question to ask is what exactly may go wrong without that
->>> locking in place?  Is there any specific race condition that you are
->>> concerned about?
->>>
->>
->> I tried to test this with module loading & unloading with panfrost
->> driver and CPU hotplug (which should bail out quickly) and was OK.
->> I don't see any particular race. I don't too much about the
->> debugfs code, though. That's why I tried to protect from some
->> scripts/services which try to re-load the driver.
->>
->> Apart from that, maybe just this dev->em = NULL to be populated to all
->> CPUs, which mutex_unlock synchronizes for free here.
+On 03.06.20 18:11, Miles Chen wrote:
+> max_pfn is uesd to get the highest pfn in the system. Drivers like
+> drivers/iommu/mtk_iommu.c checks max_pfn to see if it should enable
+> its "4GB mode".
 > 
-> If it may run concurrently with the registration for the same device,
-> the locking is necessary, but in that case the !dev->em_pd check needs
-> to go under the mutex too IMO, or you may end up leaking the pd if the
-> registration can run between that check and the point at which the
-> mutex is taken.
+> This patch exports the max_pfn symbol, so we can build the driver as
+> a kernel module.
 
-They don't run concurrently for the same device and users of that EM are
-already gone.
-I just wanted to be sure that everything is cleaned and synced properly.
-Here is some example of the directories under
-/sys/kernel/debug/energy_model
-cpu0, cpu4, gpu, dsp, etc
-
-The only worry that I had was the debugfs dir name, which is a
-string from dev_name() and will be the same for the next registration
-if module is re-loaded. So the 'name' is reused and debugfs_create_dir()
-and debugfs_remove_recursive() uses this fsnotify, but they are
-operating under inode_lock/unlock() on the parent dir 'energy_model'.
-Then there is also this debugfs_lookup() which is slightly different.
-
-That's why I put a mutex to separate all registration and unregistration
-for all devices.
-It should work without the mutex in unregister path, but I think it does
-not harm to take it just in case and also have the CPU variable sync for
-free.
-
+Please add that change to the respective user patch (and cc MM-people
+for that patch), so we have the actual user right along the change and
+can figure out if this is the right thing to do.
 
 > 
-> Apart from this your kerneldoc comments might me improved IMO.
+> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> ---
+>  mm/memblock.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> First of all, you can use @dev inside of a kerneldoc (if @dev
-> represents an argument of the documented function) and that will
-> produce the right output automatically.
-
-OK
-
-> 
-> Second, it is better to avoid saying things like "Try to unregister
-> ..." in kerneldoc comments (the "Try to" part is redundant).  Simply
-> say "Unregister ..." instead.
-
-Good point, thanks, I will use "Unregister ..." then.
-
-> 
-> Thanks!
+> diff --git a/mm/memblock.c b/mm/memblock.c
+> index c79ba6f9920c..3b2b21ecebb6 100644
+> --- a/mm/memblock.c
+> +++ b/mm/memblock.c
+> @@ -99,6 +99,7 @@ EXPORT_SYMBOL(contig_page_data);
+>  unsigned long max_low_pfn;
+>  unsigned long min_low_pfn;
+>  unsigned long max_pfn;
+> +EXPORT_SYMBOL(max_pfn);
+>  unsigned long long max_possible_pfn;
+>  
+>  static struct memblock_region memblock_memory_init_regions[INIT_MEMBLOCK_REGIONS] __initdata_memblock;
 > 
 
-Shell I send a 'resend patch' which changes these @dev and
-'unregister' comments?
-Or wait for you to finish reviewing the other patches and send v9?
+
+-- 
+Thanks,
+
+David / dhildenb
+
 
 _______________________________________________
 Linux-mediatek mailing list
