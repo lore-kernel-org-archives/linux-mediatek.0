@@ -2,80 +2,80 @@ Return-Path: <SRS0=Qq0i=7Q=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E5A1C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 13:10:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E40A3C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 13:52:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 72EC020679
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 13:10:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AB21820772
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 13:52:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KGtpmVx8";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qMOL6MSH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 72EC020679
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ozggpsnz";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="LhGZIho9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AB21820772
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oFsFZu2nL8ePC5dfiaWj6nQC6tM1y7QxDzitFdv/tNY=; b=KGtpmVx8WwdVKG
-	/9W2L4TNZzIBAVT3se67e15ikAuuvBJ8Cq6tptqChm4/bGZvIup9SaGUmGu2+n6cV6H40yB3l0+45
-	kcdJ8oGnfvnCLlC8R9bkazKhOAWjGAVYaK0QbFD6QzEpfxqSsqzokWaYXU1jWyilWbq6zaxMwP+bF
-	nQ8QO6vFSikU1WtPAVcumgnKQJ+bohzPdGTKUnyxoeqQSEmNQswe4hO6qX+nEi/VWrJ6VsNdxbwgN
-	FnrZRmYbV7nY39OJDTzWDRl+V/pKJWtmEHZALLzdWX7ptbNNjOh/BKnp5VHkAV1YDmzoPUF2Vfp2/
-	JWFbylnDozJttPpZwXHw==;
+	List-Owner; bh=bl4lEKxCWSGlTAT+eABOZWrYuI1lpYg2V/b6ENlDSv0=; b=OzggpsnzqqSwYc
+	4FXSz2+duBaEe41j+fAql4WCQLyewuTk7UGLDmtsjS7lyodeNaXenK0f17wZcewpeWjvwq230C4Qs
+	ELKfArVAyNqQEmcD4i98uw1mR0ONAhmFg5sd1tNMjcuvaBsp9Xdzy9PqfcGLf0td1uj7bjkvKhZZ5
+	vUcKn1TWMbAzqGLHaxfsRc7BcAES/8f0x4WB57JttLPDVnGYJWEW5CcQNnOsxd0+I+5bLSdG+cFGX
+	DoNjQFwqgZ3kbv5hY/utPG0TiJoTLSGDldP2FFDJLfhNX04zwKRlppJwccQS9+H7vb/RgklJNGUw1
+	AUDZPwEEmfsWniBERHmA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jgTAH-00039Z-HL; Wed, 03 Jun 2020 13:10:41 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jgTp1-00071Q-Fb; Wed, 03 Jun 2020 13:52:47 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jgT9o-0001lG-7v; Wed, 03 Jun 2020 13:10:17 +0000
-X-UUID: 48ed7ddcf0a14121836ca0fcf66da26a-20200603
+ id 1jgTmn-0004x0-Gv; Wed, 03 Jun 2020 13:50:31 +0000
+X-UUID: f647f560968e4e728582141d3a2b9606-20200603
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=2OS1Oc6QKgyNEMcqfsLs5jUWJHdxON7zK6mWXvLCPnM=; 
- b=qMOL6MSHSaTVwFjjhcJ+NW3YbFUjF2jBfQIQi/CZyflUFw5Mh0VO3T761w4WOEKrbLUtG7NYWM0aaWXi2wd37T+/92xYm74Pi3aJUJOGhGar3bZFTcJ8VnRW9WuOPMMsY65Vnf1vX82SxmLx/38gVgthPIuJXrDYFj9WaX1CQfQ=;
-X-UUID: 48ed7ddcf0a14121836ca0fcf66da26a-20200603
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=jwnn3BpiVJ43Pjm9A4aConW48lY8yM/F4kKqerAKBTc=; 
+ b=LhGZIho9jN0hDjOABgQ8qTYDj9w5Iyvxpas89RSIL8YaBplgybUe38w+Wtt1TMK4LRXLjE7c7IKX9Fnqwd2Sou1EHmdf05KEUSNlIdlIgiHncoMYI/aRlVufxEX8pH0aVYaMquBjDMt+fH5zix3Ue4Q0zNXiLA5JhD8jJshexIA=;
+X-UUID: f647f560968e4e728582141d3a2b9606-20200603
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <macpaul.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 919710366; Wed, 03 Jun 2020 05:09:50 -0800
+ with ESMTP id 186649569; Wed, 03 Jun 2020 05:50:09 -0800
 Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 3 Jun 2020 06:10:02 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 3 Jun 2020 06:50:21 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 3 Jun 2020 21:09:59 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 3 Jun 2020 21:10:01 +0800
+ 15.0.1497.2; Wed, 3 Jun 2020 21:50:13 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 3 Jun 2020 21:50:12 +0800
+Message-ID: <1591192216.23525.72.camel@mtkswgap22>
+Subject: Re: [PATCH] sound: usb: pcm: fix incorrect power state when playing
+ sound after PM_AUTO suspend
 From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Mathias Nyman
- <mathias.nyman@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, <stable@vger.kernel.org>
-Subject: [PATCH v3] usb: host: xhci-mtk: avoid runtime suspend when removing
- hcd
-Date: Wed, 3 Jun 2020 21:09:27 +0800
-Message-ID: <1591189767-21988-1-git-send-email-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <ebd32a2b-c4ba-8891-b13e-f6c641a94276@linux.intel.com>
-References: <ebd32a2b-c4ba-8891-b13e-f6c641a94276@linux.intel.com>
+To: Takashi Iwai <tiwai@suse.de>
+Date: Wed, 3 Jun 2020 21:50:16 +0800
+In-Reply-To: <s5hr1uwco4c.wl-tiwai@suse.de>
+References: <s5hpnahhbz8.wl-tiwai@suse.de>
+ <1591153515.23525.50.camel@mtkswgap22>	<s5heeqwfyti.wl-tiwai@suse.de>
+ <s5hblm0fxl0.wl-tiwai@suse.de>	<s5h367cfsga.wl-tiwai@suse.de>
+ <1591187964.23525.61.camel@mtkswgap22> <s5hr1uwco4c.wl-tiwai@suse.de>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 891385B6AA430B1B9CAB903AC4DA341DF9FFE4F9D9796E2CF48A9C88B1AE21CC2000:8
+X-TM-SNTS-SMTP: 1B7292D25D0CC9D9E834BBB7EEEB79C45CDBB9BDCEBA293A96ABF504C88603DA2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200603_061012_389076_D576C4EB 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200603_065029_655233_19C2A044 
+X-CRM114-Status: GOOD (  25.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,54 +87,91 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Macpaul Lin <macpaul.lin@mediatek.com>,
- Macpaul Lin <macpaul.lin@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: alsa-devel@alsa-project.org,
+ Szabolcs =?UTF-8?Q?Sz=C5=91ke?= <szszoke.code@gmail.com>,
+ Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ Takashi Iwai <tiwai@suse.com>, stable@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Hui Wang <hui.wang@canonical.com>,
+ Alexander Tsoy <alexander@tsoy.me>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Johan Hovold <johan@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Macpaul Lin <macpaul.lin@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When runtime suspend was enabled, runtime suspend might happened
-when xhci is removing hcd. This might cause kernel panic when hcd
-has been freed but runtime pm suspend related handle need to
-reference it.
+On Wed, 2020-06-03 at 14:47 +0200, Takashi Iwai wrote:
+> On Wed, 03 Jun 2020 14:39:24 +0200,
+> Macpaul Lin wrote:
+> > 
+> > On Wed, 2020-06-03 at 10:45 +0200, Takashi Iwai wrote:
+> > > On Wed, 03 Jun 2020 08:54:51 +0200,
+> > > Takashi Iwai wrote:
+> > > > 
+> > > > On Wed, 03 Jun 2020 08:28:09 +0200,
+> > > > Takashi Iwai wrote:
+> > > > > 
+> > > > > And, the most suspicious case is the last one,
+> > > > > chip->num_suspended-intf.  It means that the device has multiple
+> > > > > USB interfaces and they went to suspend, while the resume isn't
+> > > > > performed for the all suspended interfaces in return.
+> > > > 
+> > > > If this is the cause, a patch like below might help.
+> > > > It gets/puts the all assigned interfaced instead of only the primary
+> > > > one.
+> > > 
+> > > ... and considering of the problem again, rather the patch below might
+> > > be the right answer.  Now the driver tries to remember at which state
+> > > it entered into the system-suspend.  Upon resume, in return, when the
+> > > state reaches back to that point, set the card state to D0.
+> > > 
+> > > The previous patch can be applied on the top, too, and it might be
+> > > worth to apply both.
+> > > 
+> > > Let me know if any of those actually helps.
+> > > 
+> > > 
+> > > Takashi
+> > 
+> > Thanks for your response so quickly.
+> > I've just test this patch since it looks like enough for the issue.
+> 
+> Good to hear!
+> 
+> > This patch worked since the flag system_suspend will be set at the same
+> > time when power state has been changed. I have 2 interface with the head
+> > set. But actually the problem happened when primary one is suspended.
+> 
+> Currently the autosuspend is set only to the primary interface; IOW,
+> the other interfaces will never get autosuspend, and the another
+> suspend-all-intf patch should improve that situation.  But it won't
+> fix your actual bug, obviously :)
+> 
+> > So I didn't test the earlier patch "suspend all interface instead of
+> > only the primary one."
+> 
+> Could you try it one on top of the last patch?  At least I'd like to
+> see whether it causes any regression.
 
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Reviewed-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-Changes for v3:
-  - Replace better sequence for disabling the pm_runtime suspend.
+I've tried both of these 2 patches together, and it looks okay.
 
- drivers/usb/host/xhci-mtk.c |    5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+> > Will you resend this patch officially later? I think this solution is
+> > required to send to stable, too. It's better to have it for other stable
+> > kernel versions include android's.
+> 
+> Yes, that's a general bug and worth to be merged quickly.
+> I'm going to submit a proper patch soon later.
+> 
+> 
+> thanks,
+> 
+> Takashi
+> 
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index bfbdb3c..641d24e 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -587,6 +587,9 @@ static int xhci_mtk_remove(struct platform_device *dev)
- 	struct xhci_hcd	*xhci = hcd_to_xhci(hcd);
- 	struct usb_hcd  *shared_hcd = xhci->shared_hcd;
- 
-+	pm_runtime_put_noidle(&dev->dev);
-+	pm_runtime_disable(&dev->dev);
-+
- 	usb_remove_hcd(shared_hcd);
- 	xhci->shared_hcd = NULL;
- 	device_init_wakeup(&dev->dev, false);
-@@ -597,8 +600,6 @@ static int xhci_mtk_remove(struct platform_device *dev)
- 	xhci_mtk_sch_exit(mtk);
- 	xhci_mtk_clks_disable(mtk);
- 	xhci_mtk_ldos_disable(mtk);
--	pm_runtime_put_sync(&dev->dev);
--	pm_runtime_disable(&dev->dev);
- 
- 	return 0;
- }
--- 
-1.7.9.5
+Thanks!
+Macpaul Lin
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
