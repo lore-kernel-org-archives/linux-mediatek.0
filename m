@@ -2,76 +2,127 @@ Return-Path: <SRS0=aF3H=7R=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E12A3C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 08:11:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BBA77C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 08:25:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B4890206C3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 08:11:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8B361205CB
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 08:25:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JkHGd865"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B4890206C3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EZ0Jy64Q";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="RrevCEDd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8B361205CB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j2utZhUbsr2L/2a6uUVP9G+xbw9e3yCFxYX1pakMMiQ=; b=JkHGd8653zyOSi
-	GYm/I31Sobfe9GRjsrT1zyMmBNGClCrlNeDMXEMcLp8dbde49dyu8iMDK9HoFnUrKaP+AHcdBAqxs
-	1cOdb09itKXqaS1spZ9bMrPkUZlVyGVVo0QIGZMuBktFWQgnNPzNV5/nDv3rfKVExvjVvbDHdAwsG
-	GvjNWKaDCyz4gAprHacTTRHSGbYZK8V1WyArm7S24rZnbt3RSRB7TZC4GdawPvALXXU/oZRnIO5Lx
-	9fzIYcolpPDrZG6zWWeomNg3ZQg0Ad6V5rosgq8uV38RtDEbZB+B4b34+HCHz5ve2GjputHA/xpY7
-	6ObAEUDIYrvx2EPrCPIQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9j/XQRMqWzWUUW/YfX9DnetN736EvpEsBdKc/1r0Pxg=; b=EZ0Jy64QTR/OIx
+	90In1jEsUoybtGiUH065Sj8wJ5CbbBzhGypn7xBCSOOYQLK/4S+orMwLUwIw0JlRtsUb3+R4VUm+i
+	Xr/cxXhrr6r+YASsLlBk2pGPxGItDEmLPPz/Wj8uILV8z02C+VPlrrU5mJBhfUxmk6WOtStC98xak
+	2urHos/kXihaqkHdRrRqT77eY2bAZyuy6EPnHJmpOjbuNf+VgQE0C9KB/2laZuSJHG89w5wtHh0uR
+	4V2VGlQHYM1j+FKYnaywQxrowhaOZce2kQqYqtvnDUe1eE3tS3nYeb4gYdNEul/QAsK040w1Fr6i7
+	84pp8oQDRV3P1bmcJ8hQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jgkxj-0004UK-E3; Thu, 04 Jun 2020 08:10:55 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1jglBp-0005Vw-7r; Thu, 04 Jun 2020 08:25:29 +0000
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]
+ helo=us-smtp-1.mimecast.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jgkxb-0004JZ-NR; Thu, 04 Jun 2020 08:10:49 +0000
-IronPort-SDR: /OIjXEdv5KD8CZSryucZmIOm0NEMEppaEFHn2FkvPVWhO1xCQk0oyTamPpNW5P3tRjutj9FxY6
- lUuasQH+7NcQ==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jun 2020 01:10:39 -0700
-IronPort-SDR: CbG8SA9IhTmLTH3EL+wOoj7Z+e/tx6p7eh+kvesL/bCsdRHwoUHbG9MoFKrrpylBG1+ENZXDTC
- ZYuSLrwBrVXA==
-X-IronPort-AV: E=Sophos;i="5.73,471,1583222400"; d="scan'208";a="294250715"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jun 2020 01:10:34 -0700
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id D771F20859; Thu,  4 Jun 2020 11:10:32 +0300 (EEST)
-Date: Thu, 4 Jun 2020 11:10:32 +0300
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Subject: Re: [V6, 2/2] media: i2c: dw9768: Add DW9768 VCM driver
-Message-ID: <20200604081032.GG16711@paasikivi.fi.intel.com>
-References: <20200518132731.20855-1-dongchun.zhu@mediatek.com>
- <20200518132731.20855-3-dongchun.zhu@mediatek.com>
- <20200521195113.GC14214@chromium.org>
- <1590139561.8804.390.camel@mhfsdcap03>
- <CAAFQd5CCsT_oM9aij_imV+NABzByi94RmCj97Dx0Tk3S0WDsTg@mail.gmail.com>
- <1590570089.8804.453.camel@mhfsdcap03>
- <CAAFQd5Dgboh8om68546ADELX3g-0y40rdBxY+H3WsX5xAD1_FQ@mail.gmail.com>
- <1591238018.8804.555.camel@mhfsdcap03>
+ id 1jglBm-0005Uv-80
+ for linux-mediatek@lists.infradead.org; Thu, 04 Jun 2020 08:25:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591259124;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=muCealyjN50RS5Nucu0HXgvaCDsbKy5wb8tK7CmZyqw=;
+ b=RrevCEDdC2IlphDleX5waFjhWfiXXaQMbrTtGYq6tB1rx6WsJidRhRUAjYC0sOdv+9RRO8
+ CHddnvjmMv+mESPZ4M29YoZBvtXDc4hJd1g1XOR160ja/mMFwKq3OPX+cB53gXhBUiGHT3
+ yzjR4OAd13Tr5tTQ6QJkU55PMTY0M7s=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-221-4Z7UOJ4hM-uOhpb3V8Q3RQ-1; Thu, 04 Jun 2020 04:25:20 -0400
+X-MC-Unique: 4Z7UOJ4hM-uOhpb3V8Q3RQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1D5E9100A47D;
+ Thu,  4 Jun 2020 08:25:18 +0000 (UTC)
+Received: from [10.36.114.20] (ovpn-114-20.ams2.redhat.com [10.36.114.20])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F392261462;
+ Thu,  4 Jun 2020 08:25:15 +0000 (UTC)
+Subject: Re: [PATCH] iommu/mediatek: Use totalram_pages to setup enable_4GB
+To: Miles Chen <miles.chen@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+References: <20200604080120.2628-1-miles.chen@mediatek.com>
+From: David Hildenbrand <david@redhat.com>
+Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat GmbH
+Message-ID: <55820901-430b-14c4-9426-7a4991ca0eed@redhat.com>
+Date: Thu, 4 Jun 2020 10:25:15 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1591238018.8804.555.camel@mhfsdcap03>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20200604080120.2628-1-miles.chen@mediatek.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200604_011047_776564_E1235C10 
-X-CRM114-Status: GOOD (  22.40  )
+X-CRM114-CacheID: sfid-20200604_012526_375640_62CB1CBB 
+X-CRM114-Status: GOOD (  20.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,106 +134,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Nicolas Boichat <drinkcat@chromium.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- linux-devicetree <devicetree@vger.kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Shengnan Wang =?utf-8?B?KOeOi+Wco+eUtyk=?= <shengnan.wang@mediatek.com>,
- Tomasz Figa <tfiga@chromium.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Louis Kuo <louis.kuo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Cao Bing Bu <bingbu.cao@intel.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
- Joerg  Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
+ Chao Hao <chao.hao@mediatek.com>, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Yong Wu <yong.wu@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 04, 2020 at 10:33:38AM +0800, Dongchun Zhu wrote:
-> Hi Tomasz,
+On 04.06.20 10:01, Miles Chen wrote:
+> To build this driver as a kernel module, we cannot use
+> the unexported symbol "max_pfn" to setup enable_4GB.
 > 
-> On Mon, 2020-06-01 at 20:47 +0200, Tomasz Figa wrote:
-> > On Wed, May 27, 2020 at 11:03 AM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
-> > >
-> > > Hi Tomasz,
-> > >
-> > > On Mon, 2020-05-25 at 13:45 +0200, Tomasz Figa wrote:
-> > > > On Fri, May 22, 2020 at 11:27 AM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
-> > > > >
-> > > > > Hi Tomasz,
-> > > > >
-> > > > > Thanks for the review. My replies are as below.
-> > > > >
-> > > > > On Thu, 2020-05-21 at 19:51 +0000, Tomasz Figa wrote:
-> > > > > > Hi Dongchun, Sakari,
-> > > > > >
-> > > > > > On Mon, May 18, 2020 at 09:27:31PM +0800, Dongchun Zhu wrote:
-> > > > [snip]
-> > > > > > > +   pm_runtime_enable(dev);
-> > > > > > > +   if (!pm_runtime_enabled(dev)) {
-> > > > > > > +           ret = dw9768_runtime_resume(dev);
-> > > > > > > +           if (ret < 0) {
-> > > > > > > +                   dev_err(dev, "failed to power on: %d\n", ret);
-> > > > > > > +                   goto entity_cleanup;
-> > > > > > > +           }
-> > > > > > > +   }
-> > > > > > > +
-> > > > > > > +   ret = v4l2_async_register_subdev(&dw9768->sd);
-> > > > > > > +   if (ret < 0)
-> > > > > > > +           goto entity_cleanup;
-> > > > > > > +
-> > > > > > > +   return 0;
-> > > > > > > +
-> > > > > > > +entity_cleanup:
-> > > > > >
-> > > > > > Need to power off if the code above powered on.
-> > > > > >
-> > > > >
-> > > > > Thanks for the reminder.
-> > > > > If there is something wrong with runtime PM, actuator is to be powered
-> > > > > on via dw9768_runtime_resume() API.
-> > > > > When actuator sub-device is powered on completely and async registered
-> > > > > successfully, we shall power off it afterwards.
-> > > > >
-> > > >
-> > > > The code above calls dw9768_runtime_resume() if
-> > > > !pm_runtime_enabled(dev), but the clean-up code below the
-> > > > entity_cleanup label doesn't have the corresponding
-> > > > dw9768_runtime_suspend() call.
-> > > >
-> > >
-> > > Did you mean the 'entity_cleanup' after v4l2_async_register_subdev()?
-> > 
-> > Yes.
-> > 
-> > > Actually I made some changes for OV02A V9, according to this comment.
-> > > Could you help review that change? Thanks.
-> > 
-> > Sure, I will take a look.
-> > 
+> Use totalram_pages() instead to setup enable_4GB.
 > 
-> Thanks.
-> Sorry, I just wanna make sure the change is okay for next release.
-> May we use the check like OV02A V9 did?
-> ret = v4l2_async_register_subdev(&dw9768->sd);
-> if (ret < 0) {
-> 	if (!pm_runtime_enabled(dev))
-> 		dw9768_runtime_suspend(dev);
+> Suggested-by: Mike Rapoport <rppt@linux.ibm.com>
+> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> Cc: David Hildenbrand <david@redhat.com>
+> Cc: Yong Wu <yong.wu@mediatek.com>
+> Cc: Chao Hao <chao.hao@mediatek.com>
+> ---
+>  drivers/iommu/mtk_iommu.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 5f4d6df59cf6..c2798a6e0e38 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -3,7 +3,6 @@
+>   * Copyright (c) 2015-2016 MediaTek Inc.
+>   * Author: Yong Wu <yong.wu@mediatek.com>
+>   */
+> -#include <linux/memblock.h>
+>  #include <linux/bug.h>
+>  #include <linux/clk.h>
+>  #include <linux/component.h>
+> @@ -626,8 +625,8 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>  		return -ENOMEM;
+>  	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
+>  
+> -	/* Whether the current dram is over 4GB */
+> -	data->enable_4GB = !!(max_pfn > (BIT_ULL(32) >> PAGE_SHIFT));
+> +	/* Whether the current dram is over 4GB, note: DRAM start at 1GB  */
+> +	data->enable_4GB = !!(totalram_pages() > ((SZ_2G + SZ_1G) >> PAGE_SHIFT));
 
-Please do this part where you're jumping to, if possible.
+A similar thing seems to be done by
+drivers/media/platform/mtk-vpu/mtk_vpu.c:
+	vpu->enable_4GB = !!(totalram_pages() > (SZ_2G >> PAGE_SHIFT));
 
-> 	goto entity_cleanup;
-> }
-> 
+I do wonder if some weird memory hotplug setups might give you false
+negatives.
+
+E.g., start a VM with 1GB and hotplug 1GB - it will be hotplugged on
+x86-64 above 4GB, turning max_pfn into 5GB. totalram_pages() should
+return something < 2GB.
+
+Same can happen when you have a VM and use ballooning to fake-unplug
+memory, making totalram_pages() return something < 4GB, but leaving
+usable pfns >= 4GB.
+
+but
+... I don't know if I understood what "enable_4GB" needs/implies
+... I don't know if this is applicable to VMs at all (on real HW such
+    memory hotplug setups should not exist)
+... I don't know how this code would react to memory hotplug, so if the
+    condition changes after the driver loaded and enable_4GB would
+    suddenly apply. Again, most probably not relevant on real HW, only
+    for VMs.
 
 -- 
-Sakari Ailus
+Thanks,
+
+David / dhildenb
+
 
 _______________________________________________
 Linux-mediatek mailing list
