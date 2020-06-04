@@ -1,100 +1,78 @@
-Return-Path: <SRS0=Qq0i=7Q=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=aF3H=7R=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ED64FC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 17:33:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3ECFAC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 02:24:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C7BB820679
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2020 17:33:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EAFEB207DF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 02:24:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RFEH1LzJ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=cogentembedded-com.20150623.gappssmtp.com header.i=@cogentembedded-com.20150623.gappssmtp.com header.b="gk244yjd"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C7BB820679
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=cogentembedded.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BXnzK026";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Je1ADiZS"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EAFEB207DF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VFITHP1X/yd+YNLK25HyWYocF6NbpiYHaV93eiKJ17U=; b=RFEH1LzJHn2ONqrBPKXyBZ8Wu
-	IMlskc3ahYXAYAaQ7fD/YLRxRid0v+beKH/yw9F5RrLsAHwl/x5RYoY+vdJRGzcnTt5LdRKAnh7L+
-	MeaDPnu+6sCe3+Rk0SbhkwI7siPxBfBwDSc6CUDVofqvqRNVBZFfn88/64Wv1V0mY77OxacLiJNBT
-	TigabFtz4d9jmeiVyXcG8fTry03y2dSwZJ0lq7euC1+L/YibwUhJm1Cm8GzUyQoXVeJnpWaMEHeJU
-	LAGn2xshpVfr3aaZZZYryDT/7DJkYbOq/P5MMMAh6+6bOZsIqtKSLfqHMhJnx39CVvlr7kAJ/+if6
-	8zQLWNkPg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3zo+SOAUXlLLtSsPf95RGiYLIDKavTR7TQRKICflFkU=; b=BXnzK0260q9of7
+	2X6KTgoGBMKFLcLPQEHpOsbrGqlqMy0VDN6X//TaYX6wy/qHMjlKMbTMrXM8m4ZuX2LrkKKsUs6q0
+	amjqNEj2nLmf/nmWwEqklYHz93DJswJPh8czJd1MztPXPxnl+ziLIJf77TrlUkBr/SIMi/LtvmdBn
+	jGv7/fg0AbkdJMFvR2iw1gtldnjAluyzEXv517QsDFgyqu7GpqT66q3OpSuz5ruFg6NB6NJJc9B6Q
+	gobPww/jxxiVRwm0dUKAY51iELAh9yinm8cTVvi8976JiyqIVVYikVesuzVHKK2ljW1dRK4P/Urel
+	8WZPzJp+9r1lJOVwP2+w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jgXGl-0005ZH-EG; Wed, 03 Jun 2020 17:33:39 +0000
-Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141])
+	id 1jgfYV-0002sP-2j; Thu, 04 Jun 2020 02:24:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jgXGe-0005RU-21
- for linux-mediatek@lists.infradead.org; Wed, 03 Jun 2020 17:33:33 +0000
-Received: by mail-lf1-x141.google.com with SMTP id c21so1846681lfb.3
- for <linux-mediatek@lists.infradead.org>; Wed, 03 Jun 2020 10:33:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cogentembedded-com.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=RiYI0t+KrBvaJgMcqUi2332VvHKyX88P2wlQysjVLXM=;
- b=gk244yjdaq9AeMPc0x74cYRwy2EEkQH/A2o2vAvYivtoPifzXZ4zIPTJxNnt6AEms3
- lnpu4id+cI4xfoV50YJ3gBY/KHwO5czVFEAW3yZvg2XLVI0C+9X1+Ckei58TxH5yrgfU
- PF13oW+pEFgFc9YI47rXwqVQRStTEWiZL8fC7FVTh8rSr0KJdluA2FI89xLVmbfQ+NEW
- wlgPHeXOEVwRUcFUMyqo37mmdKmoeKXeGMAoiKXHwA/4WYa5strDvITPRW9Rem2vUDvL
- zNBIpLEJlrIhR0I1My/Ub2bW9Sw0qyMOt/HBDths765G9kyJoGaQBb+35SazRc8zZLjg
- m+LA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=RiYI0t+KrBvaJgMcqUi2332VvHKyX88P2wlQysjVLXM=;
- b=O+2nxyrHhzFwKrp691FI0KxYf2VpwQBEveGj680U03PKEVnPLmcqgNT3tYtQUWkzlS
- bb8NJN8xWQkjzDFlSYpMs6yj6eRrZ6Vu12sK+b0a7DeRC+4ADZs8NfAZyPa28S+VhH2t
- Kbo/OIG/ehXQE6ch9RzaI4yyUOvOh4VkcuZkiEBMjumh6bRofclSuVtSYQfPb3NaDBKG
- mIRH0dVQWlec6T/u5Z1GgQCIlyv8ufwCFbkk8OGJ5N0081Vzw1xfxeq/da2CaPSBLHxK
- lKfCCEI2bmUfjJYelfVE8zp6voWEOxuqBc0n1KGfLWq0Mrl+CQ4DUtgdAEQoyob8Ywoz
- oQ9A==
-X-Gm-Message-State: AOAM531ZXeQUJBvIPZipO/7S3cJB6d5QcYlKs14nYh2QfuOG0sEP5+bs
- mQ47AQV0KBh32NwSP/HOnBe5j14Hxww=
-X-Google-Smtp-Source: ABdhPJxlDbpPhvBO2HwzpUWB+mZRWd3ea7bAmLgctD4jOZItUkkhqH0olCiHDFJagt7e80KPbSXkjA==
-X-Received: by 2002:ac2:489a:: with SMTP id x26mr297287lfc.111.1591205609563; 
- Wed, 03 Jun 2020 10:33:29 -0700 (PDT)
-Received: from ?IPv6:2a00:1fa0:448d:774a:2057:6699:2c75:847d?
- ([2a00:1fa0:448d:774a:2057:6699:2c75:847d])
- by smtp.gmail.com with ESMTPSA id q8sm815921lfo.13.2020.06.03.10.33.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 03 Jun 2020 10:33:28 -0700 (PDT)
-Subject: Re: [PATCH v3] usb: host: xhci-mtk: avoid runtime suspend when
- removing hcd
-To: Macpaul Lin <macpaul.lin@mediatek.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Mathias Nyman <mathias.nyman@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, stable@vger.kernel.org
-References: <ebd32a2b-c4ba-8891-b13e-f6c641a94276@linux.intel.com>
- <1591189767-21988-1-git-send-email-macpaul.lin@mediatek.com>
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Message-ID: <b2f3aa9f-a592-0e8c-f897-f5d885fb9740@cogentembedded.com>
-Date: Wed, 3 Jun 2020 20:33:24 +0300
-User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.1
+ id 1jgfYS-0002qn-8Z; Thu, 04 Jun 2020 02:24:30 +0000
+X-UUID: 0aa835c512854012b0825318d361e2d9-20200603
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=S8/G8H4ee2fKmt6XTMkNwIsdSd2Fv/bh/YhgtUNhMjM=; 
+ b=Je1ADiZST8rWUqKWZ6qjIkE3BWFpfEhPY3HJkKVti62K0okykk+iJYL60U9EjGjaScNBojCovZsSQF3WiPPYllE34OvCC4PALDrrKYaUq2ctAwF5/PneKwq0/ArOjreDCIUCusk7R8nucvcSDytBlYsK3IoCoBFzmIgmAFzStKw=;
+X-UUID: 0aa835c512854012b0825318d361e2d9-20200603
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <dongchun.zhu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 4828637; Wed, 03 Jun 2020 18:24:16 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 3 Jun 2020 19:16:17 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31DR.mediatek.inc
+ (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 4 Jun 2020 10:16:02 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 4 Jun 2020 10:16:07 +0800
+Message-ID: <1591236845.8804.547.camel@mhfsdcap03>
+Subject: Re: [V9, 2/2] media: i2c: ov02a10: Add OV02A10 image sensor driver
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+To: <linus.walleij@linaro.org>
+Date: Thu, 4 Jun 2020 10:14:05 +0800
+In-Reply-To: <20200523084103.31276-3-dongchun.zhu@mediatek.com>
+References: <20200523084103.31276-1-dongchun.zhu@mediatek.com>
+ <20200523084103.31276-3-dongchun.zhu@mediatek.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <1591189767-21988-1-git-send-email-macpaul.lin@mediatek.com>
-Content-Language: en-US
+X-TM-SNTS-SMTP: 6A34FB1D1640F6C499464C55E91F91B476FD7382CEF258F79FD1FE8DAF5955EA2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200603_103332_304747_90E0CF1E 
-X-CRM114-Status: UNSURE (   6.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200603_192428_322264_3BC8DA3D 
+X-CRM114-Status: GOOD (  14.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,32 +84,226 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Macpaul Lin <macpaul.lin@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: mark.rutland@arm.com, drinkcat@chromium.org,
+ andriy.shevchenko@linux.intel.com, louis.kuo@mediatek.com,
+ srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
+ shengnan.wang@mediatek.com, tfiga@chromium.org, bgolaszewski@baylibre.com,
+ sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
+ dongchun.zhu@mediatek.com, sakari.ailus@linux.intel.com,
+ matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello.
+Hi Tomasz, Sakari, and sirs,
 
-On 03.06.2020 16:09, Macpaul Lin wrote:
+Could anyone help to review this patch?
 
-> When runtime suspend was enabled, runtime suspend might happened
-
-    Happen.
-
-> when xhci is removing hcd. This might cause kernel panic when hcd
-> has been freed but runtime pm suspend related handle need to
-> reference it.
+On Sat, 2020-05-23 at 16:41 +0800, Dongchun Zhu wrote:
+> Add a V4L2 sub-device driver for OV02A10 image sensor.
 > 
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> Reviewed-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-[...]
+> Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> ---
+>  MAINTAINERS                 |    1 +
+>  drivers/media/i2c/Kconfig   |   13 +
+>  drivers/media/i2c/Makefile  |    1 +
+>  drivers/media/i2c/ov02a10.c | 1025 +++++++++++++++++++++++++++++++++++++++++++
+>  4 files changed, 1040 insertions(+)
+>  create mode 100644 drivers/media/i2c/ov02a10.c
+> 
 
-MBR, Sergei
+[snip]
+
+> +static int ov02a10_probe(struct i2c_client *client)
+> +{
+> +	struct device *dev = &client->dev;
+> +	struct ov02a10 *ov02a10;
+> +	unsigned int rotation;
+> +	unsigned int clock_lane_tx_speed;
+> +	unsigned int i;
+> +	int ret;
+> +
+> +	ov02a10 = devm_kzalloc(dev, sizeof(*ov02a10), GFP_KERNEL);
+> +	if (!ov02a10)
+> +		return -ENOMEM;
+> +
+> +	ret = ov02a10_check_hwcfg(dev, ov02a10);
+> +	if (ret) {
+> +		dev_err(dev, "failed to check HW configuration: %d", ret);
+> +		return ret;
+> +	}
+> +
+> +	v4l2_i2c_subdev_init(&ov02a10->subdev, client, &ov02a10_subdev_ops);
+> +	ov02a10->mipi_clock_tx_speed = OV02A10_MIPI_TX_SPEED_DEFAULT;
+> +	ov02a10->fmt.code = MEDIA_BUS_FMT_SBGGR10_1X10;
+> +
+> +	/* Optional indication of physical rotation of sensor */
+> +	ret = fwnode_property_read_u32(dev_fwnode(dev), "rotation", &rotation);
+> +	if (!ret && rotation == 180) {
+> +		ov02a10->upside_down = true;
+> +		ov02a10->fmt.code = MEDIA_BUS_FMT_SRGGB10_1X10;
+> +	}
+> +
+> +	/* Optional indication of mipi TX speed */
+> +	ret = fwnode_property_read_u32(dev_fwnode(dev), "ovti,mipi-tx-speed",
+> +				       &clock_lane_tx_speed);
+> +
+> +	if (!ret)
+> +		ov02a10->mipi_clock_tx_speed = clock_lane_tx_speed;
+> +
+> +	/* Get system clock (eclk) */
+> +	ov02a10->eclk = devm_clk_get(dev, "eclk");
+> +	if (IS_ERR(ov02a10->eclk)) {
+> +		ret = PTR_ERR(ov02a10->eclk);
+> +		dev_err(dev, "failed to get eclk %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	ret = fwnode_property_read_u32(dev_fwnode(dev), "clock-frequency",
+> +				       &ov02a10->eclk_freq);
+> +	if (ret) {
+> +		dev_err(dev, "failed to get eclk frequency\n");
+> +		return ret;
+> +	}
+> +
+> +	ret = clk_set_rate(ov02a10->eclk, ov02a10->eclk_freq);
+> +	if (ret) {
+> +		dev_err(dev, "failed to set eclk frequency (24MHz)\n");
+> +		return ret;
+> +	}
+> +
+> +	if (clk_get_rate(ov02a10->eclk) != OV02A10_ECLK_FREQ) {
+> +		dev_warn(dev, "wrong eclk frequency %d Hz, expected: %d Hz\n",
+> +			 ov02a10->eclk_freq, OV02A10_ECLK_FREQ);
+> +		return -EINVAL;
+> +	}
+> +
+> +	ov02a10->pd_gpio = devm_gpiod_get(dev, "powerdown", GPIOD_OUT_HIGH);
+> +	if (IS_ERR(ov02a10->pd_gpio)) {
+> +		ret = PTR_ERR(ov02a10->pd_gpio);
+> +		dev_err(dev, "failed to get powerdown-gpios %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	ov02a10->n_rst_gpio = devm_gpiod_get(dev, "reset", GPIOD_OUT_LOW);
+> +	if (IS_ERR(ov02a10->n_rst_gpio)) {
+> +		ret = PTR_ERR(ov02a10->n_rst_gpio);
+> +		dev_err(dev, "failed to get reset-gpios %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	for (i = 0; i < ARRAY_SIZE(ov02a10_supply_names); i++)
+> +		ov02a10->supplies[i].supply = ov02a10_supply_names[i];
+> +
+> +	ret = devm_regulator_bulk_get(dev, ARRAY_SIZE(ov02a10_supply_names),
+> +				      ov02a10->supplies);
+> +	if (ret) {
+> +		dev_err(dev, "failed to get regulators\n");
+> +		return ret;
+> +	}
+> +
+> +	mutex_init(&ov02a10->mutex);
+> +	ov02a10->cur_mode = &supported_modes[0];
+> +	ret = ov02a10_initialize_controls(ov02a10);
+> +	if (ret) {
+> +		dev_err(dev, "failed to initialize controls\n");
+> +		goto err_destroy_mutex;
+> +	}
+> +
+> +	ov02a10->subdev.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
+> +	ov02a10->subdev.entity.ops = &ov02a10_subdev_entity_ops;
+> +	ov02a10->subdev.entity.function = MEDIA_ENT_F_CAM_SENSOR;
+> +	ov02a10->pad.flags = MEDIA_PAD_FL_SOURCE;
+> +	ret = media_entity_pads_init(&ov02a10->subdev.entity, 1, &ov02a10->pad);
+> +	if (ret < 0) {
+> +		dev_err(dev, "failed to init entity pads: %d", ret);
+> +		goto err_free_handler;
+> +	}
+> +
+> +	pm_runtime_enable(dev);
+> +	if (!pm_runtime_enabled(dev)) {
+> +		ret = ov02a10_power_on(dev);
+> +		if (ret < 0) {
+> +			dev_err(dev, "failed to power on: %d\n", ret);
+> +			goto err_free_handler;
+> +		}
+> +	}
+> +
+> +	ret = v4l2_async_register_subdev(&ov02a10->subdev);
+> +	if (ret) {
+> +		dev_err(dev, "failed to register V4L2 subdev: %d", ret);
+> +		if (!pm_runtime_enabled(dev))
+> +			ov02a10_power_off(dev);
+> +		goto err_clean_entity;
+> +	}
+
+Tomasz, Sakari, is this ok?
+or coding like this:
+
+ret = v4l2_async_register_subdev(&ov02a10->subdev);
+if (!pm_runtime_enabled(dev))
+	ov02a10_power_off(dev);
+if (ret) {
+	dev_err(dev, "failed to register V4L2 subdev: %d", ret);
+	goto err_clean_entity;
+}
+
+What's your opinions about the change?
+
+> +
+> +	return 0;
+> +
+> +err_clean_entity:
+> +	media_entity_cleanup(&ov02a10->subdev.entity);
+> +err_free_handler:
+> +	v4l2_ctrl_handler_free(ov02a10->subdev.ctrl_handler);
+> +err_destroy_mutex:
+> +	mutex_destroy(&ov02a10->mutex);
+> +
+> +	return ret;
+> +}
+> +
+> +static int ov02a10_remove(struct i2c_client *client)
+> +{
+> +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> +	struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> +
+> +	v4l2_async_unregister_subdev(sd);
+> +	media_entity_cleanup(&sd->entity);
+> +	v4l2_ctrl_handler_free(sd->ctrl_handler);
+> +	pm_runtime_disable(&client->dev);
+> +	if (!pm_runtime_status_suspended(&client->dev))
+> +		ov02a10_power_off(&client->dev);
+> +	pm_runtime_set_suspended(&client->dev);
+> +	mutex_destroy(&ov02a10->mutex);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct of_device_id ov02a10_of_match[] = {
+> +	{ .compatible = "ovti,ov02a10" },
+> +	{}
+> +};
+> +MODULE_DEVICE_TABLE(of, ov02a10_of_match);
+> +
+> +static struct i2c_driver ov02a10_i2c_driver = {
+> +	.driver = {
+> +		.name = "ov02a10",
+> +		.pm = &ov02a10_pm_ops,
+> +		.of_match_table = ov02a10_of_match,
+> +	},
+> +	.probe_new	= &ov02a10_probe,
+> +	.remove		= &ov02a10_remove,
+> +};
+> +
+> +module_i2c_driver(ov02a10_i2c_driver);
+> +
+> +MODULE_AUTHOR("Dongchun Zhu <dongchun.zhu@mediatek.com>");
+> +MODULE_DESCRIPTION("OmniVision OV02A10 sensor driver");
+> +MODULE_LICENSE("GPL v2");
+> +
 
 _______________________________________________
 Linux-mediatek mailing list
