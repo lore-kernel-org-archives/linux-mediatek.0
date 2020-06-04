@@ -7,70 +7,72 @@ X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 23394C433E2
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 09:08:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4DF05C433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 09:08:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E04AA207D3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 09:08:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1722A2075B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 09:08:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z3ySZVbf";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="D/hiq+qg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E04AA207D3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="odTqXsnC";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qDGdaABw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1722A2075B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/Q1P8x9w3jaIzw7YzE1uRre0M9fyDBD9MxaFf4CZ+/w=; b=Z3ySZVbfZFyReJ
-	OV4zx0TYpERnjvnkLBjG3ecke0ftBcJ1fOqDw6F1dRV7QdjvIqMpp3Grq6Ocq2vqDKnXKwpe3Q9vP
-	STzFlisbvbziPAjji7aJqOTP8SsC4bxdoB56BzIgH5+wlHiLlFTBXAGEO0MmeHwRunQQIzyEysIBR
-	Db9C+Pbiz2ow97yoCXJgTGYlOWWwPgTWgiweurp/qnOk3KalbOlPTTKip6jPRQCO1EJr3kd3OBBIO
-	1Wt3s4MJ7gKWw+HnS6+tfovZyHvxtLGlqBYlIlC9CJyzwFXK8/bAPjEUsfjt6FeFQb2pFXuLfxSX0
-	YUnnmgLo/UxM03txrgZg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=JJXt+mQIxAkZDpvZB92AioYbAE5UvJIF79vV/H4mW0o=; b=odTqXsnCQr1sDH
+	OXA+e03QFMYWjbFmqGgZD+xicGpsiEb8CG02x15Ci8FAxwhB1f2imHJ4yZCTj1Dk6u+YT3kc4W1CO
+	oiFzahEUKLHP3pZR9/Rbx73negAWdkasMu7DAd5ad9AV9x3srarac2SGV9n8CoLEyMiBLq0OjntCr
+	1CPdKqpmLa8hdRMcdM2M+aksWVLlK7G9nZKuGnUMvh/lnxKXADnYaWc7xYTYbxrBAZmF/hLHru2XO
+	hJ4trwTO+EjNK5i8eMvZeEkeplrW3tbWA5HVquoaTZpYcRW3PVPO5zw5okl2Z7mUuxYmCMToi8WmV
+	fYb8Jsl7kSOGjZTE6wZg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jglrA-0006sY-W1; Thu, 04 Jun 2020 09:08:13 +0000
+	id 1jglr9-0006qz-VD; Thu, 04 Jun 2020 09:08:11 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jglr5-0006pP-MY; Thu, 04 Jun 2020 09:08:10 +0000
-X-UUID: 88083503ed254b499c0453e3be905b69-20200604
+ id 1jglr5-0006pQ-MY; Thu, 04 Jun 2020 09:08:10 +0000
+X-UUID: 0d2763b65e96487ab203f8ee114907a1-20200604
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=dZBa6I/HS2qauAyDcmCVL1X6IL3ygiBUPYAPKFwo7xo=; 
- b=D/hiq+qgyqFn5QCSb/W6XVJbIUCloiFV2dLcW2kGmE9xlVqEroaXLrjQ1kec3IyptCgIxLDyn0KpPnTUl82yV6FBgGYzjBIT1ip1xRuntrpihqDn4ZI8CVrFgBjze3OK/SNVxeWOYeR95qNLwVR0fxtNTgQCEbljrAy0mS7mcYk=;
-X-UUID: 88083503ed254b499c0453e3be905b69-20200604
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=vNTRRvj2mI0CwYUwHIUwitX832SWdGrxETBfN5PZOa0=; 
+ b=qDGdaABw02nWs5Lsv5ac7HkkwZMad4aVr8CSkfUa15SX0ziglfzj2yGwc4W/SOTwL1wgz0QPN5t+XlY3jK0UoW8Obvyt2XNTfgHw1cEtlTJ0uEBwXE6RPxSHB7kHPc46p2ut5RInUAjayGEjnVIDGmIG4DDcOoKnyKP/pfOgWDc=;
+X-UUID: 0d2763b65e96487ab203f8ee114907a1-20200604
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <xia.jiang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1541620013; Thu, 04 Jun 2020 01:07:56 -0800
+ with ESMTP id 1572099063; Thu, 04 Jun 2020 01:07:56 -0800
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 4 Jun 2020 02:08:00 -0700
+ 15.0.1497.2; Thu, 4 Jun 2020 02:08:01 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 4 Jun 2020 17:07:58 +0800
+ 15.0.1497.2; Thu, 4 Jun 2020 17:07:59 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 4 Jun 2020 17:07:56 +0800
+ Transport; Thu, 4 Jun 2020 17:07:58 +0800
 From: Xia Jiang <xia.jiang@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
  <mchehab+samsung@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
  Brugger" <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>
 Subject: [PATCH RESEND v9 00/18] Add support for mt2701 JPEG ENC support
-Date: Thu, 4 Jun 2020 17:05:34 +0800
-Message-ID: <20200604090553.10861-1-xia.jiang@mediatek.com>
+Date: Thu, 4 Jun 2020 17:05:35 +0800
+Message-ID: <20200604090553.10861-2-xia.jiang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20200604090553.10861-1-xia.jiang@mediatek.com>
+References: <20200604090553.10861-1-xia.jiang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200604_020807_758323_2CFD3CFC 
-X-CRM114-Status: UNSURE (   4.40  )
+X-CRM114-CacheID: sfid-20200604_020807_757102_24A29FB6 
+X-CRM114-Status: UNSURE (   4.84  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -87,8 +89,8 @@ Cc: maoguang.meng@mediatek.com, devicetree@vger.kernel.org,
  mojahsu@chromium.org, srv_heupstream@mediatek.com,
  linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
  senozhatsky@chromium.org, sj.huang@mediatek.com, drinkcat@chromium.org,
- linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Xia Jiang <xia.jiang@mediatek.com>,
+ linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Marek Szyprowski <m.szyprowski@samsung.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -328,7 +330,7 @@ Xia Jiang (18):
  .../bindings/media/mediatek-jpeg-encoder.txt  |   37 +
  arch/arm/boot/dts/mt2701.dtsi                 |   13 +
  drivers/media/platform/mtk-jpeg/Makefile      |    5 +-
- .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 1130 ++++++++++++-----
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 1134 ++++++++++++-----
  .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |   66 +-
  .../{mtk_jpeg_hw.c => mtk_jpeg_dec_hw.c}      |   10 +-
  .../{mtk_jpeg_hw.h => mtk_jpeg_dec_hw.h}      |   14 +-
@@ -337,7 +339,7 @@ Xia Jiang (18):
  .../{mtk_jpeg_reg.h => mtk_jpeg_dec_reg.h}    |   19 +-
  .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c |  193 +++
  .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h |  123 ++
- 12 files changed, 1282 insertions(+), 332 deletions(-)
+ 12 files changed, 1284 insertions(+), 334 deletions(-)
  create mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt
  rename drivers/media/platform/mtk-jpeg/{mtk_jpeg_hw.c => mtk_jpeg_dec_hw.c} (98%)
  rename drivers/media/platform/mtk-jpeg/{mtk_jpeg_hw.h => mtk_jpeg_dec_hw.h} (89%)
@@ -348,8 +350,7 @@ Xia Jiang (18):
  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h
 
 -- 
-2.18.0 
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
