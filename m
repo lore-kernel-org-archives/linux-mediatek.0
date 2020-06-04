@@ -2,71 +2,77 @@ Return-Path: <SRS0=aF3H=7R=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9C07CC433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 09:26:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 19EA9C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 09:50:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6FE9D2074B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 09:26:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A1EE02065C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 09:50:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HqpLLzZ6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6FE9D2074B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eaZqU3tq";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="l5cznZQy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A1EE02065C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CYtPSggETQdsxPPmRsu6vOjknW4vecGGWs1M9BAz6r4=; b=HqpLLzZ68sfYyP
-	HmqyFclWM8Wf57/SLJIQBuJxbNqJhXkNFTRj/2z7ZwlbYsctIs+7xX4CSpZIr0f0UUaX3TPSIA6+e
-	5sXyjL5002YvgKdXXDOXZVkNvGLtRhGJYgNZVplFoix2ioNQaaE/UjtO+WRcafLrdZ2k2eZbDax3B
-	SRr2y8wiu9xdxinyI/WTvITGmK7p287y9IeQbkd0qQOB/KZI+pgCg5OS2qAikGSxDtYEXCmIGZf8U
-	qEg3BbB/wbcBXUsKoFVf9NWnZ0thS0jBLWjmLRpuAr7n7l8h5khL4QQb14oDwi/m15nHOklAJL8ki
-	A2GJnLTTL6kA4auIhWyw==;
+	List-Owner; bh=6z4SG+KKFbVkRSnO4ZL0L7Xojz8EyjGoq4eCCicHJlY=; b=eaZqU3tqWjf+V6
+	saSDB7TBK0zz1yNPSURI6ChKABif5qaRBhUAIflSKUxuTqz0nuNu+cjMEwuhwa5FWox720IxHHsmi
+	9WumqoU0NLlAYllxLqAEGz8DxWx/bI4mhXQt8FVo8GM3wOa+mzKtnmX1LBAeBFZmiK4hdOwjQ9DAg
+	gWPXzVYaxewnfbvDOKYpZvlgVzi2FD/F8KtwHxb11jsWQj8W08VkO9X+ZD17+V4odOoGxV8+qOdY/
+	e1buZQPwRC5/d5kmVjBJS/fFBVmqg55h863s1gSKjv9el2EA/VEYt+GyxEbxpIDLNS+OilhcOOp1r
+	xy4iy/gGDHj9yErWBu/w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jgm8v-0003tO-RX; Thu, 04 Jun 2020 09:26:33 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1jgmVb-00027j-CA; Thu, 04 Jun 2020 09:49:59 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jgm8n-0003ls-Ks; Thu, 04 Jun 2020 09:26:27 +0000
-IronPort-SDR: pvfznzM5MvMNA/AZJMIV2ftG+rdTnWjsng82wZpL5OB86byaYIqSnKNakG3OVWMUyLb7wAfOfj
- tjevUHUSiCaA==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jun 2020 02:26:23 -0700
-IronPort-SDR: iLMKRTyDd8MVlIqZB/DE1RmSK17qEEbhZRbs5822lFW5LgFqxmRaxZHWG0EQzqEY7MNrRM1Tfr
- irPv5g4QKiTQ==
-X-IronPort-AV: E=Sophos;i="5.73,471,1583222400"; d="scan'208";a="294269374"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jun 2020 02:26:18 -0700
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id C931820859; Thu,  4 Jun 2020 12:26:16 +0300 (EEST)
-Date: Thu, 4 Jun 2020 12:26:16 +0300
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Subject: Re: [V9, 2/2] media: i2c: ov02a10: Add OV02A10 image sensor driver
-Message-ID: <20200604092616.GJ16711@paasikivi.fi.intel.com>
-References: <20200523084103.31276-1-dongchun.zhu@mediatek.com>
- <20200523084103.31276-3-dongchun.zhu@mediatek.com>
- <1591236845.8804.547.camel@mhfsdcap03>
+ id 1jgmVT-00020a-Vr; Thu, 04 Jun 2020 09:49:53 +0000
+X-UUID: 234d88ad71a64424ac9c69ae5d13209b-20200604
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=lBI82O8bEEPgYlNHvOkibX3qdLSsdkxzL1E3PQQA8b0=; 
+ b=l5cznZQyeF0t8PUXtBPHL8pk3AnSmztorPMyyTSrjhlLqv1+LiJ4TE/ssnITNp2aCsHzYTShTvLxmFL0OjobwAJ8z1zHj8Y1J53i/m96VhNfj5XrWfF2BAQKrUi1kO3GNsTfxg+SvQTp5toCtYcObnVp8pue0TxUoz4GFTToRcM=;
+X-UUID: 234d88ad71a64424ac9c69ae5d13209b-20200604
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 323098063; Thu, 04 Jun 2020 01:49:42 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 4 Jun 2020 02:49:47 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 4 Jun 2020 17:49:32 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 4 Jun 2020 17:49:32 +0800
+Message-ID: <1591264174.12661.17.camel@mtkswgap22>
+Subject: Re: [PATCH] iommu/mediatek: Use totalram_pages to setup enable_4GB
+From: Miles Chen <miles.chen@mediatek.com>
+To: David Hildenbrand <david@redhat.com>
+Date: Thu, 4 Jun 2020 17:49:34 +0800
+In-Reply-To: <55820901-430b-14c4-9426-7a4991ca0eed@redhat.com>
+References: <20200604080120.2628-1-miles.chen@mediatek.com>
+ <55820901-430b-14c4-9426-7a4991ca0eed@redhat.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1591236845.8804.547.camel@mhfsdcap03>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-TM-SNTS-SMTP: AE948E482C29CD5898F27E00F7D8367EA04E36796E3DBBED3FBA94C5849F28092000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200604_022625_695376_D34A27A5 
-X-CRM114-Status: GOOD (  20.02  )
+X-CRM114-CacheID: sfid-20200604_024952_029711_3C831746 
+X-CRM114-Status: GOOD (  22.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,241 +84,92 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, drinkcat@chromium.org,
- andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org, linus.walleij@linaro.org,
- shengnan.wang@mediatek.com, tfiga@chromium.org, bgolaszewski@baylibre.com,
- sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
- louis.kuo@mediatek.com, matthias.bgg@gmail.com, bingbu.cao@intel.com,
- mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: wsd_upstream@mediatek.com, Joerg Roedel <joro@8bytes.org>,
+ linux-kernel@vger.kernel.org, Chao Hao <chao.hao@mediatek.com>,
+ iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ Yong Wu <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dongchun,
-
-On Thu, Jun 04, 2020 at 10:14:05AM +0800, Dongchun Zhu wrote:
-> Hi Tomasz, Sakari, and sirs,
-> 
-> Could anyone help to review this patch?
-> 
-> On Sat, 2020-05-23 at 16:41 +0800, Dongchun Zhu wrote:
-> > Add a V4L2 sub-device driver for OV02A10 image sensor.
+On Thu, 2020-06-04 at 10:25 +0200, David Hildenbrand wrote:
+> On 04.06.20 10:01, Miles Chen wrote:
+> > To build this driver as a kernel module, we cannot use
+> > the unexported symbol "max_pfn" to setup enable_4GB.
 > > 
-> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > Use totalram_pages() instead to setup enable_4GB.
+> > 
+> > Suggested-by: Mike Rapoport <rppt@linux.ibm.com>
+> > Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> > Cc: David Hildenbrand <david@redhat.com>
+> > Cc: Yong Wu <yong.wu@mediatek.com>
+> > Cc: Chao Hao <chao.hao@mediatek.com>
 > > ---
-> >  MAINTAINERS                 |    1 +
-> >  drivers/media/i2c/Kconfig   |   13 +
-> >  drivers/media/i2c/Makefile  |    1 +
-> >  drivers/media/i2c/ov02a10.c | 1025 +++++++++++++++++++++++++++++++++++++++++++
-> >  4 files changed, 1040 insertions(+)
-> >  create mode 100644 drivers/media/i2c/ov02a10.c
+> >  drivers/iommu/mtk_iommu.c | 5 ++---
+> >  1 file changed, 2 insertions(+), 3 deletions(-)
 > > 
+> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> > index 5f4d6df59cf6..c2798a6e0e38 100644
+> > --- a/drivers/iommu/mtk_iommu.c
+> > +++ b/drivers/iommu/mtk_iommu.c
+> > @@ -3,7 +3,6 @@
+> >   * Copyright (c) 2015-2016 MediaTek Inc.
+> >   * Author: Yong Wu <yong.wu@mediatek.com>
+> >   */
+> > -#include <linux/memblock.h>
+> >  #include <linux/bug.h>
+> >  #include <linux/clk.h>
+> >  #include <linux/component.h>
+> > @@ -626,8 +625,8 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+> >  		return -ENOMEM;
+> >  	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
+> >  
+> > -	/* Whether the current dram is over 4GB */
+> > -	data->enable_4GB = !!(max_pfn > (BIT_ULL(32) >> PAGE_SHIFT));
+> > +	/* Whether the current dram is over 4GB, note: DRAM start at 1GB  */
+> > +	data->enable_4GB = !!(totalram_pages() > ((SZ_2G + SZ_1G) >> PAGE_SHIFT));
 > 
-> [snip]
+> A similar thing seems to be done by
+> drivers/media/platform/mtk-vpu/mtk_vpu.c:
+> 	vpu->enable_4GB = !!(totalram_pages() > (SZ_2G >> PAGE_SHIFT));
 > 
-> > +static int ov02a10_probe(struct i2c_client *client)
-> > +{
-> > +	struct device *dev = &client->dev;
-> > +	struct ov02a10 *ov02a10;
-> > +	unsigned int rotation;
-> > +	unsigned int clock_lane_tx_speed;
-> > +	unsigned int i;
-> > +	int ret;
-> > +
-> > +	ov02a10 = devm_kzalloc(dev, sizeof(*ov02a10), GFP_KERNEL);
-> > +	if (!ov02a10)
-> > +		return -ENOMEM;
-> > +
-> > +	ret = ov02a10_check_hwcfg(dev, ov02a10);
-> > +	if (ret) {
-> > +		dev_err(dev, "failed to check HW configuration: %d", ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +	v4l2_i2c_subdev_init(&ov02a10->subdev, client, &ov02a10_subdev_ops);
-> > +	ov02a10->mipi_clock_tx_speed = OV02A10_MIPI_TX_SPEED_DEFAULT;
-> > +	ov02a10->fmt.code = MEDIA_BUS_FMT_SBGGR10_1X10;
-> > +
-> > +	/* Optional indication of physical rotation of sensor */
-> > +	ret = fwnode_property_read_u32(dev_fwnode(dev), "rotation", &rotation);
-> > +	if (!ret && rotation == 180) {
-> > +		ov02a10->upside_down = true;
-> > +		ov02a10->fmt.code = MEDIA_BUS_FMT_SRGGB10_1X10;
-> > +	}
-> > +
-> > +	/* Optional indication of mipi TX speed */
-> > +	ret = fwnode_property_read_u32(dev_fwnode(dev), "ovti,mipi-tx-speed",
-> > +				       &clock_lane_tx_speed);
-> > +
-> > +	if (!ret)
-> > +		ov02a10->mipi_clock_tx_speed = clock_lane_tx_speed;
-> > +
-> > +	/* Get system clock (eclk) */
-> > +	ov02a10->eclk = devm_clk_get(dev, "eclk");
-> > +	if (IS_ERR(ov02a10->eclk)) {
-> > +		ret = PTR_ERR(ov02a10->eclk);
-> > +		dev_err(dev, "failed to get eclk %d\n", ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +	ret = fwnode_property_read_u32(dev_fwnode(dev), "clock-frequency",
-> > +				       &ov02a10->eclk_freq);
-> > +	if (ret) {
-> > +		dev_err(dev, "failed to get eclk frequency\n");
-> > +		return ret;
-> > +	}
-> > +
-> > +	ret = clk_set_rate(ov02a10->eclk, ov02a10->eclk_freq);
-> > +	if (ret) {
-> > +		dev_err(dev, "failed to set eclk frequency (24MHz)\n");
-> > +		return ret;
-> > +	}
-> > +
-> > +	if (clk_get_rate(ov02a10->eclk) != OV02A10_ECLK_FREQ) {
-> > +		dev_warn(dev, "wrong eclk frequency %d Hz, expected: %d Hz\n",
-> > +			 ov02a10->eclk_freq, OV02A10_ECLK_FREQ);
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	ov02a10->pd_gpio = devm_gpiod_get(dev, "powerdown", GPIOD_OUT_HIGH);
-> > +	if (IS_ERR(ov02a10->pd_gpio)) {
-> > +		ret = PTR_ERR(ov02a10->pd_gpio);
-> > +		dev_err(dev, "failed to get powerdown-gpios %d\n", ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +	ov02a10->n_rst_gpio = devm_gpiod_get(dev, "reset", GPIOD_OUT_LOW);
-> > +	if (IS_ERR(ov02a10->n_rst_gpio)) {
-> > +		ret = PTR_ERR(ov02a10->n_rst_gpio);
-> > +		dev_err(dev, "failed to get reset-gpios %d\n", ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +	for (i = 0; i < ARRAY_SIZE(ov02a10_supply_names); i++)
-> > +		ov02a10->supplies[i].supply = ov02a10_supply_names[i];
-> > +
-> > +	ret = devm_regulator_bulk_get(dev, ARRAY_SIZE(ov02a10_supply_names),
-> > +				      ov02a10->supplies);
-> > +	if (ret) {
-> > +		dev_err(dev, "failed to get regulators\n");
-> > +		return ret;
-> > +	}
-> > +
-> > +	mutex_init(&ov02a10->mutex);
-> > +	ov02a10->cur_mode = &supported_modes[0];
-> > +	ret = ov02a10_initialize_controls(ov02a10);
-> > +	if (ret) {
-> > +		dev_err(dev, "failed to initialize controls\n");
-> > +		goto err_destroy_mutex;
-> > +	}
-> > +
-> > +	ov02a10->subdev.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
-> > +	ov02a10->subdev.entity.ops = &ov02a10_subdev_entity_ops;
-> > +	ov02a10->subdev.entity.function = MEDIA_ENT_F_CAM_SENSOR;
-> > +	ov02a10->pad.flags = MEDIA_PAD_FL_SOURCE;
-> > +	ret = media_entity_pads_init(&ov02a10->subdev.entity, 1, &ov02a10->pad);
-> > +	if (ret < 0) {
-> > +		dev_err(dev, "failed to init entity pads: %d", ret);
-> > +		goto err_free_handler;
-> > +	}
-> > +
-> > +	pm_runtime_enable(dev);
-> > +	if (!pm_runtime_enabled(dev)) {
-> > +		ret = ov02a10_power_on(dev);
-> > +		if (ret < 0) {
-> > +			dev_err(dev, "failed to power on: %d\n", ret);
-> > +			goto err_free_handler;
-> > +		}
-> > +	}
-> > +
-> > +	ret = v4l2_async_register_subdev(&ov02a10->subdev);
-> > +	if (ret) {
-> > +		dev_err(dev, "failed to register V4L2 subdev: %d", ret);
-> > +		if (!pm_runtime_enabled(dev))
-> > +			ov02a10_power_off(dev);
+> I do wonder if some weird memory hotplug setups might give you false
+> negatives.
+> 
+> E.g., start a VM with 1GB and hotplug 1GB - it will be hotplugged on
+> x86-64 above 4GB, turning max_pfn into 5GB. totalram_pages() should
+> return something < 2GB.
+> 
+> Same can happen when you have a VM and use ballooning to fake-unplug
+> memory, making totalram_pages() return something < 4GB, but leaving
+> usable pfns >= 4GB
 
-This should be moved to error handling section below.
+Yes. Yingjoe also told me that this patch is not correct.
 
-> > +		goto err_clean_entity;
-> > +	}
-> 
-> Tomasz, Sakari, is this ok?
-> or coding like this:
-> 
-> ret = v4l2_async_register_subdev(&ov02a10->subdev);
-> if (!pm_runtime_enabled(dev))
-> 	ov02a10_power_off(dev);
-> if (ret) {
-> 	dev_err(dev, "failed to register V4L2 subdev: %d", ret);
-> 	goto err_clean_entity;
-> }
-> 
-> What's your opinions about the change?
+Thanks for pointing this out. totalram_pages() does not work 
+for some cases:
 
-This turns power off if runtime PM is disabled. I'd keep it as-is, as it'd
-require re-implementing what runtime PM is used for now --- and that's not
-a sensor driver's job.
+e.g., DRAM start @0x4000_0000 and DRAM size is 0x1_0000_0000 but we
+reserve large amount of memory, which makes totalram_pages() < 3GB but
+it is possible to allocate a pfn >= 4GB.
 
-> 
-> > +
-> > +	return 0;
-> > +
-> > +err_clean_entity:
-> > +	media_entity_cleanup(&ov02a10->subdev.entity);
-> > +err_free_handler:
-> > +	v4l2_ctrl_handler_free(ov02a10->subdev.ctrl_handler);
-> > +err_destroy_mutex:
-> > +	mutex_destroy(&ov02a10->mutex);
-> > +
-> > +	return ret;
-> > +}
-> > +
-> > +static int ov02a10_remove(struct i2c_client *client)
-> > +{
-> > +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
-> > +	struct ov02a10 *ov02a10 = to_ov02a10(sd);
-> > +
-> > +	v4l2_async_unregister_subdev(sd);
-> > +	media_entity_cleanup(&sd->entity);
-> > +	v4l2_ctrl_handler_free(sd->ctrl_handler);
-> > +	pm_runtime_disable(&client->dev);
-> > +	if (!pm_runtime_status_suspended(&client->dev))
-> > +		ov02a10_power_off(&client->dev);
-> > +	pm_runtime_set_suspended(&client->dev);
-> > +	mutex_destroy(&ov02a10->mutex);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static const struct of_device_id ov02a10_of_match[] = {
-> > +	{ .compatible = "ovti,ov02a10" },
-> > +	{}
-> > +};
-> > +MODULE_DEVICE_TABLE(of, ov02a10_of_match);
-> > +
-> > +static struct i2c_driver ov02a10_i2c_driver = {
-> > +	.driver = {
-> > +		.name = "ov02a10",
-> > +		.pm = &ov02a10_pm_ops,
-> > +		.of_match_table = ov02a10_of_match,
-> > +	},
-> > +	.probe_new	= &ov02a10_probe,
-> > +	.remove		= &ov02a10_remove,
-> > +};
-> > +
-> > +module_i2c_driver(ov02a10_i2c_driver);
-> > +
-> > +MODULE_AUTHOR("Dongchun Zhu <dongchun.zhu@mediatek.com>");
-> > +MODULE_DESCRIPTION("OmniVision OV02A10 sensor driver");
-> > +MODULE_LICENSE("GPL v2");
-> > +
-> 
+I will discuss this internally.
 
--- 
-Sakari Ailus
+Miles
+> .
+> 
+> but
+> ... I don't know if I understood what "enable_4GB" needs/implies
+> ... I don't know if this is applicable to VMs
+>  at all (on real HW such
+>     memory hotplug setups should not exist)
+> ... I don't know how this code would react to memory hotplug, so if the
+>     condition changes after the driver loaded and enable_4GB would
+>     suddenly apply. Again, most probably not relevant on real HW, only
+>     for VMs.
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
