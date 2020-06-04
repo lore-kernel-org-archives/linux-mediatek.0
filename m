@@ -2,80 +2,82 @@ Return-Path: <SRS0=aF3H=7R=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 32564C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 02:29:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D72D0C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 02:36:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 05D1B20657
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 02:29:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AB98420679
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 02:36:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="b4CnVkO+";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="gF+uWURR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 05D1B20657
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NHY0lrCE";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="XdzrK4V6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AB98420679
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rJeMOzht6iidXkkZc8FNVvIUy/Oo4hNDJpKRnwRmJPw=; b=b4CnVkO+JbZj+B
-	/rBer9uv5h5zh0euR2UlLoFn9CTi0pkWYQD4ftpUULozJWtPoST8i5KI8Ctxon6CmVB/Oj3+/8p55
-	BDxAyScuDn3XgHFucXkJH9jBWf40D2Gs2ZhL2FYB+apgsvd1KfFMyigerTChT8eR1iTPg1HAs51gv
-	x0Ahp6IKTqw8oNbfPe+kupa9gQCsFYxPueYdNVpNzSjnRGQSahMIzTQhA1hokUFEneBxyPlmjVH4m
-	wjfyIhzkltOSMI37KKzBNRQSIi5ovbz7+GS37LCiJPQsXZjADdnoRimVOUJgJDkPMsXJ3Bwzy/2qf
-	Z7K8mXUR57gwTsdFzyyA==;
+	List-Owner; bh=Bft0NC1McBWpWewfNyfZiOYIzKOiiyRcTkYr3XbIE/o=; b=NHY0lrCEOd8KPM
+	hW1EwHVIsZmhrapJBs5duQ94+xxx5DZKpI3TCxgg0kbUvW8wJ6MXOMMRuoOJCFtR9cV7euJjQCk9j
+	mPcEbwKYwfPwJQ2gXekMNxDzZ2JtJdMKcMI6ad3LwsHl+Mimt0+ETB/MU3YzmRjsK3QvCHEFpCEbi
+	iCTBcZ0cVA+XmSLO1Way9ME6hVklq5GcrR5B5wW/DBWcpRohq1ZaqpoRhTJ5pzclo/j6p5vDo4z83
+	Y2I0E4fGuvU8609BKHspzMSO/mmDH+nRG/yRwmI/1GquEbIQzdJDY/AwafsKunOgjPAFiSD4nAI1l
+	Ez2fqXMfjqoy08OybbPQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jgfdS-0006Ie-AG; Thu, 04 Jun 2020 02:29:38 +0000
-Received: from mail-vk1-xa44.google.com ([2607:f8b0:4864:20::a44])
+	id 1jgfjT-0003I8-7A; Thu, 04 Jun 2020 02:35:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jgfdP-0006I0-Sl
- for linux-mediatek@lists.infradead.org; Thu, 04 Jun 2020 02:29:37 +0000
-Received: by mail-vk1-xa44.google.com with SMTP id w188so1000386vkf.0
- for <linux-mediatek@lists.infradead.org>; Wed, 03 Jun 2020 19:29:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GiZwMzoPS09yzBU7S2hJ7r+gRIFX95ple22IuWgCNw4=;
- b=gF+uWURRh8uwv2hzNLJPZDege+6/RxAKTa99l8IPtuMOxNN3gLY9hIZiknH3Fkeaar
- cvBMdieSIb+hccNBsqfqKdjKbGDy19j8gffbEb5p9RQpriNR8VSJwJB2NL9Ukxk0KgxX
- RUd+vKOB/CvPR0X5Es5srwyCY/HvUcznw45jU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=GiZwMzoPS09yzBU7S2hJ7r+gRIFX95ple22IuWgCNw4=;
- b=bA1Olk9mOMNepXwANkyOM0eHmFoYKpTKRJJ3v9nyC9Ti9n/aRTuuBhEOdrmzATDjjX
- yBHb2iba91yrR1Q5bn6L1yfa8oofFzUJxg1t7NlBLqO0r03B9HydRUDprDkF/NT+l4vv
- CrqXZXWbhs6WhCtx0q67cOkW3sN3Bpt0xqgm9s13XMz+XFKX5EIkBuHhSH9Oz1ZY5RSZ
- PYlXD67HTwm9wIIeHQAa7uayFexQ505BXCoW13YV8d3mXj3u4YHLnipga1e6XHPCkeZw
- Mer+mM6WYPOgVkJllNpgZv8mQHyo96Xt9X+KQlw3HA3sQ1HnaYvaxWBiSMTtYC2vYmy0
- 7j1w==
-X-Gm-Message-State: AOAM533iZbhgElziAGd+hAFm0CR0OwjPVtp0r7SR3MIzOO4Tm2rGWLrr
- Ss6krbV2si/uu+CMnqFXuQgWr1ZbZxQvlDZv7q54wA==
-X-Google-Smtp-Source: ABdhPJyOkMxi3kmXQuLdkLG0TI4YGq6+Fj1A2qCxPvej1w2D2dixQYceehb742uQ5rO3puyZGIjvnIKc79wo0ALTZ+8=
-X-Received: by 2002:a1f:8d0a:: with SMTP id p10mr1986031vkd.33.1591237770303; 
- Wed, 03 Jun 2020 19:29:30 -0700 (PDT)
+ id 1jgfjQ-0003Hj-Id; Thu, 04 Jun 2020 02:35:50 +0000
+X-UUID: 59660a979cdf416887a633ca1fcfd0f6-20200603
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=SuYNiPB5NMghHlkxCe+dQYVYe8ChAYf4pPTeZHrmuOY=; 
+ b=XdzrK4V6cTBmxoIBS4Q5QPz+HPhUqF2Ju5XKgrxWdDssoF2gCSqAG0Z4Ie/wg2JBR4f5TnfjXNGhaVUwXe59kABU31fjP/wAAQrs6gKuWqiSKty1Nsdrn19wLmFa4PiF93M1OjFK982/kQ45GUczLETdQlOm+0csBhPsHr8zi74=;
+X-UUID: 59660a979cdf416887a633ca1fcfd0f6-20200603
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <dongchun.zhu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1196773227; Wed, 03 Jun 2020 18:35:43 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 3 Jun 2020 19:35:45 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 4 Jun 2020 10:35:39 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 4 Jun 2020 10:35:40 +0800
+Message-ID: <1591238018.8804.555.camel@mhfsdcap03>
+Subject: Re: [V6, 2/2] media: i2c: dw9768: Add DW9768 VCM driver
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+To: Tomasz Figa <tfiga@chromium.org>
+Date: Thu, 4 Jun 2020 10:33:38 +0800
+In-Reply-To: <CAAFQd5Dgboh8om68546ADELX3g-0y40rdBxY+H3WsX5xAD1_FQ@mail.gmail.com>
+References: <20200518132731.20855-1-dongchun.zhu@mediatek.com>
+ <20200518132731.20855-3-dongchun.zhu@mediatek.com>
+ <20200521195113.GC14214@chromium.org>
+ <1590139561.8804.390.camel@mhfsdcap03>
+ <CAAFQd5CCsT_oM9aij_imV+NABzByi94RmCj97Dx0Tk3S0WDsTg@mail.gmail.com>
+ <1590570089.8804.453.camel@mhfsdcap03>
+ <CAAFQd5Dgboh8om68546ADELX3g-0y40rdBxY+H3WsX5xAD1_FQ@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-References: <1590051985-29149-1-git-send-email-weiyi.lu@mediatek.com>
- <1590051985-29149-7-git-send-email-weiyi.lu@mediatek.com>
-In-Reply-To: <1590051985-29149-7-git-send-email-weiyi.lu@mediatek.com>
-From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Thu, 4 Jun 2020 10:29:19 +0800
-Message-ID: <CANMq1KBRe81Sa4A6sCM2egOVRWCJbUNPsXHpfzkT33XGVZXBhg@mail.gmail.com>
-Subject: Re: [PATCH v15 06/11] soc: mediatek: Add subsys clock control for bus
- protection
-To: Weiyi Lu <weiyi.lu@mediatek.com>
+X-TM-SNTS-SMTP: F86C0FCDB567B5C188A65FAB2CBC0E5B52353EFA00CBAB634B239ED5B17F119F2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200603_192935_949893_12ACF9EC 
-X-CRM114-Status: GOOD (  17.57  )
+X-CRM114-CacheID: sfid-20200603_193548_621290_291EF359 
+X-CRM114-Status: GOOD (  19.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,104 +89,102 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: James Liao <jamesjj.liao@mediatek.com>,
- srv_heupstream <srv_heupstream@mediatek.com>, Rob Herring <robh@kernel.org>,
- Enric Balletbo Serra <eballetbo@gmail.com>,
- lkml <linux-kernel@vger.kernel.org>, Fan Chen <fan.chen@mediatek.com>,
- Devicetree List <devicetree@vger.kernel.org>,
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ linux-devicetree <devicetree@vger.kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Shengnan
+ Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=A3=E7=94=B7=29?=
+ <shengnan.wang@mediatek.com>, Louis Kuo <louis.kuo@mediatek.com>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Sascha Hauer <kernel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+ dongchun.zhu@mediatek.com, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, "list@263.net:IOMMU DRIVERS
+ <iommu@lists.linux-foundation.org>, Joerg  Roedel <joro@8bytes.org>,
+ " <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 21, 2020 at 5:06 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
->
-> For the bus protection operations, some subsys clocks need to be enabled
-> before releasing the protection, and vice versa.
-> But those subsys clocks could only be controlled once its corresponding
-> power domain is turned on first.
-> In this patch, we add the subsys clock control into its relevant steps.
->
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> ---
->  drivers/soc/mediatek/mtk-scpsys.c | 62 +++++++++++++++++++++++++++++++++++++--
->  1 file changed, 60 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index 59a525a..ef2c668 100644
-> --- a/drivers/soc/mediatek/mtk-scpsys.c
-> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> [snip]
->         val |= PWR_ISO_BIT;
-> @@ -498,6 +511,39 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
->         return ret;
->  }
->
-> +static int init_subsys_clks(struct platform_device *pdev,
-> +               const char *prefix, struct clk **clk)
-> +{
-> +       struct device_node *node = pdev->dev.of_node;
-> +       u32 prefix_len, sub_clk_cnt = 0;
-> +       struct property *prop;
-> +       const char *clk_name;
-> +
-> +       prefix_len = strlen(prefix);
-> +
-> +       of_property_for_each_string(node, "clock-names", prop, clk_name) {
-> +               if (!strncmp(clk_name, prefix, prefix_len) &&
-> +                               (clk_name[prefix_len] == '-')) {
-> +                       if (sub_clk_cnt >= MAX_SUBSYS_CLKS) {
-> +                               dev_err(&pdev->dev,
-> +                                       "subsys clk out of range %d\n",
-> +                                       sub_clk_cnt);
-> +                               return -EINVAL;
-> +                       }
-> +
-> +                       clk[sub_clk_cnt] = devm_clk_get(&pdev->dev,
-> +                                               clk_name);
-> +
-> +                       if (IS_ERR(clk[sub_clk_cnt]))
-> +                               return PTR_ERR(clk[sub_clk_cnt]);
-> +
-> +                       sub_clk_cnt++;
-> +               }
-> +       }
-> +
-> +       return sub_clk_cnt;
-> +}
-> +
->  static int init_basic_clks(struct platform_device *pdev, struct clk **clk,
->                         const char * const *name)
->  {
-> @@ -596,6 +642,18 @@ static struct scp *init_scp(struct platform_device *pdev,
->                 if (ret)
->                         return ERR_PTR(ret);
->
-> +               if (data->subsys_clk_prefix) {
-> +                       ret = init_subsys_clks(pdev,
-> +                                       data->subsys_clk_prefix,
-> +                                       scpd->subsys_clk);
-> +                       if (ret < 0) {
-> +                               dev_err(&pdev->dev,
-> +                                       "%s: subsys clk unavailable\n",
-> +                                       data->name);
+Hi Tomasz,
 
-init_subsys_clks should already have printed an error (directly or
-indirectly), so this is not needed.
+On Mon, 2020-06-01 at 20:47 +0200, Tomasz Figa wrote:
+> On Wed, May 27, 2020 at 11:03 AM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
+> >
+> > Hi Tomasz,
+> >
+> > On Mon, 2020-05-25 at 13:45 +0200, Tomasz Figa wrote:
+> > > On Fri, May 22, 2020 at 11:27 AM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
+> > > >
+> > > > Hi Tomasz,
+> > > >
+> > > > Thanks for the review. My replies are as below.
+> > > >
+> > > > On Thu, 2020-05-21 at 19:51 +0000, Tomasz Figa wrote:
+> > > > > Hi Dongchun, Sakari,
+> > > > >
+> > > > > On Mon, May 18, 2020 at 09:27:31PM +0800, Dongchun Zhu wrote:
+> > > [snip]
+> > > > > > +   pm_runtime_enable(dev);
+> > > > > > +   if (!pm_runtime_enabled(dev)) {
+> > > > > > +           ret = dw9768_runtime_resume(dev);
+> > > > > > +           if (ret < 0) {
+> > > > > > +                   dev_err(dev, "failed to power on: %d\n", ret);
+> > > > > > +                   goto entity_cleanup;
+> > > > > > +           }
+> > > > > > +   }
+> > > > > > +
+> > > > > > +   ret = v4l2_async_register_subdev(&dw9768->sd);
+> > > > > > +   if (ret < 0)
+> > > > > > +           goto entity_cleanup;
+> > > > > > +
+> > > > > > +   return 0;
+> > > > > > +
+> > > > > > +entity_cleanup:
+> > > > >
+> > > > > Need to power off if the code above powered on.
+> > > > >
+> > > >
+> > > > Thanks for the reminder.
+> > > > If there is something wrong with runtime PM, actuator is to be powered
+> > > > on via dw9768_runtime_resume() API.
+> > > > When actuator sub-device is powered on completely and async registered
+> > > > successfully, we shall power off it afterwards.
+> > > >
+> > >
+> > > The code above calls dw9768_runtime_resume() if
+> > > !pm_runtime_enabled(dev), but the clean-up code below the
+> > > entity_cleanup label doesn't have the corresponding
+> > > dw9768_runtime_suspend() call.
+> > >
+> >
+> > Did you mean the 'entity_cleanup' after v4l2_async_register_subdev()?
+> 
+> Yes.
+> 
+> > Actually I made some changes for OV02A V9, according to this comment.
+> > Could you help review that change? Thanks.
+> 
+> Sure, I will take a look.
+> 
 
-> +                               return ERR_PTR(ret);
-> +                       }
-> +               }
-> +
->                 genpd->name = data->name;
->                 genpd->power_off = scpsys_power_off;
->                 genpd->power_on = scpsys_power_on;
-> --
-> 1.8.1.1.dirty
+Thanks.
+Sorry, I just wanna make sure the change is okay for next release.
+May we use the check like OV02A V9 did?
+ret = v4l2_async_register_subdev(&dw9768->sd);
+if (ret < 0) {
+	if (!pm_runtime_enabled(dev))
+		dw9768_runtime_suspend(dev);
+	goto entity_cleanup;
+}
+
+> Best regards,
+> Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
