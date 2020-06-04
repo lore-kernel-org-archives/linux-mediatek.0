@@ -7,73 +7,69 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9C4B4C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 07:41:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 512FCC433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 08:02:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6582A20663
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 07:41:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1D282206DC
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 08:02:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hYXuEvdU";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="d7IrjKrS"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6582A20663
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sV6SCUyy";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="cMNc4UTx"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1D282206DC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eHCNlvQGscsv4IQX3yjTvr+IrqwnUDajOlfHORFrO3g=; b=hYXuEvdUI7gaZs
-	dCalf4JH4jFMF7Ben/ZgOuwrPY10qDkxv+PA9pGdSFqlBzoYOVgmpSZLb/0RfBIPcFxcN/HCrNL8R
-	IH5qqZ/I+WAZ5RViIAj43qVUoCFnqFECpotBloFxgrsrArD6wZLTFz11KpZ9NYKyXOAugfToofYvw
-	kT+sLGSQ61e+ILFoPeh9YWhXRmE+g8QhkuLS31Rq84ljHrbISCK86claiylyTSn5fmq4kplSdOGTm
-	G1NLUyEk3ak9aDyy+P+b2xZEnzxpXCvUJ7h5h2YO8gf6czxDUpufZepc2k3vOq0ZCKWhNOtaaQXXR
-	R8IRkHs4c7NlvwHt34Bw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0Tx/JSOuGBixhZld8CzvnIednF2PGoK9VOrjUpAf1JI=; b=sV6SCUyyOtsHSg
+	ANvqOyu0F6jKOdX3IVX4Sx0rUALy/Uue5M3QFS8UqfNVHFQ+F3lPG8tTKG/nCkyA9xdLFUsILoTPR
+	6dz3jxGaD84a+tqIKgwOPvHqjMPfNG8FAigiU9BAIYbVTvuGpvbecnMUGc96VIX4xIwRbPv5LdE3M
+	IWacjYKwlOGxUr1RmxkPeJGMMn5k62NYgfhesz6tJOzQ959Yee+T62589FLHnO5kyNl+GnX85K5Vp
+	t1Jlx1ab3gphLvqnckDa/DK32xDeHHBdza4Xw9fCIooeZWhlN2vENMO+wtbs7mw9unywFeKGuTT/8
+	j7Wa7yEKVWqRyeNhAcuA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jgkV6-000258-Ta; Thu, 04 Jun 2020 07:41:20 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jgkpN-0006C0-Dz; Thu, 04 Jun 2020 08:02:17 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jgkTH-00068v-1J; Thu, 04 Jun 2020 07:39:28 +0000
-X-UUID: 0d2fb656bce94ded85178c5ae2cabe07-20200603
+ id 1jgkpK-0006BO-Cx; Thu, 04 Jun 2020 08:02:16 +0000
+X-UUID: 235cd05939374c8eb5260d44024b5bdb-20200604
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=pwxgK1X1XdIdmyvhCdOXj7GI0xWZ4kTcpeu8OdlT4i0=; 
- b=d7IrjKrSZdACtiz5uqb/LVlVLXI1XsXKtLg2zJeWP2vLiklzFOaejUlOL2Fu27wb9coMbU8ivhhp1FtwtNbHsqHazXuCeOZuuQy/FRyUAnHaALlSygO7s9zncVt1zs/la9jDiGTuQzxE44G0rur1Ld48wVqeozH4Ft6SA1Eu2tQ=;
-X-UUID: 0d2fb656bce94ded85178c5ae2cabe07-20200603
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <xia.jiang@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=PTiPt0eASFWtTJtbLfkkvOk+F6XVglwV/gBrDeSnaHA=; 
+ b=cMNc4UTx0vMHrdXBgLAdVyXYk2I9SFbEurepxOERT1dVpu2jWPEll+ah54uIJaXrFXqjtsK/4B18kVq1pjEPRGmySH3q6jt/jpWNbEh6JmreBdlQzYcuhDMgHRO8tkfetzHBLAHp2Fojg26t/e87P8zWJ8/fKiOYz7doqO6GI+s=;
+X-UUID: 235cd05939374c8eb5260d44024b5bdb-20200604
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 318993044; Wed, 03 Jun 2020 23:39:14 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 4 Jun 2020 00:29:27 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 4 Jun 2020 15:29:24 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 4 Jun 2020 15:29:23 +0800
-From: Xia Jiang <xia.jiang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
- <mchehab+samsung@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>
-Subject: [PATCH v9 09/18] media: platform: Delete zeroing the reserved fields
-Date: Thu, 4 Jun 2020 15:26:59 +0800
-Message-ID: <20200604072708.9468-10-xia.jiang@mediatek.com>
+ with ESMTP id 153660906; Thu, 04 Jun 2020 00:02:06 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 4 Jun 2020 01:01:23 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 4 Jun 2020 16:01:21 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 4 Jun 2020 16:01:18 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH] iommu/mediatek: Use totalram_pages to setup enable_4GB
+Date: Thu, 4 Jun 2020 16:01:20 +0800
+Message-ID: <20200604080120.2628-1-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200604072708.9468-1-xia.jiang@mediatek.com>
-References: <20200604072708.9468-1-xia.jiang@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 302719ED3089E2DF6B542E554C0642AB15FA15964EDC318E0CE26D1C0920F5F82000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200604_003927_096541_9CFE7A11 
-X-CRM114-Status: UNSURE (   8.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200604_010214_444249_A38476F4 
+X-CRM114-Status: GOOD (  10.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,72 +81,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: maoguang.meng@mediatek.com, devicetree@vger.kernel.org,
- mojahsu@chromium.org, srv_heupstream@mediatek.com,
- linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
- senozhatsky@chromium.org, sj.huang@mediatek.com, drinkcat@chromium.org,
- linux-mediatek@lists.infradead.org, Xia Jiang <xia.jiang@mediatek.com>,
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: wsd_upstream@mediatek.com, David Hildenbrand <david@redhat.com>,
+ iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org,
+ Chao Hao <chao.hao@mediatek.com>, Miles Chen <miles.chen@mediatek.com>,
+ linux-mediatek@lists.infradead.org, Yong Wu <yong.wu@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Delete zeroing the reserved fields because that the core already
-does it.
+To build this driver as a kernel module, we cannot use
+the unexported symbol "max_pfn" to setup enable_4GB.
 
-Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
----
-v9: new patch
----
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 5 -----
- 1 file changed, 5 deletions(-)
+Use totalram_pages() instead to setup enable_4GB.
 
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index bb4ebce881ee..bd1cc58324c6 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -198,7 +198,6 @@ static int mtk_jpeg_try_fmt_mplane(struct v4l2_format *f,
- 	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
- 	int i;
+Suggested-by: Mike Rapoport <rppt@linux.ibm.com>
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+Cc: David Hildenbrand <david@redhat.com>
+Cc: Yong Wu <yong.wu@mediatek.com>
+Cc: Chao Hao <chao.hao@mediatek.com>
+---
+ drivers/iommu/mtk_iommu.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 5f4d6df59cf6..c2798a6e0e38 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -3,7 +3,6 @@
+  * Copyright (c) 2015-2016 MediaTek Inc.
+  * Author: Yong Wu <yong.wu@mediatek.com>
+  */
+-#include <linux/memblock.h>
+ #include <linux/bug.h>
+ #include <linux/clk.h>
+ #include <linux/component.h>
+@@ -626,8 +625,8 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
  
--	memset(pix_mp->reserved, 0, sizeof(pix_mp->reserved));
- 	pix_mp->field = V4L2_FIELD_NONE;
+-	/* Whether the current dram is over 4GB */
+-	data->enable_4GB = !!(max_pfn > (BIT_ULL(32) >> PAGE_SHIFT));
++	/* Whether the current dram is over 4GB, note: DRAM start at 1GB  */
++	data->enable_4GB = !!(totalram_pages() > ((SZ_2G + SZ_1G) >> PAGE_SHIFT));
+ 	if (!data->plat_data->has_4gb_mode)
+ 		data->enable_4GB = false;
  
- 	if (ctx->state != MTK_JPEG_INIT) {
-@@ -217,7 +216,6 @@ static int mtk_jpeg_try_fmt_mplane(struct v4l2_format *f,
- 					   &pix_mp->height, MTK_JPEG_MIN_HEIGHT,
- 					   MTK_JPEG_MAX_HEIGHT, 0);
- 
--		memset(pfmt->reserved, 0, sizeof(pfmt->reserved));
- 		pfmt->bytesperline = 0;
- 		/* Source size must be aligned to 128 */
- 		pfmt->sizeimage = mtk_jpeg_align(pfmt->sizeimage, 128);
-@@ -237,7 +235,6 @@ static int mtk_jpeg_try_fmt_mplane(struct v4l2_format *f,
- 		u32 stride = pix_mp->width * fmt->h_sample[i] / 4;
- 		u32 h = pix_mp->height * fmt->v_sample[i] / 4;
- 
--		memset(pfmt->reserved, 0, sizeof(pfmt->reserved));
- 		pfmt->bytesperline = stride;
- 		pfmt->sizeimage = stride * h;
- 	}
-@@ -270,7 +267,6 @@ static int mtk_jpeg_g_fmt_vid_mplane(struct file *file, void *priv,
- 
- 	q_data = mtk_jpeg_get_q_data(ctx, f->type);
- 
--	memset(pix_mp->reserved, 0, sizeof(pix_mp->reserved));
- 	pix_mp->width = q_data->w;
- 	pix_mp->height = q_data->h;
- 	pix_mp->field = V4L2_FIELD_NONE;
-@@ -294,7 +290,6 @@ static int mtk_jpeg_g_fmt_vid_mplane(struct file *file, void *priv,
- 
- 		pfmt->bytesperline = q_data->bytesperline[i];
- 		pfmt->sizeimage = q_data->sizeimage[i];
--		memset(pfmt->reserved, 0, sizeof(pfmt->reserved));
- 
- 		v4l2_dbg(1, debug, &jpeg->v4l2_dev,
- 			 "plane[%d] bpl=%u, size=%u\n",
 -- 
 2.18.0
 _______________________________________________
