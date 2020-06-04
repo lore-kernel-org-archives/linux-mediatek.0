@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3621FC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 07:32:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3DD9FC433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 07:32:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 081B62072E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 07:32:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1245820663
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2020 07:32:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Wz+yFJow";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Ngsug161"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 081B62072E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PJJ0P3NC";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="F4Yt65NA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1245820663
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sDeowbNtcYUKyk16QAEEg2qEqlCxFVcVQ1FAwhZLFCg=; b=Wz+yFJowO4AZYr
-	qR+l9VKDdzr6bAfWkIBbPuKXKqzWDT7+jFyov89k7OgrmAFa418Up81Ocwv6MkOkAs8zyTyVa1aOD
-	zO0ebK3puCmaXyyPgjuPnaxuLDUB5h5MpYGDPywGiK2CSoGwSmbBEagxXLgSAaQqB/hWOgQ+wEavL
-	08NgPOxCZZ2SzczT41ZZxRqH5dDu36uLhRcFG0oXUPzXlitV4bPEnbE7ZkfOX6hgKyW/WHMo4DaYz
-	HtLuEtCNnG6sbak54HDCHqD8PIFuQry6dh8nAQT9KSqCnZA/dbdxu9cUHJeW2hm8wM87K1ebvOOF6
-	4wWktVUBBDlbbL4mwkXg==;
+	List-Owner; bh=Yfv0PsPPA+OMBr2y3UFPAc6rPnXqt46/xhjymavwfKQ=; b=PJJ0P3NCEJ1GqW
+	HYKAsYqE+TiMxG0Vi4Tfktn7FCN/Vo76/rOFN/TMkVGvANGe3B2pNg0PbbKN1XedXhBNpDgb/3Gi2
+	QZICasOloV83OScutEzT2Z8zVAZGANKILqO/MjzrYtNLUBXaXYJd6oXJThW1idRJBerTy52mICXR4
+	1HZ4IBqG6AX4wKIhNrKIfg/Y4mpC93DpSQBkguIoRoNZ89AUk2YmXxl1njQ4+oznK7cI+ETGdsCtP
+	BTsw/9vmXyKfMV0fKLT6iNtJEYT6REaCh1rCv3OvkeA+aDcTiL5x9k3dogG6+DZ7cVf2xWZcNAP5X
+	xJHp6711vaCK/gPbt4YQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jgkMO-0007ju-5v; Thu, 04 Jun 2020 07:32:20 +0000
+	id 1jgkMs-0008H4-V8; Thu, 04 Jun 2020 07:32:50 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jgkM6-0007VJ-Mu; Thu, 04 Jun 2020 07:32:05 +0000
-X-UUID: 36bb82c0989f4a37ba025a81a00610d3-20200603
+ id 1jgkM9-0007VJ-S9; Thu, 04 Jun 2020 07:32:07 +0000
+X-UUID: 01ec51523bc14379b9f1c82e8ddecf7b-20200603
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=B/w2ehlpdSMG2o1JAKklslgzvugqL0CKOQBnvbbutuc=; 
- b=Ngsug16108evhC1YXvJ0jSPgV4woQrLHxXxPaXwVnlDOv3NP6ftY75UWK3PZD2u8cD+lBwJ1zVL6YhsxNRznl47tM7h5H0u7uGPYYrtCP2e1TdXmjN1s90mdldJcMJYOi8iCjWEFNpFwGC0SXR+OhY3BOTV9V4+f3QfhzeH9UyU=;
-X-UUID: 36bb82c0989f4a37ba025a81a00610d3-20200603
+ bh=HJ9S6rma+vnVa5gCVUNR3+hSMzVhPDu4Fw67Ls/8Gl8=; 
+ b=F4Yt65NA10RvGEBk35VdHhui3ysebpO+i1QZPtk6Jeqs4R0ueP5uwb2S17qOwQUNuETaI2v8eeH4kmiSBJhpwI7ENV1KMQpQWbw3Mj+doO2n4qpzQdz/5cVoZSqlhrkMlcKqWnovjheQ6ZpKW56ri1nO92mewtCd//SkCXW37WI=;
+X-UUID: 01ec51523bc14379b9f1c82e8ddecf7b-20200603
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <xia.jiang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2053062593; Wed, 03 Jun 2020 23:31:53 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1516536775; Wed, 03 Jun 2020 23:31:53 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 4 Jun 2020 00:29:24 -0700
+ 15.0.1497.2; Thu, 4 Jun 2020 00:29:27 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 4 Jun 2020 15:29:23 +0800
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 4 Jun 2020 15:29:26 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 4 Jun 2020 15:29:21 +0800
+ Transport; Thu, 4 Jun 2020 15:29:24 +0800
 From: Xia Jiang <xia.jiang@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
  <mchehab+samsung@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
  Brugger" <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>
-Subject: [PATCH v9 08/18] media: platform: Cancel the last frame handling flow
-Date: Thu, 4 Jun 2020 15:26:58 +0800
-Message-ID: <20200604072708.9468-9-xia.jiang@mediatek.com>
+Subject: [PATCH v9 10/18] media: platform: Stylistic changes for improving
+ code quality
+Date: Thu, 4 Jun 2020 15:27:00 +0800
+Message-ID: <20200604072708.9468-11-xia.jiang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200604072708.9468-1-xia.jiang@mediatek.com>
 References: <20200604072708.9468-1-xia.jiang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200604_003202_753579_1656D87E 
-X-CRM114-Status: GOOD (  10.49  )
+X-CRM114-CacheID: sfid-20200604_003205_915901_5882AC31 
+X-CRM114-Status: UNSURE (   7.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,77 +98,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There is no need to queue an empty buffer for signaling a last frame,
-because all frames are separate from each other in JPEG.
+Change register offset hex numerals from uppercase to lowercase.
+Change data type of max/min width/height from integer to unsigned
+integer.
 
 Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
 ---
-v9: new patch
+v9: move changing data type of max/min width/height to this patch
 ---
- .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 21 +------------------
- 1 file changed, 1 insertion(+), 20 deletions(-)
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.h    |  8 ++++----
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h | 18 +++++++++---------
+ 2 files changed, 13 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index 49bdbf1c435f..bb4ebce881ee 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -55,15 +55,9 @@ static struct mtk_jpeg_fmt mtk_jpeg_formats[] = {
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+index 999bd1427809..28e9b30ad5c3 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+@@ -21,10 +21,10 @@
+ #define MTK_JPEG_FMT_TYPE_OUTPUT	1
+ #define MTK_JPEG_FMT_TYPE_CAPTURE	2
  
- #define MTK_JPEG_NUM_FORMATS ARRAY_SIZE(mtk_jpeg_formats)
+-#define MTK_JPEG_MIN_WIDTH	32
+-#define MTK_JPEG_MIN_HEIGHT	32
+-#define MTK_JPEG_MAX_WIDTH	8192
+-#define MTK_JPEG_MAX_HEIGHT	8192
++#define MTK_JPEG_MIN_WIDTH	32U
++#define MTK_JPEG_MIN_HEIGHT	32U
++#define MTK_JPEG_MAX_WIDTH	8192U
++#define MTK_JPEG_MAX_HEIGHT	8192U
  
--enum {
--	MTK_JPEG_BUF_FLAGS_INIT			= 0,
--	MTK_JPEG_BUF_FLAGS_LAST_FRAME		= 1,
--};
--
- struct mtk_jpeg_src_buf {
- 	struct vb2_v4l2_buffer b;
- 	struct list_head list;
--	int flags;
- 	struct mtk_jpeg_dec_param dec_param;
- };
+ #define MTK_JPEG_DEFAULT_SIZEIMAGE	(1 * 1024 * 1024)
  
-@@ -520,8 +514,6 @@ static int mtk_jpeg_qbuf(struct file *file, void *priv, struct v4l2_buffer *buf)
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
+index 94db04e9cdb6..2945da842dfa 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
+@@ -20,29 +20,29 @@
+ #define BIT_INQST_MASK_ALLIRQ		0x37
  
- 	vb = vb2_get_buffer(vq, buf->index);
- 	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(vb);
--	jpeg_src_buf->flags = (buf->m.planes[0].bytesused == 0) ?
--		MTK_JPEG_BUF_FLAGS_LAST_FRAME : MTK_JPEG_BUF_FLAGS_INIT;
- end:
- 	return v4l2_m2m_qbuf(file, fh->m2m_ctx, buf);
- }
-@@ -676,10 +668,6 @@ static void mtk_jpeg_buf_queue(struct vb2_buffer *vb)
- 	param = &jpeg_src_buf->dec_param;
- 	memset(param, 0, sizeof(*param));
- 
--	if (jpeg_src_buf->flags & MTK_JPEG_BUF_FLAGS_LAST_FRAME) {
--		v4l2_dbg(1, debug, &jpeg->v4l2_dev, "Got eos\n");
--		goto end;
--	}
- 	header_valid = mtk_jpeg_parse(param, (u8 *)vb2_plane_vaddr(vb, 0),
- 				      vb2_get_plane_payload(vb, 0));
- 	if (!header_valid) {
-@@ -792,19 +780,12 @@ static void mtk_jpeg_device_run(void *priv)
- 	struct mtk_jpeg_src_buf *jpeg_src_buf;
- 	struct mtk_jpeg_bs bs;
- 	struct mtk_jpeg_fb fb;
--	int i, ret;
-+	int ret;
- 
- 	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
- 	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
- 	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
- 
--	if (jpeg_src_buf->flags & MTK_JPEG_BUF_FLAGS_LAST_FRAME) {
--		for (i = 0; i < dst_buf->vb2_buf.num_planes; i++)
--			vb2_set_plane_payload(&dst_buf->vb2_buf, i, 0);
--		buf_state = VB2_BUF_STATE_DONE;
--		goto dec_end;
--	}
--
- 	if (mtk_jpeg_check_resolution_change(ctx, &jpeg_src_buf->dec_param)) {
- 		mtk_jpeg_queue_src_chg_event(ctx);
- 		ctx->state = MTK_JPEG_SOURCE_CHANGE;
+ #define JPGDEC_REG_RESET		0x0090
+-#define JPGDEC_REG_BRZ_FACTOR		0x00F8
+-#define JPGDEC_REG_DU_NUM		0x00FC
++#define JPGDEC_REG_BRZ_FACTOR		0x00f8
++#define JPGDEC_REG_DU_NUM		0x00fc
+ #define JPGDEC_REG_DEST_ADDR0_Y		0x0140
+ #define JPGDEC_REG_DEST_ADDR0_U		0x0144
+ #define JPGDEC_REG_DEST_ADDR0_V		0x0148
+-#define JPGDEC_REG_DEST_ADDR1_Y		0x014C
++#define JPGDEC_REG_DEST_ADDR1_Y		0x014c
+ #define JPGDEC_REG_DEST_ADDR1_U		0x0150
+ #define JPGDEC_REG_DEST_ADDR1_V		0x0154
+ #define JPGDEC_REG_STRIDE_Y		0x0158
+-#define JPGDEC_REG_STRIDE_UV		0x015C
++#define JPGDEC_REG_STRIDE_UV		0x015c
+ #define JPGDEC_REG_IMG_STRIDE_Y		0x0160
+ #define JPGDEC_REG_IMG_STRIDE_UV	0x0164
+-#define JPGDEC_REG_WDMA_CTRL		0x016C
++#define JPGDEC_REG_WDMA_CTRL		0x016c
+ #define JPGDEC_REG_PAUSE_MCU_NUM	0x0170
+-#define JPGDEC_REG_OPERATION_MODE	0x017C
++#define JPGDEC_REG_OPERATION_MODE	0x017c
+ #define JPGDEC_REG_FILE_ADDR		0x0200
+-#define JPGDEC_REG_COMP_ID		0x020C
++#define JPGDEC_REG_COMP_ID		0x020c
+ #define JPGDEC_REG_TOTAL_MCU_NUM	0x0210
+ #define JPGDEC_REG_COMP0_DATA_UNIT_NUM	0x0224
+-#define JPGDEC_REG_DU_CTRL		0x023C
++#define JPGDEC_REG_DU_CTRL		0x023c
+ #define JPGDEC_REG_TRIG			0x0240
+ #define JPGDEC_REG_FILE_BRP		0x0248
+-#define JPGDEC_REG_FILE_TOTAL_SIZE	0x024C
++#define JPGDEC_REG_FILE_TOTAL_SIZE	0x024c
+ #define JPGDEC_REG_QT_ID		0x0270
+ #define JPGDEC_REG_INTERRUPT_STATUS	0x0274
+ #define JPGDEC_REG_STATUS		0x0278
 -- 
 2.18.0
 _______________________________________________
