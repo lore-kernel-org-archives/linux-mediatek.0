@@ -2,22 +2,22 @@ Return-Path: <SRS0=fggR=7S=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 17DA1C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 03:56:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BF2ACC433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 06:04:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DD8E82074B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 03:56:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8F8AC207D5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 06:04:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IAzhiO89";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="o7OE5JzG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD8E82074B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Mvbo8gBC";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="oFs3Ny0O"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8F8AC207D5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xvVacoWHlKX0D4SsaVyxf4vw0hNIXwjs0XBsR2RWqGc=; b=IAzhiO89UPTgaH
-	IQtYXsiWYS7EPkGXizQlPIEdTMx+l9iyrV/F6P7ihQiLUUNKMpqOlX3yNd/8yCV4VjzgIqDYP5888
-	9WeZ0gvHBktW7yMdAMDRz3Or2M0YlnClHQvP9sNGVR8zsF8vFv3fvm5YJvklJVOmA2y6ODVFRCBaV
-	QhpgNxhV9t+wO4kTZDDqGTPLDE/Va2b3qq6KnFXLiEHA1LDBN2dBRfSFOwDXBKjyOZv2LaMHOuBiQ
-	UxRPiUVU/Q5cvpHoK9h7xK81yYcWaAqwVMzxBhLZkO8PR70MFUGDxaLHhewXkIT6uMbQuhG/HeLId
-	OfA1hLXO1ZqASP4JRfHw==;
+	List-Owner; bh=xv2g+hRsDzMQ1K4Xtcu5Pd6pmtvdaMpahC10R1mDu3w=; b=Mvbo8gBCjSM9R3
+	BGhOx61cP8zQCnEc3vFlt/IGrNUN+scDUWQFOJQV1Q4wt5TItKmUpfd54PyhAZAb3QNeJU8AuekII
+	GLKF1/LxevnxHkKOAWrhn7o32Dyzt053UzawiNbFzUNEgF9ybwSJAc2pBNdXV60CimeFZjXOxTYEg
+	dcIWjgUAKuroI3lnr6HKpetH0oabeitdoKnMWwZWTagPPjwqjRL5VP1m37SZbpbcOpuy05v35rSJQ
+	KhQ7/xiwUXDaC4iXqFlW27IAtczFMVVH0SEJEXPxbynrlOg6N/6FX6WXiQwem+QmxtNprI9PL8MlU
+	XmfYw6X4eNelhB0wWTTQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jh3Sy-0000xA-GW; Fri, 05 Jun 2020 03:56:24 +0000
+	id 1jh5T4-0007J9-LN; Fri, 05 Jun 2020 06:04:38 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jh3Sv-0000vk-J6; Fri, 05 Jun 2020 03:56:22 +0000
-X-UUID: b34e46de3d844048bf2bb71306102db9-20200604
+ id 1jh5T2-0007I7-P1; Fri, 05 Jun 2020 06:04:38 +0000
+X-UUID: 6dd17656914c4451b279de1de8c36d5c-20200604
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=nodj+mPReRlQXG2TgUtq1ZD5ZB5fPazugGHuHFy4WJ8=; 
- b=o7OE5JzGpclymNhuqCgJNCGWuLRtTUNx8K4D9U1WQUZqMtSPUSP5+dV+ZyhmMdKlDYGdbbxCeGxL/EX+ZcHkkTfXSpoK8atd6c/Od/UHjg3C823PofOyG+toC6vPBWh1iM1cEQZN8ZZAqC+H8xn37MvzAtVdCEBZRvJKW7ODCk0=;
-X-UUID: b34e46de3d844048bf2bb71306102db9-20200604
+ bh=5zTg+Ae3aI1oUNdcUL6hKGmNs4wF6e1l6u5UQkutTio=; 
+ b=oFs3Ny0Ob60ZMWSxzSRXOV/zfLBO7m3HchUR7My58YphoF8wMAzqtny8E4uI4SWIZ+NPuE+vuqybkFLHr8MZF1ZwNnyHZGDqJkBfUGMXP20FQykTnCo4ULKTQN+lTrB1q9rK6V054rDhxymkxVNAg1e/HOlHJvI/Ja7lp2CdcH4=;
+X-UUID: 6dd17656914c4451b279de1de8c36d5c-20200604
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <michael.kao@mediatek.com>)
+ (envelope-from <xia.jiang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 994925515; Thu, 04 Jun 2020 19:56:14 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 4 Jun 2020 20:50:25 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 5 Jun 2020 11:50:22 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 5 Jun 2020 11:50:22 +0800
-Message-ID: <1591329023.12739.0.camel@mtksdccf07>
-Subject: Re: [v4,7/7] thermal: mediatek: use spinlock to protect PTPCORESEL
-From: Michael Kao <michael.kao@mediatek.com>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Date: Fri, 5 Jun 2020 11:50:23 +0800
-In-Reply-To: <1afbf412-fbeb-8abe-66d8-bd7ac4e9dd83@linaro.org>
-References: <20200323121537.22697-1-michael.kao@mediatek.com>
- <20200323121537.22697-8-michael.kao@mediatek.com>
- <1afbf412-fbeb-8abe-66d8-bd7ac4e9dd83@linaro.org>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ with ESMTP id 1211080217; Thu, 04 Jun 2020 22:04:23 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 4 Jun 2020 23:04:25 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 5 Jun 2020 14:04:21 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 5 Jun 2020 14:04:19 +0800
+Message-ID: <1591336937.31802.2.camel@mhfsdcap03>
+Subject: Re: [PATCH v8 04/14] media: platform: Change the fixed device node
+ number to unfixed value
+From: Xia Jiang <xia.jiang@mediatek.com>
+To: Tomasz Figa <tfiga@chromium.org>
+Date: Fri, 5 Jun 2020 14:02:17 +0800
+In-Reply-To: <20200521135937.GD209565@chromium.org>
+References: <20200403094033.8288-1-xia.jiang@mediatek.com>
+ <20200403094033.8288-5-xia.jiang@mediatek.com>
+ <20200521135937.GD209565@chromium.org>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: C643C80CC609DDC425F0E80F5429FEB6BC9807E21373CF433474C9660B3CCD582000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200604_205621_632844_8A80AFB6 
-X-CRM114-Status: GOOD (  18.66  )
+X-CRM114-CacheID: sfid-20200604_230436_817588_4A92EDD6 
+X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,90 +87,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- srv_heupstream@mediatek.com, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, Eduardo Valentin <edubezval@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- hsinyi@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
+Cc: drinkcat@chromium.org, devicetree@vger.kernel.org, mojahsu@chromium.org,
+ srv_heupstream@mediatek.com, Rick Chang <rick.chang@mediatek.com>,
+ senozhatsky@chromium.org, linux-kernel@vger.kernel.org,
+ maoguang.meng@mediatek.com, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ sj.huang@mediatek.com, Rob Herring <robh+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ linux-mediatek@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-05-22 at 17:36 +0200, Daniel Lezcano wrote:
-> On 23/03/2020 13:15, Michael Kao wrote:
-> > From: "michael.kao" <michael.kao@mediatek.com>
-> > 
-> > The driver of thermal and svs will use the
-> > same register for the project which should select
-> > bank before reading sensor value.
+On Thu, 2020-05-21 at 13:59 +0000, Tomasz Figa wrote:
+> Hi Xia,
 > 
-> Here there is a design problem AFAICT. The sensor should not be using
-> external locks.
-> 
-The PTPCORESEL is a common register used by svs and thermal.
-The thermal need to ensure PTPCORESEL register will not be changed by
-svs when thermal switch bank to read raw data of temperature.
-So we use svs_lock to make sure there is no conflict between the two
-drivers.
-> 
-> > Signed-off-by: Michael Kao <michael.kao@mediatek.com>
-> > ---
-> >  drivers/thermal/mtk_thermal.c | 9 ++++-----
-> >  1 file changed, 4 insertions(+), 5 deletions(-)
-> > 
-> > diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-> > index 9eaca432920e..594ad4f0f8cd 100644
-> > --- a/drivers/thermal/mtk_thermal.c
-> > +++ b/drivers/thermal/mtk_thermal.c
-> > @@ -22,6 +22,7 @@
-> >  #include <linux/thermal.h>
-> >  #include <linux/reset.h>
-> >  #include <linux/types.h>
-> > +#include <linux/power/mtk_svs.h>
-> >  
-> >  /* AUXADC Registers */
-> >  #define AUXADC_CON1_SET_V	0x008
-> > @@ -262,7 +263,7 @@ struct mtk_thermal {
-> >  	struct clk *clk_peri_therm;
-> >  	struct clk *clk_auxadc;
-> >  	/* lock: for getting and putting banks */
-> > -	struct mutex lock;
-> > +	unsigned long flags;
-> >  
-> >  	/* Calibration values */
-> >  	s32 adc_ge;
-> > @@ -561,7 +562,7 @@ static void mtk_thermal_get_bank(struct mtk_thermal_bank *bank)
-> >  	u32 val;
-> >  
-> >  	if (mt->conf->need_switch_bank) {
-> > -		mutex_lock(&mt->lock);
-> > +		mt->flags = claim_mtk_svs_lock();
-> >  
-> >  		val = readl(mt->thermal_base + PTPCORESEL);
-> >  		val &= ~0xf;
-> > @@ -581,7 +582,7 @@ static void mtk_thermal_put_bank(struct mtk_thermal_bank *bank)
-> >  	struct mtk_thermal *mt = bank->mt;
-> >  
-> >  	if (mt->conf->need_switch_bank)
-> > -		mutex_unlock(&mt->lock);
-> > +		release_mtk_svs_lock(mt->flags);
-> >  }
-> >  
-> >  /**
-> > @@ -938,8 +939,6 @@ static int mtk_thermal_probe(struct platform_device *pdev)
-> >  	if (ret)
-> >  		return ret;
-> >  
-> > -	mutex_init(&mt->lock);
-> > -
-> >  	mt->dev = &pdev->dev;
-> >  
-> >  	auxadc = of_parse_phandle(np, "mediatek,auxadc", 0);
+> On Fri, Apr 03, 2020 at 05:40:23PM +0800, Xia Jiang wrote:
+> > Change device node number from 3 to -1 because that the driver will
+> > also support jpeg encoder.
 > > 
 > 
+> Thanks for the patch. The change is correct, but I think the commit
+> message doesn't really explain the real reason for it. Perhaps something
+> like
 > 
+> "The driver can be instantiated multiple times, e.g. for a decoder and
+> an encoder. Moreover, other drivers could coexist on the same system.
+> This makes the static video node number assignment pointless, so switch
+> to automatic assignment instead."
+> 
+> WDYT?
+Dear Tomasz,
+Thanks for your advice.I have changed it in new v9 .
+
+Best Regards,
+Xia Jiang
+> 
+> Best regards,
+> Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
