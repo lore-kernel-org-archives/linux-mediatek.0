@@ -2,70 +2,131 @@ Return-Path: <SRS0=fggR=7S=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 87A2EC433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 12:47:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 066B2C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 12:53:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 57ADB2065C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 12:47:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CBF3B206A2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 12:53:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tN9Jt9G7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 57ADB2065C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KvO1HAIl";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="bjwg4Elw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CBF3B206A2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qGWigEefDsXz4hznRh8uE4Y6+/3eg/43c5fK8LvM+ow=; b=tN9Jt9G72YVJS+
-	nS7pvKpzDeA82Im2KsPlqqAl1ymekBsOwMMZvfCUBxRkkSB/wFU1f1kGzX5LYiXZEqGZsmLvzgFfZ
-	XQi6T3IqSMmeYyj7DzSPJ5vqS4bU0yDyfvLjaADG3BTmvOr1+34fBb5jMD9SzsrHfErYHKEBxmUan
-	kjFAD/ODCwBYpLS7q//8+a1DBTEc2RlSuPVAX/tKM3EWwzPXXpLhEsNFeseLD0jYIbmn9zC33ZSzY
-	czztueAlkwFqmMhOKlVMIzh+UHDl99umHReGpGD69V+04Zj1T+eX2mKLSGxKxRE09VswXQTq7oKc6
-	+sh5a6u7qV1DgTMX9AdA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:References:To:From:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0l+0yYui6n/a7MNsrrwM/CpJQkhh4opEGnPFL03j93Y=; b=KvO1HAIlmYmxwX
+	UQmT4DcTyFaC+k7ENZxFhgyD+8TflOIAw2orZ+vVlgxbMi1t+Tg0EmnB11/YQgwhyUmjbLBZJcz+G
+	qe6wf0TPharOoc5aaEH4utj58fW025vIox+jF+w0wsVQpwq0x6VEfpNvb+fmjgjof5c0IveRYC6kV
+	MtuRzSDigsQ/VlZmhy+LiNuk5kx/SKszgJvfkpU5MF12s+a7DPgTD/Ffi3XtOFOvaq08irtli6CsJ
+	m5aJKQ/MmL+ap+wie6fEe0kfBP977lI8k0rWa8C8UKWd8TKYYUzVW+dODkX8H81PJFIrrek5H7OrZ
+	ulwMpGL0a85bWuSjQptw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jhBkP-0004nu-N0; Fri, 05 Jun 2020 12:46:57 +0000
-Received: from mga07.intel.com ([134.134.136.100])
+	id 1jhBqB-0008Pc-MW; Fri, 05 Jun 2020 12:52:55 +0000
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]
+ helo=us-smtp-1.mimecast.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jhBkD-0004fa-VY; Fri, 05 Jun 2020 12:46:51 +0000
-IronPort-SDR: DM1qkh8sRjeteUBTck8VLTnKl1uuBp8M/ABn/NXCms3oWp4yEII491t1RGuJgk9qpZYBu0sT3y
- 8QmKuD22LgyQ==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jun 2020 05:46:45 -0700
-IronPort-SDR: r/oJX8fhNmc8e/bISoUrjyeoU9guHWxK+HVaeG11SzZWS7YbfeGTMiJ95UKT4qtI63FTHd0jO8
- yFEOq6VRqCWQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,476,1583222400"; d="scan'208";a="269755373"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by orsmga003.jf.intel.com with ESMTP; 05 Jun 2020 05:46:41 -0700
-Received: from andy by smile with local (Exim 4.93)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1jhBkB-00B1rI-FV; Fri, 05 Jun 2020 15:46:43 +0300
-Date: Fri, 5 Jun 2020 15:46:43 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Subject: Re: [V7, 2/2] media: i2c: dw9768: Add DW9768 VCM driver
-Message-ID: <20200605124643.GG2428291@smile.fi.intel.com>
-References: <20200605105412.18813-1-dongchun.zhu@mediatek.com>
- <20200605105412.18813-3-dongchun.zhu@mediatek.com>
+ id 1jhBq3-0008GH-Co
+ for linux-mediatek@lists.infradead.org; Fri, 05 Jun 2020 12:52:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591361562;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=A8kNEVeRCF9+y3k5ZAIQfT6doRtq7dwlic2ox+e/gW4=;
+ b=bjwg4ElwLOSZSPESVf7kTNMvwIUY0LClarkhUfi00yo8YbpL3cG1nNvp8X7tTfTfppqO4b
+ ZNv1xl0gULbnTwGYkEOv+7KoKQemgZr1O9/wmfoE2ZBJL9klXS/irSZq7xsHPnzntWtB4a
+ /B0UYupD2qsYzDEmHt9VYXC1heiDzQk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-392-fR5KWv9UPeW1nysCpKfoew-1; Fri, 05 Jun 2020 08:52:38 -0400
+X-MC-Unique: fR5KWv9UPeW1nysCpKfoew-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3807C100AA2C;
+ Fri,  5 Jun 2020 12:52:36 +0000 (UTC)
+Received: from [10.36.114.72] (ovpn-114-72.ams2.redhat.com [10.36.114.72])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5830B891C1;
+ Fri,  5 Jun 2020 12:52:33 +0000 (UTC)
+Subject: Re: [PATCH] iommu/mediatek: Use totalram_pages to setup enable_4GB
+From: David Hildenbrand <david@redhat.com>
+To: Christoph Hellwig <hch@infradead.org>
+References: <20200604080120.2628-1-miles.chen@mediatek.com>
+ <55820901-430b-14c4-9426-7a4991ca0eed@redhat.com>
+ <1591264174.12661.17.camel@mtkswgap22>
+ <f02c8c9d-ed75-6513-f8a9-a2fdbb11b750@redhat.com>
+ <20200604150643.GA29193@infradead.org>
+ <f62c9623-bf5c-6fdb-afa5-9ff04c8fde70@redhat.com>
+Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat GmbH
+Message-ID: <59531654-a1fd-09cf-bb33-ae3fe5363298@redhat.com>
+Date: Fri, 5 Jun 2020 14:52:32 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200605105412.18813-3-dongchun.zhu@mediatek.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <f62c9623-bf5c-6fdb-afa5-9ff04c8fde70@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200605_054650_215660_3741FA33 
-X-CRM114-Status: GOOD (  11.60  )
+X-CRM114-CacheID: sfid-20200605_055247_616138_E7F929EC 
+X-CRM114-Status: GOOD (  16.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,124 +138,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org,
- louis.kuo@mediatek.com, srv_heupstream@mediatek.com, linus.walleij@linaro.org,
- shengnan.wang@mediatek.com, tfiga@chromium.org, bgolaszewski@baylibre.com,
- sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
- sakari.ailus@linux.intel.com, matthias.bgg@gmail.com, bingbu.cao@intel.com,
- mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: wsd_upstream@mediatek.com, Joerg Roedel <joro@8bytes.org>,
+ iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org,
+ Chao Hao <chao.hao@mediatek.com>, Miles Chen <miles.chen@mediatek.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com,
+ Yong Wu <yong.wu@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 05, 2020 at 06:54:12PM +0800, Dongchun Zhu wrote:
-> Add a V4L2 sub-device driver for DW9768 voice coil motor, providing
-> control to set the desired focus via IIC serial interface.
+On 04.06.20 17:27, David Hildenbrand wrote:
+> On 04.06.20 17:06, Christoph Hellwig wrote:
+>> On Thu, Jun 04, 2020 at 01:32:40PM +0200, David Hildenbrand wrote:
+>>> Just a thought: If memory hotplug is applicable as well, you might
+>>> either want to always assume data->enable_4GB, or handle memory hotplug
+>>> events from the memory notifier, when new memory gets onlined (not sure
+>>> how tricky that is).
+>>
+>> We probably want a highest_pfn_possible() or similar API instead of
+>> having drivers poking into random VM internals.
+> 
+> Well, memory notifiers are a reasonable api used accross the kernel to
+> get notified when new memory is onlined to the buddy that could be used
+> for allocations.
+> 
+> highest_pfn_possible() would have to default to something linked to
+> MAX_PHYSMEM_BITS whenever memory hotplug is configured, I am not sure
+> how helpful that is (IOW, you can just default to enable_4GB=true in
+> that case instead in most cases).
 
-...
+Correction: At least on x86-64 we have max_possible_pfn, which will
+consult the ACPI SRAT table to figure out the maximum possible PFN.
+(Without SRAT, max_possible_pfn will point at the end of initial boot
+memory and not consider hotplug memory - something that e.g., newer QEMU
+versions work around by creating SRAT tables if memory hotplug might be
+possible, even if there is no actual NUMA configuration).
 
-> +config VIDEO_DW9768
-> +	tristate "DW9768 lens voice coil support"
-> +	depends on I2C && VIDEO_V4L2
-
-No compile test?
-
-> +	depends on PM
-
-This is very strange dependency for ordinary driver.
-
-> +	select MEDIA_CONTROLLER
-> +	select VIDEO_V4L2_SUBDEV_API
-> +	select V4L2_FWNODE
-
-...
-
-> +/*
-> + * DW9768 requires waiting time (delay time) of t_OPR after power-up,
-> + * or in the case of PD reset taking place.
-> + */
-> +#define DW9768_T_OPR_US				1000
-> +#define DW9768_Tvib_MS_BASE10			(64 - 1)
-> +#define DW9768_AAC_MODE_DEFAULT			2
-
-> +#define DW9768_AAC_TIME_DEFAULT			0x20
-
-Hex? Why not decimal?
-
-> +#define DW9768_CLOCK_PRE_SCALE_DEFAULT		1
-
-...
-
-> +static int dw9768_mod_reg(struct dw9768 *dw9768, u8 reg, u8 mask, u8 val)
-> +{
-> +	struct i2c_client *client = v4l2_get_subdevdata(&dw9768->sd);
-> +	int ret;
-> +
-> +	ret = i2c_smbus_read_byte_data(client, reg);
-> +	if (ret < 0)
-> +		return ret;
-> +
-
-> +	val = ((unsigned char)ret & ~mask) | (val & mask);
-
-This cast is weird.
-
-> +
-> +	return i2c_smbus_write_byte_data(client, reg, val);
-> +}
-
-...
-
-> +			dev_err(&client->dev, "%s I2C failure: %d",
-> +				__func__, ret);
-
-One line?
-
-...
-
-> +static int dw9768_release(struct dw9768 *dw9768)
-> +{
-> +	struct i2c_client *client = v4l2_get_subdevdata(&dw9768->sd);
-> +	u32 move_delay_us = dw9768_cal_move_delay(dw9768->aac_mode,
-> +						  dw9768->clock_presc,
-> +						  dw9768->aac_timing) / 100;
-> +	int ret, val;
-> +
-> +	val = round_down(dw9768->focus->val, DW9768_MOVE_STEPS);
-> +	for ( ; val >= 0; val -= DW9768_MOVE_STEPS) {
-> +		ret = dw9768_set_dac(dw9768, val);
-> +		if (ret) {
-> +			dev_err(&client->dev, "I2C write fail: %d", ret);
-> +			return ret;
-> +		}
-> +		usleep_range(move_delay_us, move_delay_us + 1000);
-> +	}
-
-
-It will look more naturally in the multiplier kind of value.
-
-	unsigned int steps = DIV_ROUND_UP(...);
-
-	while (steps--) {
-		...(..., steps * ..._MOVE_STEPS);
-		...
-	}
-
-but double check arithmetics.
-
-> +	return 0;
-> +}
-
-
-Also it seems we need to have writex_poll_timeout() implementation (see
-iopoll.h).
+pci-swiotlb.c similarly relies on that to figure out if there are any
+!DMA addresses to handle.
 
 -- 
-With Best Regards,
-Andy Shevchenko
+Thanks,
 
+David / dhildenb
 
 
 _______________________________________________
