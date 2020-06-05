@@ -2,21 +2,23 @@ Return-Path: <SRS0=fggR=7S=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3AD7FC433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 07:21:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1644FC433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 08:06:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0B351206DC
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 07:21:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C84E5207D5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 08:06:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CqtBmhsh"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0B351206DC
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sipsolutions.net
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gQCIfesy";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="r84M9kbM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C84E5207D5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -24,38 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8SgUxPwpWRUcXu4y1857yCXONb3ydU7DJBCzfQssRcs=; b=CqtBmhshnkqfo2
-	pV9uEimtFeoiHpNhdTxe3rnGfpCtnEHkKlzgxgBKCsKQ9ht9q2VIf3eoelplxGUZZ3XJN6dyw7GoI
-	FbaNacO4CPqg52Ftz5jqPoUGJol3U5hRYvCgY4pPd9iHwwPqxBlpJZaswTbShveiFvkmnDUpJmOkp
-	K1TGLIkNOJ29SE+XgAq1RkbFl8iTSEtV63fO4oEm4L0+mFErG8+aHBMKB7zdkSj1s0r1gUisGfDwn
-	YE9GNbCxEq0mVWEWC6Gg3lImr1C8WAhW0FyzIXQ9rSGtqTfJ77XQBa3S7ElCxR5Q76sbGn6o6Ifre
-	OWlSNQPlOwF/3IU2f9MQ==;
+	List-Owner; bh=5RYw9iTt+Mq5U8BFoouj9VWoC0MO32ngm0w78YkuEZY=; b=gQCIfesyIsu9zy
+	VZkWFGSFRjY/0XHlHFZnyxNizdhHZvfsGLgAKf+jI2+VVRL1lZN906du0XKScFgkTbkEywZ/4ii2R
+	DP7dwrrIGU3CQre4KGVzQTVv6LvY2owarLS9uA0b3aRrtc7HzTVnlG8WtL/j5yXFN0CZZZNaoIng5
+	mYAXpmxb8IXQlOVVn+7HX1bqgq6BfYKtqCHi50j/9tQ9OGnPZIZn21jy23DB10k5OBZz5IP9jrm/b
+	9fmE8Z60tBErvcBxf2jI/tYijpq8V06bqy2L33X4HZ2AB9XNqdTyG+2oEhGDRpWCQF6wzQ+KwX/OV
+	jrKZvTMGO0YseLsJ/IQg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jh6fQ-0001Km-G9; Fri, 05 Jun 2020 07:21:28 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:191:4433::2]
- helo=sipsolutions.net)
+	id 1jh7Mu-0003pQ-Lh; Fri, 05 Jun 2020 08:06:24 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jh6fN-0001KD-UI
- for linux-mediatek@lists.infradead.org; Fri, 05 Jun 2020 07:21:27 +0000
-Received: by sipsolutions.net with esmtpsa
- (TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
- (Exim 4.93) (envelope-from <johannes@sipsolutions.net>)
- id 1jh6f9-009wbC-Bz; Fri, 05 Jun 2020 09:21:11 +0200
-Message-ID: <ec6ea6eea17d7e8a6abaf35e78ffac7568e54831.camel@sipsolutions.net>
-Subject: Re: [PATCH] mt76: mt7663: introduce ARP filter offload
-From: Johannes Berg <johannes@sipsolutions.net>
-To: Lorenzo Bianconi <lorenzo@kernel.org>, nbd@nbd.name
-Date: Fri, 05 Jun 2020 09:21:09 +0200
-In-Reply-To: <e91990d20a1a5f8d134fc9d9df152d9356fd15f9.1591340650.git.lorenzo@kernel.org>
- (sfid-20200605_090717_383122_E28D553B)
-References: <e91990d20a1a5f8d134fc9d9df152d9356fd15f9.1591340650.git.lorenzo@kernel.org>
- (sfid-20200605_090717_383122_E28D553B)
-User-Agent: Evolution 3.36.2 (3.36.2-1.fc32) 
+ id 1jh7Ms-0003ow-35; Fri, 05 Jun 2020 08:06:23 +0000
+X-UUID: 80938bfd12a1476e8161a0db336f0b59-20200605
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=JPwMS253KWO9wyEuaU8F+mAJwhd2XFkcAArD4gWyjuw=; 
+ b=r84M9kbMkAHdhmQ99Ju87LXZPXvyM8eeiUPZyAXXuEDyW7usHpd04ANJ8O4kncROlA0GKAptwjnmCO4nHMXd+qzvcrqLRVtetOswOslkLSyk85r6WJBEmRIWICLVLJndCJcAQt7/zs/5Mfa8diQseoE5IldVP02D+KZfR1PvUsk=;
+X-UUID: 80938bfd12a1476e8161a0db336f0b59-20200605
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <xia.jiang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1922363982; Fri, 05 Jun 2020 00:06:10 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 5 Jun 2020 01:06:13 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 5 Jun 2020 16:06:09 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 5 Jun 2020 16:06:09 +0800
+Message-ID: <1591344245.32607.10.camel@mhfsdcap03>
+Subject: Re: [PATCH v8 08/14] media: platform: Change case for improving
+ code quality
+From: Xia Jiang <xia.jiang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Date: Fri, 5 Jun 2020 16:04:05 +0800
+In-Reply-To: <4b8cc41e-5171-0d48-f588-96e4212ab22c@xs4all.nl>
+References: <20200403094033.8288-1-xia.jiang@mediatek.com>
+ <20200403094033.8288-9-xia.jiang@mediatek.com>
+ <4b8cc41e-5171-0d48-f588-96e4212ab22c@xs4all.nl>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: BC553A6124CC156816443CD8FFFB780032B7C78833E4223FA7C71AEB92EE0B6A2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200605_002125_979613_82E30E8B 
-X-CRM114-Status: UNSURE (   6.28  )
+X-CRM114-CacheID: sfid-20200605_010622_140700_7EF8D2A5 
+X-CRM114-Status: UNSURE (   9.55  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -68,31 +87,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
- ryder.lee@mediatek.com, linux-wireless@vger.kernel.org, sean.wang@mediatek.com
+Cc: drinkcat@chromium.org, devicetree@vger.kernel.org, mojahsu@chromium.org,
+ srv_heupstream@mediatek.com, Rick Chang <rick.chang@mediatek.com>,
+ senozhatsky@chromium.org, linux-kernel@vger.kernel.org,
+ Tomasz Figa <tfiga@chromium.org>, maoguang.meng@mediatek.com,
+ Matthias Brugger <matthias.bgg@gmail.com>, sj.huang@mediatek.com,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-06-05 at 09:07 +0200, Lorenzo Bianconi wrote:
+On Mon, 2020-05-11 at 10:37 +0200, Hans Verkuil wrote:
+> On 03/04/2020 11:40, Xia Jiang wrote:
+> > Change register offset hex numberals from upercase to lowercase.
 > 
-> +		.arp = {
-> +			.tag = cpu_to_le16(UNI_OFFLOAD_OFFLOAD_ARP),
-> +			.len = cpu_to_le16(sizeof(struct mt7615_arpns_tlv)),
-> +			.ips_num = info->arp_addr_cnt,
-
-
-Surely there's *some* hardware limit, after which you need to disable
-the filter? Or does the firmware take the data and discard it, it it's
-got too many IPs?
-
-At the very least, only 255 fit in there, and at least theoretically you
-can assign more to the netdev :)
-
-johannes
-
-
+> Typos:
+> 
+> numberals -> numerals
+> 
+> upercase -> uppercase
+Done.
+> 
+> Regards,
+> 
+> 	Hans
+> 
+> > 
+> > Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
+> > ---
+> > v8: no changes
+> > ---
+> >  drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h | 18 +++++++++---------
+> >  1 file changed, 9 insertions(+), 9 deletions(-)
+> > 
+> > diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
+> > index 94db04e9cdb6..2945da842dfa 100644
+> > --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
+> > +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
+> > @@ -20,29 +20,29 @@
+> >  #define BIT_INQST_MASK_ALLIRQ		0x37
+> >  
+> >  #define JPGDEC_REG_RESET		0x0090
+> > -#define JPGDEC_REG_BRZ_FACTOR		0x00F8
+> > -#define JPGDEC_REG_DU_NUM		0x00FC
+> > +#define JPGDEC_REG_BRZ_FACTOR		0x00f8
+> > +#define JPGDEC_REG_DU_NUM		0x00fc
+> >  #define JPGDEC_REG_DEST_ADDR0_Y		0x0140
+> >  #define JPGDEC_REG_DEST_ADDR0_U		0x0144
+> >  #define JPGDEC_REG_DEST_ADDR0_V		0x0148
+> > -#define JPGDEC_REG_DEST_ADDR1_Y		0x014C
+> > +#define JPGDEC_REG_DEST_ADDR1_Y		0x014c
+> >  #define JPGDEC_REG_DEST_ADDR1_U		0x0150
+> >  #define JPGDEC_REG_DEST_ADDR1_V		0x0154
+> >  #define JPGDEC_REG_STRIDE_Y		0x0158
+> > -#define JPGDEC_REG_STRIDE_UV		0x015C
+> > +#define JPGDEC_REG_STRIDE_UV		0x015c
+> >  #define JPGDEC_REG_IMG_STRIDE_Y		0x0160
+> >  #define JPGDEC_REG_IMG_STRIDE_UV	0x0164
+> > -#define JPGDEC_REG_WDMA_CTRL		0x016C
+> > +#define JPGDEC_REG_WDMA_CTRL		0x016c
+> >  #define JPGDEC_REG_PAUSE_MCU_NUM	0x0170
+> > -#define JPGDEC_REG_OPERATION_MODE	0x017C
+> > +#define JPGDEC_REG_OPERATION_MODE	0x017c
+> >  #define JPGDEC_REG_FILE_ADDR		0x0200
+> > -#define JPGDEC_REG_COMP_ID		0x020C
+> > +#define JPGDEC_REG_COMP_ID		0x020c
+> >  #define JPGDEC_REG_TOTAL_MCU_NUM	0x0210
+> >  #define JPGDEC_REG_COMP0_DATA_UNIT_NUM	0x0224
+> > -#define JPGDEC_REG_DU_CTRL		0x023C
+> > +#define JPGDEC_REG_DU_CTRL		0x023c
+> >  #define JPGDEC_REG_TRIG			0x0240
+> >  #define JPGDEC_REG_FILE_BRP		0x0248
+> > -#define JPGDEC_REG_FILE_TOTAL_SIZE	0x024C
+> > +#define JPGDEC_REG_FILE_TOTAL_SIZE	0x024c
+> >  #define JPGDEC_REG_QT_ID		0x0270
+> >  #define JPGDEC_REG_INTERRUPT_STATUS	0x0274
+> >  #define JPGDEC_REG_STATUS		0x0278
+> > 
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
