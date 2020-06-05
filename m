@@ -2,67 +2,89 @@ Return-Path: <SRS0=fggR=7S=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EE27CC433E1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 12:56:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 41E97C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 13:02:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C27EF206A2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 12:56:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 15A6520772
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 13:02:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jKJtTQ+9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C27EF206A2
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=allwinnertech.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rwO0zYcI";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="i5o+dER1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 15A6520772
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QMkQYyq9f4aS9JyLZ3R35earacJI3DT8U8wIkJe7O54=; b=jKJtTQ+955atTy
-	y3uXYXzA1wuybPdLgbiwrA+KxsGyusxjL+26FWWetZe0t9BW1XmeZKuQj/PZIr0AxNCw+tfF/B3OV
-	v96isftaTAV+6Mp/THwcF2OYTvDC9gDitmlmYLVSHvPB1GD64itFFl4QiJQt4w+NKXu2kVZQdWP6p
-	DDSEglCO8u17PAqpcWH6iBD/EXa4hR2Kv8OYKzmvFrRLFQuoT4IusoPgTNC7K/lhhUY5n4EP8IjNL
-	dR2Mkhgcafyj2Ex19vTVQmszTXQbD/2sNLX49TFRkSUahBGUm6eDTckK3q4IHPT8FfXCE+nmvfz5Q
-	GJwJNQQkMnStCD+OtVBg==;
+	List-Owner; bh=n2vYphtHF3txTtSiBlrqyLN9piDdpVOgdW07Kv5kT8k=; b=rwO0zYcI4Wj9g5
+	SPxG7VgSy6ZjgP5IpMD7SxgmCCjRb98Yqyv50lCC7sajI5s+SsedSpwELkYtbPSM5bgocLn5d+1bj
+	FZlD6AtgHSVZYht+BW9SJX6/BJzjN9IctQ+1SXaBpfB4ZAPLfbmwjI9Hgm9QA3K1UnspYQ0JCeN2v
+	yxvQhKmxQG2EeGYZbCKDJYtkdVKxccIPUqjICUWfKYLoNJf7OmtJ235F3fHW1/blvRRSMkhuKlWGi
+	1p1zaTgDS/A9rXpT2hJq30lRsTmZLPewmdOkyTdzMt5HSzsLJ/Xj0xgtRVYi8fqZ0ERbxniUN75z4
+	3BfFWOsNl2qFyldoQpEg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jhBtb-0003Z4-51; Fri, 05 Jun 2020 12:56:27 +0000
-Received: from smtp2207-205.mail.aliyun.com ([121.197.207.205])
+	id 1jhBzQ-0007UI-6E; Fri, 05 Jun 2020 13:02:28 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jhBt3-0002zi-WA; Fri, 05 Jun 2020 12:55:56 +0000
-X-Alimail-AntiSpam: AC=CONTINUE; BC=0.1869643|-1; CH=green; DM=|CONTINUE|false|;
- DS=CONTINUE|ham_social|0.00106272-0.000406173-0.998531; FP=0|0|0|0|0|-1|-1|-1;
- HT=e02c03294; MF=frank@allwinnertech.com; NM=1; PH=DS; RN=13; RT=13; SR=0;
- TI=SMTPD_---.Hib7hso_1591361738; 
-Received: from allwinnertech.com(mailfrom:frank@allwinnertech.com
- fp:SMTPD_---.Hib7hso_1591361738)
- by smtp.aliyun-inc.com(10.147.41.143);
- Fri, 05 Jun 2020 20:55:47 +0800
-From: Frank Lee <frank@allwinnertech.com>
-To: chaotian.jing@mediatek.com, ulf.hansson@linaro.org, matthias.bgg@gmail.com,
- mripard@kernel.org, wens@csie.org, tiny.windzz@gmail.com, rmfrfs@gmail.com,
- frank@allwinnertech.com, marex@denx.de, linux-mmc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH 2/2] mmc: mediatek: do not hide address in
- msdc_request_timeout()
-Date: Fri,  5 Jun 2020 20:55:45 +0800
-Message-Id: <20200605125545.31974-2-frank@allwinnertech.com>
-X-Mailer: git-send-email 2.24.0
-In-Reply-To: <20200605125545.31974-1-frank@allwinnertech.com>
-References: <20200605125545.31974-1-frank@allwinnertech.com>
+ id 1jhBzE-0007Ii-I3
+ for linux-mediatek@lists.infradead.org; Fri, 05 Jun 2020 13:02:17 +0000
+Received: by mail-wr1-x444.google.com with SMTP id x13so9678677wrv.4
+ for <linux-mediatek@lists.infradead.org>; Fri, 05 Jun 2020 06:02:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=y3GLNe1uiEEyqomGYmE3fIeULXusz66pcaCDflcIBb4=;
+ b=i5o+dER1J+4I9KjApGJUl5j8vc3AgLlhglvEfXsfp9xNaKskTKEJLqxNDa11iCBswD
+ lHjCEBND3KFJe13zffeJZSFvRRMjnmD1xDuFAStUns7l00Mhdzdv/n2dDXwdUGNLjoMR
+ Q8UajpX7oLNc+ArM8+h2A4JIYy6XJYGovy2B4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=y3GLNe1uiEEyqomGYmE3fIeULXusz66pcaCDflcIBb4=;
+ b=fJFOmhrsPEJNhgLIiHdeXNlV9DN8ecM+0sw1wEovtLrs4f7if2hbNz9hf6xc11pfi1
+ zBKGSbQadY1nAMAdgQeCTJ/eTzK+m6KKYTJ3HxR3ZaB7QFgWu9mXP9QUnCnrfh6Y1RDo
+ KBp1OxYMlTgeTZHHOEB3FTlliSRha/a0oI6vq76qmwpcqnYyZ5RVZ/whVXa9g7b8EqLJ
+ ioCNGYERmNT8cRqY9VBWezpFVoL7ApzvcuIfHGnxxWtLNsqxfn9Wp6RIkTFjEAVq9dAr
+ G6qVliz8FbxHpFwSTwfm9Pr9FnVJcEuBv1UYqSrnxXt0xUjJ1z8pi3qfzt/KJ94rN/B+
+ +3mA==
+X-Gm-Message-State: AOAM532DLLegobGVIHvkKFgXVdOPZsrW96vhOiqY4Gk1kJV9QzsIJxmn
+ o8f2HDFuamHAY3E85zwmXQcjGg==
+X-Google-Smtp-Source: ABdhPJzbEgAdOn5Dla25twrnFWibCM+By/CY94AZjk2Mnb7Wp+Gcych9tY+BqMoYs3yiFXxox2M6aQ==
+X-Received: by 2002:a05:6000:12c8:: with SMTP id
+ l8mr9792905wrx.148.1591362134700; 
+ Fri, 05 Jun 2020 06:02:14 -0700 (PDT)
+Received: from chromium.org (205.215.190.35.bc.googleusercontent.com.
+ [35.190.215.205])
+ by smtp.gmail.com with ESMTPSA id d5sm12890866wrb.14.2020.06.05.06.02.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 05 Jun 2020 06:02:14 -0700 (PDT)
+Date: Fri, 5 Jun 2020 13:02:12 +0000
+From: Tomasz Figa <tfiga@chromium.org>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Dongchun Zhu <dongchun.zhu@mediatek.com>
+Subject: Re: [V7, 2/2] media: i2c: dw9768: Add DW9768 VCM driver
+Message-ID: <20200605130212.GA6303@chromium.org>
+References: <20200605105412.18813-1-dongchun.zhu@mediatek.com>
+ <20200605105412.18813-3-dongchun.zhu@mediatek.com>
+ <20200605121459.GS16711@paasikivi.fi.intel.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200605121459.GS16711@paasikivi.fi.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200605_055554_221760_FF0E2262 
-X-CRM114-Status: UNSURE (   8.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200605_060216_618159_46108974 
+X-CRM114-Status: GOOD (  12.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,37 +96,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: mark.rutland@arm.com, drinkcat@chromium.org,
+ andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
+ devicetree@vger.kernel.org, linus.walleij@linaro.org,
+ shengnan.wang@mediatek.com, bgolaszewski@baylibre.com, sj.huang@mediatek.com,
+ robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
+ Dongchun Zhu <dongchun.zhu@mediatek.com>, louis.kuo@mediatek.com,
+ matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yangtao Li <tiny.windzz@gmail.com>
+On Fri, Jun 05, 2020 at 03:14:59PM +0300, Sakari Ailus wrote:
+> Hi Dongchun,
+> 
+> Thank you for the update.
+> 
+> On Fri, Jun 05, 2020 at 06:54:12PM +0800, Dongchun Zhu wrote:
+> > Add a V4L2 sub-device driver for DW9768 voice coil motor, providing
+> > control to set the desired focus via IIC serial interface.
+> > 
+> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > ---
+> >  MAINTAINERS                |   1 +
+> >  drivers/media/i2c/Kconfig  |  13 ++
+> >  drivers/media/i2c/Makefile |   1 +
+> >  drivers/media/i2c/dw9768.c | 566 +++++++++++++++++++++++++++++++++++++++++++++
+> >  4 files changed, 581 insertions(+)
+> >  create mode 100644 drivers/media/i2c/dw9768.c
+[snip]
+> > +static int dw9768_runtime_suspend(struct device *dev)
+> > +{
+> > +	struct i2c_client *client = to_i2c_client(dev);
+> > +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> > +	struct dw9768 *dw9768 = sd_to_dw9768(sd);
+> > +
+> > +	dw9768_release(dw9768);
+> > +	regulator_bulk_disable(ARRAY_SIZE(dw9768_supply_names),
+> > +			       dw9768->supplies);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int dw9768_runtime_resume(struct device *dev)
+> 
+> __maybe_unused for this and the suspend callback.
+>
 
-Using %px to show the actual address in msdc_request_timeout()
-to help us to debug issue.
+These are always used. If runtime PM is disabled, they are called
+explicitly in probe and remove.
 
-Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
-Signed-off-by: Frank Lee <frank@allwinnertech.com>
----
- drivers/mmc/host/mtk-sd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 39e7fc54c438..28b4a136fc72 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -1411,7 +1411,7 @@ static void msdc_request_timeout(struct work_struct *work)
- 	/* simulate HW timeout status */
- 	dev_err(host->dev, "%s: aborting cmd/data/mrq\n", __func__);
- 	if (host->mrq) {
--		dev_err(host->dev, "%s: aborting mrq=%p cmd=%d\n", __func__,
-+		dev_err(host->dev, "%s: aborting mrq=%px cmd=%d\n", __func__,
- 				host->mrq, host->mrq->cmd->opcode);
- 		if (host->cmd) {
- 			dev_err(host->dev, "%s: aborting cmd=%d\n",
--- 
-2.24.0
+Best regards,
+Tomasz
 
 
 _______________________________________________
