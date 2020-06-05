@@ -2,65 +2,82 @@ Return-Path: <SRS0=fggR=7S=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CE0BEC433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 07:07:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 96E89C433EC
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 07:19:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9E54A206A2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 07:07:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 61DA1206E6
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2020 07:19:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="n2sAl2c1";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Y72MFhDR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9E54A206A2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QWwTkceb";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="eRUgmimQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 61DA1206E6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=9xgKo97NBt5Q6iGrVjT5XX/3g/f/YYhqv4HxsZr39O4=; b=n2sAl2c13XgZz/
-	CZdDNrpRrjFdhmYrs15cNuSsvXrscPuuFX9BlT7Oj7mL+pA4p+2feQxhYOpcXc06bZrbqPzMUVHsM
-	BzIA1N/idFgeS8voPWgRihr1htEIEQRn967boZYqBKGq7Y06eo89cQdpc/5yf/cV6e0sexdpHyTXf
-	5t8BZE4C/hnjAyiukrBPC+55+EXNAMKtMq5V18S4Ms6qC7Jgf0a3v0YQ2YWNo75quqKCQ3y4FJd0E
-	OcUJ9NVZ3KcwChIoAkl6P8i2wbz7yjbF21W4rWHhfyguQJZfPkNqQU5Ybt7h6pSPLct6GOZZ4fodI
-	SNBskqMqnGMeMtgDEOuw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Uo4Ptqv1n9ojQt2Wer0cUKJqxIQV8owZyuyAmnXUb24=; b=QWwTkcebAeRfP8
+	xHH0T1A6/sdWjMYH03NETii+JbEzKPCPYcMavmkEK0z4kLK9fzgWXUKjfQky0Wdxp9fkDsh93Wc1N
+	tEVMIiu2TK316DGPTkDzUAvsTFSi2/PplpmGyjSxSuYPcJtcfWcbZBsurvljzbE9UkCqP81Uxt+zN
+	JEgVxEm30TMHQIPi1ZtNFuPpQnDkfKTqAAeIr5o/uwdZl0pkn2KWJ2IYpw7fcJWmeTH2n3WcRCZsi
+	OY6l8aZT1B+89NXbcxQXxT/T1IKWFl4g6obFqIqHECpOs0BX6stftlFnrgST54mLvXOX9huwJdCZ7
+	ohpBDX/P4iptlUkbq5PQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jh6Rk-0000eU-Fc; Fri, 05 Jun 2020 07:07:20 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jh6dX-0006zk-5R; Fri, 05 Jun 2020 07:19:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jh6Rh-0000e3-6U
- for linux-mediatek@lists.infradead.org; Fri, 05 Jun 2020 07:07:18 +0000
-Received: from localhost.localdomain.com (unknown [151.48.128.87])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7D03D206A2;
- Fri,  5 Jun 2020 07:07:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1591340834;
- bh=zejQr7shiN3GCZs4dCE88fVWh0RsGCnoMHHmXcazioI=;
- h=From:To:Cc:Subject:Date:From;
- b=Y72MFhDRJqlBVzp9gYD6la+AIzlrtSN1Mkw0AMF3P3/delbj1Ok8wR3KaU7/cY4Bo
- GnTGV6Slw6GUQIDQfmMg2zr5g0THbUmTAGZe6ezcvrYFYnzKegImYqIPdguGM7Li7O
- wdZFkO/dx8SydmWtRnVn03cyY6tqSRCPC76dgXlw=
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: nbd@nbd.name
-Subject: [PATCH] mt76: mt7663: introduce ARP filter offload
-Date: Fri,  5 Jun 2020 09:07:03 +0200
-Message-Id: <e91990d20a1a5f8d134fc9d9df152d9356fd15f9.1591340650.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.26.2
+ id 1jh6dO-0006rd-AH; Fri, 05 Jun 2020 07:19:24 +0000
+X-UUID: c083943d612b4a869cf09eeaab99ee6a-20200604
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=19vrRMWmwFaMyOZYFFMoP+8hHxPd3vzl6HzvP+kgneA=; 
+ b=eRUgmimQlFZ6AZJ/3IWyZnpOJC5IMqXvTl2EfUa2/YYd6HQ/6evybwUs92sFfhgp/gDMhRl2v7lp57w9mbzvUadUdgfbsojAR5RaJswqBrDIUsS43c4z9gc5qPQfR2MC97TxK8e8qi3s6Y6dIIGuGU6z9m8d55AAdw+wcqQr8QU=;
+X-UUID: c083943d612b4a869cf09eeaab99ee6a-20200604
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <neal.liu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1160223889; Thu, 04 Jun 2020 23:19:08 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 5 Jun 2020 00:19:10 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 5 Jun 2020 15:19:03 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 5 Jun 2020 15:19:02 +0800
+Message-ID: <1591341543.19510.4.camel@mtkswgap22>
+Subject: Re: Security Random Number Generator support
+From: Neal Liu <neal.liu@mediatek.com>
+To: Russell King - ARM Linux admin <linux@armlinux.org.uk>, Marc Zyngier
+ <maz@kernel.org>
+Date: Fri, 5 Jun 2020 15:19:03 +0800
+In-Reply-To: <20200603093416.GY1551@shell.armlinux.org.uk>
+References: <1591085678-22764-1-git-send-email-neal.liu@mediatek.com>
+ <CAMj1kXHjAdk5=-uSh_=S9j5cz42zr3h6t+YYGy+obevuQDp0fg@mail.gmail.com>
+ <85dfc0142d3879d50c0ba18bcc71e199@misterjones.org>
+ <1591169342.4878.9.camel@mtkswgap22>
+ <fcbe37f6f9cbcde24f9c28bc504f1f0e@kernel.org>
+ <20200603093416.GY1551@shell.armlinux.org.uk>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 57A0643566E8C5377AB748C11626465C1385BB50C574232E8C6EF02F5FB61C3F2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200605_000717_282038_8CA03CDF 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20200605_001922_356217_68C01A0F 
+X-CRM114-Status: GOOD (  24.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,192 +89,122 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
- ryder.lee@mediatek.com, linux-wireless@vger.kernel.org, sean.wang@mediatek.com
+Cc: "open list:OPEN FIRMWARE AND FLATTENED
+ DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
+ Julius Werner <jwerner@google.com>, Herbert Xu <herbert@gondor.apana.org.au>,
+ Arnd
+ Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sean Wang <sean.wang@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ lkml <linux-kernel@vger.kernel.org>, wsd_upstream <wsd_upstream@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, Neal Liu <neal.liu@mediatek.com>,
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
+ Matt Mackall <mpm@selenic.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Crystal Guo =?UTF-8?Q?=28=E9=83=AD=E6=99=B6=29?= <Crystal.Guo@mediatek.com>,
+ Ard Biesheuvel <ardb@kernel.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On Wed, 2020-06-03 at 17:34 +0800, Russell King - ARM Linux admin wrote:
+> On Wed, Jun 03, 2020 at 08:40:58AM +0100, Marc Zyngier wrote:
+> > On 2020-06-03 08:29, Neal Liu wrote:
+> > > On Tue, 2020-06-02 at 21:02 +0800, Marc Zyngier wrote:
+> > > > On 2020-06-02 13:14, Ard Biesheuvel wrote:
+> > > > > On Tue, 2 Jun 2020 at 10:15, Neal Liu <neal.liu@mediatek.com> wrote:
+> > > > >>
+> > > > >> These patch series introduce a security random number generator
+> > > > >> which provides a generic interface to get hardware rnd from Secure
+> > > > >> state. The Secure state can be Arm Trusted Firmware(ATF), Trusted
+> > > > >> Execution Environment(TEE), or even EL2 hypervisor.
+> > > > >>
+> > > > >> Patch #1..2 adds sec-rng kernel driver for Trustzone based SoCs.
+> > > > >> For security awareness SoCs on ARMv8 with TrustZone enabled,
+> > > > >> peripherals like entropy sources is not accessible from normal world
+> > > > >> (linux) and rather accessible from secure world (HYP/ATF/TEE) only.
+> > > > >> This driver aims to provide a generic interface to Arm Trusted
+> > > > >> Firmware or Hypervisor rng service.
+> > > > >>
+> > > > >>
+> > > > >> changes since v1:
+> > > > >> - rename mt67xx-rng to mtk-sec-rng since all MediaTek ARMv8 SoCs can
+> > > > >> reuse
+> > > > >>   this driver.
+> > > > >>   - refine coding style and unnecessary check.
+> > > > >>
+> > > > >>   changes since v2:
+> > > > >>   - remove unused comments.
+> > > > >>   - remove redundant variable.
+> > > > >>
+> > > > >>   changes since v3:
+> > > > >>   - add dt-bindings for MediaTek rng with TrustZone enabled.
+> > > > >>   - revise HWRNG SMC call fid.
+> > > > >>
+> > > > >>   changes since v4:
+> > > > >>   - move bindings to the arm/firmware directory.
+> > > > >>   - revise driver init flow to check more property.
+> > > > >>
+> > > > >>   changes since v5:
+> > > > >>   - refactor to more generic security rng driver which
+> > > > >>     is not platform specific.
+> > > > >>
+> > > > >> *** BLURB HERE ***
+> > > > >>
+> > > > >> Neal Liu (2):
+> > > > >>   dt-bindings: rng: add bindings for sec-rng
+> > > > >>   hwrng: add sec-rng driver
+> > > > >>
+> > > > >
+> > > > > There is no reason to model a SMC call as a driver, and represent it
+> > > > > via a DT node like this.
+> > > > 
+> > > > +1.
+> > > > 
+> > > > > It would be much better if this SMC interface is made truly generic,
+> > > > > and wired into the arch_get_random() interface, which can be used much
+> > > > > earlier.
+> > > > 
+> > > > Wasn't there a plan to standardize a SMC call to rule them all?
+> > > > 
+> > > >          M.
+> > > 
+> > > Could you give us a hint how to make this SMC interface more generic in
+> > > addition to my approach?
+> > > There is no (easy) way to get platform-independent SMC function ID,
+> > > which is why we encode it into device tree, and provide a generic
+> > > driver. In this way, different devices can be mapped and then get
+> > > different function ID internally.
+> > 
+> > The idea is simply to have *one* single ID that caters for all
+> > implementations, just like we did for PSCI at the time. This
+> > requires ARM to edict a standard, which is what I was referring
+> > to above.
+> 
+> This sounds all too familiar.
+> 
+> This kind of thing is something that ARM have seems to shy away from
+> doing - it's a point I brought up many years ago when the whole
+> trustzone thing first appeared with its SMC call.  Those around the
+> conference table were not interested - ARM seemed to prefer every
+> vendor to do off and do their own thing with the SMC interface.
 
-Introduce ARP filter offload
+Does that mean it make sense to model a sec-rng driver, and get each
+vendor's SMC function id by DT node?
 
-Co-developed-by: Wan-Feng Jiang <Wan-Feng.Jiang@mediatek.com>
-Signed-off-by: Wan-Feng Jiang <Wan-Feng.Jiang@mediatek.com>
-Co-developed-by: Soul Huang <Soul.Huang@mediatek.com>
-Signed-off-by: Soul Huang <Soul.Huang@mediatek.com>
-Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7615/main.c  |  3 +
- .../net/wireless/mediatek/mt76/mt7615/mcu.c   | 74 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7615/mcu.h   | 13 +++-
- .../wireless/mediatek/mt76/mt7615/mt7615.h    |  4 +-
- 4 files changed, 91 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-index beaca8127680..81fc4982a01f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-@@ -491,6 +491,9 @@ static void mt7615_bss_info_changed(struct ieee80211_hw *hw,
- 	if (changed & BSS_CHANGED_PS)
- 		mt7615_mcu_set_vif_ps(dev, vif);
- 
-+	if (changed & BSS_CHANGED_ARP_FILTER)
-+		mt7615_mcu_update_arp_filter(hw, vif, info);
-+
- 	mutex_unlock(&dev->mt76.mutex);
- }
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index 6e869b8c5e26..0850b13b7007 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -3542,6 +3542,32 @@ mt7615_mcu_set_gtk_rekey(struct mt7615_dev *dev,
- 				   &req, sizeof(req), true);
- }
- 
-+static int
-+mt7615_mcu_set_arp_filter(struct mt7615_dev *dev, struct ieee80211_vif *vif,
-+			  bool suspend)
-+{
-+	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
-+	struct {
-+		struct {
-+			u8 bss_idx;
-+			u8 pad[3];
-+		} __packed hdr;
-+		struct mt7615_arpns_tlv arpns;
-+	} req = {
-+		.hdr = {
-+			.bss_idx = mvif->idx,
-+		},
-+		.arpns = {
-+			.tag = cpu_to_le16(UNI_OFFLOAD_OFFLOAD_ARP),
-+			.len = cpu_to_le16(sizeof(struct mt7615_arpns_tlv)),
-+			.mode = suspend,
-+		},
-+	};
-+
-+	return __mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD_OFFLOAD,
-+				   &req, sizeof(req), true);
-+}
-+
- void mt7615_mcu_set_suspend_iter(void *priv, u8 *mac,
- 				 struct ieee80211_vif *vif)
- {
-@@ -3554,6 +3580,7 @@ void mt7615_mcu_set_suspend_iter(void *priv, u8 *mac,
- 	mt7615_mcu_set_bss_pm(phy->dev, vif, suspend);
- 
- 	mt7615_mcu_set_gtk_rekey(phy->dev, vif, suspend);
-+	mt7615_mcu_set_arp_filter(phy->dev, vif, suspend);
- 
- 	mt7615_mcu_set_suspend_mode(phy->dev, vif, suspend, 1, true);
- 
-@@ -3653,6 +3680,53 @@ int mt7615_mcu_set_roc(struct mt7615_phy *phy, struct ieee80211_vif *vif,
- 				   sizeof(req), false);
- }
- 
-+int mt7615_mcu_update_arp_filter(struct ieee80211_hw *hw,
-+				 struct ieee80211_vif *vif,
-+				 struct ieee80211_bss_conf *info)
-+{
-+	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
-+	struct mt7615_dev *dev = mt7615_hw_dev(hw);
-+	struct sk_buff *skb;
-+	struct {
-+		struct {
-+			u8 bss_idx;
-+			u8 pad[3];
-+		} __packed hdr;
-+		struct mt7615_arpns_tlv arp;
-+	} req_hdr = {
-+		.hdr = {
-+			.bss_idx = mvif->idx,
-+		},
-+		.arp = {
-+			.tag = cpu_to_le16(UNI_OFFLOAD_OFFLOAD_ARP),
-+			.len = cpu_to_le16(sizeof(struct mt7615_arpns_tlv)),
-+			.ips_num = info->arp_addr_cnt,
-+			.mode = 2,  /* update purpose */
-+			.option = 1,
-+		},
-+	};
-+	int i;
-+
-+	if (!mt7615_firmware_offload(dev))
-+		return 0;
-+
-+	skb = mt76_mcu_msg_alloc(&dev->mt76, NULL,
-+				 sizeof(req_hdr) +
-+				 info->arp_addr_cnt * sizeof(__be32));
-+	if (!skb)
-+		return -ENOMEM;
-+
-+	skb_put_data(skb, &req_hdr, sizeof(req_hdr));
-+	for (i = 0; i < info->arp_addr_cnt; i++) {
-+		u8 *addr = (u8 *)skb_put(skb, sizeof(__be32));
-+
-+		memcpy(addr, &info->arp_addr_list[i], sizeof(__be32));
-+	}
-+
-+	return __mt76_mcu_skb_send_msg(&dev->mt76, skb,
-+				       MCU_UNI_CMD_OFFLOAD, true);
-+}
-+
- int mt7615_mcu_set_p2p_oppps(struct ieee80211_hw *hw,
- 			     struct ieee80211_vif *vif)
- {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
-index 2314d0b23af1..64f7471a57bb 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
-@@ -545,6 +545,15 @@ struct mt7615_roc_tlv {
- 	u8 rsv1[8];
- } __packed;
- 
-+struct mt7615_arpns_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	u8 mode;
-+	u8 ips_num;
-+	u8 option;
-+	u8 pad[1];
-+} __packed;
-+
- /* offload mcu commands */
- enum {
- 	MCU_CMD_START_HW_SCAN = MCU_CE_PREFIX | 0x03,
-@@ -580,8 +589,8 @@ enum {
- };
- 
- enum {
--	UNI_OFFLOAD_OFFLOAD_ARPNS_IPV4,
--	UNI_OFFLOAD_OFFLOAD_ARPNS_IPV6,
-+	UNI_OFFLOAD_OFFLOAD_ARP,
-+	UNI_OFFLOAD_OFFLOAD_ND,
- 	UNI_OFFLOAD_OFFLOAD_GTK_REKEY,
- 	UNI_OFFLOAD_OFFLOAD_BMC_RPY_DETECT,
- };
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-index 3e7d51bf42a4..a9513a456521 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-@@ -585,7 +585,9 @@ void mt7615_mcu_set_suspend_iter(void *priv, u8 *mac,
- int mt7615_mcu_update_gtk_rekey(struct ieee80211_hw *hw,
- 				struct ieee80211_vif *vif,
- 				struct cfg80211_gtk_rekey_data *key);
--
-+int mt7615_mcu_update_arp_filter(struct ieee80211_hw *hw,
-+				 struct ieee80211_vif *vif,
-+				 struct ieee80211_bss_conf *info);
- int __mt7663_load_firmware(struct mt7615_dev *dev);
- 
- /* usb */
--- 
-2.26.2
+> 
+> Then OMAP came along with its SMC interfaces, and so did the pain of
+> not having a standardised way to configure the L2C when Linux was
+> running in the non-secure world, resulting in stuff like l2c_configure
+> etc, where each and every implementation has to supply a function to
+> call its platform specific SMC interfaces to configure a piece of
+> hardware common across many different platforms.
+> 
+> ARM have seemed reluctant to standardise on stuff like this, so
+> unless someone pushes hard for it from inside ARM, I doubt it will
+> ever happen.
+> 
 
 
 _______________________________________________
