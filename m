@@ -1,22 +1,23 @@
-Return-Path: <SRS0=8MsW=7V=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=7QZl=7W=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 22EF5C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jun 2020 23:55:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3AEC2C433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2020 01:00:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ED6EC2078C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jun 2020 23:55:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 108ED20737
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2020 01:00:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ltbLG9b8";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="GOPe+DPo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ED6EC2078C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fs1ogzi2";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Eqs4ko/Z"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 108ED20737
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,47 +26,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TXim0LvQGL8BpPq1/vXbcFWVR2anHHGjjNFsVHSp1Zg=; b=ltbLG9b8vZuyNQ
-	jiIctcG2KIbK/CTdJMuF4f5Tj1BIKHdRzVevxTn9sFSMMNvsDCeqTjTysxowWZC5xejGtXLuRJFwB
-	JN4775SVZwNXxsQI1ZzMJCQ6RgYu73/TEI6FyVicscE2/PvfibDVGVqA3zBpGaJei56n6LhICnhFu
-	SDYb7LqfGBpknGT+ZvMLyU85EVtmOOWQM7ILgQg84QHZE/fubPOee1Y63Emqus/oYmb6y/nrg4CRE
-	rMjpFAYMUpyvP67RBhMNuasgE5F7iQUbpkPMVq6JpnYh7U1ZJ527PyVIh8BYRnObr5anBts+Bhe6h
-	MTgLvlsbGmGKeFTm8LKA==;
+	List-Owner; bh=qqOWhX0D5Aa1UcfuXmFytEgL6+PtURWXXZuy5aI3ixs=; b=fs1ogzi2hnbOmg
+	eWFxh2offoZYJ/HgWwxm6XWv95/DUb255m89yEm3WWko1tJhF3ZBFSFfatB2pxd1D63HK4gKlbA0E
+	mbw3FHKFPhpyAnxtRvWKOAPJN4adj6do1j6nPFrROJqqTZTj/pvDNsVYpzOsHZlm0qNI/B1YLDIPA
+	l/G67XGA8VfQDoZOTAGBQIEaUj/Uh6iapbA5yIrI45phvHwEYX1l+K/hAFj7O+/wAcMNidVEIgJBM
+	TvbD7L1BJSAQnnb+9RLgHnLNI0lFGAIy5/djQTp3HxbK1vGNZdsq2GlvqNm9Mlr2qBMwMD6mvX6tR
+	oiTnWby+jAGMleBUjbYg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jiRcA-0006bM-NL; Mon, 08 Jun 2020 23:55:38 +0000
+	id 1jiSct-0008VV-Vs; Tue, 09 Jun 2020 01:00:27 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jiRAa-000801-PL; Mon, 08 Jun 2020 23:27:15 +0000
+ id 1jiR7l-0003N1-Hm; Mon, 08 Jun 2020 23:24:27 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E5E212078D;
- Mon,  8 Jun 2020 23:27:06 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id CA99820C09;
+ Mon,  8 Jun 2020 23:24:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1591658828;
- bh=JpyXvZPwGmhcDX7HBvEqn00iZ7V++vRJV0NKykGQJf4=;
+ s=default; t=1591658652;
+ bh=IqCUM9sZg594VtkheaSNPK3OdjQSTv3twTQ/DtdW8k8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=GOPe+DPouTkMogf9DFV/c2fHeFf+WNPF6+pdll2L2mq/McZb0hPqXkknU1U55+18e
- 6gjcX7zAj/XldOLb73XZxbbexm+3tf+XHqmKAD4fqcAPRZExEyd/1vy26QYnxV+wxX
- EPP4DNt1xLYpltfD1nfYGZnRHnaIO2Fj5g2q6k5U=
+ b=Eqs4ko/ZwLhdCeE2CTzK/RymRNakwWD5+OkYkSD20NLAq5c9UeXn12gXOh4nMA4Kq
+ gO9jzBNFVYuY422qcCpqlGmm58iF4TRBCn3eRqQOcoyxtNiiww0uUrtP9GOIFXeay8
+ 1fBfOAfLtr068UN0xeKCVNyUzMRhszv5Gms93kRo=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.9 19/50] dt-bindings: display: mediatek: control dpi
- pins mode to avoid leakage
-Date: Mon,  8 Jun 2020 19:26:09 -0400
-Message-Id: <20200608232640.3370262-19-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 071/106] mt76: avoid rx reorder buffer overflow
+Date: Mon,  8 Jun 2020 19:22:03 -0400
+Message-Id: <20200608232238.3368589-71-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200608232640.3370262-1-sashal@kernel.org>
-References: <20200608232640.3370262-1-sashal@kernel.org>
+In-Reply-To: <20200608232238.3368589-1-sashal@kernel.org>
+References: <20200608232238.3368589-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200608_162708_914226_26B340D5 
-X-CRM114-Status: UNSURE (   8.20  )
+X-CRM114-CacheID: sfid-20200608_162413_615744_2376BD60 
+X-CRM114-Status: UNSURE (   9.27  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -78,55 +78,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Rob Herring <robh@kernel.org>,
- Jitao Shi <jitao.shi@mediatek.com>, devicetree@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: Sasha Levin <sashal@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Chih-Min Chen <chih-min.chen@mediatek.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jitao Shi <jitao.shi@mediatek.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
 
-[ Upstream commit b0ff9b590733079f7f9453e5976a9dd2630949e3 ]
+[ Upstream commit 7c4f744d6703757be959f521a7a441bf34745d99 ]
 
-Add property "pinctrl-names" to swap pin mode between gpio and dpi mode.
-Set the dpi pins to gpio mode and output-low to avoid leakage current
-when dpi disabled.
+Enlarge slot to support 11ax 256 BA (256 MPDUs in an AMPDU)
 
-Acked-by: Rob Herring <robh@kernel.org>
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Signed-off-by: Chih-Min Chen <chih-min.chen@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- .../devicetree/bindings/display/mediatek/mediatek,dpi.txt   | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/net/wireless/mediatek/mt76/agg-rx.c | 8 ++++----
+ drivers/net/wireless/mediatek/mt76/mt76.h   | 6 +++---
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
-index b6a7e7397b8b..b944fe067188 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
-@@ -16,6 +16,9 @@ Required properties:
-   Documentation/devicetree/bindings/graph.txt. This port should be connected
-   to the input port of an attached HDMI or LVDS encoder chip.
+diff --git a/drivers/net/wireless/mediatek/mt76/agg-rx.c b/drivers/net/wireless/mediatek/mt76/agg-rx.c
+index 73c8b2805c97..d44d57e6eb27 100644
+--- a/drivers/net/wireless/mediatek/mt76/agg-rx.c
++++ b/drivers/net/wireless/mediatek/mt76/agg-rx.c
+@@ -154,8 +154,8 @@ void mt76_rx_aggr_reorder(struct sk_buff *skb, struct sk_buff_head *frames)
+ 	struct ieee80211_sta *sta;
+ 	struct mt76_rx_tid *tid;
+ 	bool sn_less;
+-	u16 seqno, head, size;
+-	u8 ackp, idx;
++	u16 seqno, head, size, idx;
++	u8 ackp;
  
-+Optional properties:
-+- pinctrl-names: Contain "default" and "sleep".
-+
- Example:
+ 	__skb_queue_tail(frames, skb);
  
- dpi0: dpi@1401d000 {
-@@ -26,6 +29,9 @@ dpi0: dpi@1401d000 {
- 		 <&mmsys CLK_MM_DPI_ENGINE>,
- 		 <&apmixedsys CLK_APMIXED_TVDPLL>;
- 	clock-names = "pixel", "engine", "pll";
-+	pinctrl-names = "default", "sleep";
-+	pinctrl-0 = <&dpi_pin_func>;
-+	pinctrl-1 = <&dpi_pin_idle>;
+@@ -240,7 +240,7 @@ void mt76_rx_aggr_reorder(struct sk_buff *skb, struct sk_buff_head *frames)
+ }
  
- 	port {
- 		dpi0_out: endpoint {
+ int mt76_rx_aggr_start(struct mt76_dev *dev, struct mt76_wcid *wcid, u8 tidno,
+-		       u16 ssn, u8 size)
++		       u16 ssn, u16 size)
+ {
+ 	struct mt76_rx_tid *tid;
+ 
+@@ -264,7 +264,7 @@ EXPORT_SYMBOL_GPL(mt76_rx_aggr_start);
+ 
+ static void mt76_rx_aggr_shutdown(struct mt76_dev *dev, struct mt76_rx_tid *tid)
+ {
+-	u8 size = tid->size;
++	u16 size = tid->size;
+ 	int i;
+ 
+ 	cancel_delayed_work(&tid->reorder_work);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 2eab35879163..7b1667ec619e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -193,8 +193,8 @@ struct mt76_rx_tid {
+ 	struct delayed_work reorder_work;
+ 
+ 	u16 head;
+-	u8 size;
+-	u8 nframes;
++	u16 size;
++	u16 nframes;
+ 
+ 	u8 started:1, stopped:1, timer_pending:1;
+ 
+@@ -537,7 +537,7 @@ int mt76_get_survey(struct ieee80211_hw *hw, int idx,
+ void mt76_set_stream_caps(struct mt76_dev *dev, bool vht);
+ 
+ int mt76_rx_aggr_start(struct mt76_dev *dev, struct mt76_wcid *wcid, u8 tid,
+-		       u16 ssn, u8 size);
++		       u16 ssn, u16 size);
+ void mt76_rx_aggr_stop(struct mt76_dev *dev, struct mt76_wcid *wcid, u8 tid);
+ 
+ void mt76_wcid_key_setup(struct mt76_dev *dev, struct mt76_wcid *wcid,
 -- 
 2.25.1
 
