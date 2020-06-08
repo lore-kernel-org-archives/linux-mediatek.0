@@ -4,19 +4,19 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 713C7C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jun 2020 23:51:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 73B8DC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jun 2020 23:53:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 23E4820659
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jun 2020 23:51:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3C7D22078C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jun 2020 23:53:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="i4RpalcL";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="i9+qSicA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 23E4820659
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rUr/6FtA";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="LgDqXEug"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C7D22078C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,47 +25,48 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dNAhsMexkOYdS7mftx8Zn++fxxFBKzb9FEPhuG4tMPM=; b=i4RpalcLdRzElZ
-	n3RAxv7bavxQZhSEtnL0+geJEC1FnS7L4J0OhC02YQYX4DTQPdgKvAhOSdctNl+SwucOnDDKZjrlq
-	BOfN8D1dvfpw0jfnIZmDeOEQR3yQR4J52ga/Hr9zMFqGp/zAw4MxqiiziwjUcrqYszO9ecgbGhlTU
-	sHcouMApwhIm4FI9uBuQMLHoddCPlkYUIiHK9PYXQAWzADK/8ysOjkc4V9MGQJMqfMZrCUq1Jm0ti
-	e+TpsdNLltiLdlNgWibo7/7huYAxqzCbOQSIyIj9dooifkkMyj/vOzMQJGH97ykGXJ/LqroHpLiBf
-	qxnuGyqfhtjIY323Tj4w==;
+	List-Owner; bh=TXim0LvQGL8BpPq1/vXbcFWVR2anHHGjjNFsVHSp1Zg=; b=rUr/6FtAtk8CV0
+	Esz/vK8szt5m++bNYxR0AZAoyHzuX248+Z41eqT86pdE278pzYrof4axC8/w+Bh9GZ3L96ErB2h0p
+	I/62cU3XGR1IPHlCZ94KVv+5tEPpstg4ZgV6ILVYXdwL/SkDMA8QHR3VJp9p5eBwWfqfWN+F15hzh
+	8E2Ir11MPZOGd9qyhODEw6T72QEIpUAOadZOW7knjKfrhQTPmf1UzaEWNW/F86uYZS8v1yJ65bWtx
+	22eEwm6s7KeZZERI9Xcmq6TTfPONJcv/2dBcpNyr/bKf0+2dvjJbYtV84cMjbFhMW2yIuXvuxh6+N
+	k6Hh+x4SBv5ftESIUTnQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jiRXr-0000EY-RM; Mon, 08 Jun 2020 23:51:11 +0000
+	id 1jiRa8-0002IY-DJ; Mon, 08 Jun 2020 23:53:32 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jiR7n-0003QK-Qf; Mon, 08 Jun 2020 23:24:30 +0000
+ id 1jiR9C-0006rB-Fh; Mon, 08 Jun 2020 23:25:44 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7F3F12074B;
- Mon,  8 Jun 2020 23:24:14 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 76A782068D;
+ Mon,  8 Jun 2020 23:25:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1591658655;
- bh=F2UQ3f/EJyLX8uuLRDqCa52FwSXPHX2BTvdYFegJOio=;
+ s=default; t=1591658741;
+ bh=JpyXvZPwGmhcDX7HBvEqn00iZ7V++vRJV0NKykGQJf4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=i9+qSicAo2zEcve4uB7nPflL65Ypx3DeaYT5wZetPTkZ6YfYxg3lRL7DRw2JOepfW
- T/X/xrlpsypTWY++jM+8dwuV2Yh9+wqAdRENLxSEwKJl3iEAAxTKkvEt8pR3CGbUiH
- hRb3c208abLzBJO4t8+N5iO3BZNam6PKGq/ENA7c=
+ b=LgDqXEugXZxBsJ3+mB+L37oN17ysmYnq1nFUbbqdvmTcS1H+Q7G93OK+3kuvtI9fG
+ ZTZ7vRXyZs8MT8znJHeL47jg0+6tRamcekmGX20PtqOkawlh+H2le3WJqj3BCp/ebh
+ tV0Bx2WAVh2g1D/pFo7qC8GYHHI1aDyeCWtWCMZk=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 073/106] net: dsa: mt7530: set CPU port to
- fallback mode
-Date: Mon,  8 Jun 2020 19:22:05 -0400
-Message-Id: <20200608232238.3368589-73-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.14 28/72] dt-bindings: display: mediatek: control
+ dpi pins mode to avoid leakage
+Date: Mon,  8 Jun 2020 19:24:16 -0400
+Message-Id: <20200608232500.3369581-28-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200608232238.3368589-1-sashal@kernel.org>
-References: <20200608232238.3368589-1-sashal@kernel.org>
+In-Reply-To: <20200608232500.3369581-1-sashal@kernel.org>
+References: <20200608232500.3369581-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200608_162415_922273_897F2D27 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20200608_162542_628988_8CD1E47C 
+X-CRM114-Status: UNSURE (   8.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,84 +78,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Florian Fainelli <f.fainelli@gmail.com>,
- netdev@vger.kernel.org, DENG Qingfang <dqfext@gmail.com>,
- linux-mediatek@lists.infradead.org, "David S . Miller" <davem@davemloft.net>,
- linux-arm-kernel@lists.infradead.org
+Cc: Sasha Levin <sashal@kernel.org>, Rob Herring <robh@kernel.org>,
+ Jitao Shi <jitao.shi@mediatek.com>, devicetree@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: DENG Qingfang <dqfext@gmail.com>
+From: Jitao Shi <jitao.shi@mediatek.com>
 
-[ Upstream commit 38152ea37d8bdaffa22603e0a5b5b86cfa8714c9 ]
+[ Upstream commit b0ff9b590733079f7f9453e5976a9dd2630949e3 ]
 
-Currently, setting a bridge's self PVID to other value and deleting
-the default VID 1 renders untagged ports of that VLAN unable to talk to
-the CPU port:
+Add property "pinctrl-names" to swap pin mode between gpio and dpi mode.
+Set the dpi pins to gpio mode and output-low to avoid leakage current
+when dpi disabled.
 
-	bridge vlan add dev br0 vid 2 pvid untagged self
-	bridge vlan del dev br0 vid 1 self
-	bridge vlan add dev sw0p0 vid 2 pvid untagged
-	bridge vlan del dev sw0p0 vid 1
-	# br0 cannot send untagged frames out of sw0p0 anymore
-
-That is because the CPU port is set to security mode and its PVID is
-still 1, and untagged frames are dropped due to VLAN member violation.
-
-Set the CPU port to fallback mode so untagged frames can pass through.
-
-Fixes: 83163f7dca56 ("net: dsa: mediatek: add VLAN support for MT7530")
-Signed-off-by: DENG Qingfang <dqfext@gmail.com>
-Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
-Signed-off-by: David S. Miller <davem@davemloft.net>
+Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/dsa/mt7530.c | 11 ++++++++---
- drivers/net/dsa/mt7530.h |  6 ++++++
- 2 files changed, 14 insertions(+), 3 deletions(-)
+ .../devicetree/bindings/display/mediatek/mediatek,dpi.txt   | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 8b39a211ecb6..616afd81536a 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -860,10 +860,15 @@ mt7530_port_set_vlan_aware(struct dsa_switch *ds, int port)
- 		   PCR_MATRIX_MASK, PCR_MATRIX(MT7530_ALL_MEMBERS));
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
+index b6a7e7397b8b..b944fe067188 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
+@@ -16,6 +16,9 @@ Required properties:
+   Documentation/devicetree/bindings/graph.txt. This port should be connected
+   to the input port of an attached HDMI or LVDS encoder chip.
  
- 	/* Trapped into security mode allows packet forwarding through VLAN
--	 * table lookup.
-+	 * table lookup. CPU port is set to fallback mode to let untagged
-+	 * frames pass through.
- 	 */
--	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
--		   MT7530_PORT_SECURITY_MODE);
-+	if (dsa_is_cpu_port(ds, port))
-+		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
-+			   MT7530_PORT_FALLBACK_MODE);
-+	else
-+		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
-+			   MT7530_PORT_SECURITY_MODE);
- 
- 	/* Set the port as a user port which is to be able to recognize VID
- 	 * from incoming packets before fetching entry within the VLAN table.
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 403adbe5a4b4..101d309ee445 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -148,6 +148,12 @@ enum mt7530_port_mode {
- 	/* Port Matrix Mode: Frames are forwarded by the PCR_MATRIX members. */
- 	MT7530_PORT_MATRIX_MODE = PORT_VLAN(0),
- 
-+	/* Fallback Mode: Forward received frames with ingress ports that do
-+	 * not belong to the VLAN member. Frames whose VID is not listed on
-+	 * the VLAN table are forwarded by the PCR_MATRIX members.
-+	 */
-+	MT7530_PORT_FALLBACK_MODE = PORT_VLAN(1),
++Optional properties:
++- pinctrl-names: Contain "default" and "sleep".
 +
- 	/* Security Mode: Discard any frame due to ingress membership
- 	 * violation or VID missed on the VLAN table.
- 	 */
+ Example:
+ 
+ dpi0: dpi@1401d000 {
+@@ -26,6 +29,9 @@ dpi0: dpi@1401d000 {
+ 		 <&mmsys CLK_MM_DPI_ENGINE>,
+ 		 <&apmixedsys CLK_APMIXED_TVDPLL>;
+ 	clock-names = "pixel", "engine", "pll";
++	pinctrl-names = "default", "sleep";
++	pinctrl-0 = <&dpi_pin_func>;
++	pinctrl-1 = <&dpi_pin_idle>;
+ 
+ 	port {
+ 		dpi0_out: endpoint {
 -- 
 2.25.1
 
