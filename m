@@ -2,22 +2,22 @@ Return-Path: <SRS0=7QZl=7W=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 71F34C433E2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2020 10:46:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 26DF5C433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2020 10:46:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 28A2E207C3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2020 10:46:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F102220812
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2020 10:46:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cQ0WI2xd";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="aHZdT+D3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 28A2E207C3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="E2b4xTLQ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="nd44leTJ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F102220812
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=htVfsAPin0GJSwnlW37m1rQujZrIrzFRP57GnVtlTjg=; b=cQ0WI2xdbumIG3
-	kyqLndHHydv/eWTnkFo6pA91dNXg+SaBojQE9B3xCT9PhgG7wMR4OX64Vd3v/gOm+Exir84TxQ6Rj
-	8VSinYGvZbV5dmH7N+EM8WgYhWyA4U5QuD+3TN6LKtU+pMFwhoc4gjgrL53f/RvZ+BGPCwHxFupTS
-	RvbaVaDH2uU+WqkZuJw7zUZ9ynF+ajrxpkKUQ/b5iLEY7ElSkJTXiiZXNX60VF7qklsBhhl6EDvn2
-	/rQzkwDeDuYA0TT1bbiZNiLqMNiTuCxIyH56XiDSaPo3KdIvE8lwgnG09yZfX7/jNgrfblYKXoXSR
-	Fpb2XQi4gjiHp6O44ZtQ==;
+	List-Owner; bh=6byHHeW4/CoCq+bScBAsdqXv02eyYBm6B7VTThD5ipY=; b=E2b4xTLQdBwAyF
+	7mf06QnyXeYxIOL81cQEIGjApZSXDUxZK30DB3sXXUD5vS/bpNd710stLxpEjI41+RUKdCXIKrCto
+	wSSh0HOd/SV0JdxQ/B8yDXAb7h8Uk9Q868IUpk/VUHKtRI2S/W1WHj37Hl0MLVKAp51v4peuhZtss
+	DLnIj+siOVHZ29TQf48VdmjRcL9TZZN2HET84TEXx5RzBzw7sO7YUYTuZgmDG8Z1+gQLcbPvZi4uC
+	jUjv278JGI6/8cv+U9hT2iZpBX7GpdexRm+jagl7dafYQHvg3uNBX94Ot988NFZoqgwGAi5dcxFag
+	Fdpp7TlakxEeG3ApXqkA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jiblN-0001Wa-4T; Tue, 09 Jun 2020 10:45:49 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jiblm-0001to-VG; Tue, 09 Jun 2020 10:46:14 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jiblI-0001VS-Vs; Tue, 09 Jun 2020 10:45:47 +0000
-X-UUID: 6199db9877374dcb9d81c021e0e3411c-20200609
+ id 1jiblR-0001Xp-DB; Tue, 09 Jun 2020 10:45:55 +0000
+X-UUID: 6ede5e224c7d41eaa3ec8accff63ce69-20200609
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=/FvX+ME5Lxoj2PxVGXv9GLjMv44t+ysUQ0DcooW+uMY=; 
- b=aHZdT+D3/A4Ii0TsDiQDVko8g4H2BVN12IrhkOQ5sNdRF7qdx4zVm9jsXJRM/CK4C/4lqw9+v3g2Qxz0HWj0mdaxGEZeRk0o4hFMI6zh/1levVWf5Qc6qeBFo/o2ZXgmb2u8MatJFWVwkqO+8OyMJAT39gHmJOZFQmEmgDtXfyo=;
-X-UUID: 6199db9877374dcb9d81c021e0e3411c-20200609
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ bh=mUcP1s22j8Ujxa7NaiWgCxFQDgBhnWhL140VV9SUHPw=; 
+ b=nd44leTJVl4+VE+e7Ut5lYxhGHw2G8A2Pryu9x5MFuWwA2dFxpn4C74kd6USpRVOJn5zcquSVdBTfbTNR/qqylOnsv/yUUZYrfC3oEGGv4OwAKsOWx3Dq6ch1iIqaRK97TVnRXW9iai0n77+R2BZGaDk8LKkX4UaQ8HG7AbXlfQ=;
+X-UUID: 6ede5e224c7d41eaa3ec8accff63ce69-20200609
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <roger.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2034157490; Tue, 09 Jun 2020 02:45:44 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ with ESMTP id 1445547526; Tue, 09 Jun 2020 02:45:55 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 9 Jun 2020 03:45:37 -0700
+ 15.0.1497.2; Tue, 9 Jun 2020 03:45:49 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 9 Jun 2020 18:45:35 +0800
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 9 Jun 2020 18:45:34 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Tue, 9 Jun 2020 18:45:35 +0800
 From: Roger Lu <roger.lu@mediatek.com>
 To: Kevin Hilman <khilman@kernel.org>, Rob Herring <robh+dt@kernel.org>,
  Nicolas Boichat <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>
-Subject: [PATCH v9 4/4] PM / AVS: SVS: add SVS debug commands
-Date: Tue, 9 Jun 2020 18:45:34 +0800
-Message-ID: <20200609104534.29314-5-roger.lu@mediatek.com>
+Subject: [PATCH v9 2/4] arm64: dts: mt8183: add svs device information
+Date: Tue, 9 Jun 2020 18:45:32 +0800
+Message-ID: <20200609104534.29314-3-roger.lu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200609104534.29314-1-roger.lu@mediatek.com>
 References: <20200609104534.29314-1-roger.lu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: B5761976C7CFF60A634A0996FAB4F794C749E45840E9272489D118505146DA502000:8
+X-TM-SNTS-SMTP: 933CDA7A71541E0675C6207B267F9F41A02AC4D1DD31C023D4B69A3E0079EB382000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200609_034545_036984_F45B1F57 
-X-CRM114-Status: GOOD (  15.64  )
+X-CRM114-CacheID: sfid-20200609_034553_461878_A9868226 
+X-CRM114-Status: UNSURE (   9.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,475 +99,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The purpose of SVS is to help find the suitable voltages
-for DVFS. Therefore, if SVS bank voltages are concerned
-to be wrong, we can adjust SVS bank voltages by this patch.
+add pmic/clock/irq/efuse setting in svs node
 
-Change-Id: Ib09b22bc6c4188f622ad35657c0798552a1c0f59
 Signed-off-by: Roger Lu <roger.lu@mediatek.com>
 ---
- drivers/power/avs/mtk_svs.c | 322 ++++++++++++++++++++++++++++++++++++
- 1 file changed, 322 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts | 16 ++++++++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi    | 41 +++++++++++++++++++++
+ 2 files changed, 57 insertions(+)
 
-diff --git a/drivers/power/avs/mtk_svs.c b/drivers/power/avs/mtk_svs.c
-index 3e26191f6a3b..5cd5d334dc11 100644
---- a/drivers/power/avs/mtk_svs.c
-+++ b/drivers/power/avs/mtk_svs.c
-@@ -6,6 +6,7 @@
- #include <linux/bits.h>
- #include <linux/clk.h>
- #include <linux/completion.h>
-+#include <linux/debugfs.h>
- #include <linux/init.h>
- #include <linux/interrupt.h>
- #include <linux/kernel.h>
-@@ -24,6 +25,7 @@
- #include <linux/power/mtk_svs.h>
- #include <linux/regulator/consumer.h>
- #include <linux/reset.h>
-+#include <linux/seq_file.h>
- #include <linux/slab.h>
- #include <linux/spinlock.h>
- #include <linux/thermal.h>
-@@ -60,6 +62,39 @@
- #define SVSB_INTSTS_COMPLETE		(0x1)
- #define SVSB_INTSTS_CLEAN		(0x00ffffff)
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+index 1fb195c683c3..3efa4f6cf909 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+@@ -231,6 +231,22 @@
  
-+#define debug_fops_ro(name)						\
-+	static int svs_##name##_debug_open(struct inode *inode,		\
-+					   struct file *filp)		\
-+	{								\
-+		return single_open(filp, svs_##name##_debug_show,	\
-+				   inode->i_private);			\
-+	}								\
-+	static const struct file_operations svs_##name##_debug_fops = {	\
-+		.owner = THIS_MODULE,					\
-+		.open = svs_##name##_debug_open,			\
-+		.read = seq_read,					\
-+		.llseek = seq_lseek,					\
-+		.release = single_release,				\
-+	}
-+
-+#define debug_fops_rw(name)						\
-+	static int svs_##name##_debug_open(struct inode *inode,		\
-+					   struct file *filp)		\
-+	{								\
-+		return single_open(filp, svs_##name##_debug_show,	\
-+				   inode->i_private);			\
-+	}								\
-+	static const struct file_operations svs_##name##_debug_fops = {	\
-+		.owner = THIS_MODULE,					\
-+		.open = svs_##name##_debug_open,			\
-+		.read = seq_read,					\
-+		.write = svs_##name##_debug_write,			\
-+		.llseek = seq_lseek,					\
-+		.release = single_release,				\
-+	}
-+
-+#define svs_dentry(name)	{__stringify(name), &svs_##name##_debug_fops}
-+
- static DEFINE_SPINLOCK(mtk_svs_lock);
- struct mtk_svs;
+ };
  
-@@ -353,6 +388,7 @@ struct thermal_parameter {
-  * @opp_volts: signed-off voltages from default opp table
-  * @freqs_pct: percent of "opp_freqs / freq_base" for bank init
-  * @volts: bank voltages
-+ * @reg_data: bank register data of each phase
-  * @freq_base: reference frequency for bank init
-  * @vboot: voltage request for bank init01 stage only
-  * @volt_step: bank voltage step
-@@ -372,6 +408,7 @@ struct thermal_parameter {
-  * @opp_count: bank opp count
-  * @int_st: bank interrupt identification
-  * @sw_id: bank software identification
-+ * @hw_id: bank hardware identification
-  * @ctl0: bank thermal sensor selection
-  * @of_compatible: of_compatible string of bank
-  * @name: bank name
-@@ -394,6 +431,7 @@ struct svs_bank {
- 	u32 opp_volts[16];
- 	u32 freqs_pct[16];
- 	u32 volts[16];
-+	u32 reg_data[3][reg_num];
- 	u32 freq_base;
- 	u32 vboot;
- 	u32 volt_step;
-@@ -432,6 +470,7 @@ struct svs_bank {
- 	u32 opp_count;
- 	u32 int_st;
- 	u32 sw_id;
-+	u32 hw_id;
- 	u32 ctl0;
- 	u8 *of_compatible;
- 	u8 *name;
-@@ -805,11 +844,15 @@ static void svs_set_bank_phase(struct mtk_svs *svs, u32 target_phase)
- static inline void svs_init01_isr_handler(struct mtk_svs *svs)
- {
- 	struct svs_bank *svsb = svs->pbank;
-+	enum svs_reg_index rg_i;
++&svs_cpu_little {
++	vcpu-little-supply = <&mt6358_vproc12_reg>;
++};
++
++&svs_cpu_big {
++	vcpu-big-supply = <&mt6358_vproc11_reg>;
++};
++
++&svs_cci {
++	vcci-supply = <&mt6358_vproc12_reg>;
++};
++
++&svs_gpu {
++	vgpu-supply = <&mt6358_vgpu_reg>;
++};
++
+ &uart0 {
+ 	status = "okay";
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 8e45b5a5818f..6fd129b5fd72 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -423,6 +423,39 @@
+ 			status = "disabled";
+ 		};
  
- 	dev_notice(svsb->dev, "%s: VDN74:0x%08x, VDN30:0x%08x, DC:0x%08x\n",
- 		   __func__, svs_readl(svs, VDESIGN74),
- 		   svs_readl(svs, VDESIGN30), svs_readl(svs, DCVALUES));
++		svs: svs@1100b000 {
++			compatible = "mediatek,mt8183-svs";
++			reg = <0 0x1100b000 0 0x1000>;
++			interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
++			clocks = <&infracfg CLK_INFRA_THERM>;
++			clock-names = "main";
++			nvmem-cells = <&svs_calibration>,
++				      <&thermal_calibration>;
++			nvmem-cell-names = "svs-calibration-data",
++					   "calibration-data";
++
++			svs_cpu_little: svs-cpu-little {
++				compatible = "mediatek,mt8183-svs-cpu-little";
++				operating-points-v2 = <&cluster0_opp>;
++			};
++
++			svs_cpu_big: svs-cpu-big {
++				compatible = "mediatek,mt8183-svs-cpu-big";
++				operating-points-v2 = <&cluster1_opp>;
++			};
++
++			svs_cci: svs-cci {
++				compatible = "mediatek,mt8183-svs-cci";
++				operating-points-v2 = <&cci_opp>;
++			};
++
++			svs_gpu: svs-gpu {
++				compatible = "mediatek,mt8183-svs-gpu";
++				power-domains = <&scpsys MT8183_POWER_DOMAIN_MFG_2D>;
++				operating-points-v2 = <&gpu_opp_table>;
++			};
++		};
++
+ 		i2c3: i2c@1100f000 {
+ 			compatible = "mediatek,mt8183-i2c";
+ 			reg = <0 0x1100f000 0 0x1000>,
+@@ -614,6 +647,14 @@
+ 			compatible = "mediatek,mt8183-efuse",
+ 				     "mediatek,efuse";
+ 			reg = <0 0x11f10000 0 0x1000>;
++			#address-cells = <1>;
++			#size-cells = <1>;
++			thermal_calibration: calib@180 {
++				reg = <0x180 0xc>;
++			};
++			svs_calibration: calib@580 {
++				reg = <0x580 0x64>;
++			};
+ 		};
  
-+	for (rg_i = TEMPMONCTL0; rg_i < reg_num; rg_i++)
-+		svsb->reg_data[SVSB_PHASE_INIT01][rg_i] = svs_readl(svs, rg_i);
-+
- 	svsb->phase = SVSB_PHASE_INIT01;
- 	svsb->dc_voffset_in = ~(svs_readl(svs, DCVALUES) & GENMASK(15, 0)) + 1;
- 	if (svsb->init01_volt_flag == SVSB_INIT01_VOLT_IGNORE)
-@@ -832,11 +875,15 @@ static inline void svs_init02_isr_handler(struct mtk_svs *svs)
- {
- 	const struct svs_platform *svsp = svs->platform;
- 	struct svs_bank *svsb = svs->pbank;
-+	enum svs_reg_index rg_i;
- 
- 	dev_notice(svsb->dev, "%s: VOP74:0x%08x, VOP30:0x%08x, DC:0x%08x\n",
- 		   __func__, svs_readl(svs, VOP74), svs_readl(svs, VOP30),
- 		   svs_readl(svs, DCVALUES));
- 
-+	for (rg_i = TEMPMONCTL0; rg_i < reg_num; rg_i++)
-+		svsb->reg_data[SVSB_PHASE_INIT02][rg_i] = svs_readl(svs, rg_i);
-+
- 	svsb->phase = SVSB_PHASE_INIT02;
- 	svsp->get_vops(svs);
- 
-@@ -850,6 +897,10 @@ static inline void svs_mon_mode_isr_handler(struct mtk_svs *svs)
- {
- 	const struct svs_platform *svsp = svs->platform;
- 	struct svs_bank *svsb = svs->pbank;
-+	enum svs_reg_index rg_i;
-+
-+	for (rg_i = TEMPMONCTL0; rg_i < reg_num; rg_i++)
-+		svsb->reg_data[SVSB_PHASE_MON][rg_i] = svs_readl(svs, rg_i);
- 
- 	svsb->phase = SVSB_PHASE_MON;
- 	svsb->temp = svs_readl(svs, TEMP) & GENMASK(7, 0);
-@@ -862,6 +913,7 @@ static inline void svs_error_isr_handler(struct mtk_svs *svs)
- {
- 	const struct svs_platform *svsp = svs->platform;
- 	struct svs_bank *svsb = svs->pbank;
-+	enum svs_reg_index rg_i;
- 
- 	dev_err(svsb->dev, "%s: %s, CORESEL = 0x%08x\n",
- 		__func__, svsp->name, svs_readl(svs, CORESEL));
-@@ -876,6 +928,9 @@ static inline void svs_error_isr_handler(struct mtk_svs *svs)
- 	dev_err(svsb->dev, "TEMPMONCTL0 = 0x%08x, TEMPMSRCTL1 = 0x%08x\n",
- 		svs_readl(svs, TEMPMONCTL0), svs_readl(svs, TEMPMSRCTL1));
- 
-+	for (rg_i = TEMPMONCTL0; rg_i < reg_num; rg_i++)
-+		svsb->reg_data[SVSB_PHASE_MON][rg_i] = svs_readl(svs, rg_i);
-+
- 	svsb->mode_support = SVSB_MODE_ALL_DISABLE;
- 
- 	if (svsb->phase != SVSB_PHASE_INIT01)
-@@ -1561,10 +1616,270 @@ static int svs_resume(struct device *dev)
- 	return 0;
- }
- 
-+/*
-+ * svs_dump_debug_show - dump svs/thermal efuse and svs banks' registers
-+ */
-+static int svs_dump_debug_show(struct seq_file *m, void *p)
-+{
-+	struct mtk_svs *svs = (struct mtk_svs *)m->private;
-+	const struct svs_platform *svsp = svs->platform;
-+	struct svs_bank *svsb;
-+	unsigned long svs_reg_addr;
-+	u32 idx, i, j;
-+
-+	for (i = 0; i < svs->efuse_num; i++)
-+		if (svs->efuse && svs->efuse[i])
-+			seq_printf(m, "M_HW_RES%d = 0x%08x\n",
-+				   i, svs->efuse[i]);
-+
-+	for (i = 0; i < svs->thermal_efuse_num; i++)
-+		if (svs->thermal_efuse)
-+			seq_printf(m, "THERMAL_EFUSE%d = 0x%08x\n",
-+				   i, svs->thermal_efuse[i]);
-+
-+	for (idx = 0; idx < svsp->bank_num; idx++) {
-+		svsb = &svsp->banks[idx];
-+
-+		for (i = SVSB_PHASE_INIT01; i <= SVSB_PHASE_MON; i++) {
-+			seq_printf(m, "Bank_number = %u\n", svsb->hw_id);
-+
-+			if (i < SVSB_PHASE_MON)
-+				seq_printf(m, "mode = init%d\n", i + 1);
-+			else
-+				seq_puts(m, "mode = mon\n");
-+
-+			for (j = TEMPMONCTL0; j < reg_num; j++) {
-+				svs_reg_addr = (unsigned long)(svs->base +
-+							       svsp->regs[j]);
-+				seq_printf(m, "0x%08lx = 0x%08x\n",
-+					   svs_reg_addr, svsb->reg_data[i][j]);
-+			}
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+debug_fops_ro(dump);
-+
-+/*
-+ * svs_enable_debug_show - show svs bank current enable phase
-+ */
-+static int svs_enable_debug_show(struct seq_file *m, void *v)
-+{
-+	struct svs_bank *svsb = (struct svs_bank *)m->private;
-+
-+	if (svsb->phase == SVSB_PHASE_INIT01)
-+		seq_puts(m, "init1\n");
-+	else if (svsb->phase == SVSB_PHASE_INIT02)
-+		seq_puts(m, "init2\n");
-+	else if (svsb->phase == SVSB_PHASE_MON)
-+		seq_puts(m, "mon mode\n");
-+	else if (svsb->phase == SVSB_PHASE_ERROR)
-+		seq_puts(m, "disabled\n");
-+	else
-+		seq_puts(m, "unknown\n");
-+
-+	return 0;
-+}
-+
-+/*
-+ * svs_enable_debug_write - we only support svs bank disable control
-+ */
-+static ssize_t svs_enable_debug_write(struct file *filp,
-+				      const char __user *buffer,
-+				      size_t count, loff_t *pos)
-+{
-+	struct svs_bank *svsb = file_inode(filp)->i_private;
-+	struct mtk_svs *svs = dev_get_drvdata(svsb->dev);
-+	unsigned long flags;
-+	int enabled, ret;
-+	char *buf = NULL;
-+
-+	if (count >= PAGE_SIZE)
-+		return -EINVAL;
-+
-+	buf = (char *)memdup_user_nul(buffer, count);
-+	if (IS_ERR(buf))
-+		return PTR_ERR(buf);
-+
-+	ret = kstrtoint(buf, 10, &enabled);
-+	if (ret)
-+		return ret;
-+
-+	if (!enabled) {
-+		flags = claim_mtk_svs_lock();
-+		svs->pbank = svsb;
-+		svsb->mode_support = SVSB_MODE_ALL_DISABLE;
-+		svs_switch_bank(svs);
-+		svs_writel(svs, SVSB_EN_OFF, SVSEN);
-+		svs_writel(svs, SVSB_INTSTS_CLEAN, INTSTS);
-+		release_mtk_svs_lock(flags);
-+
-+		svsb->phase = SVSB_PHASE_ERROR;
-+		svs_adjust_pm_opp_volts(svsb, true);
-+	}
-+
-+	kfree(buf);
-+
-+	return count;
-+}
-+
-+debug_fops_rw(enable);
-+
-+/*
-+ * svs_status_debug_show - show svs bank's tzone_temp/voltages/freqs_pct
-+ * and its corresponding opp-table's opp_freqs/opp_volts
-+ */
-+static int svs_status_debug_show(struct seq_file *m, void *v)
-+{
-+	struct svs_bank *svsb = (struct svs_bank *)m->private;
-+	struct dev_pm_opp *opp;
-+	unsigned long freq;
-+	int tzone_temp, ret;
-+	u32 i;
-+
-+	ret = svs_get_bank_zone_temperature(svsb->tzone_name, &tzone_temp);
-+	if (ret)
-+		seq_printf(m, "%s: cannot get zone \"%s\" temperature\n",
-+			   svsb->name, svsb->tzone_name);
-+	else
-+		seq_printf(m, "%s: temperature = %d\n", svsb->name, tzone_temp);
-+
-+	for (i = 0, freq = U32_MAX; i < svsb->opp_count; i++, freq--) {
-+		opp = dev_pm_opp_find_freq_floor(svsb->dev, &freq);
-+		if (IS_ERR(opp)) {
-+			seq_printf(m, "%s: error opp entry!!, err = %ld\n",
-+				   svsb->name, PTR_ERR(opp));
-+			return PTR_ERR(opp);
-+		}
-+
-+		seq_printf(m, "opp_freqs[%02u]: %lu, opp_volts[%02u]: %lu, ",
-+			   i, freq, i, dev_pm_opp_get_voltage(opp));
-+		seq_printf(m, "svsb_volts[%02u]: 0x%x, freqs_pct[%02u]: %u\n",
-+			   i, svsb->volts[i], i, svsb->freqs_pct[i]);
-+		dev_pm_opp_put(opp);
-+	}
-+
-+	return 0;
-+}
-+
-+debug_fops_ro(status);
-+
-+/*
-+ * svs_volt_offset_debug_show - show svs bank's voltage offset
-+ */
-+static int svs_volt_offset_debug_show(struct seq_file *m, void *v)
-+{
-+	struct svs_bank *svsb = (struct svs_bank *)m->private;
-+
-+	seq_printf(m, "%d\n", svsb->volt_offset);
-+
-+	return 0;
-+}
-+
-+/*
-+ * svs_volt_offset_debug_write - write svs bank's voltage offset
-+ */
-+static ssize_t svs_volt_offset_debug_write(struct file *filp,
-+					   const char __user *buffer,
-+					   size_t count, loff_t *pos)
-+{
-+	struct svs_bank *svsb = file_inode(filp)->i_private;
-+	char *buf = NULL;
-+	s32 volt_offset;
-+
-+	if (count >= PAGE_SIZE)
-+		return -EINVAL;
-+
-+	buf = (char *)memdup_user_nul(buffer, count);
-+	if (IS_ERR(buf))
-+		return PTR_ERR(buf);
-+
-+	if (!kstrtoint(buf, 10, &volt_offset)) {
-+		svsb->volt_offset = volt_offset;
-+		svs_adjust_pm_opp_volts(svsb, true);
-+	}
-+
-+	kfree(buf);
-+
-+	return count;
-+}
-+
-+debug_fops_rw(volt_offset);
-+
-+static int svs_create_svs_debug_cmds(struct mtk_svs *svs)
-+{
-+	const struct svs_platform *svsp = svs->platform;
-+	struct svs_bank *svsb;
-+	struct dentry *svs_dir, *svsb_dir, *file_entry;
-+	static const char *d = "/sys/kernel/debug/svs";
-+	u32 i, idx;
-+
-+	struct svs_dentry {
-+		const char *name;
-+		const struct file_operations *fops;
-+	};
-+
-+	struct svs_dentry svs_entries[] = {
-+		svs_dentry(dump),
-+	};
-+
-+	struct svs_dentry svsb_entries[] = {
-+		svs_dentry(enable),
-+		svs_dentry(status),
-+		svs_dentry(volt_offset),
-+	};
-+
-+	svs_dir = debugfs_create_dir("svs", NULL);
-+	if (IS_ERR(svs_dir)) {
-+		dev_notice(svs->dev, "cannot create %s: %ld\n",
-+			   d, PTR_ERR(svs_dir));
-+		return 0;
-+	}
-+
-+	for (i = 0; i < ARRAY_SIZE(svs_entries); i++) {
-+		file_entry = debugfs_create_file(svs_entries[i].name, 0664,
-+						 svs_dir, svs,
-+						 svs_entries[i].fops);
-+		if (IS_ERR(file_entry)) {
-+			dev_err(svs->dev, "cannot create %s/%s: %ld\n",
-+				d, svs_entries[i].name, PTR_ERR(file_entry));
-+			return PTR_ERR(file_entry);
-+		}
-+	}
-+
-+	for (idx = 0; idx < svsp->bank_num; idx++) {
-+		svsb = &svsp->banks[idx];
-+
-+		svsb_dir = debugfs_create_dir(svsb->name, svs_dir);
-+		if (IS_ERR(svsb_dir)) {
-+			dev_err(svsb->dev, "cannot create %s/%s: %ld\n",
-+				d, svsb->name, PTR_ERR(svsb_dir));
-+			return PTR_ERR(svsb_dir);
-+		}
-+
-+		for (i = 0; i < ARRAY_SIZE(svsb_entries); i++) {
-+			file_entry = debugfs_create_file(svsb_entries[i].name,
-+							 0664, svsb_dir, svsb,
-+							 svsb_entries[i].fops);
-+			if (IS_ERR(file_entry)) {
-+				dev_err(svsb->dev, "no %s/%s/%s?: %ld\n",
-+					d, svsb->name, svsb_entries[i].name,
-+					PTR_ERR(file_entry));
-+				return PTR_ERR(file_entry);
-+			}
-+		}
-+	}
-+
-+	return 0;
-+}
-+
- static struct svs_bank svs_mt8183_banks[4] = {
- 	{
- 		.of_compatible		= "mediatek,mt8183-svs-cpu-little",
- 		.sw_id			= SVSB_CPU_LITTLE,
-+		.hw_id			= 0,
- 		.tzone_name		= "tzts4",
- 		.buck_name		= "vcpu-little",
- 		.mtcmos_request		= false,
-@@ -1600,6 +1915,7 @@ static struct svs_bank svs_mt8183_banks[4] = {
- 	{
- 		.of_compatible		= "mediatek,mt8183-svs-cpu-big",
- 		.sw_id			= SVSB_CPU_BIG,
-+		.hw_id			= 1,
- 		.tzone_name		= "tzts5",
- 		.buck_name		= "vcpu-big",
- 		.mtcmos_request		= false,
-@@ -1635,6 +1951,7 @@ static struct svs_bank svs_mt8183_banks[4] = {
- 	{
- 		.of_compatible		= "mediatek,mt8183-svs-cci",
- 		.sw_id			= SVSB_CCI,
-+		.hw_id			= 2,
- 		.tzone_name		= "tzts4",
- 		.buck_name		= "vcci",
- 		.mtcmos_request		= false,
-@@ -1670,6 +1987,7 @@ static struct svs_bank svs_mt8183_banks[4] = {
- 	{
- 		.of_compatible		= "mediatek,mt8183-svs-gpu",
- 		.sw_id			= SVSB_GPU,
-+		.hw_id			= 3,
- 		.tzone_name		= "tzts2",
- 		.buck_name		= "vgpu",
- 		.mtcmos_request		= true,
-@@ -1832,6 +2150,10 @@ static int svs_probe(struct platform_device *pdev)
- 	if (ret)
- 		goto svs_probe_clk_disable;
- 
-+	ret = svs_create_svs_debug_cmds(svs);
-+	if (ret)
-+		goto svs_probe_clk_disable;
-+
- 	return 0;
- 
- svs_probe_clk_disable:
+ 		mfgcfg: syscon@13000000 {
 -- 
 2.18.0
 _______________________________________________
