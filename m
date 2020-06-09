@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AC1F1C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2020 15:34:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D4197C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2020 15:41:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7D22B2078C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2020 15:34:15 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A6FA72074B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2020 15:41:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EG0UAqvJ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="M/rd/FAn"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7D22B2078C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ph/MS2cE";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="cma5uxGU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A6FA72074B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,51 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=KnV+FmSnCWRnE57ZRuDNHCZUm5varAOhsJjYf/lQkX8=; b=EG0UAqvJMMgF9u
-	8jytfCSVmw0U+wtSg+gY2IbxlPyzoQ5zQOyDepWVKwCWszg8YTy4EgXAEDRCupaP3x8x5qbDW9+ST
-	PI+NZfQSYMiJiKy5AjHMTf0cqqUH5K2b+oYV4I9UMQGJWkZ5k0Wqi+eeMlaibjRJ1/X+BB4APPk9q
-	Vx+XpmjPa335fHCzOk3FVSz8BfbHgUjBm3fIBtPL+H8oCD22JU2Nj3Jzr3RyCiXSG0NxMeBJt2dj4
-	63s+6xjtx5vlBL03TXM4UATP4rJSEeqW+F8Bvd7LhBJrs+FTo3/gmSAS6ZbP+jyZHRwGQgB6VwEfM
-	PgedOn9l5vNGq1EaGvpg==;
+	List-Owner; bh=uOWQeTcxlglxGlYvOwARYwXCPMCHq4MZJ3y+dlfiFe8=; b=ph/MS2cEkiKW5q
+	YwGKaQgEAPmXPGV4wXUpgqh1kd3MA2kWaQmLekr4njhs/IVHsdiEOBdTOWOkTZBqIoMfq4t7GCfUM
+	G87ogYZSbppyq929hZyNG8XnbJSvnVPiuK1lG6LOvBgsIsaja/66uYBgs9CZ7ggPFz1Ko6FgHOLD6
+	1aUOnCfld+mrYdDdmxUVq0SD8VWBNW/cg0IZLPDqIrusomGHqHmFNNP6aKKxKGFyIRm3xoLN90WPE
+	GXXzBPkHTntOyAbHjSauix56djvuJCzOdR1WCVxaKQ9lruJBDsfTpAbaOLu0e2k4p8OMbNOmybfsC
+	h/RAVn4Wes8EU7qmD1XQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jigGL-0006Ir-00; Tue, 09 Jun 2020 15:34:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jigN1-0004er-AJ; Tue, 09 Jun 2020 15:40:59 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jigG0-00066W-84; Tue, 09 Jun 2020 15:33:45 +0000
-X-UUID: 46975ecf9c0d41c98aacea6951074ec3-20200609
+ id 1jigMn-0004Tr-DQ; Tue, 09 Jun 2020 15:40:46 +0000
+X-UUID: c2c22693b02c4add8b3e1c0ac994171e-20200609
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=bK5ZQDdXKnK3u8bH5NkJFh8Qb4nGzQp7amtH8nUC9XA=; 
- b=M/rd/FAn3gmP3AX8kEOswxjksdOE4l5EPpaGA4+o648neLkwcssifmFAMtSsO1DxgJUq5eRXDK8TC0hDcJLzK11yuYjVFb3/F6xnioDQK7vNkS32PIsUYANy9I3kKROYRFjSegysCn3TMo/rZs0UD8Q/AJGbre8wXeK4h6rHZNY=;
-X-UUID: 46975ecf9c0d41c98aacea6951074ec3-20200609
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=gz9jHrd19tMvfltELFNEZu5vfsrGH8nrJcXFS/mzO2E=; 
+ b=cma5uxGUd077/+2UxsRe+VmTuJtu1JMw9k9F9JvC13QIKHJffg3bQO0YjHioBxHmLoV2Bij9SjwQQBwiF6WZgjyMPnFviS3t95HLVS1SFKBqdmfKd+rAQxC8qezonM0yYdgCiF4rCzD6bcm3EnOayaE4PgfuYGMKDAG+pOJlYX4=;
+X-UUID: c2c22693b02c4add8b3e1c0ac994171e-20200609
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2104617733; Tue, 09 Jun 2020 07:33:39 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ with ESMTP id 876993373; Tue, 09 Jun 2020 07:40:44 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 9 Jun 2020 08:33:29 -0700
+ 15.0.1497.2; Tue, 9 Jun 2020 08:40:34 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 9 Jun 2020 23:33:28 +0800
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 9 Jun 2020 23:40:34 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 9 Jun 2020 23:33:28 +0800
+ Frontend Transport; Tue, 9 Jun 2020 23:40:33 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
  <asutoshd@codeaurora.org>
-Subject: [PATCH v1] scsi: ufs: Fix imprecise time in devfreq window
-Date: Tue, 9 Jun 2020 23:33:29 +0800
-Message-ID: <20200609153329.1883-1-stanley.chu@mediatek.com>
+Subject: [PATCH v2] scsi: ufs: Fix imprecise time in devfreq window
+Date: Tue, 9 Jun 2020 23:40:35 +0800
+Message-ID: <20200609154035.1950-1-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200609_083344_297203_467C6314 
-X-CRM114-Status: GOOD (  10.09  )
+X-CRM114-CacheID: sfid-20200609_084045_461756_CF2ACA6B 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,7 +109,7 @@ Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
  1 file changed, 6 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index ad4fc829cbb2..940bd5de5ade 100644
+index ad4fc829cbb2..04b79ca66fdf 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
 @@ -1314,6 +1314,7 @@ static int ufshcd_devfreq_get_dev_status(struct device *dev,
@@ -141,7 +142,7 @@ index ad4fc829cbb2..940bd5de5ade 100644
  	stat->busy_time = scaling->tot_busy_t;
  start_window:
 -	scaling->window_start_t = jiffies;
-+	scaling->window_start_t = curr_t;
++	scaling->window_start_t = ktime_to_us(curr_t);
  	scaling->tot_busy_t = 0;
  
  	if (hba->outstanding_reqs) {
