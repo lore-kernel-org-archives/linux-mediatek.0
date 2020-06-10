@@ -2,88 +2,90 @@ Return-Path: <SRS0=3/N7=7X=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6205FC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2020 18:53:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D7E5DC433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2020 19:04:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 00F292074B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2020 18:53:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id ACF912072E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2020 19:04:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fmzy5ofA";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=vanguardiasur-com-ar.20150623.gappssmtp.com header.i=@vanguardiasur-com-ar.20150623.gappssmtp.com header.b="UoA6mdIY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 00F292074B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uyO68WTA";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="A5UREhW8"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ACF912072E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Il/0WsasyqFMvVCp9HRpuyVBV3Mq14k00/dUdi4sW38=; b=fmzy5ofAJYcDya
-	Q+YyHCqm7enUPBI4/GKdqtiApy8lm2T90ENFMQkdLljzQV4n3zvphKumKShH/ZKka05VMNONEGN8e
-	O/obaSQcaUcTrpUDkhBic3xUM28xEUjj5XLXrwaBdzm45DRW0NFaEU5i6pRQxFzGl4TX8sAJAe6Dk
-	ztHnkpizCaLWkWs3NbcT/6DXoV5LqaDup2+p70EMgfNepetgta8tHg4EfM6MXNUAAY4sxK5Vg60sk
-	zoNv7RQfSiw+nATgqh4KZkeS5R1iF9qASNsFrKXkxXhQwi3sktfMK/Db/JtOf4+qnyTtdADT9f/+f
-	T0KWrQIVzpmOUAMJ1BZg==;
+	List-Owner; bh=BTMcDfLfBoDmVSpGRxf7VivP2ndbdo5Naa/gfmT9HOA=; b=uyO68WTAIaOZaR
+	nn+JcxW4AshZQTFDvtSHDz8bbAnOOZ85cvJL1o0HY0tgzMGOOJsfEHxn7il01S4L5dMnyHUpr0apd
+	aPZsdPtQPaQlCkifX13e8NmC+EprHPt80D80SjN18oIMacRQwJydIL/mJuEyGfUvdYQIKXS4KcKOW
+	yGDoZA2ncyaS6z8CSl9mTFgmsIyFJWIGZceKTC7aGGTB1m3OkfF6aZvti7Sj2pRmk2f/5BrxQeLmd
+	A3x0/5Arc6lsVgN6l95x3U+TT+tsO2SeQqUif2lun8ajVmDVwTh4ONC48A3IPzmF0SW6TimWvYQ1I
+	4NoXik4TrQOHQy4nYpEA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jj5qa-0003jy-0I; Wed, 10 Jun 2020 18:53:12 +0000
-Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544])
+	id 1jj613-0003fP-Fp; Wed, 10 Jun 2020 19:04:01 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jj5qG-0003Mh-Lz
- for linux-mediatek@lists.infradead.org; Wed, 10 Jun 2020 18:52:55 +0000
-Received: by mail-ed1-x544.google.com with SMTP id e12so2168845eds.2
- for <linux-mediatek@lists.infradead.org>; Wed, 10 Jun 2020 11:52:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=CbR96mtjILK7CXyFeJfJjgwimFAgYdYYoASbhiEt3b8=;
- b=UoA6mdIYYeZDClqnXSQssygIn/PG+NX40vT80Y6VCQxi+EBFCnFS6Wr7ztvKGCkcH4
- 4kVSxit+x0RXy1PUroeD0u6Mbawsqh6va1iTczz8VDIdEiS/jdwT6C3SByXK6bJ8SaMZ
- LV6c/7zlWnLB6JilPSBzPSB5L+bjUdVQuQ5GhXTTqLQlopf14FpK8Aso+WDEhC12FsN/
- fxrMi0/plvpnlcpV/SF+2RehWTeVpskRO3SpSH7qOyw6ly41UFj97rly8sB2ZBQhHCNa
- Ad5iqI3BSb6PpZET2RVQNsoYfKMfTEqHxGejMSn1QviLBu1165Otf+5nmA5rlKCAWQ+h
- ad1g==
+ id 1jj611-0003eZ-Dh
+ for linux-mediatek@lists.infradead.org; Wed, 10 Jun 2020 19:04:00 +0000
+Received: by mail-wm1-x341.google.com with SMTP id c71so2829761wmd.5
+ for <linux-mediatek@lists.infradead.org>; Wed, 10 Jun 2020 12:03:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=NSUIdscZFTvAj/KAnkXmeLO33H1QImBmP7nNAatzF4E=;
+ b=A5UREhW8Zimz/lgVsX6YJceKyEcTDjGffoiiTJOFdDh2MS8Wxd5Ju72jDNEe03+VwF
+ mVZ3B2461XaZq/JxobIkPo8zWcoju/Yn/0yxVkOeKJtCgUkiqKoSrFTT2OuKrMCeaeFn
+ nXsSEcazn3q3aNRxaP6pf9xhar75XQ1iFYbaA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=CbR96mtjILK7CXyFeJfJjgwimFAgYdYYoASbhiEt3b8=;
- b=t+G8n6ZdRuVQPalYdOFm7+Mmm7CRibB4Ox0d6uoDiPCmQZR4QHeqB609K5dQfc6AKz
- LAPJFWvfD1HXUb+9Z5yDIINjCbPgmpnwxwEUFRSpE1KUPSLRklwclFFK7zkpgbUzju1z
- HP+vIIOB3TdrUn///yhfDn7xeozd50df7hcpPu316OQrr7+9prMQIkU1jRVqXm4Pp9Ow
- YksMiqLzx9aGkQsc4+wNld3UjcsGzu0TaBuWywSFKidwkTB9gJufJ5Jdhgj4usKtEIvP
- 3c08KMgb8LtV8JykagqcG8IFqo2Pb0tetmUCLTp42y6Qf+VtJuj7oj149od8FjJJmXqM
- 7sHQ==
-X-Gm-Message-State: AOAM530x39IfSK3b7Ng7QVGFIAcHIjGBKegLjQ8Pyq8nSKX8LvEjWuey
- l9GW/xg+je3jyu8qxF4Th7++vLOus4b3b5fZC2erqQ==
-X-Google-Smtp-Source: ABdhPJxN/GLInQdzFlFb6QNZ7kF/EMF0jdmnsSPEii+SZBgYAz5zF8iUnVPfSKOUH7zSH4rYKOySSHmBDtruvjQjLd8=
-X-Received: by 2002:a05:6402:149:: with SMTP id
- s9mr3576778edu.375.1591815170564; 
- Wed, 10 Jun 2020 11:52:50 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=NSUIdscZFTvAj/KAnkXmeLO33H1QImBmP7nNAatzF4E=;
+ b=Av8D+b9uE10sVrEG+XTsL/5BOr7kYH08Zupkp1kyT439bVAhfDsQ4aI/4CS2iWye8s
+ 9raV85fPQws/u/80fkkqqImDZPb30awtjNauhc/0GHWKtjPsQ1NZPuN0k5dZ3hpcNsFz
+ 8+F1A/CvUs0eh1E99rUqbN0TGUouX2au1u4t3Neh8UzkVuIoyrHrwevn/2IfK4ntLwWB
+ trfLp8lvSGnCKy21zw8JBEizP7sb38dnzWxUa09XTmgus/zwO4kjKxwcxZC4ReygRHB0
+ lHTMFCvRtd7veVgXjH7w0nYN6odvu1RFT2lhhDkp439Aweyi0bWD2MjVU4i3RzHl3Z16
+ z+BA==
+X-Gm-Message-State: AOAM5307OaX713LOAoI4PmXH0oe0ExZxZS56YMBIDY+9oCEhMX60m7JN
+ /FQhLtDoNtSEGLwLF4drMoNIkw==
+X-Google-Smtp-Source: ABdhPJzTRfYPcTj3IRS5BINNXpxwdDXmbXJOisFqkC0CCPcDchPYcvzcaAwcf6hmVi/W346PEWyYcw==
+X-Received: by 2002:a1c:f301:: with SMTP id q1mr4562383wmq.110.1591815838119; 
+ Wed, 10 Jun 2020 12:03:58 -0700 (PDT)
+Received: from chromium.org (205.215.190.35.bc.googleusercontent.com.
+ [35.190.215.205])
+ by smtp.gmail.com with ESMTPSA id d2sm1039640wrs.95.2020.06.10.12.03.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 10 Jun 2020 12:03:57 -0700 (PDT)
+Date: Wed, 10 Jun 2020 19:03:56 +0000
+From: Tomasz Figa <tfiga@chromium.org>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Subject: Re: [RFC PATCH V4 1/4] media: v4l2-mem2mem: add v4l2_m2m_suspend,
+ v4l2_m2m_resume
+Message-ID: <20200610190356.GJ201868@chromium.org>
 References: <20191204124732.10932-1-Jerry-Ch.chen@mediatek.com>
  <20191204124732.10932-2-Jerry-Ch.chen@mediatek.com>
  <20200521171101.GA243874@chromium.org>
  <e31fe64a-c5c1-7b1e-eec1-27111fe43ac2@xs4all.nl>
  <CAAFQd5Ad_cnv0qztZOk9c2H0Y+XO6tRcRmS1t4dBw5qbG-d8Nw@mail.gmail.com>
-In-Reply-To: <CAAFQd5Ad_cnv0qztZOk9c2H0Y+XO6tRcRmS1t4dBw5qbG-d8Nw@mail.gmail.com>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Wed, 10 Jun 2020 15:52:39 -0300
-Message-ID: <CAAEAJfDboyra5XcEiviJP_3Kk-mDNZH5nstDa_7P7XCV7bu7Pg@mail.gmail.com>
-Subject: Re: [RFC PATCH V4 1/4] media: v4l2-mem2mem: add v4l2_m2m_suspend,
- v4l2_m2m_resume
-To: Tomasz Figa <tfiga@chromium.org>
+ <CAAEAJfDboyra5XcEiviJP_3Kk-mDNZH5nstDa_7P7XCV7bu7Pg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAAEAJfDboyra5XcEiviJP_3Kk-mDNZH5nstDa_7P7XCV7bu7Pg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200610_115252_811310_9FBA0A0D 
-X-CRM114-Status: GOOD (  26.13  )
+X-CRM114-CacheID: sfid-20200610_120359_482510_D5A49C6F 
+X-CRM114-Status: GOOD (  23.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,19 +98,19 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: linux-devicetree <devicetree@vger.kernel.org>,
- =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <Sean.Cheng@mediatek.com>,
+ Sean Cheng =?utf-8?B?KOmEreaYh+W8mCk=?= <Sean.Cheng@mediatek.com>,
  Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
- =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <Rynn.Wu@mediatek.com>,
+ Rynn Wu =?utf-8?B?KOWQs+iCsuaBqSk=?= <Rynn.Wu@mediatek.com>,
  zwisler@chromium.org, srv_heupstream <srv_heupstream@mediatek.com>,
  Jerry-ch Chen <jerry-ch.chen@mediatek.corp-partner.google.com>,
  Jerry-ch Chen <Jerry-Ch.chen@mediatek.com>, Hans Verkuil <hverkuil@xs4all.nl>,
- =?UTF-8?B?SnVuZ28gTGluICjmnpfmmI7kv4op?= <jungo.lin@mediatek.com>,
+ Jungo Lin =?utf-8?B?KOael+aYjuS/iik=?= <jungo.lin@mediatek.com>,
  Sj Huang <sj.huang@mediatek.com>, yuzhao@chromium.org,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
  Pi-Hsun Shih <pihsun@chromium.org>,
- =?UTF-8?B?RnJlZGVyaWMgQ2hlbiAo6Zmz5L+K5YWDKQ==?= <frederic.chen@mediatek.com>,
+ Frederic Chen =?utf-8?B?KOmZs+S/iuWFgyk=?= <frederic.chen@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- =?UTF-8?B?Q2hyaXN0aWUgWXUgKOa4uOmbheaDoCk=?= <christie.yu@mediatek.com>,
+ Christie Yu =?utf-8?B?KOa4uOmbheaDoCk=?= <christie.yu@mediatek.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
  Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>,
@@ -118,193 +120,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi everyone,
-
-Thanks for the patch.
-
-On Wed, 10 Jun 2020 at 07:33, Tomasz Figa <tfiga@chromium.org> wrote:
->
-> On Wed, Jun 10, 2020 at 12:29 PM Hans Verkuil <hverkuil@xs4all.nl> wrote:
+On Wed, Jun 10, 2020 at 03:52:39PM -0300, Ezequiel Garcia wrote:
+> Hi everyone,
+> 
+> Thanks for the patch.
+> 
+> On Wed, 10 Jun 2020 at 07:33, Tomasz Figa <tfiga@chromium.org> wrote:
 > >
-> > On 21/05/2020 19:11, Tomasz Figa wrote:
-> > > Hi Jerry,
+> > On Wed, Jun 10, 2020 at 12:29 PM Hans Verkuil <hverkuil@xs4all.nl> wrote:
 > > >
-> > > On Wed, Dec 04, 2019 at 08:47:29PM +0800, Jerry-ch Chen wrote:
-> > >> From: Pi-Hsun Shih <pihsun@chromium.org>
-> > >>
-> > >> Add two functions that can be used to stop new jobs from being queued /
-> > >> continue running queued job. This can be used while a driver using m2m
-> > >> helper is going to suspend / wake up from resume, and can ensure that
-> > >> there's no job running in suspend process.
-> > >>
-> > >> BUG=b:143046833
-> > >> TEST=build
-> > >>
-
-BUG/TEST tags need to be removed.
-
-> > >> Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
-> > >> Signed-off-by: Jerry-ch Chen <jerry-ch.chen@mediatek.corp-partner.google.com>
-
-This mail address probably needs correction?
-
-> > >> ---
-> > >>  drivers/media/v4l2-core/v4l2-mem2mem.c | 40 ++++++++++++++++++++++++++
-> > >>  include/media/v4l2-mem2mem.h           | 22 ++++++++++++++
-> > >>  2 files changed, 62 insertions(+)
-> > >>
-> > >> diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
-> > >> index 5bbdec55b7d7..76ba203e0035 100644
-> > >> --- a/drivers/media/v4l2-core/v4l2-mem2mem.c
-> > >> +++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
-> > >> @@ -47,6 +47,10 @@ module_param(debug, bool, 0644);
-> > >>  #define TRANS_ABORT         (1 << 2)
-> > >>
-> > >>
-> > >> +/* The job queue is not running new jobs */
-> > >> +#define QUEUE_PAUSED                (1 << 0)
-> > >> +
-> > >> +
-> > >>  /* Offset base for buffers on the destination queue - used to distinguish
-> > >>   * between source and destination buffers when mmapping - they receive the same
-> > >>   * offsets but for different queues */
-> > >> @@ -88,6 +92,7 @@ static const char * const m2m_entity_name[] = {
-> > >>   * @job_queue:              instances queued to run
-> > >>   * @job_spinlock:   protects job_queue
-> > >>   * @job_work:               worker to run queued jobs.
-> > >> + * @job_queue_flags:        flags of the queue status, %QUEUE_PAUSED.
-> > >>   * @m2m_ops:                driver callbacks
-> > >>   */
-> > >>  struct v4l2_m2m_dev {
-> > >> @@ -105,6 +110,7 @@ struct v4l2_m2m_dev {
-> > >>      struct list_head        job_queue;
-> > >>      spinlock_t              job_spinlock;
-> > >>      struct work_struct      job_work;
-> > >> +    unsigned long           job_queue_flags;
-> > >>
-> > >>      const struct v4l2_m2m_ops *m2m_ops;
-> > >>  };
-> > >> @@ -267,6 +273,12 @@ static void v4l2_m2m_try_run(struct v4l2_m2m_dev *m2m_dev)
-> > >>              return;
-> > >>      }
-> > >>
-> > >> +    if (m2m_dev->job_queue_flags & QUEUE_PAUSED) {
-> > >> +            spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-> > >> +            dprintk("Running new jobs is paused\n");
-> > >> +            return;
-> > >> +    }
-> > >> +
-> > >>      m2m_dev->curr_ctx = list_first_entry(&m2m_dev->job_queue,
-> > >>                                 struct v4l2_m2m_ctx, queue);
-> > >>      m2m_dev->curr_ctx->job_flags |= TRANS_RUNNING;
-> > >> @@ -447,6 +459,34 @@ void v4l2_m2m_job_finish(struct v4l2_m2m_dev *m2m_dev,
-> > >>  }
-> > >>  EXPORT_SYMBOL(v4l2_m2m_job_finish);
-> > >>
-> > >> +void v4l2_m2m_suspend(struct v4l2_m2m_dev *m2m_dev)
-> > >> +{
-> > >> +    unsigned long flags;
-> > >> +    struct v4l2_m2m_ctx *curr_ctx;
-> > >> +
-> > >> +    spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
-> > >> +    m2m_dev->job_queue_flags |= QUEUE_PAUSED;
-> > >> +    curr_ctx = m2m_dev->curr_ctx;
-> > >> +    spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-> > >> +
-> > >> +    if (curr_ctx)
-> > >> +            wait_event(curr_ctx->finished,
-> > >> +                       !(curr_ctx->job_flags & TRANS_RUNNING));
-> > >> +}
-> > >> +EXPORT_SYMBOL(v4l2_m2m_suspend);
-> > >> +
-> > >> +void v4l2_m2m_resume(struct v4l2_m2m_dev *m2m_dev)
-> > >> +{
-> > >> +    unsigned long flags;
-> > >> +
-> > >> +    spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
-> > >> +    m2m_dev->job_queue_flags &= ~QUEUE_PAUSED;
-> > >> +    spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-> > >> +
-> > >> +    v4l2_m2m_try_run(m2m_dev);
-> > >> +}
-> > >> +EXPORT_SYMBOL(v4l2_m2m_resume);
-> > >> +
-> > >>  int v4l2_m2m_reqbufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
-> > >>                   struct v4l2_requestbuffers *reqbufs)
-> > >>  {
-> > >> diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
-> > >> index 5467264771ec..119a195da390 100644
-> > >> --- a/include/media/v4l2-mem2mem.h
-> > >> +++ b/include/media/v4l2-mem2mem.h
-> > >> @@ -183,6 +183,28 @@ v4l2_m2m_buf_done(struct vb2_v4l2_buffer *buf, enum vb2_buffer_state state)
-> > >>      vb2_buffer_done(&buf->vb2_buf, state);
-> > >>  }
-> > >>
-> > >> +/**
-> > >> + * v4l2_m2m_suspend() - stop new jobs from being run and wait for current job
-> > >> + * to finish
-> > >> + *
-> > >> + * @m2m_dev: opaque pointer to the internal data to handle M2M context
-> > >> + *
-> > >> + * Called by a driver in the suspend hook. Stop new jobs from being run, and
-> > >> + * wait for current running job to finish.
-> > >> + */
-> > >> +void v4l2_m2m_suspend(struct v4l2_m2m_dev *m2m_dev);
-> > >> +
-> > >> +/**
-> > >> + * v4l2_m2m_resume() - resume job running and try to run a queued job
-> > >> + *
-> > >> + * @m2m_dev: opaque pointer to the internal data to handle M2M context
-> > >> + *
-> > >> + * Called by a driver in the resume hook. This reverts the operation of
-> > >> + * v4l2_m2m_suspend() and allows job to be run. Also try to run a queued job if
-> > >> + * there is any.
-> > >> + */
-> > >> +void v4l2_m2m_resume(struct v4l2_m2m_dev *m2m_dev);
-> > >> +
-> > >>  /**
-> > >>   * v4l2_m2m_reqbufs() - multi-queue-aware REQBUFS multiplexer
-> > >>   *
-> > >> --
-> > >> 2.18.0
+> > > On 21/05/2020 19:11, Tomasz Figa wrote:
+> > > > Hi Jerry,
+> > > >
+> > > > On Wed, Dec 04, 2019 at 08:47:29PM +0800, Jerry-ch Chen wrote:
+> > > >> From: Pi-Hsun Shih <pihsun@chromium.org>
+> > > >>
+> > > >> Add two functions that can be used to stop new jobs from being queued /
+> > > >> continue running queued job. This can be used while a driver using m2m
+> > > >> helper is going to suspend / wake up from resume, and can ensure that
+> > > >> there's no job running in suspend process.
+[snip]
 > > >
-> > > Reviewed-by: Tomasz Figa <tfiga@chromium.org>
-> > >
-> > > [Corrected Hans's email address.]
-> > > Hans, does this look good to you?
+> > > I assume this will be part of a future patch series that calls these new functions?
 > >
-> > Yes, this looks good.
+> > The mtk-jpeg encoder series depends on this patch as well, so I guess
+> > it would go together with whichever is ready first.
 > >
-> > Sorry for the late reply.
->
-> No worries! Thanks a lot.
->
+> > I would also envision someone changing the other existing drivers to
+> > use the helpers, as I'm pretty much sure some of them don't handle
+> > suspend/resume correctly.
 > >
-> > I assume this will be part of a future patch series that calls these new functions?
->
-> The mtk-jpeg encoder series depends on this patch as well, so I guess
-> it would go together with whichever is ready first.
->
-> I would also envision someone changing the other existing drivers to
-> use the helpers, as I'm pretty much sure some of them don't handle
-> suspend/resume correctly.
->
+> 
+> This indeed looks very good. If I understood the issue properly,
+> the change would be useful for both stateless (e.g. hantro, et al)
+> and stateful (e.g. coda) codecs.
+> 
+> Hantro uses pm_runtime_force_suspend, and I believe that
+> could is enough for proper suspend/resume operation.
 
-This indeed looks very good. If I understood the issue properly,
-the change would be useful for both stateless (e.g. hantro, et al)
-and stateful (e.g. coda) codecs.
+Unfortunately, no. :(
 
-Hantro uses pm_runtime_force_suspend, and I believe that
-could is enough for proper suspend/resume operation.
+If the decoder is already decoding a frame, that would forcefully power
+off the hardware and possibly even cause a system lockup if we are
+unlucky to gate a clock in the middle of a bus transaction.
 
-I'm not seeing any code in CODA to handle this, so not sure
-how it's handling suspend/resume.
+I just inspected the code now and actually found one more bug in its
+power management handling. device_run() calls clk_bulk_enable() before
+pm_runtime_get_sync(), but only the latter is guaranteed to actually
+power on the relevant power domains, so we end up clocking unpowered
+hardware.
 
-Maybe we can have CODA as the first user, given it's a well-maintained
-driver and should be fairly easy to test.
+> 
+> I'm not seeing any code in CODA to handle this, so not sure
+> how it's handling suspend/resume.
+> 
+> Maybe we can have CODA as the first user, given it's a well-maintained
+> driver and should be fairly easy to test.
 
-Regards,
-Ezequiel
+I remember checking a number of drivers using the m2m helpers randomly
+and none of them implemented suspend/resume correctly. I suppose that
+was not discovered because normally the userspace itself would stop the
+operation before the system is suspended, although it's not an API
+guarantee.
+
+Best regards,
+Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
