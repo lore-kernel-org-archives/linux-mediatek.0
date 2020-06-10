@@ -2,78 +2,86 @@ Return-Path: <SRS0=3/N7=7X=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C6409C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2020 01:40:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A23DEC433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2020 02:42:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8F1ED206F7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2020 01:40:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 76F502072E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2020 02:42:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dRILBsXF";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ROHGXgoE"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8F1ED206F7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BrZEOGnN";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="OUqr7TFI"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 76F502072E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SaKiqd+HlaVTrRMFIgDA7NE7UkPbL1jkeP4Q8lMz4vA=; b=dRILBsXFhLn3ET
-	RTdgfKyePHVlRbrhBxnZQ2XuRWw+9Q4uIJsOEdZEB8xkAv+4m0FrVnqKkQF2yWxTG10ePSn3fIHhG
-	NPFGVsScCRm+QkygpoKtzRYjbU25CEit4jAemfZpHsjStqX3sWKIGO/IzceyX31FvyNuWeiDzbVzt
-	7QLRaB8Y++z/fZ/W2B7/NJUvXgASTt0CZz57GchL7Uya1nyJnTb68jJKdBq3yTxVgLr7ZOvqonMF3
-	ZwNDp2xBDtY87fm6y2SD6VxlG97/ILMiyuXUg2tk1xxUin7pzAo8whD8x9Z2IHH79iFcLObgF9zvR
-	1tNV/gqj0PdUUhUVX/Iw==;
+	List-Owner; bh=Qv1HKtB7+6E0qYR38xDNZeemwOD73awM+WIDAboNIKk=; b=BrZEOGnNnVyE4Y
+	a7dC2dt+nXJWr+nqqPPTGxviwC5IMj3H1BUrYNlCWQ/0aJnJdFo4eMRl7I8UpNH+6bXX5SCmyxrXr
+	vdyUXqWATEEPE2WSBZP7U3IRRIuKEU2tQR5IpTj73HelYjKC8+NP6EpSXjqNRKP8ZTrBWjVA5U6hV
+	+AsRgmkubZ/EYcTxswznpo65EXqfgvRx26oHUmOrXk8uezACE2sHngwLT4er1tQHrfe36wYrNsPBb
+	k5ohkRl7nAJZ84nTZuHO8j/Hcrnjrh1WKsVUtKse7Rs0r6D4HokD8+Zt1yuxAn3HVY0G0PBtaP+jK
+	7HqAVhFyAWwB9OkV5LKA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jipj6-0001V6-2n; Wed, 10 Jun 2020 01:40:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jiqhU-0005xf-Gr; Wed, 10 Jun 2020 02:42:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jipj2-0001UU-OE
- for linux-mediatek@lists.infradead.org; Wed, 10 Jun 2020 01:40:22 +0000
-X-UUID: 10182ec38b0245c48a3ceef331e3352a-20200609
+ id 1jiqhM-0005pa-5o; Wed, 10 Jun 2020 02:42:41 +0000
+X-UUID: 9b2ce7bc8c11479b810e54fb1b33b71f-20200609
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=qhYvj7zpeWIgmu8J+0ge/AWBJKAFPe78L9ZHRztXi94=; 
- b=ROHGXgoEWsN09MfFNKN7Pr9lh/OwAsSPKvpDbtvC4AyMOq1Y6PJiGT78RFNLpHHkaCsBqW4Wvy/WzTzh3V6SXWss6zjmgUN1Y4VIbLsvBpOIepoyiiZgGxm7K/IZKRKGl5GfE5Sk96e1lGEfsztjU11By/cQIq2lylthK0TEcG8=;
-X-UUID: 10182ec38b0245c48a3ceef331e3352a-20200609
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <biao.huang@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=ikAUH+oSTe3mRlWNNzglrPUeUjqFowmt3yvhPLlzaLI=; 
+ b=OUqr7TFINmMyHm2jXdxIXtoO4Cj/cQZZcCrB/QO85SmMowtIlgWpuV8bOksjvBx2N53SS6fzVCFfpENUEN8tTN0rio+onFbjDW9HVhKpvzdw/SvUbshT2LylmbYcvHbJZBo5yfWZpfqD+yavLwkeAA1rHCrTdSRc22pN1Mozf7o=;
+X-UUID: 9b2ce7bc8c11479b810e54fb1b33b71f-20200609
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <macpaul.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 164544588; Tue, 09 Jun 2020 17:40:06 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ with ESMTP id 1330059232; Tue, 09 Jun 2020 18:42:26 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 9 Jun 2020 18:32:32 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by mtkmbs08n1.mediatek.inc
- (172.21.101.55) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 10 Jun 2020 09:32:31 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 10 Jun 2020 09:32:29 +0800
-Message-ID: <1591752616.29387.26.camel@mhfsdcap03>
-Subject: Re: [PATCH] net: stmmac: Fix RX Coalesce IOC always true issue
-From: biao huang <biao.huang@mediatek.com>
-To: Jose Abreu <Jose.Abreu@synopsys.com>
-Date: Wed, 10 Jun 2020 09:30:16 +0800
-In-Reply-To: <BN6PR12MB1779E6EF20FD8F5F3255CCE8D3820@BN6PR12MB1779.namprd12.prod.outlook.com>
-References: <20200609094133.11053-1-biao.huang@mediatek.com>
- <BN6PR12MB1779E6EF20FD8F5F3255CCE8D3820@BN6PR12MB1779.namprd12.prod.outlook.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ 15.0.1497.2; Tue, 9 Jun 2020 19:32:31 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 10 Jun 2020 10:32:31 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 10 Jun 2020 10:32:30 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Felipe Balbi <balbi@kernel.org>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "Alan Stern" <stern@rowland.harvard.edu>, Bart Van Assche
+ <bvanassche@acm.org>
+Subject: [PATCH] usb/gadget/function: introduce Built-in CDROM support
+Date: Wed, 10 Jun 2020 10:32:29 +0800
+Message-ID: <1591756349-17865-1-git-send-email-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <EJ Hsu <ejh@nvidia.com>, Mauro Carvalho Chehab
+ <mchehab+samsung@kernel.org>, Benjamin Herrenschmidt
+ <benh@kernel.crashing.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org>
+References: <EJ Hsu <ejh@nvidia.com>, Mauro Carvalho Chehab
+ <mchehab+samsung@kernel.org>, Benjamin Herrenschmidt
+ <benh@kernel.crashing.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200609_184020_795832_5C2AA5C1 
-X-CRM114-Status: UNSURE (   8.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200609_194240_222920_D26FE0AA 
+X-CRM114-Status: GOOD (  19.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,127 +93,218 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Alexandre Torgue <alexandre.torgue@st.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- "David S . Miller" <davem@davemloft.net>
+Cc: Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
+ Hakieyin Hsieh <hakieyin@gmail.com>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul.lin@gmail.com>,
+ Justin Hsieh <justinhsieh@google.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2020-06-09 at 14:20 +0000, Jose Abreu wrote:
-> From: Biao Huang <biao.huang@mediatek.com>
-> Date: Jun/09/2020, 10:41:33 (UTC+00:00)
-> 
-> > -		rx_q->rx_count_frames += priv->rx_coal_frames;
-> > -		if (rx_q->rx_count_frames > priv->rx_coal_frames)
-> > +		if (rx_q->rx_count_frames >= priv->rx_coal_frames)
-> 
-> This is no right. If you want to RX IC bit to not always be set you need 
-> to change coalesce parameters using ethtool.
+Introduce Built-In CDROM (BICR) support.
+This feature depends on USB_CONFIGFS_MASS_STORAGE option.
 
-let's take look at these lines:
+1. Some settings and new function is introduced for BICR.
+2. Some work around for adapting Android settings is intorduced as well.
 
- 	1. rx_q->rx_count_frames += priv->rx_coal_frames;
-	2. 	if (rx_q->rx_count_frames > priv->rx_coal_frames)
-	3. 		rx_q->rx_count_frames = 0;
+Signed-off-by: Justin Hsieh <justinhsieh@google.com>
+Signed-off-by: Hakieyin Hsieh <hakieyin@gmail.com>
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+---
+ drivers/usb/gadget/Kconfig                   | 16 +++++++
+ drivers/usb/gadget/function/f_mass_storage.c | 49 +++++++++++++++++++-
+ drivers/usb/gadget/function/f_mass_storage.h |  5 +-
+ drivers/usb/gadget/function/storage_common.c | 23 +++++++++
+ 4 files changed, 90 insertions(+), 3 deletions(-)
 
-before the if condition(line 2 above), there is "rx_q->rx_count_frames
-+= priv->rx_coal_frames"(line 1 above) sentence; so the if condition
-always true, and the assignment rx_q->rx_count_frames = 0 happens.
-
-Here is the result on our platform, all desc3[30] = 1; you can also
-check it on your platform. no matter what rx-frames you set with
-"ethtool -C eth0 rx-frames", desc3[30] always true.
-
-# ethtool -c eth0
-Coalesce parameters for eth0:
-Adaptive RX: off  TX: off
-stats-block-usecs: 0
-sample-interval: 0
-pkt-rate-low: 0
-pkt-rate-high: 0
+diff --git a/drivers/usb/gadget/Kconfig b/drivers/usb/gadget/Kconfig
+index 4dc4d48fe6a6..686ba01bedb5 100644
+--- a/drivers/usb/gadget/Kconfig
++++ b/drivers/usb/gadget/Kconfig
+@@ -188,6 +188,9 @@ config USB_F_RNDIS
+ config USB_F_MASS_STORAGE
+ 	tristate
  
-rx-usecs: 301
-rx-frames: 25
-rx-usecs-irq: 0
-rx-frames-irq: 0
-
-#cd /sys/kernel/debug/stmmaceth/eth0
-# cat descriptors_status
-RX Queue 0:
-Descriptor ring:
-0 [0x5038b000]: 0xa8541a82 0x0 0x0 0xc1000000
++config USB_F_BICR
++	tristate
++
+ config USB_F_FS
+ 	tristate
  
-1 [0x5038b010]: 0xa8541202 0x0 0x0 0xc1000000
+@@ -357,6 +360,19 @@ config USB_CONFIGFS_MASS_STORAGE
+ 	  device (in much the same way as the "loop" device driver),
+ 	  specified as a module parameter or sysfs option.
  
-2 [0x5038b020]: 0xa8540982 0x0 0x0 0xc1000000
++config USB_CONFIGFS_BICR
++	bool "Built-In CDROM emulation"
++	depends on USB_CONFIGFS
++	depends on BLOCK
++	depends on USB_CONFIGFS_MASS_STORAGE
++	select USB_F_BICR
++	help
++	  The Build-In CDROM Gadget acts as a CDROM emulation disk drive.
++	  It is based on kernel option "USB_CONFIGFS_MASS_STORAGE".
++	  As its storage repository it can use a regular file or a block
++	  device (in much the same way as the "loop" device driver),
++	  specified as a module parameter or sysfs option.
++
+ config USB_CONFIGFS_F_LB_SS
+ 	bool "Loopback and sourcesink function (for testing)"
+ 	depends on USB_CONFIGFS
+diff --git a/drivers/usb/gadget/function/f_mass_storage.c b/drivers/usb/gadget/function/f_mass_storage.c
+index 33c2264a0e35..9de1cd465635 100644
+--- a/drivers/usb/gadget/function/f_mass_storage.c
++++ b/drivers/usb/gadget/function/f_mass_storage.c
+@@ -315,6 +315,9 @@ struct fsg_common {
+ 	void			*private_data;
  
-3 [0x5038b030]: 0xa8540102 0x0 0x0 0xc1000000
+ 	char inquiry_string[INQUIRY_STRING_LEN];
++
++	/* For build-in CDROM */
++	u8 bicr;
+ };
  
-4 [0x5038b040]: 0xa658f802 0x0 0x0 0xc1000000
+ struct fsg_dev {
+@@ -369,6 +372,10 @@ static void set_bulk_out_req_length(struct fsg_common *common,
+ 	if (rem > 0)
+ 		length += common->bulk_out_maxpacket - rem;
+ 	bh->outreq->length = length;
++
++	/* some USB 2.0 hardware requires this setting */
++	if (IS_ENABLED(USB_CONFIGFS_BICR))
++		bh->outreq->short_not_ok = 1;
+ }
  
-5 [0x5038b050]: 0xa658ef82 0x0 0x0 0xc1000000
  
-6 [0x5038b060]: 0xa658e702 0x0 0x0 0xc1000000
+@@ -527,7 +534,16 @@ static int fsg_setup(struct usb_function *f,
+ 				w_length != 1)
+ 			return -EDOM;
+ 		VDBG(fsg, "get max LUN\n");
+-		*(u8 *)req->buf = _fsg_common_get_max_lun(fsg->common);
++		if (IS_ENABLED(USB_CONFIGFS_BICR) && fsg->common->bicr) {
++			/*
++			 * When Built-In CDROM is enabled,
++			 * we share only one LUN.
++			 */
++			*(u8 *)req->buf = 0;
++		} else {
++			*(u8 *)req->buf = _fsg_common_get_max_lun(fsg->common);
++		}
++		INFO(fsg, "get max LUN = %d\n", *(u8 *)req->buf);
  
-7 [0x5038b070]: 0xa658de82 0x0 0x0 0xc1000000
+ 		/* Respond with data/status */
+ 		req->length = min((u16)1, w_length);
+@@ -1329,7 +1345,7 @@ static int do_start_stop(struct fsg_common *common)
+ 	}
  
-8 [0x5038b080]: 0xa658d602 0x0 0x0 0xc1000000
+ 	/* Are we allowed to unload the media? */
+-	if (curlun->prevent_medium_removal) {
++	if (!curlun->nofua && curlun->prevent_medium_removal) {
+ 		LDBG(curlun, "unload attempt prevented\n");
+ 		curlun->sense_data = SS_MEDIUM_REMOVAL_PREVENTED;
+ 		return -EINVAL;
+@@ -2692,6 +2708,7 @@ int fsg_common_set_cdev(struct fsg_common *common,
+ 	common->ep0 = cdev->gadget->ep0;
+ 	common->ep0req = cdev->req;
+ 	common->cdev = cdev;
++	common->bicr = 0;
  
-9 [0x5038b090]: 0xa658cd82 0x0 0x0 0xc1000000
+ 	us = usb_gstrings_attach(cdev, fsg_strings_array,
+ 				 ARRAY_SIZE(fsg_strings));
+@@ -2895,6 +2912,33 @@ static void fsg_common_release(struct fsg_common *common)
+ 		kfree(common);
+ }
  
-10 [0x5038b0a0]: 0xa658c502 0x0 0x0 0xc1000000
++#ifdef USB_CONFIGFS_BICR
++ssize_t fsg_bicr_show(struct fsg_common *common, char *buf)
++{
++	return sprintf(buf, "%d\n", common->bicr);
++}
++
++ssize_t fsg_bicr_store(struct fsg_common *common, const char *buf, size_t size)
++{
++	int ret;
++
++	ret = kstrtou8(buf, 10, &common->bicr);
++	if (ret)
++		return -EINVAL;
++
++	/* Set Lun[0] is a CDROM when enable bicr.*/
++	if (!strcmp(buf, "1"))
++		common->luns[0]->cdrom = 1;
++	else {
++		common->luns[0]->cdrom = 0;
++		common->luns[0]->blkbits = 0;
++		common->luns[0]->blksize = 0;
++		common->luns[0]->num_sectors = 0;
++	}
++
++	return size;
++}
++#endif
  
-11 [0x5038b0b0]: 0xa658bc82 0x0 0x0 0xc1000000
+ /*-------------------------------------------------------------------------*/
  
-12 [0x5038b0c0]: 0xa658b402 0x0 0x0 0xc1000000
+@@ -3463,6 +3507,7 @@ void fsg_config_from_params(struct fsg_config *cfg,
+ 		lun->ro = !!params->ro[i];
+ 		lun->cdrom = !!params->cdrom[i];
+ 		lun->removable = !!params->removable[i];
++		lun->nofua = !!params->nofua[i];
+ 		lun->filename =
+ 			params->file_count > i && params->file[i][0]
+ 			? params->file[i]
+diff --git a/drivers/usb/gadget/function/f_mass_storage.h b/drivers/usb/gadget/function/f_mass_storage.h
+index 3b8c4ce2a40a..7097e2ea5cc9 100644
+--- a/drivers/usb/gadget/function/f_mass_storage.h
++++ b/drivers/usb/gadget/function/f_mass_storage.h
+@@ -140,5 +140,8 @@ void fsg_common_set_inquiry_string(struct fsg_common *common, const char *vn,
+ void fsg_config_from_params(struct fsg_config *cfg,
+ 			    const struct fsg_module_parameters *params,
+ 			    unsigned int fsg_num_buffers);
+-
++#ifdef CONFIG_USB_CONFIGFS_BICR
++ssize_t fsg_bicr_show(struct fsg_common *common, char *buf);
++ssize_t fsg_bicr_store(struct fsg_common *common, const char *buf, size_t size);
++#endif
+ #endif /* USB_F_MASS_STORAGE_H */
+diff --git a/drivers/usb/gadget/function/storage_common.c b/drivers/usb/gadget/function/storage_common.c
+index f7e6c42558eb..8fe96eeddf35 100644
+--- a/drivers/usb/gadget/function/storage_common.c
++++ b/drivers/usb/gadget/function/storage_common.c
+@@ -441,6 +441,29 @@ ssize_t fsg_store_file(struct fsg_lun *curlun, struct rw_semaphore *filesem,
+ 		return -EBUSY;				/* "Door is locked" */
+ 	}
  
-13 [0x5038b0d0]: 0xa658ab82 0x0 0x0 0xc1000000
- 
-14 [0x5038b0e0]: 0xa658a302 0x0 0x0 0xc1000000
- 
-15 [0x5038b0f0]: 0xa6589a82 0x0 0x0 0xc1000000
- 
-16 [0x5038b100]: 0xa6589202 0x0 0x0 0xc1000000
- 
-17 [0x5038b110]: 0xa6588982 0x0 0x0 0xc1000000
- 
-18 [0x5038b120]: 0xa6588102 0x0 0x0 0xc1000000
- 
-19 [0x5038b130]: 0xa46df802 0x0 0x0 0xc1000000
- 
-20 [0x5038b140]: 0xa46def82 0x0 0x0 0xc1000000
- 
-21 [0x5038b150]: 0xa46de702 0x0 0x0 0xc1000000
- 
-22 [0x5038b160]: 0xa46dde82 0x0 0x0 0xc1000000
- 
-23 [0x5038b170]: 0xa46dd602 0x0 0x0 0xc1000000
- 
-24 [0x5038b180]: 0xa46dcd82 0x0 0x0 0xc1000000
- 
-25 [0x5038b190]: 0xa46dc502 0x0 0x0 0xc1000000
- 
-26 [0x5038b1a0]: 0xa46dbc82 0x0 0x0 0xc1000000
- 
-27 [0x5038b1b0]: 0xa46db402 0x0 0x0 0xc1000000
- 
-28 [0x5038b1c0]: 0xa46dab82 0x0 0x0 0xc1000000
- 
-29 [0x5038b1d0]: 0xa46da302 0x0 0x0 0xc1000000
- 
-30 [0x5038b1e0]: 0xa46d9a82 0x0 0x0 0xc1000000
-...
-
-> ---
-> Thanks,
-> Jose Miguel Abreu
-
++	pr_notice("%s file=%s, count=%d, curlun->cdrom=%d\n",
++			__func__, buf, (int)count, curlun->cdrom);
++
++	/*
++	 * WORKAROUND for Android:
++	 *   VOLD would clean the file path after switching to bicr.
++	 *   So when the lun is being a CD-ROM a.k.a. BICR.
++	 *   Don't clean the file path to empty.
++	 */
++	if (curlun->cdrom == 1 && count == 1)
++		return count;
++
++	/*
++	 * WORKAROUND: Should be closed the fsg lun for virtual cd-rom,
++	 * when switch to other usb functions.
++	 * Use the special keyword "off", because the init can
++	 * not parse the char '\n' in rc file and write into the sysfs.
++	 */
++	if (count == 3 &&
++			buf[0] == 'o' && buf[1] == 'f' && buf[2] == 'f' &&
++			fsg_lun_is_open(curlun))
++		((char *) buf)[0] = 0;
++
+ 	/* Remove a trailing newline */
+ 	if (count > 0 && buf[count-1] == '\n')
+ 		((char *) buf)[count-1] = 0;		/* Ugh! */
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
