@@ -6,18 +6,18 @@ X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B41AC433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2020 19:15:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BDCD9C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2020 19:34:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D354E20656
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2020 19:15:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 92CE82072E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2020 19:34:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aNq/T4LF";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=vanguardiasur-com-ar.20150623.gappssmtp.com header.i=@vanguardiasur-com-ar.20150623.gappssmtp.com header.b="aJfwS8QK"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D354E20656
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kzEyvHYL";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="fL/P90Lf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 92CE82072E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -25,48 +25,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kr1825sCIiiWSefSQusNNLNjPrybtjuRkr4AyHdKRug=; b=aNq/T4LFA0dydq
-	aAjXM1sLYObBms838TD5sATw6If/DpaZeM4KKna76OVIRW3RQYWrEQmyi09k5yMQxlnNTZHQuNkgM
-	kYbOkjWIMx2TAV1OH5cccSZNGWUIhZkMuUDMOC8v/QIk/NXVtsCtQ2HSyMmXUscbImXG12jw3gKNg
-	zggvBNdL9lcV63Ytx54S/I09qKy6DeQUVKiyuVbqAzoHdL1jpwgMZN6JLmuIDE51irQfQmhrL8ZsZ
-	4ZxWdQBdpCSPN316Itd3aZIG9xt4yE4hHRU7s+Inffl4EhdMRAiDsJvhicW9uY0B7xbUXCfsy/rrt
-	cXZoBaYBnINi+QV2UBRg==;
+	List-Owner; bh=NYLAf9+nXku1Bitx/h9ASMi6FzFhaAVWGVyCQDCXp24=; b=kzEyvHYLeT0ZfJ
+	LvZtJWwSVaogrPpAsypOi3Xapt81Trw3Lv7JtOq1lY4A2sIAdMIePJaw+eaFBGukY5zyOCcZOLTgK
+	AJueN5IrZ+AhHCIFFfzw3RJz6Tr9EVuVFdle+GH9ebzvIGRrjPS1wiv2ju2bRoEM5SxDRV+7JGkAd
+	g69V9dP1lqdBaf8frfFW7w1OscH+5mymT8QRtYu31v8yoPrxlU+LJehvGkTm9VRsDqjhEwg8wDqoE
+	WL59alXXyoOz/q75Fi/ehsgcYtXsPB2OrJUQNXPo5ALTTvHnQxEakMfeRk37EkI2GqioZCWir/EHC
+	pZvGn7CSc2QNeIqosP8w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jj6Bl-0001eg-8e; Wed, 10 Jun 2020 19:15:05 +0000
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541])
+	id 1jj6Ty-0004Zf-O8; Wed, 10 Jun 2020 19:33:54 +0000
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jj6BZ-0001Lq-7l
- for linux-mediatek@lists.infradead.org; Wed, 10 Jun 2020 19:14:54 +0000
-Received: by mail-ed1-x541.google.com with SMTP id d15so2192270edm.10
- for <linux-mediatek@lists.infradead.org>; Wed, 10 Jun 2020 12:14:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
+ id 1jj6Tv-0004TV-0u
+ for linux-mediatek@lists.infradead.org; Wed, 10 Jun 2020 19:33:52 +0000
+Received: by mail-ed1-x542.google.com with SMTP id k8so2250974edq.4
+ for <linux-mediatek@lists.infradead.org>; Wed, 10 Jun 2020 12:33:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hY1EqCjTHPxqFfI2Ha7phQq/vyBFFXs9xfoG48pRam8=;
- b=aJfwS8QKSiJ6H8efGbgr8JxwnYO1ycqGIy32HcO1eG3MGZPBt66ZyhwXGNS+ghpCA8
- MlCtqoDfJ8M3mbV1AgWLpGWf+BrKi4CjjSE3kapuXpX/wW+K7yKW/Wl7WT8jowM/Ie+q
- dLhJivuS+r93N3eMejYqC6BL/icw9TbscMS/1zgtaCagnljzPRliDuw0nNJm6Nu2lNR5
- wxcYpKvMkX70bEiohd4mCcUK6HDV5+JG8XRRb9tMfhGLnF/QWmnmCU+QP4L3ZZLa4KnY
- tJsgeBZGfHZQjF0s4mZCD+HuR/3RzUm1NynteTQZhsux6044q+WAmCrBTpi8exknwZ9N
- RJ9Q==
+ :cc; bh=qqYiZ6Y6itIrxnPxpSfJPzKeOxIw44n8uIkZaVxE90c=;
+ b=fL/P90LfHU2hZvRP7iyIKCFTn9IBz4A7+xlXDwNOH2xsnwUUftY5YRDCrjt+xCisu3
+ jP26qKwO7lNPFaujkpx5nsxM1vL5CNqj/J743n2KZwO78uUi6SQTBobQmgFzn1NW4EQn
+ vYcVhGWb0B+2Ecll8PhdZcHqUZ/A/o04wmYIg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=hY1EqCjTHPxqFfI2Ha7phQq/vyBFFXs9xfoG48pRam8=;
- b=afFnMUa4A848Ruxv1ehI1HevD1l/vBEBtpNDA6icdD8n4sN7a4L5v2V4b7IXQUOswr
- eCcyxEIIaYGmkj3hFao22bwDlpIqvlnUHxThDy1hm/jY9BzlouLYVH1D3pnCkcCNH+Us
- DTcy9RBWn2pUM0yry/rkwKciEBcMwtzCLG/5VP63lyN9DxnKIEpOXNZGu3eNYstcLA4i
- Yt4DmawbxzghH8UKaeOqSmUaWhBAN/c/ohbDAPgQTRmdYELgG7U9h8aHbgC4vvbqjkZZ
- XJEe+A8aUMGl0S2rZTpXhlt8yWkfy0GtPSf8VjNxo+RDpb8bfTMpJRIUfkN9gEC59S1u
- xxlQ==
-X-Gm-Message-State: AOAM532KfGTxf5MU/QwVgE9glXHH/BIiIt86ai/JfkntvKDjXS6l5kj0
- qaGgY7KLlvwQnOa9OXGwlgLbFOl9NqoEs1K4tjW9kA==
-X-Google-Smtp-Source: ABdhPJz9i/RGn/VGDboPOGapRKfIYiBLxFTRAkrJWXFnfcy4J6pqbtf/64Ut6cbDRPpojftZ8tGKiCLnT+y4+PGXC7s=
-X-Received: by 2002:a05:6402:1153:: with SMTP id
- g19mr3693132edw.127.1591816481715; 
- Wed, 10 Jun 2020 12:14:41 -0700 (PDT)
+ bh=qqYiZ6Y6itIrxnPxpSfJPzKeOxIw44n8uIkZaVxE90c=;
+ b=loY5phYNnBFdz2yciDHzhzVwBvDdFjg6DlUmi5OjVz/Oe6yvFJ09cvB/C+M9wG6KhJ
+ LZtZp/TuKi3GK9t61TAl3g+FKehD2qiSwmFsZgaaSYCMsId2KaEWHGIXcIPLTW1HONts
+ pFtgrThI0Vy3ALSJlGd0Cr7YoHttkXlMMtxDg2ciHilrgXHSQ9RvIGe82XPxoeQGNlwW
+ txB4SMvPnoayTu5Me/W6zPFnREN0lT4/5T7CavJ3+eeodYBNbbd27i7IoAbqcfPeQr0P
+ /oTjnEu3iU2YGHNdSkRmIVlVtkFNMRZxdB+3THhNE5rppe3TxcOowVAndQ9IROvHwaYR
+ Cm4w==
+X-Gm-Message-State: AOAM530PKS12GuFrZKSZfuO6DQ7ixyxmbPcu8HQ5y2Z08Uj0FlCim6De
+ AgFyVLUySUb93X78bW/WFvYtZi0Wzzv49g==
+X-Google-Smtp-Source: ABdhPJz2SDYsgw3sBnXl6p0exWQrFom4dLsVEwBUVJaBha9mZ26dEjRq7iA+Tt++DcmicOHFgf5SFw==
+X-Received: by 2002:a50:ed08:: with SMTP id j8mr3885016eds.58.1591817626571;
+ Wed, 10 Jun 2020 12:33:46 -0700 (PDT)
+Received: from mail-wr1-f50.google.com (mail-wr1-f50.google.com.
+ [209.85.221.50])
+ by smtp.gmail.com with ESMTPSA id o13sm486570ejb.46.2020.06.10.12.33.46
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 10 Jun 2020 12:33:46 -0700 (PDT)
+Received: by mail-wr1-f50.google.com with SMTP id x14so3641822wrp.2
+ for <linux-mediatek@lists.infradead.org>; Wed, 10 Jun 2020 12:33:46 -0700 (PDT)
+X-Received: by 2002:a5d:6750:: with SMTP id l16mr5316439wrw.295.1591817201284; 
+ Wed, 10 Jun 2020 12:26:41 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191204124732.10932-1-Jerry-Ch.chen@mediatek.com>
  <20191204124732.10932-2-Jerry-Ch.chen@mediatek.com>
@@ -75,16 +80,18 @@ References: <20191204124732.10932-1-Jerry-Ch.chen@mediatek.com>
  <CAAFQd5Ad_cnv0qztZOk9c2H0Y+XO6tRcRmS1t4dBw5qbG-d8Nw@mail.gmail.com>
  <CAAEAJfDboyra5XcEiviJP_3Kk-mDNZH5nstDa_7P7XCV7bu7Pg@mail.gmail.com>
  <20200610190356.GJ201868@chromium.org>
-In-Reply-To: <20200610190356.GJ201868@chromium.org>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Wed, 10 Jun 2020 16:14:30 -0300
-Message-ID: <CAAEAJfDSr4ne7p2BG_vjLs0zLQ1O+cn4puiALdd2DyAHnTXadg@mail.gmail.com>
+ <CAAEAJfDSr4ne7p2BG_vjLs0zLQ1O+cn4puiALdd2DyAHnTXadg@mail.gmail.com>
+In-Reply-To: <CAAEAJfDSr4ne7p2BG_vjLs0zLQ1O+cn4puiALdd2DyAHnTXadg@mail.gmail.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Date: Wed, 10 Jun 2020 21:26:28 +0200
+X-Gmail-Original-Message-ID: <CAAFQd5BH3xLNGAtbdH0Wy9KqQo30SFL9q9rcjZz8M3eviyY=hA@mail.gmail.com>
+Message-ID: <CAAFQd5BH3xLNGAtbdH0Wy9KqQo30SFL9q9rcjZz8M3eviyY=hA@mail.gmail.com>
 Subject: Re: [RFC PATCH V4 1/4] media: v4l2-mem2mem: add v4l2_m2m_suspend,
  v4l2_m2m_resume
-To: Tomasz Figa <tfiga@chromium.org>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200610_121453_283444_DA03439D 
-X-CRM114-Status: GOOD (  28.93  )
+X-CRM114-CacheID: sfid-20200610_123351_062088_F44891B3 
+X-CRM114-Status: GOOD (  35.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,98 +126,128 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 10 Jun 2020 at 16:03, Tomasz Figa <tfiga@chromium.org> wrote:
+On Wed, Jun 10, 2020 at 9:14 PM Ezequiel Garcia
+<ezequiel@vanguardiasur.com.ar> wrote:
 >
-> On Wed, Jun 10, 2020 at 03:52:39PM -0300, Ezequiel Garcia wrote:
-> > Hi everyone,
+> On Wed, 10 Jun 2020 at 16:03, Tomasz Figa <tfiga@chromium.org> wrote:
 > >
-> > Thanks for the patch.
-> >
-> > On Wed, 10 Jun 2020 at 07:33, Tomasz Figa <tfiga@chromium.org> wrote:
+> > On Wed, Jun 10, 2020 at 03:52:39PM -0300, Ezequiel Garcia wrote:
+> > > Hi everyone,
 > > >
-> > > On Wed, Jun 10, 2020 at 12:29 PM Hans Verkuil <hverkuil@xs4all.nl> wrote:
+> > > Thanks for the patch.
+> > >
+> > > On Wed, 10 Jun 2020 at 07:33, Tomasz Figa <tfiga@chromium.org> wrote:
 > > > >
-> > > > On 21/05/2020 19:11, Tomasz Figa wrote:
-> > > > > Hi Jerry,
+> > > > On Wed, Jun 10, 2020 at 12:29 PM Hans Verkuil <hverkuil@xs4all.nl> wrote:
 > > > > >
-> > > > > On Wed, Dec 04, 2019 at 08:47:29PM +0800, Jerry-ch Chen wrote:
-> > > > >> From: Pi-Hsun Shih <pihsun@chromium.org>
-> > > > >>
-> > > > >> Add two functions that can be used to stop new jobs from being queued /
-> > > > >> continue running queued job. This can be used while a driver using m2m
-> > > > >> helper is going to suspend / wake up from resume, and can ensure that
-> > > > >> there's no job running in suspend process.
-> [snip]
+> > > > > On 21/05/2020 19:11, Tomasz Figa wrote:
+> > > > > > Hi Jerry,
+> > > > > >
+> > > > > > On Wed, Dec 04, 2019 at 08:47:29PM +0800, Jerry-ch Chen wrote:
+> > > > > >> From: Pi-Hsun Shih <pihsun@chromium.org>
+> > > > > >>
+> > > > > >> Add two functions that can be used to stop new jobs from being queued /
+> > > > > >> continue running queued job. This can be used while a driver using m2m
+> > > > > >> helper is going to suspend / wake up from resume, and can ensure that
+> > > > > >> there's no job running in suspend process.
+> > [snip]
+> > > > >
+> > > > > I assume this will be part of a future patch series that calls these new functions?
 > > > >
-> > > > I assume this will be part of a future patch series that calls these new functions?
+> > > > The mtk-jpeg encoder series depends on this patch as well, so I guess
+> > > > it would go together with whichever is ready first.
+> > > >
+> > > > I would also envision someone changing the other existing drivers to
+> > > > use the helpers, as I'm pretty much sure some of them don't handle
+> > > > suspend/resume correctly.
+> > > >
 > > >
-> > > The mtk-jpeg encoder series depends on this patch as well, so I guess
-> > > it would go together with whichever is ready first.
+> > > This indeed looks very good. If I understood the issue properly,
+> > > the change would be useful for both stateless (e.g. hantro, et al)
+> > > and stateful (e.g. coda) codecs.
 > > >
-> > > I would also envision someone changing the other existing drivers to
-> > > use the helpers, as I'm pretty much sure some of them don't handle
-> > > suspend/resume correctly.
+> > > Hantro uses pm_runtime_force_suspend, and I believe that
+> > > could is enough for proper suspend/resume operation.
+> >
+> > Unfortunately, no. :(
+> >
+> > If the decoder is already decoding a frame, that would forcefully power
+> > off the hardware and possibly even cause a system lockup if we are
+> > unlucky to gate a clock in the middle of a bus transaction.
+> >
+>
+> pm_runtime_force_suspend calls pm_runtime_disable, which
+> says:
+>
+> """
+>  Increment power.disable_depth for the device and if it was zero previously,
+>  cancel all pending runtime PM requests for the device and wait for all
+>  operations in progress to complete.
+> """
+>
+> Doesn't this mean it waits for the current job (if there is one) and
+> prevents any new jobs to be issued?
+>
+
+I'd love if the PM runtime subsystem handled job management of all the
+driver subsystems automatically, but at the moment it's not aware of
+any jobs. :) The description says as much as it says - it stops any
+internal jobs of the PM subsystem - i.e. asynchronous suspend/resume
+requests. It doesn't have any awareness of V4L2 M2M jobs.
+
+> > I just inspected the code now and actually found one more bug in its
+> > power management handling. device_run() calls clk_bulk_enable() before
+> > pm_runtime_get_sync(), but only the latter is guaranteed to actually
+> > power on the relevant power domains, so we end up clocking unpowered
+> > hardware.
+> >
+>
+> How about we just move clk_enable/disable to runtime PM?
+>
+> Since we use autosuspend delay, it theoretically has
+> some impact, which is why I was refraining from doing so.
+>
+> I can't decide if this impact would be marginal or significant.
+>
+
+I'd also refrain from doing this. Clock gating corresponds to the
+bigger part of the power savings from runtime power management, since
+it stops the dynamic power consumption and only leaves the static
+leakage. That said, the Hantro IP blocks have some internal clock
+gating as well, so it might not be as pronounced, depending on the
+custom vendor integration logic surrounding the Hantro hardware.
+
+Actually even if autosuspend is not used, the runtime PM subsystem has
+some internal back-off mechanism based on measured power on and power
+off latencies. The driver should call pm_runtime_get_sync() first and
+then enable any necessary clocks. I can see that currently inside the
+resume callback we have some hardware accesses. If those really need
+to be there, they should be surrounded with appropriate clock enable
+and clock disable calls.
+
 > > >
+> > > I'm not seeing any code in CODA to handle this, so not sure
+> > > how it's handling suspend/resume.
+> > >
+> > > Maybe we can have CODA as the first user, given it's a well-maintained
+> > > driver and should be fairly easy to test.
 > >
-> > This indeed looks very good. If I understood the issue properly,
-> > the change would be useful for both stateless (e.g. hantro, et al)
-> > and stateful (e.g. coda) codecs.
+> > I remember checking a number of drivers using the m2m helpers randomly
+> > and none of them implemented suspend/resume correctly. I suppose that
+> > was not discovered because normally the userspace itself would stop the
+> > operation before the system is suspended, although it's not an API
+> > guarantee.
 > >
-> > Hantro uses pm_runtime_force_suspend, and I believe that
-> > could is enough for proper suspend/resume operation.
 >
-> Unfortunately, no. :(
->
-> If the decoder is already decoding a frame, that would forcefully power
-> off the hardware and possibly even cause a system lockup if we are
-> unlucky to gate a clock in the middle of a bus transaction.
->
+> Indeed. Do you have any recomendations for how we could
+> test this case to make sure we are handling it correctly?
 
-pm_runtime_force_suspend calls pm_runtime_disable, which
-says:
+I'd say that a simple offscreen command line gstreamer/ffmpeg decode
+with suspend/resume loop in another session should be able to trigger
+some issues.
 
-"""
- Increment power.disable_depth for the device and if it was zero previously,
- cancel all pending runtime PM requests for the device and wait for all
- operations in progress to complete.
-"""
-
-Doesn't this mean it waits for the current job (if there is one) and
-prevents any new jobs to be issued?
-
-> I just inspected the code now and actually found one more bug in its
-> power management handling. device_run() calls clk_bulk_enable() before
-> pm_runtime_get_sync(), but only the latter is guaranteed to actually
-> power on the relevant power domains, so we end up clocking unpowered
-> hardware.
->
-
-How about we just move clk_enable/disable to runtime PM?
-
-Since we use autosuspend delay, it theoretically has
-some impact, which is why I was refraining from doing so.
-
-I can't decide if this impact would be marginal or significant.
-
-> >
-> > I'm not seeing any code in CODA to handle this, so not sure
-> > how it's handling suspend/resume.
-> >
-> > Maybe we can have CODA as the first user, given it's a well-maintained
-> > driver and should be fairly easy to test.
->
-> I remember checking a number of drivers using the m2m helpers randomly
-> and none of them implemented suspend/resume correctly. I suppose that
-> was not discovered because normally the userspace itself would stop the
-> operation before the system is suspended, although it's not an API
-> guarantee.
->
-
-Indeed. Do you have any recomendations for how we could
-test this case to make sure we are handling it correctly?
-
-> Best regards,
-> Tomasz
+Best regards,
+Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
