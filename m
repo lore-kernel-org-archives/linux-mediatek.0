@@ -2,76 +2,79 @@ Return-Path: <SRS0=zMKO=7Y=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C2048C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2020 05:29:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F0AAEC433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2020 08:00:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9289820812
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2020 05:29:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C18D2204EA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2020 08:00:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s7g8hapI";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="OigtWWGO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9289820812
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oSJuDq/n";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="IMcY6+nd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C18D2204EA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=VkqZXoJR2Sr21YAmT13iR6Jt0KjI5Vr4VlK4EUDzaoM=; b=s7g8hapIUR+1lS
-	st/j4NU3FVX21XQP8XJPp4iXgKI7D8ott01Uv6FVcnpo8BIkJsQzrnNUQ46krB1bD1qm2dGO0RYEX
-	ENrR345gOgU9em2BiFmPLbnmk/wouMCC+RRu34dFeFTWGrOiXHlZCYKqe+0bYbBfvG3nkJVSmwiXZ
-	BOl8LcKTcPsR9cW19P+BJQcrA3PqDwlBUL2HW08LtC0tXZMFw5DKvjgga8FhAbnj1pUBKW9Z/vSLB
-	FVO+XdeOaIK6xHXZhs8Svp2Q+fLBW/Xu+dpJzpSePZS+Ft+//jLhTEBTGR3OoMS3U5Ehshr/q2jiC
-	XPmgi6FRqMFt3bt/BFjw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=G8XqTml8zDg/jtmL1rI81H3xR83BvtVQCrYPSRu+JWg=; b=oSJuDq/n2vHNQZ
+	2bU8nukN2uAGZmx1DFoCpiIJlnnwUCDo8QXEkd4Lvhzy0HNeGK9PHHGsYcohCXSf1UbktEPet4baO
+	cEKD0GNk9lVhTUu98JwShVfCbGTTEBZkCiKFHFX7MRYz0yR32XEZZoJaejzf4SMIJaTYFkYWf0qr2
+	LUVBnDLKKqXzxJjJaza2sAzNpIEugCavKaWyAcW3HvSaiuueknbdE76ZitmRCMfNjJxM1eZTY7DTo
+	4wKNq5QHoeMQ/V/FckWrFfR8PDvoBGBQDbozXM6ETIg7g4fUUTD3XOJFBlLO4R76IgnHgTPe/gmDQ
+	a7EqhgAoMejl5dB9NHvw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jjFmY-00011B-6L; Thu, 11 Jun 2020 05:29:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jjI8g-0001zC-O5; Thu, 11 Jun 2020 08:00:42 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jjFmQ-0000wg-QF; Thu, 11 Jun 2020 05:29:36 +0000
-X-UUID: e35137679caa4ed89bc005927b969447-20200610
+ id 1jjI8X-0001rF-Fb; Thu, 11 Jun 2020 08:00:35 +0000
+X-UUID: ec3bea5c96074b0c985b96a5ecae4d0c-20200611
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=1ILMwubnJQNPNAjEKJe3Og6tiFfzI6Q6shWaNu3nPh8=; 
- b=OigtWWGO4cCp1tK5BSPHrT/5XYGMOAJlqXwLjX4JX68TjxpOAtkRWyITFcjuSPaGgniR/cM62wNPz3VMa8sIUvc37/W1J6f2e+jLCAKrpuXy5ejfsxIUNarNEYuBzaRS6brb4g0kQGgjVNFvuMTW7K0pcmpMfk5MzFZbO2OBszI=;
-X-UUID: e35137679caa4ed89bc005927b969447-20200610
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=ymFyA3aRkGFQ0hwS3c5JqbCS9zGTSs9AXR5E+TUVjRw=; 
+ b=IMcY6+ndne/pmzJYoDIvoKGGLZDsmRyLtkaBoT9f9k3kS042rQr2UNfVVjFsMNaU0TIrg1vDpeIFOhntx/+VzslwpHRyXvmBu/Aw5OmqYguvwR5+02g/yR/n8LERFqQ/VcTlDVb05mwkpoo8Ar5MVDjfgePkYsYuOZW1mxMvjLM=;
+X-UUID: ec3bea5c96074b0c985b96a5ecae4d0c-20200611
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <eastl.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 601360220; Wed, 10 Jun 2020 21:29:23 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ with ESMTP id 1554295; Thu, 11 Jun 2020 00:00:01 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 10 Jun 2020 22:21:11 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 11 Jun 2020 13:21:11 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 11 Jun 2020 13:21:09 +0800
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
- <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
- <asutoshd@codeaurora.org>
-Subject: [PATCH v4] scsi: ufs: Fix imprecise load calculation in devfreq window
-Date: Thu, 11 Jun 2020 13:21:09 +0800
-Message-ID: <20200611052109.22700-1-stanley.chu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ 15.0.1497.2; Thu, 11 Jun 2020 01:00:12 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 11 Jun 2020 16:00:10 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 11 Jun 2020 16:00:10 +0800
+Message-ID: <1591862411.23595.5.camel@mtkswgap22>
+Subject: Re: [PATCH v4 1/4] dt-bindings: dmaengine: Add MediaTek
+ Command-Queue DMA controller bindings
+From: EastL <EastL.Lee@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+Date: Thu, 11 Jun 2020 16:00:11 +0800
+In-Reply-To: <20200529192443.GA2785767@bogus>
+References: <1590659832-31476-1-git-send-email-EastL.Lee@mediatek.com>
+ <1590659832-31476-2-git-send-email-EastL.Lee@mediatek.com>
+ <20200529192443.GA2785767@bogus>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 15808926AE20E5473D36ADD8ADA4232D6CE1F132A283B18C20BE289C9826830A2000:8
+X-TM-SNTS-SMTP: E454FB0951BC790B45883925983748159758D5FE3D941C0A086BA0DD8420AA522000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200610_222935_053533_089ACEA9 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20200611_010033_526631_CBFED0D0 
+X-CRM114-Status: GOOD (  19.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,114 +86,185 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: bvanassche@acm.org, andy.teng@mediatek.com, cc.chou@mediatek.com,
- chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>,
- chaotian.jing@mediatek.com, linux-arm-kernel@lists.infradead.org,
- beanhuo@micron.com
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+ dmaengine@vger.kernel.org, vkoul@kernel.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The UFS load calculation is based on "total_time" and "busy_time" in a
-devfreq window. However, the source of time is different for both
-parameters: "busy_time" is assigned from "jiffies" thus has different
-accuracy from "total_time" which is assigned from ktime_get().
+On Fri, 2020-05-29 at 13:24 -0600, Rob Herring wrote:
+> On Thu, May 28, 2020 at 05:57:09PM +0800, EastL wrote:
+> > Document the devicetree bindings for MediaTek Command-Queue DMA controller
+> > which could be found on MT6779 SoC or other similar Mediatek SoCs.
+> > 
+> > Signed-off-by: EastL <EastL.Lee@mediatek.com>
+> 
+> Need a full name
 
-Besides, the time of window boundary is not exactly the same as
-the starting busy time in this window if UFS is actually busy
-in the beginning of the window. A similar accuracy error may also
-happen for the end of busy time in current window.
+OK
+> .
+> 
+> > ---
+> >  .../devicetree/bindings/dma/mtk-cqdma.yaml         | 100 +++++++++++++++++++++
+> >  1 file changed, 100 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/dma/mtk-cqdma.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/dma/mtk-cqdma.yaml b/Documentation/devicetree/bindings/dma/mtk-cqdma.yaml
+> > new file mode 100644
+> > index 0000000..045aa0c
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/dma/mtk-cqdma.yaml
+> > @@ -0,0 +1,100 @@
+> > +# SPDX-License-Identifier: GPL-2.0
+> 
+> Dual license new bindings:
+> 
+> (GPL-2.0-only OR BSD-2-Clause)
 
-To guarantee the precision of load calculation, we need to
+OK
+> 
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/dma/mtk-cqdma.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: MediaTek Command-Queue DMA controller Device Tree Binding
+> > +
+> > +maintainers:
+> > +  - EastL <EastL.Lee@mediatek.com>
+> > +
+> > +description:
+> > +  MediaTek Command-Queue DMA controller (CQDMA) on Mediatek SoC
+> > +  is dedicated to memory-to-memory transfer through queue based
+> > +  descriptor management.
+> > +
+> 
+> Need a $ref to dma-controller.yaml
 
-1. Align time accuracy of both devfreq_dev_status.total_time and
-   devfreq_dev_status.busy_time. For example, use "ktime_get()"
-   directly.
+OK
+> 
+> > +properties:
+> > +  "#dma-cells":
+> > +    minimum: 1
+> > +    # Should be enough
+> > +    maximum: 255
+> > +    description:
+> > +      Used to provide DMA controller specific information.
+> > +
+> > +  compatible:
+> > +    const: mediatek,cqdma
+> 
+> Needs SoC specific compatible string(s).
+OK
+> 
+> > +
+> > +  reg:
+> > +    minItems: 1
+> > +    maxItems: 255
+> 
+> You can have 255 register regions?
+No, I'll fix maxItems to 5
+> 
+> You need to define what each region is if more than 1.
+> 
+> > +
+> > +  interrupts:
+> > +    minItems: 1
+> > +    maxItems: 255
+> 
+> 255 interrupts?
 
-2. Align below timelines,
-   - The beginning time of devfreq windows
-   - The beginning of busy time in a new window
-   - The end of busy time in the current window
+the same, 5 interripts.
+> 
+> > +
+> > +  clocks:
+> > +    maxItems: 1
+> > +
+> > +  clock-names:
+> > +    const: cqdma
+> > +
+> > +  dma-channel-mask:
+> > +    description:
+> > +      Bitmask of available DMA channels in ascending order that are
+> > +      not reserved by firmware and are available to the
+> > +      kernel. i.e. first channel corresponds to LSB.
+> > +      The first item in the array is for channels 0-31, the second is for
+> > +      channels 32-63, etc.
+> > +    allOf:
+> > +      - $ref: /schemas/types.yaml#/definitions/uint32-array
+> > +    items:
+> > +      minItems: 1
+> > +      # Should be enough
+> > +      maxItems: 255
+> 
+> This already has a definition in dma-common.yaml. Don't copy-n-paste 
+> it. Just add any constraints you have. Like what is the max number of 
+> channels?
 
-Fixes: a3cd5ec55f6c ("scsi: ufs: add load based scaling of UFS gear")
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
----
- drivers/scsi/ufs/ufshcd.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
+OK, the max channel number is 5, I'll fix it on next version.
+> 
+> > +
+> > +  dma-channels:
+> > +    $ref: /schemas/types.yaml#definitions/uint32
+> > +    description:
+> > +      Number of DMA channels supported by the controller.
+> > +
+> > +  dma-requests:
+> > +    $ref: /schemas/types.yaml#definitions/uint32
+> > +    description:
+> > +      Number of DMA request signals supported by the controller.
+> 
+> Same comment on these 2.
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index ad4fc829cbb2..bf5aaf334ccd 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -1314,6 +1314,7 @@ static int ufshcd_devfreq_get_dev_status(struct device *dev,
- 	unsigned long flags;
- 	struct list_head *clk_list = &hba->clk_list_head;
- 	struct ufs_clk_info *clki;
-+	ktime_t curr_t;
- 
- 	if (!ufshcd_is_clkscaling_supported(hba))
- 		return -EINVAL;
-@@ -1321,6 +1322,7 @@ static int ufshcd_devfreq_get_dev_status(struct device *dev,
- 	memset(stat, 0, sizeof(*stat));
- 
- 	spin_lock_irqsave(hba->host->host_lock, flags);
-+	curr_t = ktime_get();
- 	if (!scaling->window_start_t)
- 		goto start_window;
- 
-@@ -1332,18 +1334,17 @@ static int ufshcd_devfreq_get_dev_status(struct device *dev,
- 	 */
- 	stat->current_frequency = clki->curr_freq;
- 	if (scaling->is_busy_started)
--		scaling->tot_busy_t += ktime_to_us(ktime_sub(ktime_get(),
-+		scaling->tot_busy_t += ktime_to_us(ktime_sub(curr_t,
- 					scaling->busy_start_t));
- 
--	stat->total_time = jiffies_to_usecs((long)jiffies -
--				(long)scaling->window_start_t);
-+	stat->total_time = ktime_to_us(curr_t) - scaling->window_start_t;
- 	stat->busy_time = scaling->tot_busy_t;
- start_window:
--	scaling->window_start_t = jiffies;
-+	scaling->window_start_t = ktime_to_us(curr_t);
- 	scaling->tot_busy_t = 0;
- 
- 	if (hba->outstanding_reqs) {
--		scaling->busy_start_t = ktime_get();
-+		scaling->busy_start_t = curr_t;
- 		scaling->is_busy_started = true;
- 	} else {
- 		scaling->busy_start_t = 0;
-@@ -1877,6 +1878,7 @@ static void ufshcd_exit_clk_gating(struct ufs_hba *hba)
- static void ufshcd_clk_scaling_start_busy(struct ufs_hba *hba)
- {
- 	bool queue_resume_work = false;
-+	ktime_t curr_t = ktime_get();
- 
- 	if (!ufshcd_is_clkscaling_supported(hba))
- 		return;
-@@ -1892,13 +1894,13 @@ static void ufshcd_clk_scaling_start_busy(struct ufs_hba *hba)
- 			   &hba->clk_scaling.resume_work);
- 
- 	if (!hba->clk_scaling.window_start_t) {
--		hba->clk_scaling.window_start_t = jiffies;
-+		hba->clk_scaling.window_start_t = ktime_to_us(curr_t);
- 		hba->clk_scaling.tot_busy_t = 0;
- 		hba->clk_scaling.is_busy_started = false;
- 	}
- 
- 	if (!hba->clk_scaling.is_busy_started) {
--		hba->clk_scaling.busy_start_t = ktime_get();
-+		hba->clk_scaling.busy_start_t = curr_t;
- 		hba->clk_scaling.is_busy_started = true;
- 	}
- }
--- 
-2.18.0
+OK
+> 
+> > +
+> > +required:
+> > +  - "#dma-cells"
+> > +  - compatible
+> > +  - reg
+> > +  - interrupts
+> > +  - clocks
+> > +  - clock-names
+> > +  - dma-channel-mask
+> > +  - dma-channels
+> > +  - dma-requests
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/interrupt-controller/irq.h>
+> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +    #include <dt-bindings/clock/mt6779-clk.h>
+> > +    cqdma: dma-controller@10212000 {
+> > +        compatible = "mediatek,cqdma";
+> > +        reg = <0 0x10212000 0 0x80>,
+> > +            <0 0x10212080 0 0x80>,
+> > +            <0 0x10212100 0 0x80>;
+> 
+> Examples default to 1 cell each for address and size.
+OK
+> 
+> > +        interrupts = <GIC_SPI 139 IRQ_TYPE_LEVEL_LOW>,
+> > +            <GIC_SPI 140 IRQ_TYPE_LEVEL_LOW>,
+> > +            <GIC_SPI 141 IRQ_TYPE_LEVEL_LOW>;
+> > +        clocks = <&infracfg_ao CLK_INFRA_CQ_DMA>;
+> > +        clock-names = "cqdma";
+> > +        dma-channel-mask = <63>;
+> > +        dma-channels = <3>;
+> > +        dma-requests = <32>;
+> > +        #dma-cells = <1>;
+> > +    };
+> > +
+> > +...
+> > -- 
+> > 1.9.1
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
