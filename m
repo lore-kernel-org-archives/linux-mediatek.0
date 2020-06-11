@@ -1,87 +1,77 @@
-Return-Path: <SRS0=3/N7=7X=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=zMKO=7Y=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AC790C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2020 19:45:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C2048C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2020 05:29:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7E3DA206F7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2020 19:45:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9289820812
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2020 05:29:48 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BReCVHWd";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="GePbnpgV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7E3DA206F7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s7g8hapI";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="OigtWWGO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9289820812
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V9AEE2itfwqMnw8fh3rTHiSrH+hrVYu1Q/yaFid10rk=; b=BReCVHWdf1Ff1P
-	ZnqcIg3QJRqZSohh2TpXEiVaQWplWzwthy1jY5l37DZ0LI3Fp6Kum/yGbADLMVd/nRoMoHXROQX7W
-	vVh9auIuR8VD4oMA68zFTcgW0iWgXIpEPZK8CWajzWF7A61Ng/rLGI5GNQ+fIEpFM7DbAy9/cyAvn
-	Zze4whY++IJ1fqjFEU/TKvGBbDrNXnI0dRSUWqTdpO76DVJStEgTBSgcJ4nm3vLFmEOTTh7tcL8O+
-	ZSUx0HOLunkqbEz4BjiFn2Ns1YDAOZwAvIU9yhAwYB0vzEZ5dIU7P+HMgtU4/Nifu//jmV3kb8E+y
-	MwZEw88oWvzc/Dni6ibQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=VkqZXoJR2Sr21YAmT13iR6Jt0KjI5Vr4VlK4EUDzaoM=; b=s7g8hapIUR+1lS
+	st/j4NU3FVX21XQP8XJPp4iXgKI7D8ott01Uv6FVcnpo8BIkJsQzrnNUQ46krB1bD1qm2dGO0RYEX
+	ENrR345gOgU9em2BiFmPLbnmk/wouMCC+RRu34dFeFTWGrOiXHlZCYKqe+0bYbBfvG3nkJVSmwiXZ
+	BOl8LcKTcPsR9cW19P+BJQcrA3PqDwlBUL2HW08LtC0tXZMFw5DKvjgga8FhAbnj1pUBKW9Z/vSLB
+	FVO+XdeOaIK6xHXZhs8Svp2Q+fLBW/Xu+dpJzpSePZS+Ft+//jLhTEBTGR3OoMS3U5Ehshr/q2jiC
+	XPmgi6FRqMFt3bt/BFjw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jj6el-000260-IO; Wed, 10 Jun 2020 19:45:03 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1jjFmY-00011B-6L; Thu, 11 Jun 2020 05:29:42 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jj6ei-0001mN-5i
- for linux-mediatek@lists.infradead.org; Wed, 10 Jun 2020 19:45:01 +0000
-Received: by mail-wr1-x442.google.com with SMTP id p5so3638851wrw.9
- for <linux-mediatek@lists.infradead.org>; Wed, 10 Jun 2020 12:44:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=w/E0PqZ4JUvsVPhjJCpIt9CihS3XGANL6AWqhjUQMiM=;
- b=GePbnpgV0HFsJk15OEyOs+JIFBYByLXFhcFn9SLwDZxbtzCmuF3HL0aMeBlh4M7rrU
- 59HtOEH4vhneOyuuPBg+LZIhJXXxw8E+WDpDdsMq7nSAT18EjeZv0QIAwwciVPGWRJvF
- Vyuf1tcwbaR3DFgeV5GsxW9saxagNMpwvSLm4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=w/E0PqZ4JUvsVPhjJCpIt9CihS3XGANL6AWqhjUQMiM=;
- b=oMOfyqL/u6I6wPMTYJ6dPQ9KJC8cvgKPguWPgXD/511gn5mP6tOQFzWfG50e5Cd4Aj
- VstOlE3zxkkk8xbK61yBCmIDZQtIF8HioFKOrhzZAjHs7LzV29Q5yfMzY4IM0bJ4Dm2b
- EDY6yfvUmNfGLUfCjfqqAp+QUkifAghvATnTZkMHmIf7ltE/KjJSsjqqYJumFMg1COu1
- HeRbX4opY19RPAZpGAgYYNv61fIrpzGWSTBwKDwhL27V2Q1u8lgUdy1/gjl9X822Hu9F
- 9qLR5IhiRH5Hlk9aUbr/85cJpUk+mEw0mSWLwf9zwXELTB/HkmPFcgd9vKzQECSGThbe
- +Low==
-X-Gm-Message-State: AOAM531lYs8dA8Wp0MykLB1O2eP7jfPTbIp9vXjW5l0/dSDsGjYWsFPf
- 5TLtgUrwtWMqxIxcQxHrz6DGzA==
-X-Google-Smtp-Source: ABdhPJz56Mg1sFhBY6OHgtYaL4srEb/iLokXny55C/qT/LARZkNQ2vp3NirR+I0nb5Ducr+EwK7hGg==
-X-Received: by 2002:adf:c385:: with SMTP id p5mr5534468wrf.409.1591818297823; 
- Wed, 10 Jun 2020 12:44:57 -0700 (PDT)
-Received: from chromium.org (205.215.190.35.bc.googleusercontent.com.
- [35.190.215.205])
- by smtp.gmail.com with ESMTPSA id u9sm959760wme.16.2020.06.10.12.44.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Jun 2020 12:44:57 -0700 (PDT)
-Date: Wed, 10 Jun 2020 19:44:55 +0000
-From: Tomasz Figa <tfiga@chromium.org>
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Subject: Re: [V9, 2/2] media: i2c: ov02a10: Add OV02A10 image sensor driver
-Message-ID: <20200610194455.GK201868@chromium.org>
-References: <20200523084103.31276-1-dongchun.zhu@mediatek.com>
- <20200523084103.31276-3-dongchun.zhu@mediatek.com>
+ id 1jjFmQ-0000wg-QF; Thu, 11 Jun 2020 05:29:36 +0000
+X-UUID: e35137679caa4ed89bc005927b969447-20200610
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=1ILMwubnJQNPNAjEKJe3Og6tiFfzI6Q6shWaNu3nPh8=; 
+ b=OigtWWGO4cCp1tK5BSPHrT/5XYGMOAJlqXwLjX4JX68TjxpOAtkRWyITFcjuSPaGgniR/cM62wNPz3VMa8sIUvc37/W1J6f2e+jLCAKrpuXy5ejfsxIUNarNEYuBzaRS6brb4g0kQGgjVNFvuMTW7K0pcmpMfk5MzFZbO2OBszI=;
+X-UUID: e35137679caa4ed89bc005927b969447-20200610
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 601360220; Wed, 10 Jun 2020 21:29:23 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 10 Jun 2020 22:21:11 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 11 Jun 2020 13:21:11 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 11 Jun 2020 13:21:09 +0800
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+ <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
+ <asutoshd@codeaurora.org>
+Subject: [PATCH v4] scsi: ufs: Fix imprecise load calculation in devfreq window
+Date: Thu, 11 Jun 2020 13:21:09 +0800
+Message-ID: <20200611052109.22700-1-stanley.chu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200523084103.31276-3-dongchun.zhu@mediatek.com>
+X-TM-SNTS-SMTP: 15808926AE20E5473D36ADD8ADA4232D6CE1F132A283B18C20BE289C9826830A2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200610_124500_235110_C33DE08F 
-X-CRM114-Status: GOOD (  24.06  )
+X-CRM114-CacheID: sfid-20200610_222935_053533_089ACEA9 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,276 +83,114 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, drinkcat@chromium.org,
- andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org, linus.walleij@linaro.org,
- shengnan.wang@mediatek.com, louis.kuo@mediatek.com, bgolaszewski@baylibre.com,
- sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
- sakari.ailus@linux.intel.com, matthias.bgg@gmail.com, bingbu.cao@intel.com,
- mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: bvanassche@acm.org, andy.teng@mediatek.com, cc.chou@mediatek.com,
+ chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>,
+ chaotian.jing@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ beanhuo@micron.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dongchun,
+The UFS load calculation is based on "total_time" and "busy_time" in a
+devfreq window. However, the source of time is different for both
+parameters: "busy_time" is assigned from "jiffies" thus has different
+accuracy from "total_time" which is assigned from ktime_get().
 
-On Sat, May 23, 2020 at 04:41:03PM +0800, Dongchun Zhu wrote:
-> Add a V4L2 sub-device driver for OV02A10 image sensor.
-> 
-> Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> ---
->  MAINTAINERS                 |    1 +
->  drivers/media/i2c/Kconfig   |   13 +
->  drivers/media/i2c/Makefile  |    1 +
->  drivers/media/i2c/ov02a10.c | 1025 +++++++++++++++++++++++++++++++++++++++++++
->  4 files changed, 1040 insertions(+)
->  create mode 100644 drivers/media/i2c/ov02a10.c
-> 
+Besides, the time of window boundary is not exactly the same as
+the starting busy time in this window if UFS is actually busy
+in the beginning of the window. A similar accuracy error may also
+happen for the end of busy time in current window.
 
-Thank you for the patch. Please see my comments inline.
+To guarantee the precision of load calculation, we need to
 
-[snip]
-> diff --git a/drivers/media/i2c/ov02a10.c b/drivers/media/i2c/ov02a10.c
-> new file mode 100644
-> index 0000000..160a0b5
-> --- /dev/null
-> +++ b/drivers/media/i2c/ov02a10.c
-[snip]
-> +static const char * const ov02a10_test_pattern_menu[] = {
-> +	"Disabled",
-> +	"Color Bar",
+1. Align time accuracy of both devfreq_dev_status.total_time and
+   devfreq_dev_status.busy_time. For example, use "ktime_get()"
+   directly.
 
-nit: We should normalize this to one of the standard names. What is the
-pattern on this sensor? Is it perhaps "Eight Vertical Colour Bars"?
+2. Align below timelines,
+   - The beginning time of devfreq windows
+   - The beginning of busy time in a new window
+   - The end of busy time in the current window
 
-> +};
-[snip]
-> +static int ov02a10_set_fmt(struct v4l2_subdev *sd,
-> +			   struct v4l2_subdev_pad_config *cfg,
-> +			   struct v4l2_subdev_format *fmt)
-> +{
-> +	struct ov02a10 *ov02a10 = to_ov02a10(sd);
-> +	struct v4l2_mbus_framefmt *mbus_fmt = &fmt->format;
-> +
-> +	mutex_lock(&ov02a10->mutex);
-> +
+Fixes: a3cd5ec55f6c ("scsi: ufs: add load based scaling of UFS gear")
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/scsi/ufs/ufshcd.c | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
 
-
-Don't we need to handle the case when fmt->which is V4L2_SUBDEV_FORMAT_TRY,
-which is used for trying the format, but not applying it to the hardware?
-
-> +	if (ov02a10->streaming) {
-> +		mutex_unlock(&ov02a10->mutex);
-> +		return -EBUSY;
-> +	}
-> +
-> +	/* Only one sensor mode supported */
-> +	mbus_fmt->code = ov02a10->fmt.code;
-> +	ov02a10_fill_fmt(ov02a10->cur_mode, mbus_fmt);
-> +	ov02a10->fmt = fmt->format;
-> +
-> +	mutex_unlock(&ov02a10->mutex);
-> +
-> +	return 0;
-> +}
-> +
-> +static int ov02a10_get_fmt(struct v4l2_subdev *sd,
-> +			   struct v4l2_subdev_pad_config *cfg,
-> +			   struct v4l2_subdev_format *fmt)
-> +{
-> +	struct ov02a10 *ov02a10 = to_ov02a10(sd);
-> +	struct v4l2_mbus_framefmt *mbus_fmt = &fmt->format;
-> +
-> +	mutex_lock(&ov02a10->mutex);
-> +
-> +	fmt->format = ov02a10->fmt;
-
-Ditto.
-
-> +	mbus_fmt->code = ov02a10->fmt.code;
-> +	ov02a10_fill_fmt(ov02a10->cur_mode, mbus_fmt);
-> +
-> +	mutex_unlock(&ov02a10->mutex);
-> +
-> +	return 0;
-> +}
-> +
-> +static int ov02a10_enum_mbus_code(struct v4l2_subdev *sd,
-> +				  struct v4l2_subdev_pad_config *cfg,
-> +				  struct v4l2_subdev_mbus_code_enum *code)
-> +{
-> +	struct ov02a10 *ov02a10 = to_ov02a10(sd);
-> +
-> +	if (code->index >= ARRAY_SIZE(supported_modes))
-> +		return -EINVAL;
-
-Hmm, supported_modes[] doesn't seem to hold the information about mbus
-codes. Should this just perhaps be "!= 0"?
-
-> +
-> +	code->code = ov02a10->fmt.code;
-> +
-> +	return 0;
-> +}
-[snip]
-> +static int ov02a10_entity_init_cfg(struct v4l2_subdev *sd,
-> +				   struct v4l2_subdev_pad_config *cfg)
-> +{
-> +	struct v4l2_subdev_format fmt = {
-> +		.which = cfg ? V4L2_SUBDEV_FORMAT_TRY : V4L2_SUBDEV_FORMAT_ACTIVE,
-> +		.format = {
-> +			.width = 1600,
-> +			.height = 1200,
-> +		}
-> +	};
-> +
-> +	ov02a10_set_fmt(sd, cfg, &fmt);
-> +
-> +	return 0;
-> +}
-> +
-
-I'm not familiar with this init_cfg operation and the documentation is very
-sparse about it. Sakari, is this a correct implementation?
-
-[snip]
-> +static int ov02a10_set_test_pattern(struct ov02a10 *ov02a10, int pattern)
-> +{
-> +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
-> +	int ret;
-> +
-> +	ret = i2c_smbus_write_byte_data(client, REG_PAGE_SWITCH, REG_ENABLE);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	ret = i2c_smbus_write_byte_data(client, OV02A10_REG_TEST_PATTERN,
-> +					pattern);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	ret = i2c_smbus_write_byte_data(client, REG_GLOBAL_EFFECTIVE,
-> +					REG_ENABLE);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	return i2c_smbus_write_byte_data(client, REG_SC_CTRL_MODE,
-> +					 SC_CTRL_MODE_STREAMING);
-
-Why is this needed? Does writing the test pattern register stop streaming?
-
-[snip]
-> +static int ov02a10_initialize_controls(struct ov02a10 *ov02a10)
-> +{
-> +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
-> +	const struct ov02a10_mode *mode;
-> +	struct v4l2_ctrl_handler *handler;
-> +	struct v4l2_ctrl *ctrl;
-> +	u64 exposure_max;
-> +	u32 pixel_rate;
-> +	int ret;
-> +
-> +	handler = &ov02a10->ctrl_handler;
-> +	mode = ov02a10->cur_mode;
-> +	ret = v4l2_ctrl_handler_init(handler, 7);
-> +	if (ret)
-> +		return ret;
-> +
-> +	handler->lock = &ov02a10->mutex;
-> +
-> +	ctrl = v4l2_ctrl_new_int_menu(handler, NULL, V4L2_CID_LINK_FREQ, 0, 0,
-> +				      link_freq_menu_items);
-> +	if (ctrl)
-> +		ctrl->flags |= V4L2_CTRL_FLAG_READ_ONLY;
-> +
-> +	pixel_rate = to_pixel_rate(0);
-> +	v4l2_ctrl_new_std(handler, NULL, V4L2_CID_PIXEL_RATE, 0, pixel_rate, 1,
-> +			  pixel_rate);
-> +
-> +	exposure_max = mode->vts_def - 4;
-> +	ov02a10->exposure = v4l2_ctrl_new_std(handler, &ov02a10_ctrl_ops,
-> +					      V4L2_CID_EXPOSURE,
-> +					      OV02A10_EXPOSURE_MIN,
-> +					      exposure_max,
-> +					      OV02A10_EXPOSURE_STEP,
-> +					      mode->exp_def);
-> +
-> +	v4l2_ctrl_new_std(handler, &ov02a10_ctrl_ops,
-> +			  V4L2_CID_ANALOGUE_GAIN,
-> +			  OV02A10_GAIN_MIN,
-> +			  OV02A10_GAIN_MAX,
-> +			  OV02A10_GAIN_STEP,
-> +			  OV02A10_GAIN_DEFAULT);
-> +
-> +	v4l2_ctrl_new_std_menu_items(handler, &ov02a10_ctrl_ops,
-> +				     V4L2_CID_TEST_PATTERN,
-> +				     ARRAY_SIZE(ov02a10_test_pattern_menu) - 1,
-> +				     0, 0, ov02a10_test_pattern_menu);
-> +
-
-I can see that we're missing some controls here now, VBLANK and HBLANK if I
-remember correctly. Even though read-only, some userspace need those to
-get information about how the sensor operates.
-
-> +	if (handler->error) {
-> +		ret = handler->error;
-> +		dev_err(&client->dev, "failed to init controls(%d)\n", ret);
-> +		goto err_free_handler;
-> +	}
-> +
-> +	ov02a10->subdev.ctrl_handler = handler;
-> +
-> +	return 0;
-> +
-> +err_free_handler:
-> +	v4l2_ctrl_handler_free(handler);
-> +
-> +	return ret;
-> +}
-[snip]
-> +	pm_runtime_enable(dev);
-> +	if (!pm_runtime_enabled(dev)) {
-> +		ret = ov02a10_power_on(dev);
-> +		if (ret < 0) {
-> +			dev_err(dev, "failed to power on: %d\n", ret);
-> +			goto err_free_handler;
-> +		}
-> +	}
-> +
-> +	ret = v4l2_async_register_subdev(&ov02a10->subdev);
-> +	if (ret) {
-> +		dev_err(dev, "failed to register V4L2 subdev: %d", ret);
-> +		if (!pm_runtime_enabled(dev))
-> +			ov02a10_power_off(dev);
-
-Please don't mix inline and error-path error handling, as it makes it
-difficult to tell if it's correct. Please move this below the appropriate
-err label instead.
-
-> +		goto err_clean_entity;
-> +	}
-> +
-> +	return 0;
-> +
-> +err_clean_entity:
-
-If one calls pm_runtime_enable() in the probe path, one needs to call
-pm_runtime_disable() on the error and remove paths.
-
-> +	media_entity_cleanup(&ov02a10->subdev.entity);
-> +err_free_handler:
-> +	v4l2_ctrl_handler_free(ov02a10->subdev.ctrl_handler);
-> +err_destroy_mutex:
-> +	mutex_destroy(&ov02a10->mutex);
-> +
-> +	return ret;
-> +}
-> +
-
-Best regards,
-Tomasz
-
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index ad4fc829cbb2..bf5aaf334ccd 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -1314,6 +1314,7 @@ static int ufshcd_devfreq_get_dev_status(struct device *dev,
+ 	unsigned long flags;
+ 	struct list_head *clk_list = &hba->clk_list_head;
+ 	struct ufs_clk_info *clki;
++	ktime_t curr_t;
+ 
+ 	if (!ufshcd_is_clkscaling_supported(hba))
+ 		return -EINVAL;
+@@ -1321,6 +1322,7 @@ static int ufshcd_devfreq_get_dev_status(struct device *dev,
+ 	memset(stat, 0, sizeof(*stat));
+ 
+ 	spin_lock_irqsave(hba->host->host_lock, flags);
++	curr_t = ktime_get();
+ 	if (!scaling->window_start_t)
+ 		goto start_window;
+ 
+@@ -1332,18 +1334,17 @@ static int ufshcd_devfreq_get_dev_status(struct device *dev,
+ 	 */
+ 	stat->current_frequency = clki->curr_freq;
+ 	if (scaling->is_busy_started)
+-		scaling->tot_busy_t += ktime_to_us(ktime_sub(ktime_get(),
++		scaling->tot_busy_t += ktime_to_us(ktime_sub(curr_t,
+ 					scaling->busy_start_t));
+ 
+-	stat->total_time = jiffies_to_usecs((long)jiffies -
+-				(long)scaling->window_start_t);
++	stat->total_time = ktime_to_us(curr_t) - scaling->window_start_t;
+ 	stat->busy_time = scaling->tot_busy_t;
+ start_window:
+-	scaling->window_start_t = jiffies;
++	scaling->window_start_t = ktime_to_us(curr_t);
+ 	scaling->tot_busy_t = 0;
+ 
+ 	if (hba->outstanding_reqs) {
+-		scaling->busy_start_t = ktime_get();
++		scaling->busy_start_t = curr_t;
+ 		scaling->is_busy_started = true;
+ 	} else {
+ 		scaling->busy_start_t = 0;
+@@ -1877,6 +1878,7 @@ static void ufshcd_exit_clk_gating(struct ufs_hba *hba)
+ static void ufshcd_clk_scaling_start_busy(struct ufs_hba *hba)
+ {
+ 	bool queue_resume_work = false;
++	ktime_t curr_t = ktime_get();
+ 
+ 	if (!ufshcd_is_clkscaling_supported(hba))
+ 		return;
+@@ -1892,13 +1894,13 @@ static void ufshcd_clk_scaling_start_busy(struct ufs_hba *hba)
+ 			   &hba->clk_scaling.resume_work);
+ 
+ 	if (!hba->clk_scaling.window_start_t) {
+-		hba->clk_scaling.window_start_t = jiffies;
++		hba->clk_scaling.window_start_t = ktime_to_us(curr_t);
+ 		hba->clk_scaling.tot_busy_t = 0;
+ 		hba->clk_scaling.is_busy_started = false;
+ 	}
+ 
+ 	if (!hba->clk_scaling.is_busy_started) {
+-		hba->clk_scaling.busy_start_t = ktime_get();
++		hba->clk_scaling.busy_start_t = curr_t;
+ 		hba->clk_scaling.is_busy_started = true;
+ 	}
+ }
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
