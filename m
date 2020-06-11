@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BC404C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2020 14:27:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E70D5C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2020 14:28:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8EE692075F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2020 14:27:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B93B22065C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2020 14:28:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rv0vqtPu";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="j2Zm8WTa"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8EE692075F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eAPyaSHI";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="hF9rAdqc"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B93B22065C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,63 +26,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+MgYOjEIkLaiNJbtBxSpQUIjtgSDYtnxP0LYlR39Pv0=; b=rv0vqtPu/Bc0yB
-	q1t+CZUKksYXUmGqKlfbFhV3JDp5PAl7wAg1PgbrmOQgiW1bnLrGGenqmPhGhHMktUp6X9Fa7k2Ax
-	o4eTx06OQBmA1EjO4CyL6NyKk54ySP/KcIFqayHn+/zBoYS3OTVU7ck+eLII8euMLW8KVoQTxgiK3
-	Cx1hcjlEdLQnMMZbYASuvjhy8p+LjhxRu5p5eTMu8xdE016+QmUycPrACuX31zJO8WCEGkl6uBqxC
-	KHojTkwF5OM5UvVyhWUmGAPaRymkxzKMwtEqyrrd7DIWFuOFUm7W3xHWhSgk69D5TP5skYvvT7SL6
-	RyHft+xvrrScGjNTCkZg==;
+	List-Owner; bh=i0fNtyHHWDqlAm8WU1uTPxOIyot8RoO57fstLwlD/44=; b=eAPyaSHISgyNiD
+	sR97KePBMGhWmjlx+AGfg2iyI6sMLWJA0ceybpOpif19VUoWlyIj+4kVH1KR5y+GU+geiAmgEU/3b
+	T5GKmJwbIJnjQtCiZkO67j5vaa0LASp79n3d1GIm+NSD4PkZuVBGNAjE+GE3rYqFYpgNgs/VfFimR
+	WREjtDe7CVMr9pwRJcVSR33o0nwNrNE0AyIZPMwawJydAylcBLIS67gBBTYIG4nsLMJNFJZ/lbtbv
+	gGFCtcyWgy8X/Xd2PLrteX98iPduRNcfW0SrEz63jkhql7wc8PJQeVXDkb3mBRZ/rdFwvlfc2Oi9O
+	kRIdAvSdteMBQIqrfRaQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jjOB3-000698-MY; Thu, 11 Jun 2020 14:27:33 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1jjOBq-0006gd-Kz; Thu, 11 Jun 2020 14:28:22 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jjOB0-00067d-Ny
- for linux-mediatek@lists.infradead.org; Thu, 11 Jun 2020 14:27:31 +0000
-Received: by mail-wm1-x342.google.com with SMTP id u26so7080299wmn.1
- for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2020 07:27:30 -0700 (PDT)
+ id 1jjOBo-0006ft-95
+ for linux-mediatek@lists.infradead.org; Thu, 11 Jun 2020 14:28:21 +0000
+Received: by mail-wr1-x444.google.com with SMTP id r7so6417891wro.1
+ for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2020 07:28:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=6oNSKO/bfHkroY5E6w01GRrWanZd3YtLMnWhvnjnTpA=;
- b=j2Zm8WTakmUV2T5y/+dMnLN/v4wOdjhGJvK5fkIK2O+ryCylfrjDzedqOoet78T75o
- Ldpf9ZChG1Qa8baFLKfR/dMZfYDYfM/dHdjOp3Yx66MPkJNvGhfScPuLyNt4jF9UKrN9
- lHtbYaVmspsKGB1HNStwdkVEgJW9qsM01+RiQ=
+ bh=+MwiHwTDigrZz/osHSq5jwVMysur4yPnyLBBwzskG3k=;
+ b=hF9rAdqc/Vs5/6fKuks+MMwm5u0HPIk5I3T763FaYv8nJfRnzVmYS6TkZwBkpQEK58
+ OabTcSTw/chyT3nEYjpMZQDEOQc+ToSeZ2/XR3JxMVn51VBleocqPt81rwrJnQrtsfTu
+ fNHm+OBopt1RhC9Zm1Z4ugCbwiZh785kwWvlc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=6oNSKO/bfHkroY5E6w01GRrWanZd3YtLMnWhvnjnTpA=;
- b=o7sgqFEWPbXYFStNzmHneuUbgwsfGWBaAUBRPvid0X/MnKAQKrDhleHrD/gbZy5DxZ
- aL4lRdeVQAfNoVYfBlLiYGodwW7wzvWeEQ0eh1zDlUHbBmTke1tf9rp3w8FqH4rPJVfF
- c2F8yz8oaTEkQNiEAGiM9z2NyawECicre0g0he1lgdhkEiXu/07Hq4ASkql1O0Dcl+Gy
- BYvBaxHqfUIzwPoQHLtCYoVn5kkjwdimC5rNDmX+JVTaWiRaV5GgSOcPsGubR/QLi+9M
- dnxCOPZizH+hCSaPqCT865yjeSP2Y5Mas9E6ufqSoW0mtBTbJ/QPHE9jFSu3x0n8hFF/
- 5U0g==
-X-Gm-Message-State: AOAM530UjFENKBF4Z5XwUiWHhoyQpBt6kfSkuS1NNq7grHDM9QGYIuTs
- PP9hvbnegP3ismCs6XpHvQILBA==
-X-Google-Smtp-Source: ABdhPJwcHlML3GVU5KUrSHCPpOa1Dg4OCgzoWnC1F47mU912hVUwl1saC95zTHAPsWEKo1Yl3nrQ2g==
-X-Received: by 2002:a7b:c40e:: with SMTP id k14mr8960381wmi.59.1591885649589; 
- Thu, 11 Jun 2020 07:27:29 -0700 (PDT)
+ bh=+MwiHwTDigrZz/osHSq5jwVMysur4yPnyLBBwzskG3k=;
+ b=cYK2JIQs/QSgJPxwaGTnDbyquC006Ink9U9+hQXkQRgTgvQ5R95PHnP1bPqj9bjxRB
+ QSxf46uYS7uVrndameOj+18VDMXP9UJB3pq+s68EsEmurp7RZoxtzpqnsXSrOKjxR1Kz
+ tnP/XKjK03YjreyeU6CSLrlBORk9VZeYSFyJLhRUyjVSkZbEEsmqLHqKeuhv7JiXietU
+ sZzthKIBz1zN5zwU5iWxVVTAQ/iqgFkaMLByGxUCA4yPskPEGx4FyXbRVV1QKo1gd29l
+ liurMay6a8KY0kOdLShSymEpuyO8JUpW7JPB/mstddEs16F/XzkfgHrHDKrzpjE5cRXX
+ 2VIQ==
+X-Gm-Message-State: AOAM5312dQUlugZ+fxOgN4ySLEOV6x91mkFxIFt+v+EU42VlywJwz4r8
+ c1Uo4em3xFr6i22ZmQ6CJnjyYw==
+X-Google-Smtp-Source: ABdhPJzQ9+KT5Krp0KhPaomhJuRwTmw/IshQSBBRqrbY7XioECHFV8tO/RyEuLgOWZRGG4tI3GvR+g==
+X-Received: by 2002:a5d:4d4d:: with SMTP id a13mr10081847wru.252.1591885698879; 
+ Thu, 11 Jun 2020 07:28:18 -0700 (PDT)
 Received: from chromium.org (205.215.190.35.bc.googleusercontent.com.
  [35.190.215.205])
- by smtp.gmail.com with ESMTPSA id g3sm5808646wrb.46.2020.06.11.07.27.28
+ by smtp.gmail.com with ESMTPSA id w17sm5219529wra.71.2020.06.11.07.28.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 11 Jun 2020 07:27:29 -0700 (PDT)
-Date: Thu, 11 Jun 2020 14:27:27 +0000
+ Thu, 11 Jun 2020 07:28:18 -0700 (PDT)
+Date: Thu, 11 Jun 2020 14:28:17 +0000
 From: Tomasz Figa <tfiga@chromium.org>
 To: Xia Jiang <xia.jiang@mediatek.com>
-Subject: Re: [PATCH RESEND v9 09/18] media: platform: Delete zeroing the
- reserved fields
-Message-ID: <20200611142727.GC158633@chromium.org>
+Subject: Re: [PATCH RESEND v9 10/18] media: platform: Stylistic changes for
+ improving code quality
+Message-ID: <20200611142817.GD158633@chromium.org>
 References: <20200604090553.10861-1-xia.jiang@mediatek.com>
- <20200604090553.10861-11-xia.jiang@mediatek.com>
+ <20200604090553.10861-12-xia.jiang@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200604090553.10861-11-xia.jiang@mediatek.com>
+In-Reply-To: <20200604090553.10861-12-xia.jiang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200611_072730_778437_4B7D38A4 
-X-CRM114-Status: UNSURE (   7.73  )
+X-CRM114-CacheID: sfid-20200611_072820_316123_0A359AA1 
+X-CRM114-Status: UNSURE (   8.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -111,16 +111,18 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Xia,
 
-On Thu, Jun 04, 2020 at 05:05:44PM +0800, Xia Jiang wrote:
-> Delete zeroing the reserved fields because that the core already
-> does it.
+On Thu, Jun 04, 2020 at 05:05:45PM +0800, Xia Jiang wrote:
+> Change register offset hex numerals from uppercase to lowercase.
+> Change data type of max/min width/height from integer to unsigned
+> integer.
 > 
 > Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
 > ---
-> v9: new patch
+> v9: move changing data type of max/min width/height to this patch
 > ---
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 5 -----
->  1 file changed, 5 deletions(-)
+>  .../media/platform/mtk-jpeg/mtk_jpeg_core.h    |  8 ++++----
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h | 18 +++++++++---------
+>  2 files changed, 13 insertions(+), 13 deletions(-)
 > 
 
 Reviewed-by: Tomasz Figa <tfiga@chromium.org>
