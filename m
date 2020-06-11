@@ -2,79 +2,73 @@ Return-Path: <SRS0=zMKO=7Y=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6B4BCC433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2020 10:03:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4828BC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2020 10:03:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3FF7120835
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2020 10:03:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1396120835
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2020 10:03:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jPiogVKq";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="RaBBlggY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3FF7120835
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dLnfdupu"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1396120835
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/M+FDvV/YcTJeUo+VsgYfmTHnrWLZz+XVLqK78H4agA=; b=jPiogVKqKprZ3s
-	gMYhnQPHfok4EWht8a+a6FvYlH+pTGb16EIcNK1HS7oeJv1bmuMf6kSqBWasO7Dy3nz02+qygWWwC
-	1J1LkkNQ+12M2VuCIWfbk77GRl1a6OL93QMNp+y4zYXxgz5zK/NIgd9TzB2+LX6oa2SK+OYI5npHw
-	CsBsqv6rRXr+Qhb1DVJWR6BHRaCNzPGq+egzNgQ5bmAyq/e6YvopbRTeQX45iW5WCkgjLlcGDFd3N
-	RDSRVUV9yTJvh4Jh8wKCx8KLgL+ToDBLcMrcwjFjmaWvlYnrt9rM8KN+wuxnRCI9Jcre2HByRnJK3
-	x3S/4ZZ+2r+dK1rxIW1g==;
+	List-Owner; bh=7ZREs/xa6YJn83PLxFlEW/KKVfR+DbDamRwAGeKhUao=; b=dLnfdupu5bXD6g
+	0RoAIUha9DPlNMTLmld1WWeqp7l7ftKrTlPvZSu7ubHmfSaVCusq4Ke9XkVqm+QGt9JUvYw6wkHZj
+	ZkV+5y0xdBBBAz9+A6WCMyYLfUBPYFdf10QvgIf9/u34celA24qVPpd8Nk4coFzcRu1lRXdKEC06M
+	Wvemt/1pLnMULoCPvXL36qvNypNldVG/OlZKWcJibi3kltTS28ZyhfkodQLoRgp2DYQc5040FS6x9
+	KoNzn1D/fHt0jOsOjhkw59f9AzJJbH1M/EtVyvgXHdsyfih0Or9zCVciqUwaqoUbYjqngIQcAvL7X
+	eIaHIeWo1kkR0dNchAmA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jjK3M-0005oq-0A; Thu, 11 Jun 2020 10:03:20 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jjK3o-0006V9-08; Thu, 11 Jun 2020 10:03:48 +0000
+Received: from mga01.intel.com ([192.55.52.88])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jjK3C-0005Uk-TT; Thu, 11 Jun 2020 10:03:12 +0000
-X-UUID: a3889155bcb84dffbb99c78ac896429f-20200611
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=CJcfxCu5zDRpr2vZfB1Tc+UVD9m/FFKMEZgs43bapM4=; 
- b=RaBBlggYi7uLe+U5eUAnTHjBINaRfqjWZLew/mB/kJXw6o7PQHLXsYxAbaicIOMyIy4jfjnSQgvkWeOdJ9eUXDKigTo/w+RSRnydNdRQD6tvfdax+QdbOmHBavbc/gLk5+rIkiBDJQbTdsEj0frBFSqNU+rifp9wNZqZcz88U/8=;
-X-UUID: a3889155bcb84dffbb99c78ac896429f-20200611
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 666329976; Thu, 11 Jun 2020 02:02:42 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 11 Jun 2020 02:52:59 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 11 Jun 2020 17:52:50 +0800
-Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 11 Jun 2020 17:52:51 +0800
-Message-ID: <1591869173.25636.39.camel@mtkswgap22>
-Subject: RE: [PATCH v4] scsi: ufs: Fix imprecise load calculation in devfreq
- window
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: Avri Altman <Avri.Altman@wdc.com>
-Date: Thu, 11 Jun 2020 17:52:53 +0800
-In-Reply-To: <SN6PR04MB46405CE4B375BA3134D64A99FC800@SN6PR04MB4640.namprd04.prod.outlook.com>
-References: <20200611052109.22700-1-stanley.chu@mediatek.com>
- <SN6PR04MB46405CE4B375BA3134D64A99FC800@SN6PR04MB4640.namprd04.prod.outlook.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1jjK3W-0005z1-MF; Thu, 11 Jun 2020 10:03:32 +0000
+IronPort-SDR: 3fKCufSo77Nx+gIBTAjFWRkf74PwFdKHG7tTFf8SL72rFlbFbjrY+z8VJQr1ZbHXMSja8J5ovy
+ jx2lbpXXFbOQ==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Jun 2020 03:03:30 -0700
+IronPort-SDR: Pn15RnbO6jIDhtSwfC1dpWA2jynSfJXqvEvOYQg42lVNOehGHk53YpEDtcsPI9Se0S/k2dok6n
+ ZpkT0LhhwrMw==
+X-IronPort-AV: E=Sophos;i="5.73,499,1583222400"; d="scan'208";a="260660099"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+ by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Jun 2020 03:03:25 -0700
+Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
+ id A935D20680; Thu, 11 Jun 2020 13:03:22 +0300 (EEST)
+Date: Thu, 11 Jun 2020 13:03:22 +0300
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [V9, 2/2] media: i2c: ov02a10: Add OV02A10 image sensor driver
+Message-ID: <20200611100322.GL16711@paasikivi.fi.intel.com>
+References: <20200523084103.31276-1-dongchun.zhu@mediatek.com>
+ <20200523084103.31276-3-dongchun.zhu@mediatek.com>
+ <20200610194455.GK201868@chromium.org>
+ <20200611095333.GK16711@paasikivi.fi.intel.com>
+ <CAAFQd5BBxBEs=gCohOzOGzkTDNkL1yyu7dtEY26K52=CmFAWnA@mail.gmail.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 7CBC375DE8EB4263FB517B24417907279B35FCD9CE7FF744E8B9862B97D052252000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <CAAFQd5BBxBEs=gCohOzOGzkTDNkL1yyu7dtEY26K52=CmFAWnA@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200611_030310_959769_8D846B72 
-X-CRM114-Status: UNSURE (   8.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200611_030330_738373_946068A7 
+X-CRM114-Status: GOOD (  29.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,56 +80,174 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
- "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
- "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "cc.chou@mediatek.com" <cc.chou@mediatek.com>,
- "cang@codeaurora.org" <cang@codeaurora.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>,
- "chaotian.jing@mediatek.com" <chaotian.jing@mediatek.com>,
- "bvanassche@acm.org" <bvanassche@acm.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "beanhuo@micron.com" <beanhuo@micron.com>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ linux-devicetree <devicetree@vger.kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Shengnan Wang =?utf-8?B?KOeOi+Wco+eUtyk=?= <shengnan.wang@mediatek.com>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Dongchun Zhu <dongchun.zhu@mediatek.com>, Louis Kuo <louis.kuo@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
+ Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Avri,
-
-Thanks for the review.
-
-On Thu, 2020-06-11 at 08:03 +0000, Avri Altman wrote:
-> > 
-> > Fixes: a3cd5ec55f6c ("scsi: ufs: add load based scaling of UFS gear")
-> > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> Reviewed-by: Avri Altman <avri.altman@wdc.com>
+On Thu, Jun 11, 2020 at 11:57:43AM +0200, Tomasz Figa wrote:
+> On Thu, Jun 11, 2020 at 11:53 AM Sakari Ailus
+> <sakari.ailus@linux.intel.com> wrote:
+> >
+> > Hi Tomasz,
+> >
+> > On Wed, Jun 10, 2020 at 07:44:55PM +0000, Tomasz Figa wrote:
+> > > Hi Dongchun,
+> > >
+> > > On Sat, May 23, 2020 at 04:41:03PM +0800, Dongchun Zhu wrote:
+> > > > Add a V4L2 sub-device driver for OV02A10 image sensor.
+> > > >
+> > > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > > > ---
+> > > >  MAINTAINERS                 |    1 +
+> > > >  drivers/media/i2c/Kconfig   |   13 +
+> > > >  drivers/media/i2c/Makefile  |    1 +
+> > > >  drivers/media/i2c/ov02a10.c | 1025 +++++++++++++++++++++++++++++++++++++++++++
+> > > >  4 files changed, 1040 insertions(+)
+> > > >  create mode 100644 drivers/media/i2c/ov02a10.c
+> > > >
+> > >
+> > > Thank you for the patch. Please see my comments inline.
+> > >
+> > > [snip]
+> > > > diff --git a/drivers/media/i2c/ov02a10.c b/drivers/media/i2c/ov02a10.c
+> > > > new file mode 100644
+> > > > index 0000000..160a0b5
+> > > > --- /dev/null
+> > > > +++ b/drivers/media/i2c/ov02a10.c
+> > > [snip]
+> > > > +static const char * const ov02a10_test_pattern_menu[] = {
+> > > > +   "Disabled",
+> > > > +   "Color Bar",
+> > >
+> > > nit: We should normalize this to one of the standard names. What is the
+> > > pattern on this sensor? Is it perhaps "Eight Vertical Colour Bars"?
+> > >
+> > > > +};
+> > > [snip]
+> > > > +static int ov02a10_set_fmt(struct v4l2_subdev *sd,
+> > > > +                      struct v4l2_subdev_pad_config *cfg,
+> > > > +                      struct v4l2_subdev_format *fmt)
+> > > > +{
+> > > > +   struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > > > +   struct v4l2_mbus_framefmt *mbus_fmt = &fmt->format;
+> > > > +
+> > > > +   mutex_lock(&ov02a10->mutex);
+> > > > +
+> > >
+> > >
+> > > Don't we need to handle the case when fmt->which is V4L2_SUBDEV_FORMAT_TRY,
+> > > which is used for trying the format, but not applying it to the hardware?
+> >
+> > Yes.
+> >
+> > >
+> > > > +   if (ov02a10->streaming) {
+> > > > +           mutex_unlock(&ov02a10->mutex);
+> > > > +           return -EBUSY;
+> > > > +   }
+> > > > +
+> > > > +   /* Only one sensor mode supported */
+> > > > +   mbus_fmt->code = ov02a10->fmt.code;
+> > > > +   ov02a10_fill_fmt(ov02a10->cur_mode, mbus_fmt);
+> > > > +   ov02a10->fmt = fmt->format;
+> > > > +
+> > > > +   mutex_unlock(&ov02a10->mutex);
+> > > > +
+> > > > +   return 0;
+> > > > +}
+> > > > +
+> > > > +static int ov02a10_get_fmt(struct v4l2_subdev *sd,
+> > > > +                      struct v4l2_subdev_pad_config *cfg,
+> > > > +                      struct v4l2_subdev_format *fmt)
+> > > > +{
+> > > > +   struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > > > +   struct v4l2_mbus_framefmt *mbus_fmt = &fmt->format;
+> > > > +
+> > > > +   mutex_lock(&ov02a10->mutex);
+> > > > +
+> > > > +   fmt->format = ov02a10->fmt;
+> > >
+> > > Ditto.
+> > >
+> > > > +   mbus_fmt->code = ov02a10->fmt.code;
+> > > > +   ov02a10_fill_fmt(ov02a10->cur_mode, mbus_fmt);
+> > > > +
+> > > > +   mutex_unlock(&ov02a10->mutex);
+> > > > +
+> > > > +   return 0;
+> > > > +}
+> > > > +
+> > > > +static int ov02a10_enum_mbus_code(struct v4l2_subdev *sd,
+> > > > +                             struct v4l2_subdev_pad_config *cfg,
+> > > > +                             struct v4l2_subdev_mbus_code_enum *code)
+> > > > +{
+> > > > +   struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > > > +
+> > > > +   if (code->index >= ARRAY_SIZE(supported_modes))
+> > > > +           return -EINVAL;
+> > >
+> > > Hmm, supported_modes[] doesn't seem to hold the information about mbus
+> > > codes. Should this just perhaps be "!= 0"?
+> > >
+> > > > +
+> > > > +   code->code = ov02a10->fmt.code;
+> > > > +
+> > > > +   return 0;
+> > > > +}
+> > > [snip]
+> > > > +static int ov02a10_entity_init_cfg(struct v4l2_subdev *sd,
+> > > > +                              struct v4l2_subdev_pad_config *cfg)
+> > > > +{
+> > > > +   struct v4l2_subdev_format fmt = {
+> > > > +           .which = cfg ? V4L2_SUBDEV_FORMAT_TRY : V4L2_SUBDEV_FORMAT_ACTIVE,
+> > > > +           .format = {
+> > > > +                   .width = 1600,
+> > > > +                   .height = 1200,
+> > > > +           }
+> > > > +   };
+> > > > +
+> > > > +   ov02a10_set_fmt(sd, cfg, &fmt);
+> > > > +
+> > > > +   return 0;
+> > > > +}
+> > > > +
+> > >
+> > > I'm not familiar with this init_cfg operation and the documentation is very
+> > > sparse about it. Sakari, is this a correct implementation?
+> >
+> > The purpose is to initialise a pad configuration (format and selection
+> > rectangles) to the device defaults. As there seem to be no selection
+> > rectangles, this seems fine to me.
 > 
-> Just a small nit.
-> 
-> > -       stat->total_time = jiffies_to_usecs((long)jiffies -
-> > -                               (long)scaling->window_start_t);
-> > +       stat->total_time = ktime_to_us(curr_t) - scaling->window_start_t;
-> ktime_sub ?
+> Thanks. I traced the code and could only see one place where the
+> callback is being called and that was with cfg != NULL. Still, the
+> code above uses "cfg ?" as a check to determine whether TRY or ACTIVE
+> should be passed to which. Is that also correct?
 
-scaling->window_start_t is already in "us" thus ktime_sub() is not
-suitable here.
+It could be used in setting the active format in probe. That would probably
+be cleaner than what it currently does.
 
-Another way is changing scaling->window_start_t as type "ktime_t". This
-is worth to do because of a little performance gain.
+But apart from that, the framework always calls init_cfg with cfg non-NULL.
 
-I will change it in next version.
-
-Thanks,
-Stanley Chu
+-- 
+Sakari Ailus
 
 _______________________________________________
 Linux-mediatek mailing list
