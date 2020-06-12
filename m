@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A6016C433E1
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A3082C433DF
 	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 18:30:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 77C49207ED
+	by mail.kernel.org (Postfix) with ESMTPS id 7862E207F7
 	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 18:30:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CsjotWGb";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="HNoytvPz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 77C49207ED
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AbAKcUTd";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Wqnor2oq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7862E207F7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g94iPw6irRI0xTHeQ0YSpp0HrAw1VCsDTHKsaik4O+I=; b=CsjotWGbE6q/CB
-	zqxKzi2DjFrLXogYPZtSV/6z63uaoGpIFa8FWxw9gslAqZNmd1c3O2wn2WKYXy080zWnL/8Dzgcq2
-	MCfUy7OH0LGsaXREqBPJAIcAOOMLCXwP+wp3gOC6NCFzUrk5b10NPnggs1eSwDnM8V7HEA62YsShe
-	t/FlDzazYscmkcTYk5y2ouQAceHZFLYZXz/ctlbb+k2MoP3sbTIyiZeeiDDaZsYJx6zuPaoDUzigk
-	RHEak+HOlRgpo7v6kfknKEjfvfSAI2/bi6ZtrLLhNuKJmxdAFmdZKC6LMCKgGVcFJCtadA8W/i5d+
-	nyyivEYuZyj+X7l3knsQ==;
+	List-Owner; bh=rrOy8hOWslVC8w2pX3zz5wp3CfzxMMta53SXpXsVydc=; b=AbAKcUTdOnSaU5
+	9vZa8A+cwVly66rf/lNCp9Fa3A3n635MiSp3vLl1jspPR+fWHmMv8EPKPPN65k+XKg+0KuZ9hENxS
+	u+Y2HCInDdh1IgND8nItVqvSfhLFxhSJ9NO76yIFvOcFES/5jNd/gXFis+gOzakSga8uRiXopbnQp
+	seLLZ/LfLt8cA4QN8V8ZmeOEvaEeoM4zrNB1Xyrs64NKJqBZmt+kDCNkChzZB4rT3j2lAFyIvOA0k
+	x4fiMYw5PYe+gXOfPFZt6W+FR2q0xiFwsL2sNl5ohUQ9A5SJOQhXXioJV/NE3b4lLscQ9epe8P94m
+	+nfXlj8mDTb6uOh6Wmvg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jjoRg-0001ko-In; Fri, 12 Jun 2020 18:30:28 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jjoRf-0001js-3V; Fri, 12 Jun 2020 18:30:27 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jjoRd-0001iy-Kr
- for linux-mediatek@lists.infradead.org; Fri, 12 Jun 2020 18:30:27 +0000
-X-UUID: f81c41f499bd4b6fb68fe6c6acc020ef-20200612
+ id 1jjoRc-0001ix-Ha
+ for linux-mediatek@lists.infradead.org; Fri, 12 Jun 2020 18:30:26 +0000
+X-UUID: 73f10582059d48d296719482b485ab18-20200612
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=HNrPmQ2IIylNycJMJ0rpK8m8tnlpP8o1gtVTahC34RY=; 
- b=HNoytvPz6BSDHAZrVbpS3xHTKexsGhvGOQOa+f7jSeOLp+GqOaysdYfokuYQb1eLKnmHQ/X+COJxx5q1pCik9GQ1USaOmjZ8WsbPpZzZmWzh9sEBB2CpoBPX4DW0sLj9ITcaWGLj/jdWu8Gkp52jLw5r6bsGs57ZxDiKNzw4yF4=;
-X-UUID: f81c41f499bd4b6fb68fe6c6acc020ef-20200612
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=JxTFWJL4FzVni1vcpjh/rOjeJslVOPGx/DPcX62rsJw=; 
+ b=Wqnor2oqVUHh1vu0fXKIV2JSFzQthB6cZFf3W5lGzTLfY/haFy7JAqGvi76Sk7tKBDd6YlIBQ7iz4BPHLU08uSLaDmG68O7kX2KhrUZmVPhAgzYz8BclXcgfiYGjp34qYkfGj9AYrCsegBZTYFTlpGkHrYvfsQPcinA8asIQH3U=;
+X-UUID: 73f10582059d48d296719482b485ab18-20200612
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 537261598; Fri, 12 Jun 2020 10:29:45 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 12 Jun 2020 11:30:13 -0700
+ with ESMTP id 388145264; Fri, 12 Jun 2020 10:29:44 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 12 Jun 2020 11:30:12 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 13 Jun 2020 02:30:14 +0800
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 13 Jun 2020 02:30:13 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 13 Jun 2020 02:30:11 +0800
+ Frontend Transport; Sat, 13 Jun 2020 02:30:10 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
  <lorenzo.bianconi@redhat.com>
-Subject: [PATCH v2 3/3] mt76: mt7915: add MU-MIMO support
-Date: Sat, 13 Jun 2020 02:30:10 +0800
-Message-ID: <52232d9b5857dd17e6e11ed4bb81a51e6e8bb757.1591983283.git.ryder.lee@mediatek.com>
+Subject: [PATCH v2 2/3] mt76: mt7915: add a fixed AC queue mapping
+Date: Sat, 13 Jun 2020 02:30:09 +0800
+Message-ID: <97c1001126f8decddb5c05d2b3a0926806d169c6.1591983283.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <2863c9a7e14c791202738597184f4a6b75d5bc07.1591983283.git.ryder.lee@mediatek.com>
 References: <2863c9a7e14c791202738597184f4a6b75d5bc07.1591983283.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 55B4746C594CF56C9C8149BD1FAF50673313E3C51F3C52911B7A94EF757395362000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200612_113025_685359_591FE87B 
-X-CRM114-Status: GOOD (  11.24  )
+X-CRM114-CacheID: sfid-20200612_113024_585797_EC6D1097 
+X-CRM114-Status: GOOD (  10.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,222 +93,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable MU-MIMO DL/UL and add relative counters in debugfs.
+In MT7915, hardware queue map is flexible. However, certain firmware modules
+like MU and U-APSD presume a fixed queue order to adapt some devices that have
+DMA scheduler with a strict order, so this patch can help in the long run.
 
-Currently MU modules read WTBL first to notify BA changes to
-other cross modules, so adjust mt7915_mcu_sta_ba() accordingly.
-
-Tested-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
-changes since v2 - move CONFIG_MAC80211_DEBUGFS fixup into patch 0001 
----
- .../wireless/mediatek/mt76/mt7915/debugfs.c   |  9 ++-
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 72 ++++++++++++++++++-
- .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  5 +-
- .../net/wireless/mediatek/mt76/mt7915/regs.h  |  5 ++
- 4 files changed, 86 insertions(+), 5 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   |  2 +-
+ .../net/wireless/mediatek/mt76/mt7915/mac.h   | 10 --------
+ .../net/wireless/mediatek/mt76/mt7915/main.c  |  3 +++
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    | 25 +++++++++++++++++++
+ 4 files changed, 29 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-index 7e48f56b5b08..38f473d587c9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-@@ -178,7 +178,14 @@ mt7915_txbf_stat_read_phy(struct mt7915_phy *phy, struct seq_file *s)
- 	seq_printf(s, "Tx Beamformee feedback triggered counts: %ld\n",
- 		   FIELD_GET(MT_ETBF_TX_FB_TRI, cnt));
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index a264e304a3df..660e1820cccf 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -593,7 +593,7 @@ void mt7915_mac_write_txwi(struct mt7915_dev *dev, __le32 *txwi,
  
--	/* Tx SU counters */
-+	/* Tx SU & MU counters */
-+	cnt = mt76_rr(dev, MT_MIB_SDR34(ext_phy));
-+	seq_printf(s, "Tx multi-user Beamforming counts: %ld\n",
-+		   FIELD_GET(MT_MIB_MU_BF_TX_CNT, cnt));
-+	cnt = mt76_rr(dev, MT_MIB_DR8(ext_phy));
-+	seq_printf(s, "Tx multi-user MPDU counts: %d\n", cnt);
-+	cnt = mt76_rr(dev, MT_MIB_DR9(ext_phy));
-+	seq_printf(s, "Tx multi-user successful MPDU counts: %d\n", cnt);
- 	cnt = mt76_rr(dev, MT_MIB_DR11(ext_phy));
- 	seq_printf(s, "Tx single-user successful MPDU counts: %d\n", cnt);
+ 	if (ieee80211_is_data(fc) || ieee80211_is_bufferable_mmpdu(fc)) {
+ 		q_idx = wmm_idx * MT7915_MAX_WMM_SETS +
+-			skb_get_queue_mapping(skb);
++			mt7915_lmac_mapping(dev, skb_get_queue_mapping(skb));
+ 		p_fmt = MT_TX_TYPE_CT;
+ 	} else if (beacon) {
+ 		q_idx = MT_LMAC_BCN0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
+index b9bc8b25b031..4b0871ab2414 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
+@@ -149,16 +149,6 @@ enum tx_pkt_type {
+ 	MT_TX_TYPE_FW,
+ };
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index c8c12c740c1a..3d35332c44bc 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -1166,19 +1166,31 @@ mt7915_mcu_sta_ba(struct mt7915_dev *dev,
- 	struct wtbl_req_hdr *wtbl_hdr;
- 	struct tlv *sta_wtbl;
- 	struct sk_buff *skb;
-+	int ret;
- 
- 	skb = mt7915_mcu_alloc_sta_req(dev, mvif, msta,
- 				       MT7915_STA_UPDATE_MAX_SIZE);
- 	if (IS_ERR(skb))
- 		return PTR_ERR(skb);
- 
--	mt7915_mcu_sta_ba_tlv(skb, params, enable, tx);
- 	sta_wtbl = mt7915_mcu_add_tlv(skb, STA_REC_WTBL, sizeof(struct tlv));
- 
- 	wtbl_hdr = mt7915_mcu_alloc_wtbl_req(dev, msta, WTBL_SET, sta_wtbl,
- 					     &skb);
- 	mt7915_mcu_wtbl_ba_tlv(skb, params, enable, tx, sta_wtbl, wtbl_hdr);
- 
-+	ret = __mt76_mcu_skb_send_msg(&dev->mt76, skb,
-+				      MCU_EXT_CMD_STA_REC_UPDATE, true);
-+	if (ret)
-+		return ret;
-+
-+	skb = mt7915_mcu_alloc_sta_req(dev, mvif, msta,
-+				       MT7915_STA_UPDATE_MAX_SIZE);
-+	if (IS_ERR(skb))
-+		return PTR_ERR(skb);
-+
-+	mt7915_mcu_sta_ba_tlv(skb, params, enable, tx);
-+
- 	return __mt76_mcu_skb_send_msg(&dev->mt76, skb,
- 				       MCU_EXT_CMD_STA_REC_UPDATE, true);
- }
-@@ -1466,16 +1478,38 @@ mt7915_mcu_sta_muru_tlv(struct sk_buff *skb, struct ieee80211_sta *sta)
- 		HE_PHY(CAP2_UL_MU_PARTIAL_MU_MIMO, elem->phy_cap_info[2]);
- }
- 
-+static int
-+mt7915_mcu_add_mu(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-+		  struct ieee80211_sta *sta)
-+{
-+	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
-+	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
-+	struct sk_buff *skb;
-+	int len = sizeof(struct sta_req_hdr) + sizeof(struct sta_rec_muru);
-+
-+	if (!sta->vht_cap.vht_supported && !sta->he_cap.has_he)
-+		return 0;
-+
-+	skb = mt7915_mcu_alloc_sta_req(dev, mvif, msta, len);
-+	if (IS_ERR(skb))
-+		return PTR_ERR(skb);
-+
-+	mt7915_mcu_sta_muru_tlv(skb, sta);
-+
-+	return __mt76_mcu_skb_send_msg(&dev->mt76, skb,
-+				       MCU_EXT_CMD_STA_REC_UPDATE, true);
-+}
-+
- static void
- mt7915_mcu_sta_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
- 		   struct ieee80211_sta *sta)
+-enum tx_pkt_queue_idx {
+-	MT_LMAC_AC00,
+-	MT_LMAC_AC01,
+-	MT_LMAC_AC02,
+-	MT_LMAC_AC03,
+-	MT_LMAC_ALTX0 = 0x10,
+-	MT_LMAC_BMC0 = 0x10,
+-	MT_LMAC_BCN0 = 0x12,
+-};
+-
+ enum tx_port_idx {
+ 	MT_TX_PORT_IDX_LMAC,
+ 	MT_TX_PORT_IDX_MCU
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index 05b5650c56c8..e09899748c9b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -350,9 +350,12 @@ static int
+ mt7915_conf_tx(struct ieee80211_hw *hw, struct ieee80211_vif *vif, u16 queue,
+ 	       const struct ieee80211_tx_queue_params *params)
  {
- 	struct tlv *tlv;
++	struct mt7915_dev *dev = mt7915_hw_dev(hw);
+ 	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
  
-+	/* starec ht */
- 	if (sta->ht_cap.ht_supported) {
- 		struct sta_rec_ht *ht;
+ 	/* no need to update right away, we'll get BSS_CHANGED_QOS */
++	queue = mt7915_lmac_mapping(dev, queue);
++
+ 	mvif->wmm[queue].cw_min = params->cw_min;
+ 	mvif->wmm[queue].cw_max = params->cw_max;
+ 	mvif->wmm[queue].aifs = params->aifs;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index 85d74ecd0351..64ea1e0a1fb0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -199,6 +199,16 @@ enum {
+ 	EXT_BSSID_END
+ };
  
--		/* starec ht */
- 		tlv = mt7915_mcu_add_tlv(skb, STA_REC_HT, sizeof(*ht));
- 		ht = (struct sta_rec_ht *)tlv;
- 		ht->ht_cap = cpu_to_le16(sta->ht_cap.cap);
-@@ -2064,6 +2098,32 @@ int mt7915_mcu_add_rate_ctrl(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 				       MCU_EXT_CMD_STA_REC_UPDATE, true);
++enum {
++	MT_LMAC_AC00,
++	MT_LMAC_AC01,
++	MT_LMAC_AC02,
++	MT_LMAC_AC03,
++	MT_LMAC_ALTX0 = 0x10,
++	MT_LMAC_BMC0 = 0x10,
++	MT_LMAC_BCN0 = 0x12,
++};
++
+ enum {
+ 	MT_RX_SEL0,
+ 	MT_RX_SEL1,
+@@ -254,6 +264,21 @@ mt7915_ext_phy(struct mt7915_dev *dev)
+ 	return phy->priv;
  }
  
-+static int
-+mt7915_mcu_add_group(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-+		     struct ieee80211_sta *sta)
++static inline u8 mt7915_lmac_mapping(struct mt7915_dev *dev, u8 ac)
 +{
-+#define MT_STA_BSS_GROUP		1
-+	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
-+	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
-+	struct {
-+		__le32 action;
-+		u8 wlan_idx_lo;
-+		u8 status;
-+		u8 wlan_idx_hi;
-+		u8 rsv0[5];
-+		__le32 val;
-+		u8 rsv1[8];
-+	} __packed req = {
-+		.action = cpu_to_le32(MT_STA_BSS_GROUP),
-+		.wlan_idx_lo = to_wcid_lo(msta->wcid.idx),
-+		.wlan_idx_hi = to_wcid_hi(msta->wcid.idx),
-+		.val = cpu_to_le32(mvif->idx),
++	static const u8 lmac_queue_map[] = {
++		[IEEE80211_AC_BK] = MT_LMAC_AC00,
++		[IEEE80211_AC_BE] = MT_LMAC_AC01,
++		[IEEE80211_AC_VI] = MT_LMAC_AC02,
++		[IEEE80211_AC_VO] = MT_LMAC_AC03,
 +	};
 +
-+	return __mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_SET_DRR_CTRL,
-+				   &req, sizeof(req), true);
++	if (WARN_ON_ONCE(ac >= ARRAY_SIZE(lmac_queue_map)))
++		return MT_LMAC_AC01; /* BE */
++
++	return lmac_queue_map[ac];
 +}
 +
- int mt7915_mcu_add_sta_adv(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 			   struct ieee80211_sta *sta, bool enable)
- {
-@@ -2073,10 +2133,18 @@ int mt7915_mcu_add_sta_adv(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 		return 0;
- 
- 	/* must keep the order */
-+	ret = mt7915_mcu_add_group(dev, vif, sta);
-+	if (ret)
-+		return ret;
-+
- 	ret = mt7915_mcu_add_txbf(dev, vif, sta, enable);
- 	if (ret)
- 		return ret;
- 
-+	ret = mt7915_mcu_add_mu(dev, vif, sta);
-+	if (ret)
-+		return ret;
-+
- 	if (enable)
- 		return mt7915_mcu_add_rate_ctrl(dev, vif, sta);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-index c241dd7c4c36..981dd3fcdb41 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-@@ -201,6 +201,7 @@ enum {
- 	MCU_EXT_CMD_EDCA_UPDATE = 0x27,
- 	MCU_EXT_CMD_DEV_INFO_UPDATE = 0x2A,
- 	MCU_EXT_CMD_THERMAL_CTRL = 0x2c,
-+	MCU_EXT_CMD_SET_DRR_CTRL = 0x36,
- 	MCU_EXT_CMD_SET_RDD_CTRL = 0x3a,
- 	MCU_EXT_CMD_PROTECT_CTRL = 0x3e,
- 	MCU_EXT_CMD_MAC_INIT_CTRL = 0x46,
-@@ -653,7 +654,7 @@ struct sta_rec_muru {
- 		bool ofdma_ul_en;
- 		bool mimo_dl_en;
- 		bool mimo_ul_en;
--		bool rsv[4];
-+		u8 rsv[4];
- 	} cfg;
- 
- 	struct {
-@@ -664,7 +665,7 @@ struct sta_rec_muru {
- 		bool lt16_sigb;
- 		bool rx_su_comp_sigb;
- 		bool rx_su_non_comp_sigb;
--		bool rsv;
-+		u8 rsv;
- 	} ofdma_dl;
- 
- 	struct {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-index c121715f8bff..e0989141d9da 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-@@ -117,11 +117,16 @@
- #define MT_MIB_SDR16(_band)		MT_WF_MIB(_band, 0x048)
- #define MT_MIB_SDR16_BUSY_MASK		GENMASK(23, 0)
- 
-+#define MT_MIB_SDR34(_band)		MT_WF_MIB(_band, 0x090)
-+#define MT_MIB_MU_BF_TX_CNT		GENMASK(15, 0)
-+
- #define MT_MIB_SDR36(_band)		MT_WF_MIB(_band, 0x098)
- #define MT_MIB_SDR36_TXTIME_MASK	GENMASK(23, 0)
- #define MT_MIB_SDR37(_band)		MT_WF_MIB(_band, 0x09c)
- #define MT_MIB_SDR37_RXTIME_MASK	GENMASK(23, 0)
- 
-+#define MT_MIB_DR8(_band)		MT_WF_MIB(_band, 0x0c0)
-+#define MT_MIB_DR9(_band)		MT_WF_MIB(_band, 0x0c4)
- #define MT_MIB_DR11(_band)		MT_WF_MIB(_band, 0x0cc)
- 
- #define MT_MIB_MB_SDR0(_band, n)	MT_WF_MIB(_band, 0x100 + ((n) << 4))
+ static inline void
+ mt7915_set_aggr_state(struct mt7915_sta *msta, u8 tid,
+ 		      enum mt7915_ampdu_state state)
 -- 
 2.18.0
 _______________________________________________
