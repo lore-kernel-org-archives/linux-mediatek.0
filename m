@@ -2,80 +2,85 @@ Return-Path: <SRS0=I3u4=7Z=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-6.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 22CFEC433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 09:33:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DDA88C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 09:55:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DDFA120835
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 09:33:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AC6AC2081A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 09:55:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HqfksX4H";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="gOwIYaHe"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DDFA120835
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z7bbW9k4";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="s1VXmpAr"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC6AC2081A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yGxv+tEQZ9g37rh3pCkNSuTU9+zJOhAgm2KHo46CSmw=; b=HqfksX4Htj8ASS
-	/i1IPPIAyn2O6CKN/f9O+Nj3GXN0owHm6VxvdaWm1s37IDcUiKCDA/e9zKZE9WiLpRDkPg5OQrcm8
-	ivZ8LhAJL1EbfBYNQEcIvqNWUeK8k+fBGx0YQ9ugYF7lMTK/YVo5+6o0Rlg+aO0Ds9vkpqabxEkbe
-	jH73ICEzPJ0rq0SpiBUq5N6z/Wn/B0sazyDAMNGTuMB4U0gmZAXHoRZxbfrCsOVIHy1/Ty1/9XYNu
-	6Hais9SWy9PzS5ZXSuS31i9kQnerMeAF/eh8tQVDmaxisbED3J0LQWTWrONTN3QQ1iNSX93pf5qfz
-	xcIagnQ7u9iQ13iKG3GQ==;
+	List-Owner; bh=ndvWv8Gc5G2RM77lxPJKrh3q2kkOHgxzHs9gUISfpa0=; b=Z7bbW9k4mKyhuW
+	BTWLntVRqsy3JMurhzjNx5eeS7EmqtXTvhkOzt/mbWpWxr/fx/QDI028t/7pU3YISYep+sPFtK4S/
+	z+MQ3jRJv50EAP63TTflNz7bISq+M0qAzdGY56K4ijfZ0y0Z1aDU9l/Oy7mlL+p8a5EynnoFEfHzq
+	7kjnjz7lOm/QEvI0uwm429mRlIpu5fH9ns3hKyKJJQTyN7USHqBUq4AbDelKreQR5Uiyqo718XwGK
+	GlaQH0XCPOveKwx4o6C9S/WBoAW64LGoj9JBur8NUgwgnPGE9asN8e0lm/nu66s9Q9W0VcUnhAY4g
+	YShuKPmP4e0f4IQiVNQA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jjg4H-0001Mo-IJ; Fri, 12 Jun 2020 09:33:45 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jjgPF-0007DL-0Z; Fri, 12 Jun 2020 09:55:25 +0000
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jjg4D-0001MA-Rm; Fri, 12 Jun 2020 09:33:44 +0000
-X-UUID: bf7654826a42439ca762d7cbd3071dbf-20200612
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=BaLcuqfyqtgeka1QHj6hfdc3DlQV6DK0+EkHYH3N9E4=; 
- b=gOwIYaHePzXcPux/R9Q9VBLs8dw4CX5n6FAPbwrcuzFvAVLoPCEOpJZN82SkEv1aVe4VyninPOFcF7O64hGq6R24ZcYl8DL0hKBaozEJ8jMa6pSioLHGMU1YIrUrh5/5mcQ9P+mY2cNEfIzXklAu4dxgNt/Fm0SDPVYF5Cl25jU=;
-X-UUID: bf7654826a42439ca762d7cbd3071dbf-20200612
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <dongchun.zhu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1382197401; Fri, 12 Jun 2020 01:33:25 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 12 Jun 2020 02:33:28 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31DR.mediatek.inc
- (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 12 Jun 2020 17:33:24 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 12 Jun 2020 17:33:22 +0800
-Message-ID: <1591954266.8804.646.camel@mhfsdcap03>
-Subject: Re: [V8, 2/2] media: i2c: ov02a10: Add OV02A10 image sensor driver
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: Tomasz Figa <tfiga@chromium.org>
-Date: Fri, 12 Jun 2020 17:31:06 +0800
-In-Reply-To: <20200610183600.GI201868@chromium.org>
-References: <20200509080627.23222-1-dongchun.zhu@mediatek.com>
- <20200509080627.23222-3-dongchun.zhu@mediatek.com>
- <20200521193204.GA14214@chromium.org>
- <1590209415.8804.431.camel@mhfsdcap03>
- <20200610183600.GI201868@chromium.org>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jjgP4-00074E-8n; Fri, 12 Jun 2020 09:55:15 +0000
+Received: by mail-io1-xd42.google.com with SMTP id t9so9574615ioj.13;
+ Fri, 12 Jun 2020 02:55:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=ZS9PVjZ5Jb+4QYevpE16v5sDYFxNKXeLDNvqBCj9BNE=;
+ b=s1VXmpArUmAQAoLjT8NM+4wAzfoVBOBj7OFVr4bOMd5d3jQZHAmVTbzlwZWXEc+Q22
+ UGgHTf8/ivZwK+TP97yOPLRH6sxvC6dXkxXcMtBmbWLUGGCE2wZ2nelzPwYwIL9Ozf5a
+ CXgkmnPA6heILULlzSne8Z//SDHw9gyeMx6BBVYeyAO2WYp3Xko9//FiK9Lm/klEXJ2W
+ xfiXWHfkcJzRpAgOk98WlYdPfd091y2Aa3HOAr+f8cQ3Ey7poU2wk09pW64eITonIf3z
+ yqzgtb5wiHco57IAmAfuAobH4I2Fz6SvNud6/xtvfc3MTmiORAB3yO7Bupp2Ckh69FZ5
+ i+YQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=ZS9PVjZ5Jb+4QYevpE16v5sDYFxNKXeLDNvqBCj9BNE=;
+ b=A2B/wuobeC/l8YOnlZsHkdfjDkqZrSgPlbFnW9ywSf5ByBGHpRYU6fa0AH95RHI0QF
+ q6bbe68+4AKicW7Ol/hr6cD9qeYkjnwSzSbjcyk9EwnNAXbF0AZ9yOb1fl7ppmTb6ga2
+ ocNKqZMGGdttmkX+RfGfo1fd8qJ7uHqddCVa8P3TkfLcD00cwupucPJtEupasPNHC44y
+ 1OT8vz//rilYm3wgJPAez5Xf/eQ2Ryeqe6xvccb0Elrcq6kVBzlD/ggsu6GlDyQYs9FP
+ gADLdnmKZVuCUwqrc8rPSNLnnNP9eSFVkaq6foOTb+6MOmBOJ2/Th0oZGpQ9LplHK6kO
+ iJkQ==
+X-Gm-Message-State: AOAM531zYOHADiEpHdHzCv+SzbwbYe1RnhePo0BRC+o22BNfZP2gLxvh
+ qdAr1/T8N0MHDIAUUEXgT6CkDIlIcv2ya9KeViQ=
+X-Google-Smtp-Source: ABdhPJzxxVxpqjp2Aicg0ipBh3PMBt3CryWdtwrucaesiyOv/PSfKpfbrhtbLDx4y4OB80XPrypx66ART8fiaUz42IA=
+X-Received: by 2002:a02:cccd:: with SMTP id k13mr7508035jaq.53.1591955712819; 
+ Fri, 12 Jun 2020 02:55:12 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: D560A70DAB39B39E17459FE12DB960DD38080384D408DDDBB17C727BB4A53AF72000:8
-X-MTK: N
+References: <1591609125-3761-1-git-send-email-gene.chen.richtek@gmail.com>
+ <20200608192829.GG4106@dell>
+ <CAE+NS36mxw-FpQhJ4qV=_+r2CXVi_PaGaZo2m3jXAGFuOO252Q@mail.gmail.com>
+ <20200609125305.GL4106@dell>
+In-Reply-To: <20200609125305.GL4106@dell>
+From: Gene Chen <gene.chen.richtek@gmail.com>
+Date: Fri, 12 Jun 2020 17:55:02 +0800
+Message-ID: <CAE+NS36b8fV2JnSEJpky+0ES3KTYmQzC0MRTfRUf8yRsJh_bpQ@mail.gmail.com>
+Subject: Re: [PATCH] mfd: mt6360: Fix register driver NULL pointer by add
+ driver name
+To: Lee Jones <lee.jones@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200612_023343_061881_8969D04A 
-X-CRM114-Status: GOOD (  29.89  )
+X-CRM114-CacheID: sfid-20200612_025514_337292_DEB26853 
+X-CRM114-Status: GOOD (  17.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,297 +92,82 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, drinkcat@chromium.org,
- andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org, linus.walleij@linaro.org,
- shengnan.wang@mediatek.com, louis.kuo@mediatek.com, bgolaszewski@baylibre.com,
- sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
- dongchun.zhu@mediatek.com, sakari.ailus@linux.intel.com,
- matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Gene Chen <gene_chen@richtek.com>, linux-kernel@vger.kernel.org,
+ cy_huang@richtek.com, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, Wilma.Wu@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, shufan_lee@richtek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Tomasz,
-
-On Wed, 2020-06-10 at 18:36 +0000, Tomasz Figa wrote:
-> On Sat, May 23, 2020 at 12:50:15PM +0800, Dongchun Zhu wrote:
-> > Hi Tomasz,
-> > 
-> > Thanks for the review. My replies are as below.
-> > 
-> > On Thu, 2020-05-21 at 19:32 +0000, Tomasz Figa wrote:
-> > > Hi Dongchun,
-> > > 
-> > > On Sat, May 09, 2020 at 04:06:27PM +0800, Dongchun Zhu wrote:
-> [snip]
-> > > > +{
-> > > > +	struct i2c_client *client = to_i2c_client(dev);
-> > > > +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
-> > > > +	struct ov02a10 *ov02a10 = to_ov02a10(sd);
-> > > > +	int ret;
-> > > > +
-> > > > +	gpiod_set_value_cansleep(ov02a10->n_rst_gpio, 0);
-> > > > +	gpiod_set_value_cansleep(ov02a10->pd_gpio, 0);
-> > > > +
-> > > > +	ret = clk_prepare_enable(ov02a10->eclk);
-> > > > +	if (ret < 0) {
-> > > > +		dev_err(dev, "failed to enable eclk\n");
-> > > > +		return ret;
-> > > > +	}
-> > > > +
-> > > > +	ret = regulator_bulk_enable(OV02A10_NUM_SUPPLIES, ov02a10->supplies);
-> > > > +	if (ret < 0) {
-> > > > +		dev_err(dev, "failed to enable regulators\n");
-> > > > +		goto disable_clk;
-> > > > +	}
-> > > > +	usleep_range(5000, 6000);
-> > > > +
-> > > > +	gpiod_set_value_cansleep(ov02a10->pd_gpio, 1);
-> > > 
-> > > This is a "powerdown" GPIO. It must be set to 0 if the sensor is to be
-> > > powered on.
-> > > 
-> > 
-> > The value set by gpiod_set_value_cansleep() API actually depends upon
-> > GPIO polarity defined in DT.
-> > Since I set GPIO_ACTIVE_LOW to powerdown,
-> > gpiod_set_value_cansleep(gpio_desc, value) would set !value to
-> > gpio_desc.
-> > Thus here powerdown would be low-state when sensor is powered on.
-> > For GPIO polarity, I also post a comment to the binding patch.
-> >
-> 
-> That's true. However, this makes the driver really confusing. If someone
-> reads this code and compares with the datasheet, it looks incorrect,
-> because in the datasheet the powerdown GPIO needs to be configured low
-> for the sensor to operate.
-> 
-> I'd recommend defining the binding in a way that makes it clear in the driver code
-> that it implementes the power sequencing as per the datasheet.
-> 
-
-Uh-huh...
-But it all depends on how we look at the powerdown GPIO.
-Or where should we define the active low or active high, the driver or
-DT?
-
-My initial idea is using DT GPIO polarity to describe sensor active
-polarity according to the datasheet.
-As an active low shutdown signal is equivalent to an active high enable
-signal.
-
-> [snip]
-> > > > +/*
-> > > > + * ov02a10_set_exposure - Function called when setting exposure time
-> > > > + * @priv: Pointer to device structure
-> > > > + * @val: Variable for exposure time, in the unit of micro-second
-> > > > + *
-> > > > + * Set exposure time based on input value.
-> > > > + *
-> > > > + * Return: 0 on success
-> > > > + */
-> > > > +static int ov02a10_set_exposure(struct ov02a10 *ov02a10, int val)
-> > > > +{
-> > > > +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
-> > > > +	int ret;
-> > > > +
-> > > > +	ret = i2c_smbus_write_byte_data(client, REG_PAGE_SWITCH, REG_ENABLE);
-> > > > +	if (ret < 0)
-> > > > +		return ret;
-> > > 
-> > > How does this page switch work? According to the documentation I have, the
-> > > register allows selecting between a few different pages. However, there
-> > > should be two page pointers - one for the AP and the other for the sensor,
-> > > so that when the AP is programming page X, the sensor can have consistent
-> > > settings from page Y. But here we only set one register and always with
-> > > page 1.
-> > > 
-> > 
-> > Thanks for the carefully observation.
-> > The style or requirement of register setting here is suggested by OV
-> > vendor.
-> > From hardware signal behavior and effect-test, this setting should be
-> > right.
-> > But for your concern, we can also dig into it with OV.
-> > Let's have time to talk with OV.
-> > 
-> > > > +
-> > > > +	ret = i2c_smbus_write_byte_data(client, OV02A10_REG_EXPOSURE_H,
-> > > > +					val >> OV02A10_EXP_SHIFT);
-> > > > +	if (ret < 0)
-> > > > +		return ret;
-> > > > +
-> > > > +	ret = i2c_smbus_write_byte_data(client, OV02A10_REG_EXPOSURE_L, val);
-> > > > +	if (ret < 0)
-> > > > +		return ret;
-> > > > +
-> > > > +	return i2c_smbus_write_byte_data(client, REG_GLOBAL_EFFECTIVE,
-> > > > +					 REG_ENABLE);
-> > > 
-> > > This patch defines REG_GLOBAL_EFFECTIVE to 0x01. I don't see such register
-> > > mentioned in the documentation.
-> > > 
-> > 
-> > There may be several editions of sensor documentation.
-> > From OV, 0x01 is one register shall be updated to keep
-> > exposure/gain/test pattern... register settings effective.
-> >
-> 
-> Okay, let's try to get some explanation of this offline.
-> 
-
-Fine.
-
-> > > > +}
-> > > > +
-> > > > +static int ov02a10_set_gain(struct ov02a10 *ov02a10, int val)
-> > > > +{
-> > > > +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
-> > > > +	int ret;
-> > > > +
-> > > > +	ret = i2c_smbus_write_byte_data(client, REG_PAGE_SWITCH, REG_ENABLE);
-> > > > +	if (ret < 0)
-> > > > +		return ret;
-> > > > +
-> > > > +	ret = i2c_smbus_write_byte_data(client, OV02A10_REG_GAIN, val);
-> > > > +	if (ret < 0)
-> > > > +		return ret;
-> > > > +
-> > > > +	return i2c_smbus_write_byte_data(client, REG_GLOBAL_EFFECTIVE,
-> > > > +					 REG_ENABLE);
-> > > > +}
-> > > > +
-> > > > +static int ov02a10_set_vblank(struct ov02a10 *ov02a10, int val)
-> > > > +{
-> > > > +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
-> > > > +	u32 vts = val + ov02a10->cur_mode->height - OV02A10_BASIC_LINE;
-> > > > +	int ret;
-> > > > +
-> > > > +	ret = i2c_smbus_write_byte_data(client, REG_PAGE_SWITCH, REG_ENABLE);
-> > > > +	if (ret < 0)
-> > > > +		return ret;
-> > > > +
-> > > > +	ret = i2c_smbus_write_byte_data(client, OV02A10_REG_VTS_H,
-> > > > +					vts >> OV02A10_VTS_SHIFT);
-> > > > +	if (ret < 0)
-> > > > +		return ret;
-> > > > +
-> > > > +	ret = i2c_smbus_write_byte_data(client, OV02A10_REG_VTS_L, vts);
-> > > > +	if (ret < 0)
-> > > > +		return ret;
-> > > > +
-> > > > +	return i2c_smbus_write_byte_data(client, REG_GLOBAL_EFFECTIVE,
-> > > > +					 REG_ENABLE);
-> > > > +}
-> > > > +
-> > > > +static int ov02a10_set_test_pattern(struct ov02a10 *ov02a10, int pattern)
-> > > > +{
-> > > > +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
-> > > > +	int ret;
-> > > > +
-> > > > +	if (pattern)
-> > > > +		pattern = OV02A10_TEST_PATTERN_ENABLE;
-> > > 
-> > > Is this necessary? Our control can be 0 for disabled and 1 for color bars.
-> > > The latter is the same as the above macro.
-> > > 
-> > 
-> > Yes. It looks redundant here.
-> > Fixed in next release.
-> > 
-> > > [snip]
-> > > > +static int ov02a10_initialize_controls(struct ov02a10 *ov02a10)
-> > > > +{
-> > > > +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
-> > > > +	const struct ov02a10_mode *mode;
-> > > > +	struct v4l2_ctrl_handler *handler;
-> > > > +	struct v4l2_ctrl *ctrl;
-> > > > +	u64 exposure_max;
-> > > > +	u32 pixel_rate, h_blank;
-> > > > +	int ret;
-> > > > +
-> > > > +	handler = &ov02a10->ctrl_handler;
-> > > > +	mode = ov02a10->cur_mode;
-> > > > +	ret = v4l2_ctrl_handler_init(handler, 7);
-> > > > +	if (ret)
-> > > > +		return ret;
-> > > > +
-> > > > +	handler->lock = &ov02a10->mutex;
-> > > > +
-> > > > +	ctrl = v4l2_ctrl_new_int_menu(handler, NULL, V4L2_CID_LINK_FREQ, 0, 0,
-> > > > +				      link_freq_menu_items);
-> > > > +	if (ctrl)
-> > > > +		ctrl->flags |= V4L2_CTRL_FLAG_READ_ONLY;
-> > > > +
-> > > > +	pixel_rate = to_pixel_rate(0);
-> > > > +	v4l2_ctrl_new_std(handler, NULL, V4L2_CID_PIXEL_RATE, 0, pixel_rate, 1,
-> > > > +			  pixel_rate);
-> > > > +
-> > > > +	h_blank = mode->hts_def - mode->width;
-> > > > +	ov02a10->hblank = v4l2_ctrl_new_std(handler, NULL, V4L2_CID_HBLANK,
-> > > > +					    h_blank, h_blank, 1, h_blank);
-> > > > +	if (ov02a10->hblank)
-> > > > +		ov02a10->hblank->flags |= V4L2_CTRL_FLAG_READ_ONLY;
-> > > > +
-> > > 
-> > > Do we need to hold a pointer to this control? We don't seem to ever access
-> > > it anywhere else in the driver.
-> > > 
-> > 
-> > No.
-> > These lines would be removed in next release.
-> > 
-> > > > +	ov02a10->vblank = v4l2_ctrl_new_std(handler, &ov02a10_ctrl_ops,
-> > > > +					    V4L2_CID_VBLANK, mode->vts_def -
-> > > > +					    mode->height,
-> > > > +					    OV02A10_VTS_MAX - mode->height, 1,
-> > > > +					    mode->vts_def - mode->height);
-> > > > +
-> > > 
-> > > Ditto.
-> > > 
-> > 
-> > These lines would be removed in next release.
-> > 
-
-Sorry that I made a mistake.
-Here we need to reserve V4L2_CID_VBLANK control.
-
-> > > > +	exposure_max = mode->vts_def - 4;
-> > > > +	ov02a10->exposure = v4l2_ctrl_new_std(handler, &ov02a10_ctrl_ops,
-> > > > +					      V4L2_CID_EXPOSURE,
-> > > > +					      OV02A10_EXPOSURE_MIN,
-> > > > +					      exposure_max,
-> > > > +					      OV02A10_EXPOSURE_STEP,
-> > > > +					      mode->exp_def);
-> > > > +
-> > > > +	ov02a10->anal_gain = v4l2_ctrl_new_std(handler, &ov02a10_ctrl_ops,
-> > > > +					       V4L2_CID_ANALOGUE_GAIN,
-> > > > +					       OV02A10_GAIN_MIN,
-> > > > +					       OV02A10_GAIN_MAX,
-> > > > +					       OV02A10_GAIN_STEP,
-> > > > +					       OV02A10_GAIN_DEFAULT);
-> > > 
-> > > Ditto.
-> > > 
-> > 
-> > Fields: exposure and anal_gain would be removed in next release.
-> > But v4l2_ctrl_new_std remains, as user may set exp/gain. 
-> > 
-> 
-> I don't mean removing the controls, but just not storing the returned
-> pointers inside driver data.
-> 
-
-Got it : -) 
-
-> Best regards,
-> Tomasz
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+TGVlIEpvbmVzIDxsZWUuam9uZXNAbGluYXJvLm9yZz4g5pa8IDIwMjDlubQ25pyIOeaXpSDpgLHk
+uowg5LiL5Y2IODo1M+Wvq+mBk++8mgo+Cj4gT24gVHVlLCAwOSBKdW4gMjAyMCwgR2VuZSBDaGVu
+IHdyb3RlOgo+Cj4gPiBMZWUgSm9uZXMgPGxlZS5qb25lc0BsaW5hcm8ub3JnPiDmlrwgMjAyMOW5
+tDbmnIg55pelIOmAseS6jCDkuIrljYgzOjI45a+r6YGT77yaCj4gPiA+Cj4gPiA+IE9uIE1vbiwg
+MDggSnVuIDIwMjAsIEdlbmUgQ2hlbiB3cm90ZToKPiA+ID4KPiA+ID4gPiBGcm9tOiBHZW5lIENo
+ZW4gPGdlbmVfY2hlbkByaWNodGVrLmNvbT4KPiA+ID4gPgo+ID4gPiA+IGFjY2lkZW50YWxseSBy
+ZW1vdmUgZHJpdmVyIG5hbWUgd2hlbgo+ID4gPiA+IHJlcGxhY2UgcHJvYmUgYnkgcHJvYmVfbmV3
+IGluIGFkZCBtdDYzNjAgbWZkIGRyaXZlciBwYXRjaCB2NAo+ID4gPiA+Cj4gPiA+ID4gWyAgMTIx
+LjI0MzAxMl0gRUFYOiBjMmE4YmM2NCBFQlg6IDAwMDAwMDAwIEVDWDogMDAwMDAwMDAgRURYOiAw
+MDAwMDAwMAo+ID4gPiA+IFsgIDEyMS4yNDMwMTJdIEVTSTogYzJhOGJjNzkgRURJOiAwMDAwMDAw
+MCBFQlA6IGU1NGJkZWE4IEVTUDogZTU0YmRlYTAKPiA+ID4gPiBbICAxMjEuMjQzMDEyXSBEUzog
+MDA3YiBFUzogMDA3YiBGUzogMDAwMCBHUzogMDAwMCBTUzogMDA2OCBFRkxBR1M6IDAwMDEwMjg2
+Cj4gPiA+ID4gWyAgMTIxLjI0MzAxMl0gQ1IwOiA4MDA1MDAzMyBDUjI6IDAwMDAwMDAwIENSMzog
+MDJlYzMwMDAgQ1I0OiAwMDAwMDZiMAo+ID4gPiA+IFsgIDEyMS4yNDMwMTJdIENhbGwgVHJhY2U6
+Cj4gPiA+ID4gWyAgMTIxLjI0MzAxMl0gIGtzZXRfZmluZF9vYmorMHgzZC8weGMwCj4gPiA+ID4g
+WyAgMTIxLjI0MzAxMl0gIGRyaXZlcl9maW5kKzB4MTYvMHg0MAo+ID4gPiA+IFsgIDEyMS4yNDMw
+MTJdICBkcml2ZXJfcmVnaXN0ZXIrMHg0OS8weDEwMAo+ID4gPiA+IFsgIDEyMS4yNDMwMTJdICA/
+IGkyY19mb3JfZWFjaF9kZXYrMHgzOS8weDUwCj4gPiA+ID4gWyAgMTIxLjI0MzAxMl0gID8gX19w
+cm9jZXNzX25ld19hZGFwdGVyKzB4MjAvMHgyMAo+ID4gPiA+IFsgIDEyMS4yNDMwMTJdICA/IGNo
+dF93Y19kcml2ZXJfaW5pdCsweDExLzB4MTEKPiA+ID4gPiBbICAxMjEuMjQzMDEyXSAgaTJjX3Jl
+Z2lzdGVyX2RyaXZlcisweDMwLzB4ODAKPiA+ID4gPiBbICAxMjEuMjQzMDEyXSAgPyBpbnRlbF9s
+cHNzX3BjaV9kcml2ZXJfaW5pdCsweDE2LzB4MTYKPiA+ID4gPiBbICAxMjEuMjQzMDEyXSAgbXQ2
+MzYwX3BtdV9kcml2ZXJfaW5pdCsweGYvMHgxMQo+ID4gPiA+IFsgIDEyMS4yNDMwMTJdICBkb19v
+bmVfaW5pdGNhbGwrMHgzMy8weDFhMAo+ID4gPiA+IFsgIDEyMS4yNDMwMTJdICA/IHBhcnNlX2Fy
+Z3MrMHgxZWIvMHgzZDAKPiA+ID4gPiBbICAxMjEuMjQzMDEyXSAgPyBfX21pZ2h0X3NsZWVwKzB4
+MzEvMHg5MAo+ID4gPiA+IFsgIDEyMS4yNDMwMTJdICA/IGtlcm5lbF9pbml0X2ZyZWVhYmxlKzB4
+MTBhLzB4MTdmCj4gPiA+ID4gWyAgMTIxLjI0MzAxMl0gIGtlcm5lbF9pbml0X2ZyZWVhYmxlKzB4
+MTJjLzB4MTdmCj4gPiA+ID4gWyAgMTIxLjI0MzAxMl0gID8gcmVzdF9pbml0KzB4MTEwLzB4MTEw
+Cj4gPiA+ID4gWyAgMTIxLjI0MzAxMl0gIGtlcm5lbF9pbml0KzB4Yi8weDEwMAo+ID4gPiA+IFsg
+IDEyMS4yNDMwMTJdICA/IHNjaGVkdWxlX3RhaWxfd3JhcHBlcisweDkvMHhjCj4gPiA+ID4gWyAg
+MTIxLjI0MzAxMl0gIHJldF9mcm9tX2ZvcmsrMHgxOS8weDI0Cj4gPiA+ID4gWyAgMTIxLjI0MzAx
+Ml0gTW9kdWxlcyBsaW5rZWQgaW46Cj4gPiA+ID4gWyAgMTIxLjI0MzAxMl0gQ1IyOiAwMDAwMDAw
+MDAwMDAwMDAwCj4gPiA+ID4gWyAgMTIxLjI0MzAxMl0gcmFuZG9tOiBnZXRfcmFuZG9tX2J5dGVz
+IGNhbGxlZCBmcm9tIGluaXRfb29wc19pZCsweDNhLzB4NDAgd2l0aCBjcm5nX2luaXQ9MAo+ID4g
+PiA+IFsgIDEyMS4yNDMwMTJdIC0tLVsgZW5kIHRyYWNlIDM4YTgwMzQwMGYxYTJiZWUgXS0tLQo+
+ID4gPiA+IFsgIDEyMS4yNDMwMTJdIEVJUDogc3RyY21wKzB4MTEvMHgzMAo+ID4gPgo+ID4gPiBI
+b3cgZGlkIHRoaXMgZHJpdmVyIGV2ZXIgd29yayBmb3IgeW91Pwo+ID4KPiA+IGkgYXNrIG15IGNv
+d29ya2VyIGhlbHAgbWUgdmVyaWZ5Lgo+ID4gaSB3aWxsIGNoZWNrIHRoZSBwYXRjaCBteXNlbGYs
+IHNpbmNlcmVseSBhcG9sb2dpZXMgZm9yIHRoaXMuCj4KPiBXaGF0IGRvZXMgdGhpcyBtZWFuPwo+
+Cj4gQXJlIHlvdSBzYXlpbmcgdGhhdCBmb3IgYWxsIDEwIHZlcnNpb25zIG9mIHRoaXMgcGF0Y2gg
+c3VibWlzc2lvbiwgaXQKPiBoYXMgbmV2ZXIgYmVlbiB0ZXN0ZWQ/ICBBbmQgZGVzcGl0ZSBiZWlu
+ZyBhdXRob3JlZCBieSB5b3UgYW5kCj4gc3VibWl0dGVkIGJ5IHlvdSwgeW91IGhhdmUgbmV2ZXIg
+YWN0dWFsbHkgYm9vdCB0ZXN0ZWQgdGhlIGRyaXZlcgo+IHlvdXJzZWxmPyAgUmVseWluZyBpbnN0
+ZWFkIG9uIHlvdXIgY28td29ya2VyIHRvIGNvbmR1Y3QgdGhlIHRlc3RpbmcsCj4gd2hvIGZhaWxl
+ZCB0byBkbyBzby4gIElzIHRoYXQgcmVhbGx5IGNvcnJlY3Q/Cj4KCk9uIGNhcmVmdWxseSByZWFk
+aW5nIHRvIHRoZSBkb2N1bWVudCBob3cgdG8gdXBzdHJlYW0sIEkgZmluZCB0aGF0IEkKaGFkIGZ1
+bGwgZHV0eSBmb3IgdmVyaWZ5IHBhdGNoIGkgc2VudC4KVGhlIGZhdWx0IGlzIGVudGlyZWx5IG1p
+bmUgYW5kIEkgZGVlcGx5IHJlZ3JldCB0aGF0IGl0IHNob3VsZCBoYXZlIG9jY3VycmVkLgpJIHdp
+bGwgYWx3YXlzIHZlcmlmeSBwYXRjaCBieSBtZXNlbGYgYmVmb3JlIHNlbmRpbmcgaXQuCkkgaGF2
+ZSBhbHJlYWR5IHZlcmZpZWQgc3ViLWRldmljZSBhZGMvbGVkL3JlZ3VsYXRvciBkb25lIGluIE1l
+ZGlhdGVrCnBob25lIGFuZCBIaWtleTk2MCBkZXZlbG9wbWVudCBib2FyZAoKPiA+ID4gPiBTaWdu
+ZWQtb2ZmLWJ5OiBHZW5lIENoZW4gPGdlbmVfY2hlbkByaWNodGVrLmNvbT4KPiA+ID4gPiAtLS0K
+PiA+ID4gPiAgZHJpdmVycy9tZmQvbXQ2MzYwLWNvcmUuYyB8IDEgKwo+ID4gPiA+ICAxIGZpbGUg
+Y2hhbmdlZCwgMSBpbnNlcnRpb24oKykKPiA+ID4gPgo+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL21mZC9tdDYzNjAtY29yZS5jIGIvZHJpdmVycy9tZmQvbXQ2MzYwLWNvcmUuYwo+ID4gPiA+
+IGluZGV4IGRiOGNkZjUuLmU5Y2FjYzIgMTAwNjQ0Cj4gPiA+ID4gLS0tIGEvZHJpdmVycy9tZmQv
+bXQ2MzYwLWNvcmUuYwo+ID4gPiA+ICsrKyBiL2RyaXZlcnMvbWZkL210NjM2MC1jb3JlLmMKPiA+
+ID4gPiBAQCAtNDEyLDYgKzQxMiw3IEBAIE1PRFVMRV9ERVZJQ0VfVEFCTEUob2YsIG10NjM2MF9w
+bXVfb2ZfaWQpOwo+ID4gPiA+Cj4gPiA+ID4gIHN0YXRpYyBzdHJ1Y3QgaTJjX2RyaXZlciBtdDYz
+NjBfcG11X2RyaXZlciA9IHsKPiA+ID4gPiAgICAgICAuZHJpdmVyID0gewo+ID4gPiA+ICsgICAg
+ICAgICAgICAgLm5hbWUgPSAibXQ2MzYwX3BtdSIsCj4gPiA+ID4gICAgICAgICAgICAgICAucG0g
+PSAmbXQ2MzYwX3BtdV9wbV9vcHMsCj4gPiA+ID4gICAgICAgICAgICAgICAub2ZfbWF0Y2hfdGFi
+bGUgPSBvZl9tYXRjaF9wdHIobXQ2MzYwX3BtdV9vZl9pZCksCj4gPiA+ID4gICAgICAgfSwKPiA+
+ID4KPgo+IC0tCj4gTGVlIEpvbmVzIFvmnY7nkLzmlq9dCj4gU2VuaW9yIFRlY2huaWNhbCBMZWFk
+IC0gRGV2ZWxvcGVyIFNlcnZpY2VzCj4gTGluYXJvLm9yZyDilIIgT3BlbiBzb3VyY2Ugc29mdHdh
+cmUgZm9yIEFybSBTb0NzCj4gRm9sbG93IExpbmFybzogRmFjZWJvb2sgfCBUd2l0dGVyIHwgQmxv
+ZwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+bWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRl
+awo=
