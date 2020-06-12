@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 09F02C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 10:49:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 82395C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 11:03:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B9EF02081A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 10:49:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3F36F2065C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 11:03:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cmeHA0LD";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dXdcdZjV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B9EF02081A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KLEWi98x";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="igTHKJzI"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3F36F2065C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0WW667oJ7VJAXX2MDWsGjHBLuVWLeUUyEiIP3DOb7SU=; b=cmeHA0LD1yb6Wm
-	TNDuFS8CLxNp7FAqsCSKyCwe37qm5kMeyAL6Bht7pyQwom+Ok5AeX3xjOFvDr4Vmt3XHPSurs7RCV
-	8yRmVdgARcOVeUQjbJ5Lj8VHZ2oE6TO/tIThkPr3Sr7EK/iTalxVTqJjud3PFGDmL1NWRbU8fhhXs
-	UKhEyxUs7x4rwe2/PH1ybpJPibud4SFK1d6PBU/xbI83i0X9HVPsrn8Pf2Nndznw7Mt6aBHyIYX1i
-	m5q3xz6jpAtGRBNW6SF3K7xZeHyr5LuBKrXSeWiEOlAkIrIYyGPmYEg6RMuCOLjsuH+jPQCQHCTHP
-	da9QecKjvrUiD1uFNNKQ==;
+	List-Owner; bh=QqqIcHSJUJ1bJ3PcfFtd4G92Lz+VtxcT5kpL5+PvnJg=; b=KLEWi98xFZKzFS
+	gNms1Mw7LrcCEu8HcaAflG45aaEAZDho6JSSJmcAdKtNWIOsOWoMItQj3MuaaW4CgnHt/tMwsS+vX
+	2IJHKyokUjIiRNQKlJgucsHO/yusGt2bStupgW/HY7JC/fz4i7f9+hp/9RhKdkZ23VXdt3IOtYkxd
+	NG/X5QPmjtJG0xd1BIMCUpk4csxSVtIbcCEEErTGzFAxHiHour6J4//oaS2CXgWx90M411rJ4ZtL+
+	sH+kgmbOLBjtnp0VP3p2T2rC5woJcYT2yHStgeYYXctZIynr0tlD6S4QHVs+IkKFUQoVA6HqtpUKn
+	URt/7okOpIpvlF3VNIKg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jjhFI-0005hQ-Dv; Fri, 12 Jun 2020 10:49:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jjhTT-0006Jd-KB; Fri, 12 Jun 2020 11:03:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jjhFG-0005gv-1D; Fri, 12 Jun 2020 10:49:11 +0000
-X-UUID: 10fb0c88711841498051ee63350ed78f-20200612
+ id 1jjhTQ-0006JB-MN; Fri, 12 Jun 2020 11:03:50 +0000
+X-UUID: e006689d72d84fef8f5534474b8d6ba5-20200612
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=TpVWyGTnlu5KQ1bLwhmMEtCgBHatHCR86J3sG18+1ro=; 
- b=dXdcdZjV4l04zAUJl990F6csVmdi6DOXav/hW5FUPP9zEBf7vgAbvA92tdGUm2xyDCtaf9ZstwmUA51y3KcPvdPJpJ9ClhaSPIxexVNDLDAhbM4kD8GNoATk0E7UvIca8Y7bR2qKjBiRQOt6XqAgEZIJCkbzexEMxYl+905iDYg=;
-X-UUID: 10fb0c88711841498051ee63350ed78f-20200612
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=qaglRPWqGP4IdwsQlkYgHrfbKPtnhQyQo7nkYFx8tsM=; 
+ b=igTHKJzImv7DlxphxtOwvGwI+rkJhaHBD08sBPAe8E5+8xuU8waWuBHyekqNUp/vmoYB94egC6wYq3Cm6+kAL1RRztewkOeLwr0ZgyzqqLuv4Xn14gDtxXtK6O6ZJUHQ8K+JQqftMcg3HW8FxxPDJOKZBCYGH1u04a4lJsLakjI=;
+X-UUID: e006689d72d84fef8f5534474b8d6ba5-20200612
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <dongchun.zhu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1074978896; Fri, 12 Jun 2020 02:48:55 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ with ESMTP id 1866389502; Fri, 12 Jun 2020 03:03:35 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 12 Jun 2020 03:48:59 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31DR.mediatek.inc
- (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 12 Jun 2020 18:48:57 +0800
+ 15.0.1497.2; Fri, 12 Jun 2020 04:03:42 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 12 Jun 2020 19:03:39 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 12 Jun 2020 18:48:55 +0800
-Message-ID: <1591958798.8804.660.camel@mhfsdcap03>
+ Transport; Fri, 12 Jun 2020 19:03:38 +0800
+Message-ID: <1591959682.8804.665.camel@mhfsdcap03>
 Subject: Re: [V9, 2/2] media: i2c: ov02a10: Add OV02A10 image sensor driver
 From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: Tomasz Figa <tfiga@chromium.org>
-Date: Fri, 12 Jun 2020 18:46:38 +0800
-In-Reply-To: <20200610194455.GK201868@chromium.org>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Date: Fri, 12 Jun 2020 19:01:22 +0800
+In-Reply-To: <20200611100322.GL16711@paasikivi.fi.intel.com>
 References: <20200523084103.31276-1-dongchun.zhu@mediatek.com>
  <20200523084103.31276-3-dongchun.zhu@mediatek.com>
  <20200610194455.GK201868@chromium.org>
+ <20200611095333.GK16711@paasikivi.fi.intel.com>
+ <CAAFQd5BBxBEs=gCohOzOGzkTDNkL1yyu7dtEY26K52=CmFAWnA@mail.gmail.com>
+ <20200611100322.GL16711@paasikivi.fi.intel.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: F9B070F852F4BB7A908158EEA1657918D95D6AE037CA2AD2A6675516E8D3B9A92000:8
+X-TM-SNTS-SMTP: 9664EE831528CD8C24C98DDB589FA69B119B312FFEA3696E45D9240344133E872000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200612_034910_083628_DE9A8D33 
-X-CRM114-Status: GOOD (  30.64  )
+X-CRM114-CacheID: sfid-20200612_040348_740968_BCD310EA 
+X-CRM114-Status: GOOD (  30.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,302 +88,185 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, drinkcat@chromium.org,
- andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org, linus.walleij@linaro.org,
- shengnan.wang@mediatek.com, louis.kuo@mediatek.com, bgolaszewski@baylibre.com,
- sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
- dongchun.zhu@mediatek.com, sakari.ailus@linux.intel.com,
- matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: Mark
+ Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@chromium.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ linux-devicetree <devicetree@vger.kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Shengnan
+ Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=A3=E7=94=B7=29?=
+ <shengnan.wang@mediatek.com>, Tomasz Figa <tfiga@chromium.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ dongchun.zhu@mediatek.com, Louis Kuo <louis.kuo@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, "list@263.net:IOMMU DRIVERS
+ <iommu@lists.linux-foundation.org>, Joerg  Roedel <joro@8bytes.org>,
+ " <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Tomasz,
+Hi Sakari,
 
-On Wed, 2020-06-10 at 19:44 +0000, Tomasz Figa wrote:
-> Hi Dongchun,
-> 
-> On Sat, May 23, 2020 at 04:41:03PM +0800, Dongchun Zhu wrote:
-> > Add a V4L2 sub-device driver for OV02A10 image sensor.
+On Thu, 2020-06-11 at 13:03 +0300, Sakari Ailus wrote:
+> On Thu, Jun 11, 2020 at 11:57:43AM +0200, Tomasz Figa wrote:
+> > On Thu, Jun 11, 2020 at 11:53 AM Sakari Ailus
+> > <sakari.ailus@linux.intel.com> wrote:
+> > >
+> > > Hi Tomasz,
+> > >
+> > > On Wed, Jun 10, 2020 at 07:44:55PM +0000, Tomasz Figa wrote:
+> > > > Hi Dongchun,
+> > > >
+> > > > On Sat, May 23, 2020 at 04:41:03PM +0800, Dongchun Zhu wrote:
+> > > > > Add a V4L2 sub-device driver for OV02A10 image sensor.
+> > > > >
+> > > > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > > > > ---
+> > > > >  MAINTAINERS                 |    1 +
+> > > > >  drivers/media/i2c/Kconfig   |   13 +
+> > > > >  drivers/media/i2c/Makefile  |    1 +
+> > > > >  drivers/media/i2c/ov02a10.c | 1025 +++++++++++++++++++++++++++++++++++++++++++
+> > > > >  4 files changed, 1040 insertions(+)
+> > > > >  create mode 100644 drivers/media/i2c/ov02a10.c
+> > > > >
+> > > >
+> > > > Thank you for the patch. Please see my comments inline.
+> > > >
+> > > > [snip]
+> > > > > diff --git a/drivers/media/i2c/ov02a10.c b/drivers/media/i2c/ov02a10.c
+> > > > > new file mode 100644
+> > > > > index 0000000..160a0b5
+> > > > > --- /dev/null
+> > > > > +++ b/drivers/media/i2c/ov02a10.c
+> > > > [snip]
+> > > > > +static const char * const ov02a10_test_pattern_menu[] = {
+> > > > > +   "Disabled",
+> > > > > +   "Color Bar",
+> > > >
+> > > > nit: We should normalize this to one of the standard names. What is the
+> > > > pattern on this sensor? Is it perhaps "Eight Vertical Colour Bars"?
+> > > >
+> > > > > +};
+> > > > [snip]
+> > > > > +static int ov02a10_set_fmt(struct v4l2_subdev *sd,
+> > > > > +                      struct v4l2_subdev_pad_config *cfg,
+> > > > > +                      struct v4l2_subdev_format *fmt)
+> > > > > +{
+> > > > > +   struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > > > > +   struct v4l2_mbus_framefmt *mbus_fmt = &fmt->format;
+> > > > > +
+> > > > > +   mutex_lock(&ov02a10->mutex);
+> > > > > +
+> > > >
+> > > >
+> > > > Don't we need to handle the case when fmt->which is V4L2_SUBDEV_FORMAT_TRY,
+> > > > which is used for trying the format, but not applying it to the hardware?
+> > >
+> > > Yes.
+> > >
+> > > >
+> > > > > +   if (ov02a10->streaming) {
+> > > > > +           mutex_unlock(&ov02a10->mutex);
+> > > > > +           return -EBUSY;
+> > > > > +   }
+> > > > > +
+> > > > > +   /* Only one sensor mode supported */
+> > > > > +   mbus_fmt->code = ov02a10->fmt.code;
+> > > > > +   ov02a10_fill_fmt(ov02a10->cur_mode, mbus_fmt);
+> > > > > +   ov02a10->fmt = fmt->format;
+> > > > > +
+> > > > > +   mutex_unlock(&ov02a10->mutex);
+> > > > > +
+> > > > > +   return 0;
+> > > > > +}
+> > > > > +
+> > > > > +static int ov02a10_get_fmt(struct v4l2_subdev *sd,
+> > > > > +                      struct v4l2_subdev_pad_config *cfg,
+> > > > > +                      struct v4l2_subdev_format *fmt)
+> > > > > +{
+> > > > > +   struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > > > > +   struct v4l2_mbus_framefmt *mbus_fmt = &fmt->format;
+> > > > > +
+> > > > > +   mutex_lock(&ov02a10->mutex);
+> > > > > +
+> > > > > +   fmt->format = ov02a10->fmt;
+> > > >
+> > > > Ditto.
+> > > >
+> > > > > +   mbus_fmt->code = ov02a10->fmt.code;
+> > > > > +   ov02a10_fill_fmt(ov02a10->cur_mode, mbus_fmt);
+> > > > > +
+> > > > > +   mutex_unlock(&ov02a10->mutex);
+> > > > > +
+> > > > > +   return 0;
+> > > > > +}
+> > > > > +
+> > > > > +static int ov02a10_enum_mbus_code(struct v4l2_subdev *sd,
+> > > > > +                             struct v4l2_subdev_pad_config *cfg,
+> > > > > +                             struct v4l2_subdev_mbus_code_enum *code)
+> > > > > +{
+> > > > > +   struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > > > > +
+> > > > > +   if (code->index >= ARRAY_SIZE(supported_modes))
+> > > > > +           return -EINVAL;
+> > > >
+> > > > Hmm, supported_modes[] doesn't seem to hold the information about mbus
+> > > > codes. Should this just perhaps be "!= 0"?
+> > > >
+> > > > > +
+> > > > > +   code->code = ov02a10->fmt.code;
+> > > > > +
+> > > > > +   return 0;
+> > > > > +}
+> > > > [snip]
+> > > > > +static int ov02a10_entity_init_cfg(struct v4l2_subdev *sd,
+> > > > > +                              struct v4l2_subdev_pad_config *cfg)
+> > > > > +{
+> > > > > +   struct v4l2_subdev_format fmt = {
+> > > > > +           .which = cfg ? V4L2_SUBDEV_FORMAT_TRY : V4L2_SUBDEV_FORMAT_ACTIVE,
+> > > > > +           .format = {
+> > > > > +                   .width = 1600,
+> > > > > +                   .height = 1200,
+> > > > > +           }
+> > > > > +   };
+> > > > > +
+> > > > > +   ov02a10_set_fmt(sd, cfg, &fmt);
+> > > > > +
+> > > > > +   return 0;
+> > > > > +}
+> > > > > +
+> > > >
+> > > > I'm not familiar with this init_cfg operation and the documentation is very
+> > > > sparse about it. Sakari, is this a correct implementation?
+> > >
+> > > The purpose is to initialise a pad configuration (format and selection
+> > > rectangles) to the device defaults. As there seem to be no selection
+> > > rectangles, this seems fine to me.
 > > 
-> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > ---
-> >  MAINTAINERS                 |    1 +
-> >  drivers/media/i2c/Kconfig   |   13 +
-> >  drivers/media/i2c/Makefile  |    1 +
-> >  drivers/media/i2c/ov02a10.c | 1025 +++++++++++++++++++++++++++++++++++++++++++
-> >  4 files changed, 1040 insertions(+)
-> >  create mode 100644 drivers/media/i2c/ov02a10.c
-> > 
+> > Thanks. I traced the code and could only see one place where the
+> > callback is being called and that was with cfg != NULL. Still, the
+> > code above uses "cfg ?" as a check to determine whether TRY or ACTIVE
+> > should be passed to which. Is that also correct?
 > 
-> Thank you for the patch. Please see my comments inline.
-> 
-> [snip]
-> > diff --git a/drivers/media/i2c/ov02a10.c b/drivers/media/i2c/ov02a10.c
-> > new file mode 100644
-> > index 0000000..160a0b5
-> > --- /dev/null
-> > +++ b/drivers/media/i2c/ov02a10.c
-> [snip]
-> > +static const char * const ov02a10_test_pattern_menu[] = {
-> > +	"Disabled",
-> > +	"Color Bar",
-> 
-> nit: We should normalize this to one of the standard names. What is the
-> pattern on this sensor? Is it perhaps "Eight Vertical Colour Bars"?
+> It could be used in setting the active format in probe. That would probably
+> be cleaner than what it currently does.
 > 
 
-Yes. It is one kind of 'Eight Vertical Colour Bars'.
-This pattern is called as 'MIPI color bar' per the datasheet.
-Can we here use 'Vertical Color Bar' or 'MIPI Color Bar'?
+Sakari, did you mean that we need to update _probe API?
+Like this:
+struct v4l2_subdev_format fmt = {
+	.which = V4L2_SUBDEV_FORMAT_ACTIVE,
+};
 
-> > +};
-> [snip]
-> > +static int ov02a10_set_fmt(struct v4l2_subdev *sd,
-> > +			   struct v4l2_subdev_pad_config *cfg,
-> > +			   struct v4l2_subdev_format *fmt)
-> > +{
-> > +	struct ov02a10 *ov02a10 = to_ov02a10(sd);
-> > +	struct v4l2_mbus_framefmt *mbus_fmt = &fmt->format;
-> > +
-> > +	mutex_lock(&ov02a10->mutex);
-> > +
-> 
-> 
-> Don't we need to handle the case when fmt->which is V4L2_SUBDEV_FORMAT_TRY,
-> which is used for trying the format, but not applying it to the hardware?
+> But apart from that, the framework always calls init_cfg with cfg non-NULL.
 > 
 
-Got it :-)
 
-> > +	if (ov02a10->streaming) {
-> > +		mutex_unlock(&ov02a10->mutex);
-> > +		return -EBUSY;
-> > +	}
-> > +
-> > +	/* Only one sensor mode supported */
-> > +	mbus_fmt->code = ov02a10->fmt.code;
-> > +	ov02a10_fill_fmt(ov02a10->cur_mode, mbus_fmt);
-> > +	ov02a10->fmt = fmt->format;
-> > +
-> > +	mutex_unlock(&ov02a10->mutex);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int ov02a10_get_fmt(struct v4l2_subdev *sd,
-> > +			   struct v4l2_subdev_pad_config *cfg,
-> > +			   struct v4l2_subdev_format *fmt)
-> > +{
-> > +	struct ov02a10 *ov02a10 = to_ov02a10(sd);
-> > +	struct v4l2_mbus_framefmt *mbus_fmt = &fmt->format;
-> > +
-> > +	mutex_lock(&ov02a10->mutex);
-> > +
-> > +	fmt->format = ov02a10->fmt;
-> 
-> Ditto.
-> 
-> > +	mbus_fmt->code = ov02a10->fmt.code;
-> > +	ov02a10_fill_fmt(ov02a10->cur_mode, mbus_fmt);
-> > +
-> > +	mutex_unlock(&ov02a10->mutex);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int ov02a10_enum_mbus_code(struct v4l2_subdev *sd,
-> > +				  struct v4l2_subdev_pad_config *cfg,
-> > +				  struct v4l2_subdev_mbus_code_enum *code)
-> > +{
-> > +	struct ov02a10 *ov02a10 = to_ov02a10(sd);
-> > +
-> > +	if (code->index >= ARRAY_SIZE(supported_modes))
-> > +		return -EINVAL;
-> 
-> Hmm, supported_modes[] doesn't seem to hold the information about mbus
-> codes. Should this just perhaps be "!= 0"?
-> 
-
-Understood.
-
-> > +
-> > +	code->code = ov02a10->fmt.code;
-> > +
-> > +	return 0;
-> > +}
-> [snip]
-> > +static int ov02a10_entity_init_cfg(struct v4l2_subdev *sd,
-> > +				   struct v4l2_subdev_pad_config *cfg)
-> > +{
-> > +	struct v4l2_subdev_format fmt = {
-> > +		.which = cfg ? V4L2_SUBDEV_FORMAT_TRY : V4L2_SUBDEV_FORMAT_ACTIVE,
-> > +		.format = {
-> > +			.width = 1600,
-> > +			.height = 1200,
-> > +		}
-> > +	};
-> > +
-> > +	ov02a10_set_fmt(sd, cfg, &fmt);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> 
-> I'm not familiar with this init_cfg operation and the documentation is very
-> sparse about it. Sakari, is this a correct implementation?
-> 
-> [snip]
-> > +static int ov02a10_set_test_pattern(struct ov02a10 *ov02a10, int pattern)
-> > +{
-> > +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
-> > +	int ret;
-> > +
-> > +	ret = i2c_smbus_write_byte_data(client, REG_PAGE_SWITCH, REG_ENABLE);
-> > +	if (ret < 0)
-> > +		return ret;
-> > +
-> > +	ret = i2c_smbus_write_byte_data(client, OV02A10_REG_TEST_PATTERN,
-> > +					pattern);
-> > +	if (ret < 0)
-> > +		return ret;
-> > +
-> > +	ret = i2c_smbus_write_byte_data(client, REG_GLOBAL_EFFECTIVE,
-> > +					REG_ENABLE);
-> > +	if (ret < 0)
-> > +		return ret;
-> > +
-> > +	return i2c_smbus_write_byte_data(client, REG_SC_CTRL_MODE,
-> > +					 SC_CTRL_MODE_STREAMING);
-> 
-> Why is this needed? Does writing the test pattern register stop streaming?
-> 
-
-Looking back to the setting history, I found it was suggested by OV.
-I would leave your question to OV, and update their feedback.
-
-> [snip]
-> > +static int ov02a10_initialize_controls(struct ov02a10 *ov02a10)
-> > +{
-> > +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
-> > +	const struct ov02a10_mode *mode;
-> > +	struct v4l2_ctrl_handler *handler;
-> > +	struct v4l2_ctrl *ctrl;
-> > +	u64 exposure_max;
-> > +	u32 pixel_rate;
-> > +	int ret;
-> > +
-> > +	handler = &ov02a10->ctrl_handler;
-> > +	mode = ov02a10->cur_mode;
-> > +	ret = v4l2_ctrl_handler_init(handler, 7);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	handler->lock = &ov02a10->mutex;
-> > +
-> > +	ctrl = v4l2_ctrl_new_int_menu(handler, NULL, V4L2_CID_LINK_FREQ, 0, 0,
-> > +				      link_freq_menu_items);
-> > +	if (ctrl)
-> > +		ctrl->flags |= V4L2_CTRL_FLAG_READ_ONLY;
-> > +
-> > +	pixel_rate = to_pixel_rate(0);
-> > +	v4l2_ctrl_new_std(handler, NULL, V4L2_CID_PIXEL_RATE, 0, pixel_rate, 1,
-> > +			  pixel_rate);
-> > +
-> > +	exposure_max = mode->vts_def - 4;
-> > +	ov02a10->exposure = v4l2_ctrl_new_std(handler, &ov02a10_ctrl_ops,
-> > +					      V4L2_CID_EXPOSURE,
-> > +					      OV02A10_EXPOSURE_MIN,
-> > +					      exposure_max,
-> > +					      OV02A10_EXPOSURE_STEP,
-> > +					      mode->exp_def);
-> > +
-> > +	v4l2_ctrl_new_std(handler, &ov02a10_ctrl_ops,
-> > +			  V4L2_CID_ANALOGUE_GAIN,
-> > +			  OV02A10_GAIN_MIN,
-> > +			  OV02A10_GAIN_MAX,
-> > +			  OV02A10_GAIN_STEP,
-> > +			  OV02A10_GAIN_DEFAULT);
-> > +
-> > +	v4l2_ctrl_new_std_menu_items(handler, &ov02a10_ctrl_ops,
-> > +				     V4L2_CID_TEST_PATTERN,
-> > +				     ARRAY_SIZE(ov02a10_test_pattern_menu) - 1,
-> > +				     0, 0, ov02a10_test_pattern_menu);
-> > +
-> 
-> I can see that we're missing some controls here now, VBLANK and HBLANK if I
-> remember correctly. Even though read-only, some userspace need those to
-> get information about how the sensor operates.
-> 
-
-Yes. I made a mistake.
-
-> > +	if (handler->error) {
-> > +		ret = handler->error;
-> > +		dev_err(&client->dev, "failed to init controls(%d)\n", ret);
-> > +		goto err_free_handler;
-> > +	}
-> > +
-> > +	ov02a10->subdev.ctrl_handler = handler;
-> > +
-> > +	return 0;
-> > +
-> > +err_free_handler:
-> > +	v4l2_ctrl_handler_free(handler);
-> > +
-> > +	return ret;
-> > +}
-> [snip]
-> > +	pm_runtime_enable(dev);
-> > +	if (!pm_runtime_enabled(dev)) {
-> > +		ret = ov02a10_power_on(dev);
-> > +		if (ret < 0) {
-> > +			dev_err(dev, "failed to power on: %d\n", ret);
-> > +			goto err_free_handler;
-> > +		}
-> > +	}
-> > +
-> > +	ret = v4l2_async_register_subdev(&ov02a10->subdev);
-> > +	if (ret) {
-> > +		dev_err(dev, "failed to register V4L2 subdev: %d", ret);
-> > +		if (!pm_runtime_enabled(dev))
-> > +			ov02a10_power_off(dev);
-> 
-> Please don't mix inline and error-path error handling, as it makes it
-> difficult to tell if it's correct. Please move this below the appropriate
-> err label instead.
-> 
-
-Fixed in next release.
-
-> > +		goto err_clean_entity;
-> > +	}
-> > +
-> > +	return 0;
-> > +
-> > +err_clean_entity:
-> 
-> If one calls pm_runtime_enable() in the probe path, one needs to call
-> pm_runtime_disable() on the error and remove paths.
-> 
-
-Yes, fixed in next release.
-
-> > +	media_entity_cleanup(&ov02a10->subdev.entity);
-> > +err_free_handler:
-> > +	v4l2_ctrl_handler_free(ov02a10->subdev.ctrl_handler);
-> > +err_destroy_mutex:
-> > +	mutex_destroy(&ov02a10->mutex);
-> > +
-> > +	return ret;
-> > +}
-> > +
-> 
-> Best regards,
-> Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
