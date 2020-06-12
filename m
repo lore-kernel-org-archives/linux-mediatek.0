@@ -2,66 +2,79 @@ Return-Path: <SRS0=I3u4=7Z=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 46182C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 03:42:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 40901C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 05:33:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0876820885
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 03:42:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 115FA207F7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 05:33:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qzBfd3U4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0876820885
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.alibaba.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="E8RsJUEk";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="kNYQIaTx"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 115FA207F7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=nRj4pHFkvZNwp/BLNGeMxqB9s58Mb7bHvPbSHBB8aTA=; b=qzBfd3U4o8x73SvMuvDFuMqXVp
-	4i9gCWVj6v7u0DDfYYsk0Q2vOKyeXqk3izALAP3K2iITeJsX/dIccpyn5fZFhwOv3bLYWI869JxgS
-	K3wZgrtQERVxbhIywCT0xx9ySJSfsASKYVd27IYn36VSlueZQked05VlzU6LG3bXBVzEEvp9C1j1y
-	KGimlMiyoC7w1w1lTl6RRs9hdOoAVnJfLLhH6keK4yy7Wv845dzTU6OM+nXCSRTat21KA5SBqwdfR
-	jTVb1z+mJhnOUWOTOCWaN8bqPYd9qkVKfksNF85GTkXtvcb0WaaY6UhNkztVMVjboDOunBrbNY6pE
-	bIEuP3XA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=kXdFe/anCFlOS3gT75lBv0Z/wg3Q50Ruc6cb9RTHzGY=; b=E8RsJUEkcbeNvt
+	oLRMo/ZLpEQcXxmviQLRqiTcFMTi+Vyt5Hh9uUrZzHqe+YodKrH71QJVtZOlIxL+04GFeiYtTfV4S
+	hpBfR3OpTo9sEUs0qou9+QPyyLKvUC5lex+9VazD7Wmo2TpBOSSsTdVJLdOZpq2DkBvp4H7NwdZGC
+	/TXVfp43UVq4uSdBxtPe9i152R+qwSMnZPlR2iYvE0TbCZt7TOjPMUtKoywJ06HFpOE+lCfHHi3mc
+	6IsImk97IcLw40pRm3OjkT5cZ+2vlvu0KUIdN6/3H8J4/Ze7nOyQ8DTkrlg1iQkuBG2KDEKMYopI9
+	G4A3Wx4rdbA5J5ErdGVg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jjaaH-0002QH-Bj; Fri, 12 Jun 2020 03:42:25 +0000
-Received: from out30-132.freemail.mail.aliyun.com ([115.124.30.132])
+	id 1jjcJL-0006mB-Th; Fri, 12 Jun 2020 05:33:03 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jjaaD-0001ro-MM
- for linux-mediatek@lists.infradead.org; Fri, 12 Jun 2020 03:42:23 +0000
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R151e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01f04427;
- MF=baolin.wang@linux.alibaba.com; NM=1; PH=DS; RN=21; SR=0;
- TI=SMTPD_---0U.K0.DD_1591933215; 
-Received: from localhost(mailfrom:baolin.wang@linux.alibaba.com
- fp:SMTPD_---0U.K0.DD_1591933215) by smtp.aliyun-inc.com(127.0.0.1);
- Fri, 12 Jun 2020 11:40:15 +0800
-From: Baolin Wang <baolin.wang@linux.alibaba.com>
-To: joro@8bytes.org, will@kernel.org, robin.murphy@arm.com, agross@kernel.org,
- bjorn.andersson@linaro.org, matthias.bgg@gmail.com, robdclark@gmail.com,
- robh@kernel.org, tomeu.vizoso@collabora.com, steven.price@arm.com,
- alyssa.rosenzweig@collabora.com, airlied@linux.ie, daniel@ffwll.ch
-Subject: [PATCH v2 2/2] iommu: Add gfp parameter to io_pgtable_ops->map()
-Date: Fri, 12 Jun 2020 11:39:55 +0800
-Message-Id: <3093df4cb95497aaf713fca623ce4ecebb197c2e.1591930156.git.baolin.wang@linux.alibaba.com>
-X-Mailer: git-send-email 1.8.3.1
-In-Reply-To: <cover.1591930156.git.baolin.wang@linux.alibaba.com>
-References: <cover.1591930156.git.baolin.wang@linux.alibaba.com>
-In-Reply-To: <cover.1591930156.git.baolin.wang@linux.alibaba.com>
-References: <cover.1591930156.git.baolin.wang@linux.alibaba.com>
+ id 1jjcJJ-0006lH-CG; Fri, 12 Jun 2020 05:33:02 +0000
+X-UUID: eeb61f2007444f559b9eae272d2482d6-20200611
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=bDIpgkDQG7YLT+F0rsdng9S3ADGmLirI0hK3z/BZOuY=; 
+ b=kNYQIaTxVSeR2OoLWSPVuYo5ny3mIuwEwPFcqRNW1L6Cme2nqtm44PF8niJRfA/vZJsHqos5PzR8Bde6+6hjDU1rMQFJj784KxD92LC2v7llcZQMTw4jhQvxxkbmVwp+ilox0FbKzAfNrTr3DEyRAevgvYytmAykm7XDnnJdUPQ=;
+X-UUID: eeb61f2007444f559b9eae272d2482d6-20200611
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <macpaul.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1353793439; Thu, 11 Jun 2020 21:32:58 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 11 Jun 2020 22:32:48 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 12 Jun 2020 13:32:51 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 12 Jun 2020 13:32:46 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Felipe Balbi <balbi@kernel.org>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ <linux-usb@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ Jim Lin <jilin@nvidia.com>, Siqi Lin <siqilin@google.com>
+Subject: [PATCH] usb: replace hardcoded maximum usb string length by definition
+Date: Fri, 12 Jun 2020 13:32:47 +0800
+Message-ID: <1591939967-29943-1-git-send-email-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <y>
+References: <y>
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200611_204221_899155_92CC945B 
-X-CRM114-Status: GOOD (  14.24  )
+X-CRM114-CacheID: sfid-20200611_223301_420905_B28B276A 
+X-CRM114-Status: GOOD (  11.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,305 +86,106 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, iommu@lists.linux-foundation.org,
- linux-mediatek@lists.infradead.org, baolin.wang@linux.alibaba.com,
- baolin.wang7@gmail.com, linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
+Cc: Macpaul Lin <macpaul.lin@gmail.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+ Mediatek WSD Upstream <wsd_upstream@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Now the ARM page tables are always allocated by GFP_ATOMIC parameter,
-but the iommu_ops->map() function has been added a gfp_t parameter by
-commit 781ca2de89ba ("iommu: Add gfp parameter to iommu_ops::map"),
-thus io_pgtable_ops->map() should use the gfp parameter passed from
-iommu_ops->map() to allocate page pages, which can avoid wasting the
-memory allocators atomic pools for some non-atomic contexts.
+Replace hardcoded maximum usb string length (126 bytes) by definition
+"MAX_USB_STRING_LEN".
 
-Signed-off-by: Baolin Wang <baolin.wang@linux.alibaba.com>
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 ---
- drivers/gpu/drm/panfrost/panfrost_mmu.c |  2 +-
- drivers/iommu/arm-smmu-v3.c             |  2 +-
- drivers/iommu/arm-smmu.c                |  2 +-
- drivers/iommu/io-pgtable-arm-v7s.c      | 18 +++++++++---------
- drivers/iommu/io-pgtable-arm.c          | 18 +++++++++---------
- drivers/iommu/ipmmu-vmsa.c              |  2 +-
- drivers/iommu/msm_iommu.c               |  2 +-
- drivers/iommu/mtk_iommu.c               |  2 +-
- drivers/iommu/qcom_iommu.c              |  2 +-
- include/linux/io-pgtable.h              |  2 +-
- 10 files changed, 26 insertions(+), 26 deletions(-)
+ drivers/usb/gadget/composite.c |    4 ++--
+ drivers/usb/gadget/configfs.c  |    3 ++-
+ drivers/usb/gadget/usbstring.c |    5 +++--
+ include/linux/usb.h            |    2 ++
+ 4 files changed, 9 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/panfrost/panfrost_mmu.c b/drivers/gpu/drm/panfrost/panfrost_mmu.c
-index ed28aeb..5a39eee 100644
---- a/drivers/gpu/drm/panfrost/panfrost_mmu.c
-+++ b/drivers/gpu/drm/panfrost/panfrost_mmu.c
-@@ -262,7 +262,7 @@ static int mmu_map_sg(struct panfrost_device *pfdev, struct panfrost_mmu *mmu,
- 		while (len) {
- 			size_t pgsize = get_pgsize(iova | paddr, len);
+diff --git a/drivers/usb/gadget/composite.c b/drivers/usb/gadget/composite.c
+index cb4950c..d0de016 100644
+--- a/drivers/usb/gadget/composite.c
++++ b/drivers/usb/gadget/composite.c
+@@ -1041,7 +1041,7 @@ static void collect_langs(struct usb_gadget_strings **sp, __le16 *buf)
+ 	while (*sp) {
+ 		s = *sp;
+ 		language = cpu_to_le16(s->language);
+-		for (tmp = buf; *tmp && tmp < &buf[126]; tmp++) {
++		for (tmp = buf; *tmp && tmp < &buf[MAX_USB_STRING_LEN]; tmp++) {
+ 			if (*tmp == language)
+ 				goto repeat;
+ 		}
+@@ -1116,7 +1116,7 @@ static int get_string(struct usb_composite_dev *cdev,
+ 			collect_langs(sp, s->wData);
+ 		}
  
--			ops->map(ops, iova, paddr, pgsize, prot);
-+			ops->map(ops, iova, paddr, pgsize, prot, GFP_KERNEL);
- 			iova += pgsize;
- 			paddr += pgsize;
- 			len -= pgsize;
-diff --git a/drivers/iommu/arm-smmu-v3.c b/drivers/iommu/arm-smmu-v3.c
-index f578677..7b59f06 100644
---- a/drivers/iommu/arm-smmu-v3.c
-+++ b/drivers/iommu/arm-smmu-v3.c
-@@ -2850,7 +2850,7 @@ static int arm_smmu_map(struct iommu_domain *domain, unsigned long iova,
- 	if (!ops)
- 		return -ENODEV;
+-		for (len = 0; len <= 126 && s->wData[len]; len++)
++		for (len = 0; len <= MAX_USB_STRING_LEN && s->wData[len]; len++)
+ 			continue;
+ 		if (!len)
+ 			return -EINVAL;
+diff --git a/drivers/usb/gadget/configfs.c b/drivers/usb/gadget/configfs.c
+index 32b637e..c9d61ac 100644
+--- a/drivers/usb/gadget/configfs.c
++++ b/drivers/usb/gadget/configfs.c
+@@ -4,6 +4,7 @@
+ #include <linux/slab.h>
+ #include <linux/device.h>
+ #include <linux/nls.h>
++#include <linux/usb.h>
+ #include <linux/usb/composite.h>
+ #include <linux/usb/gadget_configfs.h>
+ #include "configfs.h"
+@@ -115,7 +116,7 @@ static int usb_string_copy(const char *s, char **s_copy)
+ 	char *str;
+ 	char *copy = *s_copy;
+ 	ret = strlen(s);
+-	if (ret > 126)
++	if (ret > MAX_USB_STRING_LEN)
+ 		return -EOVERFLOW;
  
--	return ops->map(ops, iova, paddr, size, prot);
-+	return ops->map(ops, iova, paddr, size, prot, gfp);
+ 	str = kstrdup(s, GFP_KERNEL);
+diff --git a/drivers/usb/gadget/usbstring.c b/drivers/usb/gadget/usbstring.c
+index 7c24d1c..c125d59 100644
+--- a/drivers/usb/gadget/usbstring.c
++++ b/drivers/usb/gadget/usbstring.c
+@@ -11,6 +11,7 @@
+ #include <linux/device.h>
+ #include <linux/nls.h>
+ 
++#include <linux/usb.h>
+ #include <linux/usb/ch9.h>
+ #include <linux/usb/gadget.h>
+ 
+@@ -55,9 +56,9 @@
+ 		return -EINVAL;
+ 
+ 	/* string descriptors have length, tag, then UTF16-LE text */
+-	len = min ((size_t) 126, strlen (s->s));
++	len = min((size_t)MAX_USB_STRING_LEN, strlen(s->s));
+ 	len = utf8s_to_utf16s(s->s, len, UTF16_LITTLE_ENDIAN,
+-			(wchar_t *) &buf[2], 126);
++			(wchar_t *) &buf[2], MAX_USB_STRING_LEN);
+ 	if (len < 0)
+ 		return -EINVAL;
+ 	buf [0] = (len + 1) * 2;
+diff --git a/include/linux/usb.h b/include/linux/usb.h
+index 9f3c721..df4a9cb 100644
+--- a/include/linux/usb.h
++++ b/include/linux/usb.h
+@@ -1815,6 +1815,8 @@ static inline int usb_get_ptm_status(struct usb_device *dev, void *data)
+ 		0, data);
  }
  
- static size_t arm_smmu_unmap(struct iommu_domain *domain, unsigned long iova,
-diff --git a/drivers/iommu/arm-smmu.c b/drivers/iommu/arm-smmu.c
-index 243bc4c..dc1d253 100644
---- a/drivers/iommu/arm-smmu.c
-+++ b/drivers/iommu/arm-smmu.c
-@@ -1227,7 +1227,7 @@ static int arm_smmu_map(struct iommu_domain *domain, unsigned long iova,
- 		return -ENODEV;
++/* USB String descriptors can contain at most 126 characters. */
++#define MAX_USB_STRING_LEN	126
+ extern int usb_string(struct usb_device *dev, int index,
+ 	char *buf, size_t size);
  
- 	arm_smmu_rpm_get(smmu);
--	ret = ops->map(ops, iova, paddr, size, prot);
-+	ret = ops->map(ops, iova, paddr, size, prot, gfp);
- 	arm_smmu_rpm_put(smmu);
- 
- 	return ret;
-diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
-index 4272fe4..a688f22 100644
---- a/drivers/iommu/io-pgtable-arm-v7s.c
-+++ b/drivers/iommu/io-pgtable-arm-v7s.c
-@@ -470,7 +470,7 @@ static arm_v7s_iopte arm_v7s_install_table(arm_v7s_iopte *table,
- 
- static int __arm_v7s_map(struct arm_v7s_io_pgtable *data, unsigned long iova,
- 			 phys_addr_t paddr, size_t size, int prot,
--			 int lvl, arm_v7s_iopte *ptep)
-+			 int lvl, arm_v7s_iopte *ptep, gfp_t gfp)
- {
- 	struct io_pgtable_cfg *cfg = &data->iop.cfg;
- 	arm_v7s_iopte pte, *cptep;
-@@ -491,7 +491,7 @@ static int __arm_v7s_map(struct arm_v7s_io_pgtable *data, unsigned long iova,
- 	/* Grab a pointer to the next level */
- 	pte = READ_ONCE(*ptep);
- 	if (!pte) {
--		cptep = __arm_v7s_alloc_table(lvl + 1, GFP_ATOMIC, data);
-+		cptep = __arm_v7s_alloc_table(lvl + 1, gfp, data);
- 		if (!cptep)
- 			return -ENOMEM;
- 
-@@ -512,11 +512,11 @@ static int __arm_v7s_map(struct arm_v7s_io_pgtable *data, unsigned long iova,
- 	}
- 
- 	/* Rinse, repeat */
--	return __arm_v7s_map(data, iova, paddr, size, prot, lvl + 1, cptep);
-+	return __arm_v7s_map(data, iova, paddr, size, prot, lvl + 1, cptep, gfp);
- }
- 
- static int arm_v7s_map(struct io_pgtable_ops *ops, unsigned long iova,
--			phys_addr_t paddr, size_t size, int prot)
-+			phys_addr_t paddr, size_t size, int prot, gfp_t gfp)
- {
- 	struct arm_v7s_io_pgtable *data = io_pgtable_ops_to_data(ops);
- 	struct io_pgtable *iop = &data->iop;
-@@ -530,7 +530,7 @@ static int arm_v7s_map(struct io_pgtable_ops *ops, unsigned long iova,
- 		    paddr >= (1ULL << data->iop.cfg.oas)))
- 		return -ERANGE;
- 
--	ret = __arm_v7s_map(data, iova, paddr, size, prot, 1, data->pgd);
-+	ret = __arm_v7s_map(data, iova, paddr, size, prot, 1, data->pgd, gfp);
- 	/*
- 	 * Synchronise all PTE updates for the new mapping before there's
- 	 * a chance for anything to kick off a table walk for the new iova.
-@@ -922,12 +922,12 @@ static int __init arm_v7s_do_selftests(void)
- 		if (ops->map(ops, iova, iova, size, IOMMU_READ |
- 						    IOMMU_WRITE |
- 						    IOMMU_NOEXEC |
--						    IOMMU_CACHE))
-+						    IOMMU_CACHE, GFP_KERNEL))
- 			return __FAIL(ops);
- 
- 		/* Overlapping mappings */
- 		if (!ops->map(ops, iova, iova + size, size,
--			      IOMMU_READ | IOMMU_NOEXEC))
-+			      IOMMU_READ | IOMMU_NOEXEC, GFP_KERNEL))
- 			return __FAIL(ops);
- 
- 		if (ops->iova_to_phys(ops, iova + 42) != (iova + 42))
-@@ -946,7 +946,7 @@ static int __init arm_v7s_do_selftests(void)
- 			return __FAIL(ops);
- 
- 		/* Remap of partial unmap */
--		if (ops->map(ops, iova_start + size, size, size, IOMMU_READ))
-+		if (ops->map(ops, iova_start + size, size, size, IOMMU_READ, GFP_KERNEL))
- 			return __FAIL(ops);
- 
- 		if (ops->iova_to_phys(ops, iova_start + size + 42)
-@@ -967,7 +967,7 @@ static int __init arm_v7s_do_selftests(void)
- 			return __FAIL(ops);
- 
- 		/* Remap full block */
--		if (ops->map(ops, iova, iova, size, IOMMU_WRITE))
-+		if (ops->map(ops, iova, iova, size, IOMMU_WRITE, GFP_KERNEL))
- 			return __FAIL(ops);
- 
- 		if (ops->iova_to_phys(ops, iova + 42) != (iova + 42))
-diff --git a/drivers/iommu/io-pgtable-arm.c b/drivers/iommu/io-pgtable-arm.c
-index 04fbd4b..4a5a7b0 100644
---- a/drivers/iommu/io-pgtable-arm.c
-+++ b/drivers/iommu/io-pgtable-arm.c
-@@ -355,7 +355,7 @@ static arm_lpae_iopte arm_lpae_install_table(arm_lpae_iopte *table,
- 
- static int __arm_lpae_map(struct arm_lpae_io_pgtable *data, unsigned long iova,
- 			  phys_addr_t paddr, size_t size, arm_lpae_iopte prot,
--			  int lvl, arm_lpae_iopte *ptep)
-+			  int lvl, arm_lpae_iopte *ptep, gfp_t gfp)
- {
- 	arm_lpae_iopte *cptep, pte;
- 	size_t block_size = ARM_LPAE_BLOCK_SIZE(lvl, data);
-@@ -376,7 +376,7 @@ static int __arm_lpae_map(struct arm_lpae_io_pgtable *data, unsigned long iova,
- 	/* Grab a pointer to the next level */
- 	pte = READ_ONCE(*ptep);
- 	if (!pte) {
--		cptep = __arm_lpae_alloc_pages(tblsz, GFP_ATOMIC, cfg);
-+		cptep = __arm_lpae_alloc_pages(tblsz, gfp, cfg);
- 		if (!cptep)
- 			return -ENOMEM;
- 
-@@ -396,7 +396,7 @@ static int __arm_lpae_map(struct arm_lpae_io_pgtable *data, unsigned long iova,
- 	}
- 
- 	/* Rinse, repeat */
--	return __arm_lpae_map(data, iova, paddr, size, prot, lvl + 1, cptep);
-+	return __arm_lpae_map(data, iova, paddr, size, prot, lvl + 1, cptep, gfp);
- }
- 
- static arm_lpae_iopte arm_lpae_prot_to_pte(struct arm_lpae_io_pgtable *data,
-@@ -461,7 +461,7 @@ static arm_lpae_iopte arm_lpae_prot_to_pte(struct arm_lpae_io_pgtable *data,
- }
- 
- static int arm_lpae_map(struct io_pgtable_ops *ops, unsigned long iova,
--			phys_addr_t paddr, size_t size, int iommu_prot)
-+			phys_addr_t paddr, size_t size, int iommu_prot, gfp_t gfp)
- {
- 	struct arm_lpae_io_pgtable *data = io_pgtable_ops_to_data(ops);
- 	struct io_pgtable_cfg *cfg = &data->iop.cfg;
-@@ -483,7 +483,7 @@ static int arm_lpae_map(struct io_pgtable_ops *ops, unsigned long iova,
- 		return -ERANGE;
- 
- 	prot = arm_lpae_prot_to_pte(data, iommu_prot);
--	ret = __arm_lpae_map(data, iova, paddr, size, prot, lvl, ptep);
-+	ret = __arm_lpae_map(data, iova, paddr, size, prot, lvl, ptep, gfp);
- 	/*
- 	 * Synchronise all PTE updates for the new mapping before there's
- 	 * a chance for anything to kick off a table walk for the new iova.
-@@ -1178,12 +1178,12 @@ static int __init arm_lpae_run_tests(struct io_pgtable_cfg *cfg)
- 			if (ops->map(ops, iova, iova, size, IOMMU_READ |
- 							    IOMMU_WRITE |
- 							    IOMMU_NOEXEC |
--							    IOMMU_CACHE))
-+							    IOMMU_CACHE, GFP_KERNEL))
- 				return __FAIL(ops, i);
- 
- 			/* Overlapping mappings */
- 			if (!ops->map(ops, iova, iova + size, size,
--				      IOMMU_READ | IOMMU_NOEXEC))
-+				      IOMMU_READ | IOMMU_NOEXEC, GFP_KERNEL))
- 				return __FAIL(ops, i);
- 
- 			if (ops->iova_to_phys(ops, iova + 42) != (iova + 42))
-@@ -1198,7 +1198,7 @@ static int __init arm_lpae_run_tests(struct io_pgtable_cfg *cfg)
- 			return __FAIL(ops, i);
- 
- 		/* Remap of partial unmap */
--		if (ops->map(ops, SZ_1G + size, size, size, IOMMU_READ))
-+		if (ops->map(ops, SZ_1G + size, size, size, IOMMU_READ, GFP_KERNEL))
- 			return __FAIL(ops, i);
- 
- 		if (ops->iova_to_phys(ops, SZ_1G + size + 42) != (size + 42))
-@@ -1216,7 +1216,7 @@ static int __init arm_lpae_run_tests(struct io_pgtable_cfg *cfg)
- 				return __FAIL(ops, i);
- 
- 			/* Remap full block */
--			if (ops->map(ops, iova, iova, size, IOMMU_WRITE))
-+			if (ops->map(ops, iova, iova, size, IOMMU_WRITE, GFP_KERNEL))
- 				return __FAIL(ops, i);
- 
- 			if (ops->iova_to_phys(ops, iova + 42) != (iova + 42))
-diff --git a/drivers/iommu/ipmmu-vmsa.c b/drivers/iommu/ipmmu-vmsa.c
-index 4c2972f..87475b2 100644
---- a/drivers/iommu/ipmmu-vmsa.c
-+++ b/drivers/iommu/ipmmu-vmsa.c
-@@ -687,7 +687,7 @@ static int ipmmu_map(struct iommu_domain *io_domain, unsigned long iova,
- 	if (!domain)
- 		return -ENODEV;
- 
--	return domain->iop->map(domain->iop, iova, paddr, size, prot);
-+	return domain->iop->map(domain->iop, iova, paddr, size, prot, gfp);
- }
- 
- static size_t ipmmu_unmap(struct iommu_domain *io_domain, unsigned long iova,
-diff --git a/drivers/iommu/msm_iommu.c b/drivers/iommu/msm_iommu.c
-index 3d8a635..12ce685 100644
---- a/drivers/iommu/msm_iommu.c
-+++ b/drivers/iommu/msm_iommu.c
-@@ -491,7 +491,7 @@ static int msm_iommu_map(struct iommu_domain *domain, unsigned long iova,
- 	int ret;
- 
- 	spin_lock_irqsave(&priv->pgtlock, flags);
--	ret = priv->iop->map(priv->iop, iova, pa, len, prot);
-+	ret = priv->iop->map(priv->iop, iova, pa, len, prot, GFP_ATOMIC);
- 	spin_unlock_irqrestore(&priv->pgtlock, flags);
- 
- 	return ret;
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 2be96f1..b7b1641 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -397,7 +397,7 @@ static int mtk_iommu_map(struct iommu_domain *domain, unsigned long iova,
- 		paddr |= BIT_ULL(32);
- 
- 	/* Synchronize with the tlb_lock */
--	return dom->iop->map(dom->iop, iova, paddr, size, prot);
-+	return dom->iop->map(dom->iop, iova, paddr, size, prot, gfp);
- }
- 
- static size_t mtk_iommu_unmap(struct iommu_domain *domain,
-diff --git a/drivers/iommu/qcom_iommu.c b/drivers/iommu/qcom_iommu.c
-index c3e1fbd..cfcfd75 100644
---- a/drivers/iommu/qcom_iommu.c
-+++ b/drivers/iommu/qcom_iommu.c
-@@ -441,7 +441,7 @@ static int qcom_iommu_map(struct iommu_domain *domain, unsigned long iova,
- 		return -ENODEV;
- 
- 	spin_lock_irqsave(&qcom_domain->pgtbl_lock, flags);
--	ret = ops->map(ops, iova, paddr, size, prot);
-+	ret = ops->map(ops, iova, paddr, size, prot, GFP_ATOMIC);
- 	spin_unlock_irqrestore(&qcom_domain->pgtbl_lock, flags);
- 	return ret;
- }
-diff --git a/include/linux/io-pgtable.h b/include/linux/io-pgtable.h
-index 53d53c6..23285ba 100644
---- a/include/linux/io-pgtable.h
-+++ b/include/linux/io-pgtable.h
-@@ -155,7 +155,7 @@ struct io_pgtable_cfg {
-  */
- struct io_pgtable_ops {
- 	int (*map)(struct io_pgtable_ops *ops, unsigned long iova,
--		   phys_addr_t paddr, size_t size, int prot);
-+		   phys_addr_t paddr, size_t size, int prot, gfp_t gfp);
- 	size_t (*unmap)(struct io_pgtable_ops *ops, unsigned long iova,
- 			size_t size, struct iommu_iotlb_gather *gather);
- 	phys_addr_t (*iova_to_phys)(struct io_pgtable_ops *ops,
 -- 
-1.8.3.1
-
-
+1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
