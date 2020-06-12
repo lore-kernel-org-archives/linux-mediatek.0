@@ -2,22 +2,21 @@ Return-Path: <SRS0=I3u4=7Z=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 28816C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 18:39:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C659AC433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 18:49:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F1B2F206DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 18:39:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9F16F206DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 18:49:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Upskv8wv";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="bRJxS+Q2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F1B2F206DC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sc/WJ/5B";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="m2KD82iv"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9F16F206DC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,69 +25,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kWIE4IEScdIae3ij2KX+v16Cd1YbhIgBdIXpSjXNLBs=; b=Upskv8wv6o0+o0
-	z+isJdxngMhEiwKGrPRH5VvUkgQWrHbW0QZLI0mcc2ovdBFZsEKumEXwhpSxagN2QfBNmaoW9DUlf
-	LuDw3d178eo7Gd+wUJEUqFhl2SLD2XI0B8Qo7mcvyszAH/Ym+xYK+J57BQIgfQ9OtsVebEFMD7KNs
-	iy9HEQEeJHfcTg/jM0PVbqqOf+f2/GZ/gPOPxJyWIg6RFSL5RvxLpomn6zgz+YfPCWCr2OdY4SLjx
-	NAPlfmUtKsHv7BfJG0vAVm2D8FhZ4uYqGFzM756ef7K5DbTi/feV78HoIKarSPE/VBg160XYAnpxs
-	/KfTJKGBoVkuGluHvCvw==;
+	List-Owner; bh=xrolAGKRGrN9BsQzjibT7naUWN0G+RH4LEKKk0J0sOs=; b=sc/WJ/5Bw5Atgp
+	WaCNraq8BrSBnKLgd2UKno1qYCep7LBkiKx+uPaQoqSYqVx6JPQ67artwJxGSnE7Nb9hHLYrYqmRI
+	69AUvHMUo1GTqMI35zcbeRDoALBK8Ue2Ylbv3+KDWM+GNHTcQRKKmpD4By73RAR54REZIrkWmcSYo
+	FX/CMpfJbToxrghSTx7CYxzg+/8S05+9uN02jnq3vLxWRphz7U0c9LfcgFumUpksNeommuWJmQB2Y
+	TgT91rC+KNuTBS7DNA+3KV6tZRGduv/vOigd0mW3zDiRwuDZsMvYQrSVSNN3Lsq8mq9G04+PD3rPO
+	KWct+NPJWbfa3N+iNSFg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jjoaj-00059I-RW; Fri, 12 Jun 2020 18:39:49 +0000
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644])
+	id 1jjok2-0003gF-MU; Fri, 12 Jun 2020 18:49:26 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jjoah-00058o-6c
- for linux-mediatek@lists.infradead.org; Fri, 12 Jun 2020 18:39:49 +0000
-Received: by mail-ej1-x644.google.com with SMTP id o15so11035594ejm.12
- for <linux-mediatek@lists.infradead.org>; Fri, 12 Jun 2020 11:39:46 -0700 (PDT)
+ id 1jjojt-0003Xf-CN
+ for linux-mediatek@lists.infradead.org; Fri, 12 Jun 2020 18:49:19 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id w16so10538412ejj.5
+ for <linux-mediatek@lists.infradead.org>; Fri, 12 Jun 2020 11:49:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=P8sNBYcte/zk1gJm2YzOJRDjejnEUqN/A2ieuNyUweg=;
- b=bRJxS+Q2KQuM54a8erBJ8qt32TXVRsXhyMB8WWOq3eNmxwrN4tec98hY1I3dgRAadb
- ts7ymaPP/cxcISqUJMVR1rg0hvz0g6hLj31QBZ2Q4wp8U7XtRblQESknjGvBDfox0Z06
- uKeyun3azaUw4eFf03EUYyLAv5q0HMR3PsF8E=
+ :cc; bh=nRDVrwu4nmGYq+4H/l+Rfcgr3AzgWNw91u+JyocBvfM=;
+ b=m2KD82ivlXUUePVUWot71c6WcaxeJlCXcnih6WkWsEDIJ2gD3qUd/7EVIU4njM4fLA
+ MTs+s5Qv/pTww8Rd4mWtfwyDe9R3f17Zg1HzZGaeKrK/Nmx6HPYjlQAKmNhms7lmkWiJ
+ raCqRd6ECYIDOUN6A2CwJIAex+onNYl/jvZXg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=P8sNBYcte/zk1gJm2YzOJRDjejnEUqN/A2ieuNyUweg=;
- b=Jv0PB10/VFdSITNJGygdzETG5DABmxIqbfQqm3gWg5KvPNDGyAnEXZM7lWaMU+yVjC
- CAm//+UCer3p0Lr7oAO78q0trotSLM3Bu116f5sA/sUJifaN6lnjSaxo2X/w0m3FLxI6
- VfYLDEErfBj1keer5wD5MQxGVi+ivbRb+mMcYjPc67NGbZaBv8eQEtPkHVcmLVZ/xIqK
- x4LP7mmGNkKbcbUe4CZwUir6Aoz4l0wHYeLHwvya5ngUusNHksGhrqE12966r1nxyMEB
- qP6J2AiDD/CRPjCyA2IL7QWn2YCz0LdZkQWU+tlFfPDkASIabHp3I6kabxKQv1XsS/oE
- uYdg==
-X-Gm-Message-State: AOAM530R9t/HqzgFrSej6t97ZXSI9X9LWzFFxW7XmnbV58MI7B/GTM0O
- Jzp/50Vyw+SwOVigyf3zLGcXxMcbi3iePA==
-X-Google-Smtp-Source: ABdhPJxcoJNNfsGUJzJjYFRkkJDhZlX56nYQ9SgUSwYO61sYXO50hokwMysN3KC9KtrKkfBAminKQw==
-X-Received: by 2002:a17:906:11c4:: with SMTP id
- o4mr15045780eja.163.1591987184710; 
- Fri, 12 Jun 2020 11:39:44 -0700 (PDT)
-Received: from mail-wm1-f41.google.com (mail-wm1-f41.google.com.
- [209.85.128.41])
- by smtp.gmail.com with ESMTPSA id e20sm3051509ejh.22.2020.06.12.11.39.43
+ bh=nRDVrwu4nmGYq+4H/l+Rfcgr3AzgWNw91u+JyocBvfM=;
+ b=bfGMdT3Vmz5CN/6iZEdj+uK6QtFw2MIwxtRS4hlbfsKdosswdYKaq5w63T+XUldcHe
+ 6vWpM+IdZWMeCzm01AcoMubO+gLh7OQb4t5/j3MOaq8aCb2tXNT8bbie2h4PiCKAM7bf
+ mgpef1r2CTK9QqKIfaiYrkLkBY1MUtirRZwYyqE+V473FAz26W1n+owCyoZ3loBqqmO8
+ XJKoyFBcQ9Py7OWa0guP1UhoYKno7JdJPeckcrIFQ/UNI+rC8FhWu1jXWUWA4gyV2M5j
+ WtZDgcA15ouEEt3KmNTDsyRIAo/9UN6ASuLUP4P1XzwKE/2TLNo8yozfIdBhWspbLmbo
+ Lw3Q==
+X-Gm-Message-State: AOAM5320+gYVQMRppySSHG0e0lrollUMHVKQZTL9x3U8aA5Scr9NXbkp
+ lImKo6JxsZbpQB9pcMVYWlKTsw1Lm+WRDw==
+X-Google-Smtp-Source: ABdhPJwIrEca1rERnICbYQpiyL1VQPQWBwfS4TiBxyE4Bc9BG6ILKLIVT791Ry0SmHoqDaG26B5etA==
+X-Received: by 2002:a17:906:fcae:: with SMTP id
+ qw14mr15205656ejb.166.1591987755431; 
+ Fri, 12 Jun 2020 11:49:15 -0700 (PDT)
+Received: from mail-wr1-f43.google.com (mail-wr1-f43.google.com.
+ [209.85.221.43])
+ by smtp.gmail.com with ESMTPSA id b16sm3549452edu.89.2020.06.12.11.49.14
  for <linux-mediatek@lists.infradead.org>
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 12 Jun 2020 11:39:43 -0700 (PDT)
-Received: by mail-wm1-f41.google.com with SMTP id l26so9035289wme.3
- for <linux-mediatek@lists.infradead.org>; Fri, 12 Jun 2020 11:39:43 -0700 (PDT)
-X-Received: by 2002:a1c:2e0e:: with SMTP id u14mr257126wmu.55.1591987183150;
- Fri, 12 Jun 2020 11:39:43 -0700 (PDT)
+ Fri, 12 Jun 2020 11:49:14 -0700 (PDT)
+Received: by mail-wr1-f43.google.com with SMTP id x6so10694527wrm.13
+ for <linux-mediatek@lists.infradead.org>; Fri, 12 Jun 2020 11:49:14 -0700 (PDT)
+X-Received: by 2002:adf:9c12:: with SMTP id f18mr17605374wrc.105.1591987753743; 
+ Fri, 12 Jun 2020 11:49:13 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200523084103.31276-1-dongchun.zhu@mediatek.com>
- <20200523084103.31276-3-dongchun.zhu@mediatek.com>
- <20200610194455.GK201868@chromium.org>
- <1591958798.8804.660.camel@mhfsdcap03>
-In-Reply-To: <1591958798.8804.660.camel@mhfsdcap03>
+References: <20200509080627.23222-1-dongchun.zhu@mediatek.com>
+ <20200509080627.23222-3-dongchun.zhu@mediatek.com>
+ <20200521193204.GA14214@chromium.org>
+ <1590209415.8804.431.camel@mhfsdcap03> <20200610183600.GI201868@chromium.org>
+ <1591954266.8804.646.camel@mhfsdcap03>
+In-Reply-To: <1591954266.8804.646.camel@mhfsdcap03>
 From: Tomasz Figa <tfiga@chromium.org>
-Date: Fri, 12 Jun 2020 20:39:30 +0200
-X-Gmail-Original-Message-ID: <CAAFQd5Bcb4A+HAivA-jrczK+OMxwZk3w0GYoh-DU=6gmTZBWnQ@mail.gmail.com>
-Message-ID: <CAAFQd5Bcb4A+HAivA-jrczK+OMxwZk3w0GYoh-DU=6gmTZBWnQ@mail.gmail.com>
-Subject: Re: [V9, 2/2] media: i2c: ov02a10: Add OV02A10 image sensor driver
+Date: Fri, 12 Jun 2020 20:49:01 +0200
+X-Gmail-Original-Message-ID: <CAAFQd5CboZ9aFhUyKPES_2oO_AKAOh3Pg8D+9YpfmzJ8v-yFHw@mail.gmail.com>
+Message-ID: <CAAFQd5CboZ9aFhUyKPES_2oO_AKAOh3Pg8D+9YpfmzJ8v-yFHw@mail.gmail.com>
+Subject: Re: [V8, 2/2] media: i2c: ov02a10: Add OV02A10 image sensor driver
 To: Dongchun Zhu <dongchun.zhu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200612_113947_236699_3FC52B18 
-X-CRM114-Status: GOOD (  19.96  )
+X-CRM114-CacheID: sfid-20200612_114917_421030_033867C1 
+X-CRM114-Status: GOOD (  23.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -122,54 +122,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 12, 2020 at 12:49 PM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
+On Fri, Jun 12, 2020 at 11:33 AM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
 >
 > Hi Tomasz,
 >
-> On Wed, 2020-06-10 at 19:44 +0000, Tomasz Figa wrote:
-> > Hi Dongchun,
-> >
-> > On Sat, May 23, 2020 at 04:41:03PM +0800, Dongchun Zhu wrote:
-> > > Add a V4L2 sub-device driver for OV02A10 image sensor.
+> On Wed, 2020-06-10 at 18:36 +0000, Tomasz Figa wrote:
+> > On Sat, May 23, 2020 at 12:50:15PM +0800, Dongchun Zhu wrote:
+> > > Hi Tomasz,
 > > >
-> > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > ---
-> > >  MAINTAINERS                 |    1 +
-> > >  drivers/media/i2c/Kconfig   |   13 +
-> > >  drivers/media/i2c/Makefile  |    1 +
-> > >  drivers/media/i2c/ov02a10.c | 1025 +++++++++++++++++++++++++++++++++++++++++++
-> > >  4 files changed, 1040 insertions(+)
-> > >  create mode 100644 drivers/media/i2c/ov02a10.c
+> > > Thanks for the review. My replies are as below.
+> > >
+> > > On Thu, 2020-05-21 at 19:32 +0000, Tomasz Figa wrote:
+> > > > Hi Dongchun,
+> > > >
+> > > > On Sat, May 09, 2020 at 04:06:27PM +0800, Dongchun Zhu wrote:
+> > [snip]
+> > > > > +{
+> > > > > +       struct i2c_client *client = to_i2c_client(dev);
+> > > > > +       struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> > > > > +       struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > > > > +       int ret;
+> > > > > +
+> > > > > +       gpiod_set_value_cansleep(ov02a10->n_rst_gpio, 0);
+> > > > > +       gpiod_set_value_cansleep(ov02a10->pd_gpio, 0);
+> > > > > +
+> > > > > +       ret = clk_prepare_enable(ov02a10->eclk);
+> > > > > +       if (ret < 0) {
+> > > > > +               dev_err(dev, "failed to enable eclk\n");
+> > > > > +               return ret;
+> > > > > +       }
+> > > > > +
+> > > > > +       ret = regulator_bulk_enable(OV02A10_NUM_SUPPLIES, ov02a10->supplies);
+> > > > > +       if (ret < 0) {
+> > > > > +               dev_err(dev, "failed to enable regulators\n");
+> > > > > +               goto disable_clk;
+> > > > > +       }
+> > > > > +       usleep_range(5000, 6000);
+> > > > > +
+> > > > > +       gpiod_set_value_cansleep(ov02a10->pd_gpio, 1);
+> > > >
+> > > > This is a "powerdown" GPIO. It must be set to 0 if the sensor is to be
+> > > > powered on.
+> > > >
+> > >
+> > > The value set by gpiod_set_value_cansleep() API actually depends upon
+> > > GPIO polarity defined in DT.
+> > > Since I set GPIO_ACTIVE_LOW to powerdown,
+> > > gpiod_set_value_cansleep(gpio_desc, value) would set !value to
+> > > gpio_desc.
+> > > Thus here powerdown would be low-state when sensor is powered on.
+> > > For GPIO polarity, I also post a comment to the binding patch.
 > > >
 > >
-> > Thank you for the patch. Please see my comments inline.
+> > That's true. However, this makes the driver really confusing. If someone
+> > reads this code and compares with the datasheet, it looks incorrect,
+> > because in the datasheet the powerdown GPIO needs to be configured low
+> > for the sensor to operate.
 > >
-> > [snip]
-> > > diff --git a/drivers/media/i2c/ov02a10.c b/drivers/media/i2c/ov02a10.c
-> > > new file mode 100644
-> > > index 0000000..160a0b5
-> > > --- /dev/null
-> > > +++ b/drivers/media/i2c/ov02a10.c
-> > [snip]
-> > > +static const char * const ov02a10_test_pattern_menu[] = {
-> > > +   "Disabled",
-> > > +   "Color Bar",
-> >
-> > nit: We should normalize this to one of the standard names. What is the
-> > pattern on this sensor? Is it perhaps "Eight Vertical Colour Bars"?
+> > I'd recommend defining the binding in a way that makes it clear in the driver code
+> > that it implementes the power sequencing as per the datasheet.
 > >
 >
-> Yes. It is one kind of 'Eight Vertical Colour Bars'.
-> This pattern is called as 'MIPI color bar' per the datasheet.
-> Can we here use 'Vertical Color Bar' or 'MIPI Color Bar'?
+> Uh-huh...
+> But it all depends on how we look at the powerdown GPIO.
+> Or where should we define the active low or active high, the driver or
+> DT?
+>
+> My initial idea is using DT GPIO polarity to describe sensor active
+> polarity according to the datasheet.
+> As an active low shutdown signal is equivalent to an active high enable
+> signal.
 >
 
-We should try to stick to the names as exposed by existing drivers.
-There was an attempt to unify the naming of some Sony sensors some
-time ago [1]. Perhaps one of the names there matches the pattern of
-this sensor?
+Okay, I discussed this offline with Laurent and Sakari and we also
+found the guidelines of the Linux GPIO subsystem on this [1].
 
-[1] https://patchwork.kernel.org/patch/10711777/
+The conclusion is that the pin names in the driver or DT must not
+contain any negation prefixes and the driver needs to care only about
+the logical function of the pin, such as "powerdown" or "reset". In
+case of this driver, we should call the pins "rst" and "pd" and
+setting them to 1 would trigger the reset and power down respectively.
+The physical signal polarity must be configured in DT using the
+polarity flags.
+
+[1] https://www.kernel.org/doc/html/latest/driver-api/gpio/consumer.html#the-active-low-and-open-drain-semantics
 
 Best regards,
 Tomasz
