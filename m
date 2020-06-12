@@ -2,85 +2,136 @@ Return-Path: <SRS0=I3u4=7Z=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 441B7C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 16:01:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A224DC433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 16:23:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 118CC20835
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 16:01:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 71FC8207ED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 16:23:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AhqTvkgf";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ffwll.ch header.i=@ffwll.ch header.b="RmdKYYVA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 118CC20835
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Q+1EzEud";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="GtDn19y6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 71FC8207ED
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:MIME-Version:Message-ID:Date
+	:Subject:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0tY2Ihh/vEz3R5UV7kBGJY3R+h23KSnf2+k7S5BfOTM=; b=AhqTvkgfjRDqsj
-	I1j5e6djQIrf51a3YmFvP4dhOlM9hR2m7FGn6fwp1H6R3wWpjWm6N7PnVIIIFO/4RIl0DRYEvEzHG
-	2E3fKj1E/YnW2vHLptZMNuOg78nN9PDHwE7m5ca2QAp62WGufyLg+ztcyOXnJrjrsrUy4amJ1Ym2v
-	36dBWfPg2TAw0uBRHfSHzFuIL8sR4fAtppI543tgYfvdSdeOLsG9fc0i3aTIE+wWtheenBk/+ZY7/
-	4hVGDxClT1g6oBQ/v1lhdXwEP1+U/3ol4mbIOu3GiDrZ9bTVRNv1IE2yNk3YOBdZSqbGJP9rh4/lb
-	4WPWIzEK0n/5hLJUDYYg==;
+	List-Owner; bh=an9VJChM5CnF7rZihXRWWyqWjAFaJh4XJfruBJUaNds=; b=Q+1EzEud/RFp8E
+	jG3Y93sXRzr+swZBz4KFGRQ0DvlyNA6CwBM421bAzMtPUB32qqH5yo/09n+vkJCbo7ex/nGrXlyr+
+	rYE1dEkcYxTN6mWo0JxPjJkrBMiUPHmp74NRlSWM6I6RdwYqBP63u9XJjJtdsyoKtPd7JW9jfFtgF
+	xrFQIES6f5wkQfq6810mbavfBIUUbMQbuJ5QBd20SWNyGwFhz4Wni3sfqYbBoflCHn8k/D/gOW5GV
+	b8bqCdfTINBHXWkvkZPbD0VmvyCB0i3p/5U9hrVueU7Xt3vQjvFm02pe5LjQgf6tFs/ZTeWPQkN/g
+	NKIamk2OZiIktRIjvMqg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jjm7V-0001kA-CF; Fri, 12 Jun 2020 16:01:29 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1jjmSJ-000610-Ee; Fri, 12 Jun 2020 16:22:59 +0000
+Received: from mailout4.samsung.com ([203.254.224.34])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jjm7A-0001MT-BN
- for linux-mediatek@lists.infradead.org; Fri, 12 Jun 2020 16:01:09 +0000
-Received: by mail-wm1-x342.google.com with SMTP id k26so8768986wmi.4
- for <linux-mediatek@lists.infradead.org>; Fri, 12 Jun 2020 09:01:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=9edpO/0nDjw8MbHtkOLQlTMXtNF/bFvFcs1wCzvqaNE=;
- b=RmdKYYVAB0MwG5SuaGWDL0n378xqj0UKR2ugbyV34AEb89kM51e9b9HRJZ0ikKdBuc
- B9C0JTVT88c3OToaO0mWw/TXYqK9UBckZWDC7aOkCwPdotyoZMBd4oZwoZrBkUuGnZOS
- JYbrXB49RsrMh7/PlWYkJBxYIQzV0K9XbCg+4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=9edpO/0nDjw8MbHtkOLQlTMXtNF/bFvFcs1wCzvqaNE=;
- b=k4IiuP6u0ZXRgWB42HmZgs1Byi8lYqsRBKHXtF36F2ZNY2li74tPoOlAS6U1cDtSol
- Kdn+oEWBu3fJTQNen1KJtsHIOJgK+gQlPjcSoyFvilT2PDb0E5spBuHq2bkm51AxBku1
- /OAKn8fea59wy0ftwFNWKjxVRKzCppccxuYlaanhwIrosLa30GtZXrYi2o34EnxW3FiU
- 3aumV4ED81s/lqR/AdIKhxsiID1rw1d9QMxGZlYKvT8PCg0ZfFlxtdlsSGX7/QC7NBs5
- 9KAzolbHDGhVlIxjx+Qxk2ISi03nFBsnL/SqGBhmW7Ur26vORlV9klED9dcVbJlXpL3P
- 97KQ==
-X-Gm-Message-State: AOAM530ttknG+AuI8ZwSuaj3N1ri+uRpm/BXLq9ppJYUz5Oy+CTtCt3U
- F03GUb6AJrtrZPGQQcnjSZhNKQ==
-X-Google-Smtp-Source: ABdhPJyRA5JCt10uM462WYchlysJDh14QJpSPAUPgz+E7dH/E3C15TB4JYTTvqcYM2l4Duif233pBw==
-X-Received: by 2002:a1c:1f85:: with SMTP id
- f127mr13454795wmf.163.1591977667256; 
- Fri, 12 Jun 2020 09:01:07 -0700 (PDT)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
- by smtp.gmail.com with ESMTPSA id j5sm10801566wrq.39.2020.06.12.09.01.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Jun 2020 09:01:06 -0700 (PDT)
-From: Daniel Vetter <daniel.vetter@ffwll.ch>
-To: DRI Development <dri-devel@lists.freedesktop.org>
-Subject: [PATCH 4/8] drm/mtk: Use __drm_atomic_helper_crtc_reset
-Date: Fri, 12 Jun 2020 18:00:52 +0200
-Message-Id: <20200612160056.2082681-4-daniel.vetter@ffwll.ch>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200612160056.2082681-1-daniel.vetter@ffwll.ch>
-References: <20200612160056.2082681-1-daniel.vetter@ffwll.ch>
+ id 1jjmSG-0005zs-HR
+ for linux-mediatek@lists.infradead.org; Fri, 12 Jun 2020 16:22:58 +0000
+Received: from epcas5p1.samsung.com (unknown [182.195.41.39])
+ by mailout4.samsung.com (KnoxPortal) with ESMTP id
+ 20200612162253epoutp0446f780d5ec1221574de3f53c69de10e7~X2HD5y-JA1531015310epoutp04d
+ for <linux-mediatek@lists.infradead.org>; Fri, 12 Jun 2020 16:22:53 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout4.samsung.com
+ 20200612162253epoutp0446f780d5ec1221574de3f53c69de10e7~X2HD5y-JA1531015310epoutp04d
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1591978973;
+ bh=odVw2pPAyWLK5Z88W0uV7CR8eVQ6niomkBGBqsSTZqA=;
+ h=From:To:Cc:In-Reply-To:Subject:Date:References:From;
+ b=GtDn19y6HmsaNaNrT/PC+2WFlvr6GtJ5LdncDqtRLqicTWEZVBPLFFCtdPAmzId9D
+ +LpUTBjz9qukVI+USpEvBsGnglzVlYPmLyax066zqC+8MpNjyw3T4xFGTqg+EbqNAO
+ 4DNILR68AQgBWguFGMmP8ZqhqOQRiq3h2dUTZz7s=
+Received: from epsmges5p3new.samsung.com (unknown [182.195.42.75]) by
+ epcas5p4.samsung.com (KnoxPortal) with ESMTP id
+ 20200612162252epcas5p4a0b01a59989e95ff9002b927bdbecb7e~X2HDOVABo3159931599epcas5p4q;
+ Fri, 12 Jun 2020 16:22:52 +0000 (GMT)
+Received: from epcas5p2.samsung.com ( [182.195.41.40]) by
+ epsmges5p3new.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 3E.93.09475.CDBA3EE5; Sat, 13 Jun 2020 01:22:52 +0900 (KST)
+Received: from epsmtrp1.samsung.com (unknown [182.195.40.13]) by
+ epcas5p1.samsung.com (KnoxPortal) with ESMTPA id
+ 20200612162251epcas5p17799db495a306a323dc0e1740c8397d0~X2HCYsCZi1956119561epcas5p17;
+ Fri, 12 Jun 2020 16:22:51 +0000 (GMT)
+Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
+ epsmtrp1.samsung.com (KnoxPortal) with ESMTP id
+ 20200612162251epsmtrp1c4f39db4ff9e0fc924aa272f813a0dac~X2HCXzRRN1965319653epsmtrp1g;
+ Fri, 12 Jun 2020 16:22:51 +0000 (GMT)
+X-AuditID: b6c32a4b-389ff70000002503-84-5ee3abdc2a6a
+Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
+ epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 76.E4.08382.BDBA3EE5; Sat, 13 Jun 2020 01:22:51 +0900 (KST)
+Received: from alimakhtar02 (unknown [107.108.234.165]) by
+ epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
+ 20200612162246epsmtip1cef97bb576d7a094db111ff37787dfcb~X2G_Pyzcr3056430564epsmtip1G;
+ Fri, 12 Jun 2020 16:22:46 +0000 (GMT)
+From: "Alim Akhtar" <alim.akhtar@samsung.com>
+To: "'Stanley Chu'" <stanley.chu@mediatek.com>,
+ <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+ <avri.altman@wdc.com>, <jejb@linux.ibm.com>, <asutoshd@codeaurora.org>
+In-Reply-To: <20200612151000.27639-2-stanley.chu@mediatek.com>
+Subject: RE: [PATCH v1 1/2] scsi: ufs: Remove unused field in struct
+ uic_command
+Date: Fri, 12 Jun 2020 21:52:45 +0530
+Message-ID: <002801d640d5$b7ba7430$272f5c90$@samsung.com>
 MIME-Version: 1.0
+X-Mailer: Microsoft Outlook 16.0
+Thread-Index: AQDXcguafoUh6qhsLNKe8uQEpk41JwIvpsOBAO+mpQSqucyfkA==
+Content-Language: en-in
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFnrPKsWRmVeSWpSXmKPExsWy7bCmhu6d1Y/jDHr281icnneV2WJv2wl2
+ i5c/r7JZHHzYyWIx7cNPZotP65exWvw//5vd4tqt+WwWq97sYLNYdGMbk0Xr/1fMFpseX2O1
+ uLxrDpvF5eaLjBbd14Gyy4//Y7JoajG22PrpN6vF0q03GR2EPS5f8fa43NfL5LFz1l12jwmL
+ DjB6bF5S79Fycj+Lx/f1HWweH5/eYvH4vEnOo/1AN1MAVxSXTUpqTmZZapG+XQJXxvF30QUb
+ eCsWt29ga2Cczt3FyMkhIWAi8frCb8YuRi4OIYHdjBIrv/WwQDifGCU2bN4D5XxjlHj3+TU7
+ TMuT5ROgWvYySvz9cRHKecMoMXnPRjaQKjYBXYkdi9vAbBGBbYwSR975ghQxC/xhktjRPAFo
+ LgcHp4CdxOeHSSA1wgJBEm9Pf2IFsVkEVCX6Z7SA9fIKWEpM/nGHCcIWlDg58wkLiM0sIC+x
+ /e0cZoiLFCR+Pl3GCjJSRMBJYlGnCESJuMTRnz3MIGslBKZzSsxpPcICUe8iseTvFlYIW1ji
+ 1fEtUJ9JSbzsb2MHmSMhkC3Rs8sYIlwjsXTeMahWe4kDV+aAXc8soCmxfpc+xCo+id7fT5gg
+ OnklOtqEIKpVJZrfXYXqlJaY2N0NtdRDov/ZOrYJjIqzkPw1C8lfs5A8MAth2QJGllWMkqkF
+ xbnpqcWmBcZ5qeV6xYm5xaV56XrJ+bmbGMFpUst7B+OjBx/0DjEycTAeYpTgYFYS4RUUfxgn
+ xJuSWFmVWpQfX1Sak1p8iFGag0VJnFfpx5k4IYH0xJLU7NTUgtQimCwTB6dUA1Ni4M4W3hfL
+ JwjHyj+4tu4E99QZN66veePXVRdrLMXyVGexRq9m9/Q9925PuHemQil3tvnWs5fW7z+jqF+z
+ tyfdeFPklEfS5Y/e337sllZnP7Xu/0aTNmH+o44ntWTipbee9LDabzW1RXzD0Tohxk6Dsx4e
+ jldF7/X6rNpbspprgRgHX9Xkyr6rYQ8MO3o2zpC96nrsI/eeYsat+/e0b+ednX3nypX3jVbu
+ XaG3r8T2umXpF+pPbDFl/mMYvfDKHs5TawuDv3Uc5ew2sJwsethL1k287+h06U3uNz0utvEZ
+ bT+QuF1mWdL+T8s+7eo0DH9ilLNt6czpmntsThj2VWkbX5TKkTjiLmk9a12j0RUlluKMREMt
+ 5qLiRAAM0mXoAgQAAA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrMIsWRmVeSWpSXmKPExsWy7bCSnO7t1Y/jDD5s5bM4Pe8qs8XethPs
+ Fi9/XmWzOPiwk8Vi2oefzBaf1i9jtfh//je7xbVb89ksVr3ZwWax6MY2JovW/6+YLTY9vsZq
+ cXnXHDaLy80XGS26rwNllx//x2TR1GJssfXTb1aLpVtvMjoIe1y+4u1xua+XyWPnrLvsHhMW
+ HWD02Lyk3qPl5H4Wj+/rO9g8Pj69xeLxeZOcR/uBbqYArigum5TUnMyy1CJ9uwSujOPvogs2
+ 8FYsbt/A1sA4nbuLkZNDQsBE4snyCYxdjFwcQgK7GSWOnl7FCJGQlri+cQI7hC0ssfLfc3aI
+ oleMEisebWIGSbAJ6ErsWNzGBpIQEdjDKPF92X2wKmaBLmaJrwf/sEG0HGSUmNB9F2guBwen
+ gJ3E54dJIN3CAgES83bOAVvHIqAq0T+jhQ3E5hWwlJj84w4ThC0ocXLmExaQVmYBPYm2jWDl
+ zALyEtvfzmGGuE5B4ufTZawgJSICThKLOkUgSsQljv7sYZ7AKDwLyaBZCINmIRk0C0nHAkaW
+ VYySqQXFuem5xYYFhnmp5XrFibnFpXnpesn5uZsYwfGupbmDcfuqD3qHGJk4GA8xSnAwK4nw
+ Coo/jBPiTUmsrEotyo8vKs1JLT7EKM3BoiTOe6NwYZyQQHpiSWp2ampBahFMlomDU6qB6drM
+ MKXSj0euuiocrhfYNlH1Q/2amTPcjZ3T/af0ri1XXOMSOetNUeY0kWWFvh9SWAq8Zj8UNlra
+ NtPWqCNq2bQWG/aJtw77H2w3e+iknXn5cnlt+cMjq3eknHXW1z+mHxTfu3G3DMO6+IlbfxlU
+ 3G09oHj2604/rSD3Wn/u20cYTkUV9LBEXdsnf9VVT+ol8/nZx+XtFA5sv7XBO+z5nZXLN7Q2
+ 3rx5r8s7hutmYri1+j//k7t/26zTWNrpXnxF/SPTh7yerRvu9//dNP9dzpW1UbO3rbryRC0o
+ uCBjVtSkM2+WJ+959iuQ91LeiQ2Sj/KaRG6fORLgvk/yxd69T+60HZglvWzT6eNRMapBYRxK
+ LMUZiYZazEXFiQDOPU4uZgMAAA==
+X-CMS-MailID: 20200612162251epcas5p17799db495a306a323dc0e1740c8397d0
+X-Msg-Generator: CA
+CMS-TYPE: 105P
+X-CMS-RootMailID: 20200612151010epcas5p3f667305eeef2d3ce5c05e0e87482ae7c
+References: <20200612151000.27639-1-stanley.chu@mediatek.com>
+ <CGME20200612151010epcas5p3f667305eeef2d3ce5c05e0e87482ae7c@epcas5p3.samsung.com>
+ <20200612151000.27639-2-stanley.chu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200612_090108_391902_F7AAA032 
-X-CRM114-Status: GOOD (  10.95  )
+X-CRM114-CacheID: sfid-20200612_092256_999555_B7365D89 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,63 +143,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Daniel Vetter <daniel.vetter@ffwll.ch>,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Daniel Vetter <daniel.vetter@intel.com>, linux-arm-kernel@lists.infradead.org
+Cc: bvanassche@acm.org, andy.teng@mediatek.com, cc.chou@mediatek.com,
+ chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, chaotian.jing@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Now also comes with the added benefit of doing a drm_crtc_vblank_off(),
-which means vblank state isn't ill-defined and fail-y at driver load
-before the first modeset on each crtc.
+Hi Stanley
 
-Signed-off-by: Daniel Vetter <daniel.vetter@intel.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
----
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 16 ++++++----------
- 1 file changed, 6 insertions(+), 10 deletions(-)
+> -----Original Message-----
+> From: Stanley Chu <stanley.chu@mediatek.com>
+> Sent: 12 June 2020 20:40
+> To: linux-scsi@vger.kernel.org; martin.petersen@oracle.com;
+> avri.altman@wdc.com; alim.akhtar@samsung.com; jejb@linux.ibm.com;
+> asutoshd@codeaurora.org
+> Cc: beanhuo@micron.com; cang@codeaurora.org; matthias.bgg@gmail.com;
+> bvanassche@acm.org; linux-mediatek@lists.infradead.org; linux-arm-
+> kernel@lists.infradead.org; linux-kernel@vger.kernel.org;
+> kuohong.wang@mediatek.com; peter.wang@mediatek.com; chun-
+> hung.wu@mediatek.com; andy.teng@mediatek.com;
+> chaotian.jing@mediatek.com; cc.chou@mediatek.com; Stanley Chu
+> <stanley.chu@mediatek.com>
+> Subject: [PATCH v1 1/2] scsi: ufs: Remove unused field in struct
+uic_command
+> 
+> Remove unused field "cmd_active" in struct ufs_command.
+> 
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> ---
+Reviewed-by: Alim Akhtar <alim.akhtar@samsung.com>
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index a7dba4ced902..d654c7d514bd 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -112,19 +112,15 @@ static void mtk_drm_crtc_reset(struct drm_crtc *crtc)
- {
- 	struct mtk_crtc_state *state;
- 
--	if (crtc->state) {
-+	if (crtc->state)
- 		__drm_atomic_helper_crtc_destroy_state(crtc->state);
- 
--		state = to_mtk_crtc_state(crtc->state);
--		memset(state, 0, sizeof(*state));
--	} else {
--		state = kzalloc(sizeof(*state), GFP_KERNEL);
--		if (!state)
--			return;
--		crtc->state = &state->base;
--	}
-+	kfree(to_mtk_crtc_state(crtc->state));
-+	crtc->state = NULL;
- 
--	state->base.crtc = crtc;
-+	state = kzalloc(sizeof(*state), GFP_KERNEL);
-+	if (state)
-+		__drm_atomic_helper_crtc_reset(crtc, &state->base);
- }
- 
- static struct drm_crtc_state *mtk_drm_crtc_duplicate_state(struct drm_crtc *crtc)
--- 
-2.26.2
+>  drivers/scsi/ufs/ufshcd.h | 2 --
+>  1 file changed, 2 deletions(-)
+> 
+> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h index
+> bf97d616e597..814e44871ff0 100644
+> --- a/drivers/scsi/ufs/ufshcd.h
+> +++ b/drivers/scsi/ufs/ufshcd.h
+> @@ -88,7 +88,6 @@ enum dev_cmd_type {
+>   * @argument1: UIC command argument 1
+>   * @argument2: UIC command argument 2
+>   * @argument3: UIC command argument 3
+> - * @cmd_active: Indicate if UIC command is outstanding
+>   * @result: UIC command result
+>   * @done: UIC command completion
+>   */
+> @@ -97,7 +96,6 @@ struct uic_command {
+>  	u32 argument1;
+>  	u32 argument2;
+>  	u32 argument3;
+> -	int cmd_active;
+>  	int result;
+>  	struct completion done;
+>  };
+> --
+> 2.18.0
 
 
 _______________________________________________
