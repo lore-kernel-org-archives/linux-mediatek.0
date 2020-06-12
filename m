@@ -2,136 +2,77 @@ Return-Path: <SRS0=I3u4=7Z=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
-	version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A224DC433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 16:23:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A6016C433E1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 18:30:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 71FC8207ED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 16:23:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 77C49207ED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2020 18:30:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Q+1EzEud";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="GtDn19y6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 71FC8207ED
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CsjotWGb";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="HNoytvPz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 77C49207ED
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:MIME-Version:Message-ID:Date
-	:Subject:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=an9VJChM5CnF7rZihXRWWyqWjAFaJh4XJfruBJUaNds=; b=Q+1EzEud/RFp8E
-	jG3Y93sXRzr+swZBz4KFGRQ0DvlyNA6CwBM421bAzMtPUB32qqH5yo/09n+vkJCbo7ex/nGrXlyr+
-	rYE1dEkcYxTN6mWo0JxPjJkrBMiUPHmp74NRlSWM6I6RdwYqBP63u9XJjJtdsyoKtPd7JW9jfFtgF
-	xrFQIES6f5wkQfq6810mbavfBIUUbMQbuJ5QBd20SWNyGwFhz4Wni3sfqYbBoflCHn8k/D/gOW5GV
-	b8bqCdfTINBHXWkvkZPbD0VmvyCB0i3p/5U9hrVueU7Xt3vQjvFm02pe5LjQgf6tFs/ZTeWPQkN/g
-	NKIamk2OZiIktRIjvMqg==;
+	List-Owner; bh=g94iPw6irRI0xTHeQ0YSpp0HrAw1VCsDTHKsaik4O+I=; b=CsjotWGbE6q/CB
+	zqxKzi2DjFrLXogYPZtSV/6z63uaoGpIFa8FWxw9gslAqZNmd1c3O2wn2WKYXy080zWnL/8Dzgcq2
+	MCfUy7OH0LGsaXREqBPJAIcAOOMLCXwP+wp3gOC6NCFzUrk5b10NPnggs1eSwDnM8V7HEA62YsShe
+	t/FlDzazYscmkcTYk5y2ouQAceHZFLYZXz/ctlbb+k2MoP3sbTIyiZeeiDDaZsYJx6zuPaoDUzigk
+	RHEak+HOlRgpo7v6kfknKEjfvfSAI2/bi6ZtrLLhNuKJmxdAFmdZKC6LMCKgGVcFJCtadA8W/i5d+
+	nyyivEYuZyj+X7l3knsQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jjmSJ-000610-Ee; Fri, 12 Jun 2020 16:22:59 +0000
-Received: from mailout4.samsung.com ([203.254.224.34])
+	id 1jjoRg-0001ko-In; Fri, 12 Jun 2020 18:30:28 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jjmSG-0005zs-HR
- for linux-mediatek@lists.infradead.org; Fri, 12 Jun 2020 16:22:58 +0000
-Received: from epcas5p1.samsung.com (unknown [182.195.41.39])
- by mailout4.samsung.com (KnoxPortal) with ESMTP id
- 20200612162253epoutp0446f780d5ec1221574de3f53c69de10e7~X2HD5y-JA1531015310epoutp04d
- for <linux-mediatek@lists.infradead.org>; Fri, 12 Jun 2020 16:22:53 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout4.samsung.com
- 20200612162253epoutp0446f780d5ec1221574de3f53c69de10e7~X2HD5y-JA1531015310epoutp04d
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1591978973;
- bh=odVw2pPAyWLK5Z88W0uV7CR8eVQ6niomkBGBqsSTZqA=;
- h=From:To:Cc:In-Reply-To:Subject:Date:References:From;
- b=GtDn19y6HmsaNaNrT/PC+2WFlvr6GtJ5LdncDqtRLqicTWEZVBPLFFCtdPAmzId9D
- +LpUTBjz9qukVI+USpEvBsGnglzVlYPmLyax066zqC+8MpNjyw3T4xFGTqg+EbqNAO
- 4DNILR68AQgBWguFGMmP8ZqhqOQRiq3h2dUTZz7s=
-Received: from epsmges5p3new.samsung.com (unknown [182.195.42.75]) by
- epcas5p4.samsung.com (KnoxPortal) with ESMTP id
- 20200612162252epcas5p4a0b01a59989e95ff9002b927bdbecb7e~X2HDOVABo3159931599epcas5p4q;
- Fri, 12 Jun 2020 16:22:52 +0000 (GMT)
-Received: from epcas5p2.samsung.com ( [182.195.41.40]) by
- epsmges5p3new.samsung.com (Symantec Messaging Gateway) with SMTP id
- 3E.93.09475.CDBA3EE5; Sat, 13 Jun 2020 01:22:52 +0900 (KST)
-Received: from epsmtrp1.samsung.com (unknown [182.195.40.13]) by
- epcas5p1.samsung.com (KnoxPortal) with ESMTPA id
- 20200612162251epcas5p17799db495a306a323dc0e1740c8397d0~X2HCYsCZi1956119561epcas5p17;
- Fri, 12 Jun 2020 16:22:51 +0000 (GMT)
-Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
- epsmtrp1.samsung.com (KnoxPortal) with ESMTP id
- 20200612162251epsmtrp1c4f39db4ff9e0fc924aa272f813a0dac~X2HCXzRRN1965319653epsmtrp1g;
- Fri, 12 Jun 2020 16:22:51 +0000 (GMT)
-X-AuditID: b6c32a4b-389ff70000002503-84-5ee3abdc2a6a
-Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
- epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
- 76.E4.08382.BDBA3EE5; Sat, 13 Jun 2020 01:22:51 +0900 (KST)
-Received: from alimakhtar02 (unknown [107.108.234.165]) by
- epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20200612162246epsmtip1cef97bb576d7a094db111ff37787dfcb~X2G_Pyzcr3056430564epsmtip1G;
- Fri, 12 Jun 2020 16:22:46 +0000 (GMT)
-From: "Alim Akhtar" <alim.akhtar@samsung.com>
-To: "'Stanley Chu'" <stanley.chu@mediatek.com>,
- <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
- <avri.altman@wdc.com>, <jejb@linux.ibm.com>, <asutoshd@codeaurora.org>
-In-Reply-To: <20200612151000.27639-2-stanley.chu@mediatek.com>
-Subject: RE: [PATCH v1 1/2] scsi: ufs: Remove unused field in struct
- uic_command
-Date: Fri, 12 Jun 2020 21:52:45 +0530
-Message-ID: <002801d640d5$b7ba7430$272f5c90$@samsung.com>
+ id 1jjoRd-0001iy-Kr
+ for linux-mediatek@lists.infradead.org; Fri, 12 Jun 2020 18:30:27 +0000
+X-UUID: f81c41f499bd4b6fb68fe6c6acc020ef-20200612
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=HNrPmQ2IIylNycJMJ0rpK8m8tnlpP8o1gtVTahC34RY=; 
+ b=HNoytvPz6BSDHAZrVbpS3xHTKexsGhvGOQOa+f7jSeOLp+GqOaysdYfokuYQb1eLKnmHQ/X+COJxx5q1pCik9GQ1USaOmjZ8WsbPpZzZmWzh9sEBB2CpoBPX4DW0sLj9ITcaWGLj/jdWu8Gkp52jLw5r6bsGs57ZxDiKNzw4yF4=;
+X-UUID: f81c41f499bd4b6fb68fe6c6acc020ef-20200612
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 537261598; Fri, 12 Jun 2020 10:29:45 -0800
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 12 Jun 2020 11:30:13 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 13 Jun 2020 02:30:14 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sat, 13 Jun 2020 02:30:11 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+Subject: [PATCH v2 3/3] mt76: mt7915: add MU-MIMO support
+Date: Sat, 13 Jun 2020 02:30:10 +0800
+Message-ID: <52232d9b5857dd17e6e11ed4bb81a51e6e8bb757.1591983283.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <2863c9a7e14c791202738597184f4a6b75d5bc07.1591983283.git.ryder.lee@mediatek.com>
+References: <2863c9a7e14c791202738597184f4a6b75d5bc07.1591983283.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-X-Mailer: Microsoft Outlook 16.0
-Thread-Index: AQDXcguafoUh6qhsLNKe8uQEpk41JwIvpsOBAO+mpQSqucyfkA==
-Content-Language: en-in
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFnrPKsWRmVeSWpSXmKPExsWy7bCmhu6d1Y/jDHr281icnneV2WJv2wl2
- i5c/r7JZHHzYyWIx7cNPZotP65exWvw//5vd4tqt+WwWq97sYLNYdGMbk0Xr/1fMFpseX2O1
- uLxrDpvF5eaLjBbd14Gyy4//Y7JoajG22PrpN6vF0q03GR2EPS5f8fa43NfL5LFz1l12jwmL
- DjB6bF5S79Fycj+Lx/f1HWweH5/eYvH4vEnOo/1AN1MAVxSXTUpqTmZZapG+XQJXxvF30QUb
- eCsWt29ga2Cczt3FyMkhIWAi8frCb8YuRi4OIYHdjBIrv/WwQDifGCU2bN4D5XxjlHj3+TU7
- TMuT5ROgWvYySvz9cRHKecMoMXnPRjaQKjYBXYkdi9vAbBGBbYwSR975ghQxC/xhktjRPAFo
- LgcHp4CdxOeHSSA1wgJBEm9Pf2IFsVkEVCX6Z7SA9fIKWEpM/nGHCcIWlDg58wkLiM0sIC+x
- /e0cZoiLFCR+Pl3GCjJSRMBJYlGnCESJuMTRnz3MIGslBKZzSsxpPcICUe8iseTvFlYIW1ji
- 1fEtUJ9JSbzsb2MHmSMhkC3Rs8sYIlwjsXTeMahWe4kDV+aAXc8soCmxfpc+xCo+id7fT5gg
- OnklOtqEIKpVJZrfXYXqlJaY2N0NtdRDov/ZOrYJjIqzkPw1C8lfs5A8MAth2QJGllWMkqkF
- xbnpqcWmBcZ5qeV6xYm5xaV56XrJ+bmbGMFpUst7B+OjBx/0DjEycTAeYpTgYFYS4RUUfxgn
- xJuSWFmVWpQfX1Sak1p8iFGag0VJnFfpx5k4IYH0xJLU7NTUgtQimCwTB6dUA1Ni4M4W3hfL
- JwjHyj+4tu4E99QZN66veePXVRdrLMXyVGexRq9m9/Q9925PuHemQil3tvnWs5fW7z+jqF+z
- tyfdeFPklEfS5Y/e337sllZnP7Xu/0aTNmH+o44ntWTipbee9LDabzW1RXzD0Tohxk6Dsx4e
- jldF7/X6rNpbspprgRgHX9Xkyr6rYQ8MO3o2zpC96nrsI/eeYsat+/e0b+ednX3nypX3jVbu
- XaG3r8T2umXpF+pPbDFl/mMYvfDKHs5TawuDv3Uc5ew2sJwsethL1k287+h06U3uNz0utvEZ
- bT+QuF1mWdL+T8s+7eo0DH9ilLNt6czpmntsThj2VWkbX5TKkTjiLmk9a12j0RUlluKMREMt
- 5qLiRAAM0mXoAgQAAA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrMIsWRmVeSWpSXmKPExsWy7bCSnO7t1Y/jDD5s5bM4Pe8qs8XethPs
- Fi9/XmWzOPiwk8Vi2oefzBaf1i9jtfh//je7xbVb89ksVr3ZwWax6MY2JovW/6+YLTY9vsZq
- cXnXHDaLy80XGS26rwNllx//x2TR1GJssfXTb1aLpVtvMjoIe1y+4u1xua+XyWPnrLvsHhMW
- HWD02Lyk3qPl5H4Wj+/rO9g8Pj69xeLxeZOcR/uBbqYArigum5TUnMyy1CJ9uwSujOPvogs2
- 8FYsbt/A1sA4nbuLkZNDQsBE4snyCYxdjFwcQgK7GSWOnl7FCJGQlri+cQI7hC0ssfLfc3aI
- oleMEisebWIGSbAJ6ErsWNzGBpIQEdjDKPF92X2wKmaBLmaJrwf/sEG0HGSUmNB9F2guBwen
- gJ3E54dJIN3CAgES83bOAVvHIqAq0T+jhQ3E5hWwlJj84w4ThC0ocXLmExaQVmYBPYm2jWDl
- zALyEtvfzmGGuE5B4ufTZawgJSICThKLOkUgSsQljv7sYZ7AKDwLyaBZCINmIRk0C0nHAkaW
- VYySqQXFuem5xYYFhnmp5XrFibnFpXnpesn5uZsYwfGupbmDcfuqD3qHGJk4GA8xSnAwK4nw
- Coo/jBPiTUmsrEotyo8vKs1JLT7EKM3BoiTOe6NwYZyQQHpiSWp2ampBahFMlomDU6qB6drM
- MKXSj0euuiocrhfYNlH1Q/2amTPcjZ3T/af0ri1XXOMSOetNUeY0kWWFvh9SWAq8Zj8UNlra
- NtPWqCNq2bQWG/aJtw77H2w3e+iknXn5cnlt+cMjq3eknHXW1z+mHxTfu3G3DMO6+IlbfxlU
- 3G09oHj2604/rSD3Wn/u20cYTkUV9LBEXdsnf9VVT+ol8/nZx+XtFA5sv7XBO+z5nZXLN7Q2
- 3rx5r8s7hutmYri1+j//k7t/26zTWNrpXnxF/SPTh7yerRvu9//dNP9dzpW1UbO3rbryRC0o
- uCBjVtSkM2+WJ+959iuQ91LeiQ2Sj/KaRG6fORLgvk/yxd69T+60HZglvWzT6eNRMapBYRxK
- LMUZiYZazEXFiQDOPU4uZgMAAA==
-X-CMS-MailID: 20200612162251epcas5p17799db495a306a323dc0e1740c8397d0
-X-Msg-Generator: CA
-CMS-TYPE: 105P
-X-CMS-RootMailID: 20200612151010epcas5p3f667305eeef2d3ce5c05e0e87482ae7c
-References: <20200612151000.27639-1-stanley.chu@mediatek.com>
- <CGME20200612151010epcas5p3f667305eeef2d3ce5c05e0e87482ae7c@epcas5p3.samsung.com>
- <20200612151000.27639-2-stanley.chu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200612_092256_999555_B7365D89 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20200612_113025_685359_591FE87B 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -143,68 +84,232 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: bvanassche@acm.org, andy.teng@mediatek.com, cc.chou@mediatek.com,
- chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, chaotian.jing@mediatek.com,
- linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Cc: linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>,
+ linux-wireless@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Stanley
+Enable MU-MIMO DL/UL and add relative counters in debugfs.
 
-> -----Original Message-----
-> From: Stanley Chu <stanley.chu@mediatek.com>
-> Sent: 12 June 2020 20:40
-> To: linux-scsi@vger.kernel.org; martin.petersen@oracle.com;
-> avri.altman@wdc.com; alim.akhtar@samsung.com; jejb@linux.ibm.com;
-> asutoshd@codeaurora.org
-> Cc: beanhuo@micron.com; cang@codeaurora.org; matthias.bgg@gmail.com;
-> bvanassche@acm.org; linux-mediatek@lists.infradead.org; linux-arm-
-> kernel@lists.infradead.org; linux-kernel@vger.kernel.org;
-> kuohong.wang@mediatek.com; peter.wang@mediatek.com; chun-
-> hung.wu@mediatek.com; andy.teng@mediatek.com;
-> chaotian.jing@mediatek.com; cc.chou@mediatek.com; Stanley Chu
-> <stanley.chu@mediatek.com>
-> Subject: [PATCH v1 1/2] scsi: ufs: Remove unused field in struct
-uic_command
-> 
-> Remove unused field "cmd_active" in struct ufs_command.
-> 
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> ---
-Reviewed-by: Alim Akhtar <alim.akhtar@samsung.com>
+Currently MU modules read WTBL first to notify BA changes to
+other cross modules, so adjust mt7915_mcu_sta_ba() accordingly.
 
->  drivers/scsi/ufs/ufshcd.h | 2 --
->  1 file changed, 2 deletions(-)
-> 
-> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h index
-> bf97d616e597..814e44871ff0 100644
-> --- a/drivers/scsi/ufs/ufshcd.h
-> +++ b/drivers/scsi/ufs/ufshcd.h
-> @@ -88,7 +88,6 @@ enum dev_cmd_type {
->   * @argument1: UIC command argument 1
->   * @argument2: UIC command argument 2
->   * @argument3: UIC command argument 3
-> - * @cmd_active: Indicate if UIC command is outstanding
->   * @result: UIC command result
->   * @done: UIC command completion
->   */
-> @@ -97,7 +96,6 @@ struct uic_command {
->  	u32 argument1;
->  	u32 argument2;
->  	u32 argument3;
-> -	int cmd_active;
->  	int result;
->  	struct completion done;
->  };
-> --
-> 2.18.0
+Tested-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+changes since v2 - move CONFIG_MAC80211_DEBUGFS fixup into patch 0001 
+---
+ .../wireless/mediatek/mt76/mt7915/debugfs.c   |  9 ++-
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 72 ++++++++++++++++++-
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  5 +-
+ .../net/wireless/mediatek/mt76/mt7915/regs.h  |  5 ++
+ 4 files changed, 86 insertions(+), 5 deletions(-)
 
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+index 7e48f56b5b08..38f473d587c9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+@@ -178,7 +178,14 @@ mt7915_txbf_stat_read_phy(struct mt7915_phy *phy, struct seq_file *s)
+ 	seq_printf(s, "Tx Beamformee feedback triggered counts: %ld\n",
+ 		   FIELD_GET(MT_ETBF_TX_FB_TRI, cnt));
+ 
+-	/* Tx SU counters */
++	/* Tx SU & MU counters */
++	cnt = mt76_rr(dev, MT_MIB_SDR34(ext_phy));
++	seq_printf(s, "Tx multi-user Beamforming counts: %ld\n",
++		   FIELD_GET(MT_MIB_MU_BF_TX_CNT, cnt));
++	cnt = mt76_rr(dev, MT_MIB_DR8(ext_phy));
++	seq_printf(s, "Tx multi-user MPDU counts: %d\n", cnt);
++	cnt = mt76_rr(dev, MT_MIB_DR9(ext_phy));
++	seq_printf(s, "Tx multi-user successful MPDU counts: %d\n", cnt);
+ 	cnt = mt76_rr(dev, MT_MIB_DR11(ext_phy));
+ 	seq_printf(s, "Tx single-user successful MPDU counts: %d\n", cnt);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index c8c12c740c1a..3d35332c44bc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -1166,19 +1166,31 @@ mt7915_mcu_sta_ba(struct mt7915_dev *dev,
+ 	struct wtbl_req_hdr *wtbl_hdr;
+ 	struct tlv *sta_wtbl;
+ 	struct sk_buff *skb;
++	int ret;
+ 
+ 	skb = mt7915_mcu_alloc_sta_req(dev, mvif, msta,
+ 				       MT7915_STA_UPDATE_MAX_SIZE);
+ 	if (IS_ERR(skb))
+ 		return PTR_ERR(skb);
+ 
+-	mt7915_mcu_sta_ba_tlv(skb, params, enable, tx);
+ 	sta_wtbl = mt7915_mcu_add_tlv(skb, STA_REC_WTBL, sizeof(struct tlv));
+ 
+ 	wtbl_hdr = mt7915_mcu_alloc_wtbl_req(dev, msta, WTBL_SET, sta_wtbl,
+ 					     &skb);
+ 	mt7915_mcu_wtbl_ba_tlv(skb, params, enable, tx, sta_wtbl, wtbl_hdr);
+ 
++	ret = __mt76_mcu_skb_send_msg(&dev->mt76, skb,
++				      MCU_EXT_CMD_STA_REC_UPDATE, true);
++	if (ret)
++		return ret;
++
++	skb = mt7915_mcu_alloc_sta_req(dev, mvif, msta,
++				       MT7915_STA_UPDATE_MAX_SIZE);
++	if (IS_ERR(skb))
++		return PTR_ERR(skb);
++
++	mt7915_mcu_sta_ba_tlv(skb, params, enable, tx);
++
+ 	return __mt76_mcu_skb_send_msg(&dev->mt76, skb,
+ 				       MCU_EXT_CMD_STA_REC_UPDATE, true);
+ }
+@@ -1466,16 +1478,38 @@ mt7915_mcu_sta_muru_tlv(struct sk_buff *skb, struct ieee80211_sta *sta)
+ 		HE_PHY(CAP2_UL_MU_PARTIAL_MU_MIMO, elem->phy_cap_info[2]);
+ }
+ 
++static int
++mt7915_mcu_add_mu(struct mt7915_dev *dev, struct ieee80211_vif *vif,
++		  struct ieee80211_sta *sta)
++{
++	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
++	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
++	struct sk_buff *skb;
++	int len = sizeof(struct sta_req_hdr) + sizeof(struct sta_rec_muru);
++
++	if (!sta->vht_cap.vht_supported && !sta->he_cap.has_he)
++		return 0;
++
++	skb = mt7915_mcu_alloc_sta_req(dev, mvif, msta, len);
++	if (IS_ERR(skb))
++		return PTR_ERR(skb);
++
++	mt7915_mcu_sta_muru_tlv(skb, sta);
++
++	return __mt76_mcu_skb_send_msg(&dev->mt76, skb,
++				       MCU_EXT_CMD_STA_REC_UPDATE, true);
++}
++
+ static void
+ mt7915_mcu_sta_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
+ 		   struct ieee80211_sta *sta)
+ {
+ 	struct tlv *tlv;
+ 
++	/* starec ht */
+ 	if (sta->ht_cap.ht_supported) {
+ 		struct sta_rec_ht *ht;
+ 
+-		/* starec ht */
+ 		tlv = mt7915_mcu_add_tlv(skb, STA_REC_HT, sizeof(*ht));
+ 		ht = (struct sta_rec_ht *)tlv;
+ 		ht->ht_cap = cpu_to_le16(sta->ht_cap.cap);
+@@ -2064,6 +2098,32 @@ int mt7915_mcu_add_rate_ctrl(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 				       MCU_EXT_CMD_STA_REC_UPDATE, true);
+ }
+ 
++static int
++mt7915_mcu_add_group(struct mt7915_dev *dev, struct ieee80211_vif *vif,
++		     struct ieee80211_sta *sta)
++{
++#define MT_STA_BSS_GROUP		1
++	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
++	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
++	struct {
++		__le32 action;
++		u8 wlan_idx_lo;
++		u8 status;
++		u8 wlan_idx_hi;
++		u8 rsv0[5];
++		__le32 val;
++		u8 rsv1[8];
++	} __packed req = {
++		.action = cpu_to_le32(MT_STA_BSS_GROUP),
++		.wlan_idx_lo = to_wcid_lo(msta->wcid.idx),
++		.wlan_idx_hi = to_wcid_hi(msta->wcid.idx),
++		.val = cpu_to_le32(mvif->idx),
++	};
++
++	return __mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_SET_DRR_CTRL,
++				   &req, sizeof(req), true);
++}
++
+ int mt7915_mcu_add_sta_adv(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 			   struct ieee80211_sta *sta, bool enable)
+ {
+@@ -2073,10 +2133,18 @@ int mt7915_mcu_add_sta_adv(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 		return 0;
+ 
+ 	/* must keep the order */
++	ret = mt7915_mcu_add_group(dev, vif, sta);
++	if (ret)
++		return ret;
++
+ 	ret = mt7915_mcu_add_txbf(dev, vif, sta, enable);
+ 	if (ret)
+ 		return ret;
+ 
++	ret = mt7915_mcu_add_mu(dev, vif, sta);
++	if (ret)
++		return ret;
++
+ 	if (enable)
+ 		return mt7915_mcu_add_rate_ctrl(dev, vif, sta);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index c241dd7c4c36..981dd3fcdb41 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -201,6 +201,7 @@ enum {
+ 	MCU_EXT_CMD_EDCA_UPDATE = 0x27,
+ 	MCU_EXT_CMD_DEV_INFO_UPDATE = 0x2A,
+ 	MCU_EXT_CMD_THERMAL_CTRL = 0x2c,
++	MCU_EXT_CMD_SET_DRR_CTRL = 0x36,
+ 	MCU_EXT_CMD_SET_RDD_CTRL = 0x3a,
+ 	MCU_EXT_CMD_PROTECT_CTRL = 0x3e,
+ 	MCU_EXT_CMD_MAC_INIT_CTRL = 0x46,
+@@ -653,7 +654,7 @@ struct sta_rec_muru {
+ 		bool ofdma_ul_en;
+ 		bool mimo_dl_en;
+ 		bool mimo_ul_en;
+-		bool rsv[4];
++		u8 rsv[4];
+ 	} cfg;
+ 
+ 	struct {
+@@ -664,7 +665,7 @@ struct sta_rec_muru {
+ 		bool lt16_sigb;
+ 		bool rx_su_comp_sigb;
+ 		bool rx_su_non_comp_sigb;
+-		bool rsv;
++		u8 rsv;
+ 	} ofdma_dl;
+ 
+ 	struct {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+index c121715f8bff..e0989141d9da 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+@@ -117,11 +117,16 @@
+ #define MT_MIB_SDR16(_band)		MT_WF_MIB(_band, 0x048)
+ #define MT_MIB_SDR16_BUSY_MASK		GENMASK(23, 0)
+ 
++#define MT_MIB_SDR34(_band)		MT_WF_MIB(_band, 0x090)
++#define MT_MIB_MU_BF_TX_CNT		GENMASK(15, 0)
++
+ #define MT_MIB_SDR36(_band)		MT_WF_MIB(_band, 0x098)
+ #define MT_MIB_SDR36_TXTIME_MASK	GENMASK(23, 0)
+ #define MT_MIB_SDR37(_band)		MT_WF_MIB(_band, 0x09c)
+ #define MT_MIB_SDR37_RXTIME_MASK	GENMASK(23, 0)
+ 
++#define MT_MIB_DR8(_band)		MT_WF_MIB(_band, 0x0c0)
++#define MT_MIB_DR9(_band)		MT_WF_MIB(_band, 0x0c4)
+ #define MT_MIB_DR11(_band)		MT_WF_MIB(_band, 0x0cc)
+ 
+ #define MT_MIB_MB_SDR0(_band, n)	MT_WF_MIB(_band, 0x100 + ((n) << 4))
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
