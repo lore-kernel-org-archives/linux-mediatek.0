@@ -2,80 +2,136 @@ Return-Path: <SRS0=Y4ok=73=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9F819C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2020 07:41:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 69604C433DF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2020 09:28:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 701A22065C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2020 07:41:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2998520714
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2020 09:28:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RcrlTDWq";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GlnnGfUC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 701A22065C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bJr3KYdX";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="UGd4VWpB";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="kwEywh7w"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2998520714
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vas9oyEY2rfDHsHW6brJqYhApQjj31F6WQyNFMpw7TU=; b=RcrlTDWqBK46Gn
-	sWcZTN57k9F7l+ZJMeT6usjFBBL6eOU3tOe0JeEZYsi5Y8ZQeyO/ZP2OLnMi1Gkg8KTgebNl1Q4zj
-	OGde9GxvSTE08sCET4Kst4AYjPQQGHEfRQqs9RYgXIRtyLyUXiTY1Y0JhXNxO+s9iBIJuY70UvIb3
-	3RsJsV2nHY5FgBUREdk/o2y3lmZtOKfF4iyYaZyaOJwoGWgvhTw/3oDFLeNkB1ynm/VuUHkYy/cz9
-	bwP0s6iEwIanjxE+Yq6bVXQGHmQKTgU3nd0dFTDQf1AUeE/kiGmq2UuqgTDzyey3vN30OD5FFhD4l
-	uPOTNQMqLwwjEOAy8a2Q==;
+	List-Owner; bh=9Xa5qkhJjccNNjvydsADq+tHRtlLcggQmejOUDTPv14=; b=bJr3KYdXFL0+iZ
+	+AnNOm5QRPQbnHuQKDGoNIe+DjnSIdgoaEKd+55Nf4udva/l5OmepQLBn4rCwOXsLIFKB+orNENwL
+	pys3v4zggsYed3hKx+dkjxOjAVp+tr1kSD+ahqD3WamHagpUEKZj5Mnxmn9bAvbs9Sd9MXqY+w6g4
+	eKQ7YsVRV4feoxfLwlChRDC/ccXGHyA6b46VFqtMHDHYEAPH0rO8uoyO2ma/gmTocya8brK9Huc+J
+	zB7DleTVAtTu1CMEQTpjYUdSdBmFhbKhnk8kFb2SOCJe4pQioFHai1NUhbNKRCenu8pQw1rsfvyzv
+	dbYiqqMQ6l5Ko8mpzMZA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jkNGB-0002FW-S3; Sun, 14 Jun 2020 07:40:55 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jkOvy-0001zl-Dl; Sun, 14 Jun 2020 09:28:10 +0000
+Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jkNG8-0002Dn-Et; Sun, 14 Jun 2020 07:40:54 +0000
-X-UUID: 04fd1514845b4953bb8a464efb952011-20200613
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=e/fnKiWEhhBmP/WoWCXqaRZNRzty2IMoerF/NXm8x7s=; 
- b=GlnnGfUCnRShor8PUtWiV3Ocr39MUh+aO348c9psrGJmHQTKx4YI4yHqB6A9b0pxvb8dC1tjS5vCfDnWqCy4ZRs/NZEZL4b3jHel4kYPYQ/CZzL/h6VpOFEwIXLYV7I4FeObKx/wl9uNON0OVYkAB+gshlTqXWRsHMDposjritE=;
-X-UUID: 04fd1514845b4953bb8a464efb952011-20200613
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jitao.shi@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 219158103; Sat, 13 Jun 2020 23:40:38 -0800
-Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 14 Jun 2020 00:30:43 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS33N2.mediatek.inc
- (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sun, 14 Jun 2020 15:30:39 +0800
-Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
- MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Sun, 14 Jun 2020 15:30:37 +0800
-From: Jitao Shi <jitao.shi@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH v16 1/1] dt-bindings: display: mediatek: convert the dpi
- bindings to yaml
-Date: Sun, 14 Jun 2020 15:30:36 +0800
-Message-ID: <20200614073036.63969-2-jitao.shi@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200614073036.63969-1-jitao.shi@mediatek.com>
-References: <20200614073036.63969-1-jitao.shi@mediatek.com>
+ id 1jkOvt-0001yi-GB; Sun, 14 Jun 2020 09:28:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1592126886; x=1623662886;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=R7F3+MRenkRoRSgH5UZ+VI9Ec5NSXcKN4+S/nRJG+fw=;
+ b=UGd4VWpB36R2BmA8+uGc7K77U6nIAZD0fAHmwaOQHOMcww3ARqHaqHF6
+ MEgYUV6rDk3ns1QBPi2YmHdtlgg9/4iTxYWfo7tnd2QMYO5GyKiIElxO2
+ kx3z26pRBqAIU9nZhEBNZxhOQjuuYJf0Foy81XPvKWrYpV6/O+9mZhR5z
+ hQJQslL3T8oN5LpPfZiNRLKw8JKh3pO+Y+eXzK2AScS48wJshIlhm0rh7
+ WzCTI8d63mMpzAYko1XhuqyJ4Bq7EgiuNUlnU3wOpQka/G5cZAsF10xHP
+ Hrec3KyEFmvQuUvLPWIL6w/D+Mu2wd25TTQ/qElygCtjX+04B7sev4SnD g==;
+IronPort-SDR: pD2W7HXR04kSB4hI4O+JtkQoriWPUTm8WiCK6YnE4ADDWpfj/ilZEclk4Nnd7QtvAwcylLGawv
+ abEicRnEjGCjXt6MAbEnr70OeCtcdl97DDZvozl2xmN1JI9xf0m57b8hQR/vYRjzvXVbmHHhkF
+ fphcscOJkQj8TJmE65g6HNJ5K80IlgdXel5dcEwvm1DqKktynJMz1xQRT8CIBosWmvfTmq9nlc
+ A7UuCj+X+ffjAHU3SOpuUhP9YKlf/tT4HsKjL9wdL0XWJeArDMT/gbRFdJiyDyHTQonlnGKUHl
+ eRY=
+X-IronPort-AV: E=Sophos;i="5.73,510,1583164800"; d="scan'208";a="144270625"
+Received: from mail-dm6nam11lp2170.outbound.protection.outlook.com (HELO
+ NAM11-DM6-obe.outbound.protection.outlook.com) ([104.47.57.170])
+ by ob1.hgst.iphmx.com with ESMTP; 14 Jun 2020 17:27:58 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=j/eMOr3aLv7HvtXHaFiQd50m0O1FngJgZ2kMlIFe5s4keq6f9/ccJPBXW9H9CaTm1AcQq+XLODqiL69nNMeU/n4qeZOw1nMqFSVdz6P6DSZipn/FaPuNq3QTzLUYJLFSU+Hr+FsLuMO3rTtSBnaEaBHSlvVZaMW8GaEd4C0N7M4g5wSKlRJ/miHYqEugT9n0mIO7RROQF3y7QDensQ1ruvIMyEXOcmZrmGjrtCVU4BxtW7Sdc5K0H8+cuLmW5ZnAkSIq3UnrqwyAxkb2jAKf2jRZ4dk2gBDyRFPaWtU1BwEL2ijIb+XYE4pA67obhglQZdMMr15EyNPH12qrlZjfAw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=R7F3+MRenkRoRSgH5UZ+VI9Ec5NSXcKN4+S/nRJG+fw=;
+ b=GBBYalNzc7xrU8tMX+8/Z67fhvHVBpkx9CChQtIJmg0c7phTjmaF4bgGRjJpXYuMuF3eUT5OgO5tT1+6MJj66lC0LsEaDmAqumcVBZxcRsteuUg31TQoiF30GytucMrBl33KZpDnm8DGJhfhM9q6ISaSrECQ1485jbIM5hxQ2BGjxU7h86ceXwuEclIAA3EQZtjmGEjBT5cI3ZmZEKJLFKzuyGMErNHRJ27Br3RLnW7BRsiXDclUX+mMTBdipPyIud4FvvBr/D+AqhKLZyLDyapICaUhpUma++Fn/iXPQ/UZepCg/rDkuaUet5rLEoCtDgsoHyHP1JmS+5ey8MFgtA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=R7F3+MRenkRoRSgH5UZ+VI9Ec5NSXcKN4+S/nRJG+fw=;
+ b=kwEywh7wGBQrMIdCMndIshrYZVuibUxAWyEFnX4o7eLDCGVkdfW4Yl1ki9LUJRgJzx4nKUoAC7ANqEY19ZfTb3UXAohyvVrKYqQWcVQ9X6ei4I8e2Az5TmybpPtdgTGUTjYgKXadrQjzaaRY9cAyiT30VCJd2A2JKUhrQyDS50I=
+Received: from SN6PR04MB4640.namprd04.prod.outlook.com (2603:10b6:805:a4::19)
+ by SN2PR04MB2174.namprd04.prod.outlook.com (2603:10b6:804:10::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3088.18; Sun, 14 Jun
+ 2020 09:27:54 +0000
+Received: from SN6PR04MB4640.namprd04.prod.outlook.com
+ ([fe80::9cbe:995f:c25f:d288]) by SN6PR04MB4640.namprd04.prod.outlook.com
+ ([fe80::9cbe:995f:c25f:d288%6]) with mapi id 15.20.3088.028; Sun, 14 Jun 2020
+ 09:27:54 +0000
+From: Avri Altman <Avri.Altman@wdc.com>
+To: Stanley Chu <stanley.chu@mediatek.com>
+Subject: RE: [PATCH v1 2/2] scsi: ufs: Add trace event for UIC commands
+Thread-Topic: [PATCH v1 2/2] scsi: ufs: Add trace event for UIC commands
+Thread-Index: AQHWQMuVYKwzY3Iyf0mpsLlh28O4SKjWW/nQgAA9dgCAAUDwkA==
+Date: Sun, 14 Jun 2020 09:27:54 +0000
+Message-ID: <SN6PR04MB46403686B1E4AD37B8E9C178FC9F0@SN6PR04MB4640.namprd04.prod.outlook.com>
+References: <20200612151000.27639-1-stanley.chu@mediatek.com>
+ <20200612151000.27639-3-stanley.chu@mediatek.com>
+ <SN6PR04MB4640968DCD865651AFA8925DFC9E0@SN6PR04MB4640.namprd04.prod.outlook.com>
+ <1592057910.25636.81.camel@mtkswgap22>
+In-Reply-To: <1592057910.25636.81.camel@mtkswgap22>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mediatek.com; dkim=none (message not signed)
+ header.d=none;mediatek.com; dmarc=none action=none header.from=wdc.com;
+x-originating-ip: [212.25.79.133]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: eb02fcb1-d733-412f-b1ef-08d810453796
+x-ms-traffictypediagnostic: SN2PR04MB2174:
+x-microsoft-antispam-prvs: <SN2PR04MB217493B045F892F4F189D6E2FC9F0@SN2PR04MB2174.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:7691;
+x-forefront-prvs: 04347F8039
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: V45XYchI3GVVZW1zMftveKYgYsUbXKmWf6bvj8XFOIoPSVrAYpU3xYaTW06wCqq/14bIhcPztFFkQW6uBEBzSNO6zJ5pswLZzgXMxqaxIc1y6/1TeKWZItcdzHECorp4Lxs2sR+/4K8MlJAzGenO7fIOlsvPBxnaIlwuYIm1Qp2fpfvWGO6Pbh5dNjOMBvor+dPxf7iUmUvRwmOPZDXcwpxatgV8myeYrLp3Z+ytikcc+l30RzTx07+ZTKuiqYSzmVwkdXk2d/vhWj0iFJBfXdGtxWvvv8df7827avnrTur4YuUO2UKngPTto9VI1ZMTO9eNM4mw6L2B22EQmYVe1Q==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR04MB4640.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(136003)(39860400002)(366004)(396003)(376002)(346002)(26005)(54906003)(316002)(186003)(2906002)(8936002)(52536014)(7696005)(5660300002)(6506007)(478600001)(9686003)(55016002)(33656002)(86362001)(66556008)(64756008)(66446008)(66946007)(7416002)(66476007)(83380400001)(71200400001)(6916009)(8676002)(4326008)(76116006);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: 8M94q/XdN5lKbRhrssP94m1p+ODWMH2QqyLi7v5F8UpTE+hwHeygEgiFepaYzuQPsd142pIzz8isLO5BCGx+l33n3OYgjU5S/DMu/r1RWOwSED/7hq09RoVGkByAJQIS2Jo7COTf0BhnZFkvyNaAT9UdHHDPKSkbARytFVY+5NNFAq3zpOHUP6peczjDinIugQK5c/WDAYhc+57lMVPAmftRK4mqr2aucncEH/OhsnaiebtQFJw11Ezrm+JL+OPs9DywCNB7pIaB5oY72aC/reMuk++BHQyM+QMEpzJq/uWgeIPUpW7z7m0GXFod9OW4tNROIBoYa/p68Ntf6xAFtJMAbmHFc1faY0O3twJTw8wcIQU/fe1AbKKgg5cxrC9k3jmkjDa5kNfD2cGbLTCt/9p/zbpaMWIZOYXkYyME4/H3FdIIUwwzGnPlkblY0vLFKAwAVG1q9JgIhhI2DRQmrzd5xX9nZIUWm66KwNeD+io=
+x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: AA96696364F2BE81C37DAD2F204532E661983BE1432B46C4D2579589E3E271E82000:8
-X-MTK: N
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: eb02fcb1-d733-412f-b1ef-08d810453796
+X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Jun 2020 09:27:54.2956 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ikbCQm3osS2SSNYGGamYfSgTX2mstnmVesHgqfhNJk5tZGMbq8PVGwiglyhp8j9qk+PPESMq5Mq3XBQjg8FojA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN2PR04MB2174
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200614_004052_508462_A2CE7096 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20200614_022805_604474_E9A08B64 
+X-CRM114-Status: GOOD (  25.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,180 +143,201 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>,
- srv_heupstream@mediatek.com, huijuan.xie@mediatek.com, stonea168@163.com,
- cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org,
- bibby.hsieh@mediatek.com, ck.hu@mediatek.com, yingjoe.chen@mediatek.com,
- eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
+Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+ "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
+ "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "cc.chou@mediatek.com" <cc.chou@mediatek.com>,
+ "cang@codeaurora.org" <cang@codeaurora.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>,
+ "chaotian.jing@mediatek.com" <chaotian.jing@mediatek.com>,
+ "bvanassche@acm.org" <bvanassche@acm.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "beanhuo@micron.com" <beanhuo@micron.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert display/mediatek/mediatek,dpi.txt to display/mediatek/mediatek,dpi.yaml
-and remove the old text bindings.
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
----
- .../display/mediatek/mediatek,dpi.txt         | 42 --------
- .../display/mediatek/mediatek,dpi.yaml        | 97 +++++++++++++++++++
- 2 files changed, 97 insertions(+), 42 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+Acked-by: Avri Altman <avri.altman@wdc.com>
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
-deleted file mode 100644
-index 77def4456706..000000000000
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
-+++ /dev/null
-@@ -1,42 +0,0 @@
--Mediatek DPI Device
--===================
--
--The Mediatek DPI function block is a sink of the display subsystem and
--provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422 pixel data on a parallel
--output bus.
--
--Required properties:
--- compatible: "mediatek,<chip>-dpi"
--  the supported chips are mt2701 , mt8173 and mt8183.
--- reg: Physical base address and length of the controller's registers
--- interrupts: The interrupt signal from the function block.
--- clocks: device clocks
--  See Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
--- clock-names: must contain "pixel", "engine", and "pll"
--- port: Output port node with endpoint definitions as described in
--  Documentation/devicetree/bindings/graph.txt. This port should be connected
--  to the input port of an attached HDMI or LVDS encoder chip.
--
--Optional properties:
--- pinctrl-names: Contain "default" and "sleep".
--
--Example:
--
--dpi0: dpi@1401d000 {
--	compatible = "mediatek,mt8173-dpi";
--	reg = <0 0x1401d000 0 0x1000>;
--	interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
--	clocks = <&mmsys CLK_MM_DPI_PIXEL>,
--		 <&mmsys CLK_MM_DPI_ENGINE>,
--		 <&apmixedsys CLK_APMIXED_TVDPLL>;
--	clock-names = "pixel", "engine", "pll";
--	pinctrl-names = "default", "sleep";
--	pinctrl-0 = <&dpi_pin_func>;
--	pinctrl-1 = <&dpi_pin_idle>;
--
--	port {
--		dpi0_out: endpoint {
--			remote-endpoint = <&hdmi0_in>;
--		};
--	};
--};
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-new file mode 100644
-index 000000000000..860b719b5dc9
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-@@ -0,0 +1,97 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: mediatek DPI Controller Device Tree Bindings
-+
-+maintainers:
-+  - CK Hu <ck.hu@mediatek.com>
-+  - Jitao shi <jitao.shi@mediatek.com>
-+
-+description: |
-+  The Mediatek DPI function block is a sink of the display subsystem and
-+  provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422 pixel data on a parallel
-+  output bus.
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt2701-dpi
-+      - mediatek,mt8173-dpi
-+      - mediatek,mt8183-dpi
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: Pixel Clock
-+      - description: Engine Clock
-+      - description: DPI PLL
-+
-+  clock-names:
-+    items:
-+      - const: pixel
-+      - const: engine
-+      - const: pll
-+
-+  pinctrl-0: true
-+  pinctrl-1: true
-+
-+  pinctrl-names:
-+    items:
-+      - const: default
-+      - const: sleep
-+
-+  port:
-+    type: object
-+    description:
-+      Output port node with endpoint definitions as described in
-+      Documentation/devicetree/bindings/graph.txt. This port should be connected
-+      to the input port of an attached HDMI or LVDS encoder chip.
-+
-+    properties:
-+      endpoint:
-+        type: object
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - clocks
-+  - clock-names
-+  - port
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/clock/mt8173-clk.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    dpi0: dpi@1401d000 {
-+        compatible = "mediatek,mt8173-dpi";
-+        reg = <0 0x1401d000 0 0x1000>;
-+        interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
-+        clocks = <&mmsys CLK_MM_DPI_PIXEL>,
-+             <&mmsys CLK_MM_DPI_ENGINE>,
-+             <&apmixedsys CLK_APMIXED_TVDPLL>;
-+        clock-names = "pixel", "engine", "pll";
-+        pinctrl-names = "default", "sleep";
-+        pinctrl-0 = <&dpi_pin_func>;
-+        pinctrl-1 = <&dpi_pin_idle>;
-+
-+        port {
-+            dpi0_out: endpoint {
-+                remote-endpoint = <&hdmi0_in>;
-+            };
-+        };
-+    };
-+
-+...
--- 
-2.25.1
+> 
+> 
+> Hi Avri,
+> 
+> On Sat, 2020-06-13 at 10:48 +0000, Avri Altman wrote:
+> > > +static void ufshcd_add_uic_command_trace(struct ufs_hba *hba,
+> > > +                                        struct uic_command *ucmd,
+> > > +                                        const char *str)
+> > > +{
+> > > +       u32 cmd;
+> > > +
+> > > +       if (!trace_ufshcd_uic_command_enabled())
+> > > +               return;
+> > > +
+> > > +       if (!strcmp(str, "uic_send"))
+> > > +               cmd = ucmd->command;
+> > > +       else
+> > > +               cmd = ufshcd_readl(hba, REG_UIC_COMMAND);
+> > Why on complete you can't just use ucmd->command as well?
+> 
+> Reading registers is really helpful for debugging to check if host UIC
+> command register really received the command before.
+> 
+> But the original requesting UIC command shall be logged in trace so
+> ucmd->command is logged during "send", and the command in register is
+> read and logged during "completed". Then we could simply check them to
+> know if something wrong while sending the command.
+> 
+> This concept is similar as current UTP command trace events that
+> doorbell register is read and dumped in the trace.
+> 
+> >
+> > > +
+> > > +       trace_ufshcd_uic_command(dev_name(hba->dev), str, cmd,
+> > > +                                ucmd->result,
+> > > +                                ufshcd_readl(hba, REG_UIC_COMMAND_ARG_1),
+> > > +                                ufshcd_readl(hba, REG_UIC_COMMAND_ARG_2),
+> > > +                                ufshcd_readl(hba, REG_UIC_COMMAND_ARG_3));
+> > Why can't you just use the ucmd members?
+> > Why need to read those?
+> 
+> As above same reason, reading registers can know which arguments are
+> exactly sent to the device.
+> 
+> This is very helpful for fast issue breakdown if UIC command is not
+> responded under expectation.
+> 
+> Here, we also really want to keep the original requesting arguments from
+> "ucmd", just like UIC command. However, arguments in register will be
+> changed after UIC command is done so we can not do the same way as UIC
+> command. So a compromise is here that we logged the arguments which host
+> register exactly received in trace.
+> 
+> >
+> > > +}
+> >
+> >
+> > > +
+> > >  static void ufshcd_add_command_trace(struct ufs_hba *hba,
+> > >                 unsigned int tag, const char *str)
+> > >  {
+> > > @@ -2054,6 +2075,8 @@ ufshcd_dispatch_uic_cmd(struct ufs_hba *hba,
+> > > struct uic_command *uic_cmd)
+> > >         /* Write UIC Cmd */
+> > >         ufshcd_writel(hba, uic_cmd->command &
+> COMMAND_OPCODE_MASK,
+> > >                       REG_UIC_COMMAND);
+> > > +
+> > > +       ufshcd_add_uic_command_trace(hba, uic_cmd, "uic_send");
+> > >  }
+> > >
+> > >  /**
+> > > @@ -2080,6 +2103,9 @@ ufshcd_wait_for_uic_cmd(struct ufs_hba *hba,
+> > > struct uic_command *uic_cmd)
+> > >         hba->active_uic_cmd = NULL;
+> > >         spin_unlock_irqrestore(hba->host->host_lock, flags);
+> > >
+> > > +       uic_cmd->result = ret;
+> > > +       ufshcd_add_uic_command_trace(hba, uic_cmd, "uic_complete");
+> > > +
+> > >         return ret;
+> > >  }
+> > Can't you just call the "send" and "complete" from ufshcd_send_uic_cmd?
+> 
+> For "send", we would like to log the time as precise as possible so
+> "send" event is logged while UIC command is sent.
+> 
+> Thanks so much! Your question reminds me that "send" trace shall be
+> moved before UIC command is sent otherwise register value may be changed
+> before logging "send" trace. I will fix this in next version.
+> 
+> For "completed", to make logging time as closed to UIC command
+> completion as possible, maybe I need to change the logging timing to
+> ufshcd_uic_cmd_compl(), just like UTP command completion trace which is
+> logged in __ufshcd_transfer_reg_compl().
+> 
+> If you have no objection, I will try to fix this in next version.
+> 
+> >
+> >
+> > >
+> > > @@ -3760,6 +3786,9 @@ static int ufshcd_uic_pwr_ctrl(struct ufs_hba
+> *hba,
+> > > struct uic_command *cmd)
+> > >                 ret = (status != PWR_OK) ? status : -1;
+> > >         }
+> > >  out:
+> > > +       cmd->result = ret;
+> > > +       ufshcd_add_uic_command_trace(hba, cmd, "uic_complete");
+> > > +
+> > >         if (ret) {
+> > >                 ufshcd_print_host_state(hba);
+> > >                 ufshcd_print_pwr_info(hba);
+> > > diff --git a/include/trace/events/ufs.h b/include/trace/events/ufs.h
+> > > index 5f300739240d..cf8d568d5a13 100644
+> > > --- a/include/trace/events/ufs.h
+> > > +++ b/include/trace/events/ufs.h
+> > > @@ -249,6 +249,39 @@ TRACE_EVENT(ufshcd_command,
+> > >         )
+> > >  );
+> > >
+> > > +TRACE_EVENT(ufshcd_uic_command,
+> > > +       TP_PROTO(const char *dev_name, const char *str, u32 cmd, int
+> result,
+> > > +                u32 arg1, u32 arg2, u32 arg3),
+> > > +
+> > > +       TP_ARGS(dev_name, str, cmd, result, arg1, arg2, arg3),
+> > > +
+> > > +       TP_STRUCT__entry(
+> > > +               __string(dev_name, dev_name)
+> > > +               __string(str, str)
+> > > +               __field(u32, cmd)
+> > > +               __field(int, result)
+> > > +               __field(u32, arg1)
+> > > +               __field(u32, arg2)
+> > > +               __field(u32, arg3)
+> > > +       ),
+> > > +
+> > > +       TP_fast_assign(
+> > > +               __assign_str(dev_name, dev_name);
+> > > +               __assign_str(str, str);
+> > > +               __entry->cmd = cmd;
+> > > +               __entry->result = result;
+> > > +               __entry->arg1 = arg1;
+> > > +               __entry->arg2 = arg2;
+> > > +               __entry->arg3 = arg3;
+> > > +       ),
+> > > +
+> > > +       TP_printk(
+> > > +               "%s: %s: cmd: 0x%x, arg1: 0x%x, arg2: 0x%x, arg3: 0x%x, result:
+> %d",
+> > > +               __get_str(str), __get_str(dev_name), __entry->cmd,
+> > > +               __entry->arg1, __entry->arg2, __entry->arg3, __entry->result
+> > > +       )
+> > Personally, as those trace events aren't very human readable anyway, I
+> would just dump the uic command,
+> > And let the parsers do their job.
+> > And if this is the case, result is redundant as it is part of arg2
+> 
+> My original thought is to log some exceptions, like "-ETIMEDOUT" in
+> "result". But if I changed "completion" trace handling to interrupt
+> handler, there will be no chance to log those exceptions. This is OK
+> because UTP trace is exactly behave this way: No completion event in
+> trace if request is not back. And if this way is implemented, "result"
+> is definitely redundant and shall be removed.
+> 
+> Thanks,
+> Stanley Chu
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
