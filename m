@@ -2,136 +2,78 @@ Return-Path: <SRS0=Y4ok=73=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 69604C433DF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2020 09:28:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 83708C433DF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2020 18:23:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2998520714
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2020 09:28:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 55F77206D7
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2020 18:23:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bJr3KYdX";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="UGd4VWpB";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="kwEywh7w"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2998520714
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kdr8+qz0";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="HD53O49V"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55F77206D7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9Xa5qkhJjccNNjvydsADq+tHRtlLcggQmejOUDTPv14=; b=bJr3KYdXFL0+iZ
-	+AnNOm5QRPQbnHuQKDGoNIe+DjnSIdgoaEKd+55Nf4udva/l5OmepQLBn4rCwOXsLIFKB+orNENwL
-	pys3v4zggsYed3hKx+dkjxOjAVp+tr1kSD+ahqD3WamHagpUEKZj5Mnxmn9bAvbs9Sd9MXqY+w6g4
-	eKQ7YsVRV4feoxfLwlChRDC/ccXGHyA6b46VFqtMHDHYEAPH0rO8uoyO2ma/gmTocya8brK9Huc+J
-	zB7DleTVAtTu1CMEQTpjYUdSdBmFhbKhnk8kFb2SOCJe4pQioFHai1NUhbNKRCenu8pQw1rsfvyzv
-	dbYiqqMQ6l5Ko8mpzMZA==;
+	List-Owner; bh=/+PwQJLzgZdtLIK8lqtpTx7p6vn+/Jga1hSHlAAef+0=; b=kdr8+qz0ThijIP
+	UUBlsxc6uG//VKARbOgKji4h3Y1VGUo42X7+A1kzLC0olSLKWCh9dDnmrkrGQCf3kZtOZQggdZaVR
+	sP6Dh1FnYsTtVHmuu5iMz8pYdnXeAdwwbSGgR0mAkccAK1cgI2Rcu7Epu1V+YMe9OX6TI2pUpQ67p
+	d0j/YGsb2QUiimQ4fr+MFvscSKY9UUFX+wKKQ8vwHCDLaeDjdPikYpv2wV+jPUhioVfSgSe2+IbD1
+	jmv21D2BqyxprMRjksf8uIqswQ2QxGcWt7KhyE4SNEWMMhjM3RIs9cWMkfdkopc38ORkwyLdzZuzy
+	oXFp5apzXSduhGdwmDiQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jkOvy-0001zl-Dl; Sun, 14 Jun 2020 09:28:10 +0000
-Received: from esa3.hgst.iphmx.com ([216.71.153.141])
+	id 1jkXIM-0005Ka-Ja; Sun, 14 Jun 2020 18:23:50 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jkOvt-0001yi-GB; Sun, 14 Jun 2020 09:28:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1592126886; x=1623662886;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=R7F3+MRenkRoRSgH5UZ+VI9Ec5NSXcKN4+S/nRJG+fw=;
- b=UGd4VWpB36R2BmA8+uGc7K77U6nIAZD0fAHmwaOQHOMcww3ARqHaqHF6
- MEgYUV6rDk3ns1QBPi2YmHdtlgg9/4iTxYWfo7tnd2QMYO5GyKiIElxO2
- kx3z26pRBqAIU9nZhEBNZxhOQjuuYJf0Foy81XPvKWrYpV6/O+9mZhR5z
- hQJQslL3T8oN5LpPfZiNRLKw8JKh3pO+Y+eXzK2AScS48wJshIlhm0rh7
- WzCTI8d63mMpzAYko1XhuqyJ4Bq7EgiuNUlnU3wOpQka/G5cZAsF10xHP
- Hrec3KyEFmvQuUvLPWIL6w/D+Mu2wd25TTQ/qElygCtjX+04B7sev4SnD g==;
-IronPort-SDR: pD2W7HXR04kSB4hI4O+JtkQoriWPUTm8WiCK6YnE4ADDWpfj/ilZEclk4Nnd7QtvAwcylLGawv
- abEicRnEjGCjXt6MAbEnr70OeCtcdl97DDZvozl2xmN1JI9xf0m57b8hQR/vYRjzvXVbmHHhkF
- fphcscOJkQj8TJmE65g6HNJ5K80IlgdXel5dcEwvm1DqKktynJMz1xQRT8CIBosWmvfTmq9nlc
- A7UuCj+X+ffjAHU3SOpuUhP9YKlf/tT4HsKjL9wdL0XWJeArDMT/gbRFdJiyDyHTQonlnGKUHl
- eRY=
-X-IronPort-AV: E=Sophos;i="5.73,510,1583164800"; d="scan'208";a="144270625"
-Received: from mail-dm6nam11lp2170.outbound.protection.outlook.com (HELO
- NAM11-DM6-obe.outbound.protection.outlook.com) ([104.47.57.170])
- by ob1.hgst.iphmx.com with ESMTP; 14 Jun 2020 17:27:58 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=j/eMOr3aLv7HvtXHaFiQd50m0O1FngJgZ2kMlIFe5s4keq6f9/ccJPBXW9H9CaTm1AcQq+XLODqiL69nNMeU/n4qeZOw1nMqFSVdz6P6DSZipn/FaPuNq3QTzLUYJLFSU+Hr+FsLuMO3rTtSBnaEaBHSlvVZaMW8GaEd4C0N7M4g5wSKlRJ/miHYqEugT9n0mIO7RROQF3y7QDensQ1ruvIMyEXOcmZrmGjrtCVU4BxtW7Sdc5K0H8+cuLmW5ZnAkSIq3UnrqwyAxkb2jAKf2jRZ4dk2gBDyRFPaWtU1BwEL2ijIb+XYE4pA67obhglQZdMMr15EyNPH12qrlZjfAw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=R7F3+MRenkRoRSgH5UZ+VI9Ec5NSXcKN4+S/nRJG+fw=;
- b=GBBYalNzc7xrU8tMX+8/Z67fhvHVBpkx9CChQtIJmg0c7phTjmaF4bgGRjJpXYuMuF3eUT5OgO5tT1+6MJj66lC0LsEaDmAqumcVBZxcRsteuUg31TQoiF30GytucMrBl33KZpDnm8DGJhfhM9q6ISaSrECQ1485jbIM5hxQ2BGjxU7h86ceXwuEclIAA3EQZtjmGEjBT5cI3ZmZEKJLFKzuyGMErNHRJ27Br3RLnW7BRsiXDclUX+mMTBdipPyIud4FvvBr/D+AqhKLZyLDyapICaUhpUma++Fn/iXPQ/UZepCg/rDkuaUet5rLEoCtDgsoHyHP1JmS+5ey8MFgtA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=R7F3+MRenkRoRSgH5UZ+VI9Ec5NSXcKN4+S/nRJG+fw=;
- b=kwEywh7wGBQrMIdCMndIshrYZVuibUxAWyEFnX4o7eLDCGVkdfW4Yl1ki9LUJRgJzx4nKUoAC7ANqEY19ZfTb3UXAohyvVrKYqQWcVQ9X6ei4I8e2Az5TmybpPtdgTGUTjYgKXadrQjzaaRY9cAyiT30VCJd2A2JKUhrQyDS50I=
-Received: from SN6PR04MB4640.namprd04.prod.outlook.com (2603:10b6:805:a4::19)
- by SN2PR04MB2174.namprd04.prod.outlook.com (2603:10b6:804:10::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3088.18; Sun, 14 Jun
- 2020 09:27:54 +0000
-Received: from SN6PR04MB4640.namprd04.prod.outlook.com
- ([fe80::9cbe:995f:c25f:d288]) by SN6PR04MB4640.namprd04.prod.outlook.com
- ([fe80::9cbe:995f:c25f:d288%6]) with mapi id 15.20.3088.028; Sun, 14 Jun 2020
- 09:27:54 +0000
-From: Avri Altman <Avri.Altman@wdc.com>
-To: Stanley Chu <stanley.chu@mediatek.com>
-Subject: RE: [PATCH v1 2/2] scsi: ufs: Add trace event for UIC commands
-Thread-Topic: [PATCH v1 2/2] scsi: ufs: Add trace event for UIC commands
-Thread-Index: AQHWQMuVYKwzY3Iyf0mpsLlh28O4SKjWW/nQgAA9dgCAAUDwkA==
-Date: Sun, 14 Jun 2020 09:27:54 +0000
-Message-ID: <SN6PR04MB46403686B1E4AD37B8E9C178FC9F0@SN6PR04MB4640.namprd04.prod.outlook.com>
-References: <20200612151000.27639-1-stanley.chu@mediatek.com>
- <20200612151000.27639-3-stanley.chu@mediatek.com>
- <SN6PR04MB4640968DCD865651AFA8925DFC9E0@SN6PR04MB4640.namprd04.prod.outlook.com>
- <1592057910.25636.81.camel@mtkswgap22>
-In-Reply-To: <1592057910.25636.81.camel@mtkswgap22>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mediatek.com; dkim=none (message not signed)
- header.d=none;mediatek.com; dmarc=none action=none header.from=wdc.com;
-x-originating-ip: [212.25.79.133]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: eb02fcb1-d733-412f-b1ef-08d810453796
-x-ms-traffictypediagnostic: SN2PR04MB2174:
-x-microsoft-antispam-prvs: <SN2PR04MB217493B045F892F4F189D6E2FC9F0@SN2PR04MB2174.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
-x-forefront-prvs: 04347F8039
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: V45XYchI3GVVZW1zMftveKYgYsUbXKmWf6bvj8XFOIoPSVrAYpU3xYaTW06wCqq/14bIhcPztFFkQW6uBEBzSNO6zJ5pswLZzgXMxqaxIc1y6/1TeKWZItcdzHECorp4Lxs2sR+/4K8MlJAzGenO7fIOlsvPBxnaIlwuYIm1Qp2fpfvWGO6Pbh5dNjOMBvor+dPxf7iUmUvRwmOPZDXcwpxatgV8myeYrLp3Z+ytikcc+l30RzTx07+ZTKuiqYSzmVwkdXk2d/vhWj0iFJBfXdGtxWvvv8df7827avnrTur4YuUO2UKngPTto9VI1ZMTO9eNM4mw6L2B22EQmYVe1Q==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR04MB4640.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(136003)(39860400002)(366004)(396003)(376002)(346002)(26005)(54906003)(316002)(186003)(2906002)(8936002)(52536014)(7696005)(5660300002)(6506007)(478600001)(9686003)(55016002)(33656002)(86362001)(66556008)(64756008)(66446008)(66946007)(7416002)(66476007)(83380400001)(71200400001)(6916009)(8676002)(4326008)(76116006);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: 8M94q/XdN5lKbRhrssP94m1p+ODWMH2QqyLi7v5F8UpTE+hwHeygEgiFepaYzuQPsd142pIzz8isLO5BCGx+l33n3OYgjU5S/DMu/r1RWOwSED/7hq09RoVGkByAJQIS2Jo7COTf0BhnZFkvyNaAT9UdHHDPKSkbARytFVY+5NNFAq3zpOHUP6peczjDinIugQK5c/WDAYhc+57lMVPAmftRK4mqr2aucncEH/OhsnaiebtQFJw11Ezrm+JL+OPs9DywCNB7pIaB5oY72aC/reMuk++BHQyM+QMEpzJq/uWgeIPUpW7z7m0GXFod9OW4tNROIBoYa/p68Ntf6xAFtJMAbmHFc1faY0O3twJTw8wcIQU/fe1AbKKgg5cxrC9k3jmkjDa5kNfD2cGbLTCt/9p/zbpaMWIZOYXkYyME4/H3FdIIUwwzGnPlkblY0vLFKAwAVG1q9JgIhhI2DRQmrzd5xX9nZIUWm66KwNeD+io=
-x-ms-exchange-transport-forked: True
+ id 1jkXIJ-0005K2-R4
+ for linux-mediatek@lists.infradead.org; Sun, 14 Jun 2020 18:23:49 +0000
+X-UUID: 6bd393b710ae440cb0dc96efea720a65-20200614
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=bc9dvwm76ks6d4PBZ09zKJUFFqsXaT4UJS/52CQ3J+I=; 
+ b=HD53O49VIEgtuwOviQsNT2eLmxcw04gWxYXMGEeXr5UV4k0Da2NFhglSEstRuTHEmZ9K+hXPrByeTjl1iLhuHE6EFxwgz+nWSB9bc5XxVvy4lDixBNC5PedFCfLcnJQ5Kdzdf6Z1KYbxFSLkPjLInSHUW19aztn4J1htgQqgvXo=;
+X-UUID: 6bd393b710ae440cb0dc96efea720a65-20200614
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1658796799; Sun, 14 Jun 2020 10:23:26 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 14 Jun 2020 11:23:37 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 15 Jun 2020 02:23:39 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 15 Jun 2020 02:23:36 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+Subject: [PATCH v3 3/4] mt76: mt7915: add MU-MIMO support
+Date: Mon, 15 Jun 2020 02:23:35 +0800
+Message-ID: <e0d721a40ae41b1705dbaa610c8562d9c4d0bd6a.1592158312.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <cover.1592158312.git.ryder.lee@mediatek.com>
+References: <cover.1592158312.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: eb02fcb1-d733-412f-b1ef-08d810453796
-X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Jun 2020 09:27:54.2956 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ikbCQm3osS2SSNYGGamYfSgTX2mstnmVesHgqfhNJk5tZGMbq8PVGwiglyhp8j9qk+PPESMq5Mq3XBQjg8FojA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN2PR04MB2174
+X-TM-SNTS-SMTP: 0456ACA5F47BF74778358014A3644638A6DC11518AEC53919AB3423E2D1EF6BD2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200614_022805_604474_E9A08B64 
-X-CRM114-Status: GOOD (  25.62  )
+X-CRM114-CacheID: sfid-20200614_112347_885758_BC27B741 
+X-CRM114-Status: GOOD (  11.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -143,201 +85,250 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
- "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
- "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "cc.chou@mediatek.com" <cc.chou@mediatek.com>,
- "cang@codeaurora.org" <cang@codeaurora.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>,
- "chaotian.jing@mediatek.com" <chaotian.jing@mediatek.com>,
- "bvanassche@acm.org" <bvanassche@acm.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "beanhuo@micron.com" <beanhuo@micron.com>
+Cc: linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>,
+ linux-wireless@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Enable MU-MIMO DL/UL and add relative counters in debugfs.
 
-Acked-by: Avri Altman <avri.altman@wdc.com>
+Currently MU modules read WTBL first to notify BA changes to
+other cross modules, so adjust mt7915_mcu_sta_ba() accordingly.
 
-> 
-> 
-> Hi Avri,
-> 
-> On Sat, 2020-06-13 at 10:48 +0000, Avri Altman wrote:
-> > > +static void ufshcd_add_uic_command_trace(struct ufs_hba *hba,
-> > > +                                        struct uic_command *ucmd,
-> > > +                                        const char *str)
-> > > +{
-> > > +       u32 cmd;
-> > > +
-> > > +       if (!trace_ufshcd_uic_command_enabled())
-> > > +               return;
-> > > +
-> > > +       if (!strcmp(str, "uic_send"))
-> > > +               cmd = ucmd->command;
-> > > +       else
-> > > +               cmd = ufshcd_readl(hba, REG_UIC_COMMAND);
-> > Why on complete you can't just use ucmd->command as well?
-> 
-> Reading registers is really helpful for debugging to check if host UIC
-> command register really received the command before.
-> 
-> But the original requesting UIC command shall be logged in trace so
-> ucmd->command is logged during "send", and the command in register is
-> read and logged during "completed". Then we could simply check them to
-> know if something wrong while sending the command.
-> 
-> This concept is similar as current UTP command trace events that
-> doorbell register is read and dumped in the trace.
-> 
-> >
-> > > +
-> > > +       trace_ufshcd_uic_command(dev_name(hba->dev), str, cmd,
-> > > +                                ucmd->result,
-> > > +                                ufshcd_readl(hba, REG_UIC_COMMAND_ARG_1),
-> > > +                                ufshcd_readl(hba, REG_UIC_COMMAND_ARG_2),
-> > > +                                ufshcd_readl(hba, REG_UIC_COMMAND_ARG_3));
-> > Why can't you just use the ucmd members?
-> > Why need to read those?
-> 
-> As above same reason, reading registers can know which arguments are
-> exactly sent to the device.
-> 
-> This is very helpful for fast issue breakdown if UIC command is not
-> responded under expectation.
-> 
-> Here, we also really want to keep the original requesting arguments from
-> "ucmd", just like UIC command. However, arguments in register will be
-> changed after UIC command is done so we can not do the same way as UIC
-> command. So a compromise is here that we logged the arguments which host
-> register exactly received in trace.
-> 
-> >
-> > > +}
-> >
-> >
-> > > +
-> > >  static void ufshcd_add_command_trace(struct ufs_hba *hba,
-> > >                 unsigned int tag, const char *str)
-> > >  {
-> > > @@ -2054,6 +2075,8 @@ ufshcd_dispatch_uic_cmd(struct ufs_hba *hba,
-> > > struct uic_command *uic_cmd)
-> > >         /* Write UIC Cmd */
-> > >         ufshcd_writel(hba, uic_cmd->command &
-> COMMAND_OPCODE_MASK,
-> > >                       REG_UIC_COMMAND);
-> > > +
-> > > +       ufshcd_add_uic_command_trace(hba, uic_cmd, "uic_send");
-> > >  }
-> > >
-> > >  /**
-> > > @@ -2080,6 +2103,9 @@ ufshcd_wait_for_uic_cmd(struct ufs_hba *hba,
-> > > struct uic_command *uic_cmd)
-> > >         hba->active_uic_cmd = NULL;
-> > >         spin_unlock_irqrestore(hba->host->host_lock, flags);
-> > >
-> > > +       uic_cmd->result = ret;
-> > > +       ufshcd_add_uic_command_trace(hba, uic_cmd, "uic_complete");
-> > > +
-> > >         return ret;
-> > >  }
-> > Can't you just call the "send" and "complete" from ufshcd_send_uic_cmd?
-> 
-> For "send", we would like to log the time as precise as possible so
-> "send" event is logged while UIC command is sent.
-> 
-> Thanks so much! Your question reminds me that "send" trace shall be
-> moved before UIC command is sent otherwise register value may be changed
-> before logging "send" trace. I will fix this in next version.
-> 
-> For "completed", to make logging time as closed to UIC command
-> completion as possible, maybe I need to change the logging timing to
-> ufshcd_uic_cmd_compl(), just like UTP command completion trace which is
-> logged in __ufshcd_transfer_reg_compl().
-> 
-> If you have no objection, I will try to fix this in next version.
-> 
-> >
-> >
-> > >
-> > > @@ -3760,6 +3786,9 @@ static int ufshcd_uic_pwr_ctrl(struct ufs_hba
-> *hba,
-> > > struct uic_command *cmd)
-> > >                 ret = (status != PWR_OK) ? status : -1;
-> > >         }
-> > >  out:
-> > > +       cmd->result = ret;
-> > > +       ufshcd_add_uic_command_trace(hba, cmd, "uic_complete");
-> > > +
-> > >         if (ret) {
-> > >                 ufshcd_print_host_state(hba);
-> > >                 ufshcd_print_pwr_info(hba);
-> > > diff --git a/include/trace/events/ufs.h b/include/trace/events/ufs.h
-> > > index 5f300739240d..cf8d568d5a13 100644
-> > > --- a/include/trace/events/ufs.h
-> > > +++ b/include/trace/events/ufs.h
-> > > @@ -249,6 +249,39 @@ TRACE_EVENT(ufshcd_command,
-> > >         )
-> > >  );
-> > >
-> > > +TRACE_EVENT(ufshcd_uic_command,
-> > > +       TP_PROTO(const char *dev_name, const char *str, u32 cmd, int
-> result,
-> > > +                u32 arg1, u32 arg2, u32 arg3),
-> > > +
-> > > +       TP_ARGS(dev_name, str, cmd, result, arg1, arg2, arg3),
-> > > +
-> > > +       TP_STRUCT__entry(
-> > > +               __string(dev_name, dev_name)
-> > > +               __string(str, str)
-> > > +               __field(u32, cmd)
-> > > +               __field(int, result)
-> > > +               __field(u32, arg1)
-> > > +               __field(u32, arg2)
-> > > +               __field(u32, arg3)
-> > > +       ),
-> > > +
-> > > +       TP_fast_assign(
-> > > +               __assign_str(dev_name, dev_name);
-> > > +               __assign_str(str, str);
-> > > +               __entry->cmd = cmd;
-> > > +               __entry->result = result;
-> > > +               __entry->arg1 = arg1;
-> > > +               __entry->arg2 = arg2;
-> > > +               __entry->arg3 = arg3;
-> > > +       ),
-> > > +
-> > > +       TP_printk(
-> > > +               "%s: %s: cmd: 0x%x, arg1: 0x%x, arg2: 0x%x, arg3: 0x%x, result:
-> %d",
-> > > +               __get_str(str), __get_str(dev_name), __entry->cmd,
-> > > +               __entry->arg1, __entry->arg2, __entry->arg3, __entry->result
-> > > +       )
-> > Personally, as those trace events aren't very human readable anyway, I
-> would just dump the uic command,
-> > And let the parsers do their job.
-> > And if this is the case, result is redundant as it is part of arg2
-> 
-> My original thought is to log some exceptions, like "-ETIMEDOUT" in
-> "result". But if I changed "completion" trace handling to interrupt
-> handler, there will be no chance to log those exceptions. This is OK
-> because UTP trace is exactly behave this way: No completion event in
-> trace if request is not back. And if this way is implemented, "result"
-> is definitely redundant and shall be removed.
-> 
-> Thanks,
-> Stanley Chu
+Tested-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ .../wireless/mediatek/mt76/mt7915/debugfs.c   |  9 ++-
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 77 +++++++++++++++++--
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  6 +-
+ .../net/wireless/mediatek/mt76/mt7915/regs.h  |  5 ++
+ 4 files changed, 87 insertions(+), 10 deletions(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+index 7e48f56b5b08..38f473d587c9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+@@ -178,7 +178,14 @@ mt7915_txbf_stat_read_phy(struct mt7915_phy *phy, struct seq_file *s)
+ 	seq_printf(s, "Tx Beamformee feedback triggered counts: %ld\n",
+ 		   FIELD_GET(MT_ETBF_TX_FB_TRI, cnt));
+ 
+-	/* Tx SU counters */
++	/* Tx SU & MU counters */
++	cnt = mt76_rr(dev, MT_MIB_SDR34(ext_phy));
++	seq_printf(s, "Tx multi-user Beamforming counts: %ld\n",
++		   FIELD_GET(MT_MIB_MU_BF_TX_CNT, cnt));
++	cnt = mt76_rr(dev, MT_MIB_DR8(ext_phy));
++	seq_printf(s, "Tx multi-user MPDU counts: %d\n", cnt);
++	cnt = mt76_rr(dev, MT_MIB_DR9(ext_phy));
++	seq_printf(s, "Tx multi-user successful MPDU counts: %d\n", cnt);
+ 	cnt = mt76_rr(dev, MT_MIB_DR11(ext_phy));
+ 	seq_printf(s, "Tx single-user successful MPDU counts: %d\n", cnt);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index c8c12c740c1a..ca3e700425b6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -1166,19 +1166,31 @@ mt7915_mcu_sta_ba(struct mt7915_dev *dev,
+ 	struct wtbl_req_hdr *wtbl_hdr;
+ 	struct tlv *sta_wtbl;
+ 	struct sk_buff *skb;
++	int ret;
+ 
+ 	skb = mt7915_mcu_alloc_sta_req(dev, mvif, msta,
+ 				       MT7915_STA_UPDATE_MAX_SIZE);
+ 	if (IS_ERR(skb))
+ 		return PTR_ERR(skb);
+ 
+-	mt7915_mcu_sta_ba_tlv(skb, params, enable, tx);
+ 	sta_wtbl = mt7915_mcu_add_tlv(skb, STA_REC_WTBL, sizeof(struct tlv));
+ 
+ 	wtbl_hdr = mt7915_mcu_alloc_wtbl_req(dev, msta, WTBL_SET, sta_wtbl,
+ 					     &skb);
+ 	mt7915_mcu_wtbl_ba_tlv(skb, params, enable, tx, sta_wtbl, wtbl_hdr);
+ 
++	ret = __mt76_mcu_skb_send_msg(&dev->mt76, skb,
++				      MCU_EXT_CMD_STA_REC_UPDATE, true);
++	if (ret)
++		return ret;
++
++	skb = mt7915_mcu_alloc_sta_req(dev, mvif, msta,
++				       MT7915_STA_UPDATE_MAX_SIZE);
++	if (IS_ERR(skb))
++		return PTR_ERR(skb);
++
++	mt7915_mcu_sta_ba_tlv(skb, params, enable, tx);
++
+ 	return __mt76_mcu_skb_send_msg(&dev->mt76, skb,
+ 				       MCU_EXT_CMD_STA_REC_UPDATE, true);
+ }
+@@ -1466,16 +1478,39 @@ mt7915_mcu_sta_muru_tlv(struct sk_buff *skb, struct ieee80211_sta *sta)
+ 		HE_PHY(CAP2_UL_MU_PARTIAL_MU_MIMO, elem->phy_cap_info[2]);
+ }
+ 
++static int
++mt7915_mcu_add_mu(struct mt7915_dev *dev, struct ieee80211_vif *vif,
++		  struct ieee80211_sta *sta)
++{
++	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
++	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
++	struct sk_buff *skb;
++	int len = sizeof(struct sta_req_hdr) + sizeof(struct sta_rec_muru);
++
++	if (!sta->vht_cap.vht_supported && !sta->he_cap.has_he)
++		return 0;
++
++	skb = mt7915_mcu_alloc_sta_req(dev, mvif, msta, len);
++	if (IS_ERR(skb))
++		return PTR_ERR(skb);
++
++	/* starec muru */
++	mt7915_mcu_sta_muru_tlv(skb, sta);
++
++	return __mt76_mcu_skb_send_msg(&dev->mt76, skb,
++				       MCU_EXT_CMD_STA_REC_UPDATE, true);
++}
++
+ static void
+ mt7915_mcu_sta_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
+ 		   struct ieee80211_sta *sta)
+ {
+ 	struct tlv *tlv;
+ 
++	/* starec ht */
+ 	if (sta->ht_cap.ht_supported) {
+ 		struct sta_rec_ht *ht;
+ 
+-		/* starec ht */
+ 		tlv = mt7915_mcu_add_tlv(skb, STA_REC_HT, sizeof(*ht));
+ 		ht = (struct sta_rec_ht *)tlv;
+ 		ht->ht_cap = cpu_to_le16(sta->ht_cap.cap);
+@@ -1495,10 +1530,6 @@ mt7915_mcu_sta_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
+ 	/* starec he */
+ 	if (sta->he_cap.has_he)
+ 		mt7915_mcu_sta_he_tlv(skb, sta);
+-
+-	/* starec muru */
+-	if (sta->he_cap.has_he || sta->vht_cap.vht_supported)
+-		mt7915_mcu_sta_muru_tlv(skb, sta);
+ }
+ 
+ static void
+@@ -2064,6 +2095,32 @@ int mt7915_mcu_add_rate_ctrl(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 				       MCU_EXT_CMD_STA_REC_UPDATE, true);
+ }
+ 
++static int
++mt7915_mcu_add_group(struct mt7915_dev *dev, struct ieee80211_vif *vif,
++		     struct ieee80211_sta *sta)
++{
++#define MT_STA_BSS_GROUP		1
++	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
++	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
++	struct {
++		__le32 action;
++		u8 wlan_idx_lo;
++		u8 status;
++		u8 wlan_idx_hi;
++		u8 rsv0[5];
++		__le32 val;
++		u8 rsv1[8];
++	} __packed req = {
++		.action = cpu_to_le32(MT_STA_BSS_GROUP),
++		.wlan_idx_lo = to_wcid_lo(msta->wcid.idx),
++		.wlan_idx_hi = to_wcid_hi(msta->wcid.idx),
++		.val = cpu_to_le32(mvif->idx),
++	};
++
++	return __mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_SET_DRR_CTRL,
++				   &req, sizeof(req), true);
++}
++
+ int mt7915_mcu_add_sta_adv(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 			   struct ieee80211_sta *sta, bool enable)
+ {
+@@ -2073,10 +2130,18 @@ int mt7915_mcu_add_sta_adv(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 		return 0;
+ 
+ 	/* must keep the order */
++	ret = mt7915_mcu_add_group(dev, vif, sta);
++	if (ret)
++		return ret;
++
+ 	ret = mt7915_mcu_add_txbf(dev, vif, sta, enable);
+ 	if (ret)
+ 		return ret;
+ 
++	ret = mt7915_mcu_add_mu(dev, vif, sta);
++	if (ret)
++		return ret;
++
+ 	if (enable)
+ 		return mt7915_mcu_add_rate_ctrl(dev, vif, sta);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index c241dd7c4c36..cb35e718409a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -201,6 +201,7 @@ enum {
+ 	MCU_EXT_CMD_EDCA_UPDATE = 0x27,
+ 	MCU_EXT_CMD_DEV_INFO_UPDATE = 0x2A,
+ 	MCU_EXT_CMD_THERMAL_CTRL = 0x2c,
++	MCU_EXT_CMD_SET_DRR_CTRL = 0x36,
+ 	MCU_EXT_CMD_SET_RDD_CTRL = 0x3a,
+ 	MCU_EXT_CMD_PROTECT_CTRL = 0x3e,
+ 	MCU_EXT_CMD_MAC_INIT_CTRL = 0x46,
+@@ -653,7 +654,7 @@ struct sta_rec_muru {
+ 		bool ofdma_ul_en;
+ 		bool mimo_dl_en;
+ 		bool mimo_ul_en;
+-		bool rsv[4];
++		u8 rsv[4];
+ 	} cfg;
+ 
+ 	struct {
+@@ -664,7 +665,7 @@ struct sta_rec_muru {
+ 		bool lt16_sigb;
+ 		bool rx_su_comp_sigb;
+ 		bool rx_su_non_comp_sigb;
+-		bool rsv;
++		u8 rsv;
+ 	} ofdma_dl;
+ 
+ 	struct {
+@@ -951,7 +952,6 @@ enum {
+ 					 sizeof(struct sta_rec_ba) +	\
+ 					 sizeof(struct sta_rec_vht) +	\
+ 					 sizeof(struct tlv) +		\
+-					 sizeof(struct sta_rec_muru) +	\
+ 					 MT7915_WTBL_UPDATE_MAX_SIZE)
+ 
+ #define MT7915_WTBL_UPDATE_BA_SIZE	(sizeof(struct wtbl_req_hdr) +	\
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+index c121715f8bff..e0989141d9da 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+@@ -117,11 +117,16 @@
+ #define MT_MIB_SDR16(_band)		MT_WF_MIB(_band, 0x048)
+ #define MT_MIB_SDR16_BUSY_MASK		GENMASK(23, 0)
+ 
++#define MT_MIB_SDR34(_band)		MT_WF_MIB(_band, 0x090)
++#define MT_MIB_MU_BF_TX_CNT		GENMASK(15, 0)
++
+ #define MT_MIB_SDR36(_band)		MT_WF_MIB(_band, 0x098)
+ #define MT_MIB_SDR36_TXTIME_MASK	GENMASK(23, 0)
+ #define MT_MIB_SDR37(_band)		MT_WF_MIB(_band, 0x09c)
+ #define MT_MIB_SDR37_RXTIME_MASK	GENMASK(23, 0)
+ 
++#define MT_MIB_DR8(_band)		MT_WF_MIB(_band, 0x0c0)
++#define MT_MIB_DR9(_band)		MT_WF_MIB(_band, 0x0c4)
+ #define MT_MIB_DR11(_band)		MT_WF_MIB(_band, 0x0cc)
+ 
+ #define MT_MIB_MB_SDR0(_band, n)	MT_WF_MIB(_band, 0x100 + ((n) << 4))
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
