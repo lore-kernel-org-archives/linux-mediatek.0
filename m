@@ -2,139 +2,79 @@ Return-Path: <SRS0=oIsV=74=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 615C1C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 07:32:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 11068C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 07:34:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 23FB820707
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 07:32:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AFC34206E2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 07:34:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ufRHAUKd";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="ExUv09ZX";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="tzDBAnOp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 23FB820707
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YOpOGfoj";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="o8c0FPcp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AFC34206E2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IUKODQBjkgj9SAUHNbPMD5bNA2AsAN68voqfUiCzRwk=; b=ufRHAUKdduM0+N
-	4SX7gR46wHP/vsyNblh/R/8g2GUggdN0qF8uzWBTPB9Y9GLdMHQvC2vsy8HlWtueJ0lZvPGwDjoQy
-	9GhGkqRrN5ZpA61EwnUruKPTVhm62prIuu93q+kUwGaGh5uaIxBi1glcWmuz4Y+rFp0vZz/1Jntq/
-	gbqjnJJj1cmxzM21LmPyRW33kpjQ6j74OBNhufcsFj33V/3B1CF4usPJHdzGck9PFN6x+EwcQZoLf
-	aIizyUrs18DGrK6ECWhxD4fpQhfJ7PYFocJ+gymZwkLqR0u5UEqzdf1PBM+zOxTZ2N4LXUnlq4NC9
-	HK7Q37wJZcSV9jm6t7Cw==;
+	List-Owner; bh=LXhhX+EMZ4NxEdeXAb3B5EAqZvf261ROkxIWm55wj9o=; b=YOpOGfojhEzcsg
+	ZIcMrASpSV7p0hBhdDFbVbqMRFzqBlG2alBIHM/LhvAG/6F2zJhVplTJTYIFQRItk0jfjjFLTpRdl
+	vFyCj6m8s2su1/kwiC78q2gGa4q3zs2afJH7YrlSufZNdkXY3IOXC+J1xMnrTdCHUzNgT5znRcA9u
+	aNMrTHaj5VArDTyjePWM+qRDikDJkV2s1t0gj3S9BBDcDZuxxVtRa2FnI1Hca0RELmRwRGCcEpery
+	dQDotfXrv9TB8z4Cf35moBh/ziJbymlo3KxqNIg4tjuN/CUoE8Xr7uWUv/pc6Ew6VBRra6X6nXctV
+	Lxk+eY9/WJ/8ookSIDTQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jkjbJ-0003Xt-Ml; Mon, 15 Jun 2020 07:32:13 +0000
-Received: from esa3.hgst.iphmx.com ([216.71.153.141])
+	id 1jkjcw-00045A-9X; Mon, 15 Jun 2020 07:33:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jkjbC-0003HF-SV; Mon, 15 Jun 2020 07:32:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1592206327; x=1623742327;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=UCPh9nnOLJQOa5+2ym/DZ4EMeZYp+q1/7H9nm8F8hmc=;
- b=ExUv09ZX0zXU3GlNAR752idpWdinDHoRNoRXx6g4xEqUuZiec+f+6jED
- BvNVP2lFZDa6EIawmAdlrmMmpyoV9CoaR07heuaZiTq2ocBxqAYyW/5Bk
- PhKt7n3Lsw++mRmhUB9qQrdtRs8BDwAnlBr1Hu9asz94l+PG3O/lKOGct
- XlBAI6O3Z2JKQBaMjxBQPH3apBbRs7qgTpW8Su0/xg9sokzLB7R8OTI6t
- JaWoy/a2l18FhnPMr71SEZ1YaQjw63tl7RGe62Vh5Td9yeimGY/R7Rqxy
- k7nCZXq9ExZkjUy5gKbOQOc9raAhvBIRKficgY9ssAYQc8WKF0PXPywO9 A==;
-IronPort-SDR: q5O0GQSgSMwVIlDKYEgBch4qcH2FbR99BROzDF0tMmSaMWQRoE0j6ew6areU98s8kQZFQUR3FN
- eZg+1zJTQlqlgio/YQojKoRYffo6KgdO202iWX3aqXy/RxXFEtiWWFqHwr+6p6EShu+doO6Kbl
- HMsemQLf2TmSB+CH8LQANg4iK92dobJ11OtTHmOVYCY+mS8dMFOHPTMpA/amnoeHd+6pi1vTC1
- GN3g0I981IQ6VZm2F4XY10WPzXDqhR/swM26WQAk+pwoHJo4kpMo/s5d+p+XmEsTe3RBEjSEac
- eec=
-X-IronPort-AV: E=Sophos;i="5.73,514,1583164800"; d="scan'208";a="144328971"
-Received: from mail-dm6nam12lp2173.outbound.protection.outlook.com (HELO
- NAM12-DM6-obe.outbound.protection.outlook.com) ([104.47.59.173])
- by ob1.hgst.iphmx.com with ESMTP; 15 Jun 2020 15:31:59 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Bu+X2DkGp+OF++qXHxM2bImuTolUseYqUIs0jELaNKU0NL16vP6LQ/rzWwvJyDJRdrTHc10yOLJl/aCs3xe2aQlSyfTmwO8VhqXN0+xWxzGpKwzz+KWXno6zW5KCViW2oH3k4iSmU/EWzCSpQ8xZwGKCDSwJS6UZb1QdLRuZftkSknWDwqRHZju66J7OQunaGVL/tib/tel3KYfuVKN/NweUY5wo/SwJbLcYbI9to0yy3Lfyygi2cfU3mhSjfa1e5HSXEddCnaJjVwFsyIHw7sgZH4twyy9+FiQ4ZzHByp9JM6tUoJDyU1r1xMPck1ExydtEottYbmd293F4+n9vow==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rPrXFE2K3KaA7qL2ov68PWSD/9aopTG3HiemXZKwniI=;
- b=HuFty+lviKJ5dzvi5H6hu8OmRg3ni0yZs8lUejoGXniT3u44VsTbwrO8Db0Bt0gkMRruyCZ4NpRIQJ7CIGbA2IGr55EmPdiFAsHoTsEA8B6bfdBy8KQc6TWC6c0HXi5jIxNKaJPQzLz6332nGOngv3gzs2Li4309YsPEzgwDlDKARnTYtpO8XRkjUlgif5HapZKvCbU3WpR9nN7ZDU23VwFf+ZLyw2WYVIO/dfxOIaugm6Ylrbr6E6P9tIVQBNP06BABDAENyIez2HlXw+biABhdUspWj0vXaSAOGN4E8urvNFuR21A1ug8gwVEZeQjfaojcQ1X+19rIshHBezP+Uw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rPrXFE2K3KaA7qL2ov68PWSD/9aopTG3HiemXZKwniI=;
- b=tzDBAnOpdbf+VJfEC113I9WkLG9K2TPS1QPI9bsdtpY00rRKxo15HKsFZih/lF3PY/0QNEuOfpgaV4xT0gdEzi3QFmkmM9TG4i8BYTNtIUXVYFI/0/IgzGZmuZtm1j+4prpa/mjyIOUQVSpV8s012Q7MfDojbW4praubzfeDSRA=
-Received: from SN6PR04MB4640.namprd04.prod.outlook.com (2603:10b6:805:a4::19)
- by SN6PR04MB4574.namprd04.prod.outlook.com (2603:10b6:805:a9::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3088.18; Mon, 15 Jun
- 2020 07:31:57 +0000
-Received: from SN6PR04MB4640.namprd04.prod.outlook.com
- ([fe80::9cbe:995f:c25f:d288]) by SN6PR04MB4640.namprd04.prod.outlook.com
- ([fe80::9cbe:995f:c25f:d288%6]) with mapi id 15.20.3088.028; Mon, 15 Jun 2020
- 07:31:57 +0000
-From: Avri Altman <Avri.Altman@wdc.com>
-To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
- <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
- <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
- <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
-Subject: RE: [PATCH v3 0/2] scsi: ufs: Add trace event for UIC commands and
- cleanup UIC struct
-Thread-Topic: [PATCH v3 0/2] scsi: ufs: Add trace event for UIC commands and
- cleanup UIC struct
-Thread-Index: AQHWQuXCGsZjEECOEkK/CSP7H3WFf6jZSDGA
-Date: Mon, 15 Jun 2020 07:31:57 +0000
-Message-ID: <SN6PR04MB4640ABE5681594C4C1A53F7BFC9C0@SN6PR04MB4640.namprd04.prod.outlook.com>
-References: <20200615072235.23042-1-stanley.chu@mediatek.com>
-In-Reply-To: <20200615072235.23042-1-stanley.chu@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mediatek.com; dkim=none (message not signed)
- header.d=none;mediatek.com; dmarc=none action=none header.from=wdc.com;
-x-originating-ip: [212.25.79.133]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 3e02f386-0fe0-489c-1964-08d810fe2f4e
-x-ms-traffictypediagnostic: SN6PR04MB4574:
-x-microsoft-antispam-prvs: <SN6PR04MB4574EA21B24468D0B6776E72FC9C0@SN6PR04MB4574.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:3968;
-x-forefront-prvs: 04359FAD81
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: iFGwxXstVhtqYVPlYXCpHkhKWy7ZDoxcIJ2xqVqfWzOuN3Y8T7RDh1fdzaUVtJqrVdocZ8oznBRS5u0O5kbJO/SMU/9y+3sIH9Dd4jyLvSMFb/yZsV7OLBAhDLKzD0sEVMqxnkTbGSCoeJompHCZZPd/NmXXAmCptLyOFU22z3TE5wl+nv2CEt7sdY8LQIGm1g4LEnAF2qtIQljQ/6m17DBkvO7Did5qK12OCQQB2RXPMdktYRRewOBdXIdWjcXhX29Csd9DrLBMrurhiWIKxJtsP0Gn+BNp/lHa805vAPD7E0QRKFGPrCP2SfXJflnx
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR04MB4640.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(366004)(376002)(346002)(39860400002)(136003)(396003)(316002)(33656002)(186003)(6506007)(2906002)(7696005)(83380400001)(478600001)(4326008)(110136005)(54906003)(26005)(76116006)(66556008)(64756008)(66446008)(8676002)(66946007)(71200400001)(66476007)(8936002)(86362001)(4744005)(52536014)(55016002)(5660300002)(7416002)(9686003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: g8MtzIJDRVTzUb5kg1m7eqQRonfTDkBuMoHUQjU6H7xb/TyYU+cK5SRQAnkihqm0+558F2n23UZRgqN2mV+tFa5Bexm8vxPRC1hvPXQP+HTldDHZvYzXXdW6tP2nNZBeM1n95EzCXA4L+QWRYbLhqFtxdfwzCRYr6R/1BE/rj+whur7JxszRu4TuStxfXlDswvccBGioGw6bv0XGng4004hTEqR71GMpaGBtIG5t+K3ClaEiTtciw9HjNwzaKdwWVNCG624gOiTM8UdE8k+4VyooeaslDVTofwDAtCqRLpEBQRUPxS5QdC9iTSU99F6lpskAiqXME+PmeYg/ieX3cI1OKII+UF9GHFwjX/xhmokbbjIvRk602FMG42HMsNBeVPnxM5FDw7mkvgmcS3Q1pGYcR4Nd3/nspJyXSr72fofHBjnrPhBmzt0BdBmBXfvOy53dbVuAYWQRcrzy+sRZ2ZB14jXGNxZxMmFQ3Es1jPE=
-x-ms-exchange-transport-forked: True
+ id 1jkjci-0003un-AW; Mon, 15 Jun 2020 07:33:42 +0000
+X-UUID: 93e2138e26d2435cbcc2d118c25037e7-20200614
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=qBTmmysW9mKb6RFIDfIeX1e+1dXzsBfF2+qumyv3dGk=; 
+ b=o8c0FPcpuBDXKePFQOGk+QKCHcz4v/jOU34m+VhL7h6DVFLkcvEozZ2PeDQj2ZpDet6LHAUl/Bfuw/tfDoOvprX9Qmj+zh6lEAtMCJuQdePNol5ZvD78uT1SeCRnmLNK7n3zW/hOWNBJ0USkzTDU01rY/SevStDsR8aJyg8Z/vg=;
+X-UUID: 93e2138e26d2435cbcc2d118c25037e7-20200614
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1397883174; Sun, 14 Jun 2020 23:33:36 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 15 Jun 2020 00:24:05 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 15 Jun 2020 15:24:03 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 15 Jun 2020 15:24:02 +0800
+Message-ID: <1592205843.25636.82.camel@mtkswgap22>
+Subject: RE: [PATCH v2 2/2] scsi: ufs: Add trace event for UIC commands
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: Avri Altman <Avri.Altman@wdc.com>
+Date: Mon, 15 Jun 2020 15:24:03 +0800
+In-Reply-To: <SN6PR04MB46400CE00A5CAF16CE4D4367FC9C0@SN6PR04MB4640.namprd04.prod.outlook.com>
+References: <20200615064753.20935-1-stanley.chu@mediatek.com>
+ <20200615064753.20935-3-stanley.chu@mediatek.com>
+ <SN6PR04MB46400CE00A5CAF16CE4D4367FC9C0@SN6PR04MB4640.namprd04.prod.outlook.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3e02f386-0fe0-489c-1964-08d810fe2f4e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jun 2020 07:31:57.3180 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: OGvK99Qa9rdojRwJ5mYFdwZ4r+0JI/TCSjzHfwfVBdfwupKN0b1DF1Y4BeHBviTyIw1IzwiqgtpSH2QkpWYhvw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB4574
+X-TM-SNTS-SMTP: CCA224B35034D6AA6CDD7520EB7BDB9D9CA9E88F74510A9DD30EC7E85C9088CB2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200615_003207_015601_186DDFAB 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20200615_003341_655485_BA9BFEAF 
+X-CRM114-Status: UNSURE (   8.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -146,17 +86,22 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "bvanassche@acm.org" <bvanassche@acm.org>,
+Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
  "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
- "cc.chou@mediatek.com" <cc.chou@mediatek.com>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
  "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
  "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "cc.chou@mediatek.com" <cc.chou@mediatek.com>,
  "cang@codeaurora.org" <cang@codeaurora.org>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
  "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
  "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>,
  "chaotian.jing@mediatek.com" <chaotian.jing@mediatek.com>,
+ "bvanassche@acm.org" <bvanassche@acm.org>,
  "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
  "beanhuo@micron.com" <beanhuo@micron.com>
 Content-Type: text/plain; charset="us-ascii"
@@ -164,38 +109,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Looks good to me.
-Thanks,
-Avri
+Hi Avri,
 
+On Mon, 2020-06-15 at 07:13 +0000, Avri Altman wrote:
+> >         /* Write UIC Cmd */
+> >         ufshcd_writel(hba, uic_cmd->command & COMMAND_OPCODE_MASK,
+> >                       REG_UIC_COMMAND);
+> > @@ -4825,11 +4847,15 @@ static irqreturn_t ufshcd_uic_cmd_compl(struct
+> > ufs_hba *hba, u32 intr_status)
+> >                         ufshcd_get_uic_cmd_result(hba);
+> >                 hba->active_uic_cmd->argument3 =
+> >                         ufshcd_get_dme_attr_val(hba);
+> > +               ufshcd_add_uic_command_trace(hba, hba->active_uic_cmd,
+> > +                                            "complete");
+> >                 complete(&hba->active_uic_cmd->done);
+> >                 retval = IRQ_HANDLED;
+> >         }
+> > 
+> >         if ((intr_status & UFSHCD_UIC_PWR_MASK) && hba->uic_async_done) {
+> > +               ufshcd_add_uic_command_trace(hba, hba->active_uic_cmd,
+> > +                                            "complete");
+> >                 complete(hba->uic_async_done);
+> >                 retval = IRQ_HANDLED;
 > 
 > 
-> Hi,
-> This series adds trace event for UIC commands and do a small cleanup in
-> struct uic_command.
-> 
-> v2 -> v3:
->   - Refactor "complete" event hooks in ufshcd_uic_cmd_compl() (Avri Altman)
-> 
-> v1 -> v2:
->   - Rename "uic_send" to "send" and "uic_complete" to "complete"
->   - Move "send" trace before UIC command is sent otherwise "send" trace may
-> log incorrect arguments
->   - Move "complete" trace to UIC interrupt handler to make logging time
-> precise
-> 
-> Stanley Chu (2):
->   scsi: ufs: Remove unused field in struct uic_command
->   scsi: ufs: Add trace event for UIC commands
-> 
->  drivers/scsi/ufs/ufshcd.c  | 26 ++++++++++++++++++++++++++
->  drivers/scsi/ufs/ufshcd.h  |  4 ----
->  include/trace/events/ufs.h | 31 +++++++++++++++++++++++++++++++
->  3 files changed, 57 insertions(+), 4 deletions(-)
-> 
-> --
-> 2.18.0
+> Why not call ufshcd_add_uic_command_trace once if retval == IRQ_HANDLED?
+> Is it that the exact timestamp?
 
+Thanks! This makes the code cleaner.
+Fixed in v3.
+
+Stanley Chu
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
