@@ -2,75 +2,78 @@ Return-Path: <SRS0=oIsV=74=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 20A3DC433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 14:48:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F0542C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 14:51:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E4579206D7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 14:48:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B24102071A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 14:51:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XQrGDKnc";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qZ+TumLN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E4579206D7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="T6RJTX/C";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="nxflQnvc"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B24102071A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Bu9ngvd98ZR0EYBR+KTtZxHNzQ/8eTSXzP32ZTwH7NY=; b=XQrGDKncPJiFcA
-	FrEWxhQAoP6G3idQE0FICkR20zZFaNSnpbAVi2KWebG1reyhUW/5ZPzXHlyx9YH+fO16Shzx6MbUQ
-	BiZyogUsO8pIu2LNd4X4bfUnj3+eTsHayRLwOqi2He6IBVk5vvj1giauxgwT/U8hhU5EtOhfUtBsO
-	19B5+cVw/V/jJrxgmxHVqI/ozXo6WJPl5ELE1i074DQx8c0R1rCsuaxyFKdxVwp/1F1sGi5EzYsgD
-	Tf4ENF84coHOKIuTeH8mp72G594C0wLQ7zlYm02GSEiMwycmUnrlpIznQ1pCCai70nXebxrw5k3xj
-	iSjWjDLhnHnoxfwol46Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lOwJE4FniU9r2iL1EWLPo+zwwfQcpRH3bTWS1F/AMhs=; b=T6RJTX/CpoHwfg
+	H/FvcWKfy1qBdcr43hgRA8FwhNQ+qJOUWw5Y26UlGx/7v/3hWUO/+rhp/Uq6VGrnJ+EWOUZPll54s
+	OJi2VZurki0ZPfAglK1jnw4abqMZnZpnJEAmYpOk0ATwpR6Y4ILxYy/lZ3XZiJ9u6dCErtyqr4RYh
+	zgB21tiblqc6r8iTNv3pumi2tl9mxhpXi0cmFhNK+8ILrhFomfUtQUh5EDO0nkbilUTPCWJWXJIL8
+	25TZT/WO79R8NJBxARSjS6TU6Djh8osWmfMucLX6boeOiZYYab5huX5bIJDvKZ4Wli2GJRcu4a7r6
+	2HWYs7K0rhmA4H6Ofykg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jkqPf-00055J-5S; Mon, 15 Jun 2020 14:48:39 +0000
+	id 1jkqS3-0008Hc-5v; Mon, 15 Jun 2020 14:51:07 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jkqPK-0004hg-Ak; Mon, 15 Jun 2020 14:48:19 +0000
-X-UUID: 4d69cbce582d45aeb796aa3c78dd2357-20200615
+ id 1jkqRt-00088I-2Q; Mon, 15 Jun 2020 14:50:58 +0000
+X-UUID: 036107b04f054aff822aa8faf953a253-20200615
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=JT5TIMa/y9db8xDofK6AotJvJ9TLioruJwaz49+x9qM=; 
- b=qZ+TumLNeaPS7vMEsVUlf5qn1Mjp62vePzYEaOeqwC1ai314FUCMa0u3x2IebNynmjXMDmVSqodO3/feCOlUvJnVqswlzfwYAgQ53qgim2uujpWpaOY/Dk6iW1o2Ii4H6GxPxFyn6IPbvdHeDwpxI79lo5/OLjgjdz0SE2QdUwE=;
-X-UUID: 4d69cbce582d45aeb796aa3c78dd2357-20200615
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=K9jHs+9H91saKQrMUULPDpgsjmfGksPsDZmJk9xUKNo=; 
+ b=nxflQnvciSd75PZ6THLHoH0qJQQZ8wiNp3cMhoq6qDfMmb1yyVZMavRUA0RGPH3KnF8L+NSMoAYpJMxU8cXtxkzni6dF4bgc3ShZDFh8zQlmrzjwP62A86YZ3P8JL4Tse4dXRM5o9LO0djgYFVUC3UvD46WHi5B5j51Jn1xlp94=;
+X-UUID: 036107b04f054aff822aa8faf953a253-20200615
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1625980849; Mon, 15 Jun 2020 06:48:14 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 15 Jun 2020 07:48:12 -0700
+ with ESMTP id 382958377; Mon, 15 Jun 2020 06:50:53 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 15 Jun 2020 07:48:06 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Mon, 15 Jun 2020 22:48:03 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 15 Jun 2020 22:48:02 +0800
+ Frontend Transport; Mon, 15 Jun 2020 22:48:03 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
  <asutoshd@codeaurora.org>
-Subject: [PATCH v2 0/3] scsi: ufs: Export UFS debugging dump for vendors
-Date: Mon, 15 Jun 2020 22:48:02 +0800
-Message-ID: <20200615144805.6921-1-stanley.chu@mediatek.com>
+Subject: [PATCH v2 1/3] scsi: ufs: Remove redundant label "out" in
+ ufshcd_make_hba_operational()
+Date: Mon, 15 Jun 2020 22:48:03 +0800
+Message-ID: <20200615144805.6921-2-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20200615144805.6921-1-stanley.chu@mediatek.com>
+References: <20200615144805.6921-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200615_074818_391001_FF740985 
-X-CRM114-Status: UNSURE (   4.56  )
+X-CRM114-CacheID: sfid-20200615_075057_116852_AE29FED6 
+X-CRM114-Status: UNSURE (   6.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -95,27 +98,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Label "out" is redundant in ufshcd_make_hba_operational() and
+can be removed.
 
-This series creates an unified entry function for UFS debugging information dump, and exports it to vendors to help debugging.
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/scsi/ufs/ufshcd.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-In the same time, do a small cleanup in ufshcd_make_hba_operational().
-
-v1 -> v2:
-  - Fix incorrect returned value in patch[3]'s ufs_mtk_link_set_hpm()
-
-Stanley Chu (3):
-  scsi: ufs: Remove redundant label "out" in
-    ufshcd_make_hba_operational()
-  scsi: ufs: Manage and export UFS debugging information dump
-  scsi: ufs-mediatek: Print host information for failed supsend and
-    resume
-
- drivers/scsi/ufs/ufs-mediatek.c | 16 +++++++----
- drivers/scsi/ufs/ufshcd.c       | 51 +++++++++++++++++++--------------
- drivers/scsi/ufs/ufshcd.h       |  8 ++++++
- 3 files changed, 47 insertions(+), 28 deletions(-)
-
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 1e1316ba7082..152ae7f5ae86 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -4258,10 +4258,8 @@ int ufshcd_make_hba_operational(struct ufs_hba *hba)
+ 		dev_err(hba->dev,
+ 			"Host controller not ready to process requests");
+ 		err = -EIO;
+-		goto out;
+ 	}
+ 
+-out:
+ 	return err;
+ }
+ EXPORT_SYMBOL_GPL(ufshcd_make_hba_operational);
 -- 
 2.18.0
 _______________________________________________
