@@ -2,80 +2,82 @@ Return-Path: <SRS0=oIsV=74=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DD692C433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 06:03:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E741CC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 06:18:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AC12420663
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 06:03:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BE08F206E2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 06:18:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ARzN++w6";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="HYbN0mFl"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC12420663
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="G1Cvnwde";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="b/X8KeEo"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE08F206E2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EEsAcmAhWTumJ7iGtkH1hI/FbEq24xuzN1rPKANMgOk=; b=ARzN++w6Vu0BsN
-	F6QG97JqFc/H8LQb+UxwjUKXnahZjqZFm8eLtH3i3b0pIkI2UqvUNXvW7R3B4A+v8vUz3WKr84T26
-	XGJDACGpzczhOCx1FWkFiAvfHfsEQ2sSFhfs938T5eK7SsxPNaC+pjH2Qo/9yZZiQxpyKRpobLm4N
-	aqy4Qrczjic2Y2/DREkWzo3OkvkyxF70Lrsmd6+jC+C2HTEq+0IfZe9/HLPoaA1RDPato5BapZ6Vc
-	T9vFv1R9HlFmkjs7LlMXx/d6ahy3BirxdqBR+ts4LQ15e2yrasFL19y+V50SrpjlrWZfNj1KkZk+6
-	yyXnD8/Onk1YYnOo4zFg==;
+	List-Owner; bh=4AtHOJwUy7cAJ/QGsVOnYVDStv8nh2g6+VVQf/2HLdI=; b=G1CvnwdeU/LoUF
+	YpfCE9uO0043Vx6BjvwoKPrr9/EbU9+aoyLg6HmVilGUc+NKhWTx0nid52bIARa0aXye3MQyR8T60
+	iXH7IpqUHpS5pkwA0WUAlO72h3Jwfomj7URxvKtfybGisyu77rytJRcQRy9zhv+HmoTKhvqFchE4s
+	bp9A/AfVzIFiw58r18ptjX1EawAJPmDrjBp5/aNDkS48L0IOftj9V2jdUVBvqzgvaBYvxfL6/hAtA
+	iMDpdwsf7mdf+EXWWvI80puzrDKhFqrNB6U0QnRauEn3/CRq3qAvPTzQgfN9DM+tAdx4hLlWos51u
+	e6Rykn6g9BCg7dHVe37A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jkiCl-0007Ve-FL; Mon, 15 Jun 2020 06:02:47 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jkiRK-0000yJ-Kp; Mon, 15 Jun 2020 06:17:50 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jkiCb-0007KC-0t; Mon, 15 Jun 2020 06:02:40 +0000
-X-UUID: 8b5a6460b39c4466a6cd639c400fcaa8-20200614
+ id 1jkiRH-0000xS-M3; Mon, 15 Jun 2020 06:17:49 +0000
+X-UUID: 4ffdd50c18af4656a46eefc0bfbb791b-20200614
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=fnDevRc5gzT9pEFX+fLR5VMrjoY4YqsLtT0zU0Ke8Vo=; 
- b=HYbN0mFli9pFHjzfVPtWFdBpE6Uum9IVibhYDTcZzYFFY+iaS42bn24Oalc84YJGI7r0SAt65iRby/MK7jcfYSR7C/XMLOi9rkkNB//Jd0hxCRBkGI/T2G947yHztReHKT3FMRPCo8gtbDsznehDOM6OoELspzcvHgBhkwbLMMA=;
-X-UUID: 8b5a6460b39c4466a6cd639c400fcaa8-20200614
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <dongchun.zhu@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=8E6iUgy1G5r0W+amwcAzOmYy/2hIRJmEje9glVMcWAE=; 
+ b=b/X8KeEoJ94QKzFOYASCMzMn/nguGtHkwdi9D7frlPbA/VSjC8rvGQuQflitKCFsvC8qLQltFeQWJwzHhHFMm2Iwka/GPAMP1dr1OflTS3hLmTGwSt08KHMJmX4sa9l4bV3B5PZH9d8Zi0fo/BWyJhPqS2NsYwfNz+87voD7qIo=;
+X-UUID: 4ffdd50c18af4656a46eefc0bfbb791b-20200614
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <macpaul.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1812739201; Sun, 14 Jun 2020 22:02:27 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ with ESMTP id 822435723; Sun, 14 Jun 2020 22:17:40 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 14 Jun 2020 22:57:00 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 15 Jun 2020 13:56:55 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 15 Jun 2020 13:56:54 +0800
-Message-ID: <1592200471.8804.681.camel@mhfsdcap03>
-Subject: Re: [V9, 2/2] media: i2c: ov02a10: Add OV02A10 image sensor driver
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: Tomasz Figa <tfiga@chromium.org>
-Date: Mon, 15 Jun 2020 13:54:31 +0800
-In-Reply-To: <CAAFQd5Bcb4A+HAivA-jrczK+OMxwZk3w0GYoh-DU=6gmTZBWnQ@mail.gmail.com>
-References: <20200523084103.31276-1-dongchun.zhu@mediatek.com>
- <20200523084103.31276-3-dongchun.zhu@mediatek.com>
- <20200610194455.GK201868@chromium.org>
- <1591958798.8804.660.camel@mhfsdcap03>
- <CAAFQd5Bcb4A+HAivA-jrczK+OMxwZk3w0GYoh-DU=6gmTZBWnQ@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ 15.0.1497.2; Sun, 14 Jun 2020 23:17:40 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 15 Jun 2020 14:17:38 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 15 Jun 2020 14:17:36 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Felipe Balbi <balbi@kernel.org>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ <linux-usb@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ Jim Lin <jilin@nvidia.com>, Siqi Lin <siqilin@google.com>, Alan Stern
+ <stern@rowland.harvard.edu>
+Subject: [PATCH v2] usb: replace hardcode maximum usb string length by
+ definition
+Date: Mon, 15 Jun 2020 14:17:35 +0800
+Message-ID: <1592201855-8218-1-git-send-email-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1591939967-29943-1-git-send-email-macpaul.lin@mediatek.com>
+References: <1591939967-29943-1-git-send-email-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 05083A7EAA71BA34896525D44F4E88087FD14958F89E60E60F8969B81D033BF72000:8
+X-TM-SNTS-SMTP: ADBF890E55533CA3D08784747C3C1882B436106C825BCC1A9AAF43AD4F3E88222000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200614_230237_067279_8EA574FC 
-X-CRM114-Status: GOOD (  22.26  )
+X-CRM114-CacheID: sfid-20200614_231747_727891_60663F0E 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,97 +89,95 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Nicolas Boichat <drinkcat@chromium.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- linux-devicetree <devicetree@vger.kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>, Shengnan
- Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=A3=E7=94=B7=29?=
- <shengnan.wang@mediatek.com>, Louis Kuo <louis.kuo@mediatek.com>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- dongchun.zhu@mediatek.com, Sakari Ailus <sakari.ailus@linux.intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, "list@263.net:IOMMU DRIVERS
- <iommu@lists.linux-foundation.org>, Joerg  Roedel <joro@8bytes.org>,
- " <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: Macpaul Lin <macpaul.lin@gmail.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+ Mediatek WSD Upstream <wsd_upstream@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Tomasz,
+Replace hardcode maximum usb string length (126 bytes) by definition
+"MAX_USB_STRING_LEN".
 
-On Fri, 2020-06-12 at 20:39 +0200, Tomasz Figa wrote:
-> On Fri, Jun 12, 2020 at 12:49 PM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
-> >
-> > Hi Tomasz,
-> >
-> > On Wed, 2020-06-10 at 19:44 +0000, Tomasz Figa wrote:
-> > > Hi Dongchun,
-> > >
-> > > On Sat, May 23, 2020 at 04:41:03PM +0800, Dongchun Zhu wrote:
-> > > > Add a V4L2 sub-device driver for OV02A10 image sensor.
-> > > >
-> > > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > > ---
-> > > >  MAINTAINERS                 |    1 +
-> > > >  drivers/media/i2c/Kconfig   |   13 +
-> > > >  drivers/media/i2c/Makefile  |    1 +
-> > > >  drivers/media/i2c/ov02a10.c | 1025 +++++++++++++++++++++++++++++++++++++++++++
-> > > >  4 files changed, 1040 insertions(+)
-> > > >  create mode 100644 drivers/media/i2c/ov02a10.c
-> > > >
-> > >
-> > > Thank you for the patch. Please see my comments inline.
-> > >
-> > > [snip]
-> > > > diff --git a/drivers/media/i2c/ov02a10.c b/drivers/media/i2c/ov02a10.c
-> > > > new file mode 100644
-> > > > index 0000000..160a0b5
-> > > > --- /dev/null
-> > > > +++ b/drivers/media/i2c/ov02a10.c
-> > > [snip]
-> > > > +static const char * const ov02a10_test_pattern_menu[] = {
-> > > > +   "Disabled",
-> > > > +   "Color Bar",
-> > >
-> > > nit: We should normalize this to one of the standard names. What is the
-> > > pattern on this sensor? Is it perhaps "Eight Vertical Colour Bars"?
-> > >
-> >
-> > Yes. It is one kind of 'Eight Vertical Colour Bars'.
-> > This pattern is called as 'MIPI color bar' per the datasheet.
-> > Can we here use 'Vertical Color Bar' or 'MIPI Color Bar'?
-> >
-> 
-> We should try to stick to the names as exposed by existing drivers.
-> There was an attempt to unify the naming of some Sony sensors some
-> time ago [1]. Perhaps one of the names there matches the pattern of
-> this sensor?
-> 
-> [1] https://patchwork.kernel.org/patch/10711777/
-> 
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+---
+Changes for v2:
+  - Add definition "MAX_USB_STRING_LEN" in ch9.h instead of in usb.h.
+    Thanks for Alan's suggestion.
 
-Sounds great.
-It is one good idea to summarize test patterns from various sensors.
-But one question plaguing me is that it seems even for the same "Eight
-Vertical Colour Bars", different sensors may have different RGB color
-map.
+ drivers/usb/gadget/composite.c |    4 ++--
+ drivers/usb/gadget/configfs.c  |    2 +-
+ drivers/usb/gadget/usbstring.c |    4 ++--
+ include/uapi/linux/usb/ch9.h   |    3 +++
+ 4 files changed, 8 insertions(+), 5 deletions(-)
 
-Moreover, definition standards of color bar style may differ among
-different sensor chip vendors.
-For instance, Sony often uses "Solid Color", "Color Bars With Fade to
-Grey", "PN9" to abstract test pattern output type; while OmniVision
-adopts color bar type 1, 2, 3, 4 or "MIPI Color Bar", "ISP Color Bar"
-instead.
-
-> Best regards,
-> Tomasz
-
+diff --git a/drivers/usb/gadget/composite.c b/drivers/usb/gadget/composite.c
+index cb4950c..d0de016 100644
+--- a/drivers/usb/gadget/composite.c
++++ b/drivers/usb/gadget/composite.c
+@@ -1041,7 +1041,7 @@ static void collect_langs(struct usb_gadget_strings **sp, __le16 *buf)
+ 	while (*sp) {
+ 		s = *sp;
+ 		language = cpu_to_le16(s->language);
+-		for (tmp = buf; *tmp && tmp < &buf[126]; tmp++) {
++		for (tmp = buf; *tmp && tmp < &buf[MAX_USB_STRING_LEN]; tmp++) {
+ 			if (*tmp == language)
+ 				goto repeat;
+ 		}
+@@ -1116,7 +1116,7 @@ static int get_string(struct usb_composite_dev *cdev,
+ 			collect_langs(sp, s->wData);
+ 		}
+ 
+-		for (len = 0; len <= 126 && s->wData[len]; len++)
++		for (len = 0; len <= MAX_USB_STRING_LEN && s->wData[len]; len++)
+ 			continue;
+ 		if (!len)
+ 			return -EINVAL;
+diff --git a/drivers/usb/gadget/configfs.c b/drivers/usb/gadget/configfs.c
+index 32b637e..70dd4ba 100644
+--- a/drivers/usb/gadget/configfs.c
++++ b/drivers/usb/gadget/configfs.c
+@@ -115,7 +115,7 @@ static int usb_string_copy(const char *s, char **s_copy)
+ 	char *str;
+ 	char *copy = *s_copy;
+ 	ret = strlen(s);
+-	if (ret > 126)
++	if (ret > MAX_USB_STRING_LEN)
+ 		return -EOVERFLOW;
+ 
+ 	str = kstrdup(s, GFP_KERNEL);
+diff --git a/drivers/usb/gadget/usbstring.c b/drivers/usb/gadget/usbstring.c
+index 7c24d1c..8a8d647 100644
+--- a/drivers/usb/gadget/usbstring.c
++++ b/drivers/usb/gadget/usbstring.c
+@@ -55,9 +55,9 @@
+ 		return -EINVAL;
+ 
+ 	/* string descriptors have length, tag, then UTF16-LE text */
+-	len = min((size_t) 126, strlen (s->s));
++	len = min((size_t)MAX_USB_STRING_LEN, strlen(s->s));
+ 	len = utf8s_to_utf16s(s->s, len, UTF16_LITTLE_ENDIAN,
+-			(wchar_t *) &buf[2], 126);
++			(wchar_t *) &buf[2], MAX_USB_STRING_LEN);
+ 	if (len < 0)
+ 		return -EINVAL;
+ 	buf [0] = (len + 1) * 2;
+diff --git a/include/uapi/linux/usb/ch9.h b/include/uapi/linux/usb/ch9.h
+index 2b623f3..cc02d05 100644
+--- a/include/uapi/linux/usb/ch9.h
++++ b/include/uapi/linux/usb/ch9.h
+@@ -364,6 +364,9 @@ struct usb_config_descriptor {
+ 
+ /*-------------------------------------------------------------------------*/
+ 
++/* USB String descriptors can contain at most 126 characters. */
++#define MAX_USB_STRING_LEN	126
++
+ /* USB_DT_STRING: String descriptor */
+ struct usb_string_descriptor {
+ 	__u8  bLength;
+-- 
+1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
