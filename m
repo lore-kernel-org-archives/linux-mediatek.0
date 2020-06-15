@@ -2,87 +2,75 @@ Return-Path: <SRS0=oIsV=74=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 912C7C433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 06:57:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 788ABC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 07:02:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 60FF72067B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 06:57:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 479A92067B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 07:02:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="k8R5j4Fb";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="gH17I2he"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 60FF72067B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Yf8c2wd7";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="WqtX1hSz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 479A92067B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lOD/WVYg5Cm3Mj1V96OfcwsCR1XU/ARd/8vfiBtsJUg=; b=k8R5j4FbpcgbPp
-	p92GYwtqfpHvxEC/aWThqnkTrQeoUBJ2e8mAT4lpEQbLdc4Fo77KyOEjAzW8/7Hggi04VE+frkx3G
-	nafE1W/rAbM/cJUvnvqX25pnpGMJPjZ+U4y6fAQE8qeYjCHY+LOiUJEWB1DMvgK/Yk4iYqztk6LDe
-	LmH5hVZC01DcNC//yQ5yWoOo2P9c/z1BOPj+JC2n2TKNWtcJffDtkAqx+FAFa4zpuIGfYu1C/0rbO
-	AMDTYN+EEuT0MvZ/xWXQlLy+JgZ4RE1VN40CyS+RPBwDo1GP8kYNs4ix82+cJJNsNXz8oMc64G8xJ
-	FBhnwqT/eq26pFW1hEqA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=BeoE2OUvJH80yygxKQ8xoE68j+P9H1Fn+WZDGXfBftc=; b=Yf8c2wd7nUyHax
+	oCf9BkGDApdgYzsQ9zdJPRceeP6/t6qFRFdWCB5KtD7ktAjRQgP/RDCFQplUkZ/Mk1FcB1AXqQzP5
+	RxyAoeZd/xE8TiPfDRO7k5MD7ik0dIkQOEGrOwl/OldDCApqyHfHENhhXMj/bf+PiOjJp3n3Q01r8
+	ztpwMA7xr6Yt95y1Q53k04eEGXUmkOufmd/q1n1lbeNH2kW0xqvCd704Ea/A3oviIv6vU6MPzA22p
+	oc3mWWVvlromAHeSw3yqcw618MDVuMio9VgrWP8YwgipjX8OpBOd7/LzpvHUjOoyGLoWik5VA9a4J
+	8Qii5JMTLeD9Li9+sFBg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jkj3w-0001X6-4W; Mon, 15 Jun 2020 06:57:44 +0000
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
+	id 1jkj80-0005CW-Ke; Mon, 15 Jun 2020 07:01:56 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jkj3k-0001Nv-Cq; Mon, 15 Jun 2020 06:57:33 +0000
-Received: by mail-io1-xd41.google.com with SMTP id o5so16620847iow.8;
- Sun, 14 Jun 2020 23:57:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=prTw8COlP0YawtaeVf0HJDCuQeY7haR6XjvMZVeDwlQ=;
- b=gH17I2hedonyS691+W+6fep+3TY2IXaj+WglcDlC4uQCnGNqbuuK/7lyqoLAnsWn3g
- x2Ah5LgH+8DHm7Pne9IQxpIpOXRgBdtuZ70LctwowboPEGiRtKl7X0CXO9/0c52j0t3z
- AlhBaH7/hfN1Rluumj9XQNvR6H4dLCTgI8wN3t6LOXKmu6//ZWxLRGWsIQKybkGqEits
- ymTOoXUd+zMG7KP80pm6qMiKu11Nz2Fqb7mTQ4c1eRj04F0IdpI7b4Pj4FDVjs8gDKEB
- X1PQ4tyOMcC4e/C7KpZnTdCzqyf+EJRozJmNbrhCqN2SMCCejsQfW1l0r0kS94GVokzH
- bLmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=prTw8COlP0YawtaeVf0HJDCuQeY7haR6XjvMZVeDwlQ=;
- b=Z0wH4bECK5yj5Smz7ivW/pc1KPWA0gNVYah2i10GWDrFun5J0kyWB9OEW8tcWXROFk
- FCpuCZbYcJ/LscGAo95HlfMLM/qareA15hI0b7k6kok+vcILa41OSC9FMoCo40m/992x
- 4UANdGNqEc5tniijWKHR1F6mC93om4GsQ3lXBF+oQgH1PgMBY5FOzIofcVS7z1QxvTaR
- izWTon47dN88mNzJDN3W078cGRhtif1ayZD2EtidCNnN5Q0NI9KawbNYojamZ/JvThsa
- py0/HpP/fijeHauOaSbXBodCQtFT44s0L73CKHnpD9Ueji6ko4HnQllhpHDEVV0l6+J3
- ZSBg==
-X-Gm-Message-State: AOAM533nVDonOH19069unn8t1R0ZKIj7f+lxsAjcPmIsOoJ6HfVzxYVH
- jGZAF2SHQldmxzwvwfzlasI2O661Fad0A18cPO8=
-X-Google-Smtp-Source: ABdhPJx+23o2l20XfKG7SyHZUNrf9US3cZjYRnOb+N5AUOux9SiMesGnHU/4N6bPSWQvtmT67O+1T8aFvEYB+jPDyas=
-X-Received: by 2002:a02:9a03:: with SMTP id b3mr19918046jal.76.1592204250795; 
- Sun, 14 Jun 2020 23:57:30 -0700 (PDT)
+ id 1jkj7x-0005C3-Du
+ for linux-mediatek@lists.infradead.org; Mon, 15 Jun 2020 07:01:55 +0000
+X-UUID: 70a91e0bf0cd4466befd627e579f4252-20200614
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=Kcva/qL1i6LODFzK4y6MzaWYG4epWEmzgMdS77XC8E4=; 
+ b=WqtX1hSzB+5GhnpHNe+hGdu6r6yzMXAJrB6sX4EUxnvo4cnPH09ht50q4cy225l/Q1nHhoRsS/67pYn1JtcdLJOqFy1SuM5QEocelbNDhwkjfsCxMnLDRyk6U7zI+Mwuzo4w1WqHQaf3Zfpv0CiI393YROdPWo52ynOnK68I954=;
+X-UUID: 70a91e0bf0cd4466befd627e579f4252-20200614
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 2130957891; Sun, 14 Jun 2020 23:01:50 -0800
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 15 Jun 2020 00:01:47 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 15 Jun 2020 15:01:48 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 15 Jun 2020 15:01:46 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+Subject: [PATCH] mt76: mt7615: cleanup codes
+Date: Mon, 15 Jun 2020 15:01:37 +0800
+Message-ID: <0cb7ad2a49010a540baca21cd19c43540534b141.1592204310.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <1591609125-3761-1-git-send-email-gene.chen.richtek@gmail.com>
- <20200608192829.GG4106@dell>
- <CAE+NS36mxw-FpQhJ4qV=_+r2CXVi_PaGaZo2m3jXAGFuOO252Q@mail.gmail.com>
- <20200609125305.GL4106@dell>
- <CAE+NS36b8fV2JnSEJpky+0ES3KTYmQzC0MRTfRUf8yRsJh_bpQ@mail.gmail.com>
- <20200612111717.GA2311694@dell>
-In-Reply-To: <20200612111717.GA2311694@dell>
-From: Gene Chen <gene.chen.richtek@gmail.com>
-Date: Mon, 15 Jun 2020 14:57:19 +0800
-Message-ID: <CAE+NS34gf+my16b8dGCBWy0rXjT-5ObcvQiMVWHqsGehb_yR4Q@mail.gmail.com>
-Subject: Re: [PATCH] mfd: mt6360: Fix register driver NULL pointer by add
- driver name
-To: Lee Jones <lee.jones@linaro.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200614_235732_438813_1BBF3595 
-X-CRM114-Status: GOOD (  17.69  )
+X-CRM114-CacheID: sfid-20200615_000153_481174_3331273C 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,82 +82,259 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Gene Chen <gene_chen@richtek.com>, linux-kernel@vger.kernel.org,
- cy_huang@richtek.com, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, Wilma.Wu@mediatek.com,
- linux-arm-kernel@lists.infradead.org, shufan_lee@richtek.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>,
+ linux-wireless@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-TGVlIEpvbmVzIDxsZWUuam9uZXNAbGluYXJvLm9yZz4g5pa8IDIwMjDlubQ25pyIMTLml6Ug6YCx
-5LqUIOS4i+WNiDc6MTflr6vpgZPvvJoKPgo+IE9uIEZyaSwgMTIgSnVuIDIwMjAsIEdlbmUgQ2hl
-biB3cm90ZToKPgo+ID4gTGVlIEpvbmVzIDxsZWUuam9uZXNAbGluYXJvLm9yZz4g5pa8IDIwMjDl
-ubQ25pyIOeaXpSDpgLHkuowg5LiL5Y2IODo1M+Wvq+mBk++8mgo+ID4gPgo+ID4gPiBPbiBUdWUs
-IDA5IEp1biAyMDIwLCBHZW5lIENoZW4gd3JvdGU6Cj4gPiA+Cj4gPiA+ID4gTGVlIEpvbmVzIDxs
-ZWUuam9uZXNAbGluYXJvLm9yZz4g5pa8IDIwMjDlubQ25pyIOeaXpSDpgLHkuowg5LiK5Y2IMzoy
-OOWvq+mBk++8mgo+ID4gPiA+ID4KPiA+ID4gPiA+IE9uIE1vbiwgMDggSnVuIDIwMjAsIEdlbmUg
-Q2hlbiB3cm90ZToKPiA+ID4gPiA+Cj4gPiA+ID4gPiA+IEZyb206IEdlbmUgQ2hlbiA8Z2VuZV9j
-aGVuQHJpY2h0ZWsuY29tPgo+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiBhY2NpZGVudGFsbHkgcmVt
-b3ZlIGRyaXZlciBuYW1lIHdoZW4KPiA+ID4gPiA+ID4gcmVwbGFjZSBwcm9iZSBieSBwcm9iZV9u
-ZXcgaW4gYWRkIG10NjM2MCBtZmQgZHJpdmVyIHBhdGNoIHY0Cj4gPiA+ID4gPiA+Cj4gPiA+ID4g
-PiA+IFsgIDEyMS4yNDMwMTJdIEVBWDogYzJhOGJjNjQgRUJYOiAwMDAwMDAwMCBFQ1g6IDAwMDAw
-MDAwIEVEWDogMDAwMDAwMDAKPiA+ID4gPiA+ID4gWyAgMTIxLjI0MzAxMl0gRVNJOiBjMmE4YmM3
-OSBFREk6IDAwMDAwMDAwIEVCUDogZTU0YmRlYTggRVNQOiBlNTRiZGVhMAo+ID4gPiA+ID4gPiBb
-ICAxMjEuMjQzMDEyXSBEUzogMDA3YiBFUzogMDA3YiBGUzogMDAwMCBHUzogMDAwMCBTUzogMDA2
-OCBFRkxBR1M6IDAwMDEwMjg2Cj4gPiA+ID4gPiA+IFsgIDEyMS4yNDMwMTJdIENSMDogODAwNTAw
-MzMgQ1IyOiAwMDAwMDAwMCBDUjM6IDAyZWMzMDAwIENSNDogMDAwMDA2YjAKPiA+ID4gPiA+ID4g
-WyAgMTIxLjI0MzAxMl0gQ2FsbCBUcmFjZToKPiA+ID4gPiA+ID4gWyAgMTIxLjI0MzAxMl0gIGtz
-ZXRfZmluZF9vYmorMHgzZC8weGMwCj4gPiA+ID4gPiA+IFsgIDEyMS4yNDMwMTJdICBkcml2ZXJf
-ZmluZCsweDE2LzB4NDAKPiA+ID4gPiA+ID4gWyAgMTIxLjI0MzAxMl0gIGRyaXZlcl9yZWdpc3Rl
-cisweDQ5LzB4MTAwCj4gPiA+ID4gPiA+IFsgIDEyMS4yNDMwMTJdICA/IGkyY19mb3JfZWFjaF9k
-ZXYrMHgzOS8weDUwCj4gPiA+ID4gPiA+IFsgIDEyMS4yNDMwMTJdICA/IF9fcHJvY2Vzc19uZXdf
-YWRhcHRlcisweDIwLzB4MjAKPiA+ID4gPiA+ID4gWyAgMTIxLjI0MzAxMl0gID8gY2h0X3djX2Ry
-aXZlcl9pbml0KzB4MTEvMHgxMQo+ID4gPiA+ID4gPiBbICAxMjEuMjQzMDEyXSAgaTJjX3JlZ2lz
-dGVyX2RyaXZlcisweDMwLzB4ODAKPiA+ID4gPiA+ID4gWyAgMTIxLjI0MzAxMl0gID8gaW50ZWxf
-bHBzc19wY2lfZHJpdmVyX2luaXQrMHgxNi8weDE2Cj4gPiA+ID4gPiA+IFsgIDEyMS4yNDMwMTJd
-ICBtdDYzNjBfcG11X2RyaXZlcl9pbml0KzB4Zi8weDExCj4gPiA+ID4gPiA+IFsgIDEyMS4yNDMw
-MTJdICBkb19vbmVfaW5pdGNhbGwrMHgzMy8weDFhMAo+ID4gPiA+ID4gPiBbICAxMjEuMjQzMDEy
-XSAgPyBwYXJzZV9hcmdzKzB4MWViLzB4M2QwCj4gPiA+ID4gPiA+IFsgIDEyMS4yNDMwMTJdICA/
-IF9fbWlnaHRfc2xlZXArMHgzMS8weDkwCj4gPiA+ID4gPiA+IFsgIDEyMS4yNDMwMTJdICA/IGtl
-cm5lbF9pbml0X2ZyZWVhYmxlKzB4MTBhLzB4MTdmCj4gPiA+ID4gPiA+IFsgIDEyMS4yNDMwMTJd
-ICBrZXJuZWxfaW5pdF9mcmVlYWJsZSsweDEyYy8weDE3Zgo+ID4gPiA+ID4gPiBbICAxMjEuMjQz
-MDEyXSAgPyByZXN0X2luaXQrMHgxMTAvMHgxMTAKPiA+ID4gPiA+ID4gWyAgMTIxLjI0MzAxMl0g
-IGtlcm5lbF9pbml0KzB4Yi8weDEwMAo+ID4gPiA+ID4gPiBbICAxMjEuMjQzMDEyXSAgPyBzY2hl
-ZHVsZV90YWlsX3dyYXBwZXIrMHg5LzB4Ywo+ID4gPiA+ID4gPiBbICAxMjEuMjQzMDEyXSAgcmV0
-X2Zyb21fZm9yaysweDE5LzB4MjQKPiA+ID4gPiA+ID4gWyAgMTIxLjI0MzAxMl0gTW9kdWxlcyBs
-aW5rZWQgaW46Cj4gPiA+ID4gPiA+IFsgIDEyMS4yNDMwMTJdIENSMjogMDAwMDAwMDAwMDAwMDAw
-MAo+ID4gPiA+ID4gPiBbICAxMjEuMjQzMDEyXSByYW5kb206IGdldF9yYW5kb21fYnl0ZXMgY2Fs
-bGVkIGZyb20gaW5pdF9vb3BzX2lkKzB4M2EvMHg0MCB3aXRoIGNybmdfaW5pdD0wCj4gPiA+ID4g
-PiA+IFsgIDEyMS4yNDMwMTJdIC0tLVsgZW5kIHRyYWNlIDM4YTgwMzQwMGYxYTJiZWUgXS0tLQo+
-ID4gPiA+ID4gPiBbICAxMjEuMjQzMDEyXSBFSVA6IHN0cmNtcCsweDExLzB4MzAKPiA+ID4gPiA+
-Cj4gPiA+ID4gPiBIb3cgZGlkIHRoaXMgZHJpdmVyIGV2ZXIgd29yayBmb3IgeW91Pwo+ID4gPiA+
-Cj4gPiA+ID4gaSBhc2sgbXkgY293b3JrZXIgaGVscCBtZSB2ZXJpZnkuCj4gPiA+ID4gaSB3aWxs
-IGNoZWNrIHRoZSBwYXRjaCBteXNlbGYsIHNpbmNlcmVseSBhcG9sb2dpZXMgZm9yIHRoaXMuCj4g
-PiA+Cj4gPiA+IFdoYXQgZG9lcyB0aGlzIG1lYW4/Cj4gPiA+Cj4gPiA+IEFyZSB5b3Ugc2F5aW5n
-IHRoYXQgZm9yIGFsbCAxMCB2ZXJzaW9ucyBvZiB0aGlzIHBhdGNoIHN1Ym1pc3Npb24sIGl0Cj4g
-PiA+IGhhcyBuZXZlciBiZWVuIHRlc3RlZD8gIEFuZCBkZXNwaXRlIGJlaW5nIGF1dGhvcmVkIGJ5
-IHlvdSBhbmQKPiA+ID4gc3VibWl0dGVkIGJ5IHlvdSwgeW91IGhhdmUgbmV2ZXIgYWN0dWFsbHkg
-Ym9vdCB0ZXN0ZWQgdGhlIGRyaXZlcgo+ID4gPiB5b3Vyc2VsZj8gIFJlbHlpbmcgaW5zdGVhZCBv
-biB5b3VyIGNvLXdvcmtlciB0byBjb25kdWN0IHRoZSB0ZXN0aW5nLAo+ID4gPiB3aG8gZmFpbGVk
-IHRvIGRvIHNvLiAgSXMgdGhhdCByZWFsbHkgY29ycmVjdD8KPiA+ID4KPiA+Cj4gPiBPbiBjYXJl
-ZnVsbHkgcmVhZGluZyB0byB0aGUgZG9jdW1lbnQgaG93IHRvIHVwc3RyZWFtLCBJIGZpbmQgdGhh
-dCBJCj4gPiBoYWQgZnVsbCBkdXR5IGZvciB2ZXJpZnkgcGF0Y2ggaSBzZW50Lgo+ID4gVGhlIGZh
-dWx0IGlzIGVudGlyZWx5IG1pbmUgYW5kIEkgZGVlcGx5IHJlZ3JldCB0aGF0IGl0IHNob3VsZCBo
-YXZlIG9jY3VycmVkLgo+ID4gSSB3aWxsIGFsd2F5cyB2ZXJpZnkgcGF0Y2ggYnkgbWVzZWxmIGJl
-Zm9yZSBzZW5kaW5nIGl0Lgo+ID4gSSBoYXZlIGFscmVhZHkgdmVyZmllZCBzdWItZGV2aWNlIGFk
-Yy9sZWQvcmVndWxhdG9yIGRvbmUgaW4gTWVkaWF0ZWsKPiA+IHBob25lIGFuZCBIaWtleTk2MCBk
-ZXZlbG9wbWVudCBib2FyZAo+Cj4gSSdtIG5vdCBsb29raW5nIGZvciBzb21lb25lIHRvIGJsYW1l
-LiAgSW5zdGVhZCwgSSB3b3VsZCBsaWtlIHRvCj4gYXNjZXJ0YWluIGhvdyB0aGlzIGhhcHBlbmVk
-LiAgSG93IHdhcyB0aGlzIGRyaXZlciBldmVyCj4gdGVzdGVkL3ZlcmlmaWVkPyAgSWYgeW91J3Jl
-IG5vdCBnb2luZyB0byBydW4vdXNlIGl0LCBkb2VzIGl0IGV2ZW4gbmVlZAo+IHRvIGV4aXN0Pwo+
-CgpUaGVyZSBpcyBkaWZmZXJlbmNlIGJldHdlZW4gdXBzdHJlYW0gYW5kIGNvbW1lcmljYWwgZHJp
-dmVyLgpXZSB3aWxsIHN5bmMgdXBzdHJlYW0gdmVyc2lvbiBhZnRlciB1cHN0cmVhbSBkb25lLCBp
-biBvcmRlciB0byBiZWNvbWUKY29tbW9uIGRyaXZlciBldmVyeW9uZSBjYW4gZWFzeSB0byB1c2UK
-Cj4gLS0KPiBMZWUgSm9uZXMgW+adjueQvOaWr10KPiBTZW5pb3IgVGVjaG5pY2FsIExlYWQgLSBE
-ZXZlbG9wZXIgU2VydmljZXMKPiBMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBm
-b3IgQXJtIFNvQ3MKPiBGb2xsb3cgTGluYXJvOiBGYWNlYm9vayB8IFR3aXR0ZXIgfCBCbG9nCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRp
-YXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Cleanup indentation, mixed licenses and change some functions' type as void.
+
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/Kconfig    |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt7615/dma.c      |  4 ++--
+ drivers/net/wireless/mediatek/mt76/mt7615/mac.c      | 12 ++++--------
+ drivers/net/wireless/mediatek/mt76/mt7615/main.c     |  8 ++++----
+ drivers/net/wireless/mediatek/mt76/mt7615/mcu.c      |  8 ++------
+ drivers/net/wireless/mediatek/mt76/mt7615/mmio.c     |  3 +++
+ drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h   |  8 ++++----
+ drivers/net/wireless/mediatek/mt76/mt7615/usb_init.c | 10 +++-------
+ drivers/net/wireless/mediatek/mt76/mt7615/usb_mcu.c  |  2 +-
+ 9 files changed, 24 insertions(+), 33 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/Kconfig b/drivers/net/wireless/mediatek/mt76/mt7615/Kconfig
+index e25db1135eda..d84548d5e000 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/Kconfig
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/Kconfig
+@@ -1,4 +1,4 @@
+-# SPDX-License-Identifier: GPL-2.0-only
++# SPDX-License-Identifier: ISC
+ 
+ config MT7615_COMMON
+ 	tristate
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/dma.c b/drivers/net/wireless/mediatek/mt76/mt7615/dma.c
+index e5a965df899a..786d6530ab53 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/dma.c
+@@ -13,7 +13,7 @@
+ 
+ static int
+ mt7615_init_tx_queue(struct mt7615_dev *dev, struct mt76_sw_queue *q,
+-		      int idx, int n_desc)
++		     int idx, int n_desc)
+ {
+ 	struct mt76_queue *hwq;
+ 	int err;
+@@ -283,7 +283,7 @@ int mt7615_dma_init(struct mt7615_dev *dev)
+ 		return ret;
+ 
+ 	if (!is_mt7615(&dev->mt76))
+-	    rx_ring_size /= 2;
++		rx_ring_size /= 2;
+ 
+ 	ret = mt76_queue_alloc(dev, &dev->mt76.q_rx[MT_RXQ_MAIN], 0,
+ 			       rx_ring_size, rx_buf_size, MT_RX_RING_BASE);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index f43e0a087732..958dbf84b637 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -167,7 +167,6 @@ void mt7615_mac_set_timing(struct mt7615_phy *phy)
+ 	else
+ 		mt76_clear(dev, MT_ARB_SCR,
+ 			   MT_ARB_SCR_TX0_DISABLE | MT_ARB_SCR_RX0_DISABLE);
+-
+ }
+ 
+ static void
+@@ -488,10 +487,10 @@ mt7615_mac_tx_rate_val(struct mt7615_dev *dev,
+ 	return rateval;
+ }
+ 
+-int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
+-			  struct sk_buff *skb, struct mt76_wcid *wcid,
+-			  struct ieee80211_sta *sta, int pid,
+-			  struct ieee80211_key_conf *key, bool beacon)
++void mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
++			   struct sk_buff *skb, struct mt76_wcid *wcid,
++			   struct ieee80211_sta *sta, int pid,
++			   struct ieee80211_key_conf *key, bool beacon)
+ {
+ 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
+ 	struct ieee80211_tx_rate *rate = &info->control.rates[0];
+@@ -642,8 +641,6 @@ int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
+ 	if (is_usb)
+ 		txwi[8] = FIELD_PREP(MT_TXD8_L_TYPE, fc_type) |
+ 			  FIELD_PREP(MT_TXD8_L_SUB_TYPE, fc_stype);
+-
+-	return 0;
+ }
+ EXPORT_SYMBOL_GPL(mt7615_mac_write_txwi);
+ 
+@@ -1931,7 +1928,6 @@ void mt7615_mac_reset_work(struct work_struct *work)
+ 	if (phy2)
+ 		ieee80211_queue_delayed_work(ext_phy->hw, &phy2->mac_work,
+ 					     MT7615_WATCHDOG_TIME);
+-
+ }
+ 
+ static void mt7615_dfs_stop_radar_detector(struct mt7615_phy *phy)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+index e6dbd7034bd7..6b4dd5d8794e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+@@ -693,16 +693,16 @@ static int
+ mt7615_sta_add(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	       struct ieee80211_sta *sta)
+ {
+-    return mt76_sta_state(hw, vif, sta, IEEE80211_STA_NOTEXIST,
+-			  IEEE80211_STA_NONE);
++	return mt76_sta_state(hw, vif, sta, IEEE80211_STA_NOTEXIST,
++			      IEEE80211_STA_NONE);
+ }
+ 
+ static int
+ mt7615_sta_remove(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		  struct ieee80211_sta *sta)
+ {
+-    return mt76_sta_state(hw, vif, sta, IEEE80211_STA_NONE,
+-			  IEEE80211_STA_NOTEXIST);
++	return mt76_sta_state(hw, vif, sta, IEEE80211_STA_NONE,
++			      IEEE80211_STA_NOTEXIST);
+ }
+ 
+ static int
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+index b76ecc24f333..f1e8e1ca9a75 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+@@ -721,7 +721,7 @@ mt7615_mcu_add_tlv(struct sk_buff *skb, int tag, int len)
+ 	return mt7615_mcu_add_nested_tlv(skb, tag, len, skb->data, NULL);
+ }
+ 
+-static int
++static void
+ mt7615_mcu_bss_basic_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
+ 			 struct ieee80211_sta *sta, bool enable)
+ {
+@@ -762,8 +762,6 @@ mt7615_mcu_bss_basic_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
+ 	bss->bmc_tx_wlan_idx = wlan_idx;
+ 	bss->wmm_idx = mvif->wmm_idx;
+ 	bss->active = enable;
+-
+-	return 0;
+ }
+ 
+ static void
+@@ -1047,7 +1045,7 @@ mt7615_mcu_wtbl_ht_tlv(struct sk_buff *skb, struct ieee80211_sta *sta,
+ 		      IEEE80211_VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_SHIFT;
+ 
+ 		if (ht)
+-		    ht->af = max(ht->af, af);
++			ht->af = max(ht->af, af);
+ 
+ 		if (sta->vht_cap.cap & IEEE80211_VHT_CAP_SHORT_GI_80)
+ 			flags |= MT_WTBL_W5_SHORT_GI_80;
+@@ -3133,7 +3131,6 @@ static int mt7615_dcoc_freq_idx(u16 freq, u8 bw)
+ 			break;
+ 
+ 		return -1;
+-
+ 	}
+ 
+ 	return mt7615_find_freq_idx(freq_list, ARRAY_SIZE(freq_list), freq);
+@@ -3253,7 +3250,6 @@ static int mt7615_dpd_freq_idx(u16 freq, u8 bw)
+ 	return mt7615_find_freq_idx(freq_list, ARRAY_SIZE(freq_list), freq);
+ }
+ 
+-
+ int mt7615_mcu_apply_tx_dpd(struct mt7615_phy *phy)
+ {
+ 	struct mt7615_dev *dev = phy->dev;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c
+index 2e99845b9c96..39b7db871fc1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c
+@@ -1,3 +1,6 @@
++// SPDX-License-Identifier: ISC
++/* Copyright (C) 2020 MediaTek Inc. */
++
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+index 913dac5c3006..37c78ea2976d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+@@ -494,10 +494,10 @@ void mt7615_mac_cca_stats_reset(struct mt7615_phy *phy);
+ void mt7615_mac_set_scs(struct mt7615_phy *phy, bool enable);
+ void mt7615_mac_enable_nf(struct mt7615_dev *dev, bool ext_phy);
+ void mt7615_mac_sta_poll(struct mt7615_dev *dev);
+-int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
+-			  struct sk_buff *skb, struct mt76_wcid *wcid,
+-			  struct ieee80211_sta *sta, int pid,
+-			  struct ieee80211_key_conf *key, bool beacon);
++void mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
++			   struct sk_buff *skb, struct mt76_wcid *wcid,
++			   struct ieee80211_sta *sta, int pid,
++			   struct ieee80211_key_conf *key, bool beacon);
+ void mt7615_mac_set_timing(struct mt7615_phy *phy);
+ int mt7615_mac_wtbl_set_key(struct mt7615_dev *dev, struct mt76_wcid *wcid,
+ 			    struct ieee80211_key_conf *key,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/usb_init.c b/drivers/net/wireless/mediatek/mt76/mt7615/usb_init.c
+index 1fbc9601391d..27136ff1aac9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/usb_init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/usb_init.c
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0
++// SPDX-License-Identifier: ISC
+ /* Copyright (C) 2019 MediaTek Inc.
+  *
+  * Author: Felix Fietkau <nbd@nbd.name>
+@@ -13,7 +13,7 @@
+ #include "mac.h"
+ #include "regs.h"
+ 
+-static int mt7663u_dma_sched_init(struct mt7615_dev *dev)
++static void mt7663u_dma_sched_init(struct mt7615_dev *dev)
+ {
+ 	int i;
+ 
+@@ -61,8 +61,6 @@ static int mt7663u_dma_sched_init(struct mt7615_dev *dev)
+ 	mt76_rmw(dev, MT_UDMA_WLCFG_0, MT_WL_RX_AGG_LMT | MT_WL_RX_AGG_TO,
+ 		 FIELD_PREP(MT_WL_RX_AGG_LMT, 32) |
+ 		 FIELD_PREP(MT_WL_RX_AGG_TO, 100));
+-
+-	return 0;
+ }
+ 
+ static int mt7663u_init_hardware(struct mt7615_dev *dev)
+@@ -73,9 +71,7 @@ static int mt7663u_init_hardware(struct mt7615_dev *dev)
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	ret = mt7663u_dma_sched_init(dev);
+-	if (ret)
+-		return ret;
++	mt7663u_dma_sched_init(dev);
+ 
+ 	set_bit(MT76_STATE_INITIALIZED, &dev->mphy.state);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/usb_mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/usb_mcu.c
+index cd709fd617db..36c47500eb5b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/usb_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/usb_mcu.c
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0
++// SPDX-License-Identifier: ISC
+ /* Copyright (C) 2019 MediaTek Inc.
+  *
+  * Author: Felix Fietkau <nbd@nbd.name>
+-- 
+2.18.0
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
