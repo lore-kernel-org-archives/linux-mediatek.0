@@ -2,107 +2,55 @@ Return-Path: <SRS0=oIsV=74=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 71ED5C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 18:41:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 47D9EC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 20:31:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3861C20756
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 18:41:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DEE7C208C7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 20:31:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FpKQ9/hU";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="iuyqJ3S+";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="JZUrw80w";
-	dkim=neutral (0-bit key) header.d=redhat.com header.i=@redhat.com header.b="LtPJTANz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3861C20756
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pVi8srHt"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DEE7C208C7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=o4lZKdOTCcfun68CMiVD91VhoDjacbf6sU/0qF9ZMhU=; b=FpKQ9/hU59yfe46zKXXgUKd3i
-	dayNFy20c8qpxDsdEp5PbmhXuvSHy/pXeyqVZ7CHsjnR8Cw7Alv1okx8LnAiL6cHiJh3Qssg/unwx
-	hdWapzjq4r+jrFxEy4wHT6V8p9dkB6W+M08I4LOILX+NePedCs/qXZEOftbhBrIxxUteMWeeRh284
-	ZeL6AA8qbJj/ft1joJjnRB5tLc1l6nY2FeZFCMSDnNRaQLEggUNcs4oS5bo+4/ccCEgJ7D9RBTUcQ
-	S4an3b8Dtydrv2nIpWtGqNdct57I3zmhpDwi891VK1Nc7tsfd4+eWNaDb8+sr0XnK9Y1FTIfQrgwN
-	989FVGrbw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=d2K1D/lOSMGxUuRmnu/QYSoLy6m57iewJpD+SA7HkVU=; b=pVi8srHtZlQ2u9
+	hCPZ2so/JO8OAIQWd8jCMFCpstM0BTkyE6ZUVZ3epYuEO9iK3xaCk0/b4Qdx2ysM5pEC95+jYK2sA
+	4J5oRJh4bEdQDg3TKi5WDXutu4ZGK5eNkpGXJFA4CtYy+t8jrMoVJ2zBpqdrgzxXbwhpSG7QENA+z
+	3bYA0VUb+eMNez1MDe0ypghaqKRFeOnvgPdbbrkPwtoHQx6QTwB+9uhulgogqCqG9f+VG5sjdRMJV
+	2tOQQbO1kpcoTC3ONbh6w4m6TfQg6R7516xzuX++CyAqXDm6Ee6Clj4jCfzJayf6EA4qoH5HeFwwV
+	ia1PGLrhVmzeKskJIs/w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jku2Y-0002uA-90; Mon, 15 Jun 2020 18:41:02 +0000
-Received: from merlin.infradead.org ([2001:8b0:10b:1231::1])
+	id 1jkvlT-0007f6-P5; Mon, 15 Jun 2020 20:31:31 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jku2X-0002tc-7i
- for linux-mediatek@bombadil.infradead.org; Mon, 15 Jun 2020 18:41:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
- :Reply-To:Content-ID:Content-Description;
- bh=3LdVapGy9WTsAkwpfNEzCTfQe3Pij8/lM5ySXZsHExs=; b=iuyqJ3S+w7X0Ye7qU0Cb7YQnyp
- PTAI0fJzmkCIKBS32O5Pyo3kck96yib9tmThrisqwMAAhk548nKcyOtFMYk3caoakVwibJCUbW0n/
- +CPMqnU9B0b3abRL46DaO9nButePXY8JdiQEh+S6Cb89j16JH/wzX73G5TcCBqEe9TJuJnT0ipobu
- oQWGid0YRWzD79d3/bwRjR0uBmFJ1cmHiw1dP2nXRy4CSrW1chmCZ3DihanSUtgtaVvJZ/Dse6iQ4
- OAgmTXcVlmKWxzix52aqcAbaKhwCv0Q+yl5uvB2Is0ux0AqdDEBa+37l1d7f3BhaMkUSUcxcAul6X
- pGSfCang==;
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]
- helo=us-smtp-1.mimecast.com)
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jku2V-0004Cc-4p
- for linux-mediatek@lists.infradead.org; Mon, 15 Jun 2020 18:40:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592246437;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3LdVapGy9WTsAkwpfNEzCTfQe3Pij8/lM5ySXZsHExs=;
- b=JZUrw80wsDeK0bo3tEKQK8XiW9ngmDKg5MFnAeOyBAYl0bASVB+QJjQFV1GJsM7juSSDEX
- zWSaFZX2UdG6N7HwH1NEKT0XcQDnP7iZ8aY1Tv5Ylz+cF8epg7Ev8QJSHYanngZUDD+NKp
- g2VWPw/vUn4XzPWpEZ+uPXRfRhU1J0Q=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592246458;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3LdVapGy9WTsAkwpfNEzCTfQe3Pij8/lM5ySXZsHExs=;
- b=LtPJTANzbHBowo2ItENPFQ9zRO4EIPRVJCvvrHOP9lVjm3OAoLJFx/lc2KSAD2ZVJ6beCW
- +u4BA1rzyF6mFCifn9pXk2hKcr1DAHD4xucHAXbrdHhIt2+BHol+t1uPrb5aJZZlWBdjU+
- hrQoS0EU4IvlQ3MMd01UO8s1DgAd1hU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-513-n3G_ZfGUONug8wkjJytxqA-1; Mon, 15 Jun 2020 14:40:12 -0400
-X-MC-Unique: n3G_ZfGUONug8wkjJytxqA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E5F43184D144;
- Mon, 15 Jun 2020 18:40:06 +0000 (UTC)
-Received: from llong.remote.csb (ovpn-117-41.rdu2.redhat.com [10.10.117.41])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3972B5D9CC;
- Mon, 15 Jun 2020 18:40:00 +0000 (UTC)
-Subject: Re: [PATCH 1/2] mm, treewide: Rename kzfree() to kfree_sensitive()
-To: Dan Carpenter <dan.carpenter@oracle.com>
-References: <20200413211550.8307-1-longman@redhat.com>
- <20200413211550.8307-2-longman@redhat.com> <20200615180753.GJ4151@kadam>
-From: Waiman Long <longman@redhat.com>
-Organization: Red Hat
-Message-ID: <9d084be2-29a3-7757-9386-20dbaeb5fc24@redhat.com>
-Date: Mon, 15 Jun 2020 14:39:59 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ id 1jkvlI-0007V6-Ur; Mon, 15 Jun 2020 20:31:22 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id 48A632A2CF6
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+To: linux-kernel@vger.kernel.org,
+	Collabora Kernel ML <kernel@collabora.com>
+Subject: [RESEND PATCH v4 0/7] Convert mtk-dsi to drm_bridge API and get EDID
+ for ps8640 bridge
+Date: Mon, 15 Jun 2020 22:31:01 +0200
+Message-Id: <20200615203108.786083-1-enric.balletbo@collabora.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-In-Reply-To: <20200615180753.GJ4151@kadam>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20200615_133121_125169_61DCEB53 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,84 +62,75 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-cifs@vger.kernel.org, linux-wireless@vger.kernel.org,
- Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
- virtualization@lists.linux-foundation.org, David Howells <dhowells@redhat.com>,
- linux-mm@kvack.org, linux-sctp@vger.kernel.org, target-devel@vger.kernel.org,
- kasan-dev@googlegroups.com, cocci@systeme.lip6.fr, devel@driverdev.osuosl.org,
- linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org, x86@kernel.org,
- James Morris <jmorris@namei.org>, Matthew Wilcox <willy@infradead.org>,
- linux-stm32@st-md-mailman.stormreply.com, intel-wired-lan@lists.osuosl.org,
- David Rientjes <rientjes@google.com>, "Serge E. Hallyn" <serge@hallyn.com>,
- linux-pm@vger.kernel.org, ecryptfs@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org, linux-fscrypt@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-btrfs@vger.kernel.org, linux-integrity@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
- Linus Torvalds <torvalds@linux-foundation.org>,
- samba-technical@lists.samba.org, linux-kernel@vger.kernel.org,
- linux-bluetooth@vger.kernel.org, linux-security-module@vger.kernel.org,
- keyrings@vger.kernel.org, tipc-discussion@lists.sourceforge.net,
- linux-crypto@vger.kernel.org, netdev@vger.kernel.org,
- Joe Perches <joe@perches.com>, Andrew Morton <akpm@linux-foundation.org>,
- linux-wpan@vger.kernel.org, wireguard@lists.zx2c4.com,
- linux-ppp@vger.kernel.org
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Jernej Skrabec <jernej.skrabec@siol.net>, drinkcat@chromium.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, Jonas Karlman <jonas@kwiboo.se>,
+ David Airlie <airlied@linux.ie>, Thomas Zimmermann <tzimmermann@suse.de>,
+ dri-devel@lists.freedesktop.org, Neil Armstrong <narmstrong@baylibre.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Andrzej Hajda <a.hajda@samsung.com>,
+ linux-mediatek@lists.infradead.org,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Daniel Vetter <daniel@ffwll.ch>, hsinyi@chromium.org, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/15/20 2:07 PM, Dan Carpenter wrote:
-> On Mon, Apr 13, 2020 at 05:15:49PM -0400, Waiman Long wrote:
->> diff --git a/mm/slab_common.c b/mm/slab_common.c
->> index 23c7500eea7d..c08bc7eb20bd 100644
->> --- a/mm/slab_common.c
->> +++ b/mm/slab_common.c
->> @@ -1707,17 +1707,17 @@ void *krealloc(const void *p, size_t new_size, gfp_t flags)
->>   EXPORT_SYMBOL(krealloc);
->>   
->>   /**
->> - * kzfree - like kfree but zero memory
->> + * kfree_sensitive - Clear sensitive information in memory before freeing
->>    * @p: object to free memory of
->>    *
->>    * The memory of the object @p points to is zeroed before freed.
->> - * If @p is %NULL, kzfree() does nothing.
->> + * If @p is %NULL, kfree_sensitive() does nothing.
->>    *
->>    * Note: this function zeroes the whole allocated buffer which can be a good
->>    * deal bigger than the requested buffer size passed to kmalloc(). So be
->>    * careful when using this function in performance sensitive code.
->>    */
->> -void kzfree(const void *p)
->> +void kfree_sensitive(const void *p)
->>   {
->>   	size_t ks;
->>   	void *mem = (void *)p;
->> @@ -1725,10 +1725,10 @@ void kzfree(const void *p)
->>   	if (unlikely(ZERO_OR_NULL_PTR(mem)))
->>   		return;
->>   	ks = ksize(mem);
->> -	memset(mem, 0, ks);
->> +	memzero_explicit(mem, ks);
->          ^^^^^^^^^^^^^^^^^^^^^^^^^
-> This is an unrelated bug fix.  It really needs to be pulled into a
-> separate patch by itself and back ported to stable kernels.
->
->>   	kfree(mem);
->>   }
->> -EXPORT_SYMBOL(kzfree);
->> +EXPORT_SYMBOL(kfree_sensitive);
->>   
->>   /**
->>    * ksize - get the actual amount of memory allocated for a given object
-> regards,
-> dan carpenter
->
-Thanks for the suggestion. I will break it out and post a version soon.
+(This resend is to fix some trivial conflicts due the merge window)
 
-Cheers,
-Longman
+The PS8640 dsi-to-eDP bridge driver is using the panel bridge API,
+however, not all the components in the chain have been ported to the
+drm_bridge API. Actually, when a panel is attached the default panel's mode
+is used, but in some cases we can't get display up if mode getting from
+eDP control EDID is not chosen.
+
+This series address that problem, first implements the .get_edid()
+callback in the PS8640 driver (which is not used until the conversion is
+done) and then, converts the Mediatek DSI driver to use the drm_bridge
+API.
+
+As far as I know, we're the only users of the mediatek dsi driver in
+mainline, so should be safe to switch to the new chain of drm_bridge API
+unconditionally.
+
+The patches has been tested on a Acer Chromebook R13 (Elm) running a
+Chrome OS userspace and checking that the valid EDID mode reported by
+the bridge is selected.
+
+Changes in v4:
+- Remove double call to drm_encoder_init(). (Chun-Kuang Hu)
+- Cleanup the encoder in mtk_dsi_unbind(). (Chun-Kuang Hu)
+
+Changes in v3:
+- Replace s/bridge/next bridge/ for comment. (Laurent Pinchart)
+- Add the bridge.type. (Laurent Pinchart)
+- Use next_bridge field to store the panel bridge. (Laurent Pinchart)
+- Add the bridge.type field. (Laurent Pinchart)
+- This patch requires https://lkml.org/lkml/2020/4/16/2080 to work
+  properly.
+- Move the bridge.type line to the patch that adds drm_bridge support. (Laurent Pinchart)
+
+Changes in v2:
+- Do not set connector_type for panel here. (Sam Ravnborg)
+
+Enric Balletbo i Serra (7):
+  drm/bridge: ps8640: Get the EDID from eDP control
+  drm/bridge_connector: Set default status connected for eDP connectors
+  drm/mediatek: mtk_dsi: Rename bridge to next_bridge
+  drm/mediatek: mtk_dsi: Convert to bridge driver
+  drm/mediatek: mtk_dsi: Use simple encoder
+  drm/mediatek: mtk_dsi: Use the drm_panel_bridge API
+  drm/mediatek: mtk_dsi: Create connector for bridges
+
+ drivers/gpu/drm/bridge/parade-ps8640.c |  12 ++
+ drivers/gpu/drm/drm_bridge_connector.c |   1 +
+ drivers/gpu/drm/mediatek/mtk_dsi.c     | 269 ++++++++-----------------
+ 3 files changed, 97 insertions(+), 185 deletions(-)
+
+-- 
+2.27.0
 
 
 _______________________________________________
