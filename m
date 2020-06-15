@@ -2,82 +2,70 @@ Return-Path: <SRS0=oIsV=74=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E741CC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 06:18:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 70CABC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 06:47:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BE08F206E2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 06:18:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 40EF72067B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 06:47:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="G1Cvnwde";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="b/X8KeEo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE08F206E2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z3Poimt+";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="eYahEgyP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 40EF72067B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4AtHOJwUy7cAJ/QGsVOnYVDStv8nh2g6+VVQf/2HLdI=; b=G1CvnwdeU/LoUF
-	YpfCE9uO0043Vx6BjvwoKPrr9/EbU9+aoyLg6HmVilGUc+NKhWTx0nid52bIARa0aXye3MQyR8T60
-	iXH7IpqUHpS5pkwA0WUAlO72h3Jwfomj7URxvKtfybGisyu77rytJRcQRy9zhv+HmoTKhvqFchE4s
-	bp9A/AfVzIFiw58r18ptjX1EawAJPmDrjBp5/aNDkS48L0IOftj9V2jdUVBvqzgvaBYvxfL6/hAtA
-	iMDpdwsf7mdf+EXWWvI80puzrDKhFqrNB6U0QnRauEn3/CRq3qAvPTzQgfN9DM+tAdx4hLlWos51u
-	e6Rykn6g9BCg7dHVe37A==;
+	List-Owner; bh=ecGfbbGah92syPpzf99eQ6zEJr7mBvthQQRN0Qc8+lI=; b=Z3Poimt+CJ0s3N
+	4WP3oCRwlITE3iCaUvVYCGvAFyJ7/6ZtiXv85g7TdFiABISYkpwDd4xi5Nec4RaHNFifNmqhg5STK
+	WFfGFq20ggz//2NxfdkwNXgiEMlEPCn5q1AbpN1iCCsoZEy/MmEmG9idBE0zRwaFkPc34apbtpVtg
+	YMi6KoVc1dK8/g4A0NSwKYTF9DxIQESAM1veK8bZjcWaS1Xel/Ty5ldHP+MnlV1qxKKLP676LfdgM
+	3h/8i2/Bt69VPjjOX2LPLM/b/UWJnDzWOGBQUYauqOPzppK52hvHdKG4r7tIcNzU+jLiKGZbwNsez
+	bMfZSS63b7pmbQQpbaTg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jkiRK-0000yJ-Kp; Mon, 15 Jun 2020 06:17:50 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jkiuE-00024f-BL; Mon, 15 Jun 2020 06:47:42 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jkiRH-0000xS-M3; Mon, 15 Jun 2020 06:17:49 +0000
-X-UUID: 4ffdd50c18af4656a46eefc0bfbb791b-20200614
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=8E6iUgy1G5r0W+amwcAzOmYy/2hIRJmEje9glVMcWAE=; 
- b=b/X8KeEoJ94QKzFOYASCMzMn/nguGtHkwdi9D7frlPbA/VSjC8rvGQuQflitKCFsvC8qLQltFeQWJwzHhHFMm2Iwka/GPAMP1dr1OflTS3hLmTGwSt08KHMJmX4sa9l4bV3B5PZH9d8Zi0fo/BWyJhPqS2NsYwfNz+87voD7qIo=;
-X-UUID: 4ffdd50c18af4656a46eefc0bfbb791b-20200614
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <macpaul.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 822435723; Sun, 14 Jun 2020 22:17:40 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 14 Jun 2020 23:17:40 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 15 Jun 2020 14:17:38 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 15 Jun 2020 14:17:36 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Felipe Balbi <balbi@kernel.org>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- <linux-usb@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- Jim Lin <jilin@nvidia.com>, Siqi Lin <siqilin@google.com>, Alan Stern
- <stern@rowland.harvard.edu>
-Subject: [PATCH v2] usb: replace hardcode maximum usb string length by
- definition
-Date: Mon, 15 Jun 2020 14:17:35 +0800
-Message-ID: <1592201855-8218-1-git-send-email-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1591939967-29943-1-git-send-email-macpaul.lin@mediatek.com>
-References: <1591939967-29943-1-git-send-email-macpaul.lin@mediatek.com>
+ id 1jkitl-0001aV-IU; Mon, 15 Jun 2020 06:47:16 +0000
+Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
+ [95.90.213.197])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 947E521556;
+ Mon, 15 Jun 2020 06:47:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1592203632;
+ bh=sOlCZeAIIdnJeZ75NMKYKIJfx785+zKJ7yu0YkJu2qg=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=eYahEgyPPQXSmFAT7H9YIWLrUz7r9bYJ3sEmnpf2WjfEZkEfYSQL+dnCBid4wPO3T
+ Ff7Yc21Lokg1ydol9hQBG25i5Bwy/5e16o9e1ssMGQswWyQGV4Zw4FZ3rWBJGz9Iwd
+ tmb2mt5uOxRpXVgFNGkevjoXwvHrVow/kwT35a+w=
+Received: from mchehab by mail.kernel.org with local (Exim 4.93)
+ (envelope-from <mchehab@kernel.org>)
+ id 1jkith-009nmo-QD; Mon, 15 Jun 2020 08:47:09 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Linux Doc Mailing List <linux-doc@vger.kernel.org>
+Subject: [PATCH 13/29] dt: fix broken links due to txt->yaml renames
+Date: Mon, 15 Jun 2020 08:46:52 +0200
+Message-Id: <0e4a7f0b7efcc8109c8a41a2e13c8adde4d9c6b9.1592203542.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <cover.1592203542.git.mchehab+huawei@kernel.org>
+References: <cover.1592203542.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: ADBF890E55533CA3D08784747C3C1882B436106C825BCC1A9AAF43AD4F3E88222000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200614_231747_727891_60663F0E 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20200614_234714_542609_157D45C5 
+X-CRM114-Status: GOOD (  14.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,95 +77,149 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Macpaul Lin <macpaul.lin@gmail.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>
+Cc: alsa-devel@alsa-project.org,
+ =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+ David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ linux-rockchip@lists.infradead.org, Sandy Huang <hjc@rock-chips.com>,
+ Jakub Kicinski <kuba@kernel.org>, linux-mips@vger.kernel.org,
+ devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
+ Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>, netdev@vger.kernel.org,
+ Arnaud Pouliquen <arnaud.pouliquen@st.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, linux-bluetooth@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace hardcode maximum usb string length (126 bytes) by definition
-"MAX_USB_STRING_LEN".
+There are some new broken doc links due to yaml renames
+at DT. Developers should really run:
 
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+	./scripts/documentation-file-ref-check
+
+in order to solve those issues while submitting patches.
+This tool can even fix most of the issues with:
+
+	./scripts/documentation-file-ref-check --fix
+
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
-Changes for v2:
-  - Add definition "MAX_USB_STRING_LEN" in ch9.h instead of in usb.h.
-    Thanks for Alan's suggestion.
+ Documentation/devicetree/bindings/display/bridge/sii902x.txt  | 2 +-
+ .../devicetree/bindings/display/rockchip/rockchip-drm.yaml    | 2 +-
+ Documentation/devicetree/bindings/net/mediatek-bluetooth.txt  | 2 +-
+ Documentation/devicetree/bindings/sound/audio-graph-card.txt  | 2 +-
+ Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt  | 2 +-
+ Documentation/mips/ingenic-tcu.rst                            | 2 +-
+ MAINTAINERS                                                   | 4 ++--
+ 7 files changed, 8 insertions(+), 8 deletions(-)
 
- drivers/usb/gadget/composite.c |    4 ++--
- drivers/usb/gadget/configfs.c  |    2 +-
- drivers/usb/gadget/usbstring.c |    4 ++--
- include/uapi/linux/usb/ch9.h   |    3 +++
- 4 files changed, 8 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/usb/gadget/composite.c b/drivers/usb/gadget/composite.c
-index cb4950c..d0de016 100644
---- a/drivers/usb/gadget/composite.c
-+++ b/drivers/usb/gadget/composite.c
-@@ -1041,7 +1041,7 @@ static void collect_langs(struct usb_gadget_strings **sp, __le16 *buf)
- 	while (*sp) {
- 		s = *sp;
- 		language = cpu_to_le16(s->language);
--		for (tmp = buf; *tmp && tmp < &buf[126]; tmp++) {
-+		for (tmp = buf; *tmp && tmp < &buf[MAX_USB_STRING_LEN]; tmp++) {
- 			if (*tmp == language)
- 				goto repeat;
- 		}
-@@ -1116,7 +1116,7 @@ static int get_string(struct usb_composite_dev *cdev,
- 			collect_langs(sp, s->wData);
- 		}
+diff --git a/Documentation/devicetree/bindings/display/bridge/sii902x.txt b/Documentation/devicetree/bindings/display/bridge/sii902x.txt
+index 6e14e087c0d0..0d1db3f9da84 100644
+--- a/Documentation/devicetree/bindings/display/bridge/sii902x.txt
++++ b/Documentation/devicetree/bindings/display/bridge/sii902x.txt
+@@ -37,7 +37,7 @@ Optional properties:
+ 	simple-card or audio-graph-card binding. See their binding
+ 	documents on how to describe the way the sii902x device is
+ 	connected to the rest of the audio system:
+-	Documentation/devicetree/bindings/sound/simple-card.txt
++	Documentation/devicetree/bindings/sound/simple-card.yaml
+ 	Documentation/devicetree/bindings/sound/audio-graph-card.txt
+ 	Note: In case of the audio-graph-card binding the used port
+ 	index should be 3.
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
+index ec8ae742d4da..7204da5eb4c5 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
+@@ -24,7 +24,7 @@ properties:
+     description: |
+       Should contain a list of phandles pointing to display interface port
+       of vop devices. vop definitions as defined in
+-      Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
++      Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
  
--		for (len = 0; len <= 126 && s->wData[len]; len++)
-+		for (len = 0; len <= MAX_USB_STRING_LEN && s->wData[len]; len++)
- 			continue;
- 		if (!len)
- 			return -EINVAL;
-diff --git a/drivers/usb/gadget/configfs.c b/drivers/usb/gadget/configfs.c
-index 32b637e..70dd4ba 100644
---- a/drivers/usb/gadget/configfs.c
-+++ b/drivers/usb/gadget/configfs.c
-@@ -115,7 +115,7 @@ static int usb_string_copy(const char *s, char **s_copy)
- 	char *str;
- 	char *copy = *s_copy;
- 	ret = strlen(s);
--	if (ret > 126)
-+	if (ret > MAX_USB_STRING_LEN)
- 		return -EOVERFLOW;
+ required:
+   - compatible
+diff --git a/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt b/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
+index 219bcbd0d344..9ef5bacda8c1 100644
+--- a/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
++++ b/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
+@@ -3,7 +3,7 @@ MediaTek SoC built-in Bluetooth Devices
  
- 	str = kstrdup(s, GFP_KERNEL);
-diff --git a/drivers/usb/gadget/usbstring.c b/drivers/usb/gadget/usbstring.c
-index 7c24d1c..8a8d647 100644
---- a/drivers/usb/gadget/usbstring.c
-+++ b/drivers/usb/gadget/usbstring.c
-@@ -55,9 +55,9 @@
- 		return -EINVAL;
+ This device is a serial attached device to BTIF device and thus it must be a
+ child node of the serial node with BTIF. The dt-bindings details for BTIF
+-device can be known via Documentation/devicetree/bindings/serial/8250.txt.
++device can be known via Documentation/devicetree/bindings/serial/8250.yaml.
  
- 	/* string descriptors have length, tag, then UTF16-LE text */
--	len = min((size_t) 126, strlen (s->s));
-+	len = min((size_t)MAX_USB_STRING_LEN, strlen(s->s));
- 	len = utf8s_to_utf16s(s->s, len, UTF16_LITTLE_ENDIAN,
--			(wchar_t *) &buf[2], 126);
-+			(wchar_t *) &buf[2], MAX_USB_STRING_LEN);
- 	if (len < 0)
- 		return -EINVAL;
- 	buf [0] = (len + 1) * 2;
-diff --git a/include/uapi/linux/usb/ch9.h b/include/uapi/linux/usb/ch9.h
-index 2b623f3..cc02d05 100644
---- a/include/uapi/linux/usb/ch9.h
-+++ b/include/uapi/linux/usb/ch9.h
-@@ -364,6 +364,9 @@ struct usb_config_descriptor {
+ Required properties:
  
- /*-------------------------------------------------------------------------*/
+diff --git a/Documentation/devicetree/bindings/sound/audio-graph-card.txt b/Documentation/devicetree/bindings/sound/audio-graph-card.txt
+index 269682619a70..d5f6919a2d69 100644
+--- a/Documentation/devicetree/bindings/sound/audio-graph-card.txt
++++ b/Documentation/devicetree/bindings/sound/audio-graph-card.txt
+@@ -5,7 +5,7 @@ It is based on common bindings for device graphs.
+ see ${LINUX}/Documentation/devicetree/bindings/graph.txt
  
-+/* USB String descriptors can contain at most 126 characters. */
-+#define MAX_USB_STRING_LEN	126
-+
- /* USB_DT_STRING: String descriptor */
- struct usb_string_descriptor {
- 	__u8  bLength;
+ Basically, Audio Graph Card property is same as Simple Card.
+-see ${LINUX}/Documentation/devicetree/bindings/sound/simple-card.txt
++see ${LINUX}/Documentation/devicetree/bindings/sound/simple-card.yaml
+ 
+ Below are same as Simple-Card.
+ 
+diff --git a/Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt b/Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt
+index 4d51f3f5ea98..a6ffcdec6f6a 100644
+--- a/Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt
++++ b/Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt
+@@ -5,7 +5,7 @@ codec or external codecs.
+ 
+ sti sound drivers allows to expose sti SoC audio interface through the
+ generic ASoC simple card. For details about sound card declaration please refer to
+-Documentation/devicetree/bindings/sound/simple-card.txt.
++Documentation/devicetree/bindings/sound/simple-card.yaml.
+ 
+ 1) sti-uniperiph-dai: audio dai device.
+ ---------------------------------------
+diff --git a/Documentation/mips/ingenic-tcu.rst b/Documentation/mips/ingenic-tcu.rst
+index c5a646b14450..2b75760619b4 100644
+--- a/Documentation/mips/ingenic-tcu.rst
++++ b/Documentation/mips/ingenic-tcu.rst
+@@ -68,4 +68,4 @@ and frameworks can be controlled from the same registers, all of these
+ drivers access their registers through the same regmap.
+ 
+ For more information regarding the devicetree bindings of the TCU drivers,
+-have a look at Documentation/devicetree/bindings/timer/ingenic,tcu.txt.
++have a look at Documentation/devicetree/bindings/timer/ingenic,tcu.yaml.
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 68f21d46614c..0617dd671c2d 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3946,7 +3946,7 @@ L:	linux-crypto@vger.kernel.org
+ S:	Supported
+ F:	drivers/char/hw_random/cctrng.c
+ F:	drivers/char/hw_random/cctrng.h
+-F:	Documentation/devicetree/bindings/rng/arm-cctrng.txt
++F:	Documentation/devicetree/bindings/rng/arm-cctrng.yaml
+ W:	https://developer.arm.com/products/system-ip/trustzone-cryptocell/cryptocell-700-family
+ 
+ CEC FRAMEWORK
+@@ -5490,7 +5490,7 @@ F:	include/uapi/drm/r128_drm.h
+ DRM DRIVER FOR RAYDIUM RM67191 PANELS
+ M:	Robert Chiras <robert.chiras@nxp.com>
+ S:	Maintained
+-F:	Documentation/devicetree/bindings/display/panel/raydium,rm67191.txt
++F:	Documentation/devicetree/bindings/display/panel/raydium,rm67191.yaml
+ F:	drivers/gpu/drm/panel/panel-raydium-rm67191.c
+ 
+ DRM DRIVER FOR ROCKTECH JH057N00900 PANELS
 -- 
-1.7.9.5
+2.26.2
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
