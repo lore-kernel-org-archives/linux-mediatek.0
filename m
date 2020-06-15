@@ -5,18 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 42A71C433E1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 20:32:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A3D0EC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 20:32:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0D3AC20663
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 20:32:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 53165207D3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 20:32:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Y8/QyATN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0D3AC20663
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hY4emeWp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 53165207D3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,34 +25,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cVeUr5aZ4yZT9MKKMfirkqRU7HrrznSvw49BwkBsDOE=; b=Y8/QyATNgxoUZ5
-	rTVtk3XSMkTjonJtIUNKgkhqMnr210K/8XmrRvXFernNXnAnAbwm88sCph2FfXdRTYr5CFYA+4MoU
-	E9ESFx/8J0fP92jPz7k4O6HFFnQjtJ1ELSCnfEJsADWN3EsE90AnPNHPEdb6UfK3rdSXjc/qJdg0H
-	V/lBmi/nHHuIc7rp7N1AVUyZ0ouSVQRGTa3Q+TMDe+KoluqD6Z3JDuItCYBUPRoUT64UjBbK6nlHS
-	fV2dhpfRuy7hi5vxbTnaMEwz+mAm60+UDyzkfUeSNTa9RbhXyMJPBtCIFWWniyFuht/EUwIqOW/Rf
-	k9A/i3Vfrc6OI6oKuagg==;
+	List-Owner; bh=nKLC4umjhmFQbTCr9A/rjS5ht0Bq4281sCvY3KM08Ts=; b=hY4emeWpAq8HkT
+	RLbm63II+tHCqQF9mOpo1uxKA8hEIzERA9Nd4CEPE+n3bArtAryybovcKsFOvJI9OZER5SLtjf/Kj
+	Ui/wvrT8OAbfY91fv040RsqByBl1b/CNOHCA3sVsgicCjobjG7SjimDdIl1WAdt0EctkXeBr0aUSN
+	2SlkTTyjDWcXqzklNh0jyhRNfSh+j0kIg4186bdZpCP1iaAR/epEwCeo/d1Ua4+ias+YrPnEaSO9e
+	GXKPwuy8MMJDmP7Mj7gLZzMAfJomtpRdgbWT9QPh7OQB2o1K03QRbhW4cT3acCRfTk2mSWkwvSpTu
+	KUl9ac+I+jH8Bj4nDCZg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jkvls-00082F-OD; Mon, 15 Jun 2020 20:31:56 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1jkvmR-0000AM-5Q; Mon, 15 Jun 2020 20:32:31 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jkvlJ-0007VG-T0; Mon, 15 Jun 2020 20:31:23 +0000
+ id 1jkvlL-0007WA-WD; Mon, 15 Jun 2020 20:31:25 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id E93AA2A2CFC
+ (Authenticated sender: eballetbo) with ESMTPSA id 144402A2CFB
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 To: linux-kernel@vger.kernel.org,
 	Collabora Kernel ML <kernel@collabora.com>
-Subject: [RESEND PATCH v4 3/7] drm/mediatek: mtk_dsi: Rename bridge to
- next_bridge
-Date: Mon, 15 Jun 2020 22:31:04 +0200
-Message-Id: <20200615203108.786083-4-enric.balletbo@collabora.com>
+Subject: [RESEND PATCH v4 5/7] drm/mediatek: mtk_dsi: Use simple encoder
+Date: Mon, 15 Jun 2020 22:31:06 +0200
+Message-Id: <20200615203108.786083-6-enric.balletbo@collabora.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20200615203108.786083-1-enric.balletbo@collabora.com>
 References: <20200615203108.786083-1-enric.balletbo@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200615_133122_061417_509A2264 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20200615_133124_160725_C02038F2 
+X-CRM114-Status: UNSURE (   9.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,10 +75,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is really a cosmetic change just to make a bit more readable the
-code after convert the driver to drm_bridge. The bridge variable name
-will be used by the encoder drm_bridge, and the chained bridge will be
-named next_bridge.
+The mtk_dsi driver uses an empty implementation for its encoder. Replace
+the code with the generic simple encoder.
 
 Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
@@ -87,50 +85,43 @@ Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 ---
 
 Changes in v4: None
-Changes in v3:
-- Replace s/bridge/next bridge/ for comment. (Laurent Pinchart)
-
+Changes in v3: None
 Changes in v2: None
 
- drivers/gpu/drm/mediatek/mtk_dsi.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 13 ++-----------
+ 1 file changed, 2 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 270bf22c98feb..208f49bf14a01 100644
+index 759a5b37fb4d2..e02d16a086ac0 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -183,7 +183,7 @@ struct mtk_dsi {
- 	struct drm_encoder encoder;
- 	struct drm_connector conn;
- 	struct drm_panel *panel;
--	struct drm_bridge *bridge;
-+	struct drm_bridge *next_bridge;
- 	struct phy *phy;
+@@ -789,15 +789,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
+ 	dsi->enabled = false;
+ }
  
- 	void __iomem *regs;
-@@ -894,9 +894,10 @@ static int mtk_dsi_create_conn_enc(struct drm_device *drm, struct mtk_dsi *dsi)
- 	 */
- 	dsi->encoder.possible_crtcs = 1;
+-static void mtk_dsi_encoder_destroy(struct drm_encoder *encoder)
+-{
+-	drm_encoder_cleanup(encoder);
+-}
+-
+-static const struct drm_encoder_funcs mtk_dsi_encoder_funcs = {
+-	.destroy = mtk_dsi_encoder_destroy,
+-};
+-
+ static int mtk_dsi_create_conn_enc(struct drm_device *drm, struct mtk_dsi *dsi);
+ static void mtk_dsi_destroy_conn_enc(struct mtk_dsi *dsi);
  
--	/* If there's a bridge, attach to it and let it create the connector */
--	if (dsi->bridge) {
--		ret = drm_bridge_attach(&dsi->encoder, dsi->bridge, NULL, 0);
-+	/* If there's a next bridge, attach to it and let it create the connector */
-+	if (dsi->next_bridge) {
-+		ret = drm_bridge_attach(&dsi->encoder, dsi->next_bridge, NULL,
-+					0);
- 		if (ret) {
- 			DRM_ERROR("Failed to attach bridge to drm\n");
- 			goto err_encoder_cleanup;
-@@ -1177,7 +1178,7 @@ static int mtk_dsi_probe(struct platform_device *pdev)
- 	}
+@@ -1127,8 +1118,8 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
+ {
+ 	int ret;
  
- 	ret = drm_of_find_panel_or_bridge(dev->of_node, 0, 0,
--					  &dsi->panel, &dsi->bridge);
-+					  &dsi->panel, &dsi->next_bridge);
- 	if (ret)
- 		goto err_unregister_host;
- 
+-	ret = drm_encoder_init(drm, &dsi->encoder, &mtk_dsi_encoder_funcs,
+-			       DRM_MODE_ENCODER_DSI, NULL);
++	ret = drm_simple_encoder_init(drm, &dsi->encoder,
++				      DRM_MODE_ENCODER_DSI);
+ 	if (ret) {
+ 		DRM_ERROR("Failed to encoder init to drm\n");
+ 		return ret;
 -- 
 2.27.0
 
