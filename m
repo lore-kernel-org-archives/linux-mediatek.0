@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F0542C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 14:51:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AD434C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 14:51:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B24102071A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 14:51:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 80A3C20644
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 14:51:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="T6RJTX/C";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="nxflQnvc"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B24102071A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CekJz3cK";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="QaoxgXDr"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 80A3C20644
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,35 +26,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lOwJE4FniU9r2iL1EWLPo+zwwfQcpRH3bTWS1F/AMhs=; b=T6RJTX/CpoHwfg
-	H/FvcWKfy1qBdcr43hgRA8FwhNQ+qJOUWw5Y26UlGx/7v/3hWUO/+rhp/Uq6VGrnJ+EWOUZPll54s
-	OJi2VZurki0ZPfAglK1jnw4abqMZnZpnJEAmYpOk0ATwpR6Y4ILxYy/lZ3XZiJ9u6dCErtyqr4RYh
-	zgB21tiblqc6r8iTNv3pumi2tl9mxhpXi0cmFhNK+8ILrhFomfUtQUh5EDO0nkbilUTPCWJWXJIL8
-	25TZT/WO79R8NJBxARSjS6TU6Djh8osWmfMucLX6boeOiZYYab5huX5bIJDvKZ4Wli2GJRcu4a7r6
-	2HWYs7K0rhmA4H6Ofykg==;
+	List-Owner; bh=0gLU5VMaCGxpmorl+RT7F8qyXgzb/p30BLbFExODfOg=; b=CekJz3cKF9xe2h
+	Li0zwY2DCiqAs479LtWMMBQxiUSjVPV9rJw95NJRAvRzpb58J1CzMrnb5ADYzBeuU18gDIgoGCLxg
+	sY8doc7yk0XQuswg3a8U8jbosNCzCeXn3O8JBGsS4mllBtYmgVeGHo7ZqIZ+ATTsuPtRzZ43i39/C
+	GL8KmgxfgzsITHGlj9Zet4sXTy8tMc4tk5TSMDV6K+Z8XzquUyoN0jJurqJsY6qyH3U1U5kMrdxjG
+	95y576P53HwSaS/IrM7cPzI0wO2ANrpBF2TlybTpn3jnpzu1VWabwvWdGW+57kiqqA2oMVcvu7Y6W
+	n7tbGm2i4GPcjgfZfR9A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jkqS3-0008Hc-5v; Mon, 15 Jun 2020 14:51:07 +0000
+	id 1jkqSM-00009l-8L; Mon, 15 Jun 2020 14:51:26 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jkqRt-00088I-2Q; Mon, 15 Jun 2020 14:50:58 +0000
-X-UUID: 036107b04f054aff822aa8faf953a253-20200615
+ id 1jkqRu-00088e-1m; Mon, 15 Jun 2020 14:50:59 +0000
+X-UUID: d84f0344087d407a939c16daccd107f1-20200615
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=K9jHs+9H91saKQrMUULPDpgsjmfGksPsDZmJk9xUKNo=; 
- b=nxflQnvciSd75PZ6THLHoH0qJQQZ8wiNp3cMhoq6qDfMmb1yyVZMavRUA0RGPH3KnF8L+NSMoAYpJMxU8cXtxkzni6dF4bgc3ShZDFh8zQlmrzjwP62A86YZ3P8JL4Tse4dXRM5o9LO0djgYFVUC3UvD46WHi5B5j51Jn1xlp94=;
-X-UUID: 036107b04f054aff822aa8faf953a253-20200615
+ bh=9Jrxg+K/KEKim/cVYfaklTsm5g5BtXdZJCkdT9NVb7Y=; 
+ b=QaoxgXDrbPxiv114paz3+Qxoy8lZADTKf6A+w9sShjDSX8lGpPvZoTs6crJ8qhrrwygSRKBBHrs2pX01Q4Wxjt7bZJ/J1HPUvmBM6OfX1IB/6FxP/pCrgxZYswNkjOuvyNKiJ+2B7hkWKzjgryMQFznjORlroOBDSN5qXg+5XN4=;
+X-UUID: d84f0344087d407a939c16daccd107f1-20200615
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 382958377; Mon, 15 Jun 2020 06:50:53 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ with ESMTP id 1396388888; Mon, 15 Jun 2020 06:50:53 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Mon, 15 Jun 2020 07:48:06 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 15 Jun 2020 22:48:03 +0800
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 15 Jun 2020 22:48:04 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Mon, 15 Jun 2020 22:48:03 +0800
@@ -62,18 +62,18 @@ From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
  <asutoshd@codeaurora.org>
-Subject: [PATCH v2 1/3] scsi: ufs: Remove redundant label "out" in
- ufshcd_make_hba_operational()
-Date: Mon, 15 Jun 2020 22:48:03 +0800
-Message-ID: <20200615144805.6921-2-stanley.chu@mediatek.com>
+Subject: [PATCH v2 3/3] scsi: ufs-mediatek: Print host information for failed
+ supsend and resume
+Date: Mon, 15 Jun 2020 22:48:05 +0800
+Message-ID: <20200615144805.6921-4-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200615144805.6921-1-stanley.chu@mediatek.com>
 References: <20200615144805.6921-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200615_075057_116852_AE29FED6 
-X-CRM114-Status: UNSURE (   6.39  )
+X-CRM114-CacheID: sfid-20200615_075058_091444_E088D35C 
+X-CRM114-Status: UNSURE (   8.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -98,29 +98,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Label "out" is redundant in ufshcd_make_hba_operational() and
-can be removed.
+Print host state and register dumps while suspend or resume flow
+is failed.
 
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
- drivers/scsi/ufs/ufshcd.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/scsi/ufs/ufs-mediatek.c | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 1e1316ba7082..152ae7f5ae86 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -4258,10 +4258,8 @@ int ufshcd_make_hba_operational(struct ufs_hba *hba)
- 		dev_err(hba->dev,
- 			"Host controller not ready to process requests");
- 		err = -EIO;
--		goto out;
- 	}
+diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+index d56ce8d97d4e..0bb7ed841809 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.c
++++ b/drivers/scsi/ufs/ufs-mediatek.c
+@@ -469,23 +469,24 @@ static int ufs_mtk_link_set_hpm(struct ufs_hba *hba)
  
--out:
- 	return err;
+ 	err = ufshcd_hba_enable(hba);
+ 	if (err)
+-		return err;
++		goto out;
+ 
+ 	err = ufs_mtk_unipro_set_pm(hba, 0);
+ 	if (err)
+-		return err;
++		goto out;
+ 
+ 	err = ufshcd_uic_hibern8_exit(hba);
+ 	if (!err)
+ 		ufshcd_set_link_active(hba);
+ 	else
+-		return err;
++		goto out;
+ 
+ 	err = ufshcd_make_hba_operational(hba);
++out:
+ 	if (err)
+-		return err;
+-
+-	return 0;
++		ufshcd_print_info(hba, UFS_INFO_HOST_STATE |
++				  UFS_INFO_HOST_REGS | UFS_INFO_PWR);
++	return err;
  }
- EXPORT_SYMBOL_GPL(ufshcd_make_hba_operational);
+ 
+ static int ufs_mtk_link_set_lpm(struct ufs_hba *hba)
+@@ -494,6 +495,9 @@ static int ufs_mtk_link_set_lpm(struct ufs_hba *hba)
+ 
+ 	err = ufs_mtk_unipro_set_pm(hba, 1);
+ 	if (err) {
++		ufshcd_print_info(hba, UFS_INFO_HOST_STATE |
++				  UFS_INFO_HOST_REGS | UFS_INFO_PWR);
++
+ 		/* Resume UniPro state for following error recovery */
+ 		ufs_mtk_unipro_set_pm(hba, 0);
+ 		return err;
 -- 
 2.18.0
 _______________________________________________
