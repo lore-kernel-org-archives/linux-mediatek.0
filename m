@@ -2,82 +2,89 @@ Return-Path: <SRS0=oIsV=74=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D495CC433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 07:34:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 49947C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 07:45:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 668802068E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 07:34:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1BFBC2067B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 07:45:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="T9iTRmEa";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="VDzHNQAN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 668802068E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dBvTPkhG";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="ngWpM4Vd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1BFBC2067B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bgdev.pl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3x4F6TelCEHkVtyLYdKsy8qTgIPcfrfs+tTZzftTG4g=; b=T9iTRmEaywEM+T
-	rcKTVu6RZUm0BCYe21FGh/jlyK+yJ4926jcYKf4PwjYyZQ1Byan7xoBSQTLPk6Lq1ZpnJ+8iUYcRl
-	LqL4sgGpjNDrEm2b8zxoyxNox5oyGorwLIBHZN0OEamcN9x1howEviLsRx2WMJ6iHh+qw0WFiLJtV
-	gGgVULpnSOXcsIGBqPNnQe0XpaDg86GWtbccn6eVRrfCydVf4xGmj8ATvan1pM6SyTcOUIKoSZ3PT
-	rE2MgaP+zZ2s5JwnHDD15+xSY7vErvzeIgjhoAiQYCyX35UNbE2GvhaWoXdeVUmfrL56sEBO3MSUw
-	qXEV+IGBWXodNVhS93hw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=UudgEWjEsD6O5eGzlL9k3Cmy0WKhkVLLqIbfiiwkeA0=; b=dBvTPkhGKAaRR9
+	IABOQPsHerf8WvXaj4C7fkJRlnJS5MnqLeV7Ox6/P3zMaP8fEUSz3jMn/HRXImGi4ki+dx0B57FKt
+	wtkzC2z62+hFUqt0EOZ22zr/8zWe9OnN3Pckel30WYfHgJFkhRujh9CovLLbL8zd6JFhmo6cK+hPt
+	DxSmtl64n3YPCkpVAbHSZKfHJRfbCR5mdaD566hkFvBZMGns72VFFMDMeahA091Wpc/7n56BtrvEu
+	HU0spdFYhQtAyNAyLqunraZgc9+tnKn3EGtOLq+vcZjgQTHytbs3tURdR4A03BU/rVK2xJ2EDH7jC
+	9il2hUA09pj06NQo/fDQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jkjcy-00048F-RI; Mon, 15 Jun 2020 07:33:56 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jkjo2-0005Or-C1; Mon, 15 Jun 2020 07:45:22 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jkjci-0003ur-AU; Mon, 15 Jun 2020 07:33:43 +0000
-X-UUID: baae1b70d2864cdc926d620cce5e4866-20200614
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=m/v3E4p1m/OZyPE8uUXIhT+TD6yH0vQGAescG6WMe18=; 
- b=VDzHNQANysP2lm1uqeHrNCXAMrNx1iRwrz1r3Nifz8sJF0aDiq3Vo95JosXHEj+QhIUDCH0BA08KtfqjSYRdN8/P7XKjSnNqIUCPhwZqXDKFwXQGWOiKgl+cqmWbiv14cWWFnSaSNrF44U7gN1H64t1S7ypneqVcsjHOCUAt4M8=;
-X-UUID: baae1b70d2864cdc926d620cce5e4866-20200614
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <dongchun.zhu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 843906623; Sun, 14 Jun 2020 23:33:36 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 15 Jun 2020 00:26:59 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 15 Jun 2020 15:26:50 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 15 Jun 2020 15:26:49 +0800
-Message-ID: <1592205866.8804.686.camel@mhfsdcap03>
-Subject: Re: [V8, 2/2] media: i2c: ov02a10: Add OV02A10 image sensor driver
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: Tomasz Figa <tfiga@chromium.org>
-Date: Mon, 15 Jun 2020 15:24:26 +0800
-In-Reply-To: <CAAFQd5CboZ9aFhUyKPES_2oO_AKAOh3Pg8D+9YpfmzJ8v-yFHw@mail.gmail.com>
-References: <20200509080627.23222-1-dongchun.zhu@mediatek.com>
- <20200509080627.23222-3-dongchun.zhu@mediatek.com>
- <20200521193204.GA14214@chromium.org>
- <1590209415.8804.431.camel@mhfsdcap03>
- <20200610183600.GI201868@chromium.org>
- <1591954266.8804.646.camel@mhfsdcap03>
- <CAAFQd5CboZ9aFhUyKPES_2oO_AKAOh3Pg8D+9YpfmzJ8v-yFHw@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jkjnY-0002lj-94
+ for linux-mediatek@lists.infradead.org; Mon, 15 Jun 2020 07:44:53 +0000
+Received: by mail-wr1-x444.google.com with SMTP id t18so15985622wru.6
+ for <linux-mediatek@lists.infradead.org>; Mon, 15 Jun 2020 00:44:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=wLML/7CffDFBhoqwyzC9IFFqzUtN0PnXKPbU0+WecW8=;
+ b=ngWpM4Vd5ByUkX1bUWebKGgG0vYWezYAT7vWvhgdaTo8IBZujJgVraWXo6Ox6Yb/+9
+ cR5YyPmPnGK45v6sM/dK+T+hW3FTrjwS10sazaftNflzQNQFOABhYSmVSimImmg7Euyf
+ NWVYY4ypkR2JseWN9ChtJP2Zy7FLfsT19Qf0ZhjPbmHYo5yH0kRts0nNcfii4NqLMQfR
+ V0ShmXbG7Hr4Fn6EETdOiX0bcZ9x7AHb8xGgXyVHxF7rsg+vYDrbgjynUJQAntcaQYal
+ CY/a/rom9ousRJ9Z25dSmcaGbQViMd2DjSbRFsfm6lLnvb+dsVxLdfbwJedlIfVqAzC/
+ sDYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=wLML/7CffDFBhoqwyzC9IFFqzUtN0PnXKPbU0+WecW8=;
+ b=uEw+sFP8ZLD6o6Dz3397uER3481opN88rit/h7mxmLSlXKr+3Q2dwcGcZmFlqVqQDo
+ aShfjteWSlkzF1jxO9QrFqpaGCEGOYFh8zMjM9qh8ZEl+AijgfThOPgHcbWLwXCofxRK
+ KEDR9MNkmyA4K5no+O4ByP5khuMVrZF58lTc6gMr+kQ6APGUk8ncTxafLa3c+OZil/gn
+ bnroQxJYmP0RxUCxMXMqyj/pacr1Ye3ZMoLC7HDoXnDx2+3nKmjhCGalgkSqXHEQnW6B
+ QAIiFuUQcCqvPzmWSbt4bomsRcpPw6LuOR3Z1UeoLl1ap4dnv8q1sGYTHd2Hg7HeB9WB
+ ocHw==
+X-Gm-Message-State: AOAM530hbwnrmVtaCuG5A1Pe59h+QeInVfdn5Kmqw/DHvwCeTpSJ3ScE
+ s7FiJWBcUUmGPW9BY7LKWCHqTA==
+X-Google-Smtp-Source: ABdhPJw4+6gHE62n11a4DToU9lNCniCgkvi+x33BOd94wC0+HgPDvk1KRFmpSkPOQNQpytwNGESEAg==
+X-Received: by 2002:a5d:6150:: with SMTP id y16mr29528478wrt.219.1592207089789; 
+ Mon, 15 Jun 2020 00:44:49 -0700 (PDT)
+Received: from localhost.localdomain (lfbn-nic-1-65-232.w2-15.abo.wanadoo.fr.
+ [2.15.156.232])
+ by smtp.gmail.com with ESMTPSA id z16sm23227610wrm.70.2020.06.15.00.44.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 15 Jun 2020 00:44:49 -0700 (PDT)
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+To: Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>,
+ Marc Zyngier <maz@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [RESEND PATCH] irqchip/irq-mtk-sysirq: replace spinlock with
+ raw_spinlock
+Date: Mon, 15 Jun 2020 09:44:45 +0200
+Message-Id: <20200615074445.3579-1-brgl@bgdev.pl>
+X-Mailer: git-send-email 2.26.1
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: F48042F2A1F78F21A0AF70589031EBB7AAF552C4E8B9EC0D9A43D09539458DD92000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200615_003341_655778_3B327014 
-X-CRM114-Status: GOOD (  26.15  )
+X-CRM114-CacheID: sfid-20200615_004452_313899_3C658352 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,123 +96,106 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Nicolas Boichat <drinkcat@chromium.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- linux-devicetree <devicetree@vger.kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>, Shengnan
- Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=A3=E7=94=B7=29?=
- <shengnan.wang@mediatek.com>, Louis Kuo <louis.kuo@mediatek.com>,
+Cc: Stephane Le Provost <stephane.leprovost@mediatek.com>,
  Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- dongchun.zhu@mediatek.com, Sakari Ailus <sakari.ailus@linux.intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, "list@263.net:IOMMU DRIVERS
- <iommu@lists.linux-foundation.org>, Joerg  Roedel <joro@8bytes.org>,
- " <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+ Pedro Tsai <pedro.tsai@mediatek.com>, linux-kernel@vger.kernel.org,
+ Fabien Parent <fparent@baylibre.com>, linux-mediatek@lists.infradead.org,
+ Andrew Perepech <andrew.perepech@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Tomasz,
+From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 
-On Fri, 2020-06-12 at 20:49 +0200, Tomasz Figa wrote:
-> On Fri, Jun 12, 2020 at 11:33 AM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
-> >
-> > Hi Tomasz,
-> >
-> > On Wed, 2020-06-10 at 18:36 +0000, Tomasz Figa wrote:
-> > > On Sat, May 23, 2020 at 12:50:15PM +0800, Dongchun Zhu wrote:
-> > > > Hi Tomasz,
-> > > >
-> > > > Thanks for the review. My replies are as below.
-> > > >
-> > > > On Thu, 2020-05-21 at 19:32 +0000, Tomasz Figa wrote:
-> > > > > Hi Dongchun,
-> > > > >
-> > > > > On Sat, May 09, 2020 at 04:06:27PM +0800, Dongchun Zhu wrote:
-> > > [snip]
-> > > > > > +{
-> > > > > > +       struct i2c_client *client = to_i2c_client(dev);
-> > > > > > +       struct v4l2_subdev *sd = i2c_get_clientdata(client);
-> > > > > > +       struct ov02a10 *ov02a10 = to_ov02a10(sd);
-> > > > > > +       int ret;
-> > > > > > +
-> > > > > > +       gpiod_set_value_cansleep(ov02a10->n_rst_gpio, 0);
-> > > > > > +       gpiod_set_value_cansleep(ov02a10->pd_gpio, 0);
-> > > > > > +
-> > > > > > +       ret = clk_prepare_enable(ov02a10->eclk);
-> > > > > > +       if (ret < 0) {
-> > > > > > +               dev_err(dev, "failed to enable eclk\n");
-> > > > > > +               return ret;
-> > > > > > +       }
-> > > > > > +
-> > > > > > +       ret = regulator_bulk_enable(OV02A10_NUM_SUPPLIES, ov02a10->supplies);
-> > > > > > +       if (ret < 0) {
-> > > > > > +               dev_err(dev, "failed to enable regulators\n");
-> > > > > > +               goto disable_clk;
-> > > > > > +       }
-> > > > > > +       usleep_range(5000, 6000);
-> > > > > > +
-> > > > > > +       gpiod_set_value_cansleep(ov02a10->pd_gpio, 1);
-> > > > >
-> > > > > This is a "powerdown" GPIO. It must be set to 0 if the sensor is to be
-> > > > > powered on.
-> > > > >
-> > > >
-> > > > The value set by gpiod_set_value_cansleep() API actually depends upon
-> > > > GPIO polarity defined in DT.
-> > > > Since I set GPIO_ACTIVE_LOW to powerdown,
-> > > > gpiod_set_value_cansleep(gpio_desc, value) would set !value to
-> > > > gpio_desc.
-> > > > Thus here powerdown would be low-state when sensor is powered on.
-> > > > For GPIO polarity, I also post a comment to the binding patch.
-> > > >
-> > >
-> > > That's true. However, this makes the driver really confusing. If someone
-> > > reads this code and compares with the datasheet, it looks incorrect,
-> > > because in the datasheet the powerdown GPIO needs to be configured low
-> > > for the sensor to operate.
-> > >
-> > > I'd recommend defining the binding in a way that makes it clear in the driver code
-> > > that it implementes the power sequencing as per the datasheet.
-> > >
-> >
-> > Uh-huh...
-> > But it all depends on how we look at the powerdown GPIO.
-> > Or where should we define the active low or active high, the driver or
-> > DT?
-> >
-> > My initial idea is using DT GPIO polarity to describe sensor active
-> > polarity according to the datasheet.
-> > As an active low shutdown signal is equivalent to an active high enable
-> > signal.
-> >
-> 
-> Okay, I discussed this offline with Laurent and Sakari and we also
-> found the guidelines of the Linux GPIO subsystem on this [1].
-> 
-> The conclusion is that the pin names in the driver or DT must not
-> contain any negation prefixes and the driver needs to care only about
-> the logical function of the pin, such as "powerdown" or "reset". In
-> case of this driver, we should call the pins "rst" and "pd" and
-> setting them to 1 would trigger the reset and power down respectively.
-> The physical signal polarity must be configured in DT using the
-> polarity flags.
-> 
-> [1] https://www.kernel.org/doc/html/latest/driver-api/gpio/consumer.html#the-active-low-and-open-drain-semantics
-> 
+This driver may take a regular spinlock when a raw spinlock
+(irq_desc->lock) is already taken which results in the following
+lockdep splat:
 
-Thank you for the sharing.
-If driver only focus on the logical function of GPIO pins,
-'n_rst_gpio' may need to be renamed back to the 1st version 'rst_gpio'.
+=============================
+[ BUG: Invalid wait context ]
+5.7.0-rc7 #1 Not tainted
+-----------------------------
+swapper/0/0 is trying to lock:
+ffffff800303b798 (&chip_data->lock){....}-{3:3}, at: mtk_sysirq_set_type+0x48/0xc0
+other info that might help us debug this:
+context-{5:5}
+2 locks held by swapper/0/0:
+ #0: ffffff800302ee68 (&desc->request_mutex){....}-{4:4}, at: __setup_irq+0xc4/0x8a0
+ #1: ffffff800302ecf0 (&irq_desc_lock_class){....}-{2:2}, at: __setup_irq+0xe4/0x8a0
+stack backtrace:
+CPU: 0 PID: 0 Comm: swapper/0 Not tainted 5.7.0-rc7 #1
+Hardware name: Pumpkin MT8516 (DT)
+Call trace:
+ dump_backtrace+0x0/0x180
+ show_stack+0x14/0x20
+ dump_stack+0xd0/0x118
+ __lock_acquire+0x8c8/0x2270
+ lock_acquire+0xf8/0x470
+ _raw_spin_lock_irqsave+0x50/0x78
+ mtk_sysirq_set_type+0x48/0xc0
+ __irq_set_trigger+0x58/0x170
+ __setup_irq+0x420/0x8a0
+ request_threaded_irq+0xd8/0x190
+ timer_of_init+0x1e8/0x2c4
+ mtk_gpt_init+0x5c/0x1dc
+ timer_probe+0x74/0xf4
+ time_init+0x14/0x44
+ start_kernel+0x394/0x4f0
 
-> Best regards,
-> Tomasz
+Replace the spinlock_t with raw_spinlock_t to avoid this warning.
+
+Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+---
+Rebased on top of v5.8-rc1.
+
+ drivers/irqchip/irq-mtk-sysirq.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/irqchip/irq-mtk-sysirq.c b/drivers/irqchip/irq-mtk-sysirq.c
+index 73eae5966a40..6ff98b87e5c0 100644
+--- a/drivers/irqchip/irq-mtk-sysirq.c
++++ b/drivers/irqchip/irq-mtk-sysirq.c
+@@ -15,7 +15,7 @@
+ #include <linux/spinlock.h>
+ 
+ struct mtk_sysirq_chip_data {
+-	spinlock_t lock;
++	raw_spinlock_t lock;
+ 	u32 nr_intpol_bases;
+ 	void __iomem **intpol_bases;
+ 	u32 *intpol_words;
+@@ -37,7 +37,7 @@ static int mtk_sysirq_set_type(struct irq_data *data, unsigned int type)
+ 	reg_index = chip_data->which_word[hwirq];
+ 	offset = hwirq & 0x1f;
+ 
+-	spin_lock_irqsave(&chip_data->lock, flags);
++	raw_spin_lock_irqsave(&chip_data->lock, flags);
+ 	value = readl_relaxed(base + reg_index * 4);
+ 	if (type == IRQ_TYPE_LEVEL_LOW || type == IRQ_TYPE_EDGE_FALLING) {
+ 		if (type == IRQ_TYPE_LEVEL_LOW)
+@@ -53,7 +53,7 @@ static int mtk_sysirq_set_type(struct irq_data *data, unsigned int type)
+ 
+ 	data = data->parent_data;
+ 	ret = data->chip->irq_set_type(data, type);
+-	spin_unlock_irqrestore(&chip_data->lock, flags);
++	raw_spin_unlock_irqrestore(&chip_data->lock, flags);
+ 	return ret;
+ }
+ 
+@@ -212,7 +212,7 @@ static int __init mtk_sysirq_of_init(struct device_node *node,
+ 		ret = -ENOMEM;
+ 		goto out_free_which_word;
+ 	}
+-	spin_lock_init(&chip_data->lock);
++	raw_spin_lock_init(&chip_data->lock);
+ 
+ 	return 0;
+ 
+-- 
+2.26.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
