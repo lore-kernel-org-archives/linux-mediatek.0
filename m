@@ -2,82 +2,75 @@ Return-Path: <SRS0=oIsV=74=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CDAEAC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 09:49:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DD79CC433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 10:41:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A13EE2065F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 09:49:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AE8C320663
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 10:41:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="G5+fSXsm";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="stNWaVR9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A13EE2065F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bZI0O5mv";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="CxBW9N7X"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AE8C320663
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZjWWkIAFW74QzAPHQ4eCfhn8hUOgDFbeunY4ZwiPoh8=; b=G5+fSXsmBRWUV8
-	eIgkeoqGzkldQf/f8C0OGLGnKHwjtgufu+YIBZFb4pvFR+6z8asvD6511mB+WEe0Zd3TKW3RdUK67
-	bDlaOMQmm74yh/CG1rKnQiKHM52MJLR3LDSbwEcMf/rUA9TACrwxVW0IqgXh9I5POP2EQCIKdy3ct
-	r3g9+LuQPuuthDRP/4zHY1pOo6BJ3EQXZMwSKlcc3CqvcYSYbRKQYMp4k/fTrP9ZfZK41Z3OaCnFC
-	XvilawmnWaQ3MUmyQV62DM6mCo6Q+1U+3IftFOVVIb5E/zPH/wIUsUE+2b1bt5WuS3mdnU1Pmo6ta
-	NMoozilVJAkz9z+vrmsQ==;
+	List-Owner; bh=whcAazrxKrXGtmoaPZJVWRlEZVxMe3lh5bjTGv/Tzwg=; b=bZI0O5mvE80iyv
+	cVAkGVfmJMxdjDm6CAvv8YZUQv4pJmw5S6dKb0XQDdaW6xKmt9fg2F4lbaiHgTsVm5ZOk6QSQ73Wl
+	pdJKRLwoypVlbxkHRdxxLF6H6UxwE+aDt3tPFGCO+St7mTVwXpfO8FxXE/sKXuTiL6+UdhEW1eQNc
+	EjPBtMSV2GMsSdqpTt9lNVPRuS6Ai39c3cA4+hy7CpjxH7kwLm4LE2/fvEEZ+bOmY6p14O9szOpgG
+	79hDHGBB6cwCpfGcz2ICHQMruJ3NnSUkkijQZ6/YUWlSdR490BRDdkRTaN0zmwH8ZSRnwRzi5Y9bF
+	LVijbgShf9GOqX0o4jhA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jklk2-0001gT-BY; Mon, 15 Jun 2020 09:49:22 +0000
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
+	id 1jkmYB-0005uS-66; Mon, 15 Jun 2020 10:41:11 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jkljr-0001WH-RF; Mon, 15 Jun 2020 09:49:13 +0000
-Received: by mail-io1-xd42.google.com with SMTP id r77so17122138ior.3;
- Mon, 15 Jun 2020 02:49:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=VXrYkWGJrAVwMKl7EpALp308abGzBC/xarfEjXsxyt8=;
- b=stNWaVR9mILoXoa35qUlmQKoIfjReV21Ygcw+kmOknzdyAd47EecdwrcHgyRIiCHc1
- kQCq9ajBuZH0EJcKAEy41F5r1lmg3Xev/NaEqR0jd32aw7B93AXyVciu8HlaioBsrRMa
- K7pPbZ5Hun7PnTPlPf5NuynGDQOxVE/YVHxIVl0QfCfgsQXN3QkPEgKr16OI3zfTVvXm
- jpxgMZCcczb2muIjitZvQEWmx8fQMMOFJUYtyfZ8LcgYQiO9lgA8ZWnm1GzkJnvbizYr
- 568nqQkmYJRdlD94NgsZ4GOm/ePu02U7PzSC2Tb7IfKNchJUi/Aeb/K1M6dPJXfapOmD
- A7Ww==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=VXrYkWGJrAVwMKl7EpALp308abGzBC/xarfEjXsxyt8=;
- b=anHmUaac0a/8zg6/zzQa4KR/SOu0yYc9jnjbzhMAWY7p8Q4/S7UMqVx4nOQpcvMo9Z
- CDr4D/1nUjbcIE9aVh+L/k6GsULUxB5JWuW6rK6uxQh/qjM0dNJUoQ1znLZa2pbWUy/T
- T5HNOoOP30QlatRoa5NcWxRrc4hMUvKh1AWZsO9o9IvB8QzUG0HCNcAXoSkZdSPRgVAL
- wXxqvtucTUexRPu22LM5s52qfVL5HcPge29YdcgUGtO/Zsw/JL14+LXeRxe6kOcRnghG
- 5Eys3PWRvmX9iAfRG4rsMuelmAHaHbuAA2L3vXSJiiCMhXw6mzSlkzVRYw86Z+etlAXu
- pRmA==
-X-Gm-Message-State: AOAM532DU+gwywT54HCYKXOqsBjonqww5jWMVFoMiA+uh6beOlnna7FL
- uAPLuOeuzqqVUz7xgx8t1TfzFxqYHd33EWSTfsg=
-X-Google-Smtp-Source: ABdhPJxtXsKmf8Rv/T8eBzugDRbZKh4vUmXzvKagG59avK0BfoIYZLDJkcITgkfHBgVawjBi74gfiqsC3RANgxO/XoI=
-X-Received: by 2002:a5e:aa14:: with SMTP id s20mr27326679ioe.58.1592214546938; 
- Mon, 15 Jun 2020 02:49:06 -0700 (PDT)
+ id 1jkmXx-0005gg-0h; Mon, 15 Jun 2020 10:41:00 +0000
+X-UUID: 4d2ba5969c4e4a67aaa92f7fc02d406c-20200615
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=szzr4WhooKH7Yevz5ZGF7BJ100rmB9QWmrQjunMiwAQ=; 
+ b=CxBW9N7X3WOL8gUlqkS8AZuASeY4ZjciqvNly7K3cYlrAz6+PVwiDNsMolPnQTrCYbTj2gv6vesKrp0Y3g/u55tkv9tLoAxcHcmFd/0PnK0I5oeJ8oRLvvGw5fAAVWZZpmXPUdvZ059/ZwAsqd3zK8chaEyz/Zf7e9T1mFq7IiA=;
+X-UUID: 4d2ba5969c4e4a67aaa92f7fc02d406c-20200615
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <qiangming.xia@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1275650038; Mon, 15 Jun 2020 02:40:47 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 15 Jun 2020 03:40:47 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 15 Jun 2020 18:40:43 +0800
+Received: from [10.15.20.246] (10.15.20.246) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 15 Jun 2020 18:40:44 +0800
+Message-ID: <1592217629.22302.4.camel@mbjsdccf07>
+Subject: Re: [PATCH] i2c: mediatek: Add i2c support for continuous mode
+From: qiangming.xia <qiangming.xia@mediatek.com>
+To: <wsa@the-dreams.de>, Wolfram Sang <wsa+renesas@sang-engineering.com>
+Date: Mon, 15 Jun 2020 18:40:29 +0800
+In-Reply-To: <20200508071809.10187-1-qiangming.xia@mediatek.com>
+References: <20200508071809.10187-1-qiangming.xia@mediatek.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-References: <1591254387-10304-1-git-send-email-gene.chen.richtek@gmail.com>
- <20200604133943.GE6644@sirena.org.uk>
-In-Reply-To: <20200604133943.GE6644@sirena.org.uk>
-From: Gene Chen <gene.chen.richtek@gmail.com>
-Date: Mon, 15 Jun 2020 17:48:55 +0800
-Message-ID: <CAE+NS35ktxq2MiNXNWh7Q-gzdbm7Xoj2tXqrgzjkkv8W_tR3Sw@mail.gmail.com>
-Subject: Re: [PATCH] regulator: mt6360: Add support for MT6360 regulator
-To: Mark Brown <broonie@kernel.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200615_024911_898523_5098388F 
-X-CRM114-Status: GOOD (  18.21  )
+X-CRM114-CacheID: sfid-20200615_034058_940998_1E7827E0 
+X-CRM114-Status: GOOD (  16.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,78 +82,171 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Gene Chen <gene_chen@richtek.com>, Lee Jones <lee.jones@linaro.org>,
- lgirdwood@gmail.com, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
- benjamin.chao@mediatek.com, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, Wilma.Wu@mediatek.com,
- linux-arm-kernel@lists.infradead.org, shufan_lee@richtek.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-TG9vcCBNRkQgbWFpbnRhaW5lciwKCk1hcmsgQnJvd24gPGJyb29uaWVAa2VybmVsLm9yZz4g5pa8
-IDIwMjDlubQ25pyINOaXpSDpgLHlm5sg5LiL5Y2IOTozOeWvq+mBk++8mgo+Cj4gT24gVGh1LCBK
-dW4gMDQsIDIwMjAgYXQgMDM6MDY6MjdQTSArMDgwMCwgR2VuZSBDaGVuIHdyb3RlOgo+Cj4gVGhp
-cyBsb29rcyBuaWNlIGFuZCBzaW1wbGUsIGEgZmV3IGZhaXJseSBzbWFsbCBjb21tZW50cyBiZWxv
-dyBidXQgaGlnaAo+IGxldmVsIGl0J3MgYmFzaWNhbGx5IGZpbmUuCj4KPiA+IC0tLSAvZGV2L251
-bGwKPiA+ICsrKyBiL2RyaXZlcnMvcmVndWxhdG9yL210NjM2MC1yZWd1bGF0b3IuYwo+ID4gQEAg
-LTAsMCArMSw1NzEgQEAKPiA+ICsvLyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMAo+
-ID4gKy8qCj4gPiArICogQ29weXJpZ2h0IChjKSAyMDIwIE1lZGlhVGVrIEluYy4KPgo+IFBsZWFz
-ZSBtYWtlIHRoZSBlbnRpcmUgY29tbWVudCBhIEMrKyBvbmUgc28gdGhpbmdzIGxvb2sgbW9yZQo+
-IGludGVudGlvbmFsLgo+CgpBQ0sKCj4gPiArICAgICBmb3IgKGkgPSAwOyBpIDwgZGV2ZGF0YS0+
-bnVtX2lycV9kZXNjczsgaSsrKSB7Cj4gPiArICAgICAgICAgICAgIGlycV9kZXNjID0gZGV2ZGF0
-YS0+aXJxX2Rlc2NzICsgaTsKPiA+ICsgICAgICAgICAgICAgaWYgKHVubGlrZWx5KCFpcnFfZGVz
-Yy0+bmFtZSkpCj4gPiArICAgICAgICAgICAgICAgICAgICAgY29udGludWU7Cj4KPiBEbyB3ZSBy
-ZWFsbHkgbmVlZCBhbiB1bmxpa2VseSBoZXJlPyAgVGhpcyBzaG91bGRuJ3QgYmUgYSBob3QgcGF0
-aC4KPgoKQUNLLCB3ZSB3aWxsIHJlbW92ZSBpdAoKPiA+ICtzdGF0aWMgaW50IG10NjM2MF9yZWd1
-bGF0b3Jfc2V0X21vZGUoCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVj
-dCByZWd1bGF0b3JfZGV2ICpyZGV2LCB1bnNpZ25lZCBpbnQgbW9kZSkKPiA+ICt7Cj4KPiA+ICsg
-ICAgIHN3aXRjaCAoMSA8PCAoZmZzKG1vZGUpIC0gMSkpIHsKPiA+ICsgICAgIGNhc2UgUkVHVUxB
-VE9SX01PREVfTk9STUFMOgo+Cj4gSSBkb24ndCB1bmRlcnN0YW5kIHdoeSB0aGlzIGlzbid0IGp1
-c3QgYSBzdHJhaWdodCBzd2l0Y2ggb24gbW9kZT8KPgoKQUNLCgo+ID4gK3N0YXRpYyB1bnNpZ25l
-ZCBpbnQgbXQ2MzYwX3JlZ3VsYXRvcl9nZXRfbW9kZShzdHJ1Y3QgcmVndWxhdG9yX2RldiAqcmRl
-dikKPiA+ICt7Cj4gPiArICAgICBjb25zdCBzdHJ1Y3QgbXQ2MzYwX3JlZ3VsYXRvcl9kZXNjICpk
-ZXNjID0KPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgKGNvbnN0IHN0cnVjdCBtdDYz
-NjBfcmVndWxhdG9yX2Rlc2MgKilyZGV2LT5kZXNjOwo+ID4gKyAgICAgaW50IHNoaWZ0ID0gZmZz
-KGRlc2MtPm1vZGVfZ2V0X21hc2spIC0gMSwgcmV0Owo+ID4gKyAgICAgdW5zaWduZWQgaW50IHZh
-bCA9IDA7Cj4gPiArCj4gPiArICAgICBkZWZhdWx0Ogo+ID4gKyAgICAgICAgICAgICByZXQgPSAw
-Owo+ID4gKyAgICAgfQo+Cj4gSWYgd2UgY2FuJ3QgcGFyc2UgYSB2YWxpZCB2YWx1ZSBmcm9tIHRo
-ZSBoYXJkd2FyZSB0aGVuIHRoYXQncyBhbiBlcnJvci4KPgoKQUNLCgo+ID4gK3N0YXRpYyBpbnQg
-bXQ2MzYwX3JlZ3VsYXRvcl9yZWdfd3JpdGUodm9pZCAqY29udGV4dCwKPiA+ICsgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIHVuc2lnbmVkIGludCByZWcsIHVuc2lnbmVkIGludCB2
-YWwpCj4gPiArewo+ID4gKyAgICAgc3RydWN0IG10NjM2MF9yZWd1bGF0b3JfZGF0YSAqbXJkID0g
-Y29udGV4dDsKPiA+ICsgICAgIHU4IGNodW5rWzRdID0gezB9Owo+ID4gKwo+ID4gKyAgICAgLyog
-Y2h1bmsgMCAtPmkyYyBhZGRyLCAxIC0+IHJlZ19hZGRyLCAyIC0+IHJlZ192YWwgMy0+IGNyYzgg
-Ki8KPiA+ICsgICAgIGNodW5rWzBdID0gKG1yZC0+aTJjLT5hZGRyICYgMHg3ZikgPDwgMTsKPiA+
-ICsgICAgIGNodW5rWzFdID0gcmVnICYgMHgzZjsKPiA+ICsgICAgIGNodW5rWzJdID0gKHU4KXZh
-bDsKPiA+ICsgICAgIGNodW5rWzNdID0gY3JjOChtcmQtPmNyYzhfdGFibGUsIGNodW5rLCAzLCAw
-KTsKPiA+ICsgICAgIC8qIGFsc28gZHVtbXkgb25lIGJ5dGUgKi8KPiA+ICsgICAgIHJldHVybiBp
-MmNfc21idXNfd3JpdGVfaTJjX2Jsb2NrX2RhdGEobXJkLT5pMmMsIGNodW5rWzFdLCAzLCBjaHVu
-ayArIDIpOwo+ID4gK30KPgo+IE9oLCB3b3cgLSB0aGF0J3MgYSBmdW4gSS9PIGludGVyZmFjZSEK
-Pgo+ID4gK3N0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIF9fbWF5YmVfdW51c2VkIG10
-NjM2MF9yZWd1bGF0b3Jfb2ZfaWRbXSA9IHsKPiA+ICsgICAgIHsKPiA+ICsgICAgICAgICAgICAg
-LmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ2MzYwX3BtaWMiLAo+ID4gKyAgICAgICAgICAgICAu
-ZGF0YSA9ICh2b2lkICopJm10NjM2MF9wbWljX2RldmRhdGEsCj4gPiArICAgICB9LAo+ID4gKyAg
-ICAgewo+ID4gKyAgICAgICAgICAgICAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDYzNjBfbGRv
-IiwKPiA+ICsgICAgICAgICAgICAgLmRhdGEgPSAodm9pZCAqKSZtdDYzNjBfbGRvX2RldmRhdGEs
-Cj4gPiArICAgICB9LAo+ID4gKyAgICAge30sCj4gPiArfTsKPiA+ICtNT0RVTEVfREVWSUNFX1RB
-QkxFKG9mLCBtdDYzNjBfcmVndWxhdG9yX29mX2lkKTsKPgo+IEkgZG9uJ3Qgc2VlIGFueSBEVCBi
-aW5kaW5ncyBkb2N1bWVudGF0aW9uIGZvciB0aGlzLCBkb2N1bWVudGF0aW9uIGlzCj4gcmVxdWly
-ZWQgZm9yIGFsbCBuZXcgYmluZGluZ3MuCj4KCkFDSywgd2Ugd2lsbCB1cGRhdGUgYmluZGluZyBk
-b2N1bWVudCBsYXRlci4KCj4gPiArICAgICBtcmQtPnJlZ21hcCA9IGRldm1fcmVnbWFwX2luaXQo
-JihtcmQtPmkyYy0+ZGV2KSwKPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBOVUxMLCBtcmQsIGRldmRhdGEtPnJlZ21hcF9jb25maWcpOwo+ID4gKyAgICAgaWYgKElTX0VS
-UihtcmQtPnJlZ21hcCkpIHsKPiA+ICsgICAgICAgICAgICAgZGV2X2VycigmcGRldi0+ZGV2LCAi
-RmFpbGVkIHRvIHJlZ2lzdGVyIHJlZ21hcFxuIik7Cj4gPiArICAgICAgICAgICAgIHJldHVybiBQ
-VFJfRVJSKG1yZC0+cmVnbWFwKTsKPiA+ICsgICAgIH0KPgo+IFRoaXMgbG9va3MgbGlrZSBhIE1G
-RCBzbyBpdCdzIHN1cnByaXNpbmcgdG8gc2VlIHVzIGRlZmluaW5nIGEgcmVnbWFwIGF0Cj4gdGhp
-cyBsZXZlbC4gIFdoeSBhcmUgd2UgZG9pbmcgdGhpcz8KCkJlY2F1c2UgTVQ2MzYwIGluY2x1ZGUg
-UE1VL1BNSUMvTERPL1RZUEVDIHBhcnQsIG9ubHkgUE1JQy9MRE8gaTJjIFIvVwpuZWVkIGNvbnRh
-aW4gQ1JDIGZvcm1hdC4KV2Ugd2lsbCB1cGRhdGUgbmV3IHBhdGNoIHRvIGNvbmNsdWRlIHIvdyBp
-biBtZmQgZHJpdmVyLgpBY2NvcmRpbmcgdG8gZGlmZmVyZW50IHJlZ2lzdGVyIGFkZHJlc3Mgd2l0
-aCBiYW5rIG51bWJlciwgd2UgY2FuCmRpc3Rpbmd1aXNoIGRpZmZlcmVudCBwYXJ0IG9mIG1vZHVs
-ZS4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0
-ZWsK
+Hi, Wolfram
+	Do you have time to take a look at this? Thanks.
+
+On Fri, 2020-05-08 at 15:18 +0800, Qiangming Xia wrote:
+> From: "qiangming.xia" <qiangming.xia@mediatek.com>
+> 
+>     Mediatek i2c controller support for continuous mode, it allow to
+> transfer multiple write messages once. It combined by
+> 'S + addr(wr) + data + Sr + ... + Sr + S + addr(wr) + data + P'.
+>     Some slave devices need write many offset ranges, and the offset range
+> maybe not continuous. For example, need write 'offset_0', 'offset_3' and
+> 'offset_5' 10 bytes, total 30 bytes. Slave device driver usually execute
+> three times i2c transfer API,i.e,i2c_transfer() to complete it, however,
+> it can use once transfer to finish it by continuous mode.
+> 
+> Signed-off-by: Qiangming Xia <qiangming.xia@mediatek.com>
+> Feature: I2C
+> ---
+>  drivers/i2c/busses/i2c-mt65xx.c | 74 ++++++++++++++++++++++++++++++++-
+>  1 file changed, 72 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> index 2152ec5f535c..9bab8c44ad58 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -98,6 +98,7 @@ enum mtk_trans_op {
+>  	I2C_MASTER_WR = 1,
+>  	I2C_MASTER_RD,
+>  	I2C_MASTER_WRRD,
+> +	I2C_MASTER_CONTINUOUS_WR,
+>  };
+>  
+>  enum I2C_REGS_OFFSET {
+> @@ -619,6 +620,9 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+>  					    OFFSET_TRANSFER_LEN);
+>  		}
+>  		mtk_i2c_writew(i2c, I2C_WRRD_TRANAC_VALUE, OFFSET_TRANSAC_LEN);
+> +	} else if (i2c->op == I2C_MASTER_CONTINUOUS_WR) {
+> +		mtk_i2c_writew(i2c, msgs->len / num, OFFSET_TRANSFER_LEN);
+> +		mtk_i2c_writew(i2c, num, OFFSET_TRANSAC_LEN);
+>  	} else {
+>  		mtk_i2c_writew(i2c, msgs->len, OFFSET_TRANSFER_LEN);
+>  		mtk_i2c_writew(i2c, num, OFFSET_TRANSAC_LEN);
+> @@ -671,7 +675,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+>  
+>  		writel((u32)wpaddr, i2c->pdmabase + OFFSET_TX_MEM_ADDR);
+>  		writel(msgs->len, i2c->pdmabase + OFFSET_TX_LEN);
+> -	} else {
+> +	} else if (i2c->op == I2C_MASTER_WRRD) {
+>  		writel(I2C_DMA_CLR_FLAG, i2c->pdmabase + OFFSET_INT_FLAG);
+>  		writel(I2C_DMA_CLR_FLAG, i2c->pdmabase + OFFSET_CON);
+>  
+> @@ -722,6 +726,24 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+>  		writel((u32)rpaddr, i2c->pdmabase + OFFSET_RX_MEM_ADDR);
+>  		writel(msgs->len, i2c->pdmabase + OFFSET_TX_LEN);
+>  		writel((msgs + 1)->len, i2c->pdmabase + OFFSET_RX_LEN);
+> +	} else if (i2c->op == I2C_MASTER_CONTINUOUS_WR) {
+> +		writel(I2C_DMA_INT_FLAG_NONE, i2c->pdmabase + OFFSET_INT_FLAG);
+> +		writel(I2C_DMA_CON_TX, i2c->pdmabase + OFFSET_CON);
+> +
+> +		wpaddr = dma_map_single(i2c->dev, msgs->buf,
+> +					msgs->len, DMA_TO_DEVICE);
+> +		if (dma_mapping_error(i2c->dev, wpaddr)) {
+> +			kfree(msgs->buf);
+> +			return -ENOMEM;
+> +		}
+> +
+> +		if (i2c->dev_comp->support_33bits) {
+> +			reg_4g_mode = mtk_i2c_set_4g_mode(wpaddr);
+> +			writel(reg_4g_mode, i2c->pdmabase + OFFSET_TX_4G_MODE);
+> +		}
+> +
+> +		writel((u32)wpaddr, i2c->pdmabase + OFFSET_TX_MEM_ADDR);
+> +		writel(msgs->len, i2c->pdmabase + OFFSET_TX_LEN);
+>  	}
+>  
+>  	writel(I2C_DMA_START_EN, i2c->pdmabase + OFFSET_EN);
+> @@ -752,7 +774,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+>  				 msgs->len, DMA_FROM_DEVICE);
+>  
+>  		i2c_put_dma_safe_msg_buf(dma_rd_buf, msgs, true);
+> -	} else {
+> +	} else if (i2c->op == I2C_MASTER_WRRD) {
+>  		dma_unmap_single(i2c->dev, wpaddr, msgs->len,
+>  				 DMA_TO_DEVICE);
+>  		dma_unmap_single(i2c->dev, rpaddr, (msgs + 1)->len,
+> @@ -760,6 +782,11 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+>  
+>  		i2c_put_dma_safe_msg_buf(dma_wr_buf, msgs, true);
+>  		i2c_put_dma_safe_msg_buf(dma_rd_buf, (msgs + 1), true);
+> +	} else if (i2c->op == I2C_MASTER_CONTINUOUS_WR) {
+> +		dma_unmap_single(i2c->dev, wpaddr,
+> +				 msgs->len, DMA_TO_DEVICE);
+> +
+> +		kfree(msgs->buf);
+>  	}
+>  
+>  	if (ret == 0) {
+> @@ -783,6 +810,9 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+>  	int ret;
+>  	int left_num = num;
+>  	struct mtk_i2c *i2c = i2c_get_adapdata(adap);
+> +	struct i2c_msg multi_msg[1];
+> +	u8 *dma_multi_wr_buf;
+> +	int j;
+>  
+>  	ret = mtk_i2c_clock_enable(i2c);
+>  	if (ret)
+> @@ -798,6 +828,46 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+>  		}
+>  	}
+>  
+> +	if (num > 1) {
+> +		for (int i = 0; i < num - 1; i++) {
+> +			if (!(msgs[i].flags & I2C_M_RD) &&
+> +				!(msgs[i+1].flags & I2C_M_RD) &&
+> +					(msgs[i].addr == msgs[i+1].addr) &&
+> +						(msgs[i].len ==
+> +							msgs[i+1].len)) {
+> +				continue;
+> +			} else
+> +				break;
+> +		}
+> +		if (i >= num - 1) {
+> +			i2c->op = I2C_MASTER_CONTINUOUS_WR;
+> +			j = 0;
+> +			dma_multi_wr_buf = kzalloc(msgs->len * num, GFP_KERNEL);
+> +			if (!dma_multi_wr_buf) {
+> +				ret =  -ENOMEM;
+> +				goto err_exit;
+> +			}
+> +			multi_msg->addr  = msgs->addr;
+> +			multi_msg->len   = msgs->len * num;
+> +			multi_msg->buf   = dma_multi_wr_buf;
+> +			multi_msg->flags  = 0;
+> +			while (j < num) {
+> +				memcpy(dma_multi_wr_buf + msgs->len * j,
+> +							msgs->buf, msgs->len);
+> +				j++;
+> +				msgs++;
+> +			}
+> +
+> +			i2c->ignore_restart_irq = false;
+> +			ret = mtk_i2c_do_transfer(i2c, multi_msg, num, 0);
+> +			if (ret < 0)
+> +				goto err_exit;
+> +			ret = num;
+> +				goto err_exit;
+> +
+> +		}
+> +	}
+> +
+>  	if (i2c->auto_restart && num >= 2 && i2c->speed_hz > MAX_FS_MODE_SPEED)
+>  		/* ignore the first restart irq after the master code,
+>  		 * otherwise the first transfer will be discarded.
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
