@@ -2,70 +2,67 @@ Return-Path: <SRS0=oIsV=74=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 70CABC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 06:47:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C6F4AC433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 06:47:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 40EF72067B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 06:47:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9C9C92067B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 06:47:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z3Poimt+";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="eYahEgyP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 40EF72067B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZdfeoEy5";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="fkfERACX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9C9C92067B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ecGfbbGah92syPpzf99eQ6zEJr7mBvthQQRN0Qc8+lI=; b=Z3Poimt+CJ0s3N
-	4WP3oCRwlITE3iCaUvVYCGvAFyJ7/6ZtiXv85g7TdFiABISYkpwDd4xi5Nec4RaHNFifNmqhg5STK
-	WFfGFq20ggz//2NxfdkwNXgiEMlEPCn5q1AbpN1iCCsoZEy/MmEmG9idBE0zRwaFkPc34apbtpVtg
-	YMi6KoVc1dK8/g4A0NSwKYTF9DxIQESAM1veK8bZjcWaS1Xel/Ty5ldHP+MnlV1qxKKLP676LfdgM
-	3h/8i2/Bt69VPjjOX2LPLM/b/UWJnDzWOGBQUYauqOPzppK52hvHdKG4r7tIcNzU+jLiKGZbwNsez
-	bMfZSS63b7pmbQQpbaTg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tZCm+6Rb6jvVDlgOninIWfSZtGCdoGKw4RogZ8F/eB4=; b=ZdfeoEy5C+90y3
+	iSQaghnjyAJpHOigxchwXUEYwjQLb4INPp54rZDgb0GPB0dBTfjl2uao1kx7oO6Oe0U0FIwY4v//D
+	dtrSTqdXWs8CfrB3+m8nTxl1Mr9l1MVg0hcLqbMl5y11Lss0JB0tzCzQW3lLzBq6LHm7b8abpOtei
+	NiX2FfdODmAz/b3pbHmiKkyltGbbNNkrXY0HW8/rXdlxuU2lkfwiCIKJNv07UkAtmoux3w8u8PcRJ
+	R60Nf/PNDd7tjcJZOchR395i1T73pNvJew0x7fv3m6l8IvcsIxFLKiJ2/VonW2ZfbaFEVheyAnylI
+	mfFR/H2WujCDeoIjWdgw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jkiuE-00024f-BL; Mon, 15 Jun 2020 06:47:42 +0000
+	id 1jkiuO-0002Fs-PS; Mon, 15 Jun 2020 06:47:52 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jkitl-0001aV-IU; Mon, 15 Jun 2020 06:47:16 +0000
+ id 1jkito-0001bI-4L; Mon, 15 Jun 2020 06:47:17 +0000
 Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
  [95.90.213.197])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 947E521556;
- Mon, 15 Jun 2020 06:47:12 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 75D7A2074D;
+ Mon, 15 Jun 2020 06:47:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592203632;
- bh=sOlCZeAIIdnJeZ75NMKYKIJfx785+zKJ7yu0YkJu2qg=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=eYahEgyPPQXSmFAT7H9YIWLrUz7r9bYJ3sEmnpf2WjfEZkEfYSQL+dnCBid4wPO3T
- Ff7Yc21Lokg1ydol9hQBG25i5Bwy/5e16o9e1ssMGQswWyQGV4Zw4FZ3rWBJGz9Iwd
- tmb2mt5uOxRpXVgFNGkevjoXwvHrVow/kwT35a+w=
+ s=default; t=1592203635;
+ bh=GF2Otkk8GeL8AnPZYKuZzCwG9PVKg5Z7DVVHgebQ7f0=;
+ h=From:To:Cc:Subject:Date:From;
+ b=fkfERACX/KYWbqRV8t7NVva9Lz8x+VqHnC1VM5w/C1EyVHebhNifzo3dQ171xOJrK
+ ObPfrHwHwEruPskgn2YnHQnGtDn4XjWbifORQiGr9U4Hg5yLGrpHKAr1xeGQuJNFXe
+ zUj9yUXIVup3rTuDe9+3oIQlqZcYnzoQlAjH9YrI=
 Received: from mchehab by mail.kernel.org with local (Exim 4.93)
  (envelope-from <mchehab@kernel.org>)
- id 1jkith-009nmo-QD; Mon, 15 Jun 2020 08:47:09 +0200
+ id 1jkith-009nlx-C3; Mon, 15 Jun 2020 08:47:09 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Linux Doc Mailing List <linux-doc@vger.kernel.org>
-Subject: [PATCH 13/29] dt: fix broken links due to txt->yaml renames
-Date: Mon, 15 Jun 2020 08:46:52 +0200
-Message-Id: <0e4a7f0b7efcc8109c8a41a2e13c8adde4d9c6b9.1592203542.git.mchehab+huawei@kernel.org>
+Subject: [PATCH 00/29] Documentation fixes
+Date: Mon, 15 Jun 2020 08:46:39 +0200
+Message-Id: <cover.1592203542.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.26.2
-In-Reply-To: <cover.1592203542.git.mchehab+huawei@kernel.org>
-References: <cover.1592203542.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200614_234714_542609_157D45C5 
-X-CRM114-Status: GOOD (  14.75  )
+X-CRM114-CacheID: sfid-20200614_234716_214264_5984A292 
+X-CRM114-Status: GOOD (  15.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,147 +74,187 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org,
- =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- linux-rockchip@lists.infradead.org, Sandy Huang <hjc@rock-chips.com>,
- Jakub Kicinski <kuba@kernel.org>, linux-mips@vger.kernel.org,
- devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
- Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
+Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Linus Walleij <linus.walleij@linaro.org>, dri-devel@lists.freedesktop.org,
+ Paul Mackerras <paulus@samba.org>, Christoph Hellwig <hch@lst.de>,
+ Marek Szyprowski <m.szyprowski@samsung.com>, linux-arch@vger.kernel.org,
+ Mike Snitzer <snitzer@redhat.com>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Michael Ellerman <mpe@ellerman.id.au>, kasan-dev@googlegroups.com,
+ Ingo Molnar <mingo@redhat.com>, Alan Stern <stern@rowland.harvard.edu>,
+ NXP Linux Team <linux-imx@nxp.com>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Boqun Feng <boqun.feng@gmail.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Alexander Viro <viro@zeniv.linux.org.uk>, Thomas Gleixner <tglx@linutronix.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ linux-spi@vger.kernel.org, Pengutronix Kernel Team <kernel@pengutronix.de>,
+ linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
+ alsa-devel@alsa-project.org, linux-ia64@vger.kernel.org,
+ David Airlie <airlied@linux.ie>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ Eric Dumazet <edumazet@google.com>, keyrings@vger.kernel.org,
+ Shuah Khan <shuah@kernel.org>, Alasdair Kergon <agk@redhat.com>,
+ Daniel Kiss <daniel.kiss@arm.com>, Stephen Rothwell <sfr@canb.auug.org.au>,
+ Fabio Estevam <festevam@gmail.com>, Helge Deller <deller@gmx.de>,
+ linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
+ Andrea Parri <parri.andrea@gmail.com>, linux-arm-msm@vger.kernel.org,
+ Sean Wang <sean.wang@mediatek.com>, linux-gpio@vger.kernel.org,
+ Bjorn Helgaas <bhelgaas@google.com>, Jaegeuk Kim <jaegeuk@kernel.org>,
  linux-arm-kernel@lists.infradead.org,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>, netdev@vger.kernel.org,
- Arnaud Pouliquen <arnaud.pouliquen@st.com>,
- Liam Girdwood <lgirdwood@gmail.com>, linux-bluetooth@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
- "David S. Miller" <davem@davemloft.net>
+ =?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+ Tony Luck <tony.luck@intel.com>, dm-devel@redhat.com,
+ Alexey Gladkov <gladkov.alexey@gmail.com>,
+ Arnaud Pouliquen <arnaud.pouliquen@st.com>, Sandy Huang <hjc@rock-chips.com>,
+ linux-f2fs-devel@lists.sourceforge.net, linux-renesas-soc@vger.kernel.org,
+ "Eric W. Biederman" <ebiederm@xmission.com>,
+ Mike Kravetz <mike.kravetz@oracle.com>, linux-pci@vger.kernel.org,
+ Akira Yokosawa <akiyks@gmail.com>, Lai Jiangshan <jiangshanlai@gmail.com>,
+ Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
+ Dave Hansen <dave.hansen@intel.com>, linux-kselftest@vger.kernel.org,
+ Joel Fernandes <joel@joelfernandes.org>,
+ Sukadev Bhattiprolu <sukadev@linux.ibm.com>, Will Deacon <will@kernel.org>,
+ Florian Fainelli <f.fainelli@gmail.com>, Jonathan Corbet <corbet@lwn.net>,
+ Haren Myneni <haren@linux.ibm.com>,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>,
+ Federico Vaga <federico.vaga@vaga.pv.it>, Jade Alglave <j.alglave@ucl.ac.uk>,
+ Alexey Dobriyan <adobriyan@gmail.com>, Fenghua Yu <fenghua.yu@intel.com>,
+ Marco Elver <elver@google.com>, Kees Cook <keescook@chromium.org>,
+ Josh Triplett <josh@joshtriplett.org>, Steven Rostedt <rostedt@goodmis.org>,
+ rcu@vger.kernel.org, Mark Brown <broonie@kernel.org>,
+ Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+ Luc Maranget <luc.maranget@inria.fr>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>, linux-parisc@vger.kernel.org,
+ Jeff Layton <jlayton@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ iommu@lists.linux-foundation.org, netdev@vger.kernel.org,
+ Shawn Guo <shawnguo@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Thiago Jung Bauermann <bauerman@linux.ibm.com>, Jan Kara <jack@suse.cz>,
+ "Peter Zijlstra \(Intel\)" <peterz@infradead.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ David Howells <dhowells@redhat.com>, linux-mm@kvack.org,
+ Sandipan Das <sandipan@linux.ibm.com>, "H. Peter Anvin" <hpa@zytor.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, x86@kernel.org,
+ Russell King <linux@armlinux.org.uk>, Andy Gross <agross@kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ devicetree@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>,
+ "Paul E. McKenney" <paulmck@kernel.org>, Daniel Lustig <dlustig@nvidia.com>,
+ Chao Yu <chao@kernel.org>, Lubomir Rintel <lkundrak@v3.sk>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Dmitry Vyukov <dvyukov@google.com>,
+ Robin Murphy <robin.murphy@arm.com>, Akira Shimahara <akira215corp@gmail.com>,
+ linux-mips@vger.kernel.org, linux-bluetooth@vger.kernel.org,
+ Daniel Vetter <daniel@ffwll.ch>, Borislav Petkov <bp@alien8.de>,
+ linuxppc-dev@lists.ozlabs.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are some new broken doc links due to yaml renames
-at DT. Developers should really run:
+Hi Jon,
 
-	./scripts/documentation-file-ref-check
+That's a bunch of files I have to be applied on the top of v5.8-rc1 fixing
+documentation warnings. I already removed some duplicated stuff.
 
-in order to solve those issues while submitting patches.
-This tool can even fix most of the issues with:
+Regards,
+Mauro
 
-	./scripts/documentation-file-ref-check --fix
+Mauro Carvalho Chehab (29):
+  mm: vmalloc.c: remove a kernel-doc annotation from a removed parameter
+  net: dev: add a missing kernel-doc annotation
+  net: netdevice.h: add a description for napi_defer_hard_irqs
+  scripts/kernel-doc: parse __ETHTOOL_DECLARE_LINK_MODE_MASK
+  net: pylink.h: add kernel-doc descriptions for new fields at
+    phylink_config
+  scripts/kernel-doc: handle function pointer prototypes
+  fs: fs.h: fix a kernel-doc parameter description
+  gpio: driver.h: fix kernel-doc markup
+  kcsan: fix a kernel-doc warning
+  rcu: fix some kernel-doc warnings
+  fs: docs: f2fs.rst: fix a broken table
+  dt: update a reference for reneases pcar file renamed to yaml
+  dt: fix broken links due to txt->yaml renames
+  dt: Fix broken references to renamed docs
+  dt: fix reference to olpc,xo1.75-ec.txt
+  selftests/vm/keys: fix a broken reference at protection_keys.c
+  docs: hugetlbpage.rst: fix some warnings
+  docs: powerpc: fix some issues at vas-api.rst
+  docs: driver-model: remove a duplicated markup at driver.rst
+  docs: watch_queue.rst: supress some Sphinx warnings and move to
+    core-api
+  docs: device-mapper: add dm-ebs.rst to an index file
+  docs: it_IT: add two missing references
+  docs: ABI: fix a typo when pointing to w1-generic.rst
+  docs: fs: locking.rst: fix a broken table
+  docs: add bus-virt-phys-mapping.txt to core-api
+  docs: fix references for DMA*.txt files
+  docs: dt: minor adjustments at writing-schema.rst
+  docs: fs: proc.rst: fix a warning due to a merge conflict
+  docs: fs: proc.rst: convert a new chapter to ReST
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
----
- Documentation/devicetree/bindings/display/bridge/sii902x.txt  | 2 +-
- .../devicetree/bindings/display/rockchip/rockchip-drm.yaml    | 2 +-
- Documentation/devicetree/bindings/net/mediatek-bluetooth.txt  | 2 +-
- Documentation/devicetree/bindings/sound/audio-graph-card.txt  | 2 +-
- Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt  | 2 +-
- Documentation/mips/ingenic-tcu.rst                            | 2 +-
- MAINTAINERS                                                   | 4 ++--
- 7 files changed, 8 insertions(+), 8 deletions(-)
+ .../ABI/testing/sysfs-driver-w1_therm         |   2 +-
+ Documentation/PCI/pci.rst                     |   6 +-
+ .../admin-guide/device-mapper/index.rst       |   1 +
+ Documentation/admin-guide/mm/hugetlbpage.rst  |  25 ++-
+ Documentation/block/biodoc.rst                |   2 +-
+ .../bus-virt-phys-mapping.rst}                |   2 +-
+ Documentation/core-api/dma-api.rst            |   6 +-
+ Documentation/core-api/dma-isa-lpc.rst        |   2 +-
+ Documentation/core-api/index.rst              |   2 +
+ Documentation/{ => core-api}/watch_queue.rst  |  34 ++--
+ .../bindings/arm/freescale/fsl,scu.txt        |   2 +-
+ .../bindings/display/bridge/sii902x.txt       |   2 +-
+ .../bindings/display/imx/fsl-imx-drm.txt      |   4 +-
+ .../devicetree/bindings/display/imx/ldb.txt   |   4 +-
+ .../display/rockchip/rockchip-drm.yaml        |   2 +-
+ .../bindings/misc/olpc,xo1.75-ec.txt          |   2 +-
+ .../bindings/net/mediatek-bluetooth.txt       |   2 +-
+ .../bindings/pinctrl/renesas,pfc-pinctrl.txt  |   2 +-
+ .../bindings/sound/audio-graph-card.txt       |   2 +-
+ .../bindings/sound/st,sti-asoc-card.txt       |   2 +-
+ .../bindings/spi/qcom,spi-geni-qcom.txt       |   2 +-
+ Documentation/devicetree/writing-schema.rst   |   9 +-
+ .../driver-api/driver-model/driver.rst        |   2 -
+ Documentation/driver-api/usb/dma.rst          |   6 +-
+ Documentation/filesystems/f2fs.rst            | 150 ++++++++++++------
+ Documentation/filesystems/locking.rst         |   6 +-
+ Documentation/filesystems/proc.rst            |  46 +++---
+ Documentation/memory-barriers.txt             |   6 +-
+ Documentation/mips/ingenic-tcu.rst            |   2 +-
+ Documentation/powerpc/vas-api.rst             |  23 ++-
+ Documentation/security/keys/core.rst          |   2 +-
+ .../it_IT/process/management-style.rst        |   2 +
+ .../it_IT/process/submitting-patches.rst      |   2 +
+ .../translations/ko_KR/memory-barriers.txt    |   6 +-
+ MAINTAINERS                                   |   8 +-
+ arch/ia64/hp/common/sba_iommu.c               |  12 +-
+ arch/parisc/kernel/pci-dma.c                  |   2 +-
+ arch/x86/include/asm/dma-mapping.h            |   4 +-
+ arch/x86/kernel/amd_gart_64.c                 |   2 +-
+ drivers/parisc/sba_iommu.c                    |  14 +-
+ include/linux/dma-mapping.h                   |   2 +-
+ include/linux/fs.h                            |   2 +-
+ include/linux/gpio/driver.h                   |   2 +-
+ include/linux/kcsan-checks.h                  |  10 +-
+ include/linux/netdevice.h                     |   2 +
+ include/linux/phylink.h                       |   4 +
+ include/linux/rculist.h                       |   2 +-
+ include/linux/watch_queue.h                   |   2 +-
+ include/media/videobuf-dma-sg.h               |   2 +-
+ init/Kconfig                                  |   2 +-
+ kernel/dma/debug.c                            |   2 +-
+ kernel/watch_queue.c                          |   2 +-
+ mm/vmalloc.c                                  |   1 -
+ net/core/dev.c                                |   1 +
+ scripts/kernel-doc                            |   7 +
+ tools/testing/selftests/vm/protection_keys.c  |   2 +-
+ 56 files changed, 282 insertions(+), 175 deletions(-)
+ rename Documentation/{bus-virt-phys-mapping.txt => core-api/bus-virt-phys-mapping.rst} (99%)
+ rename Documentation/{ => core-api}/watch_queue.rst (94%)
 
-diff --git a/Documentation/devicetree/bindings/display/bridge/sii902x.txt b/Documentation/devicetree/bindings/display/bridge/sii902x.txt
-index 6e14e087c0d0..0d1db3f9da84 100644
---- a/Documentation/devicetree/bindings/display/bridge/sii902x.txt
-+++ b/Documentation/devicetree/bindings/display/bridge/sii902x.txt
-@@ -37,7 +37,7 @@ Optional properties:
- 	simple-card or audio-graph-card binding. See their binding
- 	documents on how to describe the way the sii902x device is
- 	connected to the rest of the audio system:
--	Documentation/devicetree/bindings/sound/simple-card.txt
-+	Documentation/devicetree/bindings/sound/simple-card.yaml
- 	Documentation/devicetree/bindings/sound/audio-graph-card.txt
- 	Note: In case of the audio-graph-card binding the used port
- 	index should be 3.
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
-index ec8ae742d4da..7204da5eb4c5 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
-@@ -24,7 +24,7 @@ properties:
-     description: |
-       Should contain a list of phandles pointing to display interface port
-       of vop devices. vop definitions as defined in
--      Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
-+      Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
- 
- required:
-   - compatible
-diff --git a/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt b/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
-index 219bcbd0d344..9ef5bacda8c1 100644
---- a/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
-+++ b/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
-@@ -3,7 +3,7 @@ MediaTek SoC built-in Bluetooth Devices
- 
- This device is a serial attached device to BTIF device and thus it must be a
- child node of the serial node with BTIF. The dt-bindings details for BTIF
--device can be known via Documentation/devicetree/bindings/serial/8250.txt.
-+device can be known via Documentation/devicetree/bindings/serial/8250.yaml.
- 
- Required properties:
- 
-diff --git a/Documentation/devicetree/bindings/sound/audio-graph-card.txt b/Documentation/devicetree/bindings/sound/audio-graph-card.txt
-index 269682619a70..d5f6919a2d69 100644
---- a/Documentation/devicetree/bindings/sound/audio-graph-card.txt
-+++ b/Documentation/devicetree/bindings/sound/audio-graph-card.txt
-@@ -5,7 +5,7 @@ It is based on common bindings for device graphs.
- see ${LINUX}/Documentation/devicetree/bindings/graph.txt
- 
- Basically, Audio Graph Card property is same as Simple Card.
--see ${LINUX}/Documentation/devicetree/bindings/sound/simple-card.txt
-+see ${LINUX}/Documentation/devicetree/bindings/sound/simple-card.yaml
- 
- Below are same as Simple-Card.
- 
-diff --git a/Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt b/Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt
-index 4d51f3f5ea98..a6ffcdec6f6a 100644
---- a/Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt
-+++ b/Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt
-@@ -5,7 +5,7 @@ codec or external codecs.
- 
- sti sound drivers allows to expose sti SoC audio interface through the
- generic ASoC simple card. For details about sound card declaration please refer to
--Documentation/devicetree/bindings/sound/simple-card.txt.
-+Documentation/devicetree/bindings/sound/simple-card.yaml.
- 
- 1) sti-uniperiph-dai: audio dai device.
- ---------------------------------------
-diff --git a/Documentation/mips/ingenic-tcu.rst b/Documentation/mips/ingenic-tcu.rst
-index c5a646b14450..2b75760619b4 100644
---- a/Documentation/mips/ingenic-tcu.rst
-+++ b/Documentation/mips/ingenic-tcu.rst
-@@ -68,4 +68,4 @@ and frameworks can be controlled from the same registers, all of these
- drivers access their registers through the same regmap.
- 
- For more information regarding the devicetree bindings of the TCU drivers,
--have a look at Documentation/devicetree/bindings/timer/ingenic,tcu.txt.
-+have a look at Documentation/devicetree/bindings/timer/ingenic,tcu.yaml.
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 68f21d46614c..0617dd671c2d 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3946,7 +3946,7 @@ L:	linux-crypto@vger.kernel.org
- S:	Supported
- F:	drivers/char/hw_random/cctrng.c
- F:	drivers/char/hw_random/cctrng.h
--F:	Documentation/devicetree/bindings/rng/arm-cctrng.txt
-+F:	Documentation/devicetree/bindings/rng/arm-cctrng.yaml
- W:	https://developer.arm.com/products/system-ip/trustzone-cryptocell/cryptocell-700-family
- 
- CEC FRAMEWORK
-@@ -5490,7 +5490,7 @@ F:	include/uapi/drm/r128_drm.h
- DRM DRIVER FOR RAYDIUM RM67191 PANELS
- M:	Robert Chiras <robert.chiras@nxp.com>
- S:	Maintained
--F:	Documentation/devicetree/bindings/display/panel/raydium,rm67191.txt
-+F:	Documentation/devicetree/bindings/display/panel/raydium,rm67191.yaml
- F:	drivers/gpu/drm/panel/panel-raydium-rm67191.c
- 
- DRM DRIVER FOR ROCKTECH JH057N00900 PANELS
 -- 
 2.26.2
+
 
 
 _______________________________________________
