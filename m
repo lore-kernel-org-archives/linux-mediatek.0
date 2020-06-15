@@ -4,98 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_1 autolearn=ham
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 29F78C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 18:09:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 71ED5C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 18:41:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DEBFC2080D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 18:09:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3861C20756
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2020 18:41:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="N/bV06Ug";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="ksIm2T40"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DEBFC2080D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FpKQ9/hU";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="iuyqJ3S+";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="JZUrw80w";
+	dkim=neutral (0-bit key) header.d=redhat.com header.i=@redhat.com header.b="LtPJTANz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3861C20756
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=126jVklmuqdvgCrIDzstgeRP5WNlNXjZ42HK1ZylNCo=; b=N/bV06UgqfgSBU
-	F+KY2Nc8YiVJVSZcOsvJi/Nm9Dp36IzNYwzu4GuxEliWd7CY9OTmXhb2Io6DtIlIAofKIz+hTquKY
-	2D+N15vOezMqQsVwxUuo19mrQvRzAwP6GDc0ZmNgAJxgxQT7dkG4cn6iv+izMyh3Yrs+S1AyaspMH
-	HTxXe36I/5gOB3a/c2O7BFQ+j2naU5Ie1Laz9F6I81MXt6xRHZFcwASsT1rZLKINKf9QaZh+RXFgo
-	/VJ0F0VGzcMYpMGuZqKdvcwS5lNW1MCLOuu0svP+QXfE7VSVE0tfHPb85JG4bWdgTn2kUyMg2DxW7
-	pypcLBeptbcXfErPwMdA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=o4lZKdOTCcfun68CMiVD91VhoDjacbf6sU/0qF9ZMhU=; b=FpKQ9/hU59yfe46zKXXgUKd3i
+	dayNFy20c8qpxDsdEp5PbmhXuvSHy/pXeyqVZ7CHsjnR8Cw7Alv1okx8LnAiL6cHiJh3Qssg/unwx
+	hdWapzjq4r+jrFxEy4wHT6V8p9dkB6W+M08I4LOILX+NePedCs/qXZEOftbhBrIxxUteMWeeRh284
+	ZeL6AA8qbJj/ft1joJjnRB5tLc1l6nY2FeZFCMSDnNRaQLEggUNcs4oS5bo+4/ccCEgJ7D9RBTUcQ
+	S4an3b8Dtydrv2nIpWtGqNdct57I3zmhpDwi891VK1Nc7tsfd4+eWNaDb8+sr0XnK9Y1FTIfQrgwN
+	989FVGrbw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jktXV-0006un-B4; Mon, 15 Jun 2020 18:08:57 +0000
-Received: from userp2130.oracle.com ([156.151.31.86])
+	id 1jku2Y-0002uA-90; Mon, 15 Jun 2020 18:41:02 +0000
+Received: from merlin.infradead.org ([2001:8b0:10b:1231::1])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jktXS-0006ts-CE; Mon, 15 Jun 2020 18:08:55 +0000
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05FI7hca026496;
- Mon, 15 Jun 2020 18:08:31 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=EdV85x/l0ZQB7qs/RGol05XelTO/TGwy+i5Nwcf8gRM=;
- b=ksIm2T40o14OrDnPOVl41oLfXflESyB3DKHmSrY07W8hiE/Z7QLC5o1aUTaHPRbSwzbu
- 9c0NwLH9cAIIrEop8mGTFh8G1XGbz9PddITo/iGjFqouwLRZRmyMPkuv312Tprpn0qqE
- vsgCBz56dXPpSbVxKCQXClzuApbPztWVszZo40Z9/pDvMf5EwgQrvvf51uoX9UnrZp3o
- w/4xkBk0XXZDlc2YcrCzTOExgRGYIv3Y4giKzpy8SzyD0DJs8FkiFKoy2usbln1dH7C7
- /e2gagyqK7O847BIeVNSzHbKNPgl/68telPWwh1LacJqZVCnTiRrQlKn7a2GbDXIJ48j 0Q== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2130.oracle.com with ESMTP id 31p6s22cke-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Mon, 15 Jun 2020 18:08:31 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05FHwvkZ051587;
- Mon, 15 Jun 2020 18:08:30 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3020.oracle.com with ESMTP id 31p6de1e1n-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 15 Jun 2020 18:08:30 +0000
-Received: from abhmp0002.oracle.com (abhmp0002.oracle.com [141.146.116.8])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 05FI8G7g031730;
- Mon, 15 Jun 2020 18:08:17 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 15 Jun 2020 11:08:15 -0700
-Date: Mon, 15 Jun 2020 21:07:53 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Waiman Long <longman@redhat.com>
+ id 1jku2X-0002tc-7i
+ for linux-mediatek@bombadil.infradead.org; Mon, 15 Jun 2020 18:41:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
+ :Reply-To:Content-ID:Content-Description;
+ bh=3LdVapGy9WTsAkwpfNEzCTfQe3Pij8/lM5ySXZsHExs=; b=iuyqJ3S+w7X0Ye7qU0Cb7YQnyp
+ PTAI0fJzmkCIKBS32O5Pyo3kck96yib9tmThrisqwMAAhk548nKcyOtFMYk3caoakVwibJCUbW0n/
+ +CPMqnU9B0b3abRL46DaO9nButePXY8JdiQEh+S6Cb89j16JH/wzX73G5TcCBqEe9TJuJnT0ipobu
+ oQWGid0YRWzD79d3/bwRjR0uBmFJ1cmHiw1dP2nXRy4CSrW1chmCZ3DihanSUtgtaVvJZ/Dse6iQ4
+ OAgmTXcVlmKWxzix52aqcAbaKhwCv0Q+yl5uvB2Is0ux0AqdDEBa+37l1d7f3BhaMkUSUcxcAul6X
+ pGSfCang==;
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]
+ helo=us-smtp-1.mimecast.com)
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jku2V-0004Cc-4p
+ for linux-mediatek@lists.infradead.org; Mon, 15 Jun 2020 18:40:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592246437;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3LdVapGy9WTsAkwpfNEzCTfQe3Pij8/lM5ySXZsHExs=;
+ b=JZUrw80wsDeK0bo3tEKQK8XiW9ngmDKg5MFnAeOyBAYl0bASVB+QJjQFV1GJsM7juSSDEX
+ zWSaFZX2UdG6N7HwH1NEKT0XcQDnP7iZ8aY1Tv5Ylz+cF8epg7Ev8QJSHYanngZUDD+NKp
+ g2VWPw/vUn4XzPWpEZ+uPXRfRhU1J0Q=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592246458;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3LdVapGy9WTsAkwpfNEzCTfQe3Pij8/lM5ySXZsHExs=;
+ b=LtPJTANzbHBowo2ItENPFQ9zRO4EIPRVJCvvrHOP9lVjm3OAoLJFx/lc2KSAD2ZVJ6beCW
+ +u4BA1rzyF6mFCifn9pXk2hKcr1DAHD4xucHAXbrdHhIt2+BHol+t1uPrb5aJZZlWBdjU+
+ hrQoS0EU4IvlQ3MMd01UO8s1DgAd1hU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-513-n3G_ZfGUONug8wkjJytxqA-1; Mon, 15 Jun 2020 14:40:12 -0400
+X-MC-Unique: n3G_ZfGUONug8wkjJytxqA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E5F43184D144;
+ Mon, 15 Jun 2020 18:40:06 +0000 (UTC)
+Received: from llong.remote.csb (ovpn-117-41.rdu2.redhat.com [10.10.117.41])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3972B5D9CC;
+ Mon, 15 Jun 2020 18:40:00 +0000 (UTC)
 Subject: Re: [PATCH 1/2] mm, treewide: Rename kzfree() to kfree_sensitive()
-Message-ID: <20200615180753.GJ4151@kadam>
+To: Dan Carpenter <dan.carpenter@oracle.com>
 References: <20200413211550.8307-1-longman@redhat.com>
- <20200413211550.8307-2-longman@redhat.com>
+ <20200413211550.8307-2-longman@redhat.com> <20200615180753.GJ4151@kadam>
+From: Waiman Long <longman@redhat.com>
+Organization: Red Hat
+Message-ID: <9d084be2-29a3-7757-9386-20dbaeb5fc24@redhat.com>
+Date: Mon, 15 Jun 2020 14:39:59 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200413211550.8307-2-longman@redhat.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9653
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=2
- adultscore=0 bulkscore=0
- phishscore=0 malwarescore=0 spamscore=0 mlxlogscore=930 mlxscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2006150134
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9653
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- lowpriorityscore=0 impostorscore=0
- clxscore=1011 mlxscore=0 mlxlogscore=944 priorityscore=1501 phishscore=0
- malwarescore=0 suspectscore=2 spamscore=0 cotscore=-2147483648 bulkscore=0
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2006150135
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200615_110854_559395_8D04426C 
-X-CRM114-Status: GOOD (  16.96  )
+In-Reply-To: <20200615180753.GJ4151@kadam>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -129,57 +136,63 @@ Cc: linux-cifs@vger.kernel.org, linux-wireless@vger.kernel.org,
  Joe Perches <joe@perches.com>, Andrew Morton <akpm@linux-foundation.org>,
  linux-wpan@vger.kernel.org, wireguard@lists.zx2c4.com,
  linux-ppp@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 13, 2020 at 05:15:49PM -0400, Waiman Long wrote:
-> diff --git a/mm/slab_common.c b/mm/slab_common.c
-> index 23c7500eea7d..c08bc7eb20bd 100644
-> --- a/mm/slab_common.c
-> +++ b/mm/slab_common.c
-> @@ -1707,17 +1707,17 @@ void *krealloc(const void *p, size_t new_size, gfp_t flags)
->  EXPORT_SYMBOL(krealloc);
->  
->  /**
-> - * kzfree - like kfree but zero memory
-> + * kfree_sensitive - Clear sensitive information in memory before freeing
->   * @p: object to free memory of
->   *
->   * The memory of the object @p points to is zeroed before freed.
-> - * If @p is %NULL, kzfree() does nothing.
-> + * If @p is %NULL, kfree_sensitive() does nothing.
->   *
->   * Note: this function zeroes the whole allocated buffer which can be a good
->   * deal bigger than the requested buffer size passed to kmalloc(). So be
->   * careful when using this function in performance sensitive code.
->   */
-> -void kzfree(const void *p)
-> +void kfree_sensitive(const void *p)
->  {
->  	size_t ks;
->  	void *mem = (void *)p;
-> @@ -1725,10 +1725,10 @@ void kzfree(const void *p)
->  	if (unlikely(ZERO_OR_NULL_PTR(mem)))
->  		return;
->  	ks = ksize(mem);
-> -	memset(mem, 0, ks);
-> +	memzero_explicit(mem, ks);
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-This is an unrelated bug fix.  It really needs to be pulled into a
-separate patch by itself and back ported to stable kernels.
+On 6/15/20 2:07 PM, Dan Carpenter wrote:
+> On Mon, Apr 13, 2020 at 05:15:49PM -0400, Waiman Long wrote:
+>> diff --git a/mm/slab_common.c b/mm/slab_common.c
+>> index 23c7500eea7d..c08bc7eb20bd 100644
+>> --- a/mm/slab_common.c
+>> +++ b/mm/slab_common.c
+>> @@ -1707,17 +1707,17 @@ void *krealloc(const void *p, size_t new_size, gfp_t flags)
+>>   EXPORT_SYMBOL(krealloc);
+>>   
+>>   /**
+>> - * kzfree - like kfree but zero memory
+>> + * kfree_sensitive - Clear sensitive information in memory before freeing
+>>    * @p: object to free memory of
+>>    *
+>>    * The memory of the object @p points to is zeroed before freed.
+>> - * If @p is %NULL, kzfree() does nothing.
+>> + * If @p is %NULL, kfree_sensitive() does nothing.
+>>    *
+>>    * Note: this function zeroes the whole allocated buffer which can be a good
+>>    * deal bigger than the requested buffer size passed to kmalloc(). So be
+>>    * careful when using this function in performance sensitive code.
+>>    */
+>> -void kzfree(const void *p)
+>> +void kfree_sensitive(const void *p)
+>>   {
+>>   	size_t ks;
+>>   	void *mem = (void *)p;
+>> @@ -1725,10 +1725,10 @@ void kzfree(const void *p)
+>>   	if (unlikely(ZERO_OR_NULL_PTR(mem)))
+>>   		return;
+>>   	ks = ksize(mem);
+>> -	memset(mem, 0, ks);
+>> +	memzero_explicit(mem, ks);
+>          ^^^^^^^^^^^^^^^^^^^^^^^^^
+> This is an unrelated bug fix.  It really needs to be pulled into a
+> separate patch by itself and back ported to stable kernels.
+>
+>>   	kfree(mem);
+>>   }
+>> -EXPORT_SYMBOL(kzfree);
+>> +EXPORT_SYMBOL(kfree_sensitive);
+>>   
+>>   /**
+>>    * ksize - get the actual amount of memory allocated for a given object
+> regards,
+> dan carpenter
+>
+Thanks for the suggestion. I will break it out and post a version soon.
 
->  	kfree(mem);
->  }
-> -EXPORT_SYMBOL(kzfree);
-> +EXPORT_SYMBOL(kfree_sensitive);
->  
->  /**
->   * ksize - get the actual amount of memory allocated for a given object
+Cheers,
+Longman
 
-regards,
-dan carpenter
 
 _______________________________________________
 Linux-mediatek mailing list
