@@ -4,87 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 03267C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2020 13:16:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8793EC433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2020 13:17:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C67D720FC3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2020 13:16:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 54D2720FC3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2020 13:17:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Iczk43+x";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="lMyV++gP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C67D720FC3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="h0ppAWLC";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="FiMajHQm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 54D2720FC3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AcbERg7SL1EKpgHWPgDMFnoKVvhX8jKL4C2xK3yauj0=; b=Iczk43+xy7oBKS
-	QlJSsM2mfOdDZqLuuULreoNq2Y5QxtfpZYcy/wTDIGSXBhn62owctzijab42YVg6/qDH4XQI7VIhu
-	TfA82MzcVJkNibh9D0w+tFD9ij41S41OzP0lm2qBqb0DLh5I+PFdM4CSRiYtwys1hS/OYxX7JEKUC
-	Dl9b9CetvY/moC84An25Gytn+q9qg7WQmD3oC1WQbYbf6R82tRdh655XUML4a26MwfjnzTWjXWGzx
-	X1bxFz4/EtHFUVPNM6w9UJGzk08if6UBE8t8G0zFVGIKPEPk6yVZgD4q1p2ubtlT0GpfE9zDPNjbl
-	E94hMR9meuqVpnrfzdNg==;
+	List-Owner; bh=YSFa/HmMsib4UcjghgQRwcMJuGYkLbv0ZeTMfBFqz/4=; b=h0ppAWLCuKPGuM
+	dmLCp2a+Ql63a6UnXv8De+4lypykMW5eh1XOFfgT2MN9i845XklesPmT826Zd1ZfFtvRVDv3dlokg
+	LbbnPd2oyVBmhP3V19+kNWb8T4iVeoj+qvJds4wNx5m28AQaA6lLqRTwXkNvV9hvcYZPVcbT3BC35
+	oGgeKDxRNRwJ5SS5y7ztDt3KZ2vEVeA1icIyrwA1HXNxnVglY6nJqaYd0Qo0v5XDMq7h3HVM5ehnE
+	5bypgfb6aOfMdT0FAOtTHKYFlACg1Z7xCJEenfegva+iBhejoCy4B7Gx7+i/Ef+BCR2Dpc/1vj4JF
+	L+/tvhCBC0O4Oc2oFXhg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlBRr-00035b-Uf; Tue, 16 Jun 2020 13:16:19 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1jlBSu-0003Pq-Pr; Tue, 16 Jun 2020 13:17:24 +0000
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlBRj-0002xb-QK
- for linux-mediatek@lists.infradead.org; Tue, 16 Jun 2020 13:16:13 +0000
-Received: by mail-wm1-x344.google.com with SMTP id y20so3031905wmi.2
- for <linux-mediatek@lists.infradead.org>; Tue, 16 Jun 2020 06:16:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=9NeQqiMAuFvxtrOzPp09+0hkReargQ3L4b3prwQqFWs=;
- b=lMyV++gPByIjhuuvn2wsK/E6klL79fbVx4ACxXxrHnu5At/8lS+6vpLTCO+WumvCb1
- Btd4DCv1THnwBCG4id7qSDcH0KTr8RGBM5STEozGGKPTVPzbXhsaJf5fGrSIgHEBynR6
- osWj5fyj4mQ1L5xGJVdkwJbuY4v1377rcu5Jq4sLk6859fcrU2fks+W6cDGJWjiN+naa
- qPVu58rW8dbILiK6yl0uJWaPVKLFH5WStAXktelK95uejdkKJQce6ZH8lDI9q1TvmM+g
- MmMS8mqTXaWgdtojc8ytx09R4ArfAHysepVCuNQwQfD/38aR+4SbqhONnPt16lRyzEFp
- 8SJg==
+ id 1jlBSr-0003PK-0O
+ for linux-mediatek@lists.infradead.org; Tue, 16 Jun 2020 13:17:22 +0000
+Received: by mail-ot1-x342.google.com with SMTP id 97so15896453otg.3
+ for <linux-mediatek@lists.infradead.org>; Tue, 16 Jun 2020 06:17:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=rzMbHCBVqOXYNcr+qlbWYXnu4pNfFFS2FAbZ34pmgSc=;
+ b=FiMajHQm7L6DE7XhIjtgClVw9dM6cFiUMth6qMwoC0Emy3gOzr89rNweEqq8RXT2rm
+ pOgmOB4uLk0vlKKD5iVRMmwYIBZGPwAHQZI+Dviz/nlvIE+3qu6k6FVURyqCv9s7P6aS
+ Zzk9wgbThOGRYsnJ0OSaaZL0J6mVMCZGcrofs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=9NeQqiMAuFvxtrOzPp09+0hkReargQ3L4b3prwQqFWs=;
- b=NYN9PQeJx2XQjUH9Mr78rHLvz+7OrCD89javZFt3D68OPXRsHjA+hg+iODBjjY/x+K
- 8QM0JEIFTxdx0mFbHFUY1m2FV9atwCG+5Zh8ahiG3L0F34ixJQg+RSgZkOWDfLz1tv/T
- PHVMR8BURZZL8yPFzKEU4NnbcjB+EaBQTnMn6qgTpRxT/VPQ6iliNZ0sQ6h7BRsPdgWo
- 9Mp6znpmnATb3UPs+a2ds7WwDtR8u/GIGegcNdgTPiARmfqIxgMkNdcxySJc4B8bUOI+
- /MRpEwBnvNgkQQNZHfkRB7skOlRgDqI1U0bUrZecIaSIJ3DuHgUwC1Rdr8BOZeBy1Qky
- emjQ==
-X-Gm-Message-State: AOAM5322QIrjzoSoGwyMX4nALb859Nf1KpezCg5lnqL1bczLpEA4i7zy
- qhKAlT+qPrvvr74L7B35cgz+Cg==
-X-Google-Smtp-Source: ABdhPJxXm+YEBOebjFL0T7eNx99jr7/JaArOdawU3v9M4AnaQqFhb5wqOc3kZdhNeoyRmtq7vpK93Q==
-X-Received: by 2002:a1c:541d:: with SMTP id i29mr3214543wmb.73.1592313369700; 
- Tue, 16 Jun 2020 06:16:09 -0700 (PDT)
-Received: from dell ([109.180.115.156])
- by smtp.gmail.com with ESMTPSA id d2sm29670942wrs.95.2020.06.16.06.16.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Jun 2020 06:16:08 -0700 (PDT)
-Date: Tue, 16 Jun 2020 14:16:07 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: Gene Chen <gene.chen.richtek@gmail.com>
-Subject: Re: [PATCH] dt-bindings: mfd: Add bindings for the Mediatek MT6360
- PMIC
-Message-ID: <20200616131607.GQ2608702@dell>
-References: <1592306876-3504-1-git-send-email-gene.chen.richtek@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=rzMbHCBVqOXYNcr+qlbWYXnu4pNfFFS2FAbZ34pmgSc=;
+ b=S2rhrowEn/9sn50KytVPGkUftKvuZjRjQWvp0bd5WePC+ljZ2wgBcX3ecIt2gbaWl+
+ vbx6PqEbwiEA2XfEtCP6O/I3MIC2N6eiXvWHV4RQD3p2GEfGuBN5yHul+B4ijtLsTNuK
+ bPgugjip0FSRP+qSGs92L5pNdxeoEnCXHt76n7lt9d5+PBD3kGwJl9/A5rPdPwUVA0Q/
+ DJtujVVcj9lwotUy6qBMuvMDHgvwzXsrVqPzsfYtqZLZJDTcOrU5P4Z6CiDaykL/vjU2
+ XrN6e+yO0u0xSvDq8leP1CklsC8PPZBX+BJMEM59R2mhOc8Johc88TaRhrlldffycWHY
+ S20Q==
+X-Gm-Message-State: AOAM5324PbtnKEcVf9reNGYvGaFCXxDfIxgRf+vRvNZNk0HaXAWE6OsC
+ F/PKKPM8jDMA1BRYGpJNPWkjuxXVti4=
+X-Google-Smtp-Source: ABdhPJxANlrpbyYFy+FthpB0pkQ1Z7hVvfaQJx/imX8fp1CwQk3yR6MnUJnI5XexWOfWWHejsNNMlQ==
+X-Received: by 2002:a9d:456:: with SMTP id 80mr2257187otc.2.1592313438253;
+ Tue, 16 Jun 2020 06:17:18 -0700 (PDT)
+Received: from mail-oo1-f46.google.com (mail-oo1-f46.google.com.
+ [209.85.161.46])
+ by smtp.gmail.com with ESMTPSA id f5sm4016665oou.47.2020.06.16.06.17.16
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 16 Jun 2020 06:17:17 -0700 (PDT)
+Received: by mail-oo1-f46.google.com with SMTP id e12so4080319oou.2
+ for <linux-mediatek@lists.infradead.org>; Tue, 16 Jun 2020 06:17:16 -0700 (PDT)
+X-Received: by 2002:a4a:6156:: with SMTP id u22mr2286731ooe.50.1592313436257; 
+ Tue, 16 Jun 2020 06:17:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1592306876-3504-1-git-send-email-gene.chen.richtek@gmail.com>
+References: <20200520082723.96136-1-acourbot@chromium.org>
+ <20200520082723.96136-3-acourbot@chromium.org>
+ <1591613234.18435.8.camel@mtksdaap41>
+In-Reply-To: <1591613234.18435.8.camel@mtksdaap41>
+From: Alexandre Courbot <acourbot@chromium.org>
+Date: Tue, 16 Jun 2020 22:17:03 +0900
+X-Gmail-Original-Message-ID: <CAPBb6MVFyvoGjNE4xVPTBQzZibQSOuiEgBynror3CAo1W2dkxw@mail.gmail.com>
+Message-ID: <CAPBb6MVFyvoGjNE4xVPTBQzZibQSOuiEgBynror3CAo1W2dkxw@mail.gmail.com>
+Subject: Re: [PATCH 02/10] media: mtk-vcodec: add SCP firmware ops
+To: Tiffany Lin <tiffany.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200616_061611_853685_D688E9BF 
-X-CRM114-Status: GOOD (  14.54  )
+X-CRM114-CacheID: sfid-20200616_061721_065199_BCD3CDC2 
+X-CRM114-Status: GOOD (  19.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,63 +98,215 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, cy_huang@richtek.com, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- Wilma.Wu@mediatek.com, linux-arm-kernel@lists.infradead.org,
- shufan_lee@richtek.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Maoguang Meng <maoguang.meng@mediatek.com>,
+ Rui Wang <gtk_ruiwang@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>,
+ LKML <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Pi-Hsun Shih <pihsun@chromium.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAxNiBKdW4gMjAyMCwgR2VuZSBDaGVuIHdyb3RlOgoKPiBGcm9tOiBHZW5lIENoZW4g
-PGdlbmVfY2hlbkByaWNodGVrLmNvbT4KPiAKPiBBZGQgZGV2aWNldHJlZSBiaW5kaW5nIGRvY3Vt
-ZW50IHN1cHBvcnQgTWVkaWF0ZWsgTVQ2MzYwIFBNSUMKClRoaXMgc2hvdWxkIGhhdmUgYmVlbiBz
-dWJtaXR0ZWQgd2l0aCB0aGUgZHJpdmVyLgoKPiBTaWduZWQtb2ZmLWJ5OiBHZW5lIENoZW4gPGdl
-bmVfY2hlbkByaWNodGVrLmNvbT4KPiAtLS0KPiAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
-bmRpbmdzL21mZC9tdDYzNjAudHh0IHwgNTMgKysrKysrKysrKysrKysrKysrKysrKysrCj4gIDEg
-ZmlsZSBjaGFuZ2VkLCA1MyBpbnNlcnRpb25zKCspCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWZkL210NjM2MC50eHQKPiAKPiBkaWZmIC0t
-Z2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21mZC9tdDYzNjAudHh0IGIv
-RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21mZC9tdDYzNjAudHh0Cj4gbmV3IGZp
-bGUgbW9kZSAxMDA2NDQKPiBpbmRleCAwMDAwMDAwLi5lMjViNWM2Cj4gLS0tIC9kZXYvbnVsbAo+
-ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZmQvbXQ2MzYwLnR4dAo+
-IEBAIC0wLDAgKzEsNTMgQEAKPiArTWVkaWFUZWsgTVQ2MzYwIE11bHRpZnVuY3Rpb24gRGV2aWNl
-IERyaXZlcgoKTm8gc3VjaCB0aGluZyBhcyBhbiBNRkQgKHdlIG1hZGUgaXQgdXAhKS4KClBsZWFz
-ZSBkZXNjcmliZSB0aGUgZGV2aWNlLgoKPiArTVQ2MzYwIGlzIGEgbXVsdGlmdW5jdGlvbiBkZXZp
-Y2Ugd2l0aCB0aGUgZm9sbG93aW5nIHN1YiBtb2R1bGVzOgoKQXMgYWJvdmUuICBNRkQgaXMgYSBM
-aW51eGlzdW0gd2hpY2ggaXMgbm90IGFsbG93ZWQgaW4gRFQuCgo+ICstIEFEQwo+ICstIEJhdHRl
-cnkgQ2hhcmdlci9PVEcgYm9vc3QKPiArLSBGbGFzaCBMRUQvUkdCIExFRC9tb29ubGlnaHQgTEVE
-Cj4gKy0gMi1jaGFubmVsIEJ1Y2sKPiArLSA2LWNoYW5uZWwgTERPCj4gKy0gVVNCX1BECj4gKwo+
-ICtJdCBpcyBpbnRlcmZhY2VkIHRvIGhvc3QgY29udHJvbGxlciB1c2luZyBJMkMgaW50ZXJmYWNl
-Lgo+ICtUaGlzIGRvY3VtZW50IGRlc2NyaWJlcyB0aGUgYmluZGluZyBmb3IgTUZEIGRldmljZSBh
-bmQgaXRzIHN1YiBtb2R1bGUuCgpBcyBhYm92ZS4gIFRoaXMgc2VudGVuY2Ugc2hvdWxkIGJlIGF0
-IHRoZSB0b3AgaW4gYW55IGNhc2UuCgo+ICtSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+ICstIGNvbXBh
-dGlibGU6CU11c3QgYmUgIm1lZGlhdGVrLG10NjM2MF9wbXUiCgpObyAnXydzIGluIERULgoKPiAr
-LSByZWc6CQkJU3BlY2lmaWVzIHRoZSBJMkMgc2xhdmUgYWRkcmVzcyBvZiBQTUlDIGJsb2NrLCBN
-dXN0IGJlIDwweDM0Pgo+ICstIGludGVycnVwdHM6CUkyQyBkZXZpY2UgSVJRIGxpbmUgY29ubmVj
-dGVkIHRvIHRoZSBtYWluIFNvQy4KPiArCj4gK09wdGlvbmFsIHN1Ym5vZGVzOgo+ICstIEFEQwo+
-ICsJUmVxdWlyZWQgcHJvcGVydGllczoKPiArCQktIGNvbXBhdGlibGU6ICJtZWRpYXRlayxtdDYz
-NjBfYWRjIgo+ICstIGJhdHRlcnkgY2hhcmdlci9PVEcgYm9vc3QKPiArCVJlcXVpcmVkIHByb3Bl
-cnRpZXM6Cj4gKwkJLSBjb21wYXRpYmxlOiAibWVkaWF0ZWssbXQ2MzYwX2NoZyIKPiArLSBGbGFz
-aCBMRUQvUkdCIExFRC9tb29ubGlnaHQgTEVECj4gKwlSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+ICsJ
-CS0gY29tcGF0aWJsZTogIm1lZGlhdGVrLG10NjM2MF9sZWQiCj4gKy0gMi1jaGFubmVsIEJ1Y2sK
-PiArCVJlcXVpcmVkIHByb3BlcnRpZXM6Cj4gKwkJLSBjb21wYXRpYmxlOiAibWVkaWF0ZWssbXQ2
-MzYwX3BtaWMiCj4gKy0gNi1jaGFubmVsIExETwo+ICsJUmVxdWlyZWQgcHJvcGVydGllczoKPiAr
-CQktIGNvbXBhdGlibGU6ICJtZWRpYXRlayxtdDYzNjBfbGRvIgo+ICstIFVTQl9QRAo+ICsJUmVx
-dWlyZWQgcHJvcGVydGllczoKPiArCQktIGNvbXBhdGlibGU6ICJtZWRpYXRlayxtdDYzNjBfdGNw
-YyIKCk5vICdfJ3MuICBNdXN0IGJlICctJy4KCj4gK0V4YW1wbGU6Cj4gKwo+ICsJI2luY2x1ZGUg
-PGR0LWJpbmRpbmdzL3VzYi9wZC5oPgo+ICsKPiArCXBtdTogbXQ2MzYwX3BtdUAzNCB7Cj4gKwkJ
-c3RhdHVzID0gIm9rIjsKCiJva2F5IiBpcyBtb3JlIGNvbW1vbiBJIHRoaW5rLgoKU2hvdWxkIGJl
-IGF0IHRoZSBib3R0b20gaWYgbm90IG9taXR0ZWQgYWx0b2dldGhlci4KCj4gKwkJY29tcGF0aWJs
-ZSA9ICJtZWRpYXRlayxtdDYzNjBfcG11IjsKPiArCQlyZWcgPSA8MHgzND47Cj4gKwkJd2FrZXVw
-LXNvdXJjZTsKPiArCQlpbnRlcnJ1cHRzLWV4dGVuZGVkID0gPCZncGlvMjYgMCBJUlFfVFlQRV9M
-RVZFTF9MT1c+Owo+ICsJCWludGVycnVwdC1uYW1lcyA9ICJJUlFCIjsKPiArCQlpbnRlcnJ1cHQt
-Y29udHJvbGxlcjsKPiArCQkjaW50ZXJydXB0LWNlbGxzID0gPDI+Owo+ICsJfTsKPiArCgotLSAK
-TGVlIEpvbmVzIFvmnY7nkLzmlq9dClNlbmlvciBUZWNobmljYWwgTGVhZCAtIERldmVsb3BlciBT
-ZXJ2aWNlcwpMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBmb3IgQXJtIFNvQ3MK
-Rm9sbG93IExpbmFybzogRmFjZWJvb2sgfCBUd2l0dGVyIHwgQmxvZwoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBs
-aXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On Mon, Jun 8, 2020 at 7:47 PM Tiffany Lin <tiffany.lin@mediatek.com> wrote:
+>
+> On Wed, 2020-05-20 at 17:27 +0900, Alexandre Courbot wrote:
+> > From: Yunfei Dong <yunfei.dong@mediatek.com>
+> >
+> > Add support for communicating with the SCP firmware, which will be used
+> > by MT8183.
+> >
+> > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> > [acourbot: refactor, cleanup and split]
+> > Co-developed-by: Alexandre Courbot <acourbot@chromium.org>
+> > Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+> > ---
+> >  drivers/media/platform/Kconfig                |  2 +
+> >  .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  3 +
+> >  .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  3 +
+> >  .../media/platform/mtk-vcodec/mtk_vcodec_fw.c | 56 +++++++++++++++++++
+> >  .../media/platform/mtk-vcodec/mtk_vcodec_fw.h |  2 +
+> >  5 files changed, 66 insertions(+)
+> >
+> > diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
+> > index c57ee78fa99d..9b11dd6b1ef3 100644
+> > --- a/drivers/media/platform/Kconfig
+> > +++ b/drivers/media/platform/Kconfig
+> > @@ -256,6 +256,8 @@ config VIDEO_MEDIATEK_VCODEC
+> >       select VIDEOBUF2_DMA_CONTIG
+> >       select V4L2_MEM2MEM_DEV
+> >       select VIDEO_MEDIATEK_VPU
+> > +     select MTK_SCP
+> > +     default n
+> >       help
+> >           Mediatek video codec driver provides HW capability to
+> >           encode and decode in a range of video formats
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> > index 4f07a5fcce7f..5b5765b98e57 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> > @@ -225,6 +225,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+> >       if (!of_property_read_u32(pdev->dev.of_node, "mediatek,vpu",
+> >                                 &rproc_phandle)) {
+> >               fw_type = VPU;
+> > +     } else if (!of_property_read_u32(pdev->dev.of_node, "mediatek,scp",
+> > +                                      &rproc_phandle)) {
+> > +             fw_type = SCP;
+> >       } else {
+> >               mtk_v4l2_err("Could not get vdec IPI device");
+> >               return -ENODEV;
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> > index 4340ea10afd0..42530cd01a30 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> > @@ -233,6 +233,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+> >       if (!of_property_read_u32(pdev->dev.of_node, "mediatek,vpu",
+> >                                 &rproc_phandle)) {
+> >               fw_type = VPU;
+> > +     } else if (!of_property_read_u32(pdev->dev.of_node, "mediatek,scp",
+> > +                                      &rproc_phandle)) {
+> > +             fw_type = SCP;
+> >       } else {
+> >               mtk_v4l2_err("Could not get venc IPI device");
+> >               return -ENODEV;
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
+> > index 967bb100a990..f2a62ea62fc6 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
+> > @@ -19,6 +19,7 @@ struct mtk_vcodec_fw {
+> >       enum mtk_vcodec_fw_type type;
+> >       const struct mtk_vcodec_fw_ops *ops;
+> >       struct platform_device *pdev;
+> > +     struct mtk_scp *scp;
+> >  };
+> >
+> >  static int mtk_vcodec_vpu_load_firmware(struct mtk_vcodec_fw *fw)
+> > @@ -71,6 +72,48 @@ static const struct mtk_vcodec_fw_ops mtk_vcodec_vpu_msg = {
+> >       .ipi_send = mtk_vcodec_vpu_ipi_send,
+> >  };
+> >
+> > +static int mtk_vcodec_scp_load_firmware(struct mtk_vcodec_fw *fw)
+> > +{
+> > +     return rproc_boot(scp_get_rproc(fw->scp));
+>
+>
+> Does rproc_boot and scp_get_rproc depend on the other kernel module?
+> where are they defineded?
+
+rproc_boot() is part of the remoteproc subsystem. scp_get_rproc() is
+part of the mtk_scp driver, which is present upstream. This patch also
+adds a dependency on MTK_SCP in Kconfig, which ensures both functions
+are available.
+
+>
+> > +}
+> > +
+> > +static unsigned int mtk_vcodec_scp_get_vdec_capa(struct mtk_vcodec_fw *fw)
+> > +{
+> > +     return scp_get_vdec_hw_capa(fw->scp);
+> > +}
+> > +
+> > +static unsigned int mtk_vcodec_scp_get_venc_capa(struct mtk_vcodec_fw *fw)
+> > +{
+> > +     return scp_get_venc_hw_capa(fw->scp);
+> > +}
+> > +
+> > +static void *mtk_vcodec_vpu_scp_dm_addr(struct mtk_vcodec_fw *fw,
+> > +                                     u32 dtcm_dmem_addr)
+> > +{
+> > +     return scp_mapping_dm_addr(fw->scp, dtcm_dmem_addr);
+> > +}
+> > +
+> > +static int mtk_vcodec_scp_set_ipi_register(struct mtk_vcodec_fw *fw, int id,
+> > +             mtk_vcodec_ipi_handler handler, const char *name, void *priv)
+> > +{
+> > +     return scp_ipi_register(fw->scp, id, handler, priv);
+> > +}
+> > +
+> > +static int mtk_vcodec_scp_ipi_send(struct mtk_vcodec_fw *fw, int id, void *buf,
+> > +             unsigned int len, unsigned int wait)
+> > +{
+> > +     return scp_ipi_send(fw->scp, id, buf, len, wait);
+> > +}
+> > +
+> > +static const struct mtk_vcodec_fw_ops mtk_vcodec_rproc_msg = {
+> > +     .load_firmware = mtk_vcodec_scp_load_firmware,
+> > +     .get_vdec_capa = mtk_vcodec_scp_get_vdec_capa,
+> > +     .get_venc_capa = mtk_vcodec_scp_get_venc_capa,
+> > +     .map_dm_addr = mtk_vcodec_vpu_scp_dm_addr,
+> > +     .ipi_register = mtk_vcodec_scp_set_ipi_register,
+> > +     .ipi_send = mtk_vcodec_scp_ipi_send,
+> > +};
+> > +
+> >  static void mtk_vcodec_reset_handler(void *priv)
+> >  {
+> >       struct mtk_vcodec_dev *dev = priv;
+> > @@ -94,6 +137,7 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
+> >       const struct mtk_vcodec_fw_ops *ops;
+> >       struct mtk_vcodec_fw *fw;
+> >       struct platform_device *fw_pdev = NULL;
+> > +     struct mtk_scp *scp = NULL;
+> >
+> >       switch (type) {
+> >       case VPU:
+> > @@ -106,6 +150,14 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
+> >               vpu_wdt_reg_handler(fw_pdev, mtk_vcodec_reset_handler,
+> >                                   dev, rst_id);
+> >               break;
+> > +     case SCP:
+> > +             ops = &mtk_vcodec_rproc_msg;
+> > +             scp = scp_get(dev->plat_dev);
+> > +             if (!scp) {
+> > +                     mtk_v4l2_err("could not get vdec scp handle");
+> > +                     return ERR_PTR(-EPROBE_DEFER);
+> > +             }
+> > +             break;
+> >       default:
+> >               mtk_v4l2_err("invalid vcodec fw type");
+> >               return ERR_PTR(-EINVAL);
+> > @@ -118,6 +170,7 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
+> >       fw->type = type;
+> >       fw->ops = ops;
+> >       fw->pdev = fw_pdev;
+> > +     fw->scp = scp;
+> >
+> >       return fw;
+> >  }
+> > @@ -129,6 +182,9 @@ void mtk_vcodec_fw_release(struct mtk_vcodec_fw *fw)
+> >       case VPU:
+> >               put_device(&fw->pdev->dev);
+> >               break;
+> > +     case SCP:
+> > +             scp_put(fw->scp);
+> > +             break;
+> >       }
+> >  }
+> >  EXPORT_SYMBOL_GPL(mtk_vcodec_fw_release);
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.h
+> > index ff25b0c19f74..ced1b6a10e07 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.h
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.h
+> > @@ -4,6 +4,7 @@
+> >  #define _MTK_VCODEC_FW_H_
+> >
+> >  #include <linux/remoteproc.h>
+> > +#include <linux/remoteproc/mtk_scp.h>
+> >
+> >  #include "../mtk-vpu/mtk_vpu.h"
+> >
+> > @@ -11,6 +12,7 @@ struct mtk_vcodec_dev;
+> >
+> >  enum mtk_vcodec_fw_type {
+> >       VPU,
+> > +     SCP,
+> >  };
+> >
+> >  struct mtk_vcodec_fw;
+>
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
