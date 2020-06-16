@@ -2,101 +2,79 @@ Return-Path: <SRS0=8HgB=75=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CBC83C433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2020 09:12:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D0733C433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2020 09:14:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9A59720679
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2020 09:12:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9D9CD20679
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2020 09:14:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TjK7/JZV";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="cVx0KE5h"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9A59720679
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Tp/CpzsZ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GHYeggty"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9D9CD20679
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KetIkP75SwFvPuBt66AnL7zyOjf6yl6ho0g3wEgx/ro=; b=TjK7/JZVwZSIX8
-	34SuFxqQzzt1GgRFa1+UfCfdZDFAq6QWxTchmyPet++U+F+s/fNiPu7U29/Gs5NwoZZS3nMX5Qu4t
-	eshZst2I83/tXGmHx24hJWrXQ07B2V5usC78qf7xuXdjMvGQFALtzzv18ZIiTmKPTh/qgGRAJLdD2
-	Z75q7aR1i07OKv64SdL0erGv1ymjVSWE1ClOlP7aBCC0OzNfdyamTES/8sc0Nj3YuWpT89sRMAvY/
-	dl4OVWl6zWQwuVAuXza+Evw2wsho8rk8le/YEpEJpgBYyJTF9hQFzeYv90sZRMjGRo0+N5OkeBY1s
-	jsE7fWAf4gGOpTyKbw4A==;
+	List-Owner; bh=L7muhP4ZcRteWoh0+5rHKploSIdR3idvxoK3QaLfAzY=; b=Tp/CpzsZ2IPxmG
+	J1jruSDNcLKS6EZtqy+FN+v3EQS5oCJuWHN2FztcGAXkcGD9e4poWwSuOwQyOUtWrsidjsMV4Zdwo
+	okLHI1XH8yZIQKAimBEO0aHqo6AEa133+8OrNcSdipLNsLT6trGHYPWxNG64nb5anN5tNHkjXJBw9
+	unyNXLV+zjDnOjBuU81B15sqDxALQwLU/aMR77Va5QHhzHnuamDO1tbR7K3lQwHQaU2ekIKHREdUN
+	6fLV0vqlcQcte0uvG2qdJ8i+vfMD5eC/fqWth9YlLkLzc1mMyFdeL1PPaBxIKqNra+1WW0jPXD7BG
+	i9S1gEZLClX81QbBfw7Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jl7dP-0001TG-65; Tue, 16 Jun 2020 09:11:59 +0000
-Received: from userp2120.oracle.com ([156.151.31.85])
+	id 1jl7ft-0001l6-GW; Tue, 16 Jun 2020 09:14:33 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jl7dM-0001SK-Kb; Tue, 16 Jun 2020 09:11:58 +0000
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05G93Vcj108652;
- Tue, 16 Jun 2020 09:10:36 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=vHFhOuRLkm8vQDg8Dof4S5HKAiKznh8tBQ+Mr1OID/Q=;
- b=cVx0KE5h1EIzH/Nv6xjfZ5nTWCPzlMev+meeNe8ig/R6zGb1hcI4zPyrerRBxYg+mmc+
- qKwemscmFpcbtZudgCHIJKFWU2+MEqUR3sjHNYzDUDCSWPx5pmD4LBuQpWhngStPV5H0
- 4QQ1w6PiSDdHFWQ+ndzL39yxLvqknoA5VRhKUkk0TCj0AiX8q664S4ecxGUJH34dsTgv
- f9QhZLAjaVCh+OyWTAfnAqTx90cKQuDChSnHHM+F7Utt0PRApBfU8iMActdQhiOLrCqP
- +xx+YuMkqnBp9yLLOcyvwHAC7rCtpaJ69Rrf1s2Xt7AKk0laObtgJ3Pt4+o8dQUQESCt bA== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 31p6e5wptp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 16 Jun 2020 09:10:36 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05G933ih037660;
- Tue, 16 Jun 2020 09:08:35 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3030.oracle.com with ESMTP id 31p6s6w4s2-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 16 Jun 2020 09:08:35 +0000
-Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 05G98O1L002227;
- Tue, 16 Jun 2020 09:08:25 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 16 Jun 2020 02:08:24 -0700
-Date: Tue, 16 Jun 2020 12:08:07 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Michal Hocko <mhocko@kernel.org>
-Subject: Re: [PATCH v4 1/3] mm/slab: Use memzero_explicit() in kzfree()
-Message-ID: <20200616090807.GK4151@kadam>
-References: <20200616015718.7812-1-longman@redhat.com>
- <20200616015718.7812-2-longman@redhat.com>
- <20200616064208.GA9499@dhcp22.suse.cz>
+ id 1jl7fq-0001kE-Lv
+ for linux-mediatek@lists.infradead.org; Tue, 16 Jun 2020 09:14:32 +0000
+X-UUID: b73aa473fea94ae2b40ca184834ead59-20200616
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=yy2c2I/DACjQjjI52CFqNSnT2s8hYTmD36xB1qTyu+A=; 
+ b=GHYeggtyXIR2QoaGVc24OjQnn9kSMMdeN58zRXwj0t67gbmQmIWKlozfie9DU457RM5IYLkPRmAS56lgTtLOme7NHn/bf9R1MzhTtBHBU1rpxUUCJOLB70ZvKmc6oZ4m5JUE+e6Lw77muDoiXuiNyYXm/fd0qxd2BaDeCMihIxY=;
+X-UUID: b73aa473fea94ae2b40ca184834ead59-20200616
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <tiffany.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1348411669; Tue, 16 Jun 2020 01:14:25 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 16 Jun 2020 02:06:26 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 16 Jun 2020 17:06:25 +0800
+Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 16 Jun 2020 17:06:24 +0800
+Message-ID: <1592298384.25202.1.camel@mtksdaap41>
+Subject: Re: [PATCH 05/10] media: mtk-vcodec: venc: specify bitrate range
+ per-chip
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+To: Alexandre Courbot <acourbot@chromium.org>
+Date: Tue, 16 Jun 2020 17:06:24 +0800
+In-Reply-To: <20200520082723.96136-6-acourbot@chromium.org>
+References: <20200520082723.96136-1-acourbot@chromium.org>
+ <20200520082723.96136-6-acourbot@chromium.org>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200616064208.GA9499@dhcp22.suse.cz>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9653
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- malwarescore=0 mlxscore=0
- suspectscore=0 mlxlogscore=781 phishscore=0 bulkscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2006160066
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9653
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 adultscore=0
- mlxscore=0 phishscore=0 mlxlogscore=814 lowpriorityscore=0 clxscore=1011
- suspectscore=0 spamscore=0 bulkscore=0 malwarescore=0 impostorscore=0
- cotscore=-2147483648 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2006160066
+X-TM-SNTS-SMTP: 2A1F73E059354B0B70941DD73A5B39900D0F9FA4C1406B6C5335F99D847CA9412000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200616_021156_820029_32FAF0E1 
-X-CRM114-Status: GOOD (  17.08  )
+X-CRM114-CacheID: sfid-20200616_021430_721799_60004941 
+X-CRM114-Status: GOOD (  11.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,57 +86,78 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "Jason A . Donenfeld" <Jason@zx2c4.com>,
- Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
- virtualization@lists.linux-foundation.org, David Howells <dhowells@redhat.com>,
- linux-mm@kvack.org, linux-sctp@vger.kernel.org, keyrings@vger.kernel.org,
- kasan-dev@googlegroups.com, linux-stm32@st-md-mailman.stormreply.com,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- linux-scsi@vger.kernel.org, James Morris <jmorris@namei.org>,
- Matthew Wilcox <willy@infradead.org>, David Rientjes <rientjes@google.com>,
- Waiman Long <longman@redhat.com>, linux-pm@vger.kernel.org,
- ecryptfs@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- wireguard@lists.zx2c4.com, linux-fscrypt@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- Andrew Morton <akpm@linux-foundation.org>, linux-nfs@vger.kernel.org,
- Linus Torvalds <torvalds@linux-foundation.org>, linux-wireless@vger.kernel.org,
- David Sterba <dsterba@suse.cz>, stable@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org,
- linux-security-module@vger.kernel.org, target-devel@vger.kernel.org,
- tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
- Johannes Weiner <hannes@cmpxchg.org>, Joe Perches <joe@perches.com>,
- linux-integrity@vger.kernel.org, linux-wpan@vger.kernel.org,
- netdev@vger.kernel.org, linux-btrfs@vger.kernel.org, linux-ppp@vger.kernel.org
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Maoguang Meng <maoguang.meng@mediatek.com>,
+ Rui Wang <gtk_ruiwang@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Pi-Hsun
+ Shih <pihsun@chromium.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 16, 2020 at 08:42:08AM +0200, Michal Hocko wrote:
-> On Mon 15-06-20 21:57:16, Waiman Long wrote:
-> > The kzfree() function is normally used to clear some sensitive
-> > information, like encryption keys, in the buffer before freeing it back
-> > to the pool. Memset() is currently used for the buffer clearing. However,
-> > it is entirely possible that the compiler may choose to optimize away the
-> > memory clearing especially if LTO is being used. To make sure that this
-> > optimization will not happen, memzero_explicit(), which is introduced
-> > in v3.18, is now used in kzfree() to do the clearing.
-> > 
-> > Fixes: 3ef0e5ba4673 ("slab: introduce kzfree()")
-> > Cc: stable@vger.kernel.org
-> > Signed-off-by: Waiman Long <longman@redhat.com>
+On Wed, 2020-05-20 at 17:27 +0900, Alexandre Courbot wrote:
+> Different chips have different supported bitrate ranges. Move the min
+> and max supported bitrates to the platform data.
 > 
-> Acked-by: Michal Hocko <mhocko@suse.com>
+
+Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
+
+> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+> ---
+>  drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h     | 4 ++++
+>  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c     | 3 ++-
+>  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c | 2 ++
+>  3 files changed, 8 insertions(+), 1 deletion(-)
 > 
-> Although I am not really sure this is a stable material. Is there any
-> known instance where the memset was optimized out from kzfree?
-
-I told him to add the stable.  Otherwise it will just get reported to
-me again.  It's a just safer to backport it before we forget.
-
-regards,
-dan carpenter
-
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> index e7b155e7432e..b8f913de8d80 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> @@ -311,12 +311,16 @@ enum mtk_chip {
+>   *
+>   * @uses_ext: whether the encoder uses the extended firmware messaging format
+>   * @has_lt_irq: whether the encoder uses the LT irq
+> + * @min_birate: minimum supported encoding bitrate
+> + * @max_bitrate: maximum supported encoding bitrate
+>   */
+>  struct mtk_vcodec_enc_pdata {
+>  	enum mtk_chip chip;
+>  
+>  	bool uses_ext;
+>  	bool has_lt_irq;
+> +	unsigned long min_bitrate;
+> +	unsigned long max_bitrate;
+>  };
+>  
+>  /**
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+> index d469ff6464b2..50ba9da59153 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+> @@ -1232,7 +1232,8 @@ int mtk_vcodec_enc_ctrls_setup(struct mtk_vcodec_ctx *ctx)
+>  	v4l2_ctrl_handler_init(handler, MTK_MAX_CTRLS_HINT);
+>  
+>  	v4l2_ctrl_new_std(handler, ops, V4L2_CID_MPEG_VIDEO_BITRATE,
+> -			1, 4000000, 1, 4000000);
+> +			  ctx->dev->venc_pdata->min_bitrate,
+> +			  ctx->dev->venc_pdata->max_bitrate, 1, 4000000);
+>  	v4l2_ctrl_new_std(handler, ops, V4L2_CID_MPEG_VIDEO_B_FRAMES,
+>  			0, 2, 1, 0);
+>  	v4l2_ctrl_new_std(handler, ops, V4L2_CID_MPEG_VIDEO_FRAME_RC_ENABLE,
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> index c1365209263e..221fa0303075 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> @@ -380,6 +380,8 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+>  static const struct mtk_vcodec_enc_pdata mt8173_pdata = {
+>  	.chip = MTK_MT8173,
+>  	.has_lt_irq = true,
+> +	.min_bitrate = 1,
+> +	.max_bitrate = 4000000,
+>  };
+>  
+>  static const struct of_device_id mtk_vcodec_enc_match[] = {
 
 _______________________________________________
 Linux-mediatek mailing list
