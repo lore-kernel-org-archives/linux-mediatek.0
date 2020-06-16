@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5ED9C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2020 12:57:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C011EC433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2020 12:57:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8732120B1F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2020 12:57:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 95BB420B1F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2020 12:57:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="R0auwFEI";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EIYB4/3v"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8732120B1F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="E/EGdx0k";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="o+Hw2+/+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 95BB420B1F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2/QDAPm+M+prTExB8Z0/Ugdg2W9hcoIDJphq3U4738Q=; b=R0auwFEI+yqHBX
-	4VoelNvEX88+qYKU2tdcx6Hh9XbGSYsrGnWisXtlXEEE4b8oMM0IEGzcghQJmshsmh/6JHdBLZDAx
-	5gxLNcvOdHVoFsayAnRa6ruOSuNdY9LNRzpfbS/e/LGZPEv+m3GhFIMIIvNqYNpOjtTMLZY7qZ5wi
-	uAzFlOHuZOC+lUcbF3K4DiDHSYuc9uawQPKlDo46j8yu+5jvdwTvr8LZUv673COP/xOvJLq9NODb6
-	tsX1RUMXB5AQ7KfCSdtQDEpssQx8D5yjagcBsHCLs0Ph61JEbJkB1b4zd26FzHehdVbGagQOaM4Gz
-	KQV5W03+EO5gfF1OEemw==;
+	List-Owner; bh=8CtDIKXMjDBVYxQrKBkEk7Pe5CwKX3/55nU3RG1D+ME=; b=E/EGdx0krlR27U
+	yfCHF/ADAMVF5xIu2JfJwlVIn4Uttz/dWznxoNILIAkOSmdCdHT3CSiyu67w6cMZ94AJ7yJhSI4JU
+	+GJ+JBnSutXoOUGJ97QdffggXQIHhsofwSXESkzq/wWko6NPcXv3vYb9IT1mf+/SeCXYYBJ/YNlXo
+	38atyp3Mb7p3OvNfoH1wlx/DRa8UnP80jYYGfI+CD3jpM4b1fHgWdRIPg/pmIrWrrGdxY5lL7UB49
+	OjQUeeydvZJnC46VBaLT74HIEK79r3/ZSEtpVf7+HrvkuY1nJNHVzT98QkDODldQkAH4SNhU3uSkZ
+	BsZ+t5HFd9z7pTq0alrA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlB9R-0005Cw-Tf; Tue, 16 Jun 2020 12:57:17 +0000
+	id 1jlB9P-0005A0-MY; Tue, 16 Jun 2020 12:57:15 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlB9E-0004yO-3N
+ id 1jlB9E-0004yy-3P
  for linux-mediatek@lists.infradead.org; Tue, 16 Jun 2020 12:57:06 +0000
-X-UUID: b0c39a04d95a43bda17ad42a4aae2da8-20200616
+X-UUID: 2c78b3cc02a3469694c5f18e75693374-20200616
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=EHgc6usT4G4/hgz5NXvICcMpwnoY3iXu64idsp5U1Jk=; 
- b=EIYB4/3vD7Ztr5GShYgQpCfwCH/+CrO1rW9aHe5l6dMI3WaPyvksPVPAGC1qhy2K4Z/h/+uGsGgR17DPOXrG10dqQXnzhIdqJtG+hJGvf+wPqFjNPl3C1uyjOOpB35tlCTaWKUgQArzBOUIvDTGPwmS/zt+8Eq63z3vU9NGWUcE=;
-X-UUID: b0c39a04d95a43bda17ad42a4aae2da8-20200616
+ bh=cFT7b6H2LRT9dSPfnxzcUSZBaTbz+EV+Si2bOMAYrIw=; 
+ b=o+Hw2+/+df3kElzxoJeYCt1JSK+pNNLeMtnnojBJrNUKo6JzIuP70EhLVRJhhWllxEon45aSaivTS3ny6yyECjKGQHxtILe35kuZaKn58hDVh7SKJyyyyojAzNZ8JTNB4+XTEayCa0YiV7bD/RzuuiIn0D2hGD8BU5tO+cDS7uk=;
+X-UUID: 2c78b3cc02a3469694c5f18e75693374-20200616
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <shayne.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2118819590; Tue, 16 Jun 2020 04:56:49 -0800
+ with ESMTP id 870427155; Tue, 16 Jun 2020 04:56:49 -0800
 Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 16 Jun 2020 05:47:06 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 16 Jun 2020 20:46:59 +0800
+ 15.0.1497.2; Tue, 16 Jun 2020 20:47:03 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 16 Jun 2020 20:46:58 +0800
+ Frontend Transport; Tue, 16 Jun 2020 20:47:02 +0800
 From: Shayne Chen <shayne.chen@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
-Subject: [PATCH 3/4] mt76: mt7915: add support for DT rate power limits
-Date: Tue, 16 Jun 2020 20:46:12 +0800
-Message-ID: <279b29408c742c4b043e7af11217dcd5eeb7b8c2.1592276165.git.ryder.lee@mediatek.com>
+Subject: [PATCH 4/4] mt76: mt7915: add support to read per-rate tx power from
+ HW in debugfs
+Date: Tue, 16 Jun 2020 20:46:13 +0800
+Message-ID: <05dcb80b4bac2e274f2b49479d030588f9dba326.1592276165.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <9ae2b6233284b60206e3513f7bf2eb03d2fbd724.1592276165.git.ryder.lee@mediatek.com>
 References: <9ae2b6233284b60206e3513f7bf2eb03d2fbd724.1592276165.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 24678ACB82BEA57D358342FF229A7D0922D92586A8DF5F8F21FBBA311760836D2000:8
+X-TM-SNTS-SMTP: 81AD79F399CF7952C93F3F0FD4020AFF4A34E91C3EFF498E24B5505F11A4EFE82000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200616_055704_152161_74476E0F 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20200616_055704_148916_C7F69441 
+X-CRM114-Status: GOOD (  13.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,81 +95,135 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support to limit per-rate max txpower from DT.
+In the previous version, the values of per-rate tx power are calculated
+from SW side, but it may be inaccurate if additional limits are applied.
+This patch adds support for getting per-rate tx power directly from
+registers.
 
 Tested-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- .../wireless/mediatek/mt76/mt7915/eeprom.h    |  2 +-
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 38 +++++++++++++++++--
- 2 files changed, 35 insertions(+), 5 deletions(-)
+ .../wireless/mediatek/mt76/mt7915/debugfs.c   | 60 +++++++++++++------
+ .../net/wireless/mediatek/mt76/mt7915/regs.h  |  5 ++
+ 2 files changed, 46 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
-index 4e31d6ab4fa6..284de8b4e0a4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
-@@ -120,6 +120,6 @@ mt7915_tssi_enabled(struct mt7915_dev *dev, enum nl80211_band band)
- 		return eep[MT_EE_WIFI_CONF + 7] & MT_EE_WIFI_CONF_TSSI0_2G;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+index 38f473d587c9..67bc05600190 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+@@ -307,8 +307,8 @@ mt7915_queues_read(struct seq_file *s, void *data)
  }
  
--extern const struct sku_group mt7915_sku_groups[];
-+extern const struct sku_group mt7915_sku_groups[MAX_SKU_RATE_GROUP_NUM];
- 
- #endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 349163d0b7f2..c5e9893cbd87 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -3171,15 +3171,45 @@ int mt7915_mcu_set_sku(struct mt7915_phy *phy)
- 		.format_id = 4,
- 		.dbdc_idx = phy != &dev->phy,
+ static void
+-mt7915_puts_rate_txpower(struct seq_file *s, s8 *delta,
+-			 s8 txpower_cur, int band)
++mt7915_puts_rate_txpower(struct seq_file *s, struct mt7915_dev *dev,
++			 int band, bool ext_phy)
+ {
+ 	static const char * const sku_group_name[] = {
+ 		"CCK", "OFDM", "HT20", "HT40",
+@@ -316,24 +316,51 @@ mt7915_puts_rate_txpower(struct seq_file *s, s8 *delta,
+ 		"RU26", "RU52", "RU106", "RU242/SU20",
+ 		"RU484/SU40", "RU996/SU80", "RU2x996/SU160"
  	};
--	int i;
--	s8 *delta;
-+	struct mt76_power_limits limits_array;
-+	s8 *delta, *la = (s8 *)&limits_array;
-+	int i, idx;
- 
- 	delta = dev->rate_power[mphy->chandef.chan->band];
- 	mphy->txpower_cur = hw->conf.power_level * 2 +
- 			    delta[MT7915_SKU_MAX_DELTA_IDX];
+-	s8 txpower[MT7915_SKU_RATE_NUM];
++	u32 reg_base = MT_TMAC_FP0R0(ext_phy);
+ 	int i, idx = 0;
  
 -	for (i = 0; i < MT7915_SKU_RATE_NUM; i++)
--		req.val[i] = hw->conf.power_level * 2 + delta[i];
-+	mt76_get_rate_power_limits(mphy, mphy->chandef.chan,
-+				   &limits_array, mphy->txpower_cur);
-+
-+	for (i = 0, idx = 0; i < ARRAY_SIZE(mt7915_sku_groups); i++) {
-+		const struct sku_group *sku = &mt7915_sku_groups[i];
-+		u32 offset = sku->offset[mphy->chandef.chan->band];
-+		u8 mcs_num = sku->len;
+-		txpower[i] = DIV_ROUND_UP(txpower_cur + delta[i], 2);
+-
+ 	for (i = 0; i < MAX_SKU_RATE_GROUP_NUM; i++) {
+ 		const struct sku_group *sku = &mt7915_sku_groups[i];
+ 		u32 offset = sku->offset[band];
++		u8 cnt, mcs_num = sku->len;
++		s8 txpower[12];
 +		int j;
 +
-+		if (i >= SKU_HT_BW20 && i <= SKU_VHT_BW160) {
++		if (i == SKU_HT_BW20 || i == SKU_HT_BW40) {
++			mcs_num = 8;
++		} else if (i >= SKU_VHT_BW20 && i <= SKU_VHT_BW160) {
 +			mcs_num = 10;
 +
-+			if (i == SKU_HT_BW20 || i == SKU_VHT_BW20)
-+				la = (s8 *)&limits_array + 12;
++			if (idx == 60) {
++				reg_base = MT_TMAC_FP0R15(ext_phy);
++				idx = 0;
++			}
++		} else if (i == SKU_HE_RU26) {
++			reg_base = MT_TMAC_FP0R18(ext_phy);
++			idx = 0;
 +		}
-+
-+		if (!offset) {
-+			idx += sku->len;
-+			la += mcs_num;
-+			continue;
-+		}
-+
-+		for (j = 0; j < min_t(u8, mcs_num, sku->len); j++) {
-+			s8 rate_power;
-+
-+			rate_power = hw->conf.power_level * 2 + delta[idx + j];
-+			req.val[idx + j] = min_t(s8, la[j], rate_power);
-+		}
-+		la += mcs_num;
-+		idx += sku->len;
-+	}
  
- 	return __mt76_mcu_send_msg(&dev->mt76,
- 				   MCU_EXT_CMD_TX_POWER_FEATURE_CTRL,
+ 		if (!offset) {
+-			idx += sku->len;
++			idx += mcs_num;
+ 			continue;
+ 		}
+ 
+-		mt76_seq_puts_array(s, sku_group_name[i],
+-				    txpower + idx, sku->len);
+-		idx += sku->len;
++		for (j = 0, cnt = 0; j < DIV_ROUND_UP(mcs_num, 4); j++) {
++			u32 val = mt76_rr(dev, reg_base + (idx / 4) * 4);
++
++			if (idx && idx % 4)
++				val >>= (idx % 4) * 8;
++
++			while (val > 0 && cnt < mcs_num) {
++				s8 pwr = FIELD_GET(MT_TMAC_FP_MASK, val);
++
++				txpower[cnt++] = pwr;
++				val >>= 8;
++				idx++;
++			}
++		}
++
++		mt76_seq_puts_array(s, sku_group_name[i], txpower, mcs_num);
+ 	}
+ }
+ 
+@@ -343,21 +370,16 @@ mt7915_read_rate_txpower(struct seq_file *s, void *data)
+ 	struct mt7915_dev *dev = dev_get_drvdata(s->private);
+ 	struct mt76_phy *mphy = &dev->mphy;
+ 	enum nl80211_band band = mphy->chandef.chan->band;
+-	s8 *delta = dev->rate_power[band];
+-	s8 txpower_base = mphy->txpower_cur - delta[MT7915_SKU_MAX_DELTA_IDX];
+ 
+-	seq_puts(s, "Band 0:\n");
+-	mt7915_puts_rate_txpower(s, delta, txpower_base, band);
++	seq_puts(s, "Band 0: (unit: 0.5 dBm)\n");
++	mt7915_puts_rate_txpower(s, dev, band, false);
+ 
+ 	if (dev->mt76.phy2) {
+ 		mphy = dev->mt76.phy2;
+ 		band = mphy->chandef.chan->band;
+-		delta = dev->rate_power[band];
+-		txpower_base = mphy->txpower_cur -
+-			       delta[MT7915_SKU_MAX_DELTA_IDX];
+ 
+-		seq_puts(s, "Band 1:\n");
+-		mt7915_puts_rate_txpower(s, delta, txpower_base, band);
++		seq_puts(s, "Band 1: (unit: 0.5 dBm)\n");
++		mt7915_puts_rate_txpower(s, dev, band, true);
+ 	}
+ 
+ 	return 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+index e0989141d9da..afd582fd20a1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+@@ -67,6 +67,11 @@
+ #define MT_TMAC_CTCR0_INS_DDLMT_EN		BIT(17)
+ #define MT_TMAC_CTCR0_INS_DDLMT_VHT_SMPDU_EN	BIT(18)
+ 
++#define MT_TMAC_FP0R0(_band)		MT_WF_TMAC(_band, 0x020)
++#define MT_TMAC_FP0R15(_band)		MT_WF_TMAC(_band, 0x080)
++#define MT_TMAC_FP0R18(_band)		MT_WF_TMAC(_band, 0x270)
++#define MT_TMAC_FP_MASK			GENMASK(7, 0)
++
+ /* DMA Band 0 */
+ #define MT_WF_DMA_BASE			0x21e00
+ #define MT_WF_DMA(ofs)			(MT_WF_DMA_BASE + (ofs))
 -- 
 2.18.0
 _______________________________________________
