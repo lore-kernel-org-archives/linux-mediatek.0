@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-8.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 48BF6C433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2020 04:01:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 15ACCC433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2020 04:01:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1E88A20734
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2020 04:01:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DD64F20734
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2020 04:01:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ATGFcGU1";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="NrEF6i/W"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1E88A20734
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rpOvkDbP";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="aXtEHtJw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD64F20734
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,78 +26,79 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nqr1BXd+mkpqBvpizWpCblVFjCL0JnGNNvHQBKWI9EY=; b=ATGFcGU11CvwOS
-	62KLsZkxJ7w3e9x8pIvSSJTdufmkX2vt4vtvc/ix9e4JtODDbk8aVLSirEEe3p5+SXQ3/SuDW1Gf3
-	HOvVraiauW/ZSBMn2yvxo2ahb46O6gO30hXBWjXYLAgz65O4g2IhnGH3vXhb5IlHUMGGn3sKu8U0d
-	fob4GB5WL9zaiKl/ngI18LR0AZEO7ysjzrN5dWBRV864uoCTX3pd5EZmXt4KL0cjQz9w2KOpX2u1n
-	PuzI06RhKt785ai5pYEGhiaSGif8uKRmfNTQMFg9dkGnBT6ZoHiOh6eDbxj5ejBQfUd0NW+53DVPY
-	ttPKrduZY6KICnUUeQJg==;
+	List-Owner; bh=J0Sf4ZpE9AjLKq43CvZpeLgGhd0nMNTvgtBI3WNiC6A=; b=rpOvkDbPgZ1pCo
+	OdgPxAfVEAJqn7l3ACqVzeQbap68AF9ixZKizsyII2Vrq6DB0BRcaIZ0m/M2HjuHPAM+t4eDuo7ND
+	lvzN/GZf9omKBvrnjWX1nWJHLCTNpcJlWxqlaqe+/EpTF3CPJUNIQu4UyqzJ7RnRb2bfQtVn+VrwW
+	s91NC3kr9OR4jxYEE53ntuEhFowyv6JoMDT/NpyKCMrJHXtGGuJetMt0MmZm4ssF9cfRpci0jPKW1
+	zovqw1jke7LODwL4iLI+RPqlAO9SvFHTWpa7hCJSqRmwfnXglRJyPsuL1o8MdSfaMdlUaC/LYzlI/
+	4rhmw1K+m2KbheySIAEA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jl2mS-00010A-LX; Tue, 16 Jun 2020 04:01:00 +0000
-Received: from userp2120.oracle.com ([156.151.31.85])
+	id 1jl2mV-00014X-0A; Tue, 16 Jun 2020 04:01:03 +0000
+Received: from aserp2120.oracle.com ([141.146.126.78])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jl2lu-0000TD-9V; Tue, 16 Jun 2020 04:00:28 +0000
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05G3x7Hk195261;
- Tue, 16 Jun 2020 04:00:22 GMT
+ id 1jl2lu-0000TW-Dz; Tue, 16 Jun 2020 04:00:28 +0000
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05G3vSrw054579;
+ Tue, 16 Jun 2020 04:00:19 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding; s=corp-2020-01-29;
- bh=WCUhN94eoOku1+k3rSNEpLPDTZnjBYL2UylmBfw0T1s=;
- b=NrEF6i/WPI6mRZlBtiSuc80dJEZ8fMw8uud9MG/3nLfqrX7LqZJS4U1a4qso/A/oPt4N
- V/NXy7NNTZZqrsh6omloaDD8SD6POTRaxTKyAckG75SIi/o3pc42BgiEmsG/3jg/zgNQ
- brXy7hecxgguL8oMWf0CnfLy894rfQPLYE0kJ+YwCDDk5D0xpADI6/QgQqkMSyYbbW3K
- 8cG9oOOWevdtW1Qx9siqtD/7jbR8CRrckYS2R9rpxV2VugnDXxoE5rvglvxABYRaqoiX
- jFqOcLrY3vI9KO+quzwEQ5xi8cBah2vX+sGfmfj5L1zLepAXOvYFPh6qPIxNgR6NjBnf bQ== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 31p6e5vdan-1
+ bh=sXd+sLQYg8FIhtEijA1MSrH4MGvysjc8wwzx8oKXDRo=;
+ b=aXtEHtJwExEZAFN87i+MSxPEgDQhpPJn/kYAwCCvyX8+pz2GCqrQAxz/dVIZPSNkJbeL
+ /rTnQwsF10c2DWIfPXUowa0Pr7ne0B030iFPvHAaMGloW1C1unxTuNKTnSoICJS57oSs
+ r6nYbZT6hqbHBKfGcdhKlNe2StnR/eUGRDqU+pZFbyrGOkPoZSmDmE/FkmfX8iJIy00D
+ i62JjGiQQ0pr5K4f8ZAqKwkUObhmd9eq8xA7BnqPjTmdJucS1/l5dO2F9sR3zhRecsZJ
+ UmAC5h/I26MeO72BBimG+/Q9l8XgORbW7/PjOmnXJx5BwwSPmSNel5/LxPoPDhGl7L0P rQ== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by aserp2120.oracle.com with ESMTP id 31p6e7vdm8-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 16 Jun 2020 04:00:22 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05G3x2a6020916;
- Tue, 16 Jun 2020 04:00:21 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3030.oracle.com with ESMTP id 31p6s6hmcu-1
+ Tue, 16 Jun 2020 04:00:19 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05G3xOcP131220;
+ Tue, 16 Jun 2020 04:00:18 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3020.oracle.com with ESMTP id 31p6dcae72-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 16 Jun 2020 04:00:21 +0000
-Received: from abhmp0001.oracle.com (abhmp0001.oracle.com [141.146.116.7])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 05G40KmY001266;
- Tue, 16 Jun 2020 04:00:20 GMT
+ Tue, 16 Jun 2020 04:00:18 +0000
+Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 05G40Hls021447;
+ Tue, 16 Jun 2020 04:00:17 GMT
 Received: from ca-mkp.ca.oracle.com (/10.156.108.201)
  by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 15 Jun 2020 21:00:20 -0700
+ with ESMTP ; Mon, 15 Jun 2020 21:00:16 -0700
 From: "Martin K. Petersen" <martin.petersen@oracle.com>
 To: linux-scsi@vger.kernel.org, jejb@linux.ibm.com, avri.altman@wdc.com,
  Stanley Chu <stanley.chu@mediatek.com>, asutoshd@codeaurora.org,
  alim.akhtar@samsung.com
-Subject: Re: [PATCH v5] scsi: ufs: Fix imprecise load calculation in devfreq
- window
-Date: Mon, 15 Jun 2020 23:59:59 -0400
-Message-Id: <159227986423.24883.5364281872549678357.b4-ty@oracle.com>
+Subject: Re: [PATCH v3 0/2] scsi: ufs: Add trace event for UIC commands and
+ cleanup UIC struct
+Date: Mon, 15 Jun 2020 23:59:57 -0400
+Message-Id: <159227986423.24883.2736410952583648653.b4-ty@oracle.com>
 X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200611101043.6379-1-stanley.chu@mediatek.com>
-References: <20200611101043.6379-1-stanley.chu@mediatek.com>
+In-Reply-To: <20200615072235.23042-1-stanley.chu@mediatek.com>
+References: <20200615072235.23042-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9653
  signatures=668680
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- malwarescore=0 mlxscore=0
- suspectscore=0 mlxlogscore=999 phishscore=0 bulkscore=0 adultscore=0
+ adultscore=0 suspectscore=0
+ mlxlogscore=999 mlxscore=0 phishscore=0 bulkscore=0 malwarescore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2006160027
+ definitions=main-2006160028
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9653
  signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 adultscore=0
- mlxscore=0 phishscore=0 mlxlogscore=999 lowpriorityscore=0 clxscore=1015
- suspectscore=0 spamscore=0 bulkscore=0 malwarescore=0 impostorscore=0
- cotscore=-2147483648 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2006160027
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ spamscore=0
+ impostorscore=0 bulkscore=0 clxscore=1015 malwarescore=0 suspectscore=0
+ mlxscore=0 phishscore=0 mlxlogscore=999 lowpriorityscore=0
+ cotscore=-2147483648 priorityscore=1501 classifier=spam adjust=0
+ reason=mlx scancount=1 engine=8.12.0-2004280000
+ definitions=main-2006160027
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200615_210026_487214_547D7439 
-X-CRM114-Status: GOOD (  14.06  )
+X-CRM114-CacheID: sfid-20200615_210026_576427_0A47F951 
+X-CRM114-Status: GOOD (  11.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,35 +110,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: bvanassche@acm.org, "Martin K . Petersen" <martin.petersen@oracle.com>,
- andy.teng@mediatek.com, cc.chou@mediatek.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
+Cc: linux-arm-kernel@lists.infradead.org, bvanassche@acm.org,
+ "Martin K . Petersen" <martin.petersen@oracle.com>, andy.teng@mediatek.com,
+ cc.chou@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, cang@codeaurora.org,
  linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, chaotian.jing@mediatek.com,
- linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+ matthias.bgg@gmail.com, chaotian.jing@mediatek.com, beanhuo@micron.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 11 Jun 2020 18:10:43 +0800, Stanley Chu wrote:
+On Mon, 15 Jun 2020 15:22:33 +0800, Stanley Chu wrote:
 
-> The UFS load calculation is based on "total_time" and "busy_time" in a
-> devfreq window. However, the source of time is different for both
-> parameters: "busy_time" is assigned from "jiffies" thus has different
-> accuracy from "total_time" which is assigned from ktime_get().
+> This series adds trace event for UIC commands and do a small cleanup in struct uic_command.
 > 
-> Besides, the time of window boundary is not exactly the same as
-> the starting busy time in this window if UFS is actually busy
-> in the beginning of the window. A similar accuracy error may also
-> happen for the end of busy time in current window.
+> v2 -> v3:
+>   - Refactor "complete" event hooks in ufshcd_uic_cmd_compl() (Avri Altman)
+> 
+> v1 -> v2:
+>   - Rename "uic_send" to "send" and "uic_complete" to "complete"
+>   - Move "send" trace before UIC command is sent otherwise "send" trace may log incorrect arguments
+>   - Move "complete" trace to UIC interrupt handler to make logging time precise
 > 
 > [...]
 
 Applied to 5.9/scsi-queue, thanks!
 
-[1/1] scsi: ufs: Fix imprecise load calculation in devfreq window
-      https://git.kernel.org/mkp/scsi/c/b1bf66d1d5a8
+[1/2] scsi: ufs: Remove unused field in struct uic_command
+      https://git.kernel.org/mkp/scsi/c/7a7df52dbc71
+[2/2] scsi: ufs: Add trace event for UIC commands
+      https://git.kernel.org/mkp/scsi/c/aa5c697988b4
 
 -- 
 Martin K. Petersen	Oracle Linux Engineering
