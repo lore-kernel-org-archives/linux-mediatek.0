@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 76134C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 09:04:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E9DFC433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 09:09:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 46FE220B1F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 09:04:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5BCA92070A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 09:09:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KI6gr1s2";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ESdAjIOB"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 46FE220B1F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RX89PPZo";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="kcQtj99p"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5BCA92070A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,57 +27,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CDsrxDz2/Zu8HMc7GJhtkcREhwrbut2itQzmMiVg2/s=; b=KI6gr1s2QQSWwK
-	A5wHzhyRCkX1vKvxaPrcqVdLsRDjdWQ8l1GJCg9+maZOs4L6tY2O208zJHx4pqYTdF+ZwVMPX2l/1
-	3dT6tCUaTWLQkVSk5JSa/ygWOb5f1AOMeu0Fvk1FG5XjJ/X9GINcFL3/ffgH+5rN6H8n7Yge3Af/7
-	JuEhvflAHVj60tEvibliPuMnU85v0C+AuBAtlxOXVzLMDU7wG0FeSUsapBm7Ey95ZMBSQHrhIyokM
-	HJldEyu9LrVbYSEtKnbVcXMBOQTPUkKLR3feom8tYBhAIme6hIyWd8+xfh5cxK2MsM9GA/5uGMcc9
-	evxIl3eDQ9Fydgfg0jyg==;
+	List-Owner; bh=MKxbXpJo/NFhLMDpOqA0Kzl83wt362WKMpzFcJFANuU=; b=RX89PPZojlh7UN
+	jgO2o2zuWqXIP/JEPZw3Mcli/lK5nM3H3ebOWMaGknHR8kDqkKqoXrlCfHWXSbg+CRWiGASw7gxsN
+	0j/uo2kcQaOglq9qohGMq4KW9u6HQELgMqUxmKE8JC3FlkrfpRy4roFAbLhHBx18nQsEUIsVP5L5b
+	b8xUR9vxs/fARESpSEmlXOmd2FZxe99tv+empk0Q3t3WlGFg0uZKkqkzbwikd+EhaUdAzJ86U/DTr
+	ZOHPSbV1UEKouawdaoQ6RBME4GhmznuRtNJ6XLy46ZBwMCKUIraKiWsoDkpd3VI91bD1d6H6ffKRY
+	6uGc6/rObQFSVu3MY4Ng==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlTzK-0001h1-VM; Wed, 17 Jun 2020 09:04:06 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1jlU4M-0006N2-T1; Wed, 17 Jun 2020 09:09:18 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlTzH-0001gY-TG; Wed, 17 Jun 2020 09:04:05 +0000
-Received: by mail-wm1-x343.google.com with SMTP id y20so1151392wmi.2;
- Wed, 17 Jun 2020 02:04:03 -0700 (PDT)
+ id 1jlU4K-0006Kt-BH; Wed, 17 Jun 2020 09:09:17 +0000
+Received: by mail-wm1-x342.google.com with SMTP id r15so1160962wmh.5;
+ Wed, 17 Jun 2020 02:09:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=rJIFL4nYHz+nuHsym8E29RS/7TlZdHbF85nLu23tEkU=;
- b=ESdAjIOBu4gyGkreZ4Lw7JA3Yj3BidAccsFYL/KgbGEGjNVo7xgGCVrKAc/enXnE05
- ivdfsGJqeiv5IJw8DjI1LhGScVzFetDnM548zed22vkUT4JF7CoCSeiKetC0lXdG/3Tn
- BFjS12cbpfEkc9N9R1jgflsa9TPDq0rDwYdpNeb1jIjCAeiXbauUEa6mA/oEe3bWbxDi
- E18KFkIeDAa7Pcl81TYcAdYFBLdrfqnailFCxIOvoO5RDXoGt+YPWynIp82B9GX+/1TI
- WPD4bwwejJqlZpzut6JMycNNbamLiFl8v6fA3+4cBRuPPixRXs9LBh8LqbDONpfdmo8N
- irzg==
+ bh=uMSOx0yXZqitbI4EA4+8qEegvLLFbpBxcQUD2ZznNJU=;
+ b=kcQtj99p1hhCKKH4Bf8X3daskyTX3r/AxRI3VTHeQ89tsYc/LA3hJWbU+UVR1E1dGO
+ mmyF8T4pFsHLGiOuMLIvLxeg5V088yFrTLtGn8WAhxc5Dw3Z+Zn2QMLLVSoNnUYMhnTl
+ V28j2XSBLrtLIdMCJ1LrH8vSLBlUUxa/G64pLcoRq+D/RROMtDF6eJplen/R4uxi867Q
+ c+XTXpc5k9tJ8PtYMw8lGF+vqLDcCc5J+JxuzOKNIJPStbXimDNgOlCwJXyT+uyY29oW
+ 9hBZWYAi0jKt++j9JB1f1+CWF3EzQ/5o/3NXH4Adqm58xCcKA5fc+4WGbNulkadY6IMo
+ RrQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=rJIFL4nYHz+nuHsym8E29RS/7TlZdHbF85nLu23tEkU=;
- b=SRzoHTs6seX86FGRv2P6yHiALVjBuVlkV1tJNNecp6mwlE7+6IPIn4rLoNTIVLP1No
- oXLZiBPDS4EH2OaK3Y5VcEKtcOwWTQLBArnx/W+luj2w+2JDEBljI765CHPdE+P34af1
- sK0Sqy+wHJSsANza7Tfz2h0bzwBDTvI3KbrBdDviKrZkW1l05mVtQnG9i1SxMSsahZ4E
- GoV/bOEvgb+c76m7ISxq2mc3FXsuVjjT+0ddwF18Hvt91YuSF3h4tpmgqI++GZ4pAr3f
- I52AoNHj8ELpg5AjUiR+EzxDLRF72bN54rjMEgMd4zETusQKMQpUP430ohB/T+HKBCaD
- G6lA==
-X-Gm-Message-State: AOAM5311l2hRfyAL4Nl2wAcZHAI+1HPuLnZkbf3VRqKX1x+V2aTXefor
- ptKQpGtBVccBOYQeM4no4pw=
-X-Google-Smtp-Source: ABdhPJyQ0NfX9fIWlnJ8Qhwa1Ds8G+kc+0Um1ojNVtwg4l4F2kzffpe1C7bxGF0GSvzeipLMvqLXNA==
-X-Received: by 2002:a1c:44c3:: with SMTP id r186mr7281150wma.67.1592384641997; 
- Wed, 17 Jun 2020 02:04:01 -0700 (PDT)
+ bh=uMSOx0yXZqitbI4EA4+8qEegvLLFbpBxcQUD2ZznNJU=;
+ b=OwaUKhx9SNe8Z/tROAqsgd3Chcl3k0r4kLNL11ZckkGYHZG76sEw+aaY7/FlkZ9486
+ +pXfbdAJnN250SKBfpTIYhBO6cDnV+55kFJhEkgIrw6Jzjj2GH0wLT+ouVQiPYkzJpql
+ ZBxIfT/eUaDOBEzMHGI9RHpeIeukPZ2+WU0nX8jll7ow0byTjrHzIy7F1aV1Sfqf9l3o
+ xpGGbUy61pbBa599+k/j5BZJTahKouMBLuSUzTTkfV4zfHsGNnPP/7amMiD3De+/QrBh
+ bkuUxiDHSqBqN3HP9pCYl8Uj5irWn1fHqmY96One4nmSoUefFkYKs5iWMC/OYfAUJwNj
+ mfNA==
+X-Gm-Message-State: AOAM530ldPu24BWKeabC+FmXheW6m+vbau0Epxp+FtOAAlCLiqemSThX
+ dGzjvj5nwc4P391ezJRtYvI=
+X-Google-Smtp-Source: ABdhPJwfbfTaSvdYKVov5UP00YWEnOog2TJ3RBfl4ScIqNG4NwjmiaYSeLV90wP53nkqmQnaj5Xx1Q==
+X-Received: by 2002:a7b:c937:: with SMTP id h23mr7278034wml.113.1592384954463; 
+ Wed, 17 Jun 2020 02:09:14 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.114.138])
- by smtp.gmail.com with ESMTPSA id c68sm7340760wmd.12.2020.06.17.02.04.00
+ by smtp.gmail.com with ESMTPSA id r14sm4374358wrx.42.2020.06.17.02.09.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 17 Jun 2020 02:04:01 -0700 (PDT)
-Subject: Re: [PATCH v4 2/7] iommu/mediatek: Rename the register
- STANDARD_AXI_MODE(0x48) to MISC_CTRL
+ Wed, 17 Jun 2020 02:09:13 -0700 (PDT)
+Subject: Re: [PATCH v4 4/7] iommu/mediatek: Move inv_sel_reg into the plat_data
 To: Chao Hao <chao.hao@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
  Rob Herring <robh+dt@kernel.org>
 References: <20200617030029.4082-1-chao.hao@mediatek.com>
- <20200617030029.4082-3-chao.hao@mediatek.com>
+ <20200617030029.4082-5-chao.hao@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -153,16 +152,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <c5028adb-b520-c9ee-8e53-3f1aea297316@gmail.com>
-Date: Wed, 17 Jun 2020 11:04:00 +0200
+Message-ID: <c18e7d76-4bd0-51ff-999e-01afd2fa14dc@gmail.com>
+Date: Wed, 17 Jun 2020 11:09:12 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <20200617030029.4082-3-chao.hao@mediatek.com>
+In-Reply-To: <20200617030029.4082-5-chao.hao@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200617_020403_956141_2CDE5061 
-X-CRM114-Status: GOOD (  22.02  )
+X-CRM114-CacheID: sfid-20200617_020916_411796_20F06EA1 
+X-CRM114-Status: GOOD (  19.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -186,82 +185,101 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 17/06/2020 05:00, Chao Hao wrote:
-> For iommu offset=0x48 register, only the previous mt8173/mt8183 use the
-> name STANDARD_AXI_MODE, all the latest SoC extend the register more
-> feature by different bits, for example: axi_mode, in_order_en, coherent_en
-> and so on. So rename REG_MMU_MISC_CTRL may be more proper.
+> For mt6779, MMU_INV_SEL register's offset is changed from
+> 0x38 to 0x2c, so we can put inv_sel_reg in the plat_data to
+> use it.
+> In addition, we renamed it to REG_MMU_INV_SEL_GEN1 and use it
+> before mt6779.
 > 
-> This patch only rename the register name, no functional change.
+> Change since v3:
+> 1. Fix coding style
 > 
+> Cc: Yong Wu <yong.wu@mediatek.com>
 > Signed-off-by: Chao Hao <chao.hao@mediatek.com>
-> Reviewed-by: Yong Wu <yong.wu@mediatek.com>
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Reviewed-by: Mattias Brugger <matthias.bgg@gmail.com>
 
 > ---
->  drivers/iommu/mtk_iommu.c | 14 +++++++-------
->  drivers/iommu/mtk_iommu.h |  2 +-
->  2 files changed, 8 insertions(+), 8 deletions(-)
+>  drivers/iommu/mtk_iommu.c | 19 +++++++++++--------
+>  drivers/iommu/mtk_iommu.h |  1 +
+>  2 files changed, 12 insertions(+), 8 deletions(-)
 > 
 > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 2be96f1cdbd2..88d3df5b91c2 100644
+> index 239d2cdbbc9f..f23919feba4e 100644
 > --- a/drivers/iommu/mtk_iommu.c
 > +++ b/drivers/iommu/mtk_iommu.c
-> @@ -41,7 +41,7 @@
+> @@ -37,7 +37,7 @@
+>  #define REG_MMU_INVLD_START_A			0x024
+>  #define REG_MMU_INVLD_END_A			0x028
+>  
+> -#define REG_MMU_INV_SEL				0x038
+> +#define REG_MMU_INV_SEL_GEN1			0x038
 >  #define F_INVLD_EN0				BIT(0)
 >  #define F_INVLD_EN1				BIT(1)
 >  
-> -#define REG_MMU_STANDARD_AXI_MODE		0x048
-> +#define REG_MMU_MISC_CTRL			0x048
->  #define REG_MMU_DCM_DIS				0x050
+> @@ -168,7 +168,7 @@ static void mtk_iommu_tlb_flush_all(void *cookie)
 >  
->  #define REG_MMU_CTRL_REG			0x110
-> @@ -573,8 +573,10 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+>  	for_each_m4u(data) {
+>  		writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+> -			       data->base + REG_MMU_INV_SEL);
+> +			       data->base + data->plat_data->inv_sel_reg);
+>  		writel_relaxed(F_ALL_INVLD, data->base + REG_MMU_INVALIDATE);
+>  		wmb(); /* Make sure the tlb flush all done */
 >  	}
->  	writel_relaxed(0, data->base + REG_MMU_DCM_DIS);
+> @@ -185,7 +185,7 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+>  	for_each_m4u(data) {
+>  		spin_lock_irqsave(&data->tlb_lock, flags);
+>  		writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+> -			       data->base + REG_MMU_INV_SEL);
+> +			       data->base + data->plat_data->inv_sel_reg);
 >  
-> -	if (data->plat_data->reset_axi)
-> -		writel_relaxed(0, data->base + REG_MMU_STANDARD_AXI_MODE);
-> +	if (data->plat_data->reset_axi) {
-> +		/* The register is called STANDARD_AXI_MODE in this case */
-> +		writel_relaxed(0, data->base + REG_MMU_MISC_CTRL);
-> +	}
+>  		writel_relaxed(iova, data->base + REG_MMU_INVLD_START_A);
+>  		writel_relaxed(iova + size - 1,
+> @@ -773,11 +773,12 @@ static const struct dev_pm_ops mtk_iommu_pm_ops = {
+>  };
 >  
->  	if (devm_request_irq(data->dev, data->irq, mtk_iommu_isr, 0,
->  			     dev_name(data->dev), (void *)data)) {
-> @@ -718,8 +720,7 @@ static int __maybe_unused mtk_iommu_suspend(struct device *dev)
->  	struct mtk_iommu_suspend_reg *reg = &data->reg;
->  	void __iomem *base = data->base;
+>  static const struct mtk_iommu_plat_data mt2712_data = {
+> -	.m4u_plat     = M4U_MT2712,
+> -	.has_4gb_mode = true,
+> -	.has_bclk     = true,
+> -	.has_vld_pa_rng   = true,
+> -	.larbid_remap = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
+> +	.m4u_plat       = M4U_MT2712,
+> +	.has_4gb_mode   = true,
+> +	.has_bclk       = true,
+> +	.has_vld_pa_rng = true,
+> +	.inv_sel_reg    = REG_MMU_INV_SEL_GEN1,
+> +	.larbid_remap   = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
+>  };
 >  
-> -	reg->standard_axi_mode = readl_relaxed(base +
-> -					       REG_MMU_STANDARD_AXI_MODE);
-> +	reg->misc_ctrl = readl_relaxed(base + REG_MMU_MISC_CTRL);
->  	reg->dcm_dis = readl_relaxed(base + REG_MMU_DCM_DIS);
->  	reg->ctrl_reg = readl_relaxed(base + REG_MMU_CTRL_REG);
->  	reg->int_control0 = readl_relaxed(base + REG_MMU_INT_CONTROL0);
-> @@ -743,8 +744,7 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
->  		dev_err(data->dev, "Failed to enable clk(%d) in resume\n", ret);
->  		return ret;
->  	}
-> -	writel_relaxed(reg->standard_axi_mode,
-> -		       base + REG_MMU_STANDARD_AXI_MODE);
-> +	writel_relaxed(reg->misc_ctrl, base + REG_MMU_MISC_CTRL);
->  	writel_relaxed(reg->dcm_dis, base + REG_MMU_DCM_DIS);
->  	writel_relaxed(reg->ctrl_reg, base + REG_MMU_CTRL_REG);
->  	writel_relaxed(reg->int_control0, base + REG_MMU_INT_CONTROL0);
+>  static const struct mtk_iommu_plat_data mt8173_data = {
+> @@ -785,12 +786,14 @@ static const struct mtk_iommu_plat_data mt8173_data = {
+>  	.has_4gb_mode = true,
+>  	.has_bclk     = true,
+>  	.reset_axi    = true,
+> +	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
+>  	.larbid_remap = {0, 1, 2, 3, 4, 5}, /* Linear mapping. */
+>  };
+>  
+>  static const struct mtk_iommu_plat_data mt8183_data = {
+>  	.m4u_plat     = M4U_MT8183,
+>  	.reset_axi    = true,
+> +	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
+>  	.larbid_remap = {0, 4, 5, 6, 7, 2, 3, 1},
+>  };
+>  
 > diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> index ea949a324e33..1b6ea839b92c 100644
+> index d711ac630037..afd7a2de5c1e 100644
 > --- a/drivers/iommu/mtk_iommu.h
 > +++ b/drivers/iommu/mtk_iommu.h
-> @@ -18,7 +18,7 @@
->  #include <soc/mediatek/smi.h>
+> @@ -43,6 +43,7 @@ struct mtk_iommu_plat_data {
+>  	bool		    has_misc_ctrl;
+>  	bool                has_vld_pa_rng;
+>  	bool                reset_axi;
+> +	u32                 inv_sel_reg;
+>  	unsigned char       larbid_remap[MTK_LARB_NR_MAX];
+>  };
 >  
->  struct mtk_iommu_suspend_reg {
-> -	u32				standard_axi_mode;
-> +	u32				misc_ctrl;
->  	u32				dcm_dis;
->  	u32				ctrl_reg;
->  	u32				int_control0;
 > 
 
 _______________________________________________
