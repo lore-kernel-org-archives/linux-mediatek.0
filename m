@@ -2,77 +2,107 @@ Return-Path: <SRS0=3SR4=76=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1B9F6C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 21:03:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9439DC433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 21:31:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D503921852
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 21:03:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 65B472080D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 21:31:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s+4MI7qV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D503921852
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KUiL+Qf0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 65B472080D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=ispras.ru
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qaViNCCITS33e+fuegszyG1MNcxLbHdovuiQ5AW4Qbs=; b=s+4MI7qVuJj6K3
-	85ozFVuCgzidRbzRd4m4ifSXdgnov5DXjDCtPM7nPLB/HkbxJejTsQgMYD9ZyKiT6waM1G7/uaLIi
-	7nDUzravsBD4WymiWhPso4nUtZsdQgDI4rgjy+EEX5PIfGTnk4kZrqWukdFbxO04scl21L+AiXrBq
-	s+XE7eTpA3Mgdf+84qeMMKtK/UP7lU+GVUbwCwj6bCepmYQBC70Xasr1MG1aZ6KAJgQs91Ma/Pyhx
-	uQ5OLkrzZFkGHorEzYMTaPKd2JbazQ+XtpeUoNmRRdC2oiVTapAkrXSQyZylnXc/hNhhAImt02q2+
-	ZWg/RqOUqg6+Bf9P7+eQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:Subject:From:References:To:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=eORMPjyxkJeIeH6vi3YRNuPUXoa1gkeSVmbB5icfAvk=; b=KUiL+Qf02HaI9T
+	2KqFKfcHnZsjbcqFr3XKzMfc7e3uNe//MnXA1iepTnV25C1NTs2hepbxrxO2+djm0jAr69vpFNMec
+	vWQp2Z6VV3rQqR0mxsah4E3LficmEZ/jYJ3hT2GmjatkJpyqKLUECT+LNwE3V7J8iJPdXfasCmq4C
+	R9OhQjWeUiWZ7JOUhpYyeA0Dy0m+6Vmq0cfc7/wAUYiRaicTrnWDJvGdKHklmp/3rD0D19uj+Lhed
+	f8ybAJxa2cfwLrYDcwdikEC6qovBS90CpuZxVXg1/hwhH5UfyqYY+QQXRO8i5hWixvDxlagdFV5Dz
+	0R1V+QommbIwETCPb2nw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlfD0-0004qp-EM; Wed, 17 Jun 2020 21:02:58 +0000
-Received: from mail-io1-f67.google.com ([209.85.166.67])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlfCt-0004pa-Um; Wed, 17 Jun 2020 21:02:57 +0000
-Received: by mail-io1-f67.google.com with SMTP id m81so4638446ioa.1;
- Wed, 17 Jun 2020 14:02:51 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=xFFFGVbhSch5Pt2svn8MimZRF1LlF10vkrqi5t3dW9I=;
- b=tn4Hw2D+/uV5tAYKwqZPqAIieXjs16AQNT/fVFE0iEBso4WOUKShh4IfTz+fMxxJPd
- sU4SdzUx/U03HSvaEBXtSmDANczHzPy9TfOzOFSRlgiQ0SQ5Af2fJsfhXWkeOLHhRreB
- TgwPDVYFOfXWFXS2uzTTAHToLrjlHiuLThJvOcp7K70F7rGxpbtJsQ2x3vK6cvKC9s8a
- MhgRkLr21XrNAqDoeuKF4giQmJGxNNDUgavcEGQhq7IBBdPxDuV38M5a4edkhdLakySf
- TeI4OsW5+WRkWtT6/5rGYwHoj4St7nEaOKoOaIS5owApYiRrzn++e60qTdBSrCljo0LN
- Qxuw==
-X-Gm-Message-State: AOAM531Yt6g9wlb/xZdGrYspZKjtnulZU9lj16MSES+tIz8H8Knkn/pd
- OL3lL4tabWzVXwOan+rR8w==
-X-Google-Smtp-Source: ABdhPJyXhGFVD9efkJSsHu1gz54q5MCenhejfFdnSe9K2byNsnC5c7h0Xj90NBIYtbqHKRUf3MoPIg==
-X-Received: by 2002:a6b:9054:: with SMTP id s81mr1423659iod.122.1592427770922; 
- Wed, 17 Jun 2020 14:02:50 -0700 (PDT)
-Received: from xps15 ([64.188.179.253])
- by smtp.gmail.com with ESMTPSA id f11sm398301ilf.53.2020.06.17.14.02.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Jun 2020 14:02:50 -0700 (PDT)
-Received: (nullmailer pid 2809826 invoked by uid 1000);
- Wed, 17 Jun 2020 21:02:47 -0000
-Date: Wed, 17 Jun 2020 15:02:47 -0600
-From: Rob Herring <robh@kernel.org>
-To: Chun-Hung Wu <chun-hung.wu@mediatek.com>
-Subject: Re: [PATCH v6 4/4] dt-bindings: mmc: mediatek: Add document for mt6779
-Message-ID: <20200617210247.GA2800817@bogus>
-References: <1591665502-6573-1-git-send-email-chun-hung.wu@mediatek.com>
- <1591665502-6573-5-git-send-email-chun-hung.wu@mediatek.com>
+	id 1jlfeW-000810-EO; Wed, 17 Jun 2020 21:31:24 +0000
+Received: from mail.ispras.ru ([83.149.199.45])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jlfeS-0007zW-6Y; Wed, 17 Jun 2020 21:31:22 +0000
+Received: from [192.168.1.8] (unknown [213.87.137.195])
+ by mail.ispras.ru (Postfix) with ESMTPSA id 54355BFD1E;
+ Thu, 18 Jun 2020 00:31:03 +0300 (MSK)
+To: Joe Perches <joe@perches.com>, Waiman Long <longman@redhat.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ David Howells <dhowells@redhat.com>,
+ Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
+ James Morris <jmorris@namei.org>, "Serge E. Hallyn" <serge@hallyn.com>,
+ Linus Torvalds <torvalds@linux-foundation.org>,
+ Matthew Wilcox <willy@infradead.org>, David Rientjes <rientjes@google.com>
+References: <20200616015718.7812-1-longman@redhat.com>
+ <fe3b9a437be4aeab3bac68f04193cb6daaa5bee4.camel@perches.com>
+From: Denis Efremov <efremov@ispras.ru>
+Autocrypt: addr=efremov@ispras.ru; keydata=
+ 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
+Subject: Re: [PATCH v4 0/3] mm, treewide: Rename kzfree() to kfree_sensitive()
+Message-ID: <17e4fede-bab0-d93c-6964-69decc889d7d@ispras.ru>
+Date: Thu, 18 Jun 2020 00:31:01 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1591665502-6573-5-git-send-email-chun-hung.wu@mediatek.com>
+In-Reply-To: <fe3b9a437be4aeab3bac68f04193cb6daaa5bee4.camel@perches.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200617_140255_963310_8C40BAA9 
-X-CRM114-Status: GOOD (  14.95  )
+X-CRM114-CacheID: sfid-20200617_143120_598622_66460BF7 
+X-CRM114-Status: GOOD (  10.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,67 +114,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Kate Stewart <kstewart@linuxfoundation.org>,
- Ulf Hansson <ulf.hansson@linaro.org>, wsd_upstream@mediatek.com,
- linux-mmc@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>,
- Al Cooper <alcooperx@gmail.com>, Bjorn Andersson <bjorn.andersson@linaro.org>,
- linux-tegra@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>,
- Pavel Machek <pavel@ucw.cz>, Florian Fainelli <f.fainelli@gmail.com>,
- Michal Simek <michal.simek@xilinx.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Andy Gross <agross@kernel.org>, bcm-kernel-feedback-list@broadcom.com,
- Chaotian Jing <chaotian.jing@mediatek.com>, kernel-team@android.com,
- Pan Bian <bianpan2016@163.com>, devicetree@vger.kernel.org,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- linux-arm-msm@vger.kernel.org, mirq-linux@rere.qmqm.pl,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, Stanley Chu <stanley.chu@mediatek.com>,
- Allison Randal <allison@lohutok.net>, linux-arm-kernel@lists.infradead.org,
- Mathieu Malaterre <malat@debian.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Kuohong Wang <kuohong.wang@mediatek.com>,
- Adrian Hunter <adrian.hunter@intel.com>, linux-kernel@vger.kernel.org
+Cc: "Jason A . Donenfeld" <Jason@zx2c4.com>, Michal Hocko <mhocko@suse.com>,
+ linux-btrfs@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mm@kvack.org,
+ linux-sctp@vger.kernel.org, target-devel@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, devel@driverdev.osuosl.org,
+ linux-cifs@vger.kernel.org, linux-scsi@vger.kernel.org,
+ kasan-dev@googlegroups.com, linux-wpan@vger.kernel.org,
+ Dan Carpenter <dan.carpenter@oracle.com>, linux-pm@vger.kernel.org,
+ ecryptfs@vger.kernel.org, linux-fscrypt@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ virtualization@lists.linux-foundation.org, linux-nfs@vger.kernel.org,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
+ David Sterba <dsterba@suse.cz>, linux-bluetooth@vger.kernel.org,
+ linux-security-module@vger.kernel.org, keyrings@vger.kernel.org,
+ tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
+ Johannes Weiner <hannes@cmpxchg.org>, linux-integrity@vger.kernel.org,
+ linuxppc-dev@lists.ozlabs.org, wireguard@lists.zx2c4.com,
+ linux-ppp@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 09, 2020 at 09:18:22AM +0800, Chun-Hung Wu wrote:
-> Add compatible node for mt6779 mmc and HW cmdq selection
-> node "mediatek,cqhci".
-> 
-> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/mmc/mtk-sd.txt | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> index 8a532f4..d4d20b9 100644
-> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> @@ -12,6 +12,7 @@ Required properties:
->  	"mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
->  	"mediatek,mt8183-mmc": for mmc host ip compatible with mt8183
->  	"mediatek,mt8516-mmc": for mmc host ip compatible with mt8516
-> +	"mediatek,mt6779-mmc": for mmc host ip compatible with mt6779
->  	"mediatek,mt2701-mmc": for mmc host ip compatible with mt2701
->  	"mediatek,mt2712-mmc": for mmc host ip compatible with mt2712
->  	"mediatek,mt7622-mmc": for MT7622 SoC
-> @@ -49,6 +50,9 @@ Optional properties:
->  		     error caused by stop clock(fifo full)
->  		     Valid range = [0:0x7]. if not present, default value is 0.
->  		     applied to compatible "mediatek,mt2701-mmc".
-> +- mediatek,cqhci: HW cmdq selection
-> +		  If present, hw command queue is enabled.
-> +		  If not present, hw command queue is disabled.
 
-'supports-cqe' does the same thing.
 
->  
->  Examples:
->  mmc0: mmc@11230000 {
-> -- 
-> 1.9.1
+On 6/16/20 9:53 PM, Joe Perches wrote:
+> On Mon, 2020-06-15 at 21:57 -0400, Waiman Long wrote:
+>>  v4:
+>>   - Break out the memzero_explicit() change as suggested by Dan Carpenter
+>>     so that it can be backported to stable.
+>>   - Drop the "crypto: Remove unnecessary memzero_explicit()" patch for
+>>     now as there can be a bit more discussion on what is best. It will be
+>>     introduced as a separate patch later on after this one is merged.
+> 
+> To this larger audience and last week without reply:
+> https://lore.kernel.org/lkml/573b3fbd5927c643920e1364230c296b23e7584d.camel@perches.com/
+> 
+> Are there _any_ fastpath uses of kfree or vfree?
+> 
+> Many patches have been posted recently to fix mispairings
+> of specific types of alloc and free functions.
+
+I've prepared a coccinelle script to highlight these mispairings in a function
+a couple of days ago: https://lkml.org/lkml/2020/6/5/953
+I've listed all the fixes in the commit message. 
+
+Not so many mispairings actually, and most of them are harmless like:
+kmalloc(E) -> kvfree(E)
+
+However, coccinelle script can't detect cross-functions mispairings, i.e.
+allocation in one function, free in another funtion.
+
+Thanks,
+Denis
 
 _______________________________________________
 Linux-mediatek mailing list
