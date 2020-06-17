@@ -2,78 +2,79 @@ Return-Path: <SRS0=3SR4=76=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-1.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9778AC433E1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 07:12:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8850DC433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 07:15:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6B0DF206D8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 07:12:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2A88D206F1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 07:15:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QomntzJj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6B0DF206D8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AvSDUFIT";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="MET7TKhf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2A88D206F1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dFzvlk/vEvVdWUQKKpNyVXaZKihgsJcvRVbKF3c7DbE=; b=QomntzJj8vhSGM
-	tPidKti11+UQe/voWsUl2AGAUExyYel3cH9mCEK4+KP/PzNEo+i/V6zru0VZemphcdzSXVN+dGMkf
-	g3+PsFvp/h5yVTnA0WzBvc6wGTm4KKJyCCU4J9wirRc1FeOlGpMxTsjk3iCn88pVLfA9XPeiJ1mY1
-	69iGHV9d1aIZvA2gL1GDG/2yC2TcWdk8DrEpaNDH8o7ojYZR2a0T3zctf8f9i2q2bqvioUYQVg0Kn
-	xj70p8pCxgPq6Y5Yv45DgYVe9q/BYmnSOE37cusdSRI6LY3OfBe4ujMB8AfvJZeite9dCIKOZxcqQ
-	DA7A1/zoUbdHlBkSNWbg==;
+	List-Owner; bh=RRC5AM7mW6mzE90yA1IqUbGE+UMZAxqHFEMaywDBBJU=; b=AvSDUFITUBBfcy
+	o2MbZsaYI2boOBs0py6hYLkT9mIiZa/2osoVLKpSTBhMQaWs6MPUxmCwSbQ34mbBmUPsXlT8Z9gGq
+	d1meSgpa8ZcNbscl5ui9K596fUiCZjZZSY+FZNIY8BPX5fT3mMdIc6/adlOL8hN1i7Sqsn5GdDP9W
+	yM2tgfUAbclC98VDyVrA6baZ4AWo/hdnsh+aqutcE2KY1ZeIh64lYdgkcxbEs3ikjO91x6iPUlRIM
+	9v+JJmJ4VGbtiz6TRQI5a2SC30x1BS7UiHR2blPtJ9yQhaaVFIq3D2P3CaydvZj0wjhzYttJHQ+2j
+	Kdik6F3KeLmw78zFl8aA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlSF9-0007gl-Mn; Wed, 17 Jun 2020 07:12:19 +0000
-Received: from mail-ej1-f68.google.com ([209.85.218.68])
+	id 1jlSIF-0002Lm-MP; Wed, 17 Jun 2020 07:15:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlSF6-0007eD-A6; Wed, 17 Jun 2020 07:12:17 +0000
-Received: by mail-ej1-f68.google.com with SMTP id k11so1132267ejr.9;
- Wed, 17 Jun 2020 00:12:15 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=E5EcWVbc+7tsS+GAmjqiwsU8zuC9ZQ4KDsXaJSfWulo=;
- b=ar5UyNMHXi0y3gOT26kjJmDb8baqhjlMwUi4OJHxJSImQHG86YPz4hzsew+O3VCWfE
- ZHh8az2Xy4/vtI40hNN8X2YFeZBHZdvurCTV41hw3xME9BhTacoZfmSb8qVja0n9brcU
- lsLKrFMQXc2aHgNXYIHoGPvj34zxR2qg2EKZKAzeTYNAcGWP0RsIMdBeNqhx8P4rcNjd
- 8xp8fLKwiCmkALBG3pypNGN3v/NltkYD0i8mSadLmehqlMYY2hMQZJe//oabsPCl+BRU
- snAsjKDY+LxCjmMXjGmbwe8sw8xjTo+3aMUpCsx65THdExRmV8DhldwINAIlJXmgKTls
- 6mEA==
-X-Gm-Message-State: AOAM530Kf9MIs2v/0oc+sTMll+XVbdVbD2bZVojHCwEOCE0qMfuc0w6C
- II7vLu9DqF5thnGzToScv0g=
-X-Google-Smtp-Source: ABdhPJzxXEZ/32Vk1uutSgWgDm/2Kml+FRFv6q/oUOzaHXvM3d9a7wcEm5DrSyb0iZ8v3ZPtZ+pKKg==
-X-Received: by 2002:a17:906:2581:: with SMTP id
- m1mr6681797ejb.89.1592377934427; 
- Wed, 17 Jun 2020 00:12:14 -0700 (PDT)
-Received: from localhost (ip-37-188-158-19.eurotel.cz. [37.188.158.19])
- by smtp.gmail.com with ESMTPSA id g22sm12516138ejo.1.2020.06.17.00.12.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Jun 2020 00:12:13 -0700 (PDT)
-Date: Wed, 17 Jun 2020 09:12:12 +0200
-From: Michal Hocko <mhocko@kernel.org>
-To: Matthew Wilcox <willy@infradead.org>
-Subject: Re: [PATCH v4 0/3] mm, treewide: Rename kzfree() to kfree_sensitive()
-Message-ID: <20200617071212.GJ9499@dhcp22.suse.cz>
-References: <20200616015718.7812-1-longman@redhat.com>
- <fe3b9a437be4aeab3bac68f04193cb6daaa5bee4.camel@perches.com>
- <20200616230130.GJ27795@twin.jikos.cz>
- <20200617003711.GD8681@bombadil.infradead.org>
+ id 1jlSID-0002Jo-6V; Wed, 17 Jun 2020 07:15:30 +0000
+X-UUID: 76dc28f19efe437891a5be126773aaea-20200616
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=dGXGiunHjZndJ6cHTy/bVaVcZvEJmUdgQt8u80wNGMc=; 
+ b=MET7TKhfpBhF5XHsrDOXFi56IE4aN8q4SZyjYvKxBJ4d4020JxdSogDIFN0m+c5Ea5EnFHjWf7NN5+r4z7oGqH/oHYjrVL6WLRegA5dGrH4pKpvHLL+hrQeGPJ89ZNdX2fTDX27jdH/w5lDARluzL6W6xXXVHwrA3zo7px6SBgs=;
+X-UUID: 76dc28f19efe437891a5be126773aaea-20200616
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <weiyi.lu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 472515419; Tue, 16 Jun 2020 23:15:14 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 17 Jun 2020 00:05:23 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 17 Jun 2020 15:05:21 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 17 Jun 2020 15:05:22 +0800
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+To: Enric Balletbo Serra <eballetbo@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, "Rob
+ Herring" <robh@kernel.org>, Sascha Hauer <kernel@pengutronix.de>
+Subject: [PATCH v16 01/11] dt-bindings: mediatek: Add property to mt8183
+ smi-common
+Date: Wed, 17 Jun 2020 15:05:07 +0800
+Message-ID: <1592377517-14817-2-git-send-email-weiyi.lu@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1592377517-14817-1-git-send-email-weiyi.lu@mediatek.com>
+References: <1592377517-14817-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200617003711.GD8681@bombadil.infradead.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200617_001216_348035_C56E4986 
-X-CRM114-Status: GOOD (  16.91  )
+X-CRM114-CacheID: sfid-20200617_001529_250649_89EEA63C 
+X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,67 +86,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "Jason A . Donenfeld" <Jason@zx2c4.com>, linux-btrfs@vger.kernel.org,
- Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>, dsterba@suse.cz,
- David Howells <dhowells@redhat.com>, linux-mm@kvack.org,
- linux-sctp@vger.kernel.org, keyrings@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, devel@driverdev.osuosl.org,
- linux-cifs@vger.kernel.org, linux-scsi@vger.kernel.org,
- James Morris <jmorris@namei.org>, kasan-dev@googlegroups.com,
- linux-wpan@vger.kernel.org, David Rientjes <rientjes@google.com>,
- Waiman Long <longman@redhat.com>, Dan Carpenter <dan.carpenter@oracle.com>,
- "Serge E. Hallyn" <serge@hallyn.com>, linux-pm@vger.kernel.org,
- ecryptfs@vger.kernel.org, linux-fscrypt@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- virtualization@lists.linux-foundation.org, linux-integrity@vger.kernel.org,
- linux-nfs@vger.kernel.org, Linus Torvalds <torvalds@linux-foundation.org>,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-bluetooth@vger.kernel.org, linux-security-module@vger.kernel.org,
- target-devel@vger.kernel.org, tipc-discussion@lists.sourceforge.net,
- linux-crypto@vger.kernel.org, Johannes Weiner <hannes@cmpxchg.org>,
- Joe Perches <joe@perches.com>, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev@lists.ozlabs.org, netdev@vger.kernel.org,
- wireguard@lists.zx2c4.com, linux-ppp@vger.kernel.org
+Cc: James Liao <jamesjj.liao@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>,
+ srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>,
+ linux-mediatek@lists.infradead.org, Wendell Lin <wendell.lin@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue 16-06-20 17:37:11, Matthew Wilcox wrote:
-> On Wed, Jun 17, 2020 at 01:01:30AM +0200, David Sterba wrote:
-> > On Tue, Jun 16, 2020 at 11:53:50AM -0700, Joe Perches wrote:
-> > > On Mon, 2020-06-15 at 21:57 -0400, Waiman Long wrote:
-> > > >  v4:
-> > > >   - Break out the memzero_explicit() change as suggested by Dan Carpenter
-> > > >     so that it can be backported to stable.
-> > > >   - Drop the "crypto: Remove unnecessary memzero_explicit()" patch for
-> > > >     now as there can be a bit more discussion on what is best. It will be
-> > > >     introduced as a separate patch later on after this one is merged.
-> > > 
-> > > To this larger audience and last week without reply:
-> > > https://lore.kernel.org/lkml/573b3fbd5927c643920e1364230c296b23e7584d.camel@perches.com/
-> > > 
-> > > Are there _any_ fastpath uses of kfree or vfree?
-> > 
-> > I'd consider kfree performance critical for cases where it is called
-> > under locks. If possible the kfree is moved outside of the critical
-> > section, but we have rbtrees or lists that get deleted under locks and
-> > restructuring the code to do eg. splice and free it outside of the lock
-> > is not always possible.
-> 
-> Not just performance critical, but correctness critical.  Since kvfree()
-> may allocate from the vmalloc allocator, I really think that kvfree()
-> should assert that it's !in_atomic().  Otherwise we can get into trouble
-> if we end up calling vfree() and have to take the mutex.
+For scpsys driver using regmap based syscon driver API.
 
-FWIW __vfree already checks for atomic context and put the work into a
-deferred context. So this should be safe. It should be used as a last
-resort, though.
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+ .../devicetree/bindings/memory-controllers/mediatek,smi-common.txt      | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+index b478ade..01744ec 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+@@ -20,7 +20,7 @@ Required properties:
+ 	"mediatek,mt2712-smi-common"
+ 	"mediatek,mt7623-smi-common", "mediatek,mt2701-smi-common"
+ 	"mediatek,mt8173-smi-common"
+-	"mediatek,mt8183-smi-common"
++	"mediatek,mt8183-smi-common", "syscon"
+ - reg : the register and size of the SMI block.
+ - power-domains : a phandle to the power domain of this local arbiter.
+ - clocks : Must contain an entry for each entry in clock-names.
 -- 
-Michal Hocko
-SUSE Labs
-
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
