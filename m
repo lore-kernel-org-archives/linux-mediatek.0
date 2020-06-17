@@ -2,78 +2,76 @@ Return-Path: <SRS0=3SR4=76=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2CE57C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 03:11:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A7E9DC433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 03:11:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EAEEB2082E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 03:11:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7C1F62082F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 03:11:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="saG5vQng";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="tCizszyo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EAEEB2082E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RwZUk5ZS";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Z0lZDMfu"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7C1F62082F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ypWBPDBlpfQYknCBctMv1qOW5xVV3KY7rNGWgbJjX9Q=; b=saG5vQnge3hNio
-	6AAC0gFrE83rjRFKQskYDoHhy0YguUZRRaPmheXFZd631tA7u1BrE4LKXUQVEzAvAZQ+XPbaD6OSm
-	V5y7isHdgETwCslSay0PzigjLXj/sQWcM8oBwOxpFlEEDNyHq9wqE4ywzEuxHDXAqWPBYxPYTHIqx
-	4Ayz/AuhWUJ5t299E3HfstE4+DwcwIE9huUHJOQaSfMOzafpOKB617Oi+JfoXGC2hUY3fwLjdA39H
-	sGRCMPDt/C86tZEuoFSu67CNON2GLkBPYADendm5ncCC2CjrLoe8DUisN/fF5iMjba7W7ATQcxH0Q
-	gb4guKvKnEP8L9MHpWBQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=SBN0vgicKBIG9ZPROmuRZ6Qk3dImoKK+MMzI/hIvaL8=; b=RwZUk5ZS7Yoz7N
+	9bcuJtglYndDYopBkB3fLcEnDwqoMZwBfCSrI4B/EbY7caczdjvx468YObp1aaxeRGhRVnGR4j4NF
+	y/qeH0LWQr8Uzqs/HaquZbnMFgvbTf3OuHVlqjd65AFuS4fmdCXuSQvwdCwmAZdDR0E5E3ufK3R+P
+	xMWcmMZ41K87AmTo4/w8VV2qVrhQKyGqVz5eNTAGjI2UNZ87Yx9d1qzmAzmkP+Bd3zXgGdrxwO+z4
+	0hrNQq/gUVBUgDdsrbB0dHZdNAZwmwDMRyQez7FWquhRHAHmGAO5PJ3nDNCWBW0h20Z9NlbJQqyDL
+	MNvy452N4HHJ9GcEYjMw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlOTq-0007jZ-Rx; Wed, 17 Jun 2020 03:11:14 +0000
+	id 1jlOU5-0007xS-BQ; Wed, 17 Jun 2020 03:11:29 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlOTn-0007iG-FM; Wed, 17 Jun 2020 03:11:12 +0000
-X-UUID: eac352394ffe4ce980bc1e844893894b-20200616
+ id 1jlOTn-0007iF-FL; Wed, 17 Jun 2020 03:11:13 +0000
+X-UUID: e43c7d7a3e3c42f2ba5f84741cb747b1-20200616
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=obGB75zVx42spPi5Jwg0x1wUXIMIfdt+HD3xUwE7aqY=; 
- b=tCizszyoexIAhk7nU60LNfzTV04ZzYUFck8MSug1ggOROCidDev5iVAfSWlKTRIUwG9FLCfr1C77L1Un5xr4gY9fQEgct4PItfcoQlOuZZTzkcqVkR4v6s+RPK4zhXAmk5GS1xcz+YEoPlRwHMTqusub/BdjmP7VrAEtFWQjQ0c=;
-X-UUID: eac352394ffe4ce980bc1e844893894b-20200616
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=Wis5vDqsbbB93AdFA7XLcfdhnuaZidhnla8UOIBO0ek=; 
+ b=Z0lZDMfuA73ttTRjNXk5cXsLpPy7lxeqDcRx9fGKBUDMHklFmQAbR+KGEzCw+bggY4Ik7696457hhpO40ruHPMXxLLBLPIiykfDihVXe/qt/qn6K322WXCFsYmbRinGvmWgbAJHOxKiN/KvakUy4aBGhHKUnGP6iE1Ft9gE7a2I=;
+X-UUID: e43c7d7a3e3c42f2ba5f84741cb747b1-20200616
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chao.hao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2071330071; Tue, 16 Jun 2020 19:10:56 -0800
+ with ESMTP id 1788461510; Tue, 16 Jun 2020 19:10:56 -0800
 Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 16 Jun 2020 20:01:14 -0700
+ 15.0.1497.2; Tue, 16 Jun 2020 20:00:56 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 17 Jun 2020 11:01:08 +0800
+ 15.0.1497.2; Wed, 17 Jun 2020 11:00:50 +0800
 Received: from localhost.localdomain (10.15.20.246) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 17 Jun 2020 11:01:06 +0800
+ Transport; Wed, 17 Jun 2020 11:00:48 +0800
 From: Chao Hao <chao.hao@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
  "Matthias Brugger" <matthias.bgg@gmail.com>
-Subject: [PATCH v4 6/7] iommu/mediatek: Add REG_MMU_WR_LEN definition
- preparing for mt6779
-Date: Wed, 17 Jun 2020 11:00:28 +0800
-Message-ID: <20200617030029.4082-7-chao.hao@mediatek.com>
+Subject: [PATCH v4 00/07] MT6779 IOMMU SUPPORT
+Date: Wed, 17 Jun 2020 11:00:22 +0800
+Message-ID: <20200617030029.4082-1-chao.hao@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200617030029.4082-1-chao.hao@mediatek.com>
-References: <20200617030029.4082-1-chao.hao@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 0FCF882F6644A8EDD711C0D26C2B62A8BC8E5A33F27505C775B41045C3A1F06D2000:8
+X-TM-SNTS-SMTP: FB8C3C131B059E05A7015CC9206665E6513E2B80B0D5808ABDA7442D20A11FCC2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200616_201111_524120_54C4A1D8 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20200616_201111_524123_9E45C732 
+X-CRM114-Status: UNSURE (   7.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,79 +93,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some platforms(ex: mt6779) have a new register called by REG_MMU_WR_LEN
-to improve performance.
-This patch add this register definition.
+This patchset adds mt6779 iommu support.
+mt6779 has two iommus, they are MM_IOMMU(M4U) and APU_IOMMU which used ARM Short-Descriptor translation format.
+The mt6779's MM_IOMMU-SMI and APU_IOMMU HW diagram is as below, it is only a brief diagram:
 
-Signed-off-by: Chao Hao <chao.hao@mediatek.com>
----
- drivers/iommu/mtk_iommu.c | 10 ++++++++++
- drivers/iommu/mtk_iommu.h |  2 ++
- 2 files changed, 12 insertions(+)
+		       EMI
+		        |
+     --------------------------------------
+     |                                    |
+  MM_IOMMU                            APU_IOMMU
+     |                                    |
+  SMI_COMMOM-----------                 APU_BUS
+     |                |                   |
+  SMI_LARB(0~11)      |                   |
+     |                |                   |
+     |                |             --------------
+     |                |             |     |      |
+Multimedia engine      CCU           VPU   MDLA   EMDA
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index a687e8db0e51..c706bca6487e 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -46,6 +46,8 @@
- #define F_MMU_STANDARD_AXI_MODE_BIT		(BIT(3) | BIT(19))
- 
- #define REG_MMU_DCM_DIS				0x050
-+#define REG_MMU_WR_LEN				0x054
-+#define F_MMU_WR_THROT_DIS_BIT			(BIT(5) |  BIT(21))
- 
- #define REG_MMU_CTRL_REG			0x110
- #define F_MMU_TF_PROT_TO_PROGRAM_ADDR		(2 << 4)
-@@ -581,6 +583,12 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
- 		writel_relaxed(regval, data->base + REG_MMU_VLD_PA_RNG);
- 	}
- 	writel_relaxed(0, data->base + REG_MMU_DCM_DIS);
-+	if (data->plat_data->has_wr_len) {
-+		/* write command throttling mode */
-+		regval = readl_relaxed(data->base + REG_MMU_WR_LEN);
-+		regval &= ~F_MMU_WR_THROT_DIS_BIT;
-+		writel_relaxed(regval, data->base + REG_MMU_WR_LEN);
-+	}
- 
- 	if (data->plat_data->reset_axi) {
- 		/* The register is called STANDARD_AXI_MODE in this case */
-@@ -737,6 +745,7 @@ static int __maybe_unused mtk_iommu_suspend(struct device *dev)
- 	struct mtk_iommu_suspend_reg *reg = &data->reg;
- 	void __iomem *base = data->base;
- 
-+	reg->wr_len = readl_relaxed(base + REG_MMU_WR_LEN);
- 	reg->misc_ctrl = readl_relaxed(base + REG_MMU_MISC_CTRL);
- 	reg->dcm_dis = readl_relaxed(base + REG_MMU_DCM_DIS);
- 	reg->ctrl_reg = readl_relaxed(base + REG_MMU_CTRL_REG);
-@@ -761,6 +770,7 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
- 		dev_err(data->dev, "Failed to enable clk(%d) in resume\n", ret);
- 		return ret;
- 	}
-+	writel_relaxed(reg->wr_len, base + REG_MMU_WR_LEN);
- 	writel_relaxed(reg->misc_ctrl, base + REG_MMU_MISC_CTRL);
- 	writel_relaxed(reg->dcm_dis, base + REG_MMU_DCM_DIS);
- 	writel_relaxed(reg->ctrl_reg, base + REG_MMU_CTRL_REG);
-diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-index d51ff99c2c71..9971cedd72ea 100644
---- a/drivers/iommu/mtk_iommu.h
-+++ b/drivers/iommu/mtk_iommu.h
-@@ -25,6 +25,7 @@ struct mtk_iommu_suspend_reg {
- 	u32				int_main_control;
- 	u32				ivrp_paddr;
- 	u32				vld_pa_rng;
-+	u32				wr_len;
- };
- 
- enum mtk_iommu_plat {
-@@ -43,6 +44,7 @@ struct mtk_iommu_plat_data {
- 	bool		    has_misc_ctrl;
- 	bool		    has_sub_comm;
- 	bool                has_vld_pa_rng;
-+	bool                has_wr_len;
- 	bool                reset_axi;
- 	u32                 inv_sel_reg;
- 	unsigned char       larbid_remap[8][4];
--- 
+All the connections are hardware fixed, software can not adjust it.
+Compared with mt8183, SMI_BUS_ID width has changed from 10 to 12. SMI Larb number is described in bit[11:7],
+Port number is described in bit[6:2]. In addition, there are some registers has changed in mt6779, so we need
+to redefine and reuse them.
+
+The patchset only used MM_IOMMU, so we only add MM_IOMMU basic function, such as smi_larb port definition, registers
+definition and hardware initialization.
+
+change notes:
+ v4:
+   1. Rebase on v5.8-rc1.
+   2. Fix coding style.
+   3. Add F_MMU_IN_DRDER_WR_EN definition in MISC_CTRL to improve performance.
+
+ v3:
+   1. Rebase on v5.7-rc1.
+   2. Remove unused port definition,ex:APU and CCU port in mt6779-larb-port.h.
+   3. Remove "change single domain to multiple domain" part(from PATCH v2 09/19 to PATCH v2 19/19).
+   4. Redesign mt6779 basic part
+      (1)Add some register definition and reuse them.
+      (2)Redesign smi larb bus ID to analyze IOMMU translation fault.
+      (3)Only init MM_IOMMU and not use APU_IOMMU.
+
+ http://lists.infradead.org/pipermail/linux-mediatek/2020-May/029811.html
+
+ v2:
+   1. Rebase on v5.5-rc1.
+   2. Delete M4U_PORT_UNKNOWN define because of not use it.
+   3. Correct coding format.
+   4. Rename offset=0x48 register.
+   5. Split "iommu/mediatek: Add mt6779 IOMMU basic support(patch v1)" to several patches(patch v2).
+
+ http://lists.infradead.org/pipermail/linux-mediatek/2020-January/026131.html
+
+ v1:
+ http://lists.infradead.org/pipermail/linux-mediatek/2019-November/024567.html
+
+Chao Hao (7):
+  dt-bindings: mediatek: Add bindings for MT6779
+  iommu/mediatek: Rename the register STANDARD_AXI_MODE(0x48) to
+                  MISC_CTRL
+  iommu/mediatek: Set MISC_CTRL register
+  iommu/mediatek: Move inv_sel_reg into the plat_data
+  iommu/mediatek: Add sub_comm id in translation fault
+  iommu/mediatek: Add REG_MMU_WR_LEN definition preparing for mt6779
+  iommu/mediatek: Add mt6779 basic support
+
+ .../bindings/iommu/mediatek,iommu.txt         |   2 +
+ drivers/iommu/mtk_iommu.c                     |  92 ++++++--
+ drivers/iommu/mtk_iommu.h                     |  10 +-
+ include/dt-bindings/memory/mt6779-larb-port.h | 206 ++++++++++++++++++
+ 4 files changed, 285 insertions(+), 25 deletions(-)
+
+--
 2.18.0
 _______________________________________________
 Linux-mediatek mailing list
