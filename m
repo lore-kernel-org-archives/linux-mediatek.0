@@ -2,22 +2,22 @@ Return-Path: <SRS0=3SR4=76=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C451CC433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 03:13:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9DF85C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 03:51:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 96DC42082E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 03:13:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 728A22080D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 03:51:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dl5FlgDw";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="OtVrMGrk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 96DC42082E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jCMSxMRJ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="NUE3uXzZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 728A22080D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,52 +26,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=12pn5+dq9yyTOqvVPUzWiv3cdWJcTWJOmEkbBB9qrK0=; b=dl5FlgDwz8/GMQ
-	LVq7RUPfPe5eEm3R7TFLEUPiLutuKY8IREPWTZZ34zXrv7H3PHkaUomisHEZlzjam9oTc0Z2nh3Ar
-	Aez84XOGmmhuvAJ0kT2FQwbvNwjVPRWkvK3hp0C/kts0sFaCKLbrLjeuFkEAie7Znu+1B2TlvNfvj
-	ZARC8/snQ4ZUEAUwdmYHwecYkwBoYnA09x1XVciAF3IT99LPsZS28qx5zaMi7xkDnJtw/E1FNcer1
-	1cIYhhA4nIU+B6DSi84U2Ua6I63UHO3v89BJ1BPpsn5QYBg2kUZ9g34iEvuGXDPeQc2qwvNt+Kj+c
-	HEQ5/WV1ycpimo/RQqig==;
+	List-Owner; bh=4PwNMTcGGVe2dlIIyc5PQq0/3WyvfwckagltF1PhgnA=; b=jCMSxMRJ2k0bt4
+	iO4aI17k9arpbBANyOE4e+B4bvdhKEb83yiDHlaSv1Leve2w7hJRBGTjl9jFvMh2r1AWU6xn31boH
+	7vlaO/qOBpLAAp4cIUV52j2VEAipAFoqZ9y2vzePuIl5ViCb2daOBPbDXCXV0lZxBlMUsRn26+c94
+	8hdzhdwEi5ITz9I0YWSknXYHLfo10UH2XnOwoP1GnaM5mXoNKdLzZURgIEur8A451dirTbeZR/EL7
+	j8N1D+5h/0PQNoksx7d1rN+rzRHxjwGPOP5TPq2q6F6eMRTjhC2EV+JYwo9LG1FmbeWhi1ns9SfMi
+	CR2HqFJMb46NnATUM4vw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlOWF-0001Ew-Jc; Wed, 17 Jun 2020 03:13:43 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jlP6j-000179-UP; Wed, 17 Jun 2020 03:51:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlOWD-0001EE-A4
- for linux-mediatek@lists.infradead.org; Wed, 17 Jun 2020 03:13:42 +0000
-X-UUID: 28fbca9efe1c4d93a89c4b970f50001f-20200616
+ id 1jlP6a-0000zm-BT; Wed, 17 Jun 2020 03:51:17 +0000
+X-UUID: ee8c8609ea3f4c55821ee5454d641e07-20200616
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=phSEVnx2YN8ID4XCGX38hcVMnB8sCkrhT2w5pB/6SzU=; 
- b=OtVrMGrk2d24P9D3MDB7UP9YijorkELM6xE0iS3WnN7WOgu1YUfMLcC9Hhi7U7O7XtNbGlf2dIvgi57jJbMZR1N7oKBIS2zgFaBDqUNM3xIfb9uj3N43OpKrtUy0Eqk896fVI/BS3Eq+qX1qTy2W8ZYESVz+ZQuuft/Rzq1BM4o=;
-X-UUID: 28fbca9efe1c4d93a89c4b970f50001f-20200616
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=E0n2lDonFBEI59Ci1XWwVT6HIPc/UsUckcKN/vDwwaE=; 
+ b=NUE3uXzZCZjfQVdSh7lskhgR/2NE0EqrkTEtdkVyZl4g8eHFf1vejckADPY0aXiqG+9aoTQVB/pok3V2BElIgnnYTzTTGKB6opDKV01c+UUMIF65j4co5DoARzG4Nr4DsjU1VS8WBfV32dedHfbdNTmwTCrJvGVKh75uxMXvW98=;
+X-UUID: ee8c8609ea3f4c55821ee5454d641e07-20200616
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1829769212; Tue, 16 Jun 2020 19:13:32 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ with ESMTP id 886113131; Tue, 16 Jun 2020 19:51:08 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 16 Jun 2020 20:13:28 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 17 Jun 2020 11:13:31 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ 15.0.1497.2; Tue, 16 Jun 2020 20:51:04 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 17 Jun 2020 11:51:00 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 17 Jun 2020 11:13:26 +0800
+ Frontend Transport; Wed, 17 Jun 2020 11:51:00 +0800
 From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-Subject: Re: [PATCH v2 2/2] mt76: mt7615: fix different licenses in same driver
-Date: Wed, 17 Jun 2020 11:13:30 +0800
-Message-ID: <1592363610-13861-1-git-send-email-sean.wang@mediatek.com>
+To: <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v3] tty: serial: don't do termios for BTIF
+Date: Wed, 17 Jun 2020 11:50:59 +0800
+Message-ID: <1592365859-26714-1-git-send-email-sean.wang@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <dae8a31520c0f30741f6e3bde76b7d4c8cf18de3.1592337119.git.ryder.lee@mediatek.com>
-References: <dae8a31520c0f30741f6e3bde76b7d4c8cf18de3.1592337119.git.ryder.lee@mediatek.com>
+In-Reply-To: <20200422180900.GA3454664@kroah.com>
+References: <20200422180900.GA3454664@kroah.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200616_201341_353655_E00401BE 
-X-CRM114-Status: UNSURE (   5.78  )
+X-CRM114-CacheID: sfid-20200616_205116_470113_A1A146DA 
+X-CRM114-Status: UNSURE (   6.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -84,9 +83,12 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, Ryder.Lee@mediatek.com,
- linux-wireless@vger.kernel.org, sean.wang@mediatek.com,
- Shayne.Chen@mediatek.com
+Cc: Ryder.Lee@mediatek.com, steven.liu@mediatek.com, arnd@arndb.de,
+ sean.wang@mediatek.com, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, tthayer@opensource.altera.com,
+ linux-serial@vger.kernel.org, jslaby@suse.com, matthias.bgg@gmail.com,
+ andriy.shevchenko@linux.intel.com, mika.westerberg@linux.intel.com, sr@denx.de,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -94,20 +96,28 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
->Avoid using different licenses in the same driver.
+>On Thu, Apr 23, 2020 at 02:02:08AM +0800, sean.wang@mediatek.com wrote:
+>> From: Sean Wang <sean.wang@mediatek.com>
+>>
+>> Bluetooth Interface (BTIF) is designed dedicatedly for MediaTek SOC
+>> with BT in order to be instead of the UART interface between BT module
+>> and Host CPU, and not exported to user space to access.
+>>
+>> As the UART design, BTIF will be an APB slave and can transmit or
+>> receive data by MCU access, but doesn't provide termios function like
+>> baudrate and flow control setup.
 >
->Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
->---
->@Sean @Lorenzo: For mt7615, I need to gather ACK from all people involved with the code.
+>Why does it matter?  If the connection isn't exported to userspace, who would run those termios functions on the port?
 
-I am fine with license change too.
-Acked-by: Sean Wang <sean.wang@mediatek.com>
+The bluetooth driver would use BTIF device as a serdev.
 
->---
-> drivers/net/wireless/mediatek/mt76/mt7615/Kconfig    | 2 +-
-> drivers/net/wireless/mediatek/mt76/mt7615/mmio.c     | 3 +++
-> drivers/net/wireless/mediatek/mt76/mt7615/usb_init.c | 2 +-  drivers/net/wireless/mediatek/mt76/mt7615/usb_mcu.c  | 2 +-
-> 4 files changed, 6 insertions(+), 3 deletions(-)
+The termios function would be called in kernelspace from ttyport_open and then
+to tty_set_termios defined in drivers/tty/serdev/serdev-ttyport.c.
+
+>
+>thanks,
+>
+>greg k-h
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
