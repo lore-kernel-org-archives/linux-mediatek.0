@@ -2,79 +2,78 @@ Return-Path: <SRS0=3SR4=76=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-1.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 49058C433E6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 07:05:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9778AC433E1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 07:12:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 17B3F2151B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 07:05:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6B0DF206D8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2020 07:12:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iMfofIWD";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="UMXRRiIS"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 17B3F2151B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QomntzJj"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6B0DF206D8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KOZzPQYXk4lRdkmzfr3Ab36gqblpuXk4X9PbOrhaQ/8=; b=iMfofIWDHo/O1w
-	kJbkGal3isDhw2IAoeU+bB7dvLfkGdmlAufd08YWcj9Tl0JnXaXvvAxeVdLu84sMQUW4WdCEtfXJf
-	ef7sbYAqYaupDnulOn6dKifz151g1u0C/iuWasNvF4AW7JlXmRGIjZJElKYt7DGGoAkbqwzOEJPHv
-	V78JR8Ujd9JO9gJ/io2OY09g0Yy1nspKo/tZYX+UcDgPpo7AjIVbfclKhKsZthcCKnCR5a8EpGoEk
-	b5sFtAQT0GaPd9RtcrNFaUAWMYjLbIMQMyqA4xj+P0WeAoaSR4oAu7NT8FMXtIcXRYWOJMKufJbD9
-	Icj5AFrpJH1p7rslclRw==;
+	List-Owner; bh=dFzvlk/vEvVdWUQKKpNyVXaZKihgsJcvRVbKF3c7DbE=; b=QomntzJj8vhSGM
+	tPidKti11+UQe/voWsUl2AGAUExyYel3cH9mCEK4+KP/PzNEo+i/V6zru0VZemphcdzSXVN+dGMkf
+	g3+PsFvp/h5yVTnA0WzBvc6wGTm4KKJyCCU4J9wirRc1FeOlGpMxTsjk3iCn88pVLfA9XPeiJ1mY1
+	69iGHV9d1aIZvA2gL1GDG/2yC2TcWdk8DrEpaNDH8o7ojYZR2a0T3zctf8f9i2q2bqvioUYQVg0Kn
+	xj70p8pCxgPq6Y5Yv45DgYVe9q/BYmnSOE37cusdSRI6LY3OfBe4ujMB8AfvJZeite9dCIKOZxcqQ
+	DA7A1/zoUbdHlBkSNWbg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlS8a-0002qL-DU; Wed, 17 Jun 2020 07:05:32 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jlSF9-0007gl-Mn; Wed, 17 Jun 2020 07:12:19 +0000
+Received: from mail-ej1-f68.google.com ([209.85.218.68])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlS8Y-0002ox-MC; Wed, 17 Jun 2020 07:05:32 +0000
-X-UUID: 25d9be4e02b04cccabebb63b59fc6a90-20200616
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=OBPtD1tbN5OV8vnvCeCNDHHxC6o81b/X9CvevB+bOCk=; 
- b=UMXRRiIS1Zw0twgr0iU3FrzT+pTpbZotUbCNvZJPfuKttG4gMqwN0aXRcMJGmHexGYeb6ZConK+hxyEzB/bUT/ID3nHkF/ORANjl4ghrmU/YPJFNX+1PJkvOjd9kOTCMe8FBGpFNHEL8lZN3zpg8BuaBjqOltyuiM8Hvjx1td0M=;
-X-UUID: 25d9be4e02b04cccabebb63b59fc6a90-20200616
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <weiyi.lu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 957038197; Tue, 16 Jun 2020 23:05:15 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 17 Jun 2020 00:05:26 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 17 Jun 2020 15:05:24 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 17 Jun 2020 15:05:23 +0800
-From: Weiyi Lu <weiyi.lu@mediatek.com>
-To: Enric Balletbo Serra <eballetbo@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, "Rob
- Herring" <robh@kernel.org>, Sascha Hauer <kernel@pengutronix.de>
-Subject: [PATCH v16 09/11] soc: mediatek: Add a comma at the end
-Date: Wed, 17 Jun 2020 15:05:15 +0800
-Message-ID: <1592377517-14817-10-git-send-email-weiyi.lu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1592377517-14817-1-git-send-email-weiyi.lu@mediatek.com>
-References: <1592377517-14817-1-git-send-email-weiyi.lu@mediatek.com>
+ id 1jlSF6-0007eD-A6; Wed, 17 Jun 2020 07:12:17 +0000
+Received: by mail-ej1-f68.google.com with SMTP id k11so1132267ejr.9;
+ Wed, 17 Jun 2020 00:12:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=E5EcWVbc+7tsS+GAmjqiwsU8zuC9ZQ4KDsXaJSfWulo=;
+ b=ar5UyNMHXi0y3gOT26kjJmDb8baqhjlMwUi4OJHxJSImQHG86YPz4hzsew+O3VCWfE
+ ZHh8az2Xy4/vtI40hNN8X2YFeZBHZdvurCTV41hw3xME9BhTacoZfmSb8qVja0n9brcU
+ lsLKrFMQXc2aHgNXYIHoGPvj34zxR2qg2EKZKAzeTYNAcGWP0RsIMdBeNqhx8P4rcNjd
+ 8xp8fLKwiCmkALBG3pypNGN3v/NltkYD0i8mSadLmehqlMYY2hMQZJe//oabsPCl+BRU
+ snAsjKDY+LxCjmMXjGmbwe8sw8xjTo+3aMUpCsx65THdExRmV8DhldwINAIlJXmgKTls
+ 6mEA==
+X-Gm-Message-State: AOAM530Kf9MIs2v/0oc+sTMll+XVbdVbD2bZVojHCwEOCE0qMfuc0w6C
+ II7vLu9DqF5thnGzToScv0g=
+X-Google-Smtp-Source: ABdhPJzxXEZ/32Vk1uutSgWgDm/2Kml+FRFv6q/oUOzaHXvM3d9a7wcEm5DrSyb0iZ8v3ZPtZ+pKKg==
+X-Received: by 2002:a17:906:2581:: with SMTP id
+ m1mr6681797ejb.89.1592377934427; 
+ Wed, 17 Jun 2020 00:12:14 -0700 (PDT)
+Received: from localhost (ip-37-188-158-19.eurotel.cz. [37.188.158.19])
+ by smtp.gmail.com with ESMTPSA id g22sm12516138ejo.1.2020.06.17.00.12.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 17 Jun 2020 00:12:13 -0700 (PDT)
+Date: Wed, 17 Jun 2020 09:12:12 +0200
+From: Michal Hocko <mhocko@kernel.org>
+To: Matthew Wilcox <willy@infradead.org>
+Subject: Re: [PATCH v4 0/3] mm, treewide: Rename kzfree() to kfree_sensitive()
+Message-ID: <20200617071212.GJ9499@dhcp22.suse.cz>
+References: <20200616015718.7812-1-longman@redhat.com>
+ <fe3b9a437be4aeab3bac68f04193cb6daaa5bee4.camel@perches.com>
+ <20200616230130.GJ27795@twin.jikos.cz>
+ <20200617003711.GD8681@bombadil.infradead.org>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: F9D2535231E86EDD4072917BE38EC826236484326466FD89AC619CA89CE359B92000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20200617003711.GD8681@bombadil.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200617_000530_734284_DD6F73D7 
-X-CRM114-Status: UNSURE (   8.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200617_001216_348035_C56E4986 
+X-CRM114-Status: GOOD (  16.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,92 +85,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>,
- srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>,
- linux-mediatek@lists.infradead.org, Wendell Lin <wendell.lin@mediatek.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: "Jason A . Donenfeld" <Jason@zx2c4.com>, linux-btrfs@vger.kernel.org,
+ Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>, dsterba@suse.cz,
+ David Howells <dhowells@redhat.com>, linux-mm@kvack.org,
+ linux-sctp@vger.kernel.org, keyrings@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, devel@driverdev.osuosl.org,
+ linux-cifs@vger.kernel.org, linux-scsi@vger.kernel.org,
+ James Morris <jmorris@namei.org>, kasan-dev@googlegroups.com,
+ linux-wpan@vger.kernel.org, David Rientjes <rientjes@google.com>,
+ Waiman Long <longman@redhat.com>, Dan Carpenter <dan.carpenter@oracle.com>,
+ "Serge E. Hallyn" <serge@hallyn.com>, linux-pm@vger.kernel.org,
+ ecryptfs@vger.kernel.org, linux-fscrypt@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ virtualization@lists.linux-foundation.org, linux-integrity@vger.kernel.org,
+ linux-nfs@vger.kernel.org, Linus Torvalds <torvalds@linux-foundation.org>,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-bluetooth@vger.kernel.org, linux-security-module@vger.kernel.org,
+ target-devel@vger.kernel.org, tipc-discussion@lists.sourceforge.net,
+ linux-crypto@vger.kernel.org, Johannes Weiner <hannes@cmpxchg.org>,
+ Joe Perches <joe@perches.com>, Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev@lists.ozlabs.org, netdev@vger.kernel.org,
+ wireguard@lists.zx2c4.com, linux-ppp@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A minor coding style fix
+On Tue 16-06-20 17:37:11, Matthew Wilcox wrote:
+> On Wed, Jun 17, 2020 at 01:01:30AM +0200, David Sterba wrote:
+> > On Tue, Jun 16, 2020 at 11:53:50AM -0700, Joe Perches wrote:
+> > > On Mon, 2020-06-15 at 21:57 -0400, Waiman Long wrote:
+> > > >  v4:
+> > > >   - Break out the memzero_explicit() change as suggested by Dan Carpenter
+> > > >     so that it can be backported to stable.
+> > > >   - Drop the "crypto: Remove unnecessary memzero_explicit()" patch for
+> > > >     now as there can be a bit more discussion on what is best. It will be
+> > > >     introduced as a separate patch later on after this one is merged.
+> > > 
+> > > To this larger audience and last week without reply:
+> > > https://lore.kernel.org/lkml/573b3fbd5927c643920e1364230c296b23e7584d.camel@perches.com/
+> > > 
+> > > Are there _any_ fastpath uses of kfree or vfree?
+> > 
+> > I'd consider kfree performance critical for cases where it is called
+> > under locks. If possible the kfree is moved outside of the critical
+> > section, but we have rbtrees or lists that get deleted under locks and
+> > restructuring the code to do eg. splice and free it outside of the lock
+> > is not always possible.
+> 
+> Not just performance critical, but correctness critical.  Since kvfree()
+> may allocate from the vmalloc allocator, I really think that kvfree()
+> should assert that it's !in_atomic().  Otherwise we can get into trouble
+> if we end up calling vfree() and have to take the mutex.
 
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
----
- drivers/soc/mediatek/mtk-scpsys.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+FWIW __vfree already checks for atomic context and put the work into a
+deferred context. So this should be safe. It should be used as a last
+resort, though.
 
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index abdbab4..5bfe58a 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -1426,7 +1426,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
- 	.num_domains = ARRAY_SIZE(scp_domain_data_mt2701),
- 	.regs = {
- 		.pwr_sta_offs = SPM_PWR_STATUS,
--		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-+		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
- 	},
- };
- 
-@@ -1437,7 +1437,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
- 	.num_subdomains = ARRAY_SIZE(scp_subdomain_mt2712),
- 	.regs = {
- 		.pwr_sta_offs = SPM_PWR_STATUS,
--		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-+		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
- 	},
- };
- 
-@@ -1448,7 +1448,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
- 	.num_subdomains = ARRAY_SIZE(scp_subdomain_mt6797),
- 	.regs = {
- 		.pwr_sta_offs = SPM_PWR_STATUS_MT6797,
--		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND_MT6797
-+		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND_MT6797,
- 	},
- };
- 
-@@ -1457,7 +1457,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
- 	.num_domains = ARRAY_SIZE(scp_domain_data_mt7622),
- 	.regs = {
- 		.pwr_sta_offs = SPM_PWR_STATUS,
--		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-+		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
- 	},
- };
- 
-@@ -1466,7 +1466,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
- 	.num_domains = ARRAY_SIZE(scp_domain_data_mt7623a),
- 	.regs = {
- 		.pwr_sta_offs = SPM_PWR_STATUS,
--		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-+		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
- 	},
- };
- 
-@@ -1477,7 +1477,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
- 	.num_subdomains = ARRAY_SIZE(scp_subdomain_mt8173),
- 	.regs = {
- 		.pwr_sta_offs = SPM_PWR_STATUS,
--		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-+		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
- 	},
- };
- 
-@@ -1488,7 +1488,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
- 	.num_subdomains = ARRAY_SIZE(scp_subdomain_mt8183),
- 	.regs = {
- 		.pwr_sta_offs = 0x0180,
--		.pwr_sta2nd_offs = 0x0184
-+		.pwr_sta2nd_offs = 0x0184,
- 	}
- };
- 
 -- 
-1.8.1.1.dirty
+Michal Hocko
+SUSE Labs
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
