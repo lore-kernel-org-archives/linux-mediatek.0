@@ -2,128 +2,168 @@ Return-Path: <SRS0=U17p=77=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E331C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 15:44:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 83ECFC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 16:00:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 47F662070A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 15:44:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4CBDF20732
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 16:00:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="N3Q0LF43";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="d/ltOZAI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 47F662070A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UkKZo46q";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="n9cuHroT"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CBDF20732
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=VfRnkmaUpomLded4iKmbLRKCreo9YE9grqobgICEis0=; b=N3Q0LF43m4L4dEqy4UXJOpsAR0
-	LWCpvcYBpSA//D/yJTlKT9VbZhlDVy7SLLPql4dmxnvY4QWpBfyI180SwbxFOLNX81jjkRemW391L
-	A55pz7QIEGknx6MgWeCb7vFKGsnHpdFjSoIVVXyJUjSYl3EvtJP95MIEh3WzDiQdJCA2drHsdHJ72
-	i87UZtL/vLWq0wIHEQTNhw15YKQbkT0nsVfKROjip99j09dqWR/iTK1/2lCOQli7RknucNMJxQ2gY
-	34zd5+jqpetH+2HaHENh5aLbe0Vr+IEMWRdLIIuwebYxyU+hcuFGT0xiqIwt4yGxSekav6uY/49e4
-	Bu+Ho8Gw==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uRjqZGq4g3Zw2p/+Key+LWpI0RFZMmHa4csbbhzs/1g=; b=UkKZo46qZcyMvm
+	Tr7McCQ2it10FGiRL/mrmQJfFzF4vOqrjlHkK7XDXTPxfJEht4+sCK4LbiwTRb9fErvmvtiat9vaK
+	jLUaezOGEfhww5cXr2//qtbMiilEOQEralR91FW0WVD63a4alDsAN6XTp7XsIOpZAUFDZohLd42lP
+	DqQv4O909OI0DuPIOVlmulm4s+aw5MfkxFrhqY/tbGGCH8SsR3oNAElYh7CmdZiW0HcooEQk5qjCX
+	1tvAcoMO8jJPQJW6a9+L8fpkCmvacqVaymGyEFWjBJi4EKLvbSej9lOH/0RUSaW0M0y381r2utjfw
+	U9OTmIaONvO6xohNgtog==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlwi4-0007GX-BZ; Thu, 18 Jun 2020 15:44:12 +0000
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
+	id 1jlwxY-00049F-Qp; Thu, 18 Jun 2020 16:00:12 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlweP-0004CF-Up
- for linux-mediatek@lists.infradead.org; Thu, 18 Jun 2020 15:40:29 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
- by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id
- 20200618154022euoutp02c464e47e5e8c71f2a427728cb1e4b502~ZrZpxONJZ1250012500euoutp02i
- for <linux-mediatek@lists.infradead.org>; Thu, 18 Jun 2020 15:40:22 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com
- 20200618154022euoutp02c464e47e5e8c71f2a427728cb1e4b502~ZrZpxONJZ1250012500euoutp02i
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1592494822;
- bh=bm4jyzGdoL7eueSepHu8xbaOpsUiBlIaWdzcyPajcJ4=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=d/ltOZAIyu8FKMf+nhzoZygg4teRsj7RqeLEYXTVTTYa9hEmkge06e9Y0HneOavKP
- T6UveSMyHLIH9UYYY0ZSHEgfJhvfraWppzXTOq8Sgw6zqClTPF/gZH2L60JyJBj1ot
- NTREn8F5TWqILwRzyLhzAKI2EgkOcrrRBl+20PMQ=
-Received: from eusmges2new.samsung.com (unknown [203.254.199.244]) by
- eucas1p2.samsung.com (KnoxPortal) with ESMTP id
- 20200618154021eucas1p2e6f324f655f607ca203555acfb3e35bc~ZrZphhik92502725027eucas1p27;
- Thu, 18 Jun 2020 15:40:21 +0000 (GMT)
-Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
- eusmges2new.samsung.com (EUCPMTA) with SMTP id FE.CE.60679.5EA8BEE5; Thu, 18
- Jun 2020 16:40:21 +0100 (BST)
-Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
- eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
- 20200618154021eucas1p181a432ec3a813134f677263ed45f9729~ZrZpSisF52603726037eucas1p1P;
- Thu, 18 Jun 2020 15:40:21 +0000 (GMT)
-Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
- eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
- 20200618154021eusmtrp1b40ba7b881fbe611fee7da44e2a5eaf0~ZrZpR4sj92169821698eusmtrp1T;
- Thu, 18 Jun 2020 15:40:21 +0000 (GMT)
-X-AuditID: cbfec7f4-0e5ff7000001ed07-2a-5eeb8ae5b95d
-Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
- eusmgms2.samsung.com (EUCPMTA) with SMTP id A3.E9.07950.5EA8BEE5; Thu, 18
- Jun 2020 16:40:21 +0100 (BST)
-Received: from AMDC2765.digital.local (unknown [106.120.51.73]) by
- eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20200618154020eusmtip1fd5ad65dd01bfc14781d171dbc566f67~ZrZojwzTQ0709107091eusmtip1s;
- Thu, 18 Jun 2020 15:40:20 +0000 (GMT)
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-To: dri-devel@lists.freedesktop.org, iommu@lists.linux-foundation.org,
- linaro-mm-sig@lists.linaro.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v6 11/36] drm: mediatek: use common helper for a scatterlist
- contiguity check
-Date: Thu, 18 Jun 2020 17:39:32 +0200
-Message-Id: <20200618153956.29558-12-m.szyprowski@samsung.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200618153956.29558-1-m.szyprowski@samsung.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFjrJKsWRmVeSWpSXmKPExsWy7djPc7pPu17HGRz9p2/Re+4kk8XGGetZ
- LRb19rJY/N82kdniytf3bBYrVx9lsliw39riy5WHTBabHl9jtbi8aw6bxeXmi4wWa4/cZbdo
- ajG2uHvvBIvFwQ9PWB34PdbMW8PosffbAhaPnbPusntsWtXJ5rH92wNWj/vdx5k8Ni+p97j9
- 7zGzx+Qbyxk9dt9sYPPo/2vg0bdlFaPH501yAbxRXDYpqTmZZalF+nYJXBnHev6wFzTxVSyc
- PJm5gfEKdxcjJ4eEgInEl4U/WLoYuTiEBFYwSpx68Z4NwvnCKLGsfRYrhPOZUeLz7TZGmJZH
- bacYIRLLGSUOb5jGCpIAazn6ohbEZhMwlOh628UGYosItDJKnOjlAWlgFtjDLLFo1y8WkISw
- QLzEhDP7wIpYBFQlLs58DjaIV8BO4vzql2wQ2+QlVm84wAxicwLFTx9vBTtJQuAeu8SUX7vY
- IYpcJA6c+AjVICzx6vgWqLiMxOnJPSwQDc2MEg/PrWWHcHoYJS43zYB6yFrizrlfQN0cQPdp
- SqzfpQ8RdpS4uv8jK0hYQoBP4sZbQZAwM5A5adt0Zogwr0RHmxBEtZrErOPr4NYevHCJGcL2
- kNhxZz80tCYySny9959lAqP8LIRlCxgZVzGKp5YW56anFhvlpZbrFSfmFpfmpesl5+duYgQm
- sNP/jn/ZwbjrT9IhRgEORiUe3hchr+OEWBPLiitzDzFKcDArifA6nT0dJ8SbklhZlVqUH19U
- mpNafIhRmoNFSZzXeNHLWCGB9MSS1OzU1ILUIpgsEwenVANj7fc9fj+25pr6yawu2/dVpHLy
- sac7nL+/dDlSdbdDXFHpTLmNasDHSeoVmnsuJuW9qvlc0nidV7Bk0Yu9P88/3PH8zuGIjQEL
- upyivoW7i7lk7ZgibTdJ+wrbf+5SqYb9neEz/25abN5Wv3mdzGEFhbrW06XcGhs4vi4J0s+W
- 4D2x+IWM0dMYJZbijERDLeai4kQA7EnreVwDAAA=
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrNIsWRmVeSWpSXmKPExsVy+t/xu7pPu17HGVw+IWfRe+4kk8XGGetZ
- LRb19rJY/N82kdniytf3bBYrVx9lsliw39riy5WHTBabHl9jtbi8aw6bxeXmi4wWa4/cZbdo
- ajG2uHvvBIvFwQ9PWB34PdbMW8PosffbAhaPnbPusntsWtXJ5rH92wNWj/vdx5k8Ni+p97j9
- 7zGzx+Qbyxk9dt9sYPPo/2vg0bdlFaPH501yAbxRejZF+aUlqQoZ+cUltkrRhhZGeoaWFnpG
- JpZ6hsbmsVZGpkr6djYpqTmZZalF+nYJehnHev6wFzTxVSycPJm5gfEKdxcjJ4eEgInEo7ZT
- jF2MXBxCAksZJY6t/MsOkZCRODmtgRXCFpb4c62LDaLoE6PE+daNjCAJNgFDia63EAkRgU5G
- iWndH9lBHGaBY8wSGx+/ZwapEhaIldjePQXMZhFQlbg48znYWF4BO4nzq1+yQayQl1i94QBY
- DSdQ/PTxVrAaIQFbiecf2tgmMPItYGRYxSiSWlqcm55bbKRXnJhbXJqXrpecn7uJERhR2479
- 3LKDsetd8CFGAQ5GJR7eFyGv44RYE8uKK3MPMUpwMCuJ8DqdPR0nxJuSWFmVWpQfX1Sak1p8
- iNEU6KiJzFKiyfnAaM8riTc0NTS3sDQ0NzY3NrNQEuftEDgYIySQnliSmp2aWpBaBNPHxMEp
- 1cBoaHb4/4PSMi/+VVPO+wXlf1kX867uvBWTbIL49kj1u5qa/sYaG4o+dVeWxkzqFpB+Nu9u
- YWH35lMbY+9HfhA0v1rIrTvXtTOw8+ITQadVN1cmzdzOdT1HRVusPIHzDl/jtv3rdubWbPkT
- Ura8rcvpE5PW0k0CX48YX+g5Ol1AK8vxfMusPYFKLMUZiYZazEXFiQAz4CamvgIAAA==
-X-CMS-MailID: 20200618154021eucas1p181a432ec3a813134f677263ed45f9729
-X-Msg-Generator: CA
-X-RootMTR: 20200618154021eucas1p181a432ec3a813134f677263ed45f9729
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20200618154021eucas1p181a432ec3a813134f677263ed45f9729
-References: <20200618153956.29558-1-m.szyprowski@samsung.com>
- <CGME20200618154021eucas1p181a432ec3a813134f677263ed45f9729@eucas1p1.samsung.com>
+ id 1jlwxU-00038y-I7; Thu, 18 Jun 2020 16:00:11 +0000
+Received: by mail-wr1-x442.google.com with SMTP id x6so6589338wrm.13;
+ Thu, 18 Jun 2020 09:00:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=x3LA7sp3dOy30DhOnl4vpK+38g2VcseF6kbs7o6qdjU=;
+ b=n9cuHroTaFNZCY7THCnqo0RHhaYu1VILKqV9Ta+oZGnTyGLAn3KCcu3YReAqfvpV1q
+ N7VVJpTcGduU9REUvFc7RUIEe/TM1wowrVm4XJmaELRjI+oapelT979yU22XzwXnSCXT
+ aWdGGRhKscciAHpGv+174b81TiDq4ja9JTBtXGpgqUocWGYsQUGBlEec8WOOGkwsE9FQ
+ nibMp7KLfce4L4ze7oR5sZgieTUOcKIAFZJi4EiS506QpiFha5N31jTE+s0zv82XNUXC
+ W1Bi5gmfmwqqvwHtmmdsISqdJHA6nI6uYu5jXODGN+LFBL0VyAJx4y5jUlT/63TFjjK7
+ fiIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=x3LA7sp3dOy30DhOnl4vpK+38g2VcseF6kbs7o6qdjU=;
+ b=g/BCgt8O2pfZQAc9po1iskF87tCLEt6/WEJ/nW6nKQTRA0Z3rkPVyyu21LC1oZ322U
+ KnqK+aD6JuTTa1OL/K5TfTRULyIR4xknvVC0laiWSJ5AieWMLMwUaXw5jYNelWX+F024
+ idc/yacSoN/7uplXO3nxx7k922ty1fjpcVjwMVXQqK2enVQ+1brt8sWmzOo0952+yd04
+ c/AQInN2yFV045LQO30cuglK+ix2lSPe86ycvTvHsVoGF2tRKa4MdJIDoZklV1C32fA1
+ 3GGyfrbIe1NvwLZj+//2gdeqRm6ccttb+GphuNiGrR8e1C70gXPYuOXSkSW4Pthd1WD3
+ XKzg==
+X-Gm-Message-State: AOAM530K/Niq7kVXNc56OSN4b1dN+sMSD+sy8Ts9Gk1ALkaRl4kUxOMd
+ c/DU7UFPlryXAay7e3wsagE=
+X-Google-Smtp-Source: ABdhPJz+7F0EbRzsmpp//fFKGQX4eSnlBsnREIubb7/IkgjJyYeYoA5oBjWwUsxu479ZxwsrZTgfzQ==
+X-Received: by 2002:a5d:6b8c:: with SMTP id n12mr5343092wrx.61.1592496007103; 
+ Thu, 18 Jun 2020 09:00:07 -0700 (PDT)
+Received: from ziggy.stardust (81.172.57.81.dyn.user.ono.com. [81.172.57.81])
+ by smtp.gmail.com with ESMTPSA id
+ b187sm4062266wmd.26.2020.06.18.09.00.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 18 Jun 2020 09:00:06 -0700 (PDT)
+Subject: Re: [PATCH v4 7/7] iommu/mediatek: Add mt6779 basic support
+To: chao hao <Chao.Hao@mediatek.com>
+References: <20200617030029.4082-1-chao.hao@mediatek.com>
+ <20200617030029.4082-8-chao.hao@mediatek.com>
+ <64f63ccc-92a4-191c-3566-de00c9e04ca2@gmail.com>
+ <1592481247.12647.9.camel@mbjsdccf07>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <9618cc95-99ac-63d0-f502-335e38819842@gmail.com>
+Date: Thu, 18 Jun 2020 18:00:05 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
+MIME-Version: 1.0
+In-Reply-To: <1592481247.12647.9.camel@mbjsdccf07>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200618_084026_123320_646EB6E7 
-X-CRM114-Status: GOOD (  14.22  )
+X-CRM114-CacheID: sfid-20200618_090008_720552_9FB5ABF3 
+X-CRM114-Status: GOOD (  25.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -135,79 +175,154 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- David Airlie <airlied@linux.ie>, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- Robin Murphy <robin.murphy@arm.com>, Christoph Hellwig <hch@lst.de>,
- linux-arm-kernel@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>
-MIME-Version: 1.0
+Cc: devicetree@vger.kernel.org, FY Yang <fy.yang@mediatek.com>,
+ wsd_upstream@mediatek.com, Joerg Roedel <joro@8bytes.org>,
+ linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Yong Wu <yong.wu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use common helper for checking the contiguity of the imported dma-buf and
-do this check before allocating resources, so the error path is simpler.
 
-Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_gem.c | 28 ++++++--------------------
- 1 file changed, 6 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-index 6190cc3b7b0d..3654ec732029 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-@@ -212,37 +212,21 @@ struct drm_gem_object *mtk_gem_prime_import_sg_table(struct drm_device *dev,
- 			struct dma_buf_attachment *attach, struct sg_table *sg)
- {
- 	struct mtk_drm_gem_obj *mtk_gem;
--	int ret;
--	struct scatterlist *s;
--	unsigned int i;
--	dma_addr_t expected;
- 
--	mtk_gem = mtk_drm_gem_init(dev, attach->dmabuf->size);
-+	/* check if the entries in the sg_table are contiguous */
-+	if (drm_prime_get_contiguous_size(sg) < attach->dmabuf->size) {
-+		DRM_ERROR("sg_table is not contiguous");
-+		return ERR_PTR(-EINVAL);
-+	}
- 
-+	mtk_gem = mtk_drm_gem_init(dev, attach->dmabuf->size);
- 	if (IS_ERR(mtk_gem))
- 		return ERR_CAST(mtk_gem);
- 
--	expected = sg_dma_address(sg->sgl);
--	for_each_sg(sg->sgl, s, sg->nents, i) {
--		if (!sg_dma_len(s))
--			break;
--
--		if (sg_dma_address(s) != expected) {
--			DRM_ERROR("sg_table is not contiguous");
--			ret = -EINVAL;
--			goto err_gem_free;
--		}
--		expected = sg_dma_address(s) + sg_dma_len(s);
--	}
--
- 	mtk_gem->dma_addr = sg_dma_address(sg->sgl);
- 	mtk_gem->sg = sg;
- 
- 	return &mtk_gem->base;
--
--err_gem_free:
--	kfree(mtk_gem);
--	return ERR_PTR(ret);
- }
- 
- void *mtk_drm_gem_prime_vmap(struct drm_gem_object *obj)
--- 
-2.17.1
+On 18/06/2020 13:54, chao hao wrote:
+> On Wed, 2020-06-17 at 11:33 +0200, Matthias Brugger wrote:
+>>
+>> On 17/06/2020 05:00, Chao Hao wrote:
+>>> 1. Start from mt6779, INVLDT_SEL move to offset=0x2c, so we add
+>>>    REG_MMU_INV_SEL_GEN2 definition and mt6779 uses it.
+>>> 2. Change PROTECT_PA_ALIGN from 128 byte to 256 byte.
+>>> 3. For REG_MMU_CTRL_REG register, we only need to change bit[2:0],
+>>>    others bits keep default value, ex: enable victim tlb.
+>>> 4. Add mt6779_data to support mm_iommu HW init.
+>>>
+>>> Change since v3:
+>>> 1. When setting MMU_CTRL_REG, we don't need to include mt8173.
+>>>
+>>> Cc: Yong Wu <yong.wu@mediatek.com>
+>>> Signed-off-by: Chao Hao <chao.hao@mediatek.com>
+>>> ---
+>>>  drivers/iommu/mtk_iommu.c | 20 ++++++++++++++++++--
+>>>  drivers/iommu/mtk_iommu.h |  1 +
+>>>  2 files changed, 19 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+>>> index c706bca6487e..def2e996683f 100644
+>>> --- a/drivers/iommu/mtk_iommu.c
+>>> +++ b/drivers/iommu/mtk_iommu.c
+>>> @@ -37,6 +37,11 @@
+>>>  #define REG_MMU_INVLD_START_A			0x024
+>>>  #define REG_MMU_INVLD_END_A			0x028
+>>>  
+>>> +/* In latest Coda, MMU_INV_SEL's offset is changed to 0x02c.
+>>> + * So we named offset = 0x02c to "REG_MMU_INV_SEL_GEN2"
+>>> + * and offset = 0x038 to "REG_MMU_INV_SEL_GEN1".
+>>> + */
+>>
+>> Please delete the comment, this should be understandable from the git history
+> 
+> ok, thanks
+> 
+>>
+>>> +#define REG_MMU_INV_SEL_GEN2			0x02c
+>>>  #define REG_MMU_INV_SEL_GEN1			0x038
+>>>  #define F_INVLD_EN0				BIT(0)
+>>>  #define F_INVLD_EN1				BIT(1)
+>>> @@ -98,7 +103,7 @@
+>>>  #define F_MMU_INT_ID_LARB_ID(a)			(((a) >> 7) & 0x7)
+>>>  #define F_MMU_INT_ID_PORT_ID(a)			(((a) >> 2) & 0x1f)
+>>>  
+>>> -#define MTK_PROTECT_PA_ALIGN			128
+>>> +#define MTK_PROTECT_PA_ALIGN			256
+>>
+>> Do we need 512 bytes for all gen2 IOMMUs?
+>> I'm not sure if we should add this in plat_data or if we should just bump up the
+>> value for all SoCs.
+>> In both cases this should be a separate patch.
+>>
+> From mt6779, MTK_PROTECT_PA_ALIGN is extend to 256 bytes and don't be
+> changed for a long time from our HW designer comment. The legacy iommu
+> also can use it, mabye it doesn't set it by platform.
+> 
 
+Ok then just bump it to 256 in a new patch. Thanks for clarification.
+
+> 
+>>>  
+>>>  /*
+>>>   * Get the local arbiter ID and the portid within the larb arbiter
+>>> @@ -543,11 +548,12 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+>>>  		return ret;
+>>>  	}
+>>>  
+>>> +	regval = readl_relaxed(data->base + REG_MMU_CTRL_REG);
+>>>  	if (data->plat_data->m4u_plat == M4U_MT8173)
+>>>  		regval = F_MMU_PREFETCH_RT_REPLACE_MOD |
+>>>  			 F_MMU_TF_PROT_TO_PROGRAM_ADDR_MT8173;
+>>>  	else
+>>> -		regval = F_MMU_TF_PROT_TO_PROGRAM_ADDR;
+>>> +		regval |= F_MMU_TF_PROT_TO_PROGRAM_ADDR;
+>>
+>> Why do we change this, is it that the bootloader for mt6779 set some values in
+>> the register we have to keep? In this case I think we should update the regval
+>> accordingly.
+> 
+> For REG_MMU_CTRL_REG, bit[12] represents victim_tlb_en feature and
+> victim_tlb is enable defaultly(bit[12]=1),but if we use "regval =
+> F_MMU_TF_PROT_TO_PROGRAM_ADDR", victim_tlb will disable, it will drop
+> iommu performace for mt6779
+> 
+
+Got it. Please put that in a separate patch then.
+
+Regards,
+Matthias
+
+> 
+>>
+>>>  	writel_relaxed(regval, data->base + REG_MMU_CTRL_REG);
+>>>  
+>>>  	regval = F_L2_MULIT_HIT_EN |
+>>> @@ -797,6 +803,15 @@ static const struct mtk_iommu_plat_data mt2712_data = {
+>>>  	.larbid_remap   = {{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}},
+>>>  };
+>>>  
+>>> +static const struct mtk_iommu_plat_data mt6779_data = {
+>>> +	.m4u_plat      = M4U_MT6779,
+>>> +	.has_sub_comm  = true,
+>>> +	.has_wr_len    = true,
+>>> +	.has_misc_ctrl = true,
+>>> +	.inv_sel_reg   = REG_MMU_INV_SEL_GEN2,
+>>> +	.larbid_remap  = {{0}, {1}, {2}, {3}, {5}, {7, 8}, {10}, {9}},
+>>> +};
+>>> +
+>>>  static const struct mtk_iommu_plat_data mt8173_data = {
+>>>  	.m4u_plat     = M4U_MT8173,
+>>>  	.has_4gb_mode = true,
+>>> @@ -815,6 +830,7 @@ static const struct mtk_iommu_plat_data mt8183_data = {
+>>>  
+>>>  static const struct of_device_id mtk_iommu_of_ids[] = {
+>>>  	{ .compatible = "mediatek,mt2712-m4u", .data = &mt2712_data},
+>>> +	{ .compatible = "mediatek,mt6779-m4u", .data = &mt6779_data},
+>>>  	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
+>>>  	{ .compatible = "mediatek,mt8183-m4u", .data = &mt8183_data},
+>>>  	{}
+>>> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+>>> index 9971cedd72ea..fb79e710c8d9 100644
+>>> --- a/drivers/iommu/mtk_iommu.h
+>>> +++ b/drivers/iommu/mtk_iommu.h
+>>> @@ -31,6 +31,7 @@ struct mtk_iommu_suspend_reg {
+>>>  enum mtk_iommu_plat {
+>>>  	M4U_MT2701,
+>>>  	M4U_MT2712,
+>>> +	M4U_MT6779,
+>>>  	M4U_MT8173,
+>>>  	M4U_MT8183,
+>>>  };
+>>>
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
