@@ -2,78 +2,77 @@ Return-Path: <SRS0=U17p=77=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C096DC433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 16:17:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2EED0C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 16:44:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 932B12080D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 16:17:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E9889208D5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 16:44:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rr4/SFaz";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="tDcZvIQh"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 932B12080D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Joe4jgk2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9889208D5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Dj5Xkqq6tWEzzXKkKj04YLZ3tUAFG96TePWmrHOQzM0=; b=rr4/SFazfMaAAG
-	Mn5JlOKTQgGShpts3eBErO23wPTr6aRau56EyUBZyls2v1EqO5S8has/8M0Swa2oZ0QpdUbU1vzRO
-	R3y1RD1Q+qS9wHkurqjTBDusjtdb95MJXlb3CRgLQKqKm+KMXzKUa0Rw1zUdAk489DMWlADCNUAHQ
-	oLevMmEJAOzuncQmkkgA6rTKwudhTroVGIJNo8IltRmYbsfHX49F8fMW6iMu91YBdzdGbSX2OuWHn
-	k8kaPyNt8yqC6xh7h7q5dHDkoIzB/1mqmO/U30PvtMrPnRsfB2htxpwV+d9EAX0rQL9oQscAuhLSu
-	7Q++tMVBQXKao0o286zg==;
+	List-Owner; bh=tlrwR+uzpscOG/M1JWmJJbR2K5Fsmz59BTXu8wDup8I=; b=Joe4jgk2fwnttx
+	XIBfQrjas29rnfbhtF/Hvp2YOhwuYSG5QWyJ8EYg8NZGb4/5sYX+HIjODdk7x2ZAmFQcFYJtZ9dK8
+	hGNVQBFZbNQPDEXZxgGvnYJwcvpuqd2QJ90l8jEywh9cvB7Ft80MdgkhllXz2KZXIiKdn85VeWaj8
+	ZwdRdWhHXuiS12ul+8NpAba58xxIc8kIUvag0/z8KSs9HPFSkLTxb2bI2UOJtrAspxUqaKcG4q6ps
+	pwM+oEER7qP4kP13fJqq+14qq6IOshSGp0+A6MEayiUGQ8R4lysc/5A4+9tEEgnNHqfpMIPgNxrbG
+	ff1/z2pFGLFRjn3dz5JA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlxE6-0007ag-13; Thu, 18 Jun 2020 16:17:18 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jlxeZ-0007ZU-Kj; Thu, 18 Jun 2020 16:44:39 +0000
+Received: from mail-io1-f65.google.com ([209.85.166.65])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlxDx-0007S6-7v; Thu, 18 Jun 2020 16:17:10 +0000
-X-UUID: a84adcdcd00f47e3b9563b89e6615b83-20200618
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=Iw5MdckpEx2wQHfZxi4v7hZqKr+61I5sVoMJrktXj5o=; 
- b=tDcZvIQhLEnEvjxHAC9mX7MyH6/x23QUaGzFMqfZ1bXIsFRxYiExxRGUKQJBDkqZUjRcfLgBpyfu/K+OSZq0wv9psDK9EZ4+L0XX1OnIRzWal5fxF96dX1XOvtqqe+YMY2/C39RWxpA3XnQGnrmw/Rvts3uAaMHXnr+EK/ZfdPM=;
-X-UUID: a84adcdcd00f47e3b9563b89e6615b83-20200618
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <hanks.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1439357229; Thu, 18 Jun 2020 08:16:49 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 18 Jun 2020 09:17:01 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 19 Jun 2020 00:16:52 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 19 Jun 2020 00:16:51 +0800
-Message-ID: <1592497015.10773.21.camel@mtkswgap22>
-Subject: Re: [PATCH v6 6/7] clk: mediatek: add UART0 clock support
-From: Hanks Chen <hanks.chen@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Date: Fri, 19 Jun 2020 00:16:55 +0800
-In-Reply-To: <a61ed70c-a360-f3af-e215-6377ea25a6ab@gmail.com>
-References: <1592480018-3340-1-git-send-email-hanks.chen@mediatek.com>
- <1592480018-3340-7-git-send-email-hanks.chen@mediatek.com>
- <a61ed70c-a360-f3af-e215-6377ea25a6ab@gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1jlxeW-0007Yo-Rz; Thu, 18 Jun 2020 16:44:38 +0000
+Received: by mail-io1-f65.google.com with SMTP id y5so7722511iob.12;
+ Thu, 18 Jun 2020 09:44:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=P6K0NMCQ9QdVvPAqikzClu5E67Y9Qrb4CGCZ1kreB7k=;
+ b=iX38A++5ozrmsFKCBndHlODsmOPtf7exfH6IcUFpccPJqZ6K7rNoY6196uHgkI0AHd
+ OB+rMycun0k5xz981HqyrolWNPIF0ZuxJgEaouTXorAMfnN7qhntmQas/2OmkZYmdHVK
+ SU50WzbzrRsXuYu+9LRLwExG8A//CbmOMPiCXFqUiE+rSlydFIWU1r5W1S5O7AZxvzLs
+ sbB26NKLhiKXx8pVgdHRZkCKiEhX0h8pBxePP829SfVxEwuqIqPC50VGYdCnTMSFyY84
+ gBCwh9c8vxakbVIqhv0JrJfcH4yKoPjs713Cq8beUCEeOm5mlMgsrl5zVricCnjo+RUp
+ N4OA==
+X-Gm-Message-State: AOAM530LLolCbCRdVeOvxeyFY8zxBzAsAEHJuo22QKwRyg/yz27nqHN4
+ hFTB1lsM3ifJ7QZL9qVPAA==
+X-Google-Smtp-Source: ABdhPJwkW4ZsJ4bdYKr0qKa9ryOy5g+2hE48HtjOUzrbj3WgzjP+FDJi5kL2BbFKLOci4Y0m6ArWyw==
+X-Received: by 2002:a5d:858a:: with SMTP id f10mr6056867ioj.184.1592498674934; 
+ Thu, 18 Jun 2020 09:44:34 -0700 (PDT)
+Received: from xps15 ([64.188.179.253])
+ by smtp.gmail.com with ESMTPSA id g21sm1969126ioc.14.2020.06.18.09.44.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 18 Jun 2020 09:44:34 -0700 (PDT)
+Received: (nullmailer pid 504576 invoked by uid 1000);
+ Thu, 18 Jun 2020 16:44:31 -0000
+Date: Thu, 18 Jun 2020 10:44:31 -0600
+From: Rob Herring <robh@kernel.org>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Subject: Re: [PATCH 13/29] dt: fix broken links due to txt->yaml renames
+Message-ID: <20200618164431.GA504444@bogus>
+References: <cover.1592203542.git.mchehab+huawei@kernel.org>
+ <0e4a7f0b7efcc8109c8a41a2e13c8adde4d9c6b9.1592203542.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: BF32A141C01CA4CBE6F5B3E0BD896765BF1D1AEE3E31B59103E3586B8D6FC1572000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <0e4a7f0b7efcc8109c8a41a2e13c8adde4d9c6b9.1592203542.git.mchehab+huawei@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200618_091709_289205_BB28C229 
-X-CRM114-Status: GOOD (  11.66  )
+X-CRM114-CacheID: sfid-20200618_094436_905359_B0CF21C3 
+X-CRM114-Status: GOOD (  10.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,62 +84,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, CC Hwang <cc.hwang@mediatek.com>,
- wsd_upstream@mediatek.com, Stephen
- Boyd <sboyd@kernel.org>, Andy Teng <andy.teng@mediatek.com>,
- Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>,
- Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org,
- linux-clk@vger.kernel.org, linux-gpio@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- mtk01761 <wendell.lin@mediatek.com>,
- Michael Turquette <mturquette@baylibre.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: alsa-devel@alsa-project.org,
+ Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+ Linux Doc Mailing List <linux-doc@vger.kernel.org>,
+ David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org,
+ Liam Girdwood <lgirdwood@gmail.com>, Jonathan Corbet <corbet@lwn.net>,
+ linux-rockchip@lists.infradead.org, Sandy Huang <hjc@rock-chips.com>,
+ Jakub Kicinski <kuba@kernel.org>, devicetree@vger.kernel.org,
+ Sean Wang <sean.wang@mediatek.com>, Mark Brown <broonie@kernel.org>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>, netdev@vger.kernel.org,
+ Arnaud Pouliquen <arnaud.pouliquen@st.com>, linux-mips@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2020-06-18 at 17:51 +0200, Matthias Brugger wrote:
+On Mon, 15 Jun 2020 08:46:52 +0200, Mauro Carvalho Chehab wrote:
+> There are some new broken doc links due to yaml renames
+> at DT. Developers should really run:
 > 
-> On 18/06/2020 13:33, Hanks Chen wrote:
-> > Add MT6779 UART0 clock support.
-> > 
+> 	./scripts/documentation-file-ref-check
 > 
-> Please a dd fixes tag:
+> in order to solve those issues while submitting patches.
+> This tool can even fix most of the issues with:
 > 
-> Fixes: 710774e04861 ("clk: mediatek: Add MT6779 clock support")
+> 	./scripts/documentation-file-ref-check --fix
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> ---
+>  Documentation/devicetree/bindings/display/bridge/sii902x.txt  | 2 +-
+>  .../devicetree/bindings/display/rockchip/rockchip-drm.yaml    | 2 +-
+>  Documentation/devicetree/bindings/net/mediatek-bluetooth.txt  | 2 +-
+>  Documentation/devicetree/bindings/sound/audio-graph-card.txt  | 2 +-
+>  Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt  | 2 +-
+>  Documentation/mips/ingenic-tcu.rst                            | 2 +-
+>  MAINTAINERS                                                   | 4 ++--
+>  7 files changed, 8 insertions(+), 8 deletions(-)
+> 
 
-Got it, I'll add it in next version.
-
-> 
-> > Signed-off-by: Hanks Chen <hanks.chen@mediatek.com>
-> > Signed-off-by: mtk01761 <wendell.lin@mediatek.com>
-> 
-> Must be a real name not "mtk01761"
-
-Oops, I'll update his name. 
-
-Thank you for your comment.
-
-> 
-> > ---
-> >  drivers/clk/mediatek/clk-mt6779.c |    2 ++
-> >  1 file changed, 2 insertions(+)
-> > 
-> > diff --git a/drivers/clk/mediatek/clk-mt6779.c b/drivers/clk/mediatek/clk-mt6779.c
-> > index 9766ccc..6e0d3a1 100644
-> > --- a/drivers/clk/mediatek/clk-mt6779.c
-> > +++ b/drivers/clk/mediatek/clk-mt6779.c
-> > @@ -919,6 +919,8 @@
-> >  		    "pwm_sel", 19),
-> >  	GATE_INFRA0(CLK_INFRA_PWM, "infra_pwm",
-> >  		    "pwm_sel", 21),
-> > +	GATE_INFRA0(CLK_INFRA_UART0, "infra_uart0",
-> > +		    "uart_sel", 22),
-> >  	GATE_INFRA0(CLK_INFRA_UART1, "infra_uart1",
-> >  		    "uart_sel", 23),
-> >  	GATE_INFRA0(CLK_INFRA_UART2, "infra_uart2",
-> > 
+Applied, thanks!
 
 _______________________________________________
 Linux-mediatek mailing list
