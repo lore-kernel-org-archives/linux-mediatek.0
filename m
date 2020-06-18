@@ -2,89 +2,76 @@ Return-Path: <SRS0=U17p=77=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-1.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E0B45C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 09:50:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F114AC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 11:17:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 61F6B21548
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 09:50:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C4AC42078D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 11:17:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rvYVFenO";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Yi/kPSWj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 61F6B21548
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aHQibobl";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="JnBBbjpE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C4AC42078D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tmnOMqr3XI3zU9KB6ymGX5EjS2n7j3fCXuoJOFvSIiE=; b=rvYVFenOiQ0/HoRRccZ0ZBvXm
-	zB5GjfTvRxhOSBHGSpeJdUVhUFMO4TNCXsqjYDbWZ6a/T945RutzpxwRXLRcOCCrsgkEZXC+vBPNC
-	u2zgFqHHU5qnMdS1IRLO18QZYAWP4C5yrIrA8h5kItexjRVy/Gm0xkzpwyoN1NceUdUQd5EQZpbgK
-	otG5jgAi/rE8hNohoQxKVesyaXyEMsNAHGwSs2BzswYWzR4MbhFz/SQ0mpbdOooAzUdtyeuXi79RI
-	gpsYMs9Xs6etbj9DXu4CvzhU22bLGnkHXlqeasj2lTpROVlM4jel1Hmk6NfHi4YRvvMw4shcvLjNd
-	3XqBusxvg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=d8ueqfY3fgrCN4H6vLBXvt+8rjLUrhGWaqk337DPCkY=; b=aHQiboblaxDGo9
+	dMIRd+7awHzfz2OuVBCuxTaQs5WMtiyGgT7S3aIsHDUd1aQlfIEYwJRUT3YIhpdjtQhK9xvqjCAId
+	hscyr1EJngGeBycEHcq1mchNPJfXad16KJOvH0MdpVDazdFdjQ6bIUlu9IqLBmj+YiKv0fmacnyec
+	TxOKUo+zV+eWybLhPBZllmjfUQANgFXaQKOTV/alnMPLRMiHA/fcYCyplW4pntw3euxKZhmgg6Gfc
+	wxEirdgPLs0upsKtegBMrH2AdMFDhQlAVBEMSZiMpm2TsZOLhla3kGAVmE7ic4PoLu8K8g935F3sl
+	9zqOvqxzmEcwAXU5Moog==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlrC0-0005FQ-Jc; Thu, 18 Jun 2020 09:50:44 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jlsXb-0005iS-1E; Thu, 18 Jun 2020 11:17:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlrBs-000564-2a; Thu, 18 Jun 2020 09:50:37 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9AD63204EA;
- Thu, 18 Jun 2020 09:50:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592473834;
- bh=F0mHrmIfDX6Kuk9+3Hgh9PYce9TZgz8bGDX3F2Xq7yg=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=Yi/kPSWjPKq7vjvVPdM8ROse+MVAcIlqSfhz+akzk8JbIpIvCPW1iGgMM+7NoXyPa
- 8fwS2TTiUIvUqGdjM06a5kgBR1T3PtM2KV2csFREIvvqP7w2ouLbekxclP/58tOMbD
- +YCsgdxEu5hx97TeLGI6/mPjfdZ8dgOfY6wBXmoY=
-Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
- by disco-boy.misterjones.org with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
- (envelope-from <maz@kernel.org>)
- id 1jlrBp-0047dq-3G; Thu, 18 Jun 2020 10:50:33 +0100
+ id 1jlsXR-0005az-6h; Thu, 18 Jun 2020 11:16:59 +0000
+X-UUID: 556d89a659da4634b0f0c027bcdca412-20200618
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Rw+XJf9G3LmNKirn/C94v5PKCGl3yGm8pZ+FUDGL5Qk=; 
+ b=JnBBbjpEVatR6pLaF0QmRVXLPk/Tl8nOMfTNA9yHHW4rez2Om5Rb5fxwkoH7OPm6TWslWbxBw9HJlpKWvTF1/9sR8a22NkSkWt2zUzhrOP0XGx4TJ9xjpt/bHacnWhhrTR4sVe32RaQBjfxn8ZHHzRi/fqANXsY51Jqf93VTMq4=;
+X-UUID: 556d89a659da4634b0f0c027bcdca412-20200618
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <macpaul.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1002334691; Thu, 18 Jun 2020 03:16:31 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 18 Jun 2020 04:06:40 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 18 Jun 2020 19:06:32 +0800
+Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 18 Jun 2020 19:06:32 +0800
+Message-ID: <1592478394.6408.9.camel@mtkswgap22>
+Subject: Re: [PATCH v8 0/4] Add basic SoC support for mt6765
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>
+Date: Thu, 18 Jun 2020 19:06:34 +0800
+In-Reply-To: <1582279929-11535-1-git-send-email-macpaul.lin@mediatek.com>
+References: <1582279929-11535-1-git-send-email-macpaul.lin@mediatek.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-Date: Thu, 18 Jun 2020 10:50:32 +0100
-From: Marc Zyngier <maz@kernel.org>
-To: Neal Liu <neal.liu@mediatek.com>
-Subject: Re: Security Random Number Generator support
-In-Reply-To: <1591170857.19414.5.camel@mtkswgap22>
-References: <1591085678-22764-1-git-send-email-neal.liu@mediatek.com>
- <CAMj1kXHjAdk5=-uSh_=S9j5cz42zr3h6t+YYGy+obevuQDp0fg@mail.gmail.com>
- <85dfc0142d3879d50c0ba18bcc71e199@misterjones.org>
- <1591169342.4878.9.camel@mtkswgap22>
- <fcbe37f6f9cbcde24f9c28bc504f1f0e@kernel.org>
- <1591170857.19414.5.camel@mtkswgap22>
-User-Agent: Roundcube Webmail/1.4.5
-Message-ID: <c3d5d4a79c7fe158cae117ff79ab332b@kernel.org>
-X-Sender: maz@kernel.org
-X-SA-Exim-Connect-IP: 51.254.78.96
-X-SA-Exim-Rcpt-To: neal.liu@mediatek.com, jwerner@google.com, ardb@kernel.org,
- devicetree@vger.kernel.org, herbert@gondor.apana.org.au, arnd@arndb.de,
- gregkh@linuxfoundation.org, sean.wang@kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- wsd_upstream@mediatek.com, robh+dt@kernel.org, linux-crypto@vger.kernel.org,
- mpm@selenic.com, matthias.bgg@gmail.com, Crystal.Guo@mediatek.com,
- linux-arm-kernel@lists.infradead.org, Jose.Marinho@arm.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200618_025036_135940_24AA058C 
-X-CRM114-Status: UNSURE (   7.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200618_041657_254220_A014BABA 
+X-CRM114-Status: GOOD (  18.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,45 +83,128 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Julius Werner <jwerner@google.com>,
- Herbert Xu <herbert@gondor.apana.org.au>, Arnd Bergmann <arnd@arndb.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jose.Marinho@arm.com,
- Sean Wang <sean.wang@kernel.org>, lkml <linux-kernel@vger.kernel.org>,
- wsd_upstream <wsd_upstream@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org,
- Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
- Matt Mackall <mpm@selenic.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- =?UTF-8?Q?Crystal_Guo_=28=E9=83=AD?= =?UTF-8?Q?=E6=99=B6=29?=
- <Crystal.Guo@mediatek.com>, Ard Biesheuvel <ardb@kernel.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Loda Chou <loda.chou@mediatek.com>, Fabien
+ Parent <fparent@baylibre.com>, Mars Cheng <mars.cheng@mediatek.com>, Will
+ Deacon <will@kernel.org>, linux-clk@vger.kernel.org,
+ Ryder Lee <Ryder.Lee@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, Evan
+ Green <evgreen@chromium.org>, Yong Wu <yong.wu@mediatek.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, mtk01761 <wendell.lin@mediatek.com>,
+ Owen Chen <owen.chen@mediatek.com>, devicetree@vger.kernel.org,
+ Joerg Roedel <jroedel@suse.de>, Marc Zyngier <marc.zyngier@arm.com>,
+ Sean Wang <Sean.Wang@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, CC Hwang <cc.hwang@mediatek.com>,
+ Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org,
+ Shawn Guo <shawnguo@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-06-03 08:54, Neal Liu wrote:
+On Fri, 2020-02-21 at 18:12 +0800, Macpaul Lin wrote:
+> This patch adds basic SoC support for Mediatek's new 8-core SoC,
+> MT6765, which is mainly for smartphone application.
+> 
+> Changes in V8:
+> 1. Origin V7 patchset:
+>    https://patchwork.kernel.org/cover/11370105/
+>    Split origin V7 patchset into 2 patchset,
+>    keep remain patches #2, #5, #6, and #7 in the same order as this
+>    V8 patchset.
+>    [v7,2/7] dt-bindings: mediatek: Add smi dts binding for Mediatek
+>             MT6765 SoC
+>    [v7,5/7] soc: mediatek: add MT6765 scpsys and subdomain support
+>    [v7,6/7] arm64: dts: mediatek: add mt6765 support
+>    [v7,7/7] arm64: defconfig: add CONFIG_COMMON_CLK_MT6765_XXX clocks
+> 
+> Changes in V7:
+> 1. Adapt V6's patchset to latest kernel tree 5.5-rc1.
+>    Origin V6 patchset:
+>    https://patchwork.kernel.org/cover/11041963/
+> 2. Correct 2 clock-controller type in documentation:
+>    mipi0 and venc_gcon.
+>    [v7 1/7] dt-bindings: clock: mediatek: document clk bindings
+> 3. Remove V6's patch 03 because it has been taken into 5.5-next-soc
+>    [v6, 03/08] dt-bindings: mediatek: add MT6765 power dt-bindings
+> 3. Update Reviewed-by: Rob Herring <robh@kernel.org> for
+>    [v6, 04/08] clk: mediatek: add mt6765 clock IDs
+>    --> [v7, 03/07] clk: mediatek: add mt6765 clock IDs
+> 4. Update SPDX tag for
+>    [v6, 05/08] clk: mediatek: Add MT6765 clock support
+>    --> [v7, 04/07] clk: mediatek: Add MT6765 clock support
+> 
+> Changes in V6:
+> 1. Adapt V5's patchset to latest kernel tree.
+>    Origin V5 patchset.
+>    https://lore.kernel.org/patchwork/cover/963612/
+> 2. Due to clk's common code has been submit by other platform,
+>    this patch set will have dependencies with the following patchsets
+>    as the following orders.
+>    2.a. [v8,00/21] MT8183 IOMMU SUPPORT
+>         https://patchwork.kernel.org/cover/11023585/
+>    2.b. [v11,0/6] Add basic node support for Mediatek MT8183 SoC
+>         https://patchwork.kernel.org/cover/10962385/
+>    2.c. [v6,00/14] Mediatek MT8183 scpsys support
+>         https://patchwork.kernel.org/cover/11005751/
+> 3. Correct power related patches into dt-binding patches.
+> 4. Re-order V5's 4/11, 6/11, and 7/11 due clk common code change
+>    and make dependencies in order.
+> 5. Update some commit message in clk related patches.
+> 
+> Changes in V5:
+> 1. add clk support
+> 
+> Changes in V4:
+> 1. add gic's settings in reg properties
+> 2. remove some patches about dt-bindings since GKH already took them
+> 
+> Changes in V3:
+> 1. split dt-binding document patchs
+> 2. fix mt6765.dtsi warnings with W=12
+> 3. remove uncessary PPI affinity for timer
+> 4. add gicc base for gic dt node
+> 
+> Changes in V2:
+> 1. fix clk properties in uart dts node
+> 2. fix typo in submit title
+> 3. add simple-bus in mt6765.dtsi
+> 4. use correct SPDX license format
+> 
+> Mars Cheng (3):
+>   dt-bindings: mediatek: Add smi dts binding for Mediatek MT6765 SoC
+>   soc: mediatek: add MT6765 scpsys and subdomain support
+>   arm64: dts: mediatek: add mt6765 support
+> 
+> Owen Chen (1):
+>   arm64: defconfig: add CONFIG_COMMON_CLK_MT6765_XXX clocks
+> 
+>  .../memory-controllers/mediatek,smi-common.txt     |    1 +
+>  arch/arm64/boot/dts/mediatek/Makefile              |    1 +
+>  arch/arm64/boot/dts/mediatek/mt6765-evb.dts        |   33 +++
+>  arch/arm64/boot/dts/mediatek/mt6765.dtsi           |  253 ++++++++++++++++++++
+>  arch/arm64/configs/defconfig                       |    6 +
+>  drivers/soc/mediatek/mtk-scpsys.c                  |  130 ++++++++++
+>  6 files changed, 424 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765-evb.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765.dtsi
+> 
 
-Hi Neal,
+Dear Matthias and Rob,
 
-> Do you know which ARM expert could edict this standard?
-> Or is there any chance that we can make one? And be reviewed by
-> maintainers?
+Just a remind of these patches related to MT6765.
+Thanks for Stephen's help, the other clock related patches of MT6765 has
+been already merged into 5.8-rc1. I've tested these v8 patches of MT6765
+on 5.8-rc1 and seems they were able to be applied. Could you kindly help
+to check if these patches were qualified to be merged into your tree?
 
-It appears that ARM just released a beta version of the spec at [1].
+Thanks a lot!
 
-I'd encourage you (and anyone else) to have a look at it and provide 
-feedback to ARM.
-
-Thanks,
-
-         M.
-
-[1] 
-https://developer.arm.com/-/media/Files/pdf/DEN0098-True_Random_Number_Generator_Firmware_Interface-1.0BET2.pdf
--- 
-Jazz is not dead. It just smells funny...
-
+Best regards,
+Macpaul Lin
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
