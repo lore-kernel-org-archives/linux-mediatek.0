@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0838BC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 04:46:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7C30FC433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 07:17:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CF75D217A0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 04:46:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4F31621532
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 07:17:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LjqhNhgV";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="WrfHfUt+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CF75D217A0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Oa2NkfUn";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="FMkqgzns"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4F31621532
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,52 +26,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=bzNYJhvDqHBQPt9Iq5kEl/jHM0RnYt/9gcOfJs+rQRM=; b=LjqhNhgVDPJboI
-	BUJNUFYNdAFS7gAl6W3tFBCg4rdTYAXVY1t+mFbrRcYYIP8tnUX/NRdJaFGohbc+x9VNlGSbHxSob
-	Atey+F+ZYZpsGg9ftYI0SkDad6ssSjUXy302SRv5BJVrDGkUvgEbkJA9zC6NztuD6peirM7D8m9Vb
-	VTbvbZjbBcPsQQg1M3XLK+35aDo0l/KU1fSCNEeOC99Qj+J2pgeU9yLC1sFWchKnPeVwkKSZl/lxs
-	dwR4/Y8WEUlPFiZaNzGdZ5RiL1UvmeYEjv1eyw3i451oPvFeREpgMRKMLQ3Bws1V/FwGRwnPREVgi
-	atKmAk2+YH0SoCOc7GPQ==;
+	List-Owner; bh=aQwK+HurOplDr5t+37vEzki99dDQjR5Jm9SpaBiPiDE=; b=Oa2NkfUncWZzyv
+	Pzljqhr3pcu60AWSx6QqYu9WBDyIaUKTV5OlVbmHnApAaOqANLEM+giu5Z+ypzlbkXc2+DFtoqTdz
+	SzXAakYGY0q1lJ1TS4l6pFap8aLxrExGvfyGDe9HEV7EwsfKL0DZF+4w81JpNJhwpEgoWJD+4FT1X
+	wWlvrKoDHMz2ArZig4mLmOXSF9Op6vAK5kjUyVGUuEqIUexRTcKScnGpaLYbiucgQQTAY2xaW7tfl
+	GlqQlUVFY83ZyRBtQ1O1R0KwdifOoxxOd82n5bDpf7i+Knvh5Fx10q3kneM5Y6JaZrbYbmU98Em9B
+	pGjvtwPI0fHuTXV+roBA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlmRe-0001Df-Op; Thu, 18 Jun 2020 04:46:34 +0000
+	id 1jlonh-0005zt-A4; Thu, 18 Jun 2020 07:17:29 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlmRb-0001D5-Nw
- for linux-mediatek@lists.infradead.org; Thu, 18 Jun 2020 04:46:33 +0000
-X-UUID: a5e0f1810bc04bacaeac248cc020f798-20200617
+ id 1jlond-0005yA-To
+ for linux-mediatek@lists.infradead.org; Thu, 18 Jun 2020 07:17:27 +0000
+X-UUID: dc3a5f2d50f04547909e3d21fe5f9b67-20200617
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=1MJwtjnSozcDYpnLZs9rWfOmBAurwZU/5UszGVVbHtU=; 
- b=WrfHfUt+7GD2i73rfx/e1He2JQckiYIfI2kSYsUzQtTqXWA0S3Qg2lAWu9YA75VEE3/CJ8FekrqSGisyUwinVQ2UoLObzsav+1XscKb1jCipR3AULtKbUURY9HXFtuGVR5TnlSeZaDk1mZoj+uQFref481oHLYUG6m4YbuCmW3c=;
-X-UUID: a5e0f1810bc04bacaeac248cc020f798-20200617
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
+ bh=HnIteQvd4KMhuQ9w57SE4F35NLCkVns3U4oUnquUoAs=; 
+ b=FMkqgznsUMJi1VDjIQn8N2enhzjxLZV/YnntEtWKjo+ne6Z+5EkmPF5T+v4wJjzE4dY08DrqBwOuzUzSsm4oLV0tCYy5dlLsNGsHsubN4REFmvB4Qx/2ZZdRdhCJ5qCt2ecf+vMdfZjjFC/8YUR/KsWVsCRUwuWec2E/rvL5LmQ=;
+X-UUID: dc3a5f2d50f04547909e3d21fe5f9b67-20200617
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 496314206; Wed, 17 Jun 2020 20:46:22 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 17 Jun 2020 21:41:54 -0700
+ with ESMTP id 826229221; Wed, 17 Jun 2020 23:17:14 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 18 Jun 2020 00:17:17 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 18 Jun 2020 12:41:54 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 18 Jun 2020 15:17:09 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 18 Jun 2020 12:41:53 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>, Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH] mt76: mt7615: add .set_tsf callback
-Date: Thu, 18 Jun 2020 12:41:48 +0800
-Message-ID: <f1b8ff0f2ac56d8045cb1836ae33d2e29fa766ef.1592449623.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ Frontend Transport; Thu, 18 Jun 2020 15:17:08 +0800
+From: <sean.wang@mediatek.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
+Subject: [PATCH 1/2] Bluetooth: btusb: fix up firmware download sequence
+Date: Thu, 18 Jun 2020 15:17:06 +0800
+Message-ID: <c9bf7346a060d8913b670bbed7ed9e60b592e16f.1592463595.git.sean.wang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: E120C006C4D97BC1152B7312E11C245C13CECDC4A1FF53C4D9A6A165180109D62000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200617_214631_787449_4756BFB3 
-X-CRM114-Status: UNSURE (   7.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200618_001725_967698_23124625 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,74 +82,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>,
- linux-wireless@vger.kernel.org, Shayne Chen <shayne.chen@mediatek.com>
+Cc: linux-bluetooth@vger.kernel.org, Mark Chen <Mark-YW.Chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It is useful for IBSS Mesh to adjust t_clockdrift.
+From: Sean Wang <sean.wang@mediatek.com>
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Data RAM on the device have to be powered on before starting to download
+the firmware.
+
+Fixes: a1c49c434e15 ("Bluetooth: btusb: Add protocol support for MediaTek MT7668U USB devices")
+Co-developed-by: Mark Chen <Mark-YW.Chen@mediatek.com>
+Signed-off-by: Mark Chen <Mark-YW.Chen@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7615/main.c  | 21 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7615/regs.h  |  1 +
- 2 files changed, 22 insertions(+)
+ drivers/bluetooth/btusb.c | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-index 6b4dd5d8794e..b1390efe7341 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-@@ -740,6 +740,26 @@ mt7615_get_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
- 	return tsf.t64;
- }
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 5f022e9cf667..61ffe185e0e4 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -2925,7 +2925,7 @@ static int btusb_mtk_setup_firmware(struct hci_dev *hdev, const char *fwname)
+ 	const u8 *fw_ptr;
+ 	size_t fw_size;
+ 	int err, dlen;
+-	u8 flag;
++	u8 flag, param;
  
-+static void
-+mt7615_set_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-+	       u64 timestamp)
-+{
-+	struct mt7615_dev *dev = mt7615_hw_dev(hw);
-+	union {
-+		u64 t64;
-+		u32 t32[2];
-+	} tsf = { .t64 = timestamp, };
-+
-+	mutex_lock(&dev->mt76.mutex);
-+
-+	mt76_wr(dev, MT_LPON_UTTR0, tsf.t32[0]);
-+	mt76_wr(dev, MT_LPON_UTTR1, tsf.t32[1]);
-+	/* TSF software overwrite */
-+	mt76_set(dev, MT_LPON_T0CR, MT_LPON_T0CR_WRITE);
-+
-+	mutex_unlock(&dev->mt76.mutex);
-+}
-+
- static void
- mt7615_set_coverage_class(struct ieee80211_hw *hw, s16 coverage_class)
- {
-@@ -1038,6 +1058,7 @@ const struct ieee80211_ops mt7615_ops = {
- 	.channel_switch_beacon = mt7615_channel_switch_beacon,
- 	.get_stats = mt7615_get_stats,
- 	.get_tsf = mt7615_get_tsf,
-+	.set_tsf = mt7615_set_tsf,
- 	.get_survey = mt76_get_survey,
- 	.get_antenna = mt76_get_antenna,
- 	.set_antenna = mt7615_set_antenna,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
-index aee433a9eff6..f0b36b162bf3 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
-@@ -417,6 +417,7 @@ enum mt7615_reg_base {
+ 	err = request_firmware(&fw, fwname, &hdev->dev);
+ 	if (err < 0) {
+@@ -2933,6 +2933,20 @@ static int btusb_mtk_setup_firmware(struct hci_dev *hdev, const char *fwname)
+ 		return err;
+ 	}
  
- #define MT_LPON_T0CR			MT_LPON(0x010)
- #define MT_LPON_T0CR_MODE		GENMASK(1, 0)
-+#define MT_LPON_T0CR_WRITE		BIT(0)
++	/* Power on data RAM the firmware relies on. */
++	param = 1;
++	wmt_params.op = BTMTK_WMT_FUNC_CTRL;
++	wmt_params.flag = 3;
++	wmt_params.dlen = sizeof(param);
++	wmt_params.data = &param;
++	wmt_params.status = NULL;
++
++	err = btusb_mtk_hci_wmt_sync(hdev, &wmt_params);
++	if (err < 0) {
++		bt_dev_err(hdev, "Failed to power on data RAM (%d)", err);
++		return err;
++	}
++
+ 	fw_ptr = fw->data;
+ 	fw_size = fw->size;
  
- #define MT_LPON_UTTR0			MT_LPON(0x018)
- #define MT_LPON_UTTR1			MT_LPON(0x01c)
 -- 
-2.18.0
+2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
