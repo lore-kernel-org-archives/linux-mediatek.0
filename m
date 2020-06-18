@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,TVD_PH_BODY_ACCOUNTS_PRE,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 37699C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 01:40:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 84C30C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 01:43:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0A1E8221E9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 01:40:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 58F4F2222F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 01:43:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GLcXAkAW";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="QK/wpH3s"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0A1E8221E9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PSUoi/Mq";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="gNLhIbzr"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 58F4F2222F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,38 +26,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BeOQUZ4ZN2HSyj4tdesLKrsakRQqDZeMA1F0VbrVtY4=; b=GLcXAkAWCd2cnm
-	r/SJkt5iopClaSYVj48TLlx628kGXX/g2aOWfOPf+kCe6BYCzmbpGNmnkdRwbvm+nvI6xjiZErEnZ
-	D39w+iQ6irPUmZBkcal8/oBeMheVkdtnTZCowhYXjtkF/yYOMlj5ngBGjYhoHRBOaJIi8GsKV2NsY
-	HgFnHvd20lpU4dFGWqn84Vg0jQPJt+aFVCL98BhEhaETta7zOFwLYhSut9s1yzZgOBLiFtCmyevB3
-	IMXSvxLTjfSJzvS0r6yMQTWGiVV9CfrIx7Yq8ctqvwrPwtW6qUDHfXFgVH3oYMxtykdXVt5Lqg56X
-	2BK1k7duMbYOUg52NOEQ==;
+	List-Owner; bh=p2gqRoJgOSoU2wEmuEWxtOZODq/7c9EWmluXjt/1QgA=; b=PSUoi/Mq0FYJzc
+	JpYfS9lWfcUf8UCrYWfy3BzvUFZzCn8Df4Vu6BW/Kmyq6NMkhAxmebhHB5S8F7by/xlnL5RD67Bip
+	KiXJ6mtKECnKik/EEIs7IwAzf0btcd+qHqJsNkL53wPmUp4cazEOJbXsLhx/Hf8MmG7/rMAAs/b0r
+	PYOuXky42Be3yAqwNmIZ8nRNRpqNUFP8eTe8CJQ0kuh1s6Ag7DI/L7+LFs/VufQdKtT03dZx2hCYN
+	noQC3cplnXFx7/S9G6swMoi7QP+GNea+MIv8AJOcrS6AhyG2+gBFLlZpm/yEgYVgpiFOLX4uxXhTF
+	abJwUqAgF20rbbHL0lQw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jljXO-0004cG-AT; Thu, 18 Jun 2020 01:40:18 +0000
+	id 1jljaW-0007mY-Ja; Thu, 18 Jun 2020 01:43:32 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jljB6-00083G-0D; Thu, 18 Jun 2020 01:17:19 +0000
+ id 1jljCJ-0000Wr-2F; Thu, 18 Jun 2020 01:18:32 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 45BB3221F1;
- Thu, 18 Jun 2020 01:17:13 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7C9A521D79;
+ Thu, 18 Jun 2020 01:18:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592443035;
- bh=w3ChTkUJ7kKAcOUwVsofeHlMjwmkoQ+pP8IZYyjE00s=;
+ s=default; t=1592443110;
+ bh=X4mFPAhXCqgWnpjyToeM07iL7ggBfJsvEFxQqtErWhE=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=QK/wpH3sqiAEQNMIQyabBLa7afD2AvghoKCi3eZ3ScyIM+GhxrXd5JwB31d57Od9Z
- 1W4Jm5XmRan3SUAuWr4PPcSfn34aY4RLl4XbXjAt8pZ243vYRitPzhDJHGWr/DNrhy
- 3gp4lPLd0evpqveZEy1ikJ2WvnHZezsqSTxEmMg4=
+ b=gNLhIbzrXOrJ8m9dDiDFjcteiKwDMnPxxooVGX+fwnB6B+egpbjfUwEAb3uN65cMo
+ QxkZ0HpUkhttX3EDrBzhLafB5Pr7irSseWda5EcqeIPz4/N9MrNH0wcFnnzD7daAQS
+ +RFZrUGVP0FY/OJNs91BgYKpYiP4LZL/zRBJgoqM=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 032/266] serial: 8250: Fix max baud limit in
- generic 8250 port
-Date: Wed, 17 Jun 2020 21:12:37 -0400
-Message-Id: <20200618011631.604574-32-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 087/266] arm64: dts: mt8173: fix unit name warnings
+Date: Wed, 17 Jun 2020 21:13:32 -0400
+Message-Id: <20200618011631.604574-87-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200618011631.604574-1-sashal@kernel.org>
 References: <20200618011631.604574-1-sashal@kernel.org>
@@ -65,8 +64,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200617_181716_164781_45D7F47C 
-X-CRM114-Status: GOOD (  12.80  )
+X-CRM114-CacheID: sfid-20200617_181831_183531_EB9451ED 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,96 +77,137 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>, linux-mips@vger.kernel.org,
- Paul Burton <paulburton@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Russell King <linux@armlinux.org.uk>, Ralf Baechle <ralf@linux-mips.org>,
- Alexey Malahov <Alexey.Malahov@baikalelectronics.ru>,
- Serge Semin <Sergey.Semin@baikalelectronics.ru>,
- Long Cheng <long.cheng@mediatek.com>, linux-mediatek@lists.infradead.org,
- Maxime Ripard <mripard@kernel.org>, linux-serial@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Will Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: Sasha Levin <sashal@kernel.org>, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Serge Semin <Sergey.Semin@baikalelectronics.ru>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
 
-[ Upstream commit 7b668c064ec33f3d687c3a413d05e355172e6c92 ]
+[ Upstream commit 72b29215aced394d01ca25e432963b619daa0098 ]
 
-Standard 8250 UART ports are designed in a way so they can communicate
-with baud rates up to 1/16 of a reference frequency. It's expected from
-most of the currently supported UART controllers. That's why the former
-version of serial8250_get_baud_rate() method called uart_get_baud_rate()
-with min and max baud rates passed as (port->uartclk / 16 / UART_DIV_MAX)
-and ((port->uartclk + tolerance) / 16) respectively. Doing otherwise, like
-it was suggested in commit ("serial: 8250_mtk: support big baud rate."),
-caused acceptance of bauds, which was higher than the normal UART
-controllers actually supported. As a result if some user-space program
-requested to set a baud greater than (uartclk / 16) it would have been
-permitted without truncation, but then serial8250_get_divisor(baud)
-(which calls uart_get_divisor() to get the reference clock divisor) would
-have returned a zero divisor. Setting zero divisor will cause an
-unpredictable effect varying from chip to chip. In case of DW APB UART the
-communications just stop.
+Fixing several unit name warnings:
 
-Lets fix this problem by getting back the limitation of (uartclk +
-tolerance) / 16 maximum baud supported by the generic 8250 port. Mediatek
-8250 UART ports driver developer shouldn't have touched it in the first
-place  notably seeing he already provided a custom version of set_termios()
-callback in that glue-driver which took into account the extended baud
-rate values and accordingly updated the standard and vendor-specific
-divisor latch registers anyway.
+Warning (unit_address_vs_reg): /oscillator@0: node has a unit name, but no reg property
+Warning (unit_address_vs_reg): /oscillator@1: node has a unit name, but no reg property
+Warning (unit_address_vs_reg): /oscillator@2: node has a unit name, but no reg property
+Warning (unit_address_vs_reg): /thermal-zones/cpu_thermal/trips/trip-point@0: node has a unit name, but no reg property
+Warning (unit_address_vs_reg): /thermal-zones/cpu_thermal/trips/trip-point@1: node has a unit name, but no reg property
+Warning (unit_address_vs_reg): /thermal-zones/cpu_thermal/trips/cpu_crit@0: node has a unit name, but no reg property
+Warning (unit_address_vs_reg): /thermal-zones/cpu_thermal/cooling-maps/map@0: node has a unit name, but no reg property
+Warning (unit_address_vs_reg): /thermal-zones/cpu_thermal/cooling-maps/map@1: node has a unit name, but no reg property
+Warning (unit_address_vs_reg): /reserved-memory/vpu_dma_mem_region: node has a reg or ranges property, but no unit name
+Warning (simple_bus_reg): /soc/pinctrl@10005000: simple-bus unit address format error, expected "1000b000"
+Warning (simple_bus_reg): /soc/interrupt-controller@10220000: simple-bus unit address format error, expected "10221000"
 
-Fixes: 81bb549fdf14 ("serial: 8250_mtk: support big baud rate.")
-Signed-off-by: Serge Semin <Sergey.Semin@baikalelectronics.ru>
-Cc: Alexey Malahov <Alexey.Malahov@baikalelectronics.ru>
-Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
-Cc: Paul Burton <paulburton@kernel.org>
-Cc: Ralf Baechle <ralf@linux-mips.org>
-Cc: Arnd Bergmann <arnd@arndb.de>
-Cc: Long Cheng <long.cheng@mediatek.com>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Maxime Ripard <mripard@kernel.org>
-Cc: Catalin Marinas <catalin.marinas@arm.com>
-Cc: Will Deacon <will@kernel.org>
-Cc: Russell King <linux@armlinux.org.uk>
-Cc: linux-mips@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Link: https://lore.kernel.org/r/20200506233136.11842-2-Sergey.Semin@baikalelectronics.ru
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Link: https://lore.kernel.org/r/20200210063523.133333-4-hsinyi@chromium.org
+[mb: drop fixes for '_' in property name]
+Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/tty/serial/8250/8250_port.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/tty/serial/8250/8250_port.c b/drivers/tty/serial/8250/8250_port.c
-index 2c65c775bf5a..dbb27303a6b4 100644
---- a/drivers/tty/serial/8250/8250_port.c
-+++ b/drivers/tty/serial/8250/8250_port.c
-@@ -2539,6 +2539,8 @@ static unsigned int serial8250_get_baud_rate(struct uart_port *port,
- 					     struct ktermios *termios,
- 					     struct ktermios *old)
- {
-+	unsigned int tolerance = port->uartclk / 100;
-+
- 	/*
- 	 * Ask the core to calculate the divisor for us.
- 	 * Allow 1% tolerance at the upper limit so uart clks marginally
-@@ -2547,7 +2549,7 @@ static unsigned int serial8250_get_baud_rate(struct uart_port *port,
- 	 */
- 	return uart_get_baud_rate(port, termios, old,
- 				  port->uartclk / 16 / UART_DIV_MAX,
--				  port->uartclk);
-+				  (port->uartclk + tolerance) / 16);
- }
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 5891b7151432..dec5e4113ce4 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -238,21 +238,21 @@ psci {
+ 		cpu_on	      = <0x84000003>;
+ 	};
  
- void
+-	clk26m: oscillator@0 {
++	clk26m: oscillator0 {
+ 		compatible = "fixed-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <26000000>;
+ 		clock-output-names = "clk26m";
+ 	};
+ 
+-	clk32k: oscillator@1 {
++	clk32k: oscillator1 {
+ 		compatible = "fixed-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32000>;
+ 		clock-output-names = "clk32k";
+ 	};
+ 
+-	cpum_ck: oscillator@2 {
++	cpum_ck: oscillator2 {
+ 		compatible = "fixed-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <0>;
+@@ -268,19 +268,19 @@ cpu_thermal: cpu_thermal {
+ 			sustainable-power = <1500>; /* milliwatts */
+ 
+ 			trips {
+-				threshold: trip-point@0 {
++				threshold: trip-point0 {
+ 					temperature = <68000>;
+ 					hysteresis = <2000>;
+ 					type = "passive";
+ 				};
+ 
+-				target: trip-point@1 {
++				target: trip-point1 {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+ 					type = "passive";
+ 				};
+ 
+-				cpu_crit: cpu_crit@0 {
++				cpu_crit: cpu_crit0 {
+ 					temperature = <115000>;
+ 					hysteresis = <2000>;
+ 					type = "critical";
+@@ -288,13 +288,13 @@ cpu_crit: cpu_crit@0 {
+ 			};
+ 
+ 			cooling-maps {
+-				map@0 {
++				map0 {
+ 					trip = <&target>;
+ 					cooling-device = <&cpu0 0 0>,
+ 							 <&cpu1 0 0>;
+ 					contribution = <3072>;
+ 				};
+-				map@1 {
++				map1 {
+ 					trip = <&target>;
+ 					cooling-device = <&cpu2 0 0>,
+ 							 <&cpu3 0 0>;
+@@ -308,7 +308,7 @@ reserved-memory {
+ 		#address-cells = <2>;
+ 		#size-cells = <2>;
+ 		ranges;
+-		vpu_dma_reserved: vpu_dma_mem_region {
++		vpu_dma_reserved: vpu_dma_mem_region@b7000000 {
+ 			compatible = "shared-dma-pool";
+ 			reg = <0 0xb7000000 0 0x500000>;
+ 			alignment = <0x1000>;
+@@ -360,7 +360,7 @@ syscfg_pctl_a: syscfg_pctl_a@10005000 {
+ 			reg = <0 0x10005000 0 0x1000>;
+ 		};
+ 
+-		pio: pinctrl@10005000 {
++		pio: pinctrl@1000b000 {
+ 			compatible = "mediatek,mt8173-pinctrl";
+ 			reg = <0 0x1000b000 0 0x1000>;
+ 			mediatek,pctl-regmap = <&syscfg_pctl_a>;
+@@ -567,7 +567,7 @@ mipi_tx1: mipi-dphy@10216000 {
+ 			status = "disabled";
+ 		};
+ 
+-		gic: interrupt-controller@10220000 {
++		gic: interrupt-controller@10221000 {
+ 			compatible = "arm,gic-400";
+ 			#interrupt-cells = <3>;
+ 			interrupt-parent = <&gic>;
 -- 
 2.25.1
 
