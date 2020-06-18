@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A99DAC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 01:23:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CCFDAC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 01:35:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 74F40221E8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 01:23:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 65AFE2192A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 01:35:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kMNqiUFl";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="PZ6MzIOa"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 74F40221E8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gF98xWc/";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="QXAstZZ3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 65AFE2192A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,38 +26,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nnCmfgAufinhjS6LjJigk8aKWCOq3ijgU0XAwda5DaM=; b=kMNqiUFlgVOCmb
-	Cgfu+7frBli3IDQci4oj82BhVB8DGJL7NXiASyR/Bd238onIGVfn3R8nojL81jt5rSlM1S7fTiqzX
-	LfyKRLbJkRWPSsNk2SfyqD7mQ+eE3pDuUUOWOJnSkAdmJxIk6aU8K68E65FDKdpMxMcE1hUkz984A
-	x0W061OelDPIAQDoPESVsFnE+phSNBpsMkxPV185WvGn73d0H5Y4RwdS0P0ilxopte3I0HsRfw4DH
-	NVhM9DVk02RFw/YLXHTi0LCP52ZGYp/N/6E4jRBbO5DWurQENjz4DySQEM7NJXcAFIIKQhNuPAd8d
-	igylX4HV+SuwE4m8AkwA==;
+	List-Owner; bh=2GwtcA6ZFcOPWkT4R6DaqRrbtrkyimz+AZCK9Lkcu8A=; b=gF98xWc/lz6Nc6
+	qKa37qb/reZnwP5Y9/YgwK6HCWqeSIvpY3w8Ps9QgKKG1nk/fIlBRPANBRRsGAGapu+g0qEfeMai0
+	IhaEUlmmg4KRmc16Sxz+Mdzmg4bBF8kHpJnr+9GvmQcxfcUpdIV9WakUNV4lz8JGqiPDfccDdMMKm
+	CO0GWsvsrggav3lytOHogzwzgnlOYvqKasVJg1U+huqL/GV0h6kE9l0TMSDZMZ+ThQRsJt0KaF23a
+	Q5UAFN3I0wium+WtQjqaVBsGlSivPJsQfSVFKNtp1SwlAuhqbQ98AldItKt8H3pWsj9h534vQtfPM
+	UJIRrz7lXzzgj3RfcZYQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jljGv-0006gN-R1; Thu, 18 Jun 2020 01:23:17 +0000
+	id 1jljS9-00047l-03; Thu, 18 Jun 2020 01:34:53 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlj68-0001kl-EV; Thu, 18 Jun 2020 01:12:10 +0000
+ id 1jlj8v-00044P-BV; Thu, 18 Jun 2020 01:15:03 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id AF521214DB;
- Thu, 18 Jun 2020 01:12:06 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id B63A0221EA;
+ Thu, 18 Jun 2020 01:14:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592442727;
- bh=lmsOjpJfu1F/07xtNKZqZw1bsoKKOBllErHB92ejtMc=;
+ s=default; t=1592442900;
+ bh=wrZIAq9fTJ3Dp9QQKIdlPNcKPKFcJ2C93L8OCBXtUY0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=PZ6MzIOaugBA/g2Wf9m1vzM4ijJcm03pDC4uK7O2uWisbMydpPHo3Q/mJ+MDZC1D6
- YJxu32lDkhGdgICn/zxdfDylij2Y02UQBmr4687lt5TyBu8Vmw02EH+4XvxWY5OMx/
- nu8y/Liz7m9tt/gGBJuiHvXt0ZTSTvZFRCi9gsEI=
+ b=QXAstZZ32zyB4Ric27htcX0hbTVvbr2STrlrhF3YHDYDG9IWcz/KtR7yAUZuYHXmj
+ nPeIMndQJKg1ayGKGcHrpEJXVglTRXW08cw06LKynvsHFBYXaei9/COEfxearpckm6
+ srRxvK2Qu2XqsGOs2HhKgdjxrrNV/6GR0acWAIRI=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.7 184/388] remoteproc/mediatek: fix invalid use of
- sizeof in scp_ipi_init()
-Date: Wed, 17 Jun 2020 21:04:41 -0400
-Message-Id: <20200618010805.600873-184-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.7 321/388] scsi: ufs: Don't update urgent bkops
+ level when toggling auto bkops
+Date: Wed, 17 Jun 2020 21:06:58 -0400
+Message-Id: <20200618010805.600873-321-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200618010805.600873-1-sashal@kernel.org>
 References: <20200618010805.600873-1-sashal@kernel.org>
@@ -65,8 +65,9 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200617_181208_609890_8F0BD5E6 
-X-CRM114-Status: GOOD (  10.26  )
+X-CRM114-CacheID: sfid-20200617_181501_462727_9DEEC4BA 
+X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,48 +79,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>, linux-remoteproc@vger.kernel.org,
- Bjorn Andersson <bjorn.andersson@linaro.org>, Hulk Robot <hulkci@huawei.com>,
- Wei Yongjun <weiyongjun1@huawei.com>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: Sasha Levin <sashal@kernel.org>, linux-scsi@vger.kernel.org,
+ "Martin K . Petersen" <martin.petersen@oracle.com>,
+ Can Guo <cang@codeaurora.org>, linux-mediatek@lists.infradead.org,
+ Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Wei Yongjun <weiyongjun1@huawei.com>
+From: Can Guo <cang@codeaurora.org>
 
-[ Upstream commit 8096f80a5c09b716be207eb042c4e40d6cdefbd2 ]
+[ Upstream commit be32acff43800c87dc5c707f5d47cc607b76b653 ]
 
-sizeof() when applied to a pointer typed expression gives the
-size of the pointer, not that of the pointed data.
+Urgent bkops level is used to compare against actual bkops status read from
+UFS device. Urgent bkops level is set during initialization and might be
+updated in exception event handler during runtime. But it should not be
+updated to the actual bkops status every time when auto bkops is toggled.
+Otherwise, if urgent bkops level is updated to 0, auto bkops shall always
+be kept enabled.
 
-Reviewed-by: Mathieu Poirier <mathieu.poirier@linaro.org>
-Fixes: 63c13d61eafe ("remoteproc/mediatek: add SCP support for mt8183")
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
-Link: https://lore.kernel.org/r/20200509084237.36293-1-weiyongjun1@huawei.com
-Signed-off-by: Bjorn Andersson <bjorn.andersson@linaro.org>
+Link: https://lore.kernel.org/r/1590632686-17866-1-git-send-email-cang@codeaurora.org
+Fixes: 24366c2afbb0 ("scsi: ufs: Recheck bkops level if bkops is disabled")
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+Signed-off-by: Can Guo <cang@codeaurora.org>
+Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/remoteproc/mtk_scp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/scsi/ufs/ufshcd.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index 2bead57c9cf9..ac13e7b046a6 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -132,8 +132,8 @@ static int scp_ipi_init(struct mtk_scp *scp)
- 		(struct mtk_share_obj __iomem *)(scp->sram_base + recv_offset);
- 	scp->send_buf =
- 		(struct mtk_share_obj __iomem *)(scp->sram_base + send_offset);
--	memset_io(scp->recv_buf, 0, sizeof(scp->recv_buf));
--	memset_io(scp->send_buf, 0, sizeof(scp->send_buf));
-+	memset_io(scp->recv_buf, 0, sizeof(*scp->recv_buf));
-+	memset_io(scp->send_buf, 0, sizeof(*scp->send_buf));
- 
- 	return 0;
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 698e8d20b4ba..52740b60d786 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -5098,7 +5098,6 @@ static int ufshcd_bkops_ctrl(struct ufs_hba *hba,
+ 		err = ufshcd_enable_auto_bkops(hba);
+ 	else
+ 		err = ufshcd_disable_auto_bkops(hba);
+-	hba->urgent_bkops_lvl = curr_status;
+ out:
+ 	return err;
  }
 -- 
 2.25.1
