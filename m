@@ -2,82 +2,78 @@ Return-Path: <SRS0=U17p=77=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8D180C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 09:15:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D182CC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 09:34:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5522520786
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 09:15:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A50D521924
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 09:34:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bKXScIYF";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="CVo1LLaj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5522520786
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RfMbEZga";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="MHeeNIj+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A50D521924
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gRSI2RiT/T5iVb3QV/2MMnOeGu4ffZqmia3fAne6VxQ=; b=bKXScIYFb+Bx/w
-	esSbpy59ffkXOM/zucpD8SpVsntp7Fqozm5+RtihRVbOqyJ6dD0oJLgR7Ub9R85WJEnGl1ooTRb+D
-	N9tFwxlV+CnXfnSrK5nmHQubSyJ4hMCGtGCw/cg1aB6ZWD7j2ZYHSvkjsOj7GLKbfVFmZv/Q0KgKW
-	9lEc1mRIY7vvbVKsSWKlgjgDQC518eS7/CBl9XoXx8e9oMsJ7bvqIiAiuObW8Id2wb5R2o87fbvG+
-	Z7W0RHxPW+bu/M4bLDCHWvOZ+IZa79R+mortVfckbSn0lvfXIbe6qgoS6mvOm1jzUIxQfRQTzVaRu
-	dj5FSGKL5A8nnAqkk/uA==;
+	List-Owner; bh=5Znl3HAxK2HSjaX0hPCN4k9ueEZPuL/vNLsDiu88RS4=; b=RfMbEZgaeH50TT
+	lJ7c6J8FYBzA5VHnMgjLry8DEIeTF+fU0ubMQ8XgT+FucBhOIG+GDxGoLbhe4HdiYei1GgHwA6RyH
+	GpPH1HipjMRtSQ5+SwT3lmHLctd7UuTguPczFM2X7EuDEySHQe89Hn32pGZez+9vQ+vs184HEuCWu
+	lJLr+UbrV6/Uv2q5WuX3MOOxiWaJryWR2nAkw4oo2ilFTOk0lbrGM7pO6g27QCMY366v7Sx5U1RaH
+	vu3nsOmAEEjtjWrjVUS/J2eeCtR3pkb6OFgBM2ZrlAiKDsxEyLWedWMbUCivpSVh2vLniV5hFBgXV
+	i1uoJi8iH2D4tXiqpz8w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlqds-0006CN-Fj; Thu, 18 Jun 2020 09:15:28 +0000
+	id 1jlqwc-0008WE-8o; Thu, 18 Jun 2020 09:34:50 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlqdp-0006Bi-Di; Thu, 18 Jun 2020 09:15:27 +0000
-X-UUID: 1b16b2177ec54973b3d323cb56490067-20200618
+ id 1jlqwZ-0008Vj-AB; Thu, 18 Jun 2020 09:34:48 +0000
+X-UUID: 95fe9acb588d4a9886bc9180f2917bb6-20200618
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=4XnqJ20IExga/K0IhPzstjZ7zg9Stdygd6pci2+yWAc=; 
- b=CVo1LLaj/bLv/34Qw0lYsCGE0OrALjDzYWCBKeZGuV+xQ3RmI6L5eX5nOpqEgjwIT60kNz8sSV28Blwn0dABSfY1j1Xd3CGF8R13DcZHX70JHXxH4cZQx9KDqjPb7Zst5NkAxNaojoqwBS2YA8JWMZCM6E+2OhnNNzZK+QZFAVQ=;
-X-UUID: 1b16b2177ec54973b3d323cb56490067-20200618
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=fazQeAs8inAvGwYcQXqBGXqOlhYwCeTQdth0t/3tLpc=; 
+ b=MHeeNIj++emO1PxnCKYQiheDFmpZ4QBACfg0h4/OsDUonE38uDizhI+ibfWfeYHrZWzdKmqjA4pspetmXciZRh0aMpC3nZVDYa6Z/T8lj5eJdfJoht83VIS8lU3VV4mz8emEXDFGXanQq7R5q4LS8CnMUfrDFmNHFsNV7hCie9k=;
+X-UUID: 95fe9acb588d4a9886bc9180f2917bb6-20200618
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <macpaul.lin@mediatek.com>)
+ (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 470742135; Thu, 18 Jun 2020 01:14:10 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 18 Jun 2020 02:14:11 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 18 Jun 2020 17:14:10 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 18 Jun 2020 17:14:09 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Alan Stern <stern@rowland.harvard.edu>, Felipe Balbi <balbi@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Jim Lin <jilin@nvidia.com>, Siqi Lin
- <siqilin@google.com>, Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- Macpaul Lin <macpaul.lin@gmail.com>
-Subject: [PATCH v3] usb: replace hardcode maximum usb string length by
- definition
-Date: Thu, 18 Jun 2020 17:13:38 +0800
-Message-ID: <1592471618-29428-1-git-send-email-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1592201855-8218-1-git-send-email-macpaul.lin@mediatek.com>
-References: <1592201855-8218-1-git-send-email-macpaul.lin@mediatek.com>
+ with ESMTP id 1120295212; Thu, 18 Jun 2020 01:34:39 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 18 Jun 2020 02:34:40 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 18 Jun 2020 17:34:36 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 18 Jun 2020 17:34:33 +0800
+Message-ID: <1592472725.20080.12.camel@mhfsdcap03>
+Subject: Re: [PATCH v4 06/17] media: mtk-jpeg: Get rid of mtk_smi_larb_get/put
+From: Yong Wu <yong.wu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rick Chang
+ <rick.chang@mediatek.com>
+Date: Thu, 18 Jun 2020 17:32:05 +0800
+In-Reply-To: <1590826218-23653-7-git-send-email-yong.wu@mediatek.com>
+References: <1590826218-23653-1-git-send-email-yong.wu@mediatek.com>
+ <1590826218-23653-7-git-send-email-yong.wu@mediatek.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: EAA0222707355DB3D9C41720DD63D68CCECEA4A8CC20861737BF3012552CC6C52000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200618_021525_472553_F392FA9B 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20200618_023447_364730_BBD2FC49 
+X-CRM114-Status: GOOD (  14.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,97 +85,112 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: xia.jiang@mediatek.com, Will Deacon <will.deacon@arm.com>,
+ youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>,
+ Rick Chang <rick.chang@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Evan
+ Green <evgreen@chromium.org>, eizan@chromium.org, Matthias
+ Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, cui.zhang@mediatek.com,
+ Tomasz Figa <tfiga@google.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, ming-fan.chen@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, anan.sun@mediatek.com,
+ acourbot@chromium.org, srv_heupstream@mediatek.com,
+ linux-kernel@vger.kernel.org, chao.hao@mediatek.com,
+ iommu@lists.linux-foundation.org, Robin Murphy <robin.murphy@arm.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace hardcode maximum usb string length (126 bytes) by definition
-"MAX_USB_STRING_LEN".
++ Rick
 
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Acked-by: Alan Stern <stern@rowland.harvard.edu>
----
-Changes for v2:
-  - Add definition "MAX_USB_STRING_LEN" in ch9.h instead of in usb.h.
-    Thanks for Alan's suggestion.
-Changes for v3:
-  - Rebase to 5.8-rc1 and resolve conflict.
+On Sat, 2020-05-30 at 16:10 +0800, Yong Wu wrote:
+> MediaTek IOMMU has already added device_link between the consumer
+> and smi-larb device. If the jpg device call the pm_runtime_get_sync,
+> the smi-larb's pm_runtime_get_sync also be called automatically.
+> 
+> CC: Rick Chang <rick.chang@mediatek.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> Reviewed-by: Evan Green <evgreen@chromium.org>
+> ---
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 22 ----------------------
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h |  2 --
+>  2 files changed, 24 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> index f82a81a..21fba6f 100644
+> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> @@ -21,7 +21,6 @@
+>  #include <media/v4l2-ioctl.h>
+>  #include <media/videobuf2-core.h>
+>  #include <media/videobuf2-dma-contig.h>
+> -#include <soc/mediatek/smi.h>
+>  
+>  #include "mtk_jpeg_hw.h"
+>  #include "mtk_jpeg_core.h"
+> @@ -893,11 +892,6 @@ static int mtk_jpeg_queue_init(void *priv, struct vb2_queue *src_vq,
+>  
+>  static void mtk_jpeg_clk_on(struct mtk_jpeg_dev *jpeg)
+>  {
+> -	int ret;
+> -
+> -	ret = mtk_smi_larb_get(jpeg->larb);
+> -	if (ret)
+> -		dev_err(jpeg->dev, "mtk_smi_larb_get larbvdec fail %d\n", ret);
+>  	clk_prepare_enable(jpeg->clk_jdec_smi);
+>  	clk_prepare_enable(jpeg->clk_jdec);
+>  }
+> @@ -906,7 +900,6 @@ static void mtk_jpeg_clk_off(struct mtk_jpeg_dev *jpeg)
+>  {
+>  	clk_disable_unprepare(jpeg->clk_jdec);
+>  	clk_disable_unprepare(jpeg->clk_jdec_smi);
+> -	mtk_smi_larb_put(jpeg->larb);
+>  }
+>  
+>  static irqreturn_t mtk_jpeg_dec_irq(int irq, void *priv)
+> @@ -1051,21 +1044,6 @@ static int mtk_jpeg_release(struct file *file)
+>  
+>  static int mtk_jpeg_clk_init(struct mtk_jpeg_dev *jpeg)
+>  {
+> -	struct device_node *node;
+> -	struct platform_device *pdev;
+> -
+> -	node = of_parse_phandle(jpeg->dev->of_node, "mediatek,larb", 0);
+> -	if (!node)
+> -		return -EINVAL;
+> -	pdev = of_find_device_by_node(node);
+> -	if (WARN_ON(!pdev)) {
+> -		of_node_put(node);
+> -		return -EINVAL;
+> -	}
+> -	of_node_put(node);
+> -
+> -	jpeg->larb = &pdev->dev;
+> -
+>  	jpeg->clk_jdec = devm_clk_get(jpeg->dev, "jpgdec");
+>  	if (IS_ERR(jpeg->clk_jdec))
+>  		return PTR_ERR(jpeg->clk_jdec);
+> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+> index 999bd14..8579494 100644
+> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+> @@ -47,7 +47,6 @@ enum mtk_jpeg_ctx_state {
+>   * @dec_reg_base:	JPEG registers mapping
+>   * @clk_jdec:		JPEG hw working clock
+>   * @clk_jdec_smi:	JPEG SMI bus clock
+> - * @larb:		SMI device
+>   */
+>  struct mtk_jpeg_dev {
+>  	struct mutex		lock;
+> @@ -61,7 +60,6 @@ struct mtk_jpeg_dev {
+>  	void __iomem		*dec_reg_base;
+>  	struct clk		*clk_jdec;
+>  	struct clk		*clk_jdec_smi;
+> -	struct device		*larb;
+>  };
+>  
+>  /**
 
- drivers/usb/gadget/composite.c |    4 ++--
- drivers/usb/gadget/configfs.c  |    2 +-
- drivers/usb/gadget/usbstring.c |    4 ++--
- include/uapi/linux/usb/ch9.h   |    3 +++
- 4 files changed, 8 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/usb/gadget/composite.c b/drivers/usb/gadget/composite.c
-index cb4950c..d0de016 100644
---- a/drivers/usb/gadget/composite.c
-+++ b/drivers/usb/gadget/composite.c
-@@ -1041,7 +1041,7 @@ static void collect_langs(struct usb_gadget_strings **sp, __le16 *buf)
- 	while (*sp) {
- 		s = *sp;
- 		language = cpu_to_le16(s->language);
--		for (tmp = buf; *tmp && tmp < &buf[126]; tmp++) {
-+		for (tmp = buf; *tmp && tmp < &buf[MAX_USB_STRING_LEN]; tmp++) {
- 			if (*tmp == language)
- 				goto repeat;
- 		}
-@@ -1116,7 +1116,7 @@ static int get_string(struct usb_composite_dev *cdev,
- 			collect_langs(sp, s->wData);
- 		}
- 
--		for (len = 0; len <= 126 && s->wData[len]; len++)
-+		for (len = 0; len <= MAX_USB_STRING_LEN && s->wData[len]; len++)
- 			continue;
- 		if (!len)
- 			return -EINVAL;
-diff --git a/drivers/usb/gadget/configfs.c b/drivers/usb/gadget/configfs.c
-index 32b637e..70dd4ba 100644
---- a/drivers/usb/gadget/configfs.c
-+++ b/drivers/usb/gadget/configfs.c
-@@ -115,7 +115,7 @@ static int usb_string_copy(const char *s, char **s_copy)
- 	char *str;
- 	char *copy = *s_copy;
- 	ret = strlen(s);
--	if (ret > 126)
-+	if (ret > MAX_USB_STRING_LEN)
- 		return -EOVERFLOW;
- 
- 	str = kstrdup(s, GFP_KERNEL);
-diff --git a/drivers/usb/gadget/usbstring.c b/drivers/usb/gadget/usbstring.c
-index 7c24d1c..8a8d647 100644
---- a/drivers/usb/gadget/usbstring.c
-+++ b/drivers/usb/gadget/usbstring.c
-@@ -55,9 +55,9 @@
- 		return -EINVAL;
- 
- 	/* string descriptors have length, tag, then UTF16-LE text */
--	len = min ((size_t) 126, strlen (s->s));
-+	len = min((size_t)MAX_USB_STRING_LEN, strlen(s->s));
- 	len = utf8s_to_utf16s(s->s, len, UTF16_LITTLE_ENDIAN,
--			(wchar_t *) &buf[2], 126);
-+			(wchar_t *) &buf[2], MAX_USB_STRING_LEN);
- 	if (len < 0)
- 		return -EINVAL;
- 	buf [0] = (len + 1) * 2;
-diff --git a/include/uapi/linux/usb/ch9.h b/include/uapi/linux/usb/ch9.h
-index 2b623f3..cc02d05 100644
---- a/include/uapi/linux/usb/ch9.h
-+++ b/include/uapi/linux/usb/ch9.h
-@@ -364,6 +364,9 @@ struct usb_config_descriptor {
- 
- /*-------------------------------------------------------------------------*/
- 
-+/* USB String descriptors can contain at most 126 characters. */
-+#define MAX_USB_STRING_LEN	126
-+
- /* USB_DT_STRING: String descriptor */
- struct usb_string_descriptor {
- 	__u8  bLength;
--- 
-1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
