@@ -4,20 +4,19 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A74CBC433E2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 01:12:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DBE93C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 01:18:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 70B81214DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 01:12:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AAA1B21D90
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 01:18:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="imU4GdSk";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="RQOEzgxV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 70B81214DB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="t8rgJZrj";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="vd2uZbKD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AAA1B21D90
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,38 +25,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S5cr9EVRi9wlU3CLo1jFHcWxkfDNNjs2mhHokiIbZtM=; b=imU4GdSkF36ZB7
-	Z07RKHXc/B80/zYyds4vPIJGvCeG90c2qn5oM+n59+Q5Z1JkiICozcpTWaPonXzqBoeFSZBE9xYmw
-	VCP74E+tdPw8cksqA/dHOK8oZvKOaLcLcnYdxlG95ZlmY9IKqqc3T757d0+BMZmcceqwZISkVQRTx
-	mdPg2VOc4JxSbycRbW2GIBzxAyR90ucYZIv/7XXpYsQf+Bj3TnCNV5+xuL0PsSAzc/h0LPI9GSrYG
-	mjDgUa+RveRhfweCY6Z1vj4VUb06FzP6qd3VWDMOvi7VkImc7hdwAVhEqJcxs/rRNkI8wpW9mYDwH
-	roc55owdU+Yect7OVo1w==;
+	List-Owner; bh=9T9ZZexQ+pyEFY6Lde4Q8sdiMe5C4bxRkTSrtkI8tOk=; b=t8rgJZrjhgRnVe
+	ae8Decr6zOcuygqUXOfkyJfTy/iWm/1cj3I/4ZJ+LTkVWFAFhfkQC50uCciY6szELtqwyBVpWbghW
+	u5vsFjmDrHMpOZWPnUCxXlXKWUAH7vsi5CGJYAPcNaE75C1UTlzXM2dyu92jqtUtH/WiFkn4ek8CT
+	HXhcv+ci5QImnNk/xPzYe6M10vQpy/+igHyubDv7IcmTr3JPsJsQZEzJFrRz03DzKLGhX8NUTtb8o
+	7usMORp3V1hC+HXis4dSqZIP1nrmGH3BBmWoLSJKACH65/VQs1mAbZEE+40uGwCkGaRTQlT/wbGXE
+	rlgVjPXPkImrwBRPqBuQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlj5w-0001a8-Oa; Thu, 18 Jun 2020 01:11:56 +0000
+	id 1jljC5-0000Jq-0S; Thu, 18 Jun 2020 01:18:17 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlj38-0005AU-Ip; Thu, 18 Jun 2020 01:09:05 +0000
+ id 1jlj4m-0000XL-DV; Thu, 18 Jun 2020 01:10:47 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 61B8E2193E;
- Thu, 18 Jun 2020 01:09:00 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 340CF221FA;
+ Thu, 18 Jun 2020 01:10:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592442541;
- bh=YPzz4H8pRJPKgR9c3fl1iGtB6EgAkhkiYDDNODbhzMc=;
+ s=default; t=1592442644;
+ bh=+M0W5qBbHTPjU1IEEobOMiZujG9hxISML1JRsZPtPdA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=RQOEzgxVM0ABlrOOxduNPsZUHR83Ow92gfO0Vi3bHRN0nuMP3Xxwc/54UZkGOLzmz
- AQ7CV84grMJolmMzO15uLpizRwCQhvVvApMbnJZGrBb+kXrdTxtT2fl48MPVdcAv27
- wLqX15eQCrV01waZv3yV/xMv7WI2PdzQBup7YfxM=
+ b=vd2uZbKD2Ul2FKiwxWd9kVMVRRMFSqEDDPIakzR+makaXrgofbbgRDfD+goyngmcF
+ TQXyzQYF8lsF/xKT3pANXNjeB8VrZw84W6Skx0a2K8iOWmfZ1QguS8gTEkJ5ERu7iv
+ tdCahUV5W9ZRZUil2ALTAnjxooetfwPaEQG8h1Uw=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.7 042/388] usb: roles: Switch on role-switch uevent
- reporting
-Date: Wed, 17 Jun 2020 21:02:19 -0400
-Message-Id: <20200618010805.600873-42-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.7 118/388] staging: mt7621-pci: fix PCIe interrupt
+ mapping
+Date: Wed, 17 Jun 2020 21:03:35 -0400
+Message-Id: <20200618010805.600873-118-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200618010805.600873-1-sashal@kernel.org>
 References: <20200618010805.600873-1-sashal@kernel.org>
@@ -65,8 +64,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200617_180903_153636_9825C99F 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20200617_181044_529950_F6E0B6E0 
+X-CRM114-Status: GOOD (  15.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,75 +77,193 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>,
- Wen Yang <wenyang@linux.alibaba.com>,
- Suzuki K Poulose <suzuki.poulose@arm.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>, chenqiwu <chenqiwu@xiaomi.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 
-[ Upstream commit 3e63cff384e625f09758ce8f4d01ae3033402b63 ]
+[ Upstream commit fab6710e4c51f4eb622f95a08322ab5fdbe3f295 ]
 
-Right now we don't report to user-space a role switch when doing a
-usb_role_switch_set_role() despite having registered the uevent callbacks.
+MT7621 has three assigned interrupts for the pcie. This
+interrupts should properly being mapped taking into account
+which devices are finally connected in which bus according
+to link status. So the irq mappings should be as follows
+according to link status (three bits indicating which devices
+are link up):
 
-This patch switches on the notifications allowing user-space to see
-role-switch change notifications and subsequently determine the current
-controller data-role.
+* For PCIe Bus 1 slot 0:
+  - status = 0x2 || status = 0x6 => IRQ = pcie1_irq (24).
+  - status = 0x4 => IRQ = pcie2_irq (25).
+  - default => IRQ = pcie0_irq (23).
+* For PCIe Bus 2 slot 0:
+  - status = 0x5 || status = 0x6 => IRQ = pcie2_irq (25).
+  - default => IRQ = pcie1_irq (24).
+* For PCIe Bus 2 slot 1:
+  - status = 0x5 || status = 0x6 => IRQ = pcie2_irq (25).
+  - default => IRQ = pcie1_irq (24).
+* For PCIe Bus 3 any slot:
+  - default => IRQ = pcie2_irq (25).
 
-example:
-PFX=/devices/platform/soc/78d9000.usb/ci_hdrc.0
+Because of this, the function 'of_irq_parse_and_map_pci' cannot
+be used and we need to change device tree information from using
+the 'interrupt-map' and 'interrupt-map-mask' properties into an
+'interrupts' property to be able to get irq information from the
+ports using the 'platform_get_irq' and storing an 'irq-map' into
+the pcie driver data node to properly map correct irq using a
+new 'mt7621_map_irq' function where this map will be read and the
+correct irq returned.
 
-root@somebox# udevadm monitor -p
-
-KERNEL[49.894994] change $PFX/usb_role/ci_hdrc.0-role-switch (usb_role)
-ACTION=change
-DEVPATH=$PFX/usb_role/ci_hdrc.0-role-switch
-SUBSYSTEM=usb_role
-DEVTYPE=usb_role_switch
-USB_ROLE_SWITCH=ci_hdrc.0-role-switch
-SEQNUM=2432
-
-Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Suzuki K Poulose <suzuki.poulose@arm.com>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Cc: Wen Yang <wenyang@linux.alibaba.com>
-Cc: chenqiwu <chenqiwu@xiaomi.com>
-Cc: linux-kernel@vger.kernel.org
-Signed-off-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-Link: https://lore.kernel.org/r/20200508162937.2566818-1-bryan.odonoghue@linaro.org
+Fixes: 46d093124df4 ("staging: mt7621-pci: improve interrupt mapping")
+Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Link: https://lore.kernel.org/r/20200413055942.2714-1-sergio.paracuellos@gmail.com
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/usb/roles/class.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/staging/mt7621-dts/mt7621.dtsi  |  9 +++----
+ drivers/staging/mt7621-pci/pci-mt7621.c | 36 +++++++++++++++++++++++--
+ 2 files changed, 38 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/usb/roles/class.c b/drivers/usb/roles/class.c
-index 5b17709821df..27d92af29635 100644
---- a/drivers/usb/roles/class.c
-+++ b/drivers/usb/roles/class.c
-@@ -49,8 +49,10 @@ int usb_role_switch_set_role(struct usb_role_switch *sw, enum usb_role role)
- 	mutex_lock(&sw->lock);
+diff --git a/drivers/staging/mt7621-dts/mt7621.dtsi b/drivers/staging/mt7621-dts/mt7621.dtsi
+index 9e5cf68731bb..82aa93634eda 100644
+--- a/drivers/staging/mt7621-dts/mt7621.dtsi
++++ b/drivers/staging/mt7621-dts/mt7621.dtsi
+@@ -523,11 +523,10 @@ pcie: pcie@1e140000 {
+ 			0x01000000 0 0x00000000 0x1e160000 0 0x00010000 /* io space */
+ 		>;
  
- 	ret = sw->set(sw, role);
--	if (!ret)
-+	if (!ret) {
- 		sw->role = role;
-+		kobject_uevent(&sw->dev.kobj, KOBJ_CHANGE);
+-		#interrupt-cells = <1>;
+-		interrupt-map-mask = <0xF0000 0 0 1>;
+-		interrupt-map = <0x10000 0 0 1 &gic GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH>,
+-				<0x20000 0 0 1 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>,
+-				<0x30000 0 0 1 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-parent = <&gic>;
++		interrupts = <GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH
++				GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH
++				GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>;
+ 
+ 		status = "disabled";
+ 
+diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
+index b9d460a9c041..36207243a71b 100644
+--- a/drivers/staging/mt7621-pci/pci-mt7621.c
++++ b/drivers/staging/mt7621-pci/pci-mt7621.c
+@@ -97,6 +97,7 @@
+  * @pcie_rst: pointer to port reset control
+  * @gpio_rst: gpio reset
+  * @slot: port slot
++ * @irq: GIC irq
+  * @enabled: indicates if port is enabled
+  */
+ struct mt7621_pcie_port {
+@@ -107,6 +108,7 @@ struct mt7621_pcie_port {
+ 	struct reset_control *pcie_rst;
+ 	struct gpio_desc *gpio_rst;
+ 	u32 slot;
++	int irq;
+ 	bool enabled;
+ };
+ 
+@@ -120,6 +122,7 @@ struct mt7621_pcie_port {
+  * @dev: Pointer to PCIe device
+  * @io_map_base: virtual memory base address for io
+  * @ports: pointer to PCIe port information
++ * @irq_map: irq mapping info according pcie link status
+  * @resets_inverted: depends on chip revision
+  * reset lines are inverted.
+  */
+@@ -135,6 +138,7 @@ struct mt7621_pcie {
+ 	} offset;
+ 	unsigned long io_map_base;
+ 	struct list_head ports;
++	int irq_map[PCIE_P2P_MAX];
+ 	bool resets_inverted;
+ };
+ 
+@@ -279,6 +283,16 @@ static void setup_cm_memory_region(struct mt7621_pcie *pcie)
+ 	}
+ }
+ 
++static int mt7621_map_irq(const struct pci_dev *pdev, u8 slot, u8 pin)
++{
++	struct mt7621_pcie *pcie = pdev->bus->sysdata;
++	struct device *dev = pcie->dev;
++	int irq = pcie->irq_map[slot];
++
++	dev_info(dev, "bus=%d slot=%d irq=%d\n", pdev->bus->number, slot, irq);
++	return irq;
++}
++
+ static int mt7621_pci_parse_request_of_pci_ranges(struct mt7621_pcie *pcie)
+ {
+ 	struct device *dev = pcie->dev;
+@@ -330,6 +344,7 @@ static int mt7621_pcie_parse_port(struct mt7621_pcie *pcie,
+ {
+ 	struct mt7621_pcie_port *port;
+ 	struct device *dev = pcie->dev;
++	struct platform_device *pdev = to_platform_device(dev);
+ 	struct device_node *pnode = dev->of_node;
+ 	struct resource regs;
+ 	char name[10];
+@@ -371,6 +386,12 @@ static int mt7621_pcie_parse_port(struct mt7621_pcie *pcie,
+ 	port->slot = slot;
+ 	port->pcie = pcie;
+ 
++	port->irq = platform_get_irq(pdev, slot);
++	if (port->irq < 0) {
++		dev_err(dev, "Failed to get IRQ for PCIe%d\n", slot);
++		return -ENXIO;
 +	}
++
+ 	INIT_LIST_HEAD(&port->list);
+ 	list_add_tail(&port->list, &pcie->ports);
  
- 	mutex_unlock(&sw->lock);
+@@ -585,13 +606,15 @@ static int mt7621_pcie_init_virtual_bridges(struct mt7621_pcie *pcie)
+ {
+ 	u32 pcie_link_status = 0;
+ 	u32 n;
+-	int i;
++	int i = 0;
+ 	u32 p2p_br_devnum[PCIE_P2P_MAX];
++	int irqs[PCIE_P2P_MAX];
+ 	struct mt7621_pcie_port *port;
+ 
+ 	list_for_each_entry(port, &pcie->ports, list) {
+ 		u32 slot = port->slot;
+ 
++		irqs[i++] = port->irq;
+ 		if (port->enabled)
+ 			pcie_link_status |= BIT(slot);
+ 	}
+@@ -614,6 +637,15 @@ static int mt7621_pcie_init_virtual_bridges(struct mt7621_pcie *pcie)
+ 		 (p2p_br_devnum[1] << PCIE_P2P_BR_DEVNUM1_SHIFT) |
+ 		 (p2p_br_devnum[2] << PCIE_P2P_BR_DEVNUM2_SHIFT));
+ 
++	/* Assign IRQs */
++	n = 0;
++	for (i = 0; i < PCIE_P2P_MAX; i++)
++		if (pcie_link_status & BIT(i))
++			pcie->irq_map[n++] = irqs[i];
++
++	for (i = n; i < PCIE_P2P_MAX; i++)
++		pcie->irq_map[i] = -1;
++
+ 	return 0;
+ }
+ 
+@@ -638,7 +670,7 @@ static int mt7621_pcie_register_host(struct pci_host_bridge *host,
+ 	host->busnr = pcie->busn.start;
+ 	host->dev.parent = pcie->dev;
+ 	host->ops = &mt7621_pci_ops;
+-	host->map_irq = of_irq_parse_and_map_pci;
++	host->map_irq = mt7621_map_irq;
+ 	host->swizzle_irq = pci_common_swizzle;
+ 	host->sysdata = pcie;
  
 -- 
 2.25.1
