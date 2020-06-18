@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 50AA7C433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 01:59:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C33EFC433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 02:02:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 21AF622229
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 01:59:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 96069221F8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 02:02:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lq0v4Un5";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="isCpelr4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 21AF622229
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dZNungHw";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Oh+KTtjU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 96069221F8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,46 +26,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QGpSWqUVDhJ8kQG5ti5/psf0bSZ1a5GbHyLosjdC3mE=; b=lq0v4Un5ERQ43V
-	Om+UU3HyHMMKtOkmh7bAxZAai9ksJGE/vu5R3s3l5CR5eJPnLzjft/mhNcFzjctpW82YPCek4KbnT
-	aShCJmfaI+e1KQ2ffMsZBVYpm7DGM6K2juEqkVFYlLvvXUdN/y64QyOL3eJtIqt6BzAKfqJRO/E2g
-	qiqK75P7WpKROssx+LO1Kb6vBey2UNvRlY24jnRpNlQZUo9Jto3DnsKYJzt1bJN6crLT6sQTZsI72
-	sNqX+Wsk4V/goBIbaqIn34oNB81LGkwPH0LwXD4RjGZp/em9mFmRw2MXGs8I3TTAVF0ChDL1jY3yO
-	jyquy7ObSmaYdyv9iUYA==;
+	List-Owner; bh=/D005Ifytndo10B9/BAyKj8rO2YJLOcF6LziN4VQS98=; b=dZNungHw+Vi771
+	KRqIIPsFO+51S4crGvLfeFuM1IOj5CG0rPTkK85rrHE5RUzm2Fnwr6n0zSU8BcZ3dYJWLJEKYejcO
+	fp2yKITlzxbKO3KVEawRPCFrpUM+PS9EByU5vcYePBMGo42XMFrMyYpNqSicx92tBgeUN2HPDDY6K
+	IR9aTDWPvlLgUmhSRoeQR0ugcbxQF4AKubEVsMutQaUQLmYFSKAmWseHzgb1CkivOP/IG/4mHZNCz
+	og0vhxBpkzEoXRpDhpk3OLRTmvxuMO7ErQlbRHBwMHzTzhS6IKJsNCG9ss1WNr5+APqj5a+XUvA/u
+	V+g/ieRzxPPOBpl7OREA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jljpN-0003UG-El; Thu, 18 Jun 2020 01:58:53 +0000
+	id 1jljsu-0000Zw-Tr; Thu, 18 Jun 2020 02:02:33 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jljIr-0001Ke-OW; Thu, 18 Jun 2020 01:25:19 +0000
+ id 1jljLS-0004mk-I2; Thu, 18 Jun 2020 01:28:04 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 144CE2075E;
- Thu, 18 Jun 2020 01:25:15 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id D6E77221F9;
+ Thu, 18 Jun 2020 01:27:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592443517;
- bh=b54IEHmFz7bmWQszzKimOy7e6xhMHWb9MYvGLvxm254=;
+ s=default; t=1592443676;
+ bh=feUd0AmCmn7I9f2TYK/0nNByOcuLcslvVtpb5rFy/IQ=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=isCpelr4kq4myJdI3J3gIXGWqo73fVydZ4NyRaMfLLqod+itkaD0+KZY6y86floct
- mkmfM7iJU/CcjKXIt5R17Mxd/3zxSBuBFgtAwdPsgT/AHB+JwVY0qe8QFlr57I3oqG
- yrbMYh2nbuNMrnSYEKCYJRzGNsWXq9qqS5Sn82Uc=
+ b=Oh+KTtjU10NQn1zUnKRR6JlBu915yIG6dayxqH4xPo9m0OxtgsvK0OSZKFRW9lkow
+ +4Hy1zj1HMM0MB9E2LY7KvhT0YcluzmHFnKHJsuULRuZCJeUNR4AJHEQcuz4npIvwQ
+ p3BwyfSmwnGuDLIGFtQbkIWuifuDGPdyLrXp4h7k=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 140/172] scsi: ufs: Don't update urgent bkops
+Subject: [PATCH AUTOSEL 4.14 092/108] scsi: ufs: Don't update urgent bkops
  level when toggling auto bkops
-Date: Wed, 17 Jun 2020 21:21:46 -0400
-Message-Id: <20200618012218.607130-140-sashal@kernel.org>
+Date: Wed, 17 Jun 2020 21:25:44 -0400
+Message-Id: <20200618012600.608744-92-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200618012218.607130-1-sashal@kernel.org>
-References: <20200618012218.607130-1-sashal@kernel.org>
+In-Reply-To: <20200618012600.608744-1-sashal@kernel.org>
+References: <20200618012600.608744-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200617_182517_956305_2E97B696 
+X-CRM114-CacheID: sfid-20200617_182758_718402_108B98DF 
 X-CRM114-Status: UNSURE (   9.56  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -110,10 +110,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 1 deletion(-)
 
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 803d67b3a166..bd21c9cdf818 100644
+index 3a98e5a1d830..1e2a97a10033 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -5122,7 +5122,6 @@ static int ufshcd_bkops_ctrl(struct ufs_hba *hba,
+@@ -4890,7 +4890,6 @@ static int ufshcd_bkops_ctrl(struct ufs_hba *hba,
  		err = ufshcd_enable_auto_bkops(hba);
  	else
  		err = ufshcd_disable_auto_bkops(hba);
