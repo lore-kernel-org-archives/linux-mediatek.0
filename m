@@ -2,76 +2,66 @@ Return-Path: <SRS0=U17p=77=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
+X-Spam-Status: No, score=-12.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F114AC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 11:17:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AC761C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 11:19:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C4AC42078D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 11:17:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7F2272085B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 11:19:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aHQibobl";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="JnBBbjpE"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C4AC42078D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kkXhzBsW";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Dw2AtYlU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7F2272085B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d8ueqfY3fgrCN4H6vLBXvt+8rjLUrhGWaqk337DPCkY=; b=aHQiboblaxDGo9
-	dMIRd+7awHzfz2OuVBCuxTaQs5WMtiyGgT7S3aIsHDUd1aQlfIEYwJRUT3YIhpdjtQhK9xvqjCAId
-	hscyr1EJngGeBycEHcq1mchNPJfXad16KJOvH0MdpVDazdFdjQ6bIUlu9IqLBmj+YiKv0fmacnyec
-	TxOKUo+zV+eWybLhPBZllmjfUQANgFXaQKOTV/alnMPLRMiHA/fcYCyplW4pntw3euxKZhmgg6Gfc
-	wxEirdgPLs0upsKtegBMrH2AdMFDhQlAVBEMSZiMpm2TsZOLhla3kGAVmE7ic4PoLu8K8g935F3sl
-	9zqOvqxzmEcwAXU5Moog==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=aosN6u3jP4g6+UxrH7o95vxFZ+/J2b1VIhTHJy2QQr8=; b=kkXhzBsWt8zLFsnLAaq2XNRVK
+	oF2Pqp+UJuV+IZUoYPkfXl+YzbhmhmqjZR44zQg7YYrolSIz9WPhZVQUeP4ddajqRXJUb3yzDu9Ch
+	Fe3nNFAh/uaN3me1L7T4yaHdHIDdkouN8GKydNDJyOs+eXVb73vgGV9IhgWk2qMvHL5cprbN1wMFj
+	4IdXsXw0PSfQ647JzaB4mpg3HyA+CR8vCY3ogjq8t8f+GK3m0RJqG4gfNhqaZiClB45XM6/PG9m1g
+	tIicfRmwdoTx8WASBrY+qj5m9f1BfLB1VJu5y5Qx+Cb5X5ymDyA5gCDbS0R+Js6MFsB7uQj/HyywB
+	nqyQl3EuQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlsXb-0005iS-1E; Thu, 18 Jun 2020 11:17:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jlsZf-0006Dx-Ng; Thu, 18 Jun 2020 11:19:15 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlsXR-0005az-6h; Thu, 18 Jun 2020 11:16:59 +0000
-X-UUID: 556d89a659da4634b0f0c027bcdca412-20200618
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=Rw+XJf9G3LmNKirn/C94v5PKCGl3yGm8pZ+FUDGL5Qk=; 
- b=JnBBbjpEVatR6pLaF0QmRVXLPk/Tl8nOMfTNA9yHHW4rez2Om5Rb5fxwkoH7OPm6TWslWbxBw9HJlpKWvTF1/9sR8a22NkSkWt2zUzhrOP0XGx4TJ9xjpt/bHacnWhhrTR4sVe32RaQBjfxn8ZHHzRi/fqANXsY51Jqf93VTMq4=;
-X-UUID: 556d89a659da4634b0f0c027bcdca412-20200618
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <macpaul.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1002334691; Thu, 18 Jun 2020 03:16:31 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 18 Jun 2020 04:06:40 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 18 Jun 2020 19:06:32 +0800
-Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 18 Jun 2020 19:06:32 +0800
-Message-ID: <1592478394.6408.9.camel@mtkswgap22>
-Subject: Re: [PATCH v8 0/4] Add basic SoC support for mt6765
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>
-Date: Thu, 18 Jun 2020 19:06:34 +0800
-In-Reply-To: <1582279929-11535-1-git-send-email-macpaul.lin@mediatek.com>
-References: <1582279929-11535-1-git-send-email-macpaul.lin@mediatek.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1jlsZa-0006D7-L6
+ for linux-mediatek@lists.infradead.org; Thu, 18 Jun 2020 11:19:14 +0000
+Received: from localhost (unknown [151.48.140.182])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id A29402078D;
+ Thu, 18 Jun 2020 11:19:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1592479149;
+ bh=VMTjW3A5rM+/n8uTmhib5xc6DSyPNkBhwsyvBYgZETA=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Dw2AtYlUis3RrRvXICgjJS9KxGDTJj8qk6FfhNQqgUH4oGN3yA4YYqciaFJtCyJPo
+ pJvdkvxTSzNCTq9oZrKXI6OaP57Bcs2S2bm6ELcG+Ufjs+jE1BjVa04Hr3iZDXQL/w
+ 3hIG/B03CAJSr59A/uIK6CZdg/mQqd2dRqKcljCw=
+Date: Thu, 18 Jun 2020 13:18:59 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Oleksandr Natalenko <oleksandr@redhat.com>
+Subject: Re: mt7612 suspend/resume issue
+Message-ID: <20200618111859.GC698688@lore-desk.lan>
+References: <20200618090556.pepjdbnba2gqzcbe@butterfly.localdomain>
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20200618090556.pepjdbnba2gqzcbe@butterfly.localdomain>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200618_041657_254220_A014BABA 
-X-CRM114-Status: GOOD (  18.15  )
+X-CRM114-CacheID: sfid-20200618_041910_736187_03746367 
+X-CRM114-Status: GOOD (  21.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,129 +73,238 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Michael Turquette <mturquette@baylibre.com>,
- Loda Chou <loda.chou@mediatek.com>, Fabien
- Parent <fparent@baylibre.com>, Mars Cheng <mars.cheng@mediatek.com>, Will
- Deacon <will@kernel.org>, linux-clk@vger.kernel.org,
- Ryder Lee <Ryder.Lee@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, Evan
- Green <evgreen@chromium.org>, Yong Wu <yong.wu@mediatek.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, mtk01761 <wendell.lin@mediatek.com>,
- Owen Chen <owen.chen@mediatek.com>, devicetree@vger.kernel.org,
- Joerg Roedel <jroedel@suse.de>, Marc Zyngier <marc.zyngier@arm.com>,
- Sean Wang <Sean.Wang@mediatek.com>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, CC Hwang <cc.hwang@mediatek.com>,
- Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org,
- Shawn Guo <shawnguo@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Ryder Lee <ryder.lee@mediatek.com>, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Kalle Valo <kvalo@codeaurora.org>, Felix Fietkau <nbd@nbd.name>
+Content-Type: multipart/mixed; boundary="===============7656527663789798021=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-02-21 at 18:12 +0800, Macpaul Lin wrote:
-> This patch adds basic SoC support for Mediatek's new 8-core SoC,
-> MT6765, which is mainly for smartphone application.
-> 
-> Changes in V8:
-> 1. Origin V7 patchset:
->    https://patchwork.kernel.org/cover/11370105/
->    Split origin V7 patchset into 2 patchset,
->    keep remain patches #2, #5, #6, and #7 in the same order as this
->    V8 patchset.
->    [v7,2/7] dt-bindings: mediatek: Add smi dts binding for Mediatek
->             MT6765 SoC
->    [v7,5/7] soc: mediatek: add MT6765 scpsys and subdomain support
->    [v7,6/7] arm64: dts: mediatek: add mt6765 support
->    [v7,7/7] arm64: defconfig: add CONFIG_COMMON_CLK_MT6765_XXX clocks
-> 
-> Changes in V7:
-> 1. Adapt V6's patchset to latest kernel tree 5.5-rc1.
->    Origin V6 patchset:
->    https://patchwork.kernel.org/cover/11041963/
-> 2. Correct 2 clock-controller type in documentation:
->    mipi0 and venc_gcon.
->    [v7 1/7] dt-bindings: clock: mediatek: document clk bindings
-> 3. Remove V6's patch 03 because it has been taken into 5.5-next-soc
->    [v6, 03/08] dt-bindings: mediatek: add MT6765 power dt-bindings
-> 3. Update Reviewed-by: Rob Herring <robh@kernel.org> for
->    [v6, 04/08] clk: mediatek: add mt6765 clock IDs
->    --> [v7, 03/07] clk: mediatek: add mt6765 clock IDs
-> 4. Update SPDX tag for
->    [v6, 05/08] clk: mediatek: Add MT6765 clock support
->    --> [v7, 04/07] clk: mediatek: Add MT6765 clock support
-> 
-> Changes in V6:
-> 1. Adapt V5's patchset to latest kernel tree.
->    Origin V5 patchset.
->    https://lore.kernel.org/patchwork/cover/963612/
-> 2. Due to clk's common code has been submit by other platform,
->    this patch set will have dependencies with the following patchsets
->    as the following orders.
->    2.a. [v8,00/21] MT8183 IOMMU SUPPORT
->         https://patchwork.kernel.org/cover/11023585/
->    2.b. [v11,0/6] Add basic node support for Mediatek MT8183 SoC
->         https://patchwork.kernel.org/cover/10962385/
->    2.c. [v6,00/14] Mediatek MT8183 scpsys support
->         https://patchwork.kernel.org/cover/11005751/
-> 3. Correct power related patches into dt-binding patches.
-> 4. Re-order V5's 4/11, 6/11, and 7/11 due clk common code change
->    and make dependencies in order.
-> 5. Update some commit message in clk related patches.
-> 
-> Changes in V5:
-> 1. add clk support
-> 
-> Changes in V4:
-> 1. add gic's settings in reg properties
-> 2. remove some patches about dt-bindings since GKH already took them
-> 
-> Changes in V3:
-> 1. split dt-binding document patchs
-> 2. fix mt6765.dtsi warnings with W=12
-> 3. remove uncessary PPI affinity for timer
-> 4. add gicc base for gic dt node
-> 
-> Changes in V2:
-> 1. fix clk properties in uart dts node
-> 2. fix typo in submit title
-> 3. add simple-bus in mt6765.dtsi
-> 4. use correct SPDX license format
-> 
-> Mars Cheng (3):
->   dt-bindings: mediatek: Add smi dts binding for Mediatek MT6765 SoC
->   soc: mediatek: add MT6765 scpsys and subdomain support
->   arm64: dts: mediatek: add mt6765 support
-> 
-> Owen Chen (1):
->   arm64: defconfig: add CONFIG_COMMON_CLK_MT6765_XXX clocks
-> 
->  .../memory-controllers/mediatek,smi-common.txt     |    1 +
->  arch/arm64/boot/dts/mediatek/Makefile              |    1 +
->  arch/arm64/boot/dts/mediatek/mt6765-evb.dts        |   33 +++
->  arch/arm64/boot/dts/mediatek/mt6765.dtsi           |  253 ++++++++++++++++++++
->  arch/arm64/configs/defconfig                       |    6 +
->  drivers/soc/mediatek/mtk-scpsys.c                  |  130 ++++++++++
->  6 files changed, 424 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765-evb.dts
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765.dtsi
-> 
 
-Dear Matthias and Rob,
+--===============7656527663789798021==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="yVhtmJPUSI46BTXb"
+Content-Disposition: inline
 
-Just a remind of these patches related to MT6765.
-Thanks for Stephen's help, the other clock related patches of MT6765 has
-been already merged into 5.8-rc1. I've tested these v8 patches of MT6765
-on 5.8-rc1 and seems they were able to be applied. Could you kindly help
-to check if these patches were qualified to be merged into your tree?
 
-Thanks a lot!
+--yVhtmJPUSI46BTXb
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Best regards,
-Macpaul Lin
+> Hello, Lorenzo et al.
+
+Hi Oleksandr,
+
+>=20
+> I'm using MT7612 mini-PCIE cards as both AP in a home server and as a cli=
+ent in
+> a laptop. The AP works perfectly (after some fixing from your side; thank=
+s for
+> that!), and so does the client modulo it has issues during system resume.
+>=20
+
+[...]
+
+>=20
+> The Wi-Fi becomes unusable from this point. If I `modprobe -r` the "mt76x=
+2e" module
+> after this splat, the system hangs completely.
+>=20
+> If the system resumes fine, the resume itself takes quite some time (more=
+ than
+> 10 seconds).
+>=20
+> I've found a workaround for this, though. It seems the system behaves fin=
+e if I
+> do `modprobe -r mt76x2e` before it goes to sleep, and then `modprobe mt76=
+x2e`
+> after resume. Also, the resume time improves greatly.
+>=20
+> I cannot say if it is some regression or not. I've installed the card
+> just recently, and used it with v5.7 kernel series only.
+>=20
+> Do you have any idea what could go wrong and how to approach the issue?
+
+I have not reproduced the issue myself yet, but I guess we can try:
+1- update to latest Felix's tree [1]
+2- could you please try to apply the patch below? (compile-test only)
+
+Regards,
+Lorenzo
+
+[1] https://github.com/nbd168/wireless
+
+=46rom 400268a0ee5843cf736308504dfbd2f20a291eaf Mon Sep 17 00:00:00 2001
+Message-Id: <400268a0ee5843cf736308504dfbd2f20a291eaf.1592478809.git.lorenz=
+o@kernel.org>
+=46rom: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Thu, 18 Jun 2020 13:10:11 +0200
+Subject: [PATCH] mt76: mt76x2: fix pci suspend
+
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ .../net/wireless/mediatek/mt76/mt76x02_dma.h  |  1 +
+ .../net/wireless/mediatek/mt76/mt76x02_mmio.c | 15 +++++
+ .../net/wireless/mediatek/mt76/mt76x2/pci.c   | 58 +++++++++++++++++++
+ 3 files changed, 74 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_dma.h b/drivers/net=
+/wireless/mediatek/mt76/mt76x02_dma.h
+index 4aff4f8e87b6..6262f2ecded5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_dma.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_dma.h
+@@ -62,5 +62,6 @@ mt76x02_wait_for_wpdma(struct mt76_dev *dev, int timeout)
+ int mt76x02_dma_init(struct mt76x02_dev *dev);
+ void mt76x02_dma_disable(struct mt76x02_dev *dev);
+ void mt76x02_dma_cleanup(struct mt76x02_dev *dev);
++void mt76x02_dma_reset(struct mt76x02_dev *dev);
+=20
+ #endif /* __MT76x02_DMA_H */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt76x02_mmio.c
+index cbbe986655fe..e2631c964331 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c
+@@ -348,6 +348,21 @@ void mt76x02_dma_disable(struct mt76x02_dev *dev)
+ }
+ EXPORT_SYMBOL_GPL(mt76x02_dma_disable);
+=20
++void mt76x02_dma_reset(struct mt76x02_dev *dev)
++{
++	int i;
++
++	mt76x02_dma_disable(dev);
++	usleep_range(1000, 2000);
++
++	for (i =3D 0; i < __MT_TXQ_MAX; i++)
++		mt76_queue_tx_cleanup(dev, i, true);
++	mt76_for_each_q_rx(&dev->mt76, i)
++		mt76_queue_rx_reset(dev, i);
++
++	mt76x02_dma_enable(dev);
++}
++
+ void mt76x02_mac_start(struct mt76x02_dev *dev)
+ {
+ 	mt76x02_mac_reset_counters(dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c b/drivers/net/=
+wireless/mediatek/mt76/mt76x2/pci.c
+index 53ca0cedf026..5543e242fb9b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
+@@ -103,6 +103,60 @@ mt76pci_remove(struct pci_dev *pdev)
+ 	mt76_free_device(mdev);
+ }
+=20
++static int __maybe_unused
++mt76x2e_suspend(struct pci_dev *pdev, pm_message_t state)
++{
++	struct mt76_dev *mdev =3D pci_get_drvdata(pdev);
++	struct mt76x02_dev *dev =3D container_of(mdev, struct mt76x02_dev, mt76);
++	int i, err;
++
++	napi_disable(&mdev->tx_napi);
++	tasklet_kill(&mdev->pre_tbtt_tasklet);
++	tasklet_kill(&mdev->tx_tasklet);
++
++	mt76_for_each_q_rx(mdev, i)
++		napi_disable(&mdev->napi[i]);
++
++	mt76x02_dma_reset(dev);
++
++	pci_enable_wake(pdev, pci_choose_state(pdev, state), true);
++	pci_save_state(pdev);
++	err =3D pci_set_power_state(pdev, pci_choose_state(pdev, state));
++	if (err)
++		goto restore;
++
++	return 0;
++
++restore:
++	mt76_for_each_q_rx(mdev, i)
++		napi_enable(&mdev->napi[i]);
++	napi_enable(&mdev->tx_napi);
++
++	return err;
++}
++
++static int __maybe_unused
++mt76x2e_resume(struct pci_dev *pdev)
++{
++	struct mt76_dev *mdev =3D pci_get_drvdata(pdev);
++	int i, err;
++
++	err =3D pci_set_power_state(pdev, PCI_D0);
++	if (err)
++		return err;
++
++	pci_restore_state(pdev);
++
++	mt76_for_each_q_rx(mdev, i) {
++		napi_enable(&mdev->napi[i]);
++		napi_schedule(&mdev->napi[i]);
++	}
++	napi_enable(&mdev->tx_napi);
++	napi_schedule(&mdev->tx_napi);
++
++	return 0;
++}
++
+ MODULE_DEVICE_TABLE(pci, mt76pci_device_table);
+ MODULE_FIRMWARE(MT7662_FIRMWARE);
+ MODULE_FIRMWARE(MT7662_ROM_PATCH);
+@@ -113,6 +167,10 @@ static struct pci_driver mt76pci_driver =3D {
+ 	.id_table	=3D mt76pci_device_table,
+ 	.probe		=3D mt76pci_probe,
+ 	.remove		=3D mt76pci_remove,
++#ifdef CONFIG_PM
++	.suspend	=3D mt76x2e_suspend,
++	.resume		=3D mt76x2e_resume,
++#endif /* CONFIG_PM */
+ };
+=20
+ module_pci_driver(mt76pci_driver);
+--=20
+2.26.2
+
+
+>=20
+> Thanks.
+>=20
+> --=20
+>   Best regards,
+>     Oleksandr Natalenko (post-factum)
+>     Principal Software Maintenance Engineer
+>=20
+
+--yVhtmJPUSI46BTXb
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCXutNoAAKCRA6cBh0uS2t
+rGaCAP9seDnh+3I9x7qM0L6z+RmRhKym8Vj5D+al2CY0DHHnMgEAgvTcNsCPFMrh
+Dj6aS0JZ6xV07SQNTlsUmV2eld+m6gc=
+=Cp+H
+-----END PGP SIGNATURE-----
+
+--yVhtmJPUSI46BTXb--
+
+
+--===============7656527663789798021==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============7656527663789798021==--
+
