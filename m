@@ -2,69 +2,76 @@ Return-Path: <SRS0=U17p=77=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 94774C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 14:03:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CE6ECC433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 14:22:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 664852082F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 14:03:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A02C3207E8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2020 14:22:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NOkwu+M/";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="AsekxYtZ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 664852082F
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linuxfoundation.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="c0Xa8yfH";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="SIUCH/QL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A02C3207E8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m6gN133nSHYhbiD9/STFkA3m4yCtWHSsfwhvqq+rtsk=; b=NOkwu+M/fgkOek
-	DkA9tw+m16fzJ5Cm5SA9WJWDrqH3nn11KzluEnDYPOHfp1cCUUM1DXSKbUt0EeUb4dB7qpd0YkvIA
-	IBwIh/ulAN98UJkqP/R7sA3uqIO4DJMCNlJqAOXIc532RVgde2c4uN7LnvAN0KrqKd82Rz33oZ5/2
-	W6w193yNUkVovO8G+HTz4olPHYXLMCE8z+K/a7Mg3NeUqrZ/VzKAOqgw1EuR0lHJq1hthb3ag08/3
-	qktLZgneFNwMNgjdceSrTY88vfcK6Y7tjnYsfT2qH0h1jUQ6aIwWncE8R3geh4MFYOShzjMqOGIOD
-	Qra0Rh7zfQcsOmbimf2Q==;
+	List-Owner; bh=nXHTexisJmbn/U9njjXTy/xJBv5M4dOXvNxZ4gBovYo=; b=c0Xa8yfHpENhBX
+	vlZtXI5ZbYc/KAm8GqRg5sHviomjvMd/NHlKzuRmYX1mVEFoTiWoeKgvYe/E9LuxzNzgR7Ncs3kvg
+	EDbxMUnrOOxeU22gJWtQmM+Um3IdJjd37ADHvPWkd2EQ2DVAY/TshblC5fZPG/twrJ8AEpD9OJjPL
+	Nm8Qe3EVuQXedr5mV7VlgS+Sk0UsNrRgGEjY73ekcvqD86IJkLi/XoWXHRt2+ex2yl1TkWCGxYGpb
+	s1lKRONML+p55g44q9F9V7PqDh9xxW6qDEiRAYNmon8Clbd1hf76BSJpGIsuQH2hJf8Wj7bM5+mZM
+	vbWE6g580YLNOxcTcqmw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlv8E-00005t-Pt; Thu, 18 Jun 2020 14:03:06 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jlvQy-0005yD-D3; Thu, 18 Jun 2020 14:22:28 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlv80-0008NC-T3; Thu, 18 Jun 2020 14:02:54 +0000
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 82C5920773;
- Thu, 18 Jun 2020 14:02:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592488972;
- bh=Zi1nm8yHfREwF4pP+1YaTpENFiQVaBW3aml0Ie6+ioc=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=AsekxYtZ+W3shsJuZkhmOP8ftSzIZWj3LdaIR+n5JPw6tmfCXYtPBkJ/L4wq7rkta
- OqOCFXwnqjKTC7lMgkrVyAMoQWa1P1kEI++WrlwahA/AcYRIVSI6UVTiGHRgq5mMP+
- Kq4HWK8AvQRD7fT5XAdYkXybufco8nXjhaURPVy0=
-Date: Thu, 18 Jun 2020 16:02:44 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Subject: Re: [PATCH v3] usb: replace hardcode maximum usb string length by
- definition
-Message-ID: <20200618140244.GA2576793@kroah.com>
-References: <1592201855-8218-1-git-send-email-macpaul.lin@mediatek.com>
- <1592471618-29428-1-git-send-email-macpaul.lin@mediatek.com>
+ id 1jlvQo-0005pa-9a; Thu, 18 Jun 2020 14:22:20 +0000
+X-UUID: 2fff64a025194e8f9e39ee20d0efb1cd-20200618
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=JaNv1xRYZuJqMSR6WYFAxOUzdkvOslEtw5hvRm5QTu4=; 
+ b=SIUCH/QLBqHdKw2L/40jis4UUCHdUXrFWHg2gRpxUUiA77XYMVoPpgvBab0I7Qaj1lQnIlRD0cOvFk3uefAcx0NKueO4a12vvKZykA+3O5gbJzdF66hS09x87UX9xKlMbWfPR9JngIgq3XrIs/k94MnefO7Tt3UZ+ihAqGLG3kI=;
+X-UUID: 2fff64a025194e8f9e39ee20d0efb1cd-20200618
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <hanks.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 780583709; Thu, 18 Jun 2020 06:21:58 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 18 Jun 2020 07:22:08 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 18 Jun 2020 22:22:02 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 18 Jun 2020 22:22:02 +0800
+Message-ID: <1592490123.10773.16.camel@mtkswgap22>
+Subject: Re: [PATCH 1/1] irqchip: Add config MTK_SYSIRQ and MTK_CIRQ
+From: Hanks Chen <hanks.chen@mediatek.com>
+To: Marc Zyngier <maz@kernel.org>
+Date: Thu, 18 Jun 2020 22:22:03 +0800
+In-Reply-To: <f47e8a1e70c982ecf6245db573630f51@kernel.org>
+References: <1592483471-14806-1-git-send-email-hanks.chen@mediatek.com>
+ <f47e8a1e70c982ecf6245db573630f51@kernel.org>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1592471618-29428-1-git-send-email-macpaul.lin@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200618_070252_981648_352FDCEE 
-X-CRM114-Status: GOOD (  17.64  )
+X-CRM114-CacheID: sfid-20200618_072218_338850_92B39486 
+X-CRM114-Status: GOOD (  22.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,111 +83,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Felipe Balbi <balbi@kernel.org>,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>, linux-usb@vger.kernel.org,
- Jim Lin <jilin@nvidia.com>, linux-kernel@vger.kernel.org,
- Alan Stern <stern@rowland.harvard.edu>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- Macpaul Lin <macpaul.lin@gmail.com>, linux-arm-kernel@lists.infradead.org,
- Siqi Lin <siqilin@google.com>
+Cc: CC Hwang <cc.hwang@mediatek.com>, Jason Cooper <jason@lakedaemon.net>,
+ wsd_upstream@mediatek.com, Loda Chou <loda.chou@mediatek.com>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 18, 2020 at 05:13:38PM +0800, Macpaul Lin wrote:
-> Replace hardcode maximum usb string length (126 bytes) by definition
-> "MAX_USB_STRING_LEN".
+On Thu, 2020-06-18 at 13:41 +0100, Marc Zyngier wrote:
+> On 2020-06-18 13:31, Hanks Chen wrote:
+> > Mediatek sysirq and cirq drivers as-is were bound together to the 
+> > config
+> > of ARCH_MEDIATEK.  These two drivers should be able to be configured
+> > separately.  For example, on new Mediatek mobile chips such as 
+> > Dimensity
+> > 820, the sysirq driver is not used since the hardware module is 
+> > removed.
+> > 
+> > Add two new configs to sysirq and cirq drivers.
+> > - config MTK_SYSIRQ for the interrupt polarity controller driver: 
+> > sysirq
+> > - config MTK_CIRQ for the low-power interrupt driver: cirq
+> > 
+> > Signed-off-by: cc.hwang <cc.hwang@mediatek.com>
+> > Signed-off-by: Hanks Chen <hanks.chen@mediatek.com>
+> > ---
+> >  drivers/irqchip/Kconfig  |   12 ++++++++++++
+> >  drivers/irqchip/Makefile |    3 ++-
+> >  2 files changed, 14 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/irqchip/Kconfig b/drivers/irqchip/Kconfig
+> > index 29fead2..cc9aa18 100644
+> > --- a/drivers/irqchip/Kconfig
+> > +++ b/drivers/irqchip/Kconfig
+> > @@ -572,4 +572,16 @@ config LOONGSON_PCH_MSI
+> >  	help
+> >  	  Support for the Loongson PCH MSI Controller.
+> > 
+> > +config MTK_SYSIRQ
+> > +	tristate "Mediatek interrupt polarity controller"
 > 
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> Acked-by: Alan Stern <stern@rowland.harvard.edu>
-> ---
-> Changes for v2:
->   - Add definition "MAX_USB_STRING_LEN" in ch9.h instead of in usb.h.
->     Thanks for Alan's suggestion.
-> Changes for v3:
->   - Rebase to 5.8-rc1 and resolve conflict.
+> How do you expect this to work as a module?
+
+My fault, I missed some patches.I'll add them in next patches.
+
+These should be three patches:
+1. break existing configurations and create new config for them
+2. Change Kconfig to be loadable as a module and ensure all platforms
+are executable.
+3. Make the irq-mtk-sysirq driver as a loadable kernel module for GKI
+and flexibility.
+.
+Thank you for your comment
+
 > 
->  drivers/usb/gadget/composite.c |    4 ++--
->  drivers/usb/gadget/configfs.c  |    2 +-
->  drivers/usb/gadget/usbstring.c |    4 ++--
->  include/uapi/linux/usb/ch9.h   |    3 +++
->  4 files changed, 8 insertions(+), 5 deletions(-)
+> > +	help
+> > +	  Interrupt polarity controller driver to swap polarity for
+> > +	  interrupts for Mediatek mobile chips.
+> > +
+> > +config MTK_CIRQ
+> > +	bool "Mediatek low-power interrupt controller"
+> > +	help
+> > +	  Low-power interrupt controller driver to monitor IRQS
+> > +	  in the sleep mode for Mediatek mobile chips.
+> > +
+> >  endmenu
+> > diff --git a/drivers/irqchip/Makefile b/drivers/irqchip/Makefile
+> > index 133f9c4..30421d2 100644
+> > --- a/drivers/irqchip/Makefile
+> > +++ b/drivers/irqchip/Makefile
+> > @@ -69,7 +69,8 @@ obj-$(CONFIG_BCM7120_L2_IRQ)		+= irq-bcm7120-l2.o
+> >  obj-$(CONFIG_BRCMSTB_L2_IRQ)		+= irq-brcmstb-l2.o
+> >  obj-$(CONFIG_KEYSTONE_IRQ)		+= irq-keystone.o
+> >  obj-$(CONFIG_MIPS_GIC)			+= irq-mips-gic.o
+> > -obj-$(CONFIG_ARCH_MEDIATEK)		+= irq-mtk-sysirq.o irq-mtk-cirq.o
+> > +obj-$(CONFIG_MTK_SYSIRQ)		+= irq-mtk-sysirq.o
+> > +obj-$(CONFIG_MTK_CIRQ)			+= irq-mtk-cirq.o
+> >  obj-$(CONFIG_ARCH_DIGICOLOR)		+= irq-digicolor.o
+> >  obj-$(CONFIG_RENESAS_H8300H_INTC)	+= irq-renesas-h8300h.o
+> >  obj-$(CONFIG_RENESAS_H8S_INTC)		+= irq-renesas-h8s.o
 > 
-> diff --git a/drivers/usb/gadget/composite.c b/drivers/usb/gadget/composite.c
-> index cb4950c..d0de016 100644
-> --- a/drivers/usb/gadget/composite.c
-> +++ b/drivers/usb/gadget/composite.c
-> @@ -1041,7 +1041,7 @@ static void collect_langs(struct usb_gadget_strings **sp, __le16 *buf)
->  	while (*sp) {
->  		s = *sp;
->  		language = cpu_to_le16(s->language);
-> -		for (tmp = buf; *tmp && tmp < &buf[126]; tmp++) {
-> +		for (tmp = buf; *tmp && tmp < &buf[MAX_USB_STRING_LEN]; tmp++) {
->  			if (*tmp == language)
->  				goto repeat;
->  		}
-> @@ -1116,7 +1116,7 @@ static int get_string(struct usb_composite_dev *cdev,
->  			collect_langs(sp, s->wData);
->  		}
->  
-> -		for (len = 0; len <= 126 && s->wData[len]; len++)
-> +		for (len = 0; len <= MAX_USB_STRING_LEN && s->wData[len]; len++)
->  			continue;
->  		if (!len)
->  			return -EINVAL;
-> diff --git a/drivers/usb/gadget/configfs.c b/drivers/usb/gadget/configfs.c
-> index 32b637e..70dd4ba 100644
-> --- a/drivers/usb/gadget/configfs.c
-> +++ b/drivers/usb/gadget/configfs.c
-> @@ -115,7 +115,7 @@ static int usb_string_copy(const char *s, char **s_copy)
->  	char *str;
->  	char *copy = *s_copy;
->  	ret = strlen(s);
-> -	if (ret > 126)
-> +	if (ret > MAX_USB_STRING_LEN)
->  		return -EOVERFLOW;
->  
->  	str = kstrdup(s, GFP_KERNEL);
-> diff --git a/drivers/usb/gadget/usbstring.c b/drivers/usb/gadget/usbstring.c
-> index 7c24d1c..8a8d647 100644
-> --- a/drivers/usb/gadget/usbstring.c
-> +++ b/drivers/usb/gadget/usbstring.c
-> @@ -55,9 +55,9 @@
->  		return -EINVAL;
->  
->  	/* string descriptors have length, tag, then UTF16-LE text */
-> -	len = min ((size_t) 126, strlen (s->s));
-> +	len = min((size_t)MAX_USB_STRING_LEN, strlen(s->s));
->  	len = utf8s_to_utf16s(s->s, len, UTF16_LITTLE_ENDIAN,
-> -			(wchar_t *) &buf[2], 126);
-> +			(wchar_t *) &buf[2], MAX_USB_STRING_LEN);
->  	if (len < 0)
->  		return -EINVAL;
->  	buf [0] = (len + 1) * 2;
-> diff --git a/include/uapi/linux/usb/ch9.h b/include/uapi/linux/usb/ch9.h
-> index 2b623f3..cc02d05 100644
-> --- a/include/uapi/linux/usb/ch9.h
-> +++ b/include/uapi/linux/usb/ch9.h
-> @@ -364,6 +364,9 @@ struct usb_config_descriptor {
->  
->  /*-------------------------------------------------------------------------*/
->  
-> +/* USB String descriptors can contain at most 126 characters. */
-> +#define MAX_USB_STRING_LEN	126
+> In general, this approach doesn't look right. As it stands, this is just 
+> breaking existing configurations
+> 
+> Do you really expect users to know exactly which interrupt controllers 
+> their system is going to use? This seems like the wrong assumption. If 
+> you really want to save the handful of bytes these drivers take in your 
+> image, then add the relevant dependency information in Kconfig.
+> 
 
-Nit, as this is part of the userspace api, we should make this
-"USB_MAX_STRING_LEN" as we should be using "USB_" for all exports here.
+1. This patch will add a dependency on it in Kconfig, which ensures all
+platforms are executable.
+2. We want to follow the Android GKI and according to the requirement of
+GKI(General Kernel Image), all SoC and Board Peripheral drivers are
+loadable kernel modules.so I need to breaking existing configurations
+and create new config for them.
 
-That seems to be the case already except for one really odd set of
-"TEST_" defines, which I'll go fix up after this...
-
-I will just hand-edit this patch to make that change so you don't have
-to respin it again...
-
-thanks,
-
-greg k-h
+Thank you for your comment
+>          M.
 
 _______________________________________________
 Linux-mediatek mailing list
