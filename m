@@ -2,87 +2,135 @@ Return-Path: <SRS0=jvDT=AA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B50D3C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2020 11:56:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 51001C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2020 15:02:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 84B1E2083B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2020 11:56:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 11FC1206DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2020 15:02:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JK7AwpxK";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="FTp4Ik5o"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 84B1E2083B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nry76WoG";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="2761HQNp";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="TzDmUeOa";
+	dkim=neutral (0-bit key) header.d=redhat.com header.i=@redhat.com header.b="XX7+jMcS";
+	dkim=neutral (0-bit key) header.d=redhat.com header.i=@redhat.com header.b="YH3oAlCv"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 11FC1206DB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=UcHRHOx6JkB77edJvosfYeirK+jg0C8JVmhB/3kVyKA=; b=JK7AwpxKe2HpmWT+YYyd8y+OlU
-	pBQl9lNUc5buqq/qSfgxPBF8jgQg/9vBp51Y7GnIny8XxjOxrYzNd35in6RtqRg0Wl2uJB0azRC8r
-	OrVdlg65pN3TBCwRv83aB1SyMiHUtW3mBQ8hJ60h6C/SwumifLrBtoSgJQnMVaIr6aT94t7n++1zr
-	61ruxTSKWoPdUDXNalq1BzLQ5bZaDhTbUAiw3lIIOoLI0AXkqGwvYf5Lpo/NxizXYsIqgjD3hNwGW
-	vzs5HAzzL8g1iHrzgWjH9t9uVT173fAQjuCTfyfey0tYut+qrh5BDcdlwcpoA4XKfjp5zezOuvrRr
-	/AOm+4qg==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6IbXSb5OfCHV+5QpPysYnzTCuHEw6MRPCxEDclnZ8xY=; b=nry76WoGjRSDmB
+	I7+6P0QW2ilMt/uhXtvRHM9MTBgegIP9V44dfZyIvNF6RO4/yPYx1ygJL+l6w7N9U2QtyykVwBHHX
+	dHKDy0k/s7gzIqOZ1jAYSZM9tT2F8MvPTRV6DnqmxPs4G9U/6ysTKsAcDy9AFeTHEhFHlpjxaoYwx
+	0afUrcwuMYcpAAi3Xm6biRskBl86w0wFQYNG/OiXH4Pc8rojrkpZzblE2bXKo2E/aBOnlDWzlIzC4
+	11Ebh0oREPwYYE6h0I1WzgGuFEhEg5WXe0b0uY2f7PxCg5psuAZxF5l36/LoMoi7b/yqdsl5KgxtF
+	LaC9WSK/fHpT8snGHtmQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jmFdE-0003S2-BR; Fri, 19 Jun 2020 11:56:28 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1jmIXY-0003Ct-DP; Fri, 19 Jun 2020 15:02:48 +0000
+Received: from merlin.infradead.org ([2001:8b0:10b:1231::1])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jmFbo-0007oa-Vt; Fri, 19 Jun 2020 11:55:08 +0000
-Received: by mail-pg1-x541.google.com with SMTP id v11so4398149pgb.6;
- Fri, 19 Jun 2020 04:55:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=dcN3meLAI17H/mxoVJQTTxgzB2Vv0fY9Kr8wPSUTW+E=;
- b=FTp4Ik5oWvgmg6rVSFIxHcJ/QLbu1kBf50kBC+XBVcG97UMArK1uMyBog2z0E/H6wb
- knjyN9qFaDm6oH6xP0RYTzuWJP3KV6oAFa8UjNZKGLc63aAU7TsMIupxGQsvnP/rcs9v
- nRJ6FGF+pBMbzlWpDcGj5fzNSpqMN/xsbAZA3kR3gnmX5C1cVIjVz9vc720NCjkjFaY0
- DJdEgwBQdrbAr5s/R92F1LwxprJ8dDytQMK4WIHVLbNvXPeGl3nAQ9ezGInp38LX5PlJ
- 13yvsFNNN8bgPgwdBWRmoxAiuR5Evgj4tLfqP7pO2Fq86TvN669LzIe4KoqBeyP0fhMV
- 12Xw==
+ id 1jmIXM-0003AS-9y
+ for linux-mediatek@bombadil.infradead.org; Fri, 19 Jun 2020 15:02:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Sender
+ :Reply-To:Content-ID:Content-Description;
+ bh=MePGmpdMheghvcWzFiiQPrXR/Jgmbjf7VycD0YJFnN8=; b=2761HQNplOKAI623MlA92Q9TsO
+ FegzIvgV+Tqfl1BnaBHuOBm16TXLgPhXzvU+eAXp7j2/HWbtrmIhqTomWZwpAbMUOwyHd1/eu5JB3
+ 6HEkYR+zcjwtL8bbq59e7CbCVqER58Ac3w1mU4jNnWy1vdSGyyWoN4tZoaP/2e1l32nKlflJgeDjF
+ g6WDRhbyLUZJXd3pZUeehnmeEt00EypkfattFiTrP/8kKTkbh1eiC54mMCHGGQIOVKHOWSggn45DC
+ g6wVWzO1Q2jWpxE20N5XnvkXRaj3ZgBCiXihx02can02ZfanA65Lmdl7ptkBtF3lqxl2b1tee0V/q
+ 2oyjjHWQ==;
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]
+ helo=us-smtp-1.mimecast.com)
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jmIXI-0004Ll-5t
+ for linux-mediatek@lists.infradead.org; Fri, 19 Jun 2020 15:02:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592578899;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=MePGmpdMheghvcWzFiiQPrXR/Jgmbjf7VycD0YJFnN8=;
+ b=TzDmUeOaEf/DwJtkRVUkTNHbyVOrJKUtRfqiwf44jFAgZFiXdEVIrsoxhQyOLNIYQd+/Dt
+ Vq6HC2RIyxmgriZaDXRJm4BplH7TNnh8M5igLFbdr5bMQ+FGvbQPl52U5P6AYu5oQ95IoS
+ Z3xCJiD6PybTrrs/fBVArx+r1pKESvM=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592578922;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=MePGmpdMheghvcWzFiiQPrXR/Jgmbjf7VycD0YJFnN8=;
+ b=XX7+jMcSXI6RuDDmZqx4ugEFSSWVcDinm2Fc7QAZNgccNRlav9UHZ4EXH5IAJreeaVVwW5
+ LOTGEvi+e8uiixchVZaILM/wnjVr6P+92Zno8kRiLDe8gIf/KzdC9oOgMhKRfaHk4hXB3M
+ vnZuFlhsQtcCXnTFj2hPP4n0MTQsfN4=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592578950;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=MePGmpdMheghvcWzFiiQPrXR/Jgmbjf7VycD0YJFnN8=;
+ b=YH3oAlCv1x2lmleuYId3S7SwTwgVs8wXj/HpGykUTs32KM6DBCadADBQ3ANhGoVq13hgW+
+ 1xEuDdWX5W4lo6/u1sRI0OYMTz1sBNiivovmpO71TDht9d9imNijbs8xfZNWwGfJBXjef7
+ ezQ0VqAT9zvRL3+yTUyx+q5YtqhI1xI=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-305-mUa7tJqtO1-druvLmPhTgQ-1; Fri, 19 Jun 2020 11:01:37 -0400
+X-MC-Unique: mUa7tJqtO1-druvLmPhTgQ-1
+Received: by mail-ej1-f69.google.com with SMTP id e14so4079133ejt.16
+ for <linux-mediatek@lists.infradead.org>; Fri, 19 Jun 2020 08:01:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=dcN3meLAI17H/mxoVJQTTxgzB2Vv0fY9Kr8wPSUTW+E=;
- b=LLNJks1GrsvIMy+vOlj82XJBCocsEqXKbcaMxrIKY9l61Cr/X4KYx8gUffdR+SzoOD
- pr5g4BV5j9ccu5mVLMcgsFzuZ1W1kriOO3zVGg0K9Bh6kLn1c3/RanMFrAXPJbiLPRa9
- Vkb5y8uI2aGtXwrcdMj62COndTZJygV9l1EZtO1qJ4Gnv1qUuMO5aIxC6kegvwit9/JI
- KMgMwHh9HnuSuuSuuzYQJBbK4W/UJucNAeC3d8V2XZ1mzhgxKKFRsLaKGXoxK05l4bHN
- 9XRApnRZnxf0s5FF9u8p3p51R63yV2Dezap0uPmCo+TX/Z3tjDQ2+2x+IXE5RWqwVJbN
- 5UhA==
-X-Gm-Message-State: AOAM532ii10r5qJYgmJU8yVzgA5jrG+AlBMjgOB4RWfgZq9vInYShXUm
- 6M3fu1TJInuHpjJTjC9qmUU=
-X-Google-Smtp-Source: ABdhPJwRULU+2sQ6xiSpEtBJmt71hLIyZtH2JJH+60C9gdSU6VGOhh1cV4rLtkrM6BmS2Si3hCOMNA==
-X-Received: by 2002:a62:8106:: with SMTP id t6mr7994109pfd.103.1592567700002; 
- Fri, 19 Jun 2020 04:55:00 -0700 (PDT)
-Received: from localhost.localdomain ([2402:7500:46c:79b7:a5d3:5b37:1d99:175a])
- by smtp.gmail.com with ESMTPSA id n64sm5026712pga.38.2020.06.19.04.54.55
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 19 Jun 2020 04:54:59 -0700 (PDT)
-From: Gene Chen <gene.chen.richtek@gmail.com>
-To: lee.jones@linaro.org, jic23@kernel.org, jacek.anaszewski@gmail.com,
- pavel@ucw.cz, matthias.bgg@gmail.com
-Subject: [PATCH v2 4/4] regulator: mt6360: Add support for MT6360 regulator
-Date: Fri, 19 Jun 2020 19:53:51 +0800
-Message-Id: <1592567631-20363-5-git-send-email-gene.chen.richtek@gmail.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1592567631-20363-1-git-send-email-gene.chen.richtek@gmail.com>
-References: <1592567631-20363-1-git-send-email-gene.chen.richtek@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200619_045501_065717_7D7F8AFC 
-X-CRM114-Status: GOOD (  16.59  )
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=7/EPBnydBuCis0CoW/wn/i8O4pMUlbe/kp5ynPbnTTM=;
+ b=fWgFTlkWfBk+W9v1NapHEmjsP9NjGAhzb4iGNyqaVwbLNqtKdsEO34bW2mamZfobjq
+ BNuK7GyCE6Fwfq3h54yVj9DpWIES5TqQFwzRZWZTLSzmt3Q8+fIWiY3Mk9FNiLNvTIGS
+ z6aHQEnNcKN8hjjPuPW5LxTVuv9O2/yVS1QaGB2xNHJEA4OaMO3fjUI5IUlkt9fWfhgi
+ d+g6BYXlpHiGg8yGNB4t1ut3VmQaEXivvr7mARHSJzAyQt5O5udxyC1SoyrqjAKAeIA2
+ oKDRjSwDizF/TiYj6EWszMoJbKfgQxa338w+uE6jajOoKnVyevDUYtB/WxWSmAn5Zi1X
+ 844w==
+X-Gm-Message-State: AOAM530EJah1wVVyt01R62GbpQTrIWOMVYPggwG/qJM2d6SaRcxl65wG
+ Br0CfABSQ0vPcnYU9YKKbP+TvOP8pz/+2oURBHA8UAyVs8J1YrKyY+ZyDdcbW4nrQps66xT4QKM
+ ri3Hbd61P3aVDkGO/IwDwTSLMv81QP1Ls
+X-Received: by 2002:a17:906:97cb:: with SMTP id
+ ef11mr4081923ejb.69.1592578893505; 
+ Fri, 19 Jun 2020 08:01:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwf2EV3YhbWO+Jg8qABhve3GhwhKAoQI8LV+pNjmhXy9bJMZMB6M7zkRxW5FFIl30kXz3hG7A==
+X-Received: by 2002:a17:906:97cb:: with SMTP id
+ ef11mr4081860ejb.69.1592578892967; 
+ Fri, 19 Jun 2020 08:01:32 -0700 (PDT)
+Received: from localhost ([2001:470:5b39:29:79fc:ff4e:48ab:b845])
+ by smtp.gmail.com with ESMTPSA id bs1sm4788251edb.43.2020.06.19.08.01.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 19 Jun 2020 08:01:32 -0700 (PDT)
+Date: Fri, 19 Jun 2020 17:01:32 +0200
+From: Oleksandr Natalenko <oleksandr@redhat.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: Re: mt7612 suspend/resume issue
+Message-ID: <20200619150132.2zrc3ojqhtbn432u@butterfly.localdomain>
+References: <20200618090556.pepjdbnba2gqzcbe@butterfly.localdomain>
+ <20200618111859.GC698688@lore-desk.lan>
+MIME-Version: 1.0
+In-Reply-To: <20200618111859.GC698688@lore-desk.lan>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Disposition: inline
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,558 +142,273 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, lars@metafoo.de, lgirdwood@gmail.com,
- linux-kernel@vger.kernel.org, cy_huang@richtek.com, benjamin.chao@mediatek.com,
- broonie@kernel.org, linux-mediatek@lists.infradead.org, dmurphy@ti.com,
- pmeerw@pmeerw.net, knaack.h@gmx.de, linux-arm-kernel@lists.infradead.org,
- shufan_lee@richtek.com
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Ryder Lee <ryder.lee@mediatek.com>, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Kalle Valo <kvalo@codeaurora.org>, Felix Fietkau <nbd@nbd.name>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Gene Chen <gene_chen@richtek.com>
-
-Add MT6360 regulator driver include 2-channel buck and
-6-channel ldo
-
-Signed-off-by: Gene Chen <gene_chen@richtek.com>
----
- drivers/regulator/Kconfig            |   9 +
- drivers/regulator/Makefile           |   1 +
- drivers/regulator/mt6360-regulator.c | 485 +++++++++++++++++++++++++++++++++++
- 3 files changed, 495 insertions(+)
- create mode 100644 drivers/regulator/mt6360-regulator.c
-
-diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
-index 8f677f5..9ae5711 100644
---- a/drivers/regulator/Kconfig
-+++ b/drivers/regulator/Kconfig
-@@ -691,6 +691,15 @@ config REGULATOR_MT6358
- 	  This driver supports the control of different power rails of device
- 	  through regulator interface.
- 
-+config REGULATOR_MT6360
-+	tristate "MT6360 SubPMIC Regulator"
-+	depends on MFD_MT6360
-+	help
-+	  Say Y here to enable MT6360 regulator support.
-+	  This is support MT6360 PMIC/LDO part include
-+	  2-channel buck with Thermal Shutdown and Overload Protection
-+	  6-channel High PSRR and Low Dropout LDO.
-+
- config REGULATOR_MT6380
- 	tristate "MediaTek MT6380 PMIC"
- 	depends on MTK_PMIC_WRAP
-diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
-index e8f1633..7256457 100644
---- a/drivers/regulator/Makefile
-+++ b/drivers/regulator/Makefile
-@@ -86,6 +86,7 @@ obj-$(CONFIG_REGULATOR_MPQ7920) += mpq7920.o
- obj-$(CONFIG_REGULATOR_MT6311) += mt6311-regulator.o
- obj-$(CONFIG_REGULATOR_MT6323)	+= mt6323-regulator.o
- obj-$(CONFIG_REGULATOR_MT6358)	+= mt6358-regulator.o
-+obj-$(CONFIG_REGULATOR_MT6360) += mt6360-regulator.o
- obj-$(CONFIG_REGULATOR_MT6380)	+= mt6380-regulator.o
- obj-$(CONFIG_REGULATOR_MT6397)	+= mt6397-regulator.o
- obj-$(CONFIG_REGULATOR_QCOM_RPM) += qcom_rpm-regulator.o
-diff --git a/drivers/regulator/mt6360-regulator.c b/drivers/regulator/mt6360-regulator.c
-new file mode 100644
-index 0000000..f3c8911
---- /dev/null
-+++ b/drivers/regulator/mt6360-regulator.c
-@@ -0,0 +1,485 @@
-+// SPDX-License-Identifier: GPL-2.0
-+
-+// Copyright (c) 2020 MediaTek Inc.
-+
-+// Author: Gene Chen <gene_chen@richtek.com>
-+
-+#include <linux/module.h>
-+#include <linux/kernel.h>
-+#include <linux/init.h>
-+#include <linux/platform_device.h>
-+#include <linux/of.h>
-+#include <linux/regmap.h>
-+#include <linux/regulator/driver.h>
-+#include <linux/regulator/machine.h>
-+#include <linux/version.h>
-+
-+#include <dt-bindings/mfd/mt6360.h>
-+
-+enum {
-+	MT6360_REGULATOR_BUCK1 = 0,
-+	MT6360_REGULATOR_BUCK2,
-+	MT6360_REGULATOR_LDO6,
-+	MT6360_REGULATOR_LDO7,
-+	MT6360_REGULATOR_LDO1,
-+	MT6360_REGULATOR_LDO2,
-+	MT6360_REGULATOR_LDO3,
-+	MT6360_REGULATOR_LDO5,
-+	MT6360_REGULATOR_MAX,
-+};
-+
-+struct mt6360_irq_mapping {
-+	const char *name;
-+	irq_handler_t handler;
-+};
-+
-+struct mt6360_regulator_desc {
-+	const struct regulator_desc desc;
-+	unsigned int mode_reg;
-+	unsigned int mode_mask;
-+	unsigned int state_reg;
-+	unsigned int state_mask;
-+	const struct mt6360_irq_mapping *irq_tables;
-+	int irq_table_size;
-+};
-+
-+struct mt6360_regulator_data {
-+	struct device *dev;
-+	struct regmap *regmap;
-+};
-+
-+static irqreturn_t mt6360_pgb_event_handler(int irq, void *data)
-+{
-+	struct regulator_dev *rdev = data;
-+
-+	regulator_notifier_call_chain(rdev, REGULATOR_EVENT_FAIL, NULL);
-+	return IRQ_HANDLED;
-+}
-+
-+static irqreturn_t mt6360_oc_event_handler(int irq, void *data)
-+{
-+	struct regulator_dev *rdev = data;
-+
-+	regulator_notifier_call_chain(rdev, REGULATOR_EVENT_OVER_CURRENT, NULL);
-+	return IRQ_HANDLED;
-+}
-+
-+static irqreturn_t mt6360_ov_event_handler(int irq, void *data)
-+{
-+	struct regulator_dev *rdev = data;
-+
-+	regulator_notifier_call_chain(rdev,
-+				      REGULATOR_EVENT_REGULATION_OUT, NULL);
-+	return IRQ_HANDLED;
-+}
-+
-+static irqreturn_t mt6360_uv_event_handler(int irq, void *data)
-+{
-+	struct regulator_dev *rdev = data;
-+
-+	regulator_notifier_call_chain(rdev,
-+				      REGULATOR_EVENT_UNDER_VOLTAGE, NULL);
-+	return IRQ_HANDLED;
-+}
-+
-+static const struct mt6360_irq_mapping buck1_irq_tbls[] = {
-+	{ "buck1_pgb_evt", mt6360_pgb_event_handler },
-+	{ "buck1_oc_evt", mt6360_oc_event_handler },
-+	{ "buck1_ov_evt", mt6360_ov_event_handler },
-+	{ "buck1_uv_evt", mt6360_uv_event_handler },
-+};
-+
-+static const struct mt6360_irq_mapping buck2_irq_tbls[] = {
-+	{ "buck2_pgb_evt", mt6360_pgb_event_handler },
-+	{ "buck2_oc_evt", mt6360_oc_event_handler },
-+	{ "buck2_ov_evt", mt6360_ov_event_handler },
-+	{ "buck2_uv_evt", mt6360_uv_event_handler },
-+};
-+
-+static const struct mt6360_irq_mapping ldo6_irq_tbls[] = {
-+	{ "ldo6_pgb_evt", mt6360_pgb_event_handler },
-+	{ "ldo6_oc_evt", mt6360_oc_event_handler },
-+};
-+
-+static const struct mt6360_irq_mapping ldo7_irq_tbls[] = {
-+	{ "ldo7_pgb_evt", mt6360_pgb_event_handler },
-+	{ "ldo7_oc_evt", mt6360_oc_event_handler },
-+};
-+
-+static const struct mt6360_irq_mapping ldo1_irq_tbls[] = {
-+	{ "ldo1_pgb_evt", mt6360_pgb_event_handler },
-+	{ "ldo1_oc_evt", mt6360_oc_event_handler },
-+};
-+
-+static const struct mt6360_irq_mapping ldo2_irq_tbls[] = {
-+	{ "ldo2_pgb_evt", mt6360_pgb_event_handler },
-+	{ "ldo2_oc_evt", mt6360_oc_event_handler },
-+};
-+
-+static const struct mt6360_irq_mapping ldo3_irq_tbls[] = {
-+	{ "ldo3_pgb_evt", mt6360_pgb_event_handler },
-+	{ "ldo3_oc_evt", mt6360_oc_event_handler },
-+};
-+
-+static const struct mt6360_irq_mapping ldo5_irq_tbls[] = {
-+	{ "ldo5_pgb_evt", mt6360_pgb_event_handler },
-+	{ "ldo5_oc_evt", mt6360_oc_event_handler },
-+};
-+
-+static const struct linear_range buck_vout_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(300000, 0x00, 0xc7, 5000),
-+	REGULATOR_LINEAR_RANGE(1300000, 0xc8, 0xff, 0),
-+};
-+
-+static const struct linear_range ldo_vout_ranges1[] = {
-+	REGULATOR_LINEAR_RANGE(500000, 0x00, 0x09, 10000),
-+	REGULATOR_LINEAR_RANGE(600000, 0x0a, 0x10, 0),
-+	REGULATOR_LINEAR_RANGE(610000, 0x11, 0x19, 10000),
-+	REGULATOR_LINEAR_RANGE(700000, 0x1a, 0x20, 0),
-+	REGULATOR_LINEAR_RANGE(710000, 0x21, 0x29, 10000),
-+	REGULATOR_LINEAR_RANGE(800000, 0x2a, 0x30, 0),
-+	REGULATOR_LINEAR_RANGE(810000, 0x31, 0x39, 10000),
-+	REGULATOR_LINEAR_RANGE(900000, 0x3a, 0x40, 0),
-+	REGULATOR_LINEAR_RANGE(910000, 0x41, 0x49, 10000),
-+	REGULATOR_LINEAR_RANGE(1000000, 0x4a, 0x50, 0),
-+	REGULATOR_LINEAR_RANGE(1010000, 0x51, 0x59, 10000),
-+	REGULATOR_LINEAR_RANGE(1100000, 0x5a, 0x60, 0),
-+	REGULATOR_LINEAR_RANGE(1110000, 0x61, 0x69, 10000),
-+	REGULATOR_LINEAR_RANGE(1200000, 0x6a, 0x70, 0),
-+	REGULATOR_LINEAR_RANGE(1210000, 0x71, 0x79, 10000),
-+	REGULATOR_LINEAR_RANGE(1300000, 0x7a, 0x80, 0),
-+	REGULATOR_LINEAR_RANGE(1310000, 0x81, 0x89, 10000),
-+	REGULATOR_LINEAR_RANGE(1400000, 0x8a, 0x90, 0),
-+	REGULATOR_LINEAR_RANGE(1410000, 0x91, 0x99, 10000),
-+	REGULATOR_LINEAR_RANGE(1500000, 0x9a, 0xa0, 0),
-+	REGULATOR_LINEAR_RANGE(1510000, 0xa1, 0xa9, 10000),
-+	REGULATOR_LINEAR_RANGE(1600000, 0xaa, 0xb0, 0),
-+	REGULATOR_LINEAR_RANGE(1610000, 0xb1, 0xb9, 10000),
-+	REGULATOR_LINEAR_RANGE(1700000, 0xba, 0xc0, 0),
-+	REGULATOR_LINEAR_RANGE(1710000, 0xc1, 0xc9, 10000),
-+	REGULATOR_LINEAR_RANGE(1800000, 0xca, 0xd0, 0),
-+	REGULATOR_LINEAR_RANGE(1810000, 0xd1, 0xd9, 10000),
-+	REGULATOR_LINEAR_RANGE(1900000, 0xda, 0xe0, 0),
-+	REGULATOR_LINEAR_RANGE(1910000, 0xe1, 0xe9, 10000),
-+	REGULATOR_LINEAR_RANGE(2000000, 0xea, 0xf0, 0),
-+	REGULATOR_LINEAR_RANGE(2010000, 0xf1, 0xf9, 10000),
-+	REGULATOR_LINEAR_RANGE(2100000, 0xfa, 0xff, 0),
-+};
-+
-+static const struct linear_range ldo_vout_ranges2[] = {
-+	REGULATOR_LINEAR_RANGE(1200000, 0x00, 0x09, 10000),
-+	REGULATOR_LINEAR_RANGE(1300000, 0x0a, 0x10, 0),
-+	REGULATOR_LINEAR_RANGE(1310000, 0x11, 0x19, 10000),
-+	REGULATOR_LINEAR_RANGE(1400000, 0x1a, 0x1f, 0),
-+	REGULATOR_LINEAR_RANGE(1500000, 0x20, 0x29, 10000),
-+	REGULATOR_LINEAR_RANGE(1600000, 0x2a, 0x2f, 0),
-+	REGULATOR_LINEAR_RANGE(1700000, 0x30, 0x39, 10000),
-+	REGULATOR_LINEAR_RANGE(1800000, 0x3a, 0x40, 0),
-+	REGULATOR_LINEAR_RANGE(1810000, 0x41, 0x49, 10000),
-+	REGULATOR_LINEAR_RANGE(1900000, 0x4a, 0x4f, 0),
-+	REGULATOR_LINEAR_RANGE(2000000, 0x50, 0x59, 10000),
-+	REGULATOR_LINEAR_RANGE(2100000, 0x5a, 0x60, 0),
-+	REGULATOR_LINEAR_RANGE(2110000, 0x61, 0x69, 10000),
-+	REGULATOR_LINEAR_RANGE(2200000, 0x6a, 0x6f, 0),
-+	REGULATOR_LINEAR_RANGE(2500000, 0x70, 0x79, 10000),
-+	REGULATOR_LINEAR_RANGE(2600000, 0x7a, 0x7f, 0),
-+	REGULATOR_LINEAR_RANGE(2700000, 0x80, 0x89, 10000),
-+	REGULATOR_LINEAR_RANGE(2800000, 0x8a, 0x90, 0),
-+	REGULATOR_LINEAR_RANGE(2810000, 0x91, 0x99, 10000),
-+	REGULATOR_LINEAR_RANGE(2900000, 0x9a, 0xa0, 0),
-+	REGULATOR_LINEAR_RANGE(2910000, 0xa1, 0xa9, 10000),
-+	REGULATOR_LINEAR_RANGE(3000000, 0xaa, 0xb0, 0),
-+	REGULATOR_LINEAR_RANGE(3010000, 0xb1, 0xb9, 10000),
-+	REGULATOR_LINEAR_RANGE(3100000, 0xba, 0xc0, 0),
-+	REGULATOR_LINEAR_RANGE(3110000, 0xc1, 0xc9, 10000),
-+	REGULATOR_LINEAR_RANGE(3200000, 0xca, 0xcf, 0),
-+	REGULATOR_LINEAR_RANGE(3300000, 0xd0, 0xd9, 10000),
-+	REGULATOR_LINEAR_RANGE(3400000, 0xda, 0xe0, 0),
-+	REGULATOR_LINEAR_RANGE(3410000, 0xe1, 0xe9, 10000),
-+	REGULATOR_LINEAR_RANGE(3500000, 0xea, 0xf0, 0),
-+	REGULATOR_LINEAR_RANGE(3510000, 0xf1, 0xf9, 10000),
-+	REGULATOR_LINEAR_RANGE(3600000, 0xfa, 0xff, 0),
-+};
-+
-+static const struct linear_range ldo_vout_ranges3[] = {
-+	REGULATOR_LINEAR_RANGE(2700000, 0x00, 0x09, 10000),
-+	REGULATOR_LINEAR_RANGE(2800000, 0x0a, 0x10, 0),
-+	REGULATOR_LINEAR_RANGE(2810000, 0x11, 0x19, 10000),
-+	REGULATOR_LINEAR_RANGE(2900000, 0x1a, 0x20, 0),
-+	REGULATOR_LINEAR_RANGE(2910000, 0x21, 0x29, 10000),
-+	REGULATOR_LINEAR_RANGE(3000000, 0x2a, 0x30, 0),
-+	REGULATOR_LINEAR_RANGE(3010000, 0x31, 0x39, 10000),
-+	REGULATOR_LINEAR_RANGE(3100000, 0x3a, 0x40, 0),
-+	REGULATOR_LINEAR_RANGE(3110000, 0x41, 0x49, 10000),
-+	REGULATOR_LINEAR_RANGE(3200000, 0x4a, 0x4f, 0),
-+	REGULATOR_LINEAR_RANGE(3300000, 0x50, 0x59, 10000),
-+	REGULATOR_LINEAR_RANGE(3400000, 0x5a, 0x60, 0),
-+	REGULATOR_LINEAR_RANGE(3410000, 0x61, 0x69, 10000),
-+	REGULATOR_LINEAR_RANGE(3500000, 0x6a, 0x70, 0),
-+	REGULATOR_LINEAR_RANGE(3510000, 0x71, 0x79, 10000),
-+	REGULATOR_LINEAR_RANGE(3600000, 0x7a, 0x7f, 0),
-+};
-+
-+static int mt6360_regulator_set_mode(struct regulator_dev *rdev,
-+				     unsigned int mode)
-+{
-+	const struct mt6360_regulator_desc *rdesc =
-+			       (const struct mt6360_regulator_desc *)rdev->desc;
-+	struct regmap *regmap = rdev_get_regmap(rdev);
-+	int shift = ffs(rdesc->mode_mask) - 1;
-+	unsigned int val;
-+	int ret;
-+
-+	switch (mode) {
-+	case REGULATOR_MODE_NORMAL:
-+		val = MT6360_OPMODE_NORMAL;
-+		break;
-+	case REGULATOR_MODE_STANDBY:
-+		val = MT6360_OPMODE_ULP;
-+		break;
-+	case REGULATOR_MODE_IDLE:
-+		val = MT6360_OPMODE_LP;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	ret = regmap_update_bits(regmap, rdesc->mode_reg,
-+				 rdesc->mode_mask, val << shift);
-+	if (ret) {
-+		dev_err(&rdev->dev, "%s: fail (%d)\n", __func__, ret);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static unsigned int mt6360_regulator_get_mode(struct regulator_dev *rdev)
-+{
-+	const struct mt6360_regulator_desc *rdesc =
-+			       (const struct mt6360_regulator_desc *)rdev->desc;
-+	struct regmap *regmap = rdev_get_regmap(rdev);
-+	int shift = ffs(rdesc->mode_mask) - 1;
-+	unsigned int val;
-+	int ret;
-+
-+	ret = regmap_read(regmap, rdesc->mode_reg, &val);
-+	if (ret)
-+		return ret;
-+
-+	val &= rdesc->mode_mask;
-+	val >>= shift;
-+
-+	switch (val) {
-+	case MT6360_OPMODE_LP:
-+		return REGULATOR_MODE_IDLE;
-+	case MT6360_OPMODE_ULP:
-+		return REGULATOR_MODE_STANDBY;
-+	case MT6360_OPMODE_NORMAL:
-+		return REGULATOR_MODE_NORMAL;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static int mt6360_regulator_get_status(struct regulator_dev *rdev)
-+{
-+	const struct mt6360_regulator_desc *rdesc =
-+			       (const struct mt6360_regulator_desc *)rdev->desc;
-+	struct regmap *regmap = rdev_get_regmap(rdev);
-+	unsigned int val;
-+	int ret;
-+
-+	ret = regmap_read(regmap, rdesc->state_reg, &val);
-+	if (ret)
-+		return ret;
-+
-+	if (val & rdesc->state_mask)
-+		return REGULATOR_STATUS_ON;
-+
-+	return REGULATOR_STATUS_OFF;
-+}
-+
-+static const struct regulator_ops mt6360_regulator_ops = {
-+	.list_voltage = regulator_list_voltage_linear_range,
-+	.enable = regulator_enable_regmap,
-+	.disable = regulator_disable_regmap,
-+	.is_enabled = regulator_is_enabled_regmap,
-+	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-+	.get_voltage_sel = regulator_get_voltage_sel_regmap,
-+	.set_mode = mt6360_regulator_set_mode,
-+	.get_mode = mt6360_regulator_get_mode,
-+	.get_status = mt6360_regulator_get_status,
-+};
-+
-+static unsigned int mt6360_regulator_of_map_mode(unsigned int hw_mode)
-+{
-+	switch (hw_mode) {
-+	case MT6360_OPMODE_NORMAL:
-+		return REGULATOR_MODE_NORMAL;
-+	case MT6360_OPMODE_LP:
-+		return REGULATOR_MODE_IDLE;
-+	case MT6360_OPMODE_ULP:
-+		return REGULATOR_MODE_STANDBY;
-+	default:
-+		return REGULATOR_MODE_INVALID;
-+	}
-+}
-+
-+#define MT6360_REGULATOR_DESC(_name, _sname, ereg, emask, vreg,	vmask,	\
-+			      mreg, mmask, streg, stmask, vranges,	\
-+			      vcnts, offon_delay, irq_tbls)		\
-+{									\
-+	.desc = {							\
-+		.name = #_name,						\
-+		.supply_name = #_sname,					\
-+		.id =  MT6360_REGULATOR_##_name,			\
-+		.of_match = of_match_ptr(#_name),			\
-+		.of_map_mode = mt6360_regulator_of_map_mode,		\
-+		.owner = THIS_MODULE,					\
-+		.ops = &mt6360_regulator_ops,				\
-+		.type = REGULATOR_VOLTAGE,				\
-+		.vsel_reg = vreg,					\
-+		.vsel_mask = vmask,					\
-+		.enable_reg = ereg,					\
-+		.enable_mask = emask,					\
-+		.linear_ranges = vranges,				\
-+		.n_linear_ranges = ARRAY_SIZE(vranges),			\
-+		.n_voltages = vcnts,					\
-+		.off_on_delay = offon_delay,				\
-+	},								\
-+	.mode_reg = mreg,						\
-+	.mode_mask = mmask,						\
-+	.state_reg = streg,						\
-+	.state_mask = stmask,						\
-+	.irq_tables = irq_tbls,						\
-+	.irq_table_size = ARRAY_SIZE(irq_tbls),				\
-+}
-+
-+static const struct mt6360_regulator_desc mt6360_regulator_descs[] =  {
-+	MT6360_REGULATOR_DESC(BUCK1, BUCK1_VIN, 0x117, 0x40, 0x110, 0xff, 0x117,
-+			      0x30, 0x117, 0x04, buck_vout_ranges, 256, 0,
-+			      buck1_irq_tbls),
-+	MT6360_REGULATOR_DESC(BUCK2, BUCK2_VIN, 0x127, 0x40, 0x120, 0xff, 0x127,
-+			      0x30, 0x127, 0x04, buck_vout_ranges, 256, 0,
-+			      buck2_irq_tbls),
-+	MT6360_REGULATOR_DESC(LDO6, LDO_VIN3, 0x137, 0x40, 0x13B, 0xff, 0x137,
-+			      0x30, 0x137, 0x04, ldo_vout_ranges1, 256, 0,
-+			      ldo6_irq_tbls),
-+	MT6360_REGULATOR_DESC(LDO7, LDO_VIN3, 0x131, 0x40, 0x135, 0xff, 0x131,
-+			      0x30, 0x131, 0x04, ldo_vout_ranges1, 256, 0,
-+			      ldo7_irq_tbls),
-+	MT6360_REGULATOR_DESC(LDO1, LDO_VIN1, 0x217, 0x40, 0x21B, 0xff, 0x217,
-+			      0x30, 0x217, 0x04, ldo_vout_ranges2, 256, 0,
-+			      ldo1_irq_tbls),
-+	MT6360_REGULATOR_DESC(LDO2, LDO_VIN1, 0x211, 0x40, 0x215, 0xff, 0x211,
-+			      0x30, 0x211, 0x04, ldo_vout_ranges2, 256, 0,
-+			      ldo2_irq_tbls),
-+	MT6360_REGULATOR_DESC(LDO3, LDO_VIN1, 0x205, 0x40, 0x209, 0xff, 0x205,
-+			      0x30, 0x205, 0x04, ldo_vout_ranges2, 256, 100,
-+			      ldo3_irq_tbls),
-+	MT6360_REGULATOR_DESC(LDO5, LDO_VIN2, 0x20B, 0x40, 0x20F, 0x7f, 0x20B,
-+			      0x30, 0x20B, 0x04, ldo_vout_ranges3, 128, 100,
-+			      ldo5_irq_tbls),
-+};
-+
-+static int mt6360_regulator_irq_register(struct platform_device *pdev,
-+					 struct regulator_dev *rdev,
-+					 const struct mt6360_irq_mapping *tbls,
-+					 int tbl_size)
-+{
-+	int i, irq, ret;
-+
-+	for (i = 0; i < tbl_size; i++) {
-+		const struct mt6360_irq_mapping *irq_desc = tbls + i;
-+
-+		irq = platform_get_irq_byname(pdev, irq_desc->name);
-+		if (irq < 0) {
-+			dev_err(&pdev->dev,
-+				"Fail to get %s irq\n", irq_desc->name);
-+			return irq;
-+		}
-+
-+		ret = devm_request_threaded_irq(&pdev->dev, irq, NULL,
-+						irq_desc->handler,
-+						IRQF_TRIGGER_NONE,
-+						irq_desc->name,
-+						rdev);
-+		if (ret) {
-+			dev_err(&pdev->dev,
-+				"Fail to request %s irq\n", irq_desc->name);
-+			return ret;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt6360_regulator_probe(struct platform_device *pdev)
-+{
-+	struct mt6360_regulator_data *mrd;
-+	struct regulator_config config = {};
-+	int i, ret;
-+
-+	mrd = devm_kzalloc(&pdev->dev, sizeof(*mrd), GFP_KERNEL);
-+	if (!mrd)
-+		return -ENOMEM;
-+
-+	mrd->dev = &pdev->dev;
-+
-+	mrd->regmap = dev_get_regmap(pdev->dev.parent, NULL);
-+	if (!mrd->regmap) {
-+		dev_err(&pdev->dev, "Failed to get parent regmap\n");
-+		return -ENODEV;
-+	}
-+
-+	config.dev = &pdev->dev;
-+	config.driver_data = mrd;
-+	config.regmap = mrd->regmap;
-+
-+	for (i = 0; i < ARRAY_SIZE(mt6360_regulator_descs); i++) {
-+		const struct mt6360_regulator_desc *rdesc =
-+						mt6360_regulator_descs + i;
-+		struct regulator_dev *rdev;
-+
-+		rdev = devm_regulator_register(&pdev->dev,
-+					       &rdesc->desc, &config);
-+		if (IS_ERR(rdev)) {
-+			dev_err(&pdev->dev,
-+				"Failed to register  %d regulaotr\n", i);
-+			return PTR_ERR(rdev);
-+		}
-+
-+		ret = mt6360_regulator_irq_register(pdev, rdev,
-+						    rdesc->irq_tables,
-+						    rdesc->irq_table_size);
-+		if (ret) {
-+			dev_err(&pdev->dev,
-+				"Failed to register  %d regulaotr irqs\n", i);
-+			return ret;
-+		}
-+	}
-+
-+	platform_set_drvdata(pdev, mrd);
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id __maybe_unused mt6360_regulator_of_id[] = {
-+	{ .compatible = "mediatek,mt6360-regulator", },
-+	{},
-+};
-+MODULE_DEVICE_TABLE(of, mt6360_regulator_of_id);
-+
-+static struct platform_driver mt6360_regulator_driver = {
-+	.driver = {
-+		.name = "mt6360-regulator",
-+		.of_match_table = mt6360_regulator_of_id,
-+	},
-+	.probe = mt6360_regulator_probe,
-+};
-+module_platform_driver(mt6360_regulator_driver);
-+
-+MODULE_AUTHOR("Gene Chen <gene_chen@richtek.com>");
-+MODULE_DESCRIPTION("MT6360 Regulator Driver");
-+MODULE_LICENSE("GPL v2");
--- 
-2.7.4
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGVsbG8sIExvcmVuem8uCgpUaGFua3MgZm9yIHRoZSBxdWljayByZXBseS4gUGxlYXNlIHNlZSBt
+eSBvYnNlcnZhdGlvbiBiZWxvdy4KCk9uIFRodSwgSnVuIDE4LCAyMDIwIGF0IDAxOjE4OjU5UE0g
+KzAyMDAsIExvcmVuem8gQmlhbmNvbmkgd3JvdGU6Cj4gSSBoYXZlIG5vdCByZXByb2R1Y2VkIHRo
+ZSBpc3N1ZSBteXNlbGYgeWV0LCBidXQgSSBndWVzcyB3ZSBjYW4gdHJ5Ogo+IDEtIHVwZGF0ZSB0
+byBsYXRlc3QgRmVsaXgncyB0cmVlIFsxXQo+IDItIGNvdWxkIHlvdSBwbGVhc2UgdHJ5IHRvIGFw
+cGx5IHRoZSBwYXRjaCBiZWxvdz8gKGNvbXBpbGUtdGVzdCBvbmx5KQoKSSd2ZSBzdGFydGVkIHdp
+dGggdHJ5aW5nIHlvdXIgcGF0Y2ggZmlyc3QgKGFwbGxpZWQgdG8gdjUuNy40KS4gUGxlYXNlCnNl
+ZSBteSBjb21tZW50cyBvbiBpdCBpbmxpbmUuCgo+IFsxXSBodHRwczovL2dpdGh1Yi5jb20vbmJk
+MTY4L3dpcmVsZXNzCj4gCj4gRnJvbSA0MDAyNjhhMGVlNTg0M2NmNzM2MzA4NTA0ZGZiZDJmMjBh
+MjkxZWFmIE1vbiBTZXAgMTcgMDA6MDA6MDAgMjAwMQo+IE1lc3NhZ2UtSWQ6IDw0MDAyNjhhMGVl
+NTg0M2NmNzM2MzA4NTA0ZGZiZDJmMjBhMjkxZWFmLjE1OTI0Nzg4MDkuZ2l0LmxvcmVuem9Aa2Vy
+bmVsLm9yZz4KPiBGcm9tOiBMb3JlbnpvIEJpYW5jb25pIDxsb3JlbnpvQGtlcm5lbC5vcmc+Cj4g
+RGF0ZTogVGh1LCAxOCBKdW4gMjAyMCAxMzoxMDoxMSArMDIwMAo+IFN1YmplY3Q6IFtQQVRDSF0g
+bXQ3NjogbXQ3NngyOiBmaXggcGNpIHN1c3BlbmQKPiAKPiBTaWduZWQtb2ZmLWJ5OiBMb3Jlbnpv
+IEJpYW5jb25pIDxsb3JlbnpvQGtlcm5lbC5vcmc+Cj4gLS0tCj4gIC4uLi9uZXQvd2lyZWxlc3Mv
+bWVkaWF0ZWsvbXQ3Ni9tdDc2eDAyX2RtYS5oICB8ICAxICsKPiAgLi4uL25ldC93aXJlbGVzcy9t
+ZWRpYXRlay9tdDc2L210NzZ4MDJfbW1pby5jIHwgMTUgKysrKysKPiAgLi4uL25ldC93aXJlbGVz
+cy9tZWRpYXRlay9tdDc2L210NzZ4Mi9wY2kuYyAgIHwgNTggKysrKysrKysrKysrKysrKysrKwo+
+ICAzIGZpbGVzIGNoYW5nZWQsIDc0IGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc2eDAyX2RtYS5oIGIvZHJpdmVycy9u
+ZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc2eDAyX2RtYS5oCj4gaW5kZXggNGFmZjRmOGU4
+N2I2Li42MjYyZjJlY2RlZDUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVk
+aWF0ZWsvbXQ3Ni9tdDc2eDAyX2RtYS5oCj4gKysrIGIvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVk
+aWF0ZWsvbXQ3Ni9tdDc2eDAyX2RtYS5oCj4gQEAgLTYyLDUgKzYyLDYgQEAgbXQ3NngwMl93YWl0
+X2Zvcl93cGRtYShzdHJ1Y3QgbXQ3Nl9kZXYgKmRldiwgaW50IHRpbWVvdXQpCj4gIGludCBtdDc2
+eDAyX2RtYV9pbml0KHN0cnVjdCBtdDc2eDAyX2RldiAqZGV2KTsKPiAgdm9pZCBtdDc2eDAyX2Rt
+YV9kaXNhYmxlKHN0cnVjdCBtdDc2eDAyX2RldiAqZGV2KTsKPiAgdm9pZCBtdDc2eDAyX2RtYV9j
+bGVhbnVwKHN0cnVjdCBtdDc2eDAyX2RldiAqZGV2KTsKPiArdm9pZCBtdDc2eDAyX2RtYV9yZXNl
+dChzdHJ1Y3QgbXQ3NngwMl9kZXYgKmRldik7Cj4gIAo+ICAjZW5kaWYgLyogX19NVDc2eDAyX0RN
+QV9IICovCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYv
+bXQ3NngwMl9tbWlvLmMgYi9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzZ4
+MDJfbW1pby5jCj4gaW5kZXggY2JiZTk4NjY1NWZlLi5lMjYzMWM5NjQzMzEgMTAwNjQ0Cj4gLS0t
+IGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc2eDAyX21taW8uYwo+ICsr
+KyBiL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3NngwMl9tbWlvLmMKPiBA
+QCAtMzQ4LDYgKzM0OCwyMSBAQCB2b2lkIG10NzZ4MDJfZG1hX2Rpc2FibGUoc3RydWN0IG10NzZ4
+MDJfZGV2ICpkZXYpCj4gIH0KPiAgRVhQT1JUX1NZTUJPTF9HUEwobXQ3NngwMl9kbWFfZGlzYWJs
+ZSk7Cj4gIAo+ICt2b2lkIG10NzZ4MDJfZG1hX3Jlc2V0KHN0cnVjdCBtdDc2eDAyX2RldiAqZGV2
+KQo+ICt7Cj4gKwlpbnQgaTsKPiArCj4gKwltdDc2eDAyX2RtYV9kaXNhYmxlKGRldik7Cj4gKwl1
+c2xlZXBfcmFuZ2UoMTAwMCwgMjAwMCk7Cj4gKwo+ICsJZm9yIChpID0gMDsgaSA8IF9fTVRfVFhR
+X01BWDsgaSsrKQo+ICsJCW10NzZfcXVldWVfdHhfY2xlYW51cChkZXYsIGksIHRydWUpOwo+ICsJ
+bXQ3Nl9mb3JfZWFjaF9xX3J4KCZkZXYtPm10NzYsIGkpCgpTaW5jZSB2NS43LjQgZG9lc24ndCBo
+YXZlIHRoaXMgbWFjcm8sIEkndmUgcHVsbGVkIGl0IG1hbnVhbGx5LgoKPiArCQltdDc2X3F1ZXVl
+X3J4X3Jlc2V0KGRldiwgaSk7Cj4gKwo+ICsJbXQ3NngwMl9kbWFfZW5hYmxlKGRldik7Cj4gK30K
+CkkgaGFkIHRvIGFkZCBFWFBPUlRfU1lNQk9MX0dQTChtdDc2eDAyX2RtYV9yZXNldCkgaW4gb3Jk
+ZXIgdG8gZ2V0IHRoZQprZXJuZWwgbGlua2VkIHN1Y2Nlc3NmdWxseS4KCj4gKwo+ICB2b2lkIG10
+NzZ4MDJfbWFjX3N0YXJ0KHN0cnVjdCBtdDc2eDAyX2RldiAqZGV2KQo+ICB7Cj4gIAltdDc2eDAy
+X21hY19yZXNldF9jb3VudGVycyhkZXYpOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC93aXJl
+bGVzcy9tZWRpYXRlay9tdDc2L210NzZ4Mi9wY2kuYyBiL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21l
+ZGlhdGVrL210NzYvbXQ3NngyL3BjaS5jCj4gaW5kZXggNTNjYTBjZWRmMDI2Li41NTQzZTI0MmZi
+OWIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc2
+eDIvcGNpLmMKPiArKysgYi9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzZ4
+Mi9wY2kuYwo+IEBAIC0xMDMsNiArMTAzLDYwIEBAIG10NzZwY2lfcmVtb3ZlKHN0cnVjdCBwY2lf
+ZGV2ICpwZGV2KQo+ICAJbXQ3Nl9mcmVlX2RldmljZShtZGV2KTsKPiAgfQo+ICAKPiArc3RhdGlj
+IGludCBfX21heWJlX3VudXNlZAo+ICttdDc2eDJlX3N1c3BlbmQoc3RydWN0IHBjaV9kZXYgKnBk
+ZXYsIHBtX21lc3NhZ2VfdCBzdGF0ZSkKPiArewo+ICsJc3RydWN0IG10NzZfZGV2ICptZGV2ID0g
+cGNpX2dldF9kcnZkYXRhKHBkZXYpOwo+ICsJc3RydWN0IG10NzZ4MDJfZGV2ICpkZXYgPSBjb250
+YWluZXJfb2YobWRldiwgc3RydWN0IG10NzZ4MDJfZGV2LCBtdDc2KTsKPiArCWludCBpLCBlcnI7
+Cj4gKwo+ICsJbmFwaV9kaXNhYmxlKCZtZGV2LT50eF9uYXBpKTsKPiArCXRhc2tsZXRfa2lsbCgm
+bWRldi0+cHJlX3RidHRfdGFza2xldCk7Cj4gKwl0YXNrbGV0X2tpbGwoJm1kZXYtPnR4X3Rhc2ts
+ZXQpOwo+ICsKPiArCW10NzZfZm9yX2VhY2hfcV9yeChtZGV2LCBpKQo+ICsJCW5hcGlfZGlzYWJs
+ZSgmbWRldi0+bmFwaVtpXSk7Cj4gKwo+ICsJbXQ3NngwMl9kbWFfcmVzZXQoZGV2KTsKPiArCj4g
+KwlwY2lfZW5hYmxlX3dha2UocGRldiwgcGNpX2Nob29zZV9zdGF0ZShwZGV2LCBzdGF0ZSksIHRy
+dWUpOwo+ICsJcGNpX3NhdmVfc3RhdGUocGRldik7Cj4gKwllcnIgPSBwY2lfc2V0X3Bvd2VyX3N0
+YXRlKHBkZXYsIHBjaV9jaG9vc2Vfc3RhdGUocGRldiwgc3RhdGUpKTsKPiArCWlmIChlcnIpCj4g
+KwkJZ290byByZXN0b3JlOwo+ICsKPiArCXJldHVybiAwOwo+ICsKPiArcmVzdG9yZToKPiArCW10
+NzZfZm9yX2VhY2hfcV9yeChtZGV2LCBpKQo+ICsJCW5hcGlfZW5hYmxlKCZtZGV2LT5uYXBpW2ld
+KTsKPiArCW5hcGlfZW5hYmxlKCZtZGV2LT50eF9uYXBpKTsKPiArCj4gKwlyZXR1cm4gZXJyOwo+
+ICt9Cj4gKwo+ICtzdGF0aWMgaW50IF9fbWF5YmVfdW51c2VkCj4gK210NzZ4MmVfcmVzdW1lKHN0
+cnVjdCBwY2lfZGV2ICpwZGV2KQo+ICt7Cj4gKwlzdHJ1Y3QgbXQ3Nl9kZXYgKm1kZXYgPSBwY2lf
+Z2V0X2RydmRhdGEocGRldik7Cj4gKwlpbnQgaSwgZXJyOwo+ICsKPiArCWVyciA9IHBjaV9zZXRf
+cG93ZXJfc3RhdGUocGRldiwgUENJX0QwKTsKPiArCWlmIChlcnIpCj4gKwkJcmV0dXJuIGVycjsK
+PiArCj4gKwlwY2lfcmVzdG9yZV9zdGF0ZShwZGV2KTsKPiArCj4gKwltdDc2X2Zvcl9lYWNoX3Ff
+cngobWRldiwgaSkgewo+ICsJCW5hcGlfZW5hYmxlKCZtZGV2LT5uYXBpW2ldKTsKPiArCQluYXBp
+X3NjaGVkdWxlKCZtZGV2LT5uYXBpW2ldKTsKPiArCX0KPiArCW5hcGlfZW5hYmxlKCZtZGV2LT50
+eF9uYXBpKTsKPiArCW5hcGlfc2NoZWR1bGUoJm1kZXYtPnR4X25hcGkpOwo+ICsKPiArCXJldHVy
+biAwOwo+ICt9Cj4gKwo+ICBNT0RVTEVfREVWSUNFX1RBQkxFKHBjaSwgbXQ3NnBjaV9kZXZpY2Vf
+dGFibGUpOwo+ICBNT0RVTEVfRklSTVdBUkUoTVQ3NjYyX0ZJUk1XQVJFKTsKPiAgTU9EVUxFX0ZJ
+Uk1XQVJFKE1UNzY2Ml9ST01fUEFUQ0gpOwo+IEBAIC0xMTMsNiArMTY3LDEwIEBAIHN0YXRpYyBz
+dHJ1Y3QgcGNpX2RyaXZlciBtdDc2cGNpX2RyaXZlciA9IHsKPiAgCS5pZF90YWJsZQk9IG10NzZw
+Y2lfZGV2aWNlX3RhYmxlLAo+ICAJLnByb2JlCQk9IG10NzZwY2lfcHJvYmUsCj4gIAkucmVtb3Zl
+CQk9IG10NzZwY2lfcmVtb3ZlLAo+ICsjaWZkZWYgQ09ORklHX1BNCj4gKwkuc3VzcGVuZAk9IG10
+NzZ4MmVfc3VzcGVuZCwKPiArCS5yZXN1bWUJCT0gbXQ3NngyZV9yZXN1bWUsCj4gKyNlbmRpZiAv
+KiBDT05GSUdfUE0gKi8KPiAgfTsKPiAgCj4gIG1vZHVsZV9wY2lfZHJpdmVyKG10NzZwY2lfZHJp
+dmVyKTsKPiAtLSAKPiAyLjI2LjIKClVuZm9ydHVuYXRlbHksIGl0IHNlZW1zIGl0IGRpZCBsaXR0
+bGUgY2hhbmdlIHRvIG15IHNldHVwLiBUaGUgcmVzdW1lCnRpbWUgc2hydW5rIGl0IHNlZW1zIChi
+dXQgaXMgc3RpbGwgbm90aWNlYWJsZSksIGFuZCB0aGUgc3lzdGVtIHN1cnZpdmVkCjIgc3VzcGVu
+ZC9yZXN1bWUgY3ljbGVzLCBidXQgYWZ0ZXIgdGhlIHRoaXJkIHJlc3VtZSB0aGUgZm9sbG93aW5n
+CmhhcHBlbmVkOgoKPT09CsSNZW4gMTggMjM6MTE6NTggc3BvY2sga2VybmVsOiBtdDc2eDJlIDAw
+MDA6MDE6MDAuMDogTUNVIG1lc3NhZ2UgMiAoc2VxIDExKSB0aW1lZCBvdXQKxI1lbiAxOCAyMzox
+MTo1OCBzcG9jayBrZXJuZWw6IG10NzZ4MmUgMDAwMDowMTowMC4wOiBNQ1UgbWVzc2FnZSAzMCAo
+c2VxIDEyKSB0aW1lZCBvdXQKxI1lbiAxOCAyMzoxMTo1OCBzcG9jayBrZXJuZWw6IG10NzZ4MmUg
+MDAwMDowMTowMC4wOiBNQ1UgbWVzc2FnZSAzMCAoc2VxIDEzKSB0aW1lZCBvdXQKxI1lbiAxOCAy
+MzoxMTo1OCBzcG9jayBrZXJuZWw6IG10NzZ4MmUgMDAwMDowMTowMC4wOiBGaXJtd2FyZSBWZXJz
+aW9uOiAwLjAuMDAKxI1lbiAxOCAyMzoxMTo1OCBzcG9jayBrZXJuZWw6IG10NzZ4MmUgMDAwMDow
+MTowMC4wOiBCdWlsZDogMQrEjWVuIDE4IDIzOjExOjU4IHNwb2NrIGtlcm5lbDogbXQ3NngyZSAw
+MDAwOjAxOjAwLjA6IEJ1aWxkIFRpbWU6IDIwMTUwNzMxMTYxNF9fX18KxI1lbiAxOCAyMzoxMTo1
+OCBzcG9jayBrZXJuZWw6IG10NzZ4MmUgMDAwMDowMTowMC4wOiBGaXJtd2FyZSBydW5uaW5nIQrE
+jWVuIDE4IDIzOjExOjU4IHNwb2NrIGtlcm5lbDogaWVlZTgwMjExIHBoeTA6IEhhcmR3YXJlIHJl
+c3RhcnQgd2FzIHJlcXVlc3RlZArEjWVuIDE4IDIzOjExOjU5IHNwb2NrIGtlcm5lbDogbXQ3Nngy
+ZSAwMDAwOjAxOjAwLjA6IE1DVSBtZXNzYWdlIDIgKHNlcSAxKSB0aW1lZCBvdXQKxI1lbiAxOCAy
+MzoxMTo1OSBzcG9jayBrZXJuZWw6IG10NzZ4MmUgMDAwMDowMTowMC4wOiBGaXJtd2FyZSBWZXJz
+aW9uOiAwLjAuMDAKxI1lbiAxOCAyMzoxMTo1OSBzcG9jayBrZXJuZWw6IG10NzZ4MmUgMDAwMDow
+MTowMC4wOiBCdWlsZDogMQrEjWVuIDE4IDIzOjExOjU5IHNwb2NrIGtlcm5lbDogbXQ3NngyZSAw
+MDAwOjAxOjAwLjA6IEJ1aWxkIFRpbWU6IDIwMTUwNzMxMTYxNF9fX18KxI1lbiAxOCAyMzoxMTo1
+OSBzcG9jayBrZXJuZWw6IG10NzZ4MmUgMDAwMDowMTowMC4wOiBGaXJtd2FyZSBydW5uaW5nIQrE
+jWVuIDE4IDIzOjExOjU5IHNwb2NrIGtlcm5lbDogaWVlZTgwMjExIHBoeTA6IEhhcmR3YXJlIHJl
+c3RhcnQgd2FzIHJlcXVlc3RlZArEjWVuIDE4IDIzOjEyOjAwIHNwb2NrIGtlcm5lbDogbXQ3Nngy
+ZSAwMDAwOjAxOjAwLjA6IE1DVSBtZXNzYWdlIDMwIChzZXEgMykgdGltZWQgb3V0CsSNZW4gMTgg
+MjM6MTI6MDEgc3BvY2sga2VybmVsOiBtdDc2eDJlIDAwMDA6MDE6MDAuMDogTUNVIG1lc3NhZ2Ug
+MzAgKHNlcSA0KSB0aW1lZCBvdXQKxI1lbiAxOCAyMzoxMjowMSBzcG9jayBrZXJuZWw6IG10NzZ4
+MmUgMDAwMDowMTowMC4wOiBGaXJtd2FyZSBWZXJzaW9uOiAwLjAuMDAKxI1lbiAxOCAyMzoxMjow
+MSBzcG9jayBrZXJuZWw6IG10NzZ4MmUgMDAwMDowMTowMC4wOiBCdWlsZDogMQrEjWVuIDE4IDIz
+OjEyOjAxIHNwb2NrIGtlcm5lbDogbXQ3NngyZSAwMDAwOjAxOjAwLjA6IEJ1aWxkIFRpbWU6IDIw
+MTUwNzMxMTYxNF9fX18KxI1lbiAxOCAyMzoxMjowMSBzcG9jayBrZXJuZWw6IG10NzZ4MmUgMDAw
+MDowMTowMC4wOiBGaXJtd2FyZSBydW5uaW5nIQrEjWVuIDE4IDIzOjEyOjAxIHNwb2NrIGtlcm5l
+bDogaWVlZTgwMjExIHBoeTA6IEhhcmR3YXJlIHJlc3RhcnQgd2FzIHJlcXVlc3RlZArEjWVuIDE4
+IDIzOjEyOjAyIHNwb2NrIGtlcm5lbDogLS0tLS0tLS0tLS0tWyBjdXQgaGVyZSBdLS0tLS0tLS0t
+LS0tCsSNZW4gMTggMjM6MTI6MDIgc3BvY2sga2VybmVsOiBXQVJOSU5HOiBDUFU6IDMgUElEOiAx
+NzEgYXQgbmV0L21hYzgwMjExL3V0aWwuYzoyMjcwIGllZWU4MDIxMV9yZWNvbmZpZysweDIzNC8w
+eDE3MDAgW21hYzgwMjExXQrEjWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtlcm5lbDogTW9kdWxlcyBs
+aW5rZWQgaW46IGNtYWMgY2NtIGJyaWRnZSBzdHAgbGxjIG5mdF9jdCBuZl9jb25udHJhY2sgbmZf
+ZGVmcmFnX2lwdjYgbmZfZGVmcmFnX2lwdjQgbmZfdGFibGVzIG1zciB0dW4gbmZuZXRsaW5rIG5s
+c19pc284ODU5XzEgbmxzX2NwNDM3IHZmYXQgZmF0IG10NzZ4MmUgbXQ3NngyX2NvbW1vbiBtdDc2
+eDAyX2xpYiBtdDc2IG1hYzgwMjExIGludGVsX3JhcGxfbXNyIHNuZF9oZGFfY29kZWNfaGRtaSBz
+bmRfaGRhX2NvZGVjX2NpcnJ1cyBtZWlfaGRjcCBzbmRfaGRhX2NvZGVjX2dlbmVyaWMgY2ZnODAy
+MTEgaW50ZWxfcmFwbF9jb21tb24geDg2X3BrZ190ZW1wX3RoZXJtYWwgaW50ZWxfcG93ZXJjbGFt
+cCBjb3JldGVtcCBkZWxsX2xhcHRvcCBpVENPX3dkdCBzbmRfaGRhX2ludGVsIGt2bV9pbnRlbCBp
+VENPX3ZlbmRvcl9zdXBwb3J0IGRlbGxfd21pIHNuZF9pbnRlbF9kc3BjZmcgc3BhcnNlX2tleW1h
+cCBzbmRfaGRhX2NvZGVjIGxlZHRyaWdfYXVkaW8gd21pX2Jtb2YgZGVsbF9zbWJpb3Mgc25kX2hk
+YV9jb3JlIGt2bSBydHN4X3VzYl9tcyBkZWxsX3dtaV9kZXNjcmlwdG9yIG1lbXN0aWNrIGRjZGJh
+cyBzbmRfaHdkZXAgZGVsbF9zbW1faHdtb24gaXJxYnlwYXNzIHBzbW91c2UgaW50ZWxfY3N0YXRl
+IHNuZF9wY20gaW50ZWxfdW5jb3JlIGpveWRldiBpbnRlbF9yYXBsX3BlcmYgbW91c2VkZXYgbWVp
+X21lIGFseCByZmtpbGwgaW5wdXRfbGVkcyBzbmRfdGltZXIgaTJjX2k4MDEgc25kIG1laSBscGNf
+aWNoIGxpYmFyYzQgbWRpbyBzb3VuZGNvcmUgYmF0dGVyeSB3bWkgZXZkZXYgZGVsbF9zbW84ODAw
+IG1hY19oaWQgYWMgdGNwX2JiciBjcnlwdG9fdXNlciBpcF90YWJsZXMgeF90YWJsZXMgeGZzIGRt
+X3RoaW5fcG9vbCBkbV9wZXJzaXN0ZW50X2RhdGEgZG1fYmlvX3ByaXNvbiBkbV9idWZpbyBsaWJj
+cmMzMmMgY3JjMzJjX2dlbmVyaWMgZG1fY3J5cHQgaGlkX2xvZ2l0ZWNoX2hpZHBwIGhpZF9sb2dp
+dGVjaF9kagrEjWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtlcm5lbDogIGhpZF9nZW5lcmljIHVzYmhp
+ZCBoaWQgcnRzeF91c2Jfc2RtbWMgbW1jX2NvcmUgcnRzeF91c2IgZG1fbW9kIHJhaWQxMCBzZXJp
+b19yYXcgYXRrYmQgbGlicHMyIG1kX21vZCBjcmN0MTBkaWZfcGNsbXVsIGNyYzMyX3BjbG11bCBj
+cmMzMmNfaW50ZWwgZ2hhc2hfY2xtdWxuaV9pbnRlbCBhZXNuaV9pbnRlbCBjcnlwdG9fc2ltZCBj
+cnlwdGQgZ2x1ZV9oZWxwZXIgeGhjaV9wY2kgeGhjaV9oY2QgZWhjaV9wY2kgZWhjaV9oY2QgaTgw
+NDIgc2VyaW8gaTkxNSBpbnRlbF9ndHQgaTJjX2FsZ29fYml0IGRybV9rbXNfaGVscGVyIHN5c2Nv
+cHlhcmVhIHN5c2ZpbGxyZWN0IHN5c2ltZ2JsdCBmYl9zeXNfZm9wcyBjZWMgcmNfY29yZSBkcm0g
+YWdwZ2FydArEjWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtlcm5lbDogQ1BVOiAzIFBJRDogMTcxIENv
+bW06IGt3b3JrZXIvMzozIE5vdCB0YWludGVkIDUuNy4wLXBmMyAjMQrEjWVuIDE4IDIzOjEyOjAy
+IHNwb2NrIGtlcm5lbDogSGFyZHdhcmUgbmFtZTogRGVsbCBJbmMuICAgICAgICAgIFZvc3RybyAz
+MzYwLzBGNURXRiwgQklPUyBBMTggMDkvMjUvMjAxMwrEjWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtl
+cm5lbDogV29ya3F1ZXVlOiBldmVudHNfZnJlZXphYmxlIGllZWU4MDIxMV9yZXN0YXJ0X3dvcmsg
+W21hYzgwMjExXQrEjWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtlcm5lbDogUklQOiAwMDEwOmllZWU4
+MDIxMV9yZWNvbmZpZysweDIzNC8weDE3MDAgW21hYzgwMjExXQrEjWVuIDE4IDIzOjEyOjAyIHNw
+b2NrIGtlcm5lbDogQ29kZTogODMgYjggMGIgMDAgMDAgODMgZTAgZmQgODMgZjggMDQgNzQgZTYg
+NDggOGIgODMgOTAgMDQgMDAgMDAgYTggMDEgNzQgZGIgNDggODkgZGUgNDggODkgZWYgZTggMDMg
+ZGMgZmIgZmYgNDEgODkgYzcgODUgYzAgNzQgYzkgPDBmPiAwYiA0OCA4YiA1YiAwOCA0YyA4YiAy
+NCAyNCA0OCAzYiAxYyAyNCA3NSAxMiBlOSA1MSBmZSBmZiBmZiA0OArEjWVuIDE4IDIzOjEyOjAy
+IHNwb2NrIGtlcm5lbDogUlNQOiAwMDE4OmZmZmZhODdjNDA0MDNkZjAgRUZMQUdTOiAwMDAxMDI4
+NgrEjWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtlcm5lbDogUkFYOiAwMDAwMDAwMGZmZmZmZmYwIFJC
+WDogZmZmZjlmZTAyOGY2ZTkwMCBSQ1g6IDAwMDAwMDAwMDAwMDAwMDgKxI1lbiAxOCAyMzoxMjow
+MiBzcG9jayBrZXJuZWw6IFJEWDogMDAwMDAwMDAwMDAwMDAwMCBSU0k6IDAwMDAwMDAwMDAwMDAx
+MDAgUkRJOiAwMDAwMDAwMDAwMDAwMTAwCsSNZW4gMTggMjM6MTI6MDIgc3BvY2sga2VybmVsOiBS
+QlA6IGZmZmY5ZmUwMjgzNzg3ZTAgUjA4OiAwMDAwMDAwMDAwMDAwMDAwIFIwOTogMDAwMDAwMDAw
+MDAwMDAwMQrEjWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtlcm5lbDogUjEwOiAwMDAwMDAwMDAwMDAw
+MDAxIFIxMTogMDAwMDAwMDAwMDAwMDAwMCBSMTI6IGZmZmY5ZmUwMjgzNzk4ZDAKxI1lbiAxOCAy
+MzoxMjowMiBzcG9jayBrZXJuZWw6IFIxMzogMDAwMDAwMDBmZmZmZmZmZiBSMTQ6IDAwMDAwMDAw
+MDAwMDAwMDAgUjE1OiAwMDAwMDAwMGZmZmZmZmYwCsSNZW4gMTggMjM6MTI6MDIgc3BvY2sga2Vy
+bmVsOiBGUzogIDAwMDAwMDAwMDAwMDAwMDAoMDAwMCkgR1M6ZmZmZjlmZTAyZjJjMDAwMCgwMDAw
+KSBrbmxHUzowMDAwMDAwMDAwMDAwMDAwCsSNZW4gMTggMjM6MTI6MDIgc3BvY2sga2VybmVsOiBD
+UzogIDAwMTAgRFM6IDAwMDAgRVM6IDAwMDAgQ1IwOiAwMDAwMDAwMDgwMDUwMDMzCsSNZW4gMTgg
+MjM6MTI6MDIgc3BvY2sga2VybmVsOiBDUjI6IDAwMDA3ZjMxM2IzM2E5NDAgQ1IzOiAwMDAwMDAw
+MTJlYTBhMDAyIENSNDogMDAwMDAwMDAwMDE3MDZlMArEjWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtl
+cm5lbDogQ2FsbCBUcmFjZToKxI1lbiAxOCAyMzoxMjowMiBzcG9jayBrZXJuZWw6ICBpZWVlODAy
+MTFfcmVzdGFydF93b3JrKzB4YjcvMHhlMCBbbWFjODAyMTFdCsSNZW4gMTggMjM6MTI6MDIgc3Bv
+Y2sga2VybmVsOiAgcHJvY2Vzc19vbmVfd29yaysweDFkNC8weDNjMArEjWVuIDE4IDIzOjEyOjAy
+IHNwb2NrIGtlcm5lbDogIHdvcmtlcl90aHJlYWQrMHgyMjgvMHg0NzAKxI1lbiAxOCAyMzoxMjow
+MiBzcG9jayBrZXJuZWw6ICA/IHByb2Nlc3Nfb25lX3dvcmsrMHgzYzAvMHgzYzAKxI1lbiAxOCAy
+MzoxMjowMiBzcG9jayBrZXJuZWw6ICBrdGhyZWFkKzB4MTljLzB4MWMwCsSNZW4gMTggMjM6MTI6
+MDIgc3BvY2sga2VybmVsOiAgPyBfX2t0aHJlYWRfaW5pdF93b3JrZXIrMHgzMC8weDMwCsSNZW4g
+MTggMjM6MTI6MDIgc3BvY2sga2VybmVsOiAgcmV0X2Zyb21fZm9yaysweDM1LzB4NDAKxI1lbiAx
+OCAyMzoxMjowMiBzcG9jayBrZXJuZWw6IC0tLVsgZW5kIHRyYWNlIGUwMTdiYzM1NzNiZDliZjIg
+XS0tLQrEjWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtlcm5lbDogLS0tLS0tLS0tLS0tWyBjdXQgaGVy
+ZSBdLS0tLS0tLS0tLS0tCsSNZW4gMTggMjM6MTI6MDIgc3BvY2sga2VybmVsOiB3bHAxczA6ICBG
+YWlsZWQgY2hlY2stc2RhdGEtaW4tZHJpdmVyIGNoZWNrLCBmbGFnczogMHgwCsSNZW4gMTggMjM6
+MTI6MDIgc3BvY2sga2VybmVsOiBXQVJOSU5HOiBDUFU6IDMgUElEOiAxNzEgYXQgbmV0L21hYzgw
+MjExL2RyaXZlci1vcHMuaDoxNyBkcnZfcmVtb3ZlX2ludGVyZmFjZSsweDExZi8weDEzMCBbbWFj
+ODAyMTFdCsSNZW4gMTggMjM6MTI6MDIgc3BvY2sga2VybmVsOiBNb2R1bGVzIGxpbmtlZCBpbjog
+Y21hYyBjY20gYnJpZGdlIHN0cCBsbGMgbmZ0X2N0IG5mX2Nvbm50cmFjayBuZl9kZWZyYWdfaXB2
+NiBuZl9kZWZyYWdfaXB2NCBuZl90YWJsZXMgbXNyIHR1biBuZm5ldGxpbmsgbmxzX2lzbzg4NTlf
+MSBubHNfY3A0MzcgdmZhdCBmYXQgbXQ3NngyZSBtdDc2eDJfY29tbW9uIG10NzZ4MDJfbGliIG10
+NzYgbWFjODAyMTEgaW50ZWxfcmFwbF9tc3Igc25kX2hkYV9jb2RlY19oZG1pIHNuZF9oZGFfY29k
+ZWNfY2lycnVzIG1laV9oZGNwIHNuZF9oZGFfY29kZWNfZ2VuZXJpYyBjZmc4MDIxMSBpbnRlbF9y
+YXBsX2NvbW1vbiB4ODZfcGtnX3RlbXBfdGhlcm1hbCBpbnRlbF9wb3dlcmNsYW1wIGNvcmV0ZW1w
+IGRlbGxfbGFwdG9wIGlUQ09fd2R0IHNuZF9oZGFfaW50ZWwga3ZtX2ludGVsIGlUQ09fdmVuZG9y
+X3N1cHBvcnQgZGVsbF93bWkgc25kX2ludGVsX2RzcGNmZyBzcGFyc2Vfa2V5bWFwIHNuZF9oZGFf
+Y29kZWMgbGVkdHJpZ19hdWRpbyB3bWlfYm1vZiBkZWxsX3NtYmlvcyBzbmRfaGRhX2NvcmUga3Zt
+IHJ0c3hfdXNiX21zIGRlbGxfd21pX2Rlc2NyaXB0b3IgbWVtc3RpY2sgZGNkYmFzIHNuZF9od2Rl
+cCBkZWxsX3NtbV9od21vbiBpcnFieXBhc3MgcHNtb3VzZSBpbnRlbF9jc3RhdGUgc25kX3BjbSBp
+bnRlbF91bmNvcmUgam95ZGV2IGludGVsX3JhcGxfcGVyZiBtb3VzZWRldiBtZWlfbWUgYWx4IHJm
+a2lsbCBpbnB1dF9sZWRzIHNuZF90aW1lciBpMmNfaTgwMSBzbmQgbWVpIGxwY19pY2ggbGliYXJj
+NCBtZGlvIHNvdW5kY29yZSBiYXR0ZXJ5IHdtaSBldmRldiBkZWxsX3Ntbzg4MDAgbWFjX2hpZCBh
+YyB0Y3BfYmJyIGNyeXB0b191c2VyIGlwX3RhYmxlcyB4X3RhYmxlcyB4ZnMgZG1fdGhpbl9wb29s
+IGRtX3BlcnNpc3RlbnRfZGF0YSBkbV9iaW9fcHJpc29uIGRtX2J1ZmlvIGxpYmNyYzMyYyBjcmMz
+MmNfZ2VuZXJpYyBkbV9jcnlwdCBoaWRfbG9naXRlY2hfaGlkcHAgaGlkX2xvZ2l0ZWNoX2RqCsSN
+ZW4gMTggMjM6MTI6MDIgc3BvY2sga2VybmVsOiAgaGlkX2dlbmVyaWMgdXNiaGlkIGhpZCBydHN4
+X3VzYl9zZG1tYyBtbWNfY29yZSBydHN4X3VzYiBkbV9tb2QgcmFpZDEwIHNlcmlvX3JhdyBhdGti
+ZCBsaWJwczIgbWRfbW9kIGNyY3QxMGRpZl9wY2xtdWwgY3JjMzJfcGNsbXVsIGNyYzMyY19pbnRl
+bCBnaGFzaF9jbG11bG5pX2ludGVsIGFlc25pX2ludGVsIGNyeXB0b19zaW1kIGNyeXB0ZCBnbHVl
+X2hlbHBlciB4aGNpX3BjaSB4aGNpX2hjZCBlaGNpX3BjaSBlaGNpX2hjZCBpODA0MiBzZXJpbyBp
+OTE1IGludGVsX2d0dCBpMmNfYWxnb19iaXQgZHJtX2ttc19oZWxwZXIgc3lzY29weWFyZWEgc3lz
+ZmlsbHJlY3Qgc3lzaW1nYmx0IGZiX3N5c19mb3BzIGNlYyByY19jb3JlIGRybSBhZ3BnYXJ0CsSN
+ZW4gMTggMjM6MTI6MDIgc3BvY2sga2VybmVsOiBDUFU6IDMgUElEOiAxNzEgQ29tbToga3dvcmtl
+ci8zOjMgVGFpbnRlZDogRyAgICAgICAgVyAgICAgICAgIDUuNy4wLXBmMyAjMQrEjWVuIDE4IDIz
+OjEyOjAyIHNwb2NrIGtlcm5lbDogSGFyZHdhcmUgbmFtZTogRGVsbCBJbmMuICAgICAgICAgIFZv
+c3RybyAzMzYwLzBGNURXRiwgQklPUyBBMTggMDkvMjUvMjAxMwrEjWVuIDE4IDIzOjEyOjAyIHNw
+b2NrIGtlcm5lbDogV29ya3F1ZXVlOiBldmVudHNfZnJlZXphYmxlIGllZWU4MDIxMV9yZXN0YXJ0
+X3dvcmsgW21hYzgwMjExXQrEjWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtlcm5lbDogUklQOiAwMDEw
+OmRydl9yZW1vdmVfaW50ZXJmYWNlKzB4MTFmLzB4MTMwIFttYWM4MDIxMV0KxI1lbiAxOCAyMzox
+MjowMiBzcG9jayBrZXJuZWw6IENvZGU6IGEwIDU3IGYwIGMyIGU5IDRiIGZmIGZmIGZmIDQ4IDhi
+IDg2IDc4IDA0IDAwIDAwIDQ4IDhkIGI2IDk4IDA0IDAwIDAwIDQ4IGM3IGM3IGU4IGVmIGY4IGMw
+IDQ4IDg1IGMwIDQ4IDBmIDQ1IGYwIGU4IDk5IDJlIGZhIGMyIDwwZj4gMGIgNWIgNWQgNDEgNWMg
+YzMgNjYgMmUgMGYgMWYgODQgMDAgMDAgMDAgMDAgMDAgMGYgMWYgNDQgMDAgMDAKxI1lbiAxOCAy
+MzoxMjowMiBzcG9jayBrZXJuZWw6IFJTUDogMDAxODpmZmZmYTg3YzQwNDAzYzgwIEVGTEFHUzog
+MDAwMTAyODIKxI1lbiAxOCAyMzoxMjowMiBzcG9jayBrZXJuZWw6IFJBWDogMDAwMDAwMDAwMDAw
+MDAwMCBSQlg6IGZmZmY5ZmUwMjhmNmU5MDAgUkNYOiAwMDAwMDAwMDAwMDAwMDAwCsSNZW4gMTgg
+MjM6MTI6MDIgc3BvY2sga2VybmVsOiBSRFg6IDAwMDAwMDAwMDAwMDAwMDEgUlNJOiAwMDAwMDAw
+MDAwMDAwMDgyIFJESTogMDAwMDAwMDBmZmZmZmZmZgrEjWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtl
+cm5lbDogUkJQOiBmZmZmOWZlMDI4Mzc5OTMwIFIwODogMDAwMDAwMDAwMDAwMDRjOSBSMDk6IDAw
+MDAwMDAwMDAwMDAwMDEKxI1lbiAxOCAyMzoxMjowMiBzcG9jayBrZXJuZWw6IFIxMDogMDAwMDAw
+MDAwMDAwMDAwMSBSMTE6IDAwMDAwMDAwMDAwMDZmYzAgUjEyOiBmZmZmOWZlMDI4Mzc5MDAwCsSN
+ZW4gMTggMjM6MTI6MDIgc3BvY2sga2VybmVsOiBSMTM6IGZmZmY5ZmUwMjhmNmY0YjggUjE0OiBm
+ZmZmOWZlMDI4Mzc4Y2EwIFIxNTogZmZmZjlmZTAyODM3ODdlMArEjWVuIDE4IDIzOjEyOjAyIHNw
+b2NrIGtlcm5lbDogRlM6ICAwMDAwMDAwMDAwMDAwMDAwKDAwMDApIEdTOmZmZmY5ZmUwMmYyYzAw
+MDAoMDAwMCkga25sR1M6MDAwMDAwMDAwMDAwMDAwMArEjWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtl
+cm5lbDogQ1M6ICAwMDEwIERTOiAwMDAwIEVTOiAwMDAwIENSMDogMDAwMDAwMDA4MDA1MDAzMwrE
+jWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtlcm5lbDogQ1IyOiAwMDAwN2YzMTNiMzNhOTQwIENSMzog
+MDAwMDAwMDEyZWEwYTAwMiBDUjQ6IDAwMDAwMDAwMDAxNzA2ZTAKxI1lbiAxOCAyMzoxMjowMiBz
+cG9jayBrZXJuZWw6IENhbGwgVHJhY2U6CsSNZW4gMTggMjM6MTI6MDIgc3BvY2sga2VybmVsOiAg
+aWVlZTgwMjExX2RvX3N0b3ArMHg1YWYvMHg4YzAgW21hYzgwMjExXQrEjWVuIDE4IDIzOjEyOjAy
+IHNwb2NrIGtlcm5lbDogIGllZWU4MDIxMV9zdG9wKzB4MTYvMHgyMCBbbWFjODAyMTFdCsSNZW4g
+MTggMjM6MTI6MDIgc3BvY2sga2VybmVsOiAgX19kZXZfY2xvc2VfbWFueSsweGFhLzB4MTIwCsSN
+ZW4gMTggMjM6MTI6MDIgc3BvY2sga2VybmVsOiAgZGV2X2Nsb3NlX21hbnkrMHhhMS8weDJiMArE
+jWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtlcm5lbDogIGRldl9jbG9zZSsweDZkLzB4OTAKxI1lbiAx
+OCAyMzoxMjowMiBzcG9jayBrZXJuZWw6ICBjZmc4MDIxMV9zaHV0ZG93bl9hbGxfaW50ZXJmYWNl
+cysweDcxLzB4ZDAgW2NmZzgwMjExXQrEjWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtlcm5lbDogIGll
+ZWU4MDIxMV9yZWNvbmZpZysweGEyLzB4MTcwMCBbbWFjODAyMTFdCsSNZW4gMTggMjM6MTI6MDIg
+c3BvY2sga2VybmVsOiAgaWVlZTgwMjExX3Jlc3RhcnRfd29yaysweGI3LzB4ZTAgW21hYzgwMjEx
+XQrEjWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtlcm5lbDogIHByb2Nlc3Nfb25lX3dvcmsrMHgxZDQv
+MHgzYzAKxI1lbiAxOCAyMzoxMjowMiBzcG9jayBrZXJuZWw6ICB3b3JrZXJfdGhyZWFkKzB4MjI4
+LzB4NDcwCsSNZW4gMTggMjM6MTI6MDIgc3BvY2sga2VybmVsOiAgPyBwcm9jZXNzX29uZV93b3Jr
+KzB4M2MwLzB4M2MwCsSNZW4gMTggMjM6MTI6MDIgc3BvY2sga2VybmVsOiAga3RocmVhZCsweDE5
+Yy8weDFjMArEjWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtlcm5lbDogID8gX19rdGhyZWFkX2luaXRf
+d29ya2VyKzB4MzAvMHgzMArEjWVuIDE4IDIzOjEyOjAyIHNwb2NrIGtlcm5lbDogIHJldF9mcm9t
+X2ZvcmsrMHgzNS8weDQwCsSNZW4gMTggMjM6MTI6MDIgc3BvY2sga2VybmVsOiAtLS1bIGVuZCB0
+cmFjZSBlMDE3YmMzNTczYmQ5YmYzIF0tLS0KPT09CgpEbyB5b3Ugc3RpbGwgd2FudCBtZSB0byB0
+cnkgRmVsaXgncyB0cmVlLCBvciB0aGVyZSdzIHNvbWV0aGluZyBlbHNlIEkKY2FuIHRyeT8KClRo
+YW5rIHlvdS4KCi0tIAogIEJlc3QgcmVnYXJkcywKICAgIE9sZWtzYW5kciBOYXRhbGVua28gKHBv
+c3QtZmFjdHVtKQogICAgUHJpbmNpcGFsIFNvZnR3YXJlIE1haW50ZW5hbmNlIEVuZ2luZWVyCgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
+aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
