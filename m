@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B96B0C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2020 10:29:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 05CBDC433E1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2020 10:29:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8BFBE208D5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2020 10:29:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C3E2C20C09
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2020 10:29:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uW3nFFK6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8BFBE208D5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qENGp7kZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C3E2C20C09
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,32 +25,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mXxXw1U8shNYivjN9ibt+/3deKCE9Cgdk6nygjMM+Cs=; b=uW3nFFK6YagSS6
-	zGkyob3bqr6CzqCuZBCnMvN2T/g/oT1iFe4Veoo8+Q78BJqgBTu/cHXb22o0nc4VgIjAkWKXJhnKh
-	LCvqLMrO+Z9oclqPs5mHTuGTkO8XgYM/CT72n/+Uuay0eorrGjC5xuNM72+JeGFXSDJigVVu3G08f
-	LUiNDG6elhvRQplFDRGxrlm7rXSZPXfu4/PlrKeRnNlj6lakuzBc6cDrZDiiqa5FI1y+iuIssaHzh
-	bBRY5gByj4L+pCxBzziyiffn95g15RWSOwiufS4NHutEqzktvqz3+C+SuDtKBJhOETcVJxm9quWwh
-	rCKMZs+1OLjE5e2yKxpA==;
+	List-Owner; bh=CBjSTuL0Tv9VnlF3eMAi4eadBRTbi/goGgoqwfPO0Ug=; b=qENGp7kZyEYiaq
+	wdbeEqcedvcKb65Lq8g6BgT/yMJpGnkED8GlBiuhk7dWDG06oVBSHmohK/buP9Ik+HkRtLr9mM8zl
+	g+6B8SeNXxWif8NaWxyYWeRj7g/cXD3wrakaS3MBkpKQIxoRJL5dn2DXtp52c0W7TQqUKOb8vfNBq
+	795xl9wxFKrt90pxDUBebAjpsmrySIeXoUxhj48R4PRhcfs4LOK09TEKrZnFQ5K7Hh6ihHqGq1Y8H
+	HsrYRscSAmEJ9uo0Sr0yG9RuBkMgIvfiMKBEt5w2LC75w6dfwQL1DxIjoPwZsPht59o9t8dywDbgf
+	kYxvQJJQBh4/4R8/WC4w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jmEGx-0006MP-Qd; Fri, 19 Jun 2020 10:29:23 +0000
+	id 1jmEH1-0006PX-8o; Fri, 19 Jun 2020 10:29:27 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jmEFk-00056r-5f; Fri, 19 Jun 2020 10:28:09 +0000
+ id 1jmEFj-00056R-RA; Fri, 19 Jun 2020 10:28:09 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 631072A522B
+ (Authenticated sender: eballetbo) with ESMTPSA id 425E12A51F9
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH 3/7] arm64: dts: mt8183: Add MediaTek's peripheral
- configuration controller
-Date: Fri, 19 Jun 2020 12:27:53 +0200
-Message-Id: <20200619102757.1358675-4-enric.balletbo@collabora.com>
+Subject: [PATCH 1/7] dt-bindings: arm64: dts: mediatek: Add
+ mt8183-kukui-krane-sku176
+Date: Fri, 19 Jun 2020 12:27:51 +0200
+Message-Id: <20200619102757.1358675-2-enric.balletbo@collabora.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20200619102757.1358675-1-enric.balletbo@collabora.com>
 References: <20200619102757.1358675-1-enric.balletbo@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200619_032808_336955_B7C10ACF 
+X-CRM114-CacheID: sfid-20200619_032808_003194_5BD1203B 
 X-CRM114-Status: UNSURE (   7.25  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -65,8 +65,9 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: erwanaliasr1@gmail.com, drinkcat@chromium.org, devicetree@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- hsinyi@chromium.org, matthias.bgg@gmail.com,
+ Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Mars Cheng <mars.cheng@mediatek.com>, hsinyi@chromium.org,
+ matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
  Collabora Kernel ML <kernel@collabora.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
@@ -74,32 +75,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek's peripheral configuration controller is present on the
-MT8183 SoC. Add the node for that controller.
+The krane-sku176 is the Lenovo IdeaPad Duet Chromebook. A 2-in-1
+detachable device using the MediaTek MT8183 SoC.
 
 Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
 
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 1e03c849dc5d6..00137ec61164d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -285,6 +285,12 @@ infracfg: syscon@10001000 {
- 			#reset-cells = <1>;
- 		};
- 
-+		pericfg: syscon@10003000 {
-+			compatible = "mediatek,mt8183-pericfg", "syscon";
-+			reg = <0 0x10003000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
- 		pio: pinctrl@10005000 {
- 			compatible = "mediatek,mt8183-pinctrl";
- 			reg = <0 0x10005000 0 0x1000>,
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index abc544dde6920..30908963ae261 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -114,4 +114,9 @@ properties:
+           - enum:
+               - mediatek,mt8183-evb
+           - const: mediatek,mt8183
++      - description: Google Krane (Lenovo IdeaPad Duet, 10e,...)
++        items:
++          - const: google,krane-sku176
++          - const: google,krane
++          - const: mediatek,mt8183
+ ...
 -- 
 2.27.0
 
