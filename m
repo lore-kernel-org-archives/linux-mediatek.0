@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0168DC433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2020 10:29:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1FA0BC433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2020 10:30:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C73EC208B8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2020 10:29:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E3F18208D5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2020 10:30:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZeNVkVcs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C73EC208B8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WyJC68bB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E3F18208D5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,32 +25,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hYcI5ykpqak0MmZTOOXNyE2LdHGgldL62ofKZ/RDXjE=; b=ZeNVkVcsoQkZqL
-	cS9XhE/J8lLujehNIzkV74vAbE3sDuWF7Z7aG5DzXm30J25tlVOtUZ8gmeE7yWucBKDcTYCnIb/OU
-	jQGEbeBV5TPMthyOQiIgMoD178T4LROa3LH7j1qjQL9pKcTAVZOegnqgHwxMMx4i+hZr3X/mEhZwM
-	ZE2rwKSdPggJjVEStSp2sBU6Ko/EIw+GAp2ByziJWvzNxed7GkuX5peYSf7PHEKb84wUyWPaROm5V
-	L33nWxkjIPD3jYFB8ojFihzebg6jKJmiWFW0x4LLrHdug5cB/oPeIBvQkukLLDPGM1B7LP7pZ9TEX
-	ei443fkKk2ZnmEK4300A==;
+	List-Owner; bh=rdF9Dm2Mu6whZK5VqeZseT3td9/n4ipLLTOpQKKdqrw=; b=WyJC68bB46ofRR
+	9NDDppWw+uOf8OYJhiE02owHayLXUk39uiFMAKIoC3n4PUs5LKy5oAlw4E3PPOGsJpdWimVKoflLn
+	f3Wnep+BqqaKkIWOWub5hgD0V5gJhAWB2OpdxUYFWWqGjDJ4H5N1zsdYChErsqdiBNFM23XOLIR7p
+	o1YKy1DPcHVsPN/puE7CCqGMpaGZ6+hmN10B97awyISSmu8QyZ5kxUy59u0llh0C9TAjOVWoTUbuV
+	rNaiORHOtynSNKjpCq8JAnZH2OegC81RiaIw7yR222d0OWiEFiOX/WxqaA/ro7UK8FhRKPjaQhAuC
+	yNCqxq9xWqLb5oaBb1dw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jmEHI-0006i2-Oj; Fri, 19 Jun 2020 10:29:44 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1jmEHX-0006yo-1x; Fri, 19 Jun 2020 10:29:59 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jmEFl-00057B-5t; Fri, 19 Jun 2020 10:28:10 +0000
+ id 1jmEFm-00057m-9x; Fri, 19 Jun 2020 10:28:11 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 55E3C2A5248
+ (Authenticated sender: eballetbo) with ESMTPSA id 572C62A5201
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH 4/7] arm64: dts: mt8183: Fix unit name warnings
-Date: Fri, 19 Jun 2020 12:27:54 +0200
-Message-Id: <20200619102757.1358675-5-enric.balletbo@collabora.com>
+Subject: [PATCH 5/7] arm64: dts: mt8183-evb: Fix unit name warnings
+Date: Fri, 19 Jun 2020 12:27:55 +0200
+Message-Id: <20200619102757.1358675-6-enric.balletbo@collabora.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20200619102757.1358675-1-enric.balletbo@collabora.com>
 References: <20200619102757.1358675-1-enric.balletbo@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200619_032809_363045_F6E05E97 
-X-CRM114-Status: UNSURE (   8.78  )
+X-CRM114-CacheID: sfid-20200619_032810_501010_F94BFB4A 
+X-CRM114-Status: UNSURE (   8.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -76,37 +76,37 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Remove the unit address from the DT nodes that doesn't have a reg
 property. This fixes the following unit name warnings:
 
-  Warning (unit_address_vs_reg): /cpus/idle-states/cluster-sleep@0: node has a unit name, but no reg or ranges property
-  Warning (unit_address_vs_reg): /cpus/idle-states/cluster-sleep@1: node has a unit name, but no reg or ranges property
+    Warning (unit_address_vs_reg): /soc/pinctrl@10005000/mmc0@0: node has a unit name, but no reg or ranges property
+    Warning (unit_address_vs_reg): /soc/pinctrl@10005000/mmc1@0: node has a unit name, but no reg or ranges property
 
 Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
 
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 4 ++--
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 00137ec61164d..e356076749148 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -168,7 +168,7 @@ CPU_SLEEP: cpu-sleep {
- 				min-residency-us = <800>;
- 			};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+index afd6ddbcbdf2c..ae405bd8f06b0 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+@@ -205,7 +205,7 @@ pins_rst {
+ 		};
+ 	};
  
--			CLUSTER_SLEEP0: cluster-sleep@0 {
-+			CLUSTER_SLEEP0: cluster-sleep0 {
- 				compatible = "arm,idle-state";
- 				local-timer-stop;
- 				arm,psci-suspend-param = <0x01010001>;
-@@ -176,7 +176,7 @@ CLUSTER_SLEEP0: cluster-sleep@0 {
- 				exit-latency-us = <400>;
- 				min-residency-us = <1000>;
- 			};
--			CLUSTER_SLEEP1: cluster-sleep@1 {
-+			CLUSTER_SLEEP1: cluster-sleep1 {
- 				compatible = "arm,idle-state";
- 				local-timer-stop;
- 				arm,psci-suspend-param = <0x01010001>;
+-	mmc0_pins_uhs: mmc0@0{
++	mmc0_pins_uhs: mmc0 {
+ 		pins_cmd_dat {
+ 			pinmux = <PINMUX_GPIO123__FUNC_MSDC0_DAT0>,
+ 				 <PINMUX_GPIO128__FUNC_MSDC0_DAT1>,
+@@ -264,7 +264,7 @@ pins_pmu {
+ 		};
+ 	};
+ 
+-	mmc1_pins_uhs: mmc1@0{
++	mmc1_pins_uhs: mmc1 {
+ 		pins_cmd_dat {
+ 			pinmux = <PINMUX_GPIO31__FUNC_MSDC1_CMD>,
+ 				   <PINMUX_GPIO32__FUNC_MSDC1_DAT0>,
 -- 
 2.27.0
 
