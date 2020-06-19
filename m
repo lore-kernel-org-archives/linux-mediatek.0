@@ -2,83 +2,89 @@ Return-Path: <SRS0=jvDT=AA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-9.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B8EF8C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2020 11:54:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AB965C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2020 11:55:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8069221548
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2020 11:54:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5558C20FC3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2020 11:55:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pm5i6nGZ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="YI97RlPM"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8069221548
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Wjqg2okW";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="cEbG/vDa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5558C20FC3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=BULbu2H4HfYLi18bt/gGhkPb1pl6uV2WMaRf9MxQMKw=; b=pm5
-	i6nGZxKJZpjET8C4r0ZMrzVAKNyBjbnGgiJKcrkeTlX56hQP+BNIY9DcRAUczRSYq3KlzB3U1gEuy
-	b4Qhjdxto8cI6Ek9kxBXjQ3ZdPBP8O/Cmba1IOnBpGeN/xkJQAm5LCyDyiVZbTLthXi74/5jEf7DS
-	elZjBeSTUjmtd8JdhkxRKsGzYISgJ0AvJ6fg1xhD35TaK0onKr/z+h25z3xGBwoky31zxjzpxp56K
-	XaQe8hPiiAV67fz1LUwElK9tloWtAWvYVw3AX0Q2n55lT5QaHAHdXQcu46xGSoExgQNSITsjSThzP
-	c9ethbdjtayI5LckTTkCRnWaFtZxO3Q==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=sfPhamFsJkv6rF+C214JV2vU8edFkQle1Rkadq/MA5w=; b=Wjqg2okW2+ggMbYhIKDqT+Lq6J
+	knJG4laMhyskwqWO85HNtIVNkd46AxB2c88aAu/MfHyy23huajHpHeYln5Jp+tHM2NrvXGcToXuzV
+	i7Jf2nwhT1UU59VhnFdH+EUmHS661D5Gk3CFpncycfe8AYAEne2CFcQ2k2PjCfSLrDEVIIvMzeCmg
+	tnWLKqL9q4oUq6gUl81UqGwFC3KJ3zroUXyX7lSk5CksanAfUyyrLYC37SLC6XMfkWW6PBIXSOG4/
+	GZDArYjRhKvKX6FYQXmKwfxqjrW+fgnrHCIyu7cJatBCQA1KFUfy0DPKTQym0hcF/hNPuoKWMRPXX
+	yv7WtSpg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jmFbQ-0007S6-1t; Fri, 19 Jun 2020 11:54:36 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1jmFbo-0007nr-Gz; Fri, 19 Jun 2020 11:55:00 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jmFbC-0007Gm-R2; Fri, 19 Jun 2020 11:54:24 +0000
-Received: by mail-pl1-x642.google.com with SMTP id k1so3847323pls.2;
- Fri, 19 Jun 2020 04:54:22 -0700 (PDT)
+ id 1jmFbM-0007NO-4X; Fri, 19 Jun 2020 11:54:33 +0000
+Received: by mail-pl1-x641.google.com with SMTP id n9so3852275plk.1;
+ Fri, 19 Jun 2020 04:54:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=zMo8MqpGrcojR1hu7gkCRGNTOG7j0ijRPmvlVewWUos=;
- b=YI97RlPMLGyRbSuJRbi+umDjfTca99+ghiQrmrlW0mKwUOsobIygCn551WZCkAsalv
- v1lkPth7EzHXSBb0Z2KmTkH91OxB+dGGX4pRSUrTkpBAFLDz66JD4Gt9njc6/1NkRlF9
- ccaX18Qf8k5ARWqVLucrT+8Asd/7gRrtvHCJGsu5Oeo2zF7NDCwHqgwz4iKPf3YOzxQZ
- NmNfEz95J7vlG1sbT+Y4uV7iUm+8KmMbTGSvj7dLJhx2hd3CI5NxGHOEamnTolvY03CC
- l+MXzFpco3S8vYKItM5dj4oH+9Y6La67ry66D/vHwQzUfhQ8bETL7tA4onToHMsH5EWk
- AIoA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=649vrouwnwNw8hZJmDui7hqgFQ4vaLHMeburQrpsbms=;
+ b=cEbG/vDax/+j3lSPHK8/nHyvCjYB2tiiBwqR60bvfnEHJoxK4blTHPBKwKhBAp3cIp
+ bsErxLaZ49/662w8ilOcd5ylWAwD0KnZip+va+BWpfAEaTVqCMOFys5qfpr5zz+5RCwf
+ UsROPptozBcXt43gbOg+mLqShquDKaQIcnZK/gyT6r9fSOhzJ8HR+5QE6h+cOo+W2TQz
+ NebvFnXFTQUsFEtTGRAvNMyzvTLJXsmAWG4MrT5BeYFI8sDxmEv23yVSWjTr8xtc6xav
+ U/ZZB9WSMhh2+Vw20ZeVI0yUS+mJ0JW95JiNp2Q90n/JktQZ+m4IualUzUEyrhDAloI6
+ MZpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=zMo8MqpGrcojR1hu7gkCRGNTOG7j0ijRPmvlVewWUos=;
- b=D0u8QFj0ThHkHyN3uuQ4RtnPl/bFBuwOTpZV+maRwUzcS7fBlSIWaguytkTkHgYvxI
- uPqhjtw6rl6q+BPZQD9HfucfUVIg/KVWdyreEG9tBdjSfBD0oDNeAWsBKPnF5TGm5vB5
- I7TzsMNqNxf6HaZG9wLC6MUx3rFOFof6RAWfmYQQdbiviia24E+NxfGFXi+V/DFiauan
- k2Ssqv89JHqo1pnK83QUUGHGuMUFM0lqyqw3RGeGYsw7UKOtBMq+Y0wxBB+jM2pn9ecb
- sao7EAcC09WqdqeMxnjVBmdCqn5gczG9igUSKun8L9SqEHFQq2S+LTuxM+sKauZIusjw
- yjRQ==
-X-Gm-Message-State: AOAM530ZKRk70gh9WOLs1sFzOkzvQCuvaikzqp5r4QCIcIxlgUBDIHtC
- wdvRMTZoDo0fyEmLFhRHUUo=
-X-Google-Smtp-Source: ABdhPJxVCcy/FmlsDxTpc0oGXo8VISLG/G70q11V1vZLt9e6ze3um1Q+NKeMPmkO2NaRFcgW2erl4Q==
-X-Received: by 2002:a17:90a:b903:: with SMTP id p3mr3348490pjr.4.1592567661891; 
- Fri, 19 Jun 2020 04:54:21 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=649vrouwnwNw8hZJmDui7hqgFQ4vaLHMeburQrpsbms=;
+ b=mi0WbLhhb5J3/AxYHfj8ixoWTmIH/ONOx+xz//5S0fI7T3FSVjZuIApVBXdecIuuVz
+ SGsDwvvuAkPhqcvglEj2yR6yN5FyKy3XPN/t/9Ghy1DnBdr05w9mjqy9SRHJfmgE+5vK
+ 4eHLDi0fP/KIte3g8zsbebF9KpW8FV14C7rSKl2JW1H62COrVMpAsQk5Pdzy87DrNl7V
+ WPgB/4DauiGeFZNsOO3LkU+vn45KIzMSnJnj0nw/mkZUFtl0uLjHlb7L0e1bJY+SAnRN
+ phOqpEwezrYaSEu+nA4zAcSW1KTrDLv4uvyVgFFU9hs3wXduR90+sUAOG9o1UcBdIlNa
+ oTTQ==
+X-Gm-Message-State: AOAM531RYoeiVvo8lqMzFZa9dh4oVGPyL34NrGWZ1ar+IkxqIv15HAbX
+ tgizyIE3AhPzu5BkoDHGBQIwgQUR
+X-Google-Smtp-Source: ABdhPJzebrHgH8OaOUPSrWFqgAVqn30OWaq7q/7pjgpLWyM8CBheEmOSw1CN+ye0n7VavPf/P0ypMQ==
+X-Received: by 2002:a17:902:6ac2:: with SMTP id
+ i2mr7667948plt.243.1592567671500; 
+ Fri, 19 Jun 2020 04:54:31 -0700 (PDT)
 Received: from localhost.localdomain ([2402:7500:46c:79b7:a5d3:5b37:1d99:175a])
- by smtp.gmail.com with ESMTPSA id n64sm5026712pga.38.2020.06.19.04.54.15
+ by smtp.gmail.com with ESMTPSA id n64sm5026712pga.38.2020.06.19.04.54.26
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 19 Jun 2020 04:54:20 -0700 (PDT)
+ Fri, 19 Jun 2020 04:54:31 -0700 (PDT)
 From: Gene Chen <gene.chen.richtek@gmail.com>
 To: lee.jones@linaro.org, jic23@kernel.org, jacek.anaszewski@gmail.com,
  pavel@ucw.cz, matthias.bgg@gmail.com
-Subject: [PATCH v2 0/4] dt-bindings: mfd: Add bindings for the Mediatek MT6360
-Date: Fri, 19 Jun 2020 19:53:47 +0800
-Message-Id: <1592567631-20363-1-git-send-email-gene.chen.richtek@gmail.com>
+Subject: [PATCH v2 1/4] dt-bindings: mfd: Add bindings for the Mediatek MT6360
+ PMIC
+Date: Fri, 19 Jun 2020 19:53:48 +0800
+Message-Id: <1592567631-20363-2-git-send-email-gene.chen.richtek@gmail.com>
 X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1592567631-20363-1-git-send-email-gene.chen.richtek@gmail.com>
+References: <1592567631-20363-1-git-send-email-gene.chen.richtek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200619_045422_892487_EDD22B7B 
-X-CRM114-Status: UNSURE (   8.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200619_045432_216266_8A4C0E53 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,40 +107,170 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Gene Chen <gene_chen@richtek.com>
 
-This patch series add mt6360 sub-device adc/regulator and
-fix mfd architecture and add dt-binding document
+Add devicetree binding document support Mediatek MT6360 PMIC
 
-changelogs between v1 & v2
-- adjust binding document schema include mfd/adc/regulator
-- adc: use IIO_CHAN_INFO_PROCESSED only
-- adc: use devm_iio_triggered_buffer_setup
-- adc: use use s64 to record timestamp
-- regulator: merge regmap to mfd driver for r/w with crc
-
-Gene Chen (4)
-  dt-bindings: mfd: Add bindings for the Mediatek MT6360
-  mfd: mt6360: implement i2c R/W with CRC
-  iio: adc: mt6360: Add ADC driver for MT6360
-  regulator: mt6360: Add support for MT6360 regulator
-
- Documentation/devicetree/bindings/mfd/mt6360.txt |  122 +++++
- drivers/iio/adc/Kconfig                          |   11 
- drivers/iio/adc/Makefile                         |    1 
- drivers/iio/adc/mt6360-adc.c                     |  388 ++++++++++++++++
- drivers/mfd/Kconfig                              |    1 
- drivers/mfd/mt6360-core.c                        |  541 +++++++++++++++--------
- drivers/regulator/Kconfig                        |    9 
- drivers/regulator/Makefile                       |    1 
- drivers/regulator/mt6360-regulator.c             |  485 ++++++++++++++++++++
- include/dt-bindings/mfd/mt6360.h                 |   15 
- include/linux/mfd/mt6360.h                       |  240 ----------
- 11 files changed, 1389 insertions(+), 425 deletions(-)
+Signed-off-by: Gene Chen <gene_chen@richtek.com>
+---
+ Documentation/devicetree/bindings/mfd/mt6360.txt | 122 +++++++++++++++++++++++
+ include/dt-bindings/mfd/mt6360.h                 |  15 +++
+ 2 files changed, 137 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/mfd/mt6360.txt
  create mode 100644 include/dt-bindings/mfd/mt6360.h
- delete mode 100644 include/linux/mfd/mt6360.h
- create mode 100644 drivers/iio/adc/mt6360-adc.c
- create mode 100644 drivers/regulator/mt6360-regulator.c
+
+diff --git a/Documentation/devicetree/bindings/mfd/mt6360.txt b/Documentation/devicetree/bindings/mfd/mt6360.txt
+new file mode 100644
+index 0000000..7d7d349
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mfd/mt6360.txt
+@@ -0,0 +1,122 @@
++MediaTek MT6360 PMIC Driver
++
++MT6360 is a multifunction device with the following sub modules:
++It is interfaced to host controller using I2C interface.
++This document describes the binding for PMIC device and its sub module.
++
++- ADC
++- Battery Charger/OTG boost
++- Flash LED/RGB LED/moonlight LED
++- 2-channel Buck and 6-channel LDO
++- USB_PD
++
++Required properties:
++- compatible:	Must be "mediatek,mt6360-pmu"
++- reg:		Specifies the I2C slave address of PMIC block, Must be <0x34>
++- interrupts:	I2C device IRQ line connected to the main SoC.
++
++Optional subnodes:
++- ADC
++	Required properties:
++		- compatible: "mediatek,mt6360-adc"
++- battery charger/OTG boost
++	Required properties:
++		- compatible: "mediatek,mt6360-chg"
++- Flash LED/RGB LED/moonlight LED
++	Required properties:
++		- compatible: "mediatek,mt6360-led"
++- 2-channel Buck and 6-channel LDO
++	Required properties:
++		- compatible: "mediatek,mt6360-regulator"
++- USB_PD
++	Required properties:
++		- compatible: "mediatek,mt6360-tcpc"
++
++Example:
++
++	#include <dt-bindings/interrupt-controller/irq.h>
++	#include <dt-bindings/mfd/mt6360.h>
++
++	mt6360@34 {
++		compatible = "mediatek,mt6360";
++		reg = <0x34>;
++		wakeup-source;
++		interrupts-extended = <&gpio26 0 IRQ_TYPE_LEVEL_LOW>;
++		interrupt-names = "IRQB";
++		interrupt-controller;
++		#interrupt-cells = <1>;
++		adc {
++			compatible = "mediatek,mt6360-adc";
++			#io-channel-cells = <1>;
++		};
++		regulator {
++			compatible = "mediatek,mt6360-regulator";
++			LDO_VIN3-supply = <&BUCK2>;
++			buck1 {
++				regulator-compatible = "BUCK1";
++				regulator-name = "mt6360,buck1";
++				regulator-min-microvolt = <300000>;
++				regulator-max-microvolt = <1300000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP
++							   MT6360_OPMODE_ULP>;
++			};
++			BUCK2: buck2 {
++				regulator-compatible = "BUCK2";
++				regulator-name = "mt6360,buck2";
++				regulator-min-microvolt = <300000>;
++				regulator-max-microvolt = <1300000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP
++							   MT6360_OPMODE_ULP>;
++			};
++			ldo6 {
++				regulator-compatible = "LDO6";
++				regulator-name = "mt6360,ldo6";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <2100000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++			ldo7 {
++				regulator-compatible = "LDO7";
++				regulator-name = "mt6360,ldo7";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <2100000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++			ldo1 {
++				regulator-compatible = "LDO1";
++				regulator-name = "mt6360,ldo1";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3600000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++			ldo2 {
++				regulator-compatible = "LDO2";
++				regulator-name = "mt6360,ldo2";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3600000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++			ldo3 {
++				regulator-compatible = "LDO3";
++				regulator-name = "mt6360,ldo3";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3600000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++			ldo5 {
++				regulator-compatible = "LDO5";
++				regulator-name = "mt6360,ldo5";
++				regulator-min-microvolt = <2700000>;
++				regulator-max-microvolt = <3600000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++		};
++	};
+diff --git a/include/dt-bindings/mfd/mt6360.h b/include/dt-bindings/mfd/mt6360.h
+new file mode 100644
+index 0000000..6368388
+--- /dev/null
++++ b/include/dt-bindings/mfd/mt6360.h
+@@ -0,0 +1,15 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * This header provides macros for MT6360 device bindings.
++ *
++ * Copyright (c) 2020 Mediatek Inc.
++ */
++
++#ifndef __DT_BINDINGS_MT6360_H__
++#define __DT_BINDINGS_MT6360_H__
++
++#define MT6360_OPMODE_LP		(2)
++#define MT6360_OPMODE_ULP		(3)
++#define MT6360_OPMODE_NORMAL		(0)
++
++#endif /* __DT_BINDINGS_MT6360_H__ */
+-- 
+2.7.4
+
 
 _______________________________________________
 Linux-mediatek mailing list
