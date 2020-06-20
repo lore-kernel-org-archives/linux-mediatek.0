@@ -2,103 +2,78 @@ Return-Path: <SRS0=iUBX=AB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 78A82C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jun 2020 03:59:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7B01AC433E0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jun 2020 07:01:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3448B233A0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jun 2020 03:59:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 517C12245A
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jun 2020 07:01:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ak7Bh7Yg";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="QvlXEEss"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3448B233A0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Y4/1tsuN";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="BrGsL2HU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 517C12245A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QSBB5MMtoKs7UrZwT2pT/v8a8jfMXuS9FNccVKIx2sY=; b=ak7Bh7YgzTfCm/
-	0WvWl/kPjHSLnOohg5scejxu48Kq4pOw+2x3kftG7j2zpDnkIkFgSI4bMu6/aKSwviq3SlE9mnyH3
-	sz07aObZLDYZDmntB023SKIBsB+YC8fRsaWxMIL/bnYghbhU2anfIi/8C79zSAOQISGhW23WusumP
-	JeNERaOpaw2g02na/gcDvsoQAaLkLpg8YAwWuZe5KMuqsWnCkfn2xR4kONs5h6JRBW1JpTqATCMZO
-	CEzwFp45x24eoKPtNebvUIhRP18djJVIMMqwETJS9kurZY+Y+FGVImbLaXhb0wOeiQ+8Ul98LxgvI
-	iQu+xXm4CWERM6euEsHw==;
+	List-Owner; bh=58PSojp5SSaKkKoVQ4IgAlG6mvETvxsTBPTk4tINSn4=; b=Y4/1tsuNcGeddW
+	V8YToyGcjqVYVpEM56H+R64Y8mXbalWEoUkKY3XM+UDI6Uoajer1sPOXgFdlGpfx7eN2uBuxRm2eH
+	a+MwLefR0N0RR/NM/FjDTA7I+YLXN/vBWfB9lD9X13oUn6MFRpNOINjdmkWYjsd7w0DT59Z5tIWvt
+	ZPTD5Lbo/44PwDgeArpA/JVmIt0PISMpegubng94r111uMcTZ1AOU9yWHmsrwUmp1jR503vMP7sBa
+	XoSYveSNNDRa8lT2sOxB7cFImYqZRafciTuOGD2d/hUI6mEdh6y8ySdUnUtsoW2uUuT9KR73umgk9
+	EcwD8hEB0JHICsqGQB6g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jmUfO-0002IB-SR; Sat, 20 Jun 2020 03:59:42 +0000
-Received: from userp2130.oracle.com ([156.151.31.86])
+	id 1jmXUo-0003ey-E0; Sat, 20 Jun 2020 07:00:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jmUfM-0002Hi-6p; Sat, 20 Jun 2020 03:59:41 +0000
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05K3xYGG069386;
- Sat, 20 Jun 2020 03:59:34 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding; s=corp-2020-01-29;
- bh=jCH3I8fpRAneS91Ia94tA1cV8cpC1hPLFvD4x1EGC0k=;
- b=QvlXEEss6T6r9k7y0sfcxvKYyepruSnUGRqIoK9/XJtFSLs1IsxQIjS69RSblTNsEGwJ
- Pu6HKtZL+eixxjGe9i8SrbSscHYWUUDlt7SkL5ShyCD4nS8IWusT7RFGqVK+rMUjnE4a
- Z3Zy7iKnDvaufjGPag6kxCfwCg4OW/VlR80eIgjk/Ph4jiW/WLA1x/wZ2kcTPH2zPadI
- /UhJQwxGetGZsuW+3hnJi2eJ4gKepn8EODjg7HU/bcVIz8+uybD4OLHMwGL1U328LP61
- RcgaaO1Op12eJa+pkqDrTaIOQc+X0kRwlYzOwyW9m8LIko5o0OSnxNu0Uw9jU7NtP9AU Jg== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2130.oracle.com with ESMTP id 31s9vqr37g-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Sat, 20 Jun 2020 03:59:34 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05K3vT10097770;
- Sat, 20 Jun 2020 03:59:34 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3020.oracle.com with ESMTP id 31sa8ykcyf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Sat, 20 Jun 2020 03:59:33 +0000
-Received: from abhmp0010.oracle.com (abhmp0010.oracle.com [141.146.116.16])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 05K3xTn1023442;
- Sat, 20 Jun 2020 03:59:29 GMT
-Received: from ca-mkp.ca.oracle.com (/10.156.108.201)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 19 Jun 2020 20:26:46 -0700
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: alim.akhtar@samsung.com, Stanley Chu <stanley.chu@mediatek.com>,
- jejb@linux.ibm.com, avri.altman@wdc.com, linux-scsi@vger.kernel.org,
- asutoshd@codeaurora.org
-Subject: Re: [PATCH] scsi: ufs-mediatek: Make ufs_mtk_wait_link_state as
- static function
-Date: Fri, 19 Jun 2020 23:26:38 -0400
-Message-Id: <159262354733.7800.6869131850805388311.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200616095120.14570-1-stanley.chu@mediatek.com>
-References: <20200616095120.14570-1-stanley.chu@mediatek.com>
+ id 1jmXUl-0003eF-QC; Sat, 20 Jun 2020 07:00:57 +0000
+X-UUID: acc86e99a99948d899d8c1c3c5b76af9-20200619
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=GOQerDuDZZDolfkbE0aS87YaUPdoD/4rFLApBq5bAw4=; 
+ b=BrGsL2HUAaM1YxtrLXADPGxEpyvaEEXzbysFn0FVD9m/bQS5l0yaivf54X9svOMa5xn1Tm13LUmYiMopODze3YE++28YJ/j996ZrH2uWEZ2A4z9giU5w1TQk6zraxi5uEWZBa4Y/NpwIqBJc2SAGU1A+c1ybsIJG4/PQL70Mx4E=;
+X-UUID: acc86e99a99948d899d8c1c3c5b76af9-20200619
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <dongchun.zhu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 2003174216; Fri, 19 Jun 2020 23:00:35 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 20 Jun 2020 00:00:40 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31DR.mediatek.inc
+ (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sat, 20 Jun 2020 15:00:38 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 20 Jun 2020 15:00:37 +0800
+Message-ID: <1592636284.8804.697.camel@mhfsdcap03>
+Subject: Re: [PATCH V8 2/2] media: i2c: dw9768: Add DW9768 VCM driver
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+To: Tomasz Figa <tfiga@chromium.org>
+Date: Sat, 20 Jun 2020 14:58:04 +0800
+In-Reply-To: <20200618184554.GA68039@chromium.org>
+References: <20200616125531.31671-1-dongchun.zhu@mediatek.com>
+ <20200616125531.31671-3-dongchun.zhu@mediatek.com>
+ <20200618184554.GA68039@chromium.org>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9657
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- bulkscore=0 adultscore=0
- malwarescore=0 spamscore=0 mlxlogscore=999 mlxscore=0 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2006200026
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9657
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- clxscore=1015
- malwarescore=0 lowpriorityscore=0 suspectscore=0 priorityscore=1501
- mlxlogscore=999 mlxscore=0 phishscore=0 cotscore=-2147483648 spamscore=0
- adultscore=0 impostorscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2004280000 definitions=main-2006200026
+X-TM-SNTS-SMTP: E669BBACD0C8838498D42BD62F02F8C4F0F2CA5202DE503DB6FD38ADB735C7BC2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200619_205940_336989_EA9C515E 
-X-CRM114-Status: UNSURE (   8.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200620_000055_860029_FF28E923 
+X-CRM114-Status: GOOD (  19.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,33 +85,169 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: bvanassche@acm.org, "Martin K . Petersen" <martin.petersen@oracle.com>,
- andy.teng@mediatek.com, cc.chou@mediatek.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- matthias.bgg@gmail.com, beanhuo@micron.com, chaotian.jing@mediatek.com,
- peter.wang@mediatek.com
+Cc: mark.rutland@arm.com, drinkcat@chromium.org,
+ andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
+ devicetree@vger.kernel.org, linus.walleij@linaro.org,
+ shengnan.wang@mediatek.com, louis.kuo@mediatek.com, bgolaszewski@baylibre.com,
+ sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
+ dongchun.zhu@mediatek.com, sakari.ailus@linux.intel.com,
+ matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 16 Jun 2020 17:51:20 +0800, Stanley Chu wrote:
+Hello Tomasz,
 
-> Fix build warning reported by kernel test robot:
-> Make ufs_mtk_wait_link_state() as static functon.
+Thanks for the review.
+
+On Thu, 2020-06-18 at 18:45 +0000, Tomasz Figa wrote:
+> On Tue, Jun 16, 2020 at 08:55:31PM +0800, Dongchun Zhu wrote:
+> > Add a V4L2 sub-device driver for DW9768 voice coil motor,
+> > providing control to set the desired focus via IIC serial interface.
+> > 
+> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > ---
+> >  MAINTAINERS                |   1 +
+> >  drivers/media/i2c/Kconfig  |  12 +
+> >  drivers/media/i2c/Makefile |   1 +
+> >  drivers/media/i2c/dw9768.c | 553 +++++++++++++++++++++++++++++++++++++++++++++
+> >  4 files changed, 567 insertions(+)
+> >  create mode 100644 drivers/media/i2c/dw9768.c
+> [snip]
+> > +static int dw9768_probe(struct i2c_client *client)
+> > +{
+> > +	struct device *dev = &client->dev;
+> > +	struct dw9768 *dw9768;
+> > +	unsigned int i;
+> > +	int ret;
+> > +
+> > +	dw9768 = devm_kzalloc(dev, sizeof(*dw9768), GFP_KERNEL);
+> > +	if (!dw9768)
+> > +		return -ENOMEM;
+> > +
+> > +	/* Initialize subdev */
+> > +	v4l2_i2c_subdev_init(&dw9768->sd, client, &dw9768_ops);
+> > +
+> > +	dw9768->aac_mode = DW9768_AAC_MODE_DEFAULT;
+> > +	dw9768->aac_timing = DW9768_AAC_TIME_DEFAULT;
+> > +	dw9768->clock_presc = DW9768_CLOCK_PRE_SCALE_DEFAULT;
+> > +
+> > +	/* Optional indication of AAC mode select */
+> > +	fwnode_property_read_u32(dev_fwnode(dev), "dongwoon,aac-mode",
+> > +				 &dw9768->aac_mode);
+> > +
+> > +	/* Optional indication of clock pre-scale select */
+> > +	fwnode_property_read_u32(dev_fwnode(dev), "dongwoon,clock-presc",
+> > +				 &dw9768->clock_presc);
+> > +
+> > +	/* Optional indication of AAC Timing */
+> > +	fwnode_property_read_u32(dev_fwnode(dev), "dongwoon,aac-timing",
+> > +				 &dw9768->aac_timing);
+> > +
+> > +	dw9768->move_delay_us = dw9768_cal_move_delay(dw9768->aac_mode,
+> > +						      dw9768->clock_presc,
+> > +						      dw9768->aac_timing) / 100;
 > 
-> Warning:
-> >> drivers/scsi/ufs/ufs-mediatek.c:181:5: warning: no previous prototype
-> >> for 'ufs_mtk_wait_link_state' [-Wmissing-prototypes]
+> nit: Could we make the function return the value in us already? One would
+> expect the function to return the value in a standard unit, so this
+> division by 100 here is confusing.
+> 
 
-Applied to 5.9/scsi-queue, thanks!
+Good idea.
 
-[1/1] scsi: ufs-mediatek: Make ufs_mtk_wait_link_state static
-      https://git.kernel.org/mkp/scsi/c/9a3cd470f8e3
+> > +
+> > +	for (i = 0; i < ARRAY_SIZE(dw9768_supply_names); i++)
+> > +		dw9768->supplies[i].supply = dw9768_supply_names[i];
+> > +
+> > +	ret = devm_regulator_bulk_get(dev, ARRAY_SIZE(dw9768_supply_names),
+> > +				      dw9768->supplies);
+> > +	if (ret) {
+> > +		dev_err(dev, "failed to get regulators\n");
+> > +		return ret;
+> > +	}
+> > +
+> > +	/* Initialize controls */
+> > +	ret = dw9768_init_controls(dw9768);
+> > +	if (ret)
+> > +		goto err_free_handler;
+> > +
+> > +	/* Initialize subdev */
+> > +	dw9768->sd.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
+> > +	dw9768->sd.internal_ops = &dw9768_int_ops;
+> > +
+> > +	ret = media_entity_pads_init(&dw9768->sd.entity, 0, NULL);
+> > +	if (ret < 0)
+> > +		goto err_free_handler;
+> > +
+> > +	dw9768->sd.entity.function = MEDIA_ENT_F_LENS;
+> > +
+> > +	pm_runtime_enable(dev);
+> > +	if (!pm_runtime_enabled(dev)) {
+> > +		ret = dw9768_runtime_resume(dev);
+> > +		if (ret < 0) {
+> > +			dev_err(dev, "failed to power on: %d\n", ret);
+> > +			goto err_clean_entity;
+> > +		}
+> > +	}
+> > +
+> > +	ret = v4l2_async_register_subdev(&dw9768->sd);
+> > +	if (ret < 0) {
+> > +		dev_err(dev, "failed to register V4L2 subdev: %d", ret);
+> > +		goto err_power_off;
+> > +	}
+> > +
+> > +	return 0;
+> > +
+> > +err_power_off:
+> > +	pm_runtime_disable(dev);
+> > +	if (!pm_runtime_enabled(dev))
+> 
+> We just disabled runtime PM in the line above, so this check would be
+> always true. Need to call pm_runtime_disable() after this if.
+> 
 
--- 
-Martin K. Petersen	Oracle Linux Engineering
+Sorry to make such a mistake.
+
+> > +		dw9768_runtime_suspend(dev);
+> > +err_clean_entity:
+> > +	media_entity_cleanup(&dw9768->sd.entity);
+> > +err_free_handler:
+> > +	v4l2_ctrl_handler_free(&dw9768->ctrls);
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static int dw9768_remove(struct i2c_client *client)
+> > +{
+> > +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> > +	struct dw9768 *dw9768 = sd_to_dw9768(sd);
+> > +
+> > +	v4l2_async_unregister_subdev(&dw9768->sd);
+> > +	v4l2_ctrl_handler_free(&dw9768->ctrls);
+> > +	media_entity_cleanup(&dw9768->sd.entity);
+> > +	pm_runtime_disable(&client->dev);
+> > +	if (!pm_runtime_suspended(&client->dev))
+> 
+> Oops, I just realized that my suggestion about the function to use here
+> was incorrect. pm_runtime_status_suspended() should be the correct function
+> here. Sorry for the confusion.
+> 
+> This is because we only have 2 cases here:
+>  - runtime PM compiled out - the stubs function is used, which returns
+>    false, so the condition is true,
+>  - runtime PM compiled in - we enabled runtime PM in probe, so here we
+>    don't need to consider the enable state.
+> 
+
+Uh-huh...
+Thanks for the explaining.
+It seems OV8856, OV5695 and OV2685 also use the API
+'pm_runtime_status_suspended'.
+
+> Best regards,
+> Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
