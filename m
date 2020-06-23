@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DDB5C433E1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 18:55:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9DF33C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 18:57:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 511BC207F9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 18:55:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6CBFA207E8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 18:57:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Cr6owxHP";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="tcvScFJ6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 511BC207F9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tVGEK30c";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="HvoMmUao"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6CBFA207E8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,53 +27,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=J6Ruc6Fe5wYMa172X4mqB3IwR97rGTE3YwRcQG+83Rw=; b=Cr6owxHPDFNIDlSfMAAPoAA2e
-	OCYN5BYBBLJPMIzQXWugEdjD7ibyqg8nxgq8KbovQ2iQl4fQFTYen/+YWM5Khlks1xeeaP2j2NMnd
-	FAXHRCZ7YYDn/zNIqd+Gpq8Zo2EW/J21saKggYuytMIt3PEFslBq3G777S9V2bhamFJI2+udk65tk
-	Ffo5vvI67WQFkb7JUAMRhreJewP5F8vvJF3oVbHxUMpqNYWVZLu2YMh2EvMoUO/vtiZ2nVNFJzhi4
-	bQ4Kpa4Q7HBfpF2/dYA0e0FqKGY5EHgPTVhMiMX9m+3GXMNKjaHjzgDdKXHNqUZRlBIXxHTs2IeQK
-	XAL2DdY8g==;
+	 bh=J6Ruc6Fe5wYMa172X4mqB3IwR97rGTE3YwRcQG+83Rw=; b=tVGEK30cqa7hpBrTx/oHeF9CR
+	sCetYFooxYg4kKuQZtF4ztxo19KH05PbXXFeRM/re4vL0LQUWZIVqmlPwnCpj6A6AuFeKHvKaqdib
+	92qZ/qhRnJu77ik1aajxmjYoPJy8y54Z+yoQ5qYtgeQV47c4Ex+3i9P97d4MmmXOmon4NHN08vGko
+	1vem+sxy168aJ9fppsHlDwk2aknx0fSon8W/MjFtbBqdSndSuPl9LzvgAPBQ3FuGyENkShXJ1HiXm
+	yKTWZFqpIyc0S+u3u8V7TNROVXOSU22JPMJc3YL8qbMLNyKT9GAk2JEQyh1jObhbWT/OO5CQwVlMh
+	ikpUM0+Gg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jno4M-0004tv-FX; Tue, 23 Jun 2020 18:54:54 +0000
+	id 1jno6G-0005E9-KI; Tue, 23 Jun 2020 18:56:52 +0000
 Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jno4J-0004so-SR; Tue, 23 Jun 2020 18:54:52 +0000
-Received: by mail-il1-x144.google.com with SMTP id x18so20512543ilp.1;
- Tue, 23 Jun 2020 11:54:51 -0700 (PDT)
+ id 1jno6F-0005DV-89; Tue, 23 Jun 2020 18:56:51 +0000
+Received: by mail-il1-x144.google.com with SMTP id l6so20530939ilo.2;
+ Tue, 23 Jun 2020 11:56:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
  bh=W+8l06X4v9gDesMKnj8QO14cib7Ri6lEvDT8pbY4bDE=;
- b=tcvScFJ6m0D4zDDKq165YUpT0xMfmPaDf5AmmuKf3wPR0kBk9FcWQNQx38dILo+S3v
- K1v5+HxrCH/sIFty9Uu/GlaPR++zM42hMMq6EZ0YyaCOxW0GbjILdQjBZJb4w5SYef4p
- Mdu8lKRdwa6KdY6qHjze9kJQLzzswZ+2hO2SAUBX4DRZXrDe/CHpMo6vB+PQLUATrZhY
- F5yXjhSxJV/A+UdkX94O32TIZDgz1towwucCBZE7iToLxV1Reto8Xgdp8rKMed5sdFzb
- fa4E8IDQhGbaIikunt+uIc97LZje+ez0T0NRP4ceSTyX1OinRbt++ZTqnPiY3nEDf74l
- iztQ==
+ b=HvoMmUao3bUzwAbn5jKh1/8JQ1KF3p6gpShN0L3fKTh4/k6g4dgDwNcud49St788hV
+ c8PkayZ0HHv7O8Pk14/Ocn0/ieeGeSvHV5Du+rEtqFgL33IW8CfshzdtzUOIzpqfyfCf
+ Xl0KaUo/U06Otr9/cnF5tucBbcrlGEKPKICbv3eUJJonKDrAlDVF4rTG3gMLLNHDxzBi
+ dbo5dUDA+KraTWsKfNAazs68qnn+G3OEo/aQpKCPzKnU+iiwVpEHM2mm99TMC48wALzZ
+ /uBR5D50drAf9YX6m/foQyIFr2TiPnZMimTTclQfjlM7MatGi/1jL80QcP8tCJc1KPYU
+ ggkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
  bh=W+8l06X4v9gDesMKnj8QO14cib7Ri6lEvDT8pbY4bDE=;
- b=aHUXjzYd6uDkj7kbDbIj7E4Rd/FQnw17hQ/4e+A6C2WmMOx4s3/w57hheZbgiwoEDx
- DOQB9q/Lpik1RG/+dPQndEoiGIG7pHvmIs5EG6pMVSbbhTu2WSPa/L7vtJLWdTTPKdnb
- c8PkXSvTt9Vhn0fpeQ4GMp8QjhExJlUHw6++suSrhLBKXjKOqcsZe+ma6Ph5JiHLZlRR
- mj5gVWZgtCZJiShkFRzvrnO6oGNsyDQffAeZ6qiZXhuJ5zNRfXaiQs7XpC+T1NKGzF/q
- BL4vjLpnf7S8uXTFNGmOTdBy2Mn0VBExuu7m+nSUc3673smLW88AO+fyxqEEXQHqZIRh
- QxWQ==
-X-Gm-Message-State: AOAM530270ALhQ3cMg96yKAAB9ujDEAnSYefjBJcXl+SgmKsLMUcxUxm
- T6YN60/kO8euXr6qVtvrt00=
-X-Google-Smtp-Source: ABdhPJxjDd9xmoat9dkBRXPnhpX5tUNcGRGmdI81Cb9bxt8rtBgoONpvKlKP2vgq4jYiN0xrY1YAWg==
-X-Received: by 2002:a05:6e02:11a5:: with SMTP id
- 5mr25486428ilj.108.1592938490049; 
- Tue, 23 Jun 2020 11:54:50 -0700 (PDT)
+ b=Sy8IzON+H83uzhUR1x1h80n3AXPtQN9cnZWGT5ySr1pH3N9tgYCs46KyFtBDqqpNQK
+ MErhLfKetDrJw1P6d70KhcJovBKfzZRku7kC3wNFv2V/RB8Q7MQ6pOe0cWVdb0NaIdii
+ +p30QbIkrdt7YfGe3r6ZJsNrcqTme724+9yFjbgxH8g39TaFEy3cfPV5MV6BpLWStvaS
+ gxlswRHJvQFS8xL971cZzdM2vOXnLyFOMD2VhPU80SdTbL8aaDqi0laF9o4ntZeeDk46
+ 1phOKvtphMCyPTmO8f0CboofZ7SGeGr26hdJgQ5xTSu2dTNIBNsuTWe5KTBw7FiC3JnH
+ /nxg==
+X-Gm-Message-State: AOAM530Ee1y4xgmf/3/kilv9jufIk8b0LH/OQLrUpw518I2e2hJGtnuG
+ V2xrR6wnRd/2yRKVENIdoOo=
+X-Google-Smtp-Source: ABdhPJxZGiBE4FNYGK8Jp36B1wV7VOUDzKEz7B80OxoTbKTdSkX4DoCa6+bZzD2I/LpzCqYNM+bjcQ==
+X-Received: by 2002:a92:c513:: with SMTP id r19mr21337639ilg.12.1592938609685; 
+ Tue, 23 Jun 2020 11:56:49 -0700 (PDT)
 Received: from [10.67.50.75] ([192.19.223.252])
- by smtp.googlemail.com with ESMTPSA id g1sm3628644ilk.51.2020.06.23.11.54.41
+ by smtp.googlemail.com with ESMTPSA id c20sm10398422iot.33.2020.06.23.11.56.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 23 Jun 2020 11:54:49 -0700 (PDT)
-Subject: Re: [PATCH 01/15] net: phy: arrange headers in mdio_bus.c
+ Tue, 23 Jun 2020 11:56:48 -0700 (PDT)
+Subject: Re: [PATCH 02/15] net: phy: arrange headers in mdio_device.c
  alphabetically
 To: Bartosz Golaszewski <brgl@bgdev.pl>, Andrew Lunn <andrew@lunn.ch>,
  Heiner Kallweit <hkallweit1@gmail.com>, Russell King
@@ -96,7 +95,7 @@ To: Bartosz Golaszewski <brgl@bgdev.pl>, Andrew Lunn <andrew@lunn.ch>,
  <p.zabel@pengutronix.de>, Liam Girdwood <lgirdwood@gmail.com>,
  Mark Brown <broonie@kernel.org>
 References: <20200622093744.13685-1-brgl@bgdev.pl>
- <20200622093744.13685-2-brgl@bgdev.pl>
+ <20200622093744.13685-3-brgl@bgdev.pl>
 From: Florian Fainelli <f.fainelli@gmail.com>
 Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
  xsDiBEjPuBIRBACW9MxSJU9fvEOCTnRNqG/13rAGsj+vJqontvoDSNxRgmafP8d3nesnqPyR
@@ -152,12 +151,12 @@ Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
  HvsHIcv4lxCWkFXkwsuWqzEKK6kxVpRDoEQPDj+Oy/ZJ5fYuMbkdHrlegwoQ64LrqdmiVVPC
  TwQYEQIADwIbDAUCVF/S8QUJHlwd3wAKCRBhV5kVtWN2Do+FAJ956xSz2XpDHql+Wg/2qv3b
  G10n8gCguORqNGMsVRxrlLs7/himep7MrCc=
-Message-ID: <a009d8da-97cf-0e43-f3ba-f0cee88245e6@gmail.com>
-Date: Tue, 23 Jun 2020 11:54:39 -0700
+Message-ID: <2583ee1f-9d46-597c-77b1-17325e42fe59@gmail.com>
+Date: Tue, 23 Jun 2020 11:56:39 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200622093744.13685-2-brgl@bgdev.pl>
+In-Reply-To: <20200622093744.13685-3-brgl@bgdev.pl>
 Content-Language: en-US
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
