@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C9873C433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 19:15:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8DD42C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 19:16:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 981252084D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 19:15:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 60DBF2082F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 19:16:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Jr23x8fi";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="A57Vk2PG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 981252084D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TcmgMsMC";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="o63sFuue"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 60DBF2082F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,54 +27,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OFzwLJtQmJl7qM5BKISFbw42JmKK0JB/MAPEDPD9+O0=; b=Jr23x8fif5iIe7+XUNbQR9xh9
-	vEQwrluEWXsE+CqqFO6jzpCaTSL/e5xtKkoR5izJWG6XTG6pWYE1YfnCk4jvtz9Hs4MhRRpFDc7wa
-	i7ig7EVUpon9hPUSDEWWcdXpckcmKi7ApbCjvBNE2pscubg0RVOgWrobrc+s4Gzn9/uVxbOAgzqwp
-	dERrtOg5zqY+SDZ+vZMZLrHVFSgQoT4nuLwQDESlPorsnwUNWWf5n7IKjnQmyWlj7lVUbIcr4jVFn
-	4Fdjdkh73M+9Q6ZtULPqRExIToU56ZyQybCpGwBoYl9HzJ+Uxxl7Fb+w5LJ1N3xIEJFRiyYIw2yFs
-	hiDBJfgsQ==;
+	 bh=84vDieIkc1Q5eZi3ij5/Aai1Duossfd/m8kKXRTUO78=; b=TcmgMsMCwQTMbTxxyNp9KK/4S
+	sGRxojw4ZWW2P5ybck7IKy+ELLbSRDJorjvK9HTmNq7408Ls9ho10Kf0g2B8KdD4ZnTMVhS7F99oR
+	mydvL3/GOcHCz1WGT0dXPYI28vgkI0LYgP5+ynfidOoCkILt062jfo23w1dnWqMZ76HOPTO7hNghv
+	p0gDCj3u1rRC+GUj0S8Rk/Tknx0cM/E8VqrkkONbtwwC93KmazhAk8aelQ0pPZNQmzNTykD6SOvZw
+	rMIZtXaJuEEdQyl89bpFU9Ulf7v2PMdWNDN/FRQEQR2uD9kqCqdC+j3y1rYRydmY/yu2kYtNhI2dJ
+	RCg3otY4g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jnoNm-000877-6O; Tue, 23 Jun 2020 19:14:58 +0000
-Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543])
+	id 1jnoPA-0008K4-2V; Tue, 23 Jun 2020 19:16:24 +0000
+Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jnoNk-00086a-8o; Tue, 23 Jun 2020 19:14:56 +0000
-Received: by mail-ed1-x543.google.com with SMTP id w7so17258456edt.1;
- Tue, 23 Jun 2020 12:14:54 -0700 (PDT)
+ id 1jnoP7-0008JV-RW; Tue, 23 Jun 2020 19:16:22 +0000
+Received: by mail-ej1-x642.google.com with SMTP id a1so8711559ejg.12;
+ Tue, 23 Jun 2020 12:16:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=EiQFBNz48uXtNqjBEt8M9gZWuWmgSf33o4QdtgMKMq0=;
- b=A57Vk2PGm/E+JJTBbM5USbl+adG6u3ZcRDuPw18KhGy75/ccHsP4CGCiKwxNzm8Uo1
- K8R8ChHFTnr/1R0Z7mCLfmRITjT2k0+BQX0K/dUTRWyOoXjGLpaPvjy0n3iza8kZeTnE
- eaEb4MGPNASPf4w25tipAH2T2+JDv+/n03MUEsH6mmXToUT8onns6XhxiqnAL+hmVFHQ
- TCZX/0tbWIxq+K4bhh0270LnL8i2/wttYNpNdiokPYBCR0uqO21sLcAVJkDiy1p/oTPv
- 3gHUhfKK8KZBekm5AtEtF366prA62ONCPKQeBjBOgmOLPiC3o3vztmL5QIM99ApFvRWk
- JiFg==
+ bh=UzQp1hQlOzqdNi1YndpqVxliVZx+D0AKaaRUoCK8nr8=;
+ b=o63sFuueEHk/547QE0wCBXP5jjFSTls7r/TONSuWAL7wxROIgVccIDHl8Dg3Sqsnuc
+ Arge0FYFOaRJcUbwY3Gl6cYVSJTPmwSln65Vx1yusrlqVgDTc/GPBjz4SlH80nI84Pjq
+ 4DMO4un1gp0GZJvPHYmXtKh7QbgOOex3AOt3/2nnnrhNNelHiOPhJ5EBp7p2NZGGGY1W
+ fRZLeTEVaX07cNFd7rVbHlOWpXK4QeZfWIZKA7z0cVGEkruQCW//esmHsO1lH4VwSQyJ
+ rJLuSZqjU/yn3IvSsgInqWwE6Pa2f8o8lWnaEW3Ua0Skj3HwtdKu/GCJyYZd4DsVjzlw
+ 1Iwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=EiQFBNz48uXtNqjBEt8M9gZWuWmgSf33o4QdtgMKMq0=;
- b=iqmCrhh9Ntom8LU9NY3qx43Hwyc9WpTgpEGBYic37wNm95mWeuIG8vrhXzowv6f41q
- JdfpzcEh0kXg9/EW0MPY+TAD51RBsyfQylZNJ0iLtSTTKFWkHyv604ZVgp3h2tqKAQjM
- hUger77oFcphkwVaCsNE+Z6Z0v0aTKhlhS2fPTK6h/NeF0stHUF7jHY/+Zb35U8xDXwo
- Uj1n7NximCV2hN/w6HxKVWS9yCuCsMYuCCv9xe1Vs13xdrVlfLGcB26S4ZSZkmQJptZI
- 0Im/7ogtPF/EXXIgFzFgaq1RGrNxgmIJQmfpKYWbQeCM9C85YlFXy2wK+ofzUeJJY2Cn
- rcIg==
-X-Gm-Message-State: AOAM531V4nqsAO12xib1oFibK1TqCMBTqdcA7tMfjQg5Il2d1yv7OjnC
- 5PPnhaRGP8CPpPHZsLa4MFI=
-X-Google-Smtp-Source: ABdhPJyXmL3dkFjXuonGFphO0n/F99uq29MIJcNi6jR8Zz1PV38oEsaPtArFWK5uad10FcQv0JbkRw==
-X-Received: by 2002:a50:b0c3:: with SMTP id j61mr23775895edd.349.1592939693386; 
- Tue, 23 Jun 2020 12:14:53 -0700 (PDT)
+ bh=UzQp1hQlOzqdNi1YndpqVxliVZx+D0AKaaRUoCK8nr8=;
+ b=dG2HyltO67iBXtr7drkkdR26y3cM/mthurqb/PDcPwjGOPbhx0YsdTUEGQFFt4gTLB
+ 0UaCYkLAmAGzcKn2hQT7i6NHgV1dYMfowfX+OAVDlPPGqD0g9ziA7sd+l5JrpJQoEGIs
+ GkjLMyR16MYo1NfztQbEYtqSR3s74aA/rbJi/AFOeysqhUaKNoHoIBt4bJYo+bEkTdxu
+ MCSoGiqWkNd6/AjFvchslhUWf5zsWSbWl1ityccG3DHsumkZQp62uhID9TE7vhgsSTyK
+ 1kaR7tHjtp/gfTH0MJZm63OLV0kO6bfoM6uu6lECLlbnp2fLKZMaHTaf1KciBkUmVA4p
+ PhzA==
+X-Gm-Message-State: AOAM532ZpPPFMJWWfJNanX5zBRWdK4jnJR1H0pQqB6w1weLHzbvHOaYT
+ VM24Pk6UpljlITbhMjoo1sk=
+X-Google-Smtp-Source: ABdhPJxOw4MaCAt9fkW9CBZlxVk9ro0+kaT5EauAAfdESjmO1rtUKnRrup90FzgFnQzU6ATJdFl+TA==
+X-Received: by 2002:a17:906:19c7:: with SMTP id
+ h7mr21240539ejd.403.1592939780864; 
+ Tue, 23 Jun 2020 12:16:20 -0700 (PDT)
 Received: from [10.67.50.75] ([192.19.223.252])
- by smtp.googlemail.com with ESMTPSA id
- bz14sm13964207ejc.100.2020.06.23.12.14.45
+ by smtp.googlemail.com with ESMTPSA id l3sm3923118edr.14.2020.06.23.12.16.12
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 23 Jun 2020 12:14:52 -0700 (PDT)
-Subject: Re: [PATCH 05/15] net: phy: reset the PHY even if probe() is not
- implemented
+ Tue, 23 Jun 2020 12:16:20 -0700 (PDT)
+Subject: Re: [PATCH 06/15] net: phy: mdio: reset MDIO devices even if probe()
+ is not implemented
 To: Bartosz Golaszewski <brgl@bgdev.pl>, Andrew Lunn <andrew@lunn.ch>,
  Heiner Kallweit <hkallweit1@gmail.com>, Russell King
  <linux@armlinux.org.uk>, "David S . Miller" <davem@davemloft.net>,
@@ -96,7 +96,7 @@ To: Bartosz Golaszewski <brgl@bgdev.pl>, Andrew Lunn <andrew@lunn.ch>,
  <p.zabel@pengutronix.de>, Liam Girdwood <lgirdwood@gmail.com>,
  Mark Brown <broonie@kernel.org>
 References: <20200622093744.13685-1-brgl@bgdev.pl>
- <20200622093744.13685-6-brgl@bgdev.pl>
+ <20200622093744.13685-7-brgl@bgdev.pl>
 From: Florian Fainelli <f.fainelli@gmail.com>
 Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
  xsDiBEjPuBIRBACW9MxSJU9fvEOCTnRNqG/13rAGsj+vJqontvoDSNxRgmafP8d3nesnqPyR
@@ -152,12 +152,12 @@ Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
  HvsHIcv4lxCWkFXkwsuWqzEKK6kxVpRDoEQPDj+Oy/ZJ5fYuMbkdHrlegwoQ64LrqdmiVVPC
  TwQYEQIADwIbDAUCVF/S8QUJHlwd3wAKCRBhV5kVtWN2Do+FAJ956xSz2XpDHql+Wg/2qv3b
  G10n8gCguORqNGMsVRxrlLs7/himep7MrCc=
-Message-ID: <1da91144-076d-bf1e-f12a-2b4fe242febc@gmail.com>
-Date: Tue, 23 Jun 2020 12:14:44 -0700
+Message-ID: <1af383ab-43eb-0557-0fd8-1f0fee3436b5@gmail.com>
+Date: Tue, 23 Jun 2020 12:16:10 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200622093744.13685-6-brgl@bgdev.pl>
+In-Reply-To: <20200622093744.13685-7-brgl@bgdev.pl>
 Content-Language: en-US
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -185,20 +185,15 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 6/22/20 2:37 AM, Bartosz Golaszewski wrote:
 > From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 > 
-> Currently we only call phy_device_reset() if the PHY driver implements
-> the probe() callback. This is not mandatory and many drivers (e.g.
-> realtek) don't need probe() for most devices but still can have reset
-> GPIOs defined. There's no reason to depend on the presence of probe()
-> here so pull the reset code out of the if clause.
+> Similarily to PHY drivers - there's no reason to require probe() to be
+> implemented in order to call mdio_device_reset(). MDIO devices can have
+> resets defined without needing to do anything in probe().
 > 
 > Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 
-OK, but now let's imagine that a PHY device has two or more reset lines,
-one of them is going to be managed by the core PHY library and the rest
-is going to be under the responsibility of the PHY driver, that does not
-sound intuitive or convenient at all. This is a hypothetical case, but
-it could conceivable happen, so how about adding a flag to the driver
-that says "let me manage it a all"?
+Same comment as patch #5, I would prefer that we seek a solution that
+allows MDIO drivers to manage multiple reset lines (would that exist) on
+their own instead of this one size fits all approach. Thank you.
 -- 
 Florian
 
