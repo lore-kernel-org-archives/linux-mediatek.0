@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,TVD_PH_BODY_ACCOUNTS_PRE,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CCC2DC433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 20:23:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 99BCDC433E2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 20:35:35 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 93F072070E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 20:23:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5840F21531
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 20:35:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="08nO4z4j";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="PKIqeapD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 93F072070E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dzSmOPHS";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="SdXAAnha"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5840F21531
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linuxfoundation.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,40 +26,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BiypYOnq3Jzn7HTrSdJp9F4cSR7yOJTIKqz4Z56JzjE=; b=08nO4z4jn0KFVtvLIg6lI4SEc
-	+Xc6Q9I8lMvVMwbauhbLpU9zkxN9sz26q/Y5WEXJF1VcY6t2sA6AsbgQF5jKgpRIhasBw+D5m7fhW
-	e3Ra8eW2mtvQX0IjXZa7ltlVW241tYqbZ4zGvewLnTT7KVpA34CJZ2PjVVHIg9UrHlPgMBOw+upLP
-	5fvJTLRry4KoPGusRtn62fm2n4z4d+j+sWBph3vZ3F49xVbsv61vBZvv0MlLl1ObR9Bi/WAp4tAWh
-	OVuDM5/WHN4AeCrIBnJcGljnQ//nrZSlOaUSxPv9ACDpmMOUJQvlC79pTgTQwf/PGXwdECGCEBBAk
-	izSBa94ag==;
+	 bh=5wj6SFlfltb6hg0eTRhBJM92oZ/piAI1DWA7eBBMZYs=; b=dzSmOPHSD3q85u3tDp2w8dzNN
+	4E45tQEcZ4lATJp+bQSNlExtoZf9ZqLvr0OiU55kTrhIOxAjAtzQ0eDgqWeSEuX4x166BFIGe+ukZ
+	QFUQrwXpzoXbT0OObgs2fWHJTZVeSOCkHwNK4XMsKg/kP32MYEgamJimw2k6uQvNVExR79Pz+nZjx
+	dwBCOMSKeKmkNEIeSmWmQ2Bv95Y8o36v5Qpp1Mmhe7S1ux26G10CmVzyNc5ckb/fLTm/zNTnHQXbe
+	vbesrjtCz23XZTGUXYHkirTnLys9doLWzGIx9BGB5lIuKSY1vlgQae46hjNYdQvw8JQxdXThw2oGI
+	NGX0R1v/w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jnpS7-0000Lj-Lx; Tue, 23 Jun 2020 20:23:31 +0000
+	id 1jnpdc-0002aX-GB; Tue, 23 Jun 2020 20:35:24 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jnpS3-0000Kc-MT; Tue, 23 Jun 2020 20:23:28 +0000
+ id 1jnpdX-0002Zg-Vl; Tue, 23 Jun 2020 20:35:20 +0000
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8812C206C3;
- Tue, 23 Jun 2020 20:23:26 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id A099120781;
+ Tue, 23 Jun 2020 20:35:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592943807;
- bh=TBlHH28Xc5Yl2pRyaZ+HJFciz2+iVOEHPTosfHaNpE0=;
+ s=default; t=1592944519;
+ bh=2iMwDS1An9dC4G19YW2gfnJl3ePuwVtPxhbtfj/wS2A=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=PKIqeapDHsBDkOE6bx64SiHPf3XfGJx65OpwKvhbVeaUiUfBqaPqT+ZqFYsuUD8t4
- 8cml1m5ud2paYU41TsFdTIj/L1jo54Y10LJQCzMDCKGqQKTolVjCPDwDnvpZQrGlmO
- nZtGmcEEtjwJpGQQbztBAg4yCCUOfe8HNaYhhWUo=
+ b=SdXAAnhahnCQOoW297egTPJInb03lKgnMHPkuyiH3qZyrB0Apghm80v5csiZuSt7F
+ v6Y5NSTkmBVnFVTpCMtHmq5tfZYoCD/oL0Us4BrYgiKMBmLvxIZhq/FjoS62kUbQZU
+ 3fxhqw3C/1xlnJWUhu8uXEbdwB9O21eSamFwvHlc=
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH 5.4 031/314] serial: 8250: Fix max baud limit in generic 8250
+Subject: [PATCH 4.19 021/206] serial: 8250: Fix max baud limit in generic 8250
  port
-Date: Tue, 23 Jun 2020 21:53:46 +0200
-Message-Id: <20200623195340.293777554@linuxfoundation.org>
+Date: Tue, 23 Jun 2020 21:55:49 +0200
+Message-Id: <20200623195318.022918548@linuxfoundation.org>
 X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20200623195338.770401005@linuxfoundation.org>
-References: <20200623195338.770401005@linuxfoundation.org>
+In-Reply-To: <20200623195316.864547658@linuxfoundation.org>
+References: <20200623195316.864547658@linuxfoundation.org>
 User-Agent: quilt/0.66
 MIME-Version: 1.0
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -141,10 +141,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/tty/serial/8250/8250_port.c b/drivers/tty/serial/8250/8250_port.c
-index 2c65c775bf5aa..dbb27303a6b49 100644
+index 5a04d4ddca736..20b799219826e 100644
 --- a/drivers/tty/serial/8250/8250_port.c
 +++ b/drivers/tty/serial/8250/8250_port.c
-@@ -2539,6 +2539,8 @@ static unsigned int serial8250_get_baud_rate(struct uart_port *port,
+@@ -2628,6 +2628,8 @@ static unsigned int serial8250_get_baud_rate(struct uart_port *port,
  					     struct ktermios *termios,
  					     struct ktermios *old)
  {
@@ -153,7 +153,7 @@ index 2c65c775bf5aa..dbb27303a6b49 100644
  	/*
  	 * Ask the core to calculate the divisor for us.
  	 * Allow 1% tolerance at the upper limit so uart clks marginally
-@@ -2547,7 +2549,7 @@ static unsigned int serial8250_get_baud_rate(struct uart_port *port,
+@@ -2636,7 +2638,7 @@ static unsigned int serial8250_get_baud_rate(struct uart_port *port,
  	 */
  	return uart_get_baud_rate(port, termios, old,
  				  port->uartclk / 16 / UART_DIV_MAX,
