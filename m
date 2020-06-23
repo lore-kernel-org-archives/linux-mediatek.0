@@ -2,23 +2,23 @@ Return-Path: <SRS0=E2+4=AE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AD700C433E1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 19:00:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C9873C433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 19:15:09 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7FE78207F9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 19:00:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 981252084D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 19:15:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="n2q9xiN6";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="qOKZ5J4C"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7FE78207F9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Jr23x8fi";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="A57Vk2PG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 981252084D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,54 +27,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FKL7zsyUthq0Ssm4DKmpxHfecmUfhwmtQ+FqMKtr3WU=; b=n2q9xiN6X/ezVGEZpAGoiuYwj
-	L1pUFZzgGDO6IErX3RChb0ClCUDT1qEhKAkzm9H7GSqYkGJ/PSoJUzRkROiJeYReaP9PUd5TEIMHK
-	rcIjG+9is/npc21NWTST3XWkjTAWPD6FnKpeO/reH4EbYEy255GCLYKwbP/eBBpyuWk7jQplR3/yS
-	qhD7csasyf2jrynsSReyWcwmQEhaOmjSADuTtxcB1K0YK0kzXnR0pUwO3zK4h129L120hqw+sEnDN
-	2G9IkW6U/nj7JEYSlsX5LjkwtG6kKW/tr2AxindTjPRaay7nUl5bQWEr0ZXV9nibuO82OvdQW6ce3
-	36yGA5g+A==;
+	 bh=OFzwLJtQmJl7qM5BKISFbw42JmKK0JB/MAPEDPD9+O0=; b=Jr23x8fif5iIe7+XUNbQR9xh9
+	vEQwrluEWXsE+CqqFO6jzpCaTSL/e5xtKkoR5izJWG6XTG6pWYE1YfnCk4jvtz9Hs4MhRRpFDc7wa
+	i7ig7EVUpon9hPUSDEWWcdXpckcmKi7ApbCjvBNE2pscubg0RVOgWrobrc+s4Gzn9/uVxbOAgzqwp
+	dERrtOg5zqY+SDZ+vZMZLrHVFSgQoT4nuLwQDESlPorsnwUNWWf5n7IKjnQmyWlj7lVUbIcr4jVFn
+	4Fdjdkh73M+9Q6ZtULPqRExIToU56ZyQybCpGwBoYl9HzJ+Uxxl7Fb+w5LJ1N3xIEJFRiyYIw2yFs
+	hiDBJfgsQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jno9G-0005xM-6T; Tue, 23 Jun 2020 18:59:58 +0000
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642])
+	id 1jnoNm-000877-6O; Tue, 23 Jun 2020 19:14:58 +0000
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jno9D-0005wc-MQ; Tue, 23 Jun 2020 18:59:56 +0000
-Received: by mail-ej1-x642.google.com with SMTP id ga4so9148301ejb.11;
- Tue, 23 Jun 2020 11:59:55 -0700 (PDT)
+ id 1jnoNk-00086a-8o; Tue, 23 Jun 2020 19:14:56 +0000
+Received: by mail-ed1-x543.google.com with SMTP id w7so17258456edt.1;
+ Tue, 23 Jun 2020 12:14:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=ARUvIZCtRggYIgRlUkEErm7D276R21f9e3LiRcWQhd0=;
- b=qOKZ5J4CL3CWx8aSDTNcyKpvIcWSu7X1pL3PkIyDHm5YO1o3rxKsc9yCbsbto9X/uS
- 6J5Gmqc4cyK5ZnTYMcP3PO2PacB70RuGRm4FMDK47DzCMESzJC9bzTSVYqo+099voI7H
- s06f4Djb0zqiKcNVNvBWMKOdrI8ShBppqXi0NpN4wC5kuZOXV6xQ3I2fPx/+VSoKWDWK
- +SqOfyAyD/F97XO0QD5qOea8SQ4tHT8575YG/I1FgKujfWHddeTz0/sC0BBfZD7I0mut
- tU6XptIySATDV0hYYa394Hgaku3zq0k1HXa92m4LfxeePSMpDL9pqT1jHOqBhVP6HDnH
- b8bw==
+ bh=EiQFBNz48uXtNqjBEt8M9gZWuWmgSf33o4QdtgMKMq0=;
+ b=A57Vk2PGm/E+JJTBbM5USbl+adG6u3ZcRDuPw18KhGy75/ccHsP4CGCiKwxNzm8Uo1
+ K8R8ChHFTnr/1R0Z7mCLfmRITjT2k0+BQX0K/dUTRWyOoXjGLpaPvjy0n3iza8kZeTnE
+ eaEb4MGPNASPf4w25tipAH2T2+JDv+/n03MUEsH6mmXToUT8onns6XhxiqnAL+hmVFHQ
+ TCZX/0tbWIxq+K4bhh0270LnL8i2/wttYNpNdiokPYBCR0uqO21sLcAVJkDiy1p/oTPv
+ 3gHUhfKK8KZBekm5AtEtF366prA62ONCPKQeBjBOgmOLPiC3o3vztmL5QIM99ApFvRWk
+ JiFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=ARUvIZCtRggYIgRlUkEErm7D276R21f9e3LiRcWQhd0=;
- b=Og9LVWp8XfXjKR+HW8pFuzubCltL/qd4Jnn3Z0a63jeKLmSaRBUq/UYYDnn+FrEG2/
- J8exwnxsFshB7f7LALQNm/TxqNzJmKG34qb/ERAcD/tQ6hYuTmthe0YfP+ZDNJApfIqj
- IfB7VpL4XTlG+Pf/zEBfr9OvAiUZzbgY8oyexI20NmXXi6L70sbtuJZqkxJMukmykNN3
- dFRwNbYTcMD1XRysw6FI3iDXCRVcUfrYzDWKHUWL2L8c3CdVCzMfmnhUwMGnGgrQUW2Y
- y0sOAHc4oSueTSioojCL3Qmx7UCiJDjscXVqC3bGwKCYmbLC5OXOHhc4CGKWOlOd/XB4
- 03vA==
-X-Gm-Message-State: AOAM532Lcj8Ope4vjt+Yw7e9OKnJyf3XmwqvcgwnRvKVAYnFr8zJKND5
- 51gE6t0kdsAcdg/3rg3liGc=
-X-Google-Smtp-Source: ABdhPJz6mBbCm+Sggz52Xcd8rPZ+ORcVpVCCHmrIXmqbsItRjz9hxGYwQA0j693Ash+pcV7izPK6OA==
-X-Received: by 2002:a17:906:2bc2:: with SMTP id
- n2mr20961949ejg.115.1592938794396; 
- Tue, 23 Jun 2020 11:59:54 -0700 (PDT)
+ bh=EiQFBNz48uXtNqjBEt8M9gZWuWmgSf33o4QdtgMKMq0=;
+ b=iqmCrhh9Ntom8LU9NY3qx43Hwyc9WpTgpEGBYic37wNm95mWeuIG8vrhXzowv6f41q
+ JdfpzcEh0kXg9/EW0MPY+TAD51RBsyfQylZNJ0iLtSTTKFWkHyv604ZVgp3h2tqKAQjM
+ hUger77oFcphkwVaCsNE+Z6Z0v0aTKhlhS2fPTK6h/NeF0stHUF7jHY/+Zb35U8xDXwo
+ Uj1n7NximCV2hN/w6HxKVWS9yCuCsMYuCCv9xe1Vs13xdrVlfLGcB26S4ZSZkmQJptZI
+ 0Im/7ogtPF/EXXIgFzFgaq1RGrNxgmIJQmfpKYWbQeCM9C85YlFXy2wK+ofzUeJJY2Cn
+ rcIg==
+X-Gm-Message-State: AOAM531V4nqsAO12xib1oFibK1TqCMBTqdcA7tMfjQg5Il2d1yv7OjnC
+ 5PPnhaRGP8CPpPHZsLa4MFI=
+X-Google-Smtp-Source: ABdhPJyXmL3dkFjXuonGFphO0n/F99uq29MIJcNi6jR8Zz1PV38oEsaPtArFWK5uad10FcQv0JbkRw==
+X-Received: by 2002:a50:b0c3:: with SMTP id j61mr23775895edd.349.1592939693386; 
+ Tue, 23 Jun 2020 12:14:53 -0700 (PDT)
 Received: from [10.67.50.75] ([192.19.223.252])
- by smtp.googlemail.com with ESMTPSA id kt1sm298761ejb.78.2020.06.23.11.59.44
+ by smtp.googlemail.com with ESMTPSA id
+ bz14sm13964207ejc.100.2020.06.23.12.14.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 23 Jun 2020 11:59:53 -0700 (PDT)
-Subject: Re: [PATCH 04/15] net: mdio: add a forward declaration for
- reset_control to mdio.h
+ Tue, 23 Jun 2020 12:14:52 -0700 (PDT)
+Subject: Re: [PATCH 05/15] net: phy: reset the PHY even if probe() is not
+ implemented
 To: Bartosz Golaszewski <brgl@bgdev.pl>, Andrew Lunn <andrew@lunn.ch>,
  Heiner Kallweit <hkallweit1@gmail.com>, Russell King
  <linux@armlinux.org.uk>, "David S . Miller" <davem@davemloft.net>,
@@ -96,7 +96,7 @@ To: Bartosz Golaszewski <brgl@bgdev.pl>, Andrew Lunn <andrew@lunn.ch>,
  <p.zabel@pengutronix.de>, Liam Girdwood <lgirdwood@gmail.com>,
  Mark Brown <broonie@kernel.org>
 References: <20200622093744.13685-1-brgl@bgdev.pl>
- <20200622093744.13685-5-brgl@bgdev.pl>
+ <20200622093744.13685-6-brgl@bgdev.pl>
 From: Florian Fainelli <f.fainelli@gmail.com>
 Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
  xsDiBEjPuBIRBACW9MxSJU9fvEOCTnRNqG/13rAGsj+vJqontvoDSNxRgmafP8d3nesnqPyR
@@ -152,12 +152,12 @@ Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
  HvsHIcv4lxCWkFXkwsuWqzEKK6kxVpRDoEQPDj+Oy/ZJ5fYuMbkdHrlegwoQ64LrqdmiVVPC
  TwQYEQIADwIbDAUCVF/S8QUJHlwd3wAKCRBhV5kVtWN2Do+FAJ956xSz2XpDHql+Wg/2qv3b
  G10n8gCguORqNGMsVRxrlLs7/himep7MrCc=
-Message-ID: <3188e6a9-1eb1-a0e8-4835-7d046e819ca5@gmail.com>
-Date: Tue, 23 Jun 2020 11:59:42 -0700
+Message-ID: <1da91144-076d-bf1e-f12a-2b4fe242febc@gmail.com>
+Date: Tue, 23 Jun 2020 12:14:44 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200622093744.13685-5-brgl@bgdev.pl>
+In-Reply-To: <20200622093744.13685-6-brgl@bgdev.pl>
 Content-Language: en-US
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -185,29 +185,20 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 6/22/20 2:37 AM, Bartosz Golaszewski wrote:
 > From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 > 
-> This header refers to struct reset_control but doesn't include any reset
-> header. The structure definition is probably somehow indirectly pulled in
-> since no warnings are reported but for the sake of correctness add the
-> forward declaration for struct reset_control.
+> Currently we only call phy_device_reset() if the PHY driver implements
+> the probe() callback. This is not mandatory and many drivers (e.g.
+> realtek) don't need probe() for most devices but still can have reset
+> GPIOs defined. There's no reason to depend on the presence of probe()
+> here so pull the reset code out of the if clause.
 > 
 > Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-> ---
->  include/linux/mdio.h | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/include/linux/mdio.h b/include/linux/mdio.h
-> index 36d2e0673d03..9ac5e7ff6156 100644
-> --- a/include/linux/mdio.h
-> +++ b/include/linux/mdio.h
-> @@ -17,6 +17,7 @@
->  #define MII_REGADDR_C45_MASK	GENMASK(15, 0)
->  
->  struct gpio_desc;
-> +struct reset_control;
->  struct mii_bus;
 
-You wrote 3 patches to sort the headers alphabetically, do you mind
-doing the same thing for forward declarations as well?
+OK, but now let's imagine that a PHY device has two or more reset lines,
+one of them is going to be managed by the core PHY library and the rest
+is going to be under the responsibility of the PHY driver, that does not
+sound intuitive or convenient at all. This is a hypothetical case, but
+it could conceivable happen, so how about adding a flag to the driver
+that says "let me manage it a all"?
 -- 
 Florian
 
