@@ -2,23 +2,22 @@ Return-Path: <SRS0=E2+4=AE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-2.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 46F86C433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 19:40:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7FAA5C433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 19:49:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1261020C09
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 19:40:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4B6862098B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2020 19:49:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Pz2Zg3PP";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="UinVkuo1"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1261020C09
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="D3NZ84Dr";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="B+y2HgSD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4B6862098B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,75 +26,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FkDgwWebkDjZ7rqW8HcFyRT2X48/cBSJxDgkls6SU8M=; b=Pz2Zg3PPS3h3VrP/E91GDzuIc
-	NFUQVF5CsyL3fWBmv1C1xBbhMaA483qhiXlMMhc+SgrAm67+4xweH2kZLg1QstQ566SogBfMEvnxC
-	aVLdnjbftaG14aNLjdjr1SsrEK5kN+cTEAkehqd3HqohC/wwUSpGXIxdhii7KUHOqvcEcst9mGoql
-	C1HpG+pF7Gx4/U5a+bjdvByc4+P1h0LF8+obpiUqp0Yklza43P2nca1azzAmR4HhWciQiBxFVjRXX
-	QGPGGz1PxlVfcuysP3PKzNNJodjklI3K203Y37cLmUnIey/C1MAAINIu+5tPQvczPbNQ8APR/QMH+
-	oxbQp3rLw==;
+	 bh=mmKLMpzOieTyHP3p9mvodxwky1cwPeIBx6ZNxgggvZ4=; b=D3NZ84DraHdSFwXlYIPvDh3En
+	QbKc0JiOgkzC1/cLYCdcSArZP6aMQa8nHgM0jvBfAe+EBXmd7DlWaziurivscDCsYL6r2RbHZg+rU
+	T6YiSJcm57gysK6MBqUUFR/sv3Lqxnogo+7IanTnsYvlYkRWLyVgO5n1iB9WICjZm2+TMZdVLtgnn
+	hVLPXAhs6p1rbLoHavJCgG3frRbdu4JvmASFnVNUwkW++EP+rE/D8uGW/hPiV8888Lg7re0uDFd5/
+	XNCaV6Rj9dMCwcDxJOReoTFn7HvsiQoH2PEocUD7ZTnFEpA3RSh+7NGGxUmPSTH6Ohwpaghp+JcZK
+	BwP4byovQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jnolt-0002kW-0R; Tue, 23 Jun 2020 19:39:53 +0000
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
+	id 1jnov6-0003gt-A7; Tue, 23 Jun 2020 19:49:24 +0000
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jnolq-0002jz-75; Tue, 23 Jun 2020 19:39:50 +0000
-Received: by mail-io1-xd44.google.com with SMTP id k23so3211561iom.10;
- Tue, 23 Jun 2020 12:39:50 -0700 (PDT)
+ id 1jnov3-0003gK-Bz; Tue, 23 Jun 2020 19:49:22 +0000
+Received: by mail-io1-xd42.google.com with SMTP id a12so11636170ion.13;
+ Tue, 23 Jun 2020 12:49:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=ON8R5IT5kpw4UiCSOW1nl5up36r+tL2wFW0z/curnEc=;
- b=UinVkuo1YR7kJFYxyDUhOHD+YXCS+9X2TqEs9x+IDax1d/3WcgLjPE6LEQ86FHvP2E
- j19p5Cj9X4Ip2DRABsYsfocfyJd7ziKfmFfrgf8UZ4uAYH3nDTmsyhmbkV3LfWwE6lGY
- FR21FfizxwWp0I9w79ogkdoSQb+vWe+4T9XXyZByzsZACePbEDp8Xdtrrz+djWOjFo7t
- hxr3gjKmrY7EigC2OOJVFfXszDifccUSYKb9x4UeK26nCh06oLXjb8mgvfnsjGl8vwd7
- C5oIqpCvjX9AymC5VXHi9Tf+cDVi5/k7LqCd0PMluaxyJaX79NaVuJnPEnqQsIFZiv7l
- X6yQ==
+ bh=hAK/qguNrmk0Gm1APUEN0dntiivLtTinL6GSxp7o6Ow=;
+ b=B+y2HgSDU/5tRsw+WKTnUfx4ewuLBP1Z66CDJqZpdGGn/PNVQcD4gmWOR8yOObgEOx
+ yOsTCYAAoRDhLhYdPJRirf86Ti50iPIFK9dcBBzA1zm5n/xckUIAJ09KuCLvBss10tkl
+ 9+oqb4lYyDGKk3Rioqrn5CQGUKV2Z4WRHxcFDnkMMBqZO1pdgCVXgpE2OBKIoEsrHomG
+ yqaau3D2o7z4Cq3uKAxybpAsyEGc2shjNcB62/uiBrZoBPyqi42MnFJeCjPrp0zgt3WL
+ z6mCU+3Jqu/pCzcFEJDugPptN9cbXij7c0BKhsp0pU1EFZsnt+uffD4XIc8wGzLCR2WE
+ 9xOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=ON8R5IT5kpw4UiCSOW1nl5up36r+tL2wFW0z/curnEc=;
- b=foByV9tl4x13JzVKUMaxAzH5eiwBXU4cGWS21jQ3iNogpUlXo8/Y5B1eEtgPzb5t5Z
- M/RXTpv17+6F+54su/HF0MmCD0j90DrUfR1AjEtklfVoN4nVEJyPXCsktsuFlgC0oLS3
- PZOPtrnmbqFQbMeluemPBuGIw7JUhSkZJtudEPIJupiUKQ7fPFVq0/HVACHaZtCQWazl
- taDMSkNriQBzQVI4lalWmsvmcBh6UmTVGEUp1yTAev3UZ0Tc/VodumaujvEPrANw4HXn
- O5qH8zNVWBywc2CJUcKmJtF/Uz/32inmCe2elKafmhSEKgIfJqvsl78Pb/gnCJXlE030
- AHTg==
-X-Gm-Message-State: AOAM531jBrF6bGrnqrDely6iO0+amp1I4nN2rmijhT0rbEGBlOSFdsWD
- EoIOLlGVnAftCLnOfj2BdSM=
-X-Google-Smtp-Source: ABdhPJzpbYG2AxrKYqBD/+gTiqDb38cJZpoiLygkaCCJpgCpWyQc52XVMfaH+Uq4mhUTojXyy0tnBg==
-X-Received: by 2002:a6b:91c5:: with SMTP id t188mr14071991iod.61.1592941188540; 
- Tue, 23 Jun 2020 12:39:48 -0700 (PDT)
+ bh=hAK/qguNrmk0Gm1APUEN0dntiivLtTinL6GSxp7o6Ow=;
+ b=k7vfiaSVco/JHSuA671nUv6EMZ8wKdIWbh/ph0CTU+Ac8Kur2SRj6Ssq8MIVCOS5ge
+ E2RzroTAzuJe5UuZr/EEamzcnUudIMgb6W0cA9Cgir6YvUXLN0doS0LscmFKbk01cwt2
+ L3hGVEx1XNxwjhikk8oHXMb6xC58aEx6CryDBHyFnxfTkSqYLKQt2PbdbEtvlclp0Hrv
+ 9iYs3M/OQQuBnhF3YAbgf4OogRNZdJCfCcB330yyaE1rtUKIIJGNackTR8gAYztRfWhE
+ bK3JAS2EE46CLqWfnlxWplRJa56P2Z5XKmlFlmmYIrYgyot7Xi91yZaPTqq2qe7oBZFj
+ b+Xw==
+X-Gm-Message-State: AOAM533qgiHIyyO2D0SMnOFaZySUSPPqutaOR9Fnn4m4Qp3A5m69Zynw
+ eejwl4EVEPm7vbRdNZA5ROs=
+X-Google-Smtp-Source: ABdhPJyuVMZyMj6yPM93Z62rBEasacSyFa5WqfLZLQhdF+FMcW4sbckkyiejtk99VWmebUAhCVWKHQ==
+X-Received: by 2002:a02:2417:: with SMTP id f23mr26618811jaa.28.1592941759511; 
+ Tue, 23 Jun 2020 12:49:19 -0700 (PDT)
 Received: from [10.67.50.75] ([192.19.223.252])
- by smtp.googlemail.com with ESMTPSA id m2sm2999896iln.1.2020.06.23.12.39.44
+ by smtp.googlemail.com with ESMTPSA id k3sm6320722iot.42.2020.06.23.12.49.16
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 23 Jun 2020 12:39:47 -0700 (PDT)
-Subject: Re: [PATCH 12/15] dt-bindings: mdio: add phy-supply property to
- ethernet phy node
-To: Bartosz Golaszewski <brgl@bgdev.pl>, Andrew Lunn <andrew@lunn.ch>,
- Heiner Kallweit <hkallweit1@gmail.com>, Russell King
- <linux@armlinux.org.uk>, "David S . Miller" <davem@davemloft.net>,
- Jakub Kicinski <kuba@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>,
- Vladimir Oltean <vladimir.oltean@nxp.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Tom Lendacky <thomas.lendacky@amd.com>,
- Yisen Zhuang <yisen.zhuang@huawei.com>, Salil Mehta
- <salil.mehta@huawei.com>, Jassi Brar <jaswinder.singh@linaro.org>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>,
- Iyappan Subramanian <iyappan@os.amperecomputing.com>,
- Keyur Chudgar <keyur@os.amperecomputing.com>,
- Quan Nguyen <quan@os.amperecomputing.com>,
- Frank Rowand <frowand.list@gmail.com>, Philipp Zabel
- <p.zabel@pengutronix.de>, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>
+ Tue, 23 Jun 2020 12:49:18 -0700 (PDT)
+Subject: Re: [PATCH 09/15] net: phy: delay PHY driver probe until PHY
+ registration
+To: Mark Brown <broonie@kernel.org>, Andrew Lunn <andrew@lunn.ch>
 References: <20200622093744.13685-1-brgl@bgdev.pl>
- <20200622093744.13685-13-brgl@bgdev.pl>
+ <20200622093744.13685-10-brgl@bgdev.pl> <20200622133940.GL338481@lunn.ch>
+ <20200622135106.GK4560@sirena.org.uk>
 From: Florian Fainelli <f.fainelli@gmail.com>
 Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
  xsDiBEjPuBIRBACW9MxSJU9fvEOCTnRNqG/13rAGsj+vJqontvoDSNxRgmafP8d3nesnqPyR
@@ -151,12 +132,12 @@ Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
  HvsHIcv4lxCWkFXkwsuWqzEKK6kxVpRDoEQPDj+Oy/ZJ5fYuMbkdHrlegwoQ64LrqdmiVVPC
  TwQYEQIADwIbDAUCVF/S8QUJHlwd3wAKCRBhV5kVtWN2Do+FAJ956xSz2XpDHql+Wg/2qv3b
  G10n8gCguORqNGMsVRxrlLs7/himep7MrCc=
-Message-ID: <5e5194be-0e5c-5945-4c39-06692a557cb7@gmail.com>
-Date: Tue, 23 Jun 2020 12:39:43 -0700
+Message-ID: <dca54c57-a3bd-1147-63b2-4631194963f0@gmail.com>
+Date: Tue, 23 Jun 2020 12:49:15 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200622093744.13685-13-brgl@bgdev.pl>
+In-Reply-To: <20200622135106.GK4560@sirena.org.uk>
 Content-Language: en-US
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -169,48 +150,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org,
- Stephane Le Provost <stephane.leprovost@mediatek.com>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>, netdev@vger.kernel.org,
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ devicetree@vger.kernel.org, Vladimir Oltean <vladimir.oltean@nxp.com>,
  linux-kernel@vger.kernel.org, Fabien Parent <fparent@baylibre.com>,
- linux-mediatek@lists.infradead.org,
+ Iyappan Subramanian <iyappan@os.amperecomputing.com>,
+ Quan Nguyen <quan@os.amperecomputing.com>,
+ Frank Rowand <frowand.list@gmail.com>, Bartosz Golaszewski <brgl@bgdev.pl>,
+ Russell King <linux@armlinux.org.uk>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Jakub Kicinski <kuba@kernel.org>, Yisen Zhuang <yisen.zhuang@huawei.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Tom Lendacky <thomas.lendacky@amd.com>,
  Andrew Perepech <andrew.perepech@mediatek.com>,
- Pedro Tsai <pedro.tsai@mediatek.com>, linux-arm-kernel@lists.infradead.org
+ Stephane Le Provost <stephane.leprovost@mediatek.com>,
+ Keyur Chudgar <keyur@os.amperecomputing.com>,
+ Jassi Brar <jaswinder.singh@linaro.org>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, Salil Mehta <salil.mehta@huawei.com>,
+ netdev@vger.kernel.org, Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Pedro Tsai <pedro.tsai@mediatek.com>,
+ "David S . Miller" <davem@davemloft.net>,
+ Heiner Kallweit <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/22/20 2:37 AM, Bartosz Golaszewski wrote:
-> From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+On 6/22/20 6:51 AM, Mark Brown wrote:
+> On Mon, Jun 22, 2020 at 03:39:40PM +0200, Andrew Lunn wrote:
 > 
-> The phy-supply property is often added to MAC nodes but this is wrong
-> conceptually. These supplies should be part of the PHY node on the
-> MDIO bus. Add phy-supply property at PHY level to mdio.yaml.
+>> The PHY subsystem cannot be the first to run into this problem, that
+>> you need a device structure to make use of the regulator API, but you
+>> need the regulator API to probe the device. How do other subsystems
+>> work around this?
 > 
-> Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-> ---
->  Documentation/devicetree/bindings/net/mdio.yaml | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/mdio.yaml b/Documentation/devicetree/bindings/net/mdio.yaml
-> index d6a3bf8550eb..9c10012c2093 100644
-> --- a/Documentation/devicetree/bindings/net/mdio.yaml
-> +++ b/Documentation/devicetree/bindings/net/mdio.yaml
-> @@ -90,6 +90,10 @@ patternProperties:
->            Delay after the reset was deasserted in microseconds. If
->            this property is missing the delay will be skipped.
->  
-> +      phy-supply:
-> +        description:
-> +          Phandle to the regulator that provides the supply voltage to the PHY.
+> If the bus includes power management for the devices on the bus the
+> controller is generally responsible for that rather than the devices,
+> the devices access this via facilities provided by the bus if needed.
+> If the device is enumerated by firmware prior to being physically
+> enumerable then the bus will generally instantiate the device model
+> device and then arrange to wait for the physical device to appear and
+> get joined up with the device model device, typically in such situations
+> the physical device might appear and disappear dynamically at runtime
+> based on what the driver is doing anyway.
 
-I do not see how you can come up with a generic name here, there could
-be PHYs supporting different voltages (3.3V, 1.8V, 1.5V) depending on
-their operation mode/strapping, there can also be different parts of the
-PHY being powered by different regulators, the analog part could be on
-an always-on island such that Wake-on-LAN from the PHY could be done,
-and the digital part could be on a complete different island.
+In premise there is nothing that prevents the MDIO bus from taking care
+of the regulators, resets, prior to probing the PHY driver, what is
+complicated here is that we do need to issue a read of the actual PHY to
+know its 32-bit unique identifier and match it with an appropriate
+driver. The way that we have worked around this with if you do not wish
+such a hardware access to be made, is to provide an Ethernet PHY node
+compatible string that encodes that 32-bit OUI directly. In premise the
+same challenges exist with PCI devices/endpoints as well as USB, would
+they have reset or regulator typically attached to them.
+
+> 
+>> Maybe it is time to add a lower level API to the regulator framework?
+> 
+> I don't see any need for that here, this is far from the only thing
+> that's keyed off a struct device and having the device appear and
+> disappear at runtime can make things like runtime PM look really messy
+> to userspace.
+> 
+> We could use a pre-probe stage in the device model for hotpluggable
+> buses in embedded contexts where you might need to bring things out of
+> reset or power them up before they'll appear on the bus for enumeration
+> but buses have mostly handled that at their level.
+> 
+
+That sounds like a better solution, are there any subsystems currently
+implementing that, or would this be a generic Linux device driver model
+addition that needs to be done?
 -- 
 Florian
 
