@@ -2,60 +2,91 @@ Return-Path: <SRS0=bzTf=AF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B7F57C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2020 15:30:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D8581C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2020 16:07:01 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 75369206C3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2020 15:30:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A65E820738
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2020 16:07:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bsznvTNl"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 75369206C3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3fqkbzx6";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="c2rzrcC1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A65E820738
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ed8IlkZwRU3ZAYtnUvIFHk4A+SX9DhG2UutstyvLL2A=; b=bsznvTNleIpUSllQgGIdJn7rZ
-	XTh2Q+aT7swFsXsvXq7WmCgG+lt/7OW+BsviHTLBZ6vdQxk0eh4ox768o7VWZqVG1M/DbvK4ipBNO
-	pt4WH01uHVUsy5LRADWvzwpDefOPi23nZFmspEwptCZucfd/J6V2TKoRK7e9LjeFDrjkNt1/S51ui
-	9oFsTPFstX5vtr4uRcBX39j/xfuJk9lDNwBwvhP/sOvD/0vD0L1clm5KKVjQxr8k6Dc+iXUNS4Tau
-	AtlJAUpJAmeukgMXyz2VKg4hbCCpeMoovUE/YfKCNpkx4a6/yzKB3QH1hzRhaG/t3lwcEkveOigpi
-	E342jzX8w==;
+	 bh=OfiE/nmLk2N4TphJbKqihEmGMTEkQwP2eaEpg5+8f3Q=; b=3fqkbzx6+kRvw+Clsqtx+uDx3
+	beECdk8Nlic/jn6d3mMouhuDefsjvJgpbT6r+xCRL6Wq6yewBbJWo5/P6BHaSfZNehw3qwv9jF0QS
+	qjW/u6g+O3F6eJu+JJvUTckGrkzKINIr8AYHk6Uc0lk+q4NhYJXx8V6bgSF1PzHxD7/lSexFsyTq6
+	wF9eC4WRbjZG3pPUXTLCmz8Kgt/26Q1MIV+Qa5HRxcwhQ+46TeHR3LUunzYrhcCZY0UhBZbjoXO/E
+	4RLQroj+UkwVfNHVpOQATf3HiXn8Chbq+pZXe6hGKikqcnZKblgD1gdGoGk5yEw8ixg14p35CJAxz
+	oGW7f4atA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jo7Lw-0000PE-RK; Wed, 24 Jun 2020 15:30:20 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jo7Le-00009R-1U; Wed, 24 Jun 2020 15:30:08 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 392291FB;
- Wed, 24 Jun 2020 08:30:01 -0700 (PDT)
-Received: from [10.37.12.79] (unknown [10.37.12.79])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id E01873F73C;
- Wed, 24 Jun 2020 08:29:49 -0700 (PDT)
-Subject: Re: [RESEND][PATCH v8 4/8] PM / EM: add support for other devices
- than CPUs in Energy Model
-To: "Rafael J. Wysocki" <rafael@kernel.org>
-References: <20200527095854.21714-5-lukasz.luba@arm.com>
- <20200610101223.7152-1-lukasz.luba@arm.com>
- <CAJZ5v0i30Bbk_p+ZAedqJeDu5RfzN53m5PAMbOd3wE=adaBqSQ@mail.gmail.com>
-From: Lukasz Luba <lukasz.luba@arm.com>
-Message-ID: <b162dfdc-60b2-7de7-e5b3-3ea49a28ed5b@arm.com>
-Date: Wed, 24 Jun 2020 16:29:47 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+	id 1jo7v8-0007y0-Hu; Wed, 24 Jun 2020 16:06:42 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jo7v6-0007w7-5C; Wed, 24 Jun 2020 16:06:41 +0000
+Received: by mail-wm1-x344.google.com with SMTP id o2so3054882wmh.2;
+ Wed, 24 Jun 2020 09:06:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=N5fl5/sMZxwAr7ptc9+M4Sr+AByefpkVY5hVcBVQQ/k=;
+ b=c2rzrcC1s/RvV0v6BauZL5SgifsfzraAm6dKbwwVmpzxQX4AEpCnmWIyRQjVyJ0BxY
+ VwAF1gysQzcY6viTFWKNd5ER+wald/A+oDJmThbanQzzZTMkP8Syhpwrt+cK1I8evkBw
+ vKEUtxcqdx/YAs6AfAz1YMl1W6EjqZaigjKox7N0hT1oe61tpTl1rIpLMJbIlywMUA6y
+ r9Iqdiq9bK+9J6sjSGr1PFWW6C7ipYzc5btYktjX9GjMxMJrTiHGA4nrljYift0Cb5wn
+ Lo9oppL/ubGVr1CRnyh4GbMhJctzp8q5jjRO/KLV5NGB/8uatOUPDVDfTmK6h+fUbnK4
+ JiJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=N5fl5/sMZxwAr7ptc9+M4Sr+AByefpkVY5hVcBVQQ/k=;
+ b=DOx/NrZJmp/RVpUNsJIzTdHoJGWB4HaSPjGJXmpc2wwGM0H+xqmhYFluZZAImGsmhO
+ GpMHr1sDIe4x+Cezmsb7BIv2mqbLnskcaLhMe9Z7C/5FqEJooZzz+uJDFdWBCkDR3get
+ XeZ26Ur7dJ31OJlNTmILvpzTbnogAshEDqghrxK659OrlVdKgNqeR3GJSQHVFsCkLh4V
+ RwF7+GJbq4tbgZEgwiX5zze2PFyQffYxOqCIWBzkpNgx7awIernvhzQ6ZvneDDJUMtps
+ W8bxoIuaqXFHqA3LUkQtunNvwov7kJQjoKZ7z6CkxUGm1a3Vbmzkdh8ht1pJ1eV3q6Cw
+ uzcQ==
+X-Gm-Message-State: AOAM530iX08kU2IK4r9Epnme3/QwhuVp2ebINJsatGhp5wJpdECyh7Ss
+ g8ZtVkBCqOmiHQmROkBefcU=
+X-Google-Smtp-Source: ABdhPJwWIG0y9eC4lbkgJBhmydeFIya8dS7IrcbvZPWjmmIvUtHTKwrtZj6sEnp2a6behlqd9ZQbOQ==
+X-Received: by 2002:a1c:a90d:: with SMTP id s13mr16491624wme.184.1593014797129; 
+ Wed, 24 Jun 2020 09:06:37 -0700 (PDT)
+Received: from [10.230.189.192] ([192.19.223.252])
+ by smtp.gmail.com with ESMTPSA id f14sm10446689wro.90.2020.06.24.09.06.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 24 Jun 2020 09:06:36 -0700 (PDT)
+Subject: Re: [PATCH 09/15] net: phy: delay PHY driver probe until PHY
+ registration
+To: Bartosz Golaszewski <brgl@bgdev.pl>, Mark Brown <broonie@kernel.org>
+References: <20200622093744.13685-1-brgl@bgdev.pl>
+ <20200622093744.13685-10-brgl@bgdev.pl> <20200622133940.GL338481@lunn.ch>
+ <20200622135106.GK4560@sirena.org.uk>
+ <dca54c57-a3bd-1147-63b2-4631194963f0@gmail.com>
+ <20200624094302.GA5472@sirena.org.uk>
+ <CAMRc=McBxJdujCyjQF3NA=bCWHF1dx8xJ1Nc2snmqukvJ_VyoQ@mail.gmail.com>
+From: Florian Fainelli <f.fainelli@gmail.com>
+Message-ID: <f806586d-a6d7-99af-bba4-d1e7d28be192@gmail.com>
+Date: Wed, 24 Jun 2020 09:06:28 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Firefox/68.0 Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <CAJZ5v0i30Bbk_p+ZAedqJeDu5RfzN53m5PAMbOd3wE=adaBqSQ@mail.gmail.com>
+In-Reply-To: <CAMRc=McBxJdujCyjQF3NA=bCWHF1dx8xJ1Nc2snmqukvJ_VyoQ@mail.gmail.com>
 Content-Language: en-US
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -68,567 +99,110 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nishanth Menon <nm@ti.com>, Juri Lelli <juri.lelli@redhat.com>,
- Peter Zijlstra <peterz@infradead.org>, Viresh Kumar <viresh.kumar@linaro.org>,
- Liviu Dudau <liviu.dudau@arm.com>, dri-devel <dri-devel@lists.freedesktop.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Benjamin Segall <bsegall@google.com>, alyssa.rosenzweig@collabora.com,
- Fabio Estevam <festevam@gmail.com>, Matthias Kaehlcke <mka@chromium.org>,
- Rob Herring <robh@kernel.org>, Amit Kucheria <amit.kucheria@verdurent.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Vincent Guittot <vincent.guittot@linaro.org>,
- Kevin Hilman <khilman@kernel.org>, Andy Gross <agross@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, steven.price@arm.com,
- Chanwoo Choi <cw00.choi@samsung.com>, Ingo Molnar <mingo@redhat.com>,
- dl-linux-imx <linux-imx@nxp.com>, "Zhang, Rui" <rui.zhang@intel.com>,
- Mel Gorman <mgorman@suse.de>, orjan.eide@arm.com,
- Daniel Vetter <daniel@ffwll.ch>, Linux PM <linux-pm@vger.kernel.org>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Steven Rostedt <rostedt@goodmis.org>,
+Cc: Andrew Lunn <andrew@lunn.ch>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ devicetree <devicetree@vger.kernel.org>,
+ Vladimir Oltean <vladimir.oltean@nxp.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Fabien Parent <fparent@baylibre.com>,
+ Iyappan Subramanian <iyappan@os.amperecomputing.com>,
+ Quan Nguyen <quan@os.amperecomputing.com>,
+ Frank Rowand <frowand.list@gmail.com>, Russell King <linux@armlinux.org.uk>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Jakub Kicinski <kuba@kernel.org>, Yisen Zhuang <yisen.zhuang@huawei.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Tom Lendacky <thomas.lendacky@amd.com>,
+ Andrew Perepech <andrew.perepech@mediatek.com>,
+ Stephane Le Provost <stephane.leprovost@mediatek.com>,
+ Keyur Chudgar <keyur@os.amperecomputing.com>,
+ Jassi Brar <jaswinder.singh@linaro.org>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Rob Herring <robh+dt@kernel.org>,
  "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Linux OMAP Mailing List <linux-omap@vger.kernel.org>,
- Dietmar Eggemann <Dietmar.Eggemann@arm.com>,
  Linux ARM <linux-arm-kernel@lists.infradead.org>,
- David Airlie <airlied@linux.ie>, Tomeu Vizoso <tomeu.vizoso@collabora.com>,
- Quentin Perret <qperret@google.com>, Stephen Boyd <sboyd@kernel.org>,
- Randy Dunlap <rdunlap@infradead.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Sascha Hauer <kernel@pengutronix.de>, Sudeep Holla <sudeep.holla@arm.com>,
- patrick.bellasi@matbug.net, Shawn Guo <shawnguo@kernel.org>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+ Salil Mehta <salil.mehta@huawei.com>, netdev <netdev@vger.kernel.org>,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Pedro Tsai <pedro.tsai@mediatek.com>,
+ "David S . Miller" <davem@davemloft.net>,
+ Heiner Kallweit <hkallweit1@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 6/24/20 4:21 PM, Rafael J. Wysocki wrote:
-> On Wed, Jun 10, 2020 at 12:12 PM Lukasz Luba <lukasz.luba@arm.com> wrote:
->>
->> Add support for other devices than CPUs. The registration function
->> does not require a valid cpumask pointer and is ready to handle new
->> devices. Some of the internal structures has been reorganized in order to
->> keep consistent view (like removing per_cpu pd pointers).
->>
->> Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
->> ---
->> Hi all,
->>
->> This is just a small change compared to v8 addressing Rafael's
->> comments an Dan's static analyzes.
->> Here are the changes:
->> - added comment about mutex usage in the unregister function
->> - changed 'dev' into @dev in the kerneldoc comments
->> - removed 'else' statement from em_create_pd() to calm down static analizers
-> 
-> I've applied the series as 5.9 material with patch [4/8] replaced with this one.
-> 
-> Sorry for the delays in handling this!
-
-No worries. Thank you very much!
-
-Regards,
-Lukasz
-
-> 
-> Thanks!
-> 
->>   include/linux/device.h       |   5 +
->>   include/linux/energy_model.h |  29 ++++-
->>   kernel/power/energy_model.c  | 244 ++++++++++++++++++++++++-----------
->>   3 files changed, 194 insertions(+), 84 deletions(-)
->>
->> diff --git a/include/linux/device.h b/include/linux/device.h
->> index ac8e37cd716a..7023d3ea189b 100644
->> --- a/include/linux/device.h
->> +++ b/include/linux/device.h
->> @@ -13,6 +13,7 @@
->>   #define _DEVICE_H_
->>
->>   #include <linux/dev_printk.h>
->> +#include <linux/energy_model.h>
->>   #include <linux/ioport.h>
->>   #include <linux/kobject.h>
->>   #include <linux/klist.h>
->> @@ -559,6 +560,10 @@ struct device {
->>          struct dev_pm_info      power;
->>          struct dev_pm_domain    *pm_domain;
->>
->> +#ifdef CONFIG_ENERGY_MODEL
->> +       struct em_perf_domain   *em_pd;
->> +#endif
->> +
->>   #ifdef CONFIG_GENERIC_MSI_IRQ_DOMAIN
->>          struct irq_domain       *msi_domain;
->>   #endif
->> diff --git a/include/linux/energy_model.h b/include/linux/energy_model.h
->> index 7076cb22b247..2d4689964029 100644
->> --- a/include/linux/energy_model.h
->> +++ b/include/linux/energy_model.h
->> @@ -12,8 +12,10 @@
->>
->>   /**
->>    * em_perf_state - Performance state of a performance domain
->> - * @frequency: The CPU frequency in KHz, for consistency with CPUFreq
->> - * @power:     The power consumed by 1 CPU at this level, in milli-watts
->> + * @frequency: The frequency in KHz, for consistency with CPUFreq
->> + * @power:     The power consumed at this level, in milli-watts (by 1 CPU or
->> +               by a registered device). It can be a total power: static and
->> +               dynamic.
->>    * @cost:      The cost coefficient associated with this level, used during
->>    *             energy calculation. Equal to: power * max_frequency / frequency
->>    */
->> @@ -27,12 +29,16 @@ struct em_perf_state {
->>    * em_perf_domain - Performance domain
->>    * @table:             List of performance states, in ascending order
->>    * @nr_perf_states:    Number of performance states
->> - * @cpus:              Cpumask covering the CPUs of the domain
->> + * @cpus:              Cpumask covering the CPUs of the domain. It's here
->> + *                     for performance reasons to avoid potential cache
->> + *                     misses during energy calculations in the scheduler
->> + *                     and simplifies allocating/freeing that memory region.
->>    *
->> - * A "performance domain" represents a group of CPUs whose performance is
->> - * scaled together. All CPUs of a performance domain must have the same
->> - * micro-architecture. Performance domains often have a 1-to-1 mapping with
->> - * CPUFreq policies.
->> + * In case of CPU device, a "performance domain" represents a group of CPUs
->> + * whose performance is scaled together. All CPUs of a performance domain
->> + * must have the same micro-architecture. Performance domains often have
->> + * a 1-to-1 mapping with CPUFreq policies. In case of other devices the @cpus
->> + * field is unused.
->>    */
->>   struct em_perf_domain {
->>          struct em_perf_state *table;
->> @@ -71,10 +77,12 @@ struct em_data_callback {
->>   #define EM_DATA_CB(_active_power_cb) { .active_power = &_active_power_cb }
->>
->>   struct em_perf_domain *em_cpu_get(int cpu);
->> +struct em_perf_domain *em_pd_get(struct device *dev);
->>   int em_register_perf_domain(cpumask_t *span, unsigned int nr_states,
->>                                                  struct em_data_callback *cb);
->>   int em_dev_register_perf_domain(struct device *dev, unsigned int nr_states,
->>                                  struct em_data_callback *cb, cpumask_t *span);
->> +void em_dev_unregister_perf_domain(struct device *dev);
->>
->>   /**
->>    * em_pd_energy() - Estimates the energy consumed by the CPUs of a perf. domain
->> @@ -184,10 +192,17 @@ int em_dev_register_perf_domain(struct device *dev, unsigned int nr_states,
->>   {
->>          return -EINVAL;
->>   }
->> +static inline void em_dev_unregister_perf_domain(struct device *dev)
->> +{
->> +}
->>   static inline struct em_perf_domain *em_cpu_get(int cpu)
->>   {
->>          return NULL;
->>   }
->> +static inline struct em_perf_domain *em_pd_get(struct device *dev)
->> +{
->> +       return NULL;
->> +}
->>   static inline unsigned long em_pd_energy(struct em_perf_domain *pd,
->>                          unsigned long max_util, unsigned long sum_util)
->>   {
->> diff --git a/kernel/power/energy_model.c b/kernel/power/energy_model.c
->> index 5b8a1566526a..32d76e78f992 100644
->> --- a/kernel/power/energy_model.c
->> +++ b/kernel/power/energy_model.c
->> @@ -1,9 +1,10 @@
->>   // SPDX-License-Identifier: GPL-2.0
->>   /*
->> - * Energy Model of CPUs
->> + * Energy Model of devices
->>    *
->> - * Copyright (c) 2018, Arm ltd.
->> + * Copyright (c) 2018-2020, Arm ltd.
->>    * Written by: Quentin Perret, Arm ltd.
->> + * Improvements provided by: Lukasz Luba, Arm ltd.
->>    */
->>
->>   #define pr_fmt(fmt) "energy_model: " fmt
->> @@ -15,15 +16,17 @@
->>   #include <linux/sched/topology.h>
->>   #include <linux/slab.h>
->>
->> -/* Mapping of each CPU to the performance domain to which it belongs. */
->> -static DEFINE_PER_CPU(struct em_perf_domain *, em_data);
->> -
->>   /*
->>    * Mutex serializing the registrations of performance domains and letting
->>    * callbacks defined by drivers sleep.
->>    */
->>   static DEFINE_MUTEX(em_pd_mutex);
->>
->> +static bool _is_cpu_device(struct device *dev)
->> +{
->> +       return (dev->bus == &cpu_subsys);
->> +}
->> +
->>   #ifdef CONFIG_DEBUG_FS
->>   static struct dentry *rootdir;
->>
->> @@ -49,22 +52,30 @@ static int em_debug_cpus_show(struct seq_file *s, void *unused)
->>   }
->>   DEFINE_SHOW_ATTRIBUTE(em_debug_cpus);
->>
->> -static void em_debug_create_pd(struct em_perf_domain *pd, int cpu)
->> +static void em_debug_create_pd(struct device *dev)
->>   {
->>          struct dentry *d;
->> -       char name[8];
->>          int i;
->>
->> -       snprintf(name, sizeof(name), "pd%d", cpu);
->> -
->>          /* Create the directory of the performance domain */
->> -       d = debugfs_create_dir(name, rootdir);
->> +       d = debugfs_create_dir(dev_name(dev), rootdir);
->>
->> -       debugfs_create_file("cpus", 0444, d, pd->cpus, &em_debug_cpus_fops);
->> +       if (_is_cpu_device(dev))
->> +               debugfs_create_file("cpus", 0444, d, dev->em_pd->cpus,
->> +                                   &em_debug_cpus_fops);
->>
->>          /* Create a sub-directory for each performance state */
->> -       for (i = 0; i < pd->nr_perf_states; i++)
->> -               em_debug_create_ps(&pd->table[i], d);
->> +       for (i = 0; i < dev->em_pd->nr_perf_states; i++)
->> +               em_debug_create_ps(&dev->em_pd->table[i], d);
->> +
->> +}
->> +
->> +static void em_debug_remove_pd(struct device *dev)
->> +{
->> +       struct dentry *debug_dir;
->> +
->> +       debug_dir = debugfs_lookup(dev_name(dev), rootdir);
->> +       debugfs_remove_recursive(debug_dir);
->>   }
->>
->>   static int __init em_debug_init(void)
->> @@ -76,40 +87,34 @@ static int __init em_debug_init(void)
->>   }
->>   core_initcall(em_debug_init);
->>   #else /* CONFIG_DEBUG_FS */
->> -static void em_debug_create_pd(struct em_perf_domain *pd, int cpu) {}
->> +static void em_debug_create_pd(struct device *dev) {}
->> +static void em_debug_remove_pd(struct device *dev) {}
->>   #endif
->> -static struct em_perf_domain *
->> -em_create_pd(struct device *dev, int nr_states, struct em_data_callback *cb,
->> -            cpumask_t *span)
->> +
->> +static int em_create_perf_table(struct device *dev, struct em_perf_domain *pd,
->> +                               int nr_states, struct em_data_callback *cb)
->>   {
->>          unsigned long opp_eff, prev_opp_eff = ULONG_MAX;
->>          unsigned long power, freq, prev_freq = 0;
->> -       int i, ret, cpu = cpumask_first(span);
->>          struct em_perf_state *table;
->> -       struct em_perf_domain *pd;
->> +       int i, ret;
->>          u64 fmax;
->>
->> -       if (!cb->active_power)
->> -               return NULL;
->> -
->> -       pd = kzalloc(sizeof(*pd) + cpumask_size(), GFP_KERNEL);
->> -       if (!pd)
->> -               return NULL;
->> -
->>          table = kcalloc(nr_states, sizeof(*table), GFP_KERNEL);
->>          if (!table)
->> -               goto free_pd;
->> +               return -ENOMEM;
->>
->>          /* Build the list of performance states for this performance domain */
->>          for (i = 0, freq = 0; i < nr_states; i++, freq++) {
->>                  /*
->>                   * active_power() is a driver callback which ceils 'freq' to
->> -                * lowest performance state of 'cpu' above 'freq' and updates
->> +                * lowest performance state of 'dev' above 'freq' and updates
->>                   * 'power' and 'freq' accordingly.
->>                   */
->>                  ret = cb->active_power(&power, &freq, dev);
->>                  if (ret) {
->> -                       pr_err("pd%d: invalid perf. state: %d\n", cpu, ret);
->> +                       dev_err(dev, "EM: invalid perf. state: %d\n",
->> +                               ret);
->>                          goto free_ps_table;
->>                  }
->>
->> @@ -118,7 +123,8 @@ em_create_pd(struct device *dev, int nr_states, struct em_data_callback *cb,
->>                   * higher performance states.
->>                   */
->>                  if (freq <= prev_freq) {
->> -                       pr_err("pd%d: non-increasing freq: %lu\n", cpu, freq);
->> +                       dev_err(dev, "EM: non-increasing freq: %lu\n",
->> +                               freq);
->>                          goto free_ps_table;
->>                  }
->>
->> @@ -127,7 +133,8 @@ em_create_pd(struct device *dev, int nr_states, struct em_data_callback *cb,
->>                   * positive, in milli-watts and to fit into 16 bits.
->>                   */
->>                  if (!power || power > EM_MAX_POWER) {
->> -                       pr_err("pd%d: invalid power: %lu\n", cpu, power);
->> +                       dev_err(dev, "EM: invalid power: %lu\n",
->> +                               power);
->>                          goto free_ps_table;
->>                  }
->>
->> @@ -142,8 +149,8 @@ em_create_pd(struct device *dev, int nr_states, struct em_data_callback *cb,
->>                   */
->>                  opp_eff = freq / power;
->>                  if (opp_eff >= prev_opp_eff)
->> -                       pr_warn("pd%d: hertz/watts ratio non-monotonically decreasing: em_perf_state %d >= em_perf_state%d\n",
->> -                                       cpu, i, i - 1);
->> +                       dev_dbg(dev, "EM: hertz/watts ratio non-monotonically decreasing: em_perf_state %d >= em_perf_state%d\n",
->> +                                       i, i - 1);
->>                  prev_opp_eff = opp_eff;
->>          }
->>
->> @@ -156,30 +163,82 @@ em_create_pd(struct device *dev, int nr_states, struct em_data_callback *cb,
->>
->>          pd->table = table;
->>          pd->nr_perf_states = nr_states;
->> -       cpumask_copy(to_cpumask(pd->cpus), span);
->>
->> -       em_debug_create_pd(pd, cpu);
->> -
->> -       return pd;
->> +       return 0;
->>
->>   free_ps_table:
->>          kfree(table);
->> -free_pd:
->> -       kfree(pd);
->> +       return -EINVAL;
->> +}
->> +
->> +static int em_create_pd(struct device *dev, int nr_states,
->> +                       struct em_data_callback *cb, cpumask_t *cpus)
->> +{
->> +       struct em_perf_domain *pd;
->> +       struct device *cpu_dev;
->> +       int cpu, ret;
->> +
->> +       if (_is_cpu_device(dev)) {
->> +               pd = kzalloc(sizeof(*pd) + cpumask_size(), GFP_KERNEL);
->> +               if (!pd)
->> +                       return -ENOMEM;
->> +
->> +               cpumask_copy(em_span_cpus(pd), cpus);
->> +       } else {
->> +               pd = kzalloc(sizeof(*pd), GFP_KERNEL);
->> +               if (!pd)
->> +                       return -ENOMEM;
->> +       }
->> +
->> +       ret = em_create_perf_table(dev, pd, nr_states, cb);
->> +       if (ret) {
->> +               kfree(pd);
->> +               return ret;
->> +       }
->> +
->> +       if (_is_cpu_device(dev))
->> +               for_each_cpu(cpu, cpus) {
->> +                       cpu_dev = get_cpu_device(cpu);
->> +                       cpu_dev->em_pd = pd;
->> +               }
->> +
->> +       dev->em_pd = pd;
->> +
->> +       return 0;
->> +}
->> +
->> +/**
->> + * em_pd_get() - Return the performance domain for a device
->> + * @dev : Device to find the performance domain for
->> + *
->> + * Returns the performance domain to which @dev belongs, or NULL if it doesn't
->> + * exist.
->> + */
->> +struct em_perf_domain *em_pd_get(struct device *dev)
->> +{
->> +       if (IS_ERR_OR_NULL(dev))
->> +               return NULL;
->>
->> -       return NULL;
->> +       return dev->em_pd;
->>   }
->> +EXPORT_SYMBOL_GPL(em_pd_get);
->>
->>   /**
->>    * em_cpu_get() - Return the performance domain for a CPU
->>    * @cpu : CPU to find the performance domain for
->>    *
->> - * Return: the performance domain to which 'cpu' belongs, or NULL if it doesn't
->> + * Returns the performance domain to which @cpu belongs, or NULL if it doesn't
->>    * exist.
->>    */
->>   struct em_perf_domain *em_cpu_get(int cpu)
->>   {
->> -       return READ_ONCE(per_cpu(em_data, cpu));
->> +       struct device *cpu_dev;
->> +
->> +       cpu_dev = get_cpu_device(cpu);
->> +       if (!cpu_dev)
->> +               return NULL;
->> +
->> +       return em_pd_get(cpu_dev);
->>   }
->>   EXPORT_SYMBOL_GPL(em_cpu_get);
->>
->> @@ -188,7 +247,7 @@ EXPORT_SYMBOL_GPL(em_cpu_get);
->>    * @dev                : Device for which the EM is to register
->>    * @nr_states  : Number of performance states to register
->>    * @cb         : Callback functions providing the data of the Energy Model
->> - * @span       : Pointer to cpumask_t, which in case of a CPU device is
->> + * @cpus       : Pointer to cpumask_t, which in case of a CPU device is
->>    *             obligatory. It can be taken from i.e. 'policy->cpus'. For other
->>    *             type of devices this should be set to NULL.
->>    *
->> @@ -201,13 +260,12 @@ EXPORT_SYMBOL_GPL(em_cpu_get);
->>    * Return 0 on success
->>    */
->>   int em_dev_register_perf_domain(struct device *dev, unsigned int nr_states,
->> -                               struct em_data_callback *cb, cpumask_t *span)
->> +                               struct em_data_callback *cb, cpumask_t *cpus)
->>   {
->>          unsigned long cap, prev_cap = 0;
->> -       struct em_perf_domain *pd;
->> -       int cpu, ret = 0;
->> +       int cpu, ret;
->>
->> -       if (!dev || !span || !nr_states || !cb)
->> +       if (!dev || !nr_states || !cb)
->>                  return -EINVAL;
->>
->>          /*
->> @@ -216,47 +274,50 @@ int em_dev_register_perf_domain(struct device *dev, unsigned int nr_states,
->>           */
->>          mutex_lock(&em_pd_mutex);
->>
->> -       for_each_cpu(cpu, span) {
->> -               /* Make sure we don't register again an existing domain. */
->> -               if (READ_ONCE(per_cpu(em_data, cpu))) {
->> -                       ret = -EEXIST;
->> -                       goto unlock;
->> -               }
->> +       if (dev->em_pd) {
->> +               ret = -EEXIST;
->> +               goto unlock;
->> +       }
->>
->> -               /*
->> -                * All CPUs of a domain must have the same micro-architecture
->> -                * since they all share the same table.
->> -                */
->> -               cap = arch_scale_cpu_capacity(cpu);
->> -               if (prev_cap && prev_cap != cap) {
->> -                       pr_err("CPUs of %*pbl must have the same capacity\n",
->> -                                                       cpumask_pr_args(span));
->> +       if (_is_cpu_device(dev)) {
->> +               if (!cpus) {
->> +                       dev_err(dev, "EM: invalid CPU mask\n");
->>                          ret = -EINVAL;
->>                          goto unlock;
->>                  }
->> -               prev_cap = cap;
->> +
->> +               for_each_cpu(cpu, cpus) {
->> +                       if (em_cpu_get(cpu)) {
->> +                               dev_err(dev, "EM: exists for CPU%d\n", cpu);
->> +                               ret = -EEXIST;
->> +                               goto unlock;
->> +                       }
->> +                       /*
->> +                        * All CPUs of a domain must have the same
->> +                        * micro-architecture since they all share the same
->> +                        * table.
->> +                        */
->> +                       cap = arch_scale_cpu_capacity(cpu);
->> +                       if (prev_cap && prev_cap != cap) {
->> +                               dev_err(dev, "EM: CPUs of %*pbl must have the same capacity\n",
->> +                                       cpumask_pr_args(cpus));
->> +
->> +                               ret = -EINVAL;
->> +                               goto unlock;
->> +                       }
->> +                       prev_cap = cap;
->> +               }
->>          }
->>
->> -       /* Create the performance domain and add it to the Energy Model. */
->> -       pd = em_create_pd(dev, nr_states, cb, span);
->> -       if (!pd) {
->> -               ret = -EINVAL;
->> +       ret = em_create_pd(dev, nr_states, cb, cpus);
->> +       if (ret)
->>                  goto unlock;
->> -       }
->>
->> -       for_each_cpu(cpu, span) {
->> -               /*
->> -                * The per-cpu array can be read concurrently from em_cpu_get().
->> -                * The barrier enforces the ordering needed to make sure readers
->> -                * can only access well formed em_perf_domain structs.
->> -                */
->> -               smp_store_release(per_cpu_ptr(&em_data, cpu), pd);
->> -       }
->> +       em_debug_create_pd(dev);
->> +       dev_info(dev, "EM: created perf domain\n");
->>
->> -       pr_debug("Created perf domain %*pbl\n", cpumask_pr_args(span));
->>   unlock:
->>          mutex_unlock(&em_pd_mutex);
->> -
->>          return ret;
->>   }
->>   EXPORT_SYMBOL_GPL(em_dev_register_perf_domain);
->> @@ -285,3 +346,32 @@ int em_register_perf_domain(cpumask_t *span, unsigned int nr_states,
->>          return em_dev_register_perf_domain(cpu_dev, nr_states, cb, span);
->>   }
->>   EXPORT_SYMBOL_GPL(em_register_perf_domain);
->> +
->> +/**
->> + * em_dev_unregister_perf_domain() - Unregister Energy Model (EM) for a device
->> + * @dev                : Device for which the EM is registered
->> + *
->> + * Unregister the EM for the specified @dev (but not a CPU device).
->> + */
->> +void em_dev_unregister_perf_domain(struct device *dev)
->> +{
->> +       if (IS_ERR_OR_NULL(dev) || !dev->em_pd)
->> +               return;
->> +
->> +       if (_is_cpu_device(dev))
->> +               return;
->> +
->> +       /*
->> +        * The mutex separates all register/unregister requests and protects
->> +        * from potential clean-up/setup issues in the debugfs directories.
->> +        * The debugfs directory name is the same as device's name.
->> +        */
->> +       mutex_lock(&em_pd_mutex);
->> +       em_debug_remove_pd(dev);
->> +
->> +       kfree(dev->em_pd->table);
->> +       kfree(dev->em_pd);
->> +       dev->em_pd = NULL;
->> +       mutex_unlock(&em_pd_mutex);
->> +}
->> +EXPORT_SYMBOL_GPL(em_dev_unregister_perf_domain);
->> --
->> 2.17.1
->>
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+CgpPbiA2LzI0LzIwMjAgNjo0OCBBTSwgQmFydG9zeiBHb2xhc3pld3NraSB3cm90ZToKPiDFm3Iu
+LCAyNCBjemUgMjAyMCBvIDExOjQzIE1hcmsgQnJvd24gPGJyb29uaWVAa2VybmVsLm9yZz4gbmFw
+aXNhxYIoYSk6Cj4+Cj4+IE9uIFR1ZSwgSnVuIDIzLCAyMDIwIGF0IDEyOjQ5OjE1UE0gLTA3MDAs
+IEZsb3JpYW4gRmFpbmVsbGkgd3JvdGU6Cj4+PiBPbiA2LzIyLzIwIDY6NTEgQU0sIE1hcmsgQnJv
+d24gd3JvdGU6Cj4+Cj4+Pj4gSWYgdGhlIGJ1cyBpbmNsdWRlcyBwb3dlciBtYW5hZ2VtZW50IGZv
+ciB0aGUgZGV2aWNlcyBvbiB0aGUgYnVzIHRoZQo+Pj4+IGNvbnRyb2xsZXIgaXMgZ2VuZXJhbGx5
+IHJlc3BvbnNpYmxlIGZvciB0aGF0IHJhdGhlciB0aGFuIHRoZSBkZXZpY2VzLAo+Pj4+IHRoZSBk
+ZXZpY2VzIGFjY2VzcyB0aGlzIHZpYSBmYWNpbGl0aWVzIHByb3ZpZGVkIGJ5IHRoZSBidXMgaWYg
+bmVlZGVkLgo+Pj4+IElmIHRoZSBkZXZpY2UgaXMgZW51bWVyYXRlZCBieSBmaXJtd2FyZSBwcmlv
+ciB0byBiZWluZyBwaHlzaWNhbGx5Cj4+Pj4gZW51bWVyYWJsZSB0aGVuIHRoZSBidXMgd2lsbCBn
+ZW5lcmFsbHkgaW5zdGFudGlhdGUgdGhlIGRldmljZSBtb2RlbAo+Pj4+IGRldmljZSBhbmQgdGhl
+biBhcnJhbmdlIHRvIHdhaXQgZm9yIHRoZSBwaHlzaWNhbCBkZXZpY2UgdG8gYXBwZWFyIGFuZAo+
+Pj4+IGdldCBqb2luZWQgdXAgd2l0aCB0aGUgZGV2aWNlIG1vZGVsIGRldmljZSwgdHlwaWNhbGx5
+IGluIHN1Y2ggc2l0dWF0aW9ucwo+Pj4+IHRoZSBwaHlzaWNhbCBkZXZpY2UgbWlnaHQgYXBwZWFy
+IGFuZCBkaXNhcHBlYXIgZHluYW1pY2FsbHkgYXQgcnVudGltZQo+Pj4+IGJhc2VkIG9uIHdoYXQg
+dGhlIGRyaXZlciBpcyBkb2luZyBhbnl3YXkuCj4+Cj4+PiBJbiBwcmVtaXNlIHRoZXJlIGlzIG5v
+dGhpbmcgdGhhdCBwcmV2ZW50cyB0aGUgTURJTyBidXMgZnJvbSB0YWtpbmcgY2FyZQo+Pj4gb2Yg
+dGhlIHJlZ3VsYXRvcnMsIHJlc2V0cywgcHJpb3IgdG8gcHJvYmluZyB0aGUgUEhZIGRyaXZlciwg
+d2hhdCBpcwo+Pj4gY29tcGxpY2F0ZWQgaGVyZSBpcyB0aGF0IHdlIGRvIG5lZWQgdG8gaXNzdWUg
+YSByZWFkIG9mIHRoZSBhY3R1YWwgUEhZIHRvCj4+PiBrbm93IGl0cyAzMi1iaXQgdW5pcXVlIGlk
+ZW50aWZpZXIgYW5kIG1hdGNoIGl0IHdpdGggYW4gYXBwcm9wcmlhdGUKPj4+IGRyaXZlci4gVGhl
+IHdheSB0aGF0IHdlIGhhdmUgd29ya2VkIGFyb3VuZCB0aGlzIHdpdGggaWYgeW91IGRvIG5vdCB3
+aXNoCj4+PiBzdWNoIGEgaGFyZHdhcmUgYWNjZXNzIHRvIGJlIG1hZGUsIGlzIHRvIHByb3ZpZGUg
+YW4gRXRoZXJuZXQgUEhZIG5vZGUKPj4+IGNvbXBhdGlibGUgc3RyaW5nIHRoYXQgZW5jb2RlcyB0
+aGF0IDMyLWJpdCBPVUkgZGlyZWN0bHkuIEluIHByZW1pc2UgdGhlCj4+PiBzYW1lIGNoYWxsZW5n
+ZXMgZXhpc3Qgd2l0aCBQQ0kgZGV2aWNlcy9lbmRwb2ludHMgYXMgd2VsbCBhcyBVU0IsIHdvdWxk
+Cj4+PiB0aGV5IGhhdmUgcmVzZXQgb3IgcmVndWxhdG9yIHR5cGljYWxseSBhdHRhY2hlZCB0byB0
+aGVtLgo+Pgo+PiBUaGF0IGFsbCBzb3VuZHMgdmVyeSBub3JtYWwgYW5kIGlzIGNvdmVyZWQgYnkg
+Ym90aCBjYXNlcyBJIGRlc2NyaWJlPwo+Pgo+Pj4+IFdlIGNvdWxkIHVzZSBhIHByZS1wcm9iZSBz
+dGFnZSBpbiB0aGUgZGV2aWNlIG1vZGVsIGZvciBob3RwbHVnZ2FibGUKPj4+PiBidXNlcyBpbiBl
+bWJlZGRlZCBjb250ZXh0cyB3aGVyZSB5b3UgbWlnaHQgbmVlZCB0byBicmluZyB0aGluZ3Mgb3V0
+IG9mCj4+Pj4gcmVzZXQgb3IgcG93ZXIgdGhlbSB1cCBiZWZvcmUgdGhleSdsbCBhcHBlYXIgb24g
+dGhlIGJ1cyBmb3IgZW51bWVyYXRpb24KPj4+PiBidXQgYnVzZXMgaGF2ZSBtb3N0bHkgaGFuZGxl
+ZCB0aGF0IGF0IHRoZWlyIGxldmVsLgo+Pgo+Pj4gVGhhdCBzb3VuZHMgbGlrZSBhIGJldHRlciBz
+b2x1dGlvbiwgYXJlIHRoZXJlIGFueSBzdWJzeXN0ZW1zIGN1cnJlbnRseQo+Pj4gaW1wbGVtZW50
+aW5nIHRoYXQsIG9yIHdvdWxkIHRoaXMgYmUgYSBnZW5lcmljIExpbnV4IGRldmljZSBkcml2ZXIg
+bW9kZWwKPj4+IGFkZGl0aW9uIHRoYXQgbmVlZHMgdG8gYmUgZG9uZT8KPj4KPj4gTGlrZSBJIHNh
+eSBJJ20gc3VnZ2VzdGluZyBkb2luZyBzb21ldGhpbmcgYXQgdGhlIGRldmljZSBtb2RlbCBsZXZl
+bC4KPiAKPiBJIGRpZG4ndCBleHBlY3QgdG8gb3BlbiBzdWNoIGEgY2FuIG9mIHdvcm1zLi4uCj4g
+Cj4gVGhpcyBoYXMgZXZvbHZlZCBpbnRvIHNldmVyYWwgbmV3IGNvbmNlcHRzIGJlaW5nIHByb3Bv
+c2VkIHZzIG15Cj4gdXNlLWNhc2Ugd2hpY2ggaXMgcmVsYXRpdmVseSBzaW1wbGUuIFRoZSBmb3Jt
+ZXIgd2lsbCBwcm9iYWJseSB0YWtlCj4gc2V2ZXJhbCBtb250aHMgb2YgZGV2ZWxvcG1lbnQsIHJl
+dmlld3MgYW5kIGRpc2N1c3Npb25zIGFuZCBpdCB3aWxsCj4gYmxvY2sgc3VwcG9ydGluZyB0aGUg
+cGh5IHN1cHBseSBvbiBwdW1wa2luIGJvYXJkcyB1cHN0cmVhbS4gSSB3b3VsZAo+IHByZWZlciBu
+b3QgdG8gcmVkbyB3aGF0IG90aGVyIE1BQyBkcml2ZXJzIGRvIChwaHktc3VwcGx5IHByb3BlcnR5
+IG9uCj4gdGhlIE1BQyBub2RlLCBjb250cm9sbGluZyBpdCBmcm9tIHRoZSBNQUMgZHJpdmVyIGl0
+c2VsZikgaWYgd2UndmUKPiBhbHJlYWR5IGVzdGFibGlzaGVkIGl0J3Mgd3JvbmcuCgpZb3UgYXJl
+IG5vdCBuZXcgdG8gTGludXggZGV2ZWxvcG1lbnQsIHNvIG5vbmUgb2YgdGhpcyBzaG91bGQgY29t
+ZSBhcyBhCnN1cnByaXNlIHRvIHlvdS4gWW91ciBwcm9wb3NlZCBzb2x1dGlvbiBoYXMgY2xlYXJs
+eSBzaG9ydCBjb21pbmdzIGFuZCBpcwphIGhhY2ssIGVzcGVjaWFsbHkgYXJvdW5kIHRoZSBQSFlf
+SURfTk9ORSBidXNpbmVzcyB0byBnZXQgYSBwaHlfZGV2aWNlCm9ubHkgdGhlbiB0byBoYXZlIHRo
+ZSByZWFsIFBIWSBkZXZpY2UgSUQuIFlvdSBzaG91bGQgYWxzbyBub3cgdGhhdCAiSQpuZWVkIGl0
+IG5vdyBiZWNhdXNlIG15IHByb2R1Y3QgZGVsaXZlcmFibGUgZGVwZW5kcyBvbiBpdCIgaGFzIG5l
+dmVyIGJlZW4KcmVjZWl2ZWQgYXMgYSB2YWxpZCBhcmd1bWVudCB0byBjb2VyY2UgcGVvcGxlIGlu
+dG8gYWNjZXB0aW5nIGEgc29sdXRpb24KZm9yIHdoaWNoIHRoZXJlIGFyZSBhdCByZXZpZXcgdGlt
+ZSBrbm93biBkZWZpY2llbmNpZXMgdG8gdGhlIHByb3Bvc2VkCmFwcHJvYWNoLgoKPiAKPiBJcyB0
+aGVyZSBhbnkgY29tcHJvbWlzZSB3ZSBjb3VsZCByZWFjaCB0byBhZGQgc3VwcG9ydCBmb3IgYSBi
+YXNpYywKPiBjb21tb24gdXNlLWNhc2Ugb2YgYSBzaW5nbGUgcmVndWxhdG9yIHN1cHBseWluZyBh
+IFBIWSB0aGF0IG5lZWRzCj4gZW5hYmxpbmcgYmVmb3JlIHJlYWRpbmcgaXRzIElEIHNob3J0LXRl
+cm0gKGp1c3QgbGlrZSB3ZSBjdXJyZW50bHkKPiBzdXBwb3J0IGEgc2luZ2xlIHJlc2V0IG9yIHJl
+c2V0LWdwaW9zIHByb3BlcnR5IGZvciBQSFlzKSBhbmQKPiBpbnRyb2R1Y2luZyBhIHdob2xlIG5l
+dyBjb25jZXB0IHRvIHRoZSBkZXZpY2UgbW9kZWwgZm9yIG1vcmUgYWR2YW5jZWQKPiAoYnV0IGN1
+cnJlbnRseSBtb3N0bHkgaHlwb3RoZXRpY2FsKSBjYXNlcyBsb25nLXRlcm0/CgpUaGUgcHJlLXBy
+b2JlIHVzZSBjYXNlIGlzIGFic29sdXRlbHkgbm90IGh5cG90aGV0aWNhbCwgYW5kIEkgd291bGQg
+bmVlZAppdCBmb3IgcGNpZS1icmNtc3RiLmMgYXQgc29tZSBwb2ludCB3aGljaCBpcyBhIFBDSWUg
+cm9vdCBjb21wbGV4IGRyaXZlcgp3aXRoIG11bHRpcGxlIHJlZ3VsYXRvcnMgdGhhdCBuZWVkIHRv
+IGJlIHR1cm5lZCBvbiAqcHJpb3IqIHRvCmVudW1lcmF0aW5nIHRoZSBQQ0llIGJ1cyBhbmQgY3Jl
+YXRpbmcgcGNpX2RldmljZSBpbnN0YW5jZXMuIEl0IGlzCmxpdGVyYWxseSB0aGUgc2FtZSB0aGlu
+ZyBhcyB3aGF0IHlvdSBhcmUgdHJ5aW5nIHRvIGRvLCBqdXN0IGluIGEKZGlmZmVyZW50IHN1YnN5
+c3RlbSwgdGhlcmVmb3JlIEkgYW0gaGFwcHkgdG8gdGVzdCBhbmQgcmV2aWV3IHlvdXIgcGF0Y2hl
+cy4KLS0gCkZsb3JpYW4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtbWVkaWF0ZWsK
