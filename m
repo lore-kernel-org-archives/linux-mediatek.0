@@ -2,21 +2,21 @@ Return-Path: <SRS0=bzTf=AF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-1.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27FA3C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2020 16:22:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8C302C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2020 16:36:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E67DB20823
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2020 16:22:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5A0B72073E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2020 16:36:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kwJMwfUX";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="GDbX4i4/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E67DB20823
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JDWem7pw";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="Gs5a8ysD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5A0B72073E
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bgdev.pl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,58 +25,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=PP7y7o+RBwuzSz2MESQeEk5bh7hK7ttjDDYKWpTfRr8=; b=kwJMwfUXyoxdZItWggatjSbzF
-	7q+CxUCm1qrupFbRwikFQbAsRToQOrdLfqKqJDzM8EFlS81B0syYaHiVNwDtxsBSpqQ2jYH7UM1xT
-	WxlBLWdO8YVEFPS9DUOpwQE4NpONtWl6ZkG9i8uG4IWKL0FxqOeLoy1v2KJqyz/UhvPdTkoVjm8Nu
-	4cL6ubvsp6jcLJQoBnEBvl5IprwPmKYqCCIFBMsu4aCQb60umAs+jwFsQldlllxiLn67HS9DmUcck
-	pZcJ8ZWLXBoFz8u8NcFOVZtBhTkOBmTtmPR5u/3uM2z/v8lkB80DU9Hn4MSi4/0l9OusIsieK9oC4
-	yR+Aet0Mw==;
+	 bh=kTxHqiqKecdDVBap5yquoXGRvnbcOkGyB8YPriXDgvg=; b=JDWem7pwuIPNnfJmF9tbHAEYD
+	EcFMKE1ubI/B8hf/bfr4lD++Kppxjmk2UuIYXX9e8acOYnFN7cqXHncH7y0cBG6kFgCb9N6cU5SKM
+	SbZ66XzzdCav/abYXFtBzN5D2TJ3nu0DAHQU63+vXM4McefkPOQTGoIFGKImqQCEKtufeH3UdJuZn
+	BXIoTWlerFGOsLBpP9kVRplOuCIO+hgy4GCJCk1ETllj8sEnwXzXPZ3Bzsu+73ra8TRcBHqMT2zq4
+	vMXF8PQAZ13Cufckzgw2xynUkKAeg02t5jhvhnIAU65vBn6j2ep5c9dJEfuAjWbLq8kScEBADR3KO
+	en9rcyXPQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jo8AK-0005op-Gv; Wed, 24 Jun 2020 16:22:24 +0000
-Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141])
+	id 1jo8NP-0004Sj-RE; Wed, 24 Jun 2020 16:35:56 +0000
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jo8AG-0005mQ-Q2
- for linux-mediatek@lists.infradead.org; Wed, 24 Jun 2020 16:22:22 +0000
-Received: by mail-il1-x141.google.com with SMTP id c75so2595079ila.8
- for <linux-mediatek@lists.infradead.org>; Wed, 24 Jun 2020 09:22:20 -0700 (PDT)
+ id 1jo8NM-0004PW-5g
+ for linux-mediatek@lists.infradead.org; Wed, 24 Jun 2020 16:35:53 +0000
+Received: by mail-io1-xd41.google.com with SMTP id c16so2834498ioi.9
+ for <linux-mediatek@lists.infradead.org>; Wed, 24 Jun 2020 09:35:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=STD7qLvWtpSzAtO1gXjXJztLXOvVuvn065ZWjIwBzm8=;
- b=GDbX4i4/9sFa2QnOyFKV3sAmgpvbd4H9sf69kAM0V93uCHV4aw7EViw8WQGFnmGhGL
- RCC+okJfghc3Wz2bz8HZeO7YwxG7/oL/0OfQHSSw8KaxqyDX+3pN+o3xIH3aODH5BQjK
- vTgBiV68m+YydOFw1YZbI/IzAxH09eBSYoeOnD2WwMhuNy5dRivxMDq8sxhdaJcPIFVE
- xpNn8lwne15R7K3Ux72CJTplglE9cuR4bjD2TZvXf3CiAqo230jAdvO8oHmtF2Psgl2p
- YadWLDh4Bl411uJHkly3hQX/7NFaklwQk0TAShizwVTPmjXzGeqZOsMfxFNXOJwnROdt
- D35Q==
+ :cc; bh=Sp0WLMHGJPSAAMQoilN1mZe9srYQKmzrBKtnNiwXpVs=;
+ b=Gs5a8ysDongBqjpVPsiQWEdpD5YRNoaq5AdJr4nWs/zYkTf9M+ghwGa2A+vl53WV6M
+ JRhhJVQhyuX8Tjd445UrEkqaFeRBOHvtFUzLBeMPO0HX9mrLGqK4lDzsj6o3kvYnXAtP
+ U9yDgHUDz7mk9brV9quovHVYMfYdpE1wplg8iEBwg4dESo1GeYGKG147fTWViUWPXVaS
+ FR6tX7MIy3c334Uz8RjbHxPZg9QBgw0WiGsyG1tVXNjq2ij/nw+U3r3cmvFLDwDYK1qw
+ EoXeQw+M9J5xE1EYWjQsHsb+8MY6uK1Y0nyljUOAVmAheLR3MwqkhUPIAU1EoVLOMvau
+ PLIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=STD7qLvWtpSzAtO1gXjXJztLXOvVuvn065ZWjIwBzm8=;
- b=r5dqeOtqxK7OZJFbXjA8XflIkmX+mA10U0R9DqRRsJJHwXqsE1hSs1J2wFOjCMcg7g
- AERNSg0YxIUAIlUR+YfLAi1qFURaqJCZm9+FKe401rDslvxXrZPMxXynMV5S5tafzB3J
- D/59c+acRVa+gaAP7LXoVfWHlsbTRJ3Z1A5Nq2b4Yhl174w8kBD6CP21EVrgqmWmp69m
- M55v5BtO4JHCyXB6iNHeeCORJq9jFSuvsaGU47sgfd040Rk9LxW0ePTb7I4iwNrnw44G
- LKid6Wl9n5fq8mcd2khJ7y3b4b8sCb7CUDGL7SXg8zZEH3xH5yj5PRXZdPq0u5Dq5uMS
- pn4A==
-X-Gm-Message-State: AOAM532yLopbBFjILzWMS34dn5lhWFqfMsb74ttwOXd/6v+TCM9SGMbS
- BPWNiNtgr2coRYetvZrM3A0U5PV8H4ngH5gCieFPzA==
-X-Google-Smtp-Source: ABdhPJyCu6OdPyGuzSe1OJNhDF0LoYbiaX834HuGofRmFkCh2g6eAXaOlNsVAMtygwLHq1VOlmz7okN+XaK4lvMSMqk=
-X-Received: by 2002:a92:c509:: with SMTP id r9mr28062372ilg.189.1593015739191; 
- Wed, 24 Jun 2020 09:22:19 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=Sp0WLMHGJPSAAMQoilN1mZe9srYQKmzrBKtnNiwXpVs=;
+ b=Hn20E83F7RqxXGxujWaEF3z3C17MYJXLPK3xa0uZ3pluA8OHMHjBlHJb8UnNK+BqX1
+ uMHI1D4Ui08mo4GKnwhWGLwZmwA1wwFC4Jfb2QnM2hP+Wfd03da/MKgK3SRZIEjBCfpX
+ qzIlKO1E6l3qeuScRn7BsB5uU6DoIJKQvGaoOCMpUD7mLCYc0JHiQvRQ9tqUFB9TDLQ3
+ wo8lMSJwH/Ht93UXDSECSkFLwb77bE0Gwc+Db+B17WY3u+oi5Dv0m2Y7oYGZZJLueBEh
+ BRFPmsZf6uw7Bj6AYds47J4aZ/dXY+i4Trtd/iRpMQVLpwX6nX2Xvj8YVRA6Q788xd8N
+ cHng==
+X-Gm-Message-State: AOAM531ecHjtN2eMD7e7URHuwhq22f+7Alqiu4kfcvYH/ifdH6pvqfoX
+ mBX4PdhvjKkF6qLDDCeUs3BQr1XEmH3hCoaIpbzYag==
+X-Google-Smtp-Source: ABdhPJxqogL8HjW0xO8Djm9BN68/4TRrqeL4aSvgA3Rvp4v39IWyLfFQicLhQQMp3WEw0MNQuACTa3lGvzsxsAPhLOs=
+X-Received: by 2002:a6b:b252:: with SMTP id b79mr32690628iof.31.1593016548397; 
+ Wed, 24 Jun 2020 09:35:48 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200622093744.13685-1-brgl@bgdev.pl>
- <20200622093744.13685-6-brgl@bgdev.pl>
- <1da91144-076d-bf1e-f12a-2b4fe242febc@gmail.com>
-In-Reply-To: <1da91144-076d-bf1e-f12a-2b4fe242febc@gmail.com>
+ <20200622093744.13685-10-brgl@bgdev.pl>
+ <20200622133940.GL338481@lunn.ch> <20200622135106.GK4560@sirena.org.uk>
+ <dca54c57-a3bd-1147-63b2-4631194963f0@gmail.com>
+ <20200624094302.GA5472@sirena.org.uk>
+ <CAMRc=McBxJdujCyjQF3NA=bCWHF1dx8xJ1Nc2snmqukvJ_VyoQ@mail.gmail.com>
+ <f806586d-a6d7-99af-bba4-d1e7d28be192@gmail.com>
+In-Reply-To: <f806586d-a6d7-99af-bba4-d1e7d28be192@gmail.com>
 From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Wed, 24 Jun 2020 18:22:08 +0200
-Message-ID: <CAMRc=MeCTNuwY4-h=OhVVT1RHWYfi-VwEZMvm0RNrS_qNu_EPw@mail.gmail.com>
-Subject: Re: [PATCH 05/15] net: phy: reset the PHY even if probe() is not
- implemented
+Date: Wed, 24 Jun 2020 18:35:37 +0200
+Message-ID: <CAMRc=MfQFgrJC3nvuJgZobixa6MLeMw-tdg_3e1yNDityU5XSw@mail.gmail.com>
+Subject: Re: [PATCH 09/15] net: phy: delay PHY driver probe until PHY
+ registration
 To: Florian Fainelli <f.fainelli@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -99,8 +102,7 @@ Cc: Andrew Lunn <andrew@lunn.ch>,
  Quan Nguyen <quan@os.amperecomputing.com>,
  Frank Rowand <frowand.list@gmail.com>, Russell King <linux@armlinux.org.uk>,
  Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Jakub Kicinski <kuba@kernel.org>, Yisen Zhuang <yisen.zhuang@huawei.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, Vivien Didelot <vivien.didelot@gmail.com>,
  Tom Lendacky <thomas.lendacky@amd.com>,
  Andrew Perepech <andrew.perepech@mediatek.com>,
  Stephane Le Provost <stephane.leprovost@mediatek.com>,
@@ -110,41 +112,60 @@ Cc: Andrew Lunn <andrew@lunn.ch>,
  "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Salil Mehta <salil.mehta@huawei.com>, netdev <netdev@vger.kernel.org>,
+ netdev <netdev@vger.kernel.org>,
  Ilias Apalodimas <ilias.apalodimas@linaro.org>,
  Liam Girdwood <lgirdwood@gmail.com>,
  Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>,
  Mark Brown <broonie@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
  Pedro Tsai <pedro.tsai@mediatek.com>, "David S . Miller" <davem@davemloft.net>,
  Heiner Kallweit <hkallweit1@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-d3QuLCAyMyBjemUgMjAyMCBvIDIxOjE0IEZsb3JpYW4gRmFpbmVsbGkgPGYuZmFpbmVsbGlAZ21h
-aWwuY29tPiBuYXBpc2HFgihhKToKPgo+IE9uIDYvMjIvMjAgMjozNyBBTSwgQmFydG9zeiBHb2xh
-c3pld3NraSB3cm90ZToKPiA+IEZyb206IEJhcnRvc3ogR29sYXN6ZXdza2kgPGJnb2xhc3pld3Nr
-aUBiYXlsaWJyZS5jb20+Cj4gPgo+ID4gQ3VycmVudGx5IHdlIG9ubHkgY2FsbCBwaHlfZGV2aWNl
-X3Jlc2V0KCkgaWYgdGhlIFBIWSBkcml2ZXIgaW1wbGVtZW50cwo+ID4gdGhlIHByb2JlKCkgY2Fs
-bGJhY2suIFRoaXMgaXMgbm90IG1hbmRhdG9yeSBhbmQgbWFueSBkcml2ZXJzIChlLmcuCj4gPiBy
-ZWFsdGVrKSBkb24ndCBuZWVkIHByb2JlKCkgZm9yIG1vc3QgZGV2aWNlcyBidXQgc3RpbGwgY2Fu
-IGhhdmUgcmVzZXQKPiA+IEdQSU9zIGRlZmluZWQuIFRoZXJlJ3Mgbm8gcmVhc29uIHRvIGRlcGVu
-ZCBvbiB0aGUgcHJlc2VuY2Ugb2YgcHJvYmUoKQo+ID4gaGVyZSBzbyBwdWxsIHRoZSByZXNldCBj
-b2RlIG91dCBvZiB0aGUgaWYgY2xhdXNlLgo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6IEJhcnRvc3og
-R29sYXN6ZXdza2kgPGJnb2xhc3pld3NraUBiYXlsaWJyZS5jb20+Cj4KPiBPSywgYnV0IG5vdyBs
-ZXQncyBpbWFnaW5lIHRoYXQgYSBQSFkgZGV2aWNlIGhhcyB0d28gb3IgbW9yZSByZXNldCBsaW5l
-cywKPiBvbmUgb2YgdGhlbSBpcyBnb2luZyB0byBiZSBtYW5hZ2VkIGJ5IHRoZSBjb3JlIFBIWSBs
-aWJyYXJ5IGFuZCB0aGUgcmVzdAo+IGlzIGdvaW5nIHRvIGJlIHVuZGVyIHRoZSByZXNwb25zaWJp
-bGl0eSBvZiB0aGUgUEhZIGRyaXZlciwgdGhhdCBkb2VzIG5vdAo+IHNvdW5kIGludHVpdGl2ZSBv
-ciBjb252ZW5pZW50IGF0IGFsbC4gVGhpcyBpcyBhIGh5cG90aGV0aWNhbCBjYXNlLCBidXQKPiBp
-dCBjb3VsZCBjb25jZWl2YWJsZSBoYXBwZW4sIHNvIGhvdyBhYm91dCBhZGRpbmcgYSBmbGFnIHRv
-IHRoZSBkcml2ZXIKPiB0aGF0IHNheXMgImxldCBtZSBtYW5hZ2UgaXQgYSBhbGwiPwoKVGhpcyBz
-b3VuZHMgZ29vZCBhcyBhIG5ldyBmZWF0dXJlIGlkZWEgYnV0IGRvZXNuJ3Qgc2VlbSB0byBiZSBy
-ZWxhdGVkCnRvIHdoYXQgdGhpcyBwYXRjaCBpcyB0cnlpbmcgdG8gZG8uIFRoZSBvbmx5IHRoaW5n
-IGl0IGRvZXMgaXMgaW1wcm92ZQp0aGUgY3VycmVudCBiZWhhdmlvci4gSSdsbCBub3RlIHlvdXIg
-cG9pbnQgZm9yIHRoZSBmdXR1cmUgd29yayBvbiB0aGUKcHJlLXByb2JlIHN0YWdlLgoKQmFydG9z
-egoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-bWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRl
-awo=
+On Wed, Jun 24, 2020 at 6:06 PM Florian Fainelli <f.fainelli@gmail.com> wrote:
+>
+
+[snip!]
+
+> >
+> > This has evolved into several new concepts being proposed vs my
+> > use-case which is relatively simple. The former will probably take
+> > several months of development, reviews and discussions and it will
+> > block supporting the phy supply on pumpkin boards upstream. I would
+> > prefer not to redo what other MAC drivers do (phy-supply property on
+> > the MAC node, controlling it from the MAC driver itself) if we've
+> > already established it's wrong.
+>
+> You are not new to Linux development, so none of this should come as a
+> surprise to you. Your proposed solution has clearly short comings and is
+> a hack, especially around the PHY_ID_NONE business to get a phy_device
+> only then to have the real PHY device ID. You should also now that "I
+> need it now because my product deliverable depends on it" has never been
+> received as a valid argument to coerce people into accepting a solution
+> for which there are at review time known deficiencies to the proposed
+> approach.
+>
+
+Don't get me wrong, I understand that full well. On the other hand a
+couple years ago I put a significant amount of work into the concept
+of early platform device drivers for linux clocksource, clock and
+interrupt drivers. Every reviewer had his own preferred approach and
+after something like three completely different submissions and
+several conversations at conferences I simply gave up due to all the
+bikeshedding. It just wasn't moving forward and frankly: I expect any
+changes to the core driver model to follow a similar path of most
+resistance.
+
+I will give it a shot but at some point getting the job done is better
+than not getting it done just because the solution isn't perfect. IMO
+this approach is still slightly more correct than controlling the
+PHY's supply from the MAC driver.
+
+Bartosz
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
