@@ -2,89 +2,136 @@ Return-Path: <SRS0=bzTf=AF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 01BDBC433E1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2020 06:50:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 610D2C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2020 07:26:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C54AC2072E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2020 06:50:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 302CE2073E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2020 07:26:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jXzkfOEj";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="C56J+Wdb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C54AC2072E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HSoNWtDr";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="Z6jEFGqV";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="WPQ2iyxI"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 302CE2073E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=pRz+lhugeWMuCHtPpmQbLpbArXcoapg7kVIKB1HszC4=; b=jXzkfOEjKSCH4YtVuYruDOoDq
-	40Myw1KyAyOUCQki+2K4nNc+fdjACRrSil8a6LEXYMMM5a4gvcv9aT5obhX/JU3otNCGK6ShV9dd2
-	Yxpqfvi1QqsBZfQp+tVsCfjmC4K2WleVAtREKbfts2AmvcXY+0WVNqxvlHWyRdHW15i00g3cV93Ro
-	V3NGoKU2FVeixwl3l47U/WjnqMvnC5VkixN17tq2zyTooJwSwnymczL+m8LoauMX8TJswtM6QVJRz
-	BY6hsJO5/DSGnBLGZr7n3QV3w3eMweXFW0LAJepahk8roFzYK3JdS6rkvqegOdTIpJ/eODYJgMWVJ
-	QtT84tLlA==;
+	 bh=UAJnJ0VTNqkCBoAitiQ/GokU8DqFvgBN3bopkg9nI28=; b=HSoNWtDremT1nOg6m8kWy/vB4
+	lOKKf1yaXEwyBCMuW6XKoJP6oY2ZEqZdXLfvc3o4nwT0EOjMnUZALuaNso8OAwZPCWrcTPREKSc9N
+	RgUbGTCV8IZ/NKEP9n+wzQvmrTECbS1cf63OI0qZN0Ar0o/FfDUojmx89XZ19KCceCY3LQR/obkzr
+	PVtSGEgBFarmhSDCzPlfiA69v26f3+HsRKwlzBa7zRq43YP6FzN7XZ94iyJeVeI0CRq+MzNAw9XfY
+	rWSaDJ2ilJjEho9IV6uVZprYleWRj7Y2WfFG32qRzjhaMXjKHuRFPl9Uhv3CneAjisTJxrjUYvgFG
+	YyGBkUyDg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jnzF7-0006cH-0R; Wed, 24 Jun 2020 06:50:45 +0000
-Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141])
+	id 1jnznx-000402-Cu; Wed, 24 Jun 2020 07:26:46 +0000
+Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jnzEw-0006Uh-M2; Wed, 24 Jun 2020 06:50:35 +0000
-Received: by mail-lf1-x141.google.com with SMTP id t9so702754lfl.5;
- Tue, 23 Jun 2020 23:50:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:in-reply-to:references:date:message-id
- :mime-version; bh=61dSScxI6iuAF78RADy83+D5pnqYcgk6lokCgPGWmSg=;
- b=C56J+Wdbca7X/pJ4WBs137eTEr59uhNcjRq8+5vk8TMUPcC5qLXbcCR6NkuFnvE8X5
- 1RMauvmOt8FSdkXLLKhyrenX0v0r//m5Dz68C4LtyyELQaQ2A2ZQK5clX/SCJQDOREv6
- 5PfO0JpQv6KhB+zpCwvUv2r5QL+hxTfEkeLjKZqw3ajHYeAvRSkKy4ktqs8P5suIq2MH
- ShtxMINMVRM8eIQk1knHThWjjAfvPL79AXy/kPd/vS0FtDMcqOfxgiIVnfZLu9eaI/5F
- u3g8kDPystYJJULoLjTzdFDzaAI3XDWR+mGdaiCntcT7Ig/X+noIucdKCOjbM1dVgfZh
- 6TbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:in-reply-to:references
- :date:message-id:mime-version;
- bh=61dSScxI6iuAF78RADy83+D5pnqYcgk6lokCgPGWmSg=;
- b=caeNuJwHArEiSrI5i9hAmFT8FWS79KmQ7ZJPwowrLyS4GIJEgzBST/8DRrM4WSFW7M
- mF1AZVm/qlJSnVc5m4l1Y9nld+EYeDEueOAIgHp8GIHd9J2XudYztJcEFWQc4Md6XptC
- /9Wt5bMbx94rgoOPGrCTCHccXgwcLsGOrH98hdrlmSc29VBxvMyquueKcbMHTBG4BIyx
- 9TtZY5RyFOzlu39VGLoYW+J1B+aoTq/RwPwhXbi2gqdaPMPTtzHk8Jn69sA+AgymplfW
- uUx52sbL42vMFecHeYOoDE3dQzAH03sSryr/rcUHKAODLY2qXMRaffVgR/20qSTg/qTL
- 5bpg==
-X-Gm-Message-State: AOAM531raKllkwVd++HlDbcbwqt9Hf1NZifT4cthsqtTXkQdosHX1DPd
- QHlxg0t+UBRjgeCCXVw+nOs=
-X-Google-Smtp-Source: ABdhPJxA3rBIk4b4X5pIPprB3CAMDSFVUKhJEy8wdLddOY1/vmRY2AP2D6UP38M03ms6HWHaqc4XHg==
-X-Received: by 2002:a19:8c09:: with SMTP id o9mr6488675lfd.160.1592981433241; 
- Tue, 23 Jun 2020 23:50:33 -0700 (PDT)
-Received: from saruman (91-155-214-58.elisa-laajakaista.fi. [91.155.214.58])
- by smtp.gmail.com with ESMTPSA id i15sm4811522lfl.57.2020.06.23.23.50.31
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 23 Jun 2020 23:50:32 -0700 (PDT)
-From: Felipe Balbi <balbi@kernel.org>
-To: Macpaul Lin <macpaul.lin@mediatek.com>, Alan Stern
- <stern@rowland.harvard.edu>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, =?utf-8?Q?Micha=C5=82_Miros=C5=82aw?=
- <mirq-linux@rere.qmqm.pl>, Sergey
- Organov <sorganov@gmail.com>, Fabrice Gasnier <fabrice.gasnier@st.com>,
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3] usb: gadget: u_serial: improve performance for large
- data
-In-Reply-To: <1592372577-7986-1-git-send-email-macpaul.lin@mediatek.com>
-References: <1592362007-7120-1-git-send-email-macpaul.lin@mediatek.com>
- <1592372577-7986-1-git-send-email-macpaul.lin@mediatek.com>
-Date: Wed, 24 Jun 2020 09:50:27 +0300
-Message-ID: <87r1u5vtxo.fsf@kernel.org>
+ id 1jnznu-0003xl-0I; Wed, 24 Jun 2020 07:26:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1592983602; x=1624519602;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=CKuAjE01mBcfGVD6h3MR9FNw6R+dRSoaL/Xr9p2/tIo=;
+ b=Z6jEFGqVvPrlzG6fh9n4Zb/2vyUrdrWvoHpgzDuU9lYPNaj+CG27/ren
+ ytKiq9XBlMPpcx2QTFDDsb/KEEc9fw2Ab9gNHCeWuc6AW0fUh9KpA9YQk
+ sqIEdxx/SNZUUIgv6g1oJzMN/j3hnLa/xOT/By4TMSMGKJNQG0JSBe/O5
+ DkUy1s/U0AJbqfNCdsdO0V7As21s9a7d2FeBCaeC0wLK96RkZR4n7fiBL
+ ir6zUUqRg2LSzrQJe9IAfeiSQfxeTgvCblhDbrqGqlxbaBxp9RQRp4dlN
+ 5/hdNunIBdorSWl8RcKHBkDmRFhClYlOkYxJUZ9CC9znDVmxBjYplc+iQ w==;
+IronPort-SDR: D8wMO0OW8lYYeeNc857GpGktbj2ns5YEtIr7Gf8Jqgd+vLd3ooUH+1IpJbnm3s6dJofem2qcvr
+ xCZaNjWYbLHyJP7N5dH+I2pAUlBpUXY3d7Gp8gS1efKc3BwBMgA6EPRzmySmCstNZOgL5Geu3B
+ ktItjvsOBRaUD65ZUSWLLGUpqDDVbYMXeQGZR8EtVBGWdG/vUlSbHXfNTacnfx/r+w3OI+RJNl
+ eMk8PAJvtibJcC0ncoocit5r3OfcXfNvtaGbnnjRmaifFjwL/RH/aTCQF/Ga2pdbQ0rFCr0gfs
+ iqA=
+X-IronPort-AV: E=Sophos;i="5.75,274,1589212800"; d="scan'208";a="145102726"
+Received: from mail-bn8nam12lp2174.outbound.protection.outlook.com (HELO
+ NAM12-BN8-obe.outbound.protection.outlook.com) ([104.47.55.174])
+ by ob1.hgst.iphmx.com with ESMTP; 24 Jun 2020 15:26:38 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=SLEz+wiINV8UZ1uhObNx602dS8doeEs/kbJsSoYac4qcs+bz4Vajv2e37uRcMQOCNBc0BZ7T3XOzwDt51HPOtrILNqAgcPei5obrqPMXfX223hIBmSBNEIa+BIs14gRWlkcz59qqY0x7fPbzZCwYvAijGcdFyJ0aIO0abWgj+DdUlSq8abE3gZHMuFJ2xKPyyCCg4AjL9VE5hazt3+xhWv2NrsP0ElwvLnLeuq7Z3lPuWU5oL10NnGkMgK+l/HPzRa+YOCGYE9jcRpTEzkXCsS6M9uDVkOeD2LMJ/rUH19NiPWs+3IpOMZkuq8h/y77bPEcSl5PwQsaokr2/k3lyPA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=CKuAjE01mBcfGVD6h3MR9FNw6R+dRSoaL/Xr9p2/tIo=;
+ b=n5MaTcMxphtUXk4aUtQptbuCmee4FNKoXPLmskhJzG6+ywa+76fWrw9wI1tbHIyyIqTXGeevjSM19lvyuxYlsLCEfVh4K8vHcHXm/wJydK8UM+INaWky71o7iIdffcHqeH2cS7FhFgSF15nBHY3vkiYt97cDuxtPyUsoFXyM5ZGNfLgif4bOrZ4W4jSnsLtr/b356aeAEVoq4604zYYFMRGJzGps0AJpSWw+Qqtf7pFIGKszajPR0/XRU5km75gYbbcR1Q5fqmA7YAR/YwdOkfhEx2VCR9FWLNbbNICs7tZHzLMq3HfwsI2X97ZfeCgTrt1dQmevekk1h1CqFgpC4Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=CKuAjE01mBcfGVD6h3MR9FNw6R+dRSoaL/Xr9p2/tIo=;
+ b=WPQ2iyxIooAe+uqBpmnJ4yX89XL3DZFi+FHMnjdfSjd8Sz8jvHe/xu3hnAB6XCQ5TxxREgZGLdW0VvoO0sPgeQoeS2tmetV6U96yra6tZkmo4l6fH1pj2aJPsKkh6nPaRaQ2s+nBmMnxSdaxhNdG/A10M42HgvTGCXEVMkATPCs=
+Received: from SN6PR04MB4640.namprd04.prod.outlook.com (2603:10b6:805:a4::19)
+ by SN6PR04MB4078.namprd04.prod.outlook.com (2603:10b6:805:49::27)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3109.22; Wed, 24 Jun
+ 2020 07:26:37 +0000
+Received: from SN6PR04MB4640.namprd04.prod.outlook.com
+ ([fe80::9cbe:995f:c25f:d288]) by SN6PR04MB4640.namprd04.prod.outlook.com
+ ([fe80::9cbe:995f:c25f:d288%6]) with mapi id 15.20.3131.020; Wed, 24 Jun 2020
+ 07:26:37 +0000
+From: Avri Altman <Avri.Altman@wdc.com>
+To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
+ <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
+ <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
+ <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>
+Subject: RE: [PATCH v1] scsi: ufs: Disable WriteBooster capability in
+ non-supported UFS device
+Thread-Topic: [PATCH v1] scsi: ufs: Disable WriteBooster capability in
+ non-supported UFS device
+Thread-Index: AQHWSdJarpjPY1IvO06jKu22T8rTZqjnXcig
+Date: Wed, 24 Jun 2020 07:26:37 +0000
+Message-ID: <SN6PR04MB4640974695F782566A83F2EFFC950@SN6PR04MB4640.namprd04.prod.outlook.com>
+References: <20200624025119.6509-1-stanley.chu@mediatek.com>
+In-Reply-To: <20200624025119.6509-1-stanley.chu@mediatek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mediatek.com; dkim=none (message not signed)
+ header.d=none;mediatek.com; dmarc=none action=none header.from=wdc.com;
+x-originating-ip: [212.25.79.133]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: 4a5c3b51-4774-4051-a848-08d8180fee34
+x-ms-traffictypediagnostic: SN6PR04MB4078:
+x-microsoft-antispam-prvs: <SN6PR04MB40780EADD30E232E23BBB4B3FC950@SN6PR04MB4078.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:6790;
+x-forefront-prvs: 0444EB1997
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: jxKxufRLe421Nbe4vumV7/l7qwT/HMoTKko6tLXx2dujGdhLaNYCMPJ2tnQBsYh5SYssLZivMjn6ZOAgkpcV2iJko2JyWCcMKaF2ej6IuSRbPjqhB5Gvrzpo7JYKu3+Fo6IazqMYHZZcq+lQsgbJwNU8qOUk0lMhBhLF47NxheB+O9N5DKaudPQlsfP+HQPNnvdadXHOagbcQy5youvux5gC6CHa+3XeIpFAcGRi4vY/suJ6bzdUukkTBT4EOppR+z6pV+oDRL+Tl7TK/HYg/Lbs0pfkWfnLAFAHhwpeHomauDmVWdjq8g3OhT7TBEPFIrucamlscAbBPX7gaJYklQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR04MB4640.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(376002)(396003)(39860400002)(366004)(346002)(136003)(76116006)(33656002)(66556008)(66446008)(7696005)(66946007)(64756008)(5660300002)(110136005)(316002)(66476007)(7416002)(52536014)(54906003)(71200400001)(86362001)(83380400001)(8676002)(8936002)(9686003)(26005)(2906002)(6506007)(478600001)(4326008)(55016002)(558084003)(186003);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: 2daC3YpjQoAPd/MQppwTgFqyiVOoXRdQjL5czFX+XyVHqf3tbadK4H6ZcnPtpbe7Y5vK+vlZ05tTPSeMQ+lUnszGBO/CFij7wB9aK6hOoe7vLG3neKiTjbQuU8TKS6C7oFtYs7AOfOhqavp0qjk74rXhRvbu610WYxtwhEOpHo5WzDq6WkwnaBwPscRf0lm9Gajl+jiOOUwxeJLO1cwo4xHNTY58nfSLeb1YGpul1iTnuZbBBRs0IXKfYnPju5L0vHq50uskrfoVi5rXVMgRMj7nQ5nnhR9XpenB6m5kfQrx0nW8rtAyUMldkAlVKM/5eYCi/bZfCKBk0PK1OSjosc7sTuB2nWQIQiSjOQCmgxEF+YZiEZX3Ml77RK03byzuvGEYIrD25hwEIwv7yFqVs235bxqgPjXn4sVwnJbM3Z9lRSs59LBiOkotXVgmfgvVKZ9F8Fopy6CqHY2G5HqAb2X1aZberLG8rxZfsbCT86o=
+x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4a5c3b51-4774-4051-a848-08d8180fee34
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Jun 2020 07:26:37.1920 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 1OHhz8ODJixp16CqFHvZ9m8YPgM3UNgByNhF82OV8Yw0hFgygLgHjazomkmK/Oozjc2VCvqCjv+ckQwGiLULFg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB4078
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,116 +143,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Macpaul Lin <macpaul.lin@gmail.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>
-Content-Type: multipart/mixed; boundary="===============6892489219619579827=="
+Cc: "bvanassche@acm.org" <bvanassche@acm.org>,
+ "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
+ "cc.chou@mediatek.com" <cc.chou@mediatek.com>,
+ "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
+ "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "cang@codeaurora.org" <cang@codeaurora.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "beanhuo@micron.com" <beanhuo@micron.com>,
+ "chaotian.jing@mediatek.com" <chaotian.jing@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---===============6892489219619579827==
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha256; protocol="application/pgp-signature"
+> 
+> 
+> If UFS device is not qualified to enter the detection of WriteBooster
+> probing by disallowed UFS version or device quirks, then WriteBooster
+> capability in host shall be disabled to prevent any WriteBooster
+> operations in the future.
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-Macpaul Lin <macpaul.lin@mediatek.com> writes:
-> Nowadays some embedded systems use VCOM to transfer large log and data.
-> Take LTE MODEM as an example, during the long debugging stage, large
-> log and data were transfer through VCOM when doing field try or in
-> operator's lab. Here we suggest slightly increase the transfer buffer
-> in u_serial.c for performance improving.
->
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+Fixes: ?
+> 
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 > ---
-> Changes for v2:
->   - Drop previous patch for adding flag which indicates hardware capabili=
-ty in
->     gadget.h and in DMA engine according to Alan's suggestion. Thanks.
->   - Replace requested buffer size "REQ_BUF_SIZE" instead of checking hard=
-ware
->     capability.
->   - Refine commit messages.
-> Changes for v3:
->   - Code: no change.
->     Commit: Add missing change log in v2.
->
->  drivers/usb/gadget/function/u_serial.c |    5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/usb/gadget/function/u_serial.c b/drivers/usb/gadget/=
-function/u_serial.c
-> index 3cfc6e2..d7912a9 100644
-> --- a/drivers/usb/gadget/function/u_serial.c
-> +++ b/drivers/usb/gadget/function/u_serial.c
-> @@ -80,6 +80,7 @@
->  #define QUEUE_SIZE		16
->  #define WRITE_BUF_SIZE		8192		/* TX only */
->  #define GS_CONSOLE_BUF_SIZE	8192
-> +#define REQ_BUF_SIZE		4096
->=20=20
->  /* console info */
->  struct gs_console {
-> @@ -247,7 +248,7 @@ static int gs_start_tx(struct gs_port *port)
->  			break;
->=20=20
->  		req =3D list_entry(pool->next, struct usb_request, list);
-> -		len =3D gs_send_packet(port, req->buf, in->maxpacket);
-> +		len =3D gs_send_packet(port, req->buf, REQ_BUF_SIZE);
->  		if (len =3D=3D 0) {
->  			wake_up_interruptible(&port->drain_wait);
->  			break;
-> @@ -514,7 +515,7 @@ static int gs_alloc_requests(struct usb_ep *ep, struc=
-t list_head *head,
->  	 * be as speedy as we might otherwise be.
->  	 */
->  	for (i =3D 0; i < n; i++) {
-> -		req =3D gs_alloc_req(ep, ep->maxpacket, GFP_ATOMIC);
-> +		req =3D gs_alloc_req(ep, REQ_BUF_SIZE, GFP_ATOMIC);
-
-since this can only be applied for the next merge window, it would be
-much better if you work rework how requests are used here and, as I
-mentioned in the other subthread, preallocate a list of requests that
-get recycled. This would allow us to allocate memory without GFP_ATOMIC.
-
-=2D-=20
-balbi
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEElLzh7wn96CXwjh2IzL64meEamQYFAl7y97MACgkQzL64meEa
-mQbjAhAA0OOV27Nwx1Zd9bERbMUOxh2QI77f+9QskVbd7ub1hn/forW3/lSaOe66
-jDYjYKWyi2HFYijFbyYrEJXv2aCWSn4M9YM9DdDicvc9Ny1pTT20YhATcVhr4jOI
-9c3BUXc+TCcoSK/yTbs1Zt25PcktO/M07FpN4+nE1zr128yzpQmd8R5FMO68w7d/
-sckWvXnCoYA2b1udE/dw9+12DE4ae3k/yW+KPrqIKX9FfhACfiDTPhsN6HHj2RnH
-U5PvfahfRDPtAdUhDlB1FOyV6lDBH9I8v+2W3735aR37iylqZFVhkUoNuUoXhFcq
-9HfwA04pGcb5hQTxNQmP55QclnKyKT1YgxDzF6d/7MAhEkBaghzsFN8QJDvQXKAp
-3xiKH9PCD6VGOdqV7K5ID/t28hu68xaO1r+ulk53/unhCeY+6aBS7eod6PuXb0Ta
-NRPJ31rvjRaDUFudPl0C6rsxvkAYwh61lGjVaYboKhjcWBLJfTxnpmx1f89OYsYB
-+sIxhPgo89Q8MavGJ/F46hHm+d5/s8mGYR/kg4S04hyfO37mn9qWfUNNJf6bN5NG
-RSInU5zelNjcv5ox2RpRgY0uSw+/S6YrHF7qivP3ozrlD/AUOQtxeXWV/BGs+8p4
-PFWaCC0YtGYxCBY0oIzbRkRN9tU04zMZWB75NBF0gMhzBm84BBk=
-=zs8r
------END PGP SIGNATURE-----
---=-=-=--
-
-
---===============6892489219619579827==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============6892489219619579827==--
-
