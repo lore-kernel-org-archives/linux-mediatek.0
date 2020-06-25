@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 11A67C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2020 10:18:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2D364C433E2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2020 10:18:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D859A20773
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2020 10:18:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 00DE720773
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2020 10:18:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lRfZKtYV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D859A20773
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Bd2Ttfia"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 00DE720773
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,26 +25,25 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FtZpiVmDFXd+xZfs8jbKkIBbUIObuuobbpx5ub76Rzs=; b=lRfZKtYVKrpPVlv2zzhHUSAm5
-	ivUFmTU/S5ZttUO8ohEquXfJBw8522MPbnwscKG5OpVd31kXc1gkEgLMhxAg3GRZamdDOOAJXAprb
-	1c47SigMPAUV8FebQ4KaS9evAxtdKzOsa9QiYIxGihtQ7bcTHZLO//tVeVhg2LpegY4zZEK/s1KPi
-	gNvH5w8x0/i5EwgHSvj1x05v5lRpUGodXt+qZJoOFL6ALcyinLMqPS+X5p7tUUtvkBCzLUcx/uJvR
-	Wn5rj/4HD5hWyU1D3hlztTamN+4nUfCAwvhk16LLCcc/wcCWuyrG89CPiKHhTI+NFXU9g3sdbNPYZ
-	jb/uvoZwg==;
+	 bh=05kKKTIOKdHoefyRk4S6DVDqhUh7UFRZ81y5EoKX/rU=; b=Bd2TtfiahH20y6K6H4NFgec6z
+	06mvLHEMC0aGdOKpqChsWQOhs0NR53RVU3pU7D4MH+XSy2FCC31hKBV+DGB/l0EwGBF4BHYnfNn7C
+	ftGIVpRn0jG0t3Q07f267NVZ+wzqpaB2XJo3yhOXyvX1Ox6QqkA5sgow2h1jYkfcOLca3UbinUOx0
+	RIMktgjMVM5cUqNjHTJoUstm0ZtTcAGooTdbMZHgQzuQdBo76Y4IFhv0CJfiltNXFx0doFS9d/PL4
+	4QC1pDcdCM3Yf5RyEHAvNvCfHBuT2uwaLv2PznxJL13k2MBWHvtLLhQrTEQI1Mamuh9pu9OJIy+qs
+	iRww45vbQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1joOxa-0000nY-RQ; Thu, 25 Jun 2020 10:18:22 +0000
+	id 1joOxj-0000rL-Fy; Thu, 25 Jun 2020 10:18:31 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1joOxP-0000jG-3M; Thu, 25 Jun 2020 10:18:11 +0000
+ id 1joOxQ-0000je-Cf; Thu, 25 Jun 2020 10:18:13 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 116B72A39A8
+ (Authenticated sender: eballetbo) with ESMTPSA id A1FB92A39E3
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH v2 3/7] arm64: dts: mt8183: Add MediaTek's peripheral
- configuration controller
-Date: Thu, 25 Jun 2020 12:17:53 +0200
-Message-Id: <20200625101757.101775-4-enric.balletbo@collabora.com>
+Subject: [PATCH v2 4/7] arm64: dts: mt8183: Fix unit name warnings
+Date: Thu, 25 Jun 2020 12:17:54 +0200
+Message-Id: <20200625101757.101775-5-enric.balletbo@collabora.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20200625101757.101775-1-enric.balletbo@collabora.com>
 References: <20200625101757.101775-1-enric.balletbo@collabora.com>
@@ -70,34 +69,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek's peripheral configuration controller is present on the
-MT8183 SoC. Add the node for that controller.
+Remove the unit address from the DT nodes that doesn't have a reg
+property. This fixes the following unit name warnings:
+
+  Warning (unit_address_vs_reg): /cpus/idle-states/cluster-sleep@0: node has a unit name, but no reg or ranges property
+  Warning (unit_address_vs_reg): /cpus/idle-states/cluster-sleep@1: node has a unit name, but no reg or ranges property
 
 Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
 
-Changes in v2: None
+Changes in v2:
+- Replace cluster-sleepX for cluster-sleep-x (Matthias Brugger)
 
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 1e03c849dc5d6..00137ec61164d 100644
+index 00137ec61164d..6c00ffa275202 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -285,6 +285,12 @@ infracfg: syscon@10001000 {
- 			#reset-cells = <1>;
- 		};
+@@ -168,7 +168,7 @@ CPU_SLEEP: cpu-sleep {
+ 				min-residency-us = <800>;
+ 			};
  
-+		pericfg: syscon@10003000 {
-+			compatible = "mediatek,mt8183-pericfg", "syscon";
-+			reg = <0 0x10003000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
- 		pio: pinctrl@10005000 {
- 			compatible = "mediatek,mt8183-pinctrl";
- 			reg = <0 0x10005000 0 0x1000>,
+-			CLUSTER_SLEEP0: cluster-sleep@0 {
++			CLUSTER_SLEEP0: cluster-sleep-0 {
+ 				compatible = "arm,idle-state";
+ 				local-timer-stop;
+ 				arm,psci-suspend-param = <0x01010001>;
+@@ -176,7 +176,7 @@ CLUSTER_SLEEP0: cluster-sleep@0 {
+ 				exit-latency-us = <400>;
+ 				min-residency-us = <1000>;
+ 			};
+-			CLUSTER_SLEEP1: cluster-sleep@1 {
++			CLUSTER_SLEEP1: cluster-sleep-1 {
+ 				compatible = "arm,idle-state";
+ 				local-timer-stop;
+ 				arm,psci-suspend-param = <0x01010001>;
 -- 
 2.27.0
 
