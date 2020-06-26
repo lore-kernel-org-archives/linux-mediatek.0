@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9526BC433E1
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AA94BC433DF
 	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 21:25:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3C23A20B1F
+	by mail.kernel.org (Postfix) with ESMTPS id 4032520C09
 	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 21:25:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YXthqcHY";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="uoyNicgh"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C23A20B1F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dAIonYlE";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="YcQyibhh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4032520C09
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,36 +26,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OuvhmnBsodkbfF2WoODOi+ujTerHCOgO5jifZRdGsLE=; b=YXthqcHYOziEb3k9A+RCSJCqH
-	r63CC3FjBda3L7Yq7rzB1CApuvBgmflcQ0iUuOdB+v0szyaIQFfygUMSispcpqA6vMcfqEVttYauk
-	fr/p39sRNU4e5cUZ1TaVcizc7qwtbv//T45tLAYjeB+hF6Kl2N559CupVwK8/qke2BPLUE9Mqq1Tn
-	Djm69u2X0opqUGJ7z2mzuKFmqxg+DmWVwyudRZrPuxzd66kGh6IcBqKSy7SP1xbKZX3kax9oAVfN2
-	+H+ctG1xfCGA9ROIsGR+Su82E5ZhuGVCxHKs/l0RteOTZOt5Uq/UNb+3VeIbtjpcW7dq2sGis76ZS
-	7xNea6AHA==;
+	 bh=qOGVmqqYaz6In2qljIsQ73y+E6KTrMxgbjZGKrIobZs=; b=dAIonYlEYL/rDUEwxx6zy06kX
+	GVX4iZoihqbGAO9YjCR3fhNJHINcpuQV/0zhCPLcLvzgqFTzfCk2kdwcTIXxprWlFAej4W0phodAM
+	X18GSdOblOU8gQwvNvwgCzeNJoUQHnjShlfLjSQvEArmhW6NcoSY8R1abXskGrHc4vlEdY8NvkU4i
+	KGdxGbfSed3QBeZrjLD1ilh8rEO1Dn1Jhyztpr9g/Xpt95zfANrc4ARa8OPqjhiTSmdUR55QT6Snd
+	iZ/9UqFvHJbd05n3Bla1ohw+1u+ExKZjBFBOr8ccUfpZJUz6cOJcJelMgErFQwS0zsa9yMiTCKNo3
+	IGciFAXVw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jovr3-000218-Gb; Fri, 26 Jun 2020 21:25:49 +0000
+	id 1jovr6-00022t-60; Fri, 26 Jun 2020 21:25:52 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jovqz-0001yt-Ny
- for linux-mediatek@lists.infradead.org; Fri, 26 Jun 2020 21:25:46 +0000
+ id 1jovr3-000214-CK
+ for linux-mediatek@lists.infradead.org; Fri, 26 Jun 2020 21:25:50 +0000
 Received: from localhost.localdomain.com (unknown [151.48.138.186])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D201020C09;
- Fri, 26 Jun 2020 21:25:43 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6D83C20B80;
+ Fri, 26 Jun 2020 21:25:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593206745;
- bh=kBAulE3bhjicakuCpN7TZOggj/jChwDBf1S+e69ngyU=;
+ s=default; t=1593206748;
+ bh=2n1luI8nOWCvmeK0cEw3Jtt5EYRmeEUpHVaPjeTZsAI=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=uoyNicgh3cs+K6DUViKAaSYBS1Kf+iP8a4hPki0Zr3iDXP6+fMTkRnuNCDlFmpLrb
- mT34nj4+Oy3DWosSgPrgNgyPwqUJy120JPNLjyDT9PVFAuEG73hew+WQ+odM/ZHpWT
- uUeeVB6z3HdZyTft033Mn7uT7erDNTEZqX7bK+ig=
+ b=YcQyibhhfyRpkgAW/l4Z1GwDJwchAo5ogZMF1lo4exPBMvr+dFfB4S/wiGolfjH4U
+ g6TP8iom31GJYRmfwafI+u7jPYu+uVrbY8zuYvZxWn9Q7T5GyvueDvjHraAOeTfG/v
+ v5t50NgMm3pBvbuseqiCmVYQy7QTa90L2SSvk/ic=
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name
-Subject: [PATCH 07/17] mt76: mt7615: introduce pm_power_save delayed work
-Date: Fri, 26 Jun 2020 23:25:07 +0200
-Message-Id: <ac3849b399f7e28eea1faeb59884159a515d0984.1593204577.git.lorenzo@kernel.org>
+Subject: [PATCH 09/17] mt76: mt7615: acquire driver_own before configuring
+ device for suspend
+Date: Fri, 26 Jun 2020 23:25:09 +0200
+Message-Id: <ed2e49891faa11b1726541618b4740cc5e4fd1e8.1593204577.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <cover.1593204577.git.lorenzo@kernel.org>
 References: <cover.1593204577.git.lorenzo@kernel.org>
@@ -78,126 +79,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce runtime-pm power_save delayed work used to enable
-low-power after an inactivity period
+Make sure to wake the device in mt7615_pci_suspend in order to properly
+configure device registers before suspend
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- .../net/wireless/mediatek/mt76/mt7615/init.c  |  1 +
- .../net/wireless/mediatek/mt76/mt7615/mac.c   | 27 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7615/main.c  |  3 +++
- .../wireless/mediatek/mt76/mt7615/mt7615.h    |  6 ++++-
- 4 files changed, 36 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mt7615/pci.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-index b5632c71cbbd..c22878b82540 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-@@ -445,6 +445,7 @@ void mt7615_init_device(struct mt7615_dev *dev)
- 	dev->phy.mt76 = &dev->mt76.phy;
- 	dev->mt76.phy.priv = &dev->phy;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
+index ba12f199bce0..2328d78e06a1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
+@@ -75,6 +75,10 @@ static int mt7615_pci_suspend(struct pci_dev *pdev, pm_message_t state)
+ 	bool hif_suspend;
+ 	int i, err;
  
-+	INIT_DELAYED_WORK(&dev->pm.ps_work, mt7615_pm_power_save_work);
- 	INIT_WORK(&dev->pm.wake_work, mt7615_pm_wake_work);
- 	init_completion(&dev->pm.wake_cmpl);
- 	INIT_DELAYED_WORK(&dev->phy.mac_work, mt7615_mac_work);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index 8910604719b1..7804928f54d8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -1850,6 +1850,33 @@ int mt7615_pm_wake(struct mt7615_dev *dev)
- }
- EXPORT_SYMBOL_GPL(mt7615_pm_wake);
- 
-+void mt7615_pm_power_save_sched(struct mt7615_dev *dev)
-+{
-+	struct mt76_phy *mphy = dev->phy.mt76;
++	err = mt7615_pm_wake(dev);
++	if (err < 0)
++		return err;
 +
-+	if (!mt7615_firmware_offload(dev) || !mt76_is_mmio(mphy->dev) ||
-+	    !test_bit(MT76_STATE_RUNNING, &mphy->state))
-+		return;
-+
-+	dev->pm.last_activity = jiffies;
-+	if (!test_bit(MT76_STATE_PM, &mphy->state))
-+		queue_delayed_work(dev->mt76.wq, &dev->pm.ps_work,
-+				   MT7615_PM_TIMEOUT);
-+}
-+EXPORT_SYMBOL_GPL(mt7615_pm_power_save_sched);
-+
-+void mt7615_pm_power_save_work(struct work_struct *work)
-+{
-+	struct mt7615_dev *dev;
-+
-+	dev = (struct mt7615_dev *)container_of(work, struct mt7615_dev,
-+						pm.ps_work.work);
-+
-+	if (mt7615_firmware_own(dev))
-+		queue_delayed_work(dev->mt76.wq, &dev->pm.ps_work,
-+				   MT7615_PM_TIMEOUT);
-+}
-+
- void mt7615_mac_work(struct work_struct *work)
- {
- 	struct mt7615_phy *phy;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-index 8ac63ea7cbb8..e63c2584b326 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-@@ -74,6 +74,7 @@ static void mt7615_stop(struct ieee80211_hw *hw)
- 	del_timer_sync(&phy->roc_timer);
- 	cancel_work_sync(&phy->roc_work);
- 
-+	cancel_delayed_work_sync(&dev->pm.ps_work);
- 	cancel_work_sync(&dev->pm.wake_work);
- 
- 	mt7615_mutex_acquire(dev, &dev->mt76.mutex);
-@@ -1006,6 +1007,8 @@ static int mt7615_suspend(struct ieee80211_hw *hw,
- 	bool ext_phy = phy != &dev->phy;
- 	int err = 0;
- 
-+	cancel_delayed_work_sync(&dev->pm.ps_work);
-+
- 	mt7615_mutex_acquire(dev, &dev->mt76.mutex);
- 
- 	clear_bit(MT76_STATE_RUNNING, &phy->mt76->state);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-index 8e473bb41a5d..a93ddb1a3def 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-@@ -19,6 +19,7 @@
- #define MT7615_WTBL_STA			(MT7615_WTBL_RESERVED - \
- 					 MT7615_MAX_INTERFACES)
- 
-+#define MT7615_PM_TIMEOUT		(HZ / 12)
- #define MT7615_WATCHDOG_TIME		(HZ / 10)
- #define MT7615_HW_SCAN_TIMEOUT		(HZ / 10)
- #define MT7615_RESET_TIMEOUT		(30 * HZ)
-@@ -302,6 +303,7 @@ struct mt7615_dev {
- 		struct work_struct wake_work;
- 		struct completion wake_cmpl;
- 
-+		struct delayed_work ps_work;
- 		unsigned long last_activity;
- 	} pm;
- };
-@@ -435,6 +437,8 @@ void mt7615_mac_set_rates(struct mt7615_phy *phy, struct mt7615_sta *sta,
- 			  struct ieee80211_tx_rate *rates);
- void mt7615_pm_wake_work(struct work_struct *work);
- int mt7615_pm_wake(struct mt7615_dev *dev);
-+void mt7615_pm_power_save_sched(struct mt7615_dev *dev);
-+void mt7615_pm_power_save_work(struct work_struct *work);
- int mt7615_mcu_del_wtbl_all(struct mt7615_dev *dev);
- int mt7615_mcu_set_chan_info(struct mt7615_phy *phy, int cmd);
- int mt7615_mcu_set_wmm(struct mt7615_dev *dev, u8 queue,
-@@ -501,7 +505,7 @@ static inline void
- mt7615_mutex_release(struct mt7615_dev *dev, struct mutex *mutex)
- 	__releases(mutex)
- {
--	dev->pm.last_activity = jiffies;
-+	mt7615_pm_power_save_sched(dev);
- 	mutex_unlock(mutex);
- }
- 
+ 	hif_suspend = !test_bit(MT76_STATE_SUSPEND, &dev->mphy.state) &&
+ 		      mt7615_firmware_offload(dev);
+ 	if (hif_suspend) {
 -- 
 2.26.2
 
