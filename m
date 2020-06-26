@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BD708C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 11:07:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 16D2CC433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 11:11:09 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8E72E2053B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 11:07:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D5B412080C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 11:11:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="U7m+sDQe";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="gtJRqCnK"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E72E2053B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xgKYyYBg";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="AeFZoIN/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D5B412080C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,60 +26,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=RQ23Q6BWDx2QJL6zQ3QiYJlX08JuDB/kKMxcdaB2Oro=; b=U7m+sDQeZfhofBmozCG5dVBN8
-	GYk49fbaicL6/12BQMj0CUCHSAKAxgWNzVCA0n95hs9D95/uqXCw5SMG3cqxr0zucrcTE01D63T1m
-	9pO5E5d/XoWr/c1jF0HU8jO2PApjZ2xGpSisJHLY/FeXEDtuFDhuwA8o3STHA4Ii7O+3hwaa1nZoP
-	8cEl3izyD9ALyn8s7PxwaF/6kqODcPvz9E6TJ3HvSQA1pI/fXu+W3U/w0BOiIzKvxaWIRrYtaAPqS
-	U6cwL/XRFQn7keLqgzsf0TRELA4f642j0xzYiPl1Os5PQVDch9DNInBdUtLukgEj+WIf7h/SQoQxU
-	4EskIuOzg==;
+	 bh=A/l66Y6DkCCln7zE9Z/fJPKsSh73AQ0lvGh8rEaj5N4=; b=xgKYyYBgBLqsaKn7rMHBRzaFb
+	1fLZPR0WVyDA//qcSTooAx3HMS41hH/WjBh+UQzuqA+mFq4OvPmGZKMv9NweL9rt28giZ8rMF2jNp
+	7LAHEW99k1SLOf/AzCeVi177F0VlGAR9Fs/0oHPsOuP6tcjTsjtSo9sF3IXs60Ujlj2k95N3QFv9a
+	U5a34HFka4sSjyiwXy/GNFYJvzB9ge6KM/YYLnUFU/BEFXmwwg5c8IZFVqvK52CHxBJ5l8VBatTPs
+	o2iCz7w6FJtlNdrtmdMCXaDXMDAnmsT1x+G/zNtoirlFdE3bWN7Q4mkd+TMNqLEjEoy2WHquarQLD
+	x2k/nVOGQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jomCq-0003Bp-RT; Fri, 26 Jun 2020 11:07:40 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1jomG5-0004hI-IG; Fri, 26 Jun 2020 11:11:01 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jokwM-0001gY-SW
- for linux-mediatek@lists.infradead.org; Fri, 26 Jun 2020 09:46:47 +0000
-Received: by mail-pf1-x442.google.com with SMTP id p11so4411732pff.11
- for <linux-mediatek@lists.infradead.org>; Fri, 26 Jun 2020 02:46:34 -0700 (PDT)
+ id 1jomDU-0003Tl-8e
+ for linux-mediatek@lists.infradead.org; Fri, 26 Jun 2020 11:08:39 +0000
+Received: by mail-pg1-x542.google.com with SMTP id t6so4822625pgq.1
+ for <linux-mediatek@lists.infradead.org>; Fri, 26 Jun 2020 04:08:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ju0O0uW2865hksycznBHtUgpNV8XHzR5v3KuNKXnRKE=;
- b=gtJRqCnKsJ7/KtReGeGFmX9uU+fkClb7UaCFvZefifel5YcVKVLpWKbR16XTcL0KRi
- SQ+p8Jz/SCeYDidoYtVOAdmKT9XYAGrNT62/6Oue3mSLR//N4fXbDX/Oqff+IujpBrdO
- StyqeprKYLFhaELA+T+86DyaTYfyzKeOH4AEY=
+ bh=e/SQkaIkQYThWAWodZ31ujagTBZlI1iDzzrB4vJVM6s=;
+ b=AeFZoIN/fr4cIMvuYSHhq5dGMtYtBpPIl51KTcus8jLUWyrsd3bW/QasAwLiUnyKVY
+ XZpKXuglmID8LOTPDjHjFNu2TwHeN1HZkNaV3zQfD9hr5pTYjtzScffE2nRLKxx6ik91
+ TzRISkAX1ZMMqV6aGLGPlhHGNAFPFkw14UNIE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ju0O0uW2865hksycznBHtUgpNV8XHzR5v3KuNKXnRKE=;
- b=q8EfZI1HvoaeNPxuXMvzgJ2YtPzQ74Wy4l1/P8nzNFCkjr9ub9maT+5lw+HnTIb24H
- 8ZNJFgknX18/+Lc2qDSXdWMAlap4xnVXTQ37UHctNkTWMXzuv3LUOYDrgYDt47533t0R
- GjTl0udRaLrT9e1ZJDE9PmClC8PEcGDt9+WvI0+ed+RYeVYp54+IAyLUIRkMCfmwV0iW
- 3xuaCHYjSwbB15CrCSEInBNCqRLhERGSYyxXIoElwPu0/OAif6dKWquL3HJky8fo90KX
- r0+lDiwpl9lOdgrETko5pCT28XhlSiYhw7jmUWjTGpFMK1CtfIxkp/N7UMNITkZWZhLR
- em4Q==
-X-Gm-Message-State: AOAM5339vqOeXdsXHpCIX/fymVQ8yW+/oBoVnhPzuHmvEPnoQB3H6Zgo
- jtglJLsulDImjbRE2YKdqTp84qen0ZkOgQ==
-X-Google-Smtp-Source: ABdhPJzOkAYsZviFsY47s6Pz1QDXY2VPFW39j2s8prpRXPcCwJzDLMkX9tyA9JPFxd8HTFev1aMWYQ==
-X-Received: by 2002:a17:902:7288:: with SMTP id
- d8mr1669811pll.18.1593158768403; 
- Fri, 26 Jun 2020 01:06:08 -0700 (PDT)
+ bh=e/SQkaIkQYThWAWodZ31ujagTBZlI1iDzzrB4vJVM6s=;
+ b=lDl3PwI5I9eeLBnmHWSI7zLjZ7ShWd0Jqs622gVZsjeARvJ3BJgfNvilAPWf5emhmy
+ BChco8Sva7NXagyqzHXxdvQLdv4W/rm32qLHncP7lths0bHg6Lt3bLXaskI2WPg+r/MV
+ qhcGKEU6U6q5aywoN0ymaxqnVbA+0PWJI3VChC508Q3tOULmhSobcZ23HEDP5zT9XniX
+ JPIAVwdK+DeKsUl/+KbMbyjuubdFOy2nPQerOlbvD5cd3uy74HnbQYH1ZXO7XAVzVTkx
+ fW1Lv1yiM1EAU9HcGrh23I4MdYZYHl1Vg+7Rhmg1mlUl0jNAVOmcKQAmIgPshx4ZXJCt
+ akaQ==
+X-Gm-Message-State: AOAM530U1GqflJKd9OpHdwCPj56rIs7nu5/+1atpYNFPmqWKFsQl6VDj
+ uLczl/YKygXS7rRyb6MpzLFGgN9BRazlwA==
+X-Google-Smtp-Source: ABdhPJzcGcfKhOrU39qKlXLmxNs5YJdjrelLysgC2xeVATizxK3iWSsOEOtEmDWKAZT2UkkJEJdMbA==
+X-Received: by 2002:a63:9246:: with SMTP id s6mr1658143pgn.22.1593158783791;
+ Fri, 26 Jun 2020 01:06:23 -0700 (PDT)
 Received: from acourbot.tok.corp.google.com
  ([2401:fa00:8f:203:93d9:de4d:e834:3086])
- by smtp.gmail.com with ESMTPSA id 137sm21809843pgg.72.2020.06.26.01.06.05
+ by smtp.gmail.com with ESMTPSA id 137sm21809843pgg.72.2020.06.26.01.06.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Jun 2020 01:06:07 -0700 (PDT)
+ Fri, 26 Jun 2020 01:06:23 -0700 (PDT)
 From: Alexandre Courbot <acourbot@chromium.org>
 To: Tiffany Lin <tiffany.lin@mediatek.com>,
  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Rui Wang <gtk_ruiwang@mediatek.com>,
  Yunfei Dong <yunfei.dong@mediatek.com>, Pi-Hsun Shih <pihsun@chromium.org>,
  Maoguang Meng <maoguang.meng@mediatek.com>
-Subject: [PATCH v2 12/18] media: mtk-vcodec: venc: set OUTPUT buffers field to
- V4L2_FIELD_NONE
-Date: Fri, 26 Jun 2020 17:04:36 +0900
-Message-Id: <20200626080442.292309-13-acourbot@chromium.org>
+Subject: [PATCH v2 17/18] media: mtk-vcodec: venc: set default time per frame
+Date: Fri, 26 Jun 2020 17:04:41 +0900
+Message-Id: <20200626080442.292309-18-acourbot@chromium.org>
 X-Mailer: git-send-email 2.27.0.212.ge8ba1cc988-goog
 In-Reply-To: <20200626080442.292309-1-acourbot@chromium.org>
 References: <20200626080442.292309-1-acourbot@chromium.org>
@@ -102,36 +100,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A default value of 0 means V4L2_FIELD_ANY, which is not correct.
-Reported by v4l2-compliance.
+The time per frame was left initialized to 0/0, which make the driver
+fail v4l2-compliance, and also leaves it potentially exposed to doing a
+division by zero.
 
 Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-index f833aee4a06f..1a981d842c19 100644
+index 346a33c6869d..c9756a4748ef 100644
 --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
 +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-@@ -893,8 +893,17 @@ static void vb2ops_venc_stop_streaming(struct vb2_queue *q)
- 	ctx->state = MTK_STATE_FREE;
+@@ -24,6 +24,9 @@
+ #define DFT_CFG_HEIGHT	MTK_VENC_MIN_H
+ #define MTK_MAX_CTRLS_HINT	20
+ 
++#define MTK_DEFAULT_FRAMERATE_NUM 1001
++#define MTK_DEFAULT_FRAMERATE_DENOM 30000
++
+ static void mtk_venc_worker(struct work_struct *work);
+ 
+ static const struct v4l2_frmsize_stepwise mtk_venc_framesizes = {
+@@ -1199,6 +1202,8 @@ void mtk_vcodec_enc_set_default_params(struct mtk_vcodec_ctx *ctx)
+ 		DFT_CFG_WIDTH * DFT_CFG_HEIGHT;
+ 	ctx->q_data[MTK_Q_DATA_DST].bytesperline[0] = 0;
+ 
++	ctx->enc_params.framerate_num = MTK_DEFAULT_FRAMERATE_NUM;
++	ctx->enc_params.framerate_denom = MTK_DEFAULT_FRAMERATE_DENOM;
  }
  
-+static int vb2ops_venc_buf_out_validate(struct vb2_buffer *vb)
-+{
-+	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-+
-+	vbuf->field = V4L2_FIELD_NONE;
-+	return 0;
-+}
-+
- static const struct vb2_ops mtk_venc_vb2_ops = {
- 	.queue_setup		= vb2ops_venc_queue_setup,
-+	.buf_out_validate	= vb2ops_venc_buf_out_validate,
- 	.buf_prepare		= vb2ops_venc_buf_prepare,
- 	.buf_queue		= vb2ops_venc_buf_queue,
- 	.wait_prepare		= vb2_ops_wait_prepare,
+ int mtk_vcodec_enc_ctrls_setup(struct mtk_vcodec_ctx *ctx)
 -- 
 2.27.0.212.ge8ba1cc988-goog
 
