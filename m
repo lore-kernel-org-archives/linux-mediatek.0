@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3906EC433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 10:55:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 775FEC433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 10:58:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 05CA5206DD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 10:55:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 431EE206DD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 10:58:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AmnFaQut";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="HXd8cN7W"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 05CA5206DD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ruEoAdqP";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Slagczj0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 431EE206DD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,59 +26,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uF95VyOITnzlch1r8U0Y37j7pHnqsENYGRDwohcU6b4=; b=AmnFaQutsEtdg1Nmh0GxPuvxX
-	OlpsDFucZIAXtYMlRUps/1Ntw8RaJBgQKbMR2XUBZMKzdjFvS0cF1QCQ57yyVCgJZ4ZNai9mnNx9I
-	wrSxBPBIhOzlOlrITYi5qKGo/XsaHUB6eabmlY5PXhBPdb6GsHSRfPu1GXy0pnpuT6XKm3UAir0F0
-	ayWeiS7YY7ocoSeIuLxPz7f1Ku1pSDHWgXXmQ2XLBlCDdrrbALi/ae27IgWX91HixbV4voHZxIiAX
-	ThhmtwrtIv6T3MbjeddMRmK8CA+V2zP1fihuI/pBEssxfIM47AQXLhyLHkIcS3ZckM6fofwkFwGs8
-	NpIzxl8Zw==;
+	 bh=9C9h/UIorOWEHNlQXyBwUocZjMNwnxSMrv8g0B0MnIs=; b=ruEoAdqP0YN471VEN+wtHH7KM
+	4umOqses2y3BSHkkxH6vXTUAqIBCJY8DHDplulKf7HYLVdSqS7NORVnWNxa9vHGkQHFVGIBuk8qz2
+	zDdzSL623OCteGTlNIH95Ey7Jf0Lkq9C3SGNAkSunJ+XvYqwic+JmNemh7mCJ8/ksT/qj2RfB9/sD
+	pbmBR383/U5XVT1/NN9ZaaxiYxOt9coQkyoEXNUIWGfl4xRKEMQsy6BdDoxplb9C+iWJMC3jhtot9
+	qte0ZWBskJGe78Ws9xnZKA6ocynNebc0U42FAzeZ1uWFMaqvt1IO3IigChBo8YoOChRWQLQoDpXRE
+	Qmk29RqLQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jom1Q-000843-1H; Fri, 26 Jun 2020 10:55:52 +0000
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+	id 1jom3n-0000RY-3y; Fri, 26 Jun 2020 10:58:19 +0000
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jom1J-0007xi-32
- for linux-mediatek@lists.infradead.org; Fri, 26 Jun 2020 10:55:49 +0000
-Received: by mail-pl1-x641.google.com with SMTP id d12so4160968ply.1
- for <linux-mediatek@lists.infradead.org>; Fri, 26 Jun 2020 03:55:44 -0700 (PDT)
+ id 1jom3k-0000QW-Pn
+ for linux-mediatek@lists.infradead.org; Fri, 26 Jun 2020 10:58:17 +0000
+Received: by mail-oi1-x241.google.com with SMTP id x83so130386oif.10
+ for <linux-mediatek@lists.infradead.org>; Fri, 26 Jun 2020 03:58:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=xHNRou80y9oPK1XHkY4t+2RP3g08PmvW2/CQnpLKVto=;
- b=HXd8cN7WAwO9yXq0bU783f15thXywJzamPxWe9xXZ4bcbJvz8TFq7+Gma6SIN+40hM
- DmQsLlFiGud8fA6ewGlYd9YVUDm8GVLwmJU3ZDSUG15sc0DG7wzRlEaw0MCiO48TaBhB
- wNAeceavH0x/cC0f/ak2YlxFQbXeM2+SjLbME=
+ bh=TWY5ln+C0L5OKLhUHNQQA4fWR9u7spTeGdlwWwYsNjU=;
+ b=Slagczj0xrrOFm1MOfsX8roJrvclPrrdjO/KQF5e43edEdSHjpLmgtD7EMUFLumA2p
+ F+NlibBwsDg954zvFK2IjotKSpE3+XXnK7Swg5QkeeEPHXz1+LeywZXNegqeBuIOE8mS
+ sFFhGb0+UxEkvs5krTXfHTBFTFRqmyUjqw5LA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=xHNRou80y9oPK1XHkY4t+2RP3g08PmvW2/CQnpLKVto=;
- b=rseKg9sXqWDhEgWHUErb/ISuX+BfWly0clI3bugxsALyx7jm1fUQBs8Xqr3pEo6ab5
- tpblLnwD69E6K901AfBDUWh6Yy4yClHLsl6umSeiDwoAbfm9NENM3WIfXNwk3CM0bhv5
- pUlAs8uJy18ppHfciRJPzP3J7FBdtfCIc+PMZFpN5lSgjXnenkUDz+Ccdlt9ZFgJD2NH
- Clpu8yJFJ5Y7VYIK+hhTJOSN+eDl/teQOZ5o+jgpWLuvyTQQzM3c7uDdENT+AnyR1TEZ
- YIfpbmwOx1bjedZaiWim8SXrKGCGY7aoLNOMNCjwB7ORL+LgfSs6vmv58FiCusa5/pF2
- hAlA==
-X-Gm-Message-State: AOAM530Zqguzgtk6AXtxi3hYh8kt4aGNup9oZXc0b9Kq5SGe3pfJNd0c
- xVz0otnUVgh/vsiznHwGocZ+kdwElnGHkA==
-X-Google-Smtp-Source: ABdhPJy+YEcSOIUz859rpa74XW+WHGJIXKdl+x6O21q/qCBPJQdhlzc9iwX2umrqS3Gsu/B1P+pw4A==
-X-Received: by 2002:aa7:87d3:: with SMTP id i19mr1572926pfo.203.1593158746196; 
- Fri, 26 Jun 2020 01:05:46 -0700 (PDT)
+ bh=TWY5ln+C0L5OKLhUHNQQA4fWR9u7spTeGdlwWwYsNjU=;
+ b=hc5bdlHmPeP05++VDrFUBlPnLdxuU/OdhgQtCv571bioj7mvb/QnVICzqgdqrIQKEA
+ vcaYYBgvyhxo4yFcvilDG7KOqvj34YwE77SVyE11duX8himdDtTCg0jDz46P/ytoiy8h
+ LuOvEj9J0qu4OheFbXklDT4hHglq8O/hA0HjPeN/v3IdummQ9pqePMuJow5rl+s5Y3uo
+ OIcuS2I+vpddpNpU7ZfxS/0R1l0+4VKhgsd+1onHkvyp4d+IUHOMr/PTVUF0xyQLK2Th
+ uiGlnqE3ywMKoli7+uapE9b57WGLTSMgNqafpeJTLNnA1Z+1dhu+cb5Czl6MHsmgZ/Xk
+ Ps3Q==
+X-Gm-Message-State: AOAM532kfzTynnOFR1qqR5qcJImQgj5xBpS1oqUNXD3tFFoCIWcw1o+A
+ JBs2jF9yBhG5KrzzIopDfwEVnQ1K28SN0w==
+X-Google-Smtp-Source: ABdhPJzB6OS4MIy7FxYEhNxsUaXWLmhNbV7pXZcQs36M9K67HYVXmMOT1RHeGGDakRBrYaHMcAgM2Q==
+X-Received: by 2002:a17:90a:4f4b:: with SMTP id
+ w11mr2172580pjl.11.1593158771591; 
+ Fri, 26 Jun 2020 01:06:11 -0700 (PDT)
 Received: from acourbot.tok.corp.google.com
  ([2401:fa00:8f:203:93d9:de4d:e834:3086])
- by smtp.gmail.com with ESMTPSA id 137sm21809843pgg.72.2020.06.26.01.05.43
+ by smtp.gmail.com with ESMTPSA id 137sm21809843pgg.72.2020.06.26.01.06.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Jun 2020 01:05:45 -0700 (PDT)
+ Fri, 26 Jun 2020 01:06:10 -0700 (PDT)
 From: Alexandre Courbot <acourbot@chromium.org>
 To: Tiffany Lin <tiffany.lin@mediatek.com>,
  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Rui Wang <gtk_ruiwang@mediatek.com>,
  Yunfei Dong <yunfei.dong@mediatek.com>, Pi-Hsun Shih <pihsun@chromium.org>,
  Maoguang Meng <maoguang.meng@mediatek.com>
-Subject: [PATCH v2 05/18] media: mtk-vcodec: venc: specify bitrate range
- per-chip
-Date: Fri, 26 Jun 2020 17:04:29 +0900
-Message-Id: <20200626080442.292309-6-acourbot@chromium.org>
+Subject: [PATCH v2 13/18] media: mtk-vcodec: venc: use platform data for
+ ENUM_FRAMESIZES
+Date: Fri, 26 Jun 2020 17:04:37 +0900
+Message-Id: <20200626080442.292309-14-acourbot@chromium.org>
 X-Mailer: git-send-email 2.27.0.212.ge8ba1cc988-goog
 In-Reply-To: <20200626080442.292309-1-acourbot@chromium.org>
 References: <20200626080442.292309-1-acourbot@chromium.org>
@@ -101,65 +102,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Different chips have different supported bitrate ranges. Move the min
-and max supported bitrates to the platform data.
+vidioc_enum_framesizes() assumes that all encoders support H.264 and VP8,
+which is not necessarily true and requires to duplicate information about
+the supported codecs which is already stored in the platform data.
+
+Fix this by referring to the platform data to find out whether a given
+format is supported. Since the supported sizes are all the same
+regardless of the format, we can then return a copy of a static value if
+the format is supported.
 
 Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h     | 4 ++++
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c     | 3 ++-
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c | 2 ++
- 3 files changed, 8 insertions(+), 1 deletion(-)
+ .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 24 ++++++++-----------
+ 1 file changed, 10 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-index e7b155e7432e..b8f913de8d80 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-@@ -311,12 +311,16 @@ enum mtk_chip {
-  *
-  * @uses_ext: whether the encoder uses the extended firmware messaging format
-  * @has_lt_irq: whether the encoder uses the LT irq
-+ * @min_birate: minimum supported encoding bitrate
-+ * @max_bitrate: maximum supported encoding bitrate
-  */
- struct mtk_vcodec_enc_pdata {
- 	enum mtk_chip chip;
- 
- 	bool uses_ext;
- 	bool has_lt_irq;
-+	unsigned long min_bitrate;
-+	unsigned long max_bitrate;
- };
- 
- /**
 diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-index d469ff6464b2..50ba9da59153 100644
+index 1a981d842c19..f8d4fbe927f9 100644
 --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
 +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-@@ -1232,7 +1232,8 @@ int mtk_vcodec_enc_ctrls_setup(struct mtk_vcodec_ctx *ctx)
- 	v4l2_ctrl_handler_init(handler, MTK_MAX_CTRLS_HINT);
+@@ -26,17 +26,9 @@
  
- 	v4l2_ctrl_new_std(handler, ops, V4L2_CID_MPEG_VIDEO_BITRATE,
--			1, 4000000, 1, 4000000);
-+			  ctx->dev->venc_pdata->min_bitrate,
-+			  ctx->dev->venc_pdata->max_bitrate, 1, 4000000);
- 	v4l2_ctrl_new_std(handler, ops, V4L2_CID_MPEG_VIDEO_B_FRAMES,
- 			0, 2, 1, 0);
- 	v4l2_ctrl_new_std(handler, ops, V4L2_CID_MPEG_VIDEO_FRAME_RC_ENABLE,
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-index c1365209263e..221fa0303075 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-@@ -380,6 +380,8 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- static const struct mtk_vcodec_enc_pdata mt8173_pdata = {
- 	.chip = MTK_MT8173,
- 	.has_lt_irq = true,
-+	.min_bitrate = 1,
-+	.max_bitrate = 4000000,
+ static void mtk_venc_worker(struct work_struct *work);
+ 
+-static const struct mtk_codec_framesizes mtk_venc_framesizes[] = {
+-	{
+-		.fourcc	= V4L2_PIX_FMT_H264,
+-		.stepwise = { MTK_VENC_MIN_W, MTK_VENC_MAX_W, 16,
+-			      MTK_VENC_MIN_H, MTK_VENC_MAX_H, 16 },
+-	},
+-	{
+-		.fourcc = V4L2_PIX_FMT_VP8,
+-		.stepwise = { MTK_VENC_MIN_W, MTK_VENC_MAX_W, 16,
+-			      MTK_VENC_MIN_H, MTK_VENC_MAX_H, 16 },
+-	},
++static const struct v4l2_frmsize_stepwise mtk_venc_framesizes = {
++	MTK_VENC_MIN_W, MTK_VENC_MAX_W, 16,
++	MTK_VENC_MIN_H, MTK_VENC_MAX_H, 16,
  };
  
- static const struct of_device_id mtk_vcodec_enc_match[] = {
+ #define NUM_SUPPORTED_FRAMESIZE ARRAY_SIZE(mtk_venc_framesizes)
+@@ -134,17 +126,21 @@ static int vidioc_enum_fmt(struct v4l2_fmtdesc *f,
+ static int vidioc_enum_framesizes(struct file *file, void *fh,
+ 				  struct v4l2_frmsizeenum *fsize)
+ {
++	const struct mtk_vcodec_enc_pdata *pdata =
++		fh_to_ctx(fh)->dev->venc_pdata;
+ 	int i = 0;
+ 
+ 	if (fsize->index != 0)
+ 		return -EINVAL;
+ 
+-	for (i = 0; i < NUM_SUPPORTED_FRAMESIZE; ++i) {
+-		if (fsize->pixel_format != mtk_venc_framesizes[i].fourcc)
++	for (i = 0; i < pdata->num_capture_formats; ++i) {
++		const struct mtk_video_fmt *fmt = &pdata->capture_formats[i];
++
++		if (fsize->pixel_format != fmt->fourcc)
+ 			continue;
+ 
+ 		fsize->type = V4L2_FRMSIZE_TYPE_STEPWISE;
+-		fsize->stepwise = mtk_venc_framesizes[i].stepwise;
++		fsize->stepwise = mtk_venc_framesizes;
+ 		return 0;
+ 	}
+ 
 -- 
 2.27.0.212.ge8ba1cc988-goog
 
