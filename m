@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 775FEC433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 10:58:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B656C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 11:04:46 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 431EE206DD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 10:58:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CC76F20781
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 11:04:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ruEoAdqP";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Slagczj0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 431EE206DD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e71+x4zR";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="SZIoVTB2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC76F20781
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,60 +26,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9C9h/UIorOWEHNlQXyBwUocZjMNwnxSMrv8g0B0MnIs=; b=ruEoAdqP0YN471VEN+wtHH7KM
-	4umOqses2y3BSHkkxH6vXTUAqIBCJY8DHDplulKf7HYLVdSqS7NORVnWNxa9vHGkQHFVGIBuk8qz2
-	zDdzSL623OCteGTlNIH95Ey7Jf0Lkq9C3SGNAkSunJ+XvYqwic+JmNemh7mCJ8/ksT/qj2RfB9/sD
-	pbmBR383/U5XVT1/NN9ZaaxiYxOt9coQkyoEXNUIWGfl4xRKEMQsy6BdDoxplb9C+iWJMC3jhtot9
-	qte0ZWBskJGe78Ws9xnZKA6ocynNebc0U42FAzeZ1uWFMaqvt1IO3IigChBo8YoOChRWQLQoDpXRE
-	Qmk29RqLQ==;
+	 bh=1Q3IaOKLh6YP1k807Zp9SNJEbwNy218Alg22Rf2/MSw=; b=e71+x4zRn+xvGN1f8Ux3PhatZ
+	M4UNqQIFiJPMiiqIpxYfVAk4o66yD0izDptmAk2nTEdr7/gJXgD+RbtHvnhNx60gL/ktMFOTl4DOJ
+	9ICJJpETJCgwkJ7Y7h1i8fVj9k8wvdgO4D0PiR+YjbQivPD2mpCSMyxUC0FYB+Rb9SVEhxuGRQYgf
+	EopO4L7SUc/TS2VKBgeVhs8KohCOeZVT6VXgRmiNb+DRUlTMi8Hys9XQHXvMmGYxFGOo6LkhVfkFw
+	fTK7hfwUrWCBukj4A5PsA2vCcTQyPKHvX+0KMlNtqtQt8sT66mSFa8ySngs4hqan31/BPr+fm2ysL
+	0Mp4DeAtQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jom3n-0000RY-3y; Fri, 26 Jun 2020 10:58:19 +0000
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241])
+	id 1jom9w-0001xE-7w; Fri, 26 Jun 2020 11:04:40 +0000
+Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jom3k-0000QW-Pn
- for linux-mediatek@lists.infradead.org; Fri, 26 Jun 2020 10:58:17 +0000
-Received: by mail-oi1-x241.google.com with SMTP id x83so130386oif.10
- for <linux-mediatek@lists.infradead.org>; Fri, 26 Jun 2020 03:58:16 -0700 (PDT)
+ id 1jom9p-0001tr-Ds
+ for linux-mediatek@lists.infradead.org; Fri, 26 Jun 2020 11:04:36 +0000
+Received: by mail-io1-xd43.google.com with SMTP id i25so9409224iog.0
+ for <linux-mediatek@lists.infradead.org>; Fri, 26 Jun 2020 04:04:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=TWY5ln+C0L5OKLhUHNQQA4fWR9u7spTeGdlwWwYsNjU=;
- b=Slagczj0xrrOFm1MOfsX8roJrvclPrrdjO/KQF5e43edEdSHjpLmgtD7EMUFLumA2p
- F+NlibBwsDg954zvFK2IjotKSpE3+XXnK7Swg5QkeeEPHXz1+LeywZXNegqeBuIOE8mS
- sFFhGb0+UxEkvs5krTXfHTBFTFRqmyUjqw5LA=
+ bh=R5vXuXwwtIZUfF4BfG9q9gkBaSVJwvlyD2fg0DvyG/o=;
+ b=SZIoVTB2bUsJPcvPGht36M0kNPya2OtypIUm6R/kU5idf+jHwGcKBDebxUMontdwE3
+ ucu8ImAhdYwNMIGhZBU/ejFM6SA8aC6xrI2AQao5qFzDp/WSgwiTK0sOKxLJb7WLOiGX
+ 0c7g+j1jwesG3xBx+UbJku56d/hrsWmoLjKkg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=TWY5ln+C0L5OKLhUHNQQA4fWR9u7spTeGdlwWwYsNjU=;
- b=hc5bdlHmPeP05++VDrFUBlPnLdxuU/OdhgQtCv571bioj7mvb/QnVICzqgdqrIQKEA
- vcaYYBgvyhxo4yFcvilDG7KOqvj34YwE77SVyE11duX8himdDtTCg0jDz46P/ytoiy8h
- LuOvEj9J0qu4OheFbXklDT4hHglq8O/hA0HjPeN/v3IdummQ9pqePMuJow5rl+s5Y3uo
- OIcuS2I+vpddpNpU7ZfxS/0R1l0+4VKhgsd+1onHkvyp4d+IUHOMr/PTVUF0xyQLK2Th
- uiGlnqE3ywMKoli7+uapE9b57WGLTSMgNqafpeJTLNnA1Z+1dhu+cb5Czl6MHsmgZ/Xk
- Ps3Q==
-X-Gm-Message-State: AOAM532kfzTynnOFR1qqR5qcJImQgj5xBpS1oqUNXD3tFFoCIWcw1o+A
- JBs2jF9yBhG5KrzzIopDfwEVnQ1K28SN0w==
-X-Google-Smtp-Source: ABdhPJzB6OS4MIy7FxYEhNxsUaXWLmhNbV7pXZcQs36M9K67HYVXmMOT1RHeGGDakRBrYaHMcAgM2Q==
-X-Received: by 2002:a17:90a:4f4b:: with SMTP id
- w11mr2172580pjl.11.1593158771591; 
- Fri, 26 Jun 2020 01:06:11 -0700 (PDT)
+ bh=R5vXuXwwtIZUfF4BfG9q9gkBaSVJwvlyD2fg0DvyG/o=;
+ b=Dj+UyHpaEJBvGGlEgQ84Sl0fI97Y7h59Hly9NDRLoi05dqL23+xdUUNNuUkWcVvTFZ
+ FcYUDWgNFSnETFw/+dtFs73NKE5JlwZ/SMZzcYIK8bNvzkk505rCZ7fzRADsjv/sV8vB
+ p3q9MY25CTo6J1mCdds62nXaSNiB4m0xsck6P7PKqH6toHqEW79yj/jxCTSMacIEt+ce
+ WrtLjknStcTqWf++y0yhdOdgX0PRIjpjFXLqSnOB0zBR8mzuvkMo1x4EL2nxeQevPvWo
+ QvkuTDTqk3av9MkvTHAF5hmzL3PuMd5DFghL4xNPwGk8JwsrvjyG8ysAGWe+X4VrdOms
+ tbzw==
+X-Gm-Message-State: AOAM533xDOY2sLLXILpnXFY+fAomfRsLWyqcawERZO4ph6yZfNnNqbDa
+ gNQaS4UCc7O+kZymQjd41Q6b0LLXQMnMyA==
+X-Google-Smtp-Source: ABdhPJwsPYMFNn4UtISOFCd1oyh+Vgmf6qCPkOU+H1OcttLDf70TTxwBOBUiqZwXjwu/ORDB1zroQw==
+X-Received: by 2002:a63:c58:: with SMTP id 24mr1611333pgm.343.1593158762125;
+ Fri, 26 Jun 2020 01:06:02 -0700 (PDT)
 Received: from acourbot.tok.corp.google.com
  ([2401:fa00:8f:203:93d9:de4d:e834:3086])
- by smtp.gmail.com with ESMTPSA id 137sm21809843pgg.72.2020.06.26.01.06.08
+ by smtp.gmail.com with ESMTPSA id 137sm21809843pgg.72.2020.06.26.01.05.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Jun 2020 01:06:10 -0700 (PDT)
+ Fri, 26 Jun 2020 01:06:01 -0700 (PDT)
 From: Alexandre Courbot <acourbot@chromium.org>
 To: Tiffany Lin <tiffany.lin@mediatek.com>,
  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Rui Wang <gtk_ruiwang@mediatek.com>,
  Yunfei Dong <yunfei.dong@mediatek.com>, Pi-Hsun Shih <pihsun@chromium.org>,
  Maoguang Meng <maoguang.meng@mediatek.com>
-Subject: [PATCH v2 13/18] media: mtk-vcodec: venc: use platform data for
- ENUM_FRAMESIZES
-Date: Fri, 26 Jun 2020 17:04:37 +0900
-Message-Id: <20200626080442.292309-14-acourbot@chromium.org>
+Subject: [PATCH v2 10/18] Revert "media: mtk-vcodec: Remove extra area
+ allocation in an input buffer on encoding"
+Date: Fri, 26 Jun 2020 17:04:34 +0900
+Message-Id: <20200626080442.292309-11-acourbot@chromium.org>
 X-Mailer: git-send-email 2.27.0.212.ge8ba1cc988-goog
 In-Reply-To: <20200626080442.292309-1-acourbot@chromium.org>
 References: <20200626080442.292309-1-acourbot@chromium.org>
@@ -102,70 +101,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-vidioc_enum_framesizes() assumes that all encoders support H.264 and VP8,
-which is not necessarily true and requires to duplicate information about
-the supported codecs which is already stored in the platform data.
+This reverts commit 81735ecb62f882853a37a8c157407ec4aed44fd0.
 
-Fix this by referring to the platform data to find out whether a given
-format is supported. Since the supported sizes are all the same
-regardless of the format, we can then return a copy of a static value if
-the format is supported.
+The hardware needs data to follow the previous alignment, so this extra
+space was not superfluous after all. Besides, this also made
+v4l2-compliance's G_FMT and S_FMT tests regress.
 
 Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
 ---
- .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 24 ++++++++-----------
- 1 file changed, 10 insertions(+), 14 deletions(-)
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-index 1a981d842c19..f8d4fbe927f9 100644
+index 05743a745a11..f2ba19c32400 100644
 --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
 +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-@@ -26,17 +26,9 @@
+@@ -299,12 +299,14 @@ static int vidioc_try_fmt(struct v4l2_format *f,
  
- static void mtk_venc_worker(struct work_struct *work);
+ 		pix_fmt_mp->num_planes = fmt->num_planes;
+ 		pix_fmt_mp->plane_fmt[0].sizeimage =
+-			pix_fmt_mp->width * pix_fmt_mp->height;
++				pix_fmt_mp->width * pix_fmt_mp->height +
++				((ALIGN(pix_fmt_mp->width, 16) * 2) * 16);
+ 		pix_fmt_mp->plane_fmt[0].bytesperline = pix_fmt_mp->width;
  
--static const struct mtk_codec_framesizes mtk_venc_framesizes[] = {
--	{
--		.fourcc	= V4L2_PIX_FMT_H264,
--		.stepwise = { MTK_VENC_MIN_W, MTK_VENC_MAX_W, 16,
--			      MTK_VENC_MIN_H, MTK_VENC_MAX_H, 16 },
--	},
--	{
--		.fourcc = V4L2_PIX_FMT_VP8,
--		.stepwise = { MTK_VENC_MIN_W, MTK_VENC_MAX_W, 16,
--			      MTK_VENC_MIN_H, MTK_VENC_MAX_H, 16 },
--	},
-+static const struct v4l2_frmsize_stepwise mtk_venc_framesizes = {
-+	MTK_VENC_MIN_W, MTK_VENC_MAX_W, 16,
-+	MTK_VENC_MIN_H, MTK_VENC_MAX_H, 16,
- };
- 
- #define NUM_SUPPORTED_FRAMESIZE ARRAY_SIZE(mtk_venc_framesizes)
-@@ -134,17 +126,21 @@ static int vidioc_enum_fmt(struct v4l2_fmtdesc *f,
- static int vidioc_enum_framesizes(struct file *file, void *fh,
- 				  struct v4l2_frmsizeenum *fsize)
- {
-+	const struct mtk_vcodec_enc_pdata *pdata =
-+		fh_to_ctx(fh)->dev->venc_pdata;
- 	int i = 0;
- 
- 	if (fsize->index != 0)
- 		return -EINVAL;
- 
--	for (i = 0; i < NUM_SUPPORTED_FRAMESIZE; ++i) {
--		if (fsize->pixel_format != mtk_venc_framesizes[i].fourcc)
-+	for (i = 0; i < pdata->num_capture_formats; ++i) {
-+		const struct mtk_video_fmt *fmt = &pdata->capture_formats[i];
-+
-+		if (fsize->pixel_format != fmt->fourcc)
- 			continue;
- 
- 		fsize->type = V4L2_FRMSIZE_TYPE_STEPWISE;
--		fsize->stepwise = mtk_venc_framesizes[i].stepwise;
-+		fsize->stepwise = mtk_venc_framesizes;
- 		return 0;
- 	}
- 
+ 		if (pix_fmt_mp->num_planes == 2) {
+ 			pix_fmt_mp->plane_fmt[1].sizeimage =
+-				(pix_fmt_mp->width * pix_fmt_mp->height) / 2;
++				(pix_fmt_mp->width * pix_fmt_mp->height) / 2 +
++				(ALIGN(pix_fmt_mp->width, 16) * 16);
+ 			pix_fmt_mp->plane_fmt[2].sizeimage = 0;
+ 			pix_fmt_mp->plane_fmt[1].bytesperline =
+ 							pix_fmt_mp->width;
+@@ -312,7 +314,8 @@ static int vidioc_try_fmt(struct v4l2_format *f,
+ 		} else if (pix_fmt_mp->num_planes == 3) {
+ 			pix_fmt_mp->plane_fmt[1].sizeimage =
+ 			pix_fmt_mp->plane_fmt[2].sizeimage =
+-				(pix_fmt_mp->width * pix_fmt_mp->height) / 4;
++				(pix_fmt_mp->width * pix_fmt_mp->height) / 4 +
++				((ALIGN(pix_fmt_mp->width, 16) / 2) * 16);
+ 			pix_fmt_mp->plane_fmt[1].bytesperline =
+ 				pix_fmt_mp->plane_fmt[2].bytesperline =
+ 				pix_fmt_mp->width / 2;
 -- 
 2.27.0.212.ge8ba1cc988-goog
 
