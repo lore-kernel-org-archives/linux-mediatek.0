@@ -2,104 +2,106 @@ Return-Path: <SRS0=tuDC=AH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 32633C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 11:23:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8DD65C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 11:24:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F078F206A1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 11:23:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 57C22206C0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2020 11:24:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xMMWxqfq";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="Sfk+zmSw";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="JGfM1XPb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F078F206A1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aSxjrNrj";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="QZgwZVv0";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="f8w7ucx1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 57C22206C0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0ZmTe0j0Vl5WPDFNvCyepx/hHxlClw+CCtM3puzHA2k=; b=xMMWxqfqqF9lKfR0e/PSH63wFA
-	5i0oRfUBHa690hDDYLPaOLGIxEyjDURQTH//HQppnc1px/7zWmMvk/J5sOq+9WlYXzyfU6xI5mWKR
-	ItoRP3s/H2qIxXXRa62XwD+aZjaPdUNh3UQ7xScCNoOL+pENll9JL5Aa1lZ6PwaxkuCLZwCnp6QpA
-	ngH9u3C51dBnmTz0Hk+p8l4Ihv4MYITO1BEb6u2R8mNspHLXQgxk+eM7RCL64ON20vy/luwMoZlPW
-	TKHn8eBfrA5lCQfXgkHLQ0qeTqxf8ckC2YQLNLBUzPhtU8fzLnvhZOEZoGKCX3I1lk6pIcS1G6RwZ
-	TOFmd4Iw==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=33cd0z42FihrKAosv7R13rcCBzj0mapG1E7Ga0wjAKM=; b=aSxjrNrjat3A7NhBLamxcdFkx
+	IQMyK4ogDJ/hv45NUe/vHRHgHVa1YnyunUADXyhPixICo+/+j1n57vbq9v6zwg4HmeqfHaKua+nDN
+	rc7erWtDwwJ99zZSSiU361oURTS491ztdgJL+ceff6iStqWX4oAbi39Zy6lwfqD0upZAONwEkWKTD
+	GSCHoMZQdvcjoLhK256GcBRsWXzIZghcRwdcNgBSjMdexArZNb400S2hiYZ/vUvMDOeBxYtd8smKZ
+	Sdjx3wEnZqLE1g+7BpP4ghHGW8iVK6kfsk9mKRg8J5je12H+lJW0lv1EbGo4+ne+E5pedBjB/nUvT
+	epbWi939w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jomRw-0000zz-RS; Fri, 26 Jun 2020 11:23:16 +0000
+	id 1jomT1-0001Wu-MU; Fri, 26 Jun 2020 11:24:23 +0000
 Received: from casper.infradead.org ([90.155.50.34])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jolDv-0000h7-7e
- for linux-mediatek@merlin.infradead.org; Fri, 26 Jun 2020 10:04:43 +0000
+ id 1jolEN-0000aR-4L
+ for linux-mediatek@merlin.infradead.org; Fri, 26 Jun 2020 10:05:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
- Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:In-Reply-To:References;
- bh=03vmF/xJtrW7TxKJ7ORVagTSJF1iyHBUoz7bXZv7j/M=; b=Sfk+zmSwKlPI0v/bKIRpAQrD4X
- iBDu28sThe+64aRt4sa953rJlTk7grxUQilDnx+KtOR/6+t3+rj+cAdANS2T5+E2GB58o6k/xdYkw
- 9/vOs3HKVDhz+Or56cH8Z0sY75rA/0DX9WIWOO7j4n7zPw9ve1q1x3S6JKkTatroeVgq2Dux185FO
- OO5xVgYczoHODVCvex2VMpDLLGS+82wexeIvaiE8e4KV2h7GmrTNcYPIzy9nj77pjAC1R22STn05Y
- whcP0ODAXA8Y4dyA2Ma3RQnA2WT8nF20KyeTREL12fmyOHe+Iz1W6amWLOf0CRDCq/bkF1eXkNe2L
- boo2WJkA==;
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243])
+ References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=Sui+aE36W22DqtS2fgsG54iRuVi4BhJkSmMBR5vkIvo=; b=QZgwZVv0Frk1iiHEdGmv+l0P2p
+ WiXXAShe44yI2liv6/y5oyk4EaQ2oqOWu5ouyY85xD/Xr3VxlO349aoyI4PPddjUhm4+2w87qVlBH
+ GyAzEr1c1MhEuAJpsgOzdlaacs3uUWP93bXHn9/OR56DnFGblZMc7uWXm8Si3T1bb0RMP6uigsbdh
+ AhPH+ZnxofpOKNEwJQkX+XdJ6yvMuJw9BFELNbAVAYf+Q2k8i9pNqtAJIViKsoJYnchRfiHGe1rpY
+ eyvyt0vARA//M1k7+ljKM7z9wp1FVVw1Bw68UAFPTUweWiXKT0BamEoMIhgyYUxcu/e39T4s0hcUG
+ 5UpBJe/w==;
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
  by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jol6K-0001qa-1g
- for linux-mediatek@lists.infradead.org; Fri, 26 Jun 2020 09:56:58 +0000
-Received: by mail-oi1-x243.google.com with SMTP id l63so7539945oih.13
- for <linux-mediatek@lists.infradead.org>; Fri, 26 Jun 2020 02:56:51 -0700 (PDT)
+ id 1jol0j-00080s-QA
+ for linux-mediatek@lists.infradead.org; Fri, 26 Jun 2020 09:51:13 +0000
+Received: by mail-pf1-x441.google.com with SMTP id u185so2399805pfu.1
+ for <linux-mediatek@lists.infradead.org>; Fri, 26 Jun 2020 02:51:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=03vmF/xJtrW7TxKJ7ORVagTSJF1iyHBUoz7bXZv7j/M=;
- b=JGfM1XPbikiN9aaUpji02wfEtcW3z/uTaGoNwWt4d2L+2waHQkN3RQKw8bDPMKrtra
- 3dvvTJsgEbM4dMcSxNvLWUXO0DnGMNG5Vmmjp/GyG1VZAYHYuqA27oNtV5kuDiaOM4ku
- gdO6F9b51zZZwrk5uwj5joFv/BsLmwj6609mY=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Sui+aE36W22DqtS2fgsG54iRuVi4BhJkSmMBR5vkIvo=;
+ b=f8w7ucx1BwENgxJR/Rc1pSalVXftgwFc0KkcZbAs/TcppB9xRQDLPkJNPWLBHngmxf
+ +I/rAXJjvWJX37+ZaQHg0f1px3DVH8/oo6ANHkBcm9F3LrqCUIkTvKyMC78TcLHx02lB
+ YSwHRp+hLpwilQul5ijJegqktK8N6qIeJ+TPU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=03vmF/xJtrW7TxKJ7ORVagTSJF1iyHBUoz7bXZv7j/M=;
- b=tGElJsY9szMOcJ5nbY0vk9GiAffVhC8/+qoss2ZLTjnR8qw7QElmlQqwWqoawf7api
- zx6U5jBuUk8qa9dH5I+jd3mqdC7ynTVNk3nJIBrbJZXR1bOLf5SK0nfyH8/hbeTrx1Mv
- r9dATdZOqnL599zRLqmntuDbpqhLyehs49Y6YF0k5PpzO++6yQ9u+R8xbzLd1Wr6mqi3
- FR/X1ACc1PEOa8lp0KwbJKmzR8+ooReMxRXOu6UJEAqveRRdLmaDcwm5KqemSBZRecy1
- sJmvx9/kIsQQqVKhneOp4FdBTDyRj4rRIkwjcnqGql6UcHGqB80Wgum/UC2kEA22tpTg
- JOfw==
-X-Gm-Message-State: AOAM5327bOeLZkgA2EGcZrUSAAoftSb7/Zk9jXUFs+jBfPuGDQpSW/wv
- Zc0vIJZZ2qXvgn2pq0MiUDjAUSSRF1VOtw==
-X-Google-Smtp-Source: ABdhPJzzos0vx8gDmMLPE+o8X+HuOkVKt5pQdiTIqQ6bCa8H5Mp+j4F5kBDXTyFbH4A3j1Zd0I03HQ==
-X-Received: by 2002:a17:90a:6a03:: with SMTP id
- t3mr2129478pjj.174.1593158729825; 
- Fri, 26 Jun 2020 01:05:29 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Sui+aE36W22DqtS2fgsG54iRuVi4BhJkSmMBR5vkIvo=;
+ b=JukpLsp8vFLH3Y4ymPixBfGgQ8mo7640vhlCQ190PTBPQmNNZ7RmuQhfOjsW/PFCKm
+ C8yjpfjLTuQ/EzVmlVDa8Kc/GovnT6O1mJw+Jn1F/euWCpo0icXz0rHPx4H2wGpMfWdN
+ ZnVzqmJAj3Uqj5Lt924xlI6IFNsoK7ffdGuhYmMpMXmlnNvhhNEYYUialnUuW7Ly/4Bx
+ Au5T9/pDi7Mg10gyH9lSaciogoa8izgGe+MCVY41EGaleNNRYeFX35d+hHb1vNjdeRFK
+ EA+F2Z28Dlp4nT2e83LZKVLnIa5J2jcHnbu0MCzDQg1DF/N58kTxUzNVRnPrEws4uvKR
+ dIYg==
+X-Gm-Message-State: AOAM5312ijUqmuXRwYKM1caHXLTJZuNALavRADLzdKFWdXsEN58j3Bi8
+ hpZWiHyWrDluugUiKqZb8uTRAbJenrf8LA==
+X-Google-Smtp-Source: ABdhPJzZ7MWGk9jvC+DPhRc7+KTbwzgKCEciabh8q+jgkASL1WbRsleAMj3y90vF2Ou1wTEbTB2X+Q==
+X-Received: by 2002:aa7:8dc1:: with SMTP id j1mr1625300pfr.194.1593158765373; 
+ Fri, 26 Jun 2020 01:06:05 -0700 (PDT)
 Received: from acourbot.tok.corp.google.com
  ([2401:fa00:8f:203:93d9:de4d:e834:3086])
- by smtp.gmail.com with ESMTPSA id 137sm21809843pgg.72.2020.06.26.01.05.26
+ by smtp.gmail.com with ESMTPSA id 137sm21809843pgg.72.2020.06.26.01.06.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Jun 2020 01:05:28 -0700 (PDT)
+ Fri, 26 Jun 2020 01:06:04 -0700 (PDT)
 From: Alexandre Courbot <acourbot@chromium.org>
 To: Tiffany Lin <tiffany.lin@mediatek.com>,
  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Rui Wang <gtk_ruiwang@mediatek.com>,
  Yunfei Dong <yunfei.dong@mediatek.com>, Pi-Hsun Shih <pihsun@chromium.org>,
  Maoguang Meng <maoguang.meng@mediatek.com>
-Subject: [PATCH v2 00/18] media: mtk-vcodec: venc: support for MT8183 and
- v4l2-compliance fixes
-Date: Fri, 26 Jun 2020 17:04:24 +0900
-Message-Id: <20200626080442.292309-1-acourbot@chromium.org>
+Subject: [PATCH v2 11/18] media: mtk-vcodec: venc support MIN_OUTPUT_BUFFERS
+ control
+Date: Fri, 26 Jun 2020 17:04:35 +0900
+Message-Id: <20200626080442.292309-12-acourbot@chromium.org>
 X-Mailer: git-send-email 2.27.0.212.ge8ba1cc988-goog
+In-Reply-To: <20200626080442.292309-1-acourbot@chromium.org>
+References: <20200626080442.292309-1-acourbot@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200626_105654_149794_7B76A472 
-X-CRM114-Status: GOOD (  16.39  )
+X-CRM114-CacheID: sfid-20200626_105106_195054_FF1261CB 
+X-CRM114-Status: UNSURE (   8.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,86 +120,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is the second revision of the series adding support for the MT8183 encoder
-(patches 1-9). It also fixes 9 v4l2-compliance failures (patches 10-18). Of note
-is patch 10 which reverts a previous patch that seems to have been merged by
-mistake (see https://lore.kernel.org/linux-media/CAPBb6MWuhJGq_etJN4WX0NOBXK0cA7rxVCMx70xCg7Uzmj_cMw@mail.gmail.com/T/#me1b4a97adb119c25dc79826d49746216dd94bd26).
+This control is required by v4l2-compliance for encoders. A value of 1
+should be suitable for all scenarios.
 
-As mentioned in v1's discussion, this time v4l2-compliance has been run before
-and after each patch to make sure no regressions are introduced. The latest
-v4l2-compliance does find quite a few errors on the current mainline though, and
-the second half of this series fixes several of them.
+Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-After this series the following v4l2-compliance failures remain:
-
-* VIDIOC_(TRY_)ENCODER_CMD fails because there is no support for encoder
-  commands. I have a patch fixing this but it depends on some extra refactoring
-  introduced by the decoder series (that will follow this one), so it will be
-  submitted along with it.
-* VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT also fails because one cannot subscribe to
-  the EOS event. This depends on encoder commands to be properly sent, so the
-  fix will also follow.
-
-Changes since v1:
-* Checked that no regressions against v4l2-compliance were introduced,
-* Fixed 9 failing v4l2-compliance tests,
-* Removed 1 cleanup patch of contested utility,
-* Carried Acked-bys and Reviewed-bys from mtk-vcodec maintainer.
-
-Alexandre Courbot (14):
-  media: mtk-vcodec: venc: handle firmware version field
-  media: mtk-vcodec: venc: specify bitrate range per-chip
-  media: mtk-vcodec: venc: specify supported formats per-chip
-  media: dt-bindings: mtk-vcodec: specify SCP node
-  media: dt-bindings: mtk-vcodec: document mediatek,mt8183-vcodec-enc
-  Revert "media: mtk-vcodec: Remove extra area allocation in an input
-    buffer on encoding"
-  media: mtk-vcodec: venc support MIN_OUTPUT_BUFFERS control
-  media: mtk-vcodec: venc: set OUTPUT buffers field to V4L2_FIELD_NONE
-  media: mtk-vcodec: venc: use platform data for ENUM_FRAMESIZES
-  media: mtk-vcodec: venc: support ENUM_FRAMESIZES on OUTPUT formats
-  media: mtk-vcodec: venc: support G_PARM on CAPTURE queue
-  media: mtk-vcodec: venc: make S_PARM return -ENOTTY for CAPTURE queue
-  media: mtk-vcodec: venc: set default time per frame
-  media: mtk-vcodec: venc: fix invalid time per frame in S_PARM
-
-Yunfei Dong (4):
-  media: mtk-vcodec: abstract firmware interface
-  media: mtk-vcodec: add SCP firmware ops
-  media: mtk-vcodec: venc: support SCP firmware
-  media: mtk-vcodec: add support for MT8183 encoder
-
- .../bindings/media/mediatek-vcodec.txt        |   9 +-
- drivers/media/platform/Kconfig                |   1 +
- drivers/media/platform/mtk-vcodec/Makefile    |   4 +-
- .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  53 ++--
- .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   |   1 -
- .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  38 ++-
- .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 217 ++++++++---------
- .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  | 149 ++++++++----
- .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   |   2 -
- .../media/platform/mtk-vcodec/mtk_vcodec_fw.c | 228 ++++++++++++++++++
- .../media/platform/mtk-vcodec/mtk_vcodec_fw.h |  38 +++
- .../platform/mtk-vcodec/mtk_vcodec_util.c     |   1 -
- .../platform/mtk-vcodec/vdec/vdec_h264_if.c   |   1 -
- .../platform/mtk-vcodec/vdec/vdec_vp8_if.c    |   1 -
- .../platform/mtk-vcodec/vdec/vdec_vp9_if.c    |   1 -
- .../media/platform/mtk-vcodec/vdec_drv_base.h |   2 -
- .../media/platform/mtk-vcodec/vdec_drv_if.c   |   1 -
- .../media/platform/mtk-vcodec/vdec_vpu_if.c   |  12 +-
- .../media/platform/mtk-vcodec/vdec_vpu_if.h   |  11 +-
- .../platform/mtk-vcodec/venc/venc_h264_if.c   |  80 ++++--
- .../platform/mtk-vcodec/venc/venc_vp8_if.c    |  11 +-
- .../media/platform/mtk-vcodec/venc_drv_if.c   |   1 -
- .../media/platform/mtk-vcodec/venc_drv_if.h   |   6 +
- .../media/platform/mtk-vcodec/venc_ipi_msg.h  |  24 +-
- .../media/platform/mtk-vcodec/venc_vpu_if.c   | 141 ++++++++---
- .../media/platform/mtk-vcodec/venc_vpu_if.h   |   8 +-
- 26 files changed, 760 insertions(+), 281 deletions(-)
- create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
- create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.h
-
---
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+index f2ba19c32400..f833aee4a06f 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+@@ -1206,6 +1206,8 @@ int mtk_vcodec_enc_ctrls_setup(struct mtk_vcodec_ctx *ctx)
+ 
+ 	v4l2_ctrl_handler_init(handler, MTK_MAX_CTRLS_HINT);
+ 
++	v4l2_ctrl_new_std(handler, ops, V4L2_CID_MIN_BUFFERS_FOR_OUTPUT,
++			  1, 1, 1, 1);
+ 	v4l2_ctrl_new_std(handler, ops, V4L2_CID_MPEG_VIDEO_BITRATE,
+ 			  ctx->dev->venc_pdata->min_bitrate,
+ 			  ctx->dev->venc_pdata->max_bitrate, 1, 4000000);
+-- 
 2.27.0.212.ge8ba1cc988-goog
 
 
