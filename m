@@ -1,65 +1,73 @@
-Return-Path: <SRS0=2fNz=AI=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=D54E=AJ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 14716C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jun 2020 14:12:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F828C433DF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jun 2020 14:20:12 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D0DE621852
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jun 2020 14:12:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E411220772
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jun 2020 14:20:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="A53ZTmiE";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="TfrrfsmE"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D0DE621852
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linuxfoundation.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="n4/u4ohf";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="ferf/tRh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E411220772
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1BPWG01IJBVf5rhmQXEhTVwXXdSc5MH0FYBDQ/1JdWg=; b=A53ZTmiEjFqp0ypcEfsu3upKE
-	rSL5Z7Nn2+A5dp4kREEKCK9WPz0Xk1FMgZvELsv5EKxULfkG3C3yuUFmRojYxzTCRVKQ8vipDcfdV
-	vUX76QwVMuS9mDzukvOF9DxSZ0xvcUfw9c+p6/ljSTdS/IVoc+0No9BNnwGxOq+QtTyWbAtiXiQxc
-	olx9SlHU8xWsODdk79Yvm45C5LFYfzBAOcf/Dueh3m5WuDnrlJ3yvzOlVve6l8v+2fICJKMgtBNmj
-	/OAHI1w4mslEQ3EH/Q8wCMDyFtRLOrO9PqwNkT8Vw9LDs14IanPtIDe4ObhSjk5Y49mCAg2afrWOZ
-	sclupvU6A==;
+	 bh=ntN8uaYazZD2GDSQNi58a+z2ktJrHEuDrguSPN9Wsms=; b=n4/u4ohfJ/Yjfb1xEA6CfXAhb
+	P4fcvSV4i9IMm582N3wf8RFlQKtfj7AdyPQQhImRubsl/nffWl3om9lg6yRw26U8KN9Gp3gZcvK53
+	FMERYQ1eoYmO7aaCAqZ8oAx33zguwh+x1/ekct2ZH+kPzzz+tOEWtmZOvWY0Bdme4J12ZlygrTAVE
+	w7ecJdrB/6j4Idb6uWsZ4Ib1i7dF9sJEjnCnl9vfA2FEPUYJDSRSXm7cnWLVYRiO8fbP/kK0AVtH8
+	g36bgggklyOTfwQQtlAf/OX8cvi4jfC93D3qV2W0zy7i7TYO/ByLDx8IvRiwnKvqj6yOV5zCNLrO6
+	IVJo9ZyWA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jpBZL-0003jZ-6a; Sat, 27 Jun 2020 14:12:35 +0000
+	id 1jpY9y-0000BZ-CH; Sun, 28 Jun 2020 14:19:54 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jpBZG-0003j8-HY; Sat, 27 Jun 2020 14:12:31 +0000
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ id 1jpY9r-0000B5-6f; Sun, 28 Jun 2020 14:19:48 +0000
+Received: from mail-ej1-f52.google.com (mail-ej1-f52.google.com
+ [209.85.218.52])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id AFB4C2184D;
- Sat, 27 Jun 2020 14:12:28 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id C12AF20B80;
+ Sun, 28 Jun 2020 14:19:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593267149;
- bh=Mm9Jr0Y6Toy3xKZiWCZpBQOjWvs88DP6/BkXW7NSloI=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=TfrrfsmELqDgVdyohdtQg5RGnq/X72CkFtYXD+vVAHqE8bU22zy+qL2STz3ewIsSp
- a82+ne6RpaLkVeJ5rbGMc/Yhr/6tyXaN6oAKecHhJLWOK+X4sw/UL9jgy/NSwDNSEn
- EEzmq/TNa+IF7b03gev789SKgOHxnvk12u9q00r8=
-Date: Sat, 27 Jun 2020 16:12:22 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: sean.wang@mediatek.com
-Subject: Re: [PATCH v4] tty: serial: don't do termios for BTIF
-Message-ID: <20200627141222.GC1901451@kroah.com>
-References: <78efa2b1e2599deff4d838b05b4054ec5ac2976a.1592595601.git.sean.wang@mediatek.com>
+ s=default; t=1593353984;
+ bh=FM4B6O890rOp11oQrSU4ptT/qfDOHTlolMOEiV7c7eg=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=ferf/tRhh+Cyjnbgp3+HUzWJL7BG8wJdiusxjhIetWjKuYQLl1NXBXPjmBnr3vCvh
+ dWv/o8RrX2s86NOIEDgsogfylbi+64Vl0yWbnZnSa9GCWp6fP+GaPtakZlExoeSwaZ
+ Bbc5g+ADqv3U4MT/VcWtmh/WHRGkU0jlflrDU7+E=
+Received: by mail-ej1-f52.google.com with SMTP id i14so14021353ejr.9;
+ Sun, 28 Jun 2020 07:19:43 -0700 (PDT)
+X-Gm-Message-State: AOAM533tJbFRA9cTezfPSdCk2LdIxWosV2oPHT6SxKN8y6R6iJU7ClDu
+ tIRyS1Sym3qOvUzuCZeqndZGbLJViISihy3Z7g==
+X-Google-Smtp-Source: ABdhPJyBxW8NlX1UpfAJTQrr9ECyVfuVuXvUNgqMd8hviZLwctZBgwiwnmX4TCg6/5R7MfpzaqzdROaukyvUmvcYUqY=
+X-Received: by 2002:a17:906:5fc4:: with SMTP id
+ k4mr10157244ejv.94.1593353982337; 
+ Sun, 28 Jun 2020 07:19:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <78efa2b1e2599deff4d838b05b4054ec5ac2976a.1592595601.git.sean.wang@mediatek.com>
+References: <20200616065102.15756-1-bernard@vivo.com>
+In-Reply-To: <20200616065102.15756-1-bernard@vivo.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Sun, 28 Jun 2020 22:19:31 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-yTjG7xW6MZ6NFYUDaeKCkASPP4JQPD1WTLUmOCG3muA@mail.gmail.com>
+Message-ID: <CAAOTY_-yTjG7xW6MZ6NFYUDaeKCkASPP4JQPD1WTLUmOCG3muA@mail.gmail.com>
+Subject: Re: [PATCH v2] drm/mediatek: remove unnecessary conversion to bool
+To: Bernard Zhao <bernard@vivo.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,88 +79,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, heikki.krogerus@linux.intel.com,
- david@lechnology.com, arnd@arndb.de, linux-serial@vger.kernel.org,
- Steven Liu <steven.liu@mediatek.com>, jan.kiszka@siemens.com, hpeter@gmail.com,
- linux-kernel@vger.kernel.org, tthayer@opensource.altera.com,
- Ryder Lee <ryder.lee@mediatek.com>, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, joel@jms.id.au, p.zabel@pengutronix.de,
- jslaby@suse.com, matthias.bgg@gmail.com, andriy.shevchenko@linux.intel.com,
- robert.jarzmik@free.fr, linux-arm-kernel@lists.infradead.org, vigneshr@ti.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, opensource.kernel@vivo.com,
+ David Airlie <airlied@linux.ie>, linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jun 20, 2020 at 03:59:14AM +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> Bluetooth Interface (BTIF) is designed dedicatedly for MediaTek SOC with
-> BT in order to be instead of the UART interface between BT module and Host
-> CPU, and not exported to user space to access.
-> 
-> As the UART design, BTIF will be an APB slave and can transmit or receive
-> data by MCU access, but doesn't provide termios function like baudrate and
-> flow control setup.
-> 
-> Even LCR on offset 0xC that is just a FAKELCR
-> a. If FAKELCR[7] is equaled to 1, RBR(0x00), THR(0x00), IER(0x04)
->    will not be readable/writable.
-> 
-> b. If FAKELCR is equaled to 0xBF, RBR(0x00), THR(0x00), IER(0x04),
->    IIR(0x08), and LSR(0x14) will not be readable/writable.
-> 
-> So adding a new capability 'UART_CAP_NTIO' for the unusual unsupported
-> case.
-> 
-> The bluetooth driver would use BTIF device as a serdev. So the termios
-> still function would be called in kernelspace from ttyport_open in
-> drivers/tty/serdev/serdev-ttyprt.c.
-> 
-> Fixes: 1c16ae65e250 ("serial: 8250: of: Add new port type for MediaTek BTIF controller on MT7622/23 SoC")
-> Cc: Steven Liu <steven.liu@mediatek.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> 
-> --
-> v1->v2:
-> no change on termios->c_cflag and refine commit message
-> 
-> v2->v3:
-> change the naming from NMOD to NTIO as TIO is a well established prefix
-> for termios IOCTLs.
-> 
-> v3->v4:
-> 1. remove appropriate tag
-> 2. add the explanation why the termios is required even when the connection
->    isn't exported to userspace.
-> ---
->  drivers/tty/serial/8250/8250.h      | 1 +
->  drivers/tty/serial/8250/8250_port.c | 5 ++++-
->  2 files changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/tty/serial/8250/8250.h b/drivers/tty/serial/8250/8250.h
-> index 52bb21205bb6..0d9d3bfe48af 100644
-> --- a/drivers/tty/serial/8250/8250.h
-> +++ b/drivers/tty/serial/8250/8250.h
-> @@ -82,6 +82,7 @@ struct serial8250_config {
->  #define UART_CAP_MINI	(1 << 17)	/* Mini UART on BCM283X family lacks:
->  					 * STOP PARITY EPAR SPAR WLEN5 WLEN6
->  					 */
-> +#define UART_CAP_NTIO	(1 << 18)	/* UART doesn't do termios */
-
-Naming is hard.  I will never remember what "NTIO" is, how about we make
-it explicit:
-	define UART_CAP_IGNORE_TERMIOS
-
-And the _CAP_ name is getting out of hand, this isn't a "capability",
-it's a "quirk for this port" but that's a battle to worry about later...
-
-thanks,
-
-greg k-h
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEJlcm5hcmQ6CgpCZXJuYXJkIFpoYW8gPGJlcm5hcmRAdml2by5jb20+IOaWvCAyMDIw5bm0
+NuaciDE25pelIOmAseS6jCDkuIvljYgyOjUx5a+r6YGT77yaCj4KPiBJbiBmdW5jdGlvbiBtdGtf
+ZHNpX2Nsa19oc19zdGF0ZSwgcmVtb3ZlIHVubmVjZXNzYXJ5IGNvbnZlcnNpb24KPiB0byBib29s
+IHJldHVybiwgdGhpcyBjaGFuZ2UgaXMgdG8gbWFrZSB0aGUgY29kZSBhIGJpdCByZWFkYWJsZS4K
+CkFwcGxpZWQgdG8gbWVkaWF0ZWstZHJtLWZpeGVzIFsxXSwgdGhhbmtzLgoKWzFdIGh0dHBzOi8v
+Z2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L2NodW5rdWFuZy5odS9saW51
+eC5naXQvbG9nLz9oPW1lZGlhdGVrLWRybS1maXhlcwoKUmVnYXJkcywKQ2h1bi1LdWFuZy4KCj4K
+PiBTaWduZWQtb2ZmLWJ5OiBCZXJuYXJkIFpoYW8gPGJlcm5hcmRAdml2by5jb20+Cj4gLS0tCj4g
+Q2hhbmdlcyBzaW5jZSBWMToKPiAqb3B0aW1pemUgdG8gbWFrZSB0aGUgY29kZSBhIGJpdCBtb3Jl
+IGNsZWFyLgo+Cj4gTGluayBmb3IgVjE6Cj4gKmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3BhdGNo
+d29yay9wYXRjaC8xMjU1MzI3Lwo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RzaS5jIHwgNSArLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDQgZGVs
+ZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+c2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiBpbmRleCA0NDkxZTY0
+YjNmMDYuLjg0MGNjOWI5ZWZjOCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RzaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+
+IEBAIC0zMTYsMTAgKzMxNiw3IEBAIHN0YXRpYyB2b2lkIG10a19kc2lfbGFuZTBfdWxwX21vZGVf
+bGVhdmUoc3RydWN0IG10a19kc2kgKmRzaSkKPgo+ICBzdGF0aWMgYm9vbCBtdGtfZHNpX2Nsa19o
+c19zdGF0ZShzdHJ1Y3QgbXRrX2RzaSAqZHNpKQo+ICB7Cj4gLSAgICAgICB1MzIgdG1wX3JlZzE7
+Cj4gLQo+IC0gICAgICAgdG1wX3JlZzEgPSByZWFkbChkc2ktPnJlZ3MgKyBEU0lfUEhZX0xDQ09O
+KTsKPiAtICAgICAgIHJldHVybiAoKHRtcF9yZWcxICYgTENfSFNfVFhfRU4pID09IDEpOwo+ICsg
+ICAgICAgcmV0dXJuIChyZWFkbChkc2ktPnJlZ3MgKyBEU0lfUEhZX0xDQ09OKSAmIExDX0hTX1RY
+X0VOKTsKPiAgfQo+Cj4gIHN0YXRpYyB2b2lkIG10a19kc2lfY2xrX2hzX21vZGUoc3RydWN0IG10
+a19kc2kgKmRzaSwgYm9vbCBlbnRlcikKPiAtLQo+IDIuMTcuMQo+CgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxp
+c3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
