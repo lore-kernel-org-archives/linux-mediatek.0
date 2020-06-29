@@ -2,164 +2,91 @@ Return-Path: <SRS0=EINh=AK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1300BC433E1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 10:29:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 23083C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 10:30:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C886523884
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 10:29:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E304A20672
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 10:30:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GCiTDqhk";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="GSFp18a4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C886523884
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aH+k1iTb";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="GryIZOgw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E304A20672
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=R3vcBSNAyYlvIaD6n997Ai1v0ZMj2WlXwrPL1QLiLgM=; b=GCiTDqhkQ574VutHqqSJNvITy
-	uyoMcUtJuJIj+tgHNcGak9xQn2BrZQA4kY2sMbaOk/UpLqMtdNFJbmzKH41IEIaaN6/TPIeOhpC3J
-	EItAzWjPesflQV2Qx+jL3MQ+X4xGD2MA87o9ZdgHkmLyf6Z3KzfT5ERctLeZcwV9ELPo8KMqbGy+Z
-	deafQX0kVVBE3MUbyLyqze6GgzL8Pqg4M7ySO2+PmchhPLnLic3/gWDaYN5q7NB6fSjlZy7fQ+nuU
-	n/HzpvJdwRO/A4PTg1iflyTfsq9de/Rv4TJ2Re+VQ2MDbxhO15SvBWKREevxFMAbxptOxCoKIdkOb
-	VSxRcA3kA==;
+	 bh=ckQnnEGZK2TmjXtyFhkAYK7e5M4szS7YP+LeS6bR5AQ=; b=aH+k1iTbtY1uqwfKAnNvAFqBZ
+	h3IWbaY+Mz2cu/jgE84BiZd8GHJlY1KVDNoAMaiY+QpnIPBqLzKUDuG458VwdHuxRs8CXUgF4WWfF
+	xzQ6C/ftj8sjVyFlCqoi9TP/Ap4JjzsEj8xLoOzZsiGjdnWgAeCMEeHkQv+C4OrYDUTskikcp6rVq
+	1XiuAtKIb35IWOEDoel4dAyg5ao4kfpfVnEhHQvn5rV4WxuRN93tPaUhQyxbo8OZRezLuTC2SvKAg
+	Jl8oM2MUZJ7uDUpwiO3W3CMZIN8f3sv4WJtZJp52R1aYS/TFqda/UtI+MdtqO4mcJ4rwXaSJMYhl9
+	Dp/U2RQGA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jpr2B-0007Sx-Tm; Mon, 29 Jun 2020 10:29:08 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1jpr36-0007kP-Ox; Mon, 29 Jun 2020 10:30:04 +0000
+Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jpr2A-0007SP-18; Mon, 29 Jun 2020 10:29:06 +0000
-Received: by mail-wm1-x342.google.com with SMTP id 22so14864565wmg.1;
- Mon, 29 Jun 2020 03:29:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=qH6Y8YLZwAQKLLRKt9UlLI5PhgjXpInExIUsMf3zs/o=;
- b=GSFp18a4hT5psZ9d8iFlr7YHTQNN/uaOedWpgXDQv+7mlKvAw6asJKa32R40OpfaMf
- hv2T5ZHWIbB9k9zuHCDP9iiGquaQKgVr0DLXOql0cyfd2epFcGLg8BRAd1n7hwf10RiJ
- lbzodLDjKyVSyc7cGQv5cz1dUY9WXuTeoFKkTv3ZrH7XUA6+favrTFrmilo50o4zOkmL
- hFLYPfHFlae3s9QWPCjqVuVH8Z8+Qn9bIlZ4TldVizer95x84pYlT1yyjW5ya9R4Z5DV
- HO4wHux13wlISSavurvQrdkpg1Mis9bSyNHhqUaujc+7dpISt1pnF6FstLoecVsEt3FO
- OvVQ==
+ id 1jpr34-0007jB-AM
+ for linux-mediatek@lists.infradead.org; Mon, 29 Jun 2020 10:30:03 +0000
+Received: by mail-ej1-x641.google.com with SMTP id w6so16038885ejq.6
+ for <linux-mediatek@lists.infradead.org>; Mon, 29 Jun 2020 03:30:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=PhguteWn+BNL2rOz+hmBG6LMc95B72qiCMa6M5a1mog=;
+ b=GryIZOgwWXWQdlINYt+x/02V6RsfowLZwhA3TrXCr0kgs/XolUBKkiYBVjZIeZVq6U
+ B0A+U5FpFXsT10NBtK+1s80jnmBYvKFrjgCI6zXkQLKW1c9oDO0LQ4FLIsfYd0rfHVAx
+ jfAXF26rS6rgbwq+ioEFJHVIJaG2W8rmmHqW4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=qH6Y8YLZwAQKLLRKt9UlLI5PhgjXpInExIUsMf3zs/o=;
- b=XyVHUSeaYWT+13xIS2yECCvrvt/hLDRenYTwez3XlBeUMsaMsv8ds0F/sI5B8YgPZp
- aEDroNHVrZO8BCXa0y9uwjdWnOCtX8gHWk+xZi2ZaEV9/S+cCeJIjXEopqm3n07KxyUk
- iUL5XFHTpG6C2KMlRsD5XZGPx2fU3HQ1BCe7zV+FtFBgEW5pezB0pk/RbARr1FVqwccM
- 2fFD/IJZeKyQbCJUxec878xc/wG6rQfKP2B494g1jO3xHrmqXDVSMdzGlQ8RyAsDF15C
- 7aD9RdlOSfCQjrQe75n7e2ui+PvF6s2ZacWiplT4as9bRTEJLRKm50NmCS0dPgsB/XZ9
- 1SUw==
-X-Gm-Message-State: AOAM532vwbIPi0iRfwJlBzIuc7FKySHVtbAkhh2NNdtKMItq8F7Z+n7b
- E76xBbIvoEGkgvzppVJ5jik=
-X-Google-Smtp-Source: ABdhPJytODh0+QP7ijQ6hjMmEjsy1PHRom3lDtvr4XIcC8w/ihO7g7oh0Lhdq/WJBRPTYdj5pOzqgQ==
-X-Received: by 2002:a1c:b6c3:: with SMTP id
- g186mr16692459wmf.135.1593426545193; 
- Mon, 29 Jun 2020 03:29:05 -0700 (PDT)
-Received: from ziggy.stardust ([213.195.114.138])
- by smtp.gmail.com with ESMTPSA id c5sm27819182wmb.24.2020.06.29.03.29.04
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PhguteWn+BNL2rOz+hmBG6LMc95B72qiCMa6M5a1mog=;
+ b=qqEM3d1+4brVtCKuTOrr6JZlWE6+2xUxBL2nybff+Mpa1mBeKVoUE+/kv1nDrB3J5c
+ RCCovgzvJl2aoPZg5qD861xXqhr0tUv75R1pHje4yuXmCXcgqioYBR/WnRabp936TQXD
+ cH5ndUQKDe7Zyu/6cNNhI+fLTNZDkmGufxco9HnQYgu+trqJED8m/64/vmiBD9Qi7OV2
+ O1Tq+niwCvlifwDMeR2cMiDU1vQROkP+SeS4NRTfV96yKQiBvaee75AigUDhkh69MTqs
+ 73NrLT+M03rmDMHcl+FvK7iZNb60YDGrA0zhpz+PJRTMx3zpsdOPJeMHtKA0IvbURcYL
+ QMKw==
+X-Gm-Message-State: AOAM533gYMwmtlCPnSkdFqj/TQ5S+PTkCBuyydJS6CVtepTbpAYy9zVr
+ TF67EMz7YCdfEuCehloks8XVrP53EKSMYQ==
+X-Google-Smtp-Source: ABdhPJzQDEjkV1ZKDv4KviJUCB4D/e01GBzKs5+q/cQ/lxXSI7e83OQ8ArS7y2F278fWpctOOzXYjw==
+X-Received: by 2002:a17:906:f49:: with SMTP id
+ h9mr13995060ejj.155.1593426600944; 
+ Mon, 29 Jun 2020 03:30:00 -0700 (PDT)
+Received: from mail-ej1-f52.google.com (mail-ej1-f52.google.com.
+ [209.85.218.52])
+ by smtp.gmail.com with ESMTPSA id o14sm13985292eja.121.2020.06.29.03.30.00
+ for <linux-mediatek@lists.infradead.org>
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Jun 2020 03:29:04 -0700 (PDT)
-Subject: Re: [PATCH v5 10/10] iommu/mediatek: Add mt6779 basic support
-To: Chao Hao <chao.hao@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Rob Herring <robh+dt@kernel.org>
-References: <20200629071310.1557-1-chao.hao@mediatek.com>
- <20200629071310.1557-11-chao.hao@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <e1654652-85a9-0e30-df60-eee0957331d7@gmail.com>
-Date: Mon, 29 Jun 2020 12:29:03 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ Mon, 29 Jun 2020 03:30:00 -0700 (PDT)
+Received: by mail-ej1-f52.google.com with SMTP id w16so16040142ejj.5
+ for <linux-mediatek@lists.infradead.org>; Mon, 29 Jun 2020 03:30:00 -0700 (PDT)
+X-Received: by 2002:adf:80e6:: with SMTP id 93mr15866385wrl.17.1593426145911; 
+ Mon, 29 Jun 2020 03:22:25 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200629071310.1557-11-chao.hao@mediatek.com>
-Content-Language: en-US
+References: <20200615122937.18965-1-dongchun.zhu@mediatek.com>
+ <20200615122937.18965-3-dongchun.zhu@mediatek.com>
+ <20200618191026.GA73379@chromium.org>
+ <1592639284.8804.712.camel@mhfsdcap03> <20200622152350.GB260716@chromium.org>
+ <1593412218.17166.3.camel@mhfsdcap03>
+In-Reply-To: <1593412218.17166.3.camel@mhfsdcap03>
+From: Tomasz Figa <tfiga@chromium.org>
+Date: Mon, 29 Jun 2020 12:22:14 +0200
+X-Gmail-Original-Message-ID: <CAAFQd5Bi+Dh85Wz5q4RMGQvKw3aHFWWgypKsNukg_MwF4_ceCw@mail.gmail.com>
+Message-ID: <CAAFQd5Bi+Dh85Wz5q4RMGQvKw3aHFWWgypKsNukg_MwF4_ceCw@mail.gmail.com>
+Subject: Re: [PATCH V10 2/2] media: i2c: ov02a10: Add OV02A10 image sensor
+ driver
+To: Dongchun Zhu <dongchun.zhu@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -171,83 +98,112 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, FY Yang <fy.yang@mediatek.com>,
- wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
- Evan Green <evgreen@chromium.org>, iommu@lists.linux-foundation.org,
- linux-mediatek@lists.infradead.org, Yong Wu <yong.wu@mediatek.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ linux-devicetree <devicetree@vger.kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?B?U2hlbmduYW4gV2FuZyAo546L5Zyj55S3KQ==?= <shengnan.wang@mediatek.com>,
+ Louis Kuo <louis.kuo@mediatek.com>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
+ Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Jun 29, 2020 at 8:30 AM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
+>
+> Hi Tomasz,
+>
+> Thanks for the review.
+>
+> On Mon, 2020-06-22 at 15:23 +0000, Tomasz Figa wrote:
+> > On Sat, Jun 20, 2020 at 03:48:04PM +0800, Dongchun Zhu wrote:
+> > > Hi Tomasz,
+> > >
+> > > Thanks for the review.
+> > >
+> > > On Thu, 2020-06-18 at 19:10 +0000, Tomasz Figa wrote:
+> > > > Hi Dongchun,
+> > > >
+> > > > On Mon, Jun 15, 2020 at 08:29:37PM +0800, Dongchun Zhu wrote:
+> > > > > Add a V4L2 sub-device driver for OV02A10 image sensor.
+> > > > >
+> > > > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > > > > ---
+> > > > >  MAINTAINERS                 |    1 +
+> > > > >  drivers/media/i2c/Kconfig   |   13 +
+> > > > >  drivers/media/i2c/Makefile  |    1 +
+> > > > >  drivers/media/i2c/ov02a10.c | 1042 +++++++++++++++++++++++++++++++++++++++++++
+> > > > >  4 files changed, 1057 insertions(+)
+> > > > >  create mode 100644 drivers/media/i2c/ov02a10.c
+> > > > >
+> > > >
+> > > > Thank you for the patch. Please see my comments inline.
+> > > >
+> > > > [snip]
+> > > > > +static int ov02a10_set_fmt(struct v4l2_subdev *sd,
+> > > > > +                          struct v4l2_subdev_pad_config *cfg,
+> > > > > +                          struct v4l2_subdev_format *fmt)
+> > > > > +{
+> > > > > +       struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > > > > +       struct v4l2_mbus_framefmt *mbus_fmt = &fmt->format;
+> > > > > +
+> > > > > +       mutex_lock(&ov02a10->mutex);
+> > > > > +
+> > > > > +       if (ov02a10->streaming) {
+> > > > > +               mutex_unlock(&ov02a10->mutex);
+> > > > > +               return -EBUSY;
+> > > > > +       }
+> > > > > +
+> > > > > +       /* Only one sensor mode supported */
+> > > > > +       mbus_fmt->code = ov02a10->fmt.code;
+> > > > > +       ov02a10_fill_fmt(ov02a10->cur_mode, mbus_fmt);
+> > > > > +       ov02a10->fmt = fmt->format;
+> > > > > +
+> > > > > +       if (fmt->which == V4L2_SUBDEV_FORMAT_TRY)
+> > > > > +               *v4l2_subdev_get_try_format(sd, cfg, fmt->pad) = fmt->format;
+> > > >
+> > > > If fmt->which is V4L2_SUBDEV_FORMAT_TRY, the internal driver state must not
+> > > > be affected. It also should not depend on whether the sensor is streaming
+> > > > or not. Basically it should be considered a special "candidate" format,
+> > > > which isn't programmed to the hardware, but just stored aside.
+> > > >
+> > >
+> > > Hmm. Maybe we shall use FORMAT_TRY like this:
+> > > struct v4l2_mbus_framefmt *frame_fmt;
+> > > ...
+> > > if (fmt->which == V4L2_SUBDEV_FORMAT_TRY)
+> > >     frame_fmt = v4l2_subdev_get_try_format(sd, cfg, 0);
+> > > else
+> > >     frame_fmt = &ov02a10->fmt;
+> > >
+> > > *frame_fmt = *mbus_fmt;
+> > >
+> > > (Remove 'ov02a10->fmt = fmt->format;' above)
+> > >
+> >
+> > Yes, I guess that should work. Also the ov02a10->streaming condition
+> > shouldn't be checked if fmt->which is V4L2_SUBDEV_FORMAT_TRY).
+> >
+>
+> Maybe we shall use more strict condition to check streaming state:
+> 'if (ov02a10->streaming)' --> 'if (ov02a10->streaming && fmt->which ==
+> V4L2_SUBDEV_FORMAT_ACTIVE)'
 
+Yes, that should work.
 
-On 29/06/2020 09:13, Chao Hao wrote:
-> 1. Start from mt6779, INVLDT_SEL move to offset=0x2c, so we add
->    REG_MMU_INV_SEL_GEN2 definition and mt6779 uses it.
-> 2. Add mt6779_data to support mm_iommu HW init.
-> 
-> Cc: Yong Wu <yong.wu@mediatek.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Signed-off-by: Chao Hao <chao.hao@mediatek.com>
-
-Reviewed by: Matthias Brugger <matthias.bgg@gmail.com>
-
-> ---
->  drivers/iommu/mtk_iommu.c | 11 +++++++++++
->  drivers/iommu/mtk_iommu.h |  1 +
->  2 files changed, 12 insertions(+)
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index e46e2deee3fd..1575196d9cd5 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -37,6 +37,7 @@
->  #define REG_MMU_INVLD_START_A			0x024
->  #define REG_MMU_INVLD_END_A			0x028
->  
-> +#define REG_MMU_INV_SEL_GEN2			0x02c
->  #define REG_MMU_INV_SEL_GEN1			0x038
->  #define F_INVLD_EN0				BIT(0)
->  #define F_INVLD_EN1				BIT(1)
-> @@ -798,6 +799,15 @@ static const struct mtk_iommu_plat_data mt2712_data = {
->  	.larbid_remap = {{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}},
->  };
->  
-> +static const struct mtk_iommu_plat_data mt6779_data = {
-> +	.m4u_plat      = M4U_MT6779,
-> +	.flags         = HAS_SUB_COMM |
-> +			 OUT_ORDER_EN |
-> +			 WR_THROT_EN,
-> +	.inv_sel_reg   = REG_MMU_INV_SEL_GEN2,
-> +	.larbid_remap  = {{0}, {1}, {2}, {3}, {5}, {7, 8}, {10}, {9}},
-> +};
-> +
->  static const struct mtk_iommu_plat_data mt8173_data = {
->  	.m4u_plat     = M4U_MT8173,
->  	.flags	      = HAS_4GB_MODE |
-> @@ -816,6 +826,7 @@ static const struct mtk_iommu_plat_data mt8183_data = {
->  
->  static const struct of_device_id mtk_iommu_of_ids[] = {
->  	{ .compatible = "mediatek,mt2712-m4u", .data = &mt2712_data},
-> +	{ .compatible = "mediatek,mt6779-m4u", .data = &mt6779_data},
->  	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
->  	{ .compatible = "mediatek,mt8183-m4u", .data = &mt8183_data},
->  	{}
-> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> index ce4f4e8f03aa..a080db2e8a93 100644
-> --- a/drivers/iommu/mtk_iommu.h
-> +++ b/drivers/iommu/mtk_iommu.h
-> @@ -43,6 +43,7 @@ struct mtk_iommu_suspend_reg {
->  enum mtk_iommu_plat {
->  	M4U_MT2701,
->  	M4U_MT2712,
-> +	M4U_MT6779,
->  	M4U_MT8173,
->  	M4U_MT8183,
->  };
-> 
+Best regards,
+Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
