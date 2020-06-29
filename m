@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2EA0CC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 12:05:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ECB80C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 12:05:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F362D23D21
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 12:05:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B898723B06
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 12:05:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ui+iWnpE";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="Lju5246x"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F362D23D21
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WRZYl4HH";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="OjFhA1dn"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B898723B06
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bgdev.pl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7dIGonxH+YL7VzAJ8xGTjdztDl8lbGzL/iPWn7KoBbE=; b=Ui+iWnpEziWrFxfTLLIgHJnW2
-	qUn/VR30ZqQvxSsc2Ece339yj3Y7fD1XZEsfbwLzx7A0+QRNn0F/BEu+Mghr+UGelT/nCYUzM/TTa
-	uF6Jh+gjcZx1GWF+5l8EEYefpRf6n9I7bDM1hcq9E1c61Cz5KUdMC/cQK9rpSj3gh/2T/hVu3hNOX
-	fKnA+iL5g8Y+/GcgzghXX3OH+1wQ0fLci/OXToJzrcWASASapTkipZcrPOnY2pbt7egz9wofBQMd4
-	MPjrz5FkgErFVTU2tQxkCTN+XhKXn0XwLO6CmxMfugLBoV2111U5osaQ6CbAv5Wz2E4md1Z9M8iy3
-	yVv0+dkbQ==;
+	 bh=TfPtl1pWoU6IeMJWOxmjHJtCC2btEy1KtujUHh+6pIs=; b=WRZYl4HHtJseq2cHAFetq62Mt
+	n1hWbVLFzZxW+h5ZgNsXaobAUwfcxxW4ouhuaAm8ifGVK/eZP+voRNluhSRmhx3lqHfRXqRJzJZLi
+	z7AgqO3xr1ZCKB/bndb0NfcvGEJIdnkQCJTYfztT/Sn3Z8aSO1qgPBVE3emRjsjb0ALRXcgrjlnJs
+	z+aL3nL70Iprb/7u//SnJba9F3KUpHDoqxkq5HKZfcEfre98bM9vk1AvZ4ZYV+TlqHMC0Zv+eGjDm
+	Xa6i9bNU/LwQWong/iiStPVVDkg0vzdoZfayFX2DQKAad5mWG3kfyiW+Ood+MkVqnf0O/tyX4yTvT
+	TnRVssVMQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jpsXI-00009w-T5; Mon, 29 Jun 2020 12:05:20 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1jpsXU-0000O3-Ki; Mon, 29 Jun 2020 12:05:32 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jpsWO-00086K-SF
- for linux-mediatek@lists.infradead.org; Mon, 29 Jun 2020 12:04:27 +0000
-Received: by mail-wm1-x341.google.com with SMTP id 22so15124632wmg.1
- for <linux-mediatek@lists.infradead.org>; Mon, 29 Jun 2020 05:04:24 -0700 (PDT)
+ id 1jpsWQ-00086d-7z
+ for linux-mediatek@lists.infradead.org; Mon, 29 Jun 2020 12:04:30 +0000
+Received: by mail-wr1-x441.google.com with SMTP id h5so16261321wrc.7
+ for <linux-mediatek@lists.infradead.org>; Mon, 29 Jun 2020 05:04:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=eg4utbhrf/3v6wZhuPotuFpmqRh7IC4ZAOzFVoP+DSU=;
- b=Lju5246xETI3n7x5ApaA2zIYYyPdv7uL89+PkXu5UmfdDnoJt/A+1kV4EnWbvWHsfT
- U0KiDkQo2C6/d8Ee7wMfJSSmn58uoqIdNiTjX8Hz5nTHyctnp2RJTz/wtYYsoJ+dtuhV
- XjmJm2KbsyS/VgCkUtqgfIB2Q8m9h6+TRtPh688uJ2bkMEAzy6TyrNqZ5+p0Jq6QQPRe
- TpitUFUM90jHaT+neQCa+q1jY5kpWoCkFluHE4al/HsV1lisaXYbrRjufnYUNHF7JcYD
- MtPNLz8KCHYZnMSa1RhX8WtsifRsmdGJ5BQYv8xh4yMTTQv22xrYgZ/0nqbMjj7pN0qH
- WHeg==
+ bh=eVmQOBvXDEaCTQLZaTTLEM9yQEsfq0hXc2Ftz5NNRNk=;
+ b=OjFhA1dnSrFI1gIICDBzM2SLLegg0XEeK2w3+ih4lI+BQ9GqcJIYdUku4UBlwpSaRZ
+ oWeFaIwiKUGZrfqHnMCp9dhJCf92zn+eTig0GGSBlC3KsWknJDmoO6tgZILVJZUcl+yC
+ QmWi46Gfv5bIDFKLrFhkdsZRMQrJ6P6qJpFqKDDhSzEAk71TG51e5m7PqmRxSF0IaqCc
+ lK9LD+XqZqQRHrKSXKSdHC/hs9aTw8jxruL4o0utD0y5ZWsfoLkJ7uHtuUFgXQu8el/Z
+ IZFO4cHhlix+pszDjPZAgsLlvEXWJMjb1djS9n8VbDBxifgDwWlHj5nio1tnagKzkQpq
+ nW+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=eg4utbhrf/3v6wZhuPotuFpmqRh7IC4ZAOzFVoP+DSU=;
- b=fEQZheIeKhx2xZd6it6+tcIym3odXbRnzhzg3fZfohvpg9vvYMC3/v+RQ7IN3GkC2n
- +umfpdhl/Y1VnwE/LyCxBIXiKsDnsdgpxYd7wiVnXpicreJlQwysVkgtAeAqh1qMSAol
- /0vU4T+3usHIl97+mEfLkKWlbtAw3EdhcKWglHjAWNOx8IQGmXeb7szB6wQUlM93EW4N
- jw3FHH1NRdgIgQlH/WBXOIm2A+FsACw9lM/gFSVcdFGnNTrnG9B/bxCuDevpzc8ypnRa
- r8JmGTJ8gRUfqeTBKSIYyC4bSWg+UGSUieX+69jYi6DtRW18HM3vTTLFgzUgH9/oiwWf
- C/ZA==
-X-Gm-Message-State: AOAM5308OoK07zvw00/YYzkEXr5g6DT5/Q6Hnx/nXK7nGjUsZ4f3pcJl
- aotSntAj6eiD/3X6ZoSbb+5GFg==
-X-Google-Smtp-Source: ABdhPJyyXNydd+nOMTGEVlBmI0TP9I7QgzsG5vIU8vPWhBARI6Y2TnNfIwesmyvIGRb47dVl+VGcrA==
-X-Received: by 2002:a7b:c3d0:: with SMTP id t16mr17776997wmj.117.1593432263901; 
- Mon, 29 Jun 2020 05:04:23 -0700 (PDT)
+ bh=eVmQOBvXDEaCTQLZaTTLEM9yQEsfq0hXc2Ftz5NNRNk=;
+ b=PE05FvxZpUIP2FClA6ahHFdt8jgacafNYenNq7pQOeTxS0+qU22C7yUKUf5YWgSQm2
+ lnlrI1hiCXnMAOUsIIdbczgaFIU5SUdAOegiFu1px/1ouoM20TtW4FJlxOKgWlJGeCeN
+ h2r1FeipEEKnn4IKNGhhbjjS0K5CtS7i2q6PWM2z0eCwQXPMXRSUZW23+ImeZpxmFy0y
+ M7RQ/n0+S4/OZFAGvq9esqT8PWgJxo7qk1s9uB+yxk6dMX3aP5mN/9ds5UFW5fLQlG9b
+ KM4wjQ+7Z+Yyq9Zb5maeqoK3p0d3s54zKgxt+6sHenek/J3wVtQaREVSdOVQXstksFjF
+ 835Q==
+X-Gm-Message-State: AOAM530JNhV7GfX6iaT3kyIVGa1NIMsOuZwfq7DqNM/fynWfKH9AUA4B
+ v44MokBgCLSAU9eEwzPYJMr1Ew==
+X-Google-Smtp-Source: ABdhPJygWkINqtaUiia5EDfNIDWDJjLM7/a2wl0W+j+uTircW3QIDYx940S5jXAlZA8pQbi4TXQ8rw==
+X-Received: by 2002:adf:84e2:: with SMTP id 89mr17420797wrg.139.1593432265315; 
+ Mon, 29 Jun 2020 05:04:25 -0700 (PDT)
 Received: from localhost.localdomain (lfbn-nic-1-65-232.w2-15.abo.wanadoo.fr.
  [2.15.156.232])
- by smtp.gmail.com with ESMTPSA id d81sm25274347wmc.0.2020.06.29.05.04.22
+ by smtp.gmail.com with ESMTPSA id d81sm25274347wmc.0.2020.06.29.05.04.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 29 Jun 2020 05:04:23 -0700 (PDT)
+ Mon, 29 Jun 2020 05:04:24 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
 To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
  "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
@@ -83,10 +83,9 @@ To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
  Florian Fainelli <f.fainelli@gmail.com>,
  Russell King <linux@armlinux.org.uk>, Rob Herring <robh+dt@kernel.org>,
  Frank Rowand <frowand.list@gmail.com>
-Subject: [PATCH v2 08/10] of: mdio: remove the 'extern' keyword from function
- declarations
-Date: Mon, 29 Jun 2020 14:03:44 +0200
-Message-Id: <20200629120346.4382-9-brgl@bgdev.pl>
+Subject: [PATCH v2 09/10] of: mdio: provide devm_of_mdiobus_register()
+Date: Mon, 29 Jun 2020 14:03:45 +0200
+Message-Id: <20200629120346.4382-10-brgl@bgdev.pl>
 X-Mailer: git-send-email 2.26.1
 In-Reply-To: <20200629120346.4382-1-brgl@bgdev.pl>
 References: <20200629120346.4382-1-brgl@bgdev.pl>
@@ -112,64 +111,124 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 
-The 'extern' keyword in headers doesn't have any benefit. Remove them
-all from the of_mdio.h header.
+Implement a managed variant of of_mdiobus_register(). We need to make
+mdio_devres into its own module because otherwise we'd hit circular
+sumbol dependencies between phylib and of_mdio.
 
 Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 ---
- include/linux/of_mdio.h | 37 ++++++++++++++++++-------------------
- 1 file changed, 18 insertions(+), 19 deletions(-)
+ .../driver-api/driver-model/devres.rst        |  1 +
+ drivers/net/phy/Makefile                      |  4 +-
+ drivers/net/phy/mdio_devres.c                 | 37 +++++++++++++++++++
+ include/linux/of_mdio.h                       |  3 ++
+ 4 files changed, 44 insertions(+), 1 deletion(-)
 
+diff --git a/Documentation/driver-api/driver-model/devres.rst b/Documentation/driver-api/driver-model/devres.rst
+index e0333d66a7f4..eaaaafc21134 100644
+--- a/Documentation/driver-api/driver-model/devres.rst
++++ b/Documentation/driver-api/driver-model/devres.rst
+@@ -343,6 +343,7 @@ MDIO
+   devm_mdiobus_alloc()
+   devm_mdiobus_alloc_size()
+   devm_mdiobus_register()
++  devm_of_mdiobus_register()
+ 
+ MEM
+   devm_free_pages()
+diff --git a/drivers/net/phy/Makefile b/drivers/net/phy/Makefile
+index 896afdcac437..c9a9adf194d5 100644
+--- a/drivers/net/phy/Makefile
++++ b/drivers/net/phy/Makefile
+@@ -3,7 +3,8 @@
+ 
+ libphy-y			:= phy.o phy-c45.o phy-core.o phy_device.o \
+ 				   linkmode.o
+-mdio-bus-y			+= mdio_bus.o mdio_device.o mdio_devres.o
++mdio-bus-y			+= mdio_bus.o mdio_device.o
++mdio-devres-y			+= mdio_devres.o
+ 
+ ifdef CONFIG_MDIO_DEVICE
+ obj-y				+= mdio-boardinfo.o
+@@ -17,6 +18,7 @@ libphy-y			+= $(mdio-bus-y)
+ else
+ obj-$(CONFIG_MDIO_DEVICE)	+= mdio-bus.o
+ endif
++obj-$(CONFIG_MDIO_DEVICE)	+= mdio-devres.o
+ libphy-$(CONFIG_SWPHY)		+= swphy.o
+ libphy-$(CONFIG_LED_TRIGGER_PHY)	+= phy_led_triggers.o
+ 
+diff --git a/drivers/net/phy/mdio_devres.c b/drivers/net/phy/mdio_devres.c
+index 0b9bd9a61378..b560e99695df 100644
+--- a/drivers/net/phy/mdio_devres.c
++++ b/drivers/net/phy/mdio_devres.c
+@@ -1,6 +1,7 @@
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ #include <linux/device.h>
++#include <linux/of_mdio.h>
+ #include <linux/phy.h>
+ #include <linux/stddef.h>
+ 
+@@ -94,3 +95,39 @@ int __devm_mdiobus_register(struct device *dev, struct mii_bus *bus,
+ 	return 0;
+ }
+ EXPORT_SYMBOL(__devm_mdiobus_register);
++
++#if IS_ENABLED(CONFIG_OF_MDIO)
++/**
++ * devm_of_mdiobus_register - Resource managed variant of of_mdiobus_register()
++ * @dev:	Device to register mii_bus for
++ * @mdio:	MII bus structure to register
++ * @np:		Device node to parse
++ */
++int devm_of_mdiobus_register(struct device *dev, struct mii_bus *mdio,
++			     struct device_node *np)
++{
++	struct mdiobus_devres *dr;
++	int ret;
++
++	if (WARN_ON(!devres_find(dev, devm_mdiobus_free,
++				 mdiobus_devres_match, mdio)))
++		return -EINVAL;
++
++	dr = devres_alloc(devm_mdiobus_unregister, sizeof(*dr), GFP_KERNEL);
++	if (!dr)
++		return -ENOMEM;
++
++	ret = of_mdiobus_register(mdio, np);
++	if (ret) {
++		devres_free(dr);
++		return ret;
++	}
++
++	dr->mii = mdio;
++	devres_add(dev, dr);
++	return 0;
++}
++EXPORT_SYMBOL(devm_of_mdiobus_register);
++#endif /* CONFIG_OF_MDIO */
++
++MODULE_LICENSE("GPL");
 diff --git a/include/linux/of_mdio.h b/include/linux/of_mdio.h
-index 0f61a4ac6bcf..ba8e157f24ad 100644
+index ba8e157f24ad..1efb88d9f892 100644
 --- a/include/linux/of_mdio.h
 +++ b/include/linux/of_mdio.h
-@@ -12,27 +12,26 @@
+@@ -8,12 +8,15 @@
+ #ifndef __LINUX_OF_MDIO_H
+ #define __LINUX_OF_MDIO_H
+ 
++#include <linux/device.h>
+ #include <linux/phy.h>
  #include <linux/of.h>
  
  #if IS_ENABLED(CONFIG_OF_MDIO)
--extern bool of_mdiobus_child_is_phy(struct device_node *child);
--extern int of_mdiobus_register(struct mii_bus *mdio, struct device_node *np);
--extern struct phy_device *of_phy_find_device(struct device_node *phy_np);
--extern struct phy_device *of_phy_connect(struct net_device *dev,
--					 struct device_node *phy_np,
--					 void (*hndlr)(struct net_device *),
--					 u32 flags, phy_interface_t iface);
--extern struct phy_device *
-+bool of_mdiobus_child_is_phy(struct device_node *child);
-+int of_mdiobus_register(struct mii_bus *mdio, struct device_node *np);
-+struct phy_device *of_phy_find_device(struct device_node *phy_np);
-+struct phy_device *
-+of_phy_connect(struct net_device *dev, struct device_node *phy_np,
-+	       void (*hndlr)(struct net_device *), u32 flags,
-+	       phy_interface_t iface);
-+struct phy_device *
- of_phy_get_and_connect(struct net_device *dev, struct device_node *np,
- 		       void (*hndlr)(struct net_device *));
--struct phy_device *of_phy_attach(struct net_device *dev,
--				 struct device_node *phy_np, u32 flags,
--				 phy_interface_t iface);
--
--extern struct mii_bus *of_mdio_find_bus(struct device_node *mdio_np);
--extern int of_phy_register_fixed_link(struct device_node *np);
--extern void of_phy_deregister_fixed_link(struct device_node *np);
--extern bool of_phy_is_fixed_link(struct device_node *np);
--extern int of_mdiobus_phy_device_register(struct mii_bus *mdio,
--				     struct phy_device *phy,
--				     struct device_node *child, u32 addr);
-+struct phy_device *
-+of_phy_attach(struct net_device *dev, struct device_node *phy_np,
-+	      u32 flags, phy_interface_t iface);
-+
-+struct mii_bus *of_mdio_find_bus(struct device_node *mdio_np);
-+int of_phy_register_fixed_link(struct device_node *np);
-+void of_phy_deregister_fixed_link(struct device_node *np);
-+bool of_phy_is_fixed_link(struct device_node *np);
-+int of_mdiobus_phy_device_register(struct mii_bus *mdio, struct phy_device *phy,
-+				   struct device_node *child, u32 addr);
- 
- static inline int of_mdio_parse_addr(struct device *dev,
- 				     const struct device_node *np)
+ bool of_mdiobus_child_is_phy(struct device_node *child);
+ int of_mdiobus_register(struct mii_bus *mdio, struct device_node *np);
++int devm_of_mdiobus_register(struct device *dev, struct mii_bus *mdio,
++			     struct device_node *np);
+ struct phy_device *of_phy_find_device(struct device_node *phy_np);
+ struct phy_device *
+ of_phy_connect(struct net_device *dev, struct device_node *phy_np,
 -- 
 2.26.1
 
