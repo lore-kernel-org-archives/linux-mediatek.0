@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F02AC433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 21:53:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 22899C433E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 21:56:22 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4254A206A5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 21:53:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E8FCF2078D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 21:56:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kOr98ofR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4254A206A5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WTdOpu81"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E8FCF2078D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,54 +25,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7PSgKP+3ka6ypIzmdYXU7NysRDNHGL7c8EtdRV0G2h4=; b=kOr98ofR8SYQaD7MHeB4K3MJ2
-	j8gsM27ZFxoQUGsWFnH0NjIGKXIWKBJHXfMPFHigT2TNBpeRgE87LEG2aTN6B8B2CnJX3M1k4IyiQ
-	s/zgYnc5jQdkSlxMZQqoI4640YR5UhBVEBgX/7EWm2LD0uKTFK4+Hg0n5bQ75Q2/zS4nC3RnKP4y5
-	9mwOGZ3dfJRlzcJ9jS9b9W33DjkPyRZ0LhmlT3GxSMiJ3N5XvjIzjZkQnoJ6YdmMnv8J3vPfvtIdS
-	sWYNy14iEKURZcUHxN00jFQPKdAWnUjUuvKJC/moagsvWbIA23MX5p8GyjsNUvYeC3oV4ZqpZls58
-	4tjcdJZjg==;
+	 bh=9RjfwoMdLmEeo8a1SbXVi+it4T5LJATEWo47jrGiBC0=; b=WTdOpu81LQPy6ehmOKxz4FxI2
+	C05o+SXdNcYH/Nt4aoqrgNHjtADF04ges0nX6BuyxGpB6I9dw19+uUwIEA2pcIK3bZAaX4OkLKY48
+	LXOqEz0tYTDLChbKqIpBwuW9doK5Mjd47iEb2la0/e/sZ1PH+l/v+GrS5LKYtmDKjeDxbCI5fMrcv
+	SstPw2YHdyc9EHKNnCz8aTGejAuMAo/Jh26Aphr9FVSXqi8A7qwsaCUDnr/qwaPv/gXjK/9amXraK
+	YyHZJuTxjkslQlu05aauUBJRiAP8eJJGZH60oh5T3Gy/y6Qd07azY7UBUMSge865BvAWZ/jTSV70D
+	2eaT40BxA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jq1ib-00048I-Uh; Mon, 29 Jun 2020 21:53:37 +0000
-Received: from mail-io1-f65.google.com ([209.85.166.65])
+	id 1jq1l7-0004ja-S2; Mon, 29 Jun 2020 21:56:13 +0000
+Received: from mail-io1-f67.google.com ([209.85.166.67])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jq1iZ-00047g-A5; Mon, 29 Jun 2020 21:53:36 +0000
-Received: by mail-io1-f65.google.com with SMTP id o5so18796984iow.8;
- Mon, 29 Jun 2020 14:53:35 -0700 (PDT)
+ id 1jq1l3-0004i5-E8; Mon, 29 Jun 2020 21:56:10 +0000
+Received: by mail-io1-f67.google.com with SMTP id k23so18811974iom.10;
+ Mon, 29 Jun 2020 14:56:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=TqO9zSccC03uQUBHdnGu8Ma3JV07Cz0JDvsVx9Gx0ZY=;
- b=bjSrGe4demsblMYgtcPRTl3HiJJFV91tJx/DrPVGjfZ1KzuLxurE51QsIVQFMeu3jp
- sjXcjMvyi720ryTW7cKva1s3R8oresgrjvufo/Jk2Mv02mIGfVbc9IpSL7bysiyRsyDv
- mjJWlvv1BrKGKHJc93WcJYyZCKbCMEcyu2qZ6s5E2Wm/gYW5H669lrUB7DeB/fXr1Pne
- 9IjzCy4bfUaO+gFSUKxBA9YYWTyP5PDFvj4mqF7EOP5B0MqV2Aiy3EJSPFez6sx45WWg
- jY2b5n2RA+mYmhkjPga6rGlY2si7Oo416QKBn4ZV6AjRdeY0cqSRWd15Vzrs+Pf75Mgz
- MKHg==
-X-Gm-Message-State: AOAM5303ztKA6KCnTkNDSMQdvROMJRuSo5+DPzE2av/bQPlXwd83JsCo
- DB+SUB8T6UDosgJ92MCk0g==
-X-Google-Smtp-Source: ABdhPJyIbG7PIhmtfb8YhLKR5Xh3nGklRFT+QTShHlA/Rx0Efb1UteRJRihqMm1UaKN8nH02gpJ1Xw==
-X-Received: by 2002:a05:6638:2601:: with SMTP id
- m1mr9213481jat.43.1593467614612; 
- Mon, 29 Jun 2020 14:53:34 -0700 (PDT)
+ bh=7BzdbzHdhO67Ygeg4vmtsn4XIT8EQ37NcHABkSdRi3E=;
+ b=EC579ofh6mp+1mu220Je+wS/fRM4DkiaukxxemalO4aW1B0GsNpr8mL4nADhbPzuJz
+ 8vY0XOYJGnOFSqyNIebWvx6GvD58vYvy4Cadfdv/Cw7mhNjj2YiFCb+sUTHeNgY77LAN
+ fe7PAVz4c8CcasDv6hbcOU9FULPW9IuANYV90ZFkJiCUFs0ahocBn1TRVGM5t63IyOUU
+ 7OaunszLkzvYEVRnDV3QRXj2ybuj6ReTvWT/8qj6qMy7Ks4bNksyBJiMQwPBkKTqafPP
+ 0NGZo3pHf+BGx/k9RY/2JUtsJhhdTvdIBXdsun2pI90aMhLubBGKlzv9j0vlbbzFirqd
+ WPAQ==
+X-Gm-Message-State: AOAM532JzY0EratF25pqqhSqM6bS3axB+a3iQ3Kd46KTohk51HMYDmPo
+ TpGLvgn8+ZHSG4sYVOX+tw==
+X-Google-Smtp-Source: ABdhPJwEvFQMnYXTu1dUlTrx8NG/GBWsngrOu89NxHz6Tg+mFbZeo4sGg728NSX2H2aFS2/qL1GcVQ==
+X-Received: by 2002:a02:cf12:: with SMTP id q18mr13182774jar.3.1593467768763; 
+ Mon, 29 Jun 2020 14:56:08 -0700 (PDT)
 Received: from xps15 ([64.188.179.255])
- by smtp.gmail.com with ESMTPSA id t12sm604000ilo.80.2020.06.29.14.53.32
+ by smtp.gmail.com with ESMTPSA id y5sm590604iov.3.2020.06.29.14.56.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 29 Jun 2020 14:53:34 -0700 (PDT)
-Received: (nullmailer pid 2994774 invoked by uid 1000);
- Mon, 29 Jun 2020 21:53:31 -0000
-Date: Mon, 29 Jun 2020 15:53:31 -0600
+ Mon, 29 Jun 2020 14:56:08 -0700 (PDT)
+Received: (nullmailer pid 3001028 invoked by uid 1000);
+ Mon, 29 Jun 2020 21:56:06 -0000
+Date: Mon, 29 Jun 2020 15:56:06 -0600
 From: Rob Herring <robh@kernel.org>
-To: Hanks Chen <hanks.chen@mediatek.com>
-Subject: Re: [PATCH v6 1/7] dt-bindings: pinctrl: add bindings for MediaTek
- MT6779 SoC
-Message-ID: <20200629215331.GA2991039@bogus>
-References: <1592480018-3340-1-git-send-email-hanks.chen@mediatek.com>
- <1592480018-3340-2-git-send-email-hanks.chen@mediatek.com>
+To: Neal Liu <neal.liu@mediatek.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: devapc: add bindings for devapc-mt6873
+Message-ID: <20200629215606.GA3000557@bogus>
+References: <1592559720-8482-1-git-send-email-neal.liu@mediatek.com>
+ <1592559720-8482-2-git-send-email-neal.liu@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1592480018-3340-2-git-send-email-hanks.chen@mediatek.com>
+In-Reply-To: <1592559720-8482-2-git-send-email-neal.liu@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,47 +82,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>,
- CC Hwang <cc.hwang@mediatek.com>, wsd_upstream@mediatek.com,
- Stephen Boyd <sboyd@kernel.org>, Andy Teng <andy.teng@mediatek.com>,
- Michael Turquette <mturquette@baylibre.com>, Sean Wang <sean.wang@kernel.org>,
- Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org,
- linux-gpio@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
  linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- mtk01761 <wendell.lin@mediatek.com>, linux-clk@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 18 Jun 2020 19:33:32 +0800, Hanks Chen wrote:
-> From: Andy Teng <andy.teng@mediatek.com>
+On Fri, 19 Jun 2020 17:41:59 +0800, Neal Liu wrote:
+> Add bindings for MT6873 devapc.
 > 
-> Add devicetree bindings for MediaTek MT6779 pinctrl driver.
-> 
-> Signed-off-by: Andy Teng <andy.teng@mediatek.com>
+> Signed-off-by: Neal Liu <neal.liu@mediatek.com>
 > ---
->  .../bindings/pinctrl/mediatek,mt6779-pinctrl.yaml  |  210 ++++++++++++++++++++
->  1 file changed, 210 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+>  .../soc/mediatek/devapc/devapc-mt6873.yaml         |   61 ++++++++++++++++++++
+>  1 file changed, 61 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/devapc/devapc-mt6873.yaml
 > 
 
 
 My bot found errors running 'make dt_binding_check' on your patch:
 
-Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.example.dts:21:18: fatal error: dt-bindings/pinctrl/mt6779-pinfunc.h: No such file or directory
-         #include <dt-bindings/pinctrl/mt6779-pinfunc.h>
-                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-compilation terminated.
-scripts/Makefile.lib:315: recipe for target 'Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.example.dt.yaml' failed
-make[1]: *** [Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.example.dt.yaml] Error 1
-make[1]: *** Waiting for unfinished jobs....
-Makefile:1347: recipe for target 'dt_binding_check' failed
-make: *** [dt_binding_check] Error 2
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/soc/mediatek/devapc/devapc-mt6873.example.dt.yaml: example-0: devapc@10207000:reg:0: [0, 270561280, 0, 4096] is too long
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/soc/mediatek/devapc/devapc-mt6873.example.dt.yaml: example-0: devapc@10207000:reg:1: [0, 271007744, 0, 4096] is too long
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/soc/mediatek/devapc/devapc-mt6873.example.dt.yaml: example-0: devapc@10207000:reg:2: [0, 271011840, 0, 4096] is too long
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/soc/mediatek/devapc/devapc-mt6873.example.dt.yaml: example-0: devapc@10207000:reg:3: [0, 285343744, 0, 4096] is too long
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/soc/mediatek/devapc/devapc-mt6873.example.dt.yaml: example-0: devapc@10207000:reg:4: [0, 270589952, 0, 4096] is too long
 
 
-See https://patchwork.ozlabs.org/patch/1312018
+See https://patchwork.ozlabs.org/patch/1312741
 
 If you already ran 'make dt_binding_check' and didn't see the above
 error(s), then make sure dt-schema is up to date:
@@ -132,13 +119,6 @@ error(s), then make sure dt-schema is up to date:
 pip3 install git+https://github.com/devicetree-org/dt-schema.git@master --upgrade
 
 Please check and re-submit.
-
-
-
-Here, you need patch 2 to come first or merge it into this patch as it 
-is part of the binding.
-
-Rob
 
 
 _______________________________________________
