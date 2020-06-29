@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5AF6EC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 10:28:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1300BC433E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 10:29:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2AB37235FC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 10:28:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C886523884
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 10:29:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qWVwuT7s";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="d95TheNG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2AB37235FC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GCiTDqhk";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="GSFp18a4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C886523884
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,56 +27,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ZHJQ9NFuqNnqFCv624eQHHub5nvgsHSVsNOYtKCpdnY=; b=qWVwuT7sstJiSFGpzdt9+L6fC
-	ip/VbM1iLRgxv3V4mveJZsQNgH+8rXDY1kkrtOfIPykHSt+7exnGxSxhkr8tFJU0mEhr+R1AT6Z4v
-	42y3BWAwW7sDv2WkDrYHZvRuBUSYG0K2cF4IfitKg/ULKaDXnPTzE7TSLDoI5Dfk6VTOEgyL1qv2Y
-	Hjd28I/D4Tpvr3nCHy160jjVZgAKZQyDKS85lvlXVcbKxCMlxWZLNbAmLoIOD9u7qgmFS4j7zrb5a
-	GPGDX7PRASmqWKjtMtSDW6PM0w1ry/fRzh2QP6iElSuPIikLh/JsOjGIHrtZL03G5HlTGjMHUFqDi
-	oPLoEt1eA==;
+	 bh=R3vcBSNAyYlvIaD6n997Ai1v0ZMj2WlXwrPL1QLiLgM=; b=GCiTDqhkQ574VutHqqSJNvITy
+	uyoMcUtJuJIj+tgHNcGak9xQn2BrZQA4kY2sMbaOk/UpLqMtdNFJbmzKH41IEIaaN6/TPIeOhpC3J
+	EItAzWjPesflQV2Qx+jL3MQ+X4xGD2MA87o9ZdgHkmLyf6Z3KzfT5ERctLeZcwV9ELPo8KMqbGy+Z
+	deafQX0kVVBE3MUbyLyqze6GgzL8Pqg4M7ySO2+PmchhPLnLic3/gWDaYN5q7NB6fSjlZy7fQ+nuU
+	n/HzpvJdwRO/A4PTg1iflyTfsq9de/Rv4TJ2Re+VQ2MDbxhO15SvBWKREevxFMAbxptOxCoKIdkOb
+	VSxRcA3kA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jpr1E-0007GP-Co; Mon, 29 Jun 2020 10:28:08 +0000
+	id 1jpr2B-0007Sx-Tm; Mon, 29 Jun 2020 10:29:08 +0000
 Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jpr1C-0007G0-UF; Mon, 29 Jun 2020 10:28:07 +0000
-Received: by mail-wm1-x342.google.com with SMTP id g75so14841685wme.5;
- Mon, 29 Jun 2020 03:28:06 -0700 (PDT)
+ id 1jpr2A-0007SP-18; Mon, 29 Jun 2020 10:29:06 +0000
+Received: by mail-wm1-x342.google.com with SMTP id 22so14864565wmg.1;
+ Mon, 29 Jun 2020 03:29:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=5PJq7fj4658s6JzN+saszR4MMaj+yVEmwSy9+6i9rdc=;
- b=d95TheNGZwAr6v+hYUvaooNggRDEM0p1xdNnmO01/ZcVveMkHMo1JMnjLS5+lTmF3L
- dK5PZBvNQmlLaUse5XNzyhhkWeGSvCV5aho4IQP+kDbfD5wIPhRl2wTvCx/4CAshfVE9
- pjc/UepSTBWkKlU1BPcJt8HKAVuosWGPnUatwVTVfuLaDkKA9kRUj2fGQRsTUJgBSXPp
- mV6jqg8jDW4bFFg6sBEABDJvz1OUAYWiRgz/Vfx5/u70FgIu8aDjI91ihVWOLEABcFji
- 9NsfNHJYoRtStM812LGLD413bWf9wl+yWFVB0/5IvS3BvYO0JoOLjuKiehF9oQsUV1XR
- Musg==
+ bh=qH6Y8YLZwAQKLLRKt9UlLI5PhgjXpInExIUsMf3zs/o=;
+ b=GSFp18a4hT5psZ9d8iFlr7YHTQNN/uaOedWpgXDQv+7mlKvAw6asJKa32R40OpfaMf
+ hv2T5ZHWIbB9k9zuHCDP9iiGquaQKgVr0DLXOql0cyfd2epFcGLg8BRAd1n7hwf10RiJ
+ lbzodLDjKyVSyc7cGQv5cz1dUY9WXuTeoFKkTv3ZrH7XUA6+favrTFrmilo50o4zOkmL
+ hFLYPfHFlae3s9QWPCjqVuVH8Z8+Qn9bIlZ4TldVizer95x84pYlT1yyjW5ya9R4Z5DV
+ HO4wHux13wlISSavurvQrdkpg1Mis9bSyNHhqUaujc+7dpISt1pnF6FstLoecVsEt3FO
+ OvVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=5PJq7fj4658s6JzN+saszR4MMaj+yVEmwSy9+6i9rdc=;
- b=AYmgObjXpFf4eOO1ebegH+YPLez7ZRA8o8xabkTfA8DDjJXhDxLtKRY4xqn78lDYxq
- 1HXlm2c0siiQm6F/rvpecdVYlNsGOmcXJcaq5W0t5PFPnC3hfN1WxwvI9DpEAB1HcFuZ
- 1qZ9dp7GIxUnlYFzr01fS1NiZ53BrNkf61gEe4rV4Ik+Lxz1mtd0I2rA2Tec1KZn1GsZ
- rdJh+rB+Vr1z6EV9CFdzkFnTXykw05T6/y5QTEJGTcsnQo3xGyfy78YBz4VGAwo4tDEQ
- TjZ0k8ueCpAXunlf5DjHWDHvvzv6gskTuzu4oOmHm6SCkvRoe+2qljQYlb68xjImmYqD
- hXuQ==
-X-Gm-Message-State: AOAM531tnGVl9u4BVm1gZwru5N/Ec0oQA0j40XFmLci0/KdrS409NoXG
- nqJ/LV1XFevz0Xy2nGNNpBk=
-X-Google-Smtp-Source: ABdhPJyldWi8DAwQgO1Wp4ecqSDphv3EfBMPnpbkrMBi6Es3zw5jdYzpisa8I4tFFFU80aL3TCZ82w==
-X-Received: by 2002:a1c:2044:: with SMTP id g65mr14427785wmg.127.1593426486034; 
- Mon, 29 Jun 2020 03:28:06 -0700 (PDT)
+ bh=qH6Y8YLZwAQKLLRKt9UlLI5PhgjXpInExIUsMf3zs/o=;
+ b=XyVHUSeaYWT+13xIS2yECCvrvt/hLDRenYTwez3XlBeUMsaMsv8ds0F/sI5B8YgPZp
+ aEDroNHVrZO8BCXa0y9uwjdWnOCtX8gHWk+xZi2ZaEV9/S+cCeJIjXEopqm3n07KxyUk
+ iUL5XFHTpG6C2KMlRsD5XZGPx2fU3HQ1BCe7zV+FtFBgEW5pezB0pk/RbARr1FVqwccM
+ 2fFD/IJZeKyQbCJUxec878xc/wG6rQfKP2B494g1jO3xHrmqXDVSMdzGlQ8RyAsDF15C
+ 7aD9RdlOSfCQjrQe75n7e2ui+PvF6s2ZacWiplT4as9bRTEJLRKm50NmCS0dPgsB/XZ9
+ 1SUw==
+X-Gm-Message-State: AOAM532vwbIPi0iRfwJlBzIuc7FKySHVtbAkhh2NNdtKMItq8F7Z+n7b
+ E76xBbIvoEGkgvzppVJ5jik=
+X-Google-Smtp-Source: ABdhPJytODh0+QP7ijQ6hjMmEjsy1PHRom3lDtvr4XIcC8w/ihO7g7oh0Lhdq/WJBRPTYdj5pOzqgQ==
+X-Received: by 2002:a1c:b6c3:: with SMTP id
+ g186mr16692459wmf.135.1593426545193; 
+ Mon, 29 Jun 2020 03:29:05 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.114.138])
- by smtp.gmail.com with ESMTPSA id k126sm15714057wmf.3.2020.06.29.03.28.04
+ by smtp.gmail.com with ESMTPSA id c5sm27819182wmb.24.2020.06.29.03.29.04
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Jun 2020 03:28:05 -0700 (PDT)
-Subject: Re: [PATCH v5 09/10] iommu/mediatek: Modify MMU_CTRL register setting
+ Mon, 29 Jun 2020 03:29:04 -0700 (PDT)
+Subject: Re: [PATCH v5 10/10] iommu/mediatek: Add mt6779 basic support
 To: Chao Hao <chao.hao@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
  Rob Herring <robh+dt@kernel.org>
 References: <20200629071310.1557-1-chao.hao@mediatek.com>
- <20200629071310.1557-10-chao.hao@mediatek.com>
+ <20200629071310.1557-11-chao.hao@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -152,12 +153,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <e063a5d2-8edc-9cf9-4872-d3f4abb1e481@gmail.com>
-Date: Mon, 29 Jun 2020 12:28:04 +0200
+Message-ID: <e1654652-85a9-0e30-df60-eee0957331d7@gmail.com>
+Date: Mon, 29 Jun 2020 12:29:03 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <20200629071310.1557-10-chao.hao@mediatek.com>
+In-Reply-To: <20200629071310.1557-11-chao.hao@mediatek.com>
 Content-Language: en-US
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -183,54 +184,69 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 29/06/2020 09:13, Chao Hao wrote:
-> MT8173 is different from other SoCs for MMU_CTRL register.
-> For mt8173, its bit9 is in_order_write_en and doesn't use its
-> default 1'b1.> For other SoCs, bit[12] represents victim_tlb_en feature and
-> victim_tlb is enable defaultly(bit[12]=1), if we use
-> "regval = F_MMU_TF_PROT_TO_PROGRAM_ADDR", victim_tlb will be
-> disabled, it will drop iommu performace.
-> So we need to deal with the setting of MMU_CTRL separately
-> for mt8173 and others.
+> 1. Start from mt6779, INVLDT_SEL move to offset=0x2c, so we add
+>    REG_MMU_INV_SEL_GEN2 definition and mt6779 uses it.
+> 2. Add mt6779_data to support mm_iommu HW init.
 > 
-
-My proposal to rewrite the commit message:
-
-The MMU_CTRL regiser of MT8173 is different from other SoCs. The in_order_wr_en
-is bit[9] which is zero by default.
-Other SoCs have the vitcim_tlb_en feature mapped to bit[12]. This bit is set to
-one by default. We need to preserve the bit when setting
-F_MMU_TF_PROT_TO_PROGRAM_ADDR as otherwise the bit will be cleared and IOMMU
-performance will drop.
-
-
-> Suggested-by: Matthias Brugger <matthias.bgg@gmail.com>
-> Suggested-by: Yong Wu <yong.wu@mediatek.com>
+> Cc: Yong Wu <yong.wu@mediatek.com>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
 > Signed-off-by: Chao Hao <chao.hao@mediatek.com>
+
+Reviewed by: Matthias Brugger <matthias.bgg@gmail.com>
+
 > ---
->  drivers/iommu/mtk_iommu.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+>  drivers/iommu/mtk_iommu.c | 11 +++++++++++
+>  drivers/iommu/mtk_iommu.h |  1 +
+>  2 files changed, 12 insertions(+)
 > 
 > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 8299a3299090..e46e2deee3fd 100644
+> index e46e2deee3fd..1575196d9cd5 100644
 > --- a/drivers/iommu/mtk_iommu.c
 > +++ b/drivers/iommu/mtk_iommu.c
-> @@ -543,11 +543,12 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
->  		return ret;
->  	}
+> @@ -37,6 +37,7 @@
+>  #define REG_MMU_INVLD_START_A			0x024
+>  #define REG_MMU_INVLD_END_A			0x028
 >  
-> +	regval = readl_relaxed(data->base + REG_MMU_CTRL_REG);
-
-The read is only needed in the else branch.
-
->  	if (data->plat_data->m4u_plat == M4U_MT8173)
->  		regval = F_MMU_PREFETCH_RT_REPLACE_MOD |
->  			 F_MMU_TF_PROT_TO_PROGRAM_ADDR_MT8173;
->  	else
-> -		regval = F_MMU_TF_PROT_TO_PROGRAM_ADDR;
-> +		regval |= F_MMU_TF_PROT_TO_PROGRAM_ADDR;
->  	writel_relaxed(regval, data->base + REG_MMU_CTRL_REG);
+> +#define REG_MMU_INV_SEL_GEN2			0x02c
+>  #define REG_MMU_INV_SEL_GEN1			0x038
+>  #define F_INVLD_EN0				BIT(0)
+>  #define F_INVLD_EN1				BIT(1)
+> @@ -798,6 +799,15 @@ static const struct mtk_iommu_plat_data mt2712_data = {
+>  	.larbid_remap = {{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}},
+>  };
 >  
->  	regval = F_L2_MULIT_HIT_EN |
+> +static const struct mtk_iommu_plat_data mt6779_data = {
+> +	.m4u_plat      = M4U_MT6779,
+> +	.flags         = HAS_SUB_COMM |
+> +			 OUT_ORDER_EN |
+> +			 WR_THROT_EN,
+> +	.inv_sel_reg   = REG_MMU_INV_SEL_GEN2,
+> +	.larbid_remap  = {{0}, {1}, {2}, {3}, {5}, {7, 8}, {10}, {9}},
+> +};
+> +
+>  static const struct mtk_iommu_plat_data mt8173_data = {
+>  	.m4u_plat     = M4U_MT8173,
+>  	.flags	      = HAS_4GB_MODE |
+> @@ -816,6 +826,7 @@ static const struct mtk_iommu_plat_data mt8183_data = {
+>  
+>  static const struct of_device_id mtk_iommu_of_ids[] = {
+>  	{ .compatible = "mediatek,mt2712-m4u", .data = &mt2712_data},
+> +	{ .compatible = "mediatek,mt6779-m4u", .data = &mt6779_data},
+>  	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
+>  	{ .compatible = "mediatek,mt8183-m4u", .data = &mt8183_data},
+>  	{}
+> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+> index ce4f4e8f03aa..a080db2e8a93 100644
+> --- a/drivers/iommu/mtk_iommu.h
+> +++ b/drivers/iommu/mtk_iommu.h
+> @@ -43,6 +43,7 @@ struct mtk_iommu_suspend_reg {
+>  enum mtk_iommu_plat {
+>  	M4U_MT2701,
+>  	M4U_MT2712,
+> +	M4U_MT6779,
+>  	M4U_MT8173,
+>  	M4U_MT8183,
+>  };
 > 
 
 _______________________________________________
