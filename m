@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E498AC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 12:04:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A294C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 12:04:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B0CD523D20
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 12:04:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 48AE823D20
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 12:04:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3gLwo6YA";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="GHZrNXAb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B0CD523D20
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tDb3sTIN";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="s9kteNeX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 48AE823D20
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bgdev.pl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=eAXzZX4UC+I7OTdaofPENVXdPOgIbq0oaA7Q9prR9lM=; b=3gLwo6YAl3OqWy9CEgE8Q5i9l
-	jzXIbWV8L6AWg8H6EvWmzNhEG5ZWCKgIU+CPQiSK3u9G7q8Ei+PKfZO+nyxGTG8FsoyzMk2WkG+Lz
-	0Mc0yhHgSbkFpeFTY7sZIllUy6d0SWabI86s8zqP51IH6iLpEnXcJa5hDEi9JlWpmye1nHVkSfIFk
-	B/lrp7oje+YeFFPR32ToCnw8DFHsw1+8aCJrs84T7ait8SmoSDx4zWtubVgP+IVxpE7iX6LFlhW4p
-	DK6ujlscyLWPG7GVMou3baKCZP+VouUyAXq5U8D8N+gmPSBIaFEwRhyludY4Lh38q73c3wDTrJ7t+
-	PKjWvwlAw==;
+	 bh=1P67U67BMn9kkUx5gBb3MANpLU1CfrXnfTQYSXUGXHw=; b=tDb3sTINXhMNmLHaEcAaT/eLd
+	bj5xL569pI7lpTufuXyvivh7Dy2GL/xQFCxJZ5jNAJLym+M55YbWW/UMd1yPs1jwNcOWHzeELjuJr
+	hHy/4AqMFbaEw2NlxZKWKGYKhPv+hezaHCQZdDF8v3HwkSuf9ffUjlTjXqfz9I5bxW6/qTlXS5VYH
+	ArPzuMUvemYkD9mknNAoy/aVByRManAPU5MZ8cTbdqvsn/+Prd3YWJZ7J0l7asTdjh3aiqqJHcayq
+	3AXWAJugbJaA7OxVyijWSg23BgQJ5XbbNgfPMGrPg4r7+8GKFjv4unygKKa3O+bRQvjR1CZPAjirT
+	AwOPZiVrg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jpsWf-0008C5-73; Mon, 29 Jun 2020 12:04:41 +0000
+	id 1jpsWj-0008DC-46; Mon, 29 Jun 2020 12:04:45 +0000
 Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jpsWE-000819-Sr
- for linux-mediatek@lists.infradead.org; Mon, 29 Jun 2020 12:04:16 +0000
-Received: by mail-wm1-x341.google.com with SMTP id 22so15124136wmg.1
- for <linux-mediatek@lists.infradead.org>; Mon, 29 Jun 2020 05:04:14 -0700 (PDT)
+ id 1jpsWH-00082L-VN
+ for linux-mediatek@lists.infradead.org; Mon, 29 Jun 2020 12:04:19 +0000
+Received: by mail-wm1-x341.google.com with SMTP id 22so15124285wmg.1
+ for <linux-mediatek@lists.infradead.org>; Mon, 29 Jun 2020 05:04:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=nZJ9RrYkX//UjOI/5YYylQYoHuaDDR4YnVJY1VbZiK8=;
- b=GHZrNXAbixM8hIlftssrgQxdDlC2R8smynvTThHUqsGw3QGlkt8NhoPhAOcQQGzRtw
- 8UiJW8UelWWaFm3hR3IBZDUiETIQ4cw/d0cKQJ2t1YCJDD+35seh4iu5J6/ZnfNA9Cf2
- 0PVuY8rWNQGb4TJy8iFdvM58AtK7sHgm7tkKp+d8JruntQqh4/uEGDPUikx3v8VCVX/X
- t0nKty1pn7Dat78dI2BiItZ4JxBDOUehXZ0nt2E9AXLK4007faqBTbkxlHvbnLr9M2so
- H+SDo8uHBGYBqIx7PHreVr5lgWWgBQR/mjyFndySyTN3eQfiaXuMtvjj/R5CALJQPX52
- cZCQ==
+ bh=kk4GqzupyJ/zMhEjt50iMo8E42JSASWwyoRhFrVXFkw=;
+ b=s9kteNeXi1zTwB+iA/Da/H/SPwbWFgSRcTYjOhHXHWF3DK4DgkjnWLtB3kXWUYcT73
+ hrQ3sZLr45ONRMe37aZJiaJZqvsJkdNy022pJEVyvesHs/Usys8f1PNEbBh/x2TgLjW5
+ MzXNu61KMK8OAc8kI7zqSWj6yUSfkkAeWvduGtmpBPGg5zflFGTAloz+lI6SH8ZeyaF4
+ fgHItffrSY9r+xFcjDC7cJKNDoYT11AD7qfDTq0LviqPvjIASWNkM3GOYEhgZi13/HMO
+ nbFl97jRYhP8AwnmUe5P7dnadnS6u8YZj+1fWhK6Oe2uxf6rzW6Igdl90lnBrDHpjR5z
+ NqZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=nZJ9RrYkX//UjOI/5YYylQYoHuaDDR4YnVJY1VbZiK8=;
- b=YLhIPRjbwRbKVxRHG/XRmkxXmbgYeersa40n/XD7oRYVWFwAvKKGhoFpfobS1N5C4Z
- PlEwVSFG20t38LbLQC1/TU04Mlysrud6qGlOX0UXq9c/tSQMyRezHTy0V1AHEDfMwhr1
- kpkwm0njxWhbrB+9KyKOhYX2EgrKiMvfrSwwTrrYQk3gZX5e3+N6sFIooNl8Nd6TbKUR
- HhKI3yoClkaVO4GI9SUJewJvtwRwk1vMx0yuckNwAf6COwuPpJJNz803w/c0tuNRy4eU
- o3jQZzt8BneZw3F/ujxghvOtNPBo8iPIJko5Vj9SzHgYGiL2r9cgHQ6pg9rXKn9cDPtP
- 0uOA==
-X-Gm-Message-State: AOAM533IzfhIlfLUvF+5UqEAzg0d7ZCchxVFZ4HjaHwwbgm1ad9t2p36
- nrWlvq7QHIEAXNY5fAN73X/sYw==
-X-Google-Smtp-Source: ABdhPJxPsnR1q89EpF5XRsu5RI2Mrvn6hFviI2UQaVTUzem4LR886XkHZ07utmAJlfbggOLXkkyVfg==
-X-Received: by 2002:a7b:c381:: with SMTP id s1mr17268979wmj.25.1593432254093; 
- Mon, 29 Jun 2020 05:04:14 -0700 (PDT)
+ bh=kk4GqzupyJ/zMhEjt50iMo8E42JSASWwyoRhFrVXFkw=;
+ b=gSnNvGy3pUEX/Kd5LVplLID4rRk/iuCJHHqO6YRtxrkXA8DrIlossioxoPebBQCMCp
+ DbXHUURO7/2cYnL94j7NMsxPiig+/hzWIevFKXeFQMZISnfHSrHyja9D7JkhEdj9ZK0B
+ DWFIxKoYL7wNjBihTYndJP2TtwCbszZyfZHVTTiLFSHqAj44nyIEn8Tsz5wEDBVJaTma
+ dnpnGXtZQon/ucJLWfj0aIbCuaaiKsCrWcMZreWgaXQZJtrzU9v98H0/JZPhu4ScUe3W
+ utF4TPuTQXEhYY//oFSvr72Tw46G9D4NyuZqbQonz8QobiD3zo9gWMjTNvdB6rSPyvnB
+ ZddQ==
+X-Gm-Message-State: AOAM531A7nMMRBxvTPbWdRUsIVVCjObbK6b3lwXAqIr8PS4w5lzICwXZ
+ yad+bovXJX3Fr2tpuPzf8di5WA==
+X-Google-Smtp-Source: ABdhPJyWDqDeFgVInuObhpy/Ftb/2DR2R2EIJXvEfaNkWasvMTcTlNr2GvJFRYK1k6XxTkq/Wt9wfQ==
+X-Received: by 2002:a1c:cc0d:: with SMTP id h13mr17832883wmb.168.1593432256110; 
+ Mon, 29 Jun 2020 05:04:16 -0700 (PDT)
 Received: from localhost.localdomain (lfbn-nic-1-65-232.w2-15.abo.wanadoo.fr.
  [2.15.156.232])
- by smtp.gmail.com with ESMTPSA id d81sm25274347wmc.0.2020.06.29.05.04.12
+ by smtp.gmail.com with ESMTPSA id d81sm25274347wmc.0.2020.06.29.05.04.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 29 Jun 2020 05:04:13 -0700 (PDT)
+ Mon, 29 Jun 2020 05:04:15 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
 To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
  "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
@@ -83,9 +83,10 @@ To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
  Florian Fainelli <f.fainelli@gmail.com>,
  Russell King <linux@armlinux.org.uk>, Rob Herring <robh+dt@kernel.org>,
  Frank Rowand <frowand.list@gmail.com>
-Subject: [PATCH v2 02/10] net: ethernet: ixgbe: don't call devm_mdiobus_free()
-Date: Mon, 29 Jun 2020 14:03:38 +0200
-Message-Id: <20200629120346.4382-3-brgl@bgdev.pl>
+Subject: [PATCH v2 03/10] net: devres: rename the release callback of
+ devm_register_netdev()
+Date: Mon, 29 Jun 2020 14:03:39 +0200
+Message-Id: <20200629120346.4382-4-brgl@bgdev.pl>
 X-Mailer: git-send-email 2.26.1
 In-Reply-To: <20200629120346.4382-1-brgl@bgdev.pl>
 References: <20200629120346.4382-1-brgl@bgdev.pl>
@@ -111,55 +112,36 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 
-The idea behind devres is that the release callbacks are called if
-probe fails. As we now check the return value of ixgbe_mii_bus_init(),
-we can drop the call devm_mdiobus_free() in error path as the release
-callback will be called automatically.
+Make it an explicit counterpart to devm_register_netdev() just like we
+do with devm_free_netdev() for better clarity.
 
 Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 ---
- drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c | 14 +++-----------
- 1 file changed, 3 insertions(+), 11 deletions(-)
+ net/devres.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-index 2fb97967961c..7980d7265e10 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-@@ -905,7 +905,6 @@ s32 ixgbe_mii_bus_init(struct ixgbe_hw *hw)
- 	struct pci_dev *pdev = adapter->pdev;
- 	struct device *dev = &adapter->netdev->dev;
- 	struct mii_bus *bus;
--	int err = -ENODEV;
- 
- 	bus = devm_mdiobus_alloc(dev);
- 	if (!bus)
-@@ -923,7 +922,7 @@ s32 ixgbe_mii_bus_init(struct ixgbe_hw *hw)
- 	case IXGBE_DEV_ID_X550EM_A_1G_T:
- 	case IXGBE_DEV_ID_X550EM_A_1G_T_L:
- 		if (!ixgbe_x550em_a_has_mii(hw))
--			goto ixgbe_no_mii_bus;
-+			return -ENODEV;
- 		bus->read = &ixgbe_x550em_a_mii_bus_read;
- 		bus->write = &ixgbe_x550em_a_mii_bus_write;
- 		break;
-@@ -948,15 +947,8 @@ s32 ixgbe_mii_bus_init(struct ixgbe_hw *hw)
- 	 */
- 	hw->phy.mdio.mode_support = MDIO_SUPPORTS_C45 | MDIO_SUPPORTS_C22;
- 
--	err = mdiobus_register(bus);
--	if (!err) {
--		adapter->mii_bus = bus;
--		return 0;
--	}
--
--ixgbe_no_mii_bus:
--	devm_mdiobus_free(dev, bus);
--	return err;
-+	adapter->mii_bus = bus;
-+	return mdiobus_register(bus);
+diff --git a/net/devres.c b/net/devres.c
+index 57a6a88d11f6..1f9be2133787 100644
+--- a/net/devres.c
++++ b/net/devres.c
+@@ -39,7 +39,7 @@ struct net_device *devm_alloc_etherdev_mqs(struct device *dev, int sizeof_priv,
  }
+ EXPORT_SYMBOL(devm_alloc_etherdev_mqs);
  
- /**
+-static void devm_netdev_release(struct device *dev, void *this)
++static void devm_unregister_netdev(struct device *dev, void *this)
+ {
+ 	struct net_device_devres *res = this;
+ 
+@@ -77,7 +77,7 @@ int devm_register_netdev(struct device *dev, struct net_device *ndev)
+ 				 netdev_devres_match, ndev)))
+ 		return -EINVAL;
+ 
+-	dr = devres_alloc(devm_netdev_release, sizeof(*dr), GFP_KERNEL);
++	dr = devres_alloc(devm_unregister_netdev, sizeof(*dr), GFP_KERNEL);
+ 	if (!dr)
+ 		return -ENOMEM;
+ 
 -- 
 2.26.1
 
