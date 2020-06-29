@@ -2,65 +2,74 @@ Return-Path: <SRS0=EINh=AK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-1.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9AA66C433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 08:41:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3547BC433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 09:09:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6837723371
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 08:41:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 00CF4233A0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 09:09:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1DKGQ+YQ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="VfCp9hE0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6837723371
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linuxfoundation.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tLgkP1WO";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Vvi95zdK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 00CF4233A0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=HaevP8ESlMSyLGTSsblWGaTniYQ4m6gMFgAk/f/hvOk=; b=1DKGQ+YQLkGFysqx9KwnvdBe/
-	M2mdnO+h8FBVLRVG6Qvl2Lwk5wu37Oojp1gcIpQoqjG5pdULOAJe6lgpkNZI+KcR0YdWOf0qYWISX
-	egNVdx2XhYYoYf2O3kcgbmflbzIaoZ9L0WsIWhoN1CjtN4YJdMdA8IFKDT/L4ZdEtPUQU3LAzn2S2
-	GQw7S1dEC/7HwL//c9dZsfpQpKrnWNTlHkUkP7XkDf2lJuoCcm+h+e3ooNW8swtJuveXso+ezh/q4
-	vYAhBRynqXs3iDK8hXO4YBmXd0NWknXtL0eVrFwE6o5vcN8WhmFhnSQywVGP0nhPIOvlE2k9+mQqZ
-	3o+ELnCuA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=A2tN5ip7qKYmh/dlxfcdmRA7A4KCO0T/8m54ZXVi4SM=; b=tLgkP1WO3ZJpZOVJL2YQLQ3jWg
+	jAT/H5qBTjS9K3vkvC4GIPwOjqAEzYm6a/UEaKpI29WyZ2qUjtk2HoXJ+A7b6GDf2ilA1ESvptr2f
+	VlvPEY2CsCUzpG16mFA+dPk0bm/aOYtBQEbW6JSQFVRequdroJMP+44wg79Wr92RD2Sz+mC0YBqwq
+	/Mfu6gMWo8upzW34ueL9f4XlyOdKp2xyODLQIhk1jZD+Wkz4XLbdc8fYM9+RWEVgCdEbQIa3iYOzX
+	I52VGPokMzQ6SvovCa4l3g7adQfFNDGc5pJbB4O/2SL1U23DAP04m2pgmUs70LACV11aqqazwSGI+
+	VWrbfIhg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jppLh-0000jd-Ai; Mon, 29 Jun 2020 08:41:09 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jppnE-0004RM-SV; Mon, 29 Jun 2020 09:09:36 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jppLb-0000ib-Im; Mon, 29 Jun 2020 08:41:04 +0000
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9501723370;
- Mon, 29 Jun 2020 08:41:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593420062;
- bh=NgETdEp/TPGsMKNJQFJucR9ZSygTH08g48sTzqUJy8M=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=VfCp9hE0U1V55QP8CtGkrKq/7ClTTCkOVeDpojaZzjd7aUXx+6pITg+YyxFaYu4jr
- naHIJq0reLlZHSS6rTDqZoD6oWcAgnDmap4zDCam+du0CHBSo+I67WBnoXL2IzwO6f
- 66sWli0Vhn6A4ZyHu6XwMOh6ciaE6hDAN4crXajo=
-Date: Mon, 29 Jun 2020 10:40:51 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Subject: Re: [PATCH v4] tty: serial: don't do termios for BTIF
-Message-ID: <20200629084051.GA1234189@kroah.com>
-References: <78efa2b1e2599deff4d838b05b4054ec5ac2976a.1592595601.git.sean.wang@mediatek.com>
- <20200627141222.GC1901451@kroah.com>
- <20200629082927.GA3703480@smile.fi.intel.com>
+ id 1jppnB-0004QQ-AT; Mon, 29 Jun 2020 09:09:34 +0000
+X-UUID: 7f6e46cef494420c9a60cee3b07e0d4d-20200629
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=ig0iIX5OqmRuR0jC1ymNu1pDYDa/vcXlkdQxdm8rcZE=; 
+ b=Vvi95zdKrB/8CAnhQ3gmKWXUgzFLsn7NyADi5qe4SLju1TdxR0OVSCAFuPSILKRQjajzj8FNU0K6vAYpupcnfVXe9Lvv2zCoOecF4lLkoPN3ucXZ0Pndui/ZnUOLt9qcepXgg7FWg7aLgtiJlHV8xKh7UuZW0Aftl5itIOQ9OG0=;
+X-UUID: 7f6e46cef494420c9a60cee3b07e0d4d-20200629
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <neal.liu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 893526557; Mon, 29 Jun 2020 01:09:17 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 29 Jun 2020 02:05:47 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 29 Jun 2020 17:05:40 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 29 Jun 2020 17:05:41 +0800
+From: Neal Liu <neal.liu@mediatek.com>
+To: "Rafael J. Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Thierry Reding
+ <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Jacob Pan
+ <jacob.jun.pan@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sami Tolvanen <samitolvanen@google.com>
+Subject: cpuidle: Fix CFI failure
+Date: Mon, 29 Jun 2020 17:05:39 +0800
+Message-ID: <1593421540-7397-1-git-send-email-neal.liu@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200629082927.GA3703480@smile.fi.intel.com>
+X-MTK: N
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,63 +81,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, heikki.krogerus@linux.intel.com,
- david@lechnology.com, arnd@arndb.de, linux-serial@vger.kernel.org,
- Steven Liu <steven.liu@mediatek.com>, jan.kiszka@siemens.com,
- sean.wang@mediatek.com, hpeter@gmail.com, linux-kernel@vger.kernel.org,
- tthayer@opensource.altera.com, Ryder Lee <ryder.lee@mediatek.com>,
- robh+dt@kernel.org, linux-mediatek@lists.infradead.org, joel@jms.id.au,
- p.zabel@pengutronix.de, jslaby@suse.com, matthias.bgg@gmail.com,
- robert.jarzmik@free.fr, linux-arm-kernel@lists.infradead.org, vigneshr@ti.com
+Cc: wsd_upstream@mediatek.com, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-acpi@vger.kernel.org,
+ Neal Liu <neal.liu@mediatek.com>, linux-tegra@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 29, 2020 at 11:29:27AM +0300, Andy Shevchenko wrote:
-> On Sat, Jun 27, 2020 at 04:12:22PM +0200, Greg KH wrote:
-> > On Sat, Jun 20, 2020 at 03:59:14AM +0800, sean.wang@mediatek.com wrote:
-> > > From: Sean Wang <sean.wang@mediatek.com>
-> > > 
-> > > Bluetooth Interface (BTIF) is designed dedicatedly for MediaTek SOC with
-> > > BT in order to be instead of the UART interface between BT module and Host
-> > > CPU, and not exported to user space to access.
-> > > 
-> > > As the UART design, BTIF will be an APB slave and can transmit or receive
-> > > data by MCU access, but doesn't provide termios function like baudrate and
-> > > flow control setup.
-> > > 
-> > > Even LCR on offset 0xC that is just a FAKELCR
-> > > a. If FAKELCR[7] is equaled to 1, RBR(0x00), THR(0x00), IER(0x04)
-> > >    will not be readable/writable.
-> > > 
-> > > b. If FAKELCR is equaled to 0xBF, RBR(0x00), THR(0x00), IER(0x04),
-> > >    IIR(0x08), and LSR(0x14) will not be readable/writable.
-> > > 
-> > > So adding a new capability 'UART_CAP_NTIO' for the unusual unsupported
-> > > case.
-> > > 
-> > > The bluetooth driver would use BTIF device as a serdev. So the termios
-> > > still function would be called in kernelspace from ttyport_open in
-> > > drivers/tty/serdev/serdev-ttyprt.c.
-> 
-> > > +#define UART_CAP_NTIO	(1 << 18)	/* UART doesn't do termios */
-> > 
-> > Naming is hard.  I will never remember what "NTIO" is, how about we make
-> > it explicit:
-> > 	define UART_CAP_IGNORE_TERMIOS
-> > 
-> > And the _CAP_ name is getting out of hand, this isn't a "capability",
-> > it's a "quirk for this port" but that's a battle to worry about later...
-> 
-> For quirks we have a separate field in struct uart_port. Perhaps that can be used?
+*** BLURB HERE ***
 
-That would be much nicer, if possible.
+Neal Liu (1):
+  cpuidle: change enter_s2idle() prototype
 
-thanks,
+ drivers/acpi/processor_idle.c   |    6 ++++--
+ drivers/cpuidle/cpuidle-tegra.c |    8 +++++---
+ drivers/idle/intel_idle.c       |    6 ++++--
+ include/linux/cpuidle.h         |    6 +++---
+ 4 files changed, 16 insertions(+), 10 deletions(-)
 
-greg k-h
-
+-- 
+1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
