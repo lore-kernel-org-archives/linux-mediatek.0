@@ -4,72 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DA3CCC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 06:01:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CDBD8C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 06:04:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A92C123132
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 06:01:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9518423130
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2020 06:04:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Q2LcyzA9";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="kp2T8ika"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A92C123132
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="G9M7v68d";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="clCCTsKa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9518423130
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=realtek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=j6/xmnCZ7YOJyG9cczpOwpmhYfAme9IqD7I3urOLTgM=; b=Q2LcyzA9aeSe0wc9GK53Un4Xi
-	duB9bHUy9toB5O4otFoTxtl1nf1DiYCJhz3U3htwKwSd5ayhl//99FmfWcra/2EUQOPPzwKk+9bs7
-	M1XCPcbrcilIU75EAf71il70pSFGGxo7eI83pCugoX2CK8kKqNZr+4itYVb+F7qyAiyIbELE14C5m
-	T6l2LYyJclxxe/HunEKvjjOKjgK1316DJwK5WSzFv8TJ2mxT8JJOrctyX9zT9MO4xTf8ADS/oN9CD
-	vcxssSkl4bmRihdcUncAs3DCgzHg7o3B/gzPTr5jsP9LbQqlUiSybONqLbdRDSixscPlbp3pBj7dh
-	f7bLSkZ8A==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XYRRlJi5zdZqvaJTkP7BAUMQA4sD6fInNwqiylSKdkQ=; b=G9M7v68dcXhSCoAbNPIB63PYnb
+	YI/y80C97R62w8PSs7fV+aVA0xHAjkD/qvzMPVoxbYiJ/ZTyW5pXvIsUyi5V8zwInFEhU80EHgQde
+	SoA7t3jlVgpD4l68EluGXT25RNG3tneHK5YUi3hHdnQ9VLJlIKKFvHiz1TCmndU9d3ODCTuo9Lx/R
+	S6ytgviQg8wREnCrCktRkMFJeO9X0I49J5a9LrkopTLEb2QtEy7zOzI84IOpZLt+ghxfXt/j37Tid
+	DOTS4vkyF/ZJRD6JtC07QYpaRT2Hp+gWIuu2lgZqnklPOYaJ5V92TtAvZVAaZRgZ9usN0k3YmgXyC
+	FxLv4/8g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jpmqq-0002Gd-OK; Mon, 29 Jun 2020 06:01:09 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jpmu4-00031B-Vn; Mon, 29 Jun 2020 06:04:29 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jpmqo-0002Fj-6K; Mon, 29 Jun 2020 06:01:07 +0000
-X-UUID: 95aade42b7bb4c0eaea1d06bb5a06143-20200628
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=NwS9jy7CIdaWYOmPmW3wkHO2uEs/CxdTSonBcS5TmwQ=; 
- b=kp2T8ikaRIDd/Tck19M6CDoHpibcOL2enKMzf/PFuMkh1oOHovHO5ellSR2Yy+4sIl8FDss4Q87d9RVnBeU7x+GZKaHwthEGCywBDYC7mYIYgnszt+c1C5eHspDdjL6cD8GOkaJRCxUVIHqaJoiLLv46kTXN+xH7QoqCMvakyWw=;
-X-UUID: 95aade42b7bb4c0eaea1d06bb5a06143-20200628
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 940440364; Sun, 28 Jun 2020 22:00:56 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 28 Jun 2020 23:00:56 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 29 Jun 2020 14:00:53 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 29 Jun 2020 14:00:55 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi
- <felipe.balbi@linux.intel.com>
-Subject: [PATCH 2/2] usb: mtu3: fix NULL pointer dereference
-Date: Mon, 29 Jun 2020 14:00:34 +0800
-Message-ID: <1593410434-19406-2-git-send-email-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1593410434-19406-1-git-send-email-chunfeng.yun@mediatek.com>
-References: <1593410434-19406-1-git-send-email-chunfeng.yun@mediatek.com>
+ id 1jpmu0-000300-WA; Mon, 29 Jun 2020 06:04:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Type:MIME-Version:Message-ID:
+ Date:Subject:CC:To:From:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:In-Reply-To:References;
+ bh=TaK3wdOPjxXoHAHmoiT5SXqiJsX89YDim1QtX3nCJ5w=; b=clCCTsKaOWqtz+5Jx8pYgLvPLg
+ McrEAAiWtcszDqqM+t+7O7vshEQlVFSpgpqHhQcevrekR2fo8RKAGIohWaTJNaxRMUbaWournindu
+ dje2r4AtOpdZ+UCNN1UwMAUDtSZ+yPbmfzAdtxrLxVCgNaMNshN63Y9fg6AYzGblTLjaKCbIXGbRP
+ ZZSULLA4bmd8Sqbu+AuzozQDWi437myA6lNxF9r1PS5Hfv4MLuw/pTaANAM28+Iyv6l8TDK+SvG2F
+ ze6T+jw57TRRgaC+v1sIgLmU5b5btzxKQpPejdAqxWcZGWzdtGpeZsZIaEgDiVLUUmDygrSXxMTMM
+ DQAnfh4Q==;
+Received: from rtits2.realtek.com ([211.75.126.72] helo=rtits2.realtek.com.tw)
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jpmtv-0002Dn-Sd; Mon, 29 Jun 2020 06:04:23 +0000
+Authenticated-By: 
+X-SpamFilter-By: ArmorX SpamTrap 5.69 with qID 05T63kQL2014575,
+ This message is accepted by code: ctloc85258
+Received: from mail.realtek.com (rtexmb06.realtek.com.tw[172.21.6.99])
+ by rtits2.realtek.com.tw (8.15.2/2.66/5.86) with ESMTPS id 05T63kQL2014575
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+ Mon, 29 Jun 2020 14:03:46 +0800
+Received: from RTEXMB04.realtek.com.tw (172.21.6.97) by
+ RTEXMB06.realtek.com.tw (172.21.6.99) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1779.2; Mon, 29 Jun 2020 14:03:46 +0800
+Received: from localhost.localdomain (172.21.87.237) by
+ RTEXMB04.realtek.com.tw (172.21.6.97) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1779.2; Mon, 29 Jun 2020 14:03:46 +0800
+From: <hildawu@realtek.com>
+To: <marcel@holtmann.org>
+Subject: [PATCH] Bluetooth: btusb: WBS support USB alternate setting 1
+Date: Mon, 29 Jun 2020 14:03:38 +0800
+Message-ID: <20200629060338.10705-1-hildawu@realtek.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 7B37AF07867A61C3DD88A4B9EB1AE839680AB059AAFF40C70514E259127CB69D2000:8
-X-MTK: N
+X-Originating-IP: [172.21.87.237]
+X-ClientProxiedBy: RTEXMB02.realtek.com.tw (172.21.6.95) To
+ RTEXMB04.realtek.com.tw (172.21.6.97)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20200629_070420_631591_974278FE 
+X-CRM114-Status: GOOD (  13.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,90 +90,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Markus Elfring <Markus.Elfring@web.de>, linux-arm-kernel@lists.infradead.org
+Cc: max.chou@realtek.com, johan.hedberg@gmail.com, kidman@realtek.com,
+ linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org,
+ alex_lu@realsil.com.cn, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some pointers are dereferenced before successful checks.
+From: Hilda Wu <hildawu@realtek.com>
 
-Reported-by: Markus Elfring <Markus.Elfring@web.de>
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+For WBS support, btusb driver could be set to alternate setting 1.
+
+Signed-off-by: Hilda Wu <hildawu@realtek.com>
 ---
- drivers/usb/mtu3/mtu3_gadget.c | 25 ++++++++++++++++++-------
- 1 file changed, 18 insertions(+), 7 deletions(-)
+ drivers/bluetooth/btusb.c | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
-index f93732e..1689ca8 100644
---- a/drivers/usb/mtu3/mtu3_gadget.c
-+++ b/drivers/usb/mtu3/mtu3_gadget.c
-@@ -332,14 +332,21 @@ static int mtu3_gadget_queue(struct usb_ep *ep,
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index c7cc8e594166..7942f9314fd7 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -453,6 +453,7 @@ static const struct dmi_system_id btusb_needs_reset_resume_table[] = {
+ #define BTUSB_HW_RESET_ACTIVE	12
+ #define BTUSB_TX_WAIT_VND_EVT	13
+ #define BTUSB_WAKEUP_DISABLE	14
++#define BTUSB_WBS_ALT1		15
  
- static int mtu3_gadget_dequeue(struct usb_ep *ep, struct usb_request *req)
- {
--	struct mtu3_ep *mep = to_mtu3_ep(ep);
--	struct mtu3_request *mreq = to_mtu3_request(req);
-+	struct mtu3_ep *mep;
-+	struct mtu3_request *mreq;
- 	struct mtu3_request *r;
-+	struct mtu3 *mtu;
- 	unsigned long flags;
- 	int ret = 0;
--	struct mtu3 *mtu = mep->mtu;
+ struct btusb_data {
+ 	struct hci_dev       *hdev;
+@@ -1666,14 +1667,18 @@ static void btusb_work(struct work_struct *work)
+ 				new_alts = data->sco_num;
+ 			}
+ 		} else if (data->air_mode == HCI_NOTIFY_ENABLE_SCO_TRANSP) {
+-
+-			data->usb_alt6_packet_flow = true;
+-
+ 			/* Check if Alt 6 is supported for Transparent audio */
+-			if (btusb_find_altsetting(data, 6))
++			if (btusb_find_altsetting(data, 6)) {
++				data->usb_alt6_packet_flow = true;
+ 				new_alts = 6;
+-			else
++			} else if (test_bit(BTUSB_WBS_ALT1, &data->flags)) {
++				if (btusb_find_altsetting(data, 1))
++					new_alts = 1;
++				else
++					bt_dev_err(hdev, "Device does not support ALT setting 1");
++			} else {
+ 				bt_dev_err(hdev, "Device does not support ALT setting 6");
++			}
+ 		}
  
--	if (!ep || !req || mreq->mep != mep)
-+	if (!ep || !req)
-+		return -EINVAL;
-+
-+	mep = to_mtu3_ep(ep);
-+	mtu = mep->mtu;
-+
-+	mreq = to_mtu3_request(req);
-+	if (mreq->mep != mep)
- 		return -EINVAL;
+ 		if (btusb_switch_alt_setting(hdev, new_alts) < 0)
+@@ -3965,6 +3970,7 @@ static int btusb_probe(struct usb_interface *intf,
+ 		 * (DEVICE_REMOTE_WAKEUP)
+ 		 */
+ 		set_bit(BTUSB_WAKEUP_DISABLE, &data->flags);
++		set_bit(BTUSB_WBS_ALT1, &data->flags);
  
- 	dev_dbg(mtu->dev, "%s : req=%p\n", __func__, req);
-@@ -373,8 +380,8 @@ static int mtu3_gadget_dequeue(struct usb_ep *ep, struct usb_request *req)
-  */
- static int mtu3_gadget_ep_set_halt(struct usb_ep *ep, int value)
- {
--	struct mtu3_ep *mep = to_mtu3_ep(ep);
--	struct mtu3 *mtu = mep->mtu;
-+	struct mtu3_ep *mep;
-+	struct mtu3 *mtu;
- 	struct mtu3_request *mreq;
- 	unsigned long flags;
- 	int ret = 0;
-@@ -382,6 +389,9 @@ static int mtu3_gadget_ep_set_halt(struct usb_ep *ep, int value)
- 	if (!ep)
- 		return -EINVAL;
- 
-+	mep = to_mtu3_ep(ep);
-+	mtu = mep->mtu;
-+
- 	dev_dbg(mtu->dev, "%s : %s...", __func__, ep->name);
- 
- 	spin_lock_irqsave(&mtu->lock, flags);
-@@ -422,11 +432,12 @@ static int mtu3_gadget_ep_set_halt(struct usb_ep *ep, int value)
- /* Sets the halt feature with the clear requests ignored */
- static int mtu3_gadget_ep_set_wedge(struct usb_ep *ep)
- {
--	struct mtu3_ep *mep = to_mtu3_ep(ep);
-+	struct mtu3_ep *mep;
- 
- 	if (!ep)
- 		return -EINVAL;
- 
-+	mep = to_mtu3_ep(ep);
- 	mep->wedged = 1;
- 
- 	return usb_ep_set_halt(ep);
+ 		err = usb_autopm_get_interface(intf);
+ 		if (err < 0)
 -- 
-1.9.1
+2.17.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
