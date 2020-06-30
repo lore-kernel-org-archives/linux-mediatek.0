@@ -2,74 +2,62 @@ Return-Path: <SRS0=AAZc=AL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ECBC7C433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 07:04:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4FC57C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 07:07:41 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BAFD3206CB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 07:04:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1BD732073E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 07:07:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="wpj2wKWS";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="P+OSWT6F"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BAFD3206CB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jsCVi5gK";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="GUtETFoP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1BD732073E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VdUEafli0IA8AAGznDFuivuyE4sezNCa0c6AJ2DD5P8=; b=wpj2wKWSLB1JoU0SiKq9w8BYU
-	m8kf5Gy4I3sDepAUo/wpKBGsKlPQPQiMTpoGp+2V7qAtQDWUlWKIYELOYJ84yd92sZciSh1NMxsfn
-	xVRGiP0IvXVXVHoqoX+0VZNcyjqKXEG+4qhCWUDS8mGBI497dxXkRPxwNEtnC3gdnJMtVxQB51kTZ
-	tj10zKwTEZ+wMds9JhNuVXarwdqj6wxjR7QZu3rYYe5vLfK4O0aZqXgvbF62zZ7Yvzv6bRTaMxSsU
-	MsFJpJX1ygdDvicCzkk7SnHbPe/MmEkgGJTP5Rxx3Bqu4BOKfDClRLKzSAmQwFhJvbO0g5NKfzhqV
-	YBYBf+H7A==;
+	 bh=P+8E0fTVpDo6ChZtScKOOn/gYSOneuVPAxtSjRLrfbo=; b=jsCVi5gKVy2TWkuJUObMJqdY2
+	n4kAKR9DfgGnqg5PCpQ/GTNjr9CC1vJrM071WhPkTS19Nyt/9qBR1TgINYs2ml/YDWp3gAAlTyx0M
+	rGhyOz1GrkWmiTKFsprHTNaHdqG6UIjOhJieBgeAJ2JUzxNHg2MdAcGg/T6UPXmirAhGLCaxOPEmn
+	ojOmmIgMMZVemjijbZGpu9qmaLSCds2eYp7PF15WPfjiX+COWfR4+vm1BOjRUYllPt1Kf4XxSYpqu
+	zLczb46fsu79eOCTj491X06aP9r2c4YlgQQjKkT8idijMjQlBxEIE8BhoXdcgDPm/MX7yQAq2044H
+	0/JLoZGVQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqAJd-0001JX-Ns; Tue, 30 Jun 2020 07:04:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jqAMf-0001bo-Kt; Tue, 30 Jun 2020 07:07:33 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqAJb-0001J5-Ez; Tue, 30 Jun 2020 07:04:24 +0000
-X-UUID: a6a2bc1400774bb49e40b4478b6bb395-20200629
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=85Y8+6bkZLH5yMFgsr9O3/8M6UcByJwt+cBROWXTJxI=; 
- b=P+OSWT6F21j9ksS46fSGcHQdhA/2bejizLU1uJCuAa9XA+6VnvoNpdrGX/F2dNeBvm2rymKbuIQcALj8BS374rJgdXYcXX5pgeQ+0rUDU9GTRmVJ8Qz4fZDThMywhMIayoVtk5luXCsbQPHhbqWQ01EnbfSRB7Hd66Hq8FcktwY=;
-X-UUID: a6a2bc1400774bb49e40b4478b6bb395-20200629
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 603420964; Mon, 29 Jun 2020 23:04:07 -0800
-Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 30 Jun 2020 00:04:13 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS33N2.mediatek.inc
- (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 30 Jun 2020 15:04:10 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 30 Jun 2020 15:04:09 +0800
-Message-ID: <1593500631.3798.9.camel@mhfsdcap03>
-Subject: Re: [PATCH 1/2] usb: mtu3: disable USB2 LPM
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Peter Chen <hzpeterchen@gmail.com>
-Date: Tue, 30 Jun 2020 15:03:51 +0800
-In-Reply-To: <CAL411-qVjxYk7f+b74XHfj7jpxALS4LYUKe0XdSfwRZcQibNfA@mail.gmail.com>
-References: <1593410434-19406-1-git-send-email-chunfeng.yun@mediatek.com>
- <CAL411-qVjxYk7f+b74XHfj7jpxALS4LYUKe0XdSfwRZcQibNfA@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jqAMd-0001bX-K8
+ for linux-mediatek@lists.infradead.org; Tue, 30 Jun 2020 07:07:32 +0000
+Received: from localhost (unknown [151.48.138.186])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1B9812073E;
+ Tue, 30 Jun 2020 07:07:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1593500850;
+ bh=dPzQ1b+X74tG/VK6jGk6QBhiIJidaJbrfTaR58NFdtE=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=GUtETFoPUrpqTbY5pabj5+jnOVxqsjl6/jlBjhJhlJlDkFKLNYm0rF+TLFkVOAPdR
+ pe/teLzD/xFSVvhtjoSKAl83IvtAGBB4yVoLLl+ICdR1aRetFmSW3EfVHKFJhzUlB/
+ KF/X7ad/Pz2VXoGOdSlGGlyC5O25ExeseEMzcIno=
+Date: Tue, 30 Jun 2020 09:07:25 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: sean.wang@mediatek.com
+Subject: Re: [PATCH 1/3] mt76: mt7663u: fix memory leak in set key
+Message-ID: <20200630070725.GA2169@localhost.localdomain>
+References: <5e8786d9cf0ccd09dd9c13c24c48ce441afbf0ff.1593491298.git.sean.wang@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: FC147824681EC42AD367BF2416B37B5EB0CDBAF9C30100AADD32FDD739E780162000:8
-X-MTK: N
+In-Reply-To: <5e8786d9cf0ccd09dd9c13c24c48ce441afbf0ff.1593491298.git.sean.wang@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,59 +69,117 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Felipe Balbi <felipe.balbi@linux.intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- USB list <linux-usb@vger.kernel.org>, lkml <linux-kernel@vger.kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Markus Elfring <Markus.Elfring@web.de>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
+ ryder.lee@mediatek.com, linux-wireless@vger.kernel.org, nbd@nbd.name
+Content-Type: multipart/mixed; boundary="===============8899090826848288770=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2020-06-29 at 15:37 +0800, Peter Chen wrote:
-> On Mon, Jun 29, 2020 at 2:04 PM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
-> >
-> > A SuperSpeed device shall include the USB 2.0 extension descriptor
-> > and shall support LPM when operating in USB 2.0 HS mode(see usb3.2
-> > spec9.6.2.1). But we always don't support it, so disable it by
-> > default, otherwise device will enter LPM suspend mode when
-> > connected to Win10 system.
-> 
-> Linux also supports USB2 LPM. Besides, USB-IF CH9 test will check
-> LPM support if the device is USB 2.1, how could you deal with it?
-Indeed need support it for SS device, I'll check it again, thanks a lot
 
-> 
-> Peter
-> 
-> >
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> >  drivers/usb/mtu3/mtu3_core.c | 2 ++
-> >  1 file changed, 2 insertions(+)
-> >
-> > diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
-> > index 9dd0216..50d6a40 100644
-> > --- a/drivers/usb/mtu3/mtu3_core.c
-> > +++ b/drivers/usb/mtu3/mtu3_core.c
-> > @@ -604,6 +604,8 @@ static void mtu3_regs_init(struct mtu3 *mtu)
-> >         mtu3_clrbits(mbase, U3D_MISC_CTRL, VBUS_FRC_EN | VBUS_ON);
-> >         /* enable automatical HWRW from L1 */
-> >         mtu3_setbits(mbase, U3D_POWER_MANAGEMENT, LPM_HRWE);
-> > +       /* always reject LPM request */
-> > +       mtu3_setbits(mbase, U3D_POWER_MANAGEMENT, LPM_MODE(1));
-> >
-> >         /* use new QMU format when HW version >= 0x1003 */
-> >         if (mtu->gen2cp)
-> > --
-> > 1.9.1
-> > _______________________________________________
-> > linux-arm-kernel mailing list
-> > linux-arm-kernel@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+--===============8899090826848288770==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="pWyiEgJYm5f9v55/"
+Content-Disposition: inline
+
+
+--pWyiEgJYm5f9v55/
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> From: Sean Wang <sean.wang@mediatek.com>
+>=20
+> Fix memory leak in set key.
+>=20
+
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+
+> Fixes: eb99cc95c3b6 ("mt76: mt7615: introduce mt7663u support")
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  .../net/wireless/mediatek/mt76/mt7615/usb.c   | 22 +++++++++++++------
+>  1 file changed, 15 insertions(+), 7 deletions(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/usb.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7615/usb.c
+> index 0ba28d37c414..96a081be108e 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
+> @@ -165,12 +165,16 @@ __mt7663u_mac_set_key(struct mt7615_dev *dev,
+> =20
+>  	lockdep_assert_held(&dev->mt76.mutex);
+> =20
+> -	if (!sta)
+> -		return -EINVAL;
+> +	if (!sta) {
+> +		err =3D -EINVAL;
+> +		goto out;
+> +	}
+> =20
+>  	cipher =3D mt7615_mac_get_cipher(key->cipher);
+> -	if (cipher =3D=3D MT_CIPHER_NONE)
+> -		return -EOPNOTSUPP;
+> +	if (cipher =3D=3D MT_CIPHER_NONE) {
+> +		err =3D -EOPNOTSUPP;
+> +		goto out;
+> +	}
+> =20
+>  	wcid =3D &wd->sta->wcid;
+> =20
+> @@ -178,19 +182,23 @@ __mt7663u_mac_set_key(struct mt7615_dev *dev,
+>  	err =3D mt7615_mac_wtbl_update_key(dev, wcid, key->key, key->keylen,
+>  					 cipher, key->cmd);
+>  	if (err < 0)
+> -		return err;
+> +		goto out;
+> =20
+>  	err =3D mt7615_mac_wtbl_update_pk(dev, wcid, cipher, key->keyidx,
+>  					key->cmd);
+>  	if (err < 0)
+> -		return err;
+> +		goto out;
+> =20
+>  	if (key->cmd =3D=3D SET_KEY)
+>  		wcid->cipher |=3D BIT(cipher);
+>  	else
+>  		wcid->cipher &=3D ~BIT(cipher);
+> =20
+> -	return 0;
+> +out:
+> +	kfree(key->key);
+> +	kfree(wd);
+> +
+> +	return err;
+>  }
+> =20
+>  void mt7663u_wtbl_work(struct work_struct *work)
+> --=20
+> 2.25.1
+
+--pWyiEgJYm5f9v55/
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCXvrkqgAKCRA6cBh0uS2t
+rJW7AQDzRpCy7iO+dgNKsP9qclqjjH70wDijsS5eb5HzUjqt9QD7BkwTOimphjKz
+/KpwjRwlo2567sM+026yGKzrds1wgAk=
+=YUPq
+-----END PGP SIGNATURE-----
+
+--pWyiEgJYm5f9v55/--
+
+
+--===============8899090826848288770==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============8899090826848288770==--
+
