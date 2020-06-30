@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D85DCC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 10:57:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8BA29C433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 11:00:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A3DC120780
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 10:57:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 57958207E8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 11:00:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bUVZXQJz";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="rCBQ6kx6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A3DC120780
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2lxPXsq6";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="KY3IKegX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 57958207E8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,50 +26,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ZMw9OWygs6XvD2P+qLIszg9d4f1invXgGXRZD8t6jQU=; b=bUVZXQJz9rO/DRyys284zBu+g
-	z0d6KVHp1JiJ8ejvKuGAnLJxFr+DD2ACdLTcYGsTiaE6uRogrLbYe2kIU0TEYHicl3lZ/6dy5cjyR
-	YkCe49ADM+EkmmKAysn5V/E9KO2WNUtccl2+Nh8x5+lPUh/nZIDtm9yEmX4UDMR9xh1/Jw9jKYyZX
-	EtU4TGOXn3/2qyBuuIO28oiBYcBd0FtowC/O/B4ROuTu2M2XjdvHcqVzR+LMBPb013k5xcuJPPAxi
-	UUgeAtmRCTdltQcnEKA5a6fOa0ZsoaB9GecM92cxx/AT1Ckhzb0D6/M8uYRNNNI0NWUXg3joO+kKH
-	qg7KYPlag==;
+	 bh=t3sJwlMrPBVePajSStxyoDHA36byQSVaoLM0oL7KrWk=; b=2lxPXsq6JzbgNub86H6HDKGEp
+	3t1GmYe+R5Q2V0e2dS9Um0H//eJ/8bkyAtBbIaTMbdhwcUTb1InGKbV+1zIdAq5uTLRb5Z90xmgA0
+	QnReyT28csoBS5aRDispyTUBhftZJy4OUx5HBDnJGQaFO1Be+bsaY/H6D6IePSxfsVZChFVBa3eJE
+	3CoIwLxCJ3A/nh9ChWH9mK5ShMdZZq0gyXTuy+BYbQcA8UfKFU6jvgp69+Ct9ZxlSs6VzHcAJbAtk
+	tvAWWGwq5UrJGBYUPqm5BT9q4lzkDOshWO7QhYMxccgLI25XlbzgITb1yf5t1GUjzJdzeQbXRuRYI
+	6M4LdQR1w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqDww-0002GG-Cx; Tue, 30 Jun 2020 10:57:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jqE0H-0002pQ-OQ; Tue, 30 Jun 2020 11:00:41 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqDwt-0002FV-Kt; Tue, 30 Jun 2020 10:57:12 +0000
-X-UUID: 97d6420ab1dc420096a2f905bfa90de7-20200630
+ id 1jqE0E-0002oo-Rd; Tue, 30 Jun 2020 11:00:40 +0000
+X-UUID: e83419dda7f644d3b1f81a560aba4eb5-20200630
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=dyBf/FOqBOKM8w25J19ReW9jhDIjCt4TCH41lbsQigU=; 
- b=rCBQ6kx6gNiDDDJwcSms2MM8jvsOCrB24VcTRgBByMCXVZUNoEL0XihFBrD4QYU6dwu6LqWylRWBLsyHDrLaP9kWKcmnaifHWGGXFjXwZJ14HIn7+YZWQHSl1re6pP/aSq5LH6RSIWfea3TSXbuDHv8y4y/d5qDuYjEgKWhCmQM=;
-X-UUID: 97d6420ab1dc420096a2f905bfa90de7-20200630
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
+ bh=Qgf6+KnJU1C/9ERhG+00Cd7X5IE2bZgFvfn2R9N4ujg=; 
+ b=KY3IKegXO3DSuD/QVvBPekshjSIttVde6VaOcWgugHvPr6vyyUNCcHSuf0jYtu3aHCWyTnywl4IgN78UoCSEECRoHPUNzctSBlnIGY+2AWW91K4tTqrKFzA7qXKv+xxCx9yf0kkwWolAVnzOt2tOojZ+IRh3J21EpOnVt5jV9x4=;
+X-UUID: e83419dda7f644d3b1f81a560aba4eb5-20200630
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <chao.hao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 243807586; Tue, 30 Jun 2020 02:57:02 -0800
-Received: from MTKMBS32N2.mediatek.inc (172.27.4.72) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 30 Jun 2020 03:57:04 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32N2.mediatek.inc
- (172.27.4.72) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 30 Jun 2020 18:57:01 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 30 Jun 2020 18:56:58 +0800
-Message-ID: <1593514600.24171.26.camel@mhfsdcap03>
-Subject: Re: [PATCH v5 03/10] iommu/mediatek: Modify the usage of
- mtk_iommu_plat_data structure
-From: Yong Wu <yong.wu@mediatek.com>
-To: Chao Hao <chao.hao@mediatek.com>
-Date: Tue, 30 Jun 2020 18:56:40 +0800
-In-Reply-To: <20200629071310.1557-4-chao.hao@mediatek.com>
+ with ESMTP id 1985336076; Tue, 30 Jun 2020 03:00:34 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 30 Jun 2020 04:00:33 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 30 Jun 2020 19:00:23 +0800
+Received: from [10.15.20.246] (10.15.20.246) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 30 Jun 2020 19:00:23 +0800
+Message-ID: <1593514765.13270.3.camel@mbjsdccf07>
+Subject: Re: [PATCH v5 07/10] iommu/mediatek: Add REG_MMU_WR_LEN register
+ definition
+From: chao hao <Chao.Hao@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Date: Tue, 30 Jun 2020 18:59:25 +0800
+In-Reply-To: <ccb63946-e187-187e-c92c-0423f1831d8f@gmail.com>
 References: <20200629071310.1557-1-chao.hao@mediatek.com>
- <20200629071310.1557-4-chao.hao@mediatek.com>
+ <20200629071310.1557-8-chao.hao@mediatek.com>
+ <ccb63946-e187-187e-c92c-0423f1831d8f@gmail.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: E569C367CB152C27234DE089D55991412047532CEA7DCF42A63DDE8E08E5260F2000:8
+X-TM-SNTS-SMTP: 329E5CED00E1E6D984FED548CE85F058205BE3EED5886D85F7D19028D1218CCC2000:8
 X-MTK: N
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -85,106 +86,127 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: devicetree@vger.kernel.org, FY Yang <fy.yang@mediatek.com>,
  wsd_upstream@mediatek.com, Joerg Roedel <joro@8bytes.org>,
  linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>,
- iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+ Chao Hao <chao.hao@mediatek.com>, iommu@lists.linux-foundation.org,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Yong Wu <yong.wu@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chao,
-
-This is also ok for me. Only two format nitpick.
-
-On Mon, 2020-06-29 at 15:13 +0800, Chao Hao wrote:
-> Given the fact that we are adding more and more plat_data bool values,
-> it would make sense to use a u32 flags register and add the appropriate
-> macro definitions to set and check for a flag present.
-> No functional change.
+On Mon, 2020-06-29 at 12:16 +0200, Matthias Brugger wrote:
 > 
-> Suggested-by: Matthias Brugger <matthias.bgg@gmail.com>
-> Signed-off-by: Chao Hao <chao.hao@mediatek.com>
-> ---
+> On 29/06/2020 09:13, Chao Hao wrote:
+> > Some platforms(ex: mt6779) need to improve performance by setting
+> > REG_MMU_WR_LEN register. And we can use WR_THROT_EN macro to control
+> > whether we need to set the register. If the register uses default value,
+> > iommu will send command to EMI without restriction, when the number of
+> > commands become more and more, it will drop the EMI performance. So when
+> > more than ten_commands(default value) don't be handled for EMI, iommu will
+> > stop send command to EMI for keeping EMI's performace by enabling write
+> > throttling mechanism(bit[5][21]=0) in MMU_WR_LEN_CTRL register.
+> > 
+> > Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> > Signed-off-by: Chao Hao <chao.hao@mediatek.com>
+> > ---
+> >  drivers/iommu/mtk_iommu.c | 10 ++++++++++
+> >  drivers/iommu/mtk_iommu.h |  2 ++
+> >  2 files changed, 12 insertions(+)
+> > 
+> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> > index ec1f86913739..92316c4175a9 100644
+> > --- a/drivers/iommu/mtk_iommu.c
+> > +++ b/drivers/iommu/mtk_iommu.c
+> > @@ -46,6 +46,8 @@
+> >  #define F_MMU_STANDARD_AXI_MODE_BIT		(BIT(3) | BIT(19))
+> >  
+> >  #define REG_MMU_DCM_DIS				0x050
+> > +#define REG_MMU_WR_LEN				0x054
+> 
+> The register name is confusing. For me it seems to describe the length of a
+> write but it is used for controlling the write throttling. Is this the name
+> that's used in the datasheet?
+> 
 
-[snip]
-
->  static const struct mtk_iommu_plat_data mt2712_data = {
->  	.m4u_plat     = M4U_MT2712,
-> -	.has_4gb_mode = true,
-> -	.has_bclk     = true,
-> -	.has_vld_pa_rng   = true,
-> +	.flags        = HAS_4GB_MODE |
-> +			HAS_BCLK |
-> +			HAS_VLD_PA_RNG,
-
-short enough. we can put it in one line?
-
->  	.larbid_remap = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
->  };
->  
->  static const struct mtk_iommu_plat_data mt8173_data = {
->  	.m4u_plat     = M4U_MT8173,
-> -	.has_4gb_mode = true,
-> -	.has_bclk     = true,
-> -	.reset_axi    = true,
-> +	.flags	      = HAS_4GB_MODE |
-> +			HAS_BCLK |
-> +			RESET_AXI,
->  	.larbid_remap = {0, 1, 2, 3, 4, 5}, /* Linear mapping. */
->  };
->  
->  static const struct mtk_iommu_plat_data mt8183_data = {
->  	.m4u_plat     = M4U_MT8183,
-> -	.reset_axi    = true,
-> +	.flags        = RESET_AXI,
->  	.larbid_remap = {0, 4, 5, 6, 7, 2, 3, 1},
->  };
->  
-> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> index 1b6ea839b92c..7cc39f729263 100644
-> --- a/drivers/iommu/mtk_iommu.h
-> +++ b/drivers/iommu/mtk_iommu.h
-> @@ -17,6 +17,15 @@
->  #include <linux/spinlock.h>
->  #include <soc/mediatek/smi.h>
->  
-> +#define HAS_4GB_MODE			BIT(0)
-> +/* HW will use the EMI clock if there isn't the "bclk". */
-> +#define HAS_BCLK			BIT(1)
-> +#define HAS_VLD_PA_RNG			BIT(2)
-> +#define RESET_AXI			BIT(3)
-> +
-> +#define MTK_IOMMU_HAS_FLAG(pdata, _x) \
-> +		((((pdata)->flags) & (_x)) == (_x))
-
-If these definitions are not used in mtk_iommu_v1.c(also no this plan),
-then we can put them in the mtk_iommu.c.
+Thanks for your review carefully, we can name it to REG_MMU_WR_LEN_CTRL
 
 
-BTW, the patch title "modify the usage of mtk_iommu_plat_data structure"
-isn't so clear, we could write what the detailed modification is.
-something like:
-iommu/mediatek: Use a u32 flags to describe different HW features
+> > +#define F_MMU_WR_THROT_DIS_BIT			(BIT(5) |  BIT(21))
+> 
+> There are two spaces between '|' and 'BIT(21)', should be one.
+> 
+> Regarding the name of the define, what does the 'F_' statnds for? 
 
-> +
->  struct mtk_iommu_suspend_reg {
->  	u32				misc_ctrl;
->  	u32				dcm_dis;
-> @@ -36,12 +45,7 @@ enum mtk_iommu_plat {
->  
->  struct mtk_iommu_plat_data {
->  	enum mtk_iommu_plat m4u_plat;
-> -	bool                has_4gb_mode;
-> -
-> -	/* HW will use the EMI clock if there isn't the "bclk". */
-> -	bool                has_bclk;
-> -	bool                has_vld_pa_rng;
-> -	bool                reset_axi;
-> +	u32                 flags;
->  	unsigned char       larbid_remap[MTK_LARB_NR_MAX];
->  };
->  
+F_ is used to described some bits in register and doesn't have other
+meanings. The format is refer to other bits definition
+
+> Also I think
+> it should be called '_MASK' instead of '_BIT' as it defines a mask of bits.
+> 
+
+Thanks for your advice.
+For F_MMU_WR_THROT_DIS_BIT:
+1'b0: Enable write throttling mechanism
+1'b1: Disable write throttling mechanism
+So I think we can name "F_MMU_WR_THROT_DIS  BIT(5) | BIT(21)" directly,
+it maybe more clearer.
+
+> Regards,
+> Matthias
+> 
+> >  
+> >  #define REG_MMU_CTRL_REG			0x110
+> >  #define F_MMU_TF_PROT_TO_PROGRAM_ADDR		(2 << 4)
+> > @@ -582,6 +584,12 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+> >  		writel_relaxed(regval, data->base + REG_MMU_VLD_PA_RNG);
+> >  	}
+> >  	writel_relaxed(0, data->base + REG_MMU_DCM_DIS);
+> > +	if (MTK_IOMMU_HAS_FLAG(data->plat_data, WR_THROT_EN)) {
+> > +		/* write command throttling mode */
+> > +		regval = readl_relaxed(data->base + REG_MMU_WR_LEN);
+> > +		regval &= ~F_MMU_WR_THROT_DIS_BIT;
+> > +		writel_relaxed(regval, data->base + REG_MMU_WR_LEN);
+> > +	}
+> >  
+> >  	regval = readl_relaxed(data->base + REG_MMU_MISC_CTRL);
+> >  	if (MTK_IOMMU_HAS_FLAG(data->plat_data, RESET_AXI)) {
+> > @@ -737,6 +745,7 @@ static int __maybe_unused mtk_iommu_suspend(struct device *dev)
+> >  	struct mtk_iommu_suspend_reg *reg = &data->reg;
+> >  	void __iomem *base = data->base;
+> >  
+> > +	reg->wr_len = readl_relaxed(base + REG_MMU_WR_LEN);
+> >  	reg->misc_ctrl = readl_relaxed(base + REG_MMU_MISC_CTRL);
+> >  	reg->dcm_dis = readl_relaxed(base + REG_MMU_DCM_DIS);
+> >  	reg->ctrl_reg = readl_relaxed(base + REG_MMU_CTRL_REG);
+> > @@ -761,6 +770,7 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
+> >  		dev_err(data->dev, "Failed to enable clk(%d) in resume\n", ret);
+> >  		return ret;
+> >  	}
+> > +	writel_relaxed(reg->wr_len, base + REG_MMU_WR_LEN);
+> >  	writel_relaxed(reg->misc_ctrl, base + REG_MMU_MISC_CTRL);
+> >  	writel_relaxed(reg->dcm_dis, base + REG_MMU_DCM_DIS);
+> >  	writel_relaxed(reg->ctrl_reg, base + REG_MMU_CTRL_REG);
+> > diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+> > index be6d32ee5bda..ce4f4e8f03aa 100644
+> > --- a/drivers/iommu/mtk_iommu.h
+> > +++ b/drivers/iommu/mtk_iommu.h
+> > @@ -24,6 +24,7 @@
+> >  #define RESET_AXI			BIT(3)
+> >  #define OUT_ORDER_EN			BIT(4)
+> >  #define HAS_SUB_COMM			BIT(5)
+> > +#define WR_THROT_EN			BIT(6)
+> >  
+> >  #define MTK_IOMMU_HAS_FLAG(pdata, _x) \
+> >  		((((pdata)->flags) & (_x)) == (_x))
+> > @@ -36,6 +37,7 @@ struct mtk_iommu_suspend_reg {
+> >  	u32				int_main_control;
+> >  	u32				ivrp_paddr;
+> >  	u32				vld_pa_rng;
+> > +	u32				wr_len;
+> >  };
+> >  
+> >  enum mtk_iommu_plat {
+> > 
 
 _______________________________________________
 Linux-mediatek mailing list
