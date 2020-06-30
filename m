@@ -2,83 +2,76 @@ Return-Path: <SRS0=AAZc=AL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EF6B0C433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 13:11:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 734A6C433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 14:21:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C0A30206BE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 13:11:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3F51B20672
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 14:21:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QGvshOAi";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="ePF+8Cr+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C0A30206BE
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=realtek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iWu/7604";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GVVje8vy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3F51B20672
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=w1EiDbB0/U3Chu31naSH9UotCEr54oJ0Pmt39mtvrAM=; b=QGvshOAiUsWuMQCOF+295o+5Cf
-	q9Xj6ZSOiOEFWkkfKCPHdwkeVXKsBZO3CfhCtBajdLfVJLplNswps67uMvPRTxcHyQlOWUShzqGy0
-	5pVenE/0hQGHGkPnC256ddHSenk5wl/RnxMOd6+2Re4qAy0bndSGLGPh1bpw5XUDB53gFvLPDSQ4w
-	7a9iGjZWn1zmDpl+FJquSJYLHX4qfEnabjdEFJhuDC9ZYmOWtydckBk9RfeX1SpNZIeqvp6xisXam
-	qUwHHGF9TdH8wSHZ91x16viimOZwU243HnSBBfWgoZjhaCyXPccma2G105jSyLxj0VHhM4ueZnGl8
-	/Ymt1//Q==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=pTcanY1mTCmbXl+p7HyiiXuK92ScnaykWXE/UUB14f0=; b=iWu/76049B2AQpu6Kr4SsV6NN
+	mhTYd/Lr1bEDUFsRkUSTXdTAhqMUuQP23d+scAs8GE4xWgRW8el938jdcYl6+uI14RCDEGlJwJ/1d
+	E58fDoIuR9fqh+yCenZ24uHlkd7OZWHlkAEhY9P37BTi5YQt8RMfzkVmSOvjpmYbsYOY+/BZ4kBn3
+	NgNey6GwHMF3uJ4tZQnvkqo+QxDqQ+itWDekOdXSNttYz990U703Ayl8WcaUUxEXyoWH8lA/J0yz9
+	imnEcSWQuSAolUu0+fjKDV8BpQilyNR04pSzz5P5GrRbFQASpPidXSzlKPUCtN9LJ/qu8c+GoyLqr
+	Vb2duBIMA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqG2T-0001dN-IZ; Tue, 30 Jun 2020 13:11:05 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1jqH8F-0002L9-4C; Tue, 30 Jun 2020 14:21:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqG2Q-0001d2-4o; Tue, 30 Jun 2020 13:11:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Type:MIME-Version:Message-ID:
- Date:Subject:CC:To:From:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:In-Reply-To:References;
- bh=jTBibtHkltaqNAWlHzgNxM8/MHLn4koGJ0YxXX+vzVk=; b=ePF+8Cr+Gmssno4tl+JGeYWCGW
- A7oImyFekRXy7BrDvUH2bn/Bw+dwD5RDhiXsDu93fQBF0ObPOLGsSydikjkLkSQwzSPbpEuhD4kjz
- hlApJlqwyPVpVPU/dKC1A6HTcM2NG1XofLoLp/l4KvbU+7gRsjCVJWEYcXmjvOalfvfNpD3EDF90Q
- V3invqTXMhUAzR4I6vt89LV9tFZNmdX2KPBVYCgYW9Ox8RUk/+yT1K3nhMx5+H5Utk3Z39hKI9Y3A
- RNcOjDkGG9N84xY5R5z2G7KF8TTt9ny96IHmLz8nfRkk4JXc+Vz32fOhCojHmjCxoI3txGx0msHxJ
- vLOm+MgA==;
-Received: from rtits2.realtek.com ([211.75.126.72] helo=rtits2.realtek.com.tw)
- by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqG1s-0006QV-Q9; Tue, 30 Jun 2020 13:10:59 +0000
-Authenticated-By: 
-X-SpamFilter-By: ArmorX SpamTrap 5.69 with qID 05UD9m3N2022713,
- This message is accepted by code: ctloc85258
-Received: from mail.realtek.com (rtexmb06.realtek.com.tw[172.21.6.99])
- by rtits2.realtek.com.tw (8.15.2/2.66/5.86) with ESMTPS id 05UD9m3N2022713
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Tue, 30 Jun 2020 21:09:48 +0800
-Received: from RTEXMB04.realtek.com.tw (172.21.6.97) by
- RTEXMB06.realtek.com.tw (172.21.6.99) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1779.2; Tue, 30 Jun 2020 21:09:48 +0800
-Received: from localhost.localdomain (172.21.87.237) by
- RTEXMB04.realtek.com.tw (172.21.6.97) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1779.2; Tue, 30 Jun 2020 21:09:47 +0800
-From: <hildawu@realtek.com>
-To: <marcel@holtmann.org>
-Subject: [PATCH v2] Bluetooth: btusb: USB alternate setting 1 for WBS
-Date: Tue, 30 Jun 2020 21:09:40 +0800
-Message-ID: <20200630130940.14339-1-hildawu@realtek.com>
-X-Mailer: git-send-email 2.17.1
+ id 1jqH8C-0002K7-Ag; Tue, 30 Jun 2020 14:21:05 +0000
+X-UUID: 49d4f14ee8c34161850c60608a55e44b-20200630
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=cxMnMMWUcVlBq3TyW4cE97CM4bI+Rge6V0CEfuXLJSs=; 
+ b=GVVje8vy47V91iiWKK/nPY7B2b5015LBDU7sMrA53GVdlYsnxBIBsng+47QeeH+E5YQ2UwykS2bVR74JAbiU6Qvl4E7sXk5xBzTKlEIvdulUP8f/DoAgZxL1twSFEpQmLLnDwDth+Vnucv2Nsa++zvlnmbQG9mr13iQhTFmRvTY=;
+X-UUID: 49d4f14ee8c34161850c60608a55e44b-20200630
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <jerry-ch.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 118298364; Tue, 30 Jun 2020 06:20:50 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 30 Jun 2020 07:10:51 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 30 Jun 2020 22:10:50 +0800
+Received: from [172.21.84.99] (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 30 Jun 2020 22:10:50 +0800
+Message-ID: <1593526253.29676.28.camel@mtksdccf07>
+Subject: Re: [RFC PATCH V4 0/4] media: platform: Add support for Face
+ Detection (FD) on mt8183 SoC
+From: Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>
+To: Tomasz Figa <tfiga@chromium.org>
+Date: Tue, 30 Jun 2020 22:10:53 +0800
+In-Reply-To: <20200521183825.GB249683@chromium.org>
+References: <20191204124732.10932-1-Jerry-Ch.chen@mediatek.com>
+ <1588903371.16825.14.camel@mtksdccf07>
+ <CAAFQd5CP+gH3zG9fejBv_hTzeAExMoY+L38W8e4e3OSc-gVRHg@mail.gmail.com>
+ <20200521183825.GB249683@chromium.org>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-Originating-IP: [172.21.87.237]
-X-ClientProxiedBy: RTEXMB03.realtek.com.tw (172.21.6.96) To
- RTEXMB04.realtek.com.tw (172.21.6.97)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200630_141031_824954_CF211B46 
-X-CRM114-Status: GOOD (  15.74  )
+X-MTK: N
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,111 +83,98 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: max.chou@realtek.com, johan.hedberg@gmail.com, kidman@realtek.com,
- linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org,
- alex_lu@realsil.com.cn, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ Sean Cheng =?UTF-8?Q?=28=E9=84=AD=E6=98=87=E5=BC=98=29?=
+ <Sean.Cheng@mediatek.com>, "laurent.pinchart+renesas@ideasonboard.com"
+ <laurent.pinchart+renesas@ideasonboard.com>,
+ "zwisler@chromium.org" <zwisler@chromium.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ Christie Yu =?UTF-8?Q?=28=E6=B8=B8=E9=9B=85=E6=83=A0=29?=
+ <christie.yu@mediatek.com>, jerry-ch.chen@mediatek.com,
+ HansVerkuil <hverkuil@xs4all.nl>,
+ Jungo Lin =?UTF-8?Q?=28=E6=9E=97=E6=98=8E=E4=BF=8A=29?=
+ <jungo.lin@mediatek.com>, Sj
+ Huang =?UTF-8?Q?=28=E9=BB=83=E4=BF=A1=E7=92=8B=29?= <sj.huang@mediatek.com>,
+ "yuzhao@chromium.org" <yuzhao@chromium.org>,
+ "hans.verkuil@cisco.com" <hans.verkuil@cisco.com>,
+ "pihsun@chromium.org" <pihsun@chromium.org>,
+ Frederic Chen =?UTF-8?Q?=28=E9=99=B3=E4=BF=8A=E5=85=83=29?=
+ <Frederic.Chen@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "mchehab@kernel.org" <mchehab@kernel.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hilda Wu <hildawu@realtek.com>
+Hi Tomasz,
 
-RTL8822CE supports transparent WBS to apply USB alternate setting 1.
-Add a flag to the device match data to apply alternate setting 1 which
-meet the transfer speed for WBS support.
+On Thu, 2020-05-21 at 18:38 +0000, Tomasz Figa wrote:
+> Hi Jerry,
+> 
+> On Wed, May 13, 2020 at 11:45:37PM +0200, Tomasz Figa wrote:
+> > Hi Jerry,
+> > 
+> > On Fri, May 8, 2020 at 4:03 AM Jerry-ch Chen <Jerry-ch.Chen@mediatek.com> wrote:
+> > >
+> > > Hi Laurent, Tomasz, Matthias,
+> > >
+> > > gentle ping for this patch set,
+> > > If no new comments, I would like to send a newer version.
+> > >
+> > 
+> > Sorry, I still haven't had a chance to look at the series, so feel
+> > free to send a new version and I will take a look at the new one.
+> > 
+> 
+> Finally found some time to review the series. Again sorry for the delay
+> and thanks for your patience.
+> 
+> Some general comments:
+> 1) The metadata format FourCC should be added in a separate patch,
+> together with documentation for it.
+> 2) Control IDs, structs used by the userspace, etc. should be defined in
+> a header under include/uapi/linux.
+> 
+> Please also check my replies to particular patches for further comments.
+> 
+> Best regards,
+> Tomasz
 
-Signed-off-by: Hilda Wu <hildawu@realtek.com>
----
-Changes in v2:
-- More descriptive commit log and short description.
-- Use BTUSB_USE_ALT1_FOR_WBS replace BTUSB_WBS_ALT1 for descriptive name.
-- Move alternate setting 1 check into the btusb_probe() function and adjust position of data->isoc for alternate setting check.
----
----
- drivers/bluetooth/btusb.c | 34 ++++++++++++++++++++--------------
- 1 file changed, 20 insertions(+), 14 deletions(-)
+Appreciate for your reply,
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index c7cc8e594166..e4a12c58501e 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -453,6 +453,7 @@ static const struct dmi_system_id btusb_needs_reset_resume_table[] = {
- #define BTUSB_HW_RESET_ACTIVE	12
- #define BTUSB_TX_WAIT_VND_EVT	13
- #define BTUSB_WAKEUP_DISABLE	14
-+#define BTUSB_USE_ALT1_FOR_WBS	15
- 
- struct btusb_data {
- 	struct hci_dev       *hdev;
-@@ -1666,14 +1667,15 @@ static void btusb_work(struct work_struct *work)
- 				new_alts = data->sco_num;
- 			}
- 		} else if (data->air_mode == HCI_NOTIFY_ENABLE_SCO_TRANSP) {
--
--			data->usb_alt6_packet_flow = true;
--
- 			/* Check if Alt 6 is supported for Transparent audio */
--			if (btusb_find_altsetting(data, 6))
-+			if (btusb_find_altsetting(data, 6)) {
-+				data->usb_alt6_packet_flow = true;
- 				new_alts = 6;
--			else
-+			} else if (test_bit(BTUSB_USE_ALT1_FOR_WBS, &data->flags)) {
-+				new_alts = 1;
-+			} else {
- 				bt_dev_err(hdev, "Device does not support ALT setting 6");
-+			}
- 		}
- 
- 		if (btusb_switch_alt_setting(hdev, new_alts) < 0)
-@@ -3954,6 +3956,15 @@ static int btusb_probe(struct usb_interface *intf,
- 		btusb_check_needs_reset_resume(intf);
- 	}
- 
-+	if (id->driver_info & BTUSB_AMP) {
-+		/* AMP controllers do not support SCO packets */
-+		data->isoc = NULL;
-+	} else {
-+		/* Interface orders are hardcoded in the specification */
-+		data->isoc = usb_ifnum_to_if(data->udev, ifnum_base + 1);
-+		data->isoc_ifnum = ifnum_base + 1;
-+	}
-+
- 	if (IS_ENABLED(CONFIG_BT_HCIBTUSB_RTL) &&
- 	    (id->driver_info & BTUSB_REALTEK)) {
- 		hdev->setup = btrtl_setup_realtek;
-@@ -3965,21 +3976,16 @@ static int btusb_probe(struct usb_interface *intf,
- 		 * (DEVICE_REMOTE_WAKEUP)
- 		 */
- 		set_bit(BTUSB_WAKEUP_DISABLE, &data->flags);
-+		if (btusb_find_altsetting(data, 1))
-+			set_bit(BTUSB_USE_ALT1_FOR_WBS, &data->flags);
-+		else
-+			bt_dev_err(hdev, "Device does not support ALT setting 1");
- 
- 		err = usb_autopm_get_interface(intf);
- 		if (err < 0)
- 			goto out_free_dev;
- 	}
- 
--	if (id->driver_info & BTUSB_AMP) {
--		/* AMP controllers do not support SCO packets */
--		data->isoc = NULL;
--	} else {
--		/* Interface orders are hardcoded in the specification */
--		data->isoc = usb_ifnum_to_if(data->udev, ifnum_base + 1);
--		data->isoc_ifnum = ifnum_base + 1;
--	}
--
- 	if (!reset)
- 		set_bit(HCI_QUIRK_RESET_ON_CLOSE, &hdev->quirks);
- 
--- 
-2.17.1
+So far, I've locally created an uapi header:
+include/uapi/linux/mtk_fd_40.h
+which provides some values, control ids, and the definitions of
+structures that would be needed by user of mtk_fd_40 driver.
+In addition, I also provide a MACRO as example in comments that can
+extract the struct member with bit length and offset
+definitions(eliminate the bit-fields).
 
+Also, I would like to rename struct fd_user_output with struct
+mtk_fd_hw_result. I worry fd_user_output would be a confusing name.
+I will add them in a separate patch in next version.
 
+I am still working on the documentation, which might be
+Documentation/media/uapi/v4l/pixfmt-meta-mtk-fd-40.rst.
+Refering the other pixfmt-*.rst files, I will try to provide the
+flat-table of the metadata with the structure of the mtk_fd_hw_result.
+
+I am confusing that should I remain the name with -40 in the tail of rst
+file?
+Since I think the layout of metadata might be different in the future
+mtk fd drivers. Maybe they create a new one or should they update the
+rst file when they are upstreaming?
+
+Other comments are almost fixed, I will inform you by this mail thread
+as soon as I finish the documentation of fd metadata format.
+
+Sorry for the late response,
+Thanks and Best Regards,
+Jerry
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
