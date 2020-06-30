@@ -2,62 +2,75 @@ Return-Path: <SRS0=AAZc=AL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 15D32C433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 07:24:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A6496C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 07:29:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D625320759
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 07:24:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6CCF320759
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 07:29:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TyqAruwF";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="uSns4xvi"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D625320759
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yjaEJmGz";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="hALw+ltj"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6CCF320759
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Eq9X6y1fpi0GVU8Z3nLsUB2PR94EB5Ie+kxnOMdpO4s=; b=TyqAruwFNH7IxDnow068XcO6+
-	bY8fOcc3DhXbT7ick/Q6Gw4TCuKYma4lyh19yRQkUD48K4ddt2CSypUSBzxMjxbaIqYVE6Zmtvl8+
-	MCiM871w+tZTHUoOz4Qqob0PtpyFrVCNy4TEAPPhyGormWLb5ue8BCYApGnOCSZLZDtrTkgmZ7Ly1
-	X+ZYf9NMPzqZRSQAWY7ZJHRWUCGfURR8UkpMbQY8Iw3dQtDVHfiAIfMs0BwaTHGdGxGOLur1CenON
-	efSx/da31mxypTyvE7Pje4qsTHmL+wB2CAxpBpu9g+gmnuNEcDT+eq/qS1HAvr0ndJ2hfpR1JaRct
-	TqEUhRy0Q==;
+	 bh=YInIqHXfu+K71ne5jQrdjlG2hz0m+sIWcnOh/EIKvMY=; b=yjaEJmGz/vxH6Esq9ueQm1xAI
+	CeybVuXPzCiwHb7GbrPpii7QUdMmeg+xeIvjSpGnrm7KW2HItFkHpqnikd4uUigsqZcrRl+05Y6re
+	UOji4/zG4T+pv75FJCA+aRK1pdWrgjO06XrPh9Yfv0tTxWFrOq2W2e6NgFAqO3LCA3Trvj3i6iKL2
+	Jv0te/15YDLJepM1o+GwVoKK79MSdT41sWdE3LlYcxvOL/VD2ALfl+6YFecnlJesUxQiYjpTUG3yP
+	K78T7ZGoUL40sisi6laMtLbiLO5ZrvicDmoAY/7m9kENAde13tGOchlJy/+K4RQGdRzwJLG5eYavD
+	/OWHgF7fQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqAdC-0003zn-6U; Tue, 30 Jun 2020 07:24:38 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jqAhv-0004uR-1d; Tue, 30 Jun 2020 07:29:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqAd9-0003yx-KC
- for linux-mediatek@lists.infradead.org; Tue, 30 Jun 2020 07:24:36 +0000
-Received: from localhost (unknown [151.48.138.186])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8DA9E20759;
- Tue, 30 Jun 2020 07:24:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593501874;
- bh=HvhnlfmSrJuoYL5PlEkRODPAbslKF6Vpa8TWSCAMJ2w=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=uSns4xvic6/mlnoSOgQc5/edZS7x32JkoEyklhlsEcB9PuhzpROumxHKLRK4QluTI
- 4VHuER245AOxthzYmZ1fdrbbXov4KKZ4FMjC0ieRXKo5US8L96tojpRxU3bpyGuxV3
- A0b6JnpyHO7hok9J3FazxeBr1t4Mvl9eZIMReMw0=
-Date: Tue, 30 Jun 2020 09:24:29 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: sean.wang@mediatek.com
-Subject: Re: [PATCH 1/3] mt76: mt7663u: fix memory leak in set key
-Message-ID: <20200630072429.GD2169@localhost.localdomain>
-References: <5e8786d9cf0ccd09dd9c13c24c48ce441afbf0ff.1593491298.git.sean.wang@mediatek.com>
+ id 1jqAhs-0004sp-H5; Tue, 30 Jun 2020 07:29:29 +0000
+X-UUID: 649e0299a42041fda2408b28ec83bdc9-20200629
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=HAx+5BTPXfGNqdXAn2CnRwU8idpAgHvW4EJmH0eOK5s=; 
+ b=hALw+ltjvCgo8K/x7tJTs59w+VHEF1BeidKYbG+3dl16gCt4nF5/f+X3+aoZYd2nxcqrWle0FDoYIqIDtNXQqCaNLwwJk+SrF8+z4sgg6gB3/qRd+M6ebb8nciyv0bU/mC7oJM/WQ2YD0q6iJIVtLof9BCfu4/HkqN4ogCvrBCM=;
+X-UUID: 649e0299a42041fda2408b28ec83bdc9-20200629
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 280348949; Mon, 29 Jun 2020 23:29:15 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 30 Jun 2020 00:29:20 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31DR.mediatek.inc
+ (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 30 Jun 2020 15:29:18 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 30 Jun 2020 15:29:17 +0800
+Message-ID: <1593502139.23885.5.camel@mhfsdcap03>
+Subject: Re: [PATCH 2/2] usb: mtu3: fix NULL pointer dereference
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Markus Elfring <Markus.Elfring@web.de>
+Date: Tue, 30 Jun 2020 15:28:59 +0800
+In-Reply-To: <99fc1f6e-7907-6723-612a-8b68ffa871e5@web.de>
+References: <1593410434-19406-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1593410434-19406-2-git-send-email-chunfeng.yun@mediatek.com>
+ <99fc1f6e-7907-6723-612a-8b68ffa871e5@web.de>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <5e8786d9cf0ccd09dd9c13c24c48ce441afbf0ff.1593491298.git.sean.wang@mediatek.com>
+X-TM-SNTS-SMTP: C01562A8C5541EC7257F9E298FE7512CE55EAEBA0420D98040392F23F24A9DAF2000:8
+X-MTK: N
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,117 +82,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
- ryder.lee@mediatek.com, linux-wireless@vger.kernel.org, nbd@nbd.name
-Content-Type: multipart/mixed; boundary="===============8257629344001250461=="
+Cc: Felipe Balbi <felipe.balbi@linux.intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---===============8257629344001250461==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="2Z2K0IlrPCVsbNpk"
-Content-Disposition: inline
-
-
---2Z2K0IlrPCVsbNpk
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> From: Sean Wang <sean.wang@mediatek.com>
->=20
-> Fix memory leak in set key.
->=20
-> Fixes: eb99cc95c3b6 ("mt76: mt7615: introduce mt7663u support")
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  .../net/wireless/mediatek/mt76/mt7615/usb.c   | 22 +++++++++++++------
->  1 file changed, 15 insertions(+), 7 deletions(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/usb.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7615/usb.c
-> index 0ba28d37c414..96a081be108e 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
-> @@ -165,12 +165,16 @@ __mt7663u_mac_set_key(struct mt7615_dev *dev,
-> =20
->  	lockdep_assert_held(&dev->mt76.mutex);
-> =20
-> -	if (!sta)
-> -		return -EINVAL;
-> +	if (!sta) {
-> +		err =3D -EINVAL;
-> +		goto out;
-> +	}
-> =20
->  	cipher =3D mt7615_mac_get_cipher(key->cipher);
-> -	if (cipher =3D=3D MT_CIPHER_NONE)
-> -		return -EOPNOTSUPP;
-> +	if (cipher =3D=3D MT_CIPHER_NONE) {
-> +		err =3D -EOPNOTSUPP;
-> +		goto out;
-> +	}
-> =20
->  	wcid =3D &wd->sta->wcid;
-> =20
-> @@ -178,19 +182,23 @@ __mt7663u_mac_set_key(struct mt7615_dev *dev,
->  	err =3D mt7615_mac_wtbl_update_key(dev, wcid, key->key, key->keylen,
->  					 cipher, key->cmd);
->  	if (err < 0)
-> -		return err;
-> +		goto out;
-> =20
->  	err =3D mt7615_mac_wtbl_update_pk(dev, wcid, cipher, key->keyidx,
->  					key->cmd);
->  	if (err < 0)
-> -		return err;
-> +		goto out;
-> =20
->  	if (key->cmd =3D=3D SET_KEY)
->  		wcid->cipher |=3D BIT(cipher);
->  	else
->  		wcid->cipher &=3D ~BIT(cipher);
-> =20
-> -	return 0;
-> +out:
-> +	kfree(key->key);
-> +	kfree(wd);
-
-Actually we do not need to free wd since it is done in mt7663u_wtbl_work()
-
-> +
-> +	return err;
->  }
-> =20
->  void mt7663u_wtbl_work(struct work_struct *work)
-> --=20
-> 2.25.1
-
---2Z2K0IlrPCVsbNpk
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCXvroqgAKCRA6cBh0uS2t
-rPBnAQDmSs/a+RSB3542U4ZITjLG5j04PnwuU5GAChNUlDE94AEAxlto2CvCAt4M
-fRHzEhpC4/eXghF7NdpIT5oHldFucQY=
-=jr3r
------END PGP SIGNATURE-----
-
---2Z2K0IlrPCVsbNpk--
-
-
---===============8257629344001250461==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============8257629344001250461==--
-
+T24gTW9uLCAyMDIwLTA2LTI5IGF0IDEwOjAwICswMjAwLCBNYXJrdXMgRWxmcmluZyB3cm90ZToN
+Cj4gPiBTb21lIHBvaW50ZXJzIGFyZSBkZXJlZmVyZW5jZWQgYmVmb3JlIHN1Y2Nlc3NmdWwgY2hl
+Y2tzLg0KPiANCj4gSSBzdWdnZXN0IHRvIHJlY29uc2lkZXIgYW5kIGltcHJvdmUgdGhlIGNoYW5n
+ZSBkZXNjcmlwdGlvbi4NCj4gDQo+ICogV291bGQgYSBudWxsIHBvaW50ZXIgZGVyZWZlcmVuY2Ug
+YmUgcG9zc2libGUgb25seSB3aXRoIHRoZSB2YXJpYWJsZXMg4oCcbWVw4oCdDQo+ICAgYW5kIOKA
+nG1yZXHigJ0gaW4gdGhlIGltcGxlbWVudGF0aW9uIG9mIHRoZSBmdW5jdGlvbiDigJxtdHUzX2dh
+ZGdldF9kZXF1ZXVl4oCdPw0KPiANCj4gKiBIb3cgZG8geW91IHRoaW5rIGFib3V0IHRvIGFkanVz
+dCBhbnkgbW9yZSB2YXJpYWJsZSBpbml0aWFsaXNhdGlvbnM/DQpZZXMsIEknbGwgZG8gaXQgaWYg
+bmVlZCwgdGhhbmtzDQoNCj4gDQo+ICogV2lsbCBpdCBiZWNvbWUgaGVscGZ1bCB0byBhZGQgdGhl
+IHRhZyDigJxGaXhlc+KAnSB0byB0aGUgY29tbWl0IG1lc3NhZ2U/DQpNYXliZSBuZWVkbid0DQoN
+Cj4gDQo+IFJlZ2FyZHMsDQo+IE1hcmt1cw0KDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVk
+aWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
