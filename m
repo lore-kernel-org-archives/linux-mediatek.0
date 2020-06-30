@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A7085C433E1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 04:38:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 52AEBC433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 04:38:19 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 71B9320829
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 04:38:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1CD47206BE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 04:38:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HKGfgVoW";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="W3zTX7af"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 71B9320829
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="u+XFO+Zq";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="YayVW+MX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1CD47206BE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,49 +26,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5DA98jv6sA4Q/k2NZEw9Z9ZHazpZytqD/ejcdILnvzo=; b=HKGfgVoWs21PrWeh2UadZ7bBa
-	Rr+irINg7W9kvkeJkNikYZCO3vO7I4MgD70nxSm7MwEj/czO0qj4bvTKMoKQcMIUjjLnNkW1vJd3n
-	kHx4flOp1JyWEHHR99PzL3YDhNqaH8r3OaQ7v0hXK33KL4l/kiMUdsZAKUz5PXOrSBNo4uKZC0z50
-	X5u7gufIJET32Bn9YTuc+FimiQuFCoQUdbfY/MmHVRxzrx3UH0ns17F8iW43JAALRgeezKZU8gNcn
-	LDTLS40N0ZXaIvjLf7hybcqjG7jV7TJlwEri1PG9dhn35oHC3VSx7OXNp4IFb67AUKZGYfB72QuUO
-	pZ8wO7bKw==;
+	 bh=e5eRPd6+6J8xyzyVC/pv30D8ZKE/zJsrw8/TPwIIsG4=; b=u+XFO+Zq5dwwz032Nm37bAHxM
+	UJ+DmTrl5tYQnIJoe4DVfraJF/7ZG4FN+PmDfrEM8I60i+bxMgM8vnQvOvviSYpf7NGwW0broSrZ8
+	VsZiiw7ZSo0wps3R2fLklFPpK0SxKLin3sNx7UUmhgmELzan4CZQ8LvjHhvP1w/xf3hEidZZP1xcz
+	10BO3T/NOxJNo2mJ0kOhMTnn3XoD7tEMvOb8pd57vfABn/h79cq1bGo0UnjgFakAi+/0abhvwwiow
+	k7hXrX1ePNqbCYMHVDSpCSRNtmc+Cs0EQyx+OD2qr0AKTFv5YJYNf1y8X/a4cyaPm+MaIetUrA5lY
+	MhZ+cRdzQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jq825-0003K8-Gs; Tue, 30 Jun 2020 04:38:09 +0000
+	id 1jq825-0003K1-3s; Tue, 30 Jun 2020 04:38:09 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jq820-0003JF-Gv
+ id 1jq820-0003JD-FA
  for linux-mediatek@lists.infradead.org; Tue, 30 Jun 2020 04:38:06 +0000
-X-UUID: 4b4866e18e7a4656a03ce11ece80f85a-20200629
+X-UUID: a2e8cad6a4dc4c4ca34fbfc163faa29e-20200629
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=77cQOpQ5AtB0qWOQGEEMr01KtYjsozyTdiVCSYv03Yw=; 
- b=W3zTX7afVMhUj0OQdSRSdQpfwLKLafXWrVBUiIusxocnYF+foEhz29w4t7zoOHQhP84BOV5zJT60yv9SZuNXhX/CHfENUgD6RtlcFrz43N/V8m3ySV7v/AEaanVEsYa2iPKCkRK+M4LNbMDK7Zvy7ihn7Kv6g2RA6ooFvsN5gss=;
-X-UUID: 4b4866e18e7a4656a03ce11ece80f85a-20200629
+ bh=FoTYp24eF+YXVi71xoB1IHArULDVoU2R5ArOZql2HM8=; 
+ b=YayVW+MXANoksVFe8GGJ/+PUGPV98H8aM66cPuE04O9kAcw9EnfQIfSOkH7zwtbiiyzL8xMrQtED8djEKfMFIRwUlyJiDh2xhq3D3XpEkQzLwoqYt4Lhuv5j6gR0psDdecNxFa6ZRqbokgQriBLl3vhUlMD3IxgnWS6K6aTVALo=;
+X-UUID: a2e8cad6a4dc4c4ca34fbfc163faa29e-20200629
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 94765557; Mon, 29 Jun 2020 20:37:57 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ with ESMTP id 275356422; Mon, 29 Jun 2020 20:37:57 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 29 Jun 2020 21:37:57 -0700
+ 15.0.1497.2; Mon, 29 Jun 2020 21:37:56 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 30 Jun 2020 12:37:55 +0800
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 30 Jun 2020 12:37:54 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 30 Jun 2020 12:37:57 +0800
+ Frontend Transport; Tue, 30 Jun 2020 12:37:56 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-Subject: [PATCH 3/3] mt76: mt7615: fix potential memory leak in mcu message
+Subject: [PATCH 2/3] mt76: mt7663u: fix potential memory leak in mcu message
  handler
-Date: Tue, 30 Jun 2020 12:37:51 +0800
-Message-ID: <b1dc67b62bcc53ad02e86099ac0aab312109094b.1593491298.git.sean.wang@mediatek.com>
+Date: Tue, 30 Jun 2020 12:37:50 +0800
+Message-ID: <74f27a79f53c6df3c49484a27c5b954d827cd9a5.1593491298.git.sean.wang@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <5e8786d9cf0ccd09dd9c13c24c48ce441afbf0ff.1593491298.git.sean.wang@mediatek.com>
 References: <5e8786d9cf0ccd09dd9c13c24c48ce441afbf0ff.1593491298.git.sean.wang@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 9F3B80C1C9581102FA6D476316E8008941CD87F125D212641B645BD95A92D3E62000:8
 X-MTK: N
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -92,37 +93,32 @@ From: Sean Wang <sean.wang@mediatek.com>
 
 Fix potential memory leak in mcu message handler on error condition.
 
-Fixes: 0e6a29e477f3 ("mt76: mt7615: add support to read temperature from mcu")
+Fixes: eb99cc95c3b6 ("mt76: mt7615: introduce mt7663u support")
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7615/usb_mcu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index 1b46cccd93c5..58e3838a3dba 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -183,8 +183,10 @@ mt7615_mcu_parse_response(struct mt7615_dev *dev, int cmd,
- 	struct mt7615_mcu_rxd *rxd = (struct mt7615_mcu_rxd *)skb->data;
- 	int ret = 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/usb_mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/usb_mcu.c
+index cd709fd617db..3e66ff98cab8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/usb_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/usb_mcu.c
+@@ -34,7 +34,6 @@ mt7663u_mcu_send_message(struct mt76_dev *mdev, struct sk_buff *skb,
  
--	if (seq != rxd->seq)
--		return -EAGAIN;
-+	if (seq != rxd->seq) {
-+		ret = -EAGAIN;
-+		goto out;
-+	}
+ 	ret = mt76u_bulk_msg(&dev->mt76, skb->data, skb->len, NULL,
+ 			     1000, ep);
+-	dev_kfree_skb(skb);
+ 	if (ret < 0)
+ 		goto out;
  
- 	switch (cmd) {
- 	case MCU_CMD_PATCH_SEM_CONTROL:
-@@ -215,6 +217,7 @@ mt7615_mcu_parse_response(struct mt7615_dev *dev, int cmd,
- 	default:
- 		break;
- 	}
-+out:
- 	dev_kfree_skb(skb);
+@@ -43,6 +42,7 @@ mt7663u_mcu_send_message(struct mt76_dev *mdev, struct sk_buff *skb,
+ 
+ out:
+ 	mutex_unlock(&mdev->mcu.mutex);
++	dev_kfree_skb(skb);
  
  	return ret;
+ }
 -- 
 2.25.1
 _______________________________________________
