@@ -4,19 +4,19 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D80B7C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 07:17:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 15D32C433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 07:24:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A331420759
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 07:17:15 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D625320759
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 07:24:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FRfZ3E7P";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="QTc7sF9d"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A331420759
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TyqAruwF";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="uSns4xvi"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D625320759
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,41 +25,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TkSIP49JDtBIZf9kvevW35ZID37szHov1VGQwXgr8/M=; b=FRfZ3E7P8KTVZ10YWF1iQlP3S
-	mUaB4X/G8lubi7vy8fCebcgQogzthtjpVLSRLH3YU4qAxsQHUhxu5xPfegnn8yvoszlVTEfesjSvl
-	Qero6k2A8qBHa10rpMVXcaGJmNd7h0ZwI5F+/kX2V8tkKqxd1LNXApx04G1rOnmGIduMN5QuRqGPA
-	J5dhfQzMTzSxvGPSYtRma1KxrqPFMbqasefwv47sTdrVP4BqJJa3EPSfjEDXA/5TVBjgzZiJLzalw
-	5F7rSEJ20/6ADJ8bur5OhdN6IGd6nRtbQ/TAIUD3qOVYT1CgzXjQbfd/0o6qDmAXWk6aMtn5EvAOp
-	CCgi12ugA==;
+	 bh=Eq9X6y1fpi0GVU8Z3nLsUB2PR94EB5Ie+kxnOMdpO4s=; b=TyqAruwFNH7IxDnow068XcO6+
+	bY8fOcc3DhXbT7ick/Q6Gw4TCuKYma4lyh19yRQkUD48K4ddt2CSypUSBzxMjxbaIqYVE6Zmtvl8+
+	MCiM871w+tZTHUoOz4Qqob0PtpyFrVCNy4TEAPPhyGormWLb5ue8BCYApGnOCSZLZDtrTkgmZ7Ly1
+	X+ZYf9NMPzqZRSQAWY7ZJHRWUCGfURR8UkpMbQY8Iw3dQtDVHfiAIfMs0BwaTHGdGxGOLur1CenON
+	efSx/da31mxypTyvE7Pje4qsTHmL+wB2CAxpBpu9g+gmnuNEcDT+eq/qS1HAvr0ndJ2hfpR1JaRct
+	TqEUhRy0Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqAVx-0002fU-1I; Tue, 30 Jun 2020 07:17:09 +0000
+	id 1jqAdC-0003zn-6U; Tue, 30 Jun 2020 07:24:38 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqAVu-0002ey-Ly
- for linux-mediatek@lists.infradead.org; Tue, 30 Jun 2020 07:17:07 +0000
+ id 1jqAd9-0003yx-KC
+ for linux-mediatek@lists.infradead.org; Tue, 30 Jun 2020 07:24:36 +0000
 Received: from localhost (unknown [151.48.138.186])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 67F2F2073E;
- Tue, 30 Jun 2020 07:17:05 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8DA9E20759;
+ Tue, 30 Jun 2020 07:24:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593501426;
- bh=5synz2C3U8p1pf1ipeeJ9gOueO9mxDSTwbasc+QhT74=;
+ s=default; t=1593501874;
+ bh=HvhnlfmSrJuoYL5PlEkRODPAbslKF6Vpa8TWSCAMJ2w=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=QTc7sF9dri+9YwUbUHXmXr2Y/sQZhmYmAVlC7jghbeRA8/Jz2fy95Lv4DsSVDu1NI
- TZPhXe26/2or6G3dNUUx8zOEMo/yqqNoxUC2pqe/BDFsBIFx90dcKOKAjHLLzAp3C/
- 5Hs79htAzqv9egFUqOZU7ap90JhU0O7ZqNDG69c4=
-Date: Tue, 30 Jun 2020 09:17:01 +0200
+ b=uSns4xvic6/mlnoSOgQc5/edZS7x32JkoEyklhlsEcB9PuhzpROumxHKLRK4QluTI
+ 4VHuER245AOxthzYmZ1fdrbbXov4KKZ4FMjC0ieRXKo5US8L96tojpRxU3bpyGuxV3
+ A0b6JnpyHO7hok9J3FazxeBr1t4Mvl9eZIMReMw0=
+Date: Tue, 30 Jun 2020 09:24:29 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: sean.wang@mediatek.com
-Subject: Re: [PATCH 3/3] mt76: mt7615: fix potential memory leak in mcu
- message handler
-Message-ID: <20200630071701.GC2169@localhost.localdomain>
+Subject: Re: [PATCH 1/3] mt76: mt7663u: fix memory leak in set key
+Message-ID: <20200630072429.GD2169@localhost.localdomain>
 References: <5e8786d9cf0ccd09dd9c13c24c48ce441afbf0ff.1593491298.git.sean.wang@mediatek.com>
- <b1dc67b62bcc53ad02e86099ac0aab312109094b.1593491298.git.sean.wang@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <b1dc67b62bcc53ad02e86099ac0aab312109094b.1593491298.git.sean.wang@mediatek.com>
+In-Reply-To: <5e8786d9cf0ccd09dd9c13c24c48ce441afbf0ff.1593491298.git.sean.wang@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,82 +71,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
  ryder.lee@mediatek.com, linux-wireless@vger.kernel.org, nbd@nbd.name
-Content-Type: multipart/mixed; boundary="===============3514505066512460557=="
+Content-Type: multipart/mixed; boundary="===============8257629344001250461=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============3514505066512460557==
+--===============8257629344001250461==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="32u276st3Jlj2kUU"
+	protocol="application/pgp-signature"; boundary="2Z2K0IlrPCVsbNpk"
 Content-Disposition: inline
 
 
---32u276st3Jlj2kUU
+--2Z2K0IlrPCVsbNpk
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
 > From: Sean Wang <sean.wang@mediatek.com>
 >=20
-> Fix potential memory leak in mcu message handler on error condition.
+> Fix memory leak in set key.
 >=20
-
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
-> Fixes: 0e6a29e477f3 ("mt76: mt7615: add support to read temperature from =
-mcu")
+> Fixes: eb99cc95c3b6 ("mt76: mt7615: introduce mt7663u support")
 > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
->  drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
+>  .../net/wireless/mediatek/mt76/mt7615/usb.c   | 22 +++++++++++++------
+>  1 file changed, 15 insertions(+), 7 deletions(-)
 >=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7615/mcu.c
-> index 1b46cccd93c5..58e3838a3dba 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-> @@ -183,8 +183,10 @@ mt7615_mcu_parse_response(struct mt7615_dev *dev, in=
-t cmd,
->  	struct mt7615_mcu_rxd *rxd =3D (struct mt7615_mcu_rxd *)skb->data;
->  	int ret =3D 0;
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/usb.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7615/usb.c
+> index 0ba28d37c414..96a081be108e 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
+> @@ -165,12 +165,16 @@ __mt7663u_mac_set_key(struct mt7615_dev *dev,
 > =20
-> -	if (seq !=3D rxd->seq)
-> -		return -EAGAIN;
-> +	if (seq !=3D rxd->seq) {
-> +		ret =3D -EAGAIN;
+>  	lockdep_assert_held(&dev->mt76.mutex);
+> =20
+> -	if (!sta)
+> -		return -EINVAL;
+> +	if (!sta) {
+> +		err =3D -EINVAL;
 > +		goto out;
 > +	}
 > =20
->  	switch (cmd) {
->  	case MCU_CMD_PATCH_SEM_CONTROL:
-> @@ -215,6 +217,7 @@ mt7615_mcu_parse_response(struct mt7615_dev *dev, int=
- cmd,
->  	default:
->  		break;
->  	}
-> +out:
->  	dev_kfree_skb(skb);
+>  	cipher =3D mt7615_mac_get_cipher(key->cipher);
+> -	if (cipher =3D=3D MT_CIPHER_NONE)
+> -		return -EOPNOTSUPP;
+> +	if (cipher =3D=3D MT_CIPHER_NONE) {
+> +		err =3D -EOPNOTSUPP;
+> +		goto out;
+> +	}
 > =20
->  	return ret;
+>  	wcid =3D &wd->sta->wcid;
+> =20
+> @@ -178,19 +182,23 @@ __mt7663u_mac_set_key(struct mt7615_dev *dev,
+>  	err =3D mt7615_mac_wtbl_update_key(dev, wcid, key->key, key->keylen,
+>  					 cipher, key->cmd);
+>  	if (err < 0)
+> -		return err;
+> +		goto out;
+> =20
+>  	err =3D mt7615_mac_wtbl_update_pk(dev, wcid, cipher, key->keyidx,
+>  					key->cmd);
+>  	if (err < 0)
+> -		return err;
+> +		goto out;
+> =20
+>  	if (key->cmd =3D=3D SET_KEY)
+>  		wcid->cipher |=3D BIT(cipher);
+>  	else
+>  		wcid->cipher &=3D ~BIT(cipher);
+> =20
+> -	return 0;
+> +out:
+> +	kfree(key->key);
+> +	kfree(wd);
+
+Actually we do not need to free wd since it is done in mt7663u_wtbl_work()
+
+> +
+> +	return err;
+>  }
+> =20
+>  void mt7663u_wtbl_work(struct work_struct *work)
 > --=20
 > 2.25.1
 
---32u276st3Jlj2kUU
+--2Z2K0IlrPCVsbNpk
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCXvrm6gAKCRA6cBh0uS2t
-rDXrAPsGccYGcgDDRw98f6tuG0QktsFKLRJItNtuQG+mGY2YjgEA4FLMj9tcQOx3
-Mz+xeYKB+byp9MDd87Yju/h2fQV1Xws=
-=zdsp
+iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCXvroqgAKCRA6cBh0uS2t
+rPBnAQDmSs/a+RSB3542U4ZITjLG5j04PnwuU5GAChNUlDE94AEAxlto2CvCAt4M
+fRHzEhpC4/eXghF7NdpIT5oHldFucQY=
+=jr3r
 -----END PGP SIGNATURE-----
 
---32u276st3Jlj2kUU--
+--2Z2K0IlrPCVsbNpk--
 
 
---===============3514505066512460557==
+--===============8257629344001250461==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -159,5 +181,5 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---===============3514505066512460557==--
+--===============8257629344001250461==--
 
