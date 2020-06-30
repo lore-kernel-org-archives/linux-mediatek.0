@@ -3,76 +3,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-1.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=no autolearn_force=no version=3.4.0
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A35EFC433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 16:27:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 58B39C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 16:53:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 71F08206BE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 16:27:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2587C20723
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 16:53:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eSvxlGu9";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="gts96HYb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 71F08206BE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XlrCXl8R";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="CVgtFTy2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2587C20723
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=50necHiUG8Ty0Ma7+zlx5RCJDLX8PZ2BkVU/PH3O/+U=; b=eSvxlGu9DF1MeUNLLfqjEzUlk
-	/wVP4e6laCoOycOdaBaBw6Gq2n5pt2vhJLr1W5spxOTjrX8nXlM/+vTo3nGrOPfSPsrxde/+7B1+p
-	OqrA+rxDOKttXPx9hFS6/K9tllN+eppwbJC8KAziGkFUS2UAj387Xo1GOSqlxv7KBqYacq6dTHCkb
-	rr1mqcXVxUW4CczEfrYxqBZYCKQ4H0+j3LiLLxrsygJB3oMjNF+MTaxt51gwLt+zK+K/L5ut4SYq4
-	iJMlNl/OsqpyUqWQDl2jwpgsxuzPJ9Pu9pEdMBEMzlTO447ZyegCKgE2HiKbyed44cfRihA8MT5Je
-	1MbzWZMMQ==;
+	 bh=qu1wn8/xEgT4pFvBan+euOcZVOFfhZlqw9RIIMMDXrQ=; b=XlrCXl8RwtkMKEf5/5zTp7reL
+	JUkvSfrZkaqfZuniH6xdRfV6kNW6SP9norKYYRrOkKdc/j6hXzs122ke4MEc+uAsZVJtSIXeF+0Sk
+	MOSz9viZzhj42zcQULJUAdMbvPrMjTdvRniBJkTxvBagOylq0GlwVlGF0uvZ2TUbjbtcDJ0c4RCgR
+	qNZsP67p3/BX33GLQLGJVDPIlZGL4hXT7J8aRaHtsJ8DJ7BdS5yODNKG3EvDqZQRYGRtC+jtDVL5j
+	VfRqs28WMMx/cIjhVLAHjNtv3W/6GsQghxwOiiUhNFclMOU/0m30uOXSPbAy+3ucR05Q2o5HBDBtp
+	H+909aUdA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqJ6K-0000s0-29; Tue, 30 Jun 2020 16:27:16 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jqJVR-0004J5-DI; Tue, 30 Jun 2020 16:53:13 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqJ67-0000oP-18; Tue, 30 Jun 2020 16:27:09 +0000
-Received: from mail-ed1-f44.google.com (mail-ed1-f44.google.com
- [209.85.208.44])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7F33120829;
- Tue, 30 Jun 2020 16:27:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593534421;
- bh=PpAnJn1XJ0kKZXszzmeCK2//lTYa5JNojd5Sw6KrTkE=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=gts96HYbjen9gTCki14zS8VQMLWdrTPAbFAKJ5yAbAf0efCkpK880dXgpwF1iUO3G
- Y15s9ff6tJA1bpsV2vkRwS8QnGGKc+xZvewQsqunGKS9nOrQ4Rqb4OQyQ604t3NJO4
- +nejn1DOtYixqD+xWpStdaTf7VpphBCXOWkIZ2OQ=
-Received: by mail-ed1-f44.google.com with SMTP id a8so15601987edy.1;
- Tue, 30 Jun 2020 09:27:01 -0700 (PDT)
-X-Gm-Message-State: AOAM530fa8Gysim4Z3AxmdjzFT4Dn3rNJPql+wObbh5BgMo77FT0TwtO
- ZoliA0FkVr7O0jYyXxAMN9He8EvsBmh4YT5b+Q==
-X-Google-Smtp-Source: ABdhPJzzR0lmC6L/tSPZZNNP3p4O+oe/PeEBeNY5QR0PicjAWxxqEBWX6AKJHjWXCakLYt6gaZibUhu/HomQIBzuFzs=
-X-Received: by 2002:a05:6402:1766:: with SMTP id
- da6mr23156696edb.48.1593534419986; 
- Tue, 30 Jun 2020 09:26:59 -0700 (PDT)
+ id 1jqJVJ-0004Hh-6R
+ for linux-mediatek@lists.infradead.org; Tue, 30 Jun 2020 16:53:11 +0000
+Received: by mail-wm1-x344.google.com with SMTP id g75so19469097wme.5
+ for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2020 09:53:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=PL3gqYes7408Y9j0oN+9/8tWxq6suSL5CFMjvoIOGD8=;
+ b=CVgtFTy2QTfqoViXoqnmGJ/iZi91tUj2Bpdip43Pq0diQqzgGNBkGq5N9G2XQWvogo
+ 68V3n2TQHlygtYUjKpStr7tg1ROHAbvN648GHZPuqq49G5p7U3AlcHrOQaxXfINfdefd
+ Gk9ELgymUifA8xcKS3fnlBXshAs1nJ7VDRI+M=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=PL3gqYes7408Y9j0oN+9/8tWxq6suSL5CFMjvoIOGD8=;
+ b=Ky29vfyVp3RzFIeq9OY7mjDwb8hJe1fgrUZAbMvopyysriQIxCZg0Syu4vvyABgG5B
+ fWWV5sP+pZIWSyC29Iw19opzSX68oy3SykbOX4mS5H1Ix26A10zml3Y+Fi2Foh341v/h
+ In+kJtcv4dHX+R1pkTZGJc90zmAxJpVFyklVxojeRp523Btk36k1m61/4qhunqoxDlgP
+ PcHZivco0Mku2b3QPcUQNOecL7HogCHBavKeEJXxeg53XlSRtoExw9IolrPvqr/Pt7jC
+ boRapmi/NmXH9inrPLimbdimuptBCC0YMVgCD1FKHiDo4Sbk47/PAvoX9EBypaLCnfH+
+ MTnw==
+X-Gm-Message-State: AOAM5308/ZD77uYKf1fR0hnyFoXZPRaGulJ1jz12GaQiunSjmxrd3jpP
+ xCNvM5WS1lbRjw5ClDpKeLU/gw==
+X-Google-Smtp-Source: ABdhPJxKifqOAzYOp4J9Bly4NiQnEMA2gDFLYP7zxPsqUSediKZtqJghVuv6mAfW2Fa0i+QexvGymA==
+X-Received: by 2002:a1c:bcd4:: with SMTP id
+ m203mr22111391wmf.124.1593535983680; 
+ Tue, 30 Jun 2020 09:53:03 -0700 (PDT)
+Received: from chromium.org (205.215.190.35.bc.googleusercontent.com.
+ [35.190.215.205])
+ by smtp.gmail.com with ESMTPSA id f186sm4010614wmf.29.2020.06.30.09.53.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 30 Jun 2020 09:53:03 -0700 (PDT)
+Date: Tue, 30 Jun 2020 16:53:01 +0000
+From: Tomasz Figa <tfiga@chromium.org>
+To: Xia Jiang <xia.jiang@mediatek.com>
+Subject: Re: [PATCH RESEND v9 18/18] media: platform: Add jpeg enc feature
+Message-ID: <20200630165301.GA1212092@chromium.org>
+References: <20200604090553.10861-1-xia.jiang@mediatek.com>
+ <20200604090553.10861-20-xia.jiang@mediatek.com>
+ <20200611184640.GC8694@chromium.org>
+ <1593485781.20112.43.camel@mhfsdcap03>
 MIME-Version: 1.0
-References: <20200615203108.786083-1-enric.balletbo@collabora.com>
- <20200620213302.GC74146@ravnborg.org>
- <593a4666-d6aa-7d16-f3a0-ba3713047d84@collabora.com>
-In-Reply-To: <593a4666-d6aa-7d16-f3a0-ba3713047d84@collabora.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Wed, 1 Jul 2020 00:26:49 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_9ZHemp0U76_oPjwy-XoTRXW108UMD_9JVnNXndNNsiTw@mail.gmail.com>
-Message-ID: <CAAOTY_9ZHemp0U76_oPjwy-XoTRXW108UMD_9JVnNXndNNsiTw@mail.gmail.com>
-Subject: Re: [RESEND PATCH v4 0/7] Convert mtk-dsi to drm_bridge API and get
- EDID for ps8640 bridge
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <1593485781.20112.43.camel@mhfsdcap03>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200630_122703_369352_24BDD614 
-X-CRM114-Status: GOOD (  31.62  )
+X-CRM114-CacheID: sfid-20200630_125305_378460_806C06F6 
+X-CRM114-Status: GOOD (  35.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,92 +95,199 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Nicolas Boichat <drinkcat@chromium.org>, Jonas Karlman <jonas@kwiboo.se>,
- David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Andrzej Hajda <a.hajda@samsung.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, Hsin-Yi Wang <hsinyi@chromium.org>,
+Cc: drinkcat@chromium.org, devicetree@vger.kernel.org, mojahsu@chromium.org,
+ srv_heupstream@mediatek.com, Rick Chang <rick.chang@mediatek.com>,
+ senozhatsky@chromium.org, linux-kernel@vger.kernel.org,
+ maoguang.meng@mediatek.com, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ sj.huang@mediatek.com, Rob Herring <robh+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Collabora Kernel ML <kernel@collabora.com>, Sam Ravnborg <sam@ravnborg.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-mediatek@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEVucmljOgoKRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFi
-b3JhLmNvbT4g5pa8IDIwMjDlubQ25pyIMzDml6Ug6YCx5LqMIOS4i+WNiDEwOjM05a+r6YGT77ya
-Cj4KPiBIaSBTYW0sIENodW4tS3VhbiwKPgo+IE9uIDIwLzYvMjAgMjM6MzMsIFNhbSBSYXZuYm9y
-ZyB3cm90ZToKPiA+IEhpIEVucmljCj4gPgo+ID4gT24gTW9uLCBKdW4gMTUsIDIwMjAgYXQgMTA6
-MzE6MDFQTSArMDIwMCwgRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSB3cm90ZToKPiA+PiAoVGhpcyBy
-ZXNlbmQgaXMgdG8gZml4IHNvbWUgdHJpdmlhbCBjb25mbGljdHMgZHVlIHRoZSBtZXJnZSB3aW5k
-b3cpCj4gPj4KPiA+PiBUaGUgUFM4NjQwIGRzaS10by1lRFAgYnJpZGdlIGRyaXZlciBpcyB1c2lu
-ZyB0aGUgcGFuZWwgYnJpZGdlIEFQSSwKPiA+PiBob3dldmVyLCBub3QgYWxsIHRoZSBjb21wb25l
-bnRzIGluIHRoZSBjaGFpbiBoYXZlIGJlZW4gcG9ydGVkIHRvIHRoZQo+ID4+IGRybV9icmlkZ2Ug
-QVBJLiBBY3R1YWxseSwgd2hlbiBhIHBhbmVsIGlzIGF0dGFjaGVkIHRoZSBkZWZhdWx0IHBhbmVs
-J3MgbW9kZQo+ID4+IGlzIHVzZWQsIGJ1dCBpbiBzb21lIGNhc2VzIHdlIGNhbid0IGdldCBkaXNw
-bGF5IHVwIGlmIG1vZGUgZ2V0dGluZyBmcm9tCj4gPj4gZURQIGNvbnRyb2wgRURJRCBpcyBub3Qg
-Y2hvc2VuLgo+ID4+Cj4gPj4gVGhpcyBzZXJpZXMgYWRkcmVzcyB0aGF0IHByb2JsZW0sIGZpcnN0
-IGltcGxlbWVudHMgdGhlIC5nZXRfZWRpZCgpCj4gPj4gY2FsbGJhY2sgaW4gdGhlIFBTODY0MCBk
-cml2ZXIgKHdoaWNoIGlzIG5vdCB1c2VkIHVudGlsIHRoZSBjb252ZXJzaW9uIGlzCj4gPj4gZG9u
-ZSkgYW5kIHRoZW4sIGNvbnZlcnRzIHRoZSBNZWRpYXRlayBEU0kgZHJpdmVyIHRvIHVzZSB0aGUg
-ZHJtX2JyaWRnZQo+ID4+IEFQSS4KPiA+Pgo+ID4+IEFzIGZhciBhcyBJIGtub3csIHdlJ3JlIHRo
-ZSBvbmx5IHVzZXJzIG9mIHRoZSBtZWRpYXRlayBkc2kgZHJpdmVyIGluCj4gPj4gbWFpbmxpbmUs
-IHNvIHNob3VsZCBiZSBzYWZlIHRvIHN3aXRjaCB0byB0aGUgbmV3IGNoYWluIG9mIGRybV9icmlk
-Z2UgQVBJCj4gPj4gdW5jb25kaXRpb25hbGx5Lgo+ID4+Cj4gPj4gVGhlIHBhdGNoZXMgaGFzIGJl
-ZW4gdGVzdGVkIG9uIGEgQWNlciBDaHJvbWVib29rIFIxMyAoRWxtKSBydW5uaW5nIGEKPiA+PiBD
-aHJvbWUgT1MgdXNlcnNwYWNlIGFuZCBjaGVja2luZyB0aGF0IHRoZSB2YWxpZCBFRElEIG1vZGUg
-cmVwb3J0ZWQgYnkKPiA+PiB0aGUgYnJpZGdlIGlzIHNlbGVjdGVkLgo+ID4+Cj4gPj4gQ2hhbmdl
-cyBpbiB2NDoKPiA+PiAtIFJlbW92ZSBkb3VibGUgY2FsbCB0byBkcm1fZW5jb2Rlcl9pbml0KCku
-IChDaHVuLUt1YW5nIEh1KQo+ID4+IC0gQ2xlYW51cCB0aGUgZW5jb2RlciBpbiBtdGtfZHNpX3Vu
-YmluZCgpLiAoQ2h1bi1LdWFuZyBIdSkKPiA+Pgo+ID4+IENoYW5nZXMgaW4gdjM6Cj4gPj4gLSBS
-ZXBsYWNlIHMvYnJpZGdlL25leHQgYnJpZGdlLyBmb3IgY29tbWVudC4gKExhdXJlbnQgUGluY2hh
-cnQpCj4gPj4gLSBBZGQgdGhlIGJyaWRnZS50eXBlLiAoTGF1cmVudCBQaW5jaGFydCkKPiA+PiAt
-IFVzZSBuZXh0X2JyaWRnZSBmaWVsZCB0byBzdG9yZSB0aGUgcGFuZWwgYnJpZGdlLiAoTGF1cmVu
-dCBQaW5jaGFydCkKPiA+PiAtIEFkZCB0aGUgYnJpZGdlLnR5cGUgZmllbGQuIChMYXVyZW50IFBp
-bmNoYXJ0KQo+ID4+IC0gVGhpcyBwYXRjaCByZXF1aXJlcyBodHRwczovL2xrbWwub3JnL2xrbWwv
-MjAyMC80LzE2LzIwODAgdG8gd29yawo+ID4+ICAgcHJvcGVybHkuCj4gPj4gLSBNb3ZlIHRoZSBi
-cmlkZ2UudHlwZSBsaW5lIHRvIHRoZSBwYXRjaCB0aGF0IGFkZHMgZHJtX2JyaWRnZSBzdXBwb3J0
-LiAoTGF1cmVudCBQaW5jaGFydCkKPiA+Pgo+ID4+IENoYW5nZXMgaW4gdjI6Cj4gPj4gLSBEbyBu
-b3Qgc2V0IGNvbm5lY3Rvcl90eXBlIGZvciBwYW5lbCBoZXJlLiAoU2FtIFJhdm5ib3JnKQo+ID4+
-Cj4gPj4gRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSAoNyk6Cj4gPj4gICBkcm0vYnJpZGdlOiBwczg2
-NDA6IEdldCB0aGUgRURJRCBmcm9tIGVEUCBjb250cm9sCj4gPj4gICBkcm0vYnJpZGdlX2Nvbm5l
-Y3RvcjogU2V0IGRlZmF1bHQgc3RhdHVzIGNvbm5lY3RlZCBmb3IgZURQIGNvbm5lY3RvcnMKPiA+
-PiAgIGRybS9tZWRpYXRlazogbXRrX2RzaTogUmVuYW1lIGJyaWRnZSB0byBuZXh0X2JyaWRnZQo+
-ID4+ICAgZHJtL21lZGlhdGVrOiBtdGtfZHNpOiBDb252ZXJ0IHRvIGJyaWRnZSBkcml2ZXIKPiA+
-PiAgIGRybS9tZWRpYXRlazogbXRrX2RzaTogVXNlIHNpbXBsZSBlbmNvZGVyCj4gPj4gICBkcm0v
-bWVkaWF0ZWs6IG10a19kc2k6IFVzZSB0aGUgZHJtX3BhbmVsX2JyaWRnZSBBUEkKPiA+PiAgIGRy
-bS9tZWRpYXRlazogbXRrX2RzaTogQ3JlYXRlIGNvbm5lY3RvciBmb3IgYnJpZGdlcwo+ID4KPiA+
-IFBhdGNoIHNlZW1zIHJlYWR5IHRvIGFwcGx5LiBXaWxsIHRoZXkgYmUgYXBwbGllZCB0byBhIG1l
-ZGlhdGVrIHRyZWUKPiA+IG9yIHRvIGRybS1taXNjLW5leHQ/Cj4gPiBPciBzaGFsbCB3ZSB0YWtl
-IHRoZSBmaXJzdCB0d28gcGF0Y2hlcyB2aWEgZHJtLW1pc2MtbmV4dCwgYW5kIHRoZQo+ID4gcmVt
-YW5pbmcgdmlhIGEgbWVkaWF0ZWsgdHJlZT8gKEkgaG9wZSBub3QpCj4gPgo+Cj4gSSB0aGluayB0
-aGUgb25seSBjb25jZXJuIGlzIGZyb20gQ2h1bi1LdWFuIHJlZ2FyZGluZyBwYXRjaCA3LzcgImRy
-bS9tZWRpYXRlazoKPiBtdGtfZHNpOiBDcmVhdGUgY29ubmVjdG9yIGZvciBicmlkZ2VzIiB3aGV0
-aGVyIHdlIHNob3VsZCBzdXBwb3J0IHRoZSBvbGQgQVBJIG9yCj4gbm90LCBidXQgdGhlIGRpc2N1
-c3Npb24gc3RhbGxlZC4KPgoKSSBnZXQgbW9yZSBjbGVhciBub3cuIEluIHBhdGNoIDcvNywKCnJl
-dCA9IGRybV9icmlkZ2VfYXR0YWNoKCZkc2ktPmVuY29kZXIsICZkc2ktPmJyaWRnZSwgTlVMTCwK
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIERSTV9CUklER0VfQVRUQUNI
-X05PX0NPTk5FQ1RPUik7Cgp0aGlzIHdvdWxkIGNhbGwgaW50byBtdGtfZHNpX2JyaWRnZV9hdHRh
-Y2goKSBmaXJzdCwgYW5kIHRoZW4gY2FsbCBpbnRvCnBhbmVsX2JyaWRnZV9hdHRhY2goKSBuZXh0
-LiBTbyBwYW5lbF9icmlkZ2VfYXR0YWNoKCkgd291bGQgcmVjZWl2ZQpEUk1fQlJJREdFX0FUVEFD
-SF9OT19DT05ORUNUT1IgYW5kIGl0IHJldHVybiBpbW1lZGlhdGVseSBzbyBpdCBkb2VzCm5vdCBj
-YWxsIGRybV9wYW5lbF9hdHRhY2goKS4gU28gd2hlcmUgZG8geW91IGNhbGwgZHJtX3BhbmVsX2F0
-dGFjaCgpPwoKUmVnYXJkcywKQ2h1bi1LdWFuZy4KCj4gVGhhbmtzLAo+ICBFbnJpYwo+Cj4KPgo+
-ID4gICAgICAgU2FtCj4gPgo+ID4KPiA+Pgo+ID4+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3Bh
-cmFkZS1wczg2NDAuYyB8ICAxMiArKwo+ID4+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX2JyaWRnZV9j
-b25uZWN0b3IuYyB8ICAgMSArCj4gPj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNp
-LmMgICAgIHwgMjY5ICsrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0KPiA+PiAgMyBmaWxlcyBjaGFu
-Z2VkLCA5NyBpbnNlcnRpb25zKCspLCAxODUgZGVsZXRpb25zKC0pCj4gPj4KPiA+PiAtLQo+ID4+
-IDIuMjcuMAo+ID4+Cj4gPj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KPiA+PiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gPj4gZHJpLWRldmVsQGxpc3Rz
-LmZyZWVkZXNrdG9wLm9yZwo+ID4+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVsCj4gPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlh
-dGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Hi Xia,
+
+On Tue, Jun 30, 2020 at 10:56:21AM +0800, Xia Jiang wrote:
+> On Thu, 2020-06-11 at 18:46 +0000, Tomasz Figa wrote:
+> > Hi Xia,
+> > 
+> > On Thu, Jun 04, 2020 at 05:05:53PM +0800, Xia Jiang wrote:
+[snip]
+> > > +static void mtk_jpeg_enc_device_run(void *priv)
+> > > +{
+> > > +	struct mtk_jpeg_ctx *ctx = priv;
+> > > +	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+> > > +	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+> > > +	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
+> > > +	unsigned long flags;
+> > > +	struct mtk_jpeg_src_buf *jpeg_src_buf;
+> > > +	struct mtk_jpeg_enc_bs enc_bs;
+> > > +	int ret;
+> > > +
+> > > +	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> > > +	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+> > > +	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
+> > > +
+> > > +	ret = pm_runtime_get_sync(jpeg->dev);
+> > > +	if (ret < 0)
+> > > +		goto enc_end;
+> > > +
+> > > +	spin_lock_irqsave(&jpeg->hw_lock, flags);
+> > > +
+> > > +	/*
+> > > +	 * Resetting the hardware every frame is to ensure that all the
+> > > +	 * registers are cleared. This is a hardware requirement.
+> > > +	 */
+> > > +	mtk_jpeg_enc_reset(jpeg->reg_base);
+> > > +
+> > > +	mtk_jpeg_set_enc_dst(ctx, jpeg->reg_base, &dst_buf->vb2_buf, &enc_bs);
+> > > +	mtk_jpeg_set_enc_src(ctx, jpeg->reg_base, &src_buf->vb2_buf);
+> > > +	mtk_jpeg_enc_set_config(jpeg->reg_base, ctx->out_q.fmt->hw_format,
+> > > +				ctx->enable_exif, ctx->enc_quality,
+> > > +				ctx->restart_interval);
+> > > +	mtk_jpeg_enc_start(jpeg->reg_base);
+> > 
+> > Could we just move the above 5 functions into one function inside
+> > mtk_jpeg_enc_hw.c that takes mtk_jpeg_dev pointer as its argument, let's
+> > say mtk_jpeg_enc_hw_run() and simply program all the data to the registers
+> > directly, without the extra level of abstractions?
+> I can move the 5 functions into one function(mtk_jpeg_enc_hw_run()), but
+> this function will be very long, because it contains computation code
+> such as setting dst addr, blk_num, quality.
+> In v4, you have adviced the following architecture:
+> How about the following model, as used by many other drivers:
+> 
+> mtk_jpeg_enc_set_src()
+> {
+>         // Set any registers related to source format and buffer
+> }
+> 
+> mtk_jpeg_enc_set_dst()
+> {
+>         // Set any registers related to destination format and buffer
+> }
+> 
+> mtk_jpeg_enc_set_params()
+> {
+>         // Set any registers related to additional encoding parameters
+> }
+> 
+> mtk_jpeg_enc_device_run(enc, ctx)
+> {
+>         mtk_jpeg_enc_set_src(enc, src_buf, src_fmt);
+>         mtk_jpeg_enc_set_dst(enc, dst_buf, dst_fmt);
+>         mtk_jpeg_enc_set_params(enc, ctx);
+>         // Trigger the hardware run
+> }
+> I think that this architecture is more clear(mtk_jpeg_enc_set_config is
+> equivalent to mtk_jpeg_enc_set_params).
+> Should I keep the original architecture or move 5 functions into
+> mtk_jpeg_enc_hw_run?
+
+Sounds good to me.
+
+My biggest issue with the code that it ends up introducing one more
+level of abstraction, but with the approach you suggested, the arguments
+just accept standard structs, which avoids that problem.
+
+[snip]
+> > > +
+> > > +	ctx->fh.ctrl_handler = &ctx->ctrl_hdl;
+> > > +	ctx->colorspace = V4L2_COLORSPACE_JPEG,
+> > > +	ctx->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
+> > > +	ctx->quantization = V4L2_QUANTIZATION_DEFAULT;
+> > > +	ctx->xfer_func = V4L2_XFER_FUNC_DEFAULT;
+> > 
+> > Since we already have a v4l2_pix_format_mplane struct which has fields for
+> > the above 4 values, could we just store them there?
+> > 
+> > Also, I don't see this driver handling the colorspaces in any way, but it
+> > seems to allow changing them from the userspace. This is incorrect, because
+> > the userspace has no way to know that the colorspace is not handled.
+> > Instead, the try_fmt implementation should always override the
+> > userspace-provided colorspace configuration with the ones that the driver
+> > assumes.
+> > 
+> > > +	pix_mp->width = MTK_JPEG_MIN_WIDTH;
+> > > +	pix_mp->height = MTK_JPEG_MIN_HEIGHT;
+> > > +
+> > > +	q->fmt = mtk_jpeg_find_format(V4L2_PIX_FMT_YUYV,
+> > > +				      MTK_JPEG_FMT_FLAG_ENC_OUTPUT);
+> > > +	vidioc_try_fmt(container_of(pix_mp, struct v4l2_format,
+> > > +				    fmt.pix_mp), q->fmt);
+> > > +	q->w = pix_mp->width;
+> > > +	q->h = pix_mp->height;
+> > > +	q->crop_rect.width = pix_mp->width;
+> > > +	q->crop_rect.height = pix_mp->height;
+> > > +	q->sizeimage[0] = pix_mp->plane_fmt[0].sizeimage;
+> > > +	q->bytesperline[0] = pix_mp->plane_fmt[0].bytesperline;
+> > 
+> > Actually, do we need this custom mtk_jpeg_q_data struct? Why couldn't we
+> > just keep the same values inside the standard v4l2_pix_format_mplane
+> > struct?
+> I think that we need mtk_jpeg_q_data struct.If we delete it, how can we
+> know these values(w, h, sizeimage, bytesperline, mtk_jpeg_fmt) belong to
+> output or capture(output and capture's sizeimages are different, width
+> and height are differnt too for jpeg dec )?We have
+> s_fmt_vid_out_mplane/cap_mplane function to set these values.
+> 
+> But we can use standard v4l2_pix_format_mplane struct replacing the w, h
+> bytesperline, sizeimage in mtk_jpeg_q_data struct like this:
+> struct mtk_jpeg_q_data{
+> 	struct mtk_jpeg_fmt *fmt;
+> 	struct v4l2_pix_format_mplane pix_mp;
+> 	struct v4l2_rect enc_crop_rect
+> }
+> Then delete ctx->colorspace ctx->ycbcr_enc ctx->quantization
+> ctx->xfer_func, becuase v4l2_pix_format_mplane in q_data has contained
+> them and assign them for out_q and cap_q separately.
+> 
+> WDYT?
+
+Sounds good to me. I was considering just making it like
+
+struct mtk_jpeg_ctx {
+	struct mtk_jpeg_fmt *src_fmt;
+	struct v4l2_pix_format_mplane src_pix_mp;
+	struct v4l2_rect src_crop;
+
+	struct mtk_jpeg_fmt *dst_fmt;
+	struct v4l2_pix_format_mplane dst_pix_mp;
+	struct v4l2_rect dst_crop;
+};
+
+but I like your suggestion as well, as long as custom data structures
+are not used to store standard information.
+[snip]
+> > > @@ -1042,8 +1619,12 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
+> > >  		return jpeg_irq;
+> > >  	}
+> > >  
+> > > -	ret = devm_request_irq(&pdev->dev, jpeg_irq, mtk_jpeg_dec_irq, 0,
+> > > -			       pdev->name, jpeg);
+> > > +	if (jpeg->variant->is_encoder)
+> > > +		ret = devm_request_irq(&pdev->dev, jpeg_irq, mtk_jpeg_enc_irq,
+> > > +				       0, pdev->name, jpeg);
+> > > +	else
+> > > +		ret = devm_request_irq(&pdev->dev, jpeg_irq, mtk_jpeg_dec_irq,
+> > > +				       0, pdev->name, jpeg);
+> > 
+> > Rather than having "is_encoder" in the variant struct, would it make more
+> > sense to have "irq_handler" instead? That would avoid the explicit if.
+> Do you mean to delete "is_encoder"? It is used 8 times in the
+> driver.Should I move them all to the match data?
+
+Yes. It would make the code linear and the varability between the
+decoder and encoder would be self-contained in the variant struct.
+
+Best regards,
+Tomasz
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
