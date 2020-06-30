@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A8AEC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 10:56:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D85DCC433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 10:57:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 11A7520780
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 10:56:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A3DC120780
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 10:57:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="u1PFHKjT";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="W1MUIfLa"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 11A7520780
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bUVZXQJz";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="rCBQ6kx6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A3DC120780
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,50 +26,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=z3wduDY9xpY7WfCxjoH5oacPopLHiJZzxKT9ZXy9zDw=; b=u1PFHKjTkfjS0LXur7XbiuZPr
-	LE+8lklB+I4GKnYAsOFlCG62kOyKWm1n3danfjSRe6kIwZVFYHAJYBIa9fnRMuDT+CHf+xhJIe5+8
-	PnsMdeCW83pKSJjztNVOjRXJl1tjVuI6LkimyAnUaqr7cWasBcFuDayPc/e+A0GLzCX/do341E2Gn
-	mBxWohGzj02g+Os+xo4r7DSaEiEuZ0HvwbHAnwb9rtb5GEMtyvsDeEruG/EONXvye47wrHufWGZFZ
-	oHtImwNH4cKXanmwXO9NcLLsF8ey6LbYxH3RPDa5t2aUdThdrZSLuiqLAo71IsrhUHrZzXw0OSuRF
-	6Azv6Rj1Q==;
+	 bh=ZMw9OWygs6XvD2P+qLIszg9d4f1invXgGXRZD8t6jQU=; b=bUVZXQJz9rO/DRyys284zBu+g
+	z0d6KVHp1JiJ8ejvKuGAnLJxFr+DD2ACdLTcYGsTiaE6uRogrLbYe2kIU0TEYHicl3lZ/6dy5cjyR
+	YkCe49ADM+EkmmKAysn5V/E9KO2WNUtccl2+Nh8x5+lPUh/nZIDtm9yEmX4UDMR9xh1/Jw9jKYyZX
+	EtU4TGOXn3/2qyBuuIO28oiBYcBd0FtowC/O/B4ROuTu2M2XjdvHcqVzR+LMBPb013k5xcuJPPAxi
+	UUgeAtmRCTdltQcnEKA5a6fOa0ZsoaB9GecM92cxx/AT1Ckhzb0D6/M8uYRNNNI0NWUXg3joO+kKH
+	qg7KYPlag==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqDvd-0001zr-JC; Tue, 30 Jun 2020 10:55:53 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jqDww-0002GG-Cx; Tue, 30 Jun 2020 10:57:14 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqDvb-0001yz-Dk; Tue, 30 Jun 2020 10:55:52 +0000
-X-UUID: 876ed2ea83f642af975784f2b4eabdb8-20200630
+ id 1jqDwt-0002FV-Kt; Tue, 30 Jun 2020 10:57:12 +0000
+X-UUID: 97d6420ab1dc420096a2f905bfa90de7-20200630
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=bwKT46w9uGcCWgvZnA7Tt6P0SET70mbkJOxHElU0i8s=; 
- b=W1MUIfLaM1gJbkVQ7lxcGX2oCQS1LT4kO9HnrjFsM3paV62YTLJ0c2CObuD5+1JCqDAPgJcnctbLPAgvXsw69w1upcROiLRUS4fYBpBjkNYSHcDYz2yITJ1B+iE6+K0rnfdml9TEEdpoU2/cJi3IC1HxdDP8EGJCsJhNIdgLdBo=;
-X-UUID: 876ed2ea83f642af975784f2b4eabdb8-20200630
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=dyBf/FOqBOKM8w25J19ReW9jhDIjCt4TCH41lbsQigU=; 
+ b=rCBQ6kx6gNiDDDJwcSms2MM8jvsOCrB24VcTRgBByMCXVZUNoEL0XihFBrD4QYU6dwu6LqWylRWBLsyHDrLaP9kWKcmnaifHWGGXFjXwZJ14HIn7+YZWQHSl1re6pP/aSq5LH6RSIWfea3TSXbuDHv8y4y/d5qDuYjEgKWhCmQM=;
+X-UUID: 97d6420ab1dc420096a2f905bfa90de7-20200630
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1694588932; Tue, 30 Jun 2020 02:55:40 -0800
-Received: from MTKMBS32DR.mediatek.inc (172.27.6.104) by
+ with ESMTP id 243807586; Tue, 30 Jun 2020 02:57:02 -0800
+Received: from MTKMBS32N2.mediatek.inc (172.27.4.72) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 30 Jun 2020 03:55:41 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32DR.mediatek.inc
- (172.27.6.104) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 30 Jun 2020 18:55:34 +0800
+ 15.0.1497.2; Tue, 30 Jun 2020 03:57:04 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32N2.mediatek.inc
+ (172.27.4.72) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 30 Jun 2020 18:57:01 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 30 Jun 2020 18:55:35 +0800
-Message-ID: <1593514516.24171.25.camel@mhfsdcap03>
-Subject: Re: [PATCH v5 06/10] iommu/mediatek: Add sub_comm id in translation
- fault
+ Transport; Tue, 30 Jun 2020 18:56:58 +0800
+Message-ID: <1593514600.24171.26.camel@mhfsdcap03>
+Subject: Re: [PATCH v5 03/10] iommu/mediatek: Modify the usage of
+ mtk_iommu_plat_data structure
 From: Yong Wu <yong.wu@mediatek.com>
 To: Chao Hao <chao.hao@mediatek.com>
-Date: Tue, 30 Jun 2020 18:55:16 +0800
-In-Reply-To: <20200629071310.1557-7-chao.hao@mediatek.com>
+Date: Tue, 30 Jun 2020 18:56:40 +0800
+In-Reply-To: <20200629071310.1557-4-chao.hao@mediatek.com>
 References: <20200629071310.1557-1-chao.hao@mediatek.com>
- <20200629071310.1557-7-chao.hao@mediatek.com>
+ <20200629071310.1557-4-chao.hao@mediatek.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: D7FCA91426CFD155D58B85D54AA5A21697363337348731C64131373A298F8F732000:8
+X-TM-SNTS-SMTP: E569C367CB152C27234DE089D55991412047532CEA7DCF42A63DDE8E08E5260F2000:8
 X-MTK: N
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -93,84 +93,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Chao,
+
+This is also ok for me. Only two format nitpick.
+
 On Mon, 2020-06-29 at 15:13 +0800, Chao Hao wrote:
-> The max larb number that a iommu HW support is 8(larb0~larb7 in the below
-> diagram).
-> If the larb's number is over 8, we use a sub_common for merging
-> several larbs into one larb. At this case, we will extend larb_id:
-> bit[11:9] means common-id;
-> bit[8:7] means subcommon-id;
-> From these two variables, we could get the real larb number when
-> translation fault happen.
-> The diagram is as below:
-> 		 EMI
-> 		  |
-> 		IOMMU
-> 		  |
->            -----------------
-> 	   |               |
-> 	common1   	common0
-> 	   |		   |
-> 	   -----------------
-> 		  |
->              smi common
-> 		  |
->   ------------------------------------
->   |       |       |       |     |    |
->  3'd0    3'd1    3'd2    3'd3  ...  3'd7   <-common_id(max is 8)
->   |       |       |       |     |    |
-> Larb0   Larb1     |     Larb3  ... Larb7
-> 		  |
-> 	    smi sub common
-> 		  |
->      --------------------------
->      |        |       |       |
->     2'd0     2'd1    2'd2    2'd3   <-sub_common_id(max is 4)
->      |        |       |       |
->    Larb8    Larb9   Larb10  Larb11
+> Given the fact that we are adding more and more plat_data bool values,
+> it would make sense to use a u32 flags register and add the appropriate
+> macro definitions to set and check for a flag present.
+> No functional change.
 > 
-> In this patch we extend larb_remap[] to larb_remap[8][4] for this.
-> larb_remap[x][y]: x means common-id above, y means subcommon_id above.
-> 
-> We can also distinguish if the M4U HW has sub_common by HAS_SUB_COMM
-> macro.
-> 
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Suggested-by: Matthias Brugger <matthias.bgg@gmail.com>
 > Signed-off-by: Chao Hao <chao.hao@mediatek.com>
-> Reviewed-by: Yong Wu <yong.wu@mediatek.com>
 > ---
->  drivers/iommu/mtk_iommu.c  | 20 +++++++++++++-------
->  drivers/iommu/mtk_iommu.h  |  3 ++-
->  include/soc/mediatek/smi.h |  2 ++
->  3 files changed, 17 insertions(+), 8 deletions(-)
 
 [snip]
 
-> @@ -48,7 +49,7 @@ struct mtk_iommu_plat_data {
->  	enum mtk_iommu_plat m4u_plat;
->  	u32                 flags;
->  	u32                 inv_sel_reg;
-> -	unsigned char       larbid_remap[MTK_LARB_NR_MAX];
-> +	unsigned char       larbid_remap[MTK_LARB_COM_MAX][MTK_LARB_SUBCOM_MAX];
+>  static const struct mtk_iommu_plat_data mt2712_data = {
+>  	.m4u_plat     = M4U_MT2712,
+> -	.has_4gb_mode = true,
+> -	.has_bclk     = true,
+> -	.has_vld_pa_rng   = true,
+> +	.flags        = HAS_4GB_MODE |
+> +			HAS_BCLK |
+> +			HAS_VLD_PA_RNG,
+
+short enough. we can put it in one line?
+
+>  	.larbid_remap = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
 >  };
 >  
->  struct mtk_iommu_domain;
-> diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
-> index 5a34b87d89e3..fa65a55468e2 100644
-> --- a/include/soc/mediatek/smi.h
-> +++ b/include/soc/mediatek/smi.h
-> @@ -12,6 +12,8 @@
->  #ifdef CONFIG_MTK_SMI
+>  static const struct mtk_iommu_plat_data mt8173_data = {
+>  	.m4u_plat     = M4U_MT8173,
+> -	.has_4gb_mode = true,
+> -	.has_bclk     = true,
+> -	.reset_axi    = true,
+> +	.flags	      = HAS_4GB_MODE |
+> +			HAS_BCLK |
+> +			RESET_AXI,
+>  	.larbid_remap = {0, 1, 2, 3, 4, 5}, /* Linear mapping. */
+>  };
 >  
->  #define MTK_LARB_NR_MAX		16
-> +#define MTK_LARB_COM_MAX	8
-> +#define MTK_LARB_SUBCOM_MAX	4
-
-Both are only used in mtk_iommu.h, and I don't think smi has plan to use
-them. thus we could move them into mtk_iommu.h
-
+>  static const struct mtk_iommu_plat_data mt8183_data = {
+>  	.m4u_plat     = M4U_MT8183,
+> -	.reset_axi    = true,
+> +	.flags        = RESET_AXI,
+>  	.larbid_remap = {0, 4, 5, 6, 7, 2, 3, 1},
+>  };
 >  
->  #define MTK_SMI_MMU_EN(port)	BIT(port)
+> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+> index 1b6ea839b92c..7cc39f729263 100644
+> --- a/drivers/iommu/mtk_iommu.h
+> +++ b/drivers/iommu/mtk_iommu.h
+> @@ -17,6 +17,15 @@
+>  #include <linux/spinlock.h>
+>  #include <soc/mediatek/smi.h>
+>  
+> +#define HAS_4GB_MODE			BIT(0)
+> +/* HW will use the EMI clock if there isn't the "bclk". */
+> +#define HAS_BCLK			BIT(1)
+> +#define HAS_VLD_PA_RNG			BIT(2)
+> +#define RESET_AXI			BIT(3)
+> +
+> +#define MTK_IOMMU_HAS_FLAG(pdata, _x) \
+> +		((((pdata)->flags) & (_x)) == (_x))
+
+If these definitions are not used in mtk_iommu_v1.c(also no this plan),
+then we can put them in the mtk_iommu.c.
+
+
+BTW, the patch title "modify the usage of mtk_iommu_plat_data structure"
+isn't so clear, we could write what the detailed modification is.
+something like:
+iommu/mediatek: Use a u32 flags to describe different HW features
+
+> +
+>  struct mtk_iommu_suspend_reg {
+>  	u32				misc_ctrl;
+>  	u32				dcm_dis;
+> @@ -36,12 +45,7 @@ enum mtk_iommu_plat {
+>  
+>  struct mtk_iommu_plat_data {
+>  	enum mtk_iommu_plat m4u_plat;
+> -	bool                has_4gb_mode;
+> -
+> -	/* HW will use the EMI clock if there isn't the "bclk". */
+> -	bool                has_bclk;
+> -	bool                has_vld_pa_rng;
+> -	bool                reset_axi;
+> +	u32                 flags;
+>  	unsigned char       larbid_remap[MTK_LARB_NR_MAX];
+>  };
 >  
 
 _______________________________________________
