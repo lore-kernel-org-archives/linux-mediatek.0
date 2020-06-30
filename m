@@ -2,22 +2,22 @@ Return-Path: <SRS0=AAZc=AL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A6496C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 07:29:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A346C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 07:34:00 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6CCF320759
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 07:29:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2489E20759
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 07:34:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yjaEJmGz";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="hALw+ltj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6CCF320759
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="j0PRvbOz";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GCeFcF1V"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2489E20759
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,50 +26,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=YInIqHXfu+K71ne5jQrdjlG2hz0m+sIWcnOh/EIKvMY=; b=yjaEJmGz/vxH6Esq9ueQm1xAI
-	CeybVuXPzCiwHb7GbrPpii7QUdMmeg+xeIvjSpGnrm7KW2HItFkHpqnikd4uUigsqZcrRl+05Y6re
-	UOji4/zG4T+pv75FJCA+aRK1pdWrgjO06XrPh9Yfv0tTxWFrOq2W2e6NgFAqO3LCA3Trvj3i6iKL2
-	Jv0te/15YDLJepM1o+GwVoKK79MSdT41sWdE3LlYcxvOL/VD2ALfl+6YFecnlJesUxQiYjpTUG3yP
-	K78T7ZGoUL40sisi6laMtLbiLO5ZrvicDmoAY/7m9kENAde13tGOchlJy/+K4RQGdRzwJLG5eYavD
-	/OWHgF7fQ==;
+	 bh=IclyH2WmNcQwGudOYJIhinTEO/bDhRyW3Mb8o+2puVs=; b=j0PRvbOzlJi4bnVh75BWy5NFo
+	XXxLwgvFarFm8Lg1avLo80cC71IFcRLKrYWiTDOmVrODxS0YTWRhcSRLRyRe3nq6XGjk2Siegptb2
+	Plt0DzMCjvMyLtWyZ+BCd5gw1kaNM7lLA2GVlaP2mjyZCs9KqnaV3/NeVFfFt/sRDbweK6x1hbPUk
+	+SWh6vYTBsq1Jw9EERKdtUpMOvYq2ZdTqqUBsaUs80CdXT/FGc+fl7WlrYxN5IgfuRTm4Y/GijYAE
+	U1eUa9RptHXnUjs2OtqmbyqoQj3ZvBYmUazHDY6cqNF/4/AWs+0N0c6GlFQlAv6aozIBncQLQxvXg
+	tanVMqZlQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqAhv-0004uR-1d; Tue, 30 Jun 2020 07:29:31 +0000
+	id 1jqAm6-0007Zf-Vu; Tue, 30 Jun 2020 07:33:51 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqAhs-0004sp-H5; Tue, 30 Jun 2020 07:29:29 +0000
-X-UUID: 649e0299a42041fda2408b28ec83bdc9-20200629
+ id 1jqAm4-0007Xl-9l; Tue, 30 Jun 2020 07:33:49 +0000
+X-UUID: 4dd15085197645909469e2f9d330f468-20200629
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=HAx+5BTPXfGNqdXAn2CnRwU8idpAgHvW4EJmH0eOK5s=; 
- b=hALw+ltjvCgo8K/x7tJTs59w+VHEF1BeidKYbG+3dl16gCt4nF5/f+X3+aoZYd2nxcqrWle0FDoYIqIDtNXQqCaNLwwJk+SrF8+z4sgg6gB3/qRd+M6ebb8nciyv0bU/mC7oJM/WQ2YD0q6iJIVtLof9BCfu4/HkqN4ogCvrBCM=;
-X-UUID: 649e0299a42041fda2408b28ec83bdc9-20200629
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
+ bh=g16KvrnbD399itfp7Gu6dbRkAnFVoPytjIcdXi66ePg=; 
+ b=GCeFcF1VM+46UVRBsznlnmz9AIn6xS0y/8ME5GK6bAmFktvB7BAWUBGgJjuXT3w20HWeUUsAiAzBUFemSGm9fv7jOlM9oIaQh7Byqt+zgGEYFn4P8s818+USqWByVDOy+XyFWlsxBRFEFXdSXqxqHp8oiQqng6bWHwi06EUMqDM=;
+X-UUID: 4dd15085197645909469e2f9d330f468-20200629
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <yingjoe.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 280348949; Mon, 29 Jun 2020 23:29:15 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 30 Jun 2020 00:29:20 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31DR.mediatek.inc
- (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 30 Jun 2020 15:29:18 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 30 Jun 2020 15:29:17 +0800
-Message-ID: <1593502139.23885.5.camel@mhfsdcap03>
-Subject: Re: [PATCH 2/2] usb: mtu3: fix NULL pointer dereference
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Markus Elfring <Markus.Elfring@web.de>
-Date: Tue, 30 Jun 2020 15:28:59 +0800
-In-Reply-To: <99fc1f6e-7907-6723-612a-8b68ffa871e5@web.de>
-References: <1593410434-19406-1-git-send-email-chunfeng.yun@mediatek.com>
- <1593410434-19406-2-git-send-email-chunfeng.yun@mediatek.com>
- <99fc1f6e-7907-6723-612a-8b68ffa871e5@web.de>
+ with ESMTP id 1161993647; Mon, 29 Jun 2020 23:33:33 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 30 Jun 2020 00:33:38 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 30 Jun 2020 15:33:37 +0800
+Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 30 Jun 2020 15:33:39 +0800
+Message-ID: <1593502419.29073.7.camel@mtksdaap41>
+Subject: Re: [PATCH] i2c: mediatek: Add to support continuous mode
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+To: Qiangming Xia <qiangming.xia@mediatek.com>
+Date: Tue, 30 Jun 2020 15:33:39 +0800
+In-Reply-To: <20200623074245.24513-1-qiangming.xia@mediatek.com>
+References: <20200623074245.24513-1-qiangming.xia@mediatek.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: C01562A8C5541EC7257F9E298FE7512CE55EAEBA0420D98040392F23F24A9DAF2000:8
 X-MTK: N
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -82,28 +79,140 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Felipe Balbi <felipe.balbi@linux.intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Colin Ian King <colin.king@canonical.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, wsa@the-dreams.de,
+ linux-kernel@vger.kernel.org, Wolfram Sang <wsa+renesas@sang-engineering.com>,
+ Qii Wang <Qii.Wang@mediatek.com>, linux-i2c@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDIwLTA2LTI5IGF0IDEwOjAwICswMjAwLCBNYXJrdXMgRWxmcmluZyB3cm90ZToN
-Cj4gPiBTb21lIHBvaW50ZXJzIGFyZSBkZXJlZmVyZW5jZWQgYmVmb3JlIHN1Y2Nlc3NmdWwgY2hl
-Y2tzLg0KPiANCj4gSSBzdWdnZXN0IHRvIHJlY29uc2lkZXIgYW5kIGltcHJvdmUgdGhlIGNoYW5n
-ZSBkZXNjcmlwdGlvbi4NCj4gDQo+ICogV291bGQgYSBudWxsIHBvaW50ZXIgZGVyZWZlcmVuY2Ug
-YmUgcG9zc2libGUgb25seSB3aXRoIHRoZSB2YXJpYWJsZXMg4oCcbWVw4oCdDQo+ICAgYW5kIOKA
-nG1yZXHigJ0gaW4gdGhlIGltcGxlbWVudGF0aW9uIG9mIHRoZSBmdW5jdGlvbiDigJxtdHUzX2dh
-ZGdldF9kZXF1ZXVl4oCdPw0KPiANCj4gKiBIb3cgZG8geW91IHRoaW5rIGFib3V0IHRvIGFkanVz
-dCBhbnkgbW9yZSB2YXJpYWJsZSBpbml0aWFsaXNhdGlvbnM/DQpZZXMsIEknbGwgZG8gaXQgaWYg
-bmVlZCwgdGhhbmtzDQoNCj4gDQo+ICogV2lsbCBpdCBiZWNvbWUgaGVscGZ1bCB0byBhZGQgdGhl
-IHRhZyDigJxGaXhlc+KAnSB0byB0aGUgY29tbWl0IG1lc3NhZ2U/DQpNYXliZSBuZWVkbid0DQoN
-Cj4gDQo+IFJlZ2FyZHMsDQo+IE1hcmt1cw0KDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVk
-aWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Hi Qiangming,
+
+When you send new version, you should
+
+- Add version number in subject, so we know this is a new one.
+- List what's changed in this patch after ---,  so reviewer knows where
+we should check. 
+
+
+On Tue, 2020-06-23 at 15:42 +0800, Qiangming Xia wrote:
+> From: "qiangming.xia" <qiangming.xia@mediatek.com>
+> 
+>     Mediatek i2c controller support for continuous mode,
+> it allow to transfer once multiple writing messages of equal
+> length.
+>     A i2c slave sometimes need write a serial of non-continuous
+> offset range in chip,e.g. camera sensor imx586,imx576. It need
+> transfer 294 writing messages when initiate setting. It can use
+> this mode to improve performance.
+> 
+> Change-Id: If473d96d2b76e9d51f20741a9380db4fcad15dbd
+
+Remove this.
+
+
+> Signed-off-by: Qiangming Xia <qiangming.xia@mediatek.com>
+> ---
+>  drivers/i2c/busses/i2c-mt65xx.c | 66 +++++++++++++++++++++++++++++++++
+>  1 file changed, 66 insertions(+)
+> 
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> index deef69e56906..108bca1a4042 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -97,6 +97,7 @@ enum mtk_trans_op {
+>  	I2C_MASTER_WR = 1,
+>  	I2C_MASTER_RD,
+>  	I2C_MASTER_WRRD,
+> +	I2C_MASTER_CONTINUOUS_WR,
+>  };
+>  
+>  enum I2C_REGS_OFFSET {
+> @@ -846,6 +847,9 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+>  					    OFFSET_TRANSFER_LEN);
+>  		}
+>  		mtk_i2c_writew(i2c, I2C_WRRD_TRANAC_VALUE, OFFSET_TRANSAC_LEN);
+> +	} else if (i2c->op == I2C_MASTER_CONTINUOUS_WR) {
+> +		mtk_i2c_writew(i2c, msgs->len / num, OFFSET_TRANSFER_LEN);
+> +		mtk_i2c_writew(i2c, num, OFFSET_TRANSAC_LEN);
+>  	} else {
+>  		mtk_i2c_writew(i2c, msgs->len, OFFSET_TRANSFER_LEN);
+>  		mtk_i2c_writew(i2c, num, OFFSET_TRANSAC_LEN);
+> @@ -896,6 +900,23 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+>  			writel(reg_4g_mode, i2c->pdmabase + OFFSET_TX_4G_MODE);
+>  		}
+>  
+> +		writel((u32)wpaddr, i2c->pdmabase + OFFSET_TX_MEM_ADDR);
+> +		writel(msgs->len, i2c->pdmabase + OFFSET_TX_LEN);
+> +	} else if (i2c->op == I2C_MASTER_CONTINUOUS_WR) {
+> +		writel(I2C_DMA_INT_FLAG_NONE, i2c->pdmabase + OFFSET_INT_FLAG);
+> +		writel(I2C_DMA_CON_TX, i2c->pdmabase + OFFSET_CON);
+> +		wpaddr = dma_map_single(i2c->dev, msgs->buf,
+> +					msgs->len, DMA_TO_DEVICE);
+> +		if (dma_mapping_error(i2c->dev, wpaddr)) {
+> +			kfree(msgs->buf);
+> +			return -ENOMEM;
+> +		}
+> +
+> +		if (i2c->dev_comp->support_33bits) {
+> +			reg_4g_mode = mtk_i2c_set_4g_mode(wpaddr);
+> +			writel(reg_4g_mode, i2c->pdmabase + OFFSET_TX_4G_MODE);
+> +		}
+> +
+>  		writel((u32)wpaddr, i2c->pdmabase + OFFSET_TX_MEM_ADDR);
+>  		writel(msgs->len, i2c->pdmabase + OFFSET_TX_LEN);
+>  	} else {
+> @@ -979,6 +1000,11 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+>  				 msgs->len, DMA_FROM_DEVICE);
+>  
+>  		i2c_put_dma_safe_msg_buf(dma_rd_buf, msgs, true);
+> +	} else if (i2c->op == I2C_MASTER_CONTINUOUS_WR) {
+> +		dma_unmap_single(i2c->dev, wpaddr,
+> +				 msgs->len, DMA_TO_DEVICE);
+> +
+> +		kfree(msgs->buf);
+>  	} else {
+>  		dma_unmap_single(i2c->dev, wpaddr, msgs->len,
+>  				 DMA_TO_DEVICE);
+> @@ -1009,6 +1035,9 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+>  {
+>  	int ret;
+>  	int left_num = num;
+> +	int i, j;
+> +	u8 *dma_multi_wr_buf;
+> +	struct i2c_msg multi_msg[1];
+>  	struct mtk_i2c *i2c = i2c_get_adapdata(adap);
+>  
+>  	ret = mtk_i2c_clock_enable(i2c);
+> @@ -1025,6 +1054,43 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+>  		}
+>  	}
+>  
+> +	if (num > 1 && !(msgs[0].flags & I2C_M_RD)) {
+> +		for (i = 0; i < num - 1; i++) {
+> +			if (!(msgs[i+1].flags & I2C_M_RD) &&
+> +				(msgs[i].addr == msgs[i+1].addr)
+> +					&& (msgs[i].len == msgs[i+1].len)) {
+> +				continue;
+
+Don't need () for addr/len check.
+When wrap, please put operator at end of previous line.
+The 2nd line of if is at the same indent level with continue, that
+doesn't look good. Let's use 4 spaces as indent for addr and len check, 
+so this should be:
+
+	if (num > 1 && !(msgs[0].flags & I2C_M_RD)) {
+		for (i = 0; i < num - 1; i++) {
+			if (!(msgs[i+1].flags &	I2C_M_RD) && 
+			    msgs[i].addr == msgs[i+1].addr &&
+			    msgs[i].len == msgs[i+1].len) {
+
+
+Joe.C
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
