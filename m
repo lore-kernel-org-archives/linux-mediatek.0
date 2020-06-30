@@ -2,89 +2,88 @@ Return-Path: <SRS0=AAZc=AL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-1.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A44FCC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 17:19:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DCD41C433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 17:32:53 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 723632077D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 17:19:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id ABA52206C0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 17:32:53 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gIQvztxh";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="bJkUoNua"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 723632077D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2u0DpwAh";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="Iq79rUu7"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ABA52206C0
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=62vRzgaQPjPwGjcWpc9Nn8WWNsaAVB18ANHXP6qucqU=; b=gIQvztxh+hmM3bt8hcK6x31Bs
-	ilkQ9oRn4GbiktpR7CRnVos6k78D8C3xsd5IEQgm2gGK829hmN+AoWlo07iUzdyZU9Fx6KSKaAl6i
-	Gs6A+cFZ58buMKE55Sj4590sBQ0MTcG5LyryQ3P55fEZ3/iQ2DQQX5gxjrNhjzRxz3XuqJdjbMPr9
-	hZnfmgsRQswhO5QxybEEVcFizXQtP4/UWdbjEToJTBbx60ZAMCOiTK1EP6TxZkYVtEUOTzUHT0iO7
-	LQBM4g8mFhPVGmXTeNA3cbmZ8maTKQGoFOmPdqWYLSeWHSiG3PyqxcowdkyP8Te4JrrZ/Oq82+n+C
-	N94O34gvA==;
+	 bh=/FXNhGXYvdvVuKYFRJwWM5wFbHj93vkqvVPFoO2UmjM=; b=2u0DpwAhhcS5qcv4cSrwNPJZJ
+	kl1XvNPNBWfzDod34rMhPC7Mc5f2QhUGsua73LmX3pJQ2mXPHoRF4cubz+2aOqzaZ15KLwXF4w3V0
+	IX3sljwVa/DSQ5pzK1TT7Imm3Nzazg4ZQTRWf6S3wk5EvgNFcBDg0DVT9y/q1Ipt56837ZeW/GvfZ
+	pLOaibcAAP/unldg5fYWpSeyCez5+CRphBTn/gF/OeIs3mfsbFCpDWs3Z5WYholzAS1g+J1CpkEqo
+	Jn9kBbK4sYeIv4DFYIjqTQy9n25pRcXg8GeVgDHPc1tSuveVhxmNrvq5Fy7eLANcz3lAv2eyxeUxi
+	22rMFNF6A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqJuq-00085I-8u; Tue, 30 Jun 2020 17:19:28 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1jqK7e-0000ee-An; Tue, 30 Jun 2020 17:32:42 +0000
+Received: from m43-7.mailgun.net ([69.72.43.7])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqJud-00081W-J5
- for linux-mediatek@lists.infradead.org; Tue, 30 Jun 2020 17:19:22 +0000
-Received: by mail-wr1-x442.google.com with SMTP id q5so20967191wru.6
- for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2020 10:19:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=J/fm1XsvHQHkOySPHkGUug98e3SYGWgCY9AAaLKVZAQ=;
- b=bJkUoNua09zlOC1u0e1zfwrzzR3BlFgsZzvLyrPx7iKB9UMjYxOAgi5D+PgXGbaoSV
- PPVkdjX69MpUQkdVBG2LrLCCGbzhbUOGtAQelEgmqgui7MXJijIFXrTsMvj0MsuJxaW4
- oDoLCqNj+tDh5hG6KksbS8zBU6u56iyfdC3jk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=J/fm1XsvHQHkOySPHkGUug98e3SYGWgCY9AAaLKVZAQ=;
- b=USm+ZZDOi8+gQbXSewSZYdS4pNNRjNYPT+JEvrwmNeplIyHbv9eK5tPjFGaaKNMrCt
- QSkM4HjdhRMJeljaG5LrFToGEGAAtXzV9owv+XNPl2o+IZCn6sSG3a/i3iwnfpOTyuG8
- I4tU0xjODD4mmnjDF00NPC2KjLEIIA+o4h3vqa+HPgkCgNcFeqjGr84nzBo6Vbo+OQM1
- jYZi3Q2ETbaNyCpyHe6p7Xsl59dCg9ofGBPTZuxi+Eg6HTSzem5PJrZ7lPLSmst8xGBc
- WBqTghd/qyHKFzi2mRftWyt5iBut6Kc2mnlQJYy1+mzk/zGIf+PMPA1UYmj2W+8z7GlD
- XEvg==
-X-Gm-Message-State: AOAM533lKZRdNyn4h5B9Q8GCmZ2+B3mFgj0VvEl1FutNWeaUDayO8P7R
- 8FjMnif98l3qpm2DsdWY52Bnzg==
-X-Google-Smtp-Source: ABdhPJxZGumxEKs37+tBL3WHbXUBqjCD//HM9vnehmqQikLZO8H3zt5/qVFES+cnZvDCkAwI7sObXA==
-X-Received: by 2002:a5d:51ce:: with SMTP id n14mr22826755wrv.155.1593537554628; 
- Tue, 30 Jun 2020 10:19:14 -0700 (PDT)
-Received: from chromium.org (205.215.190.35.bc.googleusercontent.com.
- [35.190.215.205])
- by smtp.gmail.com with ESMTPSA id g14sm4158291wrm.93.2020.06.30.10.19.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Jun 2020 10:19:13 -0700 (PDT)
-Date: Tue, 30 Jun 2020 17:19:12 +0000
-From: Tomasz Figa <tfiga@chromium.org>
-To: Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>
-Subject: Re: [RFC PATCH V4 0/4] media: platform: Add support for Face
- Detection (FD) on mt8183 SoC
-Message-ID: <20200630171912.GE1212092@chromium.org>
-References: <20191204124732.10932-1-Jerry-Ch.chen@mediatek.com>
- <1588903371.16825.14.camel@mtksdccf07>
- <CAAFQd5CP+gH3zG9fejBv_hTzeAExMoY+L38W8e4e3OSc-gVRHg@mail.gmail.com>
- <20200521183825.GB249683@chromium.org>
- <1593526253.29676.28.camel@mtksdccf07>
+ id 1jqK7T-0000cP-QS
+ for linux-mediatek@lists.infradead.org; Tue, 30 Jun 2020 17:32:38 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1593538347; h=Content-Transfer-Encoding: Content-Type:
+ In-Reply-To: MIME-Version: Date: Message-ID: From: References: Cc: To:
+ Subject: Sender; bh=ZFcSwfI5UdhOXhdrQZvHHPaea1ggOYoJbFhXiurrIwM=;
+ b=Iq79rUu7QvScRzXQSAihxZlTWaKL5YIbxMXOFJJ6oMzDswFbZgW3r3IeEKZnxlOB+5O/mwf3
+ 0JR3My1K5F21+l/z2k+92/MuqQG8iqF3J2+QiDheA2E+rVdY/FvGSuDkXmVIC/Htdchzx4Ll
+ 8SUyx6Ek69TD2m0QzqnlszJCF0c=
+X-Mailgun-Sending-Ip: 69.72.43.7
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
+ smtp-out-n04.prod.us-west-2.postgun.com with SMTP id
+ 5efb772aad153efa34f14382 (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 30 Jun 2020 17:32:26
+ GMT
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id D5EB5C433C6; Tue, 30 Jun 2020 17:32:25 +0000 (UTC)
+Received: from [192.168.8.176] (cpe-70-95-149-85.san.res.rr.com [70.95.149.85])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: asutoshd)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id D29B9C433C8;
+ Tue, 30 Jun 2020 17:32:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org D29B9C433C8
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=none smtp.mailfrom=asutoshd@codeaurora.org
+Subject: Re: [PATCH v2] scsi: ufs: Disable WriteBooster capability in
+ non-supported UFS device
+To: Stanley Chu <stanley.chu@mediatek.com>, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com
+References: <20200624074110.21919-1-stanley.chu@mediatek.com>
+From: "Asutosh Das (asd)" <asutoshd@codeaurora.org>
+Message-ID: <7f826f0c-6ed1-b3a3-72c9-aae0a1680e23@codeaurora.org>
+Date: Tue, 30 Jun 2020 10:32:23 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1593526253.29676.28.camel@mtksdccf07>
+In-Reply-To: <20200624074110.21919-1-stanley.chu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200630_131916_030850_11D2D460 
-X-CRM114-Status: GOOD (  31.19  )
+X-CRM114-CacheID: sfid-20200630_133231_952931_37EAB26B 
+X-CRM114-Status: GOOD (  25.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,131 +95,124 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Sean Cheng =?utf-8?B?KOmEreaYh+W8mCk=?= <Sean.Cheng@mediatek.com>,
- "laurent.pinchart+renesas@ideasonboard.com"
- <laurent.pinchart+renesas@ideasonboard.com>,
- "zwisler@chromium.org" <zwisler@chromium.org>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- Christie Yu =?utf-8?B?KOa4uOmbheaDoCk=?= <christie.yu@mediatek.com>,
- HansVerkuil <hverkuil@xs4all.nl>,
- Jungo Lin =?utf-8?B?KOael+aYjuS/iik=?= <jungo.lin@mediatek.com>,
- Sj Huang =?utf-8?B?KOm7g+S/oeeSiyk=?= <sj.huang@mediatek.com>,
- "yuzhao@chromium.org" <yuzhao@chromium.org>,
- "hans.verkuil@cisco.com" <hans.verkuil@cisco.com>,
- "pihsun@chromium.org" <pihsun@chromium.org>,
- Frederic Chen =?utf-8?B?KOmZs+S/iuWFgyk=?= <Frederic.Chen@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "mchehab@kernel.org" <mchehab@kernel.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: bvanassche@acm.org, andy.teng@mediatek.com, cc.chou@mediatek.com,
+ chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, chaotian.jing@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jerry,
-
-On Tue, Jun 30, 2020 at 10:10:53PM +0800, Jerry-ch Chen wrote:
-> Hi Tomasz,
+On 6/24/2020 12:41 AM, Stanley Chu wrote:
+> If UFS device is not qualified to enter the detection of WriteBooster
+> probing by disallowed UFS version or device quirks, then WriteBooster
+> capability in host shall be disabled to prevent any WriteBooster
+> operations in the future.
 > 
-> On Thu, 2020-05-21 at 18:38 +0000, Tomasz Figa wrote:
-> > Hi Jerry,
-> > 
-> > On Wed, May 13, 2020 at 11:45:37PM +0200, Tomasz Figa wrote:
-> > > Hi Jerry,
-> > > 
-> > > On Fri, May 8, 2020 at 4:03 AM Jerry-ch Chen <Jerry-ch.Chen@mediatek.com> wrote:
-> > > >
-> > > > Hi Laurent, Tomasz, Matthias,
-> > > >
-> > > > gentle ping for this patch set,
-> > > > If no new comments, I would like to send a newer version.
-> > > >
-> > > 
-> > > Sorry, I still haven't had a chance to look at the series, so feel
-> > > free to send a new version and I will take a look at the new one.
-> > > 
-> > 
-> > Finally found some time to review the series. Again sorry for the delay
-> > and thanks for your patience.
-> > 
-> > Some general comments:
-> > 1) The metadata format FourCC should be added in a separate patch,
-> > together with documentation for it.
-> > 2) Control IDs, structs used by the userspace, etc. should be defined in
-> > a header under include/uapi/linux.
-> > 
-> > Please also check my replies to particular patches for further comments.
-> > 
-> > Best regards,
-> > Tomasz
+> Fixes: 3d17b9b5ab11 ("scsi: ufs: Add write booster feature support")
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> ---
+>   drivers/scsi/ufs/ufshcd.c | 35 +++++++++++++++++++----------------
+>   1 file changed, 19 insertions(+), 16 deletions(-)
 > 
-> Appreciate for your reply,
+Reviewed-by: Asutosh Das <asutoshd@codeaurora.org>
+
+
+> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+> index f173ad1bd79f..c62bd47beeaa 100644
+> --- a/drivers/scsi/ufs/ufshcd.c
+> +++ b/drivers/scsi/ufs/ufshcd.c
+> @@ -6847,21 +6847,31 @@ static int ufshcd_scsi_add_wlus(struct ufs_hba *hba)
+>   
+>   static void ufshcd_wb_probe(struct ufs_hba *hba, u8 *desc_buf)
+>   {
+> +	struct ufs_dev_info *dev_info = &hba->dev_info;
+>   	u8 lun;
+>   	u32 d_lu_wb_buf_alloc;
+>   
+>   	if (!ufshcd_is_wb_allowed(hba))
+>   		return;
+> +	/*
+> +	 * Probe WB only for UFS-2.2 and UFS-3.1 (and later) devices or
+> +	 * UFS devices with quirk UFS_DEVICE_QUIRK_SUPPORT_EXTENDED_FEATURES
+> +	 * enabled
+> +	 */
+> +	if (!(dev_info->wspecversion >= 0x310 ||
+> +	      dev_info->wspecversion == 0x220 ||
+> +	     (hba->dev_quirks & UFS_DEVICE_QUIRK_SUPPORT_EXTENDED_FEATURES)))
+> +		goto wb_disabled;
+>   
+>   	if (hba->desc_size[QUERY_DESC_IDN_DEVICE] <
+>   	    DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP + 4)
+>   		goto wb_disabled;
+>   
+> -	hba->dev_info.d_ext_ufs_feature_sup =
+> +	dev_info->d_ext_ufs_feature_sup =
+>   		get_unaligned_be32(desc_buf +
+>   				   DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP);
+>   
+> -	if (!(hba->dev_info.d_ext_ufs_feature_sup & UFS_DEV_WRITE_BOOSTER_SUP))
+> +	if (!(dev_info->d_ext_ufs_feature_sup & UFS_DEV_WRITE_BOOSTER_SUP))
+>   		goto wb_disabled;
+>   
+>   	/*
+> @@ -6870,17 +6880,17 @@ static void ufshcd_wb_probe(struct ufs_hba *hba, u8 *desc_buf)
+>   	 * a max of 1 lun would have wb buffer configured.
+>   	 * Now only shared buffer mode is supported.
+>   	 */
+> -	hba->dev_info.b_wb_buffer_type =
+> +	dev_info->b_wb_buffer_type =
+>   		desc_buf[DEVICE_DESC_PARAM_WB_TYPE];
+>   
+> -	hba->dev_info.b_presrv_uspc_en =
+> +	dev_info->b_presrv_uspc_en =
+>   		desc_buf[DEVICE_DESC_PARAM_WB_PRESRV_USRSPC_EN];
+>   
+> -	if (hba->dev_info.b_wb_buffer_type == WB_BUF_MODE_SHARED) {
+> -		hba->dev_info.d_wb_alloc_units =
+> +	if (dev_info->b_wb_buffer_type == WB_BUF_MODE_SHARED) {
+> +		dev_info->d_wb_alloc_units =
+>   		get_unaligned_be32(desc_buf +
+>   				   DEVICE_DESC_PARAM_WB_SHARED_ALLOC_UNITS);
+> -		if (!hba->dev_info.d_wb_alloc_units)
+> +		if (!dev_info->d_wb_alloc_units)
+>   			goto wb_disabled;
+>   	} else {
+>   		for (lun = 0; lun < UFS_UPIU_MAX_WB_LUN_ID; lun++) {
+> @@ -6891,7 +6901,7 @@ static void ufshcd_wb_probe(struct ufs_hba *hba, u8 *desc_buf)
+>   					(u8 *)&d_lu_wb_buf_alloc,
+>   					sizeof(d_lu_wb_buf_alloc));
+>   			if (d_lu_wb_buf_alloc) {
+> -				hba->dev_info.wb_dedicated_lu = lun;
+> +				dev_info->wb_dedicated_lu = lun;
+>   				break;
+>   			}
+>   		}
+> @@ -6977,14 +6987,7 @@ static int ufs_get_device_desc(struct ufs_hba *hba)
+>   
+>   	ufs_fixup_device_setup(hba);
+>   
+> -	/*
+> -	 * Probe WB only for UFS-3.1 devices or UFS devices with quirk
+> -	 * UFS_DEVICE_QUIRK_SUPPORT_EXTENDED_FEATURES enabled
+> -	 */
+> -	if (dev_info->wspecversion >= 0x310 ||
+> -	    dev_info->wspecversion == 0x220 ||
+> -	    (hba->dev_quirks & UFS_DEVICE_QUIRK_SUPPORT_EXTENDED_FEATURES))
+> -		ufshcd_wb_probe(hba, desc_buf);
+> +	ufshcd_wb_probe(hba, desc_buf);
+>   
+>   	/*
+>   	 * ufshcd_read_string_desc returns size of the string
 > 
-> So far, I've locally created an uapi header:
-> include/uapi/linux/mtk_fd_40.h
-> which provides some values, control ids, and the definitions of
-> structures that would be needed by user of mtk_fd_40 driver.
-> In addition, I also provide a MACRO as example in comments that can
-> extract the struct member with bit length and offset
-> definitions(eliminate the bit-fields).
-> 
-> Also, I would like to rename struct fd_user_output with struct
-> mtk_fd_hw_result. I worry fd_user_output would be a confusing name.
 
-The change sounds good to me.
 
-> I will add them in a separate patch in next version.
-> 
-
-Okay.
-
-> I am still working on the documentation, which might be
-> Documentation/media/uapi/v4l/pixfmt-meta-mtk-fd-40.rst.
-> Refering the other pixfmt-*.rst files, I will try to provide the
-> flat-table of the metadata with the structure of the mtk_fd_hw_result.
-> 
-
-Sounds good to me.
-
-> I am confusing that should I remain the name with -40 in the tail of rst
-> file?
-
-The header and documentation file names should match the driver name.  I
-just noticed there is some inconsistency in the naming, though. The
-driver seems to be located under drivers/media/platform/mtk-isp/fd, but
-the driver name in the platform driver struct and as reported by
-VIDIOC_QUERYCAP seems to be "mtk-fd-4.0". 
-
-Since we have many mtk-* drivers in the tree currently, I think it might
-make sense to consolidate them under drivers/media/platform/mediatek,
-similarly to drivers/media/platform/qcom or /rockchip. But it could be
-done later, as a follow-up.
-
-My suggestion would be to place the driver under
-drivers/media/platform/mtk-fd-40 and also rename the related Kconfig
-symbol to include the _40 suffix.
-
-What do you think?
-
-> Since I think the layout of metadata might be different in the future
-> mtk fd drivers. Maybe they create a new one or should they update the
-> rst file when they are upstreaming?
-> 
-
-I think we'll decide what to do when that happens. Depending on whether
-there is more face detection hardware available, we might be able to
-migrate to standard controls and metadata buffer formats at that time.
-
-> Other comments are almost fixed, I will inform you by this mail thread
-> as soon as I finish the documentation of fd metadata format.
-
-Okay, thanks.
-
-Best regards,
-Tomasz
+-- 
+The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
+Linux Foundation Collaborative Project
 
 _______________________________________________
 Linux-mediatek mailing list
