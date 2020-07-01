@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C8F50C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 15:00:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 645F7C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 15:07:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8785A20702
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 15:00:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2AD65206C3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 15:07:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Utv/UoWy";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WCu8livK"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8785A20702
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SvhX8ZxC";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Y6FWbB9Z"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2AD65206C3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,58 +27,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=2Cw3buCj0kZDuQEFbJy+6a5dcUlQ2ji1wK/V6jamJSY=; b=Utv/UoWyVfwcKySWb+aLI+cGH
-	PmRNA5wrN/h4Aidv9z/6mw5Wu6hVuE+8qUqw8wHvQ2hLGMbbk69RcJ8Ww4BgUaO4Bh+I/SNxsQsfw
-	5SDwqHBtl3H1mm04EyAdQfddZYnqGDilaUNxBln+Zr8k3k65B3XLArZr71l4L9fg5qwDH56TKIStF
-	xYRLm7gNK3ZhdHkdFlAUB5D/lV+/K8UjBHPuyHSwfwYjp/jouCj4A2KtZ5yvg9LXmlP9S4tTL/Pdk
-	7AGc83Woz/Px4LGmgaT0FNIKQqAFbQnEpxHfehfFhtiXkyCYo6g4PiT8dsWxSoWDzLXKFSfHZAo7E
-	W6wtLu+fg==;
+	 bh=G0VXT0CLPrJwknquYb26vxLXAJ6PFQyI8TUlfAhzFlc=; b=SvhX8ZxCoLSZmTlq/FAaSswJu
+	icHIhDS/oIjjdTVdnPQVEmVCiyrmCEs7TRYm9ymPqJsfzLoQxFzQ/AAkPCjmzWuoNpg6r8f+WPfjH
+	+fDgy50W0PglwhUctroc5+JKH0b8JsDxP4HE6TtkoUDNqPpYC6Ji2p6PIa+RYDDyUEs9MP0udCLKs
+	APrOMILFDgHIjRFboLoOysYmh78F5UVeNz+8GXZioJc7XjuwuOsyOdAMkTUNgv4BKvHe7Zw4NDCy7
+	K+cbGO97BBbIHChYAjopBfqUy/yo24SyT0CxIQAG1dIGaL5JvD25YKpGsjkkXg72efDfNgbuHynon
+	57zw+8bfA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqeDd-0004v6-D7; Wed, 01 Jul 2020 15:00:13 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1jqeK8-00060I-Au; Wed, 01 Jul 2020 15:06:56 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqeDb-0004td-3V; Wed, 01 Jul 2020 15:00:11 +0000
-Received: by mail-wr1-x441.google.com with SMTP id q5so24263830wru.6;
- Wed, 01 Jul 2020 08:00:10 -0700 (PDT)
+ id 1jqeK4-0005yZ-Qp; Wed, 01 Jul 2020 15:06:54 +0000
+Received: by mail-wm1-x341.google.com with SMTP id 22so22804407wmg.1;
+ Wed, 01 Jul 2020 08:06:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=pHqhpjZJUby9eQpzOQ6VxfAY/WASPlLSgqVZy38byMI=;
- b=WCu8livKyhxoW/UbMXAbrLb/H043C9IdZidoOjlXHVWsYr9W1B59JQRoFa6Oi6vrqy
- BHPC91TVCCngcHtZSDdO1EIMz00t3ZygIlRRSnUJ7GlcMVipvpHfRF7Zvcmkh9BjaDpb
- 0dcw/LLYq6E7+/OncOOwH4Gawlah1xMb16t9a+VRxLjfNN5/8Cv5Cj2FlpZRbsPCU8L/
- AW/47GkLkILyz6SmxexLLhy7izLjXKP9rN+mcWeHv65khn5ydfY3YFa0BO+/2UL18TBD
- 8PKOWs5hA/JtKSCPJmkqbf6boS+KuIgppFJaATOFV+bJv1aiaZpHUdnBNU+4UPAM68LK
- 6N9w==
+ bh=X6wYh/c2ar2SFHck6U/COCSxoXgwk5Hdsd8JPy550ZY=;
+ b=Y6FWbB9ZaCYNrfrko7V5ZkWBTduEymS3bp6+cCuM5wYQTYr//ln+IBYY4MtLs3n7cD
+ lmRqRAJHWyUImAIW4VbCpOeMqo/9ghh2NE8PHgKOGO+O/BdCidhOVPgdX5jYfiVwVTQR
+ DtqX76rrf4TONrrFzGr8IPAkqUUrXn2yLmmuIUtVyhe/vdcIudyxhTLJKuhrQBvG7wS1
+ TqQdMM63KGSllKYq8nM5B2rSExbZ1Y2NT1aMwyFV4X7Jxy6lq8xGB7OZUAkVguu/guR+
+ AYCVi4LR2/5hv9kAz2zcfg/uX2l9XAsfTOavCtE1pF99kSyUhJ1o3jQVgA0PR4/l989F
+ V1vQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=pHqhpjZJUby9eQpzOQ6VxfAY/WASPlLSgqVZy38byMI=;
- b=h1BLpbvnLvBBHh0e7HlJjq4EQNtm0JU8rfHmTlTIzfaJHziwNZzxl0UBDX+6JlBK+k
- BK7hUMi+ch3Dd2NxbptucqFwZ4vLYU1YEyM52Y+ZZyyzi9P6Ct2qpPzLmt0J57iPxhMa
- FXuQ6vviuOmtf6Vf0/LaMmqll/br7PeIyJfs71I8sA0PlMtO6iDt3DWuXBHag1yxSrU7
- 0PG6n6/tisGHrfVMdltP6FhjvFcnw+QWR+G4ZBHDZZOSfjYf32hBdXACQe8Kc+6wEDKE
- JN/h2CVfna3w26nl6JsUD5w1O8RzC4LC+kr9cYcw0QMYa5ZrcmFm7kouH9u4CNx01cRk
- q/Hw==
-X-Gm-Message-State: AOAM532vE/DlnuJR/5eZMuFLnEmm1MzOddUdXBbJk493FtO9Nh7U1yH/
- OJPhTlEnQpeBxBFmKzXftC6Cc5buZxg=
-X-Google-Smtp-Source: ABdhPJxwfRVlYCw+cg95tMVI06AsKTYkyqnkzbouhIbF43+e6NRPCtVb/SjWRZtpImVLpYrauDauhA==
-X-Received: by 2002:a5d:46c7:: with SMTP id g7mr26975890wrs.365.1593615608901; 
- Wed, 01 Jul 2020 08:00:08 -0700 (PDT)
+ bh=X6wYh/c2ar2SFHck6U/COCSxoXgwk5Hdsd8JPy550ZY=;
+ b=cKfdSV0DHslmCzfJUBACpNSKdwwB3DvKJQZo6k+URSPC+t7C/QHPOvCZu+BLonjvUA
+ gWYky1B2i2hSlNByYemn43MkbT0ANPey+e3oMeaEjQ2sdFePSqpjswa3XVT8T2g/Ipdi
+ JQ/lTbBrhTA0LV78owyE4DwutUEBJb72OztKM+8IV6ltbyAiR+cPr7kWqTZrnVoEgtpi
+ GoVdNHnSKug70yqcAgWBqqCWmsRS7OoJhmyqVZfzHPANmeMBYBkbseWLD22jwvT/qkKk
+ AX6DJ5CNOAS1XLi3ON/2icl5zYtuL/loOwvt//6neKcx44LnvRlVXFTuaUrJZniEh6hp
+ v9kw==
+X-Gm-Message-State: AOAM530rd7YwlHh6M+sR+JNOKZnyYiwPZZKYw2qxFiwBK+DLRtRH7/kd
+ OnLoMFdsR1jXu6AmI81u0LE=
+X-Google-Smtp-Source: ABdhPJzaU+kxlCBBgOSVmBafI3KofmbDB0FNT6Q+qqOAYL/tW400AJQZ8htwtmg7kaN+xuBd4jbVhg==
+X-Received: by 2002:a1c:24c6:: with SMTP id k189mr28534473wmk.9.1593616011726; 
+ Wed, 01 Jul 2020 08:06:51 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.114.138])
- by smtp.gmail.com with ESMTPSA id 104sm8005599wrl.25.2020.07.01.08.00.07
+ by smtp.gmail.com with ESMTPSA id u84sm7457138wme.42.2020.07.01.08.06.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 01 Jul 2020 08:00:08 -0700 (PDT)
-Subject: Re: [PATCH v5 07/10] iommu/mediatek: Add REG_MMU_WR_LEN register
- definition
-To: chao hao <Chao.Hao@mediatek.com>
-References: <20200629071310.1557-1-chao.hao@mediatek.com>
- <20200629071310.1557-8-chao.hao@mediatek.com>
- <ccb63946-e187-187e-c92c-0423f1831d8f@gmail.com>
- <1593514765.13270.3.camel@mbjsdccf07>
+ Wed, 01 Jul 2020 08:06:50 -0700 (PDT)
+Subject: Re: [PATCH v5 1/4] dt-bindings: dmaengine: Add MediaTek Command-Queue
+ DMA controller bindings
+To: EastL <EastL.Lee@mediatek.com>
+References: <1592553902-30592-1-git-send-email-EastL.Lee@mediatek.com>
+ <1592553902-30592-2-git-send-email-EastL.Lee@mediatek.com>
+ <4fc5f4b9-8f03-74b4-8bc9-bf86a6246ff0@gmail.com>
+ <1593592716.26931.1.camel@mtkswgap22>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -154,16 +154,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <5bd3bebc-54ab-b06a-e91b-50c1272ffbf0@gmail.com>
-Date: Wed, 1 Jul 2020 17:00:06 +0200
+Message-ID: <76c146a2-75b7-bf92-f19c-c1862ae5943a@gmail.com>
+Date: Wed, 1 Jul 2020 17:06:49 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <1593514765.13270.3.camel@mbjsdccf07>
+In-Reply-To: <1593592716.26931.1.camel@mtkswgap22>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200701_110011_177382_BCD6B132 
-X-CRM114-Status: GOOD (  27.90  )
+X-CRM114-CacheID: sfid-20200701_110652_947039_CF7D925C 
+X-CRM114-Status: GOOD (  20.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -175,12 +175,10 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, FY Yang <fy.yang@mediatek.com>,
- wsd_upstream@mediatek.com, Joerg Roedel <joro@8bytes.org>,
- linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>,
- iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Yong Wu <yong.wu@mediatek.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+ vkoul@kernel.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
+ dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -188,128 +186,168 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 30/06/2020 12:59, chao hao wrote:
-> On Mon, 2020-06-29 at 12:16 +0200, Matthias Brugger wrote:
+On 01/07/2020 10:38, EastL wrote:
+> On Fri, 2020-06-19 at 11:36 +0200, Matthias Brugger wrote:
 >>
->> On 29/06/2020 09:13, Chao Hao wrote:
->>> Some platforms(ex: mt6779) need to improve performance by setting
->>> REG_MMU_WR_LEN register. And we can use WR_THROT_EN macro to control
->>> whether we need to set the register. If the register uses default value,
->>> iommu will send command to EMI without restriction, when the number of
->>> commands become more and more, it will drop the EMI performance. So when
->>> more than ten_commands(default value) don't be handled for EMI, iommu will
->>> stop send command to EMI for keeping EMI's performace by enabling write
->>> throttling mechanism(bit[5][21]=0) in MMU_WR_LEN_CTRL register.
+>> On 19/06/2020 10:04, EastL wrote:
+>>> Document the devicetree bindings for MediaTek Command-Queue DMA controller
+>>> which could be found on MT6779 SoC or other similar Mediatek SoCs.
 >>>
->>> Cc: Matthias Brugger <matthias.bgg@gmail.com>
->>> Signed-off-by: Chao Hao <chao.hao@mediatek.com>
->>> ---
->>>  drivers/iommu/mtk_iommu.c | 10 ++++++++++
->>>  drivers/iommu/mtk_iommu.h |  2 ++
->>>  2 files changed, 12 insertions(+)
->>>
->>> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
->>> index ec1f86913739..92316c4175a9 100644
->>> --- a/drivers/iommu/mtk_iommu.c
->>> +++ b/drivers/iommu/mtk_iommu.c
->>> @@ -46,6 +46,8 @@
->>>  #define F_MMU_STANDARD_AXI_MODE_BIT		(BIT(3) | BIT(19))
->>>  
->>>  #define REG_MMU_DCM_DIS				0x050
->>> +#define REG_MMU_WR_LEN				0x054
+>>> Signed-off-by: EastL <EastL.Lee@mediatek.com>
 >>
->> The register name is confusing. For me it seems to describe the length of a
->> write but it is used for controlling the write throttling. Is this the name
->> that's used in the datasheet?
->>
+>> Still missing the full name.
 > 
-> Thanks for your review carefully, we can name it to REG_MMU_WR_LEN_CTRL
+> Sorry I thought it was only needed in the yaml file
+> I will fix in next version.\
 
-Yes, that's mbetter, thanks.
+Just to make sure there is no missunderstanding, I mean your git settings. Your
+Signed-off-by should look like:
 
-> 
-> 
->>> +#define F_MMU_WR_THROT_DIS_BIT			(BIT(5) |  BIT(21))
->>
->> There are two spaces between '|' and 'BIT(21)', should be one.
->>
->> Regarding the name of the define, what does the 'F_' statnds for? 
-> 
-> F_ is used to described some bits in register and doesn't have other
-> meanings. The format is refer to other bits definition
-> 
->> Also I think
->> it should be called '_MASK' instead of '_BIT' as it defines a mask of bits.
->>
-> 
-> Thanks for your advice.
-> For F_MMU_WR_THROT_DIS_BIT:
-> 1'b0: Enable write throttling mechanism
-> 1'b1: Disable write throttling mechanism
-> So I think we can name "F_MMU_WR_THROT_DIS  BIT(5) | BIT(21)" directly,
-> it maybe more clearer.
-> 
-
-Is this what the datasheet names it? If not then I'd prefer F_MMU_WR_THROT_DIS_MASK.
+EastL Lee <EastL.Lee@mediatek.com>
 
 Regards,
 Matthias
 
+>>
+>>> ---
+>>>  .../devicetree/bindings/dma/mtk-cqdma.yaml         | 114 +++++++++++++++++++++
+>>>  1 file changed, 114 insertions(+)
+>>>  create mode 100644 Documentation/devicetree/bindings/dma/mtk-cqdma.yaml
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/dma/mtk-cqdma.yaml b/Documentation/devicetree/bindings/dma/mtk-cqdma.yaml
+>>> new file mode 100644
+>>> index 0000000..e6fdf05
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/dma/mtk-cqdma.yaml
+>>> @@ -0,0 +1,114 @@
+>>> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+>>
+>> You missed the brackets ().
+> OK
+>>
+>>> +%YAML 1.2
+>>> +---
+>>> +$id: http://devicetree.org/schemas/dma/mtk-cqdma.yaml#
+>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>> +
+>>> +title: MediaTek Command-Queue DMA controller Device Tree Binding
+>>> +
+>>> +maintainers:
+>>> +  - EastL Lee <EastL.Lee@mediatek.com>
+>>> +
+>>> +description:
+>>> +  MediaTek Command-Queue DMA controller (CQDMA) on Mediatek SoC
+>>> +  is dedicated to memory-to-memory transfer through queue based
+>>> +  descriptor management.
+>>> +
+>>> +allOf:
+>>> +  - $ref: "dma-controller.yaml#"
+>>> +
+>>> +properties:
+>>> +  "#dma-cells":
+>>> +    minimum: 1
+>>> +    maximum: 255
+>>> +    description:
+>>> +      Used to provide DMA controller specific information.
+>>> +
+>>> +  compatible:
+>>> +    oneOf:
+>>> +      - const: mediatek,common-cqdma
+>>
+>> What is the common-cqdma for if we have only one compatible specifying the SoC.
+>> Actually I'm not a great fan of the common-cqdma thing. I'd prefer a fallback
+>> compatible that has the name of the first SoC implementing the same device.
+>>
 >> Regards,
 >> Matthias
 >>
->>>  
->>>  #define REG_MMU_CTRL_REG			0x110
->>>  #define F_MMU_TF_PROT_TO_PROGRAM_ADDR		(2 << 4)
->>> @@ -582,6 +584,12 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
->>>  		writel_relaxed(regval, data->base + REG_MMU_VLD_PA_RNG);
->>>  	}
->>>  	writel_relaxed(0, data->base + REG_MMU_DCM_DIS);
->>> +	if (MTK_IOMMU_HAS_FLAG(data->plat_data, WR_THROT_EN)) {
->>> +		/* write command throttling mode */
->>> +		regval = readl_relaxed(data->base + REG_MMU_WR_LEN);
->>> +		regval &= ~F_MMU_WR_THROT_DIS_BIT;
->>> +		writel_relaxed(regval, data->base + REG_MMU_WR_LEN);
->>> +	}
->>>  
->>>  	regval = readl_relaxed(data->base + REG_MMU_MISC_CTRL);
->>>  	if (MTK_IOMMU_HAS_FLAG(data->plat_data, RESET_AXI)) {
->>> @@ -737,6 +745,7 @@ static int __maybe_unused mtk_iommu_suspend(struct device *dev)
->>>  	struct mtk_iommu_suspend_reg *reg = &data->reg;
->>>  	void __iomem *base = data->base;
->>>  
->>> +	reg->wr_len = readl_relaxed(base + REG_MMU_WR_LEN);
->>>  	reg->misc_ctrl = readl_relaxed(base + REG_MMU_MISC_CTRL);
->>>  	reg->dcm_dis = readl_relaxed(base + REG_MMU_DCM_DIS);
->>>  	reg->ctrl_reg = readl_relaxed(base + REG_MMU_CTRL_REG);
->>> @@ -761,6 +770,7 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
->>>  		dev_err(data->dev, "Failed to enable clk(%d) in resume\n", ret);
->>>  		return ret;
->>>  	}
->>> +	writel_relaxed(reg->wr_len, base + REG_MMU_WR_LEN);
->>>  	writel_relaxed(reg->misc_ctrl, base + REG_MMU_MISC_CTRL);
->>>  	writel_relaxed(reg->dcm_dis, base + REG_MMU_DCM_DIS);
->>>  	writel_relaxed(reg->ctrl_reg, base + REG_MMU_CTRL_REG);
->>> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
->>> index be6d32ee5bda..ce4f4e8f03aa 100644
->>> --- a/drivers/iommu/mtk_iommu.h
->>> +++ b/drivers/iommu/mtk_iommu.h
->>> @@ -24,6 +24,7 @@
->>>  #define RESET_AXI			BIT(3)
->>>  #define OUT_ORDER_EN			BIT(4)
->>>  #define HAS_SUB_COMM			BIT(5)
->>> +#define WR_THROT_EN			BIT(6)
->>>  
->>>  #define MTK_IOMMU_HAS_FLAG(pdata, _x) \
->>>  		((((pdata)->flags) & (_x)) == (_x))
->>> @@ -36,6 +37,7 @@ struct mtk_iommu_suspend_reg {
->>>  	u32				int_main_control;
->>>  	u32				ivrp_paddr;
->>>  	u32				vld_pa_rng;
->>> +	u32				wr_len;
->>>  };
->>>  
->>>  enum mtk_iommu_plat {
+> OK, I'll remove common compatible.
+> 
+>>> +      - const: mediatek,mt6765-cqdma
+>>> +      - const: mediatek,mt6779-cqdma
+>>> +
+>>> +  reg:
+>>> +    minItems: 1
+>>> +    maxItems: 5
+>>> +    description:
+>>> +        A base address of MediaTek Command-Queue DMA controller,
+>>> +        a channel will have a set of base address.
+>>> +
+>>> +  interrupts:
+>>> +    minItems: 1
+>>> +    maxItems: 5
+>>> +    description:
+>>> +        A interrupt number of MediaTek Command-Queue DMA controller,
+>>> +        one interrupt number per dma-channels.
+>>> +
+>>> +  clocks:
+>>> +    maxItems: 1
+>>> +
+>>> +  clock-names:
+>>> +    const: cqdma
+>>> +
+>>> +  dma-channel-mask:
+>>> +    $ref: /schemas/types.yaml#definitions/uint32
+>>> +    description:
+>>> +       For DMA capability, We will know the addressing capability of
+>>> +       MediaTek Command-Queue DMA controller through dma-channel-mask.
+>>> +    items:
+>>> +      minItems: 1
+>>> +      maxItems: 63
+>>> +
+>>> +  dma-channels:
+>>> +    $ref: /schemas/types.yaml#definitions/uint32
+>>> +    description:
+>>> +      Number of DMA channels supported by MediaTek Command-Queue DMA
+>>> +      controller, support up to five.
+>>> +    items:
+>>> +      minItems: 1
+>>> +      maxItems: 5
+>>> +
+>>> +  dma-requests:
+>>> +    $ref: /schemas/types.yaml#definitions/uint32
+>>> +    description:
+>>> +      Number of DMA request (virtual channel) supported by MediaTek
+>>> +      Command-Queue DMA controller, support up to 32.
+>>> +    items:
+>>> +      minItems: 1
+>>> +      maxItems: 32
+>>> +
+>>> +required:
+>>> +  - "#dma-cells"
+>>> +  - compatible
+>>> +  - reg
+>>> +  - interrupts
+>>> +  - clocks
+>>> +  - clock-names
+>>> +  - dma-channel-mask
+>>> +  - dma-channels
+>>> +  - dma-requests
+>>> +
+>>> +additionalProperties: false
+>>> +
+>>> +examples:
+>>> +  - |
+>>> +    #include <dt-bindings/interrupt-controller/irq.h>
+>>> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+>>> +    #include <dt-bindings/clock/mt6779-clk.h>
+>>> +    cqdma: dma-controller@10212000 {
+>>> +        compatible = "mediatek,mt6779-cqdma";
+>>> +        reg = <0x10212000 0x80>,
+>>> +            <0x10212080 0x80>,
+>>> +            <0x10212100 0x80>;
+>>> +        interrupts = <GIC_SPI 139 IRQ_TYPE_LEVEL_LOW>,
+>>> +            <GIC_SPI 140 IRQ_TYPE_LEVEL_LOW>,
+>>> +            <GIC_SPI 141 IRQ_TYPE_LEVEL_LOW>;
+>>> +        clocks = <&infracfg_ao CLK_INFRA_CQ_DMA>;
+>>> +        clock-names = "cqdma";
+>>> +        dma-channel-mask = <63>;
+>>> +        dma-channels = <3>;
+>>> +        dma-requests = <32>;
+>>> +        #dma-cells = <1>;
+>>> +    };
+>>> +
+>>> +...
 >>>
 > 
 
