@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 100A0C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 14:58:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C8F50C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 15:00:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C9FA720702
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 14:58:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8785A20702
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 15:00:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="d0fWvWwy";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="RQ0SxbRT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C9FA720702
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Utv/UoWy";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WCu8livK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8785A20702
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,57 +27,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=WJ30uGe29e7D5ejvZ7FfjkxbX9x5TxM5aqtrsl1IXvc=; b=d0fWvWwy1BesL8k2pO3UQXflq
-	/6Z0oq74tRRHFt1w5W9zF/j++lKI5Q4lvJS8jWxD6v1Mcb8utZRQ557LHSm9oARNvd4LCkw95uHFO
-	2b1oQlcKFAV0dDcw/1sIZyx0oXYlQ2a19tT+PtcuzVbRMMaFBn1flrlgkA06y4BQcMEGjVYQ6wyry
-	w7pU52NeozNBxPUXt0Fu/DEpMiHRYOtUAIOALU6+KnQ3pGwnqmI2byIbq+VD8jc5JSxma/ObimOJ9
-	rT+ysuqPfjZqlWeElCnbXVayniMVp9W/72maePCZpxayBLMXb+kuXjsAAe1vuWXb2LxtjBLlsCiHx
-	6lrOtuMWg==;
+	 bh=2Cw3buCj0kZDuQEFbJy+6a5dcUlQ2ji1wK/V6jamJSY=; b=Utv/UoWyVfwcKySWb+aLI+cGH
+	PmRNA5wrN/h4Aidv9z/6mw5Wu6hVuE+8qUqw8wHvQ2hLGMbbk69RcJ8Ww4BgUaO4Bh+I/SNxsQsfw
+	5SDwqHBtl3H1mm04EyAdQfddZYnqGDilaUNxBln+Zr8k3k65B3XLArZr71l4L9fg5qwDH56TKIStF
+	xYRLm7gNK3ZhdHkdFlAUB5D/lV+/K8UjBHPuyHSwfwYjp/jouCj4A2KtZ5yvg9LXmlP9S4tTL/Pdk
+	7AGc83Woz/Px4LGmgaT0FNIKQqAFbQnEpxHfehfFhtiXkyCYo6g4PiT8dsWxSoWDzLXKFSfHZAo7E
+	W6wtLu+fg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqeC1-0004c6-I2; Wed, 01 Jul 2020 14:58:33 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1jqeDd-0004v6-D7; Wed, 01 Jul 2020 15:00:13 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqeBz-0004bY-8k; Wed, 01 Jul 2020 14:58:32 +0000
-Received: by mail-wm1-x344.google.com with SMTP id j18so22763967wmi.3;
- Wed, 01 Jul 2020 07:58:30 -0700 (PDT)
+ id 1jqeDb-0004td-3V; Wed, 01 Jul 2020 15:00:11 +0000
+Received: by mail-wr1-x441.google.com with SMTP id q5so24263830wru.6;
+ Wed, 01 Jul 2020 08:00:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=tgomHUILfZO2QPwClmFfP2483eQY3sI8aZ9EHBd/lIQ=;
- b=RQ0SxbRTQhidycgq3WYUSZbnKfe+n9/V49qTfwFGk7/owVD8bpNstPfIrZYl0E2FpI
- jIXMuiKhK6ik1mxttOPWBkABcQEv2KmHTifuwX7J5Iv9mwAaTJD2yHTHm8hpfA2b4Txq
- 2/pGuY85dYKHUlKPbjhlcKR+VziLZ/uB7juZqi9ZCVmIBKjMxbd2c4m4g/5AL+lRzGXa
- ECtvl8SZ1tM5AqQ7qrVaE1puhcpnlT9OEhSj+9OdbVe4AU4AI7KNpU4MAy+5YHwauzJo
- MKueCkh6Med+xUnkGH5Vs1HAd+DhTz2R5UMtCdaEV3SYhSgxCWsoHYUDodmy+CJ8vhJ2
- 2cTQ==
+ bh=pHqhpjZJUby9eQpzOQ6VxfAY/WASPlLSgqVZy38byMI=;
+ b=WCu8livKyhxoW/UbMXAbrLb/H043C9IdZidoOjlXHVWsYr9W1B59JQRoFa6Oi6vrqy
+ BHPC91TVCCngcHtZSDdO1EIMz00t3ZygIlRRSnUJ7GlcMVipvpHfRF7Zvcmkh9BjaDpb
+ 0dcw/LLYq6E7+/OncOOwH4Gawlah1xMb16t9a+VRxLjfNN5/8Cv5Cj2FlpZRbsPCU8L/
+ AW/47GkLkILyz6SmxexLLhy7izLjXKP9rN+mcWeHv65khn5ydfY3YFa0BO+/2UL18TBD
+ 8PKOWs5hA/JtKSCPJmkqbf6boS+KuIgppFJaATOFV+bJv1aiaZpHUdnBNU+4UPAM68LK
+ 6N9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=tgomHUILfZO2QPwClmFfP2483eQY3sI8aZ9EHBd/lIQ=;
- b=UPWo5fV7rOgXck/EVTEttYgoedMKpcHb1bIp1XZYgpuoTgM+YSuSxnQotbb2olnYQP
- j5eGNX/U38/zzXx9g0X5W4Qd+bYNuegt65Lf4GLCTmRVoHz5/oMu9yzLDUH+4ykmiNjc
- sRufLKLt59M3u04We1O4qrtApOdwXmrV4CBy3fbMe16HLnbo2f4j42591OWD/q/MtNEG
- /uICgtacLmmuW0pOHSQY7Sp2H31wfJGmSKE3iJZNNC6TZNxlowKlRZzYgnaeq292GvEB
- 6v6tMezUzkQBzqRyjOtQJd2fohh4GMl8xEgfPhaW9VoAxK6eUWmLaDLHY0FWDUYxkkWU
- pAAQ==
-X-Gm-Message-State: AOAM531uyh9sT+gEAFd/Cpc0CbZ/ajKdhN2GfIa6sub2mQZCfJjkCj5R
- bhmoqIrkCSP7T/rp4iSo7aU=
-X-Google-Smtp-Source: ABdhPJwD3eaD0V351RwesreOGJ4Dbb/SccQjhHooP1D3LI8EeI8ESRHiysZTJ6iJhY0sWa2TxIIXZQ==
-X-Received: by 2002:a1c:6a03:: with SMTP id f3mr7030351wmc.58.1593615509962;
- Wed, 01 Jul 2020 07:58:29 -0700 (PDT)
+ bh=pHqhpjZJUby9eQpzOQ6VxfAY/WASPlLSgqVZy38byMI=;
+ b=h1BLpbvnLvBBHh0e7HlJjq4EQNtm0JU8rfHmTlTIzfaJHziwNZzxl0UBDX+6JlBK+k
+ BK7hUMi+ch3Dd2NxbptucqFwZ4vLYU1YEyM52Y+ZZyyzi9P6Ct2qpPzLmt0J57iPxhMa
+ FXuQ6vviuOmtf6Vf0/LaMmqll/br7PeIyJfs71I8sA0PlMtO6iDt3DWuXBHag1yxSrU7
+ 0PG6n6/tisGHrfVMdltP6FhjvFcnw+QWR+G4ZBHDZZOSfjYf32hBdXACQe8Kc+6wEDKE
+ JN/h2CVfna3w26nl6JsUD5w1O8RzC4LC+kr9cYcw0QMYa5ZrcmFm7kouH9u4CNx01cRk
+ q/Hw==
+X-Gm-Message-State: AOAM532vE/DlnuJR/5eZMuFLnEmm1MzOddUdXBbJk493FtO9Nh7U1yH/
+ OJPhTlEnQpeBxBFmKzXftC6Cc5buZxg=
+X-Google-Smtp-Source: ABdhPJxwfRVlYCw+cg95tMVI06AsKTYkyqnkzbouhIbF43+e6NRPCtVb/SjWRZtpImVLpYrauDauhA==
+X-Received: by 2002:a5d:46c7:: with SMTP id g7mr26975890wrs.365.1593615608901; 
+ Wed, 01 Jul 2020 08:00:08 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.114.138])
- by smtp.gmail.com with ESMTPSA id 65sm6414888wmd.20.2020.07.01.07.58.28
+ by smtp.gmail.com with ESMTPSA id 104sm8005599wrl.25.2020.07.01.08.00.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 01 Jul 2020 07:58:29 -0700 (PDT)
-Subject: Re: [PATCH v5 04/10] iommu/mediatek: Setting MISC_CTRL register
+ Wed, 01 Jul 2020 08:00:08 -0700 (PDT)
+Subject: Re: [PATCH v5 07/10] iommu/mediatek: Add REG_MMU_WR_LEN register
+ definition
 To: chao hao <Chao.Hao@mediatek.com>
 References: <20200629071310.1557-1-chao.hao@mediatek.com>
- <20200629071310.1557-5-chao.hao@mediatek.com>
- <0e9ceba8-0cc4-44a1-148c-1c9a6b3844ce@gmail.com>
- <1593514398.2581.7.camel@mbjsdccf07>
+ <20200629071310.1557-8-chao.hao@mediatek.com>
+ <ccb63946-e187-187e-c92c-0423f1831d8f@gmail.com>
+ <1593514765.13270.3.camel@mbjsdccf07>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -153,16 +154,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <b9a68cda-bb2e-c9f3-4e44-c201df06c396@gmail.com>
-Date: Wed, 1 Jul 2020 16:58:27 +0200
+Message-ID: <5bd3bebc-54ab-b06a-e91b-50c1272ffbf0@gmail.com>
+Date: Wed, 1 Jul 2020 17:00:06 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <1593514398.2581.7.camel@mbjsdccf07>
+In-Reply-To: <1593514765.13270.3.camel@mbjsdccf07>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200701_105831_321740_BE1DA96A 
-X-CRM114-Status: GOOD (  29.30  )
+X-CRM114-CacheID: sfid-20200701_110011_177382_BCD6B132 
+X-CRM114-Status: GOOD (  27.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -187,135 +188,128 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 30/06/2020 12:53, chao hao wrote:
-> On Mon, 2020-06-29 at 11:28 +0200, Matthias Brugger wrote:
+On 30/06/2020 12:59, chao hao wrote:
+> On Mon, 2020-06-29 at 12:16 +0200, Matthias Brugger wrote:
 >>
 >> On 29/06/2020 09:13, Chao Hao wrote:
->>> Add F_MMU_IN_ORDER_WR_EN and F_MMU_STANDARD_AXI_MODE_BIT definition
->>> in MISC_CTRL register.
->>> F_MMU_STANDARD_AXI_MODE_BIT:
->>>   If we set F_MMU_STANDARD_AXI_MODE_BIT(bit[3][19] = 0, not follow
->>> standard AXI protocol), iommu will send urgent read command firstly
->>> compare with normal read command to improve performance.
->>
->> Can you please help me to understand the phrase. Sorry I'm not a AXI specialist.
->> Does this mean that you will send a 'urgent read command' which is not described
->> in the specifications instead of a normal read command?
-> 
-> ok.
-> iommu sends read command to next bus_node normally(we can name it to
-> cmd1), when cmd1 isn't handled by next bus_node, iommu has a urgent read
-> command is needed to be sent(we can name it to cmd2), iommu will send
-> cmd2 and replace cmd1. So cmd2 is handled by next bus_node firstly and
-> cmd2 will be handled secondly.
-> But for standard AXI protocol, it will ignore the priority of read
-> command and only be handled in order. So cmd2 is handled by next
-> bus_node after cmd1 is done.
-> 
-
-Thanks. So I propose change this part of the commit message to something like:
-F_MMU_STANDARD_AXI_MODE_BIT:
-If we set F_MMU_STANDARD_AXI_MODE_EN_MASK (bit[3][19] = 0, not follow standard
-AXI protocol), the iommu will priorize sending of urgent read command over a
-normal read command. This improves the performance.
-
->>
->>> F_MMU_IN_ORDER_WR_EN:
->>>   If we set F_MMU_IN_ORDER_WR_EN(bit[1][17] = 0, out-of-order write), iommu
->>> will re-order write command and send more higher priority write command
->>> instead of sending write command in order. The feature be controlled
->>> by OUT_ORDER_EN macro definition.
-
-F_MMU_IN_ORDER_WR_EN:
-If we set F_MMU_IN_ORDER_WR_EN_MASK (bit[1][17] = 0, out-of-order write), the
-iommu will re-order write commands and send the write command with higher
-priority. Otherwise the sending of write commands will be done in order. The
-feature is controlled by OUT_ORDER_WR_EN platform data flag.
-
-
+>>> Some platforms(ex: mt6779) need to improve performance by setting
+>>> REG_MMU_WR_LEN register. And we can use WR_THROT_EN macro to control
+>>> whether we need to set the register. If the register uses default value,
+>>> iommu will send command to EMI without restriction, when the number of
+>>> commands become more and more, it will drop the EMI performance. So when
+>>> more than ten_commands(default value) don't be handled for EMI, iommu will
+>>> stop send command to EMI for keeping EMI's performace by enabling write
+>>> throttling mechanism(bit[5][21]=0) in MMU_WR_LEN_CTRL register.
 >>>
 >>> Cc: Matthias Brugger <matthias.bgg@gmail.com>
->>> Suggested-by: Yong Wu <yong.wu@mediatek.com>
 >>> Signed-off-by: Chao Hao <chao.hao@mediatek.com>
 >>> ---
->>>  drivers/iommu/mtk_iommu.c | 12 +++++++++++-
->>>  drivers/iommu/mtk_iommu.h |  1 +
->>>  2 files changed, 12 insertions(+), 1 deletion(-)
+>>>  drivers/iommu/mtk_iommu.c | 10 ++++++++++
+>>>  drivers/iommu/mtk_iommu.h |  2 ++
+>>>  2 files changed, 12 insertions(+)
 >>>
 >>> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
->>> index 8f81df6cbe51..67b46b5d83d9 100644
+>>> index ec1f86913739..92316c4175a9 100644
 >>> --- a/drivers/iommu/mtk_iommu.c
 >>> +++ b/drivers/iommu/mtk_iommu.c
->>> @@ -42,6 +42,9 @@
->>>  #define F_INVLD_EN1				BIT(1)
+>>> @@ -46,6 +46,8 @@
+>>>  #define F_MMU_STANDARD_AXI_MODE_BIT		(BIT(3) | BIT(19))
 >>>  
->>>  #define REG_MMU_MISC_CTRL			0x048
->>> +#define F_MMU_IN_ORDER_WR_EN			(BIT(1) | BIT(17))
->>> +#define F_MMU_STANDARD_AXI_MODE_BIT		(BIT(3) | BIT(19))
+>>>  #define REG_MMU_DCM_DIS				0x050
+>>> +#define REG_MMU_WR_LEN				0x054
 >>
->> Wouldn't it make more sense to name it F_MMU_STANDARD_AXI_MODE_EN?
-> ok, you are right.
-> 1'b1: follow standard axi protocol
+>> The register name is confusing. For me it seems to describe the length of a
+>> write but it is used for controlling the write throttling. Is this the name
+>> that's used in the datasheet?
+>>
+> 
+> Thanks for your review carefully, we can name it to REG_MMU_WR_LEN_CTRL
+
+Yes, that's mbetter, thanks.
+
+> 
+> 
+>>> +#define F_MMU_WR_THROT_DIS_BIT			(BIT(5) |  BIT(21))
+>>
+>> There are two spaces between '|' and 'BIT(21)', should be one.
+>>
+>> Regarding the name of the define, what does the 'F_' statnds for? 
+> 
+> F_ is used to described some bits in register and doesn't have other
+> meanings. The format is refer to other bits definition
+> 
+>> Also I think
+>> it should be called '_MASK' instead of '_BIT' as it defines a mask of bits.
+>>
+> 
+> Thanks for your advice.
+> For F_MMU_WR_THROT_DIS_BIT:
+> 1'b0: Enable write throttling mechanism
+> 1'b1: Disable write throttling mechanism
+> So I think we can name "F_MMU_WR_THROT_DIS  BIT(5) | BIT(21)" directly,
+> it maybe more clearer.
 > 
 
-What about
-F_MMU_IN_ORDER_WR_EN_MASK
-F_MMU_STANDARD_AXI_MODE_EN_MASK
-
-Background is that we have to set/unset two bits to enable or disable the
-feature, so it's a mask we have to apply to the register.
+Is this what the datasheet names it? If not then I'd prefer F_MMU_WR_THROT_DIS_MASK.
 
 Regards,
 Matthias
 
+>> Regards,
+>> Matthias
 >>
->>> +
->>>  #define REG_MMU_DCM_DIS				0x050
 >>>  
 >>>  #define REG_MMU_CTRL_REG			0x110
->>> @@ -574,10 +577,17 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+>>>  #define F_MMU_TF_PROT_TO_PROGRAM_ADDR		(2 << 4)
+>>> @@ -582,6 +584,12 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+>>>  		writel_relaxed(regval, data->base + REG_MMU_VLD_PA_RNG);
 >>>  	}
 >>>  	writel_relaxed(0, data->base + REG_MMU_DCM_DIS);
+>>> +	if (MTK_IOMMU_HAS_FLAG(data->plat_data, WR_THROT_EN)) {
+>>> +		/* write command throttling mode */
+>>> +		regval = readl_relaxed(data->base + REG_MMU_WR_LEN);
+>>> +		regval &= ~F_MMU_WR_THROT_DIS_BIT;
+>>> +		writel_relaxed(regval, data->base + REG_MMU_WR_LEN);
+>>> +	}
 >>>  
->>> +	regval = readl_relaxed(data->base + REG_MMU_MISC_CTRL);
->>
->> We only need to read regval in the else branch.
-> 
-> ok, I got it. thanks
-> 
->>
+>>>  	regval = readl_relaxed(data->base + REG_MMU_MISC_CTRL);
 >>>  	if (MTK_IOMMU_HAS_FLAG(data->plat_data, RESET_AXI)) {
->>>  		/* The register is called STANDARD_AXI_MODE in this case */
->>> -		writel_relaxed(0, data->base + REG_MMU_MISC_CTRL);
->>> +		regval = 0;
->>> +	} else {
->>> +		/* For mm_iommu, it can improve performance by the setting */
->>> +		regval &= ~F_MMU_STANDARD_AXI_MODE_BIT;
->>> +		if (MTK_IOMMU_HAS_FLAG(data->plat_data, OUT_ORDER_EN))
->>> +			regval &= ~F_MMU_IN_ORDER_WR_EN;
->>>  	}
->>> +	writel_relaxed(regval, data->base + REG_MMU_MISC_CTRL);
+>>> @@ -737,6 +745,7 @@ static int __maybe_unused mtk_iommu_suspend(struct device *dev)
+>>>  	struct mtk_iommu_suspend_reg *reg = &data->reg;
+>>>  	void __iomem *base = data->base;
 >>>  
->>>  	if (devm_request_irq(data->dev, data->irq, mtk_iommu_isr, 0,
->>>  			     dev_name(data->dev), (void *)data)) {
+>>> +	reg->wr_len = readl_relaxed(base + REG_MMU_WR_LEN);
+>>>  	reg->misc_ctrl = readl_relaxed(base + REG_MMU_MISC_CTRL);
+>>>  	reg->dcm_dis = readl_relaxed(base + REG_MMU_DCM_DIS);
+>>>  	reg->ctrl_reg = readl_relaxed(base + REG_MMU_CTRL_REG);
+>>> @@ -761,6 +770,7 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
+>>>  		dev_err(data->dev, "Failed to enable clk(%d) in resume\n", ret);
+>>>  		return ret;
+>>>  	}
+>>> +	writel_relaxed(reg->wr_len, base + REG_MMU_WR_LEN);
+>>>  	writel_relaxed(reg->misc_ctrl, base + REG_MMU_MISC_CTRL);
+>>>  	writel_relaxed(reg->dcm_dis, base + REG_MMU_DCM_DIS);
+>>>  	writel_relaxed(reg->ctrl_reg, base + REG_MMU_CTRL_REG);
 >>> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
->>> index 7cc39f729263..4b780b651ef4 100644
+>>> index be6d32ee5bda..ce4f4e8f03aa 100644
 >>> --- a/drivers/iommu/mtk_iommu.h
 >>> +++ b/drivers/iommu/mtk_iommu.h
->>> @@ -22,6 +22,7 @@
->>>  #define HAS_BCLK			BIT(1)
->>>  #define HAS_VLD_PA_RNG			BIT(2)
+>>> @@ -24,6 +24,7 @@
 >>>  #define RESET_AXI			BIT(3)
->>> +#define OUT_ORDER_EN			BIT(4)
->>
->> Maybe something like OUT_ORDER_WR_EN, to make clear that it's about the the
->> write path.
->>
-> ok, thanks for your advice.
-> 
+>>>  #define OUT_ORDER_EN			BIT(4)
+>>>  #define HAS_SUB_COMM			BIT(5)
+>>> +#define WR_THROT_EN			BIT(6)
 >>>  
 >>>  #define MTK_IOMMU_HAS_FLAG(pdata, _x) \
 >>>  		((((pdata)->flags) & (_x)) == (_x))
+>>> @@ -36,6 +37,7 @@ struct mtk_iommu_suspend_reg {
+>>>  	u32				int_main_control;
+>>>  	u32				ivrp_paddr;
+>>>  	u32				vld_pa_rng;
+>>> +	u32				wr_len;
+>>>  };
+>>>  
+>>>  enum mtk_iommu_plat {
 >>>
 > 
 
