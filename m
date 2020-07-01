@@ -2,62 +2,65 @@ Return-Path: <SRS0=KJBd=AM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E016CC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 10:53:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 81DAFC433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 11:07:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B0BD520747
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 10:53:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4499920772
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 11:07:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="P5ZcytTQ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B0BD520747
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZvHJyqO8"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4499920772
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=2cOC480t4gZ0EgcOJse2IObOoNR7OpnOi4I0LIOSpVo=; b=P5ZcytTQljZXbATAqB7ng+X5t
-	3Q0sXFCid7pbHcnNPhSZsZpdQ7c2i1I2DeSb/tvxSEMzn4RHzv27EiWKicD78Vr8GGMJ7iajK2EoM
-	aks7z0KbAwNuGDCzft6Wf9Hwc5dkl00z8+6vLne/fCs3xaMR4igGMOLlyR0IL4cgDJkQIBkjhZWGa
-	PNBm3gClYNyh/Pp1gdmDpGRDy1vx8bv3aCeWuESEfn/vSDl+sU7BcjOLsLIQk/gV7b271TUqa/yeU
-	9nvTR8VVzOQEVEP4nrL/6vE5qpXQQ3v66CUDTqmlmzUJ91BOkPPJ4E3F9RbJgRDoz28/CDki/Ry8s
-	VH+iH9xFQ==;
+	 bh=gmoYG4NS2WkBbKb3b30wVFeh/UliP/ClsaRtwcWmYLI=; b=ZvHJyqO8cNGPsszeI0usJQp5P
+	DxcK+iwCYOphqeNxxF2wFQAplW/wbUxLk8CisPuWCwQ9tiKQlAdXVTZnMIBzdJXk73LhzYGQ3xw2G
+	YOVfC7VrlvbdKHspc5hcxqQF10sViBHEd8uopRcBuxVSC3X/iGJSlX2H6d/TKSJh9+9qRq8htyDDv
+	45dkbOXiyWxn93Izh48XOFf14POlZGgtBrUoy7aLWQmD9ddftFe7zz09J5fOm6bTXdI+KkJxbtpbm
+	Ggoz0Q12Oc6G4syUppP5dLG0T164YShaeaR2Dd7OvhbK1D/dSRf0XLFvte9Prh9mMamLEW07oDMB7
+	qC1kysgZw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqaMh-0000ix-Vq; Wed, 01 Jul 2020 10:53:20 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqaMe-0000h8-MG; Wed, 01 Jul 2020 10:53:18 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B597030E;
- Wed,  1 Jul 2020 03:53:12 -0700 (PDT)
-Received: from [10.57.21.32] (unknown [10.57.21.32])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id BB9483F73C;
- Wed,  1 Jul 2020 03:53:08 -0700 (PDT)
-Subject: Re: [PATCH v3 00/34] iommu: Move iommu_group setup to IOMMU core code
-To: Qian Cai <cai@lca.pw>, Joerg Roedel <joro@8bytes.org>
-References: <20200429133712.31431-1-joro@8bytes.org>
- <20200701004020.GA6221@lca.pw>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <9b0ef27a-f249-a90b-9899-e53b946f83cc@arm.com>
-Date: Wed, 1 Jul 2020 11:53:07 +0100
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101
+	id 1jqaaj-0002Id-TT; Wed, 01 Jul 2020 11:07:50 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jqaah-0002IG-OY
+ for linux-mediatek@lists.infradead.org; Wed, 01 Jul 2020 11:07:49 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id 2AE5D2A54DA
+Subject: Re: [BUG] Cannot boot on MT8173 if Mediatek thermal is enabled
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+ Michael Kao <michael.kao@mediatek.com>
+References: <8d66199a-84cb-5080-cd24-f746d1db5c5a@collabora.com>
+ <34c9fc56-ca19-cf59-af71-4273f91338b9@gmail.com>
+ <56e774bc-5029-5836-2da1-dcabe3143d29@collabora.com>
+ <c01722de-7ef3-f43a-8bc9-cd6581004dba@collabora.com>
+ <1590634780.22554.1.camel@mtksdccf07>
+ <39c5d33a-d8ef-31d0-6864-62a62e12b2b1@collabora.com>
+ <1d682fad-fc50-9f40-4f8b-ac73a4f41f05@gmail.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Message-ID: <e72e26d1-ac9f-7506-9e1c-d6aeaa2fa374@collabora.com>
+Date: Wed, 1 Jul 2020 13:07:43 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <20200701004020.GA6221@lca.pw>
-Content-Language: en-GB
+In-Reply-To: <1d682fad-fc50-9f40-4f8b-ac73a4f41f05@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200701_065316_843681_EBD79041 
-X-CRM114-Status: GOOD (  17.08  )
+X-CRM114-CacheID: sfid-20200701_070748_057825_70C087AB 
+X-CRM114-Status: GOOD (  30.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,53 +72,276 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, virtualization@lists.linux-foundation.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>, Daniel Drake <drake@endlessm.com>,
- Will Deacon <will@kernel.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- linux-samsung-soc@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org,
- Andy Gross <agross@kernel.org>, jonathan.derrick@intel.com,
- linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Gerald Schaefer <gerald.schaefer@de.ibm.com>, linux-kernel@vger.kernel.org,
- iommu@lists.linux-foundation.org, Kukjin Kim <kgene@kernel.org>,
- David Woodhouse <dwmw2@infradead.org>
+Cc: roger.lu@mediatek.com, Hsin-Yi Wang <hsinyi@chromium.org>,
+ "drinkcat@chromium.org" <drinkcat@chromium.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ renze@rnplus.nl
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-07-01 01:40, Qian Cai wrote:
-> Looks like this patchset introduced an use-after-free on arm-smmu-v3.
-> 
-> Reproduced using mlx5,
-> 
-> # echo 1 > /sys/class/net/enp11s0f1np1/device/sriov_numvfs
-> # echo 0 > /sys/class/net/enp11s0f1np1/device/sriov_numvfs
-> 
-> The .config,
-> https://github.com/cailca/linux-mm/blob/master/arm64.config
-> 
-> Looking at the free stack,
-> 
-> iommu_release_device->iommu_group_remove_device
-> 
-> was introduced in 07/34 ("iommu: Add probe_device() and release_device()
-> call-backs").
+Hi Michael,
 
-Right, iommu_group_remove_device can tear down the group and call 
-->domain_free before the driver has any knowledge of the last device 
-going away via the ->release_device call.
+On 28/5/20 16:20, Matthias Brugger wrote:
+> 
+> 
+> On 28/05/2020 10:08, Enric Balletbo i Serra wrote:
+>> Hi Michael,
+>>
+>> On 28/5/20 4:59, Michael Kao wrote:
+>>> On Wed, 2020-05-20 at 18:12 +0200, Enric Balletbo i Serra wrote:
+>>>> Hi Matthias et all,
+>>>>
+>>>> On 20/5/20 17:25, Enric Balletbo i Serra wrote:
+>>>>>
+>>>>>
+>>>>> On 20/5/20 17:21, Matthias Brugger wrote:
+>>>>>>
+>>>>>>
+>>>>>> On 20/05/2020 17:09, Enric Balletbo i Serra wrote:
+>>>>>>> Dear all,
+>>>>>>>
+>>>>>>> I've been testing the Acer Chromebook R 13 (elm - MT8173) for a while. Today I
+>>>>>>> enabled the Mediatek thermal driver (CONFIG_MTK_THERMAL=y) and I started to get
+>>>>>>> that hang [1]
+>>>>>>>
+>>>>>>
+>>>>>> Did you try to bisect to find out what broke it?
+>>>>>>
+>>>>>
+>>>>> I don't even know if this worked at some point, I was running/testing my kernels
+>>>>> with CONFIG_MTK_THERMAL disabled. From the log doesn't seem to have a lot of
+>>>>> changes so I suspect this issue is there since long time.
+>>>>>
+>>>>
+>>>> So the commit that introduces the problem is:
+>>>>
+>>>> commit eb9aecd90d1a39601e91cd08b90d5fee51d321a6
+>>>> Author: Michael Kao <michael.kao@mediatek.com>
+>>>> Date:   Fri Feb 1 15:38:07 2019 +0800
+>>>>
+>>>>     thermal: mediatek: fix register index error
+>>>>
+>>>>     The index of msr and adcpnp should match the sensor
+>>>>     which belongs to the selected bank in the for loop.
+>>>>
+>>>>     Fixes: b7cf0053738c ("thermal: Add Mediatek thermal driver for mt2701.")
+>>>>     Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+>>>>     Signed-off-by: Eduardo Valentin <edubezval@gmail.com>
+>>>>
+>>>>
+>>>>>
+>>>>>> Regards,
+>>>>>> Matthias
+>>>>>>
+>>>>>>> The stacktrace points point to this function:
+>>>>>>>
+>>>>>>> static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+>>>>>>>
+>>>>>>> More precisely to this call:
+>>>>>>>
+>>>>>>> 		raw = readl(mt->thermal_base +
+>>>>>>> 			    conf->msr[conf->bank_data[bank->id].sensors[i]]);
+>>>>>>>
+>>>>>>> this call, is in a loop and ends trying to access to conf->msr[4]
+>>>>>>> (conf->msr[MT8173_TSABB]) which doesn't exist as per the following struct
+>>>>>>>
+>>>>>>> static const int mt8173_msr[MT8173_NUM_SENSORS_PER_ZONE] = {
+>>>>>>> 	TEMP_MSR0, TEMP_MSR1, TEMP_MSR2, TEMP_MSR3
+>>>>>>> };
+>>>>>>>
+>>>>>>> I think the datasheet will help here to clarify what is happening but is not
+>>>>>>> public, so I can really check. Anyway seems that or the mt8173_msr struct is
+>>>>>>> wrong or the mt8173_bank_data is wrong or there is something else.
+>>>>>>>
+>>>>>>> Could anyone with the information or with this hardwware knowledge take a look,
+>>>>>>> please.
+>>>>>>>
+>>>>>>> Thanks,
+>>>>>>>  Enric
+>>>>>>>
+>>>>>>>
+>>>>>>> [1]
+>>>>>>> [    2.222488] Unable to handle kernel paging request at virtual address
+>>>>>>> ffff8000125f5001
+>>>>>>> [    2.230421] Mem abort info:
+>>>>>>> [    2.233207]   ESR = 0x96000021
+>>>>>>> [    2.236261]   EC = 0x25: DABT (current EL), IL = 32 bits
+>>>>>>> [    2.241571]   SET = 0, FnV = 0
+>>>>>>> [    2.244623]   EA = 0, S1PTW = 0
+>>>>>>> [    2.247762] Data abort info:
+>>>>>>> [    2.250640]   ISV = 0, ISS = 0x00000021
+>>>>>>> [    2.254473]   CM = 0, WnR = 0
+>>>>>>> [    2.257544] swapper pgtable: 4k pages, 48-bit VAs, pgdp=0000000041850000
+>>>>>>> [    2.264251] [ffff8000125f5001] pgd=000000013ffff003, pud=000000013fffe003,
+>>>>>>> pmd=000000013fff9003, pte=006800001100b707
+>>>>>>> [    2.274867] Internal error: Oops: 96000021 [#1] PREEMPT SMP
+>>>>>>> [    2.280432] Modules linked in:
+>>>>>>> [    2.283483] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.7.0-rc6+ #162
+>>>>>>> [    2.289914] Hardware name: Google Elm (DT)
+>>>>>>> [    2.294003] pstate: 20000005 (nzCv daif -PAN -UAO)
+>>>>>>> [    2.298792] pc : mtk_read_temp+0xb8/0x1c8
+>>>>>>> [    2.302793] lr : mtk_read_temp+0x7c/0x1c8
+>>>>>>> [    2.306794] sp : ffff80001003b930
+>>>>>>> [    2.310100] x29: ffff80001003b930 x28: 0000000000000000
+>>>>>>> [    2.315404] x27: 0000000000000002 x26: ffff0000f9550b10
+>>>>>>> [    2.320709] x25: ffff0000f9550a80 x24: 0000000000000090
+>>>>>>> [    2.326014] x23: ffff80001003ba24 x22: 00000000610344c0
+>>>>>>> [    2.331318] x21: 0000000000002710 x20: 00000000000001f4
+>>>>>>> [    2.336622] x19: 0000000000030d40 x18: ffff800011742ec0
+>>>>>>> [    2.341926] x17: 0000000000000001 x16: 0000000000000001
+>>>>>>> [    2.347230] x15: ffffffffffffffff x14: ffffff0000000000
+>>>>>>> [    2.352535] x13: ffffffffffffffff x12: 0000000000000028
+>>>>>>> [    2.357839] x11: 0000000000000003 x10: ffff800011295ec8
+>>>>>>> [    2.363143] x9 : 000000000000291b x8 : 0000000000000002
+>>>>>>> [    2.368447] x7 : 00000000000000a8 x6 : 0000000000000004
+>>>>>>> [    2.373751] x5 : 0000000000000000 x4 : ffff800011295cb0
+>>>>>>> [    2.379055] x3 : 0000000000000002 x2 : ffff8000125f5001
+>>>>>>> [    2.384359] x1 : 0000000000000001 x0 : ffff0000f9550a80
+>>>>>>> [    2.389665] Call trace:
+>>>>>>> [    2.392105]  mtk_read_temp+0xb8/0x1c8
+>>>>>>> [    2.395760]  of_thermal_get_temp+0x2c/0x40
+>>>>>>> [    2.399849]  thermal_zone_get_temp+0x78/0x160
+>>>>>>> [    2.404198]  thermal_zone_device_update.part.0+0x3c/0x1f8
+>>>>>>> [    2.409589]  thermal_zone_device_update+0x34/0x48
+>>>>>>> [    2.414286]  of_thermal_set_mode+0x58/0x88
+>>>>>>> [    2.418375]  thermal_zone_of_sensor_register+0x1a8/0x1d8
+>>>>>>> [    2.423679]  devm_thermal_zone_of_sensor_register+0x64/0xb0
+>>>>>>> [    2.429242]  mtk_thermal_probe+0x690/0x7d0
+>>>>>>> [    2.433333]  platform_drv_probe+0x5c/0xb0
+>>>>>>> [    2.437335]  really_probe+0xe4/0x448
+>>>>>>> [    2.440901]  driver_probe_device+0xe8/0x140
+>>>>>>> [    2.445077]  device_driver_attach+0x7c/0x88
+>>>>>>> [    2.449252]  __driver_attach+0xac/0x178
+>>>>>>> [    2.453082]  bus_for_each_dev+0x78/0xc8
+>>>>>>> [    2.456909]  driver_attach+0x2c/0x38
+>>>>>>> [    2.460476]  bus_add_driver+0x14c/0x230
+>>>>>>> [    2.464304]  driver_register+0x6c/0x128
+>>>>>>> [    2.468131]  __platform_driver_register+0x50/0x60
+>>>>>>> [    2.472831]  mtk_thermal_driver_init+0x24/0x30
+>>>>>>> [    2.477268]  do_one_initcall+0x50/0x298
+>>>>>>> [    2.481098]  kernel_init_freeable+0x1ec/0x264
+>>>>>>> [    2.485450]  kernel_init+0x1c/0x110
+>>>>>>> [    2.488931]  ret_from_fork+0x10/0x1c
+>>>>>>> [    2.492502] Code: f9401081 f9400402 b8a67821 8b010042 (b9400042)
+>>>>>>> [    2.498599] ---[ end trace e43e3105ed27dc99 ]---
+>>>>>>> [    2.503367] Kernel panic - not syncing: Attempted to kill init!
+>>>>>>> exitcode=0x0000000b
+>>>>>>> [    2.511020] SMP: stopping secondary CPUs
+>>>>>>> [    2.514941] Kernel Offset: disabled
+>>>>>>> [    2.518421] CPU features: 0x090002,25006005
+>>>>>>> [    2.522595] Memory Limit: none
+>>>>>>> [    2.525644] ---[ end Kernel panic - not syncing: Attempted to kill init!
+>>>>>>> exitcode=0x0000000b ]---
+>>>>>>>
+>>>
+>>>> Hi Enric,
+>>> I will help to fix this crash. If it is urgent, you can revert the patch
+>>> locally first for mt8173.
+>>>
+>>
+>> Thanks, the reverted patch is what I am carrying ;-)
+>>
+> 
+> As Enric mentioned v4.8-rc1 will claim support for MT8173 based Chromebooks, so
+> we should make sure that a fix gets in in the first rc's (best would be rc2). If
+> I got that right, best would be if we have a fix in around 4 weeks.
+> 
+> Please let me know if you can't make it and we can revert the commit in the
+> rc-phase. Also I'd prefer a proper fix.
+> 
 
-I guess the question is do we simply flip the call order in 
-iommu_release_device() so drivers can easily clean up their internal 
-per-device state first, or do we now want them to be robust against 
-freeing domains with devices still nominally attached?
 
-Robin.
+Michael, did you had a chance to look into this.
+
+> Enric what do you think?
+> 
+
+I plan to send a revert after rc4 if we couldn't find a fix for it before.
+
+Thanks,
+ Enric
+
+> Regards,
+> Matthias
+> 
+>> It'd be nice have this fixed for next MR or during the upcoming release cycle,
+>> it will probably start next week. During the next merge window will land the
+>> support for MT8173 Elm and Hana, so those boards will be affected by this and
+>> will break. Actually, there is no much boards supported in mainline using MT8183
+>> (only EVB), so in the worse case I can send a revert or a partial revert of the
+>> patch.
+>>
+>> Thanks,
+>>  Enric
+>>
+>>> The last sensor in mt8173_bank_data[2] is MT8173_TSABB.
+>>> Its index is 4. But there is not index 4 in mt8173_msr and
+>>> mt8173_adcpnp.
+>>> That is the root cause for your reference.
+>>>
+>>> static const struct mtk_thermal_data mt8173_thermal_data = {
+>>> 	.auxadc_channel = MT8173_TEMP_AUXADC_CHANNEL,
+>>> 	.num_banks = MT8173_NUM_ZONES,
+>>> 	.num_sensors = MT8173_NUM_SENSORS,
+>>> 	.vts_index = mt8173_vts_index,
+>>> 	.cali_val = MT8173_CALIBRATION,
+>>> 	.num_controller = MT8173_NUM_CONTROLLER,
+>>> 	.controller_offset = mt8173_tc_offset,
+>>> 	.need_switch_bank = true,
+>>> 	.bank_data = {
+>>> 		{
+>>> 			.num_sensors = 2,
+>>> 			.sensors = mt8173_bank_data[0],
+>>> 		}, {
+>>> 			.num_sensors = 2,
+>>> 			.sensors = mt8173_bank_data[1],
+>>> 		}, {
+>>> 			.num_sensors = 3,
+>>> 			.sensors = mt8173_bank_data[2],
+>>> 		}, {
+>>> 			.num_sensors = 1,
+>>> 			.sensors = mt8173_bank_data[3],
+>>> 		},
+>>> 	},
+>>> 	.msr = mt8173_msr,
+>>> 	.adcpnp = mt8173_adcpnp,
+>>> 	.sensor_mux_values = mt8173_mux_values,
+>>> };
+>>>
+>>>
+>>>
+>>> /* MT8173 thermal sensor data */
+>>> static const int mt8173_bank_data[MT8173_NUM_ZONES][3] = {
+>>> 	{ MT8173_TS2, MT8173_TS3 },
+>>> 	{ MT8173_TS2, MT8173_TS4 },
+>>> 	{ MT8173_TS1, MT8173_TS2, MT8173_TSABB },
+>>> 	{ MT8173_TS2 },
+>>> };
+>>>
+>>> static const int mt8173_msr[MT8173_NUM_SENSORS_PER_ZONE] = {
+>>> 	TEMP_MSR0, TEMP_MSR1, TEMP_MSR2, TEMP_MSR3
+>>> };
+>>>
+>>> static const int mt8173_adcpnp[MT8173_NUM_SENSORS_PER_ZONE] = {
+>>> 	TEMP_ADCPNP0, TEMP_ADCPNP1, TEMP_ADCPNP2, TEMP_ADCPNP3
+>>> };
+>>>
+>>> /* MT8173 thermal sensors */
+>>> #define MT8173_TS1	0
+>>> #define MT8173_TS2	1
+>>> #define MT8173_TS3	2
+>>> #define MT8173_TS4	3
+>>> #define MT8173_TSABB	4
+>>>
+>>> Best Regards,
+>>> Michael
+>>>> _______________________________________________
+>>>> Linux-mediatek mailing list
+>>>> Linux-mediatek@lists.infradead.org
+>>>> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+>>>
 
 _______________________________________________
 Linux-mediatek mailing list
