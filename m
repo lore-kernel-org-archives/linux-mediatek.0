@@ -2,88 +2,79 @@ Return-Path: <SRS0=KJBd=AM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EB79CC433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 00:40:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 155DDC433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 02:18:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AEDEF2073E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 00:40:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D77F52078B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 02:18:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="o+zLvbfu";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lca.pw header.i=@lca.pw header.b="UMvPnSOf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AEDEF2073E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lca.pw
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ib7Xlv0y";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="PUWLhYJn"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D77F52078B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=SUb3xf+rlFEjtj73q0dh/OP6CjfOXsduznbWsuANdlk=; b=o+zLvbfu+2UgpdU7J3G7rjSc3
-	tbezMke0OETsMDPjmSYYnqGH0fkMFH57spHkdsGZLmp9/myB3hJUtClnXQBxzeSFssqZ/RvQWECbi
-	0kgNU1FOOqtqrwfTBFAhd1MPhFzduvUTSZGHnMahKaCkMHLW4XOAUwvuAigpxVejG3sR0li4qPBPH
-	WEgKXSW0QF0E+mTqw31hgoPVRFGFCZX363BwPaz6zUrvzXxUiwM8lOfc3VaWjDp/Exx+fyZkc2Gmz
-	TqoP3Hnd+TLKUVLcdKWKaene0LXsioJWrDVDwCvKuJ+ZZfupkK8x7nD8lc28zACGmrNVnRLv1EJW3
-	/k+8ADrXw==;
+	 bh=XD62zyPDPfvY/CXiKxe3/MhQe4MEzn22VMl5xl00GYQ=; b=Ib7Xlv0yRgwD2mR7gYLeXvlFb
+	dRHbrUfV1CTnB/PK4ZWPfvCShe0927MSFoDRI52d8fr3BROIeE7UD4TBNJbluIkxyiPJ9Qg5uEm4w
+	cEgujiTeNnXfwItXirtM5E3aP+X0+SACLzSzrbPWeRYCxYNuuqzg3CQP21B5W9yWDVvX/6rNIn1KG
+	u/eMaQ12gL/hyRREzfCfdQSdXDym2J5Cl5oq1bbpGeYN8lWREseftfxvpmZDxDrnnwyYSIGio+21E
+	9GRHAdGlP2yuOrifU6PQAhj4er/tAUJJ8L/aR/BaaNWhC7/yDgCRzi9tK/XlTCs4EnAJ68Vf742qw
+	1rpkLHrVw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqQnk-0007VG-0o; Wed, 01 Jul 2020 00:40:36 +0000
-Received: from mail-qt1-x842.google.com ([2607:f8b0:4864:20::842])
+	id 1jqSKX-0000t4-5m; Wed, 01 Jul 2020 02:18:33 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqQng-0007Tx-CK
- for linux-mediatek@lists.infradead.org; Wed, 01 Jul 2020 00:40:34 +0000
-Received: by mail-qt1-x842.google.com with SMTP id u17so17197151qtq.1
- for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2020 17:40:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lca.pw; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=EpYeFSv2hUhAOTMZUAlI4eJYzACEPDVz/YPnN7nLgms=;
- b=UMvPnSOf52UXOi6pjL3ZvkSlsm2b9MDeu3tw1Ed1K8gXMR5YuUUqOGVZoRRZfbg9Mj
- PLfo60YD6i214QebR41JVrwmDFvO19N8Kzz52R/boUapQVYFI/Hqmi+MQ39JtgKCVuhK
- NhaqpeG31oUyIJKxwWBijxjo4rgRc+j7vUzcvKnJORgTIX9NmIW8FeSmvqEtYY8DpyYf
- NbwlNb6lyWjUJCMNEFr7VMEvkvKZKoLk1eyzbTSAIaND9DKWjKbswBaukQil5gARP39b
- UocbS/Y9+uvE2BABvK3Pf7SObIctPGQ+SIuHWqxXoARp35RPPDgjaKSN2QGPaOMr1Nu2
- x0Hg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=EpYeFSv2hUhAOTMZUAlI4eJYzACEPDVz/YPnN7nLgms=;
- b=SnEtCZbn1P4lvYOXvDrvNIFSRO1PFtznVkjfS40nSyjgP/suXFyX1kTOLz4tYLfGwd
- gkFV3rwORbwOkJixtN3yAtUM+9ms6owpn7iPOi5UPZ7XDFjnabD6sWBqP8eB8nBpvxYa
- h9Ogz6IR/OPzvmWJv5D+gx/EwOOlKEXQ/qT9ooiorQ9vCd2RfRnlvZl4fJ23daGsS52G
- MuBZkaNP4+u0BmCr9QtPN4YDHwXgBk6ftInTfLRay/5JUNI1RBV2sH/6RdLNKdWU4Ac7
- Nvv0cUQx2kxiBof1QLg9FdwuEgRiU9eAlzNGHC9iZ3WRbCRuQynDsX5Vn8ADCAhwU6YB
- h6qw==
-X-Gm-Message-State: AOAM530fr+Nu6w0Vb+lZhiZdgxXXr0U5y6nfoZn1cucmZePHvkSbRFCl
- vxHpu1iLzyIH6bvNkF6PZ/XYKg==
-X-Google-Smtp-Source: ABdhPJyXfMrs8+GLSAGg3NbFwYmI9O7CdJG3Yhc9RTBX2CW/NUUI3avZ+oYjHWxFV5f356rMaVqbmg==
-X-Received: by 2002:ac8:2f7b:: with SMTP id k56mr22963939qta.239.1593564028380; 
- Tue, 30 Jun 2020 17:40:28 -0700 (PDT)
-Received: from lca.pw (pool-71-184-117-43.bstnma.fios.verizon.net.
- [71.184.117.43])
- by smtp.gmail.com with ESMTPSA id x4sm3683664qkl.130.2020.06.30.17.40.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Jun 2020 17:40:27 -0700 (PDT)
-Date: Tue, 30 Jun 2020 20:40:20 -0400
-From: Qian Cai <cai@lca.pw>
-To: Joerg Roedel <joro@8bytes.org>
-Subject: Re: [PATCH v3 00/34] iommu: Move iommu_group setup to IOMMU core code
-Message-ID: <20200701004020.GA6221@lca.pw>
-References: <20200429133712.31431-1-joro@8bytes.org>
+ id 1jqSKS-0000s7-C9
+ for linux-mediatek@lists.infradead.org; Wed, 01 Jul 2020 02:18:31 +0000
+X-UUID: e1c1e964379347f3b831503ec26f4ac6-20200630
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=DcY8OQCD9Qm2ySPaa/SLgUyczR+AJ+WptOzp9lGgZhw=; 
+ b=PUWLhYJnGHCJl/9g6VyPlszSVCfUbB8XU38bFoDZFp7qrET349sHjz70PVznqSPr9C38gYzmXed+J0aigogGer/4Js5gvtaL1zi2jCtKlniF8Zrsq4gKj4tLBS8DJDUXJuTBrz2CetqHTcgayTqWByUQPoJ9JBXWQPJR88GBJOA=;
+X-UUID: e1c1e964379347f3b831503ec26f4ac6-20200630
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1953423879; Tue, 30 Jun 2020 18:18:21 -0800
+Received: from MTKMBS32N2.mediatek.inc (172.27.4.72) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 30 Jun 2020 19:18:20 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS32N2.mediatek.inc
+ (172.27.4.72) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 1 Jul 2020 10:18:14 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 1 Jul 2020 10:18:12 +0800
+Message-ID: <1593569872.32037.6.camel@mhfsdcap03>
+Subject: Re: [PATCH v5 02/10] iommu/mediatek: Rename the register
+ STANDARD_AXI_MODE(0x48) to MISC_CTRL
+From: Yong Wu <yong.wu@mediatek.com>
+To: Chao Hao <chao.hao@mediatek.com>
+Date: Wed, 1 Jul 2020 10:17:52 +0800
+In-Reply-To: <20200629071310.1557-3-chao.hao@mediatek.com>
+References: <20200629071310.1557-1-chao.hao@mediatek.com>
+ <20200629071310.1557-3-chao.hao@mediatek.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200429133712.31431-1-joro@8bytes.org>
+X-TM-SNTS-SMTP: 71933EE4DC99580A780AB184F067753C98B859006AD047915C8496CEE95F99B82000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200630_204032_625815_ADC96B11 
-X-CRM114-Status: GOOD (  22.55  )
+X-CRM114-CacheID: sfid-20200630_221828_621455_DB59683F 
+X-CRM114-Status: GOOD (  14.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,288 +86,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, linux-tegra@vger.kernel.org,
- Thierry Reding <thierry.reding@gmail.com>, Daniel Drake <drake@endlessm.com>,
- Will Deacon <will@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- linux-samsung-soc@vger.kernel.org, iommu@lists.linux-foundation.org,
- Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
- linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>,
- jonathan.derrick@intel.com, linux-s390@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- virtualization@lists.linux-foundation.org,
- Gerald Schaefer <gerald.schaefer@de.ibm.com>,
- David Woodhouse <dwmw2@infradead.org>, linux-kernel@vger.kernel.org,
- Rob Clark <robdclark@gmail.com>, Kukjin Kim <kgene@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, Lu Baolu <baolu.lu@linux.intel.com>
+Cc: FY Yang <fy.yang@mediatek.com>, wsd_upstream@mediatek.com,
+ Joerg Roedel <joro@8bytes.org>, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 29, 2020 at 03:36:38PM +0200, Joerg Roedel wrote:
-> Hi,
+On Mon, 2020-06-29 at 15:13 +0800, Chao Hao wrote:
+> For iommu offset=0x48 register, only the previous mt8173/mt8183 use the
+> name STANDARD_AXI_MODE, all the latest SoC extend the register more
+> feature by different bits, for example: axi_mode, in_order_en, coherent_en
+> and so on. So rename REG_MMU_MISC_CTRL may be more proper.
 > 
-> here is the third version of this patch-set. Older versions can be found
-> here:
+> This patch only rename the register name, no functional change.
 > 
-> 	v1: https://lore.kernel.org/lkml/20200407183742.4344-1-joro@8bytes.org/
-> 	    (Has some more introductory text)
-> 
-> 	v2: https://lore.kernel.org/lkml/20200414131542.25608-1-joro@8bytes.org/
-> 
-> Changes v2 -> v3:
-> 
-> 	* Rebased v5.7-rc3
-> 
-> 	* Added a missing iommu_group_put() as reported by Lu Baolu.
-> 
-> 	* Added a patch to consolidate more initialization work in
-> 	  __iommu_probe_device(), fixing a bug where no 'struct
-> 	  device_iommu' was allocated in the hotplug path.
-> 
-> There is also a git-branch available with these patches applied:
-> 
-> 	https://git.kernel.org/pub/scm/linux/kernel/git/joro/linux.git/log/?h=iommu-probe-device-v3
-> 
-> Please review. If there are no objections I plan to put these patches
-> into the IOMMU tree early next week.
+> Signed-off-by: Chao Hao <chao.hao@mediatek.com>
+> Reviewed-by: Yong Wu <yong.wu@mediatek.com>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> ---
+>  drivers/iommu/mtk_iommu.c | 14 +++++++-------
+>  drivers/iommu/mtk_iommu.h |  2 +-
+>  2 files changed, 8 insertions(+), 8 deletions(-)
 
-Looks like this patchset introduced an use-after-free on arm-smmu-v3.
+...
 
-Reproduced using mlx5,
+> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+> index ea949a324e33..1b6ea839b92c 100644
+> --- a/drivers/iommu/mtk_iommu.h
+> +++ b/drivers/iommu/mtk_iommu.h
+> @@ -18,7 +18,7 @@
+>  #include <soc/mediatek/smi.h>
+>  
+>  struct mtk_iommu_suspend_reg {
+> -	u32				standard_axi_mode;
+> +	u32				misc_ctrl;
 
-# echo 1 > /sys/class/net/enp11s0f1np1/device/sriov_numvfs
-# echo 0 > /sys/class/net/enp11s0f1np1/device/sriov_numvfs 
+Here will cause build fail for v1:
 
-The .config,
-https://github.com/cailca/linux-mm/blob/master/arm64.config
+drivers/iommu/mtk_iommu_v1.c:675:20: error: 'struct
+mtk_iommu_suspend_reg' has no member named 'standard_axi_mode'
+  writel_relaxed(reg->standard_axi_mode,
+                    ^
 
-Looking at the free stack,
+We could change something like:
 
-iommu_release_device->iommu_group_remove_device
+union {
+	u32	standard_axi_mode; /* only for v1 */
+	u32	misc_ctrl;         /* only for v2 */
+};
 
-was introduced in 07/34 ("iommu: Add probe_device() and release_device()
-call-backs").
-
-[ 9426.724641][ T3356] pci 0000:0b:01.2: Removing from iommu group 3
-[ 9426.731347][ T3356] ==================================================================
-[ 9426.739263][ T3356] BUG: KASAN: use-after-free in __lock_acquire+0x3458/0x4440
-__lock_acquire at kernel/locking/lockdep.c:4250
-[ 9426.746477][ T3356] Read of size 8 at addr ffff0089df1a6f68 by task bash/3356
-[ 9426.753601][ T3356]
-[ 9426.755782][ T3356] CPU: 5 PID: 3356 Comm: bash Not tainted 5.8.0-rc3-next-20200630 #2
-[ 9426.763687][ T3356] Hardware name: HPE Apollo 70             /C01_APACHE_MB         , BIOS L50_5.13_1.11 06/18/2019
-[ 9426.774111][ T3356] Call trace:
-[ 9426.777245][ T3356]  dump_backtrace+0x0/0x398
-[ 9426.781593][ T3356]  show_stack+0x14/0x20
-[ 9426.785596][ T3356]  dump_stack+0x140/0x1b8
-[ 9426.789772][ T3356]  print_address_description.isra.12+0x54/0x4a8
-[ 9426.795855][ T3356]  kasan_report+0x134/0x1b8
-[ 9426.800203][ T3356]  __asan_report_load8_noabort+0x2c/0x50
-[ 9426.805679][ T3356]  __lock_acquire+0x3458/0x4440
-[ 9426.810373][ T3356]  lock_acquire+0x204/0xf10
-[ 9426.814722][ T3356]  _raw_spin_lock_irqsave+0xf8/0x180
-[ 9426.819853][ T3356]  arm_smmu_detach_dev+0xd8/0x4a0
-arm_smmu_detach_dev at drivers/iommu/arm-smmu-v3.c:2776
-[ 9426.824721][ T3356]  arm_smmu_release_device+0xb4/0x1c8
-arm_smmu_disable_pasid at drivers/iommu/arm-smmu-v3.c:2754
-(inlined by) arm_smmu_release_device at drivers/iommu/arm-smmu-v3.c:3000
-[ 9426.829937][ T3356]  iommu_release_device+0xc0/0x178
-iommu_release_device at drivers/iommu/iommu.c:302
-[ 9426.834892][ T3356]  iommu_bus_notifier+0x118/0x160
-[ 9426.839762][ T3356]  notifier_call_chain+0xa4/0x128
-[ 9426.844630][ T3356]  __blocking_notifier_call_chain+0x70/0xa8
-[ 9426.850367][ T3356]  blocking_notifier_call_chain+0x14/0x20
-[ 9426.855929][ T3356]  device_del+0x618/0xa00
-[ 9426.860105][ T3356]  pci_remove_bus_device+0x108/0x2d8
-[ 9426.865233][ T3356]  pci_stop_and_remove_bus_device+0x1c/0x28
-[ 9426.870972][ T3356]  pci_iov_remove_virtfn+0x228/0x368
-[ 9426.876100][ T3356]  sriov_disable+0x8c/0x348
-[ 9426.880447][ T3356]  pci_disable_sriov+0x5c/0x70
-[ 9426.885117][ T3356]  mlx5_core_sriov_configure+0xd8/0x260 [mlx5_core]
-[ 9426.891549][ T3356]  sriov_numvfs_store+0x240/0x318
-[ 9426.896417][ T3356]  dev_attr_store+0x38/0x68
-[ 9426.900766][ T3356]  sysfs_kf_write+0xdc/0x128
-[ 9426.905200][ T3356]  kernfs_fop_write+0x23c/0x448
-[ 9426.909897][ T3356]  __vfs_write+0x54/0xe8
-[ 9426.913984][ T3356]  vfs_write+0x124/0x3f0
-[ 9426.918070][ T3356]  ksys_write+0xe8/0x1b8
-[ 9426.922157][ T3356]  __arm64_sys_write+0x68/0x98
-[ 9426.926766][ T3356]  do_el0_svc+0x124/0x220
-[ 9426.930941][ T3356]  el0_sync_handler+0x260/0x408
-[ 9426.935634][ T3356]  el0_sync+0x140/0x180
-[ 9426.939633][ T3356]
-[ 9426.941810][ T3356] Allocated by task 3356:
-[ 9426.945985][ T3356]  save_stack+0x24/0x50
-[ 9426.949986][ T3356]  __kasan_kmalloc.isra.13+0xc4/0xe0
-[ 9426.955114][ T3356]  kasan_kmalloc+0xc/0x18
-[ 9426.959288][ T3356]  kmem_cache_alloc_trace+0x1ec/0x318
-[ 9426.964503][ T3356]  arm_smmu_domain_alloc+0x54/0x148
-[ 9426.969545][ T3356]  iommu_group_alloc_default_domain+0xc0/0x440
-[ 9426.975541][ T3356]  iommu_probe_device+0x1c0/0x308
-[ 9426.980409][ T3356]  iort_iommu_configure+0x434/0x518
-[ 9426.985452][ T3356]  acpi_dma_configure+0xf0/0x128
-[ 9426.990235][ T3356]  pci_dma_configure+0x114/0x160
-[ 9426.995017][ T3356]  really_probe+0x124/0x6d8
-[ 9426.999364][ T3356]  driver_probe_device+0xc4/0x180
-[ 9427.004232][ T3356]  __device_attach_driver+0x184/0x1e8
-[ 9427.009447][ T3356]  bus_for_each_drv+0x114/0x1a0
-[ 9427.014142][ T3356]  __device_attach+0x19c/0x2a8
-[ 9427.018749][ T3356]  device_attach+0x10/0x18
-[ 9427.023009][ T3356]  pci_bus_add_device+0x70/0xf8
-[ 9427.027704][ T3356]  pci_iov_add_virtfn+0x7b4/0xb40
-[ 9427.032571][ T3356]  sriov_enable+0x5c8/0xc30
-[ 9427.036918][ T3356]  pci_enable_sriov+0x64/0x80
-[ 9427.041485][ T3356]  mlx5_core_sriov_configure+0x58/0x260 [mlx5_core]
-[ 9427.047917][ T3356]  sriov_numvfs_store+0x1c0/0x318
-[ 9427.052784][ T3356]  dev_attr_store+0x38/0x68
-[ 9427.057131][ T3356]  sysfs_kf_write+0xdc/0x128
-[ 9427.061565][ T3356]  kernfs_fop_write+0x23c/0x448
-[ 9427.066260][ T3356]  __vfs_write+0x54/0xe8
-[ 9427.070346][ T3356]  vfs_write+0x124/0x3f0
-[ 9427.074433][ T3356]  ksys_write+0xe8/0x1b8
-[ 9427.078519][ T3356]  __arm64_sys_write+0x68/0x98
-[ 9427.083127][ T3356]  do_el0_svc+0x124/0x220
-[ 9427.087300][ T3356]  el0_sync_handler+0x260/0x408
-[ 9427.091994][ T3356]  el0_sync+0x140/0x180
-[ 9427.095992][ T3356]
-[ 9427.098168][ T3356] Freed by task 3356:
-[ 9427.101995][ T3356]  save_stack+0x24/0x50
-[ 9427.105996][ T3356]  __kasan_slab_free+0x124/0x198
-[ 9427.110777][ T3356]  kasan_slab_free+0x10/0x18
-[ 9427.115210][ T3356]  slab_free_freelist_hook+0x110/0x298
-[ 9427.120512][ T3356]  kfree+0x128/0x668
-[ 9427.124252][ T3356]  arm_smmu_domain_free+0xf4/0x1a0
-[ 9427.129206][ T3356]  iommu_group_release+0xec/0x160
-[ 9427.134074][ T3356]  kobject_put+0xf4/0x238
-[ 9427.138247][ T3356]  kobject_del+0x110/0x190
-[ 9427.142507][ T3356]  kobject_put+0x1e4/0x238
-[ 9427.146767][ T3356]  iommu_group_remove_device+0x394/0x938
-[ 9427.152242][ T3356]  iommu_release_device+0x9c/0x178
-iommu_release_device at drivers/iommu/iommu.c:300
-[ 9427.157196][ T3356]  iommu_bus_notifier+0x118/0x160
-[ 9427.162065][ T3356]  notifier_call_chain+0xa4/0x128
-[ 9427.166934][ T3356]  __blocking_notifier_call_chain+0x70/0xa8
-[ 9427.172670][ T3356]  blocking_notifier_call_chain+0x14/0x20
-[ 9427.178233][ T3356]  device_del+0x618/0xa00
-[ 9427.182406][ T3356]  pci_remove_bus_device+0x108/0x2d8
-[ 9427.187535][ T3356]  pci_stop_and_remove_bus_device+0x1c/0x28
-[ 9427.193271][ T3356]  pci_iov_remove_virtfn+0x228/0x368
-[ 9427.198399][ T3356]  sriov_disable+0x8c/0x348
-[ 9427.202746][ T3356]  pci_disable_sriov+0x5c/0x70
-[ 9427.207398][ T3356]  mlx5_core_sriov_configure+0xd8/0x260 [mlx5_core]
-[ 9427.213830][ T3356]  sriov_numvfs_store+0x240/0x318
-[ 9427.218698][ T3356]  dev_attr_store+0x38/0x68
-[ 9427.223045][ T3356]  sysfs_kf_write+0xdc/0x128
-[ 9427.227478][ T3356]  kernfs_fop_write+0x23c/0x448
-[ 9427.232173][ T3356]  __vfs_write+0x54/0xe8
-[ 9427.236259][ T3356]  vfs_write+0x124/0x3f0
-[ 9427.240346][ T3356]  ksys_write+0xe8/0x1b8
-[ 9427.244433][ T3356]  __arm64_sys_write+0x68/0x98
-[ 9427.249041][ T3356]  do_el0_svc+0x124/0x220
-[ 9427.253215][ T3356]  el0_sync_handler+0x260/0x408
-[ 9427.257908][ T3356]  el0_sync+0x140/0x180
-[ 9427.261907][ T3356]
-[ 9427.264084][ T3356] The buggy address belongs to the object at ffff0089df1a6e00
-[ 9427.264084][ T3356]  which belongs to the cache kmalloc-512 of size 512
-[ 9427.277980][ T3356] The buggy address is located 360 bytes inside of
-[ 9427.277980][ T3356]  512-byte region [ffff0089df1a6e00, ffff0089df1a7000)
-[ 9427.291094][ T3356] The buggy address belongs to the page:
-[ 9427.296571][ T3356] page:ffffffe02257c680 refcount:1 mapcount:0 mapping:0000000000000000 index:0xffff0089df1a1400
-[ 9427.306823][ T3356] flags: 0x7ffff800000200(slab)
-[ 9427.311520][ T3356] raw: 007ffff800000200 ffffffe02246b8c8 ffffffe02257ff88 ffff000000320680
-[ 9427.319949][ T3356] raw: ffff0089df1a1400 00000000002a000e 00000001ffffffff ffff0089df1a5001
-[ 9427.328374][ T3356] page dumped because: kasan: bad access detected
-[ 9427.334630][ T3356] page->mem_cgroup:ffff0089df1a5001
-[ 9427.339670][ T3356]
-[ 9427.341846][ T3356] Memory state around the buggy address:
-[ 9427.347322][ T3356]  ffff0089df1a6e00: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
-[ 9427.355228][ T3356]  ffff0089df1a6e80: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
-[ 9427.363133][ T3356] >ffff0089df1a6f00: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
-[ 9427.371038][ T3356]                                                           ^
-[ 9427.378337][ T3356]  ffff0089df1a6f80: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
-[ 9427.386242][ T3356]  ffff0089df1a7000: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
-[ 9427.394146][ T3356] ==================================================================
-[ 9427.402052][ T3356] Disabling lock debugging due to kernel taint
-
-> 
-> Thanks,
-> 
-> 	Joerg
-> 
-> Joerg Roedel (33):
->   iommu: Move default domain allocation to separate function
->   iommu/amd: Implement iommu_ops->def_domain_type call-back
->   iommu/vt-d: Wire up iommu_ops->def_domain_type
->   iommu/amd: Remove dma_mask check from check_device()
->   iommu/amd: Return -ENODEV in add_device when device is not handled by
->     IOMMU
->   iommu: Add probe_device() and release_device() call-backs
->   iommu: Move default domain allocation to iommu_probe_device()
->   iommu: Keep a list of allocated groups in __iommu_probe_device()
->   iommu: Move new probe_device path to separate function
->   iommu: Split off default domain allocation from group assignment
->   iommu: Move iommu_group_create_direct_mappings() out of
->     iommu_group_add_device()
->   iommu: Export bus_iommu_probe() and make is safe for re-probing
->   iommu/amd: Remove dev_data->passthrough
->   iommu/amd: Convert to probe/release_device() call-backs
->   iommu/vt-d: Convert to probe/release_device() call-backs
->   iommu/arm-smmu: Convert to probe/release_device() call-backs
->   iommu/pamu: Convert to probe/release_device() call-backs
->   iommu/s390: Convert to probe/release_device() call-backs
->   iommu/virtio: Convert to probe/release_device() call-backs
->   iommu/msm: Convert to probe/release_device() call-backs
->   iommu/mediatek: Convert to probe/release_device() call-backs
->   iommu/mediatek-v1 Convert to probe/release_device() call-backs
->   iommu/qcom: Convert to probe/release_device() call-backs
->   iommu/rockchip: Convert to probe/release_device() call-backs
->   iommu/tegra: Convert to probe/release_device() call-backs
->   iommu/renesas: Convert to probe/release_device() call-backs
->   iommu/omap: Remove orphan_dev tracking
->   iommu/omap: Convert to probe/release_device() call-backs
->   iommu/exynos: Use first SYSMMU in controllers list for IOMMU core
->   iommu/exynos: Convert to probe/release_device() call-backs
->   iommu: Remove add_device()/remove_device() code-paths
->   iommu: Move more initialization to __iommu_probe_device()
->   iommu: Unexport iommu_group_get_for_dev()
-> 
-> Sai Praneeth Prakhya (1):
->   iommu: Add def_domain_type() callback in iommu_ops
-> 
->  drivers/iommu/amd_iommu.c       |  97 ++++----
->  drivers/iommu/amd_iommu_types.h |   1 -
->  drivers/iommu/arm-smmu-v3.c     |  38 +---
->  drivers/iommu/arm-smmu.c        |  39 ++--
->  drivers/iommu/exynos-iommu.c    |  24 +-
->  drivers/iommu/fsl_pamu_domain.c |  22 +-
->  drivers/iommu/intel-iommu.c     |  68 +-----
->  drivers/iommu/iommu.c           | 387 +++++++++++++++++++++++++-------
->  drivers/iommu/ipmmu-vmsa.c      |  60 ++---
->  drivers/iommu/msm_iommu.c       |  34 +--
->  drivers/iommu/mtk_iommu.c       |  24 +-
->  drivers/iommu/mtk_iommu_v1.c    |  50 ++---
->  drivers/iommu/omap-iommu.c      |  99 ++------
->  drivers/iommu/qcom_iommu.c      |  24 +-
->  drivers/iommu/rockchip-iommu.c  |  26 +--
->  drivers/iommu/s390-iommu.c      |  22 +-
->  drivers/iommu/tegra-gart.c      |  24 +-
->  drivers/iommu/tegra-smmu.c      |  31 +--
->  drivers/iommu/virtio-iommu.c    |  41 +---
->  include/linux/iommu.h           |  21 +-
->  20 files changed, 531 insertions(+), 601 deletions(-)
-> 
-> -- 
-> 2.17.1
-> 
-> _______________________________________________
-> iommu mailing list
-> iommu@lists.linux-foundation.org
-> https://lists.linuxfoundation.org/mailman/listinfo/iommu
-
+>  	u32				dcm_dis;
+>  	u32				ctrl_reg;
+>  	u32				int_control0;
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
