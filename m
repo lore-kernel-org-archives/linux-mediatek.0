@@ -1,81 +1,80 @@
-Return-Path: <SRS0=AAZc=AL=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=KJBd=AM=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5AE7AC433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 23:42:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 238B9C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 00:05:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 27E91206CB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2020 23:42:37 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E62A520722
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 00:05:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yD1YgPIH";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="A08aIEHF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 27E91206CB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xFtvSo5b";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=armlinux.org.uk header.i=@armlinux.org.uk header.b="wV/O8AXT"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E62A520722
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=armlinux.org.uk
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:From:Subject:Mime-Version:Message-Id:Date:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=l6inSlL6DhmVTNPz0tjzSmwUMZNfbz6UpdsW807ctTQ=; b=yD1YgPIHew+G7VBeQnQdQlQzED
-	miTIIc9Ul6SJjXz9WOmo1rF5KaJRpayTuiHFEoeM9pVC5CIaXTRxcaFw8sGILwI04y5SiNqi79gjX
-	F8kVXPETSXkczd5dQq6CpLsnwO5sEvCIpe4wV556OAF42c+9tYoOt78gAFFbiRkxp4Fer3orR9JZa
-	gepMMZaAXBNHSEhuBN84PKAiDwLqhhuyQBYFv1bBZX1iJEVcXM1cVYxGgmaA/V56z0O6usqJabMWM
-	CoUOecjmfRVGqVU5R6nxEGMJUPOWeGbRovCrhi/1/rk8jQnYDMKjWJTX1loq0/uS+SU9lEy1SK2oP
-	7BVVb2qg==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Y5SvM41pfep2x2xQmBQY0Gkiw9M5xcMtTop8IkIKWvA=; b=xFtvSo5bDOnddFjMC9ikThpFm
+	MpVZTfS1onY/G0B/irt1I3lsx+PS7iPNjLx1SZDPJtIJYUcYh2OmUF0hKBSmVhoXtDinR7ASAeH/x
+	woZOqm40l4h53Hce7Z9XroY9MjODLhm+YtqtI9wRkzD6o6O8R47xM7K8SucD3/seRZgNuQqcufjOf
+	Xja4V07IFfNPX6KXbhpIxUmgkrijEmeja0UE0VMT4P2E6ijlIXxL/9rhO6viSmFWQD6sYoml44fl1
+	bHS2704QExUZB0uh/sKXFeN9Dp2Pg5Jl7DO/6NR6F8TtfI5a5B8S9tOYIJ4Pp5CxnfAkGA3bA05oL
+	U50vCaNUQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqPtV-0002kd-9m; Tue, 30 Jun 2020 23:42:29 +0000
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
+	id 1jqQG1-0004xg-VG; Wed, 01 Jul 2020 00:05:45 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqPtS-0002k5-PG
- for linux-mediatek@lists.infradead.org; Tue, 30 Jun 2020 23:42:27 +0000
-Received: by mail-yb1-xb4a.google.com with SMTP id e192so24254078ybf.17
- for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2020 16:42:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:message-id:mime-version:subject:from:to:cc;
- bh=n7raTtIxzIsyGs4VWsPeosbmDVfxOPL6Kt3Xxdq+NzQ=;
- b=A08aIEHFxec2io4UGF3QU20z0l2BqR3XRZdtO0deY3xpDvUVhgUsaEA0fEJq8xLVv1
- 8iCEpYwHEW+DpYTAYAhmywuVfaUUvalvMif/YEaUBGSUyzVMqL63Rsp0U5Ru387tHPZ+
- /fUOjy+s+z1U8vdgIPpCtI/0xDh2YjITOMhhvLn43fEsd8+265yQGgrr2glqwnWDdJ8K
- uz6cuejZtMwVxmLDE78AoZpJAyRmOBqX3S9faTinh0d0+P8tC+NoQk3w7V4yXR3zn5pI
- dR94lL+K0Kfj/bjLrk6DNrWqlH2Zk40NlXWbGZtj95aLheVuSpxG3LAHfny/GIJwuRr3
- YTTA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=n7raTtIxzIsyGs4VWsPeosbmDVfxOPL6Kt3Xxdq+NzQ=;
- b=cLlZFWoFMqds3dshLPKH8Q32jeK2YE5gTRHHixjSIa1eblhQaDQsH9vMWMjH7sXctE
- HZCQVOIC2sZReq++hk7Emv08o1c4IdXN60OE5t5xk2zTkni8TWJxQ9qKXANpLYfuxrTU
- d+epkOUyONIEpYB+zMuzYoKvqNX8SH87AAZ3zTBxQxCbPTGr/7m2vGSBXDN9TUDuJwFp
- Gp2lpIXj7JpkFgVGKrUx+WU+w2yFKAaqjeJUxtxgRJ+YcGTNpYz+V6CeE8617+o4t2gM
- zLpjygVvFq3e2v32cUsTNeISPudOTStNxq5xHCbY/46y0yT9irNr8aEr5MkAr06PDyF5
- sm/g==
-X-Gm-Message-State: AOAM5310l3Ke5d33iFIgrqloxXSP/Yh5lDCvXNRWwFTIDY8xSn7HnK4f
- WdqI1w65aF17QypXEaoI+2to3aYk/eEJ9tv+5hbu
-X-Google-Smtp-Source: ABdhPJywusfTFjpLcjnVuDSLKVbrHofdt3NFwsfza8+5TL1nTp3jEw6krmAW8VgpGWoTnARjWoermlh95MMUneiy1oeH
-X-Received: by 2002:a25:5d04:: with SMTP id r4mr35391905ybb.290.1593560542263; 
- Tue, 30 Jun 2020 16:42:22 -0700 (PDT)
-Date: Tue, 30 Jun 2020 16:42:11 -0700
-Message-Id: <20200630164204.1.I2cc415fa5793b3e55acfd521ba8f0a71e79aa5f1@changeid>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.27.0.212.ge8ba1cc988-goog
-Subject: [PATCH] Revert "serial: 8250: Fix max baud limit in generic 8250 port"
-From: Daniel Winkler <danielwinkler@google.com>
-To: linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org
+ id 1jqQFw-0004we-TV; Wed, 01 Jul 2020 00:05:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+ Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+ Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=TBNd1SkmeXFu9UrYhNDqssdxJjXXZqfWFt/EARCEABQ=; b=wV/O8AXTSKB+fKSrD8U6Ei27W
+ G5ggh3Gq7zKRmgVjes1rdNili9DYylq9He9Z+xN7XPXZPvrQI/PVg2SoYLbKC8MUoywL7XXw4JvLs
+ TDRiQ3/QaC1bqnO+M+b0MhxfIueP+4RsALGzGhSfhTYXeTGwuM28V0K/mmC6ptuOA6LcJvTgMrYov
+ BLWaWZOYgAbIlaI55tJExdFAyaR/G2B9JRyWOw69HbRXp5pMnXayyQBmcxnDr3Hoph5HqmmyJ4Sk8
+ YBxVsiI8UV2np+d7D9x1ZyPGl+t+gJqKfw/cxS80IqiNAvD2SPxsOa3Jze1R33h+ltPl+taKIsSRE
+ P+tS4fmdA==;
+Received: from shell.armlinux.org.uk
+ ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33754)
+ by pandora.armlinux.org.uk with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <linux@armlinux.org.uk>)
+ id 1jqQFi-00015m-5b; Wed, 01 Jul 2020 01:05:26 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.92)
+ (envelope-from <linux@shell.armlinux.org.uk>)
+ id 1jqQFe-0000Bs-13; Wed, 01 Jul 2020 01:05:22 +0100
+Date: Wed, 1 Jul 2020 01:05:22 +0100
+From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+To: =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>
+Subject: Re: [PATCH RFC net-next] net: mtk_eth_soc: use resolved link config
+ for PCS PHY
+Message-ID: <20200701000521.GH1551@shell.armlinux.org.uk>
+References: <E1jqDIk-0004m5-0L@rmk-PC.armlinux.org.uk>
+ <20200630104613.GB1551@shell.armlinux.org.uk>
+ <20200630221308.Horde.maavwLQud2YnxIT-0uQAH4l@www.vdorst.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200630221308.Horde.maavwLQud2YnxIT-0uQAH4l@www.vdorst.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200630_194226_856558_4ECB0455 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200630_200541_112567_CD95FAB2 
+X-CRM114-Status: GOOD (  39.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,56 +86,178 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: chromeos-bluetooth-upstreaming
- <chromeos-bluetooth-upstreaming@chromium.org>,
- Vignesh Raghavendra <vigneshr@ti.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Daniel Winkler <danielwinkler@google.com>, linux-kernel@vger.kernel.org,
- Lukas Wunner <lukas@wunner.de>, Jiri Slaby <jslaby@suse.com>,
- Aaron Sierra <asierra@xes-inc.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>, linux-mediatek@lists.infradead.org,
+ John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+ "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org,
+ Heiner Kallweit <hkallweit1@gmail.com>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This reverts commit 0eeaf62981ecc79e8395ca8caa1570eaf3a12257.
+On Tue, Jun 30, 2020 at 10:13:08PM +0000, Ren=E9 van Dorst wrote:
+> Hi Russel and Sean,
+> =
 
-The change regresses the QCA6174A-3 bluetooth chip, preventing
-firmware from being properly loaded. We have verified that without
-this patch, the chip works as intended.
+> Quoting Russell King - ARM Linux admin <linux@armlinux.org.uk>:
+> =
 
-Signed-off-by: Daniel Winkler <danielwinkler@google.com>
----
+> > On Tue, Jun 30, 2020 at 11:15:42AM +0100, Russell King wrote:
+> > > The SGMII PCS PHY needs to be updated with the link configuration in
+> > > the mac_link_up() call rather than in mac_config().  However,
+> > > mtk_sgmii_setup_mode_force() programs the SGMII block during
+> > > mac_config() when using 802.3z interface modes with the link
+> > > configuration.
+> > > =
 
- drivers/tty/serial/8250/8250_port.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+> > > Split that functionality from mtk_sgmii_setup_mode_force(), moving it
+> > > to a new mtk_sgmii_link_up() function, and call it from mac_link_up().
+> > > =
 
-diff --git a/drivers/tty/serial/8250/8250_port.c b/drivers/tty/serial/8250/8250_port.c
-index 1632f7d25acca..e057c65ac1580 100644
---- a/drivers/tty/serial/8250/8250_port.c
-+++ b/drivers/tty/serial/8250/8250_port.c
-@@ -2618,8 +2618,6 @@ static unsigned int serial8250_get_baud_rate(struct uart_port *port,
- 					     struct ktermios *termios,
- 					     struct ktermios *old)
+> > > This does not look correct to me: 802.3z modes operate at a fixed
+> > > speed.  The contents of mtk_sgmii_link_up() look more appropriate for
+> > > SGMII mode, but the original code definitely did not call
+> > > mtk_sgmii_setup_mode_force() for SGMII mode but only 802.3z mode.
+> > > =
+
+> > > Signed-off-by: Russell King <rmk+kernel@armlinux.org.uk>
+> > > ---
+> > > Ren=E9, can you assist with this patch please - I really think there =
+are
+> > > problems with the existing code.  You call mtk_sgmii_setup_mode_force=
+()
+> > > in a block which is conditionalised as:
+> > > =
+
+> > > 	if (state->interface =3D=3D PHY_INTERFACE_MODE_SGMII ||
+> > > 	    phy_interface_mode_is_8023z(state->interface)) {
+> > > ...
+> > > 		if (state->interface !=3D PHY_INTERFACE_MODE_SGMII)
+> > > 			err =3D mtk_sgmii_setup_mode_force(eth->sgmii, sid,
+> > > 							 state);
+> > > =
+
+> > > Hence, mtk_sgmii_setup_mode_force() is only called for 1000BASE-X and
+> > > 2500BASE-X, which do not support anything but their native speeds.
+> > > Yet, mtk_sgmii_setup_mode_force() tries to program the SGMII for 10M
+> > > and 100M.
+> > > =
+
+> > > Note that this patch is more about moving uses of state->{speed,duple=
+x}
+> > > into mac_link_up(), rather than fixing this problem, but I don't think
+> > > the addition in mtk_mac_link_up(), nor mtk_sgmii_link_up() is of any
+> > > use.
+> > =
+
+> > My Coccinelle script just found this use of state->{speed,duplex} still
+> > remaining:
+> > =
+
+> >                         if (MTK_HAS_CAPS(mac->hw->soc->caps,
+> >                                          MTK_TRGMII_MT7621_CLK)) {
+> > ...
+> >                         } else {
+> >                                 if (state->interface !=3D
+> >                                     PHY_INTERFACE_MODE_TRGMII)
+> >                                         mtk_gmac0_rgmii_adjust(mac->hw,
+> >                                                                state->s=
+peed);
+> > =
+
+> > which also needs to be eliminated.  Can that also be moved to
+> > mtk_mac_link_up()?
+> =
+
+> I know, you have pointed that out before. But I don't know how to fix
+> mtk_gmac0_rgmii_adjust(). This function changes the PLL of the MAC. But
+> without documentation I am not sure what all the bits are used for.
+
+I'd forgotten...
+
+> Begin April I had a conversation with Sean about this. I also explained w=
+hat
+> the issue was. AFAIK he was going to take care of this issue.
+> =
+
+> Sean did you had time to resolve this issue?
+
+Well, I think the code as it stands is quite broken.
+
+If we start a bit earlier in mtk_mac_config(), we have this:
+
+        if (!MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628) &&
+            mac->interface !=3D state->interface) {
+
+which prevents us entering this block unless the interface mode has
+changed and we are not MT7628.  This block of code includes the two
+calls to mtk_gmac0_rgmii_adjust(), which are dependent on
+state->speed.
+
+Since mac->interface starts off as PHY_INTERFACE_MODE_NA, the first
+time we head into mtk_mac_config(), the interface mode will be
+different, and we will enter this block of code, maybe calling down
+into mtk_gmac0_rgmii_adjust() if appropriate.
+
+The first call will be via phylink_start(), which will call it with
+the initial configuration - the link will be down, and state->speed
+will be SPEED_UNKNOWN.  So, the various tests inside
+mtk_gmac0_rgmii_adjust() for speed =3D=3D SPEED_1000 will all be false,
+meaning it'll program it as if for 10M or 100M speeds.
+
+When the link comes up, yes, mtk_mac_config() will be called again
+with the link parameters, but state->interface will now match
+mac->interface - so the block of code containing the call to
+mtk_gmac0_rgmii_adjust() will not be entered, and so none of that
+code gets executed when the link comes up/down.
+
+Now, if I dig out object 8ddbb8dcf032 from the git repository, which
+was the state of the file immedately prior to the phylink conversion,
+I find:
+
+static void mtk_phy_link_adjust(struct net_device *dev)
+{
+
+This is the function that phylib would call when the link comes up
+or down.  It tests for MTK_RESETTING, starts preparing a value for
+mcr, and then:
+
+        if (MTK_HAS_CAPS(mac->hw->soc->caps, MTK_GMAC1_TRGMII) && !mac->id)=
  {
--	unsigned int tolerance = port->uartclk / 100;
--
- 	/*
- 	 * Ask the core to calculate the divisor for us.
- 	 * Allow 1% tolerance at the upper limit so uart clks marginally
-@@ -2628,7 +2626,7 @@ static unsigned int serial8250_get_baud_rate(struct uart_port *port,
- 	 */
- 	return uart_get_baud_rate(port, termios, old,
- 				  port->uartclk / 16 / UART_DIV_MAX,
--				  (port->uartclk + tolerance) / 16);
-+				  port->uartclk);
- }
- 
- void
--- 
-2.27.0.212.ge8ba1cc988-goog
+                if (MTK_HAS_CAPS(mac->hw->soc->caps, MTK_TRGMII_MT7621_CLK)=
+) {
+                        if (mt7621_gmac0_rgmii_adjust(mac->hw,
+                                                      dev->phydev->interfac=
+e))
+                                return;
+                } else {
+                        if (!mac->trgmii)
+                                mtk_gmac0_rgmii_adjust(mac->hw,
+                                                       dev->phydev->speed);
+                }
+        }
 
+It then finishes creating a value for mcr, before writing it to the
+register, and printing the link status to the kernel log.
+
+Hence, mtk_gmac0_rgmii_adjust() would've been called every time there's
+a change of link state, and is expected to be passed the current speed.
+
+There seems to be a difference in behaviour between the pre-phylink and
+post-phylink drivers, and I think moving mtk_gmac0_rgmii_adjust() into
+mtk_mac_link_up() would be a definite improvement, possibly even a
+regression fix.
+
+However, it would be reasonable to assume that there should be reports
+that mtk_eth_soc doesn't work if this were the case.  So... odd.
+
+-- =
+
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
 _______________________________________________
 Linux-mediatek mailing list
