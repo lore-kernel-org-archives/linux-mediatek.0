@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D7DB8C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 05:07:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3C546C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 05:07:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A55A320836
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 05:07:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0C18E20836
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 05:07:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BEDZvcZ3";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="criUw8gg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A55A320836
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="h+8S2cMB";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="OHI23XSw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0C18E20836
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BVGExEUEpRSEBzeUz7HzqbPVuYNBkRp2/5/SfunEfqo=; b=BEDZvcZ3cDpZP4U8dp6S6VYRB
-	iwbYLB2o4ujaYH832tSB9uJaJXH16azByWgqj6tmCaPQni9fTLamSL2E5t0ezQHB66AauX9z7Q0zB
-	Rrz6SjVa7uB5orZ2esFMmaaFFLBkQszipiD5+yO603f/GCcowx3PLcwoGe1pQU1rVrCDAKFNROc++
-	V4es9E5ABo0/NuTl69wiFP/59w0Z8f6unSC2I0NhAypf012L4YiCw60vn8MHwcZXyL4gUGT7AkqYC
-	Ay9jkqwIBu0vKTee8+xKJiUX78nUsNdUdHMP4EuKZNi4mX7EZmjXhJ4nO76/o1/5P+wrbYGM3GCmz
-	QHdwT62Bg==;
+	 bh=HfYkVcWLEaNu6YQnIG3jmZh509B39FUpmFcR2EbRAOo=; b=h+8S2cMB+94IoKChyEARjCsOH
+	T5MTg/y82+XteUBwBBFAVYP4xJcxVV5q1bhP9XTL1rQ1tcng3j8SNHFEPE/NWVmQDZces+2ZVYDlZ
+	0+NrTwjkFVv/y+W3xoEADzifJVWICOjh6+kRBIDMBrXz84RJCAU/MUgJd+Q7UmY/pbmjM3Jb6OQFr
+	No909XcnTItVSoLr2JozysWdTKR721kPekX9LVy1GBEqBvkn++TUg5/gWgkjhYsjbUuOEKGx1cLpQ
+	9n2Nks0MKgdFYjYcPpdX+WTqYqLpZ3Is9FXFy+eo7TFQ7irz9cBuTalAaULNUqurpcr7enhD6o85n
+	kfSgSlhLA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqrRJ-00044Q-Vt; Thu, 02 Jul 2020 05:07:14 +0000
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143])
+	id 1jqrRX-0004BH-LA; Thu, 02 Jul 2020 05:07:27 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqrRG-00042h-Q0
- for linux-mediatek@lists.infradead.org; Thu, 02 Jul 2020 05:07:11 +0000
-Received: by mail-il1-x143.google.com with SMTP id s21so7964175ilk.5
- for <linux-mediatek@lists.infradead.org>; Wed, 01 Jul 2020 22:07:10 -0700 (PDT)
+ id 1jqrRS-00048a-Vy
+ for linux-mediatek@lists.infradead.org; Thu, 02 Jul 2020 05:07:23 +0000
+Received: by mail-io1-xd44.google.com with SMTP id q8so27531154iow.7
+ for <linux-mediatek@lists.infradead.org>; Wed, 01 Jul 2020 22:07:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=qald6rTjM4Ozy8eAzbgJVI8/UFGWkxBCP1h2R/b2HEE=;
- b=criUw8gg4UsLv4wS6rOpUP57mfy4z/RM9vYloRYpnSo3OSFmJxYpVDBCZgRD07wZE/
- yRhAEuqYghRTI9LzdhTQUyYEfgqC3u4upk0J63naiTxemEG/hJ2c1zFXXstvC1Eqkxzw
- UaOujL74VTxd2aKyhFIxcvPa0DhYLEagppAwI=
+ :cc; bh=pEqgfz4dMPy0M8UdIl/OP3qCi5/0HDdWhm7+x1JpE8k=;
+ b=OHI23XSwOoCtKab9Yrumej03I6gMMsQ5SpRG7rrzTOpLPZPhQBysLX48g5rqWJUmR8
+ QrBW5CeLisMKbOFKtg8gbHTK50mBkqkv7GZiOxihU/SU3qE+QAeq6z9A9jASZ+geI9Ib
+ wpCuDzRKDdfr0EEUrvTKzx4t0U8xDkCAR91o4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=qald6rTjM4Ozy8eAzbgJVI8/UFGWkxBCP1h2R/b2HEE=;
- b=Eq+b7CcpE+q5OoOXnhfI9kpLvtO6kniRewHTCIHr1Pk49UF7/hsspKhVA+ZiR4X0k3
- QzGz2InQ0nQUzsWI3p09mCdgpAInRfO2UxgCjdsbkncyeS+TTAegutFEvXqXU+iV4CFp
- SrtEyN+eIrTL1cdWnnYW8ZGeRt7C75U6dQj88cfNV4tAHxhVZprUS27wWDJSTXoH6XNX
- dtvedVQJDOBEjvqLXRA/J7FfdpJ5LWco+kJyieic+5tpcDC0xcun6Q6OP5BxHgjrmeL+
- avFkIxfiub0ZGFR8XumAcpVhXYNygMJVn5HvzdG+P2e52jvBid3ZBIpQzFuzDSW2OIws
- TJoQ==
-X-Gm-Message-State: AOAM5317hZwZ3wkNe75hizQNBKU78aGXHuzMoXshlbR/jWHD0oNuqaid
- w43GBfNpaQO/4iF7ER8aBf5i8Ahk9Da/P8w2c4hhiQ==
-X-Google-Smtp-Source: ABdhPJzfV9z2gnPuOKbbS2NygSGMccIzKO2/dmQEKUKLyjJzRE7KdaCnjYq7UNkKeomd2DQ15Rdu7uZJ+R84y36nxKg=
-X-Received: by 2002:a92:4b08:: with SMTP id m8mr10499872ilg.150.1593666429155; 
- Wed, 01 Jul 2020 22:07:09 -0700 (PDT)
+ bh=pEqgfz4dMPy0M8UdIl/OP3qCi5/0HDdWhm7+x1JpE8k=;
+ b=BCcSiLsQwVSvf3hdh+h7Nt0cjRbXzm1XnM7r97PRPL6GlZv7kMwIsSBxM2uq/UKgTF
+ NmdqHeSZHb8CVbEEsGJwQswyM1ssB9z6KQy0U9F4VN1bYvEH8GaF6glxEjpOICGZhSWu
+ 8WZwHxsnzRlmeZ7bsgn+M94TPm6te0CEXdJG+hD9QSb0EvfG1ID3e9UL13zsgPQBwyOY
+ zDZehnylrjnU2eVVBxwkNDDamZ11CsJmHE2/2Lmel4bSch6iYzb1POOuCZxOkUF1vDW3
+ i7I+iBp3FOXXKXN9tEHyARdw5VmxMoLxyT2OdWUVeBI/tLGLRweaQOjwVeQzyOHIuQJD
+ omGg==
+X-Gm-Message-State: AOAM533soSXfYNjZoXmu/UqJPGS5SB5/9wXKFltCsYemlvPNFPnka7pJ
+ hkr7lawCcgwVOpMuGXskBhQHc3Iso441XdpFM/Q4ug==
+X-Google-Smtp-Source: ABdhPJzARNPpL/MZGeCd0M+vUHJWSbbCFc9ks584J5OlpKLVXK1oxKo3tdUOmzXarQh4NOVw2SgC++mS/VX9KJKONhk=
+X-Received: by 2002:a02:30c4:: with SMTP id
+ q187mr31283874jaq.102.1593666441584; 
+ Wed, 01 Jul 2020 22:07:21 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200625101757.101775-1-enric.balletbo@collabora.com>
- <20200625101757.101775-6-enric.balletbo@collabora.com>
-In-Reply-To: <20200625101757.101775-6-enric.balletbo@collabora.com>
+ <20200625101757.101775-7-enric.balletbo@collabora.com>
+In-Reply-To: <20200625101757.101775-7-enric.balletbo@collabora.com>
 From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Thu, 2 Jul 2020 13:06:43 +0800
-Message-ID: <CAJMQK-jm4kuT+cB-mS+hMD5SxWHZAyn8WJ+chgn-BKQAANpgGw@mail.gmail.com>
-Subject: Re: [PATCH v2 5/7] arm64: dts: mt8183-evb: Fix unit name warnings
+Date: Thu, 2 Jul 2020 13:06:55 +0800
+Message-ID: <CAJMQK-iocK5eH9QTQQKNFHtBvpc1C2=U=3kFPXkXiUOiRxrucA@mail.gmail.com>
+Subject: Re: [PATCH v2 6/7] arm64: dts: mt8183: Add USB3.0 support
 To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200702_010710_910109_D9E37D5D 
-X-CRM114-Status: GOOD (  13.94  )
+X-CRM114-CacheID: sfid-20200702_010723_084795_58E65ECA 
+X-CRM114-Status: GOOD (  13.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,43 +103,101 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Thu, Jun 25, 2020 at 6:18 PM Enric Balletbo i Serra
 <enric.balletbo@collabora.com> wrote:
 >
-> Remove the unit address from the DT nodes that doesn't have a reg
-> property. This fixes the following unit name warnings:
->
->     Warning (unit_address_vs_reg): /soc/pinctrl@10005000/mmc0@0: node has a unit name, but no reg or ranges property
->     Warning (unit_address_vs_reg): /soc/pinctrl@10005000/mmc1@0: node has a unit name, but no reg or ranges property
+> Add the USB3.0 phyter and controller for the MediaTek's MT8183 SoC.
 >
 > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 Tested-by: Hsin-Yi Wang <hsinyi@chromium.org>
 > ---
 >
-> Changes in v2: None
+> Changes in v2:
+> - Move adding #phy-cells to this patch. (Matthias Brugger)
 >
->  arch/arm64/boot/dts/mediatek/mt8183-evb.dts | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 58 ++++++++++++++++++++++++
+>  1 file changed, 58 insertions(+)
 >
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> index afd6ddbcbdf2c..ae405bd8f06b0 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> @@ -205,7 +205,7 @@ pins_rst {
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 6c00ffa275202..102105871db25 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -9,6 +9,7 @@
+>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+>  #include <dt-bindings/interrupt-controller/irq.h>
+>  #include <dt-bindings/reset-controller/mt8183-resets.h>
+> +#include <dt-bindings/phy/phy.h>
+>  #include "mt8183-pinfunc.h"
+>
+>  / {
+> @@ -648,6 +649,36 @@ i2c8: i2c@1101b000 {
+>                         status = "disabled";
 >                 };
->         };
 >
-> -       mmc0_pins_uhs: mmc0@0{
-> +       mmc0_pins_uhs: mmc0 {
->                 pins_cmd_dat {
->                         pinmux = <PINMUX_GPIO123__FUNC_MSDC0_DAT0>,
->                                  <PINMUX_GPIO128__FUNC_MSDC0_DAT1>,
-> @@ -264,7 +264,7 @@ pins_pmu {
+> +               ssusb: usb@11201000 {
+> +                       compatible ="mediatek,mt8183-mtu3", "mediatek,mtu3";
+> +                       reg = <0 0x11201000 0 0x2e00>,
+> +                             <0 0x11203e00 0 0x0100>;
+> +                       reg-names = "mac", "ippc";
+> +                       interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_LOW>;
+> +                       phys = <&u2port0 PHY_TYPE_USB2>,
+> +                              <&u3port0 PHY_TYPE_USB3>;
+> +                       clocks = <&infracfg CLK_INFRA_UNIPRO_SCK>,
+> +                                <&infracfg CLK_INFRA_USB>;
+> +                       clock-names = "sys_ck", "ref_ck";
+> +                       mediatek,syscon-wakeup = <&pericfg 0x400 0>;
+> +                       #address-cells = <2>;
+> +                       #size-cells = <2>;
+> +                       ranges;
+> +                       status = "disabled";
+> +
+> +                       usb_host: xhci@11200000 {
+> +                               compatible = "mediatek,mt8183-xhci",
+> +                                            "mediatek,mtk-xhci";
+> +                               reg = <0 0x11200000 0 0x1000>;
+> +                               reg-names = "mac";
+> +                               interrupts = <GIC_SPI 73 IRQ_TYPE_LEVEL_LOW>;
+> +                               clocks = <&infracfg CLK_INFRA_UNIPRO_SCK>,
+> +                                        <&infracfg CLK_INFRA_USB>;
+> +                               clock-names = "sys_ck", "ref_ck";
+> +                               status = "disabled";
+> +                       };
+> +               };
+> +
+>                 audiosys: syscon@11220000 {
+>                         compatible = "mediatek,mt8183-audiosys", "syscon";
+>                         reg = <0 0x11220000 0 0x1000>;
+> @@ -684,6 +715,33 @@ efuse: efuse@11f10000 {
+>                         reg = <0 0x11f10000 0 0x1000>;
 >                 };
->         };
 >
-> -       mmc1_pins_uhs: mmc1@0{
-> +       mmc1_pins_uhs: mmc1 {
->                 pins_cmd_dat {
->                         pinmux = <PINMUX_GPIO31__FUNC_MSDC1_CMD>,
->                                    <PINMUX_GPIO32__FUNC_MSDC1_DAT0>,
+> +               u3phy: usb-phy@11f40000 {
+> +                       compatible = "mediatek,mt8183-tphy",
+> +                                    "mediatek,generic-tphy-v2";
+> +                       #address-cells = <1>;
+> +                       #phy-cells = <1>;
+> +                       #size-cells = <1>;
+> +                       ranges = <0 0 0x11f40000 0x1000>;
+> +                       status = "okay";
+> +
+> +                       u2port0: usb-phy@0 {
+> +                               reg = <0x0 0x700>;
+> +                               clocks = <&clk26m>;
+> +                               clock-names = "ref";
+> +                               #phy-cells = <1>;
+> +                               mediatek,discth = <15>;
+> +                               status = "okay";
+> +                       };
+> +
+> +                       u3port0: usb-phy@0700 {
+> +                               reg = <0x0700 0x900>;
+> +                               clocks = <&clk26m>;
+> +                               clock-names = "ref";
+> +                               #phy-cells = <1>;
+> +                               status = "okay";
+> +                       };
+> +               };
+> +
+>                 mfgcfg: syscon@13000000 {
+>                         compatible = "mediatek,mt8183-mfgcfg", "syscon";
+>                         reg = <0 0x13000000 0 0x1000>;
 > --
 > 2.27.0
 >
