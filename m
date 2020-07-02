@@ -7,72 +7,70 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D9B03C433E2
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 09:37:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AC850C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 09:37:53 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A857C20760
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 09:37:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7CEB920760
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 09:37:53 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OYi5B/0x";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="hzrQg+sF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A857C20760
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OEWTX3TL";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="aAP8OUMW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7CEB920760
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=poMwZktXyUuAUosl1j3jdLeWEFhyo3PzVK9kbGWt6aE=; b=OYi5B/0xB+rf+d2UonuCRVT1g
-	fZZZwDg3qgH9gbKoFseis5K4Khsos80a2t9DgEHcDKFqRaYL5xflap8N3grmKO+SElEYTVVD9XVoP
-	/Y6yT/9i7TfaTVPC6K0tl4BrzGCC/2ivQjefyjFM2O0ALJD5FFabKNYvGsQldn1ORqFsXTEfxUh8e
-	Yb4qAgTtrujspovJfspJIThDVtGU992JjPg1J58n3n+qDUVzVwd20xC2Kqp2X4Igf/55SJrBLAANy
-	RwaHr6Sfi40Uk6TKC85+j6fXQG2umMRM+GvSwXcVnwyMWv7DK6PTl/5hYOnA+9Xjj/+7Nq25bUD8K
-	THc43bCPA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0brV7b+7O40THat47Z+TBt5w6kzGmU4RD635wsY0a0w=; b=OEWTX3TL8QRjOkNjl5fKGGFsWE
+	L8dersoTWeD4gLSGTk9s1ZQLwoBntYdL5TW+iau9cnV8zjvoOIf22QDzHtk4fm3vwRuBsNU5bA4Do
+	9D2kVRiz1kUdKggJxG+dOsTmGoq0RX2NmUcMDb5NIkA8azWccmTXSRWkk6mAjY0Nxc2IJ1W0DE8nv
+	y4i07iyKzKg0zlpbNMqo1w9P6qr4+Jem7PXlMzdyQ+vX7hdAFuihjB7PKsX22DtzBhjf45FDTI8Dz
+	ze7xDTeySgOCctJBprMQCkXSpgXn0QPc6ljM9XMpiJqAoKQMOuRHWhdNkggyieaqb2a1bEzX8y7Bn
+	4bMIZsww==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqvf1-0002Bx-B2; Thu, 02 Jul 2020 09:37:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jqvf8-0002Eg-IU; Thu, 02 Jul 2020 09:37:46 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqvew-00027M-8y; Thu, 02 Jul 2020 09:37:35 +0000
-X-UUID: dd67220f1e744fa7b8e344a8dd346612-20200702
+ id 1jqvex-00027w-2P; Thu, 02 Jul 2020 09:37:36 +0000
+X-UUID: fa7ffacde83a43929b87458953d2525c-20200702
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=hARrGPzXfIlQJmdtvnD1T2dZjIRMUTbWg4IXe9GBIK0=; 
- b=hzrQg+sF6M50V77EgS/4ch350lGATQ9UZDzi+tLyyfwG7waP6AeCZipIaNG5ipofjdJPtVkFLXNHg9uCbmPHZcqeUpQG7dn2gpttnurgFFD12q/A03bDzo49cwUlHmpdJqNQrXoQEzzzO1PkVAMfreG8nwJKuLe1mPYnB/P71kA=;
-X-UUID: dd67220f1e744fa7b8e344a8dd346612-20200702
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=cHL3FGvns2Vq3Q+lzPqG/tPY0T/sEGYmRDbEd2Ph2NU=; 
+ b=aAP8OUMWNABaV53coyztzIVJe+t/Oal+N9MJ8LiJub5xaQo5soYUr/DzsAnY/Txf2yMkwCiwrKGrmEMLKLJnmDBTN4FEaFu2MDf4TX78DmuN78hjeZ2FY6MIp1xy3TGaOLPWfnSfvdzbUstrK1KUsHehya4VDptg3WYZm5+UyEE=;
+X-UUID: fa7ffacde83a43929b87458953d2525c-20200702
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1958991350; Thu, 02 Jul 2020 01:37:19 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Jul 2020 02:37:21 -0700
+ with ESMTP id 1243899199; Thu, 02 Jul 2020 01:37:20 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 2 Jul 2020 02:37:22 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Jul 2020 17:37:19 +0800
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 2 Jul 2020 17:37:22 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Thu, 2 Jul 2020 17:37:20 +0800
 From: Miles Chen <miles.chen@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
  "Matthias Brugger" <matthias.bgg@gmail.com>
-Subject: [PATCH 2/4] arm64: dts: mt2712: add mediatek,infracfg to iommu
-Date: Thu, 2 Jul 2020 17:37:18 +0800
-Message-ID: <20200702093721.6063-2-miles.chen@mediatek.com>
+Subject: [PATCH 1/4] dt-bindings: mediatek: add mediatek,infracfg phandle
+Date: Thu, 2 Jul 2020 17:37:17 +0800
+Message-ID: <20200702093721.6063-1-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200702093721.6063-1-miles.chen@mediatek.com>
-References: <20200702093721.6063-1-miles.chen@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 888036A33ECD69FCAC32F294B9ADA91343BDD3CA9220D418C65C109C141F4D452000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200702_053734_512463_C93903B5 
-X-CRM114-Status: UNSURE (   9.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200702_053735_260575_178EDE4C 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,25 +92,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mediatek,infracfg to iommu node.
+Add a description for mediatek,infracfg. We can check if 4GB mode
+is enable by reading it instead of checking the unexported
+symbol "max_pfn".
 
+This is a step towards building mtk_iommu as a kernel module.
+
+Cc: Yong Wu <yong.wu@mediatek.com>
 Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ Documentation/devicetree/bindings/iommu/mediatek,iommu.txt | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-index db17d0a4ed57..0749b0f4834c 100644
---- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-@@ -331,6 +331,7 @@
- 		clock-names = "bclk";
- 		mediatek,larbs = <&larb0 &larb1 &larb2
- 				  &larb3 &larb6>;
-+		mediatek,infracfg = <&infracfg>;
- 		#iommu-cells = <1>;
- 	};
- 
+diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt b/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+index ce59a505f5a4..a7881deabcca 100644
+--- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
++++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+@@ -74,6 +74,8 @@ Required properties:
+ - mediatek,larbs : List of phandle to the local arbiters in the current Socs.
+ 	Refer to bindings/memory-controllers/mediatek,smi-larb.txt. It must sort
+ 	according to the local arbiter index, like larb0, larb1, larb2...
++- mediatek,infracfg: a phandle to infracfg. It is used to confirm if 4GB mode is set.
++	It is an optional property, add it when the SoC have 4g mode.
+ - iommu-cells : must be 1. This is the mtk_m4u_id according to the HW.
+ 	Specifies the mtk_m4u_id as defined in
+ 	dt-binding/memory/mt2701-larb-port.h for mt2701, mt7623
 -- 
 2.18.0
 _______________________________________________
