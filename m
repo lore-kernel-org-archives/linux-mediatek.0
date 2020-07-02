@@ -2,85 +2,75 @@ Return-Path: <SRS0=IR42=AN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93D43C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 06:24:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7465EC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 07:08:15 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 602BE20874
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 06:24:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4201820884
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 07:08:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="0nXAnUQ0";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="kHYTzLii"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 602BE20874
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SfcB2UnW";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="lwK4IVIn"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4201820884
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:From:Subject:References:Mime-Version:Message-Id:
-	In-Reply-To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Sbo8FnfWuafei7U0WJk6gtzspNckbdlXCrRfrd02oTs=; b=0nXAnUQ0puCprXwCPVDmaOlJW
-	DdgaTMe600NDlzaGo4V1urJzZ1zHuj+BVXarOUnpBtKn8a6OEMlu4VOWzUC4ao692XakACHB97KGj
-	gS0e3hRIu1Jf03YHOCzhWKkjQH5B9OQDu0yDzs9XZP5XP0lb66sXClTnjp/Muo7SpYGDcBd0Q6cd7
-	QZU+XufeBnluSbUuL/4ME1IPr1G7Hoth3ZxdskbF9XShjvof+KcsLE/2dUsK7vC8R486L8evoGRZi
-	xy2eUoaRxmuCKX1SX82+aGyWBxWK5g5qdTC/iHNG1E9JNLidVrPZvs9PG9iPbGYCGVLGABIs0+rS/
-	eWBcRPrEw==;
+	 bh=aMlfJueIm6G2hB4/4eM9UoaSUojv2w7NiaFWT+xWNp4=; b=SfcB2UnW0S5a+9fNiDQQIRa7v
+	dVtxt17H5oJzf25FJXC/IBHtokLQCEGaJOwNER/WZggMXiaeSerrF07B6+VOndQp6Kt46U96BoZC7
+	Bp/PnYrFZkaOnYf9MeCAN8k5FU+khnFYX71NXdZSs7VYjorLGv5jPVRtcWHoFZxaYFI7DDj2El9o4
+	Ere1j1JW2Pmb8JH2cZpmNPL5WG7VyJZmfKrph/3J5UGJ6Iod0UTcOde1BCeb9MPXYWV/rtWWZdFd9
+	2htDiizcfZnbd7uvq9IAu5rPAAgApK1qCIubsOqMNIfbHoOzcekMKafikEQ310xyPRhEO488yp2Ug
+	bir6I67BA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqsdn-0003Rv-KK; Thu, 02 Jul 2020 06:24:11 +0000
-Received: from mail-qk1-x74a.google.com ([2607:f8b0:4864:20::74a])
+	id 1jqtKE-0003Bm-K2; Thu, 02 Jul 2020 07:08:02 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqsdk-0003PF-Vk
- for linux-mediatek@lists.infradead.org; Thu, 02 Jul 2020 06:24:09 +0000
-Received: by mail-qk1-x74a.google.com with SMTP id k1so15573772qko.14
- for <linux-mediatek@lists.infradead.org>; Wed, 01 Jul 2020 23:24:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=iAAvm140uabXTl+jHo1MA3XpYMJqItzUT/T49Tq/jsE=;
- b=kHYTzLiiwAcymrEuy2t4xpNOUScn5Lchdcc0t1JjYbvXgAyblfAUldguvPrFi7PLsL
- OMO8k+MiyIOHXgBHn9cqSUo9/EL+vvY3zcwjjCrbIOXtzed3gWpla8EgWuFG7IaUyjUa
- KpievEzGpDkxAuuwmZ5LtpmfMjXczIXZcHrlEmBSgrei3aOLWhrE45hATpoT6SKkg91x
- hKlyrvyBHwteXHacR1PdKN+Hb+aLWoO1q0zUVJU35WVF50UbggaRcrDcPAfxl0RZtynv
- lSE9bipkznoS52wS+CJHh9YCG4FxQUBzvEPX7iLtHBZcNH3lLYrk4b5BptcgTQwH4y1B
- d3Hg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=iAAvm140uabXTl+jHo1MA3XpYMJqItzUT/T49Tq/jsE=;
- b=lROsPcmxCb4suRqLgejZDCQwSX7C/iPdC3RDGxPvSMeCcGuGPk5mhYrACO1CHPYmdJ
- 7rLmck8tX1MelP748ghhn5dnUxS/Jdr74/OQUxsoIfHZiVGVOrAChW/utnfNqN/qfRIt
- MqmyAa6d/5BNQk9/GQ/LqR8F3+Q7mGuClDzA8q0r3dcTE4cqil9rE+ID5b6QfS6O4r4O
- mgQFYnnIB8PM+dweyOfJtoD72Zp2I7Xm3edHX/j6JxxU+rPZWLYJR+ds2ID9IUGjNwpx
- n9SNbBQq2obemLm8LS/J1xMsf2QmwgrqmjwMLj4WyU8rPQwaCbBqJHoozz+H9LvJC/FT
- Qd7Q==
-X-Gm-Message-State: AOAM533GtTsDEKlPQhPiZTkSSrMfYpxW32iXilVlUwGs7+y6E/HmBc4g
- fG0sNwgds8Y7+pa7jArhC3z6H5dGuzJpsffTEGr6LkI51WMVRSnj/HCXXqNNW/Ws4cPxlsggOl1
- 24mE1JyUzQrC3SFY+vMrX7IDrgG3tmFjFuUwMqd4/YtCYJ2uiZRlvbU7XyoWoFsyahf3lUOTs99
- Cwxznb
-X-Google-Smtp-Source: ABdhPJx5gWyUPIpirkdQ+kayP/qflMJSBQVvzakrGUJ3dxaXfYaUR0EhWXVX6sjNNxNRPVQuX/3W7A5g8oJn
-X-Received: by 2002:a0c:ab55:: with SMTP id i21mr29086666qvb.139.1593671046028; 
- Wed, 01 Jul 2020 23:24:06 -0700 (PDT)
-Date: Thu,  2 Jul 2020 16:23:20 +1000
-In-Reply-To: <20200702062320.2903147-1-amistry@google.com>
-Message-Id: <20200702162231.v2.4.Ia24db14ffcd7803db3a728e15fa9fb2e6ce83e0b@changeid>
-Mime-Version: 1.0
-References: <20200702062320.2903147-1-amistry@google.com>
-X-Mailer: git-send-email 2.27.0.212.ge8ba1cc988-goog
-Subject: [PATCH v2 4/4] arm64: dts: mediatek: Update allowed mt6397 regulator
- modes for elm boards
-From: Anand K Mistry <amistry@google.com>
-To: linux-mediatek@lists.infradead.org
+ id 1jqtK7-0003AB-DL; Thu, 02 Jul 2020 07:07:57 +0000
+X-UUID: eef1447b47764d90b2099e1e2e393840-20200701
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=rVJ/HR/KXQAiejqufqXGDKDnW4GEgj2c2Tw9QevZ/Sk=; 
+ b=lwK4IVInQgeEFgsNLdTz42L61dgiWpsW+TA2LitjH5Lr9eiI2J9ItZN3tcuBXnZbSixq23BJQap+byi70nev7LT1Kjoo3LNCmDY5R2g2nffY7JERVAhevPMzz2u5TCGJUztQr9DLorlaAQ3ycUn0gF57w1rxcCCzscldtorwKE8=;
+X-UUID: eef1447b47764d90b2099e1e2e393840-20200701
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <eastl.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1198370966; Wed, 01 Jul 2020 23:07:41 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 2 Jul 2020 00:06:16 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 2 Jul 2020 15:06:14 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 2 Jul 2020 15:06:09 +0800
+From: EastL Lee <EastL.Lee@mediatek.com>
+To: Sean Wang <sean.wang@mediatek.com>
+Subject: [PATCH v6 3/4] dmaengine: mediatek-cqdma: add dma mask for capability
+Date: Thu, 2 Jul 2020 15:06:03 +0800
+Message-ID: <1593673564-4425-4-git-send-email-EastL.Lee@mediatek.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1593673564-4425-1-git-send-email-EastL.Lee@mediatek.com>
+References: <1593673564-4425-1-git-send-email-EastL.Lee@mediatek.com>
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200702_022409_071785_4FD4C9CE 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20200702_030755_639965_9ABB4EC3 
+X-CRM114-Status: GOOD (  11.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,55 +82,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, drinkcat@chromium.org,
- Anand K Mistry <amistry@google.com>, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, hsin-hsiung.wang@mediatek.com
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, cc.hwang@mediatek.com,
+ wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
+ EastL Lee <EastL.Lee@mediatek.com>, dmaengine@vger.kernel.org,
+ vkoul@kernel.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This updates the allowed mt6397 regulator modes for elm (and derivative)
-boards to use named constants.
+This patch add dma mask for capability.
 
-Signed-off-by: Anand K Mistry <amistry@google.com>
-
+Signed-off-by: EastL Lee <EastL.Lee@mediatek.com>
 ---
+ drivers/dma/mediatek/mtk-cqdma.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-Changes in v2:
-- Introduce constants in dt-bindings
-- Improve conditional readability
-
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index a5a12b2599a4..e9cfded307b3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -6,6 +6,7 @@
- #include <dt-bindings/input/input.h>
- #include <dt-bindings/input/linux-event-codes.h>
- #include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/regulator/mediatek,mt6397-regulator.h>
- #include "mt8173.dtsi"
+diff --git a/drivers/dma/mediatek/mtk-cqdma.c b/drivers/dma/mediatek/mtk-cqdma.c
+index 905bbcb..1610632 100644
+--- a/drivers/dma/mediatek/mtk-cqdma.c
++++ b/drivers/dma/mediatek/mtk-cqdma.c
+@@ -117,6 +117,7 @@ struct mtk_cqdma_vchan {
+  * @clk:                    The clock that device internal is using
+  * @dma_requests:           The number of VCs the device supports to
+  * @dma_channels:           The number of PCs the device supports to
++ * @dma_mask:               A mask for DMA capability
+  * @vc:                     The pointer to all available VCs
+  * @pc:                     The pointer to all the underlying PCs
+  */
+@@ -126,6 +127,7 @@ struct mtk_cqdma_device {
  
- / {
-@@ -926,7 +927,8 @@ mt6397_vpca15_reg: buck_vpca15 {
- 				regulator-max-microvolt = <1350000>;
- 				regulator-ramp-delay = <12500>;
- 				regulator-always-on;
--				regulator-allowed-modes = <0 1>;
-+				regulator-allowed-modes = <MT6397_BUCK_MODE_AUTO
-+							   MT6397_BUCK_MODE_FORCE_PWM>;
- 			};
+ 	u32 dma_requests;
+ 	u32 dma_channels;
++	u32 dma_mask;
+ 	struct mtk_cqdma_vchan *vc;
+ 	struct mtk_cqdma_pchan **pc;
+ };
+@@ -607,6 +609,21 @@ static int mtk_cqdma_probe(struct platform_device *pdev)
+ 		cqdma->dma_channels = MTK_CQDMA_NR_PCHANS;
+ 	}
  
- 			mt6397_vpca7_reg: buck_vpca7 {
++	if (pdev->dev.of_node)
++		err = of_property_read_u32(pdev->dev.of_node,
++					   "dma-channel-mask",
++					   &cqdma->dma_mask);
++	if (err) {
++		dev_warn(&pdev->dev,
++			 "Using 0 as missing dma-channel-mask property\n");
++		cqdma->dma_mask = 0;
++	}
++
++	if (dma_set_mask(&pdev->dev, DMA_BIT_MASK(cqdma->dma_mask))) {
++		dev_warn(&pdev->dev, "DMA set mask failed\n");
++		return -EINVAL;
++	}
++
+ 	cqdma->pc = devm_kcalloc(&pdev->dev, cqdma->dma_channels,
+ 				 sizeof(*cqdma->pc), GFP_KERNEL);
+ 	if (!cqdma->pc)
 -- 
-2.27.0.212.ge8ba1cc988-goog
-
-
+1.9.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
