@@ -2,77 +2,104 @@ Return-Path: <SRS0=IR42=AN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 205A5C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 02:53:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E8862C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 03:03:12 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E0536207F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 02:53:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B8DB520720
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 03:03:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hfY5iICi";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="aLSG1kWm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E0536207F5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RDwsfHlk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B8DB520720
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=acm.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cfE3Ne8bBIegSjFa/zh4elFKReLtgPI/iSMGOV9veUM=; b=hfY5iICi1sX9JKcGuBxWbBPv+
-	kWqdMUI0gFsuB+f2e3/cLu5Jmjdpn2GVmDbSFAFk5aUdRKzYW9uBxwbwZWsB8zdlFRPGkfQrfFd2Q
-	WyrfDOU01MdNxpkZ6uWtWDO/jKA4PyvE6pFK1m1GFqrFP9f+FCK4M7lFAI/rOU0Pxe85cM4pdDo8Z
-	KsIJbQHSIlsLkaAIzN6LkP2zx1cYGBjdBBaArUaWKlTHcemzpW858TaErCybd21H4FRqTBXAlI/9U
-	7biAXQx3QggxFSQoqd+kF39yc4YxJ8B5xEnNAe7C2F1TfCW6LrlCJ3XLbn1CQGABpyrEUuJno/6Iz
-	RGu8JEDhw==;
+	 bh=iDIaB+MzhWorczS66eL46XYIOsUZYsJnhngynFHZEeI=; b=RDwsfHlk35eWYBV8f3R1kbRLE
+	A7hx+jelWnC1jixGLXwfTyl0tMohgWW/sUbiosFojcpJKnWKluHbFTaAsYYaKgsBC5b1sogi2Y/di
+	+w+erKrUn2ebyjWYXHq+vAIPWWNDyIdhtbA4odhrM27rWH8sAYBgdAej2RBLfJZtbw5087yKWyoZl
+	IzCxne+j9DoKjeXleuZQ0iznWqKjH0Zj7nLAhqkjDhulFTvvNC2Zvg2uPPyy6/6IlncHtlEk81tKE
+	sISCzfs+VN8vybF29FiOhOQUVBWlNMRuh5f+f8IafjBWz5cQoqEQP2bO5HBElx4YRJ8G89Sl356DJ
+	xhozhJ5Wg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqpLv-0001NF-Ac; Thu, 02 Jul 2020 02:53:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jqpV9-0002cR-4q; Thu, 02 Jul 2020 03:03:03 +0000
+Received: from mail-pg1-f194.google.com ([209.85.215.194])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqpLr-0001MC-LL; Thu, 02 Jul 2020 02:53:28 +0000
-X-UUID: d38d504bc70a4920867738f294b337d1-20200701
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=afpaC7qRGVZ6JRFynQgro+7OJFSDdHfSPLeLJ/lq7kQ=; 
- b=aLSG1kWmHRehrrGQ3rqzjfigMarWaiFUhQ7v78o07HneYshjxm0TtsjxlfDJ93oVg48TrHNcYz/mTSwKXH2FX3xrwX0W8pO9A89pAl6spVO2XB7nXm8UocNMJ6AfRRU1t1SHBFdrmGxJHPd54OoLXPkaB+PsXp4NdKb2UAlrIFQ=;
-X-UUID: d38d504bc70a4920867738f294b337d1-20200701
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1247762619; Wed, 01 Jul 2020 18:53:19 -0800
-Received: from MTKMBS32N1.mediatek.inc (172.27.4.71) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 1 Jul 2020 19:53:17 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32N1.mediatek.inc
- (172.27.4.71) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 2 Jul 2020 10:53:14 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 2 Jul 2020 10:53:09 +0800
-Message-ID: <1593658371.23885.16.camel@mhfsdcap03>
-Subject: Re: [V2 PATCH] usb: mtu3: fix NULL pointer dereference
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Date: Thu, 2 Jul 2020 10:52:51 +0800
-In-Reply-To: <20200701115821.GA2184169@kroah.com>
-References: <1593502942-24455-1-git-send-email-chunfeng.yun@mediatek.com>
- <20200701115821.GA2184169@kroah.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jqpV5-0002b9-W4; Thu, 02 Jul 2020 03:03:00 +0000
+Received: by mail-pg1-f194.google.com with SMTP id z5so12735010pgb.6;
+ Wed, 01 Jul 2020 20:02:58 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=FFJnrg6UejlgMZZiBAQX5IaRF+B2JtFvBIiKkxyCoIE=;
+ b=LYJ9lh81EO2TOcAGwERxfo9NV9J38+fBKqK3YMXYp6kHhpxh7P7kH1It6lx0PEJVc2
+ YkpefY/os7qOhk7m9+mAn3ulPRYR1T4CrTRIZKRXjQJmn6LAXO9LFmOZac48NayjF4x8
+ hgMUS+2cakhCHuh1vgG57HijLkss+pRZvfjjYsYrlQXpkDkiDfPIcZ4oRFag16br3ixn
+ OlsL+rRZgFrIe8rmTt/SAUUF0D/k8xFRh6GFly/mV1J8MdlbKik7wenQDhBJQdSaGvmI
+ OUIYRBGZ+Ekb5Hr+AoFqHhbfbkd2km/gM9ntOXUoHSKjNhIgYnu9/sNg8moib/bNUb8u
+ xHJw==
+X-Gm-Message-State: AOAM532HOI7Wxn1te84jVywbkQTkU+oNG3yWBeiWAlj8UznYwPRDEv/J
+ Gn+WNPXvxihjLm/T6btp7O0=
+X-Google-Smtp-Source: ABdhPJysZ0yeIz06+vtJMNt5bNS3DQ+w6bS2Sd/cKTqkCCZNqRBSB0vrL/IwcxtRbeIXXzb3hwY6XQ==
+X-Received: by 2002:aa7:8b01:: with SMTP id f1mr27531833pfd.223.1593658977917; 
+ Wed, 01 Jul 2020 20:02:57 -0700 (PDT)
+Received: from [192.168.50.147] (c-73-241-217-19.hsd1.ca.comcast.net.
+ [73.241.217.19])
+ by smtp.gmail.com with ESMTPSA id m92sm6486981pje.13.2020.07.01.20.02.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 01 Jul 2020 20:02:56 -0700 (PDT)
+Subject: Re: [RFC PATCH v1] scsi: ufs: Quiesce all scsi devices before shutdown
+To: Stanley Chu <stanley.chu@mediatek.com>, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com
+References: <20200702013210.22958-1-stanley.chu@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+Autocrypt: addr=bvanassche@acm.org; prefer-encrypt=mutual; keydata=
+ mQENBFSOu4oBCADcRWxVUvkkvRmmwTwIjIJvZOu6wNm+dz5AF4z0FHW2KNZL3oheO3P8UZWr
+ LQOrCfRcK8e/sIs2Y2D3Lg/SL7qqbMehGEYcJptu6mKkywBfoYbtBkVoJ/jQsi2H0vBiiCOy
+ fmxMHIPcYxaJdXxrOG2UO4B60Y/BzE6OrPDT44w4cZA9DH5xialliWU447Bts8TJNa3lZKS1
+ AvW1ZklbvJfAJJAwzDih35LxU2fcWbmhPa7EO2DCv/LM1B10GBB/oQB5kvlq4aA2PSIWkqz4
+ 3SI5kCPSsygD6wKnbRsvNn2mIACva6VHdm62A7xel5dJRfpQjXj2snd1F/YNoNc66UUTABEB
+ AAG0JEJhcnQgVmFuIEFzc2NoZSA8YnZhbmFzc2NoZUBhY20ub3JnPokBOQQTAQIAIwUCVI67
+ igIbAwcLCQgHAwIBBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFcPTXFzhAJ8QkH/1AdXblKL65M
+ Y1Zk1bYKnkAb4a98LxCPm/pJBilvci6boefwlBDZ2NZuuYWYgyrehMB5H+q+Kq4P0IBbTqTa
+ jTPAANn62A6jwJ0FnCn6YaM9TZQjM1F7LoDX3v+oAkaoXuq0dQ4hnxQNu792bi6QyVdZUvKc
+ macVFVgfK9n04mL7RzjO3f+X4midKt/s+G+IPr4DGlrq+WH27eDbpUR3aYRk8EgbgGKvQFdD
+ CEBFJi+5ZKOArmJVBSk21RHDpqyz6Vit3rjep7c1SN8s7NhVi9cjkKmMDM7KYhXkWc10lKx2
+ RTkFI30rkDm4U+JpdAd2+tP3tjGf9AyGGinpzE2XY1K5AQ0EVI67igEIAKiSyd0nECrgz+H5
+ PcFDGYQpGDMTl8MOPCKw/F3diXPuj2eql4xSbAdbUCJzk2ETif5s3twT2ER8cUTEVOaCEUY3
+ eOiaFgQ+nGLx4BXqqGewikPJCe+UBjFnH1m2/IFn4T9jPZkV8xlkKmDUqMK5EV9n3eQLkn5g
+ lco+FepTtmbkSCCjd91EfThVbNYpVQ5ZjdBCXN66CKyJDMJ85HVr5rmXG/nqriTh6cv1l1Js
+ T7AFvvPjUPknS6d+BETMhTkbGzoyS+sywEsQAgA+BMCxBH4LvUmHYhpS+W6CiZ3ZMxjO8Hgc
+ ++w1mLeRUvda3i4/U8wDT3SWuHcB3DWlcppECLkAEQEAAYkBHwQYAQIACQUCVI67igIbDAAK
+ CRBxXD01xc4QCZ4dB/0QrnEasxjM0PGeXK5hcZMT9Eo998alUfn5XU0RQDYdwp6/kMEXMdmT
+ oH0F0xB3SQ8WVSXA9rrc4EBvZruWQ+5/zjVrhhfUAx12CzL4oQ9Ro2k45daYaonKTANYG22y
+ //x8dLe2Fv1By4SKGhmzwH87uXxbTJAUxiWIi1np0z3/RDnoVyfmfbbL1DY7zf2hYXLLzsJR
+ mSsED/1nlJ9Oq5fALdNEPgDyPUerqHxcmIub+pF0AzJoYHK5punqpqfGmqPbjxrJLPJfHVKy
+ goMj5DlBMoYqEgpbwdUYkH6QdizJJCur4icy8GUNbisFYABeoJ91pnD4IGei3MTdvINSZI5e
+Message-ID: <83b1d5a1-c248-87bb-9554-ca10c8064041@acm.org>
+Date: Wed, 1 Jul 2020 20:02:55 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 9F8CFEA6CEBAFB7D9D5D9DF806B368CC530AA52FD6E6FE9C3269E92BF6BF031F2000:8
-X-MTK: N
+In-Reply-To: <20200702013210.22958-1-stanley.chu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200701_225327_827536_43EF5226 
-X-CRM114-Status: GOOD (  21.50  )
+X-CRM114-CacheID: sfid-20200701_230300_046902_82189A73 
+X-CRM114-Status: GOOD (  13.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,108 +111,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Felipe Balbi <felipe.balbi@linux.intel.com>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Markus Elfring <Markus.Elfring@web.de>, linux-arm-kernel@lists.infradead.org
+Cc: andy.teng@mediatek.com, cc.chou@mediatek.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, beanhuo@micron.com, chaotian.jing@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2020-07-01 at 13:58 +0200, Greg Kroah-Hartman wrote:
-> On Tue, Jun 30, 2020 at 03:42:22PM +0800, Chunfeng Yun wrote:
-> > Some pointers are dereferenced before successful checks.
-> > 
-> > Reported-by: Markus Elfring <Markus.Elfring@web.de>
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> > v2: nothing changed, but abandon another patch
-> > ---
-> >  drivers/usb/mtu3/mtu3_gadget.c | 25 ++++++++++++++++++-------
-> >  1 file changed, 18 insertions(+), 7 deletions(-)
-> > 
-> > diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
-> > index f93732e..1689ca8 100644
-> > --- a/drivers/usb/mtu3/mtu3_gadget.c
-> > +++ b/drivers/usb/mtu3/mtu3_gadget.c
-> > @@ -332,14 +332,21 @@ static int mtu3_gadget_queue(struct usb_ep *ep,
-> >  
-> >  static int mtu3_gadget_dequeue(struct usb_ep *ep, struct usb_request *req)
-> >  {
-> > -	struct mtu3_ep *mep = to_mtu3_ep(ep);
-> > -	struct mtu3_request *mreq = to_mtu3_request(req);
-> > +	struct mtu3_ep *mep;
-> > +	struct mtu3_request *mreq;
-> >  	struct mtu3_request *r;
-> > +	struct mtu3 *mtu;
-> >  	unsigned long flags;
-> >  	int ret = 0;
-> > -	struct mtu3 *mtu = mep->mtu;
-> >  
-> > -	if (!ep || !req || mreq->mep != mep)
-> > +	if (!ep || !req)
-> > +		return -EINVAL;
-> 
-> How will either of those ever be NULL?  The kernel will not call this
-> function with either of them being NULL, right?
-Yes, I find all class drivers already ensure they are not NULL.
+On 2020-07-01 18:32, Stanley Chu wrote:
+> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+> index 59358bb75014..cadfa9006972 100644
+> --- a/drivers/scsi/ufs/ufshcd.c
+> +++ b/drivers/scsi/ufs/ufshcd.c
+> @@ -8599,10 +8599,14 @@ EXPORT_SYMBOL(ufshcd_runtime_idle);
+>  int ufshcd_shutdown(struct ufs_hba *hba)
+>  {
+>  	int ret = 0;
+> +	struct scsi_target *starget;
+>  
+>  	if (!hba->is_powered)
+>  		goto out;
+>  
+> +	list_for_each_entry(starget, &hba->host->__targets, siblings)
+> +		scsi_target_quiesce(starget);
+> +
+>  	if (ufshcd_is_ufs_dev_poweroff(hba) && ufshcd_is_link_off(hba))
+>  		goto out;
 
-> 
-> > +
-> > +	mep = to_mtu3_ep(ep);
-> > +	mtu = mep->mtu;
-> > +
-> > +	mreq = to_mtu3_request(req);
-> > +	if (mreq->mep != mep)
-> >  		return -EINVAL;
-> >  
-> >  	dev_dbg(mtu->dev, "%s : req=%p\n", __func__, req);
-> > @@ -373,8 +380,8 @@ static int mtu3_gadget_dequeue(struct usb_ep *ep, struct usb_request *req)
-> >   */
-> >  static int mtu3_gadget_ep_set_halt(struct usb_ep *ep, int value)
-> >  {
-> > -	struct mtu3_ep *mep = to_mtu3_ep(ep);
-> > -	struct mtu3 *mtu = mep->mtu;
-> > +	struct mtu3_ep *mep;
-> > +	struct mtu3 *mtu;
-> >  	struct mtu3_request *mreq;
-> >  	unsigned long flags;
-> >  	int ret = 0;
-> > @@ -382,6 +389,9 @@ static int mtu3_gadget_ep_set_halt(struct usb_ep *ep, int value)
-> >  	if (!ep)
-> >  		return -EINVAL;
-> 
-> Same here, how can that ever happen?
-Maybe when the class driver has something wrong:)
+Please add a comment above the list_for_each_entry() loop that explains
+that there is no matching scsi_target_unquiesce() call and also that
+SCSI commands queued after the scsi_target_quiesce() call returned will
+block until blk_cleanup_queue() is called (see also the blk_queue_dying()
+check in blk_queue_enter()).
 
-You mean it's better to remove these unnecessary checks?
+Thanks,
 
-Thanks
-
-> 
-> >  
-> > +	mep = to_mtu3_ep(ep);
-> > +	mtu = mep->mtu;
-> > +
-> >  	dev_dbg(mtu->dev, "%s : %s...", __func__, ep->name);
-> >  
-> >  	spin_lock_irqsave(&mtu->lock, flags);
-> > @@ -422,11 +432,12 @@ static int mtu3_gadget_ep_set_halt(struct usb_ep *ep, int value)
-> >  /* Sets the halt feature with the clear requests ignored */
-> >  static int mtu3_gadget_ep_set_wedge(struct usb_ep *ep)
-> >  {
-> > -	struct mtu3_ep *mep = to_mtu3_ep(ep);
-> > +	struct mtu3_ep *mep;
-> >  
-> >  	if (!ep)
-> >  		return -EINVAL;
-> 
-> Again, same here.
-> 
-> thanks,
-> 
-> greg k-h
+Bart.
 
 _______________________________________________
 Linux-mediatek mailing list
