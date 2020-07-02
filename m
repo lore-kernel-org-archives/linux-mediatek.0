@@ -2,104 +2,82 @@ Return-Path: <SRS0=IR42=AN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E8862C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 03:03:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 72F66C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 03:15:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B8DB520720
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 03:03:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3F65320874
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 03:15:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RDwsfHlk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B8DB520720
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=acm.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="z7Fxz/+R";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="V4qGOuIm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3F65320874
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=iDIaB+MzhWorczS66eL46XYIOsUZYsJnhngynFHZEeI=; b=RDwsfHlk35eWYBV8f3R1kbRLE
-	A7hx+jelWnC1jixGLXwfTyl0tMohgWW/sUbiosFojcpJKnWKluHbFTaAsYYaKgsBC5b1sogi2Y/di
-	+w+erKrUn2ebyjWYXHq+vAIPWWNDyIdhtbA4odhrM27rWH8sAYBgdAej2RBLfJZtbw5087yKWyoZl
-	IzCxne+j9DoKjeXleuZQ0iznWqKjH0Zj7nLAhqkjDhulFTvvNC2Zvg2uPPyy6/6IlncHtlEk81tKE
-	sISCzfs+VN8vybF29FiOhOQUVBWlNMRuh5f+f8IafjBWz5cQoqEQP2bO5HBElx4YRJ8G89Sl356DJ
-	xhozhJ5Wg==;
+	List-Unsubscribe:List-Id:To:From:Subject:Mime-Version:Message-Id:Date:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uGeN27ZMjJRJfCoEqAgWIDn+EZVK/6gPwz7/f9zY6aY=; b=z7Fxz/+RbsMjKtFojfcJ94I08w
+	2JqvRqXqBOOQ+2jhgSnGhl0JC9vxE+zm/RnZe8Vo5DQbseUcMj7Gj9ytcgBpavfYUGQYJBcPowggh
+	d1cTMoE0Z7p9CatRrCAsqU8TVIhxjCXp54F7iuTzmedu6bpHVURswt923zTAQBXEheoErCFoVwDXH
+	M+zS+0Dvf1ZGorQ77+FpN9LhNdOaLZHo9zBbdVPxucjOnccrIZ9d9jJqzY0byrPBFrszSav5RRV2R
+	2xQ4S9MzicjGzsCxgU1zalkAdzeuVvwPdMKXnBTCqEOt3x1rN4PBhLMo0XW0mY3KLNyro+PtGgZht
+	v/8t60Eg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqpV9-0002cR-4q; Thu, 02 Jul 2020 03:03:03 +0000
-Received: from mail-pg1-f194.google.com ([209.85.215.194])
+	id 1jqphY-0004Ag-Da; Thu, 02 Jul 2020 03:15:52 +0000
+Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqpV5-0002b9-W4; Thu, 02 Jul 2020 03:03:00 +0000
-Received: by mail-pg1-f194.google.com with SMTP id z5so12735010pgb.6;
- Wed, 01 Jul 2020 20:02:58 -0700 (PDT)
+ id 1jqphV-00049c-8y
+ for linux-mediatek@lists.infradead.org; Thu, 02 Jul 2020 03:15:49 +0000
+Received: by mail-yb1-xb4a.google.com with SMTP id k127so23829040ybk.11
+ for <linux-mediatek@lists.infradead.org>; Wed, 01 Jul 2020 20:15:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=lgjLNEI2c702nruZIf8/qVC3N2Yvj7eOc3xFcCXk4qE=;
+ b=V4qGOuImI1av0lSmyLMJk52j2TEqAgPFSpa2IGTBg3P335rupJ/XJFDEVy6u3Y3nsa
+ RxGOc5CrUOcD0Hx1SSX6EsLwS/YkM3rm9xE7r0RMJomNXcFqqngBD9LKQ8sdqsSMBuqt
+ foksl0EJRlKlIsuDBk/TgVcq3AHjtf2S0T+hEssU9vC+kvaffGNehyx0mKdLema/9UQw
+ 76RivxWXQWWYbxnExz2m43fP0sc2RHIrz4bpQR6k8ck94uD8U3TW8qjdcGeItG3XDGWq
+ 8Lujvxr2kTUxQd9xNXkHoQ6fZKN3quOY96H0T651b5HMoiiTWgJvhDIqQoH5h8TlH97H
+ 1F3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=FFJnrg6UejlgMZZiBAQX5IaRF+B2JtFvBIiKkxyCoIE=;
- b=LYJ9lh81EO2TOcAGwERxfo9NV9J38+fBKqK3YMXYp6kHhpxh7P7kH1It6lx0PEJVc2
- YkpefY/os7qOhk7m9+mAn3ulPRYR1T4CrTRIZKRXjQJmn6LAXO9LFmOZac48NayjF4x8
- hgMUS+2cakhCHuh1vgG57HijLkss+pRZvfjjYsYrlQXpkDkiDfPIcZ4oRFag16br3ixn
- OlsL+rRZgFrIe8rmTt/SAUUF0D/k8xFRh6GFly/mV1J8MdlbKik7wenQDhBJQdSaGvmI
- OUIYRBGZ+Ekb5Hr+AoFqHhbfbkd2km/gM9ntOXUoHSKjNhIgYnu9/sNg8moib/bNUb8u
- xHJw==
-X-Gm-Message-State: AOAM532HOI7Wxn1te84jVywbkQTkU+oNG3yWBeiWAlj8UznYwPRDEv/J
- Gn+WNPXvxihjLm/T6btp7O0=
-X-Google-Smtp-Source: ABdhPJysZ0yeIz06+vtJMNt5bNS3DQ+w6bS2Sd/cKTqkCCZNqRBSB0vrL/IwcxtRbeIXXzb3hwY6XQ==
-X-Received: by 2002:aa7:8b01:: with SMTP id f1mr27531833pfd.223.1593658977917; 
- Wed, 01 Jul 2020 20:02:57 -0700 (PDT)
-Received: from [192.168.50.147] (c-73-241-217-19.hsd1.ca.comcast.net.
- [73.241.217.19])
- by smtp.gmail.com with ESMTPSA id m92sm6486981pje.13.2020.07.01.20.02.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 01 Jul 2020 20:02:56 -0700 (PDT)
-Subject: Re: [RFC PATCH v1] scsi: ufs: Quiesce all scsi devices before shutdown
-To: Stanley Chu <stanley.chu@mediatek.com>, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-References: <20200702013210.22958-1-stanley.chu@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-Autocrypt: addr=bvanassche@acm.org; prefer-encrypt=mutual; keydata=
- mQENBFSOu4oBCADcRWxVUvkkvRmmwTwIjIJvZOu6wNm+dz5AF4z0FHW2KNZL3oheO3P8UZWr
- LQOrCfRcK8e/sIs2Y2D3Lg/SL7qqbMehGEYcJptu6mKkywBfoYbtBkVoJ/jQsi2H0vBiiCOy
- fmxMHIPcYxaJdXxrOG2UO4B60Y/BzE6OrPDT44w4cZA9DH5xialliWU447Bts8TJNa3lZKS1
- AvW1ZklbvJfAJJAwzDih35LxU2fcWbmhPa7EO2DCv/LM1B10GBB/oQB5kvlq4aA2PSIWkqz4
- 3SI5kCPSsygD6wKnbRsvNn2mIACva6VHdm62A7xel5dJRfpQjXj2snd1F/YNoNc66UUTABEB
- AAG0JEJhcnQgVmFuIEFzc2NoZSA8YnZhbmFzc2NoZUBhY20ub3JnPokBOQQTAQIAIwUCVI67
- igIbAwcLCQgHAwIBBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFcPTXFzhAJ8QkH/1AdXblKL65M
- Y1Zk1bYKnkAb4a98LxCPm/pJBilvci6boefwlBDZ2NZuuYWYgyrehMB5H+q+Kq4P0IBbTqTa
- jTPAANn62A6jwJ0FnCn6YaM9TZQjM1F7LoDX3v+oAkaoXuq0dQ4hnxQNu792bi6QyVdZUvKc
- macVFVgfK9n04mL7RzjO3f+X4midKt/s+G+IPr4DGlrq+WH27eDbpUR3aYRk8EgbgGKvQFdD
- CEBFJi+5ZKOArmJVBSk21RHDpqyz6Vit3rjep7c1SN8s7NhVi9cjkKmMDM7KYhXkWc10lKx2
- RTkFI30rkDm4U+JpdAd2+tP3tjGf9AyGGinpzE2XY1K5AQ0EVI67igEIAKiSyd0nECrgz+H5
- PcFDGYQpGDMTl8MOPCKw/F3diXPuj2eql4xSbAdbUCJzk2ETif5s3twT2ER8cUTEVOaCEUY3
- eOiaFgQ+nGLx4BXqqGewikPJCe+UBjFnH1m2/IFn4T9jPZkV8xlkKmDUqMK5EV9n3eQLkn5g
- lco+FepTtmbkSCCjd91EfThVbNYpVQ5ZjdBCXN66CKyJDMJ85HVr5rmXG/nqriTh6cv1l1Js
- T7AFvvPjUPknS6d+BETMhTkbGzoyS+sywEsQAgA+BMCxBH4LvUmHYhpS+W6CiZ3ZMxjO8Hgc
- ++w1mLeRUvda3i4/U8wDT3SWuHcB3DWlcppECLkAEQEAAYkBHwQYAQIACQUCVI67igIbDAAK
- CRBxXD01xc4QCZ4dB/0QrnEasxjM0PGeXK5hcZMT9Eo998alUfn5XU0RQDYdwp6/kMEXMdmT
- oH0F0xB3SQ8WVSXA9rrc4EBvZruWQ+5/zjVrhhfUAx12CzL4oQ9Ro2k45daYaonKTANYG22y
- //x8dLe2Fv1By4SKGhmzwH87uXxbTJAUxiWIi1np0z3/RDnoVyfmfbbL1DY7zf2hYXLLzsJR
- mSsED/1nlJ9Oq5fALdNEPgDyPUerqHxcmIub+pF0AzJoYHK5punqpqfGmqPbjxrJLPJfHVKy
- goMj5DlBMoYqEgpbwdUYkH6QdizJJCur4icy8GUNbisFYABeoJ91pnD4IGei3MTdvINSZI5e
-Message-ID: <83b1d5a1-c248-87bb-9554-ca10c8064041@acm.org>
-Date: Wed, 1 Jul 2020 20:02:55 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
-MIME-Version: 1.0
-In-Reply-To: <20200702013210.22958-1-stanley.chu@mediatek.com>
-Content-Language: en-US
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=lgjLNEI2c702nruZIf8/qVC3N2Yvj7eOc3xFcCXk4qE=;
+ b=P0FisMeTwUs8XnY3tnOvjvKdfL6Uqa0wHpKDzQn2G3IKVNrgrrWLx+TAI7F5omEXah
+ CVh+VJyqaHl/pfA83azr1KrsrC2E1+pLLhwqvTP+kLWUEqSqDTf1gy1EUhF/fCRzG6Hb
+ 2LbkZkzERcpqhKX3EZSRl45LWM4tPEegPQZiCyw0GbVzEK8O9B3qnv1r2MNZHAOr7xGW
+ vR1QT4yEwKw+/SziFUvBbLZSObhY95uieEZgHjNvw0lR+ZXXp+cpiZyeYjIirJXK6jsd
+ CtSntOMOh7RY13ee6fmxHdGUZe4kiYT3exa0ysuNjZgDV0Ie/KCVophGrh+AvdifVgdN
+ QunQ==
+X-Gm-Message-State: AOAM53198Nerw9Ldt9JP42wk1Yp7StAx63J7qP0918vjvVJRHaeGlfca
+ YETruPsEyAWULxcZLQ7Jj642TiFFqR1zQR2J0E6QkcwPdzE6SZiLmcWWpWOGySC8rXNVQvs50oJ
+ A6HRJhFeDXuLhFxfYhpahBOEUjchRIwvT4jQTcwXMe9jYbPHX3mI+vQIcp+2elfwNAb1DDFGk4+
+ VS9EO5
+X-Google-Smtp-Source: ABdhPJzMQo9PQ5D19hZdsGpjI7T+hKX4gBcCSrIxKzFL0IBLXNR6rgDXemM3ITzN7p5dT0NF4XRTdRDj3BcM
+X-Received: by 2002:a25:84cc:: with SMTP id x12mr43165655ybm.454.1593659744675; 
+ Wed, 01 Jul 2020 20:15:44 -0700 (PDT)
+Date: Thu,  2 Jul 2020 13:15:21 +1000
+Message-Id: <20200702031525.2662441-1-amistry@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.27.0.212.ge8ba1cc988-goog
+Subject: [PATCH 0/4] regulator: da9211: support changing modes
+From: Anand K Mistry <amistry@google.com>
+To: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200701_230300_046902_82189A73 
-X-CRM114-Status: GOOD (  13.88  )
+X-CRM114-CacheID: sfid-20200701_231549_335034_404070E1 
+X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,45 +89,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: andy.teng@mediatek.com, cc.chou@mediatek.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, beanhuo@micron.com, chaotian.jing@mediatek.com,
- linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
+Cc: devicetree@vger.kernel.org, drinkcat@chromium.org,
+ Anand K Mistry <amistry@google.com>, Liam Girdwood <lgirdwood@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, hsinyi@chromium.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org,
+ Support Opensource <support.opensource@diasemi.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-07-01 18:32, Stanley Chu wrote:
-> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> index 59358bb75014..cadfa9006972 100644
-> --- a/drivers/scsi/ufs/ufshcd.c
-> +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -8599,10 +8599,14 @@ EXPORT_SYMBOL(ufshcd_runtime_idle);
->  int ufshcd_shutdown(struct ufs_hba *hba)
->  {
->  	int ret = 0;
-> +	struct scsi_target *starget;
->  
->  	if (!hba->is_powered)
->  		goto out;
->  
-> +	list_for_each_entry(starget, &hba->host->__targets, siblings)
-> +		scsi_target_quiesce(starget);
-> +
->  	if (ufshcd_is_ufs_dev_poweroff(hba) && ufshcd_is_link_off(hba))
->  		goto out;
+This patchset adds support for being able to change regulator modes for
+the da9211 regulator. This is needed to allow the voltage scaling
+support in the MT8173 SoC to be used in the elm (Acer Chromebook R13)
+and hana (several Lenovo Chromebooks) devices.
 
-Please add a comment above the list_for_each_entry() loop that explains
-that there is no matching scsi_target_unquiesce() call and also that
-SCSI commands queued after the scsi_target_quiesce() call returned will
-block until blk_cleanup_queue() is called (see also the blk_queue_dying()
-check in blk_queue_enter()).
 
-Thanks,
+Anand K Mistry (4):
+  regulator: da9211: Move buck modes into header file
+  dt-bindings: regulator: da9211: Document allowed modes
+  regulator: da9211: Implement of_map_mode
+  arm64: dts: mediatek: Update allowed regulator modes for elm boards
 
-Bart.
+ .../devicetree/bindings/regulator/da9211.txt  |  4 +++
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi  |  4 ++-
+ drivers/regulator/da9211-regulator.c          | 30 +++++++++++++++----
+ .../regulator/dlg,da9211-regulator.h          | 16 ++++++++++
+ 4 files changed, 47 insertions(+), 7 deletions(-)
+ create mode 100644 include/dt-bindings/regulator/dlg,da9211-regulator.h
+
+-- 
+2.27.0.212.ge8ba1cc988-goog
+
 
 _______________________________________________
 Linux-mediatek mailing list
