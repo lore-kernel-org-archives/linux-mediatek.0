@@ -2,77 +2,91 @@ Return-Path: <SRS0=IR42=AN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 017DCC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 09:47:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E94B7C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 10:28:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C676D20760
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 09:47:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B55552073E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 10:28:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="k744+dfF";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="d04RkMfU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C676D20760
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cG97IHXo";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="lcB1Osga"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B55552073E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ld8jlujVqY5/PWjBuKq0uiIpHDDOvKELEjuBUcdEuO4=; b=k744+dfFJNSTwfmm76iSQqDcV
-	CZwyqXj8KM6Yy87AtOVeEO2uYlJlzUxMIPEC5g6oS2eqNgTSsijeLFJwF+Zqi7SV6WPwiqsPXCqjq
-	fApnwOEtUfx65XcKq6t+99FIunFKnqszQibjYl4kp02crwsKSmd0p71pIeIqBdvomLT0L27PPC/D1
-	fi0Mm1kccJbwyprYOXWhN0jXlwXcfNFm9d8ADpGrprGVU3AUG4DbjouHTJ4vVRFWBeVie90nbJLq9
-	td3+ewdLfA/foVW8hmkh481UhVHg9zCUKFn77tsTNMSGRlkO+QZYb9+uUj8e76Rydy5TvJBqZNspW
-	KDWi2K6/w==;
+	 bh=HcDfApO66M4/0OMmyIwuZwWCdCHbZDdO6+29pu+tcyA=; b=cG97IHXoHo31WGpD8vbBojyze
+	TGzaHZ3r/RE/vcfHRkR56yXtLelpJf/U4/C0GFV8Q1FSDd25/+z1VHvvhj65wi9grwN4BKbAf+BsD
+	AfXvbNIqckk/ArzhrcNijOWkYdw7+Oiv7rP8VDCxS3HPuburMuVf5DTV0O+MBtlh9YbcAHk5tXtNR
+	WfFpQtSGe0XaFmgDvFGU/uhGJeXEeQ1UqpA8wK1Zo6nYFUZ4KIQS6a/yLcDiC8EbXj/Dib4xGBhwU
+	lZuFciRIeemEQXjmgQiGL4OEeLeEVbqvsv+iSFwHWJOavdyU1agEwSFw7CrijX5yJupGzu57Oy933
+	3xgTZYDZw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqvoc-0004Cm-3A; Thu, 02 Jul 2020 09:47:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jqwRf-0002wS-Uj; Thu, 02 Jul 2020 10:27:55 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqvoZ-0004Bs-U1; Thu, 02 Jul 2020 09:47:33 +0000
-X-UUID: a165b62a0b5b47f2b5e32cd6bc9fc84d-20200702
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=srCB5XNrPlYp3HSyZlphU1Xk3HZN3j+BE4+7DogmQy4=; 
- b=d04RkMfU9EEqJeKEwo7o1DnXRaHWMjOkYhIFMB0C9xSuyPLpqrVb9omggr+PdHRxQkFwazeX5rVhqqUWEV7Q4c4Z8YR3OJh4VMwr5v58E3NIJ8cflP4HM9EnX2m6pdNVjFY+iPmg8BsXOu5W1sXoWHjfC+npzWpK22Tc6hcbG8w=;
-X-UUID: a165b62a0b5b47f2b5e32cd6bc9fc84d-20200702
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1196126974; Thu, 02 Jul 2020 01:47:23 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Jul 2020 02:37:24 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Jul 2020 17:37:20 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 2 Jul 2020 17:37:21 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
- "Matthias Brugger" <matthias.bgg@gmail.com>
-Subject: [PATCH 4/4] iommu/mediatek: check 4GB mode by reading infracfg
-Date: Thu, 2 Jul 2020 17:37:20 +0800
-Message-ID: <20200702093721.6063-4-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200702093721.6063-1-miles.chen@mediatek.com>
-References: <20200702093721.6063-1-miles.chen@mediatek.com>
+ id 1jqwRd-0002vT-VS
+ for linux-mediatek@lists.infradead.org; Thu, 02 Jul 2020 10:27:54 +0000
+Received: by mail-wr1-x441.google.com with SMTP id z15so16249801wrl.8
+ for <linux-mediatek@lists.infradead.org>; Thu, 02 Jul 2020 03:27:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=43XB0eC1/F767YChsoswsUl8WKG5LpvTnDvwDbF5waY=;
+ b=lcB1OsgavV6AS6xXpHASRHbQIS9mdi+5CWDIKAPK6byFGjS2kShfucTE6wRte8SXdA
+ xnb/NH/QzB1T34ITNbyEh9iRkUFAasKd/cDPVKWtG9msCV4MWqkj0MBQnVKb6bxSqw0X
+ Jinj71DqZs8L9cvTp+vcCb0iHjTPx1QKxEE2mmwWnKDodM7YZE4biJv01RwYPOuosSHm
+ GWnWTrjgzmvp0fsRu310N6f7b/oQTXQYjYiivWeAOJ+05ZWNWq0sZDLJjIeZpI8GStFq
+ t4rmjQn0HjLvuTLx3g9Kbek7aYxR7kXcRPexu4CJDJ0Kp9qW66pvjCP/gmVErnjkReQt
+ o6Yw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=43XB0eC1/F767YChsoswsUl8WKG5LpvTnDvwDbF5waY=;
+ b=nWy+i9XKa/Ns/9uSDgU+/9/Ra0MYYNT0MWcFJy1WhqRShABcHFwFRIV3w5qW+1Huyn
+ kpmc6Tif/kRjHMriEYscXs15HflRoDGvjKu1hIrff7baIUACI7elErd5Dzm9S0DbOgAu
+ LTtYVCrKSJPSv2qHz2yvkXambNuKo0QnQuqcATttoiqsNk//lFv4iNp+rEAanYRmkeqk
+ +0evak9ZNiT6kspkS4amFCSYKXfrjYzVYCEvJgcr3n0MkO9t8J8xY40xCtwfUmMoOqUr
+ GpC/vdiAEWtKK+I9fQOnxKE1Grs1/O0Uzv2Tz2bs8ciuNmgl1tPZPxw4qKhPxA1Ke5EO
+ HgvA==
+X-Gm-Message-State: AOAM533VD9vPClKn04Xn+mh2eZe8OCDvvBTtuX/2Tqd8/k6q1EfX8Vu6
+ ANzFrx7CYh2VBO5kdtLHvv5qCw==
+X-Google-Smtp-Source: ABdhPJxfvipf12m9Fun1ABvXSxv8cHUNe7t7xgAGmyrBPnhrmnJtU/sJ2LuWrBq69N6HUDPIIlbzwA==
+X-Received: by 2002:adf:fac8:: with SMTP id a8mr1728275wrs.368.1593685671492; 
+ Thu, 02 Jul 2020 03:27:51 -0700 (PDT)
+Received: from dell ([2.27.35.144])
+ by smtp.gmail.com with ESMTPSA id 65sm10874282wre.6.2020.07.02.03.27.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 02 Jul 2020 03:27:50 -0700 (PDT)
+Date: Thu, 2 Jul 2020 11:27:48 +0100
+From: Lee Jones <lee.jones@linaro.org>
+To: Gene Chen <gene.chen.richtek@gmail.com>
+Subject: Re: [PATCH v2 2/4] mfd: mt6360: implement i2c R/W with CRC
+Message-ID: <20200702102748.GS1179328@dell>
+References: <1592567631-20363-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1592567631-20363-3-git-send-email-gene.chen.richtek@gmail.com>
+ <20200701071620.GQ1179328@dell>
+ <CAE+NS35Kj_H9uSgBiff4hogTWmwh6z+vmPNWDh_yU1=p68xQZA@mail.gmail.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: A048809BF75A2565D4E6E6BBA7AA1D99F242281B24CA77BCBD8A0D61FB421EA72000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <CAE+NS35Kj_H9uSgBiff4hogTWmwh6z+vmPNWDh_yU1=p68xQZA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200702_054732_165192_DF06CACB 
-X-CRM114-Status: GOOD (  16.12  )
+X-CRM114-CacheID: sfid-20200702_062754_121099_632FE392 
+X-CRM114-Status: GOOD (  15.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,109 +98,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
- David Hildenbrand <david@redhat.com>, linux-kernel@vger.kernel.org, Mike
- Rapoport <rppt@linux.ibm.com>, Chao Hao <chao.hao@mediatek.com>,
- iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- Yong Wu <yong.wu@mediatek.com>, Miles Chen <miles.chen@mediatek.com>,
- Yingjoe Chen <yingjoe.chen@mediatek.com>, Christoph Hellwig <hch@lst.de>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-arm-kernel@lists.infradead.org, Gene Chen <gene_chen@richtek.com>,
+ lars@metafoo.de, pmeerw@pmeerw.net, lgirdwood@gmail.com,
+ linux-kernel@vger.kernel.org, cy_huang@richtek.com, benjamin.chao@mediatek.com,
+ Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
+ jacek.anaszewski@gmail.com, pavel@ucw.cz, knaack.h@gmx.de,
+ matthias.bgg@gmail.com, shufan_lee@richtek.com, jic23@kernel.org,
+ dmurphy@ti.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In previous disscusion [1] and [2], we found that it is risky to
-use max_pfn or totalram_pages to tell if 4GB mode is enabled.
-
-Check 4GB mode by reading infracfg register, remove the usage
-of the unexported symbol max_pfn.
-
-[1] https://lkml.org/lkml/2020/6/3/733
-[2] https://lkml.org/lkml/2020/6/4/136
-
-Cc: Mike Rapoport <rppt@linux.ibm.com>
-Cc: David Hildenbrand <david@redhat.com>
-Cc: Yong Wu <yong.wu@mediatek.com>
-Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: Christoph Hellwig <hch@lst.de>
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
----
- drivers/iommu/mtk_iommu.c | 22 ++++++++++++++++++----
- 1 file changed, 18 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 2be96f1cdbd2..09be57bd8d74 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -3,7 +3,6 @@
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Yong Wu <yong.wu@mediatek.com>
-  */
--#include <linux/memblock.h>
- #include <linux/bug.h>
- #include <linux/clk.h>
- #include <linux/component.h>
-@@ -15,11 +14,13 @@
- #include <linux/iommu.h>
- #include <linux/iopoll.h>
- #include <linux/list.h>
-+#include <linux/mfd/syscon.h>
- #include <linux/of_address.h>
- #include <linux/of_iommu.h>
- #include <linux/of_irq.h>
- #include <linux/of_platform.h>
- #include <linux/platform_device.h>
-+#include <linux/regmap.h>
- #include <linux/slab.h>
- #include <linux/spinlock.h>
- #include <asm/barrier.h>
-@@ -91,6 +92,9 @@
- #define F_MMU_INT_ID_LARB_ID(a)			(((a) >> 7) & 0x7)
- #define F_MMU_INT_ID_PORT_ID(a)			(((a) >> 2) & 0x1f)
- 
-+#define REG_INFRA_MISC				0xf00
-+#define F_DDR_4GB_SUPPORT_EN			BIT(13)
-+
- #define MTK_PROTECT_PA_ALIGN			128
- 
- /*
-@@ -599,8 +603,10 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 	struct resource         *res;
- 	resource_size_t		ioaddr;
- 	struct component_match  *match = NULL;
-+	struct regmap		*infracfg_regmap;
- 	void                    *protect;
- 	int                     i, larb_nr, ret;
-+	u32			val;
- 
- 	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
- 	if (!data)
-@@ -614,10 +620,18 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
- 
--	/* Whether the current dram is over 4GB */
--	data->enable_4GB = !!(max_pfn > (BIT_ULL(32) >> PAGE_SHIFT));
--	if (!data->plat_data->has_4gb_mode)
-+	if (data->plat_data->has_4gb_mode) {
-+		infracfg_regmap = syscon_regmap_lookup_by_phandle(dev->of_node,
-+				"mediatek,infracfg");
-+		if (IS_ERR(infracfg_regmap))
-+			return PTR_ERR(infracfg_regmap);
-+		ret = regmap_read(infracfg_regmap, REG_INFRA_MISC, &val);
-+		if (ret)
-+			return ret;
-+		data->enable_4GB = !!(val & F_DDR_4GB_SUPPORT_EN);
-+	} else {
- 		data->enable_4GB = false;
-+	}
- 
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	data->base = devm_ioremap_resource(dev, res);
--- 
-2.18.0
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gVGh1LCAwMiBKdWwgMjAyMCwgR2VuZSBDaGVuIHdyb3RlOgoKPiBMZWUgSm9uZXMgPGxlZS5q
+b25lc0BsaW5hcm8ub3JnPiDmlrwgMjAyMOW5tDfmnIgx5pelIOmAseS4iSDkuIvljYgzOjE25a+r
+6YGT77yaCj4gPgo+ID4gT24gRnJpLCAxOSBKdW4gMjAyMCwgR2VuZSBDaGVuIHdyb3RlOgo+ID4K
+PiA+ID4gRnJvbTogR2VuZSBDaGVuIDxnZW5lX2NoZW5AcmljaHRlay5jb20+Cj4gPiA+Cj4gPiA+
+IGltbGVtZW50IGkyYyBSL1cgd2l0aCBDUkMgd2hlbiBhY2Nlc3Mgc3ViLWRldmljZSBQTUlDIGFu
+ZCBMRE8gcGFydAo+ID4KPiA+IFBsZWFzZSB1c2UgcHJvcGVyIGdyYW1tYXIsIGluY2x1ZGluZyBj
+YXBpdGFsIGxldHRlcnMgYXQgdGhlIHN0YXJ0IG9mCj4gPiB0aGUgc2VudGVuY2UgYW5kIGZvciBh
+YmJyZXZpYXRpb25zIHN1Y2ggYXMgIkkyQyIgYW5kIGZ1bGwgc3RvcHMuCj4gPgo+ID4gQWxzbyB0
+aGlzIGRvZXNuJ3QgbWFrZSBzZW5zZSB0byBtZS4gIFBsZWFzZSBlbGFib3JhdGUuCj4gPgo+IAo+
+IEFDSwo+IAo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBHZW5lIENoZW4gPGdlbmVfY2hlbkByaWNodGVr
+LmNvbT4KPiA+ID4gLS0tCj4gPiA+ICBkcml2ZXJzL21mZC9LY29uZmlnICAgICAgICB8ICAgMSAr
+Cj4gPiA+ICBkcml2ZXJzL21mZC9tdDYzNjAtY29yZS5jICB8IDU0MSArKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0tLS0KPiA+Cj4gPiBUaGlzIHBhdGNoIGlzIGRvaW5n
+IHdheSB0b28gbXVjaCB3YWNreSBzdHVmZiBhbGwgYXQgb25jZSwgbWFraW5nIGl0Cj4gPiB2ZXJ5
+IGRpZmZpY3VsdCB0byByZXZpZXcuICBQbGVhc2UgYnJlYWsgaXQgdXAgaW50byBmdW5jdGlvbmFs
+IHBpZWNlcwo+ID4gYW5kIHN1Ym1pdCBhcyBzZXBhcmF0ZSBsb2dpY2FsIHBhdGNoZXMgKGluIGEg
+c2V0IG9mIGNvdXJzZSkuCj4gPgo+IAo+IElmIEkgdW5kZXJzdGFuZCBjb3JyZWN0bHksIEkgbmVl
+ZCB0byBzZXBhcmF0ZSBwYXRjaFsyLzRdIGJ1dCBub3QKPiBlbnRpcmUgbXQ2MzYyLWNvcmUuYyBp
+bnRvIHNldmVyYWwgcGF0Y2hlcy4KClllcyBwbGVhc2UuCgotLSAKTGVlIEpvbmVzIFvmnY7nkLzm
+lq9dClNlbmlvciBUZWNobmljYWwgTGVhZCAtIERldmVsb3BlciBTZXJ2aWNlcwpMaW5hcm8ub3Jn
+IOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBmb3IgQXJtIFNvQ3MKRm9sbG93IExpbmFybzogRmFj
+ZWJvb2sgfCBUd2l0dGVyIHwgQmxvZwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVr
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1tZWRpYXRlawo=
