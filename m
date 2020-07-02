@@ -1,64 +1,78 @@
-Return-Path: <SRS0=KJBd=AM=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=IR42=AN=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-1.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A962C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 22:37:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 10440C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 01:36:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 587392082F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2020 22:37:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D3A4120781
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 01:36:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gVnCvBQ2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 587392082F
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baikalelectronics.ru
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ghKou3mS";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="CgwZgTOh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D3A4120781
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=L+l2zgYO+3JIlplVNO965zoUSs4GQj4U3a8UzzW02vA=; b=gVnCvBQ2idTHGwnxpOi64hZWX
-	HoJk1wkwmzXnraSc8vT5DrMTqxqOM210V8UYxVs0IPCHbrJl6bbrdugqp95peDKxaJ8zM1ApBrX/D
-	d04/yaYPoToUZPAy7cvck3HIgds0o+M2+hPZaoSEOhnPX/D7ma4J022ODSkd768DljXfdcX0y1iPA
-	TmDHjW5Xdsmtw3PwJoWtMxqpbJClUJQZwR4WpJ7GivBkNmMoqTC9rhDGVX917mLp92PFNxLKMP0n3
-	RxpOxH4NfsptO/THN+BG1v5TBiMD/uZ8jw+b4aUyeV4cJ3IbAGLCkiwd/lhzJemqA71CvxDY+Pq+G
-	mJ+FzxDRg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=WGw9jWpAfXnk/TJ3qRrR+RVLuJ1I+oZNDZ8X7q0HUU8=; b=ghKou3mSSDioguCnIR7jeIEFyf
+	8yoIB92J0rLjzjIE94JkCnDjWFiYdowtj5ITUTdlqxJ/Me0U8iOo6Hq6Y6lCHTkZetQcZb2A4LmZI
+	xqN7IbVu+NWopa/iG/67OrrQRy/dPwPov71l3Izkkz8HdhxpJpHLmH8Hrhf39wrv3XsbxkDIFDy25
+	1w99v+8+J/DU8NKbO8or4ZqSoPkUiVaRqNdchW/9RkpvSPauEl1kWBqye2aghEa9PtoyiOkRFf2W1
+	oAnc6H88swZEShz6WMAsmFzlhbq1EnCUIBQsxBS4XTn7Y6RTDACSPDllUEJKpReHkkvEHeTMs3hsj
+	AfsKb+pA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqlM7-0005Yo-1y; Wed, 01 Jul 2020 22:37:27 +0000
-Received: from mx.baikalelectronics.com ([94.125.187.42]
- helo=mail.baikalelectronics.ru)
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqlM3-0005Y3-SA
- for linux-mediatek@lists.infradead.org; Wed, 01 Jul 2020 22:37:25 +0000
-Received: from localhost (unknown [127.0.0.1])
- by mail.baikalelectronics.ru (Postfix) with ESMTP id 1F473803202A;
- Wed,  1 Jul 2020 22:37:18 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at baikalelectronics.ru
-Received: from mail.baikalelectronics.ru ([127.0.0.1])
- by localhost (mail.baikalelectronics.ru [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DHd7Fb6uuWwY; Thu,  2 Jul 2020 01:37:16 +0300 (MSK)
-Date: Thu, 2 Jul 2020 01:37:13 +0300
-From: Serge Semin <Sergey.Semin@baikalelectronics.ru>
-To: Daniel Winkler <danielwinkler@google.com>
-Subject: Re: [PATCH v2 0/1] Revert "serial: 8250: Fix max baud limit in
- generic 8250 port"
-Message-ID: <20200701223713.gavale4aramu3xnb@mobilestation>
-References: <20200701211337.3027448-1-danielwinkler@google.com>
+	id 1jqo94-0003Tv-Pu; Thu, 02 Jul 2020 01:36:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jqo90-0003RZ-5H; Thu, 02 Jul 2020 01:36:08 +0000
+X-UUID: 8feb783928f14ecd977ce012db768411-20200701
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=Fi9mrlEmH73T+Qs6zhoiNlw3NLg/Wea1yifZo8JP4Y0=; 
+ b=CgwZgTOhBxzcJIIsXa1MesRryiPmjqC2lXgtysirnwkJ1Xsey+fsObHbO3yYDM+QY7wYeMLonWegUj8sTU7RByWh/LN13iAEPyohjXt8+AOKEZ4OaipRhRC9ZWsEB2djGRmfbiuZlC+0AX0J1RKwW3fSwz/whxBtTqc8vCI0kWQ=;
+X-UUID: 8feb783928f14ecd977ce012db768411-20200701
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 34980336; Wed, 01 Jul 2020 17:35:50 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 1 Jul 2020 18:32:39 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 2 Jul 2020 09:32:24 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 2 Jul 2020 09:32:20 +0800
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+ <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
+ <bvanassche@acm.org>
+Subject: [RFC PATCH v1] scsi: ufs: Quiesce all scsi devices before shutdown
+Date: Thu, 2 Jul 2020 09:32:10 +0800
+Message-ID: <20200702013210.22958-1-stanley.chu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200701211337.3027448-1-danielwinkler@google.com>
-X-ClientProxiedBy: MAIL.baikal.int (192.168.51.25) To mail (192.168.51.25)
+X-TM-SNTS-SMTP: 18A2182863CD6381535D3CFD5930C92F55638ED85AF7A2AFA65EACC53C1742932000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200701_183724_113695_EEF4A543 
-X-CRM114-Status: GOOD (  16.60  )
+X-CRM114-CacheID: sfid-20200701_213606_343452_0802532B 
+X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,79 +84,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: chromeos-bluetooth-upstreaming
- <chromeos-bluetooth-upstreaming@chromium.org>,
- Vignesh Raghavendra <vigneshr@ti.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Serge Semin <fancer.lancer@gmail.com>,
- Alexey Malahov <Alexey.Malahov@baikalelectronics.ru>,
- BlueZ <linux-bluetooth@vger.kernel.org>, Lukas Wunner <lukas@wunner.de>,
- linux-mediatek@lists.infradead.org, stable@vger.kernel.org,
- linux-serial@vger.kernel.org, Jiri Slaby <jslaby@suse.com>,
- abhishekpandit@chromium.org, Aaron Sierra <asierra@xes-inc.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Stanley Chu <stanley.chu@mediatek.com>, andy.teng@mediatek.com,
+ cc.chou@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, beanhuo@micron.com, chaotian.jing@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 01, 2020 at 02:13:36PM -0700, Daniel Winkler wrote:
-> 
-> This change regresses the QCA6174A-3 bluetooth chip, preventing
-> firmware from being properly loaded. Without this change, the
-> chip works as intended.
-> 
-> The device is the Kukui Chromebook using the Mediatek chipset
-> and the 8250_mtk uart. Initial controller baudrate is 115200
-> and operating speed is 3000000. Our entire suite of bluetooth
-> tests now fail on this platform due to an apparent failure to
-> sync its firmware on initialization.
+Currently I/O request could be still submitted to UFS device while
+UFS is working on shutdown flow. This may lead to racing as below
+scenarios and finally system may crash due to unclocked register
+accesses.
 
-Ok. It's mediatek 8250 driver, which is responsible for the failure.
-Then we'll have two options:
+To fix this kind of issues, specifically quiesce all SCSI devices
+before UFS shutdown to block all I/O request sending from block
+layer.
 
-1) Add a new capability like UART_CAP_NO16DIV and take it into account
-   in the serial8250_get_baud_rate() method.
+Example of racing scenario: While UFS device is runtime-suspended
+
+Thread #1: Executing UFS shutdown flow, e.g.,
+           ufshcd_suspend(UFS_SHUTDOWN_PM)
+Thread #2: Executing runtime resume flow triggered by I/O request,
+           e.g., ufshcd_resume(UFS_RUNTIME_PM)
+
+This breaks the assumption that UFS PM flows can not be running
+concurrently and thus some unexpected racing behavior may happen.
+
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/scsi/ufs/ufshcd.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 59358bb75014..cadfa9006972 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -8599,10 +8599,14 @@ EXPORT_SYMBOL(ufshcd_runtime_idle);
+ int ufshcd_shutdown(struct ufs_hba *hba)
+ {
+ 	int ret = 0;
++	struct scsi_target *starget;
  
-I don't have a documentation for the Mediatek UART port, but it seems to me
-that that controller calculates the baud rate differently from the standard
-8250 port. A standard 8250 port does that by the next formulae:
-  baud = uartclk / (16 * divisor).
-While it seems to me that the Mediatek port uses the formulae like:
-  baud = uartclk / divisor. (Please, correct me if I'm wrong)
-If so, then we could introduce a new capability like UART_CAP_NO16DIV. The
-8250_mtk driver will add it to the 8250-port capabilities field. The
-serial8250_get_baud_rate() method should be altered in a way so one would check
-whether the UART_CAP_NO16DIV flag is set and if it is then the
-uart_get_baud_rate() function will be called without uartclk normalized by the
-factor of 16.
-
-2) Manually call serial8250_do_set_divisor() in the custom set_termios()
-   callback.
-
-Just add the uart_update_timeout() and serial8250_do_set_divisor() methods
-invocation into the mtk8250_set_termios() function, which the original commit
-81bb549fdf14 ("serial: 8250_mtk: support big baud rate") author should have
-done in the first place.
-
--Sergey
-
-> 
-> The driver is in the cros tree at drivers/bluetooth/hci_qca.c
-> and uses the serdev interface. Specifically, this is the
-> QCA_ROME chipset.
-> 
-> 
-> Daniel Winkler (1):
->   Revert "serial: 8250: Fix max baud limit in generic 8250 port"
-> 
->  drivers/tty/serial/8250/8250_port.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> -- 
-> 2.27.0.212.ge8ba1cc988-goog
-> 
-
+ 	if (!hba->is_powered)
+ 		goto out;
+ 
++	list_for_each_entry(starget, &hba->host->__targets, siblings)
++		scsi_target_quiesce(starget);
++
+ 	if (ufshcd_is_ufs_dev_poweroff(hba) && ufshcd_is_link_off(hba))
+ 		goto out;
+ 
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
