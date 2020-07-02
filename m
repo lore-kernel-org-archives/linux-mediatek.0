@@ -2,74 +2,69 @@ Return-Path: <SRS0=IR42=AN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-1.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F3EC3C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 07:16:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C5A03C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 07:36:17 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C1BF620874
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 07:16:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 90CBE206BE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 07:36:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LSo7ElA8";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="WQ74p2S6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C1BF620874
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OyBn1vHL";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="PKkyx7Nd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 90CBE206BE
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linuxfoundation.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=88iJHcPTqbwyMUNHwpePBGIP2PeuqfhP4GcsATy0XPk=; b=LSo7ElA8e90qY4/UfESnQ84vsN
-	7PCcp/jJ0AL0APyaYjgNwV3LyxV8gSk3EITHi/iPPAVgELI/xR2nqc0tvIMK4DCkw45pRK8qd57YM
-	7j1ZytfQaQZ3WsFCkLBwjtU3+Ohtkk5wJ3goBGLmqJhUZptr99DQ3CXuURHCU0E+EbgO89HLl4VJi
-	Xeu30xroQBABCfBAomAbzD5b2GaIuhUsgJzSOh6OPvA1hquXfW/p9f1dQez4yUA/9VVZj5upwHRyJ
-	uYh6yi6WzzSIbsRyTqj/WVCOq77bw9V2pOVCvzx+i6xkpKUe+HEpcvPRNjMbkC/yKLxmn1Ewbb30j
-	Ee+VTu8w==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=CQs3cV5eTIa4b0/J6XUWgKdz9vFiyOUZI+tCiKJzhGg=; b=OyBn1vHLxbLBLn5k9nORxa0SO
+	BoQS0uVoEZbqeqgKQSri8ItXA6CbOxbkbR+4wUcru4AMpRHpdtwH99i7b8L4wBozqHg9sWEDFyq8d
+	KEn6QYbhMVBEHA/xXA1Kgcn4qLVc3oBxkE1FmkkaqwdCWdK2AUtHNEb18aelkXRO+nBgeQwoqQzRo
+	FW7IjNlr6X3WfnaKmCj6p6HvKDxH/3VtZk+xuynr+BpETVX9j5xr3NFpDGMwu6tOZOnM/aKuVMv0B
+	wSxqqlcZjg5QKA5rwUZAzbSuY1LaLrITjv+F9MwVY4dLWFJGaqHrc6Vk5//2kOUO1foSaFirodXrM
+	hdTNbpTEA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqtSG-0005QQ-Mg; Thu, 02 Jul 2020 07:16:20 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jqtlP-000866-DJ; Thu, 02 Jul 2020 07:36:07 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqtSE-0005P6-EW; Thu, 02 Jul 2020 07:16:19 +0000
-X-UUID: 1ee242e1f1ec47d4adab30bfe272daa1-20200701
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=GxrmFz7Pchk0LDKgF6ZwoVEc2QOYVFPDOOWLPzi5ts0=; 
- b=WQ74p2S6bsQEc0ZqyOknh0W/UT58QGuJ1Vflfnnx8nmrqy3Mv8IWG9+QW6S19RxbqrbBw7AgztXIPlj/oH8Yd5C+7ahk5XVXF7DQb/Q9tRf0DMockMsljZBDcJW6xCGuVe+1gTUn0JTOSqhy4BdrKQnskl8zNc/FtptPoEDWscI=;
-X-UUID: 1ee242e1f1ec47d4adab30bfe272daa1-20200701
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <eastl.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 50797570; Wed, 01 Jul 2020 23:16:07 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Jul 2020 00:06:08 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Jul 2020 15:06:05 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 2 Jul 2020 15:06:07 +0800
-From: EastL Lee <EastL.Lee@mediatek.com>
-To: Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH v6] dmaengine: mediatek-cqdma: add dt-bindings and remove
- redundant queue
-Date: Thu, 2 Jul 2020 15:06:00 +0800
-Message-ID: <1593673564-4425-1-git-send-email-EastL.Lee@mediatek.com>
-X-Mailer: git-send-email 1.9.1
+ id 1jqtlM-00085e-5m
+ for linux-mediatek@lists.infradead.org; Thu, 02 Jul 2020 07:36:05 +0000
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id A16A1206BE;
+ Thu,  2 Jul 2020 07:36:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1593675363;
+ bh=1n77CNPeJ33Kywgw5iC9Ya49YYvivp0h8s4IwclTbf8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=PKkyx7NdRs71xsCwaGxelmBAxbGoAQjIq8RmaCZiqgqFPOXr1MqVudESyN7L88Ms9
+ rZTGOpoQnLPyrJWY7SGzybyYPYxqJbxm6ptrjgt4ejS+OODyTWMVbGSwkA1GGtRyQW
+ 3N5vEVBfGOwxoLMW/cqh1q8pB7g9lUfbs3ptCgXk=
+Date: Thu, 2 Jul 2020 09:36:07 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Daniel Winkler <danielwinkler@google.com>
+Subject: Re: [PATCH v2 1/1] Revert "serial: 8250: Fix max baud limit in
+ generic 8250 port"
+Message-ID: <20200702073607.GD1073011@kroah.com>
+References: <20200701211337.3027448-1-danielwinkler@google.com>
+ <20200701141329.v2.1.I2cc415fa5793b3e55acfd521ba8f0a71e79aa5f1@changeid>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20200701141329.v2.1.I2cc415fa5793b3e55acfd521ba8f0a71e79aa5f1@changeid>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200702_031618_740547_31E827C2 
-X-CRM114-Status: UNSURE (   6.69  )
+X-CRM114-CacheID: sfid-20200702_033604_320304_34B7CFB8 
+X-CRM114-Status: UNSURE (   9.60  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -82,36 +77,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, cc.hwang@mediatek.com,
- wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
- dmaengine@vger.kernel.org, vkoul@kernel.org, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org
+Cc: chromeos-bluetooth-upstreaming
+ <chromeos-bluetooth-upstreaming@chromium.org>,
+ Vignesh Raghavendra <vigneshr@ti.com>, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org, Alexey Malahov <Alexey.Malahov@baikalelectronics.ru>,
+ Serge Semin <Sergey.Semin@baikalelectronics.ru>,
+ BlueZ <linux-bluetooth@vger.kernel.org>, Lukas Wunner <lukas@wunner.de>,
+ linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org,
+ Jiri Slaby <jslaby@suse.com>, abhishekpandit@chromium.org,
+ Aaron Sierra <asierra@xes-inc.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch set adds document the devicetree bindings for MediaTek Command-Queue DMA controller,
-and remove redundant queue structure.
+On Wed, Jul 01, 2020 at 02:13:37PM -0700, Daniel Winkler wrote:
+> This reverts commit 7b668c064ec33f3d687c3a413d05e355172e6c92.
+> 
 
-hanges since v5:
-- fix full name
+I need a reason _why_ to revert this in the changelog text.  Your 0/1
+comments would be great to see in here, otherwise I have no idea what is
+going on when I look at the kernel changelog in the future.
 
-hanges since v4:
-- fix yaml & dma-mask code flow
+> Fixes: 7b668c064ec3 ("serial: 8250: Fix max baud limit in generic 8250
+> port")
 
-hanges since v3:
-- fix dt_binding_check errors
+Nit, in the future, this line does not need to be wrapped at all, just
+let it go the full length please.
 
-Changes since v2:
-- add devicetree bindings for MediaTek Command-Queue DMA controller
+thanks,
 
-Changes since v1:
-- remove redundant queue structure
-- fix wrong description and tags in the earlier patch
-- add dma-channel-mask for DMA capability
-- fix compatible for common
+greg k-h
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
