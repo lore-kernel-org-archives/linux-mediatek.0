@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 49437C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 05:06:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A2C9C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 05:07:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 16544207E8
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 05:06:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 47C73207CD
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 05:07:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uuoH1Mxd";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="YiIFU9Ez"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16544207E8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ii8qp+/q";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="jBBi7vxB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 47C73207CD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,57 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=pgbrtSvYDCzBeaevHvIsp3g7ZBjWk4b8X4hRV+qw6l0=; b=uuoH1MxdVB5nTu1EGpVwnBuE1
-	b6anPgj2ZNOYE+WLTiH3VyJVyvBEriRLFEKSh2MslcwfvH43qCS19I5l65Updz/J/TCwmd2CQaM88
-	YwurltcHPS99YxC0gOjk+SkRDXRz45mXK6aAbGvr2n6b4EYGqDmFQJFqgCM4p+CC6oPSIEVzBYZaB
-	NDesKmdir6HvtfpuWBmMiOnF/xc4/H3kCfN4TvnAjYTG4i/EMxf2W1dWtEBcDn36lhvzlIIcBBZbY
-	iXYEzLXvMSla28gPhfsi1MGTLmA9oM6LvD7aBgw2rWXr9YIa2h9DKDrjZM7NSc1hch358KCxoPIvc
-	AWov1SpDw==;
+	 bh=YMvwYudVR95ZN/05lnJ1K5jG/jrISs8+u4UZSHz5KIQ=; b=ii8qp+/qr8QKMBQJIN4jDl2Fb
+	R3TepYDhVdkn1hGD3FyuaXkpUlINK8SSBpOWvxsB8qsMOLtTVMKOEVeGbG6sKdz6h/lDKqTDv3MyX
+	oqO7BUMKvWh4J/EL0+namxTV8DtS8kueEmMkFclT6IyJYKJixTHjcwSLOpwIbaOIOz0jhlHQMS7WU
+	rrDhAO2ZUGPu4d8FaAXKuagJxPO6OT4afvkKqKyeywbz6SWqDzU16ps5YYiyPeQqqNwkjMMa3Yxtf
+	jKIpMhqV4jhI6htXnx5HXVHPhDQIwt2kmSp0RW0X9nv2YtIhEIfLVwEHXK2Xp4y55mkaPu2MtIwBt
+	xjP9KRXDQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqrQg-0003ps-9L; Thu, 02 Jul 2020 05:06:34 +0000
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
+	id 1jqrR4-0003vY-KI; Thu, 02 Jul 2020 05:06:58 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqrQd-0003p5-EB
- for linux-mediatek@lists.infradead.org; Thu, 02 Jul 2020 05:06:32 +0000
-Received: by mail-io1-xd41.google.com with SMTP id v6so13853409iob.4
- for <linux-mediatek@lists.infradead.org>; Wed, 01 Jul 2020 22:06:31 -0700 (PDT)
+ id 1jqrR1-0003tu-He
+ for linux-mediatek@lists.infradead.org; Thu, 02 Jul 2020 05:06:56 +0000
+Received: by mail-io1-xd44.google.com with SMTP id i4so27493171iov.11
+ for <linux-mediatek@lists.infradead.org>; Wed, 01 Jul 2020 22:06:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=DZ47ETVXzGHp5M4VIrOqjcpx5J2EPuzka+sNTw7UoLE=;
- b=YiIFU9EzsHxMnSPRgJV+5hXTLBAIc4uJVIDYOxP1TgNAasD7ugmfudln9uslpxSqCo
- bI8Be59+9bB0NM83obWqjiLQ/dztYsTfJyOFRHR/WaoV9SaJJQLAXLMvfyFi1iSbGqjf
- tdiBbpWUqegEUpnwwR4dfHXAoBWk/tnXgKw6g=
+ :cc; bh=ZHlP2C5MB7l2fajuE903TxpGs1g7Wi3a1RfzRhYtEuI=;
+ b=jBBi7vxBC7RWTmctSA+IZrsShvsX9YysgBXFu9liiBn5bj5H4DblMpwMy2YadSfPFl
+ 27ip1UPrOFS9Dpdns45mVs/5kPh3b8IlLIUfnssW3G5Ks6JWsc5wtSHd/isr9dL5FFq8
+ oFsHpI6HSDLCllKy8uXK6HXTV4OgWkwftxEgs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=DZ47ETVXzGHp5M4VIrOqjcpx5J2EPuzka+sNTw7UoLE=;
- b=KRsQ/HzZcVKaUR8vO33HiCQ2Huqiy9FU6lZoSwwsGGkL5S2GoDnEcY797dKdbuKhtS
- 6140VuOlD+PAaSzPAM5XFPt0vRIvvji363TiBa0ZdYlUvJPUG2gOLvcorevCSOeRR5pW
- 51/wbEMFcL8ogYfqYoGLvrHyG2WDRrVOuRSXPYapZTIlF70C4Goy1JP3pqos7Vb7Xfa9
- hZZiHFkO0LXum2ak5fwhFgH78skf3vMSlrtiVqx8Bi+XA+O4EsSnMMkeEL7/TxEQhQeA
- +P4WRNJEc0Bw4Mt9p0TaEKKO8W9mQipXuiKFd7h2UMveEqMydSVII8fA9ExDwMp5lPKG
- 53/A==
-X-Gm-Message-State: AOAM533nOk8M5AXFAfp0awTM25WxlhuCWZMetNQw3cZVRpTJjTbgr3PY
- eSIw3Kle/Wf6keByCdGZegdmTL1R5MldnD+7/eqP9A==
-X-Google-Smtp-Source: ABdhPJzXw2DJHMGPSNP3awNApXu2clvWat6Vu+oQBLrbrBdFY9gePO9d3eY2YBFghqwYnLGIJTWjaNOpeeVxcJb0HU4=
-X-Received: by 2002:a05:6602:148d:: with SMTP id
- a13mr5868932iow.44.1593666389992; 
- Wed, 01 Jul 2020 22:06:29 -0700 (PDT)
+ bh=ZHlP2C5MB7l2fajuE903TxpGs1g7Wi3a1RfzRhYtEuI=;
+ b=TqsEDsrME5uh754AIXn1yIZFTyltlTvV6AAUzkqVK/Kqyc3IoAM5uw8+dRhEuKWZqs
+ u59kRYI1egsHr37VXs+bhwQto8/PKoW+JaG17s1nbHujKg9ZJxxxINSWoTzj8D1KatKf
+ HDgyvvMTdBC05N41hlJtKJEPRqGTqhyhePZG/H+4pXwoVN4nF+pKWbNXquCnPPna8r4P
+ Ez+uQMbW3VdY5/WIxB84mI84ztbhWftRm6CbPopfb5QQOVW2GGhwA33+kUZf3JB1scGX
+ HiCubr/9+PTqnpINB697suZmUI/cVFXM8wirQetBq7SQEFixgu5CAtWhrrsrUbuhY6zi
+ jmoQ==
+X-Gm-Message-State: AOAM532QlJh5VCK7hkSefe9xi+JwVTaFelwb4Frps56kCNRqf35B/O3V
+ zBT7+IkbP20EEJhNVcm+WI8qTC42cz9raEdMBZLPUg==
+X-Google-Smtp-Source: ABdhPJzThdIk4eeEV5zJzUTuMvga/K6xZM+uqxGNHJG9uByFPu83fN1aHPWab8+wAEhw33YzK0OQTyMPmNMCIqMkpqc=
+X-Received: by 2002:a5d:8f01:: with SMTP id f1mr5811436iof.20.1593666413937;
+ Wed, 01 Jul 2020 22:06:53 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200625101757.101775-1-enric.balletbo@collabora.com>
- <20200625101757.101775-4-enric.balletbo@collabora.com>
-In-Reply-To: <20200625101757.101775-4-enric.balletbo@collabora.com>
+ <20200625101757.101775-5-enric.balletbo@collabora.com>
+In-Reply-To: <20200625101757.101775-5-enric.balletbo@collabora.com>
 From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Thu, 2 Jul 2020 13:06:04 +0800
-Message-ID: <CAJMQK-iJsoZ-beetO58-d2tit0Oq22SGnBKuPY0jSfbtJVFLeQ@mail.gmail.com>
-Subject: Re: [PATCH v2 3/7] arm64: dts: mt8183: Add MediaTek's peripheral
- configuration controller
+Date: Thu, 2 Jul 2020 13:06:28 +0800
+Message-ID: <CAJMQK-gs7+PxJmYYayLD+uo6wter7D=BU+-Zi4sEDiokohHQqg@mail.gmail.com>
+Subject: Re: [PATCH v2 4/7] arm64: dts: mt8183: Fix unit name warnings
 To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200702_010631_505657_F72B622D 
-X-CRM114-Status: GOOD (  14.01  )
+X-CRM114-CacheID: sfid-20200702_010655_608939_4BDE1B05 
+X-CRM114-Status: GOOD (  14.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,35 +102,44 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Thu, Jun 25, 2020 at 6:18 PM Enric Balletbo i Serra
 <enric.balletbo@collabora.com> wrote:
 >
-> The MediaTek's peripheral configuration controller is present on the
-> MT8183 SoC. Add the node for that controller.
+> Remove the unit address from the DT nodes that doesn't have a reg
+> property. This fixes the following unit name warnings:
+>
+>   Warning (unit_address_vs_reg): /cpus/idle-states/cluster-sleep@0: node has a unit name, but no reg or ranges property
+>   Warning (unit_address_vs_reg): /cpus/idle-states/cluster-sleep@1: node has a unit name, but no reg or ranges property
 >
 > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 Tested-by: Hsin-Yi Wang <hsinyi@chromium.org>
 > ---
 >
-> Changes in v2: None
+> Changes in v2:
+> - Replace cluster-sleepX for cluster-sleep-x (Matthias Brugger)
 >
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 6 ++++++
->  1 file changed, 6 insertions(+)
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >
 > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 1e03c849dc5d6..00137ec61164d 100644
+> index 00137ec61164d..6c00ffa275202 100644
 > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
 > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -285,6 +285,12 @@ infracfg: syscon@10001000 {
->                         #reset-cells = <1>;
->                 };
+> @@ -168,7 +168,7 @@ CPU_SLEEP: cpu-sleep {
+>                                 min-residency-us = <800>;
+>                         };
 >
-> +               pericfg: syscon@10003000 {
-> +                       compatible = "mediatek,mt8183-pericfg", "syscon";
-> +                       reg = <0 0x10003000 0 0x1000>;
-> +                       #clock-cells = <1>;
-> +               };
-> +
->                 pio: pinctrl@10005000 {
->                         compatible = "mediatek,mt8183-pinctrl";
->                         reg = <0 0x10005000 0 0x1000>,
+> -                       CLUSTER_SLEEP0: cluster-sleep@0 {
+> +                       CLUSTER_SLEEP0: cluster-sleep-0 {
+>                                 compatible = "arm,idle-state";
+>                                 local-timer-stop;
+>                                 arm,psci-suspend-param = <0x01010001>;
+> @@ -176,7 +176,7 @@ CLUSTER_SLEEP0: cluster-sleep@0 {
+>                                 exit-latency-us = <400>;
+>                                 min-residency-us = <1000>;
+>                         };
+> -                       CLUSTER_SLEEP1: cluster-sleep@1 {
+> +                       CLUSTER_SLEEP1: cluster-sleep-1 {
+>                                 compatible = "arm,idle-state";
+>                                 local-timer-stop;
+>                                 arm,psci-suspend-param = <0x01010001>;
 > --
 > 2.27.0
 >
