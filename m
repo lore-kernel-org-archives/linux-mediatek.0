@@ -2,69 +2,83 @@ Return-Path: <SRS0=IR42=AN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-1.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DB5E8C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 07:37:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 48B98C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 08:30:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A8AAE20899
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 07:37:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 17669206A1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2020 08:30:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZnOz5mMo";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="KmcMFIrP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A8AAE20899
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linuxfoundation.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hMVsHQYw";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="NcA01VsI"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 17669206A1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lizkPHIEjZmhrZcaN/IJ3ZeES4B2ka5zFs9I0VZgE5o=; b=ZnOz5mMoWXJwO5yAPxsHevpX0
-	+JaG1gsGLE8jVth/n7qM4YZXpEPIiK6a/rAO9oqR8/MKXHlRxAHJ7y5zN7qDPdgbOmMjrbGSnWXuz
-	rlGe8X63PCdGhZ6iKidWMyh54B8CQNG+hZUWGQI+PqVu+/0e9+RPYxMBa3HdmZQi/Ybl8/0rczjor
-	yNkxi7w8S+zJf0NcIBmA3aOyXUcgauwgzriMZeJ3AK30jmTCTU9t2U8VdCUdTIXVvf97MapIj/RKV
-	h84EdZbakQfS/1fVJUT6oLZmJ/PZd/mCVy6/FrUxp+ppz6jDWbVDkJCop6uN3EIKs2cCPPWFLlCZ2
-	fMtsIyrjw==;
+	 bh=QwURyUbUfVDLagUDwm/guGlOznWNT/PDfjLQNdQbgQs=; b=hMVsHQYwK16V0pGdHroX11Ylm
+	l1/zlGbTV7hvC3knILK4jzqK5wfXT75pgaA3BRKXDO8VvtAOgjGXSQ+2JAh1ZuZijsaY5Ed1UcVkC
+	RGF7y2QNcIBySUtv2HJAYQtgBUAgHwQ1bqmxJMA5+Ro5TEaAV9czhIE/HVy4O3p2t0PW1l8GTNbA9
+	gB94wBgbDeh/yNb33ADVWFoQv65kHp2xbtJlGliSimV1mhtr8xNkUDMzsdl7DQEQof94E7+Lt9E1Y
+	SSDsV8xLfChk5ufS+zWVC2Eip1N2m3y0V9B91NohzkOPWWEYXbTghGpki4RU/xeRqZ39V+g05ZQvP
+	wA3JNZs/g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jqtmZ-0008AL-AQ; Thu, 02 Jul 2020 07:37:19 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jqubW-0000iu-Ge; Thu, 02 Jul 2020 08:29:58 +0000
+Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jqtmW-00089g-Pw
- for linux-mediatek@lists.infradead.org; Thu, 02 Jul 2020 07:37:17 +0000
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8A27F2085B;
- Thu,  2 Jul 2020 07:37:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593675436;
- bh=vpifWVwgbjHSUaEegAAHzDiKupI4P46wI+RPjm/wU9M=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=KmcMFIrPlH/DYGVA69kjk8PKCY/DCTSfxA7mi8F7SUmgwxhtcI3ae4CZwpCU359bq
- O48jck5Plf9ZR0KbrKdFvmTivRigbjS7x7dcIjocdZd0fcyNBPP6IoFm28o+ZJ2gwT
- rN71msrjI6cYKrnS0UT2QSDl1Lxr4H8miKM1euLk=
-Date: Thu, 2 Jul 2020 09:37:20 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Serge Semin <Sergey.Semin@baikalelectronics.ru>
-Subject: Re: [PATCH v2 0/1] Revert "serial: 8250: Fix max baud limit in
- generic 8250 port"
-Message-ID: <20200702073720.GE1073011@kroah.com>
-References: <20200701211337.3027448-1-danielwinkler@google.com>
- <20200701223713.gavale4aramu3xnb@mobilestation>
+ id 1jqubS-0000fz-FT; Thu, 02 Jul 2020 08:29:55 +0000
+Received: by mail-il1-x144.google.com with SMTP id t27so18520551ill.9;
+ Thu, 02 Jul 2020 01:29:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=PFI6JgeUlJ0zCkzBIfqc7DEBAwFXOrcce0CKNSdhhaY=;
+ b=NcA01VsImeoYRghLx1f/WoCed8K77wkg/n2nxdjujvgeFu2ykNf91zWIdX1PgDF3bV
+ em7xudIT0qkiaGrFgK6BufPqJwFNBNTqz7dFJj7d3rvB0/bWFTarqjivuOptBwOD8Ust
+ +rmOlxyPBS8wJ5Ya/rrAkyuLHuOS3I6efbcAFYqVTRJ+pOEDgUeYfddbbaf+Cq8JnoN8
+ zktQlYolsZJThAht2LFFVUCgSkokUdBPvLowvkkzUaU/R6CM31lQjrFcRKMqndGnx5KB
+ JGWd9gfpLVsaNfW/EUkWNkcFqZ3PlycrOxGIhRVzY5gUOASui0lREVAWgEph38VQzlAH
+ XERQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=PFI6JgeUlJ0zCkzBIfqc7DEBAwFXOrcce0CKNSdhhaY=;
+ b=aaeTQIeRuawgPTrFPrRbn3bFo4FBGMzhga0Ve+NQlOKQbp9lrqut5w1sNkjZ+57o0H
+ fmcMjPwcRP9c8L3P+tDreZ29Q60qYYeUfN5MTdq/3KZ0Q8Aa5cmuf0hndT0E2UPA0QMG
+ aKFNYuarKCOE7z6JQR8mYlq1I4bgbLVHPrO/0MS9M0TronWqoGfm+KYmWVwayFcu4qxu
+ MJnPiH6FGw71sWDuEPAHfZwsFWFTgrUsgzWmoFGEHfz4ld7rvi5wF9ccdlYUmjPIkVaQ
+ kjujhk9EP8G5ALzArf5ayNACYzKi47263OWZl+K5cH0/Ey2YPX9jQ6AIyvITyOe7sJf8
+ gdGQ==
+X-Gm-Message-State: AOAM533Kw9aiSFHGmIS/gw67PEVOzmNHnnseERlpwOHjxjzlxM3WvZ/W
+ Tq7t9MQNKeot2ZXwuIog0TmrvTT/h9Mf24my1uk=
+X-Google-Smtp-Source: ABdhPJwNPbq0R1jANb1XdVAr90ksp6Cce11K5919+RTL7nX3VNOYDmwKtakBxB6hfuabbbme20388qd6mlT1cFzkquM=
+X-Received: by 2002:a92:9f96:: with SMTP id z22mr8671290ilk.266.1593678591282; 
+ Thu, 02 Jul 2020 01:29:51 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200701223713.gavale4aramu3xnb@mobilestation>
+References: <1592567631-20363-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1592567631-20363-3-git-send-email-gene.chen.richtek@gmail.com>
+ <20200701071620.GQ1179328@dell>
+In-Reply-To: <20200701071620.GQ1179328@dell>
+From: Gene Chen <gene.chen.richtek@gmail.com>
+Date: Thu, 2 Jul 2020 16:29:38 +0800
+Message-ID: <CAE+NS35Kj_H9uSgBiff4hogTWmwh6z+vmPNWDh_yU1=p68xQZA@mail.gmail.com>
+Subject: Re: [PATCH v2 2/4] mfd: mt6360: implement i2c R/W with CRC
+To: Lee Jones <lee.jones@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200702_033716_936940_D151C0DC 
-X-CRM114-Status: GOOD (  23.44  )
+X-CRM114-CacheID: sfid-20200702_042954_555972_024C3F20 
+X-CRM114-Status: GOOD (  14.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,66 +90,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: chromeos-bluetooth-upstreaming
- <chromeos-bluetooth-upstreaming@chromium.org>,
- Vignesh Raghavendra <vigneshr@ti.com>, Jiri Slaby <jslaby@suse.com>,
- linux-kernel@vger.kernel.org, Serge Semin <fancer.lancer@gmail.com>,
- Alexey Malahov <Alexey.Malahov@baikalelectronics.ru>,
- BlueZ <linux-bluetooth@vger.kernel.org>, Lukas Wunner <lukas@wunner.de>,
- linux-mediatek@lists.infradead.org, stable@vger.kernel.org,
- linux-serial@vger.kernel.org, Daniel Winkler <danielwinkler@google.com>,
- abhishekpandit@chromium.org, Aaron Sierra <asierra@xes-inc.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-arm-kernel@lists.infradead.org, Gene Chen <gene_chen@richtek.com>,
+ lars@metafoo.de, pmeerw@pmeerw.net, lgirdwood@gmail.com,
+ linux-kernel@vger.kernel.org, cy_huang@richtek.com, benjamin.chao@mediatek.com,
+ Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
+ jacek.anaszewski@gmail.com, pavel@ucw.cz, knaack.h@gmx.de,
+ matthias.bgg@gmail.com, shufan_lee@richtek.com, jic23@kernel.org,
+ dmurphy@ti.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 02, 2020 at 01:37:13AM +0300, Serge Semin wrote:
-> On Wed, Jul 01, 2020 at 02:13:36PM -0700, Daniel Winkler wrote:
-> > 
-> > This change regresses the QCA6174A-3 bluetooth chip, preventing
-> > firmware from being properly loaded. Without this change, the
-> > chip works as intended.
-> > 
-> > The device is the Kukui Chromebook using the Mediatek chipset
-> > and the 8250_mtk uart. Initial controller baudrate is 115200
-> > and operating speed is 3000000. Our entire suite of bluetooth
-> > tests now fail on this platform due to an apparent failure to
-> > sync its firmware on initialization.
-> 
-> Ok. It's mediatek 8250 driver, which is responsible for the failure.
-> Then we'll have two options:
-> 
-> 1) Add a new capability like UART_CAP_NO16DIV and take it into account
->    in the serial8250_get_baud_rate() method.
->  
-> I don't have a documentation for the Mediatek UART port, but it seems to me
-> that that controller calculates the baud rate differently from the standard
-> 8250 port. A standard 8250 port does that by the next formulae:
->   baud = uartclk / (16 * divisor).
-> While it seems to me that the Mediatek port uses the formulae like:
->   baud = uartclk / divisor. (Please, correct me if I'm wrong)
-> If so, then we could introduce a new capability like UART_CAP_NO16DIV. The
-> 8250_mtk driver will add it to the 8250-port capabilities field. The
-> serial8250_get_baud_rate() method should be altered in a way so one would check
-> whether the UART_CAP_NO16DIV flag is set and if it is then the
-> uart_get_baud_rate() function will be called without uartclk normalized by the
-> factor of 16.
-> 
-> 2) Manually call serial8250_do_set_divisor() in the custom set_termios()
->    callback.
-> 
-> Just add the uart_update_timeout() and serial8250_do_set_divisor() methods
-> invocation into the mtk8250_set_termios() function, which the original commit
-> 81bb549fdf14 ("serial: 8250_mtk: support big baud rate") author should have
-> done in the first place.
-
-Sounds like a sane fix, thanks for looking into this.
-
-greg k-h
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+TGVlIEpvbmVzIDxsZWUuam9uZXNAbGluYXJvLm9yZz4g5pa8IDIwMjDlubQ35pyIMeaXpSDpgLHk
+uIkg5LiL5Y2IMzoxNuWvq+mBk++8mgo+Cj4gT24gRnJpLCAxOSBKdW4gMjAyMCwgR2VuZSBDaGVu
+IHdyb3RlOgo+Cj4gPiBGcm9tOiBHZW5lIENoZW4gPGdlbmVfY2hlbkByaWNodGVrLmNvbT4KPiA+
+Cj4gPiBpbWxlbWVudCBpMmMgUi9XIHdpdGggQ1JDIHdoZW4gYWNjZXNzIHN1Yi1kZXZpY2UgUE1J
+QyBhbmQgTERPIHBhcnQKPgo+IFBsZWFzZSB1c2UgcHJvcGVyIGdyYW1tYXIsIGluY2x1ZGluZyBj
+YXBpdGFsIGxldHRlcnMgYXQgdGhlIHN0YXJ0IG9mCj4gdGhlIHNlbnRlbmNlIGFuZCBmb3IgYWJi
+cmV2aWF0aW9ucyBzdWNoIGFzICJJMkMiIGFuZCBmdWxsIHN0b3BzLgo+Cj4gQWxzbyB0aGlzIGRv
+ZXNuJ3QgbWFrZSBzZW5zZSB0byBtZS4gIFBsZWFzZSBlbGFib3JhdGUuCj4KCkFDSwoKPiA+IFNp
+Z25lZC1vZmYtYnk6IEdlbmUgQ2hlbiA8Z2VuZV9jaGVuQHJpY2h0ZWsuY29tPgo+ID4gLS0tCj4g
+PiAgZHJpdmVycy9tZmQvS2NvbmZpZyAgICAgICAgfCAgIDEgKwo+ID4gIGRyaXZlcnMvbWZkL210
+NjM2MC1jb3JlLmMgIHwgNTQxICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrLS0tLS0tLS0t
+LS0tLS0tLQo+Cj4gVGhpcyBwYXRjaCBpcyBkb2luZyB3YXkgdG9vIG11Y2ggd2Fja3kgc3R1ZmYg
+YWxsIGF0IG9uY2UsIG1ha2luZyBpdAo+IHZlcnkgZGlmZmljdWx0IHRvIHJldmlldy4gIFBsZWFz
+ZSBicmVhayBpdCB1cCBpbnRvIGZ1bmN0aW9uYWwgcGllY2VzCj4gYW5kIHN1Ym1pdCBhcyBzZXBh
+cmF0ZSBsb2dpY2FsIHBhdGNoZXMgKGluIGEgc2V0IG9mIGNvdXJzZSkuCj4KCklmIEkgdW5kZXJz
+dGFuZCBjb3JyZWN0bHksIEkgbmVlZCB0byBzZXBhcmF0ZSBwYXRjaFsyLzRdIGJ1dCBub3QKZW50
+aXJlIG10NjM2Mi1jb3JlLmMgaW50byBzZXZlcmFsIHBhdGNoZXMuCgo+ID4gIGluY2x1ZGUvbGlu
+dXgvbWZkL210NjM2MC5oIHwgMjQwIC0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gPiAgMyBmaWxlcyBj
+aGFuZ2VkLCAzNTcgaW5zZXJ0aW9ucygrKSwgNDI1IGRlbGV0aW9ucygtKQo+ID4gIGRlbGV0ZSBt
+b2RlIDEwMDY0NCBpbmNsdWRlL2xpbnV4L21mZC9tdDYzNjAuaAo+Cj4gLS0KPiBMZWUgSm9uZXMg
+W+adjueQvOaWr10KPiBTZW5pb3IgVGVjaG5pY2FsIExlYWQgLSBEZXZlbG9wZXIgU2VydmljZXMK
+PiBMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBmb3IgQXJtIFNvQ3MKPiBGb2xs
+b3cgTGluYXJvOiBGYWNlYm9vayB8IFR3aXR0ZXIgfCBCbG9nCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QK
+TGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
