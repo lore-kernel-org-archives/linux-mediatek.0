@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A2922C433E2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2020 08:16:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9524DC433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2020 08:16:50 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 71E06207DA
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2020 08:16:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 626A2206A1
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2020 08:16:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="0yVTwBoX";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="ax1NaOkU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 71E06207DA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gfW6vW9t";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="BkQAxXmY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 626A2206A1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,44 +26,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=eWFpMgbzo5vaejJzpWe53E+PhvmNKLq5msIlDikXlxU=; b=0yVTwBoXOeVrUoJy3UD36cvUd
-	D/bweaMe0K3CG4HSmmztPgINssq8iAioM70go/NcpJIBUC73xIDnpUPFy1/IGzjVrnzxpeTIATX2R
-	ZzWqJlHNNeDZOZGS4gN9qwnZw/ByRa7Txl81jqdV2TCbck1+w8dH5AsHDhFFtHuxcPX7T60Mv6gpY
-	MAAz3U3/Mx5uKBswvzyPmyhpT1YcKWZ/EljH3gcNEhQL5UB9L/YzDJ0FYgSUu0R8zJnFxvpWYmG5I
-	W7cvQVbMbp9ujZa8rgx9PjR2+Z4VjGGQhI2WgvHY7IWwKbtq80B/51Pa0b5MOn0DTPXAfYbmpyWrI
-	UqjNa3zIg==;
+	 bh=pemAIwxQ1ERbZ12g703NPh+ZF2AfXRsvSnLC19OREFA=; b=gfW6vW9tpIonUjcNB/6IZVd5F
+	aVW8cBZPNpWdI1Ss1p1eMaf+A92Bl2FMw2A3X2B2jQh66VU/s+MGWU4X/PenaEwhO48UYyH9cL+j8
+	q/xwLK0hdngIaphEcYl1p+TigrSxLTp5Usl6+h0u+lpAmDlpVMpuHd+DEM9fiRhnH++4UYvWEBJgq
+	D7e7a7tdFiWpvb/x9wXOb5sxZqVhDFonQLG+FiXd75MXHD/6jFow5HIJrmpCrkWLa4f4tJzqX49IA
+	WtG92Y1A6leVtN9njynQd4t0R7Fsm1GEEqR4Ddbj5dv/5sI4gADh+Ho6i0ufv3ws/LzOS4sWGajHp
+	BKoMekUvA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jrGsD-00062p-3T; Fri, 03 Jul 2020 08:16:41 +0000
+	id 1jrGsE-00063j-BJ; Fri, 03 Jul 2020 08:16:42 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jrGs2-0005tq-DQ
- for linux-mediatek@lists.infradead.org; Fri, 03 Jul 2020 08:16:31 +0000
+ id 1jrGs4-0005up-7u
+ for linux-mediatek@lists.infradead.org; Fri, 03 Jul 2020 08:16:33 +0000
 Received: from lore-desk.lan (unknown [151.48.138.186])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 79821207FF;
- Fri,  3 Jul 2020 08:16:28 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 4AC19206A1;
+ Fri,  3 Jul 2020 08:16:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593764189;
- bh=UBes1j4vjYhY4PDH2ZniNzUObt9xb2hHJ5Z92aAHH1c=;
+ s=default; t=1593764191;
+ bh=i/P2xdEkqGxE9To+bO0Ue/nBR35UyDkm4uABqmr0tOk=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ax1NaOkU6d7dw9/ixGrB5hlKqHuYasmWKRlXC6+3ERmtT+B+R6qf4olvnNMxvgLOE
- g3/pKrZ1EpHnjaQelmQczPi0613Ns8h1ZNmw/DlgM/YYoVihOrs/3CTznzWQojUeFl
- xKHeNEELtRV1LYuAq5GgIHDMrRL5v39HE9zCBe5w=
+ b=BkQAxXmYHbhBlWQeiA9XJkJJJo8aLrQkjs2FJpg6KarY/Sdb4P6z1hww1nvHX9HJj
+ 7Fchk2n+Vc918QU46tzsIkRm1NX+x0e0soJ36imCI0WGWvNY6h9apUOuy1TkktiB53
+ R87scwShr4VIvFmnvCocARLpUeTOMJ3WPyfUpA5c=
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name
-Subject: [PATCH v2 05/22] mt76: mt7615: wake device before accessing regmap in
- debugfs
-Date: Fri,  3 Jul 2020 10:15:44 +0200
-Message-Id: <13592f72b6da4ded4ebf96477cc5fb6a9d318cd8.1593763584.git.lorenzo@kernel.org>
+Subject: [PATCH v2 06/22] mt76: mt7615: wake device before configuring hw keys
+Date: Fri,  3 Jul 2020 10:15:45 +0200
+Message-Id: <ebb32b3fc8eb1a36a65d3d56bb16c5ae377ea35a.1593763584.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <cover.1593763584.git.lorenzo@kernel.org>
 References: <cover.1593763584.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200703_041630_542441_5CF35257 
-X-CRM114-Status: GOOD (  12.89  )
+X-CRM114-CacheID: sfid-20200703_041632_430211_7EEEB588 
+X-CRM114-Status: GOOD (  10.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,107 +81,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Make sure the device is in full-power before reading regs in debugfs
+Make sure the device is in full-power before uploading keys to the hw
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- .../wireless/mediatek/mt76/mt7615/debugfs.c   | 25 ++++++++++++++++++-
- 1 file changed, 24 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mt7615/main.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
-index 8bb7c64db738..8894a0ab407b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
-@@ -6,11 +6,16 @@ static int
- mt7615_radar_pattern_set(void *data, u64 val)
- {
- 	struct mt7615_dev *dev = data;
-+	int err;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+index 5f2c50a2449b..3c230479b36c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+@@ -336,7 +336,7 @@ static int mt7615_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
+ 	struct mt7615_sta *msta = sta ? (struct mt7615_sta *)sta->drv_priv :
+ 				  &mvif->sta;
+ 	struct mt76_wcid *wcid = &msta->wcid;
+-	int idx = key->keyidx;
++	int idx = key->keyidx, err;
  
- 	if (!mt7615_wait_for_mcu_init(dev))
- 		return 0;
+ 	/* The hardware does not support per-STA RX GTK, fallback
+ 	 * to software mode for these.
+@@ -366,6 +366,8 @@ static int mt7615_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
+ 		return -EOPNOTSUPP;
+ 	}
  
--	return mt7615_mcu_rdd_send_pattern(dev);
 +	mt7615_mutex_acquire(dev);
-+	err = mt7615_mcu_rdd_send_pattern(dev);
++
+ 	if (cmd == SET_KEY) {
+ 		key->hw_key_idx = wcid->idx;
+ 		wcid->hw_key_idx = idx;
+@@ -376,9 +378,13 @@ static int mt7615_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
+ 			    cmd == SET_KEY ? key : NULL);
+ 
+ 	if (mt76_is_usb(&dev->mt76))
+-		return mt7615_queue_key_update(dev, cmd, msta, key);
++		err = mt7615_queue_key_update(dev, cmd, msta, key);
++	else
++		err = mt7615_mac_wtbl_set_key(dev, wcid, key, cmd);
+ 
+-	return mt7615_mac_wtbl_set_key(dev, wcid, key, cmd);
 +	mt7615_mutex_release(dev);
 +
 +	return err;
  }
  
- DEFINE_DEBUGFS_ATTRIBUTE(fops_radar_pattern, NULL,
-@@ -84,7 +89,10 @@ mt7615_fw_debug_set(void *data, u64 val)
- 		return 0;
- 
- 	dev->fw_debug = val;
-+
-+	mt7615_mutex_acquire(dev);
- 	mt7615_mcu_fw_log_2_host(dev, dev->fw_debug ? 2 : 0);
-+	mt7615_mutex_release(dev);
- 
- 	return 0;
- }
-@@ -111,6 +119,8 @@ mt7615_reset_test_set(void *data, u64 val)
- 	if (!mt7615_wait_for_mcu_init(dev))
- 		return 0;
- 
-+	mt7615_mutex_acquire(dev);
-+
- 	skb = alloc_skb(1, GFP_KERNEL);
- 	if (!skb)
- 		return -ENOMEM;
-@@ -118,6 +128,8 @@ mt7615_reset_test_set(void *data, u64 val)
- 	skb_put(skb, 1);
- 	mt76_tx_queue_skb_raw(dev, 0, skb, 0);
- 
-+	mt7615_mutex_release(dev);
-+
- 	return 0;
- }
- 
-@@ -167,9 +179,13 @@ mt7615_ampdu_stat_read(struct seq_file *file, void *data)
- {
- 	struct mt7615_dev *dev = file->private;
- 
-+	mt7615_mutex_acquire(dev);
-+
- 	mt7615_ampdu_stat_read_phy(&dev->phy, file);
- 	mt7615_ampdu_stat_read_phy(mt7615_ext_phy(dev), file);
- 
-+	mt7615_mutex_release(dev);
-+
- 	return 0;
- }
- 
-@@ -221,7 +237,10 @@ static int mt7615_read_temperature(struct seq_file *s, void *data)
- 		return 0;
- 
- 	/* cpu */
-+	mt7615_mutex_acquire(dev);
- 	temp = mt7615_mcu_get_temperature(dev, 0);
-+	mt7615_mutex_release(dev);
-+
- 	seq_printf(s, "Temperature: %d\n", temp);
- 
- 	return 0;
-@@ -233,6 +252,8 @@ mt7615_queues_acq(struct seq_file *s, void *data)
- 	struct mt7615_dev *dev = dev_get_drvdata(s->private);
- 	int i;
- 
-+	mt7615_mutex_acquire(dev);
-+
- 	for (i = 0; i < 16; i++) {
- 		int j, wmm_idx = i % MT7615_MAX_WMM_SETS;
- 		int acs = i / MT7615_MAX_WMM_SETS;
-@@ -253,6 +274,8 @@ mt7615_queues_acq(struct seq_file *s, void *data)
- 		seq_printf(s, "AC%d%d: queued=%d\n", wmm_idx, acs, qlen);
- 	}
- 
-+	mt7615_mutex_release(dev);
-+
- 	return 0;
- }
- 
+ static int mt7615_config(struct ieee80211_hw *hw, u32 changed)
 -- 
 2.26.2
 
