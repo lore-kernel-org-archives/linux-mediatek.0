@@ -2,79 +2,75 @@ Return-Path: <SRS0=1Iba=AO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BBF65C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2020 02:48:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 283A6C433E5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2020 04:43:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 846D72070C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2020 02:48:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EEA1820760
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2020 04:43:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="a/oNZJi1";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="WrBBTQc5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 846D72070C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UB3CHl7n";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="FBmpSp5s"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EEA1820760
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=AipyRo6Yw2LZoZUFKlUrbewYcmVJjjGJ56e+aho4OYU=; b=a/oNZJi1QpK7aFXBBToFme77o
-	9iFVFzwlqJLlyf0XfnH6Jc1+wzLBvkTIpdvS5qnYlI7BDe8YG+kN5wrCQ7UW1nStBQRXBkejlJ1bj
-	FtXgMrs5Xa7WWM/LnMG2TgKd5uI4MhBVPgvSGVXLm3hFOpPaPv3ABUKh7XG53VfHE8dbngCfi+hDs
-	rXttS81wzuBO9oQt9D5KCQA7L+zqzDNOcZzXDPQsLVawFj9r4B11PVOBL5FzbAvrr5NpIjmfocR3a
-	e32U/qwhCouTQ2Iueou+Q9sznqtL/CqxSxOIlLOL1DQx+1AZAKejZsL6I7qBC1mBgWXRZF5mkkGhV
-	vkCZRCM6g==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0EL0n59KhnK1c6Pg+UlTrLdIJZJ6PocVANpA2f0FVHQ=; b=UB3CHl7nJcxuTAckZf1bmoWLjm
+	F0QAP3zHPnj9iFX1c96oR4od19WVH/CCCLdkfawmypvZpjIRmwD+ZB9lpdtJUx9BCP0oxr+pv1u0c
+	dxvU9A2bei3U7S7qRF10SzSIRbE5fJVV2vFn+5mKYeyRCah4HaH5wVE4k0mNAPTFFClPiRReB8mH+
+	vP2wdBvofP3JjkyhkErAGOtiXp+6IVVo8LoyMKvgW3fDVEzzi5w9Rm7Tf4bWS6jKiX8oprP1m2TJm
+	Wrg1OhcM9AJaPRULZjXerv33xnOHc/jXeOoEDjTEg8yvsRp+0ZvaEQBKJwK6VWXAmcG9VdrwFWRME
+	prkw85yw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jrBk0-0006oH-Cn; Fri, 03 Jul 2020 02:47:52 +0000
+	id 1jrDXJ-0002th-2o; Fri, 03 Jul 2020 04:42:53 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jrBjy-0006nZ-1X
- for linux-mediatek@lists.infradead.org; Fri, 03 Jul 2020 02:47:51 +0000
-X-UUID: c5eaae1813044ed299785415ab1327aa-20200702
+ id 1jrDXF-0002s6-DD; Fri, 03 Jul 2020 04:42:50 +0000
+X-UUID: 51a699a83584446f822a7faaacd7f6d5-20200702
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=nfiF1q92PaTMd0SuXB3WAwRouzIiMHg7VW7edlego8Y=; 
- b=WrBBTQc56UrWQBbztWpifOQKmZLirDulavXIkZ0MP52Pm+X+Z30t9UK0PlHzdMOXQcqY3ySwD2XZXSwkgivvoJDH1swgcChoz7CP7wkM+WVRtsNj4aJm2TVBLq4lSi44L1PQe5l4B3WzQqFRQ+cbOWobnZDqKvF8sQvx59KZTQs=;
-X-UUID: c5eaae1813044ed299785415ab1327aa-20200702
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=fOIE/14eP5QaMvpr+A/0WJuqIjmfhZZCLzsc96MbxFk=; 
+ b=FBmpSp5sgM1MgGrtTB8j1A/LiD8HFLVeEeXL3z3YMgGJo6NlObHSbGefDXMRtqXEYAAP8PKNhPN/iX8bj4u9Nk++VND4QxtqNiJ0tDtbGGFx+/q4V5x1r+AYN8ZiJRKak1vgPxd8VRPP4bpX7simh7EFrRBXA3AktVzuBLv4xCQ=;
+X-UUID: 51a699a83584446f822a7faaacd7f6d5-20200702
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <chao.hao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 335759238; Thu, 02 Jul 2020 18:47:40 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Jul 2020 19:37:39 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 3 Jul 2020 10:37:32 +0800
-Received: from [10.15.20.246] (10.15.20.246) by mtkcas08.mediatek.inc
+ with ESMTP id 242711830; Thu, 02 Jul 2020 20:42:41 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 2 Jul 2020 21:42:40 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 3 Jul 2020 12:42:37 +0800
+Received: from localhost.localdomain (10.15.20.246) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 3 Jul 2020 10:37:32 +0800
-Message-ID: <1593743784.22738.0.camel@mbjsdccf07>
-Subject: Re: [PATCH v5 02/10] iommu/mediatek: Rename the register
- STANDARD_AXI_MODE(0x48) to MISC_CTRL
-From: chao hao <Chao.Hao@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>
-Date: Fri, 3 Jul 2020 10:36:24 +0800
-In-Reply-To: <1593569872.32037.6.camel@mhfsdcap03>
-References: <20200629071310.1557-1-chao.hao@mediatek.com>
- <20200629071310.1557-3-chao.hao@mediatek.com>
- <1593569872.32037.6.camel@mhfsdcap03>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ Transport; Fri, 3 Jul 2020 12:42:33 +0800
+From: Chao Hao <chao.hao@mediatek.com>
+To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>
+Subject: [PATCH v6 00/10] MT6779 IOMMU SUPPORT
+Date: Fri, 3 Jul 2020 12:41:17 +0800
+Message-ID: <20200703044127.27438-1-chao.hao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: E4EE501486CFE45934E76861F54A424896840F7B4C9AC2ECB55F96F8AE402C6E2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200702_224750_299469_2DFDCC17 
-X-CRM114-Status: GOOD (  18.23  )
+X-CRM114-CacheID: sfid-20200703_004249_611465_68E7FEFA 
+X-CRM114-Status: GOOD (  10.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,66 +82,98 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: FY Yang <fy.yang@mediatek.com>, wsd_upstream@mediatek.com,
- Chao Hao <"chao hao"@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, FY Yang <fy.yang@mediatek.com>,
+ wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
+ Chao Hao <chao.hao@mediatek.com>, iommu@lists.linux-foundation.org,
+ TH Yang <th.yang@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Yong Wu <yong.wu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2020-07-01 at 10:17 +0800, Yong Wu wrote:
-> On Mon, 2020-06-29 at 15:13 +0800, Chao Hao wrote:
-> > For iommu offset=0x48 register, only the previous mt8173/mt8183 use the
-> > name STANDARD_AXI_MODE, all the latest SoC extend the register more
-> > feature by different bits, for example: axi_mode, in_order_en, coherent_en
-> > and so on. So rename REG_MMU_MISC_CTRL may be more proper.
-> > 
-> > This patch only rename the register name, no functional change.
-> > 
-> > Signed-off-by: Chao Hao <chao.hao@mediatek.com>
-> > Reviewed-by: Yong Wu <yong.wu@mediatek.com>
-> > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> > ---
-> >  drivers/iommu/mtk_iommu.c | 14 +++++++-------
-> >  drivers/iommu/mtk_iommu.h |  2 +-
-> >  2 files changed, 8 insertions(+), 8 deletions(-)
-> 
-> ...
-> 
-> > diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> > index ea949a324e33..1b6ea839b92c 100644
-> > --- a/drivers/iommu/mtk_iommu.h
-> > +++ b/drivers/iommu/mtk_iommu.h
-> > @@ -18,7 +18,7 @@
-> >  #include <soc/mediatek/smi.h>
-> >  
-> >  struct mtk_iommu_suspend_reg {
-> > -	u32				standard_axi_mode;
-> > +	u32				misc_ctrl;
-> 
-> Here will cause build fail for v1:
-> 
-> drivers/iommu/mtk_iommu_v1.c:675:20: error: 'struct
-> mtk_iommu_suspend_reg' has no member named 'standard_axi_mode'
->   writel_relaxed(reg->standard_axi_mode,
->                     ^
-> 
-> We could change something like:
-> 
-> union {
-> 	u32	standard_axi_mode; /* only for v1 */
-> 	u32	misc_ctrl;         /* only for v2 */
-> };
-> 
-> >  	u32				dcm_dis;
-> >  	u32				ctrl_reg;
-> >  	u32				int_control0;
+This patchset adds mt6779 iommu support.
+mt6779 has two iommus, they are MM_IOMMU(M4U) and APU_IOMMU which used ARM Short-Descriptor translation format.
+The mt6779's MM_IOMMU-SMI and APU_IOMMU HW diagram is as below, it is only a brief diagram:
+                       EMI
+		        |
+     --------------------------------------
+     |                                    |
+  MM_IOMMU                            APU_IOMMU
+     |                                    |
+ SMI_COMMOM-----------                 APU_BUS
+     |                |                   |
+  SMI_LARB(0~11)      |                   |
+     |                |                   |
+     |                |             --------------
+     |                |             |     |      |
+Multimedia engine    CCU           VPU   MDLA   EMDA
 
-ok, I will fix it in next version, thanks
+All the connections are hardware fixed, software can not adjust it.
+Compared with mt8183, SMI_BUS_ID width has changed from 10 to 12. SMI Larb number is described in bit[11:7],
+Port number is described in bit[6:2]. In addition, there are some registers has changed in mt6779, so we need
+to redefine and reuse them.
 
-> 
+The patchset only used MM_IOMMU, so we only add MM_IOMMU basic function, such as smi_larb port definition, registers
+definition and hardware initialization.
+change notes:
+
+ v6:
+  1. Fix build error for "PATCH v5 02/10".
+  2. Use more precise definitions and commit messages.
+
+ v5:
+  1. Split "iommu/mediatek: Add mt6779 IOMMU basic support(patch v4)" to three patches(from PATCH v5 08/10 to PATCH v5 10/10).
+  2. Use macro definitions to replace bool values in mtk_iommu_plat_data structure
+ http://lists.infradead.org/pipermail/linux-mediatek/2020-June/013586.html
+
+ v4:
+  1. Rebase on v5.8-rc1.
+  2. Fix coding style.
+  3. Add F_MMU_IN_DRDER_WR_EN definition in MISC_CTRL to improve performance.
+ https://lkml.org/lkml/2020/6/16/1741
+
+ v3:
+  1. Rebase on v5.7-rc1.
+  2. Remove unused port definition,ex:APU and CCU port in mt6779-larb-port.h.
+  3. Remove "change single domain to multiple domain" part(from PATCH v2 09/19 to PATCH v2 19/19).
+  4. Redesign mt6779 basic part
+    (1)Add some register definition and reuse them.
+    (2)Redesign smi larb bus ID to analyze IOMMU translation fault.
+    (3)Only init MM_IOMMU and not use APU_IOMMU.
+ http://lists.infradead.org/pipermail/linux-mediatek/2020-May/029811.html
+
+ v2:
+  1. Rebase on v5.5-rc1.
+  2. Delete M4U_PORT_UNKNOWN define because of not use it.
+  3. Correct coding format.
+  4. Rename offset=0x48 register.
+  5. Split "iommu/mediatek: Add mt6779 IOMMU basic support(patch v1)" to several patches(patch v2).
+ http://lists.infradead.org/pipermail/linux-mediatek/2020-January/026131.html
+
+ v1:
+ http://lists.infradead.org/pipermail/linux-mediatek/2019-November/024567.html
+
+Chao Hao (10):
+  dt-bindings: mediatek: Add bindings for MT6779
+  iommu/mediatek: Rename the register STANDARD_AXI_MODE(0x48) to MISC_CTRL
+  iommu/mediatek: Use a u32 flags to describe different HW features
+  iommu/mediatek: Setting MISC_CTRL register
+  iommu/mediatek: Move inv_sel_reg into the plat_data
+  iommu/mediatek: Add sub_comm id in translation fault
+  iommu/mediatek: Add REG_MMU_WR_LEN_CTRL register definition
+  iommu/mediatek: Extend protect pa alignment value
+  iommu/mediatek: Modify MMU_CTRL register setting
+  iommu/mediatek: Add mt6779 basic support
+
+ .../bindings/iommu/mediatek,iommu.txt         |   2 +
+ drivers/iommu/mtk_iommu.c                     | 110 +++++++---
+ drivers/iommu/mtk_iommu.h                     |  20 +-
+ include/dt-bindings/memory/mt6779-larb-port.h | 206 ++++++++++++++++++
+ 4 files changed, 299 insertions(+), 39 deletions(-)
+
+--
+2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
