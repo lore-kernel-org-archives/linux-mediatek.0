@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 53A74C433E1
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 52E6AC433E0
 	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2020 08:17:04 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 250CD207DA
+	by mail.kernel.org (Postfix) with ESMTPS id 242D0206A1
 	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2020 08:17:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="B0Nkg13f";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="yAPXJ+Fj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 250CD207DA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="w+/HBr9R";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="oBq11pbV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 242D0206A1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,45 +26,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=22TPcjva+CWtqx+nnsZ2CtxhXyhZoYm9svXlmNuX1Uc=; b=B0Nkg13fx1rOwnqJWfpT9Vl2w
-	hsUvHIzv+ALQuLDWX2lpkLQXlrpRM59AL+DIv9UkE9PDqMv0G71sxNj4+nr6kQSueH3H7gDeCggzS
-	ajextU/dEXwvcM08l2xtyRPNEG6PFifBx5nl5et0uZueBQjKw20bdLEiOXzFVOekX/+Yr4O96JlUm
-	UcZmmLqIslVMANNubC+gv88NxHO3BbztIgpnsOwWafZ1UdSFnfCDX7Dko9hM5FZMYYMjGhLtT0EOM
-	foVX7zevzNUgPkrAzMcVt1WENbNaN3DdNlfP+wXidBXN3BwEAj8J6U2jr/xplFn9IKp7QV93aIh2w
-	Z0Tz034gQ==;
+	 bh=EeVN6KML9vVgnYjDG63LNlQEENEIVHoTTAN21FyxcDQ=; b=w+/HBr9Rni2JaYxxmIO24IFQQ
+	2/y56iar4f0gRFLAdnLlQV4AKNgdxWq8HlzBphoeTTg3PGVPteRbeC9v6P6bfywsuJV3LYIhbEqRx
+	bni+0GrBONM9ZGyMQo4vQ5vftwGRCZdRDqhq7IdSk5xPmG/DEyimm44Wjs0ShNuYR74PHGU5G6efN
+	zsI923VyajJU7dV1Y09Co2mVsfAMfXZx21pLD8dTD3pAYiQynggdZfwU3+2OeM9waCTF6hnAiCUTF
+	x/VSvCJBoM9QwQ9+6oV8GwpdkIvnJo7Hd/ubk75qRWOv+LL/U9WAofdacCHRZWIszcABH5kp6l6QX
+	JP4rKq6Sg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jrGsM-0006Bh-LG; Fri, 03 Jul 2020 08:16:50 +0000
+	id 1jrGsQ-0006GI-Vf; Fri, 03 Jul 2020 08:16:55 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jrGsD-00062b-85
- for linux-mediatek@lists.infradead.org; Fri, 03 Jul 2020 08:16:42 +0000
+ id 1jrGsG-00065z-Rr
+ for linux-mediatek@lists.infradead.org; Fri, 03 Jul 2020 08:16:45 +0000
 Received: from lore-desk.lan (unknown [151.48.138.186])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 450EC207FF;
- Fri,  3 Jul 2020 08:16:39 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id D1CF720826;
+ Fri,  3 Jul 2020 08:16:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593764200;
- bh=PHxZI6kQT92TJsy5aJifbIG/s34Ng7bluHs6Q1I1JqE=;
+ s=default; t=1593764204;
+ bh=d1bIE0kDegwbTo99G0gWtdE6n0x1lRNv7QhH5gOvehM=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=yAPXJ+FjYcLZpzmKBc38EhSbW1BSXIHWJdz3P2YFTFlko4IP+UzCCtNz6bhuYbjDU
- Xz6+t5Z2jHFQWmHOfp7nzwzo0WJn8hKMkCO7+Qa8n0hTX7aQGgCPxMQUjIzP/2zCM9
- E7A1VpHmlPcLfqNuQfxKr0e6acJyQaL9JwvgPTa8=
+ b=oBq11pbV34mqXydikYbZK9yGN8nfWoXJyLotcFrhsnKLB3VoM85TfCaRCHR50ZQWg
+ 4beR82H9XA5MGh0RgCVJJ7c4sHuAmXC4w9j9KZn8WLWXvbomYDVx20IgqeUtJ2QHCF
+ kRuDiaJV07D1scqt5dgAPFLolcj17Ln+OmSXR/qI=
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name
-Subject: [PATCH v2 11/22] mt76: mt7615: add missing lock in
- mt7615_regd_notifier
-Date: Fri,  3 Jul 2020 10:15:50 +0200
-Message-Id: <a8d8e4bc64d003972f04b9452ae723f6400842b7.1593763584.git.lorenzo@kernel.org>
+Subject: [PATCH v2 13/22] mt76: mt7615: run mt7615_mcu_set_roc holding mt76
+ mutex
+Date: Fri,  3 Jul 2020 10:15:52 +0200
+Message-Id: <e3eeaddf7c676810b3cb13ba9c1b6c6c8386b085.1593763584.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <cover.1593763584.git.lorenzo@kernel.org>
 References: <cover.1593763584.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200703_041641_384572_2AFCA2B5 
-X-CRM114-Status: UNSURE (   8.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200703_041645_028768_345C995C 
+X-CRM114-Status: GOOD (  10.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,29 +82,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Make sure to run mt7615_dfs_init_radar_detector in mt7615_regd_notifier
-holding mt76 mutex in order to avoid races and set the device in full
-power
+Make sure to run mt7615_mcu_set_roc() holding mt76 mutex in order to
+wake the device from low power state and avoid races
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7615/init.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt7615/main.c | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-index c22878b82540..59c59e8630c1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-@@ -294,7 +294,9 @@ mt7615_regd_notifier(struct wiphy *wiphy,
- 	if (!(chandef->chan->flags & IEEE80211_CHAN_RADAR))
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+index c52b5c68ba97..47dca270150d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+@@ -871,9 +871,11 @@ void mt7615_roc_work(struct work_struct *work)
+ 	if (!test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state))
  		return;
  
-+	mt7615_mutex_acquire(dev);
- 	mt7615_dfs_init_radar_detector(phy);
-+	mt7615_mutex_release(dev);
++	mt7615_mutex_acquire(phy->dev);
+ 	ieee80211_iterate_active_interfaces(phy->mt76->hw,
+ 					    IEEE80211_IFACE_ITER_RESUME_ALL,
+ 					    mt7615_roc_iter, phy);
++	mt7615_mutex_release(phy->dev);
+ 	ieee80211_remain_on_channel_expired(phy->mt76->hw);
  }
  
- static void
+@@ -991,20 +993,24 @@ static int mt7615_remain_on_channel(struct ieee80211_hw *hw,
+ 	if (test_and_set_bit(MT76_STATE_ROC, &phy->mt76->state))
+ 		return 0;
+ 
++	mt7615_mutex_acquire(phy->dev);
++
+ 	err = mt7615_mcu_set_roc(phy, vif, chan, duration);
+ 	if (err < 0) {
+ 		clear_bit(MT76_STATE_ROC, &phy->mt76->state);
+-		return err;
++		goto out;
+ 	}
+ 
+ 	if (!wait_event_timeout(phy->roc_wait, phy->roc_grant, HZ)) {
+ 		mt7615_mcu_set_roc(phy, vif, NULL, 0);
+ 		clear_bit(MT76_STATE_ROC, &phy->mt76->state);
+-
+-		return -ETIMEDOUT;
++		err = -ETIMEDOUT;
+ 	}
+ 
+-	return 0;
++out:
++	mt7615_mutex_release(phy->dev);
++
++	return err;
+ }
+ 
+ static int mt7615_cancel_remain_on_channel(struct ieee80211_hw *hw,
+@@ -1018,7 +1024,9 @@ static int mt7615_cancel_remain_on_channel(struct ieee80211_hw *hw,
+ 	del_timer_sync(&phy->roc_timer);
+ 	cancel_work_sync(&phy->roc_work);
+ 
++	mt7615_mutex_acquire(phy->dev);
+ 	mt7615_mcu_set_roc(phy, vif, NULL, 0);
++	mt7615_mutex_release(phy->dev);
+ 
+ 	return 0;
+ }
 -- 
 2.26.2
 
