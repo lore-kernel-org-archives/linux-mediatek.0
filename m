@@ -1,90 +1,90 @@
-Return-Path: <SRS0=1Iba=AO=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=EBBG=AP=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 681B7C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2020 17:42:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 28218C433E0
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jul 2020 00:17:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3EC1B2084C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2020 17:42:15 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DB4E720739
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jul 2020 00:17:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cfwpn9bh";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="DiTMT+9T"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3EC1B2084C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pFvknDLW";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lca.pw header.i=@lca.pw header.b="mHrF12og"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DB4E720739
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lca.pw
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1FyrwHZ4ZfW4m4oMNXJ6SdiWk3SKwjSrHfW593WP3Cg=; b=cfwpn9bhoAOPXgMh+lOitV7P3
-	Tp1+JInDKpePhRgHu5b57E4/v/7bL69NuGWVck3lOQL8d5hBBK/pMFd9dIzAmW4e6odx+xlkHUt+O
-	/aqIbBEP/htxZefwRHHCsyKlLgS1RNuSORuuAb3zkqhyIVjF3ZXWpvX2/z3kmcS9ejqfF+LEjFTod
-	05i+OAcnT7s7HcLCnHp83VIBhzyFlNsyYAXxRxEUCvDpUXWBkSy/0AP6sspaWz1XWYGtM+v088z2q
-	zeUWz5XDzfi3vPyyk6je5GiB+hrsSe/Sw36vmFqP9F+YS6GUqLo8817suvks3DyKC8DQ4bycXf8JT
-	k7Y+xxZeA==;
+	 bh=+FFhVkA8Hxxok/5usCxKDxd+M9XP+B2zzNL82LPe/k0=; b=pFvknDLWlu4bC6M8pOnflZRHe
+	dT44Ob0XVm62jbZ3hrKvmvk7QAcDv99+BQRZ7ctri02gzyTSIVoi0to52dGi6d/MdvkCki0QcdINb
+	CTQINL+KhgiOHef1/IsRyvsy2nTK+2ei+4oM8iPTuEZufl5sa62I3sH2tHHB5wqulbBZwRNea4962
+	OACfb0GW3B/UCSe+Anch5eOlcWoLUiPNRzyB95QJhrW8y+X+rkA1mfh8N64mdPNrLzB+C8mKcQB8A
+	uKWMzxD8GgrMcCAkk+tYnC57btHVvTfNFmUlCqsFOR4EG2/QuYZowluCPBscUehBGo0RRlVknAExd
+	DJrGR3m2A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jrPhN-0001tT-Tp; Fri, 03 Jul 2020 17:42:05 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1jrVs2-0007GC-As; Sat, 04 Jul 2020 00:17:30 +0000
+Received: from mail-qt1-x841.google.com ([2607:f8b0:4864:20::841])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jrPhG-0001qg-MN
- for linux-mediatek@lists.infradead.org; Fri, 03 Jul 2020 17:41:59 +0000
-Received: by mail-wm1-x342.google.com with SMTP id j18so32752648wmi.3
- for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2020 10:41:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=YSysemk6/m3rdKU2ySMi9uU8qYuK0kuhW6Pw5qHpSnI=;
- b=DiTMT+9THBotFZ8hAPsnuIbDSlmH+WPn87U6MQV2wdUqBmGs3uF0tKCXEfU7478vwj
- hwRiHYDh4JpRpasNgymyRlZRKZYPomrYM9TJPmqWfJcxMLGduvnehwmmmjtysVHuv640
- iQFbD58SHTQRqL/gBV171cuR8/WTeYhTRVk7h0EI46cXLbxvMZRbUIA5L7SH2rCkEbw6
- NET+ildSzhaQAlJxNoSvdavC9aTyR7AzdS74FkZ+BefFZx0zPt+xwBXdSFYStsHg0rDd
- ky0+csRp4oiOhk+Bjw68pqKMRSCnHLd+2J+YF8NR5NMSJyMbowwOIgMWQhjToihJ5crY
- Azhw==
+ id 1jrVrx-0007ES-Pq
+ for linux-mediatek@lists.infradead.org; Sat, 04 Jul 2020 00:17:27 +0000
+Received: by mail-qt1-x841.google.com with SMTP id g13so25010315qtv.8
+ for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2020 17:17:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lca.pw; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=Sc+30ByNFobcHBkZTiqUdpRu8ho9UsCfKtEoIVOlDOw=;
+ b=mHrF12ogWdgTgj7FflwvcLoq1J+K/fEmMs81vpZlfJQkNO9lcvZCj1rS1UOyUR1UJD
+ 2AYPyMrcNoXKf4Oe13I2UKA378N2BmlPad1ZIH8NYGSQuqq246qIyPbUkImNOMpRbs6w
+ jIWABWq4GWWyNhho34m6diCvrfquP50LF2j5fktmMOtJ3qH9FKNnL9HWK3eUVMJ/Y09N
+ ECudMA73BpffXxCnWGcQry5OHXxR2bvC7HsCDRfzcdVfu+aObIQpaOq8qF+IU/uyBMaF
+ 2x14YfErSVQ1jIQq7s/rHPEQelWiXF37fU9MFVQmXVvCQzrBuXwV8hgnTKTUsBVGE2n7
+ e4yQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=YSysemk6/m3rdKU2ySMi9uU8qYuK0kuhW6Pw5qHpSnI=;
- b=hHkhWzn9AQguMJQe+WOhpskmAHjEAS++S/QJJ2pH3ciQA+T/5sIq7HlHjdJdHoZqWe
- dxPZv0wqcD0iNK7PBdYn3JDQiJjyQj2uuhc5pb2BANwTvtA3otF+JR/J9H9UMR8sI2+S
- U62PgXBNuIfxlI4JD5t+Tjpx4KXWikx4VYzBOvV5nt2MLbKtVMKlupIX9aY+gqtTpLhV
- O/8o4MSXyNwQVb2wN1Aw1tkBVeCQiAvNjlqtuaa0AzU8r4C6oAu0gsTH4N7lIs6yaO31
- 1Jme5SD9Si4BPZE5u8NL/AGPDmT6HCS/7uetsPOlZF6M2bBKZKmD9f+yhNQgy1LIk1QP
- CW5g==
-X-Gm-Message-State: AOAM5303ye8+UYl1gs5tk3ln36HZf+kJfqVYizUtXJqB10SGDhddbC0W
- mup+KRBsQ2gLPcCIJh12pi5V+w==
-X-Google-Smtp-Source: ABdhPJwq6EJ8i4c07CyyjVONmZU0HR1br30HC+HrU3hY5Q/iNyS39dh2n8CRaJSQcQXq5fDuEcoNRg==
-X-Received: by 2002:a1c:9a02:: with SMTP id c2mr8726718wme.16.1593798117749;
- Fri, 03 Jul 2020 10:41:57 -0700 (PDT)
-Received: from localhost.localdomain ([2.27.35.144])
- by smtp.gmail.com with ESMTPSA id x11sm13625799wmc.26.2020.07.03.10.41.56
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=Sc+30ByNFobcHBkZTiqUdpRu8ho9UsCfKtEoIVOlDOw=;
+ b=CLRlyf8HpuEwsZOPlNBtc1lNLF9BfvmOLRPBBYnR09QRmfkt1Pn/smJs0RhDiXhQii
+ XPR34NTzyF/TfExCDbvmZiSw4MG15sQabXAJnl+eb0riQhRudtNIzQ+2xf1ZrS1gRDMN
+ C0ZUMxZ2cBOH9TigGyU5JQYrIAOKaglgtWRz4H1aG0C/tviQdicvJllveRSQ+icFq2R/
+ han4Fz777gpuv/qsIGkSl3RCV+gHctiQCzDLUUNBEjy8vDmKNYYi3nslJwLp3t+XnLUJ
+ +0Obyb/84j0CQADjOfSo/fkBy0AJvSZbv+qPDaGmuS3uw8ztNTo+DoNiRFJBS52PGBNZ
+ 12wQ==
+X-Gm-Message-State: AOAM533J4WBfLpKFuzSL0lracwZ6R3zddv7MWtOwnMIlCF4KcOLTl2Md
+ UV5bqJA1acNz2RbrlK2xtfalMw==
+X-Google-Smtp-Source: ABdhPJypT5r9rmmMqGp3Xeu5e8JCPMftFx006aSWWKHRm2iYB0QETcLl2YVfHOTnl7d3E+NxXptIAw==
+X-Received: by 2002:ac8:f6f:: with SMTP id l44mr37998235qtk.4.1593821840815;
+ Fri, 03 Jul 2020 17:17:20 -0700 (PDT)
+Received: from lca.pw (pool-71-184-117-43.bstnma.fios.verizon.net.
+ [71.184.117.43])
+ by smtp.gmail.com with ESMTPSA id 19sm10800170qky.72.2020.07.03.17.17.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Jul 2020 10:41:57 -0700 (PDT)
-From: Lee Jones <lee.jones@linaro.org>
-To: gregkh@linuxfoundation.org,
-	linux-usb@vger.kernel.org
-Subject: [PATCH 01/30] usb: mtu3: mtu3_debug: Add forward declaration of
- 'struct ssusb_mtk'
-Date: Fri,  3 Jul 2020 18:41:19 +0100
-Message-Id: <20200703174148.2749969-2-lee.jones@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200703174148.2749969-1-lee.jones@linaro.org>
-References: <20200703174148.2749969-1-lee.jones@linaro.org>
+ Fri, 03 Jul 2020 17:17:20 -0700 (PDT)
+Date: Fri, 3 Jul 2020 20:17:09 -0400
+From: Qian Cai <cai@lca.pw>
+To: Joerg Roedel <joro@8bytes.org>
+Subject: Re: [PATCH v3 00/34] iommu: Move iommu_group setup to IOMMU core code
+Message-ID: <20200704001709.GA1502@lca.pw>
+References: <20200429133712.31431-1-joro@8bytes.org>
+ <20200701004020.GA6221@lca.pw>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200701004020.GA6221@lca.pw>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200703_134158_795850_171CA908 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20200703_201725_924604_4CC69E43 
+X-CRM114-Status: GOOD (  25.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,44 +96,295 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- linux-mediatek@lists.infradead.org, Lee Jones <lee.jones@linaro.org>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Heiko Stuebner <heiko@sntech.de>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, linux-tegra@vger.kernel.org,
+ Thierry Reding <thierry.reding@gmail.com>, Daniel Drake <drake@endlessm.com>,
+ Will Deacon <will@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ linux-samsung-soc@vger.kernel.org, iommu@lists.linux-foundation.org,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>,
+ jonathan.derrick@intel.com, linux-s390@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ virtualization@lists.linux-foundation.org,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>,
+ David Woodhouse <dwmw2@infradead.org>, linux-kernel@vger.kernel.org,
+ Rob Clark <robdclark@gmail.com>, Kukjin Kim <kgene@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>, Lu Baolu <baolu.lu@linux.intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-V2l0aG91dCBpdCwgdGhlIGJ1aWxkIHN5c3RlbSBjb21wbGFpbnMgdGhhdCBpdCB3YXMgZGVjbGFy
-ZWQgaW5zaWRlCnRoZSBwYXJhbWV0ZXIgbGlzdC4KCkZpeGVzIHRoZSBmb2xsb3dpbmcgVz0xIGtl
-cm5lbCBidWlsZCB3YXJuaW5nKHMpOgoKIEluIGZpbGUgaW5jbHVkZWQgZnJvbSBkcml2ZXJzL3Vz
-Yi9tdHUzL210dTNfdHJhY2UuYzoxMToKIGRyaXZlcnMvdXNiL210dTMvbXR1M19kZWJ1Zy5oOjI5
-OjM2OiB3YXJuaW5nOiDigJhzdHJ1Y3Qgc3N1c2JfbXRr4oCZIGRlY2xhcmVkIGluc2lkZSBwYXJh
-bWV0ZXIgbGlzdCB3aWxsIG5vdCBiZSB2aXNpYmxlIG91dHNpZGUgb2YgdGhpcyBkZWZpbml0aW9u
-IG9yIGRlY2xhcmF0aW9uCiAyOSB8IHZvaWQgc3N1c2JfZGV2X2RlYnVnZnNfaW5pdChzdHJ1Y3Qg
-c3N1c2JfbXRrICpzc3VzYik7CiB8IF5+fn5+fn5+fgogZHJpdmVycy91c2IvbXR1My9tdHUzX2Rl
-YnVnLmg6MzA6MzU6IHdhcm5pbmc6IOKAmHN0cnVjdCBzc3VzYl9tdGvigJkgZGVjbGFyZWQgaW5z
-aWRlIHBhcmFtZXRlciBsaXN0IHdpbGwgbm90IGJlIHZpc2libGUgb3V0c2lkZSBvZiB0aGlzIGRl
-ZmluaXRpb24gb3IgZGVjbGFyYXRpb24KIDMwIHwgdm9pZCBzc3VzYl9kcl9kZWJ1Z2ZzX2luaXQo
-c3RydWN0IHNzdXNiX210ayAqc3N1c2IpOwogfCBefn5+fn5+fn4KIGRyaXZlcnMvdXNiL210dTMv
-bXR1M19kZWJ1Zy5oOjMxOjM5OiB3YXJuaW5nOiDigJhzdHJ1Y3Qgc3N1c2JfbXRr4oCZIGRlY2xh
-cmVkIGluc2lkZSBwYXJhbWV0ZXIgbGlzdCB3aWxsIG5vdCBiZSB2aXNpYmxlIG91dHNpZGUgb2Yg
-dGhpcyBkZWZpbml0aW9uIG9yIGRlY2xhcmF0aW9uCiAzMSB8IHZvaWQgc3N1c2JfZGVidWdmc19j
-cmVhdGVfcm9vdChzdHJ1Y3Qgc3N1c2JfbXRrICpzc3VzYik7CiB8IF5+fn5+fn5+fgogZHJpdmVy
-cy91c2IvbXR1My9tdHUzX2RlYnVnLmg6MzI6Mzk6IHdhcm5pbmc6IOKAmHN0cnVjdCBzc3VzYl9t
-dGvigJkgZGVjbGFyZWQgaW5zaWRlIHBhcmFtZXRlciBsaXN0IHdpbGwgbm90IGJlIHZpc2libGUg
-b3V0c2lkZSBvZiB0aGlzIGRlZmluaXRpb24gb3IgZGVjbGFyYXRpb24KIDMyIHwgdm9pZCBzc3Vz
-Yl9kZWJ1Z2ZzX3JlbW92ZV9yb290KHN0cnVjdCBzc3VzYl9tdGsgKnNzdXNiKTsKIHwgXn5+fn5+
-fn5+CgpDYzogQ2h1bmZlbmcgWXVuIDxjaHVuZmVuZy55dW5AbWVkaWF0ZWsuY29tPgpDYzogbGlu
-dXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpTaWduZWQtb2ZmLWJ5OiBMZWUgSm9uZXMg
-PGxlZS5qb25lc0BsaW5hcm8ub3JnPgotLS0KIGRyaXZlcnMvdXNiL210dTMvbXR1M19kZWJ1Zy5o
-IHwgMiArKwogMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvdXNiL210dTMvbXR1M19kZWJ1Zy5oIGIvZHJpdmVycy91c2IvbXR1My9tdHUzX2RlYnVn
-LmgKaW5kZXggZmI2YjI4Mjc3YzliMS4uMzA4NGM0NjAxN2MzNyAxMDA2NDQKLS0tIGEvZHJpdmVy
-cy91c2IvbXR1My9tdHUzX2RlYnVnLmgKKysrIGIvZHJpdmVycy91c2IvbXR1My9tdHUzX2RlYnVn
-LmgKQEAgLTEyLDYgKzEyLDggQEAKIAogI2luY2x1ZGUgPGxpbnV4L2RlYnVnZnMuaD4KIAorc3Ry
-dWN0IHNzdXNiX210azsKKwogI2RlZmluZSBNVFUzX0RFQlVHRlNfTkFNRV9MRU4gMzIKIAogc3Ry
-dWN0IG10dTNfcmVnc2V0IHsKLS0gCjIuMjUuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1t
-ZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Tue, Jun 30, 2020 at 08:40:28PM -0400, Qian Cai wrote:
+> On Wed, Apr 29, 2020 at 03:36:38PM +0200, Joerg Roedel wrote:
+> > Hi,
+> > 
+> > here is the third version of this patch-set. Older versions can be found
+> > here:
+> > 
+> > 	v1: https://lore.kernel.org/lkml/20200407183742.4344-1-joro@8bytes.org/
+> > 	    (Has some more introductory text)
+> > 
+> > 	v2: https://lore.kernel.org/lkml/20200414131542.25608-1-joro@8bytes.org/
+> > 
+> > Changes v2 -> v3:
+> > 
+> > 	* Rebased v5.7-rc3
+> > 
+> > 	* Added a missing iommu_group_put() as reported by Lu Baolu.
+> > 
+> > 	* Added a patch to consolidate more initialization work in
+> > 	  __iommu_probe_device(), fixing a bug where no 'struct
+> > 	  device_iommu' was allocated in the hotplug path.
+> > 
+> > There is also a git-branch available with these patches applied:
+> > 
+> > 	https://git.kernel.org/pub/scm/linux/kernel/git/joro/linux.git/log/?h=iommu-probe-device-v3
+> > 
+> > Please review. If there are no objections I plan to put these patches
+> > into the IOMMU tree early next week.
+> 
+> Looks like this patchset introduced an use-after-free on arm-smmu-v3.
+> 
+> Reproduced using mlx5,
+> 
+> # echo 1 > /sys/class/net/enp11s0f1np1/device/sriov_numvfs
+> # echo 0 > /sys/class/net/enp11s0f1np1/device/sriov_numvfs 
+> 
+> The .config,
+> https://github.com/cailca/linux-mm/blob/master/arm64.config
+> 
+> Looking at the free stack,
+> 
+> iommu_release_device->iommu_group_remove_device
+> 
+> was introduced in 07/34 ("iommu: Add probe_device() and release_device()
+> call-backs").
+
+FYI, I have just sent a patch to fix this,
+
+https://lore.kernel.org/linux-iommu/20200704001003.2303-1-cai@lca.pw/
+
+> 
+> [ 9426.724641][ T3356] pci 0000:0b:01.2: Removing from iommu group 3
+> [ 9426.731347][ T3356] ==================================================================
+> [ 9426.739263][ T3356] BUG: KASAN: use-after-free in __lock_acquire+0x3458/0x4440
+> __lock_acquire at kernel/locking/lockdep.c:4250
+> [ 9426.746477][ T3356] Read of size 8 at addr ffff0089df1a6f68 by task bash/3356
+> [ 9426.753601][ T3356]
+> [ 9426.755782][ T3356] CPU: 5 PID: 3356 Comm: bash Not tainted 5.8.0-rc3-next-20200630 #2
+> [ 9426.763687][ T3356] Hardware name: HPE Apollo 70             /C01_APACHE_MB         , BIOS L50_5.13_1.11 06/18/2019
+> [ 9426.774111][ T3356] Call trace:
+> [ 9426.777245][ T3356]  dump_backtrace+0x0/0x398
+> [ 9426.781593][ T3356]  show_stack+0x14/0x20
+> [ 9426.785596][ T3356]  dump_stack+0x140/0x1b8
+> [ 9426.789772][ T3356]  print_address_description.isra.12+0x54/0x4a8
+> [ 9426.795855][ T3356]  kasan_report+0x134/0x1b8
+> [ 9426.800203][ T3356]  __asan_report_load8_noabort+0x2c/0x50
+> [ 9426.805679][ T3356]  __lock_acquire+0x3458/0x4440
+> [ 9426.810373][ T3356]  lock_acquire+0x204/0xf10
+> [ 9426.814722][ T3356]  _raw_spin_lock_irqsave+0xf8/0x180
+> [ 9426.819853][ T3356]  arm_smmu_detach_dev+0xd8/0x4a0
+> arm_smmu_detach_dev at drivers/iommu/arm-smmu-v3.c:2776
+> [ 9426.824721][ T3356]  arm_smmu_release_device+0xb4/0x1c8
+> arm_smmu_disable_pasid at drivers/iommu/arm-smmu-v3.c:2754
+> (inlined by) arm_smmu_release_device at drivers/iommu/arm-smmu-v3.c:3000
+> [ 9426.829937][ T3356]  iommu_release_device+0xc0/0x178
+> iommu_release_device at drivers/iommu/iommu.c:302
+> [ 9426.834892][ T3356]  iommu_bus_notifier+0x118/0x160
+> [ 9426.839762][ T3356]  notifier_call_chain+0xa4/0x128
+> [ 9426.844630][ T3356]  __blocking_notifier_call_chain+0x70/0xa8
+> [ 9426.850367][ T3356]  blocking_notifier_call_chain+0x14/0x20
+> [ 9426.855929][ T3356]  device_del+0x618/0xa00
+> [ 9426.860105][ T3356]  pci_remove_bus_device+0x108/0x2d8
+> [ 9426.865233][ T3356]  pci_stop_and_remove_bus_device+0x1c/0x28
+> [ 9426.870972][ T3356]  pci_iov_remove_virtfn+0x228/0x368
+> [ 9426.876100][ T3356]  sriov_disable+0x8c/0x348
+> [ 9426.880447][ T3356]  pci_disable_sriov+0x5c/0x70
+> [ 9426.885117][ T3356]  mlx5_core_sriov_configure+0xd8/0x260 [mlx5_core]
+> [ 9426.891549][ T3356]  sriov_numvfs_store+0x240/0x318
+> [ 9426.896417][ T3356]  dev_attr_store+0x38/0x68
+> [ 9426.900766][ T3356]  sysfs_kf_write+0xdc/0x128
+> [ 9426.905200][ T3356]  kernfs_fop_write+0x23c/0x448
+> [ 9426.909897][ T3356]  __vfs_write+0x54/0xe8
+> [ 9426.913984][ T3356]  vfs_write+0x124/0x3f0
+> [ 9426.918070][ T3356]  ksys_write+0xe8/0x1b8
+> [ 9426.922157][ T3356]  __arm64_sys_write+0x68/0x98
+> [ 9426.926766][ T3356]  do_el0_svc+0x124/0x220
+> [ 9426.930941][ T3356]  el0_sync_handler+0x260/0x408
+> [ 9426.935634][ T3356]  el0_sync+0x140/0x180
+> [ 9426.939633][ T3356]
+> [ 9426.941810][ T3356] Allocated by task 3356:
+> [ 9426.945985][ T3356]  save_stack+0x24/0x50
+> [ 9426.949986][ T3356]  __kasan_kmalloc.isra.13+0xc4/0xe0
+> [ 9426.955114][ T3356]  kasan_kmalloc+0xc/0x18
+> [ 9426.959288][ T3356]  kmem_cache_alloc_trace+0x1ec/0x318
+> [ 9426.964503][ T3356]  arm_smmu_domain_alloc+0x54/0x148
+> [ 9426.969545][ T3356]  iommu_group_alloc_default_domain+0xc0/0x440
+> [ 9426.975541][ T3356]  iommu_probe_device+0x1c0/0x308
+> [ 9426.980409][ T3356]  iort_iommu_configure+0x434/0x518
+> [ 9426.985452][ T3356]  acpi_dma_configure+0xf0/0x128
+> [ 9426.990235][ T3356]  pci_dma_configure+0x114/0x160
+> [ 9426.995017][ T3356]  really_probe+0x124/0x6d8
+> [ 9426.999364][ T3356]  driver_probe_device+0xc4/0x180
+> [ 9427.004232][ T3356]  __device_attach_driver+0x184/0x1e8
+> [ 9427.009447][ T3356]  bus_for_each_drv+0x114/0x1a0
+> [ 9427.014142][ T3356]  __device_attach+0x19c/0x2a8
+> [ 9427.018749][ T3356]  device_attach+0x10/0x18
+> [ 9427.023009][ T3356]  pci_bus_add_device+0x70/0xf8
+> [ 9427.027704][ T3356]  pci_iov_add_virtfn+0x7b4/0xb40
+> [ 9427.032571][ T3356]  sriov_enable+0x5c8/0xc30
+> [ 9427.036918][ T3356]  pci_enable_sriov+0x64/0x80
+> [ 9427.041485][ T3356]  mlx5_core_sriov_configure+0x58/0x260 [mlx5_core]
+> [ 9427.047917][ T3356]  sriov_numvfs_store+0x1c0/0x318
+> [ 9427.052784][ T3356]  dev_attr_store+0x38/0x68
+> [ 9427.057131][ T3356]  sysfs_kf_write+0xdc/0x128
+> [ 9427.061565][ T3356]  kernfs_fop_write+0x23c/0x448
+> [ 9427.066260][ T3356]  __vfs_write+0x54/0xe8
+> [ 9427.070346][ T3356]  vfs_write+0x124/0x3f0
+> [ 9427.074433][ T3356]  ksys_write+0xe8/0x1b8
+> [ 9427.078519][ T3356]  __arm64_sys_write+0x68/0x98
+> [ 9427.083127][ T3356]  do_el0_svc+0x124/0x220
+> [ 9427.087300][ T3356]  el0_sync_handler+0x260/0x408
+> [ 9427.091994][ T3356]  el0_sync+0x140/0x180
+> [ 9427.095992][ T3356]
+> [ 9427.098168][ T3356] Freed by task 3356:
+> [ 9427.101995][ T3356]  save_stack+0x24/0x50
+> [ 9427.105996][ T3356]  __kasan_slab_free+0x124/0x198
+> [ 9427.110777][ T3356]  kasan_slab_free+0x10/0x18
+> [ 9427.115210][ T3356]  slab_free_freelist_hook+0x110/0x298
+> [ 9427.120512][ T3356]  kfree+0x128/0x668
+> [ 9427.124252][ T3356]  arm_smmu_domain_free+0xf4/0x1a0
+> [ 9427.129206][ T3356]  iommu_group_release+0xec/0x160
+> [ 9427.134074][ T3356]  kobject_put+0xf4/0x238
+> [ 9427.138247][ T3356]  kobject_del+0x110/0x190
+> [ 9427.142507][ T3356]  kobject_put+0x1e4/0x238
+> [ 9427.146767][ T3356]  iommu_group_remove_device+0x394/0x938
+> [ 9427.152242][ T3356]  iommu_release_device+0x9c/0x178
+> iommu_release_device at drivers/iommu/iommu.c:300
+> [ 9427.157196][ T3356]  iommu_bus_notifier+0x118/0x160
+> [ 9427.162065][ T3356]  notifier_call_chain+0xa4/0x128
+> [ 9427.166934][ T3356]  __blocking_notifier_call_chain+0x70/0xa8
+> [ 9427.172670][ T3356]  blocking_notifier_call_chain+0x14/0x20
+> [ 9427.178233][ T3356]  device_del+0x618/0xa00
+> [ 9427.182406][ T3356]  pci_remove_bus_device+0x108/0x2d8
+> [ 9427.187535][ T3356]  pci_stop_and_remove_bus_device+0x1c/0x28
+> [ 9427.193271][ T3356]  pci_iov_remove_virtfn+0x228/0x368
+> [ 9427.198399][ T3356]  sriov_disable+0x8c/0x348
+> [ 9427.202746][ T3356]  pci_disable_sriov+0x5c/0x70
+> [ 9427.207398][ T3356]  mlx5_core_sriov_configure+0xd8/0x260 [mlx5_core]
+> [ 9427.213830][ T3356]  sriov_numvfs_store+0x240/0x318
+> [ 9427.218698][ T3356]  dev_attr_store+0x38/0x68
+> [ 9427.223045][ T3356]  sysfs_kf_write+0xdc/0x128
+> [ 9427.227478][ T3356]  kernfs_fop_write+0x23c/0x448
+> [ 9427.232173][ T3356]  __vfs_write+0x54/0xe8
+> [ 9427.236259][ T3356]  vfs_write+0x124/0x3f0
+> [ 9427.240346][ T3356]  ksys_write+0xe8/0x1b8
+> [ 9427.244433][ T3356]  __arm64_sys_write+0x68/0x98
+> [ 9427.249041][ T3356]  do_el0_svc+0x124/0x220
+> [ 9427.253215][ T3356]  el0_sync_handler+0x260/0x408
+> [ 9427.257908][ T3356]  el0_sync+0x140/0x180
+> [ 9427.261907][ T3356]
+> [ 9427.264084][ T3356] The buggy address belongs to the object at ffff0089df1a6e00
+> [ 9427.264084][ T3356]  which belongs to the cache kmalloc-512 of size 512
+> [ 9427.277980][ T3356] The buggy address is located 360 bytes inside of
+> [ 9427.277980][ T3356]  512-byte region [ffff0089df1a6e00, ffff0089df1a7000)
+> [ 9427.291094][ T3356] The buggy address belongs to the page:
+> [ 9427.296571][ T3356] page:ffffffe02257c680 refcount:1 mapcount:0 mapping:0000000000000000 index:0xffff0089df1a1400
+> [ 9427.306823][ T3356] flags: 0x7ffff800000200(slab)
+> [ 9427.311520][ T3356] raw: 007ffff800000200 ffffffe02246b8c8 ffffffe02257ff88 ffff000000320680
+> [ 9427.319949][ T3356] raw: ffff0089df1a1400 00000000002a000e 00000001ffffffff ffff0089df1a5001
+> [ 9427.328374][ T3356] page dumped because: kasan: bad access detected
+> [ 9427.334630][ T3356] page->mem_cgroup:ffff0089df1a5001
+> [ 9427.339670][ T3356]
+> [ 9427.341846][ T3356] Memory state around the buggy address:
+> [ 9427.347322][ T3356]  ffff0089df1a6e00: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+> [ 9427.355228][ T3356]  ffff0089df1a6e80: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+> [ 9427.363133][ T3356] >ffff0089df1a6f00: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+> [ 9427.371038][ T3356]                                                           ^
+> [ 9427.378337][ T3356]  ffff0089df1a6f80: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+> [ 9427.386242][ T3356]  ffff0089df1a7000: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+> [ 9427.394146][ T3356] ==================================================================
+> [ 9427.402052][ T3356] Disabling lock debugging due to kernel taint
+> 
+> > 
+> > Thanks,
+> > 
+> > 	Joerg
+> > 
+> > Joerg Roedel (33):
+> >   iommu: Move default domain allocation to separate function
+> >   iommu/amd: Implement iommu_ops->def_domain_type call-back
+> >   iommu/vt-d: Wire up iommu_ops->def_domain_type
+> >   iommu/amd: Remove dma_mask check from check_device()
+> >   iommu/amd: Return -ENODEV in add_device when device is not handled by
+> >     IOMMU
+> >   iommu: Add probe_device() and release_device() call-backs
+> >   iommu: Move default domain allocation to iommu_probe_device()
+> >   iommu: Keep a list of allocated groups in __iommu_probe_device()
+> >   iommu: Move new probe_device path to separate function
+> >   iommu: Split off default domain allocation from group assignment
+> >   iommu: Move iommu_group_create_direct_mappings() out of
+> >     iommu_group_add_device()
+> >   iommu: Export bus_iommu_probe() and make is safe for re-probing
+> >   iommu/amd: Remove dev_data->passthrough
+> >   iommu/amd: Convert to probe/release_device() call-backs
+> >   iommu/vt-d: Convert to probe/release_device() call-backs
+> >   iommu/arm-smmu: Convert to probe/release_device() call-backs
+> >   iommu/pamu: Convert to probe/release_device() call-backs
+> >   iommu/s390: Convert to probe/release_device() call-backs
+> >   iommu/virtio: Convert to probe/release_device() call-backs
+> >   iommu/msm: Convert to probe/release_device() call-backs
+> >   iommu/mediatek: Convert to probe/release_device() call-backs
+> >   iommu/mediatek-v1 Convert to probe/release_device() call-backs
+> >   iommu/qcom: Convert to probe/release_device() call-backs
+> >   iommu/rockchip: Convert to probe/release_device() call-backs
+> >   iommu/tegra: Convert to probe/release_device() call-backs
+> >   iommu/renesas: Convert to probe/release_device() call-backs
+> >   iommu/omap: Remove orphan_dev tracking
+> >   iommu/omap: Convert to probe/release_device() call-backs
+> >   iommu/exynos: Use first SYSMMU in controllers list for IOMMU core
+> >   iommu/exynos: Convert to probe/release_device() call-backs
+> >   iommu: Remove add_device()/remove_device() code-paths
+> >   iommu: Move more initialization to __iommu_probe_device()
+> >   iommu: Unexport iommu_group_get_for_dev()
+> > 
+> > Sai Praneeth Prakhya (1):
+> >   iommu: Add def_domain_type() callback in iommu_ops
+> > 
+> >  drivers/iommu/amd_iommu.c       |  97 ++++----
+> >  drivers/iommu/amd_iommu_types.h |   1 -
+> >  drivers/iommu/arm-smmu-v3.c     |  38 +---
+> >  drivers/iommu/arm-smmu.c        |  39 ++--
+> >  drivers/iommu/exynos-iommu.c    |  24 +-
+> >  drivers/iommu/fsl_pamu_domain.c |  22 +-
+> >  drivers/iommu/intel-iommu.c     |  68 +-----
+> >  drivers/iommu/iommu.c           | 387 +++++++++++++++++++++++++-------
+> >  drivers/iommu/ipmmu-vmsa.c      |  60 ++---
+> >  drivers/iommu/msm_iommu.c       |  34 +--
+> >  drivers/iommu/mtk_iommu.c       |  24 +-
+> >  drivers/iommu/mtk_iommu_v1.c    |  50 ++---
+> >  drivers/iommu/omap-iommu.c      |  99 ++------
+> >  drivers/iommu/qcom_iommu.c      |  24 +-
+> >  drivers/iommu/rockchip-iommu.c  |  26 +--
+> >  drivers/iommu/s390-iommu.c      |  22 +-
+> >  drivers/iommu/tegra-gart.c      |  24 +-
+> >  drivers/iommu/tegra-smmu.c      |  31 +--
+> >  drivers/iommu/virtio-iommu.c    |  41 +---
+> >  include/linux/iommu.h           |  21 +-
+> >  20 files changed, 531 insertions(+), 601 deletions(-)
+> > 
+> > -- 
+> > 2.17.1
+> > 
+> > _______________________________________________
+> > iommu mailing list
+> > iommu@lists.linux-foundation.org
+> > https://lists.linuxfoundation.org/mailman/listinfo/iommu
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
