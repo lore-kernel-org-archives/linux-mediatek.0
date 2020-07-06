@@ -2,79 +2,75 @@ Return-Path: <SRS0=Wnqn=AR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8BD50C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 12:45:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B765C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 13:22:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 29A0920720
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 12:45:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 18EBA2070C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 13:22:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gtkNpFb0";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=xs4all.nl header.i=@xs4all.nl header.b="N9WVyPfU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 29A0920720
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="N1vd4L28";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qC7hcFS+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 18EBA2070C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BoTPNXUHxzG2p5DrsQHkhXY9BqRFcRqQxV07jG2pFsQ=; b=gtkNpFb0dByDnbLmEglVMEGe2
-	a8B9qwVD2ltkZFIj9u9ZfpRhm29VMXLqwk9Xb2386Ma3r5SEurTRBvwBl3NNpmsogWSgnuysM5Z59
-	lqmpi+dU1dz4JT7gq3Xlecy3RCV+7YtJMSMeuESejNDH7HBPhSUaKsXtcMF9DPhdk9a8RPmU2wx/s
-	rz5BB09IzYq2kzj4rq9z1pw5nljVwAKQmswI6GSsZ1VKLdhw7tfp4+lLsB/XhuPckM1rpBF8uzi1X
-	gJY1WLtsfh5jgSDyWE+gukd0JEAP3zGPxiYVpn/syonUPtgiLVQUZRSckVuGhHwKrAYO+1QUL/k7j
-	hwrlX7y1A==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9gdj/qRa1QpfQptpAgY+FZ0FAJKSO/aIDY2GyEa0X4g=; b=N1vd4L28ZFoT219DFdj4Zy2ZJ4
+	fRoIPQrsYSSsF090W7cwwDJChMj12kegD4cg6JDiUEsyNUKtstL9TAvfvzM4u3Mi+qTrRyjkyYYIN
+	8wSk3drj7YkcMX6tQr2UmwvGzfRP0yQz7f7wlRcx38a2idxuC/M2s9dSsKV1owjwesfn6moOy5CBs
+	n4KukroeU7HC5lWti0FFiII3pULeq6TOYwJTdLlmAkt1PlM6esWT73uqxs56aVqRGn+OdNGqaqq9c
+	Bk5mK0Jd3jsBqGH3Gx5No4D/VnAC2nXSnnOJyTruGPZ8Y4hSYBj2+YpPC2sFBxLXc1T+lkL13TBKJ
+	bnyUdOFQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jsQUv-0003PS-1u; Mon, 06 Jul 2020 12:45:25 +0000
-Received: from lb2-smtp-cloud7.xs4all.net ([194.109.24.28])
+	id 1jsR4u-0006UP-3F; Mon, 06 Jul 2020 13:22:36 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jsQTe-0002X8-Uw
- for linux-mediatek@lists.infradead.org; Mon, 06 Jul 2020 12:44:10 +0000
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud7.xs4all.net with ESMTPA
- id sQRDj8pEgBncFsQRHjvK6S; Mon, 06 Jul 2020 14:43:54 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
- t=1594039434; bh=8F2TmOn83d1FtryLiBajmS/9uywwC87cqE1qHI2tvC4=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=N9WVyPfUlPhycanOZAtZgecKkq80qFh+oJXgyoVY3wWWPN2yoVbcYkxWUZZX+Pp8U
- d4JgPgeJKw7aYKrGEZZ+q8u1BYOKlNMxEKLZNKsoUZAphxZnR5IwP+URp4Z6KroS+2
- SsRqe8ddv1Rm1miIvL87p31gHObGSAc6RiuDstOjaGbFk/1v/F74zoWvGj92KFVg3I
- aqZj689O9jI6QwCHTuTFurSBX4qsCzEEjUqkz1aggsdpLS3D2zPA/fK6z/nLDQa5Kg
- I+xxe6aSe6QpG+4VnXYyLPbHC0N0E0neG7+TCZUJ38nSu4vLVvTcT3NlUKHTf68peq
- CH2rwlH2ryTKg==
-Subject: Re: [PATCH v2 16/18] media: mtk-vcodec: venc: make S_PARM return
- -ENOTTY for CAPTURE queue
-To: Alexandre Courbot <acourbot@chromium.org>
-References: <20200626080442.292309-1-acourbot@chromium.org>
- <20200626080442.292309-17-acourbot@chromium.org>
- <84068e20-9a34-6d03-61e6-6c243680749c@xs4all.nl>
- <CAPBb6MW9deo11+YH9Mh3u08sEt7ShAF_a+S0-Jb_VDGhCQot_Q@mail.gmail.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <74652f57-8dd8-6b24-9889-59bec389464e@xs4all.nl>
-Date: Mon, 6 Jul 2020 14:41:35 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ id 1jsR4q-0006TQ-2j; Mon, 06 Jul 2020 13:22:33 +0000
+X-UUID: 5fee842ed2b3447b80b410d8db3b8e1b-20200706
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=hH72iy737LTFZ8Jp12sRADIb3rpiyBdOegJpRLwFXpA=; 
+ b=qC7hcFS+yAxMi8qqonesIQDxXohAHIbTQQASwkOcxTUCVKY6qN6eU/Ad9hfyywxZoqCIOw5YmVgrgRdE9/69R4yvOjlRnUaAcNdFYKVHJ3iiz4LQJitkeUgDg7/st2ljWhn1Uz/az+OMqRd0f1SZ0d+krlrRSynQOOSLRLXac+E=;
+X-UUID: 5fee842ed2b3447b80b410d8db3b8e1b-20200706
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1528229900; Mon, 06 Jul 2020 05:22:09 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 6 Jul 2020 06:22:17 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 6 Jul 2020 21:22:15 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 6 Jul 2020 21:22:15 +0800
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+ <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
+ <bvanassche@acm.org>
+Subject: [RFC PATCH v3] scsi: ufs: Quiesce all scsi devices before shutdown
+Date: Mon, 6 Jul 2020 21:22:18 +0800
+Message-ID: <20200706132218.21171-1-stanley.chu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <CAPBb6MW9deo11+YH9Mh3u08sEt7ShAF_a+S0-Jb_VDGhCQot_Q@mail.gmail.com>
-Content-Language: en-US
-X-CMAE-Envelope: MS4wfKcKT/KYVZiOxynAIfVI3ssaFh/UuQ5Kaf/XdhEeyookvFHb5HtVQlFVZdimI3i10tefi121PTR+fBcUS4grLGxynpn7k+9eILtm5mz80NClvVS0n9WE
- 24ovQragdB9gw1o4cxDswZxfhjANOJ9sbfV5jQ1QVVAgjQVHldSkdq1x10CZZneSq1qJzi4PTAEbr9/slIFDxG5ZQI4fcN4SGZNj8LV/D/6wrqoyJOZKvcv0
- 88n8XGejBhvSg/m9P6e3OQeuWy2Bfwrb8KfxnqwTkPCry2DxZFc9kX/1tgdvoo+stj98fVC6PnHaq3E3PhYwW63EmXODtln/ypwpTuwKNDUISsUEBtG04EAL
- DiLI+IfALI+fGSRV9iMXSUNwE1pOmU8SOCFQfQWbrxtiGJ00V4q/VFyE5osW+aga1UbGWz8yaHZv3/IjeVvguBgc9nrbtQg0tNevCUqhn8zIWypN7M6nzs+K
- aODiw6L1CRwORMOrAvxE5rEGbrBnV2xRzzTXQKetQ5/vw9Gq9H/ikMAYdps=
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200706_084408_712023_7DF4D7E5 
-X-CRM114-Status: GOOD (  27.57  )
+X-CRM114-CacheID: sfid-20200706_092232_291518_C1B39C07 
+X-CRM114-Status: GOOD (  11.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,239 +82,114 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Maoguang Meng <maoguang.meng@mediatek.com>,
- Rui Wang <gtk_ruiwang@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>,
- LKML <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Pi-Hsun Shih <pihsun@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: Stanley Chu <stanley.chu@mediatek.com>, andy.teng@mediatek.com,
+ cc.chou@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, beanhuo@micron.com, chaotian.jing@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 04/07/2020 14:36, Alexandre Courbot wrote:
-> On Fri, Jul 3, 2020 at 5:30 PM Hans Verkuil <hverkuil@xs4all.nl> wrote:
->>
->> On 26/06/2020 10:04, Alexandre Courbot wrote:
->>> v4l2-compliance expects ENOTTY to be returned when a given queue does
->>> not support S_PARM.
->>>
->>> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
->>> ---
->>>  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c | 2 +-
->>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
->>> index aae610e6d4e8..346a33c6869d 100644
->>> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
->>> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
->>> @@ -200,7 +200,7 @@ static int vidioc_venc_s_parm(struct file *file, void *priv,
->>>       struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
->>>
->>>       if (a->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
->>> -             return -EINVAL;
->>> +             return -ENOTTY;
->>
->> This doesn't look right: S_PARM *is* supported, just not for this buffer type.
->> So -EINVAL is the correct error code.
->>
->> What is the exact v4l2-compliance failure? It might be a bug in the test.
-> 
-> The error is as follows:
-> 
-> Format ioctls:
->         test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
->                 fail: v4l2-test-formats.cpp(1336): got error 22 when
-> setting parms for buftype 9
->         test VIDIOC_G/S_PARM: FAIL
+Currently I/O request could be still submitted to UFS device while
+UFS is working on shutdown flow. This may lead to racing as below
+scenarios and finally system may crash due to unclocked register
+accesses.
 
-This is due to bugs in the compliance test that do not take into account the
-stateful encoder spec.
+To fix this kind of issues, specifically quiesce all SCSI devices
+before UFS shutdown to block all I/O request sending from block
+layer.
 
-The compliance test should check for the following:
+Example of racing scenario: While UFS device is runtime-suspended
 
-If ENUM_FRAMEINTERVALS is implemented, then G/S_PARM shall be supported for OUTPUT.
+Thread #1: Executing UFS shutdown flow, e.g.,
+           ufshcd_suspend(UFS_SHUTDOWN_PM)
+Thread #2: Executing runtime resume flow triggered by I/O request,
+           e.g., ufshcd_resume(UFS_RUNTIME_PM)
 
-If ENUM_FRAMEINTERVALS is not implemented, then G/S_PARM is optional for OUTPUT. But if
-G_PARM is implemented, then S_PARM shall also be implemented. In this case the
-frame interval range is determined by the codec standard.
+This breaks the assumption that UFS PM flows can not be running
+concurrently and some unexpected racing behavior may happen.
 
-If V4L2_FMT_FLAG_ENC_CAP_FRAME_INTERVAL is set for one or more pixel formats,
-then G/S_PARM shall be implemented for both CAPTURE and OUTPUT.
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/scsi/ufs/ufshcd.c | 38 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 38 insertions(+)
 
-For backwards compatibility: if G/S_PARM is supported for OUTPUT, then it may be
-supported for CAPTURE as well.
-
-Can you try with the following patch?
-
-With this v4l2-compliance patch you should be able to drop patches 15/18 and 16/18
-of your series.
-
-Regards,
-
-	Hans
-
--------------------------- cut here ------------------------------
-diff --git a/utils/v4l2-compliance/v4l2-compliance.cpp b/utils/v4l2-compliance/v4l2-compliance.cpp
-index b5bde2f4..d0441651 100644
---- a/utils/v4l2-compliance/v4l2-compliance.cpp
-+++ b/utils/v4l2-compliance/v4l2-compliance.cpp
-@@ -1250,6 +1250,7 @@ void testNode(struct node &node, struct node &node_m2m_cap, struct node &expbuf_
- 		node.frmsizes.clear();
- 		node.frmsizes_count.clear();
- 		node.has_frmintervals = false;
-+		node.has_enc_cap_frame_interval = false;
- 		node.valid_buftypes = 0;
- 		node.valid_memorytype = 0;
- 		node.buf_caps = 0;
-diff --git a/utils/v4l2-compliance/v4l2-compliance.h b/utils/v4l2-compliance/v4l2-compliance.h
-index 21e31872..ae10bdf9 100644
---- a/utils/v4l2-compliance/v4l2-compliance.h
-+++ b/utils/v4l2-compliance/v4l2-compliance.h
-@@ -141,6 +141,7 @@ struct base_node {
- 	frmsizes_set frmsizes;
- 	frmsizes_count_map frmsizes_count;
- 	bool has_frmintervals;
-+	bool has_enc_cap_frame_interval;
- 	__u32 valid_buftypes;
- 	__u32 valid_buftype;
- 	__u32 valid_memorytype;
-diff --git a/utils/v4l2-compliance/v4l2-test-formats.cpp b/utils/v4l2-compliance/v4l2-test-formats.cpp
-index 3dfc593e..edf1536e 100644
---- a/utils/v4l2-compliance/v4l2-test-formats.cpp
-+++ b/utils/v4l2-compliance/v4l2-test-formats.cpp
-@@ -71,6 +71,8 @@ static int testEnumFrameIntervals(struct node *node, __u32 pixfmt,
- 		ret = doioctl(node, VIDIOC_ENUM_FRAMEINTERVALS, &frmival);
- 		if (ret == ENOTTY)
- 			return ret;
-+		// M2M devices don't support this, except for stateful encoders
-+		fail_on_test(node->is_m2m && !(node->codec_mask & STATEFUL_ENCODER));
- 		if (f == 0 && ret == EINVAL) {
- 			if (type == V4L2_FRMSIZE_TYPE_DISCRETE)
- 				warn("found framesize %dx%d, but no frame intervals\n", w, h);
-@@ -264,16 +266,22 @@ static int testEnumFormatsType(struct node *node, unsigned type)
- 			return fail("drivers must never set the emulated flag\n");
- 		if (fmtdesc.flags & ~(V4L2_FMT_FLAG_COMPRESSED | V4L2_FMT_FLAG_EMULATED |
- 				      V4L2_FMT_FLAG_CONTINUOUS_BYTESTREAM |
--				      V4L2_FMT_FLAG_DYN_RESOLUTION))
-+				      V4L2_FMT_FLAG_DYN_RESOLUTION |
-+				      V4L2_FMT_FLAG_ENC_CAP_FRAME_INTERVAL))
- 			return fail("unknown flag %08x returned\n", fmtdesc.flags);
- 		if (!(fmtdesc.flags & V4L2_FMT_FLAG_COMPRESSED))
- 			fail_on_test(fmtdesc.flags & (V4L2_FMT_FLAG_CONTINUOUS_BYTESTREAM |
--						      V4L2_FMT_FLAG_DYN_RESOLUTION));
-+						      V4L2_FMT_FLAG_DYN_RESOLUTION |
-+						      V4L2_FMT_FLAG_ENC_CAP_FRAME_INTERVAL));
- 		ret = testEnumFrameSizes(node, fmtdesc.pixelformat);
- 		if (ret)
- 			fail_on_test(node->codec_mask & STATEFUL_ENCODER);
- 		if (ret && ret != ENOTTY)
- 			return ret;
-+		if (fmtdesc.flags & V4L2_FMT_FLAG_ENC_CAP_FRAME_INTERVAL) {
-+			fail_on_test(!(node->codec_mask & STATEFUL_ENCODER));
-+			node->has_enc_cap_frame_interval = true;
-+		}
- 		f++;
- 		if (type == V4L2_BUF_TYPE_PRIVATE)
- 			continue;
-@@ -1222,6 +1230,7 @@ int testSlicedVBICap(struct node *node)
-
- static int testParmStruct(struct node *node, struct v4l2_streamparm &parm)
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 59358bb75014..104173c03492 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -158,6 +158,12 @@ struct ufs_pm_lvl_states ufs_pm_lvl_states[] = {
+ 	{UFS_POWERDOWN_PWR_MODE, UIC_LINK_OFF_STATE},
+ };
+ 
++#define ufshcd_scsi_for_each_sdev(fn) \
++	list_for_each_entry(starget, &hba->host->__targets, siblings) { \
++		__starget_for_each_device(starget, NULL, \
++					  fn); \
++	}
++
+ static inline enum ufs_dev_pwr_mode
+ ufs_get_pm_lvl_to_dev_pwr_mode(enum ufs_pm_level lvl)
  {
-+	bool is_stateful_enc = node->codec_mask & STATEFUL_ENCODER;
- 	struct v4l2_captureparm *cap = &parm.parm.capture;
- 	struct v4l2_outputparm *out = &parm.parm.output;
- 	int ret;
-@@ -1239,6 +1248,7 @@ static int testParmStruct(struct node *node, struct v4l2_streamparm &parm)
- 			fail_on_test(!cap->readbuffers);
- 		fail_on_test(cap->capability & ~V4L2_CAP_TIMEPERFRAME);
- 		fail_on_test(node->has_frmintervals && !cap->capability);
-+		fail_on_test(is_stateful_enc && !cap->capability);
- 		fail_on_test(cap->capturemode & ~V4L2_MODE_HIGHQUALITY);
- 		if (cap->capturemode & V4L2_MODE_HIGHQUALITY)
- 			warn("V4L2_MODE_HIGHQUALITY is poorly defined\n");
-@@ -1257,6 +1267,7 @@ static int testParmStruct(struct node *node, struct v4l2_streamparm &parm)
- 		else if (node->g_caps() & V4L2_CAP_STREAMING)
- 			fail_on_test(!out->writebuffers);
- 		fail_on_test(out->capability & ~V4L2_CAP_TIMEPERFRAME);
-+		fail_on_test(is_stateful_enc && !out->capability);
- 		fail_on_test(out->outputmode);
- 		fail_on_test(out->extendedmode);
- 		if (out->capability & V4L2_CAP_TIMEPERFRAME)
-@@ -1271,6 +1282,7 @@ static int testParmStruct(struct node *node, struct v4l2_streamparm &parm)
- static int testParmType(struct node *node, unsigned type)
+@@ -8588,6 +8594,19 @@ int ufshcd_runtime_idle(struct ufs_hba *hba)
+ }
+ EXPORT_SYMBOL(ufshcd_runtime_idle);
+ 
++static void ufshcd_cleanup_queue(struct scsi_device *sdev, void *data)
++{
++	if (sdev->request_queue)
++		blk_cleanup_queue(sdev->request_queue);
++}
++
++static void ufshcd_quiece_sdev(struct scsi_device *sdev, void *data)
++{
++	/* Suspended devices are already quiecsed and shall be skipped */
++	if (!pm_runtime_suspended(&sdev->sdev_gendev))
++		scsi_device_quiesce(sdev);
++}
++
+ /**
+  * ufshcd_shutdown - shutdown routine
+  * @hba: per adapter instance
+@@ -8599,6 +8618,7 @@ EXPORT_SYMBOL(ufshcd_runtime_idle);
+ int ufshcd_shutdown(struct ufs_hba *hba)
  {
- 	struct v4l2_streamparm parm;
-+	bool is_stateful_enc = node->codec_mask & STATEFUL_ENCODER;
- 	int ret;
-
- 	memset(&parm, 0, sizeof(parm));
-@@ -1288,10 +1300,10 @@ static int testParmType(struct node *node, unsigned type)
- 	case V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE:
- 	case V4L2_BUF_TYPE_VIDEO_OUTPUT:
- 	case V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE:
--		if (type && (node->g_caps() & buftype2cap[type]))
-+		if (node->g_caps() & buftype2cap[type]) {
- 			fail_on_test(ret && node->has_frmintervals);
--		if (ret)
--			break;
-+			fail_on_test(ret && node->has_enc_cap_frame_interval);
-+		}
- 		break;
- 	default:
- 		fail_on_test(ret == 0);
-@@ -1300,8 +1312,15 @@ static int testParmType(struct node *node, unsigned type)
- 		fail_on_test(!doioctl(node, VIDIOC_S_PARM, &parm));
- 		break;
+ 	int ret = 0;
++	struct scsi_target *starget;
+ 
+ 	if (!hba->is_powered)
+ 		goto out;
+@@ -8612,7 +8632,25 @@ int ufshcd_shutdown(struct ufs_hba *hba)
+ 			goto out;
  	}
-+	if (ret == ENOTTY) {
-+		memset(&parm, 0, sizeof(parm));
-+		parm.type = type;
-+		fail_on_test(doioctl(node, VIDIOC_S_PARM, &parm) != ENOTTY);
-+	}
- 	if (ret == ENOTTY)
- 		return ret;
-+	// M2M devices don't support this, except for stateful encoders
-+	fail_on_test(node->is_m2m && !is_stateful_enc);
- 	if (ret == EINVAL)
- 		return ENOTTY;
- 	if (ret)
-@@ -1327,11 +1346,29 @@ static int testParmType(struct node *node, unsigned type)
- 		cap = parm.parm.output.capability;
- 	else
- 		cap = parm.parm.capture.capability;
--	fail_on_test(ret && node->has_frmintervals);
--	if (!ret && (cap & V4L2_CAP_TIMEPERFRAME) && !node->has_frmintervals)
-+
-+	if (is_stateful_enc) {
-+		fail_on_test(ret && node->has_enc_cap_frame_interval);
-+		if (V4L2_TYPE_IS_OUTPUT(type))
-+			fail_on_test(ret);
-+	} else {
-+		fail_on_test(ret && node->has_frmintervals);
-+	}
-+
+ 
 +	/*
-+	 * Stateful encoders can support S_PARM without ENUM_FRAMEINTERVALS.
-+	 * being present. In that case the limits of the chosen codec apply.
++	 * Quiesce all SCSI devices to prevent any non-PM requests sending
++	 * from block layer during and after shutdown.
++	 *
++	 * Here we can not use blk_cleanup_queue() since PM requests
++	 * (with BLK_MQ_REQ_PREEMPT flag) are still required to be sent
++	 * through block layer. Therefore SCSI command queued after the
++	 * scsi_target_quiesce() call returned will block until
++	 * blk_cleanup_queue() is called.
++	 *
++	 * Besides, scsi_target_"un"quiesce (e.g., scsi_target_resume) can
++	 * be ignored since shutdown is one-way flow.
 +	 */
-+	if (!ret && (cap & V4L2_CAP_TIMEPERFRAME) && !node->has_frmintervals && !is_stateful_enc)
- 		warn("S_PARM is supported for buftype %d, but not for ENUM_FRAMEINTERVALS\n", type);
- 	if (ret == ENOTTY)
- 		return 0;
-+	/*
-+	 * S_PARM(CAPTURE) is optional for stateful encoders, so EINVAL is a
-+	 * valid error code in that case.
-+	 */
-+	if (is_stateful_enc && !V4L2_TYPE_IS_OUTPUT(type) && ret == -EINVAL)
-+		return 0;
++	ufshcd_scsi_for_each_sdev(ufshcd_quiece_sdev);
++
+ 	ret = ufshcd_suspend(hba, UFS_SHUTDOWN_PM);
++
++	/* Set queue as dying to not block queueing commands */
++	ufshcd_scsi_for_each_sdev(ufshcd_cleanup_queue);
+ out:
  	if (ret)
- 		return fail("got error %d when setting parms for buftype %d\n", ret, type);
- 	fail_on_test(parm.type != type);
--------------------------- cut here ------------------------------
-
+ 		dev_err(hba->dev, "%s failed, err %d\n", __func__, ret);
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
