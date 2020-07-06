@@ -2,76 +2,85 @@ Return-Path: <SRS0=Wnqn=AR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9CA3FC433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 07:01:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A23A8C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 08:37:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 64D3720724
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 07:01:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6F796206E9
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 08:37:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ER1oxqeW";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ZWXHNQeH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 64D3720724
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F/hnfXO3";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="ZH/gSL6N"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6F796206E9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TczyPqqnKUt/Zk/IWZWxWS5McuthVGaU/CzIP/H4JDY=; b=ER1oxqeWUi04G1zNYWJXnV36J
-	y0qxJMv4tNKOkM/tiApy6okZhQVI99yYKmyUoptgQUM+s4puTjDMfP1QWCxKfo87P5Ec5rRsDbE8Q
-	XpErriXjIE3a4X4PJJ6ZNbCvGXI81CrW5yENZCAeN/wmb/lkRst2POhTprsH4d8TZlpH/828d7GFi
-	peMaZ8hJc4sODIry7HWM1TI4Yu3+JgAsTNH358pyjRmhhe2jZRqqfe8MElqR5EZvRahOWJmhVQlMl
-	OVUV/OQpigTogApHkLEuXV/d4+zAXA6yahfZvIs2NUumjH0a5Wr60u/F5YRrsmTBuN4nVr1rx7pPc
-	qag0fXPNA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=R3g/d2ClekWp815yavQC5V6j1NOmtxeTCDTBLEG0fkw=; b=F/hnfXO3Mf+KIuA5mD1JbRv+7C
+	YxVu0aQkRurL3BAT2kCa3UsTtqj9ssNfUgLWJF/icz08/KtuzbV8YK4S9S848KObaBaNCEQonFOU+
+	NRg7cZBAheF7wXGO78Ihwjr/lwwkdkHXUeRQQzR6IXDxKgkWAL9zt3SpioDGGcGUwutEJ0Xf/F+II
+	2IZ84dtellIwvrvtvcwkffsbz5samU7sjBVMmOpX8U5zd/bPj8SZi4fktwKHuLvqBV/yB2JbBBTHQ
+	uGw/oKJvgeLKibGD5fHug3ZpYWM7VXOPimi0B+cDZHwnI+5V6QeloD4PZhSfXk57OGl8o1/kviNpl
+	Iw0AeKcg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jsL8E-0004rm-V6; Mon, 06 Jul 2020 07:01:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jsMcu-0007ec-Ky; Mon, 06 Jul 2020 08:37:24 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jsL8C-0004r0-Mn; Mon, 06 Jul 2020 07:01:38 +0000
-X-UUID: c4d431e22eca48d2af69ef4f192548cb-20200705
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=nPZqNQDBxsg4ytdwwt0Endr8/iEUUms3Rc4LlN2aaeY=; 
- b=ZWXHNQeH1glsAO9qmsaQtK4QYBMYcdFFunWVpfOPSc1cQesMWSBAg0Ozg8+WOSsU9dvXY14iZK/duB2n1jtMLwoUc4oi6ytmd41yiS55w74pYvxhSxLs7Xg5E6xTCYgeat0yLC84FmyOqfTx2hmx3I9sabm+/rE/4Cg7W8bfa2k=;
-X-UUID: c4d431e22eca48d2af69ef4f192548cb-20200705
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <walter-zh.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2125156264; Sun, 05 Jul 2020 23:01:23 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 5 Jul 2020 23:59:20 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 6 Jul 2020 14:59:13 +0800
-Received: from [172.21.84.99] (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 6 Jul 2020 14:59:13 +0800
-Message-ID: <1594018755.1706.3.camel@mtksdccf07>
-Subject: Re: [PATCH v2] kasan: fix KASAN unit tests for tag-based KASAN
-From: Walter Wu <walter-zh.wu@mediatek.com>
-To: Dmitry Vyukov <dvyukov@google.com>
-Date: Mon, 6 Jul 2020 14:59:15 +0800
-In-Reply-To: <CACT4Y+akZ5iu2ohQhRqiUd8zkew-NmrUPrA=xYtS1xxHWZ60Og@mail.gmail.com>
-References: <20200706022150.20848-1-walter-zh.wu@mediatek.com>
- <CACT4Y+akZ5iu2ohQhRqiUd8zkew-NmrUPrA=xYtS1xxHWZ60Og@mail.gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1jsMcs-0007e7-2G
+ for linux-mediatek@lists.infradead.org; Mon, 06 Jul 2020 08:37:23 +0000
+Received: by mail-pg1-x541.google.com with SMTP id k27so1973974pgm.2
+ for <linux-mediatek@lists.infradead.org>; Mon, 06 Jul 2020 01:37:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=hDPVa/N3+ZUhvoRViqdPQuinT4r2KBmw7AgHYWQpXaA=;
+ b=ZH/gSL6NxrKlkOJdEjmRdJfg84atT3SGryBcqvwJxgXifGEQU/myuLaGsECCGWHy02
+ hIpvBgTnrMsLWGrwRzi6MQw61zYE+LqvgbkC/Pa4YFYpPzfLti69KDZXzwkVCybQMiTh
+ vgVvih10X5hM74DnXwSQGhxhVPlUn7lLkC6aA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=hDPVa/N3+ZUhvoRViqdPQuinT4r2KBmw7AgHYWQpXaA=;
+ b=r5TKMzpLPf2oUR6M4zYO+mXJFfaz4/eb/gaC0Ucma2wlmBy2FMQono97l8ULm1EEDq
+ RH7ev9hbat1vFRUsMISjuAQZk8EtPZ65go4L0zbKJpyqeWybSxmq+QndZrsmKtBDhbFT
+ JlVPFkcpwpiU1eE5MTS2lJq8JJGa39Ib3iJqXtKuhK1pQ2rYAK01D5sXyiB5D3i2BZTO
+ NlCpNdVuSh3QzNfhWBnPpXIoeS41ZSXeHiIMoSCJvwxATrr96GkFmjsNeTZNMymp0t/y
+ DAp5Bx5EfQz/LDnYhr5EJAMbcMCRvGhHa7WXODI+GGW0u8Snpu2pYO2DSWnbPmVhBJ04
+ yTug==
+X-Gm-Message-State: AOAM533ddUSVsP+Uwt+724rNsxoukpHfzgpCvRVohl8wILgJ/ZDSo3dj
+ 4VVr+5xnJMv0++lcQuRI8OHK1sfpqbI=
+X-Google-Smtp-Source: ABdhPJx0l2boOlf6QipzFSm9Oam/wQo9MTfVhN3BnUkyzGrJjWzbyT0fJys4WkerFMUBKouOJnQ8rQ==
+X-Received: by 2002:a62:2ad0:: with SMTP id
+ q199mr33712673pfq.229.1594024637530; 
+ Mon, 06 Jul 2020 01:37:17 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:1a60:24ff:fe89:3e93])
+ by smtp.gmail.com with ESMTPSA id bf11sm17657345pjb.48.2020.07.06.01.37.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 06 Jul 2020 01:37:17 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: linux-mediatek@lists.infradead.org
+Subject: [PATCH] arm64: dts: mt8173: Re-measure capacity-dmips-mhz
+Date: Mon,  6 Jul 2020 16:37:05 +0800
+Message-Id: <20200706083705.2343150-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.27.0.212.ge8ba1cc988-goog
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200706_030136_887292_A26AC7D6 
-X-CRM114-Status: GOOD (  31.04  )
+X-CRM114-CacheID: sfid-20200706_043722_125992_CD7B7CBD 
+X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,263 +92,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream <wsd_upstream@mediatek.com>, Andrey
- Konovalov <andreyknvl@google.com>, linux-mediatek@lists.infradead.org,
- LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>,
- Linux-MM <linux-mm@kvack.org>, Alexander Potapenko <glider@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ ikjn@chromium.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2020-07-06 at 08:19 +0200, Dmitry Vyukov wrote:
-> On Mon, Jul 6, 2020 at 4:21 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
-> >
-> > We use tag-based KASAN, then KASAN unit tests don't detect out-of-bounds
-> > memory access. They need to be fixed.
-> >
-> > With tag-based KASAN, the state of each 16 aligned bytes of memory is
-> > encoded in one shadow byte and the shadow value is tag of pointer, so
-> > we need to read next shadow byte, the shadow value is not equal to tag
-> > value of pointer, so that tag-based KASAN will detect out-of-bounds
-> > memory access.
-> >
-> > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> > Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
-> > Cc: Dmitry Vyukov <dvyukov@google.com>
-> > Cc: Alexander Potapenko <glider@google.com>
-> > Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> > Cc: Andrey Konovalov <andreyknvl@google.com>
-> > Cc: Andrew Morton <akpm@linux-foundation.org>
-> > ---
-> >
-> > changes since v1:
-> > - Reduce amount of non-compiled code.
-> > - KUnit-KASAN Integration patchset are not merged yet. My patch should
-> >   have conflict with it, if needed, we can continue to wait it.
-> >
-> > ---
-> >
-> >  lib/test_kasan.c | 81 ++++++++++++++++++++++++++++++++++++++----------
-> >  1 file changed, 64 insertions(+), 17 deletions(-)
-> >
-> > diff --git a/lib/test_kasan.c b/lib/test_kasan.c
-> > index e3087d90e00d..660664439d52 100644
-> > --- a/lib/test_kasan.c
-> > +++ b/lib/test_kasan.c
-> > @@ -40,7 +40,11 @@ static noinline void __init kmalloc_oob_right(void)
-> >                 return;
-> >         }
-> >
-> > -       ptr[size] = 'x';
-> > +       if (IS_ENABLED(CONFIG_KASAN_GENERIC))
-> > +               ptr[size] = 'x';
-> > +       else
-> > +               ptr[size + 5] = 'x';
-> > +
-> 
-> Hi Walter,
-> 
-> Would if be possible to introduce something like:
-> 
-> #define OOB_TAG_OFF (IS_ENABLED(CONFIG_KASAN_GENERIC) ? 0 : 8)
-> 
+Re measure capacity-dmips-mhz on elm and hana:
 
-It is good suggestion. Thanks.
+cpu 1:  9502 DMIPS @ 1703 Mhz
+cpu 3: 16250 DMIPS @ 2106 Mhz
 
-> and then add it throughout as
-> 
->         ptr[size + OOB_TAG_OFF] = 'x';
-> 
-> ?
-> The current version results in quite some amount of additional code
-> that needs to be read, extended  and maintained in the future. So I am
-> thinking if it's possible to minimize it somehow...
-> 
+==> 740 : 1024
 
-Ok, I will send next patch by your suggestion.
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Thanks.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 70b1ffcab7f0..5e046f9d48ce 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -167,7 +167,7 @@ cpu0: cpu@0 {
+ 				 <&apmixedsys CLK_APMIXED_MAINPLL>;
+ 			clock-names = "cpu", "intermediate";
+ 			operating-points-v2 = <&cluster0_opp>;
+-			capacity-dmips-mhz = <526>;
++			capacity-dmips-mhz = <740>;
+ 		};
+ 
+ 		cpu1: cpu@1 {
+@@ -182,7 +182,7 @@ cpu1: cpu@1 {
+ 				 <&apmixedsys CLK_APMIXED_MAINPLL>;
+ 			clock-names = "cpu", "intermediate";
+ 			operating-points-v2 = <&cluster0_opp>;
+-			capacity-dmips-mhz = <526>;
++			capacity-dmips-mhz = <740>;
+ 		};
+ 
+ 		cpu2: cpu@100 {
+-- 
+2.27.0.212.ge8ba1cc988-goog
 
-> >         kfree(ptr);
-> >  }
-> >
-> > @@ -92,7 +96,11 @@ static noinline void __init kmalloc_pagealloc_oob_right(void)
-> >                 return;
-> >         }
-> >
-> > -       ptr[size] = 0;
-> > +       if (IS_ENABLED(CONFIG_KASAN_GENERIC))
-> > +               ptr[size] = 0;
-> > +       else
-> > +               ptr[size + 6] = 0;
-> > +
-> >         kfree(ptr);
-> >  }
-> >
-> > @@ -162,7 +170,11 @@ static noinline void __init kmalloc_oob_krealloc_more(void)
-> >                 return;
-> >         }
-> >
-> > -       ptr2[size2] = 'x';
-> > +       if (IS_ENABLED(CONFIG_KASAN_GENERIC))
-> > +               ptr2[size2] = 'x';
-> > +       else
-> > +               ptr2[size2 + 13] = 'x';
-> > +
-> >         kfree(ptr2);
-> >  }
-> >
-> > @@ -180,7 +192,12 @@ static noinline void __init kmalloc_oob_krealloc_less(void)
-> >                 kfree(ptr1);
-> >                 return;
-> >         }
-> > -       ptr2[size2] = 'x';
-> > +
-> > +       if (IS_ENABLED(CONFIG_KASAN_GENERIC))
-> > +               ptr2[size2] = 'x';
-> > +       else
-> > +               ptr2[size2 + 2] = 'x';
-> > +
-> >         kfree(ptr2);
-> >  }
-> >
-> > @@ -216,7 +233,11 @@ static noinline void __init kmalloc_oob_memset_2(void)
-> >                 return;
-> >         }
-> >
-> > -       memset(ptr+7, 0, 2);
-> > +       if (IS_ENABLED(CONFIG_KASAN_GENERIC))
-> > +               memset(ptr+7, 0, 2);
-> > +       else
-> > +               memset(ptr+15, 0, 2);
-> > +
-> >         kfree(ptr);
-> >  }
-> >
-> > @@ -232,7 +253,11 @@ static noinline void __init kmalloc_oob_memset_4(void)
-> >                 return;
-> >         }
-> >
-> > -       memset(ptr+5, 0, 4);
-> > +       if (IS_ENABLED(CONFIG_KASAN_GENERIC))
-> > +               memset(ptr+5, 0, 4);
-> > +       else
-> > +               memset(ptr+15, 0, 4);
-> > +
-> >         kfree(ptr);
-> >  }
-> >
-> > @@ -249,7 +274,11 @@ static noinline void __init kmalloc_oob_memset_8(void)
-> >                 return;
-> >         }
-> >
-> > -       memset(ptr+1, 0, 8);
-> > +       if (IS_ENABLED(CONFIG_KASAN_GENERIC))
-> > +               memset(ptr+1, 0, 8);
-> > +       else
-> > +               memset(ptr+15, 0, 8);
-> > +
-> >         kfree(ptr);
-> >  }
-> >
-> > @@ -265,7 +294,11 @@ static noinline void __init kmalloc_oob_memset_16(void)
-> >                 return;
-> >         }
-> >
-> > -       memset(ptr+1, 0, 16);
-> > +       if (IS_ENABLED(CONFIG_KASAN_GENERIC))
-> > +               memset(ptr+1, 0, 16);
-> > +       else
-> > +               memset(ptr+15, 0, 16);
-> > +
-> >         kfree(ptr);
-> >  }
-> >
-> > @@ -281,7 +314,11 @@ static noinline void __init kmalloc_oob_in_memset(void)
-> >                 return;
-> >         }
-> >
-> > -       memset(ptr, 0, size+5);
-> > +       if (IS_ENABLED(CONFIG_KASAN_GENERIC))
-> > +               memset(ptr, 0, size+5);
-> > +       else
-> > +               memset(ptr, 0, size+7);
-> > +
-> >         kfree(ptr);
-> >  }
-> >
-> > @@ -415,7 +452,11 @@ static noinline void __init kmem_cache_oob(void)
-> >                 return;
-> >         }
-> >
-> > -       *p = p[size];
-> > +       if (IS_ENABLED(CONFIG_KASAN_GENERIC))
-> > +               *p = p[size];
-> > +       else
-> > +               *p = p[size + 8];
-> > +
-> >         kmem_cache_free(cache, p);
-> >         kmem_cache_destroy(cache);
-> >  }
-> > @@ -497,6 +538,7 @@ static noinline void __init copy_user_test(void)
-> >         char __user *usermem;
-> >         size_t size = 10;
-> >         int unused;
-> > +       size_t oob_size;
-> >
-> >         kmem = kmalloc(size, GFP_KERNEL);
-> >         if (!kmem)
-> > @@ -511,26 +553,31 @@ static noinline void __init copy_user_test(void)
-> >                 return;
-> >         }
-> >
-> > +       if (IS_ENABLED(CONFIG_KASAN_GENERIC))
-> > +               oob_size = 1;
-> > +       else
-> > +               oob_size = 7;
-> > +
-> >         pr_info("out-of-bounds in copy_from_user()\n");
-> > -       unused = copy_from_user(kmem, usermem, size + 1);
-> > +       unused = copy_from_user(kmem, usermem, size + oob_size);
-> >
-> >         pr_info("out-of-bounds in copy_to_user()\n");
-> > -       unused = copy_to_user(usermem, kmem, size + 1);
-> > +       unused = copy_to_user(usermem, kmem, size + oob_size);
-> >
-> >         pr_info("out-of-bounds in __copy_from_user()\n");
-> > -       unused = __copy_from_user(kmem, usermem, size + 1);
-> > +       unused = __copy_from_user(kmem, usermem, size + oob_size);
-> >
-> >         pr_info("out-of-bounds in __copy_to_user()\n");
-> > -       unused = __copy_to_user(usermem, kmem, size + 1);
-> > +       unused = __copy_to_user(usermem, kmem, size + oob_size);
-> >
-> >         pr_info("out-of-bounds in __copy_from_user_inatomic()\n");
-> > -       unused = __copy_from_user_inatomic(kmem, usermem, size + 1);
-> > +       unused = __copy_from_user_inatomic(kmem, usermem, size + oob_size);
-> >
-> >         pr_info("out-of-bounds in __copy_to_user_inatomic()\n");
-> > -       unused = __copy_to_user_inatomic(usermem, kmem, size + 1);
-> > +       unused = __copy_to_user_inatomic(usermem, kmem, size + oob_size);
-> >
-> >         pr_info("out-of-bounds in strncpy_from_user()\n");
-> > -       unused = strncpy_from_user(kmem, usermem, size + 1);
-> > +       unused = strncpy_from_user(kmem, usermem, size + oob_size);
-> >
-> >         vm_munmap((unsigned long)usermem, PAGE_SIZE);
-> >         kfree(kmem);
-> > --
-> > 2.18.0
-> >
-> > --
-> > You received this message because you are subscribed to the Google Groups "kasan-dev" group.
-> > To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
-> > To view this discussion on the web visit https://urldefense.com/v3/__https://groups.google.com/d/msgid/kasan-dev/20200706022150.20848-1-walter-zh.wu*40mediatek.com__;JQ!!CTRNKA9wMg0ARbw!zqGS_g-oLI7o6850GjV_P7YQPr8SufdeC8fbnt27o4WtvhX5PZ8-eZ6BWyF3bwm7Tizipw$ .
 
 _______________________________________________
 Linux-mediatek mailing list
