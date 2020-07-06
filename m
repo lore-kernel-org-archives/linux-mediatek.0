@@ -2,82 +2,79 @@ Return-Path: <SRS0=Wnqn=AR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B03FC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 12:14:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8BD50C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 12:45:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 290FD2070C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 12:14:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 29A0920720
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 12:45:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RJRZSba/";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="nko1XfT+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 290FD2070C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gtkNpFb0";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=xs4all.nl header.i=@xs4all.nl header.b="N9WVyPfU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 29A0920720
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=GNJpWQqPAyygbXpOGwqBUwhRiVbhZfREgANiqNCK4bM=; b=RJRZSba/kFEVEoKU3TaGGSm71
-	BVAKq9tmK3Q2r7BnIpJZ6qVf1xXIjpaGbmGsI7usFv/PIJLHfmfArvoqy/31MSYhmDH2BfL8JeQZY
-	DAWrjR6vbqbPx7Irv5Gf0N8+lR/GwHdkHCT/jK+oIPSLlC6Sz1f6UbFPN/IXX2wlDFCalBs9cMR+M
-	uheNA8uyc0ifJY3UvS3AmltA0TTgk2caiWlvvwOoKDQv1ZPVZ1B9ef6iv89SjoA02+gyQVwvKT9hJ
-	jwjQlZZW64/JXOo3m9mwHzZ4FYNqxc5nnkYbejIXB4oRfxWH0WWk/RYXqrvt3qkAr4G5VQyovkMeH
-	QP3U89S9w==;
+	 bh=BoTPNXUHxzG2p5DrsQHkhXY9BqRFcRqQxV07jG2pFsQ=; b=gtkNpFb0dByDnbLmEglVMEGe2
+	a8B9qwVD2ltkZFIj9u9ZfpRhm29VMXLqwk9Xb2386Ma3r5SEurTRBvwBl3NNpmsogWSgnuysM5Z59
+	lqmpi+dU1dz4JT7gq3Xlecy3RCV+7YtJMSMeuESejNDH7HBPhSUaKsXtcMF9DPhdk9a8RPmU2wx/s
+	rz5BB09IzYq2kzj4rq9z1pw5nljVwAKQmswI6GSsZ1VKLdhw7tfp4+lLsB/XhuPckM1rpBF8uzi1X
+	gJY1WLtsfh5jgSDyWE+gukd0JEAP3zGPxiYVpn/syonUPtgiLVQUZRSckVuGhHwKrAYO+1QUL/k7j
+	hwrlX7y1A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jsQ12-0005fx-JS; Mon, 06 Jul 2020 12:14:32 +0000
-Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742])
+	id 1jsQUv-0003PS-1u; Mon, 06 Jul 2020 12:45:25 +0000
+Received: from lb2-smtp-cloud7.xs4all.net ([194.109.24.28])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jsQ10-0005es-8f
- for linux-mediatek@lists.infradead.org; Mon, 06 Jul 2020 12:14:31 +0000
-Received: by mail-qk1-x742.google.com with SMTP id b185so23861918qkg.1
- for <linux-mediatek@lists.infradead.org>; Mon, 06 Jul 2020 05:14:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=JMy1NuuvAJma8T47+ZbalKDZNjVJ2jnk0BZDVxqbCwQ=;
- b=nko1XfT+397vBzoTAuvb/NwaOO/bEhQhOka5qoSo1wHHzsAjJ2qSBtbij0FSm97MZf
- gCqkokoYGz2WZosQmEAkbDOLBldBqgRmDOlpDpSg+2GOFiU5ymPt3ZtUR/xERhVOl3C7
- GfdO2bazIo5PNN2Aifia9bbkm4Nh0qnrDsQlyqJ1R1shAnHIyYiL7Xke/QTt/b5q7ybP
- 2N78dlx3kuyI8sjTUCluaJAIt6OxqMWQhdQoy3L/BOu4+0oLz9NDePMS6dZxtnxG1Tme
- 2SKE26QVvPzTnGSOjruh7dOOUCuFdOLq+/CNQz6Dywj3At2lpCXglqHrpgVJ+5c2FovB
- P3Qg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=JMy1NuuvAJma8T47+ZbalKDZNjVJ2jnk0BZDVxqbCwQ=;
- b=anmhWqbZ/08pt40T2EjGME33IWQUIhw4Su06Zg4yBsbS2BgZwy4ybh8SsIFllSAreD
- aWPbwey5rXhOe3VsaEEFsvOwVbfcJu/uiUpNu051hsFUW1KSSbZuKlrK9N12nUGWVRlf
- M/SjYH3svISVKPHOJ6xwTMZiDwld7gIfOKrP1dhn4EQNLV6mMPZg3dJmdy77fUnkdS/J
- OleGnnDk2IWMiY5MPfVXmX76GJBiMBLSaD9a/jn6rl8B7Tuk/vvQAOmNJldbDz8Skb2Y
- KqmsuDco95bpDsoYFfHOaXjJWeM1EBHz802Zcciv49IcWg/TPpI78E5XUfpvMG/9a+yT
- ECwg==
-X-Gm-Message-State: AOAM530mADVS7rdPUhWScCXGnwe5l0PNpB1FoB1kFJAtJJWZl1CGJ9ob
- wCmd5MbHAOjLBcjikueysZenv4XNP/Y9ztOKxyULUA==
-X-Google-Smtp-Source: ABdhPJytNrgl7FBFfSK7uSG3r5AU0HOh9svUb+5HtbAWZdETRhq9lyeEea9WqHFvOoMbwo6BBpVko93H+ejfps4iN1Q=
-X-Received: by 2002:a05:620a:4ca:: with SMTP id
- 10mr47782458qks.250.1594037668024; 
- Mon, 06 Jul 2020 05:14:28 -0700 (PDT)
+ id 1jsQTe-0002X8-Uw
+ for linux-mediatek@lists.infradead.org; Mon, 06 Jul 2020 12:44:10 +0000
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud7.xs4all.net with ESMTPA
+ id sQRDj8pEgBncFsQRHjvK6S; Mon, 06 Jul 2020 14:43:54 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
+ t=1594039434; bh=8F2TmOn83d1FtryLiBajmS/9uywwC87cqE1qHI2tvC4=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=N9WVyPfUlPhycanOZAtZgecKkq80qFh+oJXgyoVY3wWWPN2yoVbcYkxWUZZX+Pp8U
+ d4JgPgeJKw7aYKrGEZZ+q8u1BYOKlNMxEKLZNKsoUZAphxZnR5IwP+URp4Z6KroS+2
+ SsRqe8ddv1Rm1miIvL87p31gHObGSAc6RiuDstOjaGbFk/1v/F74zoWvGj92KFVg3I
+ aqZj689O9jI6QwCHTuTFurSBX4qsCzEEjUqkz1aggsdpLS3D2zPA/fK6z/nLDQa5Kg
+ I+xxe6aSe6QpG+4VnXYyLPbHC0N0E0neG7+TCZUJ38nSu4vLVvTcT3NlUKHTf68peq
+ CH2rwlH2ryTKg==
+Subject: Re: [PATCH v2 16/18] media: mtk-vcodec: venc: make S_PARM return
+ -ENOTTY for CAPTURE queue
+To: Alexandre Courbot <acourbot@chromium.org>
+References: <20200626080442.292309-1-acourbot@chromium.org>
+ <20200626080442.292309-17-acourbot@chromium.org>
+ <84068e20-9a34-6d03-61e6-6c243680749c@xs4all.nl>
+ <CAPBb6MW9deo11+YH9Mh3u08sEt7ShAF_a+S0-Jb_VDGhCQot_Q@mail.gmail.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <74652f57-8dd8-6b24-9889-59bec389464e@xs4all.nl>
+Date: Mon, 6 Jul 2020 14:41:35 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-References: <20200706115039.16750-1-walter-zh.wu@mediatek.com>
-In-Reply-To: <20200706115039.16750-1-walter-zh.wu@mediatek.com>
-From: Dmitry Vyukov <dvyukov@google.com>
-Date: Mon, 6 Jul 2020 14:14:16 +0200
-Message-ID: <CACT4Y+aphKiK4oZOjCnHr3nGGL3X-HTb1sPfMyT_b947r4X8-g@mail.gmail.com>
-Subject: Re: [PATCH v3] kasan: fix KASAN unit tests for tag-based KASAN
-To: Walter Wu <walter-zh.wu@mediatek.com>
+In-Reply-To: <CAPBb6MW9deo11+YH9Mh3u08sEt7ShAF_a+S0-Jb_VDGhCQot_Q@mail.gmail.com>
+Content-Language: en-US
+X-CMAE-Envelope: MS4wfKcKT/KYVZiOxynAIfVI3ssaFh/UuQ5Kaf/XdhEeyookvFHb5HtVQlFVZdimI3i10tefi121PTR+fBcUS4grLGxynpn7k+9eILtm5mz80NClvVS0n9WE
+ 24ovQragdB9gw1o4cxDswZxfhjANOJ9sbfV5jQ1QVVAgjQVHldSkdq1x10CZZneSq1qJzi4PTAEbr9/slIFDxG5ZQI4fcN4SGZNj8LV/D/6wrqoyJOZKvcv0
+ 88n8XGejBhvSg/m9P6e3OQeuWy2Bfwrb8KfxnqwTkPCry2DxZFc9kX/1tgdvoo+stj98fVC6PnHaq3E3PhYwW63EmXODtln/ypwpTuwKNDUISsUEBtG04EAL
+ DiLI+IfALI+fGSRV9iMXSUNwE1pOmU8SOCFQfQWbrxtiGJ00V4q/VFyE5osW+aga1UbGWz8yaHZv3/IjeVvguBgc9nrbtQg0tNevCUqhn8zIWypN7M6nzs+K
+ aODiw6L1CRwORMOrAvxE5rEGbrBnV2xRzzTXQKetQ5/vw9Gq9H/ikMAYdps=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200706_081430_384752_36A4FA3B 
-X-CRM114-Status: GOOD (  22.29  )
+X-CRM114-CacheID: sfid-20200706_084408_712023_7DF4D7E5 
+X-CRM114-Status: GOOD (  27.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,211 +86,238 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream <wsd_upstream@mediatek.com>,
- Andrey Konovalov <andreyknvl@google.com>, linux-mediatek@lists.infradead.org,
- LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>,
- Linux-MM <linux-mm@kvack.org>, Alexander Potapenko <glider@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Maoguang Meng <maoguang.meng@mediatek.com>,
+ Rui Wang <gtk_ruiwang@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>,
+ LKML <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Pi-Hsun Shih <pihsun@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 6, 2020 at 1:50 PM Walter Wu <walter-zh.wu@mediatek.com> wrote:
->
-> We use tag-based KASAN, then KASAN unit tests don't detect out-of-bounds
-> memory access. They need to be fixed.
->
-> With tag-based KASAN, the state of each 16 aligned bytes of memory is
-> encoded in one shadow byte and the shadow value is tag of pointer, so
-> we need to read next shadow byte, the shadow value is not equal to tag
-> value of pointer, so that tag-based KASAN will detect out-of-bounds
-> memory access.
->
-> Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> Suggested-by: Dmitry Vyukov <dvyukov@google.com>
-> Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
-> Cc: Dmitry Vyukov <dvyukov@google.com>
-> Cc: Alexander Potapenko <glider@google.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Andrey Konovalov <andreyknvl@google.com>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
+On 04/07/2020 14:36, Alexandre Courbot wrote:
+> On Fri, Jul 3, 2020 at 5:30 PM Hans Verkuil <hverkuil@xs4all.nl> wrote:
+>>
+>> On 26/06/2020 10:04, Alexandre Courbot wrote:
+>>> v4l2-compliance expects ENOTTY to be returned when a given queue does
+>>> not support S_PARM.
+>>>
+>>> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+>>> ---
+>>>  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c | 2 +-
+>>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+>>> index aae610e6d4e8..346a33c6869d 100644
+>>> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+>>> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+>>> @@ -200,7 +200,7 @@ static int vidioc_venc_s_parm(struct file *file, void *priv,
+>>>       struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
+>>>
+>>>       if (a->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
+>>> -             return -EINVAL;
+>>> +             return -ENOTTY;
+>>
+>> This doesn't look right: S_PARM *is* supported, just not for this buffer type.
+>> So -EINVAL is the correct error code.
+>>
+>> What is the exact v4l2-compliance failure? It might be a bug in the test.
+> 
+> The error is as follows:
+> 
+> Format ioctls:
+>         test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+>                 fail: v4l2-test-formats.cpp(1336): got error 22 when
+> setting parms for buftype 9
+>         test VIDIOC_G/S_PARM: FAIL
 
-Acked-by: Dmitry Vyukov <dvyukov@google.com>
+This is due to bugs in the compliance test that do not take into account the
+stateful encoder spec.
 
-Thanks for fixing these tests!
+The compliance test should check for the following:
 
-> ---
->
-> changes since v1:
-> - Reduce amount of non-compiled code.
-> - KUnit-KASAN Integration patchset is not merged yet. My patch should
->   have conflict with it, if needed, we can continue to wait it.
->
-> changes since v2:
-> - Add one marco to make unit tests more readability.
->
-> ---
->  lib/test_kasan.c | 47 ++++++++++++++++++++++++++++++-----------------
->  1 file changed, 30 insertions(+), 17 deletions(-)
->
-> diff --git a/lib/test_kasan.c b/lib/test_kasan.c
-> index e3087d90e00d..b5049a807e25 100644
-> --- a/lib/test_kasan.c
-> +++ b/lib/test_kasan.c
-> @@ -23,6 +23,8 @@
->
->  #include <asm/page.h>
->
-> +#define OOB_TAG_OFF (IS_ENABLED(CONFIG_KASAN_GENERIC) ? 0 : 13)
-> +
->  /*
->   * Note: test functions are marked noinline so that their names appear in
->   * reports.
-> @@ -40,7 +42,8 @@ static noinline void __init kmalloc_oob_right(void)
->                 return;
->         }
->
-> -       ptr[size] = 'x';
-> +       ptr[size + OOB_TAG_OFF] = 'x';
-> +
->         kfree(ptr);
->  }
->
-> @@ -92,7 +95,8 @@ static noinline void __init kmalloc_pagealloc_oob_right(void)
->                 return;
->         }
->
-> -       ptr[size] = 0;
-> +       ptr[size + OOB_TAG_OFF] = 0;
-> +
->         kfree(ptr);
->  }
->
-> @@ -162,7 +166,8 @@ static noinline void __init kmalloc_oob_krealloc_more(void)
->                 return;
->         }
->
-> -       ptr2[size2] = 'x';
-> +       ptr2[size2 + OOB_TAG_OFF] = 'x';
-> +
->         kfree(ptr2);
->  }
->
-> @@ -180,7 +185,9 @@ static noinline void __init kmalloc_oob_krealloc_less(void)
->                 kfree(ptr1);
->                 return;
->         }
-> -       ptr2[size2] = 'x';
-> +
-> +       ptr2[size2 + OOB_TAG_OFF] = 'x';
-> +
->         kfree(ptr2);
->  }
->
-> @@ -216,7 +223,8 @@ static noinline void __init kmalloc_oob_memset_2(void)
->                 return;
->         }
->
-> -       memset(ptr+7, 0, 2);
-> +       memset(ptr + 7 + OOB_TAG_OFF, 0, 2);
-> +
->         kfree(ptr);
->  }
->
-> @@ -232,7 +240,8 @@ static noinline void __init kmalloc_oob_memset_4(void)
->                 return;
->         }
->
-> -       memset(ptr+5, 0, 4);
-> +       memset(ptr + 5 + OOB_TAG_OFF, 0, 4);
-> +
->         kfree(ptr);
->  }
->
-> @@ -249,7 +258,8 @@ static noinline void __init kmalloc_oob_memset_8(void)
->                 return;
->         }
->
-> -       memset(ptr+1, 0, 8);
-> +       memset(ptr + 1 + OOB_TAG_OFF, 0, 8);
-> +
->         kfree(ptr);
->  }
->
-> @@ -265,7 +275,8 @@ static noinline void __init kmalloc_oob_memset_16(void)
->                 return;
->         }
->
-> -       memset(ptr+1, 0, 16);
-> +       memset(ptr + 1 + OOB_TAG_OFF, 0, 16);
-> +
->         kfree(ptr);
->  }
->
-> @@ -281,7 +292,8 @@ static noinline void __init kmalloc_oob_in_memset(void)
->                 return;
->         }
->
-> -       memset(ptr, 0, size+5);
-> +       memset(ptr, 0, size + 5 + OOB_TAG_OFF);
-> +
->         kfree(ptr);
->  }
->
-> @@ -415,7 +427,8 @@ static noinline void __init kmem_cache_oob(void)
->                 return;
->         }
->
-> -       *p = p[size];
-> +       *p = p[size + OOB_TAG_OFF];
-> +
->         kmem_cache_free(cache, p);
->         kmem_cache_destroy(cache);
->  }
-> @@ -512,25 +525,25 @@ static noinline void __init copy_user_test(void)
->         }
->
->         pr_info("out-of-bounds in copy_from_user()\n");
-> -       unused = copy_from_user(kmem, usermem, size + 1);
-> +       unused = copy_from_user(kmem, usermem, size + 1 + OOB_TAG_OFF);
->
->         pr_info("out-of-bounds in copy_to_user()\n");
-> -       unused = copy_to_user(usermem, kmem, size + 1);
-> +       unused = copy_to_user(usermem, kmem, size + 1 + OOB_TAG_OFF);
->
->         pr_info("out-of-bounds in __copy_from_user()\n");
-> -       unused = __copy_from_user(kmem, usermem, size + 1);
-> +       unused = __copy_from_user(kmem, usermem, size + 1 + OOB_TAG_OFF);
->
->         pr_info("out-of-bounds in __copy_to_user()\n");
-> -       unused = __copy_to_user(usermem, kmem, size + 1);
-> +       unused = __copy_to_user(usermem, kmem, size + 1 + OOB_TAG_OFF);
->
->         pr_info("out-of-bounds in __copy_from_user_inatomic()\n");
-> -       unused = __copy_from_user_inatomic(kmem, usermem, size + 1);
-> +       unused = __copy_from_user_inatomic(kmem, usermem, size + 1 + OOB_TAG_OFF);
->
->         pr_info("out-of-bounds in __copy_to_user_inatomic()\n");
-> -       unused = __copy_to_user_inatomic(usermem, kmem, size + 1);
-> +       unused = __copy_to_user_inatomic(usermem, kmem, size + 1 + OOB_TAG_OFF);
->
->         pr_info("out-of-bounds in strncpy_from_user()\n");
-> -       unused = strncpy_from_user(kmem, usermem, size + 1);
-> +       unused = strncpy_from_user(kmem, usermem, size + 1 + OOB_TAG_OFF);
->
->         vm_munmap((unsigned long)usermem, PAGE_SIZE);
->         kfree(kmem);
-> --
-> 2.18.0
->
-> --
-> You received this message because you are subscribed to the Google Groups "kasan-dev" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/20200706115039.16750-1-walter-zh.wu%40mediatek.com.
+If ENUM_FRAMEINTERVALS is implemented, then G/S_PARM shall be supported for OUTPUT.
+
+If ENUM_FRAMEINTERVALS is not implemented, then G/S_PARM is optional for OUTPUT. But if
+G_PARM is implemented, then S_PARM shall also be implemented. In this case the
+frame interval range is determined by the codec standard.
+
+If V4L2_FMT_FLAG_ENC_CAP_FRAME_INTERVAL is set for one or more pixel formats,
+then G/S_PARM shall be implemented for both CAPTURE and OUTPUT.
+
+For backwards compatibility: if G/S_PARM is supported for OUTPUT, then it may be
+supported for CAPTURE as well.
+
+Can you try with the following patch?
+
+With this v4l2-compliance patch you should be able to drop patches 15/18 and 16/18
+of your series.
+
+Regards,
+
+	Hans
+
+-------------------------- cut here ------------------------------
+diff --git a/utils/v4l2-compliance/v4l2-compliance.cpp b/utils/v4l2-compliance/v4l2-compliance.cpp
+index b5bde2f4..d0441651 100644
+--- a/utils/v4l2-compliance/v4l2-compliance.cpp
++++ b/utils/v4l2-compliance/v4l2-compliance.cpp
+@@ -1250,6 +1250,7 @@ void testNode(struct node &node, struct node &node_m2m_cap, struct node &expbuf_
+ 		node.frmsizes.clear();
+ 		node.frmsizes_count.clear();
+ 		node.has_frmintervals = false;
++		node.has_enc_cap_frame_interval = false;
+ 		node.valid_buftypes = 0;
+ 		node.valid_memorytype = 0;
+ 		node.buf_caps = 0;
+diff --git a/utils/v4l2-compliance/v4l2-compliance.h b/utils/v4l2-compliance/v4l2-compliance.h
+index 21e31872..ae10bdf9 100644
+--- a/utils/v4l2-compliance/v4l2-compliance.h
++++ b/utils/v4l2-compliance/v4l2-compliance.h
+@@ -141,6 +141,7 @@ struct base_node {
+ 	frmsizes_set frmsizes;
+ 	frmsizes_count_map frmsizes_count;
+ 	bool has_frmintervals;
++	bool has_enc_cap_frame_interval;
+ 	__u32 valid_buftypes;
+ 	__u32 valid_buftype;
+ 	__u32 valid_memorytype;
+diff --git a/utils/v4l2-compliance/v4l2-test-formats.cpp b/utils/v4l2-compliance/v4l2-test-formats.cpp
+index 3dfc593e..edf1536e 100644
+--- a/utils/v4l2-compliance/v4l2-test-formats.cpp
++++ b/utils/v4l2-compliance/v4l2-test-formats.cpp
+@@ -71,6 +71,8 @@ static int testEnumFrameIntervals(struct node *node, __u32 pixfmt,
+ 		ret = doioctl(node, VIDIOC_ENUM_FRAMEINTERVALS, &frmival);
+ 		if (ret == ENOTTY)
+ 			return ret;
++		// M2M devices don't support this, except for stateful encoders
++		fail_on_test(node->is_m2m && !(node->codec_mask & STATEFUL_ENCODER));
+ 		if (f == 0 && ret == EINVAL) {
+ 			if (type == V4L2_FRMSIZE_TYPE_DISCRETE)
+ 				warn("found framesize %dx%d, but no frame intervals\n", w, h);
+@@ -264,16 +266,22 @@ static int testEnumFormatsType(struct node *node, unsigned type)
+ 			return fail("drivers must never set the emulated flag\n");
+ 		if (fmtdesc.flags & ~(V4L2_FMT_FLAG_COMPRESSED | V4L2_FMT_FLAG_EMULATED |
+ 				      V4L2_FMT_FLAG_CONTINUOUS_BYTESTREAM |
+-				      V4L2_FMT_FLAG_DYN_RESOLUTION))
++				      V4L2_FMT_FLAG_DYN_RESOLUTION |
++				      V4L2_FMT_FLAG_ENC_CAP_FRAME_INTERVAL))
+ 			return fail("unknown flag %08x returned\n", fmtdesc.flags);
+ 		if (!(fmtdesc.flags & V4L2_FMT_FLAG_COMPRESSED))
+ 			fail_on_test(fmtdesc.flags & (V4L2_FMT_FLAG_CONTINUOUS_BYTESTREAM |
+-						      V4L2_FMT_FLAG_DYN_RESOLUTION));
++						      V4L2_FMT_FLAG_DYN_RESOLUTION |
++						      V4L2_FMT_FLAG_ENC_CAP_FRAME_INTERVAL));
+ 		ret = testEnumFrameSizes(node, fmtdesc.pixelformat);
+ 		if (ret)
+ 			fail_on_test(node->codec_mask & STATEFUL_ENCODER);
+ 		if (ret && ret != ENOTTY)
+ 			return ret;
++		if (fmtdesc.flags & V4L2_FMT_FLAG_ENC_CAP_FRAME_INTERVAL) {
++			fail_on_test(!(node->codec_mask & STATEFUL_ENCODER));
++			node->has_enc_cap_frame_interval = true;
++		}
+ 		f++;
+ 		if (type == V4L2_BUF_TYPE_PRIVATE)
+ 			continue;
+@@ -1222,6 +1230,7 @@ int testSlicedVBICap(struct node *node)
+
+ static int testParmStruct(struct node *node, struct v4l2_streamparm &parm)
+ {
++	bool is_stateful_enc = node->codec_mask & STATEFUL_ENCODER;
+ 	struct v4l2_captureparm *cap = &parm.parm.capture;
+ 	struct v4l2_outputparm *out = &parm.parm.output;
+ 	int ret;
+@@ -1239,6 +1248,7 @@ static int testParmStruct(struct node *node, struct v4l2_streamparm &parm)
+ 			fail_on_test(!cap->readbuffers);
+ 		fail_on_test(cap->capability & ~V4L2_CAP_TIMEPERFRAME);
+ 		fail_on_test(node->has_frmintervals && !cap->capability);
++		fail_on_test(is_stateful_enc && !cap->capability);
+ 		fail_on_test(cap->capturemode & ~V4L2_MODE_HIGHQUALITY);
+ 		if (cap->capturemode & V4L2_MODE_HIGHQUALITY)
+ 			warn("V4L2_MODE_HIGHQUALITY is poorly defined\n");
+@@ -1257,6 +1267,7 @@ static int testParmStruct(struct node *node, struct v4l2_streamparm &parm)
+ 		else if (node->g_caps() & V4L2_CAP_STREAMING)
+ 			fail_on_test(!out->writebuffers);
+ 		fail_on_test(out->capability & ~V4L2_CAP_TIMEPERFRAME);
++		fail_on_test(is_stateful_enc && !out->capability);
+ 		fail_on_test(out->outputmode);
+ 		fail_on_test(out->extendedmode);
+ 		if (out->capability & V4L2_CAP_TIMEPERFRAME)
+@@ -1271,6 +1282,7 @@ static int testParmStruct(struct node *node, struct v4l2_streamparm &parm)
+ static int testParmType(struct node *node, unsigned type)
+ {
+ 	struct v4l2_streamparm parm;
++	bool is_stateful_enc = node->codec_mask & STATEFUL_ENCODER;
+ 	int ret;
+
+ 	memset(&parm, 0, sizeof(parm));
+@@ -1288,10 +1300,10 @@ static int testParmType(struct node *node, unsigned type)
+ 	case V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE:
+ 	case V4L2_BUF_TYPE_VIDEO_OUTPUT:
+ 	case V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE:
+-		if (type && (node->g_caps() & buftype2cap[type]))
++		if (node->g_caps() & buftype2cap[type]) {
+ 			fail_on_test(ret && node->has_frmintervals);
+-		if (ret)
+-			break;
++			fail_on_test(ret && node->has_enc_cap_frame_interval);
++		}
+ 		break;
+ 	default:
+ 		fail_on_test(ret == 0);
+@@ -1300,8 +1312,15 @@ static int testParmType(struct node *node, unsigned type)
+ 		fail_on_test(!doioctl(node, VIDIOC_S_PARM, &parm));
+ 		break;
+ 	}
++	if (ret == ENOTTY) {
++		memset(&parm, 0, sizeof(parm));
++		parm.type = type;
++		fail_on_test(doioctl(node, VIDIOC_S_PARM, &parm) != ENOTTY);
++	}
+ 	if (ret == ENOTTY)
+ 		return ret;
++	// M2M devices don't support this, except for stateful encoders
++	fail_on_test(node->is_m2m && !is_stateful_enc);
+ 	if (ret == EINVAL)
+ 		return ENOTTY;
+ 	if (ret)
+@@ -1327,11 +1346,29 @@ static int testParmType(struct node *node, unsigned type)
+ 		cap = parm.parm.output.capability;
+ 	else
+ 		cap = parm.parm.capture.capability;
+-	fail_on_test(ret && node->has_frmintervals);
+-	if (!ret && (cap & V4L2_CAP_TIMEPERFRAME) && !node->has_frmintervals)
++
++	if (is_stateful_enc) {
++		fail_on_test(ret && node->has_enc_cap_frame_interval);
++		if (V4L2_TYPE_IS_OUTPUT(type))
++			fail_on_test(ret);
++	} else {
++		fail_on_test(ret && node->has_frmintervals);
++	}
++
++	/*
++	 * Stateful encoders can support S_PARM without ENUM_FRAMEINTERVALS.
++	 * being present. In that case the limits of the chosen codec apply.
++	 */
++	if (!ret && (cap & V4L2_CAP_TIMEPERFRAME) && !node->has_frmintervals && !is_stateful_enc)
+ 		warn("S_PARM is supported for buftype %d, but not for ENUM_FRAMEINTERVALS\n", type);
+ 	if (ret == ENOTTY)
+ 		return 0;
++	/*
++	 * S_PARM(CAPTURE) is optional for stateful encoders, so EINVAL is a
++	 * valid error code in that case.
++	 */
++	if (is_stateful_enc && !V4L2_TYPE_IS_OUTPUT(type) && ret == -EINVAL)
++		return 0;
+ 	if (ret)
+ 		return fail("got error %d when setting parms for buftype %d\n", ret, type);
+ 	fail_on_test(parm.type != type);
+-------------------------- cut here ------------------------------
 
 _______________________________________________
 Linux-mediatek mailing list
