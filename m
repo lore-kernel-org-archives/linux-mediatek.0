@@ -2,78 +2,168 @@ Return-Path: <SRS0=Wnqn=AR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B904C433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 14:21:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D802C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 15:17:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CBF3A20722
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 14:21:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D20FA20715
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 15:17:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FZlJpvoH";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="iDvNp8x5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CBF3A20722
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TvRYFjcx";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="qdrKaIvW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D20FA20715
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tK43FSBf9rGzB5NL08/HTVA1kjoG5OLxMrQcLG3Wga4=; b=FZlJpvoHhRfnk+GXV7aOAsq/P
-	WOorFhBmYXPZM2l8jLRrsq0qQrHMlMEJb7VZ3H0mxo2rH3U9HHNOnMVtgb0AgmLYEsG2zFip6Aqrt
-	TuNyMNe6G0d2XwFiPnga/IfNj7qi3fVI+VFJ9uWtzY63PeiqeUUXloV7FgXDMGu8r82H0uRURrz7n
-	U8z81Y0KvH9y98aK+789GrmFpQ4rP7PkcKMs8x0+0SB2+Ysb2A5/F7ZXevRYVr1XvLONB+hOZU6gT
-	SBDxe3eDg16LtEZ03nJKaLWK25kVW6eXx4MKwRCjdiaxtRPxHp0cmnS18nIfyIqueGNS3xa/mznJQ
-	aVD6oTs8w==;
+	 bh=gco4ijuPNTfdDS4caHxU+arH9Sz1nS360y+I1M8yPLI=; b=TvRYFjcxalnN1zp4hcXE6ymIg
+	GTCb/BQvz3GyJZ0OYccjEEO8u6WLAKh3QQ/qmsvtJ3URUW3QQCakoHM5zjNn365hR+cWxRlp3fJ3p
+	RuXQ+NcR6mJtxADNCUu/5TThBwbl6A8shC2R96hv5s/BOqNFVF/a+/qaR64m/zXW4S0m/Xq0yog/i
+	3EBRs9esdFFK7qMxLlWm3xQFvYeuMqmu5JQbTu6NQ/YYNQFBG+UFlRDr2RBlNVy96Cd+gOGgXacfl
+	1wgT5hsAm/LktIOE5alHJWy9GJDUADRC1brgxhMLlWCr/EQcd199Y7PGVyjjRzpgJjwXQ8baDr7Lp
+	R+J6n6eaQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jsRzm-0003Q1-VF; Mon, 06 Jul 2020 14:21:22 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jsSro-0004c5-4M; Mon, 06 Jul 2020 15:17:12 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jsRzj-0003Nx-9D; Mon, 06 Jul 2020 14:21:20 +0000
-X-UUID: c50312828665432182c161e3adf8cf63-20200706
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=OXs1SySUuohRlkO/f7ZMQ1WQrymho9U6t0SKN8dmd0A=; 
- b=iDvNp8x5hX0ZvvrjeLDjd0lBU/8azwNDYfNE+Dpei8W/G+GY/nWS1Dqxho2/2Zf7k3lmB4ZPURCOLNkvhVZAVdUk2iP825BmmTZyJpZ/mfRIMasNvCN6EGtNsDhCuZngUJPmxYlXYw6fL0c2mvhp8XXYu0t2W04JB5NYQkTPAgM=;
-X-UUID: c50312828665432182c161e3adf8cf63-20200706
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <dennis-yc.hsieh@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 611928823; Mon, 06 Jul 2020 06:20:56 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 6 Jul 2020 07:21:09 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 6 Jul 2020 22:21:06 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 6 Jul 2020 22:21:07 +0800
-Message-ID: <1594045270.19205.4.camel@mtkswgap22>
-Subject: Re: [PATCH v2 1/8] soc: mediatek: cmdq: add address shift in jump
-From: Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Date: Mon, 6 Jul 2020 22:21:10 +0800
-In-Reply-To: <31a41c40-10f5-260d-cebd-7cc2a432095d@gmail.com>
-References: <1593931715-32761-1-git-send-email-dennis-yc.hsieh@mediatek.com>
- <1593931715-32761-2-git-send-email-dennis-yc.hsieh@mediatek.com>
- <31a41c40-10f5-260d-cebd-7cc2a432095d@gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1jsSrj-0004aZ-1H; Mon, 06 Jul 2020 15:17:07 +0000
+Received: by mail-wr1-x441.google.com with SMTP id a6so41406143wrm.4;
+ Mon, 06 Jul 2020 08:17:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Tw3x7ahuyaAr/zeHubI/pIIWiTosQ0VrfuSXevvDkyQ=;
+ b=qdrKaIvWzvlQ5WxszQQRnltR2zmNstt2XFPYYuqAYlMbnfoH2asZAlQY1MpOPq5Xwn
+ AbQvBVREyV0/p4yyhOFA9maeUVDcNlc/hSz+oPQ9yObQcfrO+fJpYE8uSvhL1OIbOdpt
+ 1TlD+HaO4Swl3Au1O8TflkE6hygAhUY19yM/bg+rSqziinVOSrGt1z274rA8D1R4HXlT
+ TccqM0Ah6JG45prRuMcHqRm8eDHNtw28WiHD44jonScFFks14J7qs+M/+MjZUdGFxWWU
+ DIJV9btcpP6/ruTKdi64Us3oKXJLrZWBaa2Fw1PyzP0BMwYST6RdhiQf3gaIyVk0yEDo
+ Wx3A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=Tw3x7ahuyaAr/zeHubI/pIIWiTosQ0VrfuSXevvDkyQ=;
+ b=mALzsYwU+PbWrDuwEFcGfwYTYM8JhKyoq50kU0EJXJmFwN2YSBdJfNVK1NMJg7Lxlx
+ eE3zFFjvFHWjALF6iCa92NDLh3+ZmbfE6k1pTC18fmbHWaWfZeXNEE1d3gbYOUjMxo2T
+ XOJb+aaUmCyra8b0RsANJ96FK7cF9XlBeBqsZWYPaF2dFzoNXT0292aI5xUFcw2yMUGE
+ R/wJP7Oh5oTp1eu0s9vD5tLwsTbqkojntCBrlXWSlG+MOPwgIDB9JawOkWlkurpcTPOs
+ 7GTFGraq0JnqgQfPA+uwrN6PAZKQFPBrG6bLynKvKAvz2U3nBvT1wPq0QgTaBS4OuyBC
+ l0dg==
+X-Gm-Message-State: AOAM5309UT+AwP4ihXyrvziUzq85Bs2cXz2sG6BcPbuZoguvq7vaiYhc
+ LMtLcCxswfV60ezuKbJGVnxRsQ/5vZo=
+X-Google-Smtp-Source: ABdhPJyR6f1c+3rsYGvrANlV6vEt4kBeaGtcGE/SSDZ3hT+m4ZF6+lY08jb33yABKgzRuFlrzsuOfg==
+X-Received: by 2002:adf:f842:: with SMTP id d2mr53494954wrq.55.1594048625575; 
+ Mon, 06 Jul 2020 08:17:05 -0700 (PDT)
+Received: from ziggy.stardust (81.172.57.81.dyn.user.ono.com. [81.172.57.81])
+ by smtp.gmail.com with ESMTPSA id
+ x7sm25127283wrr.72.2020.07.06.08.17.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 06 Jul 2020 08:17:04 -0700 (PDT)
+Subject: Re: [PATCH v6 03/10] iommu/mediatek: Use a u32 flags to describe
+ different HW features
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Chao Hao <chao.hao@mediatek.com>
+References: <20200703044127.27438-1-chao.hao@mediatek.com>
+ <20200703044127.27438-4-chao.hao@mediatek.com>
+ <1593825398.4355.1.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <bce3e1e0-f0b0-8c77-d966-3b6e37b3b647@gmail.com>
+Date: Mon, 6 Jul 2020 17:17:03 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: D9D74A0864D11FB68CC9C721CD27F57DA020E8AE1AAB324BDCC36D49191540CF2000:8
-X-MTK: N
+In-Reply-To: <1593825398.4355.1.camel@mtksdaap41>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200706_102119_487676_40FB47DB 
-X-CRM114-Status: GOOD (  19.58  )
+X-CRM114-CacheID: sfid-20200706_111707_163074_FF937E56 
+X-CRM114-Status: GOOD (  23.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,72 +175,149 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Daniel Vetter <daniel@ffwll.ch>, wsd_upstream@mediatek.com,
- David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- Houlong Wei <houlong.wei@mediatek.com>, HS Liao <hs.liao@mediatek.com>,
- linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
- Bibby Hsieh <bibby.hsieh@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, FY Yang <fy.yang@mediatek.com>,
+ wsd_upstream@mediatek.com, Joerg Roedel <joro@8bytes.org>,
+ TH Yang <th.yang@mediatek.com>, linux-kernel@vger.kernel.org,
+ iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Yong Wu <yong.wu@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
 
-thanks for your comment
 
-On Mon, 2020-07-06 at 16:03 +0200, Matthias Brugger wrote:
+On 04/07/2020 03:16, Yingjoe Chen wrote:
+> On Fri, 2020-07-03 at 12:41 +0800, Chao Hao wrote:
+>> Given the fact that we are adding more and more plat_data bool values,
+>> it would make sense to use a u32 flags register and add the appropriate
+>> macro definitions to set and check for a flag present.
+>> No functional change.
+>>
+>> Cc: Yong Wu <yong.wu@mediatek.com>
+>> Suggested-by: Matthias Brugger <matthias.bgg@gmail.com>
+>> Signed-off-by: Chao Hao <chao.hao@mediatek.com>
+>> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+>> ---
+>>  drivers/iommu/mtk_iommu.c | 28 +++++++++++++++++-----------
+>>  drivers/iommu/mtk_iommu.h |  7 +------
+>>  2 files changed, 18 insertions(+), 17 deletions(-)
+>>
+>> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+>> index 88d3df5b91c2..40ca564d97af 100644
+>> --- a/drivers/iommu/mtk_iommu.c
+>> +++ b/drivers/iommu/mtk_iommu.c
+>> @@ -100,6 +100,15 @@
+>>  #define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0xf)
+>>  #define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
+>>  
+>> +#define HAS_4GB_MODE			BIT(0)
+>> +/* HW will use the EMI clock if there isn't the "bclk". */
+>> +#define HAS_BCLK			BIT(1)
+>> +#define HAS_VLD_PA_RNG			BIT(2)
+>> +#define RESET_AXI			BIT(3)
+>> +
+>> +#define MTK_IOMMU_HAS_FLAG(pdata, _x) \
+>> +		((((pdata)->flags) & (_x)) == (_x))
+>> +
+>>  struct mtk_iommu_domain {
+>>  	struct io_pgtable_cfg		cfg;
+>>  	struct io_pgtable_ops		*iop;
+>> @@ -563,7 +572,8 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+>>  			 upper_32_bits(data->protect_base);
+>>  	writel_relaxed(regval, data->base + REG_MMU_IVRP_PADDR);
+>>  
+>> -	if (data->enable_4GB && data->plat_data->has_vld_pa_rng) {
+>> +	if (data->enable_4GB &&
+>> +	    MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_VLD_PA_RNG)) {
+>>  		/*
+>>  		 * If 4GB mode is enabled, the validate PA range is from
+>>  		 * 0x1_0000_0000 to 0x1_ffff_ffff. here record bit[32:30].
+>> @@ -573,7 +583,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+>>  	}
+>>  	writel_relaxed(0, data->base + REG_MMU_DCM_DIS);
+>>  
+>> -	if (data->plat_data->reset_axi) {
+>> +	if (MTK_IOMMU_HAS_FLAG(data->plat_data, RESET_AXI)) {
+>>  		/* The register is called STANDARD_AXI_MODE in this case */
+>>  		writel_relaxed(0, data->base + REG_MMU_MISC_CTRL);
+>>  	}
+>> @@ -618,7 +628,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>>  
+>>  	/* Whether the current dram is over 4GB */
+>>  	data->enable_4GB = !!(max_pfn > (BIT_ULL(32) >> PAGE_SHIFT));
+>> -	if (!data->plat_data->has_4gb_mode)
+>> +	if (!MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE))
+>>  		data->enable_4GB = false;
+>>  
+>>  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>> @@ -631,7 +641,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>>  	if (data->irq < 0)
+>>  		return data->irq;
+>>  
+>> -	if (data->plat_data->has_bclk) {
+>> +	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_BCLK)) {
+>>  		data->bclk = devm_clk_get(dev, "bclk");
+>>  		if (IS_ERR(data->bclk))
+>>  			return PTR_ERR(data->bclk);
+>> @@ -763,23 +773,19 @@ static const struct dev_pm_ops mtk_iommu_pm_ops = {
+>>  
+>>  static const struct mtk_iommu_plat_data mt2712_data = {
+>>  	.m4u_plat     = M4U_MT2712,
+>> -	.has_4gb_mode = true,
+>> -	.has_bclk     = true,
+>> -	.has_vld_pa_rng   = true,
+>> +	.flags        = HAS_4GB_MODE | HAS_BCLK | HAS_VLD_PA_RNG,
+>>  	.larbid_remap = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
+>>  };
+>>  
+>>  static const struct mtk_iommu_plat_data mt8173_data = {
+>>  	.m4u_plat     = M4U_MT8173,
+>> -	.has_4gb_mode = true,
+>> -	.has_bclk     = true,
+>> -	.reset_axi    = true,
+>> +	.flags	      = HAS_4GB_MODE | HAS_BCLK | RESET_AXI,
+>>  	.larbid_remap = {0, 1, 2, 3, 4, 5}, /* Linear mapping. */
+>>  };
+>>  
+>>  static const struct mtk_iommu_plat_data mt8183_data = {
+>>  	.m4u_plat     = M4U_MT8183,
+>> -	.reset_axi    = true,
+>> +	.flags        = RESET_AXI,
+>>  	.larbid_remap = {0, 4, 5, 6, 7, 2, 3, 1},
+>>  };
+>>  
+>> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+>> index 7212e6fcf982..5225a9170aaa 100644
+>> --- a/drivers/iommu/mtk_iommu.h
+>> +++ b/drivers/iommu/mtk_iommu.h
+>> @@ -39,12 +39,7 @@ enum mtk_iommu_plat {
+>>  
+>>  struct mtk_iommu_plat_data {
+>>  	enum mtk_iommu_plat m4u_plat;
+>> -	bool                has_4gb_mode;
+>> -
+>> -	/* HW will use the EMI clock if there isn't the "bclk". */
+>> -	bool                has_bclk;
+>> -	bool                has_vld_pa_rng;
+>> -	bool                reset_axi;
+>> +	u32                 flags;
 > 
-> On 05/07/2020 08:48, Dennis YC Hsieh wrote:
-> > Add address shift when compose jump instruction
-> > to compatible with 35bit format.
-> > 
-> > Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
 > 
-> You are missing Bibby's Reviewed-by. Please honour the effort reviewers do by
-> adding the appropriate tags.
+> How about using bit field instead? eg
 > 
-> Please double check the series and resend with all tags added.
+>   u32 has_bclk:1;
 > 
-> Also, it would be good if you could provide a change log. That makes it easier
-> for the maintainer to see which statements you addressed.
+> In this way, we don't need to change code.
+> 
 
-this patch changed since cmdq_mbox_shift() rename to cmdq_get_shift_pa()
-by Bibby's comment [1], so I removed reviewed tags from this patch.
-
-I'll provide change log to this patch and resend later, thanks.
-
-[1]
-http://lists.infradead.org/pipermail/linux-mediatek/2020-June/013387.html
-
+Actually I proposed to use the flag approach because I didn't want to bloat the
+mtk_iommu_plat_data structure with new variables for every new feature, being it
+a bit field or a bool.
 
 Regards,
-Dennis
-
-> 
-> Thanks,
-> Matthias
-> 
-> > ---
-> >  drivers/soc/mediatek/mtk-cmdq-helper.c |    3 ++-
-> >  1 file changed, 2 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> > index dc644cfb6419..9faf78fbed3a 100644
-> > --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-> > +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> > @@ -329,7 +329,8 @@ int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
-> >  
-> >  	/* JUMP to end */
-> >  	inst.op = CMDQ_CODE_JUMP;
-> > -	inst.value = CMDQ_JUMP_PASS;
-> > +	inst.value = CMDQ_JUMP_PASS >>
-> > +		cmdq_get_shift_pa(((struct cmdq_client *)pkt->cl)->chan);
-> >  	err = cmdq_pkt_append_command(pkt, inst);
-> >  
-> >  	return err;
-> > 
+Matthias
 
 _______________________________________________
 Linux-mediatek mailing list
