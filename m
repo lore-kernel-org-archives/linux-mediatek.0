@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D802C433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 15:17:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0FCA7C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 15:18:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D20FA20715
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 15:17:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C8F6720771
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2020 15:18:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TvRYFjcx";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="qdrKaIvW"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D20FA20715
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cbNJp5yd";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="mFcoKEfV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C8F6720771
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,58 +27,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gco4ijuPNTfdDS4caHxU+arH9Sz1nS360y+I1M8yPLI=; b=TvRYFjcxalnN1zp4hcXE6ymIg
-	GTCb/BQvz3GyJZ0OYccjEEO8u6WLAKh3QQ/qmsvtJ3URUW3QQCakoHM5zjNn365hR+cWxRlp3fJ3p
-	RuXQ+NcR6mJtxADNCUu/5TThBwbl6A8shC2R96hv5s/BOqNFVF/a+/qaR64m/zXW4S0m/Xq0yog/i
-	3EBRs9esdFFK7qMxLlWm3xQFvYeuMqmu5JQbTu6NQ/YYNQFBG+UFlRDr2RBlNVy96Cd+gOGgXacfl
-	1wgT5hsAm/LktIOE5alHJWy9GJDUADRC1brgxhMLlWCr/EQcd199Y7PGVyjjRzpgJjwXQ8baDr7Lp
-	R+J6n6eaQ==;
+	 bh=UqtwOSJipsp9YDyg4a+oPhsKqLMwS+cH8+ij/LzvM9I=; b=cbNJp5yd9ezJ0JnQORhDFVdxy
+	lsTI7I+pKqf2JjycxFzacotqgvEHBvrZCjnuM4AhT71lnJ5u8e8Gggzc5ab4aX37x3qxMeNWhmUj/
+	M994qGgYwENEMwrucP34TOOHMcZS8CYD61IYlPNpqbbYwoABD3P/BolpeAywaGrXGKXtG4D3w3OWJ
+	Kqwl7+68dWAy8OewJDry3r7hxgaKzc69cbjWUaAVIEW4+49vvQMu3ZtbycnjTuvnnAf7e0Ide6hTw
+	VotneTZSWJ36LrLIzea4dEV2NK9tQPI6+29g+xRODEP1HKczMo8Ii8kDXMq4dnr1F9mx4pzBqPOF6
+	G/7vfYjUw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jsSro-0004c5-4M; Mon, 06 Jul 2020 15:17:12 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1jsSt0-0004vc-G3; Mon, 06 Jul 2020 15:18:26 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jsSrj-0004aZ-1H; Mon, 06 Jul 2020 15:17:07 +0000
-Received: by mail-wr1-x441.google.com with SMTP id a6so41406143wrm.4;
- Mon, 06 Jul 2020 08:17:06 -0700 (PDT)
+ id 1jsSsy-0004us-Ic; Mon, 06 Jul 2020 15:18:25 +0000
+Received: by mail-wm1-x344.google.com with SMTP id j18so39839526wmi.3;
+ Mon, 06 Jul 2020 08:18:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Tw3x7ahuyaAr/zeHubI/pIIWiTosQ0VrfuSXevvDkyQ=;
- b=qdrKaIvWzvlQ5WxszQQRnltR2zmNstt2XFPYYuqAYlMbnfoH2asZAlQY1MpOPq5Xwn
- AbQvBVREyV0/p4yyhOFA9maeUVDcNlc/hSz+oPQ9yObQcfrO+fJpYE8uSvhL1OIbOdpt
- 1TlD+HaO4Swl3Au1O8TflkE6hygAhUY19yM/bg+rSqziinVOSrGt1z274rA8D1R4HXlT
- TccqM0Ah6JG45prRuMcHqRm8eDHNtw28WiHD44jonScFFks14J7qs+M/+MjZUdGFxWWU
- DIJV9btcpP6/ruTKdi64Us3oKXJLrZWBaa2Fw1PyzP0BMwYST6RdhiQf3gaIyVk0yEDo
- Wx3A==
+ bh=xUAgregrDPNosTgk9CgFfbG/DfEV5828tP7Yai/WKH4=;
+ b=mFcoKEfVvjF6OQgxtEVqhFmZl/kXnDLv+lCv1/amdjJT5be/YNTCE2rieOeeQ0cHmy
+ MgtWju67TqgcCaSR6Hl+RUSJe4Zeep4k1Kex+uQRObFuPMpOi+b6PYi4BwNfZngW/f/H
+ +kRMVRmqkJB83nWCLAZ/yXWShUjAus1WLaasAdzEm1H0zZ+lEA5oaCiHkFk52y+kioAH
+ 4vDY/WJYdPS/m3q2hQL0oV4CvJWTrO4248B88cnx+jhY0IJYBnmSyn7q2gUxi2FE2ZRx
+ x8GzvqFUMaQ2eMMKN36x3XxguZvjKoIt9RzJuaO/LyyEQPe61uCJSnaLstFN66+gM5rs
+ I4QA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=Tw3x7ahuyaAr/zeHubI/pIIWiTosQ0VrfuSXevvDkyQ=;
- b=mALzsYwU+PbWrDuwEFcGfwYTYM8JhKyoq50kU0EJXJmFwN2YSBdJfNVK1NMJg7Lxlx
- eE3zFFjvFHWjALF6iCa92NDLh3+ZmbfE6k1pTC18fmbHWaWfZeXNEE1d3gbYOUjMxo2T
- XOJb+aaUmCyra8b0RsANJ96FK7cF9XlBeBqsZWYPaF2dFzoNXT0292aI5xUFcw2yMUGE
- R/wJP7Oh5oTp1eu0s9vD5tLwsTbqkojntCBrlXWSlG+MOPwgIDB9JawOkWlkurpcTPOs
- 7GTFGraq0JnqgQfPA+uwrN6PAZKQFPBrG6bLynKvKAvz2U3nBvT1wPq0QgTaBS4OuyBC
- l0dg==
-X-Gm-Message-State: AOAM5309UT+AwP4ihXyrvziUzq85Bs2cXz2sG6BcPbuZoguvq7vaiYhc
- LMtLcCxswfV60ezuKbJGVnxRsQ/5vZo=
-X-Google-Smtp-Source: ABdhPJyR6f1c+3rsYGvrANlV6vEt4kBeaGtcGE/SSDZ3hT+m4ZF6+lY08jb33yABKgzRuFlrzsuOfg==
-X-Received: by 2002:adf:f842:: with SMTP id d2mr53494954wrq.55.1594048625575; 
- Mon, 06 Jul 2020 08:17:05 -0700 (PDT)
+ bh=xUAgregrDPNosTgk9CgFfbG/DfEV5828tP7Yai/WKH4=;
+ b=XRf+waoN4lH2qXGC2T65f8mt+ttewd9TcdpdvYoh6gxyqiN5x1dGz7uQWJSNu3KWO6
+ cE6+QMbyg6tE3/oqKg7T1xQWW4rEM/yFlTJnv2elzfIyGczuWKVxqnDCatH+lXGofflk
+ pXFlv4OoR6/ziN7O1N8hrEF2ZMGfBbldyesCA0/n4pau41B7FbTb9v6KrJTrW49ZFE1m
+ 1lQmeravRsLCWyfxcMPKOc9X4Gkg/lH2FHGqKKwOt9Qi8QeMlIBGOIJpzJ1RqOu3zq3g
+ NNhvAK8KhuftFmmztVsCzdgfGaAoj+ykO6rlUXeXG+YWLMVP4rYE6Iwhe+XxCTm0/GZL
+ uvjA==
+X-Gm-Message-State: AOAM5329P+kNoOCXMW5BDgz6QoZuGPgqURHdusz7FOTYWgtVRF0XCnX5
+ V0vGW67VeYBbUB7DZS+g3Uc=
+X-Google-Smtp-Source: ABdhPJwLHEqZrEd8BItktloC+QMnUKECQXMoTdt2fHQXQgFNpaWCDWdxmI+3RgBX085/rTJ1PiRhdQ==
+X-Received: by 2002:a1c:544f:: with SMTP id p15mr48287759wmi.84.1594048703429; 
+ Mon, 06 Jul 2020 08:18:23 -0700 (PDT)
 Received: from ziggy.stardust (81.172.57.81.dyn.user.ono.com. [81.172.57.81])
  by smtp.gmail.com with ESMTPSA id
- x7sm25127283wrr.72.2020.07.06.08.17.04
+ o29sm26645243wra.5.2020.07.06.08.18.22
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Jul 2020 08:17:04 -0700 (PDT)
-Subject: Re: [PATCH v6 03/10] iommu/mediatek: Use a u32 flags to describe
- different HW features
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Chao Hao <chao.hao@mediatek.com>
+ Mon, 06 Jul 2020 08:18:22 -0700 (PDT)
+Subject: Re: [PATCH v6 04/10] iommu/mediatek: Setting MISC_CTRL register
+To: Chao Hao <chao.hao@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Rob Herring <robh+dt@kernel.org>
 References: <20200703044127.27438-1-chao.hao@mediatek.com>
- <20200703044127.27438-4-chao.hao@mediatek.com>
- <1593825398.4355.1.camel@mtksdaap41>
+ <20200703044127.27438-5-chao.hao@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -154,16 +153,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <bce3e1e0-f0b0-8c77-d966-3b6e37b3b647@gmail.com>
-Date: Mon, 6 Jul 2020 17:17:03 +0200
+Message-ID: <af96180d-2dbb-1be0-c3c2-ea0e89cda57e@gmail.com>
+Date: Mon, 6 Jul 2020 17:18:21 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <1593825398.4355.1.camel@mtksdaap41>
+In-Reply-To: <20200703044127.27438-5-chao.hao@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200706_111707_163074_FF937E56 
-X-CRM114-Status: GOOD (  23.34  )
+X-CRM114-CacheID: sfid-20200706_111824_646816_56DD5752 
+X-CRM114-Status: GOOD (  20.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -176,11 +175,10 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: devicetree@vger.kernel.org, FY Yang <fy.yang@mediatek.com>,
- wsd_upstream@mediatek.com, Joerg Roedel <joro@8bytes.org>,
- TH Yang <th.yang@mediatek.com>, linux-kernel@vger.kernel.org,
- iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Yong Wu <yong.wu@mediatek.com>
+ wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
+ iommu@lists.linux-foundation.org, TH Yang <th.yang@mediatek.com>,
+ linux-mediatek@lists.infradead.org, Yong Wu <yong.wu@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -188,136 +186,68 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 04/07/2020 03:16, Yingjoe Chen wrote:
-> On Fri, 2020-07-03 at 12:41 +0800, Chao Hao wrote:
->> Given the fact that we are adding more and more plat_data bool values,
->> it would make sense to use a u32 flags register and add the appropriate
->> macro definitions to set and check for a flag present.
->> No functional change.
->>
->> Cc: Yong Wu <yong.wu@mediatek.com>
->> Suggested-by: Matthias Brugger <matthias.bgg@gmail.com>
->> Signed-off-by: Chao Hao <chao.hao@mediatek.com>
->> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
->> ---
->>  drivers/iommu/mtk_iommu.c | 28 +++++++++++++++++-----------
->>  drivers/iommu/mtk_iommu.h |  7 +------
->>  2 files changed, 18 insertions(+), 17 deletions(-)
->>
->> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
->> index 88d3df5b91c2..40ca564d97af 100644
->> --- a/drivers/iommu/mtk_iommu.c
->> +++ b/drivers/iommu/mtk_iommu.c
->> @@ -100,6 +100,15 @@
->>  #define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0xf)
->>  #define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
->>  
->> +#define HAS_4GB_MODE			BIT(0)
->> +/* HW will use the EMI clock if there isn't the "bclk". */
->> +#define HAS_BCLK			BIT(1)
->> +#define HAS_VLD_PA_RNG			BIT(2)
->> +#define RESET_AXI			BIT(3)
->> +
->> +#define MTK_IOMMU_HAS_FLAG(pdata, _x) \
->> +		((((pdata)->flags) & (_x)) == (_x))
->> +
->>  struct mtk_iommu_domain {
->>  	struct io_pgtable_cfg		cfg;
->>  	struct io_pgtable_ops		*iop;
->> @@ -563,7 +572,8 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
->>  			 upper_32_bits(data->protect_base);
->>  	writel_relaxed(regval, data->base + REG_MMU_IVRP_PADDR);
->>  
->> -	if (data->enable_4GB && data->plat_data->has_vld_pa_rng) {
->> +	if (data->enable_4GB &&
->> +	    MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_VLD_PA_RNG)) {
->>  		/*
->>  		 * If 4GB mode is enabled, the validate PA range is from
->>  		 * 0x1_0000_0000 to 0x1_ffff_ffff. here record bit[32:30].
->> @@ -573,7 +583,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
->>  	}
->>  	writel_relaxed(0, data->base + REG_MMU_DCM_DIS);
->>  
->> -	if (data->plat_data->reset_axi) {
->> +	if (MTK_IOMMU_HAS_FLAG(data->plat_data, RESET_AXI)) {
->>  		/* The register is called STANDARD_AXI_MODE in this case */
->>  		writel_relaxed(0, data->base + REG_MMU_MISC_CTRL);
->>  	}
->> @@ -618,7 +628,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
->>  
->>  	/* Whether the current dram is over 4GB */
->>  	data->enable_4GB = !!(max_pfn > (BIT_ULL(32) >> PAGE_SHIFT));
->> -	if (!data->plat_data->has_4gb_mode)
->> +	if (!MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE))
->>  		data->enable_4GB = false;
->>  
->>  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->> @@ -631,7 +641,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
->>  	if (data->irq < 0)
->>  		return data->irq;
->>  
->> -	if (data->plat_data->has_bclk) {
->> +	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_BCLK)) {
->>  		data->bclk = devm_clk_get(dev, "bclk");
->>  		if (IS_ERR(data->bclk))
->>  			return PTR_ERR(data->bclk);
->> @@ -763,23 +773,19 @@ static const struct dev_pm_ops mtk_iommu_pm_ops = {
->>  
->>  static const struct mtk_iommu_plat_data mt2712_data = {
->>  	.m4u_plat     = M4U_MT2712,
->> -	.has_4gb_mode = true,
->> -	.has_bclk     = true,
->> -	.has_vld_pa_rng   = true,
->> +	.flags        = HAS_4GB_MODE | HAS_BCLK | HAS_VLD_PA_RNG,
->>  	.larbid_remap = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
->>  };
->>  
->>  static const struct mtk_iommu_plat_data mt8173_data = {
->>  	.m4u_plat     = M4U_MT8173,
->> -	.has_4gb_mode = true,
->> -	.has_bclk     = true,
->> -	.reset_axi    = true,
->> +	.flags	      = HAS_4GB_MODE | HAS_BCLK | RESET_AXI,
->>  	.larbid_remap = {0, 1, 2, 3, 4, 5}, /* Linear mapping. */
->>  };
->>  
->>  static const struct mtk_iommu_plat_data mt8183_data = {
->>  	.m4u_plat     = M4U_MT8183,
->> -	.reset_axi    = true,
->> +	.flags        = RESET_AXI,
->>  	.larbid_remap = {0, 4, 5, 6, 7, 2, 3, 1},
->>  };
->>  
->> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
->> index 7212e6fcf982..5225a9170aaa 100644
->> --- a/drivers/iommu/mtk_iommu.h
->> +++ b/drivers/iommu/mtk_iommu.h
->> @@ -39,12 +39,7 @@ enum mtk_iommu_plat {
->>  
->>  struct mtk_iommu_plat_data {
->>  	enum mtk_iommu_plat m4u_plat;
->> -	bool                has_4gb_mode;
->> -
->> -	/* HW will use the EMI clock if there isn't the "bclk". */
->> -	bool                has_bclk;
->> -	bool                has_vld_pa_rng;
->> -	bool                reset_axi;
->> +	u32                 flags;
+On 03/07/2020 06:41, Chao Hao wrote:
+> Add F_MMU_IN_ORDER_WR_EN_MASK and F_MMU_STANDARD_AXI_MODE_EN_MASK
+> definitions in MISC_CTRL register.
+> F_MMU_STANDARD_AXI_MODE_EN_MASK:
+> If we set F_MMU_STANDARD_AXI_MODE_EN_MASK (bit[3][19] = 0, not follow
+> standard AXI protocol), the iommu will priorize sending of urgent read
+> command over a normal read command. This improves the performance.
+> F_MMU_IN_ORDER_WR_EN_MASK:
+> If we set F_MMU_IN_ORDER_WR_EN_MASK (bit[1][17] = 0, out-of-order write),
+> the iommu will re-order write commands and send the write commands with
+> higher priority. Otherwise the sending of write commands will be done in
+> order. The feature is controlled by OUT_ORDER_WR_EN platform data flag.
 > 
-> 
-> How about using bit field instead? eg
-> 
->   u32 has_bclk:1;
-> 
-> In this way, we don't need to change code.
-> 
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Suggested-by: Yong Wu <yong.wu@mediatek.com>
+> Signed-off-by: Chao Hao <chao.hao@mediatek.com>
 
-Actually I proposed to use the flag approach because I didn't want to bloat the
-mtk_iommu_plat_data structure with new variables for every new feature, being it
-a bit field or a bool.
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Regards,
-Matthias
+> ---
+>  drivers/iommu/mtk_iommu.c | 12 +++++++++++-
+>  1 file changed, 11 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 40ca564d97af..219d7aa6f059 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -42,6 +42,9 @@
+>  #define F_INVLD_EN1				BIT(1)
+>  
+>  #define REG_MMU_MISC_CTRL			0x048
+> +#define F_MMU_IN_ORDER_WR_EN_MASK		(BIT(1) | BIT(17))
+> +#define F_MMU_STANDARD_AXI_MODE_MASK		(BIT(3) | BIT(19))
+> +
+>  #define REG_MMU_DCM_DIS				0x050
+>  
+>  #define REG_MMU_CTRL_REG			0x110
+> @@ -105,6 +108,7 @@
+>  #define HAS_BCLK			BIT(1)
+>  #define HAS_VLD_PA_RNG			BIT(2)
+>  #define RESET_AXI			BIT(3)
+> +#define OUT_ORDER_WR_EN			BIT(4)
+>  
+>  #define MTK_IOMMU_HAS_FLAG(pdata, _x) \
+>  		((((pdata)->flags) & (_x)) == (_x))
+> @@ -585,8 +589,14 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+>  
+>  	if (MTK_IOMMU_HAS_FLAG(data->plat_data, RESET_AXI)) {
+>  		/* The register is called STANDARD_AXI_MODE in this case */
+> -		writel_relaxed(0, data->base + REG_MMU_MISC_CTRL);
+> +		regval = 0;
+> +	} else {
+> +		regval = readl_relaxed(data->base + REG_MMU_MISC_CTRL);
+> +		regval &= ~F_MMU_STANDARD_AXI_MODE_MASK;
+> +		if (MTK_IOMMU_HAS_FLAG(data->plat_data, OUT_ORDER_WR_EN))
+> +			regval &= ~F_MMU_IN_ORDER_WR_EN_MASK;
+>  	}
+> +	writel_relaxed(regval, data->base + REG_MMU_MISC_CTRL);
+>  
+>  	if (devm_request_irq(data->dev, data->irq, mtk_iommu_isr, 0,
+>  			     dev_name(data->dev), (void *)data)) {
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
