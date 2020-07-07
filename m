@@ -2,77 +2,89 @@ Return-Path: <SRS0=cZv3=AS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.7 required=3.0 tests=DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8FB67C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2020 15:56:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3C15DC433E4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2020 16:43:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5D87520674
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2020 15:56:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0E51820708
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2020 16:43:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aykrjwnP";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="cXHGGEDq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5D87520674
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="wATGFIjY";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="Ip4JCRO9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E51820708
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=grGjiGuit+0uMUjsJCnuKQmlbJpURqXZ4pB+vVrv9uo=; b=aykrjwnPqdyCmBQWkFIAmB+MeO
-	E0LnNFRyhS5b0KPDFgScOxMllwRT5j5ysFqQYfNfvXvAIxy4xlCGVInMkDE4UiS88X7wColb40M57
-	sOdtbIgO/W6RcEkxVbIXvQ+Qk6XIx30jqgmbFFwKpkXn88vxxcqHHQh4YankABF0kyKYKthCe2Sqn
-	qw2S4BlQhhYc6LYK0Nho3GALZ+vGX1KuUiVcpdkgl68tpsvyOHzOgnZA5fe3ZEVb8ddnVQldhj+li
-	RsQguS1SOMDJ8qTYyqggkWOIwNsltTvP4PRDeqJM1kl2v5JJIe1xz2pQbq08YN1P+2r85ADIKH1Dv
-	0ZuCdOvQ==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=IJHMcLhxl44retlR1dSSA68CCTH5QzbDVh8zmsJe8mU=; b=wATGFIjYnErbbjJBs0xIKe5YT
+	505z5EibuOQDEzN0M+qlwqZtdA7IqKyLypINe6dVCmdN1zd0oQ6JCAA02jRuBHzlFGf2U/UaxmOMH
+	8IcneWUr/n6kdxTiVg+ut1idpC+MOzdR18IsDu/GlnxlYkGjt1bB5DjdDLDhSIpqew05bp7QaGYqf
+	icCWQUlwOZGcWcMcS34csSyca4cF4i0mYE+YyIcafnyatQO4mmM/6ZiGGvZlQUWpySfLGOrOGVGW/
+	F1ze2tB8DLi0I6jUDdKVhty8RH3Md0VoAcWRSAv7ZHt+XfnFlbaTQ8Vwgh5fJEuos0f6AL5WDWsmn
+	AduZQfFQg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jspxf-0006AL-A9; Tue, 07 Jul 2020 15:56:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jsqgy-0004Cy-S2; Tue, 07 Jul 2020 16:43:36 +0000
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jspxd-00069a-76; Tue, 07 Jul 2020 15:56:46 +0000
-X-UUID: ddf069f79dc7464b81c5c99c855fd24d-20200707
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=KMWcgcPL1XjMD/Va1W+LCp1J+xXGTJ5bSqx6Wn/nPUA=; 
- b=cXHGGEDqx59+r2LSl0F5kJuTyeyqdu1jsUIwwX3006c2f6SqatMaXkkcaSuKEJBYt8d4vrPqXo0thCVIqBLFGCLR7/SSOafx1kCcgrXSLVIwMP4MmQ8zb8J/rfgCxdL+fxrGiZqa2E9r5Jdrw+c1++UP8jw61aR+cQzZvU2bm2c=;
-X-UUID: ddf069f79dc7464b81c5c99c855fd24d-20200707
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <dennis-yc.hsieh@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1100505115; Tue, 07 Jul 2020 07:56:42 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 7 Jul 2020 08:46:35 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 7 Jul 2020 23:46:23 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 7 Jul 2020 23:46:23 +0800
-From: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel
- <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
- <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>, Bibby Hsieh
- <bibby.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>
-Subject: [PATCH v3 0/9] support cmdq helper function on mt6779 platform
-Date: Tue, 7 Jul 2020 23:45:05 +0800
-Message-ID: <1594136714-11650-1-git-send-email-dennis-yc.hsieh@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
+ id 1jsqgv-0004Bl-Ke
+ for linux-mediatek@lists.infradead.org; Tue, 07 Jul 2020 16:43:34 +0000
+Received: by mail-pl1-x642.google.com with SMTP id k5so1107459plk.13
+ for <linux-mediatek@lists.infradead.org>; Tue, 07 Jul 2020 09:43:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=0CvFCRMGyH8ng1oyUVoBZbdUNhkgtcfr8Mw5rYPl6rU=;
+ b=Ip4JCRO9Uih6Knc+6wGL010irBJegJQlega20oXZD3gAVz3Gd96yQRvs7kaA3fNjV/
+ z/ZAGWVhhJjrmk34h9KVXeuOIaYj72kuKRWPEmYv0R0iY8LFuVS0z7DbSvF+HjQ08l8A
+ oUg6MlEKkSCh78v9cDkJ55Qm4t2hysgVyhapX2iKObx3m4a9jLTUV4GbWVHNpjEBVQ7g
+ AoodoW9ix66XSZBcf3u0ldo/kMtkd+FX2uNLw0LKtcOLgt3rvi3VrFUbKkw7DCoVNXDV
+ LQ8I03Yti0ZM6SiXfhQ91ml5lPQYcGroauyF+5ECCGLjPgQWmZo3E521xeqU+AadU+jf
+ ckLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=0CvFCRMGyH8ng1oyUVoBZbdUNhkgtcfr8Mw5rYPl6rU=;
+ b=lHhCnlkk8HliKbUe6fysCpWFAq7qHO3gHtbEu32bE0C163cqiIvPoJfjAWIqRqaFTM
+ tWzMh9KrucCvM8pvCz6iz67KLk7GOQCpzk6FyJoS/ID9RK0aOVuNtA+EYZQWG8KClMec
+ PZgNE4oImwe/1sYp1vac2eSG1Smr9Ot+HS+0cR4hiFXjikC7kiTM9SX7z9+Tk4BwtQtn
+ hrhP2+sFXOlIhGuv9yS6GB6ryGLlBX7VJu9287BGwm31olCind230LKNKA10QzFF6MEn
+ AEpldksAfKHLRAzqC//zku1ZvR3k84eV7c6a7ytXrs36RGjWfePkn15/B4ZmKuvkCdFW
+ IkSQ==
+X-Gm-Message-State: AOAM531T8mBq9m+S+zQw9kc8y8uhj6Kvz8Mhdz/6K79RzRuFP5wSKCDc
+ 0Fo5rLHtyscLiDVlKOUPZLW0gw==
+X-Google-Smtp-Source: ABdhPJwwBLoiCnrjwRhFJQYWj+jTUZqOBr3HuHyo0/STACqPViLc8hndgtf6CrLI/HtLg7tjT5bZ0A==
+X-Received: by 2002:a17:90a:1089:: with SMTP id
+ c9mr5346227pja.180.1594140210827; 
+ Tue, 07 Jul 2020 09:43:30 -0700 (PDT)
+Received: from google.com ([2620:15c:201:2:f693:9fff:fef4:1b6d])
+ by smtp.gmail.com with ESMTPSA id n12sm1392859pgr.88.2020.07.07.09.43.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 07 Jul 2020 09:43:29 -0700 (PDT)
+Date: Tue, 7 Jul 2020 09:43:25 -0700
+From: Sami Tolvanen <samitolvanen@google.com>
+To: Neal Liu <neal.liu@mediatek.com>
+Subject: Re: [PATCH v2] cpuidle: change enter_s2idle() prototype
+Message-ID: <20200707164325.GA2525978@google.com>
+References: <1594005196-16327-1-git-send-email-neal.liu@mediatek.com>
+ <1594005196-16327-2-git-send-email-neal.liu@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1594005196-16327-2-git-send-email-neal.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200707_115645_493707_220072DC 
-X-CRM114-Status: UNSURE (   8.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200707_124333_895316_978D25FA 
+X-CRM114-Status: GOOD (  24.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,50 +96,153 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, HS Liao <hs.liao@mediatek.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Jacob Pan <jacob.jun.pan@linux.intel.com>, linux-tegra@vger.kernel.org,
+ wsd_upstream@mediatek.com, linux-pm@vger.kernel.org,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, lkml <linux-kernel@vger.kernel.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>, linux-acpi@vger.kernel.org,
+ Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, Len Brown <lenb@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch support more gce helper function on mt6779 platform.
+On Mon, Jul 06, 2020 at 11:13:16AM +0800, Neal Liu wrote:
+> Control Flow Integrity(CFI) is a security mechanism that disallows
+> changes to the original control flow graph of a compiled binary,
+> making it significantly harder to perform such attacks.
+> 
+> init_state_node() assign same function callback to different
+> function pointer declarations.
+> 
+> static int init_state_node(struct cpuidle_state *idle_state,
+>                            const struct of_device_id *matches,
+>                            struct device_node *state_node) { ...
+>         idle_state->enter = match_id->data; ...
+>         idle_state->enter_s2idle = match_id->data; }
+> 
+> Function declarations:
+> 
+> struct cpuidle_state { ...
+>         int (*enter) (struct cpuidle_device *dev,
+>                       struct cpuidle_driver *drv,
+>                       int index);
+> 
+>         void (*enter_s2idle) (struct cpuidle_device *dev,
+>                               struct cpuidle_driver *drv,
+>                               int index); };
+> 
+> In this case, either enter() or enter_s2idle() would cause CFI check
+> failed since they use same callee.
+> 
+> Align function prototype of enter() since it needs return value for
+> some use cases. The return value of enter_s2idle() is no
+> need currently.
+> 
+> Signed-off-by: Neal Liu <neal.liu@mediatek.com>
+> ---
+>  drivers/acpi/processor_idle.c   |    6 ++++--
+>  drivers/cpuidle/cpuidle-tegra.c |    8 +++++---
+>  drivers/idle/intel_idle.c       |    6 ++++--
+>  include/linux/cpuidle.h         |    6 +++---
+>  4 files changed, 16 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
+> index 75534c5..6ffb6c9 100644
+> --- a/drivers/acpi/processor_idle.c
+> +++ b/drivers/acpi/processor_idle.c
+> @@ -655,8 +655,8 @@ static int acpi_idle_enter(struct cpuidle_device *dev,
+>  	return index;
+>  }
+>  
+> -static void acpi_idle_enter_s2idle(struct cpuidle_device *dev,
+> -				   struct cpuidle_driver *drv, int index)
+> +static int acpi_idle_enter_s2idle(struct cpuidle_device *dev,
+> +				  struct cpuidle_driver *drv, int index)
+>  {
+>  	struct acpi_processor_cx *cx = per_cpu(acpi_cstate[index], dev->cpu);
+>  
+> @@ -674,6 +674,8 @@ static void acpi_idle_enter_s2idle(struct cpuidle_device *dev,
+>  		}
+>  	}
+>  	acpi_idle_do_entry(cx);
+> +
+> +	return 0;
+>  }
+>  
+>  static int acpi_processor_setup_cpuidle_cx(struct acpi_processor *pr,
+> diff --git a/drivers/cpuidle/cpuidle-tegra.c b/drivers/cpuidle/cpuidle-tegra.c
+> index 1500458..a12fb14 100644
+> --- a/drivers/cpuidle/cpuidle-tegra.c
+> +++ b/drivers/cpuidle/cpuidle-tegra.c
+> @@ -253,11 +253,13 @@ static int tegra_cpuidle_enter(struct cpuidle_device *dev,
+>  	return err ? -1 : index;
+>  }
+>  
+> -static void tegra114_enter_s2idle(struct cpuidle_device *dev,
+> -				  struct cpuidle_driver *drv,
+> -				  int index)
+> +static int tegra114_enter_s2idle(struct cpuidle_device *dev,
+> +				 struct cpuidle_driver *drv,
+> +				 int index)
+>  {
+>  	tegra_cpuidle_enter(dev, drv, index);
+> +
+> +	return 0;
+>  }
+>  
+>  /*
+> diff --git a/drivers/idle/intel_idle.c b/drivers/idle/intel_idle.c
+> index f449584..b178da3 100644
+> --- a/drivers/idle/intel_idle.c
+> +++ b/drivers/idle/intel_idle.c
+> @@ -175,13 +175,15 @@ static __cpuidle int intel_idle(struct cpuidle_device *dev,
+>   * Invoked as a suspend-to-idle callback routine with frozen user space, frozen
+>   * scheduler tick and suspended scheduler clock on the target CPU.
+>   */
+> -static __cpuidle void intel_idle_s2idle(struct cpuidle_device *dev,
+> -					struct cpuidle_driver *drv, int index)
+> +static __cpuidle int intel_idle_s2idle(struct cpuidle_device *dev,
+> +				       struct cpuidle_driver *drv, int index)
+>  {
+>  	unsigned long eax = flg2MWAIT(drv->states[index].flags);
+>  	unsigned long ecx = 1; /* break on interrupt flag */
+>  
+>  	mwait_idle_with_hints(eax, ecx);
+> +
+> +	return 0;
+>  }
+>  
+>  /*
+> diff --git a/include/linux/cpuidle.h b/include/linux/cpuidle.h
+> index ec2ef63..bee10c0 100644
+> --- a/include/linux/cpuidle.h
+> +++ b/include/linux/cpuidle.h
+> @@ -66,9 +66,9 @@ struct cpuidle_state {
+>  	 * suspended, so it must not re-enable interrupts at any point (even
+>  	 * temporarily) or attempt to change states of clock event devices.
+>  	 */
+> -	void (*enter_s2idle) (struct cpuidle_device *dev,
+> -			      struct cpuidle_driver *drv,
+> -			      int index);
+> +	int (*enter_s2idle)(struct cpuidle_device *dev,
+> +			    struct cpuidle_driver *drv,
+> +			    int index);
+>  };
+>  
+>  /* Idle State Flags */
+> -- 
+> 1.7.9.5
 
-depends on patch: support gce on mt6779 platform
+This looks good to me, thank you for sending the patch! Please feel free
+to add:
 
-and depends on following applied patches
-soc: mediatek: cmdq: add set event function
-soc: mediatek: cmdq: export finalize function
-soc: mediatek: cmdq: add assign function
+Reviewed-by: Sami Tolvanen <samitolvanen@google.com>
 
-Change since v2:
-- Keep behavior in drm crtc driver and
-  separate bug fix code into another patch.
+Sami
 
-Change since v1:
-- Rename cmdq_mbox_shift() to cmdq_get_shift_pa().
-
-
-Dennis YC Hsieh (9):
-  soc: mediatek: cmdq: add address shift in jump
-  soc: mediatek: cmdq: add write_s function
-  soc: mediatek: cmdq: add write_s_mask function
-  soc: mediatek: cmdq: add read_s function
-  soc: mediatek: cmdq: add write_s value function
-  soc: mediatek: cmdq: add write_s_mask value function
-  soc: mediatek: cmdq: add jump function
-  soc: mediatek: cmdq: add clear option in cmdq_pkt_wfe api
-  drm/mediatek: reduce clear event
-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c  |   2 +-
- drivers/soc/mediatek/mtk-cmdq-helper.c   | 113 ++++++++++++++++++++++-
- include/linux/mailbox/mtk-cmdq-mailbox.h |   6 +-
- include/linux/soc/mediatek/mtk-cmdq.h    |  93 ++++++++++++++++++-
- 4 files changed, 206 insertions(+), 8 deletions(-)
-
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
