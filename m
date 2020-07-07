@@ -2,94 +2,79 @@ Return-Path: <SRS0=cZv3=AS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C4F8EC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2020 04:44:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 36EB0C433E1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2020 06:48:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 860C020722
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2020 04:44:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F063B20675
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2020 06:48:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="L9NcmWOI";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Q2TYLI59"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 860C020722
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lTEV2l/o";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="gZRCHLKs"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F063B20675
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=CVrB2uLdMfjFeU4ZuvsIVr3u4ulWv3PKyPMY2sOAQys=; b=L9NcmWOI2UgmVNGdx+SY2MS1Q
-	kZujC9mw5xgDe1jpISYGYc3ehqcABj/hXmodUIto80t/LhqPw3EverQks1bMw+0yFE4gKb8sXvMW6
-	RUA/Iz3xFcmOIVIOrjNduHRQg4RSYoalk/ENnuRF6Rxd0tAui5gW9aD6lmSSivlcYWEKQbt/FtxdZ
-	Nl/NTqv8EeZYN4mw3KOMDj+8tDJ28dVGiTwvZFoGNodwmFXwgYr3DNbw6gUp1ObbjynH7DaaNIseS
-	olzdfg2xp8qQMSE7DoAKtwaj0OSp1UDOaUA9EKKhaYdrU0b9FIkgzaqDCOF3qJP3sTU/Z4+cbynKP
-	4Km4OyJ6A==;
+	 bh=DnwNTgLlSdXmUSS6HJTlQ9zfsAd06VeVgFexYvvydEs=; b=lTEV2l/o/OhrZ0jLNuAFj1QL2
+	iFVjVOxxIm09+zORs+CW9X1iC/Iycxk0qt+fkw0hVyFovlpyBgMvxdTPjg9/hs0omjPJ7ByLhYdnC
+	z88SsTdIZTLvt0JDKSTHD1J/uWhV6sqx2H6wXT9D8p+pOe/yzTMBdoFded2yiW1S72F1skujkShN5
+	sQC0PfSKh9ZM+z7LLU9k4e2NU0qDDn6B8+fINW/m/96Zt1kOlDFfMkEt5lsBM0xEJAo9ECTyqz07C
+	4fAo8ucYVhbGwwcxKqzqXLZYTPh7gdaDN5dE3VbdkDislk8qhwMFOmSuw4/dhYeVDgnsIiIJwNm3A
+	U/edhtZdw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jsfTF-0001q0-Ce; Tue, 07 Jul 2020 04:44:41 +0000
-Received: from mail-oo1-xc41.google.com ([2607:f8b0:4864:20::c41])
+	id 1jshOS-0006zp-Na; Tue, 07 Jul 2020 06:47:52 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jsfTB-0001pS-Qf
- for linux-mediatek@lists.infradead.org; Tue, 07 Jul 2020 04:44:38 +0000
-Received: by mail-oo1-xc41.google.com with SMTP id t6so1860066ooh.4
- for <linux-mediatek@lists.infradead.org>; Mon, 06 Jul 2020 21:44:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QMSJ1P6WOlDQn3tsvCD0MzG+bEGBt/nCP/I+g6xWtsU=;
- b=Q2TYLI59eGIzf9IyL+deJj2UiBWfUg/SZGJX20H+rEyFW8mLY5lTKiIvdOmwlox+3C
- bmbdefuB3rsJrA4Nd5EenMqY2KKrWEfMiZweUsxaAhcm+YTGyrBkF9JwMwGENuS33DGu
- z6xpcdOz9/Xv58FoQV3N3o2qEgqaKG6XrJof0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=QMSJ1P6WOlDQn3tsvCD0MzG+bEGBt/nCP/I+g6xWtsU=;
- b=AVktSKuudUcyMB056GT5maD6/RBOf6vQLyOQhEOq1yj+zv1dQgN1ykQya0jp2tf7yW
- it0tZVBvh6lnUw4xFGsmUk4cSY+EmVfVYlLTe3PsjMwjekZAd43qLagAQ7fNe55SLXle
- G3KmS/E5WvAfHK6H+G1dtCCQOLr9TmVhY1KQPKD7Qhw4/LA6wHQJOtFhm3g4UkTHRTdq
- 19am4HHQKBQ2vzoJxYpq7RvF432obqg38kZhgizqfE8GAgih9R5bXP9GUdaNQoyRPfhZ
- mSv/lhSC79H34dKc2EE06Wdg6b18fQ6bbwfJO/qmiFL0EECatSfApKV90W4lQ9trfBYI
- moFg==
-X-Gm-Message-State: AOAM532q5pRdfdDvCfROPRqifiPVWe7+p8TGh9CJ5Pm6V+ow/kZ+lsbL
- mT+rGIHFdM/9CNOAMVHMq7RL0SNVY5s=
-X-Google-Smtp-Source: ABdhPJwd+cP4OiBfkbj3kfrZ0PkjwMYi2vjHt1ZTozWHQ53h+o+KrimuF1++TFE2HpG8QCTTdx8RDA==
-X-Received: by 2002:a4a:9011:: with SMTP id i17mr22980046oog.29.1594097073503; 
- Mon, 06 Jul 2020 21:44:33 -0700 (PDT)
-Received: from mail-ot1-f52.google.com (mail-ot1-f52.google.com.
- [209.85.210.52])
- by smtp.gmail.com with ESMTPSA id q15sm5491994oij.54.2020.07.06.21.44.32
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Jul 2020 21:44:32 -0700 (PDT)
-Received: by mail-ot1-f52.google.com with SMTP id n24so31169392otr.13
- for <linux-mediatek@lists.infradead.org>; Mon, 06 Jul 2020 21:44:32 -0700 (PDT)
-X-Received: by 2002:a9d:7dc1:: with SMTP id k1mr680267otn.141.1594097071741;
- Mon, 06 Jul 2020 21:44:31 -0700 (PDT)
+ id 1jshOP-0006xF-LX; Tue, 07 Jul 2020 06:47:51 +0000
+X-UUID: 149200ebad2c481998b3d997417518be-20200706
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=SwVdQetwEhqb0jYOIh2hMXjXY9PYdr+q2F3iUq6pY0Y=; 
+ b=gZRCHLKsGR7BbbuihTjkM/CXzCsnO13i+cxGwf983bhMQ3LP78fZFooju0jiZylqQqJoQ8diqinY83IqvlmoU4V80AeT6HR02m3YdydDIE9XDRXkWbg4Vgq1MCvL4SBo7b0/eDZatmLzILSYdIcn5VF/7aFUnLoJFTcKGXXpxew=;
+X-UUID: 149200ebad2c481998b3d997417518be-20200706
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <xia.jiang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 914610010; Mon, 06 Jul 2020 22:47:42 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 6 Jul 2020 23:47:31 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31DR.mediatek.inc
+ (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 7 Jul 2020 14:45:48 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 7 Jul 2020 14:45:46 +0800
+Message-ID: <1594104314.4473.24.camel@mhfsdcap03>
+Subject: Re: [PATCH RESEND v9 18/18] media: platform: Add jpeg enc feature
+From: Xia Jiang <xia.jiang@mediatek.com>
+To: Tomasz Figa <tfiga@chromium.org>
+Date: Tue, 7 Jul 2020 14:45:14 +0800
+In-Reply-To: <20200630165301.GA1212092@chromium.org>
+References: <20200604090553.10861-1-xia.jiang@mediatek.com>
+ <20200604090553.10861-20-xia.jiang@mediatek.com>
+ <20200611184640.GC8694@chromium.org> <1593485781.20112.43.camel@mhfsdcap03>
+ <20200630165301.GA1212092@chromium.org>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-References: <20200626080442.292309-1-acourbot@chromium.org>
- <20200626080442.292309-17-acourbot@chromium.org>
- <84068e20-9a34-6d03-61e6-6c243680749c@xs4all.nl>
- <CAPBb6MW9deo11+YH9Mh3u08sEt7ShAF_a+S0-Jb_VDGhCQot_Q@mail.gmail.com>
- <74652f57-8dd8-6b24-9889-59bec389464e@xs4all.nl>
-In-Reply-To: <74652f57-8dd8-6b24-9889-59bec389464e@xs4all.nl>
-From: Alexandre Courbot <acourbot@chromium.org>
-Date: Tue, 7 Jul 2020 13:44:19 +0900
-X-Gmail-Original-Message-ID: <CAPBb6MWT=aALmuQLkaKLYeXiyPViQCDZLdUUGdi_NFFXCo6Vcw@mail.gmail.com>
-Message-ID: <CAPBb6MWT=aALmuQLkaKLYeXiyPViQCDZLdUUGdi_NFFXCo6Vcw@mail.gmail.com>
-Subject: Re: [PATCH v2 16/18] media: mtk-vcodec: venc: make S_PARM return
- -ENOTTY for CAPTURE queue
-To: Hans Verkuil <hverkuil@xs4all.nl>
+X-TM-SNTS-SMTP: 2B1FBE70E9DA5E005A338DB4FF66BB7BFC3DA49459575A0E1C46614499A82EAE2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200707_004437_894054_340045E9 
-X-CRM114-Status: GOOD (  37.09  )
+X-CRM114-CacheID: sfid-20200707_024749_922905_E1857DE3 
+X-CRM114-Status: GOOD (  35.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,245 +86,286 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Maoguang Meng <maoguang.meng@mediatek.com>,
- Rui Wang <gtk_ruiwang@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>,
- LKML <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Pi-Hsun Shih <pihsun@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: drinkcat@chromium.org, devicetree@vger.kernel.org, mojahsu@chromium.org,
+ srv_heupstream@mediatek.com, Rick Chang <rick.chang@mediatek.com>,
+ senozhatsky@chromium.org, linux-kernel@vger.kernel.org,
+ maoguang.meng@mediatek.com, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ sj.huang@mediatek.com, Rob Herring <robh+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ linux-mediatek@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 6, 2020 at 9:43 PM Hans Verkuil <hverkuil@xs4all.nl> wrote:
->
-> On 04/07/2020 14:36, Alexandre Courbot wrote:
-> > On Fri, Jul 3, 2020 at 5:30 PM Hans Verkuil <hverkuil@xs4all.nl> wrote:
-> >>
-> >> On 26/06/2020 10:04, Alexandre Courbot wrote:
-> >>> v4l2-compliance expects ENOTTY to be returned when a given queue does
-> >>> not support S_PARM.
-> >>>
-> >>> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-> >>> ---
-> >>>  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c | 2 +-
-> >>>  1 file changed, 1 insertion(+), 1 deletion(-)
-> >>>
-> >>> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> >>> index aae610e6d4e8..346a33c6869d 100644
-> >>> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> >>> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> >>> @@ -200,7 +200,7 @@ static int vidioc_venc_s_parm(struct file *file, void *priv,
-> >>>       struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-> >>>
-> >>>       if (a->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
-> >>> -             return -EINVAL;
-> >>> +             return -ENOTTY;
-> >>
-> >> This doesn't look right: S_PARM *is* supported, just not for this buffer type.
-> >> So -EINVAL is the correct error code.
-> >>
-> >> What is the exact v4l2-compliance failure? It might be a bug in the test.
-> >
-> > The error is as follows:
-> >
-> > Format ioctls:
-> >         test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
-> >                 fail: v4l2-test-formats.cpp(1336): got error 22 when
-> > setting parms for buftype 9
-> >         test VIDIOC_G/S_PARM: FAIL
->
-> This is due to bugs in the compliance test that do not take into account the
-> stateful encoder spec.
->
-> The compliance test should check for the following:
->
-> If ENUM_FRAMEINTERVALS is implemented, then G/S_PARM shall be supported for OUTPUT.
->
-> If ENUM_FRAMEINTERVALS is not implemented, then G/S_PARM is optional for OUTPUT. But if
-> G_PARM is implemented, then S_PARM shall also be implemented. In this case the
-> frame interval range is determined by the codec standard.
->
-> If V4L2_FMT_FLAG_ENC_CAP_FRAME_INTERVAL is set for one or more pixel formats,
-> then G/S_PARM shall be implemented for both CAPTURE and OUTPUT.
->
-> For backwards compatibility: if G/S_PARM is supported for OUTPUT, then it may be
-> supported for CAPTURE as well.
->
-> Can you try with the following patch?
->
-> With this v4l2-compliance patch you should be able to drop patches 15/18 and 16/18
-> of your series.
+On Tue, 2020-06-30 at 16:53 +0000, Tomasz Figa wrote:
+> Hi Xia,
+> 
+> On Tue, Jun 30, 2020 at 10:56:21AM +0800, Xia Jiang wrote:
+> > On Thu, 2020-06-11 at 18:46 +0000, Tomasz Figa wrote:
+> > > Hi Xia,
+> > > 
+> > > On Thu, Jun 04, 2020 at 05:05:53PM +0800, Xia Jiang wrote:
+> [snip]
+> > > > +static void mtk_jpeg_enc_device_run(void *priv)
+> > > > +{
+> > > > +	struct mtk_jpeg_ctx *ctx = priv;
+> > > > +	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+> > > > +	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+> > > > +	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
+> > > > +	unsigned long flags;
+> > > > +	struct mtk_jpeg_src_buf *jpeg_src_buf;
+> > > > +	struct mtk_jpeg_enc_bs enc_bs;
+> > > > +	int ret;
+> > > > +
+> > > > +	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> > > > +	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+> > > > +	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
+> > > > +
+> > > > +	ret = pm_runtime_get_sync(jpeg->dev);
+> > > > +	if (ret < 0)
+> > > > +		goto enc_end;
+> > > > +
+> > > > +	spin_lock_irqsave(&jpeg->hw_lock, flags);
+> > > > +
+> > > > +	/*
+> > > > +	 * Resetting the hardware every frame is to ensure that all the
+> > > > +	 * registers are cleared. This is a hardware requirement.
+> > > > +	 */
+> > > > +	mtk_jpeg_enc_reset(jpeg->reg_base);
+> > > > +
+> > > > +	mtk_jpeg_set_enc_dst(ctx, jpeg->reg_base, &dst_buf->vb2_buf, &enc_bs);
+> > > > +	mtk_jpeg_set_enc_src(ctx, jpeg->reg_base, &src_buf->vb2_buf);
+> > > > +	mtk_jpeg_enc_set_config(jpeg->reg_base, ctx->out_q.fmt->hw_format,
+> > > > +				ctx->enable_exif, ctx->enc_quality,
+> > > > +				ctx->restart_interval);
+> > > > +	mtk_jpeg_enc_start(jpeg->reg_base);
+> > > 
+> > > Could we just move the above 5 functions into one function inside
+> > > mtk_jpeg_enc_hw.c that takes mtk_jpeg_dev pointer as its argument, let's
+> > > say mtk_jpeg_enc_hw_run() and simply program all the data to the registers
+> > > directly, without the extra level of abstractions?
+> > I can move the 5 functions into one function(mtk_jpeg_enc_hw_run()), but
+> > this function will be very long, because it contains computation code
+> > such as setting dst addr, blk_num, quality.
+> > In v4, you have adviced the following architecture:
+> > How about the following model, as used by many other drivers:
+> > 
+> > mtk_jpeg_enc_set_src()
+> > {
+> >         // Set any registers related to source format and buffer
+> > }
+> > 
+> > mtk_jpeg_enc_set_dst()
+> > {
+> >         // Set any registers related to destination format and buffer
+> > }
+> > 
+> > mtk_jpeg_enc_set_params()
+> > {
+> >         // Set any registers related to additional encoding parameters
+> > }
+> > 
+> > mtk_jpeg_enc_device_run(enc, ctx)
+> > {
+> >         mtk_jpeg_enc_set_src(enc, src_buf, src_fmt);
+> >         mtk_jpeg_enc_set_dst(enc, dst_buf, dst_fmt);
+> >         mtk_jpeg_enc_set_params(enc, ctx);
+> >         // Trigger the hardware run
+> > }
+> > I think that this architecture is more clear(mtk_jpeg_enc_set_config is
+> > equivalent to mtk_jpeg_enc_set_params).
+> > Should I keep the original architecture or move 5 functions into
+> > mtk_jpeg_enc_hw_run?
+> 
+> Sounds good to me.
+> 
+> My biggest issue with the code that it ends up introducing one more
+> level of abstraction, but with the approach you suggested, the arguments
+> just accept standard structs, which avoids that problem.
+> 
+> [snip]
+> > > > +
+> > > > +	ctx->fh.ctrl_handler = &ctx->ctrl_hdl;
+> > > > +	ctx->colorspace = V4L2_COLORSPACE_JPEG,
+> > > > +	ctx->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
+> > > > +	ctx->quantization = V4L2_QUANTIZATION_DEFAULT;
+> > > > +	ctx->xfer_func = V4L2_XFER_FUNC_DEFAULT;
+> > > 
+> > > Since we already have a v4l2_pix_format_mplane struct which has fields for
+> > > the above 4 values, could we just store them there?
+> > > 
+> > > Also, I don't see this driver handling the colorspaces in any way, but it
+> > > seems to allow changing them from the userspace. This is incorrect, because
+> > > the userspace has no way to know that the colorspace is not handled.
+> > > Instead, the try_fmt implementation should always override the
+> > > userspace-provided colorspace configuration with the ones that the driver
+> > > assumes.
+> > > 
+> > > > +	pix_mp->width = MTK_JPEG_MIN_WIDTH;
+> > > > +	pix_mp->height = MTK_JPEG_MIN_HEIGHT;
+> > > > +
+> > > > +	q->fmt = mtk_jpeg_find_format(V4L2_PIX_FMT_YUYV,
+> > > > +				      MTK_JPEG_FMT_FLAG_ENC_OUTPUT);
+> > > > +	vidioc_try_fmt(container_of(pix_mp, struct v4l2_format,
+> > > > +				    fmt.pix_mp), q->fmt);
+> > > > +	q->w = pix_mp->width;
+> > > > +	q->h = pix_mp->height;
+> > > > +	q->crop_rect.width = pix_mp->width;
+> > > > +	q->crop_rect.height = pix_mp->height;
+> > > > +	q->sizeimage[0] = pix_mp->plane_fmt[0].sizeimage;
+> > > > +	q->bytesperline[0] = pix_mp->plane_fmt[0].bytesperline;
+> > > 
+> > > Actually, do we need this custom mtk_jpeg_q_data struct? Why couldn't we
+> > > just keep the same values inside the standard v4l2_pix_format_mplane
+> > > struct?
+> > I think that we need mtk_jpeg_q_data struct.If we delete it, how can we
+> > know these values(w, h, sizeimage, bytesperline, mtk_jpeg_fmt) belong to
+> > output or capture(output and capture's sizeimages are different, width
+> > and height are differnt too for jpeg dec )?We have
+> > s_fmt_vid_out_mplane/cap_mplane function to set these values.
+> > 
+> > But we can use standard v4l2_pix_format_mplane struct replacing the w, h
+> > bytesperline, sizeimage in mtk_jpeg_q_data struct like this:
+> > struct mtk_jpeg_q_data{
+> > 	struct mtk_jpeg_fmt *fmt;
+> > 	struct v4l2_pix_format_mplane pix_mp;
+> > 	struct v4l2_rect enc_crop_rect
+> > }
+> > Then delete ctx->colorspace ctx->ycbcr_enc ctx->quantization
+> > ctx->xfer_func, becuase v4l2_pix_format_mplane in q_data has contained
+> > them and assign them for out_q and cap_q separately.
+> > 
+> > WDYT?
+> 
+> Sounds good to me. I was considering just making it like
+> 
+> struct mtk_jpeg_ctx {
+> 	struct mtk_jpeg_fmt *src_fmt;
+> 	struct v4l2_pix_format_mplane src_pix_mp;
+> 	struct v4l2_rect src_crop;
+> 
+> 	struct mtk_jpeg_fmt *dst_fmt;
+> 	struct v4l2_pix_format_mplane dst_pix_mp;
+> 	struct v4l2_rect dst_crop;
+> };
+> 
+> but I like your suggestion as well, as long as custom data structures
+> are not used to store standard information.
 
-Indeed, with this patch v4l2-compliance passes on the encoder device
-without 15/18 and 16/18. Thanks, I'll remove them from the next
-iteration.
+Dear Tomasz,
 
->
-> Regards,
->
->         Hans
->
-> -------------------------- cut here ------------------------------
-> diff --git a/utils/v4l2-compliance/v4l2-compliance.cpp b/utils/v4l2-compliance/v4l2-compliance.cpp
-> index b5bde2f4..d0441651 100644
-> --- a/utils/v4l2-compliance/v4l2-compliance.cpp
-> +++ b/utils/v4l2-compliance/v4l2-compliance.cpp
-> @@ -1250,6 +1250,7 @@ void testNode(struct node &node, struct node &node_m2m_cap, struct node &expbuf_
->                 node.frmsizes.clear();
->                 node.frmsizes_count.clear();
->                 node.has_frmintervals = false;
-> +               node.has_enc_cap_frame_interval = false;
->                 node.valid_buftypes = 0;
->                 node.valid_memorytype = 0;
->                 node.buf_caps = 0;
-> diff --git a/utils/v4l2-compliance/v4l2-compliance.h b/utils/v4l2-compliance/v4l2-compliance.h
-> index 21e31872..ae10bdf9 100644
-> --- a/utils/v4l2-compliance/v4l2-compliance.h
-> +++ b/utils/v4l2-compliance/v4l2-compliance.h
-> @@ -141,6 +141,7 @@ struct base_node {
->         frmsizes_set frmsizes;
->         frmsizes_count_map frmsizes_count;
->         bool has_frmintervals;
-> +       bool has_enc_cap_frame_interval;
->         __u32 valid_buftypes;
->         __u32 valid_buftype;
->         __u32 valid_memorytype;
-> diff --git a/utils/v4l2-compliance/v4l2-test-formats.cpp b/utils/v4l2-compliance/v4l2-test-formats.cpp
-> index 3dfc593e..edf1536e 100644
-> --- a/utils/v4l2-compliance/v4l2-test-formats.cpp
-> +++ b/utils/v4l2-compliance/v4l2-test-formats.cpp
-> @@ -71,6 +71,8 @@ static int testEnumFrameIntervals(struct node *node, __u32 pixfmt,
->                 ret = doioctl(node, VIDIOC_ENUM_FRAMEINTERVALS, &frmival);
->                 if (ret == ENOTTY)
->                         return ret;
-> +               // M2M devices don't support this, except for stateful encoders
-> +               fail_on_test(node->is_m2m && !(node->codec_mask & STATEFUL_ENCODER));
->                 if (f == 0 && ret == EINVAL) {
->                         if (type == V4L2_FRMSIZE_TYPE_DISCRETE)
->                                 warn("found framesize %dx%d, but no frame intervals\n", w, h);
-> @@ -264,16 +266,22 @@ static int testEnumFormatsType(struct node *node, unsigned type)
->                         return fail("drivers must never set the emulated flag\n");
->                 if (fmtdesc.flags & ~(V4L2_FMT_FLAG_COMPRESSED | V4L2_FMT_FLAG_EMULATED |
->                                       V4L2_FMT_FLAG_CONTINUOUS_BYTESTREAM |
-> -                                     V4L2_FMT_FLAG_DYN_RESOLUTION))
-> +                                     V4L2_FMT_FLAG_DYN_RESOLUTION |
-> +                                     V4L2_FMT_FLAG_ENC_CAP_FRAME_INTERVAL))
->                         return fail("unknown flag %08x returned\n", fmtdesc.flags);
->                 if (!(fmtdesc.flags & V4L2_FMT_FLAG_COMPRESSED))
->                         fail_on_test(fmtdesc.flags & (V4L2_FMT_FLAG_CONTINUOUS_BYTESTREAM |
-> -                                                     V4L2_FMT_FLAG_DYN_RESOLUTION));
-> +                                                     V4L2_FMT_FLAG_DYN_RESOLUTION |
-> +                                                     V4L2_FMT_FLAG_ENC_CAP_FRAME_INTERVAL));
->                 ret = testEnumFrameSizes(node, fmtdesc.pixelformat);
->                 if (ret)
->                         fail_on_test(node->codec_mask & STATEFUL_ENCODER);
->                 if (ret && ret != ENOTTY)
->                         return ret;
-> +               if (fmtdesc.flags & V4L2_FMT_FLAG_ENC_CAP_FRAME_INTERVAL) {
-> +                       fail_on_test(!(node->codec_mask & STATEFUL_ENCODER));
-> +                       node->has_enc_cap_frame_interval = true;
-> +               }
->                 f++;
->                 if (type == V4L2_BUF_TYPE_PRIVATE)
->                         continue;
-> @@ -1222,6 +1230,7 @@ int testSlicedVBICap(struct node *node)
->
->  static int testParmStruct(struct node *node, struct v4l2_streamparm &parm)
->  {
-> +       bool is_stateful_enc = node->codec_mask & STATEFUL_ENCODER;
->         struct v4l2_captureparm *cap = &parm.parm.capture;
->         struct v4l2_outputparm *out = &parm.parm.output;
->         int ret;
-> @@ -1239,6 +1248,7 @@ static int testParmStruct(struct node *node, struct v4l2_streamparm &parm)
->                         fail_on_test(!cap->readbuffers);
->                 fail_on_test(cap->capability & ~V4L2_CAP_TIMEPERFRAME);
->                 fail_on_test(node->has_frmintervals && !cap->capability);
-> +               fail_on_test(is_stateful_enc && !cap->capability);
->                 fail_on_test(cap->capturemode & ~V4L2_MODE_HIGHQUALITY);
->                 if (cap->capturemode & V4L2_MODE_HIGHQUALITY)
->                         warn("V4L2_MODE_HIGHQUALITY is poorly defined\n");
-> @@ -1257,6 +1267,7 @@ static int testParmStruct(struct node *node, struct v4l2_streamparm &parm)
->                 else if (node->g_caps() & V4L2_CAP_STREAMING)
->                         fail_on_test(!out->writebuffers);
->                 fail_on_test(out->capability & ~V4L2_CAP_TIMEPERFRAME);
-> +               fail_on_test(is_stateful_enc && !out->capability);
->                 fail_on_test(out->outputmode);
->                 fail_on_test(out->extendedmode);
->                 if (out->capability & V4L2_CAP_TIMEPERFRAME)
-> @@ -1271,6 +1282,7 @@ static int testParmStruct(struct node *node, struct v4l2_streamparm &parm)
->  static int testParmType(struct node *node, unsigned type)
->  {
->         struct v4l2_streamparm parm;
-> +       bool is_stateful_enc = node->codec_mask & STATEFUL_ENCODER;
->         int ret;
->
->         memset(&parm, 0, sizeof(parm));
-> @@ -1288,10 +1300,10 @@ static int testParmType(struct node *node, unsigned type)
->         case V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE:
->         case V4L2_BUF_TYPE_VIDEO_OUTPUT:
->         case V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE:
-> -               if (type && (node->g_caps() & buftype2cap[type]))
-> +               if (node->g_caps() & buftype2cap[type]) {
->                         fail_on_test(ret && node->has_frmintervals);
-> -               if (ret)
-> -                       break;
-> +                       fail_on_test(ret && node->has_enc_cap_frame_interval);
-> +               }
->                 break;
->         default:
->                 fail_on_test(ret == 0);
-> @@ -1300,8 +1312,15 @@ static int testParmType(struct node *node, unsigned type)
->                 fail_on_test(!doioctl(node, VIDIOC_S_PARM, &parm));
->                 break;
->         }
-> +       if (ret == ENOTTY) {
-> +               memset(&parm, 0, sizeof(parm));
-> +               parm.type = type;
-> +               fail_on_test(doioctl(node, VIDIOC_S_PARM, &parm) != ENOTTY);
-> +       }
->         if (ret == ENOTTY)
->                 return ret;
-> +       // M2M devices don't support this, except for stateful encoders
-> +       fail_on_test(node->is_m2m && !is_stateful_enc);
->         if (ret == EINVAL)
->                 return ENOTTY;
->         if (ret)
-> @@ -1327,11 +1346,29 @@ static int testParmType(struct node *node, unsigned type)
->                 cap = parm.parm.output.capability;
->         else
->                 cap = parm.parm.capture.capability;
-> -       fail_on_test(ret && node->has_frmintervals);
-> -       if (!ret && (cap & V4L2_CAP_TIMEPERFRAME) && !node->has_frmintervals)
-> +
-> +       if (is_stateful_enc) {
-> +               fail_on_test(ret && node->has_enc_cap_frame_interval);
-> +               if (V4L2_TYPE_IS_OUTPUT(type))
-> +                       fail_on_test(ret);
-> +       } else {
-> +               fail_on_test(ret && node->has_frmintervals);
-> +       }
-> +
-> +       /*
-> +        * Stateful encoders can support S_PARM without ENUM_FRAMEINTERVALS.
-> +        * being present. In that case the limits of the chosen codec apply.
-> +        */
-> +       if (!ret && (cap & V4L2_CAP_TIMEPERFRAME) && !node->has_frmintervals && !is_stateful_enc)
->                 warn("S_PARM is supported for buftype %d, but not for ENUM_FRAMEINTERVALS\n", type);
->         if (ret == ENOTTY)
->                 return 0;
-> +       /*
-> +        * S_PARM(CAPTURE) is optional for stateful encoders, so EINVAL is a
-> +        * valid error code in that case.
-> +        */
-> +       if (is_stateful_enc && !V4L2_TYPE_IS_OUTPUT(type) && ret == -EINVAL)
-> +               return 0;
->         if (ret)
->                 return fail("got error %d when setting parms for buftype %d\n", ret, type);
->         fail_on_test(parm.type != type);
-> -------------------------- cut here ------------------------------
+I used the structure like below:
+ struct mtk_jpeg_q_data{
+	struct mtk_jpeg_fmt *fmt;
+	struct v4l2_pix_format_mplane pix_mp;
+	struct v4l2_rect enc_crop_rect
+}
+Then delete ctx->colorspace ctx->ycbcr_enc ctx->quantization
+ctx->xfer_func, becuase v4l2_pix_format_mplane in q_data has contained
+them and assign them for out_q and cap_q separately.
+
+Then the v4l2_compliance test will fail, the fail log as below:
+Format ioctls:
+        test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+        test VIDIOC_G/S_PARM: OK (Not Supported)
+        test VIDIOC_G_FBUF: OK (Not Supported)
+        test VIDIOC_G_FMT: OK
+        test VIDIOC_TRY_FMT: OK
+                fail: v4l2-test-formats.cpp(836):
+fmt_cap.g_colorspace() != col
+        test VIDIOC_S_FMT: FAIL
+        test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+        test Cropping: OK
+        test Composing: OK (Not Supported)
+        test Scaling: OK (Not Supported)
+
+The source code of  v4l2-test-formats.cpp as below:
+
+static int testM2MFormats(struct node *node)
+{
+	cv4l_fmt fmt_out;
+	cv4l_fmt fmt;
+	cv4l_fmt fmt_cap;
+	__u32 cap_type = node->g_type();
+	__u32 out_type = v4l_type_invert(cap_type);
+	__u32 col, ycbcr_enc, quant, xfer_func;
+
+	fail_on_test(node->g_fmt(fmt_out, out_type));
+	node->g_fmt(fmt_cap, cap_type);
+	fail_on_test(fmt_cap.g_colorspace() != fmt_out.g_colorspace());
+	fail_on_test(fmt_cap.g_ycbcr_enc() != fmt_out.g_ycbcr_enc());
+	fail_on_test(fmt_cap.g_quantization() != fmt_out.g_quantization());
+	fail_on_test(fmt_cap.g_xfer_func() != fmt_out.g_xfer_func());
+	col = fmt_out.g_colorspace() == V4L2_COLORSPACE_SMPTE170M ?
+		V4L2_COLORSPACE_REC709 : V4L2_COLORSPACE_SMPTE170M;
+	ycbcr_enc = fmt_out.g_ycbcr_enc() == V4L2_YCBCR_ENC_601 ?
+		V4L2_YCBCR_ENC_709 : V4L2_YCBCR_ENC_601;
+	quant = fmt_out.g_quantization() == V4L2_QUANTIZATION_LIM_RANGE ?
+		V4L2_QUANTIZATION_FULL_RANGE : V4L2_QUANTIZATION_LIM_RANGE;
+	xfer_func = fmt_out.g_xfer_func() == V4L2_XFER_FUNC_SRGB ?
+		V4L2_XFER_FUNC_709 : V4L2_XFER_FUNC_SRGB;
+	fmt_out.s_colorspace(col);
+	fmt_out.s_xfer_func(xfer_func);
+	fmt_out.s_ycbcr_enc(ycbcr_enc);
+	fmt_out.s_quantization(quant);
+	node->s_fmt(fmt_out);
+	fail_on_test(fmt_out.g_colorspace() != col);
+	fail_on_test(fmt_out.g_xfer_func() != xfer_func);
+	fail_on_test(fmt_out.g_ycbcr_enc() != ycbcr_enc);
+	fail_on_test(fmt_out.g_quantization() != quant);
+	node->g_fmt(fmt_cap);
+	fail_on_test(fmt_cap.g_colorspace() != col);  // line 836
+	fail_on_test(fmt_cap.g_xfer_func() != xfer_func);
+	fail_on_test(fmt_cap.g_ycbcr_enc() != ycbcr_enc);
+	fail_on_test(fmt_cap.g_quantization() != quant);
+}
+
+It needs that cap's colorspace equals out's colorspace when userspace
+just set out's colorspace and then get cap's colorspace. However, cap's
+colorspace which getted from driver equals V4L2_COLORSPACE_JPEG, because
+the code in g_fmt() like this:
+pix_mp->colorspace = q_data->pix_mp.colorspace;
+pix_mp->ycbcr_enc = q_data->pix_mp.ycbcr_enc;
+pix_mp->xfer_func = q_data->pix_mp.xfer_func;
+pix_mp->quantization = q_data->pix_mp.quantization;
+
+How should I handle this case? Should I store them(colorspace,
+sfer_func, ycbcr_enc, quatization) in ctx as the orinal desin? Then I
+can get them from g_fmt() like this:
+pix_mp->colorspace = ctx->colorspace;
+pix_mp->ycbcr_enc = ctx->ycbcr_enc;
+pix_mp->xfer_func = ctx->xfer_func;
+pix_mp->quantization = ctx->quantization;
+
+Best Regards,
+Xia Jiang
+> [snip]
+> > > > @@ -1042,8 +1619,12 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
+> > > >  		return jpeg_irq;
+> > > >  	}
+> > > >  
+> > > > -	ret = devm_request_irq(&pdev->dev, jpeg_irq, mtk_jpeg_dec_irq, 0,
+> > > > -			       pdev->name, jpeg);
+> > > > +	if (jpeg->variant->is_encoder)
+> > > > +		ret = devm_request_irq(&pdev->dev, jpeg_irq, mtk_jpeg_enc_irq,
+> > > > +				       0, pdev->name, jpeg);
+> > > > +	else
+> > > > +		ret = devm_request_irq(&pdev->dev, jpeg_irq, mtk_jpeg_dec_irq,
+> > > > +				       0, pdev->name, jpeg);
+> > > 
+> > > Rather than having "is_encoder" in the variant struct, would it make more
+> > > sense to have "irq_handler" instead? That would avoid the explicit if.
+> > Do you mean to delete "is_encoder"? It is used 8 times in the
+> > driver.Should I move them all to the match data?
+> 
+> Yes. It would make the code linear and the varability between the
+> decoder and encoder would be self-contained in the variant struct.
+> 
+> Best regards,
+> Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
