@@ -2,53 +2,78 @@ Return-Path: <SRS0=cZv3=AS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 88E0DC433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2020 10:34:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BAD71C433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2020 11:05:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5114E206B6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2020 10:34:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7E941206B6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2020 11:05:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="C9ZKc8uT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5114E206B6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FQnhpUcD";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="RCJyDoqG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7E941206B6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=oPi73XK+TDoe5zdyQwWkUo3bOCdrZmucW1AWH8e9zQs=; b=C9ZKc8uTRleNdDJu29Ez4Me44I
-	pxLh67DrlLrRm14d/2p4JmbicR56lkgvaGH10kGZCSlTq6Rh3LWSwFydVSazWfw7iDnO0M49ZVUcQ
-	FQ0gy45wP8TyHH3N0vOf/9aPZKcGpx+xZ0cqviiZtXhqKiCqkqaZsmiydCUHiL00MifSuQCtFJ7l1
-	kzIOi5v1sEuWRdNju9jLbOFEiNdH041MOTvqGaqodHhzYMVH9Y0VW6m+49emg9hCZjvsI8ayWNzMs
-	kHP3Dlzau5H2Q+uNL/ilqDxVN9f1fX2/pcGXwkS7Ak1Qe8gF/EdWA72d6t8DmLKTENbw2GbyI7CAU
-	ZtdOhuxQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Eqe2bbbreCMfBSlnmIE6aObG8yttRkH+2S4N4CK8VA8=; b=FQnhpUcDBHquxaEDfCI7wRUqS
+	l2WvpQRdaqnvJrFk+jOzWUD1szfnx6XN7sdUOZueXPaghXeCO2MsQsxFYEDF6inXa85Uk0b+yAobu
+	XiMvtWPq/x5m3wmbOCr81kF+qcRKPFa0DVP5TitvT+OFsC/MZ3i/KyrXdsWB/4r/jabZW6yK2ySiq
+	vixL4WlbBGLh98XWoIliJ6YQLHthfuTmIeLTU2iHa+LNnRjbOCw0OV4M/gZLqzTe90uAjcX/pGaLY
+	9VLqjzKsVSdwlzhl2oCPuOntMkOdB/g++dGeF3dvUMO8BcUUQ5ZPxaRXXPatzYbMR5KuYf632UzGL
+	PNuPm2eig==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jskvl-0004gg-ST; Tue, 07 Jul 2020 10:34:30 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1jslPw-0002Tv-3x; Tue, 07 Jul 2020 11:05:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jskvf-0004bm-Ni; Tue, 07 Jul 2020 10:34:24 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id B0C812A0718
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH] Revert "thermal: mediatek: fix register index error"
-Date: Tue,  7 Jul 2020 12:34:12 +0200
-Message-Id: <20200707103412.1010823-1-enric.balletbo@collabora.com>
-X-Mailer: git-send-email 2.27.0
+ id 1jslPs-0002Sa-MJ; Tue, 07 Jul 2020 11:05:38 +0000
+X-UUID: a5644fb74971437b83d78ec8040aa0ba-20200707
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=LWaWjCAmYSDm6EVyk8ZEeu1IXl/ypYzoAr5V3QmAW+A=; 
+ b=RCJyDoqGEdg2gu72xrE2JbIzhUvm0qSJplvyOk72cN+krW9K0+L8GaIJbCuyY0hDHlVhC1fuQh/AwMOyRkT3qDzjkZUFXjJhPSAoGZVW6mFFmpctLy0wxiLBouB7bbn4q8GVjUeZf7d2kJY/D56+05MYTTk/YHIidkJRGgUlkLM=;
+X-UUID: a5644fb74971437b83d78ec8040aa0ba-20200707
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <hanks.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1563931511; Tue, 07 Jul 2020 03:05:16 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 7 Jul 2020 04:05:21 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 7 Jul 2020 19:05:14 +0800
+Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 7 Jul 2020 19:05:15 +0800
+Message-ID: <1594119917.20610.2.camel@mtkswgap22>
+Subject: Re: [PATCH v7 2/7] dt-bindings: pinctrl: add bindings for MediaTek
+ MT6779 SoC
+From: Hanks Chen <hanks.chen@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+Date: Tue, 7 Jul 2020 19:05:17 +0800
+In-Reply-To: <20200702205852.GA1675491@bogus>
+References: <1593694630-26604-1-git-send-email-hanks.chen@mediatek.com>
+ <1593694630-26604-4-git-send-email-hanks.chen@mediatek.com>
+ <20200702205852.GA1675491@bogus>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200707_063423_975696_EE62A5E7 
-X-CRM114-Status: GOOD (  15.96  )
+X-CRM114-CacheID: sfid-20200707_070536_937716_BEC767EE 
+X-CRM114-Status: GOOD (  27.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,136 +85,290 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Amit Kucheria <amit.kucheria@verdurent.com>, drinkcat@chromium.org,
- linux-pm@vger.kernel.org, Daniel Lezcano <daniel.lezcano@linaro.org>,
- Michael Kao <michael.kao@mediatek.com>, Eduardo Valentin <edubezval@gmail.com>,
- linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
- matthias.bgg@gmail.com, Zhang Rui <rui.zhang@intel.com>,
- Collabora Kernel ML <kernel@collabora.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, CC Hwang <cc.hwang@mediatek.com>,
+ wsd_upstream@mediatek.com, Stephen Boyd <sboyd@kernel.org>,
+ Andy Teng <andy.teng@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>,
+ Sean Wang <sean.wang@kernel.org>, Loda Chou <loda.chou@mediatek.com>,
+ linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ mtk01761 <wendell.lin@mediatek.com>, Michael
+ Turquette <mturquette@baylibre.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This reverts commit eb9aecd90d1a39601e91cd08b90d5fee51d321a6
+On Thu, 2020-07-02 at 14:58 -0600, Rob Herring wrote:
+> On Thu, Jul 02, 2020 at 08:57:05PM +0800, Hanks Chen wrote:
+> > From: Andy Teng <andy.teng@mediatek.com>
+> > 
+> > Add devicetree bindings for MediaTek MT6779 pinctrl driver.
+> > 
+> > Signed-off-by: Andy Teng <andy.teng@mediatek.com>
+> > ---
+> >  .../bindings/pinctrl/mediatek,mt6779-pinctrl.yaml  |  210 ++++++++++++++++++++
+> >  1 file changed, 210 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+> > new file mode 100644
+> > index 0000000..3a9fc4d
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+> > @@ -0,0 +1,210 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: https://urldefense.com/v3/__http://devicetree.org/schemas/pinctrl/mediatek,mt6779-pinctrl.yaml*__;Iw!!CTRNKA9wMg0ARbw!0474C4nwnSzS27r76why4qthf5712hrWflC57fdhSU7LzHZYpD7W0t5ZhJBgmnpF-A$ 
+> > +$schema: https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!0474C4nwnSzS27r76why4qthf5712hrWflC57fdhSU7LzHZYpD7W0t5ZhJAzv-fiRw$ 
+> > +
+> > +title: Mediatek MT6779 Pin Controller Device Tree Bindings
+> > +
+> > +maintainers:
+> > +  - Andy Teng <andy.teng@mediatek.com>
+> > +
+> > +description: |+
+> > +  The pin controller node should be the child of a syscon node with the
+> > +  required property:
+> > +  - compatible: "syscon"
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: mediatek,mt6779-pinctrl
+> > +
+> > +  reg:
+> > +    minItems: 9
+> > +    maxItems: 9
+> > +    description: |
+> > +      physical address base for gpio-related control registers.
+> 
+> Need to describe what each entry is.
+> 
+> items:
+>   - description: ...
+>   - description: ...
+>   - description: ...
+> 
 
-The above patch is supposed to fix a register index error on mt2701. It
-is not clear if the problem solved is a hang or just an invalid value
-returned, my guess is the second. The patch introduces, though, a new
-hang on MT8173 device making them unusable. So, seems reasonable, revert
-the patch because introduces a worst issue.
+Got it, I'll add description in next version.
+Thanks!
 
-The reason I send a revert instead of trying to fix the issue for MT8173
-is because the information needed to fix the issue is in the datasheet
-and is not public. So I am not really able to fix it.
+> > +
+> > +  reg-names:
+> > +    description: |
+> > +      GPIO base register names. The names are "gpio", "iocfg_rm",
+> > +      "iocfg_br", "iocfg_lm", "iocfg_lb", "iocfg_rt", "iocfg_lt",
+> > +      "iocfg_tl", "eint";
+> 
+> The names should be a schema.
+> 
+Got it, I'll fix it.
+> 
+> > +
+> > +  gpio-controller: true
+> > +
+> > +  "#gpio-cells":
+> > +    const: 2
+> > +    description: |
+> > +      Number of cells in GPIO specifier. Since the generic GPIO
+> > +      binding is used, the amount of cells must be specified as 2. See the below
+> > +      mentioned gpio binding representation for description of particular cells.
+> > +
+> > +  gpio-ranges:
+> > +    minItems: 1
+> > +    maxItems: 5
+> > +    description: |
+> > +      GPIO valid number range.
+> > +
+> > +  interrupt-controller: true
+> > +
+> > +  interrupts:
+> > +    maxItems: 1
+> > +    description: |
+> > +      Specifies the summary IRQ.
+> > +
+> > +  "#interrupt-cells":
+> > +    const: 2
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - reg-names
+> > +  - gpio-controller
+> > +  - "#gpio-cells"
+> > +  - gpio-ranges
+> > +  - interrupt-controller
+> > +  - interrupts
+> > +  - "#interrupt-cells"
+> > +
+> > +patternProperties:
+> > +  '-[0-9]*$':
+> > +    type: object
+> > +    patternProperties:
+> > +      '-pins*$':
+> > +        type: object
+> > +        description: |
+> > +          A pinctrl node should contain at least one subnodes representing the
+> > +          pinctrl groups available on the machine. Each subnode will list the
+> > +          pins it needs, and how they should be configured, with regard to muxer
+> > +          configuration, pullups, drive strength, input enable/disable and input schmitt.
+> 
+> Need to include the pinconf schema here.
 
-Fixes the following bug when CONFIG_MTK_THERMAL is set on MT8173
-devices.
+Got it, I'll add it in next version.
+> 
+> > +
+> > +        properties:
+> > +          pinmux:
+> > +            description:
+> > +              integer array, represents gpio pin number and mux setting.
+> > +              Supported pin number and mux varies for different SoCs, and are defined
+> > +              as macros in boot/dts/<soc>-pinfunc.h directly.
+> > +
+> > +          bias-disable:
+> > +            type: boolean
+> 
+> Don't redefine the type. Just indicate what common properties are used:
+> 
+> bias-disable: true
 
-[    2.222488] Unable to handle kernel paging request at virtual address ffff8000125f5001
-[    2.230421] Mem abort info:
-[    2.233207]   ESR = 0x96000021
-[    2.236261]   EC = 0x25: DABT (current EL), IL = 32 bits
-[    2.241571]   SET = 0, FnV = 0
-[    2.244623]   EA = 0, S1PTW = 0
-[    2.247762] Data abort info:
-[    2.250640]   ISV = 0, ISS = 0x00000021
-[    2.254473]   CM = 0, WnR = 0
-[    2.257544] swapper pgtable: 4k pages, 48-bit VAs, pgdp=0000000041850000
-[    2.264251] [ffff8000125f5001] pgd=000000013ffff003, pud=000000013fffe003, pmd=000000013fff9003, pte=006800001100b707
-[    2.274867] Internal error: Oops: 96000021 [#1] PREEMPT SMP
-[    2.280432] Modules linked in:
-[    2.283483] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.7.0-rc6+ #162
-[    2.289914] Hardware name: Google Elm (DT)
-[    2.294003] pstate: 20000005 (nzCv daif -PAN -UAO)
-[    2.298792] pc : mtk_read_temp+0xb8/0x1c8
-[    2.302793] lr : mtk_read_temp+0x7c/0x1c8
-[    2.306794] sp : ffff80001003b930
-[    2.310100] x29: ffff80001003b930 x28: 0000000000000000
-[    2.315404] x27: 0000000000000002 x26: ffff0000f9550b10
-[    2.320709] x25: ffff0000f9550a80 x24: 0000000000000090
-[    2.326014] x23: ffff80001003ba24 x22: 00000000610344c0
-[    2.331318] x21: 0000000000002710 x20: 00000000000001f4
-[    2.336622] x19: 0000000000030d40 x18: ffff800011742ec0
-[    2.341926] x17: 0000000000000001 x16: 0000000000000001
-[    2.347230] x15: ffffffffffffffff x14: ffffff0000000000
-[    2.352535] x13: ffffffffffffffff x12: 0000000000000028
-[    2.357839] x11: 0000000000000003 x10: ffff800011295ec8
-[    2.363143] x9 : 000000000000291b x8 : 0000000000000002
-[    2.368447] x7 : 00000000000000a8 x6 : 0000000000000004
-[    2.373751] x5 : 0000000000000000 x4 : ffff800011295cb0
-[    2.379055] x3 : 0000000000000002 x2 : ffff8000125f5001
-[    2.384359] x1 : 0000000000000001 x0 : ffff0000f9550a80
-[    2.389665] Call trace:
-[    2.392105]  mtk_read_temp+0xb8/0x1c8
-[    2.395760]  of_thermal_get_temp+0x2c/0x40
-[    2.399849]  thermal_zone_get_temp+0x78/0x160
-[    2.404198]  thermal_zone_device_update.part.0+0x3c/0x1f8
-[    2.409589]  thermal_zone_device_update+0x34/0x48
-[    2.414286]  of_thermal_set_mode+0x58/0x88
-[    2.418375]  thermal_zone_of_sensor_register+0x1a8/0x1d8
-[    2.423679]  devm_thermal_zone_of_sensor_register+0x64/0xb0
-[    2.429242]  mtk_thermal_probe+0x690/0x7d0
-[    2.433333]  platform_drv_probe+0x5c/0xb0
-[    2.437335]  really_probe+0xe4/0x448
-[    2.440901]  driver_probe_device+0xe8/0x140
-[    2.445077]  device_driver_attach+0x7c/0x88
-[    2.449252]  __driver_attach+0xac/0x178
-[    2.453082]  bus_for_each_dev+0x78/0xc8
-[    2.456909]  driver_attach+0x2c/0x38
-[    2.460476]  bus_add_driver+0x14c/0x230
-[    2.464304]  driver_register+0x6c/0x128
-[    2.468131]  __platform_driver_register+0x50/0x60
-[    2.472831]  mtk_thermal_driver_init+0x24/0x30
-[    2.477268]  do_one_initcall+0x50/0x298
-[    2.481098]  kernel_init_freeable+0x1ec/0x264
-[    2.485450]  kernel_init+0x1c/0x110
-[    2.488931]  ret_from_fork+0x10/0x1c
-[    2.492502] Code: f9401081 f9400402 b8a67821 8b010042 (b9400042)
-[    2.498599] ---[ end trace e43e3105ed27dc99 ]---
-[    2.503367] Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b
-[    2.511020] SMP: stopping secondary CPUs
-[    2.514941] Kernel Offset: disabled
-[    2.518421] CPU features: 0x090002,25006005
-[    2.522595] Memory Limit: none
-[    2.525644] ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b ]--
+Got it, I'll fix it in next version.
+> 
+> > +
+> > +          bias-pull-up:
+> > +            type: boolean
+> > +
+> > +          bias-pull-down:
+> > +            type: boolean
+> > +
+> > +          input-enable:
+> > +            type: boolean
+> > +
+> > +          input-disable:
+> > +            type: boolean
+> > +
+> > +          output-low:
+> > +            type: boolean
+> > +
+> > +          output-high:
+> > +            type: boolean
+> > +
+> > +          input-schmitt-enable:
+> > +            type: boolean
+> > +
+> > +          input-schmitt-disable:
+> > +            type: boolean
+> > +
+> > +          mediatek,pull-up-adv:
+> > +            description: |
+> > +              Pull up setings for 2 pull resistors, R0 and R1. User can
+> > +              configure those special pins. Valid arguments are described as below:
+> > +              0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
+> > +              1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
+> > +              2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
+> > +              3: (R1, R0) = (1, 1) which means R1 enabled and R0 enabled.
+> > +            allOf:
+> 
+> You can drop the allOf now.
 
-Cc: Michael Kao <michael.kao@mediatek.com>
-Fixes: eb9aecd90d1a ("thermal: mediatek: fix register index error")
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
+Got it, I'll drop it in next version.
+Thanks
 
- drivers/thermal/mtk_thermal.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-index 6b7ef1993d7e..42c9cd0e5f77 100644
---- a/drivers/thermal/mtk_thermal.c
-+++ b/drivers/thermal/mtk_thermal.c
-@@ -594,8 +594,7 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
- 	u32 raw;
- 
- 	for (i = 0; i < conf->bank_data[bank->id].num_sensors; i++) {
--		raw = readl(mt->thermal_base +
--			    conf->msr[conf->bank_data[bank->id].sensors[i]]);
-+		raw = readl(mt->thermal_base + conf->msr[i]);
- 
- 		temp = raw_to_mcelsius(mt,
- 				       conf->bank_data[bank->id].sensors[i],
-@@ -736,8 +735,7 @@ static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
- 
- 	for (i = 0; i < conf->bank_data[num].num_sensors; i++)
- 		writel(conf->sensor_mux_values[conf->bank_data[num].sensors[i]],
--		       mt->thermal_base +
--		       conf->adcpnp[conf->bank_data[num].sensors[i]]);
-+		       mt->thermal_base + conf->adcpnp[i]);
- 
- 	writel((1 << conf->bank_data[num].num_sensors) - 1,
- 	       controller_base + TEMP_MONCTL0);
--- 
-2.27.0
-
+> 
+> > +              - $ref: /schemas/types.yaml#/definitions/uint32
+> > +              - enum: [0, 1, 2, 3]
+> > +
+> > +          mediatek,pull-down-adv:
+> > +            description: |
+> > +              Pull down settings for 2 pull resistors, R0 and R1. User can
+> > +              configure those special pins. Valid arguments are described as below:
+> > +              0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
+> > +              1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
+> > +              2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
+> > +              3: (R1, R0) = (1, 1) which means R1 enabled and R0 enabled.
+> > +            allOf:
+> > +              - $ref: /schemas/types.yaml#/definitions/uint32
+> > +              - enum: [0, 1, 2, 3]
+> > +
+> > +          drive-strength:
+> > +            description: |
+> > +              Selects the drive strength for the specified pins in mA.
+> > +            allOf:
+> > +              - $ref: /schemas/types.yaml#/definitions/uint32
+> > +              - enum: [2, 4, 6, 8, 10, 12, 14, 16]
+> > +
+> > +        required:
+> > +          - pinmux
+> > +
+> > +        additionalProperties: false
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/interrupt-controller/irq.h>
+> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +    #include <dt-bindings/pinctrl/mt6779-pinfunc.h>
+> > +
+> > +    pio: pinctrl@10005000 {
+> > +        compatible = "mediatek,mt6779-pinctrl";
+> > +        reg = <0 0x10005000 0 0x1000>,
+> > +            <0 0x11c20000 0 0x1000>,
+> > +            <0 0x11d10000 0 0x1000>,
+> > +            <0 0x11e20000 0 0x1000>,
+> > +            <0 0x11e70000 0 0x1000>,
+> > +            <0 0x11ea0000 0 0x1000>,
+> > +            <0 0x11f20000 0 0x1000>,
+> > +            <0 0x11f30000 0 0x1000>,
+> > +            <0 0x1000b000 0 0x1000>;
+> > +        reg-names = "gpio", "iocfg_rm",
+> > +          "iocfg_br", "iocfg_lm",
+> > +          "iocfg_lb", "iocfg_rt",
+> > +          "iocfg_lt", "iocfg_tl",
+> > +          "eint";
+> > +        gpio-controller;
+> > +        #gpio-cells = <2>;
+> > +        gpio-ranges = <&pio 0 0 210>;
+> > +        interrupt-controller;
+> > +        #interrupt-cells = <2>;
+> > +        interrupts = <GIC_SPI 204 IRQ_TYPE_LEVEL_HIGH>;
+> > +
+> > +        mmc0_pins_default: mmc0-0 {
+> > +            cmd-dat-pins {
+> > +                pinmux = <PINMUX_GPIO168__FUNC_MSDC0_DAT0>,
+> > +                    <PINMUX_GPIO172__FUNC_MSDC0_DAT1>,
+> > +                    <PINMUX_GPIO169__FUNC_MSDC0_DAT2>,
+> > +                    <PINMUX_GPIO177__FUNC_MSDC0_DAT3>,
+> > +                    <PINMUX_GPIO170__FUNC_MSDC0_DAT4>,
+> > +                    <PINMUX_GPIO173__FUNC_MSDC0_DAT5>,
+> > +                    <PINMUX_GPIO171__FUNC_MSDC0_DAT6>,
+> > +                    <PINMUX_GPIO174__FUNC_MSDC0_DAT7>,
+> > +                    <PINMUX_GPIO167__FUNC_MSDC0_CMD>;
+> > +                input-enable;
+> > +                mediatek,pull-up-adv = <1>;
+> > +            };
+> > +            clk-pins {
+> > +                pinmux = <PINMUX_GPIO176__FUNC_MSDC0_CLK>;
+> > +                mediatek,pull-down-adv = <2>;
+> > +            };
+> > +            rst-pins {
+> > +                pinmux = <PINMUX_GPIO178__FUNC_MSDC0_RSTB>;
+> > +                mediatek,pull-up-adv = <0>;
+> > +            };
+> > +        };
+> > +    };
+> > +
+> > +    mmc0 {
+> > +       pinctrl-0 = <&mmc0_pins_default>;
+> > +       pinctrl-names = "default";
+> > +    };
+> > -- 
+> > 1.7.9.5
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> https://urldefense.com/v3/__http://lists.infradead.org/mailman/listinfo/linux-mediatek__;!!CTRNKA9wMg0ARbw!0474C4nwnSzS27r76why4qthf5712hrWflC57fdhSU7LzHZYpD7W0t5ZhJDOADfrzw$ 
 
 _______________________________________________
 Linux-mediatek mailing list
