@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1253AC433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2020 11:34:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6B0AEC433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2020 11:36:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D179C20738
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2020 11:34:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3DEB2206F6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2020 11:36:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bLBuTTgs";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="dRxCuE1+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D179C20738
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nAlLvja3";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="EEgzrmFO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3DEB2206F6
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,60 +26,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ospq8gVp9ogrfKWeiBntK78gq2jaSWnYQ8/IKcbYh04=; b=bLBuTTgs31RKHJfAErONhnPjq
-	MSRMDSBm/ytDlaeqgCEo1gYbpLfOg46dzGta2p/0LGpt8owA3ZnMQcjiQ0RjGQy519HqgYFpBb7EI
-	R0lGUIvzYKde5mjSXUzU6d9SkQv00Xf1vSKUBY1yK7pyM9idppFEJjo/SeJApDkRqvRIW420he6uj
-	/lKWdq7Xwvm5rBoilWCj4vGYdPHW8BNczTv7wlCUyvI8Mjvf2WnpYf5yVKf+//mtX7DhKqa/MRpjE
-	5H3Rl0LkxYNd3X2sFTGz5/jP9J/56HjanF3OwsMUuSU358nbyNhrSSl32sGN1zP/IARPcPi3oFYlY
-	3QNQcekCA==;
+	 bh=4gQjlL/gaaDeo4OujBfyDHA6vVQdZUJcC9v4SH59Pyk=; b=nAlLvja3FeyRW69zImBzk5B6R
+	LCx0nuLJA7bL7kpUt+PE2G9dGDRr5IX7FbgZNIkFg+cNcsXuHfwF4k9pTcrdifIK7ePNjTp44R1LS
+	3Up1sKw1tCVJ3ka4JE/8RpqayWuUTOjLQk6fvpDJ2EuceqCJekzjblAUsC29tV6gEQFts2rmMqnC3
+	DQac5mBS0GtggYri3tA26KguIspbXFBdP67VPY6ixau3jeIyEy5KFZig8MQSUukMQZ4Ejop/ZrPO/
+	/3dLU1pI1qa0olyWlLAlOX3f4f+RMyuAejBNztiMAVS/ITuj/U+BpxScC2JCZS5h1cpCOTBr+tz7J
+	w1L1yq3bg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jslrj-00063p-IG; Tue, 07 Jul 2020 11:34:23 +0000
+	id 1jsltX-0006aN-B9; Tue, 07 Jul 2020 11:36:15 +0000
 Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jslrh-000633-JM
- for linux-mediatek@lists.infradead.org; Tue, 07 Jul 2020 11:34:22 +0000
-Received: by mail-lf1-x144.google.com with SMTP id t9so24494670lfl.5
- for <linux-mediatek@lists.infradead.org>; Tue, 07 Jul 2020 04:34:21 -0700 (PDT)
+ id 1jsltV-0006Yw-4a
+ for linux-mediatek@lists.infradead.org; Tue, 07 Jul 2020 11:36:14 +0000
+Received: by mail-lf1-x144.google.com with SMTP id s16so19041739lfp.12
+ for <linux-mediatek@lists.infradead.org>; Tue, 07 Jul 2020 04:36:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ZWFCdEUgk5dfzDM3fhNe+v2tWxrsCvDUWA3/QI1yjsA=;
- b=dRxCuE1+l4lJyQ2YbJAaOdam3ofJb8lgOtEdWezxKOyRRyDMxmvt7gEf0x6w0E8JX6
- zfj7ZoIxtLjX0RoOMTlhhp7h2JjwzRPmSlFeghxpjgBnoebMvd8IizTdR+RZTz7Tb7e8
- GWLtSt2RMzfl/2xH9EXD3CfW9B5mBTWTW6Qi28YrmmDUD8WfYzAp+GMW/NX1sf2jcim9
- p9TV40K9JWSp95sXcbLXnhApLLu0A0ABHN7alxdXkM1r9I/97RVRvjvbSl0rwCFDnrds
- MgVQ5wl2VKBhy5HWTXFp0joV93UB52d4AMRaTt7+yi4p9Oni+yYVsyZGW1Ys135suUi7
- NP0w==
+ :cc; bh=BaUdPMwTbym0/FOb53irCXsw858iJMpd+U7fSCxbrZw=;
+ b=EEgzrmFOPBRJPWSIHRYyePa9lAGoPCoxXqN3mLLCIQDZuRhWVmoWdIo9koYco7oq32
+ vFLlttQN2LTQr2685xKsPGTcpR+SI/aGR9ptBAspLpMDLtnyIVcelAgEmNvUgUNT3Aw2
+ 5gDlCgfPKeKuRHTfhOvblO0quMu/M2GIaqhvEdyA4m0TtDrgBd9nLiKs+XRoNuQIxx5r
+ xFw4hBR6ouQOf264O3KjYNKNtoiN1ZXqrS8VAVcqrL9tKo7cEpwCl77SdvW1KJAEuA12
+ ZXDeXEgnbXWq7SkuqBrrVcROSIOaA257MsCDJHIFHBVIM8DlWdeE3/nbJvAeiXXL5aXt
+ fYRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=ZWFCdEUgk5dfzDM3fhNe+v2tWxrsCvDUWA3/QI1yjsA=;
- b=atKDuclywPnhvRLS3hP9kV+9qvz9iDchdP0QoozmnxMBQ/HW+nYx8VX36gz594xvjU
- 92tghWEvMYNYNJGcCw4/iDpRU/LETyiDhXHdwoUY4Yvx7sLdThR1aerlluBgV7hputUx
- 5lBAbuWboy9OjfqFIXJktvqmjX3EAB1Pn5zCpfkTtt832pC0gDKNUkRQFU72g7vcY1Wf
- kJVgPbDFLXgjygztsocpY4UfZGro6ZHrF0eOioMcq7G47BgIciLnGO2qDlDMPPW7pUi8
- 6EHApVOj285e0en32DU5ARXKb8ng/tGyVZIAT+U+aRmMgDFPf3dOUdfpiwakcYrltJeY
- GXLw==
-X-Gm-Message-State: AOAM532OtFQcsiNtmg3f9tUYt6S4ZLAvXgYz+Qhp7Zzyp/gX1IQDrh9m
- mOZQSKQV0jH5svpQ39satyO1ddOSkgoXKTBFj94RDP72eR4=
-X-Google-Smtp-Source: ABdhPJyIiIuyUQqHN3zlh6wrnfN64GqNkLKnTcdf/MuoVjXEMgRphXgXP3Wlti/RgXHlE/J8tuuX/mMRGR2kcN3VA8g=
-X-Received: by 2002:a19:745:: with SMTP id 66mr32821101lfh.77.1594121660274;
- Tue, 07 Jul 2020 04:34:20 -0700 (PDT)
+ bh=BaUdPMwTbym0/FOb53irCXsw858iJMpd+U7fSCxbrZw=;
+ b=lEBtF8k59OtOYTyJ58l3RCCKmJvp/ymi/5h80sJwH6MPqP7QOh0rU3lEd4A/ctHo0f
+ kf5gj/5gt3SRyLbGLXuJDK8sty+A2wGcW3JbhFWDyKjDnwwKLNVIosKrzafPFy5yr+9t
+ 6uFBU+XISYm9+nwHfZXy0Q6Fsz/C7U7QtnE6EVqrdkw7/GV+J8xjhYVDh2tMW/BvS1lx
+ MFUzsqwO64Mm85IdFihk/plADG/5i+HXw+es5UxQvNKCZezfhQfpIWvnE4ljCa3/kyQp
+ VOMzAN33NCvDShmt7RgFaf8/TwQhYP8VLVX3yi2FfEju8VtCxzDJr/veLTIpEtnftTyE
+ 48nA==
+X-Gm-Message-State: AOAM532iGW1Xl4x+5F8+zF+n93+VyKboVWkekqQgnAiYexqHFm57LaGH
+ ZHp4ySovaI5KMBmmLY3y7pWf+6v5bvR7PzgNezA9/Q==
+X-Google-Smtp-Source: ABdhPJwURK8xxItk20LIQyik7OCxh3Na7DKcSEzSy2t02n+xFYxkh4Kdd3MsRtyCZLblZdRY6s0fjloV3UCAX3MmsHk=
+X-Received: by 2002:a19:7407:: with SMTP id v7mr31140846lfe.4.1594121771982;
+ Tue, 07 Jul 2020 04:36:11 -0700 (PDT)
 MIME-Version: 1.0
 References: <1592480018-3340-1-git-send-email-hanks.chen@mediatek.com>
- <1592480018-3340-4-git-send-email-hanks.chen@mediatek.com>
- <CACRpkdavqjcma8A1y9Sh=WWLu-n0+mQOhyNw2dHenA8ZnQkvgg@mail.gmail.com>
-In-Reply-To: <CACRpkdavqjcma8A1y9Sh=WWLu-n0+mQOhyNw2dHenA8ZnQkvgg@mail.gmail.com>
+ <1592480018-3340-6-git-send-email-hanks.chen@mediatek.com>
+In-Reply-To: <1592480018-3340-6-git-send-email-hanks.chen@mediatek.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 7 Jul 2020 13:34:09 +0200
-Message-ID: <CACRpkdb5TyictD3j_PE5JtBJmxX87Bk04YkxF1ErsbHwO4TSOg@mail.gmail.com>
-Subject: Re: [PATCH v6 3/7] pinctrl: mediatek: avoid virtual gpio trying to
- set reg
-To: Hanks Chen <hanks.chen@mediatek.com>, Sean Wang <sean.wang@kernel.org>
+Date: Tue, 7 Jul 2020 13:36:01 +0200
+Message-ID: <CACRpkdZc+PVGOXwba=ocs-VBh-sJT_1dpEVSxnjdwbmM_d0LFw@mail.gmail.com>
+Subject: Re: [PATCH v6 5/7] pinctrl: mediatek: add mt6779 eint support
+To: Hanks Chen <hanks.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200707_073421_661019_0111908A 
-X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-CacheID: sfid-20200707_073613_234646_FD4ED6D1 
+X-CRM114-Status: UNSURE (   6.18  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -96,7 +94,7 @@ Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
  <devicetree@vger.kernel.org>, CC Hwang <cc.hwang@mediatek.com>,
  wsd_upstream@mediatek.com, Stephen Boyd <sboyd@kernel.org>,
  Andy Teng <andy.teng@mediatek.com>,
- Michael Turquette <mturquette@baylibre.com>,
+ Michael Turquette <mturquette@baylibre.com>, Sean Wang <sean.wang@kernel.org>,
  Loda Chou <loda.chou@mediatek.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
@@ -111,19 +109,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 7, 2020 at 1:31 PM Linus Walleij <linus.walleij@linaro.org> wrote:
-> On Thu, Jun 18, 2020 at 1:34 PM Hanks Chen <hanks.chen@mediatek.com> wrote:
->
-> > for virtual gpios, they should not do reg setting and
-> > should behave as expected for eint function.
-> >
-> > Signed-off-by: Hanks Chen <hanks.chen@mediatek.com>
-> > Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
->
-> Sean if you're OK with this patch I can just apply it separately.
+On Thu, Jun 18, 2020 at 1:34 PM Hanks Chen <hanks.chen@mediatek.com> wrote:
 
-Ah nevermind since the next patch has your ACK I just applied this
-too since it's a dependency. Yell if this is wrong.
+> add driver setting to support mt6779 eint
+>
+> Acked-by: Sean Wang <sean.wang@kernel.org>
+> Signed-off-by: Hanks Chen <hanks.chen@mediatek.com>
+> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+
+Patch applied.
 
 Yours,
 Linus Walleij
