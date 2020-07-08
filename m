@@ -2,22 +2,23 @@ Return-Path: <SRS0=VCtr=AT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 96EABC433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2020 11:16:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A58A2C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2020 12:38:17 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 55FD420739
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2020 11:16:37 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6DCAC206E2
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2020 12:38:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NCibzSs3";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Rs2Sa1ln"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55FD420739
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lQZ95T6V";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="BUVoyvYm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6DCAC206E2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -25,71 +26,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=x6blvYy4VsZWd4s6A8rxG6JYSeKCLTre92nFSAFhdMk=; b=NCibzSs3dEMyePopesoUp17yH
-	qbgRAJBlKLSWrkshM5fSPF6FT3CBQZ46x0JOtNeNF+vX2NjnpBkZisy1QGLegFNmNKa5zgXSKmcaq
-	DcBXVjmRjROJKqn3xfBnrDf5712qeR0V+PCrkWku2Semhdi2LD6MHyP32bQICWJ5Jnd/gTE8logks
-	IXsdCJssE40m8qWmP1UhZrqIqly0pnQqY1VxLrtEBRRfK81ieskchgPhaJtYfM041Xdwir0Rb1Avf
-	0pQBO+Pt1eom5n84qaRt0rIRYsg1SJXjYHXh17H5KRE4DL4wVGEO9wNs4LsL3s0q02cqAyZfLJB/+
-	d+50XKMlQ==;
+	 bh=tvs3tU3HTOeOe3sZYcKVjEaaUE2MdD5mokaJV9zfQRI=; b=lQZ95T6VyP1PWFkEaInx2QKbd
+	rlQKvW14uqFUzY4E4t6534HXLiIk0Bcj6K/7H2OvsHX+dQf1pqjAqwFvoIvik4HzfIEKPuxzjnBcZ
+	gpwy65GwBBMWBYv1615BLR9kEK4HffiPeaZh+4whoOO5XwqrA85eTTuV/LNViF5+pOiS+lh1W6PMA
+	EywhRx6SCykWVxUO119MRF/G8Hb8pu3jMSWTKdRh7eY13nVxEx/8JRADiVvh/9GrgCVNb4wqGDnQx
+	n3bqxtiBI7C5aBfDMc21PWWdXOTesbIq6sMN0ugfp0aluS5ZNWaOpQnoglCKScXYwgIm9EljtJ73J
+	XxFqWQwdg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jt83s-0007cv-Po; Wed, 08 Jul 2020 11:16:24 +0000
-Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543])
+	id 1jt9L0-0000y8-6Y; Wed, 08 Jul 2020 12:38:10 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jt83q-0007b4-1N
- for linux-mediatek@lists.infradead.org; Wed, 08 Jul 2020 11:16:23 +0000
-Received: by mail-ed1-x543.google.com with SMTP id b15so41349830edy.7
- for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2020 04:16:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ id 1jt9Kw-0000wG-77
+ for linux-mediatek@lists.infradead.org; Wed, 08 Jul 2020 12:38:07 +0000
+Received: by mail-pg1-x541.google.com with SMTP id g67so20718843pgc.8
+ for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2020 05:38:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=CdwpVavIhJUD7vXYln0/fSWFQcR1sKy4c4EKyNGt1KE=;
- b=Rs2Sa1lnkQKChXkd7xhZlGwreJr9QaH1p6239KxXihfwiVyXNZOgAUdWxiHMMUvt55
- CeVSJTZqvi6HXZ2/FJrWrskIMQsbz1GnKwLHLfKDMNUay9vMlRkDfBLpUssylt6OzaoF
- riqSgNx6iqbXp3y7TtU5UeG82csNA2jr4Gua0=
+ :cc; bh=kee2YtmMHgv7A7dyVw1lKxR+tADNMGpw4FHY05ErWKs=;
+ b=BUVoyvYmTz8ZDtfycOlc63OWOr6QOq3OdXVIpgIkP+lyMsbeJX2hVgXFqFU9Wl5VBL
+ m0WSTsLYb2NG4ZWkjdfb6HfdcgqQlX2dzr8v1H8Yd/Qqc0uUYY2M92OoEtQg3WlJ+ACF
+ 9NyCwxG1S6ozatSQD7Xh0QCwedEpb1CJgNG8WBPReVBIme9WBVscmmELcGThcaAQQTq5
+ CI/SSMcM7QRqukR86O++70R0g4b5EDcdaEMfnBYT4RbP8KctYPJDkLrHDLAdfSeK0ppr
+ xZBR5VQengbMd0Nb1ekdY/vlWEDbbhEF/ZfG8SiFiWDQ+Ar5ktIro3/F+LiDC32dtukA
+ 9BZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=CdwpVavIhJUD7vXYln0/fSWFQcR1sKy4c4EKyNGt1KE=;
- b=VAtpvbiDZdnC0P2FUQcDrNReTdPJVSwoojqF5eIJyEiFPxprI9kLN5wjH/RtQDhWoT
- juCM3dN9Ih4qvWR/VRWhIYYU6mMdBNQe3O9BjCYn4uWj401g92i/gf8Ed5ADRacETjjS
- aw9gFglVeTzUDZULGp+lGJbVOhwl8gkkGUO89njir0yxBiCaxBe6y+NcxbCYSBSnYXOV
- XrrXfttzoMA+KUl0MGbmStz5w3TaTdWfxj2f4A79lsIVOPWgKzmbJqTn1aTXCpvG35xU
- VOX31UxPytn43uIagT7eitdSb47GUqmM+DycwY1ahWqmTS/mnQvHONOd9z2jd6JB009g
- XkNA==
-X-Gm-Message-State: AOAM531O9xX4YKHQGkJerK2zLlk/+ZIxGmdcTG4jSAv9vUJG7lVeT/FQ
- zKanxl9y+QkhOyCtpD9TfHQNAk6oKKIZQA==
-X-Google-Smtp-Source: ABdhPJyW8/ojwncLzGoxSs2QkJe5EzzCzPG5XTsv0mLMxdtxJU6b2d9HuFwikKviEpGQ2YIGvb5SZQ==
-X-Received: by 2002:a50:d9cb:: with SMTP id x11mr63588265edj.93.1594206979322; 
- Wed, 08 Jul 2020 04:16:19 -0700 (PDT)
-Received: from mail-wr1-f45.google.com (mail-wr1-f45.google.com.
- [209.85.221.45])
- by smtp.gmail.com with ESMTPSA id j64sm9645456edd.61.2020.07.08.04.16.18
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Jul 2020 04:16:18 -0700 (PDT)
-Received: by mail-wr1-f45.google.com with SMTP id q5so48460479wru.6
- for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2020 04:16:18 -0700 (PDT)
-X-Received: by 2002:adf:f34f:: with SMTP id e15mr58865505wrp.415.1594206977532; 
- Wed, 08 Jul 2020 04:16:17 -0700 (PDT)
+ bh=kee2YtmMHgv7A7dyVw1lKxR+tADNMGpw4FHY05ErWKs=;
+ b=t0xtBAZrm5Qzx31PaIRuvgpV+rlUeNMQQMr2S1WzyDXCErkIZIcU987WZ5e+8AlWUw
+ 5bJtGFPM8Jlfu8l8D7BMj1d78wJicUbv0tzfCdNT51RA8U6xjEjDmlebahLZGDpSIajF
+ IzLIBBNgv/pkP5Im+s+i/4ErTey5eccWs74OV+iOsRDXvyMKSSug2qXsW7PSk+fSLWuB
+ fMhq4R1HM81fPiI3Yva1En3xd2jcbgGeLaTKVXA5aSOBbGhGC9eG5Z5Sy3RmNjoVf4W1
+ OyNveB/nVo+QEUyLnlzhMSYGnll40J9A4teM2mKqXf6oU9p757lUm4+gP3vdUrI1rGnc
+ JRGw==
+X-Gm-Message-State: AOAM5328VKDY4TPj4gXm0Rz9ZrEghoaZIqaVpRBYmMfG3HlI4GyOHA2E
+ QiIS9v6DPr7pGLfaL2eedOW4mXbYTyYnBguFSfnEgg==
+X-Google-Smtp-Source: ABdhPJyuLR6QeVaXP6OjKnIrKrqfE0bWlnsaLu7hVpXkSQ6tvUnLVglr7za275US/hzu1ZOvqBp0jWwLbfx/vTSY8U8=
+X-Received: by 2002:a62:52cd:: with SMTP id
+ g196mr53579108pfb.178.1594211880888; 
+ Wed, 08 Jul 2020 05:38:00 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200604090553.10861-1-xia.jiang@mediatek.com>
- <20200604090553.10861-20-xia.jiang@mediatek.com>
- <20200611184640.GC8694@chromium.org>
- <1593485781.20112.43.camel@mhfsdcap03> <20200630165301.GA1212092@chromium.org>
- <1594104314.4473.24.camel@mhfsdcap03>
- <CAAFQd5CONkGrESiq2hZ9RWZK8FU0av4LjEQi4bc_c5Nu+sRPEA@mail.gmail.com>
- <1594192410.14412.11.camel@mhfsdcap03>
-In-Reply-To: <1594192410.14412.11.camel@mhfsdcap03>
-From: Tomasz Figa <tfiga@chromium.org>
-Date: Wed, 8 Jul 2020 13:16:06 +0200
-X-Gmail-Original-Message-ID: <CAAFQd5DeV9uEnhKRa9-fcyDK53Zn2meKUg5Nwm3QORz+ZhGpAQ@mail.gmail.com>
-Message-ID: <CAAFQd5DeV9uEnhKRa9-fcyDK53Zn2meKUg5Nwm3QORz+ZhGpAQ@mail.gmail.com>
-Subject: Re: [PATCH RESEND v9 18/18] media: platform: Add jpeg enc feature
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+References: <20200706115039.16750-1-walter-zh.wu@mediatek.com>
+In-Reply-To: <20200706115039.16750-1-walter-zh.wu@mediatek.com>
+From: Andrey Konovalov <andreyknvl@google.com>
+Date: Wed, 8 Jul 2020 14:37:49 +0200
+Message-ID: <CAAeHK+zQDeo5K8D9QTQvdkp4H36s_wPPcGDizJ-ZDD0YAtLeRw@mail.gmail.com>
+Subject: Re: [PATCH v3] kasan: fix KASAN unit tests for tag-based KASAN
+To: Walter Wu <walter-zh.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200708_071622_149514_310A9E70 
-X-CRM114-Status: GOOD (  42.35  )
+X-CRM114-CacheID: sfid-20200708_083806_278623_3FDB946F 
+X-CRM114-Status: GOOD (  23.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,298 +89,215 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nicolas Boichat <drinkcat@chromium.org>,
- linux-devicetree <devicetree@vger.kernel.org>, mojahsu@chromium.org,
- srv_heupstream <srv_heupstream@mediatek.com>,
- Rick Chang <rick.chang@mediatek.com>,
- Sergey Senozhatsky <senozhatsky@chromium.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?TWFvZ3VhbmcgTWVuZyAo5a2f5q+b5bm/KQ==?= <maoguang.meng@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sj Huang <sj.huang@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Xia Jiang <xia.jiang@mediatek.com>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
- Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: wsd_upstream <wsd_upstream@mediatek.com>,
+ linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>,
+ kasan-dev <kasan-dev@googlegroups.com>,
+ Linux Memory Management List <linux-mm@kvack.org>,
+ Alexander Potapenko <glider@google.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Andrey Ryabinin <aryabinin@virtuozzo.com>,
+ Andrew Morton <akpm@linux-foundation.org>, Dmitry Vyukov <dvyukov@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 8, 2020 at 9:14 AM Xia Jiang <xia.jiang@mediatek.com> wrote:
+On Mon, Jul 6, 2020 at 1:50 PM Walter Wu <walter-zh.wu@mediatek.com> wrote:
 >
-> On Tue, 2020-07-07 at 15:35 +0200, Tomasz Figa wrote:
-> > On Tue, Jul 7, 2020 at 8:47 AM Xia Jiang <xia.jiang@mediatek.com> wrote:
-> > >
-> > > On Tue, 2020-06-30 at 16:53 +0000, Tomasz Figa wrote:
-> > > > Hi Xia,
-> > > >
-> > > > On Tue, Jun 30, 2020 at 10:56:21AM +0800, Xia Jiang wrote:
-> > > > > On Thu, 2020-06-11 at 18:46 +0000, Tomasz Figa wrote:
-> > > > > > Hi Xia,
-> > > > > >
-> > > > > > On Thu, Jun 04, 2020 at 05:05:53PM +0800, Xia Jiang wrote:
-> > > > [snip]
-> > > > > > > +static void mtk_jpeg_enc_device_run(void *priv)
-> > > > > > > +{
-> > > > > > > +       struct mtk_jpeg_ctx *ctx = priv;
-> > > > > > > +       struct mtk_jpeg_dev *jpeg = ctx->jpeg;
-> > > > > > > +       struct vb2_v4l2_buffer *src_buf, *dst_buf;
-> > > > > > > +       enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
-> > > > > > > +       unsigned long flags;
-> > > > > > > +       struct mtk_jpeg_src_buf *jpeg_src_buf;
-> > > > > > > +       struct mtk_jpeg_enc_bs enc_bs;
-> > > > > > > +       int ret;
-> > > > > > > +
-> > > > > > > +       src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
-> > > > > > > +       dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-> > > > > > > +       jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
-> > > > > > > +
-> > > > > > > +       ret = pm_runtime_get_sync(jpeg->dev);
-> > > > > > > +       if (ret < 0)
-> > > > > > > +               goto enc_end;
-> > > > > > > +
-> > > > > > > +       spin_lock_irqsave(&jpeg->hw_lock, flags);
-> > > > > > > +
-> > > > > > > +       /*
-> > > > > > > +        * Resetting the hardware every frame is to ensure that all the
-> > > > > > > +        * registers are cleared. This is a hardware requirement.
-> > > > > > > +        */
-> > > > > > > +       mtk_jpeg_enc_reset(jpeg->reg_base);
-> > > > > > > +
-> > > > > > > +       mtk_jpeg_set_enc_dst(ctx, jpeg->reg_base, &dst_buf->vb2_buf, &enc_bs);
-> > > > > > > +       mtk_jpeg_set_enc_src(ctx, jpeg->reg_base, &src_buf->vb2_buf);
-> > > > > > > +       mtk_jpeg_enc_set_config(jpeg->reg_base, ctx->out_q.fmt->hw_format,
-> > > > > > > +                               ctx->enable_exif, ctx->enc_quality,
-> > > > > > > +                               ctx->restart_interval);
-> > > > > > > +       mtk_jpeg_enc_start(jpeg->reg_base);
-> > > > > >
-> > > > > > Could we just move the above 5 functions into one function inside
-> > > > > > mtk_jpeg_enc_hw.c that takes mtk_jpeg_dev pointer as its argument, let's
-> > > > > > say mtk_jpeg_enc_hw_run() and simply program all the data to the registers
-> > > > > > directly, without the extra level of abstractions?
-> > > > > I can move the 5 functions into one function(mtk_jpeg_enc_hw_run()), but
-> > > > > this function will be very long, because it contains computation code
-> > > > > such as setting dst addr, blk_num, quality.
-> > > > > In v4, you have adviced the following architecture:
-> > > > > How about the following model, as used by many other drivers:
-> > > > >
-> > > > > mtk_jpeg_enc_set_src()
-> > > > > {
-> > > > >         // Set any registers related to source format and buffer
-> > > > > }
-> > > > >
-> > > > > mtk_jpeg_enc_set_dst()
-> > > > > {
-> > > > >         // Set any registers related to destination format and buffer
-> > > > > }
-> > > > >
-> > > > > mtk_jpeg_enc_set_params()
-> > > > > {
-> > > > >         // Set any registers related to additional encoding parameters
-> > > > > }
-> > > > >
-> > > > > mtk_jpeg_enc_device_run(enc, ctx)
-> > > > > {
-> > > > >         mtk_jpeg_enc_set_src(enc, src_buf, src_fmt);
-> > > > >         mtk_jpeg_enc_set_dst(enc, dst_buf, dst_fmt);
-> > > > >         mtk_jpeg_enc_set_params(enc, ctx);
-> > > > >         // Trigger the hardware run
-> > > > > }
-> > > > > I think that this architecture is more clear(mtk_jpeg_enc_set_config is
-> > > > > equivalent to mtk_jpeg_enc_set_params).
-> > > > > Should I keep the original architecture or move 5 functions into
-> > > > > mtk_jpeg_enc_hw_run?
-> > > >
-> > > > Sounds good to me.
-> > > >
-> > > > My biggest issue with the code that it ends up introducing one more
-> > > > level of abstraction, but with the approach you suggested, the arguments
-> > > > just accept standard structs, which avoids that problem.
-> > > >
-> > > > [snip]
-> > > > > > > +
-> > > > > > > +       ctx->fh.ctrl_handler = &ctx->ctrl_hdl;
-> > > > > > > +       ctx->colorspace = V4L2_COLORSPACE_JPEG,
-> > > > > > > +       ctx->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
-> > > > > > > +       ctx->quantization = V4L2_QUANTIZATION_DEFAULT;
-> > > > > > > +       ctx->xfer_func = V4L2_XFER_FUNC_DEFAULT;
-> > > > > >
-> > > > > > Since we already have a v4l2_pix_format_mplane struct which has fields for
-> > > > > > the above 4 values, could we just store them there?
-> > > > > >
-> > > > > > Also, I don't see this driver handling the colorspaces in any way, but it
-> > > > > > seems to allow changing them from the userspace. This is incorrect, because
-> > > > > > the userspace has no way to know that the colorspace is not handled.
-> > > > > > Instead, the try_fmt implementation should always override the
-> > > > > > userspace-provided colorspace configuration with the ones that the driver
-> > > > > > assumes.
-> > > > > >
-> > > > > > > +       pix_mp->width = MTK_JPEG_MIN_WIDTH;
-> > > > > > > +       pix_mp->height = MTK_JPEG_MIN_HEIGHT;
-> > > > > > > +
-> > > > > > > +       q->fmt = mtk_jpeg_find_format(V4L2_PIX_FMT_YUYV,
-> > > > > > > +                                     MTK_JPEG_FMT_FLAG_ENC_OUTPUT);
-> > > > > > > +       vidioc_try_fmt(container_of(pix_mp, struct v4l2_format,
-> > > > > > > +                                   fmt.pix_mp), q->fmt);
-> > > > > > > +       q->w = pix_mp->width;
-> > > > > > > +       q->h = pix_mp->height;
-> > > > > > > +       q->crop_rect.width = pix_mp->width;
-> > > > > > > +       q->crop_rect.height = pix_mp->height;
-> > > > > > > +       q->sizeimage[0] = pix_mp->plane_fmt[0].sizeimage;
-> > > > > > > +       q->bytesperline[0] = pix_mp->plane_fmt[0].bytesperline;
-> > > > > >
-> > > > > > Actually, do we need this custom mtk_jpeg_q_data struct? Why couldn't we
-> > > > > > just keep the same values inside the standard v4l2_pix_format_mplane
-> > > > > > struct?
-> > > > > I think that we need mtk_jpeg_q_data struct.If we delete it, how can we
-> > > > > know these values(w, h, sizeimage, bytesperline, mtk_jpeg_fmt) belong to
-> > > > > output or capture(output and capture's sizeimages are different, width
-> > > > > and height are differnt too for jpeg dec )?We have
-> > > > > s_fmt_vid_out_mplane/cap_mplane function to set these values.
-> > > > >
-> > > > > But we can use standard v4l2_pix_format_mplane struct replacing the w, h
-> > > > > bytesperline, sizeimage in mtk_jpeg_q_data struct like this:
-> > > > > struct mtk_jpeg_q_data{
-> > > > >     struct mtk_jpeg_fmt *fmt;
-> > > > >     struct v4l2_pix_format_mplane pix_mp;
-> > > > >     struct v4l2_rect enc_crop_rect
-> > > > > }
-> > > > > Then delete ctx->colorspace ctx->ycbcr_enc ctx->quantization
-> > > > > ctx->xfer_func, becuase v4l2_pix_format_mplane in q_data has contained
-> > > > > them and assign them for out_q and cap_q separately.
-> > > > >
-> > > > > WDYT?
-> > > >
-> > > > Sounds good to me. I was considering just making it like
-> > > >
-> > > > struct mtk_jpeg_ctx {
-> > > >       struct mtk_jpeg_fmt *src_fmt;
-> > > >       struct v4l2_pix_format_mplane src_pix_mp;
-> > > >       struct v4l2_rect src_crop;
-> > > >
-> > > >       struct mtk_jpeg_fmt *dst_fmt;
-> > > >       struct v4l2_pix_format_mplane dst_pix_mp;
-> > > >       struct v4l2_rect dst_crop;
-> > > > };
-> > > >
-> > > > but I like your suggestion as well, as long as custom data structures
-> > > > are not used to store standard information.
-> > >
-> > > Dear Tomasz,
-> > >
-> > > I used the structure like below:
-> > >  struct mtk_jpeg_q_data{
-> > >         struct mtk_jpeg_fmt *fmt;
-> > >         struct v4l2_pix_format_mplane pix_mp;
-> > >         struct v4l2_rect enc_crop_rect
-> > > }
-> > > Then delete ctx->colorspace ctx->ycbcr_enc ctx->quantization
-> > > ctx->xfer_func, becuase v4l2_pix_format_mplane in q_data has contained
-> > > them and assign them for out_q and cap_q separately.
-> > >
-> > > Then the v4l2_compliance test will fail, the fail log as below:
-> > > Format ioctls:
-> > >         test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
-> > >         test VIDIOC_G/S_PARM: OK (Not Supported)
-> > >         test VIDIOC_G_FBUF: OK (Not Supported)
-> > >         test VIDIOC_G_FMT: OK
-> > >         test VIDIOC_TRY_FMT: OK
-> > >                 fail: v4l2-test-formats.cpp(836):
-> > > fmt_cap.g_colorspace() != col
-> > >         test VIDIOC_S_FMT: FAIL
-> > >         test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
-> > >         test Cropping: OK
-> > >         test Composing: OK (Not Supported)
-> > >         test Scaling: OK (Not Supported)
-> > >
-> > > The source code of  v4l2-test-formats.cpp as below:
-> > >
-> > > static int testM2MFormats(struct node *node)
-> > > {
-> > >         cv4l_fmt fmt_out;
-> > >         cv4l_fmt fmt;
-> > >         cv4l_fmt fmt_cap;
-> > >         __u32 cap_type = node->g_type();
-> > >         __u32 out_type = v4l_type_invert(cap_type);
-> > >         __u32 col, ycbcr_enc, quant, xfer_func;
-> > >
-> > >         fail_on_test(node->g_fmt(fmt_out, out_type));
-> > >         node->g_fmt(fmt_cap, cap_type);
-> > >         fail_on_test(fmt_cap.g_colorspace() != fmt_out.g_colorspace());
-> > >         fail_on_test(fmt_cap.g_ycbcr_enc() != fmt_out.g_ycbcr_enc());
-> > >         fail_on_test(fmt_cap.g_quantization() != fmt_out.g_quantization());
-> > >         fail_on_test(fmt_cap.g_xfer_func() != fmt_out.g_xfer_func());
-> > >         col = fmt_out.g_colorspace() == V4L2_COLORSPACE_SMPTE170M ?
-> > >                 V4L2_COLORSPACE_REC709 : V4L2_COLORSPACE_SMPTE170M;
-> > >         ycbcr_enc = fmt_out.g_ycbcr_enc() == V4L2_YCBCR_ENC_601 ?
-> > >                 V4L2_YCBCR_ENC_709 : V4L2_YCBCR_ENC_601;
-> > >         quant = fmt_out.g_quantization() == V4L2_QUANTIZATION_LIM_RANGE ?
-> > >                 V4L2_QUANTIZATION_FULL_RANGE : V4L2_QUANTIZATION_LIM_RANGE;
-> > >         xfer_func = fmt_out.g_xfer_func() == V4L2_XFER_FUNC_SRGB ?
-> > >                 V4L2_XFER_FUNC_709 : V4L2_XFER_FUNC_SRGB;
-> > >         fmt_out.s_colorspace(col);
-> > >         fmt_out.s_xfer_func(xfer_func);
-> > >         fmt_out.s_ycbcr_enc(ycbcr_enc);
-> > >         fmt_out.s_quantization(quant);
-> > >         node->s_fmt(fmt_out);
-> > >         fail_on_test(fmt_out.g_colorspace() != col);
-> > >         fail_on_test(fmt_out.g_xfer_func() != xfer_func);
-> > >         fail_on_test(fmt_out.g_ycbcr_enc() != ycbcr_enc);
-> > >         fail_on_test(fmt_out.g_quantization() != quant);
-> > >         node->g_fmt(fmt_cap);
-> > >         fail_on_test(fmt_cap.g_colorspace() != col);  // line 836
-> > >         fail_on_test(fmt_cap.g_xfer_func() != xfer_func);
-> > >         fail_on_test(fmt_cap.g_ycbcr_enc() != ycbcr_enc);
-> > >         fail_on_test(fmt_cap.g_quantization() != quant);
-> > > }
-> > >
-> > > It needs that cap's colorspace equals out's colorspace when userspace
-> > > just set out's colorspace and then get cap's colorspace. However, cap's
-> > > colorspace which getted from driver equals V4L2_COLORSPACE_JPEG, because
-> > > the code in g_fmt() like this:
-> > > pix_mp->colorspace = q_data->pix_mp.colorspace;
-> > > pix_mp->ycbcr_enc = q_data->pix_mp.ycbcr_enc;
-> > > pix_mp->xfer_func = q_data->pix_mp.xfer_func;
-> > > pix_mp->quantization = q_data->pix_mp.quantization;
-> > >
-> > > How should I handle this case? Should I store them(colorspace,
-> > > sfer_func, ycbcr_enc, quatization) in ctx as the orinal desin? Then I
-> > > can get them from g_fmt() like this:
-> > > pix_mp->colorspace = ctx->colorspace;
-> > > pix_mp->ycbcr_enc = ctx->ycbcr_enc;
-> > > pix_mp->xfer_func = ctx->xfer_func;
-> > > pix_mp->quantization = ctx->quantization;
-> >
-> > Why would there be any other colorspace accepted? I suppose that the
-> > hardware only supports the JPEG color space, so it shouldn't accept
-> > any other colorspace in TRY_FMT (and thus S_FMT) anyway.
-> >
-> > Still, for correctness, I would suggest propagating the colorspace
-> > (and related) information from OUTPUT format to CAPTURE format in
-> > S_FMT(OUTPUT).
-> Dear Tomasz,
-> If the driver doesn't accept any other colorspace from userspace(means
-> the colorspace always equals V4L2_COLORSPACE_JPEG on my understanding),
-> the v4l2_compliance will fail at line 831:
->   fail_on_test(fmt_out.g_colorspace() != col); // line 831
+> We use tag-based KASAN, then KASAN unit tests don't detect out-of-bounds
+> memory access. They need to be fixed.
 >
-> The v4l2_compliance needs driver can accept other colorspace and capture
-> colorspace equals output colorspace.
+> With tag-based KASAN, the state of each 16 aligned bytes of memory is
+> encoded in one shadow byte and the shadow value is tag of pointer, so
+> we need to read next shadow byte, the shadow value is not equal to tag
+> value of pointer, so that tag-based KASAN will detect out-of-bounds
+> memory access.
 >
-> I try to propagate the colorspace from OUTPUT format to CAPTURE foramt
-> in S_FMT, the compliance test succeed.
+> Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> Suggested-by: Dmitry Vyukov <dvyukov@google.com>
+> Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
+> Cc: Dmitry Vyukov <dvyukov@google.com>
+> Cc: Alexander Potapenko <glider@google.com>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Andrey Konovalov <andreyknvl@google.com>
+> Cc: Andrew Morton <akpm@linux-foundation.org>
+> ---
 >
-> Should the jpeg driver can accept other colorspace?
+> changes since v1:
+> - Reduce amount of non-compiled code.
+> - KUnit-KASAN Integration patchset is not merged yet. My patch should
+>   have conflict with it, if needed, we can continue to wait it.
+>
+> changes since v2:
+> - Add one marco to make unit tests more readability.
+>
+> ---
+>  lib/test_kasan.c | 47 ++++++++++++++++++++++++++++++-----------------
+>  1 file changed, 30 insertions(+), 17 deletions(-)
+>
+> diff --git a/lib/test_kasan.c b/lib/test_kasan.c
+> index e3087d90e00d..b5049a807e25 100644
+> --- a/lib/test_kasan.c
+> +++ b/lib/test_kasan.c
+> @@ -23,6 +23,8 @@
+>
+>  #include <asm/page.h>
+>
+> +#define OOB_TAG_OFF (IS_ENABLED(CONFIG_KASAN_GENERIC) ? 0 : 13)
 
-Hans, could you advise on what is the proper behavior regarding
-colorimetry support?
+Let's use KASAN_SHADOW_SCALE_SIZE instead of 13 to make sure the
+access always lands in the next memory granule.
 
-Best regards,
-Tomasz
+With that:
+
+Reviewed-by: Andrey Konovalov <andreyknvl@google.com>
+
+> +
+>  /*
+>   * Note: test functions are marked noinline so that their names appear in
+>   * reports.
+> @@ -40,7 +42,8 @@ static noinline void __init kmalloc_oob_right(void)
+>                 return;
+>         }
+>
+> -       ptr[size] = 'x';
+> +       ptr[size + OOB_TAG_OFF] = 'x';
+> +
+>         kfree(ptr);
+>  }
+>
+> @@ -92,7 +95,8 @@ static noinline void __init kmalloc_pagealloc_oob_right(void)
+>                 return;
+>         }
+>
+> -       ptr[size] = 0;
+> +       ptr[size + OOB_TAG_OFF] = 0;
+> +
+>         kfree(ptr);
+>  }
+>
+> @@ -162,7 +166,8 @@ static noinline void __init kmalloc_oob_krealloc_more(void)
+>                 return;
+>         }
+>
+> -       ptr2[size2] = 'x';
+> +       ptr2[size2 + OOB_TAG_OFF] = 'x';
+> +
+>         kfree(ptr2);
+>  }
+>
+> @@ -180,7 +185,9 @@ static noinline void __init kmalloc_oob_krealloc_less(void)
+>                 kfree(ptr1);
+>                 return;
+>         }
+> -       ptr2[size2] = 'x';
+> +
+> +       ptr2[size2 + OOB_TAG_OFF] = 'x';
+> +
+>         kfree(ptr2);
+>  }
+>
+> @@ -216,7 +223,8 @@ static noinline void __init kmalloc_oob_memset_2(void)
+>                 return;
+>         }
+>
+> -       memset(ptr+7, 0, 2);
+> +       memset(ptr + 7 + OOB_TAG_OFF, 0, 2);
+> +
+>         kfree(ptr);
+>  }
+>
+> @@ -232,7 +240,8 @@ static noinline void __init kmalloc_oob_memset_4(void)
+>                 return;
+>         }
+>
+> -       memset(ptr+5, 0, 4);
+> +       memset(ptr + 5 + OOB_TAG_OFF, 0, 4);
+> +
+>         kfree(ptr);
+>  }
+>
+> @@ -249,7 +258,8 @@ static noinline void __init kmalloc_oob_memset_8(void)
+>                 return;
+>         }
+>
+> -       memset(ptr+1, 0, 8);
+> +       memset(ptr + 1 + OOB_TAG_OFF, 0, 8);
+> +
+>         kfree(ptr);
+>  }
+>
+> @@ -265,7 +275,8 @@ static noinline void __init kmalloc_oob_memset_16(void)
+>                 return;
+>         }
+>
+> -       memset(ptr+1, 0, 16);
+> +       memset(ptr + 1 + OOB_TAG_OFF, 0, 16);
+> +
+>         kfree(ptr);
+>  }
+>
+> @@ -281,7 +292,8 @@ static noinline void __init kmalloc_oob_in_memset(void)
+>                 return;
+>         }
+>
+> -       memset(ptr, 0, size+5);
+> +       memset(ptr, 0, size + 5 + OOB_TAG_OFF);
+> +
+>         kfree(ptr);
+>  }
+>
+> @@ -415,7 +427,8 @@ static noinline void __init kmem_cache_oob(void)
+>                 return;
+>         }
+>
+> -       *p = p[size];
+> +       *p = p[size + OOB_TAG_OFF];
+> +
+>         kmem_cache_free(cache, p);
+>         kmem_cache_destroy(cache);
+>  }
+> @@ -512,25 +525,25 @@ static noinline void __init copy_user_test(void)
+>         }
+>
+>         pr_info("out-of-bounds in copy_from_user()\n");
+> -       unused = copy_from_user(kmem, usermem, size + 1);
+> +       unused = copy_from_user(kmem, usermem, size + 1 + OOB_TAG_OFF);
+>
+>         pr_info("out-of-bounds in copy_to_user()\n");
+> -       unused = copy_to_user(usermem, kmem, size + 1);
+> +       unused = copy_to_user(usermem, kmem, size + 1 + OOB_TAG_OFF);
+>
+>         pr_info("out-of-bounds in __copy_from_user()\n");
+> -       unused = __copy_from_user(kmem, usermem, size + 1);
+> +       unused = __copy_from_user(kmem, usermem, size + 1 + OOB_TAG_OFF);
+>
+>         pr_info("out-of-bounds in __copy_to_user()\n");
+> -       unused = __copy_to_user(usermem, kmem, size + 1);
+> +       unused = __copy_to_user(usermem, kmem, size + 1 + OOB_TAG_OFF);
+>
+>         pr_info("out-of-bounds in __copy_from_user_inatomic()\n");
+> -       unused = __copy_from_user_inatomic(kmem, usermem, size + 1);
+> +       unused = __copy_from_user_inatomic(kmem, usermem, size + 1 + OOB_TAG_OFF);
+>
+>         pr_info("out-of-bounds in __copy_to_user_inatomic()\n");
+> -       unused = __copy_to_user_inatomic(usermem, kmem, size + 1);
+> +       unused = __copy_to_user_inatomic(usermem, kmem, size + 1 + OOB_TAG_OFF);
+>
+>         pr_info("out-of-bounds in strncpy_from_user()\n");
+> -       unused = strncpy_from_user(kmem, usermem, size + 1);
+> +       unused = strncpy_from_user(kmem, usermem, size + 1 + OOB_TAG_OFF);
+>
+>         vm_munmap((unsigned long)usermem, PAGE_SIZE);
+>         kfree(kmem);
+> --
+> 2.18.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "kasan-dev" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/20200706115039.16750-1-walter-zh.wu%40mediatek.com.
 
 _______________________________________________
 Linux-mediatek mailing list
