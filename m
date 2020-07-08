@@ -2,81 +2,94 @@ Return-Path: <SRS0=VCtr=AT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F12F9C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2020 10:56:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 96EABC433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2020 11:16:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BD96C2067D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2020 10:56:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 55FD420739
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2020 11:16:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PFlZjKjX";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dUrqQqJH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD96C2067D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NCibzSs3";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Rs2Sa1ln"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55FD420739
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gh9S/jMwRUL3DdVQ/IAQ478KUQxNU7hgegPXLnmn134=; b=PFlZjKjXJtGTQtMHtt6vcRubC
-	MNd4PrfxCzIp0T13uzVTYaGXtnJJeu9EfLX7KmedeK1i6u9uSUpg7iO0gWdgf7ZASEvS27tuel+jm
-	sYIwIXEK2glraN6JwADC0pPeW08wY8lYHAq6Vm1y900xeMLFIcsEI+o1IOAZ64Shb06LHw5Ys2KZM
-	bcxDIsLNSXXE+a3yu6cW3f57+RbGO/+IwnNnHii34fbLiEez0rlL3HhGb/PvKOGzq/3Dc4gBl3Fxw
-	KimI8LewJt/LXNGP9jnDukaWB7vzAQ4YuwxF/vmRID4mzYR/sd1QoR8Qyr5e5BJEn+lvR9JsU5+92
-	TSvHWNJyA==;
+	 bh=x6blvYy4VsZWd4s6A8rxG6JYSeKCLTre92nFSAFhdMk=; b=NCibzSs3dEMyePopesoUp17yH
+	qbgRAJBlKLSWrkshM5fSPF6FT3CBQZ46x0JOtNeNF+vX2NjnpBkZisy1QGLegFNmNKa5zgXSKmcaq
+	DcBXVjmRjROJKqn3xfBnrDf5712qeR0V+PCrkWku2Semhdi2LD6MHyP32bQICWJ5Jnd/gTE8logks
+	IXsdCJssE40m8qWmP1UhZrqIqly0pnQqY1VxLrtEBRRfK81ieskchgPhaJtYfM041Xdwir0Rb1Avf
+	0pQBO+Pt1eom5n84qaRt0rIRYsg1SJXjYHXh17H5KRE4DL4wVGEO9wNs4LsL3s0q02cqAyZfLJB/+
+	d+50XKMlQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jt7kS-0004nj-Pm; Wed, 08 Jul 2020 10:56:20 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jt83s-0007cv-Po; Wed, 08 Jul 2020 11:16:24 +0000
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jt7kP-0004me-M9; Wed, 08 Jul 2020 10:56:18 +0000
-X-UUID: 3237a941086e46ee8fdb0474df4292f6-20200708
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=8dImjezaDRln9/Yyf6oNcjPYX7KgWdZn4Xoqp2PpPSY=; 
- b=dUrqQqJHdCnJNgDfpdPjGHbAT7DWetdOfIoZWnHAa1Blod49L7X5lITvz3y65cDNqXYKbMnvJy3S20JIBx1Te31A2EtuX3JrtmFveQ5uyqNx/7TML1DIQ8Vnnz3KxiNRcnvPEXbldsImEv7OhwaV93ApbD7WNUG32Rky/Aukw3g=;
-X-UUID: 3237a941086e46ee8fdb0474df4292f6-20200708
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <chao.hao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 163814751; Wed, 08 Jul 2020 02:45:59 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 8 Jul 2020 03:45:44 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 8 Jul 2020 18:45:37 +0800
-Received: from [10.15.20.246] (10.15.20.246) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 8 Jul 2020 18:45:38 +0800
-Message-ID: <1594205054.15266.5.camel@mbjsdccf07>
-Subject: Re: [PATCH v6 03/10] iommu/mediatek: Use a u32 flags to describe
- different HW features
-From: chao hao <Chao.Hao@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen
- <yingjoe.chen@mediatek.com>
-Date: Wed, 8 Jul 2020 18:44:14 +0800
-In-Reply-To: <bce3e1e0-f0b0-8c77-d966-3b6e37b3b647@gmail.com>
-References: <20200703044127.27438-1-chao.hao@mediatek.com>
- <20200703044127.27438-4-chao.hao@mediatek.com>
- <1593825398.4355.1.camel@mtksdaap41>
- <bce3e1e0-f0b0-8c77-d966-3b6e37b3b647@gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jt83q-0007b4-1N
+ for linux-mediatek@lists.infradead.org; Wed, 08 Jul 2020 11:16:23 +0000
+Received: by mail-ed1-x543.google.com with SMTP id b15so41349830edy.7
+ for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2020 04:16:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=CdwpVavIhJUD7vXYln0/fSWFQcR1sKy4c4EKyNGt1KE=;
+ b=Rs2Sa1lnkQKChXkd7xhZlGwreJr9QaH1p6239KxXihfwiVyXNZOgAUdWxiHMMUvt55
+ CeVSJTZqvi6HXZ2/FJrWrskIMQsbz1GnKwLHLfKDMNUay9vMlRkDfBLpUssylt6OzaoF
+ riqSgNx6iqbXp3y7TtU5UeG82csNA2jr4Gua0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=CdwpVavIhJUD7vXYln0/fSWFQcR1sKy4c4EKyNGt1KE=;
+ b=VAtpvbiDZdnC0P2FUQcDrNReTdPJVSwoojqF5eIJyEiFPxprI9kLN5wjH/RtQDhWoT
+ juCM3dN9Ih4qvWR/VRWhIYYU6mMdBNQe3O9BjCYn4uWj401g92i/gf8Ed5ADRacETjjS
+ aw9gFglVeTzUDZULGp+lGJbVOhwl8gkkGUO89njir0yxBiCaxBe6y+NcxbCYSBSnYXOV
+ XrrXfttzoMA+KUl0MGbmStz5w3TaTdWfxj2f4A79lsIVOPWgKzmbJqTn1aTXCpvG35xU
+ VOX31UxPytn43uIagT7eitdSb47GUqmM+DycwY1ahWqmTS/mnQvHONOd9z2jd6JB009g
+ XkNA==
+X-Gm-Message-State: AOAM531O9xX4YKHQGkJerK2zLlk/+ZIxGmdcTG4jSAv9vUJG7lVeT/FQ
+ zKanxl9y+QkhOyCtpD9TfHQNAk6oKKIZQA==
+X-Google-Smtp-Source: ABdhPJyW8/ojwncLzGoxSs2QkJe5EzzCzPG5XTsv0mLMxdtxJU6b2d9HuFwikKviEpGQ2YIGvb5SZQ==
+X-Received: by 2002:a50:d9cb:: with SMTP id x11mr63588265edj.93.1594206979322; 
+ Wed, 08 Jul 2020 04:16:19 -0700 (PDT)
+Received: from mail-wr1-f45.google.com (mail-wr1-f45.google.com.
+ [209.85.221.45])
+ by smtp.gmail.com with ESMTPSA id j64sm9645456edd.61.2020.07.08.04.16.18
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 08 Jul 2020 04:16:18 -0700 (PDT)
+Received: by mail-wr1-f45.google.com with SMTP id q5so48460479wru.6
+ for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2020 04:16:18 -0700 (PDT)
+X-Received: by 2002:adf:f34f:: with SMTP id e15mr58865505wrp.415.1594206977532; 
+ Wed, 08 Jul 2020 04:16:17 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: C6F3F116F4E5F81A05C52BC326B71A4E52496CE3118B5B56139A8833B406E13C2000:8
-X-MTK: N
+References: <20200604090553.10861-1-xia.jiang@mediatek.com>
+ <20200604090553.10861-20-xia.jiang@mediatek.com>
+ <20200611184640.GC8694@chromium.org>
+ <1593485781.20112.43.camel@mhfsdcap03> <20200630165301.GA1212092@chromium.org>
+ <1594104314.4473.24.camel@mhfsdcap03>
+ <CAAFQd5CONkGrESiq2hZ9RWZK8FU0av4LjEQi4bc_c5Nu+sRPEA@mail.gmail.com>
+ <1594192410.14412.11.camel@mhfsdcap03>
+In-Reply-To: <1594192410.14412.11.camel@mhfsdcap03>
+From: Tomasz Figa <tfiga@chromium.org>
+Date: Wed, 8 Jul 2020 13:16:06 +0200
+X-Gmail-Original-Message-ID: <CAAFQd5DeV9uEnhKRa9-fcyDK53Zn2meKUg5Nwm3QORz+ZhGpAQ@mail.gmail.com>
+Message-ID: <CAAFQd5DeV9uEnhKRa9-fcyDK53Zn2meKUg5Nwm3QORz+ZhGpAQ@mail.gmail.com>
+Subject: Re: [PATCH RESEND v9 18/18] media: platform: Add jpeg enc feature
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200708_065617_932476_D7313AC1 
-X-CRM114-Status: GOOD (  27.58  )
+X-CRM114-CacheID: sfid-20200708_071622_149514_310A9E70 
+X-CRM114-Status: GOOD (  42.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,156 +101,298 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, FY Yang <fy.yang@mediatek.com>,
- wsd_upstream@mediatek.com, Joerg Roedel <joro@8bytes.org>,
- TH Yang <th.yang@mediatek.com>, linux-kernel@vger.kernel.org,
- Chao Hao <chao.hao@mediatek.com>, iommu@lists.linux-foundation.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>,
- Yong Wu <yong.wu@mediatek.com>
+Cc: Nicolas Boichat <drinkcat@chromium.org>,
+ linux-devicetree <devicetree@vger.kernel.org>, mojahsu@chromium.org,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ Rick Chang <rick.chang@mediatek.com>,
+ Sergey Senozhatsky <senozhatsky@chromium.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ =?UTF-8?B?TWFvZ3VhbmcgTWVuZyAo5a2f5q+b5bm/KQ==?= <maoguang.meng@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Sj Huang <sj.huang@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Xia Jiang <xia.jiang@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
+ Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias and Yingjoe,
-Thanks for your comments!
+On Wed, Jul 8, 2020 at 9:14 AM Xia Jiang <xia.jiang@mediatek.com> wrote:
+>
+> On Tue, 2020-07-07 at 15:35 +0200, Tomasz Figa wrote:
+> > On Tue, Jul 7, 2020 at 8:47 AM Xia Jiang <xia.jiang@mediatek.com> wrote:
+> > >
+> > > On Tue, 2020-06-30 at 16:53 +0000, Tomasz Figa wrote:
+> > > > Hi Xia,
+> > > >
+> > > > On Tue, Jun 30, 2020 at 10:56:21AM +0800, Xia Jiang wrote:
+> > > > > On Thu, 2020-06-11 at 18:46 +0000, Tomasz Figa wrote:
+> > > > > > Hi Xia,
+> > > > > >
+> > > > > > On Thu, Jun 04, 2020 at 05:05:53PM +0800, Xia Jiang wrote:
+> > > > [snip]
+> > > > > > > +static void mtk_jpeg_enc_device_run(void *priv)
+> > > > > > > +{
+> > > > > > > +       struct mtk_jpeg_ctx *ctx = priv;
+> > > > > > > +       struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+> > > > > > > +       struct vb2_v4l2_buffer *src_buf, *dst_buf;
+> > > > > > > +       enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
+> > > > > > > +       unsigned long flags;
+> > > > > > > +       struct mtk_jpeg_src_buf *jpeg_src_buf;
+> > > > > > > +       struct mtk_jpeg_enc_bs enc_bs;
+> > > > > > > +       int ret;
+> > > > > > > +
+> > > > > > > +       src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> > > > > > > +       dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+> > > > > > > +       jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
+> > > > > > > +
+> > > > > > > +       ret = pm_runtime_get_sync(jpeg->dev);
+> > > > > > > +       if (ret < 0)
+> > > > > > > +               goto enc_end;
+> > > > > > > +
+> > > > > > > +       spin_lock_irqsave(&jpeg->hw_lock, flags);
+> > > > > > > +
+> > > > > > > +       /*
+> > > > > > > +        * Resetting the hardware every frame is to ensure that all the
+> > > > > > > +        * registers are cleared. This is a hardware requirement.
+> > > > > > > +        */
+> > > > > > > +       mtk_jpeg_enc_reset(jpeg->reg_base);
+> > > > > > > +
+> > > > > > > +       mtk_jpeg_set_enc_dst(ctx, jpeg->reg_base, &dst_buf->vb2_buf, &enc_bs);
+> > > > > > > +       mtk_jpeg_set_enc_src(ctx, jpeg->reg_base, &src_buf->vb2_buf);
+> > > > > > > +       mtk_jpeg_enc_set_config(jpeg->reg_base, ctx->out_q.fmt->hw_format,
+> > > > > > > +                               ctx->enable_exif, ctx->enc_quality,
+> > > > > > > +                               ctx->restart_interval);
+> > > > > > > +       mtk_jpeg_enc_start(jpeg->reg_base);
+> > > > > >
+> > > > > > Could we just move the above 5 functions into one function inside
+> > > > > > mtk_jpeg_enc_hw.c that takes mtk_jpeg_dev pointer as its argument, let's
+> > > > > > say mtk_jpeg_enc_hw_run() and simply program all the data to the registers
+> > > > > > directly, without the extra level of abstractions?
+> > > > > I can move the 5 functions into one function(mtk_jpeg_enc_hw_run()), but
+> > > > > this function will be very long, because it contains computation code
+> > > > > such as setting dst addr, blk_num, quality.
+> > > > > In v4, you have adviced the following architecture:
+> > > > > How about the following model, as used by many other drivers:
+> > > > >
+> > > > > mtk_jpeg_enc_set_src()
+> > > > > {
+> > > > >         // Set any registers related to source format and buffer
+> > > > > }
+> > > > >
+> > > > > mtk_jpeg_enc_set_dst()
+> > > > > {
+> > > > >         // Set any registers related to destination format and buffer
+> > > > > }
+> > > > >
+> > > > > mtk_jpeg_enc_set_params()
+> > > > > {
+> > > > >         // Set any registers related to additional encoding parameters
+> > > > > }
+> > > > >
+> > > > > mtk_jpeg_enc_device_run(enc, ctx)
+> > > > > {
+> > > > >         mtk_jpeg_enc_set_src(enc, src_buf, src_fmt);
+> > > > >         mtk_jpeg_enc_set_dst(enc, dst_buf, dst_fmt);
+> > > > >         mtk_jpeg_enc_set_params(enc, ctx);
+> > > > >         // Trigger the hardware run
+> > > > > }
+> > > > > I think that this architecture is more clear(mtk_jpeg_enc_set_config is
+> > > > > equivalent to mtk_jpeg_enc_set_params).
+> > > > > Should I keep the original architecture or move 5 functions into
+> > > > > mtk_jpeg_enc_hw_run?
+> > > >
+> > > > Sounds good to me.
+> > > >
+> > > > My biggest issue with the code that it ends up introducing one more
+> > > > level of abstraction, but with the approach you suggested, the arguments
+> > > > just accept standard structs, which avoids that problem.
+> > > >
+> > > > [snip]
+> > > > > > > +
+> > > > > > > +       ctx->fh.ctrl_handler = &ctx->ctrl_hdl;
+> > > > > > > +       ctx->colorspace = V4L2_COLORSPACE_JPEG,
+> > > > > > > +       ctx->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
+> > > > > > > +       ctx->quantization = V4L2_QUANTIZATION_DEFAULT;
+> > > > > > > +       ctx->xfer_func = V4L2_XFER_FUNC_DEFAULT;
+> > > > > >
+> > > > > > Since we already have a v4l2_pix_format_mplane struct which has fields for
+> > > > > > the above 4 values, could we just store them there?
+> > > > > >
+> > > > > > Also, I don't see this driver handling the colorspaces in any way, but it
+> > > > > > seems to allow changing them from the userspace. This is incorrect, because
+> > > > > > the userspace has no way to know that the colorspace is not handled.
+> > > > > > Instead, the try_fmt implementation should always override the
+> > > > > > userspace-provided colorspace configuration with the ones that the driver
+> > > > > > assumes.
+> > > > > >
+> > > > > > > +       pix_mp->width = MTK_JPEG_MIN_WIDTH;
+> > > > > > > +       pix_mp->height = MTK_JPEG_MIN_HEIGHT;
+> > > > > > > +
+> > > > > > > +       q->fmt = mtk_jpeg_find_format(V4L2_PIX_FMT_YUYV,
+> > > > > > > +                                     MTK_JPEG_FMT_FLAG_ENC_OUTPUT);
+> > > > > > > +       vidioc_try_fmt(container_of(pix_mp, struct v4l2_format,
+> > > > > > > +                                   fmt.pix_mp), q->fmt);
+> > > > > > > +       q->w = pix_mp->width;
+> > > > > > > +       q->h = pix_mp->height;
+> > > > > > > +       q->crop_rect.width = pix_mp->width;
+> > > > > > > +       q->crop_rect.height = pix_mp->height;
+> > > > > > > +       q->sizeimage[0] = pix_mp->plane_fmt[0].sizeimage;
+> > > > > > > +       q->bytesperline[0] = pix_mp->plane_fmt[0].bytesperline;
+> > > > > >
+> > > > > > Actually, do we need this custom mtk_jpeg_q_data struct? Why couldn't we
+> > > > > > just keep the same values inside the standard v4l2_pix_format_mplane
+> > > > > > struct?
+> > > > > I think that we need mtk_jpeg_q_data struct.If we delete it, how can we
+> > > > > know these values(w, h, sizeimage, bytesperline, mtk_jpeg_fmt) belong to
+> > > > > output or capture(output and capture's sizeimages are different, width
+> > > > > and height are differnt too for jpeg dec )?We have
+> > > > > s_fmt_vid_out_mplane/cap_mplane function to set these values.
+> > > > >
+> > > > > But we can use standard v4l2_pix_format_mplane struct replacing the w, h
+> > > > > bytesperline, sizeimage in mtk_jpeg_q_data struct like this:
+> > > > > struct mtk_jpeg_q_data{
+> > > > >     struct mtk_jpeg_fmt *fmt;
+> > > > >     struct v4l2_pix_format_mplane pix_mp;
+> > > > >     struct v4l2_rect enc_crop_rect
+> > > > > }
+> > > > > Then delete ctx->colorspace ctx->ycbcr_enc ctx->quantization
+> > > > > ctx->xfer_func, becuase v4l2_pix_format_mplane in q_data has contained
+> > > > > them and assign them for out_q and cap_q separately.
+> > > > >
+> > > > > WDYT?
+> > > >
+> > > > Sounds good to me. I was considering just making it like
+> > > >
+> > > > struct mtk_jpeg_ctx {
+> > > >       struct mtk_jpeg_fmt *src_fmt;
+> > > >       struct v4l2_pix_format_mplane src_pix_mp;
+> > > >       struct v4l2_rect src_crop;
+> > > >
+> > > >       struct mtk_jpeg_fmt *dst_fmt;
+> > > >       struct v4l2_pix_format_mplane dst_pix_mp;
+> > > >       struct v4l2_rect dst_crop;
+> > > > };
+> > > >
+> > > > but I like your suggestion as well, as long as custom data structures
+> > > > are not used to store standard information.
+> > >
+> > > Dear Tomasz,
+> > >
+> > > I used the structure like below:
+> > >  struct mtk_jpeg_q_data{
+> > >         struct mtk_jpeg_fmt *fmt;
+> > >         struct v4l2_pix_format_mplane pix_mp;
+> > >         struct v4l2_rect enc_crop_rect
+> > > }
+> > > Then delete ctx->colorspace ctx->ycbcr_enc ctx->quantization
+> > > ctx->xfer_func, becuase v4l2_pix_format_mplane in q_data has contained
+> > > them and assign them for out_q and cap_q separately.
+> > >
+> > > Then the v4l2_compliance test will fail, the fail log as below:
+> > > Format ioctls:
+> > >         test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+> > >         test VIDIOC_G/S_PARM: OK (Not Supported)
+> > >         test VIDIOC_G_FBUF: OK (Not Supported)
+> > >         test VIDIOC_G_FMT: OK
+> > >         test VIDIOC_TRY_FMT: OK
+> > >                 fail: v4l2-test-formats.cpp(836):
+> > > fmt_cap.g_colorspace() != col
+> > >         test VIDIOC_S_FMT: FAIL
+> > >         test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+> > >         test Cropping: OK
+> > >         test Composing: OK (Not Supported)
+> > >         test Scaling: OK (Not Supported)
+> > >
+> > > The source code of  v4l2-test-formats.cpp as below:
+> > >
+> > > static int testM2MFormats(struct node *node)
+> > > {
+> > >         cv4l_fmt fmt_out;
+> > >         cv4l_fmt fmt;
+> > >         cv4l_fmt fmt_cap;
+> > >         __u32 cap_type = node->g_type();
+> > >         __u32 out_type = v4l_type_invert(cap_type);
+> > >         __u32 col, ycbcr_enc, quant, xfer_func;
+> > >
+> > >         fail_on_test(node->g_fmt(fmt_out, out_type));
+> > >         node->g_fmt(fmt_cap, cap_type);
+> > >         fail_on_test(fmt_cap.g_colorspace() != fmt_out.g_colorspace());
+> > >         fail_on_test(fmt_cap.g_ycbcr_enc() != fmt_out.g_ycbcr_enc());
+> > >         fail_on_test(fmt_cap.g_quantization() != fmt_out.g_quantization());
+> > >         fail_on_test(fmt_cap.g_xfer_func() != fmt_out.g_xfer_func());
+> > >         col = fmt_out.g_colorspace() == V4L2_COLORSPACE_SMPTE170M ?
+> > >                 V4L2_COLORSPACE_REC709 : V4L2_COLORSPACE_SMPTE170M;
+> > >         ycbcr_enc = fmt_out.g_ycbcr_enc() == V4L2_YCBCR_ENC_601 ?
+> > >                 V4L2_YCBCR_ENC_709 : V4L2_YCBCR_ENC_601;
+> > >         quant = fmt_out.g_quantization() == V4L2_QUANTIZATION_LIM_RANGE ?
+> > >                 V4L2_QUANTIZATION_FULL_RANGE : V4L2_QUANTIZATION_LIM_RANGE;
+> > >         xfer_func = fmt_out.g_xfer_func() == V4L2_XFER_FUNC_SRGB ?
+> > >                 V4L2_XFER_FUNC_709 : V4L2_XFER_FUNC_SRGB;
+> > >         fmt_out.s_colorspace(col);
+> > >         fmt_out.s_xfer_func(xfer_func);
+> > >         fmt_out.s_ycbcr_enc(ycbcr_enc);
+> > >         fmt_out.s_quantization(quant);
+> > >         node->s_fmt(fmt_out);
+> > >         fail_on_test(fmt_out.g_colorspace() != col);
+> > >         fail_on_test(fmt_out.g_xfer_func() != xfer_func);
+> > >         fail_on_test(fmt_out.g_ycbcr_enc() != ycbcr_enc);
+> > >         fail_on_test(fmt_out.g_quantization() != quant);
+> > >         node->g_fmt(fmt_cap);
+> > >         fail_on_test(fmt_cap.g_colorspace() != col);  // line 836
+> > >         fail_on_test(fmt_cap.g_xfer_func() != xfer_func);
+> > >         fail_on_test(fmt_cap.g_ycbcr_enc() != ycbcr_enc);
+> > >         fail_on_test(fmt_cap.g_quantization() != quant);
+> > > }
+> > >
+> > > It needs that cap's colorspace equals out's colorspace when userspace
+> > > just set out's colorspace and then get cap's colorspace. However, cap's
+> > > colorspace which getted from driver equals V4L2_COLORSPACE_JPEG, because
+> > > the code in g_fmt() like this:
+> > > pix_mp->colorspace = q_data->pix_mp.colorspace;
+> > > pix_mp->ycbcr_enc = q_data->pix_mp.ycbcr_enc;
+> > > pix_mp->xfer_func = q_data->pix_mp.xfer_func;
+> > > pix_mp->quantization = q_data->pix_mp.quantization;
+> > >
+> > > How should I handle this case? Should I store them(colorspace,
+> > > sfer_func, ycbcr_enc, quatization) in ctx as the orinal desin? Then I
+> > > can get them from g_fmt() like this:
+> > > pix_mp->colorspace = ctx->colorspace;
+> > > pix_mp->ycbcr_enc = ctx->ycbcr_enc;
+> > > pix_mp->xfer_func = ctx->xfer_func;
+> > > pix_mp->quantization = ctx->quantization;
+> >
+> > Why would there be any other colorspace accepted? I suppose that the
+> > hardware only supports the JPEG color space, so it shouldn't accept
+> > any other colorspace in TRY_FMT (and thus S_FMT) anyway.
+> >
+> > Still, for correctness, I would suggest propagating the colorspace
+> > (and related) information from OUTPUT format to CAPTURE format in
+> > S_FMT(OUTPUT).
+> Dear Tomasz,
+> If the driver doesn't accept any other colorspace from userspace(means
+> the colorspace always equals V4L2_COLORSPACE_JPEG on my understanding),
+> the v4l2_compliance will fail at line 831:
+>   fail_on_test(fmt_out.g_colorspace() != col); // line 831
+>
+> The v4l2_compliance needs driver can accept other colorspace and capture
+> colorspace equals output colorspace.
+>
+> I try to propagate the colorspace from OUTPUT format to CAPTURE foramt
+> in S_FMT, the compliance test succeed.
+>
+> Should the jpeg driver can accept other colorspace?
 
-On Mon, 2020-07-06 at 17:17 +0200, Matthias Brugger wrote:
-> 
-> On 04/07/2020 03:16, Yingjoe Chen wrote:
-> > On Fri, 2020-07-03 at 12:41 +0800, Chao Hao wrote:
-> >> Given the fact that we are adding more and more plat_data bool values,
-> >> it would make sense to use a u32 flags register and add the appropriate
-> >> macro definitions to set and check for a flag present.
-> >> No functional change.
-> >>
-> >> Cc: Yong Wu <yong.wu@mediatek.com>
-> >> Suggested-by: Matthias Brugger <matthias.bgg@gmail.com>
-> >> Signed-off-by: Chao Hao <chao.hao@mediatek.com>
-> >> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> >> ---
-> >>  drivers/iommu/mtk_iommu.c | 28 +++++++++++++++++-----------
-> >>  drivers/iommu/mtk_iommu.h |  7 +------
-> >>  2 files changed, 18 insertions(+), 17 deletions(-)
-> >>
-> >> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> >> index 88d3df5b91c2..40ca564d97af 100644
-> >> --- a/drivers/iommu/mtk_iommu.c
-> >> +++ b/drivers/iommu/mtk_iommu.c
-> >> @@ -100,6 +100,15 @@
-> >>  #define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0xf)
-> >>  #define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
-> >>  
-> >> +#define HAS_4GB_MODE			BIT(0)
-> >> +/* HW will use the EMI clock if there isn't the "bclk". */
-> >> +#define HAS_BCLK			BIT(1)
-> >> +#define HAS_VLD_PA_RNG			BIT(2)
-> >> +#define RESET_AXI			BIT(3)
-> >> +
-> >> +#define MTK_IOMMU_HAS_FLAG(pdata, _x) \
-> >> +		((((pdata)->flags) & (_x)) == (_x))
-> >> +
-> >>  struct mtk_iommu_domain {
-> >>  	struct io_pgtable_cfg		cfg;
-> >>  	struct io_pgtable_ops		*iop;
-> >> @@ -563,7 +572,8 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
-> >>  			 upper_32_bits(data->protect_base);
-> >>  	writel_relaxed(regval, data->base + REG_MMU_IVRP_PADDR);
-> >>  
-> >> -	if (data->enable_4GB && data->plat_data->has_vld_pa_rng) {
-> >> +	if (data->enable_4GB &&
-> >> +	    MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_VLD_PA_RNG)) {
-> >>  		/*
-> >>  		 * If 4GB mode is enabled, the validate PA range is from
-> >>  		 * 0x1_0000_0000 to 0x1_ffff_ffff. here record bit[32:30].
-> >> @@ -573,7 +583,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
-> >>  	}
-> >>  	writel_relaxed(0, data->base + REG_MMU_DCM_DIS);
-> >>  
-> >> -	if (data->plat_data->reset_axi) {
-> >> +	if (MTK_IOMMU_HAS_FLAG(data->plat_data, RESET_AXI)) {
-> >>  		/* The register is called STANDARD_AXI_MODE in this case */
-> >>  		writel_relaxed(0, data->base + REG_MMU_MISC_CTRL);
-> >>  	}
-> >> @@ -618,7 +628,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
-> >>  
-> >>  	/* Whether the current dram is over 4GB */
-> >>  	data->enable_4GB = !!(max_pfn > (BIT_ULL(32) >> PAGE_SHIFT));
-> >> -	if (!data->plat_data->has_4gb_mode)
-> >> +	if (!MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE))
-> >>  		data->enable_4GB = false;
-> >>  
-> >>  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> >> @@ -631,7 +641,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
-> >>  	if (data->irq < 0)
-> >>  		return data->irq;
-> >>  
-> >> -	if (data->plat_data->has_bclk) {
-> >> +	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_BCLK)) {
-> >>  		data->bclk = devm_clk_get(dev, "bclk");
-> >>  		if (IS_ERR(data->bclk))
-> >>  			return PTR_ERR(data->bclk);
-> >> @@ -763,23 +773,19 @@ static const struct dev_pm_ops mtk_iommu_pm_ops = {
-> >>  
-> >>  static const struct mtk_iommu_plat_data mt2712_data = {
-> >>  	.m4u_plat     = M4U_MT2712,
-> >> -	.has_4gb_mode = true,
-> >> -	.has_bclk     = true,
-> >> -	.has_vld_pa_rng   = true,
-> >> +	.flags        = HAS_4GB_MODE | HAS_BCLK | HAS_VLD_PA_RNG,
-> >>  	.larbid_remap = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
-> >>  };
-> >>  
-> >>  static const struct mtk_iommu_plat_data mt8173_data = {
-> >>  	.m4u_plat     = M4U_MT8173,
-> >> -	.has_4gb_mode = true,
-> >> -	.has_bclk     = true,
-> >> -	.reset_axi    = true,
-> >> +	.flags	      = HAS_4GB_MODE | HAS_BCLK | RESET_AXI,
-> >>  	.larbid_remap = {0, 1, 2, 3, 4, 5}, /* Linear mapping. */
-> >>  };
-> >>  
-> >>  static const struct mtk_iommu_plat_data mt8183_data = {
-> >>  	.m4u_plat     = M4U_MT8183,
-> >> -	.reset_axi    = true,
-> >> +	.flags        = RESET_AXI,
-> >>  	.larbid_remap = {0, 4, 5, 6, 7, 2, 3, 1},
-> >>  };
-> >>  
-> >> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> >> index 7212e6fcf982..5225a9170aaa 100644
-> >> --- a/drivers/iommu/mtk_iommu.h
-> >> +++ b/drivers/iommu/mtk_iommu.h
-> >> @@ -39,12 +39,7 @@ enum mtk_iommu_plat {
-> >>  
-> >>  struct mtk_iommu_plat_data {
-> >>  	enum mtk_iommu_plat m4u_plat;
-> >> -	bool                has_4gb_mode;
-> >> -
-> >> -	/* HW will use the EMI clock if there isn't the "bclk". */
-> >> -	bool                has_bclk;
-> >> -	bool                has_vld_pa_rng;
-> >> -	bool                reset_axi;
-> >> +	u32                 flags;
-> > 
-> > 
-> > How about using bit field instead? eg
-> > 
-> >   u32 has_bclk:1;
-> > 
-> > In this way, we don't need to change code.
-> > 
-> 
-> Actually I proposed to use the flag approach because I didn't want to bloat the
-> mtk_iommu_plat_data structure with new variables for every new feature, being it
-> a bit field or a bool.
-> Regards,
-> Matthias
+Hans, could you advise on what is the proper behavior regarding
+colorimetry support?
 
-@Yingjoe,
-If you don't have other concerns, we will use Matthias's proposal,
-thanks
+Best regards,
+Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
