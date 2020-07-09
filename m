@@ -2,56 +2,100 @@ Return-Path: <SRS0=UXZI=AU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 99B3FC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2020 10:55:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D59A5C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2020 11:07:06 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 69D0B205CB
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2020 10:55:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A4D702076A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2020 11:07:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="j7seCI2L"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 69D0B205CB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="shM0G4xW";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="P011PvI1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A4D702076A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ktdgI86cVugdKcBiYH3qu8+1VhB/o2eF/5PAIGiRAW8=; b=j7seCI2Lw2d8joMApMrGcAdYi
-	xcQuWR+VzXUv2v1/eIcHh0k1s/V4ptFEkAxIG+rRU7lWOmkxlW64Gbs2FRJot8YnjPb5GOizzKMZm
-	7XArKonMgTyoPC64+MrhcOvwyI+wAmI6nB83JcbyWAeiEgbwYJsQCjvRoKCe6VBYHyJqjGcK6QQ8s
-	XrtG//nthK4ACzlVOjce47fwQHkDOszU1h1OnCICF6zugLRMx6ZQfkW7y4JjhZMsvsDOEH68Jb4JI
-	Gh9en5bwDgxk4/9ck52uwiOYC3dB6n7jfqqBTHPPpIvo5GN87FAEQdB2OOb1A6jITKfcb9LN7gLSG
-	6tEv0dLXw==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:To:From:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=DtZQQmFUDZyon+1jFrvxdBN46Zkq3BuUorExdUVfHhs=; b=shM0G4xW5PAEZwQSPboyaAbnv
+	ZRXUMLvxUyzBv/TDepkuLiVSswE7u/qlbGCm3sI0jMTyQuJs+PYD7f+u3wWqHqSMvIsLF4P5NgnyG
+	l6c4QvPqD/cLyBKpAmXXpTZHrtOH+8VFdrBcTrmJ1ktbGz9sfm46hdbmjbKgpYBSef3T5+ArUVo+T
+	FYoI20zs8zS3YS2Jy1tLB4FkW0OMEVZvF6/VVDLu8p4KQkxwi5ThbeKSKQ92s4xtvnLakEp0V2KNT
+	NII8l9tgG2oXft7GihcNuY3+nmn8cpBGCQVegPX9R6kpJIiGuQTCi9pUCPrE7aYHPEXjcHXk8o53W
+	dj/NaJwZw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jtUD8-0002lL-CB; Thu, 09 Jul 2020 10:55:26 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1jtUOF-0005hO-28; Thu, 09 Jul 2020 11:06:55 +0000
+Received: from userp2130.oracle.com ([156.151.31.86])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jtUCu-0002fT-En; Thu, 09 Jul 2020 10:55:14 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id A03852A6391
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-To: linux-kernel@vger.kernel.org,
-	Collabora Kernel ML <kernel@collabora.com>
-Subject: [PATCH v2 2/2] drm/mediatek: mtk_dpi: Convert to bridge driver
-Date: Thu,  9 Jul 2020 12:55:01 +0200
-Message-Id: <20200709105501.1465636-3-enric.balletbo@collabora.com>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20200709105501.1465636-1-enric.balletbo@collabora.com>
-References: <20200709105501.1465636-1-enric.balletbo@collabora.com>
+ id 1jtUOC-0005h5-AD
+ for linux-mediatek@lists.infradead.org; Thu, 09 Jul 2020 11:06:53 +0000
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 069B1qeN029112;
+ Thu, 9 Jul 2020 11:06:48 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : sender
+ : to : cc : subject : message-id : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=sIyc7+eDMvD9MJhujp4zGcvwx5knSLBQdXBNBAbm5Yk=;
+ b=P011PvI14FwMg2hbHOCInwZdHSCtknhgLFttIiU/v8tb4Ixp/kVZUrgsB24sJTBN8v5e
+ mDhqWOBdfVYcE9TAvjxQCpbk14kKFbD4PyHQEDpDszNRBSGCys2699lT6WuH5y/hq53m
+ ZqTCBFMaYQkw0qSydx3BIkKzuiuAwpvGAQ3CRczf8oEXHsaZSp6wy8IT9BnAd4E7szzC
+ NBTwJTznillI/eJ/fkW6CnF1OhK1iZ89go5kaVShUgxWJXgMFsepuFUg6N13tnnQljZT
+ nZEZ+lnNB0y3/9jBP9stkBX9FxGwaFM7pzEBY9G7QxL129sAaHFfY27kuiTX/hHrlmJC 9Q== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2130.oracle.com with ESMTP id 325y0ah09c-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Thu, 09 Jul 2020 11:06:48 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 069B3KOf133525;
+ Thu, 9 Jul 2020 11:04:47 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3020.oracle.com with ESMTP id 325k3h0uv7-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 09 Jul 2020 11:04:47 +0000
+Received: from abhmp0010.oracle.com (abhmp0010.oracle.com [141.146.116.16])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 069B4jje005437;
+ Thu, 9 Jul 2020 11:04:45 GMT
+Received: from kadam (/105.59.63.18) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 09 Jul 2020 04:04:44 -0700
+Date: Thu, 9 Jul 2020 14:04:35 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH v2] mt76: mt7915: potential array overflow in
+ mt7915_mcu_tx_rate_report()
+Message-ID: <20200709110435.GM2549@kadam>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200709104738.GB20875@mwanda>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9676
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ bulkscore=0 mlxscore=0
+ spamscore=0 malwarescore=0 phishscore=0 mlxlogscore=999 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2007090088
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9676
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ clxscore=1015
+ lowpriorityscore=0 impostorscore=0 malwarescore=0 bulkscore=0 phishscore=0
+ adultscore=0 suspectscore=0 mlxlogscore=999 priorityscore=1501 spamscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2007090088
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200709_065512_715470_52A78F66 
-X-CRM114-Status: GOOD (  14.79  )
+X-CRM114-CacheID: sfid-20200709_070652_654423_D14B1FB7 
+X-CRM114-Status: GOOD (  17.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,178 +107,79 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, drinkcat@chromium.org,
- Philipp Zabel <p.zabel@pengutronix.de>, narmstrong@baylibre.com,
- David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org,
- a.hajda@samsung.com, boris.brezillon@collabora.com,
- linux-mediatek@lists.infradead.org, laurent.pinchart@ideasonboard.com,
- Daniel Vetter <daniel@ffwll.ch>, hsinyi@chromium.org, matthias.bgg@gmail.com,
- sam@ravnborg.org, linux-arm-kernel@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org, linux-wireless@vger.kernel.org,
+ YF Luo <yf.luo@mediatek.com>, Chih-Min Chen <chih-min.chen@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Yiwei Chung <yiwei.chung@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, Kalle Valo <kvalo@codeaurora.org>,
+ Shayne Chen <shayne.chen@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert mtk_dpi to a bridge driver with built-in encoder support for
-compatibility with existing component drivers.
+Smatch complains that "wcidx" value comes from the network and thus
+cannot be trusted.  In this case, it actually seems to come from the
+firmware.  If your wireless firmware is malicious then probably no
+amount of carefulness can protect you.
 
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+On the other hand, these days we still try to check the firmware as much
+as possible.  Verifying that the index is within bounds will silence a
+static checker warning.  And it's harmless and a good exercise in kernel
+hardening.  So I suggest that we do add a bounds check.
+
+Fixes: e57b7901469f ("mt76: add mac80211 driver for MT7915 PCIe-based chipsets")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
 ---
+v2:  Fix a typos in commit message.
 
-Changes in v2:
-- Maintain error message when attach to bridge fails. (Boris)
+Normally for networking patches, when we change the declaration block,
+we must update the order to make sure it's in reverse Christmas tree
+format.  This code wasn't strictly in reverse Christmas tree order
+originally because we needed to initialize "wcidx" before we could
+initialize "wcid" etc.  Re-ordering the initializers makes the diff
+slightly larger than people might expect but it's a required part of
+networking patches.
 
- drivers/gpu/drm/mediatek/mtk_dpi.c | 71 ++++++++++++++++++------------
- 1 file changed, 42 insertions(+), 29 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 19 +++++++++++++------
+ 1 file changed, 13 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index f7372dbdac0e..589ef33a1780 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -64,6 +64,7 @@ enum mtk_dpi_out_color_format {
- struct mtk_dpi {
- 	struct mtk_ddp_comp ddp_comp;
- 	struct drm_encoder encoder;
-+	struct drm_bridge bridge;
- 	struct drm_bridge *next_bridge;
- 	void __iomem *regs;
- 	struct device *dev;
-@@ -83,9 +84,9 @@ struct mtk_dpi {
- 	int refcount;
- };
- 
--static inline struct mtk_dpi *mtk_dpi_from_encoder(struct drm_encoder *e)
-+static inline struct mtk_dpi *bridge_to_dpi(struct drm_bridge *b)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index c8c12c740c1a..8fb8255650a7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -505,15 +505,22 @@ static void
+ mt7915_mcu_tx_rate_report(struct mt7915_dev *dev, struct sk_buff *skb)
  {
--	return container_of(e, struct mtk_dpi, encoder);
-+	return container_of(b, struct mtk_dpi, bridge);
- }
- 
- enum mtk_dpi_polarity {
-@@ -521,50 +522,53 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
- 	return 0;
- }
- 
--static bool mtk_dpi_encoder_mode_fixup(struct drm_encoder *encoder,
--				       const struct drm_display_mode *mode,
--				       struct drm_display_mode *adjusted_mode)
-+static void mtk_dpi_encoder_destroy(struct drm_encoder *encoder)
- {
--	return true;
-+	drm_encoder_cleanup(encoder);
- }
- 
--static void mtk_dpi_encoder_mode_set(struct drm_encoder *encoder,
--				     struct drm_display_mode *mode,
--				     struct drm_display_mode *adjusted_mode)
-+static const struct drm_encoder_funcs mtk_dpi_encoder_funcs = {
-+	.destroy = mtk_dpi_encoder_destroy,
-+};
+ 	struct mt7915_mcu_ra_info *ra = (struct mt7915_mcu_ra_info *)skb->data;
+-	u16 wcidx = le16_to_cpu(ra->wlan_idx);
+-	struct mt76_wcid *wcid = rcu_dereference(dev->mt76.wcid[wcidx]);
+-	struct mt7915_sta *msta = container_of(wcid, struct mt7915_sta, wcid);
+-	struct mt7915_sta_stats *stats = &msta->stats;
+-	struct mt76_phy *mphy = &dev->mphy;
+ 	struct rate_info rate = {}, prob_rate = {};
++	u16 probe = le16_to_cpu(ra->prob_up_rate);
+ 	u16 attempts = le16_to_cpu(ra->attempts);
+ 	u16 curr = le16_to_cpu(ra->curr_rate);
+-	u16 probe = le16_to_cpu(ra->prob_up_rate);
++	u16 wcidx = le16_to_cpu(ra->wlan_idx);
++	struct mt76_phy *mphy = &dev->mphy;
++	struct mt7915_sta_stats *stats;
++	struct mt7915_sta *msta;
++	struct mt76_wcid *wcid;
 +
-+static int mtk_dpi_bridge_attach(struct drm_bridge *bridge,
-+				 enum drm_bridge_attach_flags flags)
- {
--	struct mtk_dpi *dpi = mtk_dpi_from_encoder(encoder);
-+	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
++	if (wcidx >= MT76_N_WCIDS)
++		return;
 +
-+	return drm_bridge_attach(bridge->encoder, dpi->next_bridge,
-+				 &dpi->bridge, flags);
-+}
-+
-+static void mtk_dpi_bridge_mode_set(struct drm_bridge *bridge,
-+				const struct drm_display_mode *mode,
-+				const struct drm_display_mode *adjusted_mode)
-+{
-+	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
++	wcid = rcu_dereference(dev->mt76.wcid[wcidx]);
++	msta = container_of(wcid, struct mt7915_sta, wcid);
++	stats = &msta->stats;
  
- 	drm_mode_copy(&dpi->mode, adjusted_mode);
- }
- 
--static void mtk_dpi_encoder_disable(struct drm_encoder *encoder)
-+static void mtk_dpi_bridge_disable(struct drm_bridge *bridge)
- {
--	struct mtk_dpi *dpi = mtk_dpi_from_encoder(encoder);
-+	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
- 
- 	mtk_dpi_power_off(dpi);
- }
- 
--static void mtk_dpi_encoder_enable(struct drm_encoder *encoder)
-+static void mtk_dpi_bridge_enable(struct drm_bridge *bridge)
- {
--	struct mtk_dpi *dpi = mtk_dpi_from_encoder(encoder);
-+	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
- 
- 	mtk_dpi_power_on(dpi);
- 	mtk_dpi_set_display_mode(dpi, &dpi->mode);
- }
- 
--static int mtk_dpi_atomic_check(struct drm_encoder *encoder,
--				struct drm_crtc_state *crtc_state,
--				struct drm_connector_state *conn_state)
--{
--	return 0;
--}
--
--static const struct drm_encoder_helper_funcs mtk_dpi_encoder_helper_funcs = {
--	.mode_fixup = mtk_dpi_encoder_mode_fixup,
--	.mode_set = mtk_dpi_encoder_mode_set,
--	.disable = mtk_dpi_encoder_disable,
--	.enable = mtk_dpi_encoder_enable,
--	.atomic_check = mtk_dpi_atomic_check,
-+static const struct drm_bridge_funcs mtk_dpi_bridge_funcs = {
-+	.attach = mtk_dpi_bridge_attach,
-+	.mode_set = mtk_dpi_bridge_mode_set,
-+	.disable = mtk_dpi_bridge_disable,
-+	.enable = mtk_dpi_bridge_enable,
- };
- 
- static void mtk_dpi_start(struct mtk_ddp_comp *comp)
-@@ -605,12 +609,11 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
- 		dev_err(dev, "Failed to initialize decoder: %d\n", ret);
- 		goto err_unregister;
- 	}
--	drm_encoder_helper_add(&dpi->encoder, &mtk_dpi_encoder_helper_funcs);
- 
- 	/* Currently DPI0 is fixed to be driven by OVL1 */
- 	dpi->encoder.possible_crtcs = BIT(1);
- 
--	ret = drm_bridge_attach(&dpi->encoder, dpi->next_bridge, NULL, 0);
-+	ret = drm_bridge_attach(&dpi->encoder, &dpi->bridge, NULL, 0);
- 	if (ret) {
- 		dev_err(dev, "Failed to attach bridge: %d\n", ret);
- 		goto err_cleanup;
-@@ -791,8 +794,15 @@ static int mtk_dpi_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, dpi);
- 
-+	dpi->bridge.funcs = &mtk_dpi_bridge_funcs;
-+	dpi->bridge.of_node = dev->of_node;
-+	dpi->bridge.type = DRM_MODE_CONNECTOR_DPI;
-+
-+	drm_bridge_add(&dpi->bridge);
-+
- 	ret = component_add(dev, &mtk_dpi_component_ops);
- 	if (ret) {
-+		drm_bridge_remove(&dpi->bridge);
- 		dev_err(dev, "Failed to add component: %d\n", ret);
- 		return ret;
- 	}
-@@ -802,7 +812,10 @@ static int mtk_dpi_probe(struct platform_device *pdev)
- 
- static int mtk_dpi_remove(struct platform_device *pdev)
- {
-+	struct mtk_dpi *dpi = platform_get_drvdata(pdev);
-+
- 	component_del(&pdev->dev, &mtk_dpi_component_ops);
-+	drm_bridge_remove(&dpi->bridge);
- 
- 	return 0;
- }
+ 	if (msta->wcid.ext_phy && dev->mt76.phy2)
+ 		mphy = dev->mt76.phy2;
 -- 
 2.27.0
-
 
 _______________________________________________
 Linux-mediatek mailing list
