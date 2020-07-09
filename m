@@ -2,142 +2,74 @@ Return-Path: <SRS0=UXZI=AU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+X-Spam-Status: No, score=-3.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 15C94C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2020 08:32:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C9EFAC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2020 09:13:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C2F912074B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2020 08:32:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 940AE206C3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2020 09:13:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aZ8NgsJ7";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="A2ArzJ4i";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="cKrV6/jF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C2F912074B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="0Q70/ZWP";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="usF3Ok2t"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 940AE206C3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=komTdgXGY8Ih5gaoShZCMvGLwpSSF7YGKo2FrauqiDQ=; b=aZ8NgsJ7Jh9JVxPrIdOImnrLF
-	YDrTjL24hDxpLoRK980OcBjnuumI0x9KBHAlX4m1xsXc9JnYwjMGfvCRZTCn7ZHnvP4VFIJRyYC5I
-	DPnmVu2L7F4bYtCkTdFqmj+0cpiDy/m62KjKDS6DqJ0zVYtItVbu8CJETTHInUEtOEsh1uuZwEUmM
-	gwOlMy85UST9+k+sUNeSFCwmAM1XR7gxMXVNF7w98Z/Zi1KJ2RmCS7IdFjt/RMKU//RZbWZgBjr6G
-	M6cPPe2FKoM47lwPW9vx5SA7rIUcIKUp6zNlUPIiBszd8Hcx8tVGdDMyBV/T6QVJla+ahu8NXkiFF
-	xQ8UWFKdQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cqhSD+y95N2mmfws15M+LmIrO1a+IEZ/g4LksMxaFi0=; b=0Q70/ZWPLIorfTN0E2HA1Ztx1m
+	wLqAjc8TBVIGjMo3fIPF1vE+UiFln9C1mv2VazTPgvdIZn5jYJQ5/eInqlCJWYqvrdUWh7GH7dkQZ
+	lWkNybSCejoLK4mZOzhutLKtmEqnqqEm6aCw//I7Cab+ZsZNf0DzTvIQ/iapW8F9d45/UpUY9ille
+	AUYQIbkz4En6Fy+iKHrfxQ6fuYGki7CSmIeTlztkFZL0flR1DJocpYtLr0elY/d6j+v+acUGVYtPc
+	iU8nQXf6MC5JZN3dsX0YLJ6h4/DGdd+jwyorc1Llal8PO+dKC4SFAiWUXk48myIkySdm1wmVYlS9d
+	ZTbdvkMA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jtRy9-0002D6-Ph; Thu, 09 Jul 2020 08:31:49 +0000
-Received: from esa1.hgst.iphmx.com ([68.232.141.245])
+	id 1jtSbz-0002hr-0q; Thu, 09 Jul 2020 09:12:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jtRy6-0002Bs-C2; Thu, 09 Jul 2020 08:31:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1594283506; x=1625819506;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=zN+PWKWQe1nG0DCjSwHPCJGWXTse1m7kMC/gehbmMSk=;
- b=A2ArzJ4i9m4iG91EgTlrbhfCbRywKqaC1ZxnbkjOVuvmXtYOeh9dmSCQ
- 6XqGuH1aBlGWw1IvI62oGDXMT4jWXDkI8uFmUoCa5LwyF/aPgcvLbu1ZG
- o2ztai2UCiOOqVKUBkqu4sWYh1h1QR2m5ZYDjOGBYsXAa6wQa+sT5MelB
- nMt1Ylyf3bXtd+8VUGxqoBDlO80RIcMKbXOQT4P4g7QBzvD0BZ5pVdOGV
- 8TvvNC19FD+gomG0qiCUXf2IawGLyq6sVEWQlSOqUeXcOj0AH5sOS3MX5
- PdqIYhtl0T/ChGG+60/O9irGcNn209zlCAaLRTL3F8o/WKGSkabwJNK5i w==;
-IronPort-SDR: 01I4le7/6eVQ3Wcz8/5ZZusEbJI+sFHJayrkWGjiikz3KfiTaTqDUDA3fQw+KZ0a2kdmo/KIRR
- T2usj/11XrqZCqGu8M5nW+W76/gt9E7pDqqBOew9UJaZxhtypfteCdftySDk/3wo5+GS+ljQmu
- An9JkxjTXuhb5XvYSY0GjX0NFaGxrYNKJOoCnSeW18aPioTsRb0UeA81WSWRzOElrx2tSbaHDJ
- QW0HpmAuN2feHqQwI2oYjp77Uq+qk/vV4clicYuEYZRVocQx0dvfPxYq6W/iq39ygCnwxhPV1B
- GJk=
-X-IronPort-AV: E=Sophos;i="5.75,331,1589212800"; d="scan'208";a="251244665"
-Received: from mail-bn8nam12lp2172.outbound.protection.outlook.com (HELO
- NAM12-BN8-obe.outbound.protection.outlook.com) ([104.47.55.172])
- by ob1.hgst.iphmx.com with ESMTP; 09 Jul 2020 16:31:40 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=C/xSqEoiYlO9mtv7iEmQMfcD+Io3Wfyhp71M/lO6lzPMKM3pFFozYbNDG2Xpbf1vXIj9Zw+fgEFMwRkTHaRicRPPkdboOtlmI5i2sG66zHgrOo33/hqFxgC8481+2M68qPVkbgLZyEfFwKFkMWoc24CDOz8alNny1WkQEOZuKn6OnEfVpas04Jg3y9BCHuO3Vo4ljpEuHtY17m7SpPu5WAuYSUtuyk5ob4+S0GQaeoy2IRwpzD4717LHM5ntuSgcsQ2sUTKZ4EhhbB/dEe9RCnwkpiUNoxyLiJbiml4HoW/Z0VRPzREKPCvGXMD57rrvkw6qwisrtakglS+ClaCfrw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ekkzpRgnrr8/JLPd/gdts79eI2n9NWKRFSIIMpVuMv4=;
- b=RVt1ImSCkwTHxr4VWXyzkkMEc3P1fWgLOOn6QZ0lUwsVZLROUZm6R050QtL7H0Mw5B2szf/PRUHCZz41PZmw8YHN9AX0+4qLQKbJSzKWkxRRHb3thnpu6iwYj6KVQsdGxj5NW+CUj5rLBuEm1M+85vvu7LZPd0W8RHNfD/DXqnqgt+ZbU9HmIu9Eu5RkA0nB38r3fzju3y9TR/fhPGebDv4rkmWFdF8OqYbv7hJXLw6nitmm8gyzcfKr7pwrY3MMiO+l/97Lx6V//Y/++MWH9l7yzRrHJtd1hYGOFQ1c6moeu5C0GBqxn6YI9FPki4u15cJAXzF/5bVTd0brlEG+OA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ekkzpRgnrr8/JLPd/gdts79eI2n9NWKRFSIIMpVuMv4=;
- b=cKrV6/jFVI71MJPWTOpj/ISDHUfC2SYAL4fU2x9UDyfEniJD4AZgrPVHOC8jgcyas1xUr7gphw+gHmqF+2TPlyDvtDUaP14f7ezdvIBGSj5og54OOm/fHh9sgpgFJCiDn1iv0KPPeTWIL+ivDGT4vzjI8FHzzYRECDS1sdVsc/w=
-Received: from SN6PR04MB4640.namprd04.prod.outlook.com (2603:10b6:805:a4::19)
- by SN6PR04MB3997.namprd04.prod.outlook.com (2603:10b6:805:40::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3153.22; Thu, 9 Jul
- 2020 08:31:39 +0000
-Received: from SN6PR04MB4640.namprd04.prod.outlook.com
- ([fe80::1c80:dad0:4a83:2ef2]) by SN6PR04MB4640.namprd04.prod.outlook.com
- ([fe80::1c80:dad0:4a83:2ef2%4]) with mapi id 15.20.3153.031; Thu, 9 Jul 2020
- 08:31:39 +0000
-From: Avri Altman <Avri.Altman@wdc.com>
-To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
- <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
- <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
- <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "bvanassche@acm.org" <bvanassche@acm.org>
-Subject: RE: [PATCH v3] scsi: ufs: Cleanup completed request without interrupt
- notification
-Thread-Topic: [PATCH v3] scsi: ufs: Cleanup completed request without
- interrupt notification
-Thread-Index: AQHWU5heDqJFApuOo0yQOIjuO+/O36j+4j7g
-Date: Thu, 9 Jul 2020 08:31:38 +0000
-Message-ID: <SN6PR04MB4640BEAFE18BDC933FC7EC95FC640@SN6PR04MB4640.namprd04.prod.outlook.com>
-References: <20200706132113.21096-1-stanley.chu@mediatek.com>
-In-Reply-To: <20200706132113.21096-1-stanley.chu@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mediatek.com; dkim=none (message not signed)
- header.d=none;mediatek.com; dmarc=none action=none header.from=wdc.com;
-x-originating-ip: [212.25.79.133]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 665e6441-f06d-4590-f60a-08d823e28001
-x-ms-traffictypediagnostic: SN6PR04MB3997:
-x-microsoft-antispam-prvs: <SN6PR04MB399775926FA2C72C1F31482BFC640@SN6PR04MB3997.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:1751;
-x-forefront-prvs: 04599F3534
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: MTkVQOORCQ+ItNsMGoLA+xuw7LF1bDYRp+iyxbgS3U22JqvUBvxIgcicDMlihE8Ud+3oROmHC6/LkSeZbLSf38EQ9YJr59UmEerTy3ApOlFJ2hlHHKvmAWEOi3wRmJMkco/VPcZ3OpfycvDk0rubeLRn/Y53Hgz+YBbJ5GILgY91uzVf4Su9Y27Kkg73y6GUzya8a49CYslp9IXIejjyJ7xAwv0Uu6cH3yDwjPI1ckyBuNh0xQRp6l99lpzUAhqlS2Te2eO4tWXMWC8ZnJbmHeUFIGhngmJkclU1rbC+byMZ1GzAind3asy0eol/wcxZgB0CltHgfqtWXtNDw4WxRA==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR04MB4640.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(39860400002)(366004)(396003)(346002)(376002)(136003)(8936002)(7416002)(186003)(6506007)(478600001)(52536014)(5660300002)(66556008)(66446008)(66476007)(64756008)(66946007)(76116006)(7696005)(26005)(4326008)(33656002)(55016002)(9686003)(8676002)(110136005)(86362001)(54906003)(316002)(83380400001)(2906002)(71200400001)(15650500001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: VB7j0/TJzQVR6fomZg8zgSw2HNqIn0PNt1thFo7ijLLYY2XFOBjlQeqjGMm6EXMVVeeAqHkoRVSwwOj6zo3ICVtfdTQtzRrfUUMikrbEn5MymvEX3orIjhq/xRZI61GJujBXNSkIw2ZR8zSz49auqHwN8BJEtuh3RjaWt2SpF1iSyfw5bKUWR6GrRZKxoAcMPes6suQDXIMt4yvNwLfSYB6+/RFAFDyJD5R+xOUgj7T3oFbiTpIpBlNpSMxWSYmJxEPD97wSUvm6pGKzXbtliaFmVHxNDwEMTK3mdM5YhY3tk+btsrr49jAb/Bq/ypd42KI5EUWp3jeNwQDRDxpRIfh75XuofTMxx61H2JkSaj8F43Wh3FZrZsO0t96hOnAq5Wo8o4eweN54iB3fibC7K4ETuh1wD7sDbf4hdCircb5BUsGyJXKjsldMyaV0503pUWww4a1+7XtZZSn+RbQrmXtRaXUUjqBiiM7LbNJzDhA=
-x-ms-exchange-transport-forked: True
+ id 1jtSbT-0002RE-Mv; Thu, 09 Jul 2020 09:12:29 +0000
+X-UUID: 6d6e1a3521294eb5a10e472c1ddb0823-20200709
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=5IFnrClxea+W0uhCfZ9UPEzqQzIug9UzC95zh8SU5JQ=; 
+ b=usF3Ok2tHqAwGjKUhhzk1fSPCATIsuT6dCZnfXHFZ/J3BcV/z6LsdGyRZJrawV3u6HojJbICp7/S79IrAq2I5bnlSQyJKpfMKely+Z0h1+6jd5plewC0uIE9INpyHkIB+i+UMLqXePAVZGwjpG91w2sKORJk66DCfqELwcFdaPM=;
+X-UUID: 6d6e1a3521294eb5a10e472c1ddb0823-20200709
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <neal.liu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 519143183; Thu, 09 Jul 2020 01:12:10 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 9 Jul 2020 02:12:17 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 9 Jul 2020 17:12:15 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 9 Jul 2020 17:12:18 +0800
+From: Neal Liu <neal.liu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v2] Add MediaTek MT6779 devapc driver
+Date: Thu, 9 Jul 2020 17:12:05 +0800
+Message-ID: <1594285927-1840-1-git-send-email-neal.liu@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR04MB4640.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 665e6441-f06d-4590-f60a-08d823e28001
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Jul 2020 08:31:38.8429 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 2cq1zmKEfR9AqZypCwZzRcsU2LIeDFUYQcaCsBQHhFDuXdQ6trcxb+lNRtWAEm8Fr0zG5EVBQ8bOvK+uXIU02w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB3997
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200709_043147_009647_46A29167 
-X-CRM114-Status: GOOD (  22.15  )
+X-CRM114-CacheID: sfid-20200709_051228_044324_BE4EFB46 
+X-CRM114-Status: UNSURE (   9.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -149,94 +81,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
- "cc.chou@mediatek.com" <cc.chou@mediatek.com>,
- "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
- "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "cang@codeaurora.org" <cang@codeaurora.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "beanhuo@micron.com" <beanhuo@micron.com>,
- "chaotian.jing@mediatek.com" <chaotian.jing@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
+Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ lkml <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org,
+ Neal Liu <neal.liu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
- 
-> 
-> If somehow no interrupt notification is raised for a completed request
-> and its doorbell bit is cleared by host, UFS driver needs to cleanup
-> its outstanding bit in ufshcd_abort().
-Theoretically, this case is already accounted for - 
-See line 6407: a proper error is issued and eventually outstanding req is cleared.
+These patch series introduce a MediaTek MT6779 devapc driver.
 
-Can you go over the scenario you are attending line by line,
-And explain why ufshcd_abort does not account for it?
+MediaTek bus fabric provides TrustZone security support and data protection
+to prevent slaves from being accessed by unexpected masters.
+The security violation is logged and sent to the processor for further
+analysis or countermeasures.
 
-> 
-> Otherwise, system may crash by below abnormal flow:
-> 
-> After this request is requeued by SCSI layer with its
-> outstanding bit set, the next completed request will trigger
-> ufshcd_transfer_req_compl() to handle all "completed outstanding
-> bits". In this time, the "abnormal outstanding bit" will be detected
-> and the "requeued request" will be chosen to execute request
-> post-processing flow. This is wrong and blk_finish_request() will
-> BUG_ON because this request is still "alive".
-> 
-> It is worth mentioning that before ufshcd_abort() cleans the timed-out
-> request, driver need to check again if this request is really not
-> handled by __ufshcd_transfer_req_compl() yet because it may be
-> possible that the interrupt comes very lately before the cleaning.
-What do you mean? Why checking the outstanding reqs isn't enough?
+Any occurrence of security violation would raise an interrupt, and it will
+be handled by mtk-devapc driver.
+The violation information is printed in order to find the murderer.
 
-> 
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> ---
->  drivers/scsi/ufs/ufshcd.c | 9 +++++++--
->  1 file changed, 7 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> index 8603b07045a6..f23fb14df9f6 100644
-> --- a/drivers/scsi/ufs/ufshcd.c
-> +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -6462,7 +6462,7 @@ static int ufshcd_abort(struct scsi_cmnd *cmd)
->                         /* command completed already */
->                         dev_err(hba->dev, "%s: cmd at tag %d successfully cleared from
-> DB.\n",
->                                 __func__, tag);
-> -                       goto out;
-> +                       goto cleanup;
-But you've arrived here only if (!(test_bit(tag, &hba->outstanding_reqs))) - 
-See line 6400. 
+changes since v1:
+- move SoC specific part to DT data.
+- remove unnecessary boundary check.
+- remove unnecessary data type declaration.
+- use read_poll_timeout() instread of for loop polling.
+- revise coding style elegantly.
 
->                 } else {
->                         dev_err(hba->dev,
->                                 "%s: no response from device. tag = %d, err %d\n",
-> @@ -6496,9 +6496,14 @@ static int ufshcd_abort(struct scsi_cmnd *cmd)
->                 goto out;
->         }
-> 
-> +cleanup:
-> +       spin_lock_irqsave(host->host_lock, flags);
-> +       if (!test_bit(tag, &hba->outstanding_reqs)) {
-> +               spin_unlock_irqrestore(host->host_lock, flags);
-> +               goto out;
-> +       }
->         scsi_dma_unmap(cmd);
-> 
-> -       spin_lock_irqsave(host->host_lock, flags);
->         ufshcd_outstanding_req_clear(hba, tag);
->         hba->lrb[tag].cmd = NULL;
->         spin_unlock_irqrestore(host->host_lock, flags);
-> --
-> 2.18.0
+*** BLURB HERE ***
 
+Neal Liu (2):
+  dt-bindings: devapc: add bindings for mtk-devapc
+  soc: mediatek: add mtk-devapc driver
+
+ .../bindings/soc/mediatek/devapc.yaml         |  82 +++
+ drivers/soc/mediatek/Kconfig                  |   9 +
+ drivers/soc/mediatek/Makefile                 |   1 +
+ drivers/soc/mediatek/mtk-devapc.c             | 466 ++++++++++++
+ drivers/soc/mediatek/mtk-devapc.h             | 670 ++++++++++++++++++
+ 5 files changed, 1228 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
+ create mode 100644 drivers/soc/mediatek/mtk-devapc.c
+ create mode 100644 drivers/soc/mediatek/mtk-devapc.h
+
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
