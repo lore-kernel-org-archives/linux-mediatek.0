@@ -2,140 +2,71 @@ Return-Path: <SRS0=UXZI=AU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AFCC9C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2020 11:09:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 86A7DC433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2020 12:18:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7D0992076A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2020 11:09:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5398F2074B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2020 12:18:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ENQLKh5l";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="MLBbvEsb";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="gPnxNtl3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7D0992076A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="j+sDhdc1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5398F2074B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=61qHkdaBjufxA3M1Zv1GyMkJXOo0x+Jv/ANVS5upZVQ=; b=ENQLKh5lwOmFJ4hZVyA3MyDDX
-	7i2wfKNmoB5mKU+wJq+O/TPPtWqxy4kTHEn+YukkOofGD9VLIOF5hBoNV/nvG7M7l4c2+V3b+CR32
-	xh2PEnE9hQeiKbSMWsg2hGSdkZxG5WX75+6r1CzXht0rDm/C+MBhA2F0zYj/kGisf8QUPEZHDIf7p
-	LdLI4VmOWPPcoG+W9dtZPT3fZtkBXJASKy61ko8ts66I9PaV5TMJP7gP487AqIgs+ho2zeLU9ORW8
-	k6Qbt+MmqSZlhpHQPt8iv3rU3xQf2ZZyOUvl4dZ8lS3M7uFSVfUkReXj6CCKVzEAfHEofXQB2MunB
-	0mE/XFADw==;
+	 bh=6TcReIEuOapGPjn+EcV5CglqOvHuyWqikSKqbiVWOck=; b=j+sDhdc1nGE7XOb8os0M2vttG
+	vyHp0FpG0fKzIPupbB2276HsxXwXacikvlRhXF5lvKo5uMSEU99HFxtDeSJf1Rf3lhi3vzZ4krBRF
+	m1H6r0pJjZZDdpOJjVD2JTHaT33DndR++HoON6C86ZbuIAJueOUhS0/L+VPcBwkaHb03teK7n8Ydz
+	WYKQ40z64JC356hSHQ9aXC689lpxrGozvMORc4dvrNmd9chUkHumuqfG3dHfTVrGmXP3njcTp0QkJ
+	sKrpWnXt9WY9/leRR7Y5uoPupCAV4svHiqnaW0O8DeV23eklIM2U4sG92KOksNFAQObdH7dHOW99P
+	g8QgCUjHw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jtUQf-0005o9-PL; Thu, 09 Jul 2020 11:09:25 +0000
-Received: from esa1.hgst.iphmx.com ([68.232.141.245])
+	id 1jtVVU-00043e-Ky; Thu, 09 Jul 2020 12:18:29 +0000
+Received: from mail-oi1-f194.google.com ([209.85.167.194])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jtUQc-0005nO-TF; Thu, 09 Jul 2020 11:09:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1594292962; x=1625828962;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=W9bIVcjMLF66t5ln9VLgWcuzP1iCx1NxlRfonIJDFQo=;
- b=MLBbvEsb2lhBQvOdJXUAh2LbPVrZUKKep/oo364xX5r1CsL94VWIhqd3
- DSYvdBLXcpDJQMwscdetfKzGiiH2OIX0svISjvncVRIXQ6qBHga9r9y3b
- usQQfyPS7osyMTdnRp15xVwyvDChqLtnKfhPjfU3XtSotvGkG1rUOqBFe
- jx3bCE9n9Fy65GjEZUqQLRVeEVZ7gbkoVBZ/2HBIaAHC8MkD9EUUd9Ybe
- emJdDh11OtBJ2VK14Vz1dyPL6B6HRdl6gOufpFiNrrR61RHddANPQwZUi
- KbnOTG17MOVSomZ3jMIKnt3RsBCXm+eJEbW10kAF5A8Yon3V0N1OiiRPJ w==;
-IronPort-SDR: lSiTNE5bzgXXJw3jgvxdfKV5xPYBU/OEm3GRzwK/jKnCzSGsPEX7XyC3nLFNO3wcmWKBEIONzR
- cpZU705V4btcxNOx4VpF2Jhr92UTtZBJ0FeZtIL1bgpyMnjDATvAZzQAhFBkj/prhCceX+sCEd
- jwwKcyhLHEM37bfNAderSSjGLonpC7ReBr+/fOzpg9r2Ck1ru0cXUNzkkixJ7OdsBgvij8NT9c
- 4ayvJNXMlduHqlUyBy0ZAf/NJ70XQdWcqlHIP5SjRgA7zNCk7K9k3DoZ0Gl0d1Q9Y1Szd/Ihh3
- wk0=
-X-IronPort-AV: E=Sophos;i="5.75,331,1589212800"; d="scan'208";a="251254663"
-Received: from mail-mw2nam10lp2100.outbound.protection.outlook.com (HELO
- NAM10-MW2-obe.outbound.protection.outlook.com) ([104.47.55.100])
- by ob1.hgst.iphmx.com with ESMTP; 09 Jul 2020 19:09:20 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=P+lruQujze4sA3bsQqWO1WNkAqblMM0KSXKUAUTVsnyPehbLzFlbhULYedRi9V6/lbW9iNqZD1dbyc+VBFSzZEBXCwTXy+9UyT5X86186uK5Y8RkMRR+W1wtli6pcWuk4D/o0phDq5fR/yrc2c19bLQcAaPt8F42tg4hP38D5HY60Lv0iwR6tVttzkY4OYgQgIb99evJvs9ckSsyD33o2/jGBmqZGhgcejRAiYYBgZCWUUBaVle6uLrp81h+VjaecGnxvhyPZHUe8nBqR4vWYVngI3EGtrKBiMr8cwY/ceiJuibs4DWV+c24IGA3YNyuzfX5wXh6LJFARalkavwVbg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sglOC196SCdpj9I4HskwHMIiPN5E4p5a8l4wEV79t4A=;
- b=W891gJ618oE8mo3EM1e0JiAQgRzFKHtZUQNwyjhxb7+r3kWdoKR104HRRutrVwmMsw8S9V14iLGO8a1ZNSkl6wj9cReFKKyDYe2k9zTCU4aM7iMPsiWbNryiMinu09/RBxnXrTlJzqJDRCj+6daPOr5C44HYSSLEpiaI513CZg4VZ1guyZsUDesI2jmASraLJghJ+ZKdxFh526Lcmak9q9ZOaGJxVjEPSuYFg3HDJSqFE2LnnbevSqt5EMy28g1DYojY5eWHT8NPgXwPrR+dm7q2Y9p89ceIKUcflzG86RpUsrXwRUJ+zqRR8t3aMnJaT583IwWKHhiHPPIgHPPaXA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sglOC196SCdpj9I4HskwHMIiPN5E4p5a8l4wEV79t4A=;
- b=gPnxNtl3DVs8qgVvaKb2NL4lKTeaDN1RCVTdGSoYQfTImT30WqFEOLIHbs+fmVYBWsLFUGsD5Izes8W3x1+ATO6Iccno76B4tUrmyVCNnmiClNyLxfSWWPth5hu9xI4Pufi1PrxmfR1SHy32UlMVAR/xULSW4Sepo/+qd3htETg=
-Received: from BYAPR04MB4629.namprd04.prod.outlook.com (2603:10b6:a03:14::14)
- by BY5PR04MB7043.namprd04.prod.outlook.com (2603:10b6:a03:223::8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3174.20; Thu, 9 Jul
- 2020 11:09:19 +0000
-Received: from BYAPR04MB4629.namprd04.prod.outlook.com
- ([fe80::40d:aa59:cf3:2386]) by BYAPR04MB4629.namprd04.prod.outlook.com
- ([fe80::40d:aa59:cf3:2386%7]) with mapi id 15.20.3174.022; Thu, 9 Jul 2020
- 11:09:18 +0000
-From: Avri Altman <Avri.Altman@wdc.com>
-To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
- <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
- <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
- <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "bvanassche@acm.org" <bvanassche@acm.org>
-Subject: RE: [PATCH v1 0/2] scsi: ufs: Fix and simplify setup_xfer_req vop and
- request's completion timestamp
-Thread-Topic: [PATCH v1 0/2] scsi: ufs: Fix and simplify setup_xfer_req vop
- and request's completion timestamp
-Thread-Index: AQHWU1uzfqR14Wy2LUeMjMJ0UfNXgaj/G/cQ
-Date: Thu, 9 Jul 2020 11:09:18 +0000
-Message-ID: <BYAPR04MB4629D34091B0059B077CF98CFC640@BYAPR04MB4629.namprd04.prod.outlook.com>
-References: <20200706060707.32608-1-stanley.chu@mediatek.com>
-In-Reply-To: <20200706060707.32608-1-stanley.chu@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mediatek.com; dkim=none (message not signed)
- header.d=none;mediatek.com; dmarc=none action=none header.from=wdc.com;
-x-originating-ip: [212.25.79.133]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 293978f2-bec4-4c65-4f94-08d823f8868b
-x-ms-traffictypediagnostic: BY5PR04MB7043:
-x-microsoft-antispam-prvs: <BY5PR04MB704333D7ADDE62DB68A34EABFC640@BY5PR04MB7043.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:3968;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: xOzvkWKkOv1p+ddqjs1FMNcWZX2tvJaTmGgFHkOLlkV0FFDevXv9NjVge+Kou0M8giZYGysv3PlApLyz72WrhbtGAjzr5+m/uizlK4Y80qB6FplBI66ngbnMBE5pzX957A9F4OjvYygM5rSPYCv2PZdT2yQ4kmlZEWW/2TLlsNVKHXoA4qCajrxvdldRHPJKscR4zlkdQATLrM3OjxKZTuu5sTm2YQMGhxed6JgpznjgKNF+tnseuvWszWbg+KmFOx38ECHYmBuL7lnErcSpRfwt5AzGWtaj7ldzqHsAco/XaJihxB7tiWpj8nzRyXseoA1tVX4wC6CDabYIIy7p5A==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR04MB4629.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(39860400002)(396003)(346002)(136003)(366004)(376002)(186003)(8676002)(26005)(4326008)(8936002)(86362001)(71200400001)(33656002)(316002)(7696005)(4744005)(2906002)(5660300002)(478600001)(6506007)(52536014)(7416002)(66476007)(66946007)(76116006)(55016002)(110136005)(66556008)(9686003)(66446008)(54906003)(83380400001)(64756008);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: /GlEsgG5NMVAeiKv+NnlS3sSX5X+elVsRXEH5Cep+6wmj9VTV95xjwKu3n3hJ/AeKSfCXOWYA6ahmwmvozYayTLkY2N/mPkH62WMPW0OkUPd6k5Oxg5AI9Cy76YOUgKI7PHHavF/tLzl9T9paSgSBC+KSSKX8NUXE6r5mhDAatSXpQYEXKwM/IucdHPSsBq5rbIjExyEkMpqnNNF7bTiLLcgZNtpc9Ids9bHSSuO/nFLJ6poSfPP8XmsbCJzuEYt5KS3KnQ8VsxRgt9xjVtDWebwxKlI09H5o+GffL6N1IouLNnAZVNcMZi0KKYXFlwp46ONMRM+fTGWRIy9lmTZjgEXXPqxeW6Dxa/hsQ2pt+BgvHbuJrOds8rb65ok0zGAIY1It9gOXJ8amSagsq+Qk+MPs7ESkQDGi1ZxtH6kWZWZsLiW/G+iIrp/WxzMz6TY8b+gRINPynsrLz3/lsysAP3YxIYCqCMH8cabrfEOLm2+A9ltPgtSJPsRHo2gVEX3
-x-ms-exchange-transport-forked: True
+ id 1jtVVR-00042r-Ab; Thu, 09 Jul 2020 12:18:26 +0000
+Received: by mail-oi1-f194.google.com with SMTP id h17so1708827oie.3;
+ Thu, 09 Jul 2020 05:18:25 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=BHVNxL+/4Dut3OSZTR+rYs7XqFLN3i0nnfmN8u7+xOA=;
+ b=aGjJc0a+/tDSItOIbfrh9d7w5GpqMWXm89DNkSSAFCNM/CRwFoLisOKwWWU25cPJ86
+ nuJOAfN7u06ciN+bwHwO1s/8k17drDjXHHpSEU1qwGiWFUBlAtX6O5lsiej96XmW051i
+ G0QSIQvsRfpYaSDxRYlRlb1P4I+L6+VEolhJ3xfG6Hltl71AwYLtG511i5DfMNxeNwoN
+ LH4MxHHfd/2azMP6yIFxnGmLxYBx4cPOQL5a3v8p4Va4cQqH7IwB5O2JTVcdtDHFu7Ct
+ wlgWd0MkwFrocJuzhaAq8QDZQMUun3eF9TGtH5UAkh1X8jopk0E1zgkOOzvI6Myj9VcN
+ DGpA==
+X-Gm-Message-State: AOAM533Y0uvlAhgbbHKXt9M7OBB38EDQEM6Lsyp5wlc2sdlkZ4PVq0iW
+ pIzlticPc7Ji6p1TddSsObJWY9RbpqeaTrsgP5c=
+X-Google-Smtp-Source: ABdhPJxtj1vjB44EgNVrKbINxMf3MLBQQVOimbtqX57PoimFmHD9A3C9Fv4wq87LSAfsDKch7XlhTuenX5e7j0W2xjI=
+X-Received: by 2002:aca:4a89:: with SMTP id
+ x131mr11420648oia.103.1594297104569; 
+ Thu, 09 Jul 2020 05:18:24 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR04MB4629.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 293978f2-bec4-4c65-4f94-08d823f8868b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Jul 2020 11:09:18.7014 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 3NtM1ssRg/b39hiivGZyCn3V549XHCbejncGBGJGsGx5RvsUmO067AzQaf19187p3pzJxzze2N7YlEt42nEh6A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB7043
+References: <1594005196-16327-1-git-send-email-neal.liu@mediatek.com>
+ <1594005196-16327-2-git-send-email-neal.liu@mediatek.com>
+In-Reply-To: <1594005196-16327-2-git-send-email-neal.liu@mediatek.com>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Thu, 9 Jul 2020 14:18:13 +0200
+Message-ID: <CAJZ5v0ihB5AJwSRpjaOnXAmciregzxARL5xfudu1h+=_LXaE_w@mail.gmail.com>
+Subject: Re: [PATCH v2] cpuidle: change enter_s2idle() prototype
+To: Neal Liu <neal.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200709_070923_193944_CE8C712A 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20200709_081825_402353_8BF46C6C 
+X-CRM114-Status: GOOD (  24.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -147,43 +78,158 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
- "cc.chou@mediatek.com" <cc.chou@mediatek.com>,
- "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
- "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "cang@codeaurora.org" <cang@codeaurora.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "beanhuo@micron.com" <beanhuo@micron.com>,
- "chaotian.jing@mediatek.com" <chaotian.jing@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
+Cc: Jacob Pan <jacob.jun.pan@linux.intel.com>,
+ linux-tegra <linux-tegra@vger.kernel.org>, wsd_upstream@mediatek.com,
+ Linux PM <linux-pm@vger.kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, lkml <linux-kernel@vger.kernel.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ ACPI Devel Maling List <linux-acpi@vger.kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ Sami Tolvanen <samitolvanen@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, Len Brown <lenb@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Looks good to me.
-Thanks,
-Avri
+On Mon, Jul 6, 2020 at 5:13 AM Neal Liu <neal.liu@mediatek.com> wrote:
+>
+> Control Flow Integrity(CFI) is a security mechanism that disallows
+> changes to the original control flow graph of a compiled binary,
+> making it significantly harder to perform such attacks.
+>
+> init_state_node() assign same function callback to different
+> function pointer declarations.
+>
+> static int init_state_node(struct cpuidle_state *idle_state,
+>                            const struct of_device_id *matches,
+>                            struct device_node *state_node) { ...
+>         idle_state->enter = match_id->data; ...
+>         idle_state->enter_s2idle = match_id->data; }
+>
+> Function declarations:
+>
+> struct cpuidle_state { ...
+>         int (*enter) (struct cpuidle_device *dev,
+>                       struct cpuidle_driver *drv,
+>                       int index);
+>
+>         void (*enter_s2idle) (struct cpuidle_device *dev,
+>                               struct cpuidle_driver *drv,
+>                               int index); };
+>
+> In this case, either enter() or enter_s2idle() would cause CFI check
+> failed since they use same callee.
 
- 
-> 
-> Hi,
-> This small series fixes and simplifies setup_xfer_req vop and request's
-> completion timestamp.
-> 
-> Stanley Chu (2):
->   scsi: ufs: Simplify completion timestamp for SCSI and query commands
->   scsi: ufs: Fix and simplify setup_xfer_req variant operation
-> 
->  drivers/scsi/ufs/ufshcd.c | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
-> 
+Can you please explain this in a bit more detail?
+
+As it stands, I don't understand the problem statement enough to apply
+the patch.
+
+> Align function prototype of enter() since it needs return value for
+> some use cases. The return value of enter_s2idle() is no
+> need currently.
+
+So last time I requested you to document why ->enter_s2idle needs to
+return an int in the code, which has not been done.  Please do that.
+
+> Signed-off-by: Neal Liu <neal.liu@mediatek.com>
+> ---
+>  drivers/acpi/processor_idle.c   |    6 ++++--
+>  drivers/cpuidle/cpuidle-tegra.c |    8 +++++---
+>  drivers/idle/intel_idle.c       |    6 ++++--
+>  include/linux/cpuidle.h         |    6 +++---
+>  4 files changed, 16 insertions(+), 10 deletions(-)
+>
+> diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
+> index 75534c5..6ffb6c9 100644
+> --- a/drivers/acpi/processor_idle.c
+> +++ b/drivers/acpi/processor_idle.c
+> @@ -655,8 +655,8 @@ static int acpi_idle_enter(struct cpuidle_device *dev,
+>         return index;
+>  }
+>
+> -static void acpi_idle_enter_s2idle(struct cpuidle_device *dev,
+> -                                  struct cpuidle_driver *drv, int index)
+> +static int acpi_idle_enter_s2idle(struct cpuidle_device *dev,
+> +                                 struct cpuidle_driver *drv, int index)
+>  {
+>         struct acpi_processor_cx *cx = per_cpu(acpi_cstate[index], dev->cpu);
+>
+> @@ -674,6 +674,8 @@ static void acpi_idle_enter_s2idle(struct cpuidle_device *dev,
+>                 }
+>         }
+>         acpi_idle_do_entry(cx);
+> +
+> +       return 0;
+>  }
+>
+>  static int acpi_processor_setup_cpuidle_cx(struct acpi_processor *pr,
+> diff --git a/drivers/cpuidle/cpuidle-tegra.c b/drivers/cpuidle/cpuidle-tegra.c
+> index 1500458..a12fb14 100644
+> --- a/drivers/cpuidle/cpuidle-tegra.c
+> +++ b/drivers/cpuidle/cpuidle-tegra.c
+> @@ -253,11 +253,13 @@ static int tegra_cpuidle_enter(struct cpuidle_device *dev,
+>         return err ? -1 : index;
+>  }
+>
+> -static void tegra114_enter_s2idle(struct cpuidle_device *dev,
+> -                                 struct cpuidle_driver *drv,
+> -                                 int index)
+> +static int tegra114_enter_s2idle(struct cpuidle_device *dev,
+> +                                struct cpuidle_driver *drv,
+> +                                int index)
+>  {
+>         tegra_cpuidle_enter(dev, drv, index);
+> +
+> +       return 0;
+>  }
+>
+>  /*
+> diff --git a/drivers/idle/intel_idle.c b/drivers/idle/intel_idle.c
+> index f449584..b178da3 100644
+> --- a/drivers/idle/intel_idle.c
+> +++ b/drivers/idle/intel_idle.c
+> @@ -175,13 +175,15 @@ static __cpuidle int intel_idle(struct cpuidle_device *dev,
+>   * Invoked as a suspend-to-idle callback routine with frozen user space, frozen
+>   * scheduler tick and suspended scheduler clock on the target CPU.
+>   */
+> -static __cpuidle void intel_idle_s2idle(struct cpuidle_device *dev,
+> -                                       struct cpuidle_driver *drv, int index)
+> +static __cpuidle int intel_idle_s2idle(struct cpuidle_device *dev,
+> +                                      struct cpuidle_driver *drv, int index)
+>  {
+>         unsigned long eax = flg2MWAIT(drv->states[index].flags);
+>         unsigned long ecx = 1; /* break on interrupt flag */
+>
+>         mwait_idle_with_hints(eax, ecx);
+> +
+> +       return 0;
+>  }
+>
+>  /*
+> diff --git a/include/linux/cpuidle.h b/include/linux/cpuidle.h
+> index ec2ef63..bee10c0 100644
+> --- a/include/linux/cpuidle.h
+> +++ b/include/linux/cpuidle.h
+> @@ -66,9 +66,9 @@ struct cpuidle_state {
+>          * suspended, so it must not re-enable interrupts at any point (even
+>          * temporarily) or attempt to change states of clock event devices.
+>          */
+> -       void (*enter_s2idle) (struct cpuidle_device *dev,
+> -                             struct cpuidle_driver *drv,
+> -                             int index);
+> +       int (*enter_s2idle)(struct cpuidle_device *dev,
+> +                           struct cpuidle_driver *drv,
+> +                           int index);
+>  };
+>
+>  /* Idle State Flags */
 > --
-> 2.18.0
+> 1.7.9.5
 
 _______________________________________________
 Linux-mediatek mailing list
