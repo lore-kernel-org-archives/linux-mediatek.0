@@ -2,22 +2,22 @@ Return-Path: <SRS0=UXZI=AU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 054A6C433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2020 13:41:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 20002C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2020 15:25:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CC32B20772
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2020 13:41:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DF381207FB
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2020 15:25:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uYgf2XOJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC32B20772
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lunn.ch
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sPC80m5k"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DF381207FB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -25,33 +25,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=T403RWkDiQYlUF/XbNvQflXLL0KnwXJ7Y3bA6tVjWqM=; b=uYgf2XOJnaeNjD5d0ryPkrI2B
-	nkAZBsVQzDUs1ZdNptFCH1vbz4FpYgYk4cUa0EqORU/w2fbvNnPlcn3/sTKCXhm3PRbaTA/Ha90F7
-	AriKI0qyuJB6u1BqQKWGPooOQzGrFxwn59/JqQwIlfglHkJ4niUW4ivijdVIsHKlB9o78EAsag3Fn
-	qqVJEv+WXxpAV0Ye2omTpmPZ+90ks5uqGOz2uZFF/B/rQAKs3WbJ3tmuBhpn75INYPyzbYi+0yllX
-	liYzB/yeCGX/Q69KC2XditCxLULjW7t0YR5ia38ekXzaneOzyVzPVKOR853xAq3HSAkuG4uuyWqmM
-	ouZRsdJpw==;
+	 bh=VSSisrG2jz2u+s4CBXxBPNFPiX0J2vhieVb9QWj2BeY=; b=sPC80m5k82gP3bThDVpYsQYRn
+	7ReCnnXu4SoRKJUsezeWYrvIyZJhbnjuLpmfb1nWSv2/wiVc4Ea3Dv0wkrXmfbhIoidaS05pnDK7t
+	07D6Juw6J50WEr311fQVUv/AVKKp2mmJ6wqggBqbySN9NFe5Z4Etbs4TWEXLwsLcw5LYgfUcBeADg
+	RvyRWVRH5ATJ1cy8lrj9EjB2GHn3XDwWEeJkH5UnOy3HR3Ko51e4FHSeP3g7BZD21aGA2nF79xs1u
+	rmiDSTKsmNhfuoRRrcMwOrk/vPeU+TsAXdes6relKWy3IkPh9hOCM030ao7tkVaZv8Vp24i2sEmqx
+	ZJxD1seMg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jtWo1-0006NB-2v; Thu, 09 Jul 2020 13:41:41 +0000
-Received: from vps0.lunn.ch ([185.16.172.187])
+	id 1jtYPx-0007EM-HM; Thu, 09 Jul 2020 15:24:57 +0000
+Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jtWny-0006Mg-Ok; Thu, 09 Jul 2020 13:41:39 +0000
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94)
- (envelope-from <andrew@lunn.ch>)
- id 1jtWnb-004L5F-7c; Thu, 09 Jul 2020 15:41:15 +0200
-Date: Thu, 9 Jul 2020 15:41:15 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Frank Wunderlich <frank-w@public-files.de>
-Subject: Re: [PATCH v2] net: ethernet: mtk_eth_soc: fix mtu warning
-Message-ID: <20200709134115.GK928075@lunn.ch>
-References: <20200709055742.3425-1-frank-w@public-files.de>
+ id 1jtYPu-0007D7-A5; Thu, 09 Jul 2020 15:24:55 +0000
+Received: by theia.8bytes.org (Postfix, from userid 1000)
+ id A19B95D1; Thu,  9 Jul 2020 17:24:51 +0200 (CEST)
+Date: Thu, 9 Jul 2020 17:24:50 +0200
+From: Joerg Roedel <joro@8bytes.org>
+To: Qian Cai <cai@lca.pw>
+Subject: Re: [PATCH v3 00/34] iommu: Move iommu_group setup to IOMMU core code
+Message-ID: <20200709152450.GC27672@8bytes.org>
+References: <20200429133712.31431-1-joro@8bytes.org>
+ <20200701004020.GA6221@lca.pw> <20200704001709.GA1502@lca.pw>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200709055742.3425-1-frank-w@public-files.de>
+In-Reply-To: <20200704001709.GA1502@lca.pw>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200709_094138_815568_7622C709 
-X-CRM114-Status: GOOD (  17.48  )
+X-CRM114-CacheID: sfid-20200709_112454_470624_478400A6 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,76 +64,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
- linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
- =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>,
- linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, linux-arm-kernel@lists.infradead.org,
- Felix Fietkau <nbd@nbd.name>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: Heiko Stuebner <heiko@sntech.de>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, linux-tegra@vger.kernel.org,
+ Thierry Reding <thierry.reding@gmail.com>, Daniel Drake <drake@endlessm.com>,
+ Will Deacon <will@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ linux-samsung-soc@vger.kernel.org, iommu@lists.linux-foundation.org,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>,
+ jonathan.derrick@intel.com, linux-s390@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ virtualization@lists.linux-foundation.org,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>,
+ David Woodhouse <dwmw2@infradead.org>, linux-kernel@vger.kernel.org,
+ Rob Clark <robdclark@gmail.com>, Kukjin Kim <kgene@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>, Lu Baolu <baolu.lu@linux.intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 09, 2020 at 07:57:42AM +0200, Frank Wunderlich wrote:
-> From: Ren=E9 van Dorst <opensource@vdorst.com>
-> =
+On Fri, Jul 03, 2020 at 08:17:09PM -0400, Qian Cai wrote:
+> FYI, I have just sent a patch to fix this,
+> 
+> https://lore.kernel.org/linux-iommu/20200704001003.2303-1-cai@lca.pw/
 
-> in recent Kernel-Versions there are warnings about incorrect MTU-Size
-> like these:
-> =
+Just queued that fix, thanks. Please don't send patches to my suse
+email address, use only the 8bytes.org one.
 
-> mt7530 mdio-bus:00: nonfatal error -95 setting MTU on port x
-> eth0: mtu greater than device maximum
-> mtk_soc_eth 1b100000.ethernet eth0: error -22 setting MTU to include DSA =
-overhead
-> =
+Thanks,
 
-> Fixes: bfcb813203e6 ("net: dsa: configure the MTU for switch ports")
-> Fixes: 72579e14a1d3 ("net: dsa: don't fail to probe if we couldn't set th=
-e MTU")
-> Fixes: 7a4c53bee332 ("net: report invalid mtu value via netlink extack")
-> Signed-off-by: Ren=E9 van Dorst <opensource@vdorst.com>
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
-> changes in v2:
->   Fixes: tag show 12-chars of sha1 and moved above other tags
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> =
+	Joerg
 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/et=
-hernet/mediatek/mtk_eth_soc.c
-> index 85735d32ecb0..00e3d70f7d07 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -2891,6 +2891,10 @@ static int mtk_add_mac(struct mtk_eth *eth, struct=
- device_node *np)
->  	eth->netdev[id]->irq =3D eth->irq[0];
->  	eth->netdev[id]->dev.of_node =3D np;
-> =
-
-> +	eth->netdev[id]->mtu =3D 1536;
-
-Hi Frank
-
-Don't change to MTU from the default. Anybody using this interface for
-non-DSA traffic expects the default MTU. DSA will change it as needed.
-
-> +	eth->netdev[id]->min_mtu =3D ETH_MIN_MTU;
-
-No need to set the minimum. ether_setup() will initialize it.
-
-> +	eth->netdev[id]->max_mtu =3D 1536;
-
-I assume this is enough to make the DSA warning go away, but it is the
-true max? I have a similar patch for the FEC driver which i should
-post sometime. Reviewing the FEC code and after some testing, i found
-the real max was 2K - 64.
-
-     Andrew
 
 _______________________________________________
 Linux-mediatek mailing list
