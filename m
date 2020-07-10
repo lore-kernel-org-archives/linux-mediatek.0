@@ -2,76 +2,91 @@ Return-Path: <SRS0=M7U7=AV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1E86C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2020 10:20:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A1F94C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2020 10:42:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C3EB206F4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2020 10:20:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6EEB020767
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2020 10:42:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UrgkCub3";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Cow9P2Hf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C3EB206F4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2B3s2Uv5";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="DH56qud2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6EEB020767
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+6fFeq5t879EFr/nnK5nm5g9x0N2zPA6wMoQyHQj6dY=; b=UrgkCub35Zpwd8CanIM37E318y
-	v6Em28vxoF30nIYu+6kywiIJVo0109j/qNAZAevzcqLl7oGx6BqEV7nZeufeE8AKhGSKakuW6tD8+
-	kylarM0zt7pACdihIOgfSuPPZAJc9biw7bGKTCCyTfMYYyE9FYuJfjE8SQoWw+x0S4mhH9e8EBCa9
-	DnT4/4Ktc7Z+zKZMzptKLX/25W54O1D2Oik/RIGYD5t9j21Eo58DuLxUvlOo+M9wDA7MYi8luuXDV
-	y74kF463GV/NXaxC7sCq9nPN+EoB6tyypzh6XIpwPD+8ok+cdKFHLmFZt/xARIgnEt1VYcMrQilWp
-	vuafc14g==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=s6v1lzbINlKCk2igmc4it62giysGPNojpVDV8j8Y4Oc=; b=2B3s2Uv5S+/LxlNXKm80Eupnj
+	dUlvn/YmCa/55kXVcITa0okcHtCFzPFTJhTKJXNwoEwtEya5TrxPg2DOEYwIVspfAUzPhVSMx/maG
+	jma50vf9x1Ch0voRXcoHfevHmKG9Su1tSajeWwglo9a8bsVlXLCb0d+FjZnkIPCH9/WPmNTEEsL2J
+	/AVGI9tdt5YvD1SUNp9frWqUzJ96eOQj0DCiWdoKILfNKdfCULUj/KAcF958BSfqnAtc1MjSiU+5A
+	w4X19WLzV2Qrg35ob1p5Z1TmXXtCyUTM9snYjryBSNoS9/JrtlZDdFuubHca/vwx/vZW2WtI0wUfv
+	H0tG9Lp/A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jtq8O-0002rZ-Gy; Fri, 10 Jul 2020 10:20:00 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jtqTj-00019y-AW; Fri, 10 Jul 2020 10:42:03 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jtq8H-0002oC-4A; Fri, 10 Jul 2020 10:19:54 +0000
-X-UUID: 8266a0ebdbc74c018f7844123cd39422-20200710
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=CqFYCV4H7t0aImWcS2mYr0/XneJOwb8BbgC6yqbQIlM=; 
- b=Cow9P2Hfqh8FBFlc43D21u3PJDFRr5q3nqoM5OCyH8TJoVYMyEYphklqYRKvHHA8FdzPvyr6DsKoLO1mwr45hLMWd2kZU9bfJGpWc8VKR1JK71lqzCZo3j68YftsVje+Ck4TtIa+v9As6nQwKXb0i8XppGh5E+ZHhfAbo/xA6F0=;
-X-UUID: 8266a0ebdbc74c018f7844123cd39422-20200710
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <dongchun.zhu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1894597618; Fri, 10 Jul 2020 02:19:43 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Jul 2020 03:19:42 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Jul 2020 18:19:34 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 10 Jul 2020 18:19:33 +0800
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: <mchehab@kernel.org>, <andriy.shevchenko@linux.intel.com>,
- <robh+dt@kernel.org>, <mark.rutland@arm.com>, <sakari.ailus@linux.intel.com>, 
- <drinkcat@chromium.org>, <tfiga@chromium.org>, <matthias.bgg@gmail.com>,
- <bingbu.cao@intel.com>
-Subject: [PATCH v13 0/2] media: i2c: Add support for OV02A10 sensor
-Date: Fri, 10 Jul 2020 18:18:48 +0800
-Message-ID: <20200710101850.4604-1-dongchun.zhu@mediatek.com>
-X-Mailer: git-send-email 2.9.2
+ id 1jtqTh-00019N-60; Fri, 10 Jul 2020 10:42:02 +0000
+Received: by mail-wm1-x341.google.com with SMTP id l17so5661431wmj.0;
+ Fri, 10 Jul 2020 03:41:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=jJUd39bjlIspvI1o1u2naIJgRgatARb46UKsj3YoryU=;
+ b=DH56qud2+QsVfrK8NLDzF6y3pDUvhI1TiiWC9GaXIDY+mjOyJsz5RrWGxvnr98N6em
+ Nae2lMEO9/PQm+iyD0C4QFfenRe4mMqw0YWsEQ88YAy9XZZ2llLQnNiO9bwoXrHLj5hy
+ f4IF0+t/glYSyA/C/vbq/600XYSZPlbprs8fEJruKudcF3XSp1LkDkVQFk6nCHj2JJSg
+ pf+47vfnif9+zsGTdSNw7weQvui+2SSxAfu8u9NEaBEoM6Tzai0nnckyXWjqWLFT+dHh
+ F/f3qhdwiK3je5hhCuS0bc8y1qDq5X5Pa86goGdiZCi42yRSpDohJRQNQEEHMcxBNYPk
+ xfpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=jJUd39bjlIspvI1o1u2naIJgRgatARb46UKsj3YoryU=;
+ b=JZnfpWW/4mx5EWDkleaiE5geZAJieIOddIWRB8LNi+OLUMDjyg6YXZ/9/w++Z8NIrW
+ GQkav7cNJBRgp1QzNdKVdllR66ruoM2Qk5Rq422V43Ks+PSr8URFokQHqxkjg7qWDpLt
+ AQ68nZz3YcbNJWTR5gzKwotHcP+f27wsW/NFCLslYUa/Ev1bOJKanxpNO0HvOmWJ/PPq
+ FeVoPU8yqNj0/2duB/qBML/KRHFl3Mt5J6oioRB1bAphBGchX1SYLWUeN87/ed8OBcHg
+ pjLPHNkcfXnvRc7YVlrJmChf9xxL+iJUsMQzQDcXXNTYnkOEOZ7DkpOVhl2w6ajiVTiP
+ ovvQ==
+X-Gm-Message-State: AOAM530ja6oMYs5NmE/7OtEde4Xj4fBCe9+YJAe8fgB218M5Pfj8eXzZ
+ gD3P0XeAz1qVS9/CPX8WGrQ=
+X-Google-Smtp-Source: ABdhPJxcOlZwyO5x1hX0CUcQEPIZG+vWvNQwfyRKiWOJNQTc49ZTOFqDxgJLOxgU2UD9pmY0t6+Xgg==
+X-Received: by 2002:a1c:5459:: with SMTP id p25mr4429409wmi.148.1594377718256; 
+ Fri, 10 Jul 2020 03:41:58 -0700 (PDT)
+Received: from ziggy.stardust ([213.195.114.245])
+ by smtp.gmail.com with ESMTPSA id a4sm10470215wrg.80.2020.07.10.03.41.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 10 Jul 2020 03:41:57 -0700 (PDT)
+Subject: Re: [PATCH v2 1/2] dt-bindings: devapc: add bindings for mtk-devapc
+To: Neal Liu <neal.liu@mediatek.com>, Rob Herring <robh+dt@kernel.org>
+References: <1594285927-1840-1-git-send-email-neal.liu@mediatek.com>
+ <1594285927-1840-2-git-send-email-neal.liu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <a0a58181-525c-f7a3-4385-d778a113d60c@gmail.com>
+Date: Fri, 10 Jul 2020 12:41:56 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <1594285927-1840-2-git-send-email-neal.liu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200710_061953_445977_E4BCDAC6 
-X-CRM114-Status: GOOD (  11.98  )
+X-CRM114-CacheID: sfid-20200710_064201_265008_4FB6F5AF 
+X-CRM114-Status: GOOD (  20.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,73 +98,127 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- shengnan.wang@mediatek.com, sj.huang@mediatek.com,
- linux-mediatek@lists.infradead.org, dongchun.zhu@mediatek.com,
- louis.kuo@mediatek.com, matrix.zhu@aliyun.com, 1095088256@qq.com,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ lkml <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org,
+ wsd_upstream@mediatek.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
 
-This series adds YAML DT binding and V4L2 sub-device driver for Omnivision's
-OV02A10 2-megapixel 10-bit RAW CMOS 1/5" sensor, which has a single MIPI lane
-interface and uses the I2C bus for control and the CSI-2 bus for data.
 
-The driver is implemented with V4L2 framework.
- - Async registered as a V4L2 sub-device.
- - As the first component of camera system including Seninf, ISP pipeline.
- - A media entity that provides one source pad in common and two for dual-cam.
- - Used in camera features on CrOS application.
+On 09/07/2020 11:12, Neal Liu wrote:
+> Add bindings for mtk-devapc.
+> 
+> Signed-off-by: Neal Liu <neal.liu@mediatek.com>
+> ---
+>   .../devicetree/bindings/soc/mediatek/devapc.yaml   |   82 ++++++++++++++++++++
+>   1 file changed, 82 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml b/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
+> new file mode 100644
+> index 0000000..f08243e
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
+> @@ -0,0 +1,82 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +# # Copyright 2020 MediaTek Inc.
+> +%YAML 1.2
+> +---
+> +$id: "http://devicetree.org/schemas/soc/mediatek/devapc.yaml#"
+> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
+> +
+> +title: MediaTek Device Access Permission Control driver
+> +
+> +description: |
+> +  MediaTek bus fabric provides TrustZone security support and data
+> +  protection to prevent slaves from being accessed by unexpected masters.
+> +  The security violation is logged and sent to the processor for further
+> +  analysis and countermeasures.
+> +
+> +maintainers:
+> +  - Neal Liu <neal.liu@mediatek.com>
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt6779-devapc
+> +
+> +  reg:
+> +    description: The base address of devapc register bank
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    description: A single interrupt specifier
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    description: Contains module clock source and clock names
+> +    maxItems: 1
+> +
+> +  clock-names:
+> +    description: Names of the clocks list in clocks property
+> +    maxItems: 1
+> +
+> +  mediatek-slv_type_num:
+> +    description: Numbers of slave type in mediatek platform
+> +    maxItems: 1
 
-Also this driver supports following features:
- - manual exposure and analog gain control support
- - vertical blanking control support
- - test pattern support
- - media controller support
- - runtime PM support
- - support resolution: 1600x1200 at 30FPS
- 
-Previous versions of this patch-set can be found here:
- v12: https://lore.kernel.org/linux-media/20200702115223.21507-1-dongchun.zhu@mediatek.com/
- v11: https://lore.kernel.org/linux-media/20200630024942.20891-1-dongchun.zhu@mediatek.com/
- v10: https://lore.kernel.org/linux-media/20200615122937.18965-3-dongchun.zhu@mediatek.com/
- v09: https://lore.kernel.org/linux-media/20200523084103.31276-1-dongchun.zhu@mediatek.com/
- v08: https://lore.kernel.org/linux-media/20200509080627.23222-1-dongchun.zhu@mediatek.com/
- v07: https://lore.kernel.org/linux-media/20200430080924.1140-1-dongchun.zhu@mediatek.com/
- v06: https://lore.kernel.org/linux-media/20191211112849.16705-1-dongchun.zhu@mediatek.com/
- v05: https://lore.kernel.org/linux-media/20191104105713.24311-1-dongchun.zhu@mediatek.com/
- v04: https://lore.kernel.org/linux-media/20190907092728.23897-1-dongchun.zhu@mediatek.com/
- v03: https://lore.kernel.org/linux-media/20190819034331.13098-1-dongchun.zhu@mediatek.com/
- v02: https://lore.kernel.org/linux-media/20190704084651.3105-1-dongchun.zhu@mediatek.com/
- v01: https://lore.kernel.org/linux-media/20190523102204.24112-1-dongchun.zhu@mediatek.com/
+This should go in the DT data, have a look for example at:
+https://elixir.bootlin.com/linux/latest/source/drivers/soc/mediatek/mtk-pmic-wrap.c#L1842
+and
+https://elixir.bootlin.com/linux/latest/source/drivers/soc/mediatek/mtk-pmic-wrap.c#L1777
 
-Changes of v13 mainly address comments from Rob.
-Compared to v12:
- - Add reviewed-by for sensor driver
- - Fix a build-warning and the warning when applying the patch with git am
+> +
+> +  mediatek-vio_dbgs:
+> +    description: The mask bit and start bit of devapc violation debug registers
+> +    maxItems: 5
+> +
 
-Please review.
-Thanks.
+same here
 
-Dongchun Zhu (2):
-  media: dt-bindings: media: i2c: Document OV02A10 bindings
-  media: i2c: Add OV02A10 image sensor driver
+> +  mediatek-pds_offset:
+> +    description: The offset of devapc pds registers
+> +    maxItems: 1
 
- .../bindings/media/i2c/ovti,ov02a10.yaml           |  172 ++++
- MAINTAINERS                                        |    8 +
- drivers/media/i2c/Kconfig                          |   13 +
- drivers/media/i2c/Makefile                         |    1 +
- drivers/media/i2c/ov02a10.c                        | 1050 ++++++++++++++++++++
- 5 files changed, 1244 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
- create mode 100644 drivers/media/i2c/ov02a10.c
+same here
 
--- 
-2.9.2
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +  - mediatek-slv_type_num
+> +  - mediatek-vio_dbgs
+> +  - mediatek-pds_offset
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/clock/mt6779-clk.h>
+> +
+> +    devapc: devapc@10207000 {
+> +      compatible = "mediatek,mt6779-devapc";
+> +      reg = <0x10207000 0x1000>;
+> +      interrupts = <GIC_SPI 168 IRQ_TYPE_LEVEL_LOW>;
+> +      clocks = <&infracfg_ao CLK_INFRA_DEVICE_APC>;
+> +      clock-names = "devapc-infra-clock";
+> +
+> +      mediatek-slv_type_num = /bits/ 8 <1>;
+> +      mediatek-vio_dbgs = <0x0000FFFF 0x0>,
+> +                          <0x003F0000 0x10>,
+> +                          <0x00400000 0x16>,
+> +                          <0x00800000 0x17>,
+> +                          <0x0F000000 0x18>;
+> +      mediatek-pds_offset = <0x0 0x400 0x900 0x904
+> +                             0xF00 0xF10 0xF14 0xF20>;
+> +    };
+> 
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
