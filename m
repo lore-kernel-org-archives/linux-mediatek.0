@@ -2,77 +2,91 @@ Return-Path: <SRS0=M7U7=AV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.4 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 89777C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2020 14:21:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EAF9FC433E1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2020 14:22:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 53B4A207D0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2020 14:21:37 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BA10A206E2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2020 14:22:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aguyhpef";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="UL1+SyxR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 53B4A207D0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rOWmOA0B";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="X9+/pEXd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BA10A206E2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rZ66UqaYFQEQqFJ4HVXvEYkm0OBemerdKgQO+FQCPSQ=; b=aguyhpefzBcNnUbTCoEaE9kg+
-	Xk/PuuI5vMYZBe6tbQ1PDg0qqYtB5n/Ojo/JnE4NSIT2HFXk9lbvbzKNMHcsgVmVJUqIcysCHxxUS
-	LnTECHciSbAsri3fajZ1SZp0i/5ODkS/8c6hmiqlxGzVxE+A4yFQ7w9BokJA2L1niRQJxkisYDycU
-	CweVUXcOqti2prfAZZIAxKgDQvS91IG7QV/2gBvX4Fi0HtVaAoJblzgaGB0b5oOr16TZQ9ZM01LC4
-	/0x30JrLGAEz9Y/J9bEqotPgDUugFdWUJIP97QEDs88TeUiNmx5EGtnESqmsgL3DzYKjujz6s/+nw
-	b2jtxGKfQ==;
+	 bh=W4Qr+yuP69jxWal2vZ5y3FOrAHlbaRPeVxbYTi8NwKs=; b=rOWmOA0BBVuwyN08oyqzb/rGX
+	v6iBegX9kDNfZAD3RivC5PbjCiVRYMlLvA82CPyGApbyg1cmsayZaIUU/5XUdOkMVH9+k928UTI10
+	n0haq4NxH2Z8iKpAP5cA7wlsj4itx5dPp5jbKr3OVu8myVozIv09xuiRg3piESazvr2Xf2jl2SMbb
+	6G+DcervpV0+xipVvWxng6qFbLrhv8ijct0ikQaLI+uZGvYm6iXsBbSQ+AXwnS7XSJLudPCvp0KM/
+	B/jvU5zbzpqdNIAJXRijz+OBrSo0m0d1ilHfzQQereCS7+7ofsYSJ3XIPEYGu0Ut7XiHhsXPHyEZr
+	yLDLA0+Vw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jttu3-0001NV-Uj; Fri, 10 Jul 2020 14:21:28 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jttv9-0001ZV-2l; Fri, 10 Jul 2020 14:22:35 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jttty-0001M9-T4; Fri, 10 Jul 2020 14:21:23 +0000
-Received: from mail-ej1-f44.google.com (mail-ej1-f44.google.com
- [209.85.218.44])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4FC84207D0;
- Fri, 10 Jul 2020 14:21:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1594390881;
- bh=vnGCAMdU16YbGd612Tww4xROob47vhq+nuKzE0R1u7U=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=UL1+SyxRjmBzD1Du9SkUt3YtH0lBuwH0PEX9ZDvSM5OoR0zGw89VSy2bQLYGbBR1X
- wJP1GkU/519jLzUmsp2y99R4E9uTbM9dtnaXzLFM8zTj23nE8ggopTyyqtbeEgtOpb
- KbvFWnAXw9gyJvVfGu2kM6CwFpPdGvNdjAh3eTp4=
-Received: by mail-ej1-f44.google.com with SMTP id l12so6232985ejn.10;
- Fri, 10 Jul 2020 07:21:21 -0700 (PDT)
-X-Gm-Message-State: AOAM532nsoQ341qTi/HFYmX/C2Jze3RSZETA6RJeJCgjqDoOtKVNUuhb
- RjrNaRUrhdGetJXT065yihr7G34IUYUcM79FTg==
-X-Google-Smtp-Source: ABdhPJyaOgx0v3QQp9UUwrSQOCQPxGwcRXu/+A6Vt4C8xtVhE2RGpU6+mdFimeAQ0LhXaQwMIK3DZflaHHnDmySR8Gs=
-X-Received: by 2002:a17:906:9354:: with SMTP id
- p20mr13236833ejw.187.1594390879813; 
- Fri, 10 Jul 2020 07:21:19 -0700 (PDT)
+ id 1jttv6-0001Yq-It; Fri, 10 Jul 2020 14:22:33 +0000
+Received: by mail-wr1-x444.google.com with SMTP id q5so6147982wru.6;
+ Fri, 10 Jul 2020 07:22:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=LEJ3zYvTfGrKmD+ae/cPl+VgTxAxQL0fzNUPamOViPo=;
+ b=X9+/pEXdpr1K4+XSEpiihmAVrzlTSh9AvhCpZ1TT5EtzVA8SYaVCzSQ9BMSanw+fKK
+ WdlhXgKWZwECObQPt26ubfSqHlU3O2ktgUFH2XTbZXurl+94BgHmVlJWInN/I1EHmcQb
+ Xb8v6waUWAlg5Ru3NZ7BFYlugCUr3PGrRbbzVdCplVs7JHkyKRZF3Ooa8EBncSMB9mDm
+ K73NYwapKl57R36txM6pqc5U8Be96pM5Tx8yNyoqyZ4sPa/4vjndKAVeo2OG6tK3PUG6
+ vvKk8AJfidqMUv66SWHxXl46EqaFF6AUv//8GZVRq2oZLXEDUEkC/Bxbu+0I0w9vIJo6
+ NbZA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=LEJ3zYvTfGrKmD+ae/cPl+VgTxAxQL0fzNUPamOViPo=;
+ b=iZHmLB2PpXSf+R9z7QehUwCUFf4/tq13bKeZc069rRWNXk1s5Pqn8Gd7fZAZ1kaixz
+ /L7WpTvTP8n3BvyZlXCuTd+0IeNn5cQRkJAdmUlkDg+OFMrkldG634VCroxCfWRYae8m
+ 68HXOqbuNDG1mqBj9lEy3eO+kSXNg2vZPfeJFqQ3DX4syn081rOxFT3P/fLVuuVodUkC
+ hQ4D4VnxTWL3hX8aWyZFeF2xBXPB5AFloKmEHRmmo7xL/Ha7QjITCaF6AgAhLPQd99lG
+ 5AjyIpFlHKY3NK/xhXPXdoqRbIS3QBlffRkFT2w8fCEaVVC4k+0CjGDJSvzeGgvrn1/d
+ Ht7g==
+X-Gm-Message-State: AOAM532DAIVLVlw/LaQtv2BihTKYtCWYbPczYECgybvCfs3soYB42XHG
+ KrbcU/3EZd5+9y3Yjb0AL8E=
+X-Google-Smtp-Source: ABdhPJz1Za73KdbK9/8MGC1MEJtJodCx3hWEMA1G66Dae+DZ3G7snbuf+Xb/YCQtgqSP7L7TPVGyuA==
+X-Received: by 2002:a5d:5084:: with SMTP id a4mr70431336wrt.191.1594390951534; 
+ Fri, 10 Jul 2020 07:22:31 -0700 (PDT)
+Received: from ziggy.stardust ([213.195.114.245])
+ by smtp.gmail.com with ESMTPSA id h199sm3888351wme.42.2020.07.10.07.22.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 10 Jul 2020 07:22:30 -0700 (PDT)
+Subject: Re: [PATCH 2/4] mfd: mt6360: Remove handle_post_irq callback function
+To: Gene Chen <gene.chen.richtek@gmail.com>, lee.jones@linaro.org
+References: <1594117856-14343-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1594117856-14343-3-git-send-email-gene.chen.richtek@gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <8fa489a0-7672-cbbd-ec04-32803ca69084@gmail.com>
+Date: Fri, 10 Jul 2020 16:22:29 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-References: <1594285927-1840-1-git-send-email-neal.liu@mediatek.com>
- <1594285927-1840-3-git-send-email-neal.liu@mediatek.com>
- <CAAOTY_-7PwoPG_0ce2p4BCNQ3rundg40Bsni14XSmVETExkKkw@mail.gmail.com>
- <1594351423.4670.18.camel@mtkswgap22>
-In-Reply-To: <1594351423.4670.18.camel@mtkswgap22>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Fri, 10 Jul 2020 22:21:08 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_9MPYi=FAisE50UzT=eceSykN+Z8HnfFLLg_uRDhPAkpg@mail.gmail.com>
-Message-ID: <CAAOTY_9MPYi=FAisE50UzT=eceSykN+Z8HnfFLLg_uRDhPAkpg@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] soc: mediatek: add mtk-devapc driver
-To: Neal Liu <neal.liu@mediatek.com>
+In-Reply-To: <1594117856-14343-3-git-send-email-gene.chen.richtek@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200710_102123_074447_4519AFB4 
-X-CRM114-Status: GOOD (  30.73  )
+X-CRM114-CacheID: sfid-20200710_102232_645558_83473A5D 
+X-CRM114-Status: GOOD (  21.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,93 +98,121 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- wsd_upstream <wsd_upstream@mediatek.com>, devicetree@vger.kernel.org,
- lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: gene_chen@richtek.com, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
+ benjamin.chao@mediatek.com, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, shufan_lee@richtek.com
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIE5lYWw6CgpOZWFsIExpdSA8bmVhbC5saXVAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5tDfm
-nIgxMOaXpSDpgLHkupQg5LiK5Y2IMTE6MjPlr6vpgZPvvJoKPgo+IEhpIENodW4tS3VhbmcsCj4K
-PiBUaGFua3MgZm9yIHlvdXIgcmV2aWV3Lgo+Cj4gT24gVGh1LCAyMDIwLTA3LTA5IGF0IDIxOjAx
-ICswODAwLCBDaHVuLUt1YW5nIEh1IHdyb3RlOgo+ID4gSGksIE5lYWw6Cj4gPgo+ID4gTmVhbCBM
-aXUgPG5lYWwubGl1QG1lZGlhdGVrLmNvbT4g5pa8IDIwMjDlubQ35pyIOeaXpSDpgLHlm5sg5LiL
-5Y2INToxM+Wvq+mBk++8mgo+ID4gPgo+ID4gPiBNZWRpYVRlayBidXMgZmFicmljIHByb3ZpZGVz
-IFRydXN0Wm9uZSBzZWN1cml0eSBzdXBwb3J0IGFuZCBkYXRhCj4gPiA+IHByb3RlY3Rpb24gdG8g
-cHJldmVudCBzbGF2ZXMgZnJvbSBiZWluZyBhY2Nlc3NlZCBieSB1bmV4cGVjdGVkCj4gPiA+IG1h
-c3RlcnMuCj4gPiA+IFRoZSBzZWN1cml0eSB2aW9sYXRpb24gaXMgbG9nZ2VkIGFuZCBzZW50IHRv
-IHRoZSBwcm9jZXNzb3IgZm9yCj4gPiA+IGZ1cnRoZXIgYW5hbHlzaXMgb3IgY291bnRlcm1lYXN1
-cmVzLgo+ID4gPgo+ID4gPiBBbnkgb2NjdXJyZW5jZSBvZiBzZWN1cml0eSB2aW9sYXRpb24gd291
-bGQgcmFpc2UgYW4gaW50ZXJydXB0LCBhbmQKPiA+ID4gaXQgd2lsbCBiZSBoYW5kbGVkIGJ5IG10
-ay1kZXZhcGMgZHJpdmVyLiBUaGUgdmlvbGF0aW9uCj4gPiA+IGluZm9ybWF0aW9uIGlzIHByaW50
-ZWQgaW4gb3JkZXIgdG8gZmluZCB0aGUgbXVyZGVyZXIuCj4gPiA+Cj4gPiA+IFNpZ25lZC1vZmYt
-Ynk6IE5lYWwgTGl1IDxuZWFsLmxpdUBtZWRpYXRlay5jb20+Cj4gPgo+ID4gW3NuaXBdCj4gPgo+
-ID4gPiArCj4gPiA+ICtzdGF0aWMgdTMyIGdldF9zaGlmdF9ncm91cChzdHJ1Y3QgbXRrX2RldmFw
-Y19jb250ZXh0ICpkZXZhcGNfY3R4LAo+ID4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICBp
-bnQgc2xhdmVfdHlwZSwgaW50IHZpb19pZHgpCj4gPgo+ID4gdmlvX2lkeCAgaXMgdXNlbGVzcywg
-c28gcmVtb3ZlIGl0Lgo+ID4KPgo+IHllcywgbXkgbWlzdGFrZS4gSSdsbCByZW1vdmUgaXQgb24g
-bmV4dCBwYXRjaC4KPgo+ID4gPiArewo+ID4gPiArICAgICAgIHUzMiB2aW9fc2hpZnRfc3RhOwo+
-ID4gPiArICAgICAgIHZvaWQgX19pb21lbSAqcmVnOwo+ID4gPiArICAgICAgIGludCBiaXQ7Cj4g
-PiA+ICsKPiA+ID4gKyAgICAgICByZWcgPSBtdGtfZGV2YXBjX3BkX2dldChkZXZhcGNfY3R4LCBz
-bGF2ZV90eXBlLCBWSU9fU0hJRlRfU1RBLCAwKTsKPiA+ID4gKyAgICAgICB2aW9fc2hpZnRfc3Rh
-ID0gcmVhZGwocmVnKTsKPiA+ID4gKwo+ID4gPiArICAgICAgIGZvciAoYml0ID0gMDsgYml0IDwg
-MzI7IGJpdCsrKSB7Cj4gPiA+ICsgICAgICAgICAgICAgICBpZiAoKHZpb19zaGlmdF9zdGEgPj4g
-Yml0KSAmIDB4MSkKPiA+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgYnJlYWs7Cj4gPiA+ICsg
-ICAgICAgfQo+ID4gPiArCj4gPiA+ICsgICAgICAgcmV0dXJuIGJpdDsKPiA+ID4gK30KPiA+ID4g
-Kwo+ID4KPiA+IFtzbmlwXQo+ID4KPiA+ID4gKwo+ID4gPiArLyoKPiA+ID4gKyAqIGRldmFwY192
-aW9sYXRpb25faXJxIC0gdGhlIGRldmFwYyBJbnRlcnJ1cHQgU2VydmljZSBSb3V0aW5lIChJU1Ip
-IHdpbGwgZHVtcAo+ID4gPiArICogICAgICAgICAgICAgICAgICAgICAgIHZpb2xhdGlvbiBpbmZv
-cm1hdGlvbiBpbmNsdWRpbmcgd2hpY2ggbWFzdGVyIHZpb2xhdGVzCj4gPiA+ICsgKiAgICAgICAg
-ICAgICAgICAgICAgICAgYWNjZXNzIHNsYXZlLgo+ID4gPiArICovCj4gPiA+ICtzdGF0aWMgaXJx
-cmV0dXJuX3QgZGV2YXBjX3Zpb2xhdGlvbl9pcnEoaW50IGlycV9udW1iZXIsCj4gPiA+ICsgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgbXRrX2RldmFwY19jb250
-ZXh0ICpkZXZhcGNfY3R4KQo+ID4gPiArewo+ID4gPiArICAgICAgIGNvbnN0IHN0cnVjdCBtdGtf
-ZGV2aWNlX2luZm8gKipkZXZpY2VfaW5mbzsKPiA+ID4gKyAgICAgICBpbnQgc2xhdmVfdHlwZV9u
-dW07Cj4gPiA+ICsgICAgICAgaW50IHZpb19pZHggPSAtMTsKPiA+ID4gKyAgICAgICBpbnQgc2xh
-dmVfdHlwZTsKPiA+ID4gKwo+ID4gPiArICAgICAgIHNsYXZlX3R5cGVfbnVtID0gZGV2YXBjX2N0
-eC0+c2xhdmVfdHlwZV9udW07Cj4gPiA+ICsgICAgICAgZGV2aWNlX2luZm8gPSBkZXZhcGNfY3R4
-LT5kZXZpY2VfaW5mbzsKPiA+ID4gKwo+ID4gPiArICAgICAgIGZvciAoc2xhdmVfdHlwZSA9IDA7
-IHNsYXZlX3R5cGUgPCBzbGF2ZV90eXBlX251bTsgc2xhdmVfdHlwZSsrKSB7Cj4gPgo+ID4gSWYg
-c2xhdmVfdHlwZV9udW0gaXMgMSwgSSB0aGluayB0aGUgY29kZSBzaG91bGQgYmUgc2ltcGxlci4K
-Pgo+IHNsYXZlX3R5cGVfbnVtIGlzIGRlcGVuZHMgb24gRFQgZGF0YSwgaXQncyBub3QgYWx3YXlz
-IDEuCgpQbGVhc2UgY2hhbmdlIGNvbW1pdCB0aXRsZSB0byAiYWRkIG10Njc3OSBtdGstZGV2YXBj
-IGRyaXZlciIuIFRoaXMKcGF0Y2ggaXMganVzdCBmb3IgbXQ2Nzc5LiBJZiBzbGF2ZV90eXBlX251
-bSA9IDEgaW4gbXQ2Nzc5LCB0aGVyZSBpcwpvbmx5IG9uZSBzbGF2ZSBhbmQgd2UgZG9uJ3QgbmVl
-ZCBhIHNsYXZlX3R5cGUgdmFyaWFibGUuIEFkZApzbGF2ZV90eXBlX251bSBpbiB0aGUgcGF0Y2gg
-b2YgYWRkaW5nIG9uZSBTb0Mgd2hpY2ggaGFzIG11bHRpcGxlCnNsYXZlcy4KCj4KPiA+Cj4gPiA+
-ICsgICAgICAgICAgICAgICBpZiAoIW10a19kZXZhcGNfZHVtcF92aW9fZGJnKGRldmFwY19jdHgs
-IHNsYXZlX3R5cGUsICZ2aW9faWR4KSkKPiA+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgY29u
-dGludWU7Cj4gPiA+ICsKPiA+ID4gKyAgICAgICAgICAgICAgIC8qIEVuc3VyZSB0aGF0IHZpb2xh
-dGlvbiBpbmZvIGFyZSB3cml0dGVuIGJlZm9yZQo+ID4gPiArICAgICAgICAgICAgICAgICogZnVy
-dGhlciBvcGVyYXRpb25zCj4gPiA+ICsgICAgICAgICAgICAgICAgKi8KPiA+ID4gKyAgICAgICAg
-ICAgICAgIHNtcF9tYigpOwo+ID4gPiArCj4gPiA+ICsgICAgICAgICAgICAgICBtYXNrX21vZHVs
-ZV9pcnEoZGV2YXBjX2N0eCwgc2xhdmVfdHlwZSwgdmlvX2lkeCwgdHJ1ZSk7Cj4gPgo+ID4gV2h5
-IGRvIHlvdSBtYXNrIGlycT8KPgo+IEl0IGhhcyB0byBtYXNrIHNsYXZlJ3MgaXJxIGJlZm9yZSBj
-bGVhciB2aW9sYXRpb24gc3RhdHVzLgo+IEl0J3Mgb25lIG9mIGhhcmR3YXJlIGRlc2lnbi4KCklm
-IGRvbid0IGRvIHRoaXMgYmVmb3JlIGNsZWFyX3Zpb19zdGF0dXMsIHdoYXQgd291bGQgaGFwcGVu
-PyBUaGUgY2xlYXIKd291bGQgZmFpbD8KCj4KPiA+Cj4gPiA+ICsKPiA+ID4gKyAgICAgICAgICAg
-ICAgIGNsZWFyX3Zpb19zdGF0dXMoZGV2YXBjX2N0eCwgc2xhdmVfdHlwZSwgdmlvX2lkeCk7Cj4g
-PiA+ICsKPiA+ID4gKyAgICAgICAgICAgICAgIG1hc2tfbW9kdWxlX2lycShkZXZhcGNfY3R4LCBz
-bGF2ZV90eXBlLCB2aW9faWR4LCBmYWxzZSk7Cj4gPiA+ICsgICAgICAgfQo+ID4gPiArCj4gPiA+
-ICsgICAgICAgcmV0dXJuIElSUV9IQU5ETEVEOwo+ID4gPiArfQo+ID4gPiArCj4gPiA+ICsvKgo+
-ID4gPiArICogc3RhcnRfZGV2YXBjIC0gaW5pdGlhbGl6ZSBkZXZhcGMgc3RhdHVzIGFuZCBzdGFy
-dCByZWNlaXZpbmcgaW50ZXJydXB0Cj4gPiA+ICsgKiAgICAgICAgICAgICAgIHdoaWxlIGRldmFw
-YyB2aW9sYXRpb24gaXMgdHJpZ2dlcmVkLgo+ID4gPiArICovCj4gPgo+ID4gW3NuaXBdCj4gPgo+
-ID4gPiArCj4gPiA+ICtzdHJ1Y3QgbXRrX2RldmljZV9pbmZvIHsKPiA+ID4gKyAgICAgICBpbnQg
-c3lzX2luZGV4Owo+ID4KPiA+IFVzZWxlc3MsIHNvIHJlbW92ZSBpdC4KPgo+IFdlIG5lZWQgdG8g
-cHJpbnQgaXQgYXMgb3VyIGRlYnVnIGluZm9ybWF0aW9uLgo+IEJ1dCBJIGRpZCBub3QgYXBwbHkg
-aXQgb24gdGhpcyBwYXRjaCwgSSdsbCBhZGQgaXQgb24gbmV4dCBwYXRjaC4KCkkgdGhpbmsgdmlv
-IGFkZHJlc3MgaXMgZW5vdWdoIHRvIGZpbmQgb3V0IHRoZSBtdXJkZXIsIHNvIHJlbW92ZSBpdCBp
-bgp0aGlzIHBhdGNoLiBJZiBpdCBwcm92aWRlIGFub3RoZXIgaW5mb3JtYXRpb24sIGFkZCBpdCBp
-biBhbm90aGVyIHBhdGNoCmFuZCBkZXNjcmliZSBjbGVhciBhYm91dCB3aGF0IGlzIHRoaXMgYW5k
-IGhvdyB0byB1c2UgdGhpcyBpbmZvcm1hdGlvbi4KCj4KPiA+Cj4gPiA+ICsgICAgICAgaW50IGN0
-cmxfaW5kZXg7Cj4gPgo+ID4gRGl0dG8uCj4gPgo+ID4gUmVnYXJkcywKPiA+IENodW4tS3Vhbmcu
-Cj4gPgo+ID4gPiArICAgICAgIGludCB2aW9faW5kZXg7Cj4gPiA+ICt9Owo+ID4gPiArCj4KCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlh
-dGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+
+
+On 07/07/2020 12:30, Gene Chen wrote:
+> From: Gene Chen <gene_chen@richtek.com>
+> 
+> Remove handle_post_irq which is used to retrigger irq.
+> Set irq level low trigger to keep irq always be handled.
+> 
+> Signed-off-by: Gene Chen <gene_chen@richtek.com>
+> ---
+>   drivers/mfd/mt6360-core.c  | 25 ++++++++-----------------
+>   include/linux/mfd/mt6360.h |  6 +++---
+>   2 files changed, 11 insertions(+), 20 deletions(-)
+> 
+> diff --git a/drivers/mfd/mt6360-core.c b/drivers/mfd/mt6360-core.c
+> index 5dfc13e..2dd5918 100644
+> --- a/drivers/mfd/mt6360-core.c
+> +++ b/drivers/mfd/mt6360-core.c
+> @@ -208,24 +208,16 @@ static const struct regmap_irq mt6360_irqs[] =  {
+>   	REGMAP_IRQ_REG_LINE(MT6360_LDO7_PGB_EVT, 8),
+>   };
+>   
+> -static int mt6360_pmu_handle_post_irq(void *irq_drv_data)
+> -{
+> -	struct mt6360_data *data = irq_drv_data;
+> -
+> -	return regmap_update_bits(data->regmap,
+> -		MT6360_PMU_IRQ_SET, MT6360_IRQ_RETRIG, MT6360_IRQ_RETRIG);
+> -}
+> -
+> -static struct regmap_irq_chip mt6360_irq_chip = {
+> +static const struct regmap_irq_chip mt6360_irq_chip = {
+> +	.name = "mt6360_irqs",
+>   	.irqs = mt6360_irqs,
+>   	.num_irqs = ARRAY_SIZE(mt6360_irqs),
+> -	.num_regs = MT6360_PMU_IRQ_REGNUM,
+> -	.mask_base = MT6360_PMU_CHG_MASK1,
+> -	.status_base = MT6360_PMU_CHG_IRQ1,
+> -	.ack_base = MT6360_PMU_CHG_IRQ1,
+> +	.num_regs = MT6360_IRQ_REGNUM,
+> +	.mask_base = MT6360_REG_PMU_CHGMASK1,
+> +	.status_base = MT6360_REG_PMU_CHGIRQ1,
+> +	.ack_base = MT6360_REG_PMU_CHGIRQ1,
+
+Non relevant patches for the commit. Please drop this.
+
+>   	.init_ack_masked = true,
+>   	.use_ack = true,
+> -	.handle_post_irq = mt6360_pmu_handle_post_irq,
+>   };
+>   
+>   static const struct regmap_config mt6360_pmu_regmap_config = {
+> @@ -339,10 +331,9 @@ static int mt6360_probe(struct i2c_client *client)
+>   		return -ENODEV;
+>   	}
+>   
+> -	mt6360_irq_chip.irq_drv_data = data;
+>   	ret = devm_regmap_add_irq_chip(&client->dev, data->regmap, client->irq,
+> -				       IRQF_TRIGGER_FALLING, 0,
+> -				       &mt6360_irq_chip, &data->irq_data);
+> +				       IRQF_ONESHOT, 0, &mt6360_irq_chip,
+
+ From what I see IRQF_ONESHOT is set implicitly in regmap_add_irq_chip_fwnode. 
+Actually I think what you want to add is IRQF_TRIGGER_LOW.
+
+> +				       &data->irq_data);
+>   	if (ret) {
+>   		dev_err(&client->dev, "Failed to add Regmap IRQ Chip\n");
+>   		return ret;
+> diff --git a/include/linux/mfd/mt6360.h b/include/linux/mfd/mt6360.h
+> index 76077e4..9fc6718 100644
+> --- a/include/linux/mfd/mt6360.h
+> +++ b/include/linux/mfd/mt6360.h
+> @@ -179,7 +179,7 @@ struct mt6360_data {
+>   #define MT6360_PMU_SPARE2			(0xA0)
+>   #define MT6360_PMU_SPARE3			(0xB0)
+>   #define MT6360_PMU_SPARE4			(0xC0)
+> -#define MT6360_PMU_CHG_IRQ1			(0xD0)
+> +#define MT6360_REG_PMU_CHGIRQ1			(0xD0)
+>   #define MT6360_PMU_CHG_IRQ2			(0xD1)
+>   #define MT6360_PMU_CHG_IRQ3			(0xD2)
+>   #define MT6360_PMU_CHG_IRQ4			(0xD3)
+> @@ -211,7 +211,7 @@ struct mt6360_data {
+>   #define MT6360_PMU_BUCK2_STAT			(0xED)
+>   #define MT6360_PMU_LDO_STAT1			(0xEE)
+>   #define MT6360_PMU_LDO_STAT2			(0xEF)
+> -#define MT6360_PMU_CHG_MASK1			(0xF0)
+> +#define MT6360_REG_PMU_CHGMASK1			(0xF0)
+>   #define MT6360_PMU_CHG_MASK2			(0xF1)
+>   #define MT6360_PMU_CHG_MASK3			(0xF2)
+>   #define MT6360_PMU_CHG_MASK4			(0xF3)
+> @@ -230,7 +230,7 @@ struct mt6360_data {
+>   #define MT6360_PMU_MAXREG			(MT6360_PMU_LDO_MASK2)
+>   
+>   /* MT6360_PMU_IRQ_SET */
+> -#define MT6360_PMU_IRQ_REGNUM	(MT6360_PMU_LDO_IRQ2 - MT6360_PMU_CHG_IRQ1 + 1)
+
+Not relevant for the commit. But why did you use this strange computation in the 
+first place?
+
+> +#define MT6360_IRQ_REGNUM	16
+>   #define MT6360_IRQ_RETRIG	BIT(2)
+>   
+>   #define CHIP_VEN_MASK				(0xF0)
+> 
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
