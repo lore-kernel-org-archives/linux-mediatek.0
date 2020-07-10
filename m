@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 03959C433E5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2020 13:58:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 82CB1C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2020 14:07:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C8F35207D0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2020 13:58:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4294C20748
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2020 14:07:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="K5iC/kuL";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="FuxVkXnj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C8F35207D0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ye4+EViB";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WQBFAeWN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4294C20748
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,67 +27,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jHt3Eeobyyb42b9QtX71mzsj+JDcI/HkTESV99dUjFE=; b=K5iC/kuLYUYPXBLn4unLIplxq
-	Rujlvl3/slWAy8K7BVsTvJMBRWqOM0/gO7qWvVOkIDwNg7fgCCaOqyQEmJu3bBC6kfUiRkXUvQIVj
-	opyZpCwk8gS5c9FsALJVgLMgOd+ft4aEbZUUWgzSJAolFeEWgMrUjHBTTrsbA99EIIvdU5mkmi8xy
-	k8hW/6ahEOQTGGePIrwYKxcbTdFc/pV9fkNnt6mTU0owetp+75JEq4dpirUWB1FznaZp+BN7zy+Ut
-	ZHFxql+4yvZ9Oq5pXjI1dnI0PEJY6MMBg+u9sbUgcC6+hpgIlYg3xKYYimxCk8KY0iete4OTwJaJ3
-	NuCWeXNZA==;
+	 bh=HRvjctThO6Gs76Yt/AppcrXtvY05PwbsPlp32Oc1+0Y=; b=Ye4+EViB5QGl1zZAYima7Ea+d
+	uzrS6kyPMFSuuf3++rFGOm/Ql7pZcAmSxoUk5z/1mVCjN2e8WFGFL5d9LOg+Rgs4Cprn27ppFHGbR
+	fSiGrVoEi+aU3WPiY3+s3ufY/nD2LQPyU6ig0p1QdR8ck+Xf9SqPDlJ25jvx381tpbGRo5Q8BwBzt
+	QlU5OkKAhFHvmvr+Bzi1STpzfM/SMSEXWq/oy7I45KaIliD70sBIi4bmBgz9EKEhNHTlF6OpnDs0u
+	i8WQA4C1rhxCTsQW8OcGl4GuoT1txop66HBqsv5tJ4aFNg4JEX1xuZ8YhP/jr6PLJ1HzaqBemhT49
+	bqD1Kw6wQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jttXa-0004IA-8Q; Fri, 10 Jul 2020 13:58:14 +0000
+	id 1jttfs-00070k-QQ; Fri, 10 Jul 2020 14:06:48 +0000
 Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jttXX-0004Hd-S3; Fri, 10 Jul 2020 13:58:12 +0000
-Received: by mail-wm1-x343.google.com with SMTP id q15so6276500wmj.2;
- Fri, 10 Jul 2020 06:58:11 -0700 (PDT)
+ id 1jttfp-0006z9-Nk; Fri, 10 Jul 2020 14:06:47 +0000
+Received: by mail-wm1-x343.google.com with SMTP id o2so6051607wmh.2;
+ Fri, 10 Jul 2020 07:06:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=rFeUaiviFA43oUAWOSP16FbhvRxDnaaNa57FTdxWXIQ=;
- b=FuxVkXnj4j0bqqNMYJa5KKPvEmhjjAi4TZ5MoxjxQIjmWK9OVlOQIgDp932SjuHDr+
- lH4V1dc0SGx5xJe0t3StiB/BH/jIab0VsVNBbGnk5de+rlWiCbKwAujyJmLsZX8cnXjY
- WTMYsiX70wL4TFQ46Pdq50QLU8katOWrofsvO2FcToGCpjY8aYP5el0UxVIETXlFh7xQ
- ZuwwI1vPCuO+dk+Mvah6lY1/YrOfh1Pw1orhEhX/MEPkQuK+3e+KeqJHpBPd+E/JxgW2
- 6QkZvrTqCRsQbo2G0pUiqHLFTMlh5RM0O8Q70ohRVf+fVrJKX2LZ9F0Ge17ZHMwHqOlu
- mTNQ==
+ bh=TH7UjbSD6D+LHAxYu9bFu/OZs5Ly4t7v8emN9EgJW90=;
+ b=WQBFAeWNA2jJC0FRQpEjDcDdvXO7ez423gOqgGt/dxEvwSBVC+KriqLpmpbN9QCBZw
+ YbEh+KYqkIPUztHYZWaIX9PIObUN7JKOI+g7jTHWYqTB3k1a+O/axi2m9ZldXTy7gKM8
+ 5eJvg99yYmVHeeKQ2fZBwAkDvuJzUL7huBDBuw4rFKO2pXEWz6xtv8sOC/hP9pJKhOs8
+ xnh8PrpfqS0KmjZoW0m7ufNn98w/GJiEr1BFOvSJU8cr+jMvoxhtB4mhgaSCBwhBd//s
+ g5kHuyzQvL9JU2ipuZ3cZCOUClE+fWfxihxSzaMPggrZSTNax2PNyITB7nsMD3x2eOAT
+ z+1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=rFeUaiviFA43oUAWOSP16FbhvRxDnaaNa57FTdxWXIQ=;
- b=Jc5j4NHbrXJFZBtrQKg+euGSYoOa4dQezf2dAm4e3wqi6w/nctROIrQe2kDPg1ZJJz
- VUbiRIsj3+kGThW7kIm10piib7iR9Q3r5LTYhtnGK6YPi6gB/yAb+gMM1ALrMItZCD9V
- kd45cwZWU20y0PjkZy1O6CG2GO6xh/VGPmAoY7GQzB++L9t92bAfKZDuM1UO4sY3B5Ql
- bXZNfVbmG4QFi1lAZfD9IFt9qsMlLE3alKSSPbKFHm2oDR/QpA4XN8pMoTV9IV01yZSk
- s97fIbypo7Ryoj4jK8wNRgiG5l9A2biNr58WZKU2hgPJR1czrRcWNMg8lY6CIbYC7hKg
- ax8w==
-X-Gm-Message-State: AOAM530CDu9tXvWDwSi1DnJ3srtamfXepjFUMR6fNEUo18oKLo4I5S3h
- O7KgNjRZNQABwSMuQnlQnJM=
-X-Google-Smtp-Source: ABdhPJwAnPyWA75gjJ0MUJJA5Fa4VwezmNZwmDXmU7nC2ZapiXTGID33S9gCzWnZJWIXHBxOK5MSzg==
-X-Received: by 2002:a1c:ed0b:: with SMTP id l11mr5236550wmh.121.1594389490961; 
- Fri, 10 Jul 2020 06:58:10 -0700 (PDT)
+ bh=TH7UjbSD6D+LHAxYu9bFu/OZs5Ly4t7v8emN9EgJW90=;
+ b=eNgnG8mLZecwxqA8ME4Ne8z5jZMZycY3ViuFbV7dnTh2o1w+bqCeZaA+nEr0UXHIWn
+ izWKMUP3EaPE6BxEn7kr5K1kwBzRgZ6UND4u3gD/ybQKupNIm+YHIm6NWEC93PspFnB8
+ OC3AlsyYMaZcbXUuQLJKN1yf00Za39qqOYhAq95LAwhOas7WWz79zm1GFFE0p6cAFB5X
+ 8wRuRt3scWwGW7N/YHEuabpJtTM2E2wUgjNQ429Z3+MJ7aq8IRjwtmpZX5MjVNWKr0IH
+ ossR0OBx8SHRmD51J8zHSJ1PCdvqzJeHYTFmkbY+3g4rJP5iXaffomZLYXrVDn1Pw3hB
+ Yl0g==
+X-Gm-Message-State: AOAM5328XeYOlhInYaJ61f9FBCXJaoAHHNRJaWjdfqjXQRpRl4ZvxqWY
+ xK617sVpIWyYfzWQECFkC38R8xclB34=
+X-Google-Smtp-Source: ABdhPJz7keE+vdSGSWKFYjWGu1Z2llDJEFMWf1cnDfaEKMsgP+arDfQ95tMh1IIvJX6imXdt9l2TEg==
+X-Received: by 2002:a7b:c84d:: with SMTP id c13mr5304299wml.170.1594390004267; 
+ Fri, 10 Jul 2020 07:06:44 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.114.245])
- by smtp.gmail.com with ESMTPSA id v18sm11155377wrv.49.2020.07.10.06.58.09
+ by smtp.gmail.com with ESMTPSA id u84sm9635537wmg.7.2020.07.10.07.06.43
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 10 Jul 2020 06:58:10 -0700 (PDT)
-Subject: Re: [PATCH] Revert "thermal: mediatek: fix register index error"
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- linux-kernel@vger.kernel.org, Amit Kucheria <amit.kucheria@verdurent.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>
-References: <20200707103412.1010823-1-enric.balletbo@collabora.com>
+ Fri, 10 Jul 2020 07:06:43 -0700 (PDT)
+Subject: Re: [PATCH 1/4] mfd: mt6360: Refactor and fix code style
+To: Gene Chen <gene.chen.richtek@gmail.com>, lee.jones@linaro.org
+References: <1594117856-14343-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1594117856-14343-2-git-send-email-gene.chen.richtek@gmail.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <98369dbc-2e2a-a1bd-f3cd-68f33f66b882@gmail.com>
-Date: Fri, 10 Jul 2020 15:58:09 +0200
+Message-ID: <b9540dc6-4d43-45e4-8878-15d2df24a268@gmail.com>
+Date: Fri, 10 Jul 2020 16:06:42 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <20200707103412.1010823-1-enric.balletbo@collabora.com>
+In-Reply-To: <1594117856-14343-2-git-send-email-gene.chen.richtek@gmail.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200710_095811_994355_DADDFFF4 
-X-CRM114-Status: GOOD (  30.06  )
+X-CRM114-CacheID: sfid-20200710_100645_832867_9DFBCE7B 
+X-CRM114-Status: GOOD (  23.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,11 +98,9 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: drinkcat@chromium.org, linux-pm@vger.kernel.org,
- Michael Kao <michael.kao@mediatek.com>, Eduardo Valentin <edubezval@gmail.com>,
- linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
- Collabora Kernel ML <kernel@collabora.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: gene_chen@richtek.com, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
+ benjamin.chao@mediatek.com, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, shufan_lee@richtek.com
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -111,137 +108,472 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 07/07/2020 12:34, Enric Balletbo i Serra wrote:
-> This reverts commit eb9aecd90d1a39601e91cd08b90d5fee51d321a6
+On 07/07/2020 12:30, Gene Chen wrote:
+> From: Gene Chen <gene_chen@richtek.com>
 > 
-> The above patch is supposed to fix a register index error on mt2701. It
-> is not clear if the problem solved is a hang or just an invalid value
-> returned, my guess is the second. The patch introduces, though, a new
-> hang on MT8173 device making them unusable. So, seems reasonable, revert
-> the patch because introduces a worst issue.
-> 
-> The reason I send a revert instead of trying to fix the issue for MT8173
-> is because the information needed to fix the issue is in the datasheet
-> and is not public. So I am not really able to fix it.
-> 
-> Fixes the following bug when CONFIG_MTK_THERMAL is set on MT8173
-> devices.
-> 
-> [    2.222488] Unable to handle kernel paging request at virtual address ffff8000125f5001
-> [    2.230421] Mem abort info:
-> [    2.233207]   ESR = 0x96000021
-> [    2.236261]   EC = 0x25: DABT (current EL), IL = 32 bits
-> [    2.241571]   SET = 0, FnV = 0
-> [    2.244623]   EA = 0, S1PTW = 0
-> [    2.247762] Data abort info:
-> [    2.250640]   ISV = 0, ISS = 0x00000021
-> [    2.254473]   CM = 0, WnR = 0
-> [    2.257544] swapper pgtable: 4k pages, 48-bit VAs, pgdp=0000000041850000
-> [    2.264251] [ffff8000125f5001] pgd=000000013ffff003, pud=000000013fffe003, pmd=000000013fff9003, pte=006800001100b707
-> [    2.274867] Internal error: Oops: 96000021 [#1] PREEMPT SMP
-> [    2.280432] Modules linked in:
-> [    2.283483] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.7.0-rc6+ #162
-> [    2.289914] Hardware name: Google Elm (DT)
-> [    2.294003] pstate: 20000005 (nzCv daif -PAN -UAO)
-> [    2.298792] pc : mtk_read_temp+0xb8/0x1c8
-> [    2.302793] lr : mtk_read_temp+0x7c/0x1c8
-> [    2.306794] sp : ffff80001003b930
-> [    2.310100] x29: ffff80001003b930 x28: 0000000000000000
-> [    2.315404] x27: 0000000000000002 x26: ffff0000f9550b10
-> [    2.320709] x25: ffff0000f9550a80 x24: 0000000000000090
-> [    2.326014] x23: ffff80001003ba24 x22: 00000000610344c0
-> [    2.331318] x21: 0000000000002710 x20: 00000000000001f4
-> [    2.336622] x19: 0000000000030d40 x18: ffff800011742ec0
-> [    2.341926] x17: 0000000000000001 x16: 0000000000000001
-> [    2.347230] x15: ffffffffffffffff x14: ffffff0000000000
-> [    2.352535] x13: ffffffffffffffff x12: 0000000000000028
-> [    2.357839] x11: 0000000000000003 x10: ffff800011295ec8
-> [    2.363143] x9 : 000000000000291b x8 : 0000000000000002
-> [    2.368447] x7 : 00000000000000a8 x6 : 0000000000000004
-> [    2.373751] x5 : 0000000000000000 x4 : ffff800011295cb0
-> [    2.379055] x3 : 0000000000000002 x2 : ffff8000125f5001
-> [    2.384359] x1 : 0000000000000001 x0 : ffff0000f9550a80
-> [    2.389665] Call trace:
-> [    2.392105]  mtk_read_temp+0xb8/0x1c8
-> [    2.395760]  of_thermal_get_temp+0x2c/0x40
-> [    2.399849]  thermal_zone_get_temp+0x78/0x160
-> [    2.404198]  thermal_zone_device_update.part.0+0x3c/0x1f8
-> [    2.409589]  thermal_zone_device_update+0x34/0x48
-> [    2.414286]  of_thermal_set_mode+0x58/0x88
-> [    2.418375]  thermal_zone_of_sensor_register+0x1a8/0x1d8
-> [    2.423679]  devm_thermal_zone_of_sensor_register+0x64/0xb0
-> [    2.429242]  mtk_thermal_probe+0x690/0x7d0
-> [    2.433333]  platform_drv_probe+0x5c/0xb0
-> [    2.437335]  really_probe+0xe4/0x448
-> [    2.440901]  driver_probe_device+0xe8/0x140
-> [    2.445077]  device_driver_attach+0x7c/0x88
-> [    2.449252]  __driver_attach+0xac/0x178
-> [    2.453082]  bus_for_each_dev+0x78/0xc8
-> [    2.456909]  driver_attach+0x2c/0x38
-> [    2.460476]  bus_add_driver+0x14c/0x230
-> [    2.464304]  driver_register+0x6c/0x128
-> [    2.468131]  __platform_driver_register+0x50/0x60
-> [    2.472831]  mtk_thermal_driver_init+0x24/0x30
-> [    2.477268]  do_one_initcall+0x50/0x298
-> [    2.481098]  kernel_init_freeable+0x1ec/0x264
-> [    2.485450]  kernel_init+0x1c/0x110
-> [    2.488931]  ret_from_fork+0x10/0x1c
-> [    2.492502] Code: f9401081 f9400402 b8a67821 8b010042 (b9400042)
-> [    2.498599] ---[ end trace e43e3105ed27dc99 ]---
-> [    2.503367] Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b
-> [    2.511020] SMP: stopping secondary CPUs
-> [    2.514941] Kernel Offset: disabled
-> [    2.518421] CPU features: 0x090002,25006005
-> [    2.522595] Memory Limit: none
-> [    2.525644] ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b ]--
-> 
-> Cc: Michael Kao <michael.kao@mediatek.com>
-> Fixes: eb9aecd90d1a ("thermal: mediatek: fix register index error")
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Rearrange include file.
+> Remove brackets around raw numbers.
+> Indicate sub-dev compatible name by using "-"
+> Combine mt6360 pmic/ldo resouces into mt6360 regulator resources.
+> Rename mt6360_pmu_data by mt6360_data.
+> Rename mt6360_pmu by mt6360.
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-Daniel, Zhang, Amit: can you take this as a bugfix for v5.8 please? We waited 
-long enough to get a proper fix for the driver, but nothing was posted on the 
-mailinglist. Also we don't know if this will break mt2701 or not, we prefer to 
-have a working mt8173 as this is actually a SoC that is available to the general 
-public (as a chromebook product).
-
-I propose to take this revert for now and hope that MediaTek will fix the driver 
-for good in the near future.
+That seems like a lot of cosmetics. Why is this needed?
+If you think that's needed it should be split up in different commits, each 
+explaining in the commit message why you do that.
 
 Regards,
 Matthias
 
+> 
+> Signed-off-by: Gene Chen <gene_chen@richtek.com>
 > ---
+>   drivers/mfd/mt6360-core.c  | 293 ++++++++++++++++++++++-----------------------
+>   include/linux/mfd/mt6360.h |   2 +-
+>   2 files changed, 144 insertions(+), 151 deletions(-)
 > 
->   drivers/thermal/mtk_thermal.c | 6 ++----
->   1 file changed, 2 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-> index 6b7ef1993d7e..42c9cd0e5f77 100644
-> --- a/drivers/thermal/mtk_thermal.c
-> +++ b/drivers/thermal/mtk_thermal.c
-> @@ -594,8 +594,7 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
->   	u32 raw;
+> diff --git a/drivers/mfd/mt6360-core.c b/drivers/mfd/mt6360-core.c
+> index e9cacc2..5dfc13e 100644
+> --- a/drivers/mfd/mt6360-core.c
+> +++ b/drivers/mfd/mt6360-core.c
+> @@ -5,122 +5,121 @@
+>    * Author: Gene Chen <gene_chen@richtek.com>
+>    */
 >   
->   	for (i = 0; i < conf->bank_data[bank->id].num_sensors; i++) {
-> -		raw = readl(mt->thermal_base +
-> -			    conf->msr[conf->bank_data[bank->id].sensors[i]]);
-> +		raw = readl(mt->thermal_base + conf->msr[i]);
+> +#include <linux/kernel.h>
+> +#include <linux/module.h>
+>   #include <linux/i2c.h>
+> -#include <linux/init.h>
+> +#include <linux/crc8.h>
+> +#include <linux/slab.h>
+> +#include <linux/regmap.h>
+>   #include <linux/interrupt.h>
+> -#include <linux/kernel.h>
+>   #include <linux/mfd/core.h>
+> -#include <linux/module.h>
+> -#include <linux/of_irq.h>
+> -#include <linux/of_platform.h>
+> -#include <linux/version.h>
 >   
->   		temp = raw_to_mcelsius(mt,
->   				       conf->bank_data[bank->id].sensors[i],
-> @@ -736,8 +735,7 @@ static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
+>   #include <linux/mfd/mt6360.h>
 >   
->   	for (i = 0; i < conf->bank_data[num].num_sensors; i++)
->   		writel(conf->sensor_mux_values[conf->bank_data[num].sensors[i]],
-> -		       mt->thermal_base +
-> -		       conf->adcpnp[conf->bank_data[num].sensors[i]]);
-> +		       mt->thermal_base + conf->adcpnp[i]);
+>   /* reg 0 -> 0 ~ 7 */
+> -#define MT6360_CHG_TREG_EVT		(4)
+> -#define MT6360_CHG_AICR_EVT		(5)
+> -#define MT6360_CHG_MIVR_EVT		(6)
+> -#define MT6360_PWR_RDY_EVT		(7)
+> +#define MT6360_CHG_TREG_EVT		4
+> +#define MT6360_CHG_AICR_EVT		5
+> +#define MT6360_CHG_MIVR_EVT		6
+> +#define MT6360_PWR_RDY_EVT		7
+>   /* REG 1 -> 8 ~ 15 */
+> -#define MT6360_CHG_BATSYSUV_EVT		(9)
+> -#define MT6360_FLED_CHG_VINOVP_EVT	(11)
+> -#define MT6360_CHG_VSYSUV_EVT		(12)
+> -#define MT6360_CHG_VSYSOV_EVT		(13)
+> -#define MT6360_CHG_VBATOV_EVT		(14)
+> -#define MT6360_CHG_VBUSOV_EVT		(15)
+> +#define MT6360_CHG_BATSYSUV_EVT		9
+> +#define MT6360_FLED_CHG_VINOVP_EVT	11
+> +#define MT6360_CHG_VSYSUV_EVT		12
+> +#define MT6360_CHG_VSYSOV_EVT		13
+> +#define MT6360_CHG_VBATOV_EVT		14
+> +#define MT6360_CHG_VBUSOV_EVT		15
+>   /* REG 2 -> 16 ~ 23 */
+>   /* REG 3 -> 24 ~ 31 */
+> -#define MT6360_WD_PMU_DET		(25)
+> -#define MT6360_WD_PMU_DONE		(26)
+> -#define MT6360_CHG_TMRI			(27)
+> -#define MT6360_CHG_ADPBADI		(29)
+> -#define MT6360_CHG_RVPI			(30)
+> -#define MT6360_OTPI			(31)
+> +#define MT6360_WD_PMU_DET		25
+> +#define MT6360_WD_PMU_DONE		26
+> +#define MT6360_CHG_TMRI			27
+> +#define MT6360_CHG_ADPBADI		29
+> +#define MT6360_CHG_RVPI			30
+> +#define MT6360_OTPI			31
+>   /* REG 4 -> 32 ~ 39 */
+> -#define MT6360_CHG_AICCMEASL		(32)
+> -#define MT6360_CHGDET_DONEI		(34)
+> -#define MT6360_WDTMRI			(35)
+> -#define MT6360_SSFINISHI		(36)
+> -#define MT6360_CHG_RECHGI		(37)
+> -#define MT6360_CHG_TERMI		(38)
+> -#define MT6360_CHG_IEOCI		(39)
+> +#define MT6360_CHG_AICCMEASL		32
+> +#define MT6360_CHGDET_DONEI		34
+> +#define MT6360_WDTMRI			35
+> +#define MT6360_SSFINISHI		36
+> +#define MT6360_CHG_RECHGI		37
+> +#define MT6360_CHG_TERMI		38
+> +#define MT6360_CHG_IEOCI		39
+>   /* REG 5 -> 40 ~ 47 */
+> -#define MT6360_PUMPX_DONEI		(40)
+> -#define MT6360_BAT_OVP_ADC_EVT		(41)
+> -#define MT6360_TYPEC_OTP_EVT		(42)
+> -#define MT6360_ADC_WAKEUP_EVT		(43)
+> -#define MT6360_ADC_DONEI		(44)
+> -#define MT6360_BST_BATUVI		(45)
+> -#define MT6360_BST_VBUSOVI		(46)
+> -#define MT6360_BST_OLPI			(47)
+> +#define MT6360_PUMPX_DONEI		40
+> +#define MT6360_BAT_OVP_ADC_EVT		41
+> +#define MT6360_TYPEC_OTP_EVT		42
+> +#define MT6360_ADC_WAKEUP_EVT		43
+> +#define MT6360_ADC_DONEI		44
+> +#define MT6360_BST_BATUVI		45
+> +#define MT6360_BST_VBUSOVI		46
+> +#define MT6360_BST_OLPI			47
+>   /* REG 6 -> 48 ~ 55 */
+> -#define MT6360_ATTACH_I			(48)
+> -#define MT6360_DETACH_I			(49)
+> -#define MT6360_QC30_STPDONE		(51)
+> -#define MT6360_QC_VBUSDET_DONE		(52)
+> -#define MT6360_HVDCP_DET		(53)
+> -#define MT6360_CHGDETI			(54)
+> -#define MT6360_DCDTI			(55)
+> +#define MT6360_ATTACH_I			48
+> +#define MT6360_DETACH_I			49
+> +#define MT6360_QC30_STPDONE		51
+> +#define MT6360_QC_VBUSDET_DONE		52
+> +#define MT6360_HVDCP_DET		53
+> +#define MT6360_CHGDETI			54
+> +#define MT6360_DCDTI			55
+>   /* REG 7 -> 56 ~ 63 */
+> -#define MT6360_FOD_DONE_EVT		(56)
+> -#define MT6360_FOD_OV_EVT		(57)
+> -#define MT6360_CHRDET_UVP_EVT		(58)
+> -#define MT6360_CHRDET_OVP_EVT		(59)
+> -#define MT6360_CHRDET_EXT_EVT		(60)
+> -#define MT6360_FOD_LR_EVT		(61)
+> -#define MT6360_FOD_HR_EVT		(62)
+> -#define MT6360_FOD_DISCHG_FAIL_EVT	(63)
+> +#define MT6360_FOD_DONE_EVT		56
+> +#define MT6360_FOD_OV_EVT		57
+> +#define MT6360_CHRDET_UVP_EVT		58
+> +#define MT6360_CHRDET_OVP_EVT		59
+> +#define MT6360_CHRDET_EXT_EVT		60
+> +#define MT6360_FOD_LR_EVT		61
+> +#define MT6360_FOD_HR_EVT		62
+> +#define MT6360_FOD_DISCHG_FAIL_EVT	63
+>   /* REG 8 -> 64 ~ 71 */
+> -#define MT6360_USBID_EVT		(64)
+> -#define MT6360_APWDTRST_EVT		(65)
+> -#define MT6360_EN_EVT			(66)
+> -#define MT6360_QONB_RST_EVT		(67)
+> -#define MT6360_MRSTB_EVT		(68)
+> -#define MT6360_OTP_EVT			(69)
+> -#define MT6360_VDDAOV_EVT		(70)
+> -#define MT6360_SYSUV_EVT		(71)
+> +#define MT6360_USBID_EVT		64
+> +#define MT6360_APWDTRST_EVT		65
+> +#define MT6360_EN_EVT			66
+> +#define MT6360_QONB_RST_EVT		67
+> +#define MT6360_MRSTB_EVT		68
+> +#define MT6360_OTP_EVT			69
+> +#define MT6360_VDDAOV_EVT		70
+> +#define MT6360_SYSUV_EVT		71
+>   /* REG 9 -> 72 ~ 79 */
+> -#define MT6360_FLED_STRBPIN_EVT		(72)
+> -#define MT6360_FLED_TORPIN_EVT		(73)
+> -#define MT6360_FLED_TX_EVT		(74)
+> -#define MT6360_FLED_LVF_EVT		(75)
+> -#define MT6360_FLED2_SHORT_EVT		(78)
+> -#define MT6360_FLED1_SHORT_EVT		(79)
+> +#define MT6360_FLED_STRBPIN_EVT		72
+> +#define MT6360_FLED_TORPIN_EVT		73
+> +#define MT6360_FLED_TX_EVT		74
+> +#define MT6360_FLED_LVF_EVT		75
+> +#define MT6360_FLED2_SHORT_EVT		78
+> +#define MT6360_FLED1_SHORT_EVT		79
+>   /* REG 10 -> 80 ~ 87 */
+> -#define MT6360_FLED2_STRB_EVT		(80)
+> -#define MT6360_FLED1_STRB_EVT		(81)
+> -#define MT6360_FLED2_STRB_TO_EVT	(82)
+> -#define MT6360_FLED1_STRB_TO_EVT	(83)
+> -#define MT6360_FLED2_TOR_EVT		(84)
+> -#define MT6360_FLED1_TOR_EVT		(85)
+> +#define MT6360_FLED2_STRB_EVT		80
+> +#define MT6360_FLED1_STRB_EVT		81
+> +#define MT6360_FLED2_STRB_TO_EVT	82
+> +#define MT6360_FLED1_STRB_TO_EVT	83
+> +#define MT6360_FLED2_TOR_EVT		84
+> +#define MT6360_FLED1_TOR_EVT		85
+>   /* REG 11 -> 88 ~ 95 */
+>   /* REG 12 -> 96 ~ 103 */
+> -#define MT6360_BUCK1_PGB_EVT		(96)
+> -#define MT6360_BUCK1_OC_EVT		(100)
+> -#define MT6360_BUCK1_OV_EVT		(101)
+> -#define MT6360_BUCK1_UV_EVT		(102)
+> +#define MT6360_BUCK1_PGB_EVT		96
+> +#define MT6360_BUCK1_OC_EVT		100
+> +#define MT6360_BUCK1_OV_EVT		101
+> +#define MT6360_BUCK1_UV_EVT		102
+>   /* REG 13 -> 104 ~ 111 */
+> -#define MT6360_BUCK2_PGB_EVT		(104)
+> -#define MT6360_BUCK2_OC_EVT		(108)
+> -#define MT6360_BUCK2_OV_EVT		(109)
+> -#define MT6360_BUCK2_UV_EVT		(110)
+> +#define MT6360_BUCK2_PGB_EVT		104
+> +#define MT6360_BUCK2_OC_EVT		108
+> +#define MT6360_BUCK2_OV_EVT		109
+> +#define MT6360_BUCK2_UV_EVT		110
+>   /* REG 14 -> 112 ~ 119 */
+> -#define MT6360_LDO1_OC_EVT		(113)
+> -#define MT6360_LDO2_OC_EVT		(114)
+> -#define MT6360_LDO3_OC_EVT		(115)
+> -#define MT6360_LDO5_OC_EVT		(117)
+> -#define MT6360_LDO6_OC_EVT		(118)
+> -#define MT6360_LDO7_OC_EVT		(119)
+> +#define MT6360_LDO1_OC_EVT		113
+> +#define MT6360_LDO2_OC_EVT		114
+> +#define MT6360_LDO3_OC_EVT		115
+> +#define MT6360_LDO5_OC_EVT		117
+> +#define MT6360_LDO6_OC_EVT		118
+> +#define MT6360_LDO7_OC_EVT		119
+>   /* REG 15 -> 120 ~ 127 */
+> -#define MT6360_LDO1_PGB_EVT		(121)
+> -#define MT6360_LDO2_PGB_EVT		(122)
+> -#define MT6360_LDO3_PGB_EVT		(123)
+> -#define MT6360_LDO5_PGB_EVT		(125)
+> -#define MT6360_LDO6_PGB_EVT		(126)
+> -#define MT6360_LDO7_PGB_EVT		(127)
+> -
+> -static const struct regmap_irq mt6360_pmu_irqs[] =  {
+> +#define MT6360_LDO1_PGB_EVT		121
+> +#define MT6360_LDO2_PGB_EVT		122
+> +#define MT6360_LDO3_PGB_EVT		123
+> +#define MT6360_LDO5_PGB_EVT		125
+> +#define MT6360_LDO6_PGB_EVT		126
+> +#define MT6360_LDO7_PGB_EVT		127
+> +
+> +static const struct regmap_irq mt6360_irqs[] =  {
+>   	REGMAP_IRQ_REG_LINE(MT6360_CHG_TREG_EVT, 8),
+>   	REGMAP_IRQ_REG_LINE(MT6360_CHG_AICR_EVT, 8),
+>   	REGMAP_IRQ_REG_LINE(MT6360_CHG_MIVR_EVT, 8),
+> @@ -211,15 +210,15 @@ static const struct regmap_irq mt6360_pmu_irqs[] =  {
 >   
->   	writel((1 << conf->bank_data[num].num_sensors) - 1,
->   	       controller_base + TEMP_MONCTL0);
+>   static int mt6360_pmu_handle_post_irq(void *irq_drv_data)
+>   {
+> -	struct mt6360_pmu_data *mpd = irq_drv_data;
+> +	struct mt6360_data *data = irq_drv_data;
+>   
+> -	return regmap_update_bits(mpd->regmap,
+> +	return regmap_update_bits(data->regmap,
+>   		MT6360_PMU_IRQ_SET, MT6360_IRQ_RETRIG, MT6360_IRQ_RETRIG);
+>   }
+>   
+> -static struct regmap_irq_chip mt6360_pmu_irq_chip = {
+> -	.irqs = mt6360_pmu_irqs,
+> -	.num_irqs = ARRAY_SIZE(mt6360_pmu_irqs),
+> +static struct regmap_irq_chip mt6360_irq_chip = {
+> +	.irqs = mt6360_irqs,
+> +	.num_irqs = ARRAY_SIZE(mt6360_irqs),
+>   	.num_regs = MT6360_PMU_IRQ_REGNUM,
+>   	.mask_base = MT6360_PMU_CHG_MASK1,
+>   	.status_base = MT6360_PMU_CHG_IRQ1,
+> @@ -266,7 +265,7 @@ static const struct resource mt6360_led_resources[] = {
+>   	DEFINE_RES_IRQ_NAMED(MT6360_FLED1_STRB_TO_EVT, "fled1_strb_to_evt"),
+>   };
+>   
+> -static const struct resource mt6360_pmic_resources[] = {
+> +static const struct resource mt6360_regulator_resources[] = {
+>   	DEFINE_RES_IRQ_NAMED(MT6360_BUCK1_PGB_EVT, "buck1_pgb_evt"),
+>   	DEFINE_RES_IRQ_NAMED(MT6360_BUCK1_OC_EVT, "buck1_oc_evt"),
+>   	DEFINE_RES_IRQ_NAMED(MT6360_BUCK1_OV_EVT, "buck1_ov_evt"),
+> @@ -279,9 +278,6 @@ static const struct resource mt6360_pmic_resources[] = {
+>   	DEFINE_RES_IRQ_NAMED(MT6360_LDO7_OC_EVT, "ldo7_oc_evt"),
+>   	DEFINE_RES_IRQ_NAMED(MT6360_LDO6_PGB_EVT, "ldo6_pgb_evt"),
+>   	DEFINE_RES_IRQ_NAMED(MT6360_LDO7_PGB_EVT, "ldo7_pgb_evt"),
+> -};
+> -
+> -static const struct resource mt6360_ldo_resources[] = {
+>   	DEFINE_RES_IRQ_NAMED(MT6360_LDO1_OC_EVT, "ldo1_oc_evt"),
+>   	DEFINE_RES_IRQ_NAMED(MT6360_LDO2_OC_EVT, "ldo2_oc_evt"),
+>   	DEFINE_RES_IRQ_NAMED(MT6360_LDO3_OC_EVT, "ldo3_oc_evt"),
+> @@ -293,18 +289,16 @@ static const struct resource mt6360_ldo_resources[] = {
+>   };
+>   
+>   static const struct mfd_cell mt6360_devs[] = {
+> -	OF_MFD_CELL("mt6360_adc", mt6360_adc_resources,
+> -		    NULL, 0, 0, "mediatek,mt6360_adc"),
+> -	OF_MFD_CELL("mt6360_chg", mt6360_chg_resources,
+> -		    NULL, 0, 0, "mediatek,mt6360_chg"),
+> -	OF_MFD_CELL("mt6360_led", mt6360_led_resources,
+> -		    NULL, 0, 0, "mediatek,mt6360_led"),
+> -	OF_MFD_CELL("mt6360_pmic", mt6360_pmic_resources,
+> -		    NULL, 0, 0, "mediatek,mt6360_pmic"),
+> -	OF_MFD_CELL("mt6360_ldo", mt6360_ldo_resources,
+> -		    NULL, 0, 0, "mediatek,mt6360_ldo"),
+> -	OF_MFD_CELL("mt6360_tcpc", NULL,
+> -		    NULL, 0, 0, "mediatek,mt6360_tcpc"),
+> +	OF_MFD_CELL("mt6360-adc", mt6360_adc_resources,
+> +		    NULL, 0, 0, "mediatek,mt6360-adc"),
+> +	OF_MFD_CELL("mt6360-chg", mt6360_chg_resources,
+> +		    NULL, 0, 0, "mediatek,mt6360-chg"),
+> +	OF_MFD_CELL("mt6360-led", mt6360_led_resources,
+> +		    NULL, 0, 0, "mediatek,mt6360-led"),
+> +	OF_MFD_CELL("mt6360-regulator", mt6360_regulator_resources,
+> +		    NULL, 0, 0, "mediatek,mt6360-regulator"),
+> +	OF_MFD_CELL("mt6360-tcpc", NULL,
+> +		    NULL, 0, 0, "mediatek,mt6360-tcpc"),
+>   };
+>   
+>   static const unsigned short mt6360_slave_addr[MT6360_SLAVE_MAX] = {
+> @@ -314,63 +308,63 @@ static const unsigned short mt6360_slave_addr[MT6360_SLAVE_MAX] = {
+>   	MT6360_TCPC_SLAVEID,
+>   };
+>   
+> -static int mt6360_pmu_probe(struct i2c_client *client)
+> +static int mt6360_probe(struct i2c_client *client)
+>   {
+> -	struct mt6360_pmu_data *mpd;
+> +	struct mt6360_data *data;
+>   	unsigned int reg_data;
+>   	int i, ret;
+>   
+> -	mpd = devm_kzalloc(&client->dev, sizeof(*mpd), GFP_KERNEL);
+> -	if (!mpd)
+> +	data = devm_kzalloc(&client->dev, sizeof(*data), GFP_KERNEL);
+> +	if (!data)
+>   		return -ENOMEM;
+>   
+> -	mpd->dev = &client->dev;
+> -	i2c_set_clientdata(client, mpd);
+> +	data->dev = &client->dev;
+> +	i2c_set_clientdata(client, data);
+>   
+> -	mpd->regmap = devm_regmap_init_i2c(client, &mt6360_pmu_regmap_config);
+> -	if (IS_ERR(mpd->regmap)) {
+> +	data->regmap = devm_regmap_init_i2c(client, &mt6360_pmu_regmap_config);
+> +	if (IS_ERR(data->regmap)) {
+>   		dev_err(&client->dev, "Failed to register regmap\n");
+> -		return PTR_ERR(mpd->regmap);
+> +		return PTR_ERR(data->regmap);
+>   	}
+>   
+> -	ret = regmap_read(mpd->regmap, MT6360_PMU_DEV_INFO, &reg_data);
+> +	ret = regmap_read(data->regmap, MT6360_PMU_DEV_INFO, &reg_data);
+>   	if (ret) {
+>   		dev_err(&client->dev, "Device not found\n");
+>   		return ret;
+>   	}
+>   
+> -	mpd->chip_rev = reg_data & CHIP_REV_MASK;
+> -	if (mpd->chip_rev != CHIP_VEN_MT6360) {
+> +	data->chip_rev = reg_data & CHIP_REV_MASK;
+> +	if (data->chip_rev != CHIP_VEN_MT6360) {
+>   		dev_err(&client->dev, "Device not supported\n");
+>   		return -ENODEV;
+>   	}
+>   
+> -	mt6360_pmu_irq_chip.irq_drv_data = mpd;
+> -	ret = devm_regmap_add_irq_chip(&client->dev, mpd->regmap, client->irq,
+> +	mt6360_irq_chip.irq_drv_data = data;
+> +	ret = devm_regmap_add_irq_chip(&client->dev, data->regmap, client->irq,
+>   				       IRQF_TRIGGER_FALLING, 0,
+> -				       &mt6360_pmu_irq_chip, &mpd->irq_data);
+> +				       &mt6360_irq_chip, &data->irq_data);
+>   	if (ret) {
+>   		dev_err(&client->dev, "Failed to add Regmap IRQ Chip\n");
+>   		return ret;
+>   	}
+>   
+> -	mpd->i2c[0] = client;
+> +	data->i2c[0] = client;
+>   	for (i = 1; i < MT6360_SLAVE_MAX; i++) {
+> -		mpd->i2c[i] = devm_i2c_new_dummy_device(&client->dev,
+> +		data->i2c[i] = devm_i2c_new_dummy_device(&client->dev,
+>   							client->adapter,
+>   							mt6360_slave_addr[i]);
+> -		if (IS_ERR(mpd->i2c[i])) {
+> +		if (IS_ERR(data->i2c[i])) {
+>   			dev_err(&client->dev,
+>   				"Failed to get new dummy I2C device for address 0x%x",
+>   				mt6360_slave_addr[i]);
+> -			return PTR_ERR(mpd->i2c[i]);
+> +			return PTR_ERR(data->i2c[i]);
+>   		}
+> -		i2c_set_clientdata(mpd->i2c[i], mpd);
+> +		i2c_set_clientdata(data->i2c[i], data);
+>   	}
+>   
+>   	ret = devm_mfd_add_devices(&client->dev, PLATFORM_DEVID_AUTO,
+>   				   mt6360_devs, ARRAY_SIZE(mt6360_devs), NULL,
+> -				   0, regmap_irq_get_domain(mpd->irq_data));
+> +				   0, regmap_irq_get_domain(data->irq_data));
+>   	if (ret) {
+>   		dev_err(&client->dev,
+>   			"Failed to register subordinate devices\n");
+> @@ -380,7 +374,7 @@ static int mt6360_pmu_probe(struct i2c_client *client)
+>   	return 0;
+>   }
+>   
+> -static int __maybe_unused mt6360_pmu_suspend(struct device *dev)
+> +static int __maybe_unused mt6360_suspend(struct device *dev)
+>   {
+>   	struct i2c_client *i2c = to_i2c_client(dev);
+>   
+> @@ -390,7 +384,7 @@ static int __maybe_unused mt6360_pmu_suspend(struct device *dev)
+>   	return 0;
+>   }
+>   
+> -static int __maybe_unused mt6360_pmu_resume(struct device *dev)
+> +static int __maybe_unused mt6360_resume(struct device *dev)
+>   {
+>   
+>   	struct i2c_client *i2c = to_i2c_client(dev);
+> @@ -401,25 +395,24 @@ static int __maybe_unused mt6360_pmu_resume(struct device *dev)
+>   	return 0;
+>   }
+>   
+> -static SIMPLE_DEV_PM_OPS(mt6360_pmu_pm_ops,
+> -			 mt6360_pmu_suspend, mt6360_pmu_resume);
+> +static SIMPLE_DEV_PM_OPS(mt6360_pm_ops, mt6360_suspend, mt6360_resume);
+>   
+> -static const struct of_device_id __maybe_unused mt6360_pmu_of_id[] = {
+> -	{ .compatible = "mediatek,mt6360_pmu", },
+> +static const struct of_device_id __maybe_unused mt6360_of_id[] = {
+> +	{ .compatible = "mediatek,mt6360", },
+>   	{},
+>   };
+> -MODULE_DEVICE_TABLE(of, mt6360_pmu_of_id);
+> +MODULE_DEVICE_TABLE(of, mt6360_of_id);
+>   
+> -static struct i2c_driver mt6360_pmu_driver = {
+> +static struct i2c_driver mt6360_driver = {
+>   	.driver = {
+> -		.name = "mt6360_pmu",
+> -		.pm = &mt6360_pmu_pm_ops,
+> -		.of_match_table = of_match_ptr(mt6360_pmu_of_id),
+> +		.name = "mt6360",
+> +		.pm = &mt6360_pm_ops,
+> +		.of_match_table = of_match_ptr(mt6360_of_id),
+>   	},
+> -	.probe_new = mt6360_pmu_probe,
+> +	.probe_new = mt6360_probe,
+>   };
+> -module_i2c_driver(mt6360_pmu_driver);
+> +module_i2c_driver(mt6360_driver);
+>   
+>   MODULE_AUTHOR("Gene Chen <gene_chen@richtek.com>");
+> -MODULE_DESCRIPTION("MT6360 PMU I2C Driver");
+> +MODULE_DESCRIPTION("MT6360 I2C Driver");
+>   MODULE_LICENSE("GPL v2");
+> diff --git a/include/linux/mfd/mt6360.h b/include/linux/mfd/mt6360.h
+> index ea13040..76077e4 100644
+> --- a/include/linux/mfd/mt6360.h
+> +++ b/include/linux/mfd/mt6360.h
+> @@ -21,7 +21,7 @@ enum {
+>   #define MT6360_LDO_SLAVEID	(0x64)
+>   #define MT6360_TCPC_SLAVEID	(0x4E)
+>   
+> -struct mt6360_pmu_data {
+> +struct mt6360_data {
+>   	struct i2c_client *i2c[MT6360_SLAVE_MAX];
+>   	struct device *dev;
+>   	struct regmap *regmap;
 > 
 
 _______________________________________________
