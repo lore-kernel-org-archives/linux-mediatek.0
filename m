@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 62E57C433DF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jul 2020 07:00:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 22905C433E2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jul 2020 07:00:55 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2FAF3207D4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jul 2020 07:00:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E23B020725
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jul 2020 07:00:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="p0L5pWV1";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="JauPJTEJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2FAF3207D4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DrTCBrdh";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dSUWTyuB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E23B020725
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,53 +27,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ldN5zmNjeyWjoFxerJIucb9n3inM9NUpfJuYFtpC6K0=; b=p0L5pWV1QjHCDrN4ypUfDwPtO
-	FA3mDf+aRD6iwRe3bjuFOMkCDUgE3GmWuUmLVup/8kvEkIduF9yvz16BUupUW3r/sICfYIBoE9MPu
-	GScdTFAKdmiOMVEKH4RCME8wi6AytZ8vw1sXbP5ixSa48YGfIoKVk4q69xk56ZIcO/9zX01y2SKtA
-	YqrF9Qog8f6wrW6Hn7HfBOIcT8NjXEXl5h1lwGyGpt6JieyPt0CHLjQSEiSkZqnuTShXb2EACNOEB
-	GVWpg0FdTsZc0WfA782KY3UBmbHT0czpZdSj4FnCuO5+vjmNXtf+vBj9GN2QU5CiTYmWcer730dol
-	kKKuX9y9g==;
+	 bh=LDwBJ9VaP3Sa/+arFKHI9CWFpgQmLvDeUHJTJx9Aol0=; b=DrTCBrdhcD9J8s8tAhCztyk0l
+	4Neu/5L7q0CRu4RQDsYGXwBbvezyExxCs4Yio0fVBeIiHlO025Bhs8KEzp/4OqUPqbEiGKFsL2s3y
+	oLVTvAFV8AF3yFu97hWV4h76yEAc/QskO4f80MG8s/4Iuam+lD8Xm27mxR1rhdvirv6GGryRMUliZ
+	vJ6QMHqPOV82QKGdagDJVlLvz7ReJy/ccshklFMbrd0q+sdwfc/K7YGXoraTciDGq8QQ2G1eGcU2C
+	rJgR4ztOzcGqGHiBoUOYvYkVllKWRW4J9n/1tcSbvYeVRaVIiF9Y46dRW/tdvLiOu8okA+7Mer0CL
+	BsdchJ0sg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ju9V3-0002jM-7n; Sat, 11 Jul 2020 07:00:41 +0000
+	id 1ju9V4-0002jt-VV; Sat, 11 Jul 2020 07:00:43 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ju9Uj-0002ZW-BH; Sat, 11 Jul 2020 07:00:22 +0000
-X-UUID: 4d447ffc6ec845a5819c11802b18e3e3-20200710
+ id 1ju9Uj-0002ZI-DZ; Sat, 11 Jul 2020 07:00:22 +0000
+X-UUID: f691eef11c4543369483e2b2043be110-20200710
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=sEiaKj8+B4t3boj7mRPJMc76iEHueHPApwh8Duxwsfc=; 
- b=JauPJTEJ2eQwtj8PA4NVHQY4/C4V2cPMM38LBvOKMR0vMSydEtpus8nbmD+ClfAz/4ogUBp3PUPk0jo50aZWdrD7tcZpH4bfp+6+3crvrw91RBT2aMWdozDmxrMGTrW4Jk1Dz9vhhf96ogdKTNqZMQSSSUXghNZI2NSd8k6/2WM=;
-X-UUID: 4d447ffc6ec845a5819c11802b18e3e3-20200710
+ bh=5/pL7myJ2O26iScT4MuJ72d6p8fz2vqbi3T8r9cOzPA=; 
+ b=dSUWTyuBPKGNk8rk0UDhk8Q3fIZV82VMPD0zw67yVYCcCj27SfV6OV+5RW6EPyzv6SHd/x+o3m+jytCJEXkNXfPAFUDf1+s4m/sFqK2yf/D1956N91AZ+sEWyUzp/xYxnGLnu9+tbdi7aus5uA5rgtJDIMP37XED0qNI/uuJj3w=;
+X-UUID: f691eef11c4543369483e2b2043be110-20200710
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 876080296; Fri, 10 Jul 2020 23:00:04 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ with ESMTP id 739402289; Fri, 10 Jul 2020 23:00:04 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Jul 2020 23:51:55 -0700
+ 15.0.1497.2; Fri, 10 Jul 2020 23:51:25 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 11 Jul 2020 14:51:53 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 11 Jul 2020 14:51:24 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 11 Jul 2020 14:51:52 +0800
+ Transport; Sat, 11 Jul 2020 14:51:23 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
  Rob Herring <robh+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH 14/21] iommu/mediatek: Add single domain
-Date: Sat, 11 Jul 2020 14:48:39 +0800
-Message-ID: <20200711064846.16007-15-yong.wu@mediatek.com>
+Subject: [PATCH 11/21] iommu/mediatek: Add power-domain operation
+Date: Sat, 11 Jul 2020 14:48:36 +0800
+Message-ID: <20200711064846.16007-12-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200711064846.16007-1-yong.wu@mediatek.com>
 References: <20200711064846.16007-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: E2BD001D552BBF5B1333269437BCDBFED01E27E9CA7423881F6A591C561CD3522000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200711_030021_537408_24E97ECC 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20200711_030021_656197_242A84A2 
+X-CRM114-Status: GOOD (  21.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,64 +97,153 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Defaultly the iova range is 0-4G. here we add a single-domain(0-4G)
-for the previous SoC. this also is a preparing patch for supporting
-multi-domains.
+In the previous SoC, the M4U HW is in the EMI power domain which is
+always on. the latest M4U is in the display power domain which may be
+turned on/off, thus we have to add pm_runtime interface for it.
+
+we should enable its power before M4U hw initial. and disable it after HW
+initialize.
+
+When the engine work, the engine always enable the power and clocks for
+smi-larb/smi-common, then the M4U's power will always be powered on
+automatically via the device link with smi-common.
+
+Note: we don't enable the M4U power in iommu_map/unmap for tlb flush.
+If its power already is on, of course it is ok. if the power is off,
+the main tlb will be reset while M4U power on, thus the tlb flush while
+m4u power off is unnecessary, just skip it.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/iommu/mtk_iommu.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ drivers/iommu/mtk_iommu.c | 54 ++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 47 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index fdfdb75706e0..db1f06324ecc 100644
+index 931fdd19c8f3..03a6d66f4bef 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -156,6 +156,10 @@ struct mtk_iommu_iova_region {
- 	size_t			size;
- };
+@@ -20,6 +20,7 @@
+ #include <linux/of_irq.h>
+ #include <linux/of_platform.h>
+ #include <linux/platform_device.h>
++#include <linux/pm_runtime.h>
+ #include <linux/slab.h>
+ #include <linux/spinlock.h>
+ #include <asm/barrier.h>
+@@ -172,6 +173,19 @@ static struct mtk_iommu_domain *to_mtk_domain(struct iommu_domain *dom)
+ 	return container_of(dom, struct mtk_iommu_domain, domain);
+ }
  
-+static const struct mtk_iommu_iova_region single_domain[] = {
-+	{.iova_base = 0, .size = SZ_4G},
-+};
++static int mtk_iommu_rpm_get(struct device *dev)
++{
++	if (pm_runtime_enabled(dev))
++		return pm_runtime_get_sync(dev);
++	return 0;
++}
 +
- /*
-  * There may be 1 or 2 M4U HWs, But we always expect they are in the same domain
-  * for the performance.
-@@ -900,6 +904,8 @@ static const struct mtk_iommu_plat_data mt2712_data = {
- 	.m4u_plat     = M4U_MT2712,
- 	.flags        = HAS_4GB_MODE | HAS_BCLK | HAS_VLD_PA_RNG,
- 	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
-+	.iova_region  = single_domain,
-+	.iova_region_nr = ARRAY_SIZE(single_domain),
- 	.larbid_remap = {{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}},
- };
++static void mtk_iommu_rpm_put(struct device *dev)
++{
++	if (pm_runtime_enabled(dev))
++		pm_runtime_put_autosuspend(dev);
++}
++
+ static void mtk_iommu_tlb_flush_all(void *cookie)
+ {
+ 	struct mtk_iommu_data *data = cookie;
+@@ -193,6 +207,11 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+ 	u32 tmp;
  
-@@ -907,6 +913,8 @@ static const struct mtk_iommu_plat_data mt6779_data = {
- 	.m4u_plat      = M4U_MT6779,
- 	.flags         = HAS_SUB_COMM | OUT_ORDER_WR_EN | WR_THROT_EN,
- 	.inv_sel_reg   = REG_MMU_INV_SEL_GEN2,
-+	.iova_region   = single_domain,
-+	.iova_region_nr = ARRAY_SIZE(single_domain),
- 	.larbid_remap  = {{0}, {1}, {2}, {3}, {5}, {7, 8}, {10}, {9}},
- };
+ 	for_each_m4u(data) {
++		/* skip tlb flush when pm is not active */
++		if (pm_runtime_enabled(data->dev) &&
++		    !pm_runtime_active(data->dev))
++			continue;
++
+ 		spin_lock_irqsave(&data->tlb_lock, flags);
+ 		writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+ 			       data->base + data->plat_data->inv_sel_reg);
+@@ -377,15 +396,20 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+ {
+ 	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
++	int ret;
  
-@@ -914,6 +922,8 @@ static const struct mtk_iommu_plat_data mt8173_data = {
- 	.m4u_plat     = M4U_MT8173,
- 	.flags	      = HAS_4GB_MODE | HAS_BCLK | RESET_AXI,
- 	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
-+	.iova_region  = single_domain,
-+	.iova_region_nr = ARRAY_SIZE(single_domain),
- 	.larbid_remap = {{0}, {1}, {2}, {3}, {4}, {5}}, /* Linear mapping. */
- };
+ 	if (!data)
+ 		return -ENODEV;
  
-@@ -921,6 +931,8 @@ static const struct mtk_iommu_plat_data mt8183_data = {
- 	.m4u_plat     = M4U_MT8183,
- 	.flags        = RESET_AXI,
- 	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
-+	.iova_region  = single_domain,
-+	.iova_region_nr = ARRAY_SIZE(single_domain),
- 	.larbid_remap = {{0}, {4}, {5}, {6}, {7}, {2}, {3}, {1}},
+ 	/* Update the pgtable base address register of the M4U HW */
+ 	if (!data->m4u_dom) {
++		ret = mtk_iommu_rpm_get(dev);
++		if (ret < 0)
++			return ret;
+ 		data->m4u_dom = dom;
+ 		writel(dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK,
+ 		       data->base + REG_MMU_PT_BASE_ADDR);
++		mtk_iommu_rpm_put(dev);
+ 	}
+ 
+ 	mtk_iommu_config(data, dev, true);
+@@ -543,10 +567,14 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+ 	u32 regval;
+ 	int ret;
+ 
+-	ret = clk_prepare_enable(data->bclk);
+-	if (ret) {
+-		dev_err(data->dev, "Failed to enable iommu bclk(%d)\n", ret);
+-		return ret;
++	/* bclk will be enabled in pm callback in power-domain case. */
++	if (!pm_runtime_enabled(data->dev)) {
++		ret = clk_prepare_enable(data->bclk);
++		if (ret) {
++			dev_err(data->dev, "Failed to enable iommu bclk(%d)\n",
++				ret);
++			return ret;
++		}
+ 	}
+ 
+ 	if (data->plat_data->m4u_plat == M4U_MT8173) {
+@@ -728,7 +756,15 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+ 
+ 	platform_set_drvdata(pdev, data);
+ 
++	if (dev->pm_domain)
++		pm_runtime_enable(dev);
++
++	ret = mtk_iommu_rpm_get(dev);
++	if (ret < 0)
++		return ret;
++
+ 	ret = mtk_iommu_hw_init(data);
++	mtk_iommu_rpm_put(dev);
+ 	if (ret)
+ 		return ret;
+ 
+@@ -801,6 +837,10 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
+ 		dev_err(data->dev, "Failed to enable clk(%d) in resume\n", ret);
+ 		return ret;
+ 	}
++
++	/* Avoid first resume to affect the default value of registers below. */
++	if (!m4u_dom)
++		return 0;
+ 	writel_relaxed(reg->wr_len_ctrl, base + REG_MMU_WR_LEN_CTRL);
+ 	writel_relaxed(reg->misc_ctrl, base + REG_MMU_MISC_CTRL);
+ 	writel_relaxed(reg->dcm_dis, base + REG_MMU_DCM_DIS);
+@@ -809,13 +849,13 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
+ 	writel_relaxed(reg->int_main_control, base + REG_MMU_INT_MAIN_CONTROL);
+ 	writel_relaxed(reg->ivrp_paddr, base + REG_MMU_IVRP_PADDR);
+ 	writel_relaxed(reg->vld_pa_rng, base + REG_MMU_VLD_PA_RNG);
+-	if (m4u_dom)
+-		writel(m4u_dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK,
+-		       base + REG_MMU_PT_BASE_ADDR);
++	writel(m4u_dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK,
++	       base + REG_MMU_PT_BASE_ADDR);
+ 	return 0;
+ }
+ 
+ static const struct dev_pm_ops mtk_iommu_pm_ops = {
++	SET_RUNTIME_PM_OPS(mtk_iommu_suspend, mtk_iommu_resume, NULL)
+ 	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_iommu_suspend, mtk_iommu_resume)
  };
  
 -- 
