@@ -2,139 +2,63 @@ Return-Path: <SRS0=2SCH=AX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0A2B3C433E3
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jul 2020 10:05:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 71138C433E2
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jul 2020 16:56:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BD48E20720
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jul 2020 10:05:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2EF322068F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jul 2020 16:56:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UA2AyK3H";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="IzRjKEJh";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="KM7Rlj4Y"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD48E20720
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CRczVkIQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2EF322068F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
+	To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7IEJ7MzTpSzHOuRbcI103fFfvCfqeUYppTWvi6IpGL4=; b=UA2AyK3HQywoEbHqKl6aRO8Qb
-	lQBw7vzU416XXRVHwtldA9Dwc21x7THVz1iUaVsxlGbu6EeZo6zVuPK6DzzD2yeYTFu9GEuQ/EsNP
-	wBdXDvz6dA+qBLtYIHENuyOgjxWW2v4vO1XtBa2eiRe9t/hKKQVgif+p//XNQD63POE1N5LxDPBIX
-	U1tt+AZ9K0bRSGEtMhL6k2ndK8uEhzt0GoHGIzhlPolasDikG4J6IYaMTkL3ugV+znvo01vM0ulZp
-	xYc560jkiBE3Jt+dWfND+d27NCPT8VZOPkhpXW7CQ39emxoR2OBWk52yGS3tEeUAVSgsUeR1FAqiz
-	ZmmAcoMmg==;
+	 bh=4d0Y/RbKG/wjUEYDEWhi7rlnh/wBgLsb9XukOILhYs8=; b=CRczVkIQzL0+oqwH4sJMgMMi2
+	9SyUtUuCXNtSLUzIIP2M7GXGKpg2WjM5O2zZ+DMrYoronUoTsyHBu35dpzMDMmDlBh6sghXAX4b8q
+	Wqfw9uz7pv5tcsQ/6z8Z8k1fuuGsje1NLsmIlAoAZ2eBifP6MA8RkVFX/cdw3lENEfA8lFT//oHZK
+	KUYEHCawuUXMJqsbkjCxImRUoxnK2hRu710LCg57iD4QL7c7d+Xr9n2yRV3cu79ecF+7zEX5KskBg
+	jdCOSy4XYXJ5wzQnwdrDas/biDpyiMTPsLAQMuJqpM3Dyg1pXftf2MWhenNQIMu0udwJqT0V6ve4Z
+	tPxmX4H+g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1juYr4-0003dS-F6; Sun, 12 Jul 2020 10:05:06 +0000
-Received: from esa1.hgst.iphmx.com ([68.232.141.245])
+	id 1jufGZ-0002yd-83; Sun, 12 Jul 2020 16:55:51 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1juYr1-0003cf-J3; Sun, 12 Jul 2020 10:05:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1594548303; x=1626084303;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=9Ntm64vEMrvKnZ7GIwx2zeVmZX0U46qOkaVDnBUJpF0=;
- b=IzRjKEJh0KGTCI+R5QNJdi2nKOK4mzD/8Ce7Ho1HGDCzCeobu4m1TZU+
- uBqsKJXedX/62TE73SUl3lmUft/4DiXkPlV8YguYX0O+oGWTYZbmP6OIk
- fpOn6A07aaS7dBMOAI3FILn4l1x3MJAyZI201oamrnRY5EK5Qyl0m8J6P
- nyJksqELrjxjl79JzIWiOhbxX2O4zQorOuy0iiif8GbBZG0TbebR5Nida
- Uhaq16YlP2Pi7Y61WN0V30P/aOflTDX+Ck+saA3FzT/Va4EGGPlYD4sTl
- W+yjt4JoMcxCK4aMPlX/F1jZyD//Lhti6pOpOHXPZYNwlAikWHn7SwidS g==;
-IronPort-SDR: rHbBBZxtZl+VJ/Rs5JRBKii4Q1Oqu2pugHTsoDxxUhduIY3RbH9Cl9L32HF4xmQr8Oh9AIIsuQ
- Ro0D+oqyDQsVopc1FsH5YM7OjERcTLqOcIhyrqGY06Qm/VtTAkA1HY2X2LeQKJEKQYyE/DKA1E
- m+losNwpqoWrt/jdQr+Bi9cp1U6dI/qoHhJtHrEfpYLi5yoKvv4hQHlW36ppRQhjo8jSoIkhmm
- X1jKRZU+KoWvY0jNICiKG+1qhFayRqWIN0fuBvZ7MFfotLiqTpnWpyKl+S1AMskVqgOQ3jkoza
- Xtw=
-X-IronPort-AV: E=Sophos;i="5.75,343,1589212800"; d="scan'208";a="251492453"
-Received: from mail-bn8nam11lp2168.outbound.protection.outlook.com (HELO
- NAM11-BN8-obe.outbound.protection.outlook.com) ([104.47.58.168])
- by ob1.hgst.iphmx.com with ESMTP; 12 Jul 2020 18:04:58 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=aIZyO7DwR1vHwO8DHzBclBllg+GFnQmE3GkcDcHLh20Y6SsNzA8IY7k1Im6NJXEaelKGOFZyPwKlLecFBum6jyj7UmKSRskigXNwq9FyDsv5icsVr3WUzFQ80lrlWlIU7Ltf8w7ALDqrlRy37KFLKV8IU7oUaGzviJwUiyIogLwm3eZ3ueBxODdcQnjPTFnqHZDRWfjuaX1PBcJcj7Y+z1s5cHyctM54T+9+sijhYiPlzST614kk9pvxXUBV0p00m6YsQIsQ26o2lrv3dM8CRwZ8JVygYfLsgwhHjG9S4hN/jCs33w/IERjfKnqeHcYwqReDjMhhdS5Nj3AG9G7Fyw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9Ntm64vEMrvKnZ7GIwx2zeVmZX0U46qOkaVDnBUJpF0=;
- b=RprVBDDWHVrMOkVYC5f8m2e72VpCf64Zg+3VqFP7xTJvGm5WjCYAfnrJZm2f+AfYa6ItjKtC0q1stkwrwQfRpN8KYS9ZIheCkltvhwXU7lRD90SzbfHjSeVFdk2TMgswI/kf4AQsyPFVS+TgHsOoCqfC3XigfCCEj8LBBhz48RGgoQRAFfqMpmpmQBAtzTmdcu9wHnmQeacQgIegpHyT129Oeq5Owg+WMTq5sXnHTbYQY3G8rX67ikw9z3/ztarv8VUbGHGMH7xULGdhKDD6RltTcSLIvgXGH3nRU84zJ97yh4NO8FpkbaqrTFSUGprfyHjeOBeR8/rJySKmV332yw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9Ntm64vEMrvKnZ7GIwx2zeVmZX0U46qOkaVDnBUJpF0=;
- b=KM7Rlj4YZ3l4bROBw8PTdmEVrrz82nCwa4ztQkgln3AqExYuVHtzreQaXUnfs7n9aD19JeOB6VDoDYD+MtgcJRDeJGllqhzTpN5DiviToHSknWvdGDUch0ompMGy+ln1HlCQXVb7/abrOFX5bAavlZ3qvZ4WsQErEz5YUMXd3IY=
-Received: from SN6PR04MB4640.namprd04.prod.outlook.com (2603:10b6:805:a4::19)
- by SN6PR04MB4717.namprd04.prod.outlook.com (2603:10b6:805:a8::33)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3174.20; Sun, 12 Jul
- 2020 10:04:55 +0000
-Received: from SN6PR04MB4640.namprd04.prod.outlook.com
- ([fe80::1c80:dad0:4a83:2ef2]) by SN6PR04MB4640.namprd04.prod.outlook.com
- ([fe80::1c80:dad0:4a83:2ef2%4]) with mapi id 15.20.3174.025; Sun, 12 Jul 2020
- 10:04:55 +0000
-From: Avri Altman <Avri.Altman@wdc.com>
-To: Stanley Chu <stanley.chu@mediatek.com>
-Subject: RE: [PATCH v3] scsi: ufs: Cleanup completed request without interrupt
- notification
-Thread-Topic: [PATCH v3] scsi: ufs: Cleanup completed request without
- interrupt notification
-Thread-Index: AQHWU5heDqJFApuOo0yQOIjuO+/O36j+4j7ggARNXQCAAJBVkA==
-Date: Sun, 12 Jul 2020 10:04:55 +0000
-Message-ID: <SN6PR04MB4640F34CAA25B3CB58F94CABFC630@SN6PR04MB4640.namprd04.prod.outlook.com>
-References: <20200706132113.21096-1-stanley.chu@mediatek.com>
- <SN6PR04MB4640BEAFE18BDC933FC7EC95FC640@SN6PR04MB4640.namprd04.prod.outlook.com>
- <1594517160.10600.33.camel@mtkswgap22>
-In-Reply-To: <1594517160.10600.33.camel@mtkswgap22>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mediatek.com; dkim=none (message not signed)
- header.d=none;mediatek.com; dmarc=none action=none header.from=wdc.com;
-x-originating-ip: [212.25.79.133]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 124bccec-cde0-41a4-dfb6-08d8264b06f4
-x-ms-traffictypediagnostic: SN6PR04MB4717:
-x-microsoft-antispam-prvs: <SN6PR04MB4717D53668807766932832C7FC630@SN6PR04MB4717.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:6108;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: XZ8c0DBZBnsCpvapi5aKn7rPwA5yD3HuCLMMREkynrDw3VNZjmI6XebI3RzLqhFJmgZ15aDkfPQmUtTUC2rJhOEGK4F+aZThUkwijz2Ts06v81zZClREqlFwAWP7b9z6Qjd5WZGRRI25O+pXc+Bs5GxJT+IFQ0Regvz1BFbHkq2MXTs9JU221y1giRJhKc/H5Dv0LX6f9wD9NqMwYWdi+pxbxEqKzwQZYzfqoYbQeRWL+cs8uGs40M9qYGb02vEa/4PilqQMsL5Lqa30Zouey5syD3Y4j/+AALprQTuOzdC2ToAVyzq3ceSzoiAS8o1W9YPz2kz8R9ViLq6Xq9YKVA==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR04MB4640.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(396003)(136003)(39850400004)(366004)(376002)(346002)(9686003)(8676002)(55016002)(86362001)(52536014)(316002)(64756008)(76116006)(66946007)(26005)(66556008)(15650500001)(5660300002)(66446008)(66476007)(8936002)(7416002)(186003)(2906002)(33656002)(83380400001)(6916009)(478600001)(4326008)(71200400001)(6506007)(54906003)(7696005);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: eS+XGAadc61nNakJodjuY1dhci+FRw51RdiIeBtfamvs9rgqT3Kl0zH1vt4zCQSeGc25RNHMpZ5YZ3XdGiqFfzt/C8IuVsmCIdqjKCaRUnklJhtUTfh0Ggs+wNCt9uRjDyAXLsRCizRZVM8j9b29o5C6AReTfNS4HTNeTjJ465eOLfiCE4T58G4D6EPlbZiNw95JPZMxbh3XQR7w0PAGAVLepqFZVBk3H16wzDYZWExaPhfWMDVkjWFMECF+YeG1VW9eQNyn2kavg1SX4wdndQnuXSdCS9axtFAYkRh/B/WJMcWEbY5bTFH18yssKop81KJHVrKkJjFTnypis6GQnL6mGqtOXg7w4wUFcpAbuWjVjaK0jd5kOqrvN3AGsJ0Bkr/1ffuWEHnHqdJgqdESceZvAbETGW/b39fwQjYhEB12VbxDvVJTKvPM4iKvQ7w3u8+SSkAvjyrWDgUU1liw7NLazD4uCxdrLUyiC3GM7ps=
-x-ms-exchange-transport-forked: True
+ id 1jufGV-0002xm-7F; Sun, 12 Jul 2020 16:55:48 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 1A168AB7A;
+ Sun, 12 Jul 2020 16:55:45 +0000 (UTC)
+Subject: Re: [PATCH] Revert "thermal: mediatek: fix register index error"
+From: Matthias Brugger <matthias.bgg@gmail.com>
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ linux-kernel@vger.kernel.org, Amit Kucheria <amit.kucheria@verdurent.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>
+References: <20200707103412.1010823-1-enric.balletbo@collabora.com>
+ <98369dbc-2e2a-a1bd-f3cd-68f33f66b882@gmail.com>
+Message-ID: <f9c3cb16-ef6c-b7ff-6832-a858cb2c9b3d@gmail.com>
+Date: Sun, 12 Jul 2020 18:55:41 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR04MB4640.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 124bccec-cde0-41a4-dfb6-08d8264b06f4
-X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Jul 2020 10:04:55.2130 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: y2jBa4PViyhRO2qUgV9IxSZ4Xkibqqxd1L8H06tu/vYwLr6yqhhy9LxbD75J7ZpMSzpv68grM4A9/RjnoHSsag==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB4717
+In-Reply-To: <98369dbc-2e2a-a1bd-f3cd-68f33f66b882@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200712_060503_853363_31F4F35E 
-X-CRM114-Status: GOOD (  36.83  )
+X-CRM114-CacheID: sfid-20200712_125547_461027_3E8DE66F 
+X-CRM114-Status: GOOD (  29.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -146,156 +70,146 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
- "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
- "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "cc.chou@mediatek.com" <cc.chou@mediatek.com>,
- "cang@codeaurora.org" <cang@codeaurora.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>,
- "chaotian.jing@mediatek.com" <chaotian.jing@mediatek.com>,
- "bvanassche@acm.org" <bvanassche@acm.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "beanhuo@micron.com" <beanhuo@micron.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: drinkcat@chromium.org, linux-pm@vger.kernel.org,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Michael Kao <michael.kao@mediatek.com>, Eduardo Valentin <edubezval@gmail.com>,
+ linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
+ Collabora Kernel ML <kernel@collabora.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-> 
-> Hi Avri,
-> 
-> On Thu, 2020-07-09 at 08:31 +0000, Avri Altman wrote:
-> > >
-> > > If somehow no interrupt notification is raised for a completed request
-> > > and its doorbell bit is cleared by host, UFS driver needs to cleanup
-> > > its outstanding bit in ufshcd_abort().
-> > Theoretically, this case is already accounted for -
-> > See line 6407: a proper error is issued and eventually outstanding req is
-> cleared.
-> >
-> > Can you go over the scenario you are attending line by line,
-> > And explain why ufshcd_abort does not account for it?
-> 
-> Sure.
-> 
-> If a request using tag N is completed by UFS device without interrupt
-> notification till timeout happens, ufshcd_abort() will be invoked.
-> 
-> Since request completion flow is not executed, current status may be
-> 
-> - Tag N in hba->outstanding_reqs is set
-> - Tag N in doorbell register is not set
-> 
-> In this case, ufshcd_abort() flow would be
-> 
-> - This log is printed: "ufshcd_abort: cmd was completed, but without a
-> notifying intr, tag = N"
-> - This log is printed: "ufshcd_abort: Device abort task at tag N"
-> - If hba->req_abort_skip is zero, QUERY_TASK command is sent
-> - Device responds "UPIU_TASK_MANAGEMENT_FUNC_COMPL"
-> - This log is printed: "ufshcd_abort: cmd at tag N not pending in the
-> device."
-> - Doorbell tells that tag N is not set, so the driver goes to label
-> "out" with this log printed: "ufshcd_abort: cmd at tag %d successfully
-> cleared from DB."
-> - In label "out" section, no cleanup will be made, and then ufshcd_abort
-> exits
-> - This request will be re-queued to request queue by SCSI timeout
-> handler
-> 
-> Now, Inconsistent state shows-up: A request is "re-queued" but its
-> corresponding resource in UFS layer is not cleared, below flow will
-> trigger bad things,
-> 
-> - A new request with tag M is finished
-> - Interrupt is raised and ufshcd_transfer_req_compl() found both tag N
-> and M can process the completion flow
-> - The post-processing flow for tag N will be executed while its request
-> is still alive
-> 
-> I am sorry that below messages are only for old kernel in non-blk-mq
-> case. However above scenario will also trigger bad thing in blk-mq case.
-
-Ok.  Thanks.
-
-> 
-> >
-> > >
-> > > Otherwise, system may crash by below abnormal flow:
-> > >
-> > > After this request is requeued by SCSI layer with its
-> > > outstanding bit set, the next completed request will trigger
-> > > ufshcd_transfer_req_compl() to handle all "completed outstanding
-> > > bits". In this time, the "abnormal outstanding bit" will be detected
-> > > and the "requeued request" will be chosen to execute request
-> > > post-processing flow. This is wrong and blk_finish_request() will
-> > > BUG_ON because this request is still "alive".
-> > >
-> > > It is worth mentioning that before ufshcd_abort() cleans the timed-out
-> > > request, driver need to check again if this request is really not
-> > > handled by __ufshcd_transfer_req_compl() yet because it may be
-> > > possible that the interrupt comes very lately before the cleaning.
-> > What do you mean? Why checking the outstanding reqs isn't enough?
-> >
-> > >
-> > > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> > > ---
-> > >  drivers/scsi/ufs/ufshcd.c | 9 +++++++--
-> > >  1 file changed, 7 insertions(+), 2 deletions(-)
-> > >
-> > > diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> > > index 8603b07045a6..f23fb14df9f6 100644
-> > > --- a/drivers/scsi/ufs/ufshcd.c
-> > > +++ b/drivers/scsi/ufs/ufshcd.c
-> > > @@ -6462,7 +6462,7 @@ static int ufshcd_abort(struct scsi_cmnd *cmd)
-> > >                         /* command completed already */
-> > >                         dev_err(hba->dev, "%s: cmd at tag %d successfully cleared
-> from
-> > > DB.\n",
-> > >                                 __func__, tag);
-> > > -                       goto out;
-> > > +                       goto cleanup;
-> > But you've arrived here only if (!(test_bit(tag, &hba->outstanding_reqs))) -
-> > See line 6400.
-> >
-> > >                 } else {
-> > >                         dev_err(hba->dev,
-> > >                                 "%s: no response from device. tag = %d, err %d\n",
-> > > @@ -6496,9 +6496,14 @@ static int ufshcd_abort(struct scsi_cmnd *cmd)
-> > >                 goto out;
-> > >         }
-> > >
-> > > +cleanup:
-> > > +       spin_lock_irqsave(host->host_lock, flags);
-> > > +       if (!test_bit(tag, &hba->outstanding_reqs)) {
-Is this needed?  it was already checked in line 6439.
-
-Thanks,
-Avri
-
-> > > +               spin_unlock_irqrestore(host->host_lock, flags);
-> > > +               goto out;
-> > > +       }
-> > >         scsi_dma_unmap(cmd);
-> > >
-> > > -       spin_lock_irqsave(host->host_lock, flags);
-> > >         ufshcd_outstanding_req_clear(hba, tag);
-> > >         hba->lrb[tag].cmd = NULL;
-> > >         spin_unlock_irqrestore(host->host_lock, flags);
-> > > --
-> > > 2.18.0
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gMTAvMDcvMjAyMCAxNTo1OCwgTWF0dGhpYXMgQnJ1Z2dlciB3cm90ZToKPiAKPiAKPiBPbiAw
+Ny8wNy8yMDIwIDEyOjM0LCBFbnJpYyBCYWxsZXRibyBpIFNlcnJhIHdyb3RlOgo+PiBUaGlzIHJl
+dmVydHMgY29tbWl0IGViOWFlY2Q5MGQxYTM5NjAxZTkxY2QwOGI5MGQ1ZmVlNTFkMzIxYTYKPj4K
+Pj4gVGhlIGFib3ZlIHBhdGNoIGlzIHN1cHBvc2VkIHRvIGZpeCBhIHJlZ2lzdGVyIGluZGV4IGVy
+cm9yIG9uIG10MjcwMS4gSXQKPj4gaXMgbm90IGNsZWFyIGlmIHRoZSBwcm9ibGVtIHNvbHZlZCBp
+cyBhIGhhbmcgb3IganVzdCBhbiBpbnZhbGlkIHZhbHVlCj4+IHJldHVybmVkLCBteSBndWVzcyBp
+cyB0aGUgc2Vjb25kLiBUaGUgcGF0Y2ggaW50cm9kdWNlcywgdGhvdWdoLCBhIG5ldwo+PiBoYW5n
+IG9uIE1UODE3MyBkZXZpY2UgbWFraW5nIHRoZW0gdW51c2FibGUuIFNvLCBzZWVtcyByZWFzb25h
+YmxlLCByZXZlcnQKPj4gdGhlIHBhdGNoIGJlY2F1c2UgaW50cm9kdWNlcyBhIHdvcnN0IGlzc3Vl
+Lgo+Pgo+PiBUaGUgcmVhc29uIEkgc2VuZCBhIHJldmVydCBpbnN0ZWFkIG9mIHRyeWluZyB0byBm
+aXggdGhlIGlzc3VlIGZvciBNVDgxNzMKPj4gaXMgYmVjYXVzZSB0aGUgaW5mb3JtYXRpb24gbmVl
+ZGVkIHRvIGZpeCB0aGUgaXNzdWUgaXMgaW4gdGhlIGRhdGFzaGVldAo+PiBhbmQgaXMgbm90IHB1
+YmxpYy4gU28gSSBhbSBub3QgcmVhbGx5IGFibGUgdG8gZml4IGl0Lgo+Pgo+PiBGaXhlcyB0aGUg
+Zm9sbG93aW5nIGJ1ZyB3aGVuIENPTkZJR19NVEtfVEhFUk1BTCBpcyBzZXQgb24gTVQ4MTczCj4+
+IGRldmljZXMuCj4+Cj4+IFvCoMKgwqAgMi4yMjI0ODhdIFVuYWJsZSB0byBoYW5kbGUga2VybmVs
+IHBhZ2luZyByZXF1ZXN0IGF0IHZpcnR1YWwgYWRkcmVzcyAKPj4gZmZmZjgwMDAxMjVmNTAwMQo+
+PiBbwqDCoMKgIDIuMjMwNDIxXSBNZW0gYWJvcnQgaW5mbzoKPj4gW8KgwqDCoCAyLjIzMzIwN13C
+oMKgIEVTUiA9IDB4OTYwMDAwMjEKPj4gW8KgwqDCoCAyLjIzNjI2MV3CoMKgIEVDID0gMHgyNTog
+REFCVCAoY3VycmVudCBFTCksIElMID0gMzIgYml0cwo+PiBbwqDCoMKgIDIuMjQxNTcxXcKgwqAg
+U0VUID0gMCwgRm5WID0gMAo+PiBbwqDCoMKgIDIuMjQ0NjIzXcKgwqAgRUEgPSAwLCBTMVBUVyA9
+IDAKPj4gW8KgwqDCoCAyLjI0Nzc2Ml0gRGF0YSBhYm9ydCBpbmZvOgo+PiBbwqDCoMKgIDIuMjUw
+NjQwXcKgwqAgSVNWID0gMCwgSVNTID0gMHgwMDAwMDAyMQo+PiBbwqDCoMKgIDIuMjU0NDczXcKg
+wqAgQ00gPSAwLCBXblIgPSAwCj4+IFvCoMKgwqAgMi4yNTc1NDRdIHN3YXBwZXIgcGd0YWJsZTog
+NGsgcGFnZXMsIDQ4LWJpdCBWQXMsIHBnZHA9MDAwMDAwMDA0MTg1MDAwMAo+PiBbwqDCoMKgIDIu
+MjY0MjUxXSBbZmZmZjgwMDAxMjVmNTAwMV0gcGdkPTAwMDAwMDAxM2ZmZmYwMDMsIHB1ZD0wMDAw
+MDAwMTNmZmZlMDAzLCAKPj4gcG1kPTAwMDAwMDAxM2ZmZjkwMDMsIHB0ZT0wMDY4MDAwMDExMDBi
+NzA3Cj4+IFvCoMKgwqAgMi4yNzQ4NjddIEludGVybmFsIGVycm9yOiBPb3BzOiA5NjAwMDAyMSBb
+IzFdIFBSRUVNUFQgU01QCj4+IFvCoMKgwqAgMi4yODA0MzJdIE1vZHVsZXMgbGlua2VkIGluOgo+
+PiBbwqDCoMKgIDIuMjgzNDgzXSBDUFU6IDAgUElEOiAxIENvbW06IHN3YXBwZXIvMCBOb3QgdGFp
+bnRlZCA1LjcuMC1yYzYrICMxNjIKPj4gW8KgwqDCoCAyLjI4OTkxNF0gSGFyZHdhcmUgbmFtZTog
+R29vZ2xlIEVsbSAoRFQpCj4+IFvCoMKgwqAgMi4yOTQwMDNdIHBzdGF0ZTogMjAwMDAwMDUgKG56
+Q3YgZGFpZiAtUEFOIC1VQU8pCj4+IFvCoMKgwqAgMi4yOTg3OTJdIHBjIDogbXRrX3JlYWRfdGVt
+cCsweGI4LzB4MWM4Cj4+IFvCoMKgwqAgMi4zMDI3OTNdIGxyIDogbXRrX3JlYWRfdGVtcCsweDdj
+LzB4MWM4Cj4+IFvCoMKgwqAgMi4zMDY3OTRdIHNwIDogZmZmZjgwMDAxMDAzYjkzMAo+PiBbwqDC
+oMKgIDIuMzEwMTAwXSB4Mjk6IGZmZmY4MDAwMTAwM2I5MzAgeDI4OiAwMDAwMDAwMDAwMDAwMDAw
+Cj4+IFvCoMKgwqAgMi4zMTU0MDRdIHgyNzogMDAwMDAwMDAwMDAwMDAwMiB4MjY6IGZmZmYwMDAw
+Zjk1NTBiMTAKPj4gW8KgwqDCoCAyLjMyMDcwOV0geDI1OiBmZmZmMDAwMGY5NTUwYTgwIHgyNDog
+MDAwMDAwMDAwMDAwMDA5MAo+PiBbwqDCoMKgIDIuMzI2MDE0XSB4MjM6IGZmZmY4MDAwMTAwM2Jh
+MjQgeDIyOiAwMDAwMDAwMDYxMDM0NGMwCj4+IFvCoMKgwqAgMi4zMzEzMThdIHgyMTogMDAwMDAw
+MDAwMDAwMjcxMCB4MjA6IDAwMDAwMDAwMDAwMDAxZjQKPj4gW8KgwqDCoCAyLjMzNjYyMl0geDE5
+OiAwMDAwMDAwMDAwMDMwZDQwIHgxODogZmZmZjgwMDAxMTc0MmVjMAo+PiBbwqDCoMKgIDIuMzQx
+OTI2XSB4MTc6IDAwMDAwMDAwMDAwMDAwMDEgeDE2OiAwMDAwMDAwMDAwMDAwMDAxCj4+IFvCoMKg
+wqAgMi4zNDcyMzBdIHgxNTogZmZmZmZmZmZmZmZmZmZmZiB4MTQ6IGZmZmZmZjAwMDAwMDAwMDAK
+Pj4gW8KgwqDCoCAyLjM1MjUzNV0geDEzOiBmZmZmZmZmZmZmZmZmZmZmIHgxMjogMDAwMDAwMDAw
+MDAwMDAyOAo+PiBbwqDCoMKgIDIuMzU3ODM5XSB4MTE6IDAwMDAwMDAwMDAwMDAwMDMgeDEwOiBm
+ZmZmODAwMDExMjk1ZWM4Cj4+IFvCoMKgwqAgMi4zNjMxNDNdIHg5IDogMDAwMDAwMDAwMDAwMjkx
+YiB4OCA6IDAwMDAwMDAwMDAwMDAwMDIKPj4gW8KgwqDCoCAyLjM2ODQ0N10geDcgOiAwMDAwMDAw
+MDAwMDAwMGE4IHg2IDogMDAwMDAwMDAwMDAwMDAwNAo+PiBbwqDCoMKgIDIuMzczNzUxXSB4NSA6
+IDAwMDAwMDAwMDAwMDAwMDAgeDQgOiBmZmZmODAwMDExMjk1Y2IwCj4+IFvCoMKgwqAgMi4zNzkw
+NTVdIHgzIDogMDAwMDAwMDAwMDAwMDAwMiB4MiA6IGZmZmY4MDAwMTI1ZjUwMDEKPj4gW8KgwqDC
+oCAyLjM4NDM1OV0geDEgOiAwMDAwMDAwMDAwMDAwMDAxIHgwIDogZmZmZjAwMDBmOTU1MGE4MAo+
+PiBbwqDCoMKgIDIuMzg5NjY1XSBDYWxsIHRyYWNlOgo+PiBbwqDCoMKgIDIuMzkyMTA1XcKgIG10
+a19yZWFkX3RlbXArMHhiOC8weDFjOAo+PiBbwqDCoMKgIDIuMzk1NzYwXcKgIG9mX3RoZXJtYWxf
+Z2V0X3RlbXArMHgyYy8weDQwCj4+IFvCoMKgwqAgMi4zOTk4NDldwqAgdGhlcm1hbF96b25lX2dl
+dF90ZW1wKzB4NzgvMHgxNjAKPj4gW8KgwqDCoCAyLjQwNDE5OF3CoCB0aGVybWFsX3pvbmVfZGV2
+aWNlX3VwZGF0ZS5wYXJ0LjArMHgzYy8weDFmOAo+PiBbwqDCoMKgIDIuNDA5NTg5XcKgIHRoZXJt
+YWxfem9uZV9kZXZpY2VfdXBkYXRlKzB4MzQvMHg0OAo+PiBbwqDCoMKgIDIuNDE0Mjg2XcKgIG9m
+X3RoZXJtYWxfc2V0X21vZGUrMHg1OC8weDg4Cj4+IFvCoMKgwqAgMi40MTgzNzVdwqAgdGhlcm1h
+bF96b25lX29mX3NlbnNvcl9yZWdpc3RlcisweDFhOC8weDFkOAo+PiBbwqDCoMKgIDIuNDIzNjc5
+XcKgIGRldm1fdGhlcm1hbF96b25lX29mX3NlbnNvcl9yZWdpc3RlcisweDY0LzB4YjAKPj4gW8Kg
+wqDCoCAyLjQyOTI0Ml3CoCBtdGtfdGhlcm1hbF9wcm9iZSsweDY5MC8weDdkMAo+PiBbwqDCoMKg
+IDIuNDMzMzMzXcKgIHBsYXRmb3JtX2Rydl9wcm9iZSsweDVjLzB4YjAKPj4gW8KgwqDCoCAyLjQz
+NzMzNV3CoCByZWFsbHlfcHJvYmUrMHhlNC8weDQ0OAo+PiBbwqDCoMKgIDIuNDQwOTAxXcKgIGRy
+aXZlcl9wcm9iZV9kZXZpY2UrMHhlOC8weDE0MAo+PiBbwqDCoMKgIDIuNDQ1MDc3XcKgIGRldmlj
+ZV9kcml2ZXJfYXR0YWNoKzB4N2MvMHg4OAo+PiBbwqDCoMKgIDIuNDQ5MjUyXcKgIF9fZHJpdmVy
+X2F0dGFjaCsweGFjLzB4MTc4Cj4+IFvCoMKgwqAgMi40NTMwODJdwqAgYnVzX2Zvcl9lYWNoX2Rl
+disweDc4LzB4YzgKPj4gW8KgwqDCoCAyLjQ1NjkwOV3CoCBkcml2ZXJfYXR0YWNoKzB4MmMvMHgz
+OAo+PiBbwqDCoMKgIDIuNDYwNDc2XcKgIGJ1c19hZGRfZHJpdmVyKzB4MTRjLzB4MjMwCj4+IFvC
+oMKgwqAgMi40NjQzMDRdwqAgZHJpdmVyX3JlZ2lzdGVyKzB4NmMvMHgxMjgKPj4gW8KgwqDCoCAy
+LjQ2ODEzMV3CoCBfX3BsYXRmb3JtX2RyaXZlcl9yZWdpc3RlcisweDUwLzB4NjAKPj4gW8KgwqDC
+oCAyLjQ3MjgzMV3CoCBtdGtfdGhlcm1hbF9kcml2ZXJfaW5pdCsweDI0LzB4MzAKPj4gW8KgwqDC
+oCAyLjQ3NzI2OF3CoCBkb19vbmVfaW5pdGNhbGwrMHg1MC8weDI5OAo+PiBbwqDCoMKgIDIuNDgx
+MDk4XcKgIGtlcm5lbF9pbml0X2ZyZWVhYmxlKzB4MWVjLzB4MjY0Cj4+IFvCoMKgwqAgMi40ODU0
+NTBdwqAga2VybmVsX2luaXQrMHgxYy8weDExMAo+PiBbwqDCoMKgIDIuNDg4OTMxXcKgIHJldF9m
+cm9tX2ZvcmsrMHgxMC8weDFjCj4+IFvCoMKgwqAgMi40OTI1MDJdIENvZGU6IGY5NDAxMDgxIGY5
+NDAwNDAyIGI4YTY3ODIxIDhiMDEwMDQyIChiOTQwMDA0MikKPj4gW8KgwqDCoCAyLjQ5ODU5OV0g
+LS0tWyBlbmQgdHJhY2UgZTQzZTMxMDVlZDI3ZGM5OSBdLS0tCj4+IFvCoMKgwqAgMi41MDMzNjdd
+IEtlcm5lbCBwYW5pYyAtIG5vdCBzeW5jaW5nOiBBdHRlbXB0ZWQgdG8ga2lsbCBpbml0ISAKPj4g
+ZXhpdGNvZGU9MHgwMDAwMDAwYgo+PiBbwqDCoMKgIDIuNTExMDIwXSBTTVA6IHN0b3BwaW5nIHNl
+Y29uZGFyeSBDUFVzCj4+IFvCoMKgwqAgMi41MTQ5NDFdIEtlcm5lbCBPZmZzZXQ6IGRpc2FibGVk
+Cj4+IFvCoMKgwqAgMi41MTg0MjFdIENQVSBmZWF0dXJlczogMHgwOTAwMDIsMjUwMDYwMDUKPj4g
+W8KgwqDCoCAyLjUyMjU5NV0gTWVtb3J5IExpbWl0OiBub25lCj4+IFvCoMKgwqAgMi41MjU2NDRd
+IC0tLVsgZW5kIEtlcm5lbCBwYW5pYyAtIG5vdCBzeW5jaW5nOiBBdHRlbXB0ZWQgdG8ga2lsbCBp
+bml0ISAKPj4gZXhpdGNvZGU9MHgwMDAwMDAwYiBdLS0KPj4KPj4gQ2M6IE1pY2hhZWwgS2FvIDxt
+aWNoYWVsLmthb0BtZWRpYXRlay5jb20+Cj4+IEZpeGVzOiBlYjlhZWNkOTBkMWEgKCJ0aGVybWFs
+OiBtZWRpYXRlazogZml4IHJlZ2lzdGVyIGluZGV4IGVycm9yIikKPj4gU2lnbmVkLW9mZi1ieTog
+RW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNvbT4KPiAK
+PiBSZXZpZXdlZC1ieTogTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4K
+PiAKPiBEYW5pZWwsIFpoYW5nLCBBbWl0OiBjYW4geW91IHRha2UgdGhpcyBhcyBhIGJ1Z2ZpeCBm
+b3IgdjUuOCBwbGVhc2U/IFdlIHdhaXRlZCAKPiBsb25nIGVub3VnaCB0byBnZXQgYSBwcm9wZXIg
+Zml4IGZvciB0aGUgZHJpdmVyLCBidXQgbm90aGluZyB3YXMgcG9zdGVkIG9uIHRoZSAKPiBtYWls
+aW5nbGlzdC4gQWxzbyB3ZSBkb24ndCBrbm93IGlmIHRoaXMgd2lsbCBicmVhayBtdDI3MDEgb3Ig
+bm90LCB3ZSBwcmVmZXIgdG8gCj4gaGF2ZSBhIHdvcmtpbmcgbXQ4MTczIGFzIHRoaXMgaXMgYWN0
+dWFsbHkgYSBTb0MgdGhhdCBpcyBhdmFpbGFibGUgdG8gdGhlIGdlbmVyYWwgCj4gcHVibGljIChh
+cyBhIGNocm9tZWJvb2sgcHJvZHVjdCkuCj4gCj4gSSBwcm9wb3NlIHRvIHRha2UgdGhpcyByZXZl
+cnQgZm9yIG5vdyBhbmQgaG9wZSB0aGF0IE1lZGlhVGVrIHdpbGwgZml4IHRoZSBkcml2ZXIgCj4g
+Zm9yIGdvb2QgaW4gdGhlIG5lYXIgZnV0dXJlLgo+IAoKRnJhbmsgdGVzdGVkIHRoZSBwYXRjaCwg
+d2l0aCB0aGUgb25seSBib2FyZCB0aGF0IGlzIGFmZmVjdGVkIGFuZCBhdmFpbGFibGUgCihhcGFy
+dCBmcm9tIHRoZSBtdDgxODMgU29DKSwgdGhlIEJhbmFuYVBpIFIyIChtdDc2MjMpLiBUaGUgcmV2
+ZXJ0IGRvZXMgbm90IGJyZWFrIAp0aGUgZHJpdmVyLiBFdmVuIG1vcmUgaW50ZXJlc3RpbmcsIHdp
+dGggYW5kIHdpdGhvdXQgdGhlIHJldmVydCB0aGUgdGhlcm1hbCAKc2Vuc29yIHJldHVybnMgYWx3
+YXlzIHplcm8sIHNvIGl0IHNlZW1zIGl0IG5ldmVyIGFjdHVhbGx5IHdvcmtlZC4KClNvIEkgdGhp
+bmsgd2UgYXJlIG1vcmUgdGhlbiBnb29kLCB0byBnbyBhaGVhZCB3aXRoIHJldmVydGluZyB0aGUg
+cGF0Y2guCgpSZWdhcmRzLApNYXR0aGlhcwoKPj4gLS0tCj4+Cj4+IMKgIGRyaXZlcnMvdGhlcm1h
+bC9tdGtfdGhlcm1hbC5jIHwgNiArKy0tLS0KPj4gwqAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0
+aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvdGhlcm1h
+bC9tdGtfdGhlcm1hbC5jIGIvZHJpdmVycy90aGVybWFsL210a190aGVybWFsLmMKPj4gaW5kZXgg
+NmI3ZWYxOTkzZDdlLi40MmM5Y2QwZTVmNzcgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvdGhlcm1h
+bC9tdGtfdGhlcm1hbC5jCj4+ICsrKyBiL2RyaXZlcnMvdGhlcm1hbC9tdGtfdGhlcm1hbC5jCj4+
+IEBAIC01OTQsOCArNTk0LDcgQEAgc3RhdGljIGludCBtdGtfdGhlcm1hbF9iYW5rX3RlbXBlcmF0
+dXJlKHN0cnVjdCAKPj4gbXRrX3RoZXJtYWxfYmFuayAqYmFuaykKPj4gwqDCoMKgwqDCoCB1MzIg
+cmF3Owo+PiDCoMKgwqDCoMKgIGZvciAoaSA9IDA7IGkgPCBjb25mLT5iYW5rX2RhdGFbYmFuay0+
+aWRdLm51bV9zZW5zb3JzOyBpKyspIHsKPj4gLcKgwqDCoMKgwqDCoMKgIHJhdyA9IHJlYWRsKG10
+LT50aGVybWFsX2Jhc2UgKwo+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGNvbmYt
+Pm1zcltjb25mLT5iYW5rX2RhdGFbYmFuay0+aWRdLnNlbnNvcnNbaV1dKTsKPj4gK8KgwqDCoMKg
+wqDCoMKgIHJhdyA9IHJlYWRsKG10LT50aGVybWFsX2Jhc2UgKyBjb25mLT5tc3JbaV0pOwo+PiDC
+oMKgwqDCoMKgwqDCoMKgwqAgdGVtcCA9IHJhd190b19tY2Vsc2l1cyhtdCwKPj4gwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGNvbmYtPmJhbmtfZGF0YVti
+YW5rLT5pZF0uc2Vuc29yc1tpXSwKPj4gQEAgLTczNiw4ICs3MzUsNyBAQCBzdGF0aWMgdm9pZCBt
+dGtfdGhlcm1hbF9pbml0X2Jhbmsoc3RydWN0IG10a190aGVybWFsICptdCwgCj4+IGludCBudW0s
+Cj4+IMKgwqDCoMKgwqAgZm9yIChpID0gMDsgaSA8IGNvbmYtPmJhbmtfZGF0YVtudW1dLm51bV9z
+ZW5zb3JzOyBpKyspCj4+IMKgwqDCoMKgwqDCoMKgwqDCoCB3cml0ZWwoY29uZi0+c2Vuc29yX211
+eF92YWx1ZXNbY29uZi0+YmFua19kYXRhW251bV0uc2Vuc29yc1tpXV0sCj4+IC3CoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgIG10LT50aGVybWFsX2Jhc2UgKwo+PiAtwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoCBjb25mLT5hZGNwbnBbY29uZi0+YmFua19kYXRhW251bV0uc2Vuc29yc1tp
+XV0pOwo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBtdC0+dGhlcm1hbF9iYXNlICsg
+Y29uZi0+YWRjcG5wW2ldKTsKPj4gwqDCoMKgwqDCoCB3cml0ZWwoKDEgPDwgY29uZi0+YmFua19k
+YXRhW251bV0ubnVtX3NlbnNvcnMpIC0gMSwKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGNv
+bnRyb2xsZXJfYmFzZSArIFRFTVBfTU9OQ1RMMCk7Cj4+CgoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Ckxp
+bnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
