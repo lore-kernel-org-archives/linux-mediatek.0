@@ -5,19 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BBD17C433E5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 06:56:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C7E1C433E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 07:03:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 88C9A2075D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 06:56:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E8DD72075D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 07:03:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YuZDhPw0";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="hcTBR1V0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 88C9A2075D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2U91Sy9T";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="tazfVTMo"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E8DD72075D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +27,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NgAbCixf0KbsUr84b52apXyK+jsPnc9jB0r6kYI2HZE=; b=YuZDhPw047vywLN5PfHNIKQ3z
-	CEa/J/emHUDBRUNp/vOZSaNHh1dY+BpkHUbG83hTGocshiPeqquhhsSODoeJHdTSDPmE5jXbtS9ki
-	oz/jAWDJ6G1786SYxL18kEUsXgtwC79GipvieO1xdVRGL7PhQyX5k2D797KhNuWP8wJ2LKrhkppeS
-	yelGylVQ8pzemvSJVHURfpqKI+fZtCFt0TXUAN4+crUewSjTW7kw5tly9jwtkISI13B62RkinURZI
-	JN5pqivl5S8YzFUaaVvdf1Dy1ROCKcl7r5ay7f0+Y3kONXjFZxy0L+wxv5oydMOj+z7dMD/s3nI/G
-	zDDbDKWjA==;
+	 bh=r3rxCH6fnwtcfbim5q4AhXwVvgD3U22s+lL58TMk1Kc=; b=2U91Sy9T4t6W8E28gn6s68jAj
+	BelNVyHNfksTGwZShC4plkfF8LeGoYohcw4dUovUVpgR8X3RNU/selNydb6+c8x0ZMvkKtt95kqz3
+	VkuttpDWZVr+SSdB5kOtg4YdWVOaj6OxbAK7i0sPkhqQ3/+IYdehum/CB5qUbvQ6FQS2gOTC1YRTN
+	fAUpoJNW7ONmB9aEZ1rqnh76X/2a7R4uIVDZ7II85GLHWLFqKqhKa/DvdFA2utawEjBY2Ly9YAgm2
+	oTmDFWglULplq2+t2d6w1+u6d9XROEsJpmhW2C+wrxsG+ccxWUNh3TrQxV/Xps4T5N+ABBcmWVY3e
+	IDUh9VFFw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jusNb-0008RN-3z; Mon, 13 Jul 2020 06:55:59 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jusUX-0001Au-1o; Mon, 13 Jul 2020 07:03:09 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jusNY-0008Qe-JJ; Mon, 13 Jul 2020 06:55:57 +0000
-X-UUID: e49cdc040b764925a3d501148c42c9a5-20200712
+ id 1jusUU-00019l-OO; Mon, 13 Jul 2020 07:03:07 +0000
+X-UUID: 38c1948cd2f44691aa73d77a69321973-20200712
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=+Ge9G9rSePdPEHWfzy1cfUe7vMpgioTYIlHODRFrwkk=; 
- b=hcTBR1V01BvFVOcL44C3w3YSZLGRuq/FvLGwAt6XomEoV1yYRvZFBkRHNVTx1M6WesSiSY+7aPclKNgqNZreRNhgIQQH1hrtVBa890fnkMCBgKoDvX3mQ0TuwNdKE4VmlkYnEZiKMDMG3wGuxdINFJ4nq/X6ys/epgshYJ/Jt1s=;
-X-UUID: e49cdc040b764925a3d501148c42c9a5-20200712
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
+ bh=/O8b95ILqstFIgFUi/t1yv/IWDQZ/y0hmoi2/61jPNE=; 
+ b=tazfVTMoxJwQJTvjOgvO4uioWpxAwnCQ5+ALKUiHFj9bdm24eHffVCv4l+TXQ3Np0xHiG7AtrkU/+HuK+ZkJU1ykYQpuwjZW63pEaUWG+L9yWoDANNDz0wn5YfHX0SPL4GEwL04W+4Vt/u5mNPWR2QNBdZ1HFyRSJcoDA6T3i+Y=;
+X-UUID: 38c1948cd2f44691aa73d77a69321973-20200712
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1699424253; Sun, 12 Jul 2020 22:55:51 -0800
-Received: from MTKMBS33DR.mediatek.inc (172.27.6.106) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 12 Jul 2020 23:55:49 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS33DR.mediatek.inc
- (172.27.6.106) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 13 Jul 2020 14:55:47 +0800
+ with ESMTP id 1383150533; Sun, 12 Jul 2020 23:03:00 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 12 Jul 2020 23:52:57 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 13 Jul 2020 14:52:55 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 13 Jul 2020 14:55:45 +0800
-Message-ID: <1594623300.23885.36.camel@mhfsdcap03>
-Subject: Re: [v2 PATCH] usb: gadget: bdc: use readl_poll_timeout() to
- simplify code
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Florian Fainelli <f.fainelli@gmail.com>
-Date: Mon, 13 Jul 2020 14:55:00 +0800
-In-Reply-To: <b73d8a90-96cd-42b5-bbc2-26e300da0603@gmail.com>
-References: <1594611017-4535-1-git-send-email-chunfeng.yun@mediatek.com>
- <b73d8a90-96cd-42b5-bbc2-26e300da0603@gmail.com>
+ Transport; Mon, 13 Jul 2020 14:52:54 +0800
+Message-ID: <1594623128.16172.27.camel@mhfsdcap03>
+Subject: Re: [PATCH 06/21] iommu/io-pgtable-arm-v7s: Use ias to check the
+ valid iova in unmap
+From: Yong Wu <yong.wu@mediatek.com>
+To: Nicolas Boichat <drinkcat@chromium.org>
+Date: Mon, 13 Jul 2020 14:52:08 +0800
+In-Reply-To: <CANMq1KAhFCWfywV=OiHgW00pof8K8TdwC6Hzgyj=QWSiWBf1ag@mail.gmail.com>
+References: <20200711064846.16007-1-yong.wu@mediatek.com>
+ <20200711064846.16007-7-yong.wu@mediatek.com>
+ <CANMq1KAhFCWfywV=OiHgW00pof8K8TdwC6Hzgyj=QWSiWBf1ag@mail.gmail.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 5DE5EC88EF47CDA1AC3C74117593930ACC115D18580B92FF06D31A130EB8FCEE2000:8
+X-TM-SNTS-SMTP: F3CF35EF42678060759801117619B4C940E2D810BF19205DF4368001F842ACB22000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200713_025556_787981_EF1A4AFA 
-X-CRM114-Status: GOOD (  23.41  )
+X-CRM114-CacheID: sfid-20200713_030307_063966_01578F13 
+X-CRM114-Status: GOOD (  18.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,93 +87,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Felipe Balbi <balbi@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org,
- Stephen Boyd <swboyd@chromium.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: youlin.pei@mediatek.com, Devicetree List <devicetree@vger.kernel.org>,
+ cui.zhang@mediatek.com, srv_heupstream <srv_heupstream@mediatek.com>,
+ chao.hao@mediatek.com, Robin Murphy <robin.murphy@arm.com>,
+ Joerg Roedel <joro@8bytes.org>, lkml <linux-kernel@vger.kernel.org>,
+ Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>,
+ iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, ming-fan.chen@mediatek.com,
+ anan.sun@mediatek.com, Will Deacon <will@kernel.org>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 2020-07-12 at 20:53 -0700, Florian Fainelli wrote:
-> 
-> On 7/12/2020 8:30 PM, Chunfeng Yun wrote:
-> > Use readl_poll_timeout() to poll register status
-> > 
-> > Cc: Florian Fainelli <f.fainelli@gmail.com>
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+On Mon, 2020-07-13 at 08:38 +0800, Nicolas Boichat wrote:
+> On Sat, Jul 11, 2020 at 2:50 PM Yong Wu <yong.wu@mediatek.com> wrote:
+> >
+> > As title.
+> >
+> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > > ---
-> > v2 changes, suggested by Stephen:
-> >   1. use unsigned int instead of int for @usec parameter
-> >   2. add dev_log() back
-> >   3. drop "Err" in error log
-> > ---
-> >  drivers/usb/gadget/udc/bdc/bdc_core.c | 26 +++++++++++---------------
-> >  1 file changed, 11 insertions(+), 15 deletions(-)
-> > 
-> > diff --git a/drivers/usb/gadget/udc/bdc/bdc_core.c b/drivers/usb/gadget/udc/bdc/bdc_core.c
-> > index 02a3a77..53dccb1 100644
-> > --- a/drivers/usb/gadget/udc/bdc/bdc_core.c
-> > +++ b/drivers/usb/gadget/udc/bdc/bdc_core.c
-> > @@ -12,6 +12,7 @@
-> >  #include <linux/spinlock.h>
-> >  #include <linux/platform_device.h>
-> >  #include <linux/interrupt.h>
-> > +#include <linux/iopoll.h>
-> >  #include <linux/ioport.h>
-> >  #include <linux/io.h>
-> >  #include <linux/list.h>
-> > @@ -29,24 +30,19 @@
-> >  #include "bdc_dbg.h"
-> >  
-> >  /* Poll till controller status is not OIP */
-> > -static int poll_oip(struct bdc *bdc, int usec)
-> > +static int poll_oip(struct bdc *bdc, u32 usec)
+> >  drivers/iommu/io-pgtable-arm-v7s.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
+> > index 4272fe4e17f4..01f2a8876808 100644
+> > --- a/drivers/iommu/io-pgtable-arm-v7s.c
+> > +++ b/drivers/iommu/io-pgtable-arm-v7s.c
+> > @@ -717,7 +717,7 @@ static size_t arm_v7s_unmap(struct io_pgtable_ops *ops, unsigned long iova,
 > >  {
-> >  	u32 status;
-> > -	/* Poll till STS!= OIP */
-> > -	while (usec) {
-> > -		status = bdc_readl(bdc->regs, BDC_BDCSC);
-> > -		if (BDC_CSTS(status) != BDC_OIP) {
-> > -			dev_dbg(bdc->dev,
-> > -				"poll_oip complete status=%d",
-> > -				BDC_CSTS(status));
-> > -			return 0;
-> > -		}
-> > -		udelay(10);
-> > -		usec -= 10;
-> > -	}
-> > -	dev_err(bdc->dev, "Err: operation timedout BDCSC: 0x%08x\n", status);
-> > +	int ret;
-> >  
-> > -	return -ETIMEDOUT;
-> > +	ret = readl_poll_timeout(bdc->regs + BDC_BDCSC, status,
-> > +		(BDC_CSTS(status) != BDC_OIP), 10, usec);
+> >         struct arm_v7s_io_pgtable *data = io_pgtable_ops_to_data(ops);
+> >
+> > -       if (WARN_ON(upper_32_bits(iova)))
+> > +       if (WARN_ON(iova >= (1ULL << data->iop.cfg.ias)))
 > 
-> You could probably indent this to the opening parenthesis, 
-Done, v3 is sent out, thanks
+> This is a little odd as iova is unsigned long and 1ULL is unsigned long long.
+> 
+> Would it be better to keep the spirit of the previous test and do
+> something like:
+>  if (WARN_ON(iova >> data->iop.cfg.ias)) ?
 
-> but with or
-> without it:
+Yes. Thanks. I will change it like this in next version.
+
+Also change this in arm_v7s_map by the way.
+
 > 
-> Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
-> 
-> and thanks for picking up the MAINTAINERS file update ;)
-> 
-> > +	if (ret)
-> > +		dev_err(bdc->dev, "operation timedout BDCSC: 0x%08x\n", status);
-> > +	else
-> > +		dev_dbg(bdc->dev, "%s complete status=%d", __func__, BDC_CSTS(status));
-> > +
-> > +	return ret;
-> >  }
-> >  
-> >  /* Stop the BDC controller */
-> > 
-> 
+> >                 return 0;
+> >
+> >         return __arm_v7s_unmap(data, gather, iova, size, 1, data->pgd);
+> > --
+> > 2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
