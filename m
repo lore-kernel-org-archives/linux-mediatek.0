@@ -2,92 +2,156 @@ Return-Path: <SRS0=TL3J=AY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 199DFC433E3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 03:53:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 229A4C433E3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 03:55:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DB5F62068F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 03:53:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E3C7C2068F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 03:55:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1iHVJIMw";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="VoY/vrzI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DB5F62068F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e0WfeLO1";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=microchip.com header.i=@microchip.com header.b="yReazDOi";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=microchiptechnology.onmicrosoft.com header.i=@microchiptechnology.onmicrosoft.com header.b="Fk4SYno5"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E3C7C2068F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=microchip.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=PDsraZH7k/KgY8QfMKehDCoaWbpgY1oeeNDj7kuPt/U=; b=1iHVJIMwRxd0r6EC/2gexaO1v
-	JGveR8yn4B2JMqJPU4ykWeTnyCATSsrgYuBlmKEJ2UvGLmMNHhz4BOxHr7gdotY+ve3xiKPQiads1
-	1lBPpTY8Cq9ljTZdRaqe6/kWUPD6HUaJH/O7emUbafTz0jHXDxA7ZXr1S8719bUuZXtTiUYEgY4ha
-	mdQFCo0qNsiFGTzwKsUws6hmFgXFDUkm6ormKKNS588jGmFXUzVDr5d4m9Od31c37UngTsvjsw3wz
-	61VqMyN2m11umq5haFH/+TpU2+XQb6yVTCTV6vUnTksocU7u9Y0ayJFW2qVGw7rd7GYsonJCt1kuN
-	55h168xMQ==;
+	 bh=8BcnLIucl74bWi06bz7kwtKlCrOcQKJWpRk+UkZAnVk=; b=e0WfeLO1P9YcE6DVNhYElclGx
+	NxOmD7TeN9pHAQOCzKNvpiCVPH+UOgeUEG/XJlX7izT4xPIdWOQZQl8G8lU7bT07Vik2tfhc/VvK5
+	rjZ7f9EhF+AKgS96txQpfID0IGsyUB/3/v8ZNANRkqiID/3xSQh9C8MpnpdLR7xDWK5Ib2105rMHP
+	if6m3TdCOEsm8hsIyxuyDdV+Ly5Fw7UJFdZgAFbx27ZYQ3CHR80aDSgKgqrL+dnf+di3/4zkUjOi9
+	GRlS7yHRgRKQONuo6ZcfEj821GqsvCmtH7bPGZDvn/xZ/w2RJrk9uIfcm54kJnBbYeNIzpy/q30Zt
+	QBnu39Pcw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jupWk-0005Q8-Fh; Mon, 13 Jul 2020 03:53:14 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1jupYg-0005ZW-W5; Mon, 13 Jul 2020 03:55:15 +0000
+Received: from esa6.microchip.iphmx.com ([216.71.154.253])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jupWh-0005Ph-K2; Mon, 13 Jul 2020 03:53:12 +0000
-Received: by mail-pg1-x543.google.com with SMTP id m22so5455421pgv.9;
- Sun, 12 Jul 2020 20:53:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=P/uMBAFsJSFsMe0s271yKJa7p3nRkmMFxcASFVx3X9s=;
- b=VoY/vrzIzoUvpLLOWgA04fLa3of+ub+owBKbOFPm4LdVdlbMRJRIXMVMWrrc9BNOKF
- r1GKF4a3rcQ658wT6pYylfRqzRAtJ0LnTHrzrbJj/RDqE/thsXDNuW6RBEHCF42iA3fG
- xxO+aGacyGOZsWbLTZosotOjPPtD7nZhnnRp2HdoV1MNWNt3v5+07vL98jQ7SEDH37sY
- MbzM0SBQhhYgZpuY/z2NCAsBS4v+BJ/xEnbSN7Axq0kCWAa79y7aPFHi/kmMj0PizaT1
- a9XKlAFkkDACZCXA04uEUl2HNmTg9eaIZMBmmIGD4Qez8apholVrmNLQL7Ak2DfrBBkp
- 8Odg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=P/uMBAFsJSFsMe0s271yKJa7p3nRkmMFxcASFVx3X9s=;
- b=uXcymhaZ6RMikjqanoW1hP2SIRM9svhD9TAu1pTs+KjwirF8+MCsJXRJy5qNK2b/Y3
- iva+wky5k2QYW7gSAKJLXUnmR5lV8zy9AOJwIE6TqMHIlwRDGyVJZPsSFzwFGMCQUdyK
- 6NwuGmDLZcer7RZleB6CEjO0zFLHw3JS2GWG8Ss0pTmm+gZSpWlk1END/PN0w+vvnNY0
- i6HlWT/SIj/3a6+kt1AM87iSryLZxuW9yLwPcQ5sHRVfAqgFVvg7ngkWP2GbPnIc3G57
- HfePviZSQVkITOn6rJq1dwH/RIIIWJIW1i2jHz2oQ4mr6ZSoBTNn79xKpSSvHruyayyU
- KGRg==
-X-Gm-Message-State: AOAM5318Lix1JdftRKvx4T9j2YQNautU4c0PxjaOYk5lsYBbGx5dILPF
- YldCztsm4xEAD0agbtpANu6DsUa1
-X-Google-Smtp-Source: ABdhPJwyduixaPXyl9nsR8wsh7T30kYdCLoB5U/CwQARqKP0/h/EygceJsHfNzJNv902tkQp43X7rA==
-X-Received: by 2002:a63:f50b:: with SMTP id w11mr66510839pgh.157.1594612387120; 
- Sun, 12 Jul 2020 20:53:07 -0700 (PDT)
-Received: from ?IPv6:2001:470:67:5b9:5dec:e971:4cde:a128?
- ([2001:470:67:5b9:5dec:e971:4cde:a128])
- by smtp.gmail.com with ESMTPSA id 207sm13052897pfa.100.2020.07.12.20.53.05
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 12 Jul 2020 20:53:06 -0700 (PDT)
-Subject: Re: [v2 PATCH] usb: gadget: bdc: use readl_poll_timeout() to simplify
- code
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Felipe Balbi <balbi@kernel.org>
-References: <1594611017-4535-1-git-send-email-chunfeng.yun@mediatek.com>
-From: Florian Fainelli <f.fainelli@gmail.com>
-Message-ID: <b73d8a90-96cd-42b5-bbc2-26e300da0603@gmail.com>
-Date: Sun, 12 Jul 2020 20:53:04 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Firefox/68.0 Thunderbird/68.10.0
-MIME-Version: 1.0
-In-Reply-To: <1594611017-4535-1-git-send-email-chunfeng.yun@mediatek.com>
+ id 1jupYb-0005YE-LC; Mon, 13 Jul 2020 03:55:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+ t=1594612509; x=1626148509;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-id:content-transfer-encoding: mime-version;
+ bh=I4SZ+z3h4qfcj/wEJIngM+7FiLiHmEESaJejUQbWufw=;
+ b=yReazDOi80aee7NMkAiY1/keke7CDNVoaXAd/20teBeac2L0dU/K+pT0
+ 3Rh2MY9Igu7i9xLYL0pApBVA/G5gQjDG2Pch7bFTn6PKqL0khu+2yTttr
+ l02nmpgiaV1O/LRQ/QyLbQkrEayIH5SRIRrbtQqWEEYnAbTsFTfhERGlT
+ 08edBjXcXqepnh20GSQiClpSBD80GFAFIcxyPEUNl4Br119p0f+sfLFoi
+ KrLmvW3Y5QGOpRlyvyd6q5g55H0kr36QblhprYIP5k+q22bnvSO/jYToP
+ E/IOttbNVuQ7B/dC1ix0MARay7Kpa71jGbrNDx8sTkGldmuD0aTAMSHFJ g==;
+IronPort-SDR: IloN3Vm9h8mMoxs/nuwKmWWLvFi/ulYJYmKddaE5DUtQ3O2xHiX7EwBIH2bnN2LUsl9P06u19Y
+ /z6NK5+WxXAJMyt3O92gYZTnQ0X3Dyw3ZYory2XZl2Tuu7Cg0GB4/0/N1wyFs80kqglOElFuB1
+ QwMXGwN0GXeN2NXStunSi54sYw/nVGZOdllayJ1fuLo4zyxyNU8oVq4pueFG05/InSXSjznbNC
+ o5XegNfB11/KTKea7er1LtYu/vKBypf47fzTxBbqLZhwuJOyo5A8UvnBWkBLqIV7F2lw7zqgl1
+ GyQ=
+X-IronPort-AV: E=Sophos;i="5.75,346,1589266800"; d="scan'208";a="18914602"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa6.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 12 Jul 2020 20:55:06 -0700
+Received: from chn-vm-ex02.mchp-main.com (10.10.85.144) by
+ chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1979.3; Sun, 12 Jul 2020 20:54:36 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.72) with Microsoft SMTP Server
+ (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3 via Frontend
+ Transport; Sun, 12 Jul 2020 20:54:35 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=A8zLBwIupCyRWmzqx8Nttrw8aWgQ5YnQV91O4cNn6GqLRSZ1wN+0kLEbAka+PhzxJW27kzr5vy06MRfR19BxIeHmLt530Wf0+VztJzbGRoejl5h9HGM5JFroNO5W0WAZJuOcsGEBSMricYEnORXRzK3oGTq6jOZ1VIMIpcwPpUTda71v6cmankHJnz6Lfg+1gKynDbCLmyMRLIZWhw6W9SUcOx0C74Ke2J2TqcA0vsg6T3lMQA+Q8oEZoJz22+viO8ZB83AtcMM4VuYJKwj3y8kQd4y0TbDjNHEnjAppejTXAu19k1udWpZLs0uuez+0DOzHRJXbh67BUdMvaGKo3g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=I4SZ+z3h4qfcj/wEJIngM+7FiLiHmEESaJejUQbWufw=;
+ b=WZbAJmzLqyoOcF3gLSt77x3t5DpG1jd9TGabvO0Olefk2i4V9baMyVhuBkJ88+Hx/57AsIrdZKcMvh8d1Hu6Gzlz8D5hgjrGtPfKyYIf+rQi8gOenZzIUHju9uIMjYXRgulga6hOwoq7HHsifWefLbr8Lh7dSaJCkTZWhhvDjHF+3d/qXzwHbtinTO8CQZHy5M5UGt8lWJ6ew8ThJYuEgFz3Ss2okGDwPG/OedHb64lW/Mi9jDuwAKtzEAENBeajLtzthfankuQ2vUuW8o5dtQrk4cu45skW8pXNZtldKJpmsLZ7r58tjt7E4ceBENtmIDhMKSCwNILSizQNrleADg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microchip.com; dmarc=pass action=none
+ header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector2-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=I4SZ+z3h4qfcj/wEJIngM+7FiLiHmEESaJejUQbWufw=;
+ b=Fk4SYno5XKUhN2pJAxrK2S5hApxqShRbvv68QfOpvEsIp5Aupb5Wo5AfsbdmzssZDnx2chAANei/MQkRL0pTBP80viYjJ+pLA5LkfDUd/RQCU0O2O8fNyntYD8OcStDSMnHFNmu/ssJYzEGPEFdmhtus7CRNxCF0ChISAIFqWEM=
+Received: from BYAPR11MB2856.namprd11.prod.outlook.com (2603:10b6:a02:bd::11)
+ by BYAPR11MB2968.namprd11.prod.outlook.com (2603:10b6:a03:90::30)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3174.23; Mon, 13 Jul
+ 2020 03:55:02 +0000
+Received: from BYAPR11MB2856.namprd11.prod.outlook.com
+ ([fe80::f1d5:60ca:d163:c1b3]) by BYAPR11MB2856.namprd11.prod.outlook.com
+ ([fe80::f1d5:60ca:d163:c1b3%3]) with mapi id 15.20.3174.025; Mon, 13 Jul 2020
+ 03:55:02 +0000
+From: <Tudor.Ambarus@microchip.com>
+To: <p.yadav@ti.com>, <miquel.raynal@bootlin.com>, <richard@nod.at>,
+ <vigneshr@ti.com>, <broonie@kernel.org>, <Nicolas.Ferre@microchip.com>,
+ <alexandre.belloni@bootlin.com>, <Ludovic.Desroches@microchip.com>,
+ <matthias.bgg@gmail.com>, <michal.simek@xilinx.com>,
+ <linux-mtd@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-spi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v10 01/17] spi: spi-mem: allow specifying whether an op is
+ DTR or not
+Thread-Topic: [PATCH v10 01/17] spi: spi-mem: allow specifying whether an op
+ is DTR or not
+Thread-Index: AQHWWMliL5FGGK8980aliLC/F11sVA==
+Date: Mon, 13 Jul 2020 03:55:02 +0000
+Message-ID: <2702a5cb-b7a0-ce00-f943-08f359c35396@microchip.com>
+References: <20200623183030.26591-1-p.yadav@ti.com>
+ <20200623183030.26591-2-p.yadav@ti.com>
+In-Reply-To: <20200623183030.26591-2-p.yadav@ti.com>
+Accept-Language: en-US
 Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
+authentication-results: ti.com; dkim=none (message not signed)
+ header.d=none;ti.com; dmarc=none action=none header.from=microchip.com;
+x-originating-ip: [86.120.242.181]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 046ac775-211f-48d5-bce9-08d826e08558
+x-ms-traffictypediagnostic: BYAPR11MB2968:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BYAPR11MB2968739D2626D37F9ADD8223F0600@BYAPR11MB2968.namprd11.prod.outlook.com>
+x-bypassexternaltag: True
+x-ms-oob-tlc-oobclassifiers: OLM:7219;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: nC3z0EEbT3CN+7U98q/SBPLt7Yx2LC5xIG3Xe8XeXodD4c2C1DInZIG9LWdWlS/lPVlwQMbFfx+Z1ErtwIBTGOvkc4CzJQWTYhvEP26MuzptcydYeUYLMSex6K0Iqz7teXtPEEUyFQX1Wik7QgVDrTL85MmJ2+WQpHQ+dhmT88mHogFy5tuw9PBvSZkXvZFrfh2Xodw0cRg/OFmb85KNa7uGNeZJnDnnGhOoKA+Dl/uIatYAJNSARe6oG0vsPkRF8Q3qV/BbutrcIxYMXAyI3DX+rW1El8hLJK2O7ISJgqfZY0+utaYx12CrMnXkK2WDFL0dmSFp7Akg5IQ95N9ZH0RSE4dJ/APtOUbd1e5a52pnWS1628TcU48S5iYnoAJ2Z6MywNufU0xstrzOA4M1Sg==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR11MB2856.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(346002)(376002)(39860400002)(136003)(366004)(396003)(8676002)(2616005)(54906003)(316002)(6486002)(36756003)(6512007)(31686004)(478600001)(8936002)(26005)(186003)(6506007)(7416002)(31696002)(5660300002)(110136005)(53546011)(71200400001)(91956017)(2906002)(4326008)(86362001)(66446008)(66946007)(76116006)(64756008)(66556008)(66476007)(4744005)(921003)(43740500002);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata: slg8wc9JaFhj9GAH/SCkPUOYo7ut6GAKrPnrUwEt+DOJe1F9CpqzQjQbebMNPGIeulnlXTDOWaY5E7drFtIyuWdgX03eMj9hMW8J6aO3uNFcp88XOwGbeYr7MrkCkbTlkyoz7F9Htp/lMRqIAYQ7p/pmqpdfF7JDAVMTnXxhHpXRhNUctsQ2HA0hYBZbV5FNQhTMxycH3ww/WtSNBQ8Y/VbPaj1JQIcWFSuI/P1nbQ8YvBQyi6af80yeEXt9lBaK9fPPuKS8n0sb+tsH5BqENetrKnoiouGH2fKw8e1Ajdm+GPLmeo3ilc2bbNb5kvfMGe7c/mGq+xyGsvGYXv+59AeM2wIS/EipqsJUsS9pYW74n2VZqiS3jgCMye/0I/VNwspVc1t8LHABC4RK3R1iga9saHqMO8dZ+0Yp29PLpUtTQ3c1UO3Fy8bQayGmVDFhFrjZLLH6CZKFRaHKUtdsT5tuL8wwFaE4sULwyNMxgTxmoup2Wh6DOwusJf2asEsZ
+Content-ID: <6A062EF7E3CBBE4386549E856BAE6DC3@namprd11.prod.outlook.com>
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB2856.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 046ac775-211f-48d5-bce9-08d826e08558
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Jul 2020 03:55:02.3231 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: AkYXWlysxB7LoV8Y0N6uJUA0JTVvVVpq6j69zB2SEEB7VgMTOYr81JMnpTnuMKd6VIeDaMpILGnR1yKcNoDmb479jguof3E7NqaAnYaIe18=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR11MB2968
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200712_235311_759260_5E8BAC84 
-X-CRM114-Status: GOOD (  20.31  )
+X-CRM114-CacheID: sfid-20200712_235510_021295_C4FA2B00 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,92 +163,29 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org,
- Stephen Boyd <swboyd@chromium.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: boris.brezillon@collabora.com, nsekhar@ti.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 7/12/2020 8:30 PM, Chunfeng Yun wrote:
-> Use readl_poll_timeout() to poll register status
+On 6/23/20 9:30 PM, Pratyush Yadav wrote:
+> diff --git a/drivers/spi/spi-mem.c b/drivers/spi/spi-mem.c
+> index 9a86cc27fcc0..93e255287ab9 100644
+> --- a/drivers/spi/spi-mem.c
+> +++ b/drivers/spi/spi-mem.c
+> @@ -156,6 +156,9 @@ bool spi_mem_default_supports_op(struct spi_mem *mem,
+>                                    op->data.dir == SPI_MEM_DATA_OUT))
+>                 return false;
 > 
-> Cc: Florian Fainelli <f.fainelli@gmail.com>
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> v2 changes, suggested by Stephen:
->   1. use unsigned int instead of int for @usec parameter
->   2. add dev_log() back
->   3. drop "Err" in error log
-> ---
->  drivers/usb/gadget/udc/bdc/bdc_core.c | 26 +++++++++++---------------
->  1 file changed, 11 insertions(+), 15 deletions(-)
-> 
-> diff --git a/drivers/usb/gadget/udc/bdc/bdc_core.c b/drivers/usb/gadget/udc/bdc/bdc_core.c
-> index 02a3a77..53dccb1 100644
-> --- a/drivers/usb/gadget/udc/bdc/bdc_core.c
-> +++ b/drivers/usb/gadget/udc/bdc/bdc_core.c
-> @@ -12,6 +12,7 @@
->  #include <linux/spinlock.h>
->  #include <linux/platform_device.h>
->  #include <linux/interrupt.h>
-> +#include <linux/iopoll.h>
->  #include <linux/ioport.h>
->  #include <linux/io.h>
->  #include <linux/list.h>
-> @@ -29,24 +30,19 @@
->  #include "bdc_dbg.h"
->  
->  /* Poll till controller status is not OIP */
-> -static int poll_oip(struct bdc *bdc, int usec)
-> +static int poll_oip(struct bdc *bdc, u32 usec)
->  {
->  	u32 status;
-> -	/* Poll till STS!= OIP */
-> -	while (usec) {
-> -		status = bdc_readl(bdc->regs, BDC_BDCSC);
-> -		if (BDC_CSTS(status) != BDC_OIP) {
-> -			dev_dbg(bdc->dev,
-> -				"poll_oip complete status=%d",
-> -				BDC_CSTS(status));
-> -			return 0;
-> -		}
-> -		udelay(10);
-> -		usec -= 10;
-> -	}
-> -	dev_err(bdc->dev, "Err: operation timedout BDCSC: 0x%08x\n", status);
-> +	int ret;
->  
-> -	return -ETIMEDOUT;
-> +	ret = readl_poll_timeout(bdc->regs + BDC_BDCSC, status,
-> +		(BDC_CSTS(status) != BDC_OIP), 10, usec);
+> +       if (op->cmd.dtr || op->addr.dtr || op->dummy.dtr || op->data.dtr)
+> +               return false;
 
-You could probably indent this to the opening parenthesis, but with or
-without it:
 
-Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+I would put this check the first thing in the function to exit sooner
+and avoid the rest of the checks, that would become superfluous.
 
-and thanks for picking up the MAINTAINERS file update ;)
-
-> +	if (ret)
-> +		dev_err(bdc->dev, "operation timedout BDCSC: 0x%08x\n", status);
-> +	else
-> +		dev_dbg(bdc->dev, "%s complete status=%d", __func__, BDC_CSTS(status));
-> +
-> +	return ret;
->  }
->  
->  /* Stop the BDC controller */
-> 
-
--- 
-Florian
-
+Anyway this is just a nit.
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
