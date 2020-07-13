@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C7E1C433E1
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 53098C433DF
 	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 07:03:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E8DD72075D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 07:03:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 23C1E207BC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 07:03:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2U91Sy9T";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="tazfVTMo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E8DD72075D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fHbVLsBS";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="mqAXxRcV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 23C1E207BC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,55 +27,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=r3rxCH6fnwtcfbim5q4AhXwVvgD3U22s+lL58TMk1Kc=; b=2U91Sy9T4t6W8E28gn6s68jAj
-	BelNVyHNfksTGwZShC4plkfF8LeGoYohcw4dUovUVpgR8X3RNU/selNydb6+c8x0ZMvkKtt95kqz3
-	VkuttpDWZVr+SSdB5kOtg4YdWVOaj6OxbAK7i0sPkhqQ3/+IYdehum/CB5qUbvQ6FQS2gOTC1YRTN
-	fAUpoJNW7ONmB9aEZ1rqnh76X/2a7R4uIVDZ7II85GLHWLFqKqhKa/DvdFA2utawEjBY2Ly9YAgm2
-	oTmDFWglULplq2+t2d6w1+u6d9XROEsJpmhW2C+wrxsG+ccxWUNh3TrQxV/Xps4T5N+ABBcmWVY3e
-	IDUh9VFFw==;
+	 bh=C322e0/mwy8J/wnHi47etZMlKn40dyBd+RzSM1xgrG0=; b=fHbVLsBSbsAh+kJ34koy2njZ9
+	QDFdeahuE02OBD3d4SAbw2z+1pdH/VjoArk/MFY7WSuzlKy5TAhrX31VgCgyZphSqjXlaff6/1kwH
+	/cN7TTXamX6gy8xD+9TewXVUt9XEHNS2DgMuvFaXclDXd41z8vxeDo7jf9fUOehXGzY5C46VxYoZE
+	3mwk/aI/+iJLuHOzAIgytZTg3miAkvoj5HBpVom6sxx/vSbZOtLKmohzk5S6rrgiJRPRhVts0RXoK
+	28qiQjH4ysb6m5YdaE4Lknb2ywwaxVbmlOdX4UnVgSBdvs/HX5n1yjviZVKd5vHJ0b+Y3OOVZZvS3
+	/psHm7H9Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jusUX-0001Au-1o; Mon, 13 Jul 2020 07:03:09 +0000
+	id 1jusUX-0001B8-NB; Mon, 13 Jul 2020 07:03:09 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jusUU-00019l-OO; Mon, 13 Jul 2020 07:03:07 +0000
-X-UUID: 38c1948cd2f44691aa73d77a69321973-20200712
+ id 1jusUU-00019i-ON; Mon, 13 Jul 2020 07:03:07 +0000
+X-UUID: 8f688e7054634324ad086e968b06cdc1-20200712
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=/O8b95ILqstFIgFUi/t1yv/IWDQZ/y0hmoi2/61jPNE=; 
- b=tazfVTMoxJwQJTvjOgvO4uioWpxAwnCQ5+ALKUiHFj9bdm24eHffVCv4l+TXQ3Np0xHiG7AtrkU/+HuK+ZkJU1ykYQpuwjZW63pEaUWG+L9yWoDANNDz0wn5YfHX0SPL4GEwL04W+4Vt/u5mNPWR2QNBdZ1HFyRSJcoDA6T3i+Y=;
-X-UUID: 38c1948cd2f44691aa73d77a69321973-20200712
+ bh=3fTv0ya9+6e1JsaEzRkR7OFnJZ1h0+BVwHRIgcNxfp8=; 
+ b=mqAXxRcVG+Ew54YpvKEDrpMdBq5G+zhcZG3VKHAKnFOBvLx+UUZdmeeLO5NN5CZrxyVRTYqqnOe5VIUcsRcTSB8l/lGe95SnojMYdkLGkC51a5Wm65eFRmtgwrMKP28o7shjENsJAoG9F1ZjXhVkf51I2iGITqagsQQlOdGgRQs=;
+X-UUID: 8f688e7054634324ad086e968b06cdc1-20200712
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1383150533; Sun, 12 Jul 2020 23:03:00 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ with ESMTP id 82279301; Sun, 12 Jul 2020 23:03:00 -0800
+Received: from MTKMBS32N2.mediatek.inc (172.27.4.72) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 12 Jul 2020 23:52:57 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 13 Jul 2020 14:52:55 +0800
+ 15.0.1497.2; Sun, 12 Jul 2020 23:55:48 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS32N2.mediatek.inc
+ (172.27.4.72) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 13 Jul 2020 14:55:46 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 13 Jul 2020 14:52:54 +0800
-Message-ID: <1594623128.16172.27.camel@mhfsdcap03>
-Subject: Re: [PATCH 06/21] iommu/io-pgtable-arm-v7s: Use ias to check the
- valid iova in unmap
+ Transport; Mon, 13 Jul 2020 14:55:44 +0800
+Message-ID: <1594623299.16172.29.camel@mhfsdcap03>
+Subject: Re: [PATCH 04/21] dt-binding: mediatek: Add binding for mt8192
+ IOMMU and SMI
 From: Yong Wu <yong.wu@mediatek.com>
-To: Nicolas Boichat <drinkcat@chromium.org>
-Date: Mon, 13 Jul 2020 14:52:08 +0800
-In-Reply-To: <CANMq1KAhFCWfywV=OiHgW00pof8K8TdwC6Hzgyj=QWSiWBf1ag@mail.gmail.com>
+To: Pi-Hsun Shih <pihsun@chromium.org>
+Date: Mon, 13 Jul 2020 14:54:59 +0800
+In-Reply-To: <CANdKZ0cGNy7ckzD_NAOV613o62WHdYazRRM-J8jY2-4mx_sNDA@mail.gmail.com>
 References: <20200711064846.16007-1-yong.wu@mediatek.com>
- <20200711064846.16007-7-yong.wu@mediatek.com>
- <CANMq1KAhFCWfywV=OiHgW00pof8K8TdwC6Hzgyj=QWSiWBf1ag@mail.gmail.com>
+ <20200711064846.16007-5-yong.wu@mediatek.com>
+ <CANdKZ0cGNy7ckzD_NAOV613o62WHdYazRRM-J8jY2-4mx_sNDA@mail.gmail.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: F3CF35EF42678060759801117619B4C940E2D810BF19205DF4368001F842ACB22000:8
+X-TM-SNTS-SMTP: 533535A6522B7AB06F6A5C489515BEA97381B42424A0490A05D20470D84F27B32000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200713_030307_063966_01578F13 
-X-CRM114-Status: GOOD (  18.87  )
+X-CRM114-CacheID: sfid-20200713_030307_080744_28039319 
+X-CRM114-Status: GOOD (  18.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,58 +87,118 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, Devicetree List <devicetree@vger.kernel.org>,
- cui.zhang@mediatek.com, srv_heupstream <srv_heupstream@mediatek.com>,
- chao.hao@mediatek.com, Robin Murphy <robin.murphy@arm.com>,
- Joerg Roedel <joro@8bytes.org>, lkml <linux-kernel@vger.kernel.org>,
- Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>,
- iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
+Cc: Youlin Pei =?UTF-8?Q?=28=E8=A3=B4=E5=8F=8B=E6=9E=97=29?=
+ <youlin.pei@mediatek.com>, "open
+ list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
+ cui.zhang@mediatek.com, srv_heupstream@mediatek.com, chao.hao@mediatek.com,
+ Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>,
+ open list <linux-kernel@vger.kernel.org>, Evan Green <evgreen@chromium.org>,
+ Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
+ Rob Herring <robh+dt@kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, ming-fan.chen@mediatek.com,
  anan.sun@mediatek.com, Will Deacon <will@kernel.org>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2020-07-13 at 08:38 +0800, Nicolas Boichat wrote:
+On Mon, 2020-07-13 at 13:36 +0800, Pi-Hsun Shih wrote:
 > On Sat, Jul 11, 2020 at 2:50 PM Yong Wu <yong.wu@mediatek.com> wrote:
 > >
-> > As title.
+> > This patch adds decriptions for mt8192 IOMMU and SMI.
+> >
+> > mt8192 also is MTK IOMMU gen2 which uses ARM Short-Descriptor translation
+> > table format. The M4U-SMI HW diagram is as below:
+> >
+> >                           EMI
+> >                            |
+> >                           M4U
+> >                            |
+> >                       ------------
+> >                        SMI Common
+> >                       ------------
+> >                            |
+> >   +-------+------+------+----------------------+-------+
+> >   |       |      |      |       ......         |       |
+> >   |       |      |      |                      |       |
+> > larb0   larb1  larb2  larb4     ......      larb19   larb20
+> > disp0   disp1   mdp    vdec                   IPE      IPE
+> >
+> > All the connections are HW fixed, SW can NOT adjust it.
+> >
+> > mt8192 M4U support 0~16GB iova range. we preassign different engines
+> > into different iova ranges:
+> >
+> > domain-id  module     iova-range                  larbs
+> >    0       disp        0 ~ 4G                      larb0/1
+> >    1       vcodec      4G ~ 8G                     larb4/5/7
+> >    2       cam/mdp     8G ~ 12G             larb2/9/11/13/14/16/17/18/19/20
+> >    3       CCU0    0x4000_0000 ~ 0x43ff_ffff     larb13: port 9/10
+> >    4       CCU1    0x4400_0000 ~ 0x47ff_ffff     larb14: port 4/5
+> >
+> > The iova range for CCU0/1(camera control unit) is HW requirement.
 > >
 > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > > ---
-> >  drivers/iommu/io-pgtable-arm-v7s.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
-> > index 4272fe4e17f4..01f2a8876808 100644
-> > --- a/drivers/iommu/io-pgtable-arm-v7s.c
-> > +++ b/drivers/iommu/io-pgtable-arm-v7s.c
-> > @@ -717,7 +717,7 @@ static size_t arm_v7s_unmap(struct io_pgtable_ops *ops, unsigned long iova,
-> >  {
-> >         struct arm_v7s_io_pgtable *data = io_pgtable_ops_to_data(ops);
-> >
-> > -       if (WARN_ON(upper_32_bits(iova)))
-> > +       if (WARN_ON(iova >= (1ULL << data->iop.cfg.ias)))
+> >  .../bindings/iommu/mediatek,iommu.txt         |   8 +-
+> >  .../mediatek,smi-common.txt                   |   5 +-
+> >  .../memory-controllers/mediatek,smi-larb.txt  |   3 +-
+> >  include/dt-bindings/memory/mt8192-larb-port.h | 237 ++++++++++++++++++
+> >  4 files changed, 247 insertions(+), 6 deletions(-)
+> >  create mode 100644 include/dt-bindings/memory/mt8192-larb-port.h
+> > ...
+> > diff --git a/include/dt-bindings/memory/mt8192-larb-port.h b/include/dt-bindings/memory/mt8192-larb-port.h
+> > new file mode 100644
+> > index 000000000000..fbe0d5d50f1c
+> > --- /dev/null
+> > +++ b/include/dt-bindings/memory/mt8192-larb-port.h
+> > ...
+> > +/* larb7 */
+> > +#define M4U_PORT_L7_VENC_RCPU                  MTK_M4U_DOM_ID(1, 7, 0)
+> > +#define M4U_PORT_L7_VENC_REC                   MTK_M4U_DOM_ID(1, 7, 1)
+> > +#define M4U_PORT_L7_VENC_BSDMA                 MTK_M4U_DOM_ID(1, 7, 2)
+> > +#define M4U_PORT_L7_VENC_SV_COMV               MTK_M4U_DOM_ID(1, 7, 3)
+> > +#define M4U_PORT_L7_VENC_RD_COMV               MTK_M4U_DOM_ID(1, 7, 4)
+> > +#define M4U_PORT_L7_VENC_CUR_LUMA              MTK_M4U_DOM_ID(1, 7, 5)
+> > +#define M4U_PORT_L7_VENC_CUR_CHROMA            MTK_M4U_DOM_ID(1, 7, 6)
+> > +#define M4U_PORT_L7_VENC_REF_LUMA              MTK_M4U_DOM_ID(1, 7, 7)
+> > +#define M4U_PORT_L7_VENC_REF_CHROMA            MTK_M4U_DOM_ID(1, 7, 8)
+> > +#define M4U_PORT_L7_JPGENC_Y_RDMA              MTK_M4U_DOM_ID(1, 7, 9)
+> > +#define M4U_PORT_L7_JPGENC_Q_RDMA              MTK_M4U_DOM_ID(1, 7, 10)
+> > +#define M4U_PORT_L7_JPGENC_C_TABLE             MTK_M4U_DOM_ID(1, 7, 11)
+> > +#define M4U_PORT_L7_JPGENC_BSDMA               MTK_M4U_DOM_ID(1, 7, 12)
+> > +#define M4U_PORT_L7_VENC_SUB_R_LUMA            MTK_M4U_DOM_ID(1, 7, 13)
+> > +#define M4U_PORT_L7_VENC_SUB_W_LUMA            MTK_M4U_DOM_ID(1, 7, 14)
+> > +
 > 
-> This is a little odd as iova is unsigned long and 1ULL is unsigned long long.
-> 
-> Would it be better to keep the spirit of the previous test and do
-> something like:
->  if (WARN_ON(iova >> data->iop.cfg.ias)) ?
+> Small nit, /* larb8: null */ is missing here.
 
-Yes. Thanks. I will change it like this in next version.
-
-Also change this in arm_v7s_map by the way.
+oh. Yes. Thanks.
+I will add it in next version.
 
 > 
-> >                 return 0;
-> >
-> >         return __arm_v7s_unmap(data, gather, iova, size, 1, data->pgd);
-> > --
-> > 2.18.0
+> > +/* larb9 */
+> > +#define M4U_PORT_L9_IMG_IMGI_D1                        MTK_M4U_DOM_ID(2, 9, 0)
+> > +#define M4U_PORT_L9_IMG_IMGBI_D1               MTK_M4U_DOM_ID(2, 9, 1)
+> > +#define M4U_PORT_L9_IMG_DMGI_D1                        MTK_M4U_DOM_ID(2, 9, 2)
+> > +#define M4U_PORT_L9_IMG_DEPI_D1                        MTK_M4U_DOM_ID(2, 9, 3)
+> > +#define M4U_PORT_L9_IMG_ICE_D1                 MTK_M4U_DOM_ID(2, 9, 4)
+> > +#define M4U_PORT_L9_IMG_SMTI_D1                        MTK_M4U_DOM_ID(2, 9, 5)
+> > +#define M4U_PORT_L9_IMG_SMTO_D2                        MTK_M4U_DOM_ID(2, 9, 6)
+> > +#define M4U_PORT_L9_IMG_SMTO_D1                        MTK_M4U_DOM_ID(2, 9, 7)
+> > +#define M4U_PORT_L9_IMG_CRZO_D1                        MTK_M4U_DOM_ID(2, 9, 8)
+> > +#define M4U_PORT_L9_IMG_IMG3O_D1               MTK_M4U_DOM_ID(2, 9, 9)
+> > +#define M4U_PORT_L9_IMG_VIPI_D1                        MTK_M4U_DOM_ID(2, 9, 10)
+> > +#define M4U_PORT_L9_IMG_SMTI_D5                        MTK_M4U_DOM_ID(2, 9, 11)
+> > +#define M4U_PORT_L9_IMG_TIMGO_D1               MTK_M4U_DOM_ID(2, 9, 12)
+> > +#define M4U_PORT_L9_IMG_UFBC_W0                        MTK_M4U_DOM_ID(2, 9, 13)
+> > +#define M4U_PORT_L9_IMG_UFBC_R0                        MTK_M4U_DOM_ID(2, 9, 14)
+> > +
+> > ...
 
 _______________________________________________
 Linux-mediatek mailing list
