@@ -2,22 +2,23 @@ Return-Path: <SRS0=TL3J=AY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6DA14C433E2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 08:10:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0F0E7C433E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 08:18:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 370E420758
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 08:10:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C491D2072D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 08:18:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="G/dbkWfF";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="U0O+5CQ+";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="k779snfi"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 370E420758
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LNQwML6P";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="FDxVOW6r";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="nEHgqjvF"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C491D2072D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,77 +27,77 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7yHUtoY8wgLD3D9gPoC7o2sFOdhMpGPeXS7ut1zTALU=; b=G/dbkWfF+kLO1mhSfLI+KlNS+
-	MR8HBEZIw19eIvZDuKhFu0pFZza0NOP6MAclvIXCu8XAyxzqhqtRwDyjulEh0pg3G/MaD88VMaKoz
-	d3Pi387Pf5asGDz+9xC8DrHppCb8nYfEbXSbbsRoYNaAhq+UjjRiu44BVV00yUpGNwGc0UamCEwIP
-	8guKMjyXYENJBo/f+B8uJgIphmuD6QLWZTdoR6PWFz98xm8oKFP/tF/Hfm3kYQL5ZUc4Q9rjIv4JY
-	Q3yyzA42fa85r7fsEKWT9uuFaSoSSh8tGgq8U/WBq1pZBIa139caNlShDBVH7hC97BriJU2t0BA6I
-	akeCulICw==;
+	 bh=xI5WqJ1hnvHYiNjJQKqAf6+Vav9vwsCFio4dDYrPIus=; b=LNQwML6P+FJLgX6vtNGHaIaMG
+	m7T3HsapgdC442l+qPl4jyevBMhESEcg2A0c1wVO9uuNcCVBzm535NVV+b2M7Zz6uTOfP+vj0OvyD
+	+osrlaQn/p149Yt249xF/ZmvNBQbx8bjT/VRed1dVUEJ0xSnS42cZO/uaAiwK4RmseiBAdvbXcmcm
+	yKL2h7dqYrze7Q4Z9fTlUan2FGFGgLmB/w0eIMviti3lGenXTq1hyxjA943YE571j/0IBfOCmfRYj
+	ONyLSPWdKJnn7eFRGTDGdDgokdkP1O1AkXIH3y7zh2Kdgj+2mrllVLCpT6jFrfhXfo2hXrt53fKrW
+	biUyQwuNg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jutXq-0001sS-SI; Mon, 13 Jul 2020 08:10:39 +0000
-Received: from esa2.hgst.iphmx.com ([68.232.143.124])
+	id 1jutfZ-0002Rm-Vx; Mon, 13 Jul 2020 08:18:38 +0000
+Received: from esa1.hgst.iphmx.com ([68.232.141.245])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jutXn-0001rh-SC; Mon, 13 Jul 2020 08:10:36 +0000
+ id 1jutfY-0002Qu-90; Mon, 13 Jul 2020 08:18:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1594627858; x=1626163858;
+ t=1594628316; x=1626164316;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=B7JaBPI1B9XbmCVzE1KWA9S5o5cjQXSqvLUzq9k/nV4=;
- b=U0O+5CQ+JdKZYXd38BXae/dBZ6UAA5BYuRCcp/eTVd7DPqdRhWTfHwwC
- YG7Qxfc3LqxDzAk/UOpsswJwiie4YnX/kLrRNlP0zgzJNwMa5NsBnlv8E
- cLKB5ffCnwVKR5Jpx7xSWQPVXsXw/rj9mzYGQN4POXi591PFCdSAkQhBg
- fAzxK5CI/ZCmS8eTzAACTXW7ibN6trxzIKog4OWyGDuC/1M5cSfq/+FDK
- dfOYF7d4PkOZUqzPRqX7HdZKj1mImeAf5kqHerSYsMQffuPcj2MPQ4ZQB
- nesCmnXjhas50hSi0Qgw8IK+HAOmnSPSV3yKWhUb4xZpFFtfioZoefMlr w==;
-IronPort-SDR: YvvMs75dh36GAug4kAYuD3G2goQonZYit0yfKI48x9cMY+eqNAsT2SM1faW+SYApLm2UqDSZ+a
- MPshRJ/BGT+xaLjiG3HDLfP/Up+s0ulQNcv33dhrXVK+fOeVqeDWZAHQPiKKU24y1sUhE7CZp1
- w02UuC8X22PbSsjAQ9xly2ISFmLSBCs1t8Tiz52MY89QTVFR4rmXKGf3BeS7S0XW8NsosqcL8V
- IRtWh8sGRnqq2Xu7/PU24y8zgreNWRSAQiRP6I8viGsnIsyWWO3rNLKrPlzIMO3pcFKfpFzcP9
- u4w=
-X-IronPort-AV: E=Sophos;i="5.75,346,1589212800"; d="scan'208";a="245327578"
-Received: from mail-co1nam11lp2177.outbound.protection.outlook.com (HELO
- NAM11-CO1-obe.outbound.protection.outlook.com) ([104.47.56.177])
- by ob1.hgst.iphmx.com with ESMTP; 13 Jul 2020 16:10:51 +0800
+ bh=jc1bhuERftjmbLVt/DqjIVPGK/ExcQghh3ES/FTyAcg=;
+ b=FDxVOW6rm1O8OlRV5LP6bVH/RfMEjwd5FyQZiKzJFRPTOF/xg2NSjnAz
+ ZaQOlT1G+2qtox93L1lQWyn9X3rZfcUgDTKSXJxmzk3RBnpu0OkFsJzTo
+ lwa8jv3hZcPa4DMMR4sYUyVYqSTmN40nuK/YIkbL9jXuBVQJOcBJX2MxP
+ oPeyzE8KibBKcUGlLxwJf84i6Kg4OYlnr6C0Nzjnue94fWoa4tE4vf2FX
+ 9CGBCPbp2CRtU/liHyaAw9dhmbsoz2qe+JWBFhrUhE4Vq71Vz2eX0bbOW
+ t3BlqpWV++sEeUIMKpUn6DqOti/emMf6IX3NAGLOifAel74Mt2bGb1IVc w==;
+IronPort-SDR: 1sBQ4d3+A09npia2M/KSnsEz1tufTRsYU8pLMSzQFLh1Woi0M2glEPs70z8Bgr4s4+VoCdex21
+ 4683VuBTb96xq1zTABUfLM7SJ5RnT8TkdhhD1ulhyOYy1YIj49IC4KUXgV1QHZkZ5OEh2UjjgS
+ ngvM3DeWdrT6INKZvsE3c+pvOYymLoOG9f7l5QGDDei/3XRagSF2ozW06C+TmUiFfZBUeuEjKK
+ JsqiWHiTeXfr5b3B6R1XGDM2LPypr50tLP7Dc73EfhmchCXAX2zT9LeqJrL6e8qdhCkj4ZO0Ta
+ Lj8=
+X-IronPort-AV: E=Sophos;i="5.75,346,1589212800"; d="scan'208";a="251556706"
+Received: from mail-cys01nam02lp2058.outbound.protection.outlook.com (HELO
+ NAM02-CY1-obe.outbound.protection.outlook.com) ([104.47.37.58])
+ by ob1.hgst.iphmx.com with ESMTP; 13 Jul 2020 16:18:32 +0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=JddUs+I+e6xR/B4sF7sqLYm+3sGxvYsE6aoAVsApUDcMTs35++ymM449+iRP/7QOBrRdvstV0PdxXJkFbHJ3qdkgPnjUlthhl2A2ESvgAbyKdcsusedF28EUOwTTrsnI13hVUbK6yJ7+GSn7jeeepgTBeSqzjtUbgbktMwQX6naswcobqI3sJcyFpC9cIn6Bm6HqG0fPTSdr5T+jZ5Ues2Og4rImXm4yYAjEkVFxakVy3AEa0xLqxJoHLzOzP22ge3e6OsoYi9nis/jYS4spg0t0T9vN89+JNTI6KDuvBMj+XP93fnUPttJJhMad+WoU68Lz6LjbD+mZdFp+PsAmTw==
+ b=PL1Q+g7IYlwMCKT+Gn5EsUPNL7rCa2aSfv+C+aJwoC8gusqMCCiz3KIejHRpJSB5ClbjGFNwLoh3LG6+r7PHSsUwXfiAgUWzTbaciYCzMnuAFMv/m/iwn8aqw3t63xHWDveLplSz2R6mu41XtXIsECXzeGDMXLqRIXVT3W1tQc7n5Me/ZLyHzMuMc3/KEEa7hgbCpjlI7GekJ4U2EM8vZ18ppq1z2p8pXVdRL9j220gDuaXhyodLUq5rqzsdcYucU7qJ7csRDpMkmt5D/kqj/bHoF4/dIl8OM17kirUEvh+gERHFRl6HXlHSglptz6PoL/5xz3rGt8HBZmMsIXtv/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=B7JaBPI1B9XbmCVzE1KWA9S5o5cjQXSqvLUzq9k/nV4=;
- b=FqPTc6+oinAYYeQ/NW38Q5sNKPgozBQUMi1bmIFZ02d7OAwln9VHyRY0iM3/K/Cymxhi5PawuLMw4ZOeljwucpcQGR/QRQUyL/20ZYWgbhW3jOUXQne+A1Mdrud+ydgmC2HtIz3lR5cGBMO0TRaXX2TrgwVnghoZRXe2ubboI7olV3Ss4ydO2J0gS9wRjJHOaj/KfL6sKVU4YYEmNNnleyt1vXhCllFtfyhYaqbI3PUr+9BT8TQj1Q6Em3YrJ7Mgd5oEX1tYoFVEsgF1b6XhjeiwQsaLWdyRuOjBvz0dA78AbaO8/Jdkt/ZZ8qHl17UwpdIBQXz9vRlIDzsEc9Msng==
+ bh=S6v0HdCPIplJvV/vtvvj+X2Kqgnf5h5feS+F4rQb2KA=;
+ b=lRJWT1RbaYX19+96EtEKCJUaY9BHlqoQL2M2Wv8QqBHtpJ4GDn1hPE9cuRx4gecx8mzjSaUH2dtQmkN1Ic7rtRb+VsYgOmiIEFIS/gT+fHkn4RWpzdlvZzUOTBotEeA8dsKkFrO3f0Q3fH8X+eaB/vIQLlScho1GXPbSaMLt6E3ADvPGxoXRUY/zvXBzwkLI9M6RX/+BiEOQcn1A+jI12q65hdsbQVo9qC74osfz5B+Y6hqzzGATlqVw4F/F5ylH7uc4hgrkjSLWEWgy9P4oHssp7KklWvr7TGXlgv+djphjzw1L2Cxp7iuH9jecZTDGupvkzukhJis/JrbSMaEoJw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
  header.d=wdc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=B7JaBPI1B9XbmCVzE1KWA9S5o5cjQXSqvLUzq9k/nV4=;
- b=k779snfi1oihxRcp/qPVzHT4BmXCCwEOy+aI6ispdXNu4XbawkV0iaWmM2nHcl/kYvWj2Xu28BOPxk2GNip8onx6DPDZl9RyXMpB3Q7Wpu5LDzhrt9eL3KXhZ1phksVcpRrO0/jHghaknswV0g+uwetk56vEmXZGr5IeC5hVS6E=
+ bh=S6v0HdCPIplJvV/vtvvj+X2Kqgnf5h5feS+F4rQb2KA=;
+ b=nEHgqjvFFj0vB5MZYBwbmCI9QVCOyATfNVkDkENlRGZCehSNxkkAVZq0UZsq0iustjH+yZut/rE8l8l9oGLNH6iRYyy7GhsNtsb/iMA38tLpSo1eU+m65khAdi3gjrqWVZagbC6yKMIA8PvRjOvnEP02xdb3ZEE2F5rpHXmel5Y=
 Received: from SN6PR04MB4640.namprd04.prod.outlook.com (2603:10b6:805:a4::19)
- by SN6PR04MB4192.namprd04.prod.outlook.com (2603:10b6:805:3a::20)
+ by SN6PR04MB5359.namprd04.prod.outlook.com (2603:10b6:805:104::29)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3174.22; Mon, 13 Jul
- 2020 08:10:30 +0000
+ 2020 08:18:29 +0000
 Received: from SN6PR04MB4640.namprd04.prod.outlook.com
  ([fe80::1c80:dad0:4a83:2ef2]) by SN6PR04MB4640.namprd04.prod.outlook.com
  ([fe80::1c80:dad0:4a83:2ef2%4]) with mapi id 15.20.3174.025; Mon, 13 Jul 2020
- 08:10:29 +0000
+ 08:18:29 +0000
 From: Avri Altman <Avri.Altman@wdc.com>
-To: Stanley Chu <stanley.chu@mediatek.com>, Bart Van Assche
- <bvanassche@acm.org>
-Subject: RE: [PATCH v3] scsi: ufs: Cleanup completed request without interrupt
- notification
-Thread-Topic: [PATCH v3] scsi: ufs: Cleanup completed request without
- interrupt notification
-Thread-Index: AQHWU5heDqJFApuOo0yQOIjuO+/O36kExbEAgAANaICAAF4EoA==
-Date: Mon, 13 Jul 2020 08:10:29 +0000
-Message-ID: <SN6PR04MB46409838AE9D4BD63797E26DFC600@SN6PR04MB4640.namprd04.prod.outlook.com>
-References: <20200706132113.21096-1-stanley.chu@mediatek.com>
- <3d509c4b-d66d-2a4a-5fbd-a50a0610ad31@acm.org>
- <1594607245.22878.8.camel@mtkswgap22>
-In-Reply-To: <1594607245.22878.8.camel@mtkswgap22>
+To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
+ <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
+ <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
+ <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ "ebiggers@kernel.org" <ebiggers@kernel.org>, "satyat@google.com"
+ <satyat@google.com>
+Subject: RE: [PATCH v3] scsi: ufs-mediatek: Add inline encryption support
+Thread-Topic: [PATCH v3] scsi: ufs-mediatek: Add inline encryption support
+Thread-Index: AQHWV+P/GyVh+1wGz06EBRk2amZ8p6kFLF0Q
+Date: Mon, 13 Jul 2020 08:18:29 +0000
+Message-ID: <SN6PR04MB4640380F541EBDD2F5BC434EFC600@SN6PR04MB4640.namprd04.prod.outlook.com>
+References: <20200712003226.7593-1-stanley.chu@mediatek.com>
+In-Reply-To: <20200712003226.7593-1-stanley.chu@mediatek.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -106,35 +107,35 @@ authentication-results: mediatek.com; dkim=none (message not signed)
 x-originating-ip: [77.138.4.172]
 x-ms-publictraffictype: Email
 x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 95629abf-70f6-4cc9-ffbd-08d827043535
-x-ms-traffictypediagnostic: SN6PR04MB4192:
-x-microsoft-antispam-prvs: <SN6PR04MB4192806E6CC9CEE808276E5CFC600@SN6PR04MB4192.namprd04.prod.outlook.com>
+x-ms-office365-filtering-correlation-id: d81fbc99-5c8d-44b6-a604-08d827055352
+x-ms-traffictypediagnostic: SN6PR04MB5359:
+x-microsoft-antispam-prvs: <SN6PR04MB5359E4BB4FA7DA1E8BD93FDCFC600@SN6PR04MB5359.namprd04.prod.outlook.com>
 wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
+x-ms-oob-tlc-oobclassifiers: OLM:7691;
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 0omG5BNzD4J6ItbByNGE2W9NATFsAwu/XwVt/+DuHIn/IddEZsvIX9S7Tllg23/ubKopJWjpDSQDhFUVYNlU3ObmNjPL6unmHceA6JA6xnxlq4EYUnLkpxyaQk5sQD58dBV1XIvlmQL6FjLrPjq0rKvjTRc/7LDfH9g/GnsOg2MW7Dn6Np0+TfKW6ftFd6HW38UPdztJ1JNTVS14GboqniD5XienTsWrUO4gMPGrXQ4VMrp9PFJtRw1s9zRLhstqAJNE8yGvXoq9DMpKRRENQA0A9o4Pos+UtbLAI7zuSd2+aIPludSzFnIEqNg1FCxqrhqQCWMwJOOLj4uw3MTAMg==
+x-microsoft-antispam-message-info: EGdfIPMl3g37UFEOw/8AzEAVx148yMF7z+cS0sV4iLP4DE8h+gRMvMv8yXCmlwlLwbHO7qEdt6K8hByuWUkYfWA9dhHRlBs4P0wZ/8kNZlhgZalMTRK3B5jXk2Vqdm6iGkOWhlbgNqt1KyDnnQrLQ8SNM1j/FgEsXp2+zn08TzZXbMGfr6LDclo9bihTHHkJwm7imAcyvTh2tyuxVjEhQd8O1iFFnn6+2tN/lbvo+U9K8C8GUZIaWhBAVtgErFLhXAJ8Kg19iJh/k67HBImQwsafMb0+XR2hsd3bJYDJgPmlYs5moMSofpdXdqCfVMzDu/m3hYPA3M1zbbp+Pw1piQ==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:SN6PR04MB4640.namprd04.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(4636009)(376002)(136003)(396003)(346002)(366004)(39860400002)(316002)(110136005)(54906003)(86362001)(66946007)(83380400001)(66476007)(66556008)(64756008)(76116006)(66446008)(33656002)(5660300002)(7416002)(186003)(26005)(52536014)(8936002)(7696005)(15650500001)(4326008)(8676002)(478600001)(55016002)(9686003)(2906002)(53546011)(6506007)(71200400001);
+ SFS:(4636009)(376002)(346002)(366004)(136003)(396003)(39860400002)(5660300002)(33656002)(54906003)(110136005)(86362001)(8676002)(52536014)(71200400001)(66946007)(7696005)(26005)(64756008)(66556008)(76116006)(478600001)(66446008)(66476007)(186003)(4326008)(7416002)(316002)(2906002)(9686003)(83380400001)(6506007)(55016002)(8936002);
  DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: o7CQ2uDVRttVMd/nI2dzDK24L3fz7hfjsI0sDGt/JaBiiGbEinIoTtPzQM8byTMxQOYjfB18u/zFFzRrnarXb9CHwXuKxyOo6s64hOT+y+YKPwdOsZfHtbkK9ENJE+fPCWclF0xVj/8RVqyLVBrnuy1P47VACbU7YUdzJ0vTu8vn7sAD7Zdyp4Fjw6rNc5E40M9q3++nsWf9N8CPd+YB27EZgV4OmD+VDExEVMdvHHUk7N7BseLPwv6U7gThnYkDDE/FHUdoI2LtPbGcKgDdJDmxXurCc5M5GVtXyS2P+e3sZZ9VsujAnVop59AjijGFP/4rIHS/WOinLKKXtBEl6147gf7lyKJECbqCBGIlM+NUcsn4n1QV7jyH9rsh31HOt0IbSOY7ntoLbgCSOu8rrkPGc41pX2RoWFo2SOzLGoJXAjCixz2XCfQpx5tlBRIxUxHINceF9IzsSGTtZ4pL9G/epqTZcnBcgcqKlu+lS20=
+x-ms-exchange-antispam-messagedata: PvB0Kx+k+6BGjnjZW4wVtYiNEb/0pWOiZbMoMLNYsLhijJZDW2YgjAmTR2GCXAwEzyolOy9gaNWRjSZdpg7VBqGasnEHVDFtkG89wCJH1Daxyjki/7VXAVr/aNrWJqDj2M2lVk+l215eK1r8DBYTc3jUJC+bKIHuCBFIdicVoPB5/NPK/6kRWvOI1FZkjYNbCXPNMZTQPndjtWXqZSqbktujnXsaFScxvX4Mdf/JVmSToZ25iTSp/WMfBs71Q+UBvqyWvMYcG+VQ6bPGKApuLgBDBlsXjKNCwfKOeETtZM7hplzA73mu14uiPqWcvpw5NpBd7nCPYepUrKZc1vQJ7dHGeVvCRImn6jFA5xqrtfbYyRk/Ws8flELQDCYYolRSrhvmxlZu/+8zk3WDS+nNCFJg50n8bcX4gY8dwddWCBKSzsbq/b/QHDlitV1DqY6rkdmC+bB5dM9sVgUWCs9tCi8/r4iFKAdiMTsi0uOMv8A=
 x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: SN6PR04MB4640.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 95629abf-70f6-4cc9-ffbd-08d827043535
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Jul 2020 08:10:29.7809 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: d81fbc99-5c8d-44b6-a604-08d827055352
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Jul 2020 08:18:29.8310 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: DgRnkHwGOCdx+MwD13zn6QYcEnlprt7fNN5MvJqFvR/Qxa4WVLVh6jsaaVNtPPqYrAYLWltFxvepCBXvplbU4w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB4192
+X-MS-Exchange-CrossTenant-userprincipalname: AlM5b0ao84+NEuAgUIeKdQxx3NzbDY9iCzlRUf0UM4SWmlpZ9sj+jt7Z5A5KlhnRzA07Edhymvm28Q5m3OsiXg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB5359
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200713_041036_082156_4B3D18B2 
-X-CRM114-Status: GOOD (  25.30  )
+X-CRM114-CacheID: sfid-20200713_041836_490565_8CB7599F 
+X-CRM114-Status: GOOD (  19.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -146,80 +147,119 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
- "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+Cc: "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
+ "cc.chou@mediatek.com" <cc.chou@mediatek.com>,
  "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
  "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "cang@codeaurora.org" <cang@codeaurora.org>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
  "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
  "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "beanhuo@micron.com" <beanhuo@micron.com>,
  "chaotian.jing@mediatek.com" <chaotian.jing@mediatek.com>,
- "cc.chou@mediatek.com" <cc.chou@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+ 
 > 
-> Hi Bart and Avri,
+> Add inline encryption support to ufs-mediatek.
 > 
-> On Sun, 2020-07-12 at 18:39 -0700, Bart Van Assche wrote:
-> > On 2020-07-06 06:21, Stanley Chu wrote:
-> > > If somehow no interrupt notification is raised for a completed request
-> > > and its doorbell bit is cleared by host, UFS driver needs to cleanup
-> > > its outstanding bit in ufshcd_abort().
-> >
-> > How is it possible that no interrupt notification is raised for a completed
-> > request? Is this the result of a hardware shortcoming or rather the result
-> > of how the UFS driver works? In the latter case, is this patch perhaps a
-> > workaround? If so, has it been considered to fix the root cause instead of
-> > implementing a workaround?
+> The standards-compliant parts, such as querying the crypto capabilities
+> and enabling crypto for individual UFS requests, are already handled by
+> ufshcd-crypto.c, which itself is wired into the blk-crypto framework.
 > 
-> Actually this fail is triggered by "error injection" to produce a
-> command timeout event for checking if anything can be improved or fixed.
+> However MediaTek UFS host requires a vendor-specific hce_enable operation
+> to allow crypto-related registers being accessed normally in kernel.
+> After this step, MediaTek UFS host can work as standard-compliant host
+> for inline-encryption related functions.
 > 
-> I agree that "no interrupt notification" may be something wrong in
-> hardware and the root cause shall be fixed in the highest priority.
-> However from this injection, we found ufshcd_abort() indeed has a defect
-> flow for a corner case, so we are looking for the solution to fix the
-> "hole".
-> 
-> What would you think if Linux driver shall consider this case? If this
-> is not necessary, I would drop this patch : )
-Artificially injecting errors is a very common validation mechanism,
-Provided that you are not breaking anything of the upper-layers,
-Which I don't think you are doing.
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Avri Altman <avri.altman@wdc.com>
 
-Can you refer please to my last comment?
-
+> ---
+>  drivers/scsi/ufs/ufs-mediatek.c | 22 ++++++++++++++++++++++
+>  drivers/scsi/ufs/ufs-mediatek.h |  1 +
+>  2 files changed, 23 insertions(+)
 > 
-> Thanks a lot,
-> Stanley Chu
+> diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+> index ad929235c193..31af8b3d2b53 100644
+> --- a/drivers/scsi/ufs/ufs-mediatek.c
+> +++ b/drivers/scsi/ufs/ufs-mediatek.c
+> @@ -16,6 +16,7 @@
+>  #include <linux/soc/mediatek/mtk_sip_svc.h>
 > 
-> >
-> > In section 7.2.3 of the UFS specification I found the following about how
-> > to process request completions: "Software determines if new TRs have
-> > completed since step #2, by repeating one of the two methods described in
-> > step #2. If new TRs have completed, software repeats the sequence from
-> step
-> > #3." Is such a loop perhaps missing from the Linux UFS driver?
-Could not find that citation.
-What version of the spec are you using?
-
-Thanks,
-Avri
-> >
-> > Thanks,
-> >
-> > Bart.
+>  #include "ufshcd.h"
+> +#include "ufshcd-crypto.h"
+>  #include "ufshcd-pltfrm.h"
+>  #include "ufs_quirks.h"
+>  #include "unipro.h"
+> @@ -25,6 +26,9 @@
+>         arm_smccc_smc(MTK_SIP_UFS_CONTROL, \
+>                       cmd, val, 0, 0, 0, 0, 0, &(res))
+> 
+> +#define ufs_mtk_crypto_ctrl(res, enable) \
+> +       ufs_mtk_smc(UFS_MTK_SIP_CRYPTO_CTRL, enable, res)
+> +
+>  #define ufs_mtk_ref_clk_notify(on, res) \
+>         ufs_mtk_smc(UFS_MTK_SIP_REF_CLK_NOTIFICATION, on, res)
+> 
+> @@ -73,6 +77,18 @@ static void ufs_mtk_cfg_unipro_cg(struct ufs_hba *hba,
+> bool enable)
+>         }
+>  }
+> 
+> +static void ufs_mtk_crypto_enable(struct ufs_hba *hba)
+> +{
+> +       struct arm_smccc_res res;
+> +
+> +       ufs_mtk_crypto_ctrl(res, 1);
+> +       if (res.a0) {
+> +               dev_info(hba->dev, "%s: crypto enable failed, err: %lu\n",
+> +                        __func__, res.a0);
+> +               hba->caps &= ~UFSHCD_CAP_CRYPTO;
+> +       }
+> +}
+> +
+>  static int ufs_mtk_hce_enable_notify(struct ufs_hba *hba,
+>                                      enum ufs_notify_change_status status)
+>  {
+> @@ -83,6 +99,9 @@ static int ufs_mtk_hce_enable_notify(struct ufs_hba
+> *hba,
+>                         hba->vps->hba_enable_delay_us = 0;
+>                 else
+>                         hba->vps->hba_enable_delay_us = 600;
+> +
+> +               if (hba->caps & UFSHCD_CAP_CRYPTO)
+> +                       ufs_mtk_crypto_enable(hba);
+>         }
+> 
+>         return 0;
+> @@ -317,6 +336,9 @@ static int ufs_mtk_init(struct ufs_hba *hba)
+>         /* Enable clock-gating */
+>         hba->caps |= UFSHCD_CAP_CLK_GATING;
+> 
+> +       /* Enable inline encryption */
+> +       hba->caps |= UFSHCD_CAP_CRYPTO;
+> +
+>         /* Enable WriteBooster */
+>         hba->caps |= UFSHCD_CAP_WB_EN;
+>         hba->vps->wb_flush_threshold = UFS_WB_BUF_REMAIN_PERCENT(80);
+> diff --git a/drivers/scsi/ufs/ufs-mediatek.h b/drivers/scsi/ufs/ufs-mediatek.h
+> index 6052ec105aba..8ed24d5fcff9 100644
+> --- a/drivers/scsi/ufs/ufs-mediatek.h
+> +++ b/drivers/scsi/ufs/ufs-mediatek.h
+> @@ -70,6 +70,7 @@ enum {
+>   */
+>  #define MTK_SIP_UFS_CONTROL               MTK_SIP_SMC_CMD(0x276)
+>  #define UFS_MTK_SIP_DEVICE_RESET          BIT(1)
+> +#define UFS_MTK_SIP_CRYPTO_CTRL           BIT(2)
+>  #define UFS_MTK_SIP_REF_CLK_NOTIFICATION  BIT(3)
+> 
+>  /*
+> --
+> 2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
