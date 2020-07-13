@@ -2,88 +2,90 @@ Return-Path: <SRS0=TL3J=AY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 47484C433F4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 13:30:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 151BCC433E4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 13:30:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EC1CA206F0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 13:30:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D623320656
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 13:30:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TyPHt25f";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="eZztk7O7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EC1CA206F0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="vh9IXmCZ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="PrmHEa5F"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D623320656
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=d4aJIu9HInLTfzrsjAJ/qde7kA6XOLlX003LDCHbG5A=; b=TyPHt25fiAuhcLjWQBd32ed5H6
-	vVp+qx2m6iIxaBXcNRqIq96Qbgvadim3p8FIS49aygYDLlqC/sYPGyhSRcNEHWsYCEc3ovEBPBErN
-	Z2i7F8MGlro9devdn0UGRPsvDwujZ1xQYAVzB97RkyVMJvU4hF8a3dwCfZ3p7hPIX60eYMMCGSdf/
-	i6V7XPjOXR2E1L02BIiO3h+pwZUdQRbmFeM+ecNmMldeDAuMrbAozf+b1EDIAd9F3hGsJpAwWCY0H
-	lwgEJizoB/jIaQUNc1BNAzWEyH960eWnRq9TwekEfTdR4AFTlycNrygKJVkVL1vzxv5PWP5MkhDGz
-	z/Qqdc6w==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=8tuOX6AxeWqXgFIkmyJywQdu539XKM/ZE1eDUsJpQvs=; b=vh9IXmCZC8kn8YR19T2MtghQi
+	rLUhwr1Anfjz0bZkekQkWaWi4c6EYsBeraSX9rw6IpLRaj3CgXRV0jXyQ6gKR1WWzkD0n1vgGBh4a
+	8dBJl5ERe4dqfOUr8NRTTBmmkY28oy5JpxqjWD0sKijTmoSCASaSs5ZvvWZHslwWFdT9p++MgWyds
+	912N/R5XCAYj0/uFk/gqhXHujMSsXKfX+jD4fs3XI/J8KnyZFkhJkBqp7bLRqV8rfvH07FdzNgvy0
+	fe4cc8brdtQU5RwWpnjPA4BL5eGaMRXavX2ri+Pk5CM6kaFffQU6uTlOW9GdwmBz+K9q/MFobh7Ij
+	F5AdZ+Tow==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1juyWi-0008Nd-2t; Mon, 13 Jul 2020 13:29:48 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1juyXK-0000CW-CQ; Mon, 13 Jul 2020 13:30:26 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1juyWc-0008IP-6I
- for linux-mediatek@lists.infradead.org; Mon, 13 Jul 2020 13:29:44 +0000
-Received: by mail-wr1-x444.google.com with SMTP id q5so16570283wru.6
- for <linux-mediatek@lists.infradead.org>; Mon, 13 Jul 2020 06:29:40 -0700 (PDT)
+ id 1juyWd-0008Ik-Eb
+ for linux-mediatek@lists.infradead.org; Mon, 13 Jul 2020 13:29:47 +0000
+Received: by mail-wr1-x443.google.com with SMTP id a6so16550185wrm.4
+ for <linux-mediatek@lists.infradead.org>; Mon, 13 Jul 2020 06:29:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=8M2es7HHouzmCUpyAYFqBmq/VXXAGiCHzbOor1SAZdY=;
- b=eZztk7O7rf+DFBdXysVaFW4Q6svK0fGNMvSOeDFuBZn/YGHCVDHChUbKn5LhBskGZF
- z4kFVrudVva1mgg1mPIwMgG/zOElB0ulSNlJAWaXR4twxVMVl3if3wzh4Jerf2NIhpy9
- ZgYZpN1qdb1PX8A36OK7S2FYxhqRzMqWnhli036pECPg1gVa6H+PclsfMX1+zivylIBh
- EdcoHIsqNvh00CBTbSgfCw04YoJLD5d00c8lG8RVo0q06XZ1R2AfjmaXvoXcZiRPu0I+
- TnQBMfQZVhJf8vwoGnfJyVRgxYMSADJXe6+/E4ouhnfFeOQD3BoMi4SN7/c/DPG7Jt5h
- uUmA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=ku9aM1vtf8T+FGw4lj5ZIPzjxBiChVO0/pPdJg2fBGw=;
+ b=PrmHEa5FPW0LpbYElEyKRcYnhJi5XmlC36lx5TSUk0I4eKD5oBsz61WrgLwaHWBGIX
+ Ut63kpeIUoPgm/Iugy6CdW2TIR25zGavB/guDK5USe1uzqHhQIzZmP4SybSuqPzcYscF
+ EpwVxFYP4NgYDzzlW7/wtUOdb6KvFamYq/rsjAhy7Pv/QfGSzORPzVUZLWXXKh3oBHXM
+ kmLBRJzeMfEs2EaHJlYuyMfD0K6LX8k2KCDF1nSPRFMgYE8kZN4eCxgtwF15LSmpbSGc
+ lpjY8R1Mjpf7JpeZjWoq/AMQ4feht55IcICbLW8Zw9qNxbusSYWa6dd9BuiEWOSp9Q0t
+ n3hA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=8M2es7HHouzmCUpyAYFqBmq/VXXAGiCHzbOor1SAZdY=;
- b=Z44d0sXfqtakemHG4Mgf49x/8osVp1JHJAffyWw7mISoETlQsKtkpoD+cz+LlfHmcp
- 0IPmDZY8z3jbo6BKJ3UbgnVCNF6SmTOxiLokMPhbLb8cXR5RcMiztU1sQ9eOVvlkK1rN
- JWAt8+4ushsU0I/TvFdl8wzOhsAqmuXHW6JlfUhq23aPOtYc7xb2g0/WPwKnMEPy94Nn
- KIjRG/Q8B/V+f1qsMy0nopyN4fZtAR+2/z8hiVahZQ73Y5pHuv39ZjnbKRRd31qg/A5L
- OKjlpdkAMWhOAchMTXUUL/c5lNrUP9RGaVVQmiaczxMHOZRZUySkICYybdDb+7DVODQI
- hUbA==
-X-Gm-Message-State: AOAM531rMePKqVyY6w4qAESLOfUH9ja3IX/cwBn3aAvCvLEkCn3SWk99
- f365LX0c3VYCrNijSmdm7+3/Ng==
-X-Google-Smtp-Source: ABdhPJxMEwQ8RYMjAHEW54Z1j94xXKNRmix+I5953GVI4mfW5CH5zrllY5eazKO4pgPCsaIsWRN1NA==
-X-Received: by 2002:adf:e40e:: with SMTP id g14mr86432689wrm.271.1594646979741; 
- Mon, 13 Jul 2020 06:29:39 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=ku9aM1vtf8T+FGw4lj5ZIPzjxBiChVO0/pPdJg2fBGw=;
+ b=JPyAhbE1svSCu31cvUZYh6B008iKRHpQtaiQEcGvkygPily+r04XaPcYUvG9LozxVC
+ UpnCXMO4o7ZiMV9WJbEymCi84r0taSolHjODWxuDVoOlA7BMOu7v1tYeYOJK//Kp7Mry
+ vqp+Jk6rNkyGOMhbRjUzYJ/aOeYqC1N9Fhet6Ch7W/ENcYJBJBMapEIYavx9H6fy5pDc
+ jcXq2t4xtp1C74dTY1hOfufLXAxvFb1S1EuwuJlrLasQC4Yb59fzYHW+ppnjeP3tYm2Q
+ VoTe314lwit8fsGVlQ0KACcD1v2bIKLGx3Lqh2DdbooP3HKJcPiMzIDZAkegsRWfmI+Q
+ ctZA==
+X-Gm-Message-State: AOAM5308w3BbcfV53JeVe5wMbdOQJQnoOow6gtPYeHSUi2l/34FFt+OK
+ ab21g+zksTNu0OdGsPvh+mBjrQ==
+X-Google-Smtp-Source: ABdhPJw27IwpFadhq+5bRv4bzXdsWZ8YmL639ivQFIAbVn7c+uDln0qheLOT9j1ytM6vhX/7UJNMeg==
+X-Received: by 2002:adf:de12:: with SMTP id b18mr85726204wrm.390.1594646980907; 
+ Mon, 13 Jul 2020 06:29:40 -0700 (PDT)
 Received: from linux.local (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr.
  [90.63.244.31])
- by smtp.gmail.com with ESMTPSA id j14sm23896642wrs.75.2020.07.13.06.29.38
+ by smtp.gmail.com with ESMTPSA id j14sm23896642wrs.75.2020.07.13.06.29.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 Jul 2020 06:29:38 -0700 (PDT)
+ Mon, 13 Jul 2020 06:29:40 -0700 (PDT)
 From: Alexandre Bailon <abailon@baylibre.com>
 To: ohad@wizery.com, bjorn.andersson@linaro.org, robh+dt@kernel.org,
  matthias.bgg@gmail.com
-Subject: [PATCH 0/6] Add support of mt8183 APU
-Date: Mon, 13 Jul 2020 15:29:21 +0200
-Message-Id: <20200713132927.24925-1-abailon@baylibre.com>
+Subject: [PATCH 1/6] dt bindings: remoteproc: Add bindings for MT8183 APU
+Date: Mon, 13 Jul 2020 15:29:22 +0200
+Message-Id: <20200713132927.24925-2-abailon@baylibre.com>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200713132927.24925-1-abailon@baylibre.com>
+References: <20200713132927.24925-1-abailon@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200713_092942_365402_1AB40A6A 
-X-CRM114-Status: GOOD (  14.55  )
+X-CRM114-CacheID: sfid-20200713_092943_621063_3F972809 
+X-CRM114-Status: GOOD (  13.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,46 +105,141 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some Mediatek's SoC have an Accelerated Processing Unit.
-This adds support of the one available in the mt8183
-(aswell some derivative SoC).
+This adds dt bindings for the APU present in the MT8183.
 
-This series depends on two other series:
-- Mediatek MT8183 scpsys support  
-- arm64: dts: Add m4u and smi-larbs nodes for mt8183 
-
-Notes:
-This series include two workarounds:
-- remoteproc: mtk_vpu_rproc: Don't try to load empty PT_LOAD segment
-- rproc: mtk_apu: Don't try to use local APU RAM
-
-The first one is required to load malformed firmwares.
-This is probably caused by the toolchain we are using (a fork of gcc 4.2).
-It would be better to fix the firmwares but I don't know how to fix it.
-
-The second one prevents the CPU to access to the APU local RAM.
-If the CPU tries to read or write the APU local RAM, then the CPU will
-hang. I'm still looking for a solution, but until, we must prevent
-remoteproc to write something (usually, to initialize data section).
-Because of that issue, the current driver doesn't map the the local RAM.
-
-Alexandre Bailon (6):
-  dt bindings: remoteproc: Add bindings for MT8183 APU
-  remoteproc: Add a remoteproc driver for the MT8183's APU
-  remoteproc: mtk_vpu_rproc: Add support of JTAG
-  remoteproc: mtk_vpu_rproc: Don't try to load empty PT_LOAD segment
-  remoteproc: mtk_apu: Don't try to use the APU local RAM
-  ARM64: mt8183: Add support of APU to mt8183
-
- .../bindings/remoteproc/mtk,apu.yaml          | 121 +++++
- arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  42 ++
- drivers/remoteproc/Kconfig                    |  19 +
- drivers/remoteproc/Makefile                   |   1 +
- drivers/remoteproc/mtk_apu_rproc.c            | 501 ++++++++++++++++++
- 5 files changed, 684 insertions(+)
+Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+---
+ .../bindings/remoteproc/mtk,apu.yaml          | 121 ++++++++++++++++++
+ 1 file changed, 121 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/remoteproc/mtk,apu.yaml
- create mode 100644 drivers/remoteproc/mtk_apu_rproc.c
 
+diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,apu.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,apu.yaml
+new file mode 100644
+index 000000000000..1d5fcc135617
+--- /dev/null
++++ b/Documentation/devicetree/bindings/remoteproc/mtk,apu.yaml
+@@ -0,0 +1,121 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++
++---
++$id: "http://devicetree.org/schemas/remoteproc/mtk,apu.yaml#"
++$schema: "http://devicetree.org/meta-schemas/core.yaml#"
++
++title: MT8183 Vision Processor Unit (VPU) devices
++
++description:
++  This document defines the binding for the APU, a co-processor that could
++  offload the CPU for machine learning and neural network.
++
++maintainers:
++  - Alexandre Bailon <abailon@bayLibre.com>
++
++properties:
++  compatible:
++    const: mediatek,mt8183-apu
++
++  reg:
++    description:
++      Address ranges of the APU MMIO.
++    maxItems: 1
++
++  interrupts:
++    description:
++      The interrupt number used to receive the interrupts from the DSP.
++    maxItems: 1
++
++  clocks:
++    description:
++      "Clocks for co-processor (See: ../clock/clock-bindings.txt)
++      Three clocks are expected for AXI, IPU and JTAG.
++      The JTAG clock seems to be required to run the DSP,
++      even when JTAG is not in use."
++    maxItems: 3
++  clock-names:
++    description:
++      The name of clocks, must be ipu, axi and jtag
++    items:
++      - const: ipu
++      - const: axi
++      - const: jtag
++
++  iommu:
++    description: "IOMMU (See: ../iommu/iommu.txt)"
++    maxItems: 3
++
++  memory-region:
++    description: "Reserved memory (See: ../reserved-memory/reserved-memory.txt)"
++    maxItems: 1
++
++  power-domains:
++    description: "Power domain (see: ../power/power_domain.txt)"
++    maxItems: 1
++
++  pinctrl:
++    description: pinctrl handles, required to configure pins for JTAG.
++    maxItems: 2
++
++  pinctrl-names:
++    description:
++      pinctrl name, must be "default", "jtag".
++      "default" must configure the pins when JTAG is disabled.
++      "jtag" must configure the pins for JTAG operations.
++    items:
++      - const: default
++      - const: jtag
++    maxItems: 2
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - iommu
++  - memory-region
++  - power-domains
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/memory/mt8183-larb-port.h>
++    #include <dt-bindings/power/mt8183-power.h>
++
++    reserved-memory {
++      #address-cells = <1>;
++      #size-cells = <1>;
++      ranges;
++
++      vpu_ram: vpu_ram@0x60000000 {
++        compatible = "shared-dma-pool";
++        reg = <0 0x60000000 0 0x040000000>;
++        no-map;
++        linux,cma-default;
++      };
++    };
++
++    vpu0: vpu@0x19100000 {
++      compatible = "mediatek,mt8183-apu";
++      reg = <0 0x19180000 0 0x14000>;
++      reg-names = "mmio";
++      interrupts = <GIC_SPI 292 IRQ_TYPE_LEVEL_LOW>;
++
++      iommus = <&iommu M4U_PORT_IMG_IPUO>,
++         <&iommu M4U_PORT_IMG_IPU3O>,
++         <&iommu M4U_PORT_IMG_IPUI>;
++
++      clocks = <&ipu_core0 CLK_IPU_CORE0_AXI>,
++         <&ipu_core0 CLK_IPU_CORE0_IPU>,
++         <&ipu_core0 CLK_IPU_CORE0_JTAG>;
++
++      clock-names = "axi", "ipu", "jtag";
++
++      power-domains = <&scpsys MT8183_POWER_DOMAIN_VPU_CORE0>;
++      memory-region = <&vpu_ram>;
++    };
++...
 -- 
 2.26.2
 
