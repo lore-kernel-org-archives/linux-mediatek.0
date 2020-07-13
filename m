@@ -2,81 +2,148 @@ Return-Path: <SRS0=TL3J=AY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 13D87C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 06:33:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 74AA9C433E5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 06:34:35 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D04552067D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 06:33:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 43AAA20720
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 06:34:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="u3kY5sWV";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GS5Y1elU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D04552067D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xETo5wLq";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=microchip.com header.i=@microchip.com header.b="aRnjhCSV";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=microchiptechnology.onmicrosoft.com header.i=@microchiptechnology.onmicrosoft.com header.b="COgY1lSm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 43AAA20720
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=microchip.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Ja5j2URMSC6LiVSA5nVCWHd/7KjtVEj/pM+G41C16Ms=; b=u3kY5sWVr714czKM8106nfhL1
-	wqU+A+6pKhfhXS9nx39LjQyaaZZNR9vaLp44R6/rQC6oFvdNDB9TXm4ZSELPIDsL2jyDQh2vgnT1t
-	7QQCDRdKKCaBAcHhBSHssqG7VCssKIX5c3uJsfJTq7/VMiUgVqwSZvBiczGOAvDe9up/L2L1d8i5o
-	TVVq5v0BCdJg5j4vH59NCaPBgVQdzDmGAFdLYVAFhDhdL7Rs3xRZZYuGm+r99tnMLKbABQe/u9hIa
-	ly57AexEpZXmMOk6meDk2Kh543qXNNUZi9ywa9uIiDFCG/Slf3lHzB9NCsfoKe/UGopz/Ue8Umdon
-	/cjwWGR2Q==;
+	 bh=xfaER7lnRXsD1owIV3TBRmnIcsASl3RSXyboaLsteU8=; b=xETo5wLqIZFkPzVTFSdMK0jPN
+	YLwq0k8KqGHh4HwW7wZD/sLfC40tirQEduDBuPYrD1esunf31H2Wyg55ua/WVeawtJSSovyvc3irI
+	iJk/Nd21J4nDTJPaarPLCt1W+rTanYKfEa5iJdO3XY6Ks1yx+pkm7IWtAzvqracBLupsx/6v5HCXV
+	evSMU1+f8kldxH7Qe9pVA97QHs10LOL2m7ywegYLkoojEE/TrI6KeTvNQz/ypT1Dkh1xokFRLhIDG
+	p3nj91AzhQXrnKk1O8N79wqLEdwev3GbQPBIHgIsFoFj99sjGkfliPUBZZudZFq9oW+D8EB8iZw6C
+	fhFnRUI6A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jus1Y-0004or-JD; Mon, 13 Jul 2020 06:33:12 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jus2k-0005S0-DT; Mon, 13 Jul 2020 06:34:26 +0000
+Received: from esa5.microchip.iphmx.com ([216.71.150.166])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jus1W-0004nr-G1; Mon, 13 Jul 2020 06:33:11 +0000
-X-UUID: 5767375645de4ff7bc5b2fb0729f9309-20200712
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=u1YVFUhNBChKn3hVAOGio4nlm710e7A413UQV7bi/Ys=; 
- b=GS5Y1elUly4hzWnTLjkS+daSnzadDnpJeT8Fv0icMGBYh20qoNbpEMJa26TF4mu6hq4W7U5mnL9McUMMni4qjpgec1CW7ktk+ehk3ZpUChGSWEyhVN/1NN046Be2JXrJc5tXG9gDXFUuOr1rLrFK0Sh2VP0XIkKvfg7IyJ9/i9c=;
-X-UUID: 5767375645de4ff7bc5b2fb0729f9309-20200712
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1717619310; Sun, 12 Jul 2020 22:33:05 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 12 Jul 2020 23:28:54 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 13 Jul 2020 14:28:51 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 13 Jul 2020 14:28:51 +0800
-Message-ID: <1594621684.16172.22.camel@mhfsdcap03>
-Subject: Re: [PATCH 01/21] dt-binding: memory: mediatek: Add a common
- larb-port header file
-From: Yong Wu <yong.wu@mediatek.com>
-To: Pi-Hsun Shih <pihsun@chromium.org>
-Date: Mon, 13 Jul 2020 14:28:04 +0800
-In-Reply-To: <CANdKZ0dwsaP=s8AgRbDx2_0y4JmPnF-X0Rb=4vor2MWCYWfGKw@mail.gmail.com>
-References: <20200711064846.16007-1-yong.wu@mediatek.com>
- <20200711064846.16007-2-yong.wu@mediatek.com>
- <9e21288c-07da-88b0-2dbb-bd9a2a4d529b@gmail.com>
- <CANdKZ0dwsaP=s8AgRbDx2_0y4JmPnF-X0Rb=4vor2MWCYWfGKw@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jus2c-0005IR-Nr; Mon, 13 Jul 2020 06:34:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+ t=1594622059; x=1626158059;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-id:content-transfer-encoding: mime-version;
+ bh=HnDMyw3QbHSMXA22QxZVKiRNwhrx8NJYze23R7afQeE=;
+ b=aRnjhCSVjqStcfbU933h9nDvHbDqpmY0AU4JddtexwiCi1DCLmS5JT1O
+ ggS6cZDdv/VPkuER9Kxz+ukDD2t5Kg9KNPQhIFrhTqiN28FK6JyGqo3zr
+ naIwtoIl9aDpxQmBKrDTZrhLHhUW2THKhNXeAdo1mPJGSdgt+2RHACsDM
+ +NhAB/NlcWK9Wdg6WYBIqUcqVDH71yB2Eq+lz8MDpBWNHA8sFukRm4rds
+ mN58TbIJjMaw70IN1t073FNJlIQ/e6x81SpVmoFGTYmzVVbXxIyfsgt7N
+ SdL9fRar7Y6f5uCdjs+LirHgZcFfGOu3jSe3UHom+kqKusBUPW89/ILGc A==;
+IronPort-SDR: 5EunmS7PQ/kq8/op4zlHgx2bmEi+Ar7+qQTW5rF/89RTAjbwmTHaxeWNjEvqIBF4nm2L185bpw
+ rcJrcp57c3X+hoL5ui3Zl55biZe9ftSZ0RwPB76Pj4iaNZTBzhelnAU69JHDpGXUoiSU56t5iA
+ QJ2Y3YgZYU5AY3okncjEDhMhadCmKWxxgJYTJYb3UffVb7wbpQNHfsLBHEaHVpVhEpKYa8p7MR
+ O3AcmhJkiAeNRZsPi0Mv5Pesn30JIDpig8aaue2T/1J661DanyWdoOcMhaoT/LfD3tjPcxke2V
+ BAw=
+X-IronPort-AV: E=Sophos;i="5.75,346,1589266800"; d="scan'208";a="82843199"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 12 Jul 2020 23:34:17 -0700
+Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
+ chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1979.3; Sun, 12 Jul 2020 23:34:16 -0700
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.151) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3
+ via Frontend Transport; Sun, 12 Jul 2020 23:34:16 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=UxH2hqCLWyp4YQUcHsDDoHQ3ZKThcllacFWbHvGp204WWLYJ9A82EwoJMAT83or8JKXV+M4rtHWU3/t7skK2Yjb5AAB7R6gR3zprL6m7I5E4NhiroLLI6WSgAuEXjFwEDIrW9fiAvG25dgu+Na1AOyxnNACewVuZSDI+i01llWSBNNI/dfjpZOmy2VWTROkwy0EiuzG04bNC5nTsL7FXQz7POjl2JcvCu0DJc9o+hukadIpWbN86ab/A3LnkOKqeYv7bqemIh4Grx5P7IW2UcL1MkcGraOuse7xYVJauC/Us8t7qsuFvethQFzJGlu5ZPSXLfgr/RuvzBPy5Yzr9tQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=HnDMyw3QbHSMXA22QxZVKiRNwhrx8NJYze23R7afQeE=;
+ b=oO8QuTtcsa4tugbDx3mjm7WjT20y6QfQWTaP8PqZc0aurimFrae0/eQesugBhWqJx2BvhhzuuWj+wSClOgX6XbCHPomyw/wyZbmU0lrnd8iTaSLzLMLtpiXdZZqClGtX0Wgg1oIeBF298Ou40AKhAwEBdfBnzjq58Wvea8z75t9sMh2x0pEP/0qDoI7fGzKtBbBRWjU3OHw13fEDhZqNeu5vmN3tpKlCWa48Hbgxq0zvNTav2DpkQqpkuXRERTiqyHCFBGnrIf6DeclL8ZB03lfGHwWAdVAoJqnwTjZL/Zzhp3cbzYM09Zy6wO4OzuUvd9yJc+dzy1pbGaOIeoUmcA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microchip.com; dmarc=pass action=none
+ header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector2-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=HnDMyw3QbHSMXA22QxZVKiRNwhrx8NJYze23R7afQeE=;
+ b=COgY1lSmWVUMT+RRvySIQGU1NYarcvAtKyyVsZy5JKIpuyhqx/CBxWamrPOe9rYDvQahgr74Iw4DhBghibJ3dYh/WjxjKXucrjvkpC9xWXhK742aJvlWUieVEifImfJ3rnQfrbgmqgC02lpvFIpVIP4ps8+5cKlJW1HbMdQIuIY=
+Received: from BYAPR11MB2856.namprd11.prod.outlook.com (2603:10b6:a02:bd::11)
+ by BY5PR11MB4209.namprd11.prod.outlook.com (2603:10b6:a03:1cc::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3174.21; Mon, 13 Jul
+ 2020 06:34:13 +0000
+Received: from BYAPR11MB2856.namprd11.prod.outlook.com
+ ([fe80::f1d5:60ca:d163:c1b3]) by BYAPR11MB2856.namprd11.prod.outlook.com
+ ([fe80::f1d5:60ca:d163:c1b3%3]) with mapi id 15.20.3174.025; Mon, 13 Jul 2020
+ 06:34:13 +0000
+From: <Tudor.Ambarus@microchip.com>
+To: <p.yadav@ti.com>, <vigneshr@ti.com>, <broonie@kernel.org>,
+ <linux-spi@vger.kernel.org>, <boris.brezillon@collabora.com>
+Subject: Re: [PATCH v10 00/17] mtd: spi-nor: add xSPI Octal DTR support
+Thread-Topic: [PATCH v10 00/17] mtd: spi-nor: add xSPI Octal DTR support
+Thread-Index: AQHWWN+dU3MRlEjPj0CyeRCYqGYmmg==
+Date: Mon, 13 Jul 2020 06:34:12 +0000
+Message-ID: <e6d4c015-b70f-40e3-2275-89d245e817e8@microchip.com>
+References: <20200623183030.26591-1-p.yadav@ti.com>
+In-Reply-To: <20200623183030.26591-1-p.yadav@ti.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
+authentication-results: ti.com; dkim=none (message not signed)
+ header.d=none;ti.com; dmarc=none action=none header.from=microchip.com;
+x-originating-ip: [86.120.242.181]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 82e21053-3635-43dc-2c7f-08d826f6c1ff
+x-ms-traffictypediagnostic: BY5PR11MB4209:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BY5PR11MB42095D53685EE8AEDE279F42F0600@BY5PR11MB4209.namprd11.prod.outlook.com>
+x-bypassexternaltag: True
+x-ms-oob-tlc-oobclassifiers: OLM:7219;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: QijyGuGI4OEbBQqMQV1xedgHIrLvrv+dRHFKtO3fLb3C2xHx1XjPowtaVOmOjHVhMPmjDLPSIh2PcI4bHUqvpKCsgBNIWluQu1ShVx41G7nZ62TJ3QS00uw+RYtu2xEiTxuloouxh8rQLiJUBrmG1FKEbt0Ubo9fzR9BpO/v0hIuQZOiGVOqdl/kewjcyPtyBysIhgw8l7t2F6Jtv/JRm0v9QaaD9Razx5+FUjUdOkLLGL9cIUiBwT/Dk0d8PipABkcu+5QMWD1JDJGboEg+ufwDK+RGEUXqjKV/EA1k4QXkOfiJNi5gQ87EJ7Epq7g34cb+aWPuFIpqZe46tbjo6DoFlyDf7H4MAMLCk8rJAfNoTjBBmH6XTPrgTW27yg0G
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR11MB2856.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(396003)(136003)(366004)(346002)(39860400002)(376002)(5660300002)(4744005)(86362001)(36756003)(66946007)(66476007)(66556008)(66446008)(64756008)(31686004)(91956017)(76116006)(186003)(6486002)(26005)(2616005)(31696002)(7416002)(71200400001)(2906002)(4326008)(6506007)(478600001)(8936002)(6512007)(54906003)(8676002)(53546011)(110136005)(316002)(43740500002);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata: NybGGYnjduU8DXGte2aLD8aoaOzP1tQl5NWVvMG6kmkD40GgigChXBRWXdwiNlEy2jX1hK36VOTmkV5qJ1ghM96pEbbtt2dQMxv0ksKVQvM1xvuL0dX6f1ld1lQAX6FkhQmHvjGgMzqhwr1Zd4xN97R5k+9ngxQ7fvw57jENZR9JfX/SnRqoIR4jDQLMEWNpndRu9aC62RO3FKNSRDbApERfmULJg6rh8aw9Nm+3Z8ekZQJTq2Z2xqy6saSM87rnWmPnOHDug12Gn5itwq6O8/fV1rrpV+dfR8nClxy2vdVx7+/QyMFlS13pALWEhv6n4yCd7oZyo0xsyWk0IMd3VKk94RHpm6vhfueyPZnxCp5fuf1H2DDqbHTy442T8wzYAWt7xQ2Cw1RuvrIlj/Z+JVHsczK2Q6wu/i3XtW6S1iBtKlOuJl70Cgl8qPd6uV7NNPLgrSvgwJltvLTWKaOlQ4yLkvnRLwYUutOLu6q1D5goK8Yt3lj/cEBy8lMmfj3D
+Content-ID: <39ABED06096FD34F84A063A46A2DB065@namprd11.prod.outlook.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: B2F7F870170CA2A9C5CE3E2AE2DE382AD28F42E6BD22B1BEE765926AC2E33B272000:8
-X-MTK: N
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB2856.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 82e21053-3635-43dc-2c7f-08d826f6c1ff
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Jul 2020 06:34:12.9862 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: a67yzXmwzKTAvOg7BD+09iwnrmxUf5qassXLlskJr03u0QtgfTdwiwr1kVpYsCUWBC/EdZ4+Hia4i+hjMdfckDTVsvFYzd7k+8S3yySIIs4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR11MB4209
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200713_023310_753853_E7743BFB 
-X-CRM114-Status: GOOD (  21.17  )
+X-CRM114-CacheID: sfid-20200713_023418_925615_2C22AFF8 
+X-CRM114-Status: UNSURE (   7.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,90 +155,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Youlin Pei =?UTF-8?Q?=28=E8=A3=B4=E5=8F=8B=E6=9E=97=29?=
- <youlin.pei@mediatek.com>, "open
- list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
- cui.zhang@mediatek.com, srv_heupstream@mediatek.com, chao.hao@mediatek.com,
- Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>,
- open list <linux-kernel@vger.kernel.org>, Evan Green <evgreen@chromium.org>,
- Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
- Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, ming-fan.chen@mediatek.com,
- anan.sun@mediatek.com, Will Deacon <will@kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>
+Cc: alexandre.belloni@bootlin.com, richard@nod.at, nsekhar@ti.com,
+ Nicolas.Ferre@microchip.com, michal.simek@xilinx.com,
+ Ludovic.Desroches@microchip.com, linux-mtd@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, miquel.raynal@bootlin.com,
+ matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2020-07-13 at 13:43 +0800, Pi-Hsun Shih wrote:
-> On Mon, Jul 13, 2020 at 2:06 AM Matthias Brugger <matthias.bgg@gmail.com> wrote:
-> >
-> >
-> >
-> > On 11/07/2020 08:48, Yong Wu wrote:
-> > > Put all the macros about smi larb/port togethers, this is a preparing
-> > > patch for extending LARB_NR and adding new dom-id support.
-> > >
-> > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > > ---
-> > >   include/dt-bindings/memory/mt2712-larb-port.h  |  2 +-
-> > >   include/dt-bindings/memory/mt6779-larb-port.h  |  2 +-
-> > >   include/dt-bindings/memory/mt8173-larb-port.h  |  2 +-
-> > >   include/dt-bindings/memory/mt8183-larb-port.h  |  2 +-
-> > >   include/dt-bindings/memory/mtk-smi-larb-port.h | 15 +++++++++++++++
-> > >   5 files changed, 19 insertions(+), 4 deletions(-)
-> > >   create mode 100644 include/dt-bindings/memory/mtk-smi-larb-port.h
-> > >
-> > > ...
-> > > diff --git a/include/dt-bindings/memory/mtk-smi-larb-port.h b/include/dt-bindings/memory/mtk-smi-larb-port.h
-> > > new file mode 100644
-> > > index 000000000000..2ec7fe5ce4e9
-> > > --- /dev/null
-> > > +++ b/include/dt-bindings/memory/mtk-smi-larb-port.h
-> > > @@ -0,0 +1,15 @@
-> > > +/* SPDX-License-Identifier: GPL-2.0-only */
-> > > +/*
-> > > + * Copyright (c) 2020 MediaTek Inc.
-> > > + * Author: Yong Wu <yong.wu@mediatek.com>
-> > > + */
-> > > +#ifndef __DTS_MTK_IOMMU_PORT_H_
-> > > +#define __DTS_MTK_IOMMU_PORT_H_
-> > > +
-> > > +#define MTK_LARB_NR_MAX                      16
-> >
-> > include/soc/mediatek/smi.h has the very same define.
-> > Should smi.h include this file?
-> >
-> > Regards,
-> > Matthias
-> >
-> 
-> Looks like this is being addressed in patch 5 in this series ([05/21]
-> iommu/mediatek: Use the common mtk-smi-larb-port.h)
-> That said, should that patch be merged into this one?
+Hi, Mark,
 
-At the beginning, I really did like this. But checkpatch will complain
-like that:
+On 6/23/20 9:30 PM, Pratyush Yadav wrote:
+> Pratyush Yadav (17):
+>   spi: spi-mem: allow specifying whether an op is DTR or not
+>   spi: spi-mem: allow specifying a command's extension
+>   spi: atmel-quadspi: reject DTR ops
+>   spi: spi-mtk-nor: reject DTR ops
 
-WARNING:DT_SPLIT_BINDING_PATCH: DT binding docs and includes should be a
-separate patch. See:
-Documentation/devicetree/bindings/submitting-patches.rst
+These four patches are looking good, I had just few minor comments.
+If you too think that they are ok, would you take them through the
+SPI tree? If so, I would need an immutable tag on top of v5.8-rc1
+preferably, so I can merge them back to SPI NOR and continue the
+development on top of them.
 
-> 
-> 
-> 
-> > > +
-> > > +#define MTK_M4U_ID(larb, port)               (((larb) << 5) | (port))
-> > > +#define MTK_M4U_TO_LARB(id)          (((id) >> 5) & 0xf)
-> > > +#define MTK_M4U_TO_PORT(id)          ((id) & 0x1f)
-> > > +
-> > > +#endif
-> > >
+Let us know if you want us to resubmit for those minor comments.
 
+Cheers,
+ta
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
