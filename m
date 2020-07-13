@@ -2,156 +2,80 @@ Return-Path: <SRS0=TL3J=AY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 229A4C433E3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 03:55:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0BDA1C433E3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 05:37:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E3C7C2068F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 03:55:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CDDA120674
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 05:37:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e0WfeLO1";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=microchip.com header.i=@microchip.com header.b="yReazDOi";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=microchiptechnology.onmicrosoft.com header.i=@microchiptechnology.onmicrosoft.com header.b="Fk4SYno5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E3C7C2068F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=microchip.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1p2r+d3t";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="I5mH74j0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CDDA120674
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8BcnLIucl74bWi06bz7kwtKlCrOcQKJWpRk+UkZAnVk=; b=e0WfeLO1P9YcE6DVNhYElclGx
-	NxOmD7TeN9pHAQOCzKNvpiCVPH+UOgeUEG/XJlX7izT4xPIdWOQZQl8G8lU7bT07Vik2tfhc/VvK5
-	rjZ7f9EhF+AKgS96txQpfID0IGsyUB/3/v8ZNANRkqiID/3xSQh9C8MpnpdLR7xDWK5Ib2105rMHP
-	if6m3TdCOEsm8hsIyxuyDdV+Ly5Fw7UJFdZgAFbx27ZYQ3CHR80aDSgKgqrL+dnf+di3/4zkUjOi9
-	GRlS7yHRgRKQONuo6ZcfEj821GqsvCmtH7bPGZDvn/xZ/w2RJrk9uIfcm54kJnBbYeNIzpy/q30Zt
-	QBnu39Pcw==;
+	 bh=1nGApRt8BmvfSXHUecZRz2bKSuNOH0o6peRFm3wLoQs=; b=1p2r+d3tdJGZKVsBBbpunDZGi
+	GcOmLayJ4j8w0ImqduGq89+JqvhLsJl9xLRHPS+dimz092EAHSik6ASWirdCjaVvrnbmQ7WFbYhn6
+	Rn21hDqQJQSJ5r543KV9eCJwe7OT9msLHRJpqdPapdTyGa2nhtdB1T9P/+Gxgkgmwj/OF0K5OXGI0
+	u1a6HoEgjVaLccaBScYN6SQh1TE9gju6l0lwYBKWn8f7WqRnN/SdppfcsXynQrLZejwVA3gAZU1PI
+	ircsIP8X+SDmeyyk757GgXYIjUGuv89YKQCtpZoVUtAstfm1EDWDnAHAc225L/ZSeH2POgCBMYqFn
+	AtfqAIc+Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jupYg-0005ZW-W5; Mon, 13 Jul 2020 03:55:15 +0000
-Received: from esa6.microchip.iphmx.com ([216.71.154.253])
+	id 1jur9a-00056c-97; Mon, 13 Jul 2020 05:37:26 +0000
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jupYb-0005YE-LC; Mon, 13 Jul 2020 03:55:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1594612509; x=1626148509;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=I4SZ+z3h4qfcj/wEJIngM+7FiLiHmEESaJejUQbWufw=;
- b=yReazDOi80aee7NMkAiY1/keke7CDNVoaXAd/20teBeac2L0dU/K+pT0
- 3Rh2MY9Igu7i9xLYL0pApBVA/G5gQjDG2Pch7bFTn6PKqL0khu+2yTttr
- l02nmpgiaV1O/LRQ/QyLbQkrEayIH5SRIRrbtQqWEEYnAbTsFTfhERGlT
- 08edBjXcXqepnh20GSQiClpSBD80GFAFIcxyPEUNl4Br119p0f+sfLFoi
- KrLmvW3Y5QGOpRlyvyd6q5g55H0kr36QblhprYIP5k+q22bnvSO/jYToP
- E/IOttbNVuQ7B/dC1ix0MARay7Kpa71jGbrNDx8sTkGldmuD0aTAMSHFJ g==;
-IronPort-SDR: IloN3Vm9h8mMoxs/nuwKmWWLvFi/ulYJYmKddaE5DUtQ3O2xHiX7EwBIH2bnN2LUsl9P06u19Y
- /z6NK5+WxXAJMyt3O92gYZTnQ0X3Dyw3ZYory2XZl2Tuu7Cg0GB4/0/N1wyFs80kqglOElFuB1
- QwMXGwN0GXeN2NXStunSi54sYw/nVGZOdllayJ1fuLo4zyxyNU8oVq4pueFG05/InSXSjznbNC
- o5XegNfB11/KTKea7er1LtYu/vKBypf47fzTxBbqLZhwuJOyo5A8UvnBWkBLqIV7F2lw7zqgl1
- GyQ=
-X-IronPort-AV: E=Sophos;i="5.75,346,1589266800"; d="scan'208";a="18914602"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa6.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 12 Jul 2020 20:55:06 -0700
-Received: from chn-vm-ex02.mchp-main.com (10.10.85.144) by
- chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1979.3; Sun, 12 Jul 2020 20:54:36 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.72) with Microsoft SMTP Server
- (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3 via Frontend
- Transport; Sun, 12 Jul 2020 20:54:35 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=A8zLBwIupCyRWmzqx8Nttrw8aWgQ5YnQV91O4cNn6GqLRSZ1wN+0kLEbAka+PhzxJW27kzr5vy06MRfR19BxIeHmLt530Wf0+VztJzbGRoejl5h9HGM5JFroNO5W0WAZJuOcsGEBSMricYEnORXRzK3oGTq6jOZ1VIMIpcwPpUTda71v6cmankHJnz6Lfg+1gKynDbCLmyMRLIZWhw6W9SUcOx0C74Ke2J2TqcA0vsg6T3lMQA+Q8oEZoJz22+viO8ZB83AtcMM4VuYJKwj3y8kQd4y0TbDjNHEnjAppejTXAu19k1udWpZLs0uuez+0DOzHRJXbh67BUdMvaGKo3g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=I4SZ+z3h4qfcj/wEJIngM+7FiLiHmEESaJejUQbWufw=;
- b=WZbAJmzLqyoOcF3gLSt77x3t5DpG1jd9TGabvO0Olefk2i4V9baMyVhuBkJ88+Hx/57AsIrdZKcMvh8d1Hu6Gzlz8D5hgjrGtPfKyYIf+rQi8gOenZzIUHju9uIMjYXRgulga6hOwoq7HHsifWefLbr8Lh7dSaJCkTZWhhvDjHF+3d/qXzwHbtinTO8CQZHy5M5UGt8lWJ6ew8ThJYuEgFz3Ss2okGDwPG/OedHb64lW/Mi9jDuwAKtzEAENBeajLtzthfankuQ2vUuW8o5dtQrk4cu45skW8pXNZtldKJpmsLZ7r58tjt7E4ceBENtmIDhMKSCwNILSizQNrleADg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=I4SZ+z3h4qfcj/wEJIngM+7FiLiHmEESaJejUQbWufw=;
- b=Fk4SYno5XKUhN2pJAxrK2S5hApxqShRbvv68QfOpvEsIp5Aupb5Wo5AfsbdmzssZDnx2chAANei/MQkRL0pTBP80viYjJ+pLA5LkfDUd/RQCU0O2O8fNyntYD8OcStDSMnHFNmu/ssJYzEGPEFdmhtus7CRNxCF0ChISAIFqWEM=
-Received: from BYAPR11MB2856.namprd11.prod.outlook.com (2603:10b6:a02:bd::11)
- by BYAPR11MB2968.namprd11.prod.outlook.com (2603:10b6:a03:90::30)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3174.23; Mon, 13 Jul
- 2020 03:55:02 +0000
-Received: from BYAPR11MB2856.namprd11.prod.outlook.com
- ([fe80::f1d5:60ca:d163:c1b3]) by BYAPR11MB2856.namprd11.prod.outlook.com
- ([fe80::f1d5:60ca:d163:c1b3%3]) with mapi id 15.20.3174.025; Mon, 13 Jul 2020
- 03:55:02 +0000
-From: <Tudor.Ambarus@microchip.com>
-To: <p.yadav@ti.com>, <miquel.raynal@bootlin.com>, <richard@nod.at>,
- <vigneshr@ti.com>, <broonie@kernel.org>, <Nicolas.Ferre@microchip.com>,
- <alexandre.belloni@bootlin.com>, <Ludovic.Desroches@microchip.com>,
- <matthias.bgg@gmail.com>, <michal.simek@xilinx.com>,
- <linux-mtd@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-spi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v10 01/17] spi: spi-mem: allow specifying whether an op is
- DTR or not
-Thread-Topic: [PATCH v10 01/17] spi: spi-mem: allow specifying whether an op
- is DTR or not
-Thread-Index: AQHWWMliL5FGGK8980aliLC/F11sVA==
-Date: Mon, 13 Jul 2020 03:55:02 +0000
-Message-ID: <2702a5cb-b7a0-ce00-f943-08f359c35396@microchip.com>
-References: <20200623183030.26591-1-p.yadav@ti.com>
- <20200623183030.26591-2-p.yadav@ti.com>
-In-Reply-To: <20200623183030.26591-2-p.yadav@ti.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
-authentication-results: ti.com; dkim=none (message not signed)
- header.d=none;ti.com; dmarc=none action=none header.from=microchip.com;
-x-originating-ip: [86.120.242.181]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 046ac775-211f-48d5-bce9-08d826e08558
-x-ms-traffictypediagnostic: BYAPR11MB2968:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR11MB2968739D2626D37F9ADD8223F0600@BYAPR11MB2968.namprd11.prod.outlook.com>
-x-bypassexternaltag: True
-x-ms-oob-tlc-oobclassifiers: OLM:7219;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: nC3z0EEbT3CN+7U98q/SBPLt7Yx2LC5xIG3Xe8XeXodD4c2C1DInZIG9LWdWlS/lPVlwQMbFfx+Z1ErtwIBTGOvkc4CzJQWTYhvEP26MuzptcydYeUYLMSex6K0Iqz7teXtPEEUyFQX1Wik7QgVDrTL85MmJ2+WQpHQ+dhmT88mHogFy5tuw9PBvSZkXvZFrfh2Xodw0cRg/OFmb85KNa7uGNeZJnDnnGhOoKA+Dl/uIatYAJNSARe6oG0vsPkRF8Q3qV/BbutrcIxYMXAyI3DX+rW1El8hLJK2O7ISJgqfZY0+utaYx12CrMnXkK2WDFL0dmSFp7Akg5IQ95N9ZH0RSE4dJ/APtOUbd1e5a52pnWS1628TcU48S5iYnoAJ2Z6MywNufU0xstrzOA4M1Sg==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB2856.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(346002)(376002)(39860400002)(136003)(366004)(396003)(8676002)(2616005)(54906003)(316002)(6486002)(36756003)(6512007)(31686004)(478600001)(8936002)(26005)(186003)(6506007)(7416002)(31696002)(5660300002)(110136005)(53546011)(71200400001)(91956017)(2906002)(4326008)(86362001)(66446008)(66946007)(76116006)(64756008)(66556008)(66476007)(4744005)(921003)(43740500002);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: slg8wc9JaFhj9GAH/SCkPUOYo7ut6GAKrPnrUwEt+DOJe1F9CpqzQjQbebMNPGIeulnlXTDOWaY5E7drFtIyuWdgX03eMj9hMW8J6aO3uNFcp88XOwGbeYr7MrkCkbTlkyoz7F9Htp/lMRqIAYQ7p/pmqpdfF7JDAVMTnXxhHpXRhNUctsQ2HA0hYBZbV5FNQhTMxycH3ww/WtSNBQ8Y/VbPaj1JQIcWFSuI/P1nbQ8YvBQyi6af80yeEXt9lBaK9fPPuKS8n0sb+tsH5BqENetrKnoiouGH2fKw8e1Ajdm+GPLmeo3ilc2bbNb5kvfMGe7c/mGq+xyGsvGYXv+59AeM2wIS/EipqsJUsS9pYW74n2VZqiS3jgCMye/0I/VNwspVc1t8LHABC4RK3R1iga9saHqMO8dZ+0Yp29PLpUtTQ3c1UO3Fy8bQayGmVDFhFrjZLLH6CZKFRaHKUtdsT5tuL8wwFaE4sULwyNMxgTxmoup2Wh6DOwusJf2asEsZ
-Content-ID: <6A062EF7E3CBBE4386549E856BAE6DC3@namprd11.prod.outlook.com>
+ id 1jur9X-00055i-VV
+ for linux-mediatek@lists.infradead.org; Mon, 13 Jul 2020 05:37:24 +0000
+Received: by mail-ed1-x542.google.com with SMTP id bm28so9639102edb.2
+ for <linux-mediatek@lists.infradead.org>; Sun, 12 Jul 2020 22:37:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=JZ9NBtGhK+C5WPxWTTuXRE71ybFquUFtwgSFUSFj0PQ=;
+ b=I5mH74j0x33+O0sPgotD8Ov+x9JEj3hMbYPLIByQegEOBjPBM32K858i9rvObt+Sh/
+ ocvxgOpfDHSlT2f0SKViMGJgJmwBjhMeEx2X7/DyjvXhGxiQnsOogzSeGX8zdJiObqsC
+ QjQN1y7TIoO0kt9LD+VH9awYEsgIzvu62leLI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=JZ9NBtGhK+C5WPxWTTuXRE71ybFquUFtwgSFUSFj0PQ=;
+ b=ldeVg2q6oC6I8XnaLVHe2s5u2VjuML7UPfHNOdq7ZGYurmWdbKTsgGGwlKE0GnYrD8
+ peNPZe+saWlVUSfl3Rhv+yERfieQA65ZyYIkDbnH5pxHVLhK3GJJgCK7xz2qYHjZdDDZ
+ xZGwZOZueR95k1WnZyG77LD6t16mu5jkQHJdpqB3E0+dToVmudyEl+uBnvQ2mQC8NwEH
+ UgFT0Ha3FcvnEF+iUPOrkqCikYfB50DMvkL6pHJZF/NUn3jszkRVZ3QhPplirmGg20gW
+ KuuSFPkf072b9FV9+KR9nD38AfGsKVD6nAfl/kVWKMlp5l6PKVgOu8/tD2wqxQkMLpUK
+ c3sA==
+X-Gm-Message-State: AOAM531O/LRJWTX9lTbmNgpw9lHJS8lediRU3hE4UdLYaEyY4XVsf1oU
+ RM60vlBGc2O+e/kutLY4cchnguS8w0pOqWN8mJBCMQ==
+X-Google-Smtp-Source: ABdhPJyYL23ot1CCgoFjUvfVTWVGWF6IlrkvQ5vJIbi1guEyZhVmenhpfLkf8+Ge8qIDirvrFYO43Tu8N+jHK5yWE5A=
+X-Received: by 2002:a50:d908:: with SMTP id t8mr35579891edj.373.1594618640938; 
+ Sun, 12 Jul 2020 22:37:20 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB2856.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 046ac775-211f-48d5-bce9-08d826e08558
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Jul 2020 03:55:02.3231 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: AkYXWlysxB7LoV8Y0N6uJUA0JTVvVVpq6j69zB2SEEB7VgMTOYr81JMnpTnuMKd6VIeDaMpILGnR1yKcNoDmb479jguof3E7NqaAnYaIe18=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR11MB2968
+References: <20200711064846.16007-1-yong.wu@mediatek.com>
+ <20200711064846.16007-5-yong.wu@mediatek.com>
+In-Reply-To: <20200711064846.16007-5-yong.wu@mediatek.com>
+From: Pi-Hsun Shih <pihsun@chromium.org>
+Date: Mon, 13 Jul 2020 13:36:45 +0800
+Message-ID: <CANdKZ0cGNy7ckzD_NAOV613o62WHdYazRRM-J8jY2-4mx_sNDA@mail.gmail.com>
+Subject: Re: [PATCH 04/21] dt-binding: mediatek: Add binding for mt8192 IOMMU
+ and SMI
+To: Yong Wu <yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200712_235510_021295_C4FA2B00 
-X-CRM114-Status: GOOD (  10.86  )
+X-CRM114-CacheID: sfid-20200713_013724_023061_E83EB3AC 
+X-CRM114-Status: GOOD (  15.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -163,29 +87,113 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: boris.brezillon@collabora.com, nsekhar@ti.com
+Cc: =?UTF-8?B?WW91bGluIFBlaSAo6KO05Y+L5p6XKQ==?= <youlin.pei@mediatek.com>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
+ cui.zhang@mediatek.com, srv_heupstream@mediatek.com, chao.hao@mediatek.com,
+ Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>,
+ open list <linux-kernel@vger.kernel.org>, Evan Green <evgreen@chromium.org>,
+ Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, ming-fan.chen@mediatek.com,
+ anan.sun@mediatek.com, Will Deacon <will@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/23/20 9:30 PM, Pratyush Yadav wrote:
-> diff --git a/drivers/spi/spi-mem.c b/drivers/spi/spi-mem.c
-> index 9a86cc27fcc0..93e255287ab9 100644
-> --- a/drivers/spi/spi-mem.c
-> +++ b/drivers/spi/spi-mem.c
-> @@ -156,6 +156,9 @@ bool spi_mem_default_supports_op(struct spi_mem *mem,
->                                    op->data.dir == SPI_MEM_DATA_OUT))
->                 return false;
-> 
-> +       if (op->cmd.dtr || op->addr.dtr || op->dummy.dtr || op->data.dtr)
-> +               return false;
+On Sat, Jul 11, 2020 at 2:50 PM Yong Wu <yong.wu@mediatek.com> wrote:
+>
+> This patch adds decriptions for mt8192 IOMMU and SMI.
+>
+> mt8192 also is MTK IOMMU gen2 which uses ARM Short-Descriptor translation
+> table format. The M4U-SMI HW diagram is as below:
+>
+>                           EMI
+>                            |
+>                           M4U
+>                            |
+>                       ------------
+>                        SMI Common
+>                       ------------
+>                            |
+>   +-------+------+------+----------------------+-------+
+>   |       |      |      |       ......         |       |
+>   |       |      |      |                      |       |
+> larb0   larb1  larb2  larb4     ......      larb19   larb20
+> disp0   disp1   mdp    vdec                   IPE      IPE
+>
+> All the connections are HW fixed, SW can NOT adjust it.
+>
+> mt8192 M4U support 0~16GB iova range. we preassign different engines
+> into different iova ranges:
+>
+> domain-id  module     iova-range                  larbs
+>    0       disp        0 ~ 4G                      larb0/1
+>    1       vcodec      4G ~ 8G                     larb4/5/7
+>    2       cam/mdp     8G ~ 12G             larb2/9/11/13/14/16/17/18/19/20
+>    3       CCU0    0x4000_0000 ~ 0x43ff_ffff     larb13: port 9/10
+>    4       CCU1    0x4400_0000 ~ 0x47ff_ffff     larb14: port 4/5
+>
+> The iova range for CCU0/1(camera control unit) is HW requirement.
+>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>  .../bindings/iommu/mediatek,iommu.txt         |   8 +-
+>  .../mediatek,smi-common.txt                   |   5 +-
+>  .../memory-controllers/mediatek,smi-larb.txt  |   3 +-
+>  include/dt-bindings/memory/mt8192-larb-port.h | 237 ++++++++++++++++++
+>  4 files changed, 247 insertions(+), 6 deletions(-)
+>  create mode 100644 include/dt-bindings/memory/mt8192-larb-port.h
+> ...
+> diff --git a/include/dt-bindings/memory/mt8192-larb-port.h b/include/dt-bindings/memory/mt8192-larb-port.h
+> new file mode 100644
+> index 000000000000..fbe0d5d50f1c
+> --- /dev/null
+> +++ b/include/dt-bindings/memory/mt8192-larb-port.h
+> ...
+> +/* larb7 */
+> +#define M4U_PORT_L7_VENC_RCPU                  MTK_M4U_DOM_ID(1, 7, 0)
+> +#define M4U_PORT_L7_VENC_REC                   MTK_M4U_DOM_ID(1, 7, 1)
+> +#define M4U_PORT_L7_VENC_BSDMA                 MTK_M4U_DOM_ID(1, 7, 2)
+> +#define M4U_PORT_L7_VENC_SV_COMV               MTK_M4U_DOM_ID(1, 7, 3)
+> +#define M4U_PORT_L7_VENC_RD_COMV               MTK_M4U_DOM_ID(1, 7, 4)
+> +#define M4U_PORT_L7_VENC_CUR_LUMA              MTK_M4U_DOM_ID(1, 7, 5)
+> +#define M4U_PORT_L7_VENC_CUR_CHROMA            MTK_M4U_DOM_ID(1, 7, 6)
+> +#define M4U_PORT_L7_VENC_REF_LUMA              MTK_M4U_DOM_ID(1, 7, 7)
+> +#define M4U_PORT_L7_VENC_REF_CHROMA            MTK_M4U_DOM_ID(1, 7, 8)
+> +#define M4U_PORT_L7_JPGENC_Y_RDMA              MTK_M4U_DOM_ID(1, 7, 9)
+> +#define M4U_PORT_L7_JPGENC_Q_RDMA              MTK_M4U_DOM_ID(1, 7, 10)
+> +#define M4U_PORT_L7_JPGENC_C_TABLE             MTK_M4U_DOM_ID(1, 7, 11)
+> +#define M4U_PORT_L7_JPGENC_BSDMA               MTK_M4U_DOM_ID(1, 7, 12)
+> +#define M4U_PORT_L7_VENC_SUB_R_LUMA            MTK_M4U_DOM_ID(1, 7, 13)
+> +#define M4U_PORT_L7_VENC_SUB_W_LUMA            MTK_M4U_DOM_ID(1, 7, 14)
+> +
 
+Small nit, /* larb8: null */ is missing here.
 
-I would put this check the first thing in the function to exit sooner
-and avoid the rest of the checks, that would become superfluous.
+> +/* larb9 */
+> +#define M4U_PORT_L9_IMG_IMGI_D1                        MTK_M4U_DOM_ID(2, 9, 0)
+> +#define M4U_PORT_L9_IMG_IMGBI_D1               MTK_M4U_DOM_ID(2, 9, 1)
+> +#define M4U_PORT_L9_IMG_DMGI_D1                        MTK_M4U_DOM_ID(2, 9, 2)
+> +#define M4U_PORT_L9_IMG_DEPI_D1                        MTK_M4U_DOM_ID(2, 9, 3)
+> +#define M4U_PORT_L9_IMG_ICE_D1                 MTK_M4U_DOM_ID(2, 9, 4)
+> +#define M4U_PORT_L9_IMG_SMTI_D1                        MTK_M4U_DOM_ID(2, 9, 5)
+> +#define M4U_PORT_L9_IMG_SMTO_D2                        MTK_M4U_DOM_ID(2, 9, 6)
+> +#define M4U_PORT_L9_IMG_SMTO_D1                        MTK_M4U_DOM_ID(2, 9, 7)
+> +#define M4U_PORT_L9_IMG_CRZO_D1                        MTK_M4U_DOM_ID(2, 9, 8)
+> +#define M4U_PORT_L9_IMG_IMG3O_D1               MTK_M4U_DOM_ID(2, 9, 9)
+> +#define M4U_PORT_L9_IMG_VIPI_D1                        MTK_M4U_DOM_ID(2, 9, 10)
+> +#define M4U_PORT_L9_IMG_SMTI_D5                        MTK_M4U_DOM_ID(2, 9, 11)
+> +#define M4U_PORT_L9_IMG_TIMGO_D1               MTK_M4U_DOM_ID(2, 9, 12)
+> +#define M4U_PORT_L9_IMG_UFBC_W0                        MTK_M4U_DOM_ID(2, 9, 13)
+> +#define M4U_PORT_L9_IMG_UFBC_R0                        MTK_M4U_DOM_ID(2, 9, 14)
+> +
+> ...
 
-Anyway this is just a nit.
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
