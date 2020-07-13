@@ -2,78 +2,75 @@ Return-Path: <SRS0=TL3J=AY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EABC3C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 03:13:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D1CEC433E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 03:41:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AB9F02068F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 03:13:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1713120724
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 03:41:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2JOFEIjM";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="KaU0BzgX"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AB9F02068F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BYp/xXCl";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="F39RfS2l"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1713120724
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=kpz0TyqYik08LuQF6KCtkEo87UNqFYYsMBgXkUl2oIg=; b=2JOFEIjMNt5yB2QacGFBQWIW4
-	pWnywkrB856ASI6XQfEsgqUEuqjElnM4W8OUr2wi9oV9/XbaFEpOYixSpp4u8E2O8hjPh6v8y8vbh
-	Otb58Hrb5XLu+HkXQkF1C/OIi/cI1E+FqzEcIt7q1zYocQmpv2GhMDgA0bxIWy80SQyguvwEzp6Wt
-	qKfNgJYS2niFV2ECHyzU3ZhHBby9aOWE7pKX93PsSJd5huCbnzP5g4d8vMsVsganaD2gPWi15Qx8d
-	+1LlKIynrOSKttbkV+x6d3r/HXieCvByLEGxiuIIO5OsMw1DFh6smQd45z21zHxDVsXt6wmqomXop
-	J3hmU6Kog==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DMU1MMt33DI9UkOPx+otlvkW8ZjsbB2G2cFgRpio/0Q=; b=BYp/xXClv/wm95EP1sI4QMjhM0
+	hOVEqGetvuQqJ2PoAwIoU3WPyu1O0u+yCmd+2GcXiJDDa2N2/M7fg0HTT9t6Y3rYob5xkvXSaDIXX
+	kkkz/icpy2T+zBnh3Q7d1jg2euUP4FxxHuDXzn/QXAyqfPYRVS6xs4Aw++OePVoMwTDU0cZI1PmL6
+	eL91xT80/WzIAmOmgKGQYQpfV2cUZi4xuRReUlbB3H9O/tpk7jTxZrafhYJWNRys5Llwjohht44rR
+	1J6iXeL4371xOifxBewl1v575krsmn7mjPMd8W1gkW745r3N1EOq8Rl1/uNCo8PkStr+AtBYAj1fz
+	CLbgoCkA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1juote-0000h7-Uz; Mon, 13 Jul 2020 03:12:51 +0000
+	id 1jupLF-0004uT-7o; Mon, 13 Jul 2020 03:41:21 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1juotb-0000gX-SD; Mon, 13 Jul 2020 03:12:49 +0000
-X-UUID: fffab50abc2949578f65286d748f3262-20200712
+ id 1jupLC-0004tt-Uu; Mon, 13 Jul 2020 03:41:19 +0000
+X-UUID: ba725972ba91496580d3c624e6a5bd1c-20200712
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=2l8vL3u3679ezEkrX69hcehMR167w1K+mBHFYSW1lf4=; 
- b=KaU0BzgX/sQ9LtEB2ql0u2/+kmiV9yue7GHjcxHwF1Pj1hFOhk8cXwCj6RW8S+mvqkDIdwIFFeuCoPgGcI6n6iFNy196fyu+Gwt3l0sljMjTU+dQOcl0J0+eXIr9ISf7hFNkESfDClI71SNd2K/ha0fKtoSFGAQp9nBFWx9Q6M0=;
-X-UUID: fffab50abc2949578f65286d748f3262-20200712
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=JuW3jP9J1lIS5V8IiLWPSVxE4HCb/Oj2hKarwYDEQFg=; 
+ b=F39RfS2lfJlj5/DOJsZj+DHVxj3HTSsLROaSSuBi7UWZUekcJT4E7Y+irMlgdN6aO0s7OSpVXIt3I0tBG06qyFllSZad8TQgOXiDXOT9ARLQSskcdtYhypuYKYLabLBx1jRAFRhIjsO8+XMQbXe2MJEkBZWXBeCp2I0nAysh+yg=;
+X-UUID: ba725972ba91496580d3c624e6a5bd1c-20200712
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 947349880; Sun, 12 Jul 2020 19:12:38 -0800
-Received: from MTKMBS33DR.mediatek.inc (172.27.6.106) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 12 Jul 2020 20:07:03 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS33DR.mediatek.inc
- (172.27.6.106) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 13 Jul 2020 11:06:58 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 13 Jul 2020 11:07:00 +0800
-Message-ID: <1594609574.23885.35.camel@mhfsdcap03>
-Subject: Re: [PATCH] usb: gadget: bdc: use readl_poll_timeout() to simplify
- code
+ with ESMTP id 71386034; Sun, 12 Jul 2020 19:41:11 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 12 Jul 2020 20:31:13 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 13 Jul 2020 11:31:11 +0800
+Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 13 Jul 2020 11:31:09 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Stephen Boyd <swboyd@chromium.org>
-Date: Mon, 13 Jul 2020 11:06:14 +0800
-In-Reply-To: <159442422281.1987609.11864731950347548589@swboyd.mtv.corp.google.com>
-References: <1594351856-876-1-git-send-email-chunfeng.yun@mediatek.com>
- <159442422281.1987609.11864731950347548589@swboyd.mtv.corp.google.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+To: Felipe Balbi <balbi@kernel.org>, Florian Fainelli <f.fainelli@gmail.com>
+Subject: [v2 PATCH] usb: gadget: bdc: use readl_poll_timeout() to simplify code
+Date: Mon, 13 Jul 2020 11:30:17 +0800
+Message-ID: <1594611017-4535-1-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 5ED3BABE978817700309295AA67CE6BCA2D7FAEDCB2EABD67461765368135CB92000:8
+X-TM-SNTS-SMTP: 68E0EF0317ACCA01D29A26B236ED2441F27383EAF5EEF084C4683CE8F0DE3D5E2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200712_231248_102507_C2F0301F 
-X-CRM114-Status: GOOD (  15.89  )
+X-CRM114-CacheID: sfid-20200712_234119_188486_BA160AF2 
+X-CRM114-Status: GOOD (  13.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,9 +82,9 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Felipe Balbi <balbi@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
  YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org,
+ Stephen Boyd <swboyd@chromium.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
  linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
@@ -95,57 +92,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-07-10 at 16:37 -0700, Stephen Boyd wrote:
-> Quoting Chunfeng Yun (2020-07-09 20:30:56)
-> > diff --git a/drivers/usb/gadget/udc/bdc/bdc_core.c b/drivers/usb/gadget/udc/bdc/bdc_core.c
-> > index 02a3a77..fa173de 100644
-> > --- a/drivers/usb/gadget/udc/bdc/bdc_core.c
-> > +++ b/drivers/usb/gadget/udc/bdc/bdc_core.c
-> > @@ -32,21 +33,14 @@
-> >  static int poll_oip(struct bdc *bdc, int usec)
-> 
-> Can we change usec to unsigned? Not sure why negative time is important.
-Yes, it's sensible to use unsigned.
+Use readl_poll_timeout() to poll register status
 
-> 
-> >  {
-> >         u32 status;
-> > -       /* Poll till STS!= OIP */
-> > -       while (usec) {
-> > -               status = bdc_readl(bdc->regs, BDC_BDCSC);
-> > -               if (BDC_CSTS(status) != BDC_OIP) {
-> > -                       dev_dbg(bdc->dev,
-> > -                               "poll_oip complete status=%d",
-> > -                               BDC_CSTS(status));
-> 
-> This debug message was lost in the conversion. Any reason?
-No, will add it back
-> 
-> > -                       return 0;
-> > -               }
-> > -               udelay(10);
-> > -               usec -= 10;
-> > -       }
-> > -       dev_err(bdc->dev, "Err: operation timedout BDCSC: 0x%08x\n", status);
-> > +       int ret;
-> >  
-> > -       return -ETIMEDOUT;
-> > +       ret = readl_poll_timeout(bdc->regs + BDC_BDCSC, status,
-> > +               (BDC_CSTS(status) != BDC_OIP), 10, usec);
-> > +       if (ret)
-> > +               dev_err(bdc->dev, "Err: operation timedout BDCSC: 0x%08x\n", status);
-> 
-> Please drop "Err:" as we have kernel log levels (i.e. dev_err() used
-> here) for that.
-Ok
+Cc: Florian Fainelli <f.fainelli@gmail.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+v2 changes, suggested by Stephen:
+  1. use unsigned int instead of int for @usec parameter
+  2. add dev_log() back
+  3. drop "Err" in error log
+---
+ drivers/usb/gadget/udc/bdc/bdc_core.c | 26 +++++++++++---------------
+ 1 file changed, 11 insertions(+), 15 deletions(-)
 
-Thanks
-
-> 
-> > +
-> > +       return ret;
-> >  }
-
+diff --git a/drivers/usb/gadget/udc/bdc/bdc_core.c b/drivers/usb/gadget/udc/bdc/bdc_core.c
+index 02a3a77..53dccb1 100644
+--- a/drivers/usb/gadget/udc/bdc/bdc_core.c
++++ b/drivers/usb/gadget/udc/bdc/bdc_core.c
+@@ -12,6 +12,7 @@
+ #include <linux/spinlock.h>
+ #include <linux/platform_device.h>
+ #include <linux/interrupt.h>
++#include <linux/iopoll.h>
+ #include <linux/ioport.h>
+ #include <linux/io.h>
+ #include <linux/list.h>
+@@ -29,24 +30,19 @@
+ #include "bdc_dbg.h"
+ 
+ /* Poll till controller status is not OIP */
+-static int poll_oip(struct bdc *bdc, int usec)
++static int poll_oip(struct bdc *bdc, u32 usec)
+ {
+ 	u32 status;
+-	/* Poll till STS!= OIP */
+-	while (usec) {
+-		status = bdc_readl(bdc->regs, BDC_BDCSC);
+-		if (BDC_CSTS(status) != BDC_OIP) {
+-			dev_dbg(bdc->dev,
+-				"poll_oip complete status=%d",
+-				BDC_CSTS(status));
+-			return 0;
+-		}
+-		udelay(10);
+-		usec -= 10;
+-	}
+-	dev_err(bdc->dev, "Err: operation timedout BDCSC: 0x%08x\n", status);
++	int ret;
+ 
+-	return -ETIMEDOUT;
++	ret = readl_poll_timeout(bdc->regs + BDC_BDCSC, status,
++		(BDC_CSTS(status) != BDC_OIP), 10, usec);
++	if (ret)
++		dev_err(bdc->dev, "operation timedout BDCSC: 0x%08x\n", status);
++	else
++		dev_dbg(bdc->dev, "%s complete status=%d", __func__, BDC_CSTS(status));
++
++	return ret;
+ }
+ 
+ /* Stop the BDC controller */
+-- 
+1.9.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
