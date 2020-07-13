@@ -2,156 +2,89 @@ Return-Path: <SRS0=TL3J=AY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BCEBCC433E5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 09:33:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AB983C433E3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 09:39:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8DBF420758
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 09:33:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 77D482075B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2020 09:39:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="w5tbR5lZ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=microchip.com header.i=@microchip.com header.b="owjKOm2F";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=microchiptechnology.onmicrosoft.com header.i=@microchiptechnology.onmicrosoft.com header.b="Nauv0QAO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8DBF420758
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=microchip.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Jz1ydTOI";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="yh9Pm9P9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 77D482075B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rQZluF46BhiAdzcxQ44qfQvZVupohuJ/vRSiUfR3T90=; b=w5tbR5lZu3VfQBHkFWQnqAd9m
-	6vj0TUllaWsH2qgk9vGG0VAfu4lDDIVA3gHnel9dfPQqNJ0xjSSOQYrLXlSYy230kBP3wDJWwti30
-	J/fI4kATes9eh/fpTGj9N0RkGgjRS2fRxFqwxHgkXa05BK4FgQlwweQRiNNpW+rwQUx6MaDYLKP5s
-	PzM/24G8AV+60NKDxCFh5XMHRFh80NFah86uzQlo5iSXNcO7jFQINMaU5+y9iEubTdjt6CgCrX5Ok
-	Fi4agOnz9pHdVveAqxI8b2fec/V1gyz9PEJQE6xLmchAndmPNlEH3jz7E19MAoipWigPrycLO1lI0
-	dEE/rE2/g==;
+	 bh=rpdwdN5u2+HrCnD++mW65fEYNznmrniNZm1s0S4jqYk=; b=Jz1ydTOIK4N2wjkedq34nYWhp
+	f4N8pHUVD2mi43DVXshoKXe0AN+j/nTK+LHeg9EOCd6GP2BE/MQXum4pjXjQM1Rda//Nu00fXwo4L
+	+fxWkOQhIu63wiSNoFiT20R1ptplmu6bZlXogPjmaMCiKxfq05uIJVP3w32YpGLsec3k+alHSflFS
+	gJnQJ2EJTJ5Z1efQMYpuidqDM9hF22+Q9QVAOUz0BuHFcJlFkfOroHbldU2XkRN/lGwsx5+nm+mkU
+	pbMbvz6IH6OhnZCkGYQhsCtGUDYmw6VYZPZLfCQFm32DiLhWrXrulvIwkBPMt4rQu8f/ltFRmJZ9Z
+	mgzLYHXaQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1juuqE-0008K0-Op; Mon, 13 Jul 2020 09:33:42 +0000
-Received: from esa5.microchip.iphmx.com ([216.71.150.166])
+	id 1juuvf-00010n-Ot; Mon, 13 Jul 2020 09:39:19 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1juuq8-0008I4-9Q; Mon, 13 Jul 2020 09:33:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1594632817; x=1626168817;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=tzrKYV0RnDHglnWsm4gldpC30T80bQPxTEiXyMr7Xvg=;
- b=owjKOm2F3veaerlWXmIuKwtABl+kCcBWJOZe5W2cnQwidabRGwzxFMtr
- is0ebY8QD9zW2vR1xQ0XLBalY4MmyCv7ZbtZ/or98JxENhmkZF7S0xMlr
- kLUueS7AAMTM5jQOZ10LhPa0+64m0tL7VUrZ3Iqwxdjjav+SWibi0zsav
- FhJHgL1orKzTNMSau4HXiSMIc3mWt8eHhcFikkj2xEz7bw+WkJ7R+xE7m
- pmR5hIwQMKohWGxVJgOVKMmWRd9bzj2gTEW7MfosZg3aT23PW+0WF6ObZ
- tJx0nShxT2zClpDMT913aD+nwADaJKBi7lcUy5PbXbC/9TLk+9zIKX7Wg g==;
-IronPort-SDR: onRjiQwPJPWTq5PBeXFGckRfXmDnlwAKxM4weWGxUDI0isHUwOXwvFTfKMGE+bZlhrjdX7KUz7
- 8iR5+vqCg+GzIymx6B5WKR2QPwe1i/qVczQAxjxWGbjDwkDnhdVmCvKyo51wLaWY9EQb/RAXUE
- FfCp3qaCM7oB24k3Z1Z8jAsVDs8beRGY7985rydP23YmuO1PY92xeC2xFxoWwaGVWtPiiOsKvn
- bT6f0vOEo7GHgs2OzmIj7kdZSNvveamdoNoBSPN0WhBQmV6bUutGl0rYJ1ONr+FZ3CEkIeUETx
- zRs=
-X-IronPort-AV: E=Sophos;i="5.75,347,1589266800"; d="scan'208";a="82872495"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 13 Jul 2020 02:33:35 -0700
-Received: from chn-vm-ex02.mchp-main.com (10.10.85.144) by
- chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1979.3; Mon, 13 Jul 2020 02:33:04 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.72) with Microsoft SMTP Server
- (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3 via Frontend
- Transport; Mon, 13 Jul 2020 02:33:02 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=RJxU+lfmAc/1fyaq4B98DGwyohdtdocxKyPQqhLeWZJiP8+zbUyJ9twKh9/LAthtQfN058cf3BdQcUsqciIaI2NuBCy/LeCNJMyMYNT4mnrxvxgejK/FRwprKwTkNtm+hTl1x5RmZxkE27PrzfdcTT4LFfj17+WYVnghTvhVf3nxK6BjurLLWM45/iBFpJWzhVN0TtU4X8AWOc0Czu/DXJme6cw3A2XvgEp2Cqj7zHYzxKUlvfYBdcViwklrF/4pOCgZqD5bJuUpibuC+hqbeYkPvp5p04Rs5gm5167kpBkOWoQIcm2X7LcAIQg9zyTSoYYy8hUnfAtRFCHiZDXiXg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tzrKYV0RnDHglnWsm4gldpC30T80bQPxTEiXyMr7Xvg=;
- b=aXRWlRKhwWWmG84EapTfqYeoxVrwReaQv5m1u27H2Fs2S8HyPB0H0oCY3cjxuWOP9epcW8vWOkBKkXfTydvsEA+t6jn0NoTd1LDG5DvzzHVc2T7JPb62nc00y/FCPr1C6KBmUJNxkJq8sGsHJ3yo3yjv/ewXuol5Uu+Gfv8ZSnarBcim75oYfR5nK99EnKMQkKJlQHijWuBViH/MzREhGu/fxrt4bSqnsW9lNS4cu+PXBelipBEv9XLyfhGphhfc6q/GXplFX9MUzEWkYVPSQWgTEui69p75FTSrPpJ0g8mUOq33FKJw6tMjaZDSCwrjPaP8jk35obyPdaglo4wjjQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tzrKYV0RnDHglnWsm4gldpC30T80bQPxTEiXyMr7Xvg=;
- b=Nauv0QAO3fRSvI++fhuqde273zzS5UGFQu4GQK5NCIbTkqVIvQYR9A+s/d9enijT2NhqJ1U3k0jUH1w1kgY5RiCBlYvhVagHmfukx7tmHU5Q71O8jubKLhzA0b7ufBnj7gvRETiZy3TnXPXkKGAPklgn5B6GJptAkFyN4o7cccs=
-Received: from DM6PR11MB2858.namprd11.prod.outlook.com (2603:10b6:5:bd::19) by
- DM6PR11MB3868.namprd11.prod.outlook.com (2603:10b6:5:19f::13) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3174.23; Mon, 13 Jul 2020 09:33:30 +0000
-Received: from DM6PR11MB2858.namprd11.prod.outlook.com
- ([fe80::5103:7e0:4953:2aa0]) by DM6PR11MB2858.namprd11.prod.outlook.com
- ([fe80::5103:7e0:4953:2aa0%7]) with mapi id 15.20.3174.025; Mon, 13 Jul 2020
- 09:33:30 +0000
-From: <Tudor.Ambarus@microchip.com>
-To: <p.yadav@ti.com>, <miquel.raynal@bootlin.com>, <richard@nod.at>,
- <vigneshr@ti.com>, <broonie@kernel.org>, <Nicolas.Ferre@microchip.com>,
- <alexandre.belloni@bootlin.com>, <Ludovic.Desroches@microchip.com>,
- <matthias.bgg@gmail.com>, <michal.simek@xilinx.com>,
- <linux-mtd@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-spi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v10 11/17] mtd: spi-nor: sfdp: do not make invalid quad
- enable fatal
-Thread-Topic: [PATCH v10 11/17] mtd: spi-nor: sfdp: do not make invalid quad
- enable fatal
-Thread-Index: AQHWWPirkap/N5S5zkOx47e9JB4BNQ==
-Date: Mon, 13 Jul 2020 09:33:30 +0000
-Message-ID: <33513a5d-fbf2-7321-e46b-2f2ba8b337de@microchip.com>
-References: <20200623183030.26591-1-p.yadav@ti.com>
- <20200623183030.26591-12-p.yadav@ti.com>
-In-Reply-To: <20200623183030.26591-12-p.yadav@ti.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
-authentication-results: ti.com; dkim=none (message not signed)
- header.d=none;ti.com; dmarc=none action=none header.from=microchip.com;
-x-originating-ip: [86.120.242.181]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: e9685040-a473-4729-3280-08d8270fcddf
-x-ms-traffictypediagnostic: DM6PR11MB3868:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM6PR11MB38683FE6872058EE1C373E91F0600@DM6PR11MB3868.namprd11.prod.outlook.com>
-x-bypassexternaltag: True
-x-ms-oob-tlc-oobclassifiers: OLM:6430;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: ZS0BlmH84NsPMeJ4xgXWllNN+5t8qUgTOOvH5D5uWH1QSP5nfENOSsMpkUcbUv9O9GV1/qzSKBSdN23mGCZFWA0U1TeFVfOz3gXGmMEt3RPbEaACkEgogGqGQI1Oi2DQ/wB6pYmn4BjGcRsEYrIdomT8UVIwy94l3xZlr9xKKGpqoEpwR6YrSQp45hxeJrKWz1mv1M4GgKMFrhyczcMxYX6OlObwdb0J5eEvx7XsfyjprwRPWqqw97jI0BpSL2mLwE0IgMS25LUKW/1CdhvLIMCFLkQHyEM5vYPqy7f6Gdb/ufYI8c4e3ot2vWWQ161LoBK17YOyEwD2CEufNnSFmXAlNu9dvwCoixwzmT3s6QnZ2cMxRSYoFoPxXFo5Q6rqGNqQ3h34TlEdODdtDtjl6w==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB2858.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(136003)(376002)(346002)(366004)(396003)(39860400002)(53546011)(2616005)(186003)(26005)(6506007)(83380400001)(6512007)(4326008)(316002)(31696002)(6486002)(7416002)(86362001)(110136005)(54906003)(66946007)(66476007)(66556008)(64756008)(76116006)(91956017)(66446008)(36756003)(4744005)(31686004)(2906002)(5660300002)(8676002)(8936002)(478600001)(71200400001)(921003)(43740500002);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: WGBeH3vCn8M/MEUooKYSsILZdffasnZ2p+Tj3XB+rz5yfPAWzBJkXQ2EUCQNRIgCQP1lwDh0PsGX+HbJ5Xz803W7QrTF6fXg0MXdLUiFXqPm8b7zD0oUPsxPz+/o2r+5nYj11t8dBfEtHSSdP3EqkrirFiC/7rFR7s2yX+KQHwaLm10rCwrKsUJDgs9c4fQXq6VM/zzP5RNPMdSvlIjp0fuW3plFoLZK3azm/dcHyWyW5wPEuU4q3hOgj9I1T2LAH4nfc9Y/cK/alUAKKuqRfNbNq1iXbwTskMsUP6+NjnxcEWCkxw4UYJGXvf/RIHAi5E1T6h9Ag/K+x2U4b+cTQt8xexNW2AtpsRrxcQMcbQobPp/KwytqDsxE5vTxDpONXNliwWbOqtdoR+P18kkBQJNZiln/EHbsSEbjhnKVGyzDKut4oUQcPNMfOnJLM+7/zyQvEMXMUyjCcQ1Kpb+u9cr6pyJY7TeSm0c0t6QHtw+t/csphIz1iihrSyxrsRij
-Content-ID: <FDB2BA490C737C46B6A72E3285091DB0@namprd11.prod.outlook.com>
+ id 1juuvc-0000zF-Uu
+ for linux-mediatek@lists.infradead.org; Mon, 13 Jul 2020 09:39:17 +0000
+Received: by mail-pf1-x443.google.com with SMTP id 1so5755722pfn.9
+ for <linux-mediatek@lists.infradead.org>; Mon, 13 Jul 2020 02:39:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=skXD+wsQgKq4LXd9xCnrPvK7KZqTAPrAbDnvMV4BILs=;
+ b=yh9Pm9P9Gp+QKQfxeQtuY1E1Hp14L5t3EfCVWNCaO52OM6gUUeJFFQTyK8rEyutk0H
+ BMoHaR7zBcRyTShlru8V/TjqVRzrZV4+B5MeBPC/AGQ5A+jfZAy8UEt43EkfDOpZu4V9
+ 01nPZo5Akte8gAWlUJLgaa0gem1j28CIN8cD49/resMQr46y6OMYdUiK3whKdoa5Uvy5
+ +y3ZSH/GpTj9Dn49PXWKm4+8ovC5Z15loSyOKMRDKhb71xCepwG0+P+RLVfWt5RjYGZr
+ eyLaucHvluqtxjaz0JZV9dp8AXvH8VzJNZTRd03H+RiGwVDyP5C9sdB0gGbOaJ4/YDFw
+ iing==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=skXD+wsQgKq4LXd9xCnrPvK7KZqTAPrAbDnvMV4BILs=;
+ b=GDx3uiWn0xrC9ubUn8Dcs141IC87eNzygY0PHWAPuRWpU/e4A1YLzXLC2W2E53nIyk
+ W3dJUxVCaaxsAQNBREaWXE6DGqkqIc9CQ+pvoR8fZHg/eWfrWeXUe8dFgtIn8MMiWLkO
+ 1OjidQY286W2gTQZ0drbP+C6WXyt1mFxr94WkyElc7AEolALA95ONdg0AbbK+IFlefY+
+ /gsVaDDuZ4Chs85zqz/MQq2Nhg6P/m8lpLON2YH5aEhR84y7sqbkBkPOL9K2Zb1N1DME
+ 5FcVoQQLZiowtiQmJmP1z9awxJlR6hlb7d9YaBjT3IdinvGIlYuJ22dyLJ1ptdb562ks
+ C6bw==
+X-Gm-Message-State: AOAM532SEBa64XLcW/8feWBvzMpvZf2J9z1ZuokMZJWdyefTzqqLboHa
+ y8kOAC5qp78uBAwRZRuMegT1+g==
+X-Google-Smtp-Source: ABdhPJyl0zjLReOR/+Xr6FqTuxKWo4RJ4CVE+9dKiMkEDH87gGW8e4TOm3obgjWYwEX/7dZWcfxkkA==
+X-Received: by 2002:a63:3d01:: with SMTP id k1mr65845600pga.71.1594633152842; 
+ Mon, 13 Jul 2020 02:39:12 -0700 (PDT)
+Received: from localhost ([122.172.34.142])
+ by smtp.gmail.com with ESMTPSA id i13sm14062787pjd.33.2020.07.13.02.39.11
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 13 Jul 2020 02:39:11 -0700 (PDT)
+Date: Mon, 13 Jul 2020 15:09:09 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
+Subject: Re: [PATCH v7 2/8] cpufreq: mediatek: Enable clock and regulator
+Message-ID: <20200713093909.676v7wxjzsz4vbxv@vireshk-i7>
+References: <1594348284-14199-1-git-send-email-andrew-sh.cheng@mediatek.com>
+ <1594348284-14199-3-git-send-email-andrew-sh.cheng@mediatek.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB2858.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e9685040-a473-4729-3280-08d8270fcddf
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Jul 2020 09:33:30.3875 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ClnI+K6aD5yrpqa/r5zWazCCxRb8r+2JS+dWNECsUWj1bcZIt8utoCWhtolLbLxP/Vp6gReUSoNO5Uyb2rrDzGd78KxA2wXn6sC9pJxUdzE=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3868
+Content-Disposition: inline
+In-Reply-To: <1594348284-14199-3-git-send-email-andrew-sh.cheng@mediatek.com>
+User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200713_053336_595166_F45320B5 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20200713_053917_041254_6D820F5B 
+X-CRM114-Status: GOOD (  19.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -163,27 +96,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: boris.brezillon@collabora.com, nsekhar@ti.com
+Cc: Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
+ srv_heupstream@mediatek.com, linux-pm@vger.kernel.org,
+ Stephen Boyd <sboyd@kernel.org>, Mark Brown <broonie@kernel.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, Liam Girdwood <lgirdwood@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
+ Chanwoo Choi <cw00.choi@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/23/20 9:30 PM, Pratyush Yadav wrote:
-> The Micron MT35XU512ABA flash does not support the quad enable bit. But
-> instead of programming the Quad Enable Require field to 000b ("Device
-> does not have a QE bit"), it is programmed to 111b ("Reserved").
+On 10-07-20, 10:31, Andrew-sh.Cheng wrote:
+> From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
 > 
-> While this is technically incorrect, it is not reason enough to abort
-> BFPT parsing. Instead, continue BFPT parsing and let flashes set it in
-> their fixup hooks.
+> Need to enable regulator,
+> so that the max/min requested value will be recorded
+> even it is not applied right away.
 > 
-> Signed-off-by: Pratyush Yadav <p.yadav@ti.com>
-> ---
->  drivers/mtd/spi-nor/sfdp.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+> Intermediate clock is not always enabled by ccf in different projects,
+> so cpufreq should enable it by itself.
+> 
+> Change-Id: I9f4c8b1ea793794f5f9cdc65427daad1393f5df8
 
-Applied, thanks!
+You are on V7 right now, these should have been gone long back.
+
+> Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+> ---
+>  drivers/cpufreq/mediatek-cpufreq.c | 33 +++++++++++++++++++++++++++++----
+>  1 file changed, 29 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+> index 0c98dd08273d..4b479c110cc9 100644
+> --- a/drivers/cpufreq/mediatek-cpufreq.c
+> +++ b/drivers/cpufreq/mediatek-cpufreq.c
+> @@ -350,6 +350,11 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+>  		ret = PTR_ERR(proc_reg);
+>  		goto out_free_resources;
+>  	}
+> +	ret = regulator_enable(proc_reg);
+> +	if (ret) {
+> +		pr_warn("enable vproc for cpu%d fail\n", cpu);
+> +		goto out_free_resources;
+> +	}
+
+This is already done by the OPP core now.
+
+-- 
+viresh
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
