@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1AFC5C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:00:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DFA41C433E1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:00:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D6FA92145D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:00:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AF4A22145D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:00:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="M/FdRjwK";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ivXEaD7a"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D6FA92145D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="0I2FRD7N";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Ra50kKpX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF4A22145D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,52 +27,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1JCbCbiW7WuwtfC6F+yCunuxTbrYV6Fbf4QhMTe3E20=; b=M/FdRjwKubuVU7Re2tsz4c9nY
-	2IDwa111LIgUjeGBuTejzDgvRyuxq6ILbUi7nBWoUImiNk9cE3hVnX8VrUbgAFh6x72gYNKZdQOUv
-	7d5ag75SXaFdbONt1MTV0A+p08kcuxqst6Z7kt9QQ0RYbnD7uuvJIgdXXTVFyEDJ7rKsw2jxACrpi
-	Jw94Vnmm9/saTLuZJhsUCQUS8paV/XsaQXhaLiBZh2kfCd3YVpS9IWpri0HRM8GZCQR6UE2RHst0H
-	T8kPEiimpJcxqkmuA3dy8SMRGU77kIDBMqUg+nT7pOQtCWdm3BZ2fJzKWPPIVkaDDZvv8+RYidsDW
-	Xm/u6xeGg==;
+	 bh=s6Z+u0z7MAxDOk9vmSPKQe+HBZbgVYpjqqlJfEhZWTY=; b=0I2FRD7NgHjjTf0N8F0BBitBk
+	nwhY+uNNSUCvJhWCLfB16KH7hNhmildz3bi3nVAk69695oVB1Eqs2VCkgNbsH7Z3iMIoqorKi7zfR
+	MU/uOUdjYCccXoNRGbpoKkWt5PbY/ebw2MlqWzhi85WuUIL8qGVLwOIxed+4u9C6I12C0jxkSDLeS
+	SkEADmzzg1FS8VhX3PBaa/eWyIJZK/lHrID8Ooz2Ir1uA7vZTkhI7xUmGQet/ZqU/JpLZt3BDpoK9
+	KvkAuk6v6If5S0Nk0Ko8xludbtK/Lzb55o6UE1JvOmGi+WdujsaE4BjHw+cwp5FYKvgyjLJfaZtlP
+	WyArEeo3g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jvGnu-00005Q-PS; Tue, 14 Jul 2020 09:00:46 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jvGnz-00007M-6N; Tue, 14 Jul 2020 09:00:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jvGnr-0008Uf-T5; Tue, 14 Jul 2020 09:00:45 +0000
-X-UUID: 0c3066f050704206b6c65c2aa5b8aa9d-20200714
+ id 1jvGns-0008Uo-OW; Tue, 14 Jul 2020 09:00:46 +0000
+X-UUID: d6b1242be01a4e30abf89b1fbbc09a35-20200714
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=63syqxkiDARXC/86txfpZSfMUSpsIh5DHuOLV2ioXWM=; 
- b=ivXEaD7aTGwtFAhsFM5/gCE6kbAqpli87c0Nmut0ygybOJLQNneKOo28pRNR4+vLQ/yloEh7q4nEkJ5oIBTYm/xLVwSsIVlltIYIQVYmvOvR2Bw0j6SsyePFeiFv3JLm1lybjaVV1LeYNp1wwCqJsTGjw0IOJrV7XPxAYoQ9yPc=;
-X-UUID: 0c3066f050704206b6c65c2aa5b8aa9d-20200714
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=cYKlO6AjvO0zN+B/+SEdBEWj9IJvdlm+7ddbRfto77Y=; 
+ b=Ra50kKpXthTrR5Vf0OF+HTVT8QGMW95F45+3XW06/oHriYhsrbMGvjYs2AmvUXho44P/X7TCkewYVO93gCIrugNgJ/iH5Lnn6BSH8GHVL+FsNlbbIH6W00mBhUzEHwtuuD97yxsKfexblk4XczYpz3TFerHn4M/VjBAL612ytSI=;
+X-UUID: d6b1242be01a4e30abf89b1fbbc09a35-20200714
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1324457927; Tue, 14 Jul 2020 01:00:40 -0800
+ with ESMTP id 767025730; Tue, 14 Jul 2020 01:00:42 -0800
 Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Jul 2020 01:50:43 -0700
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 14 Jul 2020 01:50:38 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Jul 2020 16:50:38 +0800
+ 15.0.1497.2; Tue, 14 Jul 2020 16:50:35 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 14 Jul 2020 16:50:37 +0800
+ Transport; Tue, 14 Jul 2020 16:50:34 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Felipe Balbi <balbi@kernel.org>, Florian Fainelli <f.fainelli@gmail.com>
-Subject: [PATCH 7/9] usb: gadget: bdc: avoid precedence issues
-Date: Tue, 14 Jul 2020 16:48:52 +0800
-Message-ID: <1594716535-24699-7-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 4/9] usb: gadget: bdc: remove bdc_ep_set_halt() declaration
+Date: Tue, 14 Jul 2020 16:48:49 +0800
+Message-ID: <1594716535-24699-4-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1594716535-24699-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1594716535-24699-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 234CA84F4DA467BBD83226F9F4C2428C3E8ACA56B98815F818F14044E06F47A72000:8
+X-TM-SNTS-SMTP: 391F70AA9E9D925F66C2730FE470DD6FE7637FC7791DAF12E1E56ADCEF5E116B2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200714_050044_183110_AC7CE1E4 
-X-CRM114-Status: UNSURE (   9.19  )
+X-CRM114-CacheID: sfid-20200714_050045_000449_EA12CE28 
+X-CRM114-Status: UNSURE (   8.86  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -95,71 +95,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add () around macro argument to avoid precedence issues
+No definition for bdc_ep_set_halt(), so remove it.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/gadget/udc/bdc/bdc.h | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ drivers/usb/gadget/udc/bdc/bdc_cmd.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/usb/gadget/udc/bdc/bdc.h b/drivers/usb/gadget/udc/bdc/bdc.h
-index 6940934..7b14af1 100644
---- a/drivers/usb/gadget/udc/bdc/bdc.h
-+++ b/drivers/usb/gadget/udc/bdc/bdc.h
-@@ -86,20 +86,20 @@
- #define BDC_EPSTS5	0x74
- #define BDC_EPSTS6	0x78
- #define BDC_EPSTS7	0x7c
--#define BDC_SRRBAL(n)	(0x200 + (n * 0x10))
--#define BDC_SRRBAH(n)	(0x204 + (n * 0x10))
--#define BDC_SRRINT(n)	(0x208 + (n * 0x10))
--#define BDC_INTCTLS(n)	(0x20c + (n * 0x10))
-+#define BDC_SRRBAL(n)	(0x200 + ((n) * 0x10))
-+#define BDC_SRRBAH(n)	(0x204 + ((n) * 0x10))
-+#define BDC_SRRINT(n)	(0x208 + ((n) * 0x10))
-+#define BDC_INTCTLS(n)	(0x20c + ((n) * 0x10))
- 
- /* Extended capability regs */
- #define BDC_FSCNOC	0xcd4
- #define BDC_FSCNIC	0xce4
--#define NUM_NCS(p)	(p >> 28)
-+#define NUM_NCS(p)	((p) >> 28)
- 
- /* Register bit fields and Masks */
- /* BDC Configuration 0 */
- #define BDC_PGS(p)	(((p) & (0x7 << 8)) >> 8)
--#define BDC_SPB(p)	(p & 0x7)
-+#define BDC_SPB(p)	((p) & 0x7)
- 
- /* BDC Capability1 */
- #define BDC_P64		(1 << 0)
-@@ -113,7 +113,7 @@
- #define BDC_CMD_DVC	0x1
- #define BDC_CMD_CWS		(0x1 << 5)
- #define BDC_CMD_CST(p)		(((p) & (0xf << 6)) >> 6)
--#define BDC_CMD_EPN(p)		((p & 0x1f) << 10)
-+#define BDC_CMD_EPN(p)		(((p) & 0x1f) << 10)
- #define BDC_SUB_CMD_ADD		(0x1 << 17)
- #define BDC_SUB_CMD_FWK		(0x4 << 17)
- /* Reset sequence number */
-@@ -163,7 +163,7 @@
- #define BDC_SPEED_HS	0x3
- #define BDC_SPEED_SS	0x4
- 
--#define BDC_PST(p)	(p & 0xf)
-+#define BDC_PST(p)	((p) & 0xf)
- #define BDC_PST_MASK	0xf
- 
- /* USPPMS */
-@@ -228,7 +228,7 @@
- /* status report defines */
- #define SR_XSF		0
- #define SR_USPC		4
--#define SR_BD_LEN(p)    (p & 0xffffff)
-+#define SR_BD_LEN(p)    ((p) & 0xffffff)
- 
- #define XSF_SUCC	0x1
- #define XSF_SHORT	0x3
+diff --git a/drivers/usb/gadget/udc/bdc/bdc_cmd.h b/drivers/usb/gadget/udc/bdc/bdc_cmd.h
+index e481d36..a3a6dbd 100644
+--- a/drivers/usb/gadget/udc/bdc/bdc_cmd.h
++++ b/drivers/usb/gadget/udc/bdc/bdc_cmd.h
+@@ -16,7 +16,6 @@
+ int bdc_stop_ep(struct bdc *, int);
+ int bdc_ep_set_stall(struct bdc *, int);
+ int bdc_ep_clear_stall(struct bdc *, int);
+-int bdc_ep_set_halt(struct bdc_ep *, u32, int);
+ int bdc_ep_bla(struct bdc *, struct bdc_ep *, dma_addr_t);
+ int bdc_function_wake(struct bdc*, u8);
+ int bdc_function_wake_fh(struct bdc*, u8);
 -- 
 1.9.1
 _______________________________________________
