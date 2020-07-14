@@ -2,80 +2,79 @@ Return-Path: <SRS0=0yQJ=AZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27A73C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:34:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1B80EC433E2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:36:00 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BE8CA212CC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:34:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7B042217A0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:35:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="04B+gfUL";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="pK6hzCTb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE8CA212CC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hgRGcY3l";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dDwo+0Xw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B042217A0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UsVHR8BqSlN5FGGtLVCRt+MgCMtj93y6mTdV9qDFKI8=; b=04B+gfULaagaUXdx8nh9GU9zZ
-	uwIPK4BkTux+97FEYzThv6Z5IxGBVGZtqdX4Io35SKzgmkvnCCDYMi79u9Ca+wT+2Ma1DIANVK/K3
-	GGv0m+xoCXkLtrYSP3gW4B9//geftknrq2fYHuLJuTSczK+x7Q9DXHwkMTqHO4J/+lv8f2KImaibY
-	QdnVD6Dkx/IXnp7weA1dmeGwMXjHEY90khRFFo2aIhcMXefTF+ERKzpeJ7ih/+2Z/e9XonImLRrgL
-	AVu5yPllyJFo9Mkr68tuqB7hgQwUUKMSKovvWhDo+Fs83dGWXuxE+WLf5+0obYTBcW7U8/+lQjd4N
-	dWLIrVr7g==;
+	 bh=tukNcI6saXT7Ex3AZpQDZog7qMEAVyg2+Wb7tGFClnY=; b=hgRGcY3lLySx9eRnDOss+kiwl
+	K7PgDGmM5VnLK5xvemLAeMatoz8T31zE3t+rHzkpr/+V9xYoV/R7bebydthnML+1IodxnjdlDVKsO
+	hi+S/ptNeKqhZdPKjRz+rMw1f3U7oJAokVrRPOS7jfBt8iCOTvflKVb9uK6F46Pb0y+oqyLoPiKtw
+	9vqsgvfjDb5jzrUmAmViDyCyO1zpa/SqZNJ3DYGFTPXT7XhYKV49XHznQ32ooPqi2mBwDydR1g/gb
+	pdBgL9hTdWml3oO0BjWElOBxtqB2bqw9b3qJwdXraBYCKkpwdogUP7Z8da3/x7PYqCNeVdnXkX10B
+	n0OXtmbdQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jvHKc-0003zR-M9; Tue, 14 Jul 2020 09:34:34 +0000
+	id 1jvHLZ-0004RE-JH; Tue, 14 Jul 2020 09:35:33 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jvHJJ-0003Jp-5D; Tue, 14 Jul 2020 09:33:16 +0000
-X-UUID: cc43cc0f465b482795dd35ad6753fcd1-20200714
+ id 1jvHK2-0003fj-Ne; Tue, 14 Jul 2020 09:34:08 +0000
+X-UUID: 5c95b91544b44a64b8035483a94036c9-20200714
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=P6qGyud4eOgJWhAsBEK1RhIt5CRQoFPxA7k9GVZT1RM=; 
- b=pK6hzCTbPZ1sxBnfhCUtJ19SoIHEY2VG1pKNFVCqBXyBi5I9NHRpwkB0J4CuhZIgFxxZV+h1ik2VWpEoUUPNCCX43/4UwPufsTRPN7lT8b1EIPw5XqN0a6JCamSjvPigEf82+8WcgvmbN6sM10Yf9O2gZTpAZo5wm9FSJ/ZNGys=;
-X-UUID: cc43cc0f465b482795dd35ad6753fcd1-20200714
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <fengping.yu@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=k1s7sjnnsRye1CFdb6q0XzdF7nQsqyfBB1IhxQ2urWM=; 
+ b=dDwo+0XwYGeF2mw6SCeoJJnebbpDwWwoiWmEp7SRqsTDg31JXBSBhRSURbosxAoOY0xsqJApo4AlzvBcAzLFMBRI9iu71+9ta3LZ/ap+KnGeKtk/zF5wlnEqpn3iGu6uErx3TQVlmEPez1s5bleUOQ4vrXBNiLwk0dKFkuxsqow=;
+X-UUID: 5c95b91544b44a64b8035483a94036c9-20200714
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1198001772; Tue, 14 Jul 2020 01:33:08 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ with ESMTP id 9690442; Tue, 14 Jul 2020 01:33:53 -0800
+Received: from MTKMBS32N2.mediatek.inc (172.27.4.72) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Jul 2020 02:23:04 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Jul 2020 17:23:02 +0800
-Received: from localhost.localdomain (10.15.20.246) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 14 Jul 2020 17:23:02 +0800
-From: Fengping Yu <fengping.yu@mediatek.com>
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Rob Herring
- <robh+dt@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "Andy
- Shevchenko" <andriy.shevchenko@linux.intel.com>, Marco Felsch
- <m.felsch@pengutronix.de>
-Subject: [PATCH v14 1/3] dt-bindings: Add keypad devicetree documentation
-Date: Tue, 14 Jul 2020 17:20:52 +0800
-Message-ID: <20200714092053.16067-2-fengping.yu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200714092053.16067-1-fengping.yu@mediatek.com>
-References: <20200714092053.16067-1-fengping.yu@mediatek.com>
+ 15.0.1497.2; Tue, 14 Jul 2020 02:33:49 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS32N2.mediatek.inc
+ (172.27.4.72) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 14 Jul 2020 17:33:47 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 14 Jul 2020 17:33:45 +0800
+Message-ID: <1594719177.16172.33.camel@mhfsdcap03>
+Subject: Re: [PATCH 12/21] iommu/mediatek: Add iova reserved function
+From: Yong Wu <yong.wu@mediatek.com>
+To: Pi-Hsun Shih <pihsun@chromium.org>
+Date: Tue, 14 Jul 2020 17:32:57 +0800
+In-Reply-To: <CANdKZ0d8CSWQepCj9RFFxrvYq8K8G=oZCnskRiA3aY3gY-DD=w@mail.gmail.com>
+References: <20200711064846.16007-1-yong.wu@mediatek.com>
+ <20200711064846.16007-13-yong.wu@mediatek.com>
+ <CANdKZ0d8CSWQepCj9RFFxrvYq8K8G=oZCnskRiA3aY3gY-DD=w@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 0DC67976A24A6C8DA0B1CE823BB8663B55D3E6BD824FE4F4E4C6714C8C3C15872000:8
+X-TM-SNTS-SMTP: DEC085A44EA7D3545BF3F8F5EDD48DA486042A01F90A9595EFE295D355A786BF2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200714_053314_681906_A63780A8 
-X-CRM114-Status: GOOD (  15.01  )
+X-CRM114-CacheID: sfid-20200714_053358_958001_56EF4F79 
+X-CRM114-Status: GOOD (  19.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,128 +86,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org,
- "fengping.yu" <fengping.yu@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: Youlin Pei =?UTF-8?Q?=28=E8=A3=B4=E5=8F=8B=E6=9E=97=29?=
+ <youlin.pei@mediatek.com>, "open
+ list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
+ cui.zhang@mediatek.com, Hao Chao <hao.chao@mediatek.com>,
+ srv_heupstream@mediatek.com, chao.hao@mediatek.com,
+ Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>,
+ open list <linux-kernel@vger.kernel.org>, Evan Green <evgreen@chromium.org>,
+ Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, ming-fan.chen@mediatek.com,
+ anan.sun@mediatek.com, Will Deacon <will@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "fengping.yu" <fengping.yu@mediatek.com>
+On Mon, 2020-07-13 at 15:33 +0800, Pi-Hsun Shih wrote:
+> On Sat, Jul 11, 2020 at 2:51 PM Yong Wu <yong.wu@mediatek.com> wrote:
+> >
+> > For multiple iommu_domains, we need to reserve some iova regions, so we
+> > will add mtk_iommu_iova_region structure. It includes the base address
+> > and size of the range.
+> > This is a preparing patch for supporting multi-domain.
+> >
+> > Signed-off-by: Anan sun<anan.sun@mediatek.com>
+> > Signed-off-by: Hao Chao<hao.chao@mediatek.com>
+> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > ---
+> >  drivers/iommu/mtk_iommu.c | 37 +++++++++++++++++++++++++++++++++++++
+> >  drivers/iommu/mtk_iommu.h |  5 +++++
+> >  2 files changed, 42 insertions(+)
+> >
+> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> > index 03a6d66f4bef..fdfdb75706e0 100644
+> > --- a/drivers/iommu/mtk_iommu.c
+> > +++ b/drivers/iommu/mtk_iommu.c
+> > @@ -151,6 +151,11 @@ static LIST_HEAD(m4ulist); /* List all the M4U HWs */
+> > ...
+> > +
+> > +static void mtk_iommu_put_resv_regions(struct device *dev,
+> > +                                      struct list_head *head)
+> > +{
+> > +       struct iommu_resv_region *entry, *next;
+> > +
+> > +       list_for_each_entry_safe(entry, next, head, list)
+> > +               kfree(entry);
+> > +}
+> > +
+> 
+> This is the same as generic_iommu_put_resv_regions, use that as the
+> .put_resv_regions callback instead?
 
-Add Mediatek matrix keypad dt-bindings doc as yaml schema.
+Thanks very much for the review.
 
-Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
----
- .../devicetree/bindings/input/mtk-kpd.yaml    | 96 +++++++++++++++++++
- 1 file changed, 96 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/input/mtk-kpd.yaml
+Yes. I will fix it in next version.
 
-diff --git a/Documentation/devicetree/bindings/input/mtk-kpd.yaml b/Documentation/devicetree/bindings/input/mtk-kpd.yaml
-new file mode 100644
-index 000000000000..3bf09e7395d0
---- /dev/null
-+++ b/Documentation/devicetree/bindings/input/mtk-kpd.yaml
-@@ -0,0 +1,96 @@
-+# SPDX-License-Identifier: GPL-2.0
-+%YAML 1.2
-+---
-+version: 1
-+
-+$id: http://devicetree.org/schemas/input/mtk-keypad.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek's Keypad Controller device tree bindings
-+
-+maintainer:
-+  - Fengping Yu <fengping.yu@mediatek.com>
-+
-+description: |
-+  Mediatek's Keypad controller is used to interface a SoC with a matrix-type
-+  keypad device. The keypad controller supports multiple row and column lines.
-+  A key can be placed at each intersection of a unique row and a unique column.
-+  The keypad controller can sense a key-press and key-release and report the
-+  event using a interrupt to the cpu.
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - const: "mediatek,mt6779-keypad"
-+      - const: "mediatek,mt6873-keypad"
-+
-+  clock-names:
-+    description: Names of the clocks listed in clocks property in the same order
-+    maxItems: 1
-+
-+  clocks:
-+    description: Must contain one entry, for the module clock
-+    refs: devicetree/bindings/clocks/clock-bindings.txt for details.
-+
-+  interrupts:
-+    description: A single interrupt specifier
-+    maxItems: 1
-+
-+  linux,keymap:
-+    description: The keymap for keys as described in the binding document
-+    refs: devicetree/bindings/input/matrix-keymap.txt
-+    minItems: 1
-+    maxItems: 16
-+
-+  pinctrl-0:
-+    description: Specify pin control groups used for this controller
-+    refs: devicetree/bindings/pinctrl/pinctrl-bindings.txt
-+
-+  pinctrl-names:
-+    description: Names for optional pin modes
-+    maxItems: 1
-+
-+  reg:
-+    description: The base address of the Keypad register bank
-+    maxItems: 1
-+
-+  wakeup-source:
-+    description: use any event on keypad as wakeup event
-+    type: boolean
-+
-+  keypad,num-columns:
-+    description: Number of column lines connected to the keypad controller,
-+    it is not equal to PCB columns number, instead you should add required value
-+    for each IC
-+
-+  keypad,num-rows:
-+    description: Number of row lines connected to the keypad controller, it is
-+    not equal to PCB rows number, instead you should add required value for each IC
-+
-+  mediatek,debounce-us:
-+    description: Debounce interval in microseconds, if not specified, the default
-+    value is 16000
-+    maximum: 256000
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - linux,keymap
-+  - pinctrl
-+  - clocks
-+  - clock-names
-+
-+examples:
-+  - |
-+
-+  keypad: kp@10010000 {
-+    compatible = "mediatek,mt6779-keypad";
-+    reg = <0 0x10010000 0 0x1000>;
-+    linux,keymap = < MATRIX_KEY(0x00, 0x00, KEY_VOLUMEDOWN) >;
-+    interrupts = <GIC_SPI 75 IRQ_TYPE_EDGE_FALLING>;
-+    clocks = <&clk26m>;
-+    clock-names = "kpd";
-+    pinctrl-names = "default";
-+    pinctrl-0 = <&kpd_gpios_def_cfg>;
-+  };
--- 
-2.18.0
+> 
+> > ...
+> > --
+> > 2.18.0
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
