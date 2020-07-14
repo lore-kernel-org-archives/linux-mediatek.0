@@ -2,78 +2,79 @@ Return-Path: <SRS0=0yQJ=AZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 334BDC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:31:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AC318C433E1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:31:54 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C937D20EDD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:31:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7BF3220EDD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:31:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BhIV0rlb";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="TAGZxmMV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C937D20EDD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DtDn0cT5";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GZXQeo8e"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7BF3220EDD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=2OoyjNjQG6SgAzCOoLhPEgipVP9QIU4FhJ530Thxoss=; b=BhIV0rlbVxbmYKr7NOt/dlz7wi
-	qDiz0spWn86YAFlpeC8X3QUprzGEtcxoN8mIkmEnT8nFqdna2CFBOtYjAL83YsOtuTlNxn7FeZEY7
-	UzeWsVvJcXQ5vzWTSmtZtgJkvUK7h39lJWnJy0IYWJLMCFGSMidwyQgjw7hEd36GG0AqFeqEfKn74
-	FWOd3QTptEWnQ2BJgxYhcHzckYztwIAuxs8KKBdCEKRP+AzAz5sT6vyRL6IxBqp+cmvOyc60fryY4
-	xp34T7TZ2Xwj5BtEKRlIsSKeD0dDv2wY2axnri2Cw5RJbOuf9/xen1sFbjl1dUvl6u4+laWGoLBf7
-	eGM9jX7A==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=vEGhLFcSdMCMC9cS7NtsBFBQIWAnJhywUqOEtK5YDd0=; b=DtDn0cT5BzHfr0S4I7uzm1hds
+	ieERwc3ngyyHQWUGt5HH0SXuKht23PpOU1C37fpUFdO/6DyfTIdYDk95V3XXmRVcVLQ/KkPSnI/KH
+	/8oIF/+2U1dtKlacql/dwE4FKoFiudPLk5L5M15KQ9d/2HbtmX7sGIGinpEC2To2PBYxCLEgHbd7T
+	u95pLF+4MBWxDIwCNBYEdy6buZDd5TRk9K1NLeej7ivc4vD+d/xr6vpS6Zslfhh2VoxWDMpggeDIj
+	g2w2k0G4HJM1xKbGYGc8N8gw9fXgtODPRbEqFyUqXESNMDpxBIz76sE8bjznC+EB91W7cu7udzmQS
+	+dPbQiGQA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jvHHg-0002OO-Kw; Tue, 14 Jul 2020 09:31:32 +0000
+	id 1jvHHk-0002QW-2z; Tue, 14 Jul 2020 09:31:36 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jvHGU-0001kJ-LB; Tue, 14 Jul 2020 09:30:20 +0000
-X-UUID: 2fa6a4f7c0bd451c83994c5219bf1f4b-20200714
+ id 1jvHGV-0001kq-NL; Tue, 14 Jul 2020 09:30:21 +0000
+X-UUID: 6aac9f671a49475b9aae3a2b1d261671-20200714
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=xsOBFtDX2zzdwsWEy4DmEh6sQCZBGIkRn1wJVvBBCdQ=; 
- b=TAGZxmMVttZ/HmYnBPJqpLpHzuw6+P0dwV6m3XZElOffk0qEXdZy1TMaV0WdOEU1i/u0HIEUYinbuhUZrbwTFPGomgLRZk1N57tq/J3YKMlvxNjbIdRuG9Kto4oTOwxvNZfpw5nI7eeS4LqSL1lN+AZ/MKChHOjagCPpGhbUYG0=;
-X-UUID: 2fa6a4f7c0bd451c83994c5219bf1f4b-20200714
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=pVHcUgsl7i22itF43NRR1WIUq3RppLuJkV8eA74tsH0=; 
+ b=GZXQeo8ep5/1eyN21YUEyAeJ+INAzBWtqrO+2oyF8va0M6WReY+obkSMKcuiIqXChDuS1SYJBE2TxGxpQ6qjG00KujyPPQVSCpHioghJXcZJyiZC3vvrEyBic0ioh4SZbKfatzm3RjwnjmafGzhQ9J5wDz8oInPQ5SgXE/YeKk4=;
+X-UUID: 6aac9f671a49475b9aae3a2b1d261671-20200714
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <fengping.yu@mediatek.com>)
+ (envelope-from <hanks.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1000550384; Tue, 14 Jul 2020 01:30:15 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ with ESMTP id 887979255; Tue, 14 Jul 2020 01:30:15 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Jul 2020 02:22:42 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Jul 2020 17:22:38 +0800
-Received: from localhost.localdomain (10.15.20.246) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 14 Jul 2020 17:22:38 +0800
-From: Fengping Yu <fengping.yu@mediatek.com>
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Rob Herring
- <robh+dt@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "Andy
- Shevchenko" <andriy.shevchenko@linux.intel.com>, Marco Felsch
- <m.felsch@pengutronix.de>
-Subject: [PATCH v14] Add matrix keypad driver support Mediatek SoCs 
-Date: Tue, 14 Jul 2020 17:20:50 +0800
-Message-ID: <20200714092053.16067-1-fengping.yu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ 15.0.1497.2; Tue, 14 Jul 2020 02:20:09 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 14 Jul 2020 17:20:08 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 14 Jul 2020 17:20:08 +0800
+From: Hanks Chen <hanks.chen@mediatek.com>
+To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Michael
+ Turquette" <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, "Sean
+ Wang" <sean.wang@kernel.org>
+Subject: [PATCH v8 5/7] pinctrl: mediatek: add mt6779 eint support
+Date: Tue, 14 Jul 2020 17:20:00 +0800
+Message-ID: <1594718402-20813-6-git-send-email-hanks.chen@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1594718402-20813-1-git-send-email-hanks.chen@mediatek.com>
+References: <1594718402-20813-1-git-send-email-hanks.chen@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 79AE5D1AD6DEE60D16E09EE0A5304D7B54A6050E17675433065CC2E6E59410502000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200714_053018_949907_501F913F 
-X-CRM114-Status: UNSURE (   7.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200714_053020_038919_AFBBDBA3 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,35 +86,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-input@vger.kernel.org
+Cc: devicetree@vger.kernel.org, CC Hwang <cc.hwang@mediatek.com>,
+ wsd_upstream@mediatek.com, Andy Teng <andy.teng@mediatek.com>,
+ Mars Cheng <mars.cheng@mediatek.com>, Hanks Chen <hanks.chen@mediatek.com>,
+ Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ mtk01761 <wendell.lin@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+add driver setting to support mt6779 eint
 
-Change since v13:
-- remove defconfig and mtk-kpd.yaml files reviewed-by tag
+Acked-by: Sean Wang <sean.wang@kernel.org>
+Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+Signed-off-by: Hanks Chen <hanks.chen@mediatek.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-mt6779.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-fengping.yu (3):
-  dt-bindings: Add keypad devicetree documentation
-  drivers: input: keyboard: Add mtk keypad driver
-  configs: defconfig: Add CONFIG_KEYBOARD_MTK_KPD=m
-
- .../devicetree/bindings/input/mtk-kpd.yaml    |  96 ++++++++
- arch/arm64/configs/defconfig                  |   1 +
- drivers/input/keyboard/Kconfig                |  11 +
- drivers/input/keyboard/Makefile               |   1 +
- drivers/input/keyboard/mtk-kpd.c              | 209 ++++++++++++++++++
- 5 files changed, 318 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/input/mtk-kpd.yaml
- create mode 100644 drivers/input/keyboard/mtk-kpd.c
-
---
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6779.c b/drivers/pinctrl/mediatek/pinctrl-mt6779.c
+index 145bf2294ce1..32822603a1df 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt6779.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt6779.c
+@@ -731,11 +731,19 @@ static const char * const mt6779_pinctrl_register_base_names[] = {
+ 	"iocfg_rt", "iocfg_lt", "iocfg_tl",
+ };
+ 
++static const struct mtk_eint_hw mt6779_eint_hw = {
++	.port_mask = 7,
++	.ports     = 6,
++	.ap_num    = 195,
++	.db_cnt    = 13,
++};
++
+ static const struct mtk_pin_soc mt6779_data = {
+ 	.reg_cal = mt6779_reg_cals,
+ 	.pins = mtk_pins_mt6779,
+ 	.npins = ARRAY_SIZE(mtk_pins_mt6779),
+ 	.ngrps = ARRAY_SIZE(mtk_pins_mt6779),
++	.eint_hw = &mt6779_eint_hw,
+ 	.gpio_m = 0,
+ 	.ies_present = true,
+ 	.base_names = mt6779_pinctrl_register_base_names,
+-- 
 2.18.0
-
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
