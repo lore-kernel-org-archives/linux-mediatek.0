@@ -2,23 +2,23 @@ Return-Path: <SRS0=0yQJ=AZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CA051C433E1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:01:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A382C43445
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:05:15 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 963EF21927
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:01:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2D0BC21BE5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:05:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="W/Yv0mxb";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="On8JRaZU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 963EF21927
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="taWJgt7h";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GoGYq+iA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2D0BC21BE5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,53 +27,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=t6B7L1BwCf/ektLUL6nZVOMzucQn4/vegDhkc4mbeO8=; b=W/Yv0mxbBcw6zalgvVXlTqdnF
-	0iTw4AA9TYFuGVR3d+DMH19tqCOl8Zz+YgYn/P3iilz+OcTHxKj0GXhkEtA/1hgHowYsSCUyykMfE
-	HzNtXkZZ/X8EJvj5DfOAaL4gpIPXbHkxgkM3AJJOra/vDtSJfGR6K8uIxEoVoXeWRuDdiqAtVCrMN
-	Ogz5NzvN7oA/S9awHhYIX6Smav+V/MTiP0Kyshq3v4REFK1k6ueqfBQ2U3u1LxKoShtFBpJfDJOQZ
-	xWtB0yT4qWrVwNdv7cRA1zjmP/K622df3G5h3ApIlMqetotRsqBZgxxvLsbp4cQdXIpO4V4W+0mSO
-	om3ZW6kzw==;
+	 bh=kX7PiiBOiCjAApykR/wO+AfKtbwKJNPpW1Oox9NFNUs=; b=taWJgt7hCdiuYHiVjV8ji8eQu
+	FmsC/xW38qXQ2VLfmusie2j+xGX/71jBX6xE676WGdYIhAQmTZ3cHpGLTmtQJtKQRSeLmtkWzc3JA
+	NmzuzJgdw70ECpzqjmGkgyqdzLzAJzyqOOqMIB9rgsr1goKB8npjCQHIZdnI5qZYwz1NB0cMiRhVN
+	h6qC7ewbFjxGS/FZCKf/wLDHJ/Oo386pvh2ELNQ2zFuE/viK4u9ltiP3mFKbTUX9NVR5TfvO49HB9
+	Xjc8BjUuxObfqPS7RYlq8/s4WjST7pS/G29rQgBxqpHRQZymqzSkFOUdevE/ryvBdLA3n8OnHFnUl
+	muZhZHUtA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jvGoU-0000PO-1P; Tue, 14 Jul 2020 09:01:22 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jvGs5-0002Du-4L; Tue, 14 Jul 2020 09:05:05 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jvGnv-0008Uo-PU; Tue, 14 Jul 2020 09:00:49 +0000
-X-UUID: c3aa5f0635db4c89bb261a51d4155899-20200714
+ id 1jvGrm-00025q-JK; Tue, 14 Jul 2020 09:04:48 +0000
+X-UUID: e926efd6392e4cf098c9261023eb8891-20200714
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=igiyyVDf3nf9NsBHw9NIhqpD1Pbqqsb9AXDuJP0mwKw=; 
- b=On8JRaZUvFPwhNQr9BUQFy+xPbda8iN+9KY1/5nMow1gCtztDdJObluHVSSFh8I6IYD29k81fPTA8OHa9kcpDu+wCFKAN8MvWfbqKhjFouMynH0faYIhc83eX5lKWIrCSb8Dophbjm+t//hYV80qmJUQIoyFLYow3TN19hrawTI=;
-X-UUID: c3aa5f0635db4c89bb261a51d4155899-20200714
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
+ bh=5TKcrLGCtY1B7wgKh4ZcQSHuqGbEX2NNJvS+KYOZ5/Y=; 
+ b=GoGYq+iAENAS030qsPqRX3KZNLtRSpBBe74sve9hCJH8Op4fRU87rmUpx+3FODmVs0aGjgPJ3yGdSYilG8t2cgbK5bjK/OPDuLd1PeXnMzytcvEcqBBofo4boAKBAI643EA39k2sqJbIbfdTeVPPoC0ZkHIXE5Ybag9aTA+whQE=;
+X-UUID: e926efd6392e4cf098c9261023eb8891-20200714
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <hanks.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1483846839; Tue, 14 Jul 2020 01:00:42 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ with ESMTP id 401697047; Tue, 14 Jul 2020 01:04:47 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Jul 2020 01:50:44 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Jul 2020 16:50:40 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 14 Jul 2020 16:50:39 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Felipe Balbi <balbi@kernel.org>, Florian Fainelli <f.fainelli@gmail.com>
-Subject: [PATCH 8/9] usb: gadget: bdc: use the BIT macro to define bit filed
-Date: Tue, 14 Jul 2020 16:48:53 +0800
-Message-ID: <1594716535-24699-8-git-send-email-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1594716535-24699-1-git-send-email-chunfeng.yun@mediatek.com>
-References: <1594716535-24699-1-git-send-email-chunfeng.yun@mediatek.com>
+ 15.0.1497.2; Tue, 14 Jul 2020 02:04:42 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 14 Jul 2020 17:04:41 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 14 Jul 2020 17:04:42 +0800
+From: Hanks Chen <hanks.chen@mediatek.com>
+To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Michael
+ Turquette" <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, "Sean
+ Wang" <sean.wang@kernel.org>
+Subject: [PATCH 3/7] pinctrl: mediatek: avoid virtual gpio trying to set reg
+Date: Tue, 14 Jul 2020 17:04:35 +0800
+Message-ID: <1594717479-8160-4-git-send-email-hanks.chen@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1594717479-8160-1-git-send-email-hanks.chen@mediatek.com>
+References: <1594717479-8160-1-git-send-email-hanks.chen@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: D6B5553F46369B693A548D6D9B252918F9FAF9AC49D95F91AE50CCB00B8528CB2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200714_050048_127303_43B49D2D 
-X-CRM114-Status: UNSURE (   9.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200714_050446_839878_050A3611 
+X-CRM114-Status: GOOD (  15.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,197 +86,101 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org,
- Stephen Boyd <swboyd@chromium.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, CC Hwang <cc.hwang@mediatek.com>,
+ wsd_upstream@mediatek.com, Andy Teng <andy.teng@mediatek.com>,
+ Mars Cheng <mars.cheng@mediatek.com>, Hanks Chen <hanks.chen@mediatek.com>,
+ Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ mtk01761 <wendell.lin@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Prefer using the BIT macro to define bit fileds
+for virtual gpios, they should not do reg setting and
+should behave as expected for eint function.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+Signed-off-by: Hanks Chen <hanks.chen@mediatek.com>
 ---
- drivers/usb/gadget/udc/bdc/bdc.h | 84 ++++++++++++++++++++--------------------
- 1 file changed, 42 insertions(+), 42 deletions(-)
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c |   25 ++++++++++++++++++++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h |    1 +
+ drivers/pinctrl/mediatek/pinctrl-paris.c         |    7 ++++++
+ 3 files changed, 33 insertions(+)
 
-diff --git a/drivers/usb/gadget/udc/bdc/bdc.h b/drivers/usb/gadget/udc/bdc/bdc.h
-index 7b14af1..de850ce 100644
---- a/drivers/usb/gadget/udc/bdc/bdc.h
-+++ b/drivers/usb/gadget/udc/bdc/bdc.h
-@@ -102,7 +102,7 @@
- #define BDC_SPB(p)	((p) & 0x7)
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+index b77b18f..c53e2c3 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+@@ -243,6 +243,28 @@ static int mtk_xt_find_eint_num(struct mtk_pinctrl *hw, unsigned long eint_n)
+ 	return EINT_NA;
+ }
  
- /* BDC Capability1 */
--#define BDC_P64		(1 << 0)
-+#define BDC_P64		BIT(0)
++/*
++ * Virtual GPIO only used inside SOC and not being exported to outside SOC.
++ * Some modules use virtual GPIO as eint (e.g. pmif or usb).
++ * In MTK platform, external interrupt (EINT) and GPIO is 1-1 mapping
++ * and we can set GPIO as eint.
++ * But some modules use specific eint which doesn't have real GPIO pin.
++ * So we use virtual GPIO to map it.
++ */
++
++bool mtk_is_virt_gpio(struct mtk_pinctrl *hw, unsigned int gpio_n)
++{
++	const struct mtk_pin_desc *desc;
++	bool virt_gpio = false;
++
++	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio_n];
++
++	if (desc->funcs && !desc->funcs[desc->eint.eint_m].name)
++		virt_gpio = true;
++
++	return virt_gpio;
++}
++
+ static int mtk_xt_get_gpio_n(void *data, unsigned long eint_n,
+ 			     unsigned int *gpio_n,
+ 			     struct gpio_chip **gpio_chip)
+@@ -295,6 +317,9 @@ static int mtk_xt_set_gpio_as_eint(void *data, unsigned long eint_n)
+ 	if (err)
+ 		return err;
  
- /* BDC Command register */
- #define BDC_CMD_FH	0xe
-@@ -111,7 +111,7 @@
- #define BDC_CMD_BLA	0x3
- #define BDC_CMD_EPC	0x2
- #define BDC_CMD_DVC	0x1
--#define BDC_CMD_CWS		(0x1 << 5)
-+#define BDC_CMD_CWS		BIT(5)
- #define BDC_CMD_CST(p)		(((p) & (0xf << 6)) >> 6)
- #define BDC_CMD_EPN(p)		(((p) & 0x1f) << 10)
- #define BDC_SUB_CMD_ADD		(0x1 << 17)
-@@ -124,7 +124,7 @@
- #define BDC_SUB_CMD_EP_STP	(0x2 << 17)
- #define BDC_SUB_CMD_EP_STL	(0x4 << 17)
- #define BDC_SUB_CMD_EP_RST	(0x1 << 17)
--#define BDC_CMD_SRD		(1 << 27)
-+#define BDC_CMD_SRD		BIT(27)
++	if (mtk_is_virt_gpio(hw, gpio_n))
++		return 0;
++
+ 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio_n];
  
- /* CMD completion status */
- #define BDC_CMDS_SUCC	0x1
-@@ -141,19 +141,19 @@
- #define EPM_SHIFT	4
+ 	err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_MODE,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+index 27df087..bd079f4f 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+@@ -315,4 +315,5 @@ int mtk_pinconf_adv_drive_set(struct mtk_pinctrl *hw,
+ int mtk_pinconf_adv_drive_get(struct mtk_pinctrl *hw,
+ 			      const struct mtk_pin_desc *desc, u32 *val);
  
- /* BDC USPSC */
--#define BDC_VBC		(1 << 31)
--#define BDC_PRC		(1 << 30)
--#define BDC_PCE		(1 << 29)
--#define BDC_CFC		(1 << 28)
--#define BDC_PCC		(1 << 27)
--#define BDC_PSC		(1 << 26)
--#define BDC_VBS		(1 << 25)
--#define BDC_PRS		(1 << 24)
--#define BDC_PCS		(1 << 23)
-+#define BDC_VBC		BIT(31)
-+#define BDC_PRC		BIT(30)
-+#define BDC_PCE		BIT(29)
-+#define BDC_CFC		BIT(28)
-+#define BDC_PCC		BIT(27)
-+#define BDC_PSC		BIT(26)
-+#define BDC_VBS		BIT(25)
-+#define BDC_PRS		BIT(24)
-+#define BDC_PCS		BIT(23)
- #define BDC_PSP(p)	(((p) & (0x7 << 20)) >> 20)
--#define BDC_SCN		(1 << 8)
--#define BDC_SDC		(1 << 7)
--#define BDC_SWS		(1 << 4)
-+#define BDC_SCN		BIT(8)
-+#define BDC_SDC		BIT(7)
-+#define BDC_SWS		BIT(4)
++bool mtk_is_virt_gpio(struct mtk_pinctrl *hw, unsigned int gpio_n);
+ #endif /* __PINCTRL_MTK_COMMON_V2_H */
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index 90a432b..a23c182 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -769,6 +769,13 @@ static int mtk_gpio_get_direction(struct gpio_chip *chip, unsigned int gpio)
+ 	if (gpio >= hw->soc->npins)
+ 		return -EINVAL;
  
- #define BDC_USPSC_RW	(BDC_SCN | BDC_SDC | BDC_SWS | 0xf)
- #define BDC_PSP(p)	(((p) & (0x7 << 20)) >> 20)
-@@ -167,17 +167,17 @@
- #define BDC_PST_MASK	0xf
++	/*
++	 * "Virtual" GPIOs are always and only used for interrupts
++	 * Since they are only used for interrupts, they are always inputs
++	 */
++	if (mtk_is_virt_gpio(hw, gpio))
++		return 1;
++
+ 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
  
- /* USPPMS */
--#define BDC_U2E		(0x1 << 31)
--#define BDC_U1E		(0x1 << 30)
--#define BDC_U2A		(0x1 << 29)
--#define BDC_PORT_W1S	(0x1 << 17)
-+#define BDC_U2E		BIT(31)
-+#define BDC_U1E		BIT(30)
-+#define BDC_U2A		BIT(29)
-+#define BDC_PORT_W1S	BIT(17)
- #define BDC_U1T(p)	((p) & 0xff)
- #define BDC_U2T(p)	(((p) & 0xff) << 8)
- #define BDC_U1T_MASK	0xff
- 
- /* USBPM2 */
- /* Hardware LPM Enable */
--#define BDC_HLE		(1 << 16)
-+#define BDC_HLE		BIT(16)
- 
- /* BDC Status and Control */
- #define BDC_COP_RST	(1 << 29)
-@@ -186,11 +186,11 @@
- 
- #define BDC_COP_MASK (BDC_COP_RST | BDC_COP_RUN | BDC_COP_STP)
- 
--#define BDC_COS		(1 << 28)
-+#define BDC_COS		BIT(28)
- #define BDC_CSTS(p)	(((p) & (0x7 << 20)) >> 20)
--#define BDC_MASK_MCW	(1 << 7)
--#define BDC_GIE		(1 << 1)
--#define BDC_GIP		(1 << 0)
-+#define BDC_MASK_MCW	BIT(7)
-+#define BDC_GIE		BIT(1)
-+#define BDC_GIP		BIT(0)
- 
- #define BDC_HLT	1
- #define BDC_NOR	2
-@@ -201,19 +201,19 @@
- #define BD_CHAIN	0xf
- 
- #define BD_TFS_SHIFT	4
--#define BD_SOT		(1 << 26)
--#define BD_EOT		(1 << 27)
--#define BD_ISP		(1 << 29)
--#define BD_IOC		(1 << 30)
--#define BD_SBF		(1 << 31)
-+#define BD_SOT		BIT(26)
-+#define BD_EOT		BIT(27)
-+#define BD_ISP		BIT(29)
-+#define BD_IOC		BIT(30)
-+#define BD_SBF		BIT(31)
- 
- #define BD_INTR_TARGET(p)	(((p) & 0x1f) << 27)
- 
--#define BDC_SRR_RWS		(1 << 4)
--#define BDC_SRR_RST		(1 << 3)
--#define BDC_SRR_ISR		(1 << 2)
--#define BDC_SRR_IE		(1 << 1)
--#define BDC_SRR_IP		(1 << 0)
-+#define BDC_SRR_RWS		BIT(4)
-+#define BDC_SRR_RST		BIT(3)
-+#define BDC_SRR_ISR		BIT(2)
-+#define BDC_SRR_IE		BIT(1)
-+#define BDC_SRR_IP		BIT(0)
- #define BDC_SRR_EPI(p)	(((p) & (0xff << 24)) >> 24)
- #define BDC_SRR_DPI(p) (((p) & (0xff << 16)) >> 16)
- #define BDC_SRR_DPI_MASK	0x00ff0000
-@@ -221,7 +221,7 @@
- #define MARK_CHAIN_BD	(BD_CHAIN | BD_EOT | BD_SOT)
- 
- /* Control transfer BD specific fields */
--#define BD_DIR_IN		(1 << 25)
-+#define BD_DIR_IN		BIT(25)
- 
- #define BDC_PTC_MASK	0xf0000000
- 
-@@ -241,13 +241,13 @@
- 
- /* Transfer BD fields */
- #define BD_LEN(p) ((p) & 0x1ffff)
--#define BD_LTF		(1 << 25)
-+#define BD_LTF		BIT(25)
- #define BD_TYPE_DS	0x1
- #define BD_TYPE_SS	0x2
- 
--#define BDC_EP_ENABLED     (1 << 0)
--#define BDC_EP_STALL       (1 << 1)
--#define BDC_EP_STOP        (1 << 2)
-+#define BDC_EP_ENABLED     BIT(0)
-+#define BDC_EP_STALL       BIT(1)
-+#define BDC_EP_STOP        BIT(2)
- 
- /* One BD can transfer max 65536 bytes */
- #define BD_MAX_BUFF_SIZE	(1 << 16)
-@@ -266,9 +266,9 @@
- /* FUNCTION WAKE DEV NOTIFICATION interval, USB3 spec table 8.13 */
- #define BDC_TNOTIFY 2500 /*in ms*/
- /* Devstatus bitfields */
--#define REMOTE_WAKEUP_ISSUED	(1 << 16)
--#define DEVICE_SUSPENDED	(1 << 17)
--#define FUNC_WAKE_ISSUED	(1 << 18)
-+#define REMOTE_WAKEUP_ISSUED	BIT(16)
-+#define DEVICE_SUSPENDED	BIT(17)
-+#define FUNC_WAKE_ISSUED	BIT(18)
- #define REMOTE_WAKE_ENABLE	(1 << USB_DEVICE_REMOTE_WAKEUP)
- 
- /* On disconnect, preserve these bits and clear rest */
+ 	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &value);
 -- 
-1.9.1
+1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
