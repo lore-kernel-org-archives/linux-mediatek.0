@@ -2,78 +2,81 @@ Return-Path: <SRS0=0yQJ=AZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1EDFC433E1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:15:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3A8FDC433EB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:20:04 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7205A21D7B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:15:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0C2B2221F6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2020 09:20:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="j5yAud7J";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="FGvbuSMe"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7205A21D7B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pe9h4kzf";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="pp5Frewz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0C2B2221F6
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
+	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7YoIqFd7MVMLXaKgdvftasbidlv9DetOrAsvIn9WJUs=; b=j5yAud7JzO8a0lCYSVQ8H/+zN
-	bpIOgI4amhWRwVUCnpjmZxPKHTNzF38FYNOGrk3jXG7ixuJSqENH9DBL8LIbbB3qk4+t+Yzy4Q+9R
-	DbWR4WWHqX+cKuIoARI0Vqhtk7sFgHikNyUN6dEUFebVSdXo5CeJGS5XkEx0nPL93oKBv3yVYm9RR
-	ou2fH1sjcAQi3SZI7Ptgi/YOoavogqWUdFaG3WTIfK1ERUrKS/NLlbQiPyZqbYg9t3uDgoruLg8A7
-	RmPuILtT+4PlDSW93IT7FudCT6W7reUEuWdB7MgOWuHZn1INLQu7HdM+/acFtd+FDTJjtsNHrB/kN
-	ct5Uf1xRQ==;
+	 bh=RHthjZlx35p1SvCfFrD1lRUdMVRSwzvFjjJ677PKnA0=; b=pe9h4kzfSK4UP9wG8lJJkGcfE
+	mrjKQUbpEBG3Eb2gE0yla2wrLb/Bu70HzaiW0khXriBBwgWWYIvVi6GZoIXVSHx49W1rREUxF2mDR
+	e0bgEnaTXb8DAMH4nWxvwbTUMTxCI8B9I8NgvnGXgSwvLtLzQK1U5Wx1d2vb7uYMd3BV+tPjLYPIk
+	QtE5irvCD+OQqsf7PX5UH3qNmZy1uql6unIRmlo7jrpuG1yxUOm2wrAsuD6jABskDYkY9bQ2c3iCb
+	VQvUeOUdlMkMLqL/xbAHXqg4YQGZHd7LkZ98CHJU7XLANjA+LiYJ745/J9PpViFubnxUgmEE2tllY
+	m8FVrsJrg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jvH1i-0005TZ-FP; Tue, 14 Jul 2020 09:15:02 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jvH6P-0006Wp-JF; Tue, 14 Jul 2020 09:19:53 +0000
+Received: from m43-7.mailgun.net ([69.72.43.7])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jvH1a-0005R9-60; Tue, 14 Jul 2020 09:14:55 +0000
-X-UUID: 882bb221ace44120b46d84647c1e4d42-20200714
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=1M2tLMfRDT4iREqBJhkNOzVrRqUYRDLLQVyW5lJpNaQ=; 
- b=FGvbuSMe7bEA/Gq8bqJxY9pdQU+xM6E7ZPMHGwLKqaDCBjrqAPgovDK+kmtpimYoH56Z4HVUbZ4fvrM5XhPF41TKpNK99X6a/dw4tCZ9cpnHAE8/Mchs+KNpJMiaY/6UohNGX4ZucuEDzXAXd/Va7pwuVxCFqjVkVJL0tfQvZYs=;
-X-UUID: 882bb221ace44120b46d84647c1e4d42-20200714
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <hanks.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 237333385; Tue, 14 Jul 2020 01:14:53 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Jul 2020 02:04:48 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Jul 2020 17:04:41 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 14 Jul 2020 17:04:42 +0800
-From: Hanks Chen <hanks.chen@mediatek.com>
-To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Michael
- Turquette" <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, "Sean
- Wang" <sean.wang@kernel.org>
-Subject: [PATCH 5/7] pinctrl: mediatek: add mt6779 eint support
-Date: Tue, 14 Jul 2020 17:04:37 +0800
-Message-ID: <1594717479-8160-6-git-send-email-hanks.chen@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1594717479-8160-1-git-send-email-hanks.chen@mediatek.com>
-References: <1594717479-8160-1-git-send-email-hanks.chen@mediatek.com>
+ id 1jvH6J-0006V8-BN
+ for linux-mediatek@lists.infradead.org; Tue, 14 Jul 2020 09:19:50 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1594718389; h=Message-ID: References: In-Reply-To: Subject:
+ Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
+ MIME-Version: Sender; bh=zlrj8wHvZscOUM1wkDSJh1QyspQdZdaCu/BwRVbN4oA=;
+ b=pp5FrewzITeTY2lZs91nWqYw8ED4gTf9jvQ0DWEuWstfkOTmDY/aBWC7FZLRr8kqpqdN7EyN
+ kPX2pVa/rIr3PLb+RFUZIcVUgl2BfePcTj3vPj0uQso+c1+8BOP5PUJl7gR2X5wlV+UBEPEq
+ GxkeHjoK9ExxcGoBOJMplL7boq4=
+X-Mailgun-Sending-Ip: 69.72.43.7
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
+ smtp-out-n06.prod.us-east-1.postgun.com with SMTP id
+ 5f0d78a3427cd55766be833b (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 14 Jul 2020 09:19:31
+ GMT
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 87B6AC43391; Tue, 14 Jul 2020 09:19:30 +0000 (UTC)
+Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
+ (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+ (No client certificate requested) (Authenticated sender: cang)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id B8FAAC433CA;
+ Tue, 14 Jul 2020 09:19:29 +0000 (UTC)
 MIME-Version: 1.0
-X-MTK: N
+Date: Tue, 14 Jul 2020 17:19:29 +0800
+From: Can Guo <cang@codeaurora.org>
+To: Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH v1 2/2] scsi: ufs: Fix and simplify setup_xfer_req variant
+ operation
+In-Reply-To: <20200706060707.32608-3-stanley.chu@mediatek.com>
+References: <20200706060707.32608-1-stanley.chu@mediatek.com>
+ <20200706060707.32608-3-stanley.chu@mediatek.com>
+Message-ID: <74cc1ad32c414762ab5d18ed8b46c26a@codeaurora.org>
+X-Sender: cang@codeaurora.org
+User-Agent: Roundcube Webmail/1.3.9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200714_051454_454563_DA3160EA 
-X-CRM114-Status: GOOD (  10.50  )
+X-CRM114-CacheID: sfid-20200714_051949_252576_B9AA3E07 
+X-CRM114-Status: GOOD (  13.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,52 +88,70 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, CC Hwang <cc.hwang@mediatek.com>,
- wsd_upstream@mediatek.com, Andy Teng <andy.teng@mediatek.com>,
- Mars Cheng <mars.cheng@mediatek.com>, Hanks Chen <hanks.chen@mediatek.com>,
- Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org,
- linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org,
- mtk01761 <wendell.lin@mediatek.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-scsi@vger.kernel.org, martin.petersen@oracle.com,
+ andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org,
+ asutoshd@codeaurora.org, avri.altman@wdc.com,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ alim.akhtar@samsung.com, matthias.bgg@gmail.com, beanhuo@micron.com,
+ chaotian.jing@mediatek.com, cc.chou@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, bvanassche@acm.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add driver setting to support mt6779 eint
+On 2020-07-06 14:07, Stanley Chu wrote:
+> Add missing "setup_xfer_req" call in ufshcd_issue_devman_upiu_cmd()
+> by ufs-bsg path, and collect all "setup_xfer_req" calls to an unified
+> place, i.e., ufshcd_send_command(), to simplify the driver.
+> 
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 
-Acked-by: Sean Wang <sean.wang@kernel.org>
-Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
-Signed-off-by: Hanks Chen <hanks.chen@mediatek.com>
----
- drivers/pinctrl/mediatek/pinctrl-mt6779.c |    8 ++++++++
- 1 file changed, 8 insertions(+)
+Reviewed-by: Can Guo <cang@codeaurora.org>
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6779.c b/drivers/pinctrl/mediatek/pinctrl-mt6779.c
-index 145bf22..3282260 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt6779.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt6779.c
-@@ -731,11 +731,19 @@
- 	"iocfg_rt", "iocfg_lt", "iocfg_tl",
- };
- 
-+static const struct mtk_eint_hw mt6779_eint_hw = {
-+	.port_mask = 7,
-+	.ports     = 6,
-+	.ap_num    = 195,
-+	.db_cnt    = 13,
-+};
-+
- static const struct mtk_pin_soc mt6779_data = {
- 	.reg_cal = mt6779_reg_cals,
- 	.pins = mtk_pins_mt6779,
- 	.npins = ARRAY_SIZE(mtk_pins_mt6779),
- 	.ngrps = ARRAY_SIZE(mtk_pins_mt6779),
-+	.eint_hw = &mt6779_eint_hw,
- 	.gpio_m = 0,
- 	.ies_present = true,
- 	.base_names = mt6779_pinctrl_register_base_names,
--- 
-1.7.9.5
+> ---
+>  drivers/scsi/ufs/ufshcd.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+> index 71e8d7c782bd..8603b07045a6 100644
+> --- a/drivers/scsi/ufs/ufshcd.c
+> +++ b/drivers/scsi/ufs/ufshcd.c
+> @@ -1925,8 +1925,11 @@ static void
+> ufshcd_clk_scaling_update_busy(struct ufs_hba *hba)
+>  static inline
+>  void ufshcd_send_command(struct ufs_hba *hba, unsigned int task_tag)
+>  {
+> -	hba->lrb[task_tag].issue_time_stamp = ktime_get();
+> -	hba->lrb[task_tag].compl_time_stamp = ktime_set(0, 0);
+> +	struct ufshcd_lrb *lrbp = &hba->lrb[task_tag];
+> +
+> +	lrbp->issue_time_stamp = ktime_get();
+> +	lrbp->compl_time_stamp = ktime_set(0, 0);
+> +	ufshcd_vops_setup_xfer_req(hba, task_tag, (lrbp->cmd ? true : 
+> false));
+>  	ufshcd_add_command_trace(hba, task_tag, "send");
+>  	ufshcd_clk_scaling_start_busy(hba);
+>  	__set_bit(task_tag, &hba->outstanding_reqs);
+> @@ -2544,7 +2547,6 @@ static int ufshcd_queuecommand(struct Scsi_Host
+> *host, struct scsi_cmnd *cmd)
+> 
+>  	/* issue command to the controller */
+>  	spin_lock_irqsave(hba->host->host_lock, flags);
+> -	ufshcd_vops_setup_xfer_req(hba, tag, true);
+>  	ufshcd_send_command(hba, tag);
+>  out_unlock:
+>  	spin_unlock_irqrestore(hba->host->host_lock, flags);
+> @@ -2731,7 +2733,6 @@ static int ufshcd_exec_dev_cmd(struct ufs_hba 
+> *hba,
+>  	/* Make sure descriptors are ready before ringing the doorbell */
+>  	wmb();
+>  	spin_lock_irqsave(hba->host->host_lock, flags);
+> -	ufshcd_vops_setup_xfer_req(hba, tag, false);
+>  	ufshcd_send_command(hba, tag);
+>  	spin_unlock_irqrestore(hba->host->host_lock, flags);
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
