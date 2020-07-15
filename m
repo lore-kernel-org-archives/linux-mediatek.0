@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C285CC433F1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 09:32:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 547A2C433E2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 09:33:00 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8FD602075B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 09:32:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1D9E2206F4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 09:33:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WNl14dX6";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="ot1YDljs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8FD602075B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iSyE52bX";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="LdQed/Ih"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1D9E2206F4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,64 +26,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4E3974TVGrtXtu5O7NLKsxHojg2H19UN30BK2Bxd+J8=; b=WNl14dX6dupleolhaAWUSzEa0
-	yQmKrNRusEJepy+9m0+xv0h3RYPJ50KDRUuums0JhmDdk4md0REV7j2/4f2N2JI3TC2Wy9I0anvqk
-	ChcXXcBUC4Q4EUADWN/G2lXEdyLHyanAh3XMVFsMljVH/+NWUhtRnl6+nWlb5okfS6S51RExIbqLn
-	BfGKzs617d5Nk/9NUhEUaEJTZS+PqAmUuLmwXhuCJqpG9mGT0RgTQl5Z3GOUp4KgpKvz9R/xuGLrH
-	6xb9M6NhClLgDe81bWc8PCXtzD0ZVtSQTr1S8XrmA8XN+JNjTkonfaRF+q4drmjHDSwjwsYxjx/Ut
-	dhLOXSDkA==;
+	 bh=9IinYvkGuE03ZGSqu2qfWan4yYFPV1a8UrxxT4X8i0U=; b=iSyE52bXdF2ryjX4vhCpbfTDE
+	PPLtBopBdiduSUmB3GRIMLpPn1EOnA1ZURr6cw5p80PIx6FJDTKZlbGWT9BzIYL/GJEG+ZUlefv+E
+	Imco2i0bpx/PZoC9SNzPmM5sMg3pWV3cVPW8+jWo9HLb9XzpR0pCSHt4ZhID/YkjBjLGl/bLcnGHs
+	d9cwTV9dsDdpZyEgslZUOER0y2LR9mHESPYXAteOlsetLWa3uEDT7FMDEhnCeUeEAlvlNWs/XUBak
+	w8Nc27tOFHz9mZEq5JOZ7GNiNNtGwkgWTf1OXp9704OHDyZrh40dZ4h2fzqR8/ecOIXWk1EI3V3w+
+	H/8zwwjDw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jvdmH-0003SU-85; Wed, 15 Jul 2020 09:32:37 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1jvdmM-0003Un-LR; Wed, 15 Jul 2020 09:32:42 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jvdlx-0003LL-I4
- for linux-mediatek@lists.infradead.org; Wed, 15 Jul 2020 09:32:20 +0000
-Received: by mail-wm1-x343.google.com with SMTP id q15so4689302wmj.2
- for <linux-mediatek@lists.infradead.org>; Wed, 15 Jul 2020 02:32:17 -0700 (PDT)
+ id 1jvdly-0003Lx-MC
+ for linux-mediatek@lists.infradead.org; Wed, 15 Jul 2020 09:32:21 +0000
+Received: by mail-wm1-x342.google.com with SMTP id c80so4687529wme.0
+ for <linux-mediatek@lists.infradead.org>; Wed, 15 Jul 2020 02:32:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=9PiTITbm2Lxqlt8bG5B7tvFplfBvl1yIo6Kmzl56a8E=;
- b=ot1YDljse6ITmipQNFdp/KcP8xZbzbxOBK4qefcNjgnfHxNw60L2lro5mVv0rW9trB
- xr2Npa1kR2uT7uymOuPRZNgM2ZhGFlMSbV0mo3Kgzya3FmBYENGlsCqMUYUQgp1d9tvr
- /P8dABajdryamvwlrBC+ByuqqP+zC6hXna+N5dwZL1CFNdhB3gD4golA6UMyTdyuNmv0
- 0ZlgVVU6O5mQfZbJm3f0Ky3AsQphpOiLi455stO9nHMXi4mJSLcGSN6Rf0yi1F/4c8pH
- DQnX4W7hWsD9tMc5lpqioldm4TvV3YYEVULshS4NijjO70jTD/tcHlIWD+pWrJ0VZ0AY
- LL2g==
+ bh=tDADXb7FAzSw8X5lKDm1Tv4eULkfL4pe/oWt/8u/tjI=;
+ b=LdQed/Ih0lqZSe0CCBXFgRaZlWuEjjDKJxIpKs/nPHffEQP1EdCkcHyMLyH37Yz6LS
+ hw3npNiL3hzjRYUd1n4AFDMrT0loBlTdv1mSuVODZjFfdKA5HWic/IoHbOHOa4zkFowx
+ OXx9B97n+b4Kxs2zb/p5G3JVDB52/VcKxYcfzDBFm9RCqeUtgBLq4ThSGCTp8HmC33Rp
+ 7iPo+vyJiyamddgrr3wrjR3t40fA+jCSFuS/YmUgy7j8Iw+0aw8ElXPK457oReUWs2jO
+ /kew5bxhd7rV2rtWYpK2FoaxwlADY6SqfwuWS/+eX/L8KjU/C3IKG2NuQqIg+YdDhOXJ
+ ar2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=9PiTITbm2Lxqlt8bG5B7tvFplfBvl1yIo6Kmzl56a8E=;
- b=Q1enxxCDHInlol1dL/enmeyfDfv+ZD9g9WbatbSSRNDa8DxnAKeZgJ0mJ6btTti0iG
- xXrzyvOs3GG/mbHvz5kIwPpKvldUoh6MudxquCgHun0qtPIRc94/tNAsZRew5681sY/N
- 9vncfzqHbPshleJfFQb5/7HGDWITaUAKj8toVWiD6qJF4FUQ/Bko2GkS/NlS3N1V/+vE
- B1X0Hi0F31162hDLtasp4LLV/1L2fZm+gmZVamXgJyJaq0P/qaHqz8LRNf2b5KLA4Wjs
- WYEqJSpWzpNSfAaEkgHyGRoOASIeXaUlVPV/gZ9/d1wBBlN07SWaFW4o6MW6gFXkTwFF
- YXTw==
-X-Gm-Message-State: AOAM532oUev1tJwAQGY9+dwnHscniqfITav0PiZ6WX5O/robFtnxI6CS
- IVVCUJvelcWZHWF+CzYKLZI6Cg==
-X-Google-Smtp-Source: ABdhPJzLcC4/hBG4W1UXFYDrQ8+TkBT6n/tQXy5dSXrQ+pSmxaZ5D+Fy9bfnLvg14NXYp0de96+xHg==
-X-Received: by 2002:a1c:44e:: with SMTP id 75mr7879408wme.139.1594805536549;
- Wed, 15 Jul 2020 02:32:16 -0700 (PDT)
+ bh=tDADXb7FAzSw8X5lKDm1Tv4eULkfL4pe/oWt/8u/tjI=;
+ b=qXX0msND9hRnvBASJnnWauVDup4MoVFqW23mcIqUngXwbRrTubA7TLq3iH2lvEFxCW
+ CJPyTVg86WKbO+EWP+5+5j0oiUb0vN0U2XsVVOibBFZJARWG4fP2OoPt73dqj+nf9i7z
+ OPG+r4xdFnjUbZxOnySl9KlTKBwGGdzkfSNlhvJwlOvjB9rh2dKkF5b+T2Fets9RTgCn
+ QURAYScofWAdQjAeIfKIN+WTG7Miss5rv8VuK0HmeQdME7wA4oYQTxPwaf11+Pu3D/zk
+ 0khNwUH8YRdODKrIi7E3bFQA9HMzpEc4XjZJksQej0MOx+guQM/7NnnK+yO63N8HTIiS
+ 5lRw==
+X-Gm-Message-State: AOAM532DpIcwDbU9/V5atim48/WBhFoSdlz7qG+XYE+7K8jabElUdnuO
+ YLsi/kwJuHwBcsT6R1b2b58Uj7vsnP4=
+X-Google-Smtp-Source: ABdhPJxO/xBg6hX1tW1/OdfO23Yl4NCWnZHIuTxnlzd6rvRZWjW7iMR0nFemLByMXCsySd2r1950Wg==
+X-Received: by 2002:a7b:c348:: with SMTP id l8mr8206612wmj.54.1594805537724;
+ Wed, 15 Jul 2020 02:32:17 -0700 (PDT)
 Received: from localhost.localdomain ([2.31.163.61])
- by smtp.gmail.com with ESMTPSA id s203sm2686991wms.32.2020.07.15.02.32.15
+ by smtp.gmail.com with ESMTPSA id s203sm2686991wms.32.2020.07.15.02.32.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Jul 2020 02:32:15 -0700 (PDT)
+ Wed, 15 Jul 2020 02:32:17 -0700 (PDT)
 From: Lee Jones <lee.jones@linaro.org>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 3/8] usb: mtu3: mtu3_trace: Function headers are not
- suitable for kerneldoc
-Date: Wed, 15 Jul 2020 10:32:04 +0100
-Message-Id: <20200715093209.3165641-4-lee.jones@linaro.org>
+Subject: [PATCH v2 4/8] usb: mtu3: mtu3_trace: Supply missing mtu3_debug.h
+ include file
+Date: Wed, 15 Jul 2020 10:32:05 +0100
+Message-Id: <20200715093209.3165641-5-lee.jones@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200715093209.3165641-1-lee.jones@linaro.org>
 References: <20200715093209.3165641-1-lee.jones@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200715_053217_694495_C4F17318 
-X-CRM114-Status: GOOD (  11.06  )
+X-CRM114-CacheID: sfid-20200715_053218_846046_AB878A49 
+X-CRM114-Status: GOOD (  11.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,41 +98,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-mediatek@lists.infradead.org, Chunfeng Yun <chunfeng.yun@mediatek.com>,
  Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Kerneldoc headers should only be used to document functions and data
-structures.
-
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org
-Signed-off-by: Lee Jones <lee.jones@linaro.org>
----
-Changelog
-
-v2: Removed unrelated reference to build warning
-
- drivers/usb/mtu3/mtu3_trace.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/usb/mtu3/mtu3_trace.c b/drivers/usb/mtu3/mtu3_trace.c
-index 4f5e7857ec312..155eae126e5e2 100644
---- a/drivers/usb/mtu3/mtu3_trace.c
-+++ b/drivers/usb/mtu3/mtu3_trace.c
-@@ -1,5 +1,5 @@
- // SPDX-License-Identifier: GPL-2.0
--/**
-+/*
-  * mtu3_trace.c - trace support
-  *
-  * Copyright (C) 2019 MediaTek Inc.
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SWYgdGhlIGhlYWRlciBmaWxlIGNvbnRhaW5pbmcgYSBmdW5jdGlvbidzIHByb3RvdHlwZSBpc24n
+dCBpbmNsdWRlZCBieQp0aGUgc291cmNlZmlsZSBjb250YWluaW5nIHRoZSBhc3NvY2lhdGVkIGZ1
+bmN0aW9uLCB0aGUgYnVpbGQgc3lzdGVtCmNvbXBsYWlucyBvZiBtaXNzaW5nIHByb3RvdHlwZXMu
+CgpGaXhlcyB0aGUgZm9sbG93aW5nIFc9MSBrZXJuZWwgYnVpbGQgd2FybmluZyhzKToKCiBkcml2
+ZXJzL3VzYi9tdHUzL210dTNfdHJhY2UuYzoxMzo2OiB3YXJuaW5nOiBubyBwcmV2aW91cyBwcm90
+b3R5cGUgZm9yIOKAmG10dTNfZGJnX3RyYWNl4oCZIFstV21pc3NpbmctcHJvdG90eXBlc10KIDEz
+IHwgdm9pZCBtdHUzX2RiZ190cmFjZShzdHJ1Y3QgZGV2aWNlICpkZXYsIGNvbnN0IGNoYXIgKmZt
+dCwgLi4uKQogfCBefn5+fn5+fn5+fn5+fgoKQ2M6IENodW5mZW5nIFl1biA8Y2h1bmZlbmcueXVu
+QG1lZGlhdGVrLmNvbT4KQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpD
+YzogbGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpTaWduZWQtb2ZmLWJ5OiBMZWUg
+Sm9uZXMgPGxlZS5qb25lc0BsaW5hcm8ub3JnPgotLS0KQ2hhbmdlbG9nCgp2MjogTm8gY2hhbmdl
+IC0gcm9ib3Qgd2FybmluZyBkaWQgbm90IGFwcGVhciB0byBiZSB2YWxpZAoKIGRyaXZlcnMvdXNi
+L210dTMvbXR1M190cmFjZS5jIHwgMSArCiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKykK
+CmRpZmYgLS1naXQgYS9kcml2ZXJzL3VzYi9tdHUzL210dTNfdHJhY2UuYyBiL2RyaXZlcnMvdXNi
+L210dTMvbXR1M190cmFjZS5jCmluZGV4IDE1NWVhZTEyNmU1ZTIuLmQxN2RkYjg3Y2RjZjIgMTAw
+NjQ0Ci0tLSBhL2RyaXZlcnMvdXNiL210dTMvbXR1M190cmFjZS5jCisrKyBiL2RyaXZlcnMvdXNi
+L210dTMvbXR1M190cmFjZS5jCkBAIC04LDYgKzgsNyBAQAogICovCiAKICNkZWZpbmUgQ1JFQVRF
+X1RSQUNFX1BPSU5UUworI2luY2x1ZGUgIm10dTNfZGVidWcuaCIKICNpbmNsdWRlICJtdHUzX3Ry
+YWNlLmgiCiAKIHZvaWQgbXR1M19kYmdfdHJhY2Uoc3RydWN0IGRldmljZSAqZGV2LCBjb25zdCBj
+aGFyICpmbXQsIC4uLikKLS0gCjIuMjUuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRp
+YXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
