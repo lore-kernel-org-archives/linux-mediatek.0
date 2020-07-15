@@ -2,22 +2,22 @@ Return-Path: <SRS0=kQBs=A2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLACK
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BBDE4C433E1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 14:01:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 803A8C433E1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 16:29:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 70A9720658
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 14:01:37 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 51A212065E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 16:29:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lK3EL5TD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 70A9720658
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2HWcF3cQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 51A212065E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baikalelectronics.ru
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -25,58 +25,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=aeeaD/5Rtz6OJXjbrts7mTzsKaXUNomJGZd5qoj27hk=; b=lK3EL5TDRidNPS4DflZOpWGDC
-	WKozokySgctdjs3b5iux8bbFS7XLgcr7Avfa6FI50jvd/bBDbZXY0YANu7JQsTtK858G/FSOYcP7b
-	xJ3y1GOKuS+l7U0k3C8rcKb+TYG4Ydq9djxVUIlT8kpVJPvqARJW1fHX94twNsxpYunDurKBTxbQu
-	ZuV4f3jYUrm42bsXwYQveqaAQ5MGulcDLZQjXL40+IMO5+ScCF96i58yq0yBzDas8LU/jxJI3Skd4
-	7K9EzoOiJST+enHAmoTPzxsadZXjB9lgbFWG5EMhWbyVrXiGwYj4fZgEbL9dGX70DJGDT7+cRBTYh
-	KzbrKpz6Q==;
+	 bh=mZ8pm01ynzs7bsVTX2TzTzZ3ncFiKooVoitYIYKq9/0=; b=2HWcF3cQwkmSTrob6jr5lDnyi
+	XINUrFGDWLvX5WPfaL7pfwZnbw51Npxcv6yvi7vVv0wI33Hipb5M7yd+ofH7aj+OQmUKWmwbI6jo0
+	iC+ZhJJ3ARcr2HSAZIFMjdtruX4nWfjiQtsTbKwgE7zr/koY4dARhvXsnTXUffYZHdm2m9zjmHX3g
+	XXGyFH6lO/5nhoStjJ7IEb43ffHlc8O4oe3g4j1xDkz61bpQ1nd7OJJqSRP11E+yXmKzATOiGO48M
+	MuE4ryfr0bIn6mYZlBqK63xupLYv1qz9UjZk0A3uG0YBWYH7d1I0J25zdPeeMF2bUfTR4tchYws12
+	nkNuxso7A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jvhyQ-0006vl-In; Wed, 15 Jul 2020 14:01:26 +0000
-Received: from mga02.intel.com ([134.134.136.20])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jvhyL-0006tV-E7; Wed, 15 Jul 2020 14:01:23 +0000
-IronPort-SDR: Xyt7QWicYTValwqVxqQXzCYO8WZmVB0vQ9waaje5wVw/qZte44Kl4R6PN7og0yDiA7neRI+Dwa
- pn+x8+NIOtdg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9682"; a="137274872"
-X-IronPort-AV: E=Sophos;i="5.75,355,1589266800"; d="scan'208";a="137274872"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jul 2020 07:01:17 -0700
-IronPort-SDR: XTvig8Hd6pw0Bo7G119IyDJj+QXn1cnffd/pxIxXx+gbid/YfxmBBFzvlQpZmz86ETvvZgj+Z/
- NhRyipSUFpYg==
-X-IronPort-AV: E=Sophos;i="5.75,355,1589266800"; d="scan'208";a="390787625"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jul 2020 07:01:12 -0700
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id E01242091F; Wed, 15 Jul 2020 17:01:10 +0300 (EEST)
-Date: Wed, 15 Jul 2020 17:01:10 +0300
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Subject: Re: [V7, 1/2] media: dt-bindings: media: i2c: Document OV02A10
- bindings
-Message-ID: <20200715140110.GD16711@paasikivi.fi.intel.com>
-References: <20200505070451.GS9190@paasikivi.fi.intel.com>
- <1588688238.8804.150.camel@mhfsdcap03>
- <20200506112136.GV9190@paasikivi.fi.intel.com>
- <1588856325.8804.179.camel@mhfsdcap03>
- <CAAFQd5CXRD_j7Xkxb4=9kkd+pDy4W5pirAPSG8RsMVH6L-MU2w@mail.gmail.com>
- <20200507141147.GF9190@paasikivi.fi.intel.com>
- <CAAFQd5DgDk57MCc4vE9VmifZYjtO_SUFss+vc8W-28SFHbKDrA@mail.gmail.com>
- <1588920685.8804.230.camel@mhfsdcap03>
- <20200510223552.GA11272@paasikivi.fi.intel.com>
- <1589197265.8804.262.camel@mhfsdcap03>
+	id 1jvkHk-0003S4-2c; Wed, 15 Jul 2020 16:29:32 +0000
+Received: from [94.125.187.42] (helo=mail.baikalelectronics.ru)
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jvkHe-0003KL-0R; Wed, 15 Jul 2020 16:29:27 +0000
+Received: from localhost (unknown [127.0.0.1])
+ by mail.baikalelectronics.ru (Postfix) with ESMTP id 1C2E980307C2;
+ Wed, 15 Jul 2020 16:28:56 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at baikalelectronics.ru
+Received: from mail.baikalelectronics.ru ([127.0.0.1])
+ by localhost (mail.baikalelectronics.ru [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id R4yGKnKOMh8D; Wed, 15 Jul 2020 19:28:54 +0300 (MSK)
+Date: Wed, 15 Jul 2020 19:28:52 +0300
+From: Serge Semin <Sergey.Semin@baikalelectronics.ru>
+To: Claire Chang <tientzu@chromium.org>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] serial: 8250_mtk: Fix high-speed baud rates clamping
+Message-ID: <20200715162852.5ykgubvoc7tvbfhc@mobilestation>
+References: <20200714124113.20918-1-Sergey.Semin@baikalelectronics.ru>
+ <CAP2xMbvwxYaGPPCDWY2LWUc2te8kS9t-+A0zieYp3RiGMJR6ng@mail.gmail.com>
+ <CALiNf2-mmC1ueeiQ6xh5BPzCH_ratYPpeW1Rq=EHsA7+e6yK0A@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1589197265.8804.262.camel@mhfsdcap03>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <CALiNf2-mmC1ueeiQ6xh5BPzCH_ratYPpeW1Rq=EHsA7+e6yK0A@mail.gmail.com>
+X-ClientProxiedBy: MAIL.baikal.int (192.168.51.25) To mail (192.168.51.25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200715_100121_727116_85875E9D 
-X-CRM114-Status: GOOD (  57.83  )
+X-CRM114-CacheID: sfid-20200715_122926_433232_FCF9C2BE 
+X-CRM114-Status: GOOD (  36.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,275 +72,161 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Nicolas Boichat <drinkcat@chromium.org>,
+Cc: Nicolas Boichat <drinkcat@google.com>, chromeos-bluetooth-upstreaming
+ <chromeos-bluetooth-upstreaming@chromium.org>,
+ Vignesh Raghavendra <vigneshr@ti.com>, lkml <linux-kernel@vger.kernel.org>,
+ stable@vger.kernel.org, Alexey Malahov <Alexey.Malahov@baikalelectronics.ru>,
+ BlueZ <linux-bluetooth@vger.kernel.org>, Lukas Wunner <lukas@wunner.de>,
+ "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-serial@vger.kernel.org, Daniel Winkler <danielwinkler@google.com>,
+ abhishekpandit@chromium.org, Aaron Sierra <asierra@xes-inc.com>,
  Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- linux-devicetree <devicetree@vger.kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Shengnan Wang =?utf-8?B?KOeOi+Wco+eUtyk=?= <shengnan.wang@mediatek.com>,
- Tomasz Figa <tfiga@chromium.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Louis Kuo <louis.kuo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Cao Bing Bu <bingbu.cao@intel.com>, matrix.zhu@aliyun.com,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
- Joerg  Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-hi Dongchun,
+On Wed, Jul 15, 2020 at 01:36:04PM +0800, Claire Chang wrote:
+> On Wed, Jul 15, 2020 at 4:45 AM Daniel Winkler <danielwinkler@google.com> wrote:
+> >
+> > Thank you Sergey for looking into this. Adding folks working on this
+> > platform to perform validation of the proposed patch.
+> >
+> > Best,
+> > Daniel
+> >
+> > On Tue, Jul 14, 2020 at 5:41 AM Serge Semin
+> > <Sergey.Semin@baikalelectronics.ru> wrote:
+> > >
+> > > Commit 7b668c064ec3 ("serial: 8250: Fix max baud limit in generic 8250
+> > > port") fixed limits of a baud rate setting for a generic 8250 port.
+> > > In other words since that commit the baud rate has been permitted to be
+> > > within [uartclk / 16 / UART_DIV_MAX; uartclk / 16], which is absolutely
+> > > normal for a standard 8250 UART port. But there are custom 8250 ports,
+> > > which provide extended baud rate limits. In particular the Mediatek 8250
+> > > port can work with baud rates up to "uartclk" speed.
+> > >
+> > > Normally that and any other peculiarity is supposed to be handled in a
+> > > custom set_termios() callback implemented in the vendor-specific
+> > > 8250-port glue-driver. Currently that is how it's done for the most of
+> > > the vendor-specific 8250 ports, but for some reason for Mediatek a
+> > > solution has been spread out to both the glue-driver and to the generic
+> > > 8250-port code. Due to that a bug has been introduced, which permitted the
+> > > extended baud rate limit for all even for standard 8250-ports. The bug
+> > > has been fixed by the commit 7b668c064ec3 ("serial: 8250: Fix max baud
+> > > limit in generic 8250 port") by narrowing the baud rates limit back down to
+> > > the normal bounds. Unfortunately by doing so we also broke the
+> > > Mediatek-specific extended bauds feature.
+> > >
+> > > A fix of the problem described above is twofold. First since we can't get
+> > > back the extended baud rate limits feature to the generic set_termios()
+> > > function and that method supports only a standard baud rates range, the
+> > > requested baud rate must be locally stored before calling it and then
+> > > restored back to the new termios structure after the generic set_termios()
+> > > finished its magic business. By doing so we still use the
+> > > serial8250_do_set_termios() method to set the LCR/MCR/FCR/etc. registers,
+> > > while the extended baud rate setting procedure will be performed later in
+> > > the custom Mediatek-specific set_termios() callback. Second since a true
+> > > baud rate is now fully calculated in the custom set_termios() method we
+> > > need to locally update the port timeout by calling the
+> > > uart_update_timeout() function. After the fixes described above are
+> > > implemented in the 8250_mtk.c driver, the Mediatek 8250-port should
+> > > get back to normally working with extended baud rates.
+> > >
+> > > Link: https://lore.kernel.org/linux-serial/20200701211337.3027448-1-danielwinkler@google.com
+> > >
+> > > Fixes: 7b668c064ec3 ("serial: 8250: Fix max baud limit in generic 8250 port")
+> > > Reported-by: Daniel Winkler <danielwinkler@google.com>
+> > > Signed-off-by: Serge Semin <Sergey.Semin@baikalelectronics.ru>
 
-On Mon, May 11, 2020 at 07:41:05PM +0800, Dongchun Zhu wrote:
-> Hi Sakari,
-> 
-> On Mon, 2020-05-11 at 01:35 +0300, Sakari Ailus wrote:
-> > Hi Dongchun,
-> > 
-> > On Fri, May 08, 2020 at 02:51:25PM +0800, Dongchun Zhu wrote:
-> > > Hi Sakari, Tomasz,
-> > > 
-> > > On Thu, 2020-05-07 at 16:25 +0200, Tomasz Figa wrote:
-> > > > On Thu, May 7, 2020 at 4:12 PM Sakari Ailus
-> > > > <sakari.ailus@linux.intel.com> wrote:
-> > > > >
-> > > > > Hi Tomasz, Dongchun,
-> > > > >
-> > > > > On Thu, May 07, 2020 at 03:50:40PM +0200, Tomasz Figa wrote:
-> > > > > > Hi Sakari and Dongchun,
-> > > > > >
-> > > > > > On Thu, May 7, 2020 at 3:00 PM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
-> > > > > > >
-> > > > > > > Hi Sakari,
-> > > > > > >
-> > > > > > > Thanks for the review.
-> > > > > > >
-> > > > > > > On Wed, 2020-05-06 at 14:21 +0300, Sakari Ailus wrote:
-> > > > > > > > Hi Dongchun,
-> > > > > > > >
-> > > > > > > > On Tue, May 05, 2020 at 10:17:18PM +0800, Dongchun Zhu wrote:
-> > > > > > > > > Hi Sakari,
-> > > > > > > > >
-> > > > > > > > > Thanks for the review.
-> > > > > > > > >
-> > > > > > > > > On Tue, 2020-05-05 at 10:04 +0300, Sakari Ailus wrote:
-> > > > > > > > > > Hi Dongchun,
-> > > > > > > > > >
-> > > > > > > > > > On Thu, Apr 30, 2020 at 04:09:23PM +0800, Dongchun Zhu wrote:
-> > > > > > > > > > > Add DT bindings documentation for Omnivision OV02A10 image sensor.
-> > > > > > > > > > >
-> > > > > > > > > > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > > > > > > > > > ---
-> > > > > > > > > > >  .../bindings/media/i2c/ovti,ov02a10.yaml           | 148 +++++++++++++++++++++
-> > > > > > > > > > >  MAINTAINERS                                        |   7 +
-> > > > > > > > > > >  2 files changed, 155 insertions(+)
-> > > > > > > > > > >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > > > > > > > > >
-> > > > > > > > > > > diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > > > > > > > > > new file mode 100644
-> > > > > > > > > > > index 0000000..2be4bd2
-> > > > > > > > > > > --- /dev/null
-> > > > > > > > > > > +++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > > > > > > > > > @@ -0,0 +1,148 @@
-> > > > > > > > > > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > > > > > > > > > > +# Copyright (c) 2020 MediaTek Inc.
-> > > > > > > > > > > +%YAML 1.2
-> > > > > > > > > > > +---
-> > > > > > > > > > > +$id: http://devicetree.org/schemas/media/i2c/ovti,ov02a10.yaml#
-> > > > > > > > > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > > > > > > > > > +
-> > > > > > > > > > > +title: Omnivision OV02A10 CMOS Sensor Device Tree Bindings
-> > > > > > > > > > > +
-> > > > > > > > > > > +maintainers:
-> > > > > > > > > > > +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > > > > > > > > > +
-> > > > > > > > > > > +description: |-
-> > > > > > > > > > > +  The Omnivision OV02A10 is a low-cost, high performance, 1/5-inch, 2 megapixel
-> > > > > > > > > > > +  image sensor, which is the latest production derived from Omnivision's CMOS
-> > > > > > > > > > > +  image sensor technology. Ihis chip supports high frame rate speeds up to 30fps
-> > > > > > > > > > > +  @ 1600x1200 (UXGA) resolution transferred over a 1-lane MIPI interface. The
-> > > > > > > > > > > +  sensor output is available via CSI-2 serial data output.
-> > > > > > > > > > > +
-> > > > > > > > > > > +properties:
-> > > > > > > > > > > +  compatible:
-> > > > > > > > > > > +    const: ovti,ov02a10
-> > > > > > > > > > > +
-> > > > > > > > > > > +  reg:
-> > > > > > > > > > > +    maxItems: 1
-> > > > > > > > > > > +
-> > > > > > > > > > > +  clocks:
-> > > > > > > > > > > +    items:
-> > > > > > > > > > > +      - description: top mux camtg clock
-> > > > > > > > > > > +      - description: devider clock
-> > > > > > > > > > > +
-> > > > > > > > > > > +  clock-names:
-> > > > > > > > > > > +    items:
-> > > > > > > > > > > +      - const: eclk
-> > > > > > > > > > > +      - const: freq_mux
-> > > > > > > > > > > +
-> > > > > > > > > > > +  clock-frequency:
-> > > > > > > > > > > +    description:
-> > > > > > > > > > > +      Frequency of the eclk clock in Hertz.
-> > > > > > > > > > > +
-> > > > > > > > > > > +  dovdd-supply:
-> > > > > > > > > > > +    description:
-> > > > > > > > > > > +      Definition of the regulator used as interface power supply.
-> > > > > > > > > > > +
-> > > > > > > > > > > +  avdd-supply:
-> > > > > > > > > > > +    description:
-> > > > > > > > > > > +      Definition of the regulator used as analog power supply.
-> > > > > > > > > > > +
-> > > > > > > > > > > +  dvdd-supply:
-> > > > > > > > > > > +    description:
-> > > > > > > > > > > +      Definition of the regulator used as digital power supply.
-> > > > > > > > > > > +
-> > > > > > > > > > > +  powerdown-gpios:
-> > > > > > > > > > > +    description:
-> > > > > > > > > > > +      The phandle and specifier for the GPIO that controls sensor powerdown.
-> > > > > > > > > > > +
-> > > > > > > > > > > +  reset-gpios:
-> > > > > > > > > > > +    description:
-> > > > > > > > > > > +      The phandle and specifier for the GPIO that controls sensor reset.
-> > > > > > > > > > > +
-> > > > > > > > > > > +  rotation:
-> > > > > > > > > > > +    description:
-> > > > > > > > > > > +      Definition of the sensor's placement, valid values are 0 and 180.
-> > > > > > > > > > > +    allOf:
-> > > > > > > > > > > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> > > > > > > > > > > +      - enum:
-> > > > > > > > > > > +          - 0    # Sensor Mounted Upright
-> > > > > > > > > > > +          - 180  # Sensor Mounted Upside Down
-> > > > > > > > > > > +
-> > > > > > > > > > > +  ovti,mipi-tx-speed:
-> > > > > > > > > > > +    description:
-> > > > > > > > > > > +      Indication of MIPI transmission speed select.
-> > > > > > > > > >
-> > > > > > > > > > What exactly does this signify? And how do you come up with the number?
-> > > > > > > > > >
-> > > > > > > > >
-> > > > > > > > > Apologies for not addressing this number clear.
-> > > > > > > > >
-> > > > > > > > > From the datasheet, P1:0xA1 register represents TX_SPEED_AREA_SEL with
-> > > > > > > > > the default val: 0x03.
-> > > > > > > > > The description of this RW register is as below:
-> > > > > > > > > Bit[2:0]: MIPI transmission speed select.
-> > > > > > > > >
-> > > > > > > > > Thus the enum should be definited as [ 0, 1, 2, 3, 4, 5, 6, 7 ].
-> > > > > > > > > This would be fixed in next release.
-> > > > > > > > >
-> > > > > > > > > In the meantime, as the default val of P1:0xA1 is 0x03, we hope to keep
-> > > > > > > > > that value if there is no setting for this private property in DT.
-> > > > > > > > > The caller in driver would be updated like this in next release.
-> > > > > > > > > if (ov02a10->mipi_clock_tx_speed)
-> > > > > > > > >     ret = i2c_smbus_write_byte_data(...,...);
-> > > > > > > >
-> > > > > > > > How did you pick the value in the example? And why do you believe it is
-> > > > > > > > specific to a platform, and not e.g. a sensor mode?
-> > > > > > > >
-> > > > > > >
-> > > > > > > We look into P1:0XA1, one register that defines MIPI transmission speed
-> > > > > > > select.
-> > > > > > > From the datasheet, we can get the possible values that could be set to
-> > > > > > > P1:0xA1.
-> > > > > > >
-> > > > > > > Actually this register is an independent of sensor mode, it is just
-> > > > > > > included in sensor mode's register setting table.
-> > > > > > >
-> > > > > > > In addition, this private DT Property is created to fix the MIPI test
-> > > > > > > failure. The register values are adjusted and verified from vendor to
-> > > > > > > make sensor signal meet MIPI specification.
-> > > > > > >
-> > > > > >
-> > > > > > In theory the value could depend on the mode, because different link
-> > > > > > rate could impose different requirements for the physical interface.
-> > > > > > In practice, we haven't seen any hardware that would require different
-> > > > > > values for different modes.
-> > > > >
-> > > > > The mode (possibly in conjunction with other information available to the
-> > > > > driver via V4L2 fwnode interface) precisely defines the parameters of the
-> > > > > CSI-2 bus --- apart from the possible exception of the bus timing related
-> > > > > parameters but this is not supported by the name of the parameter.
-> > > > >
-> > > > > Therefore I don't see how this parameter, which supposedly is used to
-> > > > > determine the CSI-2 transmissions speed, could be board specific and thus
-> > > > > belong to DT.
-> > > > 
-> > > > According to the very imprecise information I have access to, it is
-> > > > not about the CSI-2 bus itself, but rather some internal parameter of
-> > > > the sensor's CSI interface. Unfortunately there isn't much information
-> > > > on what this value exactly controls...
-> > > > 
-> > > > Best regards,
-> > > > Tomasz
-> > > 
-> > > Just got some feedback from OV vendor about this parameter.
-> > > 
-> > > P1:0xA1 is the register to control D-PHY timing setting based on bclk.
-> > > It is to adjust the MIPI clock voltage to improve the clock drive
-> > > capability, and has no affect on the transmission speed of MIPI data.
-> > > 
-> > > From vendor's perspective, P1:0xA1 depends upon the length of FPC of
-> > > camera module that used on the board. Considering the physical
-> > > connections for MIPI signals to user-facing camera are very different
-> > > between our 2 projects, it can be very difficult to find universal SI
-> > > parameters for both projects.
-> > 
-> > Are you using different values for this parameter on these two projects?
-> > 
-> 
-> Yes. We're actually assigning two different values to this property.
-> One is 0x03, the other is 0x04.
-> 
-> > > 
-> > > Thus here we create one new DT property to separate these tuning in
-> > > driver, to be more like project-specific.
-> > > 
-> > > More details about the register is as below.
-> > > P1:0xA1 val: 0x03 default
-> > > Case: 0  20MHz-30MHz
-> > >       1  30MHz-50MHz
-> > >       2  50MHz-75MHz
-> > >       3  75MHz-100MHz   (default, old DB setting use)
-> > >       4  100MHz-130MHz  (suggested, new DB setting use)
-> > >       5  Manual
-> > > So the value in the example should be [ 0, 1, 2, 3, 4, 5 ].
-> > > 
-> > > Additionally, P1:0xA1 is recommended to be set as 0x04 in the newest DB
-> > > setting. We would adjust the register in next release.
-> > 
-> > Thank you for digging into the issue.
-> > 
-> > Based on the above description, the parameter would depend on both the link
-> > frequency and possibly also on wire length. I guess there's no harm from
-> > using too strong drive, apart from perhaps power consumption? As in
-> > principle this could be different for different sensor modes. Albeit I
-> > don't remember seeing a sensor where such a parameter would have been
-> > needed to be modified.
-> > 
-> 
-> This may be related to something about sensor fine tuning.
-> As OV vendor pointed out, the sensor chip provides such one property
-> that user could adjust based on their specific project.
-> Also, case 4 (0x04) setting is confirmed to have a little more power
-> consumption than case 3 (0x03).
+> Tested-by: Claire Chang <tientzu@chromium.org>
+> > >
+> > > ---
+> > >
+> > > Folks, sorry for a delay with the problem fix. A solution is turned out to
+> > > be a bit more complicated than I originally thought in my comment to the
+> > > Daniel revert-patch.
+> > >
+> > > Please also note, that I don't have a Mediatek hardware to test the
+> > > solution suggested in the patch. The code is written as on so called
+> > > the tip of the pen after digging into the 8250_mtk.c and 8250_port.c
+> > > drivers code. So please Daniel or someone with Mediatek 8250-port
+> > > available on a board test this patch first and report about the results in
+> > > reply to this emailing thread. After that, if your conclusion is positive
+> > > and there is no objection against the solution design the patch can be
+> > > merged in.
+> I tested it with mt8183 + QCA6174.
+> The UART Bluetooth works fine with this fix.
+> Thanks!
 
-Apologies for bringing back an old topic --- the driver supports just a
-single mode, using a specific data rate.
+Great! Thanks.
 
-If another mode is added later on, will it continue to use the same value
-for this? Based on the documentation, it seems that this is primarily
-defined by the frequency of the bus, not by board design. Therefore putting
-this to DT (and thus ignoring the frequency) appears wrong.
+Greg, Jiri, Matthias since a test's showed the patch correctness you may now
+merge it in if you are ok with its design. It shall fix the problem Daniel
+reported.
 
--- 
-Kind regards,
+-Sergey
 
-Sakari Ailus
+> > >
+> > > Cc: Alexey Malahov <Alexey.Malahov@baikalelectronics.ru>
+> > > Cc: Daniel Winkler <danielwinkler@google.com>
+> > > Cc: Aaron Sierra <asierra@xes-inc.com>
+> > > Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> > > Cc: Lukas Wunner <lukas@wunner.de>
+> > > Cc: Vignesh Raghavendra <vigneshr@ti.com>
+> > > Cc: linux-serial@vger.kernel.org
+> > > Cc: linux-mediatek@lists.infradead.org
+> > > Cc: BlueZ <linux-bluetooth@vger.kernel.org>
+> > > Cc: chromeos-bluetooth-upstreaming <chromeos-bluetooth-upstreaming@chromium.org>
+> > > Cc: abhishekpandit@chromium.org
+> > > Cc: stable@vger.kernel.org
+> > > ---
+> > >  drivers/tty/serial/8250/8250_mtk.c | 18 ++++++++++++++++++
+> > >  1 file changed, 18 insertions(+)
+> > >
+> > > diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+> > > index f839380c2f4c..98b8a3e30733 100644
+> > > --- a/drivers/tty/serial/8250/8250_mtk.c
+> > > +++ b/drivers/tty/serial/8250/8250_mtk.c
+> > > @@ -306,8 +306,21 @@ mtk8250_set_termios(struct uart_port *port, struct ktermios *termios,
+> > >         }
+> > >  #endif
+> > >
+> > > +       /*
+> > > +        * Store the requested baud rate before calling the generic 8250
+> > > +        * set_termios method. Standard 8250 port expects bauds to be
+> > > +        * no higher than (uartclk / 16) so the baud will be clamped if it
+> > > +        * gets out of that bound. Mediatek 8250 port supports speed
+> > > +        * higher than that, therefore we'll get original baud rate back
+> > > +        * after calling the generic set_termios method and recalculate
+> > > +        * the speed later in this method.
+> > > +        */
+> > > +       baud = tty_termios_baud_rate(termios);
+> > > +
+> > >         serial8250_do_set_termios(port, termios, old);
+> > >
+> > > +       tty_termios_encode_baud_rate(termios, baud, baud);
+> > > +
+> > >         /*
+> > >          * Mediatek UARTs use an extra highspeed register (MTK_UART_HIGHS)
+> > >          *
+> > > @@ -339,6 +352,11 @@ mtk8250_set_termios(struct uart_port *port, struct ktermios *termios,
+> > >          */
+> > >         spin_lock_irqsave(&port->lock, flags);
+> > >
+> > > +       /*
+> > > +        * Update the per-port timeout.
+> > > +        */
+> > > +       uart_update_timeout(port, termios->c_cflag, baud);
+> > > +
+> > >         /* set DLAB we have cval saved in up->lcr from the call to the core */
+> > >         serial_port_out(port, UART_LCR, up->lcr | UART_LCR_DLAB);
+> > >         serial_dl_write(up, quot);
+> > > --
+> > > 2.26.2
+> > >
 
 _______________________________________________
 Linux-mediatek mailing list
