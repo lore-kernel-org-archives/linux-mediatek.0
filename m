@@ -2,78 +2,91 @@ Return-Path: <SRS0=kQBs=A2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DF33C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 01:40:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 72A99C433E4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 03:38:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 47B7620674
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 01:40:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3F3502072D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 03:38:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pi2zKRTF";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="DJlv4g7d"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 47B7620674
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="vwlFSpxc";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="xCm6WtGg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3F3502072D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZuejP/eGAM8OSkxZfjeCXSIpHaRSN8nsWGgQmADIxlc=; b=pi2zKRTF41g/OgYBaPbSZ4IEr5
-	l/8mNXyp5W03Ldlc2rKkYUke4jkjnmtile/gxgoNCVzOPm9wRsvFIRpnDyOW90oF95Ht+Eet3ar4p
-	B0WtchXBZtq4Bpf159F1uDlEiESlhO25+QR6Hwb+4yvMPzAaCuqojV+ZL+1S7jAYW+m15RGm/OAe+
-	E5G226gJ+3wWgFrZ1bsKU8gJPA4SztYP5PMSO6aVJIVJjctLRGxjFHE2j5buOJGl9NSTHMettNUd+
-	vz9nw6htEA7FOyv5fXfqGNVZRzJgTnFDUEmCDC7KgCPxw5b4T0mbim8anLcSuDIEp3kScg0+r0BNK
-	wn0q/r0g==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Nw3+ul9Mng1+j94PbqzhDqpAABCRHGlD9Uhp/mGK9/k=; b=vwlFSpxc7QlIqeJX4bCoezCS/
+	VhG0arcQSykMqjoXHxnl4+iy8TDy5G0ZCFvnbeP+NMky5UEhiYxM6jPet3/7drMb1my9ClmhkLiXQ
+	VqZO+fLtOXLCCYjvaXH50/fnCWcqJZu5QkcjtXTL22ap8ZOZHyuDWsytd2CKYTkdw37mDykqlA89z
+	NGFZkYR07lIg5tW4GxlxbCWhTUxFPzI0Cd/5stn+vFR0BuF4QNZJzTJ0B6NsA1hKAIdHbH/hl6Ajj
+	xHurKKd6hSccT9f4O6Bsg2LCgQ6FUAHRtfilrRahX4+2qF3ryomUnlQeRaNqytthroi6ty4ZULuia
+	aJTS24JGw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jvWPa-0005J7-C9; Wed, 15 Jul 2020 01:40:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jvYFh-0007pO-Bd; Wed, 15 Jul 2020 03:38:37 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jvWPW-0005HH-6x; Wed, 15 Jul 2020 01:40:39 +0000
-X-UUID: 52ede0064a7f416b8a9d7d4bcd5eacd3-20200714
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=ylnzoML0VYD7FwLYgLcyFDj88GElAkBLBl7ZUdQKdSY=; 
- b=DJlv4g7dVA6QLf0F5Z5ft99472N9qkO2M8/RgPijAIc0CdqwSlllDHzwkg16s+n/UAfhvI78WUtv7A1dT1dO1C0pR9TtVu+XXaLdEc+ydyoc/MnND4L9R2v7cLPte9bsXU5r5c+7pqq6sbJcWug+lGVBaR1pDZT1Ue+W55mb84Q=;
-X-UUID: 52ede0064a7f416b8a9d7d4bcd5eacd3-20200714
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <fengping.yu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1756472868; Tue, 14 Jul 2020 17:40:14 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Jul 2020 18:40:15 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 15 Jul 2020 09:40:06 +0800
-Received: from localhost.localdomain (10.15.20.246) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 15 Jul 2020 09:40:05 +0800
-From: Fengping Yu <fengping.yu@mediatek.com>
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Rob Herring
- <robh+dt@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "Andy
- Shevchenko" <andriy.shevchenko@linux.intel.com>, Marco Felsch
- <m.felsch@pengutronix.de>
-Subject: [PATCH v14 3/3] configs: defconfig: Add CONFIG_KEYBOARD_MTK_KPD=m
-Date: Wed, 15 Jul 2020 09:35:14 +0800
-Message-ID: <20200715013511.32106-4-fengping.yu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1jvYFc-0007o3-NO
+ for linux-mediatek@lists.infradead.org; Wed, 15 Jul 2020 03:38:33 +0000
+Received: by mail-pf1-x443.google.com with SMTP id z3so1294695pfn.12
+ for <linux-mediatek@lists.infradead.org>; Tue, 14 Jul 2020 20:38:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=DC+j4EVae4RnLgJTCnOM6IjTjMXDQK4HU4GWa3Ol4iw=;
+ b=xCm6WtGghrzZIHVeAIpX3VeTjOAkwZB6Fpfm+5q+peTbvNwBqUgp7IbGuiU9enBs7U
+ 5uHg40id4ZeaRWExKahikfXjxTSRsayAf1OXtEwF2YY1M2ucllTGBKph8FxkHmFxe9vX
+ O4cr4qQvAn05YFGyDunY/3YCeP+Fd45IrYqMrp7lpgFgs6OPtGQ7lBFkQN3WJMca2jI4
+ weeg3jYtK8YO9eKuAFpTmBWVhXHH+aGK3hPDr8f7e7c8uRK7rQaD6SLQvBduNO269v1/
+ EC7201KifvPXfG5MRO0gKp3lv2JdU7+45Diuj4RBonHUhLB9rEMeHspt+9KUb9i8jkQa
+ FNSQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=DC+j4EVae4RnLgJTCnOM6IjTjMXDQK4HU4GWa3Ol4iw=;
+ b=TXHqYwj7cNgk/PJgjCn2p+e7R4t0ehcrC//Oq6O04XkkHVwIeu5kv44qIpkRuCZWFo
+ VILmy7qk8cj+Ub/VrudqLeSt6eguZR01qB6RvceK6vXTLPbIqSDLKlcyZsvIEx/447M8
+ 6PKYhrj4pAbGaFvXta7o9L7GKcNAGBpXhlFnmIpNXsN6r8EH9G8BKbuw4Dl/hZc4znP3
+ uy1GRZPYZ5bDiwfLrmi303C52+7ZjpeFEOrhWx85OrJ0lk5uiNYUa2QFw7SQzfxt+1fL
+ WYtxxV70GMvfRNpUguQOKNndMAptLLP0bwr3/RLgK4+JDWqqStPS784QQIgIU6tv/XdO
+ SGQw==
+X-Gm-Message-State: AOAM5309FuKMECB48f3eUnYDhATsM6T3lGVSy8jcPvqD0HueTwZzKa0v
+ U7e9gjtp1GhaEC7zeidRItNxng==
+X-Google-Smtp-Source: ABdhPJxrD9asMf+2w6YPcEVsiXhZteYoAJngfCjvTBomN8Y7B2D79FF9MwHPqmVmjskvbysGwmnbwQ==
+X-Received: by 2002:aa7:858c:: with SMTP id w12mr7531416pfn.143.1594784310954; 
+ Tue, 14 Jul 2020 20:38:30 -0700 (PDT)
+Received: from localhost ([122.172.34.142])
+ by smtp.gmail.com with ESMTPSA id m26sm302796pff.84.2020.07.14.20.38.29
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 14 Jul 2020 20:38:30 -0700 (PDT)
+Date: Wed, 15 Jul 2020 09:08:28 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: "andrew-sh.cheng" <andrew-sh.cheng@mediatek.com>
+Subject: Re: [PATCH v7 2/8] cpufreq: mediatek: Enable clock and regulator
+Message-ID: <20200715033828.zzjavbzg32dxkga4@vireshk-i7>
+References: <1594348284-14199-1-git-send-email-andrew-sh.cheng@mediatek.com>
+ <1594348284-14199-3-git-send-email-andrew-sh.cheng@mediatek.com>
+ <20200713093909.676v7wxjzsz4vbxv@vireshk-i7>
+ <1594732689.24540.4.camel@mtksdaap41>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1594732689.24540.4.camel@mtksdaap41>
+User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200714_214038_574601_E24A7828 
-X-CRM114-Status: UNSURE (   8.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200714_233832_793830_6CAC4FFF 
+X-CRM114-Status: GOOD (  25.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,38 +98,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org,
- "fengping.yu" <fengping.yu@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
+ srv_heupstream@mediatek.com, linux-pm@vger.kernel.org,
+ Stephen Boyd <sboyd@kernel.org>, Mark Brown <broonie@kernel.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, Liam Girdwood <lgirdwood@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
+ Chanwoo Choi <cw00.choi@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "fengping.yu" <fengping.yu@mediatek.com>
+On 14-07-20, 21:18, andrew-sh.cheng wrote:
+> On Mon, 2020-07-13 at 15:09 +0530, Viresh Kumar wrote:
+> > On 10-07-20, 10:31, Andrew-sh.Cheng wrote:
+> > > From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
+> > > 
+> > > Need to enable regulator,
+> > > so that the max/min requested value will be recorded
+> > > even it is not applied right away.
+> > > 
+> > > Intermediate clock is not always enabled by ccf in different projects,
+> > > so cpufreq should enable it by itself.
+> > > 
+> > > Change-Id: I9f4c8b1ea793794f5f9cdc65427daad1393f5df8
+> > 
+> > You are on V7 right now, these should have been gone long back.
+> 
+> Hi Viresh, 
+> Sorry for forgetting to remove the change-ID message.
+> 
+> > 
+> > > Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+> > > ---
+> > >  drivers/cpufreq/mediatek-cpufreq.c | 33 +++++++++++++++++++++++++++++----
+> > >  1 file changed, 29 insertions(+), 4 deletions(-)
+> > > 
+> > > diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+> > > index 0c98dd08273d..4b479c110cc9 100644
+> > > --- a/drivers/cpufreq/mediatek-cpufreq.c
+> > > +++ b/drivers/cpufreq/mediatek-cpufreq.c
+> > > @@ -350,6 +350,11 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+> > >  		ret = PTR_ERR(proc_reg);
+> > >  		goto out_free_resources;
+> > >  	}
+> > > +	ret = regulator_enable(proc_reg);
+> > > +	if (ret) {
+> > > +		pr_warn("enable vproc for cpu%d fail\n", cpu);
+> > > +		goto out_free_resources;
+> > > +	}
+> > 
+> > This is already done by the OPP core now.
+> 
+> Do you mean I can use dev_pm_opp_set_regulators() and
+> dev_pm_opp_set_rate() to do dvfs?
+> Due to mediatek-cpufreq may change Vproc and Vsram by special flow, that
+> is not suitable.
 
-Add Mediatek matrix keypad support in defconfig.
+Sorry about that. I completely missed that you aren't using
+dev_pm_opp_set_rate().
 
-Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
-Reviewed-by: Marco Felsch <m.felsch@pengutronix.de>
----
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 883e8bace3ed..d96e7576f0e1 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -354,6 +354,7 @@ CONFIG_KEYBOARD_GPIO=y
- CONFIG_KEYBOARD_SNVS_PWRKEY=m
- CONFIG_KEYBOARD_IMX_SC_KEY=m
- CONFIG_KEYBOARD_CROS_EC=y
-+CONFIG_KEYBOARD_MTK_KPD=m
- CONFIG_INPUT_TOUCHSCREEN=y
- CONFIG_TOUCHSCREEN_ATMEL_MXT=m
- CONFIG_INPUT_MISC=y
 -- 
-2.18.0
+viresh
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
