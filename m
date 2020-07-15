@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,
 	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
 	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5028BC433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 22:52:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4F2ECC433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 22:55:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0CBCD20656
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 22:52:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1983120656
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 22:55:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xU4j+hYZ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="oU7d4S/0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0CBCD20656
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QC1Ysucf";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="tzHnUtRC"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1983120656
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,63 +27,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:Subject:From:To:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HBcbFjL+RnKLTSoHow8Ng4+p0s4lemzkvCDPSzfPr8k=; b=xU4j+hYZHDkNahKiTV5hKuPUah
-	Ne1wAtUdLU205BCglOuqmBeLb6dOEvQXJwG5bBMRGUKsceEgROPPBhcnU+cMIJ8YEjbhQ04IDw8jk
-	+LCr4D9mSw5AyiB4OUtiTFmMDTJadN9BM9Xcrk9pk+yzUUYIqRPX46MmEtl7tVBCM2Tlu08EVGPDg
-	HJqWAbRnChaZZUXalxi8Nnn1KDX+KfhcGyZuSNOsTrP2XehCk9CbLpVWNLWME9rYyO42I2+5hOgxT
-	h1R/xRfRm7/Y+6qiigP25cdLycDo2FM43OP8txLSMN5XMbxCtKY4M77aQRhjM4qmyGZn0qtXkY4EM
-	xdxOr6xg==;
+	bh=HoiE0JVoxaPwjgIY/eUMB3B1hg6rfFG78xpMU7lkl+0=; b=QC1Ysucf+3nwcF51wHUuzWmW6G
+	z7nBk5J4BtPBlOQUUw+IvCdXd+VkUhN4mCXZMyf+A2XBeOQ2AXvMFtVjVGDFerp9UsRgljKZxny1C
+	rS71Jc/Cz2J4AToi590PgTQd9OUmJl2Pa7OoP/Grj70IIMYp3LxsSXAJmUdGDc8HuDX2Ftxqq2Gx4
+	r6g9qgXIkA+BQQybuZiS4ioU80LxORslwZomBG2EqyiQSUohD0PnKG5W7Y+FdlVRs2AePhui0dbDF
+	++JAupwwtLN+m/oYPUYYRsx43lKOzCSJ3QeLgX7pfSJ5IkPAteEbWqBcld95oIPWDtqeWelwDrAu/
+	Y4+RoGwg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jvqG4-0004fj-GJ; Wed, 15 Jul 2020 22:52:12 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1jvqJR-000554-HF; Wed, 15 Jul 2020 22:55:41 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jvqG2-0004fH-K9; Wed, 15 Jul 2020 22:52:11 +0000
-Received: by mail-wm1-x341.google.com with SMTP id g10so4315387wmc.1;
- Wed, 15 Jul 2020 15:52:10 -0700 (PDT)
+ id 1jvqJP-00054P-4S; Wed, 15 Jul 2020 22:55:39 +0000
+Received: by mail-wr1-x435.google.com with SMTP id s10so4663538wrw.12;
+ Wed, 15 Jul 2020 15:55:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:from:subject:cc:message-id:date:user-agent:mime-version
+ h=to:cc:from:subject:message-id:date:user-agent:mime-version
  :content-language:content-transfer-encoding;
- bh=aAu4Wx7Ag8PNBAWqr9lsqUa1KkpnygneMcpuAS8w9NM=;
- b=oU7d4S/09TzweWEbcZzEj8YfkeGEZfYr+MpQqIYOSKcRK6cIAvZoUmWzgaR/Noo+Ae
- 1+seeV8XLRdBMr28NU16lSrahN9oVDWVfjP9TXX+uVErZKwYGYUVrrU8uht5MDIgoVoi
- hHmrFb3bEiLeoKd7IKv/1cu+Nmka0BQXR9wUpWey/hL1GxN5lTP2mlTG9daEhDwAyWTU
- 95yHEzfNOn6UaHg4RVCt2wehyaTtxeYs8HbdOb2Opyw53Hd2Q4/e9Zr3uRXBEjfjbJC8
- NYoHur3gfKOtul6K4aIdhhj2AukoYH9CYZmSbBFefFdemjf8l2mkbvYSjf9PuDkBKvIu
- 7u8A==
+ bh=4dmmaw9M9fUvgStacvMkg8XKd7wfG6N9YCPY0YGiqEs=;
+ b=tzHnUtRCNTJkNnDuJL4Vrqy7yO6ubEuZTxs9XIweJ464ch58eYN0YAAchrpSRll4Jv
+ smqNC5fkHULZiQGkzFINAUkKoYTzVCJldLqsmla/cUlFKzbAe9hxOV/UjQA0tjt0C9YP
+ Az3MpDKeitsxdH3xSXry3aGxdqHRwLIHymBV/mVCbPJ2pZ3k+bPN+aZ7mIyhpaih1+B1
+ cSuXkZKy0PNoRIqjJjTAuA4RKyi6xg4V/E7u0/zEGpcKJ6Wk6OmPzeaXI2uUvloyXAdC
+ 2VT9YHFiKTx0BFxb7xqBD/o259z03I4xRbs/KXpiE0DgrTdr7JnkZa3EO31xDNHxHGEc
+ AVRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:to:from:subject:cc:message-id:date:user-agent
+ h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
  :mime-version:content-language:content-transfer-encoding;
- bh=aAu4Wx7Ag8PNBAWqr9lsqUa1KkpnygneMcpuAS8w9NM=;
- b=XDNO3pZ5zP9WR+3VaoSjDY6UJM6ouedd9oLxExEkX7HyxrH5YLeFf1uDf1A3xNHyuy
- ncart/sEAy0pf5AunpAYuEcetyr3Ue/FDKSxgRKzC1Xq7wRkagricMAx9W3/4zDXa89F
- HI2JfBzzDLNv0QVSvKuekhY5kM186V3GDxqYYjwieSjV43LehQEohCb5KOqRqZ+F1xvD
- PpboAlfBBncib6mOPF2ow2Xz77OqZKkbwg/HyAonaDSZZvwTq3H/RsmhvbpbHNC7pnXf
- FMtcjF/Lz9to0m4IGm9iZrgr3s64eiadllVJ2P+9Kr8bstvP0tJaLoYE9KtDhFT3cP6+
- bIwQ==
-X-Gm-Message-State: AOAM530K1TgQsvZAfN0Oh0Efzd+Z/vgNmNWXZTIFWHdD/apSP8WjuaR2
- HbITsGZ8BKjLSRSuj0sWvXg=
-X-Google-Smtp-Source: ABdhPJzh1HABGT41Bt6h98y1igth5DhbRsZhL0/EFvjPSmU5eLMo6KBk/Dd4oIsQUeKpiGMljoqU2g==
-X-Received: by 2002:a1c:48:: with SMTP id 69mr1806206wma.32.1594853529763;
- Wed, 15 Jul 2020 15:52:09 -0700 (PDT)
+ bh=4dmmaw9M9fUvgStacvMkg8XKd7wfG6N9YCPY0YGiqEs=;
+ b=LAR4a6/8WpH8+Sk0OtdHQGeI5cB7K/xjnEsLHNrp1SSiduLkoZ0fIfTxLQoTRZfstz
+ btZDxr4DDS2LLHBOHVrHiXR05TpFutntkNPx3+JqCd0NO3uXXXD1azygo0M45T+HWB6Y
+ WajJOio4ArTYvxBoQqh1guueNS9gQCekf7lV1nPzCNxPs0af0a0b/RNghZyWhkhSk9ca
+ HKRpaWSMeIWVITOTJxdRzzPbu+KVSGRQJwVLRwKa5714OkFUZx5ISwCoAqS74Eyepeww
+ PtcyvhSyW097hRW9A0jkV9KOnWkIL31zSw+C2UniMmtuDn9bMNrxa5zYxGJ1DkA1xRVy
+ hbaQ==
+X-Gm-Message-State: AOAM5330dUBTLkXt3dml92a/RVRJQQ2uJhiTA5y5Uxu/2vUHAAXgMXO4
+ cvLAw9qo/gnMG8RHrcxmd0Q=
+X-Google-Smtp-Source: ABdhPJxKCEj8IdtoTtdlZhx3pWvH0o/tXEeBeYLQ69CBYu1WU+0nUK0lyPUa3KzyuUwnvOrjCxfTjg==
+X-Received: by 2002:a5d:54c9:: with SMTP id x9mr1949111wrv.247.1594853737908; 
+ Wed, 15 Jul 2020 15:55:37 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.120.199])
- by smtp.gmail.com with ESMTPSA id u15sm5506227wrm.64.2020.07.15.15.52.08
+ by smtp.gmail.com with ESMTPSA id s15sm5289679wmj.41.2020.07.15.15.55.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 15 Jul 2020 15:52:09 -0700 (PDT)
+ Wed, 15 Jul 2020 15:55:37 -0700 (PDT)
 List-Id: <soc.lore.kernel.org>
-To: SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>
+To: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] arm64: dts: MediaTek updates for v5.9
-Message-ID: <0b7109c7-7bd2-7373-6032-e9a452d2ebc9@gmail.com>
-Date: Thu, 16 Jul 2020 00:52:03 +0200
+Subject: [GIT PULL] soc: mediatek: MediaTek updates for v5.9
+Message-ID: <01399fb4-b2d0-e41b-dfd9-f2deba0ef651@gmail.com>
+Date: Thu, 16 Jul 2020 00:55:36 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200715_185210_728045_F45F0F04 
-X-CRM114-Status: GOOD (  15.44  )
+X-CRM114-CacheID: sfid-20200715_185539_214149_3C97D000 
+X-CRM114-Status: GOOD (  13.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,26 +95,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+Cc: Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>,
  "moderated list:ARM/Mediatek SoC support"
  <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Olof and Arnd!
+Hi Arnd and Olof,
 
-Hope you are fine. Please have a look on the following patches for 64 bit DT.
+Here come the patches for the MediaTek soc drivers.
+This time we only have a few new additions to the cmdq-helper which enhances the 
+interface the cmdq clients can consume.
 
-The biggest news here is the basic support for the new Lenovo IdeaPad Duet 
-Chromebook which is based on mt8183 SoC. No graphic so far, but I'm confident 
-that we will get that in the next couple of releases.
+Please check and pull :)
 
 Regards,
 Matthias
+
 ---
 
 The following changes since commit b3a9e3b9622ae10064826dccb4f7a52bd88c7407:
@@ -124,48 +124,29 @@ The following changes since commit b3a9e3b9622ae10064826dccb4f7a52bd88c7407:
 are available in the Git repository at:
 
    https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/ 
-tags/v5.8-next-dts64
+tags/v5.8-next-soc
 
-for you to fetch changes up to cd894e274b74b33f417776e3ab6adec237558337:
+for you to fetch changes up to 7de796cac48c0f55974cfe9cff683dfb3b7c71b6:
 
-   arm64: dts: mt8183: Add krane-sku176 board (2020-07-10 15:35:01 +0200)
-
-----------------------------------------------------------------
-mt8173:
-- update dmips for Cortex A53
-
-mt8183:
-- add pericfg
-- fix unit names
-- add nodes for USB support
-- add basic support for Lenovo IdeaPad Duet 10.1" Chromebook
+   soc: mediatek: cmdq: add set event function (2020-06-22 13:21:00 +0200)
 
 ----------------------------------------------------------------
-Enric Balletbo i Serra (7):
-       dt-bindings: arm64: dts: mediatek: Add mt8183-kukui-krane-sku176
-       arm64: dts: mt6358: Add the compatible for the regulators
-       arm64: dts: mt8183: Add MediaTek's peripheral configuration controller
-       arm64: dts: mt8183: Fix unit name warnings
-       arm64: dts: mt8183-evb: Fix unit name warnings
-       arm64: dts: mt8183: Add USB3.0 support
-       arm64: dts: mt8183: Add krane-sku176 board
+add new functions to cmdq helper functions
+- assign value to register
+- export finalize function and don't call explicitely from flush async
+- set specific event
 
-Hsin-Yi Wang (1):
-       arm64: dts: mt8173: Re-measure capacity-dmips-mhz
+----------------------------------------------------------------
+Dennis YC Hsieh (3):
+       soc: mediatek: cmdq: add assign function
+       soc: mediatek: cmdq: export finalize function
+       soc: mediatek: cmdq: add set event function
 
-  .../devicetree/bindings/arm/mediatek.yaml          |   5 +
-  arch/arm64/boot/dts/mediatek/Makefile              |   1 +
-  arch/arm64/boot/dts/mediatek/mt6358.dtsi           |   2 +
-  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |   4 +-
-  arch/arm64/boot/dts/mediatek/mt8183-evb.dts        |   4 +-
-  .../dts/mediatek/mt8183-kukui-krane-sku176.dts     |  18 +
-  .../boot/dts/mediatek/mt8183-kukui-krane.dtsi      | 343 +++++++++
-  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi     | 788 +++++++++++++++++++++
-  arch/arm64/boot/dts/mediatek/mt8183.dtsi           |  68 +-
-  9 files changed, 1227 insertions(+), 6 deletions(-)
-  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dts
-  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+  drivers/gpu/drm/mediatek/mtk_drm_crtc.c  |  1 +
+  drivers/soc/mediatek/mtk-cmdq-helper.c   | 46 +++++++++++++++++++++++++++-----
+  include/linux/mailbox/mtk-cmdq-mailbox.h |  2 ++
+  include/linux/soc/mediatek/mtk-cmdq.h    | 31 +++++++++++++++++++++
+  4 files changed, 74 insertions(+), 6 deletions(-)
 
 _______________________________________________
 Linux-mediatek mailing list
