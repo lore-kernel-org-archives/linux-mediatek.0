@@ -2,23 +2,22 @@ Return-Path: <SRS0=/klC=A3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIM_INVALID,
+	DKIM_SIGNED,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E2CE1C433E5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2020 13:50:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BDFD9C433E3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2020 14:44:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B26B42065F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2020 13:50:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 89A3E207E8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2020 14:44:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SInpkXlm";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="UPe+Ak5h"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B26B42065F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ezl9tKXE";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="XMsQMRWb"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 89A3E207E8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,60 +25,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wE0NfkEzGnIcNY+QTD+xLmErg8WZkNsK9rz0uXNclf4=; b=SInpkXlmUSp6cI1OY/PXtbXKT
-	4fwFIxQVy+YwlfSwGEp/k9+QXoTyj/3BJ625ptAcdYKSiLNNKEp6FpQGNTLcMWTOPqfliJ+k53tAK
-	3plNK/4+TpoGbEEdLY1AxdseUIkvvZP+aqbQK/8hXbZJ0I0EW8kmMfgLqgRcC3BIyoA/FznVmljQ7
-	qUI8il/yizCPVQ3ggzFoyVg+bBXJ7c7aQmRrhlrNJLAqUH7hQtaXiP5G7APvhetlPdFm7YxRX9O8S
-	th8hjoKL0WAgESlzy4Qr1WTi8+QhEw6X2bHJV4/8J64ElyMnU7TV5fqjPV75NjEaxEJf668frwtUQ
-	9tgKktzbQ==;
+	 bh=XOa5honnt3qqjbVSQaQsamW9vxWrtUwBRUhFXpiZLBU=; b=ezl9tKXEwde8QeK6mF430ZaKO
+	ugQUe06OJiEbWhcfz2TFPBf2TCh2lsrad20QKcc0nwDEbTrY/h02Ib4HdMbO7/0AeBwBz/tYN+s3D
+	dwvbPINutdpINgyf5ZU8AyMOkhDFZCz8I08zMqho/7ZYXZp/Nl/K3rT6WdDg9Nwf4a1cEsCyRnSSD
+	OpIvDGTlI3W8faSqvg0wH73YSiWW/k+0V8dVE1/Y6gm3vMPtamYYlxgfUb2TLSDsotY9x5rYQ6hyr
+	tISbuL0Kq/vT7GC0rsWOa/mSP7THic1EVDALeLtTSalit2u2PAqy8Vk0Q97edWx4DPiJHS7eNjNqi
+	DdzDDwvog==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jw4H6-0002nG-Pd; Thu, 16 Jul 2020 13:50:12 +0000
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
+	id 1jw57P-0001mP-2c; Thu, 16 Jul 2020 14:44:15 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jw4H3-0002m8-EO
- for linux-mediatek@lists.infradead.org; Thu, 16 Jul 2020 13:50:10 +0000
-Received: by mail-lj1-x243.google.com with SMTP id e8so7276041ljb.0
- for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2020 06:50:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=W0iuDU+qCWBUM7ba2OgUNPdlmGMl1pYMR/idMsHed54=;
- b=UPe+Ak5h0P6Z8onkrvDvi6QUVwIWIGpi7uVLXWjnR50zvyoG8zkGEuyKrRvZqzeaVs
- 7flptBJJLbpHGwORkLYAmufCmWvGfUkoNyHT5bGmX36i/a0HegWUvz96XnbuJRHWAfmR
- vaKpbaNCPOFd9kZAqffwVWkCSOErYcQim25VAwe6+We+6xCAbwHI++HQ5iwpKnw3NA6Z
- AMU1wu9f4MKmZW6eE79d+LPAU3N+Gs/b0koGCHXt4m65RerZFlF0HvBXdiSkWQUAeFAp
- VoAuMgRT2f502rMCwgG6H9qyyTldwRfWJxb6dzlxVVget/xx4QR57S/61FyI8/bRXMjq
- g+ug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=W0iuDU+qCWBUM7ba2OgUNPdlmGMl1pYMR/idMsHed54=;
- b=B0WGFIGk01iXW2A5scqtohg+r3CCCnTnKgT1AIbsnEBs7qlxchVL4cufr9WQ8MBWi9
- GBqwCWuhovv623x0kjiSbcPgyO+flk04L7oXVFO9C6UyQqawe+SW9adM5PXXVT+gAjpO
- Aq4m4Lpw9C0BpVxzfJhbwtQTPT1eFem0B9124c8pJG6d8jsuQiBobH361hFWG7xUCgUR
- pMQItd+y8wr+OMhiT0atrL1NNfb5XFFRrBjDAa9VhX9lDQAAdIHEJb146dGXuqxzM4ur
- 7PunDEEtgn18SwnO7mBCWZ0HYmE1rPqb5svflV7ealzIGi7kpnEBjZuOzt5Qb8G/shEb
- Q1XA==
-X-Gm-Message-State: AOAM530FrqNWCnoUZCDdin8ElbyhLxXap/O5NEGwpKw/CnebWBcfEua8
- rR4JQ8cnPr1U4OH/8APXuGsdH9SM5yMfEMFZdgLJOg==
-X-Google-Smtp-Source: ABdhPJyuZR3go+MjRH0QD2hTjIiPi2nGSy2AbPjYJo0SRP7oWmUGCCRWXTzrLI3Eps1+wMn3Fs9p2fh605lNHa8lJsM=
-X-Received: by 2002:a2e:7a1a:: with SMTP id v26mr2010346ljc.104.1594907407852; 
- Thu, 16 Jul 2020 06:50:07 -0700 (PDT)
+ id 1jw57N-0001lg-0S
+ for linux-mediatek@lists.infradead.org; Thu, 16 Jul 2020 14:44:13 +0000
+Received: from mail-io1-f53.google.com (mail-io1-f53.google.com
+ [209.85.166.53])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id C5F3620849
+ for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2020 14:44:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1594910651;
+ bh=jEJTiHoFVYkD0JQnDpdy9N0U1kE0CdBaGEzuIUBvmWc=;
+ h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
+ b=XMsQMRWbvgKA0ghNMj54ePCMcu51CjrOvOhgBBIbWbK+UPyZpA+kSRQiCkqnU8oB1
+ xheGwsUAZQLhzKmf+SyyNOqQPZpn73/hE/Gasefd9jmiGIfWBF1v4LHg0lHLvDPHmn
+ myR6/f5G4nwaTkfurP3soHu51p/p2puBHsIX0Vjk=
+Received: by mail-io1-f53.google.com with SMTP id i4so6231907iov.11
+ for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2020 07:44:11 -0700 (PDT)
+X-Gm-Message-State: AOAM532bwipaLI4ybOp0tk1UYyMFEutuWQMA5KEm2ZHyoG7Lov26uUGr
+ jOBBW/M1yc8sr4meulZRkaG6JV5EL36sKZkqNJs=
+X-Google-Smtp-Source: ABdhPJzfbB/6Ox7V5UJgWHrAwQ/fTy2KkkD0iT058tfJVF31BPUz+BpvdAOAZcvNW4qC9RTJBEeFwfD9k3tLqo185BI=
+X-Received: by 2002:a6b:c910:: with SMTP id z16mr4745171iof.120.1594910651194; 
+ Thu, 16 Jul 2020 07:44:11 -0700 (PDT)
 MIME-Version: 1.0
-References: <1594718402-20813-1-git-send-email-hanks.chen@mediatek.com>
- <1594718402-20813-2-git-send-email-hanks.chen@mediatek.com>
-In-Reply-To: <1594718402-20813-2-git-send-email-hanks.chen@mediatek.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 16 Jul 2020 15:49:57 +0200
-Message-ID: <CACRpkdYOtp027AOMgw_spyRdO2XjGjr4BOoEVfOJN9Y2TtJ=Kw@mail.gmail.com>
-Subject: Re: [PATCH v8 1/7] pinctrl: mediatek: update pinmux definitions for
- mt6779
-To: Hanks Chen <hanks.chen@mediatek.com>
+References: <cfee5e2b0064b8aa387e13901913a3a424dc1eec.1594624155.git.ryder.lee@mediatek.com>
+In-Reply-To: <cfee5e2b0064b8aa387e13901913a3a424dc1eec.1594624155.git.ryder.lee@mediatek.com>
+From: Josh Boyer <jwboyer@kernel.org>
+Date: Thu, 16 Jul 2020 10:44:00 -0400
+X-Gmail-Original-Message-ID: <CA+5PVA7AiTau50zWyiGVjijQ96WX4Z_PVHGExgyt0thWvWztMA@mail.gmail.com>
+Message-ID: <CA+5PVA7AiTau50zWyiGVjijQ96WX4Z_PVHGExgyt0thWvWztMA@mail.gmail.com>
+Subject: Re: [PATCH] linux-firmware: mediatek: update firmware v2 for MT7615E
+To: Ryder Lee <ryder.lee@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200716_095009_524811_443C672C 
-X-CRM114-Status: UNSURE (   6.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200716_104413_160947_893E1B85 
+X-CRM114-Status: GOOD (  16.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,42 +81,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, CC Hwang <cc.hwang@mediatek.com>,
- wsd_upstream@mediatek.com, Stephen Boyd <sboyd@kernel.org>,
- Andy Teng <andy.teng@mediatek.com>,
- Michael Turquette <mturquette@baylibre.com>, Sean Wang <sean.wang@kernel.org>,
- Loda Chou <loda.chou@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Mars Cheng <mars.cheng@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, mtk01761 <wendell.lin@mediatek.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+List-Id: <linux-firmware.lore.kernel.org>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Linux Firmware <linux-firmware@kernel.org>, Felix Fietkau <nbd@nbd.name>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 14, 2020 at 11:20 AM Hanks Chen <hanks.chen@mediatek.com> wrote:
+Applied and pushed out.
 
-> Add devicetree bindings for Mediatek mt6779 SoC Pin Controller.
+josh
+
+On Wed, Jul 15, 2020 at 9:15 PM Ryder Lee <ryder.lee@mediatek.com> wrote:
 >
-> Acked-by: Sean Wang <sean.wang@kernel.org>
-> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
-> Signed-off-by: Andy Teng <andy.teng@mediatek.com>
-> Signed-off-by: Hanks Chen <hanks.chen@mediatek.com>
-
-Sorry for responding to old patches :/
-
-This and the rest of the pinctrl patches are now applied
-to the pinctrl tree for v5.9.
-
-The DTS and clock patches need to be applied elsewhere.
-
-Yours,
-Linus Walleij
+> From: Shayne Chen <shayne.chen@mediatek.com>
+>
+> Update to 20200629111339 version to aligh SDK. Mainly fix DFS false alarm.
+>
+> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  WHENCE                 |   2 +-
+>  mediatek/mt7615_n9.bin | Bin 457992 -> 457992 bytes
+>  2 files changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/WHENCE b/WHENCE
+> index 086374d..40256bb 100644
+> --- a/WHENCE
+> +++ b/WHENCE
+> @@ -4643,7 +4643,7 @@ Licence: Redistributable. See LICENCE.mediatek for details.
+>  Driver: mt7615e - MediaTek MT7615e Wireless MACs
+>
+>  File: mediatek/mt7615_n9.bin
+> -Version: 20200131
+> +Version: 20200629
+>  File: mediatek/mt7615_cr4.bin
+>  Version: 20190114
+>  File: mediatek/mt7615_rom_patch.bin
+> diff --git a/mediatek/mt7615_n9.bin b/mediatek/mt7615_n9.bin
+> index f6ad748155672dd52fd7f41c452c320ad8ef8d7d..761ad9bbc8714eca880cb7fd24a3c0ea761bf839 100644
+> GIT binary patch
+> delta 51
+> zcmeD9CEf8$x}k-!g{g(Pg{6gc3){6noMuLrhK7d5#+K9X|6!BngL4`7>|tO40Onp0
+> AvH$=8
+>
+> delta 51
+> ycmeD9CEf8$x}k-!g{g(Pg{6gc3){6noQB4Rh893*H2wY`HfcUMmtoHy1_l7-5fGpN
+>
+> --
+> 2.17.1
 
 _______________________________________________
 Linux-mediatek mailing list
