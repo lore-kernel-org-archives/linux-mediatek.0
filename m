@@ -1,76 +1,89 @@
-Return-Path: <SRS0=kQBs=A2=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=/klC=A3=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 91E32C433E3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 23:47:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E0E51C433E3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2020 01:06:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5BECF206F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2020 23:47:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 99E8020775
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2020 01:06:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZNYf/7Rn";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="cYZW967h"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5BECF206F5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pVXi18rq";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="WBRwXuL1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 99E8020775
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Message-ID:Date:To:From:Subject:References:
+	In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=b0QZoIXcRIflQtc8CnUGphefkyby4vBS4VIXDVJc+r8=; b=ZNYf/7Rn7KrUQk8bhVLmpuNc2
-	zaTEWSe/doG0qOiS0AsLnL8tEIcNKXp90GrArBXEJIKJd8eLzRyx9OcUsZmM5A7HK9HR87zdUe/zR
-	fKPMGBXjANSe03gerfIVi2LVk9gJobN2MVUSbPVSSVn3vHVeNke0c+I6DeCKgbmLDXbtTOHiaZfOp
-	LibW89W/9uEHC0nOsxcHIbF4JzhmUbSFuOMMGJLJ2w+fAI1s+9S7HGs0vRcUJtro44GmzPqtR53Ve
-	6CqIADxWvz+kKAvYLbloTZfS/2uC5RDB++hrGwcJT5QtVdQbtrrnfzrBxH2Jm76S44RSZbjMAMZWe
-	wLqBLEQBw==;
+	 bh=bHiTg3UzcRh6YqMfbXISc3jjM4TbbBfoYLM9LZajaD0=; b=pVXi18rqdulZJj9nvqWqzdAJ7
+	U+6sUDMK/IRjTTxAALclT3CibkUI1mCMrJ++zhUjHIH3dBqXxBtKtxVxlYaEcoX4LKIK5DXSIZdVY
+	xdrJvNX/EPWKZISUeRQMudHP6x4n8RSi59x/2+dCHYOQKrCMwRhgH95F0bF/ZGRTMCq2mWiTd/3sR
+	hPFtmUXPf83CzWCuXQgNjDVfyZzLifQ0L7rrtU0bJD4FFExTo1cvOyVP+hJS0LxNqaMU8I19wig6y
+	f6fRGheDn0aInRp5OQL7nEf89Bgk7WKYv5mdWq9ANEUXE/Nd6REDU7l/14vCUBpmu62ZanhgF7GZ0
+	omAIqq+2g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jvr74-00087K-Hx; Wed, 15 Jul 2020 23:46:58 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jvsLq-0007ja-Gh; Thu, 16 Jul 2020 01:06:18 +0000
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jvr70-00086T-Ax; Wed, 15 Jul 2020 23:46:55 +0000
-Received: from mail-ej1-f51.google.com (mail-ej1-f51.google.com
- [209.85.218.51])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id DE9DF20775;
- Wed, 15 Jul 2020 23:46:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1594856812;
- bh=0Z67DEQDHtPE1jpEjdWwnW7bGURvhC5c7yF3Sjpr8hk=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=cYZW967hw78HF44rBPZbhDp74+Fd+k9NG8yQo6a39ZFC/RrcnhJ6l1FplyjoUsLrm
- FQsevYclY00Fz2eqEoFv+K3SCB82olAXFZcdd4hjHkAP04Pzv0CBfGSUBl69T9+uwx
- QCWEh/HsT2CBwvEiB8OsGm01nw7B6frzsh/OrI6w=
-Received: by mail-ej1-f51.google.com with SMTP id w6so4323078ejq.6;
- Wed, 15 Jul 2020 16:46:51 -0700 (PDT)
-X-Gm-Message-State: AOAM532hZ8FEr76AJ0koXsIfM1j3Sgz8G6OR88AmDTJOgoZVBrkeNkPz
- R3xqjJNouZ/9oManbd5jTEi3mkmJsiJS7stCrA==
-X-Google-Smtp-Source: ABdhPJybFTPB4ttZSVsoT9XP7GbTBiZv3OHdAp22XXJXjOEHZph4uhAj/ulMlTNJr2ITr8vkAIq1+BAKIAJ+CF4iAB0=
-X-Received: by 2002:a17:906:404e:: with SMTP id
- y14mr1294495ejj.260.1594856810429; 
- Wed, 15 Jul 2020 16:46:50 -0700 (PDT)
+ id 1jvsLn-0007hf-QL
+ for linux-mediatek@lists.infradead.org; Thu, 16 Jul 2020 01:06:16 +0000
+Received: by mail-pj1-x1043.google.com with SMTP id b92so3840473pjc.4
+ for <linux-mediatek@lists.infradead.org>; Wed, 15 Jul 2020 18:06:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:content-transfer-encoding:in-reply-to:references
+ :subject:from:cc:to:date:message-id:user-agent;
+ bh=e2rVUlKuuIkQy85IOtUCVSZFDO7sfvuCwv9FBlIGudc=;
+ b=WBRwXuL1J49aFDX6OowkdQp60wkBLDyNji+VnP+47luf3SDgodM5CwOA/KeRQyBiK/
+ Ds76Qrv97EixHLwWaFyaLiwTYTLZejCwlFlXIoUV0aQV3W6LmFuXJ0T9YbB3FvLVWKvL
+ v9EEQ8v7wIiTl2OmiIYvZKqXM71Q7RR3K0iF8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:content-transfer-encoding
+ :in-reply-to:references:subject:from:cc:to:date:message-id
+ :user-agent;
+ bh=e2rVUlKuuIkQy85IOtUCVSZFDO7sfvuCwv9FBlIGudc=;
+ b=DBAuRODaOvx98GqZaPju6giZYTP6aLSQjRLx9R6KF6UkB4YBPHBQ9oHUyUUtPMLHku
+ bXOSFxPhZUfJuKpCPp8F61+VkZJ6lgJZxrIFwEAcprCbn/7kbYc+jbNLrZSHkLcMWtcL
+ xDUC4J7TlfjAb6I7pHCYMK9C2M2gnkDLh2shX9lMgrmjkfa8GjvgkWBVPcOPCCqGl6mo
+ EGtimyUKQ/lL1Y5IHAxFs3MwAiSfzRtyCvzjpoQvCBv0f2NgxGdjH/884go5GYBQUeQT
+ LilXWhoauH+XUMREKt6Hm1UrA4W91TGe812Ll8y2fW/THm49YyEMqUloXdAipjSNsPXh
+ 4xAA==
+X-Gm-Message-State: AOAM5302A8Bed8PyMpVLJME3Cw0LIyWK+ppXw7q+5VLl757yg8Oijh4A
+ hmnWiXAkWZg/UOqG/9M9xS346Q==
+X-Google-Smtp-Source: ABdhPJwDuXNH1tttabpe1OV+jVg8VPDxCAe+DQNCQJLCDygr1r24B/9SZizwmtIKi2LthbUBcxYHIA==
+X-Received: by 2002:a17:902:8d8b:: with SMTP id
+ v11mr1626798plo.221.1594861572552; 
+ Wed, 15 Jul 2020 18:06:12 -0700 (PDT)
+Received: from chromium.org ([2620:15c:202:1:3e52:82ff:fe6c:83ab])
+ by smtp.gmail.com with ESMTPSA id j19sm3134274pjy.40.2020.07.15.18.06.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 15 Jul 2020 18:06:11 -0700 (PDT)
 MIME-Version: 1.0
-References: <1594285927-1840-1-git-send-email-neal.liu@mediatek.com>
- <1594285927-1840-3-git-send-email-neal.liu@mediatek.com>
-In-Reply-To: <1594285927-1840-3-git-send-email-neal.liu@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Thu, 16 Jul 2020 07:46:39 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-6d12FUf5XnYco0f0CfeWsb-XjsCESsLixLr_Q=jnc0Q@mail.gmail.com>
-Message-ID: <CAAOTY_-6d12FUf5XnYco0f0CfeWsb-XjsCESsLixLr_Q=jnc0Q@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] soc: mediatek: add mtk-devapc driver
-To: Neal Liu <neal.liu@mediatek.com>
+In-Reply-To: <1594622881-6563-1-git-send-email-chunfeng.yun@mediatek.com>
+References: <1594622881-6563-1-git-send-email-chunfeng.yun@mediatek.com>
+Subject: Re: [v3 PATCH] usb: gadget: bdc: use readl_poll_timeout() to simplify
+ code
+From: Stephen Boyd <swboyd@chromium.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Felipe Balbi <balbi@kernel.org>,
+ Florian Fainelli <f.fainelli@gmail.com>
+Date: Wed, 15 Jul 2020 18:06:10 -0700
+Message-ID: <159486157046.1987609.11356860908068064534@swboyd.mtv.corp.google.com>
+User-Agent: alot/0.9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200715_194654_499633_573950F2 
-X-CRM114-Status: GOOD (  15.47  )
+X-CRM114-CacheID: sfid-20200715_210615_916018_C6BB7692 
+X-CRM114-Status: GOOD (  10.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,51 +95,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, wsd_upstream <wsd_upstream@mediatek.com>,
- lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SEksIE5lYWw6CgpOZWFsIExpdSA8bmVhbC5saXVAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5tDfm
-nIg55pelIOmAseWbmyDkuIvljYg1OjEz5a+r6YGT77yaCj4KPiBNZWRpYVRlayBidXMgZmFicmlj
-IHByb3ZpZGVzIFRydXN0Wm9uZSBzZWN1cml0eSBzdXBwb3J0IGFuZCBkYXRhCj4gcHJvdGVjdGlv
-biB0byBwcmV2ZW50IHNsYXZlcyBmcm9tIGJlaW5nIGFjY2Vzc2VkIGJ5IHVuZXhwZWN0ZWQKPiBt
-YXN0ZXJzLgo+IFRoZSBzZWN1cml0eSB2aW9sYXRpb24gaXMgbG9nZ2VkIGFuZCBzZW50IHRvIHRo
-ZSBwcm9jZXNzb3IgZm9yCj4gZnVydGhlciBhbmFseXNpcyBvciBjb3VudGVybWVhc3VyZXMuCj4K
-PiBBbnkgb2NjdXJyZW5jZSBvZiBzZWN1cml0eSB2aW9sYXRpb24gd291bGQgcmFpc2UgYW4gaW50
-ZXJydXB0LCBhbmQKPiBpdCB3aWxsIGJlIGhhbmRsZWQgYnkgbXRrLWRldmFwYyBkcml2ZXIuIFRo
-ZSB2aW9sYXRpb24KPiBpbmZvcm1hdGlvbiBpcyBwcmludGVkIGluIG9yZGVyIHRvIGZpbmQgdGhl
-IG11cmRlcmVyLgo+Cj4gU2lnbmVkLW9mZi1ieTogTmVhbCBMaXUgPG5lYWwubGl1QG1lZGlhdGVr
-LmNvbT4KPiAtLS0KCltzbmlwXQoKPiArCj4gKy8qCj4gKyAqIG10a19kZXZhcGNfZHVtcF92aW9f
-ZGJnIC0gc2hpZnQgJiBkdW1wIHRoZSB2aW9sYXRpb24gZGVidWcgaW5mb3JtYXRpb24uCj4gKyAq
-Lwo+ICtzdGF0aWMgYm9vbCBtdGtfZGV2YXBjX2R1bXBfdmlvX2RiZyhzdHJ1Y3QgbXRrX2RldmFw
-Y19jb250ZXh0ICpkZXZhcGNfY3R4LAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIGludCBzbGF2ZV90eXBlLCBpbnQgKnZpb19pZHgpCj4gK3sKPiArICAgICAgIGNvbnN0IHN0
-cnVjdCBtdGtfZGV2aWNlX2luZm8gKipkZXZpY2VfaW5mbzsKPiArICAgICAgIHUzMiBzaGlmdF9i
-aXQ7Cj4gKyAgICAgICBpbnQgaTsKPiArCj4gKyAgICAgICBkZXZpY2VfaW5mbyA9IGRldmFwY19j
-dHgtPmRldmljZV9pbmZvOwo+ICsKPiArICAgICAgIGZvciAoaSA9IDA7IGkgPCBnZXRfdmlvX3Ns
-YXZlX251bShzbGF2ZV90eXBlKTsgaSsrKSB7Cj4gKyAgICAgICAgICAgICAgICp2aW9faWR4ID0g
-ZGV2aWNlX2luZm9bc2xhdmVfdHlwZV1baV0udmlvX2luZGV4Owo+ICsKPiArICAgICAgICAgICAg
-ICAgaWYgKGNoZWNrX3Zpb19tYXNrKGRldmFwY19jdHgsIHNsYXZlX3R5cGUsICp2aW9faWR4KSkK
-PiArICAgICAgICAgICAgICAgICAgICAgICBjb250aW51ZTsKCkkgZ3Vlc3MgaWYgb25lIHZpb19p
-ZHggaXMgbWFza2VkLCBpdHMgc3RhdHVzIHdvdWxkIG5ldmVyIGJlIHRydWUuIElmCm15IGd1ZXNz
-IGlzIHJpZ2h0LCBJIHRoaW5rIHlvdSBjb3VsZCBza2lwIGNoZWNrX3Zpb19tYXNrKCkgYW5kCmRp
-cmVjdGx5IGNoZWNrX3Zpb19zdGF0dXMoKS4KCj4gKwo+ICsgICAgICAgICAgICAgICBpZiAoIWNo
-ZWNrX3Zpb19zdGF0dXMoZGV2YXBjX2N0eCwgc2xhdmVfdHlwZSwgKnZpb19pZHgpKQo+ICsgICAg
-ICAgICAgICAgICAgICAgICAgIGNvbnRpbnVlOwo+ICsKPiArICAgICAgICAgICAgICAgc2hpZnRf
-Yml0ID0gZ2V0X3NoaWZ0X2dyb3VwKGRldmFwY19jdHgsIHNsYXZlX3R5cGUsICp2aW9faWR4KTsK
-PiArCj4gKyAgICAgICAgICAgICAgIGlmICghc3luY192aW9fZGJnKGRldmFwY19jdHgsIHNsYXZl
-X3R5cGUsIHNoaWZ0X2JpdCkpCj4gKyAgICAgICAgICAgICAgICAgICAgICAgY29udGludWU7Cj4g
-Kwo+ICsgICAgICAgICAgICAgICBkZXZhcGNfZXh0cmFjdF92aW9fZGJnKGRldmFwY19jdHgsIHNs
-YXZlX3R5cGUpOwo+ICsKPiArICAgICAgICAgICAgICAgcmV0dXJuIHRydWU7CgpJIHRoaW5rIG11
-bHRpcGxlIHZpb19pZHggd291bGQgdmlvbGF0ZSBhdCB0aGUgc2FtZSB0aW1lLCB3aHkganVzdCBw
-cm9jZXNzIG9uZT8KClJlZ2FyZHMsCkNodW4tS3VhbmcuCgo+ICsgICAgICAgfQo+ICsKPiArICAg
-ICAgIHJldHVybiBmYWxzZTsKPiArfQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVr
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Quoting Chunfeng Yun (2020-07-12 23:48:01)
+> diff --git a/drivers/usb/gadget/udc/bdc/bdc_core.c b/drivers/usb/gadget/udc/bdc/bdc_core.c
+> index 02a3a77..d567e20 100644
+> --- a/drivers/usb/gadget/udc/bdc/bdc_core.c
+> +++ b/drivers/usb/gadget/udc/bdc/bdc_core.c
+> @@ -29,24 +30,19 @@
+>  #include "bdc_dbg.h"
+>  
+>  /* Poll till controller status is not OIP */
+> -static int poll_oip(struct bdc *bdc, int usec)
+> +static int poll_oip(struct bdc *bdc, u32 usec)
+>  {
+>         u32 status;
+> -       /* Poll till STS!= OIP */
+> -       while (usec) {
+> -               status = bdc_readl(bdc->regs, BDC_BDCSC);
+> -               if (BDC_CSTS(status) != BDC_OIP) {
+> -                       dev_dbg(bdc->dev,
+> -                               "poll_oip complete status=%d",
+> -                               BDC_CSTS(status));
+> -                       return 0;
+> -               }
+> -               udelay(10);
+> -               usec -= 10;
+> -       }
+> -       dev_err(bdc->dev, "Err: operation timedout BDCSC: 0x%08x\n", status);
+> +       int ret;
+>  
+> -       return -ETIMEDOUT;
+> +       ret = readl_poll_timeout(bdc->regs + BDC_BDCSC, status,
+> +                                (BDC_CSTS(status) != BDC_OIP), 10, usec);
+> +       if (ret)
+> +               dev_err(bdc->dev, "operation timedout BDCSC: 0x%08x\n", status);
+> +       else
+> +               dev_dbg(bdc->dev, "%s complete status=%d", __func__, BDC_CSTS(status));
+
+Different than before but OK.
+
+Reviewed-by: Stephen Boyd <swboyd@chromium.org>
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
