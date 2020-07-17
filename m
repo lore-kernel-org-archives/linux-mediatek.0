@@ -2,82 +2,86 @@ Return-Path: <SRS0=RXgq=A4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 126DFC433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2020 02:45:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 30C6EC433E6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2020 02:56:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D5EC420838
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2020 02:45:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F163521741
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2020 02:56:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="K0VXDrtA";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="edzH6w1t"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D5EC420838
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BDS344du";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="Zim79ws6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F163521741
 Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:From:Subject:Mime-Version:Message-Id:Date:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qSuV3Fej0nFme36adjStSH7bbfUPY3ZYXppnQd5nrek=; b=K0VXDrtAnq1+9nfmhY2fUvWh1v
-	JaVGCkC9xZsCDHdy71o7MHtF255S6MxMllq8OYUJzxJDGMce5/aQTkA5cHTfIKAQYrwUA2UU41I3e
-	iJhbEdC1WGV8voBGFGVo447L9cfOvZhot1vpvC588AczQi+Lurdi3J+fSMZuYDSz02vcxEx7mLmQV
-	7LoD3M8XBXizx8SkHPHfs4KT/p0V8eyAB8o/KKWhOkRzskpFjU6BFLRUHKrITMYhiyEetyc+E13fN
-	JtGCDWcUfvSyKmmCoFo869bfjteBifT9JTOtlpYeCwYXfoo1EX+bwM8uso+OEdxJSeHrnIOAOhrIN
-	wr+34n6A==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=2FUIkUIVggpZIMnAxAsE7CFNvT65dEgQSidXpdrPKfs=; b=BDS344duU66p3MH//scdPzXQu
+	rirG73t1ik+3Lwa2/Ym3MpQAx64ZqRDHo3nnG6/PVd7Icf0adTn+BDlXqUrhCkfHyv96+gKxcSkG3
+	kBOJAC1/BbC8KipBpNKrLtiRORoarEwgSfpBZmDMka1rnRFDLh5RsTUMWtZBj+qvSvU5/9jjFUQvF
+	ZGEVTlHnEgSKGdQwoGe6ZDMgmXwUDVAPyByPiXhWzBVjcKejq73DbGnvS4R8U6PCPbV03AUdzq9wf
+	sIrNtWhjdAQYYqHr5ro0VZDyihkj2DWB+NP7ATzRtDln1gsyqnk1G86B47bYM/RgmMEY05e40ImBd
+	qNZMhoPmg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jwGMt-0006Pr-5i; Fri, 17 Jul 2020 02:44:59 +0000
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
+	id 1jwGXv-0007JY-2t; Fri, 17 Jul 2020 02:56:23 +0000
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jwGMq-0006Or-5n
- for linux-mediatek@lists.infradead.org; Fri, 17 Jul 2020 02:44:56 +0000
-Received: by mail-yb1-xb4a.google.com with SMTP id x1so9663525ybg.8
- for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2020 19:44:53 -0700 (PDT)
+ id 1jwGXt-0007Ik-0c
+ for linux-mediatek@lists.infradead.org; Fri, 17 Jul 2020 02:56:21 +0000
+Received: by mail-pj1-x1042.google.com with SMTP id ls15so5830035pjb.1
+ for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2020 19:56:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:message-id:mime-version:subject:from:to:cc;
- bh=2BxjzP72iQdxP7BBImWs20Rvt3buz2LvW5kNpRsHJrc=;
- b=edzH6w1tmEp4FV+8F+FvzJxmwPfMcqxN+r0PndFf2NFYuR596Xt4jVy1S/lpZiFYo5
- ae7FEfCSqzYLDi7YIWgUMuCeJjkPUB+UPbluOzn0kLYVk6RjxL/cpgkXDb9qWKzFLPPC
- cRvAHzNnG6mJFDoIVlSSFsd68wZbcYFmytYJ2yBV0rZavd1olwPZZqP37WSypAmsKBQS
- Wbf4R/F3y3DxQb2LBvm+Y3KugnDSpyOIGmEwiTBG2DnOFsT4ywnYvxv0y/PE7n7WnJJK
- V6y75QybSjrtKuOqY8ds0cCJwlLHynUw1YbaNSXcvzxI8skPsfGKq43PzLdrLvL9qVe+
- QboA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=8X8T8pz6At13CJCWKdkd4IkrZllcC3cL7n3XGkpoToo=;
+ b=Zim79ws6Kq+0W4jp69vTApwxJi1ab1GZiZQmbPoc8ugOhcIoSw9LPZl0ztw2hGBqH1
+ RKTDPHVJeM/qAS+KJdbxz7Jfxlu5ZwFIBaHVeX1uk8yLjjwI/qqF8/umOtCiA1fFvZrN
+ 4Mz1DgYnXqNWeRV+YbDi5KeqC2BsqGaa4DLXBB7nV8GDbekcrBrK36qc9L4AUuH/I2y7
+ rJ8oSx9wMCp+IakhSKuK5+iyDQKabeC0JHx6OQBKCMdC3Rub/G2hu+RoZeqkEL/SOOQ4
+ nIhE93A2nBDdvijxUUk5f0cNH6d7aqkqR/DWAHjgXuS2/jBKt2G39gjbPxdozOjKsL53
+ Iwfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=2BxjzP72iQdxP7BBImWs20Rvt3buz2LvW5kNpRsHJrc=;
- b=RqJARUaiM8DNvLiQnvjE7u8nqTmtg9bJp7izn9zA8DIhxJTMrBZTxy2fFY6jflBGIE
- A39CqQAISVuq6ozJRkbfIlDn+iSN58pIRQSjgr1VWhA982bus1Y5QiIGI2c+4HrYykg9
- Ia1moz26FVEdT/2xCLXYTEEVB1+FnpQFkOf1q8nCA5G2UiihnnbFsiDWf7YCUlx+zLpo
- f2NUDyary1kRSDjtxt3w1cHVkKjN8vmSDmyWL5t9uebnX4eHfbB0vzjQfbkOnMXuL9xF
- Jh5R5nqv4JvIOHFRArAA8kXzxNrkUBkOnoDzNOZqkWEoGhf6Np9pe4p0Rqttz8BUZR2x
- Nvkg==
-X-Gm-Message-State: AOAM533kR+nSLIkXRrlVrdE1fKynWJThocRJS2wVIbltu3i7+cv8ni52
- 6wShqpTB3G9aCkevKov2NPFtvMyeOM8PD7g=
-X-Google-Smtp-Source: ABdhPJxSbi/so9LC9Hx2K/NJBPQpWfhio3DksqcrkFYd3YFZSePPAWPP+AQatb0XaXyze7GjIuJH4VCknBdbDlE=
-X-Received: by 2002:a25:73c2:: with SMTP id
- o185mr10556755ybc.169.1594953891393; 
- Thu, 16 Jul 2020 19:44:51 -0700 (PDT)
-Date: Thu, 16 Jul 2020 19:44:47 -0700
-Message-Id: <20200717024447.3128361-1-saravanak@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.28.0.rc0.105.gf9edc3c819-goog
-Subject: [PATCH v2] irqchip: Add IRQCHIP_PLATFORM_DRIVER_BEGIN/END and
- IRQCHIP_MATCH helper macros
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=8X8T8pz6At13CJCWKdkd4IkrZllcC3cL7n3XGkpoToo=;
+ b=N3iIhC47PbFqW76F1x2Tm3/STdJa/cseVXe2OVoKVQoBkKDnvV2zwBfbTUc9POe4fF
+ d26CQWdvPxfyklEgc5r80e8JE++hvv5wifViiLFsah/S7rfIKfsrRkDHX+PTGT+YTBxK
+ lRk2PtuG1syAKpzqk1XZ0uIP8Cg08DXdmy2ReIJjH248Tc7Qbv7/+QrvSeegTi+ZKjQK
+ Xs7s5uO+pCySAN0rhFKJm7Blt/3D+yWor1pSKTD4yauK/F7xL8gdkP+ceF/PA29S6wmk
+ f/U9CwXR/PGpjMTSLGxnPeNPsuvTaJXU6zo1O5U1+fNO02OhwyiuS+1LzBAiS12y6K6V
+ p2fQ==
+X-Gm-Message-State: AOAM530MpluvilqZs6SJj6PzBXpukjxMz1gr5cBRUvBZNuHhnaGex/gm
+ 34x3QQH8LNCb8zqat46W6nGFXBxVPB0PUsI+VqnJ+A==
+X-Google-Smtp-Source: ABdhPJyZ06nWdGCY8udX+H9WVLsopOuNsRhvU02zYFga6C7Wo1f6074+kEATFxvtpKfRKQE0LABLbsIy3/c1apoANY4=
+X-Received: by 2002:a17:902:b706:: with SMTP id
+ d6mr5977536pls.244.1594954576802; 
+ Thu, 16 Jul 2020 19:56:16 -0700 (PDT)
+MIME-Version: 1.0
+References: <1592483471-14806-1-git-send-email-hanks.chen@mediatek.com>
+ <f47e8a1e70c982ecf6245db573630f51@kernel.org>
+ <1592490123.10773.16.camel@mtkswgap22>
+ <1592894173.10773.42.camel@mtkswgap22>
+ <3dc953265ed4cd4300bd9600bf7e33d6@kernel.org>
+In-Reply-To: <3dc953265ed4cd4300bd9600bf7e33d6@kernel.org>
 From: Saravana Kannan <saravanak@google.com>
-To: Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, 
- Marc Zyngier <maz@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Date: Thu, 16 Jul 2020 19:55:41 -0700
+Message-ID: <CAGETcx-daJxJ=Werw9fkmWHz=iUq1S-S63fz8KaKB4S-D+0oZA@mail.gmail.com>
+Subject: Re: [PATCH 1/1] irqchip: Add config MTK_SYSIRQ and MTK_CIRQ
+To: Marc Zyngier <maz@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200716_224456_235572_EDB43E47 
-X-CRM114-Status: GOOD (  15.72  )
+X-CRM114-CacheID: sfid-20200716_225621_108097_2C2E5432 
+X-CRM114-Status: GOOD (  18.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,124 +93,85 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: CC Hwang <cc.hwang@mediatek.com>, Saravana Kannan <saravanak@google.com>,
- Hanks Chen <hanks.chen@mediatek.com>, Loda Chou <loda.chou@mediatek.com>,
- linux-kernel@vger.kernel.org, John Stultz <john.stultz@linaro.org>,
- linux-mediatek@lists.infradead.org, kernel-team@android.com,
- linux-arm-kernel@lists.infradead.org
+Cc: CC Hwang <cc.hwang@mediatek.com>, Jason Cooper <jason@lakedaemon.net>,
+ wsd_upstream@mediatek.com, Hanks Chen <hanks.chen@mediatek.com>,
+ Loda Chou <loda.chou@mediatek.com>, LKML <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Compiling an irqchip driver as a platform driver needs to bunch of
-things to be done right:
-- Making sure the parent domain is initialized first
-- Making sure the device can't be unbound from sysfs
-- Disallowing module unload if it's built as a module
-- Finding the parent node
-- Etc.
+On Tue, Jun 23, 2020 at 1:37 AM Marc Zyngier <maz@kernel.org> wrote:
+>
+> + Saravana
+>
+> On 2020-06-23 07:36, Hanks Chen wrote:
+>
+> [...]
+>
+> > Hi Marc,
+> >
+> > I want to break the dependency between ARCH_MEDIATEK and CIRQ/SYSIRQ,
+> > because we need to follow the GKI.
+>
+> This isn't what GKI mandates. GKI requires that the SoC code is compiled
+> as modules, not that it is dissociated from its platform (which would
+> be completely pointless).
+>
+> > Could I add the MTK_CIRQ and MTK_SYSIRQ into defconfig?
+> > (arch/arm64/config/defconfig)
+>
+> I don't deal with defconfig at all. That's a patch for the arm-soc
+> people.
+>
+> >
+> > It would ensures all platform are executable.
+> >
+> > e.g.
+> > --- a/arch/arm64/configs/defconfig
+> > +++ b/arch/arm64/configs/defconfig
+> >
+> >  CONFIG_QCOM_PDC=y
+> > +CONFIG_MTK_SYSIRQ=m
+> > +CONFIG_MTK_CIRQ=y
+> >  CONFIG_RESET_QCOM_AOSS=y
+> >
+> > --- a/drivers/irqchip/Kconfig
+> > +++ b/drivers/irqchip/Kconfig
+> > @@ -572,4 +572,18 @@ config LOONGSON_PCH_MSI
+> >         help
+> >           Support for the Loongson PCH MSI Controller.
+> >
+> > +config MTK_SYSIRQ
+> > +       tristate "Mediatek interrupt polarity controller"
+> > +       depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +       help
+> > +         Interrupt polarity controller driver to swap polarity for
+> > +         interrupts for Mediatek mobile chips.
+> > +
+> > +config MTK_CIRQ
+> > +       bool "Mediatek low-power interrupt controller"
+> > +       depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +       help
+> > +         Low-power interrupt controller driver to monitor IRQS
+> > +         in the sleep mode for Mediatek mobile chips.
+> > +
+> >
+> >
+> > P.S I'll make the irq-mtk-sysirq driver as a loadable kernel module for
+> > GKI
+>
+> You might as well turn both drivers into modules. Saravana was working
+> on a set of patches to ease this transition.
 
-Instead of trying to make sure all future irqchip platform drivers get
-this right, provide boilerplate macros that take care of all of this.
+Sent out v2 of that patch now.
+https://lore.kernel.org/lkml/20200717024447.3128361-1-saravanak@google.com/T/#u
 
-An example use would look something like this. Where acme_foo_init and
-acme_bar_init are similar to what would be passed to IRQCHIP_DECLARE.
-
-IRQCHIP_PLATFORM_DRIVER_BEGIN
-IRQCHIP_MATCH(foo, "acme,foo", acme_foo_init)
-IRQCHIP_MATCH(bar, "acme,bar", acme_bar_init)
-IRQCHIP_PLATFORM_DRIVER_END(acme_irq)
-
-Signed-off-by: Saravana Kannan <saravanak@google.com>
----
- drivers/irqchip/irqchip.c | 22 ++++++++++++++++++++++
- include/linux/irqchip.h   | 23 +++++++++++++++++++++++
- 2 files changed, 45 insertions(+)
-
-diff --git a/drivers/irqchip/irqchip.c b/drivers/irqchip/irqchip.c
-index 2b35e68bea82..236ea793f01c 100644
---- a/drivers/irqchip/irqchip.c
-+++ b/drivers/irqchip/irqchip.c
-@@ -10,8 +10,10 @@
- 
- #include <linux/acpi.h>
- #include <linux/init.h>
-+#include <linux/of_device.h>
- #include <linux/of_irq.h>
- #include <linux/irqchip.h>
-+#include <linux/platform_device.h>
- 
- /*
-  * This special of_device_id is the sentinel at the end of the
-@@ -29,3 +31,23 @@ void __init irqchip_init(void)
- 	of_irq_init(__irqchip_of_table);
- 	acpi_probe_device_table(irqchip);
- }
-+
-+int platform_irqchip_probe(struct platform_device *pdev)
-+{
-+	struct device_node *np = pdev->dev.of_node;
-+	struct device_node *par_np = of_irq_find_parent(np);
-+	of_irq_init_cb_t irq_init_cb = of_device_get_match_data(&pdev->dev);
-+
-+	if (!irq_init_cb)
-+		return -EINVAL;
-+
-+	if (par_np == np)
-+		par_np = NULL;
-+
-+	/* If there's a parent irqchip, make sure it has been initialized. */
-+	if (par_np && !irq_find_matching_host(np, DOMAIN_BUS_ANY))
-+		return -EPROBE_DEFER;
-+
-+	return irq_init_cb(np, par_np);
-+}
-+EXPORT_SYMBOL_GPL(platform_irqchip_probe);
-diff --git a/include/linux/irqchip.h b/include/linux/irqchip.h
-index 950e4b2458f0..6d5eba7cbbb7 100644
---- a/include/linux/irqchip.h
-+++ b/include/linux/irqchip.h
-@@ -13,6 +13,7 @@
- 
- #include <linux/acpi.h>
- #include <linux/of.h>
-+#include <linux/platform_device.h>
- 
- /*
-  * This macro must be used by the different irqchip drivers to declare
-@@ -26,6 +27,28 @@
-  */
- #define IRQCHIP_DECLARE(name, compat, fn) OF_DECLARE_2(irqchip, name, compat, fn)
- 
-+extern int platform_irqchip_probe(struct platform_device *pdev);
-+
-+#define IRQCHIP_PLATFORM_DRIVER_BEGIN \
-+static const struct of_device_id __irqchip_match_table[] = {
-+
-+#define IRQCHIP_MATCH(compat, fn) { .compatible = compat, .data = fn },
-+
-+#define IRQCHIP_PLATFORM_DRIVER_END(drv_name)		\
-+	{},						\
-+};							\
-+MODULE_DEVICE_TABLE(of, __irqchip_match_table);		\
-+static struct platform_driver drv_name##_driver = {	\
-+	.probe  = platform_irqchip_probe,		\
-+	.driver = {					\
-+		.name = #drv_name,			\
-+		.owner = THIS_MODULE,			\
-+		.of_match_table = __irqchip_match_table,\
-+		.suppress_bind_attrs = true,		\
-+	},						\
-+};							\
-+builtin_platform_driver(drv_name##_driver)
-+
- /*
-  * This macro must be used by the different irqchip drivers to declare
-  * the association between their version and their initialization function.
--- 
-2.28.0.rc0.105.gf9edc3c819-goog
-
+-Saravana
 
 _______________________________________________
 Linux-mediatek mailing list
