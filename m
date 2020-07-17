@@ -2,86 +2,78 @@ Return-Path: <SRS0=RXgq=A4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 08AE1C433EA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2020 11:05:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 21632C433E6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2020 14:21:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B76D82070E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2020 11:05:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E2B362070E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2020 14:21:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tbXISSj7";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="uid3XTxU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B76D82070E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="I5NPBBxE";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="fpdB3sBb"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E2B362070E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0ePc+wvL3f+Vm94rrVtC/vab2zsNoQNF3YYzE8UjgQc=; b=tbXISSj7bADl3CBiD8U6T/v7I0
-	KPiQPeK2lAlhHKx+dq+zCe9O3Jj7eoCGwbuVKDKxIW+R+ET4fkEUgUvqBBUh2YD/uCCQ5YvoeAV2l
-	T7gG6VwIizbeynmYevnzznzNyUhGjIO3u0cgFV+kE+XUSfBeqTVVMtwLvcHSgoiOIMeEeI8Khn1Vn
-	ujPJNNdrBdT5+si+kDz778N6uxYOukCcCWOzwuWwGPdPiaT0QKonpuJfYR+/udBWjMNYZWHonXGig
-	khO+9ROv6YJo82i8mBEg5qS55QDMIWFNkshnRkblYn4U9Do2mw6VJk5tTt4JF3nEuREjT+m6unTZz
-	2UmontuQ==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=e+XQ4cLgPSWBgSJVCC0KMJLKcayFB4wSyS9CL1f1vBk=; b=I5NPBBxE3eNGgwF38fQC9WNpN
+	8ihLgfOUdSn3ngJspHZtqckz0UTzKXZRrCZ1a0dTb0kGfBeaD9kGAzWvmrBTOFB6HdCDe6UltZtXm
+	5TE2acBXuUjzyj6VFVrCglUm76ZF2/2QjMjmQsNayrxptd1vrI3p0+S2rDILRopQ5tip4lCqtnuvy
+	90oTHPgclgcc/t54kHr/353cD8gIvf7UO+MEGrVHiYVtr3UJM23EKUbD2MId93qgZPWE/3wsVHIne
+	nbQrNzMssjxJjvUni6eaOynBDSd2Vo3xpHtSMv2NUAfDjv8NsLqy+kg33/n8Xgq1FYDVEJphOdB3b
+	GkqWIZG5g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jwOBG-0006wx-Su; Fri, 17 Jul 2020 11:05:30 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1jwREu-0001xN-M8; Fri, 17 Jul 2020 14:21:28 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jwOAB-0006L0-QQ; Fri, 17 Jul 2020 11:04:26 +0000
-Received: by mail-pf1-x441.google.com with SMTP id j20so5231398pfe.5;
- Fri, 17 Jul 2020 04:04:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=995KAhdT+FKLPALzlGqR321LXgaZ8eE1PV4g1Vl2rxQ=;
- b=uid3XTxU+D954KrXOGN5sAjPlszKMJeFCYYkjkwkuxhlxpf7n5p91NG79yt+lWkGEm
- SHY+AUzTttjMvLc9+FWHG1NVhDDfiZydKYOLoNX5U+bfA+6ZPPJ7DkjeIaMyERMdSCKS
- 0Qi71Rez8Qqkc+gm4+BuOLv5XcuL/Wi/g1Ojwh4jZZZh/ai5sVSSw2mC9kXtFHz79d83
- lrXurJMoOywiTWRIXfyunBDKDVKimHHdpkIxIDmO2GCEzrqO+rWEVnADVDHV5uTYA3LZ
- jHequ1CyYrfjn8Zv9WzxNTYMUH0p20iuE73ZugvVX1Ld/FuD7UIT/Z2Ky+FqtFAc5njn
- 63AA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=995KAhdT+FKLPALzlGqR321LXgaZ8eE1PV4g1Vl2rxQ=;
- b=qV/ucZ62S9DFvNa3e+SaFyQwCgaOE8NQjNYd/qegSFHdW7/2gpoHbFetqRZh0/IAgt
- 7ZjzSPgrjOJdrHxQpJ+1prG/Ve3d3eMJAJ9nj3ri4rcPgxipKj6RLeU89xf96Xr/bz7s
- W8pmbGcIYH50cwU3vKTgZs8HT8QoXFI3o8nQ1CQZ7m6C7g1fT1qmfLnTOjGaHLxNrLx8
- TrzAPMGbqROp0zNilB9hsrAIkPt3IIKvBf2+YicrByyk6iQKSnqHL4pvehKNGijVn4et
- HQGaTd2c73DnnDG+nyTVNUMbuiQVJmwIEpveiW76K7pJjcd+kF3S5kl32Dzuxzzk1ZU+
- vqLg==
-X-Gm-Message-State: AOAM530sTHbl7p/E3WCyFv6HJP8u05Q2pEgMoYuPCnIdqR50lZuVyTGc
- QPZF59P4nEGSBxlMqVVE+m86pFa8
-X-Google-Smtp-Source: ABdhPJy0fX2FbXiBGW2Kbaughb49GGBWAbJ+8R+ed9n4wruiV9MBfj/jehR7qDwruLB0vU34j4yVtw==
-X-Received: by 2002:a63:9246:: with SMTP id s6mr8021322pgn.22.1594983861679;
- Fri, 17 Jul 2020 04:04:21 -0700 (PDT)
-Received: from localhost.localdomain ([2402:7500:469:ae36:984e:c073:9d0b:7c09])
- by smtp.gmail.com with ESMTPSA id o26sm7619183pfp.219.2020.07.17.04.04.18
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 17 Jul 2020 04:04:20 -0700 (PDT)
-From: Gene Chen <gene.chen.richtek@gmail.com>
-To: lee.jones@linaro.org,
-	matthias.bgg@gmail.com
-Subject: [PATCH v2 9/9] mfd: mt6360: Merge different sub-devices i2c read/write
-Date: Fri, 17 Jul 2020 19:03:31 +0800
-Message-Id: <1594983811-25908-10-git-send-email-gene.chen.richtek@gmail.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1594983811-25908-1-git-send-email-gene.chen.richtek@gmail.com>
-References: <1594983811-25908-1-git-send-email-gene.chen.richtek@gmail.com>
+ id 1jwREp-0001w7-MG; Fri, 17 Jul 2020 14:21:24 +0000
+Received: from mail-ed1-f51.google.com (mail-ed1-f51.google.com
+ [209.85.208.51])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 039E52083B;
+ Fri, 17 Jul 2020 14:21:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1594995682;
+ bh=RcpLy8J4bl07xVJ0zXLtCtRK/EhczDNe0K167CZPt/A=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=fpdB3sBbuxusN53ZpvVUK5KmvMcsg8UeiIj1wp7lsEPwkY7FO/tkWGZL0bceyRW79
+ rJFOiifOeJzI2gomMYnvi/zoAyObDzjDAVIXwM+2d2lFc76dkAREocxu0Nqdu7tL0i
+ TevBH41qbsn/OXnevMfdU/rUZt+/UA1JzICWNz74=
+Received: by mail-ed1-f51.google.com with SMTP id z17so7841189edr.9;
+ Fri, 17 Jul 2020 07:21:21 -0700 (PDT)
+X-Gm-Message-State: AOAM531+AOelo0XqKNuqz5X6sv8EEuecG/p/8fyDcyEVHDLFcdbpa5dx
+ yYCCH7pcXKIefngfdflOMenCikjg8bPCNkW7SQ==
+X-Google-Smtp-Source: ABdhPJypK8/gj81SObcfYbHcv/2/xqPlnz6c4kxhoX/3Ss5+cqqNsG1o7oRzbu6X5rt88zAlmjh/AdI6PIrQ+RDZURI=
+X-Received: by 2002:a05:6402:1766:: with SMTP id
+ da6mr9274173edb.48.1594995680480; 
+ Fri, 17 Jul 2020 07:21:20 -0700 (PDT)
+MIME-Version: 1.0
+References: <20200708104023.3225-1-louis.kuo@mediatek.com>
+ <20200708104023.3225-2-louis.kuo@mediatek.com>
+ <CAAOTY_-+v_t3Vv-Ms7k9jCxJ+0B9qb93tBkL=3OmpMLeyAdV-g@mail.gmail.com>
+ <b7b77606aa3e476aa68b2fa116329f84@mtkmbs02n2.mediatek.inc>
+In-Reply-To: <b7b77606aa3e476aa68b2fa116329f84@mtkmbs02n2.mediatek.inc>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Fri, 17 Jul 2020 22:21:09 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__Jeu67-jajV5jysoTTXPoKXuXpvbGzHFYsUKG=j44sQg@mail.gmail.com>
+Message-ID: <CAAOTY__Jeu67-jajV5jysoTTXPoKXuXpvbGzHFYsUKG=j44sQg@mail.gmail.com>
+Subject: Re: [RFC PATCH V7 1/3] media: platform: mtk-isp: Add Mediatek sensor
+ interface driver
+To: =?UTF-8?B?TG91aXMgS3VvICjpg63lvrflr6cp?= <louis.kuo@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200717_070423_966021_2557689C 
-X-CRM114-Status: GOOD (  22.73  )
+X-CRM114-CacheID: sfid-20200717_102123_880671_F5EFEB67 
+X-CRM114-Status: GOOD (  23.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,570 +85,121 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
- benjamin.chao@mediatek.com, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, shufan_lee@richtek.com
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <Sean.Cheng@mediatek.com>,
+ "laurent.pinchart+renesas@ideasonboard.com"
+ <laurent.pinchart+renesas@ideasonboard.com>,
+ =?UTF-8?B?Q2hyaXN0aWUgWXUgKOa4uOmbheaDoCk=?= <christie.yu@mediatek.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?SmVycnktY2ggQ2hlbiAo6Zmz5pWs5oayKQ==?= <Jerry-ch.Chen@mediatek.com>,
+ Tomasz Figa <tfiga@chromium.org>,
+ "keiichiw@chromium.org" <keiichiw@chromium.org>,
+ =?UTF-8?B?SnVuZ28gTGluICjmnpfmmI7kv4op?= <jungo.lin@mediatek.com>,
+ =?UTF-8?B?U2ogSHVhbmcgKOm7g+S/oeeSiyk=?= <sj.huang@mediatek.com>,
+ "yuzhao@chromium.org" <yuzhao@chromium.org>,
+ "hans.verkuil@cisco.com" <hans.verkuil@cisco.com>,
+ "zwisler@chromium.org" <zwisler@chromium.org>,
+ =?UTF-8?B?RnJlZGVyaWMgQ2hlbiAo6Zmz5L+K5YWDKQ==?= <Frederic.Chen@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Gene Chen <gene_chen@richtek.com>
-
-Remove unuse register definition.
-Merge different sub-devices i2c read/write function into one regmap,
-because pmic and ldo part need crc bits for access protection.
-
-Signed-off-by: Gene Chen <gene_chen@richtek.com>
----
- drivers/mfd/Kconfig        |   1 +
- drivers/mfd/mt6360-core.c  | 229 +++++++++++++++++++++++++++++++++++++-----
- include/linux/mfd/mt6360.h | 240 ---------------------------------------------
- 3 files changed, 204 insertions(+), 266 deletions(-)
- delete mode 100644 include/linux/mfd/mt6360.h
-
-diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
-index a37d7d1..0684ddc 100644
---- a/drivers/mfd/Kconfig
-+++ b/drivers/mfd/Kconfig
-@@ -913,6 +913,7 @@ config MFD_MT6360
- 	select MFD_CORE
- 	select REGMAP_I2C
- 	select REGMAP_IRQ
-+	select CRC8
- 	depends on I2C
- 	help
- 	  Say Y here to enable MT6360 PMU/PMIC/LDO functional support.
-diff --git a/drivers/mfd/mt6360-core.c b/drivers/mfd/mt6360-core.c
-index 3186a7c..97ef1ad 100644
---- a/drivers/mfd/mt6360-core.c
-+++ b/drivers/mfd/mt6360-core.c
-@@ -14,7 +14,46 @@
- #include <linux/interrupt.h>
- #include <linux/mfd/core.h>
- 
--#include <linux/mfd/mt6360.h>
-+enum {
-+	MT6360_SLAVE_TCPC = 0,
-+	MT6360_SLAVE_PMIC,
-+	MT6360_SLAVE_LDO,
-+	MT6360_SLAVE_PMU,
-+	MT6360_SLAVE_MAX,
-+};
-+
-+struct mt6360_data {
-+	struct i2c_client *i2c[MT6360_SLAVE_MAX];
-+	struct device *dev;
-+	struct regmap *regmap;
-+	struct regmap_irq_chip_data *irq_data;
-+	unsigned int chip_rev;
-+	u8 crc8_tbl[CRC8_TABLE_SIZE];
-+};
-+
-+#define MT6360_PMU_SLAVEID		0x34
-+#define MT6360_PMIC_SLAVEID		0x1A
-+#define MT6360_LDO_SLAVEID		0x64
-+#define MT6360_TCPC_SLAVEID		0x4E
-+
-+#define MT6360_REG_TCPCSTART		0x00
-+#define MT6360_REG_TCPCEND		0xFF
-+#define MT6360_REG_PMICSTART		0x100
-+#define MT6360_REG_PMICEND		0x13B
-+#define MT6360_REG_LDOSTART		0x200
-+#define MT6360_REG_LDOEND		0x21C
-+#define MT6360_REG_PMUSTART		0x300
-+#define MT6360_PMU_DEV_INFO		0x300
-+#define MT6360_PMU_CHG_IRQ1		0x3D0
-+#define MT6360_PMU_CHG_MASK1		0x3F0
-+#define MT6360_REG_PMUEND		0x3FF
-+
-+/* from 0x3D0 to 0x3DF */
-+#define MT6360_PMU_IRQ_REGNUM		16
-+
-+#define CHIP_VEN_MASK		0xF0
-+#define CHIP_VEN_MT6360		0x50
-+#define CHIP_REV_MASK		0x0F
- 
- /* reg 0 -> 0 ~ 7 */
- #define MT6360_CHG_TREG_EVT		4
-@@ -220,12 +259,6 @@ static const struct regmap_irq_chip mt6360_irq_chip = {
- 	.use_ack = true,
- };
- 
--static const struct regmap_config mt6360_pmu_regmap_config = {
--	.reg_bits = 8,
--	.val_bits = 8,
--	.max_register = MT6360_PMU_MAXREG,
--};
--
- static const struct resource mt6360_adc_resources[] = {
- 	DEFINE_RES_IRQ_NAMED(MT6360_ADC_DONEI, "adc_donei"),
- };
-@@ -310,11 +343,153 @@ static int mt6360_check_vendor_info(struct mt6360_data *data)
- 	return 0;
- }
- 
--static const unsigned short mt6360_slave_addr[MT6360_SLAVE_MAX] = {
--	MT6360_PMU_SLAVEID,
-+static const u16 mt6360_slave_addrs[MT6360_SLAVE_MAX] = {
-+	MT6360_TCPC_SLAVEID,
- 	MT6360_PMIC_SLAVEID,
- 	MT6360_LDO_SLAVEID,
--	MT6360_TCPC_SLAVEID,
-+	MT6360_PMU_SLAVEID,
-+};
-+
-+static int mt6360_xlate_pmicldo_addr(u8 *addr, int rw_size)
-+{
-+	u8 flags[4] = { 0x00, 0x40, 0x80, 0xc0 };
-+
-+	if (rw_size < 1 || rw_size > 4)
-+		return -EINVAL;
-+
-+	*addr &= 0x3f;
-+	*addr |= flags[rw_size - 1];
-+
-+	return 0;
-+}
-+
-+static int mt6360_regmap_read(void *context, const void *reg, size_t reg_size,
-+			      void *val, size_t val_size)
-+{
-+	struct mt6360_data *data = context;
-+	u8 bank = *(u8 *)reg, reg_addr = *(u8 *)(reg + 1);
-+	struct i2c_client *i2c = data->i2c[bank];
-+	bool crc_needed = false;
-+	u8 *buf;
-+	/* first two is i2c_addr + reg_addr , last is crc8 */
-+	int alloc_size = 2 + val_size + 1, read_size = val_size;
-+	u8 crc;
-+	int ret;
-+
-+	if (bank == MT6360_SLAVE_PMIC || bank == MT6360_SLAVE_LDO) {
-+		crc_needed = true;
-+		ret = mt6360_xlate_pmicldo_addr(&reg_addr, val_size);
-+		if (ret < 0)
-+			return ret;
-+		read_size += 1;
-+	}
-+
-+	buf = kzalloc(alloc_size, GFP_KERNEL);
-+	if (!buf)
-+		return -ENOMEM;
-+
-+	/* 7 bit slave addr + read bit */
-+	buf[0] = ((i2c->addr & 0x7f) << 1) + 1;
-+	buf[1] = reg_addr;
-+
-+	ret = i2c_smbus_read_i2c_block_data(i2c, reg_addr, read_size, buf + 2);
-+
-+	if (ret == read_size) {
-+		memcpy(val, buf + 2, val_size);
-+		if (crc_needed) {
-+			crc = crc8(data->crc8_tbl, buf, val_size + 2, 0);
-+			if (crc != buf[val_size + 2])
-+				ret = -EIO;
-+		}
-+	}
-+
-+	kfree(buf);
-+
-+	if (ret < 0)
-+		return ret;
-+	else if (ret != read_size)
-+		return -EIO;
-+
-+	return 0;
-+}
-+
-+static int mt6360_regmap_write(void *context, const void *val, size_t val_size)
-+{
-+	struct mt6360_data *data = context;
-+	u8 bank = *(u8 *)val, reg_addr = *(u8 *)(val + 1);
-+	struct i2c_client *i2c = data->i2c[bank];
-+	bool crc_needed = false;
-+	u8 *buf;
-+	/* first two is i2c_addr + reg_addr , last crc8 + dummy */
-+	int alloc_size = 2 + val_size + 2, write_size = val_size - 2;
-+	int ret;
-+
-+	if (bank == MT6360_SLAVE_PMIC || bank == MT6360_SLAVE_LDO) {
-+		crc_needed = true;
-+		ret = mt6360_xlate_pmicldo_addr(&reg_addr, val_size - 2);
-+		if (ret < 0)
-+			return ret;
-+	}
-+
-+	buf = kzalloc(alloc_size, GFP_KERNEL);
-+	if (!buf)
-+		return -ENOMEM;
-+
-+	/* 7 bit slave addr + write bit */
-+	buf[0] = ((i2c->addr & 0x7f) << 1);
-+	buf[1] = reg_addr;
-+	/* val need to minus regaddr 16bit */
-+	memcpy(buf + 2, val + 2, write_size);
-+
-+	if (crc_needed) {
-+		buf[val_size] = crc8(data->crc8_tbl, buf, val_size, 0);
-+		write_size += 2;
-+	}
-+
-+	ret = i2c_smbus_write_i2c_block_data(i2c,
-+					     reg_addr, write_size, buf + 2);
-+
-+	kfree(buf);
-+
-+	if (ret < 0)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static const struct regmap_bus mt6360_regmap_bus = {
-+	.read		= mt6360_regmap_read,
-+	.write		= mt6360_regmap_write,
-+
-+	/* due to pmic and ldo crc access size limit */
-+	.max_raw_read	= 4,
-+	.max_raw_write	= 4,
-+};
-+
-+static bool mt6360_is_readwrite_reg(struct device *dev, unsigned int reg)
-+{
-+	switch (reg) {
-+	case MT6360_REG_TCPCSTART ... MT6360_REG_TCPCEND:
-+	case MT6360_REG_PMICSTART ... MT6360_REG_PMICEND:
-+	case MT6360_REG_LDOSTART ... MT6360_REG_LDOEND:
-+	fallthrough;
-+	case MT6360_REG_PMUSTART ... MT6360_REG_PMUEND:
-+		return true;
-+	}
-+
-+	return false;
-+}
-+
-+static const struct regmap_config mt6360_regmap_config = {
-+	.reg_bits		= 16,
-+	.val_bits		= 8,
-+
-+	.reg_format_endian	= REGMAP_ENDIAN_BIG,
-+
-+	/* bank1:tcpc, bank2:pmic, bank3:ldo, bank4:pmu */
-+	.max_register		= MT6360_REG_PMUEND,
-+	.writeable_reg		= mt6360_is_readwrite_reg,
-+	.readable_reg		= mt6360_is_readwrite_reg,
- };
- 
- static int mt6360_probe(struct i2c_client *client)
-@@ -327,9 +502,23 @@ static int mt6360_probe(struct i2c_client *client)
- 		return -ENOMEM;
- 
- 	data->dev = &client->dev;
--	i2c_set_clientdata(client, data);
-+	crc8_populate_msb(data->crc8_tbl, 0x7);
-+
-+	for (i = 0; i < MT6360_SLAVE_PMU; i++) {
-+		data->i2c[i] = devm_i2c_new_dummy_device(&client->dev,
-+							 client->adapter,
-+							 mt6360_slave_addrs[i]);
-+		if (IS_ERR(data->i2c[i])) {
-+			dev_err(&client->dev,
-+				"Failed to get new dummy I2C device for address 0x%x",
-+				mt6360_slave_addrs[i]);
-+			return PTR_ERR(data->i2c[i]);
-+		}
-+	}
-+	data->i2c[MT6360_SLAVE_PMU] = client;
- 
--	data->regmap = devm_regmap_init_i2c(client, &mt6360_pmu_regmap_config);
-+	data->regmap = devm_regmap_init(&client->dev, &mt6360_regmap_bus,
-+					data, &mt6360_regmap_config);
- 	if (IS_ERR(data->regmap)) {
- 		dev_err(&client->dev, "Failed to register regmap\n");
- 		return PTR_ERR(data->regmap);
-@@ -348,20 +537,6 @@ static int mt6360_probe(struct i2c_client *client)
- 		return ret;
- 	}
- 
--	data->i2c[0] = client;
--	for (i = 1; i < MT6360_SLAVE_MAX; i++) {
--		data->i2c[i] = devm_i2c_new_dummy_device(&client->dev,
--							client->adapter,
--							mt6360_slave_addr[i]);
--		if (IS_ERR(data->i2c[i])) {
--			dev_err(&client->dev,
--				"Failed to get new dummy I2C device for address 0x%x",
--				mt6360_slave_addr[i]);
--			return PTR_ERR(data->i2c[i]);
--		}
--		i2c_set_clientdata(data->i2c[i], data);
--	}
--
- 	ret = devm_mfd_add_devices(&client->dev, PLATFORM_DEVID_AUTO,
- 				   mt6360_devs, ARRAY_SIZE(mt6360_devs), NULL,
- 				   0, regmap_irq_get_domain(data->irq_data));
-@@ -371,6 +546,8 @@ static int mt6360_probe(struct i2c_client *client)
- 		return ret;
- 	}
- 
-+	i2c_set_clientdata(client, data);
-+
- 	return 0;
- }
- 
-diff --git a/include/linux/mfd/mt6360.h b/include/linux/mfd/mt6360.h
-deleted file mode 100644
-index da0fb5c..0000000
---- a/include/linux/mfd/mt6360.h
-+++ /dev/null
-@@ -1,240 +0,0 @@
--/* SPDX-License-Identifier: GPL-2.0 */
--/*
-- * Copyright (c) 2020 MediaTek Inc.
-- */
--
--#ifndef __MT6360_H__
--#define __MT6360_H__
--
--#include <linux/regmap.h>
--
--enum {
--	MT6360_SLAVE_PMU = 0,
--	MT6360_SLAVE_PMIC,
--	MT6360_SLAVE_LDO,
--	MT6360_SLAVE_TCPC,
--	MT6360_SLAVE_MAX,
--};
--
--#define MT6360_PMU_SLAVEID	0x34
--#define MT6360_PMIC_SLAVEID	0x1A
--#define MT6360_LDO_SLAVEID	0x64
--#define MT6360_TCPC_SLAVEID	0x4E
--
--struct mt6360_data {
--	struct i2c_client *i2c[MT6360_SLAVE_MAX];
--	struct device *dev;
--	struct regmap *regmap;
--	struct regmap_irq_chip_data *irq_data;
--	unsigned int chip_rev;
--};
--
--/* PMU register defininition */
--#define MT6360_PMU_DEV_INFO			0x00
--#define MT6360_PMU_CORE_CTRL1			0x01
--#define MT6360_PMU_RST1				0x02
--#define MT6360_PMU_CRCEN			0x03
--#define MT6360_PMU_RST_PAS_CODE1		0x04
--#define MT6360_PMU_RST_PAS_CODE2		0x05
--#define MT6360_PMU_CORE_CTRL2			0x06
--#define MT6360_PMU_TM_PAS_CODE1			0x07
--#define MT6360_PMU_TM_PAS_CODE2			0x08
--#define MT6360_PMU_TM_PAS_CODE3			0x09
--#define MT6360_PMU_TM_PAS_CODE4			0x0A
--#define MT6360_PMU_IRQ_IND			0x0B
--#define MT6360_PMU_IRQ_MASK			0x0C
--#define MT6360_PMU_IRQ_SET			0x0D
--#define MT6360_PMU_SHDN_CTRL			0x0E
--#define MT6360_PMU_TM_INF			0x0F
--#define MT6360_PMU_I2C_CTRL			0x10
--#define MT6360_PMU_CHG_CTRL1			0x11
--#define MT6360_PMU_CHG_CTRL2			0x12
--#define MT6360_PMU_CHG_CTRL3			0x13
--#define MT6360_PMU_CHG_CTRL4			0x14
--#define MT6360_PMU_CHG_CTRL5			0x15
--#define MT6360_PMU_CHG_CTRL6			0x16
--#define MT6360_PMU_CHG_CTRL7			0x17
--#define MT6360_PMU_CHG_CTRL8			0x18
--#define MT6360_PMU_CHG_CTRL9			0x19
--#define MT6360_PMU_CHG_CTRL10			0x1A
--#define MT6360_PMU_CHG_CTRL11			0x1B
--#define MT6360_PMU_CHG_CTRL12			0x1C
--#define MT6360_PMU_CHG_CTRL13			0x1D
--#define MT6360_PMU_CHG_CTRL14			0x1E
--#define MT6360_PMU_CHG_CTRL15			0x1F
--#define MT6360_PMU_CHG_CTRL16			0x20
--#define MT6360_PMU_CHG_AICC_RESULT		0x21
--#define MT6360_PMU_DEVICE_TYPE			0x22
--#define MT6360_PMU_QC_CONTROL1			0x23
--#define MT6360_PMU_QC_CONTROL2			0x24
--#define MT6360_PMU_QC30_CONTROL1		0x25
--#define MT6360_PMU_QC30_CONTROL2		0x26
--#define MT6360_PMU_USB_STATUS1			0x27
--#define MT6360_PMU_QC_STATUS1			0x28
--#define MT6360_PMU_QC_STATUS2			0x29
--#define MT6360_PMU_CHG_PUMP			0x2A
--#define MT6360_PMU_CHG_CTRL17			0x2B
--#define MT6360_PMU_CHG_CTRL18			0x2C
--#define MT6360_PMU_CHRDET_CTRL1			0x2D
--#define MT6360_PMU_CHRDET_CTRL2			0x2E
--#define MT6360_PMU_DPDN_CTRL			0x2F
--#define MT6360_PMU_CHG_HIDDEN_CTRL1		0x30
--#define MT6360_PMU_CHG_HIDDEN_CTRL2		0x31
--#define MT6360_PMU_CHG_HIDDEN_CTRL3		0x32
--#define MT6360_PMU_CHG_HIDDEN_CTRL4		0x33
--#define MT6360_PMU_CHG_HIDDEN_CTRL5		0x34
--#define MT6360_PMU_CHG_HIDDEN_CTRL6		0x35
--#define MT6360_PMU_CHG_HIDDEN_CTRL7		0x36
--#define MT6360_PMU_CHG_HIDDEN_CTRL8		0x37
--#define MT6360_PMU_CHG_HIDDEN_CTRL9		0x38
--#define MT6360_PMU_CHG_HIDDEN_CTRL10		0x39
--#define MT6360_PMU_CHG_HIDDEN_CTRL11		0x3A
--#define MT6360_PMU_CHG_HIDDEN_CTRL12		0x3B
--#define MT6360_PMU_CHG_HIDDEN_CTRL13		0x3C
--#define MT6360_PMU_CHG_HIDDEN_CTRL14		0x3D
--#define MT6360_PMU_CHG_HIDDEN_CTRL15		0x3E
--#define MT6360_PMU_CHG_HIDDEN_CTRL16		0x3F
--#define MT6360_PMU_CHG_HIDDEN_CTRL17		0x40
--#define MT6360_PMU_CHG_HIDDEN_CTRL18		0x41
--#define MT6360_PMU_CHG_HIDDEN_CTRL19		0x42
--#define MT6360_PMU_CHG_HIDDEN_CTRL20		0x43
--#define MT6360_PMU_CHG_HIDDEN_CTRL21		0x44
--#define MT6360_PMU_CHG_HIDDEN_CTRL22		0x45
--#define MT6360_PMU_CHG_HIDDEN_CTRL23		0x46
--#define MT6360_PMU_CHG_HIDDEN_CTRL24		0x47
--#define MT6360_PMU_CHG_HIDDEN_CTRL25		0x48
--#define MT6360_PMU_BC12_CTRL			0x49
--#define MT6360_PMU_CHG_STAT			0x4A
--#define MT6360_PMU_RESV1			0x4B
--#define MT6360_PMU_TYPEC_OTP_TH_SEL_CODEH	0x4E
--#define MT6360_PMU_TYPEC_OTP_TH_SEL_CODEL	0x4F
--#define MT6360_PMU_TYPEC_OTP_HYST_TH		0x50
--#define MT6360_PMU_TYPEC_OTP_CTRL		0x51
--#define MT6360_PMU_ADC_BAT_DATA_H		0x52
--#define MT6360_PMU_ADC_BAT_DATA_L		0x53
--#define MT6360_PMU_IMID_BACKBST_ON		0x54
--#define MT6360_PMU_IMID_BACKBST_OFF		0x55
--#define MT6360_PMU_ADC_CONFIG			0x56
--#define MT6360_PMU_ADC_EN2			0x57
--#define MT6360_PMU_ADC_IDLE_T			0x58
--#define MT6360_PMU_ADC_RPT_1			0x5A
--#define MT6360_PMU_ADC_RPT_2			0x5B
--#define MT6360_PMU_ADC_RPT_3			0x5C
--#define MT6360_PMU_ADC_RPT_ORG1			0x5D
--#define MT6360_PMU_ADC_RPT_ORG2			0x5E
--#define MT6360_PMU_BAT_OVP_TH_SEL_CODEH		0x5F
--#define MT6360_PMU_BAT_OVP_TH_SEL_CODEL		0x60
--#define MT6360_PMU_CHG_CTRL19			0x61
--#define MT6360_PMU_VDDASUPPLY			0x62
--#define MT6360_PMU_BC12_MANUAL			0x63
--#define MT6360_PMU_CHGDET_FUNC			0x64
--#define MT6360_PMU_FOD_CTRL			0x65
--#define MT6360_PMU_CHG_CTRL20			0x66
--#define MT6360_PMU_CHG_HIDDEN_CTRL26		0x67
--#define MT6360_PMU_CHG_HIDDEN_CTRL27		0x68
--#define MT6360_PMU_RESV2			0x69
--#define MT6360_PMU_USBID_CTRL1			0x6D
--#define MT6360_PMU_USBID_CTRL2			0x6E
--#define MT6360_PMU_USBID_CTRL3			0x6F
--#define MT6360_PMU_FLED_CFG			0x70
--#define MT6360_PMU_RESV3			0x71
--#define MT6360_PMU_FLED1_CTRL			0x72
--#define MT6360_PMU_FLED_STRB_CTRL		0x73
--#define MT6360_PMU_FLED1_STRB_CTRL2		0x74
--#define MT6360_PMU_FLED1_TOR_CTRL		0x75
--#define MT6360_PMU_FLED2_CTRL			0x76
--#define MT6360_PMU_RESV4			0x77
--#define MT6360_PMU_FLED2_STRB_CTRL2		0x78
--#define MT6360_PMU_FLED2_TOR_CTRL		0x79
--#define MT6360_PMU_FLED_VMIDTRK_CTRL1		0x7A
--#define MT6360_PMU_FLED_VMID_RTM		0x7B
--#define MT6360_PMU_FLED_VMIDTRK_CTRL2		0x7C
--#define MT6360_PMU_FLED_PWSEL			0x7D
--#define MT6360_PMU_FLED_EN			0x7E
--#define MT6360_PMU_FLED_Hidden1			0x7F
--#define MT6360_PMU_RGB_EN			0x80
--#define MT6360_PMU_RGB1_ISNK			0x81
--#define MT6360_PMU_RGB2_ISNK			0x82
--#define MT6360_PMU_RGB3_ISNK			0x83
--#define MT6360_PMU_RGB_ML_ISNK			0x84
--#define MT6360_PMU_RGB1_DIM			0x85
--#define MT6360_PMU_RGB2_DIM			0x86
--#define MT6360_PMU_RGB3_DIM			0x87
--#define MT6360_PMU_RESV5			0x88
--#define MT6360_PMU_RGB12_Freq			0x89
--#define MT6360_PMU_RGB34_Freq			0x8A
--#define MT6360_PMU_RGB1_Tr			0x8B
--#define MT6360_PMU_RGB1_Tf			0x8C
--#define MT6360_PMU_RGB1_TON_TOFF		0x8D
--#define MT6360_PMU_RGB2_Tr			0x8E
--#define MT6360_PMU_RGB2_Tf			0x8F
--#define MT6360_PMU_RGB2_TON_TOFF		0x90
--#define MT6360_PMU_RGB3_Tr			0x91
--#define MT6360_PMU_RGB3_Tf			0x92
--#define MT6360_PMU_RGB3_TON_TOFF		0x93
--#define MT6360_PMU_RGB_Hidden_CTRL1		0x94
--#define MT6360_PMU_RGB_Hidden_CTRL2		0x95
--#define MT6360_PMU_RESV6			0x97
--#define MT6360_PMU_SPARE1			0x9A
--#define MT6360_PMU_SPARE2			0xA0
--#define MT6360_PMU_SPARE3			0xB0
--#define MT6360_PMU_SPARE4			0xC0
--#define MT6360_PMU_CHG_IRQ1			0xD0
--#define MT6360_PMU_CHG_IRQ2			0xD1
--#define MT6360_PMU_CHG_IRQ3			0xD2
--#define MT6360_PMU_CHG_IRQ4			0xD3
--#define MT6360_PMU_CHG_IRQ5			0xD4
--#define MT6360_PMU_CHG_IRQ6			0xD5
--#define MT6360_PMU_QC_IRQ			0xD6
--#define MT6360_PMU_FOD_IRQ			0xD7
--#define MT6360_PMU_BASE_IRQ			0xD8
--#define MT6360_PMU_FLED_IRQ1			0xD9
--#define MT6360_PMU_FLED_IRQ2			0xDA
--#define MT6360_PMU_RGB_IRQ			0xDB
--#define MT6360_PMU_BUCK1_IRQ			0xDC
--#define MT6360_PMU_BUCK2_IRQ			0xDD
--#define MT6360_PMU_LDO_IRQ1			0xDE
--#define MT6360_PMU_LDO_IRQ2			0xDF
--#define MT6360_PMU_CHG_STAT1			0xE0
--#define MT6360_PMU_CHG_STAT2			0xE1
--#define MT6360_PMU_CHG_STAT3			0xE2
--#define MT6360_PMU_CHG_STAT4			0xE3
--#define MT6360_PMU_CHG_STAT5			0xE4
--#define MT6360_PMU_CHG_STAT6			0xE5
--#define MT6360_PMU_QC_STAT			0xE6
--#define MT6360_PMU_FOD_STAT			0xE7
--#define MT6360_PMU_BASE_STAT			0xE8
--#define MT6360_PMU_FLED_STAT1			0xE9
--#define MT6360_PMU_FLED_STAT2			0xEA
--#define MT6360_PMU_RGB_STAT			0xEB
--#define MT6360_PMU_BUCK1_STAT			0xEC
--#define MT6360_PMU_BUCK2_STAT			0xED
--#define MT6360_PMU_LDO_STAT1			0xEE
--#define MT6360_PMU_LDO_STAT2			0xEF
--#define MT6360_PMU_CHG_MASK1			0xF0
--#define MT6360_PMU_CHG_MASK2			0xF1
--#define MT6360_PMU_CHG_MASK3			0xF2
--#define MT6360_PMU_CHG_MASK4			0xF3
--#define MT6360_PMU_CHG_MASK5			0xF4
--#define MT6360_PMU_CHG_MASK6			0xF5
--#define MT6360_PMU_QC_MASK			0xF6
--#define MT6360_PMU_FOD_MASK			0xF7
--#define MT6360_PMU_BASE_MASK			0xF8
--#define MT6360_PMU_FLED_MASK1			0xF9
--#define MT6360_PMU_FLED_MASK2			0xFA
--#define MT6360_PMU_FAULTB_MASK			0xFB
--#define MT6360_PMU_BUCK1_MASK			0xFC
--#define MT6360_PMU_BUCK2_MASK			0xFD
--#define MT6360_PMU_LDO_MASK1			0xFE
--#define MT6360_PMU_LDO_MASK2			0xFF
--#define MT6360_PMU_MAXREG			MT6360_PMU_LDO_MASK2
--
--/* MT6360_PMU_IRQ_SET */
--#define MT6360_PMU_IRQ_REGNUM	16
--#define MT6360_IRQ_RETRIG	BIT(2)
--
--#define CHIP_VEN_MASK				0xF0
--#define CHIP_VEN_MT6360				0x50
--#define CHIP_REV_MASK				0x0F
--
--#endif /* __MT6360_H__ */
--- 
-2.7.4
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIExvdWlzOgoKTG91aXMgS3VvICjpg63lvrflr6cpIDxsb3Vpcy5rdW9AbWVkaWF0ZWsuY29t
+PiDmlrwgMjAyMOW5tDfmnIgxN+aXpSDpgLHkupQg5LiK5Y2IMTA6NTblr6vpgZPvvJoKPgo+IEhp
+IENodW4tS3VhbmcsCj4KPiBTaW5jZSBwaHkgZHJpdmVyIGlzIG5vdCBiZWxvbmcgdG8gVjRMMiBz
+Y29wZQo+Cj4gU2hvdWxkIEkgbmVlZCB0byB1cHN0ZWFtIDgxODMgbWlwaSBwaHkgZHJpdmVyIHdp
+dGggbmV3IGEgcGF0Y2ggb3RoZXIgdGhhbiB0aGlzIG9uZSA/CgpZZXMsIEkgdGhpbmsgc28uIE1h
+eWJlIGRpZmZlcmVudCBzZXJpZXMgd291bGQgYmUgYmV0dGVyLgoKUmVnYXJkcywKQ2h1bi1LdWFu
+Zy4KCj4KPiBCUnMKPiBMb3Vpcwo+Cj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0KPiBGcm9t
+OiBDaHVuLUt1YW5nIEh1IFttYWlsdG86Y2h1bmt1YW5nLmh1QGtlcm5lbC5vcmddCj4gU2VudDog
+VGh1cnNkYXksIEp1bHkgOSwgMjAyMCA5OjEzIFBNCj4gVG86IExvdWlzIEt1byAo6YOt5b635a+n
+KQo+IENjOiBoYW5zLnZlcmt1aWxAY2lzY28uY29tOyBsYXVyZW50LnBpbmNoYXJ0K3JlbmVzYXNA
+aWRlYXNvbmJvYXJkLmNvbTsgVG9tYXN6IEZpZ2E7IGtlaWljaGl3QGNocm9taXVtLm9yZzsgTWF0
+dGhpYXMgQnJ1Z2dlcjsgTWF1cm8gQ2FydmFsaG8gQ2hlaGFiOyBkZXZpY2V0cmVlQHZnZXIua2Vy
+bmVsLm9yZzsgU2VhbiBDaGVuZyAo6YSt5piH5byYKTsgc3J2X2hldXBzdHJlYW07IEplcnJ5LWNo
+IENoZW4gKOmZs+aVrOaGsik7IEp1bmdvIExpbiAo5p6X5piO5L+KKTsgU2ogSHVhbmcgKOm7g+S/
+oeeSiyk7IHl1emhhb0BjaHJvbWl1bS5vcmc7IG1vZGVyYXRlZCBsaXN0OkFSTS9NZWRpYXRlayBT
+b0Mgc3VwcG9ydDsgendpc2xlckBjaHJvbWl1bS5vcmc7IENocmlzdGllIFl1ICjmuLjpm4Xmg6Ap
+OyBGcmVkZXJpYyBDaGVuICjpmbPkv4rlhYMpOyBMaW51eCBBUk07IGxpbnV4LW1lZGlhQHZnZXIu
+a2VybmVsLm9yZwo+IFN1YmplY3Q6IFJlOiBbUkZDIFBBVENIIFY3IDEvM10gbWVkaWE6IHBsYXRm
+b3JtOiBtdGstaXNwOiBBZGQgTWVkaWF0ZWsgc2Vuc29yIGludGVyZmFjZSBkcml2ZXIKPgo+IEhp
+LCBMb3VpczoKPgo+IExvdWlzIEt1byA8bG91aXMua3VvQG1lZGlhdGVrLmNvbT4g5pa8IDIwMjDl
+ubQ35pyIOOaXpSDpgLHkuIkg5LiL5Y2INjo0MeWvq+mBk++8mgo+ID4KPiA+IFRoaXMgcGF0Y2gg
+YWRkcyBNZWRpYXRlaydzIHNlbnNvciBpbnRlcmZhY2UgZHJpdmVyLiBTZW5zb3IgaW50ZXJmYWNl
+Cj4gPiBkcml2ZXIgaXMgYSBNSVBJLUNTSTIgaG9zdCBkcml2ZXIsIG5hbWVseSwgYSBIVyBjYW1l
+cmEgaW50ZXJmYWNlIGNvbnRyb2xsZXIuCj4gPiBJdCBzdXBwb3J0IGEgd2lkZWx5IGFkb3B0ZWQs
+IHNpbXBsZSwgaGlnaC1zcGVlZCBwcm90b2NvbCBwcmltYXJpbHkKPiA+IGludGVuZGVkIGZvciBw
+b2ludC10by1wb2ludCBpbWFnZSBhbmQgdmlkZW8gdHJhbnNtaXNzaW9uIGJldHdlZW4KPiA+IGNh
+bWVyYXMgYW5kIGhvc3QgZGV2aWNlcy4gVGhlIG10ay1pc3AgZGlyZWN0b3J5IHdpbGwgY29udGFp
+biBkcml2ZXJzCj4gPiBmb3IgbXVsdGlwbGUgSVAgYmxvY2tzIGZvdW5kIGluIE1lZGlhdGVrIElT
+UCBzeXN0ZW0uIEl0IHdpbGwgaW5jbHVkZQo+ID4gSVNQIFBhc3MgMSBkcml2ZXIsIHNlbnNvciBp
+bnRlcmZhY2UgZHJpdmVyLCBESVAgZHJpdmVyIGFuZCBmYWNlIGRldGVjdGlvbiBkcml2ZXIuCj4g
+Pgo+ID4gU2lnbmVkLW9mZi1ieTogTG91aXMgS3VvIDxsb3Vpcy5rdW9AbWVkaWF0ZWsuY29tPgo+
+ID4gLS0tCj4gPiAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9NYWtlZmlsZSAgICAgICAgICAgICAg
+IHwgICAgMSArCj4gPiAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstaXNwL0tjb25maWcgICAg
+ICAgIHwgICAxOCArCj4gPiAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstaXNwL01ha2VmaWxl
+ICAgICAgIHwgICAgMyArCj4gPiAgLi4uL21lZGlhL3BsYXRmb3JtL210ay1pc3Avc2VuaW5mL01h
+a2VmaWxlICAgIHwgICAgNyArCj4gPiAgLi4uL3BsYXRmb3JtL210ay1pc3Avc2VuaW5mL210a19z
+ZW5pbmYuYyAgICAgIHwgIDk3NCArKysrKysrKysrKwo+ID4gIC4uLi9wbGF0Zm9ybS9tdGstaXNw
+L3NlbmluZi9tdGtfc2VuaW5mX2RwaHkuYyB8ICAzNTMgKysrKwo+Cj4gSSB0aGluayBwaHkgZHJp
+dmVyIHNob3VsZCBiZSBwbGFjZWQgaW4gZHJpdmVycy9waHkvbWVkaWF0ZWsgYW5kIHNlcGFyYXRl
+IHBoeSBkcml2ZXIgdG8gYW4gaW5kZXBlbmRlbnQgcGF0Y2guCj4KPiA+ICAuLi4vcGxhdGZvcm0v
+bXRrLWlzcC9zZW5pbmYvbXRrX3NlbmluZl9yZWcuaCAgfCAxNDkxICsrKysrKysrKysrKysrKysr
+Cj4gPiAgLi4uL210ay1pc3Avc2VuaW5mL210a19zZW5pbmZfcnhfcmVnLmggICAgICAgIHwgIDUx
+NSArKysrKysKPiA+ICA4IGZpbGVzIGNoYW5nZWQsIDMzNjIgaW5zZXJ0aW9ucygrKQo+ID4gIGNy
+ZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1pc3AvS2NvbmZpZwo+
+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1pc3AvTWFr
+ZWZpbGUKPiA+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGst
+aXNwL3NlbmluZi9NYWtlZmlsZQo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlh
+L3BsYXRmb3JtL210ay1pc3Avc2VuaW5mL210a19zZW5pbmYuYwo+ID4gIGNyZWF0ZSBtb2RlIDEw
+MDY0NAo+ID4gZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstaXNwL3NlbmluZi9tdGtfc2VuaW5m
+X2RwaHkuYwo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NAo+ID4gZHJpdmVycy9tZWRpYS9wbGF0Zm9y
+bS9tdGstaXNwL3NlbmluZi9tdGtfc2VuaW5mX3JlZy5oCj4gPiAgY3JlYXRlIG1vZGUgMTAwNjQ0
+Cj4gPiBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1pc3Avc2VuaW5mL210a19zZW5pbmZfcnhf
+cmVnLmgKPiA+Cj4KPiBbc25pcF0KPgo+ID4gKwo+ID4gKyNpbmNsdWRlIDxsaW51eC9jbGsuaD4K
+PiA+ICsjaW5jbHVkZSA8bGludXgvZGVsYXkuaD4KPiA+ICsjaW5jbHVkZSA8bGludXgvaW50ZXJy
+dXB0Lmg+Cj4gPiArI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgo+ID4gKyNpbmNsdWRlIDxsaW51
+eC9vZl9ncmFwaC5oPgo+ID4gKyNpbmNsdWRlIDxsaW51eC9vZl9pcnEuaD4KPgo+IE5vIGlycSBo
+YW5kbGVyLCBzbyByZW1vdmUgdGhpcy4KPgo+ID4gKyNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9k
+ZXZpY2UuaD4KPiA+ICsjaW5jbHVkZSA8bGludXgvcG1fcnVudGltZS5oPgo+ID4gKyNpbmNsdWRl
+IDxsaW51eC9zbGFiLmg+Cj4gPiArI2luY2x1ZGUgPGxpbnV4L3ZpZGVvZGV2Mi5oPgo+ID4gKyNp
+bmNsdWRlIDxtZWRpYS92NGwyLWFzeW5jLmg+Cj4gPiArI2luY2x1ZGUgPG1lZGlhL3Y0bDItY3Ry
+bHMuaD4KPiA+ICsjaW5jbHVkZSA8bWVkaWEvdjRsMi1ldmVudC5oPgo+ID4gKyNpbmNsdWRlIDxt
+ZWRpYS92NGwyLWZ3bm9kZS5oPgo+ID4gKyNpbmNsdWRlIDxtZWRpYS92NGwyLXN1YmRldi5oPgo+
+ID4gKyNpbmNsdWRlIDxsaW51eC9waHkvcGh5Lmg+Cj4gPiArI2luY2x1ZGUgIm10a19zZW5pbmZf
+cmVnLmgiCj4gPiArCj4KPiBbc25pcF0KPgo+ID4gKwo+ID4gK3N0YXRpYyBpbnQgc2VuaW5mX3Nl
+dF9jdHJsKHN0cnVjdCB2NGwyX2N0cmwgKmN0cmwpIHsKPiA+ICsgICAgICAgc3RydWN0IG10a19z
+ZW5pbmYgKnByaXYgPSBjb250YWluZXJfb2YoY3RybC0+aGFuZGxlciwKPiA+ICsgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCBtdGtfc2VuaW5mLAo+ID4g
+K2N0cmxfaGFuZGxlcik7Cj4gPiArCj4gPiArICAgICAgIHN3aXRjaCAoY3RybC0+aWQpIHsKPiA+
+ICsgICAgICAgY2FzZSBWNEwyX0NJRF9URVNUX1BBVFRFUk46Cj4gPiArICAgICAgICAgICAgICAg
+aWYgKGN0cmwtPnZhbCA9PSBURVNUX0dFTl9QQVRURVJOKQo+ID4gKyAgICAgICAgICAgICAgICAg
+ICAgICAgcmV0dXJuIHNlbmluZl9lbmFibGVfdGVzdF9wYXR0ZXJuKHByaXYpOwo+Cj4gV2l0aG91
+dCB0aGlzLCB0aGlzIGRyaXZlciBzdGlsbCB3b3Jrcywgc28gbW92ZSB0aGlzIHRvIGFuIGluZGVw
+ZW5kZW50IHBhdGNoLgo+Cj4gPiArICAgICAgICAgICAgICAgZWxzZSBpZiAoY3RybC0+dmFsID09
+IFRFU1RfRFVNUF9ERUJVR19JTkZPKQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJu
+IHNlbmluZl9kdW1wX2RlYnVnX2luZm8ocHJpdik7Cj4KPiBEaXR0by4KPgo+ID4gKyAgICAgICAg
+ICAgICAgIGVsc2UKPiA+ICsgICAgICAgICAgICAgICAgICAgICAgIHJldHVybiAtRUlOVkFMOwo+
+ID4gKyAgICAgICB9Cj4gPiArCj4gPiArICAgICAgIHJldHVybiAwOwo+ID4gK30KPiA+ICsKPgo+
+IFtzbmlwXQo+Cj4gPiArCj4gPiArI2lmZGVmIENPTkZJR19PRgo+ID4gK3N0YXRpYyBjb25zdCBz
+dHJ1Y3Qgb2ZfZGV2aWNlX2lkIG10a19taXBpX2RwaHlfb2ZfbWF0Y2hbXSA9IHsKPiA+ICsgICAg
+ICAgey5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE4My1taXBpX2RwaHkifSwKPgo+IFdoZXJl
+IGlzIHRoZSBkZWZpbml0aW9uIG9mICJtZWRpYXRlayxtdDgxODMtbWlwaV9kcGh5Ij8KPgo+IFJl
+Z2FyZHMsCj4gQ2h1bi1LdWFuZy4KPgo+ID4gKyAgICAgICB7fSwKPiA+ICt9Owo+ID4gK01PRFVM
+RV9ERVZJQ0VfVEFCTEUob2YsIG10a19taXBpX2RwaHlfb2ZfbWF0Y2gpOyAjZW5kaWYKPiA+ICsK
+PiA+ICtzdGF0aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciBtaXBpX2RwaHlfcGRydiA9IHsKPiA+
+ICsgICAgICAgLnByb2JlICA9IG1pcGlfZHBoeV9wcm9iZSwKPiA+ICsgICAgICAgLmRyaXZlciA9
+IHsKPiA+ICsgICAgICAgICAgICAgICAubmFtZSAgID0gIm1pcGlfZHBoeSIsCj4gPiArICAgICAg
+ICAgICAgICAgLm9mX21hdGNoX3RhYmxlID0gb2ZfbWF0Y2hfcHRyKG10a19taXBpX2RwaHlfb2Zf
+bWF0Y2gpLAo+ID4gKyAgICAgICB9LAo+ID4gK307Cj4gPiArCj4gPiArbW9kdWxlX3BsYXRmb3Jt
+X2RyaXZlcihtaXBpX2RwaHlfcGRydik7Cj4gPiArCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgt
+bWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
