@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A77C0C433FC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 21:37:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 01FF8C433F2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 21:39:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7897622CBB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 21:37:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B98A922BEF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 21:39:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rA0uzwaB";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="cWxgtuCm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7897622CBB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="u1PJyTrZ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="iuACcuGU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B98A922BEF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,46 +26,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=DDjEdU/YJFMWneKp3Mx3n+JszdtRDB38NYn/j6lT1ec=; b=rA0uzwaBR1EOJYMEZXcFNRzWX
-	l11wRDIUQ8mYhdzqsrvOjnVYtftlGISoqnn/RaUnVPv/g4nWaXqW+QA3OFYbtc05w4Q3CufnO9Mmm
-	V3C75X13bMl0K83HCcbvd35diqXFH2Z+6p0PI+JmJrNGIyuNqzFlfNbTxxtTgg2zGZPkxp14yuaZg
-	2s43PD73YNNvLl52UYt6jvmqrx1wRL/4V42hoNvJL8GSHw7xJPxzJ3RWfcBf28iZrDfl/HVxFIkMd
-	u1q9xEdKJob1NonMbxKb4Lyob+H2vQ5eA5fqh/2/wcYgHMLinjuaqfWA/ZIq8DxQ5Wt9XwB8obb8c
-	2xJd5l59w==;
+	 bh=5s0OtH5KhJ55LAPsRFHkpzKBlhBG/48bLEM7zfqAqpw=; b=u1PJyTrZqsJuF98FahlPlkNYS
+	k9TeqY8Psmk6Gs1vphgOog2MbazG/jYPHqyJcntKJ1/TbhLNWHv6WoHUoBSxanfdmkJGKbwUMlnRM
+	glpGJf2TkPjB/mzE34GMEhhK6+Uc0cMeqoSxe+y3gsiOU+mU3jrD+zqoUi6OJnumoFSjpTS9xMzqh
+	Kq0FDRZ5ir87tD0Wdl1om+nSfOEaUEVwMwMrQRRafCAQUBWoGGrosFwr05JD4DhW+pLFzmlWrGjlp
+	OA6mt0jEB6UDwdJ0t5IAmmVPoxBRC4yUKaAsms/A+14hSu0YOKsrV9u0kVdGisJSj2opLot36Hl3v
+	AiilBrzuw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jxdTf-0001iO-VC; Mon, 20 Jul 2020 21:37:40 +0000
+	id 1jxdVA-0002Qw-EA; Mon, 20 Jul 2020 21:39:12 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jxdTZ-0001gJ-0u; Mon, 20 Jul 2020 21:37:34 +0000
+ id 1jxdUI-0001zT-NR; Mon, 20 Jul 2020 21:38:21 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9361D207FC;
- Mon, 20 Jul 2020 21:37:31 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 13D01207FC;
+ Mon, 20 Jul 2020 21:38:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595281052;
- bh=o5c30dPBIoiKVvY7B/0EsgbYA7WNgUsTJDZEOAgANTM=;
+ s=default; t=1595281097;
+ bh=UTI4JbY9snt80IwD2G44S5ZsfU8SHhCvOdHambn10Kg=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=cWxgtuCmGcXj+zstRYlAVZFAyjmsbB3dTAgTXmU/yw5tm6qiydMO/YYp1XOQTXkAS
- 5gJud7JN0sypxCQEcBIQ6WnjkMgDAmkbOHHgDd7Qv/v2PimrMi/t9tTdPd1a6NHzv5
- fjqhtrsf3Ln0ARNS+zOGNXWCXhWTzdoCikb43/AI=
+ b=iuACcuGUyLvRWcjkkj4VbzqKovUFODZFiqPb0Fef/WLNd765INOThKPY8/o+5jaGn
+ v4yMKIZqus3PmCCixGTMkuTplQnmkGo53iGB8zQYS1+cKekPGRxKQDzyFp5DNxtcFL
+ gjxbK0p/Wj977whaS7hU9WuwxrIaT6W2j+y6+ktQ=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.7 13/40] spi: mediatek: use correct SPI_CFG2_REG
+Subject: [PATCH AUTOSEL 5.4 08/34] spi: mediatek: use correct SPI_CFG2_REG
  MACRO
-Date: Mon, 20 Jul 2020 17:36:48 -0400
-Message-Id: <20200720213715.406997-13-sashal@kernel.org>
+Date: Mon, 20 Jul 2020 17:37:41 -0400
+Message-Id: <20200720213807.407380-8-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200720213715.406997-1-sashal@kernel.org>
-References: <20200720213715.406997-1-sashal@kernel.org>
+In-Reply-To: <20200720213807.407380-1-sashal@kernel.org>
+References: <20200720213807.407380-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200720_173733_255677_C3CF238E 
+X-CRM114-CacheID: sfid-20200720_173820_194184_AEED4CF2 
 X-CRM114-Status: GOOD (  11.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -101,7 +101,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 8 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 6783e12c40c22..a556795caeef4 100644
+index 6888a4dcff6de..8acf24f7c5d40 100644
 --- a/drivers/spi/spi-mt65xx.c
 +++ b/drivers/spi/spi-mt65xx.c
 @@ -36,7 +36,6 @@
@@ -121,7 +121,7 @@ index 6783e12c40c22..a556795caeef4 100644
  
  #define SPI_CMD_ACT                  BIT(0)
  #define SPI_CMD_RESUME               BIT(1)
-@@ -283,7 +284,7 @@ static void mtk_spi_set_cs(struct spi_device *spi, bool enable)
+@@ -279,7 +280,7 @@ static void mtk_spi_set_cs(struct spi_device *spi, bool enable)
  static void mtk_spi_prepare_transfer(struct spi_master *master,
  				     struct spi_transfer *xfer)
  {
@@ -130,7 +130,7 @@ index 6783e12c40c22..a556795caeef4 100644
  	struct mtk_spi *mdata = spi_master_get_devdata(master);
  
  	spi_clk_hz = clk_get_rate(mdata->spi_clk);
-@@ -296,18 +297,18 @@ static void mtk_spi_prepare_transfer(struct spi_master *master,
+@@ -292,18 +293,18 @@ static void mtk_spi_prepare_transfer(struct spi_master *master,
  	cs_time = sck_time * 2;
  
  	if (mdata->dev_comp->enhance_timing) {
