@@ -2,23 +2,23 @@ Return-Path: <SRS0=A+tK=A7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C639C433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 18:56:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6426AC433E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 19:19:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D2A4522482
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 18:56:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 32E2E2176B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 19:19:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fv1LFmUy";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="oQp/Ckp1"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D2A4522482
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="X5MSuuDI";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="KuwTS0Ct"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 32E2E2176B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,59 +26,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1LzjxTg3hxJHTHjEAI4jP+8iCKuENecEZ7xUJGM43J0=; b=fv1LFmUyRxtU1G3LUL/2HjFpN
-	yAdTXlE5d6cmyZH7vtqxDT+W3CyGgvT8tRgzlkZpfE/jrF2cFc3hhw40UlLMSXkrwbBF0Mb6kJ6zg
-	7XfF368W/QvRNW0drPt8BiPIOdVAfK9TfAoUfs1Zu29CAO2XmaFOe5BvraMmmkXiWQevcDzRMd4iz
-	9Jyadrkn0TAaabrqGuKhVN/M3H+0iZn6kgAyh2SqtGVsO7voMu0htPpO+mdiW5FLjxkRiabm+JMWY
-	XNGH6b2DGDYwcLQwIuAZTQXGdyevcPKTqjlHES6WGqIp5gk2czZ6LMAQQfdzYhMrcAOVODFXzX/F5
-	bWpdlBBHQ==;
+	 bh=+v8ytVhrER50y8iNObpdd7/GlQV9r3SfA5Thl360HG0=; b=X5MSuuDIOPiPHZrR5waEqpCcT
+	gFQWVNTONpZY20PWtrUk33E/0rfea4IFGOzQPrWV/F1AW9y4g+0hmozX/ayF/ztCqrJYKXTpnWf1r
+	lsSbKH9VBZbkoIH6QE9god3M9giJt4udJHBZPDfYhawwRrdqxjP0p//gHfuOiCxbfYYXLtCOOhtt/
+	3XKB8WMtO0E7n+7cj/vWRVpUyVGhch/3aCqtKD7r+eUWfUDAfYxD1q2tOsEBbjBqPO7cUGl0u8B6K
+	ZLNVZ4i6eMapFO9iAQG6KHhiv+VpLtWvRSVfPR/U93ebAanCwEtzMF3yszhJQddTuR9azxstFx+qy
+	hGCJZyC7A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jxaxt-0003m1-9G; Mon, 20 Jul 2020 18:56:41 +0000
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541])
+	id 1jxbK7-00072N-AV; Mon, 20 Jul 2020 19:19:39 +0000
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jxaxr-0003lG-Kw
- for linux-mediatek@lists.infradead.org; Mon, 20 Jul 2020 18:56:40 +0000
-Received: by mail-ed1-x541.google.com with SMTP id dg28so13557007edb.3
- for <linux-mediatek@lists.infradead.org>; Mon, 20 Jul 2020 11:56:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ id 1jxbK5-00071F-1X
+ for linux-mediatek@lists.infradead.org; Mon, 20 Jul 2020 19:19:38 +0000
+Received: by mail-lj1-x243.google.com with SMTP id q6so454330ljp.4
+ for <linux-mediatek@lists.infradead.org>; Mon, 20 Jul 2020 12:19:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=LIdXm6p1PfumxCuesOuPpgIXKejAEnHE4gkCzcVS5rE=;
- b=oQp/Ckp1Qzy3I8T1Jwnkrh8MBCMM7cYnzwk6izGPQPm+omxP8ZjOGLrUu5yVsQOQ4h
- WAKdQtXodGvQ15zPq/rnR7WNg3qn64wX3AnnqZkZHvs8ERzG4G27x61Xb2bWZvQFv5w3
- Dm7SvQ+hISAQtEyOlXVCIadPcRtJCdARMDvf6twThNlUdJx+rPHPwuGaHHrRVop5iwo0
- ph3N4H07RCXDxypKBM5KfAfBHCNgh4umTWm9r0m4tbYxwKyQPY1a287+Ar5kebe919Uh
- v0Cldm192Z/pL5rzPRxFhJsFHuKOrgJdN8kcSN2FqX44waJd67IUIQmHqGEvTK1ICOLT
- HjYg==
+ :cc; bh=c27QdDaalrBPTYx6Hz4qEdOcDXJQt2hGAF2f+ujhjF4=;
+ b=KuwTS0CtDg/KT6Vr6p1o4UTZ7HWalRZpW11IdhJWv6Yc5j/TD5gQ7zm5Jjh6B8XI5h
+ yfJNFC7eK2lRmItt7PjIn51fAIMXuBYxgWFd3bm23wg5S6Tq4aHjL48ntwLG1xpskAHd
+ IC9EtdXCtrNqzLjo5l8RV9NjG1QYz/6dbUsCE6VVhWXw48lAjBR5EyNpzl8NDfqOktSX
+ EPmX6U04po198OszhbuhONTWOov4Xd3WFtEE0kzJi4eP9qCQ8vQq88ZBwSDh8+1T4FRD
+ hbv4wlJXAUpI8yWYfRaNYst5gn2EOYKYC/8BLagM5mfRI31ySXxAV9tBd5D4Cr90agjs
+ Lvrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=LIdXm6p1PfumxCuesOuPpgIXKejAEnHE4gkCzcVS5rE=;
- b=D/Mm6IEsKHOAWxGDziOTMhuu4HhAJL/5YOnrB90mvGYgklCi4XCTQSC1DjxpRYg4h/
- GZ5OdCd6hexqzR6kRdYoHeEPyyG6sv1g6HFkbAlo+TmBVHd8jnXdACCAhEKxHEnJQ4Uv
- dXpuiK8aDpEJkhvZGmsBI4ZdLigUPuH4XdWlGbVdNyhWuZOJXSsHlynuVwx7llWo9BbW
- fqckkXrLO/yNcmAYrpva4Ge+MlQhhTA4sLOtUb66paelK3ub/Ks9qJzUc/6L+/fo9qZ9
- oQUUX9CHxH0qAgNQWXmTCz/9DbaIUGeE2vRl0Se1lLuXNJ+TOdH+BBFV9lL2cb6ZOCVF
- iSnw==
-X-Gm-Message-State: AOAM531hFrYTGNwofVFgPJCReXdTVXQS03kJmiBfeAKoN8VANeaOsNW2
- Us7E0HhRMLgkcT92ky88glcWX6WQBTv0qAoev6c5dw==
-X-Google-Smtp-Source: ABdhPJyMFpCkDUlR4Xbw+8PLVHG03vAhP2feoblMQOwMbJE6jsDOamYLT+sdEKXKrGH+9om/9vMWGjCDObGVHUZ4h+g=
-X-Received: by 2002:a50:d7c1:: with SMTP id m1mr23155075edj.217.1595271397747; 
- Mon, 20 Jul 2020 11:56:37 -0700 (PDT)
+ bh=c27QdDaalrBPTYx6Hz4qEdOcDXJQt2hGAF2f+ujhjF4=;
+ b=t27zNGo4DLZB3kD9RJheF4+FClLeABhYlqZs9NUZU7OmUann19/NijJX15+Pzn5Vsq
+ y4iXi3oGZTA7IT9Pg5zPofDfolnj0F2cNiVsKWxFQxIcXWHHAIfEOA8sOFM0Qd5Pgsha
+ E3S7Deqy+3gxEFhKDFgfMxij5QLa3ZuVfOGA96DQcXeZr+quocij7nMy038JRVng88xP
+ 54/2yfPtdPbbvIIKrR39in2UFiyDF2A2fG42kXNtoC9HsiRvJp2T55IWHp3OJbV5Cszc
+ +NQJIssLJ5HgwH0PQUqisz6F6Qjs+Lv1OicBqr9P/RswdUcoblpAYMofmaVRQBwK3mWo
+ 20mQ==
+X-Gm-Message-State: AOAM532NaLbexOPczKAUxbiOwM/eAGCV5L4RcI3aYHol6/QxKSMV9koz
+ EtVOne2vDCQI45mekG/eTuwvbbNqouNwbSaYCigR8A==
+X-Google-Smtp-Source: ABdhPJytd1L3t3odiIQNSjrPSpGOSnIfawPzcqrPm7XkSZxsxS8d6ysT2xoLHLvMBq1OahMA3S7JIs4XecxrzglTgn8=
+X-Received: by 2002:a2e:7401:: with SMTP id p1mr11812893ljc.366.1595272774987; 
+ Mon, 20 Jul 2020 12:19:34 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200507085544.GB1097552@kroah.com>
- <1591791827-23871-1-git-send-email-Frankie.Chang@mediatek.com>
- <1591791827-23871-4-git-send-email-Frankie.Chang@mediatek.com>
-In-Reply-To: <1591791827-23871-4-git-send-email-Frankie.Chang@mediatek.com>
-From: Todd Kjos <tkjos@google.com>
-Date: Mon, 20 Jul 2020 11:56:25 -0700
-Message-ID: <CAHRSSExO8uiwNELR+DjKYGEXO-Lr-0i8BBQDH5PwkxBVXiCtNw@mail.gmail.com>
-Subject: Re: [PATCH v5 3/3] binder: add transaction latency tracer
-To: Frankie Chang <Frankie.Chang@mediatek.com>
+References: <CA+G9fYuzqA0N6O-52uH9aHjsfF6HfhuxMby1Y6Yz7jGMAHW0zw@mail.gmail.com>
+ <CAK8P3a1SHQKNNCVj9Gp25BLuXUC2nf7FuVrqfpPYQkvMbhjzFg@mail.gmail.com>
+ <ad7ba016-c3eb-a833-e4d3-4cdcb53ca786@arm.com>
+ <CAF6AEGsBRxFC918nNzJZnxMpFnNC6qcNGvMjjM8U3AAn6CusNA@mail.gmail.com>
+In-Reply-To: <CAF6AEGsBRxFC918nNzJZnxMpFnNC6qcNGvMjjM8U3AAn6CusNA@mail.gmail.com>
+From: Naresh Kamboju <naresh.kamboju@linaro.org>
+Date: Tue, 21 Jul 2020 00:49:23 +0530
+Message-ID: <CA+G9fYv9K3FqR6D9=2jvQ3s_eSTL=K-x4QW4-P7=AgfjjHCBwA@mail.gmail.com>
+Subject: Re: [Freedreno] arm64: Internal error: Oops:
+ qcom_iommu_tlb_inv_context free_io_pgtable_ops on db410c
+To: Rob Clark <robdclark@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200720_145639_755709_A99540F8 
-X-CRM114-Status: GOOD (  36.19  )
+X-CRM114-CacheID: sfid-20200720_151937_752061_1AC62D57 
+X-CRM114-Status: GOOD (  22.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,348 +92,94 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream <wsd_upstream@mediatek.com>,
+Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ Joerg Roedel <jroedel@suse.de>, Vinod Koul <vinod.koul@linaro.org>,
+ Arnd Bergmann <arnd@arndb.de>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+ Sudeep Holla <sudeep.holla@arm.com>,
+ "Guohanjun \(Hanjun Guo\)" <guohanjun@huawei.com>,
+ open list <linux-kernel@vger.kernel.org>, lkft-triage@lists.linaro.org,
+ Eric Anholt <eric@anholt.net>,
+ "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
+ Andy Gross <agross@kernel.org>, Thierry Reding <thierry.reding@gmail.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
- Jian-Min Liu <Jian-Min.Liu@mediatek.com>, linux-mediatek@lists.infradead.org,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ John Stultz <john.stultz@linaro.org>,
+ freedreno <freedreno@lists.freedesktop.org>, Sean Paul <sean@poorly.run>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 10, 2020 at 5:34 AM Frankie Chang
-<Frankie.Chang@mediatek.com> wrote:
+On Mon, 20 Jul 2020 at 21:27, Rob Clark <robdclark@gmail.com> wrote:
 >
-> From: "Frankie.Chang" <Frankie.Chang@mediatek.com>
+> On Mon, Jul 20, 2020 at 4:28 AM Robin Murphy <robin.murphy@arm.com> wrote:
+> >
+> > On 2020-07-20 08:17, Arnd Bergmann wrote:
+> > > On Mon, Jul 20, 2020 at 8:36 AM Naresh Kamboju
+> > > <naresh.kamboju@linaro.org> wrote:
+<>
+> > >> [    5.444121] Unable to handle kernel NULL pointer dereference at
+> > >> virtual address 0000000000000018
+> > >> [    5.456615]   ESR = 0x96000004
+> > >> [    5.464471]   SET = 0, FnV = 0
+> > >> [    5.464487]   EA = 0, S1PTW = 0
+> > >> [    5.466521] Data abort info:
+> > >> [    5.469971]   ISV = 0, ISS = 0x00000004
+> > >> [    5.472768]   CM = 0, WnR = 0
+> > >> [    5.476172] user pgtable: 4k pages, 48-bit VAs, pgdp=00000000bacba000
+> > >> [    5.479349] [0000000000000018] pgd=0000000000000000, p4d=0000000000000000
+> > >> [    5.485820] Internal error: Oops: 96000004 [#1] PREEMPT SMP
+> > >> [    5.492448] Modules linked in: crct10dif_ce adv7511(+)
+> > >> qcom_spmi_temp_alarm cec msm(+) mdt_loader qcom_camss videobuf2_dma_sg
+> > >> drm_kms_helper v4l2_fwnode videobuf2_memops videobuf2_v4l2 qcom_rng
+> > >> videobuf2_common i2c_qcom_cci display_connector socinfo drm qrtr ns
+> > >> rmtfs_mem fuse
+> > >> [    5.500256] CPU: 0 PID: 286 Comm: systemd-udevd Not tainted 5.8.0-rc5 #1
+> > >> [    5.522484] Hardware name: Qualcomm Technologies, Inc. APQ 8016 SBC (DT)
+> > >> [    5.529170] pstate: 20000005 (nzCv daif -PAN -UAO BTYPE=--)
+> > >> [    5.535856] pc : qcom_iommu_tlb_inv_context+0x18/0xa8
+> > >> [    5.541148] lr : free_io_pgtable_ops+0x28/0x58
+<>
+> > >> [    5.628297] Call trace:
+> > >> [    5.633592]  qcom_iommu_tlb_inv_context+0x18/0xa8
+> > >
+> > > This means that dev_iommu_fwspec_get() has returned NULL
+> > > in qcom_iommu_tlb_inv_context(), either because dev->iommu
+> > > is NULL, or because dev->iommu->fwspec is NULL.
+> > >
+> > > qcom_iommu_tlb_inv_context() does not check for a NULL
+> > > pointer before using the returned object.
+> > >
+> > > The bug is either in the lack of error handling, or the fact
+> > > that it's possible to get into this function for a device
+> > > that has not been fully set up.
+> >
+> > Not quite - the device *was* properly set up, but has already been
+> > properly torn down again in the removal path by iommu_release_device().
+> > The problem is that qcom-iommu kept the device pointer as its TLB cookie
+> > for the domain, but the domain has a longer lifespan than the validity
+> > of that device - that's a fundamental design flaw in the driver.
 >
-> Record start/end timestamp for binder transaction.
-> When transaction is completed or transaction is free,
-> it would be checked if transaction latency over threshold (2 sec),
-> if yes, printing related information for tracing.
->
-> /* Implement details */
-> - Add latency tracer module to monitor transaction
->   by attaching to new tracepoints introduced
->   when transactions are allocated and freed.
->   The trace_binder_txn_latency_free would not be enabled
->   by default. Monitoring which transaction is too slow to
->   cause some of exceptions is important. So we hook the
->   tracepoint to call the monitor function.
->
-> - Since some of modules would trigger timeout NE
->   if their binder transaction don't finish in time,
->   such as audio timeout (5 sec), even BT command
->   timeout (2 sec), etc.
->   Therefore, setting the timeout threshold as 2 seconds
->   could be helpful to debug.
+> fwiw, I just sent "iommu/qcom: Use domain rather than dev as tlb
+> cookie".. untested but looks like a straightforward enough change to
+> switch over to using the domain rather than dev as cookie
 
-Could there be cases that 500ms is too long so 1s should be the
-threshold? Hard coded 2 seconds makes this less useful. How about
-making it configurable with a default of 2 sec?
+The proposed patch tested and confirmed the reported problem fixed.
+
+ref:
+https://lore.kernel.org/linux-iommu/CA+G9fYtj1RBYcPhXZRm-qm5ygtdLj1jD8vFZSqQvwi_DNJLBwQ@mail.gmail.com/T/#m36a1fca18098f6c34275d928f9ba9c40c6d7fd63
+https://lkft.validation.linaro.org/scheduler/job/1593950#L3392
+
 
 >
-> - The reason why printing the related information to
->   kernel information log but not trace buffer is that
->   some abnormal transactions may be pending for a long
->   time ago, they could not be recorded due to buffer
->   limited.
->
-> Signed-off-by: Frankie.Chang <Frankie.Chang@mediatek.com>
-> ---
->  drivers/android/Kconfig                 |    8 +++
->  drivers/android/Makefile                |    1 +
->  drivers/android/binder.c                |    2 +
->  drivers/android/binder_internal.h       |   13 ++++
->  drivers/android/binder_latency_tracer.c |  107 +++++++++++++++++++++++++++++++
->  drivers/android/binder_trace.h          |   28 +++++++-
->  6 files changed, 156 insertions(+), 3 deletions(-)
->  create mode 100644 drivers/android/binder_latency_tracer.c
->
-> diff --git a/drivers/android/Kconfig b/drivers/android/Kconfig
-> index 6fdf2ab..39d47be 100644
-> --- a/drivers/android/Kconfig
-> +++ b/drivers/android/Kconfig
-> @@ -54,6 +54,14 @@ config ANDROID_BINDER_IPC_SELFTEST
->           exhaustively with combinations of various buffer sizes and
->           alignments.
->
-> +config BINDER_TRANSACTION_LATENCY_TRACKING
-> +       bool "Android Binder transaction tracking"
+> BR,
+> -R
 
-Any reason this can't be tristate?
 
-> +       help
-> +         Used for track abnormal binder transaction which is over 2 seconds,
-> +         when the transaction is done or be free, this transaction would be
-> +         checked whether it executed overtime.
-> +         If yes, printing out the detailed info.
-> +
->  endif # if ANDROID
->
->  endmenu
-> diff --git a/drivers/android/Makefile b/drivers/android/Makefile
-> index c9d3d0c9..c2ffdb6 100644
-> --- a/drivers/android/Makefile
-> +++ b/drivers/android/Makefile
-> @@ -4,3 +4,4 @@ ccflags-y += -I$(src)                   # needed for trace events
->  obj-$(CONFIG_ANDROID_BINDERFS)         += binderfs.o
->  obj-$(CONFIG_ANDROID_BINDER_IPC)       += binder.o binder_alloc.o
->  obj-$(CONFIG_ANDROID_BINDER_IPC_SELFTEST) += binder_alloc_selftest.o
-> +obj-$(CONFIG_BINDER_TRANSACTION_LATENCY_TRACKING)      += binder_latency_tracer.o
-> diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-> index 5ec9af8..846d69b 100644
-> --- a/drivers/android/binder.c
-> +++ b/drivers/android/binder.c
-> @@ -2657,6 +2657,7 @@ static void binder_transaction(struct binder_proc *proc,
->                 return_error_line = __LINE__;
->                 goto err_alloc_t_failed;
->         }
-> +       trace_binder_txn_latency_alloc(t, e);
->         INIT_LIST_HEAD(&t->fd_fixups);
->         binder_stats_created(BINDER_STAT_TRANSACTION);
->         spin_lock_init(&t->lock);
-> @@ -5144,6 +5145,7 @@ static void print_binder_transaction_ilocked(struct seq_file *m,
->                    to_proc ? to_proc->pid : 0,
->                    t->to_thread ? t->to_thread->pid : 0,
->                    t->code, t->flags, t->priority, t->need_reply);
-> +       trace_binder_txn_latency_info(m, t);
->         spin_unlock(&t->lock);
->
->         if (proc != to_proc) {
-> diff --git a/drivers/android/binder_internal.h b/drivers/android/binder_internal.h
-> index ed61b3e..bebc185 100644
-> --- a/drivers/android/binder_internal.h
-> +++ b/drivers/android/binder_internal.h
-> @@ -12,6 +12,11 @@
->  #include <linux/types.h>
->  #include <linux/uidgid.h>
->
-> +#ifdef CONFIG_BINDER_TRANSACTION_LATENCY_TRACKING
-> +#include <linux/rtc.h>
-> +#include <linux/time.h>
-> +#endif
-> +
->  struct binder_context {
->         struct binder_node *binder_context_mgr_node;
->         struct mutex context_mgr_node_lock;
-> @@ -131,6 +136,10 @@ struct binder_transaction_log_entry {
->         uint32_t return_error;
->         uint32_t return_error_param;
->         char context_name[BINDERFS_MAX_NAME + 1];
-> +#ifdef CONFIG_BINDER_TRANSACTION_LATENCY_TRACKING
-
-If you make binder_latency_tracer a module, then we could include
-these fields unconditionally. Please add comments or give them better
-names so it is obvious what they are for.
-
-> +       struct timespec timestamp;
-> +       struct timeval tv;
-> +#endif
->  };
->
->  struct binder_transaction_log {
-> @@ -520,6 +529,10 @@ struct binder_transaction {
->          * during thread teardown
->          */
->         spinlock_t lock;
-> +#ifdef CONFIG_BINDER_TRANSACTION_LATENCY_TRACKING
-
-If you make binder_latency_tracer a module, then we could include
-these fields unconditionally. Please add comments or give them better
-names so it is obvious what they are for.
-
-> +       struct timespec timestamp;
-> +       struct timeval tv;
-> +#endif
->  };
->
->  /**
-> diff --git a/drivers/android/binder_latency_tracer.c b/drivers/android/binder_latency_tracer.c
-> new file mode 100644
-> index 0000000..1b89634
-> --- /dev/null
-> +++ b/drivers/android/binder_latency_tracer.c
-> @@ -0,0 +1,107 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (C) 2019 MediaTek Inc.
-> + */
-> +
-> +#include <linux/module.h>
-> +#include <uapi/linux/android/binder.h>
-> +#include "binder_alloc.h"
-> +#include "binder_internal.h"
-> +#include "binder_trace.h"
-> +
-> +/*
-> + * probe_binder_txn_latency_free - Output info of a delay transaction
-> + * @t:          pointer to the over-time transaction
-> + */
-> +void probe_binder_txn_latency_free(void *ignore, struct binder_transaction *t)
-> +{
-> +       struct rtc_time tm;
-> +       struct timespec *startime;
-> +       struct timespec cur, sub_t;
-> +
-> +       ktime_get_ts(&cur);
-> +       startime = &t->timestamp;
-> +       sub_t = timespec_sub(cur, *startime);
-> +
-> +       /* if transaction time is over than 2 sec,
-> +        * show timeout warning log.
-> +        */
-> +       if (sub_t.tv_sec < 2)
-> +               return;
-
-I still don't get why 2sec is magical. Should this threshold be configurable?
-
-> +
-> +       rtc_time_to_tm(t->tv.tv_sec, &tm);
-> +
-> +       spin_lock(&t->lock);
-> +       pr_info_ratelimited("%d: from %d:%d to %d:%d",
-> +                       t->debug_id,
-> +                       t->from ? t->from->proc->pid : 0,
-> +                       t->from ? t->from->pid : 0,
-> +                       t->to_proc ? t->to_proc->pid : 0,
-> +                       t->to_thread ? t->to_thread->pid : 0);
-> +
-> +       pr_info_ratelimited(" total %u.%03ld s code %u start %lu.%03ld android %d-%02d-%02d %02d:%02d:%02d.%03lu\n",
-> +                       (unsigned int)sub_t.tv_sec,
-> +                       (sub_t.tv_nsec / NSEC_PER_MSEC),
-> +                       t->code,
-> +                       (unsigned long)startime->tv_sec,
-> +                       (startime->tv_nsec / NSEC_PER_MSEC),
-> +                       (tm.tm_year + 1900), (tm.tm_mon + 1), tm.tm_mday,
-> +                       tm.tm_hour, tm.tm_min, tm.tm_sec,
-> +                       (unsigned long)(t->tv.tv_usec / USEC_PER_MSEC));
-> +       spin_unlock(&t->lock);
-> +}
-> +
-> +static void probe_binder_txn_latency_alloc(void *ignore,
-> +                                       struct binder_transaction *t,
-> +                                       struct binder_transaction_log_entry *e)
-> +{
-> +       ktime_get_ts(&e->timestamp);
-> +       do_gettimeofday(&e->tv);
-> +       e->tv.tv_sec -= (sys_tz.tz_minuteswest * 60);
-> +       spin_lock(&t->lock);
-> +       memcpy(&t->timestamp, &e->timestamp, sizeof(struct timespec));
-> +       memcpy(&t->tv, &e->tv, sizeof(struct timeval));
-> +       spin_unlock(&t->lock);
-
-Why is the lock needed here?
-
-> +}
-> +
-> +static void probe_binder_txn_latency_info(void *ignore, struct seq_file *m,
-> +                                       struct binder_transaction *t)
-> +{
-> +       struct rtc_time tm;
-> +
-> +       rtc_time_to_tm(t->tv.tv_sec, &tm);
-> +       seq_printf(m,
-> +                  " start %lu.%06lu android %d-%02d-%02d %02d:%02d:%02d.%03lu",
-> +                  (unsigned long)t->timestamp.tv_sec,
-> +                  (t->timestamp.tv_nsec / NSEC_PER_USEC),
-> +                  (tm.tm_year + 1900), (tm.tm_mon + 1), tm.tm_mday,
-> +                  tm.tm_hour, tm.tm_min, tm.tm_sec,
-> +                  (unsigned long)(t->tv.tv_usec / USEC_PER_MSEC));
-> +}
-> +
-> +static int __init init_binder_latency_tracer(void)
-> +{
-> +       register_trace_binder_txn_latency_free(
-> +                       probe_binder_txn_latency_free, NULL);
-> +       register_trace_binder_txn_latency_alloc(
-> +                       probe_binder_txn_latency_alloc, NULL);
-> +       register_trace_binder_txn_latency_info(
-> +                       probe_binder_txn_latency_info, NULL);
-> +
-> +       return 0;
-> +}
-> +
-> +static void exit_binder_latency_tracer(void)
-> +{
-> +       unregister_trace_binder_txn_latency_free(
-> +                       probe_binder_txn_latency_free, NULL);
-> +       unregister_trace_binder_txn_latency_alloc(
-> +                       probe_binder_txn_latency_alloc, NULL);
-> +       unregister_trace_binder_txn_latency_info(
-> +                       probe_binder_txn_latency_info, NULL);
-> +}
-> +
-> +module_init(init_binder_latency_tracer);
-> +module_exit(exit_binder_latency_tracer);
-> +
-> +MODULE_LICENSE("GPL v2");
-> diff --git a/drivers/android/binder_trace.h b/drivers/android/binder_trace.h
-> index 8ac87d1..ca41c7d 100644
-> --- a/drivers/android/binder_trace.h
-> +++ b/drivers/android/binder_trace.h
-> @@ -18,6 +18,7 @@
->  struct binder_ref_data;
->  struct binder_thread;
->  struct binder_transaction;
-> +struct binder_transaction_log_entry;
->
->  TRACE_EVENT(binder_ioctl,
->         TP_PROTO(unsigned int cmd, unsigned long arg),
-> @@ -95,6 +96,18 @@
->                   __entry->thread_todo)
->  );
->
-> +DECLARE_TRACE(binder_txn_latency_alloc,
-> +       TP_PROTO(struct binder_transaction *t,
-> +                struct binder_transaction_log_entry *e),
-> +       TP_ARGS(t, e)
-> +);
-> +
-> +DECLARE_TRACE(binder_txn_latency_info,
-> +       TP_PROTO(struct seq_file *m,
-> +                struct binder_transaction *t),
-> +       TP_ARGS(m, t)
-> +);
-> +
->  TRACE_EVENT(binder_txn_latency_free,
->         TP_PROTO(struct binder_transaction *t),
->         TP_ARGS(t),
-> @@ -106,6 +119,8 @@
->                 __field(int, to_thread)
->                 __field(unsigned int, code)
->                 __field(unsigned int, flags)
-> +               __field(unsigned long, start_sec)
-> +               __field(unsigned long, start_nsec)
->         ),
->         TP_fast_assign(
->                 __entry->debug_id = t->debug_id;
-> @@ -115,11 +130,18 @@
->                 __entry->to_thread = t->to_thread ? t->to_thread->pid : 0;
->                 __entry->code = t->code;
->                 __entry->flags = t->flags;
-> -       ),
-> -       TP_printk("transaction=%d from %d:%d to %d:%d flags=0x%x code=0x%x",
-> +#ifdef CONFIG_BINDER_TRANSACTION_LATENCY_TRACKING
-> +               __entry->start_sec = t->timestamp.tv_sec;
-> +               __entry->start_nsec = t->timestamp.tv_nsec / NSEC_PER_MSEC;
-> +#else
-> +               __entry->start_sec = 0;
-> +               __entry->start_nsec = 0;
-> +#endif
-> +       ),
-> +       TP_printk("transaction=%d from %d:%d to %d:%d flags=0x%x code=0x%x start %lu.%03ld",
->                   __entry->debug_id, __entry->from_proc, __entry->from_thread,
->                   __entry->to_proc, __entry->to_thread, __entry->code,
-> -                 __entry->flags)
-> +                 __entry->flags, __entry->start_sec, __entry->start_nsec)
->  );
->
->  TRACE_EVENT(binder_transaction,
-> --
-> 1.7.9.5
+- Naresh
 
 _______________________________________________
 Linux-mediatek mailing list
