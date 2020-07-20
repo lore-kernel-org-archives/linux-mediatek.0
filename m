@@ -2,71 +2,90 @@ Return-Path: <SRS0=A+tK=A7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C38A0C388D2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 21:41:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5928EC433E2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 22:17:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 91EEE22BEF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 21:41:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 182AA20773
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 22:17:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YNiVpxqL";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="ccZj7N0W"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 91EEE22BEF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DPQ1iaHj";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="mQYNvdV6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 182AA20773
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=YX7xskmdy0g7z6PhFL0ofQk9JdMkN7IPToXRJqsA5tY=; b=YNiVpxqLfPVoHzAO1aR7Xu/PS
-	lQ6TPKewmES/uOQvUe4jfwsUSN7Wzf//jtrccvAQ9CEgvEV6CqZXMPeq4PMcL395mBmS6HgpAV03s
-	URD+UAL755OnMTaoX+QKfMK7JfqUPDsh14vYmM3z6ix+pHhu8qxxz/95KKJrnowYgasUwu5gGBKU6
-	Mrf+8wcvadcb/O+WR7sy/EBsLZPNLsSYRkAs8YcuRG9ZOuw+ZuN8ZzZTD2efDvlfwkvI5XZcLwUOR
-	bJDBgEBlVvMBYR7Rm01q7bK4kuOtRAOAFnTY++s34f26dG+ZYVa2EGxVIZ7ah/vHRFQgyZV661Hew
-	StQTC/E3A==;
+	 bh=nwIFF0O41dSZr1kSa1kkeF3dShXbU8uQV9Eb8DAjwRs=; b=DPQ1iaHjMcj3Ds5gX/PPiCl3a
+	6RBobiyR8g7x1Cs6WDU/+2R+TBMAgP4ic7oLC9NDybfWbLudhEb98SXUskjlKPah7Bkxr36F1lsTo
+	vN+RDP7uSG3JBnqybhPtvbieUPXAY6cg0ddReXu+4rjwn9qSaMEheh+drWY5wKS2QVwOaOV4WFTbR
+	IQHf4/ULWuUNZBiNV/zSDKkVjTu91nlUzuzq3LnQhC2x4qycOBEvQNIWoLb5HwqFqvDeTR6GOjF3P
+	649+a5TEsS2VV+xu4tK8ktvsHKu2dG8iVJnpIVGqE5R533nHKRhiwiYTinHJh2jeGh69gA/+0oG8X
+	6L8Q7S8fA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jxdXV-0003tH-4Y; Mon, 20 Jul 2020 21:41:37 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jxe6K-0000sY-82; Mon, 20 Jul 2020 22:17:36 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jxdVM-0002WT-3Z; Mon, 20 Jul 2020 21:39:25 +0000
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id EBF9F22CF7;
- Mon, 20 Jul 2020 21:39:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595281161;
- bh=5UrXs5K40IkwuyX6XDwLrEXO6fTXoOdDk5vlpHZthbg=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ccZj7N0Wb8E+w5sxc2eZ280GKdLyOpoCUYQrECf8wYsTIEnmcf7UV0jmxY9KcjRNW
- umG87NKxvWUxawilyO9uHnQvAms+171iiJcAiGf/apcvAGQr8VuZtkA4T3ktgpF+Wi
- Y1IP8yfZKJuIOvgcUPMXfHFZFN6+qHJZroo8q6xk=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.14 05/13] spi: mediatek: use correct SPI_CFG2_REG
- MACRO
-Date: Mon, 20 Jul 2020 17:39:06 -0400
-Message-Id: <20200720213914.407919-5-sashal@kernel.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200720213914.407919-1-sashal@kernel.org>
-References: <20200720213914.407919-1-sashal@kernel.org>
+ id 1jxe6F-0000rN-67
+ for linux-mediatek@lists.infradead.org; Mon, 20 Jul 2020 22:17:34 +0000
+Received: by mail-pl1-x643.google.com with SMTP id p1so9355933pls.4
+ for <linux-mediatek@lists.infradead.org>; Mon, 20 Jul 2020 15:17:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=S9yHQrc+Grjytl2ICfVV8IIWajh+DoRcGnz0O824df8=;
+ b=mQYNvdV6P0yyUaue9TirPG5rWE2zJKJtvx3J6+47w9Xe4UzBCDZc7vHnqwGn87WAwz
+ 8i8ikl7TVjBzPTz38xI6U6boUgPjLarRjJYb/Vy/+lvagJrffAUQuVJk9d98PXzDWsNG
+ UBguiocp4QBKFFH8k88siQQl01wqn/jIMqPr5QLS2l1+MC2FUqC/CUGb4IQJ/YecKamc
+ qztJLLQnFK5K1mQejqeEu75TSFmREUB6lMui81b+xuce+KTcqpgVNLymfo1zao2cep2d
+ VnVEbU52G7TPSYit4Jr+Do6z+tBV45BX0zJDl2eGnW+9zWIdrOPzyZgdEdOI8BdSsqnm
+ 6qug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=S9yHQrc+Grjytl2ICfVV8IIWajh+DoRcGnz0O824df8=;
+ b=r92B1++GMBIOspYQRmOArMlzzTlNygiqQ3KEGOTqZjvywSJ4yk85ibiUoQNCqVyKMe
+ xe4TFqiBU7BryrEjewX7QQHyHqKHoftXDLNzwwYteJrXM6U5T/b3kWY3TzR76iatjpCQ
+ espBFVLOVe3iwTuvVRqHrD6Yo5JxvO1ndqMsb3l7GxmpnqQ9r6qA43UnBXgA/v0wTRel
+ u9e/M44y4rRM/+AfnHKkFZJBNGzC7kFE895GN6fRaZhdHN4mfVT5YK134+MkJp9NLfeC
+ oPYXMgLxLmcsWsc5G5RyQyrirfea2numJp75MYJx5rZNBCS6YlOub5JEmNWfY3IbUKYD
+ QRzg==
+X-Gm-Message-State: AOAM533LbXuIqhT3Cvg5/z3CPNafXbnsoCs4brBD0rRaABmWWLWUDNIn
+ wYvo+lk4beY5Nm7+zkRENSPP2Q==
+X-Google-Smtp-Source: ABdhPJxb1kIflxXR1Ew1LgJ1gLmAb+uzKaI3ucWpHPNcfZI7sMYxwBzIfJRfrevhw7Ig8WSDhh9pAg==
+X-Received: by 2002:a17:902:b706:: with SMTP id
+ d6mr19735403pls.244.1595283448766; 
+ Mon, 20 Jul 2020 15:17:28 -0700 (PDT)
+Received: from xps15 (S0106002369de4dac.cg.shawcable.net. [68.147.8.254])
+ by smtp.gmail.com with ESMTPSA id q14sm15681971pgk.86.2020.07.20.15.17.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 20 Jul 2020 15:17:28 -0700 (PDT)
+Date: Mon, 20 Jul 2020 16:17:26 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Alexandre Bailon <abailon@baylibre.com>
+Subject: Re: [PATCH 2/6] remoteproc: Add a remoteproc driver for the MT8183's
+ APU
+Message-ID: <20200720221726.GD1113627@xps15>
+References: <20200713132927.24925-1-abailon@baylibre.com>
+ <20200713132927.24925-3-abailon@baylibre.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+Content-Disposition: inline
+In-Reply-To: <20200713132927.24925-3-abailon@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200720_173924_538548_9BD35643 
-X-CRM114-Status: GOOD (  10.71  )
+X-CRM114-CacheID: sfid-20200720_181731_587504_94D4D9F4 
+X-CRM114-Status: GOOD (  35.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,85 +97,436 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, "leilk.liu" <leilk.liu@mediatek.com>,
- linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: ohad@wizery.com, devicetree@vger.kernel.org,
+ linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ bjorn.andersson@linaro.org, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "leilk.liu" <leilk.liu@mediatek.com>
+On Mon, Jul 13, 2020 at 03:29:23PM +0200, Alexandre Bailon wrote:
+> This adds a driver to control the APU present in the MT8183.
+> This loads the firmware and start the DSP.
+> 
+> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> ---
+>  drivers/remoteproc/Kconfig         |  10 +
+>  drivers/remoteproc/Makefile        |   1 +
+>  drivers/remoteproc/mtk_apu_rproc.c | 308 +++++++++++++++++++++++++++++
 
-[ Upstream commit 44b37eb79e16a56cb30ba55b2da452396b941e7a ]
+I would name the file mtk_apu.c to be consistent with the existing mtk_scp.c
 
-this patch use correct SPI_CFG2_REG offset.
+>  3 files changed, 319 insertions(+)
+>  create mode 100644 drivers/remoteproc/mtk_apu_rproc.c
+> 
+> diff --git a/drivers/remoteproc/Kconfig b/drivers/remoteproc/Kconfig
+> index c4d1731295eb..e116d4a12ac3 100644
+> --- a/drivers/remoteproc/Kconfig
+> +++ b/drivers/remoteproc/Kconfig
+> @@ -42,6 +42,16 @@ config MTK_SCP
+>  
+>  	  It's safe to say N here.
+>  
+> +config MTK_APU
+> +	tristate "Mediatek APU remoteproc support"
+> +	depends on ARCH_MEDIATEK
+> +	depends on MTK_IOMMU
+> +	help
+> +	  Say y to support the Mediatek's Accelerated Processing Unit (APU) via
+> +	  the remote processor framework.
+> +
+> +	  It's safe to say N here.
+> +
+>  config OMAP_REMOTEPROC
+>  	tristate "OMAP remoteproc support"
+>  	depends on ARCH_OMAP4 || SOC_OMAP5 || SOC_DRA7XX
+> diff --git a/drivers/remoteproc/Makefile b/drivers/remoteproc/Makefile
+> index e8b886e511f0..2ea231b75fa6 100644
+> --- a/drivers/remoteproc/Makefile
+> +++ b/drivers/remoteproc/Makefile
+> @@ -12,6 +12,7 @@ remoteproc-y				+= remoteproc_elf_loader.o
+>  obj-$(CONFIG_IMX_REMOTEPROC)		+= imx_rproc.o
+>  obj-$(CONFIG_INGENIC_VPU_RPROC)		+= ingenic_rproc.o
+>  obj-$(CONFIG_MTK_SCP)			+= mtk_scp.o mtk_scp_ipi.o
+> +obj-$(CONFIG_MTK_APU)			+= mtk_apu_rproc.o
+>  obj-$(CONFIG_OMAP_REMOTEPROC)		+= omap_remoteproc.o
+>  obj-$(CONFIG_WKUP_M3_RPROC)		+= wkup_m3_rproc.o
+>  obj-$(CONFIG_DA8XX_REMOTEPROC)		+= da8xx_remoteproc.o
+> diff --git a/drivers/remoteproc/mtk_apu_rproc.c b/drivers/remoteproc/mtk_apu_rproc.c
+> new file mode 100644
+> index 000000000000..fb416a817ef3
+> --- /dev/null
+> +++ b/drivers/remoteproc/mtk_apu_rproc.c
+> @@ -0,0 +1,308 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (C) 2020 BayLibre SAS
+> + */
+> +
+> +#include <linux/bitops.h>
+> +#include <linux/clk.h>
+> +#include <linux/delay.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/io.h>
+> +#include <linux/iommu.h>
+> +#include <linux/irq.h>
+> +#include <linux/kernel.h>
+> +#include <linux/highmem.h>
 
-Signed-off-by: leilk.liu <leilk.liu@mediatek.com>
-Link: https://lore.kernel.org/r/20200701090020.7935-1-leilk.liu@mediatek.com
-Signed-off-by: Mark Brown <broonie@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/spi/spi-mt65xx.c | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
+Move this below "delay.h"
 
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 0c2867deb36fc..da28c52c9da19 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -41,7 +41,6 @@
- #define SPI_CFG0_SCK_LOW_OFFSET           8
- #define SPI_CFG0_CS_HOLD_OFFSET           16
- #define SPI_CFG0_CS_SETUP_OFFSET          24
--#define SPI_ADJUST_CFG0_SCK_LOW_OFFSET    16
- #define SPI_ADJUST_CFG0_CS_HOLD_OFFSET    0
- #define SPI_ADJUST_CFG0_CS_SETUP_OFFSET   16
- 
-@@ -53,6 +52,8 @@
- #define SPI_CFG1_CS_IDLE_MASK             0xff
- #define SPI_CFG1_PACKET_LOOP_MASK         0xff00
- #define SPI_CFG1_PACKET_LENGTH_MASK       0x3ff0000
-+#define SPI_CFG2_SCK_HIGH_OFFSET          0
-+#define SPI_CFG2_SCK_LOW_OFFSET           16
- 
- #define SPI_CMD_ACT                  BIT(0)
- #define SPI_CMD_RESUME               BIT(1)
-@@ -259,7 +260,7 @@ static void mtk_spi_set_cs(struct spi_device *spi, bool enable)
- static void mtk_spi_prepare_transfer(struct spi_master *master,
- 				     struct spi_transfer *xfer)
- {
--	u32 spi_clk_hz, div, sck_time, cs_time, reg_val = 0;
-+	u32 spi_clk_hz, div, sck_time, cs_time, reg_val;
- 	struct mtk_spi *mdata = spi_master_get_devdata(master);
- 
- 	spi_clk_hz = clk_get_rate(mdata->spi_clk);
-@@ -272,18 +273,18 @@ static void mtk_spi_prepare_transfer(struct spi_master *master,
- 	cs_time = sck_time * 2;
- 
- 	if (mdata->dev_comp->enhance_timing) {
-+		reg_val = (((sck_time - 1) & 0xffff)
-+			   << SPI_CFG2_SCK_HIGH_OFFSET);
- 		reg_val |= (((sck_time - 1) & 0xffff)
--			   << SPI_CFG0_SCK_HIGH_OFFSET);
--		reg_val |= (((sck_time - 1) & 0xffff)
--			   << SPI_ADJUST_CFG0_SCK_LOW_OFFSET);
-+			   << SPI_CFG2_SCK_LOW_OFFSET);
- 		writel(reg_val, mdata->base + SPI_CFG2_REG);
--		reg_val |= (((cs_time - 1) & 0xffff)
-+		reg_val = (((cs_time - 1) & 0xffff)
- 			   << SPI_ADJUST_CFG0_CS_HOLD_OFFSET);
- 		reg_val |= (((cs_time - 1) & 0xffff)
- 			   << SPI_ADJUST_CFG0_CS_SETUP_OFFSET);
- 		writel(reg_val, mdata->base + SPI_CFG0_REG);
- 	} else {
--		reg_val |= (((sck_time - 1) & 0xff)
-+		reg_val = (((sck_time - 1) & 0xff)
- 			   << SPI_CFG0_SCK_HIGH_OFFSET);
- 		reg_val |= (((sck_time - 1) & 0xff) << SPI_CFG0_SCK_LOW_OFFSET);
- 		reg_val |= (((cs_time - 1) & 0xff) << SPI_CFG0_CS_HOLD_OFFSET);
--- 
-2.25.1
+> +#include <linux/module.h>
+> +#include <linux/of_reserved_mem.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/remoteproc.h>
+> +
+> +#include "remoteproc_internal.h"
+> +
+> +/* From MT8183 4.5 Vision Processor Unit (VPU).pdf datasheet */
+> +#define SW_RST					(0x0000000C)
+> +#define  SW_RST_OCD_HALT_ON_RST			BIT(12)
+> +#define  SW_RST_IPU_D_RST			BIT(8)
+> +#define  SW_RST_IPU_B_RST			BIT(4)
 
+Please don't indent defines.
+
+> +#define CORE_CTRL				(0x00000110)
+> +#define  CORE_CTRL_PDEBUG_ENABLE		BIT(31)
+> +#define	 CORE_CTRL_SRAM_64K_iMEM		(0x00 << 27)
+> +#define	 CORE_CTRL_SRAM_96K_iMEM		(0x01 << 27)
+> +#define	 CORE_CTRL_SRAM_128K_iMEM		(0x02 << 27)
+> +#define	 CORE_CTRL_SRAM_192K_iMEM		(0x03 << 27)
+> +#define	 CORE_CTRL_SRAM_256K_iMEM		(0x04 << 27)
+> +#define  CORE_CTRL_PBCLK_ENABLE			BIT(26)
+> +#define  CORE_CTRL_RUN_STALL			BIT(23)
+> +#define  CORE_CTRL_STATE_VECTOR_SELECT		BIT(19)
+> +#define  CORE_CTRL_PIF_GATED			BIT(17)
+> +#define  CORE_CTRL_NMI				BIT(0)
+> +#define CORE_XTENSA_INT				(0x00000114)
+> +#define CORE_CTL_XTENSA_INT			(0x00000118)
+> +#define CORE_DEFAULT0				(0x0000013C)
+> +#define  CORE_DEFAULT0_QOS_SWAP_0		(0x00 << 28)
+> +#define  CORE_DEFAULT0_QOS_SWAP_1		(0x01 << 28)
+> +#define  CORE_DEFAULT0_QOS_SWAP_2		(0x02 << 28)
+> +#define  CORE_DEFAULT0_QOS_SWAP_3		(0x03 << 28)
+> +#define  CORE_DEFAULT0_ARUSER_USE_IOMMU		(0x10 << 23)
+> +#define  CORE_DEFAULT0_AWUSER_USE_IOMMU		(0x10 << 18)
+> +#define CORE_DEFAULT1				(0x00000140)
+> +#define  CORE_DEFAULT0_ARUSER_IDMA_USE_IOMMU	(0x10 << 0)
+> +#define  CORE_DEFAULT0_AWUSER_IDMA_USE_IOMMU	(0x10 << 5)
+> +#define CORE_XTENSA_ALTRESETVEC			(0x000001F8)
+> +
+> +struct mtk_vpu_rproc {
+> +	struct device *dev;
+> +	struct rproc *rproc;
+> +
+> +	void __iomem *base;
+> +	int irq;
+> +	struct clk *axi;
+> +	struct clk *ipu;
+> +	struct clk *jtag;
+> +};
+> +
+> +static u32 vpu_read32(struct mtk_vpu_rproc *vpu_rproc, u32 off)
+> +{
+> +	return readl(vpu_rproc->base + off);
+> +}
+> +
+> +static void vpu_write32(struct mtk_vpu_rproc *vpu_rproc, u32 off, u32 value)
+> +{
+> +	writel(value, vpu_rproc->base + off);
+> +}
+
+Not sure that much is gained by adding the above two functions.  Just using
+readl/writel would suit me just fine.
+
+> +
+> +static int mtk_vpu_rproc_start(struct rproc *rproc)
+> +{
+> +	struct mtk_vpu_rproc *vpu_rproc = rproc->priv;
+> +	u32 core_ctrl;
+> +
+> +	vpu_write32(vpu_rproc, CORE_XTENSA_ALTRESETVEC, rproc->bootaddr);
+> +
+> +	core_ctrl = vpu_read32(vpu_rproc, CORE_CTRL);
+> +	core_ctrl |= CORE_CTRL_PDEBUG_ENABLE | CORE_CTRL_PBCLK_ENABLE |
+> +		     CORE_CTRL_STATE_VECTOR_SELECT | CORE_CTRL_RUN_STALL |
+> +		     CORE_CTRL_PIF_GATED;
+> +	vpu_write32(vpu_rproc, CORE_CTRL, core_ctrl);
+> +
+> +	vpu_write32(vpu_rproc, SW_RST, SW_RST_OCD_HALT_ON_RST |
+> +				       SW_RST_IPU_B_RST | SW_RST_IPU_D_RST);
+> +	ndelay(27);
+
+What is this for?  The state of the VPU can't be polled?
+
+> +	vpu_write32(vpu_rproc, SW_RST, 0);
+> +
+> +	core_ctrl &= ~CORE_CTRL_PIF_GATED;
+> +	vpu_write32(vpu_rproc, CORE_CTRL, core_ctrl);
+> +
+> +	vpu_write32(vpu_rproc, CORE_DEFAULT0, CORE_DEFAULT0_AWUSER_USE_IOMMU |
+> +					      CORE_DEFAULT0_ARUSER_USE_IOMMU |
+> +					      CORE_DEFAULT0_QOS_SWAP_1);
+> +	vpu_write32(vpu_rproc, CORE_DEFAULT1,
+> +		    CORE_DEFAULT0_AWUSER_IDMA_USE_IOMMU |
+> +		    CORE_DEFAULT0_ARUSER_IDMA_USE_IOMMU);
+> +
+> +	core_ctrl &= ~CORE_CTRL_RUN_STALL;
+> +	vpu_write32(vpu_rproc, CORE_CTRL, core_ctrl);
+
+I would certainly appreciate more comments that describe that is going on in
+this function.
+
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_vpu_rproc_stop(struct rproc *rproc)
+> +{
+> +	struct mtk_vpu_rproc *vpu_rproc = rproc->priv;
+> +	u32 core_ctrl;
+> +
+> +	core_ctrl = vpu_read32(vpu_rproc, CORE_CTRL);
+> +	vpu_write32(vpu_rproc, CORE_CTRL, core_ctrl | CORE_CTRL_RUN_STALL);
+> +
+> +	return 0;
+> +}
+> +
+> +static void mtk_vpu_rproc_kick(struct rproc *rproc, int vqid)
+> +{
+> +	struct mtk_vpu_rproc *vpu_rproc = rproc->priv;
+> +
+> +	vpu_write32(vpu_rproc, CORE_CTL_XTENSA_INT, 1 << vqid);
+> +}
+> +
+> +static const struct rproc_ops mtk_vpu_rproc_ops = {
+> +	.start		= mtk_vpu_rproc_start,
+> +	.stop		= mtk_vpu_rproc_stop,
+> +	.kick		= mtk_vpu_rproc_kick,
+> +};
+> +
+> +static irqreturn_t mtk_vpu_rproc_callback(int irq, void *data)
+> +{
+> +	struct rproc *rproc = (struct rproc *)data;
+
+There is no need to cast when working with a void pointer.  The same comment
+applies throughout.
+
+> +	struct mtk_vpu_rproc *vpu_rproc = (struct mtk_vpu_rproc *)rproc->priv;
+> +
+> +	vpu_write32(vpu_rproc, CORE_XTENSA_INT, 1);
+> +
+> +	return IRQ_WAKE_THREAD;
+> +}
+> +
+> +static irqreturn_t handle_event(int irq, void *data)
+> +{
+> +	struct rproc *rproc = (struct rproc *)data;
+> +
+> +	rproc_vq_interrupt(rproc, 0);
+> +	rproc_vq_interrupt(rproc, 1);
+> +
+> +	return IRQ_HANDLED;
+> +}
+> +
+> +static int mtk_vpu_rproc_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct mtk_vpu_rproc *vpu_rproc;
+> +	struct rproc *rproc;
+> +	struct resource *res;
+> +	int ret;
+> +
+> +	rproc = rproc_alloc(dev, "apu", &mtk_vpu_rproc_ops, NULL,
+> +			    sizeof(*vpu_rproc));
+
+The problem with hard coding the name of the remote process is that it work on
+only when there is a single processor.  Based on the DTS extention sent with
+this serie, there seems to be a possibility of having more the one.  As such
+both remote processor will be called "apu", mandating you to look at the
+platform resources to know which is which.  Consider using dev_name() or
+dev->of_node->name. 
+
+> +	if (!rproc)
+> +		return -ENOMEM;
+> +
+> +	rproc->recovery_disabled = true;
+> +	rproc->has_iommu = false;
+> +
+> +	vpu_rproc = rproc->priv;
+> +	vpu_rproc->rproc = rproc;
+> +	vpu_rproc->dev = dev;
+> +
+> +	platform_set_drvdata(pdev, rproc);
+> +
+> +	rproc->domain = iommu_get_domain_for_dev(dev);
+> +	if (!rproc->domain) {
+> +		dev_err(dev, "Failed to get the IOMMU domain\n");
+> +		ret = -EINVAL;
+> +		goto free_rproc;
+> +	}
+> +
+> +
+> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +	vpu_rproc->base = devm_ioremap_resource(&pdev->dev, res);
+> +	if (IS_ERR(vpu_rproc->base)) {
+> +		dev_err(&pdev->dev, "Failed to map mmio\n");
+
+Above dev_err() is used with @dev while here @pdev->dev is.  Please pick one you
+like and stick with it. 
+
+> +		ret = PTR_ERR(vpu_rproc->base);
+> +		goto free_rproc;
+> +	}
+> +
+> +	vpu_rproc->irq = platform_get_irq(pdev, 0);
+> +	if (vpu_rproc->irq < 0) {
+> +		ret = vpu_rproc->irq;
+> +		goto free_rproc;
+> +	}
+> +
+> +	ret = devm_request_threaded_irq(dev, vpu_rproc->irq,
+> +					mtk_vpu_rproc_callback, handle_event,
+> +					IRQF_SHARED | IRQF_ONESHOT,
+> +					"mtk_vpu-remoteproc", rproc);
+
+Same problem as above, i.e hard coding the name of the interrupt will be
+confusing when probing sysfs.  Here rproc->index holds the value that
+corresponds to 'X' in /sys/dev/class/remoteproc/remoteprocX.  Simply build a
+string using that and feed it to devm_request_threaded_ifq().
+
+
+> +	if (ret) {
+> +		dev_err(dev, "devm_request_threaded_irq error: %d\n", ret);
+> +		goto free_rproc;
+> +	}
+> +
+> +	vpu_rproc->ipu = devm_clk_get(dev, "ipu");
+> +	if (IS_ERR(vpu_rproc->ipu)) {
+> +		dev_err(dev, "Failed to get ipu clock\n");
+> +		ret = PTR_ERR(vpu_rproc->ipu);
+> +		goto free_rproc;
+> +	}
+> +
+> +	ret = clk_prepare_enable(vpu_rproc->ipu);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to enable ipu clock\n");
+> +		goto free_rproc;
+> +	}
+> +
+> +	vpu_rproc->axi = devm_clk_get(dev, "axi");
+> +	if (IS_ERR(vpu_rproc->axi)) {
+> +		dev_err(dev, "Failed to get axi clock\n");
+> +		ret = PTR_ERR(vpu_rproc->axi);
+> +		goto clk_disable_ipu;
+> +	}
+> +
+> +	ret = clk_prepare_enable(vpu_rproc->axi);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to enable axi clock\n");
+> +		goto clk_disable_ipu;
+> +	}a
+
+Please look at how Paul use the clock bulk API to deal with multiple clocs in
+ingenic_rproc.c and see if it is possible to use the same scheme.
+
+> +
+> +	vpu_rproc->jtag = devm_clk_get_optional(dev, "jtag");
+
+Why is the jtag clock optional when the binding document says that it "seems to
+be required to run the DSP, even when JTAG is not in use"?
+
+> +	if (IS_ERR(vpu_rproc->jtag)) {
+> +		dev_err(dev, "Failed to enable jtag clock\n");
+> +		ret = PTR_ERR(vpu_rproc->jtag);
+> +		goto clk_disable_axi;
+> +	}
+> +
+> +	ret = clk_prepare_enable(vpu_rproc->jtag);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to enable jtag clock\n");
+> +		goto clk_disable_axi;
+> +	}
+> +
+> +	ret = of_reserved_mem_device_init(dev);
+> +	if (ret) {
+> +		dev_err(dev, "device does not have specific CMA pool\n");
+> +		goto clk_disable_jtag;
+> +	}
+> +
+> +	ret = rproc_add(rproc);
+> +	if (ret) {
+> +		dev_err(dev, "rproc_add failed: %d\n", ret);
+> +		goto free_mem;
+> +	}
+> +
+> +	return 0;
+> +
+> +free_mem:
+> +	of_reserved_mem_device_release(dev);
+> +clk_disable_jtag:
+> +	clk_disable_unprepare(vpu_rproc->jtag);
+> +clk_disable_axi:
+> +	clk_disable_unprepare(vpu_rproc->axi);
+> +clk_disable_ipu:
+> +	clk_disable_unprepare(vpu_rproc->ipu);
+> +free_rproc:
+> +	rproc_free(rproc);
+> +
+> +	return ret;
+> +}
+> +
+> +static int mtk_vpu_rproc_remove(struct platform_device *pdev)
+> +{
+> +	struct rproc *rproc = platform_get_drvdata(pdev);
+> +	struct mtk_vpu_rproc *vpu_rproc = (struct mtk_vpu_rproc *)rproc->priv;
+> +	struct device *dev = &pdev->dev;
+> +
+> +	disable_irq(vpu_rproc->irq);
+> +
+> +	rproc_del(rproc);
+> +	of_reserved_mem_device_release(dev);
+> +	clk_disable_unprepare(vpu_rproc->jtag);
+> +	clk_disable_unprepare(vpu_rproc->axi);
+> +	clk_disable_unprepare(vpu_rproc->ipu);
+> +	rproc_free(rproc);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct of_device_id mtk_vpu_rproc_of_match[] __maybe_unused = {
+
+Why is "__maybe_unused" needed?
+
+Thanks,
+Mathieu
+
+
+> +	{ .compatible = "mediatek,mt8183-apu", },
+> +	{ /* sentinel */ },
+> +};
+> +MODULE_DEVICE_TABLE(of, mtk_vpu_rproc_of_match);
+> +
+> +static struct platform_driver mtk_vpu_rproc_driver = {
+> +	.probe = mtk_vpu_rproc_probe,
+> +	.remove = mtk_vpu_rproc_remove,
+> +	.driver = {
+> +		.name = "mtk_vpu-rproc",
+> +		.of_match_table = of_match_ptr(mtk_vpu_rproc_of_match),
+> +	},
+> +};
+> +module_platform_driver(mtk_vpu_rproc_driver);
+> +
+> +MODULE_LICENSE("GPL v2");
+> +MODULE_AUTHOR("Alexandre Bailon");
+> +MODULE_DESCRIPTION("Mt8183 VPU Remote Processor control driver");
+> -- 
+> 2.26.2
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
