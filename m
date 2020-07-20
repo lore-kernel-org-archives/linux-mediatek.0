@@ -3,59 +3,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 63507C433E4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 16:38:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 608C0C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 18:24:12 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 351F722BF3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 16:38:36 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2F753208E4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 18:24:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hlZfg9BP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 351F722BF3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=yadavpratyush.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NqzaQzdH";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="ui/WFmlo"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2F753208E4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=hJShIAkD45RXpAcF2GuyYz9rmOGwCCZR73zYd2U91mI=; b=hlZfg9BPav/o17h1MHd5+BaC8
-	xr8KlLjbH44xEa9jBBREGpMIHvevcUw9Y/LUHEhRFtiejhl+3SSYYNu4PHOfQOIIQvkJTe/mSaBJi
-	kRT94f/b5eVR2XbtgaZb6EWQ0XL2pn3sZ2wkN44n8D4d2dh1lfFIs7OPcbhnuYAqA1ZqV+BySzE2R
-	FexH7LvfNOWEka67EgJqYQ5+4wixggnBFi/T3ECl2Ik24iX6jlzgSOGDlH94VkURDiyOv8GCVCr0H
-	tFa/+4WwoKF2AjoYHETIhEUnKyBkxXtWF7p2LCOlg3vE/5hInsVlMxS2FUbTKhnM+RrGf9mraZNu8
-	bvwrVBstA==;
+	 bh=d2kyDQojK/9Dw1OVvHHrIIe0mQl5/Gu8ibjvuPYtrvM=; b=NqzaQzdHpP+zdnJ+VslAUCEYY
+	q+bN9Gowdy+qcxWDgH4IlJKSKGgDSb4WjgGbCJq/cyRJWR/+c6SHngiSreS+0q/IrTg9nJcOf8KGY
+	nLcIRXFwQbPQnCwTReblOeHpXuqcdehJHzNkcfnPC1bqwoGlHg1oabmRXHRws3wzBlDyS2StRwCAF
+	Q4Vf5SzDUdGHakodXZ9c0H7s8IkQLzQLCaiTBbXO7yWUQ7N7k6X7m9tLv6CZ7N6wO+yv1+DendcNT
+	5hridgd78eOlqcCwacWNyfDPdSQ1yP2RozFTnnZZquMIiWQ32DRqh3kGQiuFchn7K32j1P39DSflU
+	25KZk2oig==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jxYny-0005Dw-2i; Mon, 20 Jul 2020 16:38:18 +0000
-Received: from relay1-d.mail.gandi.net ([217.70.183.193])
+	id 1jxaSI-0000Lx-2I; Mon, 20 Jul 2020 18:24:02 +0000
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jxYns-0005Bd-OX; Mon, 20 Jul 2020 16:38:13 +0000
-X-Originating-IP: 42.109.212.217
-Received: from localhost (unknown [42.109.212.217])
- (Authenticated sender: me@yadavpratyush.com)
- by relay1-d.mail.gandi.net (Postfix) with ESMTPSA id 7114824000E;
- Mon, 20 Jul 2020 16:38:04 +0000 (UTC)
-Date: Mon, 20 Jul 2020 22:08:02 +0530
-From: Pratyush Yadav <me@yadavpratyush.com>
-To: Tudor.Ambarus@microchip.com
-Subject: Re: [PATCH v10 07/17] mtd: spi-nor: sfdp: parse xSPI Profile 1.0 table
-Message-ID: <20200720163802.veql43cmal7sunit@yadavpratyush.com>
-References: <20200623183030.26591-1-p.yadav@ti.com>
- <20200623183030.26591-8-p.yadav@ti.com>
- <1450d8c8-cda4-51e3-9f57-0b2f00825f11@microchip.com>
+ id 1jxaSF-0000L1-UT
+ for linux-mediatek@lists.infradead.org; Mon, 20 Jul 2020 18:24:00 +0000
+Received: by mail-ej1-x643.google.com with SMTP id rk21so19103264ejb.2
+ for <linux-mediatek@lists.infradead.org>; Mon, 20 Jul 2020 11:23:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=mYtPOu3+6Et/kxltzHexe0n0N7DSpTjVRyHcPXRKmCw=;
+ b=ui/WFmlokRzdDA5JN1GR5fdBq/UdFuxXFmj7ASkGwvwdeQH5Cd+w3vTSFoF5gUlaiV
+ CD10FNPrnEwqMrxIDzhDOwx/IwCPewbSoTDhySKiU6dVEW2iERwIbgt90LUUMOV5ygij
+ Stq7qqJdjVdfpcdGrmY9qJGlH/NiV4hXKLOUEZhdc9Xo7tdC9mvggPOoyBx4+QPpNNCW
+ hs7Dq+C+Ex5KscAQsqdKfPyjrq/1i1twgoKM+hNMYCu+1bsZ2HOcSCxVkkgt+giJ1g70
+ K5BcJkaB/SamNI6vcJEMYUq1b56zYYMsEbMi89iq6qcBnrdqMS4TUrVFwdR154adJR6q
+ OShg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=mYtPOu3+6Et/kxltzHexe0n0N7DSpTjVRyHcPXRKmCw=;
+ b=IzlpTzzQzH8h7KylRzqWNPG0ikHTIsbUZx2xijrF9Gjb1j3oBpKumIPl2JOKqYBWEf
+ WRNr7MG3XWEBXH1v2OlDIhHxG0mWUy985xAGbocndVLuIei3lcrIfW2HXiIYfNepvlqu
+ /OdKDznKA7oOyjQ1/Ii0dV1gSDFt9tf31bpo5mkSvO8XrM3SlB68PTYJfUSYOSKgeKTr
+ XmJhDfaW2xy+hl0FrCDA+uyKNT+rqQ6YsV2LiK/0T//av04S0a55mueuWXWzL+8OuP1o
+ 5AHCx6I6FBG8Pw/n0RFAZ7im8xx68pQAMMrghrW2vGxXQI5Xssd1IxNb/L1/f/F4qLJ+
+ J4JA==
+X-Gm-Message-State: AOAM532wMAWF5GhJJMh4yiPBHST0dbjHu0WRqnNfqftsQAFQrgf+XvEw
+ gahbMV67LHYHeE2yq4+NP5NE0b4aWBr3IPmBn76/Ow==
+X-Google-Smtp-Source: ABdhPJw6kbpkvhqkdMCphSGiRLzzPUV18DZOTQU5dB0cdi0CwxIGyDs6TiAqw4ENGTmfmH4/sgAjvJ6lBMmDeYEKedQ=
+X-Received: by 2002:a17:906:c007:: with SMTP id
+ e7mr21842223ejz.481.1595269434577; 
+ Mon, 20 Jul 2020 11:23:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1450d8c8-cda4-51e3-9f57-0b2f00825f11@microchip.com>
+References: <20200507085544.GB1097552@kroah.com>
+ <1591791827-23871-1-git-send-email-Frankie.Chang@mediatek.com>
+ <1591791827-23871-3-git-send-email-Frankie.Chang@mediatek.com>
+In-Reply-To: <1591791827-23871-3-git-send-email-Frankie.Chang@mediatek.com>
+From: Todd Kjos <tkjos@google.com>
+Date: Mon, 20 Jul 2020 11:23:43 -0700
+Message-ID: <CAHRSSEydixN=4JQW3PGsTVaYZG+1aVZA6JOE9c9GufiWrkDycQ@mail.gmail.com>
+Subject: Re: [PATCH v5 2/3] binder: add trace at free transaction.
+To: Frankie Chang <Frankie.Chang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200720_123813_017204_A4E4F68B 
-X-CRM114-Status: GOOD (  32.34  )
+X-CRM114-CacheID: sfid-20200720_142400_033188_81931238 
+X-CRM114-Status: GOOD (  16.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,159 +91,99 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alexandre.belloni@bootlin.com, vigneshr@ti.com, richard@nod.at,
- nsekhar@ti.com, Nicolas.Ferre@microchip.com, boris.brezillon@collabora.com,
- michal.simek@xilinx.com, Ludovic.Desroches@microchip.com, broonie@kernel.org,
- linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- miquel.raynal@bootlin.com, matthias.bgg@gmail.com,
- linux-mediatek@lists.infradead.org, linux-spi@vger.kernel.org, p.yadav@ti.com,
- linux-kernel@vger.kernel.org
+Cc: wsd_upstream <wsd_upstream@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ LKML <linux-kernel@vger.kernel.org>,
+ =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
+ Jian-Min Liu <Jian-Min.Liu@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
+ Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Tudor,
+On Wed, Jun 10, 2020 at 5:24 AM Frankie Chang
+<Frankie.Chang@mediatek.com> wrote:
+>
+> From: "Frankie.Chang" <Frankie.Chang@mediatek.com>
+>
+> Since the original trace_binder_transaction_received cannot
+> precisely present the real finished time of transaction, adding a
+> trace_binder_txn_latency_free at the point of free transaction
+> may be more close to it.
+>
+> Signed-off-by: Frankie.Chang <Frankie.Chang@mediatek.com>
+> ---
+>  drivers/android/binder.c       |    2 ++
+>  drivers/android/binder_trace.h |   27 +++++++++++++++++++++++++++
+>  2 files changed, 29 insertions(+)
+>
+> diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+> index 1592396..5ec9af8 100644
+> --- a/drivers/android/binder.c
+> +++ b/drivers/android/binder.c
+> @@ -1523,6 +1523,7 @@ static void binder_free_transaction(struct binder_transaction *t)
+>          * If the transaction has no target_proc, then
+>          * t->buffer->transaction has already been cleared.
+>          */
+> +       trace_binder_txn_latency_free(t);
+>         binder_free_txn_fixups(t);
+>         kfree(t);
+>         binder_stats_deleted(BINDER_STAT_TRANSACTION);
+> @@ -3094,6 +3095,7 @@ static void binder_transaction(struct binder_proc *proc,
+>         kfree(tcomplete);
+>         binder_stats_deleted(BINDER_STAT_TRANSACTION_COMPLETE);
+>  err_alloc_tcomplete_failed:
+> +       trace_binder_txn_latency_free(t);
+>         kfree(t);
+>         binder_stats_deleted(BINDER_STAT_TRANSACTION);
+>  err_alloc_t_failed:
+> diff --git a/drivers/android/binder_trace.h b/drivers/android/binder_trace.h
+> index 6731c3c..8ac87d1 100644
+> --- a/drivers/android/binder_trace.h
+> +++ b/drivers/android/binder_trace.h
+> @@ -95,6 +95,33 @@
+>                   __entry->thread_todo)
+>  );
+>
+> +TRACE_EVENT(binder_txn_latency_free,
+> +       TP_PROTO(struct binder_transaction *t),
+> +       TP_ARGS(t),
+> +       TP_STRUCT__entry(
+> +               __field(int, debug_id)
+> +               __field(int, from_proc)
+> +               __field(int, from_thread)
+> +               __field(int, to_proc)
+> +               __field(int, to_thread)
+> +               __field(unsigned int, code)
+> +               __field(unsigned int, flags)
+> +       ),
+> +       TP_fast_assign(
+> +               __entry->debug_id = t->debug_id;
+> +               __entry->from_proc = t->from ? t->from->proc->pid : 0;
+> +               __entry->from_thread = t->from ? t->from->pid : 0;
+> +               __entry->to_proc = t->to_proc ? t->to_proc->pid : 0;
+> +               __entry->to_thread = t->to_thread ? t->to_thread->pid : 0;
 
-On 08/07/20 04:01PM, Tudor.Ambarus@microchip.com wrote:
-> On 6/23/20 9:30 PM, Pratyush Yadav wrote:
-> > EXTERNAL EMAIL: Do not click links or open attachments unless you know the content is safe
-> > 
-> > This table is indication that the flash is xSPI compliant and hence
-> > supports octal DTR mode. Extract information like the fast read opcode,
-> > dummy cycles, the number of dummy cycles needed for a Read Status
-> > Register command, and the number of address bytes needed for a Read
-> > Status Register command.
-> > 
-> > We don't know what speed the controller is running at. Find the fast
-> > read dummy cycles for the fastest frequency the flash can run at to be
-> > sure we are never short of dummy cycles. If nothing is available,
-> > default to 20. Flashes that use a different value should update it in
-> > their fixup hooks.
-> > 
-> > Since we want to set read settings, expose spi_nor_set_read_settings()
-> > in core.h.
-> > 
-> > Signed-off-by: Pratyush Yadav <p.yadav@ti.com>
-> > ---
-> >  drivers/mtd/spi-nor/core.c |  2 +-
-> >  drivers/mtd/spi-nor/core.h | 10 ++++
-> >  drivers/mtd/spi-nor/sfdp.c | 98 ++++++++++++++++++++++++++++++++++++++
-> >  3 files changed, 109 insertions(+), 1 deletion(-)
-> > 
-[...]
-> > diff --git a/drivers/mtd/spi-nor/sfdp.c b/drivers/mtd/spi-nor/sfdp.c
-> > index 3f709de5ea67..d5a24e61813c 100644
-> > --- a/drivers/mtd/spi-nor/sfdp.c
-> > +++ b/drivers/mtd/spi-nor/sfdp.c
-[...]
-> > @@ -66,6 +70,16 @@ struct sfdp_bfpt_erase {
-> >         u32                     shift;
-> >  };
-> > 
-> > +/* xSPI Profile 1.0 table (from JESD216D.01). */
-> > +#define PROFILE1_DWORD1_RD_FAST_CMD            GENMASK(15, 8)
-> > +#define PROFILE1_DWORD1_RDSR_DUMMY             BIT(28)
-> > +#define PROFILE1_DWORD1_RDSR_ADDR_BYTES                BIT(29)
-> > +#define PROFILE1_DWORD4_DUMMY_200MHZ           GENMASK(11, 7)
-> > +#define PROFILE1_DWORD5_DUMMY_166MHZ           GENMASK(31, 27)
-> > +#define PROFILE1_DWORD5_DUMMY_133MHZ           GENMASK(21, 17)
-> > +#define PROFILE1_DWORD5_DUMMY_100MHZ           GENMASK(11, 7)
-> 
-> we should order these macros in a consistent way. I see that previous macros
-> are declared in order starting from MSB to LSB.
-> 
-> > +#define PROFILE1_DUMMY_DEFAULT                 20
-> 
-> we need to explain why the default dummy value is 20.
+t->to_proc and t->to_thread are not safe to dereference without
+holding t->lock. If the target process dies, these fields can be set
+to NULL
 
-No reason other than the fact that it is the default for the first flash 
-that uses Profile 1.0 parsing (S28HS512T). AFAIK a similar reasoning is 
-followed for the default being 8 for 1-1-4 or 1-1-8 modes.
-
-I can't think of any reasonable way of deciding on a default value since 
-it varies from flash to flash.
- 
-> How about declaring all these macros immediately above of spi_nor_parse_profile1()?
-> 
-> > +
-> >  #define SMPT_CMD_ADDRESS_LEN_MASK              GENMASK(23, 22)
-> >  #define SMPT_CMD_ADDRESS_LEN_0                 (0x0UL << 22)
-> >  #define SMPT_CMD_ADDRESS_LEN_3                 (0x1UL << 22)
-> > @@ -1106,6 +1120,86 @@ static int spi_nor_parse_4bait(struct spi_nor *nor,
-> >         return ret;
-> >  }
-> > 
-> > +/**
-> > + * spi_nor_parse_profile1() - parse the xSPI Profile 1.0 table
-> > + * @nor:               pointer to a 'struct spi_nor'
-> > + * @param_header:      pointer to the 'struct sfdp_parameter_header' describing
-> > + *                     the 4-Byte Address Instruction Table length and version.
-> > + * @params:            pointer to the 'struct spi_nor_flash_parameter' to be.
-> > + *
-> > + * Return: 0 on success, -errno otherwise.
-> > + */
-> > +static int spi_nor_parse_profile1(struct spi_nor *nor,
-> > +                                 const struct sfdp_parameter_header *profile1_header,
-> > +                                 struct spi_nor_flash_parameter *params)
-> > +{
-> > +       u32 *table, opcode, addr;
-> 
-> s/table/dwords?
-> 
-> u8 opcode?
-> 
-> > +       size_t len;
-> > +       int ret, i;
-> > +       u8 dummy;
-> > +
-> > +       len = profile1_header->length * sizeof(*table);
-> > +       table = kmalloc(len, GFP_KERNEL);
-> > +       if (!table)
-> > +               return -ENOMEM;
-> > +
-> > +       addr = SFDP_PARAM_HEADER_PTP(profile1_header);
-> > +       ret = spi_nor_read_sfdp(nor, addr, len, table);
-> > +       if (ret)
-> > +               goto out;
-> > +
-> > +       /* Fix endianness of the table DWORDs. */
-> > +       for (i = 0; i < profile1_header->length; i++)
-> > +               table[i] = le32_to_cpu(table[i]);
-> 
-> le32_to_cpu_array(table, profile1_header->length);
-> 
-> > +
-> > +       /* Get 8D-8D-8D fast read opcode and dummy cycles. */
-> > +       opcode = FIELD_GET(PROFILE1_DWORD1_RD_FAST_CMD, table[0]);
-> > +
-> > +       /*
-> > +        * We don't know what speed the controller is running at. Find the
-> > +        * dummy cycles for the fastest frequency the flash can run at to be
-> > +        * sure we are never short of dummy cycles. A value of 0 means the
-> > +        * frequency is not supported.
-> > +        *
-> > +        * Default to PROFILE1_DUMMY_DEFAULT if we don't find anything, and let
-> > +        * flashes set the correct value if needed in their fixup hooks.
-> > +        */
-> > +       dummy = FIELD_GET(PROFILE1_DWORD4_DUMMY_200MHZ, table[3]);
-> > +       if (!dummy)
-> > +               dummy = FIELD_GET(PROFILE1_DWORD5_DUMMY_166MHZ, table[4]);
-> > +       if (!dummy)
-> > +               dummy = FIELD_GET(PROFILE1_DWORD5_DUMMY_133MHZ, table[4]);
-> > +       if (!dummy)
-> > +               dummy = FIELD_GET(PROFILE1_DWORD5_DUMMY_100MHZ, table[4]);
-> > +       if (!dummy)
-> > +               dummy = PROFILE1_DUMMY_DEFAULT;
-> > +
-> > +       /* Round up to an even value to avoid tripping controllers up. */
-> > +       dummy = ROUND_UP_TO(dummy, 2);
-> > +
-[...]
-
--- 
-Regards,
-Pratyush Yadav
+> +               __entry->code = t->code;
+> +               __entry->flags = t->flags;
+> +       ),
+> +       TP_printk("transaction=%d from %d:%d to %d:%d flags=0x%x code=0x%x",
+> +                 __entry->debug_id, __entry->from_proc, __entry->from_thread,
+> +                 __entry->to_proc, __entry->to_thread, __entry->code,
+> +                 __entry->flags)
+> +);
+> +
+>  TRACE_EVENT(binder_transaction,
+>         TP_PROTO(bool reply, struct binder_transaction *t,
+>                  struct binder_node *target_node),
+> --
+> 1.7.9.5
 
 _______________________________________________
 Linux-mediatek mailing list
