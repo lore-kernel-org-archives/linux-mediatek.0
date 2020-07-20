@@ -2,76 +2,60 @@ Return-Path: <SRS0=A+tK=A7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B208FC433E7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 16:10:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8C3A3C433F4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 16:11:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7EF762064B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 16:10:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5E66C2065E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 16:11:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="m5JRxM3f";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="mywFm7Q0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7EF762064B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="riXzUqs5"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E66C2065E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=yadavpratyush.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=yt/q+ngG6EP6EbOAQCn5akbMg62/ve8/7Nsi0k/X54o=; b=m5JRxM3fAx85vii6uW8HJc6ZD
-	dwHEuw5EzgmFdjhzqS2LEzvWxjHPixFibPt0yD1uNUYb0VF52z15k+sc5D9HihZSzN9+amzl9MqkD
-	35YZQMQ/6yD3c/5sZ7qp41Be2+PcphCLAorHxoOPSnJq0BhQH+zhPXIFLLLeTCHhdBtiPiTL9STAf
-	jcGYfVO0MgLjCUxVEo9ergNefiYhJ8UBovVdcY1gHyakiMO58Gxtmj1/DHCewQrtQo1HuxXMWW5Pb
-	q9QzPv3mfc8kU4B3Kyv+Rg3j7/X9BLbiFJcdkiU/fMwxDxmporyDPqtQghgBHYuEM18LMspBLAdm2
-	z0krX+Hlw==;
+	 bh=q8OJNWUBoLSb4YMEj9biyPCxXFvyrqZpk65bjS90/w4=; b=riXzUqs5CXwCwlEkC6GUymu53
+	suMYgNVGcpq1QQbljw67NoOa2au5XPc8ygXohny3hY2rI1KUB11U/tqj3fZdHam+Xf+84ubYVLsX8
+	wLXqe/dyUdJ8bblIokvU4LzbLr3sJIsv0GzesSRZypL8smiyJM78Dr7cHXdn+kNDdWS9oQv2IolMA
+	RsARGuPL5xW2mRfyAvIC8PlnxQ5R9eNyESJtL9C9SBpNzp+f1w4AfuTLdcSvgw2JMX2XPJFNbiVFX
+	uC/B2K9i/ihcxgwsKPFW4R306XE4gq9qM4LvpbhPRil9wFbMc3w2g6VHKCKWim8f9DUjdvRiRPqYX
+	dVnssH++w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jxYMo-0000IE-SE; Mon, 20 Jul 2020 16:10:14 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jxYOC-0000Wo-A6; Mon, 20 Jul 2020 16:11:40 +0000
+Received: from relay11.mail.gandi.net ([217.70.178.231])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jxYMl-0000HG-Sh; Mon, 20 Jul 2020 16:10:12 +0000
-Received: from mail-ej1-f52.google.com (mail-ej1-f52.google.com
- [209.85.218.52])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 421F122D06;
- Mon, 20 Jul 2020 16:10:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595261410;
- bh=U7uXjX8IfjoIHHcZ94LBnWRXLP1OX+olQJgVuZvrYz8=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=mywFm7Q0v6qrIqaQ80nhFbUpcFOGRvUhHtCEA/fayqjg0rtYs/pYaWNKJfRqyw3i7
- XLoxMzbKuZ6U1GcIcAVpCuXX8oodHcdxaDHqTU0uV8Uk8ODLH1CZk2FLTVg8JWrWk5
- azVsSx9XhFktMuRsA0P0lAJSD1h4gOcHR2w6hAVE=
-Received: by mail-ej1-f52.google.com with SMTP id ga4so18637323ejb.11;
- Mon, 20 Jul 2020 09:10:10 -0700 (PDT)
-X-Gm-Message-State: AOAM5329iJwifFdtEUp+pRsk+wR9GZrAzZOi+o9soI02ZZHGO9vdgvIZ
- 054wo+oEXuA6D/mnc57BJ5pBx0r1dcNF5jaUPg==
-X-Google-Smtp-Source: ABdhPJzjWZka7dLZIstGqrBjwKgkCw0Jts0It8B2AGaHIdJ5T0KmMrd6sjOYVhE+rD/LgFxqtR3lEzkplYm7brWs4pA=
-X-Received: by 2002:a17:906:404e:: with SMTP id
- y14mr21106907ejj.260.1595261408723; 
- Mon, 20 Jul 2020 09:10:08 -0700 (PDT)
+ id 1jxYO8-0000VM-6n; Mon, 20 Jul 2020 16:11:37 +0000
+Received: from localhost (unknown [42.109.212.217])
+ (Authenticated sender: me@yadavpratyush.com)
+ by relay11.mail.gandi.net (Postfix) with ESMTPSA id D6FE810000E;
+ Mon, 20 Jul 2020 16:11:27 +0000 (UTC)
+Date: Mon, 20 Jul 2020 21:41:23 +0530
+From: Pratyush Yadav <me@yadavpratyush.com>
+To: Tudor.Ambarus@microchip.com
+Subject: Re: [PATCH v10 13/17] mtd: spi-nor: core: perform a Soft Reset on
+ shutdown
+Message-ID: <20200720161123.dth4rzziidpx5pmb@yadavpratyush.com>
+References: <20200623183030.26591-1-p.yadav@ti.com>
+ <20200623183030.26591-14-p.yadav@ti.com>
+ <ccc128f1-2e7b-e64f-c958-ad5cc272085a@microchip.com>
 MIME-Version: 1.0
-References: <20200506084039.249977-1-eizan@chromium.org>
- <20200506184018.v2.1.I27dac0775ba64deff6a91837f39bfba83dccdf84@changeid>
-In-Reply-To: <20200506184018.v2.1.I27dac0775ba64deff6a91837f39bfba83dccdf84@changeid>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 21 Jul 2020 00:09:57 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_9qSpH51kkopofoQTfSqYqGWcQVN8KrJJKQDWozoMK+NQ@mail.gmail.com>
-Message-ID: <CAAOTY_9qSpH51kkopofoQTfSqYqGWcQVN8KrJJKQDWozoMK+NQ@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] [media] mtk-mdp: add driver to probe mdp components
-To: Eizan Miyamoto <eizan@chromium.org>
+Content-Disposition: inline
+In-Reply-To: <ccc128f1-2e7b-e64f-c958-ad5cc272085a@microchip.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200720_121012_050402_9DCAD820 
-X-CRM114-Status: GOOD (  25.26  )
+X-CRM114-CacheID: sfid-20200720_121136_459423_6320311E 
+X-CRM114-Status: GOOD (  25.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,75 +67,133 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
- LKML <linux-kernel@vger.kernel.org>, Houlong Wei <houlong.wei@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: alexandre.belloni@bootlin.com, vigneshr@ti.com, richard@nod.at,
+ nsekhar@ti.com, Nicolas.Ferre@microchip.com, boris.brezillon@collabora.com,
+ michal.simek@xilinx.com, Ludovic.Desroches@microchip.com, broonie@kernel.org,
+ linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ miquel.raynal@bootlin.com, matthias.bgg@gmail.com,
+ linux-mediatek@lists.infradead.org, linux-spi@vger.kernel.org, p.yadav@ti.com,
+ linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEVpemFuOgoKRWl6YW4gTWl5YW1vdG8gPGVpemFuQGNocm9taXVtLm9yZz4g5pa8IDIwMjDl
-ubQ15pyINuaXpSDpgLHkuIkg5LiL5Y2INDo0MeWvq+mBk++8mgo+Cj4gQnJvYWRseSwgdGhpcyBw
-YXRjaCAoMSkgYWRkcyBhIGRyaXZlciBmb3IgdmFyaW91cyBNVEsgTURQIGNvbXBvbmVudHMgdG8K
-PiBnbyBhbG9uZ3NpZGUgdGhlIG1haW4gTVRLIE1EUCBkcml2ZXIsIGFuZCAoMikgaG9va3MgdGhl
-bSBhbGwgdG9nZXRoZXIKPiB1c2luZyB0aGUgY29tcG9uZW50IGZyYW1ld29yay4KPgo+ICgxKSBV
-cCB1bnRpbCBub3csIHRoZSBNVEsgTURQIGRyaXZlciBjb250cm9scyA4IGRldmljZXMgaW4gdGhl
-IGRldmljZQo+IHRyZWUgb24gaXRzIG93bi4gV2hlbiBydW5uaW5nIHRlc3RzIGZvciB0aGUgaGFy
-ZHdhcmUgdmlkZW8gZGVjb2Rlciwgd2UKPiBmb3VuZCB0aGF0IHRoZSBpb21tdXMgYW5kIExBUkJz
-IHdlcmUgbm90IGJlaW5nIHByb3Blcmx5IGNvbmZpZ3VyZWQuIFRvCj4gY29uZmlndXJlIHRoZW0s
-IGEgZHJpdmVyIGZvciBlYWNoIGJlIGFkZGVkIHRvIG10a19tZHBfY29tcCBzbyB0aGF0Cj4gbXRr
-X2lvbW11X2FkZF9kZXZpY2UoKSBjYW4gKGV2ZW50dWFsbHkpIGJlIGNhbGxlZCBmcm9tIGRtYV9j
-b25maWd1cmUoKQo+IGluc2lkZSByZWFsbHlfcHJvYmUoKS4KPgo+ICgyKSBUaGUgaW50ZWdyYXRp
-b24gaW50byB0aGUgY29tcG9uZW50IGZyYW1ld29yayBhbGxvd3MgdXMgdG8gZGVmZXIgdGhlCj4g
-cmVnaXN0cmF0aW9uIHdpdGggdGhlIHY0bDIgc3Vic3lzdGVtIHVudGlsIGFsbCB0aGUgTURQLXJl
-bGF0ZWQgZGV2aWNlcwo+IGhhdmUgYmVlbiBwcm9iZWQsIHNvIHRoYXQgdGhlIHJlbGV2YW50IGRl
-dmljZSBub2RlIGRvZXMgbm90IGJlY29tZQo+IGF2YWlsYWJsZSB1bnRpbCBpbml0aWFsaXphdGlv
-biBvZiBhbGwgdGhlIGNvbXBvbmVudHMgaXMgY29tcGxldGUuCj4KPiBTb21lIG5vdGVzIGFib3V0
-IGhvdyB0aGUgY29tcG9uZW50IGZyYW1ld29yayBoYXMgYmVlbiBpbnRlZ3JhdGVkOgo+Cj4gLSBU
-aGUgZHJpdmVyIGZvciB0aGUgcmRtYTAgY29tcG9uZW50IHNlcnZlcyBkb3VibGUgZHV0eSBhcyB0
-aGUgIm1hc3RlciIKPiAgIChhZ2dyZWdhdGUpIGRyaXZlciBhcyB3ZWxsIGFzIGEgY29tcG9uZW50
-IGRyaXZlci4gVGhpcyBpcyBhIG5vbi1pZGVhbAo+ICAgY29tcHJvbWlzZSB1bnRpbCBhIGJldHRl
-ciBzb2x1dGlvbiBpcyBkZXZlbG9wZWQuIFRoaXMgZGV2aWNlIGlzCj4gICBkaWZmZXJlbnRpYXRl
-ZCBmcm9tIHRoZSByZXN0IGJ5IGNoZWNraW5nIGZvciBhICJtZWRpYXRlayx2cHUiIHByb3BlcnR5
-Cj4gICBpbiB0aGUgZGV2aWNlIG5vZGUuCj4KPiAtIFRoZSBsaXN0IG9mIG1kcCBjb21wb25lbnRz
-IHJlbWFpbnMgaGFyZC1jb2RlZCBhcyBtdGtfbWRwX2NvbXBfZHRfaWRzW10KPiAgIGluIG10a19t
-ZHBfY29yZS5jLCBhbmQgYXMgbXRrX21kcF9jb21wX2RyaXZlcl9kdF9tYXRjaFtdIGluCj4gICBt
-dGtfbWRwX2NvbXAuYy4gVGhpcyB1bmZvcnR1bmF0ZSBkdXBsaWNhdGlvbiBvZiBpbmZvcm1hdGlv
-biBpcwo+ICAgYWRkcmVzc2VkIGluIGEgZm9sbG93aW5nIHBhdGNoIGluIHRoaXMgc2VyaWVzLgo+
-Cj4gLSBUaGUgY29tcG9uZW50IGRyaXZlciBjYWxscyBjb21wb25lbnRfYWRkKCkgZm9yIGVhY2gg
-ZGV2aWNlIHRoYXQgaXMKPiAgIHByb2JlZC4KPgo+IC0gSW4gbXRrX21kcF9wcm9iZSAodGhlICJt
-YXN0ZXIiIGRldmljZSksIHdlIHNjYW4gdGhlIGRldmljZSB0cmVlIGZvcgo+ICAgYW55IG1hdGNo
-aW5nIG5vZGVzIGFnYWluc3QgbXRrX21kcF9jb21wX2R0X2lkcywgYW5kIGFkZCBjb21wb25lbnQK
-PiAgIG1hdGNoZXMgZm9yIHRoZW0uIFRoZSBtYXRjaCBjcml0ZXJpYSBpcyBhIG1hdGNoaW5nIGRl
-dmljZSBub2RlCj4gICBwb2ludGVyLgo+Cj4gLSBXaGVuIHRoZSBzZXQgb2YgY29tcG9uZW50cyBk
-ZXZpY2VzIHRoYXQgaGF2ZSBiZWVuIHByb2JlZCBjb3JyZXNwb25kcwo+ICAgd2l0aCB0aGUgbGlz
-dCB0aGF0IGlzIGdlbmVyYXRlZCBieSB0aGUgIm1hc3RlciIsIHRoZSBjYWxsYmFjayB0bwo+ICAg
-bXRrX21kcF9tYXN0ZXJfYmluZCgpIGlzIG1hZGUsIHdoaWNoIHRoZW4gY2FsbHMgdGhlIGNvbXBv
-bmVudCBiaW5kCj4gICBmdW5jdGlvbnMuCj4KPiAtIEluc2lkZSBtdGtfbWRwX21hc3Rlcl9iaW5k
-KCksIG9uY2UgYWxsIHRoZSBjb21wb25lbnQgYmluZCBmdW5jdGlvbnMKPiAgIGhhdmUgYmVlbiBj
-YWxsZWQsIHdlIGNhbiB0aGVuIHJlZ2lzdGVyIG91ciBkZXZpY2UgdG8gdGhlIHY0bDIKPiAgIHN1
-YnN5c3RlbS4KPgo+IC0gVGhlIGNhbGwgdG8gcG1fcnVudGltZV9lbmFibGUoKSBpbiB0aGUgbWFz
-dGVyIGRldmljZSBpcyBjYWxsZWQgYWZ0ZXIKPiAgIGFsbCB0aGUgY29tcG9uZW50cyBoYXZlIGJl
-ZW4gcmVnaXN0ZXJlZCBieSB0aGVpciBiaW5kKCkgZnVuY3Rpb25zCj4gICBjYWxsZWQgYnkgbXRr
-X210cF9tYXN0ZXJfYmluZCgpLiBBcyBhIHJlc3VsdCwgdGhlIGxpc3Qgb2YgY29tcG9uZW50cwo+
-ICAgd2lsbCBub3QgY2hhbmdlIHdoaWxlIHBvd2VyIG1hbmFnZW1lbnQgY2FsbGJhY2tzIG10a19t
-ZHBfc3VzcGVuZCgpLwo+ICAgcmVzdW1lKCkgYXJlIGFjY2Vzc2luZyB0aGUgbGlzdCBvZiBjb21w
-b25lbnRzLgoKRm9yIHRoZSBjb21wb25lbnQgYmluZGluZyBwcm9ibGVtLCBNRFAgaXMgc2ltaWxh
-ciB0byBEUk0gZHJpdmVyIFsxXSwKYW5kIERSTSBpcyBwcm9iZWQgYnkgbW1zeXMgZHJpdmVyIFsy
-XSAobW1zeXMgaXMgYSBkZXZpY2Ugd2hpY2ggY29udHJvbApkaXNwbGF5IGNsb2NrLCBkaXNwbGF5
-IHJvdXRpbmcsIG1kcCBjbG9jaywgbWRwIHJvdXRpbmcpLiBNYXliZSB5b3UKY291bGQgcmVmZXIg
-dG8gd2hhdCBEUk0gZG9lcy4KClsxXSBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGlu
-dXgva2VybmVsL2dpdC90b3J2YWxkcy9saW51eC5naXQvdHJlZS9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RybV9kcnYuYz9oPXY1LjgtcmM2ClsyXSBodHRwczovL2dpdC5rZXJuZWwub3Jn
-L3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90b3J2YWxkcy9saW51eC5naXQvY29tbWl0Lz9oPXY1
-LjgtcmM2JmlkPTY2N2M3NjkyNDZiMDFjNTNhZDA5MjVkNjAzZDJhMjUzMWFiZDNlZjIKClJlZ2Fy
-ZHMsCkNodW4tS3VhbmcuCgo+Cj4gU2lnbmVkLW9mZi1ieTogRWl6YW4gTWl5YW1vdG8gPGVpemFu
-QGNocm9taXVtLm9yZz4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtbWVkaWF0ZWsK
+Hi Tudor,
+
+On 08/07/20 04:10PM, Tudor.Ambarus@microchip.com wrote:
+> On 6/23/20 9:30 PM, Pratyush Yadav wrote:
+> > EXTERNAL EMAIL: Do not click links or open attachments unless you know the content is safe
+> > 
+> > Perform a Soft Reset on shutdown on flashes that support it so that the
+> > flash can be reset to its initial state and any configurations made by
+> > spi-nor (given that they're only done in volatile registers) will be
+> > reset. This will hand back the flash in pristine state for any further
+> > operations on it.
+> > 
+> > Signed-off-by: Pratyush Yadav <p.yadav@ti.com>
+> > ---
+> >  drivers/mtd/spi-nor/core.c  | 42 +++++++++++++++++++++++++++++++++++++
+> >  include/linux/mtd/spi-nor.h |  2 ++
+> >  2 files changed, 44 insertions(+)
+> > 
+> > diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
+> > index 4a1f6b343534..27ad9bab06dc 100644
+> > --- a/drivers/mtd/spi-nor/core.c
+> > +++ b/drivers/mtd/spi-nor/core.c
+> > @@ -40,6 +40,9 @@
+> > 
+> >  #define SPI_NOR_MAX_ADDR_WIDTH 4
+> > 
+> > +#define SPI_NOR_SRST_SLEEP_MIN 200
+> > +#define SPI_NOR_SRST_SLEEP_MAX 400
+> > +
+> >  /**
+> >   * spi_nor_get_cmd_ext() - Get the command opcode extension based on the
+> >   *                        extension type.
+> > @@ -3201,6 +3204,41 @@ static int spi_nor_init(struct spi_nor *nor)
+> >         return 0;
+> >  }
+> > 
+> > +static void spi_nor_soft_reset(struct spi_nor *nor)
+> > +{
+> > +       struct spi_mem_op op;
+> > +       int ret;
+> > +
+> > +       op = (struct spi_mem_op)SPI_MEM_OP(SPI_MEM_OP_CMD(SPINOR_OP_SRSTEN, 8),
+> > +                       SPI_MEM_OP_NO_DUMMY,
+> > +                       SPI_MEM_OP_NO_ADDR,
+> > +                       SPI_MEM_OP_NO_DATA);
+> > +       spi_nor_spimem_setup_op(nor, &op, SNOR_PROTO_8_8_8_DTR);
+> > +       ret = spi_mem_exec_op(nor->spimem, &op);
+> > +       if (ret) {
+> > +               dev_warn(nor->dev, "Software reset failed: %d\n", ret);
+> > +               return;
+> > +       }
+> > +
+> > +       op = (struct spi_mem_op)SPI_MEM_OP(SPI_MEM_OP_CMD(SPINOR_OP_SRST, 8),
+> > +                       SPI_MEM_OP_NO_DUMMY,
+> > +                       SPI_MEM_OP_NO_ADDR,
+> > +                       SPI_MEM_OP_NO_DATA);
+> > +       spi_nor_spimem_setup_op(nor, &op, SNOR_PROTO_8_8_8_DTR);
+> > +       ret = spi_mem_exec_op(nor->spimem, &op);
+> > +       if (ret) {
+> > +               dev_warn(nor->dev, "Software reset failed: %d\n", ret);
+> > +               return;
+> > +       }
+> > +
+> > +       /*
+> > +        * Software Reset is not instant, and the delay varies from flash to
+> > +        * flash. Looking at a few flashes, most range somewhere below 100
+> > +        * microseconds. So, sleep for a range of 200-400 us.
+> > +        */
+> > +       usleep_range(SPI_NOR_SRST_SLEEP_MIN, SPI_NOR_SRST_SLEEP_MAX);
+> > +}
+> > +
+> >  /* mtd resume handler */
+> >  static void spi_nor_resume(struct mtd_info *mtd)
+> >  {
+> > @@ -3220,6 +3258,10 @@ void spi_nor_restore(struct spi_nor *nor)
+> >         if (nor->addr_width == 4 && !(nor->flags & SNOR_F_4B_OPCODES) &&
+> >             nor->flags & SNOR_F_BROKEN_RESET)
+> >                 nor->params->set_4byte_addr_mode(nor, false);
+> > +
+> > +       if (nor->info->flags & SPI_NOR_OCTAL_DTR_READ &&
+> 
+> Why this limitation? Can't we make the software reset available for all
+> the modes?
+
+Because I wrote the function spi_nor_soft_reset() from the perspective 
+of xSPI support, and the xSPI spec only cares about the 8D-8D-8D version 
+of the soft reset.
+
+BFPT says we can execute it on 1, 2, 4, or 8 wires depending on the mode 
+so I guess we can support a generalized version as well. Will fix.
+
+> > +           nor->flags & SNOR_F_SOFT_RESET)
+> > +               spi_nor_soft_reset(nor);
+> >  }
+> >  EXPORT_SYMBOL_GPL(spi_nor_restore);
+> > 
+> > diff --git a/include/linux/mtd/spi-nor.h b/include/linux/mtd/spi-nor.h
+> > index cd549042c53d..299685d15dc2 100644
+> > --- a/include/linux/mtd/spi-nor.h
+> > +++ b/include/linux/mtd/spi-nor.h
+> > @@ -51,6 +51,8 @@
+> >  #define SPINOR_OP_CLFSR                0x50    /* Clear flag status register */
+> >  #define SPINOR_OP_RDEAR                0xc8    /* Read Extended Address Register */
+> >  #define SPINOR_OP_WREAR                0xc5    /* Write Extended Address Register */
+> > +#define SPINOR_OP_SRSTEN       0x66    /* Software Reset Enable */
+> > +#define SPINOR_OP_SRST         0x99    /* Software Reset */
+> > 
+> >  /* 4-byte address opcodes - used on Spansion and some Macronix flashes. */
+> >  #define SPINOR_OP_READ_4B      0x13    /* Read data bytes (low frequency) */
+
+-- 
+Regards,
+Pratyush Yadav
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
