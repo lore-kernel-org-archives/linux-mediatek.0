@@ -2,89 +2,82 @@ Return-Path: <SRS0=A+tK=A7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5475C433E4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 02:42:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AEEC5C433EC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 06:36:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 738792177B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 02:42:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7EE4720709
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 06:36:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tt7svRwA";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ea7G4iYb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 738792177B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="d3PtY9Kh";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="GjNXsb1T"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7EE4720709
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=10Z/GJZixkdek9c+l0rtggrsRmJg822efGWhrAzNm+c=; b=tt7svRwAZ0zYfyK6V01T1lx9Y
-	/Zw9Xo/K7QGkTJsBAdK55qjbJ135ZHBJ1ZvNzl9CW34yG6nojPgazMLqhM3dfIQb3W/yFHC23aRUY
-	/xj/fYZJho4yVnF33YOUrFexBKqFPA/Y8J49ZOHFnG9cm1kzLZXwTEkaQOX86l8eofbJKX1bDIEyP
-	s8G4Q0ONyzNcy9MrGKjSW+ylfEgyIJikWY6kRqp1NmmE3b7Waa3HlLEPhK0Pu7SxrXK16W1ZoD2aQ
-	bMUH7PGLQ6620T/UHTQRV4NMacyR+FzwcG5AQL01uDedPR+FV9KT4ocC8JK81ETRagluTsYT/x6Uo
-	uOYgu775A==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:MIME-Version:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GIw5jLdsHc5ujgcAf/yZxCw0BUyGGkeBQ2WZJ/2Jk4Q=; b=d3PtY9KhIMf7hhiz7LALlfsNcq
+	TvUqRIp4athfmTIMYEOoM4AtanJd6xnf6XU69uDqIiYrixhaYOoFBjqiDQC3SC2U1FcoMPNW37PqE
+	9DEY8RNmqU9uJzerCI1rnWsM9wa2DB6Njl+HPrjCjaeX4hTTu4cnlIQ6VqBU9vpSwYRKWp2+Nu1l6
+	CB1SjQYpbs7bH3y9MDl9C7la4FNWFqwPxwAIZBa4DgBuHLreaN0XCzAOFLc2kgQVbJwEaELbfe3YR
+	MH/G2Kw8EaIHDUwfme58MfSIC4mxr9J3cRdBNTFy0pritqIZqF17K31lBjClAo1dDW9UBlONlBhne
+	ixEOSpZw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jxLkt-0006yu-D7; Mon, 20 Jul 2020 02:42:15 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jxPPG-0007Nk-9Z; Mon, 20 Jul 2020 06:36:10 +0000
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jxLkq-0006y5-HG; Mon, 20 Jul 2020 02:42:14 +0000
-X-UUID: 8ceede4116cf45d5a4367eedbe2e868f-20200719
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=nRJbkNge/6U8QFSquZNdXuEsFfzsAfQcy/KuTN01eTU=; 
- b=ea7G4iYbNBu3rD8jiyz45OAz6Its0dU0WWe2z9PTPOezjKpWW7exsY8oxvfKObOiyQTFCs09f6H+8zjpIbqxSE23TEjvkcajTJz0zH33IG/MkyLnNQdtbvcEdRd4hJWh/Q2lNPpGjOuXRd0vO28gQkqFa31jxaQM4uqAq63OVg4=;
-X-UUID: 8ceede4116cf45d5a4367eedbe2e868f-20200719
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <dongchun.zhu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1185206478; Sun, 19 Jul 2020 18:41:55 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 19 Jul 2020 19:32:00 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 20 Jul 2020 10:31:58 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 20 Jul 2020 10:31:57 +0800
-Message-ID: <1595212256.17166.116.camel@mhfsdcap03>
-Subject: Re: [V7, 1/2] media: dt-bindings: media: i2c: Document OV02A10
- bindings
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: Tomasz Figa <tfiga@chromium.org>
-Date: Mon, 20 Jul 2020 10:30:56 +0800
-In-Reply-To: <CAAFQd5A9L73et30Fr_91sqfQGue7Qo05yCchU_S6bh5H4sBiMQ@mail.gmail.com>
-References: <20200505070451.GS9190@paasikivi.fi.intel.com>
- <1588688238.8804.150.camel@mhfsdcap03>
- <20200506112136.GV9190@paasikivi.fi.intel.com>
- <1588856325.8804.179.camel@mhfsdcap03>
- <CAAFQd5CXRD_j7Xkxb4=9kkd+pDy4W5pirAPSG8RsMVH6L-MU2w@mail.gmail.com>
- <20200507141147.GF9190@paasikivi.fi.intel.com>
- <CAAFQd5DgDk57MCc4vE9VmifZYjtO_SUFss+vc8W-28SFHbKDrA@mail.gmail.com>
- <1588920685.8804.230.camel@mhfsdcap03>
- <20200510223552.GA11272@paasikivi.fi.intel.com>
- <1589197265.8804.262.camel@mhfsdcap03>
- <20200715140110.GD16711@paasikivi.fi.intel.com>
- <CAAFQd5A9L73et30Fr_91sqfQGue7Qo05yCchU_S6bh5H4sBiMQ@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jxPPD-0007Mk-8U
+ for linux-mediatek@lists.infradead.org; Mon, 20 Jul 2020 06:36:08 +0000
+Received: by mail-lj1-x243.google.com with SMTP id h22so18957943lji.9
+ for <linux-mediatek@lists.infradead.org>; Sun, 19 Jul 2020 23:36:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:from:date:message-id:subject:to:cc;
+ bh=FQV28QGdwTwKOWpDreLUi50G2AjPPA50/sb2JVPxnns=;
+ b=GjNXsb1TupAuup7Ai1G127hjV10+iWI9TQg6sNJa/CLSYMVadY6HJ4Do3CuPdo5L8X
+ JDr1l5imcbWkbJGrcJH3QRsBQw/0ezvUbiPDgTEHIC7BA9r56ogyg8OBkHq99jLITl4+
+ yZeGyd+28f26MMeHvNpmXfQT2gl+uMn08SZlokZmnip5LYltuk0ubz/3XuPkd0xZ6msW
+ Zrdsl6tRVJM2GKJT6olyiCocPi2s93q38/cgsgKgsygYAYnzbiT1nXyka3wg0dqWT3SQ
+ 578qkFzePbDDUvFdtZYLzyiVR6V5GX8hXgpsuV4N+EqR+eSi+aM5FhAeoKWyCnpksbMf
+ S34Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+ bh=FQV28QGdwTwKOWpDreLUi50G2AjPPA50/sb2JVPxnns=;
+ b=WybgQHgjkugngGgRhqFrkAEAc8c8MLVtjUWL8GeLcr+kd1q3GUjRp1GpVMLwHJZY25
+ KC/6WxcL26JwdWCkbar63v/jXyBTIZ0PvdW9uY9UEa7dAq6oKXwJ8U2vJOAiKIs7xPkz
+ L44h/RhOvgi510rPf60bKDOj1kFcO7xw8SjevaPcn16oGX26IvXBcY7SBWUE10F5zabq
+ REgrYsGcBVSBoynHMmRuphyYRKMCbzg+Yr2VlUYsF3FLE78AUIL51JmBLGS++knB0peP
+ qb3V7ONvc837LFBymzg2ZsaCoV4FnNsEiBf0RoG+ix0Mlpi8C1AJnfsjtDqVCgL2Dz0c
+ Pixw==
+X-Gm-Message-State: AOAM530C77aBBsYkeODQgxEwpWlBrDJeE5gHV9Yg6e131b4udMMh/GUZ
+ sUcH6ePPMXMPErw4HH8q+djWJ8OiG12VK/9P/2PV6w==
+X-Google-Smtp-Source: ABdhPJzru40K+4IudODw+Tyc9+nlBM8CiDNqPiB7AxIVLIkZPZzVDQGTuNTBsP2QzAN/jhR915F1vsuWu0afy7mihk8=
+X-Received: by 2002:a2e:7401:: with SMTP id p1mr10351994ljc.366.1595226963554; 
+ Sun, 19 Jul 2020 23:36:03 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 5B3CADBF14684A372A52AEA272B292F334E02DBD6C86090FC4E4B973B7A630D52000:8
-X-MTK: N
+From: Naresh Kamboju <naresh.kamboju@linaro.org>
+Date: Mon, 20 Jul 2020 12:05:52 +0530
+Message-ID: <CA+G9fYuzqA0N6O-52uH9aHjsfF6HfhuxMby1Y6Yz7jGMAHW0zw@mail.gmail.com>
+Subject: arm64: Internal error: Oops: qcom_iommu_tlb_inv_context
+ free_io_pgtable_ops on db410c
+To: open list <linux-kernel@vger.kernel.org>,
+ linux-mediatek@lists.infradead.org, 
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>, iommu@lists.linux-foundation.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200719_224212_796741_420889FC 
-X-CRM114-Status: GOOD (  37.66  )
+X-CRM114-CacheID: sfid-20200720_023607_600228_48534868 
+X-CRM114-Status: UNSURE (   5.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,306 +89,118 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark
- Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@chromium.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- linux-devicetree <devicetree@vger.kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>, Shengnan
- Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=A3=E7=94=B7=29?=
- <shengnan.wang@mediatek.com>, Louis Kuo <louis.kuo@mediatek.com>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- dongchun.zhu@mediatek.com, Sakari Ailus <sakari.ailus@linux.intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing
- Bu <bingbu.cao@intel.com>, matrix.zhu@aliyun.com,
- Mauro Carvalho Chehab <mchehab@kernel.org>, "list@263.net:IOMMU DRIVERS
- <iommu@lists.linux-foundation.org>, Joerg  Roedel <joro@8bytes.org>,
- " <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Joerg Roedel <jroedel@suse.de>, Vinod Koul <vinod.koul@linaro.org>,
+ Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sean Paul <sean@poorly.run>, Joerg Roedel <joro@8bytes.org>,
+ "Guohanjun \(Hanjun Guo\)" <guohanjun@huawei.com>,
+ Robin Murphy <robin.murphy@arm.com>, lkft-triage@lists.linaro.org,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, Rob Clark <robdclark@gmail.com>,
+ Thierry Reding <thierry.reding@gmail.com>, Qian Cai <cai@lca.pw>,
+ Andy Gross <agross@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sakari, Tomasz,
+This kernel oops while boot linux mainline kernel on arm64  db410c device.
 
-Thanks for the review.
+metadata:
+  git branch: master
+  git repo: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+  git commit: f8456690ba8eb18ea4714e68554e242a04f65cff
+  git describe: v5.8-rc5-48-gf8456690ba8e
+  make_kernelversion: 5.8.0-rc5
+  kernel-config:
+https://builds.tuxbuild.com/2aLnwV7BLStU0t1R1QPwHQ/kernel.config
 
-On Thu, 2020-07-16 at 16:57 +0200, Tomasz Figa wrote:
-> On Wed, Jul 15, 2020 at 4:01 PM Sakari Ailus
-> <sakari.ailus@linux.intel.com> wrote:
-> >
-> > hi Dongchun,
-> >
-> > On Mon, May 11, 2020 at 07:41:05PM +0800, Dongchun Zhu wrote:
-> > > Hi Sakari,
-> > >
-> > > On Mon, 2020-05-11 at 01:35 +0300, Sakari Ailus wrote:
-> > > > Hi Dongchun,
-> > > >
-> > > > On Fri, May 08, 2020 at 02:51:25PM +0800, Dongchun Zhu wrote:
-> > > > > Hi Sakari, Tomasz,
-> > > > >
-> > > > > On Thu, 2020-05-07 at 16:25 +0200, Tomasz Figa wrote:
-> > > > > > On Thu, May 7, 2020 at 4:12 PM Sakari Ailus
-> > > > > > <sakari.ailus@linux.intel.com> wrote:
-> > > > > > >
-> > > > > > > Hi Tomasz, Dongchun,
-> > > > > > >
-> > > > > > > On Thu, May 07, 2020 at 03:50:40PM +0200, Tomasz Figa wrote:
-> > > > > > > > Hi Sakari and Dongchun,
-> > > > > > > >
-> > > > > > > > On Thu, May 7, 2020 at 3:00 PM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
-> > > > > > > > >
-> > > > > > > > > Hi Sakari,
-> > > > > > > > >
-> > > > > > > > > Thanks for the review.
-> > > > > > > > >
-> > > > > > > > > On Wed, 2020-05-06 at 14:21 +0300, Sakari Ailus wrote:
-> > > > > > > > > > Hi Dongchun,
-> > > > > > > > > >
-> > > > > > > > > > On Tue, May 05, 2020 at 10:17:18PM +0800, Dongchun Zhu wrote:
-> > > > > > > > > > > Hi Sakari,
-> > > > > > > > > > >
-> > > > > > > > > > > Thanks for the review.
-> > > > > > > > > > >
-> > > > > > > > > > > On Tue, 2020-05-05 at 10:04 +0300, Sakari Ailus wrote:
-> > > > > > > > > > > > Hi Dongchun,
-> > > > > > > > > > > >
-> > > > > > > > > > > > On Thu, Apr 30, 2020 at 04:09:23PM +0800, Dongchun Zhu wrote:
-> > > > > > > > > > > > > Add DT bindings documentation for Omnivision OV02A10 image sensor.
-> > > > > > > > > > > > >
-> > > > > > > > > > > > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > > > > > > > > > > > ---
-> > > > > > > > > > > > >  .../bindings/media/i2c/ovti,ov02a10.yaml           | 148 +++++++++++++++++++++
-> > > > > > > > > > > > >  MAINTAINERS                                        |   7 +
-> > > > > > > > > > > > >  2 files changed, 155 insertions(+)
-> > > > > > > > > > > > >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > > > > > > > > > > >
-> > > > > > > > > > > > > diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > > > > > > > > > > > new file mode 100644
-> > > > > > > > > > > > > index 0000000..2be4bd2
-> > > > > > > > > > > > > --- /dev/null
-> > > > > > > > > > > > > +++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > > > > > > > > > > > @@ -0,0 +1,148 @@
-> > > > > > > > > > > > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > > > > > > > > > > > > +# Copyright (c) 2020 MediaTek Inc.
-> > > > > > > > > > > > > +%YAML 1.2
-> > > > > > > > > > > > > +---
-> > > > > > > > > > > > > +$id: http://devicetree.org/schemas/media/i2c/ovti,ov02a10.yaml#
-> > > > > > > > > > > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > > > > > > > > > > > +
-> > > > > > > > > > > > > +title: Omnivision OV02A10 CMOS Sensor Device Tree Bindings
-> > > > > > > > > > > > > +
-> > > > > > > > > > > > > +maintainers:
-> > > > > > > > > > > > > +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > > > > > > > > > > > +
-> > > > > > > > > > > > > +description: |-
-> > > > > > > > > > > > > +  The Omnivision OV02A10 is a low-cost, high performance, 1/5-inch, 2 megapixel
-> > > > > > > > > > > > > +  image sensor, which is the latest production derived from Omnivision's CMOS
-> > > > > > > > > > > > > +  image sensor technology. Ihis chip supports high frame rate speeds up to 30fps
-> > > > > > > > > > > > > +  @ 1600x1200 (UXGA) resolution transferred over a 1-lane MIPI interface. The
-> > > > > > > > > > > > > +  sensor output is available via CSI-2 serial data output.
-> > > > > > > > > > > > > +
-> > > > > > > > > > > > > +properties:
-> > > > > > > > > > > > > +  compatible:
-> > > > > > > > > > > > > +    const: ovti,ov02a10
-> > > > > > > > > > > > > +
-> > > > > > > > > > > > > +  reg:
-> > > > > > > > > > > > > +    maxItems: 1
-> > > > > > > > > > > > > +
-> > > > > > > > > > > > > +  clocks:
-> > > > > > > > > > > > > +    items:
-> > > > > > > > > > > > > +      - description: top mux camtg clock
-> > > > > > > > > > > > > +      - description: devider clock
-> > > > > > > > > > > > > +
-> > > > > > > > > > > > > +  clock-names:
-> > > > > > > > > > > > > +    items:
-> > > > > > > > > > > > > +      - const: eclk
-> > > > > > > > > > > > > +      - const: freq_mux
-> > > > > > > > > > > > > +
-> > > > > > > > > > > > > +  clock-frequency:
-> > > > > > > > > > > > > +    description:
-> > > > > > > > > > > > > +      Frequency of the eclk clock in Hertz.
-> > > > > > > > > > > > > +
-> > > > > > > > > > > > > +  dovdd-supply:
-> > > > > > > > > > > > > +    description:
-> > > > > > > > > > > > > +      Definition of the regulator used as interface power supply.
-> > > > > > > > > > > > > +
-> > > > > > > > > > > > > +  avdd-supply:
-> > > > > > > > > > > > > +    description:
-> > > > > > > > > > > > > +      Definition of the regulator used as analog power supply.
-> > > > > > > > > > > > > +
-> > > > > > > > > > > > > +  dvdd-supply:
-> > > > > > > > > > > > > +    description:
-> > > > > > > > > > > > > +      Definition of the regulator used as digital power supply.
-> > > > > > > > > > > > > +
-> > > > > > > > > > > > > +  powerdown-gpios:
-> > > > > > > > > > > > > +    description:
-> > > > > > > > > > > > > +      The phandle and specifier for the GPIO that controls sensor powerdown.
-> > > > > > > > > > > > > +
-> > > > > > > > > > > > > +  reset-gpios:
-> > > > > > > > > > > > > +    description:
-> > > > > > > > > > > > > +      The phandle and specifier for the GPIO that controls sensor reset.
-> > > > > > > > > > > > > +
-> > > > > > > > > > > > > +  rotation:
-> > > > > > > > > > > > > +    description:
-> > > > > > > > > > > > > +      Definition of the sensor's placement, valid values are 0 and 180.
-> > > > > > > > > > > > > +    allOf:
-> > > > > > > > > > > > > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> > > > > > > > > > > > > +      - enum:
-> > > > > > > > > > > > > +          - 0    # Sensor Mounted Upright
-> > > > > > > > > > > > > +          - 180  # Sensor Mounted Upside Down
-> > > > > > > > > > > > > +
-> > > > > > > > > > > > > +  ovti,mipi-tx-speed:
-> > > > > > > > > > > > > +    description:
-> > > > > > > > > > > > > +      Indication of MIPI transmission speed select.
-> > > > > > > > > > > >
-> > > > > > > > > > > > What exactly does this signify? And how do you come up with the number?
-> > > > > > > > > > > >
-> > > > > > > > > > >
-> > > > > > > > > > > Apologies for not addressing this number clear.
-> > > > > > > > > > >
-> > > > > > > > > > > From the datasheet, P1:0xA1 register represents TX_SPEED_AREA_SEL with
-> > > > > > > > > > > the default val: 0x03.
-> > > > > > > > > > > The description of this RW register is as below:
-> > > > > > > > > > > Bit[2:0]: MIPI transmission speed select.
-> > > > > > > > > > >
-> > > > > > > > > > > Thus the enum should be definited as [ 0, 1, 2, 3, 4, 5, 6, 7 ].
-> > > > > > > > > > > This would be fixed in next release.
-> > > > > > > > > > >
-> > > > > > > > > > > In the meantime, as the default val of P1:0xA1 is 0x03, we hope to keep
-> > > > > > > > > > > that value if there is no setting for this private property in DT.
-> > > > > > > > > > > The caller in driver would be updated like this in next release.
-> > > > > > > > > > > if (ov02a10->mipi_clock_tx_speed)
-> > > > > > > > > > >     ret = i2c_smbus_write_byte_data(...,...);
-> > > > > > > > > >
-> > > > > > > > > > How did you pick the value in the example? And why do you believe it is
-> > > > > > > > > > specific to a platform, and not e.g. a sensor mode?
-> > > > > > > > > >
-> > > > > > > > >
-> > > > > > > > > We look into P1:0XA1, one register that defines MIPI transmission speed
-> > > > > > > > > select.
-> > > > > > > > > From the datasheet, we can get the possible values that could be set to
-> > > > > > > > > P1:0xA1.
-> > > > > > > > >
-> > > > > > > > > Actually this register is an independent of sensor mode, it is just
-> > > > > > > > > included in sensor mode's register setting table.
-> > > > > > > > >
-> > > > > > > > > In addition, this private DT Property is created to fix the MIPI test
-> > > > > > > > > failure. The register values are adjusted and verified from vendor to
-> > > > > > > > > make sensor signal meet MIPI specification.
-> > > > > > > > >
-> > > > > > > >
-> > > > > > > > In theory the value could depend on the mode, because different link
-> > > > > > > > rate could impose different requirements for the physical interface.
-> > > > > > > > In practice, we haven't seen any hardware that would require different
-> > > > > > > > values for different modes.
-> > > > > > >
-> > > > > > > The mode (possibly in conjunction with other information available to the
-> > > > > > > driver via V4L2 fwnode interface) precisely defines the parameters of the
-> > > > > > > CSI-2 bus --- apart from the possible exception of the bus timing related
-> > > > > > > parameters but this is not supported by the name of the parameter.
-> > > > > > >
-> > > > > > > Therefore I don't see how this parameter, which supposedly is used to
-> > > > > > > determine the CSI-2 transmissions speed, could be board specific and thus
-> > > > > > > belong to DT.
-> > > > > >
-> > > > > > According to the very imprecise information I have access to, it is
-> > > > > > not about the CSI-2 bus itself, but rather some internal parameter of
-> > > > > > the sensor's CSI interface. Unfortunately there isn't much information
-> > > > > > on what this value exactly controls...
-> > > > > >
-> > > > > > Best regards,
-> > > > > > Tomasz
-> > > > >
-> > > > > Just got some feedback from OV vendor about this parameter.
-> > > > >
-> > > > > P1:0xA1 is the register to control D-PHY timing setting based on bclk.
-> > > > > It is to adjust the MIPI clock voltage to improve the clock drive
-> > > > > capability, and has no affect on the transmission speed of MIPI data.
-> > > > >
-> > > > > From vendor's perspective, P1:0xA1 depends upon the length of FPC of
-> > > > > camera module that used on the board. Considering the physical
-> > > > > connections for MIPI signals to user-facing camera are very different
-> > > > > between our 2 projects, it can be very difficult to find universal SI
-> > > > > parameters for both projects.
-> > > >
-> > > > Are you using different values for this parameter on these two projects?
-> > > >
-> > >
-> > > Yes. We're actually assigning two different values to this property.
-> > > One is 0x03, the other is 0x04.
-> > >
-> > > > >
-> > > > > Thus here we create one new DT property to separate these tuning in
-> > > > > driver, to be more like project-specific.
-> > > > >
-> > > > > More details about the register is as below.
-> > > > > P1:0xA1 val: 0x03 default
-> > > > > Case: 0  20MHz-30MHz
-> > > > >       1  30MHz-50MHz
-> > > > >       2  50MHz-75MHz
-> > > > >       3  75MHz-100MHz   (default, old DB setting use)
-> > > > >       4  100MHz-130MHz  (suggested, new DB setting use)
-> > > > >       5  Manual
-> > > > > So the value in the example should be [ 0, 1, 2, 3, 4, 5 ].
-> > > > >
-> > > > > Additionally, P1:0xA1 is recommended to be set as 0x04 in the newest DB
-> > > > > setting. We would adjust the register in next release.
-> > > >
-> > > > Thank you for digging into the issue.
-> > > >
-> > > > Based on the above description, the parameter would depend on both the link
-> > > > frequency and possibly also on wire length. I guess there's no harm from
-> > > > using too strong drive, apart from perhaps power consumption? As in
-> > > > principle this could be different for different sensor modes. Albeit I
-> > > > don't remember seeing a sensor where such a parameter would have been
-> > > > needed to be modified.
-> > > >
-> > >
-> > > This may be related to something about sensor fine tuning.
-> > > As OV vendor pointed out, the sensor chip provides such one property
-> > > that user could adjust based on their specific project.
-> > > Also, case 4 (0x04) setting is confirmed to have a little more power
-> > > consumption than case 3 (0x03).
-> >
-> > Apologies for bringing back an old topic --- the driver supports just a
-> > single mode, using a specific data rate.
-> >
-> > If another mode is added later on, will it continue to use the same value
-> > for this? Based on the documentation, it seems that this is primarily
-> > defined by the frequency of the bus, not by board design. Therefore putting
-> > this to DT (and thus ignoring the frequency) appears wrong.
-> 
-> I don't think this is exactly implied by the frequency of the bus. The
-> values there are recommended for given frequency ranges, but there are
-> real cases where depending on the board different values are needed.
-> 
+[    5.444121] Unable to handle kernel NULL pointer dereference at
+virtual address 0000000000000018
+[    5.456615]   ESR = 0x96000004
+[    5.464471]   SET = 0, FnV = 0
+[    5.464487]   EA = 0, S1PTW = 0
+[    5.466521] Data abort info:
+[    5.469971]   ISV = 0, ISS = 0x00000004
+[    5.472768]   CM = 0, WnR = 0
+[    5.476172] user pgtable: 4k pages, 48-bit VAs, pgdp=00000000bacba000
+[    5.479349] [0000000000000018] pgd=0000000000000000, p4d=0000000000000000
+[    5.485820] Internal error: Oops: 96000004 [#1] PREEMPT SMP
+[    5.492448] Modules linked in: crct10dif_ce adv7511(+)
+qcom_spmi_temp_alarm cec msm(+) mdt_loader qcom_camss videobuf2_dma_sg
+drm_kms_helper v4l2_fwnode videobuf2_memops videobuf2_v4l2 qcom_rng
+videobuf2_common i2c_qcom_cci display_connector socinfo drm qrtr ns
+rmtfs_mem fuse
+[    5.500256] CPU: 0 PID: 286 Comm: systemd-udevd Not tainted 5.8.0-rc5 #1
+[    5.522484] Hardware name: Qualcomm Technologies, Inc. APQ 8016 SBC (DT)
+[    5.529170] pstate: 20000005 (nzCv daif -PAN -UAO BTYPE=--)
+[    5.535856] pc : qcom_iommu_tlb_inv_context+0x18/0xa8
+[    5.541148] lr : free_io_pgtable_ops+0x28/0x58
+[    5.546350] sp : ffff80001219b5f0
+[    5.550689] x29: ffff80001219b5f0 x28: 0000000000000013
+[    5.554078] x27: 0000000000000100 x26: ffff000036add3b8
+[    5.559459] x25: ffff80000915e910 x24: ffff00003a5458c0
+[    5.564753] x23: 0000000000000003 x22: ffff000036a37058
+[    5.570049] x21: ffff000036a3a100 x20: ffff000036a3a480
+[    5.575344] x19: ffff000036a37158 x18: 0000000000000000
+[    5.580639] x17: 0000000000000000 x16: 0000000000000000
+[    5.585935] x15: 0000000000000004 x14: 0000000000000368
+[    5.591229] x13: 0000000000000000 x12: ffff000039c61798
+[    5.596525] x11: ffff000039c616d0 x10: 0000000040000000
+[    5.601820] x9 : 0000000000000000 x8 : ffff000039c616f8
+[    5.607114] x7 : 0000000000000000 x6 : ffff000009f699a0
+[    5.612410] x5 : ffff80001219b520 x4 : ffff000036a3a000
+[    5.617705] x3 : ffff000009f69904 x2 : 0000000000000000
+[    5.623001] x1 : ffff8000107e27e8 x0 : ffff00003a545810
+[    5.628297] Call trace:
+[    5.633592]  qcom_iommu_tlb_inv_context+0x18/0xa8
+[    5.635764]  free_io_pgtable_ops+0x28/0x58
+[    5.640624]  qcom_iommu_domain_free+0x38/0x60
+[    5.644617]  iommu_group_release+0x4c/0x70
+[    5.649045]  kobject_put+0x6c/0x120
+[    5.653035]  kobject_del+0x64/0x90
+[    5.656421]  kobject_put+0xfc/0x120
+[    5.659893]  iommu_group_remove_device+0xdc/0xf0
+[    5.663281]  iommu_release_device+0x44/0x70
+[    5.668142]  iommu_bus_notifier+0xbc/0xd0
+[    5.672048]  notifier_call_chain+0x54/0x98
+[    5.676214]  blocking_notifier_call_chain+0x48/0x70
+[    5.680209]  device_del+0x26c/0x3a0
+[    5.684981]  platform_device_del.part.0+0x1c/0x88
+[    5.688453]  platform_device_unregister+0x24/0x40
+[    5.693316]  of_platform_device_destroy+0xe4/0xf8
+[    5.698002]  device_for_each_child+0x5c/0xa8
+[    5.702689]  of_platform_depopulate+0x3c/0x80
+[    5.707144]  msm_pdev_probe+0x1c4/0x308 [msm]
+[    5.711286]  platform_drv_probe+0x54/0xa8
+[    5.715624]  really_probe+0xd8/0x320
+[    5.719617]  driver_probe_device+0x58/0xb8
+[    5.723263]  device_driver_attach+0x74/0x80
+[    5.727168]  __driver_attach+0x58/0xe0
+[    5.731248]  bus_for_each_dev+0x70/0xc0
+[    5.735067]  driver_attach+0x24/0x30
+[    5.738801]  bus_add_driver+0x14c/0x1f0
+[    5.742619]  driver_register+0x64/0x120
+[    5.746178]  __platform_driver_register+0x48/0x58
+[    5.750099]  msm_drm_register+0x58/0x70 [msm]
+[    5.754861]  do_one_initcall+0x54/0x1a0
+[    5.759200]  do_init_module+0x54/0x200
+[    5.762846]  load_module+0x1d1c/0x2300
+[    5.766664]  __do_sys_finit_module+0xd8/0xf0
+[    5.770398]  __arm64_sys_finit_module+0x20/0x30
+[    5.774826]  el0_svc_common.constprop.0+0x6c/0x168
+[    5.779078]  do_el0_svc+0x24/0x90
+[    5.783939]  el0_sync_handler+0x90/0x198
+[    5.787323]  el0_sync+0x158/0x180
+[    5.791323] Code: 910003fd f9417404 b4000484 f9401482 (b9401846)
+[    5.794532] ---[ end trace 3d6a53241629e560 ]---
 
-Sorry for coming late.
-For the reg P1: 0xA1, I re-confirmed the setting of the param with OVT.
-The replies are as follow.
-1. P1:0xA1 is one register to control D-PHY timing parameters based on
-bclk. Its setting shall match the MIPI CSI-2 timing clock.
-2. For one another scenario, if MIPI pixel rate(link frequency) differs
-between scenarios, the setting of this parameter may also be different.
-3. In one special case, we may also need to adjust the value, even for
-the same scenario, such as the failure of a certain MIPI test.
+full crash log details.
+https://qa-reports.linaro.org/lkft/linux-mainline-oe/build/v5.8-rc5-48-gf8456690ba8e/testrun/2945157/suite/linux-log-parser/test/check-kernel-oops-1573988/log
 
-From my perspective, temporally we don't plan to have a different
-scenario for OV02A10, as the current resolution(1600x1200) is near to
-the lower limit of most smart mobile devices.
-In the meantime, considering the difference of the physical connections
-for MIPI signals to user-facing camera between our 2 projects, it seems
-to be very difficult to find universal SI parameters for both projects.
-So for this case, I wonder whether we could reserve this private
-property to maintain such flexibility.
-
-> Best regards,
-> Tomasz
+-- 
+Linaro LKFT
+https://lkft.linaro.org
 
 _______________________________________________
 Linux-mediatek mailing list
