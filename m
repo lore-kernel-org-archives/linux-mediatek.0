@@ -1,90 +1,90 @@
-Return-Path: <SRS0=kKdk=A5=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=A+tK=A7=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C221C433E1
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Jul 2020 05:47:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E87BC433FC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 00:43:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DE0922076A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Jul 2020 05:47:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6F7E02250E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 00:43:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xAEtBEal";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="tZEuFSnz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DE0922076A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dLaw/NMl";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="RD1Ew2Bz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6F7E02250E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Sh75XMqin5ACpk5VGEIiya07wApSckZEXyiDgAy44pw=; b=xAEtBEal2T+kCBcc0OjObq0wzP
-	WOG2rox3GZDvJRjcAgmP9pZBmDrZTv2WxZyXH0Dd+qvqwxZLF6cex+TisQJeu6lzshXLcH8kdd2nz
-	PNfEECLGRPyWZnzohrR6yAO5OtEDoZCz90eJjTUEwfzfReOAh4lxrM4DfncL2l5++A1Ffv8EHzHSk
-	H81rKGDzFtYJelJ5xWGXuvT+WfGnLzZSfiGTl8mIvf0AMTSH2ic5ZMcd1ugJJe1Mkivq4WEkuaFYJ
-	cr/lG5JUU1+Zb6IIh2P6lCIfar69O1yCFPthP0+fCFhOdWQh2nFN6DkIHEe6jftP3ajsMtsujzicP
-	6aYhS83Q==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UmR1X4siqOT6HjC3SCwxuu9oH+2CCMfh6V6yjzrSygY=; b=dLaw/NMlnRb7B1ExpnbsDqTwNm
+	1YQ43DUJrgEXxNXkPOsKGc7CpZW3oPzr5cK3qwL8pme04Hg9RweEnD5Lkq2HWI6m0rWQboNxgYZAc
+	5PcU5pXp30MgapSOlJ1zwOAKG7Ul5nvi6QgQJyZg7yFfOJhjUvuC7qOLSGJ125nxHJTozay954iwa
+	ZqXSHI3cg+2blKZjRRe7HGUzHiyDnoxkB7CvbnlXdZNtE+weAIRqg0W+KkBXKplz13yryU6WiFANU
+	ckDMKXGY+aaplcK/UDy8dVuJS19lwhcmCDP4DqFqYRqX6qTAZwWsU801g9ioSaxtpjxb2IVHw++P4
+	0i/RCo8A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jwfhI-0004cu-DM; Sat, 18 Jul 2020 05:47:44 +0000
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
+	id 1jxJta-0005LC-Bz; Mon, 20 Jul 2020 00:43:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jwfhD-0004bs-Rt; Sat, 18 Jul 2020 05:47:40 +0000
-Received: by mail-io1-xd41.google.com with SMTP id i4so12531864iov.11;
- Fri, 17 Jul 2020 22:47:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=PfMs+d/8rTE+DczufHJcceGTZEwuJydHZFIhdNSBBA8=;
- b=tZEuFSnzOKQNapUURfRPWVJlMGLxwDsc4jXnrSjXLGBfCvGcdp02PlJzyzbWL+dF+I
- E4qVcG/Rlm+QMeRneEgs6jE0OgLfeBw+DVmu5V7PJRgBXw98TjxGLqCppUf95oqhL64E
- B6ZA7pztL+9zIF8GDAEsm1+20D+2Di3ITfyd9j2FmT9pC/wiBoiMHAxeVhiV2FrjxxPl
- svTx7ET5DMcSr8rED/xMCU+g6bCm2KDH9HqFQ9VgLt6mwm3SDtQ+Z1qe55mqdYLOS2h9
- 66+7yI/tO3Zxdj7b4byEhSWMEi/2EwOxTAcXbhEUnJejoVHbzlBomcufa2sBoi15m3f7
- Rnyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=PfMs+d/8rTE+DczufHJcceGTZEwuJydHZFIhdNSBBA8=;
- b=ZlQaq6bIjqOSkPZ0ObnJLEeJXD/UMMKCH+OzXAvl/5Mky49rWi5X43yJcj9HThu+nN
- jfcQd1yEv+6vKKjhnXELOY7zQ6R01qYJmMQfRHBefYQKXy028DlL+XYajZgXyog9/7qW
- wSmU13jLKzfBwe4TK+ayoPewCuK4ODEoY+WDsHpFJSZNpQs9HqNAF7PeAX+xPvHH/5Je
- SsTgH04VQQXwqLpf1+sXmW9Oso/UmPdGuyUf2rF0/zzdcgOulcwrHZj8njGAn0M+q+ha
- gGX7OUkXBcOXcMQGHHy0CQSc0Tag9Nkh/0rl/xTChWTBJEEr+656e/O8EuIb/7aDzxIi
- V2GQ==
-X-Gm-Message-State: AOAM533OmqgvKQyfKBEdYxYnowkxZWk1rbaUBLiNFnuqfzinE/ZfWVzR
- pq5BgAuLMhZ9Y9udBHJh2Xc=
-X-Google-Smtp-Source: ABdhPJwmz9PHgLFVxAiR8ICQT3HOsuOshxUJ0WFWXkZT30fBjDH8pGlL70enm1kjAc+Wp58AwhZBSg==
-X-Received: by 2002:a6b:f911:: with SMTP id j17mr12389586iog.96.1595051257928; 
- Fri, 17 Jul 2020 22:47:37 -0700 (PDT)
-Received: from cs-dulles.cs.umn.edu (cs-dulles.cs.umn.edu. [160.94.145.20])
- by smtp.googlemail.com with ESMTPSA id e16sm5852663iow.37.2020.07.17.22.47.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Jul 2020 22:47:37 -0700 (PDT)
-From: Navid Emamdoost <navid.emamdoost@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Kalle Valo <kvalo@codeaurora.org>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] mt76: mt76u: add missing release on skb in
- __mt76x02u_mcu_send_msg
-Date: Sat, 18 Jul 2020 00:47:26 -0500
-Message-Id: <20200718054727.13009-1-navid.emamdoost@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ id 1jxJtS-0005IS-3W; Mon, 20 Jul 2020 00:42:59 +0000
+X-UUID: 036e2af3d93a49348945af296b9f1cad-20200719
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=FaqUdYxqi1XjkwCj1byDtXnVHu3nPZv58uEtqHctoQA=; 
+ b=RD1Ew2BzBDEjLs0b+l4Vn+FmhGp67RZ18oVDX8cwJcmdkA+wItOi/U9iwxJvNp6gCudRP7XsbABxCwp0CI9ZYNIWNGUKyuxFt5MLUxSGd0nKdiOD4urkQm4tC+B4OHkYgrhjnaMnrx/wJ9K4Di8ZDAki/Z2YDuqEreEhdOtRuQc=;
+X-UUID: 036e2af3d93a49348945af296b9f1cad-20200719
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <chun-hung.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 827403839; Sun, 19 Jul 2020 16:42:46 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 19 Jul 2020 17:42:45 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 20 Jul 2020 08:42:42 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 20 Jul 2020 08:42:42 +0800
+From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+To: <mirq-linux@rere.qmqm.pl>, Jonathan Hunter <jonathanh@nvidia.com>, "Al
+ Cooper" <alcooperx@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ <bcm-kernel-feedback-list@broadcom.com>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, Michal Simek
+ <michal.simek@xilinx.com>, Thierry Reding <thierry.reding@gmail.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson
+ <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland
+ <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Linus
+ Walleij" <linus.walleij@linaro.org>, Pavel Machek <pavel@ucw.cz>, Kate
+ Stewart <kstewart@linuxfoundation.org>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Martin Blumenstingl
+ <martin.blumenstingl@googlemail.com>, Pan Bian <bianpan2016@163.com>, "Thomas
+ Gleixner" <tglx@linutronix.de>, Allison Randal <allison@lohutok.net>,
+ "Mathieu Malaterre" <malat@debian.org>, Stanley Chu
+ <stanley.chu@mediatek.com>, "Kuohong Wang" <kuohong.wang@mediatek.com>
+Subject: [PATCH v7 0/4] mmc: mediatek: add mmc cqhci support
+Date: Mon, 20 Jul 2020 08:42:35 +0800
+Message-ID: <1595205759-5825-1-git-send-email-chun-hung.wu@mediatek.com>
+X-Mailer: git-send-email 1.9.1
+MIME-Version: 1.0
+X-TM-SNTS-SMTP: 1F865C90232599EFD426CA02B8A9A03CDAD99D6D654D6106C365D8346E3413832000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200718_014739_961181_72E1BD90 
-X-CRM114-Status: GOOD (  10.12  )
+X-CRM114-CacheID: sfid-20200719_204258_300565_EC5CB476 
+X-CRM114-Status: GOOD (  13.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,51 +96,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: emamd001@umn.edu, Navid Emamdoost <navid.emamdoost@gmail.com>
-MIME-Version: 1.0
+Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ linux-arm-msm@vger.kernel.org, Chun-Hung Wu <chun-hung.wu@mediatek.com>,
+ linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
+ kernel-team@android.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In the implementation of __mt76x02u_mcu_send_msg() the skb is consumed
-all execution paths except one. Release skb before returning if
-test_bit() fails.
+This series provides MediaTek cqhci implementations as below:
+  - Refine msdc timeout api to reduce redundant code
+  - MediaTek command queue support
+  - dt-bindings for mt6779
 
-Signed-off-by: Navid Emamdoost <navid.emamdoost@gmail.com>
----
- drivers/net/wireless/mediatek/mt76/mt76x02_usb_mcu.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+v1 -> v2:
+  - Add more patch details in commit message
+  - Separate msdc timeout api refine to individual patch
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_usb_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76x02_usb_mcu.c
-index a30bb536fc8a..e43d13d7c988 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_usb_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_usb_mcu.c
-@@ -87,8 +87,10 @@ __mt76x02u_mcu_send_msg(struct mt76_dev *dev, struct sk_buff *skb,
- 	u32 info;
- 	int ret;
- 
--	if (test_bit(MT76_REMOVED, &dev->phy.state))
--		return 0;
-+	if (test_bit(MT76_REMOVED, &dev->phy.state)) {
-+		ret = 0;
-+		goto out;
-+	}
- 
- 	if (wait_resp) {
- 		seq = ++dev->mcu.msg_seq & 0xf;
-@@ -111,6 +113,7 @@ __mt76x02u_mcu_send_msg(struct mt76_dev *dev, struct sk_buff *skb,
- 	if (wait_resp)
- 		ret = mt76x02u_mcu_wait_resp(dev, seq);
- 
-+out:
- 	consume_skb(skb);
- 
- 	return ret;
+v2 -> v3:
+  - Remove CR-Id, Change-Id and Feature in patches
+  - Add Signed-off-by in patches
+
+v3 -> v4:
+  - Refine CQE bindings in mmc_of_parse (Ulf Hansson)
+  - Remove redundant host CQE bindings (Linux Walleij)
+
+v4 -> v5:
+  - Add Acked-by and more maintainers
+
+v5 -> v6:
+  - Move CQE bindings back to vendor driver
+  - Add mt6779 mmc support as an individual patch
+  - Error handling for cq_host devm_kzallo()
+
+v6 -> v7:
+  - Select MMC_CQHCI for MMC_MTK
+  - Remove unnecessary option MMC_CQHCI in mtk-sd.c
+  - Add error handling for cqhci_init()
+  - Use native cqhci dt-bindings 'supports-cqe'
+
+Chun-Hung Wu (4):
+  [1/4] mmc: mediatek: add MT6779 MMC driver support
+  [2/4] mmc: mediatek: refine msdc timeout api
+  [3/4] mmc: mediatek: command queue support
+  [4/4] dt-bindings: mmc: mediatek: Add document for mt6779
+
+ Documentation/devicetree/bindings/mmc/mtk-sd.txt |   1 +
+ drivers/mmc/host/Kconfig                         |   1 +
+ drivers/mmc/host/mtk-sd.c                        | 160 +++++++++++++++++++++--
+ 3 files changed, 152 insertions(+), 10 deletions(-)
+
 -- 
-2.17.1
-
-
+1.9.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
