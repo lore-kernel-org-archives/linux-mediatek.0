@@ -2,59 +2,60 @@ Return-Path: <SRS0=A+tK=A7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E87BC433FC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 00:43:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0EB0AC433FB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 00:43:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6F7E02250E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 00:43:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D06E72250E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 00:43:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dLaw/NMl";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="RD1Ew2Bz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6F7E02250E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GMXpgozz";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="jthJ5N1p"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D06E72250E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=UmR1X4siqOT6HjC3SCwxuu9oH+2CCMfh6V6yjzrSygY=; b=dLaw/NMlnRb7B1ExpnbsDqTwNm
-	1YQ43DUJrgEXxNXkPOsKGc7CpZW3oPzr5cK3qwL8pme04Hg9RweEnD5Lkq2HWI6m0rWQboNxgYZAc
-	5PcU5pXp30MgapSOlJ1zwOAKG7Ul5nvi6QgQJyZg7yFfOJhjUvuC7qOLSGJ125nxHJTozay954iwa
-	ZqXSHI3cg+2blKZjRRe7HGUzHiyDnoxkB7CvbnlXdZNtE+weAIRqg0W+KkBXKplz13yryU6WiFANU
-	ckDMKXGY+aaplcK/UDy8dVuJS19lwhcmCDP4DqFqYRqX6qTAZwWsU801g9ioSaxtpjxb2IVHw++P4
-	0i/RCo8A==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=rs5xnhDsFhbaVuiojjDza8qZT8C/1Bx3TVx/dhNo+7M=; b=GMXpgozzs1Zyby66497cY4WsV
+	ljaQ282D+QZwTGM3vu19eDhKlJI2zOJnnpA4wFRgqt/wlkc9FP9QdghYeVtQiR8uNxZAdY8ogoxRO
+	T+YtSz1rA4cn91584HhfCltkc3t48OQOTwvo6KSQxuZXAfQwJoUJQ/HcV6tBDHyP9gA+kd5wSbwJm
+	FkDz6gMwZWugNR0pq8D1bKG4xGaiSFeHd5c7wLdwI/h/heNyar0jD/gU4f0MLZdDZpj+W60QKMJYc
+	LufJ0lxcHvjEa5uPE51Ou1bVbjZCRHga/ECaOUxUbxXWgv/JfeweAKzF+nT3q0kAS7bnowz4DE6Z5
+	mOeQsGrtA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jxJta-0005LC-Bz; Mon, 20 Jul 2020 00:43:06 +0000
+	id 1jxJta-0005LN-SO; Mon, 20 Jul 2020 00:43:06 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jxJtS-0005IS-3W; Mon, 20 Jul 2020 00:42:59 +0000
-X-UUID: 036e2af3d93a49348945af296b9f1cad-20200719
+ id 1jxJtS-0005IU-2N; Mon, 20 Jul 2020 00:42:59 +0000
+X-UUID: 14809c58fee649bd82d42984ea85c010-20200719
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=FaqUdYxqi1XjkwCj1byDtXnVHu3nPZv58uEtqHctoQA=; 
- b=RD1Ew2BzBDEjLs0b+l4Vn+FmhGp67RZ18oVDX8cwJcmdkA+wItOi/U9iwxJvNp6gCudRP7XsbABxCwp0CI9ZYNIWNGUKyuxFt5MLUxSGd0nKdiOD4urkQm4tC+B4OHkYgrhjnaMnrx/wJ9K4Di8ZDAki/Z2YDuqEreEhdOtRuQc=;
-X-UUID: 036e2af3d93a49348945af296b9f1cad-20200719
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=OMHVu4Vv9sCJUK0p044FX4mimvQ4OPPgAjHgDXynXG0=; 
+ b=jthJ5N1pIK3B/vmUjdb2/OvvC5p5HlyEadk68zwJuVJKpYF44rTkOmw2YMbx+Xm1me6/HRLflhR3znz4tJQqef/80djc2652iiuWnXIg0w0PkH3y+T7zT9n9lMxdx+YZ57tcddHbQqn7lF5fIfSqTOck6fCHL3GxZMHnckTdwtM=;
+X-UUID: 14809c58fee649bd82d42984ea85c010-20200719
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <chun-hung.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 827403839; Sun, 19 Jul 2020 16:42:46 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 19 Jul 2020 17:42:45 -0700
+ with ESMTP id 280043691; Sun, 19 Jul 2020 16:42:47 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 19 Jul 2020 17:42:46 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 20 Jul 2020 08:42:42 +0800
+ MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 20 Jul 2020 08:42:43 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Mon, 20 Jul 2020 08:42:42 +0800
@@ -75,16 +76,18 @@ To: <mirq-linux@rere.qmqm.pl>, Jonathan Hunter <jonathanh@nvidia.com>, "Al
  Gleixner" <tglx@linutronix.de>, Allison Randal <allison@lohutok.net>,
  "Mathieu Malaterre" <malat@debian.org>, Stanley Chu
  <stanley.chu@mediatek.com>, "Kuohong Wang" <kuohong.wang@mediatek.com>
-Subject: [PATCH v7 0/4] mmc: mediatek: add mmc cqhci support
-Date: Mon, 20 Jul 2020 08:42:35 +0800
-Message-ID: <1595205759-5825-1-git-send-email-chun-hung.wu@mediatek.com>
+Subject: [PATCH v7 1/4] mmc: mediatek: add MT6779 MMC driver support
+Date: Mon, 20 Jul 2020 08:42:36 +0800
+Message-ID: <1595205759-5825-2-git-send-email-chun-hung.wu@mediatek.com>
 X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1595205759-5825-1-git-send-email-chun-hung.wu@mediatek.com>
+References: <1595205759-5825-1-git-send-email-chun-hung.wu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 1F865C90232599EFD426CA02B8A9A03CDAD99D6D654D6106C365D8346E3413832000:8
+X-TM-SNTS-SMTP: B6EBCB46A8EA91B71316FD7623CD65C69AAFCEB4EAB4B11A9B768E2F0E489B012000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200719_204258_300565_EC5CB476 
-X-CRM114-Status: GOOD (  13.39  )
+X-CRM114-CacheID: sfid-20200719_204258_259831_2050AE81 
+X-CRM114-Status: GOOD (  12.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,48 +109,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series provides MediaTek cqhci implementations as below:
-  - Refine msdc timeout api to reduce redundant code
-  - MediaTek command queue support
-  - dt-bindings for mt6779
+Add new code to support MT6779 mmc driver.
 
-v1 -> v2:
-  - Add more patch details in commit message
-  - Separate msdc timeout api refine to individual patch
+Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+---
+ drivers/mmc/host/mtk-sd.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-v2 -> v3:
-  - Remove CR-Id, Change-Id and Feature in patches
-  - Add Signed-off-by in patches
-
-v3 -> v4:
-  - Refine CQE bindings in mmc_of_parse (Ulf Hansson)
-  - Remove redundant host CQE bindings (Linux Walleij)
-
-v4 -> v5:
-  - Add Acked-by and more maintainers
-
-v5 -> v6:
-  - Move CQE bindings back to vendor driver
-  - Add mt6779 mmc support as an individual patch
-  - Error handling for cq_host devm_kzallo()
-
-v6 -> v7:
-  - Select MMC_CQHCI for MMC_MTK
-  - Remove unnecessary option MMC_CQHCI in mtk-sd.c
-  - Add error handling for cqhci_init()
-  - Use native cqhci dt-bindings 'supports-cqe'
-
-Chun-Hung Wu (4):
-  [1/4] mmc: mediatek: add MT6779 MMC driver support
-  [2/4] mmc: mediatek: refine msdc timeout api
-  [3/4] mmc: mediatek: command queue support
-  [4/4] dt-bindings: mmc: mediatek: Add document for mt6779
-
- Documentation/devicetree/bindings/mmc/mtk-sd.txt |   1 +
- drivers/mmc/host/Kconfig                         |   1 +
- drivers/mmc/host/mtk-sd.c                        | 160 +++++++++++++++++++++--
- 3 files changed, 152 insertions(+), 10 deletions(-)
-
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 39e7fc5..ed37a3c 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -538,6 +538,18 @@ struct msdc_host {
+ 	.use_internal_cd = true,
+ };
+ 
++static const struct mtk_mmc_compatible mt6779_compat = {
++	.clk_div_bits = 12,
++	.hs400_tune = false,
++	.pad_tune_reg = MSDC_PAD_TUNE0,
++	.async_fifo = true,
++	.data_tune = true,
++	.busy_check = true,
++	.stop_clk_fix = true,
++	.enhance_rx = true,
++	.support_64g = true,
++};
++
+ static const struct of_device_id msdc_of_ids[] = {
+ 	{ .compatible = "mediatek,mt8135-mmc", .data = &mt8135_compat},
+ 	{ .compatible = "mediatek,mt8173-mmc", .data = &mt8173_compat},
+@@ -547,6 +559,7 @@ struct msdc_host {
+ 	{ .compatible = "mediatek,mt7622-mmc", .data = &mt7622_compat},
+ 	{ .compatible = "mediatek,mt8516-mmc", .data = &mt8516_compat},
+ 	{ .compatible = "mediatek,mt7620-mmc", .data = &mt7620_compat},
++	{ .compatible = "mediatek,mt6779-mmc", .data = &mt6779_compat},
+ 	{}
+ };
+ MODULE_DEVICE_TABLE(of, msdc_of_ids);
 -- 
 1.9.1
 _______________________________________________
