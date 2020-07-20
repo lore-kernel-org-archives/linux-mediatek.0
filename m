@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ADBC4C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 08:32:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E4ABCC433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 08:58:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7A4F521775
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 08:32:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A16D021775
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2020 08:58:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OTYk4gt9";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Hn7L9TKG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7A4F521775
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PUNLPKf+";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="DofieDZT"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A16D021775
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,54 +27,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=845/CVaHzcg3yJ9w4f4GUIY8HFrIZH9xRy9mUbMq2sg=; b=OTYk4gt9j39ITyh18kkbNeMA2
-	dvxNhedkOgXjd+JlJEc8OE0ZlzRhFrxypIQ5yqTRSE9OCWsoMU1f++6thKcB3wzILSbkVsT+FCxBk
-	9Rg4X0J0nA4yHyIPhCeMJaIsPpaQaXtu6OHX++gNCuBW0W8hbugP79mwhd0yJ3o40eY24IrKCHOzx
-	2VZ7VAbY9MkS8dK8kGigzNIaZlbVjibb6GF+6DCawjnRJoyitwj/5vT2XhYIo6IkBR7M9FjLBH0GY
-	NN7O9KmC2U8ord6/QuYGwn368rBb2qZg7ZbZrDKucOfOFnzldzAJPjZ/L8hlJzuh6yLmj3FQiP91N
-	sk/6x6z7g==;
+	 bh=7CfSGkdfHv1FYoSkHb7QMDP9vDHo593rJWlFlvUpwE4=; b=PUNLPKf+RCutve/oAfNLav6sC
+	3BCZhRjA8bbkjX7RtT4bbUzCSk3nuE0NiY2g5IHR1azOErn/yByo60KTC5LIpUPg49acXQhz6x5ay
+	yaJEZMmj+L+e0pmApPTWxs2fYEHyxM/bJP/jiwEtrK0/Bd9OyLRbbE4PD05MLVaW94wPDQZJVHhUR
+	ryTwXj4Qf1FmtwuG1z94aVvm8/S5vlB3ShMOriNoYH7my0ZluE9qMwM044shsyAJp6FZfvrMTk0wz
+	wQ7LOHqGMgrPq27KZc3P2i5OBWHVjUTeKacE4P0vyVtnAHogLT7dZAfCUaUNYMtSjqtTL4RPVLl3Q
+	CFni9c33A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jxRDd-0005OC-Ji; Mon, 20 Jul 2020 08:32:17 +0000
+	id 1jxRcR-00088z-6P; Mon, 20 Jul 2020 08:57:55 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jxRDZ-0005Mz-8K; Mon, 20 Jul 2020 08:32:14 +0000
-X-UUID: d2eddc246a69462392df891d5cb5fdab-20200720
+ id 1jxRcL-00085E-E0; Mon, 20 Jul 2020 08:57:52 +0000
+X-UUID: d3a104a1ff334eda8443ac1eb7a022f3-20200720
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=285cYG2iqzW7JM+YaxlEFLWkof6vbGVDHLL5H5Gv2zE=; 
- b=Hn7L9TKGVR1o56RHutxVfg3280JwsO1wYyiJ0FZkkwq8xPNOhhnncTXPcyB4FXQcHqAeRJPuJEefR+oHwNSzVkCdoFv1b3rPSvma9qJSVJw9fRzwrzm0oxEDdmO9ZVaXgHc7unwgz9wSbHP+Rsc/xcfMSCudm4xrgpRhJNeyAbQ=;
-X-UUID: d2eddc246a69462392df891d5cb5fdab-20200720
+ bh=MgNXdrzLeZE2YRJkMefGfmgrOOh55MjevNByUTR3tz8=; 
+ b=DofieDZTFgFaGzmem3I0uQ6hOy4UDcPk21YRjPL/VoXnOW6BtMr0gWlwqOsnfBPnMvtgpnjMM1kql+Xj9IQYShBDGgev+1QZRZDJ+zmTJGlk6wzOrtvvQ5kN+3fJDEvU7hGgapl113PjvzO7HQwGNGW9CiWYd2kidvWhQP1PuQo=;
+X-UUID: d3a104a1ff334eda8443ac1eb7a022f3-20200720
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <chun-hung.wu@mediatek.com>)
+ (envelope-from <zhiyong.tao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 134612891; Mon, 20 Jul 2020 00:32:41 -0800
+ with ESMTP id 785971077; Mon, 20 Jul 2020 00:58:16 -0800
 Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 20 Jul 2020 01:22:05 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 20 Jul 2020 16:22:03 +0800
-Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 20 Jul 2020 16:22:02 +0800
-Message-ID: <1595233323.9207.4.camel@mtkswgap22>
-Subject: Re: [PATCH v6 4/4] dt-bindings: mmc: mediatek: Add document for mt6779
-From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 20 Jul 2020 01:47:40 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 20 Jul 2020 16:47:38 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 20 Jul 2020 16:47:36 +0800
+Message-ID: <1595234796.31296.24.camel@mhfsdcap03>
+Subject: Re: [PATCH 2/3] dt-bindings: pinctrl: mt8192: add binding document
+From: zhiyong tao <zhiyong.tao@mediatek.com>
 To: Rob Herring <robh@kernel.org>
-Date: Mon, 20 Jul 2020 16:22:03 +0800
-In-Reply-To: <20200617210247.GA2800817@bogus>
-References: <1591665502-6573-1-git-send-email-chun-hung.wu@mediatek.com>
- <1591665502-6573-5-git-send-email-chun-hung.wu@mediatek.com>
- <20200617210247.GA2800817@bogus>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+Date: Mon, 20 Jul 2020 16:46:36 +0800
+In-Reply-To: <20200710163905.GA2761779@bogus>
+References: <20200710072717.3056-1-zhiyong.tao@mediatek.com>
+ <20200710072717.3056-3-zhiyong.tao@mediatek.com>
+ <20200710163905.GA2761779@bogus>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: FAA44C5AFEB3ADB5AE3AD9DFD9EA8E0D572B16A99EA2473801BAAC905D13DFC02000:8
+X-TM-SNTS-SMTP: C74FCEDDFB4A3DAD584B2CF8ED17201D8E787AFD0D5D90C5D5FE2BDB1EE1530A2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200720_043213_512401_39FD7A1A 
-X-CRM114-Status: GOOD (  18.58  )
+X-CRM114-CacheID: sfid-20200720_045749_771440_D60F7A63 
+X-CRM114-Status: GOOD (  33.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,80 +86,253 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Kate
- Stewart <kstewart@linuxfoundation.org>, Ulf Hansson <ulf.hansson@linaro.org>,
- wsd_upstream <wsd_upstream@mediatek.com>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>, Al Cooper <alcooperx@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>, Pavel Machek <pavel@ucw.cz>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Michal Simek <michal.simek@xilinx.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Andy Gross <agross@kernel.org>, "bcm-kernel-feedback-list@broadcom.com"
- <bcm-kernel-feedback-list@broadcom.com>,
- Chaotian Jing =?UTF-8?Q?=28=E4=BA=95=E6=9C=9D=E5=A4=A9=29?=
- <Chaotian.Jing@mediatek.com>,
- "kernel-team@android.com" <kernel-team@android.com>,
- Pan Bian <bianpan2016@163.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "mirq-linux@rere.qmqm.pl" <mirq-linux@rere.qmqm.pl>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Thomas
- Gleixner <tglx@linutronix.de>,
- Stanley Chu =?UTF-8?Q?=28=E6=9C=B1=E5=8E=9F=E9=99=9E=29?=
- <stanley.chu@mediatek.com>, Allison Randal <allison@lohutok.net>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- Mathieu Malaterre <malat@debian.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Kuohong Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=8B=E9=B4=BB=29?=
- <kuohong.wang@mediatek.com>, Adrian Hunter <adrian.hunter@intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, hui.liu@mediatek.com,
+ srv_heupstream@mediatek.com, chuanjia.liu@mediatek.com,
+ biao.huang@mediatek.com, linus.walleij@linaro.org, sean.wang@kernel.org,
+ linux-kernel@vger.kernel.org, hongzhou.yang@mediatek.com,
+ linux-mediatek@lists.infradead.org, sean.wang@mediatek.com,
+ linux-gpio@vger.kernel.org, matthias.bgg@gmail.com, eddie.huang@mediatek.com,
+ erin.lo@mediatek.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2020-06-18 at 05:02 +0800, Rob Herring wrote:
-> On Tue, Jun 09, 2020 at 09:18:22AM +0800, Chun-Hung Wu wrote:
-> > Add compatible node for mt6779 mmc and HW cmdq selection
-> > node "mediatek,cqhci".
+On Fri, 2020-07-10 at 10:39 -0600, Rob Herring wrote:
+> On Fri, Jul 10, 2020 at 03:27:16PM +0800, Zhiyong Tao wrote:
+> > The commit adds mt8192 compatible node in binding document.
 > > 
-> > Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+> > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
 > > ---
-> >  Documentation/devicetree/bindings/mmc/mtk-sd.txt | 4 ++++
-> >  1 file changed, 4 insertions(+)
+> >  .../bindings/pinctrl/pinctrl-mt8192.yaml      | 170 ++++++++++++++++++
+> >  1 file changed, 170 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml
 > > 
-> > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> > index 8a532f4..d4d20b9 100644
-> > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> > @@ -12,6 +12,7 @@ Required properties:
-> >  	"mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
-> >  	"mediatek,mt8183-mmc": for mmc host ip compatible with mt8183
-> >  	"mediatek,mt8516-mmc": for mmc host ip compatible with mt8516
-> > +	"mediatek,mt6779-mmc": for mmc host ip compatible with mt6779
-> >  	"mediatek,mt2701-mmc": for mmc host ip compatible with mt2701
-> >  	"mediatek,mt2712-mmc": for mmc host ip compatible with mt2712
-> >  	"mediatek,mt7622-mmc": for MT7622 SoC
-> > @@ -49,6 +50,9 @@ Optional properties:
-> >  		     error caused by stop clock(fifo full)
-> >  		     Valid range = [0:0x7]. if not present, default value is 0.
-> >  		     applied to compatible "mediatek,mt2701-mmc".
-> > +- mediatek,cqhci: HW cmdq selection
-> > +		  If present, hw command queue is enabled.
-> > +		  If not present, hw command queue is disabled.
+> > diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml
+> > new file mode 100644
+> > index 000000000000..c698b7f65950
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml
+> > @@ -0,0 +1,170 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/pinctrl/pinctrl-mt8192.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Mediatek MT8192 Pin Controller
+> > +
+> > +maintainers:
+> > +  - Linus Walleij <linus.walleij@linaro.org>
 > 
-> 'supports-cqe' does the same thing.
-Change to use 'supports-cqe' in patch v7.
+> Should be someone who knows the h/w (Mediatek).
 > 
-> >  
-> >  Examples:
-> >  mmc0: mmc@11230000 {
+==> 
+Dear Rob,
+
+Thanks for your suggestion.
+we will change it in v2.
+> > +
+> > +description: |
+> > +  The Mediatek's Pin controller is used to control SoC pins.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: mediatek,mt8192-pinctrl
+> > +
+> > +  gpio-controller: true
+> > +
+> > +  '#gpio-cells':
+> > +    description:
+> > +      Number of cells in GPIO specifier. Since the generic GPIO binding is used,
+> > +      the amount of cells must be specified as 2. See the below
+> > +      mentioned gpio binding representation for description of particular cells.
+> > +    const: 2
+> > +
+> > +  gpio-ranges:
+> > +    description: gpio valid number range.
+> > +    maxItems: 1
+> > +
+> > +  reg:
+> > +    description:
+> > +      Physical address base for gpio base registers. There are 11 GPIO
+> > +      physical address base in mt8192.
+> > +    maxItems: 11
+> > +
+> > +  reg-names:
+> > +    description:
+> > +      Gpio base register names. There are 11 gpio base register names in mt8192.
+> > +      They are "iocfg0", "iocfg_rm", "iocfg_bm", "iocfg_bl", "iocfg_br",
+> > +      "iocfg_lm", "iocfg_lb", "iocfg_rt", "iocfg_lt", "iocfg_tl", "eint".
+> 
+> Should be a schema.
+==>ok, we will retain the description "Gpio base register names.", The
+other description will be removed. Is it ok?
+> 
+> > +    maxItems: 11
+> > +
+> > +  interrupt-controller: true
+> > +
+> > +  '#interrupt-cells':
+> > +    const: 2
+> > +
+> > +  interrupts:
+> > +    description: The interrupt outputs to sysirq.
+> > +    maxItems: 1
+> > +
+> > +#PIN CONFIGURATION NODES
+> > +patternProperties:
+> > +  subnode format:
+> 
+> The child node name is 'subnode format'?
+> 
+No, 'subnode format' is not child name. It is used to describe the
+subnode format. so we should remove it?
+> > +    description:
+> > +      A pinctrl node should contain at least one subnodes representing the
+> > +      pinctrl groups available on the machine. Each subnode will list the
+> > +      pins it needs, and how they should be configured, with regard to muxer
+> > +      configuration, pullups, drive strength, input enable/disable and
+> > +      input schmitt.
+> > +
+> > +      node {
+> > +        pinmux = <PIN_NUMBER_PINMUX>;
+> > +        GENERIC_PINCONFIG;
+> > +      };
+> 
+> If you want to preserve formatting, description needs a literal block 
+> notation on the end ('|').
+==>ok, we will change it in v2. we will add ('|') after "description:"
+in v2.
+> 
+> > +  '-pinmux$':
+> > +    description:
+> > +      Integer array, represents gpio pin number and mux setting.
+> > +      Supported pin number and mux varies for different SoCs, and are defined
+> > +      as macros in dt-bindings/pinctrl/<soc>-pinfunc.h directly.
+> > +    $ref: "/schemas/pinctrl/pincfg-node.yaml"
+> > +
+> > +  GENERIC_PINCONFIG:
+> 
+> You just defined a property called 'GENERIC_PINCONFIG'..
+==> yes, it is. But we add all property description in the
+GENERIC_PINCONFIG.
+> .
+> 
+> > +    description:
+> > +      It is the generic pinconfig options to use, bias-disable,
+> > +      bias-pull-down, bias-pull-up, input-enable, input-disable, output-low,
+> > +      output-high, input-schmitt-enable, input-schmitt-disable
+> > +      and drive-strength are valid.
+> > +
+> > +      Some special pins have extra pull up strength, there are R0 and R1 pull-up
+> > +      resistors available, but for user, it's only need to set R1R0 as 00, 01,
+> > +      10 or 11. So It needs config "mediatek,pull-up-adv" or
+> > +      "mediatek,pull-down-adv" to support arguments for those special pins.
+> > +      Valid arguments are from 0 to 3.
+> > +
+> > +      We can use "mediatek,tdsel" which is an integer describing the steps for
+> > +      output level shifter duty cycle when asserted (high pulse width adjustment).
+> > +      Valid arguments  are from 0 to 15.
+> > +      We can use "mediatek,rdsel" which is an integer describing the steps for
+> > +      input level shifter duty cycle when asserted (high pulse width adjustment).
+> > +      Valid arguments are from 0 to 63.
+> > +
+> > +      When config drive-strength, it can support some arguments, such as
+> > +      MTK_DRIVE_4mA, MTK_DRIVE_6mA, etc. See dt-bindings/pinctrl/mt65xx.h.
+> > +      It can only support 2/4/6/8/10/12/14/16mA in mt8192.
+> > +      For I2C pins, there are existing generic driving setup and the specific
+> > +      driving setup. I2C pins can only support 2/4/6/8/10/12/14/16mA driving
+> > +      adjustment in generic driving setup. But in specific driving setup,
+> > +      they can support 0.125/0.25/0.5/1mA adjustment. If we enable specific
+> > +      driving setup for I2C pins, the existing generic driving setup will be
+> > +      disabled. For some special features, we need the I2C pins specific
+> > +      driving setup. The specific driving setup is controlled by E1E0EN.
+> > +      So we need add extra vendor driving preperty instead of
+> > +      the generic driving property.
+> > +      We can add "mediatek,drive-strength-adv = <XXX>;" to describe the specific
+> > +      driving setup property. "XXX" means the value of E1E0EN. EN is 0 or 1.
+> > +      It is used to enable or disable the specific driving setup.
+> > +      E1E0 is used to describe the detail strength specification of the I2C pin.
+> > +      When E1=0/E0=0, the strength is 0.125mA.
+> > +      When E1=0/E0=1, the strength is 0.25mA.
+> > +      When E1=1/E0=0, the strength is 0.5mA.
+> > +      When E1=1/E0=1, the strength is 1mA.
+> > +      So the valid arguments of "mediatek,drive-strength-adv" are from 0 to 7.
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - interrupts
+> > +  - interrupt-controller
+> > +  - '#interrupt-cells'
+> > +  - gpio-controller
+> > +  - '#gpio-cells'
+> > +  - gpio-ranges
+> > +
+> > +examples:
+> > +  - |
+> > +            #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
+> > +            #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +            pio: pinctrl@10005000 {
+> 
+> Drop unused labels.
+==> we will change it in v2.
+> 
+> > +                    compatible = "mediatek,mt8192-pinctrl";
+> > +                    reg = <0 0x10005000 0 0x1000>,
+> > +                          <0 0x11c20000 0 0x1000>,
+> > +                          <0 0x11d10000 0 0x1000>,
+> > +                          <0 0x11d30000 0 0x1000>,
+> > +                          <0 0x11d40000 0 0x1000>,
+> > +                          <0 0x11e20000 0 0x1000>,
+> > +                          <0 0x11e70000 0 0x1000>,
+> > +                          <0 0x11ea0000 0 0x1000>,
+> > +                          <0 0x11f20000 0 0x1000>,
+> > +                          <0 0x11f30000 0 0x1000>,
+> > +                          <0 0x1000b000 0 0x1000>;
+> > +                    reg-names = "iocfg0", "iocfg_rm", "iocfg_bm",
+> > +                          "iocfg_bl", "iocfg_br", "iocfg_lm",
+> > +                          "iocfg_lb", "iocfg_rt", "iocfg_lt",
+> > +                          "iocfg_tl", "eint";
+> > +                    gpio-controller;
+> > +                    #gpio-cells = <2>;
+> > +                    gpio-ranges = <&pio 0 0 220>;
+> > +                    interrupt-controller;
+> > +                    interrupts = <GIC_SPI 212 IRQ_TYPE_LEVEL_HIGH 0>;
+> > +                    #interrupt-cells = <2>;
+> > +                    i2c0_pins_a: i2c0 {
+> 
+> Doesn't match the schema.
+> 
+> > +                        pins {
+> 
+> Doesn't match the schema. Why do you need 2 levels of nodes here?
+==> Is  The 2 levels of nodes "i2c0" and "I2c1"? we just list them as
+example. Because pinmux and gpio setting property are called when other
+modules is registered. For example, when we add the
+description"pinctrl-names = "default"; pinctrl-0 = <&i2c0_pins_a>;" in
+i2c0 node. it will above property setting when i2c0 is register.
+Do you mean that we don't need add them here? If it is. We will remove
+"i2c0" and "I2c1"  property setting in v2.
+> 
+> > +                                pinmux = <PINMUX_GPIO118__FUNC_SCL1>,
+> > +                                         <PINMUX_GPIO119__FUNC_SDA1>;
+> > +                                mediatek,pull-up-adv = <3>;
+> > +                                mediatek,drive-strength-adv = <7>;
+> > +                        };
+> > +                    };
+> > +                    i2c1_pins_a: i2c1 {
+> > +                        pins {
+> > +                                pinmux = <PINMUX_GPIO141__FUNC_SCL2>,
+> > +                                         <PINMUX_GPIO142__FUNC_SDA2>;
+> > +                                mediatek,pull-down-adv = <2>;
+> > +                                mediatek,drive-strength-adv = <4>;
+> > +                       };
+> > +                   };
+> > +            };
 > > -- 
-> > 1.9.1
+> > 2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
