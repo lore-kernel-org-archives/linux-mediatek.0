@@ -2,89 +2,92 @@ Return-Path: <SRS0=w0xa=BA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B034BC433E3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 20:43:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D5D5C433E2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 21:19:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 768FF20717
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 20:43:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 26DBC20720
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 21:19:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SaRCwOLJ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="aplCMKmL"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 768FF20717
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iiKFNB+G";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="n/bLLtFL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 26DBC20720
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=XQq2yebqWGGdsVa40zxT+Xg34pFtjSP/q94Zt2pag8w=; b=SaRCwOLJeE5L2iar2k46O7F9R
-	XTt0QhDx9qqWFAPHEm70jHj7uDuoNKsWrzq22cChOTvBk+ehO/TvMYzt1ppobL1g4LFCSLE1bumIL
-	inGHFlZFIp2mpzSHt7zJZD5zVEVWb7z0q6t+qfa4Pt9MmrLw+IzUmjf3T9hHB7SlDtFzGyvFhQKHy
-	rRvLhRULtNjkuNO88ntwiMiQ2FXWuTHblVzWncVpbEKZ+48BbxxF1ubOxB+EHsl5PMXT3L492mOjm
-	aX97JnNUWczQQWDdZW3L4grRG7EUhn83+BnRtL6kwyVyTn5JNhiV4Tm7PLOIUwakF/PZhag2EnGW5
-	k52awzekw==;
+	 bh=9ncoQZ89MWLGFD7cycEGrqfHrrrrqpDCGKFhnSNJNrM=; b=iiKFNB+GwUDnLUG50Ugexn7mn
+	+ATQhLd7X7722dbLkhRHbixxPE0ZXOFAMEeUd5ruWeLYBYgiszRBZcIMmua7GbjgN21jke8W7rPq2
+	viTaMtxsGZBRNIZ1xN7yCaiXNrtBlru/AbM70RJ/zq/O2sIDcHoVdea+w8AC4QWo4rGh4kblQag5z
+	e1TwUKIm3/ej3RdVwH6BSFcFca97t9QFdFNwHx+qFDpA0ZkXdR5gbBMr95Yvq6/QlEux9AiR+J9ig
+	/uhIaSQeP7t4ZvBURliz96UBSkUE93nwpzQoj4gpxr3Bfhc8JXb3FS1P+0oQTkAm8oiNxYcbw0u7J
+	RCqM3T4KA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jxz6y-0006tt-8K; Tue, 21 Jul 2020 20:43:40 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1jxzff-00044E-0g; Tue, 21 Jul 2020 21:19:31 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jxz6v-0006sF-BA
- for linux-mediatek@lists.infradead.org; Tue, 21 Jul 2020 20:43:38 +0000
-Received: by mail-pg1-x542.google.com with SMTP id e8so19207pgc.5
- for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2020 13:43:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=6b3oA4UL1L2pl7xC9XCpGfPbFXbX6ZR3mQ/aH6nN3aM=;
- b=aplCMKmLtk1FND72f9eTw2pW0XV235w2d7abx0+nAqdK+5QHFUZUtqiXP3Y/5NfWwQ
- OP0koBCszYM3OjbRoWGb9J2n5jEHmqZ6iZvMjrdhubqs08gi7J2ZJm0AvaheIAChdgVe
- 7MEKxT+pv82gNj/QbYrQIrC+ws3wQQ1yxdP7oGdDW+0Vgl/fKppwh3+V150QjFW7B0sR
- pfuiSebY5wKyIuGmulwut1717V7STCbyNn4pXsUhj1rO3Uw2IJGLCqE9RK2xBIl74F49
- isMNRqNjvPF38ITyYEMgKk4pMSMMY5Hw3R+VLWqG+e65UZgP/9R7FHaVotrNczHhVufX
- vhew==
+ id 1jxzfc-00042p-Ul; Tue, 21 Jul 2020 21:19:30 +0000
+Received: by mail-wr1-x442.google.com with SMTP id f18so22566654wrs.0;
+ Tue, 21 Jul 2020 14:19:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=UfaaXDzDLl64kXCbfxTecuzVYPHxG6njBTZ46/VZRxM=;
+ b=n/bLLtFLAZABy0+eAqv5JOF0siLIMX2/vEn232R5DlcqQFyZn7yWcCupGfjwFrjnFj
+ +XKAfVXj0cAP3iVBoOrZanT86pGRK4bGm+EAf2gzp3ZpmiHYd7R9pmpsaL5PkY/Zu5rm
+ mVzQ2P3lOhsSb2+gWBF59GG5sqAIqP/c7qZC9uaFyP8RAZ0dx0uS7xWBmlW0cpl+f1Ep
+ DZZGqHn1AXpLNFwzjhphgs9Dy5uahH9CGwiU5NHqx/ZE5Y+8QybFxiD92SrmrF0OM4Qx
+ oku75NLri4d2qZrMWwjQmdivpH0rrcyXGkVa8VA8hVukSM19m9f/sBS4WjoFTwHsnaaY
+ p9Rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=6b3oA4UL1L2pl7xC9XCpGfPbFXbX6ZR3mQ/aH6nN3aM=;
- b=SqvJwWfMgfgYtjFumhQVSe47Kk0zI6EHRZhb08dMqogbVSQhU9c0HQQpoPEwrlTFKW
- SHqToE465xNpmoHX2FMPeT1/CitPjpbQhhs1rM/xbD5d2B7V6bBVVOJqXU02LCU6yPYh
- bIum4Oaty8fPkV2zI14N1s9vYmXSyYs6LcZSVyaowp6L5cv1FyV3WQJ2XBl/BiH/eNa7
- zi6fCWOvyZa2BLwjGDmSyKeQbpGDG6ZWxWy2vx1Z5gn/csrX+RMHcu2Uqth0fA6sDcce
- udKha3yiD5d/GUjHbDC0bgpca6N5LzHn0gfSwWIlO+M7T7h237RRbL0bAAX5vbPi0E+t
- O4bw==
-X-Gm-Message-State: AOAM530ZonXp+abEwL9X1+py0nHTcmbOkzpMOL7sxq48qUDISamqMyoY
- +oaPjd50qJq2KIPdGmRZWEaY0Q==
-X-Google-Smtp-Source: ABdhPJwuyrOyVT4KOawwJEajBAoNJgJsEKfBbYSabaXT83Sv4Y4Gqw+HTJiZ3dzR4rMofwR9hrMHZA==
-X-Received: by 2002:aa7:9906:: with SMTP id z6mr26338877pff.60.1595364215284; 
- Tue, 21 Jul 2020 13:43:35 -0700 (PDT)
-Received: from xps15 (S0106002369de4dac.cg.shawcable.net. [68.147.8.254])
- by smtp.gmail.com with ESMTPSA id z10sm21858949pfr.90.2020.07.21.13.43.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Jul 2020 13:43:34 -0700 (PDT)
-Date: Tue, 21 Jul 2020 14:43:32 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Alexandre Bailon <abailon@baylibre.com>
-Subject: Re: [PATCH 5/6] remoteproc: mtk_apu: Don't try to use the APU local
- RAM
-Message-ID: <20200721204332.GC1227776@xps15>
-References: <20200713132927.24925-1-abailon@baylibre.com>
- <20200713132927.24925-6-abailon@baylibre.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=UfaaXDzDLl64kXCbfxTecuzVYPHxG6njBTZ46/VZRxM=;
+ b=UckGmrbAiJWEI6ASoGPHAwBf2HN4yzOwfOtcQJVgG+6glxIgnbmknS/b8KHe2JB/D9
+ g90yz1EvdLnr3eFMZ0e8cdd73R+lsiIX7sp864bvyCvcghP/74dC4sBKFPajVpIXOLPK
+ YzcEjIUxcs3DurJmEEFJsdD/2Qj2qRyiig2aYeEC27fhaHJ+L64ea1oNvl15XU91ORqQ
+ I/jV6zTuj0WrZHxcsp6Tne8dhWPepIEorC8diiW0JvifsCGWfidO+RIQnEb/OYBIfdha
+ 92ZSM+Htq0DT59jP+NgGoT2DnTd/N1/F3txCaZfdMm3fwHob75KUEU2Im2IcI/KNo8Ja
+ ZcEw==
+X-Gm-Message-State: AOAM532dqQVYamDLYn7YusfJRofOV0TREn/0dLcp+Sx3yLAVDnouS1L+
+ AI0k7M/uEHAMiEQ9/a19y3M=
+X-Google-Smtp-Source: ABdhPJxPVerR4H+cxm4UhuSVQZ/RwXNNmjheXMsIFW2MGE/7/bFuLKr9pYd/bXDbTrAFFQT9qQl86g==
+X-Received: by 2002:a5d:608f:: with SMTP id w15mr26846749wrt.136.1595366365025; 
+ Tue, 21 Jul 2020 14:19:25 -0700 (PDT)
+Received: from ziggy.stardust ([213.195.122.158])
+ by smtp.gmail.com with ESMTPSA id a123sm5319714wmd.28.2020.07.21.14.19.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 21 Jul 2020 14:19:24 -0700 (PDT)
+Subject: Re: [PATCH v2] iommu/mediatek: check 4GB mode by reading infracfg
+To: Yong Wu <yong.wu@mediatek.com>
+References: <20200721021619.25575-1-miles.chen@mediatek.com>
+ <cbdd2820-fd3c-3e51-8140-58408dcf3cd3@gmail.com>
+ <1595330677.16172.55.camel@mhfsdcap03>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <28bf052f-e388-d300-4abe-38f17bff01b6@gmail.com>
+Date: Tue, 21 Jul 2020 23:19:23 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200713132927.24925-6-abailon@baylibre.com>
+In-Reply-To: <1595330677.16172.55.camel@mhfsdcap03>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200721_164337_436455_8A67B4A0 
-X-CRM114-Status: GOOD (  22.88  )
+X-CRM114-CacheID: sfid-20200721_171929_094184_0D95CD48 
+X-CRM114-Status: GOOD (  24.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,86 +99,134 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: ohad@wizery.com, devicetree@vger.kernel.org,
- linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
- bjorn.andersson@linaro.org, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+Cc: Rob Herring <robh@kernel.org>, wsd_upstream@mediatek.com,
+ David Hildenbrand <david@redhat.com>, Joerg Roedel <joro@8bytes.org>,
+ iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org,
+ Chao Hao <chao.hao@mediatek.com>, Miles Chen <miles.chen@mediatek.com>,
+ linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>,
+ Mike Rapoport <rppt@linux.ibm.com>, Christoph Hellwig <hch@lst.de>,
  linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 13, 2020 at 03:29:26PM +0200, Alexandre Bailon wrote:
-> Currently, this local RAM is not accessible from the CPU.
-> If the CPU tries to access it, then the CPU will hang.
+
+
+On 21/07/2020 13:24, Yong Wu wrote:
+> On Tue, 2020-07-21 at 11:40 +0200, Matthias Brugger wrote:
+>>
+>> On 21/07/2020 04:16, Miles Chen wrote:
+>>> In previous discussion [1] and [2], we found that it is risky to
+>>> use max_pfn or totalram_pages to tell if 4GB mode is enabled.
+>>>
+>>> Check 4GB mode by reading infracfg register, remove the usage
+>>> of the un-exported symbol max_pfn.
+>>>
+>>> This is a step towards building mtk_iommu as a kernel module.
+>>>
+>>> Change since v1:
+>>> 1. remove the phandle usage, search for infracfg instead [3]
+>>> 2. use infracfg instead of infracfg_regmap
+>>> 3. move infracfg definitaions to linux/soc/mediatek/infracfg.h
+>>> 4. update enable_4GB only when has_4gb_mode
+>>>
+>>> [1] https://lkml.org/lkml/2020/6/3/733
+>>> [2] https://lkml.org/lkml/2020/6/4/136
+>>> [3] https://lkml.org/lkml/2020/7/15/1147
+>>>
+>>> Cc: Mike Rapoport <rppt@linux.ibm.com>
+>>> Cc: David Hildenbrand <david@redhat.com>
+>>> Cc: Yong Wu <yong.wu@mediatek.com>
+>>> Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>
+>>> Cc: Christoph Hellwig <hch@lst.de>
+>>> Cc: Yong Wu <yong.wu@mediatek.com>
+>>> Cc: Chao Hao <chao.hao@mediatek.com>
+>>> Cc: Rob Herring <robh@kernel.org>
+>>> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+>>> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+>>> ---
+>>>    drivers/iommu/mtk_iommu.c             | 26 +++++++++++++++++++++-----
+>>>    include/linux/soc/mediatek/infracfg.h |  3 +++
+>>>    2 files changed, 24 insertions(+), 5 deletions(-)
+>>>
+>>> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+>>> index 2be96f1cdbd2..16765f532853 100644
+>>> --- a/drivers/iommu/mtk_iommu.c
+>>> +++ b/drivers/iommu/mtk_iommu.c
+>>> @@ -3,7 +3,6 @@
+>>>     * Copyright (c) 2015-2016 MediaTek Inc.
+>>>     * Author: Yong Wu <yong.wu@mediatek.com>
+>>>     */
+>>> -#include <linux/memblock.h>
+>>>    #include <linux/bug.h>
+>>>    #include <linux/clk.h>
+>>>    #include <linux/component.h>
+>>> @@ -15,13 +14,16 @@
+>>>    #include <linux/iommu.h>
+>>>    #include <linux/iopoll.h>
+>>>    #include <linux/list.h>
+>>> +#include <linux/mfd/syscon.h>
+>>>    #include <linux/of_address.h>
+>>>    #include <linux/of_iommu.h>
+>>>    #include <linux/of_irq.h>
+>>>    #include <linux/of_platform.h>
+>>>    #include <linux/platform_device.h>
+>>> +#include <linux/regmap.h>
+>>>    #include <linux/slab.h>
+>>>    #include <linux/spinlock.h>
+>>> +#include <linux/soc/mediatek/infracfg.h>
+>>>    #include <asm/barrier.h>
+>>>    #include <soc/mediatek/smi.h>
+>>>    
+>>> @@ -599,8 +601,10 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>>>    	struct resource         *res;
+>>>    	resource_size_t		ioaddr;
+>>>    	struct component_match  *match = NULL;
+>>> +	struct regmap		*infracfg;
+>>>    	void                    *protect;
+>>>    	int                     i, larb_nr, ret;
+>>> +	u32			val;
+>>>    
+>>>    	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
+>>>    	if (!data)
+>>> @@ -614,10 +618,22 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>>>    		return -ENOMEM;
+>>>    	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
+>>>    
+>>> -	/* Whether the current dram is over 4GB */
+>>> -	data->enable_4GB = !!(max_pfn > (BIT_ULL(32) >> PAGE_SHIFT));
+>>> -	if (!data->plat_data->has_4gb_mode)
+>>> -		data->enable_4GB = false;
+>>> +	data->enable_4GB = false;
+>>> +	if (data->plat_data->has_4gb_mode) {
+>>> +		infracfg = syscon_regmap_lookup_by_compatible(
+>>> +				"mediatek,mt8173-infracfg");
+>>> +		if (IS_ERR(infracfg)) {
+>>> +			infracfg = syscon_regmap_lookup_by_compatible(
+>>> +					"mediatek,mt2712-infracfg");
+>>> +			if (IS_ERR(infracfg))
+>>> +				return PTR_ERR(infracfg);
+>>
+>> I think we should check m4u_plat instead to decide which compatible we have to
+>> look for.
+>> Another option would be to add a general compatible something like
+>> "mtk-infracfg" and search for that. That would need an update of all DTS having
+>> a infracfg compatible right now. After thinking twice, this would break newer
+>> kernel with older device tree, so maybe it's better to go with m4u_plat switch
+>> statement.
 > 
-> Remoteproc may try to use it when it load a firmware
-> that has some sections in the local RAM.
-> This workarounds the issue by skiping this section.
+> Add a "char *infracfg" in the plat_data, Use the mt2712, mt8173
+> corresponding string in it. If it is NULL, It means the "enable_4GB"
+> always is false. Then we also can remove the flag "has_4gb_mode".
 > 
-> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
-> ---
->  drivers/remoteproc/mtk_apu_rproc.c | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
+> is this OK?
 > 
-> diff --git a/drivers/remoteproc/mtk_apu_rproc.c b/drivers/remoteproc/mtk_apu_rproc.c
-> index 565b3adca5de..e16d3258a785 100644
-> --- a/drivers/remoteproc/mtk_apu_rproc.c
-> +++ b/drivers/remoteproc/mtk_apu_rproc.c
-> @@ -57,6 +57,9 @@
->  #define CORE_DEFAULT2_SPIDEN			BIT(0)
->  #define CORE_XTENSA_ALTRESETVEC			(0x000001F8)
->  
-> +#define DRAM0_START				(0x7ff00000)
-> +#define IRAM0_END				(0x7ff80000)
-> +
->  struct mtk_vpu_rproc {
->  	struct device *dev;
->  	struct rproc *rproc;
-> @@ -139,6 +142,7 @@ static void mtk_vpu_rproc_kick(struct rproc *rproc, int vqid)
->  
->  int mtk_vpu_elf_sanity_check(struct rproc *rproc, const struct firmware *fw)
->  {
-> +	struct mtk_vpu_rproc *vpu_rproc = rproc->priv;
->  	const u8 *elf_data = fw->data;
->  	struct elf32_hdr *ehdr;
->  	struct elf32_phdr *phdr;
-> @@ -156,6 +160,16 @@ int mtk_vpu_elf_sanity_check(struct rproc *rproc, const struct firmware *fw)
->  		/* Remove empty PT_LOAD section */
->  		if (phdr->p_type == PT_LOAD && !phdr->p_paddr)
->  			phdr->p_type = PT_NULL;
-> +		/*
-> +		 * Workaround: Currently, the CPU can't access to the APU
-> +		 * local RAM. This removes the local RAM section from the
-> +		 * firmware. Please note that may cause some issues.
-> +		 */
-> +		if (phdr->p_paddr >= DRAM0_START && phdr->p_paddr < IRAM0_END) {
-> +			dev_warn_once(vpu_rproc->dev,
-> +				      "Skipping the APU local RAM section\n");
-> +			phdr->p_type = PT_NULL;
 
-We can't selectively decide to not load sections of a program due to a platform
-driver shortcoming.  Either a real solution is found or booting the remote
-processor is interrupted, with a strong incline toward the former.
+It's an option, but I personally find that a bit hacky.
 
-I guess you're dealing with tightly coupled memory or on-chip RAM areas -
-both are accessed on other platform using ioremap_wc() or devm_ioremap_wc().
-You might want to try doing what Suman has done in this patchset [1], with
-specific attention to TCMs and SRAM.
-
-Thanks,
-Mathieu
-
-[1]. https://patchwork.kernel.org/project/linux-remoteproc/list/?series=310325
-
-> +		}
->  	}
->  
->  	return 0;
-> -- 
-> 2.26.2
-> 
+Regards,
+Matthias
 
 _______________________________________________
 Linux-mediatek mailing list
