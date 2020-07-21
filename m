@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F3B9C433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 07:53:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 27801C433E1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 07:51:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 28E1E208E4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 07:53:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DF744208E4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 07:51:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hqlZI9tY";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="L31PfZAW"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 28E1E208E4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WEeRF4Zz";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qYq8GHJP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DF744208E4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,54 +27,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8judRMeCheJ66A3wuXtAnXPs6LvB1NNkDciMZyO4kUM=; b=hqlZI9tYRZ4GgeXT5pKinCF5Y
-	myHGp02/lZ4HUUB8GHpBGlzZet9Gf4nyoIPiiqt8RHP85nLVapT/5K20KiZbW/5LCLd1yHC1cI8pq
-	d0fXcFz8n/xpYGM0m109qNpfleO8ZMvfag7sOtY8GIOxU7BsYGr8fEVCpe+3Ht3SUL7vSzEjHMb5K
-	EgwegSWPewgcHC5gPw7DNGFwhIDZpglS86XM7CcUC48DNqXVjc+RZ92ntHVPAvPhD4iAlxKNGsO7L
-	0rYOZiDXjpuUSWWtdOWQrgG73xozSa/Ip1PciLWGSiURp94fHSTbgg8SU5xO+onRw1maELrT89JiF
-	UUtTgTCRg==;
+	 bh=Hl1M6Mt/yMvO5jcDLO1z6zoeJFIE3+bU099zK051iaY=; b=WEeRF4ZzXmNfIemwz4266d2wV
+	JZSKH0naUvgUgxFFD7f/VVx/twOEM5ecyRMbo9w2alWA78tux+ptNhclrHMeFkh+8coYFTVqARC2W
+	Thi8EwKCClcsS3d9t1qFLp6kGcZf5ud7RI8CrOtXLl2gZJCgS1mYBrpt/t1loysjbwKJT6jbfOwa2
+	mbFzscKOYDdmPbGM9j/3foicER7yYjfC+mJrl6S3Pga5/B7arTNPpd4j6zK9IVkkoiH0tR70dhIVF
+	sjDQhvS8K2UtzosesM20zjwmzqmyfNFJv+R6cXhhzMdroRZegi9QzQDFLbkbWCauYPZs6jqwsJFzw
+	HDfa+cbHQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jxn5L-0004Zm-AS; Tue, 21 Jul 2020 07:53:11 +0000
+	id 1jxn3W-0003nY-4s; Tue, 21 Jul 2020 07:51:18 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jxn4T-0004DX-1O; Tue, 21 Jul 2020 07:52:19 +0000
-X-UUID: 2c9ade521f1b48b2aba8121d88a1ac0d-20200720
+ id 1jxn3T-0003lA-6K; Tue, 21 Jul 2020 07:51:16 +0000
+X-UUID: bbd27d6df67e4f15bb2e5beadf72561d-20200720
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=TgyKyG9WR52laBLJt2LCV2yrNPhhRxe2Q3DKEoAxKfQ=; 
- b=L31PfZAWcw+goOpnnoR10nCvn7cRxFmetcCDYn3atWHjcMIqzgs0RGeCyo1J1uvBHdiWpmKSFtKj85BwKMS2OmYZiGapuErZdUpaAUOZl32vHrxfF8hKZSQI/uZTm4zMhBe5Teo6NJ75I7j2T0uC4TzNWKJoPjyWU99RpCxJIA0=;
-X-UUID: 2c9ade521f1b48b2aba8121d88a1ac0d-20200720
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=lf/89Iy3pAUr+fnJQL7OFHOwuPDtLnW3HnB4JZlmPk0=; 
+ b=qYq8GHJPC5Y7lcpuoIgnxAFPcOqSyMjViZxSXjaUaZj55T6SYXa8xal40T5f/fYOWhLX7OGqgYgiJ06UEP1b+J1dWqC41+NVJiLMcocMoEnMG2f7Y+h5CaHpkDkyRkQWuiemrY75gLfQhjqoZ95ZZNTze5fp2Stjg9RhNlozVlY=;
+X-UUID: bbd27d6df67e4f15bb2e5beadf72561d-20200720
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <chuanjia.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1624071888; Mon, 20 Jul 2020 23:52:08 -0800
+ with ESMTP id 738746855; Mon, 20 Jul 2020 23:51:06 -0800
 Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 21 Jul 2020 00:52:08 -0700
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 21 Jul 2020 00:51:06 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 21 Jul 2020 15:52:07 +0800
+ 15.0.1497.2; Tue, 21 Jul 2020 15:51:04 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 21 Jul 2020 15:52:06 +0800
+ Transport; Tue, 21 Jul 2020 15:51:04 +0800
 From: chuanjia.liu <Chuanjia.Liu@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Lorenzo Pieralisi
  <lorenzo.pieralisi@arm.com>
-Subject: [PATCH v4 4/4] ARM: dts: mediatek: Modified MT7629 PCIe node
-Date: Tue, 21 Jul 2020 15:49:15 +0800
-Message-ID: <20200721074915.14516-5-Chuanjia.Liu@mediatek.com>
+Subject: [PATCH v4 2/4] PCI: mediatek: Use regmap to get shared pcie-cfg base
+Date: Tue, 21 Jul 2020 15:49:13 +0800
+Message-ID: <20200721074915.14516-3-Chuanjia.Liu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200721074915.14516-1-Chuanjia.Liu@mediatek.com>
 References: <20200721074915.14516-1-Chuanjia.Liu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 1C8769231B7694A929E4E309AFAADD21B55DE1474BB276B570CD2EF288409CC52000:8
+X-TM-SNTS-SMTP: 6BEC5FA2414E024BB522A8603F726C3CBEFF5822726D4DA9B05BACD628361AD52000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200721_035217_360734_98B18C51 
-X-CRM114-Status: UNSURE (   9.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200721_035115_418866_4A327C4E 
+X-CRM114-Status: GOOD (  14.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,87 +95,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove unused property and add pciecfg node.
+Use regmap to get shared pcie-cfg base and change
+the method to get pcie irq.
 
 Acked-by:Ryder Lee <ryder.lee@mediatek.com>
 Signed-off-by: chuanjia.liu <Chuanjia.Liu@mediatek.com>
 ---
- arch/arm/boot/dts/mt7629-rfb.dts |  3 ++-
- arch/arm/boot/dts/mt7629.dtsi    | 23 +++++++++++++----------
- 2 files changed, 15 insertions(+), 11 deletions(-)
+ drivers/pci/controller/pcie-mediatek.c | 25 ++++++++++++++++++-------
+ 1 file changed, 18 insertions(+), 7 deletions(-)
 
-diff --git a/arch/arm/boot/dts/mt7629-rfb.dts b/arch/arm/boot/dts/mt7629-rfb.dts
-index 9980c10c6e29..eb536cbebd9b 100644
---- a/arch/arm/boot/dts/mt7629-rfb.dts
-+++ b/arch/arm/boot/dts/mt7629-rfb.dts
-@@ -140,9 +140,10 @@
- 	};
- };
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index ebfa7d5a4e2d..659ff9a685b0 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -14,6 +14,7 @@
+ #include <linux/irqchip/chained_irq.h>
+ #include <linux/irqdomain.h>
+ #include <linux/kernel.h>
++#include <linux/mfd/syscon.h>
+ #include <linux/msi.h>
+ #include <linux/module.h>
+ #include <linux/of_address.h>
+@@ -23,6 +24,7 @@
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
++#include <linux/regmap.h>
+ #include <linux/reset.h>
  
--&pcie {
-+&pcie1 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pcie_pins>;
-+	status = "okay";
- };
+ #include "../pci.h"
+@@ -205,6 +207,7 @@ struct mtk_pcie_port {
+  * struct mtk_pcie - PCIe host information
+  * @dev: pointer to PCIe device
+  * @base: IO mapped register base
++ * @cfg: IO mapped register map for PCIe config
+  * @free_ck: free-run reference clock
+  * @mem: non-prefetchable memory resource
+  * @ports: pointer to PCIe port information
+@@ -214,6 +217,7 @@ struct mtk_pcie_port {
+ struct mtk_pcie {
+ 	struct device *dev;
+ 	void __iomem *base;
++	struct regmap *cfg;
+ 	struct clk *free_ck;
  
- &pciephy1 {
-diff --git a/arch/arm/boot/dts/mt7629.dtsi b/arch/arm/boot/dts/mt7629.dtsi
-index 5cbb3d244c75..94567307b842 100644
---- a/arch/arm/boot/dts/mt7629.dtsi
-+++ b/arch/arm/boot/dts/mt7629.dtsi
-@@ -360,16 +360,21 @@
- 			#reset-cells = <1>;
- 		};
+ 	struct list_head ports;
+@@ -650,7 +654,7 @@ static int mtk_pcie_setup_irq(struct mtk_pcie_port *port,
+ 		return err;
+ 	}
  
--		pcie: pcie@1a140000 {
-+		pciecfg: pciecfg@1a140000 {
-+			compatible = "mediatek,mt7629-pciecfg", "syscon";
-+			reg = <0x1a140000 0x1000>;
-+		};
+-	port->irq = platform_get_irq(pdev, port->slot);
++	port->irq = platform_get_irq_byname(pdev, "pcie_irq");
+ 	if (port->irq < 0)
+ 		return port->irq;
+ 
+@@ -676,12 +680,11 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+ 	if (!mem)
+ 		return -EINVAL;
+ 
+-	/* MT7622 platforms need to enable LTSSM and ASPM from PCIe subsys */
+-	if (pcie->base) {
+-		val = readl(pcie->base + PCIE_SYS_CFG_V2);
+-		val |= PCIE_CSR_LTSSM_EN(port->slot) |
+-		       PCIE_CSR_ASPM_L1_EN(port->slot);
+-		writel(val, pcie->base + PCIE_SYS_CFG_V2);
++	/* MT7622/MT7629 platforms need to enable LTSSM and ASPM. */
++	if (pcie->cfg) {
++		val = PCIE_CSR_LTSSM_EN(port->slot) |
++		      PCIE_CSR_ASPM_L1_EN(port->slot);
++		regmap_update_bits(pcie->cfg, PCIE_SYS_CFG_V2, val, val);
+ 	}
+ 
+ 	/* Assert all reset signals */
+@@ -987,6 +990,7 @@ static int mtk_pcie_subsys_powerup(struct mtk_pcie *pcie)
+ 	struct device *dev = pcie->dev;
+ 	struct platform_device *pdev = to_platform_device(dev);
+ 	struct resource *regs;
++	struct device_node *cfg_node;
+ 	int err;
+ 
+ 	/* get shared registers, which are optional */
+@@ -999,6 +1003,13 @@ static int mtk_pcie_subsys_powerup(struct mtk_pcie *pcie)
+ 		}
+ 	}
+ 
++	cfg_node = of_parse_phandle(dev->of_node, "mediatek,pcie-cfg", 0);
++	if (cfg_node) {
++		pcie->cfg = syscon_node_to_regmap(cfg_node);
++		if (IS_ERR(pcie->cfg))
++			return PTR_ERR(pcie->cfg);
++	}
 +
-+		pcie1: pcie@1a145000 {
- 			compatible = "mediatek,mt7629-pcie";
- 			device_type = "pci";
--			reg = <0x1a140000 0x1000>,
--			      <0x1a145000 0x1000>;
--			reg-names = "subsys","port1";
-+			reg = <0x1a145000 0x1000>;
-+			reg-names = "port1";
-+			mediatek,pcie-cfg = <&pciecfg>;
- 			#address-cells = <3>;
- 			#size-cells = <2>;
--			interrupts = <GIC_SPI 176 IRQ_TYPE_LEVEL_LOW>,
--				     <GIC_SPI 229 IRQ_TYPE_LEVEL_LOW>;
-+			interrupts = <GIC_SPI 229 IRQ_TYPE_LEVEL_LOW>;
-+			interrupt-names = "pcie_irq";
- 			clocks = <&pciesys CLK_PCIE_P1_MAC_EN>,
- 				 <&pciesys CLK_PCIE_P0_AHB_EN>,
- 				 <&pciesys CLK_PCIE_P1_AUX_EN>,
-@@ -390,21 +395,19 @@
- 			power-domains = <&scpsys MT7622_POWER_DOMAIN_HIF0>;
- 			bus-range = <0x00 0xff>;
- 			ranges = <0x82000000 0 0x20000000 0x20000000 0 0x10000000>;
-+			status = "disabled";
- 
--			pcie1: pcie@1,0 {
--				device_type = "pci";
-+			slot1: pcie@1,0 {
- 				reg = <0x0800 0 0 0 0>;
- 				#address-cells = <3>;
- 				#size-cells = <2>;
- 				#interrupt-cells = <1>;
- 				ranges;
--				num-lanes = <1>;
- 				interrupt-map-mask = <0 0 0 7>;
- 				interrupt-map = <0 0 0 1 &pcie_intc1 0>,
- 						<0 0 0 2 &pcie_intc1 1>,
- 						<0 0 0 3 &pcie_intc1 2>,
- 						<0 0 0 4 &pcie_intc1 3>;
--
- 				pcie_intc1: interrupt-controller {
- 					interrupt-controller;
- 					#address-cells = <0>;
+ 	pcie->free_ck = devm_clk_get(dev, "free_ck");
+ 	if (IS_ERR(pcie->free_ck)) {
+ 		if (PTR_ERR(pcie->free_ck) == -EPROBE_DEFER)
 -- 
 2.18.0
 _______________________________________________
