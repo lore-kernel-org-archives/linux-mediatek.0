@@ -2,67 +2,59 @@ Return-Path: <SRS0=w0xa=BA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F38EC433E4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 09:49:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D0BFAC433ED
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 11:30:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3B10E2072E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 09:49:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 95249206E3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 11:30:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MmPv9rTx";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="EgAhMgk3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B10E2072E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="t/F7LqcN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 95249206E3
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=yadavpratyush.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7OXWe47xwA/pLn7oXFhCZLPEPHinsNAEZLR6onG/XSE=; b=MmPv9rTxPouwMGJ78z0Nny+rl
-	NmGYfbUO4CIQsJHlVmEXRDF/e6vzVOSV809iDTTJQddSzy7gAwsZgPQpntTp4WL8UyleNUMcubE8E
-	ncFwtxCiyJeEfFDc9nPwQnAHp/Mm90FajqtUMOXK+vCnPGBm/7UpmWR6FQW8PJEiz0O2+/WuK/Tg0
-	Rb02sPJ0hfoyEGKK9ZzoOOocB4UWff6jAd+mKu++H0AeX3JMk8dxMBjPb5J+9o78X3W5bqb6iVQor
-	CI5vGTXiKOgMShOfPx+F3Z8FLelaO4qX3378+P/bVU4/ty8DtklljCc/XaXYw+hIwjZmWLFMaXeDB
-	U/ZNN5r7g==;
+	 bh=lh/hLRQeWyb5J99Gs3CS8XsPQmGFxoCTUsRXmgrK2yQ=; b=t/F7LqcNvFU+Z+SclEwtoVdbz
+	KiHKX/jQVpP4JTRbCk7Ml+QPsc11KynZHgDTS4It/M75ZvxJWL5iAg1rxBe3+vVUmjjNPvVpfe6Sh
+	bzS/50m31z+sYmnW8oIZRc0fkO16F7U7BtUfFCLZHqadp2OFN/+wlB8Jvtx0kK8eZN43PutMd8TZK
+	S7HQBPf9nsTIwXmYkpfG8UiJYrW5Rh/7PRwyJK1imgTSAVTRHvc9xaEOVugBJAxtg3gKD9hQbheB7
+	Q1kiLV4fNzFlD4+oFPORyZgSJwPV3UjTYd9I9kPZFKj/QqS+hQAsj+KQ1dJ2vn7wQx82GcWPWT2i1
+	8YywsvM6A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jxoti-0003bc-Fa; Tue, 21 Jul 2020 09:49:18 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jxqTH-0001ZI-2e; Tue, 21 Jul 2020 11:30:07 +0000
+Received: from relay10.mail.gandi.net ([217.70.178.230])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jxotd-0003a4-IC; Tue, 21 Jul 2020 09:49:14 +0000
-Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 416092072E;
- Tue, 21 Jul 2020 09:49:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595324952;
- bh=HBl3U/frwOt22N3pqrjLjSOH31yq1r1eFl3vgEFJ7KU=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=EgAhMgk3P2S9xtaT8KwyEsD8lQixAzJAQTEF8OrXQgw/MNtxENV+YlWrqW5EYzuUp
- qQWasjc85rxrgpep4PmBIyYM6ycTEvZAMwm2NVzj3mQi/6U0griHMWn9qCTC6EE/UL
- L74Cu6Pb5+vHL7pnSUv83VOEYTn8Huqaa/T3u1eQ=
-Date: Tue, 21 Jul 2020 10:48:59 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Leilk Liu <leilk.liu@mediatek.com>
-Subject: Re: [PATCH] dt-bindings: spi: update bindings for MT8192 SoC
-Message-ID: <20200721094859.GB4845@sirena.org.uk>
-References: <20200721024819.7150-1-leilk.liu@mediatek.com>
+ id 1jxqTB-0001Vs-SC; Tue, 21 Jul 2020 11:30:03 +0000
+Received: from localhost (unknown [106.76.68.110])
+ (Authenticated sender: me@yadavpratyush.com)
+ by relay10.mail.gandi.net (Postfix) with ESMTPSA id B83E924000E;
+ Tue, 21 Jul 2020 11:29:54 +0000 (UTC)
+Date: Tue, 21 Jul 2020 16:59:51 +0530
+From: Pratyush Yadav <me@yadavpratyush.com>
+To: Tudor.Ambarus@microchip.com
+Subject: Re: [PATCH v10 05/17] mtd: spi-nor: add support for DTR protocol
+Message-ID: <20200721112951.rngfk7njubcsahzp@yadavpratyush.com>
+References: <20200623183030.26591-1-p.yadav@ti.com>
+ <20200623183030.26591-6-p.yadav@ti.com>
+ <fbb3d7e7-75ed-dbf6-a975-2ae871bc9fbf@microchip.com>
 MIME-Version: 1.0
-In-Reply-To: <20200721024819.7150-1-leilk.liu@mediatek.com>
-X-Cookie: I'm also against BODY-SURFING!!
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Disposition: inline
+In-Reply-To: <fbb3d7e7-75ed-dbf6-a975-2ae871bc9fbf@microchip.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200721_054913_673574_8280413D 
-X-CRM114-Status: UNSURE (   9.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200721_073002_142833_3D48767F 
+X-CRM114-Status: GOOD (  48.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,62 +66,418 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org,
- linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============8552807673600500248=="
+Cc: alexandre.belloni@bootlin.com, vigneshr@ti.com, richard@nod.at,
+ nsekhar@ti.com, Nicolas.Ferre@microchip.com, boris.brezillon@collabora.com,
+ michal.simek@xilinx.com, Ludovic.Desroches@microchip.com, broonie@kernel.org,
+ linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ miquel.raynal@bootlin.com, matthias.bgg@gmail.com,
+ linux-mediatek@lists.infradead.org, linux-spi@vger.kernel.org, p.yadav@ti.com,
+ linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Tudor,
 
---===============8552807673600500248==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="uZ3hkaAS1mZxFaxD"
-Content-Disposition: inline
+On 07/07/20 05:37PM, Tudor.Ambarus@microchip.com wrote:
+> Hi, Pratyush,
+> 
+> On 6/23/20 9:30 PM, Pratyush Yadav wrote:
+> > EXTERNAL EMAIL: Do not click links or open attachments unless you know the content is safe
+> > 
+> > Double Transfer Rate (DTR) is SPI protocol in which data is transferred
+> > on each clock edge as opposed to on each clock cycle. Make
+> > framework-level changes to allow supporting flashes in DTR mode.
+> > 
+> > Right now, mixed DTR modes are not supported. So, for example a mode
+> > like 4S-4D-4D will not work. All phases need to be either DTR or STR.
+> > 
+> > Signed-off-by: Pratyush Yadav <p.yadav@ti.com>
+> > ---
+> >  drivers/mtd/spi-nor/core.c  | 305 ++++++++++++++++++++++++++++-------- 
+> >  drivers/mtd/spi-nor/core.h  |   6 +
+> >  drivers/mtd/spi-nor/sfdp.c  |   9 +-
+> >  include/linux/mtd/spi-nor.h |  51 ++++--
+> >  4 files changed, 295 insertions(+), 76 deletions(-)
+> > 
+> > diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
+> > index 0369d98b2d12..22a3832b83a6 100644
+> > --- a/drivers/mtd/spi-nor/core.c
+> > +++ b/drivers/mtd/spi-nor/core.c
+> > @@ -40,6 +40,76 @@
+> > 
+> >  #define SPI_NOR_MAX_ADDR_WIDTH 4
+> > 
+> > +/**
+> > + * spi_nor_get_cmd_ext() - Get the command opcode extension based on the
+> > + *                        extension type.
+> > + * @nor:               pointer to a 'struct spi_nor'
+> > + * @op:                        pointer to the 'struct spi_mem_op' whose properties
+> > + *                     need to be initialized.
+> > + *
+> > + * Right now, only "repeat" and "invert" are supported.
+> > + *
+> > + * Return: The opcode extension.
+> > + */
+> > +static u8 spi_nor_get_cmd_ext(const struct spi_nor *nor,
+> > +                             const struct spi_mem_op *op)
+> > +{
+> > +       switch (nor->cmd_ext_type) {
+> > +       case SPI_NOR_EXT_INVERT:
+> > +               return ~op->cmd.opcode;
+> > +
+> > +       case SPI_NOR_EXT_REPEAT:
+> > +               return op->cmd.opcode;
+> > +
+> > +       default:
+> > +               dev_err(nor->dev, "Unknown command extension type\n");
+> > +               return 0;
+> > +       }
+> > +}
+> > +
+> > +/**
+> > + * spi_nor_spimem_setup_op() - Set up common properties of a spi-mem op.
+> > + * @nor:               pointer to a 'struct spi_nor'
+> > + * @op:                        pointer to the 'struct spi_mem_op' whose properties
+> > + *                     need to be initialized.
+> > + * @proto:             the protocol from which the properties need to be set.
+> > + */
+> > +void spi_nor_spimem_setup_op(const struct spi_nor *nor,
+> > +                            struct spi_mem_op *op,
+> > +                            const enum spi_nor_protocol proto)
+> 
+> There's not much to set for the REG operations.
+> 
+> > +{
+> > +       u8 ext;
+> > +
+> > +       op->cmd.buswidth = spi_nor_get_protocol_inst_nbits(proto);
+> > +
+> > +       if (op->addr.nbytes)
+> > +               op->addr.buswidth = spi_nor_get_protocol_addr_nbits(proto);
+> > +
+> > +       if (op->dummy.nbytes)
+> > +               op->dummy.buswidth = spi_nor_get_protocol_addr_nbits(proto);
+> > +
+> > +       if (op->data.nbytes)
+> > +               op->data.buswidth = spi_nor_get_protocol_data_nbits(proto);
+> 
+> How about getting rid of the above and
+> 
+> > +
+> > +       if (spi_nor_protocol_is_dtr(proto)) {
+> 
+> introduce a spi_nor_spimem_setup_dtr_op() just for the body of this if?
 
+What benefit do we get with that other than skipping a couple of if() 
+checks? The downside is that we would have to then replicate all this 
+code to assign buswidth everywhere, including in spi_nor_read_sr() and 
+spi_nor_read_fsr() adding to more boilerplate.
 
---uZ3hkaAS1mZxFaxD
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+If we change anything about spi-mem ops in the future we would then 
+again have to hunt and peck all places where we create spi-mem ops and 
+update them.
 
-On Tue, Jul 21, 2020 at 10:48:19AM +0800, Leilk Liu wrote:
-> From: "leilk.liu" <leilk.liu@mediatek.com>
->=20
-> Add a DT binding documentation for the MT8192 soc.
+For example, I was recently experimenting with a mechanism to tell 
+controllers the maximum supported frequency for an op (xSPI says read 
+SFDP should support at least 50MHz operation so we want to make sure 
+controllers don't exceed that speed). A max speed of 0 would mean 
+controllers can go as fast as they wish (how it is done currently). 
+Having a central function to set up ops made it a 1 line change to set 
+the speed to 0 for all ops, and then we can set it to 50MHz for read 
+SFDP. The same thing without it would have me copying that line in 10-15 
+places.
 
-I'd expect to see a matching driver patch.
+So unless there are any significant reasons to avoid having this, I 
+think it is a good idea to keep it.
 
---uZ3hkaAS1mZxFaxD
-Content-Type: application/pgp-signature; name="signature.asc"
+> > +               /*
+> > +                * spi-mem supports mixed DTR modes, but right now we can only
+> > +                * have all phases either DTR or STR. IOW, spi-mem can have
+> nit: SPIMEM
+> > +                * something like 4S-4D-4D, but spi-nor can't. So, set all 4
+> nit: SPI NOR
+> > +                * phases to either DTR or STR.
+> > +                */
+> > +               op->cmd.dtr = op->addr.dtr = op->dummy.dtr
+> > +                              = op->data.dtr = true;
+> > +
+> > +               /* 2 bytes per clock cycle in DTR mode. */
+> > +               op->dummy.nbytes *= 2;
+> > +
+> > +               ext = spi_nor_get_cmd_ext(nor, op);
+> > +               op->cmd.opcode = (op->cmd.opcode << 8) | ext;
+> > +               op->cmd.nbytes = 2;
+> > +       }
+> > +}
+> > +
+> >  /**
+> >   * spi_nor_spimem_bounce() - check if a bounce buffer is needed for the data
+> >   *                           transfer
+> > @@ -104,14 +174,12 @@ static ssize_t spi_nor_spimem_read_data(struct spi_nor *nor, loff_t from,
+> >         ssize_t nbytes;
+> >         int error;
+> > 
+> > -       /* get transfer protocols. */
+> > -       op.cmd.buswidth = spi_nor_get_protocol_inst_nbits(nor->read_proto);
+> > -       op.addr.buswidth = spi_nor_get_protocol_addr_nbits(nor->read_proto);
+> > -       op.dummy.buswidth = op.addr.buswidth;
+> > -       op.data.buswidth = spi_nor_get_protocol_data_nbits(nor->read_proto);
+> > +       spi_nor_spimem_setup_op(nor, &op, nor->read_proto);
+> 
+> Here we would keep the code as it were.
+> > 
+> >         /* convert the dummy cycles to the number of bytes */
+> >         op.dummy.nbytes = (nor->read_dummy * op.dummy.buswidth) / 8;
+> > +       if (spi_nor_protocol_is_dtr(nor->read_proto))
+> > +               op.dummy.nbytes *= 2;
+> 
+> And replace these 2 lines with:
+> 	if (spi_nor_protocol_is_dtr(nor->read_proto))
+> 		spi_nor_spimem_setup_dtr_op(nor, &op, nor->read_proto)
+> > 
+> >         usebouncebuf = spi_nor_spimem_bounce(nor, &op);
+> > 
+> > @@ -169,13 +237,11 @@ static ssize_t spi_nor_spimem_write_data(struct spi_nor *nor, loff_t to,
+> >         ssize_t nbytes;
+> >         int error;
+> > 
+> > -       op.cmd.buswidth = spi_nor_get_protocol_inst_nbits(nor->write_proto);
+> > -       op.addr.buswidth = spi_nor_get_protocol_addr_nbits(nor->write_proto);
+> > -       op.data.buswidth = spi_nor_get_protocol_data_nbits(nor->write_proto);
+> > -
+> >         if (nor->program_opcode == SPINOR_OP_AAI_WP && nor->sst_write_second)
+> >                 op.addr.nbytes = 0;
+> > 
+> > +       spi_nor_spimem_setup_op(nor, &op, nor->write_proto);
+> > +
+> >         if (spi_nor_spimem_bounce(nor, &op))
+> >                 memcpy(nor->bouncebuf, buf, op.data.nbytes);
+> > 
+> > @@ -227,10 +293,16 @@ int spi_nor_write_enable(struct spi_nor *nor)
+> >                                    SPI_MEM_OP_NO_DUMMY,
+> >                                    SPI_MEM_OP_NO_DATA);
+> > 
+> > +               spi_nor_spimem_setup_op(nor, &op, nor->reg_proto);
+> 
+> For the reg operation we can get rid of the extra checks that were in
+> spi_nor_spimem_setup_op and simply do:
+> 
+> 		if (spi_nor_protocol_is_dtr(proto))
+> 			spi_nor_spimem_setup_dtr_op()
+> 
+> > +
+> >                 ret = spi_mem_exec_op(nor->spimem, &op);
+> >         } else {
+> > -               ret = nor->controller_ops->write_reg(nor, SPINOR_OP_WREN,
+> > -                                                    NULL, 0);
+> > +               if (spi_nor_protocol_is_dtr(nor->reg_proto))
+> > +                       ret = -ENOTSUPP;
+> > +               else
+> > +                       ret = nor->controller_ops->write_reg(nor,
+> > +                                                            SPINOR_OP_WREN,
+> > +                                                            NULL, 0);
+> 
+> Would you introduce helpers for the controller ops, like Boris
+> did in the following patch?
+> https://patchwork.ozlabs.org/project/linux-mtd/patch/20181012084825.23697-10-boris.brezillon@bootlin.com/
+> 
+> How about spi_nor_controller_ops_read_reg()
+> and spi_nor_controller_ops_write_reg() instead?
 
------BEGIN PGP SIGNATURE-----
+It would get rid of the boilerplate so I think it is a good idea.
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl8WugsACgkQJNaLcl1U
-h9DNOAf/U7WSHzWn6QeIOU6cZmJEboD/Jpm+YlFFOmeZ09Tt588WYDWCW7cfjiTE
-JaFOMr53LA1OdW8WeKXklihwqEMP3dXcKdEpNbtVbU32PrCRAxj4XyrBxaBHEoKn
-LzcMAcpmLngZAI6/1o9qyQte2d9r2EMNtiJz8XkWO4N5ZlLf04x0tD1TUqgwz/4h
-lGTCCLPmVFbKZzU/V7QW2BgUKu/EEmVyhZx+EDQoUusWET66R92OHTMOJQil+aPC
-XwPhYt9Lynxv98qUDDhxjfaKpBQqEk2wLSBHJ2xNDKPQes9Ea+CabdvHp5Jn92An
-0sYM9AzJTTmbxHc4MBM51af5Ny5/jQ==
-=lcjN
------END PGP SIGNATURE-----
+> cut
+> 
+> > @@ -1144,7 +1291,11 @@ static int spi_nor_erase_sector(struct spi_nor *nor, u32 addr)
+> >                                    SPI_MEM_OP_NO_DUMMY,
+> >                                    SPI_MEM_OP_NO_DATA);
+> > 
+> > +               spi_nor_spimem_setup_op(nor, &op, nor->write_proto);
+> > +
+> >                 return spi_mem_exec_op(nor->spimem, &op);
+> > +       } else if (spi_nor_protocol_is_dtr(nor->write_proto)) {
+> > +               return -ENOTSUPP;
+> >         } else if (nor->controller_ops->erase) {
+> >                 return nor->controller_ops->erase(nor, addr);
+> >         }
+> 
+> here you would need a helper: spi_nor_controller_ops_erase()
 
---uZ3hkaAS1mZxFaxD--
+Ok.
+ 
+> cut
+> 
+> > @@ -2368,12 +2517,16 @@ spi_nor_spimem_adjust_hwcaps(struct spi_nor *nor, u32 *hwcaps)
+> >         struct spi_nor_flash_parameter *params = nor->params;
+> >         unsigned int cap;
+> > 
+> > -       /* DTR modes are not supported yet, mask them all. */
+> > -       *hwcaps &= ~SNOR_HWCAPS_DTR;
+> > -
+> >         /* X-X-X modes are not supported yet, mask them all. */
+> >         *hwcaps &= ~SNOR_HWCAPS_X_X_X;
+> > 
+> > +       /*
+> > +        * If the reset line is broken, we do not want to enter a stateful
+> > +        * mode.
+> > +        */
+> > +       if (nor->flags & SNOR_F_BROKEN_RESET)
+> > +               *hwcaps &= ~(SNOR_HWCAPS_X_X_X | SNOR_HWCAPS_X_X_X_DTR);
+> 
+> A dedicated reset line is not enough for flashes that keep their state
+> in non-volatile bits. Since we can't protect from unexpected crashes in
+> the non volatile state case, we should enter these modes only with an
+> explicit request, i.e. an optional DT property: "update-nonvolatile-state",
+> or something similar.
 
+I wrote this patch with the assumption that we won't be supporting 
+non-volatile configuration as of now. In the previous discussions we 
+came to the conclusion that it is not easy to detect the flash if it 
+boots in any mode other than 1S-1S-1S [0]. So if we update non-volatile 
+state, the flash would be useless after a reboot because we won't be 
+able to detect it in 8D mode. It doesn't matter if the reset line is 
+connected or not because it will reset the flash to the non-volatile 
+state, and we can't detect it from the non-volatile state.
 
---===============8552807673600500248==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> For the volatile state case, we can parse the SFDP SCCR map, save if we
+> can enter stateful modes in a volatile way, and if yes allow the entering.
+
+If we are not support volatile configurations, the reset line is enough 
+to take care of unexpected resets, no? I don't see any need to parse 
+SCCR map just for this.
+
+> Do the flashes that you played with define the SFDP SCCR map?
+
+FWIW, the Cypress S28HS512T flash does but the Micron MT35XU512ABA does 
+not.
+ 
+> > +
+> >         for (cap = 0; cap < sizeof(*hwcaps) * BITS_PER_BYTE; cap++) {
+> >                 int rdidx, ppidx;
+> > 
+> > @@ -2628,7 +2781,7 @@ static int spi_nor_default_setup(struct spi_nor *nor,
+> >                  * controller directly implements the spi_nor interface.
+> >                  * Yet another reason to switch to spi-mem.
+> >                  */
+> > -               ignored_mask = SNOR_HWCAPS_X_X_X;
+> > +               ignored_mask = SNOR_HWCAPS_X_X_X | SNOR_HWCAPS_X_X_X_DTR;
+> >                 if (shared_mask & ignored_mask) {
+> >                         dev_dbg(nor->dev,
+> >                                 "SPI n-n-n protocols are not supported.\n");
+> > @@ -2774,11 +2927,25 @@ static void spi_nor_info_init_params(struct spi_nor *nor)
+> >                                           SNOR_PROTO_1_1_8);
+> >         }
+> > 
+> > +       if (info->flags & SPI_NOR_OCTAL_DTR_READ) {
+> 
+> Why do we need this flag? Can't we determine if the flash supports
+> octal DTR by parsing SFDP?
+
+For Cypress S28HS512T, we can since it is xSPI compliant. We can't do 
+that for Micron MT35XU512ABA since it is not xSPI compliant.
+
+> > +               params->hwcaps.mask |= SNOR_HWCAPS_READ_8_8_8_DTR;
+> > +               spi_nor_set_read_settings(&params->reads[SNOR_CMD_READ_8_8_8_DTR],
+> > +                                         0, 20, SPINOR_OP_READ_FAST,
+> > +                                         SNOR_PROTO_8_8_8_DTR);
+> > +       }
+> > +
+> >         /* Page Program settings. */
+> >         params->hwcaps.mask |= SNOR_HWCAPS_PP;
+> >         spi_nor_set_pp_settings(&params->page_programs[SNOR_CMD_PP],
+> >                                 SPINOR_OP_PP, SNOR_PROTO_1_1_1);
+> > 
+> > +       /*
+> > +        * Since xSPI Page Program opcode is backward compatible with
+> > +        * Legacy SPI, use Legacy SPI opcode there as well.
+> > +        */
+> > +       spi_nor_set_pp_settings(&params->page_programs[SNOR_CMD_PP_8_8_8_DTR],
+> > +                               SPINOR_OP_PP, SNOR_PROTO_8_8_8_DTR);
+> > +
+> 
+> This looks fishy. You haven't updated the hwcaps.mask, these pp settings never
+> get selected?
+
+The problem here is that I don't see any field/table in SFDP that can 
+tell us {if,which} 8D-8D-8D program commands are supported. The xSPI 
+spec says that "The program commands provide SPI backward compatible 
+commands for programming data...".
+
+So we populate the 8D page program opcodes here (and in 4bait parsing) 
+using the 1S opcodes. The flashes have to enable the hwcap in fixup 
+hooks.
+
+As an alternative, maybe we can introduce the SPI_NOR_OCTAL_DTR_PP flag 
+that can enable the hwcap here? Thoughts?
+
+> >         /*
+> >          * Sector Erase settings. Sort Erase Types in ascending order, with the
+> >          * smallest erase size starting at BIT(0).
+> > @@ -2886,7 +3053,8 @@ static int spi_nor_init_params(struct spi_nor *nor)
+> > 
+> >         spi_nor_manufacturer_init_params(nor);
+> > 
+> > -       if ((nor->info->flags & (SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ)) &&
+> > +       if ((nor->info->flags & (SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
+> > +                                SPI_NOR_OCTAL_READ | SPI_NOR_OCTAL_DTR_READ)) &&
+> >             !(nor->info->flags & SPI_NOR_SKIP_SFDP))
+> >                 spi_nor_sfdp_init_params(nor);
+> > 
+> > @@ -2948,7 +3116,9 @@ static int spi_nor_init(struct spi_nor *nor)
+> >                 return err;
+> >         }
+> > 
+> > -       if (nor->addr_width == 4 && !(nor->flags & SNOR_F_4B_OPCODES)) {
+> > +       if (nor->addr_width == 4 &&
+> > +           !(nor->info->flags & SPI_NOR_OCTAL_DTR_READ) &&
+> 
+> Why is the Octal DTR read exempted?
+
+It is based on the assumption explained below that 8D mode will always 
+use 4-byte addresses so we don't need to explicitly enable 8D mode. 
+Although I think maybe we should exempt all flashes that support DTR 
+mode?
+
+> > +           !(nor->flags & SNOR_F_4B_OPCODES)) {
+> >                 /*
+> >                  * If the RESET# pin isn't hooked up properly, or the system
+> >                  * otherwise doesn't perform a reset command in the boot
+> > @@ -3007,6 +3177,9 @@ static int spi_nor_set_addr_width(struct spi_nor *nor)
+> >  {
+> >         if (nor->addr_width) {
+> >                 /* already configured from SFDP */
+> > +       } else if (spi_nor_protocol_is_dtr(nor->read_proto)) {
+> > +                /* Always use 4-byte addresses in DTR mode. */
+> > +               nor->addr_width = 4;
+> 
+> Why? DTR with 3 byte addr width should be possible too.
+
+Should it be? What would happen to the half cycle left over? Do we then 
+start the dummy phase in the middle of the cycle? We would also have to 
+start the data phase in the middle of a cycle as well and end the 
+transaction with half a cycle left over.
+
+AFAIK, the controller I tested with (Cadence QSPI) does not support 
+this. Similarly, the two flashes this series adds support for, Cypress 
+S28HS512T and Micron MT35XU512ABA, don't support 3-byte address in 8D 
+mode. I'm not sure if there are any flashes or controllers that do.
+ 
+> >         } else if (nor->info->addr_width) {
+> >                 nor->addr_width = nor->info->addr_width;
+> >         } else if (nor->mtd.size > 0x1000000) {
+> 
+> Cheers,
+> ta
+
+[0] https://lore.kernel.org/linux-mtd/20200228093658.zc3uifqg4zruokq3@ti.com/
+
+-- 
+Regards,
+Pratyush Yadav
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============8552807673600500248==--
-
