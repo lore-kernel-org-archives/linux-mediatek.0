@@ -2,89 +2,79 @@ Return-Path: <SRS0=w0xa=BA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AE25AC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 03:22:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 77B2AC433E6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 03:29:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7918E207DD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 03:22:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 456B12080D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 03:29:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fzOo5E2Y";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="jYPX3N/C"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7918E207DD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ow/ll+Fl";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="HbebthKh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 456B12080D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=THU6SxUS6V7drpAI5Cg4SxYAfXJMpNcXskNbKrsJsME=; b=fzOo5E2YSeUL0BQwqpNMpshJY
-	7huUalV7RM1MhZG76vnmFL94N/Hz8IraEbs2cOB8mZ9OE9F2pItXuJJRzUn5cxAvXlJF2Aqj/JcV/
-	cEEp8QbYCcGXlBlpaJnKLdL1tNZrrsPFT6q2atwINO5zvc1SkW1u10kTIK4azXeJeD2VW1gQW6W0t
-	V7KKJVopRotGYqvSLz021i4Q8YvPCcvPinoKy8mJJO3ob3o2SOZ6Ms41YOodY4/kpt0GRD8llit41
-	Npm3FjoU+QhWsckxcUPCc0jq2/lgUsam4ux0vKbcbbYDh7kT3gvvxfG5wzpV6BXFSL9dElF+Ynu2X
-	7EVGPjcHQ==;
+	 bh=njUsqxNgnIM0z31pCPuKuZi/j3AZwM0ZB/SPEa2RyzI=; b=ow/ll+Fl2u+w+wUDLdCSkAwTC
+	oeDWIOTBBm3LzpraJwOYDMt9mGy7kT+X9IC7+ezlv2YP5IvNV39VV56bCNZdSc/65DCpmVGVTQ8Zu
+	vg6hZJ0j5W+oXHD0qBJBx8OveCi2c1ch+WXQ+u5F9Sh0EIvEJshFbtdNkrlN/j1R0bXbKxTck+q3g
+	8JTda2Ke7ZHKXu+RvVbh5Tfu6MM+RCpB9tXaDuIUUJ0D/h5oWf9XVkqVYw6C61U46P4plxoSXOrIc
+	WRv6qIxw72aahnblXNeTr7UfKz4jknBbsGUfWn5I1HULmWPoPxVQFVCWqIGWf6Rysh0Dj/OK1WXhV
+	Y6YV5cTrA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jxir4-0000Qp-0U; Tue, 21 Jul 2020 03:22:10 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1jxixw-0001eL-6Q; Tue, 21 Jul 2020 03:29:16 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jxiqx-0000O7-Ka
- for linux-mediatek@lists.infradead.org; Tue, 21 Jul 2020 03:22:05 +0000
-Received: by mail-pg1-x541.google.com with SMTP id p3so11301141pgh.3
- for <linux-mediatek@lists.infradead.org>; Mon, 20 Jul 2020 20:22:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=ijZcvY+9HThogPQGU1zhNOmg7ddSlcdPOxTGsylYukU=;
- b=jYPX3N/CYwrP8xdNoZm6Jr5f6CFeNAOzox2cznLatSc6OzyK71rLS2Q01WaRr9xjWw
- EwjoYXhjMJGl88p2OYXPm0Y8GrymObK4q3Gr6KyQpSpctoA/7Pz+kGPUQRqh7DMbKbm1
- xRCj9BQnbsXzzoeJ7amj+1JJGbQXy9NWlFc+IZ1N8aPvU7v0jcG/yvTmBLvVaoYMn+Vs
- OTZa5qdb9I06AvZg1of6xQzxglhtCqYrU6lupDFQh7DRm5dr17cb0rv0RNJgjw8OOexG
- MTU2rlNhDi+qC/Si0jn6sbgB75I26/HWknjIVwFgUnc2OBePW4wx3JVfQgpg4O2EvPOo
- o8vQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=ijZcvY+9HThogPQGU1zhNOmg7ddSlcdPOxTGsylYukU=;
- b=jTu3cNgM4tHmlXeztmkdbDbwKKtd5qw/Nn8cL+qHcjKQUULLP7LhvXM/0k7gtwi+mj
- L7O+24V9JgdBOq4Z0DWu0hF7Y0QCqFvrd9S7Z3RTYrPbbt17iCKHoSHK5Qld91XOuk1+
- rtDinJrLOAgk/lwtLgBJRi4ga1tPOV4IXBd4zMKTxu/HsP5mO9UGN000Bd6hmyqqr6hc
- V8lYSWdBXgLHpFAigHngPOU7BXYXP76FhWlfR7YQeoy/6/3MmQX+vq4IYigmYMsSd7yB
- GEjv0k9gyEezVAB4tsUU3Dep8GTNFmmZpVv7piYmybMRmZGCsNVkFCL6qnbG4/ypgWeH
- jH5g==
-X-Gm-Message-State: AOAM532G9yYmYSDW/HaTke1MpjmDmRQIrNArfFE5U13MDrhrDUJ5aSfN
- o+A4de8thJYH564ubEJAlig8QQ==
-X-Google-Smtp-Source: ABdhPJx61jmy8+lIZewjXQ+YePZ0gDxMGB+c3iKHDGI3JWW31i4NNS2itBhvkd+VWS/UiHU4wWEQKw==
-X-Received: by 2002:a65:408b:: with SMTP id t11mr20670837pgp.407.1595301721432; 
- Mon, 20 Jul 2020 20:22:01 -0700 (PDT)
-Received: from localhost ([223.179.133.67])
- by smtp.gmail.com with ESMTPSA id t1sm16787715pgq.66.2020.07.20.20.21.59
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 20 Jul 2020 20:22:00 -0700 (PDT)
-Date: Tue, 21 Jul 2020 08:51:49 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Amit Kucheria <amit.kucheria@linaro.org>
-Subject: Re: [PATCH v2] dt-bindings: thermal: Get rid of thermal.txt and
- replace references
-Message-ID: <20200721032149.prgxcmwjxonml4u6@vireshk-mac-ubuntu>
-References: <e9aacd33071a00568b67e110fa3bcc4d86d3e1e4.1595245166.git.amit.kucheria@linaro.org>
+ id 1jxixr-0001bM-20; Tue, 21 Jul 2020 03:29:12 +0000
+X-UUID: a7629f6ce0f2476db315468528b2d877-20200720
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=p5edfquzkRU6ceVF49k8bWT2pebXpZwumAzJ3c92oME=; 
+ b=HbebthKhqHugyLTk15GvvmaBqFjYhFtClpzYngY/SmiLNBq/GO0AdNBaIn6OJ4ukjfPqo5PAxuKOZ/tIYTUrEMmUPoqvdfZmVZszdBAke37RjKmcJRXjtL9ocfe1pBuCoK2wxM3Dt6x65LkKHdSdOy8ABs8E5i066/qJw25bsTo=;
+X-UUID: a7629f6ce0f2476db315468528b2d877-20200720
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1775008252; Mon, 20 Jul 2020 19:29:02 -0800
+Received: from MTKMBS32N1.mediatek.inc (172.27.4.71) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 20 Jul 2020 20:29:03 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS32N1.mediatek.inc
+ (172.27.4.71) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 21 Jul 2020 11:28:59 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 21 Jul 2020 11:28:58 +0800
+Message-ID: <1595302076.16172.49.camel@mhfsdcap03>
+Subject: Re: Re: [PATCH 04/21] dt-binding: mediatek: Add binding for mt8192
+ IOMMU and SMI
+From: Yong Wu <yong.wu@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+Date: Tue, 21 Jul 2020 11:27:56 +0800
+In-Reply-To: <20200720231621.GA3106350@bogus>
+References: <20200711064846.16007-1-yong.wu@mediatek.com>
+ <20200711064846.16007-5-yong.wu@mediatek.com>
+ <20200720231621.GA3106350@bogus>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <e9aacd33071a00568b67e110fa3bcc4d86d3e1e4.1595245166.git.amit.kucheria@linaro.org>
-User-Agent: NeoMutt/20170609 (1.8.3)
+X-TM-SNTS-SMTP: D49D8E756E183EDB1F2B9E9AB572BFF9AED4A4D42C576D30129F7E826088FE652000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200720_232204_110206_916F0287 
-X-CRM114-Status: GOOD (  13.77  )
+X-CRM114-CacheID: sfid-20200720_232911_306934_CCE3A001 
+X-CRM114-Status: GOOD (  15.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,64 +86,78 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mans Rullgard <mans@mansr.com>, Heiko Stuebner <heiko@sntech.de>,
- Yangtao Li <tiny.windzz@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, linux-tegra@vger.kernel.org,
- Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh@kernel.org>,
- Amit Kucheria <amit.kucheria@verdurent.com>,
- Florian Fainelli <f.fainelli@gmail.com>, daniel.lezcano@linaro.org,
- Jonathan Hunter <jonathanh@nvidia.com>, Vasily Khoruzhick <anarsoul@gmail.com>,
- linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>,
- Andy Gross <agross@kernel.org>, bcm-kernel-feedback-list@broadcom.com,
- linux-arm-msm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>,
- Guenter Roeck <linux@roeck-us.net>, Stefan Wahren <wahrenst@gmx.net>,
- devicetree@vger.kernel.org, Jean Delvare <jdelvare@suse.com>,
- Marc Gonzalez <marc.w.gonzalez@free.fr>, Ray Jui <rjui@broadcom.com>,
- Maxime Ripard <mripard@kernel.org>, linux-mediatek@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Talel Shenhar <talel@amazon.com>,
- linux-arm-kernel@lists.infradead.org, linux-hwmon@vger.kernel.org,
- Scott Branden <sbranden@broadcom.com>, linux-pm@vger.kernel.org,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org,
- lukasz.luba@arm.com, Sudeep Holla <sudeep.holla@arm.com>,
- Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
+ Nicolas Boichat <drinkcat@chromium.org>, cui.zhang@mediatek.com,
+ srv_heupstream@mediatek.com, Tomasz
+ Figa <tfiga@google.com>, Will Deacon <will@kernel.org>,
+ Joerg Roedel <joro@8bytes.org>, linux-kernel@vger.kernel.org,
+ Evan Green <evgreen@chromium.org>, chao.hao@mediatek.com,
+ iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, ming-fan.chen@mediatek.com,
+ anan.sun@mediatek.com, Robin Murphy <robin.murphy@arm.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20-07-20, 17:23, Amit Kucheria wrote:
-> Now that we have yaml bindings for the thermal subsystem, get rid of the
-> old bindings (thermal.txt).
+On Mon, 2020-07-20 at 17:16 -0600, Rob Herring wrote:
+> On Sat, Jul 11, 2020 at 02:48:29PM +0800, Yong Wu wrote:
+> > This patch adds decriptions for mt8192 IOMMU and SMI.
+> > 
+> > mt8192 also is MTK IOMMU gen2 which uses ARM Short-Descriptor translation
+> > table format. The M4U-SMI HW diagram is as below:
+> > 
+> >                           EMI
+> >                            |
+> >                           M4U
+> >                            |
+> >                       ------------
+> >                        SMI Common
+> >                       ------------
+> >                            |
+> >   +-------+------+------+----------------------+-------+
+> >   |       |      |      |       ......         |       |
+> >   |       |      |      |                      |       |
+> > larb0   larb1  larb2  larb4     ......      larb19   larb20
+> > disp0   disp1   mdp    vdec                   IPE      IPE
+> > 
+> > All the connections are HW fixed, SW can NOT adjust it.
+> > 
+> > mt8192 M4U support 0~16GB iova range. we preassign different engines
+> > into different iova ranges:
+> > 
+> > domain-id  module     iova-range                  larbs
+> >    0       disp        0 ~ 4G                      larb0/1
+> >    1       vcodec      4G ~ 8G                     larb4/5/7
+> >    2       cam/mdp     8G ~ 12G             larb2/9/11/13/14/16/17/18/19/20
+> >    3       CCU0    0x4000_0000 ~ 0x43ff_ffff     larb13: port 9/10
+> >    4       CCU1    0x4400_0000 ~ 0x47ff_ffff     larb14: port 4/5
 > 
-> Replace all references to thermal.txt in the Documentation with a link
-> to the appropriate YAML bindings using the following search and replace
-> pattern:
->  - If the reference is specific to the thermal-sensor-cells property,
->  replace with a pointer to thermal-sensor.yaml
->  - If the reference is to the cooling-cells property, replace with a
->  pointer to thermal-cooling-devices.yaml
->  - If the reference is generic thermal bindings, replace with a
->  reference to thermal*.yaml.
-> 
-> Signed-off-by: Amit Kucheria <amit.kucheria@linaro.org>
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> 
-> ---
-> Changes since v1:
->  - Rebase onto v.5.8-rc6 to make it apply again
->  - Fix cpufreq/nvidia,tegra20-cpufreq.txt
->  - Fix bindings/arm/freescale/fsl,scu.txt
-> 
-> 
->  .../bindings/cpufreq/cpufreq-dt.txt           |   3 +-
->  .../bindings/cpufreq/cpufreq-mediatek.txt     |   4 +-
->  .../cpufreq/nvidia,tegra20-cpufreq.txt        |   2 +-
+> You probably want to use dma-ranges for defining these 
+> address restrictions. 
 
-Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+Yes. Please see the commit message of [18/21] in this patchset.
 
--- 
-viresh
+> 
+> How is the domain-id used or needed?
+
+Here we assign different larb/ports in different iova ranges.
+In the iommu driver, we will list the iova ranges as above and use the
+domain-id to get the detailed iova range, then create a iommu domain for
+each a iova range.
+
+For the iommu masters, it only need use its special port in its dtsi
+node, then the iova got from dma_alloc_attrs for that device will locate
+in the special iova ranges.
+
+> 
+> Rob 
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
