@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BCAFEC433E2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 07:51:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A354BC433ED
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 07:52:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7B232208E4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 07:51:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5BF2821702
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 07:52:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sN82A4XX";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Ei3D38DQ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B232208E4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bUNjHPnr";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="nzn59IyM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5BF2821702
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,53 +27,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=71Xz08EKA1mLRf7BCUgS/x29DhV/qpzggL5jv0+AiTE=; b=sN82A4XXp7RnNts5J7BH0zFSS
-	d+5B98Wj7M6+3bXjl7+RI6y85SxFdxv2PfaAKYE/x7fTndyqDrLAw2Lc5AVLYa9LBorlcDUeVUq6+
-	fmW4o4aqOZcxs2UVwCChAEpRIvQ+eiz0DMCnjWdw6ajNoeuO3MsAXz8Uwrhv34lk1Bt5lY6/BxIfg
-	Dpzpy6Bvmmqh4ZFcdibsiqvyX3RSY3SGpDUI3h4wn9cdNw1bhpwC+tRN4BIgelv3yET7poUrZrXYm
-	CM8/430ffgurdpePM9jjWu7/iuhYnZA2T8elU22dGqfD4y4+YtWyTkCcfhZtYiXPJUoNGlT2j1/e2
-	zoKbJoVKg==;
+	 bh=jINMHH0S1McDavI9pCWrqwrGXiaX42D4FeAq/eKQNqg=; b=bUNjHPnrJhywcy/MlzQD3hJFq
+	OaEe7g6qmzIbXAVuGcig6UTx11p/QpFZzVrokCuIXwc3JJ4QkE8gTp5gnLCfVl/0EtzZ928zqaFSf
+	QlApDuZSEvlr/AtsZNwf91ts5M2ZZwJSuFUl+ohMO57V3mlkiHfU3gCV+ulBgQ+1OhUOTaw/SMPz6
+	JhxvmTkCFUqkp24WORbikMP8S7yK+AdZoDccsibLGiPXxCOyefK+Kw1qjMgcY30Efs7ClHNOyIizN
+	LZ8XuB3CjHCq43qe2VDWEn+lHMtb9fHTXIAf4o1DZGW1hBw8sJqbbiN/HG+h69+Z/Ul1JN4eAnGeb
+	+9nZOUsng==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jxn37-0003ey-RA; Tue, 21 Jul 2020 07:50:53 +0000
+	id 1jxn48-00044E-QI; Tue, 21 Jul 2020 07:51:56 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jxn34-0003cz-El; Tue, 21 Jul 2020 07:50:52 +0000
-X-UUID: 5e0c0b6bfd24455ab61d7fc53e7cba5d-20200720
+ id 1jxn44-00041j-H8; Tue, 21 Jul 2020 07:51:55 +0000
+X-UUID: 0d71ccb3d3f04616b07a3ea5892e24a5-20200720
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=0EwV+WQ6sJnXus2Zl4BhiaYGFQpchG2doX5FhXhedZE=; 
- b=Ei3D38DQoOhkOxT/LH5e0IVL2FUoJqhEx+YeMj+f1PosQzACCyskfUCWXTlP6tJUCh4Ib9U5QprIgzMZk754AjjzxTF4vs0gxBMILTJQEOTqlJXmTUhGI0G8lxTprWiH0Z9IPWtUkErPhFlQ7tlNctVEAZWCp45QX5bsZVnWxGQ=;
-X-UUID: 5e0c0b6bfd24455ab61d7fc53e7cba5d-20200720
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=IK/9uUinHjp/CpX+WJNT+TQhER1xEd73sYgH5aC8HZ4=; 
+ b=nzn59IyMGKOsM3HZr6EcNjYMBipU+ZBt7jIl1XDkbAh6/RcG2eYxwI+3Z6oJ3LDe9GtVCtpzIMaTdcchmf0+BqTndt6/qDcYv5cdLFOwps8sk01l7dBVCzQkT9bcqChYIxBIU5+uB1fJKsKLY1FK+PkZ3OFeielYFe/i/ZWXhUM=;
+X-UUID: 0d71ccb3d3f04616b07a3ea5892e24a5-20200720
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <chuanjia.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 257713264; Mon, 20 Jul 2020 23:50:40 -0800
+ with ESMTP id 1546239661; Mon, 20 Jul 2020 23:51:47 -0800
 Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 21 Jul 2020 00:50:40 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 21 Jul 2020 00:51:47 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 21 Jul 2020 15:50:32 +0800
+ 15.0.1497.2; Tue, 21 Jul 2020 15:51:45 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 21 Jul 2020 15:50:31 +0800
+ Transport; Tue, 21 Jul 2020 15:51:44 +0800
 From: chuanjia.liu <Chuanjia.Liu@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Lorenzo Pieralisi
  <lorenzo.pieralisi@arm.com>
-Subject: [PATCH v4 1/4] dt-bindings: pci: mediatek: Modified the Device tree
- bindings
-Date: Tue, 21 Jul 2020 15:49:12 +0800
-Message-ID: <20200721074915.14516-2-Chuanjia.Liu@mediatek.com>
+Subject: [PATCH v4 3/4] arm64: dts: mediatek: Split PCIe node for MT2712 and
+ MT7622
+Date: Tue, 21 Jul 2020 15:49:14 +0800
+Message-ID: <20200721074915.14516-4-Chuanjia.Liu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200721074915.14516-1-Chuanjia.Liu@mediatek.com>
 References: <20200721074915.14516-1-Chuanjia.Liu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200721_035050_761549_204AC724 
-X-CRM114-Status: GOOD (  15.65  )
+X-CRM114-CacheID: sfid-20200721_035152_788556_6E327B12 
+X-CRM114-Status: GOOD (  12.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,104 +95,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Split the PCIe node and add pciecfg node to fix MSI issue.
+There are two independent PCIe controllers in MT2712 and MT7622
+platform. Split the PCIe node for MT2712 and MT7622 platform to
+fix MSI issue and comply with the hardware design.
 
 Acked-by:Ryder Lee <ryder.lee@mediatek.com>
 Signed-off-by: chuanjia.liu <Chuanjia.Liu@mediatek.com>
 ---
- .../bindings/pci/mediatek-pcie-cfg.yaml       |  38 +++++
- .../devicetree/bindings/pci/mediatek-pcie.txt | 144 +++++++++++-------
- 2 files changed, 129 insertions(+), 53 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/pci/mediatek-pcie-cfg.yaml
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi     | 75 +++++++++++--------
+ .../dts/mediatek/mt7622-bananapi-bpi-r64.dts  | 16 ++--
+ arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts  |  6 +-
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi      | 68 +++++++++++------
+ 4 files changed, 96 insertions(+), 69 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-cfg.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-cfg.yaml
-new file mode 100644
-index 000000000000..4d2835ab4858
---- /dev/null
-+++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-cfg.yaml
-@@ -0,0 +1,38 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/pci/mediatek-pcie-cfg.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek PCIECFG controller
-+
-+maintainers:
-+  - Chuanjia Liu <chuanjia.liu@mediatek.com>
-+  - Jianjun Wang <jianjun.wang@mediatek.com>
-+
-+description: |
-+  The MediaTek PCIECFG controller controls some feature about
-+  LTSSM, ASPM and so on.
-+
-+properties:
-+  compatible:
-+      items:
-+        - enum:
-+            - mediatek,mt7622-pciecfg
-+            - mediatek,mt7629-pciecfg
-+        - const: syscon
-+
-+  reg:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+
-+examples:
-+  - |
-+    pciecfg: pciecfg@1a140000 {
-+        compatible = "mediatek,mt7622-pciecfg", "syscon";
-+        reg = <0 0x1a140000 0 0x1000>;
-+    };
-+...
-diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-index 7468d666763a..31e261933685 100644
---- a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-@@ -8,7 +8,7 @@ Required properties:
- 	"mediatek,mt7623-pcie"
- 	"mediatek,mt7629-pcie"
- - device_type: Must be "pci"
--- reg: Base addresses and lengths of the PCIe subsys and root ports.
-+- reg: Base addresses and lengths of the root ports.
- - reg-names: Names of the above areas to use during resource lookup.
- - #address-cells: Address representation for root ports (must be 3)
- - #size-cells: Size representation for root ports (must be 2)
-@@ -19,10 +19,10 @@ Required properties:
-    - sys_ckN :transaction layer and data link layer clock
-   Required entries for MT2701/MT7623:
-    - free_ck :for reference clock of PCIe subsys
--  Required entries for MT2712/MT7622:
-+  Required entries for MT2712/MT7622/MT7629:
-    - ahb_ckN :AHB slave interface operating clock for CSR access and RC
- 	      initiated MMIO access
--  Required entries for MT7622:
-+  Required entries for MT7622/MT7629:
-    - axi_ckN :application layer MMIO channel operating clock
-    - aux_ckN :pe2_mac_bridge and pe2_mac_core operating clock when
- 	      pcie_mac_ck/pcie_pipe_ck is turned off
-@@ -47,10 +47,13 @@ Required properties for MT7623/MT2701:
- - reset-names: Must be "pcie-rst0", "pcie-rst1", "pcie-rstN".. based on the
-   number of root ports.
- 
--Required properties for MT2712/MT7622:
-+Required properties for MT2712/MT7622/MT7629:
- -interrupts: A list of interrupt outputs of the controller, must have one
- 	     entry for each PCIe port
- 
-+Required properties for MT7622/MT7629:
-+- mediatek,pcie-subsys: Should be a phandle of the pciecfg node.
-+
- In addition, the device tree node must have sub-nodes describing each
- PCIe port interface, having the following mandatory properties:
- 
-@@ -143,56 +146,73 @@ Examples for MT7623:
- 
- Examples for MT2712:
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+index db17d0a4ed57..337e56bdbd08 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+@@ -915,60 +915,73 @@
+ 		};
+ 	};
  
 -	pcie: pcie@11700000 {
 +	pcie1: pcie@112ff000 {
@@ -215,7 +137,7 @@ index 7468d666763a..31e261933685 100644
 +		clocks = <&topckgen CLK_TOP_PE2_MAC_P1_SEL>,
  			 <&pericfg CLK_PERI_PCIE1>;
 -		clock-names = "sys_ck0", "sys_ck1", "ahb_ck0", "ahb_ck1";
--		phys = <&pcie0_phy PHY_TYPE_PCIE>, <&pcie1_phy PHY_TYPE_PCIE>;
+-		phys = <&u3port0 PHY_TYPE_PCIE>, <&u3port1 PHY_TYPE_PCIE>;
 -		phy-names = "pcie-phy0", "pcie-phy1";
 +		clock-names = "sys_ck1", "ahb_ck1";
 +		phys = <&u3port1 PHY_TYPE_PCIE>;
@@ -226,6 +148,8 @@ index 7468d666763a..31e261933685 100644
 +		status = "disabled";
  
 -		pcie0: pcie@0,0 {
+-			device_type = "pci";
+-			status = "disabled";
 -			reg = <0x0000 0 0 0 0>;
 +		slot1: pcie@1,0 {
 +			reg = <0x0800 0 0 0 0>;
@@ -252,6 +176,8 @@ index 7468d666763a..31e261933685 100644
 +	};
  
 -		pcie1: pcie@1,0 {
+-			device_type = "pci";
+-			status = "disabled";
 -			reg = <0x0800 0 0 0 0>;
 +	pcie0: pcie@11700000 {
 +		compatible = "mediatek,mt2712-pcie";
@@ -291,11 +217,70 @@ index 7468d666763a..31e261933685 100644
  				interrupt-controller;
  				#address-cells = <0>;
  				#interrupt-cells = <1>;
-@@ -202,39 +222,31 @@ Examples for MT2712:
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+index d174ad214857..83baab46f060 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+@@ -207,18 +207,16 @@
+ 	};
+ };
  
- Examples for MT7622:
+-&pcie {
++&pcie0 {
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&pcie0_pins>, <&pcie1_pins>;
++	pinctrl-0 = <&pcie0_pins>;
+ 	status = "okay";
++};
+ 
+-	pcie@0,0 {
+-		status = "okay";
+-	};
+-
+-	pcie@1,0 {
+-		status = "okay";
+-	};
++&pcie1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie1_pins>;
++	status = "okay";
+ };
+ 
+ &pio {
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+index 0b4de627f96e..8e98b78ba232 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+@@ -183,14 +183,10 @@
+ 	};
+ };
+ 
+-&pcie {
++&pcie0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pcie0_pins>;
+ 	status = "okay";
+-
+-	pcie@0,0 {
+-		status = "okay";
+-	};
+ };
+ 
+ &pio {
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+index 1a39e0ef776b..638b9260b215 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+@@ -777,45 +777,41 @@
+ 		#reset-cells = <1>;
+ 	};
  
 -	pcie: pcie@1a140000 {
++	pciecfg: pciecfg@1a140000 {
++		compatible = "mediatek,mt7622-pciecfg", "syscon";
++		reg = <0 0x1a140000 0 0x1000>;
++	};
++
 +	pcie0: pcie@1a143000 {
  		compatible = "mediatek,mt7622-pcie";
  		device_type = "pci";
@@ -314,8 +299,8 @@ index 7468d666763a..31e261933685 100644
 +		interrupt-names = "pcie_irq";
  		clocks = <&pciesys CLK_PCIE_P0_MAC_EN>,
 -			 <&pciesys CLK_PCIE_P1_MAC_EN>,
+-			 <&pciesys CLK_PCIE_P0_AHB_EN>,
  			 <&pciesys CLK_PCIE_P0_AHB_EN>,
--			 <&pciesys CLK_PCIE_P1_AHB_EN>,
  			 <&pciesys CLK_PCIE_P0_AUX_EN>,
 -			 <&pciesys CLK_PCIE_P1_AUX_EN>,
  			 <&pciesys CLK_PCIE_P0_AXI_EN>,
@@ -327,29 +312,35 @@ index 7468d666763a..31e261933685 100644
 -		clock-names = "sys_ck0", "sys_ck1", "ahb_ck0", "ahb_ck1",
 -			      "aux_ck0", "aux_ck1", "axi_ck0", "axi_ck1",
 -			      "obff_ck0", "obff_ck1", "pipe_ck0", "pipe_ck1";
--		phys = <&pcie0_phy PHY_TYPE_PCIE>, <&pcie1_phy PHY_TYPE_PCIE>;
--		phy-names = "pcie-phy0", "pcie-phy1";
 +			 <&pciesys CLK_PCIE_P0_PIPE_EN>;
 +		clock-names = "sys_ck0", "ahb_ck0", "aux_ck0",
 +			      "axi_ck0", "obff_ck0", "pipe_ck0";
 +
  		power-domains = <&scpsys MT7622_POWER_DOMAIN_HIF0>;
  		bus-range = <0x00 0xff>;
--		ranges = <0x82000000 0 0x20000000  0x0 0x20000000  0 0x10000000>;
+-		ranges = <0x82000000 0 0x20000000 0x0 0x20000000 0 0x10000000>;
 +		ranges = <0x82000000 0 0x20000000  0x0 0x20000000  0 0x8000000>;
-+		status = "disabled";
+ 		status = "disabled";
  
 -		pcie0: pcie@0,0 {
 +		slot0: pcie@0,0 {
  			reg = <0x0000 0 0 0 0>;
  			#address-cells = <3>;
  			#size-cells = <2>;
-@@ -251,8 +263,34 @@ Examples for MT7622:
+ 			#interrupt-cells = <1>;
+ 			ranges;
+-			status = "disabled";
+-
+ 			interrupt-map-mask = <0 0 0 7>;
+ 			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
+ 					<0 0 0 2 &pcie_intc0 1>,
+@@ -827,15 +823,39 @@
  				#interrupt-cells = <1>;
  			};
  		};
 +	};
-+
+ 
+-		pcie1: pcie@1,0 {
 +	pcie1: pcie@1a145000 {
 +		compatible = "mediatek,mt7622-pcie";
 +		device_type = "pci";
@@ -374,12 +365,18 @@ index 7468d666763a..31e261933685 100644
 +		bus-range = <0x00 0xff>;
 +		ranges = <0x82000000 0 0x28000000  0x0 0x28000000  0 0x8000000>;
 +		status = "disabled";
- 
--		pcie1: pcie@1,0 {
++
 +		slot1: pcie@1,0 {
  			reg = <0x0800 0 0 0 0>;
  			#address-cells = <3>;
  			#size-cells = <2>;
+ 			#interrupt-cells = <1>;
+ 			ranges;
+-			status = "disabled";
+-
+ 			interrupt-map-mask = <0 0 0 7>;
+ 			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
+ 					<0 0 0 2 &pcie_intc1 1>,
 -- 
 2.18.0
 _______________________________________________
