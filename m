@@ -2,93 +2,75 @@ Return-Path: <SRS0=w0xa=BA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A65FFC433E1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 22:51:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3889BC433E4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 23:22:06 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 61BCF20720
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 22:51:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 029DD2073A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 23:22:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s7mYVANk";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="XQr8G7+k"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 61BCF20720
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gXwP0ed/";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="djoyGjse"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 029DD2073A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=auj9cXxhttsJZQt5dboqF5GO7PP8YM38EBZ1chzNbeM=; b=s7mYVANk1o3h3n0kD5E8b52w+
-	OVWRUxhKJpelp9PEZAyu0GVdHaGfqdGZUC4c8cZW7NxaRwYDveFdsI5nO1OV5wx2K8KtCSGD7+Wvk
-	0/G7PTJ/nhy6zjjOlHRMM6/rC3MygTGQfchLNk+HMlJy0kQw0LnYshwnvM5N2vWHb0DxgyO2M/bmg
-	Y44PhxJFsgOzEQgPxKNn/65bFoffhq3yGM12rfz20qC8fEIR486Dib4PUl7LToM+hW7eDneBGeGjJ
-	ea5X9PBulLFKFol6IS03i9cdZlOuHpjLtoAVGfM8QgOP0xlr3eX450+ovydQdL7tWVKrMhhddqiqU
-	yZAyH8hSg==;
+	 bh=5D/3fAQG0AWRlV1tE0c1lWDmt7HjVkQUgq2uDhudxvA=; b=gXwP0ed/9Jibinth1SfTVaeVF
+	m+GPPTFRt40win9MgQTubAR234KzAEDuDZPW2soHC2R/VMJkZiVd4Lf5lC48COB9alrGZF8/RO5aQ
+	o3COpgbUwBK6AlPgysydnDicYt0dytWf0yMnVxrRa1YARUWSJdTmpGHqxQRpdIPvm3glL4HPNBITp
+	WgoIEykRsNMkGSy2jFwwkZu0eJLJxriKY1hOecZpMBhF5uL2eGIIO+8AorEdQv9POloghAmmsJhtb
+	MYE0y/ZeAAJGdliK3SD8drJ8iy0UA6Js2uelzBS5aKi0pV2Yw9bN8T6r+aN0PMkv5oXEGjLRCrxwc
+	ia9td/qcA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jy16R-0004ah-8m; Tue, 21 Jul 2020 22:51:15 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1jy1a7-00080f-5v; Tue, 21 Jul 2020 23:21:55 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jy16P-0004aJ-LD; Tue, 21 Jul 2020 22:51:14 +0000
-Received: by mail-wr1-x441.google.com with SMTP id a15so66097wrh.10;
- Tue, 21 Jul 2020 15:51:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=zuRS0cBjdAk4JpMAixOi1X4SFouP+cA7vWat6cDR9Ps=;
- b=XQr8G7+kCIdQ6L3ox63LTwpodFAJ/JpDdHcAF+y5jkD6vbDkqjKGdd3jsZM3dWjzeD
- j/xKFUYJxR4aFxEkgTJnltrLx5DMRnhBqihdmlB9GxmWZVAiv7LoOBkm42wZ2tIY9yOp
- LnXgbkZoYXHXdouYTMUq6qoWrhnpIYf6w19g4u4MyZb/X7fAx/T6aPyli41jRsEuh2RJ
- RU8BpNvYhYmWx/UUpNb+XbJztBEFuTyc1dNJbnlwWCQ1b33u49pgfvcyh03+Z0qK2J9H
- NEJlQpbG3WgXe2oUfNf8IWN6DVaLehtlOPYUzO7DksrvHWRqWsMa+a/QOQml/hYFBtb5
- J2+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=zuRS0cBjdAk4JpMAixOi1X4SFouP+cA7vWat6cDR9Ps=;
- b=fm0+7Ca9y4Skw7v112JqTQIKvfSX8+SyqeqqhDvqcgIRgCTRGFxlPsgs5Z0AaSC2AN
- mzT/Cb1uj+MA7gKC67tTFmvXYbquqvqmdL9cjFsDEw1OhnYFLqIScJJTXglX7/YH8Zf5
- FiiDIAzMBy58tP7oDscD0Tpz9AeChg3lXvU4z4hYQd09Si0J54oGMmCoYUXyDk3c8kKD
- IHdGTiMEPUVSog6UW61rKrIVF0rnzXn8TEZBwK+OYvaDht0jm7OoerL/vaDPY8EL3GNj
- fdtoA047K6X8kWhBkTFkThjXzxTKBKx1hRk9TiM/JyZ2YBOCmANm65J+py0vetdjt5/6
- 8BGA==
-X-Gm-Message-State: AOAM533l4rZCIyplHDz1eeltRrsvlRRWJQAyCbK8JUnwhmFm+yEj5kGg
- sjXqVnZrgbr3L7d2ukIHj/Q=
-X-Google-Smtp-Source: ABdhPJzwsLBrMPa05EzVTT1R7JfYOeysZ/Vtgw5o8io8SILIabbjk2iE3h8LpsFepchZ40E0tAFAyQ==
-X-Received: by 2002:a5d:438c:: with SMTP id i12mr12999296wrq.210.1595371872464; 
- Tue, 21 Jul 2020 15:51:12 -0700 (PDT)
-Received: from ziggy.stardust ([213.195.122.158])
- by smtp.gmail.com with ESMTPSA id g3sm44372329wrb.59.2020.07.21.15.51.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Jul 2020 15:51:11 -0700 (PDT)
-Subject: Re: [PATCH 3/3] soc: mediatek: pwrap: add pwrap driver for
- MT6873/8192 SoCs
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, Argus Lin <argus.lin@mediatek.com>
-References: <1594720432-19586-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1594720432-19586-4-git-send-email-hsin-hsiung.wang@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <e80b2e38-1324-a038-5647-6f595381ba47@gmail.com>
-Date: Wed, 22 Jul 2020 00:51:10 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ id 1jy1a3-0007zT-24; Tue, 21 Jul 2020 23:21:51 +0000
+Received: from mail-ed1-f44.google.com (mail-ed1-f44.google.com
+ [209.85.208.44])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 4C32520771;
+ Tue, 21 Jul 2020 23:21:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1595373709;
+ bh=wTtpSu1n6XAQfccXsXj/yy7BEmnVf2cxowLIgXfPQa4=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=djoyGjsek9zMyt+FdnK+r8Y+Y8cE0QjaJAoFygr9S3udNk1aNJSn3lr74jFf5KJyu
+ tg8mPdg5E5OYS3dphKNMC5RAnzA2UeSmPG64dn12GcDwmnxFONm6KNtlXosq/uf84A
+ BBAVo1jrC1P8LjZHeGqFxI5/no69+m2Sstbl8PbM=
+Received: by mail-ed1-f44.google.com with SMTP id n2so269948edr.5;
+ Tue, 21 Jul 2020 16:21:49 -0700 (PDT)
+X-Gm-Message-State: AOAM532X9PDy7f6CkWAtAmgepJQ4p3dazYK1c132ybWYdzMCUBNAUaxu
+ eUmN6+8HLDBbXttLeh4Y83j4yUyqO51t5Ul0ew==
+X-Google-Smtp-Source: ABdhPJyyEjrBpd1nx1mUcLsn4M9oTcaAX99uq6R42dxNbGcxMzW6I48C2eM3ctFpN3ScOSRXnd6gohvyg/yKTe1Y26k=
+X-Received: by 2002:a05:6402:16c7:: with SMTP id
+ r7mr28579038edx.288.1595373707856; 
+ Tue, 21 Jul 2020 16:21:47 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1594720432-19586-4-git-send-email-hsin-hsiung.wang@mediatek.com>
-Content-Language: en-US
+References: <1595303971-8793-1-git-send-email-neal.liu@mediatek.com>
+ <1595303971-8793-3-git-send-email-neal.liu@mediatek.com>
+In-Reply-To: <1595303971-8793-3-git-send-email-neal.liu@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Wed, 22 Jul 2020 07:21:35 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8T=DCntU8x5YEo+Pcs2J0Y4YvDaHUBdGiqEFRxghOd_Q@mail.gmail.com>
+Message-ID: <CAAOTY_8T=DCntU8x5YEo+Pcs2J0Y4YvDaHUBdGiqEFRxghOd_Q@mail.gmail.com>
+Subject: Re: [PATCH v3 2/2] soc: mediatek: add mtk-devapc driver
+To: Neal Liu <neal.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200721_185114_018533_ABE57997 
-X-CRM114-Status: GOOD (  27.99  )
+X-CRM114-CacheID: sfid-20200721_192151_244841_59F502B7 
+X-CRM114-Status: GOOD (  18.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,258 +82,95 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: devicetree@vger.kernel.org, wsd_upstream <wsd_upstream@mediatek.com>,
+ lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 14/07/2020 11:53, Hsin-Hsiung Wang wrote:
-> MT6873/8192 are highly integrated SoCs and use PMIC_MT6359 for
-> power management. This patch adds pwrap master driver to
-> access PMIC_MT6359.
-> 
-> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> ---
->   drivers/soc/mediatek/mtk-pmic-wrap.c | 98 ++++++++++++++++++++++++++++++++----
->   1 file changed, 87 insertions(+), 11 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> index c897205..6e7f796f 100644
-> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> @@ -24,11 +24,13 @@
->   #define PWRAP_MT8135_BRIDGE_WDT_SRC_EN		0x54
->   
->   /* macro for wrapper status */
-> +#define PWRAP_GET_SWINF_2_FSM(x)	(((x) >> 1) & 0x00000007)
->   #define PWRAP_GET_WACS_RDATA(x)		(((x) >> 0) & 0x0000ffff)
->   #define PWRAP_GET_WACS_FSM(x)		(((x) >> 16) & 0x00000007)
->   #define PWRAP_GET_WACS_REQ(x)		(((x) >> 19) & 0x00000001)
->   #define PWRAP_STATE_SYNC_IDLE0		BIT(20)
->   #define PWRAP_STATE_INIT_DONE0		BIT(21)
-> +#define PWRAP_STATE_INIT_DONE1		BIT(15)
->   
->   /* macro for WACS FSM */
->   #define PWRAP_WACS_FSM_IDLE		0x00
-> @@ -74,6 +76,7 @@
->   #define PWRAP_CAP_DCM		BIT(2)
->   #define PWRAP_CAP_INT1_EN	BIT(3)
->   #define PWRAP_CAP_WDT_SRC1	BIT(4)
-> +#define PWRAP_CAP_ARB		BIT(5)
-
-This commit should be two patches (at least). One adding PWRAP_CAP_ARB and then 
-another one adding MT6873 support.
-
-Regards,
-Matthias
-
->   
->   /* defines for slave device wrapper registers */
->   enum dew_regs {
-> @@ -348,6 +351,10 @@ enum pwrap_regs {
->   	PWRAP_ADC_RDATA_ADDR1,
->   	PWRAP_ADC_RDATA_ADDR2,
->   
-> +	/* MT6873 only regs */
-> +	PWRAP_SWINF_2_WDATA_31_0,
-> +	PWRAP_SWINF_2_RDATA_31_0,
-> +
->   	/* MT7622 only regs */
->   	PWRAP_STA,
->   	PWRAP_CLR,
-> @@ -627,6 +634,17 @@ static int mt6797_regs[] = {
->   	[PWRAP_DCM_DBC_PRD] =		0x1D4,
->   };
->   
-> +static int mt6873_regs[] = {
-> +	[PWRAP_INIT_DONE2] =		0x0,
-> +	[PWRAP_TIMER_EN] =		0x3E0,
-> +	[PWRAP_INT_EN] =		0x448,
-> +	[PWRAP_WACS2_CMD] =		0xC80,
-> +	[PWRAP_SWINF_2_WDATA_31_0] =	0xC84,
-> +	[PWRAP_SWINF_2_RDATA_31_0] =	0xC94,
-> +	[PWRAP_WACS2_VLDCLR] =		0xCA4,
-> +	[PWRAP_WACS2_RDATA] =		0xCA8,
-> +};
-> +
->   static int mt7622_regs[] = {
->   	[PWRAP_MUX_SEL] =		0x0,
->   	[PWRAP_WRAP_EN] =		0x4,
-> @@ -1045,6 +1063,7 @@ enum pwrap_type {
->   	PWRAP_MT6765,
->   	PWRAP_MT6779,
->   	PWRAP_MT6797,
-> +	PWRAP_MT6873,
->   	PWRAP_MT7622,
->   	PWRAP_MT8135,
->   	PWRAP_MT8173,
-> @@ -1108,16 +1127,30 @@ static void pwrap_writel(struct pmic_wrapper *wrp, u32 val, enum pwrap_regs reg)
->   
->   static bool pwrap_is_fsm_idle(struct pmic_wrapper *wrp)
->   {
-> -	u32 val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-> +	u32 val;
-> +	bool ret;
-> +
-> +	val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-> +	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> +		ret = (PWRAP_GET_SWINF_2_FSM(val) == PWRAP_WACS_FSM_IDLE);
-> +	else
-> +		ret = (PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_IDLE);
->   
-> -	return PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_IDLE;
-> +	return ret;
->   }
->   
->   static bool pwrap_is_fsm_vldclr(struct pmic_wrapper *wrp)
->   {
-> -	u32 val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-> +	u32 val;
-> +	bool ret;
-> +
-> +	val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-> +	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> +		ret = (PWRAP_GET_SWINF_2_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR);
-> +	else
-> +		ret = (PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR);
->   
-> -	return PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR;
-> +	return ret;
->   }
->   
->   /*
-> @@ -1172,13 +1205,21 @@ static int pwrap_read16(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
->   		return ret;
->   	}
->   
-> -	pwrap_writel(wrp, (adr >> 1) << 16, PWRAP_WACS2_CMD);
-> +	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> +		pwrap_writel(wrp, adr, PWRAP_WACS2_CMD);
-> +	else
-> +		pwrap_writel(wrp, (adr >> 1) << 16, PWRAP_WACS2_CMD);
->   
->   	ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_vldclr);
->   	if (ret)
->   		return ret;
->   
-> -	*rdata = PWRAP_GET_WACS_RDATA(pwrap_readl(wrp, PWRAP_WACS2_RDATA));
-> +	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> +		*rdata = PWRAP_GET_WACS_RDATA(pwrap_readl(wrp,
-> +					      PWRAP_SWINF_2_RDATA_31_0));
-> +	else
-> +		*rdata = PWRAP_GET_WACS_RDATA(pwrap_readl(wrp,
-> +					      PWRAP_WACS2_RDATA));
->   
->   	pwrap_writel(wrp, 1, PWRAP_WACS2_VLDCLR);
->   
-> @@ -1228,8 +1269,13 @@ static int pwrap_write16(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
->   		return ret;
->   	}
->   
-> -	pwrap_writel(wrp, (1 << 31) | ((adr >> 1) << 16) | wdata,
-> -		     PWRAP_WACS2_CMD);
-> +	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB)) {
-> +		pwrap_writel(wrp, wdata, PWRAP_SWINF_2_WDATA_31_0);
-> +		pwrap_writel(wrp, BIT(29) | adr, PWRAP_WACS2_CMD);
-> +	} else {
-> +		pwrap_writel(wrp, BIT(31) | ((adr >> 1) << 16) | wdata,
-> +			     PWRAP_WACS2_CMD);
-> +	}
->   
->   	return 0;
->   }
-> @@ -1485,6 +1531,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
->   	case PWRAP_MT7622:
->   		pwrap_writel(wrp, 0, PWRAP_CIPHER_EN);
->   		break;
-> +	case PWRAP_MT6873:
->   	case PWRAP_MT8183:
->   		break;
->   	}
-> @@ -1921,6 +1968,19 @@ static const struct pmic_wrapper_type pwrap_mt6797 = {
->   	.init_soc_specific = NULL,
->   };
->   
-> +static struct pmic_wrapper_type pwrap_mt6873 = {
-> +	.regs = mt6873_regs,
-> +	.type = PWRAP_MT6873,
-> +	.arb_en_all = 0x777f,
-> +	.int_en_all = BIT(4) | BIT(5),
-> +	.int1_en_all = 0,
-> +	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
-> +	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
-> +	.caps = PWRAP_CAP_ARB,
-> +	.init_reg_clock = pwrap_common_init_reg_clock,
-> +	.init_soc_specific = NULL,
-> +};
-> +
->   static const struct pmic_wrapper_type pwrap_mt7622 = {
->   	.regs = mt7622_regs,
->   	.type = PWRAP_MT7622,
-> @@ -1999,6 +2059,9 @@ static const struct of_device_id of_pwrap_match_tbl[] = {
->   		.compatible = "mediatek,mt6797-pwrap",
->   		.data = &pwrap_mt6797,
->   	}, {
-> +		.compatible = "mediatek,mt6873-pwrap",
-> +		.data = &pwrap_mt6873,
-> +	}, {
->   		.compatible = "mediatek,mt7622-pwrap",
->   		.data = &pwrap_mt7622,
->   	}, {
-> @@ -2022,6 +2085,7 @@ MODULE_DEVICE_TABLE(of, of_pwrap_match_tbl);
->   static int pwrap_probe(struct platform_device *pdev)
->   {
->   	int ret, irq;
-> +	u32 rdata;
->   	struct pmic_wrapper *wrp;
->   	struct device_node *np = pdev->dev.of_node;
->   	const struct of_device_id *of_slave_id = NULL;
-> @@ -2116,14 +2180,22 @@ static int pwrap_probe(struct platform_device *pdev)
->   		}
->   	}
->   
-> -	if (!(pwrap_readl(wrp, PWRAP_WACS2_RDATA) & PWRAP_STATE_INIT_DONE0)) {
-> +	if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> +		rdata = pwrap_readl(wrp, PWRAP_WACS2_RDATA) &
-> +				    PWRAP_STATE_INIT_DONE0;
-> +	else
-> +		rdata = pwrap_readl(wrp, PWRAP_WACS2_RDATA) &
-> +				    PWRAP_STATE_INIT_DONE1;
-> +	if (!rdata) {
->   		dev_dbg(wrp->dev, "initialization isn't finished\n");
->   		ret = -ENODEV;
->   		goto err_out2;
->   	}
->   
->   	/* Initialize watchdog, may not be done by the bootloader */
-> -	pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
-> +	if (!(HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB)))
-> +		pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
-> +
->   	/*
->   	 * Since STAUPD was not used on mt8173 platform,
->   	 * so STAUPD of WDT_SRC which should be turned off
-> @@ -2132,7 +2204,11 @@ static int pwrap_probe(struct platform_device *pdev)
->   	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_WDT_SRC1))
->   		pwrap_writel(wrp, wrp->master->wdt_src, PWRAP_WDT_SRC_EN_1);
->   
-> -	pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
-> +	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> +		pwrap_writel(wrp, 0x3, PWRAP_TIMER_EN);
-> +	else
-> +		pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
-> +
->   	pwrap_writel(wrp, wrp->master->int_en_all, PWRAP_INT_EN);
->   	/*
->   	 * We add INT1 interrupt to handle starvation and request exception
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIE5lYWw6CgpOZWFsIExpdSA8bmVhbC5saXVAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5tDfm
+nIgyMeaXpSDpgLHkuowg5LiL5Y2IMTI6MDDlr6vpgZPvvJoKPgo+IE1lZGlhVGVrIGJ1cyBmYWJy
+aWMgcHJvdmlkZXMgVHJ1c3Rab25lIHNlY3VyaXR5IHN1cHBvcnQgYW5kIGRhdGEKPiBwcm90ZWN0
+aW9uIHRvIHByZXZlbnQgc2xhdmVzIGZyb20gYmVpbmcgYWNjZXNzZWQgYnkgdW5leHBlY3RlZAo+
+IG1hc3RlcnMuCj4gVGhlIHNlY3VyaXR5IHZpb2xhdGlvbiBpcyBsb2dnZWQgYW5kIHNlbnQgdG8g
+dGhlIHByb2Nlc3NvciBmb3IKPiBmdXJ0aGVyIGFuYWx5c2lzIG9yIGNvdW50ZXJtZWFzdXJlcy4K
+Pgo+IEFueSBvY2N1cnJlbmNlIG9mIHNlY3VyaXR5IHZpb2xhdGlvbiB3b3VsZCByYWlzZSBhbiBp
+bnRlcnJ1cHQsIGFuZAo+IGl0IHdpbGwgYmUgaGFuZGxlZCBieSBtdGstZGV2YXBjIGRyaXZlci4g
+VGhlIHZpb2xhdGlvbgo+IGluZm9ybWF0aW9uIGlzIHByaW50ZWQgaW4gb3JkZXIgdG8gZmluZCB0
+aGUgbXVyZGVyZXIuCj4KPiBTaWduZWQtb2ZmLWJ5OiBOZWFsIExpdSA8bmVhbC5saXVAbWVkaWF0
+ZWsuY29tPgo+IC0tLQoKW3NuaXBdCgo+ICsKPiArc3RhdGljIHUzMiBnZXRfc2hpZnRfZ3JvdXAo
+c3RydWN0IG10a19kZXZhcGNfY29udGV4dCAqY3R4LCB1MzIgdmlvX2lkeCkKCnZpb19pZHggaXMg
+dXNlbGVzcywgc28gcmVtb3ZlIGl0LgoKPiArewo+ICsgICAgICAgdTMyIHZpb19zaGlmdF9zdGE7
+Cj4gKyAgICAgICB2b2lkIF9faW9tZW0gKnJlZzsKPiArCj4gKyAgICAgICByZWcgPSBjdHgtPmRl
+dmFwY19wZF9iYXNlICsgY3R4LT5vZmZzZXQtPnZpb19zaGlmdF9zdGE7Cj4gKyAgICAgICB2aW9f
+c2hpZnRfc3RhID0gcmVhZGwocmVnKTsKPiArCj4gKyAgICAgICBpZiAodmlvX3NoaWZ0X3N0YSkK
+PiArICAgICAgICAgICAgICAgcmV0dXJuIF9fZmZzKHZpb19zaGlmdF9zdGEpOwo+ICsKPiArICAg
+ICAgIHJldHVybiAzMTsKPiArfQo+ICsKCltzbmlwXQoKPiArCj4gKy8qCj4gKyAqIG10a19kZXZh
+cGNfZHVtcF92aW9fZGJnIC0gZ2V0IHRoZSB2aW9sYXRpb24gaW5kZXggYW5kIGR1bXAgdGhlIGZ1
+bGwgdmlvbGF0aW9uCj4gKyAqICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVidWcgaW5mb3Jt
+YXRpb24uCj4gKyAqLwo+ICtzdGF0aWMgYm9vbCBtdGtfZGV2YXBjX2R1bXBfdmlvX2RiZyhzdHJ1
+Y3QgbXRrX2RldmFwY19jb250ZXh0ICpjdHgsIHUzMiB2aW9faWR4KQo+ICt7Cj4gKyAgICAgICB1
+MzIgc2hpZnRfYml0Owo+ICsKPiArICAgICAgIGlmIChjaGVja192aW9fbWFzayhjdHgsIHZpb19p
+ZHgpKQo+ICsgICAgICAgICAgICAgICByZXR1cm4gZmFsc2U7Cj4gKwo+ICsgICAgICAgaWYgKCFj
+aGVja192aW9fc3RhdHVzKGN0eCwgdmlvX2lkeCkpCj4gKyAgICAgICAgICAgICAgIHJldHVybiBm
+YWxzZTsKPiArCj4gKyAgICAgICBzaGlmdF9iaXQgPSBnZXRfc2hpZnRfZ3JvdXAoY3R4LCB2aW9f
+aWR4KTsKPiArCj4gKyAgICAgICBpZiAoc3luY192aW9fZGJnKGN0eCwgc2hpZnRfYml0KSkKPiAr
+ICAgICAgICAgICAgICAgcmV0dXJuIGZhbHNlOwo+ICsKPiArICAgICAgIGRldmFwY19leHRyYWN0
+X3Zpb19kYmcoY3R4KTsKCkkgdGhpbmsgZ2V0X3NoaWZ0X2dyb3VwKCksIHN5bmNfdmlvX2RiZygp
+LCBhbmQKZGV2YXBjX2V4dHJhY3RfdmlvX2RiZygpIHNob3VsZCBiZSBtb3ZlZCBvdXQgb2Ygdmlv
+X2lkeCBmb3ItbG9vcCAodGhlCmxvb3AgaW4gZGV2YXBjX3Zpb2xhdGlvbl9pcnEoKSkgYmVjYXVz
+ZSB0aGVzZSB0aHJlZSBmdW5jdGlvbiBpcyBub3QKcmVsYXRlZCB0byB2aW9faWR4LgpBbm90aGVy
+IHF1ZXN0aW9uOiB3aGVuIG11bHRpcGxlIHZpb19pZHggdmlvbGF0aW9uIG9jY3VyLCB2aW9fYWRk
+ciBpcwpyZWxhdGVkIHRvIHdoaWNoIG9uZSB2aW9faWR4PyBUaGUgbGF0ZXN0IGhhcHBlbmVkIG9u
+ZT8KCj4gKwo+ICsgICAgICAgcmV0dXJuIHRydWU7Cj4gK30KPiArCj4gKy8qCj4gKyAqIGRldmFw
+Y192aW9sYXRpb25faXJxIC0gdGhlIGRldmFwYyBJbnRlcnJ1cHQgU2VydmljZSBSb3V0aW5lIChJ
+U1IpIHdpbGwgZHVtcAo+ICsgKiAgICAgICAgICAgICAgICAgICAgICAgIHZpb2xhdGlvbiBpbmZv
+cm1hdGlvbiBpbmNsdWRpbmcgd2hpY2ggbWFzdGVyIHZpb2xhdGVzCj4gKyAqICAgICAgICAgICAg
+ICAgICAgICAgICAgYWNjZXNzIHNsYXZlLgo+ICsgKi8KPiArc3RhdGljIGlycXJldHVybl90IGRl
+dmFwY192aW9sYXRpb25faXJxKGludCBpcnFfbnVtYmVyLAo+ICsgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgbXRrX2RldmFwY19jb250ZXh0ICpjdHgpCj4gK3sK
+PiArICAgICAgIHUzMiB2aW9faWR4Owo+ICsKPiArICAgICAgIGZvciAodmlvX2lkeCA9IDA7IHZp
+b19pZHggPCBjdHgtPnZpb19pZHhfbnVtOyB2aW9faWR4KyspIHsKPiArICAgICAgICAgICAgICAg
+aWYgKCFtdGtfZGV2YXBjX2R1bXBfdmlvX2RiZyhjdHgsIHZpb19pZHgpKQo+ICsgICAgICAgICAg
+ICAgICAgICAgICAgIGNvbnRpbnVlOwo+ICsKPiArICAgICAgICAgICAgICAgLyogRW5zdXJlIHRo
+YXQgdmlvbGF0aW9uIGluZm8gYXJlIHdyaXR0ZW4gYmVmb3JlCj4gKyAgICAgICAgICAgICAgICAq
+IGZ1cnRoZXIgb3BlcmF0aW9ucwo+ICsgICAgICAgICAgICAgICAgKi8KPiArICAgICAgICAgICAg
+ICAgc21wX21iKCk7Cj4gKwo+ICsgICAgICAgICAgICAgICAvKgo+ICsgICAgICAgICAgICAgICAg
+KiBNYXNrIHNsYXZlJ3MgaXJxIGJlZm9yZSBjbGVhcmluZyB2aW8gc3RhdHVzLgo+ICsgICAgICAg
+ICAgICAgICAgKiBNdXN0IGRvIGl0IHRvIGF2b2lkIG5lc3RlZCBpbnRlcnJ1cHQgYW5kIHByZXZl
+bnQKPiArICAgICAgICAgICAgICAgICogdW5leHBlY3RlZCBiZWhhdmlvci4KPiArICAgICAgICAg
+ICAgICAgICovCj4gKyAgICAgICAgICAgICAgIG1hc2tfbW9kdWxlX2lycShjdHgsIHZpb19pZHgs
+IHRydWUpOwo+ICsKPiArICAgICAgICAgICAgICAgY2xlYXJfdmlvX3N0YXR1cyhjdHgsIHZpb19p
+ZHgpOwo+ICsKPiArICAgICAgICAgICAgICAgbWFza19tb2R1bGVfaXJxKGN0eCwgdmlvX2lkeCwg
+ZmFsc2UpOwo+ICsgICAgICAgfQo+ICsKPiArICAgICAgIHJldHVybiBJUlFfSEFORExFRDsKPiAr
+fQo+ICsKPiArLyoKPiArICogc3RhcnRfZGV2YXBjIC0gaW5pdGlhbGl6ZSBkZXZhcGMgc3RhdHVz
+IGFuZCBzdGFydCByZWNlaXZpbmcgaW50ZXJydXB0Cj4gKyAqICAgICAgICAgICAgICAgIHdoaWxl
+IGRldmFwYyB2aW9sYXRpb24gaXMgdHJpZ2dlcmVkLgo+ICsgKi8KPiArc3RhdGljIGludCBzdGFy
+dF9kZXZhcGMoc3RydWN0IG10a19kZXZhcGNfY29udGV4dCAqY3R4KQo+ICt7Cj4gKyAgICAgICB2
+b2lkIF9faW9tZW0gKnBkX3Zpb19zaGlmdF9zdGFfcmVnOwo+ICsgICAgICAgdm9pZCBfX2lvbWVt
+ICpwZF9hcGNfY29uX3JlZzsKPiArICAgICAgIHUzMiB2aW9fc2hpZnRfc3RhOwo+ICsgICAgICAg
+dTMyIHZpb19pZHg7Cj4gKwo+ICsgICAgICAgcGRfYXBjX2Nvbl9yZWcgPSBjdHgtPmRldmFwY19w
+ZF9iYXNlICsgY3R4LT5vZmZzZXQtPmFwY19jb247Cj4gKyAgICAgICBwZF92aW9fc2hpZnRfc3Rh
+X3JlZyA9IGN0eC0+ZGV2YXBjX3BkX2Jhc2UgKyBjdHgtPm9mZnNldC0+dmlvX3NoaWZ0X3N0YTsK
+PiArICAgICAgIGlmICghcGRfYXBjX2Nvbl9yZWcgfHwgIXBkX3Zpb19zaGlmdF9zdGFfcmVnKQo+
+ICsgICAgICAgICAgICAgICByZXR1cm4gLUVJTlZBTDsKPiArCj4gKyAgICAgICAvKiBDbGVhciBk
+ZXZhcGMgdmlvbGF0aW9uIHN0YXR1cyAqLwo+ICsgICAgICAgd3JpdGVsKEJJVCgzMSksIHBkX2Fw
+Y19jb25fcmVnKTsKPiArCj4gKyAgICAgICAvKiBDbGVhciB2aW9sYXRpb24gc2hpZnQgc3RhdHVz
+ICovCj4gKyAgICAgICB2aW9fc2hpZnRfc3RhID0gcmVhZGwocGRfdmlvX3NoaWZ0X3N0YV9yZWcp
+Owo+ICsgICAgICAgaWYgKHZpb19zaGlmdF9zdGEpCj4gKyAgICAgICAgICAgICAgIHdyaXRlbCh2
+aW9fc2hpZnRfc3RhLCBwZF92aW9fc2hpZnRfc3RhX3JlZyk7Cj4gKwo+ICsgICAgICAgLyogQ2xl
+YXIgc2xhdmUgdmlvbGF0aW9uIHN0YXR1cyAqLwo+ICsgICAgICAgZm9yICh2aW9faWR4ID0gMDsg
+dmlvX2lkeCA8IGN0eC0+dmlvX2lkeF9udW07IHZpb19pZHgrKykgewo+ICsgICAgICAgICAgICAg
+ICBjbGVhcl92aW9fc3RhdHVzKGN0eCwgdmlvX2lkeCk7Cj4gKyAgICAgICAgICAgICAgIG1hc2tf
+bW9kdWxlX2lycShjdHgsIHZpb19pZHgsIGZhbHNlKTsKPiArICAgICAgIH0KPiArCgpXaHkgZG8g
+eW91IGNsZWFyIHRoZXNlPyBBZnRlciBwb3dlciBvbiBoYXJkd2FyZSwgSSB0aGluayB0aGVzZQpy
+ZWdpc3RlciBzdGF0dXMgYXJlIGNvcnJlY3QuIElmIHRoZSBkZWZhdWx0IHZhbHVlIG9mIHRoZXNl
+IHJlZ2lzdGVyCmFyZSBub3QgY29ycmVjdCwgYWRkIGEgY29tbWVudCBmb3IgdGhpcy4KClJlZ2Fy
+ZHMsCkNodW4tS3VhbmcuCgo+ICsgICAgICAgcmV0dXJuIDA7Cj4gK30KPiArCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
+aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
