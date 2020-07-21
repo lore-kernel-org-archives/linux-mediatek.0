@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E84A2C433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 05:41:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2F739C433E1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 05:41:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B45D720B1F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 05:41:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F10C720792
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 05:41:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Xes/tTS0";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="TSRbl2hx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B45D720B1F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AULXflxG";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="JD2UIFk+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F10C720792
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,34 +27,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=phgFURukCJb2pvSqj15WnWrPkDpHnyg/OHIdgEHMNSk=; b=Xes/tTS01APdR3L3YwcvMq80k
-	cXSl+VShW3x+VNaUnVk2T/hOa53NG1BqPdhG2lpF+eg4CUpJ4kXcXJHSAanOeU1RjYmMsLutm4EzT
-	+fuPCPswSg+K9kYMKJwYw6L8n75Bc9MXsTkKB9PrtCucOHPL79fGAlRhwpbTliGclhcXpIqJivb4+
-	xa6Pu/UC+wxiDp2QEMcOs9Bl1bZGZTtcYmiPuzS1az30beQlRZcyGtLEk8MYONIVn1/hUY+/hDG4u
-	I8jsGPy4XAIcyjK6faKTvPQ4jSuwLI/WhaIw6aw5dqhPf/A1QBrag/AonYHjM1qLgZypp2HNsOI8S
-	IdZwnHNkg==;
+	 bh=NkNdHSZ8SCN4tdV4XUYecb8htIfbgQZ9u8ykRqv3eAo=; b=AULXflxGAgWK6Rs0TXiXC8imA
+	kEe62EdZ3GBkVJNhI+nSEv0cEsIMb56HaLirpOHT9HJj5GtNuQtbCSEZJGPot5vDj907Y/hMXzk23
+	k9EfJ5IhMypPBBFSja8gFdZ5xCG4Ut5HV/gx74xO7ZrTVq3sqCxvWMuw4j0VL/A1ayTmRmcAfC/3/
+	Eo/LQQGw9bGTJIp0o2YCIT7/EmB7nx2wYAg4FcoYsjz/maB8ohC2qDL99VNQk+Z+By7aRLfkEhnXK
+	9eEpS+Y8+/PRWF5y3kX72wM3/+CTQKA6cSPMhNkMp2A4AWI5ReUiRwyNvpzttdFZira5GnyPMhYIT
+	2I7ytEX2Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jxl1Q-0004bg-L8; Tue, 21 Jul 2020 05:41:00 +0000
+	id 1jxl1X-0004di-7M; Tue, 21 Jul 2020 05:41:07 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jxl1N-0004aH-Jy; Tue, 21 Jul 2020 05:40:59 +0000
-X-UUID: cbff1c83567247b7a6bb6056d890075a-20200720
+ id 1jxl1N-0004aA-JR; Tue, 21 Jul 2020 05:40:59 +0000
+X-UUID: a41a4e0b7b4a4ebfbee4267e2434c187-20200720
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=eWGLaIff1b5fkIGfcrTBbKrRw56MLBclARuf7ORFwYI=; 
- b=TSRbl2hxl9TchwnuA4LaHCjKDdlTPI1icBpkoGXq114J7G9G7zI6ajJM+SckXX8o0SOI4SebOU1DG21/4tr3csbx34W5bvgFrIhNJ+8QpPsWyvt0cdTRGscSfcSBsrN+4SIbPgxIFs1tR5ENGPx/62dZ0NpYNRgd8NnqZ5QlGT0=;
-X-UUID: cbff1c83567247b7a6bb6056d890075a-20200720
+ bh=r1JvQq55o9JWsO0xHx5gj1UaxvorN44u2V1IJpLE4Ow=; 
+ b=JD2UIFk+9YfH90ji/NS7zQ+OZJ4vVQZ7AWlqJF8KrZ1qgLliII4J5Om1zY9vIzNJFA6mfEgGIrFMl8/VQ5OBTip28qi1zicLyoWgwFrnxJV90FKUVHzEhYE/PlZvHx5QqS02+sNLS8WR5SNB+HqVUQW6xScH+A3ralSObw3CLPA=;
+X-UUID: a41a4e0b7b4a4ebfbee4267e2434c187-20200720
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <hanks.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1160659177; Mon, 20 Jul 2020 21:40:46 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 20 Jul 2020 22:40:48 -0700
+ with ESMTP id 1907051967; Mon, 20 Jul 2020 21:40:36 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 20 Jul 2020 22:40:37 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 21 Jul 2020 13:40:35 +0800
 Received: from mtkslt209.mediatek.inc (10.21.15.96) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
@@ -63,17 +63,18 @@ From: Hanks Chen <hanks.chen@mediatek.com>
 To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
  <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
  <robh+dt@kernel.org>
-Subject: [PATCH 1/2] dt-bindings: clock: remove UART3 clock support
-Date: Tue, 21 Jul 2020 13:40:32 +0800
-Message-ID: <20200721054033.18520-2-hanks.chen@mediatek.com>
+Subject: [PATCH 2/2] clk: mediatek: remove UART3 clock support
+Date: Tue, 21 Jul 2020 13:40:33 +0800
+Message-ID: <20200721054033.18520-3-hanks.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200721054033.18520-1-hanks.chen@mediatek.com>
 References: <20200721054033.18520-1-hanks.chen@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 260778E1BAA8E2DC087EAC720C4C06B45F5F973202C578C7CC33AA0E0F17F9CE2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200721_014057_824668_6696C5CE 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20200721_014057_823126_4D9F5862 
+X-CRM114-Status: GOOD (  10.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,26 +96,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-remove the redundant clk interface of uart.
+CLK_INFRA_UART3 is a dummy clk interface,
+it has no effect on the operation of the read/write instruction.
 
 Fixes: 710774e04861 ("clk: mediatek: Add MT6779 clock support")
 Signed-off-by: Hanks Chen <hanks.chen@mediatek.com>
 ---
- include/dt-bindings/clock/mt6779-clk.h | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/clk/mediatek/clk-mt6779.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/include/dt-bindings/clock/mt6779-clk.h b/include/dt-bindings/clock/mt6779-clk.h
-index b083139afbd2..2b5f2354d7eb 100644
---- a/include/dt-bindings/clock/mt6779-clk.h
-+++ b/include/dt-bindings/clock/mt6779-clk.h
-@@ -229,7 +229,6 @@
- #define CLK_INFRA_UART0			21
- #define CLK_INFRA_UART1			22
- #define CLK_INFRA_UART2			23
--#define CLK_INFRA_UART3			24
- #define CLK_INFRA_GCE_26M		25
- #define CLK_INFRA_CQ_DMA_FPC		26
- #define CLK_INFRA_BTIF			27
+diff --git a/drivers/clk/mediatek/clk-mt6779.c b/drivers/clk/mediatek/clk-mt6779.c
+index 9766cccf5844..75f2235486be 100644
+--- a/drivers/clk/mediatek/clk-mt6779.c
++++ b/drivers/clk/mediatek/clk-mt6779.c
+@@ -923,8 +923,6 @@ static const struct mtk_gate infra_clks[] = {
+ 		    "uart_sel", 23),
+ 	GATE_INFRA0(CLK_INFRA_UART2, "infra_uart2",
+ 		    "uart_sel", 24),
+-	GATE_INFRA0(CLK_INFRA_UART3, "infra_uart3",
+-		    "uart_sel", 25),
+ 	GATE_INFRA0(CLK_INFRA_GCE_26M, "infra_gce_26m",
+ 		    "axi_sel", 27),
+ 	GATE_INFRA0(CLK_INFRA_CQ_DMA_FPC, "infra_cqdma_fpc",
 -- 
 2.18.0
 _______________________________________________
