@@ -2,75 +2,71 @@ Return-Path: <SRS0=w0xa=BA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A2D08C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 07:58:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 41ED1C433E8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 08:16:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6D97D208E4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 07:58:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 07A552068F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 08:16:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="p0GBhCj7";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="koRhD6Ne"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D97D208E4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GHp3UE2c";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="pfOCJF5h"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 07A552068F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gtZi0m2AQaTOiKzszm2ILyFz8EIK+NoXoSIQGXKQfv4=; b=p0GBhCj7acPgLE2Ee5598XNo5/
-	Wu3oWP5iMceeTVxpCa88qEJ0sqEFFNvQ+lnrJlJN9YvyuaB502blgL4D6zTLYePP7t6zxkVFLVOUd
-	IwJ4OzeRmFN9hay1n60920vyIxv3v5zLXyFEur8t71mb41i1E/OEcbXKZtGdoYvDVCjngy6yNtSJb
-	iP+6wOqxB5utDzxPUfXwY9PnCTJ9b7RD9a/osUfLKRB4c2yLhD3l98TVkHSuRpzLVZ0dzHZuhHlIq
-	pmc0bhkorA5AShkO3wj/Ivfd5PZI0pUv6+QUUM3fa6s56iWLwHQ67/0jSDsibGIOj4uXaL5aefOTE
-	uKdx91FQ==;
+	List-Unsubscribe:List-Id:Message-ID:Date:To:From:Subject:References:
+	In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=aAcE2caAvFas6mFp5DFfXhp+2NyjlfHvDDRkwQ3l+Ww=; b=GHp3UE2chVA0VuQXNa3D1B4Og
+	ydrhfUUWstLP+sIeezZ9UkSgCvHJIuyhl/b86Ph5jsWV2EHbGYfDuYQBfkAQxENlf3vyVT3zq/Ky7
+	hc27i+s2pXlsSoUUutafrWmAfDra6yhyYLM8WYNPyc64xOb+QfvvqLOgSti0f+o/+cIGtY6sms+Ei
+	i8tPS/uZeusecnV8DXBaQe955ARqosfbWAqslah86Og/8BA4s+EJqXwhr5e2a+biBjV795C00MnO7
+	Pql0jpS9qoMgQzIdRsQdnTLfQMtFbp50v6ygiKkTJoqi0GzcjI7WIxOSq+wefl40nBy4GqOSG+KS3
+	IAGUDvVCw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jxnA9-0006SP-Bo; Tue, 21 Jul 2020 07:58:09 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jxnRJ-0003eY-Gy; Tue, 21 Jul 2020 08:15:53 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jxnA6-0006Qk-Or; Tue, 21 Jul 2020 07:58:07 +0000
-X-UUID: 0c0ffee529ed4c7fa61e9e45120a4b51-20200720
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=vr8FkXlkAreaPZ3GuRWo40Xs9vhbrlKfvLDvE6FsB7g=; 
- b=koRhD6NeVDDplDNIi/OsKRaXK2ITrGtqXWbRwAiacdL3kmWrJizGpmMt65vPyZV3DaRyiwmj9ntDQbghwN+QErjW01k0LGa8oVF7uqgOrIB19ZW4eGn9/XuLKN0kSks0V5m3gJdmrztBUzkpAB2Su+xVx70ao38cPMxeLwTTwfU=;
-X-UUID: 0c0ffee529ed4c7fa61e9e45120a4b51-20200720
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chuanjia.liu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 567761964; Mon, 20 Jul 2020 23:57:58 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 21 Jul 2020 00:50:31 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 21 Jul 2020 15:50:22 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 21 Jul 2020 15:50:22 +0800
-From: chuanjia.liu <Chuanjia.Liu@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Lorenzo Pieralisi
- <lorenzo.pieralisi@arm.com>
-Subject: [PATCH v4 0/4] Split PCIe node to comply with hardware design
-Date: Tue, 21 Jul 2020 15:49:11 +0800
-Message-ID: <20200721074915.14516-1-Chuanjia.Liu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1jxnRE-0003d4-Sa; Tue, 21 Jul 2020 08:15:49 +0000
+Received: from kernel.org (unknown [104.132.0.74])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id EB0E42068F;
+ Tue, 21 Jul 2020 08:15:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1595319348;
+ bh=tluKZscEZ9nIJfxjCUJrrdRWnfspR12AAYUwqx4tm5Q=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=pfOCJF5hfwllADkTw3uNwtOY7GxZ06DPwSsn8vXOsyoDDKJAcs4WuV0euryWywuUD
+ 20VGj/ieL+poLPgRzsvHGgnrIZ8k2wDMSUTGiMrqR6QO02eFlr3VsEEt1pM0/mkC2R
+ 2PSexCAVyj0Ym8czvU4kMOIWKC4NoPgyq1wU4nco=
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 758788BF0DEEBCB8D615ED15913EAAE9465D6CB875B47041FB68A8865ADE58712000:8
-X-MTK: N
+In-Reply-To: <1595235326-6333-1-git-send-email-andrew-sh.cheng@mediatek.com>
+References: <1595235326-6333-1-git-send-email-andrew-sh.cheng@mediatek.com>
+Subject: Re: opp: Modify opp API, dev_pm_opp_get_freq(), find freq in opp,
+ even it is disabled
+From: Stephen Boyd <sboyd@kernel.org>
+To: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Nishanth Menon <nm@ti.com>,
+ Viresh Kumar <vireshk@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org
+Date: Tue, 21 Jul 2020 01:15:47 -0700
+Message-ID: <159531934722.3847286.14813407062714740461@swboyd.mtv.corp.google.com>
+User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200721_035807_011528_09B99F9D 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20200721_041549_081937_36EDF8B5 
+X-CRM114-Status: GOOD (  14.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,55 +78,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
- chuanjia.liu@mediatek.com, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, jianjun.wang@mediatek.com,
- linux-mediatek@lists.infradead.org, yong.wu@mediatek.com,
- Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org
+Cc: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>,
+ srv_heupstream@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are two independent PCIe controllers in MT2712 and MT7622
-platform, and each of them should contain an independent MSI
-domain.
+Quoting Andrew-sh.Cheng (2020-07-20 01:55:26)
+> From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
+> 
+> Modify dev_pm_opp_get_freq() to return freqeuncy
+> even this opp item is not available.
+> So that we can get the information of disable opp items.
+> 
+> Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+> ---
+>  drivers/opp/core.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/opp/core.c b/drivers/opp/core.c
+> index eed42d6b2e6b..5213e0462382 100644
+> --- a/drivers/opp/core.c
+> +++ b/drivers/opp/core.c
+> @@ -118,7 +118,7 @@ EXPORT_SYMBOL_GPL(dev_pm_opp_get_voltage);
+>   */
+>  unsigned long dev_pm_opp_get_freq(struct dev_pm_opp *opp)
+>  {
+> -       if (IS_ERR_OR_NULL(opp) || !opp->available) {
+> +       if (IS_ERR_OR_NULL(opp)) {
 
-In current architecture, MSI domain will be inherited from the
-root bridge, and all of the devices will share the same MSI domain.
-Hence that, the PCIe devices will not work properly if the irq
-number which required is more than 32.
+I wonder why we even have this check. Seems like the caller deserves an
+oops in this case instead of a small pr_err().
 
-Split the PCIe node for MT2712 and MT7622 platform to fix MSI
-issue and comply with the hardware design.
-
-change note:
-  v4:change commit message due to bayes statistical bogofilter
-     considers this series patch SPAM.
-  v3:rebase for 5.8-rc1. Only collect ack of Ryder, No code change.
-  v2:change the allocation of MT2712 PCIe MMIO space due to the
-     allocation size is not right in v1.
-
-chuanjia.liu (4):
-  dt-bindings: pci: mediatek: Modified the Device tree bindings
-  PCI: mediatek: Use regmap to get shared pcie-cfg base
-  arm64: dts: mediatek: Split PCIe node for MT2712 and MT7622
-  ARM: dts: mediatek: Modified MT7629 PCIe node
-
- .../bindings/pci/mediatek-pcie-cfg.yaml       |  38 +++++
- .../devicetree/bindings/pci/mediatek-pcie.txt | 144 +++++++++++-------
- arch/arm/boot/dts/mt7629-rfb.dts              |   3 +-
- arch/arm/boot/dts/mt7629.dtsi                 |  23 +--
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |  75 +++++----
- .../dts/mediatek/mt7622-bananapi-bpi-r64.dts  |  16 +-
- arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts  |   6 +-
- arch/arm64/boot/dts/mediatek/mt7622.dtsi      |  68 ++++++---
- drivers/pci/controller/pcie-mediatek.c        |  25 ++-
- 9 files changed, 258 insertions(+), 140 deletions(-)
- create mode 100644 .../bindings/pci/mediatek-pcie-cfg.yaml
-
--- 
-2.18.0
+>                 pr_err("%s: Invalid parameters\n", __func__);
+>                 return 0;
 
 _______________________________________________
 Linux-mediatek mailing list
