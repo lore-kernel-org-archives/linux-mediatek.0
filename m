@@ -2,78 +2,78 @@ Return-Path: <SRS0=w0xa=BA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 50B9CC433E2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 06:49:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BCAFEC433E2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 07:51:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 085072080D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 06:49:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7B232208E4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2020 07:51:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yTr7YUuL";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="SOgz9PPx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 085072080D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sN82A4XX";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Ei3D38DQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B232208E4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OLG4BEimZ19hHxSm3MxjlUQbFwPst9SPo1qex5mjDeE=; b=yTr7YUuLVJfxp/Ljsk72OX3I0
-	/2Nlv/Cur26ankoVlM+ldiOVPbe2CDExR8+Wwvujb11ZcHkTyPEPOR+rZHPuRLWDTEYw2/AMyAJ2+
-	N+FLlJpllRcUlwn4ZA3AOsC4m36DD3gWSFPcwL+HjtU7RMaB6qPqAOY+GinG2IS/8ymJPHgjfrzi0
-	JYnHWVBNNaNbtFJTVMZ7oTk1q4U7V6ywaCGPQL+25StlB6wA6iEmV1Qj7TuRmMJiVYfnLPxoeFlAP
-	tMeWRr5I/KwsHauxn0d4Ihpk9Qt4jYO6AmvQk2T7GE/5ZeGAb56htIx+8DrvJvW/jCxpa2psPu1je
-	77QmkWVLA==;
+	 bh=71Xz08EKA1mLRf7BCUgS/x29DhV/qpzggL5jv0+AiTE=; b=sN82A4XXp7RnNts5J7BH0zFSS
+	d+5B98Wj7M6+3bXjl7+RI6y85SxFdxv2PfaAKYE/x7fTndyqDrLAw2Lc5AVLYa9LBorlcDUeVUq6+
+	fmW4o4aqOZcxs2UVwCChAEpRIvQ+eiz0DMCnjWdw6ajNoeuO3MsAXz8Uwrhv34lk1Bt5lY6/BxIfg
+	Dpzpy6Bvmmqh4ZFcdibsiqvyX3RSY3SGpDUI3h4wn9cdNw1bhpwC+tRN4BIgelv3yET7poUrZrXYm
+	CM8/430ffgurdpePM9jjWu7/iuhYnZA2T8elU22dGqfD4y4+YtWyTkCcfhZtYiXPJUoNGlT2j1/e2
+	zoKbJoVKg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jxm5m-0005BD-4M; Tue, 21 Jul 2020 06:49:34 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jxn37-0003ey-RA; Tue, 21 Jul 2020 07:50:53 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jxm5i-00059x-4w; Tue, 21 Jul 2020 06:49:31 +0000
-X-UUID: bb0eb4b71a0a44de8249da20ee6490d9-20200720
+ id 1jxn34-0003cz-El; Tue, 21 Jul 2020 07:50:52 +0000
+X-UUID: 5e0c0b6bfd24455ab61d7fc53e7cba5d-20200720
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=HDE+Nmz97xH0ltYCR/7mZosOzkYaRCE+XN7OpMwDbO0=; 
- b=SOgz9PPxEYX3qKBLvKczTx9GMmFoOFW6TEwZv40GrPkavTgfgHyGYOTJb/xYt6Wp08RAY/NULVTlXxo6KuRjYaFOdNiPluWADf7Ih5E/MFcCZSQohB+zc70O6lPfjR8zaPuVTwZORYswuf8hQYHUBOtPjz5xIwmvwp4QCdU+5zQ=;
-X-UUID: bb0eb4b71a0a44de8249da20ee6490d9-20200720
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yong.mao@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=0EwV+WQ6sJnXus2Zl4BhiaYGFQpchG2doX5FhXhedZE=; 
+ b=Ei3D38DQoOhkOxT/LH5e0IVL2FUoJqhEx+YeMj+f1PosQzACCyskfUCWXTlP6tJUCh4Ib9U5QprIgzMZk754AjjzxTF4vs0gxBMILTJQEOTqlJXmTUhGI0G8lxTprWiH0Z9IPWtUkErPhFlQ7tlNctVEAZWCp45QX5bsZVnWxGQ=;
+X-UUID: 5e0c0b6bfd24455ab61d7fc53e7cba5d-20200720
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chuanjia.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 179331240; Mon, 20 Jul 2020 22:49:22 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ with ESMTP id 257713264; Mon, 20 Jul 2020 23:50:40 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 20 Jul 2020 23:39:20 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 21 Jul 2020 14:39:17 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 21 Jul 2020 14:39:15 +0800
-Message-ID: <1595313493.10458.1.camel@mhfsdcap03>
-Subject: Re: [PATCH v7 3/4] mmc: mediatek: command queue support
-From: "yong.mao@mediatek.com" <yong.mao@mediatek.com>
-To: Chun-Hung Wu <chun-hung.wu@mediatek.com>
-Date: Tue, 21 Jul 2020 14:38:13 +0800
-In-Reply-To: <1595205759-5825-4-git-send-email-chun-hung.wu@mediatek.com>
-References: <1595205759-5825-1-git-send-email-chun-hung.wu@mediatek.com>
- <1595205759-5825-4-git-send-email-chun-hung.wu@mediatek.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ 15.0.1497.2; Tue, 21 Jul 2020 00:50:40 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 21 Jul 2020 15:50:32 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 21 Jul 2020 15:50:31 +0800
+From: chuanjia.liu <Chuanjia.Liu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Lorenzo Pieralisi
+ <lorenzo.pieralisi@arm.com>
+Subject: [PATCH v4 1/4] dt-bindings: pci: mediatek: Modified the Device tree
+ bindings
+Date: Tue, 21 Jul 2020 15:49:12 +0800
+Message-ID: <20200721074915.14516-2-Chuanjia.Liu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20200721074915.14516-1-Chuanjia.Liu@mediatek.com>
+References: <20200721074915.14516-1-Chuanjia.Liu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: DA64DD8DC2FBB8E4BA786BAC7558BA6035E8F96A600D608D10CD9570EDFFAA072000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200721_024930_489967_C49FE5C3 
-X-CRM114-Status: GOOD (  27.37  )
+X-CRM114-CacheID: sfid-20200721_035050_761549_204AC724 
+X-CRM114-Status: GOOD (  15.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,276 +85,303 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Kate
- Stewart <kstewart@linuxfoundation.org>, Ulf Hansson <ulf.hansson@linaro.org>,
- wsd_upstream@mediatek.com, linux-mmc@vger.kernel.org, Linus
- Walleij <linus.walleij@linaro.org>, Al
- Cooper <alcooperx@gmail.com>, Bjorn Andersson <bjorn.andersson@linaro.org>,
- linux-tegra@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>,
- Pavel Machek <pavel@ucw.cz>, Florian Fainelli <f.fainelli@gmail.com>,
- Michal Simek <michal.simek@xilinx.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Andy Gross <agross@kernel.org>, bcm-kernel-feedback-list@broadcom.com,
- Allison Randal <allison@lohutok.net>, kernel-team@android.com,
- Pan Bian <bianpan2016@163.com>, devicetree@vger.kernel.org,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- linux-arm-msm@vger.kernel.org, mirq-linux@rere.qmqm.pl,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Thomas
- Gleixner <tglx@linutronix.de>, Stanley Chu <stanley.chu@mediatek.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, Mathieu Malaterre <malat@debian.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Kuohong Wang <kuohong.wang@mediatek.com>,
- Adrian Hunter <adrian.hunter@intel.com>, linux-kernel@vger.kernel.org
+Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
+ "chuanjia.liu" <Chuanjia.Liu@mediatek.com>, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, jianjun.wang@mediatek.com,
+ linux-mediatek@lists.infradead.org, yong.wu@mediatek.com,
+ Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2020-07-20 at 08:42 +0800, Chun-Hung Wu wrote:
-> Support command queue for mt6779 platform.
-> a. Add msdc_set_busy_timeout() to calculate emmc write timeout.
-> b. Connect mtk msdc driver to cqhci driver through
->    host->cq_host->ops = &msdc_cmdq_ops;
-> c. msdc_cmdq_irq() will link up with cqchi_irq(). Besides, it provides
->    more irq error messages like RSPCRCERR/CMDTO/DATACRCERR/DATTMO.
-> d. Select kernel config MMC_CQHCI for MMC_MTK
-> 
-> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
-> ---
->  drivers/mmc/host/Kconfig  |   1 +
->  drivers/mmc/host/mtk-sd.c | 115 ++++++++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 116 insertions(+)
-> 
+Split the PCIe node and add pciecfg node to fix MSI issue.
 
-Acked-by: Yong Mao <yong.mao@mediatek.com>
+Acked-by:Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: chuanjia.liu <Chuanjia.Liu@mediatek.com>
+---
+ .../bindings/pci/mediatek-pcie-cfg.yaml       |  38 +++++
+ .../devicetree/bindings/pci/mediatek-pcie.txt | 144 +++++++++++-------
+ 2 files changed, 129 insertions(+), 53 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pci/mediatek-pcie-cfg.yaml
 
-> diff --git a/drivers/mmc/host/Kconfig b/drivers/mmc/host/Kconfig
-> index 3b706af..9c89a5b 100644
-> --- a/drivers/mmc/host/Kconfig
-> +++ b/drivers/mmc/host/Kconfig
-> @@ -1009,6 +1009,7 @@ config MMC_MTK
->  	tristate "MediaTek SD/MMC Card Interface support"
->  	depends on HAS_DMA
->  	select REGULATOR
-> +	select MMC_CQHCI
->  	help
->  	  This selects the MediaTek(R) Secure digital and Multimedia card Interface.
->  	  If you have a machine with a integrated SD/MMC card reader, say Y or M here.
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 347ed72..e560a06 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -31,6 +31,8 @@
->  #include <linux/mmc/sdio.h>
->  #include <linux/mmc/slot-gpio.h>
->  
-> +#include "cqhci.h"
-> +
->  #define MAX_BD_NUM          1024
->  
->  /*--------------------------------------------------------------------------*/
-> @@ -152,6 +154,7 @@
->  #define MSDC_INT_DMA_BDCSERR    (0x1 << 17)	/* W1C */
->  #define MSDC_INT_DMA_GPDCSERR   (0x1 << 18)	/* W1C */
->  #define MSDC_INT_DMA_PROTECT    (0x1 << 19)	/* W1C */
-> +#define MSDC_INT_CMDQ           (0x1 << 28)	/* W1C */
->  
->  /* MSDC_INTEN mask */
->  #define MSDC_INTEN_MMCIRQ       (0x1 << 0)	/* RW */
-> @@ -182,6 +185,7 @@
->  /* SDC_CFG mask */
->  #define SDC_CFG_SDIOINTWKUP     (0x1 << 0)	/* RW */
->  #define SDC_CFG_INSWKUP         (0x1 << 1)	/* RW */
-> +#define SDC_CFG_WRDTOC          (0x1fff  << 2)  /* RW */
->  #define SDC_CFG_BUSWIDTH        (0x3 << 16)	/* RW */
->  #define SDC_CFG_SDIO            (0x1 << 19)	/* RW */
->  #define SDC_CFG_SDIOIDE         (0x1 << 20)	/* RW */
-> @@ -230,6 +234,7 @@
->  #define MSDC_PATCH_BIT_DECRCTMO   (0x1 << 30)	/* RW */
->  
->  #define MSDC_PATCH_BIT1_CMDTA     (0x7 << 3)    /* RW */
-> +#define MSDC_PB1_BUSY_CHECK_SEL   (0x1 << 7)    /* RW */
->  #define MSDC_PATCH_BIT1_STOP_DLY  (0xf << 8)    /* RW */
->  
->  #define MSDC_PATCH_BIT2_CFGRESP   (0x1 << 15)   /* RW */
-> @@ -431,9 +436,11 @@ struct msdc_host {
->  				 /* cmd response sample selection for HS400 */
->  	bool hs400_mode;	/* current eMMC will run at hs400 mode */
->  	bool internal_cd;	/* Use internal card-detect logic */
-> +	bool cqhci;		/* support eMMC hw cmdq */
->  	struct msdc_save_para save_para; /* used when gate HCLK */
->  	struct msdc_tune_para def_tune_para; /* default tune setting */
->  	struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
-> +	struct cqhci_host *cq_host;
->  };
->  
->  static const struct mtk_mmc_compatible mt8135_compat = {
-> @@ -764,6 +771,15 @@ static void msdc_set_timeout(struct msdc_host *host, u64 ns, u64 clks)
->  		      (u32)(timeout > 255 ? 255 : timeout));
->  }
->  
-> +static void msdc_set_busy_timeout(struct msdc_host *host, u64 ns, u64 clks)
-> +{
-> +	u64 timeout;
-> +
-> +	timeout = msdc_timeout_cal(host, ns, clks);
-> +	sdr_set_field(host->base + SDC_CFG, SDC_CFG_WRDTOC,
-> +		      (u32)(timeout > 8191 ? 8191 : timeout));
-> +}
-> +
->  static void msdc_gate_clock(struct msdc_host *host)
->  {
->  	clk_disable_unprepare(host->src_clk_cg);
-> @@ -1481,6 +1497,34 @@ static void msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
->  		pm_runtime_put_noidle(host->dev);
->  }
->  
-> +static irqreturn_t msdc_cmdq_irq(struct msdc_host *host, u32 intsts)
-> +{
-> +	int cmd_err = 0, dat_err = 0;
-> +
-> +	if (intsts & MSDC_INT_RSPCRCERR) {
-> +		cmd_err = -EILSEQ;
-> +		dev_err(host->dev, "%s: CMD CRC ERR", __func__);
-> +	} else if (intsts & MSDC_INT_CMDTMO) {
-> +		cmd_err = -ETIMEDOUT;
-> +		dev_err(host->dev, "%s: CMD TIMEOUT ERR", __func__);
-> +	}
-> +
-> +	if (intsts & MSDC_INT_DATCRCERR) {
-> +		dat_err = -EILSEQ;
-> +		dev_err(host->dev, "%s: DATA CRC ERR", __func__);
-> +	} else if (intsts & MSDC_INT_DATTMO) {
-> +		dat_err = -ETIMEDOUT;
-> +		dev_err(host->dev, "%s: DATA TIMEOUT ERR", __func__);
-> +	}
-> +
-> +	if (cmd_err || dat_err) {
-> +		dev_err(host->dev, "cmd_err = %d, dat_err =%d, intsts = 0x%x",
-> +			cmd_err, dat_err, intsts);
-> +	}
-> +
-> +	return cqhci_irq(host->mmc, 0, cmd_err, dat_err);
-> +}
-> +
->  static irqreturn_t msdc_irq(int irq, void *dev_id)
->  {
->  	struct msdc_host *host = (struct msdc_host *) dev_id;
-> @@ -1517,6 +1561,14 @@ static irqreturn_t msdc_irq(int irq, void *dev_id)
->  		if (!(events & (event_mask & ~MSDC_INT_SDIOIRQ)))
->  			break;
->  
-> +		if ((host->mmc->caps2 & MMC_CAP2_CQE) &&
-> +		    (events & MSDC_INT_CMDQ)) {
-> +			msdc_cmdq_irq(host, events);
-> +			/* clear interrupts */
-> +			writel(events, host->base + MSDC_INT);
-> +			return IRQ_HANDLED;
-> +		}
-> +
->  		if (!mrq) {
->  			dev_err(host->dev,
->  				"%s: MRQ=NULL; events=%08X; event_mask=%08X\n",
-> @@ -2201,6 +2253,36 @@ static int msdc_get_cd(struct mmc_host *mmc)
->  		return !val;
->  }
->  
-> +static void msdc_cqe_enable(struct mmc_host *mmc)
-> +{
-> +	struct msdc_host *host = mmc_priv(mmc);
-> +
-> +	/* enable cmdq irq */
-> +	writel(MSDC_INT_CMDQ, host->base + MSDC_INTEN);
-> +	/* enable busy check */
-> +	sdr_set_bits(host->base + MSDC_PATCH_BIT1, MSDC_PB1_BUSY_CHECK_SEL);
-> +	/* default write data / busy timeout 20s */
-> +	msdc_set_busy_timeout(host, 20 * 1000000000ULL, 0);
-> +	/* default read data timeout 1s */
-> +	msdc_set_timeout(host, 1000000000ULL, 0);
-> +}
-> +
-> +void msdc_cqe_disable(struct mmc_host *mmc, bool recovery)
-> +{
-> +	struct msdc_host *host = mmc_priv(mmc);
-> +
-> +	/* disable cmdq irq */
-> +	sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INT_CMDQ);
-> +	/* disable busy check */
-> +	sdr_clr_bits(host->base + MSDC_PATCH_BIT1, MSDC_PB1_BUSY_CHECK_SEL);
-> +
-> +	if (recovery) {
-> +		sdr_set_field(host->base + MSDC_DMA_CTRL,
-> +			      MSDC_DMA_CTRL_STOP, 1);
-> +		msdc_reset_hw(host);
-> +	}
-> +}
-> +
->  static const struct mmc_host_ops mt_msdc_ops = {
->  	.post_req = msdc_post_req,
->  	.pre_req = msdc_pre_req,
-> @@ -2217,6 +2299,11 @@ static int msdc_get_cd(struct mmc_host *mmc)
->  	.hw_reset = msdc_hw_reset,
->  };
->  
-> +static const struct cqhci_host_ops msdc_cmdq_ops = {
-> +	.enable         = msdc_cqe_enable,
-> +	.disable        = msdc_cqe_disable,
-> +};
-> +
->  static void msdc_of_property_parse(struct platform_device *pdev,
->  				   struct msdc_host *host)
->  {
-> @@ -2237,6 +2324,12 @@ static void msdc_of_property_parse(struct platform_device *pdev,
->  		host->hs400_cmd_resp_sel_rising = true;
->  	else
->  		host->hs400_cmd_resp_sel_rising = false;
-> +
-> +	if (of_property_read_bool(pdev->dev.of_node,
-> +				  "supports-cqe"))
-> +		host->cqhci = true;
-> +	else
-> +		host->cqhci = false;
->  }
->  
->  static int msdc_drv_probe(struct platform_device *pdev)
-> @@ -2352,6 +2445,8 @@ static int msdc_drv_probe(struct platform_device *pdev)
->  		mmc->caps2 |= MMC_CAP2_SDIO_IRQ_NOTHREAD;
->  
->  	mmc->caps |= MMC_CAP_CMD23;
-> +	if (host->cqhci)
-> +		mmc->caps2 |= MMC_CAP2_CQE | MMC_CAP2_CQE_DCMD;
->  	/* MMC core transfer sizes tunable parameters */
->  	mmc->max_segs = MAX_BD_NUM;
->  	if (host->dev_comp->support_64g)
-> @@ -2367,6 +2462,26 @@ static int msdc_drv_probe(struct platform_device *pdev)
->  		host->dma_mask = DMA_BIT_MASK(32);
->  	mmc_dev(mmc)->dma_mask = &host->dma_mask;
->  
-> +	if (mmc->caps2 & MMC_CAP2_CQE) {
-> +		host->cq_host = devm_kzalloc(host->mmc->parent,
-> +					     sizeof(*host->cq_host),
-> +					     GFP_KERNEL);
-> +		if (!host->cq_host) {
-> +			ret = -ENOMEM;
-> +			goto host_free;
-> +		}
-> +		host->cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
-> +		host->cq_host->mmio = host->base + 0x800;
-> +		host->cq_host->ops = &msdc_cmdq_ops;
-> +		ret = cqhci_init(host->cq_host, mmc, true);
-> +		if (ret)
-> +			goto host_free;
-> +		mmc->max_segs = 128;
-> +		/* cqhci 16bit length */
-> +		/* 0 size, means 65536 so we don't have to -1 here */
-> +		mmc->max_seg_size = 64 * 1024;
-> +	}
-> +
->  	host->timeout_clks = 3 * 1048576;
->  	host->dma.gpd = dma_alloc_coherent(&pdev->dev,
->  				2 * sizeof(struct mt_gpdma_desc),
-
+diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-cfg.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-cfg.yaml
+new file mode 100644
+index 000000000000..4d2835ab4858
+--- /dev/null
++++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-cfg.yaml
+@@ -0,0 +1,38 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/pci/mediatek-pcie-cfg.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek PCIECFG controller
++
++maintainers:
++  - Chuanjia Liu <chuanjia.liu@mediatek.com>
++  - Jianjun Wang <jianjun.wang@mediatek.com>
++
++description: |
++  The MediaTek PCIECFG controller controls some feature about
++  LTSSM, ASPM and so on.
++
++properties:
++  compatible:
++      items:
++        - enum:
++            - mediatek,mt7622-pciecfg
++            - mediatek,mt7629-pciecfg
++        - const: syscon
++
++  reg:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++
++examples:
++  - |
++    pciecfg: pciecfg@1a140000 {
++        compatible = "mediatek,mt7622-pciecfg", "syscon";
++        reg = <0 0x1a140000 0 0x1000>;
++    };
++...
+diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
+index 7468d666763a..31e261933685 100644
+--- a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
++++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
+@@ -8,7 +8,7 @@ Required properties:
+ 	"mediatek,mt7623-pcie"
+ 	"mediatek,mt7629-pcie"
+ - device_type: Must be "pci"
+-- reg: Base addresses and lengths of the PCIe subsys and root ports.
++- reg: Base addresses and lengths of the root ports.
+ - reg-names: Names of the above areas to use during resource lookup.
+ - #address-cells: Address representation for root ports (must be 3)
+ - #size-cells: Size representation for root ports (must be 2)
+@@ -19,10 +19,10 @@ Required properties:
+    - sys_ckN :transaction layer and data link layer clock
+   Required entries for MT2701/MT7623:
+    - free_ck :for reference clock of PCIe subsys
+-  Required entries for MT2712/MT7622:
++  Required entries for MT2712/MT7622/MT7629:
+    - ahb_ckN :AHB slave interface operating clock for CSR access and RC
+ 	      initiated MMIO access
+-  Required entries for MT7622:
++  Required entries for MT7622/MT7629:
+    - axi_ckN :application layer MMIO channel operating clock
+    - aux_ckN :pe2_mac_bridge and pe2_mac_core operating clock when
+ 	      pcie_mac_ck/pcie_pipe_ck is turned off
+@@ -47,10 +47,13 @@ Required properties for MT7623/MT2701:
+ - reset-names: Must be "pcie-rst0", "pcie-rst1", "pcie-rstN".. based on the
+   number of root ports.
+ 
+-Required properties for MT2712/MT7622:
++Required properties for MT2712/MT7622/MT7629:
+ -interrupts: A list of interrupt outputs of the controller, must have one
+ 	     entry for each PCIe port
+ 
++Required properties for MT7622/MT7629:
++- mediatek,pcie-subsys: Should be a phandle of the pciecfg node.
++
+ In addition, the device tree node must have sub-nodes describing each
+ PCIe port interface, having the following mandatory properties:
+ 
+@@ -143,56 +146,73 @@ Examples for MT7623:
+ 
+ Examples for MT2712:
+ 
+-	pcie: pcie@11700000 {
++	pcie1: pcie@112ff000 {
+ 		compatible = "mediatek,mt2712-pcie";
+ 		device_type = "pci";
+-		reg = <0 0x11700000 0 0x1000>,
+-		      <0 0x112ff000 0 0x1000>;
+-		reg-names = "port0", "port1";
++		reg = <0 0x112ff000 0 0x1000>;
++		reg-names = "port1";
+ 		#address-cells = <3>;
+ 		#size-cells = <2>;
+-		interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH>,
+-			     <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks = <&topckgen CLK_TOP_PE2_MAC_P0_SEL>,
+-			 <&topckgen CLK_TOP_PE2_MAC_P1_SEL>,
+-			 <&pericfg CLK_PERI_PCIE0>,
++		interrupts = <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "pcie_irq";
++		clocks = <&topckgen CLK_TOP_PE2_MAC_P1_SEL>,
+ 			 <&pericfg CLK_PERI_PCIE1>;
+-		clock-names = "sys_ck0", "sys_ck1", "ahb_ck0", "ahb_ck1";
+-		phys = <&pcie0_phy PHY_TYPE_PCIE>, <&pcie1_phy PHY_TYPE_PCIE>;
+-		phy-names = "pcie-phy0", "pcie-phy1";
++		clock-names = "sys_ck1", "ahb_ck1";
++		phys = <&u3port1 PHY_TYPE_PCIE>;
++		phy-names = "pcie-phy1";
+ 		bus-range = <0x00 0xff>;
+-		ranges = <0x82000000 0 0x20000000  0x0 0x20000000  0 0x10000000>;
++		ranges = <0x82000000 0 0x11400000  0x0 0x11400000  0 0x300000>;
++		status = "disabled";
+ 
+-		pcie0: pcie@0,0 {
+-			reg = <0x0000 0 0 0 0>;
++		slot1: pcie@1,0 {
++			reg = <0x0800 0 0 0 0>;
+ 			#address-cells = <3>;
+ 			#size-cells = <2>;
+ 			#interrupt-cells = <1>;
+ 			ranges;
+ 			interrupt-map-mask = <0 0 0 7>;
+-			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
+-					<0 0 0 2 &pcie_intc0 1>,
+-					<0 0 0 3 &pcie_intc0 2>,
+-					<0 0 0 4 &pcie_intc0 3>;
+-			pcie_intc0: interrupt-controller {
++			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
++					<0 0 0 2 &pcie_intc1 1>,
++					<0 0 0 3 &pcie_intc1 2>,
++					<0 0 0 4 &pcie_intc1 3>;
++			pcie_intc1: interrupt-controller {
+ 				interrupt-controller;
+ 				#address-cells = <0>;
+ 				#interrupt-cells = <1>;
+ 			};
+ 		};
++	};
+ 
+-		pcie1: pcie@1,0 {
+-			reg = <0x0800 0 0 0 0>;
++	pcie0: pcie@11700000 {
++		compatible = "mediatek,mt2712-pcie";
++		device_type = "pci";
++		reg = <0 0x11700000 0 0x1000>;
++		reg-names = "port0";
++		#address-cells = <3>;
++		#size-cells = <2>;
++		interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "pcie_irq";
++		clocks = <&topckgen CLK_TOP_PE2_MAC_P0_SEL>,
++			 <&pericfg CLK_PERI_PCIE0>;
++		clock-names = "sys_ck0", "ahb_ck0";
++		phys = <&u3port0 PHY_TYPE_PCIE>;
++		phy-names = "pcie-phy0";
++		bus-range = <0x00 0xff>;
++		ranges = <0x82000000 0 0x20000000 0x0 0x20000000 0 0x10000000>;
++		status = "disabled";
++
++		slot0: pcie@0,0 {
++			reg = <0x0000 0 0 0 0>;
+ 			#address-cells = <3>;
+ 			#size-cells = <2>;
+ 			#interrupt-cells = <1>;
+ 			ranges;
+ 			interrupt-map-mask = <0 0 0 7>;
+-			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
+-					<0 0 0 2 &pcie_intc1 1>,
+-					<0 0 0 3 &pcie_intc1 2>,
+-					<0 0 0 4 &pcie_intc1 3>;
+-			pcie_intc1: interrupt-controller {
++			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
++					<0 0 0 2 &pcie_intc0 1>,
++					<0 0 0 3 &pcie_intc0 2>,
++					<0 0 0 4 &pcie_intc0 3>;
++			pcie_intc0: interrupt-controller {
+ 				interrupt-controller;
+ 				#address-cells = <0>;
+ 				#interrupt-cells = <1>;
+@@ -202,39 +222,31 @@ Examples for MT2712:
+ 
+ Examples for MT7622:
+ 
+-	pcie: pcie@1a140000 {
++	pcie0: pcie@1a143000 {
+ 		compatible = "mediatek,mt7622-pcie";
+ 		device_type = "pci";
+-		reg = <0 0x1a140000 0 0x1000>,
+-		      <0 0x1a143000 0 0x1000>,
+-		      <0 0x1a145000 0 0x1000>;
+-		reg-names = "subsys", "port0", "port1";
++		reg = <0 0x1a143000 0 0x1000>;
++		reg-names = "port0";
++		mediatek,pcie-cfg = <&pciecfg>;
+ 		#address-cells = <3>;
+ 		#size-cells = <2>;
+-		interrupts = <GIC_SPI 228 IRQ_TYPE_LEVEL_LOW>,
+-			     <GIC_SPI 229 IRQ_TYPE_LEVEL_LOW>;
++		interrupts = <GIC_SPI 228 IRQ_TYPE_LEVEL_LOW>;
++		interrupt-names = "pcie_irq";
+ 		clocks = <&pciesys CLK_PCIE_P0_MAC_EN>,
+-			 <&pciesys CLK_PCIE_P1_MAC_EN>,
+ 			 <&pciesys CLK_PCIE_P0_AHB_EN>,
+-			 <&pciesys CLK_PCIE_P1_AHB_EN>,
+ 			 <&pciesys CLK_PCIE_P0_AUX_EN>,
+-			 <&pciesys CLK_PCIE_P1_AUX_EN>,
+ 			 <&pciesys CLK_PCIE_P0_AXI_EN>,
+-			 <&pciesys CLK_PCIE_P1_AXI_EN>,
+ 			 <&pciesys CLK_PCIE_P0_OBFF_EN>,
+-			 <&pciesys CLK_PCIE_P1_OBFF_EN>,
+-			 <&pciesys CLK_PCIE_P0_PIPE_EN>,
+-			 <&pciesys CLK_PCIE_P1_PIPE_EN>;
+-		clock-names = "sys_ck0", "sys_ck1", "ahb_ck0", "ahb_ck1",
+-			      "aux_ck0", "aux_ck1", "axi_ck0", "axi_ck1",
+-			      "obff_ck0", "obff_ck1", "pipe_ck0", "pipe_ck1";
+-		phys = <&pcie0_phy PHY_TYPE_PCIE>, <&pcie1_phy PHY_TYPE_PCIE>;
+-		phy-names = "pcie-phy0", "pcie-phy1";
++			 <&pciesys CLK_PCIE_P0_PIPE_EN>;
++		clock-names = "sys_ck0", "ahb_ck0", "aux_ck0",
++			      "axi_ck0", "obff_ck0", "pipe_ck0";
++
+ 		power-domains = <&scpsys MT7622_POWER_DOMAIN_HIF0>;
+ 		bus-range = <0x00 0xff>;
+-		ranges = <0x82000000 0 0x20000000  0x0 0x20000000  0 0x10000000>;
++		ranges = <0x82000000 0 0x20000000  0x0 0x20000000  0 0x8000000>;
++		status = "disabled";
+ 
+-		pcie0: pcie@0,0 {
++		slot0: pcie@0,0 {
+ 			reg = <0x0000 0 0 0 0>;
+ 			#address-cells = <3>;
+ 			#size-cells = <2>;
+@@ -251,8 +263,34 @@ Examples for MT7622:
+ 				#interrupt-cells = <1>;
+ 			};
+ 		};
++	};
++
++	pcie1: pcie@1a145000 {
++		compatible = "mediatek,mt7622-pcie";
++		device_type = "pci";
++		reg = <0 0x1a145000 0 0x1000>;
++		reg-names = "port1";
++		mediatek,pcie-cfg = <&pciecfg>;
++		#address-cells = <3>;
++		#size-cells = <2>;
++		interrupts = <GIC_SPI 229 IRQ_TYPE_LEVEL_LOW>;
++		interrupt-names = "pcie_irq";
++		clocks = <&pciesys CLK_PCIE_P1_MAC_EN>,
++			 /* designer has connect RC1 with p0_ahb clock */
++			 <&pciesys CLK_PCIE_P0_AHB_EN>,
++			 <&pciesys CLK_PCIE_P1_AUX_EN>,
++			 <&pciesys CLK_PCIE_P1_AXI_EN>,
++			 <&pciesys CLK_PCIE_P1_OBFF_EN>,
++			 <&pciesys CLK_PCIE_P1_PIPE_EN>;
++		clock-names = "sys_ck1", "ahb_ck1", "aux_ck1",
++			      "axi_ck1", "obff_ck1", "pipe_ck1";
++
++		power-domains = <&scpsys MT7622_POWER_DOMAIN_HIF0>;
++		bus-range = <0x00 0xff>;
++		ranges = <0x82000000 0 0x28000000  0x0 0x28000000  0 0x8000000>;
++		status = "disabled";
+ 
+-		pcie1: pcie@1,0 {
++		slot1: pcie@1,0 {
+ 			reg = <0x0800 0 0 0 0>;
+ 			#address-cells = <3>;
+ 			#size-cells = <2>;
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
