@@ -2,64 +2,75 @@ Return-Path: <SRS0=76sT=BB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D6C6C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 13:46:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5ECD7C433E1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 14:20:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 690DA2064C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 13:46:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2B1CF20684
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 14:20:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xveIgbL3";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="hIdorwcy"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 690DA2064C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z9+BDZ5p";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="KesR88iK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2B1CF20684
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Subject:References:In-Reply-To:To:From:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nrPGMi/Qy+v5gp6zHva3dDam8sChK4FHHrvAiHMXLOY=; b=xveIgbL3dyt53TaVy6Pr1xyDMO
-	SqyOFCCAcT83DlenOm6k4/sbEREGtmCnlp/v165ZLrB+EqGOyuxFYbN3dH/JWXTH9/I63aQ/6MjXf
-	4oY8ZnQq0eNmj+0CmRKqnq39XPG4YM+hyGjPiqSN4CeROhZbn0zWUmZK1YCAEsSso7pnoxeapN51r
-	t8aN0aEpF23hw2QfTvulhKzLyLM9+h6GVThHp1kIudErwezfnCqvTwTZSQelrlcOvdnAX4sptur2N
-	6Mm3T3MsLhaWimjytTjMGkShEa+wQImCaz1QliCrZisVcRdaCxwE/5onBvBzI6YuKpmr3f7mMOoJe
-	fNrEA2MQ==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ckjgRi8O+dy9bHRbm4dDEaHvv8kecMQ9zDsBULBuvlM=; b=Z9+BDZ5pC5Hw5De3pR/P/PxFUC
+	Vq19Lkn/znwOuFC5pmhHyCoodISonfpJxeSO5UEOrIkxCWOMzGMT9Pu+LmqMMinnjyM+/uerO/LwA
+	DgDrdEEFDuIOnvGLU6CGq7Z4iqcX+BA2dzAhyvLPfwgwHgqCJS9eDzMxGlDdqKTrZgNyokEu2vXqp
+	iJCHbvslO4tCVLaVW9/tuPo3xHKlbw7S+RSilYi7OHCpHk+PY8CpIva5q5qXQitfRvYuGjgffYNEv
+	dOl/iprmybWkJ/FoBydpbG2Fpf/NmcBxzTqa9TjbNx+RjiE9QtL/lYzgZMSPCxvRTKaHcqN1gh1w8
+	ugIyDKiw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyF4I-0007e3-KL; Wed, 22 Jul 2020 13:45:58 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jyFb5-0003Tl-VX; Wed, 22 Jul 2020 14:19:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyF46-0007Y6-3k; Wed, 22 Jul 2020 13:45:46 +0000
-Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id DD3802064C;
- Wed, 22 Jul 2020 13:45:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595425545;
- bh=nHj4qidlCzPnSj6K3Rd04M4Ti2n81ozk+ic2UrNZ/uA=;
- h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
- b=hIdorwcyP9KeG8W1hYiCVHJhwSRjuYWfbIeAtMkRiwREcpHJP/Bu6hWhbqFDUWOqu
- U8hDeuZUR9/dju4tLIU+lG2tDzWVeKQynQRtY8YZb0r/4BA+xKP3B0zHZ6QYkcLupG
- FgkN1CM21Q+ubYs8AokhGta/W2ztZw5f3uSIUaOs=
-Date: Wed, 22 Jul 2020 14:45:32 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Leilk Liu <leilk.liu@mediatek.com>
-In-Reply-To: <20200721024819.7150-1-leilk.liu@mediatek.com>
-References: <20200721024819.7150-1-leilk.liu@mediatek.com>
-Subject: Re: [PATCH] dt-bindings: spi: update bindings for MT8192 SoC
-Message-Id: <159542550175.19884.11879506725313401487.b4-ty@kernel.org>
+ id 1jyFb2-0003S9-QY; Wed, 22 Jul 2020 14:19:50 +0000
+X-UUID: a66a2122a3b64ca6bab12eee25e6f721-20200722
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=GVJnyqG5qtAiG4ewbpOZ6PTRkaO5mAaqoonpe2maeS0=; 
+ b=KesR88iKQH7auV9z/+/Hk9xgru61oAS9gvybQIoy6cfnGsV+fBIzRWdtJ2V/ONFbB811MVgUBeGTy1+8aQ43GlvoBFUjDvPIYDnHjMvSjbkZS7Pm0KbWpcnGtjKoOtW9wnrtitASd0T9HCUzA2dAkIoXslNtp2g3rKOsLecrav4=;
+X-UUID: a66a2122a3b64ca6bab12eee25e6f721-20200722
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1877823916; Wed, 22 Jul 2020 06:19:33 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 22 Jul 2020 07:19:38 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 22 Jul 2020 22:19:24 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 22 Jul 2020 22:19:25 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ Rob Herring <robh@kernel.org>
+Subject: [PATCH v3] iommu/mediatek: check 4GB mode by reading infracfg
+Date: Wed, 22 Jul 2020 22:19:25 +0800
+Message-ID: <20200722141925.14861-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+MIME-Version: 1.0
+X-TM-SNTS-SMTP: 3FDBDF1D74D313BDD0B5091DC2AD0F9931F251897C4EB80046840637F0DE86352000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200722_094546_221094_448C0ECE 
-X-CRM114-Status: UNSURE (   9.13  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200722_101949_039258_7C617555 
+X-CRM114-Status: GOOD (  18.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,48 +82,146 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org,
- linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
+Cc: wsd_upstream@mediatek.com, David
+ Hildenbrand <david@redhat.com>, iommu@lists.linux-foundation.org,
+ linux-kernel@vger.kernel.org, Miles Chen <miles.chen@mediatek.com>,
+ linux-mediatek@lists.infradead.org, Yong Wu <yong.wu@mediatek.com>,
+ Yingjoe Chen <yingjoe.chen@mediatek.com>, Mike Rapoport <rppt@linux.ibm.com>,
+ Christoph Hellwig <hch@lst.de>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 21 Jul 2020 10:48:19 +0800, Leilk Liu wrote:
-> Add a DT binding documentation for the MT8192 soc.
+In previous discussion [1] and [2], we found that it is risky to
+use max_pfn or totalram_pages to tell if 4GB mode is enabled.
 
-Applied to
+Check 4GB mode by reading infracfg register, remove the usage
+of the un-exported symbol max_pfn.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+This is a step towards building mtk_iommu as a kernel module.
 
-Thanks!
+---
 
-[1/1] spi: update bindings for MT8192 SoC
-      commit: 30962fe33ab5ed4bbd78c12f4b9e25a85c3e8d0b
+Change since v2:
+- determine compatible string by m4u_plat
+- rebase to next-20200720
+- add "---"
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+Change since v1:
+- remove the phandle usage, search for infracfg instead [3]
+- use infracfg instead of infracfg_regmap
+- move infracfg definitaions to linux/soc/mediatek/infracfg.h
+- update enable_4GB only when has_4gb_mode
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+[1] https://lkml.org/lkml/2020/6/3/733
+[2] https://lkml.org/lkml/2020/6/4/136
+[3] https://lkml.org/lkml/2020/7/15/1147
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+Cc: Mike Rapoport <rppt@linux.ibm.com>
+Cc: David Hildenbrand <david@redhat.com>
+Cc: Yong Wu <yong.wu@mediatek.com>
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Cc: Christoph Hellwig <hch@lst.de>
+Cc: Rob Herring <robh@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+---
+ drivers/iommu/mtk_iommu.c             | 34 +++++++++++++++++++++++----
+ include/linux/soc/mediatek/infracfg.h |  3 +++
+ 2 files changed, 32 insertions(+), 5 deletions(-)
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 59e5a62a34db..9ec666168822 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -3,7 +3,6 @@
+  * Copyright (c) 2015-2016 MediaTek Inc.
+  * Author: Yong Wu <yong.wu@mediatek.com>
+  */
+-#include <linux/memblock.h>
+ #include <linux/bug.h>
+ #include <linux/clk.h>
+ #include <linux/component.h>
+@@ -15,13 +14,16 @@
+ #include <linux/iommu.h>
+ #include <linux/iopoll.h>
+ #include <linux/list.h>
++#include <linux/mfd/syscon.h>
+ #include <linux/of_address.h>
+ #include <linux/of_iommu.h>
+ #include <linux/of_irq.h>
+ #include <linux/of_platform.h>
+ #include <linux/platform_device.h>
++#include <linux/regmap.h>
+ #include <linux/slab.h>
+ #include <linux/spinlock.h>
++#include <linux/soc/mediatek/infracfg.h>
+ #include <asm/barrier.h>
+ #include <soc/mediatek/smi.h>
+ 
+@@ -640,8 +642,11 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+ 	struct resource         *res;
+ 	resource_size_t		ioaddr;
+ 	struct component_match  *match = NULL;
++	struct regmap		*infracfg;
+ 	void                    *protect;
+ 	int                     i, larb_nr, ret;
++	u32			val;
++	char                    *p;
+ 
+ 	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
+ 	if (!data)
+@@ -655,10 +660,29 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
+ 
+-	/* Whether the current dram is over 4GB */
+-	data->enable_4GB = !!(max_pfn > (BIT_ULL(32) >> PAGE_SHIFT));
+-	if (!MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE))
+-		data->enable_4GB = false;
++	data->enable_4GB = false;
++	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE)) {
++		switch (data->plat_data->m4u_plat) {
++		case M4U_MT2712:
++			p = "mediatek,mt2712-infracfg";
++			break;
++		case M4U_MT8173:
++			p = "mediatek,mt8173-infracfg";
++			break;
++		default:
++			p = NULL;
++		}
++
++		infracfg = syscon_regmap_lookup_by_compatible(p);
++
++		if (IS_ERR(infracfg))
++			return PTR_ERR(infracfg);
++
++		ret = regmap_read(infracfg, REG_INFRA_MISC, &val);
++		if (ret)
++			return ret;
++		data->enable_4GB = !!(val & F_DDR_4GB_SUPPORT_EN);
++	}
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	data->base = devm_ioremap_resource(dev, res);
+diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
+index fd25f0148566..233463d789c6 100644
+--- a/include/linux/soc/mediatek/infracfg.h
++++ b/include/linux/soc/mediatek/infracfg.h
+@@ -32,6 +32,9 @@
+ #define MT7622_TOP_AXI_PROT_EN_WB		(BIT(2) | BIT(6) | \
+ 						 BIT(7) | BIT(8))
+ 
++#define REG_INFRA_MISC				0xf00
++#define F_DDR_4GB_SUPPORT_EN			BIT(13)
++
+ int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
+ 		bool reg_update);
+ int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
