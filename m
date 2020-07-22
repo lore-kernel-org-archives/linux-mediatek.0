@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 755ACC433E1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 04:26:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6ECC8C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 04:43:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 41D0E207BB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 04:26:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3A5E1208E4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 04:43:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AxBKTeW6";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="QdycRie8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 41D0E207BB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yfIgs+dJ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ZndOA8YK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3A5E1208E4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6mj/UCtqZUqatlYGNtpsGYo3KE4S52M46R6BBDSLrGc=; b=AxBKTeW6r/zOawotfo5KzceG5
-	f1Kj9fAw2Dv4X85TFLaGxXwSgW/r8QekiKbT1nFLetlU7cZq469U3e65Di1ygttwLpOYU/ircP+95
-	v5Vu3ZEUd7U/NZGAynrk+S+ZPQO/gbv1K7uU0qLKQFJMVmzMS9pR/vduyZGpyAu/4PpIun9MF6ibs
-	w/CNxFvOPmGfZyRLd8zrVDqQRahZO5HRKe1dzGv5qszcg2AtfzxGmqDTihSuQamH8zPbbFOFw2LuN
-	1+j+yAbQ/5n/nB5ydPkWot7aSj8qd9MUirsRv6pOe24AdNXVBKIEyd7jzxHykcRfBv6bxaYxV3zUQ
-	Zufd0yoeA==;
+	 bh=LIiXhIbQVYRm4ifaCwZce+j7DtLMpmHKv6MMuMJpE8U=; b=yfIgs+dJ0CECTy6YpD4TCDSTn
+	TZcYLt57cScroI2i7YTVVA21+nu+ICUtogM1V+Hk6YoUjWnyM3ZUfub8hQSaddX/3104lrV5Kh0Ga
+	VkTRULT5vnf+eX8kpH7iPp0s8Crjxs7XV3ieQDToOzZrsLEjxN4xn7NiMu8QwEfizRc9sxG7mwnl4
+	soOqpw8YCJWevghjIk2l4AOu0hgoUi0j38vozxg/wmPLGaOQ+5d2XIW1RV7wz0a4l+MgiYuRv52yg
+	h1CqeRqKKkHWtpgvDODtNQ614fQ54K8QmgyWrTeZopFngi9j4oTxuQyggXrHfp3VhSoGPwuWPq457
+	AQDMnUulw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jy6Ka-0001Q0-SC; Wed, 22 Jul 2020 04:26:12 +0000
+	id 1jy6bP-0002Lh-Cu; Wed, 22 Jul 2020 04:43:35 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jy6KX-0001P3-Nk; Wed, 22 Jul 2020 04:26:10 +0000
-X-UUID: 9d7979c1835d4a0cb97fbbd5abaa23f6-20200721
+ id 1jy6bK-0002Kl-U5; Wed, 22 Jul 2020 04:43:32 +0000
+X-UUID: 4cce12bfc50a481a98b3c2e58646d42c-20200721
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=GWVeRuD9gmf3IP/ZtIdGMOtS8Q7B5XBZWmUJ38WKNSo=; 
- b=QdycRie8uOFBxVVTNFzc3xxme+2QFN/eSv60cy7c+ilznZ453tMfy+EDT73Syb5YsHFIaB/hcE2wy99dHsKl3W9z8BDXI8d+WULis4IHHwwkgDmGKpPMYTN+KMeXGhG5iPingvi1u95ntDpIUuS3ZUfJYwQpSYetL1RG29G0j7w=;
-X-UUID: 9d7979c1835d4a0cb97fbbd5abaa23f6-20200721
+ bh=H9+Xagm11TvrRWxbyALKrMjkxXywyXQNawOGwoyEQ7E=; 
+ b=ZndOA8YKgYFjM4TETAPdzj73Be2G2GAq6urLeVMLeVw/tGx9DX0lt9adM8CstHViMFXrwe9wOW2piPdUIH8PmHlqZVvnfYwv9gHxZS3HbYYShdbqWyNdt+1hFK1/1IsUALbyS53+99o5e/QV5P/BawYIo/U8oB2jr/eM/IjNy+w=;
+X-UUID: 4cce12bfc50a481a98b3c2e58646d42c-20200721
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <hsin-hsiung.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 223920380; Tue, 21 Jul 2020 20:26:08 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 21 Jul 2020 21:26:02 -0700
+ with ESMTP id 1631408931; Tue, 21 Jul 2020 20:43:31 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 21 Jul 2020 21:33:07 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 22 Jul 2020 12:26:01 +0800
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 22 Jul 2020 12:33:05 +0800
 Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 22 Jul 2020 12:26:01 +0800
-Message-ID: <1595391961.8456.1.camel@mtksdaap41>
+ Transport; Wed, 22 Jul 2020 12:33:05 +0800
+Message-ID: <1595392386.10996.1.camel@mtksdaap41>
 Subject: Re: [PATCH 3/3] soc: mediatek: pwrap: add pwrap driver for
  MT6873/8192 SoCs
 From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>
-Date: Wed, 22 Jul 2020 12:26:01 +0800
+Date: Wed, 22 Jul 2020 12:33:06 +0800
 In-Reply-To: <e80b2e38-1324-a038-5647-6f595381ba47@gmail.com>
 References: <1594720432-19586-1-git-send-email-hsin-hsiung.wang@mediatek.com>
  <1594720432-19586-4-git-send-email-hsin-hsiung.wang@mediatek.com>
  <e80b2e38-1324-a038-5647-6f595381ba47@gmail.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 46BA3841AF452073B5F6F01FB82066505059B1E882F9A8BBE0A5884CFB3224812000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200722_002609_927575_3CBC4623 
-X-CRM114-Status: GOOD (  17.42  )
+X-CRM114-CacheID: sfid-20200722_004331_162570_63DCBA6E 
+X-CRM114-Status: GOOD (  18.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -144,6 +145,7 @@ Thanks for the comment. I will update it in next patch.
 > >   
 > >   /* defines for slave device wrapper registers */
 > >   enum dew_regs {
+> > @@ -348,6 +351,10 @@ enum pwrap_regs {
 
 [Delete]
 
