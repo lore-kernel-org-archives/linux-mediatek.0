@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DA5D9C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 02:28:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A20FC433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 02:29:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9D620207D0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 02:28:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 66DB6207BB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 02:29:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="olUiZ653"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9D620207D0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="B1JAMU19"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 66DB6207BB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,54 +25,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=2a6LyHvBAxZFV6oRt6BKxsFUokt1Oads1Q7Uwx2igMk=; b=olUiZ653VlEJ8xy+0Wc32niSX
-	4TvHOHhvjuZ/jwcFwHAendMQ5pqa++rJssl2DtUd4tPdM0/0fLeo2Ow3O1xy8u5Tv3w1rkearDPoq
-	ty5BYUjBfMDVKB2LibQnT9uyS1MXRDPFK3ZKpoWlNNX9CA3GXypzuiykeHR+b+gkwJeVN5HPBap5Z
-	kCvnsAYopS24BarkJNrCzAKbJ67nlGmwWCdSePVKzb/4glVVfRArUXbM5OXYTqmr779jBDwiJX0ee
-	9mtfs74Pv0JCaJd1Y5q2ngK3UzYwrO9ubt1wf+36xrlUx4583iAr0Jm8Yf1QWBzUL6ShmOcmexoGX
-	dIOu05Gog==;
+	 bh=UcYl8cgcuiI+w1PP/p0I6JUKSBC5qfO9JkkdDHcRgWY=; b=B1JAMU19KnaRqhrgIKPW8r3I9
+	h8Xg/FD+xEDfhJZToCHafhNYVcHKJXxZSoJW8mLmg/JJx3i5UmGGzf5xemdZaNuOufZgruns0n5cr
+	xIVD//DjaCnEbfp/+jB+LyxXPVcZn00RayBPA3LvhO+owwmQVJljdN2I/NpBOn8meVk3ifhx7eiJc
+	/gnSWQ0uPudLlkO6z3DtD9n0MSY5qV7FMqN8JsvL5QIXQuIe2D7/IySYK1k2cjEIiZVi32UnQKjY9
+	8+MrqJtypDwQlOrbBFZ6qlK63Ns2YCdNHxTndVU56nDBrj5KMEmKr+tx9HocaHz+ngBoMArrATHFl
+	ufhKkkacA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jy4Ui-0005Bo-H8; Wed, 22 Jul 2020 02:28:32 +0000
-Received: from mail-io1-f67.google.com ([209.85.166.67])
+	id 1jy4VE-0005Xq-Gm; Wed, 22 Jul 2020 02:29:04 +0000
+Received: from mail-io1-f68.google.com ([209.85.166.68])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jy4SD-0003qP-4n; Wed, 22 Jul 2020 02:25:59 +0000
-Received: by mail-io1-f67.google.com with SMTP id c16so852488ioi.9;
- Tue, 21 Jul 2020 19:25:56 -0700 (PDT)
+ id 1jy4SH-0003tN-VF; Wed, 22 Jul 2020 02:26:06 +0000
+Received: by mail-io1-f68.google.com with SMTP id d18so896516ion.0;
+ Tue, 21 Jul 2020 19:26:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=AUGh8RnhEjK8Q/8Ao/CLt6QYVRW9aIR/xlxMXsI6GXQ=;
- b=LCJndjY0fYxj40gly1YUIqFx5ze0aTiCnDrTEMyVkxwDTalARQdrvfm3d7BNuoQyrg
- YiPocrsD7p+VLQWPudbzV9nPafbV6y/Q3cnWobFjCpecURomNn5DkexcqkST0bOYsMes
- e+K1w43V0oA0jnRp6QdP8TQcUyDyKCMxIEYLGU3qgpKDLzL58yYfYUSY4E6oG6aPP8Y7
- 3SDJGrdyZV6OjDlT7FLFnbniBoTuThJdXsC1Bj46V73HzQhTvThKevIga/luzOApRGNB
- Ugk8uCMm3bT7q7zJDcYkhGxXdbS060xICkbYPVkHqubf64ZB7mIIdzhtA18OpomyyADW
- gAXw==
-X-Gm-Message-State: AOAM532/tVGLtLL9CmB7ULjLcRvXB/gGUc0bPuQFW+5ez5BED8uSgsvU
- BOYHcH4l+cQAmcNDgvlxBw==
-X-Google-Smtp-Source: ABdhPJzUZdTE9kOK0eUiRdeQnIfx8Ek0NUZFQenI/g6qWLpgqO4tE2w2ELbhRBGslHj7oW911odtpw==
-X-Received: by 2002:a6b:6c09:: with SMTP id a9mr30468818ioh.178.1595384756377; 
- Tue, 21 Jul 2020 19:25:56 -0700 (PDT)
+ bh=ccw7aFBBvUSTsPhiZooV3eXUT4cuUiS9mQQvtImdqBg=;
+ b=X36JTvsfxhdH/jaJ/Lm1AtS4sDxqBCdMB6/zzUCFC8A7z+P4zWtzknsag+MQnDb9Ai
+ mDvfA4erbAm7+04WcsI2QeqhI2GEjG+UsjFbCyqI1Hnk89sPrlldh5oRGBZSbRvvnfh0
+ OWMbkrt131egBEuBC6OY48CPNWhq9ESuDbLx15Cucr8tXqC7RY1OPapbwtpH6w81QYP3
+ 9GwySOtSZcQkiD7Gb8KM3GoYFUNevxK2iA82+bCfJGaljl+oYRgZ1BRSgHWYF5bbftzs
+ FC+ac6tj2ftpHwffTCp4YuYlgUUsNfZjVqorGvmAOp7q/XYrCp1eiW1sHcPZ4K0EeyS/
+ uA9w==
+X-Gm-Message-State: AOAM533hKztHlkBn1Gi3IbWCoMDllc3onUQl0RVBekcjWNM2dpVJ6vFF
+ CGtrq4YQY4XpnJPaCQ/Wgg==
+X-Google-Smtp-Source: ABdhPJzG+g+FJ+7V/G0ulxl4gKTGV/ybyBwv8ARgKlZN6HgZPREI6DZWoupZ+Y7XgS/uX9htijqVDA==
+X-Received: by 2002:a92:db44:: with SMTP id w4mr29799590ilq.306.1595384761267; 
+ Tue, 21 Jul 2020 19:26:01 -0700 (PDT)
 Received: from xps15.herring.priv ([64.188.179.252])
- by smtp.googlemail.com with ESMTPSA id y2sm11687981iox.22.2020.07.21.19.25.51
+ by smtp.googlemail.com with ESMTPSA id y2sm11687981iox.22.2020.07.21.19.25.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Jul 2020 19:25:55 -0700 (PDT)
+ Tue, 21 Jul 2020 19:26:00 -0700 (PDT)
 From: Rob Herring <robh@kernel.org>
 To: Bjorn Helgaas <bhelgaas@google.com>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: [PATCH 11/19] PCI: Move setting pci_host_bridge.busnr out of host
- drivers
-Date: Tue, 21 Jul 2020 20:25:06 -0600
-Message-Id: <20200722022514.1283916-12-robh@kernel.org>
+Subject: [PATCH 12/19] PCI: cadence: Use bridge resources for outbound window
+ setup
+Date: Tue, 21 Jul 2020 20:25:07 -0600
+Message-Id: <20200722022514.1283916-13-robh@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200722022514.1283916-1-robh@kernel.org>
 References: <20200722022514.1283916-1-robh@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200721_222557_747788_F81C59AD 
-X-CRM114-Status: GOOD (  17.23  )
+X-CRM114-CacheID: sfid-20200721_222602_205019_F574BE32 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,225 +109,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Most host drivers only parse the DT bus range to set the root bus number
-in pci_host_bridge.busnr. The ones that don't set busnr are buggy in
-that they ignore what's in DT. Let's set busnr in pci_scan_root_bus_bridge()
-where we already check for the bus resource and remove setting it in
-host drivers.
+Instead of parsing 'ranges' from DT again, use the bridge window
+resources.
 
-Cc: Jingoo Han <jingoohan1@gmail.com>
-Cc: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
+Cc: Tom Joseph <tjoseph@cadence.com>
 Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>
-Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
-Cc: Will Deacon <will@kernel.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>
-Cc: Jonathan Hunter <jonathanh@nvidia.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Marek Vasut <marek.vasut+renesas@gmail.com>
-Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
-Cc: linux-tegra@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-renesas-soc@vger.kernel.org
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/pci/controller/dwc/pcie-designware-host.c | 4 ----
- drivers/pci/controller/dwc/pcie-designware.h      | 1 -
- drivers/pci/controller/pci-aardvark.c             | 5 ++---
- drivers/pci/controller/pci-host-common.c          | 1 -
- drivers/pci/controller/pci-tegra.c                | 4 +---
- drivers/pci/controller/pci-v3-semi.c              | 2 --
- drivers/pci/controller/pcie-mediatek.c            | 8 +-------
- drivers/pci/controller/pcie-rcar-host.c           | 1 -
- drivers/pci/probe.c                               | 1 +
- 9 files changed, 5 insertions(+), 22 deletions(-)
+ .../controller/cadence/pcie-cadence-host.c    | 37 ++++++++-----------
+ 1 file changed, 16 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
-index 9e8a9cfc6d3a..fa922cb876a3 100644
---- a/drivers/pci/controller/dwc/pcie-designware-host.c
-+++ b/drivers/pci/controller/dwc/pcie-designware-host.c
-@@ -374,9 +374,6 @@ int dw_pcie_host_init(struct pcie_port *pp)
- 			pp->cfg0_base = pp->cfg->start;
- 			pp->cfg1_base = pp->cfg->start + pp->cfg0_size;
- 			break;
--		case IORESOURCE_BUS:
--			pp->busn = win->res;
--			break;
- 		}
- 	}
- 
-@@ -474,7 +471,6 @@ int dw_pcie_host_init(struct pcie_port *pp)
- 	}
- 
- 	bridge->sysdata = pp;
--	bridge->busnr = pp->busn->start;
- 	bridge->ops = &dw_pcie_ops;
- 	bridge->map_irq = of_irq_parse_and_map_pci;
- 	bridge->swizzle_irq = pci_common_swizzle;
-diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
-index fd2146298b58..9fb44290ed43 100644
---- a/drivers/pci/controller/dwc/pcie-designware.h
-+++ b/drivers/pci/controller/dwc/pcie-designware.h
-@@ -188,7 +188,6 @@ struct pcie_port {
- 	struct resource		*cfg;
- 	struct resource		*io;
- 	struct resource		*mem;
--	struct resource		*busn;
- 	int			irq;
- 	const struct dw_pcie_host_ops *ops;
- 	int			msi_irq;
-diff --git a/drivers/pci/controller/pci-aardvark.c b/drivers/pci/controller/pci-aardvark.c
-index 07d4a75b5c8f..61c59a6935c9 100644
---- a/drivers/pci/controller/pci-aardvark.c
-+++ b/drivers/pci/controller/pci-aardvark.c
-@@ -1104,7 +1104,7 @@ static int advk_pcie_probe(struct platform_device *pdev)
+diff --git a/drivers/pci/controller/cadence/pcie-cadence-host.c b/drivers/pci/controller/cadence/pcie-cadence-host.c
+index 84aaf8834e11..f485c0405fb5 100644
+--- a/drivers/pci/controller/cadence/pcie-cadence-host.c
++++ b/drivers/pci/controller/cadence/pcie-cadence-host.c
+@@ -104,16 +104,14 @@ static int cdns_pcie_host_init_root_port(struct cdns_pcie_rc *rc)
+ static int cdns_pcie_host_init_address_translation(struct cdns_pcie_rc *rc)
  {
- 	struct device *dev = &pdev->dev;
- 	struct advk_pcie *pcie;
--	struct resource *res, *bus;
-+	struct resource *res;
- 	struct pci_host_bridge *bridge;
- 	int ret, irq;
+ 	struct cdns_pcie *pcie = &rc->pcie;
++	struct pci_host_bridge *bridge = pci_host_bridge_from_priv(rc);
+ 	struct resource *mem_res = pcie->mem_res;
+ 	struct resource *bus_range = rc->bus_range;
+ 	struct resource *cfg_res = rc->cfg_res;
+-	struct device *dev = pcie->dev;
+-	struct device_node *np = dev->of_node;
+-	struct of_pci_range_parser parser;
+-	struct of_pci_range range;
++	struct resource_entry *entry;
+ 	u32 addr0, addr1, desc1;
+ 	u64 cpu_addr;
+-	int r, err;
++	int r;
  
-@@ -1133,12 +1133,11 @@ static int advk_pcie_probe(struct platform_device *pdev)
- 	}
+ 	/*
+ 	 * Reserve region 0 for PCI configure space accesses:
+@@ -132,25 +130,22 @@ static int cdns_pcie_host_init_address_translation(struct cdns_pcie_rc *rc)
+ 	cdns_pcie_writel(pcie, CDNS_PCIE_AT_OB_REGION_CPU_ADDR0(0), addr0);
+ 	cdns_pcie_writel(pcie, CDNS_PCIE_AT_OB_REGION_CPU_ADDR1(0), addr1);
  
- 	ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows,
--					      &bridge->dma_ranges, &bus);
-+					      &bridge->dma_ranges, NULL);
- 	if (ret) {
- 		dev_err(dev, "Failed to parse resources\n");
- 		return ret;
- 	}
--	bridge->busnr = bus->start;
- 
- 	pcie->reset_gpio = devm_gpiod_get_from_of_node(dev, dev->of_node,
- 						       "reset-gpios", 0,
-diff --git a/drivers/pci/controller/pci-host-common.c b/drivers/pci/controller/pci-host-common.c
-index ad395d7feddc..e662910fe032 100644
---- a/drivers/pci/controller/pci-host-common.c
-+++ b/drivers/pci/controller/pci-host-common.c
-@@ -77,7 +77,6 @@ int pci_host_common_probe(struct platform_device *pdev)
- 		pci_add_flags(PCI_REASSIGN_ALL_BUS);
- 
- 	bridge->sysdata = cfg;
--	bridge->busnr = cfg->busr.start;
- 	bridge->ops = (struct pci_ops *)&ops->pci_ops;
- 	bridge->map_irq = of_irq_parse_and_map_pci;
- 	bridge->swizzle_irq = pci_common_swizzle;
-diff --git a/drivers/pci/controller/pci-tegra.c b/drivers/pci/controller/pci-tegra.c
-index 5f91900c3fa3..9c91df9cd2ba 100644
---- a/drivers/pci/controller/pci-tegra.c
-+++ b/drivers/pci/controller/pci-tegra.c
-@@ -2670,7 +2670,6 @@ static int tegra_pcie_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct pci_host_bridge *host;
- 	struct tegra_pcie *pcie;
--	struct resource *bus;
- 	int err;
- 
- 	host = devm_pci_alloc_host_bridge(dev, sizeof(*pcie));
-@@ -2685,7 +2684,7 @@ static int tegra_pcie_probe(struct platform_device *pdev)
- 	INIT_LIST_HEAD(&pcie->ports);
- 	pcie->dev = dev;
- 
--	err = pci_parse_request_of_pci_ranges(dev, &host->windows, NULL, &bus);
-+	err = pci_parse_request_of_pci_ranges(dev, &host->windows, NULL, NULL);
- 	if (err) {
- 		dev_err(dev, "Getting bridge resources failed\n");
- 		return err;
-@@ -2714,7 +2713,6 @@ static int tegra_pcie_probe(struct platform_device *pdev)
- 		goto pm_runtime_put;
- 	}
- 
--	host->busnr = bus->start;
- 	host->ops = &tegra_pcie_ops;
- 	host->map_irq = tegra_pcie_map_irq;
- 	host->swizzle_irq = pci_common_swizzle;
-diff --git a/drivers/pci/controller/pci-v3-semi.c b/drivers/pci/controller/pci-v3-semi.c
-index d79af39e6e60..d2619f583bfb 100644
---- a/drivers/pci/controller/pci-v3-semi.c
-+++ b/drivers/pci/controller/pci-v3-semi.c
-@@ -584,8 +584,6 @@ static int v3_pci_setup_resource(struct v3_pci *v3,
- 		}
- 		break;
- 	case IORESOURCE_BUS:
--		dev_dbg(dev, "BUS %pR\n", win->res);
--		host->busnr = win->res->start;
- 		break;
- 	default:
- 		dev_info(dev, "Unknown resource type %lu\n",
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index a8710121264f..acbb656a8092 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -209,7 +209,6 @@ struct mtk_pcie_port {
-  * @mem: non-prefetchable memory resource
-  * @ports: pointer to PCIe port information
-  * @soc: pointer to SoC-dependent operations
-- * @busnr: root bus number
-  */
- struct mtk_pcie {
- 	struct device *dev;
-@@ -218,7 +217,6 @@ struct mtk_pcie {
- 
- 	struct list_head ports;
- 	const struct mtk_pcie_soc *soc;
--	unsigned int busnr;
- };
- 
- static void mtk_pcie_subsys_powerdown(struct mtk_pcie *pcie)
-@@ -1033,16 +1031,13 @@ static int mtk_pcie_setup(struct mtk_pcie *pcie)
- 	struct mtk_pcie_port *port, *tmp;
- 	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
- 	struct list_head *windows = &host->windows;
--	struct resource *bus;
- 	int err;
- 
- 	err = pci_parse_request_of_pci_ranges(dev, windows,
--					      &host->dma_ranges, &bus);
-+					      &host->dma_ranges, NULL);
- 	if (err)
- 		return err;
- 
--	pcie->busnr = bus->start;
+-	err = of_pci_range_parser_init(&parser, np);
+-	if (err)
+-		return err;
 -
- 	for_each_available_child_of_node(node, child) {
- 		int slot;
+ 	r = 1;
+-	for_each_of_pci_range(&parser, &range) {
+-		bool is_io;
+-
+-		if ((range.flags & IORESOURCE_TYPE_BITS) == IORESOURCE_MEM)
+-			is_io = false;
+-		else if ((range.flags & IORESOURCE_TYPE_BITS) == IORESOURCE_IO)
+-			is_io = true;
++	resource_list_for_each_entry(entry, &bridge->windows) {
++		struct resource *res = entry->res;
++		u64 pci_addr = res->start - entry->offset;
++
++		if (resource_type(res) == IORESOURCE_IO)
++			cdns_pcie_set_outbound_region(pcie, 0, r, true,
++						      pci_pio_to_address(res->start),
++						      pci_addr,
++						      resource_size(res));
+ 		else
+-			continue;
++			cdns_pcie_set_outbound_region(pcie, 0, r, false,
++						      res->start,
++						      pci_addr,
++						      resource_size(res));
  
-@@ -1096,7 +1091,6 @@ static int mtk_pcie_probe(struct platform_device *pdev)
- 	if (err)
- 		return err;
+-		cdns_pcie_set_outbound_region(pcie, 0, r, is_io,
+-					      range.cpu_addr,
+-					      range.pci_addr,
+-					      range.size);
+ 		r++;
+ 	}
  
--	host->busnr = pcie->busnr;
- 	host->ops = pcie->soc->ops;
- 	host->map_irq = of_irq_parse_and_map_pci;
- 	host->swizzle_irq = pci_common_swizzle;
-diff --git a/drivers/pci/controller/pcie-rcar-host.c b/drivers/pci/controller/pcie-rcar-host.c
-index bf10f1cf04f4..58f4d339eb0c 100644
---- a/drivers/pci/controller/pcie-rcar-host.c
-+++ b/drivers/pci/controller/pcie-rcar-host.c
-@@ -224,7 +224,6 @@ static int rcar_pcie_setup(struct list_head *resource,
- 			i++;
- 			break;
- 		case IORESOURCE_BUS:
--			bridge->busnr = res->start;
- 			break;
- 		default:
- 			continue;
-diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
-index 5583037dbdfa..f850782efc35 100644
---- a/drivers/pci/probe.c
-+++ b/drivers/pci/probe.c
-@@ -3088,6 +3088,7 @@ int pci_scan_root_bus_bridge(struct pci_host_bridge *bridge)
- 
- 	resource_list_for_each_entry(window, &bridge->windows)
- 		if (window->res->flags & IORESOURCE_BUS) {
-+			bridge->busnr = window->res->start;
- 			found = true;
- 			break;
- 		}
 -- 
 2.25.1
 
