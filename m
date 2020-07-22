@@ -7,111 +7,75 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7B89BC433E1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 08:46:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 13D37C433E4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 08:52:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 44218205CB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 08:46:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D38CE20787
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 08:52:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="isbCKptd";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=nxp.com header.i=@nxp.com header.b="j8Lj6DsA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 44218205CB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=nxp.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="U4MgPB4Y";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="QoY0E53K"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D38CE20787
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=KHivQJWRCIF5KcGe4y0A4VfN1nGlg2e3lLJJNejGmpE=; b=isbCKptdmRM+XGRAoyW4JFKdU
-	msBmutxAEgHvCxD7SdiwBtH+8dkfq4b5nRR5wrgWNGFlg48tCSZabqInMYwlCuS6WH4zOt5mQTQeI
-	ebQO0TRiTjbGtUWdqGIAH7NDEhT9jRfbGrgtvHtyiQizC5hfsymCuDV+KjxkTivhZHr5wjutCsXVH
-	XkbBXnTuhYP7Tjj1Jdfg2yYrCdmWe9DHDTB7L8SkDSIE6UWeL4ea4YEXPLJjLHpX6Hmqr6VzPfc55
-	ZSJpMERfIsvQQcbcGq87Z9yOoPOvAOrVFvPhvxPBdL4x50jL1dPyPCPsqsXFYepJH/wv9T3BR0B0u
-	vixaS9SeQ==;
+	 bh=Hgj4jEjBmSZcAPzH8hJdUmEleysuQ5PsnSpo40YRn1k=; b=U4MgPB4YMErI1EIrN0dJSeRkT
+	bECY0FKMkRCvMf5bZp6To30wM3ZGIykKFRvJZ58ytx3R7+ip10BklrzBGMmN6IQxlIhMza5FOM2ww
+	TD0pXrM6bCA4fgQ1Zq2kGgdQhUWnVo/MIdxyoVnPkZFQYo7J8b6UEPLHQuP7ciMToyMxKg5AoDaA9
+	TXyvmLVMV61JZ8z3iLLTuq5dYKr0YRrDmsTYL1PvpnL4NrO6gJH9JJBFvs+La5AqSnMalHMxu1p3z
+	HupJ6MuVmgAp4APrAR8oJGFq+FcMfAwq1tOJhKkPTJVBa3RzytqmsFvDLD8pBCSlkMthPFPASxS90
+	6p0XoXwTw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyAOM-0004xG-94; Wed, 22 Jul 2020 08:46:22 +0000
-Received: from mail-eopbgr80048.outbound.protection.outlook.com ([40.107.8.48]
- helo=EUR04-VI1-obe.outbound.protection.outlook.com)
+	id 1jyAU5-0005tV-Ic; Wed, 22 Jul 2020 08:52:17 +0000
+Received: from mail-vs1-xe42.google.com ([2607:f8b0:4864:20::e42])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyAOG-0004vJ-So; Wed, 22 Jul 2020 08:46:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WpS5M3H6kWHht2I0WtkOk+5SpDsslJ6dxdHvxL7ZMa4CVlMAiyKu8jOemyofdNAQaMqIdtbS8ATLYj2H0hvOeatPeeSOF3AQ+51+O483AZ7jI0/VeQ0gy0B3iloST7ha/9h1KBH20Y5YDJlQrhollY90iwisV3KSNtBQ69IrKJY7jjRQ1PNbWUvf7s5sfHNinJPO96Hyqhrd6yYC4D+jEc+6fFL9Jz+BkmjD4/v4gTbdzpeSwx3SQYF4oKE9ImLZjmpLmZ6RXb6FZ5VRFZ02QCjwFoHsssLqKhcWJhKxmoXi/dOpuvClmiqrLJa76hLpKs4YPHbotQoqbbyWWqrAjg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qqjw8pnL2pA3STiUSuTPqk7faLrJfDAiBRz+2CnDzck=;
- b=X6gziyso7W2gSZkqvBpyg1Ib3SNnQYTGt+0yB1ZrMPALHzDbnGBOfRpIXf8Ej3Xrfqlxw+kbccR8fzlItNRif3zF2fnZmtKGqPjupBk4a9tMQp0X/JAClEkANORA3RKIBPGD2IMjGTAJZp6RQ/dpqosPdssC/bouMp0KJVyKAt/Po8JqOXAuCh6SswXVYuWK1uyvgQRmsO7R+WxBAq0b7SrOug2/8rX1D+LO4m8f/pG/lZDBV86oE0zcbZScGLE0+oUHJN1WO/p3y68MsUsr5az1/j+vKZtefqt1pa19HVibY3eydAp9MHqSxvnNgnfwxoIlViVa15SVK22TnO9w2w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qqjw8pnL2pA3STiUSuTPqk7faLrJfDAiBRz+2CnDzck=;
- b=j8Lj6DsAcLaI2JE4MAZo4KYOeTpGFEjclcuWnh2t9IwJ06H057dPUq0xd/XeYbH+Aux/tV4TXeBdDEyBH1Diug1XBTZmUH9T6Xb3T7Ko1jgPX9vyEvIsI2T88ipIAxc3kwrwdR8YHgN24tKxH8m+fHNO7P5GbwnwHcFVrh26W2E=
-Received: from DB8PR04MB7162.eurprd04.prod.outlook.com (2603:10a6:10:12c::13)
- by DBBPR04MB6268.eurprd04.prod.outlook.com (2603:10a6:10:cc::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3195.23; Wed, 22 Jul
- 2020 08:46:13 +0000
-Received: from DB8PR04MB7162.eurprd04.prod.outlook.com
- ([fe80::59f1:4502:9518:3404]) by DB8PR04MB7162.eurprd04.prod.outlook.com
- ([fe80::59f1:4502:9518:3404%9]) with mapi id 15.20.3195.026; Wed, 22 Jul 2020
- 08:46:13 +0000
-From: Peter Chen <peter.chen@nxp.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Felipe Balbi <balbi@kernel.org>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: RE: [PATCH 3/7] usb: cdns3: convert to
- devm_platform_ioremap_resource_byname
-Thread-Topic: [PATCH 3/7] usb: cdns3: convert to
- devm_platform_ioremap_resource_byname
-Thread-Index: AQHWX/0cG9oxnTeJEkmy/Xf7kPi+jqkTSIRg
-Date: Wed, 22 Jul 2020 08:46:12 +0000
-Message-ID: <DB8PR04MB71626E57AECABAA95C60E7F88B790@DB8PR04MB7162.eurprd04.prod.outlook.com>
-References: <1595404275-8449-1-git-send-email-chunfeng.yun@mediatek.com>
- <1595404275-8449-3-git-send-email-chunfeng.yun@mediatek.com>
-In-Reply-To: <1595404275-8449-3-git-send-email-chunfeng.yun@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mediatek.com; dkim=none (message not signed)
- header.d=none;mediatek.com; dmarc=none action=none header.from=nxp.com;
-x-originating-ip: [119.31.174.68]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 51a1df86-71bf-4306-ae18-08d82e1bb053
-x-ms-traffictypediagnostic: DBBPR04MB6268:
-x-microsoft-antispam-prvs: <DBBPR04MB62688F680F7E51C3C19218AF8B790@DBBPR04MB6268.eurprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:279;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: Kof3+VmlNj9PFr2X5Ob4p9c1wq2LW6mQAhsHHzSglRDq+EchEkbCvcbFIShTSjyIBDxbfS3zVwqmfceoUFEcBXiLNJaCtxGhTVSKVE6joUZxm1DH0sjB+qfc/7cIBfCelWG6iUNUbntGOb2nvfTwmmWGNnw0Wnw0TndJUxt/2ekRJuXZQRRS9fPNppAAX9x93tgHVHpOE1DNRzEYqEbqXol4ze4B3ORpIERXBjQE/ctR2AAJiT2mYoNjYUOgc3dJG2joUFHe9aMmXvNFeJaNLu8QQubVjFp4QZS9w/64JgBt4XvNiMcctdK2NHKxjIoDiH2+vvtam45d0jKDSU9Bsw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DB8PR04MB7162.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(396003)(346002)(376002)(39860400002)(366004)(136003)(7696005)(86362001)(186003)(26005)(4326008)(55016002)(71200400001)(52536014)(33656002)(8676002)(478600001)(4744005)(66556008)(66476007)(64756008)(66946007)(9686003)(66446008)(76116006)(110136005)(54906003)(8936002)(44832011)(83380400001)(2906002)(6506007)(316002)(5660300002);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: CTAyguOHb/Dxp/miqgbuCq/ISITTwAp0D5wOS/jKvQnlcIMQzC1pVP3O8jp6NCySv7DzFQygXjd6nLULWf14PXAWhfMr0HUR+ZEiuZSU6SRezxMTUtSh2RyQWah1lUnRaO+DxegeN/JK0hRuMtNoB2sjjRPCzwlkg7PAOJez4qcp83c2yHnZWIjm0l0ZYWFgxkYb8UZZJGW5dypMs1EfNFZhYJajJ1is/SE5mRFpXnmytR22NTnipzTzH0CEk8QQeKbjVNw2ZKe2KuiCjBq1WEXevKsv+JJQUgeZwdzMfDRTRmXTSsFsYhklSZ7QdnQ9oDhKpfDd47dzKnTjw8MzSnVodqgrw2kDyj+RIZ6gu6ZeGwfIcHc4t9r2zlBosiSuCARdWVB51hHP9qzMGfX8T4Zal9MozBRpbbglEFV9WH4J37+nDYfOQu/R5SqgakXO3DomJGQJ+7/ZuVQNyWgLpMN83/EUflXqRzjrOEr7NKc=
-x-ms-exchange-transport-forked: True
+ id 1jyAU2-0005r9-Jk
+ for linux-mediatek@lists.infradead.org; Wed, 22 Jul 2020 08:52:15 +0000
+Received: by mail-vs1-xe42.google.com with SMTP id q15so720096vso.9
+ for <linux-mediatek@lists.infradead.org>; Wed, 22 Jul 2020 01:52:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=NEeWajGKm67++OZHvKQWCDftAm3bcAVKxtPrqi7rffw=;
+ b=QoY0E53KQa71Upiek8hls/OUvj0kY736e/ocwqNkm2YOTtdVNzipKoaZLp97GBkuXo
+ Doqx2dWTwA1k9lBGn/7NLerRytfAgT+mjd97SgYacmaoVsYhNezaIIUfQQy3+g+Idt8n
+ Bd3KVyo6HEsOuwP1t2w2N/rcxebaONBHw6EFk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=NEeWajGKm67++OZHvKQWCDftAm3bcAVKxtPrqi7rffw=;
+ b=mDodKiLb4JfYpqnxjDo5sgm/a7rUURiHjKmfgVroEJDALJQz6r87hv5cLr/5lhCKQR
+ SWUXD3YaU0CiEXHv2Gi3SCtXK6a2xCOqsKXNhBra6sqUMiVfqdTNzLSh239wpUv9Z2D0
+ /dPZ8QaZN/Yv6pT04Dtq1PqE2l/ryUDElKSRak/3MHAIppoUsj0PWCh2is8HVIFnyaqV
+ 9O3utL/aFClpqyA4+lNeq+sqXMvwEgYZe57xPA5ZZHWs4ckl3q7jwgNXGaDcPuiP0Qp8
+ EvfRNpvAA2k1f8r3XZbG4rkZekA9QrEs1cleugzd42jjK7WrkwB8VuI4IbFSIE+eorZI
+ jKdA==
+X-Gm-Message-State: AOAM531F9xxRu+iGV/mRBE0Fkd3i1j/8wO4c5Nk0uEOV/NGklyapmKzT
+ G0noj7MGVguSHvQqzMwipGeij/ujbGT4FKNqGK5w0g==
+X-Google-Smtp-Source: ABdhPJwu+0fS9ZykBs/N5sJKhnQyXgH73i6yXfke4Yx2a9+dxmIhOlX9pBc2nAbsMsa/h4RUUc2ZE+/z8zNUIiSYdSo=
+X-Received: by 2002:a67:e0c3:: with SMTP id m3mr24201706vsl.1.1595407930888;
+ Wed, 22 Jul 2020 01:52:10 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DB8PR04MB7162.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 51a1df86-71bf-4306-ae18-08d82e1bb053
-X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Jul 2020 08:46:12.9457 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: sfS2D09FvxQJA1Y7uQq0Z+5ZjwfrSCCNTs6VzVKn7AWB65KSNA5kaNsbhg2cFy4P5ifNp/VSNFP+FC2L8oyIcA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR04MB6268
+References: <1595400601-26220-1-git-send-email-weiyi.lu@mediatek.com>
+ <1595400601-26220-4-git-send-email-weiyi.lu@mediatek.com>
+In-Reply-To: <1595400601-26220-4-git-send-email-weiyi.lu@mediatek.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Wed, 22 Jul 2020 16:51:59 +0800
+Message-ID: <CANMq1KC5i8GU2zMxk+NvY5hF7Qvd-Jx-+pvY2cXfqzb=X-BWRQ@mail.gmail.com>
+Subject: Re: [PATCH 3/4] clk: mediatek: Add configurable enable control to
+ mtk_pll_data
+To: Weiyi Lu <weiyi.lu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200722_044617_159363_43E3319F 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20200722_045214_667335_2BACC1B1 
+X-CRM114-Status: GOOD (  22.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,44 +87,135 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: Rob Herring <robh@kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>,
+ James Liao <jamesjj.liao@mediatek.com>, Stephen Boyd <sboyd@kernel.org>,
+ lkml <linux-kernel@vger.kernel.org>, Ikjoon Jang <ikjn@chromium.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Wendell Lin <wendell.lin@mediatek.com>, linux-clk@vger.kernel.org,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
- 
-> Use devm_platform_ioremap_resource_byname() to simplify code
-> 
-> Cc: Peter Chen <peter.chen@nxp.com>
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+On Wed, Jul 22, 2020 at 2:50 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
+>
+> In all MediaTek PLL design, bit 0 of CON0 register is always
+> the enable bit.
+> However, there's a special case of usbpll on MT8192.
+> The enable bit of usbpll is moved to bit 2 of other register.
+> Add configurable en_reg and base_en_bit for enable control or
+> using the default if without setting in pll data.
+>
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 > ---
->  drivers/usb/cdns3/core.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/drivers/usb/cdns3/core.c b/drivers/usb/cdns3/core.c index
-> 19bbb5b..24faf60 100644
-> --- a/drivers/usb/cdns3/core.c
-> +++ b/drivers/usb/cdns3/core.c
-> @@ -436,8 +436,7 @@ static int cdns3_probe(struct platform_device *pdev)
->  	if (cdns->dev_irq < 0)
->  		dev_err(dev, "couldn't get peripheral irq\n");
-> 
-> -	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "dev");
-> -	regs = devm_ioremap_resource(dev, res);
-> +	regs = devm_platform_ioremap_resource_byname(pdev, "dev");
->  	if (IS_ERR(regs))
->  		return PTR_ERR(regs);
->  	cdns->dev_regs	= regs;
+>  drivers/clk/mediatek/clk-mtk.h |  2 ++
+>  drivers/clk/mediatek/clk-pll.c | 26 ++++++++++++++++++++++----
+>  2 files changed, 24 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+> index c3d6756..8bb0b3d 100644
+> --- a/drivers/clk/mediatek/clk-mtk.h
+> +++ b/drivers/clk/mediatek/clk-mtk.h
+> @@ -233,6 +233,8 @@ struct mtk_pll_data {
+>         uint32_t pcw_chg_reg;
+>         const struct mtk_pll_div_table *div_table;
+>         const char *parent_name;
+> +       uint32_t en_reg;
+> +       uint8_t base_en_bit;
+>  };
+>
+>  void mtk_clk_register_plls(struct device_node *node,
+> diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+> index f440f2cd..b8ccd42 100644
+> --- a/drivers/clk/mediatek/clk-pll.c
+> +++ b/drivers/clk/mediatek/clk-pll.c
+> @@ -44,6 +44,7 @@ struct mtk_clk_pll {
+>         void __iomem    *tuner_en_addr;
+>         void __iomem    *pcw_addr;
+>         void __iomem    *pcw_chg_addr;
+> +       void __iomem    *en_addr;
+>         const struct mtk_pll_data *data;
+>  };
+>
+> @@ -56,7 +57,10 @@ static int mtk_pll_is_prepared(struct clk_hw *hw)
+>  {
+>         struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
+>
+> -       return (readl(pll->base_addr + REG_CON0) & CON0_BASE_EN) != 0;
+> +       if (pll->en_addr)
+> +               return (readl(pll->en_addr) & BIT(pll->data->base_en_bit)) != 0;
+> +       else
+> +               return (readl(pll->base_addr + REG_CON0) & CON0_BASE_EN) != 0;
+>  }
+>
+>  static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 fin,
+> @@ -251,6 +255,12 @@ static int mtk_pll_prepare(struct clk_hw *hw)
+>         r |= pll->data->en_mask;
+>         writel(r, pll->base_addr + REG_CON0);
+>
+
+This is not a new change, but I'm wondering if the asymmetry is
+intentional here, that is, prepare sets bit pll->data->en_mask of
+REG_CON0; unprepare clears CON0_BASE_EN of REG_CON0.
+
+With this patch, if pll->en_addr is set, you set both
+pll->data->en_mask _and_ pll->data->base_en_bit, and clear only
+pll->data->base_en_bit.
+
+> +       if (pll->en_addr) {
+> +               r = readl(pll->en_addr);
+> +               r |= BIT(pll->data->base_en_bit);
+> +               writel(r, pll->en_addr);
+> +       }
+> +
+>         __mtk_pll_tuner_enable(pll);
+>
+>         udelay(20);
+> @@ -277,9 +287,15 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
+>
+>         __mtk_pll_tuner_disable(pll);
+>
+> -       r = readl(pll->base_addr + REG_CON0);
+> -       r &= ~CON0_BASE_EN;
+> -       writel(r, pll->base_addr + REG_CON0);
+> +       if (pll->en_addr) {
+> +               r = readl(pll->en_addr);
+> +               r &= ~BIT(pll->data->base_en_bit);
+> +               writel(r, pll->en_addr);
+> +       } else {
+> +               r = readl(pll->base_addr + REG_CON0);
+> +               r &= ~CON0_BASE_EN;
+> +               writel(r, pll->base_addr + REG_CON0);
+> +       }
+>
+>         r = readl(pll->pwr_addr) | CON0_ISO_EN;
+>         writel(r, pll->pwr_addr);
+> @@ -321,6 +337,8 @@ static struct clk *mtk_clk_register_pll(const struct mtk_pll_data *data,
+>                 pll->tuner_addr = base + data->tuner_reg;
+>         if (data->tuner_en_reg)
+>                 pll->tuner_en_addr = base + data->tuner_en_reg;
+> +       if (data->en_reg)
+> +               pll->en_addr = base + data->en_reg;
+
+If the answer to my question above holds (asymmetry is not
+intentional), this patch/the code could be simplified a lot if you
+also added a pll->en_bit member, and, here, did this:
+
+if (pll->en_reg) {
+   pll->en_addr = base + data->en_reg;
+   pll->end_bit = data->en_bit;
+} else {
+   pll->en_addr = pll->base_addr + REG_CON0;
+   pll->en_bit = CON0_BASE_EN;
+}
+
+>         pll->hw.init = &init;
+>         pll->data = data;
+>
 > --
-
-Reviewed-by: Peter Chen <peter.chen@nxp.com>
-
-Peter
+> 1.8.1.1.dirty
 
 _______________________________________________
 Linux-mediatek mailing list
