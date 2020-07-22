@@ -5,19 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	UPPERCASE_50_75,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EC500C433EA
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D5F0C433DF
 	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 06:50:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AC19A20657
+	by mail.kernel.org (Postfix) with ESMTPS id 1843D20657
 	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 06:50:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ivMQoXmm";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="kjVROEEv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC19A20657
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="msSNRoK2";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="hTMNbJ6X"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1843D20657
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,34 +27,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=b/o1uyc2xC/PJLZWZ5Y4Ri8Ic6/GJSemfuGQo8nkHZw=; b=ivMQoXmmBci8qHlWNHcvRhjkX
-	9IlyD6iIu+ve5hIVRWJZ6oBBpCBVjjPgo8WXFyAtkqhhqeNMNBcD5aoIaKVEmVe5MCF4C5xDPyCUU
-	oLMTkyMb/T/hVdOZ0BOgTNgaGyO/CaY+2FU1WeqzG6aqb3Odsfsbu3sPWWYt1F4hCK4m4jXowa0H1
-	lemHdgJ6n8+pQIBizWD+dvD4e5u+9shclUhCUkRwp1GFAXL2HxJjIU4vAH/cegrbbg1bwiHHykS+N
-	kLyqh4PiZc+od5W8YOj7J/NpjcXF9+Rc7aU7kmsbLdqZ4V/ETMJg/NHmzeh1jLfD2rLnaK1L8EJcx
-	V12hQ18Cg==;
+	 bh=PW+4/MQYeavUrW6wLQ2UZApJAYHS6yOwmgdATBsnWDg=; b=msSNRoK2IYnSlleRV8uIJsgtF
+	pAePhVRX1tfAyy4FgbEW+wzj4ZtTIaGBhbBE62QaJacNflgvrhzk74kB5KR67D5KeCvlSK4O8hym4
+	uxOPK3ZJBDeBYhb1GGmD1bGdScLWdB5LLCCsTBH6Grh8RvAwtLH5u13Bc0rMKYnRR9mrsUe2o/or5
+	LC8ZR4HsOJuUuo2Fn2zyJCEVWfLZjSxvu89ihTuD2gbe7VPYzkC0fvVhi983D6Z+8NLF3bu7d1cXC
+	BVZWOZIQX+d8hmCjCVxxL1YVAAYMYmZjLyWvq4+RDFQW2g/2hGxj1iud4Ot5XaFh8JfgnGLOs/+su
+	h3Ja9XumA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jy8a6-0005hb-2Q; Wed, 22 Jul 2020 06:50:22 +0000
+	id 1jy8a5-0005hT-BW; Wed, 22 Jul 2020 06:50:21 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jy8Zx-0005fK-OG; Wed, 22 Jul 2020 06:50:16 +0000
-X-UUID: e4d9ac26fab340fb988c118e62c4c0cc-20200721
+ id 1jy8Zx-0005fL-Nq; Wed, 22 Jul 2020 06:50:15 +0000
+X-UUID: 390b39db7bf04b96b555c58fae0b652d-20200721
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=3Tmg1HFY0UCr3HAwCjzqdMY8MsLsgiqb36JxbD/BQmc=; 
- b=kjVROEEv1iphMjzWGx7PZMMjDkmXxQzgO0SXmzH7gPjUXotVaaKB4oP5nZlZeWQ6V0VVLGxlHTqB3RmZogI9F4XfgSGA8bDarr5968yCf6y9KPnoQ0JbLWKhljSbjNxzkfh+PX3HFOTCENmimBPCQSTOUKwFgC2Fk6gfDYzMxfo=;
-X-UUID: e4d9ac26fab340fb988c118e62c4c0cc-20200721
+ bh=xbWucSOOub+V3FYy9GxZrPI6qs+/BftwCXXayUwF4oY=; 
+ b=hTMNbJ6XkMeacbrxnkMAy4ehFDuwGOoV6hOCaXtfuTGZbLs3RSoNyO3m0aabrfbdF87lwQVqm/y34u6NtNs4wtUc5zmjIZuByTfQsEaK5bzDgIXKXQvhaMQn5jhAWqKlPPno4oBf15TUIFuiGHSUHZF3hOxCMXXzPcj32lWUrns=;
+X-UUID: 390b39db7bf04b96b555c58fae0b652d-20200721
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1546631229; Tue, 21 Jul 2020 22:50:11 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1466633061; Tue, 21 Jul 2020 22:50:11 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 21 Jul 2020 23:50:03 -0700
+ 15.0.1497.2; Tue, 21 Jul 2020 23:50:04 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 22 Jul 2020 14:50:02 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -61,17 +62,17 @@ Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
  Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
-Subject: [PATCH 1/4] dt-bindings: ARM: Mediatek: Document bindings for MT8192
-Date: Wed, 22 Jul 2020 14:49:58 +0800
-Message-ID: <1595400601-26220-2-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH 2/4] clk: mediatek: Add dt-bindings for MT8192 clocks
+Date: Wed, 22 Jul 2020 14:49:59 +0800
+Message-ID: <1595400601-26220-3-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1595400601-26220-1-git-send-email-weiyi.lu@mediatek.com>
 References: <1595400601-26220-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200722_025014_050605_AF24E8BA 
-X-CRM114-Status: GOOD (  16.02  )
+X-CRM114-CacheID: sfid-20200722_025014_000850_F45DD221 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,456 +93,614 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds the binding documentation for apmixedsys, audsys,
-camsys-raw, camsys, imgsys, imp_iic_wrap, infracfg, ipesys, mdpsys,
-mfgcfg, mmsys, msdc, pericfg, scp-adsp, topckgen, vdecsys-soc,
-vdecsys and vencsys for Mediatek MT8192.
+Add MT8192 clock dt-bindings, include topckgen, apmixedsys,
+infracfg, pericfg and subsystem clocks.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |  1 +
- .../bindings/arm/mediatek/mediatek,audsys.txt      |  1 +
- .../bindings/arm/mediatek/mediatek,camsys-raw.yaml | 40 ++++++++++++++++++++
- .../bindings/arm/mediatek/mediatek,camsys.txt      |  1 +
- .../bindings/arm/mediatek/mediatek,imgsys.txt      |  2 +
- .../arm/mediatek/mediatek,imp_iic_wrap.yaml        | 43 ++++++++++++++++++++++
- .../bindings/arm/mediatek/mediatek,infracfg.txt    |  1 +
- .../bindings/arm/mediatek/mediatek,ipesys.txt      |  1 +
- .../bindings/arm/mediatek/mediatek,mdpsys.yaml     | 38 +++++++++++++++++++
- .../bindings/arm/mediatek/mediatek,mfgcfg.txt      |  1 +
- .../bindings/arm/mediatek/mediatek,mmsys.txt       |  1 +
- .../bindings/arm/mediatek/mediatek,msdc.yaml       | 39 ++++++++++++++++++++
- .../bindings/arm/mediatek/mediatek,pericfg.yaml    |  1 +
- .../bindings/arm/mediatek/mediatek,scp-adsp.yaml   | 38 +++++++++++++++++++
- .../bindings/arm/mediatek/mediatek,topckgen.txt    |  1 +
- .../arm/mediatek/mediatek,vdecsys-soc.yaml         | 38 +++++++++++++++++++
- .../bindings/arm/mediatek/mediatek,vdecsys.txt     |  1 +
- .../bindings/arm/mediatek/mediatek,vencsys.txt     |  1 +
- 18 files changed, 249 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys-raw.yaml
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys-soc.yaml
+ include/dt-bindings/clock/mt8192-clk.h | 593 +++++++++++++++++++++++++++++++++
+ 1 file changed, 593 insertions(+)
+ create mode 100644 include/dt-bindings/clock/mt8192-clk.h
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
-index bd7a0fa..6942ad4 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
-@@ -17,6 +17,7 @@ Required Properties:
- 	- "mediatek,mt8135-apmixedsys"
- 	- "mediatek,mt8173-apmixedsys"
- 	- "mediatek,mt8183-apmixedsys", "syscon"
-+	- "mediatek,mt8192-apmixedsys", "syscon"
- 	- "mediatek,mt8516-apmixedsys"
- - #clock-cells: Must be 1
- 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-index 38309db..fdcb267 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-@@ -12,6 +12,7 @@ Required Properties:
- 	- "mediatek,mt7622-audsys", "syscon"
- 	- "mediatek,mt7623-audsys", "mediatek,mt2701-audsys", "syscon"
- 	- "mediatek,mt8183-audiosys", "syscon"
-+	- "mediatek,mt8192-audsys", "syscon"
- 	- "mediatek,mt8516-audsys", "syscon"
- - #clock-cells: Must be 1
- 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys-raw.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys-raw.yaml
+diff --git a/include/dt-bindings/clock/mt8192-clk.h b/include/dt-bindings/clock/mt8192-clk.h
 new file mode 100644
-index 0000000..db6f425
+index 0000000..0f50844
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys-raw.yaml
-@@ -0,0 +1,40 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,camsys-raw.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++++ b/include/dt-bindings/clock/mt8192-clk.h
+@@ -0,0 +1,593 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (c) 2020 MediaTek Inc.
++ * Author: Weiyi Lu <weiyi.lu@mediatek.com>
++ */
 +
-+title: MediaTek CAMSYS RAW Controller
++#ifndef _DT_BINDINGS_CLK_MT8192_H
++#define _DT_BINDINGS_CLK_MT8192_H
 +
-+maintainers:
-+  - Weiyi Lu <weiyi.lu@mediatek.com>
++/* TOPCKGEN */
 +
-+description:
-+  The Mediatek camsys raw controller provides various clocks to the system.
++#define CLK_TOP_AXI_SEL			0
++#define CLK_TOP_SPM_SEL			1
++#define CLK_TOP_SCP_SEL			2
++#define CLK_TOP_BUS_AXIMEM_SEL		3
++#define CLK_TOP_DISP_SEL		4
++#define CLK_TOP_MDP_SEL			5
++#define CLK_TOP_IMG1_SEL		6
++#define CLK_TOP_IMG2_SEL		7
++#define CLK_TOP_IPE_SEL			8
++#define CLK_TOP_DPE_SEL			9
++#define CLK_TOP_CAM_SEL			10
++#define CLK_TOP_CCU_SEL			11
++#define CLK_TOP_DSP7_SEL		12
++#define CLK_TOP_MFG_REF_SEL		13
++#define CLK_TOP_MFG_PLL_SEL		14
++#define CLK_TOP_CAMTG_SEL		15
++#define CLK_TOP_CAMTG2_SEL		16
++#define CLK_TOP_CAMTG3_SEL		17
++#define CLK_TOP_CAMTG4_SEL		18
++#define CLK_TOP_CAMTG5_SEL		19
++#define CLK_TOP_CAMTG6_SEL		20
++#define CLK_TOP_UART_SEL		21
++#define CLK_TOP_SPI_SEL			22
++#define CLK_TOP_MSDC50_0_H_SEL		23
++#define CLK_TOP_MSDC50_0_SEL		24
++#define CLK_TOP_MSDC30_1_SEL		25
++#define CLK_TOP_MSDC30_2_SEL		26
++#define CLK_TOP_AUDIO_SEL		27
++#define CLK_TOP_AUD_INTBUS_SEL		28
++#define CLK_TOP_PWRAP_ULPOSC_SEL	29
++#define CLK_TOP_ATB_SEL			30
++#define CLK_TOP_SSPM_SEL		31
++#define CLK_TOP_DPI_SEL			32
++#define CLK_TOP_SCAM_SEL		33
++#define CLK_TOP_DISP_PWM_SEL		34
++#define CLK_TOP_USB_TOP_SEL		35
++#define CLK_TOP_SSUSB_XHCI_SEL		36
++#define CLK_TOP_I2C_SEL			37
++#define CLK_TOP_SENINF_SEL		38
++#define CLK_TOP_SENINF1_SEL		39
++#define CLK_TOP_SENINF2_SEL		40
++#define CLK_TOP_SENINF3_SEL		41
++#define CLK_TOP_TL_SEL			42
++#define CLK_TOP_DXCC_SEL		43
++#define CLK_TOP_AUD_ENGEN1_SEL		44
++#define CLK_TOP_AUD_ENGEN2_SEL		45
++#define CLK_TOP_AES_UFSFDE_SEL		46
++#define CLK_TOP_UFS_SEL			47
++#define CLK_TOP_AUD_1_SEL		48
++#define CLK_TOP_AUD_2_SEL		49
++#define CLK_TOP_ADSP_SEL		50
++#define CLK_TOP_DPMAIF_MAIN_SEL		51
++#define CLK_TOP_VENC_SEL		52
++#define CLK_TOP_VDEC_SEL		53
++#define CLK_TOP_CAMTM_SEL		54
++#define CLK_TOP_PWM_SEL			55
++#define CLK_TOP_AUDIO_H_SEL		56
++#define CLK_TOP_SPMI_MST_SEL		57
++#define CLK_TOP_AES_MSDCFDE_SEL		58
++#define CLK_TOP_MCUPM_SEL		59
++#define CLK_TOP_SFLASH_SEL		60
++#define CLK_TOP_APLL_I2S0_M_SEL		61
++#define CLK_TOP_APLL_I2S1_M_SEL		62
++#define CLK_TOP_APLL_I2S2_M_SEL		63
++#define CLK_TOP_APLL_I2S3_M_SEL		64
++#define CLK_TOP_APLL_I2S4_M_SEL		65
++#define CLK_TOP_APLL_I2S5_M_SEL		66
++#define CLK_TOP_APLL_I2S6_M_SEL		67
++#define CLK_TOP_APLL_I2S7_M_SEL		68
++#define CLK_TOP_APLL_I2S8_M_SEL		69
++#define CLK_TOP_APLL_I2S9_M_SEL		70
++#define CLK_TOP_MAINPLL_D3		71
++#define CLK_TOP_MAINPLL_D4		72
++#define CLK_TOP_MAINPLL_D4_D2		73
++#define CLK_TOP_MAINPLL_D4_D4		74
++#define CLK_TOP_MAINPLL_D4_D8		75
++#define CLK_TOP_MAINPLL_D4_D16		76
++#define CLK_TOP_MAINPLL_D5		77
++#define CLK_TOP_MAINPLL_D5_D2		78
++#define CLK_TOP_MAINPLL_D5_D4		79
++#define CLK_TOP_MAINPLL_D5_D8		80
++#define CLK_TOP_MAINPLL_D6		81
++#define CLK_TOP_MAINPLL_D6_D2		82
++#define CLK_TOP_MAINPLL_D6_D4		83
++#define CLK_TOP_MAINPLL_D7		84
++#define CLK_TOP_MAINPLL_D7_D2		85
++#define CLK_TOP_MAINPLL_D7_D4		86
++#define CLK_TOP_MAINPLL_D7_D8		87
++#define CLK_TOP_UNIVPLL_D3		88
++#define CLK_TOP_UNIVPLL_D4		89
++#define CLK_TOP_UNIVPLL_D4_D2		90
++#define CLK_TOP_UNIVPLL_D4_D4		91
++#define CLK_TOP_UNIVPLL_D4_D8		92
++#define CLK_TOP_UNIVPLL_D5		93
++#define CLK_TOP_UNIVPLL_D5_D2		94
++#define CLK_TOP_UNIVPLL_D5_D4		95
++#define CLK_TOP_UNIVPLL_D5_D8		96
++#define CLK_TOP_UNIVPLL_D6		97
++#define CLK_TOP_UNIVPLL_D6_D2		98
++#define CLK_TOP_UNIVPLL_D6_D4		99
++#define CLK_TOP_UNIVPLL_D6_D8		100
++#define CLK_TOP_UNIVPLL_D6_D16		101
++#define CLK_TOP_UNIVPLL_D7		102
++#define CLK_TOP_APLL1			103
++#define CLK_TOP_APLL1_D2		104
++#define CLK_TOP_APLL1_D4		105
++#define CLK_TOP_APLL1_D8		106
++#define CLK_TOP_APLL2			107
++#define CLK_TOP_APLL2_D2		108
++#define CLK_TOP_APLL2_D4		109
++#define CLK_TOP_APLL2_D8		110
++#define CLK_TOP_MMPLL_D4		111
++#define CLK_TOP_MMPLL_D4_D2		112
++#define CLK_TOP_MMPLL_D5		113
++#define CLK_TOP_MMPLL_D5_D2		114
++#define CLK_TOP_MMPLL_D6		115
++#define CLK_TOP_MMPLL_D6_D2		116
++#define CLK_TOP_MMPLL_D7		117
++#define CLK_TOP_MMPLL_D9		118
++#define CLK_TOP_APUPLL			119
++#define CLK_TOP_NPUPLL			120
++#define CLK_TOP_TVDPLL			121
++#define CLK_TOP_TVDPLL_D2		122
++#define CLK_TOP_TVDPLL_D4		123
++#define CLK_TOP_TVDPLL_D8		124
++#define CLK_TOP_TVDPLL_D16		125
++#define CLK_TOP_MSDCPLL			126
++#define CLK_TOP_MSDCPLL_D2		127
++#define CLK_TOP_MSDCPLL_D4		128
++#define CLK_TOP_ULPOSC			129
++#define CLK_TOP_OSC_D2			130
++#define CLK_TOP_OSC_D4			131
++#define CLK_TOP_OSC_D8			132
++#define CLK_TOP_OSC_D10			133
++#define CLK_TOP_OSC_D16			134
++#define CLK_TOP_OSC_D20			135
++#define CLK_TOP_CSW_F26M_D2		136
++#define CLK_TOP_ADSPPLL			137
++#define CLK_TOP_UNIVPLL_192M		138
++#define CLK_TOP_UNIVPLL_192M_D2		139
++#define CLK_TOP_UNIVPLL_192M_D4		140
++#define CLK_TOP_UNIVPLL_192M_D8		141
++#define CLK_TOP_UNIVPLL_192M_D16	142
++#define CLK_TOP_UNIVPLL_192M_D32	143
++#define CLK_TOP_APLL12_DIV0		144
++#define CLK_TOP_APLL12_DIV1		145
++#define CLK_TOP_APLL12_DIV2		146
++#define CLK_TOP_APLL12_DIV3		147
++#define CLK_TOP_APLL12_DIV4		148
++#define CLK_TOP_APLL12_DIVB		149
++#define CLK_TOP_APLL12_DIV5		150
++#define CLK_TOP_APLL12_DIV6		151
++#define CLK_TOP_APLL12_DIV7		152
++#define CLK_TOP_APLL12_DIV8		153
++#define CLK_TOP_APLL12_DIV9		154
++#define CLK_TOP_SSUSB_TOP_REF		155
++#define CLK_TOP_SSUSB_PHY_REF		156
++#define CLK_TOP_NR_CLK			157
 +
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8192-camsys_rawa
-+          - mediatek,mt8192-camsys_rawb
-+          - mediatek,mt8192-camsys_rawc
-+      - const: syscon
++/* INFRACFG */
 +
-+  reg:
-+    maxItems: 1
++#define CLK_INFRA_PMIC_TMR		0
++#define CLK_INFRA_PMIC_AP		1
++#define CLK_INFRA_PMIC_MD		2
++#define CLK_INFRA_PMIC_CONN		3
++#define CLK_INFRA_SCPSYS		4
++#define CLK_INFRA_SEJ			5
++#define CLK_INFRA_APXGPT		6
++#define CLK_INFRA_MCUPM			7
++#define CLK_INFRA_GCE			8
++#define CLK_INFRA_GCE2			9
++#define CLK_INFRA_THERM			10
++#define CLK_INFRA_I2C0			11
++#define CLK_INFRA_AP_DMA_PSEUDO		12
++#define CLK_INFRA_I2C2			13
++#define CLK_INFRA_I2C3			14
++#define CLK_INFRA_PWM_H			15
++#define CLK_INFRA_PWM1			16
++#define CLK_INFRA_PWM2			17
++#define CLK_INFRA_PWM3			18
++#define CLK_INFRA_PWM4			19
++#define CLK_INFRA_PWM			20
++#define CLK_INFRA_UART0			21
++#define CLK_INFRA_UART1			22
++#define CLK_INFRA_UART2			23
++#define CLK_INFRA_UART3			24
++#define CLK_INFRA_GCE_26M		25
++#define CLK_INFRA_CQ_DMA_FPC		26
++#define CLK_INFRA_BTIF			27
++#define CLK_INFRA_SPI0			28
++#define CLK_INFRA_MSDC0			29
++#define CLK_INFRA_MSDC1			30
++#define CLK_INFRA_MSDC2			31
++#define CLK_INFRA_MSDC0_SRC		32
++#define CLK_INFRA_GCPU			33
++#define CLK_INFRA_TRNG			34
++#define CLK_INFRA_AUXADC		35
++#define CLK_INFRA_CPUM			36
++#define CLK_INFRA_CCIF1_AP		37
++#define CLK_INFRA_CCIF1_MD		38
++#define CLK_INFRA_AUXADC_MD		39
++#define CLK_INFRA_PCIE_TL_26M		40
++#define CLK_INFRA_MSDC1_SRC		41
++#define CLK_INFRA_MSDC2_SRC		42
++#define CLK_INFRA_PCIE_TL_96M		43
++#define CLK_INFRA_PCIE_PL_P_250M	44
++#define CLK_INFRA_DEVICE_APC		45
++#define CLK_INFRA_CCIF_AP		46
++#define CLK_INFRA_DEBUGSYS		47
++#define CLK_INFRA_AUDIO			48
++#define CLK_INFRA_CCIF_MD		49
++#define CLK_INFRA_DXCC_SEC_CORE		50
++#define CLK_INFRA_DXCC_AO		51
++#define CLK_INFRA_DBG_TRACE		52
++#define CLK_INFRA_DEVMPU_B		53
++#define CLK_INFRA_DRAMC_F26M		54
++#define CLK_INFRA_IRTX			55
++#define CLK_INFRA_SSUSB			56
++#define CLK_INFRA_DISP_PWM		57
++#define CLK_INFRA_CLDMA_B		58
++#define CLK_INFRA_AUDIO_26M_B		59
++#define CLK_INFRA_MODEM_TEMP_SHARE	60
++#define CLK_INFRA_SPI1			61
++#define CLK_INFRA_I2C4			62
++#define CLK_INFRA_SPI2			63
++#define CLK_INFRA_SPI3			64
++#define CLK_INFRA_UNIPRO_SYS		65
++#define CLK_INFRA_UNIPRO_TICK		66
++#define CLK_INFRA_UFS_MP_SAP_B		67
++#define CLK_INFRA_MD32_B		68
++#define CLK_INFRA_SSPM			69
++#define CLK_INFRA_UNIPRO_MBIST		70
++#define CLK_INFRA_SSPM_BUS_H		71
++#define CLK_INFRA_I2C5			72
++#define CLK_INFRA_I2C5_ARBITER		73
++#define CLK_INFRA_I2C5_IMM		74
++#define CLK_INFRA_I2C1_ARBITER		75
++#define CLK_INFRA_I2C1_IMM		76
++#define CLK_INFRA_I2C2_ARBITER		77
++#define CLK_INFRA_I2C2_IMM		78
++#define CLK_INFRA_SPI4			79
++#define CLK_INFRA_SPI5			80
++#define CLK_INFRA_CQ_DMA		81
++#define CLK_INFRA_UFS			82
++#define CLK_INFRA_AES_UFSFDE		83
++#define CLK_INFRA_UFS_TICK		84
++#define CLK_INFRA_SSUSB_XHCI		85
++#define CLK_INFRA_MSDC0_SELF		86
++#define CLK_INFRA_MSDC1_SELF		87
++#define CLK_INFRA_MSDC2_SELF		88
++#define CLK_INFRA_SSPM_26M_SELF		89
++#define CLK_INFRA_SSPM_32K_SELF		90
++#define CLK_INFRA_UFS_AXI		91
++#define CLK_INFRA_I2C6			92
++#define CLK_INFRA_AP_MSDC0		93
++#define CLK_INFRA_MD_MSDC0		94
++#define CLK_INFRA_CCIF5_AP		95
++#define CLK_INFRA_CCIF5_MD		96
++#define CLK_INFRA_PCIE_TOP_H_133M	97
++#define CLK_INFRA_FLASHIF_TOP_H_133M	98
++#define CLK_INFRA_PCIE_PERI_26M		99
++#define CLK_INFRA_CCIF2_AP		100
++#define CLK_INFRA_CCIF2_MD		101
++#define CLK_INFRA_CCIF3_AP		102
++#define CLK_INFRA_CCIF3_MD		103
++#define CLK_INFRA_SEJ_F13M		104
++#define CLK_INFRA_AES			105
++#define CLK_INFRA_I2C7			106
++#define CLK_INFRA_I2C8			107
++#define CLK_INFRA_FBIST2FPC		108
++#define CLK_INFRA_DEVICE_APC_SYNC	109
++#define CLK_INFRA_DPMAIF_MAIN		110
++#define CLK_INFRA_PCIE_TL_32K		111
++#define CLK_INFRA_CCIF4_AP		112
++#define CLK_INFRA_CCIF4_MD		113
++#define CLK_INFRA_SPI6			114
++#define CLK_INFRA_SPI7			115
++#define CLK_INFRA_133M			116
++#define CLK_INFRA_66M			117
++#define CLK_INFRA_66M_PERI_BUS		118
++#define CLK_INFRA_FREE_DCM_133M		119
++#define CLK_INFRA_FREE_DCM_66M		120
++#define CLK_INFRA_PERI_BUS_DCM_133M	121
++#define CLK_INFRA_PERI_BUS_DCM_66M	122
++#define CLK_INFRA_FLASHIF_PERI_26M	123
++#define CLK_INFRA_FLASHIF_SFLASH	124
++#define CLK_INFRA_AP_DMA		125
++#define CLK_INFRA_NR_CLK		126
 +
-+  '#clock-cells':
-+    const: 1
++/* PERICFG */
 +
-+required:
-+  - compatible
-+  - reg
++#define CLK_PERI_PERIAXI		0
++#define CLK_PERI_NR_CLK			1
 +
-+examples:
-+  - |
-+    camsys_rawa: camsys_rawa@1a04f000 {
-+        compatible = "mediatek,mt8192-camsys_rawa", "syscon";
-+        reg = <0 0x1a04f000 0 0x1000>;
-+        #clock-cells = <1>;
-+    };
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.txt
-index a0ce820..0082f21 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.txt
-@@ -9,6 +9,7 @@ Required Properties:
- 	- "mediatek,mt6765-camsys", "syscon"
- 	- "mediatek,mt6779-camsys", "syscon"
- 	- "mediatek,mt8183-camsys", "syscon"
-+	- "mediatek,mt8192-camsys", "syscon"
- - #clock-cells: Must be 1
- 
- The camsys controller uses the common clk binding from
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
-index 1e1f007..b4312d1 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
-@@ -14,6 +14,8 @@ Required Properties:
- 	- "mediatek,mt7623-imgsys", "mediatek,mt2701-imgsys", "syscon"
- 	- "mediatek,mt8173-imgsys", "syscon"
- 	- "mediatek,mt8183-imgsys", "syscon"
-+	- "mediatek,mt8192-imgsys", "syscon"
-+	- "mediatek,mt8192-imgsys2", "syscon"
- - #clock-cells: Must be 1
- 
- The imgsys controller uses the common clk binding from
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
-new file mode 100644
-index 0000000..2af6f98
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
-@@ -0,0 +1,43 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,imp_iic_wrap.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++/* APMIXEDSYS */
 +
-+title: MediaTek IMP I2C Wrapper Controller
++#define CLK_APMIXED_MAINPLL		0
++#define CLK_APMIXED_UNIVPLL		1
++#define CLK_APMIXED_USBPLL		2
++#define CLK_APMIXED_MSDCPLL		3
++#define CLK_APMIXED_MMPLL		4
++#define CLK_APMIXED_ADSPPLL		5
++#define CLK_APMIXED_MFGPLL		6
++#define CLK_APMIXED_TVDPLL		7
++#define CLK_APMIXED_APLL1		8
++#define CLK_APMIXED_APLL2		9
++#define CLK_APMIXED_MIPID26M		10
++#define CLK_APMIXED_NR_CLK		11
 +
-+maintainers:
-+  - Weiyi Lu <weiyi.lu@mediatek.com>
++/* SCP_ADSP */
 +
-+description:
-+  The Mediatek imp i2c wrapper controller provides various clocks to the system.
++#define CLK_SCP_ADSP_AUDIODSP		0
++#define CLK_SCP_ADSP_NR_CLK		1
 +
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8192-imp_iic_wrap_c
-+          - mediatek,mt8192-imp_iic_wrap_e
-+          - mediatek,mt8192-imp_iic_wrap_s
-+          - mediatek,mt8192-imp_iic_wrap_ws
-+          - mediatek,mt8192-imp_iic_wrap_w
-+          - mediatek,mt8192-imp_iic_wrap_n
-+      - const: syscon
++/* IMP_IIC_WRAP_C */
 +
-+  reg:
-+    maxItems: 1
++#define CLK_IMP_IIC_WRAP_C_I2C10	0
++#define CLK_IMP_IIC_WRAP_C_I2C11	1
++#define CLK_IMP_IIC_WRAP_C_I2C12	2
++#define CLK_IMP_IIC_WRAP_C_I2C13	3
++#define CLK_IMP_IIC_WRAP_C_NR_CLK	4
 +
-+  '#clock-cells':
-+    const: 1
++/* AUDSYS */
 +
-+required:
-+  - compatible
-+  - reg
++#define CLK_AUD_AFE			0
++#define CLK_AUD_22M			1
++#define CLK_AUD_24M			2
++#define CLK_AUD_APLL2_TUNER		3
++#define CLK_AUD_APLL_TUNER		4
++#define CLK_AUD_TDM			5
++#define CLK_AUD_ADC			6
++#define CLK_AUD_DAC			7
++#define CLK_AUD_DAC_PREDIS		8
++#define CLK_AUD_TML			9
++#define CLK_AUD_NLE			10
++#define CLK_AUD_I2S1_B			11
++#define CLK_AUD_I2S2_B			12
++#define CLK_AUD_I2S3_B			13
++#define CLK_AUD_I2S4_B			14
++#define CLK_AUD_CONNSYS_I2S_ASRC	15
++#define CLK_AUD_GENERAL1_ASRC		16
++#define CLK_AUD_GENERAL2_ASRC		17
++#define CLK_AUD_DAC_HIRES		18
++#define CLK_AUD_ADC_HIRES		19
++#define CLK_AUD_ADC_HIRES_TML		20
++#define CLK_AUD_ADDA6_ADC		21
++#define CLK_AUD_ADDA6_ADC_HIRES		22
++#define CLK_AUD_3RD_DAC			23
++#define CLK_AUD_3RD_DAC_PREDIS		24
++#define CLK_AUD_3RD_DAC_TML		25
++#define CLK_AUD_3RD_DAC_HIRES		26
++#define CLK_AUD_I2S5_B			27
++#define CLK_AUD_I2S6_B			28
++#define CLK_AUD_I2S7_B			29
++#define CLK_AUD_I2S8_B			30
++#define CLK_AUD_I2S9_B			31
++#define CLK_AUD_NR_CLK			32
 +
-+examples:
-+  - |
-+    imp_iic_wrap_c@11007000 {
-+        compatible = "mediatek,mt8192-imp_iic_wrap_c", "syscon";
-+        reg = <0 0x11007000 0 0x1000>;
-+        #clock-cells = <1>;
-+    };
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-index 49a968b..ba5e781 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-@@ -18,6 +18,7 @@ Required Properties:
- 	- "mediatek,mt8135-infracfg", "syscon"
- 	- "mediatek,mt8173-infracfg", "syscon"
- 	- "mediatek,mt8183-infracfg", "syscon"
-+	- "mediatek,mt8192-infracfg", "syscon"
- 	- "mediatek,mt8516-infracfg", "syscon"
- - #clock-cells: Must be 1
- - #reset-cells: Must be 1
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ipesys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ipesys.txt
-index 2ce889b..9cd1035 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ipesys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ipesys.txt
-@@ -7,6 +7,7 @@ Required Properties:
- 
- - compatible: Should be one of:
- 	- "mediatek,mt6779-ipesys", "syscon"
-+	- "mediatek,mt8192-ipesys", "syscon"
- - #clock-cells: Must be 1
- 
- The ipesys controller uses the common clk binding from
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml
-new file mode 100644
-index 0000000..88698a8
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml
-@@ -0,0 +1,38 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mdpsys.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++/* IMP_IIC_WRAP_E */
 +
-+title: MediaTek MDPSYS Controller
++#define CLK_IMP_IIC_WRAP_E_I2C3		0
++#define CLK_IMP_IIC_WRAP_E_NR_CLK	1
 +
-+maintainers:
-+  - Weiyi Lu <weiyi.lu@mediatek.com>
++/* IMP_IIC_WRAP_S */
 +
-+description:
-+  The Mediatek mdpsys controller provides various clocks to the system.
++#define CLK_IMP_IIC_WRAP_S_I2C7		0
++#define CLK_IMP_IIC_WRAP_S_I2C8		1
++#define CLK_IMP_IIC_WRAP_S_I2C9		2
++#define CLK_IMP_IIC_WRAP_S_NR_CLK	3
 +
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8192-mdpsys
-+      - const: syscon
++/* IMP_IIC_WRAP_WS */
 +
-+  reg:
-+    maxItems: 1
++#define CLK_IMP_IIC_WRAP_WS_I2C1	0
++#define CLK_IMP_IIC_WRAP_WS_I2C2	1
++#define CLK_IMP_IIC_WRAP_WS_I2C4	2
++#define CLK_IMP_IIC_WRAP_WS_NR_CLK	3
 +
-+  '#clock-cells':
-+    const: 1
++/* IMP_IIC_WRAP_W */
 +
-+required:
-+  - compatible
-+  - reg
++#define CLK_IMP_IIC_WRAP_W_I2C5		0
++#define CLK_IMP_IIC_WRAP_W_NR_CLK	1
 +
-+examples:
-+  - |
-+    mdpsys: mdpsys@1f000000 {
-+        compatible = "mediatek,mt8192-mdpsys", "syscon";
-+        reg = <0 0x1f000000 0 0x1000>;
-+        #clock-cells = <1>;
-+    };
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
-index ad5f9d2..fc1ce61 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
-@@ -9,6 +9,7 @@ Required Properties:
- 	- "mediatek,mt2712-mfgcfg", "syscon"
- 	- "mediatek,mt6779-mfgcfg", "syscon"
- 	- "mediatek,mt8183-mfgcfg", "syscon"
-+	- "mediatek,mt8192-mfgcfg", "syscon"
- - #clock-cells: Must be 1
- 
- The mfgcfg controller uses the common clk binding from
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
-index d8c9108..81fa345 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
-@@ -15,6 +15,7 @@ Required Properties:
- 	- "mediatek,mt7623-mmsys", "mediatek,mt2701-mmsys", "syscon"
- 	- "mediatek,mt8173-mmsys", "syscon"
- 	- "mediatek,mt8183-mmsys", "syscon"
-+	- "mediatek,mt8192-mmsys", "syscon"
- - #clock-cells: Must be 1
- 
- For the clock control, the mmsys controller uses the common clk binding from
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
-new file mode 100644
-index 0000000..23ad419e
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
-@@ -0,0 +1,39 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,msdc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++/* IMP_IIC_WRAP_N */
 +
-+title: MediaTek MSDC Controller
++#define CLK_IMP_IIC_WRAP_N_I2C0		0
++#define CLK_IMP_IIC_WRAP_N_I2C6		1
++#define CLK_IMP_IIC_WRAP_N_NR_CLK	2
 +
-+maintainers:
-+  - Weiyi Lu <weiyi.lu@mediatek.com>
++/* MSDC_TOP */
 +
-+description:
-+  The Mediatek msdc controller provides various clocks to the system.
++#define CLK_MSDC_TOP_AES_0P		0
++#define CLK_MSDC_TOP_SRC_0P		1
++#define CLK_MSDC_TOP_SRC_1P		2
++#define CLK_MSDC_TOP_SRC_2P		3
++#define CLK_MSDC_TOP_P_MSDC0		4
++#define CLK_MSDC_TOP_P_MSDC1		5
++#define CLK_MSDC_TOP_P_MSDC2		6
++#define CLK_MSDC_TOP_P_CFG		7
++#define CLK_MSDC_TOP_AXI		8
++#define CLK_MSDC_TOP_H_MST_0P		9
++#define CLK_MSDC_TOP_H_MST_1P		10
++#define CLK_MSDC_TOP_H_MST_2P		11
++#define CLK_MSDC_TOP_MEM_OFF_DLY_26M	12
++#define CLK_MSDC_TOP_32K		13
++#define CLK_MSDC_TOP_AHB2AXI_BRG_AXI	14
++#define CLK_MSDC_TOP_NR_CLK		15
 +
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8192-msdc
-+          - mediatek,mt8192-msdc_top
-+      - const: syscon
++/* MSDC */
 +
-+  reg:
-+    maxItems: 1
++#define CLK_MSDC_AXI_WRAP		0
++#define CLK_MSDC_NR_CLK			1
 +
-+  '#clock-cells':
-+    const: 1
++/* MFGCFG */
 +
-+required:
-+  - compatible
-+  - reg
++#define CLK_MFG_BG3D			0
++#define CLK_MFG_NR_CLK			1
 +
-+examples:
-+  - |
-+    msdc: msdc@11f60000 {
-+        compatible = "mediatek,mt8192-msdc", "syscon";
-+        reg = <0 0x11f60000 0 0x1000>;
-+        #clock-cells = <1>;
-+    };
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
-index e271c46..c2e106c 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
-@@ -26,6 +26,7 @@ properties:
-           - mediatek,mt8135-pericfg
-           - mediatek,mt8173-pericfg
-           - mediatek,mt8183-pericfg
-+          - mediatek,mt8192-pericfg
-           - mediatek,mt8516-pericfg
-         - const: syscon
-       - items:
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
-new file mode 100644
-index 0000000..25cc59f
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
-@@ -0,0 +1,38 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,scp-adsp.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++/* MMSYS */
 +
-+title: MediaTek SCP ADSP Controller
++#define CLK_MM_DISP_MUTEX0		0
++#define CLK_MM_DISP_CONFIG		1
++#define CLK_MM_DISP_OVL0		2
++#define CLK_MM_DISP_RDMA0		3
++#define CLK_MM_DISP_OVL0_2L		4
++#define CLK_MM_DISP_WDMA0		5
++#define CLK_MM_DISP_UFBC_WDMA0		6
++#define CLK_MM_DISP_RSZ0		7
++#define CLK_MM_DISP_AAL0		8
++#define CLK_MM_DISP_CCORR0		9
++#define CLK_MM_DISP_DITHER0		10
++#define CLK_MM_SMI_INFRA		11
++#define CLK_MM_DISP_GAMMA0		12
++#define CLK_MM_DISP_POSTMASK0		13
++#define CLK_MM_DISP_DSC_WRAP0		14
++#define CLK_MM_DSI0			15
++#define CLK_MM_DISP_COLOR0		16
++#define CLK_MM_SMI_COMMON		17
++#define CLK_MM_DISP_FAKE_ENG0		18
++#define CLK_MM_DISP_FAKE_ENG1		19
++#define CLK_MM_MDP_TDSHP4		20
++#define CLK_MM_MDP_RSZ4			21
++#define CLK_MM_MDP_AAL4			22
++#define CLK_MM_MDP_HDR4			23
++#define CLK_MM_MDP_RDMA4		24
++#define CLK_MM_MDP_COLOR4		25
++#define CLK_MM_DISP_Y2R0		26
++#define CLK_MM_SMI_GALS			27
++#define CLK_MM_DISP_OVL2_2L		28
++#define CLK_MM_DISP_RDMA4		29
++#define CLK_MM_DISP_DPI0		30
++#define CLK_MM_SMI_IOMMU		31
++#define CLK_MM_DSI_DSI0			32
++#define CLK_MM_DPI_DPI0			33
++#define CLK_MM_26MHZ			34
++#define CLK_MM_32KHZ			35
++#define CLK_MM_NR_CLK			36
 +
-+maintainers:
-+  - Weiyi Lu <weiyi.lu@mediatek.com>
++/* IMGSYS */
 +
-+description:
-+  The Mediatek scp adsp controller provides various clocks to the system.
++#define CLK_IMG_LARB9			0
++#define CLK_IMG_LARB10			1
++#define CLK_IMG_DIP			2
++#define CLK_IMG_GALS			3
++#define CLK_IMG_NR_CLK			4
 +
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8192-scp_adsp
-+      - const: syscon
++/* IMGSYS2 */
 +
-+  reg:
-+    maxItems: 1
++#define CLK_IMG2_LARB11			0
++#define CLK_IMG2_LARB12			1
++#define CLK_IMG2_MFB			2
++#define CLK_IMG2_WPE			3
++#define CLK_IMG2_MSS			4
++#define CLK_IMG2_GALS			5
++#define CLK_IMG2_NR_CLK			6
 +
-+  '#clock-cells':
-+    const: 1
++/* VDECSYS_SOC */
 +
-+required:
-+  - compatible
-+  - reg
++#define CLK_VDEC_SOC_LARB1		0
++#define CLK_VDEC_SOC_LAT		1
++#define CLK_VDEC_SOC_LAT_ACTIVE		2
++#define CLK_VDEC_SOC_VDEC		3
++#define CLK_VDEC_SOC_VDEC_ACTIVE	4
++#define CLK_VDEC_SOC_NR_CLK		5
 +
-+examples:
-+  - |
-+    scp_adsp: scp_adsp@10720000 {
-+        compatible = "mediatek,mt8192-scp_adsp", "syscon";
-+        reg = <0x10720000 0x1000>;
-+        #clock-cells = <1>;
-+    };
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
-index 9b0394c..c480278 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
-@@ -17,6 +17,7 @@ Required Properties:
- 	- "mediatek,mt8135-topckgen"
- 	- "mediatek,mt8173-topckgen"
- 	- "mediatek,mt8183-topckgen", "syscon"
-+	- "mediatek,mt8192-topckgen", "syscon"
- 	- "mediatek,mt8516-topckgen"
- - #clock-cells: Must be 1
- 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys-soc.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys-soc.yaml
-new file mode 100644
-index 0000000..5cb8740
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys-soc.yaml
-@@ -0,0 +1,38 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,vdecsys-soc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++/* VDECSYS */
 +
-+title: MediaTek VDECSYS SOC Controller
++#define CLK_VDEC_LARB1			0
++#define CLK_VDEC_LAT			1
++#define CLK_VDEC_LAT_ACTIVE		2
++#define CLK_VDEC_VDEC			3
++#define CLK_VDEC_ACTIVE			4
++#define CLK_VDEC_NR_CLK			5
 +
-+maintainers:
-+  - Weiyi Lu <weiyi.lu@mediatek.com>
++/* VENCSYS */
 +
-+description:
-+  The Mediatek vdecsys soc controller provides various clocks to the system.
++#define CLK_VENC_SET0_LARB		0
++#define CLK_VENC_SET1_VENC		1
++#define CLK_VENC_SET2_JPGENC		2
++#define CLK_VENC_SET5_GALS		3
++#define CLK_VENC_NR_CLK			4
 +
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8192-vdecsys_soc
-+      - const: syscon
++/* CAMSYS */
 +
-+  reg:
-+    maxItems: 1
++#define CLK_CAM_LARB13			0
++#define CLK_CAM_DFP_VAD			1
++#define CLK_CAM_LARB14			2
++#define CLK_CAM_CAM			3
++#define CLK_CAM_CAMTG			4
++#define CLK_CAM_SENINF			5
++#define CLK_CAM_CAMSV0			6
++#define CLK_CAM_CAMSV1			7
++#define CLK_CAM_CAMSV2			8
++#define CLK_CAM_CAMSV3			9
++#define CLK_CAM_CCU0			10
++#define CLK_CAM_CCU1			11
++#define CLK_CAM_MRAW0			12
++#define CLK_CAM_FAKE_ENG		13
++#define CLK_CAM_CCU_GALS		14
++#define CLK_CAM_CAM2MM_GALS		15
++#define CLK_CAM_NR_CLK			16
 +
-+  '#clock-cells':
-+    const: 1
++/* CAMSYS_RAWA */
 +
-+required:
-+  - compatible
-+  - reg
++#define CLK_CAM_RAWA_LARBX		0
++#define CLK_CAM_RAWA_CAM		1
++#define CLK_CAM_RAWA_CAMTG		2
++#define CLK_CAM_RAWA_NR_CLK		3
 +
-+examples:
-+  - |
-+    vdecsys_soc: vdecsys_soc@1600f000 {
-+        compatible = "mediatek,mt8192-vdecsys_soc", "syscon";
-+        reg = <0 0x1600f000 0 0x1000>;
-+        #clock-cells = <1>;
-+    };
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
-index 7894558..ee679e0 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
-@@ -13,6 +13,7 @@ Required Properties:
- 	- "mediatek,mt7623-vdecsys", "mediatek,mt2701-vdecsys", "syscon"
- 	- "mediatek,mt8173-vdecsys", "syscon"
- 	- "mediatek,mt8183-vdecsys", "syscon"
-+	- "mediatek,mt8192-vdecsys", "syscon"
- - #clock-cells: Must be 1
- 
- The vdecsys controller uses the common clk binding from
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
-index 6a6a14e..d22de01 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
-@@ -11,6 +11,7 @@ Required Properties:
- 	- "mediatek,mt6797-vencsys", "syscon"
- 	- "mediatek,mt8173-vencsys", "syscon"
- 	- "mediatek,mt8183-vencsys", "syscon"
-+	- "mediatek,mt8192-vencsys", "syscon"
- - #clock-cells: Must be 1
- 
- The vencsys controller uses the common clk binding from
++/* CAMSYS_RAWB */
++
++#define CLK_CAM_RAWB_LARBX		0
++#define CLK_CAM_RAWB_CAM		1
++#define CLK_CAM_RAWB_CAMTG		2
++#define CLK_CAM_RAWB_NR_CLK		3
++
++/* CAMSYS_RAWC */
++
++#define CLK_CAM_RAWC_LARBX		0
++#define CLK_CAM_RAWC_CAM		1
++#define CLK_CAM_RAWC_CAMTG		2
++#define CLK_CAM_RAWC_NR_CLK		3
++
++/* IPESYS */
++
++#define CLK_IPE_LARB19			0
++#define CLK_IPE_LARB20			1
++#define CLK_IPE_SMI_SUBCOM		2
++#define CLK_IPE_FD			3
++#define CLK_IPE_FE			4
++#define CLK_IPE_RSC			5
++#define CLK_IPE_DPE			6
++#define CLK_IPE_GALS			7
++#define CLK_IPE_NR_CLK			8
++
++/* MDPSYS */
++
++#define CLK_MDP_RDMA0			0
++#define CLK_MDP_TDSHP0			1
++#define CLK_MDP_IMG_DL_ASYNC0		2
++#define CLK_MDP_IMG_DL_ASYNC1		3
++#define CLK_MDP_RDMA1			4
++#define CLK_MDP_TDSHP1			5
++#define CLK_MDP_SMI0			6
++#define CLK_MDP_APB_BUS			7
++#define CLK_MDP_WROT0			8
++#define CLK_MDP_RSZ0			9
++#define CLK_MDP_HDR0			10
++#define CLK_MDP_MUTEX0			11
++#define CLK_MDP_WROT1			12
++#define CLK_MDP_RSZ1			13
++#define CLK_MDP_HDR1			14
++#define CLK_MDP_FAKE_ENG0		15
++#define CLK_MDP_AAL0			16
++#define CLK_MDP_AAL1			17
++#define CLK_MDP_COLOR0			18
++#define CLK_MDP_COLOR1			19
++#define CLK_MDP_IMG_DL_RELAY0_ASYNC0	20
++#define CLK_MDP_IMG_DL_RELAY1_ASYNC1	21
++#define CLK_MDP_NR_CLK			22
++
++#endif /* _DT_BINDINGS_CLK_MT8192_H */
++
 -- 
 1.8.1.1.dirty
 _______________________________________________
