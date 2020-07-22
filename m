@@ -2,91 +2,116 @@ Return-Path: <SRS0=76sT=BB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F1B83C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 08:43:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7B89BC433E1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 08:46:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B9EAC2077D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 08:43:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 44218205CB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 08:46:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aiW2FvBr";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ILgCH7OV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B9EAC2077D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="isbCKptd";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=nxp.com header.i=@nxp.com header.b="j8Lj6DsA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 44218205CB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=nxp.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ngFnjQv8kckp8SNAeZs6v2ng3VHap+AdNo6bXiNSYxE=; b=aiW2FvBrs/V9jA+tM7/UCffGT
-	YBRfBc2pZmp2TQzm6DvOGVvpZLtoJG29yt/v3vdMSYJy1FG83TqUAScf0PqKQ0eyMjxkd+uDHwv4G
-	nHCMH/azFCVZ401UDF4M4Cimw/+xJYMIOC7HYOy4f3YQDGVl1tXOtRv6iQhAw2T9mpKXyj2GP4apI
-	hB00D9/pl70VgGHAfUyzECrnEtcQKOWRgqrXJqOUzgsooxji/1K8s6AxOZ9ea6plEBaVQiFCG2hh5
-	0TdiC7RV8pnQCAcAsIj0M8Zk1cXAE4aJDjx0J1ZAtWnSqp6D4jr30ODB5Qfo5UyxZvYS1NNi1SjI1
-	BqlbUUkrw==;
+	 bh=KHivQJWRCIF5KcGe4y0A4VfN1nGlg2e3lLJJNejGmpE=; b=isbCKptdmRM+XGRAoyW4JFKdU
+	msBmutxAEgHvCxD7SdiwBtH+8dkfq4b5nRR5wrgWNGFlg48tCSZabqInMYwlCuS6WH4zOt5mQTQeI
+	ebQO0TRiTjbGtUWdqGIAH7NDEhT9jRfbGrgtvHtyiQizC5hfsymCuDV+KjxkTivhZHr5wjutCsXVH
+	XkbBXnTuhYP7Tjj1Jdfg2yYrCdmWe9DHDTB7L8SkDSIE6UWeL4ea4YEXPLJjLHpX6Hmqr6VzPfc55
+	ZSJpMERfIsvQQcbcGq87Z9yOoPOvAOrVFvPhvxPBdL4x50jL1dPyPCPsqsXFYepJH/wv9T3BR0B0u
+	vixaS9SeQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyALQ-0004Ji-Fo; Wed, 22 Jul 2020 08:43:20 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1jyAOM-0004xG-94; Wed, 22 Jul 2020 08:46:22 +0000
+Received: from mail-eopbgr80048.outbound.protection.outlook.com ([40.107.8.48]
+ helo=EUR04-VI1-obe.outbound.protection.outlook.com)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyALO-0004Im-A0; Wed, 22 Jul 2020 08:43:19 +0000
-Received: by mail-wr1-x444.google.com with SMTP id a14so1059566wra.5;
- Wed, 22 Jul 2020 01:43:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=wjB5ELp9SHAf9SrbqAcXBLR0Nucf1cmk8PLR4YQ6EeE=;
- b=ILgCH7OVE1I2wwwPOX+7NQudT+l7/ZlhvlAf2Wxc+ALPOdpvxovZVdBQnKDv4VvSOX
- WeKNWKbs6o41dVeiDf1bHgAM+FhsHf5ijbZnbipChAvemxTzKPiQf0ThMl/3Zg67x32f
- YPJF15cSwmSj7JPKUDfnHxj4P0QGdiDgQtRZh3mzOAWBbKcPluLSJXKEl9vlyNRdk0Bp
- iO77Mv5K5Vst6unlftQXlcONA8EM6WRUvB4+9NMBIuAVZJx5Lm/j7PU1OmNSz7DpGfIi
- C9FMKzrLXZeEsXq3GDm9z3Hnpv+ZjohX9kD/HP9YLzjasxAgbSWD7X1jyZrp3MQLP4kh
- QmFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=wjB5ELp9SHAf9SrbqAcXBLR0Nucf1cmk8PLR4YQ6EeE=;
- b=pwmUFPKi3vVVZ0d5gelxDprUNm0P3X/zg7yj+ghKRbuNf8h/l+I5BvqllKQOFwazf7
- etJJzTVupZBxvFTS5rqICwfF6oSLV08Iiok+U9CJjkZwx6vfEUFPeIqyzUWHbbvjj+mq
- UsOnp3Tghg5RbzMMhTddRO6xUvaqcdh07zEZQsCxqYQCT/9J26yBfp1Y05ooMY349Uue
- PGYC2L1Y/fSmFLATLxAXsaMnL1tGOfdstl8hxKvDaPvVxzPe02+J3BRbLUCgJApMdaKr
- iv575OCWygiVg34qhQrhYpA00IIFe9y6UOeqvVr6VJAL5gTPYniyDJGndWP+pEdWp02l
- Zc1A==
-X-Gm-Message-State: AOAM531Lwwj8TnD+aFrAYDeV0itZDvOinzrkEHY3tQDPZgtTNdZ29tw6
- K0Qi9A6koTxb0MC81P0PbWs=
-X-Google-Smtp-Source: ABdhPJxlWiEov15iy9/riqXA7B2hI67oGx3zp7/BbZOGyfUGYQf4x5XHJFdL6u7mY1E1itglTCxrcw==
-X-Received: by 2002:adf:f18c:: with SMTP id h12mr28847223wro.375.1595407397275; 
- Wed, 22 Jul 2020 01:43:17 -0700 (PDT)
-Received: from ziggy.stardust ([213.195.122.158])
- by smtp.gmail.com with ESMTPSA id n16sm6255231wmc.40.2020.07.22.01.43.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 22 Jul 2020 01:43:16 -0700 (PDT)
-Subject: Re: [PATCH v2 0/2] Remove MT6779 UART3 clock support
-To: Hanks Chen <hanks.chen@mediatek.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>
-References: <1595387397-13110-1-git-send-email-hanks.chen@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <54e4d0b9-e62c-a3cb-7f74-af2891664cf1@gmail.com>
-Date: Wed, 22 Jul 2020 10:43:15 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
-MIME-Version: 1.0
-In-Reply-To: <1595387397-13110-1-git-send-email-hanks.chen@mediatek.com>
+ id 1jyAOG-0004vJ-So; Wed, 22 Jul 2020 08:46:18 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WpS5M3H6kWHht2I0WtkOk+5SpDsslJ6dxdHvxL7ZMa4CVlMAiyKu8jOemyofdNAQaMqIdtbS8ATLYj2H0hvOeatPeeSOF3AQ+51+O483AZ7jI0/VeQ0gy0B3iloST7ha/9h1KBH20Y5YDJlQrhollY90iwisV3KSNtBQ69IrKJY7jjRQ1PNbWUvf7s5sfHNinJPO96Hyqhrd6yYC4D+jEc+6fFL9Jz+BkmjD4/v4gTbdzpeSwx3SQYF4oKE9ImLZjmpLmZ6RXb6FZ5VRFZ02QCjwFoHsssLqKhcWJhKxmoXi/dOpuvClmiqrLJa76hLpKs4YPHbotQoqbbyWWqrAjg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=qqjw8pnL2pA3STiUSuTPqk7faLrJfDAiBRz+2CnDzck=;
+ b=X6gziyso7W2gSZkqvBpyg1Ib3SNnQYTGt+0yB1ZrMPALHzDbnGBOfRpIXf8Ej3Xrfqlxw+kbccR8fzlItNRif3zF2fnZmtKGqPjupBk4a9tMQp0X/JAClEkANORA3RKIBPGD2IMjGTAJZp6RQ/dpqosPdssC/bouMp0KJVyKAt/Po8JqOXAuCh6SswXVYuWK1uyvgQRmsO7R+WxBAq0b7SrOug2/8rX1D+LO4m8f/pG/lZDBV86oE0zcbZScGLE0+oUHJN1WO/p3y68MsUsr5az1/j+vKZtefqt1pa19HVibY3eydAp9MHqSxvnNgnfwxoIlViVa15SVK22TnO9w2w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=qqjw8pnL2pA3STiUSuTPqk7faLrJfDAiBRz+2CnDzck=;
+ b=j8Lj6DsAcLaI2JE4MAZo4KYOeTpGFEjclcuWnh2t9IwJ06H057dPUq0xd/XeYbH+Aux/tV4TXeBdDEyBH1Diug1XBTZmUH9T6Xb3T7Ko1jgPX9vyEvIsI2T88ipIAxc3kwrwdR8YHgN24tKxH8m+fHNO7P5GbwnwHcFVrh26W2E=
+Received: from DB8PR04MB7162.eurprd04.prod.outlook.com (2603:10a6:10:12c::13)
+ by DBBPR04MB6268.eurprd04.prod.outlook.com (2603:10a6:10:cc::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3195.23; Wed, 22 Jul
+ 2020 08:46:13 +0000
+Received: from DB8PR04MB7162.eurprd04.prod.outlook.com
+ ([fe80::59f1:4502:9518:3404]) by DB8PR04MB7162.eurprd04.prod.outlook.com
+ ([fe80::59f1:4502:9518:3404%9]) with mapi id 15.20.3195.026; Wed, 22 Jul 2020
+ 08:46:13 +0000
+From: Peter Chen <peter.chen@nxp.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Felipe Balbi <balbi@kernel.org>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: RE: [PATCH 3/7] usb: cdns3: convert to
+ devm_platform_ioremap_resource_byname
+Thread-Topic: [PATCH 3/7] usb: cdns3: convert to
+ devm_platform_ioremap_resource_byname
+Thread-Index: AQHWX/0cG9oxnTeJEkmy/Xf7kPi+jqkTSIRg
+Date: Wed, 22 Jul 2020 08:46:12 +0000
+Message-ID: <DB8PR04MB71626E57AECABAA95C60E7F88B790@DB8PR04MB7162.eurprd04.prod.outlook.com>
+References: <1595404275-8449-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1595404275-8449-3-git-send-email-chunfeng.yun@mediatek.com>
+In-Reply-To: <1595404275-8449-3-git-send-email-chunfeng.yun@mediatek.com>
+Accept-Language: en-US
 Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mediatek.com; dkim=none (message not signed)
+ header.d=none;mediatek.com; dmarc=none action=none header.from=nxp.com;
+x-originating-ip: [119.31.174.68]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: 51a1df86-71bf-4306-ae18-08d82e1bb053
+x-ms-traffictypediagnostic: DBBPR04MB6268:
+x-microsoft-antispam-prvs: <DBBPR04MB62688F680F7E51C3C19218AF8B790@DBBPR04MB6268.eurprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:279;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Kof3+VmlNj9PFr2X5Ob4p9c1wq2LW6mQAhsHHzSglRDq+EchEkbCvcbFIShTSjyIBDxbfS3zVwqmfceoUFEcBXiLNJaCtxGhTVSKVE6joUZxm1DH0sjB+qfc/7cIBfCelWG6iUNUbntGOb2nvfTwmmWGNnw0Wnw0TndJUxt/2ekRJuXZQRRS9fPNppAAX9x93tgHVHpOE1DNRzEYqEbqXol4ze4B3ORpIERXBjQE/ctR2AAJiT2mYoNjYUOgc3dJG2joUFHe9aMmXvNFeJaNLu8QQubVjFp4QZS9w/64JgBt4XvNiMcctdK2NHKxjIoDiH2+vvtam45d0jKDSU9Bsw==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DB8PR04MB7162.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(396003)(346002)(376002)(39860400002)(366004)(136003)(7696005)(86362001)(186003)(26005)(4326008)(55016002)(71200400001)(52536014)(33656002)(8676002)(478600001)(4744005)(66556008)(66476007)(64756008)(66946007)(9686003)(66446008)(76116006)(110136005)(54906003)(8936002)(44832011)(83380400001)(2906002)(6506007)(316002)(5660300002);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata: CTAyguOHb/Dxp/miqgbuCq/ISITTwAp0D5wOS/jKvQnlcIMQzC1pVP3O8jp6NCySv7DzFQygXjd6nLULWf14PXAWhfMr0HUR+ZEiuZSU6SRezxMTUtSh2RyQWah1lUnRaO+DxegeN/JK0hRuMtNoB2sjjRPCzwlkg7PAOJez4qcp83c2yHnZWIjm0l0ZYWFgxkYb8UZZJGW5dypMs1EfNFZhYJajJ1is/SE5mRFpXnmytR22NTnipzTzH0CEk8QQeKbjVNw2ZKe2KuiCjBq1WEXevKsv+JJQUgeZwdzMfDRTRmXTSsFsYhklSZ7QdnQ9oDhKpfDd47dzKnTjw8MzSnVodqgrw2kDyj+RIZ6gu6ZeGwfIcHc4t9r2zlBosiSuCARdWVB51hHP9qzMGfX8T4Zal9MozBRpbbglEFV9WH4J37+nDYfOQu/R5SqgakXO3DomJGQJ+7/ZuVQNyWgLpMN83/EUflXqRzjrOEr7NKc=
+x-ms-exchange-transport-forked: True
+MIME-Version: 1.0
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DB8PR04MB7162.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 51a1df86-71bf-4306-ae18-08d82e1bb053
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Jul 2020 08:46:12.9457 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: sfS2D09FvxQJA1Y7uQq0Z+5ZjwfrSCCNTs6VzVKn7AWB65KSNA5kaNsbhg2cFy4P5ifNp/VSNFP+FC2L8oyIcA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR04MB6268
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200722_044318_400945_CDA5E782 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20200722_044617_159363_43E3319F 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,39 +123,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: CC Hwang <cc.hwang@mediatek.com>, wsd_upstream@mediatek.com,
- YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org,
- linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org,
- mtk01761 <wendell.lin@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 22/07/2020 05:09, Hanks Chen wrote:
-> remove the redundant clk interface of uart.
-> CLK_INFRA_UART3 is a dummy clk interface,
-> it has no effect on the operation of the read/write instruction.
+ 
+> Use devm_platform_ioremap_resource_byname() to simplify code
 > 
-> Change since v2:
-> Commit "dt-bindings: clock: remove UART3 clock support"
+> Cc: Peter Chen <peter.chen@nxp.com>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  drivers/usb/cdns3/core.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/drivers/usb/cdns3/core.c b/drivers/usb/cdns3/core.c index
+> 19bbb5b..24faf60 100644
+> --- a/drivers/usb/cdns3/core.c
+> +++ b/drivers/usb/cdns3/core.c
+> @@ -436,8 +436,7 @@ static int cdns3_probe(struct platform_device *pdev)
+>  	if (cdns->dev_irq < 0)
+>  		dev_err(dev, "couldn't get peripheral irq\n");
+> 
+> -	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "dev");
+> -	regs = devm_ioremap_resource(dev, res);
+> +	regs = devm_platform_ioremap_resource_byname(pdev, "dev");
+>  	if (IS_ERR(regs))
+>  		return PTR_ERR(regs);
+>  	cdns->dev_regs	= regs;
+> --
 
-Sorry just another comment. I think we can make this one patch deleting everything.
+Reviewed-by: Peter Chen <peter.chen@nxp.com>
 
-> -- remove Fixes tag
-> Commit "clk: mediatek: remove UART3 clock support"
-> -- remove Fixes tag
-> 
-> Hanks Chen (2):
->    dt-bindings: clock: remove UART3 clock support
->    clk: mediatek: remove UART3 clock support
-> 
->   drivers/clk/mediatek/clk-mt6779.c      | 2 --
->   include/dt-bindings/clock/mt6779-clk.h | 1 -
->   2 files changed, 3 deletions(-)
-> 
+Peter
 
 _______________________________________________
 Linux-mediatek mailing list
