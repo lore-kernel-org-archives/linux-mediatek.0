@@ -2,79 +2,76 @@ Return-Path: <SRS0=76sT=BB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6ECC8C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 04:43:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC500C433EA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 06:50:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3A5E1208E4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 04:43:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AC19A20657
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 06:50:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yfIgs+dJ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ZndOA8YK"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3A5E1208E4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ivMQoXmm";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="kjVROEEv"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC19A20657
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LIiXhIbQVYRm4ifaCwZce+j7DtLMpmHKv6MMuMJpE8U=; b=yfIgs+dJ0CECTy6YpD4TCDSTn
-	TZcYLt57cScroI2i7YTVVA21+nu+ICUtogM1V+Hk6YoUjWnyM3ZUfub8hQSaddX/3104lrV5Kh0Ga
-	VkTRULT5vnf+eX8kpH7iPp0s8Crjxs7XV3ieQDToOzZrsLEjxN4xn7NiMu8QwEfizRc9sxG7mwnl4
-	soOqpw8YCJWevghjIk2l4AOu0hgoUi0j38vozxg/wmPLGaOQ+5d2XIW1RV7wz0a4l+MgiYuRv52yg
-	h1CqeRqKKkHWtpgvDODtNQ614fQ54K8QmgyWrTeZopFngi9j4oTxuQyggXrHfp3VhSoGPwuWPq457
-	AQDMnUulw==;
+	 bh=b/o1uyc2xC/PJLZWZ5Y4Ri8Ic6/GJSemfuGQo8nkHZw=; b=ivMQoXmmBci8qHlWNHcvRhjkX
+	9IlyD6iIu+ve5hIVRWJZ6oBBpCBVjjPgo8WXFyAtkqhhqeNMNBcD5aoIaKVEmVe5MCF4C5xDPyCUU
+	oLMTkyMb/T/hVdOZ0BOgTNgaGyO/CaY+2FU1WeqzG6aqb3Odsfsbu3sPWWYt1F4hCK4m4jXowa0H1
+	lemHdgJ6n8+pQIBizWD+dvD4e5u+9shclUhCUkRwp1GFAXL2HxJjIU4vAH/cegrbbg1bwiHHykS+N
+	kLyqh4PiZc+od5W8YOj7J/NpjcXF9+Rc7aU7kmsbLdqZ4V/ETMJg/NHmzeh1jLfD2rLnaK1L8EJcx
+	V12hQ18Cg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jy6bP-0002Lh-Cu; Wed, 22 Jul 2020 04:43:35 +0000
+	id 1jy8a6-0005hb-2Q; Wed, 22 Jul 2020 06:50:22 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jy6bK-0002Kl-U5; Wed, 22 Jul 2020 04:43:32 +0000
-X-UUID: 4cce12bfc50a481a98b3c2e58646d42c-20200721
+ id 1jy8Zx-0005fK-OG; Wed, 22 Jul 2020 06:50:16 +0000
+X-UUID: e4d9ac26fab340fb988c118e62c4c0cc-20200721
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=H9+Xagm11TvrRWxbyALKrMjkxXywyXQNawOGwoyEQ7E=; 
- b=ZndOA8YKgYFjM4TETAPdzj73Be2G2GAq6urLeVMLeVw/tGx9DX0lt9adM8CstHViMFXrwe9wOW2piPdUIH8PmHlqZVvnfYwv9gHxZS3HbYYShdbqWyNdt+1hFK1/1IsUALbyS53+99o5e/QV5P/BawYIo/U8oB2jr/eM/IjNy+w=;
-X-UUID: 4cce12bfc50a481a98b3c2e58646d42c-20200721
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <hsin-hsiung.wang@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=3Tmg1HFY0UCr3HAwCjzqdMY8MsLsgiqb36JxbD/BQmc=; 
+ b=kjVROEEv1iphMjzWGx7PZMMjDkmXxQzgO0SXmzH7gPjUXotVaaKB4oP5nZlZeWQ6V0VVLGxlHTqB3RmZogI9F4XfgSGA8bDarr5968yCf6y9KPnoQ0JbLWKhljSbjNxzkfh+PX3HFOTCENmimBPCQSTOUKwFgC2Fk6gfDYzMxfo=;
+X-UUID: e4d9ac26fab340fb988c118e62c4c0cc-20200721
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1631408931; Tue, 21 Jul 2020 20:43:31 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 21 Jul 2020 21:33:07 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 22 Jul 2020 12:33:05 +0800
-Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 22 Jul 2020 12:33:05 +0800
-Message-ID: <1595392386.10996.1.camel@mtksdaap41>
-Subject: Re: [PATCH 3/3] soc: mediatek: pwrap: add pwrap driver for
- MT6873/8192 SoCs
-From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Date: Wed, 22 Jul 2020 12:33:06 +0800
-In-Reply-To: <e80b2e38-1324-a038-5647-6f595381ba47@gmail.com>
-References: <1594720432-19586-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1594720432-19586-4-git-send-email-hsin-hsiung.wang@mediatek.com>
- <e80b2e38-1324-a038-5647-6f595381ba47@gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ with ESMTP id 1546631229; Tue, 21 Jul 2020 22:50:11 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 21 Jul 2020 23:50:03 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 22 Jul 2020 14:50:02 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 22 Jul 2020 14:50:02 +0800
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
+Subject: [PATCH 1/4] dt-bindings: ARM: Mediatek: Document bindings for MT8192
+Date: Wed, 22 Jul 2020 14:49:58 +0800
+Message-ID: <1595400601-26220-2-git-send-email-weiyi.lu@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1595400601-26220-1-git-send-email-weiyi.lu@mediatek.com>
+References: <1595400601-26220-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 46BA3841AF452073B5F6F01FB82066505059B1E882F9A8BBE0A5884CFB3224812000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200722_004331_162570_63DCBA6E 
-X-CRM114-Status: GOOD (  18.04  )
+X-CRM114-CacheID: sfid-20200722_025014_050605_AF24E8BA 
+X-CRM114-Status: GOOD (  16.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,69 +83,467 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- Argus Lin <argus.lin@mediatek.com>, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: James Liao <jamesjj.liao@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>,
+ srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Wendell Lin <wendell.lin@mediatek.com>,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+This patch adds the binding documentation for apmixedsys, audsys,
+camsys-raw, camsys, imgsys, imp_iic_wrap, infracfg, ipesys, mdpsys,
+mfgcfg, mmsys, msdc, pericfg, scp-adsp, topckgen, vdecsys-soc,
+vdecsys and vencsys for Mediatek MT8192.
 
-On Wed, 2020-07-22 at 00:51 +0200, Matthias Brugger wrote:
-> 
-> On 14/07/2020 11:53, Hsin-Hsiung Wang wrote:
-> > MT6873/8192 are highly integrated SoCs and use PMIC_MT6359 for
-> > power management. This patch adds pwrap master driver to
-> > access PMIC_MT6359.
-> > 
-> > Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> > ---
-> >   drivers/soc/mediatek/mtk-pmic-wrap.c | 98 ++++++++++++++++++++++++++++++++----
-> >   1 file changed, 87 insertions(+), 11 deletions(-)
-> > 
-> > diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> > index c897205..6e7f796f 100644
-> > --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> > +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> > @@ -24,11 +24,13 @@
-> >   #define PWRAP_MT8135_BRIDGE_WDT_SRC_EN		0x54
-> >   
-> >   /* macro for wrapper status */
-> > +#define PWRAP_GET_SWINF_2_FSM(x)	(((x) >> 1) & 0x00000007)
-> >   #define PWRAP_GET_WACS_RDATA(x)		(((x) >> 0) & 0x0000ffff)
-> >   #define PWRAP_GET_WACS_FSM(x)		(((x) >> 16) & 0x00000007)
-> >   #define PWRAP_GET_WACS_REQ(x)		(((x) >> 19) & 0x00000001)
-> >   #define PWRAP_STATE_SYNC_IDLE0		BIT(20)
-> >   #define PWRAP_STATE_INIT_DONE0		BIT(21)
-> > +#define PWRAP_STATE_INIT_DONE1		BIT(15)
-> >   
-> >   /* macro for WACS FSM */
-> >   #define PWRAP_WACS_FSM_IDLE		0x00
-> > @@ -74,6 +76,7 @@
-> >   #define PWRAP_CAP_DCM		BIT(2)
-> >   #define PWRAP_CAP_INT1_EN	BIT(3)
-> >   #define PWRAP_CAP_WDT_SRC1	BIT(4)
-> > +#define PWRAP_CAP_ARB		BIT(5)
-> 
-> This commit should be two patches (at least). One adding PWRAP_CAP_ARB and then 
-> another one adding MT6873 support.
-> 
-> Regards,
-> Matthias
-> 
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+---
+ .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |  1 +
+ .../bindings/arm/mediatek/mediatek,audsys.txt      |  1 +
+ .../bindings/arm/mediatek/mediatek,camsys-raw.yaml | 40 ++++++++++++++++++++
+ .../bindings/arm/mediatek/mediatek,camsys.txt      |  1 +
+ .../bindings/arm/mediatek/mediatek,imgsys.txt      |  2 +
+ .../arm/mediatek/mediatek,imp_iic_wrap.yaml        | 43 ++++++++++++++++++++++
+ .../bindings/arm/mediatek/mediatek,infracfg.txt    |  1 +
+ .../bindings/arm/mediatek/mediatek,ipesys.txt      |  1 +
+ .../bindings/arm/mediatek/mediatek,mdpsys.yaml     | 38 +++++++++++++++++++
+ .../bindings/arm/mediatek/mediatek,mfgcfg.txt      |  1 +
+ .../bindings/arm/mediatek/mediatek,mmsys.txt       |  1 +
+ .../bindings/arm/mediatek/mediatek,msdc.yaml       | 39 ++++++++++++++++++++
+ .../bindings/arm/mediatek/mediatek,pericfg.yaml    |  1 +
+ .../bindings/arm/mediatek/mediatek,scp-adsp.yaml   | 38 +++++++++++++++++++
+ .../bindings/arm/mediatek/mediatek,topckgen.txt    |  1 +
+ .../arm/mediatek/mediatek,vdecsys-soc.yaml         | 38 +++++++++++++++++++
+ .../bindings/arm/mediatek/mediatek,vdecsys.txt     |  1 +
+ .../bindings/arm/mediatek/mediatek,vencsys.txt     |  1 +
+ 18 files changed, 249 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys-raw.yaml
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys-soc.yaml
 
-Thanks for the comment. I will update it in next patch.
-
-> >   
-> >   /* defines for slave device wrapper registers */
-> >   enum dew_regs {
-> > @@ -348,6 +351,10 @@ enum pwrap_regs {
-
-[Delete]
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+index bd7a0fa..6942ad4 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+@@ -17,6 +17,7 @@ Required Properties:
+ 	- "mediatek,mt8135-apmixedsys"
+ 	- "mediatek,mt8173-apmixedsys"
+ 	- "mediatek,mt8183-apmixedsys", "syscon"
++	- "mediatek,mt8192-apmixedsys", "syscon"
+ 	- "mediatek,mt8516-apmixedsys"
+ - #clock-cells: Must be 1
+ 
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
+index 38309db..fdcb267 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
+@@ -12,6 +12,7 @@ Required Properties:
+ 	- "mediatek,mt7622-audsys", "syscon"
+ 	- "mediatek,mt7623-audsys", "mediatek,mt2701-audsys", "syscon"
+ 	- "mediatek,mt8183-audiosys", "syscon"
++	- "mediatek,mt8192-audsys", "syscon"
+ 	- "mediatek,mt8516-audsys", "syscon"
+ - #clock-cells: Must be 1
+ 
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys-raw.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys-raw.yaml
+new file mode 100644
+index 0000000..db6f425
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys-raw.yaml
+@@ -0,0 +1,40 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,camsys-raw.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek CAMSYS RAW Controller
++
++maintainers:
++  - Weiyi Lu <weiyi.lu@mediatek.com>
++
++description:
++  The Mediatek camsys raw controller provides various clocks to the system.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8192-camsys_rawa
++          - mediatek,mt8192-camsys_rawb
++          - mediatek,mt8192-camsys_rawc
++      - const: syscon
++
++  reg:
++    maxItems: 1
++
++  '#clock-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++
++examples:
++  - |
++    camsys_rawa: camsys_rawa@1a04f000 {
++        compatible = "mediatek,mt8192-camsys_rawa", "syscon";
++        reg = <0 0x1a04f000 0 0x1000>;
++        #clock-cells = <1>;
++    };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.txt
+index a0ce820..0082f21 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.txt
+@@ -9,6 +9,7 @@ Required Properties:
+ 	- "mediatek,mt6765-camsys", "syscon"
+ 	- "mediatek,mt6779-camsys", "syscon"
+ 	- "mediatek,mt8183-camsys", "syscon"
++	- "mediatek,mt8192-camsys", "syscon"
+ - #clock-cells: Must be 1
+ 
+ The camsys controller uses the common clk binding from
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
+index 1e1f007..b4312d1 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
+@@ -14,6 +14,8 @@ Required Properties:
+ 	- "mediatek,mt7623-imgsys", "mediatek,mt2701-imgsys", "syscon"
+ 	- "mediatek,mt8173-imgsys", "syscon"
+ 	- "mediatek,mt8183-imgsys", "syscon"
++	- "mediatek,mt8192-imgsys", "syscon"
++	- "mediatek,mt8192-imgsys2", "syscon"
+ - #clock-cells: Must be 1
+ 
+ The imgsys controller uses the common clk binding from
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
+new file mode 100644
+index 0000000..2af6f98
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
+@@ -0,0 +1,43 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,imp_iic_wrap.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek IMP I2C Wrapper Controller
++
++maintainers:
++  - Weiyi Lu <weiyi.lu@mediatek.com>
++
++description:
++  The Mediatek imp i2c wrapper controller provides various clocks to the system.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8192-imp_iic_wrap_c
++          - mediatek,mt8192-imp_iic_wrap_e
++          - mediatek,mt8192-imp_iic_wrap_s
++          - mediatek,mt8192-imp_iic_wrap_ws
++          - mediatek,mt8192-imp_iic_wrap_w
++          - mediatek,mt8192-imp_iic_wrap_n
++      - const: syscon
++
++  reg:
++    maxItems: 1
++
++  '#clock-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++
++examples:
++  - |
++    imp_iic_wrap_c@11007000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_c", "syscon";
++        reg = <0 0x11007000 0 0x1000>;
++        #clock-cells = <1>;
++    };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
+index 49a968b..ba5e781 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
+@@ -18,6 +18,7 @@ Required Properties:
+ 	- "mediatek,mt8135-infracfg", "syscon"
+ 	- "mediatek,mt8173-infracfg", "syscon"
+ 	- "mediatek,mt8183-infracfg", "syscon"
++	- "mediatek,mt8192-infracfg", "syscon"
+ 	- "mediatek,mt8516-infracfg", "syscon"
+ - #clock-cells: Must be 1
+ - #reset-cells: Must be 1
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ipesys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ipesys.txt
+index 2ce889b..9cd1035 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ipesys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ipesys.txt
+@@ -7,6 +7,7 @@ Required Properties:
+ 
+ - compatible: Should be one of:
+ 	- "mediatek,mt6779-ipesys", "syscon"
++	- "mediatek,mt8192-ipesys", "syscon"
+ - #clock-cells: Must be 1
+ 
+ The ipesys controller uses the common clk binding from
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml
+new file mode 100644
+index 0000000..88698a8
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml
+@@ -0,0 +1,38 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mdpsys.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MDPSYS Controller
++
++maintainers:
++  - Weiyi Lu <weiyi.lu@mediatek.com>
++
++description:
++  The Mediatek mdpsys controller provides various clocks to the system.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8192-mdpsys
++      - const: syscon
++
++  reg:
++    maxItems: 1
++
++  '#clock-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++
++examples:
++  - |
++    mdpsys: mdpsys@1f000000 {
++        compatible = "mediatek,mt8192-mdpsys", "syscon";
++        reg = <0 0x1f000000 0 0x1000>;
++        #clock-cells = <1>;
++    };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
+index ad5f9d2..fc1ce61 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
+@@ -9,6 +9,7 @@ Required Properties:
+ 	- "mediatek,mt2712-mfgcfg", "syscon"
+ 	- "mediatek,mt6779-mfgcfg", "syscon"
+ 	- "mediatek,mt8183-mfgcfg", "syscon"
++	- "mediatek,mt8192-mfgcfg", "syscon"
+ - #clock-cells: Must be 1
+ 
+ The mfgcfg controller uses the common clk binding from
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+index d8c9108..81fa345 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+@@ -15,6 +15,7 @@ Required Properties:
+ 	- "mediatek,mt7623-mmsys", "mediatek,mt2701-mmsys", "syscon"
+ 	- "mediatek,mt8173-mmsys", "syscon"
+ 	- "mediatek,mt8183-mmsys", "syscon"
++	- "mediatek,mt8192-mmsys", "syscon"
+ - #clock-cells: Must be 1
+ 
+ For the clock control, the mmsys controller uses the common clk binding from
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
+new file mode 100644
+index 0000000..23ad419e
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
+@@ -0,0 +1,39 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,msdc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MSDC Controller
++
++maintainers:
++  - Weiyi Lu <weiyi.lu@mediatek.com>
++
++description:
++  The Mediatek msdc controller provides various clocks to the system.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8192-msdc
++          - mediatek,mt8192-msdc_top
++      - const: syscon
++
++  reg:
++    maxItems: 1
++
++  '#clock-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++
++examples:
++  - |
++    msdc: msdc@11f60000 {
++        compatible = "mediatek,mt8192-msdc", "syscon";
++        reg = <0 0x11f60000 0 0x1000>;
++        #clock-cells = <1>;
++    };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
+index e271c46..c2e106c 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
+@@ -26,6 +26,7 @@ properties:
+           - mediatek,mt8135-pericfg
+           - mediatek,mt8173-pericfg
+           - mediatek,mt8183-pericfg
++          - mediatek,mt8192-pericfg
+           - mediatek,mt8516-pericfg
+         - const: syscon
+       - items:
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
+new file mode 100644
+index 0000000..25cc59f
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
+@@ -0,0 +1,38 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,scp-adsp.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek SCP ADSP Controller
++
++maintainers:
++  - Weiyi Lu <weiyi.lu@mediatek.com>
++
++description:
++  The Mediatek scp adsp controller provides various clocks to the system.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8192-scp_adsp
++      - const: syscon
++
++  reg:
++    maxItems: 1
++
++  '#clock-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++
++examples:
++  - |
++    scp_adsp: scp_adsp@10720000 {
++        compatible = "mediatek,mt8192-scp_adsp", "syscon";
++        reg = <0x10720000 0x1000>;
++        #clock-cells = <1>;
++    };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
+index 9b0394c..c480278 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
+@@ -17,6 +17,7 @@ Required Properties:
+ 	- "mediatek,mt8135-topckgen"
+ 	- "mediatek,mt8173-topckgen"
+ 	- "mediatek,mt8183-topckgen", "syscon"
++	- "mediatek,mt8192-topckgen", "syscon"
+ 	- "mediatek,mt8516-topckgen"
+ - #clock-cells: Must be 1
+ 
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys-soc.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys-soc.yaml
+new file mode 100644
+index 0000000..5cb8740
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys-soc.yaml
+@@ -0,0 +1,38 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,vdecsys-soc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek VDECSYS SOC Controller
++
++maintainers:
++  - Weiyi Lu <weiyi.lu@mediatek.com>
++
++description:
++  The Mediatek vdecsys soc controller provides various clocks to the system.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8192-vdecsys_soc
++      - const: syscon
++
++  reg:
++    maxItems: 1
++
++  '#clock-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++
++examples:
++  - |
++    vdecsys_soc: vdecsys_soc@1600f000 {
++        compatible = "mediatek,mt8192-vdecsys_soc", "syscon";
++        reg = <0 0x1600f000 0 0x1000>;
++        #clock-cells = <1>;
++    };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
+index 7894558..ee679e0 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
+@@ -13,6 +13,7 @@ Required Properties:
+ 	- "mediatek,mt7623-vdecsys", "mediatek,mt2701-vdecsys", "syscon"
+ 	- "mediatek,mt8173-vdecsys", "syscon"
+ 	- "mediatek,mt8183-vdecsys", "syscon"
++	- "mediatek,mt8192-vdecsys", "syscon"
+ - #clock-cells: Must be 1
+ 
+ The vdecsys controller uses the common clk binding from
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
+index 6a6a14e..d22de01 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
+@@ -11,6 +11,7 @@ Required Properties:
+ 	- "mediatek,mt6797-vencsys", "syscon"
+ 	- "mediatek,mt8173-vencsys", "syscon"
+ 	- "mediatek,mt8183-vencsys", "syscon"
++	- "mediatek,mt8192-vencsys", "syscon"
+ - #clock-cells: Must be 1
+ 
+ The vencsys controller uses the common clk binding from
+-- 
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
