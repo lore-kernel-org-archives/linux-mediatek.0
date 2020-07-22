@@ -2,90 +2,77 @@ Return-Path: <SRS0=76sT=BB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C5B5CC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 10:39:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 164ADC433E2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 11:26:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8E15D20771
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 10:39:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D9EFF20771
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2020 11:26:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CpNgg5io";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="MZ8x8EX7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E15D20771
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JnhXc1eS";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="U3FXwPQt"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D9EFF20771
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=KlFBSDH5ss7VCX3mCSCnqhLa3EKtTQvnyaKY4d9+uww=; b=CpNgg5iosGg25Bh2wLFIu/uil
-	VEy0Vp+sgR/eZj8C5UmFVABeR3dzD50MiqD4enuAEDtqdyPM0cOBvpAED4W7qwhk0Mnt0mmpXYuTV
-	xzBeKcwpLBRkitCLE4zv9QBFOhL37zZLoW/HSqGvOrW73hHwltUv9ZLHflEYwrf/p89WZl5Rv5+7O
-	qJjr+bDtW9MqjuI/o8zMM7SqAY2HJuwl52jlrqlqAW5Bm3xVD0WPCXY00tIDCu7jyTQLDLcxCD1KG
-	ob5jqaJDpG3HnJQsmTDPGPuGGw8v57L0Q0Id6VstnTrGNGjfttEA+SABlyBgAKzVGoViQmxYVSS8j
-	p1k+NM0dA==;
+	 bh=N4QQWjoK8HEkkBnN6icbts3BHDa7IC6qUmtODZ6bD78=; b=JnhXc1eSWHMpaIHb2XYNAXBvH
+	Hj2UJY2au65w5JS/RfPy7uOGJkZ2oGm58IkWLexoX/l5C34PunqrpOKHGsPai6t6it9qpwWnBMta3
+	rxL8NuHJM/7eAl1qI5xu3CBNJNDBKJdrVeIQTXXSWToDO5hB1wg5WuqRj1+jMJnKGJs1sts2Ba82z
+	/hAnEaSkWFOW89XVqJUXYiewQ07M9qgo+X3ZAw6h3lUwDLpScu7+s8UDZ4C0eKyjpF6Jf3wMzl0b6
+	1tQLTkEkyMDd6JreyhgnzVqlcnAJ9axtsLRqJFnBRBptb5tvyK5KUfOshOiglFdPhfTJOaQzwJz7q
+	UmCz+I8hA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyC9z-0008Qh-4U; Wed, 22 Jul 2020 10:39:39 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1jyCtE-00004s-DU; Wed, 22 Jul 2020 11:26:24 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyC9w-0008Pl-Ov; Wed, 22 Jul 2020 10:39:37 +0000
-Received: by mail-wr1-x441.google.com with SMTP id f2so1395597wrp.7;
- Wed, 22 Jul 2020 03:39:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=TV4ergjkftjaZomx8AqjCOlT/l5mho+qoW7fAiO7DwA=;
- b=MZ8x8EX7EI5Gki/n02pEYgl/ub5LEHKa8Kws1JGFicYu6gEKCb48xFnQso4xw5WDi0
- 4vZ/2dgM4g907i/tzKZ0xo0hx8P5UsH46ib2vUDwpXBrO49OiKoBjlSvt6AzLFeDst3c
- CTMARSgJMmxdrMkBfdL3GKnO/UZ3MLqyu2rF55tJ1+8eJgfd3uI1cAKoAM7+lcc8CBHQ
- qPN2Plu/Hf89BTllLBuF9IS/Mw6g2oscSLlAymf8C2NFheG9oLneYJdoHD9yytjJbVGz
- LPLXxDft/uf7v4H05+THcmyNsAwohkImDEntoRi7PVAhKdk95Xj4xBV53WHhiRWFQcfr
- lkUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=TV4ergjkftjaZomx8AqjCOlT/l5mho+qoW7fAiO7DwA=;
- b=lqBOZHwtv/oCDFjFc0XhSzxoBL5A3pObtaYFjZpeq0unTKszkrSWneMLi2p7xvnjSN
- eoAf1uHkt0mcO1yeVYfo/LAAo5Z0RT3CKdckjSCLZgq2pp2eInN3Zg7kzoIzeNRmIExM
- jyC8qmd/6kn7f7jBnlAf7M3BKVMnp1cvGtxUw+6ge0YuN+xuWQqdobEo/l2lE2/8+ih5
- sgOKuJ9Ln793olajk8eAo1A/6q2fThxm4o6YaFJ9/1kn5YwiWJ6TtCtPcS0ZW2KyJswB
- tMsOUBrsP/jFRL06HKLNWUZKRe5JCqaMDIPwEjlmmCjpWKH4biknlG5fXCB2asowMN8z
- t9Eg==
-X-Gm-Message-State: AOAM533hGfnn/0kecHO/2xGFjNsvUbV3eYUGMAzbn4cPB/f60NR364pM
- EfCCY39E4OBWYXSPXlSLm/mu9dJD
-X-Google-Smtp-Source: ABdhPJzccNJ8vHlvkA5XruDkm8csHTXrgtgDkPe3q+BBmvVK0PQT9d6D36+7jU8Cpg/rLDybhlBmjg==
-X-Received: by 2002:adf:ded0:: with SMTP id i16mr15608967wrn.389.1595414375595; 
- Wed, 22 Jul 2020 03:39:35 -0700 (PDT)
-Received: from ziggy.stardust ([213.195.122.158])
- by smtp.gmail.com with ESMTPSA id p8sm29564205wrq.9.2020.07.22.03.39.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 22 Jul 2020 03:39:35 -0700 (PDT)
-Subject: Re: [PATCH v2 1/2] dt-bindings: spi: update bindings for MT8192 SoC
-To: Leilk Liu <leilk.liu@mediatek.com>, Mark Brown <broonie@kernel.org>
-References: <20200721122436.31544-1-leilk.liu@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <97bcb048-81f2-0147-4c62-9172c27fff71@gmail.com>
-Date: Wed, 22 Jul 2020 12:39:34 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ id 1jyCtB-0008Vq-Uh; Wed, 22 Jul 2020 11:26:23 +0000
+X-UUID: b8545c92d4f74044a5885124eff71e46-20200722
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=kUGN4eod9+73obp1QXaVgA/WjQAmxsxhBRuAz9P0fHI=; 
+ b=U3FXwPQtliIYH3zOvzWBlPYGdl3P2bV8WM2jNW4aMu7zzIg45fjxVe454gZTPUkn1z7/E3ajOrnb6i61QOarGRJdWkcjuy85O4ouXV6ymOBUgqIMsJE/wOqJILLc3Jrju25f6Rl2m4ZTIPIsf0qxp4m7fgji7MHhrFrMZn1wZFE=;
+X-UUID: b8545c92d4f74044a5885124eff71e46-20200722
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <hanks.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 349014290; Wed, 22 Jul 2020 03:23:03 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 22 Jul 2020 04:16:27 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 22 Jul 2020 19:16:19 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 22 Jul 2020 19:16:20 +0800
+Message-ID: <1595416581.5511.6.camel@mtkswgap22>
+Subject: Re: [PATCH v2 0/2] Remove MT6779 UART3 clock support
+From: Hanks Chen <hanks.chen@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Date: Wed, 22 Jul 2020 19:16:21 +0800
+In-Reply-To: <54e4d0b9-e62c-a3cb-7f74-af2891664cf1@gmail.com>
+References: <1595387397-13110-1-git-send-email-hanks.chen@mediatek.com>
+ <54e4d0b9-e62c-a3cb-7f74-af2891664cf1@gmail.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-In-Reply-To: <20200721122436.31544-1-leilk.liu@mediatek.com>
-Content-Language: en-US
+X-TM-SNTS-SMTP: 8678F406109F856D891B379E590361900A402883DC336283B2FDBEFAF9C867542000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200722_063936_838385_8D3A43CE 
-X-CRM114-Status: GOOD (  17.69  )
+X-CRM114-CacheID: sfid-20200722_072622_195441_25D25752 
+X-CRM114-Status: GOOD (  15.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,43 +84,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org,
- linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org,
+Cc: CC Hwang <cc.hwang@mediatek.com>, wsd_upstream@mediatek.com,
+ Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>,
+ YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org,
+ linux-gpio@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, mtk01761 <wendell.lin@mediatek.com>,
  linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 21/07/2020 14:24, Leilk Liu wrote:
-> From: "leilk.liu" <leilk.liu@mediatek.com>
+On Wed, 2020-07-22 at 10:43 +0200, Matthias Brugger wrote:
 > 
-> Add a DT binding documentation for the MT8192 soc.
+> On 22/07/2020 05:09, Hanks Chen wrote:
+> > remove the redundant clk interface of uart.
+> > CLK_INFRA_UART3 is a dummy clk interface,
+> > it has no effect on the operation of the read/write instruction.
+> > 
+> > Change since v2:
+> > Commit "dt-bindings: clock: remove UART3 clock support"
 > 
-> Signed-off-by: leilk.liu <leilk.liu@mediatek.com>
+> Sorry just another comment. I think we can make this one patch deleting everything.
+> 
+Sorry, I don't understand the comment. Do I need to merge them into one
+big patch?
+Btw, if I use one patch, I would get check patch fail.
+---
+[2020-07-22 19:12:49,046 ERROR] Run check patch results:
+WARNING:DT_SPLIT_BINDING_PATCH: DT binding docs and includes should be a
+separate patch. See:
+Documentation/devicetree/bindings/submitting-patches.rst
+---
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Hanks
 
-> ---
->   Documentation/devicetree/bindings/spi/spi-mt65xx.txt | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-> index 3a8079eb18c8..9e43721fa7d6 100644
-> --- a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-> +++ b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-> @@ -11,6 +11,7 @@ Required properties:
->       - mediatek,mt8135-spi: for mt8135 platforms
->       - mediatek,mt8173-spi: for mt8173 platforms
->       - mediatek,mt8183-spi: for mt8183 platforms
-> +    - "mediatek,mt8192-spi", "mediatek,mt6765-spi": for mt8192 platforms
->       - "mediatek,mt8516-spi", "mediatek,mt2712-spi": for mt8516 platforms
->   
->   - #address-cells: should be 1.
-> 
+> > -- remove Fixes tag
+> > Commit "clk: mediatek: remove UART3 clock support"
+> > -- remove Fixes tag
+> > 
+> > Hanks Chen (2):
+> >    dt-bindings: clock: remove UART3 clock support
+> >    clk: mediatek: remove UART3 clock support
+> > 
+> >   drivers/clk/mediatek/clk-mt6779.c      | 2 --
+> >   include/dt-bindings/clock/mt6779-clk.h | 1 -
+> >   2 files changed, 3 deletions(-)
+> > 
 
 _______________________________________________
 Linux-mediatek mailing list
