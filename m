@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EAE5EC433EC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 17:11:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A450C433F7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 17:11:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AF06422B40
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 17:11:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3703622CAF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 17:11:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="INKSW8tx";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="rFc6dLsA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF06422B40
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iaVlTrzs";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="p23w/jtO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3703622CAF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,53 +27,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6N2Ahxewzud517H8apTE7z3SVvgKPBbXtDJhYAymxj4=; b=INKSW8txSFuB3yIetkJUNuB3D
-	GpYkHvGGA7Y1Bex4mfQ9DRQI9hM+58IQj0m7W40gSCUoPsp9KIFkUk6o4S+o13GwaqkPmAYpWh3QN
-	mof7xJ6mwfMQ1NosRngV8g5H1Qzfrgbe+zyeJuDVXlEGWZFYEN5vHwgP2vZjsSMOm0atYSVTmc6vw
-	BJ65Gf7dHscgjJtdhcwJkYd+iAQ/K8Td4zu/Oe3euIorohnOSJCKeeI9NKfsr8EGm1w4MgU8lykF4
-	WeuEIeOkgKa5et3Iv4DWiAvRSI/A2q70JlxdBQ1sVm9MpUxEwKwiRWr8sCPcB4L5NxveJJy67Flf4
-	uFeuYj2zw==;
+	 bh=wDF4BPwpkzZFX40EI2vEl2NEes3Ca2xyNTMQZcHuIAY=; b=iaVlTrzs+Cl3mEdMUhphGLqq1
+	1UhdiAGcJ4I+nGtecgFbFnF7rs3Js8kGqejfstFxWbwVuK7AveqcmA2vwuNKMHC85q3n7i7uBzl/G
+	VZ0Kd14T4w2L/Za+U+8dzCHWI39lw9Mue9RPOgr6Bt6dPfRkfZO5+jbklXavj2JBTelhiLgUtrx5A
+	WL6cjLseyGdd2dzncpK/4bldOmt2sAdITn4FU2jZ0ZDJjiikN90NRIKSA07krpSysQlIYQRdXjnId
+	+5mtF4Lz5w/F58H1fcmT4xRCwm9douI8BDkGfagW1S9pkMxAgNA88sc0cjqs6+F6fpPE8XaOKx4Yp
+	sHYVZlYIg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyekZ-0002zK-UD; Thu, 23 Jul 2020 17:11:19 +0000
+	id 1jyekl-00033y-Nk; Thu, 23 Jul 2020 17:11:31 +0000
 Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyekY-0002yg-P9; Thu, 23 Jul 2020 17:11:19 +0000
-Received: by mail-wm1-x342.google.com with SMTP id o8so5633230wmh.4;
- Thu, 23 Jul 2020 10:11:18 -0700 (PDT)
+ id 1jyeki-000325-RJ; Thu, 23 Jul 2020 17:11:30 +0000
+Received: by mail-wm1-x342.google.com with SMTP id c80so5648870wme.0;
+ Thu, 23 Jul 2020 10:11:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=BOBtgx7HBcwU2CsvP4SkgzS+LAVOAZGJthho4DkTsIc=;
- b=rFc6dLsAi7Hp1xqMLEZD0WEvBOjeF78fbhSsQu7THA3tc6JHHEK6dTX3tkR5TWI5hh
- ig8cyM1wIzgXOT3y9xWWsO1vKjBvxXailgcwaOVw/xqeBuwSyLjRuUFExja2ma7WNXCY
- bcwLZkCAOBSEYcH1lNrLT3Cpe+ygTqj9amnX9pK/mgs7/rKoo0IWAI47HPz7rmDU4W3R
- LVq7EU96M7a1nao61YuZApiaH8y3kGZG3RX+bOIefp7uSrOEBHnOrVt8U27cP1W3XBx5
- Bs2iMhJURDBDdmV1/FD7qZ3NmHVvq8MzCg6spa74V8bEwUoyj2z7ximrWyyrGoplJV6V
- 2dCg==
+ bh=7SjoJTYXQvTojo9vvc7snzILBAZP0a2/wyluR86x7BA=;
+ b=p23w/jtOq2WqKP3tV9WunD56cJ1Dw/VjCEGtr7+SlzbT64IQGs0s1jCuyg/Dbd7Kgt
+ OgMEepGbRghJk+y9rc/xj2DiSCSRBnz0LNXgpxckBexnptIiy79HEZvqx1s0ISWROaTX
+ QgaBs1lnxfiWNY0C3V3NXhg+ggdRb/OhwpP7dyKCGeyzGNGTzRBcZ5owRRTt5ZNBbBLl
+ wFPNuw0Xi3boRCs0xAEeUQuQQzG6Yc8uqPbBuN3FuWGQn+3kOmiaP1r7Ul9KuR8fnSLX
+ WJWOGZVSIFqDoqTOPLIUVZHNfnKOkPpNXWveQmy88/lJCKoFn6vhwTRy29sCvQwPoP+f
+ eB2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=BOBtgx7HBcwU2CsvP4SkgzS+LAVOAZGJthho4DkTsIc=;
- b=ZyHGgpQQzg/beNnLT5NS3O+6hb0PkTxyZ6xE1U2m5+6dM0IDVM5oidpBZyBduAInUu
- lOlS+qQNTgN+gz62IxrBpliBr1pdAdNbtcW1Co80w2ZGsm/tUbmmrr9ca9rCkTaXjuc9
- 1w125MbegbJ+7aUklxY2ugplx4F1bhPbmRkACaSJCmLe1xdoLWPVJnOFxmbG/r1sTX6M
- CzLutJgrKmK8mmB4uZhkq24sqNAYwsoPhQhXBZjDCPWjE5Ul+UcOMiehlZ2I0HhOLiKZ
- qI+N2YGPvmPUlxESiQV5VgZ7rYtI3Tcl8arRY50yX6ySlH+/YJPD6MwiiJGe+yaQQCis
- YmxQ==
-X-Gm-Message-State: AOAM533beSD8l+vHJXm7vjDKvJGIB5l09q8Ts0lkrxCfkqq2eiE0/3rB
- 0kY8gzeYL034MtPsBwBQzgQ=
-X-Google-Smtp-Source: ABdhPJzOYApeTD/fZoWBdyCetAktvJgiYeaqNCN86sDdSggtCsOINeaduyNfWq8EWtwqs1vVfcq/Og==
-X-Received: by 2002:a1c:6809:: with SMTP id d9mr4982725wmc.34.1595524277650;
- Thu, 23 Jul 2020 10:11:17 -0700 (PDT)
+ bh=7SjoJTYXQvTojo9vvc7snzILBAZP0a2/wyluR86x7BA=;
+ b=dWimu2IibMXSieVMRmaZxQZX1++FRIXNI4TKUqZ85e10SaSaudMs+eeE0Ta8wTQghg
+ VDz9nell4U/5hAw8mjSt/TttBqcaJDN+bk9UUN3O1AVX2atzbv9drcGEBshG/An53ozg
+ W9EdIzH+OOHoSeSJ1/Mbw4xkMUceRhPu6BzNUdJ7ERrvbG8zA6h8hBqweH9Gj8uX3Cec
+ SXWQd/UT+Xk00999WlwOkIfxduhqSwKXSR5QtNsC/NkIl7yHaopx9bz62VaTIs/rrjQg
+ 2ic19xArVMfVRv6EzUYOkxbXVieKru2woXBtdIG3Mco8rj1iJiLr/I+YsY4otQMRkKXS
+ iKYg==
+X-Gm-Message-State: AOAM533Oe8MXw+18v54sG2g29n7SPzeAFuLMCPkI6cOFHKxMAS2IVQUI
+ ahHvrr8ejBdiogZE0a6+Ixk=
+X-Google-Smtp-Source: ABdhPJz3yLd9OnsuWyOlP//CgtBDcAyMfwkYwXowysKC0s4GBJ63E5fqUYtaEmkcMy7imX4twi6dIQ==
+X-Received: by 2002:a1c:ab06:: with SMTP id u6mr5272630wme.55.1595524287042;
+ Thu, 23 Jul 2020 10:11:27 -0700 (PDT)
 Received: from [10.67.50.75] ([192.19.223.252])
- by smtp.googlemail.com with ESMTPSA id p29sm4403202wmi.43.2020.07.23.10.11.12
+ by smtp.googlemail.com with ESMTPSA id j5sm4374070wma.45.2020.07.23.10.11.20
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Jul 2020 10:11:16 -0700 (PDT)
-Subject: Re: [PATCH 16/23] memory: brcmstb_dpfe: Constify the contents of
- string
+ Thu, 23 Jul 2020 10:11:26 -0700 (PDT)
+Subject: Re: [PATCH 17/23] memory: brcmstb_dpfe: Remove unneeded braces
 List-Id: <soc.lore.kernel.org>
 To: Krzysztof Kozlowski <krzk@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
  Olof Johansson <olof@lixom.net>, arm@kernel.org, soc@kernel.org,
@@ -87,7 +86,7 @@ To: Krzysztof Kozlowski <krzk@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-omap@vger.kernel.org, linux-tegra@vger.kernel.org
 References: <20200723073744.13400-1-krzk@kernel.org>
- <20200723073744.13400-17-krzk@kernel.org>
+ <20200723073744.13400-18-krzk@kernel.org>
 From: Florian Fainelli <f.fainelli@gmail.com>
 Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
  xsDiBEjPuBIRBACW9MxSJU9fvEOCTnRNqG/13rAGsj+vJqontvoDSNxRgmafP8d3nesnqPyR
@@ -143,16 +142,16 @@ Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
  HvsHIcv4lxCWkFXkwsuWqzEKK6kxVpRDoEQPDj+Oy/ZJ5fYuMbkdHrlegwoQ64LrqdmiVVPC
  TwQYEQIADwIbDAUCVF/S8QUJHlwd3wAKCRBhV5kVtWN2Do+FAJ956xSz2XpDHql+Wg/2qv3b
  G10n8gCguORqNGMsVRxrlLs7/himep7MrCc=
-Message-ID: <b9519b7f-9cf0-3715-bca9-05905035eada@gmail.com>
-Date: Thu, 23 Jul 2020 10:11:05 -0700
+Message-ID: <e65d4ed3-3c01-acb7-f324-be99201815df@gmail.com>
+Date: Thu, 23 Jul 2020 10:11:19 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200723073744.13400-17-krzk@kernel.org>
+In-Reply-To: <20200723073744.13400-18-krzk@kernel.org>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200723_131118_849434_BAA243FF 
-X-CRM114-Status: GOOD (  13.41  )
+X-CRM114-CacheID: sfid-20200723_131129_201135_56DFF4DF 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -173,7 +172,9 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 7/23/20 12:37 AM, Krzysztof Kozlowski wrote:
-> The string itself can be made const for safety.
+> Single statement blocks don't need braces.  Fixes checkpatch warning:
+> 
+>     WARNING: braces {} are not necessary for single statement blocks
 > 
 > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 
