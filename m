@@ -2,21 +2,22 @@ Return-Path: <SRS0=cyKo=BC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=BAYES_00,DKIM_INVALID,
-	DKIM_SIGNED,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4EF80C433E3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 10:16:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 72154C433E3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 10:39:50 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1BB8E2065F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 10:16:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3BAE420737
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 10:39:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AXxZK3ry"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1BB8E2065F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dVBV9qt7"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3BAE420737
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -24,57 +25,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LBzUWrx6NPsUddAD/l75YDkzq24+Qj+l4FyB93VMhwE=; b=AXxZK3ryIEban/n2X3VrVOvnR
-	1r9PwpqU0u1VGxhCRaneuejXQ0Gmsm8bpIp25VZswtAEaTSx1+r23IVCxuBfTiARReV7xbIxxuswA
-	JcYDhBI3yUIwyWUATaJO1KBow9cT5DmfpYvxpCRxbm3/HsVHYHbjJxPDeL/Qj8OGMd3WRirVwqGT/
-	BXDZa4Nz1vm/AZ4WMPGfLQ6kE/GY13cIRo9Ylp/YIiVG8m/bo5rPRNWcbTL8GlMpjBZR/FHW0hG+V
-	8VS4Zlfr8zL27QXEWiJGXnJF+YUZJc6nb7Xh6EFBs5jAiecRnRpGZN0I+Ghrc+g29xXgtQ78enl6p
-	HwCSJv11A==;
+	 bh=CmPZOjD6VyR5pxL0KG1qN3SB1d+PZexDFtb867nhhf0=; b=dVBV9qt7kkXL4LKjnh7jfvzKr
+	5MKE0J1Og04gTDQ7szvnsYPvguKUzMxqppTKwuujYXs5stHs9tFlp0YtmtSJSiU4SGeitEeqApBA1
+	Ijdf3ab4um0VNPabDA9uOT55QWh9LF9ayOhLEfx+o9EfFY2bntQHTPpHzK/fv0ZZFA2BIZFcBVg9a
+	zPwr9G8mObNqgxcA/pHc22gAp02SX7LvmwVjkRTKKAfFBkNKsBK/ner8NHFVlSbtuUSEezq37uqDu
+	njLAbpDoj2c857oO9PEtnkSqXzx2vX/n89epEIFOx7vdey476KiMecDxi8pCeJSB8V7YbPms+onkG
+	ZsO2hK1lw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyYHL-00060Z-9Y; Thu, 23 Jul 2020 10:16:43 +0000
-Received: from mail-ej1-f65.google.com ([209.85.218.65])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyYHH-0005zY-Eo; Thu, 23 Jul 2020 10:16:40 +0000
-Received: by mail-ej1-f65.google.com with SMTP id a1so5753643ejg.12;
- Thu, 23 Jul 2020 03:16:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=dnWqbbfyoTOE1v2/nsDrkVQKi2TdYuhkczsrtV9Tj/A=;
- b=aoPWDnDOQ6hDWs7Bo/nBxg4oPOLatLDllUtbIuiKx2NhpXamQf//V+kSKB42sFgUSO
- fytJpcToDjk7AnOl/lv5sAm75gzW7lwqUsNiiB0FCdnFhv0Ea5DKK2LsNxiIPBFub10H
- ZgQL1hqEWZttV8ThAFOQ8JuKqCe/XHtUV4+kb5MBwGb8SBJ+cvx/zqdOmoTAuzhTqBvM
- tz7Xo0cwBnCXhrGtPe8XBLFmfFKfY8V7j7KC4bgQ4It5HA28fccg96yZQvRTn9qnUP+G
- DlLeRF4F3TukOv8T0zom5GvED+zUZITXEuJVWHTQQk/TWyi5qZ2Rwiz9g5+J9MJof9EU
- OG1A==
-X-Gm-Message-State: AOAM532O3KFgg2Z1b69fIQ1XZxQkBdhXRMAztroY3L5XqW1KVKJ1+ItO
- dsJtZID2QXZwxKmyQOI4vU0=
-X-Google-Smtp-Source: ABdhPJxFOO+eX3VP5KW+75n2zsTc3LGcB7+QqfGOKNwpQ7g2yIGn/n4uVf5RddsxBNhVVCNRNqRwLw==
-X-Received: by 2002:a17:906:2e83:: with SMTP id
- o3mr3639213eji.261.1595499398253; 
- Thu, 23 Jul 2020 03:16:38 -0700 (PDT)
-Received: from kozik-lap ([194.230.155.213])
- by smtp.googlemail.com with ESMTPSA id ah1sm841926ejc.43.2020.07.23.03.16.36
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 23 Jul 2020 03:16:37 -0700 (PDT)
-Date: Thu, 23 Jul 2020 12:16:34 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [PATCH 19/23] memory: omap-gpmc: Enclose macro statements in
- do-while
-Message-ID: <20200723101634.GD30472@kozik-lap>
-References: <20200723073744.13400-1-krzk@kernel.org>
- <20200723073744.13400-20-krzk@kernel.org>
- <CAK8P3a3emZd=Tz5JhxevkX3OJMMEn_2Nb+_LQtGZJ9-GWNpd2g@mail.gmail.com>
+	id 1jyYda-0002Ta-DW; Thu, 23 Jul 2020 10:39:42 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jyYdX-0002SQ-2z; Thu, 23 Jul 2020 10:39:40 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id AE692D6E;
+ Thu, 23 Jul 2020 03:39:35 -0700 (PDT)
+Received: from e121166-lin.cambridge.arm.com (e121166-lin.cambridge.arm.com
+ [10.1.196.255])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id EF1D13F66F;
+ Thu, 23 Jul 2020 03:39:31 -0700 (PDT)
+Date: Thu, 23 Jul 2020 11:39:26 +0100
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+To: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 00/19] PCI: Another round of host clean-ups
+Message-ID: <20200723103926.GA7926@e121166-lin.cambridge.arm.com>
+References: <20200722022514.1283916-1-robh@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAK8P3a3emZd=Tz5JhxevkX3OJMMEn_2Nb+_LQtGZJ9-GWNpd2g@mail.gmail.com>
+In-Reply-To: <20200722022514.1283916-1-robh@kernel.org>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200723_061639_538768_4C10AB8B 
-X-CRM114-Status: GOOD (  23.30  )
+X-CRM114-CacheID: sfid-20200723_063939_225458_4A71C632 
+X-CRM114-Status: GOOD (  20.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,86 +68,123 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-List-Id: <soc.lore.kernel.org>
-Cc: Florian Fainelli <f.fainelli@gmail.com>,
- "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
- linux-omap <linux-omap@vger.kernel.org>, Tony Lindgren <tony@atomide.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Vladimir Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>,
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
- Markus Mayer <mmayer@broadcom.com>, Santosh Shilimkar <ssantosh@kernel.org>,
- Olof Johansson <olof@lixom.net>, Thierry Reding <thierry.reding@gmail.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Linus Torvalds <torvalds@linux-foundation.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Roger Quadros <rogerq@ti.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+ Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org,
+ Shawn Lin <shawn.lin@rock-chips.com>, linux-tegra@vger.kernel.org,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Fabio Estevam <festevam@gmail.com>,
+ Marek Vasut <marek.vasut+renesas@gmail.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Will Deacon <will@kernel.org>, Michal Simek <michal.simek@xilinx.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org,
+ Murali Karicheri <m-karicheri2@ti.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Richard Zhu <hongxing.zhu@nxp.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, linux-mediatek@lists.infradead.org,
+ Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org,
+ Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ linux-renesas-soc@vger.kernel.org, Tom Joseph <tjoseph@cadence.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Jingoo Han <jingoohan1@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
+ Lucas Stach <l.stach@pengutronix.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 23, 2020 at 11:09:40AM +0200, Arnd Bergmann wrote:
-> On Thu, Jul 23, 2020 at 9:39 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> >
-> > do-while is a preferred way for complex macros because of safety
-> > reasons.  This fixes checkpatch error:
-> >
-> >     ERROR: Macros starting with if should be enclosed by a do - while
-> >         loop to avoid possible if/else logic defects
-> >
-> > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+On Tue, Jul 21, 2020 at 08:24:55PM -0600, Rob Herring wrote:
+> Here's another round PCI host bridge clean-ups. This one aims to
+> reduce the amount of duplication in host probe functions by providing
+> more default initialization of the pci_host_bridge. With the prior
+> clean-ups, it's now possible to alloc and initialize the pci_host_bridge
+> struct from DT in one step.
 > 
-> This is an improvement, but the macro still has other issues that
-> are just as bad as the one you address:
+> Patches 2 and 3 drop some pci_host_bridge init. Patches 4-11 clean-up
+> handling of root bus number and bus ranges. Patches 12 and 13 are cleanups
+> for Cadence driver. Patches 14 and 15 are clean-ups for rCar driver. Patch
+> 16 makes missing non-prefetchable region just a warning instead of an
+> error in order to work with rcar-gen2. Patch 17 converts rcar-gen2 to not
+> use the arm32 specific PCI setup. Patch 18 updates how the DT resource
+> parsing is done for all the controller drivers. Any other new controller
+> drivers will need updating. Patch 19 moves the default IRQ mapping to
+> the bridge init core code.
 > 
-> - Using the # operator to avoid the "" in the invocation seems confusing
-
-I guess it was useful for debugging.
-
-> - it implicitly uses the 'cs' and 't' variables of the calling function instead
->   of passing them as arguments.
-
-Actually another reason to convert it to just a function.
-
-> - it calls 'return -1' in a function that otherwise uses errno-style
->   return codes, so this gets interpreted as EPERM "Operation not
->   permitted".
-
-The users of this macro also do it (gpmc_cs_set_timings()) so this
-wrong practice is consistent with the driver. :)
-
+> This is based on my previous series of clean-ups[1].
 > 
-> I would probably just open-code the entire thing and remove the
-> macro like:
+> Compile tested only. Any testing would be appreciated as I don't have
+> any of this h/w (well, I have a rock960c, but have not gotten PCIe to work
+> on it).
 > 
-> ret = 0;
-> ret |= set_gpmc_timing_reg(cs, GPMC_CS_CONFIG2,  0,  3, 0, t->cs_on,
-> GPMC_CD_FCLK, "cs_on");
-> ret |= set_gpmc_timing_reg(cs, GPMC_CS_CONFIG2,  8,  12, 0,
-> t->cs_rd_off, GPMC_CD_FCLK, "cs_rd_off");
-> ret |= set_gpmc_timing_reg(cs, GPMC_CS_CONFIG2,  16,  20, 0,
-> t->cs_wr_off, GPMC_CD_FCLK, "cs_wr_off);
-> ...
-> if (ret)
->      return -ENXIO;a
-
-I like this approach because it also removes the 'return' from macro
-which is not desired.
-
+> Rob
 > 
-> Of maybe leave the macro, but remove the if/return part and use
-> the "ret |= GPMC_SET_ONE(...)" trick to avoid some of the problems.
+> [1] https://lore.kernel.org/linux-pci/20200522234832.954484-1-robh@kernel.org/
+> 
+> Rob Herring (19):
+>   PCI: versatile: Drop flag PCI_ENABLE_PROC_DOMAINS
+>   PCI: Set default bridge parent device
+>   PCI: Drop unnecessary zeroing of bridge fields
+>   PCI: aardvark: Use pci_is_root_bus() to check if bus is root bus
+>   PCI: designware: Use pci_is_root_bus() to check if bus is root bus
+>   PCI: mobiveil: Use pci_is_root_bus() to check if bus is root bus
+>   PCI: xilinx-nwl: Use pci_is_root_bus() to check if bus is root bus
+>   PCI: xilinx: Use pci_is_root_bus() to check if bus is root bus
+>   PCI: rockchip: Use pci_is_root_bus() to check if bus is root bus
+>   PCI: rcar: Use pci_is_root_bus() to check if bus is root bus
+>   PCI: Move setting pci_host_bridge.busnr out of host drivers
+>   PCI: cadence: Use bridge resources for outbound window setup
+>   PCI: cadence: Remove private bus number and range storage
+>   PCI: rcar: Use devm_pci_alloc_host_bridge()
+>   PCI: rcar: Use struct pci_host_bridge.windows list directly
+>   PCI: of: Reduce missing non-prefetchable memory region to a warning
+>   PCI: rcar-gen2: Convert to use modern host bridge probe functions
+>   PCI: Move DT resource setup into devm_pci_alloc_host_bridge()
+>   PCI: Set bridge map_irq and swizzle_irq to default functions
+> 
+>  .../pci/controller/cadence/pcie-cadence-ep.c  |   6 +-
+>  .../controller/cadence/pcie-cadence-host.c    |  65 +++----
+>  drivers/pci/controller/cadence/pcie-cadence.c |   9 +-
+>  drivers/pci/controller/cadence/pcie-cadence.h |   8 +-
+>  drivers/pci/controller/dwc/pci-imx6.c         |   2 +-
+>  drivers/pci/controller/dwc/pci-keystone.c     |   4 +-
+>  .../pci/controller/dwc/pcie-designware-host.c |  28 +--
+>  drivers/pci/controller/dwc/pcie-designware.h  |   2 -
+>  .../controller/mobiveil/pcie-mobiveil-host.c  |  21 +--
+>  .../pci/controller/mobiveil/pcie-mobiveil.h   |   1 -
+>  drivers/pci/controller/pci-aardvark.c         |  25 +--
+>  drivers/pci/controller/pci-ftpci100.c         |  10 --
+>  drivers/pci/controller/pci-host-common.c      |  17 +-
+>  drivers/pci/controller/pci-loongson.c         |   8 -
+>  drivers/pci/controller/pci-mvebu.c            |   4 -
+>  drivers/pci/controller/pci-rcar-gen2.c        | 162 +++++-------------
+>  drivers/pci/controller/pci-tegra.c            |  10 --
+>  drivers/pci/controller/pci-v3-semi.c          |  12 --
+>  drivers/pci/controller/pci-versatile.c        |  13 +-
+>  drivers/pci/controller/pci-xgene.c            |   9 -
+>  drivers/pci/controller/pcie-altera.c          |  10 --
+>  drivers/pci/controller/pcie-brcmstb.c         |   9 -
+>  drivers/pci/controller/pcie-iproc-platform.c  |  10 +-
+>  drivers/pci/controller/pcie-iproc.c           |   3 -
+>  drivers/pci/controller/pcie-mediatek.c        |  16 --
+>  drivers/pci/controller/pcie-rcar-host.c       |  73 +-------
+>  drivers/pci/controller/pcie-rockchip-host.c   |  24 +--
+>  drivers/pci/controller/pcie-rockchip.h        |   1 -
+>  drivers/pci/controller/pcie-xilinx-nwl.c      |  20 +--
+>  drivers/pci/controller/pcie-xilinx.c          |  22 +--
+>  drivers/pci/of.c                              |  45 +++--
+>  drivers/pci/pci.h                             |   8 +
+>  drivers/pci/probe.c                           |   7 +
+>  include/linux/pci.h                           |  12 --
+>  34 files changed, 160 insertions(+), 516 deletions(-)
 
-I could probably then keep it as a function.  This would be the safest
-and remove most of the problems here.
+Applied to pci/misc with Bjorn's ACK - I had to tweak:
 
-Best regards,
-Krzysztof
+https://patchwork.kernel.org/patch/11677011
 
+Hopefully I have not messed it up.
+
+Thanks,
+Lorenzo
 
 _______________________________________________
 Linux-mediatek mailing list
