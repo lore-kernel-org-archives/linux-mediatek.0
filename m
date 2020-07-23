@@ -2,82 +2,78 @@ Return-Path: <SRS0=cyKo=BC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 95A6BC433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 07:52:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 28C32C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 08:08:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 51575206C1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 07:52:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E9B722086A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 08:08:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hCvRhIjn";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="JOBHXil0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 51575206C1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OQykmFsI";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="n6mdgpCq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9B722086A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=AjBcs150bPKrFYXRhkgDqSy0QGYU4NrKF4NLclT3neg=; b=hCvRhIjnCGsUe+lrf0Nap06Hy
-	OYC4izLnkUi0kBm0hRj0tsjnmhqgBIsGV7JHNb4qH3gyJ6xYmFLNxurJMlsbLkOCqK6nbpkgfcB/0
-	JlqLXZRa9ip84H7JlRb9hba+NVa62bMk7gYe+dD9V3AhEyuMu8mWCwbSiGpiv8PXsz0RfnEjYTRD9
-	MlPP9aHpm+zlAo6JJb/1nHn4WPVvD/5Tz3fkr84AEwMGTZvDQM9Z/H7LVvUeuAcgF/Br82byEop2N
-	6Fow0+oSG8Y1T6LfFZoLjFWC+g45pbbJ31tzSGfV1VPHzUT063riVGUGFWl1Cyis6a/RwYjEnaBOV
-	iwoZmaZVg==;
+	 bh=nbQH5kTU7j4tpy+UsFE1L5PUtlzQF1kW5yPh4M1lvOA=; b=OQykmFsIOKIfHKJDhBeZQU3wB
+	IPZq9HJu82etT6EakV3JOY9wlDnjOnhFITYBouTfJ9x8D0fiWHpKbZV2ajiXfRhftpcHwrlBIYCEO
+	jtaKAJ2cWGgsiDY7+aZ5+o2Ep1bdR6+DjqYOmZUrhLx/aqk8NsOF7ZKUOZpEqqJLiFGzXwxauSdl+
+	NaFT4u8YXF8fJAVO9ed8NxfVJUsCRzG4NOdkwN+ZTRgFoIpxb2UmeJbXKgYMdI+XWZq16Oe/CLDh9
+	f4pJ805yCJav8qlqU2fKHOb8oFLyrM+ONBxEuF7wfSXi0wblGhgz+9joX4e5lFWOKwPTW0Nn+Y3j8
+	Eb7/NCUdQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyW1b-0004bz-Cm; Thu, 23 Jul 2020 07:52:19 +0000
-Received: from mail-ua1-x942.google.com ([2607:f8b0:4864:20::942])
+	id 1jyWHB-0000Nn-MU; Thu, 23 Jul 2020 08:08:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyW1M-0004VE-H4
- for linux-mediatek@lists.infradead.org; Thu, 23 Jul 2020 07:52:11 +0000
-Received: by mail-ua1-x942.google.com with SMTP id g4so1501399uaq.10
- for <linux-mediatek@lists.infradead.org>; Thu, 23 Jul 2020 00:52:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=z9xX1l7Vei7TNjVZF3Wex9lJJLRz3b9T5V+7MzClC/Y=;
- b=JOBHXil0Q8t2jmxCibCxIZZZYyuw3DVM0slT+REWTKAp/9AOQ28anOa7F6thdWR/py
- j02RkMHNrIZ/nyuvSkrqhp6c9u3cR5DPfkzSDtjExGX7LXeXMzNohAGsnn8FoxLcWTme
- hJF78GsoZ2pTvdTq15H07Cdr3Pnz3vIuCiuhY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=z9xX1l7Vei7TNjVZF3Wex9lJJLRz3b9T5V+7MzClC/Y=;
- b=Q6nK+NA4L8YLbHAXsbp9bvwyH43IPv9MdXvGRtov0H6z8CPhi+Apd6uwtQ2FX/Cg5b
- FMPQLKVdXLtMUQ2HaaB0JKW+sgCw3ieHFh/XzEYmj3WeoHvRHrW4rI/Yn/tO3mmMbTuC
- nHHpQABRw3R0KGuovOaLDT6Eo3DETq/iSja2Z0BdUjMLLuMk+SqR1Jg6PRh6lN7+p9pC
- n17ovd00pL65ZzVbTPnLeRy9Prg7T59b/q+ZHPoL0gmH320+U9ACST4ihJXTH4QI1e7m
- 2sf34JQXzFlIQqUEDtFFA9Ih1Q+DPMWdRaHcS842zWG3OQcSFwwJsKx8tjqQRUV+4683
- lNxQ==
-X-Gm-Message-State: AOAM533BB0r2XUKlxiSlSbVCLSUd3f2k7bxUxx9s6QPx8mWY0Nb7LDXh
- ROEsw3AE3+RUVkeiutPI0tRkxP0gZrLvvk7Mu01DfQ==
-X-Google-Smtp-Source: ABdhPJyru1ZxhrdLhgiWdGjkN1uAYJkvsnqlPq22GsPf6iLqWQi/M/gwclh+4l2zaYJKdqz7KszdfCqLPWWLYu+GxC8=
-X-Received: by 2002:a9f:3113:: with SMTP id m19mr2930373uab.77.1595490721549; 
- Thu, 23 Jul 2020 00:52:01 -0700 (PDT)
+ id 1jyWH9-0000N2-F5; Thu, 23 Jul 2020 08:08:24 +0000
+X-UUID: e10716b2af234dcca9f4f48e6912f557-20200723
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=iHKeR/AeryDDzrZa62FayPp2h6VezjXi9BL3bT7aMkY=; 
+ b=n6mdgpCqbBYSubyISsSRKuf03LEc0qWHqYL8X2b1Thwkz461JsFtxLy1ZYbx09xlC1GByxTXT9TmVXsC9PkG6aErS7QvMIeku+6/1SY5YT98x55ep9EdSKwRoDwzj4zmwPflbfn4S2p9xh2ePHflu5uF0r5eB1sg3MICWDgYRgk=;
+X-UUID: e10716b2af234dcca9f4f48e6912f557-20200723
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <wendell.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 821667457; Thu, 23 Jul 2020 00:08:15 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Jul 2020 01:08:14 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Jul 2020 16:08:13 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 23 Jul 2020 16:08:13 +0800
+Message-ID: <1595491694.17583.3.camel@mtkswgap22>
+Subject: Re: [PATCH 1/2] clk: Export clk_register_composite
+From: Wendell Lin <wendell.lin@mediatek.com>
+To: Stephen Boyd <sboyd@kernel.org>
+Date: Thu, 23 Jul 2020 16:08:14 +0800
+In-Reply-To: <159442720733.1987609.12625915294903304595@swboyd.mtv.corp.google.com>
+References: <1593588382-19049-1-git-send-email-wendell.lin@mediatek.com>
+ <1593588382-19049-2-git-send-email-wendell.lin@mediatek.com>
+ <159442720733.1987609.12625915294903304595@swboyd.mtv.corp.google.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-References: <1595400601-26220-1-git-send-email-weiyi.lu@mediatek.com>
- <1595400601-26220-4-git-send-email-weiyi.lu@mediatek.com>
- <CANMq1KC5i8GU2zMxk+NvY5hF7Qvd-Jx-+pvY2cXfqzb=X-BWRQ@mail.gmail.com>
- <1595473043.5077.8.camel@mtksdaap41>
-In-Reply-To: <1595473043.5077.8.camel@mtksdaap41>
-From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Thu, 23 Jul 2020 15:51:50 +0800
-Message-ID: <CANMq1KDzmeMcVQU=i89sa-B4EQbz6OxZP3tDasV-Q__qB_7_9g@mail.gmail.com>
-Subject: Re: [PATCH 3/4] clk: mediatek: Add configurable enable control to
- mtk_pll_data
-To: Weiyi Lu <weiyi.lu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200723_035204_750480_43B8D231 
-X-CRM114-Status: GOOD (  36.86  )
+X-CRM114-CacheID: sfid-20200723_040823_643876_39B38FE4 
+X-CRM114-Status: GOOD (  14.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,249 +85,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>,
- James Liao <jamesjj.liao@mediatek.com>, Stephen Boyd <sboyd@kernel.org>,
- lkml <linux-kernel@vger.kernel.org>, Ikjoon Jang <ikjn@chromium.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Wendell Lin <wendell.lin@mediatek.com>, linux-clk@vger.kernel.org,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Cc: wsd_upstream@mediatek.com, Weiyi Lu <weiyi.lu@mediatek.com>,
+ Michael Turquette <mturquette@baylibre.com>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 23, 2020 at 10:57 AM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
->
-> On Wed, 2020-07-22 at 16:51 +0800, Nicolas Boichat wrote:
-> > On Wed, Jul 22, 2020 at 2:50 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
-> > >
-> > > In all MediaTek PLL design, bit 0 of CON0 register is always
-> > > the enable bit.
-> > > However, there's a special case of usbpll on MT8192.
-> > > The enable bit of usbpll is moved to bit 2 of other register.
-> > > Add configurable en_reg and base_en_bit for enable control or
-> > > using the default if without setting in pll data.
-> > >
-> > > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> > > ---
-> > >  drivers/clk/mediatek/clk-mtk.h |  2 ++
-> > >  drivers/clk/mediatek/clk-pll.c | 26 ++++++++++++++++++++++----
-> > >  2 files changed, 24 insertions(+), 4 deletions(-)
-> > >
-> > > diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-> > > index c3d6756..8bb0b3d 100644
-> > > --- a/drivers/clk/mediatek/clk-mtk.h
-> > > +++ b/drivers/clk/mediatek/clk-mtk.h
-> > > @@ -233,6 +233,8 @@ struct mtk_pll_data {
-> > >         uint32_t pcw_chg_reg;
-> > >         const struct mtk_pll_div_table *div_table;
-> > >         const char *parent_name;
-> > > +       uint32_t en_reg;
-> > > +       uint8_t base_en_bit;
-> > >  };
-> > >
-> > >  void mtk_clk_register_plls(struct device_node *node,
-> > > diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-> > > index f440f2cd..b8ccd42 100644
-> > > --- a/drivers/clk/mediatek/clk-pll.c
-> > > +++ b/drivers/clk/mediatek/clk-pll.c
-> > > @@ -44,6 +44,7 @@ struct mtk_clk_pll {
-> > >         void __iomem    *tuner_en_addr;
-> > >         void __iomem    *pcw_addr;
-> > >         void __iomem    *pcw_chg_addr;
-> > > +       void __iomem    *en_addr;
-> > >         const struct mtk_pll_data *data;
-> > >  };
-> > >
-> > > @@ -56,7 +57,10 @@ static int mtk_pll_is_prepared(struct clk_hw *hw)
-> > >  {
-> > >         struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
-> > >
-> > > -       return (readl(pll->base_addr + REG_CON0) & CON0_BASE_EN) != 0;
-> > > +       if (pll->en_addr)
-> > > +               return (readl(pll->en_addr) & BIT(pll->data->base_en_bit)) != 0;
-> > > +       else
-> > > +               return (readl(pll->base_addr + REG_CON0) & CON0_BASE_EN) != 0;
-> > >  }
-> > >
-> > >  static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 fin,
-> > > @@ -251,6 +255,12 @@ static int mtk_pll_prepare(struct clk_hw *hw)
-> > >         r |= pll->data->en_mask;
-> > >         writel(r, pll->base_addr + REG_CON0);
-> > >
-> >
-> > This is not a new change, but I'm wondering if the asymmetry is
-> > intentional here, that is, prepare sets bit pll->data->en_mask of
-> > REG_CON0; unprepare clears CON0_BASE_EN of REG_CON0.
-> >
-> > With this patch, if pll->en_addr is set, you set both
-> > pll->data->en_mask _and_ pll->data->base_en_bit, and clear only
-> > pll->data->base_en_bit.
-> >
->
-> Hi Nicolas,
->
-> AFAIK, the asymmetry was intentional.
-> en_mask is actually a combination of divider enable mask and the pll
-> enable bit(CON0_BASE_EN).
-> Even without my patch, it still sets divider enable mask and en_bit, and
-> only clears en_bit.
-> You could see the pll_data in clk-mt8192.c of patch [4/4]
-> Take mainpll as an example,
-> the enable mask of mainpll is 0xff000001, where 0xff000000 is the
-> divider enable mask and 0x1 is the en_bit
->
-> For usbpll in special case, usbpll doesn't have divider enable mask on
-> MT8192 so I give nothing(0x00000000) in the en_mask field.
-> However, the main reason why I don't skip setting the en_mask of MT8192
-> usbpll is that I'd just like to reserve the divider enable mask for any
-> special plls with divider enable mask in near future.
+On Fri, 2020-07-10 at 17:26 -0700, Stephen Boyd wrote:
+> Quoting Wendell Lin (2020-07-01 00:26:21)
+> > clk_register_composite() will be used in mediatek's
+> > clock kernel module, so export it to GPL modules.
+> > 
+> > Signed-off-by: Wendell Lin <wendell.lin@mediatek.com>
+> > ---
+> >  drivers/clk/clk-composite.c |    1 +
+> >  1 file changed, 1 insertion(+)
+> > 
+> > diff --git a/drivers/clk/clk-composite.c b/drivers/clk/clk-composite.c
+> > index 7376f57..fb5cb4a 100644
+> > --- a/drivers/clk/clk-composite.c
+> > +++ b/drivers/clk/clk-composite.c
+> > @@ -360,6 +360,7 @@ struct clk *clk_register_composite(struct device *dev, const char *name,
+> >                 return ERR_CAST(hw);
+> >         return hw->clk;
+> >  }
+> > +EXPORT_SYMBOL(clk_register_composite);
+> 
+> Should be EXPORT_SYMBOL_GPL()
 
-Argh, I see, it's a bit of a can of worms, with many special cases...
+Got it, I'll fix it.
 
-So I played a bit with 3 examples.
-
-Current situation looks like this:
-
-8183 CLK_APMIXED_ARMPLL_LL
-  en_mask = 0x00000001
-  en_reg = 0
-  base_en_bit = 0
-
-prepare: REG_CON0 |= en_mask
-unprepare: REG_CON0 &= ~CON0_BASE_EN (BIT(1))
-
-8192 CLK_APMIXED_UNIVPLL
-  en_mask = 0xff000001
-  en_reg = 0x039c
-  base_en_bit = 0
-
-prepare:
-  REG_CON0 |= en_mask
-  en_reg |= base_en_bit
-unprepare:
-  en_reg &= ~base_en_bit
-
-8192 CLK_APMIXED_USBPLL
-  en_mask = 0x00000000
-  en_reg = 0x03cc
-  base_en_bit = 2
-
-prepare:
-  REG_CON0 |= en_mask (0)
-  en_reg |= base_en_bit
-unprepare:
-  en_reg &= ~base_en_bit
-
-And I think the logic could still be simplified by _not_ putting
-CON0_BASE_EN in en_mask, and updating the CON0 in 2 steps: first all
-the bits that are not CON0_BASE_EN, then CON0_BASE_EN. Of course I
-assume that's it's fine to do so, but I have no idea.
-
-register_pll() {
-   if (!en_addr) {
-     en_reg = REG_CON0
-     base_en_bit = CON0_BASE_EN
-   }
-}
-
-prepare() {
-    REG_CON0 |= en_mask
-    en_reg |= base_en_bit
-}
-
-unprepare() {
-    en_reg &= ~base_en_bit
-}
-
-Then the new clock data:
-
-8183 CLK_APMIXED_ARMPLL_LL
-  en_mask = 0x00000000 (CON0_BASE_EN is implicit, but other bits could be set)
-  en_reg = 0
-  base_en_bit = 0
-
-prepare: {
-    REG_CON0 |= en_mask (0x00000000, here, we can skip, but other bits
-could be set)
-    en_reg |= base_en_bit (REG_CON0 |= CON0_BASE_EN)
-}
-unprepare: en_reg &= ~base_en_bit (REG_CON0 &= ~CON0_BASE_EN)
-
-8192 CLK_APMIXED_UNIVPLL
-  en_mask = 0xff000001 (Note the bit 1 is _not_ dropped here, as it
-needs to be set too)
-  en_reg = 0x039c
-  base_en_bit = 0
-(same as above)
-
-8192 CLK_APMIXED_USBPLL
-  en_mask = 0x00000000
-  en_reg = 0x03cc
-  base_en_bit = 2
-(same as above)
-
-Now, maybe this is also a bit overcomplicated. Maybe a simpler
-solution is just to add a comment in prepare that "r |=
-pll->data->en_mask;" is meant to include CON0_BASE_EN in most cases,
-and then the code could be ok as-is (just to make sure that the next
-person who looks at this code does not think there is a bug...).
-
->
-> > > +       if (pll->en_addr) {
-> > > +               r = readl(pll->en_addr);
-> > > +               r |= BIT(pll->data->base_en_bit);
-> > > +               writel(r, pll->en_addr);
-> > > +       }
-> > > +
-> > >         __mtk_pll_tuner_enable(pll);
-> > >
-> > >         udelay(20);
-> > > @@ -277,9 +287,15 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
-> > >
-> > >         __mtk_pll_tuner_disable(pll);
-> > >
-> > > -       r = readl(pll->base_addr + REG_CON0);
-> > > -       r &= ~CON0_BASE_EN;
-> > > -       writel(r, pll->base_addr + REG_CON0);
-> > > +       if (pll->en_addr) {
-> > > +               r = readl(pll->en_addr);
-> > > +               r &= ~BIT(pll->data->base_en_bit);
-> > > +               writel(r, pll->en_addr);
-> > > +       } else {
-> > > +               r = readl(pll->base_addr + REG_CON0);
-> > > +               r &= ~CON0_BASE_EN;
-> > > +               writel(r, pll->base_addr + REG_CON0);
-> > > +       }
-> > >
-> > >         r = readl(pll->pwr_addr) | CON0_ISO_EN;
-> > >         writel(r, pll->pwr_addr);
-> > > @@ -321,6 +337,8 @@ static struct clk *mtk_clk_register_pll(const struct mtk_pll_data *data,
-> > >                 pll->tuner_addr = base + data->tuner_reg;
-> > >         if (data->tuner_en_reg)
-> > >                 pll->tuner_en_addr = base + data->tuner_en_reg;
-> > > +       if (data->en_reg)
-> > > +               pll->en_addr = base + data->en_reg;
-> >
-> > If the answer to my question above holds (asymmetry is not
-> > intentional), this patch/the code could be simplified a lot if you
-> > also added a pll->en_bit member, and, here, did this:
-> >
-> > if (pll->en_reg) {
-> >    pll->en_addr = base + data->en_reg;
-> >    pll->end_bit = data->en_bit;
-> > } else {
-> >    pll->en_addr = pll->base_addr + REG_CON0;
-> >    pll->en_bit = CON0_BASE_EN;
-> > }
-> >
-> > >         pll->hw.init = &init;
-> > >         pll->data = data;
-> > >
-> > > --
-> > > 1.8.1.1.dirty
->
+Regards,
+Wendell
 
 _______________________________________________
 Linux-mediatek mailing list
