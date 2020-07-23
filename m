@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,
 	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D73C3C433E8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 15:41:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 56A52C433E4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 15:42:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A614D206D8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 15:41:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2281F206D8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 15:42:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Sz5E6h6D";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="SkYe2Adf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A614D206D8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Gz6BI6Z7";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ocSI4ZH0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2281F206D8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,68 +27,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zmxO65IBD8Ce4CNggVYj5PBj5nHitSF8ClQuAJd1D60=; b=Sz5E6h6D2sFXUgCiktdr7r8na
-	Nq8sogMlOH5WYXt60623vxCk1fq5ntaPvuza7Aq4hpoOCc98uz3w3xSqNmZEi12QvfvswX+M7vFql
-	W/cT74ECRIwaUoYA8C4uSBWD9zeqzhn5QiESC9cqBbt1Lk/e1eVZvOrjLpxayulzWB74HG86GudTL
-	3al3khCMMQqDgspsfL0sX0DOV6xaznqtNJ5xPFKwJfLE2Yvvjzacf3k93aYlyKRsGA7UCxrfaL3Zy
-	YsYE3fAXcK+r+uijE5KkarCJQdLKT/S8FhxsM5EBiBId+Hpzn10se9ohWSCSHtdvqlrJHkpPhQkSc
-	c3RtNTbsQ==;
+	 bh=4gqGzQCGXXFVB7tup6rZ71OpnxcDOD/ApiiNq/FTTv8=; b=Gz6BI6Z7khY6BEzqIv9QfxhHX
+	NQ/ik/sUtkInhIv6lHNGjdHpceS8yP3l0nYtrK81nd+ZPU6O8/wNNsb7/wVIT22AWsaoXIvEMCWeH
+	pbMkylU/gl9HUgw80dA9xubsINEv+l9SQMPc35/xyr26PGFddpD2VBnP9EbrtQFnrSA0FYfZ1lYtf
+	UQjv+RX+BjsmmcAIpD/nB9H9SJXHPFbUD7Jb/5K00OVyJgOV4pOt/+JDvhn5O8jWKjT3vEzFgUq1t
+	gAb7J3O4cbB7WcdzYNlTTpHo+fKv40zVwmjX7BIJs3wsZ/W0ca0f+EhgdwOaXaghkJVeykNDr99gx
+	QAtrLF1kw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jydLq-0004AE-5S; Thu, 23 Jul 2020 15:41:42 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1jydMl-0004TX-PH; Thu, 23 Jul 2020 15:42:39 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jydLo-00049g-En; Thu, 23 Jul 2020 15:41:41 +0000
-Received: by mail-wr1-x443.google.com with SMTP id r2so523759wrs.8;
- Thu, 23 Jul 2020 08:41:40 -0700 (PDT)
+ id 1jydMZ-0004Ne-M4; Thu, 23 Jul 2020 15:42:28 +0000
+Received: by mail-wm1-x341.google.com with SMTP id x5so4820528wmi.2;
+ Thu, 23 Jul 2020 08:42:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=AcBqtfKEF6k5xr/VSNWblkqKGVnRPP3ztKfalGbMQTA=;
- b=SkYe2AdfwGFlttVB8ifdFjjVZf8HGW9GVwFpei2V5+07UZ2DNP+x0zYdNcOp8FUCsF
- gNXqpKEzsxBa+Qu3MJcUipZBHqhct/OgxsNrCmknYegj38zb4BF2SLJq3N6WGMTWmraB
- B68nHR+yUFADlOABBYYUgvoAkPtscNgsZOPSOjA4kSDdAHEAMlH5xjOW4Li3I3Ulpxw8
- NpDGKc4G1rDb3mUtFK0bLrfZt7zexmcZSZBdtVbhxJgFeyBs7EUV/734GMksnuNBjAF6
- gSyn+dIOifPnVGrHxRnFVBYWGXbrkoW77cJycp0pqhWeA+sedQIrQ1DJF+nHSyDhmOw/
- Yrvg==
+ bh=WmpEF3wAK9MyQIycfqRtOyPcqi5ldyWuyIoAHJsmiPk=;
+ b=ocSI4ZH0PyYIM68bnC8T89tdDC4qku8Q6bns0IbSeRi1ZgVm3N/GxGxVS9OvbcFBTz
+ oN7uSgt2lKmq43lzIsDXJYDBJAwxxzPHxYg2X68/7Y4M6QFcG5OpgmJQJcIwmCwq8Pbn
+ X4yNeIg2evOKg9vwfUFM8w8zPvrBzqIsA/CLeb0RYbFvC5tedw0VnpZ+y5W8cdkQvVQB
+ B4qW9aI40iuWv9mIQka7e5M7rF5xN9BydSf+BcZtfkZ1XkUzYMg7gRBGOk5N+mR+G7fn
+ Tvq7pFmLlgjBzYZ7VZb3Jn4W762go9m09GdcVOeNhbmfyH3c/Bf1FddziFKl6cFlCC8U
+ bv2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=AcBqtfKEF6k5xr/VSNWblkqKGVnRPP3ztKfalGbMQTA=;
- b=o7dJgSAa3mMhpn0LxauP0/4gR9oiDnwep7J3L00F3ssGhI86Lfq1nAN9qM9Syog9vB
- hn8k6KFMHvEOv/9plCWDqWADF0l7d+RBsyaCeoSANLh+HAiZ9iDr+y8i5dRmmJIX2onV
- FhmYXmdNs/00aPWmRhI989+dnCih30A2nE+Hzx/akbNSNpaMtg5+fp1f7LGxRcOw3mBo
- ClADapV1CqsR+Yg73oYjA12XNQF9x6OhsJAxNyI/JA1ur5oilSCRE9B5059IOZwxeLCo
- +q0fVDfA4hSxfF7+4iiNHcG1k/dNt75H/qYCJerpUPWaTNv+ML6u7nl9Rn2JAfxshugB
- OfEQ==
-X-Gm-Message-State: AOAM530KzsbuYqCV1M6CNGqmypSdRlP4FnO5SOCk2ReS8Z/w3/mQQhK9
- A3Q0Vq9Cw14zttwXGC3eM1jobcF+8MQ=
-X-Google-Smtp-Source: ABdhPJxo8GvOapToh6OIkdSOCYVuIFV3tlBpD96mQIzsqG+h/NUdrRmgV0G9vYZUqr5+YsUfvS6bxA==
-X-Received: by 2002:adf:eccd:: with SMTP id s13mr4915144wro.217.1595518898886; 
- Thu, 23 Jul 2020 08:41:38 -0700 (PDT)
+ bh=WmpEF3wAK9MyQIycfqRtOyPcqi5ldyWuyIoAHJsmiPk=;
+ b=f4A9RVX20M0mV/1NQF7vO1VVibq3lLUYiz2IvLl1SOrCekxcTVktnB9+63uuIJML8c
+ mGjyn+Dee4wSnSRBuN+v/FyN+AbkFWPFrcPGjIn6wqM+XUtLL2o/o4EvAHCHOin3sYpB
+ ixAuZi60eUPh3g1CE7pOs+yRv4Fu8As3kiMM5JZwGoM00/sSYeV4WXIBwATwQOSF+0AQ
+ aGXNmyVOCZwi2uWOzpTr0NUbXxMCEiKfRUgm+hA5XBTDDQVNLSQRXx50qn64gVCcy0L5
+ EO/cAG8KU3r4ad3Zt5TOxMSkdATz5O6c3stWuFH0cN8CuntKdB0bPLQATsxI0OCP8Ddn
+ JMQQ==
+X-Gm-Message-State: AOAM532t1yGFJEzh87ATSsfAkzfjHlLWBVeAsfv5sp6hn68rwzhWypmC
+ r5EhHWbOkUD6KftHiKMwkAxIMF8R6h8=
+X-Google-Smtp-Source: ABdhPJyX2JfGZsL+cpAXob0aVplIVs631ETGzU1KEWsj2v12UjMXeteDcjRnFvXcYr5gn4WVKyOiOQ==
+X-Received: by 2002:a1c:49c6:: with SMTP id w189mr2301255wma.97.1595518946327; 
+ Thu, 23 Jul 2020 08:42:26 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.122.158])
- by smtp.gmail.com with ESMTPSA id o7sm4169352wrv.50.2020.07.23.08.41.37
+ by smtp.gmail.com with ESMTPSA id d18sm4238353wrj.8.2020.07.23.08.42.24
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Jul 2020 08:41:38 -0700 (PDT)
-Subject: Re: [v7, PATCH 4/7] dt-bindings: mediatek: add rdma_fifo_size
- description for mt8183 display
+ Thu, 23 Jul 2020 08:42:25 -0700 (PDT)
+Subject: Re: [v7, PATCH 5/7] arm64: dts: add display nodes for mt8183
 To: Yongqiang Niu <yongqiang.niu@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
  Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>
 References: <1595469798-3824-1-git-send-email-yongqiang.niu@mediatek.com>
- <1595469798-3824-5-git-send-email-yongqiang.niu@mediatek.com>
+ <1595469798-3824-6-git-send-email-yongqiang.niu@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <b3f97fc8-d95e-8245-1178-9a70353d379c@gmail.com>
-Date: Thu, 23 Jul 2020 17:41:36 +0200
+Message-ID: <a8a7232c-6c2b-b606-2091-da540e5cb79e@gmail.com>
+Date: Thu, 23 Jul 2020 17:42:24 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <1595469798-3824-5-git-send-email-yongqiang.niu@mediatek.com>
+In-Reply-To: <1595469798-3824-6-git-send-email-yongqiang.niu@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200723_114140_550427_FC2BB2FA 
-X-CRM114-Status: GOOD (  18.87  )
+X-CRM114-CacheID: sfid-20200723_114227_784460_12A45EAF 
+X-CRM114-Status: GOOD (  17.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,50 +111,139 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 23/07/2020 04:03, Yongqiang Niu wrote:
-> Update device tree binding document for rdma_fifo_size
+> This patch add display nodes for mt8183
 > 
 
-Please explain better what you are doing in the patch.
-Also DT binding patches should normally go as the first of a series, as this 
-helps Rob to review them.
+In comparison, DTS patches should go last in a series as you will need the 
+driver patches to make it work.
 
 Regards,
 Matthias
 
 > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 > ---
->   .../devicetree/bindings/display/mediatek/mediatek,disp.txt | 14 ++++++++++++++
->   1 file changed, 14 insertions(+)
+>   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 98 ++++++++++++++++++++++++++++++++
+>   1 file changed, 98 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> index b91e709..e6bbe32 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> @@ -66,6 +66,11 @@ Required properties (DMA function blocks):
->     argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
->     for details.
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 7b781eb..440cf22 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -31,6 +31,11 @@
+>   		i2c9 = &i2c9;
+>   		i2c10 = &i2c10;
+>   		i2c11 = &i2c11;
+> +		ovl0 = &ovl0;
+> +		ovl_2l0 = &ovl_2l0;
+> +		ovl_2l1 = &ovl_2l1;
+> +		rdma0 = &rdma0;
+> +		rdma1 = &rdma1;
+>   	};
 >   
-> +Optional properties (RDMA function blocks):
-> +- mediatek,rdma_fifo_size: rdma fifo size may be different even in same SOC, add this
-> +  property to the corresponding rdma
-> +  the value is the Max value which defined in hardware data sheet.
-> +
->   Examples:
+>   	cpus {
+> @@ -707,9 +712,102 @@
+>   		mmsys: syscon@14000000 {
+>   			compatible = "mediatek,mt8183-mmsys", "syscon";
+>   			reg = <0 0x14000000 0 0x1000>;
+> +			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
+>   			#clock-cells = <1>;
+>   		};
 >   
->   mmsys: clock-controller@14000000 {
-> @@ -207,3 +212,12 @@ od@14023000 {
->   	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
->   	clocks = <&mmsys CLK_MM_DISP_OD>;
->   };
+> +		ovl0: ovl@14008000 {
+> +			compatible = "mediatek,mt8183-disp-ovl";
+> +			reg = <0 0x14008000 0 0x1000>;
+> +			interrupts = <GIC_SPI 225 IRQ_TYPE_LEVEL_LOW>;
+> +			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
+> +			clocks = <&mmsys CLK_MM_DISP_OVL0>;
+> +		};
 > +
-> +rdma1: rdma@1400c000 {
-> +	compatible = "mediatek,mt8183-disp-rdma";
-> +	reg = <0 0x1400c000 0 0x1000>;
-> +	interrupts = <GIC_SPI 229 IRQ_TYPE_LEVEL_LOW>;
-> +	power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
-> +	clocks = <&mmsys CLK_MM_DISP_RDMA1>;
-> +	mediatek,rdma_fifo_size = <2048>;
-> +};
+> +		ovl_2l0: ovl@14009000 {
+> +			compatible = "mediatek,mt8183-disp-ovl-2l";
+> +			reg = <0 0x14009000 0 0x1000>;
+> +			interrupts = <GIC_SPI 226 IRQ_TYPE_LEVEL_LOW>;
+> +			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
+> +			clocks = <&mmsys CLK_MM_DISP_OVL0_2L>;
+> +		};
+> +
+> +		ovl_2l1: ovl@1400a000 {
+> +			compatible = "mediatek,mt8183-disp-ovl-2l";
+> +			reg = <0 0x1400a000 0 0x1000>;
+> +			interrupts = <GIC_SPI 227 IRQ_TYPE_LEVEL_LOW>;
+> +			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
+> +			clocks = <&mmsys CLK_MM_DISP_OVL1_2L>;
+> +		};
+> +
+> +		rdma0: rdma@1400b000 {
+> +			compatible = "mediatek,mt8183-disp-rdma";
+> +			reg = <0 0x1400b000 0 0x1000>;
+> +			interrupts = <GIC_SPI 228 IRQ_TYPE_LEVEL_LOW>;
+> +			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
+> +			clocks = <&mmsys CLK_MM_DISP_RDMA0>;
+> +			mediatek,rdma_fifo_size = <5120>;
+> +		};
+> +
+> +		rdma1: rdma@1400c000 {
+> +			compatible = "mediatek,mt8183-disp-rdma";
+> +			reg = <0 0x1400c000 0 0x1000>;
+> +			interrupts = <GIC_SPI 229 IRQ_TYPE_LEVEL_LOW>;
+> +			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
+> +			clocks = <&mmsys CLK_MM_DISP_RDMA1>;
+> +			mediatek,rdma_fifo_size = <2048>;
+> +		};
+> +
+> +		color0: color@1400e000 {
+> +			compatible = "mediatek,mt8183-disp-color",
+> +				     "mediatek,mt8173-disp-color";
+> +			reg = <0 0x1400e000 0 0x1000>;
+> +			interrupts = <GIC_SPI 231 IRQ_TYPE_LEVEL_LOW>;
+> +			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
+> +			clocks = <&mmsys CLK_MM_DISP_COLOR0>;
+> +		};
+> +
+> +		ccorr0: ccorr@1400f000 {
+> +			compatible = "mediatek,mt8183-disp-ccorr";
+> +			reg = <0 0x1400f000 0 0x1000>;
+> +			interrupts = <GIC_SPI 232 IRQ_TYPE_LEVEL_LOW>;
+> +			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
+> +			clocks = <&mmsys CLK_MM_DISP_CCORR0>;
+> +		};
+> +
+> +		aal0: aal@14010000 {
+> +			compatible = "mediatek,mt8183-disp-aal",
+> +				     "mediatek,mt8173-disp-aal";
+> +			reg = <0 0x14010000 0 0x1000>;
+> +			interrupts = <GIC_SPI 233 IRQ_TYPE_LEVEL_LOW>;
+> +			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
+> +			clocks = <&mmsys CLK_MM_DISP_AAL0>;
+> +		};
+> +
+> +		gamma0: gamma@14011000 {
+> +			compatible = "mediatek,mt8183-disp-gamma",
+> +				     "mediatek,mt8173-disp-gamma";
+> +			reg = <0 0x14011000 0 0x1000>;
+> +			interrupts = <GIC_SPI 234 IRQ_TYPE_LEVEL_LOW>;
+> +			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
+> +			clocks = <&mmsys CLK_MM_DISP_GAMMA0>;
+> +		};
+> +
+> +		dither0: dither@14012000 {
+> +			compatible = "mediatek,mt8183-disp-dither";
+> +			reg = <0 0x14012000 0 0x1000>;
+> +			interrupts = <GIC_SPI 235 IRQ_TYPE_LEVEL_LOW>;
+> +			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
+> +			clocks = <&mmsys CLK_MM_DISP_DITHER0>;
+> +		};
+> +
+> +		mutex: mutex@14016000 {
+> +			compatible = "mediatek,mt8183-disp-mutex";
+> +			reg = <0 0x14016000 0 0x1000>;
+> +			interrupts = <GIC_SPI 217 IRQ_TYPE_LEVEL_LOW>;
+> +			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
+> +		};
+> +
+>   		smi_common: smi@14019000 {
+>   			compatible = "mediatek,mt8183-smi-common", "syscon";
+>   			reg = <0 0x14019000 0 0x1000>;
 > 
 
 _______________________________________________
