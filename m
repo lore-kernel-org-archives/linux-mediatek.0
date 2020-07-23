@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2B1CCC433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 07:42:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B443AC433E5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 07:43:04 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E31FC20714
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 07:42:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7E51420714
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 07:43:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3XkezTgt";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="vE6s8L61"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E31FC20714
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="z16iFPPe";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="fEBDmx/8"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7E51420714
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EIQv0saoUTNTBwQzXyawjmLWOnp+Ok19FTXYifFLGEU=; b=3XkezTgt2nlsAFzkixZewNkjg/
-	iYzr7x+YYXB2OBnDrkZ/m02kc4Pu8PcLLWAouYeslEMb81JLzARiUZ+kA9vMmAPstCPgVCLGX0gPE
-	bLXm+5f7ZjxOe2K/95vu4KMslubMaPOttUSNJEGFuadf71E5Vk95VCKGCQhIz9N6zHLEyp/5brRAX
-	PYGj0h4Si53pSWi6+okmf3XtYLfAs/uG4Pz2WqYUXvs9d6sHc9zzsD81Ej4l2J9l+Y4A5oXl5oKSn
-	Zl3nyygvYG0GTKC3hZrijFtLK5kWDUGvqBj2+aroIQ/Ls8PKw4s64y5VHmvXDMV4ktGaP2TK+ZJda
-	MiW06c9w==;
+	bh=Y43ndReCq3NVssnUxJo7yoG0aq/3/Joytsjq49NN+nQ=; b=z16iFPPevvhl07aXBkN9S/+59l
+	MucxrMr8PAOf8OsxPUK2QxEk8yUktw6/SQhMiLMWWOzjQEoCOo3rgBG4D/BhomkBD92Ypleio5F8H
+	4kZKM9kxsdIe+7DgJ7QdC05tc7cvBEHQDF9epfi2XN7kGkU18FrkYrbSZxSuBg3s7TY1qdAXCf5nG
+	D9DMhVMV2sLRjrDHQJBza+CNfY5JaFF/g+RSBtA+WzTE6ckoK1IMu7hWEKTfG5qnwAgAu0FJHbMzH
+	OiQELPi1RzZY0Psch/mvMHoPTOh2SPAiLNt2lmTAdqd2pZq26X2aSqj14bq6uUB9ar8VWITvPyw+M
+	axWIp25g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyVsF-00079E-Vq; Thu, 23 Jul 2020 07:42:40 +0000
+	id 1jyVsT-0007I0-JA; Thu, 23 Jul 2020 07:42:53 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyVp9-0005DL-Q0; Thu, 23 Jul 2020 07:39:30 +0000
+ id 1jyVpJ-0005I2-Q9; Thu, 23 Jul 2020 07:39:38 +0000
 Received: from kozik-lap.mshome.net (unknown [194.230.155.213])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D7E82206C1;
- Thu, 23 Jul 2020 07:39:21 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 2333E20888;
+ Thu, 23 Jul 2020 07:39:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595489966;
- bh=e4V2Qo20TwT4HxLyr4pTxaZfaaoAjPuiGdmfYt7qXvc=;
+ s=default; t=1595489976;
+ bh=Q+VpYpLjWIwZ0g8o4mw+vEngonlHZ5dsYcy1gteiV5w=;
  h=From:List-Id:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=vE6s8L61G8Pzi4VzQq8GsvVBmCEsoIW53mxWTNYFW9ubxg3xdyW32SFWX1AD8DqPZ
- SeN2LzObiFmWy9xhErZgl1aI9SDLHmrhsPlLYIm6fC5uOgYY+eUxdjS9cUkR4vSccX
- lKh4YdBiage+sFX8iJKmPiyT7c7bYzAHh5F5jIo4=
+ b=fEBDmx/81iUUTlDt+yRSihyz14ccJ3hurkzqj3rShk1Az4IuFlr6Vqze8o8ZbMzdH
+ hJA7yHBIVT11ow5yNFwciEqwZTI/V8BFtIhYs5bpm08zQEyqhiJ+I3yV34H7CktEpI
+ YYOepVrrOkkt1+dVza4c2U+8d/FQxJZOkqpV8NfE=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 List-Id: <soc.lore.kernel.org>
 To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
@@ -63,15 +63,15 @@ To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  Jonathan Hunter <jonathanh@nvidia.com>, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-omap@vger.kernel.org, linux-tegra@vger.kernel.org
-Subject: [PATCH 17/23] memory: brcmstb_dpfe: Remove unneeded braces
-Date: Thu, 23 Jul 2020 09:37:38 +0200
-Message-Id: <20200723073744.13400-18-krzk@kernel.org>
+Subject: [PATCH 19/23] memory: omap-gpmc: Enclose macro statements in do-while
+Date: Thu, 23 Jul 2020 09:37:40 +0200
+Message-Id: <20200723073744.13400-20-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200723073744.13400-1-krzk@kernel.org>
 References: <20200723073744.13400-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200723_033929_552678_DD4E1C56 
-X-CRM114-Status: GOOD (  15.24  )
+X-CRM114-CacheID: sfid-20200723_033937_972221_049B52CB 
+X-CRM114-Status: GOOD (  14.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,30 +92,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Single statement blocks don't need braces.  Fixes checkpatch warning:
+do-while is a preferred way for complex macros because of safety
+reasons.  This fixes checkpatch error:
 
-    WARNING: braces {} are not necessary for single statement blocks
+    ERROR: Macros starting with if should be enclosed by a do - while
+        loop to avoid possible if/else logic defects
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
- drivers/memory/brcmstb_dpfe.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/memory/omap-gpmc.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/memory/brcmstb_dpfe.c b/drivers/memory/brcmstb_dpfe.c
-index 5942380f343b..604f0e3fb112 100644
---- a/drivers/memory/brcmstb_dpfe.c
-+++ b/drivers/memory/brcmstb_dpfe.c
-@@ -379,9 +379,8 @@ static void __iomem *get_msg_ptr(struct brcmstb_dpfe_priv *priv, u32 response,
- 	void __iomem *ptr = NULL;
+diff --git a/drivers/memory/omap-gpmc.c b/drivers/memory/omap-gpmc.c
+index c158b6cae9a9..bb85aa56d247 100644
+--- a/drivers/memory/omap-gpmc.c
++++ b/drivers/memory/omap-gpmc.c
+@@ -635,10 +635,12 @@ static int set_gpmc_timing_reg(int cs, int reg, int st_bit, int end_bit, int max
+ 	return 0;
+ }
  
- 	/* There is no need to use this function for API v3 or later. */
--	if (unlikely(priv->dpfe_api->version >= 3)) {
-+	if (unlikely(priv->dpfe_api->version >= 3))
- 		return NULL;
--	}
+-#define GPMC_SET_ONE_CD_MAX(reg, st, end, max, field, cd)  \
+-	if (set_gpmc_timing_reg(cs, (reg), (st), (end), (max), \
+-	    t->field, (cd), #field) < 0)                       \
+-		return -1
++#define GPMC_SET_ONE_CD_MAX(reg, st, end, max, field, cd)		\
++	do {								\
++		if (set_gpmc_timing_reg(cs, (reg), (st), (end), (max),	\
++		    t->field, (cd), #field) < 0)			\
++			return -1;					\
++	} while (0)
  
- 	msg_type = (response >> DRAM_MSG_TYPE_OFFSET) & DRAM_MSG_TYPE_MASK;
- 	offset = (response >> DRAM_MSG_ADDR_OFFSET) & DRAM_MSG_ADDR_MASK;
+ #define GPMC_SET_ONE(reg, st, end, field) \
+ 	GPMC_SET_ONE_CD_MAX(reg, st, end, 0, field, GPMC_CD_FCLK)
 -- 
 2.17.1
 
