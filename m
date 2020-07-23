@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B52C0C43478
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 03:07:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DB4BBC43619
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 03:07:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6617A2084D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 03:07:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AC54220825
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 03:07:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="J2Sh2eAc";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="bbRkK9Hp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6617A2084D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rNNHSN4x";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qPsvsZsa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC54220825
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,54 +27,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Zc5dQanp4CbWu9Z8BVyG3tTtOq6sbqnPlQ9qf/Au1HM=; b=J2Sh2eAcZahrr2ftWyMGFJdvU
-	fAa9Eq5f+HX3KZJV3r/HCuyosLE1mCa6jnhCQTCrYw1NnYo9zKMfrtsJ1YG6BaK40EgFVbTM+x4Dm
-	cepcQTkoGSH0u2ltU5kOu9W8+a/fIxrg2A3yKAV2v0lEOTZh1/NeG55LcxyILws/mbTyU4Kw06F47
-	jCkx287m+huUUo5Q3OAyjUjcvAmckzdmyx5JDASSCgekrZeYe/WASZVNv9zYuiZMlJ1tsfdeqHQ1L
-	CcpfoqEGuNyx7wfTUKM+dggP1kruzARMbtIgvNdmM7brSM1EqQIvL1FHkSsNJwTdia4jiz/vadOYZ
-	FYXNbrQnw==;
+	 bh=DiLgzsri9LICWQDuac+ueQcdwtgcZf7m3gw772XDXaQ=; b=rNNHSN4xyq0cKTVc7RHOeqsXn
+	rdAu/iapBZ6otcfrXWF/WEPqCwRfSYVfQZQC6cZaj/5CDmBDsFF1ibaCPseh4/FGar+iaJa8YmKKM
+	B4wrE9G6spRi4cmAeDnywVErJxSZPXJOuLrQ1nW0chTbKpO7TtlfqBtJgnc4iMoOoYMy+145fqjKe
+	vA3aILcP4yhd3+AiRqO1T1Ttmsb3ZEnoeyzjUvEjLVK2CPk6Mc8P0NZLusnCIwU/iLPOybnRZXaKs
+	c9OmOpal8+RC9j1TejDD7QedUflImD6hq2jB0fPtsLp+qGlIeF1LDRf4a/Xs0A/klfoYfwIjuf+eQ
+	3egd72KVg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyRZc-0001ia-JK; Thu, 23 Jul 2020 03:07:08 +0000
+	id 1jyRZx-0001u7-Ap; Thu, 23 Jul 2020 03:07:29 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyRYn-0001Ci-I1; Thu, 23 Jul 2020 03:06:21 +0000
-X-UUID: 09fa8c66bcc5487c92880604d47d7f3a-20200722
+ id 1jyRYu-0001LR-Uz; Thu, 23 Jul 2020 03:06:26 +0000
+X-UUID: eb64ee6909a74125a71533ad9b161523-20200722
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=cZZKLjLUqA7lu/jFmHD2bgqKPtFaBSRp1fqq2KtRdZ4=; 
- b=bbRkK9HpiZCEiqyiN3IrCGuJ8vJIicR9+GYSC3AqUf/8n/LWSLVai1i8VazX/XfTpbHpKDFrFhj2W10gRHYxzOykdqD7iXwI7aVlDu0lEyZf31Bc8kxmGlOpqlDkojx0JhIXThzRSGhr5XfuarXXjgpGAtapbBmJno2UuRrN43Q=;
-X-UUID: 09fa8c66bcc5487c92880604d47d7f3a-20200722
+ bh=5NgUnUMcRy8Q2wsFxSIxDCVB6qlXDJIrkJNBYcNYcys=; 
+ b=qPsvsZsaHf7eRcL4hflZ4C97gJAxrWwVg1mnbVDB3orntYgioHvbTUqlaYkecsxxf2Bic8xdLQqu9aiZZHoXr88bHBdeSRRlOL/Hk+IzxqQkU/Xz5agJJpm20XZhJlHBY5wXKwu2Z5/NTRAxbq6czBzBUgxnm9ejRot4gAU1beE=;
+X-UUID: eb64ee6909a74125a71533ad9b161523-20200722
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <xia.jiang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 975464803; Wed, 22 Jul 2020 19:06:15 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 22 Jul 2020 20:06:13 -0700
+ with ESMTP id 790382053; Wed, 22 Jul 2020 19:06:21 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 22 Jul 2020 20:06:19 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Jul 2020 11:06:12 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Jul 2020 11:06:18 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 23 Jul 2020 11:06:08 +0800
+ Transport; Thu, 23 Jul 2020 11:06:09 +0800
 From: Xia Jiang <xia.jiang@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
  <mchehab+samsung@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
  Brugger" <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>
-Subject: [PATCH v10 08/28] media: platform: Add mechanism to handle jpeg
- hardware's locking up
-Date: Thu, 23 Jul 2020 11:04:31 +0800
-Message-ID: <20200723030451.5616-9-xia.jiang@mediatek.com>
+Subject: [PATCH v10 09/28] media: platform: Cancel the last frame handling flow
+Date: Thu, 23 Jul 2020 11:04:32 +0800
+Message-ID: <20200723030451.5616-10-xia.jiang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200723030451.5616-1-xia.jiang@mediatek.com>
 References: <20200723030451.5616-1-xia.jiang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200722_230617_818351_937EA7EA 
-X-CRM114-Status: GOOD (  13.41  )
+X-CRM114-CacheID: sfid-20200722_230625_178531_AD8775FD 
+X-CRM114-Status: GOOD (  13.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,105 +97,110 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There is a delayed work scheduled before starting the hardware and
-canceled in the interrupt handler. If the delayed work is executed, it
-resets the hardware and reports the failure to V4L2, so that the
-execution can continue from next frames.
+There is no need to queue an empty buffer for signaling a last frame,
+because all frames are separate from each other in JPEG.
 
+Reviewed-by: Tomasz Figa <tfiga@chromium.org>
 Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
 ---
-v10: new add patch
+v10: delete mtk_jpeg_qbuf()
 ---
- .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 25 +++++++++++++++++++
- .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |  4 +++
- 2 files changed, 29 insertions(+)
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 46 +------------------
+ 1 file changed, 2 insertions(+), 44 deletions(-)
 
 diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index ee4aaf618551..9baeeacb4452 100644
+index 9baeeacb4452..ffb486e537b6 100644
 --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
 +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -816,6 +816,9 @@ static void mtk_jpeg_device_run(void *priv)
- 	if (ret < 0)
- 		goto dec_end;
+@@ -55,15 +55,9 @@ static struct mtk_jpeg_fmt mtk_jpeg_formats[] = {
  
-+	schedule_delayed_work(&jpeg->job_timeout_work,
-+			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
-+
- 	mtk_jpeg_set_dec_src(ctx, &src_buf->vb2_buf, &bs);
- 	if (mtk_jpeg_set_dec_dst(ctx, &jpeg_src_buf->dec_param, &dst_buf->vb2_buf, &fb))
- 		goto dec_end;
-@@ -911,6 +914,8 @@ static irqreturn_t mtk_jpeg_dec_irq(int irq, void *priv)
- 	u32 dec_ret;
- 	int i;
+ #define MTK_JPEG_NUM_FORMATS ARRAY_SIZE(mtk_jpeg_formats)
  
-+	cancel_delayed_work(&jpeg->job_timeout_work);
-+
- 	dec_ret = mtk_jpeg_dec_get_int_status(jpeg->dec_reg_base);
- 	dec_irq_ret = mtk_jpeg_dec_enum_result(dec_ret);
- 	ctx = v4l2_m2m_get_curr_priv(jpeg->m2m_dev);
-@@ -1066,6 +1071,25 @@ static int mtk_jpeg_clk_init(struct mtk_jpeg_dev *jpeg)
- 	return PTR_ERR_OR_ZERO(jpeg->clk_jdec_smi);
- }
- 
-+static void mtk_jpeg_job_timeout_work(struct work_struct *work)
-+{
-+	struct mtk_jpeg_dev *jpeg = container_of(work, struct mtk_jpeg_dev,
-+						 job_timeout_work.work);
-+	struct mtk_jpeg_ctx *ctx;
-+	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-+
-+	ctx = v4l2_m2m_get_curr_priv(jpeg->m2m_dev);
-+	src_buf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
-+	dst_buf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
-+
-+	mtk_jpeg_dec_reset(jpeg->dec_reg_base);
-+
-+	pm_runtime_put(jpeg->dev);
-+
-+	v4l2_m2m_buf_done(src_buf, VB2_BUF_STATE_ERROR);
-+	v4l2_m2m_buf_done(dst_buf, VB2_BUF_STATE_ERROR);
-+	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
-+}
- static int mtk_jpeg_probe(struct platform_device *pdev)
- {
- 	struct mtk_jpeg_dev *jpeg;
-@@ -1080,6 +1104,7 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
- 	mutex_init(&jpeg->lock);
- 	spin_lock_init(&jpeg->hw_lock);
- 	jpeg->dev = &pdev->dev;
-+	INIT_DELAYED_WORK(&jpeg->job_timeout_work, mtk_jpeg_job_timeout_work);
- 
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	jpeg->dec_reg_base = devm_ioremap_resource(&pdev->dev, res);
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-index 999bd1427809..320c4f8a014a 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-@@ -28,6 +28,8 @@
- 
- #define MTK_JPEG_DEFAULT_SIZEIMAGE	(1 * 1024 * 1024)
- 
-+#define MTK_JPEG_HW_TIMEOUT_MSEC 1000
-+
- enum mtk_jpeg_ctx_state {
- 	MTK_JPEG_INIT = 0,
- 	MTK_JPEG_RUNNING,
-@@ -48,6 +50,7 @@ enum mtk_jpeg_ctx_state {
-  * @clk_jdec:		JPEG hw working clock
-  * @clk_jdec_smi:	JPEG SMI bus clock
-  * @larb:		SMI device
-+ * @job_timeout_work:	IRQ timeout structure
-  */
- struct mtk_jpeg_dev {
- 	struct mutex		lock;
-@@ -62,6 +65,7 @@ struct mtk_jpeg_dev {
- 	struct clk		*clk_jdec;
- 	struct clk		*clk_jdec_smi;
- 	struct device		*larb;
-+	struct delayed_work job_timeout_work;
+-enum {
+-	MTK_JPEG_BUF_FLAGS_INIT			= 0,
+-	MTK_JPEG_BUF_FLAGS_LAST_FRAME		= 1,
+-};
+-
+ struct mtk_jpeg_src_buf {
+ 	struct vb2_v4l2_buffer b;
+ 	struct list_head list;
+-	int flags;
+ 	struct mtk_jpeg_dec_param dec_param;
  };
  
- /**
+@@ -501,31 +495,6 @@ static int mtk_jpeg_s_selection(struct file *file, void *priv,
+ 	return 0;
+ }
+ 
+-static int mtk_jpeg_qbuf(struct file *file, void *priv, struct v4l2_buffer *buf)
+-{
+-	struct v4l2_fh *fh = file->private_data;
+-	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
+-	struct vb2_queue *vq;
+-	struct vb2_buffer *vb;
+-	struct mtk_jpeg_src_buf *jpeg_src_buf;
+-
+-	if (buf->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
+-		goto end;
+-
+-	vq = v4l2_m2m_get_vq(fh->m2m_ctx, buf->type);
+-	if (buf->index >= vq->num_buffers) {
+-		dev_err(ctx->jpeg->dev, "buffer index out of range\n");
+-		return -EINVAL;
+-	}
+-
+-	vb = vb2_get_buffer(vq, buf->index);
+-	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(vb);
+-	jpeg_src_buf->flags = (buf->m.planes[0].bytesused == 0) ?
+-		MTK_JPEG_BUF_FLAGS_LAST_FRAME : MTK_JPEG_BUF_FLAGS_INIT;
+-end:
+-	return v4l2_m2m_qbuf(file, fh->m2m_ctx, buf);
+-}
+-
+ static const struct v4l2_ioctl_ops mtk_jpeg_ioctl_ops = {
+ 	.vidioc_querycap                = mtk_jpeg_querycap,
+ 	.vidioc_enum_fmt_vid_cap	= mtk_jpeg_enum_fmt_vid_cap,
+@@ -536,7 +505,7 @@ static const struct v4l2_ioctl_ops mtk_jpeg_ioctl_ops = {
+ 	.vidioc_g_fmt_vid_out_mplane    = mtk_jpeg_g_fmt_vid_mplane,
+ 	.vidioc_s_fmt_vid_cap_mplane    = mtk_jpeg_s_fmt_vid_cap_mplane,
+ 	.vidioc_s_fmt_vid_out_mplane    = mtk_jpeg_s_fmt_vid_out_mplane,
+-	.vidioc_qbuf                    = mtk_jpeg_qbuf,
++	.vidioc_qbuf                    = v4l2_m2m_ioctl_qbuf,
+ 	.vidioc_subscribe_event         = mtk_jpeg_subscribe_event,
+ 	.vidioc_g_selection		= mtk_jpeg_g_selection,
+ 	.vidioc_s_selection		= mtk_jpeg_s_selection,
+@@ -676,10 +645,6 @@ static void mtk_jpeg_buf_queue(struct vb2_buffer *vb)
+ 	param = &jpeg_src_buf->dec_param;
+ 	memset(param, 0, sizeof(*param));
+ 
+-	if (jpeg_src_buf->flags & MTK_JPEG_BUF_FLAGS_LAST_FRAME) {
+-		v4l2_dbg(1, debug, &jpeg->v4l2_dev, "Got eos\n");
+-		goto end;
+-	}
+ 	header_valid = mtk_jpeg_parse(param, (u8 *)vb2_plane_vaddr(vb, 0),
+ 				      vb2_get_plane_payload(vb, 0));
+ 	if (!header_valid) {
+@@ -792,19 +757,12 @@ static void mtk_jpeg_device_run(void *priv)
+ 	struct mtk_jpeg_src_buf *jpeg_src_buf;
+ 	struct mtk_jpeg_bs bs;
+ 	struct mtk_jpeg_fb fb;
+-	int i, ret;
++	int ret;
+ 
+ 	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+ 	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+ 	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
+ 
+-	if (jpeg_src_buf->flags & MTK_JPEG_BUF_FLAGS_LAST_FRAME) {
+-		for (i = 0; i < dst_buf->vb2_buf.num_planes; i++)
+-			vb2_set_plane_payload(&dst_buf->vb2_buf, i, 0);
+-		buf_state = VB2_BUF_STATE_DONE;
+-		goto dec_end;
+-	}
+-
+ 	if (mtk_jpeg_check_resolution_change(ctx, &jpeg_src_buf->dec_param)) {
+ 		mtk_jpeg_queue_src_chg_event(ctx);
+ 		ctx->state = MTK_JPEG_SOURCE_CHANGE;
 -- 
 2.18.0
 _______________________________________________
