@@ -2,78 +2,79 @@ Return-Path: <SRS0=cyKo=BC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIM_INVALID,
-	DKIM_SIGNED,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E494C433E5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 09:52:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B720C433E5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 10:05:35 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D01AA2086A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 09:52:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 28F80206F4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 10:05:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cmt1nuM+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D01AA2086A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="p4OGffTJ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="NU0SiGyA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 28F80206F4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NnmL+NzKgqKfNCoB0SJ+frChLHYi/uBd6cwVfLF9c+o=; b=cmt1nuM+NKkkfPfykVNvtEFBu
-	/7RUmYV5h92X44R0cw0UHSqgluZlS3CaA53yvnspK/yv5Nn52iwZsOib/gXuSsirEU+lwH5YvD6N4
-	nihxj7Mkc9Xxn3hplUr0ejOzW7WhQ8JobrSyHFVejz4RwKymxgkZGkFDB4uFVspBvqwqWtDe/O0I1
-	y8iLFNR/L2Ppo69+rZYzc20AvX5yYnYvDPNY2KoV709vaO/R74RGfcVfp0ceGtpYj2rZo3krEIWse
-	P/KhtrJr4jMJh9in5XBnmT2TG+2xaze/Yf2wfv2jeUMGhVZqsEQhxqMUu+Ime76wApe+sTLN0oRXW
-	qMX7Tmgjg==;
+	Content-Type:Cc:Reply-To:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rBu5zgaeS3OfdqCGN/NiUHgbWrja6mDue+HgYjV9kC0=; b=p4OGffTJwmIwqQPjj+DwzEw+pz
+	Ur4cxS1GmmsbO/jIKhGsWZdSwsn+fQwA4zsSJN2H9w8L1MivQLx6jqinv0CcO3Fv0E3lq/4Fla680
+	XQXngDYVX4IuHbK1lZmqpAY6xYAvRGuEFt69zRkQgX3wOFfw4IkB6m1cdn035UAroFM97q+UdXTTG
+	7VUHxvTmcN94LebxULr406dUH/4uWK62pMqu7tjIrA0sKLjvZTZTeRH/m79J1T9IjqA0Zs0SveZv6
+	5uOIcR46HC1sYseqaSxXjGL9bZOkeY+opOZGHdZrIw+0qOMT5BVUf6VoCE+sJFbtDx3WPbvmNnAc1
+	NL/PNFpg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyXti-0001ho-JS; Thu, 23 Jul 2020 09:52:18 +0000
-Received: from mail-ej1-f68.google.com ([209.85.218.68])
+	id 1jyY6O-0003Ul-2q; Thu, 23 Jul 2020 10:05:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyXte-0001gk-JR; Thu, 23 Jul 2020 09:52:15 +0000
-Received: by mail-ej1-f68.google.com with SMTP id ga4so5675667ejb.11;
- Thu, 23 Jul 2020 02:52:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=puQQ+kEDvp4d2ixkulEX0wUmGQuAZ6n3qHTJVU/5Rzc=;
- b=EBn7cNz9TC//QL0mldmPioHfZm/A4vF5lhdDUQauLOYUJa+9K9yfpIJZuJ2cQcEu7F
- fGI9gpYMfzUm4OdsRQMsGsg9iKAkAToDAE3Q2VJDAR+fNU22iapyBV+luZct0YwWehTi
- lLfHUYnMTNtIEVtQuzO+iXcIMXvuzZQTjod0gx/8b86BeqcRh021OQQOcihqxVj4KEM8
- Fyu9BOsm7NEOvLdF0F7GkjaAgAB0y5rQ7NDwr70+Wl4ImgwaXie5gOROQeY3Lmeksxh4
- SqoBGtLoS/KRTpotDS9XVELCRajBt0awyGhN1qvcchqDryplkjpWLfNUIkd7qKb+SAN1
- lGdg==
-X-Gm-Message-State: AOAM530qnCc4WPDnO2/zMDfYFQJA7OSUhhODIcfrQzoNz4r6OvIHD2In
- Eampii/jQKOhAm47jIKvuPU=
-X-Google-Smtp-Source: ABdhPJyu48ABbekwvtALO2JO+gDw0IjhchbBRuiUgpHvsnkMl605uS9uQX1F3s0EVoraFKz+/aPreg==
-X-Received: by 2002:a17:906:d9d9:: with SMTP id
- qk25mr3760460ejb.448.1595497933238; 
- Thu, 23 Jul 2020 02:52:13 -0700 (PDT)
-Received: from kozik-lap ([194.230.155.213])
- by smtp.googlemail.com with ESMTPSA id bn7sm1713556ejb.100.2020.07.23.02.52.10
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 23 Jul 2020 02:52:12 -0700 (PDT)
-Date: Thu, 23 Jul 2020 11:52:09 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [RFC PATCH 00/23] memory: Cleanup, improve and compile test
- memory drivers
-Message-ID: <20200723095209.GA30472@kozik-lap>
-References: <20200723073744.13400-1-krzk@kernel.org>
- <CAK8P3a0hcVhBbKCBDSZYXChmPpRVsEi_G6+oj5quC6uUiPeeiA@mail.gmail.com>
+ id 1jyY6L-0003Tj-5v; Thu, 23 Jul 2020 10:05:22 +0000
+X-UUID: 331f03fb8af047459ebbb11a1086919a-20200723
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:Reply-To:From:Subject:Message-ID;
+ bh=nIqgvQpS3VAhbyseetbTsl4br2KGKeKt/w/IWi2RGrk=; 
+ b=NU0SiGyAI4hlwm4enjiBB2qWC+KyXn1ijbG1UoqaD/M422CwQx/2VjE18vRsEKaXnKTgXnLWdLpSW3lZ1ihiWV1fm8nQT+kWpi+f220b6zszD9ph/VTKW28qmHft1Br2wdc6F8Dl7MDW8SMO0vbhs+g7wZFqs9bzS1nO3r7JLkM=;
+X-UUID: 331f03fb8af047459ebbb11a1086919a-20200723
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yongqiang.niu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1643676963; Thu, 23 Jul 2020 02:05:14 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Jul 2020 03:05:13 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs05n2.mediatek.inc
+ (172.21.101.140) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 23 Jul 2020 18:05:11 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 23 Jul 2020 18:05:12 +0800
+Message-ID: <1595498644.13250.2.camel@mhfsdcap03>
+Subject: Re: [v7, PATCH 1/7] drm/mediatek: move ddp component defint into
+ mtk_mmsys.h
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+To: Enric Balletbo Serra <eballetbo@gmail.com>
+Date: Thu, 23 Jul 2020 18:04:04 +0800
+In-Reply-To: <CAFqH_50=MkBLHJ23hJo--RG=4560ttOUOjHuEwpevghFZ59xQQ@mail.gmail.com>
+References: <1595469798-3824-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1595469798-3824-2-git-send-email-yongqiang.niu@mediatek.com>
+ <CAFqH_50=MkBLHJ23hJo--RG=4560ttOUOjHuEwpevghFZ59xQQ@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAK8P3a0hcVhBbKCBDSZYXChmPpRVsEi_G6+oj5quC6uUiPeeiA@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200723_055214_714322_D40138BD 
-X-CRM114-Status: GOOD (  25.66  )
+X-CRM114-CacheID: sfid-20200723_060521_372356_7AEC181A 
+X-CRM114-Status: GOOD (  19.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,70 +86,171 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-List-Id: <soc.lore.kernel.org>
-Cc: Florian Fainelli <f.fainelli@gmail.com>,
- "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
- linux-omap <linux-omap@vger.kernel.org>, Tony Lindgren <tony@atomide.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Vladimir Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>,
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
- Markus Mayer <mmayer@broadcom.com>, Santosh Shilimkar <ssantosh@kernel.org>,
- Olof Johansson <olof@lixom.net>, Thierry Reding <thierry.reding@gmail.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Linus Torvalds <torvalds@linux-foundation.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Roger Quadros <rogerq@ti.com>
+Reply-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob
+ Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, Daniel Vetter <daniel@ffwll.ch>,
+ CK Hu <ck.hu@mediatek.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 23, 2020 at 11:31:02AM +0200, Arnd Bergmann wrote:
-> On Thu, Jul 23, 2020 at 9:37 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> >
-> > Dear All,
-> >
-> > The drivers/memory directory contains generic code (of_memory.c) and a
-> > bunch of drivers.  Changes to generic code were coming usually through
-> > different trees with the driver code.
-> >
-> > Over last days, memory drivers grew in numbers but not necessarily in
-> > quality.  They lacked compile testing and code cleanup.  Also lacked
-> > maintainer.
-> >
-> > I would be happy to take care about this part.
-> >
-> > If there are no objections, the patches could go either to Linus or to
-> > arm-soc (most of drivers are ARM specific).
-> >
-> > Driver-specific changes in the patchset were only compile-tested. Tests
-> > are welcome. The generic code was tested on ARMv7 Exynos based boards
-> > with a exynos5422-dmc memory controller driver.
+On Thu, 2020-07-23 at 11:34 +0200, Enric Balletbo Serra wrote:
+> Hi Yongqian Niu,
 > 
-> Overall this looks great, I had a look through the patches and commented
-> on the few things that seemed slightly odd though harmless.
+> Thank you for your patch
 > 
-> Thanks for picking up the subsystem. How do you want to proceed
-> in the long run? I suppose you can send a pull request to soc@kernel.org
-> to be picked up for the coming merge window as the normal way, since
-> you are not yet listed as the maintained until the end of the series.
+> Missatge de Yongqiang Niu <yongqiang.niu@mediatek.com> del dia dj., 23
+> de jul. 2020 a les 4:05:
+> >
+> > move ddp component defint into mtk_mmsys.h
+> >
 > 
-> Afterwards you could either send the pull requests to Linus directly,
-> or send them to the soc team (or to Greg) as well, the way we handle
-> a couple of other subsystems like drivers/reset and drivers/tee that
-> usually only have a handful of patches per release.
+> There is a typo, should be "defines". But why you should move these
+> defines to mtk-mmsys?
+> 
 
-Most of the drivers are for ARM architecture so arm-soc seems like the
-way to do it.  However BT1_L2_CTL and JZ4780_NEMC are MIPS specific and
-maybe more would come in the future.  Are you fine taking them as well?
+ck do not like this :
+> -#include "../../gpu/drm/mediatek/mtk_drm_ddp.h"
+> -#include "../../gpu/drm/mediatek/mtk_drm_ddp_comp.h"
 
-Best regards,
-Krzysztof
+after remove this, we need move the ddp component define
 
+type error will fixed in next version.
+
+
+> 
+> 
+> > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 34 +----------------------------
+> >  drivers/soc/mediatek/mtk-mmsys.c            |  4 +---
+> >  include/linux/soc/mediatek/mtk-mmsys.h      | 33 ++++++++++++++++++++++++++++
+> >  3 files changed, 35 insertions(+), 36 deletions(-)
+> >
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> > index debe363..161201f 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> > @@ -7,6 +7,7 @@
+> >  #define MTK_DRM_DDP_COMP_H
+> >
+> >  #include <linux/io.h>
+> > +#include <linux/soc/mediatek/mtk-mmsys.h>
+> >
+> >  struct device;
+> >  struct device_node;
+> > @@ -35,39 +36,6 @@ enum mtk_ddp_comp_type {
+> >         MTK_DDP_COMP_TYPE_MAX,
+> >  };
+> >
+> > -enum mtk_ddp_comp_id {
+> > -       DDP_COMPONENT_AAL0,
+> > -       DDP_COMPONENT_AAL1,
+> > -       DDP_COMPONENT_BLS,
+> > -       DDP_COMPONENT_CCORR,
+> > -       DDP_COMPONENT_COLOR0,
+> > -       DDP_COMPONENT_COLOR1,
+> > -       DDP_COMPONENT_DITHER,
+> > -       DDP_COMPONENT_DPI0,
+> > -       DDP_COMPONENT_DPI1,
+> > -       DDP_COMPONENT_DSI0,
+> > -       DDP_COMPONENT_DSI1,
+> > -       DDP_COMPONENT_DSI2,
+> > -       DDP_COMPONENT_DSI3,
+> > -       DDP_COMPONENT_GAMMA,
+> > -       DDP_COMPONENT_OD0,
+> > -       DDP_COMPONENT_OD1,
+> > -       DDP_COMPONENT_OVL0,
+> > -       DDP_COMPONENT_OVL_2L0,
+> > -       DDP_COMPONENT_OVL_2L1,
+> > -       DDP_COMPONENT_OVL1,
+> > -       DDP_COMPONENT_PWM0,
+> > -       DDP_COMPONENT_PWM1,
+> > -       DDP_COMPONENT_PWM2,
+> > -       DDP_COMPONENT_RDMA0,
+> > -       DDP_COMPONENT_RDMA1,
+> > -       DDP_COMPONENT_RDMA2,
+> > -       DDP_COMPONENT_UFOE,
+> > -       DDP_COMPONENT_WDMA0,
+> > -       DDP_COMPONENT_WDMA1,
+> > -       DDP_COMPONENT_ID_MAX,
+> > -};
+> > -
+> >  struct mtk_ddp_comp;
+> >  struct cmdq_pkt;
+> >  struct mtk_ddp_comp_funcs {
+> > diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+> > index a55f255..36ad66b 100644
+> > --- a/drivers/soc/mediatek/mtk-mmsys.c
+> > +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> > @@ -5,13 +5,11 @@
+> >   */
+> >
+> >  #include <linux/device.h>
+> > +#include <linux/io.h>
+> >  #include <linux/of_device.h>
+> >  #include <linux/platform_device.h>
+> >  #include <linux/soc/mediatek/mtk-mmsys.h>
+> >
+> > -#include "../../gpu/drm/mediatek/mtk_drm_ddp.h"
+> > -#include "../../gpu/drm/mediatek/mtk_drm_ddp_comp.h"
+> > -
+> >  #define DISP_REG_CONFIG_DISP_OVL0_MOUT_EN      0x040
+> >  #define DISP_REG_CONFIG_DISP_OVL1_MOUT_EN      0x044
+> >  #define DISP_REG_CONFIG_DISP_OD_MOUT_EN                0x048
+> > diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
+> > index 7bab5d9..2228bf6 100644
+> > --- a/include/linux/soc/mediatek/mtk-mmsys.h
+> > +++ b/include/linux/soc/mediatek/mtk-mmsys.h
+> > @@ -9,6 +9,39 @@
+> >  enum mtk_ddp_comp_id;
+> >  struct device;
+> >
+> > +enum mtk_ddp_comp_id {
+> > +       DDP_COMPONENT_AAL0,
+> > +       DDP_COMPONENT_AAL1,
+> > +       DDP_COMPONENT_BLS,
+> > +       DDP_COMPONENT_CCORR,
+> > +       DDP_COMPONENT_COLOR0,
+> > +       DDP_COMPONENT_COLOR1,
+> > +       DDP_COMPONENT_DITHER,
+> > +       DDP_COMPONENT_DPI0,
+> > +       DDP_COMPONENT_DPI1,
+> > +       DDP_COMPONENT_DSI0,
+> > +       DDP_COMPONENT_DSI1,
+> > +       DDP_COMPONENT_DSI2,
+> > +       DDP_COMPONENT_DSI3,
+> > +       DDP_COMPONENT_GAMMA,
+> > +       DDP_COMPONENT_OD0,
+> > +       DDP_COMPONENT_OD1,
+> > +       DDP_COMPONENT_OVL0,
+> > +       DDP_COMPONENT_OVL_2L0,
+> > +       DDP_COMPONENT_OVL_2L1,
+> > +       DDP_COMPONENT_OVL1,
+> > +       DDP_COMPONENT_PWM0,
+> > +       DDP_COMPONENT_PWM1,
+> > +       DDP_COMPONENT_PWM2,
+> > +       DDP_COMPONENT_RDMA0,
+> > +       DDP_COMPONENT_RDMA1,
+> > +       DDP_COMPONENT_RDMA2,
+> > +       DDP_COMPONENT_UFOE,
+> > +       DDP_COMPONENT_WDMA0,
+> > +       DDP_COMPONENT_WDMA1,
+> > +       DDP_COMPONENT_ID_MAX,
+> > +};
+> > +
+> >  void mtk_mmsys_ddp_connect(struct device *dev,
+> >                            enum mtk_ddp_comp_id cur,
+> >                            enum mtk_ddp_comp_id next);
+> > --
+> > 1.8.1.1.dirty
 
 _______________________________________________
 Linux-mediatek mailing list
