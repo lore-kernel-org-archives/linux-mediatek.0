@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7788EC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 05:58:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AC967C433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 06:02:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 44668207F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 05:58:59 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7BA11207F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 06:02:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gHygfwIR";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="A0jU3ejF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 44668207F5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Acc/oV7n";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="bs2D4dmM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7BA11207F5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,54 +27,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=h2fKS4JUhcFaZIJpB/2q7fcB0SLxDPZEFqReks3zalc=; b=gHygfwIRiC472bw1j0j2xtl9q
-	DPZKYFkLdZkQzimHaL6qYasCrlXta1b/nk0wyHLCzD/atp8j+r0kD4YENmiNFgn0xq4z03fREA/lu
-	JnI4zoed+vjTWkLOykswrt8AlX21ff2T8km3x47nWyriTqyr3MN782ES2C3tTzpTGTHFSUuNEakhw
-	ad5mUSHJhc//9AMROay0Cj3sSdI03LfIvtTzG3FU8XZTrAPFoRtZ15sQaGc91FPHpUk6fNDYzpkd+
-	rDCnpStHSNiJ/B2ztsv0FZEvZSSbrum16daMZ5nTOYz2i2I+qJKXDFEC5F8GRoBnL9KmiagDw2JYl
-	zWYYAzThw==;
+	 bh=MnIXwTN4u1sXz6DK67vtdA3IyIRR53ST0hDDxef8Dy4=; b=Acc/oV7n/qerOGcIXpGfDRMrr
+	4shhPdwSQDQkG3Aw8ts9NLoQ1Ugbq2mQsY6Qr02TyR5MCFeY4AmpvVQpR0D+yh1ze+oBpu5Ofu5I4
+	shZlCKThq5mZtWR/HE+MxXnFhvt/hiexk3zV600Z8wOVrlo0N+UZXMGJoERIlJbGfnqxTf8jxeSyi
+	UpYlha6gLFh99mxSufKmATTWfIEesNBWI+1ZjbaIvtvHmWjuqms96Rm6Cyq+zSfL+0DYzmCeeC0Tj
+	QgeHHwgvOCtPxzk/S424DtOlxDs/TQ2EAsXglo/PGNv3HqB5WE5OQKUdHv9oqIlC49FKpwiGzk9jb
+	US7QRjDjg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyUFk-0002lI-SK; Thu, 23 Jul 2020 05:58:48 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jyUJO-00035z-NY; Thu, 23 Jul 2020 06:02:34 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyUFf-0002kh-3u; Thu, 23 Jul 2020 05:58:44 +0000
-X-UUID: 7dbce6b482bb4ca39f01349b17d8e586-20200722
+ id 1jyUJL-00035I-KX; Thu, 23 Jul 2020 06:02:32 +0000
+X-UUID: 886942076fe944f6a6357e90ac94c227-20200722
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=avHxu0dEvObqmrR0tNdjaTp0S0v4rEX5l1fG2CDw6nw=; 
- b=A0jU3ejFug07WiLPB3VsLWud19SVmLpO+GfcGdYmkKFS+ctHYlq5suTP3kgrZUiOFJYq4Up4DMwbbAxpEg0CMwKUUoWO82DUFMSYo6Fmi0iaueRmSddgAt/39mggb8z3u6Ywj4aim6JfP0DkOR9x1KDqcG6Z1SIuJT8poJATodY=;
-X-UUID: 7dbce6b482bb4ca39f01349b17d8e586-20200722
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=mgaMGq9tk6Tv5Z69M3C5PTIdY+n3OKq4qxR0JvMcFnU=; 
+ b=bs2D4dmM3CYkKKUxLHqujGFPTITeZEPxjLJQTKRW4tUsrLmbevZd9J44r69Ch7ZPGKIDYk7Iq4g8RZeOswHhYzzSzruTbSV2HA7sZTE27cfdE7TObW3U8C8qYsaS7eJSRE98HJ5ehH+uh+mwHHl7i6nMAbTFSt+ysnuMwBLrkog=;
+X-UUID: 886942076fe944f6a6357e90ac94c227-20200722
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <qii.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 164602992; Wed, 22 Jul 2020 21:58:33 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ with ESMTP id 1800027359; Wed, 22 Jul 2020 22:02:24 -0800
+Received: from MTKMBS32N1.mediatek.inc (172.27.4.71) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 22 Jul 2020 22:48:55 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 23 Jul 2020 13:48:53 +0800
+ 15.0.1497.2; Wed, 22 Jul 2020 23:02:23 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32N1.mediatek.inc
+ (172.27.4.71) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 23 Jul 2020 14:02:19 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 23 Jul 2020 13:48:52 +0800
-Message-ID: <1595483265.16079.18.camel@mhfsdcap03>
-Subject: Re: [PATCH 2/4] i2c: mediatek: Support DMA mask range over 33-bits
+ Transport; Thu, 23 Jul 2020 14:02:20 +0800
+Message-ID: <1595484072.16079.26.camel@mhfsdcap03>
+Subject: Re: [PATCH 1/4] i2c: mediatek: Add apdma sync in i2c driver
 From: Qii Wang <qii.wang@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Date: Thu, 23 Jul 2020 13:47:45 +0800
-In-Reply-To: <87429327-5d2e-e3f3-db22-04e225a31055@gmail.com>
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Date: Thu, 23 Jul 2020 14:01:12 +0800
+In-Reply-To: <1595467756.7332.7.camel@mtksdaap41>
 References: <1595421106-10017-1-git-send-email-qii.wang@mediatek.com>
- <1595421106-10017-3-git-send-email-qii.wang@mediatek.com>
- <87429327-5d2e-e3f3-db22-04e225a31055@gmail.com>
+ <1595421106-10017-2-git-send-email-qii.wang@mediatek.com>
+ <1595467756.7332.7.camel@mtksdaap41>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 5486F58D41C29B12797C4E71C6DEAC8B90AB18EC292FCB909DA017C6AD5D7D242000:8
+X-TM-SNTS-SMTP: 8508DC830B35E190FB92C244D835A81295A9C104BA53F0B154DA55D8789307C62000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200723_015843_366532_92A3D7E1 
-X-CRM114-Status: GOOD (  19.19  )
+X-CRM114-CacheID: sfid-20200723_020232_032428_833DF3FD 
+X-CRM114-Status: GOOD (  23.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,188 +96,151 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2020-07-22 at 17:38 +0200, Matthias Brugger wrote:
-> 
-> On 22/07/2020 14:31, Qii Wang wrote:
-> > Replace 'support_33bits with 'dma_max_support' for DMA mask
-> > operation, and replace 'mtk_i2c_set_4g_mode' with 'upper_32_bits'.
-> 
-> Please explain more in detail what you are doing and how this fits to the way 
-> the HW works.
-> 
-
-As Yingjoe sir said, Newer MTK chip support more than 8GB of dram, and
-the register TX/RX_4G_MODE of APDMA has added corresponding bit to
-support.So we Replace support_33bits with more general dma_max_support.I
-will modify the title and commit as :
-i2c: mediatek: Add access to more than 8GB dram in i2c driver
-Newer MTK chip support more than 8GB of dram. Replace support_33bits
-with more general dma_max_support and remove mtk_i2c_set_4g_mode.
-
+On Thu, 2020-07-23 at 09:29 +0800, Yingjoe Chen wrote:
+> On Wed, 2020-07-22 at 20:31 +0800, Qii Wang wrote:
+> > With the apdma remove hand-shake signal, it need to keep i2c and
+> > apdma in sync manually.
 > > 
+> 
+> Looks good to me,
+> 
+> Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+> 
+> 
+> Just a reminder, we have another patch 'i2c: mediatek: Add to support
+> continuous mode' under review now. Please remember to update OFFSET_CON
+> access code in that patch.
+> 
+> Joe.C
+> 
+> 
+
+I and Qiangming are looking at whether the original multi-write code can
+cover it, After confirming again, then we will decide whether it need to
+send that patch. Thanks for your comments.
+
+> 
 > > Signed-off-by: Qii Wang <qii.wang@mediatek.com>
 > > ---
-> >   drivers/i2c/busses/i2c-mt65xx.c | 37 +++++++++++++++++--------------------
-> >   1 file changed, 17 insertions(+), 20 deletions(-)
+> >  drivers/i2c/busses/i2c-mt65xx.c | 23 ++++++++++++++++++++---
+> >  1 file changed, 20 insertions(+), 3 deletions(-)
 > > 
 > > diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-> > index e6b984a..e475877 100644
+> > index deef69e..e6b984a 100644
 > > --- a/drivers/i2c/busses/i2c-mt65xx.c
 > > +++ b/drivers/i2c/busses/i2c-mt65xx.c
-> > @@ -209,6 +209,7 @@ struct mtk_i2c_compatible {
-> >   	unsigned char dma_sync: 1;
-> >   	unsigned char ltiming_adjust: 1;
-> >   	unsigned char apdma_sync: 1;
-> > +	unsigned char max_dma_support;
-> >   };
-> >   
-> >   struct mtk_i2c_ac_timing {
-> > @@ -311,11 +312,11 @@ struct i2c_spec_values {
-> >   	.dcm = 1,
-> >   	.auto_restart = 1,
-> >   	.aux_len_reg = 1,
-> > -	.support_33bits = 1,
-> >   	.timing_adjust = 1,
-> >   	.dma_sync = 0,
-> >   	.ltiming_adjust = 0,
-> >   	.apdma_sync = 0,
-> > +	.max_dma_support = 33,
-> >   };
-> >   
-> >   static const struct mtk_i2c_compatible mt6577_compat = {
-> > @@ -325,11 +326,11 @@ struct i2c_spec_values {
-> >   	.dcm = 1,
-> >   	.auto_restart = 0,
-> >   	.aux_len_reg = 0,
-> > -	.support_33bits = 0,
-> >   	.timing_adjust = 0,
-> >   	.dma_sync = 0,
-> >   	.ltiming_adjust = 0,
-> >   	.apdma_sync = 0,
-> > +	.max_dma_support = 32,
-> >   };
-> >   
-> >   static const struct mtk_i2c_compatible mt6589_compat = {
-> > @@ -339,11 +340,11 @@ struct i2c_spec_values {
-> >   	.dcm = 0,
-> >   	.auto_restart = 0,
-> >   	.aux_len_reg = 0,
-> > -	.support_33bits = 0,
-> >   	.timing_adjust = 0,
-> >   	.dma_sync = 0,
-> >   	.ltiming_adjust = 0,
-> >   	.apdma_sync = 0,
-> > +	.max_dma_support = 32,
-> >   };
-> >   
-> >   static const struct mtk_i2c_compatible mt7622_compat = {
-> > @@ -353,11 +354,11 @@ struct i2c_spec_values {
-> >   	.dcm = 1,
-> >   	.auto_restart = 1,
-> >   	.aux_len_reg = 1,
-> > -	.support_33bits = 0,
-> >   	.timing_adjust = 0,
-> >   	.dma_sync = 0,
-> >   	.ltiming_adjust = 0,
-> >   	.apdma_sync = 0,
-> > +	.max_dma_support = 32,
-> >   };
-> >   
-> >   static const struct mtk_i2c_compatible mt8173_compat = {
-> > @@ -366,11 +367,11 @@ struct i2c_spec_values {
-> >   	.dcm = 1,
-> >   	.auto_restart = 1,
-> >   	.aux_len_reg = 1,
-> > -	.support_33bits = 1,
-> >   	.timing_adjust = 0,
-> >   	.dma_sync = 0,
-> >   	.ltiming_adjust = 0,
-> >   	.apdma_sync = 0,
-> > +	.max_dma_support = 33,
-> >   };
-> >   
-> >   static const struct mtk_i2c_compatible mt8183_compat = {
-> > @@ -380,11 +381,11 @@ struct i2c_spec_values {
-> >   	.dcm = 0,
-> >   	.auto_restart = 1,
-> >   	.aux_len_reg = 1,
-> > -	.support_33bits = 1,
-> >   	.timing_adjust = 1,
-> >   	.dma_sync = 1,
-> >   	.ltiming_adjust = 1,
-> >   	.apdma_sync = 0,
-> > +	.max_dma_support = 33,
-> >   };
-> >   
-> >   static const struct of_device_id mtk_i2c_of_match[] = {
-> > @@ -796,11 +797,6 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
-> >   	return 0;
-> >   }
-> >   
-> > -static inline u32 mtk_i2c_set_4g_mode(dma_addr_t addr)
-> > -{
-> > -	return (addr & BIT_ULL(32)) ? I2C_DMA_4G_MODE : I2C_DMA_CLR_FLAG;
+> > @@ -48,6 +48,9 @@
+> >  
+> >  #define I2C_DMA_CON_TX			0x0000
+> >  #define I2C_DMA_CON_RX			0x0001
+> > +#define I2C_DMA_ASYNC_MODE		0x0004
+> > +#define I2C_DMA_SKIP_CONFIG		0x0010
+> > +#define I2C_DMA_DIR_CHANGE		0x0200
+> >  #define I2C_DMA_START_EN		0x0001
+> >  #define I2C_DMA_INT_FLAG_NONE		0x0000
+> >  #define I2C_DMA_CLR_FLAG		0x0000
+> > @@ -205,6 +208,7 @@ struct mtk_i2c_compatible {
+> >  	unsigned char timing_adjust: 1;
+> >  	unsigned char dma_sync: 1;
+> >  	unsigned char ltiming_adjust: 1;
+> > +	unsigned char apdma_sync: 1;
+> >  };
+> >  
+> >  struct mtk_i2c_ac_timing {
+> > @@ -311,6 +315,7 @@ struct i2c_spec_values {
+> >  	.timing_adjust = 1,
+> >  	.dma_sync = 0,
+> >  	.ltiming_adjust = 0,
+> > +	.apdma_sync = 0,
+> >  };
+> >  
+> >  static const struct mtk_i2c_compatible mt6577_compat = {
+> > @@ -324,6 +329,7 @@ struct i2c_spec_values {
+> >  	.timing_adjust = 0,
+> >  	.dma_sync = 0,
+> >  	.ltiming_adjust = 0,
+> > +	.apdma_sync = 0,
+> >  };
+> >  
+> >  static const struct mtk_i2c_compatible mt6589_compat = {
+> > @@ -337,6 +343,7 @@ struct i2c_spec_values {
+> >  	.timing_adjust = 0,
+> >  	.dma_sync = 0,
+> >  	.ltiming_adjust = 0,
+> > +	.apdma_sync = 0,
+> >  };
+> >  
+> >  static const struct mtk_i2c_compatible mt7622_compat = {
+> > @@ -350,6 +357,7 @@ struct i2c_spec_values {
+> >  	.timing_adjust = 0,
+> >  	.dma_sync = 0,
+> >  	.ltiming_adjust = 0,
+> > +	.apdma_sync = 0,
+> >  };
+> >  
+> >  static const struct mtk_i2c_compatible mt8173_compat = {
+> > @@ -362,6 +370,7 @@ struct i2c_spec_values {
+> >  	.timing_adjust = 0,
+> >  	.dma_sync = 0,
+> >  	.ltiming_adjust = 0,
+> > +	.apdma_sync = 0,
+> >  };
+> >  
+> >  static const struct mtk_i2c_compatible mt8183_compat = {
+> > @@ -375,6 +384,7 @@ struct i2c_spec_values {
+> >  	.timing_adjust = 1,
+> >  	.dma_sync = 1,
+> >  	.ltiming_adjust = 1,
+> > +	.apdma_sync = 0,
+> >  };
+> >  
+> >  static const struct of_device_id mtk_i2c_of_match[] = {
+> > @@ -798,6 +808,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+> >  	u16 start_reg;
+> >  	u16 control_reg;
+> >  	u16 restart_flag = 0;
+> > +	u16 dma_sync = 0;
+> >  	u32 reg_4g_mode;
+> >  	u8 *dma_rd_buf = NULL;
+> >  	u8 *dma_wr_buf = NULL;
+> > @@ -851,10 +862,16 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+> >  		mtk_i2c_writew(i2c, num, OFFSET_TRANSAC_LEN);
+> >  	}
+> >  
+> > +	if (i2c->dev_comp->apdma_sync) {
+> > +		dma_sync = I2C_DMA_SKIP_CONFIG | I2C_DMA_ASYNC_MODE;
+> > +		if (i2c->op == I2C_MASTER_WRRD)
+> > +			dma_sync |= I2C_DMA_DIR_CHANGE;
+> > +	}
+> > +
+> >  	/* Prepare buffer data to start transfer */
+> >  	if (i2c->op == I2C_MASTER_RD) {
+> >  		writel(I2C_DMA_INT_FLAG_NONE, i2c->pdmabase + OFFSET_INT_FLAG);
+> > -		writel(I2C_DMA_CON_RX, i2c->pdmabase + OFFSET_CON);
+> > +		writel(I2C_DMA_CON_RX | dma_sync, i2c->pdmabase + OFFSET_CON);
+> >  
+> >  		dma_rd_buf = i2c_get_dma_safe_msg_buf(msgs, 1);
+> >  		if (!dma_rd_buf)
+> > @@ -877,7 +894,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+> >  		writel(msgs->len, i2c->pdmabase + OFFSET_RX_LEN);
+> >  	} else if (i2c->op == I2C_MASTER_WR) {
+> >  		writel(I2C_DMA_INT_FLAG_NONE, i2c->pdmabase + OFFSET_INT_FLAG);
+> > -		writel(I2C_DMA_CON_TX, i2c->pdmabase + OFFSET_CON);
+> > +		writel(I2C_DMA_CON_TX | dma_sync, i2c->pdmabase + OFFSET_CON);
+> >  
+> >  		dma_wr_buf = i2c_get_dma_safe_msg_buf(msgs, 1);
+> >  		if (!dma_wr_buf)
+> > @@ -900,7 +917,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+> >  		writel(msgs->len, i2c->pdmabase + OFFSET_TX_LEN);
+> >  	} else {
+> >  		writel(I2C_DMA_CLR_FLAG, i2c->pdmabase + OFFSET_INT_FLAG);
+> > -		writel(I2C_DMA_CLR_FLAG, i2c->pdmabase + OFFSET_CON);
+> > +		writel(I2C_DMA_CLR_FLAG | dma_sync, i2c->pdmabase + OFFSET_CON);
+> >  
+> >  		dma_wr_buf = i2c_get_dma_safe_msg_buf(msgs, 1);
+> >  		if (!dma_wr_buf)
 > 
-> I2C_DMA_4G_MODE define could now be deleted as well.
 > 
-> Regards,
-> Matthias
-> 
-> > -}
-> > -
-> >   static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
-> >   			       int num, int left_num)
-> >   {
-> > @@ -885,8 +881,8 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
-> >   			return -ENOMEM;
-> >   		}
-> >   
-> > -		if (i2c->dev_comp->support_33bits) {
-> > -			reg_4g_mode = mtk_i2c_set_4g_mode(rpaddr);
-> > +		if (i2c->dev_comp->max_dma_support > 32) {
-> > +			reg_4g_mode = upper_32_bits(rpaddr);
-> >   			writel(reg_4g_mode, i2c->pdmabase + OFFSET_RX_4G_MODE);
-> >   		}
-> >   
-> > @@ -908,8 +904,8 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
-> >   			return -ENOMEM;
-> >   		}
-> >   
-> > -		if (i2c->dev_comp->support_33bits) {
-> > -			reg_4g_mode = mtk_i2c_set_4g_mode(wpaddr);
-> > +		if (i2c->dev_comp->max_dma_support > 32) {
-> > +			reg_4g_mode = upper_32_bits(wpaddr);
-> >   			writel(reg_4g_mode, i2c->pdmabase + OFFSET_TX_4G_MODE);
-> >   		}
-> >   
-> > @@ -954,11 +950,11 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
-> >   			return -ENOMEM;
-> >   		}
-> >   
-> > -		if (i2c->dev_comp->support_33bits) {
-> > -			reg_4g_mode = mtk_i2c_set_4g_mode(wpaddr);
-> > +		if (i2c->dev_comp->max_dma_support > 32) {
-> > +			reg_4g_mode = upper_32_bits(wpaddr);
-> >   			writel(reg_4g_mode, i2c->pdmabase + OFFSET_TX_4G_MODE);
-> >   
-> > -			reg_4g_mode = mtk_i2c_set_4g_mode(rpaddr);
-> > +			reg_4g_mode = upper_32_bits(rpaddr);
-> >   			writel(reg_4g_mode, i2c->pdmabase + OFFSET_RX_4G_MODE);
-> >   		}
-> >   
-> > @@ -1232,8 +1228,9 @@ static int mtk_i2c_probe(struct platform_device *pdev)
-> >   		return -EINVAL;
-> >   	}
-> >   
-> > -	if (i2c->dev_comp->support_33bits) {
-> > -		ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(33));
-> > +	if (i2c->dev_comp->max_dma_support > 32) {
-> > +		ret = dma_set_mask(&pdev->dev,
-> > +				DMA_BIT_MASK(i2c->dev_comp->max_dma_support));
-> >   		if (ret) {
-> >   			dev_err(&pdev->dev, "dma_set_mask return error.\n");
-> >   			return ret;
-> > 
 
 _______________________________________________
 Linux-mediatek mailing list
