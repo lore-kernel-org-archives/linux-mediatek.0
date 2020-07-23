@@ -5,61 +5,75 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 19B9BC433E5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 11:39:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3DBA1C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 11:36:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D961E2080D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 11:39:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 08FBF20825
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 11:36:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="T/8f0BhE"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D961E2080D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.alibaba.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2VndaCmp";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="cPaLs2Po"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 08FBF20825
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:Reply-To:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8Y/ati6U4LCXqqdym+GqXfY7W2KIdhrwZUs33FLbp7Y=; b=T/8f0BhEXYZFdeTCkRGxzaLNga
-	MzwhpQiRiVoCTQAgrvN7teMOGaSvjq6bLY1kVeelYc5oUJ1odvuESqqL/QHgN/ERfEhLNWUSzivGZ
-	gISKiHAiTFNVNmgMd+HqFl0bgzaSKc4X17hm9BHiDLetTkqlWDp9HE6X5TXQAPKpOnLk0lLqxpIx4
-	3qejLl3uFYqMhcJe1Vgywfx6/TCLpFNM+FkCgLmjyKThjGWKKFFSzjJ5CMgRKuW13i1PHXUOX9JJT
-	FOhF+8ILv1y3NDK+YKXeDbZK6eaMbMPUNcPRs/8osRr/GsF3KrnUaSOkgD/bm4ZCg+hVUeDAvmglY
-	UeS1KcrQ==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=5QeWuEk0DOkJqnkLWKKwaBJNyp8xplIv8J8FKvfi/Ns=; b=2VndaCmpRuh8eNkWBeDH4EvzI
+	jQgBG7hrngk9UTp60X39ePEd5GPtskeKRBvhxMe99nfZCJ2iPfFU/UQILQR5Y5pIt8BJ5pyjvhZfN
+	ZTK60w+EFeQrt7zAjgw9npJ5/vWb96Va+HKixGeEMyENzsqnzfcNVf6CVgHRKYk8hgs+vRm7Si7St
+	DvNx7etrqv9M6/Sp7180ywtID4J1fo+UO7CbjANRslL1VUzNCj/JZG8dKlLbUlXaGhaB0XK18RM8o
+	nE946EFaRgyQp4KXwVkn+350ZnVHPuSg855go2iYahhKZSj1jnxG/oVF4TmwzthnvsAYQlR2R3237
+	eUz61nR+w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyZZE-0003k3-MK; Thu, 23 Jul 2020 11:39:16 +0000
-Received: from out4436.biz.mail.alibaba.com ([47.88.44.36])
+	id 1jyZWM-0002sJ-VE; Thu, 23 Jul 2020 11:36:18 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyZZC-0003Ax-DS
- for linux-mediatek@lists.infradead.org; Thu, 23 Jul 2020 11:39:15 +0000
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R101e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04394;
- MF=baolin.wang@linux.alibaba.com; NM=1; PH=DS; RN=20; SR=0;
- TI=SMTPD_---0U3a0ySa_1595504212; 
-Received: from localhost(mailfrom:baolin.wang@linux.alibaba.com
- fp:SMTPD_---0U3a0ySa_1595504212) by smtp.aliyun-inc.com(127.0.0.1);
- Thu, 23 Jul 2020 19:36:52 +0800
-Date: Thu, 23 Jul 2020 19:36:52 +0800
-From: Baolin Wang <baolin.wang@linux.alibaba.com>
-To: Will Deacon <will@kernel.org>
-Subject: Re: [PATCH v2 2/2] iommu: Add gfp parameter to io_pgtable_ops->map()
-Message-ID: <20200723113652.GA104096@VM20190228-100.tbsite.net>
-References: <cover.1591930156.git.baolin.wang@linux.alibaba.com>
- <3093df4cb95497aaf713fca623ce4ecebb197c2e.1591930156.git.baolin.wang@linux.alibaba.com>
- <20200714082821.GC4516@willie-the-truck>
+ id 1jyZWK-0002rN-Km; Thu, 23 Jul 2020 11:36:17 +0000
+X-UUID: 1f8a75301066416697e4c5b5b5735b91-20200723
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=h6iJ9UF693GrpDdmR7RuLUhXwqBFPofdnXMMN+00wK4=; 
+ b=cPaLs2PoPr2U6VNyPvRfPCvPyExUKPO2NKDKt5pqZ06nbcQDeJO3nuNHSNyigld7If3UL/E0OyGAKZJOvpVBmXw9q6IPNEi9nTZMQnt70S9Z33/9uwF0YM3B368bIv2DI573jfxZJ73gJJrDhi0w5UBtfoOgvROa8prxjODOL0M=;
+X-UUID: 1f8a75301066416697e4c5b5b5735b91-20200723
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <hanks.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 2114587400; Thu, 23 Jul 2020 03:34:03 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Jul 2020 04:29:33 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Jul 2020 19:29:26 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 23 Jul 2020 19:29:26 +0800
+Message-ID: <1595503768.5511.8.camel@mtkswgap22>
+Subject: Re: [PATCH 2/7] dt-bindings: pinctrl: add bindings for MediaTek
+ MT6779 SoC
+From: Hanks Chen <hanks.chen@mediatek.com>
+To: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 23 Jul 2020 19:29:28 +0800
+In-Reply-To: <CACRpkdZNL=mnF0dx63bQPpHVLcAHA=oSEiiHzH8vi3+X58y5Jw@mail.gmail.com>
+References: <1594717479-8160-1-git-send-email-hanks.chen@mediatek.com>
+ <1594717479-8160-3-git-send-email-hanks.chen@mediatek.com>
+ <CACRpkdZNL=mnF0dx63bQPpHVLcAHA=oSEiiHzH8vi3+X58y5Jw@mail.gmail.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200714082821.GC4516@willie-the-truck>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200723_073914_669022_E1558F3E 
-X-CRM114-Status: GOOD (  14.52  )
+X-CRM114-CacheID: sfid-20200723_073616_876783_E611F7E8 
+X-CRM114-Status: GOOD (  12.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,55 +85,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: Baolin Wang <baolin.wang@linux.alibaba.com>
-Cc: robh@kernel.org, linux-kernel@vger.kernel.org, tomeu.vizoso@collabora.com,
- airlied@linux.ie, linux-arm-msm@vger.kernel.org, joro@8bytes.org,
- iommu@lists.linux-foundation.org, dri-devel@lists.freedesktop.org,
- bjorn.andersson@linaro.org, baolin.wang7@gmail.com, robdclark@gmail.com,
- agross@kernel.org, linux-mediatek@lists.infradead.org,
- alyssa.rosenzweig@collabora.com, daniel@ffwll.ch, matthias.bgg@gmail.com,
- steven.price@arm.com, robin.murphy@arm.com,
- linux-arm-kernel@lists.infradead.org
+Cc: "open list:OPEN FIRMWARE
+ AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
+ CC Hwang <cc.hwang@mediatek.com>, wsd_upstream@mediatek.com,
+ Stephen Boyd <sboyd@kernel.org>, Andy Teng <andy.teng@mediatek.com>,
+ Michael Turquette <mturquette@baylibre.com>, Sean Wang <sean.wang@kernel.org>,
+ Loda Chou <loda.chou@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open
+ list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, mtk01761 <wendell.lin@mediatek.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 14, 2020 at 09:28:21AM +0100, Will Deacon wrote:
-> On Fri, Jun 12, 2020 at 11:39:55AM +0800, Baolin Wang wrote:
-> > Now the ARM page tables are always allocated by GFP_ATOMIC parameter,
-> > but the iommu_ops->map() function has been added a gfp_t parameter by
-> > commit 781ca2de89ba ("iommu: Add gfp parameter to iommu_ops::map"),
-> > thus io_pgtable_ops->map() should use the gfp parameter passed from
-> > iommu_ops->map() to allocate page pages, which can avoid wasting the
-> > memory allocators atomic pools for some non-atomic contexts.
-> > 
-> > Signed-off-by: Baolin Wang <baolin.wang@linux.alibaba.com>
-> > ---
-> >  drivers/gpu/drm/panfrost/panfrost_mmu.c |  2 +-
-> >  drivers/iommu/arm-smmu-v3.c             |  2 +-
-> >  drivers/iommu/arm-smmu.c                |  2 +-
-> >  drivers/iommu/io-pgtable-arm-v7s.c      | 18 +++++++++---------
-> >  drivers/iommu/io-pgtable-arm.c          | 18 +++++++++---------
-> >  drivers/iommu/ipmmu-vmsa.c              |  2 +-
-> >  drivers/iommu/msm_iommu.c               |  2 +-
-> >  drivers/iommu/mtk_iommu.c               |  2 +-
-> >  drivers/iommu/qcom_iommu.c              |  2 +-
-> >  include/linux/io-pgtable.h              |  2 +-
-> >  10 files changed, 26 insertions(+), 26 deletions(-)
+On Thu, 2020-07-16 at 15:26 +0200, Linus Walleij wrote:
+> On Tue, Jul 14, 2020 at 11:04 AM Hanks Chen <hanks.chen@mediatek.com> wrote:
 > 
-> I was a bit nervous about us passing GFP_KERNEL with a spinlock held, but
-> it looks like you've checked all the callsites and it looks fine to me, so:
+> > From: Andy Teng <andy.teng@mediatek.com>
+> >
+> > Add devicetree bindings for MediaTek MT6779 pinctrl driver.
+> >
+> > Signed-off-by: Andy Teng <andy.teng@mediatek.com>
+> (...)
 > 
-> Acked-by: Will Deacon <will@kernel.org>
+> Please make an attempt to reuse the generic schemas in
+> Documentation/devicetree/bindings/pinctrl/pincfg-node.yaml
+> Documentation/devicetree/bindings/pinctrl/pinmux-node.yaml
 > 
-> Joerg -- not sure what you want to do with this one, as it's likely to
-> conflict (trivially) with unrelated driver changes.
+> See how other bindings reuse them, e.g.:
+> qcom,ipq6018-pinctrl.yaml
+> 
+> Yours,
+> Linus Walleij
 
-Thanks Will. Joerg, could you apply this 2 patches if no objection from
-your side? Thanks.
+Got it, I'll fix it in next version
+https://lkml.org/lkml/2020/7/23/385
+
+Thank you for your reply
 
 
+Hanks Chen
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
