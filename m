@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIM_INVALID,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C511C433E8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 08:48:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 43895C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 08:50:46 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CED482080D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 08:48:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0F6B32086A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 08:50:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bInvdLMj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CED482080D
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1Bt9NopI"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0F6B32086A
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arndb.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,58 +25,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=KUnGV9XUoX3ggKLs1vGwFdrCplzlbyAdc/4f5BW5kyc=; b=bInvdLMjMZBe8vnM0/axnkuqP
-	37Facf4Bb65AUkYYnivFOV3GfOmcKq21tM/4fZeYw1bpBP/pW/1soGLEQ105a/GtCqr8vt92+YJhf
-	ZxA5Q9rUOOx8jPA2j8OqOGJ7EAOOYjlBrgVVAj6+upa4zT5wyKKv5Gr/jyt62TzatCfJBUVdwGmyX
-	W64MeYDkwbS+id6K5N+p8pb9dV98aUZ7sxiSaco1IYDAamkPyjCBa/4yPsdXttg3Chx7wgl5YCzTr
-	BKql7EPSZs2mzLcPiR0e/hLx/aUEp1l3QFQlhbEjm3qB2qenK4kcxVLLlCNoxWJ21XKiXq0wu6MzX
-	yf0uPOhTg==;
+	 bh=piemCWvQSAlDACc2icy+cmvrsSA1T0lyBgHbX98jjgc=; b=1Bt9NopIGoA+nF9Go3K66xGUL
+	OMf6NwTvx8XEpK10ASVncWHS8gTZmbhqCK34jf7kvLurvm6NYEHlM7QdvKlKL6l3G5UGQCB8J5B81
+	JFCGx73S9pBLs0JaLJZQeSdH0KgjRfAFAwS2Hd9L75POpTD+qoihQygFXKVoz0h05NakZE7tc2Hr1
+	krYmMvha4gb7wn3d/KoC/5ExTfPE2kLjN91QGe846u939o7HjU29tGCXcIkeFyGnPVYccvcCYb3LG
+	EFQGBU7US+B+2h2FCOjQ2aCEeKNhpYBL0ywSxkqMgJS1wp/sVXxC2fD4h3IVtOUpa0jXemTovDAEk
+	VFrhUMpZA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyWuC-00070T-PA; Thu, 23 Jul 2020 08:48:44 +0000
-Received: from mout.kundenserver.de ([212.227.17.13])
+	id 1jyWvz-0007a5-V7; Thu, 23 Jul 2020 08:50:36 +0000
+Received: from mout.kundenserver.de ([217.72.192.73])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyWuA-0006yi-L8; Thu, 23 Jul 2020 08:48:43 +0000
-Received: from mail-qt1-f175.google.com ([209.85.160.175]) by
- mrelayeu.kundenserver.de (mreue109 [212.227.15.145]) with ESMTPSA (Nemesis)
- id 1MXp1O-1kJOji2LoS-00YBmC; Thu, 23 Jul 2020 10:48:38 +0200
-Received: by mail-qt1-f175.google.com with SMTP id o22so3600581qtt.13;
- Thu, 23 Jul 2020 01:48:36 -0700 (PDT)
-X-Gm-Message-State: AOAM532DhtmyuhNp7ZYPkdwzQawE8NVDL9K9taVa1o5rWbctnX+liy+9
- wld5Nz+pDYJTnqwjewVvkLuRXWy7NGMDeuU9PUM=
-X-Google-Smtp-Source: ABdhPJxIKTuSteato6jqyke4C3qQizgz+kXKWTXrT7ek9BY4C2QafHHN8TpUaT0zIkV/nhaSrqqklNABRKQujZiGvQw=
-X-Received: by 2002:ac8:4507:: with SMTP id q7mr3191244qtn.142.1595494116048; 
- Thu, 23 Jul 2020 01:48:36 -0700 (PDT)
+ id 1jyWvs-0007Wz-HF; Thu, 23 Jul 2020 08:50:29 +0000
+Received: from mail-qv1-f41.google.com ([209.85.219.41]) by
+ mrelayeu.kundenserver.de (mreue108 [212.227.15.145]) with ESMTPSA (Nemesis)
+ id 1Mo73N-1kaNez36Vv-00pch3; Thu, 23 Jul 2020 10:50:26 +0200
+Received: by mail-qv1-f41.google.com with SMTP id h18so2257968qvl.3;
+ Thu, 23 Jul 2020 01:50:25 -0700 (PDT)
+X-Gm-Message-State: AOAM533aFENff6gxVs9jaNAMVib2GMph118qVjSBCZRxMsyK4xllU4Op
+ eXUeS/Yg3x7g0mx7cKNcR97Md7cJSv4s+8UZ2Ao=
+X-Google-Smtp-Source: ABdhPJx/8iMOoQeuagptb1XxDW3qWIfpAYP9JEOH9O/fasuWg4WHNOHmGUtLnKRpZtu6H/lGAICf6WUPWzlQb7/e0Ec=
+X-Received: by 2002:a0c:f802:: with SMTP id r2mr3732657qvn.197.1595494224298; 
+ Thu, 23 Jul 2020 01:50:24 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200723073744.13400-1-krzk@kernel.org>
- <20200723073744.13400-15-krzk@kernel.org>
-In-Reply-To: <20200723073744.13400-15-krzk@kernel.org>
+ <20200723073744.13400-19-krzk@kernel.org>
+In-Reply-To: <20200723073744.13400-19-krzk@kernel.org>
 From: Arnd Bergmann <arnd@arndb.de>
-Date: Thu, 23 Jul 2020 10:48:19 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a3btGD5oqmPXJk=UOmA=wuUxn-vOOO982uAjuRcE3crVg@mail.gmail.com>
-Message-ID: <CAK8P3a3btGD5oqmPXJk=UOmA=wuUxn-vOOO982uAjuRcE3crVg@mail.gmail.com>
-Subject: Re: [PATCH 14/23] memory: ti-emif-pm: Fix cast to iomem pointer
+Date: Thu, 23 Jul 2020 10:50:08 +0200
+X-Gmail-Original-Message-ID: <CAK8P3a1TSTX9ATUuyWyqJ1xtd6GP13JM-RQkhGCi1BSTiM9X9A@mail.gmail.com>
+Message-ID: <CAK8P3a1TSTX9ATUuyWyqJ1xtd6GP13JM-RQkhGCi1BSTiM9X9A@mail.gmail.com>
+Subject: Re: [PATCH 18/23] memory: mtk-smi: Add argument to function definition
 To: Krzysztof Kozlowski <krzk@kernel.org>
-X-Provags-ID: V03:K1:nhJBKhOS57un1e4yIRJWV6G/mY+RpF1eQTiT258AZt4CmdN8xrU
- mYAMj/xwUMoQimb0OtzPY4UM7CjRYrTryGK9tKJa1u4MrsIH9D4HylA1hLgOpa+0WgmZEp7
- jiw8XoFaIVm0FuJp/qDniBPP3XKw4HWvsuQFxk4rWDZVhmmhgnep5E/aXSRsVOwQ0z9Zs/B
- Nh6rt50EXmtuwF/MZhx8A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:WcXf8r0R0jg=:hcP2WVf1wlkwMp/KIbGQnQ
- tCD05nrydsAJenrzO3GdHjH7ZGaQ8Z0ChtYiJ5bgHYErWiCZk/U6HZHnHOWQOSbs9AirZJXAA
- Zy3AJ2v+X/LnijGyuQ/soZbXo3oDTbweU1GP7up8Gxuaghl8MZ8d3EYI5YLXsdzIHw9vxrYJ1
- k+0nuFfdkkPcW1JR/6CH3Yy0XzkBezfcVga526Tc1inRAQtMeZLDhiEb7LIT2M671w7J3ybiu
- E6N/Iwf+PynDfGAdxJh9/XGpadqJ7mX0u+Ed+CqaZdoPa7ugweZsIab/3OdVvvLs7xVozO4Lr
- bcOibJ04v8LtMAlYmXMfq2wWS7ayYrCS+DTETEib+ZNumjWb5V1GsuQY29mV5jw2ZdDTXJ7L9
- YbyIwWa7jSClSeJF3TLyFxoLXzILakB/etU4LI8zcMFzAQDk7dID1HSJDlYRsyOULvacLOlVa
- jv+LRWESmN7Ox1as5fO5aZd/tAOGrqvX4YJ9R/Cp5AcBllrJs8DuiWrc4HlnrLMJ+Ek6hpKaO
- +Z3uj8JGVMMfRMxkELu9YhoIw/1QytDY9FVpaBlgULm7NnwGzwppDT00xw3i2D0c41rcyBBsq
- +VcWO9pMJgoVkOxyXmiqhRJVH+h6FtrRyAhQOEP4BhN+Qb4kfYHTR+z2AM+nkDGYZYW7yRO26
- cY7eAxifhYng2uEmPqQpMO0wXCcIGagcZPKpjWQN+l6K+2NIkwT0nZnjjzG00YXs8qjhEGyUY
- nNQeDzFIEFBZTzlWGLsM0RFA72zd1iToZrr/shpQ4ywZ8FpdmlDKLjjo4z/ylgOzjW2dvL3Pt
- py+TsFhuTLONKN2SmE0VVLLZmqVb05Hbi0cScxVDWkA3JPHJIaFBqI1ELgNIALLb2kwwzky
+X-Provags-ID: V03:K1:mDl7VlfunwXndG8XSS4hTD/GTdfubloRrbdDTFnyCLBBn90N4Rm
+ 4m1SZks/aUVBBS3HiiaDRKrDNXg+hnP43LEnqq1y1SZYAd4nksbA1Mi4yF5gwpJ72NSgK54
+ QS5A0nWiKiYPtY2JOrzTBeo26CsZFHNIx+YpwQBzdOIy/5BzluZZxf+VALmpDRXIKB8t+Ve
+ D0oGeRU0/eydN6G9JTcJA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:HUVquBbZIaE=:zzU5oDeoR3A18S23y4ZJwN
+ xYwrYM8CYaWKOQ7GO3Y/VBaE9RtXBpKr/ZkiqBdl30+jAIsPYGzjui5McqCdJ1SdkK296WbSa
+ QNnfyVQBYYGWXMuKcZb8KwxNgX+f/6Fn2yT49Q/zsE2WtYq+vUAKJrBeWO2Q546Ogevq+/dC8
+ 6ykcszhdOK8BwM2Rjg4jLH8NVrlrBL0Ot3axOlOTQvYZvSBA9NhFNrF8lbvJ5d4CP5gLPElzB
+ l+6lkqHZx5PzKFPJYpOI1TU3kBucWtAWbfvcQj2mZHrj0uwhSVv4u9ow6xc84JKg4LxqFx/GE
+ WxuK242DKaPKV3/CceBxgywslXH6oidhkAGJQxSEQWRaQFvr9Rb7xsPln8rVKqBCqgpHfq1MX
+ WB8yDf8jgpyF0fSgtuWc9wlCjnReexyuhKi4o2pYOUC/AzX0x6lm/Odlr75hfd0p3Nllz3VPF
+ Jxiptpg0G0VPYifmoWABK8A2x8kXhu3jLZ1KuUz8sdPFCuJ0Yb82KzBymu3bbWFb9Z6RRRtz9
+ zGJ0XxWYhydwoCdpvaRtAxUWOxj4Mi8JfuPZUmK6xFmmIzXAaJ7/ZolND8f/dPidpYuXl4iio
+ 4L+AdM9Xc9l1vqVReBj83dVdNjyRkqxEMYCtJVZVRBU/79zby9Ywy4fjgLRcFZrtBSVQtx77Z
+ vxYHel7RZdv6G5lpVBl6hboZgwMH8rFwxJ57USCxWqMdmD836DPjIT2z70rpfNffa6ZFHouHr
+ 94UMNL5sKLnzCFR7aw4ptRwi7A5xTqq+08OqGN76IZudcfulwRHIFXkNk2ZjacWgCJ0G1o6AL
+ 2VxrjGG2SDQp8klYkk3IRy0eqt+5AIdS3nTDau+22aukt9cUt2cUnT+uPly/CEMnTWlLwI7TD
+ dbUzNqOLG+oy4AV0R/HA86J/6CTPGjJhjo/YiTCunuqytIUfdmJNhkCsZZt9IQaxCbnSy7zf0
+ ne4RAbYSOLAZEoUu7cVjzZP5GJpIEzV9jgykgwnwKIiQYcguEyLr7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200723_044842_929261_8AE2C1C8 
-X-CRM114-Status: GOOD (  18.88  )
+X-CRM114-CacheID: sfid-20200723_045029_024905_48534AD5 
+X-CRM114-Status: GOOD (  19.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,35 +114,39 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On Thu, Jul 23, 2020 at 9:39 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
 >
-> Cast pointer to iomem memory properly to fix sparse warning:
->
->     drivers/memory/ti-emif-pm.c:251:38: warning: incorrect type in argument 1 (different address spaces)
->     drivers/memory/ti-emif-pm.c:251:38:    expected void const volatile [noderef] __iomem *addr
->     drivers/memory/ti-emif-pm.c:251:38:    got void *
+> Fix checkpatch warning:
+>     WARNING: function definition argument 'struct device *' should also have an identifier name
 >
 > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> ---
->  drivers/memory/ti-emif-pm.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/memory/ti-emif-pm.c b/drivers/memory/ti-emif-pm.c
-> index 9c90f815ad3a..6c747c1e98cb 100644
-> --- a/drivers/memory/ti-emif-pm.c
-> +++ b/drivers/memory/ti-emif-pm.c
-> @@ -248,7 +248,7 @@ MODULE_DEVICE_TABLE(of, ti_emif_of_match);
->  static int ti_emif_resume(struct device *dev)
->  {
->         unsigned long tmp =
-> -                       __raw_readl((void *)emif_instance->ti_emif_sram_virt);
-> +                       __raw_readl((void __iomem *)emif_instance->ti_emif_sram_virt);
->
 
-Maybe this shouldn't even be __raw_readl(), but instead READ_ONCE()?
+Is this a bug in checkpatch? I don't see why it should warn about this,
+as there is no function definition here.
 
-The other accesses in this file don't use MMIO wrappers either but just treat
-it as a pointer. The effect would be the same though.
+Your change is clearly harmless, but I wonder if we should fix
+checkpatch instead.
 
       Arnd
+
+> ---
+>  drivers/memory/mtk-smi.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> index 109c7e51d551..c21262502581 100644
+> --- a/drivers/memory/mtk-smi.c
+> +++ b/drivers/memory/mtk-smi.c
+> @@ -60,7 +60,7 @@ struct mtk_smi_common_plat {
+>
+>  struct mtk_smi_larb_gen {
+>         int port_in_larb[MTK_LARB_NR_MAX + 1];
+> -       void (*config_port)(struct device *);
+> +       void (*config_port)(struct device *dev);
+>         unsigned int                    larb_direct_to_common_mask;
+>         bool                            has_gals;
+>  };
+> --
+> 2.17.1
+>
 
 _______________________________________________
 Linux-mediatek mailing list
