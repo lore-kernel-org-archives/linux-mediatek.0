@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6354DC433E5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 07:42:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 111DBC433E3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 07:42:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 30C712086A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 07:42:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D47D820714
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 07:42:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tN/z6oR+";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="beeuAmTd"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 30C712086A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="q1qy9uZP";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="EN3DXaBM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D47D820714
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AjU8Slcr9ZuX/LNjZMakWd5ouIZKt/x7sUpTXC1JvOI=; b=tN/z6oR+A/uQG9daFLue7WZ/2j
-	X9yK3APKQ/ezr8fetpAIUIF3LErONgpJf8EBDmGDUAdIgQEMfV+d1dSsBvyrPPZGBvpg+zHgTOVvS
-	Xy9VVpQEq5++puQMpAl74W/+X9H4BO4fZAEYjBiqPEBDRempTgLpx9DMFrV6pizarJfvVzE8YEF6R
-	jb/2rELjargzc4dbSpszhfyQWDmE32bMBVnWtmcjeyifJPnm52jziihU4fVEqesWMhJYwjTN6gSUz
-	5aDUL2iSI6u9suMUfO2jU7MwKw40X6WBsqiXty/Rb4bcc/RKJsEPGiwpRoODwaAs9TWMtRusV3KOd
-	hK793i6A==;
+	bh=ZNaoVUW5kIiwa6W3VGwgz6hUiwt6HE7DkQtop18H6qc=; b=q1qy9uZP8mWHvWZCmQrLngQ2ji
+	Mp/MogdCYWa7+MNFJVMx2lsfR7zj6g8OvulhvmqUC6Jp3AOYAsgfo579GyeIbYwR+Xir7C7FVUVeq
+	1ZLq5lp33JRThS7KahtY3cpnkUYI+iebYRzyfzsd3K9zyhhho6rgVrmFuRYKP7A0IpjGmhqzKrMu7
+	jbs3/ax1qNpf6L0KxjWaTFU5xFXa3/y/SRvHYz5Vx1GZiHGwgnsAZGZ4r1mEQTU9h+v/4EApUemlA
+	pXii8Cl+Q9FCkuu0u/nLhEd3kWnZm957uQiTNuArWAujrzVB34QXmbKilWuMW0P2nuT65ev/gVTE5
+	s5Mi8ULw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyVrW-0006Zj-Op; Thu, 23 Jul 2020 07:41:54 +0000
+	id 1jyVra-0006bw-4c; Thu, 23 Jul 2020 07:41:58 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyVop-00053R-I5; Thu, 23 Jul 2020 07:39:09 +0000
+ id 1jyVot-00055m-Po; Thu, 23 Jul 2020 07:39:12 +0000
 Received: from kozik-lap.mshome.net (unknown [194.230.155.213])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4A54F20888;
- Thu, 23 Jul 2020 07:39:01 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6887B206F5;
+ Thu, 23 Jul 2020 07:39:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595489946;
- bh=ee2yfevvxPNZT07hkWmEVih9tVXRSdr7zWFQlfrcYn8=;
+ s=default; t=1595489951;
+ bh=F8/rcj75C8QDyRhC1fqjTttvRAlPLacLZsrsJfSBM8k=;
  h=From:List-Id:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=beeuAmTdud655oreI8BCaEUt5hXcWkZs5WDZL9wh07wF9SA9720CJDVJsxQOS5U2r
- yyMRR8hRm/HqJl/UdwABRMqhmT0Q5WN/5HAs/0wEOzGxh1AjZRxT4sqFost4h/ccNc
- VIiqUdkYM+t5BZX/VWQBo0HNk/zDqrP9TVYtq9Oo=
+ b=EN3DXaBMHmRIXUjHTlT1fiFpBvJMDCp8b7erVoTMQr1jhGbfWnMwrmwR07ZW2XYVU
+ QJepgRUMv6EfZgrU2VROmGXBGSZCTyDV2j/smEWrSdUKIACB/G1PF904rqkTGXPUbt
+ 8LYVaJJ3HWb1S2mxruX75Y38pSoYbYjHBtaoSbhQ=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 List-Id: <soc.lore.kernel.org>
 To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
@@ -63,15 +63,15 @@ To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  Jonathan Hunter <jonathanh@nvidia.com>, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-omap@vger.kernel.org, linux-tegra@vger.kernel.org
-Subject: [PATCH 13/23] memory: emif: Silence platform_get_irq() error in driver
-Date: Thu, 23 Jul 2020 09:37:34 +0200
-Message-Id: <20200723073744.13400-14-krzk@kernel.org>
+Subject: [PATCH 14/23] memory: ti-emif-pm: Fix cast to iomem pointer
+Date: Thu, 23 Jul 2020 09:37:35 +0200
+Message-Id: <20200723073744.13400-15-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200723073744.13400-1-krzk@kernel.org>
 References: <20200723073744.13400-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200723_033907_793331_FDAA955A 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20200723_033911_949469_06D330AB 
+X-CRM114-Status: GOOD (  15.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,31 +92,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The platform_get_irq() already prints error message so there is no need
-to do it again in the driver.
+Cast pointer to iomem memory properly to fix sparse warning:
+
+    drivers/memory/ti-emif-pm.c:251:38: warning: incorrect type in argument 1 (different address spaces)
+    drivers/memory/ti-emif-pm.c:251:38:    expected void const volatile [noderef] __iomem *addr
+    drivers/memory/ti-emif-pm.c:251:38:    got void *
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
- drivers/memory/emif.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ drivers/memory/ti-emif-pm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/memory/emif.c b/drivers/memory/emif.c
-index 1241a87081f8..1bf0656d5e9a 100644
---- a/drivers/memory/emif.c
-+++ b/drivers/memory/emif.c
-@@ -1561,11 +1561,8 @@ static int __init_or_module emif_probe(struct platform_device *pdev)
- 		goto error;
+diff --git a/drivers/memory/ti-emif-pm.c b/drivers/memory/ti-emif-pm.c
+index 9c90f815ad3a..6c747c1e98cb 100644
+--- a/drivers/memory/ti-emif-pm.c
++++ b/drivers/memory/ti-emif-pm.c
+@@ -248,7 +248,7 @@ MODULE_DEVICE_TABLE(of, ti_emif_of_match);
+ static int ti_emif_resume(struct device *dev)
+ {
+ 	unsigned long tmp =
+-			__raw_readl((void *)emif_instance->ti_emif_sram_virt);
++			__raw_readl((void __iomem *)emif_instance->ti_emif_sram_virt);
  
- 	irq = platform_get_irq(pdev, 0);
--	if (irq < 0) {
--		dev_err(emif->dev, "%s: error getting IRQ resource - %d\n",
--			__func__, irq);
-+	if (irq < 0)
- 		goto error;
--	}
- 
- 	emif_onetime_settings(emif);
- 	emif_debugfs_init(emif);
+ 	/*
+ 	 * Check to see if what we are copying is already present in the
 -- 
 2.17.1
 
