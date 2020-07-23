@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIM_INVALID,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 34F97C433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 17:15:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F461C433E4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 17:16:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 01B7C2071A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 17:15:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 456FD2071A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 17:16:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SwhHOyno";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=broadcom.com header.i=@broadcom.com header.b="D2kL3VW7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 01B7C2071A
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sEpO3XdO";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=broadcom.com header.i=@broadcom.com header.b="K+SnKxwU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 456FD2071A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=broadcom.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,58 +26,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=0aDSW/Rfger/SAtupsb+26MGv75AK0Nj/Cpk0kO07Uc=; b=SwhHOynojXB0QOaXtayjNkLLc
-	7+a+dfpM+hoj2f8l+nSeFHhX3dOu/mzFeiDssDXbYzbogZLli8WQotkiPVsqf2Gi69Xae1zFXS0C+
-	FuCqi4Z2MQv2ZiuPRY2OrThaNwa4pCQxQRjmnYESd3z/HYuBgEB4fekHcph8PuNd18hoT9HWNPDBi
-	4mQ7pBiPSlCU/1o0Zuj1dPuiDBiiSnEzxOlQK8r7xsMKosAjfU7iG9gJAbvv93g5Ze5r2H2SOY4pC
-	XLoo2WgGmFqi30xP0tE/A+2lW4GVGX+KwUP1JVoSk0XNOELlQunubWz2/cHZRQ05r+t1pP3kakR0w
-	aKRb5Yygw==;
+	 bh=NAkpCnx9Xk/FA4/aVSa/BRDyT5uavzY/uSMbZDN08ZI=; b=sEpO3XdOnccqI6hghZNKLdHOr
+	EUGGoAgtseE8Zp9x/n1f3VSqeuWCUr0FKUP77h94QsrzX7o/FOdBzL5V61xCSC7LV/OCykvH3IDgb
+	8RyTl9AWCSMMR41DRIAELLAvr4lJ7t1tCFEk7NqFMe2+s/AAPHxlmrMmyg28qKNpGYaMX5GhiMjy1
+	cPzFjEjlpTWbB7j6tsuO5qsVxhVm+cEtVCzMeaSa4WdoIwMWhbgclfUnJga07vP6t2I++TRFTThWF
+	8yqeodT1v0KeovuNdSGRxY+cbr22C+zbiHyk/e+nFcUrDreasp0AAgnOVQORTYV7rEsfVO5SoU+X7
+	DbZuzrL6g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyeof-0004J5-Ta; Thu, 23 Jul 2020 17:15:33 +0000
-Received: from mail-qv1-xf44.google.com ([2607:f8b0:4864:20::f44])
+	id 1jyep0-0004PW-V6; Thu, 23 Jul 2020 17:15:55 +0000
+Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyeoa-0004Gw-55
- for linux-mediatek@lists.infradead.org; Thu, 23 Jul 2020 17:15:29 +0000
-Received: by mail-qv1-xf44.google.com with SMTP id di5so2882483qvb.11
- for <linux-mediatek@lists.infradead.org>; Thu, 23 Jul 2020 10:15:26 -0700 (PDT)
+ id 1jyeou-0004Mx-Rj
+ for linux-mediatek@lists.infradead.org; Thu, 23 Jul 2020 17:15:49 +0000
+Received: by mail-qk1-x743.google.com with SMTP id b14so4362690qkn.4
+ for <linux-mediatek@lists.infradead.org>; Thu, 23 Jul 2020 10:15:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=uxqgbT1xGWBNU5YbnWHoLn+2QzI4IjiCwjdiIwlOoYI=;
- b=D2kL3VW7zX669rdE7uTbTlP31fK7ZlJNSMl59TCCOG9B0rGjYvWYAiRRN5pQLhUbNj
- tH2ym7dLLWpp+iGDXG1Itn/y3VP6eMYC892FZkWwkvWFBoqoXh3IrzCcyqEXVl4yQ2ZW
- sVsPsE3lC5B9mY1OnExahBLRt5lbo3SXAbi4k=
+ :cc; bh=JXiuwKSxH1v6t1t/ryYYU7zLgRgpgLMrl8o3usa+ml4=;
+ b=K+SnKxwUrjhMdkKMznvv0/mSZpVVpR59yG77Q31rc69sjsc1uY1h2B4N81OGYgZcS1
+ fsFtjzCQh4qQJSYBpVJxnJiFdI0biFvC+sGyjDB0cDY0hG11MHJBwW2SK2RI7m2/rwyS
+ v1bd5wbArHaOuX4jaoWOMdBC00HeEJmfUwO1k=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=uxqgbT1xGWBNU5YbnWHoLn+2QzI4IjiCwjdiIwlOoYI=;
- b=VD4eiDNTotBKC22oQbZoQ8w17VEIQ1bgcmhR35YoY0o5G8WmLUZYuMOVVpyt6nZ1A1
- AjRJSmWIVm2dGHcIEkRlSOdahMgKaa08kVa+Bf8omVjXyNcZN5F5vGVXahV4e4/uix+o
- mlNuSRKv4hT7CIBeEvNnfgmI8Xr//QGttHFT3W+XfNRjhzPXZLlaGsC2P4pR/b2DwEhq
- ikCejqrl1AykaJ8MvdHLWEWz9TYOBZlS9xngcNumVV3Kg2oXZFXsMgn3j2SdTPrR3nV2
- kU7X4ezeO2/fa0R9xKaCgVNrTOW9pK72offGiwt2dKuTBBdlI3qwm/wWWAY5BGLcIzlq
- lqwg==
-X-Gm-Message-State: AOAM532q24Cq99AsbRHxoUIEbdZfKdNxVpJkrNS4VtonUd4hmBWRe2Tw
- BNUZ9t0FPNcr/1XeLR8ZqyKtPnpiYWzI76Qiks0/fw==
-X-Google-Smtp-Source: ABdhPJwLdD2kuuxmaYBIRerlmw2LPR4pPFv4tVkeSMizVI3cJusdEuI0jtB1kimBr9K4sbHmJZt3PpUJDk7hMkWdX3w=
-X-Received: by 2002:a05:6214:851:: with SMTP id
- dg17mr5838866qvb.235.1595524524901; 
- Thu, 23 Jul 2020 10:15:24 -0700 (PDT)
+ bh=JXiuwKSxH1v6t1t/ryYYU7zLgRgpgLMrl8o3usa+ml4=;
+ b=ZoM3BB6h3tin1LDKrG0QDpRVMu7zfes7HeB7IQWCMaEyDKLmnm5L34o2Kev7+18zlR
+ ApLvX6lL8nGjWmmXY0Q7/F03YnY1nerFdfa8k6GrOK13OD1BhScrtQ6UUE2enUfwwL86
+ joZhYBup/8D8NkcjHxrxEdKDeeg9HqHqqyK31Q2RwVzZFatj/14QEASESODx6brP2Q4j
+ ZdOuOXzvFfFY9v7alSAbw/c146skPIcFmFifvAF79qjPzlwUHBcjLXd6zDn9+awSjk3I
+ URwVanTZ0k1o+/Cj8AWEXrlX9/joJ16YaAq5D8AarpEjJFZpRF5V+ddAT0aAgTGV4EIm
+ ZKYw==
+X-Gm-Message-State: AOAM531SGbml0qxe3q6379sKPcgvANlxHL8ds0uKxdQtB25/NYPgG7jI
+ sNno65CedQx4Av+lfVmGJXVBhjCnxWvg1RT5Cu4rhg==
+X-Google-Smtp-Source: ABdhPJxTfnoxWQUWdTg8raMcFvzXp1cWiOq8kQMMi+BDEmI/sCV1IYxPpZLXjsosKPeDkbkDYTHj+k9jFHSSpLw6ss4=
+X-Received: by 2002:ae9:e857:: with SMTP id a84mr6649837qkg.100.1595524546846; 
+ Thu, 23 Jul 2020 10:15:46 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200723073744.13400-1-krzk@kernel.org>
- <20200723073744.13400-18-krzk@kernel.org>
- <e65d4ed3-3c01-acb7-f324-be99201815df@gmail.com>
-In-Reply-To: <e65d4ed3-3c01-acb7-f324-be99201815df@gmail.com>
+ <20200723073744.13400-17-krzk@kernel.org>
+ <b9519b7f-9cf0-3715-bca9-05905035eada@gmail.com>
+In-Reply-To: <b9519b7f-9cf0-3715-bca9-05905035eada@gmail.com>
 From: Markus Mayer <mmayer@broadcom.com>
-Date: Thu, 23 Jul 2020 10:15:14 -0700
-Message-ID: <CAGt4E5uRzPtgy54VvRMpoWMbFfY6evBSjmd4dfHO+=__fR+3kQ@mail.gmail.com>
-Subject: Re: [PATCH 17/23] memory: brcmstb_dpfe: Remove unneeded braces
+Date: Thu, 23 Jul 2020 10:15:36 -0700
+Message-ID: <CAGt4E5v3mbY_S2Q=Tq5ZKSY450weu9kFZ9R3bkJ1=3VPobZGsg@mail.gmail.com>
+Subject: Re: [PATCH 16/23] memory: brcmstb_dpfe: Constify the contents of
+ string
 To: Florian Fainelli <f.fainelli@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200723_131528_303925_2BE288E9 
-X-CRM114-Status: UNSURE (   9.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200723_131548_922815_044C44E2 
+X-CRM114-Status: GOOD (  10.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,9 +112,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Thu, 23 Jul 2020 at 10:11, Florian Fainelli <f.fainelli@gmail.com> wrote:
 >
 > On 7/23/20 12:37 AM, Krzysztof Kozlowski wrote:
-> > Single statement blocks don't need braces.  Fixes checkpatch warning:
-> >
-> >     WARNING: braces {} are not necessary for single statement blocks
+> > The string itself can be made const for safety.
 > >
 > > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 >
