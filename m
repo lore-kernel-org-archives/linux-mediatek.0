@@ -2,21 +2,21 @@ Return-Path: <SRS0=cyKo=BC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=BAYES_00,DKIM_INVALID,
-	DKIM_SIGNED,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-11.3 required=3.0 tests=BAYES_00,DKIM_INVALID,
+	DKIM_SIGNED,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 65C55C433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 08:55:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DD5C5C433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 09:03:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2F72D2071A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 08:55:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AC8BC2086A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 09:03:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yQPAOflv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2F72D2071A
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jm9pm1u0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC8BC2086A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,57 +25,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=W9vsIUQTTtWzXv8Db75IZ7K4s5gOPuoGDjZSB7zn/D4=; b=yQPAOflv8zlyVddTG26mIUksA
-	gFY2K7t/FagyVujqwXTEqp4cVbw4aoFsAt+YNiv0R5boKXeJIepyhFs60WkJ3v/qmrqaVzlKq4NTl
-	HKypzdtA89khf+Xf/mrW6qJsbk5f1/xpIjjA7TuYH/wH+/KRz1kY7q1HY7JamQPmbinxpdpa4LHpk
-	QQbCNyv7Hn+MmVVFHv1DwH10dtCbS3VXOdLbQwKfrPID7OLsJrJ/r7PjX32pYZJrSHNZs8guelIdW
-	/FVYYV9Mfan+Z2xFg7AYLQtsEp8xJraD11ow3AQanH69ciTmnK/CefNcUgwXB14xWfQ75RDzQC3A1
-	IWv72aMuA==;
+	 bh=Wiarc3/zB1O6Q3OuxGO1bqs3rLMydqZ863V7sv11gtc=; b=jm9pm1u0vNb9YQLw73O7p6eLH
+	JKFiZ9m202EJEJ1S+qJGTMJc1VBVEekCoUzE5abuCHTX2ptFSg+0/cmmbCD6MEcP70XBsXHbSJxOU
+	PWIOtjnu0D5E4HcUzlS0WI4SDHJJpphTGpRoki9x3p6p3/30ip+56XAgP8u9QPPEVdk3ZUbbI00J6
+	IkjICTciwfq3DCZtHUjLrcBS3TKJcC1oLQRM22HRYq45do3MEEEAW63YVR0kncHS3EQ5uYqupLTWt
+	VdT/lDD575X/vClYPukL0c0zf+M4e775u6cU1DV2MLMFb8R1LEC9tUbUVPga8BM/gJNeR84v0o2xD
+	vcKAPIbLw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyX0x-000052-0k; Thu, 23 Jul 2020 08:55:43 +0000
+	id 1jyX7t-0000y4-Q8; Thu, 23 Jul 2020 09:02:53 +0000
 Received: from mail-ej1-f65.google.com ([209.85.218.65])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyX0t-0008Vm-Sn; Thu, 23 Jul 2020 08:55:40 +0000
-Received: by mail-ej1-f65.google.com with SMTP id l4so5490413ejd.13;
- Thu, 23 Jul 2020 01:55:37 -0700 (PDT)
+ id 1jyX7b-0000pu-4b; Thu, 23 Jul 2020 09:02:38 +0000
+Received: by mail-ej1-f65.google.com with SMTP id gg18so2161664ejb.6;
+ Thu, 23 Jul 2020 02:02:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=Xt5+vxpGC9nM/ZHsj3r5gI/nmTDmk9F2oBeOZtyGPQM=;
- b=DoSzAvcVTFWMPkR/JxHdLpoY1zj4J+N+W7xgbIYxRK6c2qanRGlgTMFqwGpj8d4k75
- nfDnBpOEj5zdra/+Vr0gu8LMpRIrQvynBwexX4TJ/FZ0q7jD1okemKyWaMKJE8/Dft5x
- anBaR9iP80em+N8ZnB3tyQi+btIZLZKQnzJ7ngP/60XdeR2vKhowMpQuMuDSOx/sw5tQ
- dzhw4sYcXr/aE1jqiZocHcf4irOtn/EpRH7UaPH87ph+FYR8o2A25g/EvNUHb8EysX00
- i5mvSjSa+IzaM6IkviWvZPv9Tz62+05lvz1BeF51PzrSWSckrdhc3PLugUJK5bFMXXnl
- 2qTg==
-X-Gm-Message-State: AOAM530+sr2ZukCKb5WJOZlBOz6r6EGPXYFWPCwznX59NVelYqb+hQ+d
- k+uPqDJsecaBbh+sDW0vVmU=
-X-Google-Smtp-Source: ABdhPJwRP+wjzC0Ys2mHygLb4mxZAtf0iTg0JkShIGi/qXx7US6BV7vrg2I5N8csKyuByvVrRm5SwQ==
-X-Received: by 2002:a17:906:414c:: with SMTP id
- l12mr3469617ejk.417.1595494536809; 
- Thu, 23 Jul 2020 01:55:36 -0700 (PDT)
+ bh=SP17WTfOStR1f/zhDqqAukFagjGeQ43CPtbR6JVcAtM=;
+ b=rgQRFWgdEtW2fshRlo+jwJYnspJrvyTJMUlkK3DXLg0Z//GgRnLaN6TqIi6b3h5V2l
+ 6HEbPs2aGZsEF41CDgX4gjjqXbfy7oy1m6mkypFwy9wjTZkN19LJt9OvjvIfonPef4Ql
+ sH43lr6pb2R/ZaH1iSwOBmmKglZnjUDh+FDU1YbbuytfWlO9/XQCui4U1aPktP8IcoMH
+ mqQJJjkibEVWir+83DqWYkznj8sVkxGOohJx4UaiK5td5Qp1Eat4ER5X8vMB/n6pUTmw
+ miajtXIUeqZesfwV08/B2Q4WRcuDQeBe86qQ1J6hBroKowNp3IlsAYyxb32Qc0o72/A/
+ zCwg==
+X-Gm-Message-State: AOAM533A1OUoLsoDdcP35XeALb6JUYQ8XfqjH1r2h0CNFWwA/5p7SDPP
+ 64Nc1NXfuHx06+6YfrZbniQ=
+X-Google-Smtp-Source: ABdhPJzZvryybJpj7wOJimQ2Cyt/LNy/AugUNbqr7zzcp389gJSHaS+UZayp1LGVwYwITNeIoG5eTA==
+X-Received: by 2002:a17:906:57c5:: with SMTP id
+ u5mr3270775ejr.311.1595494953946; 
+ Thu, 23 Jul 2020 02:02:33 -0700 (PDT)
 Received: from kozik-lap ([194.230.155.213])
- by smtp.googlemail.com with ESMTPSA id
- jo25sm1541668ejb.116.2020.07.23.01.55.34
+ by smtp.googlemail.com with ESMTPSA id h8sm660427edv.28.2020.07.23.02.02.32
  (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 23 Jul 2020 01:55:36 -0700 (PDT)
-Date: Thu, 23 Jul 2020 10:55:33 +0200
+ Thu, 23 Jul 2020 02:02:33 -0700 (PDT)
+Date: Thu, 23 Jul 2020 11:02:30 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [PATCH 18/23] memory: mtk-smi: Add argument to function definition
-Message-ID: <20200723085533.GA25935@kozik-lap>
+Subject: Re: [PATCH 14/23] memory: ti-emif-pm: Fix cast to iomem pointer
+Message-ID: <20200723090230.GB25935@kozik-lap>
 References: <20200723073744.13400-1-krzk@kernel.org>
- <20200723073744.13400-19-krzk@kernel.org>
- <CAK8P3a1TSTX9ATUuyWyqJ1xtd6GP13JM-RQkhGCi1BSTiM9X9A@mail.gmail.com>
+ <20200723073744.13400-15-krzk@kernel.org>
+ <CAK8P3a3btGD5oqmPXJk=UOmA=wuUxn-vOOO982uAjuRcE3crVg@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAK8P3a1TSTX9ATUuyWyqJ1xtd6GP13JM-RQkhGCi1BSTiM9X9A@mail.gmail.com>
+In-Reply-To: <CAK8P3a3btGD5oqmPXJk=UOmA=wuUxn-vOOO982uAjuRcE3crVg@mail.gmail.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200723_045539_941340_3D198CF9 
-X-CRM114-Status: GOOD (  16.09  )
+X-CRM114-CacheID: sfid-20200723_050236_273708_F6FA4301 
+X-CRM114-Status: GOOD (  21.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,26 +108,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 23, 2020 at 10:50:08AM +0200, Arnd Bergmann wrote:
+On Thu, Jul 23, 2020 at 10:48:19AM +0200, Arnd Bergmann wrote:
 > On Thu, Jul 23, 2020 at 9:39 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
 > >
-> > Fix checkpatch warning:
-> >     WARNING: function definition argument 'struct device *' should also have an identifier name
+> > Cast pointer to iomem memory properly to fix sparse warning:
+> >
+> >     drivers/memory/ti-emif-pm.c:251:38: warning: incorrect type in argument 1 (different address spaces)
+> >     drivers/memory/ti-emif-pm.c:251:38:    expected void const volatile [noderef] __iomem *addr
+> >     drivers/memory/ti-emif-pm.c:251:38:    got void *
 > >
 > > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+> > ---
+> >  drivers/memory/ti-emif-pm.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/memory/ti-emif-pm.c b/drivers/memory/ti-emif-pm.c
+> > index 9c90f815ad3a..6c747c1e98cb 100644
+> > --- a/drivers/memory/ti-emif-pm.c
+> > +++ b/drivers/memory/ti-emif-pm.c
+> > @@ -248,7 +248,7 @@ MODULE_DEVICE_TABLE(of, ti_emif_of_match);
+> >  static int ti_emif_resume(struct device *dev)
+> >  {
+> >         unsigned long tmp =
+> > -                       __raw_readl((void *)emif_instance->ti_emif_sram_virt);
+> > +                       __raw_readl((void __iomem *)emif_instance->ti_emif_sram_virt);
+> >
 > 
-> Is this a bug in checkpatch? I don't see why it should warn about this,
-> as there is no function definition here.
-> 
-> Your change is clearly harmless, but I wonder if we should fix
-> checkpatch instead.
+> Maybe this shouldn't even be __raw_readl(), but instead READ_ONCE()?
 
-Good point. If this were not a warning, I would ignore it. However still
-the common practice is to add arguments to such type definitions as it
-helps to describe the type.
+Won't readl() be enough? Indeed it looks problematic.
+
+> 
+> The other accesses in this file don't use MMIO wrappers either but just treat
+> it as a pointer. The effect would be the same though.
+
+I think all the reads and writes are with readl() and writel().
 
 Best regards,
 Krzysztof
+
 
 _______________________________________________
 Linux-mediatek mailing list
