@@ -2,61 +2,77 @@ Return-Path: <SRS0=cyKo=BC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
-	autolearn_force=no version=3.4.0
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 72154C433E3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 10:39:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 25008C433EC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 11:20:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3BAE420737
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 10:39:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E4A222086A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 11:20:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dVBV9qt7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3BAE420737
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="t/e/SRFM";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="mL8oV3z2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E4A222086A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=CmPZOjD6VyR5pxL0KG1qN3SB1d+PZexDFtb867nhhf0=; b=dVBV9qt7kkXL4LKjnh7jfvzKr
-	5MKE0J1Og04gTDQ7szvnsYPvguKUzMxqppTKwuujYXs5stHs9tFlp0YtmtSJSiU4SGeitEeqApBA1
-	Ijdf3ab4um0VNPabDA9uOT55QWh9LF9ayOhLEfx+o9EfFY2bntQHTPpHzK/fv0ZZFA2BIZFcBVg9a
-	zPwr9G8mObNqgxcA/pHc22gAp02SX7LvmwVjkRTKKAfFBkNKsBK/ner8NHFVlSbtuUSEezq37uqDu
-	njLAbpDoj2c857oO9PEtnkSqXzx2vX/n89epEIFOx7vdey476KiMecDxi8pCeJSB8V7YbPms+onkG
-	ZsO2hK1lw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gBUdfEcG2i7IT0LXMXV6virw9SOjK9zJCNGxUEic4ts=; b=t/e/SRFMjspj00wkithM3RsY4I
+	LJEmBbWe1pKcWESCiouPoOhwvXS53afcKHyEHb83zTnjEKMwv5pw/A/69FxJfxEav/8hou0ZDaDu5
+	wbdHw08wDsgiYeXUYh+Iqo03d9VmrRmdKMPmjjfqnh2OUPE9sBv4DLGTPRvrf4tflzHuJgrzz+j+G
+	i3+XeDc67gh2l5fVReIfpYt/EPSkJ3ziFpiEcTb49gOv/FzgDy48qSPb3MHE5Gk+IFa5UYmbMi/1F
+	36Wytv/rhYfBVtrWMZcojNvB98GZzILMJDLyVfT0Yn8VKBBFnskZuCbDfaK51VU1FhPCXRi8QIKuw
+	AfG1wfwA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyYda-0002Ta-DW; Thu, 23 Jul 2020 10:39:42 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyYdX-0002SQ-2z; Thu, 23 Jul 2020 10:39:40 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id AE692D6E;
- Thu, 23 Jul 2020 03:39:35 -0700 (PDT)
-Received: from e121166-lin.cambridge.arm.com (e121166-lin.cambridge.arm.com
- [10.1.196.255])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id EF1D13F66F;
- Thu, 23 Jul 2020 03:39:31 -0700 (PDT)
-Date: Thu, 23 Jul 2020 11:39:26 +0100
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-To: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 00/19] PCI: Another round of host clean-ups
-Message-ID: <20200723103926.GA7926@e121166-lin.cambridge.arm.com>
-References: <20200722022514.1283916-1-robh@kernel.org>
+	id 1jyZGv-0007wR-8q; Thu, 23 Jul 2020 11:20:21 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jyZGp-0007u8-AX; Thu, 23 Jul 2020 11:20:17 +0000
+X-UUID: ea8f174172314ed2a58f44a92111f269-20200723
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=tV3sW+yzooZrTwqq74INKJCg3NXuaZoZaAi68qo1jlY=; 
+ b=mL8oV3z2LyYtvJa93APgzrPeYRehlo3DvksqhMfvjFujmeOsqVGL9Yj+6euTYcTBCz6jOHgECfpNfY61dYwtaY7BFQYbxwHN3sXGRDleu3MBiCEC27xeI28VeYX1ffznDLwNkaEu3gJ6YB8eSFBesqqR2DWfCG3Eye/qXgY5b70=;
+X-UUID: ea8f174172314ed2a58f44a92111f269-20200723
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <hanks.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1396365910; Thu, 23 Jul 2020 03:20:08 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Jul 2020 04:20:07 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Jul 2020 19:19:58 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 23 Jul 2020 19:19:58 +0800
+From: Hanks Chen <hanks.chen@mediatek.com>
+To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Michael
+ Turquette" <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, "Sean
+ Wang" <sean.wang@kernel.org>
+Subject: [PATCH v9 0/7] Add basic SoC Support for Mediatek MT6779 SoC
+Date: Thu, 23 Jul 2020 19:19:50 +0800
+Message-ID: <1595503197-15246-1-git-send-email-hanks.chen@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200722022514.1283916-1-robh@kernel.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-TM-SNTS-SMTP: 2A791F3F0692A7DBE5E718F5B2112D29A2EB4192CD2A0C165DBA8F8BF7F98E542000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200723_063939_225458_4A71C632 
-X-CRM114-Status: GOOD (  20.60  )
+X-CRM114-CacheID: sfid-20200723_072015_817860_22A9805D 
+X-CRM114-Status: GOOD (  14.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,124 +84,121 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>,
- Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org,
- Shawn Lin <shawn.lin@rock-chips.com>, linux-tegra@vger.kernel.org,
- Thierry Reding <thierry.reding@gmail.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Fabio Estevam <festevam@gmail.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>,
- Linus Walleij <linus.walleij@linaro.org>, Ryder Lee <ryder.lee@mediatek.com>,
- Will Deacon <will@kernel.org>, Michal Simek <michal.simek@xilinx.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org,
- Murali Karicheri <m-karicheri2@ti.com>, NXP Linux Team <linux-imx@nxp.com>,
- Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Richard Zhu <hongxing.zhu@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, linux-mediatek@lists.infradead.org,
- Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org,
- Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- linux-renesas-soc@vger.kernel.org, Tom Joseph <tjoseph@cadence.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Jingoo Han <jingoohan1@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
- Lucas Stach <l.stach@pengutronix.de>
+Cc: devicetree@vger.kernel.org, CC Hwang <cc.hwang@mediatek.com>,
+ wsd_upstream@mediatek.com, Andy Teng <andy.teng@mediatek.com>,
+ Hanks Chen <hanks.chen@mediatek.com>, Loda Chou <loda.chou@mediatek.com>,
+ linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, mtk01761 <wendell.lin@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 21, 2020 at 08:24:55PM -0600, Rob Herring wrote:
-> Here's another round PCI host bridge clean-ups. This one aims to
-> reduce the amount of duplication in host probe functions by providing
-> more default initialization of the pci_host_bridge. With the prior
-> clean-ups, it's now possible to alloc and initialize the pci_host_bridge
-> struct from DT in one step.
-> 
-> Patches 2 and 3 drop some pci_host_bridge init. Patches 4-11 clean-up
-> handling of root bus number and bus ranges. Patches 12 and 13 are cleanups
-> for Cadence driver. Patches 14 and 15 are clean-ups for rCar driver. Patch
-> 16 makes missing non-prefetchable region just a warning instead of an
-> error in order to work with rcar-gen2. Patch 17 converts rcar-gen2 to not
-> use the arm32 specific PCI setup. Patch 18 updates how the DT resource
-> parsing is done for all the controller drivers. Any other new controller
-> drivers will need updating. Patch 19 moves the default IRQ mapping to
-> the bridge init core code.
-> 
-> This is based on my previous series of clean-ups[1].
-> 
-> Compile tested only. Any testing would be appreciated as I don't have
-> any of this h/w (well, I have a rock960c, but have not gotten PCIe to work
-> on it).
-> 
-> Rob
-> 
-> [1] https://lore.kernel.org/linux-pci/20200522234832.954484-1-robh@kernel.org/
-> 
-> Rob Herring (19):
->   PCI: versatile: Drop flag PCI_ENABLE_PROC_DOMAINS
->   PCI: Set default bridge parent device
->   PCI: Drop unnecessary zeroing of bridge fields
->   PCI: aardvark: Use pci_is_root_bus() to check if bus is root bus
->   PCI: designware: Use pci_is_root_bus() to check if bus is root bus
->   PCI: mobiveil: Use pci_is_root_bus() to check if bus is root bus
->   PCI: xilinx-nwl: Use pci_is_root_bus() to check if bus is root bus
->   PCI: xilinx: Use pci_is_root_bus() to check if bus is root bus
->   PCI: rockchip: Use pci_is_root_bus() to check if bus is root bus
->   PCI: rcar: Use pci_is_root_bus() to check if bus is root bus
->   PCI: Move setting pci_host_bridge.busnr out of host drivers
->   PCI: cadence: Use bridge resources for outbound window setup
->   PCI: cadence: Remove private bus number and range storage
->   PCI: rcar: Use devm_pci_alloc_host_bridge()
->   PCI: rcar: Use struct pci_host_bridge.windows list directly
->   PCI: of: Reduce missing non-prefetchable memory region to a warning
->   PCI: rcar-gen2: Convert to use modern host bridge probe functions
->   PCI: Move DT resource setup into devm_pci_alloc_host_bridge()
->   PCI: Set bridge map_irq and swizzle_irq to default functions
-> 
->  .../pci/controller/cadence/pcie-cadence-ep.c  |   6 +-
->  .../controller/cadence/pcie-cadence-host.c    |  65 +++----
->  drivers/pci/controller/cadence/pcie-cadence.c |   9 +-
->  drivers/pci/controller/cadence/pcie-cadence.h |   8 +-
->  drivers/pci/controller/dwc/pci-imx6.c         |   2 +-
->  drivers/pci/controller/dwc/pci-keystone.c     |   4 +-
->  .../pci/controller/dwc/pcie-designware-host.c |  28 +--
->  drivers/pci/controller/dwc/pcie-designware.h  |   2 -
->  .../controller/mobiveil/pcie-mobiveil-host.c  |  21 +--
->  .../pci/controller/mobiveil/pcie-mobiveil.h   |   1 -
->  drivers/pci/controller/pci-aardvark.c         |  25 +--
->  drivers/pci/controller/pci-ftpci100.c         |  10 --
->  drivers/pci/controller/pci-host-common.c      |  17 +-
->  drivers/pci/controller/pci-loongson.c         |   8 -
->  drivers/pci/controller/pci-mvebu.c            |   4 -
->  drivers/pci/controller/pci-rcar-gen2.c        | 162 +++++-------------
->  drivers/pci/controller/pci-tegra.c            |  10 --
->  drivers/pci/controller/pci-v3-semi.c          |  12 --
->  drivers/pci/controller/pci-versatile.c        |  13 +-
->  drivers/pci/controller/pci-xgene.c            |   9 -
->  drivers/pci/controller/pcie-altera.c          |  10 --
->  drivers/pci/controller/pcie-brcmstb.c         |   9 -
->  drivers/pci/controller/pcie-iproc-platform.c  |  10 +-
->  drivers/pci/controller/pcie-iproc.c           |   3 -
->  drivers/pci/controller/pcie-mediatek.c        |  16 --
->  drivers/pci/controller/pcie-rcar-host.c       |  73 +-------
->  drivers/pci/controller/pcie-rockchip-host.c   |  24 +--
->  drivers/pci/controller/pcie-rockchip.h        |   1 -
->  drivers/pci/controller/pcie-xilinx-nwl.c      |  20 +--
->  drivers/pci/controller/pcie-xilinx.c          |  22 +--
->  drivers/pci/of.c                              |  45 +++--
->  drivers/pci/pci.h                             |   8 +
->  drivers/pci/probe.c                           |   7 +
->  include/linux/pci.h                           |  12 --
->  34 files changed, 160 insertions(+), 516 deletions(-)
+Change since v9:
+Commit "dt-bindings: pinctrl: add bindings for MediaTek MT6779 SoC"
+-- remove driving desciprtion and reuse the generic schemas.
+Commit "pinctrl: mediatek: add pinctrl support for MT6779 SoC"
+-- fix build error to support ko.
+-- follow the APIs as below.
+   https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/pinctrl/mediatek?h=v5.8-rc6&id=cafe19db7751269bf6b4dd2148cbfa9fbe91d651
+   https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/pinctrl/mediatek?h=v5.8-rc6&id=5f755e1f1efe5ca3b475b14169e6e85bf1411bb5
+Commit "arm64: dts: add dts nodes for MT6779"
+-- remove the clk interface of UART3 in another mail thread.
+   https://lkml.org/lkml/2020/7/21/1444
 
-Applied to pci/misc with Bjorn's ACK - I had to tweak:
 
-https://patchwork.kernel.org/patch/11677011
+Change since v8:
+Commit "dt-bindings: pinctrl: add bindings for MediaTek"
+-- update the format
+Commit "arm64: dts: add dts nodes for MT6779"
+-- fix the typo in uart node
 
-Hopefully I have not messed it up.
 
-Thanks,
-Lorenzo
+Change since v7:
+Commit "dt-bindings: pinctrl: add bindings for MediaTek"
+-- fix typo and change order of patch
+Commit "clk: mediatek: add UART0 clock support"
+-- add fixes tag and real name
+Commit "arm64: dts: add dts nodes for MT6779"
+-- expose all three UARTs in the dtsi
 
+
+Change since v6:
+Commit "dt-bindings: pinctrl: add bindings for MediaTek"
+-- fix format of bindings and add interrupt definition.
+Commit "pinctrl: mediatek: update pinmux definitions for"
+-- use the standard include path
+Commit "pinctrl: mediatek: avoid virtual gpio trying to set"
+-- remove unnecessary error handler
+Commit "pinctrl: mediatek: add pinctrl support for MT6779 SoC"
+-- add some useful help text in kconfig
+Commit "clk: mediatek: add UART0 clock support"
+-- add UART0 clock support
+Commit "arm64: dts: add dts nodes for MT6779"
+-- add "baud" and "bus" clocks for uart
+-- add new approach for mmsys
+
+
+Change since v5:
+1. remove unnecessary string in commit message
+
+
+Change since v4:
+1. fix format of pinctrl bindings
+
+
+Change since v3:
+1. add bindings for "mediatek,mt6779-pinctrl"
+2. add some comments into the code (e.g. virtual gpio ...)
+3. add Acked-by tags
+4. add pmu node into dts
+5. support ppi partition and fix base address in gic node of dts
+
+
+Change since v2:
+1. add Reviewed-by tags
+2. fix checkpatch warnings with strict level
+
+
+Change since v1:
+first patchset
+
+
+Andy Teng (1):
+  dt-bindings: pinctrl: add bindings for MediaTek MT6779 SoC
+
+Hanks Chen (6):
+  pinctrl: mediatek: update pinmux definitions for mt6779
+  pinctrl: mediatek: avoid virtual gpio trying to set reg
+  pinctrl: mediatek: add pinctrl support for MT6779 SoC
+  pinctrl: mediatek: add mt6779 eint support
+  arm64: dts: add dts nodes for MT6779
+  clk: mediatek: add UART0 clock support
+
+ .../pinctrl/mediatek,mt6779-pinctrl.yaml      |  197 ++
+ arch/arm64/boot/dts/mediatek/Makefile         |    1 +
+ arch/arm64/boot/dts/mediatek/mt6779-evb.dts   |   31 +
+ arch/arm64/boot/dts/mediatek/mt6779.dtsi      |  271 +++
+ drivers/clk/mediatek/clk-mt6779.c             |    2 +
+ drivers/pinctrl/mediatek/Kconfig              |   12 +
+ drivers/pinctrl/mediatek/Makefile             |    1 +
+ drivers/pinctrl/mediatek/pinctrl-mt6779.c     |  785 +++++++
+ .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  |   25 +
+ .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  |    1 +
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt6779.h | 2085 +++++++++++++++++
+ drivers/pinctrl/mediatek/pinctrl-paris.c      |    7 +
+ include/dt-bindings/pinctrl/mt6779-pinfunc.h  | 1242 ++++++++++
+ 13 files changed, 4660 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6779-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6779.dtsi
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt6779.c
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt6779.h
+ create mode 100644 include/dt-bindings/pinctrl/mt6779-pinfunc.h
+
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
