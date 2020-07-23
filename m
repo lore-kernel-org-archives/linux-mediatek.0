@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C726EC433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 02:48:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AA533C433E5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 02:57:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 95804207E8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 02:48:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 76ABF206F4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 02:57:48 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dHPMaaRO";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="jw9YaF1g"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 95804207E8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ntPpEkWh";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ntRWEgnE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 76ABF206F4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,55 +27,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=SRVTDO04lqvBtK452fn2anljIllbPnFijm58PkwUjtg=; b=dHPMaaROJo41fJYRwFhGEyH3p
-	/TpEK4BXjDWBm69Q6K8fH8uetkbqAoNkX75v9T3374sRhbhBKva9bDxEVqBdfvdgwGoTIDTrSr5qW
-	ORTgtP/dy6YRXjUF6+KkAKGEhAIGg5mXIHLxG4KsMzm2wbb5u2ysUxBg2bN4ayWSsDaEIvDHbB36S
-	MrSXEVz5e6D7nWxklp6cKT+QfERYeNiCFvk561cJ/FWqSqPSF7s+fDeNLOK4NV94GVLM3I7pSJyNP
-	aiKznNVGMH7TnH4krUrLQ1d2DxW/ZITzUTPyNSC21IlgbFRei66sXmmwjCcOrMj4kily724k4AnA8
-	ITaVJsJyA==;
+	 bh=xjEyLgcjf2camyGe3+6dRQE31cY73VD44cXP8vOJNcM=; b=ntPpEkWhN3/odJ0+y6ztCAeZw
+	hzvSGHG6fDWgPOCS1CC4N0lG9aXk2jvAbq5tJm4z+xT5dS7MaUXujGc/I23ZLl8Dhr0IrfPQ9Zgya
+	vnSw5f+T6apZBWd+nDVMLHsb8qWItPRXoAFAq+UbfeZpEoaTrpcImdnyXEcnoc6vG6jjP6iQhqA2W
+	V2DUSWhATsfBu6x/Ci1izHfExnvEqqD+rjr1CqyaOFqpE5AcZWZFmeNypPixgt7uOXfIv7CnrQ7vj
+	JFfp6hckVhQCrBa/dViMubmHKC05q8e/xCdK5l3ipTckefFMe90D+k258wIlTVrz3mfwWNoUeA47j
+	8xXs4DosQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyRHL-0008O7-Lw; Thu, 23 Jul 2020 02:48:15 +0000
+	id 1jyRQO-0000XI-FI; Thu, 23 Jul 2020 02:57:36 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyRHJ-0008NQ-4w
- for linux-mediatek@lists.infradead.org; Thu, 23 Jul 2020 02:48:14 +0000
-X-UUID: 521a01f610b34ac8a9960986a9e3e2ce-20200722
+ id 1jyRQJ-0000Vu-5c; Thu, 23 Jul 2020 02:57:32 +0000
+X-UUID: f3bb05642bc347b3a075ed409544dd4d-20200722
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=o5Pnaz5PzLl00kO7UGNUdo3DX9rzOLiF6hNu8QVIo/Y=; 
- b=jw9YaF1gpolTRR6kmJctp0538ekNI6ytMdVJATBkIzebqHAGpKAumpdRWQO9hqzP8WACwf/RoGa9jeCWf7wKvi/SCwRiPUYlWg41SgIXaNgZ1W2pIuQPEzhzlHk7n9sABajwUAkjdcAhwC8u6WkFN4LE6PK236p8ArMBRZTC3yg=;
-X-UUID: 521a01f610b34ac8a9960986a9e3e2ce-20200722
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <frankie.chang@mediatek.com>)
+ bh=WYDT42K+eq1n1qjiZfhiWIQP4kra/i2foem6eG/vJw8=; 
+ b=ntRWEgnEt6sFOWGQluImQ8Cg78J98/5814elObibCbBHvut8WppImk0+MIMAXHQST2bHgMkrYFDl2K3HvaHkrAS0UZ4J8Rn64iU3jbtEL9KkgdsBPBtAXPGqO7Z3+UiBxxA5KFSLFHSxG7m+DwLc4gjgp1JlzShucFLIJdmQBkg=;
+X-UUID: f3bb05642bc347b3a075ed409544dd4d-20200722
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1533614400; Wed, 22 Jul 2020 18:48:08 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ with ESMTP id 1201510519; Wed, 22 Jul 2020 18:57:26 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 22 Jul 2020 19:48:06 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Jul 2020 10:47:58 +0800
-Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
+ 15.0.1497.2; Wed, 22 Jul 2020 19:57:24 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Jul 2020 10:57:23 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 23 Jul 2020 10:47:56 +0800
-Message-ID: <1595472479.5899.8.camel@mtkswgap22>
-Subject: Re: [PATCH v5 2/3] binder: add trace at free transaction.
-From: Frankie Chang <Frankie.Chang@mediatek.com>
-To: Todd Kjos <tkjos@google.com>
-Date: Thu, 23 Jul 2020 10:47:59 +0800
-In-Reply-To: <CAHRSSEydixN=4JQW3PGsTVaYZG+1aVZA6JOE9c9GufiWrkDycQ@mail.gmail.com>
-References: <20200507085544.GB1097552@kroah.com>
- <1591791827-23871-1-git-send-email-Frankie.Chang@mediatek.com>
- <1591791827-23871-3-git-send-email-Frankie.Chang@mediatek.com>
- <CAHRSSEydixN=4JQW3PGsTVaYZG+1aVZA6JOE9c9GufiWrkDycQ@mail.gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ Transport; Thu, 23 Jul 2020 10:57:23 +0800
+Message-ID: <1595473043.5077.8.camel@mtksdaap41>
+Subject: Re: [PATCH 3/4] clk: mediatek: Add configurable enable control to
+ mtk_pll_data
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+To: Nicolas Boichat <drinkcat@chromium.org>
+Date: Thu, 23 Jul 2020 10:57:23 +0800
+In-Reply-To: <CANMq1KC5i8GU2zMxk+NvY5hF7Qvd-Jx-+pvY2cXfqzb=X-BWRQ@mail.gmail.com>
+References: <1595400601-26220-1-git-send-email-weiyi.lu@mediatek.com>
+ <1595400601-26220-4-git-send-email-weiyi.lu@mediatek.com>
+ <CANMq1KC5i8GU2zMxk+NvY5hF7Qvd-Jx-+pvY2cXfqzb=X-BWRQ@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200722_224813_593869_0C63615C 
-X-CRM114-Status: GOOD (  19.64  )
+X-CRM114-CacheID: sfid-20200722_225731_429655_3B832143 
+X-CRM114-Status: GOOD (  29.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,103 +86,155 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream <wsd_upstream@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>,
- Arve =?ISO-8859-1?Q?Hj=F8nnev=E5g?= <arve@android.com>,
- Jian-Min Liu <Jian-Min.Liu@mediatek.com>, linux-mediatek@lists.infradead.org,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>
+Cc: Rob Herring <robh@kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>,
+ James Liao <jamesjj.liao@mediatek.com>, Stephen Boyd <sboyd@kernel.org>,
+ lkml <linux-kernel@vger.kernel.org>, Ikjoon Jang <ikjn@chromium.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Wendell Lin <wendell.lin@mediatek.com>, linux-clk@vger.kernel.org,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2020-07-20 at 11:23 -0700, Todd Kjos wrote:
-> On Wed, Jun 10, 2020 at 5:24 AM Frankie Chang
-> <Frankie.Chang@mediatek.com> wrote:
+On Wed, 2020-07-22 at 16:51 +0800, Nicolas Boichat wrote:
+> On Wed, Jul 22, 2020 at 2:50 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
 > >
-> > From: "Frankie.Chang" <Frankie.Chang@mediatek.com>
+> > In all MediaTek PLL design, bit 0 of CON0 register is always
+> > the enable bit.
+> > However, there's a special case of usbpll on MT8192.
+> > The enable bit of usbpll is moved to bit 2 of other register.
+> > Add configurable en_reg and base_en_bit for enable control or
+> > using the default if without setting in pll data.
 > >
-> > Since the original trace_binder_transaction_received cannot
-> > precisely present the real finished time of transaction, adding a
-> > trace_binder_txn_latency_free at the point of free transaction
-> > may be more close to it.
-> >
-> > Signed-off-by: Frankie.Chang <Frankie.Chang@mediatek.com>
+> > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 > > ---
-> >  drivers/android/binder.c       |    2 ++
-> >  drivers/android/binder_trace.h |   27 +++++++++++++++++++++++++++
-> >  2 files changed, 29 insertions(+)
+> >  drivers/clk/mediatek/clk-mtk.h |  2 ++
+> >  drivers/clk/mediatek/clk-pll.c | 26 ++++++++++++++++++++++----
+> >  2 files changed, 24 insertions(+), 4 deletions(-)
 > >
-> > diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-> > index 1592396..5ec9af8 100644
-> > --- a/drivers/android/binder.c
-> > +++ b/drivers/android/binder.c
-> > @@ -1523,6 +1523,7 @@ static void binder_free_transaction(struct binder_transaction *t)
-> >          * If the transaction has no target_proc, then
-> >          * t->buffer->transaction has already been cleared.
-> >          */
-> > +       trace_binder_txn_latency_free(t);
-> >         binder_free_txn_fixups(t);
-> >         kfree(t);
-> >         binder_stats_deleted(BINDER_STAT_TRANSACTION);
-> > @@ -3094,6 +3095,7 @@ static void binder_transaction(struct binder_proc *proc,
-> >         kfree(tcomplete);
-> >         binder_stats_deleted(BINDER_STAT_TRANSACTION_COMPLETE);
-> >  err_alloc_tcomplete_failed:
-> > +       trace_binder_txn_latency_free(t);
-> >         kfree(t);
-> >         binder_stats_deleted(BINDER_STAT_TRANSACTION);
-> >  err_alloc_t_failed:
-> > diff --git a/drivers/android/binder_trace.h b/drivers/android/binder_trace.h
-> > index 6731c3c..8ac87d1 100644
-> > --- a/drivers/android/binder_trace.h
-> > +++ b/drivers/android/binder_trace.h
-> > @@ -95,6 +95,33 @@
-> >                   __entry->thread_todo)
-> >  );
+> > diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+> > index c3d6756..8bb0b3d 100644
+> > --- a/drivers/clk/mediatek/clk-mtk.h
+> > +++ b/drivers/clk/mediatek/clk-mtk.h
+> > @@ -233,6 +233,8 @@ struct mtk_pll_data {
+> >         uint32_t pcw_chg_reg;
+> >         const struct mtk_pll_div_table *div_table;
+> >         const char *parent_name;
+> > +       uint32_t en_reg;
+> > +       uint8_t base_en_bit;
+> >  };
 > >
-> > +TRACE_EVENT(binder_txn_latency_free,
-> > +       TP_PROTO(struct binder_transaction *t),
-> > +       TP_ARGS(t),
-> > +       TP_STRUCT__entry(
-> > +               __field(int, debug_id)
-> > +               __field(int, from_proc)
-> > +               __field(int, from_thread)
-> > +               __field(int, to_proc)
-> > +               __field(int, to_thread)
-> > +               __field(unsigned int, code)
-> > +               __field(unsigned int, flags)
-> > +       ),
-> > +       TP_fast_assign(
-> > +               __entry->debug_id = t->debug_id;
-> > +               __entry->from_proc = t->from ? t->from->proc->pid : 0;
-> > +               __entry->from_thread = t->from ? t->from->pid : 0;
-> > +               __entry->to_proc = t->to_proc ? t->to_proc->pid : 0;
-> > +               __entry->to_thread = t->to_thread ? t->to_thread->pid : 0;
+> >  void mtk_clk_register_plls(struct device_node *node,
+> > diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+> > index f440f2cd..b8ccd42 100644
+> > --- a/drivers/clk/mediatek/clk-pll.c
+> > +++ b/drivers/clk/mediatek/clk-pll.c
+> > @@ -44,6 +44,7 @@ struct mtk_clk_pll {
+> >         void __iomem    *tuner_en_addr;
+> >         void __iomem    *pcw_addr;
+> >         void __iomem    *pcw_chg_addr;
+> > +       void __iomem    *en_addr;
+> >         const struct mtk_pll_data *data;
+> >  };
+> >
+> > @@ -56,7 +57,10 @@ static int mtk_pll_is_prepared(struct clk_hw *hw)
+> >  {
+> >         struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
+> >
+> > -       return (readl(pll->base_addr + REG_CON0) & CON0_BASE_EN) != 0;
+> > +       if (pll->en_addr)
+> > +               return (readl(pll->en_addr) & BIT(pll->data->base_en_bit)) != 0;
+> > +       else
+> > +               return (readl(pll->base_addr + REG_CON0) & CON0_BASE_EN) != 0;
+> >  }
+> >
+> >  static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 fin,
+> > @@ -251,6 +255,12 @@ static int mtk_pll_prepare(struct clk_hw *hw)
+> >         r |= pll->data->en_mask;
+> >         writel(r, pll->base_addr + REG_CON0);
+> >
 > 
-> t->to_proc and t->to_thread are not safe to dereference without
-> holding t->lock. If the target process dies, these fields can be set
-> to NULL
+> This is not a new change, but I'm wondering if the asymmetry is
+> intentional here, that is, prepare sets bit pll->data->en_mask of
+> REG_CON0; unprepare clears CON0_BASE_EN of REG_CON0.
 > 
-Thanks for remind. I will add lock protection for these t->to_proc &
-t->to_thread in v7.
+> With this patch, if pll->en_addr is set, you set both
+> pll->data->en_mask _and_ pll->data->base_en_bit, and clear only
+> pll->data->base_en_bit.
+> 
 
-> > +               __entry->code = t->code;
-> > +               __entry->flags = t->flags;
-> > +       ),
-> > +       TP_printk("transaction=%d from %d:%d to %d:%d flags=0x%x code=0x%x",
-> > +                 __entry->debug_id, __entry->from_proc, __entry->from_thread,
-> > +                 __entry->to_proc, __entry->to_thread, __entry->code,
-> > +                 __entry->flags)
-> > +);
+Hi Nicolas,
+
+AFAIK, the asymmetry was intentional.
+en_mask is actually a combination of divider enable mask and the pll
+enable bit(CON0_BASE_EN).
+Even without my patch, it still sets divider enable mask and en_bit, and
+only clears en_bit.
+You could see the pll_data in clk-mt8192.c of patch [4/4]
+Take mainpll as an example,
+the enable mask of mainpll is 0xff000001, where 0xff000000 is the
+divider enable mask and 0x1 is the en_bit
+
+For usbpll in special case, usbpll doesn't have divider enable mask on
+MT8192 so I give nothing(0x00000000) in the en_mask field.
+However, the main reason why I don't skip setting the en_mask of MT8192
+usbpll is that I'd just like to reserve the divider enable mask for any
+special plls with divider enable mask in near future.
+
+> > +       if (pll->en_addr) {
+> > +               r = readl(pll->en_addr);
+> > +               r |= BIT(pll->data->base_en_bit);
+> > +               writel(r, pll->en_addr);
+> > +       }
 > > +
-> >  TRACE_EVENT(binder_transaction,
-> >         TP_PROTO(bool reply, struct binder_transaction *t,
-> >                  struct binder_node *target_node),
+> >         __mtk_pll_tuner_enable(pll);
+> >
+> >         udelay(20);
+> > @@ -277,9 +287,15 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
+> >
+> >         __mtk_pll_tuner_disable(pll);
+> >
+> > -       r = readl(pll->base_addr + REG_CON0);
+> > -       r &= ~CON0_BASE_EN;
+> > -       writel(r, pll->base_addr + REG_CON0);
+> > +       if (pll->en_addr) {
+> > +               r = readl(pll->en_addr);
+> > +               r &= ~BIT(pll->data->base_en_bit);
+> > +               writel(r, pll->en_addr);
+> > +       } else {
+> > +               r = readl(pll->base_addr + REG_CON0);
+> > +               r &= ~CON0_BASE_EN;
+> > +               writel(r, pll->base_addr + REG_CON0);
+> > +       }
+> >
+> >         r = readl(pll->pwr_addr) | CON0_ISO_EN;
+> >         writel(r, pll->pwr_addr);
+> > @@ -321,6 +337,8 @@ static struct clk *mtk_clk_register_pll(const struct mtk_pll_data *data,
+> >                 pll->tuner_addr = base + data->tuner_reg;
+> >         if (data->tuner_en_reg)
+> >                 pll->tuner_en_addr = base + data->tuner_en_reg;
+> > +       if (data->en_reg)
+> > +               pll->en_addr = base + data->en_reg;
+> 
+> If the answer to my question above holds (asymmetry is not
+> intentional), this patch/the code could be simplified a lot if you
+> also added a pll->en_bit member, and, here, did this:
+> 
+> if (pll->en_reg) {
+>    pll->en_addr = base + data->en_reg;
+>    pll->end_bit = data->en_bit;
+> } else {
+>    pll->en_addr = pll->base_addr + REG_CON0;
+>    pll->en_bit = CON0_BASE_EN;
+> }
+> 
+> >         pll->hw.init = &init;
+> >         pll->data = data;
+> >
 > > --
-> > 1.7.9.5
+> > 1.8.1.1.dirty
 
 _______________________________________________
 Linux-mediatek mailing list
