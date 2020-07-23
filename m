@@ -2,77 +2,74 @@ Return-Path: <SRS0=cyKo=BC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8D731C433E3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 02:12:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AA970C433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 02:15:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5DA4C207E8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 02:12:15 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7C70320781
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 02:15:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iNsWhJ9Z";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="bTgt/zGV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5DA4C207E8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HbXZjkjQ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="cmfI8JIw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7C70320781
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cL0ifNLS8Z0ybDbJNqrxQCoh3dDJXxuhL+VV8K5eh20=; b=iNsWhJ9ZUQO3+Yk+ykV3r75Ou
-	dDvecAOmJW/AjNtsmTzweOjtiTzxAr3zfpr5nulXXAiLiG5Kny/yHHhXKLoSpalYAElOoztDG/w7I
-	b3fqpEKKUaYRY6KYQPHX9WsGaIQv52icV6d/lLkF1h08blh8XGd6HVpiNaq5xlBI6hHFehFdcbKS2
-	wi8tCbc3D9VCIRIqRTgUpv4dXMmsNaRUe5kUZyD2eXzfH0Av64antxQV6uNr9gUwUyecB2D8UoCNs
-	p6fcHiz3zIHBGBeVhRKtMNtCDoZC4uCmB5QmMCxantkMLW+NeeYpP/kgJs+vqss/rE+wlDU1wzEnK
-	kbBxmIXTw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=u/vYgRaK3heWWTnBZq2qxzjW5SmCrd5Ha3DvXLeABok=; b=HbXZjkjQRJKIvwUMK0UzAQctPk
+	n0TtQOT2lepAUuu+qkcxSV19z9cvqj4Zr9FxbYITjt1pEp94vmgdvUmCd0iSoca+qGOR9sVfuaI5f
+	OWLJqQgqsxy1IcAuGCq1SxISQlVbPXP+b8FABoGon9sv0WQ1Eb9BelWoh0yVSDO5q+ED3DIWM0EMg
+	lkYjdmuu8g4Tg4sZ2y2/c/YCN2ry6+fjVgodTAIOynN8u8EfWbbJC1XDGqttHWgukqDBcnE/qaqCh
+	oLr5i5SOMJQF5lqhXB3wGnZwnRSj+2+gHOFQR+FYPhZ0iZk+pWeIOo5U331bvuamf1NUOxWBwFbCZ
+	e9fB/+Ag==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyQiH-0004rX-NR; Thu, 23 Jul 2020 02:12:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jyQl2-0005Lp-Ic; Thu, 23 Jul 2020 02:14:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyQiF-0004qf-Fl; Thu, 23 Jul 2020 02:12:00 +0000
-X-UUID: bd947b96125240c6bd99750868cad0db-20200722
+ id 1jyQky-0005KB-L5; Thu, 23 Jul 2020 02:14:49 +0000
+X-UUID: 1a1188e940d0403494ebebe24f4f7607-20200722
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=PQR+pTRUJr2p2puT6kEgda5uTBofuzbyJhCIDKViHyo=; 
- b=bTgt/zGVR3bFHtCkjDoRHrPVB5J64H23WMse0LvKEATHHY+U+M7zYq4pGqFAmAwwpRRcDH1kfW/TCtwk+QJSr2x4hIauWwgj+1knr1Gy2yMXqkYWA+bXKv9/1XOfJ1MUKQms1G6i2oGBzmIIYFV7PFrTYILSM4seqNeHolJi92A=;
-X-UUID: bd947b96125240c6bd99750868cad0db-20200722
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=qFRLx/+6VxdIz+jDbGtfOLe8xjP4LdN/gpj4rcMmUbQ=; 
+ b=cmfI8JIwFkr/D8XD5NZwO40/On5bPjuLxNN9km6PhG3V4HL6SwWkE4I6KqW2wNQWNZ02i//qJau0jxpqpgkfB+Tnb7/9SRv1WyzE4zMMV5Cq8rQ6UclapIL5+Fdl/+M5DilMV473QqXgS/F/XWaV+jiI1NPqQyYLo4589ayBUQY=;
+X-UUID: 1a1188e940d0403494ebebe24f4f7607-20200722
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yongqiang.niu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2072290944; Wed, 22 Jul 2020 18:11:54 -0800
+ with ESMTP id 36463223; Wed, 22 Jul 2020 18:14:42 -0800
 Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 22 Jul 2020 19:04:55 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 22 Jul 2020 19:04:41 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Jul 2020 10:04:54 +0800
+ 15.0.1497.2; Thu, 23 Jul 2020 10:04:40 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 23 Jul 2020 10:04:49 +0800
+ Transport; Thu, 23 Jul 2020 10:04:36 +0800
 From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Rob
  Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [v7, PATCH 6/7] drm/mediatek: add fifo_size into rdma private data
-Date: Thu, 23 Jul 2020 10:03:17 +0800
-Message-ID: <1595469798-3824-7-git-send-email-yongqiang.niu@mediatek.com>
+Subject: [v7, PATCH 0/7] add drm support for MT8183
+Date: Thu, 23 Jul 2020 10:03:11 +0800
+Message-ID: <1595469798-3824-1-git-send-email-yongqiang.niu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1595469798-3824-1-git-send-email-yongqiang.niu@mediatek.com>
-References: <1595469798-3824-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200722_221159_725043_490851E1 
-X-CRM114-Status: GOOD (  15.48  )
+X-CRM114-CacheID: sfid-20200722_221448_859529_FD202EA7 
+X-CRM114-Status: GOOD (  15.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,72 +91,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-the fifo size of rdma in mt8183 is different.
-rdma0 fifo size is 5k
-rdma1 fifo size is 2k
+This series are based on 5.8-rc1 and provide 7 patch
+to support mediatek SOC MT8183
 
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 19 ++++++++++++++++++-
- 1 file changed, 18 insertions(+), 1 deletion(-)
+Change since v6
+- move ddp component define into mtk_mmsys.h
+- add mmsys private data to support different ic path connection
+- add mt8183-mmsys.c to support 8183 path connection
+- fix reviewed issue in v6
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index e04319f..794acc5 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -63,6 +63,7 @@ struct mtk_disp_rdma {
- 	struct mtk_ddp_comp		ddp_comp;
- 	struct drm_crtc			*crtc;
- 	const struct mtk_disp_rdma_data	*data;
-+	u32				fifo_size;
- };
- 
- static inline struct mtk_disp_rdma *comp_to_rdma(struct mtk_ddp_comp *comp)
-@@ -131,12 +132,18 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
- 	unsigned int threshold;
- 	unsigned int reg;
- 	struct mtk_disp_rdma *rdma = comp_to_rdma(comp);
-+	u32 rdma_fifo_size;
- 
- 	mtk_ddp_write_mask(cmdq_pkt, width, comp,
- 			   DISP_REG_RDMA_SIZE_CON_0, 0xfff);
- 	mtk_ddp_write_mask(cmdq_pkt, height, comp,
- 			   DISP_REG_RDMA_SIZE_CON_1, 0xfffff);
- 
-+	if (rdma->fifo_size)
-+		rdma_fifo_size = rdma->fifo_size;
-+	else
-+		rdma_fifo_size = RDMA_FIFO_SIZE(rdma);
-+
- 	/*
- 	 * Enable FIFO underflow since DSI and DPI can't be blocked.
- 	 * Keep the FIFO pseudo size reset default of 8 KiB. Set the
-@@ -145,7 +152,7 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
- 	 */
- 	threshold = width * height * vrefresh * 4 * 7 / 1000000;
- 	reg = RDMA_FIFO_UNDERFLOW_EN |
--	      RDMA_FIFO_PSEUDO_SIZE(RDMA_FIFO_SIZE(rdma)) |
-+	      RDMA_FIFO_PSEUDO_SIZE(rdma_fifo_size) |
- 	      RDMA_OUTPUT_VALID_FIFO_THRESHOLD(threshold);
- 	mtk_ddp_write(cmdq_pkt, reg, comp, DISP_REG_RDMA_FIFO_CON);
- }
-@@ -291,6 +298,16 @@ static int mtk_disp_rdma_probe(struct platform_device *pdev)
- 		return comp_id;
- 	}
- 
-+	if (of_find_property(dev->of_node, "mediatek,rdma_fifo_size", &ret)) {
-+		ret = of_property_read_u32(dev->of_node,
-+					   "mediatek,rdma_fifo_size",
-+					   &priv->fifo_size);
-+		if (ret) {
-+			dev_err(dev, "Failed to get rdma fifo size\n");
-+			return ret;
-+		}
-+	}
-+
- 	ret = mtk_ddp_comp_init(dev, dev->of_node, &priv->ddp_comp, comp_id,
- 				&mtk_disp_rdma_funcs);
- 	if (ret) {
+Change since v5
+- fix reviewed issue in v5
+base https://patchwork.kernel.org/project/linux-mediatek/list/?series=213219
+
+Change since v4
+- fix reviewed issue in v4
+
+Change since v3
+- fix reviewed issue in v3
+- fix type error in v3
+- fix conflict with iommu patch
+
+Change since v2
+- fix reviewed issue in v2
+- add mutex node into dts file
+
+Changes since v1:
+- fix reviewed issue in v1
+- add dts for mt8183 display nodes
+- adjust display clock control flow in patch 22
+- add vmap support for mediatek drm in patch 23
+- fix page offset issue for mmap function in patch 24
+- enable allow_fb_modifiers for mediatek drm in patch 25
+
+
+Yongqiang Niu (7):
+  drm/mediatek: move ddp component define into mtk_mmsys.h
+  mtk-mmsys: add mmsys private data
+  mtk-mmsys: add mt8183 mmsys support
+  dt-bindings: mediatek: add rdma_fifo_size description for mt8183
+    display
+  arm64: dts: add display nodes for mt8183
+  drm/mediatek: add fifo_size into rdma private data
+  drm/mediatek: add support for mediatek SOC MT8183
+
+ .../bindings/display/mediatek/mediatek,disp.txt    |  14 ++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi           |  98 ++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c            |  18 ++
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c           |  25 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c             |  47 ++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h        |  34 +--
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  43 ++++
+ drivers/soc/mediatek/Makefile                      |   1 +
+ drivers/soc/mediatek/mmsys/Makefile                |   3 +
+ drivers/soc/mediatek/mmsys/mt2701-mmsys.c          | 250 +++++++++++++++++++
+ drivers/soc/mediatek/mmsys/mt8183-mmsys.c          | 161 ++++++++++++
+ drivers/soc/mediatek/mtk-mmsys.c                   | 276 ++++-----------------
+ include/linux/soc/mediatek/mtk-mmsys.h             |  48 ++++
+ 13 files changed, 756 insertions(+), 262 deletions(-)
+ create mode 100644 drivers/soc/mediatek/mmsys/Makefile
+ create mode 100644 drivers/soc/mediatek/mmsys/mt2701-mmsys.c
+ create mode 100644 drivers/soc/mediatek/mmsys/mt8183-mmsys.c
+
 -- 
 1.8.1.1.dirty
 _______________________________________________
