@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F3656C433E3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 03:20:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A5FE1C433E3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 03:20:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AF99B20709
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 03:20:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6E53220771
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 03:20:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l9eDZlAF";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qBumG2O5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF99B20709
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="unDSR9KP";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ROl2NNFc"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6E53220771
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,54 +27,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uRVcGeHKT7nR2pgR1VhYI7FGdEgS3pLonoz8j/9XWA4=; b=l9eDZlAFldMzRtOly3KNS750B
-	lb0UDrGPT5E0qwyfyLmcTRvW9dXXqFafXaXzeCizquABh25VJidRRzB3Xs8/baXE4cma7+HcUWhtN
-	+s1SeYdV8Ec9jS0krObvKjZMHY7Ym8NZgkp4WGGkcBmWlawCy3SNPOSG43pvjX/tHwv6WNS5CuXbo
-	++mXaU4rtyRbAB7f21kgmz2gLVNpqfF8xErTwTER4ZuqeeQzFqWzH73yhavm09r6tcngd1TcmqIPl
-	/NXv42JJXfLz10rjjKmMnfABLTlHsz+6cqj9gbpthspHyPpShkaluFD07+3tB9Def119cD/3uHQ35
-	KBcZx6v4g==;
+	 bh=YfmdptLlIvSP8WdLePUZDxXt1mXMG1W+miySPjQbbwo=; b=unDSR9KPwO3mIbIHi9FtnjkCJ
+	Omi8CLFrpM2VPXodsVt4aYX+Qj+or3wqeTeMkp0QlIepobuWGJH9tPa+QKTZtWm60i9plPNLgTz+q
+	XyMXwbwsGEaqW68g9celfpK0+OXKEUXwXe8uDWbIRUw0EB/B+LSbVWG/U71RB49nfzltRg7HzDY2O
+	MJhZxkrAAAtA/Ruk0TGDo8jc4jZcU70HuVr5RNpLIjXH2lr9Ccp26DIxYhRqijn2Xddg298LRORMd
+	J9qMEw0kT96jOTKksqETuF+JUZ4ZvBTakcD56yOvtp3wjIt/bltULLbhP5z6o+Rr/BWaPMe3ejZMf
+	kdD+BSN4A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyRly-0006OY-T2; Thu, 23 Jul 2020 03:19:55 +0000
+	id 1jyRmZ-0006dA-L0; Thu, 23 Jul 2020 03:20:31 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyRip-0004yz-6E; Thu, 23 Jul 2020 03:16:41 +0000
-X-UUID: 56975968bf3a47df969fe98ff5ce34cf-20200722
+ id 1jyRir-0004yz-ET; Thu, 23 Jul 2020 03:16:43 +0000
+X-UUID: cd00910f95cc45e09f7aa94d914e594a-20200722
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=nkyeVbezkiMwsNrKU3e33sAw3cAgD50YmCF4Tng1Trs=; 
- b=qBumG2O53DZ30TOTifoxgVmqXVyUfOv3ooDCeUBrPbcOgoM3tcEPF2CmKiToQyr6dfMVts9z/pVKgA92Zrqz5YegokQxky8lYeRCz6wEJ//DbTKCY7YAK5Qk5PxGfinPxGo6fXJpgLHCiYrNY/7oxyfIrUMhmQht4IZRfFywbeg=;
-X-UUID: 56975968bf3a47df969fe98ff5ce34cf-20200722
+ bh=151JDTHdMe4rYensnDlW5zvgZEZ8Eg7MLmUS7xkAwNI=; 
+ b=ROl2NNFcp/OUWf7VxHtc3X0vHQqjeO0tuA8UpmGuBeO/Cu2zkWgRq4O8ZSlVp++0L9ykOZNsYzxM5dnA5F5ysYMs0m0/iAlx80I8rgYXso4i+fs8msO/XM0J0p8pUv122EWmRpFnk5x3xJOWMLx7fN1XvmeBTdNfV8j1+4fNA9c=;
+X-UUID: cd00910f95cc45e09f7aa94d914e594a-20200722
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <xia.jiang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1767020817; Wed, 22 Jul 2020 19:16:27 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1203919599; Wed, 22 Jul 2020 19:16:27 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 22 Jul 2020 20:06:38 -0700
+ 15.0.1497.2; Wed, 22 Jul 2020 20:06:42 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Jul 2020 11:06:36 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Jul 2020 11:06:40 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 23 Jul 2020 11:06:33 +0800
+ Transport; Thu, 23 Jul 2020 11:06:37 +0800
 From: Xia Jiang <xia.jiang@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
  <mchehab+samsung@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
  Brugger" <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>
-Subject: [PATCH v10 22/28] media: platform: Change the call functions of
- getting/enable/disable the jpeg's clock
-Date: Thu, 23 Jul 2020 11:04:45 +0800
-Message-ID: <20200723030451.5616-23-xia.jiang@mediatek.com>
+Subject: [PATCH v10 25/28] media: platform: Rename jpeg dec file name
+Date: Thu, 23 Jul 2020 11:04:48 +0800
+Message-ID: <20200723030451.5616-26-xia.jiang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200723030451.5616-1-xia.jiang@mediatek.com>
 References: <20200723030451.5616-1-xia.jiang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200722_231639_418441_863EEFF5 
-X-CRM114-Status: GOOD (  17.70  )
+X-CRM114-CacheID: sfid-20200722_231641_772075_8775B4C4 
+X-CRM114-Status: GOOD (  12.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,121 +97,121 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the generic of_property_* helpers to get the clock_nums and clocks
-from device tree.
-Use the generic clk_bulk_* helpers to enable and disable clocks.
+Rename the files which are for decode feature. This is preparing
+path since the jpeg enc patch will be added later.
 
+Reviewed-by: Tomasz Figa <tfiga@chromium.org>
 Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
 ---
-v10: new add patch
+v10: no changes
 ---
- .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 47 +++++++++++++++----
- .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |  8 ++--
- 2 files changed, 42 insertions(+), 13 deletions(-)
+ drivers/media/platform/mtk-jpeg/Makefile                      | 2 +-
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c               | 4 ++--
+ .../platform/mtk-jpeg/{mtk_jpeg_hw.c => mtk_jpeg_dec_hw.c}    | 2 +-
+ .../platform/mtk-jpeg/{mtk_jpeg_hw.h => mtk_jpeg_dec_hw.h}    | 2 +-
+ .../mtk-jpeg/{mtk_jpeg_parse.c => mtk_jpeg_dec_parse.c}       | 2 +-
+ .../mtk-jpeg/{mtk_jpeg_parse.h => mtk_jpeg_dec_parse.h}       | 2 +-
+ .../platform/mtk-jpeg/{mtk_jpeg_reg.h => mtk_jpeg_dec_reg.h}  | 0
+ 7 files changed, 7 insertions(+), 7 deletions(-)
+ rename drivers/media/platform/mtk-jpeg/{mtk_jpeg_hw.c => mtk_jpeg_dec_hw.c} (99%)
+ rename drivers/media/platform/mtk-jpeg/{mtk_jpeg_hw.h => mtk_jpeg_dec_hw.h} (98%)
+ rename drivers/media/platform/mtk-jpeg/{mtk_jpeg_parse.c => mtk_jpeg_dec_parse.c} (98%)
+ rename drivers/media/platform/mtk-jpeg/{mtk_jpeg_parse.h => mtk_jpeg_dec_parse.h} (92%)
+ rename drivers/media/platform/mtk-jpeg/{mtk_jpeg_reg.h => mtk_jpeg_dec_reg.h} (100%)
 
+diff --git a/drivers/media/platform/mtk-jpeg/Makefile b/drivers/media/platform/mtk-jpeg/Makefile
+index 92a4fc046bfe..48516dcf96e6 100644
+--- a/drivers/media/platform/mtk-jpeg/Makefile
++++ b/drivers/media/platform/mtk-jpeg/Makefile
+@@ -1,3 +1,3 @@
+ # SPDX-License-Identifier: GPL-2.0-only
+-mtk_jpeg-objs := mtk_jpeg_core.o mtk_jpeg_hw.o mtk_jpeg_parse.o
++mtk_jpeg-objs := mtk_jpeg_core.o mtk_jpeg_dec_hw.o mtk_jpeg_dec_parse.o
+ obj-$(CONFIG_VIDEO_MEDIATEK_JPEG) += mtk_jpeg.o
 diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index 7881e9c93df7..921ed21f7db3 100644
+index 921ed21f7db3..605b4fb3d90b 100644
 --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
 +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -783,14 +783,15 @@ static void mtk_jpeg_clk_on(struct mtk_jpeg_dev *jpeg)
- 	ret = mtk_smi_larb_get(jpeg->larb);
- 	if (ret)
- 		dev_err(jpeg->dev, "mtk_smi_larb_get larbvdec fail %d\n", ret);
--	clk_prepare_enable(jpeg->clk_jdec_smi);
--	clk_prepare_enable(jpeg->clk_jdec);
-+
-+	ret = clk_bulk_prepare_enable(jpeg->num_clks, jpeg->clks);
-+	if (ret)
-+		dev_err(jpeg->dev, "Failed to open jpeg clk: %d\n", ret);
- }
+@@ -23,9 +23,9 @@
+ #include <media/videobuf2-dma-contig.h>
+ #include <soc/mediatek/smi.h>
  
- static void mtk_jpeg_clk_off(struct mtk_jpeg_dev *jpeg)
- {
--	clk_disable_unprepare(jpeg->clk_jdec);
--	clk_disable_unprepare(jpeg->clk_jdec_smi);
-+	clk_bulk_disable_unprepare(jpeg->num_clks, jpeg->clks);
- 	mtk_smi_larb_put(jpeg->larb);
- }
+-#include "mtk_jpeg_hw.h"
++#include "mtk_jpeg_dec_hw.h"
+ #include "mtk_jpeg_core.h"
+-#include "mtk_jpeg_parse.h"
++#include "mtk_jpeg_dec_parse.h"
  
-@@ -939,6 +940,7 @@ static int mtk_jpeg_clk_init(struct mtk_jpeg_dev *jpeg)
- {
- 	struct device_node *node;
- 	struct platform_device *pdev;
-+	int ret, i;
+ static struct mtk_jpeg_fmt mtk_jpeg_formats[] = {
+ 	{
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c
+similarity index 99%
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c
+rename to drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c
+index 68abcfd7494d..afbbfd5d02bc 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c
+@@ -9,7 +9,7 @@
+ #include <linux/kernel.h>
+ #include <media/videobuf2-core.h>
  
- 	node = of_parse_phandle(jpeg->dev->of_node, "mediatek,larb", 0);
- 	if (!node)
-@@ -952,12 +954,39 @@ static int mtk_jpeg_clk_init(struct mtk_jpeg_dev *jpeg)
+-#include "mtk_jpeg_hw.h"
++#include "mtk_jpeg_dec_hw.h"
  
- 	jpeg->larb = &pdev->dev;
+ #define MTK_JPEG_DUNUM_MASK(val)	(((val) - 1) & 0x3)
  
--	jpeg->clk_jdec = devm_clk_get(jpeg->dev, "jpgdec");
--	if (IS_ERR(jpeg->clk_jdec))
--		return PTR_ERR(jpeg->clk_jdec);
-+	jpeg->num_clks =
-+		of_property_count_strings(jpeg->dev->of_node, "clock-names");
-+
-+	if (jpeg->num_clks > 0) {
-+		jpeg->clks = devm_kcalloc(jpeg->dev, jpeg->num_clks,
-+					  sizeof(struct clk_bulk_data),
-+					  GFP_KERNEL);
-+		if (!jpeg->clks)
-+			return -ENOMEM;
-+	} else {
-+		dev_err(&pdev->dev, "Failed to get jpeg clock count\n");
-+		return -EINVAL;
-+	}
-+
-+	for (i = 0; i < jpeg->num_clks; i++) {
-+		ret = of_property_read_string_index(jpeg->dev->of_node,
-+						    "clock-names", i,
-+						    &jpeg->clks->id);
-+		if (ret) {
-+			dev_err(&pdev->dev,
-+				"Failed to get clock name id = %d", i);
-+			return ret;
-+		}
-+	}
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h
+similarity index 98%
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h
+rename to drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h
+index 7b0687f8f4b6..1cc37dbfc8e7 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h
+@@ -11,7 +11,7 @@
+ #include <media/videobuf2-core.h>
  
--	jpeg->clk_jdec_smi = devm_clk_get(jpeg->dev, "jpgdec-smi");
--	return PTR_ERR_OR_ZERO(jpeg->clk_jdec_smi);
-+
-+	ret = devm_clk_bulk_get(jpeg->dev, jpeg->num_clks, jpeg->clks);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to get jpeg clock:%d\n", ret);
-+		return ret;
-+	}
-+
-+	return 0;
- }
+ #include "mtk_jpeg_core.h"
+-#include "mtk_jpeg_reg.h"
++#include "mtk_jpeg_dec_reg.h"
  
- static void mtk_jpeg_job_timeout_work(struct work_struct *work)
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-index 4c76a9dcc4b7..a54e1e82e655 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-@@ -52,8 +52,8 @@ enum mtk_jpeg_ctx_state {
-  * @alloc_ctx:		videobuf2 memory allocator's context
-  * @dec_vdev:		video device node for decoder mem2mem mode
-  * @dec_reg_base:	JPEG registers mapping
-- * @clk_jdec:		JPEG hw working clock
-- * @clk_jdec_smi:	JPEG SMI bus clock
-+ * @clks:		clock names
-+ * @num_clks:		numbers of clock
-  * @larb:		SMI device
-  * @job_timeout_work:	IRQ timeout structure
-  */
-@@ -67,8 +67,8 @@ struct mtk_jpeg_dev {
- 	void			*alloc_ctx;
- 	struct video_device	*dec_vdev;
- 	void __iomem		*dec_reg_base;
--	struct clk		*clk_jdec;
--	struct clk		*clk_jdec_smi;
-+	struct clk_bulk_data *clks;
-+	int num_clks;
- 	struct device		*larb;
- 	struct delayed_work job_timeout_work;
- };
+ enum {
+ 	MTK_JPEG_DEC_RESULT_EOF_DONE		= 0,
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.c
+similarity index 98%
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c
+rename to drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.c
+index f862d38f3af7..b95c45791c29 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.c
+@@ -8,7 +8,7 @@
+ #include <linux/kernel.h>
+ #include <linux/videodev2.h>
+ 
+-#include "mtk_jpeg_parse.h"
++#include "mtk_jpeg_dec_parse.h"
+ 
+ #define TEM	0x01
+ #define SOF0	0xc0
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.h
+similarity index 92%
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h
+rename to drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.h
+index 0a48eeabaff2..2918f15811f8 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.h
+@@ -8,7 +8,7 @@
+ #ifndef _MTK_JPEG_PARSE_H
+ #define _MTK_JPEG_PARSE_H
+ 
+-#include "mtk_jpeg_hw.h"
++#include "mtk_jpeg_dec_hw.h"
+ 
+ bool mtk_jpeg_parse(struct mtk_jpeg_dec_param *param, u8 *src_addr_va,
+ 		    u32 src_size);
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_reg.h
+similarity index 100%
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
+rename to drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_reg.h
 -- 
 2.18.0
 _______________________________________________
