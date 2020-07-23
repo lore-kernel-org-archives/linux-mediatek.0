@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
 	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E07EC433ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 21:18:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 990D7C433E5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 21:28:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CBEC0206D8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 21:18:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 623FE20768
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 21:28:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="q1d/yV5t"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CBEC0206D8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="h1jGj3T9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 623FE20768
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,56 +24,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=o068w6jx3PxNI7xrhWyBgbdRptB5uwBPXKbzmrZNfoU=; b=q1d/yV5tdVFowe3tg4jP+pMg9
-	26f6MsYCrod91fTthqGIJvPaNUWtzRhSliHkwyi2SNLrTNKjtLixah7PXQKSLyaR547agJiQnzZ1W
-	DZxeDbUkFy2YhWZz0YAkFjv8CdGTNHEodYQJ9tpAxpjjbdlzctFef2cdsj5dLZaC8O6x6tm/JGOBZ
-	U0IxGl2tEYxGjyZxB06UEBxQi72ARHhYUGbBX+Iko7iWNACuL72+RUqfbYXYdp4NJYwfWKrCU3myV
-	iREHcHgEpQLn187EThO+7AIZ2+XVFsE18NRct7H/hB+3bpyl+6MUZ3b+xmwoGtBF9MzFwr58v2nX8
-	U80cw+gNQ==;
+	 bh=EAa8nhg2dhhTxbM4vyVNK3b0sYBDC8onaSV3gmV2x9E=; b=h1jGj3T9aBgAr4RDXzA4Y1Fv+
+	LaQw7OVwvrQ1YJXuSLB9ymoj/y9wqz/dDfQUbsZ4R3Fz4YyL4cCl4/ywqYKSK9Cw2jiYSkikiraiW
+	myuSYDD8W0Ab62zo34htuRVnRc3KCJlmB0bnEFNsgX+SeVxgePhG+S6lEUUvWQyaGShPT3RKsCEVX
+	TFVhpRzF0M3z66WhWifg/WU1YAClO2qEfZXi+/rVdbaFnjPOUBBXvM1NEckSWPV1plvPFKlplcnRw
+	4ZThyuK9H5ns/RuxRANnmoH3FWpJvbk+JrycX2HDVOPJiMXTNV9b9a/XTBMXYWOdCLP+bvaqu5UfU
+	wxuoEeG6A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyibS-0003Dl-Og; Thu, 23 Jul 2020 21:18:10 +0000
-Received: from mail-io1-f67.google.com ([209.85.166.67])
+	id 1jyil5-0003rg-Ax; Thu, 23 Jul 2020 21:28:07 +0000
+Received: from mail-il1-f196.google.com ([209.85.166.196])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyibO-0003Ca-TO; Thu, 23 Jul 2020 21:18:07 +0000
-Received: by mail-io1-f67.google.com with SMTP id s189so536045iod.2;
- Thu, 23 Jul 2020 14:18:06 -0700 (PDT)
+ id 1jyil3-0003rD-BP; Thu, 23 Jul 2020 21:28:06 +0000
+Received: by mail-il1-f196.google.com with SMTP id t18so5607443ilh.2;
+ Thu, 23 Jul 2020 14:28:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=Hx09CFzFEK3rFI8A30xOHAnNXgPfvKjfqFgA/SCg1s4=;
- b=ecZ6kbravS4ZZkOhvzTaJlSAulfFm5zE1OKraGVjJWFRo8fY43EUf8TQsig/RU14eB
- ro4eOhp1OQkwXVfrWn1oWElwNlAyraGTSb4FKHe3tAtz6k9ENF99lW6/SXKUGxTIugSX
- kg8R9G0XFdgwUUQDoillyyrNOOcS5QeUJcjl9FXA4HiBpqYfsDoH7B7gUHoeTgYMuM95
- 48CWg/fgj8sH2nxn8jKX88WRzDl6a7JOM7/pkiAyp0kAZZr/Nvm6IOoQUAXp9cRPmyWN
- Pw/noncJGKOosUfKb3SpMP6U1rYGZujkEH7aRprOte25vl+/i/Wl8vNgI426jw/ANrdP
- 2J7g==
-X-Gm-Message-State: AOAM533YlTHBHAf5EFg4JrEV10TEZkpoYoFdEgL7yoXSsuq7FkRZtOEb
- mOpxHUfU+U41rKkaKbr8EQ==
-X-Google-Smtp-Source: ABdhPJzIrbGkisYa8iZy5IAqxlxr48Sy8HcbDiPVQc/+SP8E4CfSPaTNyFUPOeLZfDlyP9BAFCp0HQ==
-X-Received: by 2002:a5e:d90a:: with SMTP id n10mr7039546iop.50.1595539086180; 
- Thu, 23 Jul 2020 14:18:06 -0700 (PDT)
+ bh=SGrdVeSEpiWCWaFeRxn1THIMaeD/i6V3qXeYtCopQ5M=;
+ b=SFG/0tQi/1kaz8xpkERL8w8eweXtZANS6qB1/w6ejW2B5S848bmEcJmsIBCkJDKCd9
+ saSY+VFX/itUa8TuigIvLbKI/u2WPGN2WI8mcBIL40YZ67L6zCgNtOTeBOfLO6PS8+GG
+ S+rDY0tCZv32yj8i9e7LZhByzigR4fsAfgoVy3QqRl0q8jkLmngGNs9gtDPo3MQOarZ0
+ pTIYou8nTvryyHaTVqrWrSb1fK5Ai2uEqTuiNG4nkaqgk9aGRvCHgGXVhn551hKQL8q1
+ I75R7iqmcY6y5whZFiRmDnjv16ajlncbUz0Bl7ns5PqxehSOkJlS1jy53llXTabDc3SA
+ XnUw==
+X-Gm-Message-State: AOAM533UlGWwBABQKlk/j3xBWUrzpag93EAXS6Qc88tbzExkD69TGfRr
+ 7g+moj/qo84xW7lgf65XdA==
+X-Google-Smtp-Source: ABdhPJz7NZ07oV2YI6+xdgYtE3bNTA7ewz+4xk+gmQaRX1u2WcAI2yQMS726ZBZHBEXxDhgzeLJPAA==
+X-Received: by 2002:a92:9e5c:: with SMTP id q89mr317408ili.265.1595539684704; 
+ Thu, 23 Jul 2020 14:28:04 -0700 (PDT)
 Received: from xps15 ([64.188.179.252])
- by smtp.gmail.com with ESMTPSA id d9sm2016925iod.55.2020.07.23.14.18.05
+ by smtp.gmail.com with ESMTPSA id t21sm2086484ioc.0.2020.07.23.14.28.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Jul 2020 14:18:05 -0700 (PDT)
-Received: (nullmailer pid 875357 invoked by uid 1000);
- Thu, 23 Jul 2020 21:18:04 -0000
-Date: Thu, 23 Jul 2020 15:18:04 -0600
+ Thu, 23 Jul 2020 14:28:04 -0700 (PDT)
+Received: (nullmailer pid 889370 invoked by uid 1000);
+ Thu, 23 Jul 2020 21:28:03 -0000
+Date: Thu, 23 Jul 2020 15:28:03 -0600
 From: Rob Herring <robh@kernel.org>
-To: Qii Wang <qii.wang@mediatek.com>
-Subject: Re: [PATCH 3/4] dt-bindings: i2c: update bindings for MT8192 SoC
-Message-ID: <20200723211804.GA875327@bogus>
-References: <1595421106-10017-1-git-send-email-qii.wang@mediatek.com>
- <1595421106-10017-4-git-send-email-qii.wang@mediatek.com>
+To: Seiya Wang <seiya.wang@mediatek.com>
+Subject: Re: [PATCH 2/4] dt-bindings: serial: Add compatible for Mediatek
+ MT8192
+Message-ID: <20200723212803.GA889323@bogus>
+References: <20200723090731.4482-1-seiya.wang@mediatek.com>
+ <20200723090731.4482-3-seiya.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1595421106-10017-4-git-send-email-qii.wang@mediatek.com>
+In-Reply-To: <20200723090731.4482-3-seiya.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200723_171806_960822_62B5660D 
-X-CRM114-Status: UNSURE (   8.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200723_172805_424053_72DEB164 
+X-CRM114-Status: GOOD (  10.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,22 +85,25 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: qiangming.xia@mediatek.com, devicetree@vger.kernel.org,
- srv_heupstream@mediatek.com, wsa@the-dreams.de, leilk.liu@mediatek.com,
- linux-kernel@vger.kernel.org, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org,
+Cc: devicetree@vger.kernel.org, linux-watchdog@vger.kernel.org,
+ srv_heupstream@mediatek.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Guenter Roeck <linux@roeck-us.net>,
+ linux-serial@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 22 Jul 2020 20:31:45 +0800, Qii Wang wrote:
-> Add a DT binding documentation for the MT8192 soc.
+On Thu, 23 Jul 2020 17:07:29 +0800, Seiya Wang wrote:
+> This commit adds dt-binding documentation of uart for Mediatek MT8192 SoC
+> Platform.
 > 
-> Signed-off-by: Qii Wang <qii.wang@mediatek.com>
+> Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt | 1 +
+>  Documentation/devicetree/bindings/serial/mtk-uart.txt | 1 +
 >  1 file changed, 1 insertion(+)
 > 
 
