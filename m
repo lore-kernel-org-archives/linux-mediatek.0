@@ -2,78 +2,64 @@ Return-Path: <SRS0=cyKo=BC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E9C8EC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 16:21:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BCC4FC433E5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 16:22:15 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B3017206D8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 16:21:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 84466206D8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 16:22:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jIlP6kmr";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="rNWywE0u"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B3017206D8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DTmYUOT/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 84466206D8
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qiabf853bwcdx8sD5cpocueGXpr+NPOdMlAZBbdD/kk=; b=jIlP6kmrvZTt265hr5DoJscAt
-	sCLR/GPG5NpSA6L/X6LtgBQh+RQEx5QoHQvphaLuqB8gdw/gniFVQRtACwADk1cCVRWK/D2DYnTSX
-	4XFMaZ3Eau1Ft/RJJ2zSYi7/v35SLgxHw2Q+mJ1odh9VwjV0dpewaaHUEQLK3LLVPFtSnGJsqZag1
-	RzxH+LbyBza4EIqJf/FlFGUXtkZR1ySPKQozpKZbZDOL7Gh2fTrK2+xZNmvRDl+HHXdHCaGG6Duml
-	2XUzZJyVCGC9E5zgMAM/sokVKpyrINGkd905yDNW0My/r8V35NKcDNux6WgnlBT1r7uIoboryzrDZ
-	Hw2+aaUYg==;
+	 bh=G1Bc1pl4l6cPw5MqEnNsFlNuGunyizMA1CzAZjcrMaM=; b=DTmYUOT/zYKd9nFUIgE7aMHJ+
+	Kb6AhsYW8ZxM2LsmgcsjDvvEkJ/MSk8ku/urvoHJEZ3PB8+ErSImLQz7X8IumM2pXLxspvwAncBfl
+	Fni3+AKn5pl8p3CvaAgv2m7I3V7ASsTPSHwgWNU0Kv6sUr4BUJVt+WG/Zx7h0066aOGLbAwqO4VSm
+	tl9XWuNx0T4c5ubq3D7ZSHP3i9Pr2Q0Ka+h36Xv9jc0F1AGm1vjMOCLndtNc2C+mNbNuN9q8iNu+s
+	TjYf/XgathT6mTlT98MumEmc0Sgy57fZI80H56vgRPR53g4FWvAPHfakH2I2qvnRvY4QaHVtYHP2b
+	gIjPvyoUA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jydyP-0002Kc-KY; Thu, 23 Jul 2020 16:21:33 +0000
-Received: from mail.kernel.org ([198.145.29.99])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jydyK-0002IX-AI; Thu, 23 Jul 2020 16:21:29 +0000
-Received: from mail-ej1-f50.google.com (mail-ej1-f50.google.com
- [209.85.218.50])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D3B3320714;
- Thu, 23 Jul 2020 16:21:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595521286;
- bh=6+0/elepkARkgOsTxARSEPfUsQ0kUT59TejC709DQOk=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=rNWywE0uqiF5fWYLgX1UMCbtbCYBJ1ob7Ojq6jMbqsECPSXnAhOywBkb/WEfBgHBe
- H6fiECXyUWpQuDsiI/Kxs2pWTCu57/keSneVpFJbQ0rCjfW1F7HcLSlR1rIz+j+yVQ
- DKmFF4ESoUQ+eoNmxiZZDozNkHR98UXo5Me86NHA=
-Received: by mail-ej1-f50.google.com with SMTP id o18so6999916eje.7;
- Thu, 23 Jul 2020 09:21:25 -0700 (PDT)
-X-Gm-Message-State: AOAM532zOmMiYyh8FCRfg//G1xNk9EK8fJM81UukTbHlemSBcT7sufUO
- B1JvMRlnCREuejTOwzB7S4ppDBaD+BZF9D6VhQ==
-X-Google-Smtp-Source: ABdhPJwfk66abeK8oi/cVBHx5H7Gp1l6otQXnpopQ1fbIoD2End7rCWaLJQk2FAbvfBbzOPHRPtXGys6UdSJM+h5hMI=
-X-Received: by 2002:a17:906:7857:: with SMTP id
- p23mr4119216ejm.260.1595521284362; 
- Thu, 23 Jul 2020 09:21:24 -0700 (PDT)
+	id 1jydyu-0002RR-MA; Thu, 23 Jul 2020 16:22:04 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jydyq-0002Pn-6g; Thu, 23 Jul 2020 16:22:01 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 4B1BA1FB;
+ Thu, 23 Jul 2020 09:21:57 -0700 (PDT)
+Received: from e121166-lin.cambridge.arm.com (e121166-lin.cambridge.arm.com
+ [10.1.196.255])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8CC683F66F;
+ Thu, 23 Jul 2020 09:21:53 -0700 (PDT)
+Date: Thu, 23 Jul 2020 17:21:48 +0100
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+To: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 11/19] PCI: Move setting pci_host_bridge.busnr out of
+ host drivers
+Message-ID: <20200723162148.GA11749@e121166-lin.cambridge.arm.com>
+References: <20200722022514.1283916-1-robh@kernel.org>
+ <20200722022514.1283916-12-robh@kernel.org>
+ <CAL_Jsq+sPaubVERLHaRzjvThk3zDO6zAnRQjGuAMKaVA87Y4HQ@mail.gmail.com>
 MIME-Version: 1.0
-References: <1595469798-3824-1-git-send-email-yongqiang.niu@mediatek.com>
- <1595469798-3824-2-git-send-email-yongqiang.niu@mediatek.com>
- <CAFqH_50=MkBLHJ23hJo--RG=4560ttOUOjHuEwpevghFZ59xQQ@mail.gmail.com>
- <1595498644.13250.2.camel@mhfsdcap03>
-In-Reply-To: <1595498644.13250.2.camel@mhfsdcap03>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Fri, 24 Jul 2020 00:21:13 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_8SgNcAAch=AQazAG0z2wGte1Wa614bnAgG2eZQxCzL7A@mail.gmail.com>
-Message-ID: <CAAOTY_8SgNcAAch=AQazAG0z2wGte1Wa614bnAgG2eZQxCzL7A@mail.gmail.com>
-Subject: Re: [v7,
- PATCH 1/7] drm/mediatek: move ddp component defint into mtk_mmsys.h
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <CAL_Jsq+sPaubVERLHaRzjvThk3zDO6zAnRQjGuAMKaVA87Y4HQ@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200723_122128_517261_B13C62DC 
-X-CRM114-Status: GOOD (  23.83  )
+X-CRM114-CacheID: sfid-20200723_122200_348312_2473CC1F 
+X-CRM114-Status: GOOD (  20.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,119 +71,122 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Daniel Vetter <daniel@ffwll.ch>, Enric Balletbo Serra <eballetbo@gmail.com>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>,
- CK Hu <ck.hu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+Cc: Heiko Stuebner <heiko@sntech.de>,
+ Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
+ PCI <linux-pci@vger.kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>,
+ linux-tegra <linux-tegra@vger.kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Fabio Estevam <festevam@gmail.com>,
+ Marek Vasut <marek.vasut+renesas@gmail.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Will Deacon <will@kernel.org>, Michal Simek <michal.simek@xilinx.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Murali Karicheri <m-karicheri2@ti.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Richard Zhu <hongxing.zhu@nxp.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ Bjorn Helgaas <bhelgaas@google.com>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>,
+ Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ "open list:MEDIA DRIVERS FOR RENESAS - FCP"
+ <linux-renesas-soc@vger.kernel.org>, Tom Joseph <tjoseph@cadence.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Jingoo Han <jingoohan1@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
+ Lucas Stach <l.stach@pengutronix.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-WW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+IOaWvCAyMDIw5bm0N+ac
-iDIz5pelIOmAseWbmyDkuIvljYg2OjA25a+r6YGT77yaCj4KPiBPbiBUaHUsIDIwMjAtMDctMjMg
-YXQgMTE6MzQgKzAyMDAsIEVucmljIEJhbGxldGJvIFNlcnJhIHdyb3RlOgo+ID4gSGkgWW9uZ3Fp
-YW4gTml1LAo+ID4KPiA+IFRoYW5rIHlvdSBmb3IgeW91ciBwYXRjaAo+ID4KPiA+IE1pc3NhdGdl
-IGRlIFlvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29tPiBkZWwgZGlhIGRq
-LiwgMjMKPiA+IGRlIGp1bC4gMjAyMCBhIGxlcyA0OjA1Ogo+ID4gPgo+ID4gPiBtb3ZlIGRkcCBj
-b21wb25lbnQgZGVmaW50IGludG8gbXRrX21tc3lzLmgKPiA+ID4KPiA+Cj4gPiBUaGVyZSBpcyBh
-IHR5cG8sIHNob3VsZCBiZSAiZGVmaW5lcyIuIEJ1dCB3aHkgeW91IHNob3VsZCBtb3ZlIHRoZXNl
-Cj4gPiBkZWZpbmVzIHRvIG10ay1tbXN5cz8KPiA+Cj4KPiBjayBkbyBub3QgbGlrZSB0aGlzIDoK
-PiA+IC0jaW5jbHVkZSAiLi4vLi4vZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5oIgo+ID4g
-LSNpbmNsdWRlICIuLi8uLi9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaCIKCkkg
-dGhpbmsgbm8gb25lIGxpa2UgdGhpcy4KCj4KPiBhZnRlciByZW1vdmUgdGhpcywgd2UgbmVlZCBt
-b3ZlIHRoZSBkZHAgY29tcG9uZW50IGRlZmluZQo+Cj4gdHlwZSBlcnJvciB3aWxsIGZpeGVkIGlu
-IG5leHQgdmVyc2lvbi4KPgoKbW1zeXMgaXMgdGhlIGRyaXZlciB3aGljaCBjb250cm9sIHRoZSBy
-b3V0aW5nIG9mIHRoZXNlIGRkcCBjb21wb25lbnQsCnNvIHRoZSBkZWZpbml0aW9uIG9mIG10a19k
-ZHBfY29tcF9pZCBzaG91bGQgYmUgcGxhY2VkIGluIG10ay1tbXN5cy5oCgpSZWdhcmRzLApDaHVu
-LUt1YW5nLgoKPgo+ID4KPiA+Cj4gPiA+IFNpZ25lZC1vZmYtYnk6IFlvbmdxaWFuZyBOaXUgPHlv
-bmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29tPgo+ID4gPiAtLS0KPiA+ID4gIGRyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmggfCAzNCArLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLQo+ID4gPiAgZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRrLW1tc3lzLmMgICAgICAgICAg
-ICB8ICA0ICstLS0KPiA+ID4gIGluY2x1ZGUvbGludXgvc29jL21lZGlhdGVrL210ay1tbXN5cy5o
-ICAgICAgfCAzMyArKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gPiA+ICAzIGZpbGVzIGNo
-YW5nZWQsIDM1IGluc2VydGlvbnMoKyksIDM2IGRlbGV0aW9ucygtKQo+ID4gPgo+ID4gPiBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaCBiL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmgKPiA+ID4gaW5kZXggZGVi
-ZTM2My4uMTYxMjAxZiAxMDA2NDQKPiA+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kcm1fZGRwX2NvbXAuaAo+ID4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RybV9kZHBfY29tcC5oCj4gPiA+IEBAIC03LDYgKzcsNyBAQAo+ID4gPiAgI2RlZmluZSBN
-VEtfRFJNX0REUF9DT01QX0gKPiA+ID4KPiA+ID4gICNpbmNsdWRlIDxsaW51eC9pby5oPgo+ID4g
-PiArI2luY2x1ZGUgPGxpbnV4L3NvYy9tZWRpYXRlay9tdGstbW1zeXMuaD4KPiA+ID4KPiA+ID4g
-IHN0cnVjdCBkZXZpY2U7Cj4gPiA+ICBzdHJ1Y3QgZGV2aWNlX25vZGU7Cj4gPiA+IEBAIC0zNSwz
-OSArMzYsNiBAQCBlbnVtIG10a19kZHBfY29tcF90eXBlIHsKPiA+ID4gICAgICAgICBNVEtfRERQ
-X0NPTVBfVFlQRV9NQVgsCj4gPiA+ICB9Owo+ID4gPgo+ID4gPiAtZW51bSBtdGtfZGRwX2NvbXBf
-aWQgewo+ID4gPiAtICAgICAgIEREUF9DT01QT05FTlRfQUFMMCwKPiA+ID4gLSAgICAgICBERFBf
-Q09NUE9ORU5UX0FBTDEsCj4gPiA+IC0gICAgICAgRERQX0NPTVBPTkVOVF9CTFMsCj4gPiA+IC0g
-ICAgICAgRERQX0NPTVBPTkVOVF9DQ09SUiwKPiA+ID4gLSAgICAgICBERFBfQ09NUE9ORU5UX0NP
-TE9SMCwKPiA+ID4gLSAgICAgICBERFBfQ09NUE9ORU5UX0NPTE9SMSwKPiA+ID4gLSAgICAgICBE
-RFBfQ09NUE9ORU5UX0RJVEhFUiwKPiA+ID4gLSAgICAgICBERFBfQ09NUE9ORU5UX0RQSTAsCj4g
-PiA+IC0gICAgICAgRERQX0NPTVBPTkVOVF9EUEkxLAo+ID4gPiAtICAgICAgIEREUF9DT01QT05F
-TlRfRFNJMCwKPiA+ID4gLSAgICAgICBERFBfQ09NUE9ORU5UX0RTSTEsCj4gPiA+IC0gICAgICAg
-RERQX0NPTVBPTkVOVF9EU0kyLAo+ID4gPiAtICAgICAgIEREUF9DT01QT05FTlRfRFNJMywKPiA+
-ID4gLSAgICAgICBERFBfQ09NUE9ORU5UX0dBTU1BLAo+ID4gPiAtICAgICAgIEREUF9DT01QT05F
-TlRfT0QwLAo+ID4gPiAtICAgICAgIEREUF9DT01QT05FTlRfT0QxLAo+ID4gPiAtICAgICAgIERE
-UF9DT01QT05FTlRfT1ZMMCwKPiA+ID4gLSAgICAgICBERFBfQ09NUE9ORU5UX09WTF8yTDAsCj4g
-PiA+IC0gICAgICAgRERQX0NPTVBPTkVOVF9PVkxfMkwxLAo+ID4gPiAtICAgICAgIEREUF9DT01Q
-T05FTlRfT1ZMMSwKPiA+ID4gLSAgICAgICBERFBfQ09NUE9ORU5UX1BXTTAsCj4gPiA+IC0gICAg
-ICAgRERQX0NPTVBPTkVOVF9QV00xLAo+ID4gPiAtICAgICAgIEREUF9DT01QT05FTlRfUFdNMiwK
-PiA+ID4gLSAgICAgICBERFBfQ09NUE9ORU5UX1JETUEwLAo+ID4gPiAtICAgICAgIEREUF9DT01Q
-T05FTlRfUkRNQTEsCj4gPiA+IC0gICAgICAgRERQX0NPTVBPTkVOVF9SRE1BMiwKPiA+ID4gLSAg
-ICAgICBERFBfQ09NUE9ORU5UX1VGT0UsCj4gPiA+IC0gICAgICAgRERQX0NPTVBPTkVOVF9XRE1B
-MCwKPiA+ID4gLSAgICAgICBERFBfQ09NUE9ORU5UX1dETUExLAo+ID4gPiAtICAgICAgIEREUF9D
-T01QT05FTlRfSURfTUFYLAo+ID4gPiAtfTsKPiA+ID4gLQo+ID4gPiAgc3RydWN0IG10a19kZHBf
-Y29tcDsKPiA+ID4gIHN0cnVjdCBjbWRxX3BrdDsKPiA+ID4gIHN0cnVjdCBtdGtfZGRwX2NvbXBf
-ZnVuY3Mgewo+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRrLW1tc3lz
-LmMgYi9kcml2ZXJzL3NvYy9tZWRpYXRlay9tdGstbW1zeXMuYwo+ID4gPiBpbmRleCBhNTVmMjU1
-Li4zNmFkNjZiIDEwMDY0NAo+ID4gPiAtLS0gYS9kcml2ZXJzL3NvYy9tZWRpYXRlay9tdGstbW1z
-eXMuYwo+ID4gPiArKysgYi9kcml2ZXJzL3NvYy9tZWRpYXRlay9tdGstbW1zeXMuYwo+ID4gPiBA
-QCAtNSwxMyArNSwxMSBAQAo+ID4gPiAgICovCj4gPiA+Cj4gPiA+ICAjaW5jbHVkZSA8bGludXgv
-ZGV2aWNlLmg+Cj4gPiA+ICsjaW5jbHVkZSA8bGludXgvaW8uaD4KPiA+ID4gICNpbmNsdWRlIDxs
-aW51eC9vZl9kZXZpY2UuaD4KPiA+ID4gICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2Uu
-aD4KPiA+ID4gICNpbmNsdWRlIDxsaW51eC9zb2MvbWVkaWF0ZWsvbXRrLW1tc3lzLmg+Cj4gPiA+
-Cj4gPiA+IC0jaW5jbHVkZSAiLi4vLi4vZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5oIgo+
-ID4gPiAtI2luY2x1ZGUgIi4uLy4uL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5o
-Igo+ID4gPiAtCj4gPiA+ICAjZGVmaW5lIERJU1BfUkVHX0NPTkZJR19ESVNQX09WTDBfTU9VVF9F
-TiAgICAgIDB4MDQwCj4gPiA+ICAjZGVmaW5lIERJU1BfUkVHX0NPTkZJR19ESVNQX09WTDFfTU9V
-VF9FTiAgICAgIDB4MDQ0Cj4gPiA+ICAjZGVmaW5lIERJU1BfUkVHX0NPTkZJR19ESVNQX09EX01P
-VVRfRU4gICAgICAgICAgICAgICAgMHgwNDgKPiA+ID4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvbGlu
-dXgvc29jL21lZGlhdGVrL210ay1tbXN5cy5oIGIvaW5jbHVkZS9saW51eC9zb2MvbWVkaWF0ZWsv
-bXRrLW1tc3lzLmgKPiA+ID4gaW5kZXggN2JhYjVkOS4uMjIyOGJmNiAxMDA2NDQKPiA+ID4gLS0t
-IGEvaW5jbHVkZS9saW51eC9zb2MvbWVkaWF0ZWsvbXRrLW1tc3lzLmgKPiA+ID4gKysrIGIvaW5j
-bHVkZS9saW51eC9zb2MvbWVkaWF0ZWsvbXRrLW1tc3lzLmgKPiA+ID4gQEAgLTksNiArOSwzOSBA
-QAo+ID4gPiAgZW51bSBtdGtfZGRwX2NvbXBfaWQ7Cj4gPiA+ICBzdHJ1Y3QgZGV2aWNlOwo+ID4g
-Pgo+ID4gPiArZW51bSBtdGtfZGRwX2NvbXBfaWQgewo+ID4gPiArICAgICAgIEREUF9DT01QT05F
-TlRfQUFMMCwKPiA+ID4gKyAgICAgICBERFBfQ09NUE9ORU5UX0FBTDEsCj4gPiA+ICsgICAgICAg
-RERQX0NPTVBPTkVOVF9CTFMsCj4gPiA+ICsgICAgICAgRERQX0NPTVBPTkVOVF9DQ09SUiwKPiA+
-ID4gKyAgICAgICBERFBfQ09NUE9ORU5UX0NPTE9SMCwKPiA+ID4gKyAgICAgICBERFBfQ09NUE9O
-RU5UX0NPTE9SMSwKPiA+ID4gKyAgICAgICBERFBfQ09NUE9ORU5UX0RJVEhFUiwKPiA+ID4gKyAg
-ICAgICBERFBfQ09NUE9ORU5UX0RQSTAsCj4gPiA+ICsgICAgICAgRERQX0NPTVBPTkVOVF9EUEkx
-LAo+ID4gPiArICAgICAgIEREUF9DT01QT05FTlRfRFNJMCwKPiA+ID4gKyAgICAgICBERFBfQ09N
-UE9ORU5UX0RTSTEsCj4gPiA+ICsgICAgICAgRERQX0NPTVBPTkVOVF9EU0kyLAo+ID4gPiArICAg
-ICAgIEREUF9DT01QT05FTlRfRFNJMywKPiA+ID4gKyAgICAgICBERFBfQ09NUE9ORU5UX0dBTU1B
-LAo+ID4gPiArICAgICAgIEREUF9DT01QT05FTlRfT0QwLAo+ID4gPiArICAgICAgIEREUF9DT01Q
-T05FTlRfT0QxLAo+ID4gPiArICAgICAgIEREUF9DT01QT05FTlRfT1ZMMCwKPiA+ID4gKyAgICAg
-ICBERFBfQ09NUE9ORU5UX09WTF8yTDAsCj4gPiA+ICsgICAgICAgRERQX0NPTVBPTkVOVF9PVkxf
-MkwxLAo+ID4gPiArICAgICAgIEREUF9DT01QT05FTlRfT1ZMMSwKPiA+ID4gKyAgICAgICBERFBf
-Q09NUE9ORU5UX1BXTTAsCj4gPiA+ICsgICAgICAgRERQX0NPTVBPTkVOVF9QV00xLAo+ID4gPiAr
-ICAgICAgIEREUF9DT01QT05FTlRfUFdNMiwKPiA+ID4gKyAgICAgICBERFBfQ09NUE9ORU5UX1JE
-TUEwLAo+ID4gPiArICAgICAgIEREUF9DT01QT05FTlRfUkRNQTEsCj4gPiA+ICsgICAgICAgRERQ
-X0NPTVBPTkVOVF9SRE1BMiwKPiA+ID4gKyAgICAgICBERFBfQ09NUE9ORU5UX1VGT0UsCj4gPiA+
-ICsgICAgICAgRERQX0NPTVBPTkVOVF9XRE1BMCwKPiA+ID4gKyAgICAgICBERFBfQ09NUE9ORU5U
-X1dETUExLAo+ID4gPiArICAgICAgIEREUF9DT01QT05FTlRfSURfTUFYLAo+ID4gPiArfTsKPiA+
-ID4gKwo+ID4gPiAgdm9pZCBtdGtfbW1zeXNfZGRwX2Nvbm5lY3Qoc3RydWN0IGRldmljZSAqZGV2
-LAo+ID4gPiAgICAgICAgICAgICAgICAgICAgICAgICAgICBlbnVtIG10a19kZHBfY29tcF9pZCBj
-dXIsCj4gPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIGVudW0gbXRrX2RkcF9jb21wX2lk
-IG5leHQpOwo+ID4gPiAtLQo+ID4gPiAxLjguMS4xLmRpcnR5Cj4KPiBfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LW1lZGlhdGVrIG1haWxpbmcg
-bGlzdAo+IExpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
-aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Thu, Jul 23, 2020 at 09:26:01AM -0600, Rob Herring wrote:
+> On Tue, Jul 21, 2020 at 8:25 PM Rob Herring <robh@kernel.org> wrote:
+> >
+> > Most host drivers only parse the DT bus range to set the root bus number
+> > in pci_host_bridge.busnr. The ones that don't set busnr are buggy in
+> > that they ignore what's in DT. Let's set busnr in pci_scan_root_bus_bridge()
+> > where we already check for the bus resource and remove setting it in
+> > host drivers.
+> >
+> > Cc: Jingoo Han <jingoohan1@gmail.com>
+> > Cc: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
+> > Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+> > Cc: Bjorn Helgaas <bhelgaas@google.com>
+> > Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+> > Cc: Will Deacon <will@kernel.org>
+> > Cc: Thierry Reding <thierry.reding@gmail.com>
+> > Cc: Jonathan Hunter <jonathanh@nvidia.com>
+> > Cc: Linus Walleij <linus.walleij@linaro.org>
+> > Cc: Ryder Lee <ryder.lee@mediatek.com>
+> > Cc: Marek Vasut <marek.vasut+renesas@gmail.com>
+> > Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
+> > Cc: linux-tegra@vger.kernel.org
+> > Cc: linux-mediatek@lists.infradead.org
+> > Cc: linux-renesas-soc@vger.kernel.org
+> > Signed-off-by: Rob Herring <robh@kernel.org>
+> > ---
+> >  drivers/pci/controller/dwc/pcie-designware-host.c | 4 ----
+> >  drivers/pci/controller/dwc/pcie-designware.h      | 1 -
+> >  drivers/pci/controller/pci-aardvark.c             | 5 ++---
+> >  drivers/pci/controller/pci-host-common.c          | 1 -
+> >  drivers/pci/controller/pci-tegra.c                | 4 +---
+> >  drivers/pci/controller/pci-v3-semi.c              | 2 --
+> >  drivers/pci/controller/pcie-mediatek.c            | 8 +-------
+> >  drivers/pci/controller/pcie-rcar-host.c           | 1 -
+> >  drivers/pci/probe.c                               | 1 +
+> >  9 files changed, 5 insertions(+), 22 deletions(-)
+> >
+> > diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
+> > index 9e8a9cfc6d3a..fa922cb876a3 100644
+> > --- a/drivers/pci/controller/dwc/pcie-designware-host.c
+> > +++ b/drivers/pci/controller/dwc/pcie-designware-host.c
+> > @@ -374,9 +374,6 @@ int dw_pcie_host_init(struct pcie_port *pp)
+> >                         pp->cfg0_base = pp->cfg->start;
+> >                         pp->cfg1_base = pp->cfg->start + pp->cfg0_size;
+> >                         break;
+> > -               case IORESOURCE_BUS:
+> > -                       pp->busn = win->res;
+> > -                       break;
+> >                 }
+> >         }
+> >
+> 
+> > diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
+> > index fd2146298b58..9fb44290ed43 100644
+> > --- a/drivers/pci/controller/dwc/pcie-designware.h
+> > +++ b/drivers/pci/controller/dwc/pcie-designware.h
+> > @@ -188,7 +188,6 @@ struct pcie_port {
+> >         struct resource         *cfg;
+> >         struct resource         *io;
+> >         struct resource         *mem;
+> > -       struct resource         *busn;
+> >         int                     irq;
+> >         const struct dw_pcie_host_ops *ops;
+> >         int                     msi_irq;
+> 
+> These 2 hunks should be dropped as they are breaking the Amazon driver.
+> 
+> Lorenzo, do you want to fixup or I can send a fix?
+
+Done (I have not removed the hunk below though):
+
+diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
+index 9e8a9cfc6d3a..9775558acdc8 100644
+--- a/drivers/pci/controller/dwc/pcie-designware-host.c
++++ b/drivers/pci/controller/dwc/pcie-designware-host.c
+@@ -474,7 +474,6 @@ int dw_pcie_host_init(struct pcie_port *pp)
+ 	}
+
+ 	bridge->sysdata = pp;
+-	bridge->busnr = pp->busn->start;
+ 	bridge->ops = &dw_pcie_ops;
+ 	bridge->map_irq = of_irq_parse_and_map_pci;
+ 	bridge->swizzle_irq = pci_common_swizzle;
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
