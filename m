@@ -2,21 +2,20 @@ Return-Path: <SRS0=cyKo=BC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AA7AEC433E5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 20:53:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E07EC433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 21:18:22 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 797DF207C4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 20:53:59 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CBEC0206D8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 21:18:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SzKXppHI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 797DF207C4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="q1d/yV5t"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CBEC0206D8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,58 +24,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uUUPA+b79AstVmpVSuFNyn5wO/oB1WNvdmxZ9TLkuqw=; b=SzKXppHIJlhrrHmbajvGs1CEQ
-	YCwvbPsmLYhy5C48Tnjk1hhNbgnJis0A2KrkSpsCi3tXXr6rKDse3LIJb4a2DA6jWSzXqRq1g1kjF
-	iJO/749IohHs0W8EWlREkvy25xK1nX2u84CZEEx25HwKKpjctW5R9/QqOTxCjMdUD+mZQFpi6n+Gh
-	OD7bqLlwpAePUiRdIqZhqoGbL9S4YTIKN/ZLw2o4+Wz+GKuwN4nqh0YwxSXXtsgNAdslxvkOfHw+Q
-	YGeh1bTCgFQZgnVkHT45zHv7Ie9Iel0xUYqmIOjwT3mobIM87m5Rmhc1fsplkhsj8bGLyI2++OGFD
-	p4HxThZ7w==;
+	 bh=o068w6jx3PxNI7xrhWyBgbdRptB5uwBPXKbzmrZNfoU=; b=q1d/yV5tdVFowe3tg4jP+pMg9
+	26f6MsYCrod91fTthqGIJvPaNUWtzRhSliHkwyi2SNLrTNKjtLixah7PXQKSLyaR547agJiQnzZ1W
+	DZxeDbUkFy2YhWZz0YAkFjv8CdGTNHEodYQJ9tpAxpjjbdlzctFef2cdsj5dLZaC8O6x6tm/JGOBZ
+	U0IxGl2tEYxGjyZxB06UEBxQi72ARHhYUGbBX+Iko7iWNACuL72+RUqfbYXYdp4NJYwfWKrCU3myV
+	iREHcHgEpQLn187EThO+7AIZ2+XVFsE18NRct7H/hB+3bpyl+6MUZ3b+xmwoGtBF9MzFwr58v2nX8
+	U80cw+gNQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyiDt-0000gM-S0; Thu, 23 Jul 2020 20:53:49 +0000
-Received: from mail-io1-f66.google.com ([209.85.166.66])
+	id 1jyibS-0003Dl-Og; Thu, 23 Jul 2020 21:18:10 +0000
+Received: from mail-io1-f67.google.com ([209.85.166.67])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyiDr-0000fx-Hb
- for linux-mediatek@lists.infradead.org; Thu, 23 Jul 2020 20:53:48 +0000
-Received: by mail-io1-f66.google.com with SMTP id k23so7666518iom.10
- for <linux-mediatek@lists.infradead.org>; Thu, 23 Jul 2020 13:53:46 -0700 (PDT)
+ id 1jyibO-0003Ca-TO; Thu, 23 Jul 2020 21:18:07 +0000
+Received: by mail-io1-f67.google.com with SMTP id s189so536045iod.2;
+ Thu, 23 Jul 2020 14:18:06 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=ITHgt7Rp1pUPvPasYbFEExd3q0/gLF5DZdscQLiQgEw=;
- b=dHagm3yKdCxkC6XMb1YFu1fZPe7yHpxoqQX24WV/ySHZeZ0dY78rPH8deKNUJoYzOM
- zCHJ51AzK8wDR340S/KozD7FigQX8GL9ExuWZu4kf+B8SNB0e4lNoj9sXr4TYThZJ/yI
- cPQdQTSYcs1V8YdxSy9EPw2Q6zcaXQKT1FPJZc5HbY+RLXfgm7hFzYP317DbStshNPtv
- Cyl/X7rKIZFcVPFvzIDdUp58fTAlzU2Uyupz9wUMODRlDrRNQ3bU2otbpBlmnz12EsY7
- ixCOxXppQ481vMb8GUKvcQjyCF69NGwouKEyChF6Y+COvRgdiNHi+WiD1E5KTQFpBwRs
- nrKg==
-X-Gm-Message-State: AOAM5323NagOKXF/U1ZCNTDUZJpQcyJzILoPgwqKihC2aCQDbWaEJYpV
- mI+l6cLOsOx4jjrKOFb89A==
-X-Google-Smtp-Source: ABdhPJwu8e69Y0kSTAIspRpvODB+BldtXHqBKiEe/jpBPO0AO31cywRDT52VomisXuK/kACvFQX/aw==
-X-Received: by 2002:a05:6602:2f88:: with SMTP id
- u8mr6878032iow.120.1595537626501; 
- Thu, 23 Jul 2020 13:53:46 -0700 (PDT)
+ bh=Hx09CFzFEK3rFI8A30xOHAnNXgPfvKjfqFgA/SCg1s4=;
+ b=ecZ6kbravS4ZZkOhvzTaJlSAulfFm5zE1OKraGVjJWFRo8fY43EUf8TQsig/RU14eB
+ ro4eOhp1OQkwXVfrWn1oWElwNlAyraGTSb4FKHe3tAtz6k9ENF99lW6/SXKUGxTIugSX
+ kg8R9G0XFdgwUUQDoillyyrNOOcS5QeUJcjl9FXA4HiBpqYfsDoH7B7gUHoeTgYMuM95
+ 48CWg/fgj8sH2nxn8jKX88WRzDl6a7JOM7/pkiAyp0kAZZr/Nvm6IOoQUAXp9cRPmyWN
+ Pw/noncJGKOosUfKb3SpMP6U1rYGZujkEH7aRprOte25vl+/i/Wl8vNgI426jw/ANrdP
+ 2J7g==
+X-Gm-Message-State: AOAM533YlTHBHAf5EFg4JrEV10TEZkpoYoFdEgL7yoXSsuq7FkRZtOEb
+ mOpxHUfU+U41rKkaKbr8EQ==
+X-Google-Smtp-Source: ABdhPJzIrbGkisYa8iZy5IAqxlxr48Sy8HcbDiPVQc/+SP8E4CfSPaTNyFUPOeLZfDlyP9BAFCp0HQ==
+X-Received: by 2002:a5e:d90a:: with SMTP id n10mr7039546iop.50.1595539086180; 
+ Thu, 23 Jul 2020 14:18:06 -0700 (PDT)
 Received: from xps15 ([64.188.179.252])
- by smtp.gmail.com with ESMTPSA id d9sm2004036ios.33.2020.07.23.13.53.44
+ by smtp.gmail.com with ESMTPSA id d9sm2016925iod.55.2020.07.23.14.18.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Jul 2020 13:53:45 -0700 (PDT)
-Received: (nullmailer pid 841658 invoked by uid 1000);
- Thu, 23 Jul 2020 20:53:43 -0000
-Date: Thu, 23 Jul 2020 14:53:43 -0600
+ Thu, 23 Jul 2020 14:18:05 -0700 (PDT)
+Received: (nullmailer pid 875357 invoked by uid 1000);
+ Thu, 23 Jul 2020 21:18:04 -0000
+Date: Thu, 23 Jul 2020 15:18:04 -0600
 From: Rob Herring <robh@kernel.org>
-To: Huihui Wang <huihui.wang@mediatek.com>
-Subject: Re: [PATCH v1 1/2] dt-bindings: dma: mediatek: mark useless items as
- decrepted
-Message-ID: <20200723205343.GA839415@bogus>
-References: <20200717030203.14872-1-huihui.wang@mediatek.com>
- <20200717030203.14872-2-huihui.wang@mediatek.com>
+To: Qii Wang <qii.wang@mediatek.com>
+Subject: Re: [PATCH 3/4] dt-bindings: i2c: update bindings for MT8192 SoC
+Message-ID: <20200723211804.GA875327@bogus>
+References: <1595421106-10017-1-git-send-email-qii.wang@mediatek.com>
+ <1595421106-10017-4-git-send-email-qii.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200717030203.14872-2-huihui.wang@mediatek.com>
+In-Reply-To: <1595421106-10017-4-git-send-email-qii.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200723_165347_646489_A94F3A4A 
-X-CRM114-Status: GOOD (  15.63  )
+X-CRM114-CacheID: sfid-20200723_171806_960822_62B5660D 
+X-CRM114-Status: UNSURE (   8.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,70 +85,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
- Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
- Vinod Koul <vkoul@kernel.org>, linux-mediatek@lists.infradead.org
+Cc: qiangming.xia@mediatek.com, devicetree@vger.kernel.org,
+ srv_heupstream@mediatek.com, wsa@the-dreams.de, leilk.liu@mediatek.com,
+ linux-kernel@vger.kernel.org, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 17, 2020 at 11:02:03AM +0800, Huihui Wang wrote:
-> From: huihui wang <huihui.wang@mediatek.com>
+On Wed, 22 Jul 2020 20:31:45 +0800, Qii Wang wrote:
+> Add a DT binding documentation for the MT8192 soc.
 > 
-> Because we move dma address bits config to mtk-uart-apdma.c,
-> it is unnecessary to be configured in device tree.
-> Update the document at the same time.
-> 
-> Signed-off-by: huihui wang <huihui.wang@mediatek.com>
+> Signed-off-by: Qii Wang <qii.wang@mediatek.com>
 > ---
->  .../devicetree/bindings/dma/mtk-uart-apdma.txt        | 11 +++++------
->  1 file changed, 5 insertions(+), 6 deletions(-)
+>  Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/dma/mtk-uart-apdma.txt b/Documentation/devicetree/bindings/dma/mtk-uart-apdma.txt
-> index 2117db0ce4f2..926c86b21e8c 100644
-> --- a/Documentation/devicetree/bindings/dma/mtk-uart-apdma.txt
-> +++ b/Documentation/devicetree/bindings/dma/mtk-uart-apdma.txt
-> @@ -2,8 +2,9 @@
->  
->  Required properties:
->  - compatible should contain:
-> -  * "mediatek,mt2712-uart-dma" for MT2712 compatible APDMA
-> -  * "mediatek,mt6577-uart-dma" for MT6577 and all of the above
-> +  * "mediatek,mt2712-uart-dma" for MediaTek MT2712
-> +  * "mediatek,mt6577-uart-dma" for MediaTek MT6577
-> +  * "mediatek,mt6779-uart-dma" for MediaTek MT6779
 
-This looks like an unrelated change.
-
->  
->  - reg: The base address of the APDMA register bank.
->  
-> @@ -16,13 +17,12 @@ Required properties:
->    See ../clocks/clock-bindings.txt for details.
->  - clock-names: The APDMA clock for register accesses
->  
-> -- mediatek,dma-33bits: Present if the DMA requires support
-> +- mediatek,dma-33bits: Present if the DMA requires support (deprecated)
->  
->  Examples:
->  
->  	apdma: dma-controller@11000400 {
-> -		compatible = "mediatek,mt2712-uart-dma",
-> -			     "mediatek,mt6577-uart-dma";
-> +		compatible = "mediatek,mt6779-uart-dma";
->  		reg = <0 0x11000400 0 0x80>,
->  		      <0 0x11000480 0 0x80>,
->  		      <0 0x11000500 0 0x80>,
-> @@ -50,6 +50,5 @@ Examples:
->  		dma-requests = <12>;
->  		clocks = <&pericfg CLK_PERI_AP_DMA>;
->  		clock-names = "apdma";
-> -		mediatek,dma-33bits;
->  		#dma-cells = <1>;
->  	};
-> -- 
-> 2.18.0
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
