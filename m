@@ -2,49 +2,92 @@ Return-Path: <SRS0=cyKo=BC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EB12FC433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 15:26:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5C189C433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 15:40:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B6A30206D8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 15:26:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1C298206D8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 15:40:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MdgwFRL9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B6A30206D8
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=infradead.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kkciA5x+";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Gfsdqsrl"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1C298206D8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Mime-Version:Date:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=FYc385Zh0p6YxKFmq5kDMLFPP13yrKN59NX7JNORneM=; b=Mdg
-	wFRL9jqDthJc/mN3npt+8W2OgDf7fs0cEvylCEqybmlNC/thz4f4ZgoI70xeMuwnwzQ3t9RlPG2NH
-	YsLzaKutrSPTVjeBZxsqQT+Mca/aN9cpZk6ENeU8RiUlKPhxn/FlvUYxfahkIARrujpJYjzJ5TaIN
-	5J1YE8UkEscIrJUj7WPR8UK/ozAtG90m7AnF+g8PNPSDV8d4GWTsPWoI4dIt0YhFbil4rT3Udds6e
-	g/R1qa0FabFBdOZ7X4zNi6fvlbODt31CLS+Q/PyMoqmTMluSdmfv1TdycLUssDF/1cdofJkveO5c6
-	xHiZ2oq7w9ul2ZYMEH1rnmLVoWGNVPA==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=P8DNF8qeFYjLa9n++ORi71NY09EUKFA9pm7VYWXTiO0=; b=kkciA5x+0Bp9unsb/1hETtsSp
+	D00uIa+JOPbvOvU9qThi+rNPCpl6y4lXlkJEEbJ0k6oFaN8Wn91YyGAQebzimtmu0KzTO8TeMNxjM
+	tjKzJHB9iCTQHqoGTGcD9UDhO61i8oicOowXiZHgboqs3E7BxqQq5RgEPpQtJgCa9IbqeMMPaTk+B
+	kts9MpJaTO0NIQmNM4QiMGqtHTIjTKoZPjelyoq3v1K+5dww6FxRfZZiv2b7byVVthCqD9H8X0KmZ
+	f37fRGKERiw+G0SpVvNtnIRjoPulXv1A38CGX/aTMIR+BPmh2AkHOmtWd9d7iCyPF3gMxy+zgKUNi
+	cApwC3QRA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyd7A-0007Hm-V4; Thu, 23 Jul 2020 15:26:33 +0000
-Received: from 54-240-197-239.amazon.com ([54.240.197.239]
- helo=u3832b3a9db3152.ant.amazon.com)
- by merlin.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyd72-0007E9-Sw; Thu, 23 Jul 2020 15:26:25 +0000
-Message-ID: <03da7c5a51c3640110509bdd2a00e4e258b85924.camel@infradead.org>
-Subject: MT7623 Ethernet TX performance regression
-From: David Woodhouse <dwmw2@infradead.org>
-To: linux-mediatek@lists.infradead.org
-Date: Thu, 23 Jul 2020 16:26:23 +0100
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-Mime-Version: 1.0
+	id 1jydKT-00041F-8c; Thu, 23 Jul 2020 15:40:17 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jydKQ-00040j-UB; Thu, 23 Jul 2020 15:40:16 +0000
+Received: by mail-wm1-x341.google.com with SMTP id f139so5610304wmf.5;
+ Thu, 23 Jul 2020 08:40:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=wBabrqE3i8LyE40s1GoKcwchCmG/WV84eabwjVOE7Ww=;
+ b=Gfsdqsrl5xtjbmI1fasGBb8mUZWlPjqdMj9Bnv2HRVGAvZBRiWbMtEWPJTgZoS41+f
+ bJXE5Zv7YwHt0QdquwOm32dm5RrbthmvJA4UxR57N8ThrKNYyCcBdI8FlZO8nTRGHlq6
+ TBQ2k0j65WGLDZn3fGy+pB1zB0KDyjQyedBaxATC9YjH9PbLodGKQ449rZr+eTKrDVG3
+ hIK8PjcaMN/Dl6vqysSzQD8Ka1PLIg5s+gHqroFEdZG1uxzxXV61/eZIhTayLhJUnRAo
+ huAm9nQ01GQVodr3EOvlJ8EGVoK2+6MnomrGZk8jSo9FC9eXOA2pmaQvbuRm9uEp4w6v
+ MulQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=wBabrqE3i8LyE40s1GoKcwchCmG/WV84eabwjVOE7Ww=;
+ b=CGErVkZy6Y36mPPgtR3E4HoENh7oleu1aBX11E4R64Ph1U/96BE70voWsFJF7oZDzd
+ rOUz2bO2cwARXupjtai5/g34G6d1DcAJKSgnPijktQ+jqmzavO05kzJA7jSQAt1QTQyi
+ wEAJV/JGvXlXRfc/FPmTxPCcwEIZ0MiPR/q2Hu6Paxubie3S/qkwDbG8IqJ9K0cv/6IN
+ 6NLl0IqN2mv2LLt0Ah6CRnSAm09c8jYZRA0nH0KNsGUAsUZE+2psTBKIGXSfDLkttPrP
+ Wfyoy8VyR2Ab1tmAunxPlp2sO9MBQgzOurNx7NTnyRqZn9k2ctGRbfgIcmn6LkUaYlfl
+ rdxA==
+X-Gm-Message-State: AOAM531SiLbT9zb9/g8qBxhLdiz8/gr4bixBxEuZYC+2lR+RZ5dY0c1Z
+ YrsU7WWcxNjAGbxb35r/huItqCuU/S0=
+X-Google-Smtp-Source: ABdhPJwm34fdwCrlghEBRYd1CsCSXPJ94pnJAwMVauCz+vT4xUAinPPVb9+4s6YVjAIDWPnxTgAAcg==
+X-Received: by 2002:a1c:7f0e:: with SMTP id a14mr4865316wmd.21.1595518813644; 
+ Thu, 23 Jul 2020 08:40:13 -0700 (PDT)
+Received: from ziggy.stardust ([213.195.122.158])
+ by smtp.gmail.com with ESMTPSA id b63sm4025460wme.41.2020.07.23.08.40.12
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 23 Jul 2020 08:40:12 -0700 (PDT)
+Subject: Re: [v7, PATCH 7/7] drm/mediatek: add support for mediatek SOC MT8183
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>
+References: <1595469798-3824-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1595469798-3824-8-git-send-email-yongqiang.niu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <5aaad1ac-a27d-6772-3a88-0e85d27b60ea@gmail.com>
+Date: Thu, 23 Jul 2020 17:40:11 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
+MIME-Version: 1.0
+In-Reply-To: <1595469798-3824-8-git-send-email-yongqiang.niu@mediatek.com>
+Content-Language: en-US
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20200723_114015_455729_CE878965 
+X-CRM114-Status: GOOD (  23.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,203 +99,302 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: cioby.service@gmail.com, John Crispin <john@phrozen.org>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Felix Fietkau <nbd@nbd.name>
-Content-Type: multipart/mixed; boundary="===============5724535991621731903=="
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ Daniel Vetter <daniel@ffwll.ch>, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============5724535991621731903==
-Content-Type: multipart/signed; micalg="sha-256";
-	protocol="application/x-pkcs7-signature";
-	boundary="=-TBJBTLi9clydnXH23j0k"
 
+On 23/07/2020 04:03, Yongqiang Niu wrote:
+> This patch add support for mediatek SOC MT8183
+> 1.ovl_2l share driver with ovl
+> 2.rdma1 share drive with rdma0, but fifo size is different
+> 3.add mt8183 mutex private data, and mmsys private data
+> 4.add mt8183 main and external path module for crtc create
 
---=-TBJBTLi9clydnXH23j0k
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Please fix your commit message, this is seems to describe what the whole series 
+is doing.
 
-Hi,
+Regards,
+Matthias
 
-In 5.4 and 5.8.0-rc6+ kernels I see awful TX performance from the
-Ethernet on (at least) MT7623 boards. It's been reported on a Banana Pi
-R2, as well as UniElec U7623.
-
-Using iperf3, receiving is fine:
-
-[ ID] Interval           Transfer     Bitrate
-[  5]   0.00-1.00   sec   112 MBytes   942 Mbits/sec                 =20
-[  5]   1.00-2.00   sec   112 MBytes   941 Mbits/sec                 =20
-[  5]   2.00-3.00   sec   112 MBytes   941 Mbits/sec                 =20
-[  5]   3.00-4.00   sec   112 MBytes   941 Mbits/sec                 =20
-[  5]   4.00-5.00   sec   112 MBytes   941 Mbits/sec                 =20
-[  5]   5.00-6.00   sec   112 MBytes   941 Mbits/sec                 =20
-[  5]   6.00-7.00   sec   112 MBytes   941 Mbits/sec                 =20
-[  5]   7.00-8.00   sec   112 MBytes   941 Mbits/sec                 =20
-[  5]   8.00-9.00   sec   112 MBytes   941 Mbits/sec                 =20
-[  5]   9.00-10.00  sec   112 MBytes   941 Mbits/sec                 =20
-- - - - - - - - - - - - - - - - - - - - - - - - -
-[ ID] Interval           Transfer     Bitrate         Retr
-[  5]   0.00-10.00  sec  1.10 GBytes   943 Mbits/sec    0             sende=
-r
-[  5]   0.00-10.00  sec  1.10 GBytes   941 Mbits/sec                  recei=
-ver
-
-Transmit, on the other hand, is fairly much completely hosed:
-
-[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
-[  5]   0.00-1.00   sec   212 KBytes  1.74 Mbits/sec   36   2.79 KBytes    =
-  =20
-[  5]   1.00-2.00   sec   665 KBytes  5.45 Mbits/sec   66   1.39 KBytes    =
-  =20
-[  5]   2.00-3.00   sec  0.00 Bytes  0.00 bits/sec   14   2.79 KBytes      =
-=20
-[  5]   3.00-4.00   sec   126 KBytes  1.03 Mbits/sec   10   2.79 KBytes    =
-  =20
-[  5]   4.00-5.00   sec  0.00 Bytes  0.00 bits/sec    9   2.79 KBytes      =
-=20
-[  5]   5.00-6.00   sec  0.00 Bytes  0.00 bits/sec    7   1.39 KBytes      =
-=20
-[  5]   6.00-7.00   sec   251 KBytes  2.06 Mbits/sec   26   2.79 KBytes    =
-  =20
-[  5]   7.00-8.00   sec   126 KBytes  1.03 Mbits/sec   22   1.39 KBytes    =
-  =20
-[  5]   8.00-9.00   sec  0.00 Bytes  0.00 bits/sec    2   1.39 KBytes      =
-=20
-[  5]   9.00-10.00  sec   126 KBytes  1.03 Mbits/sec   15   2.79 KBytes    =
-  =20
-- - - - - - - - - - - - - - - - - - - - - - - - -
-[ ID] Interval           Transfer     Bitrate         Retr
-[  5]   0.00-10.00  sec  1.47 MBytes  1.23 Mbits/sec  207             sende=
-r
-[  5]   0.00-10.00  sec  1.26 MBytes  1.06 Mbits/sec                  recei=
-ver
-
-This is seen with the OpenWrt 5.4 kernel, and also with a clean current
-upstream 5.8.0-rc6 (with just one patch from
-https://git.openwrt.org/?p=3Dopenwrt/openwrt.git;a=3Dcommitdiff;h=3D3610588=
-0ee5
-without which it doesn't boot at all).
-
-The previous kernel that I have running on these boards is 4.14, which
-does give me close to 1Gb/s in both directions as it should.
-
-
---=-TBJBTLi9clydnXH23j0k
-Content-Type: application/x-pkcs7-signature; name="smime.p7s"
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Transfer-Encoding: base64
-
-MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCECow
-ggUcMIIEBKADAgECAhEA4rtJSHkq7AnpxKUY8ZlYZjANBgkqhkiG9w0BAQsFADCBlzELMAkGA1UE
-BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgG
-A1UEChMRQ09NT0RPIENBIExpbWl0ZWQxPTA7BgNVBAMTNENPTU9ETyBSU0EgQ2xpZW50IEF1dGhl
-bnRpY2F0aW9uIGFuZCBTZWN1cmUgRW1haWwgQ0EwHhcNMTkwMTAyMDAwMDAwWhcNMjIwMTAxMjM1
-OTU5WjAkMSIwIAYJKoZIhvcNAQkBFhNkd213MkBpbmZyYWRlYWQub3JnMIIBIjANBgkqhkiG9w0B
-AQEFAAOCAQ8AMIIBCgKCAQEAsv3wObLTCbUA7GJqKj9vHGf+Fa+tpkO+ZRVve9EpNsMsfXhvFpb8
-RgL8vD+L133wK6csYoDU7zKiAo92FMUWaY1Hy6HqvVr9oevfTV3xhB5rQO1RHJoAfkvhy+wpjo7Q
-cXuzkOpibq2YurVStHAiGqAOMGMXhcVGqPuGhcVcVzVUjsvEzAV9Po9K2rpZ52FE4rDkpDK1pBK+
-uOAyOkgIg/cD8Kugav5tyapydeWMZRJQH1vMQ6OVT24CyAn2yXm2NgTQMS1mpzStP2ioPtTnszIQ
-Ih7ASVzhV6csHb8Yrkx8mgllOyrt9Y2kWRRJFm/FPRNEurOeNV6lnYAXOymVJwIDAQABo4IB0zCC
-Ac8wHwYDVR0jBBgwFoAUgq9sjPjF/pZhfOgfPStxSF7Ei8AwHQYDVR0OBBYEFLfuNf820LvaT4AK
-xrGK3EKx1DE7MA4GA1UdDwEB/wQEAwIFoDAMBgNVHRMBAf8EAjAAMB0GA1UdJQQWMBQGCCsGAQUF
-BwMEBggrBgEFBQcDAjBGBgNVHSAEPzA9MDsGDCsGAQQBsjEBAgEDBTArMCkGCCsGAQUFBwIBFh1o
-dHRwczovL3NlY3VyZS5jb21vZG8ubmV0L0NQUzBaBgNVHR8EUzBRME+gTaBLhklodHRwOi8vY3Js
-LmNvbW9kb2NhLmNvbS9DT01PRE9SU0FDbGllbnRBdXRoZW50aWNhdGlvbmFuZFNlY3VyZUVtYWls
-Q0EuY3JsMIGLBggrBgEFBQcBAQR/MH0wVQYIKwYBBQUHMAKGSWh0dHA6Ly9jcnQuY29tb2RvY2Eu
-Y29tL0NPTU9ET1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcnQwJAYI
-KwYBBQUHMAGGGGh0dHA6Ly9vY3NwLmNvbW9kb2NhLmNvbTAeBgNVHREEFzAVgRNkd213MkBpbmZy
-YWRlYWQub3JnMA0GCSqGSIb3DQEBCwUAA4IBAQALbSykFusvvVkSIWttcEeifOGGKs7Wx2f5f45b
-nv2ghcxK5URjUvCnJhg+soxOMoQLG6+nbhzzb2rLTdRVGbvjZH0fOOzq0LShq0EXsqnJbbuwJhK+
-PnBtqX5O23PMHutP1l88AtVN+Rb72oSvnD+dK6708JqqUx2MAFLMevrhJRXLjKb2Mm+/8XBpEw+B
-7DisN4TMlLB/d55WnT9UPNHmQ+3KFL7QrTO8hYExkU849g58Dn3Nw3oCbMUgny81ocrLlB2Z5fFG
-Qu1AdNiBA+kg/UxzyJZpFbKfCITd5yX49bOriL692aMVDyqUvh8fP+T99PqorH4cIJP6OxSTdxKM
-MIIFHDCCBASgAwIBAgIRAOK7SUh5KuwJ6cSlGPGZWGYwDQYJKoZIhvcNAQELBQAwgZcxCzAJBgNV
-BAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAY
-BgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMT0wOwYDVQQDEzRDT01PRE8gUlNBIENsaWVudCBBdXRo
-ZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMB4XDTE5MDEwMjAwMDAwMFoXDTIyMDEwMTIz
-NTk1OVowJDEiMCAGCSqGSIb3DQEJARYTZHdtdzJAaW5mcmFkZWFkLm9yZzCCASIwDQYJKoZIhvcN
-AQEBBQADggEPADCCAQoCggEBALL98Dmy0wm1AOxiaio/bxxn/hWvraZDvmUVb3vRKTbDLH14bxaW
-/EYC/Lw/i9d98CunLGKA1O8yogKPdhTFFmmNR8uh6r1a/aHr301d8YQea0DtURyaAH5L4cvsKY6O
-0HF7s5DqYm6tmLq1UrRwIhqgDjBjF4XFRqj7hoXFXFc1VI7LxMwFfT6PStq6WedhROKw5KQytaQS
-vrjgMjpICIP3A/CroGr+bcmqcnXljGUSUB9bzEOjlU9uAsgJ9sl5tjYE0DEtZqc0rT9oqD7U57My
-ECIewElc4VenLB2/GK5MfJoJZTsq7fWNpFkUSRZvxT0TRLqznjVepZ2AFzsplScCAwEAAaOCAdMw
-ggHPMB8GA1UdIwQYMBaAFIKvbIz4xf6WYXzoHz0rcUhexIvAMB0GA1UdDgQWBBS37jX/NtC72k+A
-CsaxitxCsdQxOzAOBgNVHQ8BAf8EBAMCBaAwDAYDVR0TAQH/BAIwADAdBgNVHSUEFjAUBggrBgEF
-BQcDBAYIKwYBBQUHAwIwRgYDVR0gBD8wPTA7BgwrBgEEAbIxAQIBAwUwKzApBggrBgEFBQcCARYd
-aHR0cHM6Ly9zZWN1cmUuY29tb2RvLm5ldC9DUFMwWgYDVR0fBFMwUTBPoE2gS4ZJaHR0cDovL2Ny
-bC5jb21vZG9jYS5jb20vQ09NT0RPUlNBQ2xpZW50QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFp
-bENBLmNybDCBiwYIKwYBBQUHAQEEfzB9MFUGCCsGAQUFBzAChklodHRwOi8vY3J0LmNvbW9kb2Nh
-LmNvbS9DT01PRE9SU0FDbGllbnRBdXRoZW50aWNhdGlvbmFuZFNlY3VyZUVtYWlsQ0EuY3J0MCQG
-CCsGAQUFBzABhhhodHRwOi8vb2NzcC5jb21vZG9jYS5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5m
-cmFkZWFkLm9yZzANBgkqhkiG9w0BAQsFAAOCAQEAC20spBbrL71ZEiFrbXBHonzhhirO1sdn+X+O
-W579oIXMSuVEY1LwpyYYPrKMTjKECxuvp24c829qy03UVRm742R9Hzjs6tC0oatBF7KpyW27sCYS
-vj5wbal+TttzzB7rT9ZfPALVTfkW+9qEr5w/nSuu9PCaqlMdjABSzHr64SUVy4ym9jJvv/FwaRMP
-gew4rDeEzJSwf3eeVp0/VDzR5kPtyhS+0K0zvIWBMZFPOPYOfA59zcN6AmzFIJ8vNaHKy5QdmeXx
-RkLtQHTYgQPpIP1Mc8iWaRWynwiE3ecl+PWzq4i+vdmjFQ8qlL4fHz/k/fT6qKx+HCCT+jsUk3cS
-jDCCBeYwggPOoAMCAQICEGqb4Tg7/ytrnwHV2binUlYwDQYJKoZIhvcNAQEMBQAwgYUxCzAJBgNV
-BAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAY
-BgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMSswKQYDVQQDEyJDT01PRE8gUlNBIENlcnRpZmljYXRp
-b24gQXV0aG9yaXR5MB4XDTEzMDExMDAwMDAwMFoXDTI4MDEwOTIzNTk1OVowgZcxCzAJBgNVBAYT
-AkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAYBgNV
-BAoTEUNPTU9ETyBDQSBMaW1pdGVkMT0wOwYDVQQDEzRDT01PRE8gUlNBIENsaWVudCBBdXRoZW50
-aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
-AQEAvrOeV6wodnVAFsc4A5jTxhh2IVDzJXkLTLWg0X06WD6cpzEup/Y0dtmEatrQPTRI5Or1u6zf
-+bGBSyD9aH95dDSmeny1nxdlYCeXIoymMv6pQHJGNcIDpFDIMypVpVSRsivlJTRENf+RKwrB6vcf
-WlP8dSsE3Rfywq09N0ZfxcBa39V0wsGtkGWC+eQKiz4pBZYKjrc5NOpG9qrxpZxyb4o4yNNwTqza
-aPpGRqXB7IMjtf7tTmU2jqPMLxFNe1VXj9XB1rHvbRikw8lBoNoSWY66nJN/VCJv5ym6Q0mdCbDK
-CMPybTjoNCQuelc0IAaO4nLUXk0BOSxSxt8kCvsUtQIDAQABo4IBPDCCATgwHwYDVR0jBBgwFoAU
-u69+Aj36pvE8hI6t7jiY7NkyMtQwHQYDVR0OBBYEFIKvbIz4xf6WYXzoHz0rcUhexIvAMA4GA1Ud
-DwEB/wQEAwIBhjASBgNVHRMBAf8ECDAGAQH/AgEAMBEGA1UdIAQKMAgwBgYEVR0gADBMBgNVHR8E
-RTBDMEGgP6A9hjtodHRwOi8vY3JsLmNvbW9kb2NhLmNvbS9DT01PRE9SU0FDZXJ0aWZpY2F0aW9u
-QXV0aG9yaXR5LmNybDBxBggrBgEFBQcBAQRlMGMwOwYIKwYBBQUHMAKGL2h0dHA6Ly9jcnQuY29t
-b2RvY2EuY29tL0NPTU9ET1JTQUFkZFRydXN0Q0EuY3J0MCQGCCsGAQUFBzABhhhodHRwOi8vb2Nz
-cC5jb21vZG9jYS5jb20wDQYJKoZIhvcNAQEMBQADggIBAHhcsoEoNE887l9Wzp+XVuyPomsX9vP2
-SQgG1NgvNc3fQP7TcePo7EIMERoh42awGGsma65u/ITse2hKZHzT0CBxhuhb6txM1n/y78e/4ZOs
-0j8CGpfb+SJA3GaBQ+394k+z3ZByWPQedXLL1OdK8aRINTsjk/H5Ns77zwbjOKkDamxlpZ4TKSDM
-KVmU/PUWNMKSTvtlenlxBhh7ETrN543j/Q6qqgCWgWuMAXijnRglp9fyadqGOncjZjaaSOGTTFB+
-E2pvOUtY+hPebuPtTbq7vODqzCM6ryEhNhzf+enm0zlpXK7q332nXttNtjv7VFNYG+I31gnMrwfH
-M5tdhYF/8v5UY5g2xANPECTQdu9vWPoqNSGDt87b3gXb1AiGGaI06vzgkejL580ul+9hz9D0S0U4
-jkhJiA7EuTecP/CFtR72uYRBcunwwH3fciPjviDDAI9SnC/2aPY8ydehzuZutLbZdRJ5PDEJM/1t
-yZR2niOYihZ+FCbtf3D9mB12D4ln9icgc7CwaxpNSCPt8i/GqK2HsOgkL3VYnwtx7cJUmpvVdZ4o
-gnzgXtgtdk3ShrtOS1iAN2ZBXFiRmjVzmehoMof06r1xub+85hFQzVxZx5/bRaTKTlL8YXLI8nAb
-R9HWdFqzcOoB/hxfEyIQpx9/s81rgzdEZOofSlZHynoSMYIDyjCCA8YCAQEwga0wgZcxCzAJBgNV
-BAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAY
-BgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMT0wOwYDVQQDEzRDT01PRE8gUlNBIENsaWVudCBBdXRo
-ZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA4rtJSHkq7AnpxKUY8ZlYZjANBglghkgB
-ZQMEAgEFAKCCAe0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjAw
-NzIzMTUyNjIzWjAvBgkqhkiG9w0BCQQxIgQg8Nr1QAK72XSbHOw8YiC8WF6xapI0kPAeXomnX523
-MJcwgb4GCSsGAQQBgjcQBDGBsDCBrTCBlzELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIg
-TWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQx
-PTA7BgNVBAMTNENPTU9ETyBSU0EgQ2xpZW50IEF1dGhlbnRpY2F0aW9uIGFuZCBTZWN1cmUgRW1h
-aWwgQ0ECEQDiu0lIeSrsCenEpRjxmVhmMIHABgsqhkiG9w0BCRACCzGBsKCBrTCBlzELMAkGA1UE
-BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgG
-A1UEChMRQ09NT0RPIENBIExpbWl0ZWQxPTA7BgNVBAMTNENPTU9ETyBSU0EgQ2xpZW50IEF1dGhl
-bnRpY2F0aW9uIGFuZCBTZWN1cmUgRW1haWwgQ0ECEQDiu0lIeSrsCenEpRjxmVhmMA0GCSqGSIb3
-DQEBAQUABIIBAJyZsNnWg9qUOUAXZfwkYBih3fkfyoQj+bkVR1uMppigkeIN5Ee6nCVyntvnEp9L
-JmCcvX8QolxGITGrIZ9fGzw2sbpi+XcWHFzEUfyOg1X1gSfXpMZ5fFbDp/MIXWgDJPN6kNx8QlIg
-BrOr20dz4oHIn2AFLcAjeUNvwjFOaNkrOkXhk/XaAKX9U+a4Yv/1yGWwqU+P4u+tsYw9Ere5x5Uq
-sQzaqtMJl+t8UAszJI/kxdFRfvuxilZ7zfKPMMk7IWCew/1ZdQ4RrtiqBavN68haYX//kasRt+PJ
-YX0MRXwcUSs4CISBo2QuRb5TgDduqwLJ766i+ZjnlxRe2bzY+HQAAAAAAAA=
-
-
---=-TBJBTLi9clydnXH23j0k--
-
-
-
---===============5724535991621731903==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> 
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> ---
+>   drivers/gpu/drm/mediatek/mtk_disp_ovl.c  | 18 ++++++++++++
+>   drivers/gpu/drm/mediatek/mtk_disp_rdma.c |  6 ++++
+>   drivers/gpu/drm/mediatek/mtk_drm_ddp.c   | 47 ++++++++++++++++++++++++++++++++
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.c   | 43 +++++++++++++++++++++++++++++
+>   4 files changed, 114 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> index 28651bc..8cf9f3b 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> @@ -430,11 +430,29 @@ static int mtk_disp_ovl_remove(struct platform_device *pdev)
+>   	.fmt_rgb565_is_0 = true,
+>   };
+>   
+> +static const struct mtk_disp_ovl_data mt8183_ovl_driver_data = {
+> +	.addr = DISP_REG_OVL_ADDR_MT8173,
+> +	.gmc_bits = 10,
+> +	.layer_nr = 4,
+> +	.fmt_rgb565_is_0 = true,
+> +};
+> +
+> +static const struct mtk_disp_ovl_data mt8183_ovl_2l_driver_data = {
+> +	.addr = DISP_REG_OVL_ADDR_MT8173,
+> +	.gmc_bits = 10,
+> +	.layer_nr = 2,
+> +	.fmt_rgb565_is_0 = true,
+> +};
+> +
+>   static const struct of_device_id mtk_disp_ovl_driver_dt_match[] = {
+>   	{ .compatible = "mediatek,mt2701-disp-ovl",
+>   	  .data = &mt2701_ovl_driver_data},
+>   	{ .compatible = "mediatek,mt8173-disp-ovl",
+>   	  .data = &mt8173_ovl_driver_data},
+> +	{ .compatible = "mediatek,mt8183-disp-ovl",
+> +	  .data = &mt8183_ovl_driver_data},
+> +	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
+> +	  .data = &mt8183_ovl_2l_driver_data},
+>   	{},
+>   };
+>   MODULE_DEVICE_TABLE(of, mtk_disp_ovl_driver_dt_match);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> index 794acc5..51f2a0c 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> @@ -355,11 +355,17 @@ static int mtk_disp_rdma_remove(struct platform_device *pdev)
+>   	.fifo_size = SZ_8K,
+>   };
+>   
+> +static const struct mtk_disp_rdma_data mt8183_rdma_driver_data = {
+> +	.fifo_size = 5 * SZ_1K,
+> +};
+> +
+>   static const struct of_device_id mtk_disp_rdma_driver_dt_match[] = {
+>   	{ .compatible = "mediatek,mt2701-disp-rdma",
+>   	  .data = &mt2701_rdma_driver_data},
+>   	{ .compatible = "mediatek,mt8173-disp-rdma",
+>   	  .data = &mt8173_rdma_driver_data},
+> +	{ .compatible = "mediatek,mt8183-disp-rdma",
+> +	  .data = &mt8183_rdma_driver_data},
+>   	{},
+>   };
+>   MODULE_DEVICE_TABLE(of, mtk_disp_rdma_driver_dt_match);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> index 014c1bb..60788c1 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> @@ -15,6 +15,8 @@
+>   
+>   #define MT2701_DISP_MUTEX0_MOD0			0x2c
+>   #define MT2701_DISP_MUTEX0_SOF0			0x30
+> +#define MT8183_DISP_MUTEX0_MOD0			0x30
+> +#define MT8183_DISP_MUTEX0_SOF0			0x2c
+>   
+>   #define DISP_REG_MUTEX_EN(n)			(0x20 + 0x20 * (n))
+>   #define DISP_REG_MUTEX(n)			(0x24 + 0x20 * (n))
+> @@ -25,6 +27,18 @@
+>   
+>   #define INT_MUTEX				BIT(1)
+>   
+> +#define MT8183_MUTEX_MOD_DISP_RDMA0		0
+> +#define MT8183_MUTEX_MOD_DISP_RDMA1		1
+> +#define MT8183_MUTEX_MOD_DISP_OVL0		9
+> +#define MT8183_MUTEX_MOD_DISP_OVL0_2L		10
+> +#define MT8183_MUTEX_MOD_DISP_OVL1_2L		11
+> +#define MT8183_MUTEX_MOD_DISP_WDMA0		12
+> +#define MT8183_MUTEX_MOD_DISP_COLOR0		13
+> +#define MT8183_MUTEX_MOD_DISP_CCORR0		14
+> +#define MT8183_MUTEX_MOD_DISP_AAL0		15
+> +#define MT8183_MUTEX_MOD_DISP_GAMMA0		16
+> +#define MT8183_MUTEX_MOD_DISP_DITHER0		17
+> +
+>   #define MT8173_MUTEX_MOD_DISP_OVL0		11
+>   #define MT8173_MUTEX_MOD_DISP_OVL1		12
+>   #define MT8173_MUTEX_MOD_DISP_RDMA0		13
+> @@ -74,6 +88,10 @@
+>   #define MUTEX_SOF_DSI2			5
+>   #define MUTEX_SOF_DSI3			6
+>   
+> +#define MT8183_MUTEX_SOF_DPI0			2
+> +#define MT8183_MUTEX_EOF_DSI0			(MUTEX_SOF_DSI0 << 6)
+> +#define MT8183_MUTEX_EOF_DPI0			(MT8183_MUTEX_SOF_DPI0 << 6)
+> +
+>   
+>   struct mtk_disp_mutex {
+>   	int id;
+> @@ -153,6 +171,20 @@ struct mtk_ddp {
+>   	[DDP_COMPONENT_WDMA1] = MT8173_MUTEX_MOD_DISP_WDMA1,
+>   };
+>   
+> +static const unsigned int mt8183_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+> +	[DDP_COMPONENT_AAL0] = MT8183_MUTEX_MOD_DISP_AAL0,
+> +	[DDP_COMPONENT_CCORR] = MT8183_MUTEX_MOD_DISP_CCORR0,
+> +	[DDP_COMPONENT_COLOR0] = MT8183_MUTEX_MOD_DISP_COLOR0,
+> +	[DDP_COMPONENT_DITHER] = MT8183_MUTEX_MOD_DISP_DITHER0,
+> +	[DDP_COMPONENT_GAMMA] = MT8183_MUTEX_MOD_DISP_GAMMA0,
+> +	[DDP_COMPONENT_OVL0] = MT8183_MUTEX_MOD_DISP_OVL0,
+> +	[DDP_COMPONENT_OVL_2L0] = MT8183_MUTEX_MOD_DISP_OVL0_2L,
+> +	[DDP_COMPONENT_OVL_2L1] = MT8183_MUTEX_MOD_DISP_OVL1_2L,
+> +	[DDP_COMPONENT_RDMA0] = MT8183_MUTEX_MOD_DISP_RDMA0,
+> +	[DDP_COMPONENT_RDMA1] = MT8183_MUTEX_MOD_DISP_RDMA1,
+> +	[DDP_COMPONENT_WDMA0] = MT8183_MUTEX_MOD_DISP_WDMA0,
+> +};
+> +
+>   static const unsigned int mt2712_mutex_sof[DDP_MUTEX_SOF_DSI3 + 1] = {
+>   	[DDP_MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
+>   	[DDP_MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0,
+> @@ -163,6 +195,12 @@ struct mtk_ddp {
+>   	[DDP_MUTEX_SOF_DSI3] = MUTEX_SOF_DSI3,
+>   };
+>   
+> +static const unsigned int mt8183_mutex_sof[DDP_MUTEX_SOF_DSI3 + 1] = {
+> +	[DDP_MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
+> +	[DDP_MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0 | MT8183_MUTEX_EOF_DSI0,
+> +	[DDP_MUTEX_SOF_DPI0] = MT8183_MUTEX_SOF_DPI0 | MT8183_MUTEX_EOF_DPI0,
+> +};
+> +
+>   static const struct mtk_ddp_data mt2701_ddp_driver_data = {
+>   	.mutex_mod = mt2701_mutex_mod,
+>   	.mutex_sof = mt2712_mutex_sof,
+> @@ -184,6 +222,13 @@ struct mtk_ddp {
+>   	.mutex_sof_reg = MT2701_DISP_MUTEX0_SOF0,
+>   };
+>   
+> +static const struct mtk_ddp_data mt8183_ddp_driver_data = {
+> +	.mutex_mod = mt8183_mutex_mod,
+> +	.mutex_sof = mt8183_mutex_sof,
+> +	.mutex_mod_reg = MT8183_DISP_MUTEX0_MOD0,
+> +	.mutex_sof_reg = MT8183_DISP_MUTEX0_SOF0,
+> +};
+> +
+>   struct mtk_disp_mutex *mtk_disp_mutex_get(struct device *dev, unsigned int id)
+>   {
+>   	struct mtk_ddp *ddp = dev_get_drvdata(dev);
+> @@ -402,6 +447,8 @@ static int mtk_ddp_remove(struct platform_device *pdev)
+>   	  .data = &mt2712_ddp_driver_data},
+>   	{ .compatible = "mediatek,mt8173-disp-mutex",
+>   	  .data = &mt8173_ddp_driver_data},
+> +	{ .compatible = "mediatek,mt8183-disp-mutex",
+> +	  .data = &mt8183_ddp_driver_data},
+>   	{},
+>   };
+>   MODULE_DEVICE_TABLE(of, ddp_driver_dt_match);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index 6bd3694..267e91e 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -119,6 +119,24 @@
+>   	DDP_COMPONENT_DPI0,
+>   };
+>   
+> +static const enum mtk_ddp_comp_id mt8183_mtk_ddp_main[] = {
+> +	DDP_COMPONENT_OVL0,
+> +	DDP_COMPONENT_OVL_2L0,
+> +	DDP_COMPONENT_RDMA0,
+> +	DDP_COMPONENT_COLOR0,
+> +	DDP_COMPONENT_CCORR,
+> +	DDP_COMPONENT_AAL0,
+> +	DDP_COMPONENT_GAMMA,
+> +	DDP_COMPONENT_DITHER,
+> +	DDP_COMPONENT_DSI0,
+> +};
+> +
+> +static const enum mtk_ddp_comp_id mt8183_mtk_ddp_ext[] = {
+> +	DDP_COMPONENT_OVL_2L1,
+> +	DDP_COMPONENT_RDMA1,
+> +	DDP_COMPONENT_DPI0,
+> +};
+> +
+>   static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+>   	.main_path = mt2701_mtk_ddp_main,
+>   	.main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
+> @@ -143,6 +161,13 @@
+>   	.ext_len = ARRAY_SIZE(mt8173_mtk_ddp_ext),
+>   };
+>   
+> +static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
+> +	.main_path = mt8183_mtk_ddp_main,
+> +	.main_len = ARRAY_SIZE(mt8183_mtk_ddp_main),
+> +	.ext_path = mt8183_mtk_ddp_ext,
+> +	.ext_len = ARRAY_SIZE(mt8183_mtk_ddp_ext),
+> +};
+> +
+>   static int mtk_drm_kms_init(struct drm_device *drm)
+>   {
+>   	struct mtk_drm_private *private = drm->dev_private;
+> @@ -380,12 +405,20 @@ static void mtk_drm_unbind(struct device *dev)
+>   	  .data = (void *)MTK_DISP_OVL },
+>   	{ .compatible = "mediatek,mt8173-disp-ovl",
+>   	  .data = (void *)MTK_DISP_OVL },
+> +	{ .compatible = "mediatek,mt8183-disp-ovl",
+> +	  .data = (void *)MTK_DISP_OVL },
+> +	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
+> +	  .data = (void *)MTK_DISP_OVL_2L },
+>   	{ .compatible = "mediatek,mt2701-disp-rdma",
+>   	  .data = (void *)MTK_DISP_RDMA },
+>   	{ .compatible = "mediatek,mt8173-disp-rdma",
+>   	  .data = (void *)MTK_DISP_RDMA },
+> +	{ .compatible = "mediatek,mt8183-disp-rdma",
+> +	  .data = (void *)MTK_DISP_RDMA },
+>   	{ .compatible = "mediatek,mt8173-disp-wdma",
+>   	  .data = (void *)MTK_DISP_WDMA },
+> +	{ .compatible = "mediatek,mt8183-disp-ccorr",
+> +	  .data = (void *)MTK_DISP_CCORR },
+>   	{ .compatible = "mediatek,mt2701-disp-color",
+>   	  .data = (void *)MTK_DISP_COLOR },
+>   	{ .compatible = "mediatek,mt8173-disp-color",
+> @@ -394,22 +427,30 @@ static void mtk_drm_unbind(struct device *dev)
+>   	  .data = (void *)MTK_DISP_AAL},
+>   	{ .compatible = "mediatek,mt8173-disp-gamma",
+>   	  .data = (void *)MTK_DISP_GAMMA, },
+> +	{ .compatible = "mediatek,mt8183-disp-dither",
+> +	  .data = (void *)MTK_DISP_DITHER },
+>   	{ .compatible = "mediatek,mt8173-disp-ufoe",
+>   	  .data = (void *)MTK_DISP_UFOE },
+>   	{ .compatible = "mediatek,mt2701-dsi",
+>   	  .data = (void *)MTK_DSI },
+>   	{ .compatible = "mediatek,mt8173-dsi",
+>   	  .data = (void *)MTK_DSI },
+> +	{ .compatible = "mediatek,mt8183-dsi",
+> +	  .data = (void *)MTK_DSI },
+>   	{ .compatible = "mediatek,mt2701-dpi",
+>   	  .data = (void *)MTK_DPI },
+>   	{ .compatible = "mediatek,mt8173-dpi",
+>   	  .data = (void *)MTK_DPI },
+> +	{ .compatible = "mediatek,mt8183-dpi",
+> +	  .data = (void *)MTK_DPI },
+>   	{ .compatible = "mediatek,mt2701-disp-mutex",
+>   	  .data = (void *)MTK_DISP_MUTEX },
+>   	{ .compatible = "mediatek,mt2712-disp-mutex",
+>   	  .data = (void *)MTK_DISP_MUTEX },
+>   	{ .compatible = "mediatek,mt8173-disp-mutex",
+>   	  .data = (void *)MTK_DISP_MUTEX },
+> +	{ .compatible = "mediatek,mt8183-disp-mutex",
+> +	  .data = (void *)MTK_DISP_MUTEX },
+>   	{ .compatible = "mediatek,mt2701-disp-pwm",
+>   	  .data = (void *)MTK_DISP_BLS },
+>   	{ .compatible = "mediatek,mt8173-disp-pwm",
+> @@ -426,6 +467,8 @@ static void mtk_drm_unbind(struct device *dev)
+>   	  .data = &mt2712_mmsys_driver_data},
+>   	{ .compatible = "mediatek,mt8173-mmsys",
+>   	  .data = &mt8173_mmsys_driver_data},
+> +	{ .compatible = "mediatek,mt8183-mmsys",
+> +	  .data = &mt8183_mmsys_driver_data},
+>   	{ }
+>   };
+>   
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============5724535991621731903==--
-
-
