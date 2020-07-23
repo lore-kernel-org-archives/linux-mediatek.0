@@ -2,21 +2,21 @@ Return-Path: <SRS0=cyKo=BC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 11401C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 18:35:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 03E76C433E4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 19:07:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C8FF820737
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 18:35:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C78D420709
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2020 19:07:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="vPyZhRQk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C8FF820737
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CA2lirHn"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C78D420709
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=infradead.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,27 +25,27 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Mime-Version:References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rg0xKboxkhjaOfkCnW43E29jntTU5uOCaVG2HBYcRTg=; b=vPyZhRQkhcSSk+yjzeyjl3d4q
-	e6FtZGaOBFUkwJD25AOc6Cb/RZ7wckPoqGsj9leF3Xg+q6U3GGJfe1UrxOZRVMYoHJ4wED/E8/rMc
-	wUZhVX1V5kFe6ZVZR45zx+LI9ixPW/bPHWmqch4zrguWZoaIKyaJOSRzvSr8c1OLympESr1NFWb9/
-	1bU21/nJalCn1gAxp2+VeCjuGiquXcllww+avbQcMz62zMV9KwXE/0qTBgxnZUltpvE51tmzPG8G/
-	z4FrrWMoWQcXcuIfgtWOeEBMqAB/70M5GPR609nzCZY7SlepR1t00DshlkxE50oV8b/Muslw3Fmy/
-	J3p55FyPg==;
+	 bh=qE1GAK579jhUAMJhOti+a16ajUZGkFLMzOkijEGZRTU=; b=CA2lirHnLuQbCLcKQgGfzKU+1
+	miRudSys51njFSuoSLxBO3KZUZmqLeAJp1HeTY9GsCUT9/esZkuPnHUIvh+C1RvTMu6zXvoOEBmXn
+	FfwZF1ralStZ26vzB+yxYATVN/Z04qJGsCuvN5PFHsBP4ghbwJ0TpWnG2efIanGFvUogY9+8t4nDK
+	EnJgNzJk01Nnr5o9j6LgxRMaxJbaWhUUel8UazmF2Cdfj8pO4oOZ6d3vyQhDaCkUu+JV7Gcs3ajUs
+	ZCZY16yXVXUuJLxBxMa1QOK8wbPu38o855otVLH8b2cNQ9fdzwnpjWyiY3jcuTqJGlZFh0Tr4P0cZ
+	4fStNGfAw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyg3z-0006xm-8u; Thu, 23 Jul 2020 18:35:27 +0000
+	id 1jygYo-0003fu-QH; Thu, 23 Jul 2020 19:07:19 +0000
 Received: from 54-240-197-239.amazon.com ([54.240.197.239]
  helo=u3832b3a9db3152.ant.amazon.com)
  by merlin.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyg3v-0006x8-US; Thu, 23 Jul 2020 18:35:24 +0000
-Message-ID: <32af04735eb71f1b035246eedeaa17baae066e79.camel@infradead.org>
-Subject: Re: Aw: MT7623 Ethernet TX performance regression
+ id 1jygYi-0003f2-VI; Thu, 23 Jul 2020 19:07:13 +0000
+Message-ID: <52f10e30f62b8521fd83525a03ecff94b72d509b.camel@infradead.org>
+Subject: [PATCH] net: ethernet: mtk_eth_soc: Always call
+ mtk_gmac0_rgmii_adjust() for mt7623
 From: David Woodhouse <dwmw2@infradead.org>
-To: Frank Wunderlich <frank-w@public-files.de>
-Date: Thu, 23 Jul 2020 19:35:21 +0100
-In-Reply-To: <trinity-a6706333-e5a5-47d6-bf9d-0881ca9f58ba-1595526555641@3c-app-gmx-bs73>
-References: <03da7c5a51c3640110509bdd2a00e4e258b85924.camel@infradead.org>
- <trinity-a6706333-e5a5-47d6-bf9d-0881ca9f58ba-1595526555641@3c-app-gmx-bs73>
+To: davem@davemloft.net
+Date: Thu, 23 Jul 2020 20:07:10 +0100
+In-Reply-To: <trinity-fb0cdf15-dfcf-4d60-9144-87d8fbfad5ba-1586179542451@3c-app-gmx-bap62>
+References: <trinity-fb0cdf15-dfcf-4d60-9144-87d8fbfad5ba-1586179542451@3c-app-gmx-bap62>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 Mime-Version: 1.0
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -59,134 +59,98 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sean Wang <sean.wang@mediatek.com>, cioby.service@gmail.com,
- linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, Felix Fietkau <nbd@nbd.name>
-Content-Type: multipart/mixed; boundary="===============2998679870120582860=="
+Cc: andrew@lunn.ch, Frank Wunderlich <frank-w@public-files.de>,
+ f.fainelli@gmail.com, steven.liu@mediatek.com,
+ vivien.didelot@savoirfairelinux.com, netdev@vger.kernel.org,
+ Sean Wang <sean.wang@mediatek.com>, Landen.Chao@mediatek.com,
+ linux-kernel@vger.kernel.org,
+ =?ISO-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>, john@phrozen.org,
+ Mark-MC.Lee@mediatek.com
+Content-Type: multipart/mixed; boundary="===============5818107068181717102=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============2998679870120582860==
+--===============5818107068181717102==
 Content-Type: multipart/signed; micalg="sha-256";
 	protocol="application/x-pkcs7-signature";
-	boundary="=-tO/BnFtnjI9nY7tvIsGl"
+	boundary="=-dvDDyJLpNyF5xlF8RnJm"
 
 
---=-tO/BnFtnjI9nY7tvIsGl
+--=-dvDDyJLpNyF5xlF8RnJm
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, 2020-07-23 at 19:49 +0200, Frank Wunderlich wrote:
-> Hi,
->=20
-> could you try this? it is the 3rd part of rene's series which got not
-> merged to mainline yet.
->=20
-> https://github.com/frank-w/BPI-R2-4.14/commit/ff2bb8719bc269a9feb69676415=
-9e2640fc64eed
+From: Ren=C3=A9 van Dorst <opensource@vdorst.com>
 
-Yes, that's it. Thanks!
+Modify mtk_gmac0_rgmii_adjust() so it can always be called.
+mtk_gmac0_rgmii_adjust() sets-up the TRGMII clocks.
 
-That brings the performance on 5.8.0-rc6 back to just under line rate
-1Gb/s in both directions for both IPv6 and Legacy IP.
+Signed-off-by: Ren=C3=A9 van Dorst <opensource@vdorst.com>
+Signed-off-By: David Woodhouse <dwmw2@infradead.org>
+Tested-by: Frank Wunderlich <frank-w@public-files.de>
+---
+On Mon, 2020-04-06 at 15:25 +0200, Frank Wunderlich wrote:
+> have tested these 2 and additional rene's 3rd Patch on my tree [1]
+> on BPi-R2, no problem with trgmii yet (multiple power-cycle+reboots).
+> I had issues with current 5.6.0 version, so imho these should go
+> also into 5.6.y
 
-On the OpenWrt 5.4 kernel it's still not quite that for IPv6 TX
-(although it is for Legacy IP TX), but at least I can consider that a
-"performance" problem instead of basic functionality :)
+Here's that third patch of which Frank speaks. I don't see it submitted
+yet, and I found I needed it on 5.4 too for the Ethernet to be
+functional.
 
-root@OpenWrt:/# iperf3 -c i7.infradead.org
-Connecting to host i7.infradead.org, port 5201
-[  5] local 2001:8b0:10b:1::c2a port 52730 connected to 2001:8b0:10b:1:21e:=
-67ff:fecb:7a92 port 5201
-[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
-[  5]   0.00-1.00   sec   109 MBytes   916 Mbits/sec  1357   72.5 KBytes   =
-   =20
-[  5]   1.00-2.00   sec   109 MBytes   913 Mbits/sec  1203   69.7 KBytes   =
-   =20
-[  5]   2.00-3.00   sec   107 MBytes   899 Mbits/sec  1300   76.7 KBytes   =
-   =20
-[  5]   3.00-4.00   sec   108 MBytes   906 Mbits/sec  1514   71.1 KBytes   =
-   =20
-[  5]   4.00-5.00   sec   108 MBytes   903 Mbits/sec  1518   62.8 KBytes   =
-   =20
-[  5]   5.00-6.00   sec   108 MBytes   909 Mbits/sec  1402   68.3 KBytes   =
-   =20
-[  5]   6.00-7.00   sec   108 MBytes   905 Mbits/sec  1325   83.7 KBytes   =
-   =20
-[  5]   7.00-8.00   sec   108 MBytes   903 Mbits/sec  1348   72.5 KBytes   =
-   =20
-[  5]   8.00-9.00   sec   107 MBytes   900 Mbits/sec  1481   76.7 KBytes   =
-   =20
-[  5]   9.00-10.00  sec   108 MBytes   904 Mbits/sec  1300   73.9 KBytes   =
-   =20
-- - - - - - - - - - - - - - - - - - - - - - - - -
-[ ID] Interval           Transfer     Bitrate         Retr
-[  5]   0.00-10.00  sec  1.05 GBytes   906 Mbits/sec  13748             sen=
-der
-[  5]   0.00-10.00  sec  1.05 GBytes   905 Mbits/sec                  recei=
-ver
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
 
-iperf Done.
-root@OpenWrt:/# iperf3 -c i7.infradead.org -R
-Connecting to host i7.infradead.org, port 5201
-Reverse mode, remote host i7.infradead.org is sending
-[  5] local 2001:8b0:10b:1::c2a port 52734 connected to 2001:8b0:10b:1:21e:=
-67ff:fecb:7a92 port 5201
-[ ID] Interval           Transfer     Bitrate
-[  5]   0.00-1.00   sec  77.3 MBytes   648 Mbits/sec                 =20
-[  5]   1.00-2.00   sec  78.1 MBytes   655 Mbits/sec                 =20
-[  5]   2.00-3.00   sec  78.3 MBytes   656 Mbits/sec                 =20
-[  5]   3.00-4.00   sec  78.6 MBytes   659 Mbits/sec                 =20
-[  5]   4.00-5.00   sec  78.2 MBytes   656 Mbits/sec                 =20
-[  5]   5.00-6.00   sec  78.2 MBytes   656 Mbits/sec                 =20
-[  5]   6.00-7.00   sec  78.4 MBytes   658 Mbits/sec                 =20
-[  5]   7.00-8.00   sec  78.7 MBytes   661 Mbits/sec                 =20
-[  5]   8.00-9.00   sec  78.1 MBytes   655 Mbits/sec                 =20
-[  5]   9.00-10.00  sec  78.3 MBytes   657 Mbits/sec                 =20
-- - - - - - - - - - - - - - - - - - - - - - - - -
-[ ID] Interval           Transfer     Bitrate         Retr
-[  5]   0.00-10.00  sec   784 MBytes   658 Mbits/sec   31             sende=
-r
-[  5]   0.00-10.00  sec   782 MBytes   656 Mbits/sec                  recei=
-ver
-
-iperf Done.
-root@OpenWrt:/# iperf3 -c i7.infradead.org -R
-Connecting to host i7.infradead.org, port 5201
-Reverse mode, remote host i7.infradead.org is sending
-[  5] local 2001:8b0:10b:1::c2a port 59138 connected to 2001:8b0:10b:1:21e:=
-67ff:fecb:7a92 port 5201
-[ ID] Interval           Transfer     Bitrate
-[  5]   0.00-1.00   sec   103 MBytes   865 Mbits/sec                 =20
-[  5]   1.00-2.00   sec   105 MBytes   879 Mbits/sec                 =20
-[  5]   2.00-3.00   sec   105 MBytes   880 Mbits/sec                 =20
-[  5]   3.00-4.00   sec   104 MBytes   876 Mbits/sec                 =20
-[  5]   4.00-5.00   sec   105 MBytes   880 Mbits/sec                 =20
-[  5]   5.00-6.00   sec   105 MBytes   878 Mbits/sec                 =20
-[  5]   6.00-7.00   sec   105 MBytes   879 Mbits/sec                 =20
-[  5]   7.00-8.00   sec   105 MBytes   879 Mbits/sec                 =20
-[  5]   8.00-9.00   sec   105 MBytes   881 Mbits/sec                 =20
-[  5]   9.00-10.00  sec   105 MBytes   880 Mbits/sec                 =20
-- - - - - - - - - - - - - - - - - - - - - - - - -
-[ ID] Interval           Transfer     Bitrate         Retr
-[  5]   0.00-10.00  sec  1.03 GBytes   881 Mbits/sec   81             sende=
-r
-[  5]   0.00-10.00  sec  1.02 GBytes   878 Mbits/sec                  recei=
-ver
-
-iperf Done.
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethe=
+rnet/mediatek/mtk_eth_soc.c
+index b5408c5b954a..f89f225ab144 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -171,11 +171,21 @@ static int mt7621_gmac0_rgmii_adjust(struct mtk_eth *=
+eth,
+ 	return 0;
+ }
+=20
+-static void mtk_gmac0_rgmii_adjust(struct mtk_eth *eth, int speed)
++static void mtk_gmac0_rgmii_adjust(struct mtk_eth *eth,
++				   phy_interface_t interface, int speed)
+ {
+ 	u32 val;
+ 	int ret;
+=20
++	if (interface =3D=3D PHY_INTERFACE_MODE_TRGMII) {
++		mtk_w32(eth, TRGMII_MODE, INTF_MODE);
++		val =3D 500000000;
++		ret =3D clk_set_rate(eth->clks[MTK_CLK_TRGPLL], val);
++		if (ret)
++			dev_err(eth->dev, "Failed to set trgmii pll: %d\n", ret);
++		return;
++	}
++
+ 	val =3D (speed =3D=3D SPEED_1000) ?
+ 		INTF_MODE_RGMII_1000 : INTF_MODE_RGMII_10_100;
+ 	mtk_w32(eth, val, INTF_MODE);
+@@ -262,10 +272,9 @@ static void mtk_mac_config(struct phylink_config *conf=
+ig, unsigned int mode,
+ 							      state->interface))
+ 					goto err_phy;
+ 			} else {
+-				if (state->interface !=3D
+-				    PHY_INTERFACE_MODE_TRGMII)
+-					mtk_gmac0_rgmii_adjust(mac->hw,
+-							       state->speed);
++				mtk_gmac0_rgmii_adjust(mac->hw,
++						       state->interface,
++						       state->speed);
+=20
+ 				/* mt7623_pad_clk_setup */
+ 				for (i =3D 0 ; i < NUM_TRGMII_CTRL; i++)
 
 
-
-> to which client/server do you make the tests? i had retransmitts like
-> you with ubuntu 20.4 default kernel (5.4.0-xx) and fixed it with self
-> compiled 5.4.51
-
-Just a standard x86_64 Fedora 32 box.
-
-
---=-tO/BnFtnjI9nY7tvIsGl
+--=-dvDDyJLpNyF5xlF8RnJm
 Content-Type: application/x-pkcs7-signature; name="smime.p7s"
 Content-Disposition: attachment; filename="smime.p7s"
 Content-Transfer-Encoding: base64
@@ -269,26 +233,26 @@ BAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAY
 BgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMT0wOwYDVQQDEzRDT01PRE8gUlNBIENsaWVudCBBdXRo
 ZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA4rtJSHkq7AnpxKUY8ZlYZjANBglghkgB
 ZQMEAgEFAKCCAe0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjAw
-NzIzMTgzNTIxWjAvBgkqhkiG9w0BCQQxIgQgEqk6/tFS0VRONYi0qzRsCJUgnKt99SkY6Bi57aND
-BIIwgb4GCSsGAQQBgjcQBDGBsDCBrTCBlzELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIg
+NzIzMTkwNzEwWjAvBgkqhkiG9w0BCQQxIgQgMvSN3b9IY70tdd3sqEDlvMyZTIWJouSwWuQjVR5u
+00swgb4GCSsGAQQBgjcQBDGBsDCBrTCBlzELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIg
 TWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQx
 PTA7BgNVBAMTNENPTU9ETyBSU0EgQ2xpZW50IEF1dGhlbnRpY2F0aW9uIGFuZCBTZWN1cmUgRW1h
 aWwgQ0ECEQDiu0lIeSrsCenEpRjxmVhmMIHABgsqhkiG9w0BCRACCzGBsKCBrTCBlzELMAkGA1UE
 BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgG
 A1UEChMRQ09NT0RPIENBIExpbWl0ZWQxPTA7BgNVBAMTNENPTU9ETyBSU0EgQ2xpZW50IEF1dGhl
 bnRpY2F0aW9uIGFuZCBTZWN1cmUgRW1haWwgQ0ECEQDiu0lIeSrsCenEpRjxmVhmMA0GCSqGSIb3
-DQEBAQUABIIBADmJtthcS9HO+8Mko+n9KzHgQARRBWDZ8FJUahwwE+OsYPUfh8iq0LvZb26bviMs
-7HnkYT1U2MccGZfcOe9aJq85nKUi129HuxB1NIGRWisQxsQpwNCIuymKfdZKD+5HdqRndnzGE7lQ
-VcF6bU+G30SZfkxtAFCYx0iw456Cv5gX8GANYTvA5c/ySxCobj5kQvp9a2Z7W2CP8HW714LtPd/V
-OcgaS9T4Goru2d3KEmAEVcI3+ChhKL2HZJivnuvwiGrA+hwv9IQCdtQib6/A+pqzKxFau8+4bnzv
-DQ9sl2H5ERgLGkX0O1eptr9xTtHpVWhou7sTtMn6ninzhjMFFzcAAAAAAAA=
+DQEBAQUABIIBAJuWSjeEwt+cFTo3TTI95KnNnoqEBfHMEyQ7czNp4YBL4MsXDJOwQOvjDJO1G4zf
+H7UkdcUJlyqqIr9OMUEfTe0EqQdw2Sul5Z9a7yr6pnxwPPmkER/DDbAJlg0FvV/uBBzZ2hVab9/w
+9a6XD8ts2Zw5z6PdORy3VCeX1eyXLNWF25+7UlKR2bR9k3u8CpdjeUjbpZtSex6T/7P+d4CEKxVX
+cAGdl65GyqyUeNOopivDzTmYN4fEV4Uy5S8rZslpytlc9KNTJehbviiwl0pAko49XEL8DsKHc202
+DeHkSOMM3wre63eQNtHeSGTCvXh+ouWX+jaHp7LKkLQfey5MEgUAAAAAAAA=
 
 
---=-tO/BnFtnjI9nY7tvIsGl--
+--=-dvDDyJLpNyF5xlF8RnJm--
 
 
 
---===============2998679870120582860==
+--===============5818107068181717102==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -299,6 +263,6 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---===============2998679870120582860==--
+--===============5818107068181717102==--
 
 
