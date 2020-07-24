@@ -2,59 +2,68 @@ Return-Path: <SRS0=BOys=BD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 21A48C433E1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 11:20:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 01102C433EA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 11:50:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E5B5C206E3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 11:20:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C5806206E3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 11:50:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="m/uUyvv8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E5B5C206E3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nli0urym";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="TyLyg7rg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C5806206E3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BUg1kDrLwa17o29BiRwi/iryFoTwTEzQe0/eTnPCA4M=; b=m/uUyvv8RXRLm0oRdKw8ZaQk8
-	bjDl5WgmFrFRKVJSjvRcfUp7aIXexWU3V0igmGO9004m/+p0duTUZ/Q4Y6Eqxq8E5n+L2z9SFb+y0
-	WBroQUkzw1qAu8g0Y7lYTTEoHH8Kk6bM+57IUx8dcFhTkvJcvZ84qDiv9XJl0aOk84z9ISNDrHmYY
-	2K4QYjXg7DMuS51qsxiyBidRELJo2J6MAkOj44b3icuIXLh5WIVGcioeyvjUhTDPmFr0tRheauwZI
-	uMhVVoUPIMH8VSV6AHHtonWPi9k55EO+152BwrdFPW9Yb6kPteKquwGozXSTlwseUuTkjhdiQXW33
-	jvqzJe5fA==;
+	 bh=X6DZ+txERcdttltzMNoVFynhl5ibLIjsN9fqg2cTvQg=; b=nli0urym7dEdZhwB7bzRW8hGh
+	98+tsWkF3BVwvaUdjhDwa1H6iQeiZgGeEXRw2VKRyP95ZEILjdfHHZnNyrvFpICSlhyel3jK6lFpg
+	FLGNRgnruL23KbF5mCh4cZmvDFZQeI5GDCJv8YGrwpZFY6KXb8RXtQsJFGgnRbjAc4+rJNjsVu3zb
+	WQXsyqQv30YpjxKycKuA32YYjFI6KMrJgumOKL1C2SL4nP7ub72Njnh0Yb6b6RYhGTADMxkil8Jan
+	GPyHN01WXPqAN8q1kYjFTJiqYCCGEwV1hL4H/hJeyS6rDTSGFKsulJaecGQ1sSuJ4oAHBop9D6BAN
+	sQ/VtsPgg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyvkj-0003JC-Gf; Fri, 24 Jul 2020 11:20:37 +0000
-Received: from mail-ot1-f66.google.com ([209.85.210.66])
+	id 1jywDH-0005Xb-8Q; Fri, 24 Jul 2020 11:50:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyvkb-0003Fv-J6; Fri, 24 Jul 2020 11:20:30 +0000
-Received: by mail-ot1-f66.google.com with SMTP id h13so6726096otr.0;
- Fri, 24 Jul 2020 04:20:28 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=RT1ij6hZQ0Vuyzc9YCYk+cMgOX5H+aqYQ/od4etbieA=;
- b=MUbXqVZfc37rnBztYKX9ZeeYWTU3wVY9PUbAhRPUpcvb1IXdQcxP/JNkuSInPDz4Ly
- a6hDOORwu2pVpBPmOClQbag365/PL5btZfr1nBUX8G5WDLKmf7kywgaHit2Zwgeg3MHD
- BdD/qgLrO8Zjv+tmk6yVvh4xMEJg36BoDBKw5vzwSq5vS+SrPRKhdgQeMIE4AYx7FGZA
- 0aV9I3TFjsrhYY+kixPsT43F6gIPKQt+15/Iw3dHmnyM1l5wGlsZPntKfDCzGbwsKVAO
- aAm79ZdATT+aiv1C8QG4A/3TTKH5VwAuixa3DnReqzBZR+w1oRWVaJwDIvTGjZOH7PTj
- V2Tw==
-X-Gm-Message-State: AOAM532tkRpWCg7KC9PW6GVRuLTcT89/l3sI4klclPPJd7uEIVm3atVR
- w4QBcVFRDT8ujK+e5cdg89l7fUD4+nC5oDSnyz4=
-X-Google-Smtp-Source: ABdhPJzsxm4LQo1zgoIl9St1TbbJDGXLH0trq0vlIozdp420lwDRMIVsSe8E5CQQSywvRasTJhTd6PVeYBmQuhH0tt0=
-X-Received: by 2002:a9d:590a:: with SMTP id t10mr8405356oth.262.1595589628310; 
- Fri, 24 Jul 2020 04:20:28 -0700 (PDT)
-MIME-Version: 1.0
+ id 1jywDD-0005WL-GF; Fri, 24 Jul 2020 11:50:05 +0000
+X-UUID: a4191b97fdfe4002a0f107ccb8ac027d-20200724
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=/zejYp/GTVn0VhxNwV3OAw/hISSDpVJ/mNNf/5S0Uhs=; 
+ b=TyLyg7rgvvUqo/RpluGg2OI2+byHaZ1GrIE+r/XGB9fx7FFhVycXJ4P9Q2yNWwtTixPRFOBpGLScsJcmFZHUCINHrP8EomgdqzTlIcZkb+bt9vn62+LNRxUmwPb949yVCP8o9YlBsVdJFsRDKbErP0zNeRPk8EOvaNLDdfl03WM=;
+X-UUID: a4191b97fdfe4002a0f107ccb8ac027d-20200724
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <neal.liu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1542992297; Fri, 24 Jul 2020 03:49:42 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 24 Jul 2020 04:49:55 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 24 Jul 2020 19:49:47 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 24 Jul 2020 19:49:48 +0800
+Message-ID: <1595591389.14564.3.camel@mtkswgap22>
+Subject: Re: [PATCH v2] cpuidle: change enter_s2idle() prototype
+From: Neal Liu <neal.liu@mediatek.com>
+To: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Fri, 24 Jul 2020 19:49:49 +0800
+In-Reply-To: <CAJZ5v0hnW5NB1T90QNSVuzFSZrrXzxKASWYDTW=mFF6MOan9hQ@mail.gmail.com>
 References: <1594005196-16327-1-git-send-email-neal.liu@mediatek.com>
  <1594005196-16327-2-git-send-email-neal.liu@mediatek.com>
  <CAJZ5v0ihB5AJwSRpjaOnXAmciregzxARL5xfudu1h+=_LXaE_w@mail.gmail.com>
@@ -62,15 +71,13 @@ References: <1594005196-16327-1-git-send-email-neal.liu@mediatek.com>
  <20200723190724.GA1339461@google.com>
  <CAJZ5v0g_14D-tyWFEZ9eOJC=GmzR-31iAAPff=Ch8KjFyK2wfw@mail.gmail.com>
  <1595586289.14121.5.camel@mtkswgap22>
-In-Reply-To: <1595586289.14121.5.camel@mtkswgap22>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Fri, 24 Jul 2020 13:20:17 +0200
-Message-ID: <CAJZ5v0hnW5NB1T90QNSVuzFSZrrXzxKASWYDTW=mFF6MOan9hQ@mail.gmail.com>
-Subject: Re: [PATCH v2] cpuidle: change enter_s2idle() prototype
-To: Neal Liu <neal.liu@mediatek.com>
+ <CAJZ5v0hnW5NB1T90QNSVuzFSZrrXzxKASWYDTW=mFF6MOan9hQ@mail.gmail.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200724_072029_640778_D6E478B3 
-X-CRM114-Status: GOOD (  34.96  )
+X-CRM114-CacheID: sfid-20200724_075004_373410_E1DC58E8 
+X-CRM114-Status: GOOD (  38.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,141 +91,144 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: Jacob Pan <jacob.jun.pan@linux.intel.com>,
  linux-tegra <linux-tegra@vger.kernel.org>,
- wsd_upstream <wsd_upstream@mediatek.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Linux PM <linux-pm@vger.kernel.org>,
+ wsd_upstream <wsd_upstream@mediatek.com>, Linux PM <linux-pm@vger.kernel.org>,
  Daniel Lezcano <daniel.lezcano@linaro.org>,
  "Rafael J. Wysocki" <rjw@rjwysocki.net>, lkml <linux-kernel@vger.kernel.org>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  ACPI Devel Maling List <linux-acpi@vger.kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ Thierry Reding <thierry.reding@gmail.com>, Neal Liu <neal.liu@mediatek.com>,
  Sami Tolvanen <samitolvanen@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, Len Brown <lenb@kernel.org>
+ Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek
+ SoC..." <linux-mediatek@lists.infradead.org>, Linux
+ ARM <linux-arm-kernel@lists.infradead.org>, Len Brown <lenb@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 24, 2020 at 12:24 PM Neal Liu <neal.liu@mediatek.com> wrote:
->
-> On Fri, 2020-07-24 at 11:57 +0200, Rafael J. Wysocki wrote:
-> > On Thu, Jul 23, 2020 at 9:07 PM Sami Tolvanen <samitolvanen@google.com> wrote:
-> > >
-> > > On Mon, Jul 20, 2020 at 04:21:34PM +0800, Neal Liu wrote:
-> > > > Gentle ping on this patch.
-> > > >
-> > > >
-> > > > On Fri, 2020-07-10 at 11:08 +0800, Neal Liu wrote:
-> > > > > On Thu, 2020-07-09 at 14:18 +0200, Rafael J. Wysocki wrote:
-> > > > > > On Mon, Jul 6, 2020 at 5:13 AM Neal Liu <neal.liu@mediatek.com> wrote:
-> > > > > > >
-> > > > > > > Control Flow Integrity(CFI) is a security mechanism that disallows
-> > > > > > > changes to the original control flow graph of a compiled binary,
-> > > > > > > making it significantly harder to perform such attacks.
-> > > > > > >
-> > > > > > > init_state_node() assign same function callback to different
-> > > > > > > function pointer declarations.
-> > > > > > >
-> > > > > > > static int init_state_node(struct cpuidle_state *idle_state,
-> > > > > > >                            const struct of_device_id *matches,
-> > > > > > >                            struct device_node *state_node) { ...
-> > > > > > >         idle_state->enter = match_id->data; ...
-> > > > > > >         idle_state->enter_s2idle = match_id->data; }
-> > > > > > >
-> > > > > > > Function declarations:
-> > > > > > >
-> > > > > > > struct cpuidle_state { ...
-> > > > > > >         int (*enter) (struct cpuidle_device *dev,
-> > > > > > >                       struct cpuidle_driver *drv,
-> > > > > > >                       int index);
-> > > > > > >
-> > > > > > >         void (*enter_s2idle) (struct cpuidle_device *dev,
-> > > > > > >                               struct cpuidle_driver *drv,
-> > > > > > >                               int index); };
-> > > > > > >
-> > > > > > > In this case, either enter() or enter_s2idle() would cause CFI check
-> > > > > > > failed since they use same callee.
-> > > > > >
-> > > > > > Can you please explain this in a bit more detail?
-> > > > > >
-> > > > > > As it stands, I don't understand the problem statement enough to apply
-> > > > > > the patch.
-> > > > > >
-> > > > >
-> > > > > Okay, Let's me try to explain more details.
-> > > > > Control Flow Integrity(CFI) is a security mechanism that disallows
-> > > > > changes to the original control flow graph of a compiled binary, making
-> > > > > it significantly harder to perform such attacks.
-> > > > >
-> > > > > There are multiple control flow instructions that could be manipulated
-> > > > > by the attacker and subvert control flow. The target instructions that
-> > > > > use data to determine the actual destination.
-> > > > > - indirect jump
-> > > > > - indirect call
-> > > > > - return
-> > > > >
-> > > > > In this case, function prototype between caller and callee are mismatch.
-> > > > > Caller: (type A)funcA
-> > > > > Callee: (type A)funcB
-> > > > > Callee: (type C)funcC
-> > > > >
-> > > > > funcA calls funcB -> no problem
-> > > > > funcA calls funcC -> CFI check failed
-> > > > >
-> > > > > That's why we try to align function prototype.
-> > > > > Please feel free to feedback if you have any questions.
-> > >
-> > > I think you should include a better explanation in the commit message.
-> > > Perhaps something like this?
-> > >
-> > >   init_state_node assigns the same callback function to both enter and
-> > >   enter_s2idle despite mismatching function types, which trips indirect
-> > >   call checking with Control-Flow Integrity (CFI).
-> > >
-> > > > > > > Align function prototype of enter() since it needs return value for
-> > > > > > > some use cases. The return value of enter_s2idle() is no
-> > > > > > > need currently.
-> > > > > >
-> > > > > > So last time I requested you to document why ->enter_s2idle needs to
-> > > > > > return an int in the code, which has not been done.  Please do that.
-> > >
-> > > Rafael, are you happy with the commit message documenting the reason,
-> > > or would you prefer to also add a comment before enter_s2idle?
+On Fri, 2020-07-24 at 13:20 +0200, Rafael J. Wysocki wrote:
+> On Fri, Jul 24, 2020 at 12:24 PM Neal Liu <neal.liu@mediatek.com> wrote:
 > >
-> > As I said before, it would be good to have a comment in the code as
-> > well or people will be wondering why it is necessary to return
-> > anything from that callback, because its return value is never used.
+> > On Fri, 2020-07-24 at 11:57 +0200, Rafael J. Wysocki wrote:
+> > > On Thu, Jul 23, 2020 at 9:07 PM Sami Tolvanen <samitolvanen@google.com> wrote:
+> > > >
+> > > > On Mon, Jul 20, 2020 at 04:21:34PM +0800, Neal Liu wrote:
+> > > > > Gentle ping on this patch.
+> > > > >
+> > > > >
+> > > > > On Fri, 2020-07-10 at 11:08 +0800, Neal Liu wrote:
+> > > > > > On Thu, 2020-07-09 at 14:18 +0200, Rafael J. Wysocki wrote:
+> > > > > > > On Mon, Jul 6, 2020 at 5:13 AM Neal Liu <neal.liu@mediatek.com> wrote:
+> > > > > > > >
+> > > > > > > > Control Flow Integrity(CFI) is a security mechanism that disallows
+> > > > > > > > changes to the original control flow graph of a compiled binary,
+> > > > > > > > making it significantly harder to perform such attacks.
+> > > > > > > >
+> > > > > > > > init_state_node() assign same function callback to different
+> > > > > > > > function pointer declarations.
+> > > > > > > >
+> > > > > > > > static int init_state_node(struct cpuidle_state *idle_state,
+> > > > > > > >                            const struct of_device_id *matches,
+> > > > > > > >                            struct device_node *state_node) { ...
+> > > > > > > >         idle_state->enter = match_id->data; ...
+> > > > > > > >         idle_state->enter_s2idle = match_id->data; }
+> > > > > > > >
+> > > > > > > > Function declarations:
+> > > > > > > >
+> > > > > > > > struct cpuidle_state { ...
+> > > > > > > >         int (*enter) (struct cpuidle_device *dev,
+> > > > > > > >                       struct cpuidle_driver *drv,
+> > > > > > > >                       int index);
+> > > > > > > >
+> > > > > > > >         void (*enter_s2idle) (struct cpuidle_device *dev,
+> > > > > > > >                               struct cpuidle_driver *drv,
+> > > > > > > >                               int index); };
+> > > > > > > >
+> > > > > > > > In this case, either enter() or enter_s2idle() would cause CFI check
+> > > > > > > > failed since they use same callee.
+> > > > > > >
+> > > > > > > Can you please explain this in a bit more detail?
+> > > > > > >
+> > > > > > > As it stands, I don't understand the problem statement enough to apply
+> > > > > > > the patch.
+> > > > > > >
+> > > > > >
+> > > > > > Okay, Let's me try to explain more details.
+> > > > > > Control Flow Integrity(CFI) is a security mechanism that disallows
+> > > > > > changes to the original control flow graph of a compiled binary, making
+> > > > > > it significantly harder to perform such attacks.
+> > > > > >
+> > > > > > There are multiple control flow instructions that could be manipulated
+> > > > > > by the attacker and subvert control flow. The target instructions that
+> > > > > > use data to determine the actual destination.
+> > > > > > - indirect jump
+> > > > > > - indirect call
+> > > > > > - return
+> > > > > >
+> > > > > > In this case, function prototype between caller and callee are mismatch.
+> > > > > > Caller: (type A)funcA
+> > > > > > Callee: (type A)funcB
+> > > > > > Callee: (type C)funcC
+> > > > > >
+> > > > > > funcA calls funcB -> no problem
+> > > > > > funcA calls funcC -> CFI check failed
+> > > > > >
+> > > > > > That's why we try to align function prototype.
+> > > > > > Please feel free to feedback if you have any questions.
+> > > >
+> > > > I think you should include a better explanation in the commit message.
+> > > > Perhaps something like this?
+> > > >
+> > > >   init_state_node assigns the same callback function to both enter and
+> > > >   enter_s2idle despite mismatching function types, which trips indirect
+> > > >   call checking with Control-Flow Integrity (CFI).
+> > > >
+> > > > > > > > Align function prototype of enter() since it needs return value for
+> > > > > > > > some use cases. The return value of enter_s2idle() is no
+> > > > > > > > need currently.
+> > > > > > >
+> > > > > > > So last time I requested you to document why ->enter_s2idle needs to
+> > > > > > > return an int in the code, which has not been done.  Please do that.
+> > > >
+> > > > Rafael, are you happy with the commit message documenting the reason,
+> > > > or would you prefer to also add a comment before enter_s2idle?
+> > >
+> > > As I said before, it would be good to have a comment in the code as
+> > > well or people will be wondering why it is necessary to return
+> > > anything from that callback, because its return value is never used.
+> > >
+> > > Thanks!
 > >
-> > Thanks!
->
-> Is it okay to add these comments before enter_s2idle?
->
-> /*
->  * Align function type since init_state_node assigns the same callback
+> > Is it okay to add these comments before enter_s2idle?
+> >
+> > /*
+> >  * Align function type since init_state_node assigns the same callback
+> 
+> init_state_node()
+> 
+> >  * function to both enter and enter_s2idle despite mismatching function
+> 
+> ->enter_s2idle
+> 
+> >  * types, which trips indirect call checking with Control-Flow Integrity
+> >  * (CFI).
+> >  */
+> > int (*enter_s2idle)(struct cpuidle_device *dev,
+> >                     struct cpuidle_driver *drv,
+> >                     int index);
+> 
+> But IMO it would be sufficient to add something like this to the
+> existing comment regarding ->enter_s2idle:
+> 
+> "This callback may point to the same function as ->enter if all of the
+> above requirements are met by it."
+> 
+> That would explain why the signature is the same sufficiently in my view.
+> 
+> Thanks!
 
-init_state_node()
-
->  * function to both enter and enter_s2idle despite mismatching function
-
-->enter_s2idle
-
->  * types, which trips indirect call checking with Control-Flow Integrity
->  * (CFI).
->  */
-> int (*enter_s2idle)(struct cpuidle_device *dev,
->                     struct cpuidle_driver *drv,
->                     int index);
-
-But IMO it would be sufficient to add something like this to the
-existing comment regarding ->enter_s2idle:
-
-"This callback may point to the same function as ->enter if all of the
-above requirements are met by it."
-
-That would explain why the signature is the same sufficiently in my view.
-
-Thanks!
+For clarification, do you mean add this comment on enter_s2idle function
+pointer declaration is enough?
 
 _______________________________________________
 Linux-mediatek mailing list
