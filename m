@@ -2,23 +2,22 @@ Return-Path: <SRS0=BOys=BD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B3D31C433E4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 05:39:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8CA95C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 06:42:22 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 81A76206D8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 05:39:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 56CC92070B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 06:42:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CzBaKM9X";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="t+UCTiIm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 81A76206D8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gbxE2QMP";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="kLjudVaa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 56CC92070B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,54 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=0nL685z/xCNOX7mWhTwJkuzXG/vPIlOBoZ9tvnSAsq0=; b=CzBaKM9XU2F71IwDiDhtandzt
-	BHCvIpZoYK01CGht9TVoeJbjFfhcaStMsiTJLA0X9a2ZrBcUPZOrpR9CzD6n4QUrECC3J8r0O0wbG
-	WmhEBWf+4p409sFeoCI3kFos/oCvie/jji10rsfu4YiPOMjvPknp1bOYiMGy8v8FwK+xI3owmHCgN
-	jS5InWEpKwvMO6/E2WtpdK85kRoSn5bZLDxw0aFL96KTG+0KcvlrD6x4DScKFE0JBjmJ770sSbPYM
-	5S+Sq6k9NZlYk7pUY9u3Dt4qQ0U/sDeg+FA4JR+Q70J/ZA/hKC2cLfMqxBbI0jU3v6KHRnU7/dQhB
-	+HF+Aj9jw==;
+	 bh=ApYgyh6L/M0MKJzfPo/+z2OPOwOE1chzRsAsiK5qEhM=; b=gbxE2QMPnmiLwTsyfmrd+PY8u
+	RsfHC3ljPW/uVtkUe7Bez2l+dB34EMg7dS/vZSpbSMZ2K6256rc6EsBT9Wf7WN7Uhrs2q9LZsSVxE
+	7GyHi+ByymHAKHl8uHerQ18/0jXGk3oXXUl49nORa9cVV/rFxijtn0IwDLkvxdt+tDude/zUe95sJ
+	wzwADmpc37qHlir3ffR+zraRGRDMLvJw16vmueFerf2Y0nQbe0h0h+I09XYynsGzp5LJD+dqVM3Hi
+	Ir+b+QhOVNKfADaBGs/H0fVnoCohJKchWeRQnvl05BzEkNvFSaD88ywoit7M7MtBME1BVh/3AFLPA
+	ASETeIuZw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyqQi-0000fE-Kk; Fri, 24 Jul 2020 05:39:36 +0000
+	id 1jyrPJ-0006H8-7K; Fri, 24 Jul 2020 06:42:13 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyqQe-0000eI-Nb; Fri, 24 Jul 2020 05:39:33 +0000
-X-UUID: 2b1b1351ddfa420cac7ab0427f98bfb6-20200723
+ id 1jyrPE-0006GT-3K; Fri, 24 Jul 2020 06:42:09 +0000
+X-UUID: 6baaf1927d1c412896e297e16ecc9084-20200723
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=wBDacOncVh0PojdDGdKS/zftjuMPjd4CIaDYeFLXde0=; 
- b=t+UCTiImetZgSpgbl/84ZpHJs+X36CSiAuqPiWmZQqwpXTmRMCCgNI1zb18kxV4c9i0dPP4m2haBflbKI/Gnb3yAByNmW8kMEHQAKLoSYMDW+Rfhby0Ow5RqFgCwMEwo6Y+2AkanyDscoj3ab8FczyQ6Ad9oRo5Ov5CsG6tEi8A=;
-X-UUID: 2b1b1351ddfa420cac7ab0427f98bfb6-20200723
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <hanks.chen@mediatek.com>)
+ bh=LqLck1fwSu4qq9+0rFPa49nhL2/61wPAzLCarhjNGK4=; 
+ b=kLjudVaaDc3VZsa4tfkCBMxFX8cXhjc2nkENJm3OeKEVG9KG4+T6i7qoFaaqbZilzeibpJWX5jHbQnv7DtXVeVfvfI/F2o1oRqc8zCnS7NmOzOc7vvoRVyDPNbSbsK4+ZiTSQjCmmF00j55yWO3pju/ci5xw+QgE0jwJljFOr00=;
+X-UUID: 6baaf1927d1c412896e297e16ecc9084-20200723
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <crystal.guo@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2127669558; Thu, 23 Jul 2020 21:39:26 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Jul 2020 22:39:23 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 24 Jul 2020 13:39:16 +0800
-Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 24 Jul 2020 13:39:17 +0800
-Message-ID: <1595569156.29906.6.camel@mtkswgap22>
-Subject: Re: [PATCH v9 2/7] dt-bindings: pinctrl: add bindings for MediaTek
- MT6779 SoC
-From: Hanks Chen <hanks.chen@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-Date: Fri, 24 Jul 2020 13:39:16 +0800
-In-Reply-To: <20200723155159.GB436360@bogus>
-References: <1595503197-15246-1-git-send-email-hanks.chen@mediatek.com>
- <1595503197-15246-3-git-send-email-hanks.chen@mediatek.com>
- <20200723155159.GB436360@bogus>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ with ESMTP id 103697750; Thu, 23 Jul 2020 22:36:41 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Jul 2020 23:36:38 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs07n2.mediatek.inc
+ (172.21.101.141) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 24 Jul 2020 14:36:37 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 24 Jul 2020 14:36:35 +0800
+Message-ID: <1595572526.15289.9.camel@mhfsdcap03>
+Subject: Re: [PATCH 4/4] dt-binding: mediatek: mt8192: update mtk-wdt document
+From: Crystal Guo <crystal.guo@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Date: Fri, 24 Jul 2020 14:35:26 +0800
+In-Reply-To: <d69d441d-b8c7-f4a4-7ae1-a0012d8001f3@gmail.com>
+References: <20200723090731.4482-1-seiya.wang@mediatek.com>
+ <20200723090731.4482-5-seiya.wang@mediatek.com>
+ <20200723212935.GA889594@bogus>
+ <d69d441d-b8c7-f4a4-7ae1-a0012d8001f3@gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200724_013932_916831_4954B055 
-X-CRM114-Status: GOOD (  15.81  )
+X-CRM114-CacheID: sfid-20200724_024208_339422_54F4DC5A 
+X-CRM114-Status: GOOD (  16.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,68 +85,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, CC Hwang <cc.hwang@mediatek.com>,
- wsd_upstream@mediatek.com, Stephen Boyd <sboyd@kernel.org>,
- Andy Teng <andy.teng@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>,
- Sean Wang <sean.wang@kernel.org>, Loda Chou <loda.chou@mediatek.com>,
- linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias
- Brugger <matthias.bgg@gmail.com>, mtk01761 <wendell.lin@mediatek.com>,
- Michael Turquette <mturquette@baylibre.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Rob Herring <robh@kernel.org>,
+ "linux-watchdog@vger.kernel.org" <linux-watchdog@vger.kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ Seiya Wang =?UTF-8?Q?=28=E7=8E=8B=E8=BF=BA=E5=90=9B=29?=
+ <seiya.wang@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "linux-serial@vger.kernel.org" <linux-serial@vger.kernel.org>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2020-07-23 at 09:51 -0600, Rob Herring wrote:
-> On Thu, 23 Jul 2020 19:19:52 +0800, Hanks Chen wrote:
-> > From: Andy Teng <andy.teng@mediatek.com>
+On Fri, 2020-07-24 at 06:02 +0800, Matthias Brugger wrote:
+> 
+> On 23/07/2020 23:29, Rob Herring wrote:
+> > On Thu, Jul 23, 2020 at 05:07:31PM +0800, Seiya Wang wrote:
+> >> From: Crystal Guo <crystal.guo@mediatek.com>
+> >>
+> >> update mtk-wdt document for MT8192 platform
+> >>
+> >> Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
+> >> ---
+> >>   Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 2 ++
+> >>   1 file changed, 2 insertions(+)
+> >>
+> >> diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+> >> index 4dd36bd3f1ad..d760ca8a630e 100644
+> >> --- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+> >> +++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+> >> @@ -12,6 +12,8 @@ Required properties:
+> >>   	"mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
+> >>   	"mediatek,mt8183-wdt", "mediatek,mt6589-wdt": for MT8183
+> >>   	"mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
+> >> +	"mediatek,mt8192-wdt": for MT8192
+> >> +
 > > 
-> > Add devicetree bindings for MediaTek MT6779 pinctrl driver.
-> > 
-> > Reviewed-by: Rob Herring <robh@kernel.org>
-> > Signed-off-by: Andy Teng <andy.teng@mediatek.com>
-> > Signed-off-by: Hanks Chen <hanks.chen@mediatek.com>
-> > ---
-> >  .../pinctrl/mediatek,mt6779-pinctrl.yaml      | 197 ++++++++++++++++++
-> >  1 file changed, 197 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+> > So, not compatible with "mediatek,mt6589-wdt"? Is so, perhaps summarize
+> > what the differences are.
 > > 
 > 
+> Hm, looks to me as if the binding description for mt2712 and mt8183 isn't 
+> correct, as we have a OF data just as we have for mt8192 now. Could you fix this 
+> in a separate patch?
 > 
-> My bot found errors running 'make dt_binding_check' on your patch:
+> Regards,
+> Matthias
 > 
-> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.example.dt.yaml: example-0: pinctrl@10005000:reg:0: [0, 268455936, 0, 4096] is too long
-> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.example.dt.yaml: example-0: pinctrl@10005000:reg:1: [0, 297926656, 0, 4096] is too long
-> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.example.dt.yaml: example-0: pinctrl@10005000:reg:2: [0, 298909696, 0, 4096] is too long
-> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.example.dt.yaml: example-0: pinctrl@10005000:reg:3: [0, 300023808, 0, 4096] is too long
-> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.example.dt.yaml: example-0: pinctrl@10005000:reg:4: [0, 300351488, 0, 4096] is too long
-> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.example.dt.yaml: example-0: pinctrl@10005000:reg:5: [0, 300548096, 0, 4096] is too long
-> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.example.dt.yaml: example-0: pinctrl@10005000:reg:6: [0, 301072384, 0, 4096] is too long
-> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.example.dt.yaml: example-0: pinctrl@10005000:reg:7: [0, 301137920, 0, 4096] is too long
-> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.example.dt.yaml: example-0: pinctrl@10005000:reg:8: [0, 268480512, 0, 4096] is too long
+> Besides watchdog, mt8192 toprgu module also provide sub-system software reset features.
+> mt2712 and mt8183 are same as mt8192. But mt6589 not support sub-system software reset.
 > 
-> 
-> See https://urldefense.com/v3/__https://patchwork.ozlabs.org/patch/1334743__;!!CTRNKA9wMg0ARbw!xVq21s-Vaw3If1-Q8EWJEDBBIUp0j30PIaGQWDyhCftbcOgFrjRqZMNHoHgOXksD3g$ 
-> 
-> If you already ran 'make dt_binding_check' and didn't see the above
-> error(s), then make sure dt-schema is up to date:
-> 
-> pip3 install git+https://github.com/devicetree-org/dt-schema.git@master --upgrade
-> 
-> Please check and re-submit.
-> 
-Hi Rob,
-
-It's my fault
-I could reproduce the error log after dt-schema updates to the latest
-version.
-I'll fix it in next version.
-
-Thanks!
-
-Hanks Chen
+> >>   
+> >>   - reg : Specifies base physical address and size of the registers.
+> >>   
+> >> -- 
+> >> 2.14.1
 
 _______________________________________________
 Linux-mediatek mailing list
