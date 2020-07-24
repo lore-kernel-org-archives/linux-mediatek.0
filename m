@@ -2,79 +2,80 @@ Return-Path: <SRS0=BOys=BD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-8.3 required=3.0 tests=BAYES_00,DKIM_INVALID,
+	DKIM_SIGNED,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 56D32C433E1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:03:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 75987C433EA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:15:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2543120714
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:03:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 46C5020748
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:15:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="B84dPoxw";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="X5PD51Uu"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2543120714
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="d9aptrJM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 46C5020748
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=WB5kc6pTAWbc1xapIFsRq5Q+8ekaAJqzVTh2UQOLF3k=; b=B84dPoxw4BAe19gNni/0Fx55D
-	YKG0Ivuc6xTTfve2r7eKtn7JuiBKa0CqCEWPgg5NQ0fyrnr8nqy/z4KIriTFvGFKfY47YKDe+iI+v
-	7uFQuK+OS+82z/x3ck0If2j3MKwChR58aXmxeA2/+jAcC29ujZ9WxIhEqn8gWrGnzvIq8PYfPYJ5g
-	oTcEFUBasCph1fBM5h1Aq6ehw1Kc6lD80Q1hz+YK6NNAHLoo5hbOl+EseJ6qaSogI6etEPXWzn/9k
-	l9HwsY7vvrbPDB+LdPhLc5d5cIEVBFF5IQZOQ2WeU5tv9TRb13IRAxhT2bzHwwjbRwDZ9m0l0fUXo
-	VsOom0x8A==;
+	 bh=X2lt562Bw51LHZpR0mAqMnppz+vBUrAXjcHoH+6veUk=; b=d9aptrJMWR5R8TG/KWFG+pNqg
+	RK22pOQQ0fHBiYrYAuoAcbpqCgSlNU8godwVYVTjX9WrsCUyTWodHSrwNu5ZYp21z7xRCh3zf8WFC
+	VdkovoLTa43LOerNF1TKJA8sv52Zo9cplR/LqOPv7tXWB2MfFw/KPRIVmW5NUbZrKYonTY2aLp6V3
+	ZmGVpE96JwtVmCuJ2L34RQm/zXiG7wDiETVxvWN6dIoUBEUHcW8dM+h+PCERX0L2+mg3/l/qQdwrn
+	Xtqt1YUaNx3+9E4JVYg+0pBzpPE/RS+kSi9X7QWGrCqzUZspvQqn1YVmaHwPvrvAM89YhCDRoJbE1
+	7a3ImoWTQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyrk8-0000CM-0s; Fri, 24 Jul 2020 07:03:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jyrvq-0003EL-LT; Fri, 24 Jul 2020 07:15:50 +0000
+Received: from mail-ej1-f67.google.com ([209.85.218.67])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyrk1-00009z-4a; Fri, 24 Jul 2020 07:03:38 +0000
-X-UUID: 9ba55bcfd7ac485f867ccf852fe30e17-20200723
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=pQEzRPBBsfVAYpz/jWwz9ulLUcB7f5ZARXi1n6E4uJE=; 
- b=X5PD51UuZTUw9T9biWy2CeEPUtz6YAwpyRH2/VSsrukFa4TQ8pfTM+32aBQgtZFO2lqlO0ayl//FOUUWyCC9se6M+aRq/1L+ms/zv7iFcukwb5a3+EwLbvPGGc99BjT1zr9133HlrcymoHHS7qIPlC/r5F8etwrsiYdB/znPgIg=;
-X-UUID: 9ba55bcfd7ac485f867ccf852fe30e17-20200723
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <crystal.guo@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 597981940; Thu, 23 Jul 2020 23:03:26 -0800
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 24 Jul 2020 00:03:31 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by mtkmbs06n2.mediatek.inc
- (172.21.101.130) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 24 Jul 2020 15:03:30 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 24 Jul 2020 15:03:27 +0800
-Message-ID: <1595574138.15289.16.camel@mhfsdcap03>
-Subject: Re: [PATCH 3/4] watchdog: mt8192: add wdt support
-From: Crystal Guo <crystal.guo@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Date: Fri, 24 Jul 2020 15:02:18 +0800
-In-Reply-To: <bdd9f543-0fe0-af25-1843-aae95fcd4230@gmail.com>
-References: <20200723090731.4482-1-seiya.wang@mediatek.com>
- <20200723090731.4482-4-seiya.wang@mediatek.com>
- <bdd9f543-0fe0-af25-1843-aae95fcd4230@gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jyrvd-0003AE-Ut; Fri, 24 Jul 2020 07:15:38 +0000
+Received: by mail-ej1-f67.google.com with SMTP id ga4so8901841ejb.11;
+ Fri, 24 Jul 2020 00:15:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=kb0NMIWA8NMC9OCkXCwQpZanLpUA9SPrAHge49T1PVs=;
+ b=bnLApaaBX6QgOz7yESRHIadPvyfGjdGU0oySkYjIB2Uthi1kZqxUKhfObe5VAmv2og
+ SfcAbKjTFW2vOeG5b/U7Fgw5iyrQIZtty+nemiy8Bk7Yl26pGT2kpNhAan+DGwcxaBlo
+ DNX0CIqsMs/8He1O3z5EQvfNCHqN9nF+zMQthmvsTS9duXwJpxndkY8HF/y9BYS0XWdC
+ KlKXJ78jwB7ejbsKy5dqALCBlgUgrsJyCE1SrDhaF5hpNXPGuk7fAS7YkmV3E53d3HWq
+ r9DgoXDWwEdp/q0FinaTkuwl6unJAUfnDXwsUqOViitWwXkbg6d8qyNyhSn0251BxXSM
+ HJaA==
+X-Gm-Message-State: AOAM533SfoAxAW1xgwOfrEUWcodsEZGu7CqPwDIB+J9YzdBhsymiuzY3
+ 6VgljbjE3IpbXU+/xO7JqwQ=
+X-Google-Smtp-Source: ABdhPJzqgO6qxeTTZTDa89MI0CgYxEaP3SeQEudnyocZKpAeuj1R0CEq2QVJrGBSwuvtwplZBmRarg==
+X-Received: by 2002:a17:906:1a16:: with SMTP id
+ i22mr8067074ejf.439.1595574936524; 
+ Fri, 24 Jul 2020 00:15:36 -0700 (PDT)
+Received: from kozik-lap ([194.230.155.213])
+ by smtp.googlemail.com with ESMTPSA id fi29sm90068ejb.83.2020.07.24.00.15.33
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Fri, 24 Jul 2020 00:15:35 -0700 (PDT)
+Date: Fri, 24 Jul 2020 09:15:32 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Florian Fainelli <f.fainelli@gmail.com>
+Subject: Re: [PATCH 23/23] MAINTAINERS: Add Krzysztof Kozlowski as maintainer
+ of memory controllers
+Message-ID: <20200724071532.GA3087@kozik-lap>
+References: <20200723073744.13400-1-krzk@kernel.org>
+ <20200723073744.13400-24-krzk@kernel.org>
+ <afee0362-e9b9-26da-04e2-136a8599bc79@gmail.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 13D0D2DA84AEC947E1C8752AB204567EA3348C69F831154A8F05B16077032F5D2000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <afee0362-e9b9-26da-04e2-136a8599bc79@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200724_030337_395610_2B6F238A 
-X-CRM114-Status: GOOD (  18.02  )
+X-CRM114-CacheID: sfid-20200724_031538_049673_F1EE38E6 
+X-CRM114-Status: GOOD (  15.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,70 +87,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-watchdog@vger.kernel.org" <linux-watchdog@vger.kernel.org>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- Seiya Wang =?UTF-8?Q?=28=E7=8E=8B=E8=BF=BA=E5=90=9B=29?=
- <seiya.wang@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "linux-serial@vger.kernel.org" <linux-serial@vger.kernel.org>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>
+List-Id: <soc.lore.kernel.org>
+Cc: linux-omap@vger.kernel.org, linux-tegra@vger.kernel.org,
+ Arnd Bergmann <arnd@arndb.de>, Tony Lindgren <tony@atomide.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Vladimir Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ soc@kernel.org, arm@kernel.org, bcm-kernel-feedback-list@broadcom.com,
+ Markus Mayer <mmayer@broadcom.com>, Santosh Shilimkar <ssantosh@kernel.org>,
+ Olof Johansson <olof@lixom.net>, Thierry Reding <thierry.reding@gmail.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Linus Torvalds <torvalds@linux-foundation.org>,
+ linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-07-24 at 06:00 +0800, Matthias Brugger wrote:
+On Thu, Jul 23, 2020 at 10:12:36AM -0700, Florian Fainelli wrote:
+> On 7/23/20 12:37 AM, Krzysztof Kozlowski wrote:
+> > The specific drivers in drivers/memory usually go via architecture (e.g.
+> > ARM SoC) maintainers but the generic parts (of_memory.[ch]) lacked any
+> > care.
+> > 
+> > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 > 
-> On 23/07/2020 11:07, Seiya Wang wrote:
-> > From: Crystal Guo <crystal.guo@mediatek.com>
-> > 
-> > add driver setting to support mt8192 wdt
-> > 
-> > Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
-> > ---
-> >   drivers/watchdog/mtk_wdt.c | 5 +++++
-> >   1 file changed, 5 insertions(+)
-> > 
-> > diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-> > index d6a6393f609d..ad23596170af 100644
-> > --- a/drivers/watchdog/mtk_wdt.c
-> > +++ b/drivers/watchdog/mtk_wdt.c
-> > @@ -76,6 +76,10 @@ static const struct mtk_wdt_data mt8183_data = {
-> >   	.toprgu_sw_rst_num = MT8183_TOPRGU_SW_RST_NUM,
-> >   };
-> >   
-> > +static const struct mtk_wdt_data mt8192_data = {
-> > +	.toprgu_sw_rst_num = 23,
+> Acked-by: Florian Fainelli <f.fainelli@gmail.com>
 > 
-> Should be defined in include/dt-bindings/reset-controller/mt8192-resets.h
+> What does this mean for specific drivers? For instance I tend to send
+> updates to brcmstb_dpfe.c through the Broadcom ARM SoC pull requests,
+> shall I continue to do this, or are you going to send memory controller
+> subsystem pull requests including that file in the future?
 
-mt8xxx-resets.h actually just used to define TOPRGU_SW_RST_NUM, may be
-it's more easier to maintain by define it at OF data directly, instead
-of resubmit the mt8xxx-reset.h and add
-"include/dt-bindings/reset-controller/mt8xxx-resets.h" at mtk_wdt.c.
+If that's okay, I intend to take the drivers patches as well. I will
+rephrase the commit message.
 
-Regards
-Crystal Guo
+Thanks for the feddback.
 
-> 
-> > +};
-> > +
-> >   static int toprgu_reset_update(struct reset_controller_dev *rcdev,
-> >   			       unsigned long id, bool assert)
-> >   {
-> > @@ -322,6 +326,7 @@ static const struct of_device_id mtk_wdt_dt_ids[] = {
-> >   	{ .compatible = "mediatek,mt2712-wdt", .data = &mt2712_data },
-> >   	{ .compatible = "mediatek,mt6589-wdt" },
-> >   	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
-> > +	{ .compatible = "mediatek,mt8192-wdt", .data = &mt8192_data },
-> >   	{ /* sentinel */ }
-> >   };
-> >   MODULE_DEVICE_TABLE(of, mtk_wdt_dt_ids);
-> > 
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-mediatek mailing list
