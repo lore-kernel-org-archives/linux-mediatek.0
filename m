@@ -2,23 +2,22 @@ Return-Path: <SRS0=BOys=BD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7086EC433E5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 13:45:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 84288C433E8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 13:46:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 38BB6206D8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 13:45:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 49897206D8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 13:46:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TubwMlmz";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="OCr7V9Pv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 38BB6206D8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="d8d1xJ/r"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 49897206D8
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arndb.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,55 +25,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=pHNwR30Nr+bajEKNSP0jx4UIUSmZO21XpwVAIz3m0Zo=; b=TubwMlmzjt6XNs3mddkO2r3sz
-	MA41WAjMIPfJgnac/eU42ic8De4FFY9x2YbjGY8SV4kiejtuIOQbH8J0SYMOExXauslbNMx8uJ0Ym
-	qbfbbIyJafa1e3LlK/JE/D2dqjXPtWITsUzJBpvwit5qy6sPKL7Xn1nq2p+rBP9fskE9AUmObLXP5
-	P2se/oh0PVxoOzWoTkAQoh8IvhA5sksS7LxJq7X6QCGSyyXMAnSOZODxuF44bIrwrxBtu92un4dVv
-	tFh4pAbGUT4YUUyDSgXlYnsPLNcszHJ6jtpZCIsIyb0L/0RfK9dsi/n/VHSO87orI2jm1dUOEHd1Y
-	DBRdkt4Xg==;
+	 bh=DhglOyj+sn7v7Wu0ALrNVhxH1J4ZaRlfoQ7kyYHjsEg=; b=d8d1xJ/rJaxRRtApnwYe58a2p
+	x3321RRUzjT28WkEn43n0JBrznMnrvOr6oiliaVM10yVkd3co8YosukVDQ/kswlVBYWPLych0Vf6L
+	ywD0vG/hJZ5I8LXDzD2tlSmtwWiDPB+KMgZCoDEoLx8V9sBHK50Di8UxNzI/qSXOR8lkJB4R0l2UT
+	bS7SHzwU6x9jEWAc/gt8CUxIz6zqi5hYUpxJEI1NoMmqfWsEF0d17VfOgveQp99m1ILcrYgwNqU1q
+	/c0dbEdSKKOTiHbBVdSmwZKjaHTvSDCgCpBoGPSG7LYgS/O5dkIUNiXlloR+UZ+RBe4c2IaH7Tt8q
+	fCeQT+dVA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyy0g-000591-OR; Fri, 24 Jul 2020 13:45:14 +0000
-Received: from mail-vs1-xe41.google.com ([2607:f8b0:4864:20::e41])
+	id 1jyy1V-0005KV-3i; Fri, 24 Jul 2020 13:46:05 +0000
+Received: from mout.kundenserver.de ([217.72.192.74])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyy0f-00057K-5R
- for linux-mediatek@lists.infradead.org; Fri, 24 Jul 2020 13:45:14 +0000
-Received: by mail-vs1-xe41.google.com with SMTP id m6so4895867vsl.12
- for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2020 06:45:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=g/+5UoxaK0B/ouWKXhlnGp7tlvNSVwLA+fl6kPFBy3Q=;
- b=OCr7V9PvnMgT+sB96Edxhs4Fa6YvkPB8pV2zkvYSzisExSkRA2oHnRwBTYa1D+8Pke
- T833lNyfbhaGuRGE36rEbzToZ+w4ajlTEeaiN2xCMgTuug0VRSy0K9578WWtKKFTS3CC
- w5K3xXdFEA+2XsYJ0VQ9GBTd9aaj8pyS1o/vQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=g/+5UoxaK0B/ouWKXhlnGp7tlvNSVwLA+fl6kPFBy3Q=;
- b=Au2EJ6E646Yhdec4FSzyD8oW9RG/YdaFOnutpEKJXEJAjg09xiZrQaey3TNLrJpfk9
- CuMgOID6skblmjKEuZ4RwnT5Qn7FZC8QM4+8j24RZd7JuSPz6/89kPnpIGuFVADhI5Zs
- mWcaJtbP5YqYBwJvzacdJvWYQrI1u1IKhMvOrOzf/MkGBTfX2IH28UQ6EISQ5x2/rbJQ
- rx0m+BCxdB5vyOlfx2IQ0TZXdMVEJ16U01Sat2QzTg/T0KMuDVy7+ioCV5EErmy2hIvi
- eyS85/Xx8Qgiwt79UNbXbGe9PuYrc/6NLHeN9vbR0QWsp9J5xnjV1SDJeJTODQjHALUb
- +6MQ==
-X-Gm-Message-State: AOAM531I1KZ7NVoQ92hMDwIVLgUYL/3GubnZmIo4/JFLOFOVUJnj5o+m
- KbXKL7nKX0nw4UZgoBGCF/h0eSo1hMf2i8Vxg4zKOw==
-X-Google-Smtp-Source: ABdhPJzF8Cn+eUjgEJZZxSH4zV2/AuLt79M3/GOySgsHJwoMPWl9y7OO1PDUxu5v46KpEurVhelGQjKWin7Y5j6dqJQ=
-X-Received: by 2002:a67:f5c6:: with SMTP id t6mr7555224vso.14.1595598309872;
- Fri, 24 Jul 2020 06:45:09 -0700 (PDT)
+ id 1jyy1R-0005JO-Rn; Fri, 24 Jul 2020 13:46:03 +0000
+Received: from mail-qv1-f52.google.com ([209.85.219.52]) by
+ mrelayeu.kundenserver.de (mreue107 [212.227.15.145]) with ESMTPSA (Nemesis)
+ id 1MuDoR-1kojrV2oCj-00uVyM; Fri, 24 Jul 2020 15:45:56 +0200
+Received: by mail-qv1-f52.google.com with SMTP id o2so4103025qvk.6;
+ Fri, 24 Jul 2020 06:45:54 -0700 (PDT)
+X-Gm-Message-State: AOAM530ipHLQRdRxHulaTTfCKPZyd9vx8IaMeNFenozbc9mRYJtPvzfz
+ e3W4WAu6SmH+vXRYuAhp18PsEFU1Baco3540EC8=
+X-Google-Smtp-Source: ABdhPJyEqdZ1Ds6rBzMmh7FhmiJq043DLd+gXjlj19IcD1ElA3GGqGC9iWVYViBP8To1mNjzEbIjhOKDCmec66ErY0E=
+X-Received: by 2002:a0c:f802:: with SMTP id r2mr9798584qvn.197.1595598353111; 
+ Fri, 24 Jul 2020 06:45:53 -0700 (PDT)
 MIME-Version: 1.0
-References: <1595475600-23180-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1595475600-23180-3-git-send-email-hsin-hsiung.wang@mediatek.com>
-In-Reply-To: <1595475600-23180-3-git-send-email-hsin-hsiung.wang@mediatek.com>
-From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Fri, 24 Jul 2020 21:44:58 +0800
-Message-ID: <CANMq1KAmVbNnXMV0Zw9ZBPtnnj283uemF+ctztaEzZi8ikB-jw@mail.gmail.com>
-Subject: Re: [PATCH v2 2/4] soc: mediatek: pwrap: add arbiter capability
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+References: <20200724074038.5597-1-krzk@kernel.org>
+ <20200724074038.5597-6-krzk@kernel.org>
+In-Reply-To: <20200724074038.5597-6-krzk@kernel.org>
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Fri, 24 Jul 2020 15:45:37 +0200
+X-Gmail-Original-Message-ID: <CAK8P3a0h3dMRH_wuGX5dZ5znnx+EHJKYwQeZ9aB7cFGudo6vmw@mail.gmail.com>
+Message-ID: <CAK8P3a0h3dMRH_wuGX5dZ5znnx+EHJKYwQeZ9aB7cFGudo6vmw@mail.gmail.com>
+Subject: Re: [PATCH v2 05/29] memory: jz4780-nemc: Do not enable by default on
+ every compile test
+To: Krzysztof Kozlowski <krzk@kernel.org>
+X-Provags-ID: V03:K1:YFAWdktfDekK6hnG8PlM4oTiRS1PozV/6pjHVVhIrv81IaDNbIU
+ lom303bkbcs1OHsb+otr8GhFfL3vU+qGQBZElq1KDtM2c4iZZRsDkIo0hSdvTRswcHnjShL
+ M2yFQZM6gO4lig/t7SJhpt7DmTmBzPM8od/cnzERiLPK4lLybLstU4jmzoHtOJZKf3g8oMv
+ GKHGltJwJG53UDMgkVuKA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:S8IMR6jl99Q=:9yGT9wwE7NSUKGl/4p+5Yd
+ U5GZVGU92aIcfqwzeeX8WhoMyirTyUz7ArlZKLcMClk7sYT01o8jD+/siJH34PstybWEqqBcF
+ vH+AvHkeX/nw80+ENq+0KQNKknFUMQjn/W0Fc6MSI6yri1F+dJ2DOQXONlbdcWwgJ+o9KzzXj
+ PXEDH2FD4RxHSs960BFLa1cfYmzjzaDDqYvUlUi61+uJakxQU0t+vuQvva103hYV0N+DOR26O
+ jblGOmv5skqBSYr1ZtTHgds2NPaqKCw2O5HzQBIk2mzHnFmBVYq7VXkeNzap2fkSHjujTJOCx
+ ii+F5uB/iBzO6pGbnKwGTnrJpcqhtcfylppF6E3SuVeAA4FnKALVDsecVRea1EuMB+uClEuPL
+ ODfs+IxWXOlRHj3yBva3xJCwn1JIJwEmyt9zTvqGGn/kXyVjiOcpdWz/Z3bVrKHvuKmgT7eeE
+ 0OnP2UwIgv3XCigoHTf4DOW/1e4BIxPt1pKRZByrZpig+CHIIo/eQAvK0xPFr0bqwHuTHhv0Q
+ orNQiiTBB7VwpyeDtGJBOdMeGkSHd8uRHJp/I7xLhLG8re1bd3sQ5AZ7YVHR7ntMR4rK8dIRL
+ mbMPmqEJ1rDOM2X0LrKP3SHAMTVbu8KXJcSp5jMsQTX5VE/uBYnZiTyH6mkpHZFX76tOfMlNk
+ PGZrwRgNeou6jslURVLhEHl8KmThVsII+faWHxnfQyB/ZNuw108CcEcLaX5xeVOm94kTzwZd7
+ CYi/8pnVvGI418HEg9/b4tvbrnxFMb8HQQAyoGujaW6t5I+CRYC2KE+njgOOEhR8uwV4v9d3S
+ Bk6vBHyaM4rKdRg7KLxJHs+9L4i42Kdch4hoiH/fat4BiiOmJLQSYKskGOyZRrmbRAigVILAg
+ KP99CoT0dSIrv4wCV1VHZlIug8ZwWIe3vijhTxOGX2nDqZVSGR9Dyi4javDPzeKAc8bg5Y9uA
+ dQzPqLGJMi6OqoUh+ddQngM/DkuGsh/j05VL4eLkcp6Qb4qopP/gP
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200724_094513_266938_E54FBC51 
-X-CRM114-Status: GOOD (  24.59  )
+X-CRM114-CacheID: sfid-20200724_094602_673057_3EB0975F 
+X-CRM114-Status: GOOD (  13.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,242 +91,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Devicetree List <devicetree@vger.kernel.org>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- Argus Lin <argus.lin@mediatek.com>, lkml <linux-kernel@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Cc: "moderated list:ARM/SAMSUNG EXYNOS ARM ARCHITECTURES"
+ <linux-samsung-soc@vger.kernel.org>, Florian Fainelli <f.fainelli@gmail.com>,
+ "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
+ Tony Lindgren <tony@atomide.com>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Vladimir Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-omap <linux-omap@vger.kernel.org>, Kukjin Kim <kgene@kernel.org>,
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
+ Markus Mayer <mmayer@broadcom.com>, Santosh Shilimkar <ssantosh@kernel.org>,
+ Olof Johansson <olof@lixom.net>, Thierry Reding <thierry.reding@gmail.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Linus Torvalds <torvalds@linux-foundation.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Roger Quadros <rogerq@ti.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 23, 2020 at 11:40 AM Hsin-Hsiung Wang
-<hsin-hsiung.wang@mediatek.com> wrote:
+On Fri, Jul 24, 2020 at 9:41 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
 >
-> Add arbiter capability for pwrap driver.
-> This patch is preparing for adding mt6873/8192 pwrap support.
+> When compile testing, enable the driver by default only on MIPS
+> architecture.
 >
-> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+>
 > ---
->  drivers/soc/mediatek/mtk-pmic-wrap.c | 67 ++++++++++++++++++++++++++++++------
->  1 file changed, 56 insertions(+), 11 deletions(-)
 >
-> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> index c897205..8d76ed4 100644
-> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> @@ -24,11 +24,13 @@
->  #define PWRAP_MT8135_BRIDGE_WDT_SRC_EN         0x54
+> Changes since v1:
+> 1. New patch
+ @@ -141,7 +141,7 @@ config FSL_IFC
 >
->  /* macro for wrapper status */
-> +#define PWRAP_GET_SWINF_2_FSM(x)       (((x) >> 1) & 0x00000007)
-
-I find this macro name a bit weird, because you are actually using
-this mask on PWRAP_WACS2_RDATA register value (just like
-PWRAP_GET_WACS_FSM below).
-
-Should it be something like PWRAP_GET_WACS_ARB_FSM?!
-
->  #define PWRAP_GET_WACS_RDATA(x)                (((x) >> 0) & 0x0000ffff)
->  #define PWRAP_GET_WACS_FSM(x)          (((x) >> 16) & 0x00000007)
->  #define PWRAP_GET_WACS_REQ(x)          (((x) >> 19) & 0x00000001)
->  #define PWRAP_STATE_SYNC_IDLE0         BIT(20)
->  #define PWRAP_STATE_INIT_DONE0         BIT(21)
-> +#define PWRAP_STATE_INIT_DONE1         BIT(15)
->
->  /* macro for WACS FSM */
->  #define PWRAP_WACS_FSM_IDLE            0x00
-> @@ -74,6 +76,7 @@
->  #define PWRAP_CAP_DCM          BIT(2)
->  #define PWRAP_CAP_INT1_EN      BIT(3)
->  #define PWRAP_CAP_WDT_SRC1     BIT(4)
-> +#define PWRAP_CAP_ARB          BIT(5)
->
->  /* defines for slave device wrapper registers */
->  enum dew_regs {
-> @@ -340,6 +343,8 @@ enum pwrap_regs {
->         PWRAP_DCM_DBC_PRD,
->         PWRAP_EINT_STA0_ADR,
->         PWRAP_EINT_STA1_ADR,
-> +       PWRAP_SWINF_2_WDATA_31_0,
-> +       PWRAP_SWINF_2_RDATA_31_0,
->
->         /* MT2701 only regs */
->         PWRAP_ADC_CMD_ADDR,
-> @@ -1108,16 +1113,30 @@ static void pwrap_writel(struct pmic_wrapper *wrp, u32 val, enum pwrap_regs reg)
->
->  static bool pwrap_is_fsm_idle(struct pmic_wrapper *wrp)
->  {
-> -       u32 val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-> +       u32 val;
-> +       bool ret;
-> +
-> +       val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-> +       if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> +               ret = (PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_IDLE);
-> +       else
-> +               ret = (PWRAP_GET_SWINF_2_FSM(val) == PWRAP_WACS_FSM_IDLE);
->
-> -       return PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_IDLE;
-> +       return ret;
-
-Those !HAS_CAP tests are a little hard to read. Also, ret isn't really needed.
-
-So I'd do this:
-if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-    return PWRAP_GET_SWINF_2_FSM(val) == PWRAP_WACS_FSM_IDLE;
-
-return PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_IDLE;
-
->  }
->
->  static bool pwrap_is_fsm_vldclr(struct pmic_wrapper *wrp)
->  {
-> -       u32 val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-> +       u32 val;
-> +       bool ret;
-> +
-> +       val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-> +       if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> +               ret = (PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR);
-> +       else
-> +               ret = (PWRAP_GET_SWINF_2_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR);
->
-> -       return PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR;
-> +       return ret;
-
-ditto
-
->  }
->
->  /*
-> @@ -1172,13 +1191,21 @@ static int pwrap_read16(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
->                 return ret;
->         }
->
-> -       pwrap_writel(wrp, (adr >> 1) << 16, PWRAP_WACS2_CMD);
-> +       if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-
-ditto, I'd reverse all these tests.
-
-> +               pwrap_writel(wrp, (adr >> 1) << 16, PWRAP_WACS2_CMD);
-> +       else
-> +               pwrap_writel(wrp, adr, PWRAP_WACS2_CMD);
-
-Not 100% convinced if worth it, but you could also do:
-
-if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-   val = adr;
-else
-   val = (adr >> 1) << 16;
-
-pwrap_writel(wrp, val, PWRAP_WACS2_CMD);
-
->
->         ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_vldclr);
->         if (ret)
->                 return ret;
->
-> -       *rdata = PWRAP_GET_WACS_RDATA(pwrap_readl(wrp, PWRAP_WACS2_RDATA));
-> +       if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> +               *rdata = PWRAP_GET_WACS_RDATA(pwrap_readl(wrp,
-> +                                             PWRAP_WACS2_RDATA));
-> +       else
-> +               *rdata = PWRAP_GET_WACS_RDATA(pwrap_readl(wrp,
-> +                                             PWRAP_SWINF_2_RDATA_31_0));
-
-Similarly:
-
-if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-   val = pwrap_readl(wrp, PWRAP_SWINF_2_RDATA_31_0);
-else
-   val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-
-*rdata = PWRAP_GET_WACS_RDATA(val);
-
-(or set the register address in an `reg` variable)
-
->
->         pwrap_writel(wrp, 1, PWRAP_WACS2_VLDCLR);
->
-> @@ -1228,8 +1255,13 @@ static int pwrap_write16(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
->                 return ret;
->         }
->
-> -       pwrap_writel(wrp, (1 << 31) | ((adr >> 1) << 16) | wdata,
-> -                    PWRAP_WACS2_CMD);
-> +       if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB)) {
-> +               pwrap_writel(wrp, BIT(31) | ((adr >> 1) << 16) | wdata,
-> +                            PWRAP_WACS2_CMD);
-> +       } else {
-> +               pwrap_writel(wrp, wdata, PWRAP_SWINF_2_WDATA_31_0);
-> +               pwrap_writel(wrp, BIT(29) | adr, PWRAP_WACS2_CMD);
-> +       }
->
->         return 0;
->  }
-> @@ -2022,6 +2054,7 @@ MODULE_DEVICE_TABLE(of, of_pwrap_match_tbl);
->  static int pwrap_probe(struct platform_device *pdev)
->  {
->         int ret, irq;
-> +       u32 rdata;
->         struct pmic_wrapper *wrp;
->         struct device_node *np = pdev->dev.of_node;
->         const struct of_device_id *of_slave_id = NULL;
-> @@ -2116,14 +2149,22 @@ static int pwrap_probe(struct platform_device *pdev)
->                 }
->         }
->
-> -       if (!(pwrap_readl(wrp, PWRAP_WACS2_RDATA) & PWRAP_STATE_INIT_DONE0)) {
-> +       if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> +               rdata = pwrap_readl(wrp, PWRAP_WACS2_RDATA) &
-> +                                   PWRAP_STATE_INIT_DONE0;
-> +       else
-> +               rdata = pwrap_readl(wrp, PWRAP_WACS2_RDATA) &
-> +                                   PWRAP_STATE_INIT_DONE1;
-> +       if (!rdata) {
-
-Maybe:
-
-if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-   mask_done = PWRAP_STATE_INIT_DONE1;
-else
-   mask_done = PWRAP_STATE_INIT_DONE0;
-
-if (!(pwrap_readl(wrp, PWRAP_WACS2_RDATA) & mask_done)) {
+>  config JZ4780_NEMC
+>         bool "Ingenic JZ4780 SoC NEMC driver"
+> -       default y
+> +       default y if MIPS
+>         depends on MIPS || COMPILE_TEST
 
 
->                 dev_dbg(wrp->dev, "initialization isn't finished\n");
->                 ret = -ENODEV;
->                 goto err_out2;
->         }
->
->         /* Initialize watchdog, may not be done by the bootloader */
-> -       pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
-> +       if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> +               pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
-> +
->         /*
->          * Since STAUPD was not used on mt8173 platform,
->          * so STAUPD of WDT_SRC which should be turned off
-> @@ -2132,7 +2173,11 @@ static int pwrap_probe(struct platform_device *pdev)
->         if (HAS_CAP(wrp->master->caps, PWRAP_CAP_WDT_SRC1))
->                 pwrap_writel(wrp, wrp->master->wdt_src, PWRAP_WDT_SRC_EN_1);
->
-> -       pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
-> +       if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> +               pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
-> +       else
-> +               pwrap_writel(wrp, 0x3, PWRAP_TIMER_EN);
-> +
->         pwrap_writel(wrp, wrp->master->int_en_all, PWRAP_INT_EN);
->         /*
->          * We add INT1 interrupt to handle starvation and request exception
-> --
-> 2.6.4
+Actually I think this should be 'default MACH_INGENIC',
+and probably also 'depends on MACH_INGENIC || COMPILE_TEST'.
+
+     Arnd
 
 _______________________________________________
 Linux-mediatek mailing list
