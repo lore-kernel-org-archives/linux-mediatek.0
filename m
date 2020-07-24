@@ -2,23 +2,23 @@ Return-Path: <SRS0=BOys=BD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B259BC433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 21:14:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C220CC433E4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 23:25:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6D779206F0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 21:14:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8D2A1206EB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 23:25:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yguvqbVa";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=vanguardiasur-com-ar.20150623.gappssmtp.com header.i=@vanguardiasur-com-ar.20150623.gappssmtp.com header.b="NNyViJ/w"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D779206F0
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Uk0AwS77";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="MIZBc67K"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8D2A1206EB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,60 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=S22p0kxAEb0TB3kpjNqPN+XSmJ57xVCNYBN/dop2Tj0=; b=yguvqbVaozvksj5tcfxJrvpnP
-	Hb/suN3gHRPG2ANx4kDKZeokgc20h9CvIfiX9DcFJ362tlo3BKgo0BY+6udXdP2D9mafTRew3rGiE
-	aeMrBa4b3Xq+BzGK8NohxT4sxanaVHegGffAKwPUJTmoznoE53m5iy9R6VPDSt9Mx3I+2v/JoTioJ
-	hUpDmRn161ZAH+ogvN6EZ+1EOrmABErglXCiKsKUFsoSmvb2s28ZiDiT0JOp+3La3YAM3ctsas/EO
-	7sAXAvndJCwjM58MwcqqlSmt7O37BedvRkRjrn5rtIhJoRoHPmy25gSiv8KSXDf5ah30gRTw1ruVe
-	MftDhx6oA==;
+	 bh=9zYUL0nAz3Eu+cDUvDA0fpDn/WXGpcs3ujo7uDonqeY=; b=Uk0AwS77VdRTqoqCHs8V1KEcB
+	TfR37zhKt70404kow55ydBPYolgB9yQEqMECT4KVT5r5WdyD24+AOyprXfPX9CeqCI2ZD4uK0rKNi
+	hCs4dxKHKTxVjCo4mk/kv8rYNSugEv+Ob57d7otz+MNtrAvz4Jpek+x/FYlNGXyIVdvBmaC29hRFz
+	+lekqcqx/A7KNVfDmeG0NVs0bICgG8mtkIyMn3ZZFcUPdCI29AKDaOVacNwr7QzNQnWxMO0Mj5yhp
+	/i3rlYNzTjEsTHo5ONbO7hluniUcDPoXTBAXbCtwEBn3WgF3h2DI15EpQRkSuQA8nmPg4fURK/y9w
+	raRQcV4ww==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jz50n-0000j1-Si; Fri, 24 Jul 2020 21:13:49 +0000
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642])
+	id 1jz73d-0006An-GC; Fri, 24 Jul 2020 23:24:53 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jz50k-0000ht-Ol
- for linux-mediatek@lists.infradead.org; Fri, 24 Jul 2020 21:13:48 +0000
-Received: by mail-ej1-x642.google.com with SMTP id o18so11285092eje.7
- for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2020 14:13:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=OFm7DNfbGLvYjSv9x07Vaji51K1GDU8U2+TQceYuWyI=;
- b=NNyViJ/wQjwFw6LJki3EHMdoQI5nOf/jmGvvyFEInwOTHijQpVL81V9s6lEWnMwQTg
- 8Xe8Wb7pwEtBOUB2URXFzarRMxNxHY9riLZmIpL3uuambz8C7WXQ1l6rnKy35h4/aszs
- dtCR9kT3+j8D6BuVkxB4ahxFjsYHlNWrysmUs2aX445bVvmLhf0fyvM7DixBEva/b0Gg
- 8GQK8UWM13w1dOLUt5E11HAptzq4pHv5ck1izBX33E9JOac87tKV7jD0uAt3UmcqMlia
- WRxVa7IbYYGhlb0l3Tsp7BEn23Lo0g2Ajiu2Emio0EQSoV0/lQ0H18KaDzzAxN942W6v
- R6nA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=OFm7DNfbGLvYjSv9x07Vaji51K1GDU8U2+TQceYuWyI=;
- b=QlEM11WoNu9tpDti10oaMAt0A6ehywy06IOTdi5Hj5WOT7J2CpEwjbkWuE4No2A57+
- mZe23ZOhUi7l+IsSNQyGWgLgYJnZq92NAkVwRZI86R34ML5DGkwZ/shYJEhvm3r6DCT/
- FoRpCgpdZjMkpoEZS5YZ3BgA6cpuMxkR4jlCXi12/HK1gdebs1aoib5GjEV32HfQunkc
- SD7f+Col3QVue2G8UlGxbFvmJJk0j0btSkfvJP+yJX0h9+baeYusjGLrDtVJbmsGXHr7
- kFTzfKKuYiS6B718/oQYn+UcAbpB/g5rVTGZqT07TjWKKlgc1SfOs678COw9oUfRHLpk
- IJ6Q==
-X-Gm-Message-State: AOAM5333f5OEOAGafX+0x7y43eDgJaZE5uu7wYuABR/VIVi1adOKwhSo
- HwqgA+CN/GQalQy0/qK63ttKDkZpYcDCo1iG1u4vLA==
-X-Google-Smtp-Source: ABdhPJwT5ZxWfpewutr7CWB3WbbmW1spFkYOdERY8K/4TVL5l8PLNs9YmrNRPI/h1K/HcRUNTC6lidITiWhN4RIc5YI=
-X-Received: by 2002:a17:907:10d4:: with SMTP id
- rv20mr11381279ejb.413.1595625222487; 
- Fri, 24 Jul 2020 14:13:42 -0700 (PDT)
+ id 1jz73Z-00069Q-BZ; Fri, 24 Jul 2020 23:24:50 +0000
+Received: from mail-ej1-f50.google.com (mail-ej1-f50.google.com
+ [209.85.218.50])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6029F2070E;
+ Fri, 24 Jul 2020 23:24:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1595633087;
+ bh=Xq0D/3Ahn9nc9K3oRf4KbLNgsT57WhGyF47ymke7J1I=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=MIZBc67KRjS8ZLworVZFG+SYVi3xl9mvfo5oYUoKFTMujoPdru9o7MwwdmH77Hz6A
+ r5pXZ/CLYwX8cvPrWZWN7lvyEwy0pySxMxvV9jZ2MNAxDpeEp8dePxAQPFfKvZpyXI
+ UqJ0ZiKUFF37FOK8uWzT5urNtwDON1Im4IGLQKVs=
+Received: by mail-ej1-f50.google.com with SMTP id c10so3389901ejs.5;
+ Fri, 24 Jul 2020 16:24:47 -0700 (PDT)
+X-Gm-Message-State: AOAM533WW3A2LACGL8lDpz3TNVP7hpUOWxt8rvnniutwMlF5f2CyVzY9
+ naK8wG8/6F/R6K31Ln8HsOft8oOO01ed8tYqTA==
+X-Google-Smtp-Source: ABdhPJwfhfPDr4sa3JCxhKDCTo0pXvPswGrmNiVpCVyLZxB4s1571M0BK+9I9DpZATfRGeAEvIM+EI8OA/dtKifFn2Q=
+X-Received: by 2002:a17:906:b888:: with SMTP id
+ hb8mr11401027ejb.124.1595633085797; 
+ Fri, 24 Jul 2020 16:24:45 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200713060842.471356-1-acourbot@chromium.org>
- <20200713060842.471356-5-acourbot@chromium.org>
-In-Reply-To: <20200713060842.471356-5-acourbot@chromium.org>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Fri, 24 Jul 2020 18:13:30 -0300
-Message-ID: <CAAEAJfDrF_3Ys_9emvNsiwYV5pSfnLis=PoxSGeeKEWW3RE5yg@mail.gmail.com>
-Subject: Re: [PATCH v3 04/16] media: mtk-vcodec: venc: support SCP firmware
-To: Alexandre Courbot <acourbot@chromium.org>
+References: <1595469798-3824-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1595469798-3824-8-git-send-email-yongqiang.niu@mediatek.com>
+In-Reply-To: <1595469798-3824-8-git-send-email-yongqiang.niu@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Sat, 25 Jul 2020 07:24:34 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9hdvw7htuOkJmmmGR9SAev4O+kWuMopfP_F=8Vg=_U+A@mail.gmail.com>
+Message-ID: <CAAOTY_9hdvw7htuOkJmmmGR9SAev4O+kWuMopfP_F=8Vg=_U+A@mail.gmail.com>
+Subject: Re: [v7, PATCH 7/7] drm/mediatek: add support for mediatek SOC MT8183
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200724_171346_945453_28BB6843 
-X-CRM114-Status: GOOD (  32.69  )
+X-CRM114-CacheID: sfid-20200724_192449_534518_518F4505 
+X-CRM114-Status: GOOD (  19.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,617 +83,111 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Maoguang Meng <maoguang.meng@mediatek.com>,
- devicetree <devicetree@vger.kernel.org>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- linux-media <linux-media@vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Alexandre,
-
-I'm slowly making progress on the series. Here's some more comments.
-
-On Mon, 13 Jul 2020 at 03:10, Alexandre Courbot <acourbot@chromium.org> wrote:
->
-> From: Yunfei Dong <yunfei.dong@mediatek.com>
->
-> Support the new extended firmware used by MT8183's encoder.
->
-
-If you could add some more information about the MT8183 encoder
-and the extended firmware interface, it would make the review
-easier.
-
-Some comments below, I have no idea how this hardware
-works, so maybe I won't make sense :-)
-
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> [acourbot: refactor, cleanup and split]
-> Co-developed-by: Alexandre Courbot <acourbot@chromium.org>
-> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-> Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
-> ---
->  .../platform/mtk-vcodec/mtk_vcodec_drv.h      | 12 +++
->  .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  | 34 ++++---
->  .../platform/mtk-vcodec/venc/venc_h264_if.c   | 65 +++++++++++--
->  .../platform/mtk-vcodec/venc/venc_vp8_if.c    |  3 +-
->  .../media/platform/mtk-vcodec/venc_drv_if.h   |  6 ++
->  .../media/platform/mtk-vcodec/venc_ipi_msg.h  | 15 ++-
->  .../media/platform/mtk-vcodec/venc_vpu_if.c   | 97 +++++++++++++------
->  .../media/platform/mtk-vcodec/venc_vpu_if.h   |  3 +-
->  8 files changed, 181 insertions(+), 54 deletions(-)
->
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> index e132c4ec463a..45c8adfc6a0c 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> @@ -300,6 +300,17 @@ struct mtk_vcodec_ctx {
->
->  };
->
-> +/**
-> + * struct mtk_vcodec_enc_pdata - compatible data for each IC
-> + *
-> + * @uses_ext: whether the encoder uses the extended firmware messaging format
-> + * @has_lt_irq: whether the encoder uses the LT irq
-> + */
-> +struct mtk_vcodec_enc_pdata {
-> +       bool uses_ext;
-> +       bool has_lt_irq;
-
-Instead of this boolean here, I think it might be cleaner
-to have a small array of strings, listing the interrupts
-each variant requires.
-
-See drivers/staging/media/hantro/rk3288_vpu_hw.c
-
-It's future-proof and even if you don't plan to see
-future works: a) we never know and b) cleaner code,
-easier to maintain.
-
-> +};
-> +
->  /**
->   * struct mtk_vcodec_dev - driver data
->   * @v4l2_dev: V4L2 device to register video devices for.
-> @@ -348,6 +359,7 @@ struct mtk_vcodec_dev {
->         spinlock_t irqlock;
->         struct mtk_vcodec_ctx *curr_ctx;
->         void __iomem *reg_base[NUM_MAX_VCODEC_REG_BASE];
-> +       const struct mtk_vcodec_enc_pdata *venc_pdata;
->
->         struct mtk_vcodec_fw *fw_handler;
->
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> index 42530cd01a30..922bc8883811 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> @@ -244,6 +244,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
->         if (IS_ERR(dev->fw_handler))
->                 return PTR_ERR(dev->fw_handler);
->
-> +       dev->venc_pdata = of_device_get_match_data(&pdev->dev);
->         ret = mtk_vcodec_init_enc_pm(dev);
->         if (ret < 0) {
->                 dev_err(&pdev->dev, "Failed to get mt vcodec clock source!");
-> @@ -278,21 +279,24 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
->                 ret = -EINVAL;
->                 goto err_res;
->         }
-> +       disable_irq(dev->enc_irq);
->
-
-I am aware this is not an issue with this patch:
-requesting an interrupt and then immediately
-disabling the interrupt looks racy.
-
-Now, I haven't need this pattern myself,
-but from a quick grep I think you want to do:
-
-        irq_set_status_flags(irq, IRQ_NOAUTOEN);
-        ret = devm_request_irq(dev, irq, ...
-
-Perhaps something to fix (probably in another patch,
-before this one).
-
-> -       dev->enc_lt_irq = platform_get_irq(pdev, 1);
-> -       ret = devm_request_irq(&pdev->dev,
-> -                              dev->enc_lt_irq, mtk_vcodec_enc_lt_irq_handler,
-> -                              0, pdev->name, dev);
-> -       if (ret) {
-> -               dev_err(&pdev->dev,
-> -                       "Failed to install dev->enc_lt_irq %d (%d)",
-> -                       dev->enc_lt_irq, ret);
-> -               ret = -EINVAL;
-> -               goto err_res;
-> +       if (dev->venc_pdata->has_lt_irq) {
-> +               dev->enc_lt_irq = platform_get_irq(pdev, 1);
-> +               ret = devm_request_irq(&pdev->dev,
-> +                                      dev->enc_lt_irq,
-> +                                      mtk_vcodec_enc_lt_irq_handler,
-> +                                      0, pdev->name, dev);
-> +               if (ret) {
-> +                       dev_err(&pdev->dev,
-> +                               "Failed to install dev->enc_lt_irq %d (%d)",
-> +                               dev->enc_lt_irq, ret);
-> +                       ret = -EINVAL;
-> +                       goto err_res;
-> +               }
-> +               disable_irq(dev->enc_lt_irq); /* VENC_LT */
->         }
->
-> -       disable_irq(dev->enc_irq);
-> -       disable_irq(dev->enc_lt_irq); /* VENC_LT */
->         mutex_init(&dev->enc_mutex);
->         mutex_init(&dev->dev_mutex);
->         spin_lock_init(&dev->irqlock);
-> @@ -373,8 +377,12 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
->         return ret;
->  }
->
-> +static const struct mtk_vcodec_enc_pdata mt8173_pdata = {
-> +       .has_lt_irq = true,
-> +};
-> +
->  static const struct of_device_id mtk_vcodec_enc_match[] = {
-> -       {.compatible = "mediatek,mt8173-vcodec-enc",},
-> +       {.compatible = "mediatek,mt8173-vcodec-enc", .data = &mt8173_pdata},
->         {},
->  };
->  MODULE_DEVICE_TABLE(of, mtk_vcodec_enc_match);
-> diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-> index 7a00f050ec36..050787b2896c 100644
-> --- a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-> @@ -24,6 +24,16 @@ static const char h264_filler_marker[] = {0x0, 0x0, 0x0, 0x1, 0xc};
->  #define H264_FILLER_MARKER_SIZE ARRAY_SIZE(h264_filler_marker)
->  #define VENC_PIC_BITSTREAM_BYTE_CNT 0x0098
->
-> +/*
-> + * enum venc_h264_frame_type - h264 encoder output bitstream frame type
-> + */
-> +enum venc_h264_frame_type {
-> +       VENC_H264_IDR_FRM,
-> +       VENC_H264_I_FRM,
-> +       VENC_H264_P_FRM,
-> +       VENC_H264_B_FRM,
-> +};
-> +
->  /*
->   * enum venc_h264_vpu_work_buf - h264 encoder buffer index
->   */
-> @@ -137,7 +147,8 @@ struct venc_h264_inst {
->         struct mtk_vcodec_mem work_bufs[VENC_H264_VPU_WORK_BUF_MAX];
->         struct mtk_vcodec_mem pps_buf;
->         bool work_buf_allocated;
-> -       unsigned int frm_cnt;
-> +       u32 frm_cnt;    /* declared as u32 to properly overflow */
-
-This looks like it's fixing some issue not related to the 8183
-or the extended firmware. Perhaps you can add a
-more details comment?
-
-> +       unsigned int skip_frm_cnt;
->         unsigned int prepend_hdr;
->         struct venc_vpu_inst vpu_inst;
->         struct venc_h264_vsi *vsi;
-> @@ -327,6 +338,22 @@ static unsigned int h264_enc_wait_venc_done(struct venc_h264_inst *inst)
->         return irq_status;
->  }
->
-> +static int h264_frame_type(struct venc_h264_inst *inst)
-> +{
-> +       if ((inst->vsi->config.gop_size != 0 &&
-> +               (inst->frm_cnt % inst->vsi->config.gop_size) == 0) ||
-> +               (inst->frm_cnt == 0 && inst->vsi->config.gop_size == 0)) {
-> +               /* IDR frame */
-> +               return VENC_H264_IDR_FRM;
-> +       } else if ((inst->vsi->config.intra_period != 0 &&
-> +               (inst->frm_cnt % inst->vsi->config.intra_period) == 0) ||
-> +               (inst->frm_cnt == 0 && inst->vsi->config.intra_period == 0)) {
-> +               /* I frame */
-> +               return VENC_H264_I_FRM;
-> +       } else {
-> +               return VENC_H264_P_FRM;  /* Note: B frames are not supported */
-> +       }
-> +}
->  static int h264_encode_sps(struct venc_h264_inst *inst,
->                            struct mtk_vcodec_mem *bs_buf,
->                            unsigned int *bs_size)
-> @@ -337,7 +364,7 @@ static int h264_encode_sps(struct venc_h264_inst *inst,
->         mtk_vcodec_debug_enter(inst);
->
->         ret = vpu_enc_encode(&inst->vpu_inst, H264_BS_MODE_SPS, NULL,
-> -                            bs_buf, bs_size);
-> +                            bs_buf, bs_size, NULL);
->         if (ret)
->                 return ret;
->
-> @@ -364,7 +391,7 @@ static int h264_encode_pps(struct venc_h264_inst *inst,
->         mtk_vcodec_debug_enter(inst);
->
->         ret = vpu_enc_encode(&inst->vpu_inst, H264_BS_MODE_PPS, NULL,
-> -                            bs_buf, bs_size);
-> +                            bs_buf, bs_size, NULL);
->         if (ret)
->                 return ret;
->
-> @@ -410,13 +437,24 @@ static int h264_encode_frame(struct venc_h264_inst *inst,
->  {
->         int ret = 0;
->         unsigned int irq_status;
-> +       struct venc_frame_info frame_info;
->
->         mtk_vcodec_debug_enter(inst);
-> -
-> +       /* Overflowing back to 0 is ok and expected here */
-> +       inst->frm_cnt++;
-> +       mtk_vcodec_debug(inst, "frm_cnt++ = %d\n ", inst->frm_cnt);
-> +       frame_info.frm_cnt = inst->frm_cnt;
-> +       frame_info.skip_frm_cnt = inst->skip_frm_cnt;
-> +       frame_info.frm_type = h264_frame_type(inst);
-
-Ditto: Is this chunk related to the new support,
-or is this addressing some current issue?
-
-> +       mtk_vcodec_debug(inst, "frm_cnt++ = %d,skip_frm_cnt =%d,frm_type=%d.\n",
-> +               frame_info.frm_cnt, frame_info.skip_frm_cnt,
-> +               frame_info.frm_type);
->         ret = vpu_enc_encode(&inst->vpu_inst, H264_BS_MODE_FRAME, frm_buf,
-> -                            bs_buf, bs_size);
-> -       if (ret)
-> +                            bs_buf, bs_size, &frame_info);
-> +       if (ret) {
-> +               inst->frm_cnt--;
->                 return ret;
-> +       }
->
->         /*
->          * skip frame case: The skip frame buffer is composed by vpu side only,
-> @@ -427,19 +465,19 @@ static int h264_encode_frame(struct venc_h264_inst *inst,
->                 memcpy(bs_buf->va,
->                        inst->work_bufs[VENC_H264_VPU_WORK_BUF_SKIP_FRAME].va,
->                        *bs_size);
-> -               ++inst->frm_cnt;
-> +               ++inst->skip_frm_cnt;
->                 return ret;
->         }
->
->         irq_status = h264_enc_wait_venc_done(inst);
->         if (irq_status != MTK_VENC_IRQ_STATUS_FRM) {
->                 mtk_vcodec_err(inst, "irq_status=%d failed", irq_status);
-> +               inst->frm_cnt--;
->                 return -EIO;
->         }
->
->         *bs_size = h264_read_reg(inst, VENC_PIC_BITSTREAM_BYTE_CNT);
->
-> -       ++inst->frm_cnt;
->         mtk_vcodec_debug(inst, "frm %d bs_size %d key_frm %d <-",
->                          inst->frm_cnt, *bs_size, inst->vpu_inst.is_key_frm);
->
-> @@ -464,6 +502,7 @@ static void h264_encode_filler(struct venc_h264_inst *inst, void *buf,
->
->  static int h264_enc_init(struct mtk_vcodec_ctx *ctx)
->  {
-> +       const bool is_ext = ctx->dev->venc_pdata->uses_ext;
->         int ret = 0;
->         struct venc_h264_inst *inst;
->
-> @@ -473,8 +512,9 @@ static int h264_enc_init(struct mtk_vcodec_ctx *ctx)
->
->         inst->ctx = ctx;
->         inst->vpu_inst.ctx = ctx;
-> -       inst->vpu_inst.id = IPI_VENC_H264;
-> +       inst->vpu_inst.id = is_ext ? SCP_IPI_VENC_H264 : IPI_VENC_H264;
->         inst->hw_base = mtk_vcodec_get_reg_addr(inst->ctx, VENC_SYS);
-> +       inst->frm_cnt = 0xffffffff;
->
->         mtk_vcodec_debug_enter(inst);
->
-> @@ -629,7 +669,12 @@ static int h264_enc_set_param(void *handle,
->                 inst->prepend_hdr = 1;
->                 mtk_vcodec_debug(inst, "set prepend header mode");
->                 break;
-> -
-> +       case VENC_SET_PARAM_FORCE_INTRA:
-> +       case VENC_SET_PARAM_GOP_SIZE:
-> +       case VENC_SET_PARAM_INTRA_PERIOD:
-> +               inst->frm_cnt = 0xffffffff;
-> +               inst->skip_frm_cnt = 0;
-> +               fallthrough;
->         default:
->                 ret = vpu_enc_set_param(&inst->vpu_inst, type, enc_prm);
->                 break;
-> diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> index 6426af514526..11abb191ada5 100644
-> --- a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> @@ -302,7 +302,8 @@ static int vp8_enc_encode_frame(struct venc_vp8_inst *inst,
->
->         mtk_vcodec_debug(inst, "->frm_cnt=%d", inst->frm_cnt);
->
-> -       ret = vpu_enc_encode(&inst->vpu_inst, 0, frm_buf, bs_buf, bs_size);
-> +       ret = vpu_enc_encode(&inst->vpu_inst, 0, frm_buf, bs_buf, bs_size,
-> +                            NULL);
->         if (ret)
->                 return ret;
->
-> diff --git a/drivers/media/platform/mtk-vcodec/venc_drv_if.h b/drivers/media/platform/mtk-vcodec/venc_drv_if.h
-> index 52fc9cc812fc..51b52625ca22 100644
-> --- a/drivers/media/platform/mtk-vcodec/venc_drv_if.h
-> +++ b/drivers/media/platform/mtk-vcodec/venc_drv_if.h
-> @@ -92,6 +92,12 @@ struct venc_enc_param {
->         unsigned int gop_size;
->  };
->
-
-How about a comment here documenting this struct?
-
-> +struct venc_frame_info {
-> +       unsigned int frm_cnt;           /* per frame update */
-> +       unsigned int skip_frm_cnt;      /* per frame update */
-
-I'd go for s/cnt/count, it's just 2 bytes
-and in the long run it'll make our life easier.
-
-> +       unsigned int frm_type;          /* per frame update */
-> +};
-> +
->  /*
->   * struct venc_frm_buf - frame buffer information used in venc_if_encode()
->   * @fb_addr: plane frame buffer addresses
-> diff --git a/drivers/media/platform/mtk-vcodec/venc_ipi_msg.h b/drivers/media/platform/mtk-vcodec/venc_ipi_msg.h
-> index 28ee04ca6241..4cafbf92d9cd 100644
-> --- a/drivers/media/platform/mtk-vcodec/venc_ipi_msg.h
-> +++ b/drivers/media/platform/mtk-vcodec/venc_ipi_msg.h
-> @@ -51,17 +51,22 @@ struct venc_ap_ipi_msg_init {
->   * @vpu_inst_addr:     VPU encoder instance addr
->   *                     (struct venc_vp8_vsi/venc_h264_vsi *)
->   * @param_id:  parameter id (venc_set_param_type)
-> - * @data_item: number of items in the data array
-> + * @num_data:  number of items in the data array
->   * @data[8]:   data array to store the set parameters
->   */
->  struct venc_ap_ipi_msg_set_param {
->         uint32_t msg_id;
->         uint32_t vpu_inst_addr;
->         uint32_t param_id;
-> -       uint32_t data_item;
-> +       uint32_t num_data;
-
-This change looks either out of place, or unneeded.
-Or I'm missing something.
-
->         uint32_t data[8];
->  };
->
-> +struct venc_ap_ipi_msg_set_param_ext {
-> +       struct venc_ap_ipi_msg_set_param base;
-> +       uint32_t data_ext[24];
-> +};
-> +
->  /**
->   * struct venc_ap_ipi_msg_enc - AP to VPU enc cmd structure
->   * @msg_id:    message id (AP_IPIMSG_XXX_ENC_ENCODE)
-> @@ -82,6 +87,12 @@ struct venc_ap_ipi_msg_enc {
->         uint32_t bs_size;
->  };
->
-
-Ditto.
-
-> +struct venc_ap_ipi_msg_enc_ext {
-> +       struct venc_ap_ipi_msg_enc base;
-> +       uint32_t data_item;
-> +       uint32_t data[32];
-> +};
-> +
->  /**
->   * struct venc_ap_ipi_msg_deinit - AP to VPU deinit cmd structure
->   * @msg_id:    message id (AP_IPIMSG_XXX_ENC_DEINIT)
-> diff --git a/drivers/media/platform/mtk-vcodec/venc_vpu_if.c b/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
-> index 53854127814b..6c77bf025172 100644
-> --- a/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
-> @@ -116,49 +116,81 @@ int vpu_enc_init(struct venc_vpu_inst *vpu)
->         return 0;
->  }
->
-> +static unsigned int venc_enc_param_crop_right(struct venc_vpu_inst *vpu,
-> +                                             struct venc_enc_param *enc_prm)
-> +{
-> +       unsigned int img_crop_right = enc_prm->buf_width - enc_prm->width;
-> +
-> +       return img_crop_right % 16;
-> +}
-> +
-> +static unsigned int venc_enc_param_crop_bottom(struct venc_enc_param *enc_prm)
-> +{
-> +       return round_up(enc_prm->height, 16) - enc_prm->height;
-> +}
-> +
-> +static unsigned int venc_enc_param_num_mb(struct venc_enc_param *enc_prm)
-> +{
-> +       return DIV_ROUND_UP(enc_prm->width, 16) *
-> +              DIV_ROUND_UP(enc_prm->height, 16);
-
-^^^^
-You could define the macroblock size in a macro and
-use it in these various places.
-
-> +}
-> +
->  int vpu_enc_set_param(struct venc_vpu_inst *vpu,
->                       enum venc_set_param_type id,
->                       struct venc_enc_param *enc_param)
->  {
-> -       struct venc_ap_ipi_msg_set_param out;
-> +       const bool is_ext = vpu->ctx->dev->venc_pdata->uses_ext;
-> +       size_t msg_size = is_ext ?
-
-How about you use vpu->id to check for is_ext?
-
-I feel like querying the "is_ext" property like this
-is a layering violation.
-
-Or maybe better some firmware interface type
-should be set in struct venc_vpu_inst,
-so the venc_vpu_if driver is aware of its own type.
-
-Hopefully I'm making sense :-)
-
-> +               sizeof(struct venc_ap_ipi_msg_set_param_ext) :
-> +               sizeof(struct venc_ap_ipi_msg_set_param);
-> +       struct venc_ap_ipi_msg_set_param_ext out;
->
->         mtk_vcodec_debug(vpu, "id %d ->", id);
->
->         memset(&out, 0, sizeof(out));
-> -       out.msg_id = AP_IPIMSG_ENC_SET_PARAM;
-> -       out.vpu_inst_addr = vpu->inst_addr;
-> -       out.param_id = id;
-> +       out.base.msg_id = AP_IPIMSG_ENC_SET_PARAM;
-> +       out.base.vpu_inst_addr = vpu->inst_addr;
-> +       out.base.param_id = id;
->         switch (id) {
->         case VENC_SET_PARAM_ENC:
-> -               out.data_item = 0;
-> +               if (is_ext) {
-> +                       out.base.num_data = 3;
-> +                       out.base.data[0] =
-> +                               venc_enc_param_crop_right(vpu, enc_param);
-> +                       out.base.data[1] =
-> +                               venc_enc_param_crop_bottom(enc_param);
-> +                       out.base.data[2] = venc_enc_param_num_mb(enc_param);
-> +               } else {
-> +                       out.base.num_data = 0;
-> +               }
->                 break;
->         case VENC_SET_PARAM_FORCE_INTRA:
-> -               out.data_item = 0;
-> +               out.base.num_data = 0;
->                 break;
->         case VENC_SET_PARAM_ADJUST_BITRATE:
-> -               out.data_item = 1;
-> -               out.data[0] = enc_param->bitrate;
-> +               out.base.num_data = 1;
-> +               out.base.data[0] = enc_param->bitrate;
->                 break;
->         case VENC_SET_PARAM_ADJUST_FRAMERATE:
-> -               out.data_item = 1;
-> -               out.data[0] = enc_param->frm_rate;
-> +               out.base.num_data = 1;
-> +               out.base.data[0] = enc_param->frm_rate;
->                 break;
->         case VENC_SET_PARAM_GOP_SIZE:
-> -               out.data_item = 1;
-> -               out.data[0] = enc_param->gop_size;
-> +               out.base.num_data = 1;
-> +               out.base.data[0] = enc_param->gop_size;
->                 break;
->         case VENC_SET_PARAM_INTRA_PERIOD:
-> -               out.data_item = 1;
-> -               out.data[0] = enc_param->intra_period;
-> +               out.base.num_data = 1;
-> +               out.base.data[0] = enc_param->intra_period;
->                 break;
->         case VENC_SET_PARAM_SKIP_FRAME:
-> -               out.data_item = 0;
-> +               out.base.num_data = 0;
->                 break;
->         default:
->                 mtk_vcodec_err(vpu, "id %d not supported", id);
->                 return -EINVAL;
->         }
-> -       if (vpu_enc_send_msg(vpu, &out, sizeof(out))) {
-> +       if (vpu_enc_send_msg(vpu, &out, msg_size)) {
->                 mtk_vcodec_err(vpu,
->                                "AP_IPIMSG_ENC_SET_PARAM %d fail", id);
->                 return -EINVAL;
-> @@ -172,33 +204,44 @@ int vpu_enc_set_param(struct venc_vpu_inst *vpu,
->  int vpu_enc_encode(struct venc_vpu_inst *vpu, unsigned int bs_mode,
->                    struct venc_frm_buf *frm_buf,
->                    struct mtk_vcodec_mem *bs_buf,
-> -                  unsigned int *bs_size)
-> +                  unsigned int *bs_size,
-> +                  struct venc_frame_info *frame_info)
->  {
-> -       struct venc_ap_ipi_msg_enc out;
-> +       const bool is_ext = vpu->ctx->dev->venc_pdata->uses_ext;
-> +       size_t msg_size = is_ext ?
-> +               sizeof(struct venc_ap_ipi_msg_enc_ext) :
-> +               sizeof(struct venc_ap_ipi_msg_enc);
-> +       struct venc_ap_ipi_msg_enc_ext out;
->
->         mtk_vcodec_debug(vpu, "bs_mode %d ->", bs_mode);
->
->         memset(&out, 0, sizeof(out));
-> -       out.msg_id = AP_IPIMSG_ENC_ENCODE;
-> -       out.vpu_inst_addr = vpu->inst_addr;
-> -       out.bs_mode = bs_mode;
-> +       out.base.msg_id = AP_IPIMSG_ENC_ENCODE;
-> +       out.base.vpu_inst_addr = vpu->inst_addr;
-> +       out.base.bs_mode = bs_mode;
->         if (frm_buf) {
->                 if ((frm_buf->fb_addr[0].dma_addr % 16 == 0) &&
->                     (frm_buf->fb_addr[1].dma_addr % 16 == 0) &&
->                     (frm_buf->fb_addr[2].dma_addr % 16 == 0)) {
-> -                       out.input_addr[0] = frm_buf->fb_addr[0].dma_addr;
-> -                       out.input_addr[1] = frm_buf->fb_addr[1].dma_addr;
-> -                       out.input_addr[2] = frm_buf->fb_addr[2].dma_addr;
-> +                       out.base.input_addr[0] = frm_buf->fb_addr[0].dma_addr;
-> +                       out.base.input_addr[1] = frm_buf->fb_addr[1].dma_addr;
-> +                       out.base.input_addr[2] = frm_buf->fb_addr[2].dma_addr;
->                 } else {
->                         mtk_vcodec_err(vpu, "dma_addr not align to 16");
->                         return -EINVAL;
->                 }
->         }
->         if (bs_buf) {
-> -               out.bs_addr = bs_buf->dma_addr;
-> -               out.bs_size = bs_buf->size;
-> +               out.base.bs_addr = bs_buf->dma_addr;
-> +               out.base.bs_size = bs_buf->size;
->         }
-> -       if (vpu_enc_send_msg(vpu, &out, sizeof(out))) {
-> +       if (is_ext && frame_info) {
-> +               out.data_item = 3;
-> +               out.data[0] = frame_info->frm_cnt;
-> +               out.data[1] = frame_info->skip_frm_cnt;
-> +               out.data[2] = frame_info->frm_type;
-> +       }
-> +       if (vpu_enc_send_msg(vpu, &out, msg_size)) {
->                 mtk_vcodec_err(vpu, "AP_IPIMSG_ENC_ENCODE %d fail",
->                                bs_mode);
->                 return -EINVAL;
-> diff --git a/drivers/media/platform/mtk-vcodec/venc_vpu_if.h b/drivers/media/platform/mtk-vcodec/venc_vpu_if.h
-> index edd411621b68..f9be9cab7ff7 100644
-> --- a/drivers/media/platform/mtk-vcodec/venc_vpu_if.h
-> +++ b/drivers/media/platform/mtk-vcodec/venc_vpu_if.h
-> @@ -45,7 +45,8 @@ int vpu_enc_set_param(struct venc_vpu_inst *vpu,
->  int vpu_enc_encode(struct venc_vpu_inst *vpu, unsigned int bs_mode,
->                    struct venc_frm_buf *frm_buf,
->                    struct mtk_vcodec_mem *bs_buf,
-> -                  unsigned int *bs_size);
-> +                  unsigned int *bs_size,
-> +                  struct venc_frame_info *frame_info);
->  int vpu_enc_deinit(struct venc_vpu_inst *vpu);
->
->  #endif
-> --
-> 2.27.0.383.g050319c2ae-goog
->
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgWW9uZ3FpYW5nOgoKWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+
+IOaWvCAyMDIw5bm0N+aciDIz5pelIOmAseWbmyDkuIrljYgxMDoxNeWvq+mBk++8mgo+Cj4gVGhp
+cyBwYXRjaCBhZGQgc3VwcG9ydCBmb3IgbWVkaWF0ZWsgU09DIE1UODE4Mwo+IDEub3ZsXzJsIHNo
+YXJlIGRyaXZlciB3aXRoIG92bAoKSSB0aGluayB0aGlzIGlzIGRvbmUgaW4gWzFdLCBbMl0sIFsz
+XSwgdGhpcyBwYXRjaCBqdXN0IGFkZCB0aGUgc3VwcG9ydApvZiBtdDgxODMtb3ZsIGFuZCBtdDgx
+ODMtb3ZsLTJsLgoKWzFdIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJu
+ZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC9jb21taXQvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+P2g9djUuOC1yYzYmaWQ9MTMyYzZlMjUwZWQ3NDU0NDM5NzNjYWRhOGRiMTdjZGJhZWJkZjU1MQpb
+Ml0gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFs
+ZHMvbGludXguZ2l0L2NvbW1pdC9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWs/aD12NS44LXJjNiZp
+ZD0zMTg0NjJkMWE1Njg2MzRiYTA5MjYzY2M3MzBjYjBmYjFkNTZjMmIzClszXSBodHRwczovL2dp
+dC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90b3J2YWxkcy9saW51eC5naXQv
+Y29tbWl0L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlaz9oPXY1LjgtcmM2JmlkPTU3MTQ4YmFhYzhi
+Nzg0NjFlMzk0OTUzY2ZkNTMxN2JkZThmNzk1YWIKCj4gMi5yZG1hMSBzaGFyZSBkcml2ZSB3aXRo
+IHJkbWEwLCBidXQgZmlmbyBzaXplIGlzIGRpZmZlcmVudAoKSSB0aGluayB0aGlzIGlzIGRvbmUg
+aW4gWzRdLCB0aGlzIHBhdGNoIGp1c3QgYWRkIHRoZSBzdXBwb3J0IG9mIG10ODE4My1yZG1hLgoK
+WzRdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvMTE2Nzk1NDkvCgo+IDMuYWRk
+IG10ODE4MyBtdXRleCBwcml2YXRlIGRhdGEsIGFuZCBtbXN5cyBwcml2YXRlIGRhdGEKPiA0LmFk
+ZCBtdDgxODMgbWFpbiBhbmQgZXh0ZXJuYWwgcGF0aCBtb2R1bGUgZm9yIGNydGMgY3JlYXRlCgpU
+aGUgZm91cnRoIGl0ZW0gaXMgdGhlIG1tc3lzIHByaXZhdGUgZGF0YSBpbiB0aGlyZCBpdGVtLCBz
+byB5b3UgbmVlZApub3QgdG8gcmVwZWF0IGl0LgoKPgo+IFNpZ25lZC1vZmYtYnk6IFlvbmdxaWFu
+ZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMgIHwgMTggKysrKysrKysrKysrCj4gIGRyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMgfCAgNiArKysrCj4gIGRyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jICAgfCA0NyArKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKwo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyAgIHwg
+NDMgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiAgNCBmaWxlcyBjaGFuZ2VkLCAxMTQg
+aW5zZXJ0aW9ucygrKQo+Cgpbc25pcF0KCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHJtX2RkcC5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
+ZGRwLmMKPiBpbmRleCAwMTRjMWJiLi42MDc4OGMxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kcm1fZGRwLmMKPiBAQCAtMTUsNiArMTUsOCBAQAo+Cj4gICNkZWZpbmUgTVQyNzAx
+X0RJU1BfTVVURVgwX01PRDAgICAgICAgICAgICAgICAgICAgICAgICAweDJjCj4gICNkZWZpbmUg
+TVQyNzAxX0RJU1BfTVVURVgwX1NPRjAgICAgICAgICAgICAgICAgICAgICAgICAweDMwCj4gKyNk
+ZWZpbmUgTVQ4MTgzX0RJU1BfTVVURVgwX01PRDAgICAgICAgICAgICAgICAgICAgICAgICAweDMw
+Cj4gKyNkZWZpbmUgTVQ4MTgzX0RJU1BfTVVURVgwX1NPRjAgICAgICAgICAgICAgICAgICAgICAg
+ICAweDJjCj4KPiAgI2RlZmluZSBESVNQX1JFR19NVVRFWF9FTihuKSAgICAgICAgICAgICAgICAg
+ICAoMHgyMCArIDB4MjAgKiAobikpCj4gICNkZWZpbmUgRElTUF9SRUdfTVVURVgobikgICAgICAg
+ICAgICAgICAgICAgICAgKDB4MjQgKyAweDIwICogKG4pKQo+IEBAIC0yNSw2ICsyNywxOCBAQAo+
+Cj4gICNkZWZpbmUgSU5UX01VVEVYICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQklUKDEp
+Cj4KPiArI2RlZmluZSBNVDgxODNfTVVURVhfTU9EX0RJU1BfUkRNQTAgICAgICAgICAgICAwCj4g
+KyNkZWZpbmUgTVQ4MTgzX01VVEVYX01PRF9ESVNQX1JETUExICAgICAgICAgICAgMQo+ICsjZGVm
+aW5lIE1UODE4M19NVVRFWF9NT0RfRElTUF9PVkwwICAgICAgICAgICAgIDkKPiArI2RlZmluZSBN
+VDgxODNfTVVURVhfTU9EX0RJU1BfT1ZMMF8yTCAgICAgICAgICAxMAo+ICsjZGVmaW5lIE1UODE4
+M19NVVRFWF9NT0RfRElTUF9PVkwxXzJMICAgICAgICAgIDExCj4gKyNkZWZpbmUgTVQ4MTgzX01V
+VEVYX01PRF9ESVNQX1dETUEwICAgICAgICAgICAgMTIKPiArI2RlZmluZSBNVDgxODNfTVVURVhf
+TU9EX0RJU1BfQ09MT1IwICAgICAgICAgICAxMwo+ICsjZGVmaW5lIE1UODE4M19NVVRFWF9NT0Rf
+RElTUF9DQ09SUjAgICAgICAgICAgIDE0Cj4gKyNkZWZpbmUgTVQ4MTgzX01VVEVYX01PRF9ESVNQ
+X0FBTDAgICAgICAgICAgICAgMTUKPiArI2RlZmluZSBNVDgxODNfTVVURVhfTU9EX0RJU1BfR0FN
+TUEwICAgICAgICAgICAxNgo+ICsjZGVmaW5lIE1UODE4M19NVVRFWF9NT0RfRElTUF9ESVRIRVIw
+ICAgICAgICAgIDE3Cj4gKwo+ICAjZGVmaW5lIE1UODE3M19NVVRFWF9NT0RfRElTUF9PVkwwICAg
+ICAgICAgICAgIDExCj4gICNkZWZpbmUgTVQ4MTczX01VVEVYX01PRF9ESVNQX09WTDEgICAgICAg
+ICAgICAgMTIKPiAgI2RlZmluZSBNVDgxNzNfTVVURVhfTU9EX0RJU1BfUkRNQTAgICAgICAgICAg
+ICAxMwo+IEBAIC03NCw2ICs4OCwxMCBAQAo+ICAjZGVmaW5lIE1VVEVYX1NPRl9EU0kyICAgICAg
+ICAgICAgICAgICA1Cj4gICNkZWZpbmUgTVVURVhfU09GX0RTSTMgICAgICAgICAgICAgICAgIDYK
+Pgo+ICsjZGVmaW5lIE1UODE4M19NVVRFWF9TT0ZfRFBJMCAgICAgICAgICAgICAgICAgIDIKPiAr
+I2RlZmluZSBNVDgxODNfTVVURVhfRU9GX0RTSTAgICAgICAgICAgICAgICAgICAoTVVURVhfU09G
+X0RTSTAgPDwgNikKPiArI2RlZmluZSBNVDgxODNfTVVURVhfRU9GX0RQSTAgICAgICAgICAgICAg
+ICAgICAoTVQ4MTgzX01VVEVYX1NPRl9EUEkwIDw8IDYpCj4gKwo+Cj4gIHN0cnVjdCBtdGtfZGlz
+cF9tdXRleCB7Cj4gICAgICAgICBpbnQgaWQ7Cj4gQEAgLTE1Myw2ICsxNzEsMjAgQEAgc3RydWN0
+IG10a19kZHAgewo+ICAgICAgICAgW0REUF9DT01QT05FTlRfV0RNQTFdID0gTVQ4MTczX01VVEVY
+X01PRF9ESVNQX1dETUExLAo+ICB9Owo+Cj4gK3N0YXRpYyBjb25zdCB1bnNpZ25lZCBpbnQgbXQ4
+MTgzX211dGV4X21vZFtERFBfQ09NUE9ORU5UX0lEX01BWF0gPSB7Cj4gKyAgICAgICBbRERQX0NP
+TVBPTkVOVF9BQUwwXSA9IE1UODE4M19NVVRFWF9NT0RfRElTUF9BQUwwLAo+ICsgICAgICAgW0RE
+UF9DT01QT05FTlRfQ0NPUlJdID0gTVQ4MTgzX01VVEVYX01PRF9ESVNQX0NDT1JSMCwKPiArICAg
+ICAgIFtERFBfQ09NUE9ORU5UX0NPTE9SMF0gPSBNVDgxODNfTVVURVhfTU9EX0RJU1BfQ09MT1Iw
+LAo+ICsgICAgICAgW0REUF9DT01QT05FTlRfRElUSEVSXSA9IE1UODE4M19NVVRFWF9NT0RfRElT
+UF9ESVRIRVIwLAo+ICsgICAgICAgW0REUF9DT01QT05FTlRfR0FNTUFdID0gTVQ4MTgzX01VVEVY
+X01PRF9ESVNQX0dBTU1BMCwKPiArICAgICAgIFtERFBfQ09NUE9ORU5UX09WTDBdID0gTVQ4MTgz
+X01VVEVYX01PRF9ESVNQX09WTDAsCj4gKyAgICAgICBbRERQX0NPTVBPTkVOVF9PVkxfMkwwXSA9
+IE1UODE4M19NVVRFWF9NT0RfRElTUF9PVkwwXzJMLAo+ICsgICAgICAgW0REUF9DT01QT05FTlRf
+T1ZMXzJMMV0gPSBNVDgxODNfTVVURVhfTU9EX0RJU1BfT1ZMMV8yTCwKPiArICAgICAgIFtERFBf
+Q09NUE9ORU5UX1JETUEwXSA9IE1UODE4M19NVVRFWF9NT0RfRElTUF9SRE1BMCwKPiArICAgICAg
+IFtERFBfQ09NUE9ORU5UX1JETUExXSA9IE1UODE4M19NVVRFWF9NT0RfRElTUF9SRE1BMSwKPiAr
+ICAgICAgIFtERFBfQ09NUE9ORU5UX1dETUEwXSA9IE1UODE4M19NVVRFWF9NT0RfRElTUF9XRE1B
+MCwKPiArfTsKPiArCj4gIHN0YXRpYyBjb25zdCB1bnNpZ25lZCBpbnQgbXQyNzEyX211dGV4X3Nv
+ZltERFBfTVVURVhfU09GX0RTSTMgKyAxXSA9IHsKPiAgICAgICAgIFtERFBfTVVURVhfU09GX1NJ
+TkdMRV9NT0RFXSA9IE1VVEVYX1NPRl9TSU5HTEVfTU9ERSwKPiAgICAgICAgIFtERFBfTVVURVhf
+U09GX0RTSTBdID0gTVVURVhfU09GX0RTSTAsCj4gQEAgLTE2Myw2ICsxOTUsMTIgQEAgc3RydWN0
+IG10a19kZHAgewo+ICAgICAgICAgW0REUF9NVVRFWF9TT0ZfRFNJM10gPSBNVVRFWF9TT0ZfRFNJ
+MywKPiAgfTsKPgo+ICtzdGF0aWMgY29uc3QgdW5zaWduZWQgaW50IG10ODE4M19tdXRleF9zb2Zb
+RERQX01VVEVYX1NPRl9EU0kzICsgMV0gPSB7Cj4gKyAgICAgICBbRERQX01VVEVYX1NPRl9TSU5H
+TEVfTU9ERV0gPSBNVVRFWF9TT0ZfU0lOR0xFX01PREUsCj4gKyAgICAgICBbRERQX01VVEVYX1NP
+Rl9EU0kwXSA9IE1VVEVYX1NPRl9EU0kwIHwgTVQ4MTgzX01VVEVYX0VPRl9EU0kwLAoKSSB0aGlu
+ayB0aGlzIGFycmF5IGlzIGZvciAnc29mJywgc28geW91IHNob3VsZCBkcm9wIE1UODE4M19NVVRF
+WF9FT0ZfRFNJMC4KCj4gKyAgICAgICBbRERQX01VVEVYX1NPRl9EUEkwXSA9IE1UODE4M19NVVRF
+WF9TT0ZfRFBJMCB8IE1UODE4M19NVVRFWF9FT0ZfRFBJMCwKCkRpdHRvLgoKUmVnYXJkcywKQ2h1
+bi1LdWFuZy4KCj4gK307Cj4gKwo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IG10a19kZHBfZGF0YSBt
+dDI3MDFfZGRwX2RyaXZlcl9kYXRhID0gewo+ICAgICAgICAgLm11dGV4X21vZCA9IG10MjcwMV9t
+dXRleF9tb2QsCj4gICAgICAgICAubXV0ZXhfc29mID0gbXQyNzEyX211dGV4X3NvZiwKPiBAQCAt
+MTg0LDYgKzIyMiwxMyBAQCBzdHJ1Y3QgbXRrX2RkcCB7Cj4gICAgICAgICAubXV0ZXhfc29mX3Jl
+ZyA9IE1UMjcwMV9ESVNQX01VVEVYMF9TT0YwLAo+ICB9Owo+CgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QK
+TGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
