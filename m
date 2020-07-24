@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 08B41C433E8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:48:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 31797C433E3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:48:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CD2AC20714
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:48:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F10AB206F0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:48:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1pVTFAdc";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="hf10y5eG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD2AC20714
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zDPxXPuT";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="1SbShUFs"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F10AB206F0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jvD7YG/rdeNUoIiz5+s+RvS5RldUpeqDztZGQbaPVK8=; b=1pVTFAdc/fkWMK3gDVnGAh2HqT
-	PwwCZeYExTHw4UlyqO8kEt52eSabK/p/zJUf9J1llXFnThpi0VWm1x/AeIzxwjPB71BiZPbIvvZ2p
-	nCwBNTnwnveF9SWzcmJJ2vkkha3alh6X30NL+Bv9hYQMcp/dBHpLb1IwtoPhsXguypYxyX1rU+8Iq
-	Q2i4djNKIbvPrVd3aev8VBJkZwAkXPEJk0xSa5aDZYsmNz/GalukFhP3itrcPXIO5UokkA5/GlRYU
-	RJvCD178fuiN74gBprfpDvBCNmmW03BXLgO2asBBVONJNmdrzqn2DC/ifE2+PY16ePg40O3nTws9G
-	VQHW1qLQ==;
+	bh=/GWUW0aw+EDeobp6juq4aemA9cjDnf12mzdi56Sp7KU=; b=zDPxXPuTuSo3FMljADWOpoHNZs
+	aEGyudfMQtdfWKfDk766CixRQqLGBI9wvnPsn5npltGA9LEZ1QfizI9Xo+bLgWDtrsvyYP1u31rSA
+	uH5r8T+afIWIpRuRoG13HtjM+0ssamD/ppPmsvJ1SCim7WYRlputlLXl1tbOPSdh5bAa5L47yLPkV
+	X09OjRrBG2EpXi2IM+YcZvAOyNLPEraLR/wkEpECuvbnI1d1MAX4C3FUyZcNx0Mx9F55eqDVMy6RU
+	RoXO3Tp62mV84XIAVieusF+xKao9403VMOV93gHpvoIPJ3lxYf1gT0LYIdcfdss9FXIkc/JkApkus
+	mwGnL7Cw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jysQp-00058b-4E; Fri, 24 Jul 2020 07:47:51 +0000
+	id 1jysQs-0005A8-3l; Fri, 24 Jul 2020 07:47:54 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jysLo-0002Z3-7P; Fri, 24 Jul 2020 07:42:42 +0000
+ id 1jysLt-0002bF-7k; Fri, 24 Jul 2020 07:42:46 +0000
 Received: from kozik-lap.mshome.net (unknown [194.230.155.213])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0315E20768;
- Fri, 24 Jul 2020 07:42:33 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id DCFA820748;
+ Fri, 24 Jul 2020 07:42:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595576558;
- bh=Ghgwe3gjfURJUO55ZBx1GA8tQG5sLuihQjn3oQ0A+6w=;
+ s=default; t=1595576563;
+ bh=q3j/pctKuGz1PK+SF65LyM0Wzy/rnfsCYc63Wa9bVUY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=hf10y5eGPMpMirF29LtX8LvWqpzjqbm3YK94XVS1sRpM3mZbyNFVC+rPIwzLUmzBJ
- ckZshP7Y/wd99Ff/7nnl2+nGwCOIhY5BRtjMVADoU1GwBHtoyoGgRPnz77E255EWHX
- RnAnLfSF567ej8mQ+w/YUnDH1Xx+wTO0fQo8RLGU=
+ b=1SbShUFsrFSezguh0KZ4msnaWbrWbFmyooWVoPuSdMhr4/GJgtOqtQ8AzQ+/5S5q5
+ jyT0GRtOpmpaXUjvZIciOScRrTYTU4ZoJYRzYDvIE0O1t76s8OIKrkB8xzi2Q2e9k8
+ HgW6k5sAzFpqaaSHPzkV4HwwZCNSymGXVAkUMuOw=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  Markus Mayer <mmayer@broadcom.com>, bcm-kernel-feedback-list@broadcom.com,
@@ -62,15 +62,16 @@ To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-omap@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
  linux-tegra@vger.kernel.org
-Subject: [PATCH v2 18/29] memory: brcmstb_dpfe: Remove unneeded braces
-Date: Fri, 24 Jul 2020 09:40:27 +0200
-Message-Id: <20200724074038.5597-19-krzk@kernel.org>
+Subject: [PATCH v2 19/29] memory: mtk-smi: Add argument to function pointer
+ definition
+Date: Fri, 24 Jul 2020 09:40:28 +0200
+Message-Id: <20200724074038.5597-20-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200724074038.5597-1-krzk@kernel.org>
 References: <20200724074038.5597-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200724_034240_530680_BE22C183 
-X-CRM114-Status: GOOD (  15.41  )
+X-CRM114-CacheID: sfid-20200724_034245_449199_3A21E12A 
+X-CRM114-Status: GOOD (  14.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,32 +92,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Single statement blocks don't need braces.  Fixes checkpatch warning:
-
-    WARNING: braces {} are not necessary for single statement blocks
+Fix checkpatch warning:
+    WARNING: function definition argument 'struct device *' should also have an identifier name
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-Acked-by: Florian Fainelli <f.fainelli@gmail.com>
-Acked-by: Markus Mayer <mmayer@broadcom.com>
 ---
- drivers/memory/brcmstb_dpfe.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/memory/mtk-smi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/memory/brcmstb_dpfe.c b/drivers/memory/brcmstb_dpfe.c
-index 5942380f343b..604f0e3fb112 100644
---- a/drivers/memory/brcmstb_dpfe.c
-+++ b/drivers/memory/brcmstb_dpfe.c
-@@ -379,9 +379,8 @@ static void __iomem *get_msg_ptr(struct brcmstb_dpfe_priv *priv, u32 response,
- 	void __iomem *ptr = NULL;
+diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+index 109c7e51d551..c21262502581 100644
+--- a/drivers/memory/mtk-smi.c
++++ b/drivers/memory/mtk-smi.c
+@@ -60,7 +60,7 @@ struct mtk_smi_common_plat {
  
- 	/* There is no need to use this function for API v3 or later. */
--	if (unlikely(priv->dpfe_api->version >= 3)) {
-+	if (unlikely(priv->dpfe_api->version >= 3))
- 		return NULL;
--	}
- 
- 	msg_type = (response >> DRAM_MSG_TYPE_OFFSET) & DRAM_MSG_TYPE_MASK;
- 	offset = (response >> DRAM_MSG_ADDR_OFFSET) & DRAM_MSG_ADDR_MASK;
+ struct mtk_smi_larb_gen {
+ 	int port_in_larb[MTK_LARB_NR_MAX + 1];
+-	void (*config_port)(struct device *);
++	void (*config_port)(struct device *dev);
+ 	unsigned int			larb_direct_to_common_mask;
+ 	bool				has_gals;
+ };
 -- 
 2.17.1
 
