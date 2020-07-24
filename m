@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C5CF6C433E1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:46:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C5CAAC433E5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:46:55 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8438A206F0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:46:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5B1A2206E3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:46:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iLMb/Qww";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="uNwQdAcs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8438A206F0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fjfNR487";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="VGiWibof"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5B1A2206E3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CTDnCuoTua27SqIPb/RW6hmcNlORFiCN47BaK+O8CCo=; b=iLMb/QwwJSP7vi0a9s55EyA98v
-	pTq4LirjMP7OOKlFzJKW8Vrb+8b5/NZF1MQvUm48ELHxfKxWTEBDEk0uXtmoVKMLZG8NIFnKG8Zbb
-	cRS/+VKSjkQjdTjX89Dky5ziI9VTrc0leSgzad7eUiUPLmnZq/oEuqyuSrHYXq5FkhpqwARgY66JO
-	cK2hozhA/0xdjcIz7AhOTFC3OcI9Cr4I+0h1gEr9253cQV22FtEqYWODVgyAHNzfihypz0zmwH5ks
-	94rXlTLFSInvGBglVEzPoYPOYIGwVEm9zhlSQk9PUNvYMRdOmzIcdus9jYtlz2YVxh6qTnFa/kZAS
-	iXru83Rg==;
+	bh=mi0pwXIO1rFYrjMa80sazymtML390ZYD+jmuvhCKKZo=; b=fjfNR487RIhXeA/cJ932dbm/MF
+	U4sN698Ki0lmJJ6r34tkedCGkiQ/rYR8oByl+1ss+VNOuO0KhchjbfHWM44U+4E2QA0C2vq52Dy9F
+	YWFa36Qo5ZwpEIu+62KUDPbxdn1SfksHPuxvWgrXPLbsNTa8c8DIBQ6j8Czh1eQI2/gXk3mzySLfR
+	PkTNt1FR/mszFglZmQvuAzpNKJdFj3uXB3p7zfqmfjWEoco+3Bs+N09j0SlHCymf0eX+9hXmaRlX5
+	rv622tZ9YkJjtGn53BVN28s406N+HckeYNDjn8ySuHqBjFhgY6WEDoXiUVEAhRJQFFhw0AIE4t7vX
+	ZkNDfKOA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jysPV-0004JC-9s; Fri, 24 Jul 2020 07:46:29 +0000
+	id 1jysPa-0004LF-Aj; Fri, 24 Jul 2020 07:46:34 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jysLB-0002EG-Vp; Fri, 24 Jul 2020 07:42:05 +0000
+ id 1jysLF-0002H6-Nj; Fri, 24 Jul 2020 07:42:09 +0000
 Received: from kozik-lap.mshome.net (unknown [194.230.155.213])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id EBA0C2074F;
- Fri, 24 Jul 2020 07:41:54 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id A745520771;
+ Fri, 24 Jul 2020 07:41:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595576519;
- bh=Z8MuOz+oKCf2eX1Gix1+yisOoYg6lXsXqmuJC5dVEe4=;
+ s=default; t=1595576524;
+ bh=dKJqleudTNRGvHBta+EdJZhNoV8vaQFq0Rb0f5WhRCM=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=uNwQdAcsnATv7hQA0Lrn9Cdl3YK45IejFRqKxfvibToH4PDyoEn8e5bJwZTTa+wvl
- nq9SHZ26y3lvVvdpTBoPAGSIs400WQT567lMKaioL3HHr4cbsW4bsTnzrB1RxLGmNg
- eq6HTShxDRY+VW88G4GM4tfm7tGasGGkO59Z6Mx4=
+ b=VGiWibofBIlsSRw6kOPvQOC8WunLRM8UDONcJyHWGZWLTXXP5EcG3SuhHN/G1+3Uo
+ +DJ4LUrwd4wtq79pTqxoLGIAtkKhZVTf9B/oExctf/yEY0YUNE+P6Np90CpmA+ZLTM
+ r7FzkKhvBbzZNlXQjUUAXKfu5BoeoXSIwKVky+L8=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  Markus Mayer <mmayer@broadcom.com>, bcm-kernel-feedback-list@broadcom.com,
@@ -62,16 +62,16 @@ To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-omap@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
  linux-tegra@vger.kernel.org
-Subject: [PATCH v2 10/29] memory: of: Remove unneeded extern from function
- declarations
-Date: Fri, 24 Jul 2020 09:40:19 +0200
-Message-Id: <20200724074038.5597-11-krzk@kernel.org>
+Subject: [PATCH v2 11/29] memory: emif-asm-offsets: Add GPLv2 SPDX license
+ header
+Date: Fri, 24 Jul 2020 09:40:20 +0200
+Message-Id: <20200724074038.5597-12-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200724074038.5597-1-krzk@kernel.org>
 References: <20200724074038.5597-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200724_034202_538320_28EFFFE6 
-X-CRM114-Status: GOOD (  12.36  )
+X-CRM114-CacheID: sfid-20200724_034207_996443_78590656 
+X-CRM114-Status: GOOD (  15.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,52 +92,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Function declarations in headers do not need to come with extern
-keyword.  Remove them to make the declaration slightly shorter.
+Add GPLv2 license header and remove GPL boiler plate text.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
----
- drivers/memory/of_memory.h | 21 +++++++++++----------
- 1 file changed, 11 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/memory/of_memory.h b/drivers/memory/of_memory.h
-index e39ecc4c733d..4a99b232ab0a 100644
---- a/drivers/memory/of_memory.h
-+++ b/drivers/memory/of_memory.h
-@@ -3,22 +3,23 @@
-  * OpenFirmware helpers for memory drivers
+---
+
+Changes since v1:
+1. Use "GPL-2.0" instead of "GPL-2.0-only". It's shorter.
+---
+ drivers/memory/emif-asm-offsets.c | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
+
+diff --git a/drivers/memory/emif-asm-offsets.c b/drivers/memory/emif-asm-offsets.c
+index db8043019ec6..4b98d1854cd7 100644
+--- a/drivers/memory/emif-asm-offsets.c
++++ b/drivers/memory/emif-asm-offsets.c
+@@ -1,16 +1,8 @@
++// SPDX-License-Identifier: GPL-2.0
+ /*
+  * TI AM33XX EMIF PM Assembly Offsets
   *
-  * Copyright (C) 2012 Texas Instruments, Inc.
-+ * Copyright (C) 2020 Krzysztof Kozlowski <krzk@kernel.org>
+  * Copyright (C) 2016-2017 Texas Instruments Inc.
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License as
+- * published by the Free Software Foundation version 2.
+- *
+- * This program is distributed "as is" WITHOUT ANY WARRANTY of any
+- * kind, whether express or implied; without even the implied warranty
+- * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
   */
+ #include <linux/ti-emif-sram.h>
  
- #ifndef __LINUX_MEMORY_OF_REG_H
- #define __LINUX_MEMORY_OF_REG_H
- 
- #if defined(CONFIG_OF) && defined(CONFIG_DDR)
--extern const struct lpddr2_min_tck *of_get_min_tck(struct device_node *np,
--		struct device *dev);
--extern const struct lpddr2_timings
--	*of_get_ddr_timings(struct device_node *np_ddr, struct device *dev,
--	u32 device_type, u32 *nr_frequencies);
--extern const struct lpddr3_min_tck
--	*of_lpddr3_get_min_tck(struct device_node *np, struct device *dev);
--extern const struct lpddr3_timings
--	*of_lpddr3_get_ddr_timings(struct device_node *np_ddr,
--	struct device *dev, u32 device_type, u32 *nr_frequencies);
-+const struct lpddr2_min_tck *of_get_min_tck(struct device_node *np,
-+					    struct device *dev);
-+const struct lpddr2_timings *of_get_ddr_timings(struct device_node *np_ddr,
-+						struct device *dev,
-+						u32 device_type, u32 *nr_frequencies);
-+const struct lpddr3_min_tck *of_lpddr3_get_min_tck(struct device_node *np,
-+						   struct device *dev);
-+const struct lpddr3_timings *
-+of_lpddr3_get_ddr_timings(struct device_node *np_ddr,
-+			  struct device *dev, u32 device_type, u32 *nr_frequencies);
- #else
- static inline const struct lpddr2_min_tck
- 	*of_get_min_tck(struct device_node *np, struct device *dev)
 -- 
 2.17.1
 
