@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6C103C433EA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:48:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 14C04C433E8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:49:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3C826206F0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:48:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BA11E206F0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:49:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="wINHmm2a";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="uunsCN4I"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C826206F0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="c0wkwi3s";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="RxVX1tyi"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BA11E206F0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1Y0Goj0cV5NU42Ha9oIKYGJsNKHWZC6ViTnyzqYr34Y=; b=wINHmm2afh8nRtIkpev7XX13xI
-	frga6qL6NsdmmXqzm/+9j3Lnp/9Ui1FWsp+7jjvO98URQWKUR+lM2/6rlObfDsuoGSZNB0HDfpO0f
-	N91qYJWkvfmRvBWRauYMbpmgwqSZd1hKt3G6i7s2ZXSlwUx8bTyw6UF7sqPzV80yzD0da9D830fTw
-	T6Dn94mmnPFrBjWLrL/LHG8ws45MSNotBvNV7p8peCafBAKgOY/tRJ7XQ7ShhloETINTWGvn+OylI
-	YLhO2W3CUBnZawzcYeCvRkPmevs8DMcXNj8aHQ8g7W5zOhr4C0z/BWtV19GgiEGFXfFV/fJUJp07C
-	itBWeGpw==;
+	bh=S9Dz7ViLvfuRsYFozIso6E6jEuU73EpL90b0a+Ig+44=; b=c0wkwi3sSM1quzjkrJG8IP6T+V
+	qv4LiNyUmWuAYvI4rt3a7jGop15td8ObPbs5eHQSWMEazHd1D6jCsw4UZRwgE+fjxuh6DOvweojz6
+	oLEiqTa7oFkiXdkBf1UqN5UW18/uAYwPSMv/bUoevNK9wrRcHDuEhNF3G9iHPdnlwxN81m9CrsdPU
+	7HQwTItHp+NmOZ2qbTUtPKG85/ydyDhXrDwO/Qo0O+owYfGhKsjrfJw1oqQM/XRx+VJJUEvXbSr4Q
+	mbLG0UmUOKVoH5MJAI3YuToDnsDQ2A8atNWb2rNcsJFdPZHPpvDiRcJGtg90bv2gVBntCxDV4Fyfb
+	vdYyx8eA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jysRc-0005j3-EE; Fri, 24 Jul 2020 07:48:40 +0000
+	id 1jysSE-00069k-0N; Fri, 24 Jul 2020 07:49:18 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jysMB-0002kL-DT; Fri, 24 Jul 2020 07:43:04 +0000
+ id 1jysMG-0002mT-CY; Fri, 24 Jul 2020 07:43:09 +0000
 Received: from kozik-lap.mshome.net (unknown [194.230.155.213])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 767E32076A;
- Fri, 24 Jul 2020 07:42:58 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 42A5120748;
+ Fri, 24 Jul 2020 07:43:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595576582;
- bh=+gFjDJ7e8jqodH9leHcZ6qQN7ZQWC5AX9izX5256A2o=;
+ s=default; t=1595576587;
+ bh=CFjeTLf3VxTPc69usAlF1x6NQjpN6H7DE6BSfcr/r54=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=uunsCN4IQjA9/JhkgbHmhzNyifJQlaud+n1NnuJK+nsthFK5hUNJ5N7DiMGCXlftH
- jH+0M9mBlHTyJu+8JSmmzGneCH0Rg/LBsM8J1w01dYI3aGwEPvoFuh0EjFti+74Vku
- DdahPIfnq1JGHrzfZeJ/rCeKbsy8Yeu4LP9MoSlY=
+ b=RxVX1tyirSx120u18ZJM+5Gx+2KqFZYCFB2SQtS0ZGDTqPD7BS7V6VZdc/yD3NjqB
+ AfqzWdTIr8M5e777Yf9ra0jDA0j25dl4z7Y3Jxf9DIS5oolpz2oWFUG5qocUQhU8/r
+ 6Y01I1AJhqage1nlFby30TsvQJ3HhQWGM5nUYJUg=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  Markus Mayer <mmayer@broadcom.com>, bcm-kernel-feedback-list@broadcom.com,
@@ -62,15 +62,15 @@ To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-omap@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
  linux-tegra@vger.kernel.org
-Subject: [PATCH v2 23/29] memory: pl172: Add GPLv2 SPDX license header
-Date: Fri, 24 Jul 2020 09:40:32 +0200
-Message-Id: <20200724074038.5597-24-krzk@kernel.org>
+Subject: [PATCH v2 24/29] memory: tegra: tegra210-emc: Fix indentation
+Date: Fri, 24 Jul 2020 09:40:33 +0200
+Message-Id: <20200724074038.5597-25-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200724074038.5597-1-krzk@kernel.org>
 References: <20200724074038.5597-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200724_034303_557338_C855D426 
-X-CRM114-Status: GOOD (  13.46  )
+X-CRM114-CacheID: sfid-20200724_034308_550309_3FB68842 
+X-CRM114-Status: GOOD (  14.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,33 +91,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add GPLv2 license header and remove GPL boiler plate text.
+Use tabs instead of spaces for indentation.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
- drivers/memory/pl172.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ drivers/memory/tegra/tegra210-emc-cc-r21021.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/memory/pl172.c b/drivers/memory/pl172.c
-index ff57195b4e37..084891eb29cc 100644
---- a/drivers/memory/pl172.c
-+++ b/drivers/memory/pl172.c
-@@ -1,3 +1,4 @@
-+// SPDX-License-Identifier: GPL-2.0
- /*
-  * Memory controller driver for ARM PrimeCell PL172
-  * PrimeCell MultiPort Memory Controller (PL172)
-@@ -6,10 +7,6 @@
-  *
-  * Based on:
-  * TI AEMIF driver, Copyright (C) 2010 - 2013 Texas Instruments Inc.
-- *
-- * This file is licensed under the terms of the GNU General Public
-- * License version 2. This program is licensed "as is" without any
-- * warranty of any kind, whether express or implied.
-  */
- 
- #include <linux/amba/bus.h>
+diff --git a/drivers/memory/tegra/tegra210-emc-cc-r21021.c b/drivers/memory/tegra/tegra210-emc-cc-r21021.c
+index ff55a17896fa..d60bdea3af3f 100644
+--- a/drivers/memory/tegra/tegra210-emc-cc-r21021.c
++++ b/drivers/memory/tegra/tegra210-emc-cc-r21021.c
+@@ -1044,7 +1044,7 @@ static void tegra210_emc_r21021_set_clock(struct tegra210_emc *emc, u32 clksrc)
+ 			   !opt_cc_short_zcal && opt_short_zcal) {
+ 			value = (value & ~(EMC_ZCAL_WAIT_CNT_ZCAL_WAIT_CNT_MASK <<
+ 					   EMC_ZCAL_WAIT_CNT_ZCAL_WAIT_CNT_SHIFT)) |
+-			        ((zq_wait_long & EMC_ZCAL_WAIT_CNT_ZCAL_WAIT_CNT_MASK) <<
++				((zq_wait_long & EMC_ZCAL_WAIT_CNT_ZCAL_WAIT_CNT_MASK) <<
+ 						 EMC_MRS_WAIT_CNT_SHORT_WAIT_SHIFT);
+ 		} else if (offset == EMC_ZCAL_INTERVAL && opt_zcal_en_cc) {
+ 			value = 0; /* EMC_ZCAL_INTERVAL reset value. */
 -- 
 2.17.1
 
