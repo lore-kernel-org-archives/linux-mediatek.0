@@ -2,81 +2,79 @@ Return-Path: <SRS0=BOys=BD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4262EC433E3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 10:25:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E3A8C433F4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 11:03:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0EEAC206F0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 10:25:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BFDC42074B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 11:03:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EnjZJFww";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="T4Vc6ETY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0EEAC206F0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qfQ7db9n";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=xs4all.nl header.i=@xs4all.nl header.b="Dmz68TnK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BFDC42074B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uAp3Bupe0d3X4CV4pKAZaKJDOAwndksEqVeZovDOeXo=; b=EnjZJFwwlzsy1OuIvcDt6UdTG
-	DcIgZLzqfk0wb0Uzo9OYX9wHV4YLCGlFyhG6v7N9+SNe974E6IyBaURTsJSgtdECwtigSotuYo05l
-	7K0jLSvEkDrEFmts4jbMtLmTYP76gg0LGjXcjU+PhCQCs2v6m8JPH9M0Cb8MFkqIb9AyVwx3OB5ep
-	bmZ8Rj5ZPUkcTfx3m1AqDYLMfxhYz0QrS9D7LSC+1c4+pIM71T5Lm/Hj/Vv/xTcrV+GgTZ3GBf0nD
-	NY+KRpu8R86xEh/vQfcPQjD/Apzzj/jwLvj1JW4jWqdLjav2zF3vfn1tK/gHf9ECJHAf2mxPKfpVj
-	Nadifu2lg==;
+	 bh=bOwcPuZJDdzG5QPSmbdhe7i+6DjoZ/XUsh8Xc0d8YDQ=; b=qfQ7db9nEdctotPzNKMyO7637
+	ozMhozr8HzZ3wincVlg7JJWg1uOWA+RnucGBc62IXuWnUW0bbEh9/H2nJ+O4TsK2QNtSTkxnEHwuK
+	Qd18imqTLgdbXDECugiuDA9jKPvTbrf+2w/FDcUAhg1PAAh9Y0oeiT77onOqlO0E9B5mZnoTW3ubM
+	GhnxI0b0NF3E4jVnpWML1w9yN2+skHRcDXxKrzhYASjKKWZcxjDaZunXjOR8uq37Gj3AdFQO7f/xq
+	1iQLzc9XZLlaNbX/hrEC9vrOTP4vhCJqwCsjb6W6GOKVckakFkkTH175z3YCUE1iFjBs12SM+kfiM
+	fQnZmZ+DA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyusv-0004I9-0i; Fri, 24 Jul 2020 10:25:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jyvTa-00074d-Kc; Fri, 24 Jul 2020 11:02:54 +0000
+Received: from lb2-smtp-cloud9.xs4all.net ([194.109.24.26])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyuss-0004Gn-HQ; Fri, 24 Jul 2020 10:24:59 +0000
-X-UUID: 37f2fbbed1444ab58557fbc44221d74b-20200724
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=QxNgObDGJzQxDLrTGZIVOSiVP4T6qaCHpTNaWSH+6v0=; 
- b=T4Vc6ETYgYl2HSKtiO14Zo86gMkawoJLP9w6Grp+FKu5Wyn3/T5N80+BOzjV7vw4E7mg3VuEKD4jXUCcaIe+5Tm2525Q0yh6NPNDBcNjXiuZQ7ALGY5TlQKC8Yx5mLi6B2MNTmz5UVGaBHM7J3p6VIRMpkRLzuHT/RNut3/sbsQ=;
-X-UUID: 37f2fbbed1444ab58557fbc44221d74b-20200724
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <neal.liu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1981341024; Fri, 24 Jul 2020 02:24:45 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 24 Jul 2020 03:24:50 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 24 Jul 2020 18:24:47 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 24 Jul 2020 18:24:49 +0800
-Message-ID: <1595586289.14121.5.camel@mtkswgap22>
-Subject: Re: [PATCH v2] cpuidle: change enter_s2idle() prototype
-From: Neal Liu <neal.liu@mediatek.com>
-To: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Fri, 24 Jul 2020 18:24:49 +0800
-In-Reply-To: <CAJZ5v0g_14D-tyWFEZ9eOJC=GmzR-31iAAPff=Ch8KjFyK2wfw@mail.gmail.com>
-References: <1594005196-16327-1-git-send-email-neal.liu@mediatek.com>
- <1594005196-16327-2-git-send-email-neal.liu@mediatek.com>
- <CAJZ5v0ihB5AJwSRpjaOnXAmciregzxARL5xfudu1h+=_LXaE_w@mail.gmail.com>
- <1594350535.4670.13.camel@mtkswgap22> <1595233294.8055.0.camel@mtkswgap22>
- <20200723190724.GA1339461@google.com>
- <CAJZ5v0g_14D-tyWFEZ9eOJC=GmzR-31iAAPff=Ch8KjFyK2wfw@mail.gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1jyvTV-000721-9M; Fri, 24 Jul 2020 11:02:50 +0000
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud9.xs4all.net with ESMTPA
+ id yvTIj7VTsuuXOyvTJjBXv9; Fri, 24 Jul 2020 13:02:41 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
+ t=1595588561; bh=ki5v7+I+6jloqXfI5Thk81/U4TMduoZfISqT0v1jPmk=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=Dmz68TnKpksXmFALj2ErMeQBoiXZtjxUjyObHL0BdRNlpgD1dAEfXyoikeyBCnd9S
+ T0EyOKH9HvPq3G/eBFk9KfFNMDzCCAaDLBBEuxNmARpQ7cSBC+Ww2jv7+MjeDrGfjf
+ ouEggb7UQyMQuxhER/CkG3xIFDWS9MOnMS5V9285rAygA7w8x5R9UadqguJxY6zCwm
+ w4YUc3knVnXQEpiES2wcYmKGBvY+njypVf/tZ7Hv2sU2qgrkGUd06VHKf/F3nDQGr1
+ gLrlBYHtJvanYKpVpVeQudOyijoppAnZmvI2zQeLGAFQ5L/6ENAK7y9wa/PfK5xh/J
+ KNHoUCHDkw6Hw==
+Subject: Re: [PATCH v3,2/2] media: v4l: Add Ro request api for capture queue
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>
+References: <20200701093522.8521-1-yunfei.dong@mediatek.com>
+ <20200701093522.8521-3-yunfei.dong@mediatek.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <862efe26-5f39-fde9-c2b4-ea36bab25b75@xs4all.nl>
+Date: Fri, 24 Jul 2020 13:02:36 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 525C25BBD1A36A92A548897BC52B0D2A9C1552ADE0B6EEB53F27D34A63DF52742000:8
-X-MTK: N
+In-Reply-To: <20200701093522.8521-3-yunfei.dong@mediatek.com>
+Content-Language: en-US
+X-CMAE-Envelope: MS4wfHVZ9j26uLDLtCG1T9Y843H64hrSQ7lVMrQSNpEJ2tiLBuV370VwDGDFrpJ8KiXShV03QMC1/z6YFgfXp3wPui91gnHggtTUIVi6ESngNcQchNUpqyXb
+ CwsQ0pxS6wEbcDFXFD759AEzDeR0uBdxZgChV2OdNgsdgu11WfoyjGmnOlMzOPY++uJ8m4gGRPaPNvcS5BBPo8MwTL9NFvJJrtMKQqZUcMNRnniAVtkSyLzi
+ MRLfyQWRR97jE9831BgptfMBIxoToVOAQ+d7l7KmhlL5v1Gq9C2TI9vEOUEDuNlUSCl30/QeQ6wXdRchB5OplsKDzh/2YxYa8WP3qFRC0G6MWbPBEU3D5fOK
+ DPOMobD0bAw1EPHvqI7sF3oQLb51iBoF05vAxTW2M3FqQhAorRC2U+lRp19QaeFrmsWbulxdT7AX3qcMJZyVYIcy6Q7qM1BFnC3Zc/e5CDxeaIYgXJ+sBcIl
+ MEIUipLjbrDR5Nvj0X9aDcQxax77cHu0zNO8JBpa3Mq4TlklGDlnC0o+kgaEvz2NR/TpkdjNXNLBk0iVlLQspSFZGGtJHku9PIIVCLslW+1XzC/WogXe6moh
+ PphwYcO+x49AhnM5JnfyX/KO/0vOaxcc4+aTQ34lbRUbE7uk57+PHS12FFUbznJYaRpze1+cBTOEl8mKN0fWqE9+oXKjUUrPqW4UnM8/+J5MHseiNMUinmjj
+ nhHwW/apsBc=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200724_062458_742431_F3E7D55D 
-X-CRM114-Status: GOOD (  33.45  )
+X-CRM114-CacheID: sfid-20200724_070249_505862_FDBE23E0 
+X-CRM114-Status: GOOD (  33.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,124 +86,489 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Jacob Pan <jacob.jun.pan@linux.intel.com>,
- linux-tegra <linux-tegra@vger.kernel.org>,
- wsd_upstream <wsd_upstream@mediatek.com>, Linux PM <linux-pm@vger.kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, lkml <linux-kernel@vger.kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- ACPI Devel Maling List <linux-acpi@vger.kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>, Neal Liu <neal.liu@mediatek.com>,
- Sami Tolvanen <samitolvanen@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek
- SoC..." <linux-mediatek@lists.infradead.org>, Linux
- ARM <linux-arm-kernel@lists.infradead.org>, Len Brown <lenb@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Alexandre Courbot <acourbot@chromium.org>, linux-kernel@vger.kernel.org,
+ Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-07-24 at 11:57 +0200, Rafael J. Wysocki wrote:
-> On Thu, Jul 23, 2020 at 9:07 PM Sami Tolvanen <samitolvanen@google.com> wrote:
-> >
-> > On Mon, Jul 20, 2020 at 04:21:34PM +0800, Neal Liu wrote:
-> > > Gentle ping on this patch.
-> > >
-> > >
-> > > On Fri, 2020-07-10 at 11:08 +0800, Neal Liu wrote:
-> > > > On Thu, 2020-07-09 at 14:18 +0200, Rafael J. Wysocki wrote:
-> > > > > On Mon, Jul 6, 2020 at 5:13 AM Neal Liu <neal.liu@mediatek.com> wrote:
-> > > > > >
-> > > > > > Control Flow Integrity(CFI) is a security mechanism that disallows
-> > > > > > changes to the original control flow graph of a compiled binary,
-> > > > > > making it significantly harder to perform such attacks.
-> > > > > >
-> > > > > > init_state_node() assign same function callback to different
-> > > > > > function pointer declarations.
-> > > > > >
-> > > > > > static int init_state_node(struct cpuidle_state *idle_state,
-> > > > > >                            const struct of_device_id *matches,
-> > > > > >                            struct device_node *state_node) { ...
-> > > > > >         idle_state->enter = match_id->data; ...
-> > > > > >         idle_state->enter_s2idle = match_id->data; }
-> > > > > >
-> > > > > > Function declarations:
-> > > > > >
-> > > > > > struct cpuidle_state { ...
-> > > > > >         int (*enter) (struct cpuidle_device *dev,
-> > > > > >                       struct cpuidle_driver *drv,
-> > > > > >                       int index);
-> > > > > >
-> > > > > >         void (*enter_s2idle) (struct cpuidle_device *dev,
-> > > > > >                               struct cpuidle_driver *drv,
-> > > > > >                               int index); };
-> > > > > >
-> > > > > > In this case, either enter() or enter_s2idle() would cause CFI check
-> > > > > > failed since they use same callee.
-> > > > >
-> > > > > Can you please explain this in a bit more detail?
-> > > > >
-> > > > > As it stands, I don't understand the problem statement enough to apply
-> > > > > the patch.
-> > > > >
-> > > >
-> > > > Okay, Let's me try to explain more details.
-> > > > Control Flow Integrity(CFI) is a security mechanism that disallows
-> > > > changes to the original control flow graph of a compiled binary, making
-> > > > it significantly harder to perform such attacks.
-> > > >
-> > > > There are multiple control flow instructions that could be manipulated
-> > > > by the attacker and subvert control flow. The target instructions that
-> > > > use data to determine the actual destination.
-> > > > - indirect jump
-> > > > - indirect call
-> > > > - return
-> > > >
-> > > > In this case, function prototype between caller and callee are mismatch.
-> > > > Caller: (type A)funcA
-> > > > Callee: (type A)funcB
-> > > > Callee: (type C)funcC
-> > > >
-> > > > funcA calls funcB -> no problem
-> > > > funcA calls funcC -> CFI check failed
-> > > >
-> > > > That's why we try to align function prototype.
-> > > > Please feel free to feedback if you have any questions.
-> >
-> > I think you should include a better explanation in the commit message.
-> > Perhaps something like this?
-> >
-> >   init_state_node assigns the same callback function to both enter and
-> >   enter_s2idle despite mismatching function types, which trips indirect
-> >   call checking with Control-Flow Integrity (CFI).
-> >
-> > > > > > Align function prototype of enter() since it needs return value for
-> > > > > > some use cases. The return value of enter_s2idle() is no
-> > > > > > need currently.
-> > > > >
-> > > > > So last time I requested you to document why ->enter_s2idle needs to
-> > > > > return an int in the code, which has not been done.  Please do that.
-> >
-> > Rafael, are you happy with the commit message documenting the reason,
-> > or would you prefer to also add a comment before enter_s2idle?
-> 
-> As I said before, it would be good to have a comment in the code as
-> well or people will be wondering why it is necessary to return
-> anything from that callback, because its return value is never used.
-> 
-> Thanks!
+Hi Yunfei,
 
-Is it okay to add these comments before enter_s2idle?
+On 01/07/2020 11:35, Yunfei Dong wrote:
+> Add Read-only(Ro) request for capture queue. Ro request mean that
+> user driver can get ext ctrls, buf set ext ctrls is not allowed.
+> 
+> Add param ro_requests in struct v4l2_ctrl_handler mean that all CID ctrls
+> belong to this ctrl handler is read only. Add param ro_ctrl_handler in
+> struct v4l2_fh used for ro request.
+> 
+> Add param supports_ro_requests in struct vb2_queue present that capture or
+> output queue use ro request.
+> 
+> When set/get ext ctrls, will check whether current CID ctrls is ro ctrls
+> or not using function v4l2_check_ro_ext_ctrls().
 
-/*
- * Align function type since init_state_node assigns the same callback
- * function to both enter and enter_s2idle despite mismatching function
- * types, which trips indirect call checking with Control-Flow Integrity
- * (CFI).
- */
-int (*enter_s2idle)(struct cpuidle_device *dev,
-		    struct cpuidle_driver *drv,
-		    int index);
+I've been looking at this patch, but I don't like it, esp. the v4l2-ctls changes.
+
+I plan to look into this in more detail next week and see if I can come up
+with a better way of doing this.
+
+The core problem from what I can see is not actually RO requests (that's just
+a regular request, except userspace can't set controls in the request), but
+instead it is that there is some code missing to have a driver add a new control
+to an existing request. That's a problem even with 'regular' requests, and this
+requires some work.
+
+Hopefully I will have something by the end of next week.
+
+Regards,
+
+	Hans
+
+> 
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> ---
+>  .../media/common/videobuf2/videobuf2-core.c   |   3 +
+>  .../media/common/videobuf2/videobuf2-v4l2.c   |   7 ++
+>  drivers/media/mc/mc-request.c                 |  10 +-
+>  drivers/media/v4l2-core/v4l2-ctrls.c          | 107 +++++++++++++++---
+>  drivers/media/v4l2-core/v4l2-ioctl.c          |  22 ++++
+>  drivers/media/v4l2-core/v4l2-mem2mem.c        |  19 ++--
+>  include/media/v4l2-ctrls.h                    |  22 +++-
+>  include/media/v4l2-fh.h                       |   2 +
+>  include/media/videobuf2-core.h                |   2 +
+>  include/uapi/linux/videodev2.h                |   1 +
+>  10 files changed, 157 insertions(+), 38 deletions(-)
+> 
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index 44d65f5be845..230b4909fe35 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -2275,6 +2275,9 @@ int vb2_core_queue_init(struct vb2_queue *q)
+>  	if (WARN_ON(q->requires_requests && !q->supports_requests))
+>  		return -EINVAL;
+>  
+> +	if (WARN_ON(q->supports_ro_requests && !q->supports_requests))
+> +		return -EINVAL;
+> +
+>  	INIT_LIST_HEAD(&q->queued_list);
+>  	INIT_LIST_HEAD(&q->done_list);
+>  	spin_lock_init(&q->done_lock);
+> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> index eb5d5db96552..91a6f3a0c208 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> @@ -402,6 +402,11 @@ static int vb2_queue_or_prepare_buf(struct vb2_queue *q, struct media_device *md
+>  			return -EBUSY;
+>  		}
+>  		return 0;
+> +	} else if (!V4L2_TYPE_IS_OUTPUT(q->type)) {
+> +		if (!q->supports_ro_requests || q->supports_requests) {
+> +			dprintk(1, "%s: cap queue use ro requests\n", opname);
+> +			return -EBADR;
+> +		}
+>  	} else if (!q->supports_requests) {
+>  		dprintk(1, "%s: queue does not support requests\n", opname);
+>  		return -EBADR;
+> @@ -665,6 +670,8 @@ static void fill_buf_caps(struct vb2_queue *q, u32 *caps)
+>  #ifdef CONFIG_MEDIA_CONTROLLER_REQUEST_API
+>  	if (q->supports_requests)
+>  		*caps |= V4L2_BUF_CAP_SUPPORTS_REQUESTS;
+> +	if (q->supports_ro_requests)
+> +		*caps |= V4L2_BUF_CAP_SUPPORTS_RO_REQUESTS;
+>  #endif
+>  }
+>  
+> diff --git a/drivers/media/mc/mc-request.c b/drivers/media/mc/mc-request.c
+> index e3fca436c75b..e50ae259c1ff 100644
+> --- a/drivers/media/mc/mc-request.c
+> +++ b/drivers/media/mc/mc-request.c
+> @@ -404,16 +404,12 @@ int media_request_object_bind(struct media_request *req,
+>  			      struct media_request_object *obj)
+>  {
+>  	unsigned long flags;
+> -	int ret = -EBUSY;
+>  
+>  	if (WARN_ON(!ops->release))
+>  		return -EBADR;
+>  
+>  	spin_lock_irqsave(&req->lock, flags);
+>  
+> -	if (WARN_ON(req->state != MEDIA_REQUEST_STATE_UPDATING))
+> -		goto unlock;
+> -
+>  	obj->req = req;
+>  	obj->ops = ops;
+>  	obj->priv = priv;
+> @@ -423,11 +419,9 @@ int media_request_object_bind(struct media_request *req,
+>  	else
+>  		list_add(&obj->list, &req->objects);
+>  	req->num_incomplete_objects++;
+> -	ret = 0;
+> -
+> -unlock:
+>  	spin_unlock_irqrestore(&req->lock, flags);
+> -	return ret;
+> +
+> +	return 0;
+>  }
+>  EXPORT_SYMBOL_GPL(media_request_object_bind);
+>  
+> diff --git a/drivers/media/v4l2-core/v4l2-ctrls.c b/drivers/media/v4l2-core/v4l2-ctrls.c
+> index 3f3fbcd60cc6..effc26f733de 100644
+> --- a/drivers/media/v4l2-core/v4l2-ctrls.c
+> +++ b/drivers/media/v4l2-core/v4l2-ctrls.c
+> @@ -3386,22 +3386,6 @@ static const struct media_request_object_ops req_ops = {
+>  	.release = v4l2_ctrl_request_release,
+>  };
+>  
+> -struct v4l2_ctrl_handler *v4l2_ctrl_request_hdl_find(struct media_request *req,
+> -					struct v4l2_ctrl_handler *parent)
+> -{
+> -	struct media_request_object *obj;
+> -
+> -	if (WARN_ON(req->state != MEDIA_REQUEST_STATE_VALIDATING &&
+> -		    req->state != MEDIA_REQUEST_STATE_QUEUED))
+> -		return NULL;
+> -
+> -	obj = media_request_object_find(req, &req_ops, parent);
+> -	if (obj)
+> -		return container_of(obj, struct v4l2_ctrl_handler, req_obj);
+> -	return NULL;
+> -}
+> -EXPORT_SYMBOL_GPL(v4l2_ctrl_request_hdl_find);
+> -
+>  struct v4l2_ctrl *
+>  v4l2_ctrl_request_hdl_ctrl_find(struct v4l2_ctrl_handler *hdl, u32 id)
+>  {
+> @@ -3420,6 +3404,10 @@ static int v4l2_ctrl_request_bind(struct media_request *req,
+>  	ret = v4l2_ctrl_request_clone(hdl, from);
+>  
+>  	if (!ret) {
+> +		if (!hdl->ro_requests &&
+> +			WARN_ON(req->state != MEDIA_REQUEST_STATE_UPDATING))
+> +			return -EBUSY;
+> +
+>  		ret = media_request_object_bind(req, &req_ops,
+>  						from, false, &hdl->req_obj);
+>  		if (!ret)
+> @@ -3593,6 +3581,62 @@ static int class_check(struct v4l2_ctrl_handler *hdl, u32 which)
+>  	return find_ref_lock(hdl, which | 1) ? 0 : -EINVAL;
+>  }
+>  
+> +int v4l2_check_ro_ext_ctrls(struct v4l2_ctrl_handler *hdl,
+> +		   struct video_device *vdev, struct media_device *mdev,
+> +		   struct v4l2_ext_controls *cs)
+> +{
+> +	struct v4l2_ctrl_ref *ref;
+> +	u32 i;
+> +
+> +	if (cs->which == V4L2_CTRL_WHICH_REQUEST_VAL) {
+> +		if (!mdev || cs->request_fd < 0)
+> +			return -EINVAL;
+> +	}
+> +
+> +	cs->error_idx = cs->count;
+> +	cs->which = V4L2_CTRL_ID2WHICH(cs->which);
+> +
+> +	if (hdl == NULL)
+> +		return -EINVAL;
+> +
+> +	if (cs->count == 0)
+> +		return class_check(hdl, cs->which);
+> +
+> +	for (i = 0; i < cs->count; i++) {
+> +		struct v4l2_ext_control *c = &cs->controls[i];
+> +		u32 id = c->id & V4L2_CTRL_ID_MASK;
+> +
+> +		cs->error_idx = i;
+> +
+> +		if (cs->which &&
+> +			cs->which != V4L2_CTRL_WHICH_DEF_VAL &&
+> +			cs->which != V4L2_CTRL_WHICH_REQUEST_VAL &&
+> +			V4L2_CTRL_ID2WHICH(id) != cs->which) {
+> +			dprintk(vdev,
+> +					"invalid which 0x%x or control id 0x%x\n",
+> +					cs->which, id);
+> +			return -EINVAL;
+> +		}
+> +
+> +		/* Old-style private controls are not allowed for
+> +		 *extended controls
+> +		 */
+> +		if (id >= V4L2_CID_PRIVATE_BASE) {
+> +			dprintk(vdev,
+> +					"old-style private controls not allowed\n");
+> +			return -EINVAL;
+> +		}
+> +
+> +		ref = find_ref_lock(hdl, id);
+> +		if (ref == NULL) {
+> +			dprintk(vdev, "cannot find control id 0x%x\n", id);
+> +			return -EINVAL;
+> +		}
+> +	}
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL(v4l2_check_ro_ext_ctrls);
+> +
+>  /* Get extended controls. Allocates the helpers array if needed. */
+>  static int v4l2_g_ext_ctrls_common(struct v4l2_ctrl_handler *hdl,
+>  				   struct v4l2_ext_controls *cs,
+> @@ -3694,7 +3738,7 @@ v4l2_ctrls_find_req_obj(struct v4l2_ctrl_handler *hdl,
+>  	obj = media_request_object_find(req, &req_ops, hdl);
+>  	if (obj)
+>  		return obj;
+> -	if (!set)
+> +	if (!set && !hdl->ro_requests)
+>  		return ERR_PTR(-ENOENT);
+>  
+>  	new_hdl = kzalloc(sizeof(*new_hdl), GFP_KERNEL);
+> @@ -3702,6 +3746,7 @@ v4l2_ctrls_find_req_obj(struct v4l2_ctrl_handler *hdl,
+>  		return ERR_PTR(-ENOMEM);
+>  
+>  	obj = &new_hdl->req_obj;
+> +	new_hdl->ro_requests = hdl->ro_requests;
+>  	ret = v4l2_ctrl_handler_init(new_hdl, (hdl->nr_of_buckets - 1) * 8);
+>  	if (!ret)
+>  		ret = v4l2_ctrl_request_bind(req, new_hdl, hdl);
+> @@ -3763,6 +3808,28 @@ int v4l2_g_ext_ctrls(struct v4l2_ctrl_handler *hdl, struct video_device *vdev,
+>  }
+>  EXPORT_SYMBOL(v4l2_g_ext_ctrls);
+>  
+> +struct v4l2_ctrl_handler *v4l2_ctrl_request_hdl_find(struct media_request *req,
+> +					struct v4l2_ctrl_handler *parent)
+> +{
+> +	struct media_request_object *obj;
+> +
+> +	if (WARN_ON(req->state != MEDIA_REQUEST_STATE_VALIDATING &&
+> +		    req->state != MEDIA_REQUEST_STATE_QUEUED))
+> +		return NULL;
+> +
+> +	obj = media_request_object_find(req, &req_ops, parent);
+> +	if (!obj) {
+> +		if (parent->ro_requests) {
+> +			obj = v4l2_ctrls_find_req_obj(parent, req, false);
+> +			if (IS_ERR(obj))
+> +				return NULL;
+> +		} else
+> +			return NULL;
+> +	}
+> +	return container_of(obj, struct v4l2_ctrl_handler, req_obj);
+> +}
+> +EXPORT_SYMBOL_GPL(v4l2_ctrl_request_hdl_find);
+> +
+>  /* Helper function to get a single control */
+>  static int get_ctrl(struct v4l2_ctrl *ctrl, struct v4l2_ext_control *c)
+>  {
+> @@ -4094,6 +4161,12 @@ static int try_set_ext_ctrls(struct v4l2_fh *fh,
+>  	int ret;
+>  
+>  	if (cs->which == V4L2_CTRL_WHICH_REQUEST_VAL) {
+> +		if (hdl->ro_requests) {
+> +			dprintk(vdev, "%s: ro requests can`t set ext ctrls\n",
+> +				video_device_node_name(vdev));
+> +			return -EINVAL;
+> +		}
+> +
+>  		if (!mdev) {
+>  			dprintk(vdev, "%s: missing media device\n",
+>  				video_device_node_name(vdev));
+> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+> index 2322f08a98be..b9e1058a5067 100644
+> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
+> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+> @@ -2270,6 +2270,13 @@ static int v4l_g_ext_ctrls(const struct v4l2_ioctl_ops *ops,
+>  		test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ? fh : NULL;
+>  
+>  	p->error_idx = p->count;
+> +	if (vfh && vfh->ro_ctrl_handler) {
+> +		if (!v4l2_check_ro_ext_ctrls(vfh->ro_ctrl_handler, vfd,
+> +						vfd->v4l2_dev->mdev, p)) {
+> +			return v4l2_g_ext_ctrls(vfh->ro_ctrl_handler, vfd,
+> +						vfd->v4l2_dev->mdev, p);
+> +		}
+> +	}
+>  	if (vfh && vfh->ctrl_handler)
+>  		return v4l2_g_ext_ctrls(vfh->ctrl_handler,
+>  					vfd, vfd->v4l2_dev->mdev, p);
+> @@ -2291,6 +2298,14 @@ static int v4l_s_ext_ctrls(const struct v4l2_ioctl_ops *ops,
+>  		test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ? fh : NULL;
+>  
+>  	p->error_idx = p->count;
+> +	if (vfh && vfh->ro_ctrl_handler) {
+> +		if (!v4l2_check_ro_ext_ctrls(vfh->ro_ctrl_handler, vfd,
+> +						vfd->v4l2_dev->mdev, p)) {
+> +			return v4l2_s_ext_ctrls(vfh, vfh->ro_ctrl_handler, vfd,
+> +						vfd->v4l2_dev->mdev, p);
+> +		}
+> +	}
+> +
+>  	if (vfh && vfh->ctrl_handler)
+>  		return v4l2_s_ext_ctrls(vfh, vfh->ctrl_handler,
+>  					vfd, vfd->v4l2_dev->mdev, p);
+> @@ -2312,6 +2327,13 @@ static int v4l_try_ext_ctrls(const struct v4l2_ioctl_ops *ops,
+>  		test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ? fh : NULL;
+>  
+>  	p->error_idx = p->count;
+> +	if (vfh && vfh->ro_ctrl_handler) {
+> +		if (!v4l2_check_ro_ext_ctrls(vfh->ro_ctrl_handler, vfd,
+> +						vfd->v4l2_dev->mdev, p)) {
+> +			return v4l2_try_ext_ctrls(vfh->ro_ctrl_handler, vfd,
+> +						vfd->v4l2_dev->mdev, p);
+> +		}
+> +	}
+>  	if (vfh && vfh->ctrl_handler)
+>  		return v4l2_try_ext_ctrls(vfh->ctrl_handler,
+>  					  vfd, vfd->v4l2_dev->mdev, p);
+> diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
+> index 62ac9424c92a..166e94ee18a7 100644
+> --- a/drivers/media/v4l2-core/v4l2-mem2mem.c
+> +++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
+> @@ -712,13 +712,6 @@ int v4l2_m2m_qbuf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
+>  	int ret;
+>  
+>  	vq = v4l2_m2m_get_vq(m2m_ctx, buf->type);
+> -	if (!V4L2_TYPE_IS_OUTPUT(vq->type) &&
+> -	    (buf->flags & V4L2_BUF_FLAG_REQUEST_FD)) {
+> -		dprintk("%s: requests cannot be used with capture buffers\n",
+> -			__func__);
+> -		return -EPERM;
+> -	}
+> -
+>  	ret = vb2_qbuf(vq, vdev->v4l2_dev->mdev, buf);
+>  	if (ret)
+>  		return ret;
+> @@ -1252,10 +1245,14 @@ void v4l2_m2m_request_queue(struct media_request *req)
+>  		if (vb2_request_object_is_buffer(obj)) {
+>  			/* Sanity checks */
+>  			vb = container_of(obj, struct vb2_buffer, req_obj);
+> -			WARN_ON(!V4L2_TYPE_IS_OUTPUT(vb->vb2_queue->type));
+> -			m2m_ctx_obj = container_of(vb->vb2_queue,
+> -						   struct v4l2_m2m_ctx,
+> -						   out_q_ctx.q);
+> +			if (V4L2_TYPE_IS_OUTPUT(vb->vb2_queue->type))
+> +				m2m_ctx_obj = container_of(vb->vb2_queue,
+> +							struct v4l2_m2m_ctx,
+> +							out_q_ctx.q);
+> +			else
+> +				m2m_ctx_obj = container_of(vb->vb2_queue,
+> +							struct v4l2_m2m_ctx,
+> +							cap_q_ctx.q);
+>  			WARN_ON(m2m_ctx && m2m_ctx_obj != m2m_ctx);
+>  			m2m_ctx = m2m_ctx_obj;
+>  		}
+> diff --git a/include/media/v4l2-ctrls.h b/include/media/v4l2-ctrls.h
+> index f40e2cbb21d3..5b10c2e8a402 100644
+> --- a/include/media/v4l2-ctrls.h
+> +++ b/include/media/v4l2-ctrls.h
+> @@ -345,6 +345,7 @@ struct v4l2_ctrl_ref {
+>   * @nr_of_buckets: Total number of buckets in the array.
+>   * @error:	The error code of the first failed control addition.
+>   * @request_is_queued: True if the request was queued.
+> + * @ro_requests: True if the queue support ro request.
+>   * @requests:	List to keep track of open control handler request objects.
+>   *		For the parent control handler (@req_obj.req == NULL) this
+>   *		is the list header. When the parent control handler is
+> @@ -368,6 +369,7 @@ struct v4l2_ctrl_handler {
+>  	u16 nr_of_buckets;
+>  	int error;
+>  	bool request_is_queued;
+> +	bool ro_requests;
+>  	struct list_head requests;
+>  	struct list_head requests_queued;
+>  	struct media_request_object req_obj;
+> @@ -1261,8 +1263,10 @@ void v4l2_ctrl_request_complete(struct media_request *req,
+>   * @parent: The parent control handler ('priv' in media_request_object_find())
+>   *
+>   * This function finds the control handler in the request. It may return
+> - * NULL if not found. When done, you must call v4l2_ctrl_request_put_hdl()
+> - * with the returned handler pointer.
+> + * NULL if not found. But for Ro Request, the request object maybe
+> + * NULL, need to call v4l2_ctrls_find_req_obj() to check whether the
+> + * request has request object. When done, you must call
+> + * v4l2_ctrl_request_put_hdl() with the returned handler pointer.
+>   *
+>   * If the request is not in state VALIDATING or QUEUED, then this function
+>   * will always return NULL.
+> @@ -1454,4 +1458,18 @@ int v4l2_ctrl_subdev_log_status(struct v4l2_subdev *sd);
+>  int v4l2_ctrl_new_fwnode_properties(struct v4l2_ctrl_handler *hdl,
+>  				    const struct v4l2_ctrl_ops *ctrl_ops,
+>  				    const struct v4l2_fwnode_device_properties *p);
+> +/**
+> + * v4l2_check_ro_ext_ctrls - Check whether the ext controls are ro request
+> + *
+> + * @hdl: pointer to &struct v4l2_ctrl_handler
+> + * @vdev: pointer to &struct video_device
+> + * @mdev: pointer to &struct media_device
+> + * @cs: pointer to &struct v4l2_ext_controls
+> + *
+> + * If hdl == NULL then they will all return -EINVAL.
+> + */
+> +int v4l2_check_ro_ext_ctrls(struct v4l2_ctrl_handler *hdl,
+> +			    struct video_device *vdev,
+> +			    struct media_device *mdev,
+> +			    struct v4l2_ext_controls *cs);
+>  #endif
+> diff --git a/include/media/v4l2-fh.h b/include/media/v4l2-fh.h
+> index b5b3e00c8e6a..479abef6c910 100644
+> --- a/include/media/v4l2-fh.h
+> +++ b/include/media/v4l2-fh.h
+> @@ -27,6 +27,7 @@ struct v4l2_ctrl_handler;
+>   * @list: list of file handlers
+>   * @vdev: pointer to &struct video_device
+>   * @ctrl_handler: pointer to &struct v4l2_ctrl_handler
+> + * @ro_ctrl_handler: pointer to &struct v4l2_ctrl_handler used for ro ctrls
+>   * @prio: priority of the file handler, as defined by &enum v4l2_priority
+>   *
+>   * @wait: event' s wait queue
+> @@ -43,6 +44,7 @@ struct v4l2_fh {
+>  	struct list_head	list;
+>  	struct video_device	*vdev;
+>  	struct v4l2_ctrl_handler *ctrl_handler;
+> +	struct v4l2_ctrl_handler *ro_ctrl_handler;
+>  	enum v4l2_priority	prio;
+>  
+>  	/* Events */
+> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+> index f11b96514cf7..dce5c6781be9 100644
+> --- a/include/media/videobuf2-core.h
+> +++ b/include/media/videobuf2-core.h
+> @@ -483,6 +483,7 @@ struct vb2_buf_ops {
+>   *              has not been called. This is a vb1 idiom that has been adopted
+>   *              also by vb2.
+>   * @supports_requests: this queue supports the Request API.
+> + * @supports_ro_requests: this queue supports the RO Request API.
+>   * @requires_requests: this queue requires the Request API. If this is set to 1,
+>   *		then supports_requests must be set to 1 as well.
+>   * @uses_qbuf:	qbuf was used directly for this queue. Set to 1 the first
+> @@ -564,6 +565,7 @@ struct vb2_queue {
+>  	unsigned			allow_zero_bytesused:1;
+>  	unsigned		   quirk_poll_must_check_waiting_for_buffers:1;
+>  	unsigned			supports_requests:1;
+> +	unsigned			supports_ro_requests:1;
+>  	unsigned			requires_requests:1;
+>  	unsigned			uses_qbuf:1;
+>  	unsigned			uses_requests:1;
+> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+> index c3a1cf1c507f..25793c737eab 100644
+> --- a/include/uapi/linux/videodev2.h
+> +++ b/include/uapi/linux/videodev2.h
+> @@ -954,6 +954,7 @@ struct v4l2_requestbuffers {
+>  #define V4L2_BUF_CAP_SUPPORTS_REQUESTS			(1 << 3)
+>  #define V4L2_BUF_CAP_SUPPORTS_ORPHANED_BUFS		(1 << 4)
+>  #define V4L2_BUF_CAP_SUPPORTS_M2M_HOLD_CAPTURE_BUF	(1 << 5)
+> +#define V4L2_BUF_CAP_SUPPORTS_RO_REQUESTS		(1 << 6)
+>  
+>  /**
+>   * struct v4l2_plane - plane info for multi-planar buffers
+> 
+
 
 _______________________________________________
 Linux-mediatek mailing list
