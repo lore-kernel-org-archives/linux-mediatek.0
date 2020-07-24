@@ -3,66 +3,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 53D64C433E5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 12:22:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 35029C433E4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 12:30:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 24E6D20737
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 12:22:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 053D820737
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 12:30:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TFSBRYVM";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="eGqQpuA/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 24E6D20737
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OmseYiXd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 053D820737
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=u4KWo0/iEs0sA2bSnAOXcjs1omNqdMiUmorOTikjVoo=; b=TFSBRYVMXD+7Izs6FkvcHnOlp
-	QfBG7HPcExRQ01SQ2gEgTqqLnQmio6/J9jNVKOrQWX8/Xjbinl5aZmGFz4/hpKlY3ZLFsGPe6AXw0
-	uwYhOQRuCVU1m8zudIRS3qbjAmbVGX4B88GR6arpwyXjWj6WI7IOU9G1JayJQWHYdh3/FzOpihc3l
-	fjpo53SSeUfw3OH5Knq4aW2KVWSgfMp/dCiSzDI2/1QtZhqhflTK76+e0dXX937Yhr2mvgWFtnZHZ
-	nG10QbP+vW8kcHMCJy84HQY9ZMwxBCzWbPbfuJYjJhrRDIiNZI2csF8NmiKa9fU5kqFmg3+YBlkhn
-	pcTaHK+4w==;
+	 bh=oJyS/0maWypLbqEC+9v+1dOQnMRIJeSV25wQP1EVYcQ=; b=OmseYiXdVuoTvmJd6zRbXilG/
+	7IKiBDcF0WwQuOIa5B6swhXVo6RZecD84VohXi9EMHoUG5p9QPs9JsoQ+AqmJGGUrVMIXdSbfPXbD
+	joxBGmjo9It+GHdu6Kom3rwg4B0tuxjlThjjMEP5EhddUoeqQcKhTI+OozdYK8Tr8ujF5ua0XJW8D
+	nrvkHq1qGf/7Y6mxLIhPnJviI5oXq3Nixfih1IAG7TgEJBQHHHaVZ9+yhm2SW+jrEAMJxqgMRqilx
+	1tFgoaOSL+jQ15n7X3b3fdInVqTciViLACZsrv768izkjiPj4mo9UDpDrxym3N+MoUd60oj4v0Qfx
+	WeQMTQrdw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jywi3-0001Qq-FK; Fri, 24 Jul 2020 12:21:55 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jywqT-0002q8-4i; Fri, 24 Jul 2020 12:30:37 +0000
+Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jywhz-0001Pb-17; Fri, 24 Jul 2020 12:21:51 +0000
-Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 711D520737;
- Fri, 24 Jul 2020 12:21:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595593310;
- bh=pKwG7sz23Jh8BAXh9JAwkl7Df1oVbQNtNUXu8orqNB0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=eGqQpuA/nsqH8Q973vZszR/rnh/Gp5nGlYXQ1nr618nI+UDrFjh+iwCE+FtDhHtRJ
- H67R5n7U58FQi2AGdugQWmDDzk2TcDK2M2m4cyNXW3rxp+zb/RBBASKxXMfWLB7b+v
- 6SUBkDL9SMis3R1e/0A2t/1yCCJx3dM7P8ExrEcY=
-Date: Fri, 24 Jul 2020 13:21:34 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Subject: Re: [PATCH 5/8] regulator: mt6359: Add support for MT6359 regulator
-Message-ID: <20200724122134.GD5664@sirena.org.uk>
-References: <1595509133-5358-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1595509133-5358-6-git-send-email-hsin-hsiung.wang@mediatek.com>
+ id 1jywqP-0002pH-67; Fri, 24 Jul 2020 12:30:34 +0000
+Received: by theia.8bytes.org (Postfix, from userid 1000)
+ id 88ADF46A; Fri, 24 Jul 2020 14:30:31 +0200 (CEST)
+Date: Fri, 24 Jul 2020 14:30:30 +0200
+From: Joerg Roedel <joro@8bytes.org>
+To: Baolin Wang <baolin.wang@linux.alibaba.com>
+Subject: Re: [PATCH v2 2/2] iommu: Add gfp parameter to io_pgtable_ops->map()
+Message-ID: <20200724123030.GT27672@8bytes.org>
+References: <cover.1591930156.git.baolin.wang@linux.alibaba.com>
+ <3093df4cb95497aaf713fca623ce4ecebb197c2e.1591930156.git.baolin.wang@linux.alibaba.com>
+ <20200714082821.GC4516@willie-the-truck>
+ <20200723113652.GA104096@VM20190228-100.tbsite.net>
 MIME-Version: 1.0
-In-Reply-To: <1595509133-5358-6-git-send-email-hsin-hsiung.wang@mediatek.com>
-X-Cookie: You will wish you hadn't.
+Content-Disposition: inline
+In-Reply-To: <20200723113652.GA104096@VM20190228-100.tbsite.net>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200724_082151_176354_391C272D 
-X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-CacheID: sfid-20200724_083033_408771_09719192 
+X-CRM114-Status: UNSURE (   9.43  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -75,66 +67,27 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Josef Friedl <josef.friedl@speed.at>,
- Wen Su <wen.su@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>,
- Frank Wunderlich <frank-w@public-files.de>,
- Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============5430042637493148119=="
+Cc: robh@kernel.org, linux-kernel@vger.kernel.org, tomeu.vizoso@collabora.com,
+ airlied@linux.ie, Will Deacon <will@kernel.org>,
+ iommu@lists.linux-foundation.org, dri-devel@lists.freedesktop.org,
+ bjorn.andersson@linaro.org, baolin.wang7@gmail.com, robdclark@gmail.com,
+ agross@kernel.org, linux-mediatek@lists.infradead.org,
+ alyssa.rosenzweig@collabora.com, daniel@ffwll.ch,
+ linux-arm-msm@vger.kernel.org, matthias.bgg@gmail.com, steven.price@arm.com,
+ robin.murphy@arm.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Jul 23, 2020 at 07:36:52PM +0800, Baolin Wang wrote:
+> Thanks Will. Joerg, could you apply this 2 patches if no objection from
+> your side? Thanks.
 
---===============5430042637493148119==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="xB0nW4MQa6jZONgY"
-Content-Disposition: inline
-
-
---xB0nW4MQa6jZONgY
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Jul 23, 2020 at 08:58:50PM +0800, Hsin-Hsiung Wang wrote:
-> From: Wen Su <wen.su@mediatek.com>
->=20
-> The MT6359 is a regulator found on boards based on MediaTek MT6779 and
-> probably other SoCs. It is a so called pmic and connects as a slave to
-> SoC using SPI, wrapped inside the pmic-wrapper.
-
-Acked-by: Mark Brown <broonie@kernel.org>
-
---xB0nW4MQa6jZONgY
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl8a0k4ACgkQJNaLcl1U
-h9Du2gf/U/MC+yoZc1bEJJ7ZixaCMK6ZSIJlbMh6RlAKO1kQAQhLz9i3yinQPaai
-p8cRi3iERLnXzA3RxbvtG/Tq8JOSXZ6PjCVxjHp8OHmc+WMOb63rivRx4fyEzFj3
-FzQJWg7RxoBiJOQQm0dx0KPd0Di4ITh6UxA7jSGtQVVdkI24V/D+Hb47KeZGlOxt
-6awjyRSsyRgrwh686lJq9hinUieKmcyASf8ZnKuDUzqlI4FMC6xsz86/YGwKB82N
-m38XL/zdOMGDDC8yWdAkyn1PWKqgfYa9B3qkAUheivyiXWy1+6sN4UQ59cHoO2+B
-Z7DhweBclspPwW6xEE8Ts/MNL/TlvQ==
-=pp/5
------END PGP SIGNATURE-----
-
---xB0nW4MQa6jZONgY--
-
-
---===============5430042637493148119==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Applied both, thanks. Modified the first patch because another patch
+already made __iommu_map static.
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============5430042637493148119==--
-
