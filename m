@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93889C433E1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:51:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A77ACC433E4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:52:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4BF7B2068F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:51:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6DA882068F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:52:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1dZhtgGk";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Q8lQ1NgB"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4BF7B2068F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NeWJ2Y5F";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="ETmX7RHo"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6DA882068F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S0dBrMvllj0JKy2tfs1KCpFniH6hrSvO+8u9Gri7wLE=; b=1dZhtgGkVBrq/lqFqYjRy5f88C
-	j4BKuOlC7V3GEStS81CpbxkuCnpgW6Kelxofo7dzCBWpm3JSVFNQwJW+5/0W2vjc+eEtA1Cm1718Y
-	AmlGfONzBVp5Qso41O2szYCyql/P4pCAuI1vDlKdP2jwYApah3WDVFXiKNngfPF2nUEF7ByyG8BMl
-	ryj5LSltDSrqkiyFNMgZmp5IQqd0sR1J8oYTJT39VOuQjkfhdzhtkQAypCfLgSHddWvXkWPhwZCuX
-	l/WOvcvNQ7m9lwqvAPxZxczOw/csqjwAiRzmODtHpzFC4P8xnq5Eqf7ldCLZbhfIX2XpkRrk5W01u
-	+CZ63img==;
+	bh=+M2GWCQ8djBneMOP9l6OvkB2Uo+pB9LJdFRfJXBVWh8=; b=NeWJ2Y5FgaHW5KY9FD5N6GksEm
+	UBbCkujoffL6EPP6JQgFejOAtgHcRe3AlFKqPEZhcZmUsFl+GI6Lz6ME0o9SeW67bXw8CoOqqIjJk
+	QRg/7Gr0lzPSuaJgSP9O8NU/SVoNtiLXTARXPy217Mb4ix+OYieW8o4pnLXQy/CdtM1nfYbfiwLyu
+	4IzZjTVdf0PH0dtWKR5ouTUZzRWyXsItvPFu/JMEqhEOQNS6V4rCwftEmv6WLP1/zvsu/ui9hr5Js
+	ZOpu4RE9FjwWSq2eyrYJ1txq0ZzagcDOaAchyAbsVh/2wbd/+cYSvZ7/1J23yHWG+mN9SonCu20AQ
+	AA5zbuog==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jysU4-0007Pn-8G; Fri, 24 Jul 2020 07:51:12 +0000
+	id 1jysV5-00082B-A1; Fri, 24 Jul 2020 07:52:15 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jysMU-0002tK-J6; Fri, 24 Jul 2020 07:43:24 +0000
+ id 1jysMZ-0002v9-Kw; Fri, 24 Jul 2020 07:43:28 +0000
 Received: from kozik-lap.mshome.net (unknown [194.230.155.213])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 67D3920771;
- Fri, 24 Jul 2020 07:43:17 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 36E1E2076A;
+ Fri, 24 Jul 2020 07:43:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595576601;
- bh=7Y6Qsp3HGJ5Ii/fIf6Yq0qBPBqdTjN0QQ//7iQ2S+xo=;
+ s=default; t=1595576606;
+ bh=KtM49i0V08bRy4KEevLt7MwZmAFXsueBkkylkf7FmD4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Q8lQ1NgBUnpMzvwNWQCIM9NCHIlVp3rxSAKN0ti7nKks09XipPLucOfG+2M67iK86
- BvjUHcN5p1mqFF4ALd7rVk3ndjTb8tJNxWDyNgpi36gMWDDGctzkBOqqXDyeEp5P96
- fzhmRjMwPp5097vV7OOyYsgqpB7qhSVCEFPgrDL0=
+ b=ETmX7RHojUwKnONwYfzjhyrsaZYbAM/T/HeQn7dUgZMaQpjofjgd8OQWOFeFiRggO
+ 785drOokRYVsZt/75hNUwcI90V7jHkIfrHj8vUTu9hlbERhdeI7VBOJIkpF1y0Tv2v
+ MZeaIC1ksmQbMU9OZRMb+bWCwoyPZElcWh9fD7rs=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  Markus Mayer <mmayer@broadcom.com>, bcm-kernel-feedback-list@broadcom.com,
@@ -62,15 +62,15 @@ To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-omap@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
  linux-tegra@vger.kernel.org
-Subject: [PATCH v2 27/29] memory: da8xx-ddrctl: Remove unused 'node' variable
-Date: Fri, 24 Jul 2020 09:40:36 +0200
-Message-Id: <20200724074038.5597-28-krzk@kernel.org>
+Subject: [PATCH v2 28/29] memory: Describe the MEMORY Kconfig entry
+Date: Fri, 24 Jul 2020 09:40:37 +0200
+Message-Id: <20200724074038.5597-29-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200724074038.5597-1-krzk@kernel.org>
 References: <20200724074038.5597-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200724_034322_957156_10C15823 
-X-CRM114-Status: GOOD (  13.79  )
+X-CRM114-CacheID: sfid-20200724_034327_903210_07AC8216 
+X-CRM114-Status: GOOD (  12.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,10 +91,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The variable 'node' is not used.  Remove it to silence compile warning:
-
-    drivers/memory/da8xx-ddrctl.c: In function 'da8xx_ddrctl_probe':
-    drivers/memory/da8xx-ddrctl.c:105:22: warning: variable 'node' set but not used [-Wunused-but-set-variable]
+Write short description about the entire memory controllers section.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 
@@ -103,28 +100,26 @@ Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 Changes since v1:
 1. New patch
 ---
- drivers/memory/da8xx-ddrctl.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/memory/Kconfig | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/memory/da8xx-ddrctl.c b/drivers/memory/da8xx-ddrctl.c
-index e8f9b3f461f5..872addd0ec60 100644
---- a/drivers/memory/da8xx-ddrctl.c
-+++ b/drivers/memory/da8xx-ddrctl.c
-@@ -102,14 +102,12 @@ static int da8xx_ddrctl_probe(struct platform_device *pdev)
- {
- 	const struct da8xx_ddrctl_config_knob *knob;
- 	const struct da8xx_ddrctl_setting *setting;
--	struct device_node *node;
- 	struct resource *res;
- 	void __iomem *ddrctl;
- 	struct device *dev;
- 	u32 reg;
+diff --git a/drivers/memory/Kconfig b/drivers/memory/Kconfig
+index c37752d5f26d..ec735794aeaf 100644
+--- a/drivers/memory/Kconfig
++++ b/drivers/memory/Kconfig
+@@ -5,6 +5,12 @@
  
- 	dev = &pdev->dev;
--	node = dev->of_node;
+ menuconfig MEMORY
+ 	bool "Memory Controller drivers"
++	help
++	  This option allows to enable specific memory controller drivers,
++	  useful mostly on embedded systems.  These could be controllers
++	  for DRAM (SDR, DDR), ROM, SRAM and others.  The drivers features
++	  vary from memory tuning and frequency scaling to enabling
++	  access to attached peripherals through memory bus.
  
- 	setting = da8xx_ddrctl_get_board_settings();
- 	if (!setting) {
+ if MEMORY
+ 
 -- 
 2.17.1
 
