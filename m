@@ -2,84 +2,79 @@ Return-Path: <SRS0=BOys=BD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3FAD6C433E1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 13:51:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4DFC8C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 13:53:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0E9EC20737
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 13:51:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1961820656
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 13:53:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hAVW7WGP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E9EC20737
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arndb.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Y05utwkA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1961820656
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=O5EQdO52OfHTFDEmpf9mULrs9XO/usr3b4yvz6HUpK4=; b=hAVW7WGPlAtLw0n9ehVOM3x0N
-	i+amf0G0cPGgEPQoPixTVc8jf7qHI35DXeCpiUp/mgOisALMvzop8/MPII0X8+cTubq0kjhaH4RWy
-	oMTMMYQF7IDjEvlgHDUvmyT4RKSxBRuSAM6/Dd7dKUeIdPa1MDmq5kde2GMrpTnZb07p1qCN36kSN
-	Jt2NRs8r5dqUFs2PulXyhBHdoy3g8BVLegP5wBqtSBBjbiSQykDnqPPtzVu0iSINORGrWAnN+Nm8n
-	tBOyzhqWhE7Xb66gMKZKOzn8nkp16csCfYh5sZsAiSuaP1/Yyt9jGV00QGTWNGg2NUorlf8WvnzvO
-	3fByPGoRA==;
+	 bh=FYoiaEjxr4XU4oqo7zkzgjWtYvHF6OnKFmOKf+MTN0k=; b=Y05utwkA+jWt4LETKshS4qK2s
+	UQTHaVd7HcMRQumZS7ZlrSkKM3u2sogg9k96J1CgRyVIKhUhnFWMeXN/x0tx502bLeCm9dO4de9F2
+	PtgMSO70jB9SOzi4W24T7ONrwIwxfHF5WWmnn/UyRj+DCiVWEUSJ11RUJ2XPAlyrIp8yp4CWHF9bu
+	7JedTsKOcgakqZVGK9/oxoed4rqOxyBsst4FKqpciyYDtSzzecP5x9psjzQT0dHLZIpP0Q/G6lzuC
+	VD/XrFWHUgWXjxb9aeNtUA30WiTCIHjdEfDHaQjMuK4LSxtGZ0cr2hfU+DjHLlstFFBps9lmzu5Ee
+	KkMxDw3ag==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyy6l-0006yW-Fw; Fri, 24 Jul 2020 13:51:31 +0000
-Received: from mout.kundenserver.de ([212.227.17.24])
+	id 1jyy8Y-0007Sh-Q2; Fri, 24 Jul 2020 13:53:22 +0000
+Received: from mail-ed1-f68.google.com ([209.85.208.68])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyy6h-0006wg-Td; Fri, 24 Jul 2020 13:51:29 +0000
-Received: from mail-qk1-f178.google.com ([209.85.222.178]) by
- mrelayeu.kundenserver.de (mreue109 [212.227.15.145]) with ESMTPSA (Nemesis)
- id 1MHoZM-1k3tWf3wIA-00Eskt; Fri, 24 Jul 2020 15:51:24 +0200
-Received: by mail-qk1-f178.google.com with SMTP id x69so8654283qkb.1;
- Fri, 24 Jul 2020 06:51:21 -0700 (PDT)
-X-Gm-Message-State: AOAM532ENFPHM57jJm6j0/s+xv396ZWQ+v8VcU01LTRGzF7Qd9JdqN9R
- f9sbFP7iX4wtmVwgVNqciLFp+G4v4thVrtxDhuM=
-X-Google-Smtp-Source: ABdhPJxjGVar32Mo4zyo7czqW6vHPwVJvr9ZZ1aqSE80mAP36DQF09IVdxgsaflYW8FpBItG+23osrBEpNeTs3oF6bs=
-X-Received: by 2002:a05:620a:1654:: with SMTP id
- c20mr10549815qko.138.1595598680633; 
- Fri, 24 Jul 2020 06:51:20 -0700 (PDT)
-MIME-Version: 1.0
+ id 1jyy8U-0007Qb-Gc; Fri, 24 Jul 2020 13:53:19 +0000
+Received: by mail-ed1-f68.google.com with SMTP id z17so7086181edr.9;
+ Fri, 24 Jul 2020 06:53:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=wHJM9ZNtQPPVokcpsCbdp5GsMdp3YHUZAH6Xvy0iTKM=;
+ b=Gxk+ILqujQ4e7wA2lb+jUq7CkXWXy7FLEZWCRZg8IlnRWpeIP0ZUh4cS4GoWv48y0T
+ 73abiwnVm6YYECisGGOnKJV8Rt80rzBFJa/ziIWBdoae5JwNd5VOcwpnz1OYUakpeaUx
+ CG4WvonhhAYf7jODk0U/S7wsdmSgP+A/N4b3GYS/eLdR6P4GIu4E2S1Ya4A5RW8wbmhY
+ YNW7+hyZBQfXGaxKJoptwwlz9D5cBdtilS18I02mTcTDJ84dpXq/M0BavaOA9EdXQzd3
+ Rggvm7Kg2835qV1nDXJg8pTXg1yG64SXiar2O7SQReh52nf4sLQv7Ek3GWLLMgEYSYwt
+ Xjdw==
+X-Gm-Message-State: AOAM5336Plhzorkhc0JPoE76yHSlnd/mMVh62WUK5DsD6vWqI/uSlJv3
+ 3IXOn2jvUjS4rZJLAH2IBHI=
+X-Google-Smtp-Source: ABdhPJxQatp/16zc2FQj9pOk/YrBsNh8emgbUp3CY5xYniVLl6YIl4y8V3SdvTEG1nFeCNjq8TSdOA==
+X-Received: by 2002:a50:dacf:: with SMTP id s15mr9448134edj.136.1595598795606; 
+ Fri, 24 Jul 2020 06:53:15 -0700 (PDT)
+Received: from kozik-lap ([194.230.155.213])
+ by smtp.googlemail.com with ESMTPSA id x10sm737481ejc.46.2020.07.24.06.53.13
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Fri, 24 Jul 2020 06:53:14 -0700 (PDT)
+Date: Fri, 24 Jul 2020 15:53:11 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [PATCH v2 05/29] memory: jz4780-nemc: Do not enable by default
+ on every compile test
+Message-ID: <20200724135311.GA13472@kozik-lap>
 References: <20200724074038.5597-1-krzk@kernel.org>
-In-Reply-To: <20200724074038.5597-1-krzk@kernel.org>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Fri, 24 Jul 2020 15:51:04 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a2EAm=pxkU-AiucgDQyoMEGFOGqQBkVacWjoT7O9-PHkA@mail.gmail.com>
-Message-ID: <CAK8P3a2EAm=pxkU-AiucgDQyoMEGFOGqQBkVacWjoT7O9-PHkA@mail.gmail.com>
-Subject: Re: [PATCH v2 00/29] *memory: Cleanup, improve and compile test
- memory drivers
-To: Krzysztof Kozlowski <krzk@kernel.org>
-X-Provags-ID: V03:K1:p9p18c+YneoaYA+/6clvhYtlWgCNyp9O3LqaKyeXfGcgwHDZdFp
- 1zeXsTE1ALlmGR6OSqmbJ2pxr/Cuvtx730gDN+uLZDWE+ZOLbZvRObxkxN/AOlZuJrpLLpH
- gHvP7bKNu15eliorCA81PBml5XtExWaxsXUr+ni5VpUfaN4s7aQ7vcu6hcJdo/Ytj9VYpfx
- QVon7EXMn09S1NMr650rg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:f6yAx6YqLrg=:xjfetHUPauWmX6QqeRuMzB
- 5ga5s7q9vMlwePWw8MBxfKYoRaSLBFCCQC8nsPYe6q79Y4E6aEaC1K+v+HiIp0/wuCcYM+Ou5
- yDCb9eUmmtl+hC4osMJE8SEOGMucFR4kJFuFcQ98os+USXm7gX60/kbO8c5S8aLXuPBaRn/ll
- cGRHBygwbo7YhYzUWlDe8KxIkrP1ZN3uYYgQIlVYyuiVD7PLDu09x2eSgiCOVZmcq4qeqPVl6
- esNdQkN73Nu5zaoqW+XazuR9S1JmRWTcoztqcIm09qXzQM+ZiqpdYlKvu39JWIwXDCy6K7jts
- zNEK6jbGiNafCBOCGZPj9hjwDuIwl7o7mY8gj1d7Jn8yZh/bTDQZcvOVgkVr2KAaSi0D3RZGw
- GL6aGxpR23xsZIjD0i86RdsBSEgSYVTXFIlmOO3BRO24oYfAuF6oTmIYY9z1XRiI7EWsV3iua
- 0zO3zqHSvtkDHxdT2B8X/9R+VgX7dlLHtgE4VdkE+BvzhQ63QZ6H/mbRTDLIdsgYEGabhw/hI
- 4PWp/2y/z6gVEo34QPHWUKQiyx4DK5BSXohtHrowf58Ie52RJSczNQvgXyyBF8Na8LvtTAaHC
- TTh5apsa6RFqn7+7Fc93I4LcgAB6X2x6VMmuV5I87pTV+b+fCLoyqf3O4Aj2CI2zt4YSuO/Z5
- nViPTvHPye5F9tB68wS2xKusyGqGXAMa3E8ZTYJd0MiEjhdCTwwrG7RbO1BWyA+2t6Oga7OVh
- V50y5+E6Yqi7u5/clHm2nGKphLj+2tE0J7kUARMyJoPIu7/i/Gva4d/cTatVVcoiLcVF5krV7
- S28WuRp3HZgjb59i4oibwHqy/lgZ/glm9kLer93+QT0yYzcZjGTIrsNO20zuX5EcdJCMFJt3F
- xmFwxlQ5GdtsPyqitfiBAniXPGIcK2uGLHd7/GpeifJzNb1pttu2UAt0uzDujiI6zvkJsmVD4
- yA/C856y4B/bEVMVc/3lNVbEXomVONpft20Sp6uqkVYksAJDloOub
+ <20200724074038.5597-6-krzk@kernel.org>
+ <CAK8P3a0h3dMRH_wuGX5dZ5znnx+EHJKYwQeZ9aB7cFGudo6vmw@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAK8P3a0h3dMRH_wuGX5dZ5znnx+EHJKYwQeZ9aB7cFGudo6vmw@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200724_095128_178041_3555BAD0 
-X-CRM114-Status: GOOD (  18.57  )
+X-CRM114-CacheID: sfid-20200724_095318_571211_448C47E7 
+X-CRM114-Status: GOOD (  16.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,42 +107,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 24, 2020 at 9:41 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
->
-> Dear All,
->
-> Changes since v1:
-> 1. Few new patches,
-> 2. Please see individual logs (per patch).
->
->
-> The drivers/memory directory contains generic code (of_memory.c) and a
-> bunch of drivers.  Changes to generic code were coming usually through
-> different trees with the driver code.
->
-> Over last days, memory drivers grew in numbers but not necessarily in
-> quality.  They lacked compile testing and code cleanup.  Also lacked
-> maintainer.
->
-> I would be happy to take care about this part.
->
-> If there are no objections, I will collect the patches and push them
-> through arm-soc maintainers.
->
-> Driver-specific changes in the patchset were only compile-tested. Tests
-> are welcome. The generic code was tested on ARMv7 Exynos based boards
-> with a exynos5422-dmc memory controller driver.
+On Fri, Jul 24, 2020 at 03:45:37PM +0200, Arnd Bergmann wrote:
+> On Fri, Jul 24, 2020 at 9:41 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
+> >
+> > When compile testing, enable the driver by default only on MIPS
+> > architecture.
+> >
+> > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+> >
+> > ---
+> >
+> > Changes since v1:
+> > 1. New patch
+>  @@ -141,7 +141,7 @@ config FSL_IFC
+> >
+> >  config JZ4780_NEMC
+> >         bool "Ingenic JZ4780 SoC NEMC driver"
+> > -       default y
+> > +       default y if MIPS
+> >         depends on MIPS || COMPILE_TEST
+> 
+> 
+> Actually I think this should be 'default MACH_INGENIC',
+> and probably also 'depends on MACH_INGENIC || COMPILE_TEST'.
 
-Looks all good. Can you send a pull request for the patches that you don't
-expect to need testing for, while you still wait for more feedback on the
-others?
+Makes sense, especially for default.
 
-As the merge window (and my vacation) is getting closer, I would like to
-have most of the patches for v5.9 queued up.
+For the depends, there is also MTD_NAND_JZ4780 (depending on
+JZ4780_NEMC) which also requires MIPS. I could fix both then.
 
-       Arnd
+Best regards,
+Krzysztof
 
-     Arnd
 
 _______________________________________________
 Linux-mediatek mailing list
