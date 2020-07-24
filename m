@@ -2,22 +2,22 @@ Return-Path: <SRS0=BOys=BD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 14C04C433E8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:49:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A4B2C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:50:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BA11E206F0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:49:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0FF47206F0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:50:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="c0wkwi3s";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="RxVX1tyi"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BA11E206F0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1nrTQfF6";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="eq5SIgQy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0FF47206F0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S9Dz7ViLvfuRsYFozIso6E6jEuU73EpL90b0a+Ig+44=; b=c0wkwi3sSM1quzjkrJG8IP6T+V
-	qv4LiNyUmWuAYvI4rt3a7jGop15td8ObPbs5eHQSWMEazHd1D6jCsw4UZRwgE+fjxuh6DOvweojz6
-	oLEiqTa7oFkiXdkBf1UqN5UW18/uAYwPSMv/bUoevNK9wrRcHDuEhNF3G9iHPdnlwxN81m9CrsdPU
-	7HQwTItHp+NmOZ2qbTUtPKG85/ydyDhXrDwO/Qo0O+owYfGhKsjrfJw1oqQM/XRx+VJJUEvXbSr4Q
-	mbLG0UmUOKVoH5MJAI3YuToDnsDQ2A8atNWb2rNcsJFdPZHPpvDiRcJGtg90bv2gVBntCxDV4Fyfb
-	vdYyx8eA==;
+	bh=5Oadzq+HXMMDIx/SmdhiCM0kAttMWW2OrgqOWkby018=; b=1nrTQfF6SPhJ/RvXAW3Uztgly1
+	OvIru81gAKAd7a9TtAY4jc7i4MYZ7d+cOhFbEXOuqdpnwUJNBmSyaCKBWv6N6inbPizIyJTXptzJh
+	FX4hDm8eiMdO9cDGqELmQEOIb7wVbfyC1TEh5FcUnQzO+uxEUX6JPNOnvqUI6pRcg2fJ6QUgPxxX0
+	lPSyw/jcdup8AzlW5t658HyQ0Lwm9pimJdsveYgxDvKTghYCxoX9U9hE/OgvpSsVmEN1YQ7L979DJ
+	D2XXv7pb62aNvJbf4bi7/8c+J6YjaA7zgPEvEYIO2nos9dDcPTpuI8nDASfeetiwTX+jeE6C9OICx
+	tRoS2akg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jysSE-00069k-0N; Fri, 24 Jul 2020 07:49:18 +0000
+	id 1jysSa-0006Oc-78; Fri, 24 Jul 2020 07:49:40 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jysMG-0002mT-CY; Fri, 24 Jul 2020 07:43:09 +0000
+ id 1jysMK-0002oM-Tv; Fri, 24 Jul 2020 07:43:13 +0000
 Received: from kozik-lap.mshome.net (unknown [194.230.155.213])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 42A5120748;
- Fri, 24 Jul 2020 07:43:03 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0120A20771;
+ Fri, 24 Jul 2020 07:43:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595576587;
- bh=CFjeTLf3VxTPc69usAlF1x6NQjpN6H7DE6BSfcr/r54=;
+ s=default; t=1595576592;
+ bh=7O0bm2CLZ3Q5OFx8KqB2VK0KoKe3zQms78gh6gShMCc=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=RxVX1tyirSx120u18ZJM+5Gx+2KqFZYCFB2SQtS0ZGDTqPD7BS7V6VZdc/yD3NjqB
- AfqzWdTIr8M5e777Yf9ra0jDA0j25dl4z7Y3Jxf9DIS5oolpz2oWFUG5qocUQhU8/r
- 6Y01I1AJhqage1nlFby30TsvQJ3HhQWGM5nUYJUg=
+ b=eq5SIgQy1QpEy6J7NJ8OQP7Oe76XZjRwGoMXnCBZa+SzQzLVWCEQKqhi/DARA16rd
+ b9fJxjbOMZxQtZJ0tgD4kFgWVH5zBFd/LYE3Y+JK9MpC1BXF1gvi3Apzvkm7I/gdfE
+ JD7lLQRMFB4B55KQLldXAv/CQgh+pjPMjOvf6aIA=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  Markus Mayer <mmayer@broadcom.com>, bcm-kernel-feedback-list@broadcom.com,
@@ -62,15 +62,16 @@ To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-omap@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
  linux-tegra@vger.kernel.org
-Subject: [PATCH v2 24/29] memory: tegra: tegra210-emc: Fix indentation
-Date: Fri, 24 Jul 2020 09:40:33 +0200
-Message-Id: <20200724074038.5597-25-krzk@kernel.org>
+Subject: [PATCH v2 25/29] MAINTAINERS: Add Krzysztof Kozlowski as maintainer
+ of memory controllers
+Date: Fri, 24 Jul 2020 09:40:34 +0200
+Message-Id: <20200724074038.5597-26-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200724074038.5597-1-krzk@kernel.org>
 References: <20200724074038.5597-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200724_034308_550309_3FB68842 
-X-CRM114-Status: GOOD (  14.60  )
+X-CRM114-CacheID: sfid-20200724_034313_143161_22D5C5B2 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,26 +92,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use tabs instead of spaces for indentation.
+The generic parts of memory controllers (of_memory.[ch]) lacked any
+care.  The memory controller drivers were not abandoned (usually
+picked up by architecture maintainers) but in such case I can take care
+about them as well.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+Acked-by: Florian Fainelli <f.fainelli@gmail.com>
 ---
- drivers/memory/tegra/tegra210-emc-cc-r21021.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ MAINTAINERS | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/drivers/memory/tegra/tegra210-emc-cc-r21021.c b/drivers/memory/tegra/tegra210-emc-cc-r21021.c
-index ff55a17896fa..d60bdea3af3f 100644
---- a/drivers/memory/tegra/tegra210-emc-cc-r21021.c
-+++ b/drivers/memory/tegra/tegra210-emc-cc-r21021.c
-@@ -1044,7 +1044,7 @@ static void tegra210_emc_r21021_set_clock(struct tegra210_emc *emc, u32 clksrc)
- 			   !opt_cc_short_zcal && opt_short_zcal) {
- 			value = (value & ~(EMC_ZCAL_WAIT_CNT_ZCAL_WAIT_CNT_MASK <<
- 					   EMC_ZCAL_WAIT_CNT_ZCAL_WAIT_CNT_SHIFT)) |
--			        ((zq_wait_long & EMC_ZCAL_WAIT_CNT_ZCAL_WAIT_CNT_MASK) <<
-+				((zq_wait_long & EMC_ZCAL_WAIT_CNT_ZCAL_WAIT_CNT_MASK) <<
- 						 EMC_MRS_WAIT_CNT_SHORT_WAIT_SHIFT);
- 		} else if (offset == EMC_ZCAL_INTERVAL && opt_zcal_en_cc) {
- 			value = 0; /* EMC_ZCAL_INTERVAL reset value. */
+diff --git a/MAINTAINERS b/MAINTAINERS
+index f4557bc43bd5..cba0ed77775b 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -11158,6 +11158,13 @@ F:	Documentation/core-api/boot-time-mm.rst
+ F:	include/linux/memblock.h
+ F:	mm/memblock.c
+ 
++MEMORY CONTROLLER DRIVERS
++M:	Krzysztof Kozlowski <krzk@kernel.org>
++L:	linux-kernel@vger.kernel.org
++S:	Maintained
++F:	Documentation/devicetree/bindings/memory-controllers/
++F:	drivers/memory/
++
+ MEMORY FREQUENCY SCALING DRIVERS FOR NVIDIA TEGRA
+ M:	Dmitry Osipenko <digetx@gmail.com>
+ L:	linux-pm@vger.kernel.org
 -- 
 2.17.1
 
