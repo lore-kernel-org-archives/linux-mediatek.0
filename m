@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 11913C433F7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:44:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DADFC433E8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:45:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D0F2C20748
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:44:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 11CFD206D8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:45:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="r13oDoQZ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="qwx8yX0q"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D0F2C20748
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SMEqDhig";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="pqiP9f5j"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 11CFD206D8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eAt3r7+n8Ihs8oKXsiwzt0LFbIjlsDIhkiJjGnLv+Ds=; b=r13oDoQZz1ByZgWsC4b3o3LEfw
-	CNudgsSRmznzbbjNajD3cbBxpKaWjNGiu0jaC09kpqy4/0K7vTo+BgkmsRcnTBQxipy3AsmEST7/y
-	Pf0cX9xRDeS6LzG5jq0YFoHrXulAP+Y7xHXa8aDgyMhn68BrpDDwyt7A3D74blBoJtXCL7WuMePGw
-	NBGX5pXwKAmd+WRkyFr+6iSWEy11GOaRW2K3JYLyEKbSHBU2XRj4AbW36Wp+tEX576nyyGH/nwVcv
-	UW9wiFNfZxxH3ghuttaSloHqQCzrjVkZpoXtlgLm4SJKEHO58Tzwdcj4hJ5ibWTP/hm6ylnQ3fCEv
-	8TuZEdPQ==;
+	bh=/p9S6ztdEWuNAjaUEPY6Csx8IMNMsmsXYsgFn1h/HiQ=; b=SMEqDhigr3wBxokUkFGkNtrSw6
+	vitWlYRxVYf1pIZRvsGEDhY4ERg2ym6hrAsqcj4IzVFiCa0g2JxN1zexBZtxJD4F5aPHb5FuRv078
+	Wpf8Nh8kC0Fa5NT0kyxuE9JT0GQc+VJ/mcvDqKt89oqcsehhcXUTr2R0ud64V7BUa/mTUsK8eeW4B
+	xFhxcmr3rlgFqi+wdgHJesj4izhx526cKmrFBQWVm4uEIvqoD5LvH+R3NdY+irsPjLNuKg8dhAtj+
+	OxHJvH8AJZ0RjIIixbybN00hgiaYyiWkDHK1j+Dfb+N/TcaXV0FglAUBumDfuCvvf1zQbqEQS83h0
+	yofV+Sow==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jysNo-0003XA-Sf; Fri, 24 Jul 2020 07:44:44 +0000
+	id 1jysOB-0003hd-Vh; Fri, 24 Jul 2020 07:45:08 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jysKp-00023h-PY; Fri, 24 Jul 2020 07:41:40 +0000
+ id 1jysL1-0002A7-Fz; Fri, 24 Jul 2020 07:41:54 +0000
 Received: from kozik-lap.mshome.net (unknown [194.230.155.213])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9D86620771;
- Fri, 24 Jul 2020 07:41:34 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 4A86E20767;
+ Fri, 24 Jul 2020 07:41:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595576499;
- bh=ql0CHegasFSQGJgvTSSp9JSCFehu4rCFn5R0ye++nJ0=;
+ s=default; t=1595576509;
+ bh=fStTa63/zlpMTDTDyAH0TKomthctGMET63ewzq4d76A=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=qwx8yX0qlsoRoU5lOSPa8Vqp7zJm6l/SDXLx3O2EOmgpKE4QSpFABMG7Y/f9FVkXI
- qlCgUU/Lit0ee3EhKQSl0YMqiyiJ+q4za5lircu2Lh24rWlUOrkzIYXpTvg28hRaw2
- dyjJzixNg3OXmDwYIlvqjPRVehasmb8CZy8M9y8E=
+ b=pqiP9f5jPgElV8ZGYS7hJAiccj1oGzr/PTxqSOz73i1+7jLNrGzCM3D4An9R419iJ
+ Jbay4ev352LbCTbzNiCcQG5NGpo8zmiKQNoXG/q6LBSparyQ7cFTetZs/NLQwXEYtt
+ PFjg4DMs8uJggb2xFGJQsbJj8SWXO6zBY+GNekfU=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  Markus Mayer <mmayer@broadcom.com>, bcm-kernel-feedback-list@broadcom.com,
@@ -62,16 +62,16 @@ To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-omap@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
  linux-tegra@vger.kernel.org
-Subject: [PATCH v2 06/29] memory: Enable compile testing for most of the
- drivers
-Date: Fri, 24 Jul 2020 09:40:15 +0200
-Message-Id: <20200724074038.5597-7-krzk@kernel.org>
+Subject: [PATCH v2 08/29] memory: of: Remove __func__ in device related
+ messages
+Date: Fri, 24 Jul 2020 09:40:17 +0200
+Message-Id: <20200724074038.5597-9-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200724074038.5597-1-krzk@kernel.org>
 References: <20200724074038.5597-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200724_034140_006635_98F3ED2D 
-X-CRM114-Status: GOOD (  17.43  )
+X-CRM114-CacheID: sfid-20200724_034152_425617_17F7ED96 
+X-CRM114-Status: GOOD (  13.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,155 +92,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Most of the memory controller drivers do not depend on architecture
-specific code so can be compile tested to increase build coverage.
-
-When compile tested, do not enable them by default.
+Messages printed by generic of_memory code will still be using device
+context so their location/meaning will be known.  Printing __func__ is
+not needed.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-
 ---
+ drivers/memory/of_memory.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-Changes since v1:
-1. When compile tested, do not enable them by default.
----
- drivers/memory/Kconfig | 39 ++++++++++++++++++++++-----------------
- 1 file changed, 22 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/memory/Kconfig b/drivers/memory/Kconfig
-index 5a225ca66c4e..c37752d5f26d 100644
---- a/drivers/memory/Kconfig
-+++ b/drivers/memory/Kconfig
-@@ -26,8 +26,9 @@ config ARM_PL172_MPMC
+diff --git a/drivers/memory/of_memory.c b/drivers/memory/of_memory.c
+index cfcb91eeccfb..8a5b654eca6b 100644
+--- a/drivers/memory/of_memory.c
++++ b/drivers/memory/of_memory.c
+@@ -4,6 +4,7 @@
+  *
+  * Copyright (C) 2012 Texas Instruments, Inc.
+  * Copyright (C) 2019 Samsung Electronics Co., Ltd.
++ * Copyright (C) 2020 Krzysztof Kozlowski <krzk@kernel.org>
+  */
  
- config ATMEL_SDRAMC
- 	bool "Atmel (Multi-port DDR-)SDRAM Controller"
--	default y
--	depends on ARCH_AT91 && OF
-+	default y if ARCH_AT91
-+	depends on ARCH_AT91 || COMPILE_TEST
-+	depends on OF
- 	help
- 	  This driver is for Atmel SDRAM Controller or Atmel Multi-port
- 	  DDR-SDRAM Controller available on Atmel AT91SAM9 and SAMA5 SoCs.
-@@ -36,8 +37,9 @@ config ATMEL_SDRAMC
+ #include <linux/device.h>
+@@ -54,7 +55,7 @@ const struct lpddr2_min_tck *of_get_min_tck(struct device_node *np,
+ 	return min;
  
- config ATMEL_EBI
- 	bool "Atmel EBI driver"
--	default y
--	depends on ARCH_AT91 && OF
-+	default y if ARCH_AT91
-+	depends on ARCH_AT91 || COMPILE_TEST
-+	depends on OF
- 	select MFD_SYSCON
- 	select MFD_ATMEL_SMC
- 	help
-@@ -59,7 +61,8 @@ config BT1_L2_CTL
+ default_min_tck:
+-	dev_warn(dev, "%s: using default min-tck values\n", __func__);
++	dev_warn(dev, "Using default min-tck values\n");
+ 	return &lpddr2_jedec_min_tck;
+ }
+ EXPORT_SYMBOL(of_get_min_tck);
+@@ -114,7 +115,7 @@ const struct lpddr2_timings *of_get_ddr_timings(struct device_node *np_ddr,
+ 		tim_compat = "jedec,lpddr2-timings";
+ 		break;
+ 	default:
+-		dev_warn(dev, "%s: un-supported memory type\n", __func__);
++		dev_warn(dev, "Unsupported memory type\n");
+ 	}
  
- config TI_AEMIF
- 	tristate "Texas Instruments AEMIF driver"
--	depends on (ARCH_DAVINCI || ARCH_KEYSTONE) && OF
-+	depends on ARCH_DAVINCI || ARCH_KEYSTONE || COMPILE_TEST
-+	depends on OF
- 	help
- 	  This driver is for the AEMIF module available in Texas Instruments
- 	  SoCs. AEMIF stands for Asynchronous External Memory Interface and
-@@ -70,7 +73,7 @@ config TI_AEMIF
+ 	for_each_child_of_node(np_ddr, np_tim)
+@@ -143,7 +144,7 @@ const struct lpddr2_timings *of_get_ddr_timings(struct device_node *np_ddr,
+ 	return timings;
  
- config TI_EMIF
- 	tristate "Texas Instruments EMIF driver"
--	depends on ARCH_OMAP2PLUS
-+	depends on ARCH_OMAP2PLUS || COMPILE_TEST
- 	select DDR
- 	help
- 	  This driver is for the EMIF module available in Texas Instruments
-@@ -82,7 +85,7 @@ config TI_EMIF
- 	  temperature changes
+ default_timings:
+-	dev_warn(dev, "%s: using default timings\n", __func__);
++	dev_warn(dev, "Using default memory timings\n");
+ 	*nr_frequencies = ARRAY_SIZE(lpddr2_jedec_timings);
+ 	return lpddr2_jedec_timings;
+ }
+@@ -191,8 +192,7 @@ const struct lpddr3_min_tck *of_lpddr3_get_min_tck(struct device_node *np,
+ 	ret |= of_property_read_u32(np, "tMRD-min-tck", &min->tMRD);
  
- config OMAP_GPMC
--	bool
-+	bool "Texas Instruments OMAP SoC GPMC driver" if COMPILE_TEST
- 	select GPIOLIB
- 	help
- 	  This driver is for the General Purpose Memory Controller (GPMC)
-@@ -106,7 +109,8 @@ config OMAP_GPMC_DEBUG
+ 	if (ret) {
+-		dev_warn(dev, "%s: errors while parsing min-tck values\n",
+-			 __func__);
++		dev_warn(dev, "Errors while parsing min-tck values\n");
+ 		devm_kfree(dev, min);
+ 		goto default_min_tck;
+ 	}
+@@ -200,7 +200,7 @@ const struct lpddr3_min_tck *of_lpddr3_get_min_tck(struct device_node *np,
+ 	return min;
  
- config TI_EMIF_SRAM
- 	tristate "Texas Instruments EMIF SRAM driver"
--	depends on (SOC_AM33XX || SOC_AM43XX) && SRAM
-+	depends on SOC_AM33XX || SOC_AM43XX || (ARM && COMPILE_TEST)
-+	depends on SRAM
- 	help
- 	  This driver is for the EMIF module available on Texas Instruments
- 	  AM33XX and AM43XX SoCs and is required for PM. Certain parts of
-@@ -116,8 +120,9 @@ config TI_EMIF_SRAM
+ default_min_tck:
+-	dev_warn(dev, "%s: using default min-tck values\n", __func__);
++	dev_warn(dev, "Using default min-tck values\n");
+ 	return NULL;
+ }
+ EXPORT_SYMBOL(of_lpddr3_get_min_tck);
+@@ -262,7 +262,7 @@ const struct lpddr3_timings
+ 		tim_compat = "jedec,lpddr3-timings";
+ 		break;
+ 	default:
+-		dev_warn(dev, "%s: un-supported memory type\n", __func__);
++		dev_warn(dev, "Unsupported memory type\n");
+ 	}
  
- config MVEBU_DEVBUS
- 	bool "Marvell EBU Device Bus Controller"
--	default y
--	depends on PLAT_ORION && OF
-+	default y if PLAT_ORION
-+	depends on PLAT_ORION || COMPILE_TEST
-+	depends on OF
- 	help
- 	  This driver is for the Device Bus controller available in some
- 	  Marvell EBU SoCs such as Discovery (mv78xx0), Orion (88f5xxx) and
-@@ -126,7 +131,7 @@ config MVEBU_DEVBUS
+ 	for_each_child_of_node(np_ddr, np_tim)
+@@ -291,7 +291,7 @@ const struct lpddr3_timings
+ 	return timings;
  
- config FSL_CORENET_CF
- 	tristate "Freescale CoreNet Error Reporting"
--	depends on FSL_SOC_BOOKE
-+	depends on FSL_SOC_BOOKE || COMPILE_TEST
- 	help
- 	  Say Y for reporting of errors from the Freescale CoreNet
- 	  Coherency Fabric.  Errors reported include accesses to
-@@ -135,7 +140,7 @@ config FSL_CORENET_CF
- 	  represents a coherency violation.
- 
- config FSL_IFC
--	bool
-+	bool "Freescale IFC driver" if COMPILE_TEST
- 	depends on FSL_SOC || ARCH_LAYERSCAPE || SOC_LS1021A || COMPILE_TEST
- 	depends on HAS_IOMEM
- 
-@@ -150,7 +155,7 @@ config JZ4780_NEMC
- 	  memory devices such as NAND and SRAM.
- 
- config MTK_SMI
--	bool
-+	bool "Mediatek SoC Memory Controller driver" if COMPILE_TEST
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
- 	help
- 	  This driver is for the Memory Controller module in MediaTek SoCs,
-@@ -159,7 +164,7 @@ config MTK_SMI
- 
- config DA8XX_DDRCTL
- 	bool "Texas Instruments da8xx DDR2/mDDR driver"
--	depends on ARCH_DAVINCI_DA8XX
-+	depends on ARCH_DAVINCI_DA8XX || COMPILE_TEST
- 	help
- 	  This driver is for the DDR2/mDDR Memory Controller present on
- 	  Texas Instruments da8xx SoCs. It's used to tweak various memory
-@@ -167,16 +172,16 @@ config DA8XX_DDRCTL
- 
- config PL353_SMC
- 	tristate "ARM PL35X Static Memory Controller(SMC) driver"
--	default y
-+	default y if ARM
- 	depends on ARM
--	depends on ARM_AMBA
-+	depends on ARM_AMBA || COMPILE_TEST
- 	help
- 	  This driver is for the ARM PL351/PL353 Static Memory
- 	  Controller(SMC) module.
- 
- config RENESAS_RPCIF
- 	tristate "Renesas RPC-IF driver"
--	depends on ARCH_RENESAS
-+	depends on ARCH_RENESAS || COMPILE_TEST
- 	select REGMAP_MMIO
- 	help
- 	  This supports Renesas R-Car Gen3 RPC-IF which provides either SPI
+ default_timings:
+-	dev_warn(dev, "%s: failed to get timings\n", __func__);
++	dev_warn(dev, "Failed to get timings\n");
+ 	*nr_frequencies = 0;
+ 	return NULL;
+ }
 -- 
 2.17.1
 
