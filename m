@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 484BDC433EC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 14:13:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B10FC433FC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 14:13:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 19A2620674
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 14:13:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AA31F2063A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 14:13:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mVPKI639"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 19A2620674
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qixJ8IoT"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AA31F2063A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,41 +25,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=O6syEmQx8wWDpyyo3nRGa8PnwrbAljG7XAdDN8GCxpk=; b=mVPKI639DSf6lu2hT6ruQ7B9N
-	JG2+EMKgu16L2/UIysOhD3vc3kD0FnPrCLPgZMa/mMtJruQFJ5oj2jiF5X+LrkBSLUcWTlV9S3UHH
-	5XPdPz/cqRneYw+qZg+t6Bf3OtGCHnHOrWI5+kQS7Ddsf6VfhXt43lIEmghvWoy1Pi92lPikWc4PT
-	iCKauocokOIlrcXMenz2rVY4H0Rrpg7PJ46qniQSMUdOwCvT4ArwDb7HukuiMc95RHYjA4MVJSc0h
-	bNfi2QRjJhqybeYpAe8JlDJFu6EKVl/AGO4NcPvDGSfhi8CsmrjrNYIM//7x+YJv2Nzz3iQwwOt71
-	taZk7JlpA==;
+	 bh=Q3wZ+aw3BzooOvSKnaCMNwiB843Qb0ICnCiMEWdANCc=; b=qixJ8IoT7Ig0vBWa0/KVIK5gB
+	ml7ci4fl6hf9xSBpygeBdVcj+i/YW99ihriJQP5LxaLn3wCmtjMJe/qfVHLuYYck5RmPQZgo+lso6
+	lot4/lYDQGtHULTTwe6Gb0ZwklIYGoCEJApSHvpx5oFhFSj2V7PuRo5W1Av+xYtZyEu6ajFC5SZum
+	c4gVlpFHdD7rCFxo2Umj+dfl/bxYBamRltH2j5CZz1N/8Qc5TlbSqu7woNUKOUe3uipioKptZ/m1r
+	cByzGNowNM8WErKY45CIDC4Pkp9Ou9zrkgGm76k1OF06KxV+mIY5qXur2gWmPyD92+vrjCbqjSSIZ
+	iH44u+OLQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jyyRj-0004Ka-0y; Fri, 24 Jul 2020 14:13:11 +0000
-Received: from mail-wr1-f68.google.com ([209.85.221.68])
+	id 1jyyS4-0004TE-T4; Fri, 24 Jul 2020 14:13:33 +0000
+Received: from mail-wm1-f68.google.com ([209.85.128.68])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jyyRc-0004He-OE; Fri, 24 Jul 2020 14:13:05 +0000
-Received: by mail-wr1-f68.google.com with SMTP id y3so8453299wrl.4;
- Fri, 24 Jul 2020 07:13:04 -0700 (PDT)
+ id 1jyyRs-0004P5-W2; Fri, 24 Jul 2020 14:13:21 +0000
+Received: by mail-wm1-f68.google.com with SMTP id f18so31267wmc.0;
+ Fri, 24 Jul 2020 07:13:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=3L0op7xpXWeOGCgDLy+1Vtys3CtHGPDZtayka6xSb1s=;
- b=cFCIbsFz6pnuW+29JT6myMJItlS5DTm676BxfxjhqGXscCrV6swo42Lt2ntEn/1zhy
- pQtpa8rTJM7263RBRv8WP9KJYivNKeZ3fmZcRsNbJeRsTj7jcgpphfFGW7NgbbmHmykI
- j4fvo/tD1na3563czmSfyhjvjzg+sRVmeNpDQWB2yY1ZHUG3SnQkekMU1XxYZAiER+79
- hX9uhWBwWQzq+hcYvGzHWYIiYfygd/tec8IvhEyhVtkz2SLfe2kUdtoKMwCHB9qsN89f
- IxGa0pks85k4fNt+kCdMZmaaI7JHpePP1p+rwPmRFKwKS20+6G7fH9W/CKw4666smg2j
- PmEw==
-X-Gm-Message-State: AOAM531C0m72sQRg2Jc2FadLUM75W9GkeHmehDMxQd/Z9q99UaZ/nQpo
- Xhp8NvqYyTssNg0fG8Ib7BE=
-X-Google-Smtp-Source: ABdhPJz8wgSdW2xGByxv7mBpjzaqtbxdMjyIXh0/Ytmv+7BBMoNNvjogaz3koa/G7t3STMPiEd6EBA==
-X-Received: by 2002:a5d:4c46:: with SMTP id n6mr9404640wrt.73.1595599983132;
- Fri, 24 Jul 2020 07:13:03 -0700 (PDT)
+ bh=lRR7zihfAPcF3BkRyL0Zid9zLwCKqRIandOIBJZScT8=;
+ b=rrr8RXamLnqTHb7XH3/T254yKGu+To7C2zGLooGJzW2ketidLM/um0K7bLaMiGtj5U
+ g/B+BX4m5wgEE1T2yvBjNhMBXt3kB33LtixfiTfPv2NY0dT231lbo3VmX1B1e4cjNGzJ
+ 7SQvQBawx0FJapSC18u7Wgelp9nAFLqYoAzWuzD2dY/JaR78EPmpxnAiW/gy+RqHcAt/
+ lh5vpt6WeM38DOowa9LfLE+Ohv+mPkcVla512UVPsdDUT0efEis8i67Pf880R6w5Bn8d
+ CwZL+rirTtqEGsBlE5LY2TooyMj8ehD3SwLE2Ag4WroofD1LTZmr3B0CSOGhbLzjrJuw
+ sn2Q==
+X-Gm-Message-State: AOAM531fxwzUHwfHh2HQfgnlAaj23EsMKHZddmWBUaKCRFcyiPYQyLUi
+ gVu7lJ528wWCn7FYTJDn8Sk=
+X-Google-Smtp-Source: ABdhPJwNei28bnjgISCwDv9tMLHh2SVTSriTtsDgwYvqcTiDeKj5wmxQxqltNmpJgPyq8t+kqT2nWQ==
+X-Received: by 2002:a05:600c:21d3:: with SMTP id
+ x19mr9270136wmj.174.1595599999842; 
+ Fri, 24 Jul 2020 07:13:19 -0700 (PDT)
 Received: from kozik-lap ([194.230.155.213])
- by smtp.googlemail.com with ESMTPSA id t11sm1393280wrs.66.2020.07.24.07.13.01
+ by smtp.googlemail.com with ESMTPSA id f197sm7820726wme.33.2020.07.24.07.13.17
  (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 24 Jul 2020 07:13:02 -0700 (PDT)
-Date: Fri, 24 Jul 2020 16:12:59 +0200
+ Fri, 24 Jul 2020 07:13:19 -0700 (PDT)
+Date: Fri, 24 Jul 2020 16:13:16 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  Markus Mayer <mmayer@broadcom.com>, bcm-kernel-feedback-list@broadcom.com,
@@ -73,18 +74,17 @@ To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-omap@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v2 17/29] memory: brcmstb_dpfe: Constify the contents of
- string
-Message-ID: <20200724141259.GH14851@kozik-lap>
+Subject: Re: [PATCH v2 18/29] memory: brcmstb_dpfe: Remove unneeded braces
+Message-ID: <20200724141316.GI14851@kozik-lap>
 References: <20200724074038.5597-1-krzk@kernel.org>
- <20200724074038.5597-18-krzk@kernel.org>
+ <20200724074038.5597-19-krzk@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200724074038.5597-18-krzk@kernel.org>
+In-Reply-To: <20200724074038.5597-19-krzk@kernel.org>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200724_101304_842398_A885B897 
-X-CRM114-Status: GOOD (  13.25  )
+X-CRM114-CacheID: sfid-20200724_101321_261802_93CA8AD0 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,15 +103,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 24, 2020 at 09:40:26AM +0200, Krzysztof Kozlowski wrote:
-> The string itself can be made const for safety.
+On Fri, Jul 24, 2020 at 09:40:27AM +0200, Krzysztof Kozlowski wrote:
+> Single statement blocks don't need braces.  Fixes checkpatch warning:
+> 
+>     WARNING: braces {} are not necessary for single statement blocks
 > 
 > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 > Acked-by: Florian Fainelli <f.fainelli@gmail.com>
 > Acked-by: Markus Mayer <mmayer@broadcom.com>
 > ---
->  drivers/memory/brcmstb_dpfe.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/memory/brcmstb_dpfe.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 
 Applied (and part of pull request to arm-soc).
 
