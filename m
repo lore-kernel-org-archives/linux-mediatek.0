@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4FC2FC433E4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:48:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6C103C433EA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:48:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1C2E4206F0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:48:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3C826206F0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2020 07:48:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QcWHyX+E";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="BdIk/H8G"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1C2E4206F0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="wINHmm2a";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="uunsCN4I"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C826206F0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lnJQJrzGOpTvjs+aBxlzhMh15tnjrpv0qwE6fqnKnxI=; b=QcWHyX+EdB2sIQebsuEGnhtdhu
-	RFsm0UuEdOF3s5juO4tFyHx5iflMjMEfuGl0US/rdfxthQwtA4xXcjb+fjJsalRzHHBeic/MmPlXs
-	mUWVNoHtrmC+PDhHmURnNtPyd52ObQksygfcYldIFrEZtiB2EAaMwdP7SgnFxJo2h6fkd9Y1Qe4nK
-	GHrg8SZN37feXkVCwGQBca3M3XYdq4Jprd6yiFHaV6rXS1AWxS7W2dpJbMAz5wAe2AUqU/SKSf+Xq
-	Bpc0bkHcKpOQuIpdPRYf9fmbaiyWv6RtqwdmBX1fZPdZK1AnvllMXQENynAlg22eNiGD9ShfnYIn9
-	qEQJSXEQ==;
+	bh=1Y0Goj0cV5NU42Ha9oIKYGJsNKHWZC6ViTnyzqYr34Y=; b=wINHmm2afh8nRtIkpev7XX13xI
+	frga6qL6NsdmmXqzm/+9j3Lnp/9Ui1FWsp+7jjvO98URQWKUR+lM2/6rlObfDsuoGSZNB0HDfpO0f
+	N91qYJWkvfmRvBWRauYMbpmgwqSZd1hKt3G6i7s2ZXSlwUx8bTyw6UF7sqPzV80yzD0da9D830fTw
+	T6Dn94mmnPFrBjWLrL/LHG8ws45MSNotBvNV7p8peCafBAKgOY/tRJ7XQ7ShhloETINTWGvn+OylI
+	YLhO2W3CUBnZawzcYeCvRkPmevs8DMcXNj8aHQ8g7W5zOhr4C0z/BWtV19GgiEGFXfFV/fJUJp07C
+	itBWeGpw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jysRO-0005Wq-Uw; Fri, 24 Jul 2020 07:48:27 +0000
+	id 1jysRc-0005j3-EE; Fri, 24 Jul 2020 07:48:40 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jysM6-0002i7-LR; Fri, 24 Jul 2020 07:42:59 +0000
+ id 1jysMB-0002kL-DT; Fri, 24 Jul 2020 07:43:04 +0000
 Received: from kozik-lap.mshome.net (unknown [194.230.155.213])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B2EB720768;
- Fri, 24 Jul 2020 07:42:53 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 767E32076A;
+ Fri, 24 Jul 2020 07:42:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595576577;
- bh=GJgQRG3YQ8ioaOa9xxhYIJQBikr3KReGS0guhEEKk+I=;
+ s=default; t=1595576582;
+ bh=+gFjDJ7e8jqodH9leHcZ6qQN7ZQWC5AX9izX5256A2o=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=BdIk/H8GUSHjr/HovDw6Pq4dLSFg6A0UTNKZtpqe4RMs2ZkyJgMwNp3flKxbbFHJn
- GQhvMmI39tdeLKtURHZ8kGVOF1mBvnEz19Kbxj5tOJ0wsaJdnzYyr23x9SnFtJcy4t
- MEftBJI/4aILINjqDmn4f51iLHrAbseDrqVlJKmQ=
+ b=uunsCN4IQjA9/JhkgbHmhzNyifJQlaud+n1NnuJK+nsthFK5hUNJ5N7DiMGCXlftH
+ jH+0M9mBlHTyJu+8JSmmzGneCH0Rg/LBsM8J1w01dYI3aGwEPvoFuh0EjFti+74Vku
+ DdahPIfnq1JGHrzfZeJ/rCeKbsy8Yeu4LP9MoSlY=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  Markus Mayer <mmayer@broadcom.com>, bcm-kernel-feedback-list@broadcom.com,
@@ -62,15 +62,15 @@ To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-omap@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
  linux-tegra@vger.kernel.org
-Subject: [PATCH v2 22/29] memory: omap-gpmc: Fix whitespace issue
-Date: Fri, 24 Jul 2020 09:40:31 +0200
-Message-Id: <20200724074038.5597-23-krzk@kernel.org>
+Subject: [PATCH v2 23/29] memory: pl172: Add GPLv2 SPDX license header
+Date: Fri, 24 Jul 2020 09:40:32 +0200
+Message-Id: <20200724074038.5597-24-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200724074038.5597-1-krzk@kernel.org>
 References: <20200724074038.5597-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200724_034258_857765_A2D0EACC 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20200724_034303_557338_C855D426 
+X-CRM114-Status: GOOD (  13.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,45 +91,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix minor whitespace and comment issues.  No functional changes.
+Add GPLv2 license header and remove GPL boiler plate text.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-
 ---
+ drivers/memory/pl172.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-Changes since v1:
-1. Adjust entire comment, as suggested by Arnd.
----
- drivers/memory/omap-gpmc.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/memory/omap-gpmc.c b/drivers/memory/omap-gpmc.c
-index 2a2d0297e071..2675ea4e37fe 100644
---- a/drivers/memory/omap-gpmc.c
-+++ b/drivers/memory/omap-gpmc.c
-@@ -1005,7 +1005,7 @@ static int gpmc_cs_remap(int cs, u32 base)
- 	 * Make sure we ignore any device offsets from the GPMC partition
- 	 * allocated for the chip select and that the new base confirms
- 	 * to the GPMC 16MB minimum granularity.
--	 */ 
-+	 */
- 	base &= ~(SZ_16M - 1);
+diff --git a/drivers/memory/pl172.c b/drivers/memory/pl172.c
+index ff57195b4e37..084891eb29cc 100644
+--- a/drivers/memory/pl172.c
++++ b/drivers/memory/pl172.c
+@@ -1,3 +1,4 @@
++// SPDX-License-Identifier: GPL-2.0
+ /*
+  * Memory controller driver for ARM PrimeCell PL172
+  * PrimeCell MultiPort Memory Controller (PL172)
+@@ -6,10 +7,6 @@
+  *
+  * Based on:
+  * TI AEMIF driver, Copyright (C) 2010 - 2013 Texas Instruments Inc.
+- *
+- * This file is licensed under the terms of the GNU General Public
+- * License version 2. This program is licensed "as is" without any
+- * warranty of any kind, whether express or implied.
+  */
  
- 	gpmc_cs_get_memconf(cs, &old_base, &size);
-@@ -1800,10 +1800,11 @@ static int gpmc_calc_common_timings(struct gpmc_timings *gpmc_t,
- 	return 0;
- }
- 
--/* TODO: remove this function once all peripherals are confirmed to
-+/*
-+ * TODO: remove this function once all peripherals are confirmed to
-  * work with generic timing. Simultaneously gpmc_cs_set_timings()
-  * has to be modified to handle timings in ps instead of ns
--*/
-+ */
- static void gpmc_convert_ps_to_ns(struct gpmc_timings *t)
- {
- 	t->cs_on /= 1000;
+ #include <linux/amba/bus.h>
 -- 
 2.17.1
 
