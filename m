@@ -2,88 +2,78 @@ Return-Path: <SRS0=Q1uE=BE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 20F71C433E1
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2020 14:24:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7E669C433DF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2020 15:49:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E09CE206C1
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2020 14:24:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4C209206F6
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2020 15:49:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MkkO7okA";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="fdAxckov"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E09CE206C1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3Rwl1Xi6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4C209206F6
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=CnKQL5bZDlwK8hfSQRDBTc+ZeULUj+/OjVOp15VpRLQ=; b=MkkO7okADHyQjcJvJp5z5kRi+
-	oXzsPjjAqCkBSMGpSgOZecZEc6cO8MNvliG72GHVAXyrT4lOvendbodP0ytfraEDi5loCJBYOUXUB
-	fU5z8+859YyLUfFNvnhCURoqVXRfa2xoIEYwbpkuTtfNajKFS5wJg7jjsUcoy2IOqSbOVOZPjK+7X
-	D0dEbFaxpDMCHfGPi8LDXsE7j+603PXwUqAMMwMCEkVM1rfj0rhxMKs20OQTNRRhRN39MJvZ+YQel
-	9bdK8NMpPI2IiewM9lrD9FqiYhwJPCbBfT0NMP9I4d37pkd8C34nvHY25E8arbCUaqk6v6zxEpxoZ
-	YE9TA8JnA==;
+	 bh=c63hkOxCEuiV0/v9iHbsgL/fqf1mPE+94Od0z54Z0sU=; b=3Rwl1Xi6GnV4fCW8Ax71zd0Lx
+	qLK7fxZb/pD1X3NJdonAxYVphnek1dWuc8JwHneGJqcHq5586W59SiXe8XKzD56qwax9w8On/6Ze4
+	P5q6v8bCXA7UUk3yzzzMqkfTG4f6Or5I21TJOPVsNnr46kDYXlcn/SUwiIEfzwdJon1j/We2vCEEo
+	m+WrE+OCkeXR6q57FRRc/ta+ZWWjIWU1/j9+OSu5iVtNS4MYv3pUR4H6ad1h0RbBmK6bvnEZB2bFy
+	2Ao151kMoW3lS8IhBAtkMS5h9Yxh0PKlb7wH6CRTHOpCxFN11FaxHhc2Wed52yjoUOwY8G//Zxt7O
+	E5ujooUIg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jzL5s-0006T6-02; Sat, 25 Jul 2020 14:24:08 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jzMPx-0004CW-5W; Sat, 25 Jul 2020 15:48:57 +0000
+Received: from mail-ot1-f67.google.com ([209.85.210.67])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jzL5c-0006Q0-Iv; Sat, 25 Jul 2020 14:23:53 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E3BC62070E;
- Sat, 25 Jul 2020 14:23:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595687032;
- bh=BAz1TW4/bVZUS2IHFjl3Yw+2naG6uIjsWVeWFxtMKUA=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=fdAxckovDYl++IXQ+ImgWscI/ZX1zozAjt0Ut7vpMiEqp2GmXLrvSyI3ODI0UOCfz
- bCtN67WyIWhDJ6onbMFc4cLzojDDf/Yq7h8UG/Ms4tujP+gS1GZ66vEXmiiAc/nYV9
- jh/86A0RQ5FW3rwdW7gkxMWCu1WwvtzahHK/cMy0=
-Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
- helo=wait-a-minute.lan) by disco-boy.misterjones.org with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <maz@kernel.org>)
- id 1jzL5a-00Er45-Ed; Sat, 25 Jul 2020 15:23:50 +0100
-From: Marc Zyngier <maz@kernel.org>
-To: Jason Cooper <jason@lakedaemon.net>,
- Alexandre Torgue <alexandre.torgue@st.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Andy Gross <agross@kernel.org>, Saravana Kannan <saravanak@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v3 0/4] irqchip: Add IRQCHIP_PLATFORM_DRIVER helper macros
-Date: Sat, 25 Jul 2020 15:23:34 +0100
-Message-Id: <159568680935.564881.11936174169505990646.b4-ty@kernel.org>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20200718000637.3632841-1-saravanak@google.com>
-References: <20200718000637.3632841-1-saravanak@google.com>
+ id 1jzMPs-0004BY-Pj; Sat, 25 Jul 2020 15:48:53 +0000
+Received: by mail-ot1-f67.google.com with SMTP id 95so9227999otw.10;
+ Sat, 25 Jul 2020 08:48:51 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=C2tWIq6ckvPQ/yQ9n0OcVSF3V7zuB66fdFiG7czZWrM=;
+ b=cZ5gYBV8YC2GKc8hre968lc0cLHEdlkz4vJI1NUxLX8VjMgi7/bRIun3CWzjQch/Fo
+ c6bLt36TlRLFTbey5zMow37MQeik/hwQrwSZmQ1i5sWX05UfWcyTSkg/0vk5dVoPGNJW
+ osa2DRBvFSjJP7hfEZhvvOtarny8oSy64PZyx5DoXR+uUoOArQcgaDhR63v2iXYUfZz4
+ rQwPPvvxmfxkcZeKs0MtEp4pPbCuqDXZ8Uhco/1PIj4gvkIqmHC7kUEU+c0oaU87LjYw
+ /Ms0GnKmbvf3Ff/cRlvh/a5eDE0qF8qBptE1ZJCgfcICYo6GrFCjSWfVzmpsK3MYXWAA
+ PYgg==
+X-Gm-Message-State: AOAM530YurFhfbGD2Pww290yezHeGb7kPjYZyk1W/J5ERZDguSPZAJXd
+ YsNQQGcd8Qq8qx4ydbIxYX5TFZX/tDuNHdZLmOE=
+X-Google-Smtp-Source: ABdhPJxdIbJjT+WXUymtPF9yecfsiFiCGsZKNzDMvi+8ZkivU76IBsZTeqiLhBkUl+vQbEzionhR0LjlVM4VyaFCCjM=
+X-Received: by 2002:a05:6830:30ba:: with SMTP id
+ g26mr13183298ots.118.1595692130877; 
+ Sat, 25 Jul 2020 08:48:50 -0700 (PDT)
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 62.31.163.78
-X-SA-Exim-Rcpt-To: jason@lakedaemon.net, alexandre.torgue@st.com,
- tglx@linutronix.de, bjorn.andersson@linaro.org, agross@kernel.org,
- saravanak@google.com, matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
- linux-gpio@vger.kernel.org, marex@denx.de,
- linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, loda.chou@mediatek.com, kernel-team@android.com,
- linux-mediatek@lists.infradead.org, cc.hwang@mediatek.com,
- hanks.chen@mediatek.com, john.stultz@linaro.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+References: <1594005196-16327-1-git-send-email-neal.liu@mediatek.com>
+ <1594005196-16327-2-git-send-email-neal.liu@mediatek.com>
+ <CAJZ5v0ihB5AJwSRpjaOnXAmciregzxARL5xfudu1h+=_LXaE_w@mail.gmail.com>
+ <1594350535.4670.13.camel@mtkswgap22> <1595233294.8055.0.camel@mtkswgap22>
+ <20200723190724.GA1339461@google.com>
+ <CAJZ5v0g_14D-tyWFEZ9eOJC=GmzR-31iAAPff=Ch8KjFyK2wfw@mail.gmail.com>
+ <1595586289.14121.5.camel@mtkswgap22>
+ <CAJZ5v0hnW5NB1T90QNSVuzFSZrrXzxKASWYDTW=mFF6MOan9hQ@mail.gmail.com>
+ <1595591389.14564.3.camel@mtkswgap22>
+In-Reply-To: <1595591389.14564.3.camel@mtkswgap22>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Sat, 25 Jul 2020 17:48:39 +0200
+Message-ID: <CAJZ5v0jyWbnztoTGkA88-4FwUjbvQvbW5a+GreJT-uJoNREPOA@mail.gmail.com>
+Subject: Re: [PATCH v2] cpuidle: change enter_s2idle() prototype
+To: Neal Liu <neal.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200725_102352_745209_9FEE145E 
-X-CRM114-Status: GOOD (  11.00  )
+X-CRM114-CacheID: sfid-20200725_114852_866310_49A52032 
+X-CRM114-Status: GOOD (  37.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,46 +85,153 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: marex@denx.de, CC Hwang <cc.hwang@mediatek.com>,
- linux-arm-msm@vger.kernel.org, Hanks Chen <hanks.chen@mediatek.com>,
- Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org,
- linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org,
- John Stultz <john.stultz@linaro.org>, kernel-team@android.com,
- linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
+Cc: Jacob Pan <jacob.jun.pan@linux.intel.com>,
+ linux-tegra <linux-tegra@vger.kernel.org>,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Linux PM <linux-pm@vger.kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, lkml <linux-kernel@vger.kernel.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ ACPI Devel Maling List <linux-acpi@vger.kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ Sami Tolvanen <samitolvanen@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, Len Brown <lenb@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 17 Jul 2020 17:06:33 -0700, Saravana Kannan wrote:
-> Made a series out of the previous v2 patch + some example uses of the
-> macros.
-> 
-> Not sure if the MTK changes work (just compile tested), but saw that
-> Hanks was trying to make those drivers into tristate. So I assume
-> they'll work as platform drivers. Please wait for MTK Ack before picking
-> up patches 3 and 4.
-> 
-> [...]
+On Fri, Jul 24, 2020 at 1:50 PM Neal Liu <neal.liu@mediatek.com> wrote:
+>
+> On Fri, 2020-07-24 at 13:20 +0200, Rafael J. Wysocki wrote:
+> > On Fri, Jul 24, 2020 at 12:24 PM Neal Liu <neal.liu@mediatek.com> wrote:
+> > >
+> > > On Fri, 2020-07-24 at 11:57 +0200, Rafael J. Wysocki wrote:
+> > > > On Thu, Jul 23, 2020 at 9:07 PM Sami Tolvanen <samitolvanen@google.com> wrote:
+> > > > >
+> > > > > On Mon, Jul 20, 2020 at 04:21:34PM +0800, Neal Liu wrote:
+> > > > > > Gentle ping on this patch.
+> > > > > >
+> > > > > >
+> > > > > > On Fri, 2020-07-10 at 11:08 +0800, Neal Liu wrote:
+> > > > > > > On Thu, 2020-07-09 at 14:18 +0200, Rafael J. Wysocki wrote:
+> > > > > > > > On Mon, Jul 6, 2020 at 5:13 AM Neal Liu <neal.liu@mediatek.com> wrote:
+> > > > > > > > >
+> > > > > > > > > Control Flow Integrity(CFI) is a security mechanism that disallows
+> > > > > > > > > changes to the original control flow graph of a compiled binary,
+> > > > > > > > > making it significantly harder to perform such attacks.
+> > > > > > > > >
+> > > > > > > > > init_state_node() assign same function callback to different
+> > > > > > > > > function pointer declarations.
+> > > > > > > > >
+> > > > > > > > > static int init_state_node(struct cpuidle_state *idle_state,
+> > > > > > > > >                            const struct of_device_id *matches,
+> > > > > > > > >                            struct device_node *state_node) { ...
+> > > > > > > > >         idle_state->enter = match_id->data; ...
+> > > > > > > > >         idle_state->enter_s2idle = match_id->data; }
+> > > > > > > > >
+> > > > > > > > > Function declarations:
+> > > > > > > > >
+> > > > > > > > > struct cpuidle_state { ...
+> > > > > > > > >         int (*enter) (struct cpuidle_device *dev,
+> > > > > > > > >                       struct cpuidle_driver *drv,
+> > > > > > > > >                       int index);
+> > > > > > > > >
+> > > > > > > > >         void (*enter_s2idle) (struct cpuidle_device *dev,
+> > > > > > > > >                               struct cpuidle_driver *drv,
+> > > > > > > > >                               int index); };
+> > > > > > > > >
+> > > > > > > > > In this case, either enter() or enter_s2idle() would cause CFI check
+> > > > > > > > > failed since they use same callee.
+> > > > > > > >
+> > > > > > > > Can you please explain this in a bit more detail?
+> > > > > > > >
+> > > > > > > > As it stands, I don't understand the problem statement enough to apply
+> > > > > > > > the patch.
+> > > > > > > >
+> > > > > > >
+> > > > > > > Okay, Let's me try to explain more details.
+> > > > > > > Control Flow Integrity(CFI) is a security mechanism that disallows
+> > > > > > > changes to the original control flow graph of a compiled binary, making
+> > > > > > > it significantly harder to perform such attacks.
+> > > > > > >
+> > > > > > > There are multiple control flow instructions that could be manipulated
+> > > > > > > by the attacker and subvert control flow. The target instructions that
+> > > > > > > use data to determine the actual destination.
+> > > > > > > - indirect jump
+> > > > > > > - indirect call
+> > > > > > > - return
+> > > > > > >
+> > > > > > > In this case, function prototype between caller and callee are mismatch.
+> > > > > > > Caller: (type A)funcA
+> > > > > > > Callee: (type A)funcB
+> > > > > > > Callee: (type C)funcC
+> > > > > > >
+> > > > > > > funcA calls funcB -> no problem
+> > > > > > > funcA calls funcC -> CFI check failed
+> > > > > > >
+> > > > > > > That's why we try to align function prototype.
+> > > > > > > Please feel free to feedback if you have any questions.
+> > > > >
+> > > > > I think you should include a better explanation in the commit message.
+> > > > > Perhaps something like this?
+> > > > >
+> > > > >   init_state_node assigns the same callback function to both enter and
+> > > > >   enter_s2idle despite mismatching function types, which trips indirect
+> > > > >   call checking with Control-Flow Integrity (CFI).
+> > > > >
+> > > > > > > > > Align function prototype of enter() since it needs return value for
+> > > > > > > > > some use cases. The return value of enter_s2idle() is no
+> > > > > > > > > need currently.
+> > > > > > > >
+> > > > > > > > So last time I requested you to document why ->enter_s2idle needs to
+> > > > > > > > return an int in the code, which has not been done.  Please do that.
+> > > > >
+> > > > > Rafael, are you happy with the commit message documenting the reason,
+> > > > > or would you prefer to also add a comment before enter_s2idle?
+> > > >
+> > > > As I said before, it would be good to have a comment in the code as
+> > > > well or people will be wondering why it is necessary to return
+> > > > anything from that callback, because its return value is never used.
+> > > >
+> > > > Thanks!
+> > >
+> > > Is it okay to add these comments before enter_s2idle?
+> > >
+> > > /*
+> > >  * Align function type since init_state_node assigns the same callback
+> >
+> > init_state_node()
+> >
+> > >  * function to both enter and enter_s2idle despite mismatching function
+> >
+> > ->enter_s2idle
+> >
+> > >  * types, which trips indirect call checking with Control-Flow Integrity
+> > >  * (CFI).
+> > >  */
+> > > int (*enter_s2idle)(struct cpuidle_device *dev,
+> > >                     struct cpuidle_driver *drv,
+> > >                     int index);
+> >
+> > But IMO it would be sufficient to add something like this to the
+> > existing comment regarding ->enter_s2idle:
+> >
+> > "This callback may point to the same function as ->enter if all of the
+> > above requirements are met by it."
+> >
+> > That would explain why the signature is the same sufficiently in my view.
+> >
+> > Thanks!
+>
+> For clarification, do you mean add this comment on enter_s2idle function
+> pointer declaration is enough?
 
-Applied to irq/irqchip-5.9, thanks!
+Yes, I do.
 
-[1/4] irqchip: Add IRQCHIP_PLATFORM_DRIVER_BEGIN/END and IRQCHIP_MATCH helper macros
-      commit: f3b5e608ed6d17bdf04dacbf2374f10d51fe9b09
-[2/4] irqchip/qcom-pdc: Switch to using IRQCHIP_PLATFORM_DRIVER helper macros
-      commit: 04741740254cd83fb4f2b7747aeb35202104f8fe
-[3/4] irqchip/mtk-sysirq: Convert to a platform driver
-      commit: 3ae3022690e6787839dafa8ea3496450248b53e1
-[4/4] irqchip/mtk-cirq: Convert to a platform driver
-      commit: 538b63351607960ff2249460089daa31337ddeba
-
-Cheers,
-
-	M.
--- 
-Without deviation from the norm, progress is not possible.
-
-
+Thanks!
 
 _______________________________________________
 Linux-mediatek mailing list
