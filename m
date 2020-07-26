@@ -2,23 +2,23 @@ Return-Path: <SRS0=eMNs=BF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E55BDC433E1
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Jul 2020 03:59:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 52552C433E3
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Jul 2020 14:29:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B22262053B
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Jul 2020 03:59:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1DE1B2065F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Jul 2020 14:29:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bJCN7mVt";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="pW3nnfGF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B22262053B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FNt2thP9";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=vanguardiasur-com-ar.20150623.gappssmtp.com header.i=@vanguardiasur-com-ar.20150623.gappssmtp.com header.b="cPtQupmk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1DE1B2065F
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,59 +26,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uwa/G9ed/wRyvHK5HT2xyeTf2Iqld7D/J/ONt2z+sIo=; b=bJCN7mVtnC64rwJ2BfJuIqWN7
-	iCUJ1xxnbNP8HCG8xWGOQ184PrEA1g9K2EnCfbIT0w06rJ0vSVRtx157lmCQ46DNLvdDAmUPN+PyT
-	2bLmfz/l8zyNPU7PkDvgk62KbHRqxZtgW09N4lYOGLkoWbf79TWBEoWm7pj0ZHhRzK8nOnsRarFbT
-	XMkb8S9Bd1Yz9Qe9cqp/V4QKekRX2ggXgKiB0OqyfTvl9Gp7wHt+5aye2f42aSV1PI21xhuBYpU9t
-	2wXrNorr34FOY3L0rTHPlWQFH5vDzoYuim69UBU0T5UDW125l0JO8jBMX3RwpM0AlKiaTXv4vJP0M
-	BdAv3x98w==;
+	 bh=tQOZIWJCYLNDqI2O3ahNc1QYob1+RJFucly7EVn6Osc=; b=FNt2thP9nGjTe/eyMHZSQA5Qu
+	OaweW/bB85Qf+Np5xSg0GSBwKMDr5vjNnGUcJLw6ysb/YKrbETAB5YKaEHOhpTKfMN/7EfLuK5Lj9
+	bLxL8RkHJPYpktKJ0E3eWgzAQ0FirBK10GLfYebo6nSrrQhgeEKGvJaa7tJ2tZL78uq/1/4nlJ9NE
+	fwa/Ax8udX3ODAnPnZMjx0YgQeFwd5Xr8ERFMQQvhPbi2YeN04EzUybPMvsv+sw+3LDvbLKpX3ZOT
+	taSO+PwwEG0A49HZw9We1gHxTQI+ujWYzF9zY6hINVcTTuIK5lJfJPyqclem6Bo7ciuStEL16WNAu
+	lflFT7itw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jzXoK-00073I-6y; Sun, 26 Jul 2020 03:58:52 +0000
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+	id 1jzheO-0000Cc-CS; Sun, 26 Jul 2020 14:29:16 +0000
+Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jzXoF-00072S-TR
- for linux-mediatek@lists.infradead.org; Sun, 26 Jul 2020 03:58:48 +0000
-Received: by mail-pl1-x644.google.com with SMTP id t6so6444959plo.3
- for <linux-mediatek@lists.infradead.org>; Sat, 25 Jul 2020 20:58:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ id 1jzheM-0000C0-9Q
+ for linux-mediatek@lists.infradead.org; Sun, 26 Jul 2020 14:29:15 +0000
+Received: by mail-ej1-x642.google.com with SMTP id w9so14469295ejc.8
+ for <linux-mediatek@lists.infradead.org>; Sun, 26 Jul 2020 07:29:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=jcaev1Cp7bKZYJR/UD71l80ZfPg2FMWy0HIr5qj2bGY=;
- b=pW3nnfGF9WNDmVTg3erlNCt9uor03x6BZY37vmHSdP/xICtKgeoqTIYUtOqGOGI6kx
- wuXTf9SMQ2Z/ErYmpP7TYebvPZRaAte8jmiOKquFASWUAxefXF8STiy/6P/Jv7R00kBl
- 57dQfKZ8WNigXDUijzvOgs/mNBoEIxbs9PlpEC38RImsjO2WVr8iPSXNIl87vtl9a9qq
- i3tHldUSxyybwQGYKtwc1pCYThrLKg67f/t+eRlWvRje+OjBVUmB/EbiwIKg5Ks97btC
- yz7ob2Qp8v5wYvw5b7+lebRQDzRVb9I7zg9817yrUOdm0QQ/Spsbpv7a9Cyl4JlpmWF6
- x7UA==
+ :cc; bh=7NgctBmCqLgQBnHYafy5r5rDsgw6j6oRlbINnPPqer0=;
+ b=cPtQupmk1fewrsDSJE9eb5vshcj32eD6Ersn4gDO9eNd6Ue1J8TTT513AbOaU188zs
+ AFhrKzbGgOthhgLIv7kksB+ClxWzSueRE1uglOlaoNsTsZyf9B+bzJiS+tpChshZNnBx
+ jG7QPFt44f1VS8a/+nZT2WeMe/G9NCBDPPm4HUnwcT9dy/zwJ5SzHwOmd7CTs+gwiBqj
+ bzjRkzNxOgk/XBF69w5CuAJhiGIlAC4SmYNINF4Buj0bhy9eQvwlc8yYeeo6BUAlSJfO
+ rCpj9D4E/yEXL1JlRHqSpG0lcFfNFaw3IXioKQHV91iwjY8z8na9xqtHPwMYUOlv9L+k
+ +zCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=jcaev1Cp7bKZYJR/UD71l80ZfPg2FMWy0HIr5qj2bGY=;
- b=n/5lSdZpLR+gINJ+boD4vcbAmmhK4SeAj5rrQiYGchtwBmUiWM7rdCyfTOQuVWTLg7
- Fs/QITb+zZBA2yu5dGo6fKiZQE+PzfjJlQ1l+SOOZ1biQfOUKgjg03kWsa7O9tvYHUjo
- jXyfJv0uw9Wzedv/07YrS+oSMdGCQjsYsdXVac8P6QZ+gPMNVI+yqVn1KchnzSEAduR/
- wfk2duu97YJwzmA43mOXjqs2b3MHhBtNC/NEsRfTLnJfj2v8SBY/aPXsXbugJWA13Af0
- eqP6Es1Oit2T4766rOxJ6BTyhU+Mlz6cbp275801SssWVGSBtUjpXMTahrjOkON+mafw
- rdlA==
-X-Gm-Message-State: AOAM5327y1MCcjdbPQ4jkek7Hxk8yUxfMfNmA2kj9HD+AUbZbV6GARk0
- sd3GTFO0vD9/xIz4e94VhIKrmhvcwgltO9XEoAulVw==
-X-Google-Smtp-Source: ABdhPJwXraTjC6SZ1tebNEZfR+TFnQAO2mmQKDrLOibMydwILen7cWd7OX+0bEwRfZm/OlR0+VbdaTmWP6YaljsQzW0=
-X-Received: by 2002:a17:90a:f98e:: with SMTP id
- cq14mr1036997pjb.51.1595735922224; 
- Sat, 25 Jul 2020 20:58:42 -0700 (PDT)
+ bh=7NgctBmCqLgQBnHYafy5r5rDsgw6j6oRlbINnPPqer0=;
+ b=ZKrtmrIpDxUMhLIh8mScYwxy+IT1E8cMyCZScLvnh7I2makptt0NfkV6A4PcpF3Cfw
+ t94mMPz98O6Dsb3fSjnNbOjEv+aJA6Z3sqUF2Y42KcwCE4Jp6ZwZP4rRCHq1Zjdmn1Nc
+ MhBDnuS34Z9So3CgCUWVafrP05DncRibULwfVSsswVlO17VLJ8/Ao/DZnNQGk4fEvsMw
+ bnbXv1V5TJuoti4XusfQIqzRLA2CVF82G/S7krXwuz/fC1pLczS5aEQc7SbL+8ozdkeU
+ 706Cb7s278r9NiUhZOsRh1AR/1oM1Lx3aQEExvbrsGCdXDb0CdjPC9Cw2Nj2fn0/c4L2
+ BhpA==
+X-Gm-Message-State: AOAM533+a7pSjPTmxDZOgEBYRqmHsQ2n/Wpstagb0plunq6ScsgEbNgy
+ 9O/c7kpvpM4letLE5KNFaZ7NdRCXOCrA7IvyaeVw6w==
+X-Google-Smtp-Source: ABdhPJzBeuYaugwjE9rJF2v3mAtHaNmHcXv/fPnmdymnSEvfi/ZfOBepfh/WGmh6X9cuHm1Lqxfnl3IKozqO1B3ATn0=
+X-Received: by 2002:a17:906:1e43:: with SMTP id
+ i3mr16626277ejj.92.1595773751471; 
+ Sun, 26 Jul 2020 07:29:11 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200718000637.3632841-1-saravanak@google.com>
- <159568680935.564881.11936174169505990646.b4-ty@kernel.org>
-In-Reply-To: <159568680935.564881.11936174169505990646.b4-ty@kernel.org>
-From: Saravana Kannan <saravanak@google.com>
-Date: Sat, 25 Jul 2020 20:58:06 -0700
-Message-ID: <CAGETcx8qyn8TmwvTrXkYEj78MdCNr+HxV0x7JTc8Wvo0VanKEg@mail.gmail.com>
-Subject: Re: [PATCH v3 0/4] irqchip: Add IRQCHIP_PLATFORM_DRIVER helper macros
-To: Marc Zyngier <maz@kernel.org>
+References: <20200713060842.471356-1-acourbot@chromium.org>
+ <20200713060842.471356-8-acourbot@chromium.org>
+In-Reply-To: <20200713060842.471356-8-acourbot@chromium.org>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Date: Sun, 26 Jul 2020 11:29:00 -0300
+Message-ID: <CAAEAJfA4Po9R25CzBxiFAV=7-7rPujLc79zLnXyXWk7xNbBtYA@mail.gmail.com>
+Subject: Re: [PATCH v3 07/16] media: mtk-vcodec: venc: specify supported
+ formats per-chip
+To: Alexandre Courbot <acourbot@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200725_235848_058109_9DD8763C 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20200726_102914_363724_C60B3712 
+X-CRM114-Status: GOOD (  17.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,52 +92,96 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: marex@denx.de, CC Hwang <cc.hwang@mediatek.com>,
- Jason Cooper <jason@lakedaemon.net>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Hanks Chen <hanks.chen@mediatek.com>, Loda Chou <loda.chou@mediatek.com>,
- LKML <linux-kernel@vger.kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, linux-gpio@vger.kernel.org,
- Andy Gross <agross@kernel.org>,
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Maoguang Meng <maoguang.meng@mediatek.com>,
+ devicetree <devicetree@vger.kernel.org>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- John Stultz <john.stultz@linaro.org>, Thomas Gleixner <tglx@linutronix.de>,
- Android Kernel Team <kernel-team@android.com>,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- Alexandre Torgue <alexandre.torgue@st.com>
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ linux-media <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 25, 2020 at 7:23 AM Marc Zyngier <maz@kernel.org> wrote:
->
-> On Fri, 17 Jul 2020 17:06:33 -0700, Saravana Kannan wrote:
-> > Made a series out of the previous v2 patch + some example uses of the
-> > macros.
-> >
-> > Not sure if the MTK changes work (just compile tested), but saw that
-> > Hanks was trying to make those drivers into tristate. So I assume
-> > they'll work as platform drivers. Please wait for MTK Ack before picking
-> > up patches 3 and 4.
-> >
-> > [...]
->
-> Applied to irq/irqchip-5.9, thanks!
->
-> [1/4] irqchip: Add IRQCHIP_PLATFORM_DRIVER_BEGIN/END and IRQCHIP_MATCH helper macros
->       commit: f3b5e608ed6d17bdf04dacbf2374f10d51fe9b09
-> [2/4] irqchip/qcom-pdc: Switch to using IRQCHIP_PLATFORM_DRIVER helper macros
->       commit: 04741740254cd83fb4f2b7747aeb35202104f8fe
-> [3/4] irqchip/mtk-sysirq: Convert to a platform driver
->       commit: 3ae3022690e6787839dafa8ea3496450248b53e1
-> [4/4] irqchip/mtk-cirq: Convert to a platform driver
->       commit: 538b63351607960ff2249460089daa31337ddeba
+Hi Alexandre,
 
-Thanks!
+Last review on my side, this series looks mostly good.
 
--Saravana
+On Mon, 13 Jul 2020 at 03:09, Alexandre Courbot <acourbot@chromium.org> wrote:
+>
+> Different chips have different supported bitrate ranges. Move the list
+
+s/bitrate ranges/formats
+
+> of supported formats to the platform data, and split the output and
+> capture formats into two lists to make it easier to find the default
+> format for each queue.
+>
+> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+> Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
+> ---
+>  .../platform/mtk-vcodec/mtk_vcodec_drv.h      |   8 ++
+>  .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 122 +++++++-----------
+>  .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  40 ++++++
+>  3 files changed, 95 insertions(+), 75 deletions(-)
+>
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> index b8f913de8d80..59b4b750666b 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> @@ -313,6 +313,10 @@ enum mtk_chip {
+>   * @has_lt_irq: whether the encoder uses the LT irq
+>   * @min_birate: minimum supported encoding bitrate
+>   * @max_bitrate: maximum supported encoding bitrate
+> + * @capture_formats: array of supported capture formats
+> + * @num_capture_formats: number of entries in capture_formats
+> + * @output_formats: array of supported output formats
+> + * @num_output_formats: number of entries in output_formats
+>   */
+>  struct mtk_vcodec_enc_pdata {
+>         enum mtk_chip chip;
+> @@ -321,6 +325,10 @@ struct mtk_vcodec_enc_pdata {
+>         bool has_lt_irq;
+>         unsigned long min_bitrate;
+>         unsigned long max_bitrate;
+> +       const struct mtk_video_fmt *capture_formats;
+> +       size_t num_capture_formats;
+> +       const struct mtk_video_fmt *output_formats;
+> +       size_t num_output_formats;
+>  };
+>
+>  /**
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+> index 50ba9da59153..05743a745a11 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+> @@ -23,47 +23,9 @@
+>  #define DFT_CFG_WIDTH  MTK_VENC_MIN_W
+>  #define DFT_CFG_HEIGHT MTK_VENC_MIN_H
+>  #define MTK_MAX_CTRLS_HINT     20
+> -#define OUT_FMT_IDX            0
+> -#define CAP_FMT_IDX            4
+> -
+>
+>  static void mtk_venc_worker(struct work_struct *work);
+>
+> -static const struct mtk_video_fmt mtk_video_formats[] = {
+> -       {
+> -               .fourcc = V4L2_PIX_FMT_NV12M,
+> -               .type = MTK_FMT_FRAME,
+> -               .num_planes = 2,
+
+Again, not an issue with your patch, so feel free to ignore this.
+
+You may avoid keeping track of num_planes (or any other
+property of the pixel format) and use v4l2_fill_pixfmt_mp
+to get all the information you need.
+
+Thanks,
+Ezequiel
 
 _______________________________________________
 Linux-mediatek mailing list
