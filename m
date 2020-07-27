@@ -3,70 +3,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E5372C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 12:10:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CED9AC433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 12:18:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B301B206E7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 12:10:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8CB99206E7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 12:18:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="u6rSviq/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B301B206E7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XG5Ux499";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="fAx/kzPh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8CB99206E7
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:In-reply-to:Subject:To:
+	From:References:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gI+wO4io4fX8hSqexnX6D8O0xsyqZNPX4T2BeKT6BM8=; b=u6rSviq/Hi5mLPUPyiPN4jis/
-	W6dz9NN+dZZHJGAWtXbQUMSlknV95hjebK9K+bJfe84xMVyX4mqtnTmH1zxbZhBP64xZ+qLkAWrPo
-	kXx1E5Soh1NOZcJPtpgDhZ2RojPkF+g3sgNyhgJYAuLhCM7VBmjBj8/KkI54elG3AkQdTsdPSqBcm
-	LaVyDu8sFCchW05uuCPN2jTFKCzuExrkh2dkiUGig3QBgq/iSb1746geQErN5NuuNYxa1C9hOjgMn
-	QxqYQfKbX13IgVSSiN347uGNpatXx43hgU0MYKar9y2AFY74AUcV2CBt/WHjcFE0XQ1jIL7kRViuI
-	s+W7P9onw==;
+	 bh=G7dqXvsNfMGpoRJN3dtmzmxCii+aq1H7extL4NyLiSg=; b=XG5Ux499e0IYof9FJFcSkFduR
+	Wy1ptbEMGRs4NNNmIGaa31IMPkIh8IQHEBkxng/8EwNZMHA8pNtTb1K1Xva7hvrvU9MaHIpDrI8UG
+	FSJM9++rVbA10FhN4sc+CZwZMheJBA5n8/7wThvHCbOJzaqbWTqRekuMPPr7BvgedkSuC2LQ3jnTO
+	BtxJupST7Ngcv8jYiOKyr7dgx5gBimPK5lahqb03m2Wi4B9rqFkw/ttQeEx2C6p/FPSTcc+4eIWzI
+	L0WfpABNEyQAKn8gH7xVXLze7aCeIOfs8tBfh5fI2IPFvg3QnxwTWWHpTY7wm64JYveKvfwt+6r+u
+	DZ2VaEBAw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k01xO-0003HM-7S; Mon, 27 Jul 2020 12:10:14 +0000
-Received: from mail-oi1-f195.google.com ([209.85.167.195])
+	id 1k025U-00043X-AY; Mon, 27 Jul 2020 12:18:36 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k01xJ-0003G5-2r; Mon, 27 Jul 2020 12:10:11 +0000
-Received: by mail-oi1-f195.google.com with SMTP id l84so1565415oig.10;
- Mon, 27 Jul 2020 05:10:08 -0700 (PDT)
+ id 1k025P-00042L-Nm
+ for linux-mediatek@lists.infradead.org; Mon, 27 Jul 2020 12:18:33 +0000
+Received: by mail-wm1-x341.google.com with SMTP id f18so4634216wmc.0
+ for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2020 05:18:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=references:user-agent:from:to:cc:subject:in-reply-to:date
+ :message-id:mime-version;
+ bh=IsIi8F409cZHxulKpoRZusE2JKJse5jBQoAXHe77xis=;
+ b=fAx/kzPhi93UH6If4IJtHoQ380OGDHKSQd4m8YGK3hgBa3OBdcP4nKwiJvYVBYxnMh
+ YFSzmLXLvhDPOIKnnhmVq4CLH4jOQ0LeQttRT78Rn+d8CsqVbQlz6djoCeGDP1d+2UH8
+ NtV6eFnt8fCRDDJAhM857eRUDqW0DlGV42gGWWcOWK5Spx+zmgNv7VCCNEsAH+xVp40d
+ vDPS2Ut9n5CSLUsh91TRI+CaaVQIr9TZUxvipaJilQs03+T12JlTOxeWd+/+922KNRBy
+ ysOFziCc27MA8HDwAv/bEV80MsXHadbYkb6MJakm4q15G2lJidBF363LWjfzklsDXLxe
+ IjvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=MY8NFYemyusLitbLbaMoVSrE9YgFZMePGaF7pe3X/ig=;
- b=DC5oDgOMaqK6v2qwG7pWvsD7+3J0MuzMX9Dr9Pj0aluy8O99C0BQmfc1MD5PJcPWlx
- 4idWQhc6srG/OyuYfB0QJSZqMGGdU5CTjvTaBSJuC2UbnkpKPKYqAkTtgKNJCXSuvOPU
- nE205QfMHqVF4nJzSS9nLYHUHuOtp1zvXzM8keW0/s9iuu+hE7UODZWbH9UZx6zhdGDw
- 99ZfBX80NxM4DzkhJjhIZL2LlT5Q+GyIjua/PMorgvdGgCGW5cXQyzKKWIvoFKnc79s0
- WLfsuRegQfaE3vyBn49uUKFk1nDsa8YU9de7gzYaJsexYXD0Eq6Wah5fjUODzo6F/qR6
- yrUg==
-X-Gm-Message-State: AOAM531pLJd/hVBjgH8MsymafW7gvGDYkQk/dGa0If5TiY2wrEZSnjgd
- Q1FiJVHa0Y2NWpRtaimI8pKd34o6srZuFDmWa3Y=
-X-Google-Smtp-Source: ABdhPJx+eJ2XZmKmc1yyOWlaMremLljLAQsKfx87QRnMm2/D3J76CmRbkiallwCViQ1xjwchuuWJJxzfrCmDO0Cn0+U=
-X-Received: by 2002:aca:4a89:: with SMTP id
- x131mr18642621oia.103.1595851808250; 
- Mon, 27 Jul 2020 05:10:08 -0700 (PDT)
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject
+ :in-reply-to:date:message-id:mime-version;
+ bh=IsIi8F409cZHxulKpoRZusE2JKJse5jBQoAXHe77xis=;
+ b=QMgm5Farj/PLymP4O8Z0/3/XKIEnQjMh+wTBHCjqY4WGAYKJ13Jk8OnJYk8JrOGnPL
+ N4jAgj2s77u7zFxTdhMWwr/mKOpJFk3KTt3N/NYJoukJEa21xFH3Vxb0SEodAhcuIHGh
+ gBpAUNjsdg3Dq8yVSpUctFq1q76WSqUgOiYT1Xp+qGIxUREP68IVINF6fnLDgl41D4Ao
+ Trc18AETpGvbexxg/8Gc3cFQ1GiwT8W1mGoVgKrmLAU8KOJF1V6ExMNfbiuuMAEvUshS
+ M8cqxBdFj9mBPkIcIKjgm9LyzwbVzd9zlycVzYLem/WyjyBI1u7zRUFAc/8QnmGvLX7i
+ xRsA==
+X-Gm-Message-State: AOAM532nFYXlWbrlXmrhldwlLNUP8kyARdNTC5D654Fun4CIdBHNSEng
+ g/V6gaPmZh//6MnsUnwo9Ps5ig==
+X-Google-Smtp-Source: ABdhPJx0797BC+zllD5zGvCbLm8HLRG8Q0wQ8GIbQod3XouY7f5MT+H0TmGiiKQ8+HBndxMDQTHixg==
+X-Received: by 2002:a1c:cc0c:: with SMTP id h12mr17958765wmb.111.1595852309197; 
+ Mon, 27 Jul 2020 05:18:29 -0700 (PDT)
+Received: from localhost ([2a01:cb19:8ae7:9d00:1109:b730:da9f:832f])
+ by smtp.gmail.com with ESMTPSA id m14sm3573527wrx.76.2020.07.27.05.18.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 27 Jul 2020 05:18:28 -0700 (PDT)
+References: <20200727114504.28536-1-fengping.yu@mediatek.com>
+ <20200727114504.28536-3-fengping.yu@mediatek.com>
+User-agent: mu4e 1.2.0; emacs 26.3
+From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+To: Fengping Yu <fengping.yu@mediatek.com>
+Subject: Re: [PATCH v16 2/3] drivers: input: keyboard: Add mtk keypad driver
+In-reply-to: <20200727114504.28536-3-fengping.yu@mediatek.com>
+Date: Mon, 27 Jul 2020 14:18:27 +0200
+Message-ID: <87v9i9w3qk.fsf@baylibre.com>
 MIME-Version: 1.0
-References: <1595820346-4361-1-git-send-email-neal.liu@mediatek.com>
- <1595820346-4361-2-git-send-email-neal.liu@mediatek.com>
-In-Reply-To: <1595820346-4361-2-git-send-email-neal.liu@mediatek.com>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Mon, 27 Jul 2020 14:09:39 +0200
-Message-ID: <CAJZ5v0ij3KxSyB_06+p0aYcy2pMex8HCmHD5R2B8V90UnynrWQ@mail.gmail.com>
-Subject: Re: [PATCH v3] cpuidle: change enter_s2idle() prototype
-To: Neal Liu <neal.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200727_081010_083717_AE239E81 
-X-CRM114-Status: GOOD (  27.07  )
+X-CRM114-CacheID: sfid-20200727_081831_958770_06F7E48F 
+X-CRM114-Status: GOOD (  28.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,156 +96,288 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Jacob Pan <jacob.jun.pan@linux.intel.com>,
- linux-tegra <linux-tegra@vger.kernel.org>,
- wsd_upstream <wsd_upstream@mediatek.com>, Linux PM <linux-pm@vger.kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, lkml <linux-kernel@vger.kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- ACPI Devel Maling List <linux-acpi@vger.kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- Sami Tolvanen <samitolvanen@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, Len Brown <lenb@kernel.org>
+Cc: devicetree@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Marco Felsch <m.felsch@pengutronix.de>, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-input@vger.kernel.org, Yingjoe Chen <yingjoe.chen@mediatek.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 27, 2020 at 5:25 AM Neal Liu <neal.liu@mediatek.com> wrote:
->
-> Control Flow Integrity(CFI) is a security mechanism that disallows
-> changes to the original control flow graph of a compiled binary,
-> making it significantly harder to perform such attacks.
->
-> init_state_node() assign same function callback to different
-> function pointer declarations.
->
-> static int init_state_node(struct cpuidle_state *idle_state,
->                            const struct of_device_id *matches,
->                            struct device_node *state_node) { ...
->         idle_state->enter = match_id->data; ...
->         idle_state->enter_s2idle = match_id->data; }
->
-> Function declarations:
->
-> struct cpuidle_state { ...
->         int (*enter) (struct cpuidle_device *dev,
->                       struct cpuidle_driver *drv,
->                       int index);
->
->         void (*enter_s2idle) (struct cpuidle_device *dev,
->                               struct cpuidle_driver *drv,
->                               int index); };
->
-> In this case, either enter() or enter_s2idle() would cause CFI check
-> failed since they use same callee.
->
-> Align function prototype of enter() since it needs return value for
-> some use cases. The return value of enter_s2idle() is no
-> need currently.
->
-> Signed-off-by: Neal Liu <neal.liu@mediatek.com>
-> Reviewed-by: Sami Tolvanen <samitolvanen@google.com>
-> ---
->  drivers/acpi/processor_idle.c   |    6 ++++--
->  drivers/cpuidle/cpuidle-tegra.c |    8 +++++---
->  drivers/idle/intel_idle.c       |    6 ++++--
->  include/linux/cpuidle.h         |    9 ++++++---
->  4 files changed, 19 insertions(+), 10 deletions(-)
->
-> diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
-> index 75534c5..6ffb6c9 100644
-> --- a/drivers/acpi/processor_idle.c
-> +++ b/drivers/acpi/processor_idle.c
-> @@ -655,8 +655,8 @@ static int acpi_idle_enter(struct cpuidle_device *dev,
->         return index;
->  }
->
-> -static void acpi_idle_enter_s2idle(struct cpuidle_device *dev,
-> -                                  struct cpuidle_driver *drv, int index)
-> +static int acpi_idle_enter_s2idle(struct cpuidle_device *dev,
-> +                                 struct cpuidle_driver *drv, int index)
->  {
->         struct acpi_processor_cx *cx = per_cpu(acpi_cstate[index], dev->cpu);
->
-> @@ -674,6 +674,8 @@ static void acpi_idle_enter_s2idle(struct cpuidle_device *dev,
->                 }
->         }
->         acpi_idle_do_entry(cx);
-> +
-> +       return 0;
->  }
->
->  static int acpi_processor_setup_cpuidle_cx(struct acpi_processor *pr,
-> diff --git a/drivers/cpuidle/cpuidle-tegra.c b/drivers/cpuidle/cpuidle-tegra.c
-> index 1500458..a12fb14 100644
-> --- a/drivers/cpuidle/cpuidle-tegra.c
-> +++ b/drivers/cpuidle/cpuidle-tegra.c
-> @@ -253,11 +253,13 @@ static int tegra_cpuidle_enter(struct cpuidle_device *dev,
->         return err ? -1 : index;
->  }
->
-> -static void tegra114_enter_s2idle(struct cpuidle_device *dev,
-> -                                 struct cpuidle_driver *drv,
-> -                                 int index)
-> +static int tegra114_enter_s2idle(struct cpuidle_device *dev,
-> +                                struct cpuidle_driver *drv,
-> +                                int index)
->  {
->         tegra_cpuidle_enter(dev, drv, index);
-> +
-> +       return 0;
->  }
->
->  /*
-> diff --git a/drivers/idle/intel_idle.c b/drivers/idle/intel_idle.c
-> index f449584..b178da3 100644
-> --- a/drivers/idle/intel_idle.c
-> +++ b/drivers/idle/intel_idle.c
-> @@ -175,13 +175,15 @@ static __cpuidle int intel_idle(struct cpuidle_device *dev,
->   * Invoked as a suspend-to-idle callback routine with frozen user space, frozen
->   * scheduler tick and suspended scheduler clock on the target CPU.
->   */
-> -static __cpuidle void intel_idle_s2idle(struct cpuidle_device *dev,
-> -                                       struct cpuidle_driver *drv, int index)
-> +static __cpuidle int intel_idle_s2idle(struct cpuidle_device *dev,
-> +                                      struct cpuidle_driver *drv, int index)
->  {
->         unsigned long eax = flg2MWAIT(drv->states[index].flags);
->         unsigned long ecx = 1; /* break on interrupt flag */
->
->         mwait_idle_with_hints(eax, ecx);
-> +
-> +       return 0;
->  }
->
->  /*
-> diff --git a/include/linux/cpuidle.h b/include/linux/cpuidle.h
-> index ec2ef63..b65909a 100644
-> --- a/include/linux/cpuidle.h
-> +++ b/include/linux/cpuidle.h
-> @@ -65,10 +65,13 @@ struct cpuidle_state {
->          * CPUs execute ->enter_s2idle with the local tick or entire timekeeping
->          * suspended, so it must not re-enable interrupts at any point (even
->          * temporarily) or attempt to change states of clock event devices.
-> +        *
-> +        * This callback may point to the same function as ->enter if all of
-> +        * the above requirements are met by it.
->          */
-> -       void (*enter_s2idle) (struct cpuidle_device *dev,
-> -                             struct cpuidle_driver *drv,
-> -                             int index);
-> +       int (*enter_s2idle)(struct cpuidle_device *dev,
-> +                           struct cpuidle_driver *drv,
-> +                           int index);
->  };
->
->  /* Idle State Flags */
-> --
+Hi Fengping,
 
-Applied as 5.9 material, thanks!
+Fengping Yu <fengping.yu@mediatek.com> writes:
+
+> From: "fengping.yu" <fengping.yu@mediatek.com>
+>
+> This adds matrix keypad support for Mediatek SoCs.
+>
+> Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
+> Reviewed-by: Marco Felsch <m.felsch@pengutronix.de>
+> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+
+Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+
+> ---
+>  drivers/input/keyboard/Kconfig   |  11 ++
+>  drivers/input/keyboard/Makefile  |   1 +
+>  drivers/input/keyboard/mtk-kpd.c | 209 +++++++++++++++++++++++++++++++
+>  3 files changed, 221 insertions(+)
+>  create mode 100644 drivers/input/keyboard/mtk-kpd.c
+>
+> diff --git a/drivers/input/keyboard/Kconfig b/drivers/input/keyboard/Kconfig
+> index 793ecbbda32c..1ee845c292c6 100644
+> --- a/drivers/input/keyboard/Kconfig
+> +++ b/drivers/input/keyboard/Kconfig
+> @@ -782,6 +782,17 @@ config KEYBOARD_BCM
+>  	  To compile this driver as a module, choose M here: the
+>  	  module will be called bcm-keypad.
+>  
+> +config KEYBOARD_MTK_KPD
+> +	tristate "MediaTek Keypad Support"
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	select REGMAP_MMIO
+> +	select INPUT_MATRIXKMAP
+> +	help
+> +	  Say Y here if you want to use the keypad on MediaTek SoCs.
+> +	  If unsure, say N.
+> +	  To compile this driver as a module, choose M here: the
+> +	  module will be called mtk-kpd.
+> +
+>  config KEYBOARD_MTK_PMIC
+>  	tristate "MediaTek PMIC keys support"
+>  	depends on MFD_MT6397
+> diff --git a/drivers/input/keyboard/Makefile b/drivers/input/keyboard/Makefile
+> index 1d689fdd5c00..6c9d852c377e 100644
+> --- a/drivers/input/keyboard/Makefile
+> +++ b/drivers/input/keyboard/Makefile
+> @@ -43,6 +43,7 @@ obj-$(CONFIG_KEYBOARD_MATRIX)		+= matrix_keypad.o
+>  obj-$(CONFIG_KEYBOARD_MAX7359)		+= max7359_keypad.o
+>  obj-$(CONFIG_KEYBOARD_MCS)		+= mcs_touchkey.o
+>  obj-$(CONFIG_KEYBOARD_MPR121)		+= mpr121_touchkey.o
+> +obj-$(CONFIG_KEYBOARD_MTK_KPD)		+= mtk-kpd.o
+>  obj-$(CONFIG_KEYBOARD_MTK_PMIC) 	+= mtk-pmic-keys.o
+>  obj-$(CONFIG_KEYBOARD_NEWTON)		+= newtonkbd.o
+>  obj-$(CONFIG_KEYBOARD_NOMADIK)		+= nomadik-ske-keypad.o
+> diff --git a/drivers/input/keyboard/mtk-kpd.c b/drivers/input/keyboard/mtk-kpd.c
+> new file mode 100644
+> index 000000000000..451b3bc61c6f
+> --- /dev/null
+> +++ b/drivers/input/keyboard/mtk-kpd.c
+> @@ -0,0 +1,209 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (C) 2019 MediaTek Inc.
+> + * Author Fengping Yu <fengping.yu@mediatek.com>
+> + */
+> +#include <linux/bitops.h>
+> +#include <linux/clk.h>
+> +#include <linux/input/matrix_keypad.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/module.h>
+> +#include <linux/property.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/regmap.h>
+> +
+> +#define MTK_KPD_NAME		"mtk-kpd"
+> +#define MTK_KPD_MEM		0x0004
+> +#define MTK_KPD_DEBOUNCE	0x0018
+> +#define MTK_KPD_DEBOUNCE_MASK	GENMASK(13, 0)
+> +#define MTK_KPD_DEBOUNCE_MAX_US	256000
+> +#define MTK_KPD_NUM_MEMS	5
+> +#define MTK_KPD_NUM_BITS	136	/* 4*32+8 MEM5 only use 8 BITS */
+> +
+> +struct mtk_keypad {
+> +	struct regmap *regmap;
+> +	struct input_dev *input_dev;
+> +	struct clk *clk;
+> +	void __iomem *base;
+> +	u32 n_rows;
+> +	u32 n_cols;
+> +	DECLARE_BITMAP(keymap_state, MTK_KPD_NUM_BITS);
+> +};
+> +
+> +static const struct regmap_config keypad_regmap_cfg = {
+> +	.reg_bits = 32,
+> +	.val_bits = 32,
+> +	.reg_stride = sizeof(u32),
+> +	.max_register = 36,
+> +};
+> +
+> +static irqreturn_t kpd_irq_handler(int irq, void *dev_id)
+> +{
+> +	struct mtk_keypad *keypad = dev_id;
+> +	unsigned short *keycode = keypad->input_dev->keycode;
+> +	DECLARE_BITMAP(new_state, MTK_KPD_NUM_BITS);
+> +	DECLARE_BITMAP(change, MTK_KPD_NUM_BITS);
+> +	int bit_nr;
+> +	int pressed;
+> +	unsigned short code;
+> +
+> +	regmap_bulk_read(keypad->regmap, MTK_KPD_MEM,
+> +			new_state, MTK_KPD_NUM_MEMS);
+> +
+> +	bitmap_xor(change, new_state, keypad->keymap_state, MTK_KPD_NUM_BITS);
+> +
+> +	for_each_set_bit(bit_nr, change, MTK_KPD_NUM_BITS) {
+> +		/* 1: not pressed, 0: pressed */
+> +		pressed = !test_bit(bit_nr, new_state);
+> +		dev_dbg(&keypad->input_dev->dev, "%s",
+> +			pressed ? "pressed" : "released");
+> +
+> +		/* 32bit register only use low 16bit as keypad mem register */
+> +		code = keycode[bit_nr - 16 * (BITS_TO_U32(bit_nr) - 1)];
+> +
+> +		input_report_key(keypad->input_dev, code, pressed);
+> +		input_sync(keypad->input_dev);
+> +
+> +		dev_dbg(&keypad->input_dev->dev,
+> +			"report Linux keycode = %d\n", code);
+> +	}
+> +
+> +	bitmap_copy(keypad->keymap_state, new_state, MTK_KPD_NUM_BITS);
+> +
+> +	return IRQ_HANDLED;
+> +}
+> +
+> +static void kpd_clk_disable(void *data)
+> +{
+> +	clk_disable_unprepare(data);
+> +}
+> +
+> +static int kpd_pdrv_probe(struct platform_device *pdev)
+> +{
+> +	struct mtk_keypad *keypad;
+> +	unsigned int irq;
+> +	u32 debounce;
+> +	bool wakeup;
+> +	int ret;
+> +
+> +	keypad = devm_kzalloc(&pdev->dev, sizeof(*keypad), GFP_KERNEL);
+> +	if (!keypad)
+> +		return -ENOMEM;
+> +
+> +	keypad->base = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(keypad->base))
+> +		return PTR_ERR(keypad->base);
+> +
+> +	keypad->regmap = devm_regmap_init_mmio(&pdev->dev,
+> +					       keypad->base,
+> +					       &keypad_regmap_cfg);
+> +	if (IS_ERR(keypad->regmap)) {
+> +		dev_err(&pdev->dev,
+> +			"regmap init failed:%pe\n", keypad->regmap);
+> +		return PTR_ERR(keypad->regmap);
+> +	}
+> +
+> +	bitmap_fill(keypad->keymap_state, MTK_KPD_NUM_BITS);
+> +
+> +	keypad->input_dev = devm_input_allocate_device(&pdev->dev);
+> +	if (!keypad->input_dev) {
+> +		dev_err(&pdev->dev, "Failed to allocate input dev\n");
+> +		return -ENOMEM;
+> +	}
+> +
+> +	keypad->input_dev->name = MTK_KPD_NAME;
+> +	keypad->input_dev->id.bustype = BUS_HOST;
+> +
+> +	ret = matrix_keypad_parse_properties(&pdev->dev, &keypad->n_rows,
+> +					     &keypad->n_cols);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Failed to parse keypad params\n");
+> +		return ret;
+> +	}
+> +
+> +	if (device_property_read_u32(&pdev->dev, "mediatek,debounce-us",
+> +				     &debounce))
+> +		debounce = 16000;
+> +
+> +	if (debounce > MTK_KPD_DEBOUNCE_MAX_US) {
+> +		dev_err(&pdev->dev, "Debounce time exceeds the maximum allowed time %dus\n",
+> +			MTK_KPD_DEBOUNCE_MAX_US);
+> +		return -EINVAL;
+> +	}
+> +
+> +	wakeup = device_property_read_bool(&pdev->dev, "wakeup-source");
+> +
+> +	dev_dbg(&pdev->dev, "n_row=%d n_col=%d debounce=%d\n",
+> +		keypad->n_rows, keypad->n_cols, debounce);
+> +
+> +	ret = matrix_keypad_build_keymap(NULL, NULL,
+> +					 keypad->n_rows,
+> +					 keypad->n_cols,
+> +					 NULL,
+> +					 keypad->input_dev);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Failed to build keymap\n");
+> +		return ret;
+> +	}
+> +
+> +	regmap_write(keypad->regmap, MTK_KPD_DEBOUNCE,
+> +		     debounce * 32 / 1000 & MTK_KPD_DEBOUNCE_MASK);
+> +
+> +	keypad->clk = devm_clk_get(&pdev->dev, "kpd");
+> +	if (IS_ERR(keypad->clk))
+> +		return PTR_ERR(keypad->clk);
+> +
+> +	ret = clk_prepare_enable(keypad->clk);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "cannot prepare/enable keypad clock\n");
+> +		return ret;
+> +	}
+> +
+> +	ret = devm_add_action_or_reset(&pdev->dev, kpd_clk_disable, keypad->clk);
+> +	if (ret)
+> +		return ret;
+> +
+> +	irq = platform_get_irq(pdev, 0);
+> +	if (irq < 0)
+> +		return irq;
+> +
+> +	ret = devm_request_threaded_irq(&pdev->dev, irq,
+> +					NULL, kpd_irq_handler, IRQF_ONESHOT,
+> +					MTK_KPD_NAME, keypad);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Failed to request IRQ#%d:%d\n",
+> +			irq, ret);
+> +		return ret;
+> +	}
+> +
+> +	ret = input_register_device(keypad->input_dev);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Failed to register device\n");
+> +		return ret;
+> +	}
+> +
+> +	ret =  device_init_wakeup(&pdev->dev, wakeup);
+> +	if (ret)
+> +		dev_warn(&pdev->dev, "device_init_wakeup fail\n");
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct of_device_id kpd_of_match[] = {
+> +	{ .compatible = "mediatek,mt6779-keypad" },
+> +	{ .compatible = "mediatek,mt6873-keypad" },
+> +	{ /* sentinel */ }
+> +};
+> +
+> +static struct platform_driver kpd_pdrv = {
+> +	.probe = kpd_pdrv_probe,
+> +	.driver = {
+> +		   .name = MTK_KPD_NAME,
+> +		   .of_match_table = kpd_of_match,
+> +	},
+> +};
+> +module_platform_driver(kpd_pdrv);
+> +
+> +MODULE_AUTHOR("Mediatek Corporation");
+> +MODULE_DESCRIPTION("MTK Keypad (KPD) Driver");
+> +MODULE_LICENSE("GPL");
+
 
 _______________________________________________
 Linux-mediatek mailing list
