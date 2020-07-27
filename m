@@ -2,90 +2,71 @@ Return-Path: <SRS0=rPqH=BG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,
-	BODY_QUOTE_MALF_MSGID,DKIMWL_WL_HIGH,DKIM_SIGNED,DKIM_VALID,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
 	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CCBF4C433EA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 12:06:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5372C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 12:10:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9C37620786
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 12:06:59 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B301B206E7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 12:10:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ChqEAZbX";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="l78o4thx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9C37620786
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="u6rSviq/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B301B206E7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4rVmRsPZds150mjfVIckGYzDcreYtfQ7UQ+wlQ1/uLw=; b=ChqEAZbX6L3JLQK77CvTTi036
-	2cKPI7hzaxbmIe9gYRCTrHSsScgVL58gLqi7lF0TQNgACVBSGX7YgZXPSu0vYMULXxk2QgZ7juIEb
-	KJJebFMqwEGIuoVsg45UjCb+1YAhDDbGcL3Tx+i3N7KVOQQVq+bf5gFYTDIxa+KK10OFiyztZxKmF
-	SNub/yTYFRbIaElkNMbjTxoq7tgpm6eAuuQsHGvBagEjsT31HF6NGyUg7XLFqGdq3i6527ZBlM5RS
-	8JiBWOQd5alzLCDQSl8xalbX8iscob6fFUvdoEeEBMWLigXJpOwVe4p7ysPF1HthtIkq1A4Q7068B
-	vOvFN3izA==;
+	 bh=gI+wO4io4fX8hSqexnX6D8O0xsyqZNPX4T2BeKT6BM8=; b=u6rSviq/Hi5mLPUPyiPN4jis/
+	W6dz9NN+dZZHJGAWtXbQUMSlknV95hjebK9K+bJfe84xMVyX4mqtnTmH1zxbZhBP64xZ+qLkAWrPo
+	kXx1E5Soh1NOZcJPtpgDhZ2RojPkF+g3sgNyhgJYAuLhCM7VBmjBj8/KkI54elG3AkQdTsdPSqBcm
+	LaVyDu8sFCchW05uuCPN2jTFKCzuExrkh2dkiUGig3QBgq/iSb1746geQErN5NuuNYxa1C9hOjgMn
+	QxqYQfKbX13IgVSSiN347uGNpatXx43hgU0MYKar9y2AFY74AUcV2CBt/WHjcFE0XQ1jIL7kRViuI
+	s+W7P9onw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k01u4-0002hR-N7; Mon, 27 Jul 2020 12:06:48 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1k01xO-0003HM-7S; Mon, 27 Jul 2020 12:10:14 +0000
+Received: from mail-oi1-f195.google.com ([209.85.167.195])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k01u0-0002gA-He
- for linux-mediatek@lists.infradead.org; Mon, 27 Jul 2020 12:06:45 +0000
-Received: by mail-wm1-x342.google.com with SMTP id t142so8138016wmt.4
- for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2020 05:06:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=5UvigPasIrEc+VPwUEGBhdkiXGZn95eI7wd8yU/NXHk=;
- b=l78o4thxdBd3295c7pq1uvaxXqQTXHoIQBDLzkseo8M7LFVeKFainbABNhEmZapKRT
- P5oJ4Vup4dtsW/3gtAbTrXJDdAlShl6zK2tUyzN4TfvHhxQ3Y8ZGBRjs6AZFYJJGdAfm
- dwiY3NQxeS41hV5vvXoSrW6GPkCDFlVn4D4kODRAQ3qCN0cfix/c/oOLgYtyBDc3NpM5
- BZR2gyEtU8S5oFQbmcwpHagAGPNAyCjf2Df7FoOj1rkV+7XyHn6aUY3StpbafKoaM0el
- i5ke21itLgICKDUfYFWS9C2nWnpHfoKub8TU5N+gFSHLKtawF4HM1QcXrYDdVlQutv0M
- 8Hug==
+ id 1k01xJ-0003G5-2r; Mon, 27 Jul 2020 12:10:11 +0000
+Received: by mail-oi1-f195.google.com with SMTP id l84so1565415oig.10;
+ Mon, 27 Jul 2020 05:10:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=5UvigPasIrEc+VPwUEGBhdkiXGZn95eI7wd8yU/NXHk=;
- b=Xwo+8DpZH8CJxKgApQE5g2W/PIfdlO0HiaRU3SsNus9gyx1+0lLDLbGGjMeldGgqDp
- nC6+Xgapn+ysyGuOmmgsFZYr9gKtGfDXcLL7tWI8KKpB1lqp2MuHydYbcIHV+/Fke0D4
- dc8M9CVasXfvI07TEIpNqr/AbI+g1eJYJ7zxL61Kr6yirPdzTX90wmR2cXrzf5RqCgyv
- 8hVlcBgEqKasXtFuUuMhmunUeuAElguM+fDwQsZIH4plpfpmceK+5oQRdTGRz7ZyMu8G
- aRt52P1iOrriXcmmKXL/66PxCBYdjapJTHhz2fJoVTjhmv4jMrSdzMl/cU8HliitCXZV
- mliQ==
-X-Gm-Message-State: AOAM533jPrRk4PzY+qqhcwHBdMbTUD4nW1+E4RCk7YdGOybIsyIA48aY
- aRli6eBORzZjcODpouhR/aFJXw==
-X-Google-Smtp-Source: ABdhPJyuQ01S7wwBQxUL+QMuwikPrDGYc6VGrJ4m7+PH/d8swh6Q30/Gg3VIPA0xLk3rSz+BtA3rQg==
-X-Received: by 2002:a1c:98c1:: with SMTP id
- a184mr20475238wme.116.1595851603333; 
- Mon, 27 Jul 2020 05:06:43 -0700 (PDT)
-Received: from dell ([2.27.167.73])
- by smtp.gmail.com with ESMTPSA id k4sm13177909wrd.72.2020.07.27.05.06.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Jul 2020 05:06:42 -0700 (PDT)
-Date: Mon, 27 Jul 2020 13:06:41 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: Gene Chen <gene.chen.richtek@gmail.com>
-Subject: Re: [PATCH v2 5/9] mfd: mt6360: Rename mt6360_pmu_data by mt6360_data
-Message-ID: <20200727120641.GL1850026@dell>
-References: <1594983811-25908-1-git-send-email-gene.chen.richtek@gmail.com>
- <1594983811-25908-6-git-send-email-gene.chen.richtek@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=MY8NFYemyusLitbLbaMoVSrE9YgFZMePGaF7pe3X/ig=;
+ b=DC5oDgOMaqK6v2qwG7pWvsD7+3J0MuzMX9Dr9Pj0aluy8O99C0BQmfc1MD5PJcPWlx
+ 4idWQhc6srG/OyuYfB0QJSZqMGGdU5CTjvTaBSJuC2UbnkpKPKYqAkTtgKNJCXSuvOPU
+ nE205QfMHqVF4nJzSS9nLYHUHuOtp1zvXzM8keW0/s9iuu+hE7UODZWbH9UZx6zhdGDw
+ 99ZfBX80NxM4DzkhJjhIZL2LlT5Q+GyIjua/PMorgvdGgCGW5cXQyzKKWIvoFKnc79s0
+ WLfsuRegQfaE3vyBn49uUKFk1nDsa8YU9de7gzYaJsexYXD0Eq6Wah5fjUODzo6F/qR6
+ yrUg==
+X-Gm-Message-State: AOAM531pLJd/hVBjgH8MsymafW7gvGDYkQk/dGa0If5TiY2wrEZSnjgd
+ Q1FiJVHa0Y2NWpRtaimI8pKd34o6srZuFDmWa3Y=
+X-Google-Smtp-Source: ABdhPJx+eJ2XZmKmc1yyOWlaMremLljLAQsKfx87QRnMm2/D3J76CmRbkiallwCViQ1xjwchuuWJJxzfrCmDO0Cn0+U=
+X-Received: by 2002:aca:4a89:: with SMTP id
+ x131mr18642621oia.103.1595851808250; 
+ Mon, 27 Jul 2020 05:10:08 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1594983811-25908-6-git-send-email-gene.chen.richtek@gmail.com>
+References: <1595820346-4361-1-git-send-email-neal.liu@mediatek.com>
+ <1595820346-4361-2-git-send-email-neal.liu@mediatek.com>
+In-Reply-To: <1595820346-4361-2-git-send-email-neal.liu@mediatek.com>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Mon, 27 Jul 2020 14:09:39 +0200
+Message-ID: <CAJZ5v0ij3KxSyB_06+p0aYcy2pMex8HCmHD5R2B8V90UnynrWQ@mail.gmail.com>
+Subject: Re: [PATCH v3] cpuidle: change enter_s2idle() prototype
+To: Neal Liu <neal.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200727_080644_743037_A79A2E17 
-X-CRM114-Status: GOOD (  15.00  )
+X-CRM114-CacheID: sfid-20200727_081010_083717_AE239E81 
+X-CRM114-Status: GOOD (  27.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,39 +78,158 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
- benjamin.chao@mediatek.com, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
- shufan_lee@richtek.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Jacob Pan <jacob.jun.pan@linux.intel.com>,
+ linux-tegra <linux-tegra@vger.kernel.org>,
+ wsd_upstream <wsd_upstream@mediatek.com>, Linux PM <linux-pm@vger.kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, lkml <linux-kernel@vger.kernel.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ ACPI Devel Maling List <linux-acpi@vger.kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ Sami Tolvanen <samitolvanen@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, Len Brown <lenb@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCAxNyBKdWwgMjAyMCwgR2VuZSBDaGVuIHdyb3RlOgoKPiBGcm9tOiBHZW5lIENoZW4g
-PGdlbmVfY2hlbkByaWNodGVrLmNvbT4KPiAKPiBSZW5hbWUgbXQ2MzYwX3BtdV9kYXRhIGJ5IG10
-NjM2MF9kYXRhIGJlY2F1c2Ugb2YgaW5jbHVkaW5nCj4gbm90IG9ubHkgUE1VIHBhcnQsIGJ1dCBh
-bHNvIGVudGlyZSBNVDYzNjAgSUMuCj4gCj4gU2lnbmVkLW9mZi1ieTogR2VuZSBDaGVuIDxnZW5l
-X2NoZW5AcmljaHRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvbWZkL210NjM2MC1jb3JlLmMgIHwg
-NDQgKysrKysrKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAgaW5jbHVk
-ZS9saW51eC9tZmQvbXQ2MzYwLmggfCAgMiArLQo+ICAyIGZpbGVzIGNoYW5nZWQsIDIzIGluc2Vy
-dGlvbnMoKyksIDIzIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21mZC9t
-dDYzNjAtY29yZS5jIGIvZHJpdmVycy9tZmQvbXQ2MzYwLWNvcmUuYwo+IGluZGV4IDY2NWUyNmYu
-LjYyYmFlMWEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9tZmQvbXQ2MzYwLWNvcmUuYwo+ICsrKyBi
-L2RyaXZlcnMvbWZkL210NjM2MC1jb3JlLmMKPiBAQCAtMjEwLDkgKzIxMCw5IEBAIHN0YXRpYyBj
-b25zdCBzdHJ1Y3QgcmVnbWFwX2lycSBtdDYzNjBfcG11X2lycXNbXSA9ICB7Cj4gIAo+ICBzdGF0
-aWMgaW50IG10NjM2MF9wbXVfaGFuZGxlX3Bvc3RfaXJxKHZvaWQgKmlycV9kcnZfZGF0YSkKPiAg
-ewo+IC0Jc3RydWN0IG10NjM2MF9wbXVfZGF0YSAqbXBkID0gaXJxX2Rydl9kYXRhOwo+ICsJc3Ry
-dWN0IG10NjM2MF9kYXRhICpkYXRhID0gaXJxX2Rydl9kYXRhOwoKJ2RhdGEnIGlzIGEgdGVycmli
-bGUgdmFyaWFibGUgbmFtZS4KCkNvdWxkIHlvdSByZW5hbWUgdGhpcyAnZGRhdGEnIHBsZWFzZT8K
-ClsuLi5dCgo+IC1zdHJ1Y3QgbXQ2MzYwX3BtdV9kYXRhIHsKPiArc3RydWN0IG10NjM2MF9kYXRh
-IHsKClNhbWUgaGVyZSwgJ210NjM2MF9kZGF0YScuCgpPbmNlIHlvdSBtYWtlIHRoZXNlIGNoYW5n
-ZXMsIHlvdSBjYW4gYWRkIG15OgoKRm9yIG15IG93biByZWZlcmVuY2UgKGFwcGx5IHRoaXMgYXMt
-aXMgdG8geW91ciBzaWduLW9mZiBibG9jayk6CgogIEFja2VkLWZvci1NRkQtYnk6IExlZSBKb25l
-cyA8bGVlLmpvbmVzQGxpbmFyby5vcmc+CgotLSAKTGVlIEpvbmVzIFvmnY7nkLzmlq9dClNlbmlv
-ciBUZWNobmljYWwgTGVhZCAtIERldmVsb3BlciBTZXJ2aWNlcwpMaW5hcm8ub3JnIOKUgiBPcGVu
-IHNvdXJjZSBzb2Z0d2FyZSBmb3IgQXJtIFNvQ3MKRm9sbG93IExpbmFybzogRmFjZWJvb2sgfCBU
-d2l0dGVyIHwgQmxvZwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1tZWRpYXRlawo=
+On Mon, Jul 27, 2020 at 5:25 AM Neal Liu <neal.liu@mediatek.com> wrote:
+>
+> Control Flow Integrity(CFI) is a security mechanism that disallows
+> changes to the original control flow graph of a compiled binary,
+> making it significantly harder to perform such attacks.
+>
+> init_state_node() assign same function callback to different
+> function pointer declarations.
+>
+> static int init_state_node(struct cpuidle_state *idle_state,
+>                            const struct of_device_id *matches,
+>                            struct device_node *state_node) { ...
+>         idle_state->enter = match_id->data; ...
+>         idle_state->enter_s2idle = match_id->data; }
+>
+> Function declarations:
+>
+> struct cpuidle_state { ...
+>         int (*enter) (struct cpuidle_device *dev,
+>                       struct cpuidle_driver *drv,
+>                       int index);
+>
+>         void (*enter_s2idle) (struct cpuidle_device *dev,
+>                               struct cpuidle_driver *drv,
+>                               int index); };
+>
+> In this case, either enter() or enter_s2idle() would cause CFI check
+> failed since they use same callee.
+>
+> Align function prototype of enter() since it needs return value for
+> some use cases. The return value of enter_s2idle() is no
+> need currently.
+>
+> Signed-off-by: Neal Liu <neal.liu@mediatek.com>
+> Reviewed-by: Sami Tolvanen <samitolvanen@google.com>
+> ---
+>  drivers/acpi/processor_idle.c   |    6 ++++--
+>  drivers/cpuidle/cpuidle-tegra.c |    8 +++++---
+>  drivers/idle/intel_idle.c       |    6 ++++--
+>  include/linux/cpuidle.h         |    9 ++++++---
+>  4 files changed, 19 insertions(+), 10 deletions(-)
+>
+> diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
+> index 75534c5..6ffb6c9 100644
+> --- a/drivers/acpi/processor_idle.c
+> +++ b/drivers/acpi/processor_idle.c
+> @@ -655,8 +655,8 @@ static int acpi_idle_enter(struct cpuidle_device *dev,
+>         return index;
+>  }
+>
+> -static void acpi_idle_enter_s2idle(struct cpuidle_device *dev,
+> -                                  struct cpuidle_driver *drv, int index)
+> +static int acpi_idle_enter_s2idle(struct cpuidle_device *dev,
+> +                                 struct cpuidle_driver *drv, int index)
+>  {
+>         struct acpi_processor_cx *cx = per_cpu(acpi_cstate[index], dev->cpu);
+>
+> @@ -674,6 +674,8 @@ static void acpi_idle_enter_s2idle(struct cpuidle_device *dev,
+>                 }
+>         }
+>         acpi_idle_do_entry(cx);
+> +
+> +       return 0;
+>  }
+>
+>  static int acpi_processor_setup_cpuidle_cx(struct acpi_processor *pr,
+> diff --git a/drivers/cpuidle/cpuidle-tegra.c b/drivers/cpuidle/cpuidle-tegra.c
+> index 1500458..a12fb14 100644
+> --- a/drivers/cpuidle/cpuidle-tegra.c
+> +++ b/drivers/cpuidle/cpuidle-tegra.c
+> @@ -253,11 +253,13 @@ static int tegra_cpuidle_enter(struct cpuidle_device *dev,
+>         return err ? -1 : index;
+>  }
+>
+> -static void tegra114_enter_s2idle(struct cpuidle_device *dev,
+> -                                 struct cpuidle_driver *drv,
+> -                                 int index)
+> +static int tegra114_enter_s2idle(struct cpuidle_device *dev,
+> +                                struct cpuidle_driver *drv,
+> +                                int index)
+>  {
+>         tegra_cpuidle_enter(dev, drv, index);
+> +
+> +       return 0;
+>  }
+>
+>  /*
+> diff --git a/drivers/idle/intel_idle.c b/drivers/idle/intel_idle.c
+> index f449584..b178da3 100644
+> --- a/drivers/idle/intel_idle.c
+> +++ b/drivers/idle/intel_idle.c
+> @@ -175,13 +175,15 @@ static __cpuidle int intel_idle(struct cpuidle_device *dev,
+>   * Invoked as a suspend-to-idle callback routine with frozen user space, frozen
+>   * scheduler tick and suspended scheduler clock on the target CPU.
+>   */
+> -static __cpuidle void intel_idle_s2idle(struct cpuidle_device *dev,
+> -                                       struct cpuidle_driver *drv, int index)
+> +static __cpuidle int intel_idle_s2idle(struct cpuidle_device *dev,
+> +                                      struct cpuidle_driver *drv, int index)
+>  {
+>         unsigned long eax = flg2MWAIT(drv->states[index].flags);
+>         unsigned long ecx = 1; /* break on interrupt flag */
+>
+>         mwait_idle_with_hints(eax, ecx);
+> +
+> +       return 0;
+>  }
+>
+>  /*
+> diff --git a/include/linux/cpuidle.h b/include/linux/cpuidle.h
+> index ec2ef63..b65909a 100644
+> --- a/include/linux/cpuidle.h
+> +++ b/include/linux/cpuidle.h
+> @@ -65,10 +65,13 @@ struct cpuidle_state {
+>          * CPUs execute ->enter_s2idle with the local tick or entire timekeeping
+>          * suspended, so it must not re-enable interrupts at any point (even
+>          * temporarily) or attempt to change states of clock event devices.
+> +        *
+> +        * This callback may point to the same function as ->enter if all of
+> +        * the above requirements are met by it.
+>          */
+> -       void (*enter_s2idle) (struct cpuidle_device *dev,
+> -                             struct cpuidle_driver *drv,
+> -                             int index);
+> +       int (*enter_s2idle)(struct cpuidle_device *dev,
+> +                           struct cpuidle_driver *drv,
+> +                           int index);
+>  };
+>
+>  /* Idle State Flags */
+> --
+
+Applied as 5.9 material, thanks!
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
