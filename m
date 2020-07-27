@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EC20AC433E8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 09:07:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B5DDC433E5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 09:07:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B98482075A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 09:07:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1F60520714
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 09:07:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hgm9XXry";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="hPNIvNvp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B98482075A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e12kiHHX";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="P7yY6zTa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1F60520714
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,69 +26,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Mgdm3EQ+2T0J9YF0cxTsvNV0l4zjgr/R72N+B9qPmFk=; b=hgm9XXrysNg5+b+Mav5jaWxSM
-	cJh6tEHzDUXuyTP2RmCrZEGCx14O1noUIlks3tQjtC1G19wBP6JfbBR0JDQdYZI/D+YbxGdkbmbYq
-	AnhvT31LPoBv29OWv9CPtnTxwJjFO3xSjrDbJItlHCz1URLTYLZ3/gJ1cE4GS5ko45IzNdwaQzxos
-	Gzrwky+x8ZU1AAx59qM0bcSDMnLNabg7526YkUd18c5ALi5NxVoN5Vrhi+1umTE6cX2ISHsasjKxF
-	dcEDFS4aMuLoEmxp4/9lVaNqv3v/1+7j303VKxgCiULNKjBkzoPeAo3vgcQSfsl6SMAYQbHAKYh6l
-	MrK0PG/rg==;
+	 bh=EmsOs84EjkQLRTkeaFSsMtQ4WV9z5pUHwVjuUmmu3LY=; b=e12kiHHX7PzVQuRBrt1mm62Cn
+	UGTFSGvszlYp68jFKnhmz9ewJumvpjTYyuacS1UTV+YHk4nLQJjBwDKmEJLtFIVOVbdVmL5BYeLzR
+	f569lGf+cKpCZva2T+0qbnkY00QLbzpByhbxbwn/4hCb5zBPPlagxJN9i+ZMgoQH8NzT2aUdIRU1N
+	OqhSQ2lreP+6M4Y1UE6pQXLwfep1yu00K5lkuNKvpGZLDuOt4d7cJ8a5i62tFxqTAvA3n4X7BJN7o
+	UnhwkUov1dV57IiL5QP4zXUguLVC9CovOTuC1OIj+vWn/7LKC98RYOoFvpOPVG14ABoq/u3ApD6Z0
+	J83grPfnA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jzz66-0005qY-Sx; Mon, 27 Jul 2020 09:07:02 +0000
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343])
+	id 1jzz63-0005nf-1g; Mon, 27 Jul 2020 09:06:59 +0000
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jzz64-0005o1-Fc
- for linux-mediatek@lists.infradead.org; Mon, 27 Jul 2020 09:07:01 +0000
-Received: by mail-ot1-x343.google.com with SMTP id r21so1264868ota.10
- for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2020 02:07:00 -0700 (PDT)
+ id 1jzz5z-0005kO-1L
+ for linux-mediatek@lists.infradead.org; Mon, 27 Jul 2020 09:06:57 +0000
+Received: by mail-oi1-x241.google.com with SMTP id k4so13743050oik.2
+ for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2020 02:06:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=HYKgToXHXhx0gJz2aTB9SU//eyR38G50GGbzq2n5Ipw=;
- b=hPNIvNvpFOTTuiyz1gtUwXItKh0lDha0D8yxF72PrmXRN/3g7ABWPSATcOBc0/4qQ+
- Oi/jJNcK71J61tBAoBRZSwlh2A8FEOKUZc+dPww7gaiKNe6LU+hwXFjbVFcVKeuGUK+n
- qNlAEZxVzu9wK21hZVA2GI93Vf63+n9BtOuwc=
+ :cc; bh=BmzwV5D0tUNlvhJVCS/jJG+N+MKJEeKpMNP1+n+ZO3A=;
+ b=P7yY6zTapyco0YgX6oqY8Ipe9DxBcbIrSEBNdF5idPlppIjjkhFh/DDM5aQG8EEmBZ
+ 8jO2IM9ogz+hF/nUTPtPCFqvvIfasw58AwXAp5nJmEFlUcUZdrrgKB2KpyB7up8S6IPc
+ wBtwdwDZ0LHbDNJGM42HFGYWjZoK+o5CCdn/I=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=HYKgToXHXhx0gJz2aTB9SU//eyR38G50GGbzq2n5Ipw=;
- b=nl43XmGk/KjQyw1XZi2lyYnHmudwGy5ZlR83WWFKwtoUhDImbuKlam/78iAYShKXar
- IPtajMyjMIaYbQVO//Zyl0DKpwiGbYWOGDN4pXokFOHbP1EMdfALNtFHB9lC48q4s1kD
- ai0qiupEMROMLrCVjDzNF/ByHN5iIezgYy3Qrn2k+RarFitEacEIMdWN+v7AEbT3YQ9o
- koAW8a8L0rDxBHLNI6IWt8u/sEyHVul20U9R9IKoSA3sJ7iNj2qYlX4Jhj0tV5Qa9WY1
- s+Iq3fGikr0dBnl5fotGb1+9wv1MVxwzRAR9uWdKfdISnpqYM9V7zGSz6Ma6vUS61Ovd
- pjYQ==
-X-Gm-Message-State: AOAM531Fv6Q35KOQr8WTdwA+xLOrJQ51kAkPBhg6DRXVv1/KgOyJ/GVx
- SFxnEYcSpEVKczRAK1B7yG5/57xnKdA=
-X-Google-Smtp-Source: ABdhPJyLkqOnkZcKijRtdatLbz/K9kBHUGBNIUSnQYaxSK8U2C0rawR6SWY36jCXnMdf2I/keZ5f1Q==
-X-Received: by 2002:a05:6830:1510:: with SMTP id
- k16mr19304888otp.336.1595840818330; 
- Mon, 27 Jul 2020 02:06:58 -0700 (PDT)
-Received: from mail-ot1-f49.google.com (mail-ot1-f49.google.com.
- [209.85.210.49])
- by smtp.gmail.com with ESMTPSA id c135sm1957230oig.38.2020.07.27.02.06.56
+ bh=BmzwV5D0tUNlvhJVCS/jJG+N+MKJEeKpMNP1+n+ZO3A=;
+ b=bghrC95aQ4bbwpPSPuiXgDdCaG44lGC9I/tc8anD+L8CAxl5awAYtScGfLJT9S9v3f
+ lOqhBaABQFanb5oJrp26LIYL6KzWmzMKuc3v3KF7Hmm7KcWrEya6MNv+zodT939M3lHe
+ N7o2sBS8ibYznwqHp80QSFsD6UC2oPkikTHb3t9THF1/6/Rhtr6XTNWXxnfpVlE5pQLw
+ QYxsVDAsg91WfCeyC++ZS+J1UmHor54L3numg8w8sRjKAjIFPw6RFq47i2hmIwMfqORY
+ gFQiduDga957uYnTO5Hp0L65RDh4RnQOPhh76eko44SSJuHmZW49ra7CAZlBGBUWSaBX
+ Xhrg==
+X-Gm-Message-State: AOAM5316nb+jJ0xpdpI913aiTuMV0zS/zJL4rmV6dd29I9/IEJx9h2qP
+ teZzI3QS2BmECvfGo0THeLMcGcUIcLw=
+X-Google-Smtp-Source: ABdhPJzBZtSyBHaKJF/DDJLbwFT3oU5mo2yfTk4FB5Aza8/b1NwZj/oql6W7Y81QbftrvffDp3m4WA==
+X-Received: by 2002:a05:6808:918:: with SMTP id
+ w24mr16978521oih.30.1595840811157; 
+ Mon, 27 Jul 2020 02:06:51 -0700 (PDT)
+Received: from mail-oi1-f169.google.com (mail-oi1-f169.google.com.
+ [209.85.167.169])
+ by smtp.gmail.com with ESMTPSA id z6sm1401564oot.18.2020.07.27.02.06.48
  for <linux-mediatek@lists.infradead.org>
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 Jul 2020 02:06:57 -0700 (PDT)
-Received: by mail-ot1-f49.google.com with SMTP id 93so1622157otx.2
- for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2020 02:06:56 -0700 (PDT)
-X-Received: by 2002:a9d:5609:: with SMTP id e9mr18648943oti.141.1595840815529; 
- Mon, 27 Jul 2020 02:06:55 -0700 (PDT)
+ Mon, 27 Jul 2020 02:06:49 -0700 (PDT)
+Received: by mail-oi1-f169.google.com with SMTP id k6so13716660oij.11
+ for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2020 02:06:48 -0700 (PDT)
+X-Received: by 2002:aca:b6c3:: with SMTP id g186mr16300307oif.55.1595840807593; 
+ Mon, 27 Jul 2020 02:06:47 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200713060842.471356-1-acourbot@chromium.org>
- <20200713060842.471356-8-acourbot@chromium.org>
- <CAAEAJfA4Po9R25CzBxiFAV=7-7rPujLc79zLnXyXWk7xNbBtYA@mail.gmail.com>
-In-Reply-To: <CAAEAJfA4Po9R25CzBxiFAV=7-7rPujLc79zLnXyXWk7xNbBtYA@mail.gmail.com>
+ <20200713060842.471356-4-acourbot@chromium.org>
+ <CAAEAJfBO1Sih3r_RqxYCLRxtx6SoDq674zrvqhJiEBJeiDAtvw@mail.gmail.com>
+In-Reply-To: <CAAEAJfBO1Sih3r_RqxYCLRxtx6SoDq674zrvqhJiEBJeiDAtvw@mail.gmail.com>
 From: Alexandre Courbot <acourbot@chromium.org>
-Date: Mon, 27 Jul 2020 18:06:42 +0900
-X-Gmail-Original-Message-ID: <CAPBb6MUsSzrZAZdeH+at+9pf5sVa0ghE982ktnPW8rB91pYt6Q@mail.gmail.com>
-Message-ID: <CAPBb6MUsSzrZAZdeH+at+9pf5sVa0ghE982ktnPW8rB91pYt6Q@mail.gmail.com>
-Subject: Re: [PATCH v3 07/16] media: mtk-vcodec: venc: specify supported
- formats per-chip
+Date: Mon, 27 Jul 2020 18:06:34 +0900
+X-Gmail-Original-Message-ID: <CAPBb6MV=oo-a9POY_qedcJYU_qSJ695FwJthBrp3SQUK+g0JvA@mail.gmail.com>
+Message-ID: <CAPBb6MV=oo-a9POY_qedcJYU_qSJ695FwJthBrp3SQUK+g0JvA@mail.gmail.com>
+Subject: Re: [PATCH v3 03/16] media: mtk-vcodec: add SCP firmware ops
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200727_050700_683176_3B04D519 
-X-CRM114-Status: GOOD (  24.30  )
+X-CRM114-CacheID: sfid-20200727_050655_175593_CC9D1935 
+X-CRM114-Status: GOOD (  30.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,93 +113,185 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jul 26, 2020 at 11:29 PM Ezequiel Garcia
+On Thu, Jul 23, 2020 at 6:40 AM Ezequiel Garcia
 <ezequiel@vanguardiasur.com.ar> wrote:
->
-> Hi Alexandre,
->
-> Last review on my side, this series looks mostly good.
-
-Thanks for taking the time to look at it! I know it's not the best
-looking code out there. ^_^;
-
 >
 > On Mon, 13 Jul 2020 at 03:09, Alexandre Courbot <acourbot@chromium.org> wrote:
 > >
-> > Different chips have different supported bitrate ranges. Move the list
->
-> s/bitrate ranges/formats
-
-Ack.
-
->
-> > of supported formats to the platform data, and split the output and
-> > capture formats into two lists to make it easier to find the default
-> > format for each queue.
+> > From: Yunfei Dong <yunfei.dong@mediatek.com>
 > >
+> > Add support for communicating with the SCP firmware, which will be used
+> > by MT8183.
+> >
+> > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> > [acourbot: refactor, cleanup and split]
+> > Co-developed-by: Alexandre Courbot <acourbot@chromium.org>
 > > Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
 > > Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
 > > ---
-> >  .../platform/mtk-vcodec/mtk_vcodec_drv.h      |   8 ++
-> >  .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 122 +++++++-----------
-> >  .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  40 ++++++
-> >  3 files changed, 95 insertions(+), 75 deletions(-)
+> >  drivers/media/platform/Kconfig                |  1 +
+> >  .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  3 +
+> >  .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  3 +
+> >  .../media/platform/mtk-vcodec/mtk_vcodec_fw.c | 56 +++++++++++++++++++
+> >  .../media/platform/mtk-vcodec/mtk_vcodec_fw.h |  2 +
+> >  5 files changed, 65 insertions(+)
 > >
-> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > index b8f913de8d80..59b4b750666b 100644
-> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > @@ -313,6 +313,10 @@ enum mtk_chip {
-> >   * @has_lt_irq: whether the encoder uses the LT irq
-> >   * @min_birate: minimum supported encoding bitrate
-> >   * @max_bitrate: maximum supported encoding bitrate
-> > + * @capture_formats: array of supported capture formats
-> > + * @num_capture_formats: number of entries in capture_formats
-> > + * @output_formats: array of supported output formats
-> > + * @num_output_formats: number of entries in output_formats
-> >   */
-> >  struct mtk_vcodec_enc_pdata {
-> >         enum mtk_chip chip;
-> > @@ -321,6 +325,10 @@ struct mtk_vcodec_enc_pdata {
-> >         bool has_lt_irq;
-> >         unsigned long min_bitrate;
-> >         unsigned long max_bitrate;
-> > +       const struct mtk_video_fmt *capture_formats;
-> > +       size_t num_capture_formats;
-> > +       const struct mtk_video_fmt *output_formats;
-> > +       size_t num_output_formats;
+> > diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
+> > index c57ee78fa99d..f0dbe048efea 100644
+> > --- a/drivers/media/platform/Kconfig
+> > +++ b/drivers/media/platform/Kconfig
+> > @@ -256,6 +256,7 @@ config VIDEO_MEDIATEK_VCODEC
+> >         select VIDEOBUF2_DMA_CONTIG
+> >         select V4L2_MEM2MEM_DEV
+> >         select VIDEO_MEDIATEK_VPU
+> > +       select MTK_SCP
+> >         help
+> >             Mediatek video codec driver provides HW capability to
+> >             encode and decode in a range of video formats
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> > index 4f07a5fcce7f..5b5765b98e57 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> > @@ -225,6 +225,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+> >         if (!of_property_read_u32(pdev->dev.of_node, "mediatek,vpu",
+> >                                   &rproc_phandle)) {
+> >                 fw_type = VPU;
+> > +       } else if (!of_property_read_u32(pdev->dev.of_node, "mediatek,scp",
+> > +                                        &rproc_phandle)) {
+> > +               fw_type = SCP;
+> >         } else {
+> >                 mtk_v4l2_err("Could not get vdec IPI device");
+> >                 return -ENODEV;
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> > index 4340ea10afd0..42530cd01a30 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> > @@ -233,6 +233,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+> >         if (!of_property_read_u32(pdev->dev.of_node, "mediatek,vpu",
+> >                                   &rproc_phandle)) {
+> >                 fw_type = VPU;
+> > +       } else if (!of_property_read_u32(pdev->dev.of_node, "mediatek,scp",
+> > +                                        &rproc_phandle)) {
+> > +               fw_type = SCP;
+> >         } else {
+> >                 mtk_v4l2_err("Could not get venc IPI device");
+> >                 return -ENODEV;
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
+> > index 967bb100a990..f2a62ea62fc6 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
+> > @@ -19,6 +19,7 @@ struct mtk_vcodec_fw {
+> >         enum mtk_vcodec_fw_type type;
+> >         const struct mtk_vcodec_fw_ops *ops;
+> >         struct platform_device *pdev;
+> > +       struct mtk_scp *scp;
 > >  };
 > >
-> >  /**
-> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> > index 50ba9da59153..05743a745a11 100644
-> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> > @@ -23,47 +23,9 @@
-> >  #define DFT_CFG_WIDTH  MTK_VENC_MIN_W
-> >  #define DFT_CFG_HEIGHT MTK_VENC_MIN_H
-> >  #define MTK_MAX_CTRLS_HINT     20
-> > -#define OUT_FMT_IDX            0
-> > -#define CAP_FMT_IDX            4
-> > -
+> >  static int mtk_vcodec_vpu_load_firmware(struct mtk_vcodec_fw *fw)
+> > @@ -71,6 +72,48 @@ static const struct mtk_vcodec_fw_ops mtk_vcodec_vpu_msg = {
+> >         .ipi_send = mtk_vcodec_vpu_ipi_send,
+> >  };
 > >
-> >  static void mtk_venc_worker(struct work_struct *work);
+> > +static int mtk_vcodec_scp_load_firmware(struct mtk_vcodec_fw *fw)
+> > +{
+> > +       return rproc_boot(scp_get_rproc(fw->scp));
+> > +}
+> > +
+> > +static unsigned int mtk_vcodec_scp_get_vdec_capa(struct mtk_vcodec_fw *fw)
+> > +{
+> > +       return scp_get_vdec_hw_capa(fw->scp);
+> > +}
+> > +
+> > +static unsigned int mtk_vcodec_scp_get_venc_capa(struct mtk_vcodec_fw *fw)
+> > +{
+> > +       return scp_get_venc_hw_capa(fw->scp);
+> > +}
+> > +
+> > +static void *mtk_vcodec_vpu_scp_dm_addr(struct mtk_vcodec_fw *fw,
+> > +                                       u32 dtcm_dmem_addr)
+> > +{
+> > +       return scp_mapping_dm_addr(fw->scp, dtcm_dmem_addr);
+> > +}
+> > +
+> > +static int mtk_vcodec_scp_set_ipi_register(struct mtk_vcodec_fw *fw, int id,
+> > +               mtk_vcodec_ipi_handler handler, const char *name, void *priv)
+> > +{
+> > +       return scp_ipi_register(fw->scp, id, handler, priv);
+> > +}
+> > +
+> > +static int mtk_vcodec_scp_ipi_send(struct mtk_vcodec_fw *fw, int id, void *buf,
+> > +               unsigned int len, unsigned int wait)
+> > +{
+> > +       return scp_ipi_send(fw->scp, id, buf, len, wait);
+> > +}
+> > +
+> > +static const struct mtk_vcodec_fw_ops mtk_vcodec_rproc_msg = {
+> > +       .load_firmware = mtk_vcodec_scp_load_firmware,
+> > +       .get_vdec_capa = mtk_vcodec_scp_get_vdec_capa,
+> > +       .get_venc_capa = mtk_vcodec_scp_get_venc_capa,
+> > +       .map_dm_addr = mtk_vcodec_vpu_scp_dm_addr,
+> > +       .ipi_register = mtk_vcodec_scp_set_ipi_register,
+> > +       .ipi_send = mtk_vcodec_scp_ipi_send,
+> > +};
+> > +
+> >  static void mtk_vcodec_reset_handler(void *priv)
+> >  {
+> >         struct mtk_vcodec_dev *dev = priv;
+> > @@ -94,6 +137,7 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
+> >         const struct mtk_vcodec_fw_ops *ops;
+> >         struct mtk_vcodec_fw *fw;
+> >         struct platform_device *fw_pdev = NULL;
+> > +       struct mtk_scp *scp = NULL;
 > >
-> > -static const struct mtk_video_fmt mtk_video_formats[] = {
-> > -       {
-> > -               .fourcc = V4L2_PIX_FMT_NV12M,
-> > -               .type = MTK_FMT_FRAME,
-> > -               .num_planes = 2,
+> >         switch (type) {
+> >         case VPU:
+> > @@ -106,6 +150,14 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
+> >                 vpu_wdt_reg_handler(fw_pdev, mtk_vcodec_reset_handler,
+> >                                     dev, rst_id);
+> >                 break;
+> > +       case SCP:
+> > +               ops = &mtk_vcodec_rproc_msg;
+> > +               scp = scp_get(dev->plat_dev);
+> > +               if (!scp) {
+> > +                       mtk_v4l2_err("could not get vdec scp handle");
+> > +                       return ERR_PTR(-EPROBE_DEFER);
 >
-> Again, not an issue with your patch, so feel free to ignore this.
->
-> You may avoid keeping track of num_planes (or any other
-> property of the pixel format) and use v4l2_fill_pixfmt_mp
-> to get all the information you need.
+> I suspect the EPROBE_DEFER should be returned by scp_get
+> itself instead.
 
-That's a good idea. Let's see if I can come with an extra patch in a
-way that does not prevent the already acked patches from being merged.
-:)
+scp_get() is a function of of mtk_scp remoteproc driver, so even if we
+decide this is desirable (which I am not convinced, as the current
+code leaves the freedom to decide how the absence of SCP should be
+interpreted to the driver) this is beyond the scope of this series.
+
+>
+> > +               }
+> > +               break;
+> >         default:
+> >                 mtk_v4l2_err("invalid vcodec fw type");
+> >                 return ERR_PTR(-EINVAL);
+> > @@ -118,6 +170,7 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
+> >         fw->type = type;
+> >         fw->ops = ops;
+> >         fw->pdev = fw_pdev;
+> > +       fw->scp = scp;
+> >
+> >         return fw;
+> >  }
+> > @@ -129,6 +182,9 @@ void mtk_vcodec_fw_release(struct mtk_vcodec_fw *fw)
+> >         case VPU:
+> >                 put_device(&fw->pdev->dev);
+> >                 break;
+> > +       case SCP:
+> > +               scp_put(fw->scp);
+>
+> Interestingly scp_put is a wrapper around put_device :-)
+> Perhaps not a reason to violate the layering.
+
+I don't see what is wrong with the current code? If SCP is in use, we
+use SCP functions to manage it. If in the future SCP involves in such
+a way that we need to do more than a put_device(), we are covered. Or
+am I missing something?
 
 _______________________________________________
 Linux-mediatek mailing list
