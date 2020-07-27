@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 94BF3C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 07:19:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 98429C433EC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 07:19:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5F8F4207BB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 07:19:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 64AC62072E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 07:19:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CxsR09af";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="f8QOemF0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5F8F4207BB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="k9wHlpnN";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="eIAnJEmw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 64AC62072E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=67kIUi79sh6JiYwulFupxgPtAxnB8rnY/ZUh7nmNOf8=; b=CxsR09afUW2R9et+WybC9O5r/
-	s02CoBSqLdZvJbkGf3pIb6ZWhbCsHNl8L30ufszasGd2vPA9W9qVCu7a2xrTL84pcJ/daq179gty+
-	yJf+i6KNV76458Az+cYy0MACX7D4un3Zy7d6+lxSExjUJBuyCjTmU2Mrgmajdw6QxHbLNDdUfpgVn
-	kb5/m4fxAvPg+2vRKlC8QzyESDgTDE2Xjr+lYKkYj5rxOiZ82wd9SzTQifMUryAC/u6PiUnNRFin3
-	mZbufkYyayskyI4CKXxFEjZIN5mLG5z4W0MXrYYjze18Jjt7gJJN23Imx0JzJjhuJ9DlU9ISO1tkd
-	Dv7/AT8nQ==;
+	 bh=RV8tHWI9+jLAm4EPA1mPjcBxGqUmnbQf08RPbuDbC44=; b=k9wHlpnNmYSeC6ziSpyq8CXB5
+	mpAu3b3q832PhZ61negcW2k0792lkPV3ccvJOY5dmKSGsWoNe0pfrTCjp/mkoWAj4AwVGRXYZ463C
+	+7oVtDb+7hvUks5hVOGxnh0CAXEwFmSLMaplvpDY6TZwn+3Zc7j90TG1FKQCK3t87uNxx6JNNx9Fd
+	Q02ihUG1wXI/2dkaYmGDbsacoeB6Q4jMyETDP8l38HILMfJKuoVERRDpiK3JJggifN4WPK4kgNUlm
+	NoHmy1ay1gBcU/5E2mm3rYr+YbhX2ITHfigyvRWYtPkWx/sgKkPWYZhOW1zOJsYw1r9iPNrkms9ZU
+	zCOUGZVRw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jzxPS-0006yg-3E; Mon, 27 Jul 2020 07:18:54 +0000
+	id 1jzxPZ-00071X-HU; Mon, 27 Jul 2020 07:19:01 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jzxPP-0006wk-2G; Mon, 27 Jul 2020 07:18:52 +0000
-X-UUID: 0d7e52adc4314189afa57c0c280ed589-20200726
+ id 1jzxPQ-0006we-Gm; Mon, 27 Jul 2020 07:18:53 +0000
+X-UUID: 830a2bea1ef64c7cbeda42cdb424e455-20200726
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=kMaydL2v9BshbyUReMb3wcjNfslH3HmUZia9G0XRnJc=; 
- b=f8QOemF0Ybi/R3Y2gLV5RrHQgGd+/QS0DvA6FC9LbwHengawHYgF+FJWwfSogANP+W+OqSti5+7s1a33onQGtna3AAXxOFSlbAVpbudpfpxOSTqgEBQm1DNSW0SmDrRm32K7zgh6/Btvths5HYA6bSJBIQPp4iCdJTmGtT7yw/U=;
-X-UUID: 0d7e52adc4314189afa57c0c280ed589-20200726
+ bh=udxjwRcR6H9qN2bTMph2UQxIL1NJUT+zyNYINSQ2gPM=; 
+ b=eIAnJEmw/GsQ+kdBEAbrFuvN5VbRhl/abdWJ0aYoCSY1tKRys6Mhm4pC0+3y/NSJQzB4qi+67CVz9oSgF1vmNR8KxSB4LysIORdwVa6TbtjtmoIvQEwPxQz24P/YUCjLKUSf6rTKgBHowFO7MXLKaDTpqUGc6Zenkl6CDlPz1+I=;
+X-UUID: 830a2bea1ef64c7cbeda42cdb424e455-20200726
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 714515834; Sun, 26 Jul 2020 23:18:50 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ with ESMTP id 2030236087; Sun, 26 Jul 2020 23:18:50 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 27 Jul 2020 00:16:44 -0700
+ 15.0.1497.2; Mon, 27 Jul 2020 00:16:40 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 27 Jul 2020 15:16:43 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 27 Jul 2020 15:16:36 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 27 Jul 2020 15:16:43 +0800
+ Transport; Mon, 27 Jul 2020 15:16:36 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Felipe Balbi <balbi@kernel.org>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>
-Subject: [PATCH 11/11] usb: mtu3: simplify mtu3_req_complete()
-Date: Mon, 27 Jul 2020 15:15:00 +0800
-Message-ID: <1595834101-13094-11-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 05/11] usb: mtu3: introduce a funtion to check maximum speed
+Date: Mon, 27 Jul 2020 15:14:54 +0800
+Message-ID: <1595834101-13094-5-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1595834101-13094-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1595834101-13094-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: B2FBB65A761F5069A6267965A8BC72CF8580797430EE14138B9473B4676492382000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200727_031851_245643_69A46309 
-X-CRM114-Status: UNSURE (   9.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200727_031852_744850_C98AEAE5 
+X-CRM114-Status: GOOD (  13.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,52 +92,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use argument req directly instead of mreq->request, they
-are the same usb request.
+The max_speed got from DTS may be not supported by the
+hardware, so need check it, and assign a proper default
+value. And make it clear by introducing a funtion.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/mtu3/mtu3_gadget.c | 17 +++++++----------
- 1 file changed, 7 insertions(+), 10 deletions(-)
+ drivers/usb/mtu3/mtu3_core.c | 48 ++++++++++++++++++++++++++------------------
+ 1 file changed, 28 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
-index 73a8536..1de5c9a 100644
---- a/drivers/usb/mtu3/mtu3_gadget.c
-+++ b/drivers/usb/mtu3/mtu3_gadget.c
-@@ -15,15 +15,13 @@ void mtu3_req_complete(struct mtu3_ep *mep,
- __releases(mep->mtu->lock)
- __acquires(mep->mtu->lock)
+diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
+index ece5b3e..9694813 100644
+--- a/drivers/usb/mtu3/mtu3_core.c
++++ b/drivers/usb/mtu3/mtu3_core.c
+@@ -573,9 +573,6 @@ static void mtu3_set_speed(struct mtu3 *mtu)
  {
--	struct mtu3_request *mreq;
--	struct mtu3 *mtu;
-+	struct mtu3_request *mreq = to_mtu3_request(req);
-+	struct mtu3 *mtu = mreq->mtu;
+ 	void __iomem *mbase = mtu->mac_base;
  
--	mreq = to_mtu3_request(req);
- 	list_del(&mreq->list);
--	if (mreq->request.status == -EINPROGRESS)
--		mreq->request.status = status;
-+	if (req->status == -EINPROGRESS)
-+		req->status = status;
- 
--	mtu = mreq->mtu;
- 	trace_mtu3_req_complete(mreq);
- 	spin_unlock(&mtu->lock);
- 
-@@ -31,11 +29,10 @@ void mtu3_req_complete(struct mtu3_ep *mep,
- 	if (mep->epnum)
- 		usb_gadget_unmap_request(&mtu->g, req, mep->is_in);
- 
--	dev_dbg(mtu->dev, "%s complete req: %p, sts %d, %d/%d\n", mep->name,
--		req, req->status, mreq->request.actual, mreq->request.length);
+-	if (!mtu->is_u3_ip && (mtu->max_speed > USB_SPEED_HIGH))
+-		mtu->max_speed = USB_SPEED_HIGH;
 -
--	usb_gadget_giveback_request(&mep->ep, &mreq->request);
-+	dev_dbg(mtu->dev, "%s complete req: %p, sts %d, %d/%d\n",
-+		mep->name, req, req->status, req->actual, req->length);
- 
-+	usb_gadget_giveback_request(&mep->ep, req);
- 	spin_lock(&mtu->lock);
+ 	if (mtu->max_speed == USB_SPEED_FULL) {
+ 		/* disable U3 SS function */
+ 		mtu3_clrbits(mbase, U3D_USB3_CONFIG, USB3_EN);
+@@ -761,6 +758,32 @@ static irqreturn_t mtu3_irq(int irq, void *data)
+ 	return IRQ_HANDLED;
  }
+ 
++static void mtu3_check_params(struct mtu3 *mtu)
++{
++	/* check the max_speed parameter */
++	switch (mtu->max_speed) {
++	case USB_SPEED_FULL:
++	case USB_SPEED_HIGH:
++	case USB_SPEED_SUPER:
++	case USB_SPEED_SUPER_PLUS:
++		break;
++	default:
++		dev_err(mtu->dev, "invalid max_speed: %s\n",
++			usb_speed_string(mtu->max_speed));
++		fallthrough;
++	case USB_SPEED_UNKNOWN:
++		/* default as SSP */
++		mtu->max_speed = USB_SPEED_SUPER_PLUS;
++		break;
++	}
++
++	if (!mtu->is_u3_ip && (mtu->max_speed > USB_SPEED_HIGH))
++		mtu->max_speed = USB_SPEED_HIGH;
++
++	dev_info(mtu->dev, "max_speed: %s\n",
++		 usb_speed_string(mtu->max_speed));
++}
++
+ static int mtu3_hw_init(struct mtu3 *mtu)
+ {
+ 	u32 value;
+@@ -776,6 +799,8 @@ static int mtu3_hw_init(struct mtu3 *mtu)
+ 	dev_info(mtu->dev, "IP version 0x%x(%s IP)\n", mtu->hw_version,
+ 		mtu->is_u3_ip ? "U3" : "U2");
+ 
++	mtu3_check_params(mtu);
++
+ 	mtu3_device_reset(mtu);
+ 
+ 	ret = mtu3_device_enable(mtu);
+@@ -857,23 +882,6 @@ int ssusb_gadget_init(struct ssusb_mtk *ssusb)
+ 	mtu->ssusb = ssusb;
+ 	mtu->max_speed = usb_get_maximum_speed(dev);
+ 
+-	/* check the max_speed parameter */
+-	switch (mtu->max_speed) {
+-	case USB_SPEED_FULL:
+-	case USB_SPEED_HIGH:
+-	case USB_SPEED_SUPER:
+-	case USB_SPEED_SUPER_PLUS:
+-		break;
+-	default:
+-		dev_err(dev, "invalid max_speed: %s\n",
+-			usb_speed_string(mtu->max_speed));
+-		/* fall through */
+-	case USB_SPEED_UNKNOWN:
+-		/* default as SSP */
+-		mtu->max_speed = USB_SPEED_SUPER_PLUS;
+-		break;
+-	}
+-
+ 	dev_dbg(dev, "mac_base=0x%p, ippc_base=0x%p\n",
+ 		mtu->mac_base, mtu->ippc_base);
  
 -- 
 1.9.1
