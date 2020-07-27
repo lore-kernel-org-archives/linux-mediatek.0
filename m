@@ -2,23 +2,22 @@ Return-Path: <SRS0=rPqH=BG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B5FFC433FB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 14:25:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E0B2FC433E3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 14:47:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BBB1A2083B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 14:25:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A26DD2083B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 14:47:48 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MeeDJZK2";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=vanguardiasur-com-ar.20150623.gappssmtp.com header.i=@vanguardiasur-com-ar.20150623.gappssmtp.com header.b="hl+5ogjK"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BBB1A2083B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ev77FsGT";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="TF2dtyfs"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A26DD2083B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,63 +25,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8i9+kScKHEdDLAU/p5GvzispqnykEiwABKSsRXUQ+GM=; b=MeeDJZK2NPXCfT3gs3QLGnbDV
-	PEuDYe2+5mpeGi9wCBJV3i3q32z724dZHNT+nuAtRkkgV/80n8/7rBOXC4a0/r0oACZuom0ZYLHar
-	UNyPIpOJTUy6lvkuJ2NSsp28fgiS9/xB1AB+0am55cBkgFvjNY/x73KGCx70EY3pMMozfqKVvuEBN
-	iuK5N7S5KXPh+Jf6kj1JN0equegpzjFxp0BIjZPsf52OoMzidhmiixq9rGDd3CHRuUWXfL9JxoKQ/
-	JCG8WS3A/sai+sEqSapRDMwyOTG8A5LZEeQZ1WzQD3WxEUTTlA++2bZM1ZMry+UZet2G+mgJm9DQt
-	PBdZQ/69w==;
+	 bh=H2acevGFykkpdACFHh2kVIJe408frEI99nnMd3CNQgw=; b=ev77FsGTSQWQxeWkfAUlVCTqn
+	v6XH9xNn2s6/ogWwipVJcnI5woPaHggts9YP5jUYAFHt98oI62BDcihj7hW0SgqezVdJAU/2JcqwF
+	yw4d6OlJD56xFWFKXOk9n8Pguk6feCEL60eqJ763WKFczVY0Rv4hohH+dBiZgx2AoNnHWrfD6zteQ
+	A7NRRgSnxR7P4kZtRFzBhiA1UwrJH2X+wQ4CdHxcVB7olNJmzq6ICSU61fVbZyo6iri9W1wMpfQmg
+	mCtg12COFuX9XRDzh8mEH3PwLNZP4kWBARXyESRwHVaEf/CNfk0RfcIBa3pBFP9L2f47d6ZH82HOH
+	r71NZNmag==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k0445-0008GQ-T0; Mon, 27 Jul 2020 14:25:17 +0000
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541])
+	id 1k04Pf-0002qF-VY; Mon, 27 Jul 2020 14:47:36 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k0443-0008Fq-Nm
- for linux-mediatek@lists.infradead.org; Mon, 27 Jul 2020 14:25:17 +0000
-Received: by mail-ed1-x541.google.com with SMTP id m20so2796097eds.2
- for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2020 07:25:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=g14QqnTHLOPAHWr5goVnQrlCiDiAZFmF+iN/UvPR0Lc=;
- b=hl+5ogjK7IldBDDZ7XnGQXWGTQg1HFCkhzQA5i2OIUMQqtfWKI92Z2g24C/mVgkwJ6
- w1B8RHgsyDI5IFLHtykTP+D8Gn15XZihxf0vB8y1BYu2SCujY/Hht4zhG+x4kwQB+zpy
- oeK6O0irb3PJzMw7rUblSt2VcKkZhnLCUJJJdKx20tV1jlqdPicjzHwAFDcubui4THX+
- Y5NkJpLascmg6rFD0b4wqNpxfLq+kLbowXnVUnXo5FDDkJ/6OXTOmr1yUz28zxQzfsmO
- 3yzpXcBLzn0mSVxj+NSE/giLM1LL+az2+oTkIoA+2fJVvMtMsh3Jk6GEPmHK/5Jny+vd
- O3Tw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=g14QqnTHLOPAHWr5goVnQrlCiDiAZFmF+iN/UvPR0Lc=;
- b=RD0GgSrWjrKs9aaImB4VZ4CIcqo/0th36xNel5FUFnjtfX5KZTSYOH8ZhoSpINQJJO
- u6VtjbGurOF+nkmWt1L4r3KPpINy7+aSIlkMdQgz1ORAOxdTFE13xfxkjPhicpz0oU9V
- 1wKEAJJ4dRRdL20J2jZkO00Agbv4+OM6umuv6kzcc7SGfeZiNAw9HP53GaNczS5mwAm2
- HouwwI/ZXpYh7a63WIaNTKoQf2umv6OTaGFXvjpk009H/bwcW9hi2mT4/0l+S0uZHgS7
- 5sds08s3suMmhKXw4FopQS5IsOZub9rqaFugm/8lJ64Y5dgeRHgMWNFhxq/2YM868cv8
- IufA==
-X-Gm-Message-State: AOAM533DuJQkoiCLrmWqDCDf/ZvamX4EpLZWYNin+qaS4Cz4SMcqc6AG
- urM3IIDNTOj4dFxdeu0L7ZKWd+FfSGIwWKdmThhs2A==
-X-Google-Smtp-Source: ABdhPJwMS+Mz+APqYVPD52Jzfrdlhg4EeCBUEN4Ms2XLW1umGUb7K5mbxV7KbmAqRW9beslFqj6NuMeaYJtlnNEqmeQ=
-X-Received: by 2002:a05:6402:1bdd:: with SMTP id
- ch29mr21712149edb.134.1595859914590; 
- Mon, 27 Jul 2020 07:25:14 -0700 (PDT)
+ id 1k04Pa-0002g9-PL; Mon, 27 Jul 2020 14:47:32 +0000
+Received: from mail-ej1-f44.google.com (mail-ej1-f44.google.com
+ [209.85.218.44])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 4670F2083B;
+ Mon, 27 Jul 2020 14:47:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1595861249;
+ bh=ra7ySkxUG6tdQ2Sev5kAIRiDu6mF6ko2V3p5aNPDPJc=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=TF2dtyfsIDQRwALZEtKEIJBBZLhz7MjWD1h9rT0N1cjMb4xqxeeRIRk7ENzGtUqcl
+ 249z6ZfJuZ2do83K5kHDAzU8UMHstx7getoA4EnGDxRWPFCLO+5uQpSynbRfzuQ/s/
+ 5I+u+Q36tKog5J3IeOWAlhiBjQ790O6cCwaf8dEY=
+Received: by mail-ej1-f44.google.com with SMTP id gg18so13971684ejb.6;
+ Mon, 27 Jul 2020 07:47:29 -0700 (PDT)
+X-Gm-Message-State: AOAM530M3K4hgbWgSQ2moAu9ea9R4Bd19hOsmfka4HiDTijAurusPO40
+ 3mUBgCHhXMn4wLcH5G2iYhNKPeyGEaMCh42NNQ==
+X-Google-Smtp-Source: ABdhPJx8L+G/aF7IMetyVPuFX7TWQTopBRl2QWzS8clJFtiKlB8YVgmkr1f0mMdVne9ueI/35nYOM9rLDue3RzkM5BI=
+X-Received: by 2002:a17:906:7857:: with SMTP id
+ p23mr20143758ejm.260.1595861247757; 
+ Mon, 27 Jul 2020 07:47:27 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200713060842.471356-1-acourbot@chromium.org>
- <20200713060842.471356-2-acourbot@chromium.org>
- <CAAEAJfB6NS2oJU1uiN1kTU-Mhank6-wOUox2qVzRRXEhp3o9Lw@mail.gmail.com>
- <CAPBb6MVcr18k4xx71=9vmuCaqCwSdzkwO6X8yFP2v5SfFGqkKw@mail.gmail.com>
- <CAAEAJfBEL5inb3YARWp-4ec5cKLcgjMkWHys+RJP9N-2e84uDg@mail.gmail.com>
-In-Reply-To: <CAAEAJfBEL5inb3YARWp-4ec5cKLcgjMkWHys+RJP9N-2e84uDg@mail.gmail.com>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Mon, 27 Jul 2020 11:25:03 -0300
-Message-ID: <CAAEAJfAfGmpdEe_B_9x5QEU-PimKhbYgyNramxJ_pVuuDKz6cQ@mail.gmail.com>
-Subject: Re: [PATCH v3 01/16] media: mtk-vcodec: abstract firmware interface
-To: Alexandre Courbot <acourbot@chromium.org>
+References: <1595303971-8793-1-git-send-email-neal.liu@mediatek.com>
+ <1595303971-8793-3-git-send-email-neal.liu@mediatek.com>
+ <CAAOTY_8T=DCntU8x5YEo+Pcs2J0Y4YvDaHUBdGiqEFRxghOd_Q@mail.gmail.com>
+ <1595389756.20193.12.camel@mtkswgap22>
+ <CAAOTY_9k7rM=Pf43DwJR_bkQvxVtpWYTjVoNSZLVE2N0Y_DBmA@mail.gmail.com>
+ <1595484707.26237.12.camel@mtkswgap22>
+ <CAAOTY__V3zwux7UP7p4SUbreGrPBbwRqi=E1WVsA58tYNmri1A@mail.gmail.com>
+ <1595573719.24412.9.camel@mtkswgap22>
+ <CAAOTY__KYH4G3E+c=zoOk==hPJHsAd5u4Q0oj4adKstaoOciMg@mail.gmail.com>
+ <1595819152.7630.13.camel@mtkswgap22>
+In-Reply-To: <1595819152.7630.13.camel@mtkswgap22>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 27 Jul 2020 22:47:15 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8j4rxxqOD0-gf-=sJPhiLu9KE4zF467v7g2EBrTFJUeQ@mail.gmail.com>
+Message-ID: <CAAOTY_8j4rxxqOD0-gf-=sJPhiLu9KE4zF467v7g2EBrTFJUeQ@mail.gmail.com>
+Subject: Re: [PATCH v3 2/2] soc: mediatek: add mtk-devapc driver
+To: Neal Liu <neal.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200727_102515_841361_39FD015F 
-X-CRM114-Status: GOOD (  33.90  )
+X-CRM114-CacheID: sfid-20200727_104730_989942_2084BC83 
+X-CRM114-Status: GOOD (  43.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,578 +90,190 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Maoguang Meng <maoguang.meng@mediatek.com>,
- devicetree <devicetree@vger.kernel.org>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Pi-Hsun Shih <pihsun@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- linux-media <linux-media@vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 27 Jul 2020 at 11:24, Ezequiel Garcia
-<ezequiel@vanguardiasur.com.ar> wrote:
->
-> On Mon, 27 Jul 2020 at 06:06, Alexandre Courbot <acourbot@chromium.org> wrote:
-> >
-> > On Thu, Jul 23, 2020 at 6:23 AM Ezequiel Garcia
-> > <ezequiel@vanguardiasur.com.ar> wrote:
-> > >
-> > > On Mon, 13 Jul 2020 at 03:09, Alexandre Courbot <acourbot@chromium.org> wrote:
-> > > >
-> > > > From: Yunfei Dong <yunfei.dong@mediatek.com>
-> > > >
-> > > > MT8183's codec firwmare is run by a different remote processor from
-> > > > MT8173. While the firmware interface is basically the same, the way to
-> > > > invoke it differs. Abstract all firmware calls under a layer that will
-> > > > allow us to handle both firmware types transparently.
-> > > >
-> > > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> > > > [acourbot: refactor, cleanup and split]
-> > > > Co-developed-by: Alexandre Courbot <acourbot@chromium.org>
-> > > > Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-> > > > [pihsun: fix error path and add mtk_vcodec_fw_release]
-> > > > Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
-> > > > Reviewed-by: Tiffany Lin <tiffany.lin@mediatek.com>
-> > > > Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
-> > > > ---
-> > > >  drivers/media/platform/mtk-vcodec/Makefile    |   4 +-
-> > > >  .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  50 ++---
-> > > >  .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   |   1 -
-> > > >  .../platform/mtk-vcodec/mtk_vcodec_drv.h      |   5 +-
-> > > >  .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  47 ++---
-> > > >  .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   |   2 -
-> > > >  .../media/platform/mtk-vcodec/mtk_vcodec_fw.c | 172 ++++++++++++++++++
-> > > >  .../media/platform/mtk-vcodec/mtk_vcodec_fw.h |  36 ++++
-> > > >  .../platform/mtk-vcodec/mtk_vcodec_util.c     |   1 -
-> > > >  .../platform/mtk-vcodec/vdec/vdec_h264_if.c   |   1 -
-> > > >  .../platform/mtk-vcodec/vdec/vdec_vp8_if.c    |   1 -
-> > > >  .../platform/mtk-vcodec/vdec/vdec_vp9_if.c    |   1 -
-> > > >  .../media/platform/mtk-vcodec/vdec_drv_base.h |   2 -
-> > > >  .../media/platform/mtk-vcodec/vdec_drv_if.c   |   1 -
-> > > >  .../media/platform/mtk-vcodec/vdec_vpu_if.c   |  12 +-
-> > > >  .../media/platform/mtk-vcodec/vdec_vpu_if.h   |  11 +-
-> > > >  .../platform/mtk-vcodec/venc/venc_h264_if.c   |  15 +-
-> > > >  .../platform/mtk-vcodec/venc/venc_vp8_if.c    |   8 +-
-> > > >  .../media/platform/mtk-vcodec/venc_drv_if.c   |   1 -
-> > > >  .../media/platform/mtk-vcodec/venc_vpu_if.c   |  17 +-
-> > > >  .../media/platform/mtk-vcodec/venc_vpu_if.h   |   5 +-
-> > > >  21 files changed, 290 insertions(+), 103 deletions(-)
-> > > >  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
-> > > >  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.h
-> > > >
-> > > > diff --git a/drivers/media/platform/mtk-vcodec/Makefile b/drivers/media/platform/mtk-vcodec/Makefile
-> > > > index 37b94b555fa1..b8636119ed0a 100644
-> > > > --- a/drivers/media/platform/mtk-vcodec/Makefile
-> > > > +++ b/drivers/media/platform/mtk-vcodec/Makefile
-> > > > @@ -12,7 +12,7 @@ mtk-vcodec-dec-y := vdec/vdec_h264_if.o \
-> > > >                 vdec_vpu_if.o \
-> > > >                 mtk_vcodec_dec.o \
-> > > >                 mtk_vcodec_dec_pm.o \
-> > > > -
-> > > > +               mtk_vcodec_fw.o
-> > > >
-> > > >  mtk-vcodec-enc-y := venc/venc_vp8_if.o \
-> > > >                 venc/venc_h264_if.o \
-> > > > @@ -25,5 +25,3 @@ mtk-vcodec-enc-y := venc/venc_vp8_if.o \
-> > > >
-> > > >  mtk-vcodec-common-y := mtk_vcodec_intr.o \
-> > > >                 mtk_vcodec_util.o\
-> > > > -
-> > > > -ccflags-y += -I$(srctree)/drivers/media/platform/mtk-vpu
-> > > > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> > > > index 97a1b6664c20..4f07a5fcce7f 100644
-> > > > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> > > > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> > > > @@ -20,7 +20,7 @@
-> > > >  #include "mtk_vcodec_dec_pm.h"
-> > > >  #include "mtk_vcodec_intr.h"
-> > > >  #include "mtk_vcodec_util.h"
-> > > > -#include "mtk_vpu.h"
-> > > > +#include "mtk_vcodec_fw.h"
-> > > >
-> > > >  #define VDEC_HW_ACTIVE 0x10
-> > > >  #define VDEC_IRQ_CFG   0x11
-> > > > @@ -77,22 +77,6 @@ static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
-> > > >         return IRQ_HANDLED;
-> > > >  }
-> > > >
-> > > > -static void mtk_vcodec_dec_reset_handler(void *priv)
-> > > > -{
-> > > > -       struct mtk_vcodec_dev *dev = priv;
-> > > > -       struct mtk_vcodec_ctx *ctx;
-> > > > -
-> > > > -       mtk_v4l2_err("Watchdog timeout!!");
-> > > > -
-> > > > -       mutex_lock(&dev->dev_mutex);
-> > > > -       list_for_each_entry(ctx, &dev->ctx_list, list) {
-> > > > -               ctx->state = MTK_STATE_ABORT;
-> > > > -               mtk_v4l2_debug(0, "[%d] Change to state MTK_STATE_ERROR",
-> > > > -                               ctx->id);
-> > > > -       }
-> > > > -       mutex_unlock(&dev->dev_mutex);
-> > > > -}
-> > > > -
-> > > >  static int fops_vcodec_open(struct file *file)
-> > > >  {
-> > > >         struct mtk_vcodec_dev *dev = video_drvdata(file);
-> > > > @@ -144,21 +128,20 @@ static int fops_vcodec_open(struct file *file)
-> > > >         if (v4l2_fh_is_singular(&ctx->fh)) {
-> > > >                 mtk_vcodec_dec_pw_on(&dev->pm);
-> > > >                 /*
-> > > > -                * vpu_load_firmware checks if it was loaded already and
-> > > > -                * does nothing in that case
-> > > > +                * Does nothing if firmware was already loaded.
-> > > >                  */
-> > > > -               ret = vpu_load_firmware(dev->vpu_plat_dev);
-> > > > +               ret = mtk_vcodec_fw_load_firmware(dev->fw_handler);
-> > > >                 if (ret < 0) {
-> > > >                         /*
-> > > >                          * Return 0 if downloading firmware successfully,
-> > > >                          * otherwise it is failed
-> > > >                          */
-> > > > -                       mtk_v4l2_err("vpu_load_firmware failed!");
-> > > > +                       mtk_v4l2_err("failed to load firmware!");
-> > > >                         goto err_load_fw;
-> > > >                 }
-> > > >
-> > > >                 dev->dec_capability =
-> > > > -                       vpu_get_vdec_hw_capa(dev->vpu_plat_dev);
-> > > > +                       mtk_vcodec_fw_get_vdec_capa(dev->fw_handler);
-> > > >                 mtk_v4l2_debug(0, "decoder capability %x", dev->dec_capability);
-> > > >         }
-> > > >
-> > > > @@ -228,6 +211,8 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
-> > > >         struct mtk_vcodec_dev *dev;
-> > > >         struct video_device *vfd_dec;
-> > > >         struct resource *res;
-> > > > +       phandle rproc_phandle;
-> > > > +       enum mtk_vcodec_fw_type fw_type;
-> > > >         int i, ret;
-> > > >
-> > > >         dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
-> > > > @@ -237,19 +222,21 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
-> > > >         INIT_LIST_HEAD(&dev->ctx_list);
-> > > >         dev->plat_dev = pdev;
-> > > >
-> > > > -       dev->vpu_plat_dev = vpu_get_plat_device(dev->plat_dev);
-> > > > -       if (dev->vpu_plat_dev == NULL) {
-> > > > -               mtk_v4l2_err("[VPU] vpu device in not ready");
-> > > > -               return -EPROBE_DEFER;
-> > > > +       if (!of_property_read_u32(pdev->dev.of_node, "mediatek,vpu",
-> > > > +                                 &rproc_phandle)) {
-> > > > +               fw_type = VPU;
-> > > > +       } else {
-> > > > +               mtk_v4l2_err("Could not get vdec IPI device");
-> > > > +               return -ENODEV;
-> > > >         }
-> > > > -
-> > > > -       vpu_wdt_reg_handler(dev->vpu_plat_dev, mtk_vcodec_dec_reset_handler,
-> > > > -                       dev, VPU_RST_DEC);
-> > > > +       dev->fw_handler = mtk_vcodec_fw_select(dev, fw_type, VPU_RST_DEC);
-> > > > +       if (IS_ERR(dev->fw_handler))
-> > > > +               return PTR_ERR(dev->fw_handler);
-> > > >
-> > > >         ret = mtk_vcodec_init_dec_pm(dev);
-> > > >         if (ret < 0) {
-> > > >                 dev_err(&pdev->dev, "Failed to get mt vcodec clock source");
-> > > > -               return ret;
-> > > > +               goto err_dec_pm;
-> > > >         }
-> > > >
-> > > >         for (i = 0; i < NUM_MAX_VDEC_REG_BASE; i++) {
-> > > > @@ -352,6 +339,8 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
-> > > >         v4l2_device_unregister(&dev->v4l2_dev);
-> > > >  err_res:
-> > > >         mtk_vcodec_release_dec_pm(dev);
-> > > > +err_dec_pm:
-> > > > +       mtk_vcodec_fw_release(dev->fw_handler);
-> > > >         return ret;
-> > > >  }
-> > > >
-> > > > @@ -376,6 +365,7 @@ static int mtk_vcodec_dec_remove(struct platform_device *pdev)
-> > > >
-> > > >         v4l2_device_unregister(&dev->v4l2_dev);
-> > > >         mtk_vcodec_release_dec_pm(dev);
-> > > > +       mtk_vcodec_fw_release(dev->fw_handler);
-> > > >         return 0;
-> > > >  }
-> > > >
-> > > > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-> > > > index 5a6ec8fb52da..36dfe3fc056a 100644
-> > > > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-> > > > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-> > > > @@ -12,7 +12,6 @@
-> > > >
-> > > >  #include "mtk_vcodec_dec_pm.h"
-> > > >  #include "mtk_vcodec_util.h"
-> > > > -#include "mtk_vpu.h"
-> > > >
-> > > >  int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
-> > > >  {
-> > > > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > > > index 9fd56dee7fd1..e132c4ec463a 100644
-> > > > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > > > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > > > @@ -309,13 +309,13 @@ struct mtk_vcodec_ctx {
-> > > >   * @m2m_dev_dec: m2m device for decoder
-> > > >   * @m2m_dev_enc: m2m device for encoder.
-> > > >   * @plat_dev: platform device
-> > > > - * @vpu_plat_dev: mtk vpu platform device
-> > > >   * @ctx_list: list of struct mtk_vcodec_ctx
-> > > >   * @irqlock: protect data access by irq handler and work thread
-> > > >   * @curr_ctx: The context that is waiting for codec hardware
-> > > >   *
-> > > >   * @reg_base: Mapped address of MTK Vcodec registers.
-> > > >   *
-> > > > + * @fw_handler: used to communicate with the firmware.
-> > > >   * @id_counter: used to identify current opened instance
-> > > >   *
-> > > >   * @encode_workqueue: encode work queue
-> > > > @@ -344,12 +344,13 @@ struct mtk_vcodec_dev {
-> > > >         struct v4l2_m2m_dev *m2m_dev_dec;
-> > > >         struct v4l2_m2m_dev *m2m_dev_enc;
-> > > >         struct platform_device *plat_dev;
-> > > > -       struct platform_device *vpu_plat_dev;
-> > > >         struct list_head ctx_list;
-> > > >         spinlock_t irqlock;
-> > > >         struct mtk_vcodec_ctx *curr_ctx;
-> > > >         void __iomem *reg_base[NUM_MAX_VCODEC_REG_BASE];
-> > > >
-> > > > +       struct mtk_vcodec_fw *fw_handler;
-> > > > +
-> > > >         unsigned long id_counter;
-> > > >
-> > > >         struct workqueue_struct *decode_workqueue;
-> > > > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> > > > index 4d31f1ed113f..4340ea10afd0 100644
-> > > > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> > > > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> > > > @@ -21,7 +21,7 @@
-> > > >  #include "mtk_vcodec_enc_pm.h"
-> > > >  #include "mtk_vcodec_intr.h"
-> > > >  #include "mtk_vcodec_util.h"
-> > > > -#include "mtk_vpu.h"
-> > > > +#include "mtk_vcodec_fw.h"
-> > > >
-> > > >  module_param(mtk_v4l2_dbg_level, int, S_IRUGO | S_IWUSR);
-> > > >  module_param(mtk_vcodec_dbg, bool, S_IRUGO | S_IWUSR);
-> > > > @@ -101,22 +101,6 @@ static irqreturn_t mtk_vcodec_enc_lt_irq_handler(int irq, void *priv)
-> > > >         return IRQ_HANDLED;
-> > > >  }
-> > > >
-> > > > -static void mtk_vcodec_enc_reset_handler(void *priv)
-> > > > -{
-> > > > -       struct mtk_vcodec_dev *dev = priv;
-> > > > -       struct mtk_vcodec_ctx *ctx;
-> > > > -
-> > > > -       mtk_v4l2_debug(0, "Watchdog timeout!!");
-> > > > -
-> > > > -       mutex_lock(&dev->dev_mutex);
-> > > > -       list_for_each_entry(ctx, &dev->ctx_list, list) {
-> > > > -               ctx->state = MTK_STATE_ABORT;
-> > > > -               mtk_v4l2_debug(0, "[%d] Change to state MTK_STATE_ABORT",
-> > > > -                               ctx->id);
-> > > > -       }
-> > > > -       mutex_unlock(&dev->dev_mutex);
-> > > > -}
-> > > > -
-> > > >  static int fops_vcodec_open(struct file *file)
-> > > >  {
-> > > >         struct mtk_vcodec_dev *dev = video_drvdata(file);
-> > > > @@ -159,10 +143,10 @@ static int fops_vcodec_open(struct file *file)
-> > > >
-> > > >         if (v4l2_fh_is_singular(&ctx->fh)) {
-> > > >                 /*
-> > > > -                * vpu_load_firmware checks if it was loaded already and
-> > > > +                * load fireware to checks if it was loaded already and
-> > > >                  * does nothing in that case
-> > > >                  */
-> > > > -               ret = vpu_load_firmware(dev->vpu_plat_dev);
-> > > > +               ret = mtk_vcodec_fw_load_firmware(dev->fw_handler);
-> > > >                 if (ret < 0) {
-> > > >                         /*
-> > > >                          * Return 0 if downloading firmware successfully,
-> > > > @@ -173,7 +157,7 @@ static int fops_vcodec_open(struct file *file)
-> > > >                 }
-> > > >
-> > > >                 dev->enc_capability =
-> > > > -                       vpu_get_venc_hw_capa(dev->vpu_plat_dev);
-> > > > +                       mtk_vcodec_fw_get_venc_capa(dev->fw_handler);
-> > > >                 mtk_v4l2_debug(0, "encoder capability %x", dev->enc_capability);
-> > > >         }
-> > > >
-> > > > @@ -235,6 +219,8 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
-> > > >         struct mtk_vcodec_dev *dev;
-> > > >         struct video_device *vfd_enc;
-> > > >         struct resource *res;
-> > > > +       phandle rproc_phandle;
-> > > > +       enum mtk_vcodec_fw_type fw_type;
-> > > >         int i, j, ret;
-> > > >
-> > > >         dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
-> > > > @@ -244,19 +230,21 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
-> > > >         INIT_LIST_HEAD(&dev->ctx_list);
-> > > >         dev->plat_dev = pdev;
-> > > >
-> > > > -       dev->vpu_plat_dev = vpu_get_plat_device(dev->plat_dev);
-> > > > -       if (dev->vpu_plat_dev == NULL) {
-> > > > -               mtk_v4l2_err("[VPU] vpu device in not ready");
-> > > > -               return -EPROBE_DEFER;
-> > > > +       if (!of_property_read_u32(pdev->dev.of_node, "mediatek,vpu",
-> > > > +                                 &rproc_phandle)) {
-> > > > +               fw_type = VPU;
-> > > > +       } else {
-> > > > +               mtk_v4l2_err("Could not get venc IPI device");
-> > > > +               return -ENODEV;
-> > > >         }
-> > > > -
-> > > > -       vpu_wdt_reg_handler(dev->vpu_plat_dev, mtk_vcodec_enc_reset_handler,
-> > > > -                               dev, VPU_RST_ENC);
-> > > > +       dev->fw_handler = mtk_vcodec_fw_select(dev, fw_type, VPU_RST_ENC);
-> > > > +       if (IS_ERR(dev->fw_handler))
-> > > > +               return PTR_ERR(dev->fw_handler);
-> > > >
-> > > >         ret = mtk_vcodec_init_enc_pm(dev);
-> > > >         if (ret < 0) {
-> > > >                 dev_err(&pdev->dev, "Failed to get mt vcodec clock source!");
-> > > > -               return ret;
-> > > > +               goto err_enc_pm;
-> > > >         }
-> > > >
-> > > >         for (i = VENC_SYS, j = 0; i < NUM_MAX_VCODEC_REG_BASE; i++, j++) {
-> > > > @@ -377,6 +365,8 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
-> > > >         v4l2_device_unregister(&dev->v4l2_dev);
-> > > >  err_res:
-> > > >         mtk_vcodec_release_enc_pm(dev);
-> > > > +err_enc_pm:
-> > > > +       mtk_vcodec_fw_release(dev->fw_handler);
-> > > >         return ret;
-> > > >  }
-> > > >
-> > > > @@ -401,6 +391,7 @@ static int mtk_vcodec_enc_remove(struct platform_device *pdev)
-> > > >
-> > > >         v4l2_device_unregister(&dev->v4l2_dev);
-> > > >         mtk_vcodec_release_enc_pm(dev);
-> > > > +       mtk_vcodec_fw_release(dev->fw_handler);
-> > > >         return 0;
-> > > >  }
-> > > >
-> > > > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-> > > > index 3e2bfded79a6..ee22902aaa71 100644
-> > > > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-> > > > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-> > > > @@ -12,8 +12,6 @@
-> > > >
-> > > >  #include "mtk_vcodec_enc_pm.h"
-> > > >  #include "mtk_vcodec_util.h"
-> > > > -#include "mtk_vpu.h"
-> > > > -
-> > > >
-> > > >  int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
-> > > >  {
-> > > > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
-> > > > new file mode 100644
-> > > > index 000000000000..967bb100a990
-> > > > --- /dev/null
-> > > > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
-> > > > @@ -0,0 +1,172 @@
-> > > > +// SPDX-License-Identifier: GPL-2.0
-> > > > +
-> > > > +#include "mtk_vcodec_fw.h"
-> > > > +#include "mtk_vcodec_util.h"
-> > > > +#include "mtk_vcodec_drv.h"
-> > > > +
-> > > > +struct mtk_vcodec_fw_ops {
-> > > > +       int (*load_firmware)(struct mtk_vcodec_fw *fw);
-> > > > +       unsigned int (*get_vdec_capa)(struct mtk_vcodec_fw *fw);
-> > > > +       unsigned int (*get_venc_capa)(struct mtk_vcodec_fw *fw);
-> > > > +       void * (*map_dm_addr)(struct mtk_vcodec_fw *fw, u32 dtcm_dmem_addr);
-> > > > +       int (*ipi_register)(struct mtk_vcodec_fw *fw, int id,
-> > > > +               mtk_vcodec_ipi_handler handler, const char *name, void *priv);
-> > > > +       int (*ipi_send)(struct mtk_vcodec_fw *fw, int id, void *buf,
-> > > > +               unsigned int len, unsigned int wait);
-> > > > +};
-> > > > +
-> > > > +struct mtk_vcodec_fw {
-> > > > +       enum mtk_vcodec_fw_type type;
-> > > > +       const struct mtk_vcodec_fw_ops *ops;
-> > > > +       struct platform_device *pdev;
-> > > > +};
-> > > > +
-> > > > +static int mtk_vcodec_vpu_load_firmware(struct mtk_vcodec_fw *fw)
-> > > > +{
-> > > > +       return vpu_load_firmware(fw->pdev);
-> > > > +}
-> > > > +
-> > > > +static unsigned int mtk_vcodec_vpu_get_vdec_capa(struct mtk_vcodec_fw *fw)
-> > > > +{
-> > > > +       return vpu_get_vdec_hw_capa(fw->pdev);
-> > > > +}
-> > > > +
-> > > > +static unsigned int mtk_vcodec_vpu_get_venc_capa(struct mtk_vcodec_fw *fw)
-> > > > +{
-> > > > +       return vpu_get_venc_hw_capa(fw->pdev);
-> > > > +}
-> > > > +
-> > > > +static void *mtk_vcodec_vpu_map_dm_addr(struct mtk_vcodec_fw *fw,
-> > > > +                                       u32 dtcm_dmem_addr)
-> > > > +{
-> > > > +       return vpu_mapping_dm_addr(fw->pdev, dtcm_dmem_addr);
-> > > > +}
-> > > > +
-> > > > +static int mtk_vcodec_vpu_set_ipi_register(struct mtk_vcodec_fw *fw, int id,
-> > > > +               mtk_vcodec_ipi_handler handler, const char *name, void *priv)
-> > > > +{
-> > > > +       /*
-> > > > +        * The handler we receive takes a void * as its first argument. We
-> > > > +        * cannot change this because it needs to be passed down to the rproc
-> > > > +        * subsystem when SCP is used. VPU takes a const argument, which is
-> > > > +        * more constrained, so the conversion below is safe.
-> > > > +        */
-> > > > +       ipi_handler_t handler_const = (ipi_handler_t)handler;
-> > > > +
-> > > > +       return vpu_ipi_register(fw->pdev, id, handler_const, name, priv);
-> > > > +}
-> > > > +
-> > > > +static int mtk_vcodec_vpu_ipi_send(struct mtk_vcodec_fw *fw, int id, void *buf,
-> > > > +               unsigned int len, unsigned int wait)
-> > > > +{
-> > > > +       return vpu_ipi_send(fw->pdev, id, buf, len);
-> > > > +}
-> > > > +
-> > > > +static const struct mtk_vcodec_fw_ops mtk_vcodec_vpu_msg = {
-> > > > +       .load_firmware = mtk_vcodec_vpu_load_firmware,
-> > > > +       .get_vdec_capa = mtk_vcodec_vpu_get_vdec_capa,
-> > > > +       .get_venc_capa = mtk_vcodec_vpu_get_venc_capa,
-> > > > +       .map_dm_addr = mtk_vcodec_vpu_map_dm_addr,
-> > > > +       .ipi_register = mtk_vcodec_vpu_set_ipi_register,
-> > > > +       .ipi_send = mtk_vcodec_vpu_ipi_send,
-> > > > +};
-> > > > +
-> > > > +static void mtk_vcodec_reset_handler(void *priv)
-> > > > +{
-> > > > +       struct mtk_vcodec_dev *dev = priv;
-> > > > +       struct mtk_vcodec_ctx *ctx;
-> > > > +
-> > > > +       mtk_v4l2_err("Watchdog timeout!!");
-> > > > +
-> > > > +       mutex_lock(&dev->dev_mutex);
-> > > > +       list_for_each_entry(ctx, &dev->ctx_list, list) {
-> > > > +               ctx->state = MTK_STATE_ABORT;
-> > > > +               mtk_v4l2_debug(0, "[%d] Change to state MTK_STATE_ABORT",
-> > > > +                               ctx->id);
-> > > > +       }
-> > > > +       mutex_unlock(&dev->dev_mutex);
-> > > > +}
-> > > > +
-> > > > +struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
-> > > > +                                          enum mtk_vcodec_fw_type type,
-> > > > +                                          enum rst_id rst_id)
-> > > > +{
-> > > > +       const struct mtk_vcodec_fw_ops *ops;
-> > > > +       struct mtk_vcodec_fw *fw;
-> > > > +       struct platform_device *fw_pdev = NULL;
-> > > > +
-> > > > +       switch (type) {
-> > > > +       case VPU:
-> > > > +               ops = &mtk_vcodec_vpu_msg;
-> > > > +               fw_pdev = vpu_get_plat_device(dev->plat_dev);
-> > > > +               if (!fw_pdev) {
-> > > > +                       mtk_v4l2_err("firmware device is not ready");
-> > > > +                       return ERR_PTR(-EINVAL);
-> > > > +               }
-> > > > +               vpu_wdt_reg_handler(fw_pdev, mtk_vcodec_reset_handler,
-> > > > +                                   dev, rst_id);
-> > > > +               break;
-> > > > +       default:
-> > > > +               mtk_v4l2_err("invalid vcodec fw type");
-> > > > +               return ERR_PTR(-EINVAL);
-> > > > +       }
-> > > > +
-> > > > +       fw = devm_kzalloc(&dev->plat_dev->dev, sizeof(*fw), GFP_KERNEL);
-> > > > +       if (!fw)
-> > > > +               return ERR_PTR(-EINVAL);
-> > > > +
-> > > > +       fw->type = type;
-> > > > +       fw->ops = ops;
-> > > > +       fw->pdev = fw_pdev;
-> > > > +
-> > > > +       return fw;
-> > > > +}
-> > > > +EXPORT_SYMBOL_GPL(mtk_vcodec_fw_select);
-> > > > +
-> > > > +void mtk_vcodec_fw_release(struct mtk_vcodec_fw *fw)
-> > > > +{
-> > > > +       switch (fw->type) {
-> > > > +       case VPU:
-> > > > +               put_device(&fw->pdev->dev);
-> > > > +               break;
-> > > > +       }
-> > > > +}
-> > > > +EXPORT_SYMBOL_GPL(mtk_vcodec_fw_release);
-> > > > +
-> > >
-> > > What are these symbols exported for?
-> >
-> > This driver is made of three modules: mtk_vcodec_common,
-> > mtk_vcodec_dec and mtk_vcodec_enc. These functions are used by both
-> > the encoder and decoder module, so they need to be exported.
-> >
-> > There is mistake in the patch though that I noticed while
-> > investigating your comment: the file defining these functions
-> > (mtk_vcodec_fw.c) is linked against the mtk_vcodec_dec module while it
-> > should be part of mtk_vcodec_common, so thanks for asking. :)
->
-> Oh, I missed that. Out of curiosity, what's the design decision motivating
-> this split?
->
-> FWIW, I've had a somewhat painful experience with splitted
-> modules, so I try to minimize that if possible.
->
-> If you decide to keep the split, how about you consider
-> also splitting the user option. Something around two visible
-> ones: VIDEO_MEDIATEK_VCODEC_ENC/DEC
-> and one hidden for the _COMMON one.
->
-> That would make the design more obvious, I think.
->
-> Minor nitpick, currently the Kconfig help states:
->
-> """
->             To compile this driver as a module, choose M here: the
->             module will be called mtk-vcodec
-> """
->
-
-Ah, one more thing.
-
-In order to build this with COMPILE_TEST, I believe you need
-something along these lines:
-
-diff --git a/drivers/remoteproc/Kconfig b/drivers/remoteproc/Kconfig
-index c4d1731295eb..ee83f407b9a3 100644
---- a/drivers/remoteproc/Kconfig
-+++ b/drivers/remoteproc/Kconfig
-@@ -34,7 +34,7 @@ config INGENIC_VPU_RPROC
-
- config MTK_SCP
-        tristate "Mediatek SCP support"
--       depends on ARCH_MEDIATEK
-+       depends on ARCH_MEDIATEK || COMPILE_TEST
-        select RPMSG_MTK_SCP
-        help
-          Say y here to support Mediatek's System Companion Processor (SCP) via
-
-Thanks,
-Ezequiel
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIE5lYWw6CgpOZWFsIExpdSA8bmVhbC5saXVAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5tDfm
+nIgyN+aXpSDpgLHkuIAg5LiK5Y2IMTE6MDblr6vpgZPvvJoKPgo+IEhpIENodW4tS3VhbmcsCj4K
+PiBPbiBGcmksIDIwMjAtMDctMjQgYXQgMjM6NTUgKzA4MDAsIENodW4tS3VhbmcgSHUgd3JvdGU6
+Cj4gPiBIaSwgTmVhbDoKPiA+Cj4gPiBOZWFsIExpdSA8bmVhbC5saXVAbWVkaWF0ZWsuY29tPiDm
+lrwgMjAyMOW5tDfmnIgyNOaXpSDpgLHkupQg5LiL5Y2IMjo1NeWvq+mBk++8mgo+ID4gPgo+ID4g
+PiBIaSBDaHVuLUt1YW5nLAo+ID4gPgo+ID4gPiBPbiBGcmksIDIwMjAtMDctMjQgYXQgMDA6MzIg
+KzA4MDAsIENodW4tS3VhbmcgSHUgd3JvdGU6Cj4gPiA+ID4gSGksIE5lYWw6Cj4gPiA+ID4KPiA+
+ID4gPiBOZWFsIExpdSA8bmVhbC5saXVAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5tDfmnIgyM+aX
+pSDpgLHlm5sg5LiL5Y2IMjoxMeWvq+mBk++8mgo+ID4gPiA+ID4KPiA+ID4gPiA+IEhpIENodW4t
+S3VhbmcsCj4gPiA+ID4gPgo+ID4gPiA+ID4gT24gV2VkLCAyMDIwLTA3LTIyIGF0IDIyOjI1ICsw
+ODAwLCBDaHVuLUt1YW5nIEh1IHdyb3RlOgo+ID4gPiA+ID4gPiBIaSwgTmVhbDoKPiA+ID4gPiA+
+ID4KPiA+ID4gPiA+ID4gTmVhbCBMaXUgPG5lYWwubGl1QG1lZGlhdGVrLmNvbT4g5pa8IDIwMjDl
+ubQ35pyIMjLml6Ug6YCx5LiJIOS4iuWNiDExOjQ55a+r6YGT77yaCj4gPiA+ID4gPiA+ID4KPiA+
+ID4gPiA+ID4gPiBIaSBDaHVuLUt1YW5nLAo+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gT24g
+V2VkLCAyMDIwLTA3LTIyIGF0IDA3OjIxICswODAwLCBDaHVuLUt1YW5nIEh1IHdyb3RlOgo+ID4g
+PiA+ID4gPiA+ID4gSGksIE5lYWw6Cj4gPiA+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiA+ID4gTmVh
+bCBMaXUgPG5lYWwubGl1QG1lZGlhdGVrLmNvbT4g5pa8IDIwMjDlubQ35pyIMjHml6Ug6YCx5LqM
+IOS4i+WNiDEyOjAw5a+r6YGT77yaCj4gPiA+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gPgo+
+ID4gPiA+ID4gPiA+ID4gPiArCj4gPiA+ID4gPiA+ID4gPiA+ICsvKgo+ID4gPiA+ID4gPiA+ID4g
+PiArICogbXRrX2RldmFwY19kdW1wX3Zpb19kYmcgLSBnZXQgdGhlIHZpb2xhdGlvbiBpbmRleCBh
+bmQgZHVtcCB0aGUgZnVsbCB2aW9sYXRpb24KPiA+ID4gPiA+ID4gPiA+ID4gKyAqICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgZGVidWcgaW5mb3JtYXRpb24uCj4gPiA+ID4gPiA+ID4gPiA+ICsg
+Ki8KPiA+ID4gPiA+ID4gPiA+ID4gK3N0YXRpYyBib29sIG10a19kZXZhcGNfZHVtcF92aW9fZGJn
+KHN0cnVjdCBtdGtfZGV2YXBjX2NvbnRleHQgKmN0eCwgdTMyIHZpb19pZHgpCj4gPiA+ID4gPiA+
+ID4gPiA+ICt7Cj4gPiA+ID4gPiA+ID4gPiA+ICsgICAgICAgdTMyIHNoaWZ0X2JpdDsKPiA+ID4g
+PiA+ID4gPiA+ID4gKwo+ID4gPiA+ID4gPiA+ID4gPiArICAgICAgIGlmIChjaGVja192aW9fbWFz
+ayhjdHgsIHZpb19pZHgpKQo+ID4gPiA+ID4gPiA+ID4gPiArICAgICAgICAgICAgICAgcmV0dXJu
+IGZhbHNlOwo+ID4gPiA+ID4gPiA+ID4gPiArCj4gPiA+ID4gPiA+ID4gPiA+ICsgICAgICAgaWYg
+KCFjaGVja192aW9fc3RhdHVzKGN0eCwgdmlvX2lkeCkpCj4gPiA+ID4gPiA+ID4gPiA+ICsgICAg
+ICAgICAgICAgICByZXR1cm4gZmFsc2U7Cj4gPiA+ID4gPiA+ID4gPiA+ICsKPiA+ID4gPiA+ID4g
+PiA+ID4gKyAgICAgICBzaGlmdF9iaXQgPSBnZXRfc2hpZnRfZ3JvdXAoY3R4LCB2aW9faWR4KTsK
+PiA+ID4gPiA+ID4gPiA+ID4gKwo+ID4gPiA+ID4gPiA+ID4gPiArICAgICAgIGlmIChzeW5jX3Zp
+b19kYmcoY3R4LCBzaGlmdF9iaXQpKQo+ID4gPiA+ID4gPiA+ID4gPiArICAgICAgICAgICAgICAg
+cmV0dXJuIGZhbHNlOwo+ID4gPiA+ID4gPiA+ID4gPiArCj4gPiA+ID4gPiA+ID4gPiA+ICsgICAg
+ICAgZGV2YXBjX2V4dHJhY3RfdmlvX2RiZyhjdHgpOwo+ID4gPiA+ID4gPiA+ID4KPiA+ID4gPiA+
+ID4gPiA+IEkgdGhpbmsgZ2V0X3NoaWZ0X2dyb3VwKCksIHN5bmNfdmlvX2RiZygpLCBhbmQKPiA+
+ID4gPiA+ID4gPiA+IGRldmFwY19leHRyYWN0X3Zpb19kYmcoKSBzaG91bGQgYmUgbW92ZWQgb3V0
+IG9mIHZpb19pZHggZm9yLWxvb3AgKHRoZQo+ID4gPiA+ID4gPiA+ID4gbG9vcCBpbiBkZXZhcGNf
+dmlvbGF0aW9uX2lycSgpKSBiZWNhdXNlIHRoZXNlIHRocmVlIGZ1bmN0aW9uIGlzIG5vdAo+ID4g
+PiA+ID4gPiA+ID4gcmVsYXRlZCB0byB2aW9faWR4Lgo+ID4gPiA+ID4gPiA+ID4gQW5vdGhlciBx
+dWVzdGlvbjogd2hlbiBtdWx0aXBsZSB2aW9faWR4IHZpb2xhdGlvbiBvY2N1ciwgdmlvX2FkZHIg
+aXMKPiA+ID4gPiA+ID4gPiA+IHJlbGF0ZWQgdG8gd2hpY2ggb25lIHZpb19pZHg/IFRoZSBsYXRl
+c3QgaGFwcGVuZWQgb25lPwo+ID4gPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gPgo+ID4gPiA+ID4g
+PiA+IEFjdHVhbGx5LCBpdCdzIHJlbGF0ZWQgdG8gdmlvX2lkeC4gQnV0IHdlIGRvbid0IHVzZSBp
+dCBkaXJlY3RseSBvbiB0aGVzZQo+ID4gPiA+ID4gPiA+IGZ1bmN0aW9uLiBJIHRoaW5rIGJlbG93
+IHNuaXAgY29kZSBtaWdodCBiZSBiZXR0ZXIgd2F5IHRvIHVuZGVyc3RhbmQgaXQuCj4gPiA+ID4g
+PiA+ID4KPiA+ID4gPiA+ID4gPiBmb3IgKC4uLikKPiA+ID4gPiA+ID4gPiB7Cj4gPiA+ID4gPiA+
+ID4gICAgICAgICBjaGVja192aW9fbWFzaygpCj4gPiA+ID4gPiA+ID4gICAgICAgICBjaGVja192
+aW9fc3RhdHVzKCkKPiA+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiA+ICAgICAgICAgLy8gaWYgZ2V0
+IHZpb19pZHgsIG1hc2sgaXQgdGVtcG9yYXJpbHkKPiA+ID4gPiA+ID4gPiAgICAgICAgIG1hc2tf
+bW9kdWxlX2lycSh0cnVlKQo+ID4gPiA+ID4gPiA+ICAgICAgICAgY2xlYXJfdmlvX3N0YXR1cygp
+Cj4gPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gPiAgICAgICAgIC8vIGR1bXAgdmlvbGF0aW9uIGlu
+Zm8KPiA+ID4gPiA+ID4gPiAgICAgICAgIGdldF9zaGlmdF9ncm91cCgpCj4gPiA+ID4gPiA+ID4g
+ICAgICAgICBzeW5jX3Zpb19kYmcoKQo+ID4gPiA+ID4gPiA+ICAgICAgICAgZGV2YXBjX2V4dHJh
+Y3RfdmlvX2RiZygpCj4gPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gPiAgICAgICAgIC8vIHVubWFz
+awo+ID4gPiA+ID4gPiA+ICAgICAgICAgbWFza19tb2R1bGVfaXJxKGZhbHNlKQo+ID4gPiA+ID4g
+PiA+IH0KPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gVGhpcyBzbmlwIGNvZGUgZG9lcyBub3QgZXhw
+bGFpbiBhbnkgdGhpbmcuIEkgY291bGQgcmV3cml0ZSB0aGlzIGNvZGUgYXM6Cj4gPiA+ID4gPiA+
+Cj4gPiA+ID4gPiA+IGZvciAoLi4uKQo+ID4gPiA+ID4gPiB7Cj4gPiA+ID4gPiA+ICAgICBjaGVj
+a192aW9fbWFzaygpCj4gPiA+ID4gPiA+ICAgICBjaGVja192aW9fc3RhdHVzKCkKPiA+ID4gPiA+
+ID4KPiA+ID4gPiA+ID4gICAgIC8vIGlmIGdldCB2aW9faWR4LCBtYXNrIGl0IHRlbXBvcmFyaWx5
+Cj4gPiA+ID4gPiA+ICAgICBtYXNrX21vZHVsZV9pcnEodHJ1ZSkKPiA+ID4gPiA+ID4gICAgIGNs
+ZWFyX3Zpb19zdGF0dXMoKQo+ID4gPiA+ID4gPiAgICAgLy8gdW5tYXNrCj4gPiA+ID4gPiA+ICAg
+ICBtYXNrX21vZHVsZV9pcnEoZmFsc2UpCj4gPiA+ID4gPiA+IH0KPiA+ID4gPiA+ID4KPiA+ID4g
+PiA+ID4gLy8gZHVtcCB2aW9sYXRpb24gaW5mbwo+ID4gPiA+ID4gPiBnZXRfc2hpZnRfZ3JvdXAo
+KQo+ID4gPiA+ID4gPiBzeW5jX3Zpb19kYmcoKQo+ID4gPiA+ID4gPiBkZXZhcGNfZXh0cmFjdF92
+aW9fZGJnKCkKPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gQW5kIG15IHZlcnNpb24gaXMgaWRlbnRp
+Y2FsIHdpdGggeW91ciB2ZXJzaW9uLCBpc24ndCBpdD8KPiA+ID4gPiA+Cj4gPiA+ID4gPiBTb3Jy
+eSwgSSBkaWQgbm90IGV4cGxhaW4gaXQgY2xlYXJseS4gTGV0J3MgbWUgdHJ5IGFnYWluLgo+ID4g
+PiA+ID4gVGhlIHJlYXNvbiB3aHkgSSBwdXQgImR1bXAgdmlvbGF0aW9uIGluZm8iIGJldHdlZW4g
+bWFzayAmIHVubWFzayBjb250ZXh0Cj4gPiA+ID4gPiBpcyBiZWNhdXNlIGl0IGhhcyB0byBzdG9w
+IGludGVycnVwdCBmaXJzdCBiZWZvcmUgZHVtcCB2aW9sYXRpb24gaW5mbywKPiA+ID4gPiA+IGFu
+ZCB0aGVuIHVubWFzayBpdCB0byBwcmVwYXJlIG5leHQgdmlvbGF0aW9uLgo+ID4gPiA+ID4gVGhl
+c2Ugc2VxdWVuY2UgZ3VhcmFudGVlIHRoYXQgaWYgbXVsdGlwbGUgdmlvbGF0aW9uIGlzIHRyaWdn
+ZXJlZCwgd2UKPiA+ID4gPiA+IHN0aWxsIGhhdmUgaW5mb3JtYXRpb24gdG8gZGVidWcuCj4gPiA+
+ID4gPiBJZiB0aGUgY29kZSBzZXF1ZW5jZSBpbiB5b3VyIHZlcnNpb24gYW5kIG11bHRpcGxlIHZp
+b2xhdGlvbiBpcwo+ID4gPiA+ID4gdHJpZ2dlcmVkLCB0aGVyZSBtaWdodCBiZSBubyBhbnkgaW5m
+b3JtYXRpb24gYnV0IGtlZXBzIGVudGVyaW5nIElTUi4KPiA+ID4gPiA+IEZpbmFsbHksIHN5c3Rl
+bSBtaWdodCBiZSBhYm5vcm1hbCBhbmQgd2F0Y2hkb2cgdGltZW91dC4KPiA+ID4gPiA+IEluIHRo
+aXMgY2FzZSwgd2Ugc3RpbGwgZG9uJ3QgaGF2ZSBhbnkgaW5mb3JtYXRpb24gdG8gZGVidWcuCj4g
+PiA+ID4KPiA+ID4gPiBJIHN0aWxsIGRvbid0IHVuZGVyc3RhbmQgd2h5IG5vIGluZm9ybWF0aW9u
+IHRvIGRlYnVnLiBGb3IgZXhhbXBsZSB3aGVuCj4gPiA+ID4gdmlvX2lkeCA1LCAxMCwgMTUgaGFz
+IHZpb2xhdGlvbiwKPiA+ID4gPiBZb3Ugd291bGQgbWFzayB2aW9faWR4IDUgdG8gZ2V0IGluZm9y
+bWF0aW9uLCBidXQgdmlvX2lkeCAxMCwgMTUgZG9lcwo+ID4gPiA+IG5vdCBtYXNrIHlldC4KPiA+
+ID4gPiBJbiB5b3VyIHdvcmRzLCB3aGVuIHZpb19pZHggMTAsIDE1IG5vdCBtYXNrLCB5b3Ugd291
+bGQgbm90IGdldCBhbnkKPiA+ID4gPiBkZWJ1ZyBpbmZvcm1hdGlvbiB3aGVuIHlvdSBwcm9jZXNz
+IHZpb19pZHggNS4KPiA+ID4gPgo+ID4gPiA+IEluIG15IHZlcnNpb24sIEkgd291bGQgY2xlYXIg
+YWxsIHN0YXR1cywgd2h5IGtlZXBzIGVudGVyaW5nIElTUj8KPiA+ID4KPiA+ID4gVGhpbmsgYWJv
+dXQgdGhpcyBjYXNlLCBpZiBzb21lb25lIHRyaWVzIHRvIGR1bXAgIkFBQSIgbW9kdWxlJ3MgcmVn
+aXN0ZXIuCj4gPiA+IEl0IHdvdWxkIGtlZXAgcmVhZCByZWcgYmFzZSwgYmFzZSsweDQsIGJhc2Ur
+MHg4LCAuLi4KPiA+ID4gQWxsIHRoZXNlIHJlZ2lzdGVycyBhcmUgaW4gdGhlIHNhbWUgc2xhdmUs
+IHdoaWNoIHdvdWxkIGJlIHNhbWUgdmlvX2lkeC4KPiA+ID4gKFRha2UgdmlvX2lkeCA1IGFzIGV4
+YW1wbGUpCj4gPiA+IEluIHRoaXMgY2FzZSwgdmlvX2lkeCA1IHdpbGwga2VlcCB0cmlnZ2VyaW5n
+IGludGVycnVwdC4gSWYgeW91IGRpZCBub3QKPiA+ID4gZG8gImR1bXAgdmlvbGF0aW9uIGluZm8i
+IGJldHdlZW4gbWFzayAmIHVubWFzaywgeW91IGNhbm5vdCBnZXQgYW55Cj4gPiA+IHZpb2xhdGlv
+biBpbmZvIHVudGlsIHRoZSBsYXN0IGludGVycnVwdCBiZWluZyBoYW5kbGVkLgo+ID4gPiBOb3Jt
+YWxseSwgc3lzdGVtIHdpbGwgY3Jhc2ggYmVmb3JlIGxhc3QgaW50ZXJydXB0IGNvbWluZy4KPiA+
+Cj4gPiBZb3UgaGF2ZSBzYWlkIHRoYXQgZmlyc3QgdmlvX2FkZHIgd291bGQgYmUga2VwdCB1bnRp
+bCBpdCdzICdoYW5kbGVkJy4KPiA+IFNvIHRoZSBmaXJzdCB2aW9fYWRkciByZWdfYmFzZSB3b3Vs
+ZCBiZSBrZXB0IGV2ZW4gdGhvdWdoIG90aGVyCj4gPiB2aW9sYXRpb24gaGFwcGVuLiBBbmQgSSBj
+b3VsZCBoYW5kbGUgKGNsZWFyIHN0YXR1cyBhbmQgZHVtcCBpbmZvKSBpdAo+ID4gdGhlbiB2aW9f
+YWRkciB3b3VsZCBuZXh0IHZpb2xhdGlvbidzIGFkZHJlc3MuIEknbSBjb25mdXNlZCB3aXRoIHlv
+dXIKPiA+IHN0YXRlbWVudC4gSWYgQUFBIGlzIGR1bXBpbmcgcmVnaXN0ZXIgb2YgdmlvX2lkeCA1
+LCBCQkIgaXMgZHVtcGluZwo+ID4gcmVnaXN0ZXIgb2YgdmlvX2lkeCAxMCwgQ0NDIGlzIGR1bXBp
+bmcgcmVnaXN0ZXIgb2YgdmlvX2lkeCAxNSwgSSB0aGluawo+ID4geW91IHNob3VsZCBtYXNrIGFs
+bCB2aW9faWR4IG5vdCBvbmx5IG9uZS4gU28gdGhlIGNvZGUgd291bGQgYmUKPiA+Cj4gPiBmb3Ig
+YWxsIHZpb19pZHggewo+ID4gICAgIG1hc2tfbW9kdWxlX2lycSh0cnVlKQo+ID4gfQo+ID4KPiA+
+IGRldmFwY19leHRyYWN0X3Zpb19kYmcoKQo+ID4KPiA+IGZvciBhbGwgdmlvX2lkeCB7Cj4gPiAg
+ICAgY2xlYXJfdmlvX3N0YXR1cygpCj4gPiAgICAgbWFza19tb2R1bGVfaXJxKGZhbHNlKQo+ID4g
+fQo+ID4KPgo+IEknbSBhbHNvIGNvbnNpZGVyIHRoaXMgc29sdXRpb24gYW5kIEkgdGhpbmsgaXQn
+cyBtdWNoIGJldHRlciB0bwo+IHVuZGVyc3RhbmQgaGFyZHdhcmUgYmVoYXZpb3IuCj4KPiBkZXZh
+cGNfZHVtcF92aW9fZGJnKCkKPiB7Cj4gICAgICAgICB3aGlsZSgxKSB7Cj4gICAgICAgICAgICAg
+ICAgIC8vIG1pZ2h0IGhhdmUgbXVsdGlwbGUgc2hpZnRfYml0IHJhaXNlZAo+ICAgICAgICAgICAg
+ICAgICBzaGlmdF9iaXQgPSBnZXRfc2hpZnRfZ3JvdXAoKQo+ICAgICAgICAgICAgICAgICBpZiAo
+c2hpZnRfYml0ID49IDAgJiYgc2hpZnQgYml0IDw9IDMxKQo+ICAgICAgICAgICAgICAgICAgICAg
+ICAgIHN5bmNfdmlvX2RiZyhzaGlmdF9iaXQpCj4gICAgICAgICAgICAgICAgICAgICAgICAgZXh0
+cmFjdF92aW9fZGJnKCkKCkFjY29yZGluZyB0byB5b3VyIHN0YXRlbWVudCwgd2hlbiBtdWx0aXBs
+ZSB2aW9sYXRpb24gb2NjdXIsIG9ubHkgdGhlCmZpcnN0IG9uZSBpcyBrZXB0LCBvdGhlcnMgYXJl
+IGRyb3BwZWQuIEkgdGhpbmsgd2UganVzdCBuZWVkIHRvIGR1bXAKZGVidWcgaW5mbyBvbmNlLgoK
+QmVjYXVzZSBvbmx5IG9uZSB2aW9sYXRpb24gaW5mb3JtYXRpb24gd291bGQgYmUga2VwdCwgd2h5
+IG5vdCBvbmx5IG9uZQpncm91cCAoZXF1YWwgdG8gbm8gZ3JvdXApPwoKUmVnYXJkcywKQ2h1bi1L
+dWFuZy4KCj4gICAgICAgICAgICAgICAgIGVsc2UKPiAgICAgICAgICAgICAgICAgICAgICAgICBi
+cmVhawo+ICAgICAgICAgfQo+IH0KPgo+IGRldmFwY192aW9sYXRpb25faXJxKCkKPiB7Cj4gICAg
+ICAgICBmb3IgYWxsIHZpb19pZHggewo+ICAgICAgICAgICAgICAgICBtYXNrX21vZHVsZV9pcnEo
+dHJ1ZSkKPiAgICAgICAgIH0KPgo+ICAgICAgICAgZGV2YXBjX2R1bXBfdmlvX2RiZygpCj4KPiAg
+ICAgICAgIGZvciBhbGwgdmlvX2lkeCB7Cj4gICAgICAgICAgICAgICAgIGNsZWFyX3Zpb19zdGF0
+dXMoKQo+ICAgICAgICAgICAgICAgICBtYXNrX21vZHVsZV9pcnEoZmFsc2UpCj4gICAgICAgICB9
+Cj4gfQo+Cj4gSXMgaXQgbW9yZSBjbGVhciBmb3IgdGhpcyBjb250cm9sIGZsb3c/Cj4gVGhhbmtz
+ICEKPgo+ID4gPgo+ID4gPiA+Cj4gPiA+ID4gPgo+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiA+Cj4g
+PiA+ID4gPiA+ID4gQWJvdXQgeW91ciBxdWVzdGlvbiwgdmlvX2FkZHIgd291bGQgYmUgdGhlIGZp
+cnN0IG9uZS4KPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gU28gb3RoZXIgdmlvX2FkZHIgd291bGQg
+YmUgZHJvcHBlZD8gT3IgaGFyZHdhcmUgd291bGQga2VlcCBhbGwKPiA+ID4gPiA+ID4gdmlvX2Fk
+ZHIgYW5kIHlvdSBoYXZlIHNvbWUgd2F5IHRvIGdldCBhbGwgdmlvX2FkZHI/Cj4gPiA+ID4gPiA+
+Cj4gPiA+ID4gPgo+ID4gPiA+ID4gSW4gdGhpcyBjYXNlLCBoYXJkd2FyZSB3aWxsIGRyb3Agb3Ro
+ZXIgdmlvbGF0aW9uIGluZm8gYW5kIGtlZXAgdGhlIGZpcnN0Cj4gPiA+ID4gPiBvbmUgdW50aWwg
+aXQgYmVlbiBoYW5kbGVkLgo+ID4gPiA+Cj4gPiA+ID4gRG9lcyAnaGFuZGxlZCcgbWVhbiBzdGF0
+dXMgaXMgY2xlYXJlZD8KPiA+ID4KPiA+ID4gImhhbmRsZWQiIG1lYW5zIGNsZWFyIHN0YXR1cyBh
+bmQgZHVtcCB2aW9sYXRpb24gaW5mby4KPiA+ID4KPiA+ID4gPgo+ID4gPiA+IFJlZ2FyZHMsCj4g
+PiA+ID4gQ2h1bi1LdWFuZy4KPiA+ID4gPgo+ID4gPiA+ID4KPiA+ID4gPiA+ID4gPgo+ID4gPiA+
+ID4gPiA+ID4gPiArCj4gPiA+ID4gPiA+ID4gPiA+ICsgICAgICAgcmV0dXJuIHRydWU7Cj4gPiA+
+ID4gPiA+ID4gPiA+ICt9Cj4gPiA+ID4gPiA+ID4gPiA+ICsKPiA+ID4gPiA+ID4gPiA+ID4gKy8q
+Cj4gPiA+ID4gPiA+ID4gPiA+ICsgKiBkZXZhcGNfdmlvbGF0aW9uX2lycSAtIHRoZSBkZXZhcGMg
+SW50ZXJydXB0IFNlcnZpY2UgUm91dGluZSAoSVNSKSB3aWxsIGR1bXAKPiA+ID4gPiA+ID4gPiA+
+ID4gKyAqICAgICAgICAgICAgICAgICAgICAgICAgdmlvbGF0aW9uIGluZm9ybWF0aW9uIGluY2x1
+ZGluZyB3aGljaCBtYXN0ZXIgdmlvbGF0ZXMKPiA+ID4gPiA+ID4gPiA+ID4gKyAqICAgICAgICAg
+ICAgICAgICAgICAgICAgYWNjZXNzIHNsYXZlLgo+ID4gPiA+ID4gPiA+ID4gPiArICovCj4gPiA+
+ID4gPiA+ID4gPiA+ICtzdGF0aWMgaXJxcmV0dXJuX3QgZGV2YXBjX3Zpb2xhdGlvbl9pcnEoaW50
+IGlycV9udW1iZXIsCj4gPiA+ID4gPiA+ID4gPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICBzdHJ1Y3QgbXRrX2RldmFwY19jb250ZXh0ICpjdHgpCj4gPiA+ID4gPiA+
+ID4gPiA+ICt7Cj4gPiA+ID4gPiA+ID4gPiA+ICsgICAgICAgdTMyIHZpb19pZHg7Cj4gPiA+ID4g
+PiA+ID4gPiA+ICsKPiA+ID4gPiA+ID4gPiA+ID4gKyAgICAgICBmb3IgKHZpb19pZHggPSAwOyB2
+aW9faWR4IDwgY3R4LT52aW9faWR4X251bTsgdmlvX2lkeCsrKSB7Cj4gPiA+ID4gPiA+ID4gPiA+
+ICsgICAgICAgICAgICAgICBpZiAoIW10a19kZXZhcGNfZHVtcF92aW9fZGJnKGN0eCwgdmlvX2lk
+eCkpCj4gPiA+ID4gPiA+ID4gPiA+ICsgICAgICAgICAgICAgICAgICAgICAgIGNvbnRpbnVlOwo+
+ID4gPiA+ID4gPiA+ID4gPiArCj4gPiA+ID4gPiA+ID4gPiA+ICsgICAgICAgICAgICAgICAvKiBF
+bnN1cmUgdGhhdCB2aW9sYXRpb24gaW5mbyBhcmUgd3JpdHRlbiBiZWZvcmUKPiA+ID4gPiA+ID4g
+PiA+ID4gKyAgICAgICAgICAgICAgICAqIGZ1cnRoZXIgb3BlcmF0aW9ucwo+ID4gPiA+ID4gPiA+
+ID4gPiArICAgICAgICAgICAgICAgICovCj4gPiA+ID4gPiA+ID4gPiA+ICsgICAgICAgICAgICAg
+ICBzbXBfbWIoKTsKPiA+ID4gPiA+ID4gPiA+ID4gKwo+ID4gPiA+ID4gPiA+ID4gPiArICAgICAg
+ICAgICAgICAgLyoKPiA+ID4gPiA+ID4gPiA+ID4gKyAgICAgICAgICAgICAgICAqIE1hc2sgc2xh
+dmUncyBpcnEgYmVmb3JlIGNsZWFyaW5nIHZpbyBzdGF0dXMuCj4gPiA+ID4gPiA+ID4gPiA+ICsg
+ICAgICAgICAgICAgICAgKiBNdXN0IGRvIGl0IHRvIGF2b2lkIG5lc3RlZCBpbnRlcnJ1cHQgYW5k
+IHByZXZlbnQKPiA+ID4gPiA+ID4gPiA+ID4gKyAgICAgICAgICAgICAgICAqIHVuZXhwZWN0ZWQg
+YmVoYXZpb3IuCj4gPiA+ID4gPiA+ID4gPiA+ICsgICAgICAgICAgICAgICAgKi8KPiA+ID4gPiA+
+ID4gPiA+ID4gKyAgICAgICAgICAgICAgIG1hc2tfbW9kdWxlX2lycShjdHgsIHZpb19pZHgsIHRy
+dWUpOwo+ID4gPiA+ID4gPiA+ID4gPiArCj4gPiA+ID4gPiA+ID4gPiA+ICsgICAgICAgICAgICAg
+ICBjbGVhcl92aW9fc3RhdHVzKGN0eCwgdmlvX2lkeCk7Cj4gPiA+ID4gPiA+ID4gPiA+ICsKPiA+
+ID4gPiA+ID4gPiA+ID4gKyAgICAgICAgICAgICAgIG1hc2tfbW9kdWxlX2lycShjdHgsIHZpb19p
+ZHgsIGZhbHNlKTsKPiA+ID4gPiA+ID4gPiA+ID4gKyAgICAgICB9Cj4gPiA+ID4gPiA+ID4gPiA+
+ICsKPiA+ID4gPiA+ID4gPiA+ID4gKyAgICAgICByZXR1cm4gSVJRX0hBTkRMRUQ7Cj4gPiA+ID4g
+PiA+ID4gPiA+ICt9Cj4gPiA+ID4gPiA+ID4gPiA+ICsKPiA+ID4gPiA+ID4gPiA+ID4gKy8qCj4g
+PiA+Cj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVk
+aWF0ZWsK
