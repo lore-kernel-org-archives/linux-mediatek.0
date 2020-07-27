@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E844CC433EC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 07:26:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B3EB8C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 07:27:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B80F720738
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 07:26:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8346C20738
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 07:27:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XRyFqvzI";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="vAnnP6do"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B80F720738
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FWyPUn9P";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="V7YgE5Ne"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8346C20738
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,52 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TcZ6PZJgJIgCYiWGLRJvNmY5PmS3akxSL8hc123zCJ8=; b=XRyFqvzI+e3agOg16qjnGV/mc
-	+36kE9uapD5ED7HdPEPWoaih4thpCgHzjhDSC4i/9vBXy33L/vgZ6Xn6HLPBFVNp/8PJRyIQ+hMh7
-	eZdOTVALtUa8SedWHVEvWdVdw5x/AxtJpi3+pa3NM/dNR1pEsPBCXRQwa67v0MbnCLV2/nkGuSYpj
-	6zWc70l1hBBoDZwIvt7ngMuP6eOkmFhuLZE/csvYv0r0DE9+xDOOG91GAbpQuXvJkVzzCECJwErBJ
-	CFXnqbmcowHOIL7+iYx5W3SsaiUKJLsn77eAaJA98i2eNZg33wx7SNqx+3IwjOh15P1zhovtQynLX
-	4nu8ryjMA==;
+	 bh=tU/sCqxA7EG+O8eFXkMmfyXQVI1wyJB4QuhEpetaAt0=; b=FWyPUn9PHVM5FqqLeIXAzuBZc
+	V4ryUwn7xfHZSZXmXyLwDzaJeAouplmEQJ9Rflxmvr+Sin446qScCuuYfmIeUIbEsSU0Fkqi3hKgD
+	Gz8PAd1qkwYYsODylyKOvT25lHmBYzjUlrhf8N2BvgvMH78KPKjzeTL6yBfYSTOgMtnGFli31chDB
+	rT+w0t6RMN0mQ6HpKz+YQ/bM73nwd+StGiZoDZkGp44PI5jzIJOhliDgaLty+nWLk3qteIaEWCXav
+	oeReITp35fqa16zv02PuAswEonNWrtTA+b7+zfc3K5Fo/oEV76G6c35qe2+luhH3VHZjd/W6gX2AA
+	Vh/QCh4RQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jzxX2-0001GU-5J; Mon, 27 Jul 2020 07:26:44 +0000
+	id 1jzxX9-0001Jn-VQ; Mon, 27 Jul 2020 07:26:52 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jzxX0-0001Em-32; Mon, 27 Jul 2020 07:26:43 +0000
-X-UUID: 3dda4826677a4999b15b87d0866b10d6-20200726
+ id 1jzxX0-0001F3-Fc; Mon, 27 Jul 2020 07:26:45 +0000
+X-UUID: 6ee2e966a14245c8971aa2c81d40cb7b-20200726
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=dKMalhtdhFPPOdQozyVhSoiY/17guaRKov/u2gTo5Gk=; 
- b=vAnnP6doSaYLjERbOiyUKH/Fe+AVwRRcFDJAbK/hPKlcNaKzhURF5j9aberKmFve7fswZAQPHDz2kvj3ue/RVI07pwtseVhBe+Jya4jvIFQV0cTSYAnNuDuIIitzaJYoBO+t+ACD8fYyYbV36FkDvb2I4uAVjb317S4G0Mtc0P8=;
-X-UUID: 3dda4826677a4999b15b87d0866b10d6-20200726
+ bh=x6c9apllsraX6rv/6S+rjbkHnvqPnQsJAwjR+kPcEbE=; 
+ b=V7YgE5NepMNABOjRneQAGmqaJSLYTMzm9BCgDDnyMqx9bR2AD/ji6+nD1PaHqdgIz81g6YamgS897siqayAtWJ6j3sA3D7iKRrYchh0d9E5IXBDWXcBQ+gg9/ZH4bLt0OPOHzndTJE1NG8Ksupou6c9tQyqPYgisckqau+6sLuM=;
+X-UUID: 6ee2e966a14245c8971aa2c81d40cb7b-20200726
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1413872458; Sun, 26 Jul 2020 23:26:45 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ with ESMTP id 1529744953; Sun, 26 Jul 2020 23:26:45 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 27 Jul 2020 00:16:43 -0700
+ 15.0.1497.2; Mon, 27 Jul 2020 00:16:36 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 27 Jul 2020 15:16:41 +0800
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 27 Jul 2020 15:16:35 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 27 Jul 2020 15:16:41 +0800
+ Transport; Mon, 27 Jul 2020 15:16:35 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Felipe Balbi <balbi@kernel.org>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>
-Subject: [PATCH 10/11] usb: mtu3: clear dual mode of u3port when disable device
-Date: Mon, 27 Jul 2020 15:14:59 +0800
-Message-ID: <1595834101-13094-10-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 04/11] usb: mtu3: clear interrupts status when disable
+ interrupts
+Date: Mon, 27 Jul 2020 15:14:53 +0800
+Message-ID: <1595834101-13094-4-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1595834101-13094-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1595834101-13094-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: A8C7A88285639417D4FD77E1C46961D26AEA72226E43EB7A31F8065F0DED3D7E2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200727_032642_339238_14B0BDE8 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20200727_032642_700920_13751C62 
+X-CRM114-Status: UNSURE (   9.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,32 +95,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If not clear u3port's dual mode when disable device, the IP
-will fail to enter sleep mode when suspend.
+When disable interrupts, will also want to clear their status,
+ensure it by calling mtu3_intr_status_clear() in
+mtu3_intr_disable().
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/mtu3/mtu3_core.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ drivers/usb/mtu3/mtu3_core.c | 25 ++++++++++++-------------
+ 1 file changed, 12 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
-index c875b22..a9c5c32 100644
+index f3ad1cc..ece5b3e 100644
 --- a/drivers/usb/mtu3/mtu3_core.c
 +++ b/drivers/usb/mtu3/mtu3_core.c
-@@ -131,8 +131,12 @@ static void mtu3_device_disable(struct mtu3 *mtu)
- 	mtu3_setbits(ibase, SSUSB_U2_CTRL(0),
- 		SSUSB_U2_PORT_DIS | SSUSB_U2_PORT_PDN);
- 
--	if (mtu->ssusb->dr_mode == USB_DR_MODE_OTG)
-+	if (mtu->ssusb->dr_mode == USB_DR_MODE_OTG) {
- 		mtu3_clrbits(ibase, SSUSB_U2_CTRL(0), SSUSB_U2_PORT_OTG_SEL);
-+		if (mtu->is_u3_ip)
-+			mtu3_clrbits(ibase, SSUSB_U3_CTRL(0),
-+				     SSUSB_U3_PORT_DUAL_MODE);
-+	}
- 
- 	mtu3_setbits(ibase, U3D_SSUSB_IP_PW_CTRL2, SSUSB_IP_DEV_PDN);
+@@ -147,17 +147,6 @@ static void mtu3_device_reset(struct mtu3 *mtu)
+ 	mtu3_clrbits(ibase, U3D_SSUSB_DEV_RST_CTRL, SSUSB_DEV_SW_RST);
  }
+ 
+-/* disable all interrupts */
+-static void mtu3_intr_disable(struct mtu3 *mtu)
+-{
+-	void __iomem *mbase = mtu->mac_base;
+-
+-	/* Disable level 1 interrupts */
+-	mtu3_writel(mbase, U3D_LV1IECR, ~0x0);
+-	/* Disable endpoint interrupts */
+-	mtu3_writel(mbase, U3D_EPIECR, ~0x0);
+-}
+-
+ static void mtu3_intr_status_clear(struct mtu3 *mtu)
+ {
+ 	void __iomem *mbase = mtu->mac_base;
+@@ -170,6 +159,18 @@ static void mtu3_intr_status_clear(struct mtu3 *mtu)
+ 	mtu3_writel(mbase, U3D_LTSSM_INTR, ~0x0);
+ 	/* Clear speed change interrupt status */
+ 	mtu3_writel(mbase, U3D_DEV_LINK_INTR, ~0x0);
++	/* Clear QMU interrupt status */
++	mtu3_writel(mbase, U3D_QISAR0, ~0x0);
++}
++
++/* disable all interrupts */
++static void mtu3_intr_disable(struct mtu3 *mtu)
++{
++	/* Disable level 1 interrupts */
++	mtu3_writel(mtu->mac_base, U3D_LV1IECR, ~0x0);
++	/* Disable endpoint interrupts */
++	mtu3_writel(mtu->mac_base, U3D_EPIECR, ~0x0);
++	mtu3_intr_status_clear(mtu);
+ }
+ 
+ /* enable system global interrupt */
+@@ -312,7 +313,6 @@ void mtu3_stop(struct mtu3 *mtu)
+ 	dev_dbg(mtu->dev, "%s\n", __func__);
+ 
+ 	mtu3_intr_disable(mtu);
+-	mtu3_intr_status_clear(mtu);
+ 
+ 	if (mtu->softconnect)
+ 		mtu3_dev_on_off(mtu, 0);
+@@ -600,7 +600,6 @@ static void mtu3_regs_init(struct mtu3 *mtu)
+ 
+ 	/* be sure interrupts are disabled before registration of ISR */
+ 	mtu3_intr_disable(mtu);
+-	mtu3_intr_status_clear(mtu);
+ 
+ 	mtu3_csr_init(mtu);
+ 
 -- 
 1.9.1
 _______________________________________________
