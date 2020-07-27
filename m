@@ -2,89 +2,90 @@ Return-Path: <SRS0=rPqH=BG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,
+	BODY_QUOTE_MALF_MSGID,DKIMWL_WL_HIGH,DKIM_SIGNED,DKIM_VALID,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CED9AC433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 12:18:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 09FF2C433E3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 12:21:54 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8CB99206E7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 12:18:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CC62720663
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2020 12:21:53 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XG5Ux499";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="fAx/kzPh"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8CB99206E7
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="wWf5tPq9";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="RxslYgCz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC62720663
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:In-reply-to:Subject:To:
-	From:References:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=G7dqXvsNfMGpoRJN3dtmzmxCii+aq1H7extL4NyLiSg=; b=XG5Ux499e0IYof9FJFcSkFduR
-	Wy1ptbEMGRs4NNNmIGaa31IMPkIh8IQHEBkxng/8EwNZMHA8pNtTb1K1Xva7hvrvU9MaHIpDrI8UG
-	FSJM9++rVbA10FhN4sc+CZwZMheJBA5n8/7wThvHCbOJzaqbWTqRekuMPPr7BvgedkSuC2LQ3jnTO
-	BtxJupST7Ngcv8jYiOKyr7dgx5gBimPK5lahqb03m2Wi4B9rqFkw/ttQeEx2C6p/FPSTcc+4eIWzI
-	L0WfpABNEyQAKn8gH7xVXLze7aCeIOfs8tBfh5fI2IPFvg3QnxwTWWHpTY7wm64JYveKvfwt+6r+u
-	DZ2VaEBAw==;
+	 bh=bxNRGnFIpvLWeu/Z/kBldrFSQitwnNeMfAGAlkYH33c=; b=wWf5tPq9KlKWPtRscfj3OLdYs
+	fR8TIZJBmQk8dsnOzPR0u9bqGV1XmLoIuwqrkaq3UHduc0gtjAbuDSkU958OjoJ9fRSJXx2X6iimx
+	EvArpIJBtgJ2+TxIrcEzsXI7Op4P9NSNcR6A9+qFnTxO5gJ3NNXFqeB2v78nXOk7VSNCQp8tuF3NR
+	RtxlRfcHvRLKbS7i0shZYf4TPq1sg0GkxIXXej7Yq881TZ7eDo6Upj9dwJNhdvaUuys8CrZsNd/iP
+	+twJvQQuoTubitroRTZ11Y+EJRFJJvLl3RPZBbfTrP3SuY29W9TKUnL+wJfDQ77bcUwCNGGaAYB2W
+	MNSO63jyQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k025U-00043X-AY; Mon, 27 Jul 2020 12:18:36 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1k028W-0004XJ-VY; Mon, 27 Jul 2020 12:21:45 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k025P-00042L-Nm
- for linux-mediatek@lists.infradead.org; Mon, 27 Jul 2020 12:18:33 +0000
-Received: by mail-wm1-x341.google.com with SMTP id f18so4634216wmc.0
- for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2020 05:18:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=references:user-agent:from:to:cc:subject:in-reply-to:date
- :message-id:mime-version;
- bh=IsIi8F409cZHxulKpoRZusE2JKJse5jBQoAXHe77xis=;
- b=fAx/kzPhi93UH6If4IJtHoQ380OGDHKSQd4m8YGK3hgBa3OBdcP4nKwiJvYVBYxnMh
- YFSzmLXLvhDPOIKnnhmVq4CLH4jOQ0LeQttRT78Rn+d8CsqVbQlz6djoCeGDP1d+2UH8
- NtV6eFnt8fCRDDJAhM857eRUDqW0DlGV42gGWWcOWK5Spx+zmgNv7VCCNEsAH+xVp40d
- vDPS2Ut9n5CSLUsh91TRI+CaaVQIr9TZUxvipaJilQs03+T12JlTOxeWd+/+922KNRBy
- ysOFziCc27MA8HDwAv/bEV80MsXHadbYkb6MJakm4q15G2lJidBF363LWjfzklsDXLxe
- IjvQ==
+ id 1k028V-0004WV-27
+ for linux-mediatek@lists.infradead.org; Mon, 27 Jul 2020 12:21:43 +0000
+Received: by mail-wr1-x442.google.com with SMTP id 88so14666575wrh.3
+ for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2020 05:21:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=pq1ET4NeB9RomAbsurjDGpllwmR8q23My4GbeazFctg=;
+ b=RxslYgCzUp24ps37t5tlcbtukh5HBY2gz6DM/5CtdbQfE851RX+lF3b6YXu4hkEPSw
+ LiHLUuA/LfwQPz9HAg9qK8uvB9tWnsNKFRwBRfRFPOWTRAaBfjb86rv3clMhe926LEwE
+ vDiVz+Wxxu2W9w2EZ+Ehr6i/bw6yc+/p4RBerJ2CVWS99+THB4CLkHAvpoQib7O6UnHl
+ UYzW3txmIOY9gMveuWLO/I0+6a5HOTgt3qI5cV50CN+sr/RCkbpwbv9KWJPy1u5sbGVq
+ Fax8XWSNjxaYLM+yx91mlELxzpopp4kNnwqUFR+LLXULM5fDBzbQc4Rc/aMhoTuDLe1b
+ QbRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:references:user-agent:from:to:cc:subject
- :in-reply-to:date:message-id:mime-version;
- bh=IsIi8F409cZHxulKpoRZusE2JKJse5jBQoAXHe77xis=;
- b=QMgm5Farj/PLymP4O8Z0/3/XKIEnQjMh+wTBHCjqY4WGAYKJ13Jk8OnJYk8JrOGnPL
- N4jAgj2s77u7zFxTdhMWwr/mKOpJFk3KTt3N/NYJoukJEa21xFH3Vxb0SEodAhcuIHGh
- gBpAUNjsdg3Dq8yVSpUctFq1q76WSqUgOiYT1Xp+qGIxUREP68IVINF6fnLDgl41D4Ao
- Trc18AETpGvbexxg/8Gc3cFQ1GiwT8W1mGoVgKrmLAU8KOJF1V6ExMNfbiuuMAEvUshS
- M8cqxBdFj9mBPkIcIKjgm9LyzwbVzd9zlycVzYLem/WyjyBI1u7zRUFAc/8QnmGvLX7i
- xRsA==
-X-Gm-Message-State: AOAM532nFYXlWbrlXmrhldwlLNUP8kyARdNTC5D654Fun4CIdBHNSEng
- g/V6gaPmZh//6MnsUnwo9Ps5ig==
-X-Google-Smtp-Source: ABdhPJx0797BC+zllD5zGvCbLm8HLRG8Q0wQ8GIbQod3XouY7f5MT+H0TmGiiKQ8+HBndxMDQTHixg==
-X-Received: by 2002:a1c:cc0c:: with SMTP id h12mr17958765wmb.111.1595852309197; 
- Mon, 27 Jul 2020 05:18:29 -0700 (PDT)
-Received: from localhost ([2a01:cb19:8ae7:9d00:1109:b730:da9f:832f])
- by smtp.gmail.com with ESMTPSA id m14sm3573527wrx.76.2020.07.27.05.18.28
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=pq1ET4NeB9RomAbsurjDGpllwmR8q23My4GbeazFctg=;
+ b=L8wqnibEFl0/W0QoZKDEqI3NCBBXZ2XtHjJps4JycatFjJYl4UPsB+7o3g5EtWk7h1
+ maSkM9iE+uHiCwF+UHWIjVs8S9+r3T7+7GhZSiugXuqi04MDhpjjxsCTup+W+7jKC7Iv
+ KCknLUjpzXrzOhTW1VqtoJ5G7uVJaYpc+geDYN5tzr0ts0HLxlxQUq4pXTt5sIjAl6tY
+ yPw3PaX6aKSTaXQY5zxuMHonNrErvFkArepkHTfkt2kQjLy/Au9/1PxokUnBNWtfX93e
+ Csbx4/pRI/wqQxUJDe/Dh46ffJsrXbAw40mqf1l7qhyWmfI8S5tbXx6tC6LtfYNENgR/
+ W6/w==
+X-Gm-Message-State: AOAM5320v6yhmBL8/07srbrSWsO4sFipJc1/JTQRv/aZgTXQ7UMVaKVV
+ NYcq+1kAmoHLtMJZRYwcaHzEAg==
+X-Google-Smtp-Source: ABdhPJyUbsfFbNt5s9bDOFEt/5mlBl8zmfH9uJA2kUAGXFJxr+iNBvBeHJmG26RIXYLYOgE7QsGFfQ==
+X-Received: by 2002:a5d:4bc8:: with SMTP id l8mr19740256wrt.159.1595852501921; 
+ Mon, 27 Jul 2020 05:21:41 -0700 (PDT)
+Received: from dell ([2.27.167.73])
+ by smtp.gmail.com with ESMTPSA id c24sm12625308wrb.11.2020.07.27.05.21.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Jul 2020 05:18:28 -0700 (PDT)
-References: <20200727114504.28536-1-fengping.yu@mediatek.com>
- <20200727114504.28536-3-fengping.yu@mediatek.com>
-User-agent: mu4e 1.2.0; emacs 26.3
-From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
-To: Fengping Yu <fengping.yu@mediatek.com>
-Subject: Re: [PATCH v16 2/3] drivers: input: keyboard: Add mtk keypad driver
-In-reply-to: <20200727114504.28536-3-fengping.yu@mediatek.com>
-Date: Mon, 27 Jul 2020 14:18:27 +0200
-Message-ID: <87v9i9w3qk.fsf@baylibre.com>
+ Mon, 27 Jul 2020 05:21:41 -0700 (PDT)
+Date: Mon, 27 Jul 2020 13:21:39 +0100
+From: Lee Jones <lee.jones@linaro.org>
+To: Gene Chen <gene.chen.richtek@gmail.com>
+Subject: Re: [PATCH v2 6/9] mfd: mt6360: Rename mt6360_pmu by mt6360
+Message-ID: <20200727122139.GM1850026@dell>
+References: <1594983811-25908-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1594983811-25908-7-git-send-email-gene.chen.richtek@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1594983811-25908-7-git-send-email-gene.chen.richtek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200727_081831_958770_06F7E48F 
-X-CRM114-Status: GOOD (  28.33  )
+X-CRM114-CacheID: sfid-20200727_082143_218960_EC04F615 
+X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,290 +97,27 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Marco Felsch <m.felsch@pengutronix.de>, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- linux-input@vger.kernel.org, Yingjoe Chen <yingjoe.chen@mediatek.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: gene_chen@richtek.com, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
+ benjamin.chao@mediatek.com, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
+ shufan_lee@richtek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Fengping,
-
-Fengping Yu <fengping.yu@mediatek.com> writes:
-
-> From: "fengping.yu" <fengping.yu@mediatek.com>
->
-> This adds matrix keypad support for Mediatek SoCs.
->
-> Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
-> Reviewed-by: Marco Felsch <m.felsch@pengutronix.de>
-> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-
-Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
-
-> ---
->  drivers/input/keyboard/Kconfig   |  11 ++
->  drivers/input/keyboard/Makefile  |   1 +
->  drivers/input/keyboard/mtk-kpd.c | 209 +++++++++++++++++++++++++++++++
->  3 files changed, 221 insertions(+)
->  create mode 100644 drivers/input/keyboard/mtk-kpd.c
->
-> diff --git a/drivers/input/keyboard/Kconfig b/drivers/input/keyboard/Kconfig
-> index 793ecbbda32c..1ee845c292c6 100644
-> --- a/drivers/input/keyboard/Kconfig
-> +++ b/drivers/input/keyboard/Kconfig
-> @@ -782,6 +782,17 @@ config KEYBOARD_BCM
->  	  To compile this driver as a module, choose M here: the
->  	  module will be called bcm-keypad.
->  
-> +config KEYBOARD_MTK_KPD
-> +	tristate "MediaTek Keypad Support"
-> +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	select REGMAP_MMIO
-> +	select INPUT_MATRIXKMAP
-> +	help
-> +	  Say Y here if you want to use the keypad on MediaTek SoCs.
-> +	  If unsure, say N.
-> +	  To compile this driver as a module, choose M here: the
-> +	  module will be called mtk-kpd.
-> +
->  config KEYBOARD_MTK_PMIC
->  	tristate "MediaTek PMIC keys support"
->  	depends on MFD_MT6397
-> diff --git a/drivers/input/keyboard/Makefile b/drivers/input/keyboard/Makefile
-> index 1d689fdd5c00..6c9d852c377e 100644
-> --- a/drivers/input/keyboard/Makefile
-> +++ b/drivers/input/keyboard/Makefile
-> @@ -43,6 +43,7 @@ obj-$(CONFIG_KEYBOARD_MATRIX)		+= matrix_keypad.o
->  obj-$(CONFIG_KEYBOARD_MAX7359)		+= max7359_keypad.o
->  obj-$(CONFIG_KEYBOARD_MCS)		+= mcs_touchkey.o
->  obj-$(CONFIG_KEYBOARD_MPR121)		+= mpr121_touchkey.o
-> +obj-$(CONFIG_KEYBOARD_MTK_KPD)		+= mtk-kpd.o
->  obj-$(CONFIG_KEYBOARD_MTK_PMIC) 	+= mtk-pmic-keys.o
->  obj-$(CONFIG_KEYBOARD_NEWTON)		+= newtonkbd.o
->  obj-$(CONFIG_KEYBOARD_NOMADIK)		+= nomadik-ske-keypad.o
-> diff --git a/drivers/input/keyboard/mtk-kpd.c b/drivers/input/keyboard/mtk-kpd.c
-> new file mode 100644
-> index 000000000000..451b3bc61c6f
-> --- /dev/null
-> +++ b/drivers/input/keyboard/mtk-kpd.c
-> @@ -0,0 +1,209 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (C) 2019 MediaTek Inc.
-> + * Author Fengping Yu <fengping.yu@mediatek.com>
-> + */
-> +#include <linux/bitops.h>
-> +#include <linux/clk.h>
-> +#include <linux/input/matrix_keypad.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/module.h>
-> +#include <linux/property.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/regmap.h>
-> +
-> +#define MTK_KPD_NAME		"mtk-kpd"
-> +#define MTK_KPD_MEM		0x0004
-> +#define MTK_KPD_DEBOUNCE	0x0018
-> +#define MTK_KPD_DEBOUNCE_MASK	GENMASK(13, 0)
-> +#define MTK_KPD_DEBOUNCE_MAX_US	256000
-> +#define MTK_KPD_NUM_MEMS	5
-> +#define MTK_KPD_NUM_BITS	136	/* 4*32+8 MEM5 only use 8 BITS */
-> +
-> +struct mtk_keypad {
-> +	struct regmap *regmap;
-> +	struct input_dev *input_dev;
-> +	struct clk *clk;
-> +	void __iomem *base;
-> +	u32 n_rows;
-> +	u32 n_cols;
-> +	DECLARE_BITMAP(keymap_state, MTK_KPD_NUM_BITS);
-> +};
-> +
-> +static const struct regmap_config keypad_regmap_cfg = {
-> +	.reg_bits = 32,
-> +	.val_bits = 32,
-> +	.reg_stride = sizeof(u32),
-> +	.max_register = 36,
-> +};
-> +
-> +static irqreturn_t kpd_irq_handler(int irq, void *dev_id)
-> +{
-> +	struct mtk_keypad *keypad = dev_id;
-> +	unsigned short *keycode = keypad->input_dev->keycode;
-> +	DECLARE_BITMAP(new_state, MTK_KPD_NUM_BITS);
-> +	DECLARE_BITMAP(change, MTK_KPD_NUM_BITS);
-> +	int bit_nr;
-> +	int pressed;
-> +	unsigned short code;
-> +
-> +	regmap_bulk_read(keypad->regmap, MTK_KPD_MEM,
-> +			new_state, MTK_KPD_NUM_MEMS);
-> +
-> +	bitmap_xor(change, new_state, keypad->keymap_state, MTK_KPD_NUM_BITS);
-> +
-> +	for_each_set_bit(bit_nr, change, MTK_KPD_NUM_BITS) {
-> +		/* 1: not pressed, 0: pressed */
-> +		pressed = !test_bit(bit_nr, new_state);
-> +		dev_dbg(&keypad->input_dev->dev, "%s",
-> +			pressed ? "pressed" : "released");
-> +
-> +		/* 32bit register only use low 16bit as keypad mem register */
-> +		code = keycode[bit_nr - 16 * (BITS_TO_U32(bit_nr) - 1)];
-> +
-> +		input_report_key(keypad->input_dev, code, pressed);
-> +		input_sync(keypad->input_dev);
-> +
-> +		dev_dbg(&keypad->input_dev->dev,
-> +			"report Linux keycode = %d\n", code);
-> +	}
-> +
-> +	bitmap_copy(keypad->keymap_state, new_state, MTK_KPD_NUM_BITS);
-> +
-> +	return IRQ_HANDLED;
-> +}
-> +
-> +static void kpd_clk_disable(void *data)
-> +{
-> +	clk_disable_unprepare(data);
-> +}
-> +
-> +static int kpd_pdrv_probe(struct platform_device *pdev)
-> +{
-> +	struct mtk_keypad *keypad;
-> +	unsigned int irq;
-> +	u32 debounce;
-> +	bool wakeup;
-> +	int ret;
-> +
-> +	keypad = devm_kzalloc(&pdev->dev, sizeof(*keypad), GFP_KERNEL);
-> +	if (!keypad)
-> +		return -ENOMEM;
-> +
-> +	keypad->base = devm_platform_ioremap_resource(pdev, 0);
-> +	if (IS_ERR(keypad->base))
-> +		return PTR_ERR(keypad->base);
-> +
-> +	keypad->regmap = devm_regmap_init_mmio(&pdev->dev,
-> +					       keypad->base,
-> +					       &keypad_regmap_cfg);
-> +	if (IS_ERR(keypad->regmap)) {
-> +		dev_err(&pdev->dev,
-> +			"regmap init failed:%pe\n", keypad->regmap);
-> +		return PTR_ERR(keypad->regmap);
-> +	}
-> +
-> +	bitmap_fill(keypad->keymap_state, MTK_KPD_NUM_BITS);
-> +
-> +	keypad->input_dev = devm_input_allocate_device(&pdev->dev);
-> +	if (!keypad->input_dev) {
-> +		dev_err(&pdev->dev, "Failed to allocate input dev\n");
-> +		return -ENOMEM;
-> +	}
-> +
-> +	keypad->input_dev->name = MTK_KPD_NAME;
-> +	keypad->input_dev->id.bustype = BUS_HOST;
-> +
-> +	ret = matrix_keypad_parse_properties(&pdev->dev, &keypad->n_rows,
-> +					     &keypad->n_cols);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "Failed to parse keypad params\n");
-> +		return ret;
-> +	}
-> +
-> +	if (device_property_read_u32(&pdev->dev, "mediatek,debounce-us",
-> +				     &debounce))
-> +		debounce = 16000;
-> +
-> +	if (debounce > MTK_KPD_DEBOUNCE_MAX_US) {
-> +		dev_err(&pdev->dev, "Debounce time exceeds the maximum allowed time %dus\n",
-> +			MTK_KPD_DEBOUNCE_MAX_US);
-> +		return -EINVAL;
-> +	}
-> +
-> +	wakeup = device_property_read_bool(&pdev->dev, "wakeup-source");
-> +
-> +	dev_dbg(&pdev->dev, "n_row=%d n_col=%d debounce=%d\n",
-> +		keypad->n_rows, keypad->n_cols, debounce);
-> +
-> +	ret = matrix_keypad_build_keymap(NULL, NULL,
-> +					 keypad->n_rows,
-> +					 keypad->n_cols,
-> +					 NULL,
-> +					 keypad->input_dev);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "Failed to build keymap\n");
-> +		return ret;
-> +	}
-> +
-> +	regmap_write(keypad->regmap, MTK_KPD_DEBOUNCE,
-> +		     debounce * 32 / 1000 & MTK_KPD_DEBOUNCE_MASK);
-> +
-> +	keypad->clk = devm_clk_get(&pdev->dev, "kpd");
-> +	if (IS_ERR(keypad->clk))
-> +		return PTR_ERR(keypad->clk);
-> +
-> +	ret = clk_prepare_enable(keypad->clk);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "cannot prepare/enable keypad clock\n");
-> +		return ret;
-> +	}
-> +
-> +	ret = devm_add_action_or_reset(&pdev->dev, kpd_clk_disable, keypad->clk);
-> +	if (ret)
-> +		return ret;
-> +
-> +	irq = platform_get_irq(pdev, 0);
-> +	if (irq < 0)
-> +		return irq;
-> +
-> +	ret = devm_request_threaded_irq(&pdev->dev, irq,
-> +					NULL, kpd_irq_handler, IRQF_ONESHOT,
-> +					MTK_KPD_NAME, keypad);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "Failed to request IRQ#%d:%d\n",
-> +			irq, ret);
-> +		return ret;
-> +	}
-> +
-> +	ret = input_register_device(keypad->input_dev);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "Failed to register device\n");
-> +		return ret;
-> +	}
-> +
-> +	ret =  device_init_wakeup(&pdev->dev, wakeup);
-> +	if (ret)
-> +		dev_warn(&pdev->dev, "device_init_wakeup fail\n");
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct of_device_id kpd_of_match[] = {
-> +	{ .compatible = "mediatek,mt6779-keypad" },
-> +	{ .compatible = "mediatek,mt6873-keypad" },
-> +	{ /* sentinel */ }
-> +};
-> +
-> +static struct platform_driver kpd_pdrv = {
-> +	.probe = kpd_pdrv_probe,
-> +	.driver = {
-> +		   .name = MTK_KPD_NAME,
-> +		   .of_match_table = kpd_of_match,
-> +	},
-> +};
-> +module_platform_driver(kpd_pdrv);
-> +
-> +MODULE_AUTHOR("Mediatek Corporation");
-> +MODULE_DESCRIPTION("MTK Keypad (KPD) Driver");
-> +MODULE_LICENSE("GPL");
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gRnJpLCAxNyBKdWwgMjAyMCwgR2VuZSBDaGVuIHdyb3RlOgoKPiBGcm9tOiBHZW5lIENoZW4g
+PGdlbmVfY2hlbkByaWNodGVrLmNvbT4KPiAKPiBSZW5hbWUgbXQ2MzYwX3BtdSBieSBtdDYzNjAs
+IGJlY2F1c2Ugb2YgaW5jbHVkaW5nCj4gbm90IG9ubHkgUE1VIHBhcnQsIGJ1dCBhbHNvIGVudGly
+ZSBNVDYzNjAgSUMKPiAKPiBTaWduZWQtb2ZmLWJ5OiBHZW5lIENoZW4gPGdlbmVfY2hlbkByaWNo
+dGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9tZmQvbXQ2MzYwLWNvcmUuYyB8IDQxICsrKysrKysr
+KysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAyMCBp
+bnNlcnRpb25zKCspLCAyMSBkZWxldGlvbnMoLSkKCkZvciBteSBvd24gcmVmZXJlbmNlIChhcHBs
+eSB0aGlzIGFzLWlzIHRvIHlvdXIgc2lnbi1vZmYgYmxvY2spOgoKICBBY2tlZC1mb3ItTUZELWJ5
+OiBMZWUgSm9uZXMgPGxlZS5qb25lc0BsaW5hcm8ub3JnPgoKLS0gCkxlZSBKb25lcyBb5p2O55C8
+5pavXQpTZW5pb3IgVGVjaG5pY2FsIExlYWQgLSBEZXZlbG9wZXIgU2VydmljZXMKTGluYXJvLm9y
+ZyDilIIgT3BlbiBzb3VyY2Ugc29mdHdhcmUgZm9yIEFybSBTb0NzCkZvbGxvdyBMaW5hcm86IEZh
+Y2Vib29rIHwgVHdpdHRlciB8IEJsb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRl
+a0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
