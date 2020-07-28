@@ -7,18 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 97C89C433E3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2020 11:18:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8C7B2C433E1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2020 11:19:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 671942065E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2020 11:18:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 55E1C2065E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2020 11:19:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="paqIaoTR";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="f1ifvbL4";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="XFVxZUvs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 671942065E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LPGrLRNC";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="PqTJVT5/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55E1C2065E
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,77 +26,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=CW94U5S7ZWwxzyVTcF4PBY1qz+iSI013SiaMF3vrCT4=; b=paqIaoTRwrmOzBZpYYAZ8WoIJ
-	+zXF20pqSCaKp86UPj7g13fLpN9M/tc4AD6BLcrg/6+Hb7VT/y3VnclV+1gVwzrEV9jn3QAez06ab
-	Ni0zJ/nwsBmqurfWM/qnoeOt+71YLWrNcG98BuROalWYr/FFKNve4NWYkb5ZNdzPCXpSIFyBLHkW6
-	ABvfn3t6p3/IAq0nqa32bUS0RleVk5r+ElbkF83pTmxvk8WJyDVw01xhz/h2P/4DkGD7cC9E2DnyP
-	7im7c2AZjeno0BuVVz7P6xsydN/UH0qraV8m8lXHfhYN4UKxJKSK0/IP77Wr9qRZ1ogmFNLDwoSDI
-	xetuesTHA==;
+	 bh=ThBAURvtz6DNt1mk73HWhQlluFvubOBG/+RMl6NVstE=; b=LPGrLRNCgYK8sIOqP89yQm2qB
+	9sl4hfkIU2lQo3byC25mQiZkATgxjk8RXqiZ5wCtY72U6HsHX2kJoZYHRGa/9n7FYi1VF4OPWmY0/
+	IBOeVzCgbjrunCyYYWCt3F5Mhn9UmQ4A8rds/+w8egkR4FoE2VhYEw8OYQ/WGhUDWZjqN2bx1Uuc9
+	7xPP/MI6GmlIPhxCZevdcRk6cD2JnebWygKO7akKdp5WR51jzSi/x8gYKuFs42oe2q2eCMBgfHGZJ
+	5+sb5YlhH0Q+v3jxwHAuwQdrlutsPDqiELC18ekOvW2k294/5bRujsmaYJlPWwF2/20XY7c+tMhCO
+	2Dxj27qhg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k0Nd8-0008Md-B2; Tue, 28 Jul 2020 11:18:46 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1k0NdM-0008Qt-HC; Tue, 28 Jul 2020 11:19:00 +0000
+Received: from mout.gmx.net ([212.227.17.22])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k0Nd6-0008MM-B0; Tue, 28 Jul 2020 11:18:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
- References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description;
- bh=LY9s1nnQKckO3h37XV1S0MJqqf6r6yFpGbgjuCHrjxQ=; b=f1ifvbL42hOEzv5SS56uPFfNFY
- xDlutwE/j8EJCyroWKXPZoGfk2T2TpBHdrJB7Aif1Lywpu4X7imwqDBKzL16LABHYtLQeW2L2GGSz
- jCSmuG4FddifuChAAUvZ67ZttkNH/HKjuyuwXBnQdDpnHs94lHMPttCaxvnbRz7XnIgDV7jG4TcgU
- t/7Wl1VEt6yJfrXsNd4Un09uMOzgodFCGiThwAmPhgIGuA6uh2wVW2PT3Qq8nmmB3pTA2ij3hbnVB
- 3ZWAmdKPaJDpyc/2/qHtbwCXA1nu58xLQZeBtu04slQduVqztfT2Lml+6yh5Jt1b+8h9m1a3d6UqQ
- aytHJ6hQ==;
-Received: from mout.gmx.net ([212.227.17.20])
- by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k0Nd2-0006Y8-DJ; Tue, 28 Jul 2020 11:18:43 +0000
+ id 1k0Nd8-0008MG-7F; Tue, 28 Jul 2020 11:18:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1595935104;
- bh=pm4hEMlP1SzMjKQ+uHyoY76koqrhvWkeRDQON2vGLX0=;
+ s=badeba3b8450; t=1595935101;
+ bh=RjztiQu8bvOyUz2B8+6Y6utG8fBygRMWzsrfRLxaT28=;
  h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=XFVxZUvse2zObR6M+0xBOiKlRSLE0+v2VIYCl0YJ3kC2tf49GCXNPhqSmqusKTBYF
- 5/nJhprONs3KnUNv0mp0IJFP8DUXWTRH3BuUm0w4Fp9WhaC1+7kj0kpyfJyhjdPOgA
- KWyDgQ0DJxON7KsfDPirj6/F3kd+B3ImB9v3f89A=
+ b=PqTJVT5/1DKAUPspO4Fwvu8KXxLwmZT9gxvwKOC/sayrFfCYOGUrAt1kKuLyuV+/2
+ rmV1oZj9libk8OmI/vr47fgm+vwLQ9bE5YsWg4W6ypd68ap6fz8Ixo+NsECqvMjLde
+ DmhoS6b7PQ36PJy1dHsMVQb+2gyklriznJ4flhAk=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from localhost.localdomain ([80.208.215.239]) by mail.gmx.com
  (mrgmx104 [212.227.17.168]) with ESMTPSA (Nemesis) id
- 1MWRVb-1kGiTE44Mt-00Xw1i; Tue, 28 Jul 2020 13:18:24 +0200
+ 1Mr9Bu-1kX1XH0BMs-00oDrD; Tue, 28 Jul 2020 13:18:21 +0200
 From: Frank Wunderlich <frank-w@public-files.de>
 To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 3/5] drm: Add get_possible_crtc API for dpi, dsi
-Date: Tue, 28 Jul 2020 13:17:58 +0200
-Message-Id: <20200728111800.77641-4-frank-w@public-files.de>
+Subject: [PATCH v2 1/5] drm/mediatek: config component output by device node
+ port
+Date: Tue, 28 Jul 2020 13:17:56 +0200
+Message-Id: <20200728111800.77641-2-frank-w@public-files.de>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200728111800.77641-1-frank-w@public-files.de>
 References: <20200728111800.77641-1-frank-w@public-files.de>
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:hmgR7ODYKvx8oPlcDw8Lc1GdvQDfiX/JgJnDv87nXPtte2migzq
- ZD98y+zmB/ZdT2oYW7Y7j8ofZCmyvZqa5eJRoXNRmZdV4lhEsqqiCqPF33I3WAZ5nzXzcip
- 5b5gV7A/c4AzsF40MizKtDOUfJhcDZss5KO+Y5HIkLY1uKWgvNw03Vd+wONHCMSGrAmN1Ya
- g9M6z+lByXTke2b9AhiEw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Cj6kSjaFYw8=:ibEsBPbF6stniMnVYTZhpV
- zDkTCWx13nsNCZy0D5Scrx7JkmlXPW9zL7/aTnkpDis106jtkcOYgFza12v6q47vNqG2godoh
- gLhY6SVqb6ELX75sq7sW9ju1u74/7nZLjimkkHxejvjvC68ctmMo/7sCG8m2LGloyFKovYFGN
- c084KbHFzK9BOtz9pW99diRqvqZk9muoO8ZF4eUUMP/5Ua+mXClWA35s+POS6yTJrsFPwrJz+
- cM7pYI9fulZGb1LVAnxq27bJR3AaLdbEsE4P5haSQNgi0V0Mh28cY/wEacu2MRiG7NvnFxc+x
- 8TIXF4DBnyNnv8jOmtkGTfOKlCcvQnR4J+oh8Vtp459QvDO3rGcWc1AGR1IPwjyT50XSS3VR2
- B7/HNGfrnBFeiqEfvmz+e1TwHznJDsTFNa2PTfjh0e3z0wqLAreht+MlcFoISSgKETCNcdJhY
- 378QtY91hzcKzat+4kHeGsq/dGy8uzjqJTepaKJFyoBkM9ZvLW/bCowAvUYZdl3Hy/VJHONB1
- 5gZfV8lE5CDynHFSpDYKzbPuQHCc3dZ/Aju0A/Mmuss+HJygnabm37a1Y5joD+/zch5YeehTf
- k0+7i8ELA8ASlNL9e58PPPos4+lgPi78XRBZbHZ0uwLMS9MJl12Bwq6cJ799NDSoBNXJapmfz
- 9KPRYgR1OFKg9LSLIz6wLpETayxOFcD0CxlNKVKvaoN6NpjICpTImFwRBsf4COXV8UPWM4R+E
- SJP6QfiPkjP0JGyFQzVCqiCagV8pdNlwahDp7tODe1KbJFS0goSZBVWs8r0uYnW0DVXaBAGh3
- EICMUtSprDwHaR+AloPUW8Ra6ngCNhCyu+VcBhBbjjQGxs5CDQksdQUdEYgGdK+wa+7FXxFKk
- VdOQlWAxgq6NFRas28wxZmZKiJu7cNeqyAzWoufPrLetgvQ3l+zAdxOBumVKoJGEs2wrsTfAx
- iFZDjKY5bQUk1iAAiVZHYWr0SLM8SlY8u7J18msdM6iRv8Xg+bG5t4a//wlAYrMzs1MS0ALVs
- Tj3qoYk/KWnHFUVVg3h2U10q76AkiMaBO3OeakA8+WJJpSer5YuLJm5PtUwQkknRxx7XZe99Z
- x66jqTHfYLKBRUnifsBLBcv8rdDLDDHf2vofJmzUTKUhupHuUuOeWTM8wbq7jw6805Cz9USj+
- /942CydVIXV2AafeVEPUm1hHx3wbdK2S8htiYNjoRmsJoOFPWZEdsPBD91x8OTDWG7iu9sAm8
- C2JokM1mtSHkutkn75y22/U+jB5+nK2NzE4tkNg==
+X-Provags-ID: V03:K1:YvbDIbRpFNRzU9CUvTdpvNUkk08xUKy8rbwWD1rLNM8UXAoQuK4
+ eICt8UcylHTRfOGkjEX9jjTApIMznChQZ6JLB0JrsjiMAAUXmWoZWVa1uKNNAGYRlIyVrTC
+ IKSqIDP+H57GVEHxo0RDq9SNxAHZIaXwDCy1xq9aaTm2FrJdcG2UEvxzlv5POKDx0mQCuV4
+ VCgz/4H4bnhMAao7exzPA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:5JI92cNImiA=:IU9/AVKV/YriZTpTu1OE0e
+ O8SnTBpFQJaIKnhNf0ENVS71qiHFJW6fi77esT8+iPhPmyguNpqEi200P15DE396vcSD6HaRy
+ jkK+um62hHmvGVD413t3Td/MBamGeZ0K/OHMaCWx9ZlhRNV3p5ddO85KGWDGbKGl3mIQy1ZDO
+ gYTMhu1k/shkkXPexV8oBEFwrK1sjylI3UcDJhmVj0v7MvmpjrGSfLohzyhggLMiQrWtSXj1s
+ F5lH69pJPnG6XDc6RTp9zCPFR+88z8jqreyd0iU6HGsgSLtteanA1+aosO8ehasnE2LmJs3cq
+ XCQhAot6d9BA5lrJCOx3xPDXpsXRDODPrBq51F3FjzrYm0r+R+673O9haC0BJ3bgICsF0xtcB
+ r68CTlvnknBcp8o/Xlu4r4mQwOP/IXmr3LOV1iBVAy3JR9UVdyiaAwDpLH0ZjmHhNBSf+kYec
+ dil9AXhKdCT17ayWhX6puhITR3fzJONhT9CXwjhzytz+YkWf0A1sLUmXZMriF5HnHqmKo2pBz
+ aXWk5rIooPqsAiK4rTMuZ09SbaOSfOUswgDpAdQw/UCtzfRf5HPXFDOoXiNqi988wHVgPH39d
+ reopSpTbdHOZL5aeLq4WRU2g35bhX4O8jNUsrcK3R8N/USycjc62YiM/EFptwkec+4eMjw9h1
+ nbFEDDoYSLOsPoTl9rzfWc1aiIRq0+Bx+rrfaf23uQPdhRmi8/YF0ZAnar8dhSEhz5Jmct+0I
+ lzyhaHfFgFGPBm2i2iEsyUqzSTPEy2q1nYqtCAFMSB60D6oBkWAbWgtVo0n8KvX9Q7fRmKWo4
+ 9rFBYULsOB0q4GS4C1aZNkk64O39OnVdqHUOOoSVcM7LQU9XVlE35S4gDtIZdqe1EZ8z+smv5
+ /+v2VHEZ4IpAf8jQzlxuEyPHyG2CtXV3AMEoA4e+/Xxxq5IL9Ve3rWkrmwxkPm8+/76Zh67e+
+ +1ZrOvHoyORJHbaEJSnK3KI6l4bQuCAaMDeqcIp/GX2d8au/zlPDwHGAXlrwwhBBTZIiQ1fht
+ 6Hu95C5tCaeveDCNyggV4YE4oP2zSdyO+ItSIBCDFQgWj+QA3SvJGu47HvP2JOIHMXjfwmXXR
+ L4G2ac3jJFcKw0n5l7Gfty4KURDLrGVL0M9vLkoIH87wz83fAxHjWg2jzQjo3foq1YKgx+XB7
+ bV2ZZh1PhCqVaiMTzK6lP4oD/Okofix7b7Ru49cLd353NNBLHoYRY/S8u6Ae6RmYx+SKuRWv6
+ 8/3j9uIxIhbIUCnAws/QvGWYwSOpixhywPWcY6Q==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200728_121840_903897_53121946 
-X-CRM114-Status: GOOD (  13.41  )
+X-CRM114-CacheID: sfid-20200728_071846_812752_B6B1B303 
+X-CRM114-Status: GOOD (  16.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,105 +99,161 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Frank Wunderlich <frank-w@public-files.de>, David Airlie <airlied@linux.ie>,
- Stu Hsieh <stu.hsieh@mediatek.com>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Bibby Hsieh <bibby.hsieh@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Stu Hsieh <stu.hsieh@mediatek.com>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
 
-Test: build pass and run ok
+We can select output component by decive node port.
+Main path default output component is DSI.
+External path default output component is DPI.
 
-Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
+without this Patch i get this warning:
+
+WARNING: CPU: 3 PID: 70 at drivers/gpu/drm/drm_mode_config.c:621 drm_mode_config_validate+0x1d8/0x258
+
+Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+
+added small fixes for warnings
+
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Tested-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 42 +++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  2 +
- 2 files changed, 44 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 46 ++++++++++++++++++++++----
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h |  4 +--
+ 2 files changed, 42 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index 57c88de9a329..a5f2ff6bea93 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -13,6 +13,8 @@
- #include <linux/of_platform.h>
- #include <linux/platform_device.h>
- #include <linux/soc/mediatek/mtk-cmdq.h>
-+#include <drm/drm_print.h>
-+
- #include "mtk_drm_drv.h"
- #include "mtk_drm_plane.h"
- #include "mtk_drm_ddp_comp.h"
-@@ -412,6 +414,22 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_WDMA1]	= { MTK_DISP_WDMA,	1, NULL },
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 6bd369434d9d..ce7abf2743d9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -24,6 +24,13 @@
+ #include <drm/drm_of.h>
+ #include <drm/drm_probe_helper.h>
+ #include <drm/drm_vblank.h>
++#include <linux/component.h>
++#include <linux/iommu.h>
++#include <linux/of.h>
++#include <linux/of_address.h>
++#include <linux/of_graph.h>
++#include <linux/of_platform.h>
++#include <linux/pm_runtime.h>
+
+ #include "mtk_drm_crtc.h"
+ #include "mtk_drm_ddp.h"
+@@ -61,7 +68,7 @@ static const struct drm_mode_config_funcs mtk_drm_mode_config_funcs = {
+ 	.atomic_commit = drm_atomic_helper_commit,
  };
 
-+static bool mtk_drm_find_comp_in_ddp(struct mtk_ddp_comp ddp_comp,
-+					 const enum mtk_ddp_comp_id *path,
-+					 unsigned int path_len)
-+{
-+	unsigned int i;
-+
-+	if (path == NULL)
-+		return false;
-+
-+	for (i = 0U; i < path_len; i++)
-+		if (ddp_comp.id == path[i])
-+			return true;
-+
-+	return false;
-+}
-+
- int mtk_ddp_comp_get_id(struct device_node *node,
- 			enum mtk_ddp_comp_type comp_type)
- {
-@@ -427,6 +445,30 @@ int mtk_ddp_comp_get_id(struct device_node *node,
- 	return -EINVAL;
- }
+-static const enum mtk_ddp_comp_id mt2701_mtk_ddp_main[] = {
++static enum mtk_ddp_comp_id mt2701_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_OVL0,
+ 	DDP_COMPONENT_RDMA0,
+ 	DDP_COMPONENT_COLOR0,
+@@ -69,12 +76,12 @@ static const enum mtk_ddp_comp_id mt2701_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_DSI0,
+ };
 
-+unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
-+						struct mtk_ddp_comp ddp_comp)
-+{
-+	struct mtk_drm_private *private = drm->dev_private;
-+	unsigned int ret;
-+
-+	if (mtk_drm_find_comp_in_ddp(ddp_comp, private->data->main_path,
-+		private->data->main_len) == true) {
-+		ret = BIT(0);
-+	} else if (mtk_drm_find_comp_in_ddp(ddp_comp,
-+		private->data->ext_path,
-+		private->data->ext_len) == true) {
-+		ret = BIT(1);
-+	} else if (mtk_drm_find_comp_in_ddp(ddp_comp,
-+		private->data->third_path,
-+		private->data->third_len) == true) {
-+		ret = BIT(2);
-+	} else {
-+		DRM_INFO("Failed to find comp in ddp table\n");
-+		ret = 0;
-+	}
-+	return ret;
-+}
-+
- int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
- 		      struct mtk_ddp_comp *comp, enum mtk_ddp_comp_id comp_id,
- 		      const struct mtk_ddp_comp_funcs *funcs)
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index debe36395fe7..1d9e00b69462 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -202,6 +202,8 @@ static inline void mtk_ddp_ctm_set(struct mtk_ddp_comp *comp,
+-static const enum mtk_ddp_comp_id mt2701_mtk_ddp_ext[] = {
++static enum mtk_ddp_comp_id mt2701_mtk_ddp_ext[] = {
+ 	DDP_COMPONENT_RDMA1,
+ 	DDP_COMPONENT_DPI0,
+ };
 
- int mtk_ddp_comp_get_id(struct device_node *node,
- 			enum mtk_ddp_comp_type comp_type);
-+unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
-+						struct mtk_ddp_comp ddp_comp);
- int mtk_ddp_comp_init(struct device *dev, struct device_node *comp_node,
- 		      struct mtk_ddp_comp *comp, enum mtk_ddp_comp_id comp_id,
- 		      const struct mtk_ddp_comp_funcs *funcs);
+-static const enum mtk_ddp_comp_id mt2712_mtk_ddp_main[] = {
++static enum mtk_ddp_comp_id mt2712_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_OVL0,
+ 	DDP_COMPONENT_COLOR0,
+ 	DDP_COMPONENT_AAL0,
+@@ -84,7 +91,7 @@ static const enum mtk_ddp_comp_id mt2712_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_PWM0,
+ };
+
+-static const enum mtk_ddp_comp_id mt2712_mtk_ddp_ext[] = {
++static enum mtk_ddp_comp_id mt2712_mtk_ddp_ext[] = {
+ 	DDP_COMPONENT_OVL1,
+ 	DDP_COMPONENT_COLOR1,
+ 	DDP_COMPONENT_AAL1,
+@@ -100,7 +107,7 @@ static const enum mtk_ddp_comp_id mt2712_mtk_ddp_third[] = {
+ 	DDP_COMPONENT_PWM2,
+ };
+
+-static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
++static enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_OVL0,
+ 	DDP_COMPONENT_COLOR0,
+ 	DDP_COMPONENT_AAL0,
+@@ -111,7 +118,7 @@ static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_PWM0,
+ };
+
+-static const enum mtk_ddp_comp_id mt8173_mtk_ddp_ext[] = {
++static enum mtk_ddp_comp_id mt8173_mtk_ddp_ext[] = {
+ 	DDP_COMPONENT_OVL1,
+ 	DDP_COMPONENT_COLOR1,
+ 	DDP_COMPONENT_GAMMA,
+@@ -459,6 +466,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
+
+ 	/* Iterate over sibling DISP function blocks */
+ 	for_each_child_of_node(phandle->parent, node) {
++		struct device_node *port, *ep, *remote;
+ 		const struct of_device_id *of_id;
+ 		enum mtk_ddp_comp_type comp_type;
+ 		int comp_id;
+@@ -522,6 +530,32 @@ static int mtk_drm_probe(struct platform_device *pdev)
+
+ 			private->ddp_comp[comp_id] = comp;
+ 		}
++
++		if (comp_type != MTK_DSI && comp_type != MTK_DPI) {
++			port = of_graph_get_port_by_id(node, 0);
++			if (!port)
++				continue;
++			ep = of_get_child_by_name(port, "endpoint");
++			of_node_put(port);
++			if (!ep)
++				continue;
++			remote = of_graph_get_remote_port_parent(ep);
++			of_node_put(ep);
++			if (!remote)
++				continue;
++			of_id = of_match_node(mtk_ddp_comp_dt_ids, remote);
++			if (!of_id)
++				continue;
++			comp_type = (enum mtk_ddp_comp_type)of_id->data;
++			for (i = 0; i < private->data->main_len - 1; i++)
++				if (private->data->main_path[i] == comp_id)
++					private->data->main_path[i + 1] =
++					mtk_ddp_comp_get_id(node, comp_type);
++			for (i = 0; i < private->data->ext_len - 1; i++)
++				if (private->data->ext_path[i] == comp_id)
++					private->data->ext_path[i + 1] =
++					mtk_ddp_comp_get_id(node, comp_type);
++		}
+ 	}
+
+ 	if (!private->mutex_node) {
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+index b5be63e53176..7fcaab648bf1 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+@@ -21,9 +21,9 @@ struct drm_property;
+ struct regmap;
+
+ struct mtk_mmsys_driver_data {
+-	const enum mtk_ddp_comp_id *main_path;
++	enum mtk_ddp_comp_id *main_path;
+ 	unsigned int main_len;
+-	const enum mtk_ddp_comp_id *ext_path;
++	enum mtk_ddp_comp_id *ext_path;
+ 	unsigned int ext_len;
+ 	const enum mtk_ddp_comp_id *third_path;
+ 	unsigned int third_len;
 --
 2.25.1
 
