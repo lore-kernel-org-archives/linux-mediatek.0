@@ -2,85 +2,78 @@ Return-Path: <SRS0=uiJf=BH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DATE_IN_PAST_06_12,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3A372C433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2020 02:29:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0D222C433E1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2020 03:22:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0700B20825
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2020 02:29:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BDF262072E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2020 03:22:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="c48mZWIi";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Iq4q/uAa"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0700B20825
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WgytFLo5";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Be/WSWRM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BDF262072E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=DS09T21fEmoPRfXsk/JA3Dj7Se7ASm22spn0Uz8qBUk=; b=c48mZWIihBuOJrjYZyQ5VOCuK
-	5TVR+wsuO5GPWhPaB22IDNvqiUP5MVdKO6Ap41uKkO4Gt4Qql8sDkJXNEuZNXTYTnnq7/8wb0BgSd
-	Ng/CnnEjwQV9ZZ7mxNQ7xWI/fXPe1ySjoFeiEjoY5efg8sVmLycOhM67/zM8ta4jEMvGR4uNP+6Ur
-	TG5rHYr3AsPMwhZkTYuMXtaZpxJv9DVHtjTR+wEPyVIofIV6q5fDaC2RkH8GYag6gJ10dBcpNDCOV
-	XJGcBj+cCvbv35LWX1OpP5d2tBE5gC5H/ac3md2WjbtKS3YY3D1K/D6T5Xo7JNoYNVdv5Rbr2cGmD
-	pShpKTGsg==;
+	 bh=6cAGqJa4bFMuHxxrmrtJlvNRFf8NwNEbV71pVIcPtU8=; b=WgytFLo5aIbBJ+nGjVvPTfT4A
+	JGGfilZPkdj7V08RjHgopEj0CmE2YaKUVsIO+4NxWD0G3/Lpf3+62ozrVKgpUnsE8TSlbmNxrO94I
+	VeiNSgCOUR0Jxf0eraKKHpn8BI64LXFdGSYAlPLZqp/FierK9v1L+WjvIO52lu3wJ1fh/VHvPv1Tc
+	/ddUFW5jQnKJr9LOUDcgof2umEi7kjuizn8bECbXiG8POPsmG0ZqCLnE+A4/sDvMzyUzOA+u9MFYA
+	9nPLCPCGDbzggiX70huXI8yre5sjphj9ucezc4lc3zTRsti3kQ3Bdo0zfMchefYnkhA9ogG6HdQL1
+	OZHpXOpbw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k0FMK-0000Yk-Be; Tue, 28 Jul 2020 02:28:52 +0000
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144])
+	id 1k0GCH-0002S9-Fn; Tue, 28 Jul 2020 03:22:33 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k0FMG-0000XR-Bh; Tue, 28 Jul 2020 02:28:49 +0000
-Received: by mail-il1-x144.google.com with SMTP id r13so7829365ilt.6;
- Mon, 27 Jul 2020 19:28:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=X81wKNuIN/ZBgNP01q1lrp0XDb3zK0TgXb0/3enbG4E=;
- b=Iq4q/uAaaDFkDFJLGD5NrMQMX3PCt6qe6l9b/3p4udFexbBIOpyOdQGnKowNmd9NGe
- JYOD9gV20hNjhE3+pvKP8ttNKhKZbDhE/IRlUbPz45F2qT8JflGxdO4vAnTjTxj2R+ra
- wAu8h7vIehJPG17+zKn2uj2ajEa75hYZv1A4+RvYYzDys/+NZz4BSp5mGbMnDvhhfoQe
- 1ki1EQcbyal983V0gHpZVTWSGiCPfUXCWqRqbfvoIobWiRv44kSw33psx/RAnukmTa7N
- Qysm6luz3Vb9xSjjP1NmqtoxjazUrUu/sc5h5tS0+77Io/q8RmCnSC1cujDVc9ZECnUl
- cmDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=X81wKNuIN/ZBgNP01q1lrp0XDb3zK0TgXb0/3enbG4E=;
- b=npuhhCl1+sZWh+tiKqSVC11YjrmMU3ZGMWLKJYwM0ZSkih35c9z0BE1AhiVv831fmS
- crIeDdwTL40dN+NKF5Ly70QXHA/AEWvTroSBnedZaXjStfJV2Kq+KZOAqCnIQQDllbtO
- 2PQZ5e1UlbXMDbSP2ut2zhtfPclrDZKH76sWI2tPbURWCgwMbW3wI/1GQbKO1jOIlGu3
- vJzQcl2AmbDcH38AiadHE6+gauuSCHCptKvPLjDN2/uLAntS7Lljitmoq/FyGFZEBfLk
- f0vChd6obGMjlMYf7ox91nNP4h37fFI38yEJTVP5tcp+E6eShqdlGq62DikfbtiQyyve
- GKgA==
-X-Gm-Message-State: AOAM530FRQ78RCjIHGAlwRXuabU0DZG40sIyLqWYt+S/FJnYfAaNKCq9
- WCZq4TXfYF7/rRimkhCu7Ukk5ESg670I2ejQgoA=
-X-Google-Smtp-Source: ABdhPJzyKdyXWVAX9P7Mf/nv1KVhHyZI+2eMBipAvoOzXxrE76PZ1ClBhDf1EO76moVzQz4JrEMxm7qkX2iNE66y7cg=
-X-Received: by 2002:a92:9f96:: with SMTP id z22mr27519152ilk.266.1595903326578; 
- Mon, 27 Jul 2020 19:28:46 -0700 (PDT)
+ id 1k0GCE-0002Qs-MT
+ for linux-mediatek@lists.infradead.org; Tue, 28 Jul 2020 03:22:32 +0000
+X-UUID: 97cb074de06142bf96710bea4be6152a-20200727
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=pneX9c+Nf642/lsLtl0xOpkT7L9EnCYziae9xk67Zrg=; 
+ b=Be/WSWRMTDc6eQinwCC7+P1KgdtsmIm7IBnmRoLFRTw1du1urp3/AnDqVSlTYLhvnZY/gRWJnjxhXaKB3hxzJ2MAA+8waOBfZcZ6MjHi54PLauNgmMqZjGqKsi1bR/m3RfdzexTjnVCFkH1t1wlz1fXl5tnFGmTGcK16okz4Veo=;
+X-UUID: 97cb074de06142bf96710bea4be6152a-20200727
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <frankie.chang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1437841211; Mon, 27 Jul 2020 19:22:22 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 27 Jul 2020 20:20:07 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 28 Jul 2020 11:20:03 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 28 Jul 2020 11:20:01 +0800
+From: Frankie Chang <Frankie.Chang@mediatek.com>
+To: Todd Kjos <tkjos@google.com>
+Subject: [PATCH v6 3/3] binder: add transaction latency tracer
+Date: Tue, 28 Jul 2020 11:20:01 +0800
+Message-ID: <1595906401-11985-4-git-send-email-Frankie.Chang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1595906401-11985-1-git-send-email-Frankie.Chang@mediatek.com>
+References: <1595252430.5899.6.camel@mtkswgap22>
+ <1595906401-11985-1-git-send-email-Frankie.Chang@mediatek.com>
 MIME-Version: 1.0
-References: <1594983811-25908-1-git-send-email-gene.chen.richtek@gmail.com>
- <1594983811-25908-5-git-send-email-gene.chen.richtek@gmail.com>
- <20200727112921.GK1850026@dell>
-In-Reply-To: <20200727112921.GK1850026@dell>
-From: Gene Chen <gene.chen.richtek@gmail.com>
-Date: Tue, 28 Jul 2020 02:28:32 +0800
-Message-ID: <CAE+NS36cxY9KqxxcmuctK_W_3ZmZnC_xK8VVVaTZqC3vSoqbUw@mail.gmail.com>
-Subject: Re: [PATCH v2 4/9] mfd: mt6360: Combine mt6360 pmic/ldo resouces into
- mt6360 regulator resources
-To: Lee Jones <lee.jones@linaro.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200727_222848_453383_D4F31FFD 
-X-CRM114-Status: GOOD (  16.64  )
+X-CRM114-CacheID: sfid-20200727_232230_973162_88C11547 
+X-CRM114-Status: GOOD (  26.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,65 +85,313 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Gene Chen <gene_chen@richtek.com>, linux-kernel@vger.kernel.org,
- cy_huang@richtek.com, benjamin.chao@mediatek.com,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, shufan_lee@richtek.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: wsd_upstream@mediatek.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org,
+ =?UTF-8?q?Arve=20Hj=C3=B8nnev=C3=A5g?= <arve@android.com>, Jian-Min
+ Liu <Jian-Min.Liu@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Joel Fernandes <joel@joelfernandes.org>,
+ Frankie Chang <Frankie.Chang@mediatek.com>, Martijn Coenen <maco@android.com>,
+ Christian Brauner <christian@brauner.io>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-TGVlIEpvbmVzIDxsZWUuam9uZXNAbGluYXJvLm9yZz4g5pa8IDIwMjDlubQ35pyIMjfml6Ug6YCx
-5LiAIOS4i+WNiDc6Mjnlr6vpgZPvvJoKPgo+IE9uIEZyaSwgMTcgSnVsIDIwMjAsIEdlbmUgQ2hl
-biB3cm90ZToKPgo+ID4gRnJvbTogR2VuZSBDaGVuIDxnZW5lX2NoZW5AcmljaHRlay5jb20+Cj4g
-Pgo+ID4gQ29tYmluZSBtdDYzNjAgcG1pYy9sZG8gcmVzb3VjZXMgaW50byBtdDYzNjAgcmVndWxh
-dG9yIHJlc291cmNlcwo+ID4gdG8gc2ltcGxpZnkgdGhlIHNpbWlsYXIgcmVzb3VyY2VzIG9iamVj
-dC4KPgo+IERvIHRoZSBzdWItZGV2aWNlcyBhY3R1YWxseSBzaGFyZSB0aGVzZSByZXNvdXJjZXMs
-IG9yIGFyZSB5b3UgZG9pbmcKPiB0aGlzIGp1c3QgdG8gbWFrZSB0aGUgY29kZSBzaW1wbGVyPwo+
-CgpUaGV5IGFyZSBkaWZmZXJlbnQgcmVzb3VyY2VzIHVzZWQgYnkgZGlmZmVyZW50IGJ1Y2tzIGFu
-ZCBsZG9zIHdpdGhvdXQKc2hhcmluZyByZWxhdGlvbnMuCkkganVzdCB0byBtYWtlIHRoZSBjb2Rl
-IHNpbXBsZXIuCgo+ID4gU2lnbmVkLW9mZi1ieTogR2VuZSBDaGVuIDxnZW5lX2NoZW5AcmljaHRl
-ay5jb20+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL21mZC9tdDYzNjAtY29yZS5jIHwgMTEgKysrLS0t
-LS0tLS0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCA4IGRlbGV0aW9ucygt
-KQo+ID4KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21mZC9tdDYzNjAtY29yZS5jIGIvZHJpdmVy
-cy9tZmQvbXQ2MzYwLWNvcmUuYwo+ID4gaW5kZXggN2NjMWI1OS4uNjY1ZTI2ZiAxMDA2NDQKPiA+
-IC0tLSBhL2RyaXZlcnMvbWZkL210NjM2MC1jb3JlLmMKPiA+ICsrKyBiL2RyaXZlcnMvbWZkL210
-NjM2MC1jb3JlLmMKPiA+IEBAIC0yNjUsNyArMjY1LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBy
-ZXNvdXJjZSBtdDYzNjBfbGVkX3Jlc291cmNlc1tdID0gewo+ID4gICAgICAgREVGSU5FX1JFU19J
-UlFfTkFNRUQoTVQ2MzYwX0ZMRUQxX1NUUkJfVE9fRVZULCAiZmxlZDFfc3RyYl90b19ldnQiKSwK
-PiA+ICB9Owo+ID4KPiA+IC1zdGF0aWMgY29uc3Qgc3RydWN0IHJlc291cmNlIG10NjM2MF9wbWlj
-X3Jlc291cmNlc1tdID0gewo+ID4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgcmVzb3VyY2UgbXQ2MzYw
-X3JlZ3VsYXRvcl9yZXNvdXJjZXNbXSA9IHsKPiA+ICAgICAgIERFRklORV9SRVNfSVJRX05BTUVE
-KE1UNjM2MF9CVUNLMV9QR0JfRVZULCAiYnVjazFfcGdiX2V2dCIpLAo+ID4gICAgICAgREVGSU5F
-X1JFU19JUlFfTkFNRUQoTVQ2MzYwX0JVQ0sxX09DX0VWVCwgImJ1Y2sxX29jX2V2dCIpLAo+ID4g
-ICAgICAgREVGSU5FX1JFU19JUlFfTkFNRUQoTVQ2MzYwX0JVQ0sxX09WX0VWVCwgImJ1Y2sxX292
-X2V2dCIpLAo+ID4gQEAgLTI3OCw5ICsyNzgsNiBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHJlc291
-cmNlIG10NjM2MF9wbWljX3Jlc291cmNlc1tdID0gewo+ID4gICAgICAgREVGSU5FX1JFU19JUlFf
-TkFNRUQoTVQ2MzYwX0xETzdfT0NfRVZULCAibGRvN19vY19ldnQiKSwKPiA+ICAgICAgIERFRklO
-RV9SRVNfSVJRX05BTUVEKE1UNjM2MF9MRE82X1BHQl9FVlQsICJsZG82X3BnYl9ldnQiKSwKPiA+
-ICAgICAgIERFRklORV9SRVNfSVJRX05BTUVEKE1UNjM2MF9MRE83X1BHQl9FVlQsICJsZG83X3Bn
-Yl9ldnQiKSwKPiA+IC19Owo+ID4gLQo+ID4gLXN0YXRpYyBjb25zdCBzdHJ1Y3QgcmVzb3VyY2Ug
-bXQ2MzYwX2xkb19yZXNvdXJjZXNbXSA9IHsKPiA+ICAgICAgIERFRklORV9SRVNfSVJRX05BTUVE
-KE1UNjM2MF9MRE8xX09DX0VWVCwgImxkbzFfb2NfZXZ0IiksCj4gPiAgICAgICBERUZJTkVfUkVT
-X0lSUV9OQU1FRChNVDYzNjBfTERPMl9PQ19FVlQsICJsZG8yX29jX2V2dCIpLAo+ID4gICAgICAg
-REVGSU5FX1JFU19JUlFfTkFNRUQoTVQ2MzYwX0xETzNfT0NfRVZULCAibGRvM19vY19ldnQiKSwK
-PiA+IEBAIC0yOTgsMTAgKzI5NSw4IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbWZkX2NlbGwgbXQ2
-MzYwX2RldnNbXSA9IHsKPiA+ICAgICAgICAgICAgICAgICAgIE5VTEwsIDAsIDAsICJtZWRpYXRl
-ayxtdDYzNjAtY2hnIiksCj4gPiAgICAgICBPRl9NRkRfQ0VMTCgibXQ2MzYwLWxlZCIsIG10NjM2
-MF9sZWRfcmVzb3VyY2VzLAo+ID4gICAgICAgICAgICAgICAgICAgTlVMTCwgMCwgMCwgIm1lZGlh
-dGVrLG10NjM2MC1sZWQiKSwKPiA+IC0gICAgIE9GX01GRF9DRUxMKCJtdDYzNjAtcG1pYyIsIG10
-NjM2MF9wbWljX3Jlc291cmNlcywKPiA+IC0gICAgICAgICAgICAgICAgIE5VTEwsIDAsIDAsICJt
-ZWRpYXRlayxtdDYzNjAtcG1pYyIpLAo+ID4gLSAgICAgT0ZfTUZEX0NFTEwoIm10NjM2MC1sZG8i
-LCBtdDYzNjBfbGRvX3Jlc291cmNlcywKPiA+IC0gICAgICAgICAgICAgICAgIE5VTEwsIDAsIDAs
-ICJtZWRpYXRlayxtdDYzNjAtbGRvIiksCj4gPiArICAgICBPRl9NRkRfQ0VMTCgibXQ2MzYwLXJl
-Z3VsYXRvciIsIG10NjM2MF9yZWd1bGF0b3JfcmVzb3VyY2VzLAo+ID4gKyAgICAgICAgICAgICAg
-ICAgTlVMTCwgMCwgMCwgIm1lZGlhdGVrLG10NjM2MC1yZWd1bGF0b3IiKSwKPiA+ICAgICAgIE9G
-X01GRF9DRUxMKCJtdDYzNjAtdGNwYyIsIE5VTEwsCj4gPiAgICAgICAgICAgICAgICAgICBOVUxM
-LCAwLCAwLCAibWVkaWF0ZWssbXQ2MzYwLXRjcGMiKSwKPiA+ICB9Owo+Cj4gLS0KPiBMZWUgSm9u
-ZXMgW+adjueQvOaWr10KPiBTZW5pb3IgVGVjaG5pY2FsIExlYWQgLSBEZXZlbG9wZXIgU2Vydmlj
-ZXMKPiBMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBmb3IgQXJtIFNvQ3MKPiBG
-b2xsb3cgTGluYXJvOiBGYWNlYm9vayB8IFR3aXR0ZXIgfCBCbG9nCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxp
-c3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+From: "Frankie.Chang" <Frankie.Chang@mediatek.com>
+
+Record start/end timestamp for binder transaction.
+When transaction is completed or transaction is free,
+it would be checked if transaction latency over threshold
+(default 2 sec), if yes, printing related information for tracing.
+
+/* Implement details */
+- Add latency tracer module to monitor transaction
+  by attaching to new tracepoints introduced
+  when transactions are allocated and freed.
+  The trace_binder_txn_latency_free would not be enabled
+  by default. Monitoring which transaction is too slow to
+  cause some of exceptions is important. So we hook the
+  tracepoint to call the monitor function.
+
+- Since some of modules would trigger timeout NE
+  if their binder transaction don't finish in time,
+  such as audio timeout (5 sec), even BT command
+  timeout (2 sec), etc.
+  Therefore, setting the timeout threshold as default
+  2 seconds could be helpful to debug.
+  But this timeout threshold is configurable, to let
+  all users determine the more suitable threshold.
+
+- The reason why printing the related information to
+  kernel information log but not trace buffer is that
+  some abnormal transactions may be pending for a long
+  time ago, they could not be recorded due to buffer
+  limited.
+
+Signed-off-by: Frankie.Chang <Frankie.Chang@mediatek.com>
+---
+ drivers/android/Kconfig                 |    8 +++
+ drivers/android/Makefile                |    1 +
+ drivers/android/binder.c                |    2 +
+ drivers/android/binder_internal.h       |   13 ++++
+ drivers/android/binder_latency_tracer.c |  112 +++++++++++++++++++++++++++++++
+ drivers/android/binder_trace.h          |   26 ++++++-
+ 6 files changed, 159 insertions(+), 3 deletions(-)
+ create mode 100644 drivers/android/binder_latency_tracer.c
+
+diff --git a/drivers/android/Kconfig b/drivers/android/Kconfig
+index 6fdf2ab..91fff1e 100644
+--- a/drivers/android/Kconfig
++++ b/drivers/android/Kconfig
+@@ -54,6 +54,14 @@ config ANDROID_BINDER_IPC_SELFTEST
+ 	  exhaustively with combinations of various buffer sizes and
+ 	  alignments.
+ 
++config BINDER_TRANSACTION_LATENCY_TRACKING
++	tristate "Android Binder transaction tracking"
++	help
++	  Used for track abnormal binder transaction which is over threshold,
++	  when the transaction is done or be free, this transaction would be
++	  checked whether it executed overtime.
++	  If yes, printing out the detailed info.
++
+ endif # if ANDROID
+ 
+ endmenu
+diff --git a/drivers/android/Makefile b/drivers/android/Makefile
+index c9d3d0c9..c2ffdb6 100644
+--- a/drivers/android/Makefile
++++ b/drivers/android/Makefile
+@@ -4,3 +4,4 @@ ccflags-y += -I$(src)			# needed for trace events
+ obj-$(CONFIG_ANDROID_BINDERFS)		+= binderfs.o
+ obj-$(CONFIG_ANDROID_BINDER_IPC)	+= binder.o binder_alloc.o
+ obj-$(CONFIG_ANDROID_BINDER_IPC_SELFTEST) += binder_alloc_selftest.o
++obj-$(CONFIG_BINDER_TRANSACTION_LATENCY_TRACKING)	+= binder_latency_tracer.o
+diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+index 1e6fc40..0956403 100644
+--- a/drivers/android/binder.c
++++ b/drivers/android/binder.c
+@@ -2658,6 +2658,7 @@ static void binder_transaction(struct binder_proc *proc,
+ 		return_error_line = __LINE__;
+ 		goto err_alloc_t_failed;
+ 	}
++	trace_binder_txn_latency_alloc(t);
+ 	INIT_LIST_HEAD(&t->fd_fixups);
+ 	binder_stats_created(BINDER_STAT_TRANSACTION);
+ 	spin_lock_init(&t->lock);
+@@ -5147,6 +5148,7 @@ static void print_binder_transaction_ilocked(struct seq_file *m,
+ 		   to_proc ? to_proc->pid : 0,
+ 		   t->to_thread ? t->to_thread->pid : 0,
+ 		   t->code, t->flags, t->priority, t->need_reply);
++	trace_binder_txn_latency_info(m, t);
+ 	spin_unlock(&t->lock);
+ 
+ 	if (proc != to_proc) {
+diff --git a/drivers/android/binder_internal.h b/drivers/android/binder_internal.h
+index 5b65413..596db00 100644
+--- a/drivers/android/binder_internal.h
++++ b/drivers/android/binder_internal.h
+@@ -13,6 +13,11 @@
+ #include <linux/uidgid.h>
+ #include "binder_alloc.h"
+ 
++#if IS_ENABLED(CONFIG_BINDER_TRANSACTION_LATENCY_TRACKING)
++#include <linux/rtc.h>
++#include <linux/time.h>
++#endif
++
+ struct binder_context {
+ 	struct binder_node *binder_context_mgr_node;
+ 	struct mutex context_mgr_node_lock;
+@@ -521,6 +526,14 @@ struct binder_transaction {
+ 	 * during thread teardown
+ 	 */
+ 	spinlock_t lock;
++	/**
++	 * @timestamp and @tv are used to record the time
++	 * that the binder transaction startup
++	 */
++#if IS_ENABLED(CONFIG_BINDER_TRANSACTION_LATENCY_TRACKING)
++	struct timespec64 timestamp;
++	struct timeval tv;
++#endif
+ };
+ 
+ /**
+diff --git a/drivers/android/binder_latency_tracer.c b/drivers/android/binder_latency_tracer.c
+new file mode 100644
+index 0000000..b339ae1
+--- /dev/null
++++ b/drivers/android/binder_latency_tracer.c
+@@ -0,0 +1,112 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (C) 2019 MediaTek Inc.
++ */
++
++#include <linux/module.h>
++#include <uapi/linux/android/binder.h>
++#include "binder_internal.h"
++#include "binder_trace.h"
++
++/**
++ * The reason setting the binder_txn_latency_threshold to 2 sec
++ * is that most of timeout abort is greater or equal to 2 sec.
++ * Making it configurable to let all users determine which
++ * threshold is more suitable.
++ */
++static uint32_t binder_txn_latency_threshold = 2;
++module_param_named(threshold, binder_txn_latency_threshold,
++			uint, 0644);
++
++/*
++ * probe_binder_txn_latency_free - Output info of a delay transaction
++ * @t:          pointer to the over-time transaction
++ */
++void probe_binder_txn_latency_free(void *ignore, struct binder_transaction *t)
++{
++	struct rtc_time tm;
++	struct timespec64 *startime;
++	struct timespec64 cur, sub_t;
++
++	ktime_get_ts64(&cur);
++	startime = &t->timestamp;
++	sub_t = timespec64_sub(cur, *startime);
++
++	/* if transaction time is over than binder_txn_latency_threshold (sec),
++	 * show timeout warning log.
++	 */
++	if (sub_t.tv_sec < binder_txn_latency_threshold)
++		return;
++
++	rtc_time_to_tm(t->tv.tv_sec, &tm);
++
++	pr_info_ratelimited("%d: from %d:%d to %d:%d",
++			t->debug_id,
++			t->from ? t->from->proc->pid : 0,
++			t->from ? t->from->pid : 0,
++			t->to_proc ? t->to_proc->pid : 0,
++			t->to_thread ? t->to_thread->pid : 0);
++
++	pr_info_ratelimited(" total %u.%03ld s code %u start %lu.%03ld android %d-%02d-%02d %02d:%02d:%02d.%03lu\n",
++			(unsigned int)sub_t.tv_sec,
++			(sub_t.tv_nsec / NSEC_PER_MSEC),
++			t->code,
++			(unsigned long)startime->tv_sec,
++			(startime->tv_nsec / NSEC_PER_MSEC),
++			(tm.tm_year + 1900), (tm.tm_mon + 1), tm.tm_mday,
++			tm.tm_hour, tm.tm_min, tm.tm_sec,
++			(unsigned long)(t->tv.tv_usec / USEC_PER_MSEC));
++}
++
++static void probe_binder_txn_latency_alloc(void *ignore,
++					struct binder_transaction *t)
++{
++	struct timespec64 now;
++	ktime_get_ts64(&t->timestamp);
++	ktime_get_real_ts64(&now);
++	t->tv.tv_sec = now.tv_sec;
++	t->tv.tv_sec -= (sys_tz.tz_minuteswest * 60);
++	t->tv.tv_usec = now.tv_nsec/1000;
++}
++
++static void probe_binder_txn_latency_info(void *ignore, struct seq_file *m,
++					struct binder_transaction *t)
++{
++	struct rtc_time tm;
++
++	rtc_time_to_tm(t->tv.tv_sec, &tm);
++	seq_printf(m,
++		   " start %lu.%06lu android %d-%02d-%02d %02d:%02d:%02d.%03lu",
++		   (unsigned long)t->timestamp.tv_sec,
++		   (t->timestamp.tv_nsec / NSEC_PER_USEC),
++		   (tm.tm_year + 1900), (tm.tm_mon + 1), tm.tm_mday,
++		   tm.tm_hour, tm.tm_min, tm.tm_sec,
++		   (unsigned long)(t->tv.tv_usec / USEC_PER_MSEC));
++}
++
++static int __init init_binder_latency_tracer(void)
++{
++	register_trace_binder_txn_latency_free(
++			probe_binder_txn_latency_free, NULL);
++	register_trace_binder_txn_latency_alloc(
++			probe_binder_txn_latency_alloc, NULL);
++	register_trace_binder_txn_latency_info(
++			probe_binder_txn_latency_info, NULL);
++
++	return 0;
++}
++
++static void exit_binder_latency_tracer(void)
++{
++	unregister_trace_binder_txn_latency_free(
++			probe_binder_txn_latency_free, NULL);
++	unregister_trace_binder_txn_latency_alloc(
++			probe_binder_txn_latency_alloc, NULL);
++	unregister_trace_binder_txn_latency_info(
++			probe_binder_txn_latency_info, NULL);
++}
++
++module_init(init_binder_latency_tracer);
++module_exit(exit_binder_latency_tracer);
++
++MODULE_LICENSE("GPL v2");
+diff --git a/drivers/android/binder_trace.h b/drivers/android/binder_trace.h
+index 8ac87d1..405d493 100644
+--- a/drivers/android/binder_trace.h
++++ b/drivers/android/binder_trace.h
+@@ -95,6 +95,17 @@
+ 		  __entry->thread_todo)
+ );
+ 
++DECLARE_TRACE(binder_txn_latency_alloc,
++	TP_PROTO(struct binder_transaction *t),
++	TP_ARGS(t, e)
++);
++
++DECLARE_TRACE(binder_txn_latency_info,
++	TP_PROTO(struct seq_file *m,
++		 struct binder_transaction *t),
++	TP_ARGS(m, t)
++);
++
+ TRACE_EVENT(binder_txn_latency_free,
+ 	TP_PROTO(struct binder_transaction *t),
+ 	TP_ARGS(t),
+@@ -106,6 +117,8 @@
+ 		__field(int, to_thread)
+ 		__field(unsigned int, code)
+ 		__field(unsigned int, flags)
++		__field(unsigned long, start_sec)
++		__field(unsigned long, start_nsec)
+ 	),
+ 	TP_fast_assign(
+ 		__entry->debug_id = t->debug_id;
+@@ -115,11 +128,18 @@
+ 		__entry->to_thread = t->to_thread ? t->to_thread->pid : 0;
+ 		__entry->code = t->code;
+ 		__entry->flags = t->flags;
+-	),
+-	TP_printk("transaction=%d from %d:%d to %d:%d flags=0x%x code=0x%x",
++#if IS_ENABLED(CONFIG_BINDER_TRANSACTION_LATENCY_TRACKING)
++		__entry->start_sec = t->timestamp.tv_sec;
++		__entry->start_nsec = t->timestamp.tv_nsec / NSEC_PER_MSEC;
++#else
++		__entry->start_sec = 0;
++		__entry->start_nsec = 0;
++#endif
++	),
++	TP_printk("transaction=%d from %d:%d to %d:%d flags=0x%x code=0x%x start %lu.%03ld",
+ 		  __entry->debug_id, __entry->from_proc, __entry->from_thread,
+ 		  __entry->to_proc, __entry->to_thread, __entry->code,
+-		  __entry->flags)
++		  __entry->flags, __entry->start_sec, __entry->start_nsec)
+ );
+ 
+ TRACE_EVENT(binder_transaction,
+-- 
+1.7.9.5
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
