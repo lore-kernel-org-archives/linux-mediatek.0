@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4674EC433DF
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 78D88C433E1
 	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2020 10:53:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 128CE20656
+	by mail.kernel.org (Postfix) with ESMTPS id 47C4D20714
 	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2020 10:53:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="H5FBzmQS";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="BYdWWas9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 128CE20656
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e2QdLTCA";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GQYxSu/K"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 47C4D20714
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,52 +27,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=g16waCeIq98L90/T5BhwcbO+UAzhrstV8nw1IDxQbk4=; b=H5FBzmQSAOGiKqCE+hZxkIasG
-	Hui4fn4/pTzGcE5FtCU9BzhB4z4FGjakuvXjbS8re0LnlAXSfIvW/Zp951SvRk4kRKL3ppn1DBe+7
-	2Icvd+UJkWPxCLS2detgRQj6rqfte4TjY6PT4mmbBIGodjl7cctvD7OvMx1T6Y+Lo8jYribYGxdDV
-	3lOd/qE2mDbi6fWyHCZI++rR3EpOqr6HHz/X6XTu2mIpk1klFyJUZbPT0QqXjHm6iZdG9v2qrkZw2
-	R+tFxpQ8iWcu0VPc4ojjOZiEKapoAHpEW8NdGIKsSS0h05+ao65P+bjC98sq9+6r4qGHxh5lr0Fk5
-	gsEwDHHSg==;
+	 bh=Y88S4qKkKKsovkjtb2mvsPTn/gsO6j25lEmKtoATDuA=; b=e2QdLTCAyCIico47tAajHn/kp
+	q/z/RYZuLniTXhAN1HzCvH53vB7MtSNbXxPYPhkgBg5Isois0YRPjw0PyY6JETd82rYLyfUbikIyz
+	GO7liscf+xjtWnMOIJJ5YMqojJJHAKR8iHELArivkqwcqV5onaTlVfDSD9W9ysJx7rFFUO4h+BE3j
+	aWAG3aKGiSD4EX1LN1Bj8uFQaM504/8Rn3Cv5xs4UyHnK9kzlCzlIOJKqU/nGIr+0Tb9X4SCtTrX5
+	ePnIIQGYrxwKeg9DQPW2LoZnNEhM4vpUf+TzVk8TJWsravdAXTu+lGxxMFz3mduF3nxbMblrJQtvv
+	h1t1UcNHg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k0NEy-0003EM-Gc; Tue, 28 Jul 2020 10:53:48 +0000
+	id 1k0NEv-0003DW-Us; Tue, 28 Jul 2020 10:53:45 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k0NEj-00038Z-6M; Tue, 28 Jul 2020 10:53:34 +0000
-X-UUID: 0aa5c07666e0495290f3320b40b0243d-20200728
+ id 1k0NEj-00038C-6N; Tue, 28 Jul 2020 10:53:34 +0000
+X-UUID: 66ac0d8223ad40e7b3eb89ff7cba3650-20200728
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Dw3IQyGg4pE5zkiPd+QC9P5t/IY8wdV20m7D09enpVw=; 
- b=BYdWWas937HhWp1njwh9n2SWuw5QAD3o+qifB3BAuG9SsYDACF9zbjbwNWarWRH7L5l9lUHGs1gP74qk8ZZVVWZJ8GsCbhCQxX/0UPEkoqI7AtlksaspfSnbI+GPdh16h3Fd15qzkArPxsvKGXC8y9xzM6Zv6jtwAS9s7eRRIxE=;
-X-UUID: 0aa5c07666e0495290f3320b40b0243d-20200728
+ bh=Vw0DxIhTdcEZPoiobHT5ttzLEGNxB/oQgeF1lIhMVFU=; 
+ b=GQYxSu/KNCHk2svT0yv0uoEXhlaa90Vbz2LcFt4E9zx+qkkmlUl30Fm/IfOtLh8Wk8BumAzuKAzi5bverywOUIEwPoovaC5R+owf/lI/c8x/OUT/GoomPfo5PngP2ur6yx4s/NMGk+82lam4Y7CBNwSbodTj/SblXFOv3xZxubc=;
+X-UUID: 66ac0d8223ad40e7b3eb89ff7cba3650-20200728
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <crystal.guo@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1284874684; Tue, 28 Jul 2020 02:53:35 -0800
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 28 Jul 2020 03:43:25 -0700
+ with ESMTP id 954679968; Tue, 28 Jul 2020 02:53:36 -0800
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 28 Jul 2020 03:43:26 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 28 Jul 2020 18:43:24 +0800
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 28 Jul 2020 18:43:27 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 28 Jul 2020 18:43:22 +0800
+ Transport; Tue, 28 Jul 2020 18:43:24 +0800
 From: Crystal Guo <crystal.guo@mediatek.com>
 To: <linux@roeck-us.net>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
-Subject: [PATCH 2/3] dt-bindings: watchdog: Add rst-num property
-Date: Tue, 28 Jul 2020 18:42:28 +0800
-Message-ID: <1595932949-7033-2-git-send-email-crystal.guo@mediatek.com>
+Subject: [PATCH 3/3] arm64: dts: mt8183: Add rst-num property
+Date: Tue, 28 Jul 2020 18:42:29 +0800
+Message-ID: <1595932949-7033-3-git-send-email-crystal.guo@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1595932949-7033-1-git-send-email-crystal.guo@mediatek.com>
 References: <1595932949-7033-1-git-send-email-crystal.guo@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 4AE3E7CC99CCFE9FF0F576862D147629AD17970E556E9E6452DFBA34C0985FE42000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200728_065333_455806_759F1FD0 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20200728_065333_456924_1F858309 
+X-CRM114-Status: GOOD (  11.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,32 +92,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add rst-num property and update example
+Add rst-num property in watchdog node
 
 Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
 ---
- Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-index 4dd36bd..df19a4d 100644
---- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-+++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-@@ -18,6 +18,7 @@ Required properties:
- Optional properties:
- - timeout-sec: contains the watchdog timeout in seconds.
- - #reset-cells: Should be 1.
-+- rst-num: the number of reset bits in toprgu.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 7b781eb..decf156 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -332,6 +332,7 @@
+ 			compatible = "mediatek,mt8183-wdt",
+ 				     "mediatek,mt6589-wdt";
+ 			reg = <0 0x10007000 0 0x100>;
++			rst-num = <19>;
+ 			#reset-cells = <1>;
+ 		};
  
- Example:
- 
-@@ -26,5 +27,6 @@ watchdog: watchdog@10007000 {
- 		     "mediatek,mt6589-wdt";
- 	reg = <0 0x10007000 0 0x100>;
- 	timeout-sec = <10>;
-+	rst-num = <23>;
- 	#reset-cells = <1>;
- };
 -- 
 1.8.1.1.dirty
 _______________________________________________
