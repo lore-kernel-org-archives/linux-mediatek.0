@@ -4,74 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 78D88C433E1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2020 10:53:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BB461C433E8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2020 11:19:00 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 47C4D20714
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2020 10:53:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8BAEA2065E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2020 11:19:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e2QdLTCA";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GQYxSu/K"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 47C4D20714
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1qDDHYEE";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="suTlrd3X";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="Y4T5TGaB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8BAEA2065E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Y88S4qKkKKsovkjtb2mvsPTn/gsO6j25lEmKtoATDuA=; b=e2QdLTCAyCIico47tAajHn/kp
-	q/z/RYZuLniTXhAN1HzCvH53vB7MtSNbXxPYPhkgBg5Isois0YRPjw0PyY6JETd82rYLyfUbikIyz
-	GO7liscf+xjtWnMOIJJ5YMqojJJHAKR8iHELArivkqwcqV5onaTlVfDSD9W9ysJx7rFFUO4h+BE3j
-	aWAG3aKGiSD4EX1LN1Bj8uFQaM504/8Rn3Cv5xs4UyHnK9kzlCzlIOJKqU/nGIr+0Tb9X4SCtTrX5
-	ePnIIQGYrxwKeg9DQPW2LoZnNEhM4vpUf+TzVk8TJWsravdAXTu+lGxxMFz3mduF3nxbMblrJQtvv
-	h1t1UcNHg==;
+	 bh=uBi3Uyg4LKVGsSQSp7RcWrXHYdJKgLwwsqqXOQFyeNU=; b=1qDDHYEE8o2aGrCxzVXaVzpcM
+	sCkmkg8i8GwHbKPhPMwtEWbdn7gaB9dJg9gRICfDEpg8JJliCgy8iGVro0lYAIC7fRnN5cNk6kDxu
+	k5UAaiQZHgBQHmFYaqBzU52kOFeDes2XQ9CpTb+KYDj4KO2B9KfAspdH6qNUWS5bTQszZtBhd5JOs
+	8ioHYZawr9V221QRYcL1XxHePZcIw+V69uUkC4VLGgIYAyqG/pclYtAuZosQLXG+svAaQtN9Aecdt
+	lnPRdindbgnn+yyhrHL8e6HIcWcaEnJ8riKru5ykCAqrFU1APIdJSLA8D2jPlpPVrDug+ycQ6jJzy
+	BcqyI15mw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k0NEv-0003DW-Us; Tue, 28 Jul 2020 10:53:45 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1k0NdC-0008Nx-7M; Tue, 28 Jul 2020 11:18:50 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k0NEj-00038C-6N; Tue, 28 Jul 2020 10:53:34 +0000
-X-UUID: 66ac0d8223ad40e7b3eb89ff7cba3650-20200728
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Vw0DxIhTdcEZPoiobHT5ttzLEGNxB/oQgeF1lIhMVFU=; 
- b=GQYxSu/KNCHk2svT0yv0uoEXhlaa90Vbz2LcFt4E9zx+qkkmlUl30Fm/IfOtLh8Wk8BumAzuKAzi5bverywOUIEwPoovaC5R+owf/lI/c8x/OUT/GoomPfo5PngP2ur6yx4s/NMGk+82lam4Y7CBNwSbodTj/SblXFOv3xZxubc=;
-X-UUID: 66ac0d8223ad40e7b3eb89ff7cba3650-20200728
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <crystal.guo@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 954679968; Tue, 28 Jul 2020 02:53:36 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 28 Jul 2020 03:43:26 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 28 Jul 2020 18:43:27 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 28 Jul 2020 18:43:24 +0800
-From: Crystal Guo <crystal.guo@mediatek.com>
-To: <linux@roeck-us.net>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
-Subject: [PATCH 3/3] arm64: dts: mt8183: Add rst-num property
-Date: Tue, 28 Jul 2020 18:42:29 +0800
-Message-ID: <1595932949-7033-3-git-send-email-crystal.guo@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1595932949-7033-1-git-send-email-crystal.guo@mediatek.com>
-References: <1595932949-7033-1-git-send-email-crystal.guo@mediatek.com>
+ id 1k0Nd9-0008Mw-EN; Tue, 28 Jul 2020 11:18:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+ References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=JjwWFddAdWynk3ZYwPqAbvNXk1S91CACAkdFq8ZgUhU=; b=suTlrd3XIXUbofTSutxdnaxmDJ
+ t4Ou/cH429U6l01CGY7s4EoG+g+dB8aRNm0rNsL+5jVupKCZrFjCLYoRuqiioSA7NVNzpCH3nfpUA
+ rTB7QDwCf1jyBhlt2VMgRqzeIcWJ/+osVcbx4ILihNe3AaNT+xHhHFLRSKJcJch6XZ1LHZzCtdaQO
+ qHhHCBoKab8gYfwreULYA4+4aWBk18H4c6+cXjKBnVzBOGvkasQZlt1JVV8JMZKmEw4oTgQBnr6nk
+ iVx8DLU6kfmmt6Xom/XXBoGP0jaWx6hfsZfqFMhKNObInvBjL6acKQPddn6uO4rcEPLkIinZjsJM7
+ WEzjGpSg==;
+Received: from mout.gmx.net ([212.227.17.22])
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1k0Nd5-0006YX-LY; Tue, 28 Jul 2020 11:18:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1595935105;
+ bh=nn4BkbW0oeEmcmd3H6QHuJO7LEA/snDXKRVANzx14BY=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=Y4T5TGaBuRt3b8kV1LyAkiduwg0Pe2qyX/uDh1A70EFNHcoeRo3AbL84Ed0E5L4Ci
+ 9fy+P7/8/XbZytNcRLfs+Qbbe4Ek/IWc2C/s8d2pS0lPw2nRyjbKLn4LWt/DJmpdnH
+ AxxaiKJ+plcgGAPLFxsWaaQRXl+ctR610QqCPuXE=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from localhost.localdomain ([80.208.215.239]) by mail.gmx.com
+ (mrgmx104 [212.227.17.168]) with ESMTPSA (Nemesis) id
+ 1MBDj4-1jvSko3s5u-00CiFj; Tue, 28 Jul 2020 13:18:25 +0200
+From: Frank Wunderlich <frank-w@public-files.de>
+To: linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 4/5] drm/mediatek: dpi/dsi: change the getting
+ possible_crtc way
+Date: Tue, 28 Jul 2020 13:17:59 +0200
+Message-Id: <20200728111800.77641-5-frank-w@public-files.de>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200728111800.77641-1-frank-w@public-files.de>
+References: <20200728111800.77641-1-frank-w@public-files.de>
 MIME-Version: 1.0
-X-MTK: N
+X-Provags-ID: V03:K1:rTF2GSs7JL/heYwGA7znoUaELcob0GxZ4gZI2tIFt+A0aSnsby8
+ 0XUoXibUcKWysOwTn/CZlW9rpuGJK1GojEZyc2C44706GSiy8/tpQFVhRWP45HlMen+R/4e
+ 1n7CdNSfTDuS/oJ9dYALJKe0JKchcLjuEAMsxGJNZA1wxc1ce6AFpbtSXwwPzaHP1HtCNqi
+ 1X/DLBRAf1lZTLoCXaovQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:RV7oFfUX3MU=:M/4aNAEJjpZZJa0cjUuRDy
+ L+eM2xGQG0RnqgxzoVd6drELeZaZId4oJe/xJyShs0HwkT2wheosTwwuILnf2RQBc0brb0ZAN
+ 3kgK0FgC2+33+gDvC7Sn1sdVkvxbaTnc2WsBgkTgbmpxUHcRcwk7pdZZkxImMFVL6PnNmfoHl
+ S3r9AuBOJ+GDA1ZOXLXiAq7+BnBnUPM3YY6kjC/yqaZMlh6sDb9CFbMfCPB/1QP4Mus62JlAp
+ nKHOFpKDIBtP+s5Zq+ZGgU3oXXli7enF7H84NmYnY48rO3qsGMx8eMfAH3L3rz3T5iRo9mVug
+ lb8/+GNqLADqus314zDsvpnrWth/ekQCZnIMvIrnGGPwgwrDim3fAV+5heOQZSGUaAhR5sU5/
+ JhqIKmwtXo7gfcwUOtfZ7p/DrnyhnNnqZNe5QihNZ4eiQ+2yEuMEDwEHiU60iPxGgsexMbZzb
+ vxwQdKql69+vWsXTOviDAH4/doIRjTEW85lnK1r7RcOZn2pef9whEKUZeJKb1jZFCfxtCCx26
+ CDEts7whrkI/HtKYEtOjJlJzR5/1IoBFeadIfLTHgT/cKNXTojUTFvyupHB9YkJmopSy8KPm5
+ mh2e+6jtsM4QvtPJ+bmcZ+AbEv8dwoRSyrT+55cloJ2v/FJO9Q6M3Ct4x+wyKck5Ti/ucMs2t
+ bPUx5ta0y1FrgNwyQwmVKdpBQ7GBlTQx2hgZw+f5+9TXJ8FYZf0Jbg0CiipPtro44NoO/x3E/
+ AaTCTHXe9dtBtGy2lFrrzzdPmh9WXV0rvuE7etvFmC6u/8yC4ttnlbugQurapc1LRmEX+a9VC
+ PxI/44Td8EioDsFiTAoiBti7oIjDjCqxD5qZWB4SitqNWqol4DAIcV3EHP5n51NGW+5DBu1fM
+ J+CxAO64WqNWXgdIxPlYcC4M8G30BF5gT//HcCT60n2cxjBdkdRavGkTlM+FONv+JtcmTbbLJ
+ n2eHWFSImvm8Y16waIlN5SKMtNy5qxFvHXmgyqPHcxdeOtBp5gio36/sEyj7DBcNESumMTJxV
+ SCLCqDCpLP9svdXOuP7l/ZiKhmVDPQJ42wns7bMUOrLTMFvwGDSCqsynNn9EtFuPzlpCO2G8f
+ zOkTKcy1my8y5mGqZ6Nu2aiu9tcWYwnM7i9puNmR4xD1sY0wJK6FnhSrcfPOr/3Hxae7A5UDj
+ h0xsgMZfaQU2xntgM2jl8C16RynN94gnVY7H4+zufLpj2xmMMaZrYngQ8HBqDoMUiS3ISCaIJ
+ M/N+H2nqLFdhZSlVZL1y1Hr//wNT03awmNwDpKw==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200728_065333_456924_1F858309 
-X-CRM114-Status: GOOD (  11.75  )
+X-CRM114-CacheID: sfid-20200728_121844_060673_5C598736 
+X-CRM114-Status: GOOD (  11.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,36 +110,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-watchdog@vger.kernel.org, srv_heupstream@mediatek.com,
- seiya.wang@mediatek.com, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Crystal Guo <crystal.guo@mediatek.com>,
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Jitao Shi <jitao.shi@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Frank Wunderlich <frank-w@public-files.de>, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add rst-num property in watchdog node
+From: Jitao Shi <jitao.shi@mediatek.com>
 
-Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
+[Detail]
+dpi/dsi get the possible_crtc by
+mtk_drm_find_possible_crtc_by_comp(*drm_dev, ddp_comp)
+
+Test: build pass and boot to logo
+
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 3 ++-
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 7b781eb..decf156 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -332,6 +332,7 @@
- 			compatible = "mediatek,mt8183-wdt",
- 				     "mediatek,mt6589-wdt";
- 			reg = <0 0x10007000 0 0x100>;
-+			rst-num = <19>;
- 			#reset-cells = <1>;
- 		};
- 
--- 
-1.8.1.1.dirty
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index d4f0fb7ad312..e43977015843 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -608,7 +608,8 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
+ 	drm_encoder_helper_add(&dpi->encoder, &mtk_dpi_encoder_helper_funcs);
+
+ 	/* Currently DPI0 is fixed to be driven by OVL1 */
+-	dpi->encoder.possible_crtcs = BIT(1);
++	dpi->encoder.possible_crtcs =
++		mtk_drm_find_possible_crtc_by_comp(drm_dev, dpi->ddp_comp);
+
+ 	ret = drm_bridge_attach(&dpi->encoder, dpi->bridge, NULL, 0);
+ 	if (ret) {
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 270bf22c98fe..c31d9c12d4a9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -892,7 +892,8 @@ static int mtk_dsi_create_conn_enc(struct drm_device *drm, struct mtk_dsi *dsi)
+ 	 * Currently display data paths are statically assigned to a crtc each.
+ 	 * crtc 0 is OVL0 -> COLOR0 -> AAL -> OD -> RDMA0 -> UFOE -> DSI0
+ 	 */
+-	dsi->encoder.possible_crtcs = 1;
++	dsi->encoder.possible_crtcs =
++		mtk_drm_find_possible_crtc_by_comp(drm, dsi->ddp_comp);
+
+ 	/* If there's a bridge, attach to it and let it create the connector */
+ 	if (dsi->bridge) {
+--
+2.25.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
