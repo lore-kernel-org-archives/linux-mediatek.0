@@ -2,22 +2,23 @@ Return-Path: <SRS0=1w4W=BI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1007CC433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2020 09:33:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 30023C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2020 09:53:50 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D06F4206D4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2020 09:33:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F05CF207FC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2020 09:53:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JBZyjUHx";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="nmLSAop2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D06F4206D4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="w+cF3iEu";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="lIOC7BMx"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F05CF207FC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,57 +27,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+AqW3IwarfIA+55yMjawD8HDoFdBL0q7Zeuk8XrJ6zI=; b=JBZyjUHx4yRkdKur4voYgfXlG
-	li1CdSYQRYm5KTBmUHwNnwBQ46RUuDFvGCw98Jk4H8ZILcR1vlFZUo4LYTSZIVxnOQtTU42V+hV1u
-	0/8/TERl+kcHpoHU2l+Ywkb2fJUi6XF8rH6ODeJKjNtX4qvxaoYoKKR9Cx2UEPY1zzt4CxKpgmoh6
-	LpJcvH4E5g8PHP1Asb/fgtm5jpelJteS7ss2wqj4HVUlC4cKtqXtE/5cXkE9+bWcsxdEopDXDn1BT
-	PBz7D1RyFLrfZ2fkbGztyVFwuxPv1XvDs5GmOaGc3yfvpvkJkQ6SL1kK6VFHgtVLV1vAu4ejB+MuC
-	PDlHIMyrg==;
+	 bh=eRmoozFxA47Lpu+saRuglnAIhRziPdZzwxYDg44orGs=; b=w+cF3iEu5mdP/vmKi6VH/JQy5
+	7FCzO/02f+ppKIuwaxcgyaH+TzSvkZFG9si0/P4mTIQqWLEavOQRIS+g1KdN5Fqg5NrwBGNd9P+36
+	FcDFUFaNM4xVAyNuc/orhuMavTGnwn4rv/49O7dShger03UYCCcHRowVjQ2FKLZFLs15G7KsPZufH
+	qNuOc9fsUl2FQ4hixuw5woI0YJZpHGsgC5F6WKOuu2DNCeWUL1KUXt0oj2PjPUui2Hd3DRwBvFrJi
+	DFZYqutpCNOyjmeKv2d+S7/Hw+anJ632RYlA7AXqDuJYv+5zn+PUgRvTIKQlNEplFDnzPTiecSr5/
+	pk/UkLuGw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k0iSP-0000uB-HA; Wed, 29 Jul 2020 09:33:05 +0000
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342])
+	id 1k0imL-0004UX-33; Wed, 29 Jul 2020 09:53:41 +0000
+Received: from mail-oo1-xc44.google.com ([2607:f8b0:4864:20::c44])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k0iSE-0000qQ-38; Wed, 29 Jul 2020 09:32:55 +0000
-Received: by mail-ot1-x342.google.com with SMTP id l26so478931otj.4;
- Wed, 29 Jul 2020 02:32:53 -0700 (PDT)
+ id 1k0imF-0004T9-CQ; Wed, 29 Jul 2020 09:53:36 +0000
+Received: by mail-oo1-xc44.google.com with SMTP id x1so2231057oox.6;
+ Wed, 29 Jul 2020 02:53:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=OHhG5jxleK/NwjMdPfb9zjsQp7xv4ruX3ZHlREQ/R1E=;
- b=nmLSAop2RYQFa35KUVOM2bkx8RGjiDGd+1v/AENuODxfInSpb26mCs/SjVwJQQnVtY
- cGS0UE214SE4mLBt9tMzHb2FEFQwScLPSAcXRouJVT4b3rUIoHlitRpT/+zPgcefAsIU
- NLsQpITaLj1WmaSSiktae8CjQe8qbIslEZrWgHQT+TQhoPACSUqggoUNl52EsQJM3jRR
- 25nN4oHhDF7Uy1DGDfb7oQuYgTkdgsC/+bq7rYrPvt5mQFGv96hOYlsvihO5+52XPQgU
- FMxm+RswV/flgIa1qSVhUB8oTYgJXCH/8CIr9ppYcf0zor0kfHvsJluCoPmkdMZpdWAU
- +qHQ==
+ :cc; bh=dSPSCJP1B8FFQ4jru/jknXZJ0F7AjGqANGzZ0MmcwoM=;
+ b=lIOC7BMxg0i3gaLTPiKIqQZ26oN3EKt3MwpLLUUIy24/B3snuIWEqdrxTjAB35H8Dl
+ PJjiXUVULIB843EPpUO4reI82egXXsJ3EkP1/FgV5RPDhHCHT36cbezjM2JEJAlSx11z
+ mVDEmHa/W3gwdmHTrM74ZRxYqRo5eGkaTy85FDfkWtZSnyb0YDn8k5+kG4xMlZl6Amkh
+ hgFe9Zv3NxFeipsLJ1D54xUeKl2esIONeeREh4KlKau6YVHJFeqEYRMfiZMmaXTYQtqR
+ 9KtKXBw8SYqr4haun76+qo16Gw4rtXdWV/t0fWys1dZk4WOJ/6INU7xOu573110m3kNp
+ wz+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=OHhG5jxleK/NwjMdPfb9zjsQp7xv4ruX3ZHlREQ/R1E=;
- b=gqzDDeM+Ab8cibghhWdLYkPio4tF3YSO+druIB6jz8CVRIblxPCymTVSwxXwoR+FFM
- iU/VEYvUoFUTsAqJYuIyPQJkplsw8hEtEdrq5fJk4PWLQxFARtmXvtudHQv2ZmMLLmd7
- o9zwvWOUzYbCMAeLW36bLbKlWYQjprvrn+xDxtN4B3nVp9lbHmXkujq/y5zzrR9n5Csx
- n5zZlH95hKrjWZjk+5xZQyLanV8dDJf8f3hgj4Z32W/Vb1dVKgMGZLgYey/QFSXYjz2S
- 8OHTDXd+9iiLhGcVBg8OUSDpYQyGZ6XwueY1WTdfOz3o+5r53SRh1B5nIvlUms/GUkxc
- YNXA==
-X-Gm-Message-State: AOAM533LMdV/KnhjydNXi75yuqfdRmFvd73ZjQDIJbWK5ioxlr7+pw/r
- VCkv6l0/ZU9WldY1+XufQFGKLaBNQD8IBsCeIYc=
-X-Google-Smtp-Source: ABdhPJz+lDYyzS5yNdRSnrCl60tunB7jRkBS4DJ55b3j6mWjIyEdpCm8HqT7jQEXlNi/0E21pKrDEHxYKk+ZQhV6CEY=
-X-Received: by 2002:a9d:d57:: with SMTP id 81mr26959371oti.184.1596015171996; 
- Wed, 29 Jul 2020 02:32:51 -0700 (PDT)
+ bh=dSPSCJP1B8FFQ4jru/jknXZJ0F7AjGqANGzZ0MmcwoM=;
+ b=WqpbSw3/7srCzsWPtHt83lKpudBJVHedmuPk3mvEXsLrNIw5TNElzx+yzUSrSKrpdR
+ 0QBKjRDPQEWu+fg/dhiyaJWiFdHGaKE81IlgyGtIzrXEyyZHLQmW1NSc38ULeRx244WZ
+ FnZRyQzlK/GN1/kvuh+z7E2fs2wGJ2Y+K12U0gQYDgffgUNVbAv6ydOQ3TaGd6PnjbND
+ U0hFeQRuRxk/4WLqx9JJ68PtFYVhSQte8WwxGTsFgSbBmRjvlV37ze/deZTqoBouZoEJ
+ RT/BkA1t6JHG3pAybjghSzlEk+RMHmLELbzvY/I5YUZk9cE5N2ywq7m9RQ7QIFrZa0LF
+ wJWg==
+X-Gm-Message-State: AOAM5300ScxHy2lLD9X4yVCastltWFLLHztpsj6mSvTYdc/GED+gxxid
+ B+vt40drVSZJ7VtkNRHIZndQo5EFgQsjPn+XGaE=
+X-Google-Smtp-Source: ABdhPJyyOU2hznwlmIrHYNfEBoEk/NsCxsBtvitRQo5gm44xcrVCwOjDRFKaXRc6e+fpkQx/Dnv/JSJs3AUwUS6Ipq4=
+X-Received: by 2002:a4a:b2cc:: with SMTP id l12mr832013ooo.15.1596016413286;
+ Wed, 29 Jul 2020 02:53:33 -0700 (PDT)
 MIME-Version: 1.0
 References: <1596012277-8448-1-git-send-email-weiyi.lu@mediatek.com>
- <1596012277-8448-6-git-send-email-weiyi.lu@mediatek.com>
-In-Reply-To: <1596012277-8448-6-git-send-email-weiyi.lu@mediatek.com>
+ <1596012277-8448-2-git-send-email-weiyi.lu@mediatek.com>
+In-Reply-To: <1596012277-8448-2-git-send-email-weiyi.lu@mediatek.com>
 From: Enric Balletbo Serra <eballetbo@gmail.com>
-Date: Wed, 29 Jul 2020 11:32:40 +0200
-Message-ID: <CAFqH_50_xi5WkokS3WmV2Z-yAK06bpXBMgTQomwmJHcQmfX9yw@mail.gmail.com>
-Subject: Re: [PATCH v2 5/5] clk: mediatek: Add MT8192 clock support
+Date: Wed, 29 Jul 2020 11:53:22 +0200
+Message-ID: <CAFqH_50+_Bt97roTACRhoq8XkfSc1UcHyQP3OCacQR5oK-viOg@mail.gmail.com>
+Subject: Re: [PATCH v2 1/5] dt-bindings: ARM: Mediatek: Document bindings for
+ MT8192
 To: Weiyi Lu <weiyi.lu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200729_053254_182014_0CFEA39E 
-X-CRM114-Status: GOOD (  16.49  )
+X-CRM114-CacheID: sfid-20200729_055335_573613_1C749288 
+X-CRM114-Status: GOOD (  19.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,156 +103,134 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Weiyi,
+Hi Weiyu,
 
-Thank you for your patch. Some few comment below, I'll focus on
-clk-mt8192-mm file, but I think can apply to other files too.
+Thanks for the patch, some comments below. I am not sure what
+maintainers think but your patches, in general, are really big and I'm
+wondering if wouldn't be better split by functionalities. Will make
+your series much longer but easy to review in my opinion. Anyway, I'm
+going to comment a few files but the comments can be applied to other
+files.
 
-[snip]
-
-> diff --git a/drivers/clk/mediatek/clk-mt8192-mm.c b/drivers/clk/mediatek/clk-mt8192-mm.c
+Missatge de Weiyi Lu <weiyi.lu@mediatek.com> del dia dc., 29 de jul.
+2020 a les 10:46:
+>
+> This patch adds the binding documentation for apmixedsys, audsys,
+> camsys-raw, camsys, imgsys, imp_iic_wrap, infracfg, ipesys, mdpsys,
+> mfgcfg, mmsys, msdc, pericfg, scp-adsp, topckgen, vdecsys-soc,
+> vdecsys and vencsys for Mediatek MT8192.
+>
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> ---
+>  .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |  1 +
+>  .../bindings/arm/mediatek/mediatek,audsys.txt      |  1 +
+>  .../bindings/arm/mediatek/mediatek,camsys-raw.yaml | 40 ++++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,camsys.txt      |  1 +
+>  .../bindings/arm/mediatek/mediatek,imgsys.txt      |  2 +
+>  .../arm/mediatek/mediatek,imp_iic_wrap.yaml        | 43 ++++++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,infracfg.txt    |  1 +
+>  .../bindings/arm/mediatek/mediatek,ipesys.txt      |  1 +
+>  .../bindings/arm/mediatek/mediatek,mdpsys.yaml     | 38 +++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,mfgcfg.txt      |  1 +
+>  .../bindings/arm/mediatek/mediatek,mmsys.txt       |  1 +
+>  .../bindings/arm/mediatek/mediatek,msdc.yaml       | 39 ++++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,pericfg.yaml    |  1 +
+>  .../bindings/arm/mediatek/mediatek,scp-adsp.yaml   | 38 +++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,topckgen.txt    |  1 +
+>  .../arm/mediatek/mediatek,vdecsys-soc.yaml         | 38 +++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,vdecsys.txt     |  1 +
+>  .../bindings/arm/mediatek/mediatek,vencsys.txt     |  1 +
+>  18 files changed, 249 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys-raw.yaml
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys-soc.yaml
+>
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+> index bd7a0fa..6942ad4 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+> @@ -17,6 +17,7 @@ Required Properties:
+>         - "mediatek,mt8135-apmixedsys"
+>         - "mediatek,mt8173-apmixedsys"
+>         - "mediatek,mt8183-apmixedsys", "syscon"
+> +       - "mediatek,mt8192-apmixedsys", "syscon"
+>         - "mediatek,mt8516-apmixedsys"
+>  - #clock-cells: Must be 1
+>
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
+> index 38309db..fdcb267 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
+> @@ -12,6 +12,7 @@ Required Properties:
+>         - "mediatek,mt7622-audsys", "syscon"
+>         - "mediatek,mt7623-audsys", "mediatek,mt2701-audsys", "syscon"
+>         - "mediatek,mt8183-audiosys", "syscon"
+> +       - "mediatek,mt8192-audsys", "syscon"
+>         - "mediatek,mt8516-audsys", "syscon"
+>  - #clock-cells: Must be 1
+>
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys-raw.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys-raw.yaml
 > new file mode 100644
-> index 0000000..02eef24
+> index 0000000..db6f425
 > --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mt8192-mm.c
-> @@ -0,0 +1,108 @@
-> +// SPDX-License-Identifier: GPL-2.0
-
-nit: Although is a valid license identifier for the kernel would be
-better to use the non-deprecated form by SPDX, GPL-2.0-only
-
-> +//
-> +// Copyright (c) 2020 MediaTek Inc.
-> +// Author: Weiyi Lu <weiyi.lu@mediatek.com>
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys-raw.yaml
+> @@ -0,0 +1,40 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,camsys-raw.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +#include <linux/clk-provider.h>
-> +#include <linux/platform_device.h>
+> +title: MediaTek CAMSYS RAW Controller
 > +
-> +#include "clk-mtk.h"
-> +#include "clk-gate.h"
+> +maintainers:
+> +  - Weiyi Lu <weiyi.lu@mediatek.com>
 > +
-> +#include <dt-bindings/clock/mt8192-clk.h>
-> +
-> +static const struct mtk_gate_regs mm0_cg_regs = {
-> +       .set_ofs = 0x104,
-> +       .clr_ofs = 0x108,
-> +       .sta_ofs = 0x100,
-> +};
-> +
-> +static const struct mtk_gate_regs mm1_cg_regs = {
-> +       .set_ofs = 0x114,
-> +       .clr_ofs = 0x118,
-> +       .sta_ofs = 0x110,
-> +};
-> +
-> +static const struct mtk_gate_regs mm2_cg_regs = {
-> +       .set_ofs = 0x1a4,
-> +       .clr_ofs = 0x1a8,
-> +       .sta_ofs = 0x1a0,
-> +};
-> +
-> +#define GATE_MM0(_id, _name, _parent, _shift)                  \
-> +       GATE_MTK(_id, _name, _parent, &mm0_cg_regs, _shift,     \
-> +               &mtk_clk_gate_ops_setclr)
-
-nit: You can take advantage of the new line length limit, which is now
-100 characters.
-
-> +
-> +#define GATE_MM1(_id, _name, _parent, _shift)                  \
-> +       GATE_MTK(_id, _name, _parent, &mm1_cg_regs, _shift,     \
-> +               &mtk_clk_gate_ops_setclr)
+> +description:
+> +  The Mediatek camsys raw controller provides various clocks to the system.
 > +
 
-ditto
+It only provides clocks or also provides configuration registers
+non-clock related?
 
-> +#define GATE_MM2(_id, _name, _parent, _shift)                  \
-> +       GATE_MTK(_id, _name, _parent, &mm2_cg_regs, _shift,     \
-> +               &mtk_clk_gate_ops_setclr)
+> +properties:
+> +  compatible:
+> +    items:
+> +      - enum:
+> +          - mediatek,mt8192-camsys_rawa
+> +          - mediatek,mt8192-camsys_rawb
+> +          - mediatek,mt8192-camsys_rawc
+> +      - const: syscon
 > +
-
-ditto
-
-> +static const struct mtk_gate mm_clks[] = {
-> +       /* MM0 */
-> +       GATE_MM0(CLK_MM_DISP_MUTEX0, "mm_disp_mutex0", "disp_sel", 0),
-> +       GATE_MM0(CLK_MM_DISP_CONFIG, "mm_disp_config", "disp_sel", 1),
-> +       GATE_MM0(CLK_MM_DISP_OVL0, "mm_disp_ovl0", "disp_sel", 2),
-> +       GATE_MM0(CLK_MM_DISP_RDMA0, "mm_disp_rdma0", "disp_sel", 3),
-> +       GATE_MM0(CLK_MM_DISP_OVL0_2L, "mm_disp_ovl0_2l", "disp_sel", 4),
-> +       GATE_MM0(CLK_MM_DISP_WDMA0, "mm_disp_wdma0", "disp_sel", 5),
-> +       GATE_MM0(CLK_MM_DISP_UFBC_WDMA0, "mm_disp_ufbc_wdma0", "disp_sel", 6),
-> +       GATE_MM0(CLK_MM_DISP_RSZ0, "mm_disp_rsz0", "disp_sel", 7),
-> +       GATE_MM0(CLK_MM_DISP_AAL0, "mm_disp_aal0", "disp_sel", 8),
-> +       GATE_MM0(CLK_MM_DISP_CCORR0, "mm_disp_ccorr0", "disp_sel", 9),
-> +       GATE_MM0(CLK_MM_DISP_DITHER0, "mm_disp_dither0", "disp_sel", 10),
-> +       GATE_MM0(CLK_MM_SMI_INFRA, "mm_smi_infra", "disp_sel", 11),
-> +       GATE_MM0(CLK_MM_DISP_GAMMA0, "mm_disp_gamma0", "disp_sel", 12),
-> +       GATE_MM0(CLK_MM_DISP_POSTMASK0, "mm_disp_postmask0", "disp_sel", 13),
-> +       GATE_MM0(CLK_MM_DISP_DSC_WRAP0, "mm_disp_dsc_wrap0", "disp_sel", 14),
-> +       GATE_MM0(CLK_MM_DSI0, "mm_dsi0", "disp_sel", 15),
-> +       GATE_MM0(CLK_MM_DISP_COLOR0, "mm_disp_color0", "disp_sel", 16),
-> +       GATE_MM0(CLK_MM_SMI_COMMON, "mm_smi_common", "disp_sel", 17),
-> +       GATE_MM0(CLK_MM_DISP_FAKE_ENG0, "mm_disp_fake_eng0", "disp_sel", 18),
-> +       GATE_MM0(CLK_MM_DISP_FAKE_ENG1, "mm_disp_fake_eng1", "disp_sel", 19),
-> +       GATE_MM0(CLK_MM_MDP_TDSHP4, "mm_mdp_tdshp4", "disp_sel", 20),
-> +       GATE_MM0(CLK_MM_MDP_RSZ4, "mm_mdp_rsz4", "disp_sel", 21),
-> +       GATE_MM0(CLK_MM_MDP_AAL4, "mm_mdp_aal4", "disp_sel", 22),
-> +       GATE_MM0(CLK_MM_MDP_HDR4, "mm_mdp_hdr4", "disp_sel", 23),
-> +       GATE_MM0(CLK_MM_MDP_RDMA4, "mm_mdp_rdma4", "disp_sel", 24),
-> +       GATE_MM0(CLK_MM_MDP_COLOR4, "mm_mdp_color4", "disp_sel", 25),
-> +       GATE_MM0(CLK_MM_DISP_Y2R0, "mm_disp_y2r0", "disp_sel", 26),
-> +       GATE_MM0(CLK_MM_SMI_GALS, "mm_smi_gals", "disp_sel", 27),
-> +       GATE_MM0(CLK_MM_DISP_OVL2_2L, "mm_disp_ovl2_2l", "disp_sel", 28),
-> +       GATE_MM0(CLK_MM_DISP_RDMA4, "mm_disp_rdma4", "disp_sel", 29),
-> +       GATE_MM0(CLK_MM_DISP_DPI0, "mm_disp_dpi0", "disp_sel", 30),
-> +       /* MM1 */
-> +       GATE_MM1(CLK_MM_SMI_IOMMU, "mm_smi_iommu", "disp_sel", 0),
-> +       /* MM2 */
-> +       GATE_MM2(CLK_MM_DSI_DSI0, "mm_dsi_dsi0", "disp_sel", 0),
-> +       GATE_MM2(CLK_MM_DPI_DPI0, "mm_dpi_dpi0", "dpi_sel", 8),
-> +       GATE_MM2(CLK_MM_26MHZ, "mm_26mhz", "clk26m", 24),
-> +       GATE_MM2(CLK_MM_32KHZ, "mm_32khz", "clk32k", 25),
-> +};
+> +  reg:
+> +    maxItems: 1
 > +
-> +static int clk_mt8192_mm_probe(struct platform_device *pdev)
-> +{
-> +       struct device *dev = &pdev->dev;
-> +       struct device_node *node = dev->parent->of_node;
-> +       struct clk_onecell_data *clk_data;
+> +  '#clock-cells':
+> +    const: 1
 > +
-> +       clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
-
-mtk_alloc_clk_data can return NULL
-
-           if (!clk_data)
-              return -ENOMEM;
-
+> +required:
+> +  - compatible
+> +  - reg
 > +
-> +       mtk_clk_register_gates(node, mm_clks, ARRAY_SIZE(mm_clks),
-> +                       clk_data);
-> +
+> +examples:
+> +  - |
+> +    camsys_rawa: camsys_rawa@1a04f000 {
 
-The above function can fail, better check for error
+I think that this should be  "syscon@1a04f000", since node names are
+supposed to match the class of the device instead of the name of the
+device.
 
-         if (ret)
-             return ret;
+Just because I am curious, can you show me an example of
+"mediatek,mt8192-camsys_rawb" or "mediatek,mt8192-camsys_rawc"? It's a
+different address space?
 
-> +       return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-> +}
-> +
-> +
-
-No need for double line spacing.
-
-> +static struct platform_driver clk_mt8192_mm_drv = {
-> +       .probe = clk_mt8192_mm_probe,
-> +       .driver = {
-> +               .name = "clk-mt8192-mm",
-> +       },
-> +};
-> +
-> +builtin_platform_driver(clk_mt8192_mm_drv);
+> +        compatible = "mediatek,mt8192-camsys_rawa", "syscon";
+> +        reg = <0 0x1a04f000 0 0x1000>;
+> +        #clock-cells = <1>;
+> +    };
 
 [snip]
 
