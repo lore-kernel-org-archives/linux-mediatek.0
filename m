@@ -2,79 +2,74 @@ Return-Path: <SRS0=1w4W=BI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 79A2DC433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2020 08:22:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D60B8C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2020 08:28:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4798B20838
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2020 08:22:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A58B2206D4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2020 08:28:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QDjul45P";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ooo12Yr5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4798B20838
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RRRMmt0p";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="hw9t9DIJ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A58B2206D4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=K3/gbsNBNTLC4Z31XM2MxljxUqUGymL98qEu/hMqWpI=; b=QDjul45PV5XFThSFfCLA8OwsL
-	h4iQsiAtMryZm5r1JiDy0FaZ0giH+BcvuCp/ntk8JG+djJpdE/WlD+zLLzhtIilqlYufpz09X7P3e
-	aCoIEkpz8nOP9YygOrC6nmElkgIOJKnJJU+DmocNg20fFK2I0Xf4paq2q4z5/r2Wd+GRs5nXhzuJH
-	4AdiEIjuUZZM6wCJRqznPksHWLrXbFIYh3vkRIMEPvSpZx9bkD6Q22KK3r4tfftiCijssGKAk48Fz
-	FjwK5rUvUZT0dthG9hhs1SzEp7/yH+MTP9OFMYzqIUenMi0dYPTWlNfzGcuO91YS+8FgSVBY0IEAU
-	pvtq3iTKg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=x5qdzsniEERkP3KI5k3qRojuNH1ooDQ9E4opTvq8BFE=; b=RRRMmt0piv9fMmWoihApjf9cXw
+	Otum+KCV8WAY9LK6Zg+9rQvnYwn9A5oq+CgeJbT5SlJ3sd7087JQYzGu9nRaIZESCTgS7vVxG/ptL
+	tKf4qXSHrn9bcf7sxRaQPPa3sa2nDy13SXQSoFPAiS0WCYv9JqczSqU552UpW+vz0zzDplClLk9wQ
+	xOf8efe77G8H7IhnLcMQYfhGCuUR3PnutgbcLDKMt5AfI5kEFE8XhaIII6EXEtGC3fHEH8FRGLEjY
+	zxLP8vuiHN3qQhGRx4XVBteu4eaNzcdxexqBhuhDKyBsVOT60dCUdNEPTBTDAjdcHqT3lsFzNp1lW
+	BE0qhm7Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k0hMF-0004KQ-18; Wed, 29 Jul 2020 08:22:39 +0000
+	id 1k0hRy-0005fq-R0; Wed, 29 Jul 2020 08:28:34 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k0hM9-0004Hy-M5; Wed, 29 Jul 2020 08:22:34 +0000
-X-UUID: 46f70ffe8c88467989564a186dcffda2-20200729
+ id 1k0hRr-0005cG-PB; Wed, 29 Jul 2020 08:28:29 +0000
+X-UUID: a6d54224edaf4d6cb782aafacbb7283c-20200729
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=H3idPQTUXz+EWlLU7Ek+7vnRUsZER+6TN+XpZ69MkBo=; 
- b=ooo12Yr5ScuTGaWTFxIGpqCi/D5DYxTjspgC6kYEGRFdoWNWTIXn/6eTWfWVZVQtTDtCdsuxWuR//p6YfabTjxQH5fEqlp+lfTh9oiyGvlgYY0zr7GMU5ck0g7JVMHv1VWephnb7PKx52CBy/gzgXHbv+mfOhig7peI5v2nAE+Y=;
-X-UUID: 46f70ffe8c88467989564a186dcffda2-20200729
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=zqAS3nqWwaOf1gLGTu7eXkZFRUc9KnRMoBc8x/BNB/Q=; 
+ b=hw9t9DIJBI+WRbeCFfS7aeTceU1YYHlEiVQeo4BSahSyIaI7Q9s7eQ+EunQi6R5cEmKfNEMZHlimgn7Vp98MAfQlDBNsXzUG87BWNfKMqszR9Vx32pWhRtZkEUzV+BGJFTvX6FH8iThKSKEgFu5+NEJ2cVvbuQW6LZW0kVJhiiQ=;
+X-UUID: a6d54224edaf4d6cb782aafacbb7283c-20200729
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <crystal.guo@mediatek.com>)
+ (envelope-from <neal.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1342134647; Wed, 29 Jul 2020 00:22:44 -0800
+ with ESMTP id 1920095358; Wed, 29 Jul 2020 00:28:35 -0800
 Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 29 Jul 2020 01:12:26 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by mtkmbs02n2.mediatek.inc
- (172.21.101.101) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 29 Jul 2020 16:12:17 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 29 Jul 2020 16:12:16 +0800
-Message-ID: <1596010313.11360.2.camel@mhfsdcap03>
-Subject: Re: [v2,2/3] dt-bindings: watchdog: add a new head file for toprgu
- reset-controllers
-From: Crystal Guo <crystal.guo@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Date: Wed, 29 Jul 2020 16:11:53 +0800
-In-Reply-To: <fb7ef8a7-5bbc-8e4b-7a23-c84f151587ba@gmail.com>
-References: <1596004249-28655-1-git-send-email-crystal.guo@mediatek.com>
- <1596004249-28655-3-git-send-email-crystal.guo@mediatek.com>
- <fb7ef8a7-5bbc-8e4b-7a23-c84f151587ba@gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 29 Jul 2020 01:18:20 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 29 Jul 2020 16:18:10 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 29 Jul 2020 16:18:10 +0800
+From: Neal Liu <neal.liu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v4] Add MediaTek MT6779 devapc driver
+Date: Wed, 29 Jul 2020 16:18:08 +0800
+Message-ID: <1596010690-13178-1-git-send-email-neal.liu@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 49384A5751F6C3098C0961C234D96D309D10B032A745AB30AF2B8990DB3650B52000:8
+X-TM-SNTS-SMTP: 573D8C7EE0780E84BDFC8EEBE19C98008274176CD6A0AF13C469C2C807706FB52000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200729_042233_852724_9F5F4A50 
-X-CRM114-Status: GOOD (  20.54  )
+X-CRM114-CacheID: sfid-20200729_042828_024378_D46F7553 
+X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,62 +81,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-watchdog@vger.kernel.org" <linux-watchdog@vger.kernel.org>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- Seiya Wang =?UTF-8?Q?=28=E7=8E=8B=E8=BF=BA=E5=90=9B=29?=
- <seiya.wang@mediatek.com>,
- Erin Lo =?UTF-8?Q?=28=E7=BE=85=E9=9B=85=E9=BD=A1=29?= <erin.lo@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux@roeck-us.net" <linux@roeck-us.net>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ lkml <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org,
+ Neal Liu <neal.liu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2020-07-29 at 15:42 +0800, Matthias Brugger wrote:
-> Hi Crystal,
-> 
-> On 29/07/2020 08:30, Crystal Guo wrote:
-> > merge all the reset numbers in one head file.
-> > 
-> > Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
-> > ---
-> >   include/dt-bindings/reset-controller/mtk-resets.h | 13 +++++++++++++
-> >   1 file changed, 13 insertions(+)
-> >   create mode 100644 include/dt-bindings/reset-controller/mtk-resets.h
-> > 
-> > diff --git a/include/dt-bindings/reset-controller/mtk-resets.h b/include/dt-bindings/reset-controller/mtk-resets.h
-> > new file mode 100644
-> > index 0000000..d73a4ba
-> > --- /dev/null
-> > +++ b/include/dt-bindings/reset-controller/mtk-resets.h
-> > @@ -0,0 +1,13 @@
-> > +/* SPDX-License-Identifier: GPL-2.0 */
-> > +/*
-> > + * Copyright (C) 2020 Mediatek Inc.
-> > + *
-> > + */
-> > +
-> > +#ifndef _DT_BINDINGS_RESET_CONTROLLER_MTK
-> > +#define _DT_BINDINGS_RESET_CONTROLLER_MTK
-> > +
-> > +#define MT2712_TOPRGU_SW_RST_NUM	11
-> > +#define MT8183_TOPRGU_SW_RST_NUM        19
-> 
-> Maybe I didn't explain myself properly. We want to have all resets in one file 
-> and do not want to have the resets for the watchdog in a different file. That 
-> means I don't thin your patch is correct and the effort should be abandoned.
-> 
-> Regards,
-> Matthias
+These patch series introduce a MediaTek MT6779 devapc driver.
 
-Do you mean to keep the current way unchanged? For example, with a new
-SOC 8192, should add a new head file mt8192_resets.h for the resets
-numbers.
+MediaTek bus fabric provides TrustZone security support and data protection to prevent slaves from being accessed by unexpected masters.
+The security violation is logged and sent to the processor for further analysis or countermeasures.
 
+Any occurrence of security violation would raise an interrupt, and it will be handled by mtk-devapc driver.
+The violation information is printed in order to find the murderer.
+
+changes since v3:
+- revise violation handling flow to make it more easily to understand
+  hardware behavior.
+- add more comments to understand how hardware works.
+
+changes since v2:
+- pass platform info through DT data.
+- remove unnecessary function.
+- remove slave_type because it always equals to 1 in current support SoC.
+- use vio_idx_num instread of list all devices' index.
+- add more comments to describe hardware behavior.
+
+changes since v1:
+- move SoC specific part to DT data.
+- remove unnecessary boundary check.
+- remove unnecessary data type declaration.
+- use read_poll_timeout() instread of for loop polling.
+- revise coding style elegantly.
+
+
+*** BLURB HERE ***
+
+Neal Liu (2):
+  dt-bindings: devapc: add bindings for mtk-devapc
+  soc: mediatek: add mtk-devapc driver
+
+ .../bindings/soc/mediatek/devapc.yaml         |  58 ++++
+ drivers/soc/mediatek/Kconfig                  |   9 +
+ drivers/soc/mediatek/Makefile                 |   1 +
+ drivers/soc/mediatek/mtk-devapc.c             | 323 ++++++++++++++++++
+ drivers/soc/mediatek/mtk-devapc.h             |  54 +++
+ 5 files changed, 445 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
+ create mode 100644 drivers/soc/mediatek/mtk-devapc.c
+ create mode 100644 drivers/soc/mediatek/mtk-devapc.h
+
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
