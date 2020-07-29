@@ -2,22 +2,23 @@ Return-Path: <SRS0=1w4W=BI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4DC67C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2020 08:02:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A3F2AC433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2020 08:03:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1AC86207F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2020 08:02:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 70D2D207F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2020 08:03:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="wm08PJg0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1AC86207F5
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nJ/pkv/J";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="NS8yLb9s"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 70D2D207F5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -25,49 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=c3TvF/2ui8m3JWMH6lmlXKrYjrVHrSWseVpynGJ+7is=; b=wm08PJg0dVoK6NRcpf8iU9f4S
-	SV58EYiZ9Q67lSxauZa5okPp4WuTOL64g19c9vNhQDwiCwUpM5gSuIrgQlXwP0S4izqFq3+/3Nfc4
-	Ja18KZxsr98P9xo00k483so9n9C5cjaGB+ZwmWpqcsUittSGe6+aPcXEwerFdJ0czHFDp3pnM0lqr
-	3m4Qf8s4pmtUQQOnNbTWZwekUw7OQ2938Z+idlKxf/HwYarqNw4H8uo7KF/oLSxBZkPj63PWV4ixS
-	Kqs3n14esqnoT2vgfa4dQwWJX/GX9DWdrd3W98nnx61Fio+FDfbtnNTukHsrvtCVgUWxI/Oa+qwKF
-	b1ozTHoIw==;
+	 bh=hY1fzfdywxdT6V1lRNcc77LmIXPZGBsXUrCr5G3vDKI=; b=nJ/pkv/JIGHGdnaZDEy2e1yX2
+	Qv5cXFNemtPb26eE1DRPWCpEoO+lRE2RgcGbxBV7Apl9FA6UurnbL37bKIIwTOLZQb88xfyYR2a2B
+	0FK0zWjnHean25uUd/9YOy30tkVuUxnq3Wq7uP8oWWz038EG6XZPvAVKYybsSTzU6RpUeGizjwG7a
+	ILaJqkFkhVRCyvw8Y6YKnAwc29aK/O/sld5XHOqCcyeN5n1yivAFhIOIrMsmHFpOC9NA278M4g9W8
+	vD39RNvXnrqXwbFmS/mgCEu89398o2P1eBdnZXpywAAj4CZhQXHgpZcP/U1QA1QhynLqeFpjwzJ0/
+	+RmPg205Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k0h2e-0006i6-53; Wed, 29 Jul 2020 08:02:24 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1k0h3N-0006qN-UE; Wed, 29 Jul 2020 08:03:09 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k0h2a-0006gL-BP
- for linux-mediatek@lists.infradead.org; Wed, 29 Jul 2020 08:02:21 +0000
-Received: from lupine.hi.pengutronix.de
- ([2001:67c:670:100:3ad5:47ff:feaf:1a17] helo=lupine)
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <p.zabel@pengutronix.de>)
- id 1k0h2X-00086y-8P; Wed, 29 Jul 2020 10:02:17 +0200
-Received: from pza by lupine with local (Exim 4.92)
- (envelope-from <p.zabel@pengutronix.de>)
- id 1k0h2W-0001cy-D3; Wed, 29 Jul 2020 10:02:16 +0200
-Message-ID: <d259a74ca9e425f9b39ebbf47b0decb6be0beed5.camel@pengutronix.de>
-Subject: Re: [PATCH 1/2] reset-controller: ti: adjust the reset assert and
- deassert interface
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Crystal Guo
- <crystal.guo@mediatek.com>, robh+dt@kernel.org
-Date: Wed, 29 Jul 2020 10:02:16 +0200
-In-Reply-To: <ba0d1e29-3ba3-5379-d03e-1ccec21c2ffa@gmail.com>
-References: <1596008357-11213-1-git-send-email-crystal.guo@mediatek.com>
- <1596008357-11213-2-git-send-email-crystal.guo@mediatek.com>
- <ba0d1e29-3ba3-5379-d03e-1ccec21c2ffa@gmail.com>
-User-Agent: Evolution 3.30.5-1.1 
+ id 1k0h3I-0006oa-SX; Wed, 29 Jul 2020 08:03:06 +0000
+X-UUID: b23dd387edd04d34a410ea230a09760c-20200729
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=teICIrkV7sOQV3jPEavLyrRW/vZEh5lh1RgTjnP7gJE=; 
+ b=NS8yLb9s0Hs5bWKTdVCbzC3ZjyxNZ66JXyMBObdxZPpo0RyJhJ9FRp1tIWcNDf2n+mnhmkRlWZUpseFAjKCMb5E6M9BOLpL/gozawbdXirXlTG55ABNPZFcJqLXTI+Thql5hw4EURws1/qFqIFakwOzxG3vd9UDpA2mdNqD5rsU=;
+X-UUID: b23dd387edd04d34a410ea230a09760c-20200729
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1644088401; Wed, 29 Jul 2020 00:03:13 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 29 Jul 2020 01:02:57 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 29 Jul 2020 16:02:54 +0800
+Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 29 Jul 2020 16:02:55 +0800
+Message-ID: <1596009775.12468.6.camel@mtksdaap41>
+Subject: Re: [PATCH v3 1/3] arm64: dts: Add Mediatek SoC MT8192 and
+ evaluation board dts and Makefile
+From: CK Hu <ck.hu@mediatek.com>
+To: Seiya Wang <seiya.wang@mediatek.com>
+Date: Wed, 29 Jul 2020 16:02:55 +0800
+In-Reply-To: <20200729013100.19539-2-seiya.wang@mediatek.com>
+References: <20200729013100.19539-1-seiya.wang@mediatek.com>
+ <20200729013100.19539-2-seiya.wang@mediatek.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2001:67c:670:100:3ad5:47ff:feaf:1a17
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+X-TM-SNTS-SMTP: 5B75A061824025819F6C2CAD15E5F4863A2B7D6837702194A55A34624A6820D12000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200729_040220_433361_43826C78 
-X-CRM114-Status: GOOD (  23.63  )
+X-CRM114-CacheID: sfid-20200729_040305_084194_53443E21 
+X-CRM114-Status: GOOD (  16.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,86 +86,67 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- seiya.wang@mediatek.com, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Daniel
+ Lezcano <daniel.lezcano@linaro.org>, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-serial@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Crystal, Matthias,
+Hi, Seiya:
 
-On Wed, 2020-07-29 at 09:48 +0200, Matthias Brugger wrote:
+On Wed, 2020-07-29 at 09:30 +0800, Seiya Wang wrote:
+> Add basic chip support for Mediatek MT8192
 > 
-> On 29/07/2020 09:39, Crystal Guo wrote:
-> > Add ti_syscon_reset() to integrate assert and deassert together,
-> > and change return value of the reset assert and deassert interface
-> > from regmap_update_bits to regmap_write_bits.
-> > 
-> > when clear bit is already 1, regmap_update_bits can not write 1 to it again.
-> > Some IC has the feature that, when set bit is 1, the clear bit change
-> > to 1 together. It will truly clear bit to 0 by write 1 to the clear bit
-> > 
-> > Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
-> > ---
-> >   drivers/reset/reset-ti-syscon.c | 13 +++++++++++--
-> >   1 file changed, 11 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/reset/reset-ti-syscon.c b/drivers/reset/reset-ti-syscon.c
-> > index a2635c2..5a8ec8f 100644
-> > --- a/drivers/reset/reset-ti-syscon.c
-> > +++ b/drivers/reset/reset-ti-syscon.c
-> > @@ -89,7 +89,7 @@ static int ti_syscon_reset_assert(struct reset_controller_dev *rcdev,
-> >   	mask = BIT(control->assert_bit);
-> >   	value = (control->flags & ASSERT_SET) ? mask : 0x0;
-> >   
-> > -	return regmap_update_bits(data->regmap, control->assert_offset, mask, value);
-> > +	return regmap_write_bits(data->regmap, control->assert_offset, mask, value);
+> Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/Makefile       |   1 +
+>  arch/arm64/boot/dts/mediatek/mt8192-evb.dts |  29 ++
+>  arch/arm64/boot/dts/mediatek/mt8192.dtsi    | 671 ++++++++++++++++++++++++++++
+>  3 files changed, 701 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-evb.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192.dtsi
 > 
-> Nack, this will break the driver for the other devices.
 
-I don't think this will break the driver for existing hardware.
-regmap_write_bits() is the same as regmap_update_bits(), it just forces
-the write in case the read already happens to return the correct value.
-Of course it would be good to check that this actually works.
+[snip]
 
-> The kernel has to work not just for your SoC but for all devices of all 
-> architectures. You can't just hack something up, that will work on your specific 
-> SoC.
-> 
-> Regards,
-> Matthias
-> 
-> >   }
-> >   
-> >   /**
-> > @@ -120,7 +120,7 @@ static int ti_syscon_reset_deassert(struct reset_controller_dev *rcdev,
-> >   	mask = BIT(control->deassert_bit);
-> >   	value = (control->flags & DEASSERT_SET) ? mask : 0x0;
-> >   
-> > -	return regmap_update_bits(data->regmap, control->deassert_offset, mask, value);
-> > +	return regmap_write_bits(data->regmap, control->deassert_offset, mask, value);
-> >   }
-> >   
-> >   /**
-> > @@ -158,10 +158,19 @@ static int ti_syscon_reset_status(struct reset_controller_dev *rcdev,
-> >   		!(control->flags & STATUS_SET);
-> >   }
-> >   
-> > +static int ti_syscon_reset(struct reset_controller_dev *rcdev,
-> > +			   unsigned long id)
-> > +{
-> > +	ti_syscon_reset_assert(rcdev, id);
-> > +
-> > +	return ti_syscon_reset_deassert(rcdev, id);
-> > +}
-> > +
+> +
+> +		watchdog: watchdog@10007000 {
+> +			compatible = "mediatek,mt6589-wdt";
 
-I'm unsure about this one, though. This is an incompatible change. At
-the very least this would have to be optional depending on compatible.
+According to [1] and [2], compatible string for mt8192 watch dog should
+be "mediatek,mt6873-wdt","mediatek,mt8192-wdt".
 
-regards
-Philipp
+
+[1]
+https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2287090/12
+[2]
+https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2131598/18
+
+> +			reg = <0 0x10007000 0 0x100>;
+> +			#reset-cells = <1>;
+> +		};
+> +
+
+[snip]
+
+> +
+> +		mmsys: mmsys@14000000 {
+> +			compatible = "mediatek,mt8192-mmsys", "syscon";
+
+You should define "mediatek,mt8192-mmsys" first, then you could use it
+in this patch.
+
+Regards,
+CK
+
+> +			reg = <0 0x14000000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
 
 _______________________________________________
 Linux-mediatek mailing list
