@@ -2,93 +2,75 @@ Return-Path: <SRS0=dQnm=BJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B70BCC433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2020 09:04:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5872C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2020 10:22:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 847122072A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2020 09:04:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B78582082E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2020 10:22:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KDlArTab";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Js2quz4J"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 847122072A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rN8+mAHY";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ry4XVukt"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B78582082E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7zEHfv/8iYvz4p1Nzqk3reUfD8326ftxAvmkTrS7VgA=; b=KDlArTabs/4Sp7mL5y8k7NFMh
-	msy1uGhIhvxGCSaMmydGGufck9H/D5jZlx7vGTbsdmvsMkvlQOBWZ7geF02e28Vz+U/IxcOWZnjaJ
-	cSfoIobEXx3kocBlxpeXTiYcXJyzqbFolHCyxd38QJe3EDN/CmA3wGHN580giIPkd+r45rl3O2LKE
-	GVRcCst0YVD01FtvI5EYptX1wv5lXc/iPwEAJO6dOyjUvK0+gzn5uMYJEXP4d+TxQZkL0asjX8vey
-	qnz1z3k0Fx7DSJRhyMeLixxLVjeBAZglGIHZ/b8TLVg75qI3oUkvTg/jDv42rZtBrWdQ7o0oK9Cas
-	3p1N3FEaw==;
+	 bh=T8nFGf/NTh/rfmSb89jrW81KD8XBiiSyRoTz0YjkbWc=; b=rN8+mAHYlexA/RV8tuTBh/sTS
+	OxfnC9S+dDBjdgOr5utxUwgFVU6Gecth49VDc/zDN81L9G4pXFZ7Wkxuj4eDoBi/eYQViMtBLdEIp
+	IOrw0ulGHBwArXSNdtSDNpiDfRSyYfFQ8q23kXukFYtVXP7s0CyhEthhQgvWivviqgGZo6U3QK2j/
+	jh84A1ycvI+tVhTPj6TKid3cRNnzzWVt1FTbIqBS5Uq+dbUxk/CP/WVx23/7uf9Pgd7ku96wMQmGL
+	82qmwFa9IY5i8NcaIPI20MQaq4kIuQDQJ+r04v0SSEqEyutMCx0zWuodG+SA3+I7m1r1BrtUT9f95
+	kAmE90tKQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k14UK-0001oD-RI; Thu, 30 Jul 2020 09:04:32 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1k15hp-00050j-5C; Thu, 30 Jul 2020 10:22:33 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k14UC-0001lu-HL; Thu, 30 Jul 2020 09:04:25 +0000
-Received: by mail-wr1-x432.google.com with SMTP id z18so20582751wrm.12;
- Thu, 30 Jul 2020 02:04:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=aKPCuC6cV43Gz6CZUTrsJDoMfLLgLsLNYcX4uUjXR/s=;
- b=Js2quz4Jzwla5NQlEGwmNRMBAtglE93LczVztFTcGQCzuwX++Gfwu6qOBu/i2U+u+6
- JlXo/o7WF57lbHeh7LgYSFQz9CRKXjyu6CuAaQ1kXqmffVrkK0a02QifXPQNZRwsAwoE
- QspVIBfwY9bk5C/OfEQAm877moMYZP7ulj5LmKUdAjurGRF7FQzLCBHzqyUjb6U9760F
- IM1rbC8VsnKd1EcRrqP/4ozGInw5dPl+md2WOpsotHAtPpcDw4syDggYRHEunPtsxDCB
- B8kYMf88n/oCLtkGaNLh2lyPgBUcZC/LBDg1AHNLhn+tLzipWL8oExLxVNhw1tR6yQf1
- UqNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=aKPCuC6cV43Gz6CZUTrsJDoMfLLgLsLNYcX4uUjXR/s=;
- b=t2i14YSG5dlOocf9fu770TfoJTVxMROpS+MfUmD6zksSIsWmy6cKU4SEdubXnH36uz
- FLPus2SID8krtBNP1jt97xxpRO0d3t8+1x9HG+Frm0FMTTpwle+LQ5SffUfOK4ohXRVF
- zXTnvO+Sp3BYDxk2Gr/K9L6zD81CwHhMHUTo51qbxq0cemU09N3S1UHmsl9uj2KVNOrj
- jxukc09iy6SjvkRrTJWjuGEijcKqDY5U1wtcivxIdKvgmsu2oeFtU+mrAEzUjFeHRBIk
- DSAv1csu9t+f1rvkDGA75NcWmsoNOySS76jiGkj3kN+0KWjAbAcpPzHYdtSE0QmOB2tU
- vEQQ==
-X-Gm-Message-State: AOAM530Iz1HgTe/ULJFzqQIhP4VgybCy+o9XBd8j5QGRuEPVBZOUqm85
- QnLj+m6eKW0CPGlZA9XxDMUKXChQ3Bo=
-X-Google-Smtp-Source: ABdhPJykxd8v58iQt7sdbe0FAorvbijjBBCDtdJ70BfJ8hS/Iw/2ISlMlMjYNfdai4y4V3BOKPeO6w==
-X-Received: by 2002:a5d:4d87:: with SMTP id b7mr1970811wru.170.1596099863016; 
- Thu, 30 Jul 2020 02:04:23 -0700 (PDT)
-Received: from ziggy.stardust (81.172.57.81.dyn.user.ono.com. [81.172.57.81])
- by smtp.gmail.com with ESMTPSA id
- o126sm9515635wma.20.2020.07.30.02.04.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Jul 2020 02:04:22 -0700 (PDT)
-Subject: Re: [v2,2/3] dt-binding: mt8192: add toprgu reset-controller head file
-To: Crystal Guo <crystal.guo@mediatek.com>, linux@roeck-us.net,
- robh+dt@kernel.org
-References: <1596016922-13184-1-git-send-email-crystal.guo@mediatek.com>
- <1596016922-13184-3-git-send-email-crystal.guo@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <7afab63f-8cba-3043-576b-a41f3bdda3ac@gmail.com>
-Date: Thu, 30 Jul 2020 11:04:21 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1k15hj-0004yc-RD; Thu, 30 Jul 2020 10:22:29 +0000
+X-UUID: 8a0b4ea26cdb468fbaa1ec3278713866-20200730
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=QDlQ0gnoVvfRjOVlPrmnQKeNq40xRyUCNuWe8BeV8Zo=; 
+ b=ry4XVuktaP/TGM/JbxU58QN150UIVkmG4RrcRpc9sdrqmGWT4UKJ955kXJCIfbZ24LW5bjXpDylDPYHLeEd6/Aucb6PdJEvENOgV1qWpAowegEMcayBVx2tkaYXNiyCDa0T6gTGHghNOEd+2IksRMXGaVPhjfBTkeIKu/M71sng=;
+X-UUID: 8a0b4ea26cdb468fbaa1ec3278713866-20200730
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <crystal.guo@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1497071511; Thu, 30 Jul 2020 02:21:49 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 30 Jul 2020 03:22:20 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 30 Jul 2020 18:22:19 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 30 Jul 2020 18:22:18 +0800
+From: Crystal Guo <crystal.guo@mediatek.com>
+To: <linux@roeck-us.net>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
+Subject: [v3,3/5] dt-binding: mediatek: mt8192: update mtk-wdt document
+Date: Thu, 30 Jul 2020 18:21:48 +0800
+Message-ID: <1596104510-11113-4-git-send-email-crystal.guo@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1596104510-11113-1-git-send-email-crystal.guo@mediatek.com>
+References: <1596104510-11113-1-git-send-email-crystal.guo@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <1596016922-13184-3-git-send-email-crystal.guo@mediatek.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200730_050424_667327_3398C3FB 
-X-CRM114-Status: GOOD (  18.56  )
+X-CRM114-CacheID: sfid-20200730_062228_109597_A1128BD1 
+X-CRM114-Status: GOOD (  10.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,65 +83,35 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: linux-watchdog@vger.kernel.org, srv_heupstream@mediatek.com,
- seiya.wang@mediatek.com, erin.lo@mediatek.com, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+ seiya.wang@mediatek.com, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Crystal Guo <crystal.guo@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+update mtk-wdt document for MT8192 platform
 
+Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
+---
+ Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-On 29/07/2020 12:02, Crystal Guo wrote:
-> add toprgu reset-controller head file for MT8192 platform
-> 
-> Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-> ---
->   .../dt-bindings/reset-controller/mt8192-resets.h   | 30 ++++++++++++++++++++++
->   1 file changed, 30 insertions(+)
->   create mode 100644 include/dt-bindings/reset-controller/mt8192-resets.h
-> 
-> diff --git a/include/dt-bindings/reset-controller/mt8192-resets.h b/include/dt-bindings/reset-controller/mt8192-resets.h
-> new file mode 100644
-> index 0000000..be9a7ca
-> --- /dev/null
-> +++ b/include/dt-bindings/reset-controller/mt8192-resets.h
-> @@ -0,0 +1,30 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/*
-> + * Copyright (c) 2020 MediaTek Inc.
-> + * Author: Yong Liang <yong.liang@mediatek.com>
-> + */
-> +
-> +#ifndef _DT_BINDINGS_RESET_CONTROLLER_MT8192
-> +#define _DT_BINDINGS_RESET_CONTROLLER_MT8192
-> +
-> +#define MT8192_TOPRGU_MM_SW_RST					1
-> +#define MT8192_TOPRGU_MFG_SW_RST				2
-> +#define MT8192_TOPRGU_VENC_SW_RST				3
-> +#define MT8192_TOPRGU_VDEC_SW_RST				4
-> +#define MT8192_TOPRGU_IMG_SW_RST				5
-> +#define MT8192_TOPRGU_MD_SW_RST					7
-> +#define MT8192_TOPRGU_CONN_SW_RST				9
-> +#define MT8192_TOPRGU_CONN_MCU_SW_RST			12
-> +#define MT8192_TOPRGU_IPU0_SW_RST				14
-> +#define MT8192_TOPRGU_IPU1_SW_RST				15
-> +#define MT8192_TOPRGU_AUDIO_SW_RST				17
-> +#define MT8192_TOPRGU_CAMSYS_SW_RST				18
-> +#define MT8192_TOPRGU_MJC_SW_RST				19
-> +#define MT8192_TOPRGU_C2K_S2_SW_RST				20
-> +#define MT8192_TOPRGU_C2K_SW_RST				21
-> +#define MT8192_TOPRGU_PERI_SW_RST				22
-> +#define MT8192_TOPRGU_PERI_AO_SW_RST			23
-> +
-> +#define MT8192_TOPRGU_SW_RST_NUM				23
-> +
-> +#endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8192 */
-> 
-
+diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+index 45eedc2..e36ba60 100644
+--- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
++++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+@@ -12,6 +12,7 @@ Required properties:
+ 	"mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
+ 	"mediatek,mt8183-wdt": for MT8183
+ 	"mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
++	"mediatek,mt8192-wdt": for MT8192
+ 
+ - reg : Specifies base physical address and size of the registers.
+ 
+-- 
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
