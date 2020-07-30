@@ -2,85 +2,79 @@ Return-Path: <SRS0=dQnm=BJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A7CBC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2020 04:01:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 764C6C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2020 06:28:19 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EAFFE22B42
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2020 04:01:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3F5E62075F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2020 06:28:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eG0x+WAp";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="h1y6cW+6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EAFFE22B42
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aln71R98";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qfsWkCdW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3F5E62075F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=jADp7kSyf4bdbZg2/xWS4amIjPZydtpYkmyY8w0pFwY=; b=eG0x+WApE1g8nJWYrBefQLxuXI
-	nKQtgqqGql1dAEep9TCtPsr4W8Rxmsm4FSS3M4oK2bve7ZAoyFNALckNZfJRhBwsrt/yI6Rx/65hv
-	TX657ng1TPcYiu2fPs33Pdj7U0inWPHpt3E/sRVjCTjHMJxTJhQ2fT1+szdoA0iOtR9vNSyAsAetf
-	PM4/6Rc3Q9xiOp0CZOlx1GEONeoxADHL8BJGDRSYlcwN+kP1wVKCtMQ9USpx5nyPkZMjIKFC1l3sm
-	IPrrtLVDn95bqHloq56qu/tV6IujqnO1oQBON6TIGhIEqqoq67RJ8y6bj0XPGDEUSBO4kyhodgMt9
-	rp3tOqng==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=lfv7JpH54IhzRdm795Bk/jGoJQ0gwDCQn1PutjzRRQA=; b=aln71R98OriN6D/QkZbLMBiwW
+	udKlY9MYRhR9/BFZC4ue6epkPkv6lsCDkdKu92yFCUz1hpuTJFTirb9oia5wHgTggHldA7lS+3BQg
+	CCMx0/3oP5q+QQA/95T9tC6yi3XYwYPhj/TqCZCbc0rqlkt1AqouDWefrPIbWg3ghs+VDbtch0pye
+	+Jo4ihZttjdmr/y/co4NekbIg6QJB4uSd+EwmbQpyYd+B4asp+BGNA2eKYcEUO5g7CZCx2p9Nfab0
+	RxZMeL16T7k+ME9+V9CxvsuvnzxLgc5AwsOQUo8zip1Bzb5gYQMCCve5QmA6V0clikPnx9FJF8Rla
+	KWaPaFUdw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k0zks-0008Cn-Gk; Thu, 30 Jul 2020 04:01:18 +0000
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+	id 1k122s-0001jc-Ji; Thu, 30 Jul 2020 06:28:02 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k0zkq-0008C7-4V
- for linux-mediatek@lists.infradead.org; Thu, 30 Jul 2020 04:01:17 +0000
-Received: by mail-pl1-x644.google.com with SMTP id m16so13068003pls.5
- for <linux-mediatek@lists.infradead.org>; Wed, 29 Jul 2020 21:01:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=xsPP2haPHn6gP2Ahy+74zO8OhQ1ajIMIhlDBCTv89iU=;
- b=h1y6cW+6Z9M3i8Gmgo+exdkCKFBjsJco4+EmU8SXWJjn4RYqJkUIfmBZkebgkvyLjC
- 90xEmIQysAERID7Tr5dKM9CYAfnfTHChrpKQMsBES1fhl08rGMG3kVGuoHp/uvHIG6l3
- bMhhMk7DDLNn8o8VWm5+YoMHFVNIio0Q70Lf4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=xsPP2haPHn6gP2Ahy+74zO8OhQ1ajIMIhlDBCTv89iU=;
- b=mqUgadCumgflI+F9m7rCDiMmxSSTn1lI86NjNbCcccKIyC5HBeTzEFJ3cny9IFM1Go
- CDQFLzePPiVndKJrBdRkvQt6OjKz2VrjUgEbCbTMVN82qWHfVaeRxOf8AmeYKDZPZTMB
- gRIwGJppH3IOXJSWKFsOoAi1nDhoFZqlWiE3Z3lWPpevprKEk3rjTtO7sm2dYHilXah9
- 5K/zXhf95fvCR0QF+Mhu709vg8/jfMrjGWlgYaZ85/0/17EdrugUUMf0wurGwuET1wBh
- 3OUnnWjG6EaDgSqFk2WflRfLoMj//syfnJIbmPsyZBJNcZRTBuQe2cd/vqjiz0Musioz
- j7kw==
-X-Gm-Message-State: AOAM530EGjO5UoJu8m1d48GOqAyVA/BZossApk91M9nlO61gIUbbJKqt
- AEnEXvEXbSHJ6ufvfx2dP6LzBg==
-X-Google-Smtp-Source: ABdhPJxkoLXNECTfu4ISeOa4wxsYJN4hZQrVF0BybO4ggF5F738z+52YcT2dpRPFmHvt6Q2fHI6H5Q==
-X-Received: by 2002:a17:90a:5d87:: with SMTP id
- t7mr1095548pji.213.1596081673509; 
- Wed, 29 Jul 2020 21:01:13 -0700 (PDT)
-Received: from drinkcat2.tpe.corp.google.com
- ([2401:fa00:1:b:7220:84ff:fe09:41dc])
- by smtp.gmail.com with ESMTPSA id c9sm3635209pjr.35.2020.07.29.21.01.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Jul 2020 21:01:12 -0700 (PDT)
-From: Nicolas Boichat <drinkcat@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH] soc: mediatek: Check if power domains can be powered on at
- boot time
-Date: Thu, 30 Jul 2020 12:01:08 +0800
-Message-Id: <20200730120054.1.I5e6f8c262031d0451fe7241b744f4f3111c1ce71@changeid>
-X-Mailer: git-send-email 2.28.0.rc0.142.g3c755180ce-goog
+ id 1k122o-0001iM-Ho; Thu, 30 Jul 2020 06:28:00 +0000
+X-UUID: f79a17b8a20d417aabe641e183539a71-20200729
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=8lty/uyzCDwACFd7jNKNUuVqC+GMWXy2t8oEvgAMM2Q=; 
+ b=qfsWkCdWlfL0cl4OTeF8Cz8oj5cetDwwD1bIqxQrWEWGKwI3CxNw5KXV00UT2cVSNFSCljEzCzF7cYIdDePPJIxyFeJsNh8TizXx9roZ4zSzPcjFdqV2tfhA/rMgBnCK7DbubVDn6AvypnvoCZ1XtcQQ1uu+Nlglbho09RCIqdQ=;
+X-UUID: f79a17b8a20d417aabe641e183539a71-20200729
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <crystal.guo@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 741957506; Wed, 29 Jul 2020 22:27:52 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 29 Jul 2020 23:27:48 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by mtkmbs05n1.mediatek.inc
+ (172.21.101.15) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 30 Jul 2020 14:27:46 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 30 Jul 2020 14:27:45 +0800
+Message-ID: <1596090441.11360.27.camel@mhfsdcap03>
+Subject: Re: [PATCH 1/2] reset-controller: ti: adjust the reset assert and
+ deassert interface
+From: Crystal Guo <crystal.guo@mediatek.com>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Date: Thu, 30 Jul 2020 14:27:21 +0800
+In-Reply-To: <d259a74ca9e425f9b39ebbf47b0decb6be0beed5.camel@pengutronix.de>
+References: <1596008357-11213-1-git-send-email-crystal.guo@mediatek.com>
+ <1596008357-11213-2-git-send-email-crystal.guo@mediatek.com>
+ <ba0d1e29-3ba3-5379-d03e-1ccec21c2ffa@gmail.com>
+ <d259a74ca9e425f9b39ebbf47b0decb6be0beed5.camel@pengutronix.de>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200730_000116_352806_4A26C6B9 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20200730_022759_026978_5A3E1C20 
+X-CRM114-Status: GOOD (  32.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,55 +86,114 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nicolas Boichat <drinkcat@chromium.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ Seiya Wang =?UTF-8?Q?=28=E7=8E=8B=E8=BF=BA=E5=90=9B=29?=
+ <seiya.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ fan.chen@mediatek.com, "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com,
+ stanley.chu@mediatek.com,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In the error case, where a power domain cannot be powered on
-successfully at boot time (in mtk_register_power_domains),
-pm_genpd_init would still be called with is_off=false, and the
-system would later try to disable the power domain again, triggering
-warnings as disabled clocks are disabled again (and other potential
-issues).
+On Wed, 2020-07-29 at 16:02 +0800, Philipp Zabel wrote:
+> Hi Crystal, Matthias,
+> 
+> On Wed, 2020-07-29 at 09:48 +0200, Matthias Brugger wrote:
+> > 
+> > On 29/07/2020 09:39, Crystal Guo wrote:
+> > > Add ti_syscon_reset() to integrate assert and deassert together,
+> > > and change return value of the reset assert and deassert interface
+> > > from regmap_update_bits to regmap_write_bits.
+> > > 
+> > > when clear bit is already 1, regmap_update_bits can not write 1 to it again.
+> > > Some IC has the feature that, when set bit is 1, the clear bit change
+> > > to 1 together. It will truly clear bit to 0 by write 1 to the clear bit
+> > > 
+> > > Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
+> > > ---
+> > >   drivers/reset/reset-ti-syscon.c | 13 +++++++++++--
+> > >   1 file changed, 11 insertions(+), 2 deletions(-)
+> > > 
+> > > diff --git a/drivers/reset/reset-ti-syscon.c b/drivers/reset/reset-ti-syscon.c
+> > > index a2635c2..5a8ec8f 100644
+> > > --- a/drivers/reset/reset-ti-syscon.c
+> > > +++ b/drivers/reset/reset-ti-syscon.c
+> > > @@ -89,7 +89,7 @@ static int ti_syscon_reset_assert(struct reset_controller_dev *rcdev,
+> > >   	mask = BIT(control->assert_bit);
+> > >   	value = (control->flags & ASSERT_SET) ? mask : 0x0;
+> > >   
+> > > -	return regmap_update_bits(data->regmap, control->assert_offset, mask, value);
+> > > +	return regmap_write_bits(data->regmap, control->assert_offset, mask, value);
+> > 
+> > Nack, this will break the driver for the other devices.
+> 
+> I don't think this will break the driver for existing hardware.
+> regmap_write_bits() is the same as regmap_update_bits(), it just forces
+> the write in case the read already happens to return the correct value.
+> Of course it would be good to check that this actually works.
 
-Fixes: c84e358718a66f7 ("soc: Mediatek: Add SCPSYS power domain driver")
-Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+Yes, regmap_write_bits() is the same as regmap_update_bits(), it would
+not affect existed users. Or should I use a property to separate
+regmap_write_bits() and regmap_update_bits() ?
 
----
+> 
+> > The kernel has to work not just for your SoC but for all devices of all 
+> > architectures. You can't just hack something up, that will work on your specific 
+> > SoC.
+> > 
+> > Regards,
+> > Matthias 
+> > 
 
- drivers/soc/mediatek/mtk-scpsys.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+This TI driver was intend to be a generic reset controller
+(https://lore.kernel.org/patchwork/cover/683585/), so this patch may
+not just work on a specific SoC.
 
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index f669d3754627dad..0055a52a49733d5 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -524,6 +524,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
- 	for (i = 0; i < num; i++) {
- 		struct scp_domain *scpd = &scp->domains[i];
- 		struct generic_pm_domain *genpd = &scpd->genpd;
-+		bool on;
- 
- 		/*
- 		 * Initially turn on all domains to make the domains usable
-@@ -531,9 +532,9 @@ static void mtk_register_power_domains(struct platform_device *pdev,
- 		 * software.  The unused domains will be switched off during
- 		 * late_init time.
- 		 */
--		genpd->power_on(genpd);
-+		on = genpd->power_on(genpd) >= 0;
- 
--		pm_genpd_init(genpd, NULL, false);
-+		pm_genpd_init(genpd, NULL, !on);
- 	}
- 
- 	/*
--- 
-2.28.0.rc0.142.g3c755180ce-goog
+Thanks,
+Crystal
+
+> > >   }
+> > >   
+> > >   /**
+> > > @@ -120,7 +120,7 @@ static int ti_syscon_reset_deassert(struct reset_controller_dev *rcdev,
+> > >   	mask = BIT(control->deassert_bit);
+> > >   	value = (control->flags & DEASSERT_SET) ? mask : 0x0;
+> > >   
+> > > -	return regmap_update_bits(data->regmap, control->deassert_offset, mask, value);
+> > > +	return regmap_write_bits(data->regmap, control->deassert_offset, mask, value);
+> > >   }
+> > >   
+> > >   /**
+> > > @@ -158,10 +158,19 @@ static int ti_syscon_reset_status(struct reset_controller_dev *rcdev,
+> > >   		!(control->flags & STATUS_SET);
+> > >   }
+> > >   
+> > > +static int ti_syscon_reset(struct reset_controller_dev *rcdev,
+> > > +			   unsigned long id)
+> > > +{
+> > > +	ti_syscon_reset_assert(rcdev, id);
+> > > +
+> > > +	return ti_syscon_reset_deassert(rcdev, id);
+> > > +}
+> > > +
+> 
+> I'm unsure about this one, though. This is an incompatible change. At
+> the very least this would have to be optional depending on compatible.
+> 
+> regards
+> Philipp
+
+I will add a property to make this change be optional, thanks for you
+advice.
+
+Thanks,
+Crystal
 
 
 _______________________________________________
