@@ -2,75 +2,87 @@ Return-Path: <SRS0=dQnm=BJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4109EC433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2020 16:14:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A6D5C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2020 16:34:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 12D3B20829
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2020 16:14:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 56F032082E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2020 16:34:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AbJZN4HT";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="2mGuoURq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 12D3B20829
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="J8E8Kxi0";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="lBLrUmJQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 56F032082E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mzNZpLL2F8WYI8MmVl3MSEIVtiwp6Dbm1qYVvUO53BM=; b=AbJZN4HTeudfsbTC3h4sWXeS2
-	tWg4uh28by6r/NlPQGBisjcC0AlUyS6gubjqXvmJJMjxYPyWnguqvQzMm3DYwWt/xazAfv3cF2uW3
-	dO5q1K0txaukeYeBApnfH2I38/a0r0Z7M9DNw8Vd/4p/FMZ+EVMGIKzn5z4S3gcy8fKKqAvLt3nEQ
-	eQNWeYDnJ9Bva7Zcqe/ooBFbVR0kww0Vs+p3UBrBjriYtv/h9JywpaoZcH9u7gLBzMowKBNpUOLSe
-	YBCd0OrYSBWDtjEECp5pQhZU2xXjJrv5glnjgRLQy6JyfnvDZhb/dcQP+L8Se9EzGm3nZ8zN0T1Rc
-	5BKQgMmMA==;
+	 bh=crjHLyjjnLbX+cBONRlvM/ZU+vWe0poDmqR6LfU2Cxw=; b=J8E8Kxi0ebXLL6If9RgNpYh9j
+	F5edBLj3dXWdp2SWJf3OhwO2jbMRnGlGm8T1u39m267N6/K5uoXDQ4LjC2aI1f84s9x8GBUKnaI1/
+	I3dqE5Zo1B51cUfi4BjFQJVtXRZSFIAukU03s1vIsEFt8zBWglphWtobsRQNeJo6IESjZCAbo8D+S
+	Dg+WURcEjSFZBxHjMTsH2aDiG7UzL9JR3lor6OlbKfkPP2MOiIlo3mVXGn4dCQWnfaBZaIIfQ7XD/
+	QkMZC0r9nr6PJ2TNCeRgwofFh+1VEXlZ0m05OEp0KJVtK1lsl+D4JWWY477sSQdbl2x6tgUaIa933
+	aTSmMPO+A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k1BCa-0002Dv-86; Thu, 30 Jul 2020 16:14:40 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1k1BVj-0003uR-38; Thu, 30 Jul 2020 16:34:27 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k1BCV-0002Cc-QX; Thu, 30 Jul 2020 16:14:36 +0000
-Received: from mail-ed1-f50.google.com (mail-ed1-f50.google.com
- [209.85.208.50])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A0BF720829;
- Thu, 30 Jul 2020 16:14:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1596125674;
- bh=0aMZNuZZ87P262TCTl7JTgVhH1Sd45zJlDg8CK8T17s=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=2mGuoURqxS/zQp8v1Pb01wjIvfbt+VZJcXpkQ0bGkhTYpEcj4XQq8j2yWkUKOHSdg
- Lx7+k4W8VDmuDQKA96ofZVscxnrzE8zBS8S3zJ++oIbMUVkYf12Y14dHjk3UEy3NFH
- t0I4nF6e7XjPAEbArRIkPeqs4A9vy6BJeihCBcUs=
-Received: by mail-ed1-f50.google.com with SMTP id l23so6658701edv.11;
- Thu, 30 Jul 2020 09:14:34 -0700 (PDT)
-X-Gm-Message-State: AOAM530SBMZ3H1/v8lXxy/FgnFiUn4lsVzDoQvHkl1Mx4wnHPWF4743E
- yPYMI0V/N4TveG7gV3Q1rdRpHhbNCj4pHGIBzQ==
-X-Google-Smtp-Source: ABdhPJwikWp3DYvBmgsqn1L0ZzeeaYzTNHPPSdjPh1WXVqu2um+iA+5qm3sBHbdE8aAs96kerq91GTmOIdCNqsF3R2I=
-X-Received: by 2002:a05:6402:38c:: with SMTP id
- o12mr3509657edv.271.1596125673214; 
- Thu, 30 Jul 2020 09:14:33 -0700 (PDT)
+ id 1k1BVg-0003st-NM
+ for linux-mediatek@lists.infradead.org; Thu, 30 Jul 2020 16:34:25 +0000
+Received: by mail-wr1-x443.google.com with SMTP id 88so25483054wrh.3
+ for <linux-mediatek@lists.infradead.org>; Thu, 30 Jul 2020 09:34:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=OY2UZZNO5LoFUNWNmqvzQjaXu/4IwXq/RHkRHAApjs0=;
+ b=lBLrUmJQX9VJPFwYT69dLDlzsDo8zAW0PO5jvXXZP3/XinvgCCZlBVOjDxJMf/UxCh
+ I5cqvdLVLep8MkjWGC7JZkSSxaVClsy8MkrDU9+WGXUiU9Pj76bkOSKa5Hv92it1DIzX
+ vGMuJkjTMfOT78JPZ7Q2ALMvGeYbbyJTKtvBM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=OY2UZZNO5LoFUNWNmqvzQjaXu/4IwXq/RHkRHAApjs0=;
+ b=VpDXRIuo1hS02DWU7wfl5KaSwumC/V3cKGXRLhozxS4ITPldXvszQyBPoY6eI4xAdp
+ +tETgxcPTmyjBFELOv+Rob8ZL4OsDZ66WFMuLlfLKJ5YmQlLDORFMrPd5hN9P7qTKKtZ
+ B+a20gvZtBTqJpsBvNOnYKdIiUzBVz6BSsBDXlPwFRaXe0Gfo422qbMukeCvfvOdP1za
+ rFUuOq04XCufz1usoritoxxYmNVAHb3CLpWAXxYEISajFpyhLdAIqkHFLAZvyYU4f13j
+ wT7f8xrouO1FC80GZIDFfWprhD39c7uqfr5UREgZvPETd63qNPqJwNcPFsMj1MBuuOWy
+ l3Ng==
+X-Gm-Message-State: AOAM530E+W1QaPIfST5UKj9RubLg8Sh8U9vBBTpWfS0gztjb9ZrMDlqX
+ 1ttOGkTEhDZFvmbLBMb3FwKfOA==
+X-Google-Smtp-Source: ABdhPJyd/og2bHNbufMlQHyw0CDJCp05jQFuR7xNgIFnvnG4uh2oyghPjdLycRR/FRn52yrO9lK8pw==
+X-Received: by 2002:adf:f488:: with SMTP id l8mr3483642wro.123.1596126862114; 
+ Thu, 30 Jul 2020 09:34:22 -0700 (PDT)
+Received: from chromium.org (205.215.190.35.bc.googleusercontent.com.
+ [35.190.215.205])
+ by smtp.gmail.com with ESMTPSA id a134sm11060738wmd.17.2020.07.30.09.34.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 30 Jul 2020 09:34:21 -0700 (PDT)
+Date: Thu, 30 Jul 2020 16:34:19 +0000
+From: Tomasz Figa <tfiga@chromium.org>
+To: Xia Jiang <xia.jiang@mediatek.com>
+Subject: Re: [PATCH v10 22/28] media: platform: Change the call functions of
+ getting/enable/disable the jpeg's clock
+Message-ID: <20200730163419.GA3779380@chromium.org>
+References: <20200723030451.5616-1-xia.jiang@mediatek.com>
+ <20200723030451.5616-23-xia.jiang@mediatek.com>
 MIME-Version: 1.0
-References: <1596010690-13178-1-git-send-email-neal.liu@mediatek.com>
- <1596010690-13178-3-git-send-email-neal.liu@mediatek.com>
-In-Reply-To: <1596010690-13178-3-git-send-email-neal.liu@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Fri, 31 Jul 2020 00:14:20 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_9HXv+OsSRF7P9=cRy9AYZ0vwffgo3Kc8V=qQ6ce90uJw@mail.gmail.com>
-Message-ID: <CAAOTY_9HXv+OsSRF7P9=cRy9AYZ0vwffgo3Kc8V=qQ6ce90uJw@mail.gmail.com>
-Subject: Re: [PATCH v4 2/2] soc: mediatek: add mtk-devapc driver
-To: Neal Liu <neal.liu@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20200723030451.5616-23-xia.jiang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200730_121436_000783_8ECB3922 
-X-CRM114-Status: GOOD (  17.26  )
+X-CRM114-CacheID: sfid-20200730_123424_826233_B195D151 
+X-CRM114-Status: GOOD (  22.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,58 +94,102 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, wsd_upstream <wsd_upstream@mediatek.com>,
- lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: drinkcat@chromium.org, devicetree@vger.kernel.org, mojahsu@chromium.org,
+ srv_heupstream@mediatek.com, Rick Chang <rick.chang@mediatek.com>,
+ senozhatsky@chromium.org, linux-kernel@vger.kernel.org,
+ maoguang.meng@mediatek.com, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-mediatek@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIE5lYWw6CgpOZWFsIExpdSA8bmVhbC5saXVAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5tDfm
-nIgyOeaXpSDpgLHkuIkg5LiL5Y2INDoyOeWvq+mBk++8mgo+Cj4gTWVkaWFUZWsgYnVzIGZhYnJp
-YyBwcm92aWRlcyBUcnVzdFpvbmUgc2VjdXJpdHkgc3VwcG9ydCBhbmQgZGF0YQo+IHByb3RlY3Rp
-b24gdG8gcHJldmVudCBzbGF2ZXMgZnJvbSBiZWluZyBhY2Nlc3NlZCBieSB1bmV4cGVjdGVkCj4g
-bWFzdGVycy4KPiBUaGUgc2VjdXJpdHkgdmlvbGF0aW9uIGlzIGxvZ2dlZCBhbmQgc2VudCB0byB0
-aGUgcHJvY2Vzc29yIGZvcgo+IGZ1cnRoZXIgYW5hbHlzaXMgb3IgY291bnRlcm1lYXN1cmVzLgo+
-Cj4gQW55IG9jY3VycmVuY2Ugb2Ygc2VjdXJpdHkgdmlvbGF0aW9uIHdvdWxkIHJhaXNlIGFuIGlu
-dGVycnVwdCwgYW5kCj4gaXQgd2lsbCBiZSBoYW5kbGVkIGJ5IG10ay1kZXZhcGMgZHJpdmVyLiBU
-aGUgdmlvbGF0aW9uCj4gaW5mb3JtYXRpb24gaXMgcHJpbnRlZCBpbiBvcmRlciB0byBmaW5kIHRo
-ZSBtdXJkZXJlci4KPgo+IFNpZ25lZC1vZmYtYnk6IE5lYWwgTGl1IDxuZWFsLmxpdUBtZWRpYXRl
-ay5jb20+Cj4gLS0tCgpbc25pcF0KCj4gKwo+ICsvKgo+ICsgKiBkZXZhcGNfZXh0cmFjdF92aW9f
-ZGJnIC0gZXh0cmFjdCBmdWxsIHZpb2xhdGlvbiBpbmZvcm1hdGlvbiBhZnRlciBkb2luZwo+ICsg
-KiAgICAgICAgICAgICAgICAgICAgICAgICAgc2hpZnQgbWVjaGFuaXNtLgo+ICsgKi8KPiArc3Rh
-dGljIHZvaWQgZGV2YXBjX2V4dHJhY3RfdmlvX2RiZyhzdHJ1Y3QgbXRrX2RldmFwY19jb250ZXh0
-ICpjdHgpCj4gK3sKPiArICAgICAgIGNvbnN0IHN0cnVjdCBtdGtfZGV2YXBjX3Zpb19kYmdzICp2
-aW9fZGJnczsKPiArICAgICAgIHN0cnVjdCBtdGtfZGV2YXBjX3Zpb19pbmZvICp2aW9faW5mbzsK
-PiArICAgICAgIHZvaWQgX19pb21lbSAqdmlvX2RiZzBfcmVnOwo+ICsgICAgICAgdm9pZCBfX2lv
-bWVtICp2aW9fZGJnMV9yZWc7Cj4gKyAgICAgICB1MzIgZGJnMDsKPiArCj4gKyAgICAgICB2aW9f
-ZGJnMF9yZWcgPSBjdHgtPmRldmFwY19wZF9iYXNlICsgY3R4LT5vZmZzZXQtPnZpb19kYmcwOwo+
-ICsgICAgICAgdmlvX2RiZzFfcmVnID0gY3R4LT5kZXZhcGNfcGRfYmFzZSArIGN0eC0+b2Zmc2V0
-LT52aW9fZGJnMTsKPiArCj4gKyAgICAgICB2aW9fZGJncyA9IGN0eC0+dmlvX2RiZ3M7Cj4gKyAg
-ICAgICB2aW9faW5mbyA9IGN0eC0+dmlvX2luZm87Cj4gKwo+ICsgICAgICAgLyogU3RhcnRzIHRv
-IGV4dHJhY3QgdmlvbGF0aW9uIGluZm9ybWF0aW9uICovCj4gKyAgICAgICBkYmcwID0gcmVhZGwo
-dmlvX2RiZzBfcmVnKTsKPiArICAgICAgIHZpb19pbmZvLT52aW9fYWRkciA9IHJlYWRsKHZpb19k
-YmcxX3JlZyk7Cj4gKwo+ICsgICAgICAgdmlvX2luZm8tPm1hc3Rlcl9pZCA9IChkYmcwICYgdmlv
-X2RiZ3MtPm1zdGlkLm1hc2spID4+Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdmlv
-X2RiZ3MtPm1zdGlkLnN0YXJ0Owo+ICsgICAgICAgdmlvX2luZm8tPmRvbWFpbl9pZCA9IChkYmcw
-ICYgdmlvX2RiZ3MtPmRtbmlkLm1hc2spID4+Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgdmlvX2RiZ3MtPmRtbmlkLnN0YXJ0Owo+ICsgICAgICAgdmlvX2luZm8tPndyaXRlID0gKChk
-YmcwICYgdmlvX2RiZ3MtPnZpb193Lm1hc2spID4+Cj4gKyAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIHZpb19kYmdzLT52aW9fdy5zdGFydCkgPT0gMTsKPiArICAgICAgIHZpb19pbmZvLT5yZWFk
-ID0gKChkYmcwICYgdmlvX2RiZ3MtPnZpb19yLm1hc2spID4+Cj4gKyAgICAgICAgICAgICAgICAg
-ICAgICAgICB2aW9fZGJncy0+dmlvX3Iuc3RhcnQpID09IDE7Cj4gKyAgICAgICB2aW9faW5mby0+
-dmlvX2FkZHJfaGlnaCA9IChkYmcwICYgdmlvX2RiZ3MtPmFkZHJfaC5tYXNrKSA+Pgo+ICsgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2aW9fZGJncy0+YWRkcl9oLnN0YXJ0OwoKCkkg
-d291bGQgbGlrZSB0byBkZWZpbmUgdGhlIHR5cGUgb2YgY3R4LT52aW9faW5mbyB0byBiZQoKc3Ry
-dWN0IG10a19kZXZhcGNfdmlvX2RiZ3MgewogICAgdTMyIG1zdGlkOjE2OwogICAgdTMyIGRtbmlk
-OjY7CiAgICB1MzIgdmlvX3c6MTsKICAgIHUzMiB2aW9fcjoxOwogICAgdTMyIGFkZHJfaDo0Owog
-ICAgdTMyIHJlc3Y6NDsKfTsKCnNvIHRoZSBjb2RlIHdvdWxkIGxpa2UgdGhlIHNpbXBsZSB3YXkK
-CmN0eC0+dmlvX2luZm8gPSAoc3RydWN0IG10a19kZXZhcGNfdmlvX2RiZ3MpcmVhZGwodmlvX2Ri
-ZzFfcmVnKTsKClJlZ2FyZHMsCkNodW4tS3VhbmcuCgo+ICsKPiArICAgICAgIGRldmFwY192aW9f
-aW5mb19wcmludChjdHgpOwo+ICt9Cj4gKwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlh
-dGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Hi Xia,
+
+On Thu, Jul 23, 2020 at 11:04:45AM +0800, Xia Jiang wrote:
+> Use the generic of_property_* helpers to get the clock_nums and clocks
+> from device tree.
+> Use the generic clk_bulk_* helpers to enable and disable clocks.
+> 
+> Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
+> ---
+> v10: new add patch
+> ---
+>  .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 47 +++++++++++++++----
+>  .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |  8 ++--
+>  2 files changed, 42 insertions(+), 13 deletions(-)
+> 
+
+Thank you for the patch. Please see my comments inline.
+
+> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> index 7881e9c93df7..921ed21f7db3 100644
+> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> @@ -783,14 +783,15 @@ static void mtk_jpeg_clk_on(struct mtk_jpeg_dev *jpeg)
+>  	ret = mtk_smi_larb_get(jpeg->larb);
+>  	if (ret)
+>  		dev_err(jpeg->dev, "mtk_smi_larb_get larbvdec fail %d\n", ret);
+> -	clk_prepare_enable(jpeg->clk_jdec_smi);
+> -	clk_prepare_enable(jpeg->clk_jdec);
+> +
+> +	ret = clk_bulk_prepare_enable(jpeg->num_clks, jpeg->clks);
+> +	if (ret)
+> +		dev_err(jpeg->dev, "Failed to open jpeg clk: %d\n", ret);
+>  }
+>  
+>  static void mtk_jpeg_clk_off(struct mtk_jpeg_dev *jpeg)
+>  {
+> -	clk_disable_unprepare(jpeg->clk_jdec);
+> -	clk_disable_unprepare(jpeg->clk_jdec_smi);
+> +	clk_bulk_disable_unprepare(jpeg->num_clks, jpeg->clks);
+>  	mtk_smi_larb_put(jpeg->larb);
+>  }
+>  
+> @@ -939,6 +940,7 @@ static int mtk_jpeg_clk_init(struct mtk_jpeg_dev *jpeg)
+>  {
+>  	struct device_node *node;
+>  	struct platform_device *pdev;
+> +	int ret, i;
+>  
+>  	node = of_parse_phandle(jpeg->dev->of_node, "mediatek,larb", 0);
+>  	if (!node)
+> @@ -952,12 +954,39 @@ static int mtk_jpeg_clk_init(struct mtk_jpeg_dev *jpeg)
+>  
+>  	jpeg->larb = &pdev->dev;
+>  
+> -	jpeg->clk_jdec = devm_clk_get(jpeg->dev, "jpgdec");
+> -	if (IS_ERR(jpeg->clk_jdec))
+> -		return PTR_ERR(jpeg->clk_jdec);
+> +	jpeg->num_clks =
+> +		of_property_count_strings(jpeg->dev->of_node, "clock-names");
+> +
+> +	if (jpeg->num_clks > 0) {
+> +		jpeg->clks = devm_kcalloc(jpeg->dev, jpeg->num_clks,
+> +					  sizeof(struct clk_bulk_data),
+> +					  GFP_KERNEL);
+> +		if (!jpeg->clks)
+> +			return -ENOMEM;
+> +	} else {
+> +		dev_err(&pdev->dev, "Failed to get jpeg clock count\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	for (i = 0; i < jpeg->num_clks; i++) {
+> +		ret = of_property_read_string_index(jpeg->dev->of_node,
+> +						    "clock-names", i,
+> +						    &jpeg->clks->id);
+
+The names of the clocks must be explicitly specified in the driver, as per
+the DT bindings.
+
+Best regards,
+Tomasz
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
