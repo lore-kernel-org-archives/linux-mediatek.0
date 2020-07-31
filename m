@@ -2,59 +2,71 @@ Return-Path: <SRS0=UCxl=BK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C642C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 11:21:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F397CC433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 11:33:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CB213208E4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 11:21:15 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C080322B40
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 11:33:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l1fcZiPp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CB213208E4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="olkKNOSI"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C080322B40
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Ki909IzgOEA7y+VElYr/6PiHBzeix0R3oGRX1YRAQVA=; b=l1fcZiPp+06kJzjiNSOMTEDM5
-	M8nT3GzDcn5+WgiEWi9Fip1R/wWTbCdCM9OeIfpj3tY+KIn+PvyLueKqyyUY3xigUHF9s2jX+zszm
-	Wg0aaTQrt9Cg5MZuN0B4Q9rdXZZ91+WRPMyaFUcSTMO6/s2rkxf2+GA9cJ74nJWpAGBAcU7UbW+NI
-	qeyCzmJ0wwPEJcOeY7JzhVzoxpUUmbCv8QiJLhWB/iVbDzH1ZAN0xGqSH3eb69jqAe786o3XnxAVt
-	YK9QLM23ucISgaIql3YO6cf7t10+NSzg4deJoOUujdiBq1SFxWUvqOATHe5gQof9VkyRYFlo0mhp2
-	YnYzU+BpA==;
+	 bh=Fps7zUm9uUmY6IotmZKLrM/Qa8j8krlnoFHv4wa9a3U=; b=olkKNOSIYS56eTS4CFBwseCIh
+	YiXGKjiTh2+RU+I0Cqhaw7fnOAggqqwEMA+EmU59bFX1Kvlqjzx1DniGlsC+nvH0Zu7jShLECiYni
+	2TPg0mNuxhQG9XshPOi7QT5vh+d6ugahvmZBoPWnLXT7QE78HoZhZ+QUccMgWgzCGYfoYGGHbnkcq
+	h5jQXr4wT0+vstwXu9LbyxVeA+gkgYCDkK9t9t23adBzATLZyDMPKUl6CqtCL144CXx957e/HfdZX
+	e5h3GnHCT5zgfw4pWOb5QaIwPfMvR9DClk3bQfL1GxaT/UHXQvCMKmCdgOwl994Fln6vHunouCyoQ
+	VWvVE4Oyg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k1T63-00059x-Ai; Fri, 31 Jul 2020 11:21:07 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1k1TII-0006kv-Ak; Fri, 31 Jul 2020 11:33:46 +0000
+Received: from mail-oi1-f195.google.com ([209.85.167.195])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k1T5z-00058V-3s; Fri, 31 Jul 2020 11:21:03 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 6CC63299217
-Subject: Re: [PATCH] arm64: dts: mt8173: elm: Fix nor_flash node property
-To: Hsin-Yi Wang <hsinyi@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-References: <20200727074124.3779237-1-hsinyi@chromium.org>
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <8aedcc7e-fea5-367c-e3a8-8a013cf629c1@collabora.com>
-Date: Fri, 31 Jul 2020 13:20:56 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1k1TIC-0006iQ-Gw; Fri, 31 Jul 2020 11:33:41 +0000
+Received: by mail-oi1-f195.google.com with SMTP id u63so14681091oie.5;
+ Fri, 31 Jul 2020 04:33:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=mpZwL9ptFKxq7FoZCH1xjumTWQNcssejfeTwP6RoxpQ=;
+ b=ocpy+2kCQSAic7DPrk7p6ua8B6beIKSG3YBjv4mjIR2WZOPp1m/ke+FRhtKLbA3vnz
+ TsHwnkowSW//8/pmoXr4MZ4+ocqGfMtfKNo+P2MCQfb97pG4fIfc6r8DKd0AHo0I8PoI
+ hYgULnPZPB4TCyqWZOnu1CN8/yEYPKoDu5f6x60k3+X368wCNvVMaMRxdER34trVQ8w3
+ 6zAYl/LZfFCcqokbqVEOOWizbBGxaIstj0nEHQN2Dmuk2lRvv3eT47Pr9exJIb7FE3nl
+ KcjwwzuS1mecjVVNC7/ec5Wvm04m+wM720CkwIdz4+iF+6upxq+nei1xAFgBew86eVDY
+ adEw==
+X-Gm-Message-State: AOAM5300KhA7RR3hRnpLigh+e4wZd7+gMX0Er1RO2vtSO06gYSrlhcYE
+ D9GT6a+mhh/YsDl5YmXmqZ2FdGrRrgcqAeZ3N84=
+X-Google-Smtp-Source: ABdhPJwjnTZ4vCcK+PJMw9f0cgXjEhaXp88nRbYUPJxc2xho6yL2W9vIsfi0PJ+loYFbKG0KfjHoOo6H/h7XzI4Nqoc=
+X-Received: by 2002:aca:a88e:: with SMTP id r136mr2704600oie.110.1596195217368; 
+ Fri, 31 Jul 2020 04:33:37 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200727074124.3779237-1-hsinyi@chromium.org>
-Content-Language: en-US
+References: <1596166744-2954-1-git-send-email-neal.liu@mediatek.com>
+ <1596166744-2954-2-git-send-email-neal.liu@mediatek.com>
+In-Reply-To: <1596166744-2954-2-git-send-email-neal.liu@mediatek.com>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Fri, 31 Jul 2020 13:33:24 +0200
+Message-ID: <CAJZ5v0gk9a-PVr4+zerNWdBORyC563K8XgUdgxENAQ+Y5-85tg@mail.gmail.com>
+Subject: Re: [PATCH] acpi: fix 'return' with no value build warning
+To: Neal Liu <neal.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200731_072103_258295_137FB35B 
-X-CRM114-Status: GOOD (  17.36  )
+X-CRM114-CacheID: sfid-20200731_073340_589573_5CFD0AE3 
+X-CRM114-Status: GOOD (  17.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,52 +78,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
+Cc: Jacob Pan <jacob.jun.pan@linux.intel.com>,
+ linux-tegra <linux-tegra@vger.kernel.org>,
+ wsd_upstream <wsd_upstream@mediatek.com>, Linux PM <linux-pm@vger.kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, lkml <linux-kernel@vger.kernel.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ ACPI Devel Maling List <linux-acpi@vger.kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ Sami Tolvanen <samitolvanen@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, Len Brown <lenb@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Hsin-Yi,
+On Fri, Jul 31, 2020 at 5:39 AM Neal Liu <neal.liu@mediatek.com> wrote:
+>
+> Fixing CFI issue which introduced by commit efe9711214e6 is
+> incomplete.
+> Add return value to fix return-type build warning.
+>
+> Signed-off-by: Neal Liu <neal.liu@mediatek.com>
 
-Thank you for your patch.
-
-On 27/7/20 9:41, Hsin-Yi Wang wrote:
-> bus-width and non-removable is not used by the driver.
-> max-frequency should be spi-max-frequency for flash node.
-> 
-> Fixes: 689b937bedde ("arm64: dts: mediatek: add mt8173 elm and hana board")
-> Reported-by: Nicolas Boichat <drinkcat@chromium.org>
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-
-Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Applied with edited subject and changelog, but ->
 
 > ---
->  arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> index a5a12b2599a4..01522dd10603 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> @@ -431,12 +431,11 @@ &nor_flash {
->  	status = "okay";
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&nor_gpio1_pins>;
-> -	bus-width = <8>;
-> -	max-frequency = <50000000>;
-> -	non-removable;
-> +
->  	flash@0 {
->  		compatible = "jedec,spi-nor";
->  		reg = <0>;
-> +		spi-max-frequency = <50000000>;
->  	};
->  };
->  
-> 
+>  drivers/acpi/processor_idle.c |    4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
+> index 6ffb6c9..6870020 100644
+> --- a/drivers/acpi/processor_idle.c
+> +++ b/drivers/acpi/processor_idle.c
+> @@ -664,11 +664,11 @@ static int acpi_idle_enter_s2idle(struct cpuidle_device *dev,
+>                 struct acpi_processor *pr = __this_cpu_read(processors);
+>
+>                 if (unlikely(!pr))
+> -                       return;
+> +                       return -EFAULT;
+
+-> there is no point returning an error code here, so I've made it
+just return 0.
+
+>
+>                 if (pr->flags.bm_check) {
+>                         acpi_idle_enter_bm(pr, cx, false);
+> -                       return;
+> +                       return 0;
+>                 } else {
+>                         ACPI_FLUSH_CPU_CACHE();
+>                 }
+> --
 
 _______________________________________________
 Linux-mediatek mailing list
