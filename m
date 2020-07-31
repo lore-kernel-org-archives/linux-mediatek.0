@@ -2,78 +2,83 @@ Return-Path: <SRS0=UCxl=BK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6CABFC433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 09:07:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 167D2C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 09:16:19 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3B14B20838
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 09:07:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D649722B40
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 09:16:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DZKREIz8";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="O6Nnhsea"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B14B20838
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VzpJXsnX";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="dolJcB5h"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D649722B40
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
+	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=WpOzB/tDlB/hepuku8Gn3Ybf4zf6Nt7QrPlWLIL+fG0=; b=DZKREIz84Bj3J+sThIEUfiIkJ
-	40sW6CvwCJvyvZ6Hy/NLBOytL/t0AvnDYzOi3prFF0ZbZxQcK/Jynad9oV1NRU5T5zYMERm3jtyOD
-	oXxhw8WT9lavRwbpY1CNRUvjank4P5GTPluDoSiJ6JiZOAiJA1FTXCaYVbKO2Fs5v25ispXH5z8+k
-	pklwgj82PkG6w63lOuEkKNXpnRdCbraJUIu+jCeKhBXHe9u/VSvY4OMRfYWWLMApwFAeLuImsg/g6
-	9RzX9krpYbEfneExuVXEWxBglatThVIrH3Pd7nDkhI612EW8NBdA6FCj7FuMSzNxwmjmGxy9/MPeS
-	STk4txOrg==;
+	 bh=DZbWWRPNCT3iB/hQfJ/jZuTHqyXjh8aAmHCvVBzaf6s=; b=VzpJXsnXmcUf8ErlSfiVU1Hf/
+	zitnhQk3BHIFpwjTTIx4dfibYjNtkJlVifUCmcWlG1mMs5jzTN2+enzfh4mV64H57goQ2OnW98dau
+	7+j/3yoK8rmGnbuuNkkC6zJ34prmT0OuII6wcAO5afo63tWbbtc2uRO4aGZnBrJ7gKrnqpXH4/EIx
+	FRMkhsT/gzA/uBGtopovRlB8TXNi9iW4qryG4BwCxNEC+/u5VYXTbYb657oBjCdpMR52WbREKB3hl
+	lu6fevIWuiWkO83Qy/a3s+TxdBImkKcxJwoo14KXQi2iUiZ9T2ggGfdabq2tgHE8D3xOESKCfI47n
+	kUhFdAzdQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k1R0e-0005qD-Te; Fri, 31 Jul 2020 09:07:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1k1R9D-0006pj-DF; Fri, 31 Jul 2020 09:16:15 +0000
+Received: from m43-7.mailgun.net ([69.72.43.7])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k1R0a-0005me-0D
- for linux-mediatek@lists.infradead.org; Fri, 31 Jul 2020 09:07:22 +0000
-X-UUID: 49451108d3b04386abc269c02eb58c7f-20200731
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=GWjSi3YpoNcum3z51vpLWGdJlfw6cazZXD2o0Kc/Z8k=; 
- b=O6NnhseaIcP0Jh7uVA95WQzHV29EtVPNiod3o//ABBadD2IoWIs1ywgOz14HvSpiHGZmGFWa4elpXw+yRkoKllZNpIlflPhDWLyfbuT3t65GOYDZsoZ5VpV93gfsuQxoC6WfRrc5326NiKcX8JhetiZPzXNDL7mbSjS8E+buwVM=;
-X-UUID: 49451108d3b04386abc269c02eb58c7f-20200731
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <chunlei.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1794041499; Fri, 31 Jul 2020 01:06:59 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 31 Jul 2020 01:57:09 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 31 Jul 2020 16:56:54 +0800
-Received: from [10.15.20.246] (10.15.20.246) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 31 Jul 2020 16:56:54 +0800
-Message-ID: <1596185654.11648.1.camel@mbjsdccf07>
-Subject: Re: [PATCH] siganl: ignore other signals when doing coredump
-From: chunlei.wang <Chunlei.wang@mediatek.com>
-To: Andrew Morton <akpm@linux-foundation.org>
-Date: Fri, 31 Jul 2020 16:54:14 +0800
-In-Reply-To: <20200723175126.cf6a660e46c8da26b1293eb4@linux-foundation.org>
-References: <1595487143.29785.9.camel@mbjsdccf07>
- <20200723175126.cf6a660e46c8da26b1293eb4@linux-foundation.org>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1k1PzY-0007ul-4S
+ for linux-mediatek@lists.infradead.org; Fri, 31 Jul 2020 08:02:16 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1596182535; h=Message-ID: References: In-Reply-To: Subject:
+ Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
+ MIME-Version: Sender; bh=MKSQY5RVrXIwpdJw6RKFSgNCGEE7ar+hIe83C8B0HxA=;
+ b=dolJcB5haWeD4QZ/vbBgo8ah8WvMxvBj4Lb4ESZ/7NNsTgUUsm/HaF8TmTqtfqv8MIFhLR/f
+ aCnb2jQ6quRKV6UzRROmUbRdDzhbSaI+iYkrVOYWY9kGn7HCqALQfTlEtQynVmPfuAvLe4K4
+ yTmPX89XJbRDj5CMddyEVS1KGfU=
+X-Mailgun-Sending-Ip: 69.72.43.7
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
+ smtp-out-n03.prod.us-east-1.postgun.com with SMTP id
+ 5f23cf9ff89b692ba2ca826f (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Fri, 31 Jul 2020 08:00:31
+ GMT
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 0295FC433B1; Fri, 31 Jul 2020 08:00:29 +0000 (UTC)
+Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
+ (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+ (No client certificate requested) (Authenticated sender: cang)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 881C9C4339C;
+ Fri, 31 Jul 2020 08:00:28 +0000 (UTC)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: B18FD86F47E146965362EEBBF044E2D1A9DDC218CF94AD5BBD9FD8C75FCA44012000:8
-X-MTK: N
+Date: Fri, 31 Jul 2020 16:00:28 +0800
+From: Can Guo <cang@codeaurora.org>
+To: Bart Van Assche <bvanassche@acm.org>
+Subject: Re: [PATCH v4] scsi: ufs: Cleanup completed request without interrupt
+ notification
+In-Reply-To: <97f1dfb0-41b6-0249-3e82-cae480b0efb6@acm.org>
+References: <20200724140246.19434-1-stanley.chu@mediatek.com>
+ <SN6PR04MB4640B5FC06968244DDACB8BEFC720@SN6PR04MB4640.namprd04.prod.outlook.com>
+ <1596159018.17247.53.camel@mtkswgap22>
+ <97f1dfb0-41b6-0249-3e82-cae480b0efb6@acm.org>
+Message-ID: <8b0a158a7c3ee2165e09290996521ffc@codeaurora.org>
+X-Sender: cang@codeaurora.org
+User-Agent: Roundcube Webmail/1.3.9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200731_050720_214788_D0E59677 
-X-CRM114-Status: GOOD (  24.96  )
+X-CRM114-CacheID: sfid-20200731_040215_716760_1926D939 
+X-CRM114-Status: GOOD (  20.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,101 +90,96 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: weiwei.zhang@mediatek.com, wsd_upstream@mediatek.com,
- Peter Zijlstra <peterz@infradead.org>,
- "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>,
- Oleg Nesterov <oleg@redhat.com>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-scsi@vger.kernel.org, martin.petersen@oracle.com,
+ andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org,
+ asutoshd@codeaurora.org, Avri Altman <Avri.Altman@wdc.com>,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ alim.akhtar@samsung.com, matthias.bgg@gmail.com,
+ Stanley Chu <stanley.chu@mediatek.com>, chaotian.jing@mediatek.com,
+ cc.chou@mediatek.com, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Please tell us much more about why you think Linux would benefit from
-this change.  Precisely what operational problems are you seeing with
-the current code?
-=>
-       Sorry for the late reply.
+Hi Bart,
 
-       If coredump is incomplete, R&D can not find root cause through
-coredump.
- If the issue is seldom, this modification will speed up the process of
-solving the problem.
+On 2020-07-31 12:06, Bart Van Assche wrote:
+> On 2020-07-30 18:30, Stanley Chu wrote:
+>> On Mon, 2020-07-27 at 11:18 +0000, Avri Altman wrote:
+>>> Looks good to me.
+>>> But better wait and see if Bart have any further reservations.
+>> 
+>> Would you have any further suggestions?
+> 
+> Today is the first time that I took a look at ufshcd_abort(). The
+> approach of that function looks wrong to me. This is how I think that a
+> SCSI LLD abort handler should work:
+> (1) Serialize against the completion path
+> (__ufshcd_transfer_req_compl()) such that it cannot happen that the
+> abort handler and the regular completion path both call
+> cmd->scsi_done(cmd) at the same time. I'm not sure whether an existing
+> synchronization object can be used for this purpose or whether a new
+> synchronization object has to be introduced to serialize scsi_done()
+> calls from __ufshcd_transfer_req_compl() and ufshcd_abort().
+> (2) While holding that synchronization object, check whether the SCSI
+> command is still outstanding. If so, submit a SCSI abort TMR to the 
+> device.
+> (3) If the command has been aborted, call scsi_done() and return
+> SUCCESS. If aborting failed and the command is still in progress, 
+> return
+> FAILED.
+> 
+> An example is available in srp_abort() in
+> drivers/infiniband/ulp/srp/ib_srp.c.
+> 
+> Bart.
 
-       When one thread occur crash, if the default action of the signal
-is dump, it will enter do_coredump flow and  SIGNAL_GROUP_COREDUMP is
-set to signal->flags. If SIGKILL is received, the function of
-prepare_signal will check signal->flags, if the bit of
-SIGNAL_GROUP_COREDUMP is true and SIGNAL_GROUP_EXIT is false,  the
-SIGKILL will respond immediately, process will do exit flow, but now
-process is doing coredump. This is abnormal, do_coredump will be break ,
-causing causing the coredump to be  truncated.
 
-On Thu, 2020-07-23 at 17:51 -0700, Andrew Morton wrote:
-> On Thu, 23 Jul 2020 14:52:23 +0800 "chunlei.wang" <Chunlei.wang@mediatek.com> wrote:
-> 
-> > do_coredump flow is interrupted by SIGKILL,
-> > causing the coredump to be truncated.
-> > 
-> 
-> Please tell us much more about why you think Linux would benefit from
-> this change.  Precisely what operational problems are you seeing with
-> the current code?
-> 
-> 
-> > ---
-> >  arch/Kconfig    | 12 ++++++++++++
-> >  kernel/signal.c |  8 ++++++++
-> >  2 files changed, 20 insertions(+)
-> > 
-> > diff --git a/arch/Kconfig b/arch/Kconfig
-> > index 8cc35dc556c7..559eac47093e 100644
-> > --- a/arch/Kconfig
-> > +++ b/arch/Kconfig
-> > @@ -834,6 +834,18 @@ config OLD_SIGACTION
-> >  config COMPAT_OLD_SIGACTION
-> >  	bool
-> >  
-> > +config IGNORE_ANY_SIGNALS
-> > +	tristate "ignore any signals when coredump is doing"
-> > +	default n
-> > +	help
-> > +	  The sigkill is very special. If a process receives a sigkill, it
-> > will
-> > +	  immediately respond to the sigkill. When a process is abnormal and
-> > +	  collecting coredump, the do_coredump flow will be interrupted by
-> > +	  SIGKILL, causing the coredump to be truncated. This truncated
-> > coredump
-> > +	  is incomplete, and also gdb can't load.
-> > +	  Maybe we can ignore any signlas when process is collecting coredump.
-> > +	  This config can decide whether to ignore any signals.
-> > +
-> >  config COMPAT_32BIT_TIME
-> >  	bool "Provide system calls for 32-bit time_t"
-> >  	default !64BIT || COMPAT
-> > diff --git a/kernel/signal.c b/kernel/signal.c
-> > index 5ca48cc5da76..ccae3c84eb6d 100644
-> > --- a/kernel/signal.c
-> > +++ b/kernel/signal.c
-> > @@ -903,6 +903,14 @@ static bool prepare_signal(int sig, struct
-> > task_struct *p, bool force)
-> >  	sigset_t flush;
-> >  
-> >  	if (signal->flags & (SIGNAL_GROUP_EXIT | SIGNAL_GROUP_COREDUMP)) {
-> > +
-> > +#if defined CONFIG_IGNORE_ANY_SIGNALS
-> > +		if (signal->flags & SIGNAL_GROUP_COREDUMP) {
-> > +			pr_debug("[%d:%s] skip sig %d due to coredump is doing\n",
-> > +					p->pid, p->comm, sig);
-> > +			return false;
-> > +		}
-> > +#endif
-> >  		if (!(signal->flags & SIGNAL_GROUP_EXIT))
-> >  			return sig == SIGKILL;
-> >  		/*
-> > -- 
-> > 2.18.0
-> > 
+AFAIK, sychronization of scsi_done is not a problem here, because scsi 
+layer
+use the atomic state, namely SCMD_STATE_COMPLETE, of a scsi cmd to 
+prevent
+the concurrency of abort and real completion of it.
+
+Check func scsi_times_out(), hope it helps.
+
+enum blk_eh_timer_return scsi_times_out(struct request *req)
+{
+...
+         if (rtn == BLK_EH_DONE) {
+                 /*
+                  * Set the command to complete first in order to prevent 
+a real
+                  * completion from releasing the command while error 
+handling
+                  * is using it. If the command was already completed, 
+then the
+                  * lower level driver beat the timeout handler, and it 
+is safe
+                  * to return without escalating error recovery.
+                  *
+                  * If timeout handling lost the race to a real 
+completion, the
+                  * block layer may ignore that due to a fake timeout 
+injection,
+                  * so return RESET_TIMER to allow error handling another 
+shot
+                  * at this command.
+                  */
+                 if (test_and_set_bit(SCMD_STATE_COMPLETE, &scmd->state))
+                         return BLK_EH_RESET_TIMER;
+                 if (scsi_abort_command(scmd) != SUCCESS) {
+                         set_host_byte(scmd, DID_TIME_OUT);
+                         scsi_eh_scmd_add(scmd);
+                 }
+         }
+}
+
+Thanks,
+
+Can Guo.
 
 _______________________________________________
 Linux-mediatek mailing list
