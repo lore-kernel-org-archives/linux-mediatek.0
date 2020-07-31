@@ -2,79 +2,78 @@ Return-Path: <SRS0=UCxl=BK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 76F2FC433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 09:07:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6CABFC433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 09:07:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3B2BC2072A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 09:07:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3B14B20838
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 09:07:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="K//2OsTR";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="uMdRaMlk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B2BC2072A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DZKREIz8";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="O6Nnhsea"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B14B20838
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Kqc5Zo2jTj/QxALSDh+inPht0eJiB29nw1I1Z1kscew=; b=K//2OsTRzpk14SwWAEWG7t6iF
-	n6j4jYriysmP76yfHurk5jiExr1R5EayvFLbwp2KEQrR9d2toeqMrjoB7WqM5iZMNr93Gnrut17Zd
-	l16xuOQHsiOzbgO2vPg7LLpv1HerRM0shIrhAI+v4tyS96g4aqR4rqtXySR4t19tSdDCR6dcPNYBh
-	VzVJWtjG27ywoQs9KTo+DiBpoPmqoIANPTGp4nJWsWy/ocNP93BFvFGjhqww1prYR/sr0XFME0O/H
-	KCfJz/TnY6fCKGlCraVlQwXEI5WAGbYhVsHnJelKc6qckvFZNn0hy0YuCtrij0OdgnD4o7U7S8PtJ
-	NxQdp2Thg==;
+	 bh=WpOzB/tDlB/hepuku8Gn3Ybf4zf6Nt7QrPlWLIL+fG0=; b=DZKREIz84Bj3J+sThIEUfiIkJ
+	40sW6CvwCJvyvZ6Hy/NLBOytL/t0AvnDYzOi3prFF0ZbZxQcK/Jynad9oV1NRU5T5zYMERm3jtyOD
+	oXxhw8WT9lavRwbpY1CNRUvjank4P5GTPluDoSiJ6JiZOAiJA1FTXCaYVbKO2Fs5v25ispXH5z8+k
+	pklwgj82PkG6w63lOuEkKNXpnRdCbraJUIu+jCeKhBXHe9u/VSvY4OMRfYWWLMApwFAeLuImsg/g6
+	9RzX9krpYbEfneExuVXEWxBglatThVIrH3Pd7nDkhI612EW8NBdA6FCj7FuMSzNxwmjmGxy9/MPeS
+	STk4txOrg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k1R0Z-0005nz-Q1; Fri, 31 Jul 2020 09:07:19 +0000
+	id 1k1R0e-0005qD-Te; Fri, 31 Jul 2020 09:07:24 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k1R0Y-0005mZ-0p; Fri, 31 Jul 2020 09:07:19 +0000
-X-UUID: 08ada40da62e44ee9df92f58641fdc00-20200731
+ id 1k1R0a-0005me-0D
+ for linux-mediatek@lists.infradead.org; Fri, 31 Jul 2020 09:07:22 +0000
+X-UUID: 49451108d3b04386abc269c02eb58c7f-20200731
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=NjNs/L/PQBspTHCRKxQtG3j74BSnJbhVaOVg+dzczjA=; 
- b=uMdRaMlke+fLMUQG2Wr6NqndkWOmlv4NqnzDlpudBAr9LW6gXf/TPIBoytXigENMfaiPgQcdpRKs9C9SCIVXtSwTkbJHVGlXzzTpy3gSsZsPwfz6PzCp26WECpmDQEnABpDZnoYTzAhW7bd8jvM4nWKhGqClsBpG7nfecmB/47w=;
-X-UUID: 08ada40da62e44ee9df92f58641fdc00-20200731
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=GWjSi3YpoNcum3z51vpLWGdJlfw6cazZXD2o0Kc/Z8k=; 
+ b=O6NnhseaIcP0Jh7uVA95WQzHV29EtVPNiod3o//ABBadD2IoWIs1ywgOz14HvSpiHGZmGFWa4elpXw+yRkoKllZNpIlflPhDWLyfbuT3t65GOYDZsoZ5VpV93gfsuQxoC6WfRrc5326NiKcX8JhetiZPzXNDL7mbSjS8E+buwVM=;
+X-UUID: 49451108d3b04386abc269c02eb58c7f-20200731
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <macpaul.lin@mediatek.com>)
+ (envelope-from <chunlei.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1263654523; Fri, 31 Jul 2020 01:06:59 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ with ESMTP id 1794041499; Fri, 31 Jul 2020 01:06:59 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 31 Jul 2020 01:58:06 -0700
+ 15.0.1497.2; Fri, 31 Jul 2020 01:57:09 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 31 Jul 2020 16:58:03 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 31 Jul 2020 16:58:04 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Eddie Hung
- <eddie.hung@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH v2] usb: mtu3: fix panic in mtu3_gadget_disconnect()
-Date: Fri, 31 Jul 2020 16:57:58 +0800
-Message-ID: <1596185878-24360-1-git-send-email-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1596177366-12029-1-git-send-email-macpaul.lin@mediatek.com>
-References: <1596177366-12029-1-git-send-email-macpaul.lin@mediatek.com>
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 31 Jul 2020 16:56:54 +0800
+Received: from [10.15.20.246] (10.15.20.246) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 31 Jul 2020 16:56:54 +0800
+Message-ID: <1596185654.11648.1.camel@mbjsdccf07>
+Subject: Re: [PATCH] siganl: ignore other signals when doing coredump
+From: chunlei.wang <Chunlei.wang@mediatek.com>
+To: Andrew Morton <akpm@linux-foundation.org>
+Date: Fri, 31 Jul 2020 16:54:14 +0800
+In-Reply-To: <20200723175126.cf6a660e46c8da26b1293eb4@linux-foundation.org>
+References: <1595487143.29785.9.camel@mbjsdccf07>
+ <20200723175126.cf6a660e46c8da26b1293eb4@linux-foundation.org>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: B18FD86F47E146965362EEBBF044E2D1A9DDC218CF94AD5BBD9FD8C75FCA44012000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200731_050718_327831_6481B95E 
-X-CRM114-Status: GOOD (  14.64  )
+X-CRM114-CacheID: sfid-20200731_050720_214788_D0E59677 
+X-CRM114-Status: GOOD (  24.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,90 +85,102 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: stable@vger.kernel.org, Macpaul Lin <macpaul.lin@gmail.com>,
- Macpaul Lin <macpaul.lin@mediatek.com>,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>
+Cc: weiwei.zhang@mediatek.com, wsd_upstream@mediatek.com,
+ Peter Zijlstra <peterz@infradead.org>,
+ "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>,
+ Oleg Nesterov <oleg@redhat.com>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch fixes a possible issue when mtu3_gadget_stop()
-already assigned NULL to mtu->gadget_driver during mtu_gadget_disconnect().
+Please tell us much more about why you think Linux would benefit from
+this change.  Precisely what operational problems are you seeing with
+the current code?
+=>
+       Sorry for the late reply.
 
-[<ffffff9008161974>] notifier_call_chain+0xa4/0x128
-[<ffffff9008161fd4>] __atomic_notifier_call_chain+0x84/0x138
-[<ffffff9008162ec0>] notify_die+0xb0/0x120
-[<ffffff900809e340>] die+0x1f8/0x5d0
-[<ffffff90080d03b4>] __do_kernel_fault+0x19c/0x280
-[<ffffff90080d04dc>] do_bad_area+0x44/0x140
-[<ffffff90080d0f9c>] do_translation_fault+0x4c/0x90
-[<ffffff9008080a78>] do_mem_abort+0xb8/0x258
-[<ffffff90080849d0>] el1_da+0x24/0x3c
-[<ffffff9009bde01c>] mtu3_gadget_disconnect+0xac/0x128
-[<ffffff9009bd576c>] mtu3_irq+0x34c/0xc18
-[<ffffff90082ac03c>] __handle_irq_event_percpu+0x2ac/0xcd0
-[<ffffff90082acae0>] handle_irq_event_percpu+0x80/0x138
-[<ffffff90082acc44>] handle_irq_event+0xac/0x148
-[<ffffff90082b71cc>] handle_fasteoi_irq+0x234/0x568
-[<ffffff90082a8708>] generic_handle_irq+0x48/0x68
-[<ffffff90082a96ac>] __handle_domain_irq+0x264/0x1740
-[<ffffff90080819f4>] gic_handle_irq+0x14c/0x250
-[<ffffff9008084cec>] el1_irq+0xec/0x194
-[<ffffff90085b985c>] dma_pool_alloc+0x6e4/0xae0
-[<ffffff9008d7f890>] cmdq_mbox_pool_alloc_impl+0xb0/0x238
-[<ffffff9008d80904>] cmdq_pkt_alloc_buf+0x2dc/0x7c0
-[<ffffff9008d80f60>] cmdq_pkt_add_cmd_buffer+0x178/0x270
-[<ffffff9008d82320>] cmdq_pkt_perf_begin+0x108/0x148
-[<ffffff9008d824d8>] cmdq_pkt_create+0x178/0x1f0
-[<ffffff9008f96230>] mtk_crtc_config_default_path+0x328/0x7a0
-[<ffffff90090246cc>] mtk_drm_idlemgr_kick+0xa6c/0x1460
-[<ffffff9008f9bbb4>] mtk_drm_crtc_atomic_begin+0x1a4/0x1a68
-[<ffffff9008e8df9c>] drm_atomic_helper_commit_planes+0x154/0x878
-[<ffffff9008f2fb70>] mtk_atomic_complete.isra.16+0xe80/0x19c8
-[<ffffff9008f30910>] mtk_atomic_commit+0x258/0x898
-[<ffffff9008ef142c>] drm_atomic_commit+0xcc/0x108
-[<ffffff9008ef7cf0>] drm_mode_atomic_ioctl+0x1c20/0x2580
-[<ffffff9008ebc768>] drm_ioctl_kernel+0x118/0x1b0
-[<ffffff9008ebcde8>] drm_ioctl+0x5c0/0x920
-[<ffffff900863b030>] do_vfs_ioctl+0x188/0x1820
-[<ffffff900863c754>] SyS_ioctl+0x8c/0xa0
+       If coredump is incomplete, R&D can not find root cause through
+coredump.
+ If the issue is seldom, this modification will speed up the process of
+solving the problem.
 
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: stable@vger.kernel.org
----
-Changes for v2:
-  - Check mtu_gadget_driver out of spin_lock might still not work.
-    We use a temporary pointer to keep the callback function.
+       When one thread occur crash, if the default action of the signal
+is dump, it will enter do_coredump flow and  SIGNAL_GROUP_COREDUMP is
+set to signal->flags. If SIGKILL is received, the function of
+prepare_signal will check signal->flags, if the bit of
+SIGNAL_GROUP_COREDUMP is true and SIGNAL_GROUP_EXIT is false,  the
+SIGKILL will respond immediately, process will do exit flow, but now
+process is doing coredump. This is abnormal, do_coredump will be break ,
+causing causing the coredump to be  truncated.
 
- drivers/usb/mtu3/mtu3_gadget.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+On Thu, 2020-07-23 at 17:51 -0700, Andrew Morton wrote:
+> On Thu, 23 Jul 2020 14:52:23 +0800 "chunlei.wang" <Chunlei.wang@mediatek.com> wrote:
+> 
+> > do_coredump flow is interrupted by SIGKILL,
+> > causing the coredump to be truncated.
+> > 
+> 
+> Please tell us much more about why you think Linux would benefit from
+> this change.  Precisely what operational problems are you seeing with
+> the current code?
+> 
+> 
+> > ---
+> >  arch/Kconfig    | 12 ++++++++++++
+> >  kernel/signal.c |  8 ++++++++
+> >  2 files changed, 20 insertions(+)
+> > 
+> > diff --git a/arch/Kconfig b/arch/Kconfig
+> > index 8cc35dc556c7..559eac47093e 100644
+> > --- a/arch/Kconfig
+> > +++ b/arch/Kconfig
+> > @@ -834,6 +834,18 @@ config OLD_SIGACTION
+> >  config COMPAT_OLD_SIGACTION
+> >  	bool
+> >  
+> > +config IGNORE_ANY_SIGNALS
+> > +	tristate "ignore any signals when coredump is doing"
+> > +	default n
+> > +	help
+> > +	  The sigkill is very special. If a process receives a sigkill, it
+> > will
+> > +	  immediately respond to the sigkill. When a process is abnormal and
+> > +	  collecting coredump, the do_coredump flow will be interrupted by
+> > +	  SIGKILL, causing the coredump to be truncated. This truncated
+> > coredump
+> > +	  is incomplete, and also gdb can't load.
+> > +	  Maybe we can ignore any signlas when process is collecting coredump.
+> > +	  This config can decide whether to ignore any signals.
+> > +
+> >  config COMPAT_32BIT_TIME
+> >  	bool "Provide system calls for 32-bit time_t"
+> >  	default !64BIT || COMPAT
+> > diff --git a/kernel/signal.c b/kernel/signal.c
+> > index 5ca48cc5da76..ccae3c84eb6d 100644
+> > --- a/kernel/signal.c
+> > +++ b/kernel/signal.c
+> > @@ -903,6 +903,14 @@ static bool prepare_signal(int sig, struct
+> > task_struct *p, bool force)
+> >  	sigset_t flush;
+> >  
+> >  	if (signal->flags & (SIGNAL_GROUP_EXIT | SIGNAL_GROUP_COREDUMP)) {
+> > +
+> > +#if defined CONFIG_IGNORE_ANY_SIGNALS
+> > +		if (signal->flags & SIGNAL_GROUP_COREDUMP) {
+> > +			pr_debug("[%d:%s] skip sig %d due to coredump is doing\n",
+> > +					p->pid, p->comm, sig);
+> > +			return false;
+> > +		}
+> > +#endif
+> >  		if (!(signal->flags & SIGNAL_GROUP_EXIT))
+> >  			return sig == SIGKILL;
+> >  		/*
+> > -- 
+> > 2.18.0
+> > 
 
-diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
-index 68ea4395f871..40cb6626f496 100644
---- a/drivers/usb/mtu3/mtu3_gadget.c
-+++ b/drivers/usb/mtu3/mtu3_gadget.c
-@@ -840,10 +840,17 @@ void mtu3_gadget_suspend(struct mtu3 *mtu)
- /* called when VBUS drops below session threshold, and in other cases */
- void mtu3_gadget_disconnect(struct mtu3 *mtu)
- {
-+	struct usb_gadget_driver *driver;
-+
- 	dev_dbg(mtu->dev, "gadget DISCONNECT\n");
- 	if (mtu->gadget_driver && mtu->gadget_driver->disconnect) {
-+		driver = mtu->gadget_driver;
- 		spin_unlock(&mtu->lock);
--		mtu->gadget_driver->disconnect(&mtu->g);
-+		/*
-+		 * avoid kernel panic because mtu3_gadget_stop() assigned NULL
-+		 * to mtu->gadget_driver.
-+		 */
-+		driver->disconnect(&mtu->g);
- 		spin_lock(&mtu->lock);
- 	}
- 
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
