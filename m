@@ -7,17 +7,18 @@ X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
 	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1E2BC433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 15:02:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 03118C433E1
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 15:02:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 672DC2075D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 15:02:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C18812075D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 15:02:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eCipNN7/";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=web.de header.i=@web.de header.b="CtVjgL7s"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 672DC2075D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dCooW5ZW";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="mjxvP9+k";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=web.de header.i=@web.de header.b="GklxPdxT"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C18812075D
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=web.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,34 +27,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:From:Subject:To:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Paa7EB54+luYodOFcxFUFOP+VUgBDzq7m42uOoWHN0E=; b=eCipNN7/kGsOQS+7/tAMYy++OT
-	gU+/g5yd0dvnXMqdW6D35TA71xzZYMqI0IZAkXkY8+2kXJl/FjWcsO8zNk/OVqzAWWBXpEXb/raXI
-	1Xr72iFQ2UIwxW7U8Pd/ad8nXSFSDqx6t6fEE26YhgzTx+5hJC+sHMMZt9NEFFFxG1SlbHtdi9T7r
-	LtRqHtyzY25pW1kkhrgTgOLb9MWVqArmQYbsbw4w1Wx/qfFR0lps1S7He5eZH+b9p5tZx/fJcMaa3
-	Zj7wPvrdKVOsNKi8BLxvRbKfPDyvB2lTLy+R3cQLlSAkIQV8+XjxvYkfKtird9f+IMhx0OHfzNd8z
-	XVYzwxfw==;
+	bh=vpl2SIoHuqZjW03JAsAESwwWLg5UaOPbeiH2TCihh8w=; b=dCooW5ZWImtEFpy74/zahhEPkc
+	y/3drodmPMZWmdfiCFFhY3KvZ0eir0igqFVqULcnXnh5HgsHwqrAvGH5MHv4b3DP51pXMz8iaJfD4
+	W0CaWDDc6fDtg5SIko+7tcsWJVGomAHEhpdDUxzBOPF9WV2BrT1PRtCgd3HQjua2c7HrxuoKpdlUk
+	BCTagoWLPXrVEXvpT7zrddt9k70J/AlIozDpGMu6BlQoO9mbDPDWoxs6dz4rdLN6KVnCSza1QQWAr
+	2xwcacH1BywiYAChWPc9WNTxBDmj0mRYD/mnYyqzgYosZBCq8Fhm6ZoyDLEr5xMVV/L8a7hy/uVTz
+	IHdUHHGA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k43sq-0001iw-3R; Fri, 07 Aug 2020 15:02:12 +0000
-Received: from mout.web.de ([217.72.192.78])
+	id 1k43sp-0001io-Ez; Fri, 07 Aug 2020 15:02:11 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3yqn-0003tS-50; Fri, 07 Aug 2020 09:39:46 +0000
+ id 1k1RdT-0004nf-8i; Fri, 31 Jul 2020 09:47:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
+ MIME-Version:Date:Message-ID:From:Subject:Cc:To:Sender:Reply-To:Content-ID:
+ Content-Description:In-Reply-To:References;
+ bh=kExC9jk9txz7YON5cv/MXIdhSHG2Vis8qMz/iw96FSs=; b=mjxvP9+kkSvxsT0OPDggA3u2ii
+ VU+JpAqfPrk3MKKyI3fqYgU+kP15iFCx0kX5Xoc3nwptOhF+3yvlj9jqvDd2mdMjXV92WkXhhVfdR
+ dxKUwXuq80TasSOYdhfOPGWhWfOaNq+AZjfrYjwHN5gqOd0wmgRD1LTuBhBs4crafZnhr6ddqPaTi
+ eYJsl804EheGWYVzMPluZyJ+fQq9Q2t5wj5XuJEeSNSm79VntwcoaAbN/h0kqsEB3mUThcUBwynfw
+ Ps+bBDw96/Z7p2AjH87wWwIbpUgl9pgJWKu0KPzZv5IBTMw4BzJjGyy9yCzbswolsNV8mjApIVzjC
+ TEkuKluQ==;
+Received: from mout.web.de ([212.227.17.11])
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1k1RdP-0001zT-9w; Fri, 31 Jul 2020 09:47:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
- s=dbaedf251592; t=1596793178;
- bh=bHUbC5x7DBk25tFkz4V1HivlQKOcBSgaxF8kVZf5gHE=;
+ s=dbaedf251592; t=1596188823;
+ bh=kExC9jk9txz7YON5cv/MXIdhSHG2Vis8qMz/iw96FSs=;
  h=X-UI-Sender-Class:To:Cc:Subject:From:Date;
- b=CtVjgL7sondToRiBGFsy0SO10Sn4Edx3mW00TGUxcMRkwKiqkAEyrCaNZr5WwMkM1
- C+coDpJlT+93FcF4ZXziOBow8Ln3ME9Z3Dp8C/BTfLKjruyXQLHC2hrlpdGES+3VHM
- 30uqiJ3cjQnGv4WR2LT8y35wX/Y3QK/t5nG3+skM=
+ b=GklxPdxTZE9l+fDBEysM5AY7758cQt3lZiUNHlORHy9X2W3VT4xQTJXef+V+ViuD+
+ LGEoZ1t8f5+DYn7rv/sStOpElaItZyyMgHxxHitwpTy9Uv9dUsmMrcM8BZMWEe7vCq
+ gCj03IrkmamOXQR993fS2KFvQuxduRddpD9E/+cA=
 X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
-Received: from [192.168.1.2] ([78.49.50.216]) by smtp.web.de (mrweb106
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1MRF3W-1kOvOB3ia4-00NCCP; Fri, 07
- Aug 2020 11:33:32 +0200
-To: Can Guo <cang@codeaurora.org>, Stanley Chu <stanley.chu@mediatek.com>,
- kernel-team@android.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-scsi@vger.kernel.org
-Subject: Re: [PATCH 9/9] scsi: ufs: Properly release resources if a task is
- aborted successfully
+Received: from [192.168.1.2] ([78.48.58.67]) by smtp.web.de (mrweb103
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 0LkhFg-1kbbn835y0-00aZ8U; Fri, 31
+ Jul 2020 11:47:02 +0200
+To: Neal Liu <neal.liu@mediatek.com>, linux-acpi@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org, linux-tegra@vger.kernel.org,
+ wsd_upstream@mediatek.com
+Subject: Re: [PATCH] acpi: fix 'return' with no value build warning
 From: Markus Elfring <Markus.Elfring@web.de>
 Autocrypt: addr=Markus.Elfring@web.de; prefer-encrypt=mutual; keydata=
  mQINBFg2+xABEADBJW2hoUoFXVFWTeKbqqif8VjszdMkriilx90WB5c0ddWQX14h6w5bT/A8
@@ -98,39 +112,39 @@ Autocrypt: addr=Markus.Elfring@web.de; prefer-encrypt=mutual; keydata=
  Z/wsLiWTgKlih2QYULvW61XU+mWsK8+ZlYUrRMpkauN4CJ5yTpvp+Orcz5KixHQmc5tbkLWf
  x0n1QFc1xxJhbzN+r9djSGGN/5IBDfUqSANC8cWzHpWaHmSuU3JSAMB/N+yQjIad2ztTckZY
  pwT6oxng29LzZspTYUEzMz3wK2jQHw+U66qBFk8whA7B2uAU1QdGyPgahLYSOa4XAEGb6wbI FEE=
-Message-ID: <a752927b-dd9b-ebf0-8c77-e2ae0b2aa475@web.de>
-Date: Fri, 7 Aug 2020 11:33:26 +0200
+Message-ID: <ceec7190-2ab3-2e0b-92f7-d4f9cfde2664@web.de>
+Date: Fri, 31 Jul 2020 11:46:57 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ Thunderbird/68.10.0
 MIME-Version: 1.0
 Content-Language: en-GB
-X-Provags-ID: V03:K1:aQ42aDV+xHzXH7ow97XdFEkaCI2k+qC+56+8kDH/G3Yms7MHBbq
- 0GGmhB9uQ0wwNxFOrBpEQerh7/r1Zzj0vVwx7/gSnz7wO9rqJSeHHidC9l2Ta9NycwjjGdu
- jFltoEUqMg+OYLq5Ikwvo8qIsKEfTYeDtQ32/sHtFRN7VsrSiQnE/JOcc8tZvf4hKISRQc3
- uLUhp6qq5gp9/VmAOweww==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ULcE1y7gjkU=:y1YMWL0MJTeGEwbY+o3eKU
- a93+ePsBe1qAv7/BwHexHPJvYH7HPIk6NDNAxvfsFDIEbfNhLLOw57IIUmv+LNdk/Fp13KLTE
- VPCyN33RhG/OEMfDy+7d3RJxNizlmdwXdRno4/OARX0dEbOuhSBDM8Nd5+dIHHBeVbV20wTbT
- M8b7VFhwO8jW8G6yahhs0eksb6rDzdGAvAC6uRLcoZQtm1EJvjc/RPSr9a2nX0xsFQ+IR3Bqt
- qLkLXspJciBuk5lOHcKqZtQspOTmzW/CX2M8S8XKJqar107TboKRPi2FahH4W1e5P4BnwTAAy
- CSlZjGPmHrK5MgdgrhhHvRQbM3bjBV+Ewbh6ExAo98u3nS0gb+m98WooDx19nGlq0qfcmQV0R
- n+E33kr4KcjJilH+6INZJgF80zgxtlIlmzsBw639iEM1hSFaqhqdLDzZIW06EXSK2xLmfu63j
- 0O98DKfrxov0Gb6h/OnYw84LCaEwM9cCbdYoYI5se/gZbh7adTgym2+qSaNT+KTP0VNKqFkxB
- 03iijpfe2IrhxS//2TiYgNu5AHxcOoc2zkCmuKehvTLQjvD6gIh8682A0V3WcKvoWrzed/l5f
- 2uKqxD3cnkr2eSTh/8N5lMXWeLZXSC3dC3HzVOwii2sVKD8TBXtYQE+XQqYi1ew931aFZyxhg
- 6lB6BuDmv5hsFO77gWSk2PTA+gAgf53moNwYAI74VqJJVj5fz64hmqvpLGEWWhq0mXBzHqb20
- yXRZh/Bxf3ocT007q+HHJBCPmUxLxwFCzHeMjbZxGPDfOjPt4e0e2ZoMVlH2uiJif2gJoFdpo
- lP1DjJbu+3DwpkPUnCT3tjSu7blAybDTyINTNO0b4C9WlmdaMIzhxYCSrO/gD5h7Kyh5+bXcO
- W5x2/WMNRoaK8VIHpzWIsOhjiFb7z2+ZWa4TF1MT9dYHb7Xp8Wmn6Fy1S4+SAy0zVV4yiBdkF
- MgxqHWR5bj5qPFN5KfaBJwTcBvFPTsRgSyw/B1EVRAvsnp7RhHAZJ5fyZe42Hij0S3PJAWtmS
- aPmB2rgVk8GazrfidXQJ5qe6weMVNA4QknMQg+u4EPxwET1eMqUO2JwTY9Q4vwuERKYram/b5
- U1xu6E0V6LzZoey08sWGMwOGeU3Nc3sUsWr4pSXvVSrK6UjGzI9RW0eOegQKl+dt4sUnCssKi
- A7MUwU1oNaAYZRFQizGL4I3YXjEcOo0Q3cttpNJUVPwGEe/kJHjQFxqdafraEXutHrea+9ruP
- wI2smWCo1hH2uX4xq1k804SkK3OZ1KEI9MMwaKw==
+X-Provags-ID: V03:K1:clHZk46xMgZqBNJ5FfdbA8OKEXfTBFnS+FSlE+Gw1H1aMQ4qoGS
+ IPitr7Gj1a6zXDPBuONe+Tki2yylOilCEs3HR0x9Nhj4RFm3Aez8e2JWLwemeCg6R1pbmTk
+ iSdACGZgHq/o8+gMF601uAUKEV3nsIuhi7cKQnLDjt1NLttAl5s03vut6iv61CP1lpKBY0Z
+ KNgZ4Oysir3JS1zU7oLZA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:+0Q0BGfQweg=:pwq8HfQd+KKmy3S9DEN4A9
+ m+MMHByNLtvh3pKqUf3Rv8DY3gdw8TmiDdGbLc1iRS3GutYbyYREYOst4px/yP6UBgO52wdg3
+ dWlIad96QzkR2o4K75sDcQ2GMMqBMHvZeGT5WKtzjg6/wNAhnVOhRTQKsgkMA7KLNs0Qnyw7C
+ 8mTIlwe6NhvCngTySHHVWRTnDSthFiLBDX3tdATziv50mz+dd6c5O+SCsJ+tUd1YL31etEaWw
+ 6OhHqB1I29pb5u1bIFkB1NubMX2yG8fE/gKsDmJ2bz+jM5ihu5R7DSV0JjKpecgxtWRaVSXba
+ gVJ2+4dgQu1pVN6ntY9zkFvPdDYF1cbneIorEW7D906ssvT9Nl16HS71NN+2XKOGTlKtAOdqq
+ yKtm1jWhjZqYaxYpEiHN+m7nWZLuUmWNqBRcOTaXfV4Xz2+8/kXTqGA/Wf2Nm/QkwOyCWUhp4
+ nO7M3EmGyZersWJ8qJzNgL409dvQfey4jIxuju7DjPiq9CBTR5FZR/haIiZKaKBpa4+92+ac5
+ 3X2fc4h2D+MvZf7CqWfV/jPlPapxeoxNMcMkLwyTnVbPOjGaVTSYJ06T8+2Krc+n1w0EPGa5A
+ Y0Bk1vZsscnQ5BoLRMbW1s4CqL+clP2XFXyR2LlDPMRT3U3u1Y1GoHoNj0aWfvkFaJPnU6INt
+ feJ5PHxK4RZ4gNWNZppOg6NWAMbtQ9NxtHQ5fZ7Sx+6hAMA1xi68WgvwWKvuVG6UahTiEdh1G
+ N/VecP21B19VmbQhTOBgKvKb091pnojmTXgkLRnwIYkHY02DBer4w9e0SAJ0dL4I2r0UN0TY0
+ MSj9wp3JlIEeGSSbx31f9igdMhrQ6cal2wAfr6h2XvM+Ce7A14tEdwC3HCNrua55artlHgRTk
+ tFUm1Di8TKqzP2hhEVx41WOceprDCl2xJUmphqCCRnfIX+IttTtm9VmYBV/CrnCMOXHl4WlQ9
+ Lyx96oynfvAVZ1zGuJFN3VDXTpjzxKS5hMSJdnHSV54s2mEA1ek79Ln3yfVuyijQI5FmjbrIC
+ 1HuiWrIXfvpWVLE4/NsC5b6NrVGQxABiNpK9N2R23GB0qC1mkPuzl2bcfz82ybyGxcky00sVN
+ UO4DCM8/3E/B0cYjGQm0tnHKndI5SgzFs7weOTgDrZC6RHkKdQQe1mm3Uwb+HE/Rc8cIIvNq9
+ XFWuvMkgi+dWHr3Z7W+ATe141w22agPy505d2eUolvnTYgQtPztKDeLCBeS6xl3udwT2jXHtp
+ uYr8jlwcWFzzCsHl4CONiQ7cFfXlZiTIMdncIVA==
 X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200807_053945_507154_7297F3F5 
-X-CRM114-Status: UNSURE (   7.82  )
+X-CRM114-CacheID: sfid-20200731_104728_160879_EEB1498F 
+X-CRM114-Status: UNSURE (   5.74  )
 X-CRM114-Notice: Please train this message.
 X-Mailman-Approved-At: Fri, 07 Aug 2020 11:02:09 -0400
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -144,24 +158,21 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rajendra Nayak <rnayak@codeaurora.org>,
- Bart Van Assche <bvanassche@acm.org>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Saravana Kannan <saravanak@google.com>,
- "James E. J. Bottomley" <jejb@linux.ibm.com>, kernel-janitors@vger.kernel.org,
- "Bao D. Nguyen" <nguyenb@codeaurora.org>, linux-kernel@vger.kernel.org,
- Avri Altman <avri.altman@wdc.com>, Mark Salyzyn <salyzyn@google.com>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Bean Huo <beanhuo@micron.com>,
- Hongwu Su <hongwus@codeaurora.org>, Asutosh Das <asutoshd@codeaurora.org>
+Cc: Jacob Pan <jacob.jun.pan@linux.intel.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Sami Tolvanen <samitolvanen@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Len Brown <lenb@kernel.org>
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-PiDigKYgVG8gZml4IGl0LCDigKYKCkkgcHJvcG9zZSB0byByZXBsYWNlIHRoaXMgd29yZGluZyBi
-eSB0aGUgdGFnIOKAnEZpeGVz4oCdLgoKCj4g4oCmICJtYW5udWFsbHkiLCDigKYKClBsZWFzZSBh
-dm9pZCBhIHR5cG86CuKApiAibWFudWFsbHkiLCDigKYKCgpSZWdhcmRzLApNYXJrdXMKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVr
-IG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+PiBGaXhpbmcgQ0ZJIGlzc3VlIHdoaWNoIGludHJvZHVjZWQgYnkgY29tbWl0IGVmZTk3MTEyMTRl
+NiBpcyBpbmNvbXBsZXRlLgoKSSBzdWdnZXN0IHRvIHJlcGxhY2UgdGhpcyBzZW50ZW5jZSBieSB0
+aGUgdGFnIOKAnEZpeGVz4oCdLgoKUmVnYXJkcywKTWFya3VzCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QK
+TGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
