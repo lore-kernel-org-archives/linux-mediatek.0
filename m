@@ -2,106 +2,77 @@ Return-Path: <SRS0=UCxl=BK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7125CC433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 04:07:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6991DC433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 06:37:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 405F52070B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 04:07:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 38336207F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 06:37:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jYDxbjc8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 405F52070B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=acm.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lhA7S2p7";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="PPxTCoxd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 38336207F5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dxCiCz02tlx9/HnlPukIEELz6EHrQ18a6Wr6Oo9AS7c=; b=jYDxbjc8fNNYa19tr6vU7ML7b
-	gw+ObMfN95MdCaIpgoT7DVnBZoGwD1kzKOkCNXh70FodtJWinqse42Gd/PDc4p18oG25+RfU1jdPg
-	CuO9TCbefEMmyIXl4r4W9E8R419OE0IaNwbpQzBqcjsa8O9TEV3/ljP4FNvMTDHz3XWJiEoHjrB3C
-	1cxgq8Q1SS1nDf5YdN81k8VRIeP41odPJ16OFb9mAJ7E92VSLSfSrRc2mSB4kFUGbI13id9zEsW/T
-	J2X39rLIW/lK7KaSYV0xhugNXL+A4wye3JKDIM84dENm/dEYJMKCe6Z7TLxh4lXO/OTysBCW9MAxl
-	qxeLITYdg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=dxqLeCQzSv8166nekU/b6LahdAWG9vrhdZatiReWo4c=; b=lhA7S2p75eChDlwpUWGBrido1w
+	JSXQLL6ATKT4+h2Nd+NlIUUBqFTEKuXvrTnf2r6z/x6wgkWEhL0Z2ufk/cVR71YHRaLKvD0ueQbaQ
+	V1kb/8UplfZypXGugxcd0HwPKXgwtVv+xpKEKx/Qs5+Ig23Qx/n4zImpGRVovdrzLHKqPccVPuJ7V
+	kME2DeS20QGbz+cqr2Acf2SYNleaA+RsvhkhIyySneAJwvM5ixW25zkrXwWFiR6K3hS/FeQougBpD
+	xz7FQt3WY4VWClTapkg6+v0SqXCwTBxZzOrTfFlrV3iAo4Oxr54nlF0lg3pEB6mO82lEba/bjat9y
+	BMSf+GsQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k1MJo-0001FD-68; Fri, 31 Jul 2020 04:06:52 +0000
-Received: from mail-pj1-f65.google.com ([209.85.216.65])
+	id 1k1Of4-0001ph-EP; Fri, 31 Jul 2020 06:36:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k1MJj-0001Db-Ms; Fri, 31 Jul 2020 04:06:48 +0000
-Received: by mail-pj1-f65.google.com with SMTP id e22so6560129pjt.3;
- Thu, 30 Jul 2020 21:06:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=QQ35CE9yJFKcx/uvB2EsoL6aQNmrJJ39h4x1UksSOeI=;
- b=Nzcnqup9Bj1zAUUjGRCIu1eKbug6g0WQb+wN2um98ZBY905Qm0T9SsD03eva4pmQjc
- whyJWIpS+6G0PX8x+gpiW04ZwshgJOREeHQWvZ4AaQ6gs+7cf5XmpJFIoOxsTMtUbv+t
- zUQqyPQljPzp/vNgsL70EkBj6cRESYY0D4xA0O8WtmWVzp9u+gxsXD8tpCOUObMFfFal
- SPqBmMdqy+xOENhs3FPyAFP3/LO/c24LBzL2i31hH8SG5W5lCIXdTb2K4Z350rJq2VF9
- 0DKb7wAid3YFBGqQXKAh6IxqNVxzdskpfEunZiZjkDCdrYk568NJpBNwQsY3dwOlqozf
- X6nQ==
-X-Gm-Message-State: AOAM5339iwDrYcue1SG64o7Qc6ogC0VsMQ8dl0DOevzOl7Z37YV1hF4k
- xrGEUHlLv6ORRzySwcrNNGo=
-X-Google-Smtp-Source: ABdhPJzXnGsmXXgO8qRrgHFnZCn5E/++s0JbD0mUM5v850qtfGXGD2zI4A5vvBBtJhqa9flYfth/vQ==
-X-Received: by 2002:a17:902:ff13:: with SMTP id
- f19mr2147996plj.326.1596168404804; 
- Thu, 30 Jul 2020 21:06:44 -0700 (PDT)
-Received: from [192.168.50.147] (c-73-241-217-19.hsd1.ca.comcast.net.
- [73.241.217.19])
- by smtp.gmail.com with ESMTPSA id r8sm8054046pfg.147.2020.07.30.21.06.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Jul 2020 21:06:43 -0700 (PDT)
-Subject: Re: [PATCH v4] scsi: ufs: Cleanup completed request without interrupt
- notification
-To: Stanley Chu <stanley.chu@mediatek.com>, Avri Altman <Avri.Altman@wdc.com>
-References: <20200724140246.19434-1-stanley.chu@mediatek.com>
- <SN6PR04MB4640B5FC06968244DDACB8BEFC720@SN6PR04MB4640.namprd04.prod.outlook.com>
- <1596159018.17247.53.camel@mtkswgap22>
-From: Bart Van Assche <bvanassche@acm.org>
-Autocrypt: addr=bvanassche@acm.org; prefer-encrypt=mutual; keydata=
- mQENBFSOu4oBCADcRWxVUvkkvRmmwTwIjIJvZOu6wNm+dz5AF4z0FHW2KNZL3oheO3P8UZWr
- LQOrCfRcK8e/sIs2Y2D3Lg/SL7qqbMehGEYcJptu6mKkywBfoYbtBkVoJ/jQsi2H0vBiiCOy
- fmxMHIPcYxaJdXxrOG2UO4B60Y/BzE6OrPDT44w4cZA9DH5xialliWU447Bts8TJNa3lZKS1
- AvW1ZklbvJfAJJAwzDih35LxU2fcWbmhPa7EO2DCv/LM1B10GBB/oQB5kvlq4aA2PSIWkqz4
- 3SI5kCPSsygD6wKnbRsvNn2mIACva6VHdm62A7xel5dJRfpQjXj2snd1F/YNoNc66UUTABEB
- AAG0JEJhcnQgVmFuIEFzc2NoZSA8YnZhbmFzc2NoZUBhY20ub3JnPokBOQQTAQIAIwUCVI67
- igIbAwcLCQgHAwIBBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFcPTXFzhAJ8QkH/1AdXblKL65M
- Y1Zk1bYKnkAb4a98LxCPm/pJBilvci6boefwlBDZ2NZuuYWYgyrehMB5H+q+Kq4P0IBbTqTa
- jTPAANn62A6jwJ0FnCn6YaM9TZQjM1F7LoDX3v+oAkaoXuq0dQ4hnxQNu792bi6QyVdZUvKc
- macVFVgfK9n04mL7RzjO3f+X4midKt/s+G+IPr4DGlrq+WH27eDbpUR3aYRk8EgbgGKvQFdD
- CEBFJi+5ZKOArmJVBSk21RHDpqyz6Vit3rjep7c1SN8s7NhVi9cjkKmMDM7KYhXkWc10lKx2
- RTkFI30rkDm4U+JpdAd2+tP3tjGf9AyGGinpzE2XY1K5AQ0EVI67igEIAKiSyd0nECrgz+H5
- PcFDGYQpGDMTl8MOPCKw/F3diXPuj2eql4xSbAdbUCJzk2ETif5s3twT2ER8cUTEVOaCEUY3
- eOiaFgQ+nGLx4BXqqGewikPJCe+UBjFnH1m2/IFn4T9jPZkV8xlkKmDUqMK5EV9n3eQLkn5g
- lco+FepTtmbkSCCjd91EfThVbNYpVQ5ZjdBCXN66CKyJDMJ85HVr5rmXG/nqriTh6cv1l1Js
- T7AFvvPjUPknS6d+BETMhTkbGzoyS+sywEsQAgA+BMCxBH4LvUmHYhpS+W6CiZ3ZMxjO8Hgc
- ++w1mLeRUvda3i4/U8wDT3SWuHcB3DWlcppECLkAEQEAAYkBHwQYAQIACQUCVI67igIbDAAK
- CRBxXD01xc4QCZ4dB/0QrnEasxjM0PGeXK5hcZMT9Eo998alUfn5XU0RQDYdwp6/kMEXMdmT
- oH0F0xB3SQ8WVSXA9rrc4EBvZruWQ+5/zjVrhhfUAx12CzL4oQ9Ro2k45daYaonKTANYG22y
- //x8dLe2Fv1By4SKGhmzwH87uXxbTJAUxiWIi1np0z3/RDnoVyfmfbbL1DY7zf2hYXLLzsJR
- mSsED/1nlJ9Oq5fALdNEPgDyPUerqHxcmIub+pF0AzJoYHK5punqpqfGmqPbjxrJLPJfHVKy
- goMj5DlBMoYqEgpbwdUYkH6QdizJJCur4icy8GUNbisFYABeoJ91pnD4IGei3MTdvINSZI5e
-Message-ID: <97f1dfb0-41b6-0249-3e82-cae480b0efb6@acm.org>
-Date: Thu, 30 Jul 2020 21:06:41 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1k1Of1-0001p9-6z; Fri, 31 Jul 2020 06:36:56 +0000
+X-UUID: f6846fde45cc4eca8a401f05e89465ff-20200730
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=oCSPBwm1OG9nHt5f6BWa2OtMBUQFOcwvvqmT2nA/E1U=; 
+ b=PPxTCoxddKLPAf5YDbExSlINVAHT8uY8vmO6u74ebqTU0XOC6q9JKSMh/lni/oYeWvnhh7MjB5ugDJmqgG4+NQVjaTyjkJuDBAQ10ikdlOJ8f9/QVw6ny3Ie+AWIcQ5nt2cHzMbaigIV9bwROQ41LD2u8icaZ0P1/yKMmfqBHw4=;
+X-UUID: f6846fde45cc4eca8a401f05e89465ff-20200730
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <macpaul.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 2057198909; Thu, 30 Jul 2020 22:36:40 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 30 Jul 2020 23:36:07 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 31 Jul 2020 14:36:06 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 31 Jul 2020 14:36:06 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Eddie Hung
+ <eddie.hung@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>
+Subject: [PATCH] usb: mtu3: fix panic in mtu3_gadget_disconnect()
+Date: Fri, 31 Jul 2020 14:36:06 +0800
+Message-ID: <1596177366-12029-1-git-send-email-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-In-Reply-To: <1596159018.17247.53.camel@mtkswgap22>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200731_000647_760508_F4A631FD 
-X-CRM114-Status: GOOD (  15.20  )
+X-CRM114-CacheID: sfid-20200731_023655_382878_33468E54 
+X-CRM114-Status: GOOD (  14.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,56 +84,82 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
- "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
- "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "cang@codeaurora.org" <cang@codeaurora.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "beanhuo@micron.com" <beanhuo@micron.com>,
- "chaotian.jing@mediatek.com" <chaotian.jing@mediatek.com>,
- "cc.chou@mediatek.com" <cc.chou@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
+Cc: stable@vger.kernel.org, Macpaul Lin <macpaul.lin@gmail.com>,
+ Macpaul Lin <macpaul.lin@mediatek.com>,
+ Mediatek WSD Upstream <wsd_upstream@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-07-30 18:30, Stanley Chu wrote:
-> On Mon, 2020-07-27 at 11:18 +0000, Avri Altman wrote:
->> Looks good to me.
->> But better wait and see if Bart have any further reservations.
-> 
-> Would you have any further suggestions?
+This patch fixes a possible issue when mtu3_gadget_stop()
+already assigned NULL to mtu->gadget_driver during mtu_gadget_disconnect().
 
-Today is the first time that I took a look at ufshcd_abort(). The
-approach of that function looks wrong to me. This is how I think that a
-SCSI LLD abort handler should work:
-(1) Serialize against the completion path
-(__ufshcd_transfer_req_compl()) such that it cannot happen that the
-abort handler and the regular completion path both call
-cmd->scsi_done(cmd) at the same time. I'm not sure whether an existing
-synchronization object can be used for this purpose or whether a new
-synchronization object has to be introduced to serialize scsi_done()
-calls from __ufshcd_transfer_req_compl() and ufshcd_abort().
-(2) While holding that synchronization object, check whether the SCSI
-command is still outstanding. If so, submit a SCSI abort TMR to the device.
-(3) If the command has been aborted, call scsi_done() and return
-SUCCESS. If aborting failed and the command is still in progress, return
-FAILED.
+Backtrace:
+[<ffffff9008161974>] notifier_call_chain+0xa4/0x128
+[<ffffff9008161fd4>] __atomic_notifier_call_chain+0x84/0x138
+[<ffffff9008162ec0>] notify_die+0xb0/0x120
+[<ffffff900809e340>] die+0x1f8/0x5d0
+[<ffffff90080d03b4>] __do_kernel_fault+0x19c/0x280
+[<ffffff90080d04dc>] do_bad_area+0x44/0x140
+[<ffffff90080d0f9c>] do_translation_fault+0x4c/0x90
+[<ffffff9008080a78>] do_mem_abort+0xb8/0x258
+[<ffffff90080849d0>] el1_da+0x24/0x3c
+[<ffffff9009bde01c>] mtu3_gadget_disconnect+0xac/0x128
+[<ffffff9009bd576c>] mtu3_irq+0x34c/0xc18
+[<ffffff90082ac03c>] __handle_irq_event_percpu+0x2ac/0xcd0
+[<ffffff90082acae0>] handle_irq_event_percpu+0x80/0x138
+[<ffffff90082acc44>] handle_irq_event+0xac/0x148
+[<ffffff90082b71cc>] handle_fasteoi_irq+0x234/0x568
+[<ffffff90082a8708>] generic_handle_irq+0x48/0x68
+[<ffffff90082a96ac>] __handle_domain_irq+0x264/0x1740
+[<ffffff90080819f4>] gic_handle_irq+0x14c/0x250
+[<ffffff9008084cec>] el1_irq+0xec/0x194
+[<ffffff90085b985c>] dma_pool_alloc+0x6e4/0xae0
+[<ffffff9008d7f890>] cmdq_mbox_pool_alloc_impl+0xb0/0x238
+[<ffffff9008d80904>] cmdq_pkt_alloc_buf+0x2dc/0x7c0
+[<ffffff9008d80f60>] cmdq_pkt_add_cmd_buffer+0x178/0x270
+[<ffffff9008d82320>] cmdq_pkt_perf_begin+0x108/0x148
+[<ffffff9008d824d8>] cmdq_pkt_create+0x178/0x1f0
+[<ffffff9008f96230>] mtk_crtc_config_default_path+0x328/0x7a0
+[<ffffff90090246cc>] mtk_drm_idlemgr_kick+0xa6c/0x1460
+[<ffffff9008f9bbb4>] mtk_drm_crtc_atomic_begin+0x1a4/0x1a68
+[<ffffff9008e8df9c>] drm_atomic_helper_commit_planes+0x154/0x878
+[<ffffff9008f2fb70>] mtk_atomic_complete.isra.16+0xe80/0x19c8
+[<ffffff9008f30910>] mtk_atomic_commit+0x258/0x898
+[<ffffff9008ef142c>] drm_atomic_commit+0xcc/0x108
+[<ffffff9008ef7cf0>] drm_mode_atomic_ioctl+0x1c20/0x2580
+[<ffffff9008ebc768>] drm_ioctl_kernel+0x118/0x1b0
+[<ffffff9008ebcde8>] drm_ioctl+0x5c0/0x920
+[<ffffff900863b030>] do_vfs_ioctl+0x188/0x1820
+[<ffffff900863c754>] SyS_ioctl+0x8c/0xa0
 
-An example is available in srp_abort() in
-drivers/infiniband/ulp/srp/ib_srp.c.
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: stable@vger.kernel.org
+---
+ drivers/usb/mtu3/mtu3_gadget.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-Bart.
-
+diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
+index 68ea4395f871..f20fb83b3239 100644
+--- a/drivers/usb/mtu3/mtu3_gadget.c
++++ b/drivers/usb/mtu3/mtu3_gadget.c
+@@ -843,7 +843,12 @@ void mtu3_gadget_disconnect(struct mtu3 *mtu)
+ 	dev_dbg(mtu->dev, "gadget DISCONNECT\n");
+ 	if (mtu->gadget_driver && mtu->gadget_driver->disconnect) {
+ 		spin_unlock(&mtu->lock);
+-		mtu->gadget_driver->disconnect(&mtu->g);
++		/*
++		 * avoid kernel panic because mtu3_gadget_stop() assigned NULL
++		 * to mtu->gadget_driver.
++		 */
++		if (mtu->gadget_driver && mtu->gadget_driver->disconnect)
++			mtu->gadget_driver->disconnect(&mtu->g);
+ 		spin_lock(&mtu->lock);
+ 	}
+ 
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
