@@ -2,77 +2,77 @@ Return-Path: <SRS0=UCxl=BK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6991DC433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 06:37:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A190C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 06:54:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 38336207F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 06:37:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6082C207F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 06:54:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lhA7S2p7";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="PPxTCoxd"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 38336207F5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qhFnuTYR";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="LL4wduW5"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6082C207F5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=dxqLeCQzSv8166nekU/b6LahdAWG9vrhdZatiReWo4c=; b=lhA7S2p75eChDlwpUWGBrido1w
-	JSXQLL6ATKT4+h2Nd+NlIUUBqFTEKuXvrTnf2r6z/x6wgkWEhL0Z2ufk/cVR71YHRaLKvD0ueQbaQ
-	V1kb/8UplfZypXGugxcd0HwPKXgwtVv+xpKEKx/Qs5+Ig23Qx/n4zImpGRVovdrzLHKqPccVPuJ7V
-	kME2DeS20QGbz+cqr2Acf2SYNleaA+RsvhkhIyySneAJwvM5ixW25zkrXwWFiR6K3hS/FeQougBpD
-	xz7FQt3WY4VWClTapkg6+v0SqXCwTBxZzOrTfFlrV3iAo4Oxr54nlF0lg3pEB6mO82lEba/bjat9y
-	BMSf+GsQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=lvi/D1j4DnAHqm2+xHtG64Pa3RJFdkMKSghMjFHPfv0=; b=qhFnuTYRC3JX+dg8VRvg9/EZ7
+	+JD8okYuiy5Mc+qmZqOOOxCyfVuBl1568nW8TZu597gpJ01FpKRmBKR9ilBAuSJsp/dTVT//uEUb8
+	PDQamK2EOFrX/g5Ue1gFYmW2u5l+bvgQuEDE4/6EMkz8l5ZBw94v+3diapAS6GKPVREAQdFOwsgVv
+	gH9cRnbu4G3YsgDR28nX//dqJnnbx1yxppDmwE1f0DqPbuRjZ4ny5Ir6YK6W2gL7c6PQ5DOi40ypp
+	kx0e8z4/ll/6qF6thNeEakDmPBT5f2w4IIQRHnWS7n4mL6QenH58Qwbdt48OI7i6dYyfr6Ox2/CNa
+	Bu14UZMDA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k1Of4-0001ph-EP; Fri, 31 Jul 2020 06:36:58 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1k1OwJ-0000vz-16; Fri, 31 Jul 2020 06:54:47 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k1Of1-0001p9-6z; Fri, 31 Jul 2020 06:36:56 +0000
-X-UUID: f6846fde45cc4eca8a401f05e89465ff-20200730
+ id 1k1Ow8-0000ry-AE; Fri, 31 Jul 2020 06:54:45 +0000
+X-UUID: 162c4e8a4bde470084480a6587890816-20200730
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=oCSPBwm1OG9nHt5f6BWa2OtMBUQFOcwvvqmT2nA/E1U=; 
- b=PPxTCoxddKLPAf5YDbExSlINVAHT8uY8vmO6u74ebqTU0XOC6q9JKSMh/lni/oYeWvnhh7MjB5ugDJmqgG4+NQVjaTyjkJuDBAQ10ikdlOJ8f9/QVw6ny3Ie+AWIcQ5nt2cHzMbaigIV9bwROQ41LD2u8icaZ0P1/yKMmfqBHw4=;
-X-UUID: f6846fde45cc4eca8a401f05e89465ff-20200730
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <macpaul.lin@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=YjhhNpNRDNHhO6Ju5IjvM6o2mcIZbqEWX5yq3bSDKr8=; 
+ b=LL4wduW5jxAqJ8cPKW8BJQm4p7ceJ5q+2/GIlxEBThHKUMpDxMTZjlA4A9RdTQC4YUWVXCnpN8KRK51NNDyXHAB9HQEUD94bWy7gx+CaYCmTqEnRhpgtFKS4kCCyPLAHr9Bp4fnZl3ySvqqfvke5RdxcLdCDmm7FvY/SGxKVe1g=;
+X-UUID: 162c4e8a4bde470084480a6587890816-20200730
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <chun-hung.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2057198909; Thu, 30 Jul 2020 22:36:40 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 30 Jul 2020 23:36:07 -0700
+ with ESMTP id 799523278; Thu, 30 Jul 2020 22:54:23 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 30 Jul 2020 23:54:27 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 31 Jul 2020 14:36:06 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 31 Jul 2020 14:36:06 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Eddie Hung
- <eddie.hung@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH] usb: mtu3: fix panic in mtu3_gadget_disconnect()
-Date: Fri, 31 Jul 2020 14:36:06 +0800
-Message-ID: <1596177366-12029-1-git-send-email-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
+ MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 31 Jul 2020 14:54:23 +0800
+Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 31 Jul 2020 14:54:22 +0800
+Message-ID: <1596178463.18010.1.camel@mtkswgap22>
+Subject: Re: [PATCH -next] mmc: mediatek: make function msdc_cqe_disable()
+ static
+From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+To: Wei Yongjun <weiyongjun1@huawei.com>
+Date: Fri, 31 Jul 2020 14:54:23 +0800
+In-Reply-To: <20200727171129.2945-1-weiyongjun1@huawei.com>
+References: <20200727171129.2945-1-weiyongjun1@huawei.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 870AB6426B9AC3E7EF684823B905EE66E93DC7E0E13748ABF5ADA191279DA3742000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200731_023655_382878_33468E54 
-X-CRM114-Status: GOOD (  14.51  )
+X-CRM114-CacheID: sfid-20200731_025436_564561_55C573A9 
+X-CRM114-Status: GOOD (  19.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,82 +84,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: stable@vger.kernel.org, Macpaul Lin <macpaul.lin@gmail.com>,
- Macpaul Lin <macpaul.lin@mediatek.com>,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>,
+ "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+ Hulk Robot <hulkci@huawei.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Chaotian Jing =?UTF-8?Q?=28=E4=BA=95=E6=9C=9D=E5=A4=A9=29?=
+ <Chaotian.Jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch fixes a possible issue when mtu3_gadget_stop()
-already assigned NULL to mtu->gadget_driver during mtu_gadget_disconnect().
+On Tue, 2020-07-28 at 01:11 +0800, Wei Yongjun wrote:
+> The sparse tool complains as follows:
+> 
+> drivers/mmc/host/mtk-sd.c:2269:6: warning:
+>  symbol 'msdc_cqe_disable' was not declared. Should it be static?
+> 
+> This function is not used outside of mtk-sd.c, so this commit
+> marks it static.
+> 
+> Fixes: 88bd652b3c74 ("mmc: mediatek: command queue support")
+> Reported-by: Hulk Robot <hulkci@huawei.com>
+> Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
+> ---
+>  drivers/mmc/host/mtk-sd.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 734e403a142e..4e2583f69a63 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -2266,7 +2266,7 @@ static void msdc_cqe_enable(struct mmc_host *mmc)
+>  	msdc_set_timeout(host, 1000000000ULL, 0);
+>  }
+>  
+> -void msdc_cqe_disable(struct mmc_host *mmc, bool recovery)
+> +static void msdc_cqe_disable(struct mmc_host *mmc, bool recovery)
+>  {
+>  	struct msdc_host *host = mmc_priv(mmc);
+>  
+> 
 
-Backtrace:
-[<ffffff9008161974>] notifier_call_chain+0xa4/0x128
-[<ffffff9008161fd4>] __atomic_notifier_call_chain+0x84/0x138
-[<ffffff9008162ec0>] notify_die+0xb0/0x120
-[<ffffff900809e340>] die+0x1f8/0x5d0
-[<ffffff90080d03b4>] __do_kernel_fault+0x19c/0x280
-[<ffffff90080d04dc>] do_bad_area+0x44/0x140
-[<ffffff90080d0f9c>] do_translation_fault+0x4c/0x90
-[<ffffff9008080a78>] do_mem_abort+0xb8/0x258
-[<ffffff90080849d0>] el1_da+0x24/0x3c
-[<ffffff9009bde01c>] mtu3_gadget_disconnect+0xac/0x128
-[<ffffff9009bd576c>] mtu3_irq+0x34c/0xc18
-[<ffffff90082ac03c>] __handle_irq_event_percpu+0x2ac/0xcd0
-[<ffffff90082acae0>] handle_irq_event_percpu+0x80/0x138
-[<ffffff90082acc44>] handle_irq_event+0xac/0x148
-[<ffffff90082b71cc>] handle_fasteoi_irq+0x234/0x568
-[<ffffff90082a8708>] generic_handle_irq+0x48/0x68
-[<ffffff90082a96ac>] __handle_domain_irq+0x264/0x1740
-[<ffffff90080819f4>] gic_handle_irq+0x14c/0x250
-[<ffffff9008084cec>] el1_irq+0xec/0x194
-[<ffffff90085b985c>] dma_pool_alloc+0x6e4/0xae0
-[<ffffff9008d7f890>] cmdq_mbox_pool_alloc_impl+0xb0/0x238
-[<ffffff9008d80904>] cmdq_pkt_alloc_buf+0x2dc/0x7c0
-[<ffffff9008d80f60>] cmdq_pkt_add_cmd_buffer+0x178/0x270
-[<ffffff9008d82320>] cmdq_pkt_perf_begin+0x108/0x148
-[<ffffff9008d824d8>] cmdq_pkt_create+0x178/0x1f0
-[<ffffff9008f96230>] mtk_crtc_config_default_path+0x328/0x7a0
-[<ffffff90090246cc>] mtk_drm_idlemgr_kick+0xa6c/0x1460
-[<ffffff9008f9bbb4>] mtk_drm_crtc_atomic_begin+0x1a4/0x1a68
-[<ffffff9008e8df9c>] drm_atomic_helper_commit_planes+0x154/0x878
-[<ffffff9008f2fb70>] mtk_atomic_complete.isra.16+0xe80/0x19c8
-[<ffffff9008f30910>] mtk_atomic_commit+0x258/0x898
-[<ffffff9008ef142c>] drm_atomic_commit+0xcc/0x108
-[<ffffff9008ef7cf0>] drm_mode_atomic_ioctl+0x1c20/0x2580
-[<ffffff9008ebc768>] drm_ioctl_kernel+0x118/0x1b0
-[<ffffff9008ebcde8>] drm_ioctl+0x5c0/0x920
-[<ffffff900863b030>] do_vfs_ioctl+0x188/0x1820
-[<ffffff900863c754>] SyS_ioctl+0x8c/0xa0
-
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: stable@vger.kernel.org
----
- drivers/usb/mtu3/mtu3_gadget.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
-index 68ea4395f871..f20fb83b3239 100644
---- a/drivers/usb/mtu3/mtu3_gadget.c
-+++ b/drivers/usb/mtu3/mtu3_gadget.c
-@@ -843,7 +843,12 @@ void mtu3_gadget_disconnect(struct mtu3 *mtu)
- 	dev_dbg(mtu->dev, "gadget DISCONNECT\n");
- 	if (mtu->gadget_driver && mtu->gadget_driver->disconnect) {
- 		spin_unlock(&mtu->lock);
--		mtu->gadget_driver->disconnect(&mtu->g);
-+		/*
-+		 * avoid kernel panic because mtu3_gadget_stop() assigned NULL
-+		 * to mtu->gadget_driver.
-+		 */
-+		if (mtu->gadget_driver && mtu->gadget_driver->disconnect)
-+			mtu->gadget_driver->disconnect(&mtu->g);
- 		spin_lock(&mtu->lock);
- 	}
- 
--- 
-2.18.0
+Acked-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
