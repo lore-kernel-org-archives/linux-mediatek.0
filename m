@@ -2,77 +2,66 @@ Return-Path: <SRS0=UCxl=BK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A190C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 06:54:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B363CC433E3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 08:08:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6082C207F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 06:54:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 841EF2074B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 08:08:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qhFnuTYR";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="LL4wduW5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6082C207F5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GitYj3Pp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 841EF2074B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lvi/D1j4DnAHqm2+xHtG64Pa3RJFdkMKSghMjFHPfv0=; b=qhFnuTYRC3JX+dg8VRvg9/EZ7
-	+JD8okYuiy5Mc+qmZqOOOxCyfVuBl1568nW8TZu597gpJ01FpKRmBKR9ilBAuSJsp/dTVT//uEUb8
-	PDQamK2EOFrX/g5Ue1gFYmW2u5l+bvgQuEDE4/6EMkz8l5ZBw94v+3diapAS6GKPVREAQdFOwsgVv
-	gH9cRnbu4G3YsgDR28nX//dqJnnbx1yxppDmwE1f0DqPbuRjZ4ny5Ir6YK6W2gL7c6PQ5DOi40ypp
-	kx0e8z4/ll/6qF6thNeEakDmPBT5f2w4IIQRHnWS7n4mL6QenH58Qwbdt48OI7i6dYyfr6Ox2/CNa
-	Bu14UZMDA==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AwOy5u9UsGDsX7A8+j6zQJcgdHcKebL08veVEL2CJv0=; b=GitYj3PpxLTWQoxqn7gShQCb18
+	i9Q/LZkeB/s9Y/LuEa9y0mDTFLPahFlJNwfwUV5EMO0N2ErCfI4KKznKnUiihw0PLlTObd4OkqUVq
+	gaO86nGUMx9TEKY1BFs+CrCQdsx/V+iVGby2CBJ0Msj5Y4K4eudHMFkyXIc0bFSdpdQ8x5zH0Inn1
+	Jucx0TPH05FsQE1rKhixzzPrGXVxlyMlIiL1i7WnWAZJfUrOEXYrEXp3A3a15NaNY1Vvs+bSynJJi
+	2PQ+h630et5e8VkYbmJ+xKUQiUHzeUcbGahFY7bFwrISC7jZitio8oLYSE6S2AHWz9Cv0dma79jSN
+	0v0+2QPA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k1OwJ-0000vz-16; Fri, 31 Jul 2020 06:54:47 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1k1Q5Z-0008Qz-Nj; Fri, 31 Jul 2020 08:08:25 +0000
+Received: from labrats.qualcomm.com ([199.106.110.90])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k1Ow8-0000ry-AE; Fri, 31 Jul 2020 06:54:45 +0000
-X-UUID: 162c4e8a4bde470084480a6587890816-20200730
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=YjhhNpNRDNHhO6Ju5IjvM6o2mcIZbqEWX5yq3bSDKr8=; 
- b=LL4wduW5jxAqJ8cPKW8BJQm4p7ceJ5q+2/GIlxEBThHKUMpDxMTZjlA4A9RdTQC4YUWVXCnpN8KRK51NNDyXHAB9HQEUD94bWy7gx+CaYCmTqEnRhpgtFKS4kCCyPLAHr9Bp4fnZl3ySvqqfvke5RdxcLdCDmm7FvY/SGxKVe1g=;
-X-UUID: 162c4e8a4bde470084480a6587890816-20200730
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <chun-hung.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 799523278; Thu, 30 Jul 2020 22:54:23 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 30 Jul 2020 23:54:27 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 31 Jul 2020 14:54:23 +0800
-Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 31 Jul 2020 14:54:22 +0800
-Message-ID: <1596178463.18010.1.camel@mtkswgap22>
-Subject: Re: [PATCH -next] mmc: mediatek: make function msdc_cqe_disable()
- static
-From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
-To: Wei Yongjun <weiyongjun1@huawei.com>
-Date: Fri, 31 Jul 2020 14:54:23 +0800
-In-Reply-To: <20200727171129.2945-1-weiyongjun1@huawei.com>
-References: <20200727171129.2945-1-weiyongjun1@huawei.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
-MIME-Version: 1.0
-X-TM-SNTS-SMTP: 870AB6426B9AC3E7EF684823B905EE66E93DC7E0E13748ABF5ADA191279DA3742000:8
-X-MTK: N
+ id 1k1Q5U-0008Pm-C1; Fri, 31 Jul 2020 08:08:21 +0000
+IronPort-SDR: 8mfUNt83D/ZrPU3usiZRi1UMAc+QmnD7H/VSTtQ3Z9PDLnQrWsfTJP+Ht7wS26A30SM7krFp4N
+ AOwll1EQ5eSoPBI4UfsZTiXQ+LraT+qFdlRDl80k/aDdLICxAHfUL2xoxW3KdJ6S4yB8uXu66k
+ E1i7Vhr5ycViylDrI3YbnbivGKml81kyKs+HDcWfvSTlGr7vg1Cge1WzvAjMqdVeqYHpmyspU4
+ 136WdvzjMiHZA0VgQcZL3xAIgriXVH/Z/FvLHbflHOowuQa3ygvs8bWQVY0Ha+Y19uQwzyYRf8
+ Vs4=
+X-IronPort-AV: E=Sophos;i="5.75,417,1589266800"; d="scan'208";a="47235639"
+Received: from unknown (HELO ironmsg01-sd.qualcomm.com) ([10.53.140.141])
+ by labrats.qualcomm.com with ESMTP; 31 Jul 2020 01:08:17 -0700
+Received: from pacamara-linux.qualcomm.com ([192.168.140.135])
+ by ironmsg01-sd.qualcomm.com with ESMTP; 31 Jul 2020 01:08:16 -0700
+Received: by pacamara-linux.qualcomm.com (Postfix, from userid 359480)
+ id 281A722E73; Fri, 31 Jul 2020 01:08:15 -0700 (PDT)
+From: Can Guo <cang@codeaurora.org>
+To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
+ rnayak@codeaurora.org, linux-scsi@vger.kernel.org, kernel-team@android.com,
+ saravanak@google.com, salyzyn@google.com, cang@codeaurora.org
+Subject: [PATCH 1/8] scsi: ufs: Add checks before setting clk-gating states
+Date: Fri, 31 Jul 2020 01:08:01 -0700
+Message-Id: <1596182890-10086-2-git-send-email-cang@codeaurora.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1596182890-10086-1-git-send-email-cang@codeaurora.org>
+References: <1596182890-10086-1-git-send-email-cang@codeaurora.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200731_025436_564561_55C573A9 
-X-CRM114-Status: GOOD (  19.30  )
+X-CRM114-CacheID: sfid-20200731_040820_589096_A607BCDC 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,50 +73,85 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- Hulk Robot <hulkci@huawei.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Chaotian Jing =?UTF-8?Q?=28=E4=BA=95=E6=9C=9D=E5=A4=A9=29?=
- <Chaotian.Jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: Bart Van Assche <bvanassche@acm.org>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ open list <linux-kernel@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Stanley Chu <stanley.chu@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2020-07-28 at 01:11 +0800, Wei Yongjun wrote:
-> The sparse tool complains as follows:
-> 
-> drivers/mmc/host/mtk-sd.c:2269:6: warning:
->  symbol 'msdc_cqe_disable' was not declared. Should it be static?
-> 
-> This function is not used outside of mtk-sd.c, so this commit
-> marks it static.
-> 
-> Fixes: 88bd652b3c74 ("mmc: mediatek: command queue support")
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
-> ---
->  drivers/mmc/host/mtk-sd.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 734e403a142e..4e2583f69a63 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -2266,7 +2266,7 @@ static void msdc_cqe_enable(struct mmc_host *mmc)
->  	msdc_set_timeout(host, 1000000000ULL, 0);
->  }
->  
-> -void msdc_cqe_disable(struct mmc_host *mmc, bool recovery)
-> +static void msdc_cqe_disable(struct mmc_host *mmc, bool recovery)
->  {
->  	struct msdc_host *host = mmc_priv(mmc);
->  
-> 
+Clock gating features can be turned on/off selectively which means its
+state information is only important if it is enabled. This change makes
+sure that we only look at state of clk-gating if it is enabled.
 
-Acked-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+Signed-off-by: Can Guo <cang@codeaurora.org>
+Reviewed-by: Avri Altman <avri.altman@wdc.com>
+Reviewed-by: Hongwu Su <hongwus@codeaurora.org>
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Bean Huo <beanhuo@micron.com>
+
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index cdff7e5..99bd3e4 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -1839,6 +1839,8 @@ static void ufshcd_init_clk_gating(struct ufs_hba *hba)
+ 	if (!ufshcd_is_clkgating_allowed(hba))
+ 		return;
+ 
++	hba->clk_gating.state = CLKS_ON;
++
+ 	hba->clk_gating.delay_ms = 150;
+ 	INIT_DELAYED_WORK(&hba->clk_gating.gate_work, ufshcd_gate_work);
+ 	INIT_WORK(&hba->clk_gating.ungate_work, ufshcd_ungate_work);
+@@ -2541,7 +2543,8 @@ static int ufshcd_queuecommand(struct Scsi_Host *host, struct scsi_cmnd *cmd)
+ 		err = SCSI_MLQUEUE_HOST_BUSY;
+ 		goto out;
+ 	}
+-	WARN_ON(hba->clk_gating.state != CLKS_ON);
++	WARN_ON(ufshcd_is_clkgating_allowed(hba) &&
++		(hba->clk_gating.state != CLKS_ON));
+ 
+ 	lrbp = &hba->lrb[tag];
+ 
+@@ -8315,8 +8318,11 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 		/* If link is active, device ref_clk can't be switched off */
+ 		__ufshcd_setup_clocks(hba, false, true);
+ 
+-	hba->clk_gating.state = CLKS_OFF;
+-	trace_ufshcd_clk_gating(dev_name(hba->dev), hba->clk_gating.state);
++	if (ufshcd_is_clkgating_allowed(hba)) {
++		hba->clk_gating.state = CLKS_OFF;
++		trace_ufshcd_clk_gating(dev_name(hba->dev),
++					hba->clk_gating.state);
++	}
+ 
+ 	/* Put the host controller in low power mode if possible */
+ 	ufshcd_hba_vreg_set_lpm(hba);
+@@ -8456,6 +8462,11 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 	if (hba->clk_scaling.is_allowed)
+ 		ufshcd_suspend_clkscaling(hba);
+ 	ufshcd_setup_clocks(hba, false);
++	if (ufshcd_is_clkgating_allowed(hba)) {
++		hba->clk_gating.state = CLKS_OFF;
++		trace_ufshcd_clk_gating(dev_name(hba->dev),
++					hba->clk_gating.state);
++	}
+ out:
+ 	hba->pm_op_in_progress = 0;
+ 	if (ret)
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a Linux Foundation Collaborative Project.
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
