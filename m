@@ -1,88 +1,75 @@
-Return-Path: <SRS0=UCxl=BK=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=bqbO=BL=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93FA8C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 23:17:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 94FA1C433E0
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Aug 2020 00:13:22 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5D10620791
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2020 23:17:59 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5E4392071E
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Aug 2020 00:13:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tktcn9uN";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="cCHWIYgU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5D10620791
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="y7j7H8Ur";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="cwTK4nTd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E4392071E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:
-	References:In-Reply-To:Subject:To:From:Date:Content-Type:MIME-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gBXVgJOhxNwb0l+B52OIaBv4u55eqrAWRBMxMAk3deQ=; b=tktcn9uNDWIiskXvpedUTAho4
-	ZQ+mAX1D+LWAPZD8D26hbxT41+bopV5FVlLhpjQdRb+EFAG3W0/vsYoMGeBf2OgKKMFP8d8JL5Eqi
-	sTlPLHUSIeMreyq1Imh4gKXB4r6jRR/UDG0vO6AY7TVlvs3yzbr3x0t5+zJaZ02JFPfvlaKOdjJMT
-	TAHLricnbNN9ASYVILyNrBFf2or5qG9WYJ5R+DbLneWcU3e4Ybb2BA2pg5e1t4v2r3QOtFULaypvS
-	Mwczw3DUd2BrCpiXq8Yo+/lFpFOEsR6yLerzQWUG9Vg+4ISBRDdWxjxLx7XWsLXL/4yspJKAnxgz2
-	ALN4wrArQ==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=BJ6N3VzX6pgWI8c8pLcyA+4i0Gm0whNhaeeEdkmvEio=; b=y7j7H8Ur2UfPxMkVBnW7RriGL
+	z5EG3NEw4E3f7dR40hO02s4iTPJwx8xfKywoklIhPtGERnSBJKDABx5DpZFjGQ4CGUeQuePdZHOqS
+	IiA2wtZBT5OrQv7pzXudBlWfFpj1nLMiM3/BfeUT6NgBEoBBBgIfpklcqKuISB7X83K0UhgzTAGBs
+	+SUEAuoHtrwbr/+Z5feK7GdeRT6uvOaI83qutyoTV4QrIf1cRT7fhAH7/1gFYcf/ayYMXH9rSfR1r
+	pVMUBxsF247BkfGxORjF2EwNsc7uah5A4117EZSnjEA7IT0azcgwXbxZgbrVGEvLPtAeF4LJkRdA3
+	crs53oncw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k1eHZ-0000WP-DX; Fri, 31 Jul 2020 23:17:45 +0000
-Received: from m43-7.mailgun.net ([69.72.43.7])
+	id 1k1f9G-0007v5-3N; Sat, 01 Aug 2020 00:13:14 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k1eHR-0000UF-Lx
- for linux-mediatek@lists.infradead.org; Fri, 31 Jul 2020 23:17:42 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1596237461; h=Message-ID: References: In-Reply-To: Subject:
- Cc: To: From: Date: Content-Type: MIME-Version: Sender;
- bh=1zsJhq/goG5jxNbt1w2QIRo86ReaWeQ6QGLznVlr6Jk=;
- b=cCHWIYgUwWCJm9ONhnhJcU/3vqRZTu87AwCGSRNE5UrDb+8BJhsgJul1fFOxBp33PbOL0jU5
- tfHMpPBNdMLvMKrZ5Q8EPQZ5483uK6uyTmg3XHQRARDFAblxBqc/sjv6zptREia/niPsdMZ4
- /4NSfYs3KS3blEx8hfSNOAg+858=
-X-Mailgun-Sending-Ip: 69.72.43.7
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n20.prod.us-west-2.postgun.com with SMTP id
- 5f24a676ba6d142d1c91f0e3 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Fri, 31 Jul 2020 23:17:10
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 17040C43395; Fri, 31 Jul 2020 23:17:09 +0000 (UTC)
-Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
- (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
- (No client certificate requested) (Authenticated sender: cang)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id BF5A5C433CA;
- Fri, 31 Jul 2020 23:17:08 +0000 (UTC)
+ id 1k1f9C-0007ts-0P; Sat, 01 Aug 2020 00:13:11 +0000
+Received: from mail-ed1-f41.google.com (mail-ed1-f41.google.com
+ [209.85.208.41])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id CE89F2071E;
+ Sat,  1 Aug 2020 00:13:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1596240789;
+ bh=n7WNIjd113yI4hTkSUhS0MieCDn0mYiulcZegXarHiQ=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=cwTK4nTdLjiSBKaFyrshHnlaq/mhK5249QxAYMkm0Wg4Lora9fjbCpn/V3wEf8MRk
+ Q1alTIeZXZNLduDsnZT+c0hZDBCsfgI0o5HH9F9ZSa2o4NduJIN5mtpHKGZRuptS6k
+ fCYMzf7cgUiskfH/b6FgOwLahq+30cwi7SiITHus=
+Received: by mail-ed1-f41.google.com with SMTP id di22so16303606edb.12;
+ Fri, 31 Jul 2020 17:13:08 -0700 (PDT)
+X-Gm-Message-State: AOAM531V/hYLpWmCMTOst3eviPuXmGk1w3air5AjsK3DPwlZ3MFeJEZG
+ 0u9/5o5CuM0BjDCDYie4KczCklJZICzuEk4Qmg==
+X-Google-Smtp-Source: ABdhPJwefFzeSQPuG9/zk5h5dJ0CnlevRnNRHabHnVcRCbp4uOMwHYFc8O2rJIMyRTAv+YG2GQmp5ufza+VEsIYo0t4=
+X-Received: by 2002:a50:ccd0:: with SMTP id b16mr6220123edj.148.1596240787508; 
+ Fri, 31 Jul 2020 17:13:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="=_5c3e63ea4c7ecc7e8e595b7c9d9d7f3e"
-Date: Sat, 01 Aug 2020 07:17:08 +0800
-From: Can Guo <cang@codeaurora.org>
-To: Bart Van Assche <bvanassche@acm.org>
-Subject: Re: [PATCH v4] scsi: ufs: Cleanup completed request without interrupt
- notification
-In-Reply-To: <f45c6c47-ffc5-3f8e-3234-9e5989dbf996@acm.org>
-References: <20200724140246.19434-1-stanley.chu@mediatek.com>
- <SN6PR04MB4640B5FC06968244DDACB8BEFC720@SN6PR04MB4640.namprd04.prod.outlook.com>
- <1596159018.17247.53.camel@mtkswgap22>
- <97f1dfb0-41b6-0249-3e82-cae480b0efb6@acm.org>
- <8b0a158a7c3ee2165e09290996521ffc@codeaurora.org>
- <f45c6c47-ffc5-3f8e-3234-9e5989dbf996@acm.org>
-Message-ID: <548b602daa1e15415625cb8d1f81a208@codeaurora.org>
-X-Sender: cang@codeaurora.org
-User-Agent: Roundcube Webmail/1.3.9
+References: <1596010690-13178-1-git-send-email-neal.liu@mediatek.com>
+ <1596010690-13178-3-git-send-email-neal.liu@mediatek.com>
+In-Reply-To: <1596010690-13178-3-git-send-email-neal.liu@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Sat, 1 Aug 2020 08:12:56 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8aw=6E7bMJwz5jDLXUxYHpy9_Avbwc90osQGckzANNcg@mail.gmail.com>
+Message-ID: <CAAOTY_8aw=6E7bMJwz5jDLXUxYHpy9_Avbwc90osQGckzANNcg@mail.gmail.com>
+Subject: Re: [PATCH v4 2/2] soc: mediatek: add mtk-devapc driver
+To: Neal Liu <neal.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200731_191741_603884_379BDAF7 
-X-CRM114-Status: GOOD (  21.44  )
+X-CRM114-CacheID: sfid-20200731_201310_204005_FD4F6F9C 
+X-CRM114-Status: GOOD (  17.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,137 +81,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-scsi@vger.kernel.org, martin.petersen@oracle.com,
- andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org,
- asutoshd@codeaurora.org, Avri Altman <Avri.Altman@wdc.com>,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- alim.akhtar@samsung.com, matthias.bgg@gmail.com,
- Stanley Chu <stanley.chu@mediatek.com>, chaotian.jing@mediatek.com,
- cc.chou@mediatek.com, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Cc: devicetree@vger.kernel.org, wsd_upstream <wsd_upstream@mediatek.com>,
+ lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---=_5c3e63ea4c7ecc7e8e595b7c9d9d7f3e
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
-
-Hi Bart,
-
-On 2020-08-01 00:51, Bart Van Assche wrote:
-> On 2020-07-31 01:00, Can Guo wrote:
->> AFAIK, sychronization of scsi_done is not a problem here, because scsi
->> layer
->> use the atomic state, namely SCMD_STATE_COMPLETE, of a scsi cmd to 
->> prevent
->> the concurrency of abort and real completion of it.
->> 
->> Check func scsi_times_out(), hope it helps.
->> 
->> enum blk_eh_timer_return scsi_times_out(struct request *req)
->> {
->> ...
->>         if (rtn == BLK_EH_DONE) {
->>                 /*
->>                  * Set the command to complete first in order to 
->> prevent
->> a real
->>                  * completion from releasing the command while error
->> handling
->>                  * is using it. If the command was already completed,
->> then the
->>                  * lower level driver beat the timeout handler, and it
->> is safe
->>                  * to return without escalating error recovery.
->>                  *
->>                  * If timeout handling lost the race to a real
->> completion, the
->>                  * block layer may ignore that due to a fake timeout
->> injection,
->>                  * so return RESET_TIMER to allow error handling 
->> another
->> shot
->>                  * at this command.
->>                  */
->>                 if (test_and_set_bit(SCMD_STATE_COMPLETE, 
->> &scmd->state))
->>                         return BLK_EH_RESET_TIMER;
->>                 if (scsi_abort_command(scmd) != SUCCESS) {
->>                         set_host_byte(scmd, DID_TIME_OUT);
->>                         scsi_eh_scmd_add(scmd);
->>                 }
->>         }
->> }
-> 
-> I am familiar with this mechanism. My concern is that both the regular
-> completion path and the abort handler must call scsi_dma_unmap() before
-> calling cmd->scsi_done(cmd). I don't see how
-> test_and_set_bit(SCMD_STATE_COMPLETE, &scmd->state) could prevent that
-> the regular completion path and the abort handler call scsi_dma_unmap()
-> concurrently since both calls happen before the SCMD_STATE_COMPLETE bit
-> is set?
-> 
-> Thanks,
-> 
-> Bart.
-
-For scsi_dma_unmap() part, that is true - we should make it serialized 
-with
-any other completion paths. I've found it during my fault injection 
-test, so
-I've made a patch to fix it, but it only comes in my next error recovery
-enhancement patch series. Please check the attachment.
-
-Thanks,
-
-Can Guo.
-
-
---=_5c3e63ea4c7ecc7e8e595b7c9d9d7f3e
-Content-Transfer-Encoding: base64
-Content-Type: text/x-diff;
- name=0005-scsi-ufs-Properly-release-resources-if-a-task-is-abo.patch
-Content-Disposition: attachment;
- filename=0005-scsi-ufs-Properly-release-resources-if-a-task-is-abo.patch;
- size=1473
-
-RnJvbSBlZjg3ODMyYjVmNmZmNmFmMjlhYzliYWM3ZmRlYTFlMjQ1YzgxNjJiIE1vbiBTZXAgMTcg
-MDA6MDA6MDAgMjAwMQpGcm9tOiBDYW4gR3VvIDxjYW5nQGNvZGVhdXJvcmEub3JnPgpEYXRlOiBT
-dW4sIDcgSnVuIDIwMjAgMTI6MTY6MDEgKzA4MDAKU3ViamVjdDogW1BBVENIIDUvNl0gc2NzaTog
-dWZzOiBQcm9wZXJseSByZWxlYXNlIHJlc291cmNlcyBpZiBhIHRhc2sgaXMKIGFib3J0ZWQgc3Vj
-Y2Vzc2Z1bGx5CgpJbiBjdXJyZW50IFVGUyB0YXNrIGFib3J0IGhvb2ssIG5hbWVseSB1ZnNoY2Rf
-YWJvcnQoKSwgaWYgYSB0YXNrIGlzCmFib3J0ZWQgc3VjY2Vzc2Z1bGx5LCBjbG9jayBzY2FsaW5n
-IGJ1c3kgdGltZSBzdGF0aXN0aWNzIGlzIG5vdCB1cGRhdGVkCmFuZCwgbW9zdCBpbXBvcnRhbnQs
-IGNsa19nYXRpbmcuYWN0aXZlX3JlcXMgaXMgbm90IGRlY3JlYXNlZCwgd2hpY2ggbWFrZXMKY2xr
-X2dhdGluZy5hY3RpdmVfcmVxcyBzdGF5IGFib3ZlIHplcm8gZm9yZXZlciwgbWVhbmluZyBjbG9j
-ayBnYXRpbmcgd291bGQKbmV2ZXIgaGFwcGVuLiBUbyBmaXggaXQsIGluc3RlYWQgb2YgcmVsZWFz
-aW5nIHJlc291cmNlcyAibWFubnVhbGx5IiwgdXNlCnRoZSBleGlzdGluZyBmdW5jIF9fdWZzaGNk
-X3RyYW5zZmVyX3JlcV9jb21wbCgpLgoKQ2hhbmdlLUlkOiBJYThjYzQ5NmY1M2JiNDI4ZWFjN2Nm
-YTc4NGU0MzFhMmIzN2E0NTM3NQpTaWduZWQtb2ZmLWJ5OiBDYW4gR3VvIDxjYW5nQGNvZGVhdXJv
-cmEub3JnPgoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc2NzaS91ZnMvdWZzaGNkLmMgYi9kcml2ZXJz
-L3Njc2kvdWZzL3Vmc2hjZC5jCmluZGV4IDNjNDZmNzQuLjg3YjkxMWYgMTAwNjQ0Ci0tLSBhL2Ry
-aXZlcnMvc2NzaS91ZnMvdWZzaGNkLmMKKysrIGIvZHJpdmVycy9zY3NpL3Vmcy91ZnNoY2QuYwpA
-QCAtNjg3NiwxNiArNjg3NiwxMCBAQCBzdGF0aWMgaW50IHVmc2hjZF9hYm9ydChzdHJ1Y3Qgc2Nz
-aV9jbW5kICpjbWQpCiAJCWdvdG8gb3V0OwogCX0KIAotCXNjc2lfZG1hX3VubWFwKGNtZCk7Ci0K
-IAlzcGluX2xvY2tfaXJxc2F2ZShob3N0LT5ob3N0X2xvY2ssIGZsYWdzKTsKLQl1ZnNoY2Rfb3V0
-c3RhbmRpbmdfcmVxX2NsZWFyKGhiYSwgdGFnKTsKLQloYmEtPmxyYlt0YWddLmNtZCA9IE5VTEw7
-CisJX191ZnNoY2RfdHJhbnNmZXJfcmVxX2NvbXBsKGhiYSwgKDFVTCA8PCB0YWcpKTsKIAlzcGlu
-X3VubG9ja19pcnFyZXN0b3JlKGhvc3QtPmhvc3RfbG9jaywgZmxhZ3MpOwogCi0JY2xlYXJfYml0
-X3VubG9jayh0YWcsICZoYmEtPmxyYl9pbl91c2UpOwotCXdha2VfdXAoJmhiYS0+ZGV2X2NtZC50
-YWdfd3EpOwotCiBvdXQ6CiAJaWYgKCFlcnIpIHsKIAkJZXJyID0gU1VDQ0VTUzsKLS0gClF1YWxj
-b21tIElubm92YXRpb24gQ2VudGVyLCBJbmMuIGlzIGEgbWVtYmVyIG9mIENvZGUgQXVyb3JhIEZv
-cnVtLCBhIExpbnV4IEZvdW5kYXRpb24gQ29sbGFib3JhdGl2ZSBQcm9qZWN0LgoK
---=_5c3e63ea4c7ecc7e8e595b7c9d9d7f3e
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---=_5c3e63ea4c7ecc7e8e595b7c9d9d7f3e--
-
+SGksIE5lYWw6CgpUaGlzIHBhdGNoIGlzIGZvciAibWVkaWF0ZWssbXQ2Nzc5LWRldmFwYyIsIHNv
+IEkgdGhpbmsgY29tbWl0IHRpdGxlCnNob3VsZCBzaG93IHRoZSBTb0MgSUQuCgpOZWFsIExpdSA8
+bmVhbC5saXVAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5tDfmnIgyOeaXpSDpgLHkuIkg5LiL5Y2I
+NDoyOeWvq+mBk++8mgo+Cj4gTWVkaWFUZWsgYnVzIGZhYnJpYyBwcm92aWRlcyBUcnVzdFpvbmUg
+c2VjdXJpdHkgc3VwcG9ydCBhbmQgZGF0YQo+IHByb3RlY3Rpb24gdG8gcHJldmVudCBzbGF2ZXMg
+ZnJvbSBiZWluZyBhY2Nlc3NlZCBieSB1bmV4cGVjdGVkCj4gbWFzdGVycy4KPiBUaGUgc2VjdXJp
+dHkgdmlvbGF0aW9uIGlzIGxvZ2dlZCBhbmQgc2VudCB0byB0aGUgcHJvY2Vzc29yIGZvcgo+IGZ1
+cnRoZXIgYW5hbHlzaXMgb3IgY291bnRlcm1lYXN1cmVzLgo+Cj4gQW55IG9jY3VycmVuY2Ugb2Yg
+c2VjdXJpdHkgdmlvbGF0aW9uIHdvdWxkIHJhaXNlIGFuIGludGVycnVwdCwgYW5kCj4gaXQgd2ls
+bCBiZSBoYW5kbGVkIGJ5IG10ay1kZXZhcGMgZHJpdmVyLiBUaGUgdmlvbGF0aW9uCj4gaW5mb3Jt
+YXRpb24gaXMgcHJpbnRlZCBpbiBvcmRlciB0byBmaW5kIHRoZSBtdXJkZXJlci4KPgo+IFNpZ25l
+ZC1vZmYtYnk6IE5lYWwgTGl1IDxuZWFsLmxpdUBtZWRpYXRlay5jb20+Cj4gLS0tCgpbc25pcF0K
+Cj4gKwo+ICtzdHJ1Y3QgbXRrX2RldmFwY19jb250ZXh0IHsKPiArICAgICAgIHN0cnVjdCBkZXZp
+Y2UgKmRldjsKPiArICAgICAgIHUzMiB2aW9faWR4X251bTsKPiArICAgICAgIHZvaWQgX19pb21l
+bSAqZGV2YXBjX3BkX2Jhc2U7Cj4gKyAgICAgICBzdHJ1Y3QgbXRrX2RldmFwY192aW9faW5mbyAq
+dmlvX2luZm87Cj4gKyAgICAgICBjb25zdCBzdHJ1Y3QgbXRrX2RldmFwY19wZF9vZmZzZXQgKm9m
+ZnNldDsKPiArICAgICAgIGNvbnN0IHN0cnVjdCBtdGtfZGV2YXBjX3Zpb19kYmdzICp2aW9fZGJn
+czsKPiArfTsKCkkgdGhpbmsgdGhpcyBzdHJ1Y3R1cmUgc2hvdWxkIHNlcGFyYXRlIHRoZSBjb25z
+dGFudCBwYXJ0LiBUaGUgY29uc3RhbnQgcGFydCBpczoKCnN0cnVjdCBtdGtfZGV2YXBjX2RhdGEg
+ewogICAgY29uc3QgdTMyIHZpb19pZHhfbnVtOwogICAgY29uc3Qgc3RydWN0IG10a19kZXZhcGNf
+cGRfb2Zmc2V0ICpvZmZzZXQ7IC8qIEkgd291bGQgbGlrZSB0bwpyZW1vdmUgc3RydWN0IG10a19k
+ZXZhcGNfcGRfb2Zmc2V0IGFuZCBkaXJlY3RseSBwdXQgaXRzIG1lbWJlciBpbnRvCnRoaXMgc3Ry
+dWN0dXJlICovCiAgICBjb25zdCBzdHJ1Y3QgbXRrX2RldmFwY192aW9fZGJncyAqdmlvX2RiZ3M7
+IC8qIFRoaXMgbWF5IGRpc2FwcGVhciAqLwp9OwoKQW5kIHRoZSBjb250ZXh0IGlzOgoKc3RydWN0
+IG10a19kZXZhcGNfY29udGV4dCB7CiAgICBzdHJ1Y3QgZGV2aWNlICpkZXY7CiAgICB2b2lkIF9f
+aW9tZW0gKmRldmFwY19wZF9iYXNlOwogICAgY29uc3Qgc3RydWN0IG10a19kZXZhcGNfZGF0YSAq
+ZGF0YTsKfTsKClNvIHdoZW4geW91IGRlZmluZSB0aGlzLCB5b3Ugd291bGQgbm90IHdhc3RlIG1l
+bW9yeSB0byBzdG9yZSBub24tY29uc3RhbnQgZGF0YS4KCnN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRr
+X2RldmFwY19kYXRhIGRldmFwY19tdDY3NzkgPSB7CiAudmlvX2lkeF9udW0gPSA1MTAsCiAub2Zm
+c2V0ID0gJm10Njc3OV9wZF9vZmZzZXQsCiAudmlvX2RiZ3MgPSAmbXQ2Nzc5X3Zpb19kYmdzLAp9
+OwoKUmVnYXJkcywKQ2h1bi1LdWFuZy4KCj4gKwo+ICsjZW5kaWYgLyogX19NVEtfREVWQVBDX0hf
+XyAqLwo+IC0tCj4gMS43LjkuNQo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCj4gTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Cj4gTGludXgtbWVkaWF0
+ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRp
+YXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
