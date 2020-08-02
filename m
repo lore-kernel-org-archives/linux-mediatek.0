@@ -2,89 +2,88 @@ Return-Path: <SRS0=bt65=BM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 552C1C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Aug 2020 04:49:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9FABCC433DF
+	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Aug 2020 08:06:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 179822072A
-	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Aug 2020 04:49:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6D32C2075A
+	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Aug 2020 08:06:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e6s1Z/sX";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="krI6ohHs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 179822072A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="J8Db/1LP";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="aeaoKctD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D32C2075A
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:From:To:Subject:MIME-Version:References:
-	In-Reply-To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:From:
+	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=e7k650q/qFkoGzJ3KfVgaXkZdBajeX9t8baPGdGIi70=; b=e6s1Z/sXZeRC9oWXYpoKDy4d2
-	I//jsc4gYmnfNnlpeEcsPt5CAxk2eo/6Yk6FDSbYoV1GPZho2F3yC0RH5fA8r7HR2Uh2SiNui08fV
-	+rWd3E3p6oYYyyOU9c4/uNhS4+/uOppfA+8H1NpD/ZdOIlHNINE1Q7KPMZVbMfeL0WjU7nwKwnzi+
-	2llyOF/AgJcJ2dVQJqM64fRCGB3XjNWhU98i/3G1ygg2NOX+Q6I7tf6DAw+oVqtUoVpNbTlTPcpo8
-	KEy06EbokM0xWd+/3hIyOhr5Wt5V4W5JKOfzo0SyDZJpHpBsvrIw8UeCwXtkBHwI+slV6/lfThla3
-	lxROU6G7g==;
+	 bh=VI5ibnlB9XKWbk05yKYIsOEQPVDttNPP9D/woAcapJI=; b=J8Db/1LP49/ukFXFETS5qtz8z
+	lpsAKpOFvCihdNqVG1JFum1TZHp8MAhiGHADpe/78hvAiEmCooV8RptBqtTcTJse0S1wuR48GKWwc
+	TjRqEOYdX5zAv7N3tZp7fYw1lHIJUclSS8bI+dxUN1PAD1T6xOPe/bcuEH71mIRNqbkC79mHxhrnK
+	JtPPaevvyiJB3qs8oRAUJ5WShJaDuOpGPaq3RKkglV0hl7GxynVKAjOGiqSmDjsb7vWsIBNyWnH3T
+	JuiCW01JXawUdhcDKAdTCd7V/VF8QPUPq9N5GPDr9CKDBVCSegcvEbDeYJ1kRQE/Amqapx5jpH0km
+	jFvL9FvtA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k25wQ-0000Jk-HM; Sun, 02 Aug 2020 04:49:46 +0000
-Received: from mout.gmx.net ([212.227.15.19])
+	id 1k290c-0007IB-R2; Sun, 02 Aug 2020 08:06:18 +0000
+Received: from mout.gmx.net ([212.227.15.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k25wM-0000Is-QB; Sun, 02 Aug 2020 04:49:44 +0000
+ id 1k290X-0007HL-PA
+ for linux-mediatek@lists.infradead.org; Sun, 02 Aug 2020 08:06:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1596343776;
- bh=d6pa9qyO4ebYl6Gjzcm6qUkA1sR4+0nvmuHulLIEwSk=;
- h=X-UI-Sender-Class:Date:In-Reply-To:References:Subject:To:CC:From;
- b=krI6ohHsaZ+dQ7eyQfIei/F66oDXM659RvEpJP9JK9mJJeCEuPTI7Iz1Dizzo9Vc4
- X+l5LofRfhXM3Ss3YnAaJ8hKRps7GTGherF9NyjNlJxPgLtSfGZxO356uNM8GDaJ3R
- eSXfqNagdUap8n0ZMDsAb+FgNgBJath6att13grs=
+ s=badeba3b8450; t=1596355539;
+ bh=sc1Lq8EFToHTdK5q+UaOStFQfDdgf714wGLLqZKqwoY=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=aeaoKctDVpeUHPAmtcFrKdeq51XDI04xweIWl2F16QHXj9PmHwY7ImtuqtLcQ404L
+ ZoNSNQG3KA50dtvgCtU3Sh8dACc3/CYmOvLgNAIR7un4M5zeHT9eH4XV3eW4tfT8pq
+ WFguTteyX8Q+x4g2QdmmWWHKRpLq8IBxeg0j0CPs=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from frank-s9 ([217.61.158.217]) by mail.gmx.com (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MZktZ-1kDtne0Bst-00WqYd; Sun, 02
- Aug 2020 06:42:53 +0200
-Date: Sun, 02 Aug 2020 06:42:42 +0200
-User-Agent: K-9 Mail for Android
-In-Reply-To: <CAAOTY__7wCeTm0OY0P1VKZp-r7+d7yj=LLb79Nzr1pVVkOjy2g@mail.gmail.com>
-References: <20200728111800.77641-1-frank-w@public-files.de>
- <20200728111800.77641-3-frank-w@public-files.de>
- <CAAOTY__7wCeTm0OY0P1VKZp-r7+d7yj=LLb79Nzr1pVVkOjy2g@mail.gmail.com>
+Received: from [217.61.148.8] ([217.61.148.8]) by web-mail.gmx.net
+ (3c-app-gmx-bs58.server.lan [172.19.170.142]) (via HTTP); Sun, 2 Aug 2020
+ 10:05:39 +0200
 MIME-Version: 1.0
-Subject: Re: [PATCH v2 2/5] drm/mediatek: fix boot up for 720 and 480 but 1080
-To: linux-mediatek@lists.infradead.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Message-ID: <trinity-2bdb3521-256a-4d4d-928a-be9b8c179d4c-1596355539029@3c-app-gmx-bs58>
 From: Frank Wunderlich <frank-w@public-files.de>
-Message-ID: <6F0FD8AA-A582-45FC-BE1A-06B3812B3DEF@public-files.de>
-X-Provags-ID: V03:K1:KhyXaG0jr6aA9V5C1Ggsw1obPQoBRxRiw27abReqz2kmvby8piV
- XZKCGh/or/j/Foag7XjwnyyRKO19ZF9b107LB+efhVUVgTYdeJ1DxNySte2gVFUCZr7Amrq
- YGGUW1znGZm1ePEPxg5IckIDLjW5cTEyUw8lHSr7L23rkjrs1w/rU3971Pbve/bcMnqtDsl
- nSuvNyI6mQuC8pmvm51/A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:6zkFdkG3C1w=:YFu/WE8hNvMxT4W92HiV9M
- MsoH7pIA16iEvXu3SwTabPgz1iuQMaGnMxYvo4Qsfhfkf1lceBs18fFnAB4S8Tw9Q+yPknDSI
- 2vfv/Sgj2KgTI6xdvXg+cYUX1v/LKZc93xHfvgFAwZYKKyMsV3O4AMNBFmhQafqAsVZxNuFov
- cCmE9AQkCLRaIAsB59NJxGe3eM6cop89Zym3c0+YlHbA77tBcY/rERQxyyS9FJbcqA6nzLviU
- 9vl0IsbTseeY0I8+xg6h+5HNfxS2yFMY13f5cRAi/gW081SLvV0igKoZ7FoW+Q+qzhAKUR5Kk
- 0jdd3lYJflpk9MMs8wTC1KuwYtGnqJQRuLN8vjAr/gWtBZ5JC5igx2HHK8xUxFsY4KD72hSOk
- W0XxwUkG6+pycf/iAhLNz5/DqTM76iCtekKNi7cTwuYF2p9VWpFpxeHdoUzLaa/J5rCR7C6mb
- 6A0GdAWvn8baN35sOsaXwskpvc2qjePFEhLHhMWZeGWYl7OKNrZ83lfM94ZeZWz59JRKfagak
- 8zbBZYJksyxZJNoZRoWqmmea880pZMUpWs3NDf8eMC/K08g2akMi2agRxUF8In5XUH6U/ayce
- e3dRG6gowkDm+gyrtLw43uPewPGOK0Nhi+UyDrCuvU3TLv20qCWQQeyFsaFo9u/9DDZNiITzs
- ppXyf89QClpfkPTfWDnIL17Xz7AeYGa+NuDNB+id60/VSXznMwofBBh8y+CP9XUWxCsiAMODp
- yT4rGQqdW9iGzOugV1esebXW282F/1ij5jLbOi2wmh2PYCM+ieLdTp5L9s3pmCK67YxwVtKVp
- uaMcEItvXUh+5DEQus3v/Ap0uwhrKTm78Y1TvvDU/KO5W5XLn7cxvih+ol67GkyPnH9yd1lKz
- wmON1hcsjZdh6EabSDb38TYKlZwmFHaLqDteYGbJl6yJdJH66P965EF0asmYsHJT6OgHe9ytd
- 43nNNtDCE+zdpo8B4mXvoVaT4P9kz4SuGqY7hDBDYIhqttkdYp0GsWur2NPqAdzh8yPRVKIR+
- TP0Q1Vy9c4avz1KTWyoadCAyyvvxm1f/X5YZjd0XDidAXpNCVS9O9nk8psZFWsA7hoVR/bLEQ
- v4v9oksyMyBjLnK15bdxxf8ag8zMgjN3jLUVWE26yX9FmBXtPkxgIBSOaZsDB2oVbct2oEHfs
- sgk2gxKsf1oYD3YIe8lO9CQnjwOllQwKUInOxebjwg2WxtCJLBr+McC3WXQDUq413yaxKH8f9
- 4PpOD2ZKiuOU9RInSrKiH0odgAtOuBAicAXgN/w==
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: Aw: Re: [PATCH v2 1/5] drm/mediatek: config component output by
+ device node port
+Date: Sun, 2 Aug 2020 10:05:39 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <CAAOTY_8nm0KDHFzOX9+qTTHOUd0Vik063J+rScu_y-hTBTkrCQ@mail.gmail.com>
+References: <20200728111800.77641-1-frank-w@public-files.de>
+ <20200728111800.77641-2-frank-w@public-files.de>
+ <CAAOTY_8nm0KDHFzOX9+qTTHOUd0Vik063J+rScu_y-hTBTkrCQ@mail.gmail.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:4FFi9HpCe8lkGtx3qVv8hooKf3hnYGPUlAK5sb6D1cx9f6AKs2Zij3fJVX8u1Kn3vQNVq
+ ghyk4N2d0ZnEQ1NBl8Lfkgj5ykKuJZKEOM8PbRHm6zEs1Uir8L3aD8gL7eR7RNmMSZemBSbCpXq9
+ u3EFJ4ekTCJo6getq8QxyK/kTZVWz4gM05LhHUOTvEbpq/7bwjk2dCpa0ROeR5Lwdww/Uy7/n1Af
+ K1q4PEkOEZregQweoK9VKFwmdH1ziDxUfRSxr6A0VKOv3Qqwt7P78lG5lH1DNZ9xCt8W3qrspwOq
+ wY=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:EVjTvshynRM=:oj6gH32Ie0JMk3jwUU7SjQ
+ L9uQMqjJ5k3YEPDEMXJ6rAjz0+sMxc6rVyEAHpHI1BvB4nFrXBvkvBbchQUq5t7mAFxIgdg08
+ ddelQW0Vr16/2ejszizw8Rq4iNbq0jyPXkhgobAtzpXyUn7mpsq58LWHaIKklHI333JX+MLiG
+ EQh/VS9Pi6WyoS7/yP9Hw/NGisyRiBwn0pNUf2cx/ok4WFwhUXjcDHxsUq5HUnvEqKZmsIaIE
+ VZa5IZBI6DIodDEPHSn9+ov/XZ/VVIO5h49CQTGMh38HIU9xbwNWOyeGAH6UgmjJx5Iww6hah
+ awZfuWpOtcon+pq+ByqGNjgQxbwfUliM0boJGG9ODSBLfz8ik146F2K6kEfXMoXmUHAmvzabo
+ 1qshB/tGhETBWT+fG/c6HaVevZQ7RGHsZ7BjcejSu+LD8tBllAfDz8Hh2cQQJ4mviEWAh8h7J
+ Br+88lsiRUgf0imkfW07or2Dov+yJS3D5ewypGtvxHfUqPOSBtuOdJZyMen0goNF6Dc9WbLqn
+ acd6E4eSrWANevczDyij3ZOXsdnhit+400o/KqjRiFN39XlWTRbsMAdBPytmY4UDCEhKyQEKq
+ csFR+nzSGWIUIcDzGgWP764XbAh4TLQQsxFETrfoCX8GqlMm9dFCpxTfZl8Ha6USHfYwxxnpw
+ zONgSdrYR1KLIUqM4NdBfgV4rSLUlTJE0TWLSoPN4zTfAALibdJbrPmFslogGHrLMLOE=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200802_004943_079053_4C3C306A 
-X-CRM114-Status: GOOD (  11.07  )
+X-CRM114-CacheID: sfid-20200802_040614_076066_4F20C9F1 
+X-CRM114-Status: GOOD (  12.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,35 +95,139 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Daniel Vetter <daniel@ffwll.ch>, chunhui dai <chunhui.dai@mediatek.com>,
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
  David Airlie <airlied@linux.ie>, linux-kernel <linux-kernel@vger.kernel.org>,
  DRI Development <dri-devel@lists.freedesktop.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Matthias Brugger <matthias.bgg@gmail.com>,
+ Bibby Hsieh <bibby.hsieh@mediatek.com>,
  Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-Am 2. August 2020 02:08:44 MESZ schrieb Chun-Kuang Hu <chunkuang.hu@kernel.org>:
->Hi, Frank:
->> - disable tmds on phy on mt2701
->> - support other resolutions like 1280x1024
+> Gesendet: Sonntag, 02. August 2020 um 02:03 Uhr
+> Von: "Chun-Kuang Hu" <chunkuang.hu@kernel.org>
+> An: "Frank Wunderlich" <frank-w@public-files.de>
+> Cc: "Chun-Kuang Hu" <chunkuang.hu@kernel.org>, "Philipp Zabel" <p.zabel@pengutronix.de>, "David Airlie" <airlied@linux.ie>, "linux-kernel" <linux-kernel@vger.kernel.org>, "DRI Development" <dri-devel@lists.freedesktop.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "Daniel Vetter" <daniel@ffwll.ch>, "Matthias Brugger" <matthias.bgg@gmail.com>, "Bibby Hsieh" <bibby.hsieh@mediatek.com>, "Linux ARM" <linux-arm-kernel@lists.infradead.org>
+> Betreff: Re: [PATCH v2 1/5] drm/mediatek: config component output by device node port
+> > +
+> > +               if (comp_type != MTK_DSI && comp_type != MTK_DPI) {
+> > +                       port = of_graph_get_port_by_id(node, 0);
+> > +                       if (!port)
+> > +                               continue;
+> > +                       ep = of_get_child_by_name(port, "endpoint");
+> > +                       of_node_put(port);
+> > +                       if (!ep)
+> > +                               continue;
+> > +                       remote = of_graph_get_remote_port_parent(ep);
+> > +                       of_node_put(ep);
+> > +                       if (!remote)
+> > +                               continue;
+> > +                       of_id = of_match_node(mtk_ddp_comp_dt_ids, remote);
+> > +                       if (!of_id)
+> > +                               continue;
+> > +                       comp_type = (enum mtk_ddp_comp_type)of_id->data;
+> > +                       for (i = 0; i < private->data->main_len - 1; i++)
+> > +                               if (private->data->main_path[i] == comp_id)
+> > +                                       private->data->main_path[i + 1] =
+> > +                                       mtk_ddp_comp_get_id(node, comp_type);
+> > +                       for (i = 0; i < private->data->ext_len - 1; i++)
+> > +                               if (private->data->ext_path[i] == comp_id)
+> > +                                       private->data->ext_path[i + 1] =
+> > +                                       mtk_ddp_comp_get_id(node, comp_type);
+> > +               }
 >
->If this patch does two things, it should be broken into two patches.
-As far as i see,it only disable tmds and so fix specific resolutions like the the one below.some other (like 1080p) does not have this Problem.
+> The port property is not defined in binding document [1], so define it
+> in binding document first.
+>
+> [1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt?h=v5.8-rc7
 
-> I think every pll is default off, so you should turn on pll rather
-> than disable tmds
+hi,
+would be the following enough for describing the ports?
 
-Is disabling tmds wrong here? Which pll is needed here? What does tmds? I got only the Patches for testing....
+Port binding
+=============
 
->> without this Patch i see flickering on my TFT (1280x1024),
->> so i guess clock is wrong.
+some nodes like
+
+- connector (e.g. hdmi-connector)
+- bls (mediatek,mt7623-disp-pwm)
+- hdmix (mediatek,mt7623-hdmi)
+
+can have port bindings to connect each other. Each port can have only 1 endpoint
+
+more detail about ports/endpoints in ../../media/video-interfaces.txt
+hdmi-connector is described here: ../connector/hdmi-connector.txt
+
+example:
+
+connector {
+	compatible = "hdmi-connector";
+
+	port {
+		hdmi_connector_in: endpoint {
+			remote-endpoint = <&hdmi0_out>;
+		};
+	};
+};
+
+
+&bls {
+	status = "okay";
+
+	port {
+		bls_out: endpoint {
+			remote-endpoint = <&dpi0_in>;
+		};
+	};
+};
+
+&dpi0 {
+	status = "okay";
+
+	ports {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		port@0 {
+			reg = <0>;
+			dpi0_out: endpoint {
+				remote-endpoint = <&hdmi0_in>;
+			};
+		};
+
+		port@1 {
+			reg = <1>;
+			dpi0_in: endpoint {
+				remote-endpoint = <&bls_out>;
+			};
+		};
+	};
+};
+
+&hdmi0 {
+
+	ports {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		port@0 {
+			reg = <0>;
+			hdmi0_in: endpoint {
+				remote-endpoint = <&dpi0_out>;
+			};
+		};
+
+		port@1 {
+			reg = <1>;
+			hdmi0_out: endpoint {
+				remote-endpoint = <&hdmi_connector_in>;
+			};
+		};
+	};
+};
 
 regards Frank
 
