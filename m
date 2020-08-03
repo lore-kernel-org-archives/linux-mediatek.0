@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F39BCC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2020 12:05:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 97BD4C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2020 12:51:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C331A2076B
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2020 12:05:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 627152064B
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2020 12:51:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="0NBm3eb/";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="ZaF8OZkS"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C331A2076B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BHCz7AoK";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="aGfx1y2z"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 627152064B
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,56 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
 	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=DPLbdO4i4cVDEAvQHu1sL1aOdumRXS/mbde8RddIcE0=; b=0NBm3eb/0FpJm+GOvAw66gnUb
-	lkopmW4BT/rl5c+2gaMSxYoOlo/kF5/Q8mI0rnlDTIPNve3I7jV/syv+hOgKwN393paKuOn6zQSdk
-	9gdS7PujPmB9cyABMIqdiDY9da4+hu6OORMpv8R2k3lO0/oX9UYa2EBmhqytt7nXpZB6m3cAb1PS2
-	6RiuJUPjAk9MT8E+rZ50UUYp+6oI1EM2v4imttJSL+WDh4gEnNDNZg3cV18jY9qhdQFD1X3hwAowR
-	sW7Pf0Jfi40deseZtqr7kf0Helx/n8ZRNbQ/ECK35tyYFQonR6F2lotyX+f8hcExE93yxsuyWFr9y
-	S40GISEaA==;
+	 bh=JAG+NdAShvx+f37JSsKChcqxJKSNA2Gi5JrRnRSlnwU=; b=BHCz7AoKuf2cyGlwNy1/aF4BV
+	p0QxbP5xN3Ctu3aAu907DvICkh7KO2AC5NPn3JNp6Zx+zqPG6upEPdxFrGgiZf9clxa/lleRVqHxZ
+	eVJyWZKTaSXAc1UzG+lBhG3RPueMqloQhmEJmOwlREhoqE7u4VvK+4/3QvXxWl5/bh/1AID3R1Vgt
+	yvRqJrGYd6ZbGRMjgIWvUUtWMpPLzOSQ708AXPsvmDQb9j9LJ8AK8005ZQaynk94XueB780+d5qUV
+	JrkZMgr8gOIhvVseQP/H+ohrv/UQxoYHSDPhhEVPynN6BC4CidZO/0H36Jl8N4R6iPkCH6X31sTea
+	xUFUAwk0A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k2ZD9-0001tW-GK; Mon, 03 Aug 2020 12:04:59 +0000
+	id 1k2Zw4-0007Lv-VM; Mon, 03 Aug 2020 12:51:25 +0000
 Received: from mail29.static.mailgun.info ([104.130.122.29])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k2ZD5-0001sc-Md
- for linux-mediatek@lists.infradead.org; Mon, 03 Aug 2020 12:04:58 +0000
+ id 1k2Zvz-0007Kt-8v
+ for linux-mediatek@lists.infradead.org; Mon, 03 Aug 2020 12:51:23 +0000
 DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
  q=dns/txt; 
- s=smtp; t=1596456297; h=Message-ID: References: In-Reply-To: Subject:
+ s=smtp; t=1596459082; h=Message-ID: References: In-Reply-To: Subject:
  Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
- MIME-Version: Sender; bh=Q9ewY6f6T4tJS+bov5J8Mts7nZEqC8N1FwJDh5ZScHE=;
- b=ZaF8OZkSoToxAwHLra4NYVEaCQ9MkQ9CvqjJyNdDB7Cb19mXKMmqBgLEZqPfZwjmXZon+Uzc
- n+VI97a/rW2oAbwDSenOdqSLmLMD9tZLBze/T0FDqXSe5WTF3xQrPXWF41l+/yvDLTlic7an
- pQ8TP2QZezag6S+YwYMbsImUa9A=
+ MIME-Version: Sender; bh=jepPBJzpwNuriMTj33dYfuOkzUu353rrYsvD7FzsN1c=;
+ b=aGfx1y2zBuJkmo3k4Np/XBxI3TFU5VyBkU8T4VeHGPLucA8q0Y4DQyx8PFFdQxz+hMW1iNIs
+ g3YCmSC2KkoTZpDOYcKVgN5G7IGnN0XGb91QkBA8HCa8omocX/FJ9psVja367pdvpp1/V/iW
+ 6qp6tgxKx/rveyu9Q2uEZB9Kq9g=
 X-Mailgun-Sending-Ip: 104.130.122.29
 X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
 Received: from smtp.codeaurora.org
  (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n16.prod.us-east-1.postgun.com with SMTP id
- 5f27fd5bd2bd131f684b99fe (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Mon, 03 Aug 2020 12:04:43
+ smtp-out-n10.prod.us-west-2.postgun.com with SMTP id
+ 5f28083a849144fbcbb7ff3a (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Mon, 03 Aug 2020 12:51:06
  GMT
 Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id A1743C433A1; Mon,  3 Aug 2020 12:04:41 +0000 (UTC)
+ id 51831C433A0; Mon,  3 Aug 2020 12:51:05 +0000 (UTC)
 Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
  (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
  (No client certificate requested) (Authenticated sender: cang)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id CA541C433C9;
- Mon,  3 Aug 2020 12:04:39 +0000 (UTC)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id F0205C433C6;
+ Mon,  3 Aug 2020 12:51:03 +0000 (UTC)
 MIME-Version: 1.0
-Date: Mon, 03 Aug 2020 20:04:39 +0800
+Date: Mon, 03 Aug 2020 20:51:03 +0800
 From: Can Guo <cang@codeaurora.org>
 To: Stanley Chu <stanley.chu@mediatek.com>
 Subject: Re: [PATCH v7] scsi: ufs: Quiesce all scsi devices before shutdown
-In-Reply-To: <ee423cd3b5c42942a8895a8f08a26e68@codeaurora.org>
+In-Reply-To: <20200803100448.2738-1-stanley.chu@mediatek.com>
 References: <20200803100448.2738-1-stanley.chu@mediatek.com>
- <ee423cd3b5c42942a8895a8f08a26e68@codeaurora.org>
-Message-ID: <e413ec4cf7ff317615efd74aa925356a@codeaurora.org>
+Message-ID: <70222bbb82a8b167475189110cf69317@codeaurora.org>
 X-Sender: cang@codeaurora.org
 User-Agent: Roundcube Webmail/1.3.9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200803_080457_736137_BC7BC8DF 
-X-CRM114-Status: GOOD (  30.24  )
+X-CRM114-CacheID: sfid-20200803_085122_478152_E6124059 
+X-CRM114-Status: GOOD (  28.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,152 +99,143 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Slightly updated my comments
+Hi Stanley,
 
-On 2020-08-03 19:50, Can Guo wrote:
-> Hi Stanley,
+Sorry for the noises, please ignore my previous 2 mails and let's
+focus on this one.
+
+On 2020-08-03 18:04, Stanley Chu wrote:
+> Currently I/O request could be still submitted to UFS device while
+> UFS is working on shutdown flow. This may lead to racing as below
+> scenarios and finally system may crash due to unclocked register
+> accesses.
 > 
-> On 2020-08-03 18:04, Stanley Chu wrote:
->> Currently I/O request could be still submitted to UFS device while
->> UFS is working on shutdown flow. This may lead to racing as below
->> scenarios and finally system may crash due to unclocked register
->> accesses.
->> 
->> To fix this kind of issues, in ufshcd_shutdown(),
->> 
->> 1. Use pm_runtime_get_sync() instead of resuming UFS device by
->>    ufshcd_runtime_resume() "internally" to let runtime PM framework
->>    manage and prevent concurrent runtime operations by incoming I/O
->>    requests.
->> 
->> 2. Specifically quiesce all SCSI devices to block all I/O requests
->>    after device is resumed.
->> 
->> Example of racing scenario: While UFS device is runtime-suspended
->> 
->> Thread #1: Executing UFS shutdown flow, e.g.,
->>            ufshcd_suspend(UFS_SHUTDOWN_PM)
->> 
->> Thread #2: Executing runtime resume flow triggered by I/O request,
->>            e.g., ufshcd_resume(UFS_RUNTIME_PM)
->> 
->> This breaks the assumption that UFS PM flows can not be running
->> concurrently and some unexpected racing behavior may happen.
->> 
->> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
->> ---
->> Changes:
->>   - Since v6:
->> 	- Do quiesce to all SCSI devices.
->>   - Since v4:
->> 	- Use pm_runtime_get_sync() instead of resuming UFS device by
->> ufshcd_runtime_resume() "internally".
->> ---
->>  drivers/scsi/ufs/ufshcd.c | 27 ++++++++++++++++++++++-----
->>  1 file changed, 22 insertions(+), 5 deletions(-)
->> 
->> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
->> index 307622284239..7cb220b3fde0 100644
->> --- a/drivers/scsi/ufs/ufshcd.c
->> +++ b/drivers/scsi/ufs/ufshcd.c
->> @@ -8640,6 +8640,7 @@ EXPORT_SYMBOL(ufshcd_runtime_idle);
->>  int ufshcd_shutdown(struct ufs_hba *hba)
->>  {
->>  	int ret = 0;
->> +	struct scsi_target *starget;
->> 
->>  	if (!hba->is_powered)
->>  		goto out;
->> @@ -8647,11 +8648,27 @@ int ufshcd_shutdown(struct ufs_hba *hba)
->>  	if (ufshcd_is_ufs_dev_poweroff(hba) && ufshcd_is_link_off(hba))
->>  		goto out;
->> 
->> -	if (pm_runtime_suspended(hba->dev)) {
->> -		ret = ufshcd_runtime_resume(hba);
->> -		if (ret)
->> -			goto out;
->> -	}
->> +	/*
->> +	 * Let runtime PM framework manage and prevent concurrent runtime
->> +	 * operations with shutdown flow.
->> +	 */
->> +	pm_runtime_get_sync(hba->dev);
->> +
->> +	/*
->> +	 * Quiesce all SCSI devices to prevent any non-PM requests sending
->> +	 * from block layer during and after shutdown.
->> +	 *
->> +	 * Here we can not use blk_cleanup_queue() since PM requests
->> +	 * (with BLK_MQ_REQ_PREEMPT flag) are still required to be sent
->> +	 * through block layer. Therefore SCSI command queued after the
->> +	 * scsi_target_quiesce() call returned will block until
->> +	 * blk_cleanup_queue() is called.
->> +	 *
->> +	 * Besides, scsi_target_"un"quiesce (e.g., scsi_target_resume) can
->> +	 * be ignored since shutdown is one-way flow.
->> +	 */
->> +	list_for_each_entry(starget, &hba->host->__targets, siblings)
->> +		scsi_target_quiesce(starget);
->> 
+> To fix this kind of issues, in ufshcd_shutdown(),
 > 
-> Sorry for misleading you to scsi_target_quiesce(), maybe below is 
-> better.
+> 1. Use pm_runtime_get_sync() instead of resuming UFS device by
+>    ufshcd_runtime_resume() "internally" to let runtime PM framework
+>    manage and prevent concurrent runtime operations by incoming I/O
+>    requests.
 > 
->     shost_for_each_device(sdev, hba->host)
->         scsi_device_quiesce(sdev);
+> 2. Specifically quiesce all SCSI devices to block all I/O requests
+>    after device is resumed.
 > 
-> We may need to discuss more about this quiesce part since I missed 
-> something.
+> Example of racing scenario: While UFS device is runtime-suspended
 > 
-> After we quiesce the scsi devices, only PM requests are allowed, but it
-> is still not safe: [1] PM requests can still pass through, [2] there 
-> can
-> be tasks/reqs present in doorbells before the devices are quiesced. So,
-> these tasks/reqs in [1] and [2] can still be flying in parallel while
-> ufshcd_suspend is running.
+> Thread #1: Executing UFS shutdown flow, e.g.,
+>            ufshcd_suspend(UFS_SHUTDOWN_PM)
 > 
-> How about only quiescing the UFS device well known scsi device but 
-> using
-> freeze_queue to the other scsi devices? blk_mq_freeze_queue can 
-> eliminate
-> the risks mentioned in [1] and [2].
+> Thread #2: Executing runtime resume flow triggered by I/O request,
+>            e.g., ufshcd_resume(UFS_RUNTIME_PM)
 > 
->      shost_for_each_device(sdev, hba->host) {
->          if (sdev == hba->sdev_ufs_device)
->               scsi_device_quiesce(sdev);
->          else
->               blk_mq_freeze_queue(sdev->request_queue);
->      }
+> This breaks the assumption that UFS PM flows can not be running
+> concurrently and some unexpected racing behavior may happen.
 > 
-> IF blk_mq_freeze_queue is not allowed to be used by LLD (I think we can
-> use it as I recalled Bart used to use it in one of his changes to UFS 
-> scaling),
-> we can use scsi_remove_device instead, it changes scsi device's state 
-> to
-> SDEV_DEL and calls blk_cleanup_queue.
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> ---
+> Changes:
+>   - Since v6:
+> 	- Do quiesce to all SCSI devices.
+>   - Since v4:
+> 	- Use pm_runtime_get_sync() instead of resuming UFS device by
+> ufshcd_runtime_resume() "internally".
+> ---
+>  drivers/scsi/ufs/ufshcd.c | 27 ++++++++++++++++++++++-----
+>  1 file changed, 22 insertions(+), 5 deletions(-)
 > 
-> We can also make changes like below. [1] is to make sure no more PM 
-> requests
-> sent to scsi devices, [2] is make sure doorbells are cleared before 
-> invoke
-> ufshcd_suspend.
+> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+> index 307622284239..7cb220b3fde0 100644
+> --- a/drivers/scsi/ufs/ufshcd.c
+> +++ b/drivers/scsi/ufs/ufshcd.c
+> @@ -8640,6 +8640,7 @@ EXPORT_SYMBOL(ufshcd_runtime_idle);
+>  int ufshcd_shutdown(struct ufs_hba *hba)
+>  {
+>  	int ret = 0;
+> +	struct scsi_target *starget;
 > 
->     shost_for_each_device(sdev, hba->host) {
->         scsi_autopm_get_device(sdev); [1]
->         scsi_device_quiesce(sdev);
->     }
+>  	if (!hba->is_powered)
+>  		goto out;
+> @@ -8647,11 +8648,27 @@ int ufshcd_shutdown(struct ufs_hba *hba)
+>  	if (ufshcd_is_ufs_dev_poweroff(hba) && ufshcd_is_link_off(hba))
+>  		goto out;
 > 
->     ufshcd_wait_for_doorbell_clr(hba, U64_MAX); [2]
+> -	if (pm_runtime_suspended(hba->dev)) {
+> -		ret = ufshcd_runtime_resume(hba);
+> -		if (ret)
+> -			goto out;
+> -	}
+> +	/*
+> +	 * Let runtime PM framework manage and prevent concurrent runtime
+> +	 * operations with shutdown flow.
+> +	 */
+> +	pm_runtime_get_sync(hba->dev);
+> +
+> +	/*
+> +	 * Quiesce all SCSI devices to prevent any non-PM requests sending
+> +	 * from block layer during and after shutdown.
+> +	 *
+> +	 * Here we can not use blk_cleanup_queue() since PM requests
+> +	 * (with BLK_MQ_REQ_PREEMPT flag) are still required to be sent
+> +	 * through block layer. Therefore SCSI command queued after the
+> +	 * scsi_target_quiesce() call returned will block until
+> +	 * blk_cleanup_queue() is called.
+> +	 *
+> +	 * Besides, scsi_target_"un"quiesce (e.g., scsi_target_resume) can
+> +	 * be ignored since shutdown is one-way flow.
+> +	 */
+> +	list_for_each_entry(starget, &hba->host->__targets, siblings)
+> +		scsi_target_quiesce(starget);
 > 
-> Please let me know which one you prefer or if you have better idea, 
-> thanks!
-> 
-> Regards,
-> 
-> Can Guo.
-> 
->>  	ret = ufshcd_suspend(hba, UFS_SHUTDOWN_PM);
->>  out:
+
+Sorry for misleading you to scsi_target_quiesce(), maybe below is 
+better.
+
+     shost_for_each_device(sdev, hba->host)
+         scsi_device_quiesce(sdev);
+
+We may need to discuss more about this quiesce part since I missed 
+something.
+
+After we quiesce the scsi devices, only PM requests are allowed, but it
+is still not safe - PM requests can still pass through.
+
+How about only quiescing the UFS device well known scsi device but using
+freeze_queue to the other scsi devices? blk_mq_freeze_queue can 
+eliminate
+the risk.
+
+      shost_for_each_device(sdev, hba->host) {
+          if (sdev == hba->sdev_ufs_device)
+               scsi_device_quiesce(sdev);
+          else
+               blk_mq_freeze_queue(sdev->request_queue);
+      }
+
+IF blk_mq_freeze_queue is not allowed to be used by LLD (I think we can
+use it as I recalled Bart used to use it in one of his changes to UFS 
+scaling),
+we can use scsi_remove_device instead, it changes scsi device's state to
+SDEV_DEL and calls blk_cleanup_queue.
+
+We can also use scsi_autopm_get_device like below. It is to make sure
+no more PM requests sent to scsi devices (since PM requests are only 
+sent
+during PM ops).
+
+     shost_for_each_device(sdev, hba->host) {
+         scsi_autopm_get_device(sdev);
+         scsi_device_quiesce(sdev);
+     }
+
+Please let me know which one do you prefer or if you have better ideas, 
+thanks!
+
+Regards,
+
+Can Guo.
+
+>  	ret = ufshcd_suspend(hba, UFS_SHUTDOWN_PM);
+>  out:
 
 _______________________________________________
 Linux-mediatek mailing list
