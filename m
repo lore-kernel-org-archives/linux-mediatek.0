@@ -2,77 +2,76 @@ Return-Path: <SRS0=TVmU=BN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B41A7C433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2020 04:11:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F425C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2020 04:15:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 81392206F6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2020 04:11:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5068320775
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2020 04:15:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CpoMb6x1";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="LKG2P4md"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 81392206F6
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MZDEJbfc";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="PgOd+GHW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5068320775
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=j6CjoQLYC46y32PttoBIc2aHgXv7crCixFbAhwzyVEo=; b=CpoMb6x141PLaSApiGly+hn8S
-	qwQqb4dyktyVc+3QJmKjl7QBfH4ZUJx8Iarl7OR3q0tcMV9cHfq4xfTjWEzB+Zn/eIpwQG9k73Bn7
-	Vid7pN4j4fVIOKelbAT6SMYHCbSXkzwR9W4Z8QK79SH5N1JJTNQb+dwm3TfiCSbM8c9I4n03Vob2C
-	Y5nuiPj8XhB4zmsmDzpnwOwdyEFqK9uyeafBIfRYELkH0/fIW8MoqwmKTJDNilofxFnDyZpFJzTeY
-	9emtToIonsWHOZxYgBI/ZR3iV+5rf093P/RIaIMOt70Dz6SE9Lc7Pb7b1rAMs/SQuRgYNqfSJH5+s
-	L4n/mG1rg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Rt960gJaBTFeL3R3aHm/o7nn8TdukI/wW19POGScssI=; b=MZDEJbfcdOmjQ401Ompyd+Z9my
+	OVfT8eH4MJnNWs5cDyu7qvkXmg5wpSD1WWZSfMm2+yBXPPpseHmVRQ9ZCMZ3dEN8W8CyqrBbsa2vZ
+	FAdjVFZ6nIzOve+1TlzkUdzUnWr2JNaT72QL25moGxvoy0BUm905znExmmtB48pp7ob4wgmHafcZN
+	yQWM8ydclM6UvuAC9obJO0vXSIahF1Qggh+SbwrKorB1H60t2rWRl3SbCcMxgbNILOgVaGof9QHuN
+	MEUK0pKeCvOUersMI2RScpFwqLwXTeo/fW+QtSgRS3Eesc+e5pMRZ9ZpSJ5OGXVn7YIrx/lRtbuuC
+	ikRoqbhw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k2RoJ-0007Oq-Mn; Mon, 03 Aug 2020 04:10:51 +0000
+	id 1k2Rt4-0007oo-St; Mon, 03 Aug 2020 04:15:46 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k2RoF-0007Np-BV; Mon, 03 Aug 2020 04:10:48 +0000
-X-UUID: 0ff5161a487f4dc7abeb860098e29614-20200802
+ id 1k2Rt0-0007o2-CP; Mon, 03 Aug 2020 04:15:43 +0000
+X-UUID: 1287c51b1cff426a9de2402d73dfa68b-20200802
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=Zgi3EbJa/AeWx8xMnAPwVqIIwAidH8IpACy77bhI1VI=; 
- b=LKG2P4mdp9x4iZWjhLakvUIF/fYH5wLLS2tk+IuIQyxA3lRAMQT0VXEb3EOdRKdD6m669uGwaE1VAXQiQl43h4VOV3Dh8u8MBe3EZQZfE0hH0DpNQ2/kQtACaD0BkqfUnA/lm8MHMRDqF9cZC2InJ2kn0apILyPbBfxf3Qg6VSQ=;
-X-UUID: 0ff5161a487f4dc7abeb860098e29614-20200802
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <neal.liu@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=pnVyHtm1kZIK8iFHc2H0Nggm6hcXfQ0T1tugUK4dLkI=; 
+ b=PgOd+GHWtTHElIt8Kj9BCXan9eCf1V+qineVTxVWU7xKGENxFXT7fJsocQyhlvB/wULQZaAK2iEXOs1rNzNYuDJPSoJcHTaIbcSCW3WZBtP+YAUowuMsqclZm3tmmqev9Z0C2AIDCnw/O8/Y6jTPQrHGJU8xAj6nbDT9g/aonHo=;
+X-UUID: 1287c51b1cff426a9de2402d73dfa68b-20200802
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 70989191; Sun, 02 Aug 2020 20:10:40 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ with ESMTP id 1906574755; Sun, 02 Aug 2020 20:15:38 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 2 Aug 2020 21:05:47 -0700
+ 15.0.1497.2; Sun, 2 Aug 2020 21:15:38 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 3 Aug 2020 12:05:45 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 3 Aug 2020 12:05:46 +0800
-Message-ID: <1596427546.22971.23.camel@mtkswgap22>
-Subject: Re: [PATCH v4 2/2] soc: mediatek: add mtk-devapc driver
-From: Neal Liu <neal.liu@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 3 Aug 2020 12:05:46 +0800
-In-Reply-To: <CAAOTY_-RMT-1+-5aPxqhgLbk74j0MH8U78mibBZppt_OPPQrJA@mail.gmail.com>
-References: <1596010690-13178-1-git-send-email-neal.liu@mediatek.com>
- <1596010690-13178-3-git-send-email-neal.liu@mediatek.com>
- <CAAOTY_-RMT-1+-5aPxqhgLbk74j0MH8U78mibBZppt_OPPQrJA@mail.gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 3 Aug 2020 12:15:35 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 3 Aug 2020 12:15:36 +0800
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+ <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
+ <bvanassche@acm.org>
+Subject: [PATCH v5] scsi: ufs: Quiesce all scsi devices before shutdown
+Date: Mon, 3 Aug 2020 12:15:36 +0800
+Message-ID: <20200803041536.6575-1-stanley.chu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 1FB26CA140231F142D06814CF4C037385A0CA463E7871E07C06AEF6C4CC617842000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200803_001047_640446_3A3FB31D 
-X-CRM114-Status: GOOD (  15.76  )
+X-CRM114-CacheID: sfid-20200803_001542_555633_18581A76 
+X-CRM114-Status: GOOD (  16.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,39 +83,123 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, wsd_upstream <wsd_upstream@mediatek.com>,
- lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Neal Liu <neal.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Stanley Chu <stanley.chu@mediatek.com>, andy.teng@mediatek.com,
+ cc.chou@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, jiajie.hao@mediatek.com, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, beanhuo@micron.com, chaotian.jing@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQ2h1bi1LdWFuZywNCg0KT24gU3VuLCAyMDIwLTA4LTAyIGF0IDA3OjUwICswODAwLCBDaHVu
-LUt1YW5nIEh1IHdyb3RlOg0KPiBIaSwgTmVhbDoNCj4gDQo+IE5lYWwgTGl1IDxuZWFsLmxpdUBt
-ZWRpYXRlay5jb20+IOaWvCAyMDIw5bm0N+aciDI55pelIOmAseS4iSDkuIvljYg0OjI55a+r6YGT
-77yaDQo+ID4NCj4gPiBNZWRpYVRlayBidXMgZmFicmljIHByb3ZpZGVzIFRydXN0Wm9uZSBzZWN1
-cml0eSBzdXBwb3J0IGFuZCBkYXRhDQo+ID4gcHJvdGVjdGlvbiB0byBwcmV2ZW50IHNsYXZlcyBm
-cm9tIGJlaW5nIGFjY2Vzc2VkIGJ5IHVuZXhwZWN0ZWQNCj4gPiBtYXN0ZXJzLg0KPiA+IFRoZSBz
-ZWN1cml0eSB2aW9sYXRpb24gaXMgbG9nZ2VkIGFuZCBzZW50IHRvIHRoZSBwcm9jZXNzb3IgZm9y
-DQo+ID4gZnVydGhlciBhbmFseXNpcyBvciBjb3VudGVybWVhc3VyZXMuDQo+ID4NCj4gPiBBbnkg
-b2NjdXJyZW5jZSBvZiBzZWN1cml0eSB2aW9sYXRpb24gd291bGQgcmFpc2UgYW4gaW50ZXJydXB0
-LCBhbmQNCj4gPiBpdCB3aWxsIGJlIGhhbmRsZWQgYnkgbXRrLWRldmFwYyBkcml2ZXIuIFRoZSB2
-aW9sYXRpb24NCj4gPiBpbmZvcm1hdGlvbiBpcyBwcmludGVkIGluIG9yZGVyIHRvIGZpbmQgdGhl
-IG11cmRlcmVyLg0KPiA+DQo+ID4gU2lnbmVkLW9mZi1ieTogTmVhbCBMaXUgPG5lYWwubGl1QG1l
-ZGlhdGVrLmNvbT4NCj4gPiAtLS0NCj4gDQo+IFtzbmlwXQ0KPiANCj4gPiArDQo+ID4gK3N0cnVj
-dCBtdGtfZGV2YXBjX2NvbnRleHQgew0KPiA+ICsgICAgICAgc3RydWN0IGRldmljZSAqZGV2Ow0K
-PiA+ICsgICAgICAgdTMyIHZpb19pZHhfbnVtOw0KPiA+ICsgICAgICAgdm9pZCBfX2lvbWVtICpk
-ZXZhcGNfcGRfYmFzZTsNCj4gDQo+IFRoaXMgaXMgZGV2YXBjIGNvbnRleHQsIHNvIHByZWZpeCAn
-ZGV2YXBjJyBpcyByZWR1bmRhbnQuDQo+IEFuZCwgd2hhdCBkb2VzICdwZCcgbWVhbj8NCg0KJ3Bk
-JyBtZWFucyBwb3dlciBkb3duLiBPZiBjb3Vyc2Ugd2Ugd291bGQgYWxzbyByZW1vdmUgaXQgYXMg
-d2VsbC4NCkkgc3VnZ2VzdCB0byBjaGFuZ2UgaXQgYXMgJ2luZnJhX2Jhc2UnLg0KDQo+IA0KPiBS
-ZWdhcmRzLA0KPiBDaHVuLUt1YW5nLg0KPiANCj4gPiArICAgICAgIHN0cnVjdCBtdGtfZGV2YXBj
-X3Zpb19pbmZvICp2aW9faW5mbzsNCj4gPiArICAgICAgIGNvbnN0IHN0cnVjdCBtdGtfZGV2YXBj
-X3BkX29mZnNldCAqb2Zmc2V0Ow0KPiA+ICsgICAgICAgY29uc3Qgc3RydWN0IG10a19kZXZhcGNf
-dmlvX2RiZ3MgKnZpb19kYmdzOw0KPiA+ICt9Ow0KPiA+ICsNCg0KX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0
-CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
-ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Currently I/O request could be still submitted to UFS device while
+UFS is working on shutdown flow. This may lead to racing as below
+scenarios and finally system may crash due to unclocked register
+accesses.
+
+To fix this kind of issues, in ufshcd_shutdown(),
+
+1. Use pm_runtime_get_sync() instead of resuming UFS device by
+   ufshcd_runtime_resume() "internally" to let runtime PM framework
+   manage and prevent concurrent runtime operations by incoming I/O
+   requests.
+
+2. Specifically quiesce all SCSI devices to block all I/O requests
+   after device is resumed.
+
+Example of racing scenario: While UFS device is runtime-suspended
+
+Thread #1: Executing UFS shutdown flow, e.g.,
+           ufshcd_suspend(UFS_SHUTDOWN_PM)
+
+Thread #2: Executing runtime resume flow triggered by I/O request,
+           e.g., ufshcd_resume(UFS_RUNTIME_PM)
+
+This breaks the assumption that UFS PM flows can not be running
+concurrently and some unexpected racing behavior may happen.
+
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/scsi/ufs/ufshcd.c | 40 ++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 35 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 307622284239..e5b99f1b826a 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -159,6 +159,12 @@ struct ufs_pm_lvl_states ufs_pm_lvl_states[] = {
+ 	{UFS_POWERDOWN_PWR_MODE, UIC_LINK_OFF_STATE},
+ };
+ 
++#define ufshcd_scsi_for_each_sdev(fn) \
++	list_for_each_entry(starget, &hba->host->__targets, siblings) { \
++		__starget_for_each_device(starget, NULL, \
++					  fn); \
++	}
++
+ static inline enum ufs_dev_pwr_mode
+ ufs_get_pm_lvl_to_dev_pwr_mode(enum ufs_pm_level lvl)
+ {
+@@ -8629,6 +8635,13 @@ int ufshcd_runtime_idle(struct ufs_hba *hba)
+ }
+ EXPORT_SYMBOL(ufshcd_runtime_idle);
+ 
++static void ufshcd_quiesce_sdev(struct scsi_device *sdev, void *data)
++{
++	/* Suspended devices are already quiesced so can be skipped */
++	if (!pm_runtime_suspended(&sdev->sdev_gendev))
++		scsi_device_quiesce(sdev);
++}
++
+ /**
+  * ufshcd_shutdown - shutdown routine
+  * @hba: per adapter instance
+@@ -8640,6 +8653,7 @@ EXPORT_SYMBOL(ufshcd_runtime_idle);
+ int ufshcd_shutdown(struct ufs_hba *hba)
+ {
+ 	int ret = 0;
++	struct scsi_target *starget;
+ 
+ 	if (!hba->is_powered)
+ 		goto out;
+@@ -8647,11 +8661,27 @@ int ufshcd_shutdown(struct ufs_hba *hba)
+ 	if (ufshcd_is_ufs_dev_poweroff(hba) && ufshcd_is_link_off(hba))
+ 		goto out;
+ 
+-	if (pm_runtime_suspended(hba->dev)) {
+-		ret = ufshcd_runtime_resume(hba);
+-		if (ret)
+-			goto out;
+-	}
++	/*
++	 * Let runtime PM framework manage and prevent concurrent runtime
++	 * operations with shutdown flow.
++	 */
++	if (pm_runtime_get_sync(hba->dev))
++		pm_runtime_put_noidle(hba->dev);
++
++	/*
++	 * Quiesce all SCSI devices to prevent any non-PM requests sending
++	 * from block layer during and after shutdown.
++	 *
++	 * Here we can not use blk_cleanup_queue() since PM requests
++	 * (with BLK_MQ_REQ_PREEMPT flag) are still required to be sent
++	 * through block layer. Therefore SCSI command queued after the
++	 * scsi_target_quiesce() call returned will block until
++	 * blk_cleanup_queue() is called.
++	 *
++	 * Besides, scsi_target_"un"quiesce (e.g., scsi_target_resume) can
++	 * be ignored since shutdown is one-way flow.
++	 */
++	ufshcd_scsi_for_each_sdev(ufshcd_quiesce_sdev);
+ 
+ 	ret = ufshcd_suspend(hba, UFS_SHUTDOWN_PM);
+ out:
+-- 
+2.18.0
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
