@@ -4,74 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F33DBC433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2020 08:58:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5EF59C433E3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2020 09:05:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C43A120719
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2020 08:58:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2FB2C20738
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2020 09:05:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="I/LZEyOj";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GEKOq4tq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C43A120719
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CCH6grH0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2FB2C20738
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jK74/uIc8lROIPAInyT3X05GWx/2cw/0uV0tCETMibU=; b=I/LZEyOj/phsxRZYXAtX1bLDD
-	gRqdwjzoDpaMDypJTqI7+0U8lk94gDxMh5j8oTNknJosHKvF3uv8OaRjylvoSx9O2pCIvsp7uB99s
-	FsyvaJ3maw6XJle+vDF7rnA3WwrPLgZVdrOORt7xpoStAg9elTSNS72wZp5+kneiyEYq4ZmJv0gyD
-	0Y4FfPJVtEfoDJfkXotEMQDn0Xz1NxCeo0U0yvuPABIZ3q62eBmkH62E3lpRvbtvruZJ9FWNLzM1r
-	Z0ceuJOh5FkoUtSyEBCUp9zJpYXxnkS5DXNw79hrtG1GVGJ6GJADfM/qcje2tx6vmrGiabG560oWX
-	gpy//2LUg==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hwSMjsukcFYpPG+mruFv4DvKWW3C4fzhK6BHk9x2K7E=; b=CCH6grH0KkyIxz2jqIf9nhG78Z
+	gmSQfkU1KI8X6hCDSdCX1snT5jY7MHwzCP/RLrYmxZjlZYj05sL7o1IpfEbIvXJcNW5L3JO8LS07t
+	4TnPzwFM8dFzf8I0C9MfPUgEFBqM5WOBX1eJjKFSbm8Vy7uzyXrW5EtMyNenKVZlTdoWdOBOm2YkT
+	R2q8lNIBrw+a6O5m+F1NRX14zPO1z75LhZqtGDWdKkC/B9HlXHYXgdh/b+WnZxXUhlkyyjqzE7yCV
+	cfwn6qPhQL9xEc/34GvKwyKTocCFLxu5K/dR/ULKF8JHGFcVdin7zv0duAxwp7aCNuYva01OjKYRt
+	l4H2PHAQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k2WIB-0003Oq-1Z; Mon, 03 Aug 2020 08:57:59 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1k2WP2-0004my-1I; Mon, 03 Aug 2020 09:05:04 +0000
+Received: from labrats.qualcomm.com ([199.106.110.90])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k2WI5-0003Ld-GI; Mon, 03 Aug 2020 08:57:54 +0000
-X-UUID: fcfb42a2155c4891ab5cc025f81ed5a1-20200803
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ERSI7lvLnv/tu/AUYaGM8CHfyvlRJpUTDWsBR5j2Xvw=; 
- b=GEKOq4tqqwW6xqawGaHXbMe+hHC8exyqRuyublY1HCUObDpmnSVWMDAd+BWB52HClfd1yKR+5/qR7vVfq11eAxXUKJcXbv8qJO0Z/kDRIWuOv3eVmD9OylJ4eWaeoslnoa9PIxffOUcorgcZMzfYjQ6+5jRaRKjfb9qq/sTHwPM=;
-X-UUID: fcfb42a2155c4891ab5cc025f81ed5a1-20200803
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <hsin-hsiung.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1860452072; Mon, 03 Aug 2020 00:57:46 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 3 Aug 2020 01:57:37 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 3 Aug 2020 16:57:35 +0800
-Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 3 Aug 2020 16:57:35 +0800
-From: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-To: Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH 1/3] spmi: Add driver shutdown support
-Date: Mon, 3 Aug 2020 16:57:25 +0800
-Message-ID: <1596445047-2975-2-git-send-email-hsin-hsiung.wang@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1596445047-2975-1-git-send-email-hsin-hsiung.wang@mediatek.com>
-References: <1596445047-2975-1-git-send-email-hsin-hsiung.wang@mediatek.com>
-MIME-Version: 1.0
-X-MTK: N
+ id 1k2WOw-0004kO-FH; Mon, 03 Aug 2020 09:05:00 +0000
+IronPort-SDR: dajFYW/VqHUFnplPAQ6+aKrMR0HZvwvm685X8F5DC/fWctPM/9JsX8kq3BWkU8uY90lAO0mPQx
+ nX/XlFF4TI9zd5l8fnJ6LlyY4Z6e1Lbf253DcqQFplP3OHX3TeNC0f5OTOyIbNUEFboLr+YbV0
+ bE8ODrWu7SgUzjBLKyJ6qqAGMZ3j/GGTFvNUwSeGzecsW1Vj4Y1zO/4ECpD46yva7VG+NpXc2D
+ Q1DjEEg4Zyo20+TFkx2lXuBekaH7NHFL0VHBETRpfK0CY004TdcvRwC3JGY+BDvpM77Sp4ohp4
+ 9w4=
+X-IronPort-AV: E=Sophos;i="5.75,429,1589266800"; d="scan'208";a="47240952"
+Received: from unknown (HELO ironmsg05-sd.qualcomm.com) ([10.53.140.145])
+ by labrats.qualcomm.com with ESMTP; 03 Aug 2020 02:04:50 -0700
+Received: from stor-presley.qualcomm.com ([192.168.140.85])
+ by ironmsg05-sd.qualcomm.com with ESMTP; 03 Aug 2020 02:04:49 -0700
+Received: by stor-presley.qualcomm.com (Postfix, from userid 359480)
+ id 71C3D214E4; Mon,  3 Aug 2020 02:04:49 -0700 (PDT)
+From: Can Guo <cang@codeaurora.org>
+To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
+ rnayak@codeaurora.org, linux-scsi@vger.kernel.org, kernel-team@android.com,
+ saravanak@google.com, salyzyn@google.com, cang@codeaurora.org
+Subject: [PATCH v9 1/9] scsi: ufs: Add checks before setting clk-gating states
+Date: Mon,  3 Aug 2020 02:04:36 -0700
+Message-Id: <1596445485-19834-2-git-send-email-cang@codeaurora.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1596445485-19834-1-git-send-email-cang@codeaurora.org>
+References: <1596445485-19834-1-git-send-email-cang@codeaurora.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200803_045753_705631_3CBDFE93 
-X-CRM114-Status: GOOD (  16.32  )
+X-CRM114-CacheID: sfid-20200803_050458_714553_DEF5B637 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,73 +73,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- Stephen Boyd <sboyd@kernel.org>, linux-arm-msm@vger.kernel.org,
- Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Bart Van Assche <bvanassche@acm.org>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ open list <linux-kernel@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Stanley Chu <stanley.chu@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add new shutdown() method.  Use it in the standard driver model style.
+Clock gating features can be turned on/off selectively which means its
+state information is only important if it is enabled. This change makes
+sure that we only look at state of clk-gating if it is enabled.
 
-Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Signed-off-by: Can Guo <cang@codeaurora.org>
+Reviewed-by: Avri Altman <avri.altman@wdc.com>
+Reviewed-by: Hongwu Su <hongwus@codeaurora.org>
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Bean Huo <beanhuo@micron.com>
 ---
- drivers/spmi/spmi.c  | 12 ++++++++++++
- drivers/spmi/spmi.c  | 12 ++++++++++++
- include/linux/spmi.h |  1 +
- 2 files changed, 13 insertions(+)
+ drivers/scsi/ufs/ufshcd.c | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/spmi/spmi.c b/drivers/spmi/spmi.c
-index c16b60f..5fde024 100644
---- a/drivers/spmi/spmi.c
-+++ b/drivers/spmi/spmi.c
-@@ -357,6 +357,17 @@ static int spmi_drv_remove(struct device *dev)
- 	return 0;
- }
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 3076222..5acb38c 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -1839,6 +1839,8 @@ static void ufshcd_init_clk_gating(struct ufs_hba *hba)
+ 	if (!ufshcd_is_clkgating_allowed(hba))
+ 		return;
  
-+static void spmi_drv_shutdown(struct device *dev)
-+{
-+	const struct spmi_driver *sdrv = to_spmi_driver(dev->driver);
++	hba->clk_gating.state = CLKS_ON;
 +
-+	if (!sdrv)
-+		return;
-+
-+
-+	if (sdrv->shutdown)
-+		sdrv->shutdown(to_spmi_device(dev));
-+}
-+}
-+
- static int spmi_drv_uevent(struct device *dev, struct kobj_uevent_env *env)
- {
- 	int ret;
-@@ -373,6 +384,7 @@ static struct bus_type spmi_bus_type = {
-@@ -373,6 +384,7 @@ static struct bus_type spmi_bus_type = {
- 	.match		= spmi_device_match,
- 	.probe		= spmi_drv_probe,
- 	.remove		= spmi_drv_remove,
-+	.shutdown	= spmi_drv_shutdown,
- 	.uevent		= spmi_drv_uevent,
- };
+ 	hba->clk_gating.delay_ms = 150;
+ 	INIT_DELAYED_WORK(&hba->clk_gating.gate_work, ufshcd_gate_work);
+ 	INIT_WORK(&hba->clk_gating.ungate_work, ufshcd_ungate_work);
+@@ -2541,7 +2543,8 @@ static int ufshcd_queuecommand(struct Scsi_Host *host, struct scsi_cmnd *cmd)
+ 		err = SCSI_MLQUEUE_HOST_BUSY;
+ 		goto out;
+ 	}
+-	WARN_ON(hba->clk_gating.state != CLKS_ON);
++	WARN_ON(ufshcd_is_clkgating_allowed(hba) &&
++		(hba->clk_gating.state != CLKS_ON));
  
-diff --git a/include/linux/spmi.h b/include/linux/spmi.h
-index 394a3f6..729bcbf 100644
---- a/include/linux/spmi.h
-+++ b/include/linux/spmi.h
-@@ -138,6 +138,7 @@ struct spmi_driver {
- 	struct device_driver driver;
- 	int	(*probe)(struct spmi_device *sdev);
- 	void	(*remove)(struct spmi_device *sdev);
-+	void	(*shutdown)(struct spmi_device *sdev);
- };
+ 	lrbp = &hba->lrb[tag];
  
- static inline struct spmi_driver *to_spmi_driver(struct device_driver *d)
+@@ -8326,8 +8329,11 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 		/* If link is active, device ref_clk can't be switched off */
+ 		__ufshcd_setup_clocks(hba, false, true);
+ 
+-	hba->clk_gating.state = CLKS_OFF;
+-	trace_ufshcd_clk_gating(dev_name(hba->dev), hba->clk_gating.state);
++	if (ufshcd_is_clkgating_allowed(hba)) {
++		hba->clk_gating.state = CLKS_OFF;
++		trace_ufshcd_clk_gating(dev_name(hba->dev),
++					hba->clk_gating.state);
++	}
+ 
+ 	/* Put the host controller in low power mode if possible */
+ 	ufshcd_hba_vreg_set_lpm(hba);
+@@ -8467,6 +8473,11 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 	if (hba->clk_scaling.is_allowed)
+ 		ufshcd_suspend_clkscaling(hba);
+ 	ufshcd_setup_clocks(hba, false);
++	if (ufshcd_is_clkgating_allowed(hba)) {
++		hba->clk_gating.state = CLKS_OFF;
++		trace_ufshcd_clk_gating(dev_name(hba->dev),
++					hba->clk_gating.state);
++	}
+ out:
+ 	hba->pm_op_in_progress = 0;
+ 	if (ret)
 -- 
-2.6.4
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a Linux Foundation Collaborative Project.
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
