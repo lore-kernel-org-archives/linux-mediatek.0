@@ -2,80 +2,110 @@ Return-Path: <SRS0=TVmU=BN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 61ABFC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2020 03:11:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D9D0C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2020 03:12:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 307B220738
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2020 03:11:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5160A20738
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2020 03:12:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XeYDJysx";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="fVupjEeN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 307B220738
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bjCplc0e"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5160A20738
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=acm.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gyYolAfa5nui4UrqHQ8IbVb4+zg4fCUBk6JWmaPoTqU=; b=XeYDJysxUvTOlbAZZMh02Rt2Z
-	PC9hJdDAF34i5a5cJcPd3sLTsdL7wxPiqHKFrj3vbdMpWMa5njO85YbBm7cPR5LGiBcTuzN28P+db
-	k9uCoxYLRe+HPF4Qj7jLOJBL3UlhYOKzQV+gZWY3VG7bryJcwAVixVOkvS4jB+k2+xFKz95U1u/5R
-	4ZT8hIAkLxdJuWfi8NGHpu7Fy8B3GoceLD+/xMfmHgDP7sXo70p23cPXtE9NBS9KMP2MnIfG75vLe
-	gJ2OtHGcwDY3FppOYdOmT8nTnIhq/SYH4VD2nt7WcwYwwaIeCsiPSB8gRqqp/densys0/vWUFI1FA
-	A66Q1jC6A==;
+	 bh=/30GtvNg0ZlCMOK6k6ERj8cSNUM1rZeShTw3he7fSoI=; b=bjCplc0eEE0hNhPKebmBhqGjM
+	nnn9zIi+9dq4qsz2l0OtfbyPKsqO1v4UjuDLgALImcjQM+QTlMAB/2kCkMtQSCCbTznein+2AT7ss
+	EhJDRewVmznR/ar4Wjr/lxaYrZixyO6oorM9rU2mqIOzgU2zS3YLHL+IMmzy4GgzfCWN5c/ixVlx/
+	Bl8Vf5k/zoj16UtKN1p4XuOXyXgcH3WPJOEmDAsDloUwa2MiMeFUxPrYu36FtgQ1aDzANQHJ+2xgS
+	xgg1q1QwFe0W4Ec3RSPgrL8GgQy7t7xdISGjomO4e9ldc6aLXOBlBirmrG1CBXkdzn3BqMgC5KhdS
+	x8yTXUAow==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k2Qsx-0002sY-Oq; Mon, 03 Aug 2020 03:11:35 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1k2QtY-0002vR-DV; Mon, 03 Aug 2020 03:12:12 +0000
+Received: from mail-pl1-f196.google.com ([209.85.214.196])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k2Qsw-0002r1-8L
- for linux-mediatek@lists.infradead.org; Mon, 03 Aug 2020 03:11:35 +0000
-X-UUID: 022130ba9c354e6e932638bafc899f24-20200802
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=ALLw9ZkoA1S/JkwkqnRLE4IdmraD+sOk9I6zVmWez/M=; 
- b=fVupjEeN3UxOG2tf1l65DYvFaQuKb+ayNxwRuhGCOn7ZrjEc4SfexFEbjML0e7XXNaNSypddLZdxnmvGyuz1Pb1YjeaU2skoUWex115JbiGuzu4VRt+VW4LXKf+lhtERrQ4f00c87xBlO0kS4uS69jdjx/xzq02dHM6Z+ANDHG0=;
-X-UUID: 022130ba9c354e6e932638bafc899f24-20200802
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <frankie.chang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 339783055; Sun, 02 Aug 2020 19:11:28 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 2 Aug 2020 20:11:17 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 3 Aug 2020 11:11:15 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 3 Aug 2020 11:11:15 +0800
-Message-ID: <1596424276.5207.13.camel@mtkswgap22>
-Subject: Re: [PATCH v6 2/3] binder: add trace at free transaction.
-From: Frankie Chang <Frankie.Chang@mediatek.com>
-To: Todd Kjos <tkjos@google.com>
-Date: Mon, 3 Aug 2020 11:11:16 +0800
-In-Reply-To: <CAHRSSEwqbbTZgaE-KLC0-AMHzRVU3O2AwUzW9i5u54tVmkFAQA@mail.gmail.com>
-References: <1595252430.5899.6.camel@mtkswgap22>
- <1595906401-11985-1-git-send-email-Frankie.Chang@mediatek.com>
- <1595906401-11985-3-git-send-email-Frankie.Chang@mediatek.com>
- <CAHRSSEwqbbTZgaE-KLC0-AMHzRVU3O2AwUzW9i5u54tVmkFAQA@mail.gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1k2QtV-0002uZ-5z; Mon, 03 Aug 2020 03:12:10 +0000
+Received: by mail-pl1-f196.google.com with SMTP id b9so20028415plx.6;
+ Sun, 02 Aug 2020 20:12:07 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=nf3xdvRmh1qxPw9xaehxZVxmJAEdSCtmDvi8x8RGLZA=;
+ b=f6v0tyL9gl/VCNfMqNuOXLhqeiV1Q0ojkyhszYjVO4RVJpGI7IyATYJphjNeKlxZa+
+ ZAr9PcgNyMabugxTPM0XSQ/bz/aIFn3J4vunoj3tzagsP/tESEwXpmEkTztAWz9NjQl3
+ dAOMgjxNkOGKcSdHQ5XOsMuCJQbXlzh+16R06YtAvdu+Bwp5VVJa8q1ZcLLpqzeecV3O
+ zHNj1HkHnPMF5E+ys+6UYiicy8NLaRMDHLmGm5q1WFVgci8IqdzT7uYCInCaYRAgAnPP
+ phsbHlr5ahfA4F3jqSfmH1NkKcYi0xwZ+GuK3HDpTqrZ6X+jLOsOxFkddKixmGoUOCtk
+ XxYw==
+X-Gm-Message-State: AOAM531r4+yZNZrdapHTrDlQ2wAbVin88aVPo/wGp7i6/I/C/HdfQNb1
+ xLqxuq6iPDXDL0DHgmJGcW4=
+X-Google-Smtp-Source: ABdhPJywN7xeGc+45Wflkb5T3yOEfJSEcVl2zr7qKaDme2kp5gFS9wAygKUggiTM15WxJAV+n+gG8g==
+X-Received: by 2002:a17:902:6bc2:: with SMTP id
+ m2mr12379497plt.119.1596424325859; 
+ Sun, 02 Aug 2020 20:12:05 -0700 (PDT)
+Received: from [192.168.3.219] (c-73-241-217-19.hsd1.ca.comcast.net.
+ [73.241.217.19])
+ by smtp.gmail.com with ESMTPSA id y10sm15060677pjv.55.2020.08.02.20.12.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 02 Aug 2020 20:12:04 -0700 (PDT)
+Subject: Re: [PATCH v4] scsi: ufs: Cleanup completed request without interrupt
+ notification
+To: Can Guo <cang@codeaurora.org>
+References: <20200724140246.19434-1-stanley.chu@mediatek.com>
+ <SN6PR04MB4640B5FC06968244DDACB8BEFC720@SN6PR04MB4640.namprd04.prod.outlook.com>
+ <1596159018.17247.53.camel@mtkswgap22>
+ <97f1dfb0-41b6-0249-3e82-cae480b0efb6@acm.org>
+ <8b0a158a7c3ee2165e09290996521ffc@codeaurora.org>
+ <f45c6c47-ffc5-3f8e-3234-9e5989dbf996@acm.org>
+ <548b602daa1e15415625cb8d1f81a208@codeaurora.org>
+From: Bart Van Assche <bvanassche@acm.org>
+Autocrypt: addr=bvanassche@acm.org; prefer-encrypt=mutual; keydata=
+ mQENBFSOu4oBCADcRWxVUvkkvRmmwTwIjIJvZOu6wNm+dz5AF4z0FHW2KNZL3oheO3P8UZWr
+ LQOrCfRcK8e/sIs2Y2D3Lg/SL7qqbMehGEYcJptu6mKkywBfoYbtBkVoJ/jQsi2H0vBiiCOy
+ fmxMHIPcYxaJdXxrOG2UO4B60Y/BzE6OrPDT44w4cZA9DH5xialliWU447Bts8TJNa3lZKS1
+ AvW1ZklbvJfAJJAwzDih35LxU2fcWbmhPa7EO2DCv/LM1B10GBB/oQB5kvlq4aA2PSIWkqz4
+ 3SI5kCPSsygD6wKnbRsvNn2mIACva6VHdm62A7xel5dJRfpQjXj2snd1F/YNoNc66UUTABEB
+ AAG0JEJhcnQgVmFuIEFzc2NoZSA8YnZhbmFzc2NoZUBhY20ub3JnPokBOQQTAQIAIwUCVI67
+ igIbAwcLCQgHAwIBBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFcPTXFzhAJ8QkH/1AdXblKL65M
+ Y1Zk1bYKnkAb4a98LxCPm/pJBilvci6boefwlBDZ2NZuuYWYgyrehMB5H+q+Kq4P0IBbTqTa
+ jTPAANn62A6jwJ0FnCn6YaM9TZQjM1F7LoDX3v+oAkaoXuq0dQ4hnxQNu792bi6QyVdZUvKc
+ macVFVgfK9n04mL7RzjO3f+X4midKt/s+G+IPr4DGlrq+WH27eDbpUR3aYRk8EgbgGKvQFdD
+ CEBFJi+5ZKOArmJVBSk21RHDpqyz6Vit3rjep7c1SN8s7NhVi9cjkKmMDM7KYhXkWc10lKx2
+ RTkFI30rkDm4U+JpdAd2+tP3tjGf9AyGGinpzE2XY1K5AQ0EVI67igEIAKiSyd0nECrgz+H5
+ PcFDGYQpGDMTl8MOPCKw/F3diXPuj2eql4xSbAdbUCJzk2ETif5s3twT2ER8cUTEVOaCEUY3
+ eOiaFgQ+nGLx4BXqqGewikPJCe+UBjFnH1m2/IFn4T9jPZkV8xlkKmDUqMK5EV9n3eQLkn5g
+ lco+FepTtmbkSCCjd91EfThVbNYpVQ5ZjdBCXN66CKyJDMJ85HVr5rmXG/nqriTh6cv1l1Js
+ T7AFvvPjUPknS6d+BETMhTkbGzoyS+sywEsQAgA+BMCxBH4LvUmHYhpS+W6CiZ3ZMxjO8Hgc
+ ++w1mLeRUvda3i4/U8wDT3SWuHcB3DWlcppECLkAEQEAAYkBHwQYAQIACQUCVI67igIbDAAK
+ CRBxXD01xc4QCZ4dB/0QrnEasxjM0PGeXK5hcZMT9Eo998alUfn5XU0RQDYdwp6/kMEXMdmT
+ oH0F0xB3SQ8WVSXA9rrc4EBvZruWQ+5/zjVrhhfUAx12CzL4oQ9Ro2k45daYaonKTANYG22y
+ //x8dLe2Fv1By4SKGhmzwH87uXxbTJAUxiWIi1np0z3/RDnoVyfmfbbL1DY7zf2hYXLLzsJR
+ mSsED/1nlJ9Oq5fALdNEPgDyPUerqHxcmIub+pF0AzJoYHK5punqpqfGmqPbjxrJLPJfHVKy
+ goMj5DlBMoYqEgpbwdUYkH6QdizJJCur4icy8GUNbisFYABeoJ91pnD4IGei3MTdvINSZI5e
+Message-ID: <80f5e213-502b-3532-e782-6f26a778274e@acm.org>
+Date: Sun, 2 Aug 2020 20:12:03 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 538817EDDCF731873A891B6A7D5A4FC560716D01388453026712EC4D613164242000:8
-X-MTK: N
+In-Reply-To: <548b602daa1e15415625cb8d1f81a208@codeaurora.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200802_231134_453987_E78C4C86 
-X-CRM114-Status: GOOD (  22.78  )
+X-CRM114-CacheID: sfid-20200802_231209_277899_02C0FA38 
+X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,129 +117,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream <wsd_upstream@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>,
- Arve =?ISO-8859-1?Q?Hj=F8nnev=E5g?= <arve@android.com>,
- Jian-Min Liu <Jian-Min.Liu@mediatek.com>, linux-mediatek@lists.infradead.org,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>
+Cc: linux-scsi@vger.kernel.org, martin.petersen@oracle.com,
+ andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org,
+ asutoshd@codeaurora.org, Avri Altman <Avri.Altman@wdc.com>,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ alim.akhtar@samsung.com, matthias.bgg@gmail.com,
+ Stanley Chu <stanley.chu@mediatek.com>, chaotian.jing@mediatek.com,
+ cc.chou@mediatek.com, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-07-31 at 11:50 -0700, Todd Kjos wrote:
-> On Mon, Jul 27, 2020 at 8:28 PM Frankie Chang
-> <Frankie.Chang@mediatek.com> wrote:
-> >
-> > From: "Frankie.Chang" <Frankie.Chang@mediatek.com>
-> >
-> > Since the original trace_binder_transaction_received cannot
-> > precisely present the real finished time of transaction, adding a
-> > trace_binder_txn_latency_free at the point of free transaction
-> > may be more close to it.
-> >
-> > Signed-off-by: Frankie.Chang <Frankie.Chang@mediatek.com>
-> > ---
-> >  drivers/android/binder.c       |    6 ++++++
-> >  drivers/android/binder_trace.h |   27 +++++++++++++++++++++++++++
-> >  2 files changed, 33 insertions(+)
-> >
-> > diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-> > index 2df146f..1e6fc40 100644
-> > --- a/drivers/android/binder.c
-> > +++ b/drivers/android/binder.c
-> > @@ -1522,6 +1522,9 @@ static void binder_free_transaction(struct binder_transaction *t)
-> >          * If the transaction has no target_proc, then
-> >          * t->buffer->transaction has already been cleared.
-> >          */
-> > +       spin_lock(&t->lock);
-> > +       trace_binder_txn_latency_free(t);
-> > +       spin_unlock(&t->lock);
-> 
-> Hmm. I don't prefer taking the lock just to call a trace. It doesn't
-> make clear why the lock has to be taken. I'd prefer something like:
-> 
-> if (trace_binder_txn_latency_free_enabled()) {
-c
-> }
-> 
-> And then the trace would use the passed-in values instead of accessing
-> via t->to_proc/to_thread.
-> 
-Then we still add lock protection in the hook function, when trace is
-disable ?
+On 2020-07-31 16:17, Can Guo wrote:
+> For scsi_dma_unmap() part, that is true - we should make it serialized with
+> any other completion paths. I've found it during my fault injection test, so
+> I've made a patch to fix it, but it only comes in my next error recovery
+> enhancement patch series. Please check the attachment.
 
-Or we also pass these to hook function, no matter the trace is enable or
-not.I think this way is more clear that the lock protects @from,
-@to_proc and @to_thread.Then, there is no need to add the lock in hook
-function.
+Hi Can,
 
-int from_proc, from_thread, to_proc, to_thread;
- 
-spin_lock(&t->lock);
-from_proc = t->from ? t->from->proc->pid : 0;
-from_thread = t->from ? t->from->pid :0;
-to_proc = t->to_proc ? t->to_proc->pid : 0;
-to_thread = t->to_thread ? t->to_thread->pid : 0;
-spin_unlock(&t->lock);
-trace_binder_txn_latency_free(t, from_proc, from_thread, to_proc,
-to_pid);
+It is not clear to me how that patch serializes scsi_dma_unmap() against
+other completion paths? Doesn't the regular completion path call
+__ufshcd_transfer_req_compl() without holding the host lock?
 
-> >         binder_free_txn_fixups(t);
-> >         kfree(t);
-> >         binder_stats_deleted(BINDER_STAT_TRANSACTION);
-> > @@ -3093,6 +3096,9 @@ static void binder_transaction(struct binder_proc *proc,
-> >         kfree(tcomplete);
-> >         binder_stats_deleted(BINDER_STAT_TRANSACTION_COMPLETE);
-> >  err_alloc_tcomplete_failed:
-> > +       spin_lock(&t->lock);
-> > +       trace_binder_txn_latency_free(t);
-> > +       spin_unlock(&t->lock);
-> >         kfree(t);
-> >         binder_stats_deleted(BINDER_STAT_TRANSACTION);
-> >  err_alloc_t_failed:
-> > diff --git a/drivers/android/binder_trace.h b/drivers/android/binder_trace.h
-> > index 6731c3c..8ac87d1 100644
-> > --- a/drivers/android/binder_trace.h
-> > +++ b/drivers/android/binder_trace.h
-> > @@ -95,6 +95,33 @@
-> >                   __entry->thread_todo)
-> >  );
-> >
-> > +TRACE_EVENT(binder_txn_latency_free,
-> > +       TP_PROTO(struct binder_transaction *t),
-> > +       TP_ARGS(t),
-> > +       TP_STRUCT__entry(
-> > +               __field(int, debug_id)
-> > +               __field(int, from_proc)
-> > +               __field(int, from_thread)
-> > +               __field(int, to_proc)
-> > +               __field(int, to_thread)
-> > +               __field(unsigned int, code)
-> > +               __field(unsigned int, flags)
-> > +       ),
-> > +       TP_fast_assign(
-> > +               __entry->debug_id = t->debug_id;
-> > +               __entry->from_proc = t->from ? t->from->proc->pid : 0;
-> > +               __entry->from_thread = t->from ? t->from->pid : 0;
-> > +               __entry->to_proc = t->to_proc ? t->to_proc->pid : 0;
-> > +               __entry->to_thread = t->to_thread ? t->to_thread->pid : 0;
-> > +               __entry->code = t->code;
-> > +               __entry->flags = t->flags;
-> > +       ),
-> > +       TP_printk("transaction=%d from %d:%d to %d:%d flags=0x%x code=0x%x",
-> > +                 __entry->debug_id, __entry->from_proc, __entry->from_thread,
-> > +                 __entry->to_proc, __entry->to_thread, __entry->code,
-> > +                 __entry->flags)
-> > +);
-> > +
-> >  TRACE_EVENT(binder_transaction,
-> >         TP_PROTO(bool reply, struct binder_transaction *t,
-> >                  struct binder_node *target_node),
-> > --
-> > 1.7.9.5
+Thanks,
+
+Bart.
+
 
 _______________________________________________
 Linux-mediatek mailing list
