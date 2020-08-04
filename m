@@ -2,91 +2,72 @@ Return-Path: <SRS0=p2pa=BO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6BD7BC433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 11:45:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E197CC433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 12:13:12 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 41B8220738
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 11:45:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B6E592177B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 12:13:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3gtOBr+U";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="RzHAuAEm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 41B8220738
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HXgAHd+s"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B6E592177B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linux-m68k.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:From:
-	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=A1gkzEyY5nSfIpW1XbxUdkIoReRbcZnKaVzvlL7swYA=; b=3gtOBr+UpVHkV+YzyjqhFvCCq
-	hk4soJdRiJIfjVPHvMx1+XPh5qy6T695nOe6Jlaa6w3ghpBAigmSWJDXW8ToDmLBkpItrgAevF+O+
-	eF7PZHzMvx8Mp1vt3J8bufa+pSVVQdrThsCqUOAnTAA8ot16LIx2TRXtYf3NAC1dBrjkpBWoikDL6
-	gUevk6LSohMGYAxEzrmLvs3pittEugMs6f9vKXSWh2WKOAMxVizPT0DG/ZQa/fQlxIiFWWdSfuAre
-	gIPdcCrdS+v4iybH/42uzZ4T0i3B0aHAqPX95aVeCXY1nWmDJjrvRS7q3CAivH2Yfm1//tMFmzF0Y
-	jLunLVoyA==;
+	 bh=ySxqEKjtyXE0ohwixg7NgUDabZLWJrYCdhvVq1lU5u4=; b=HXgAHd+shW0NVrg1XJo7yl78Y
+	aq/DXCAiH8vhc+CoQ7++TLY4wQbkb81VZjGgluC4avtV2WFhMS9r2hjaGFXLGe71GnNt5QMaSsDxJ
+	QNSyFND0vfVhooePEoqMNCTbWj2PUHtmxYDxZY6cyMdkWE+5KEkB5eALIMCRkzqBWoP+/QRvaBZfb
+	FnugXO2e68TSKGhT7SYwLj0iaXKX6CxGBzjAlpridTVmlCOlAPgBe8fOUQHUrc2KL8aGKZkEgL/GP
+	uJP3nCCnbUjdfcVGGfShtyZpby/8a1MFc/Kn4bNC74buV4+6ixGpFQ33YGouCrlbXYOwgLM3ioFgU
+	kQxNEnazw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k2vNW-0007b1-J0; Tue, 04 Aug 2020 11:45:10 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1k2voV-0001AK-Nb; Tue, 04 Aug 2020 12:13:03 +0000
+Received: from mail-oi1-f193.google.com ([209.85.167.193])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k2vNU-0007aV-Ot; Tue, 04 Aug 2020 11:45:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1596541499;
- bh=UjeGRcpAgU30m1QdVj6HpRLtLtjKyy+eXr8UxSxBC2I=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=RzHAuAEm5lW/tClgy18cHL4hru1l1rMwSaAg//nTlObJHSu8DjA/V03PKGCdtt/mj
- T2MH7rcGqzYMtXfVNdCpiT11+p7KPYC4Iiw8hRjFKrjP+OWkvAoraG7P0SsX1EbhGB
- LPMGOfHaMbvx29DNPnOzjGXzvu3LMHBk2eQ8dgTQ=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [217.61.144.119] ([217.61.144.119]) by web-mail.gmx.net
- (3c-app-gmx-bs08.server.lan [172.19.170.59]) (via HTTP); Tue, 4 Aug 2020
- 11:53:28 +0200
+ id 1k2voQ-00019Z-UV; Tue, 04 Aug 2020 12:12:59 +0000
+Received: by mail-oi1-f193.google.com with SMTP id k4so36138404oik.2;
+ Tue, 04 Aug 2020 05:12:57 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PO9J9HS1PBC7NzRFj8oPcc40kwBpzKOr6JMPb3RGCwI=;
+ b=AHXeYir253i2sP4wde96X89eKpYwMH/+1hzV4cqGnF0Y3NcOPQabJ3hbsdjCxqJzuP
+ SC/vCKesDiIdqXtV7Ug9v5fIdnyDyRYvQtLgfNEdGt7kVrynpXqxUE4fPIlieLDP30lB
+ fJ9nCDMsMBRhICzYBbb27bFrcGqo/MsinAd9Nn4C+4s1vOeiXrMEXMKR1YziJovL8SJo
+ m1GKMeyt/yDX+nPy8CJbgGK4clRKv67ufmNm0r6zwOaC4FVW2+hMILJRzODLl94Mtvgh
+ UTIxFF3udmF8BCyvNnLbL092RWLCAmw12UR5PXh2QcV12fIPx4mJ/g0aKdO9lccyT7tn
+ EKyg==
+X-Gm-Message-State: AOAM531LYGB5kD442ncFv4E6+BMtuoEbFu+2V4BIs/OqdFzgRKVIc9V3
+ Y1xNld0Xg9GPpr7+hIcaOqjusufjfNZBeAwmxsA=
+X-Google-Smtp-Source: ABdhPJy+qMQTRq8deo5ciXBpF5zQuAaoPjC6/y+Q96LkXpV5AoEfncTl+6PXLfMnptNO7gLF0ZxNsXi3fVsvVuIVsak=
+X-Received: by 2002:aca:adc4:: with SMTP id w187mr2923237oie.153.1596543176297; 
+ Tue, 04 Aug 2020 05:12:56 -0700 (PDT)
 MIME-Version: 1.0
-Message-ID: <trinity-a7ac2cda-c860-47ac-8451-fd6d7338882f-1596534808733@3c-app-gmx-bs08>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: Aw: Re: Re: Re: [PATCH v2 1/5] drm/mediatek: config component
- output by device node port
-Date: Tue, 4 Aug 2020 11:53:28 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <CAAOTY_-H3L=uJNJRF1VedbwXNwY2N-q4F6A-NsdNwbQswG0D-Q@mail.gmail.com>
-References: <20200728111800.77641-1-frank-w@public-files.de>
- <20200728111800.77641-2-frank-w@public-files.de>
- <CAAOTY_8nm0KDHFzOX9+qTTHOUd0Vik063J+rScu_y-hTBTkrCQ@mail.gmail.com>
- <trinity-2bdb3521-256a-4d4d-928a-be9b8c179d4c-1596355539029@3c-app-gmx-bs58>
- <CAAOTY__TsqrfRX-z+DE0+X_UzxBqChJ+VdyQG6z9N6Qr4bn2Kg@mail.gmail.com>
- <trinity-b0ca2ee2-259a-4a1e-86ee-63b093202060-1596451368067@3c-app-gmx-bap36>
- <CAAOTY_-H3L=uJNJRF1VedbwXNwY2N-q4F6A-NsdNwbQswG0D-Q@mail.gmail.com>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:QwdKZO4FiZV3+KlU6ywm3BaZAsIcXy9QykjG6eYTalqdFz5Z5rxuwafBGe4o0IIGaE/T3
- IM18u3freut5DoyOqZTzGUJNsmyDgRhxC3X8mikKs4z7ufPjdoazrFfJp12P3/XW4D6QtZt9Fw4S
- n9IE8ebt6D9QQN0ZDGeEs9dm16iwIlNJiu5t2KeTT7U+OPz9gEAfunzYykwy0pZvI0MFblVNRdau
- hnU1lNQGcu5o+FktIAric9ivM1nW1PzRBuSe3xi+LxVzugqmzLTtvoj6x3o4FuEW4JasicgSKdTC
- Cg=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:HSMhLchRKtc=:rBHWREJabF0D0nKyGCMax3
- mgB0vVbS3MYX9wVj1x+dXy9xNRSYuSCB47Q49TvJlEIF8B2xYhSNy7Kr4drWSWS0CCcMz/UJq
- DcceSDx56kUWQD9N8UoZuDpGHxq6uaLy9bCQ7lmyU1cbzK3d8KNAoEpLTqz5SO1nXUonzlFr8
- hPynFyn1ROJnx1s103DH2MGFrS/rx2qJRMVGHnoiHi1Yh6WIp+TSGcLp+j8sto2E2S0ts7BOX
- E3UIjy4hpGC0M/KMZjP24wnuznSdKyaXjDpbhu3inHBnsnpr2MY3MHUSWomdo3KXpsZoDPQBe
- Op9YmCgfBxMTdI9gusujdWE56sQU90nQzjSTmD1echTG+wCIZCOojd2sR21qtioga4877uY/y
- OW9luTt+ozeehCsW7p+6QW56nJrsaMS4hAofnP2J5KGfa7XEOwej93RzE5OSe/lHEci+Sej8Q
- sI5x0nU7101Te5vu9HgqOLqsND3jsj6Ydu7oFk+Jm5SKnOYconSVWk1E4/jkPfh+80ouWGtUW
- 2OdoqiaPtWJ65RvguK8bvnynzrMaEaCCoHd0fUP8Mx6IQasE5pVXH/tKoX/My8C/Lkn2B2SQ9
- E6ePs68yTKvCJQ9acZvsP7uSdzjwbOywj84BICln3MxrevCTtOMjUF3PAd8vmgks8hUXWtpcC
- Ant8iRBfXfV1cxdGUSGejTKdFjBbQ9s5HO6EpJCg8Tg7hi79vzWYVLYlIcEMA2pD1ND4=
+References: <20200722022514.1283916-1-robh@kernel.org>
+ <20200722022514.1283916-18-robh@kernel.org>
+In-Reply-To: <20200722022514.1283916-18-robh@kernel.org>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Tue, 4 Aug 2020 14:12:44 +0200
+Message-ID: <CAMuHMdWVWoQDc3MMv9LjA+hA1EoXQjVM-JfO_hVqnDf0tC8LJg@mail.gmail.com>
+Subject: Re: [PATCH 17/19] PCI: rcar-gen2: Convert to use modern host bridge
+ probe functions
+To: Rob Herring <robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200804_074509_024463_0D7B9691 
-X-CRM114-Status: GOOD (  17.14  )
+X-CRM114-CacheID: sfid-20200804_081259_003191_F695DBE4 
+X-CRM114-Status: GOOD (  23.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,62 +79,165 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>, linux-kernel <linux-kernel@vger.kernel.org>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Bibby Hsieh <bibby.hsieh@mediatek.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+ Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
+ linux-pci <linux-pci@vger.kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>,
+ linux-tegra <linux-tegra@vger.kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Fabio Estevam <festevam@gmail.com>,
+ Marek Vasut <marek.vasut+renesas@gmail.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Will Deacon <will@kernel.org>,
+ Michal Simek <michal.simek@xilinx.com>, Jonathan Hunter <jonathanh@nvidia.com>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Murali Karicheri <m-karicheri2@ti.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Richard Zhu <hongxing.zhu@nxp.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Ryder Lee <ryder.lee@mediatek.com>,
+ linux-mediatek@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ Tom Joseph <tjoseph@cadence.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Jingoo Han <jingoohan1@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
+ Lucas Stach <l.stach@pengutronix.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Rob,
 
-i've printed the mtk_comp_id after the modification-loops...
-
-[    5.480848] main:
-[    5.480851] DDP_COMPONENT_OVL0
-[    5.482776] DDP_COMPONENT_RDMA0
-[    5.485827] DDP_COMPONENT_COLOR0
-[    5.488978] DDP_COMPONENT_BLS
-[    5.492206] DDP_COMPONENT_DPI0
-[    5.495170] ext:
-[    5.498233] DDP_COMPONENT_RDMA1
-[    5.500068] DDP_COMPONENT_DPI0
-
-so only the main-path was replaced with DPI at the end. so currently the DSI is not connected (or i move it to ext). have now added new structs for mt7623 with swapped DPI0/DSI0 and commented out the code from Patch 1...compatible was already mt7623 with 2701 as fallback, so no dts-change needed...
-
-now i need to look which changes in dts can be dropped...at least the bls=>dpi, right?
-
-regards Frank
-
-> Gesendet: Montag, 03. August 2020 um 18:27 Uhr
-> Von: "Chun-Kuang Hu" <chunkuang.hu@kernel.org>
-
-> Yes, this is what I mean, but I think it need not output to pmw.
-> But now I have a solution that you need not to modify binding document.
-> Because now mt7623 has a different routing than mt2701, and this
-> patch's approach is to use different port setting in each device tree.
-> My solution is that these two SoC has different compatible string:
-> "mediatek,mt7623-mmsys" and "mediatek,mt2701-mmsys". For now,
-> "mediatek,mt2701-mmsys" has its data as
+On Wed, Jul 22, 2020 at 4:26 AM Rob Herring <robh@kernel.org> wrote:
+> The rcar-gen2 host driver still uses the old Arm PCI setup function
+> pci_common_init_dev(). Let's update it to use the modern
+> devm_pci_alloc_host_bridge(), pci_parse_request_of_pci_ranges() and
+> pci_host_probe() functions.
 >
-> static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
-> .main_path = mt2701_mtk_ddp_main,
-> .main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
-> .ext_path = mt2701_mtk_ddp_ext,
-> .ext_len = ARRAY_SIZE(mt2701_mtk_ddp_ext),
-> .shadow_register = true,
-> };
->
-> I think you could create a data for "mediatek,mt7623-mmsys" which has
-> a different routing.
+> Cc: Marek Vasut <marek.vasut+renesas@gmail.com>
+> Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
+> Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+> Cc: Bjorn Helgaas <bhelgaas@google.com>
+> Cc: linux-renesas-soc@vger.kernel.org
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
+This is now commit 92d69cc6275845a7 ("PCI: rcar-gen2: Convert to use
+modern host bridge probe functions"), and causes a crash on r8a7791/koelsch:
+
+    Unable to handle kernel NULL pointer dereference at virtual address 00000008
+    pgd = (ptrval)
+    [00000008] *pgd=00000000
+    Internal error: Oops: 5 [#1] SMP ARM
+    CPU: 0 PID: 1 Comm: swapper/0 Not tainted
+5.8.0-rc1-shmobile-00035-g92d69cc6275845a7 #645
+    Hardware name: Generic R-Car Gen2 (Flattened Device Tree)
+    PC is at rcar_pci_probe+0x154/0x340
+    LR is at _raw_spin_unlock_irqrestore+0x18/0x20
+
+> --- a/drivers/pci/controller/pci-rcar-gen2.c
+> +++ b/drivers/pci/controller/pci-rcar-gen2.c
+> @@ -189,19 +170,33 @@ static inline void rcar_pci_setup_errirq(struct rcar_pci_priv *priv) { }
+>  #endif
+>
+>  /* PCI host controller setup */
+> -static int rcar_pci_setup(int nr, struct pci_sys_data *sys)
+> +static void rcar_pci_setup(struct rcar_pci_priv *priv)
+>  {
+> -       struct rcar_pci_priv *priv = sys->private_data;
+> +       struct pci_host_bridge *bridge = pci_host_bridge_from_priv(priv);
+>         struct device *dev = priv->dev;
+>         void __iomem *reg = priv->reg;
+> +       struct resource_entry *entry;
+> +       unsigned long window_size;
+> +       unsigned long window_addr;
+> +       unsigned long window_pci;
+>         u32 val;
+> -       int ret;
+> +
+> +       entry = resource_list_first_type(&bridge->dma_ranges, IORESOURCE_MEM);
+
+bridge->dma_ranges is not initialized => BOOM.
+
+>  static int rcar_pci_probe(struct platform_device *pdev)
+>  {
+>         struct device *dev = &pdev->dev;
+>         struct resource *cfg_res, *mem_res;
+>         struct rcar_pci_priv *priv;
+> +       struct pci_host_bridge *bridge;
+>         void __iomem *reg;
+> -       struct hw_pci hw;
+> -       void *hw_private[1];
+> +       int ret;
+> +
+> +       bridge = devm_pci_alloc_host_bridge(dev, sizeof(*priv));
+> +       if (!bridge)
+> +               return -ENOMEM;
+> +
+> +       priv = pci_host_bridge_priv(bridge);
+
+This is the "new" priv instance.
+
+> +       bridge->sysdata = priv;
+>
+>         cfg_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>         reg = devm_ioremap_resource(dev, cfg_res);
+
+However, the "old" instance is still allocated below, and should be removed.
+
+I've send a patch to fix that, which should appear soon at
+https://lore.kernel.org/r/20200804120430.9253-1-geert+renesas@glider.be
+
+BTW, the conversion has the following impact on r8a7791/koelsch:
+
+    -pci-rcar-gen2 ee090000.pci: PCI: bus0 revision 11
+    +pci-rcar-gen2 ee090000.pci: host bridge /soc/pci@ee090000 ranges:
+    +pci-rcar-gen2 ee090000.pci:      MEM 0x00ee080000..0x00ee08ffff
+-> 0x00ee080000
+    +pci-rcar-gen2 ee090000.pci: PCI: revision 11
+     pci-rcar-gen2 ee090000.pci: PCI host bridge to bus 0000:00
+    -pci_bus 0000:00: root bus resource [mem 0xee080000-0xee0810ff]
+                                             ^^^^^^^^^^^^^^^^^^^^^
+    -pci_bus 0000:00: No busn resource found for root bus, will use [bus 00-ff]
+    +pci_bus 0000:00: root bus resource [bus 00]
+    +pci_bus 0000:00: root bus resource [mem 0xee080000-0xee08ffff]
+                                             ^^^^^^^^^^^^^^^^^^^^^
+
+    pci0: pci@ee090000 {
+            ...
+            reg = <0 0xee090000 0 0xc00>,
+                  <0 0xee080000 0 0x1100>;
+            ...
+            ranges = <0x02000000 0 0xee080000 0 0xee080000 0 0x00010000>;
+            ...
+            usb@1,0 {
+                    reg = <0x800 0 0 0 0>;
+                    ...
+            };
+
+            usb@2,0 {
+                    reg = <0x1000 0 0 0 0>;
+                    ...
+            };
+
+    }
+
+The old root bus resource size was based on the "reg" property.
+The new root bus resource size is based on the "ranges" property.
+
+Given the only children are hardcoded, I guess that is OK?
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
 _______________________________________________
 Linux-mediatek mailing list
