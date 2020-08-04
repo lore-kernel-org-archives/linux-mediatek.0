@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EB350C433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 16:57:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5028EC433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 16:57:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C706522B40
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 16:57:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2B0F5207FC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 16:57:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NHcADwoe";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mailerdienst.de header.i=@mailerdienst.de header.b="dIenpDED"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C706522B40
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eMe0Aca1";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mailerdienst.de header.i=@mailerdienst.de header.b="ns5d5up8"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2B0F5207FC
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fw-web.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,51 +26,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=c8HkcgqUXpZh33uXeDXA09GAFC5q6dLtTsa2Fklun10=; b=NHcADwoevGk8fYW4g2m2CfSER
-	9f6wIiYirZ/5vhyOGO1pxU9Pt1gcj7dRwS4vUuMfobtIHFeqP3reCaHM6yTpxeFT8h1gnauxIr32d
-	jbsXWz8wy9ry6lfsgNQe+kXOI5xwr7QRHeU5scYMm3TyjYr8G4ie9+2CcvqNFOgCPovxY5nHjTkza
-	NUhn0nT8TCV36BAHbMCZhVB3GhB1mXYH5Q/HXYdoZqTNltrZWpMIwMEy9DapIsp3saCtNrQ7tkHqk
-	wf7YPpOTi3G1pjx+AtJw/6VWsdZ5QJ7hqRGjos9y1k5H40HHxU8jEHATyZROQXyMHRi2Ari0pxnyN
-	xq8Y7vV/g==;
+	 bh=84jqNWh4gQDO6MkEw1nuFtwMZvNx6MIoFWYZN3r8XyE=; b=eMe0Aca14ekY7MVjVlf0hITWU
+	GvXTz+X/66orSU8/kb99IruAB0UcSN3n2ppzVHW3wqkCtVSJH87R29UCXzRJ37wmSNIlmG6pbd2v0
+	arz2ZHwOT+cUZSLubwvgQLvJ4OAEJPRaUhanpzVzYf7/Q+ZMilbm3BQFxujsMMGpcYbb4F5EJpoad
+	hzDidp2fj/nhzstZXJtZeWxgNVlZXgBX2x8b/ZKFwo0C57dY6il7e6VIykdyKMVYBXjUBbsmfV/ft
+	R2cQ1Y1Kf3bOGj03Kuc5L8QlfrI7ZaceJDtqGBxz8+uvrzLtTiHw/vWiYY5/PC4I5P9ZcHWMMFZJ4
+	mfS/5k7mA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k30FB-0004xI-HS; Tue, 04 Aug 2020 16:56:53 +0000
-Received: from mxwww.masterlogin.de ([2a03:2900:1:1::b])
+	id 1k30FC-0004xt-CU; Tue, 04 Aug 2020 16:56:54 +0000
+Received: from mxwww.masterlogin.de ([95.129.51.220])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k30EZ-0004hh-UQ; Tue, 04 Aug 2020 16:56:18 +0000
-Received: from mxout1.routing.net (unknown [192.168.10.81])
- by forward.mxwww.masterlogin.de (Postfix) with ESMTPS id 5467A96153;
- Tue,  4 Aug 2020 16:56:13 +0000 (UTC)
+ id 1k30EZ-0004hi-UP; Tue, 04 Aug 2020 16:56:18 +0000
+Received: from mxout2.routing.net (unknown [192.168.10.82])
+ by forward.mxwww.masterlogin.de (Postfix) with ESMTPS id 8FDE996149;
+ Tue,  4 Aug 2020 16:56:12 +0000 (UTC)
 Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
- by mxout1.routing.net (Postfix) with ESMTP id 2D0FC402F8;
- Tue,  4 Aug 2020 16:56:13 +0000 (UTC)
+ by mxout2.routing.net (Postfix) with ESMTP id 6A9525FA21;
+ Tue,  4 Aug 2020 16:56:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
- s=20200217; t=1596560173;
+ s=20200217; t=1596560172;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=P6cNEjRALO0TlHjFZLwAJkcxyJkEDRqVED41Xard7SE=;
- b=dIenpDEDIxH+p2CzkBrC4sjz/hiTVVg0J55RuLf39UDZWElo3qslZ+2d5jso+UTqcY1kT7
- e2bSl1bDh/zSWqWOTj9L6U3KLHINflAIcfwHUHWzEPLmxG4cI/11YvlPTnai14zhUH1cRb
- atYymnuIdYYE8nwGeg5NGl7H3uLjL2c=
+ bh=fCnnVcg/G7GdQeEsbRfkh+kAyhmqBcsohyCq/tDvKFE=;
+ b=ns5d5up80fI/wkjh3mXXW7yrF6yGuDeJpnt+d3L0aFVHIzNg7/mrgPa+YIyOv0jvjt9jmD
+ myd2inuXmUsOtdRnkwLmj2n39FnifpjPD8XG7ooilw4SoFkwhbjK0vLz+VBOBIojPMHS+G
+ L0UgdES3J0K06dFZwu34DyUw6bgtv30=
 Received: from localhost.localdomain (fttx-pool-217.61.144.119.bambit.de
  [217.61.144.119])
- by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 6B87F3601C7;
- Tue,  4 Aug 2020 16:56:12 +0000 (UTC)
+ by mxbox3.masterlogin.de (Postfix) with ESMTPSA id BA9E13600F8;
+ Tue,  4 Aug 2020 16:56:11 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 5/6] drm/mediatek: dpi/dsi: change the getting
- possible_crtc way
-Date: Tue,  4 Aug 2020 18:55:54 +0200
-Message-Id: <20200804165555.75159-7-linux@fw-web.de>
+Subject: [PATCH v4 4/6] drm/mediatek: Add get_possible_crtc API for dpi, dsi
+Date: Tue,  4 Aug 2020 18:55:53 +0200
+Message-Id: <20200804165555.75159-6-linux@fw-web.de>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200804165555.75159-1-linux@fw-web.de>
 References: <20200804165555.75159-1-linux@fw-web.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200804_125616_120566_547BF086 
-X-CRM114-Status: GOOD (  13.71  )
+X-CRM114-CacheID: sfid-20200804_125616_128077_BD0CB406 
+X-CRM114-Status: GOOD (  18.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,61 +81,113 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Jitao Shi <jitao.shi@mediatek.com>,
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Frank Wunderlich <frank-w@public-files.de>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Stu Hsieh <stu.hsieh@mediatek.com>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jitao Shi <jitao.shi@mediatek.com>
+From: Stu Hsieh <stu.hsieh@mediatek.com>
 
 For current mediatek dsi encoder, its possible crtc is fixed in crtc
 0, and mediatek dpi encoder's possible crtc is fixed in crtc 1. In
-some SoC the possible crtc is not fixed in this case, so call
-mtk_drm_find_possible_crtc_by_comp() to find out the correct possible
-crtc.
+some SoC the possible crtc is not fixed in this case, so search
+pipeline information to find out the correct possible crtc.
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c | 3 ++-
- drivers/gpu/drm/mediatek/mtk_dsi.c | 3 ++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 42 +++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  2 +
+ 2 files changed, 44 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index d4f0fb7ad312..e43977015843 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -608,7 +608,8 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
- 	drm_encoder_helper_add(&dpi->encoder, &mtk_dpi_encoder_helper_funcs);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index 57c88de9a329..a5f2ff6bea93 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -13,6 +13,8 @@
+ #include <linux/of_platform.h>
+ #include <linux/platform_device.h>
+ #include <linux/soc/mediatek/mtk-cmdq.h>
++#include <drm/drm_print.h>
++
+ #include "mtk_drm_drv.h"
+ #include "mtk_drm_plane.h"
+ #include "mtk_drm_ddp_comp.h"
+@@ -412,6 +414,22 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_WDMA1]	= { MTK_DISP_WDMA,	1, NULL },
+ };
  
- 	/* Currently DPI0 is fixed to be driven by OVL1 */
--	dpi->encoder.possible_crtcs = BIT(1);
-+	dpi->encoder.possible_crtcs =
-+		mtk_drm_find_possible_crtc_by_comp(drm_dev, dpi->ddp_comp);
++static bool mtk_drm_find_comp_in_ddp(struct mtk_ddp_comp ddp_comp,
++					 const enum mtk_ddp_comp_id *path,
++					 unsigned int path_len)
++{
++	unsigned int i;
++
++	if (path == NULL)
++		return false;
++
++	for (i = 0U; i < path_len; i++)
++		if (ddp_comp.id == path[i])
++			return true;
++
++	return false;
++}
++
+ int mtk_ddp_comp_get_id(struct device_node *node,
+ 			enum mtk_ddp_comp_type comp_type)
+ {
+@@ -427,6 +445,30 @@ int mtk_ddp_comp_get_id(struct device_node *node,
+ 	return -EINVAL;
+ }
  
- 	ret = drm_bridge_attach(&dpi->encoder, dpi->bridge, NULL, 0);
- 	if (ret) {
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 270bf22c98fe..c31d9c12d4a9 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -892,7 +892,8 @@ static int mtk_dsi_create_conn_enc(struct drm_device *drm, struct mtk_dsi *dsi)
- 	 * Currently display data paths are statically assigned to a crtc each.
- 	 * crtc 0 is OVL0 -> COLOR0 -> AAL -> OD -> RDMA0 -> UFOE -> DSI0
- 	 */
--	dsi->encoder.possible_crtcs = 1;
-+	dsi->encoder.possible_crtcs =
-+		mtk_drm_find_possible_crtc_by_comp(drm, dsi->ddp_comp);
++unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
++						struct mtk_ddp_comp ddp_comp)
++{
++	struct mtk_drm_private *private = drm->dev_private;
++	unsigned int ret;
++
++	if (mtk_drm_find_comp_in_ddp(ddp_comp, private->data->main_path,
++		private->data->main_len) == true) {
++		ret = BIT(0);
++	} else if (mtk_drm_find_comp_in_ddp(ddp_comp,
++		private->data->ext_path,
++		private->data->ext_len) == true) {
++		ret = BIT(1);
++	} else if (mtk_drm_find_comp_in_ddp(ddp_comp,
++		private->data->third_path,
++		private->data->third_len) == true) {
++		ret = BIT(2);
++	} else {
++		DRM_INFO("Failed to find comp in ddp table\n");
++		ret = 0;
++	}
++	return ret;
++}
++
+ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
+ 		      struct mtk_ddp_comp *comp, enum mtk_ddp_comp_id comp_id,
+ 		      const struct mtk_ddp_comp_funcs *funcs)
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index debe36395fe7..1d9e00b69462 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -202,6 +202,8 @@ static inline void mtk_ddp_ctm_set(struct mtk_ddp_comp *comp,
  
- 	/* If there's a bridge, attach to it and let it create the connector */
- 	if (dsi->bridge) {
+ int mtk_ddp_comp_get_id(struct device_node *node,
+ 			enum mtk_ddp_comp_type comp_type);
++unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
++						struct mtk_ddp_comp ddp_comp);
+ int mtk_ddp_comp_init(struct device *dev, struct device_node *comp_node,
+ 		      struct mtk_ddp_comp *comp, enum mtk_ddp_comp_id comp_id,
+ 		      const struct mtk_ddp_comp_funcs *funcs);
 -- 
 2.25.1
 
