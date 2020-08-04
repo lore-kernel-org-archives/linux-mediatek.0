@@ -2,80 +2,79 @@ Return-Path: <SRS0=p2pa=BO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 58862C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 02:12:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DA13AC433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 02:13:19 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4CB4E20792
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 02:12:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D0D1820792
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 02:13:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1hSnTtrK";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Lz5xpKJ+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CB4E20792
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iAG0ssbi";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="n0tp/hA4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D0D1820792
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=n+0i8HVD8+jOB5HF1k7qSukhhS7fV7hz3TxQT5OxKds=; b=1hSnTtrKoKhVpjBzCDSqAS9ed
-	pjXouWWNBqzSbi+tB+7ZfJvPEdXjQVZplm7eSDdEV0x3Q3dkHjqwenLCBBRea3XN0zCBcA5WTOYeT
-	YCsB1+ChiD40n+ggKrQDMdfSiFHZd/h96+bSDmMDS02JTSx8J3F+J8TtG2rIvYS0ZQ+CWnAqfPdwr
-	j9cyQEkmKhP6p98bMebj8+GlonjuDC3OaCOnI+jgjj7OFiH2Jg4KiHc4A5aX3Pwp64ATYlOwTwjNm
-	2jvtbBbC5kw4QP21F0MJe98CxT0QtaQpCere1inT82IBCmQlSSKMTs+1BT/N5D0qA0ZqdaoQ3+iw6
-	k2G5qarug==;
+	 bh=WVUCuJlEVnttcOklTL2PEZ0uyuO38SD6rdo96RPywZo=; b=iAG0ssbijjfCQeAevU5R4Cq9G
+	L751WOdmFegTPRgeu/3MWy+kZcIPACPU19vUVtFC/zJaHqIQT7hocc41Q9JiK0AQEhoNkY4aq2eTz
+	/BhmfEn6XN3hWO7Omvk3FgBuUBHIVd3c1PkFf60Bp5aY/ElrNAFUHgZYrL971ochl598AeRTFXX6G
+	dJqlZnBdgLkJAzw9ARQoJXBkrxpCA6oibj0lPIbda9JIudZiWlp53N5xEnVTNW3B6AvEbjRsnkLgU
+	IIU6f7qfTTfbagndcgQ20eNQpIpLZixmx+YqtqcBBlwP2EFJ7Fhw/tZ3wA2mBTNeiYq1El8J2XNm0
+	4cXVJMTaA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k2mQz-0003eX-UW; Tue, 04 Aug 2020 02:12:09 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1k2mRu-0003pk-21; Tue, 04 Aug 2020 02:13:06 +0000
+Received: from mail-ua1-x943.google.com ([2607:f8b0:4864:20::943])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k2mQs-0003cV-Nl; Tue, 04 Aug 2020 02:12:04 +0000
-X-UUID: acda04c4535442bca6864117289901d7-20200803
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=fgyIQ7DsULlTTKIxA3Jlyx2v6bU2W2sQc//rLVyQcYE=; 
- b=Lz5xpKJ+f85TAWAFi4aRa830BUJDuzh8wcnYLAHoehkgjDIyPbSoTJSqau/rRx2gorfIAbBs6dsz4ISHxViTXhjLl2Wj++dUERIj3thL9kkne97EF2iJzvV1i0kzBvRAxaa0EnQxcvWgiiWgKe5OATdx6sCy4EpOS9029R13peM=;
-X-UUID: acda04c4535442bca6864117289901d7-20200803
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <neal.liu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1788138996; Mon, 03 Aug 2020 18:11:46 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 3 Aug 2020 19:08:14 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 4 Aug 2020 10:08:12 +0800
-Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 4 Aug 2020 10:08:13 +0800
-Message-ID: <1596506892.17917.2.camel@mtkswgap22>
-Subject: Re: [PATCH v4 2/2] soc: mediatek: add mtk-devapc driver
-From: Neal Liu <neal.liu@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 4 Aug 2020 10:08:12 +0800
-In-Reply-To: <CAAOTY__VPXMGcR9w8EdnGbJyVbxbLQY+SRAqLbOcTy0D_WLM0w@mail.gmail.com>
-References: <1596010690-13178-1-git-send-email-neal.liu@mediatek.com>
- <1596010690-13178-3-git-send-email-neal.liu@mediatek.com>
- <CAAOTY_8aw=6E7bMJwz5jDLXUxYHpy9_Avbwc90osQGckzANNcg@mail.gmail.com>
- <1596427295.22971.20.camel@mtkswgap22>
- <CAAOTY__VPXMGcR9w8EdnGbJyVbxbLQY+SRAqLbOcTy0D_WLM0w@mail.gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1k2mRq-0003nw-1F
+ for linux-mediatek@lists.infradead.org; Tue, 04 Aug 2020 02:13:03 +0000
+Received: by mail-ua1-x943.google.com with SMTP id q68so9412537uaq.0
+ for <linux-mediatek@lists.infradead.org>; Mon, 03 Aug 2020 19:13:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ek5IwSL+ashZL9KTOZdz56TvgUVWfpkvY3pBa7EzP2A=;
+ b=n0tp/hA48FqUCnJQSr6N0Wcwa/cJmyK+gKVLEMeh/2VJb5aP7fHr3/7KKZjGS8Ipad
+ cqhcBps/kGqgbW1ttxwbhSgAoFgq9fppfYPqf0fGv+DyPKHd/w6YwgZUB7CTKqTISkN1
+ nRX+PT8O2EH1LOoXschOC9MaFkSn35tNphz5Q=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ek5IwSL+ashZL9KTOZdz56TvgUVWfpkvY3pBa7EzP2A=;
+ b=tyPZIIUi3Gc3LiK3Mm/yTB/xfdKXYw81OUnV8BPR7geuoQiAlRux5lUa+IMv0s1kJu
+ lBqoxyk0V74Z/RPINY8he5XhDOc5Gvakefq6e25T2C/bKUrd5/aBL9R4VXxkhkWiJxWJ
+ EbSKZ+v9ratfxNXT+0qUXzR75V/R135iqDYM8Nxf2sQq8lFIc/Ibiq4xSgYYkUhJw95C
+ NSfvRjwU8k5HSgsQoaTzdeWbhN3lfqt0HMM+M1NWhsLFYNFRg8RF59C1aoPMrkCjwRP7
+ WL32oW7bTEeeIH3vqtPxxxUr57Sg7aE+v8YVIMbd4EFTLoOU/9XTUYh9rdDQeJpdFUg6
+ DlrQ==
+X-Gm-Message-State: AOAM533BKzqpEKiTr2RCSBbvAxc5zB586KZkmIMkxN/CZagmhyRTRNr2
+ nkm/1E3wn3p0BlJPqiIULxnPfHd90hnSRre3X3rDNQ==
+X-Google-Smtp-Source: ABdhPJwghGSLbe8ZU4D96mdziHWtR9hqw1MkwSUkRpmFW/D404GQmjvXpH25/+Xs6ReDM3GKg6kZtrzus7DmgAVTxUk=
+X-Received: by 2002:ab0:20b6:: with SMTP id y22mr13153458ual.77.1596507180138; 
+ Mon, 03 Aug 2020 19:13:00 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: A1D2B56BE3B7D7DFFE750BB73D1DE48D8AD510E630AE667407D111F587BA25032000:8
-X-MTK: N
+References: <1596445047-2975-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1596445047-2975-3-git-send-email-hsin-hsiung.wang@mediatek.com>
+In-Reply-To: <1596445047-2975-3-git-send-email-hsin-hsiung.wang@mediatek.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Tue, 4 Aug 2020 10:12:49 +0800
+Message-ID: <CANMq1KDDbPBsnxPHvPTcTreW7OrTwC_=8GyM=rrU2QOLPKp2Bg@mail.gmail.com>
+Subject: Re: [PATCH 2/3] regulator: bindings: Add document for MT6315 regulator
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200803_221202_913822_6D2ABDB7 
-X-CRM114-Status: GOOD (  29.75  )
+X-CRM114-CacheID: sfid-20200803_221302_108567_36016E82 
+X-CRM114-Status: GOOD (  24.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,78 +86,163 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, wsd_upstream <wsd_upstream@mediatek.com>,
- lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Neal Liu <neal.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+Cc: Devicetree List <devicetree@vger.kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, Fei Shao <fshao@chromium.org>,
+ Stephen Boyd <sboyd@kernel.org>, linux-arm-msm@vger.kernel.org,
+ Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ lkml <linux-kernel@vger.kernel.org>, Mark Brown <broonie@kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAyMDIwLTA4LTA0IGF0IDAwOjA0ICswODAwLCBDaHVuLUt1YW5nIEh1IHdyb3RlOg0K
-PiBIaSwgTmVhbDoNCj4gDQo+IE5lYWwgTGl1IDxuZWFsLmxpdUBtZWRpYXRlay5jb20+IOaWvCAy
-MDIw5bm0OOaciDPml6Ug6YCx5LiAIOS4i+WNiDEyOjAx5a+r6YGT77yaDQo+ID4NCj4gPiBIaSBD
-aHVuLUt1YW5nLA0KPiA+DQo+ID4gT24gU2F0LCAyMDIwLTA4LTAxIGF0IDA4OjEyICswODAwLCBD
-aHVuLUt1YW5nIEh1IHdyb3RlOg0KPiA+ID4gSGksIE5lYWw6DQo+ID4gPg0KPiA+ID4gVGhpcyBw
-YXRjaCBpcyBmb3IgIm1lZGlhdGVrLG10Njc3OS1kZXZhcGMiLCBzbyBJIHRoaW5rIGNvbW1pdCB0
-aXRsZQ0KPiA+ID4gc2hvdWxkIHNob3cgdGhlIFNvQyBJRC4NCj4gPg0KPiA+IE9rYXksIEknbGwg
-Y2hhbmdlIHRpdGxlIHRvICdzb2M6bWVkaWF0ZWs6IGFkZCBtdDY3NzkgZGV2YXBjIGRyaXZlcicu
-DQo+ID4NCj4gPiA+DQo+ID4gPiBOZWFsIExpdSA8bmVhbC5saXVAbWVkaWF0ZWsuY29tPiDmlrwg
-MjAyMOW5tDfmnIgyOeaXpSDpgLHkuIkg5LiL5Y2INDoyOeWvq+mBk++8mg0KPiA+ID4gPg0KPiA+
-ID4gPiBNZWRpYVRlayBidXMgZmFicmljIHByb3ZpZGVzIFRydXN0Wm9uZSBzZWN1cml0eSBzdXBw
-b3J0IGFuZCBkYXRhDQo+ID4gPiA+IHByb3RlY3Rpb24gdG8gcHJldmVudCBzbGF2ZXMgZnJvbSBi
-ZWluZyBhY2Nlc3NlZCBieSB1bmV4cGVjdGVkDQo+ID4gPiA+IG1hc3RlcnMuDQo+ID4gPiA+IFRo
-ZSBzZWN1cml0eSB2aW9sYXRpb24gaXMgbG9nZ2VkIGFuZCBzZW50IHRvIHRoZSBwcm9jZXNzb3Ig
-Zm9yDQo+ID4gPiA+IGZ1cnRoZXIgYW5hbHlzaXMgb3IgY291bnRlcm1lYXN1cmVzLg0KPiA+ID4g
-Pg0KPiA+ID4gPiBBbnkgb2NjdXJyZW5jZSBvZiBzZWN1cml0eSB2aW9sYXRpb24gd291bGQgcmFp
-c2UgYW4gaW50ZXJydXB0LCBhbmQNCj4gPiA+ID4gaXQgd2lsbCBiZSBoYW5kbGVkIGJ5IG10ay1k
-ZXZhcGMgZHJpdmVyLiBUaGUgdmlvbGF0aW9uDQo+ID4gPiA+IGluZm9ybWF0aW9uIGlzIHByaW50
-ZWQgaW4gb3JkZXIgdG8gZmluZCB0aGUgbXVyZGVyZXIuDQo+ID4gPiA+DQo+ID4gPiA+IFNpZ25l
-ZC1vZmYtYnk6IE5lYWwgTGl1IDxuZWFsLmxpdUBtZWRpYXRlay5jb20+DQo+ID4gPiA+IC0tLQ0K
-PiA+ID4NCj4gPiA+IFtzbmlwXQ0KPiA+ID4NCj4gPiA+ID4gKw0KPiA+ID4gPiArc3RydWN0IG10
-a19kZXZhcGNfY29udGV4dCB7DQo+ID4gPiA+ICsgICAgICAgc3RydWN0IGRldmljZSAqZGV2Ow0K
-PiA+ID4gPiArICAgICAgIHUzMiB2aW9faWR4X251bTsNCj4gPiA+ID4gKyAgICAgICB2b2lkIF9f
-aW9tZW0gKmRldmFwY19wZF9iYXNlOw0KPiA+ID4gPiArICAgICAgIHN0cnVjdCBtdGtfZGV2YXBj
-X3Zpb19pbmZvICp2aW9faW5mbzsNCj4gPiA+ID4gKyAgICAgICBjb25zdCBzdHJ1Y3QgbXRrX2Rl
-dmFwY19wZF9vZmZzZXQgKm9mZnNldDsNCj4gPiA+ID4gKyAgICAgICBjb25zdCBzdHJ1Y3QgbXRr
-X2RldmFwY192aW9fZGJncyAqdmlvX2RiZ3M7DQo+ID4gPiA+ICt9Ow0KPiA+ID4NCj4gPiA+IEkg
-dGhpbmsgdGhpcyBzdHJ1Y3R1cmUgc2hvdWxkIHNlcGFyYXRlIHRoZSBjb25zdGFudCBwYXJ0LiBU
-aGUgY29uc3RhbnQgcGFydCBpczoNCj4gPiA+DQo+ID4gPiBzdHJ1Y3QgbXRrX2RldmFwY19kYXRh
-IHsNCj4gPiA+ICAgICBjb25zdCB1MzIgdmlvX2lkeF9udW07DQo+ID4gPiAgICAgY29uc3Qgc3Ry
-dWN0IG10a19kZXZhcGNfcGRfb2Zmc2V0ICpvZmZzZXQ7IC8qIEkgd291bGQgbGlrZSB0bw0KPiA+
-ID4gcmVtb3ZlIHN0cnVjdCBtdGtfZGV2YXBjX3BkX29mZnNldCBhbmQgZGlyZWN0bHkgcHV0IGl0
-cyBtZW1iZXIgaW50bw0KPiA+ID4gdGhpcyBzdHJ1Y3R1cmUgKi8NCj4gPiA+ICAgICBjb25zdCBz
-dHJ1Y3QgbXRrX2RldmFwY192aW9fZGJncyAqdmlvX2RiZ3M7IC8qIFRoaXMgbWF5IGRpc2FwcGVh
-ciAqLw0KPiA+ID4gfTsNCj4gPiA+DQo+ID4gPiBBbmQgdGhlIGNvbnRleHQgaXM6DQo+ID4gPg0K
-PiA+ID4gc3RydWN0IG10a19kZXZhcGNfY29udGV4dCB7DQo+ID4gPiAgICAgc3RydWN0IGRldmlj
-ZSAqZGV2Ow0KPiA+ID4gICAgIHZvaWQgX19pb21lbSAqZGV2YXBjX3BkX2Jhc2U7DQo+ID4gPiAg
-ICAgY29uc3Qgc3RydWN0IG10a19kZXZhcGNfZGF0YSAqZGF0YTsNCj4gPiA+IH07DQo+ID4gPg0K
-PiA+ID4gU28gd2hlbiB5b3UgZGVmaW5lIHRoaXMsIHlvdSB3b3VsZCBub3Qgd2FzdGUgbWVtb3J5
-IHRvIHN0b3JlIG5vbi1jb25zdGFudCBkYXRhLg0KPiA+ID4NCj4gPiA+IHN0YXRpYyBjb25zdCBz
-dHJ1Y3QgbXRrX2RldmFwY19kYXRhIGRldmFwY19tdDY3NzkgPSB7DQo+ID4gPiAgLnZpb19pZHhf
-bnVtID0gNTEwLA0KPiA+ID4gIC5vZmZzZXQgPSAmbXQ2Nzc5X3BkX29mZnNldCwNCj4gPiA+ICAu
-dmlvX2RiZ3MgPSAmbXQ2Nzc5X3Zpb19kYmdzLA0KPiA+ID4gfTsNCj4gPiA+DQo+ID4NCj4gPiBT
-b3JyeSwgSSBzdGlsbCBkb24ndCB1bmRlcnN0YW5kIHdoeSB0aGlzIHJlZmFjdG9yaW5nIHdpbGwg
-bm90IHdhc3RlDQo+ID4gbWVtb3J5IHRvIHN0b3JlIG5vbi1jb25zdGFudCBkYXRhLiBDb3VsZCB5
-b3UgZXhwbGFpbiBtb3JlIGRldGFpbHM/DQo+ID4gVG8gbXkgdW5kZXJzdGFuZGluZywgd2Ugc3Rp
-bGwgYWxzbyBoYXZlIHRvIGFsbG9jYXRlIG1lbW9yeSB0byBzdG9yZSBkZXYNCj4gPiAmIGRldmFw
-Y19wZF9iYXNlLg0KPiANCj4gSW4gc29tZSBzaXR1YXRpb24sIGl0IGlzLiBZb3UgbWFrZSB0aGUg
-bm9uLWNvbnN0YW50IGRhdGEgYSBnbG9iYWwNCj4gdmFyaWFibGUuIEkgdGhpbmsgdGhlIGNvbnRl
-eHQgZGF0YSBzaG91bGQgYmUgZHluYW1pYyBhbGxvY2F0ZWQuIElmDQo+IHRoaXMgZHJpdmVyIGlz
-IG5vdCBwcm9iZWQsIHRoZSBub24tY29uc3RhbnQgZGF0YSBvY2N1cHkgdGhlIG1lbW9yeS4NCj4g
-DQoNCkkgZ290IHlvdXIgcG9pbnQhIEluIHRoaXMgY2FzZSwgd2UgY2FuIHNhdmUgdGhlc2UgMiBk
-YXRhIHN0cnVjdHVyZQ0Kc3BhY2UsIHJpZ2h0Pw0KDQpzdHJ1Y3QgZGV2aWNlICpkZXY7DQp2b2lk
-IF9faW9tZW0gKmRldmFwY19wZF9iYXNlOw0KDQpJJ2xsIHJlZmFjdG9yaW5nIHRoaXMgZGF0YSBz
-dHJ1Y3R1cmVzIG9uIG5leHQgcGF0Y2guIFRoYW5rcyAhDQoNCj4gUmVnYXJkcywNCj4gQ2h1bi1L
-dWFuZy4NCj4gDQo+ID4NCj4gPiA+IFJlZ2FyZHMsDQo+ID4gPiBDaHVuLUt1YW5nLg0KPiA+ID4N
-Cj4gPiA+ID4gKw0KPiA+ID4gPiArI2VuZGlmIC8qIF9fTVRLX0RFVkFQQ19IX18gKi8NCj4gPiA+
-ID4gLS0NCj4gPiA+ID4gMS43LjkuNQ0KPiA+ID4gPiBfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXw0KPiA+ID4gPiBMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxp
-c3QNCj4gPiA+ID4gTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZw0KPiA+ID4gPiBo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVr
-DQo+ID4NCg0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1t
-ZWRpYXRlawo=
+Hi Hsin-Hsiung,
+
+On Mon, Aug 3, 2020 at 4:57 PM Hsin-Hsiung Wang
+<hsin-hsiung.wang@mediatek.com> wrote:
+>
+> Add device tree binding information for mt6315 regulator driver.
+> Example bindings for mt6315 are added.
+>
+> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> ---
+>  .../bindings/regulator/mt6315-regulator.txt        | 45 ++++++++++++++++++++++
+>  1 file changed, 45 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mt6315-regulator.txt
+>
+> diff --git a/Documentation/devicetree/bindings/regulator/mt6315-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6315-regulator.txt
+> new file mode 100644
+> index 0000000..1c14537
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/regulator/mt6315-regulator.txt
+> @@ -0,0 +1,45 @@
+> +Mediatek MT6315 Regulator
+> +
+> +Required properties:
+> +- compatible: Must be one of the following.
+> +       "mediatek,mt6315_3-regulator"
+> +       "mediatek,mt6315_6-regulator"
+> +       "mediatek,mt6315_7-regulator"
+
+As highlighted on Gerrit [1], I think this is wrong. The device tree
+compatible should focus on actual hardware differences, _not_ the way
+the device is used.
+
+So I looked at the datasheet, and there are 5 variants of the MT6315.
+They all have the same number of VBUCKs, just with different _default_
+voltages, Imax, and sequencing. Since the regulator range is the same,
+I don't think you need to care about any of this, so I'd have a single
+compatible "mediatek,mt6315-regulator".
+
+The one thing that is special here, though, is that you want to
+combine regulators for BUCK1, right?
+
+That is, for MT6315PP (id 6), you want to combine BUCK1/2/4 to power
+the big cores (hence 0xb = "1011" in patch 3/3), and for MT6315SP (id
+7), you want to combine BUCK1/2 (hence 0x3 = 0011).
+
+So, instead of a table here, what I'd do is to figure out a way to
+indicate, in the device tree, that bucks 1, 2, 4 need to be combined.
+
+I think the correct way to handle this is to add a
+`regulator-coupled-with` property. That is you'd have a device tree
+that looks like this:
+
+mt6315_6: mt6315@6 {
+    compatible = "mediatek,mt6315-regulator";
+    reg = <0x6 0 0xb 1>;
+    mt6315_6_vbuck1: vbuck1 {
+        regulator-compatible = "vbuck1";
+        ...
+        regulator-coupled-with = <&mt6315_6_vbuck2, mt6315_6_vbuck4>;
+    };
+
+    mt6315_6_vbuck2: vbuck2 {
+        regulator-compatible = "vbuck2";
+        ...
+    };
+
+    mt6315_6_vbuck3: vbuck3 {
+        regulator-compatible = "vbuck3";
+        ...
+    };
+
+    mt6315_6_vbuck4: vbuck4 {
+        regulator-compatible = "vbuck4";
+        ...
+    };
+};
+
+Then, at probe time, you can figure out which regulators are coupled
+with another one, and only provide controls for the first regulator in
+the list (with the proper mask).
+
+Another, simpler way, may look like this:
+
+mt6315_6: mt6315@6 {
+    compatible = "mediatek,mt6315-regulator";
+    reg = <0x6 0 0xb 1>;
+    mt6315_6_vbuck1: vbuck1 {
+        regulator-compatible = "vbuck1";
+        regulator-mask = <0xb>;
+    };
+    mt6315_6_vbuck3: vbuck3 {
+        regulator-compatible = "vbuck3";
+        regulator-mask = <0x8>;
+    };
+};
+
+But then it's a bit weird, because 0x8 = 1 << 3, which we can already
+infer from "vbuck3" compatible...
+
+[1] https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2229019/13/drivers/regulator/mt6315-regulator.c#283
+
+
+> +- reg: SPMI slave id.
+> +- regulators: List of regulators provided by this controller.
+> +  The definition for each of these nodes is defined using the standard binding
+> +  for regulators at Documentation/devicetree/bindings/regulator/regulator.txt.
+> +
+> +The valid names for regulators are:
+> +BUCK:
+> +  vbuck1, vbuck3, vbuck4
+> +
+> +Example:
+> +       mt6315_3: mt6315@3 {
+> +               compatible = "mediatek,mt6315_3-regulator";
+> +               reg = <0x3 0 0xb 1>;
+> +
+> +               mt6315_3_vbuck1: vbuck1 {
+> +                       regulator-compatible = "vbuck1";
+> +                       regulator-min-microvolt = <300000>;
+> +                       regulator-max-microvolt = <1193750>;
+> +                       regulator-enable-ramp-delay = <256>;
+> +                       regulator-allowed-modes = <0 1 2 4>;
+> +               };
+> +
+> +               mt6315_3_vbuck3: vbuck3 {
+> +                       regulator-compatible = "vbuck3";
+> +                       regulator-min-microvolt = <300000>;
+> +                       regulator-max-microvolt = <1193750>;
+> +                       regulator-enable-ramp-delay = <256>;
+> +                       regulator-allowed-modes = <0 1 2 4>;
+> +               };
+> +
+> +               mt6315_3_vbuck3: vbuck3 {
+> +                       regulator-compatible = "vbuck3";
+> +                       regulator-min-microvolt = <300000>;
+> +                       regulator-max-microvolt = <1193750>;
+> +                       regulator-enable-ramp-delay = <256>;
+> +                       regulator-allowed-modes = <0 1 2 4>;
+> +               };
+> +       };
+> --
+> 2.6.4
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
