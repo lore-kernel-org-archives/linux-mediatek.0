@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B33FBC433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 03:52:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4F6D9C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 03:52:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A8B482076C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 03:52:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 44898206F6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 03:52:48 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fccIcnAl";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="VE6ysIVc"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A8B482076C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FXtNTMLw";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="XumVHIxV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 44898206F6
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=xjNV2p97FvGjtMErDxFdfqye3Mbri6RYXYk0rfKyGAA=; b=fccIcnAl0Aig8LGZq0r3R19IX
-	wlsuTBrm3fFO4UbZwTDldgLy0CNQDYZM7UYY9Xi61y1MfVZq6oT9hFSqh8dE6qWs+0VD2HuFBSvDy
-	a23BW396o8r2/RY0RQ74xngLdtOqrVCf3KRh6jZU3vypFtTZVRwmW7Na1SdKHtdUS2L6SaARaOvE+
-	JxrgU71pEG9wzSKVuoNfYl3c424H54ueNTRkBuh5ieczZuzNTfiZ1VoQAbVHBFohqRmlvNzGNesQk
-	pGc8nMNKdMz7RjrRu+M92UBiCIhQe/FhA0wM71AtI+aK2WTN1LvzRwUrzWnso2Bv7ByhAiPkWx++r
-	2h5Qg+2TA==;
+	 bh=Kl3qzsF5e/N7z80Nt2WmQT+ZNT/93mG0XC2+QtBx7cs=; b=FXtNTMLw5cRmqV4CGWbxJK8DQ
+	YqeceF1GUdUo32M+cMzDTEz5d4BqiEk17f9yqVQQSzSMiG6IWj5Fx/a3/HWsuQO0nPXpWaIYPayC1
+	uz+2KvqXMV/QNrHt9hH7y56VacXDQgMhykXQoiOZiKzcyNmuiqQIqu8yD/RmOkneDOXY5JrPyFaS5
+	1QTUp+IYl90T7l6tL6Q0Uds7tQK/po5LZNeHwj0z3zCF2Xe9kIo0MR2BN+TAZZYqPa49aLsO54RMJ
+	Ef8EOdGp5hoUVa8EWnPY+KlFwvGPEK+m2Mv406gVikkFOoIbXPOd8ekstgMwFX1mfHGsJWs+1fBj0
+	ob/BgfaEA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k2o0B-0001a3-LT; Tue, 04 Aug 2020 03:52:35 +0000
+	id 1k2o0D-0001b4-CL; Tue, 04 Aug 2020 03:52:37 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k2nzT-0001Br-Vt; Tue, 04 Aug 2020 03:51:54 +0000
-X-UUID: 2677c88f8fff405ca2cf186cde26b978-20200803
+ id 1k2nzW-0001BY-6J; Tue, 04 Aug 2020 03:51:56 +0000
+X-UUID: 71cf6d6bab8d481aa90eca97c3241643-20200803
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=6ZJJUs7Asf8iPVD6xYLi1hRZ04UPNqzEg5H8d7w95mc=; 
- b=VE6ysIVcXWoI+yGaaepqDA8ZdnJ4ZexUB5yVUR4d1MTAe0uFCqYgjjauGuMJIZGSW1HVnCcd9Dc8ZeSeMxt46iDeJvppe0rtaYKnTUJd7AlIuHUAvayMmWL8+bDZ7dIPJqHCTLAjqiteElmrOAo6ijYjjOcXQ6nHGm1O/hlQtQs=;
-X-UUID: 2677c88f8fff405ca2cf186cde26b978-20200803
+ bh=k20Imll3mFuaXvAX4eUIHQnObVq0eM6kD80gXzk30Vo=; 
+ b=XumVHIxVJpr2Lj37DloeBctAwA7vu+WlAmQ51SJtie4qWUku8dQNMiKiSrGyF1mDq0pka4cWlRmiOAwSaowAUoY5YPIuhhQ6dOQaT9ILCzQNeGEABfptBQ/kpgA1Uz1VqtIr/Gx6fqP/RfsDetCrd1T59ocPMJVdf7Se7xyeuc8=;
+X-UUID: 71cf6d6bab8d481aa90eca97c3241643-20200803
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <xia.jiang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 795225328; Mon, 03 Aug 2020 19:51:46 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1306845646; Mon, 03 Aug 2020 19:51:46 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 3 Aug 2020 20:41:53 -0700
+ 15.0.1497.2; Mon, 3 Aug 2020 20:42:06 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 4 Aug 2020 11:41:52 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 4 Aug 2020 11:42:05 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 4 Aug 2020 11:41:51 +0800
+ Transport; Tue, 4 Aug 2020 11:42:04 +0800
 From: Xia Jiang <xia.jiang@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
  <mchehab+samsung@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
  Brugger" <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>
-Subject: [PATCH v11 09/28] media: platform: Cancel the last frame handling flow
-Date: Tue, 4 Aug 2020 11:40:43 +0800
-Message-ID: <20200804034102.22983-10-xia.jiang@mediatek.com>
+Subject: [PATCH v11 20/28] media: platform: Change the colorspace of jpeg to
+ the fixed value
+Date: Tue, 4 Aug 2020 11:40:54 +0800
+Message-ID: <20200804034102.22983-21-xia.jiang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200804034102.22983-1-xia.jiang@mediatek.com>
 References: <20200804034102.22983-1-xia.jiang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200803_235152_185811_66975BBE 
-X-CRM114-Status: GOOD (  15.56  )
+X-CRM114-CacheID: sfid-20200803_235154_900891_DAA8778B 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,110 +97,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There is no need to queue an empty buffer for signaling a last frame,
-because all frames are separate from each other in JPEG.
+Jpeg doesn't support colorspace conversion, so it shouldn't accept any
+other colorspace in S_FMT.
+Change the colorspace of jpeg to the fixed value.
 
 Reviewed-by: Tomasz Figa <tfiga@chromium.org>
 Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
 ---
 v11: no changes
 ---
- .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 46 +------------------
- 1 file changed, 2 insertions(+), 44 deletions(-)
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 24 +++++++++----------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index 9baeeacb4452..ffb486e537b6 100644
+index 01f4656fe2b3..0376bd3bdbbb 100644
 --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
 +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -55,15 +55,9 @@ static struct mtk_jpeg_fmt mtk_jpeg_formats[] = {
+@@ -320,10 +320,10 @@ static int mtk_jpeg_s_fmt_mplane(struct mtk_jpeg_ctx *ctx,
+ 					   pix_mp->pixelformat, fmt_type);
+ 	q_data->pix_mp.width = pix_mp->width;
+ 	q_data->pix_mp.height = pix_mp->height;
+-	q_data->pix_mp.colorspace = pix_mp->colorspace;
+-	q_data->pix_mp.ycbcr_enc = pix_mp->ycbcr_enc;
+-	q_data->pix_mp.xfer_func = pix_mp->xfer_func;
+-	q_data->pix_mp.quantization = pix_mp->quantization;
++	q_data->pix_mp.colorspace = V4L2_COLORSPACE_SRGB;
++	q_data->pix_mp.ycbcr_enc = V4L2_YCBCR_ENC_601;
++	q_data->pix_mp.xfer_func = V4L2_XFER_FUNC_SRGB;
++	q_data->pix_mp.quantization = V4L2_QUANTIZATION_FULL_RANGE;
  
- #define MTK_JPEG_NUM_FORMATS ARRAY_SIZE(mtk_jpeg_formats)
+ 	v4l2_dbg(1, debug, &jpeg->v4l2_dev, "(%d) s_fmt:%c%c%c%c wxh:%ux%u\n",
+ 		 f->type,
+@@ -846,10 +846,10 @@ static void mtk_jpeg_set_default_params(struct mtk_jpeg_ctx *ctx)
+ 	struct mtk_jpeg_q_data *q = &ctx->out_q;
+ 	int i;
  
--enum {
--	MTK_JPEG_BUF_FLAGS_INIT			= 0,
--	MTK_JPEG_BUF_FLAGS_LAST_FRAME		= 1,
--};
--
- struct mtk_jpeg_src_buf {
- 	struct vb2_v4l2_buffer b;
- 	struct list_head list;
--	int flags;
- 	struct mtk_jpeg_dec_param dec_param;
- };
+-	q->pix_mp.colorspace = V4L2_COLORSPACE_JPEG,
+-	q->pix_mp.ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
+-	q->pix_mp.quantization = V4L2_QUANTIZATION_DEFAULT;
+-	q->pix_mp.xfer_func = V4L2_XFER_FUNC_DEFAULT;
++	q->pix_mp.colorspace = V4L2_COLORSPACE_SRGB;
++	q->pix_mp.ycbcr_enc = V4L2_YCBCR_ENC_601;
++	q->pix_mp.quantization = V4L2_QUANTIZATION_FULL_RANGE;
++	q->pix_mp.xfer_func = V4L2_XFER_FUNC_SRGB;
  
-@@ -501,31 +495,6 @@ static int mtk_jpeg_s_selection(struct file *file, void *priv,
- 	return 0;
- }
+ 	q->fmt = mtk_jpeg_find_format(mtk_jpeg_formats, MTK_JPEG_NUM_FORMATS,
+ 				      V4L2_PIX_FMT_JPEG,
+@@ -863,10 +863,10 @@ static void mtk_jpeg_set_default_params(struct mtk_jpeg_ctx *ctx)
+ 	q->fmt = mtk_jpeg_find_format(mtk_jpeg_formats, MTK_JPEG_NUM_FORMATS,
+ 				      V4L2_PIX_FMT_YUV420M,
+ 				      MTK_JPEG_FMT_FLAG_DEC_CAPTURE);
+-	q->pix_mp.colorspace = V4L2_COLORSPACE_JPEG,
+-	q->pix_mp.ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
+-	q->pix_mp.quantization = V4L2_QUANTIZATION_DEFAULT;
+-	q->pix_mp.xfer_func = V4L2_XFER_FUNC_DEFAULT;
++	q->pix_mp.colorspace = V4L2_COLORSPACE_SRGB;
++	q->pix_mp.ycbcr_enc = V4L2_YCBCR_ENC_601;
++	q->pix_mp.quantization = V4L2_QUANTIZATION_FULL_RANGE;
++	q->pix_mp.xfer_func = V4L2_XFER_FUNC_SRGB;
+ 	q->pix_mp.width = MTK_JPEG_MIN_WIDTH;
+ 	q->pix_mp.height = MTK_JPEG_MIN_HEIGHT;
  
--static int mtk_jpeg_qbuf(struct file *file, void *priv, struct v4l2_buffer *buf)
--{
--	struct v4l2_fh *fh = file->private_data;
--	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
--	struct vb2_queue *vq;
--	struct vb2_buffer *vb;
--	struct mtk_jpeg_src_buf *jpeg_src_buf;
--
--	if (buf->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
--		goto end;
--
--	vq = v4l2_m2m_get_vq(fh->m2m_ctx, buf->type);
--	if (buf->index >= vq->num_buffers) {
--		dev_err(ctx->jpeg->dev, "buffer index out of range\n");
--		return -EINVAL;
--	}
--
--	vb = vb2_get_buffer(vq, buf->index);
--	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(vb);
--	jpeg_src_buf->flags = (buf->m.planes[0].bytesused == 0) ?
--		MTK_JPEG_BUF_FLAGS_LAST_FRAME : MTK_JPEG_BUF_FLAGS_INIT;
--end:
--	return v4l2_m2m_qbuf(file, fh->m2m_ctx, buf);
--}
--
- static const struct v4l2_ioctl_ops mtk_jpeg_ioctl_ops = {
- 	.vidioc_querycap                = mtk_jpeg_querycap,
- 	.vidioc_enum_fmt_vid_cap	= mtk_jpeg_enum_fmt_vid_cap,
-@@ -536,7 +505,7 @@ static const struct v4l2_ioctl_ops mtk_jpeg_ioctl_ops = {
- 	.vidioc_g_fmt_vid_out_mplane    = mtk_jpeg_g_fmt_vid_mplane,
- 	.vidioc_s_fmt_vid_cap_mplane    = mtk_jpeg_s_fmt_vid_cap_mplane,
- 	.vidioc_s_fmt_vid_out_mplane    = mtk_jpeg_s_fmt_vid_out_mplane,
--	.vidioc_qbuf                    = mtk_jpeg_qbuf,
-+	.vidioc_qbuf                    = v4l2_m2m_ioctl_qbuf,
- 	.vidioc_subscribe_event         = mtk_jpeg_subscribe_event,
- 	.vidioc_g_selection		= mtk_jpeg_g_selection,
- 	.vidioc_s_selection		= mtk_jpeg_s_selection,
-@@ -676,10 +645,6 @@ static void mtk_jpeg_buf_queue(struct vb2_buffer *vb)
- 	param = &jpeg_src_buf->dec_param;
- 	memset(param, 0, sizeof(*param));
- 
--	if (jpeg_src_buf->flags & MTK_JPEG_BUF_FLAGS_LAST_FRAME) {
--		v4l2_dbg(1, debug, &jpeg->v4l2_dev, "Got eos\n");
--		goto end;
--	}
- 	header_valid = mtk_jpeg_parse(param, (u8 *)vb2_plane_vaddr(vb, 0),
- 				      vb2_get_plane_payload(vb, 0));
- 	if (!header_valid) {
-@@ -792,19 +757,12 @@ static void mtk_jpeg_device_run(void *priv)
- 	struct mtk_jpeg_src_buf *jpeg_src_buf;
- 	struct mtk_jpeg_bs bs;
- 	struct mtk_jpeg_fb fb;
--	int i, ret;
-+	int ret;
- 
- 	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
- 	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
- 	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
- 
--	if (jpeg_src_buf->flags & MTK_JPEG_BUF_FLAGS_LAST_FRAME) {
--		for (i = 0; i < dst_buf->vb2_buf.num_planes; i++)
--			vb2_set_plane_payload(&dst_buf->vb2_buf, i, 0);
--		buf_state = VB2_BUF_STATE_DONE;
--		goto dec_end;
--	}
--
- 	if (mtk_jpeg_check_resolution_change(ctx, &jpeg_src_buf->dec_param)) {
- 		mtk_jpeg_queue_src_chg_event(ctx);
- 		ctx->state = MTK_JPEG_SOURCE_CHANGE;
 -- 
 2.18.0
 _______________________________________________
