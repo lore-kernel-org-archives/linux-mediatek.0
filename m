@@ -2,72 +2,78 @@ Return-Path: <SRS0=p2pa=BO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E197CC433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 12:13:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EBAA9C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 13:59:41 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B6E592177B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 12:13:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B29792086A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 13:59:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HXgAHd+s"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B6E592177B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linux-m68k.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SdXGTYF+";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="kNbuYYJF"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B29792086A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ySxqEKjtyXE0ohwixg7NgUDabZLWJrYCdhvVq1lU5u4=; b=HXgAHd+shW0NVrg1XJo7yl78Y
-	aq/DXCAiH8vhc+CoQ7++TLY4wQbkb81VZjGgluC4avtV2WFhMS9r2hjaGFXLGe71GnNt5QMaSsDxJ
-	QNSyFND0vfVhooePEoqMNCTbWj2PUHtmxYDxZY6cyMdkWE+5KEkB5eALIMCRkzqBWoP+/QRvaBZfb
-	FnugXO2e68TSKGhT7SYwLj0iaXKX6CxGBzjAlpridTVmlCOlAPgBe8fOUQHUrc2KL8aGKZkEgL/GP
-	uJP3nCCnbUjdfcVGGfShtyZpby/8a1MFc/Kn4bNC74buV4+6ixGpFQ33YGouCrlbXYOwgLM3ioFgU
-	kQxNEnazw==;
+	 bh=R7IinJgsmP/8/zIhrR0vHkfzEiE8OtAp5uUqJTvQsOM=; b=SdXGTYF++SkUZN/EZgjGVHzVR
+	vqnyQsOe/O6+qDltAILUT3nEKkF0ltSwAgAmoeA7VF0AobqO3muy7YgvmWaRyo2TZriLcpYj//mQF
+	hrcNPLaJp0IK4ANNvIBf7/jtP77GKzUBsgf2sf8/zXxdOtFbbtwudPrp5EB3A/paWzaul+0kwcbBw
+	cpUcgwXmBi43DF4Lda7xCp7vJUlZlSTiJYKPwtSJ0raHLXJh9mUm40ltgPD/GSqeFZgaeCwCmuN+A
+	xe4k6jnXJRtHfZr3uOre7t67+KC0BRYXrXEcdB6ppx3koJ9m5fKR9zJp59txWpyKc4ZRNJ0T5Oons
+	amqVAQApw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k2voV-0001AK-Nb; Tue, 04 Aug 2020 12:13:03 +0000
-Received: from mail-oi1-f193.google.com ([209.85.167.193])
+	id 1k2xTV-0000tg-SD; Tue, 04 Aug 2020 13:59:29 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k2voQ-00019Z-UV; Tue, 04 Aug 2020 12:12:59 +0000
-Received: by mail-oi1-f193.google.com with SMTP id k4so36138404oik.2;
- Tue, 04 Aug 2020 05:12:57 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=PO9J9HS1PBC7NzRFj8oPcc40kwBpzKOr6JMPb3RGCwI=;
- b=AHXeYir253i2sP4wde96X89eKpYwMH/+1hzV4cqGnF0Y3NcOPQabJ3hbsdjCxqJzuP
- SC/vCKesDiIdqXtV7Ug9v5fIdnyDyRYvQtLgfNEdGt7kVrynpXqxUE4fPIlieLDP30lB
- fJ9nCDMsMBRhICzYBbb27bFrcGqo/MsinAd9Nn4C+4s1vOeiXrMEXMKR1YziJovL8SJo
- m1GKMeyt/yDX+nPy8CJbgGK4clRKv67ufmNm0r6zwOaC4FVW2+hMILJRzODLl94Mtvgh
- UTIxFF3udmF8BCyvNnLbL092RWLCAmw12UR5PXh2QcV12fIPx4mJ/g0aKdO9lccyT7tn
- EKyg==
-X-Gm-Message-State: AOAM531LYGB5kD442ncFv4E6+BMtuoEbFu+2V4BIs/OqdFzgRKVIc9V3
- Y1xNld0Xg9GPpr7+hIcaOqjusufjfNZBeAwmxsA=
-X-Google-Smtp-Source: ABdhPJy+qMQTRq8deo5ciXBpF5zQuAaoPjC6/y+Q96LkXpV5AoEfncTl+6PXLfMnptNO7gLF0ZxNsXi3fVsvVuIVsak=
-X-Received: by 2002:aca:adc4:: with SMTP id w187mr2923237oie.153.1596543176297; 
- Tue, 04 Aug 2020 05:12:56 -0700 (PDT)
+ id 1k2xTR-0000s3-Uh
+ for linux-mediatek@lists.infradead.org; Tue, 04 Aug 2020 13:59:27 +0000
+X-UUID: 098a6c3a747e47d2b2562eac1e7a2304-20200804
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=Yx4HCWr1f+i1DBTueM+N+J+0iXXSsNZuujWJU9F3g2I=; 
+ b=kNbuYYJF/LU3YUxPpV0SX+y6l4dBjJo77fPBJgkyegHPnJD0jqOZJHilV7fiwlp+aH9mAwFkkgeRFJeMh8tds8bvaL+fRFgWPd5OQ8EssjLhBpNexSHYjVTS84MaJ74SU+zui/E0uWfkB96GOh2QSC4ciXkpIYx6cWIgz0U63aY=;
+X-UUID: 098a6c3a747e47d2b2562eac1e7a2304-20200804
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <frankie.chang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1201293115; Tue, 04 Aug 2020 05:59:27 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 4 Aug 2020 06:59:15 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 4 Aug 2020 21:59:13 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 4 Aug 2020 21:59:14 +0800
+From: Frankie Chang <Frankie.Chang@mediatek.com>
+To: Todd Kjos <tkjos@google.com>
+Subject: [PATCH v7 3/3] binder: add transaction latency tracer
+Date: Tue, 4 Aug 2020 21:59:12 +0800
+Message-ID: <1596549552-5466-4-git-send-email-Frankie.Chang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1596549552-5466-1-git-send-email-Frankie.Chang@mediatek.com>
+References: <1596509145.5207.21.camel@mtkswgap22>
+ <1596549552-5466-1-git-send-email-Frankie.Chang@mediatek.com>
 MIME-Version: 1.0
-References: <20200722022514.1283916-1-robh@kernel.org>
- <20200722022514.1283916-18-robh@kernel.org>
-In-Reply-To: <20200722022514.1283916-18-robh@kernel.org>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Tue, 4 Aug 2020 14:12:44 +0200
-Message-ID: <CAMuHMdWVWoQDc3MMv9LjA+hA1EoXQjVM-JfO_hVqnDf0tC8LJg@mail.gmail.com>
-Subject: Re: [PATCH 17/19] PCI: rcar-gen2: Convert to use modern host bridge
- probe functions
-To: Rob Herring <robh@kernel.org>
+X-TM-SNTS-SMTP: 83725FC3C3ABA99B0B4DEC5FCE50DA796ADA8D99ED0FFF08440C52EE7C9A6F072000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200804_081259_003191_F695DBE4 
-X-CRM114-Status: GOOD (  23.03  )
+X-CRM114-CacheID: sfid-20200804_095926_442128_4F248766 
+X-CRM114-Status: GOOD (  26.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,166 +85,312 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>,
- Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
- linux-pci <linux-pci@vger.kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>,
- linux-tegra <linux-tegra@vger.kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Fabio Estevam <festevam@gmail.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Will Deacon <will@kernel.org>,
- Michal Simek <michal.simek@xilinx.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Murali Karicheri <m-karicheri2@ti.com>, NXP Linux Team <linux-imx@nxp.com>,
- Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Richard Zhu <hongxing.zhu@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Ryder Lee <ryder.lee@mediatek.com>,
- linux-mediatek@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- Tom Joseph <tjoseph@cadence.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Jingoo Han <jingoohan1@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
- Lucas Stach <l.stach@pengutronix.de>
+Cc: wsd_upstream@mediatek.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org,
+ =?UTF-8?q?Arve=20Hj=C3=B8nnev=C3=A5g?= <arve@android.com>, Jian-Min
+ Liu <Jian-Min.Liu@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Joel Fernandes <joel@joelfernandes.org>,
+ Frankie Chang <Frankie.Chang@mediatek.com>, Martijn Coenen <maco@android.com>,
+ Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+From: "Frankie.Chang" <Frankie.Chang@mediatek.com>
 
-On Wed, Jul 22, 2020 at 4:26 AM Rob Herring <robh@kernel.org> wrote:
-> The rcar-gen2 host driver still uses the old Arm PCI setup function
-> pci_common_init_dev(). Let's update it to use the modern
-> devm_pci_alloc_host_bridge(), pci_parse_request_of_pci_ranges() and
-> pci_host_probe() functions.
->
-> Cc: Marek Vasut <marek.vasut+renesas@gmail.com>
-> Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
-> Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-> Cc: Bjorn Helgaas <bhelgaas@google.com>
-> Cc: linux-renesas-soc@vger.kernel.org
-> Signed-off-by: Rob Herring <robh@kernel.org>
+Record start/end timestamp for binder transaction.
+When transaction is completed or transaction is free,
+it would be checked if transaction latency over threshold
+(default 2 sec), if yes, printing related information for tracing.
 
-This is now commit 92d69cc6275845a7 ("PCI: rcar-gen2: Convert to use
-modern host bridge probe functions"), and causes a crash on r8a7791/koelsch:
+/* Implement details */
+- Add latency tracer module to monitor transaction
+  by attaching to new tracepoints introduced
+  when transactions are allocated and freed.
+  The trace_binder_txn_latency_free would not be enabled
+  by default. Monitoring which transaction is too slow to
+  cause some of exceptions is important. So we hook the
+  tracepoint to call the monitor function.
 
-    Unable to handle kernel NULL pointer dereference at virtual address 00000008
-    pgd = (ptrval)
-    [00000008] *pgd=00000000
-    Internal error: Oops: 5 [#1] SMP ARM
-    CPU: 0 PID: 1 Comm: swapper/0 Not tainted
-5.8.0-rc1-shmobile-00035-g92d69cc6275845a7 #645
-    Hardware name: Generic R-Car Gen2 (Flattened Device Tree)
-    PC is at rcar_pci_probe+0x154/0x340
-    LR is at _raw_spin_unlock_irqrestore+0x18/0x20
+- Since some of modules would trigger timeout NE
+  if their binder transaction don't finish in time,
+  such as audio timeout (5 sec), even BT command
+  timeout (2 sec), etc.
+  Therefore, setting the timeout threshold as default
+  2 seconds could be helpful to debug.
+  But this timeout threshold is configurable, to let
+  all users determine the more suitable threshold.
 
-> --- a/drivers/pci/controller/pci-rcar-gen2.c
-> +++ b/drivers/pci/controller/pci-rcar-gen2.c
-> @@ -189,19 +170,33 @@ static inline void rcar_pci_setup_errirq(struct rcar_pci_priv *priv) { }
->  #endif
->
->  /* PCI host controller setup */
-> -static int rcar_pci_setup(int nr, struct pci_sys_data *sys)
-> +static void rcar_pci_setup(struct rcar_pci_priv *priv)
->  {
-> -       struct rcar_pci_priv *priv = sys->private_data;
-> +       struct pci_host_bridge *bridge = pci_host_bridge_from_priv(priv);
->         struct device *dev = priv->dev;
->         void __iomem *reg = priv->reg;
-> +       struct resource_entry *entry;
-> +       unsigned long window_size;
-> +       unsigned long window_addr;
-> +       unsigned long window_pci;
->         u32 val;
-> -       int ret;
-> +
-> +       entry = resource_list_first_type(&bridge->dma_ranges, IORESOURCE_MEM);
+- The reason why printing the related information to
+  kernel information log but not trace buffer is that
+  some abnormal transactions may be pending for a long
+  time ago, they could not be recorded due to buffer
+  limited.
 
-bridge->dma_ranges is not initialized => BOOM.
+Signed-off-by: Frankie.Chang <Frankie.Chang@mediatek.com>
+---
+ drivers/android/Kconfig                 |    8 +++
+ drivers/android/Makefile                |    1 +
+ drivers/android/binder.c                |    2 +
+ drivers/android/binder_internal.h       |   13 ++++
+ drivers/android/binder_latency_tracer.c |  112 +++++++++++++++++++++++++++++++
+ drivers/android/binder_trace.h          |   26 ++++++-
+ 6 files changed, 159 insertions(+), 3 deletions(-)
+ create mode 100644 drivers/android/binder_latency_tracer.c
 
->  static int rcar_pci_probe(struct platform_device *pdev)
->  {
->         struct device *dev = &pdev->dev;
->         struct resource *cfg_res, *mem_res;
->         struct rcar_pci_priv *priv;
-> +       struct pci_host_bridge *bridge;
->         void __iomem *reg;
-> -       struct hw_pci hw;
-> -       void *hw_private[1];
-> +       int ret;
-> +
-> +       bridge = devm_pci_alloc_host_bridge(dev, sizeof(*priv));
-> +       if (!bridge)
-> +               return -ENOMEM;
-> +
-> +       priv = pci_host_bridge_priv(bridge);
-
-This is the "new" priv instance.
-
-> +       bridge->sysdata = priv;
->
->         cfg_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->         reg = devm_ioremap_resource(dev, cfg_res);
-
-However, the "old" instance is still allocated below, and should be removed.
-
-I've send a patch to fix that, which should appear soon at
-https://lore.kernel.org/r/20200804120430.9253-1-geert+renesas@glider.be
-
-BTW, the conversion has the following impact on r8a7791/koelsch:
-
-    -pci-rcar-gen2 ee090000.pci: PCI: bus0 revision 11
-    +pci-rcar-gen2 ee090000.pci: host bridge /soc/pci@ee090000 ranges:
-    +pci-rcar-gen2 ee090000.pci:      MEM 0x00ee080000..0x00ee08ffff
--> 0x00ee080000
-    +pci-rcar-gen2 ee090000.pci: PCI: revision 11
-     pci-rcar-gen2 ee090000.pci: PCI host bridge to bus 0000:00
-    -pci_bus 0000:00: root bus resource [mem 0xee080000-0xee0810ff]
-                                             ^^^^^^^^^^^^^^^^^^^^^
-    -pci_bus 0000:00: No busn resource found for root bus, will use [bus 00-ff]
-    +pci_bus 0000:00: root bus resource [bus 00]
-    +pci_bus 0000:00: root bus resource [mem 0xee080000-0xee08ffff]
-                                             ^^^^^^^^^^^^^^^^^^^^^
-
-    pci0: pci@ee090000 {
-            ...
-            reg = <0 0xee090000 0 0xc00>,
-                  <0 0xee080000 0 0x1100>;
-            ...
-            ranges = <0x02000000 0 0xee080000 0 0xee080000 0 0x00010000>;
-            ...
-            usb@1,0 {
-                    reg = <0x800 0 0 0 0>;
-                    ...
-            };
-
-            usb@2,0 {
-                    reg = <0x1000 0 0 0 0>;
-                    ...
-            };
-
-    }
-
-The old root bus resource size was based on the "reg" property.
-The new root bus resource size is based on the "ranges" property.
-
-Given the only children are hardcoded, I guess that is OK?
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
+diff --git a/drivers/android/Kconfig b/drivers/android/Kconfig
+index 6fdf2ab..91fff1e 100644
+--- a/drivers/android/Kconfig
++++ b/drivers/android/Kconfig
+@@ -54,6 +54,14 @@ config ANDROID_BINDER_IPC_SELFTEST
+ 	  exhaustively with combinations of various buffer sizes and
+ 	  alignments.
+ 
++config BINDER_TRANSACTION_LATENCY_TRACKING
++	tristate "Android Binder transaction tracking"
++	help
++	  Used for track abnormal binder transaction which is over threshold,
++	  when the transaction is done or be free, this transaction would be
++	  checked whether it executed overtime.
++	  If yes, printing out the detailed info.
++
+ endif # if ANDROID
+ 
+ endmenu
+diff --git a/drivers/android/Makefile b/drivers/android/Makefile
+index c9d3d0c9..c2ffdb6 100644
+--- a/drivers/android/Makefile
++++ b/drivers/android/Makefile
+@@ -4,3 +4,4 @@ ccflags-y += -I$(src)			# needed for trace events
+ obj-$(CONFIG_ANDROID_BINDERFS)		+= binderfs.o
+ obj-$(CONFIG_ANDROID_BINDER_IPC)	+= binder.o binder_alloc.o
+ obj-$(CONFIG_ANDROID_BINDER_IPC_SELFTEST) += binder_alloc_selftest.o
++obj-$(CONFIG_BINDER_TRANSACTION_LATENCY_TRACKING)	+= binder_latency_tracer.o
+diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+index 1bfadc2..22f7cc6 100644
+--- a/drivers/android/binder.c
++++ b/drivers/android/binder.c
+@@ -2671,6 +2671,7 @@ static void binder_transaction(struct binder_proc *proc,
+ 		return_error_line = __LINE__;
+ 		goto err_alloc_t_failed;
+ 	}
++	trace_binder_txn_latency_alloc(t);
+ 	INIT_LIST_HEAD(&t->fd_fixups);
+ 	binder_stats_created(BINDER_STAT_TRANSACTION);
+ 	spin_lock_init(&t->lock);
+@@ -5159,6 +5160,7 @@ static void print_binder_transaction_ilocked(struct seq_file *m,
+ 		   to_proc ? to_proc->pid : 0,
+ 		   t->to_thread ? t->to_thread->pid : 0,
+ 		   t->code, t->flags, t->priority, t->need_reply);
++	trace_binder_txn_latency_info(m, t);
+ 	spin_unlock(&t->lock);
+ 
+ 	if (proc != to_proc) {
+diff --git a/drivers/android/binder_internal.h b/drivers/android/binder_internal.h
+index 5b65413..596db00 100644
+--- a/drivers/android/binder_internal.h
++++ b/drivers/android/binder_internal.h
+@@ -13,6 +13,11 @@
+ #include <linux/uidgid.h>
+ #include "binder_alloc.h"
+ 
++#if IS_ENABLED(CONFIG_BINDER_TRANSACTION_LATENCY_TRACKING)
++#include <linux/rtc.h>
++#include <linux/time.h>
++#endif
++
+ struct binder_context {
+ 	struct binder_node *binder_context_mgr_node;
+ 	struct mutex context_mgr_node_lock;
+@@ -521,6 +526,14 @@ struct binder_transaction {
+ 	 * during thread teardown
+ 	 */
+ 	spinlock_t lock;
++	/**
++	 * @timestamp and @tv are used to record the time
++	 * that the binder transaction startup
++	 */
++#if IS_ENABLED(CONFIG_BINDER_TRANSACTION_LATENCY_TRACKING)
++	struct timespec64 timestamp;
++	struct timeval tv;
++#endif
+ };
+ 
+ /**
+diff --git a/drivers/android/binder_latency_tracer.c b/drivers/android/binder_latency_tracer.c
+new file mode 100644
+index 0000000..61ae75f
+--- /dev/null
++++ b/drivers/android/binder_latency_tracer.c
+@@ -0,0 +1,112 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (C) 2019 MediaTek Inc.
++ */
++
++#include <linux/module.h>
++#include <uapi/linux/android/binder.h>
++#include "binder_internal.h"
++#include "binder_trace.h"
++
++/**
++ * The reason setting the binder_txn_latency_threshold to 2 sec
++ * is that most of timeout abort is greater or equal to 2 sec.
++ * Making it configurable to let all users determine which
++ * threshold is more suitable.
++ */
++static uint32_t binder_txn_latency_threshold = 2;
++module_param_named(threshold, binder_txn_latency_threshold,
++			uint, 0644);
++
++/*
++ * probe_binder_txn_latency_free - Output info of a delay transaction
++ * @t:          pointer to the over-time transaction
++ */
++void probe_binder_txn_latency_free(void *ignore, struct binder_transaction *t,
++					int from_proc, int from_thread,
++					int to_proc, int to_thread)
++{
++	struct rtc_time tm;
++	struct timespec64 *startime;
++	struct timespec64 cur, sub_t;
++
++	ktime_get_ts64(&cur);
++	startime = &t->timestamp;
++	sub_t = timespec64_sub(cur, *startime);
++
++	/* if transaction time is over than binder_txn_latency_threshold (sec),
++	 * show timeout warning log.
++	 */
++	if (sub_t.tv_sec < binder_txn_latency_threshold)
++		return;
++
++	rtc_time_to_tm(t->tv.tv_sec, &tm);
++
++	pr_info_ratelimited("%d: from %d:%d to %d:%d",
++			t->debug_id, from_proc, from_thread,
++			to_proc, to_thread);
++
++	pr_info_ratelimited(" total %u.%03ld s code %u start %lu.%03ld android %d-%02d-%02d %02d:%02d:%02d.%03lu\n",
++			(unsigned int)sub_t.tv_sec,
++			(sub_t.tv_nsec / NSEC_PER_MSEC),
++			t->code,
++			(unsigned long)startime->tv_sec,
++			(startime->tv_nsec / NSEC_PER_MSEC),
++			(tm.tm_year + 1900), (tm.tm_mon + 1), tm.tm_mday,
++			tm.tm_hour, tm.tm_min, tm.tm_sec,
++			(unsigned long)(t->tv.tv_usec / USEC_PER_MSEC));
++}
++
++static void probe_binder_txn_latency_alloc(void *ignore,
++					struct binder_transaction *t)
++{
++	struct timespec64 now;
++
++	ktime_get_ts64(&t->timestamp);
++	ktime_get_real_ts64(&now);
++	t->tv.tv_sec = now.tv_sec;
++	t->tv.tv_sec -= (sys_tz.tz_minuteswest * 60);
++	t->tv.tv_usec = now.tv_nsec/1000;
++}
++
++static void probe_binder_txn_latency_info(void *ignore, struct seq_file *m,
++					struct binder_transaction *t)
++{
++	struct rtc_time tm;
++
++	rtc_time_to_tm(t->tv.tv_sec, &tm);
++	seq_printf(m,
++		   " start %lu.%06lu android %d-%02d-%02d %02d:%02d:%02d.%03lu",
++		   (unsigned long)t->timestamp.tv_sec,
++		   (t->timestamp.tv_nsec / NSEC_PER_USEC),
++		   (tm.tm_year + 1900), (tm.tm_mon + 1), tm.tm_mday,
++		   tm.tm_hour, tm.tm_min, tm.tm_sec,
++		   (unsigned long)(t->tv.tv_usec / USEC_PER_MSEC));
++}
++
++static int __init init_binder_latency_tracer(void)
++{
++	register_trace_binder_txn_latency_free(
++			probe_binder_txn_latency_free, NULL);
++	register_trace_binder_txn_latency_alloc(
++			probe_binder_txn_latency_alloc, NULL);
++	register_trace_binder_txn_latency_info(
++			probe_binder_txn_latency_info, NULL);
++
++	return 0;
++}
++
++static void exit_binder_latency_tracer(void)
++{
++	unregister_trace_binder_txn_latency_free(
++			probe_binder_txn_latency_free, NULL);
++	unregister_trace_binder_txn_latency_alloc(
++			probe_binder_txn_latency_alloc, NULL);
++	unregister_trace_binder_txn_latency_info(
++			probe_binder_txn_latency_info, NULL);
++}
++
++module_init(init_binder_latency_tracer);
++module_exit(exit_binder_latency_tracer);
++
++MODULE_LICENSE("GPL v2");
+diff --git a/drivers/android/binder_trace.h b/drivers/android/binder_trace.h
+index eb2c53c..be4fe4c 100644
+--- a/drivers/android/binder_trace.h
++++ b/drivers/android/binder_trace.h
+@@ -95,6 +95,17 @@
+ 		  __entry->thread_todo)
+ );
+ 
++DECLARE_TRACE(binder_txn_latency_alloc,
++	TP_PROTO(struct binder_transaction *t),
++	TP_ARGS(t, e)
++);
++
++DECLARE_TRACE(binder_txn_latency_info,
++	TP_PROTO(struct seq_file *m,
++		 struct binder_transaction *t),
++	TP_ARGS(m, t)
++);
++
+ TRACE_EVENT(binder_txn_latency_free,
+ 	TP_PROTO(struct binder_transaction *t
+ 		 int from_proc, int from_thread
+@@ -108,6 +119,8 @@
+ 		__field(int, to_thread)
+ 		__field(unsigned int, code)
+ 		__field(unsigned int, flags)
++		__field(unsigned long, start_sec)
++		__field(unsigned long, start_nsec)
+ 	),
+ 	TP_fast_assign(
+ 		__entry->debug_id = t->debug_id;
+@@ -117,11 +130,18 @@
+ 		__entry->to_thread = to_thread;
+ 		__entry->code = t->code;
+ 		__entry->flags = t->flags;
+-	),
+-	TP_printk("transaction=%d from %d:%d to %d:%d flags=0x%x code=0x%x",
++#if IS_ENABLED(CONFIG_BINDER_TRANSACTION_LATENCY_TRACKING)
++		__entry->start_sec = t->timestamp.tv_sec;
++		__entry->start_nsec = t->timestamp.tv_nsec / NSEC_PER_MSEC;
++#else
++		__entry->start_sec = 0;
++		__entry->start_nsec = 0;
++#endif
++	),
++	TP_printk("transaction=%d from %d:%d to %d:%d flags=0x%x code=0x%x start %lu.%03ld",
+ 		  __entry->debug_id, __entry->from_proc, __entry->from_thread,
+ 		  __entry->to_proc, __entry->to_thread, __entry->code,
+-		  __entry->flags)
++		  __entry->flags, __entry->start_sec, __entry->start_nsec)
+ );
+ 
+ TRACE_EVENT(binder_transaction,
 -- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
-
+1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
