@@ -2,67 +2,71 @@ Return-Path: <SRS0=p2pa=BO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 82A51C433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 08:12:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 49D71C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 08:15:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 75C352076C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 08:12:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3ED9B2076E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 08:15:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hFMhueuq";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="QAOqMFQB"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 75C352076C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linuxfoundation.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Xlp+Nkyu"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3ED9B2076E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=I9nQrPy2KuGcHPhuyzda5A7gdAVqsd9WKFRJxtXHyPo=; b=hFMhueuqITITQt+SsmT67Vc2S
-	tfko+S+WaY6F2JwQpi3/Jcb0Jy+yrFFI7sKhO7duXZiZVHl28iHK4f/QXNXYbleXJUXkpf8yFxvT+
-	ffY2edL/WxBu28jSW0w8zKMvBN3txLr6d1tIl6BW+GcgOHp2Lw5HZR7U41h91rayPfEdhX9Tg6VYT
-	jF0GNJ2k3v1S/ssh2ppCS1yJetPeTBQ09pff7SrosQxfnIiKKXFwWGKojCjIOQaCyFtEi/jtQqRpf
-	W8i5JhvJEwFSr6C0Eo7fzASGS4MsAKIUy+FsGgLnvPvj208AV3qePRtlMdd5k0eE72ADueCdiCf5J
-	LcJtPHMcA==;
+	 bh=VRV0qbaJnTNae7PRoNvHnJJr3Cpli3LZjEBiIJiIQqw=; b=Xlp+NkyuZ+3JIc77yDmYCttB7
+	A5UQoWWL2EKPCCGINzXlrcO63S5gHuNWiW9mzuvExn4h7dM0uiAejk92q/HuGg1GewxJWXcM2wfht
+	ZoPdBlm0yU3855Ug8HeVXR7dzrMgeWHgw4q+J89VH92i6NFT4O/+anYO4EvuIVvSrSONxF+5wlkhu
+	hBUsE2uqNuXWhSJyAihntNDJYUCplN2b9Gm54vIy0ItKOVxQAlpbYw9DTrnCj9RiMLk/TniayDyxU
+	CoCAYCm1rX6aAcnku3PavlVuuPm3A3rrM0Zl70cm14Jht4iNSYIJa9gjjgFH0ovWcGN/YA/hP3lqa
+	NHlyRsoFQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k2s36-0002q3-8M; Tue, 04 Aug 2020 08:11:52 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1k2s6P-0003Pt-Jp; Tue, 04 Aug 2020 08:15:17 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k2s31-0002p0-ED; Tue, 04 Aug 2020 08:11:48 +0000
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B82442076C;
- Tue,  4 Aug 2020 08:11:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1596528706;
- bh=vDIdMthlwvK/lkIZaP62qRcbBqyYKHtAH/TIlf2+Eh4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=QAOqMFQBXE6gbzCuR+sDBsl8IRxsLNFDP6Il/GaPzZT+gvA5oW0wVuRUqzDPvDuQp
- r8UCTIIT31gsbQEhsvEnC79nrk+7FRDKCi1hajUnkC27OS8olMycbG4OrilGdUOySY
- +6nCD/Zdd2WXZi+ckAUmdh7dfFuCKqKmk6zoyxbg=
-Date: Tue, 4 Aug 2020 10:11:26 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: "hongxu.zhao" <hongxu.zhao@mediatek.com>
-Subject: Re: [PATCH] staging: Add Mediatek High Frequency Manager Framework
-Message-ID: <20200804081126.GA1765831@kroah.com>
-References: <20200804075339.9820-1-hongxu.zhao@mediatek.com>
+ id 1k2s6N-0003NT-D4
+ for linux-mediatek@lists.infradead.org; Tue, 04 Aug 2020 08:15:16 +0000
+Received: from lupine.hi.pengutronix.de
+ ([2001:67c:670:100:3ad5:47ff:feaf:1a17] helo=lupine)
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <p.zabel@pengutronix.de>)
+ id 1k2s6M-0003dI-1b; Tue, 04 Aug 2020 10:15:14 +0200
+Received: from pza by lupine with local (Exim 4.92)
+ (envelope-from <p.zabel@pengutronix.de>)
+ id 1k2s6L-00031T-0C; Tue, 04 Aug 2020 10:15:13 +0200
+Message-ID: <053da16ed682cc016b0a66a834fb58d4d9410dc2.camel@pengutronix.de>
+Subject: Re: [v2,3/6] dt-binding: reset-controller: ti: add generic-reset to
+ compatible
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Crystal Guo <crystal.guo@mediatek.com>, robh+dt@kernel.org, 
+ matthias.bgg@gmail.com
+Date: Tue, 04 Aug 2020 10:15:12 +0200
+In-Reply-To: <20200803061511.29555-4-crystal.guo@mediatek.com>
+References: <20200803061511.29555-1-crystal.guo@mediatek.com>
+ <20200803061511.29555-4-crystal.guo@mediatek.com>
+User-Agent: Evolution 3.30.5-1.1 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200804075339.9820-1-hongxu.zhao@mediatek.com>
+X-SA-Exim-Connect-IP: 2001:67c:670:100:3ad5:47ff:feaf:1a17
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200804_041147_622465_F31393A9 
-X-CRM114-Status: GOOD (  15.14  )
+X-CRM114-CacheID: sfid-20200804_041515_489865_765A5D6C 
+X-CRM114-Status: GOOD (  16.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,57 +78,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- wsd_upstream@mediatek.com, Weiqi Fu <weiqi.fu@mediatek.com>,
- open list <linux-kernel@vger.kernel.org>,
- Cunliang Du <cunliang.du@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Zhen jiang <zhen.jiang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>
+Cc: devicetree@vger.kernel.org, yong.liang@mediatek.com,
+ srv_heupstream@mediatek.com, seiya.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, fan.chen@mediatek.com,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ yingjoe.chen@mediatek.com, stanley.chu@mediatek.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 04, 2020 at 03:52:49PM +0800, hongxu.zhao wrote:
-> Add a new sensor framework into linux kernel which can support multi client request sensor data.
-> There are the following features:
->     1.Ringbuffer between manager and client;
->     2.Kernel space user interface;
->     3.User space user interface with syscall;
->     4.Each client hang detect mechanism;
->     5.Polling timer management in framework no need driver concern;
->     6.Polling kthread work intergrated into a single kthread
->       worker to save system resources in framework no need driver concern;
->     7.Proc file system to show manager device and client details;
->     8.Compitable with android and widely used in many mediatek platform products;
+On Mon, 2020-08-03 at 14:15 +0800, Crystal Guo wrote:
+> The TI syscon reset controller provides a common reset management,
+> and should be suitable for other SOCs. Add compatible "generic-reset",
+> which denotes to use a common reset-controller driver.
 > 
-> Change-Id: I6361cdc2d51de50f66eede7df099c4575e7ec473
+> Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/reset/ti-syscon-reset.txt | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/reset/ti-syscon-reset.txt b/Documentation/devicetree/bindings/reset/ti-syscon-reset.txt
+> index d551161ae785..e36d3631eab2 100644
+> --- a/Documentation/devicetree/bindings/reset/ti-syscon-reset.txt
+> +++ b/Documentation/devicetree/bindings/reset/ti-syscon-reset.txt
+> @@ -25,6 +25,7 @@ Required properties:
+>  			    "ti,k2l-pscrst"
+>  			    "ti,k2hk-pscrst"
+>  			    "ti,syscon-reset"
+> +			    "generic-reset", "ti,syscon-reset"
+>   - #reset-cells		: Should be 1. Please see the reset consumer node below
+>  			  for usage details
+>   - ti,reset-bits	: Contains the reset control register information
+> -- 
+> 2.18.0
 
-Did you not run checkpatch.pl on this?  :)
+My understanding is that it would be better to add a mtk specific
+compatible instead of adding this "generic-reset", especially since we
+can't guarantee this binding will be considered generic in the future.
+I think there is nothing wrong with specifying
+	compatible = "mtk,your-compatible", "ti,syscon-reset";
+in your device tree if your hardware is indeed compatible with the
+specified "ti,syscon-reset" binding, but I may be wrong: Therefore,
+please add devicetree@vger.kernel.org to Cc: for binding changes.
 
-No need for change-id here.
-
-But, most importantly, why is this in drivers/staging?  What keeps it
-from being in the "real" part of the kernel?  I need a TODO file in the
-directory of the driver listing what remains to be done and who is
-responsible for doing this work and reviewing patches.
-
-Can you resend this with that file added and the Change-id removed?
-
-Also, why not just use the IIO interface, why are you creating
-yet-another api for sensors?  We already have 2, making a third seems
-like something that guarantees this will never be mergable to the
-correct part of the kernel.
-
-And finally, /proc/ is not for devices, that is what sysfs is for,
-please use that.
-
-thanks,
-
-greg k-h
+regards
+Philipp
 
 _______________________________________________
 Linux-mediatek mailing list
