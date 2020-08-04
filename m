@@ -2,77 +2,76 @@ Return-Path: <SRS0=p2pa=BO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B8917C433E1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 14:09:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AF30BC433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 14:35:19 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9051D2075F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 14:09:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8261B2065C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 14:35:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1M4IgVb0";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="tZeuGogk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9051D2075F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DJIZRCaW";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="INn72nCn"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8261B2065C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=nXS+92i8waFdDaE5mEQx2qxYOKpBmdWk5oeFabe2+Ig=; b=1M4IgVb0YBYufadphAT2mG49P
-	0ep7boiLHMjVAaxkq/ThpxZFNJwHtXj7ntXRkyEoLgEF6sGfo1vWVRtAE1UJZqVc1MRbYuSOG4QQR
-	+EhMcRuv+mQq1GTkf0+NnOXspnm/ZkXrmQt6NZ9woCV5BZ8FEMyUpgCZyZFGLJtC6tfsgQ8ubMIEI
-	WuIP+sUEm1wSAr7LZ0ZWQx7dEHNx6sMEAyjjIIB+CRt4zBgk7oxtQ8v4AtICTJfI5MLhUFLs+BR0z
-	Ze0EekCF4DHfCqqPJaI1V/B4ybKqeDakuCey/xEz0MVVpPsZdMlH65xmhnXh9ClR24CB9At9wt9MI
-	US5NIbwcQ==;
+	 bh=+4FmIxyPfCNiJxUYpku/FXKF5v5W/xFsIHRVFxg3r08=; b=DJIZRCaW5tjQ4Kh78ec4OHQmb
+	4eNvxITMPGzMHTSOVH/67X/miDMPj5si16v/QNcvagSgAzx6fgdjnjfw4KDaS4s8PYgBIjrMjY4yd
+	h4PnClJL4FGzfLnsLjfHruu+0h2ltVp3ZdZv7Vhsd9jVKVKqOfPthHncNn1tiUbmbCHLSHg2nPTsf
+	y/wteZqXmJTqiOBCrZpsxGRKk6gn9W4E49s4AfdXrQ6lhuCPsS3rTqYoMfX4+VX7w8X3xUoOy34+v
+	G3uB4/VXowlDsqlEdC6b9NTlfzUiITGxsGhg0Q7rqQllbqVUhEM3h9faRn74SV1XSWrke8qX1XuLt
+	wNmKXSItQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k2xdQ-0002XO-Np; Tue, 04 Aug 2020 14:09:44 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1k2y20-00078x-Lr; Tue, 04 Aug 2020 14:35:08 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k2xdN-0002Vd-Fq
- for linux-mediatek@lists.infradead.org; Tue, 04 Aug 2020 14:09:42 +0000
-X-UUID: 7b75b90caed74c7faa56a8cca81b827d-20200804
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=YvqHDXjwhh3CKwDJmfh6+1BizKx62Mp4F6DG3h3i0eI=; 
- b=tZeuGogkUME5QB1HoKuo6lpbBa1OAwB0jPHqDH05xYOfsHLf6nO93T/x16im+Mv5riGsRX9wiciJhdZ3a8ePPjR+C9PSayaKVleZijdsJAWxlwK7rvGjRjF3X1kz6ndX2MpGf75u/rv4j9gyFYM51kHr5kb1Tb/K92iKBWW/VGY=;
-X-UUID: 7b75b90caed74c7faa56a8cca81b827d-20200804
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <frankie.chang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 776540981; Tue, 04 Aug 2020 06:09:32 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 4 Aug 2020 06:59:25 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 4 Aug 2020 21:59:13 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 4 Aug 2020 21:59:13 +0800
-From: Frankie Chang <Frankie.Chang@mediatek.com>
-To: Todd Kjos <tkjos@google.com>
-Subject: [PATCH v7 2/3] binder: add trace at free transaction.
-Date: Tue, 4 Aug 2020 21:59:11 +0800
-Message-ID: <1596549552-5466-3-git-send-email-Frankie.Chang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1596549552-5466-1-git-send-email-Frankie.Chang@mediatek.com>
-References: <1596509145.5207.21.camel@mtkswgap22>
- <1596549552-5466-1-git-send-email-Frankie.Chang@mediatek.com>
+ id 1k2y1w-000774-3i; Tue, 04 Aug 2020 14:35:05 +0000
+Received: from mail-ed1-f45.google.com (mail-ed1-f45.google.com
+ [209.85.208.45])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 2846722D03;
+ Tue,  4 Aug 2020 14:35:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1596551703;
+ bh=msyy9aG35H4DSGIygANUzGiwZ9bmaHBVupY0hOPK2nA=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=INn72nCnUGfrwDf/6D76PRUMF4gh/ThIG+NjSmuyJEdM2wunn48TfTl7XUWx5gt4/
+ G12DNFSI9KhHI6U2jb50EL35hvUSFb9I+5ZtGF7XWjcPOgvVR0rhI0QOE0Ic0RsVuW
+ 6zf43KDoWpiNSUXYFszZaAyXWhVUfEgU2maMm2pY=
+Received: by mail-ed1-f45.google.com with SMTP id l23so16325674edv.11;
+ Tue, 04 Aug 2020 07:35:03 -0700 (PDT)
+X-Gm-Message-State: AOAM531sTfNwghIlisiMhXgFUVsVZypVNMJO5e0muj3wpiuRLl3VswvW
+ nhRsC7FqJwHzam6xHUHG8q/MFvuVvMZ8FOM7Cg==
+X-Google-Smtp-Source: ABdhPJxtAkBWkUbp57xqa5KFEP+7l8fLYyFpHi+fJGBL3okYbOQpXuKQ7hFcornheF7wFTIcTsqN1xDf/iN0Ar3JdVQ=
+X-Received: by 2002:a05:6402:38c:: with SMTP id
+ o12mr21504828edv.271.1596551701677; 
+ Tue, 04 Aug 2020 07:35:01 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20200804105849.70876-1-linux@fw-web.de>
+ <20200804105849.70876-2-linux@fw-web.de>
+In-Reply-To: <20200804105849.70876-2-linux@fw-web.de>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Tue, 4 Aug 2020 22:34:50 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_94Kt3Z4FhB+1Chca-tanzY1Xwun8D2ZQ09Y7p7+Jw40Q@mail.gmail.com>
+Message-ID: <CAAOTY_94Kt3Z4FhB+1Chca-tanzY1Xwun8D2ZQ09Y7p7+Jw40Q@mail.gmail.com>
+Subject: Re: [PATCH v3 1/5] drm: mediatek: add ddp routing for mt7623
+To: Frank Wunderlich <linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200804_100941_699983_E12409B3 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20200804_103504_334755_CDAD0462 
+X-CRM114-Status: GOOD (  18.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,117 +83,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream@mediatek.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org,
- =?UTF-8?q?Arve=20Hj=C3=B8nnev=C3=A5g?= <arve@android.com>, Jian-Min
- Liu <Jian-Min.Liu@mediatek.com>, linux-mediatek@lists.infradead.org,
- Joel Fernandes <joel@joelfernandes.org>,
- Frankie Chang <Frankie.Chang@mediatek.com>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Frank Wunderlich <frank-w@public-files.de>, David Airlie <airlied@linux.ie>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Frankie.Chang" <Frankie.Chang@mediatek.com>
-
-Since the original trace_binder_transaction_received cannot
-precisely present the real finished time of transaction, adding a
-trace_binder_txn_latency_free at the point of free transaction
-may be more close to it.
-
-Signed-off-by: Frankie.Chang <Frankie.Chang@mediatek.com>
----
- drivers/android/binder.c       |   18 ++++++++++++++++++
- drivers/android/binder_trace.h |   29 +++++++++++++++++++++++++++++
- 2 files changed, 47 insertions(+)
-
-diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-index 2df146f..1bfadc2 100644
---- a/drivers/android/binder.c
-+++ b/drivers/android/binder.c
-@@ -1508,6 +1508,20 @@ static void binder_free_txn_fixups(struct binder_transaction *t)
- 	}
- }
- 
-+static void binder_txn_latency_free(struct binder_transaction *t)
-+{
-+	int from_proc, from_thread, to_proc, to_thread;
-+
-+	spin_lock(&t->lock);
-+	from_proc = t->from ? t->from->proc->pid : 0;
-+	from_thread = t->from ? t->from->pid : 0;
-+	to_proc = t->to_proc ? t->to_proc->pid : 0;
-+	to_thread = t->to_thread ? t->to_thread->pid : 0;
-+	spin_unlock(&t->lock);
-+
-+	trace_binder_txn_latency_free(t, from_proc, from_thread, to_proc, to_thread);
-+}
-+
- static void binder_free_transaction(struct binder_transaction *t)
- {
- 	struct binder_proc *target_proc = t->to_proc;
-@@ -1518,6 +1532,8 @@ static void binder_free_transaction(struct binder_transaction *t)
- 			t->buffer->transaction = NULL;
- 		binder_inner_proc_unlock(target_proc);
- 	}
-+	if (trace_binder_txn_latency_free_enabled())
-+		binder_txn_latency_free(t);
- 	/*
- 	 * If the transaction has no target_proc, then
- 	 * t->buffer->transaction has already been cleared.
-@@ -3093,6 +3109,8 @@ static void binder_transaction(struct binder_proc *proc,
- 	kfree(tcomplete);
- 	binder_stats_deleted(BINDER_STAT_TRANSACTION_COMPLETE);
- err_alloc_tcomplete_failed:
-+	if (trace_binder_txn_latency_free_enabled())
-+		binder_txn_latency_free(t);
- 	kfree(t);
- 	binder_stats_deleted(BINDER_STAT_TRANSACTION);
- err_alloc_t_failed:
-diff --git a/drivers/android/binder_trace.h b/drivers/android/binder_trace.h
-index 6731c3c..eb2c53c 100644
---- a/drivers/android/binder_trace.h
-+++ b/drivers/android/binder_trace.h
-@@ -95,6 +95,35 @@
- 		  __entry->thread_todo)
- );
- 
-+TRACE_EVENT(binder_txn_latency_free,
-+	TP_PROTO(struct binder_transaction *t
-+		 int from_proc, int from_thread
-+		 int to_proc, int to_thread),
-+	TP_ARGS(t, from_proc, from_thread, to_proc, to_thread),
-+	TP_STRUCT__entry(
-+		__field(int, debug_id)
-+		__field(int, from_proc)
-+		__field(int, from_thread)
-+		__field(int, to_proc)
-+		__field(int, to_thread)
-+		__field(unsigned int, code)
-+		__field(unsigned int, flags)
-+	),
-+	TP_fast_assign(
-+		__entry->debug_id = t->debug_id;
-+		__entry->from_proc = from_proc;
-+		__entry->from_thread = from_thread;
-+		__entry->to_proc = to_proc;
-+		__entry->to_thread = to_thread;
-+		__entry->code = t->code;
-+		__entry->flags = t->flags;
-+	),
-+	TP_printk("transaction=%d from %d:%d to %d:%d flags=0x%x code=0x%x",
-+		  __entry->debug_id, __entry->from_proc, __entry->from_thread,
-+		  __entry->to_proc, __entry->to_thread, __entry->code,
-+		  __entry->flags)
-+);
-+
- TRACE_EVENT(binder_transaction,
- 	TP_PROTO(bool reply, struct binder_transaction *t,
- 		 struct binder_node *target_node),
--- 
-1.7.9.5
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEZyYW5rOgoKRnJhbmsgV3VuZGVybGljaCA8bGludXhAZnctd2ViLmRlPiDmlrwgMjAyMOW5
+tDjmnIg05pelIOmAseS6jCDkuIvljYg3OjAw5a+r6YGT77yaCj4KPiBGcm9tOiBGcmFuayBXdW5k
+ZXJsaWNoIDxmcmFuay13QHB1YmxpYy1maWxlcy5kZT4KPgo+IG9uIEJQaS1SMi9tdDc2MjMgbWFp
+bi1wYXRoIGhhdmUgdG8gYmUgcm91dGVkIHRvIERQSTAgKGhkbWkpIGluc3RlYWQgb2YgRFNJMAo+
+IHVzaW5nIGNvbXBhdGlibGUgIm10NzYyMy1tbXN5cyIgYWxyZWFkeSBkZWZpbmVkIGluIGR0cwo+
+Cj4gU2lnbmVkLW9mZi1ieTogRnJhbmsgV3VuZGVybGljaCA8ZnJhbmstd0BwdWJsaWMtZmlsZXMu
+ZGU+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jIHwgMjUg
+KysrKysrKysrKysrKysrKysrKysrKysrLQo+ICAxIGZpbGUgY2hhbmdlZCwgMjQgaW5zZXJ0aW9u
+cygrKSwgMSBkZWxldGlvbigtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2
+LmMKPiBpbmRleCA2YmQzNjk0MzRkOWQuLjllNDE4YjgzYmU0OCAxMDA2NDQKPiAtLS0gYS9kcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gQEAgLTc0LDcgKzc0LDIwIEBAIHN0YXRpYyBjb25z
+dCBlbnVtIG10a19kZHBfY29tcF9pZCBtdDI3MDFfbXRrX2RkcF9leHRbXSA9IHsKPiAgICAgICAg
+IEREUF9DT01QT05FTlRfRFBJMCwKPiAgfTsKPgo+IC1zdGF0aWMgY29uc3QgZW51bSBtdGtfZGRw
+X2NvbXBfaWQgbXQyNzEyX210a19kZHBfbWFpbltdID0gewo+ICtzdGF0aWMgY29uc3QgZW51bSBt
+dGtfZGRwX2NvbXBfaWQgbXQ3NjIzX210a19kZHBfbWFpbltdID0gewo+ICsgICAgICAgRERQX0NP
+TVBPTkVOVF9PVkwwLAo+ICsgICAgICAgRERQX0NPTVBPTkVOVF9SRE1BMCwKPiArICAgICAgIERE
+UF9DT01QT05FTlRfQ09MT1IwLAo+ICsgICAgICAgRERQX0NPTVBPTkVOVF9CTFMsCj4gKyAgICAg
+ICBERFBfQ09NUE9ORU5UX0RQSTAsCj4gK307Cj4gKwo+ICtzdGF0aWMgY29uc3QgZW51bSBtdGtf
+ZGRwX2NvbXBfaWQgbXQ3NjIzX210a19kZHBfZXh0W10gPSB7Cj4gKyAgICAgICBERFBfQ09NUE9O
+RU5UX1JETUExLAo+ICsgICAgICAgRERQX0NPTVBPTkVOVF9EU0kwLAo+ICt9Owo+ICsKPiArc3Rh
+dGljIGVudW0gbXRrX2RkcF9jb21wX2lkIG10MjcxMl9tdGtfZGRwX21haW5bXSA9IHsKCldoeSBk
+byB5b3UgcmVtb3ZlICdjb25zdCc/Cgo+ICAgICAgICAgRERQX0NPTVBPTkVOVF9PVkwwLAo+ICAg
+ICAgICAgRERQX0NPTVBPTkVOVF9DT0xPUjAsCj4gICAgICAgICBERFBfQ09NUE9ORU5UX0FBTDAs
+Cj4gQEAgLTEyNyw2ICsxNDAsMTQgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfbW1zeXNfZHJp
+dmVyX2RhdGEgbXQyNzAxX21tc3lzX2RyaXZlcl9kYXRhID0gewo+ICAgICAgICAgLnNoYWRvd19y
+ZWdpc3RlciA9IHRydWUsCj4gIH07Cj4KPiArc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfbW1zeXNf
+ZHJpdmVyX2RhdGEgbXQ3NjIzX21tc3lzX2RyaXZlcl9kYXRhID0gewo+ICsgICAgICAgLm1haW5f
+cGF0aCA9IG10NzYyM19tdGtfZGRwX21haW4sCj4gKyAgICAgICAubWFpbl9sZW4gPSBBUlJBWV9T
+SVpFKG10NzYyM19tdGtfZGRwX21haW4pLAo+ICsgICAgICAgLmV4dF9wYXRoID0gbXQ3NjIzX210
+a19kZHBfZXh0LAo+ICsgICAgICAgLmV4dF9sZW4gPSBBUlJBWV9TSVpFKG10NzYyM19tdGtfZGRw
+X2V4dCksCj4gKyAgICAgICAuc2hhZG93X3JlZ2lzdGVyID0gdHJ1ZSwKPiArfTsKPiArCj4gIHN0
+YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX21tc3lzX2RyaXZlcl9kYXRhIG10MjcxMl9tbXN5c19kcml2
+ZXJfZGF0YSA9IHsKPiAgICAgICAgIC5tYWluX3BhdGggPSBtdDI3MTJfbXRrX2RkcF9tYWluLAo+
+ICAgICAgICAgLm1haW5fbGVuID0gQVJSQVlfU0laRShtdDI3MTJfbXRrX2RkcF9tYWluKSwKPiBA
+QCAtNDIyLDYgKzQ0Myw4IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIG10a19k
+ZHBfY29tcF9kdF9pZHNbXSA9IHsKPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQg
+bXRrX2RybV9vZl9pZHNbXSA9IHsKPiAgICAgICAgIHsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWss
+bXQyNzAxLW1tc3lzIiwKPiAgICAgICAgICAgLmRhdGEgPSAmbXQyNzAxX21tc3lzX2RyaXZlcl9k
+YXRhfSwKPiArICAgICAgIHsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ3NjIzLW1tc3lzIiwK
+PiArICAgICAgICAgLmRhdGEgPSAmbXQ3NjIzX21tc3lzX2RyaXZlcl9kYXRhfSwKPiAgICAgICAg
+IHsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQyNzEyLW1tc3lzIiwKPiAgICAgICAgICAgLmRh
+dGEgPSAmbXQyNzEyX21tc3lzX2RyaXZlcl9kYXRhfSwKPiAgICAgICAgIHsgLmNvbXBhdGlibGUg
+PSAibWVkaWF0ZWssbXQ4MTczLW1tc3lzIiwKPiAtLQo+IDIuMjUuMQo+Cj4KPiBfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LW1lZGlhdGVrIG1h
+aWxpbmcgbGlzdAo+IExpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRl
+ayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
