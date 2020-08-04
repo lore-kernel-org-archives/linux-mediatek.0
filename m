@@ -2,22 +2,22 @@ Return-Path: <SRS0=p2pa=BO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A23EC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 02:14:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DF73C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 02:19:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4258420792
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 02:14:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 763A920792
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 02:19:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OZTQOjFp";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ed7L57Em"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4258420792
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="E6qM+hwV";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="DloRHmXW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 763A920792
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ri7bY8u2QYyjB2FVhAvqJVvd6ycD/+9oLPAHMW6f2FU=; b=OZTQOjFpTkwEdS2PUYhxjapD7
-	SjDtN7db6OnF1hPbrnc95aJB0l1GxPffa+pUl/SfcqDOpmPCkDFJ5wM6jHkpZJIbP0jUldB+CEGy/
-	FQkxSPiPfQcsiBlhsbR+pImok48nXaOu1pLGqk7vam9V+OCnJ0rGtnHj8A8uUe02oHTge0fGPFBaR
-	cxPe55+MGu2uA9+o7+R+EKNxRMdVzTQrNXFLSQObIwYW4lpL1lLXaaohnf69rFnjsnsWz9qeMoRnj
-	ESA62H57eSes5lG6DhI1agseyfD1lyzGTEPrNytkdXBjjIOIZEwB8l9uMQq2awCWSMJGqakVrGaSb
-	QEYQnIbjg==;
+	 bh=jlnvmqhjtRzv5odqpUj/Rl2ruZbjzLwI+hHrZ3Z7nH0=; b=E6qM+hwVVnHDvUtFaCkkpf+YR
+	142zaXGBvasVxv8EJDKPvM/VoYbFc6SDuXcfE7nPxGs3qMwibg+CRXCOsWCqfsVdb/UNIElZQIBx6
+	HAJf7pUa6l1d6BWZxODbEQzm9bpfeHFazey7FwA54sSiuHdY1RMk0U2h/DrEsjVACnPUUj2HbY418
+	wh4lrpbycOBeqTJclcDeILthBcRjvIOH7BqHxjrfHpcZhDVWjSeZw8Tp4oZBpN+q5uC+5ndbbOkdC
+	T3irmjUc6O5Bb3DFKjlD6E+dTpahY5UOzXjK48WkMv1/rZG4SUdtm8FERYwC1CJLOrzsQeaZLy+KT
+	XCAr1d0ZA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k2mTH-00049a-HL; Tue, 04 Aug 2020 02:14:31 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1k2mXe-0004yy-Uj; Tue, 04 Aug 2020 02:19:03 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k2mTE-00048U-E9; Tue, 04 Aug 2020 02:14:29 +0000
-X-UUID: 07a19b560c7f46348fbc7fb928790989-20200803
+ id 1k2mXa-0004wu-5D; Tue, 04 Aug 2020 02:18:59 +0000
+X-UUID: 997cd93c666b4bb7b23e8de3efebaf98-20200803
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=3BwGdOQ5D6GNhCsE0C8J7vcVgtFQc9v8dJhTj9hN+g0=; 
- b=ed7L57EmuxZ0LgWJ7Pe8AzmKgMzO81fUvBvCorpLIsxG6/vykA8v4RI1aFAF//63vFiSlSv24yd3lwTQ33PRnmBQvKMf6/lUe/mjfHEEqqwTjXtS1ZjdhNw6swmR1jyT8n2QOlL0ESlKQ0ObE8G5oYlNckiwGyQWJgz9YzHHv18=;
-X-UUID: 07a19b560c7f46348fbc7fb928790989-20200803
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <zhiyong.tao@mediatek.com>)
+ bh=cCAvzIsckZTZbTXtmqXfy9+ayjfmU1U5sW/TVt9ABco=; 
+ b=DloRHmXWV/mcYvA0o2N8rkZ63zmRTA3WK30pEUW/MlFk5x5ojFtX/JPQZ2uHiGjkqOyanloT7k1C5UY2YjR+hfGTAxs2eBFtQBnHWF2HYUkjz46TCT1IZBmoRubm8I8eNA50/25XMaeTG43vj1tYrvTj9op8a6fSvh+iXi7ic3Y=;
+X-UUID: 997cd93c666b4bb7b23e8de3efebaf98-20200803
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <neal.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 790474432; Mon, 03 Aug 2020 18:14:24 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ with ESMTP id 196238756; Mon, 03 Aug 2020 18:18:55 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 3 Aug 2020 19:10:18 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 4 Aug 2020 10:10:14 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 4 Aug 2020 10:10:14 +0800
-Message-ID: <1596506979.20778.18.camel@mhfsdcap03>
-Subject: Re: [PATCH v2 2/3] dt-bindings: pinctrl: mt8192: add binding document
-From: zhiyong tao <zhiyong.tao@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-Date: Tue, 4 Aug 2020 10:09:39 +0800
-In-Reply-To: <20200803214655.GB3184946@bogus>
-References: <20200801043303.32149-1-zhiyong.tao@mediatek.com>
- <20200801043303.32149-3-zhiyong.tao@mediatek.com>
- <20200803214655.GB3184946@bogus>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ 15.0.1497.2; Mon, 3 Aug 2020 19:18:49 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 4 Aug 2020 10:18:51 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 4 Aug 2020 10:18:51 +0800
+Message-ID: <1596507531.17917.10.camel@mtkswgap22>
+Subject: Re: [PATCH v4 2/2] soc: mediatek: add mtk-devapc driver
+From: Neal Liu <neal.liu@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Tue, 4 Aug 2020 10:18:51 +0800
+In-Reply-To: <CAAOTY_9UcnSDTaVPDPyPLsWEYcrcq5MY=z520MWtFdeLw_FqGQ@mail.gmail.com>
+References: <1596010690-13178-1-git-send-email-neal.liu@mediatek.com>
+ <1596010690-13178-3-git-send-email-neal.liu@mediatek.com>
+ <CAAOTY_8bE8Qo5-0MA9J1gcEbN4DP=Wf2O6vOUVos=VkoODeayA@mail.gmail.com>
+ <1596163478.3932.17.camel@mtkswgap22>
+ <CAAOTY_9kS+jrCOpZtOs+L8gBzvkewi+cSN7XWGNxuiMQocedFA@mail.gmail.com>
+ <1596425521.22971.13.camel@mtkswgap22>
+ <CAAOTY_9UcnSDTaVPDPyPLsWEYcrcq5MY=z520MWtFdeLw_FqGQ@mail.gmail.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: AD2601A2FA4E754C6F8D1F980DA46F02B422FAA54916200C442C0D45F21FFE182000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200803_221428_734308_7CA8BCF9 
-X-CRM114-Status: GOOD (  34.47  )
+X-CRM114-CacheID: sfid-20200803_221858_353689_A016454F 
+X-CRM114-Status: GOOD (  37.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,254 +88,120 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, hui.liu@mediatek.com,
- srv_heupstream@mediatek.com, chuanjia.liu@mediatek.com,
- biao.huang@mediatek.com, linus.walleij@linaro.org, sean.wang@kernel.org,
- seiya.wang@mediatek.com, linux-kernel@vger.kernel.org,
- hongzhou.yang@mediatek.com, sj.huang@mediatek.com,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- sean.wang@mediatek.com, linux-gpio@vger.kernel.org, matthias.bgg@gmail.com,
- eddie.huang@mediatek.com, erin.lo@mediatek.com, jg_poxu@mediatek.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devicetree@vger.kernel.org, wsd_upstream <wsd_upstream@mediatek.com>,
+ lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Neal Liu <neal.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2020-08-03 at 15:46 -0600, Rob Herring wrote:
-> On Sat, Aug 01, 2020 at 12:33:02PM +0800, Zhiyong Tao wrote:
-> > The commit adds mt8192 compatible node in binding document.
-> > 
-> > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
-> > ---
-> >  .../bindings/pinctrl/pinctrl-mt8192.yaml      | 175 ++++++++++++++++++
-> >  1 file changed, 175 insertions(+)
-> >  create mode 100755 Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml
-> > new file mode 100755
-> > index 000000000000..88e18e2e23a0
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml
-> > @@ -0,0 +1,175 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/pinctrl/pinctrl-mt8192.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Mediatek MT8192 Pin Controller
-> > +
-> > +maintainers:
-> > +  - Sean Wang <sean.wang@mediatek.com>
-> > +
-> > +description: |
-> > +  The Mediatek's Pin controller is used to control SoC pins.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: mediatek,mt8192-pinctrl
-> > +
-> > +  gpio-controller: true
-> > +
-> > +  '#gpio-cells':
-> > +    description: |
-> > +      Number of cells in GPIO specifier. Since the generic GPIO binding is used,
-> > +      the amount of cells must be specified as 2. See the below
-> > +      mentioned gpio binding representation for description of particular cells.
-> > +    const: 2
-> > +
-> > +  gpio-ranges:
-> > +    description: gpio valid number range.
-> > +    maxItems: 1
-> > +
-> > +  reg:
-> > +    description: |
-> > +      Physical address base for gpio base registers. There are 11 GPIO
-> > +      physical address base in mt8192.
-> > +    maxItems: 11
-> > +
-> > +  reg-names:
-> > +    description: |
-> > +      Gpio base register names.
-> > +    maxItems: 11
-> > +
-> > +  interrupt-controller: true
-> > +
-> > +  '#interrupt-cells':
-> > +    const: 2
-> > +
-> > +  interrupts:
-> > +    description: The interrupt outputs to sysirq.
-> > +    maxItems: 1
-> > +
-> > +#PIN CONFIGURATION NODES
-> > +patternProperties:
-> > +  '^pins':
-> > +    type: object
-> > +    description: |
-> > +      A pinctrl node should contain at least one subnodes representing the
-> > +      pinctrl groups available on the machine. Each subnode will list the
-> > +      pins it needs, and how they should be configured, with regard to muxer
-> > +      configuration, pullups, drive strength, input enable/disable and
-> > +      input schmitt.
-> > +      An example of using macro:
-> > +      node {
-> 
-> 'node' doesn't match '^pins' regex.
-> 
-> Better to put an example in the actual example so it is checked.
-
-==>  
-Dear Rob,
-  we will change it as the actual example in v3:
-           pincontroller {
-             /* GPIO0 set as multifunction GPIO0*/
-             state_0_node_a {
-               pinmux = <PINMUX_GPIO0__FUNC_GPIO0>;
-             };
-             /* GPIO0 set as multifunction PWM*/
-             state_0_node_b {
-               pinmux = <PINMUX_GPIO1__FUNC_PWM_1>;
-             };
-           };
-
-      Is it ok?
- 
-> > +        pinmux = <PIN_NUMBER_PINMUX>;
-> > +        GENERIC_PINCONFIG;
-> > +      };
-> > +    properties:
-> > +      pinmux:
-> > +        $ref: "/schemas/types.yaml#/definitions/uint32-array"
-> 
-> Already a common definition in pinmux-node.yaml. Reference that file in 
-> '^pins'
-> .
-==>
-  we will change the ref as "$ref: "pinmux-node.yaml"" in v3.
-
-> > +        description: |
-> > +          Integer array, represents gpio pin number and mux setting.
-> > +          Supported pin number and mux varies for different SoCs, and are defined
-> > +          as macros in dt-bindings/pinctrl/<soc>-pinfunc.h directly.
-> > +
-> > +      GENERIC_PINCONFIG:
-> 
-> That's not a property name.
-==> we will remove it in v3. and separate out the property name
-"mediatek,pull-up-adv", "mediatek,pull-down-adv", "mediatek,tdsel",
-"mediatek,rdsel", "drive-strength", "mediatek,drive-strength-adv =
-<XXX>;" in v3.
-> 
-> > +        description: |
-> > +          It is the generic pinconfig options to use, bias-disable,
-> > +          bias-pull-down, bias-pull-up, input-enable, input-disable, output-low,
-> > +          output-high, input-schmitt-enable, input-schmitt-disable
-> > +          and drive-strength are valid.
-> > +
-> > +          Some special pins have extra pull up strength, there are R0 and R1 pull-up
-> > +          resistors available, but for user, it's only need to set R1R0 as 00, 01,
-> > +          10 or 11. So It needs config "mediatek,pull-up-adv" or
-> > +          "mediatek,pull-down-adv" to support arguments for those special pins.
-> > +          Valid arguments are from 0 to 3.
-> > +
-> > +          We can use "mediatek,tdsel" which is an integer describing the steps for
-> > +          output level shifter duty cycle when asserted (high pulse width adjustment).
-> > +          Valid arguments  are from 0 to 15.
-> > +          We can use "mediatek,rdsel" which is an integer describing the steps for
-> > +          input level shifter duty cycle when asserted (high pulse width adjustment).
-> > +          Valid arguments are from 0 to 63.
-> > +
-> > +          When config drive-strength, it can support some arguments, such as
-> > +          MTK_DRIVE_4mA, MTK_DRIVE_6mA, etc. See dt-bindings/pinctrl/mt65xx.h.
-> > +          It can only support 2/4/6/8/10/12/14/16mA in mt8192.
-> > +          For I2C pins, there are existing generic driving setup and the specific
-> > +          driving setup. I2C pins can only support 2/4/6/8/10/12/14/16mA driving
-> > +          adjustment in generic driving setup. But in specific driving setup,
-> > +          they can support 0.125/0.25/0.5/1mA adjustment. If we enable specific
-> > +          driving setup for I2C pins, the existing generic driving setup will be
-> > +          disabled. For some special features, we need the I2C pins specific
-> > +          driving setup. The specific driving setup is controlled by E1E0EN.
-> > +          So we need add extra vendor driving preperty instead of
-> > +          the generic driving property.
-> > +          We can add "mediatek,drive-strength-adv = <XXX>;" to describe the specific
-> > +          driving setup property. "XXX" means the value of E1E0EN. EN is 0 or 1.
-> > +          It is used to enable or disable the specific driving setup.
-> > +          E1E0 is used to describe the detail strength specification of the I2C pin.
-> > +          When E1=0/E0=0, the strength is 0.125mA.
-> > +          When E1=0/E0=1, the strength is 0.25mA.
-> > +          When E1=1/E0=0, the strength is 0.5mA.
-> > +          When E1=1/E0=1, the strength is 1mA.
-> > +          So the valid arguments of "mediatek,drive-strength-adv" are from 0 to 7.
-> > +
-> > +      bias-pull-down: true
-> > +
-> > +      bias-pull-up: true
-> > +
-> > +      bias-disable: true
-> > +
-> > +      output-high: true
-> > +
-> > +      output-low: true
-> > +
-> > +      input-enable: true
-> > +
-> > +      input-disable: true
-> > +
-> > +      input-schmitt-enable: true
-> > +
-> > +      input-schmitt-disable: true
-> > +
-> > +    required:
-> > +      - pinmux
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - interrupts
-> > +  - interrupt-controller
-> > +  - '#interrupt-cells'
-> > +  - gpio-controller
-> > +  - '#gpio-cells'
-> > +  - gpio-ranges
-> 
-> additionalProperties: false
-> 
-
-==> We will add it in v3. Thanks.
-> > +
-> > +examples:
-> > +  - |
-> > +            #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
-> > +            #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +            pio: pinctrl@10005000 {
-> > +                    compatible = "mediatek,mt8192-pinctrl";
-> > +                    reg = <0 0x10005000 0 0x1000>,
-> > +                          <0 0x11c20000 0 0x1000>,
-> > +                          <0 0x11d10000 0 0x1000>,
-> > +                          <0 0x11d30000 0 0x1000>,
-> > +                          <0 0x11d40000 0 0x1000>,
-> > +                          <0 0x11e20000 0 0x1000>,
-> > +                          <0 0x11e70000 0 0x1000>,
-> > +                          <0 0x11ea0000 0 0x1000>,
-> > +                          <0 0x11f20000 0 0x1000>,
-> > +                          <0 0x11f30000 0 0x1000>,
-> > +                          <0 0x1000b000 0 0x1000>;
-> > +                    reg-names = "iocfg0", "iocfg_rm", "iocfg_bm",
-> > +                          "iocfg_bl", "iocfg_br", "iocfg_lm",
-> > +                          "iocfg_lb", "iocfg_rt", "iocfg_lt",
-> > +                          "iocfg_tl", "eint";
-> > +                    gpio-controller;
-> > +                    #gpio-cells = <2>;
-> > +                    gpio-ranges = <&pio 0 0 220>;
-> > +                    interrupt-controller;
-> > +                    interrupts = <GIC_SPI 212 IRQ_TYPE_LEVEL_HIGH 0>;
-> > +                    #interrupt-cells = <2>;
-> > +            };
-> > -- 
-> > 2.18.0
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+DQpPbiBUdWUsIDIwMjAtMDgtMDQgYXQgMDA6MTMgKzA4MDAsIENodW4tS3VhbmcgSHUgd3JvdGU6
+DQo+IEhpLCBOZWFsOg0KPiANCj4gTmVhbCBMaXUgPG5lYWwubGl1QG1lZGlhdGVrLmNvbT4g5pa8
+IDIwMjDlubQ45pyIM+aXpSDpgLHkuIAg5LiK5Y2IMTE6MzLlr6vpgZPvvJoNCj4gPg0KPiA+IEhp
+IENodW4tS3VhbmcsDQo+ID4NCj4gPiBPbiBGcmksIDIwMjAtMDctMzEgYXQgMjM6MDMgKzA4MDAs
+IENodW4tS3VhbmcgSHUgd3JvdGU6DQo+ID4gPiBIaSwgTmVhbDoNCj4gPiA+DQo+ID4gPiBOZWFs
+IExpdSA8bmVhbC5saXVAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5tDfmnIgzMeaXpSDpgLHkupQg
+5LiK5Y2IMTA6NDTlr6vpgZPvvJoNCj4gPiA+ID4NCj4gPiA+ID4gSGkgQ2h1bi1LdWFuZywNCj4g
+PiA+ID4NCj4gPiA+ID4NCj4gPiA+ID4gT24gVGh1LCAyMDIwLTA3LTMwIGF0IDAwOjM4ICswODAw
+LCBDaHVuLUt1YW5nIEh1IHdyb3RlOg0KPiA+ID4gPiA+IEhpLCBOZWFsOg0KPiA+ID4gPiA+DQo+
+ID4gPiA+ID4gTmVhbCBMaXUgPG5lYWwubGl1QG1lZGlhdGVrLmNvbT4g5pa8IDIwMjDlubQ35pyI
+Mjnml6Ug6YCx5LiJIOS4i+WNiDQ6Mjnlr6vpgZPvvJoNCj4gPiA+ID4gPiA+DQo+ID4gPiA+ID4g
+PiBNZWRpYVRlayBidXMgZmFicmljIHByb3ZpZGVzIFRydXN0Wm9uZSBzZWN1cml0eSBzdXBwb3J0
+IGFuZCBkYXRhDQo+ID4gPiA+ID4gPiBwcm90ZWN0aW9uIHRvIHByZXZlbnQgc2xhdmVzIGZyb20g
+YmVpbmcgYWNjZXNzZWQgYnkgdW5leHBlY3RlZA0KPiA+ID4gPiA+ID4gbWFzdGVycy4NCj4gPiA+
+ID4gPiA+IFRoZSBzZWN1cml0eSB2aW9sYXRpb24gaXMgbG9nZ2VkIGFuZCBzZW50IHRvIHRoZSBw
+cm9jZXNzb3IgZm9yDQo+ID4gPiA+ID4gPiBmdXJ0aGVyIGFuYWx5c2lzIG9yIGNvdW50ZXJtZWFz
+dXJlcy4NCj4gPiA+ID4gPiA+DQo+ID4gPiA+ID4gPiBBbnkgb2NjdXJyZW5jZSBvZiBzZWN1cml0
+eSB2aW9sYXRpb24gd291bGQgcmFpc2UgYW4gaW50ZXJydXB0LCBhbmQNCj4gPiA+ID4gPiA+IGl0
+IHdpbGwgYmUgaGFuZGxlZCBieSBtdGstZGV2YXBjIGRyaXZlci4gVGhlIHZpb2xhdGlvbg0KPiA+
+ID4gPiA+ID4gaW5mb3JtYXRpb24gaXMgcHJpbnRlZCBpbiBvcmRlciB0byBmaW5kIHRoZSBtdXJk
+ZXJlci4NCj4gPiA+ID4gPiA+DQo+ID4gPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBOZWFsIExpdSA8
+bmVhbC5saXVAbWVkaWF0ZWsuY29tPg0KPiA+ID4gPiA+ID4gLS0tDQo+ID4gPiA+ID4NCj4gPiA+
+ID4gPiBbc25pcF0NCj4gPiA+ID4gPg0KPiA+ID4gPiA+ID4gKw0KPiA+ID4gPiA+ID4gKy8qDQo+
+ID4gPiA+ID4gPiArICogZGV2YXBjX2V4dHJhY3RfdmlvX2RiZyAtIGV4dHJhY3QgZnVsbCB2aW9s
+YXRpb24gaW5mb3JtYXRpb24gYWZ0ZXIgZG9pbmcNCj4gPiA+ID4gPiA+ICsgKiAgICAgICAgICAg
+ICAgICAgICAgICAgICAgc2hpZnQgbWVjaGFuaXNtLg0KPiA+ID4gPiA+ID4gKyAqLw0KPiA+ID4g
+PiA+ID4gK3N0YXRpYyB2b2lkIGRldmFwY19leHRyYWN0X3Zpb19kYmcoc3RydWN0IG10a19kZXZh
+cGNfY29udGV4dCAqY3R4KQ0KPiA+ID4gPiA+ID4gK3sNCj4gPiA+ID4gPiA+ICsgICAgICAgY29u
+c3Qgc3RydWN0IG10a19kZXZhcGNfdmlvX2RiZ3MgKnZpb19kYmdzOw0KPiA+ID4gPiA+ID4gKyAg
+ICAgICBzdHJ1Y3QgbXRrX2RldmFwY192aW9faW5mbyAqdmlvX2luZm87DQo+ID4gPiA+ID4gPiAr
+ICAgICAgIHZvaWQgX19pb21lbSAqdmlvX2RiZzBfcmVnOw0KPiA+ID4gPiA+ID4gKyAgICAgICB2
+b2lkIF9faW9tZW0gKnZpb19kYmcxX3JlZzsNCj4gPiA+ID4gPiA+ICsgICAgICAgdTMyIGRiZzA7
+DQo+ID4gPiA+ID4gPiArDQo+ID4gPiA+ID4gPiArICAgICAgIHZpb19kYmcwX3JlZyA9IGN0eC0+
+ZGV2YXBjX3BkX2Jhc2UgKyBjdHgtPm9mZnNldC0+dmlvX2RiZzA7DQo+ID4gPiA+ID4gPiArICAg
+ICAgIHZpb19kYmcxX3JlZyA9IGN0eC0+ZGV2YXBjX3BkX2Jhc2UgKyBjdHgtPm9mZnNldC0+dmlv
+X2RiZzE7DQo+ID4gPiA+ID4gPiArDQo+ID4gPiA+ID4gPiArICAgICAgIHZpb19kYmdzID0gY3R4
+LT52aW9fZGJnczsNCj4gPiA+ID4gPiA+ICsgICAgICAgdmlvX2luZm8gPSBjdHgtPnZpb19pbmZv
+Ow0KPiA+ID4gPiA+ID4gKw0KPiA+ID4gPiA+ID4gKyAgICAgICAvKiBTdGFydHMgdG8gZXh0cmFj
+dCB2aW9sYXRpb24gaW5mb3JtYXRpb24gKi8NCj4gPiA+ID4gPiA+ICsgICAgICAgZGJnMCA9IHJl
+YWRsKHZpb19kYmcwX3JlZyk7DQo+ID4gPiA+ID4gPiArICAgICAgIHZpb19pbmZvLT52aW9fYWRk
+ciA9IHJlYWRsKHZpb19kYmcxX3JlZyk7DQo+ID4gPiA+ID4gPiArDQo+ID4gPiA+ID4gPiArICAg
+ICAgIHZpb19pbmZvLT5tYXN0ZXJfaWQgPSAoZGJnMCAmIHZpb19kYmdzLT5tc3RpZC5tYXNrKSA+
+Pg0KPiA+ID4gPiA+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdmlvX2RiZ3MtPm1z
+dGlkLnN0YXJ0Ow0KPiA+ID4gPiA+DQo+ID4gPiA+ID4gV2hhdCBpcyBtYXN0ZXJfaWQ/IEhvdyBj
+b3VsZCB3ZSB1c2UgaXQgdG8gZGVidWc/IEZvciBleGFtcGxlLCBpZiB3ZQ0KPiA+ID4gPiA+IGdl
+dCBhIG1hc3Rlcl9pZCA9IDEsIHdoYXQgc2hvdWxkIHdlIGRvIGZvciB0aGlzPw0KPiA+ID4gPiA+
+DQo+ID4gPiA+ID4gPiArICAgICAgIHZpb19pbmZvLT5kb21haW5faWQgPSAoZGJnMCAmIHZpb19k
+YmdzLT5kbW5pZC5tYXNrKSA+Pg0KPiA+ID4gPiA+ID4gKyAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgdmlvX2RiZ3MtPmRtbmlkLnN0YXJ0Ow0KPiA+ID4gPiA+DQo+ID4gPiA+ID4gV2hhdCBp
+cyBkb21haW5faWQ/IEhvdyBjb3VsZCB3ZSB1c2UgaXQgdG8gZGVidWc/IEZvciBleGFtcGxlLCBp
+ZiB3ZQ0KPiA+ID4gPiA+IGdldCBhIGRvbWFpbl9pZCA9IDIsIHdoYXQgc2hvdWxkIHdlIGRvIGZv
+ciB0aGlzPw0KPiA+ID4gPiA+DQo+ID4gPiA+DQo+ID4gPiA+IG1hc3Rlcl9pZCBhbmQgZG9tYWlu
+X2lkIGJlbG9uZ3Mgb3VyIGJ1cyBzaWRlLWJhbmQgc2lnbmFsIGluZm8uIEl0IGNhbg0KPiA+ID4g
+PiBoZWxwIHVzIHRvIGZpbmQgdGhlIHZpb2xhdGlvbiBtYXN0ZXIuDQo+ID4gPg0KPiA+ID4gRG9l
+cyAndmlvbGF0aW9uIG1hc3RlcicgbWVhbnMgdGhlIGhhcmR3YXJlIGNvdWxkIGFjY2VzcyB0aGUg
+cHJvdGVjdGVkDQo+ID4gPiByZWdpc3Rlcj8gKGV4LiBDUFUsIEdDRSwgLi4uKSBJZiBzbywgSSB0
+aGluayBpdCdzIGJldHRlciB0byBhZGQNCj4gPiA+IGNvbW1lbnQgdG8gZXhwbGFpbiBob3cgdG8g
+bWFwIChtYXN0ZXJfaWQsIGRvbWFpbl9pZCkgdG8gYSBoYXJkd2FyZQ0KPiA+ID4gKG1heWJlIHRo
+ZSBkZXZpY2UgaW4gZGV2aWNlIHRyZWUpIGJlY2F1c2UgZXZlcnkgYm9keSBkb2VzIG5vdCBrbm93
+DQo+ID4gPiB3aGF0IHRoZSBudW1iZXIgbWVhbnMuIERvbid0IHRyeSB0byB0cmFuc2xhdGUgdGhl
+IG51bWJlciB0byBhIHN0cmluZw0KPiA+ID4gYmVjYXVzZSB0aGlzIHdvdWxkIGNvc3QgbXVjaCB0
+aW1lIHRvIGRvIHRoaXMuIEp1c3QgcHJpbnQgYSBudW1iZXIgYW5kDQo+ID4gPiB3ZSBjb3VsZCBm
+aW5kIG91dCB0aGUgbWFzdGVyIGJ5IHRoZSBjb21tZW50Lg0KPiA+DQo+ID4gJ3Zpb2xhdGlvbiBt
+YXN0ZXInIG1lYW5zIHRoZSBtYXN0ZXIgd2hpY2ggdmlvbGF0ZXMgdGhlIHBlcm1pc3Npb24NCj4g
+PiBjb250cm9sLiBGb3IgZXhhbXBsZSwgaWYgd2Ugc2V0IHBlcm1pc3Npb24gJ1NlY3VyZSBSL1cg
+b25seScgYXMgQ1BVIHRvDQo+ID4gc3BpIHJlZ2lzdGVyLiBXaGVuIHZpb2xhdGlvbiBpcyB0cmln
+Z2VyZWQsIGl0IG1lYW5zIENQVSBhY2Nlc3Mgc3BpDQo+ID4gcmVnaXN0ZXIgdGhyb3VnaCBub3Jt
+YWwgd29ybGQgaW5zdGVhZCBvZiBzZWN1cmUgd29ybGQsIHdoaWNoIGlzIG5vdA0KPiA+IGFsbG93
+ZWQuDQo+ID4NCj4gPiAnbWFzdGVyX2lkJyBjYW5ub3QgdXNlIHRoZSBzaW1wbGUgY29tbWVudHMg
+dG8gZGVzY3JpYmUgd2hpY2ggbWFzdGVyIGl0DQo+ID4gaXMuIEl0IGRlcGVuZHMgb24gdmlvbGF0
+aW9uIHNsYXZlcy4gRm9yIGV4YW1wbGUsIGlmIHRoZXJlIGFyZSB0d28NCj4gPiB2aW9sYXRpb25z
+Og0KPiA+IDEuIENQVSBhY2Nlc3Mgc3BpIHJlZw0KPiA+IDIuIENQVSBhY2Nlc3MgdGltZXIgcmVn
+DQo+ID4gSXQgbWlnaHQgYmUgZGlmZmVyZW50ICdtYXN0ZXJfaWQnIGZvciBDUFUgb24gdGhlc2Ug
+dHdvIGNhc2VzLg0KPiA+IEkgd291bGQgcHJlZmVyIHRvIHJlbWFpbiB0aGUgaWQgbnVtYmVyIGlm
+IHRyYW5zbGF0ZSB0byBhIHN0cmluZyBpcyBhIGJhZA0KPiA+IGlkZWEuDQo+ID4gVGhhbmtzICEN
+Cj4gDQo+IEl0IHNlYW1zIHRoYXQgbWFzdGVyX2lkIGFuZCBkb21haW5faWQgZG9lcyBub3QgaGVs
+cCBmb3IgZGVidWcuIFdoZW4gd2UNCj4gZ2V0IG1hc3Rlcl9pZCA9IDEgYW5kIGRvbWFpbl9pZCA9
+IDIsIHdlIGRvbid0IGtub3cgd2hhdCBpdCBtZWFuLiBJDQo+IHRoaW5rIHdlIGp1c3QgbmVlZCB2
+aW9sYXRpb24gYWRkcmVzcyBiZWNhdXNlIHdlIGNvdWxkIGZpbmQgdGhlIGRyaXZlcg0KPiB0aGF0
+IHdyaXRlIHRoaXMgYWRkcmVzcyBhbmQgdGhlIGJ1ZyB3b3VsZCBiZSBpbnNpZGUgdGhpcyBkcml2
+ZXIuIFNvDQo+IG5lZWQgbm90IHRvIHByb2Nlc3MgbWFzdGVyX2lkIGFuZCBkb21haW5faWQuDQo+
+IA0KDQpBY3R1YWxseSwgaXQgZG9lcyBoZWxwIHVzIGZvciBkZWJ1Zy4gdmlvbGF0aW9uIG1hc3Rl
+ciBpcyBub3QgQ1BVIG9ubHkuDQpJdCBtaWdodCBiZSBhbnkgb3RoZXIgbWFzdGVyIGluIG91ciBT
+b0MuIFNvIHRoZSBidWcgbWlnaHQgbm90IGJlIGluc2lkZQ0KdGhlIGtlcm5lbCBkcml2ZXIuDQpJ
+J2xsIHByZWZlciB0byByZW1haW4gdGhpcyBpbmZvcm1hdGlvbi4NClRoYW5rcyAhDQoNCj4gUmVn
+YXJkcywNCj4gQ2h1bi1LdWFuZy4NCj4gDQo+ID4NCj4gPiA+DQo+ID4gPiA+DQo+ID4gPiA+ID4g
+PiArICAgICAgIHZpb19pbmZvLT53cml0ZSA9ICgoZGJnMCAmIHZpb19kYmdzLT52aW9fdy5tYXNr
+KSA+Pg0KPiA+ID4gPiA+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgIHZpb19kYmdzLT52
+aW9fdy5zdGFydCkgPT0gMTsNCj4gPiA+ID4gPiA+ICsgICAgICAgdmlvX2luZm8tPnJlYWQgPSAo
+KGRiZzAgJiB2aW9fZGJncy0+dmlvX3IubWFzaykgPj4NCj4gPiA+ID4gPiA+ICsgICAgICAgICAg
+ICAgICAgICAgICAgICAgdmlvX2RiZ3MtPnZpb19yLnN0YXJ0KSA9PSAxOw0KPiA+ID4gPiA+ID4g
+KyAgICAgICB2aW9faW5mby0+dmlvX2FkZHJfaGlnaCA9IChkYmcwICYgdmlvX2RiZ3MtPmFkZHJf
+aC5tYXNrKSA+Pg0KPiA+ID4gPiA+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IHZpb19kYmdzLT5hZGRyX2guc3RhcnQ7DQo+ID4gPiA+ID4NCj4gPiA+ID4gPiBXaGF0IGlzIHZp
+b19hZGRyX2hpZ2g/IEFzIEkga25vdyBhbGwgcmVnaXN0ZXIgYWRkcmVzcyBhcmUgMzIgYml0cywg
+aXMNCj4gPiA+ID4gPiB2aW9fYWRkcl9oaWdoIHRoZSBhZGRyZXNzIGFib3ZlIDMyIGJpdHM/DQo+
+ID4gPiA+DQo+ID4gPiA+IFllcywgeW91IGFyZSByaWdodC4gSW4gTVQ2Nzc5LCBhbGwgcmVnaXN0
+ZXIgYmFzZSBhcmUgMzIgYml0cy4gV2UgY2FuDQo+ID4gPiA+IGlnbm9yZSB0aGlzIGluZm8gZm9y
+IGN1cnJlbnQgZHJpdmVyLiBJJ2xsIHVwZGF0ZSBvbiBuZXh0IHBhdGNoLg0KPiA+ID4gPiBUaGFu
+a3MgIQ0KPiA+ID4NCj4gPiA+IFN1Y2ggYSBzdHJhbmdlIGhhcmR3YXJlLCBhbGwgcmVnaXN0ZXIg
+aXMgMzIgYml0cyBidXQgaXQgaGFzIGENCj4gPiA+IHZpb19hZGRyX2hpZ2ggaW4gaXRzIHJlZ2lz
+dGVyLiBPSywganVzdCBkcm9wIHRoaXMuDQo+ID4gPg0KPiA+ID4gPg0KPiA+ID4gPiA+DQo+ID4g
+PiA+ID4gPiArDQo+ID4gPiA+ID4gPiArICAgICAgIGRldmFwY192aW9faW5mb19wcmludChjdHgp
+Ow0KPiA+ID4gPiA+ID4gK30NCj4gPiA+ID4gPiA+ICsNCj4gPiA+ID4gPg0KDQpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
+aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
