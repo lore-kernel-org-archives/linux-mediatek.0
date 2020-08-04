@@ -2,22 +2,23 @@ Return-Path: <SRS0=p2pa=BO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F0500C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 15:13:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DF0F2C433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 15:24:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C85AA2086A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 15:13:37 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9D7A82086A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 15:24:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z2w00xPQ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="l9l0CpSr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C85AA2086A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="I1cDgZ7y";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="CNTE2OWy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9D7A82086A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -25,54 +26,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=QyPf/pgPh4UX9zWlV3WJOMwF1CDXQENMIkIBoDYlKkE=; b=Z2w00xPQnKRqwuQPpTh5sZhWj
-	ryUZJb9oFXmlKLrdzsrB9UtIsCGpHTTdrEWWVJePlIYgIDCTzxJArMMJ4kRsxM2P4piSNvx9sANbJ
-	X9Syfik9u7oNCzwpm2hKdmKXt0KEbvuzoqOa57QhfZQGmvcm+0qq2dkVne9BeOQVTXt2iMR4jX732
-	ihJV22HT+9z+j2oT0CV+fsmUTYtC5/YKyd4lvDnDlkPz763VGHomGPSG2M6kXfssGWWZqjq9o3c1V
-	ZUC6f8tN22w/YI52uWogGMXVYYkArsamdyra+pCMUI4KsercYg2DLNvy7z0SDaXiCDugNsoFunolJ
-	ijVWP17jw==;
+	 bh=d4p8HsBJiFLctSPqY2+FLrMWncWL528qzuUcOxzO5RE=; b=I1cDgZ7yT48yC/Qb9kFj+Kk8g
+	5fQMBUCWoaO0fzICmO13cIf4pc2TnGiyIzPEPjgNAbQrR8Z1KKNCkx1fv1QiSG6YaH/3os8dJlOnN
+	jrdo15054x6D5OYV+w2msdG5gPEm9uHF4okwEmL5e+Jll3ZDhowsmb3ZHaX8ch/W8SGRnn7eXKpH9
+	FXVepe6wsPTLNKJpjjUBwJxLHeXgxGTYJa3eScZACmz+se23wVTkdDXVTQX8S24KuRDPWILmIu3AO
+	U/+P2pZNv8ScPGKpdITMkjyN4CTpXeSKhL7VWguKs55tLYiLd5HP/DlUoRvVqbnHdHpwJrN1PL0DB
+	5EpV1lwlA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k2yd5-0004k2-Vl; Tue, 04 Aug 2020 15:13:28 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1k2yo6-00064i-O8; Tue, 04 Aug 2020 15:24:50 +0000
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k2yd1-0004jH-9X; Tue, 04 Aug 2020 15:13:24 +0000
-Received: from mail-ot1-f44.google.com (mail-ot1-f44.google.com
- [209.85.210.44])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8E40C2086A;
- Tue,  4 Aug 2020 15:13:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1596554002;
- bh=/VyvzXQa/AJF0fQ8y2ddiypbwJGanvNQVpDg2wnRSkc=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=l9l0CpSrSvdSa/Qnx0M3n/vm5miZOV4bmDR03DhH63U8LBX2NaP+P48yoU/RCbNF+
- cbFrToSIsIm6Z5sgQ5lIiPy/CUaZdnRqX1LKhBRC/cKJeGNsHz8Ugq8mLVc7zKhYiB
- Naa406WtrytIAa9/NRux8kc19hNGiRqQgP4KHze0=
-Received: by mail-ot1-f44.google.com with SMTP id v6so20034996ota.13;
- Tue, 04 Aug 2020 08:13:22 -0700 (PDT)
-X-Gm-Message-State: AOAM533zJDRAwrVY6bHOvi2oaDVcptRdZr/2pBet08LrVCrdsF2aUTrg
- 0O8Qexwrge7GUiYx1XY6xePJlTChw4TW4vWiuA==
-X-Google-Smtp-Source: ABdhPJxh9dJbSLfU6Nwv/yJMmnpLPR54KOz7EmmOkgm7Ly+4ylRFpnDySUtwPNVJNs/aSiEi9+iiHmUJSMEt/gWTgiQ=
-X-Received: by 2002:a05:6830:1b79:: with SMTP id
- d25mr17121176ote.107.1596554001883; 
- Tue, 04 Aug 2020 08:13:21 -0700 (PDT)
+ id 1k2yo3-00063e-Nx
+ for linux-mediatek@lists.infradead.org; Tue, 04 Aug 2020 15:24:49 +0000
+Received: by mail-ej1-x643.google.com with SMTP id d6so29042320ejr.5
+ for <linux-mediatek@lists.infradead.org>; Tue, 04 Aug 2020 08:24:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=qVxiLokK35WUJu1+k+X8WI/8pzW3jEoACjnInNBsCOY=;
+ b=CNTE2OWyPkV2rNatOW/pc/H6qg8w7KiLQuXuqHxMsKwLNDEEm0+uPrv7f2qYc5l0gF
+ vHgYOBP91YZEkfHiCc6ndKJR/COqhjPy6f1RJctinm3yPL6JLRAP6dzXPLamVlalIuID
+ YtM0tqvkra3PRnq/vJHck+iEMG7deO5q00rQogU++WSWWzPP9DzSgUNOM26bvQVhhLbu
+ Y0wPZ0CKCunn7gaKdsLj2pncFptQyMteGDYVOkxFvDuPjDXQVCAjkwHSofAavHNme+4h
+ Cyz3GJR7fqVKIa9X6QVQakfQJVX/Dw62x/70CR9sIChP4uOvv2Z3PpVhfwfUvdCxiqpI
+ 4a4g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=qVxiLokK35WUJu1+k+X8WI/8pzW3jEoACjnInNBsCOY=;
+ b=ndA/SYYQ7mRyo9giwAy1bx9KNZLj6Nusm9s09+4rkQCWKmXm4tz6PnHL8SdPrMj3oY
+ 5rZIso9disByGZTwxpt89w8wt5eUZsg76gJmRuFc2NalP58qi7rilQ92w4pRaJ9+YoCr
+ eDSxkvQFbjAxZ2a5oau51MgBNIvt2K8Hexvul594HUUkTrYPlr5Y2J2BF4Egqta+5rGM
+ qXREVKnb8PY9RxRLZHjPoWZbjgILomkEFY8ErDGrjpK+ER5wvdFMl7R5ssRABDMGEUE4
+ lNHx7pgRdJASv7FYflW0AiozZzYR3iKjfNJFt7+QO2HBE5HKSlmbPyOeuQ/L6009vqaW
+ WNkg==
+X-Gm-Message-State: AOAM531tBlJle70cIoDCcxXqFVz+0b8w2CLPZAdBeakAbcyTfovL430s
+ IlDoRvNofhokjpZQSYa6Nlq1hpdA9rhYzzrVMKWuCQ==
+X-Google-Smtp-Source: ABdhPJyQzI7nDpYhGzg/G6T9jpRGvhGyxEqlE9mrgeeInlNqP3CpsVVnMop75M/6ylEfRp0NP5dhSq59iJ+Weo3FzjI=
+X-Received: by 2002:a17:907:208e:: with SMTP id
+ pv14mr23221534ejb.438.1596554683945; 
+ Tue, 04 Aug 2020 08:24:43 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200722022514.1283916-1-robh@kernel.org>
- <20200722022514.1283916-18-robh@kernel.org>
- <CAMuHMdWVWoQDc3MMv9LjA+hA1EoXQjVM-JfO_hVqnDf0tC8LJg@mail.gmail.com>
-In-Reply-To: <CAMuHMdWVWoQDc3MMv9LjA+hA1EoXQjVM-JfO_hVqnDf0tC8LJg@mail.gmail.com>
-From: Rob Herring <robh@kernel.org>
-Date: Tue, 4 Aug 2020 09:13:10 -0600
-X-Gmail-Original-Message-ID: <CAL_Jsq+6Xcf5KT1Db5mGFWr9E04Jd8Rx4aVJpUmfUT8hPmtqBg@mail.gmail.com>
-Message-ID: <CAL_Jsq+6Xcf5KT1Db5mGFWr9E04Jd8Rx4aVJpUmfUT8hPmtqBg@mail.gmail.com>
-Subject: Re: [PATCH 17/19] PCI: rcar-gen2: Convert to use modern host bridge
- probe functions
-To: Geert Uytterhoeven <geert@linux-m68k.org>
+References: <1596509145.5207.21.camel@mtkswgap22>
+ <1596549552-5466-1-git-send-email-Frankie.Chang@mediatek.com>
+ <1596549552-5466-2-git-send-email-Frankie.Chang@mediatek.com>
+In-Reply-To: <1596549552-5466-2-git-send-email-Frankie.Chang@mediatek.com>
+From: Todd Kjos <tkjos@google.com>
+Date: Tue, 4 Aug 2020 08:24:31 -0700
+Message-ID: <CAHRSSEz+dLQkkTZ=H6ti9fdWXS8ep4b10V0GHmY-LeRnxXbJSA@mail.gmail.com>
+Subject: Re: [PATCH v7 1/3] binder: move structs from core file to header file
+To: Frankie Chang <Frankie.Chang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200804_111323_464834_3C9F8300 
-X-CRM114-Status: GOOD (  33.53  )
+X-CRM114-CacheID: sfid-20200804_112447_888838_3BBAF2C9 
+X-CRM114-Status: GOOD (  31.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,174 +91,901 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>,
- Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
- linux-pci <linux-pci@vger.kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>,
- linux-tegra <linux-tegra@vger.kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Fabio Estevam <festevam@gmail.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Will Deacon <will@kernel.org>,
- Michal Simek <michal.simek@xilinx.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Murali Karicheri <m-karicheri2@ti.com>, NXP Linux Team <linux-imx@nxp.com>,
- Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Richard Zhu <hongxing.zhu@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Ryder Lee <ryder.lee@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Bjorn Helgaas <bhelgaas@google.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- Tom Joseph <tjoseph@cadence.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Jingoo Han <jingoohan1@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
- Lucas Stach <l.stach@pengutronix.de>
+Cc: wsd_upstream <wsd_upstream@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ LKML <linux-kernel@vger.kernel.org>,
+ =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
+ Jian-Min Liu <Jian-Min.Liu@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
+ Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 4, 2020 at 6:12 AM Geert Uytterhoeven <geert@linux-m68k.org> wrote:
+On Tue, Aug 4, 2020 at 6:59 AM Frankie Chang <Frankie.Chang@mediatek.com> wrote:
 >
-> Hi Rob,
+> From: "Frankie.Chang" <Frankie.Chang@mediatek.com>
 >
-> On Wed, Jul 22, 2020 at 4:26 AM Rob Herring <robh@kernel.org> wrote:
-> > The rcar-gen2 host driver still uses the old Arm PCI setup function
-> > pci_common_init_dev(). Let's update it to use the modern
-> > devm_pci_alloc_host_bridge(), pci_parse_request_of_pci_ranges() and
-> > pci_host_probe() functions.
-> >
-> > Cc: Marek Vasut <marek.vasut+renesas@gmail.com>
-> > Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
-> > Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-> > Cc: Bjorn Helgaas <bhelgaas@google.com>
-> > Cc: linux-renesas-soc@vger.kernel.org
-> > Signed-off-by: Rob Herring <robh@kernel.org>
+> Moving all structs to header file makes module more
+> extendable, and makes all these structs to be defined
+> in the same file.
 >
-> This is now commit 92d69cc6275845a7 ("PCI: rcar-gen2: Convert to use
-> modern host bridge probe functions"), and causes a crash on r8a7791/koelsch:
+> Signed-off-by: Frankie.Chang <Frankie.Chang@mediatek.com>
 
-Can't say I'm surprised, this was a big change. Thanks for testing.
+Acked-by: Todd Kjos <tkjos@google.com>
 
-
->     Unable to handle kernel NULL pointer dereference at virtual address 00000008
->     pgd = (ptrval)
->     [00000008] *pgd=00000000
->     Internal error: Oops: 5 [#1] SMP ARM
->     CPU: 0 PID: 1 Comm: swapper/0 Not tainted
-> 5.8.0-rc1-shmobile-00035-g92d69cc6275845a7 #645
->     Hardware name: Generic R-Car Gen2 (Flattened Device Tree)
->     PC is at rcar_pci_probe+0x154/0x340
->     LR is at _raw_spin_unlock_irqrestore+0x18/0x20
+> ---
+>  drivers/android/binder.c          |  405 -------------------------------------
+>  drivers/android/binder_internal.h |  404 ++++++++++++++++++++++++++++++++++++
+>  2 files changed, 404 insertions(+), 405 deletions(-)
 >
-> > --- a/drivers/pci/controller/pci-rcar-gen2.c
-> > +++ b/drivers/pci/controller/pci-rcar-gen2.c
-> > @@ -189,19 +170,33 @@ static inline void rcar_pci_setup_errirq(struct rcar_pci_priv *priv) { }
-> >  #endif
-> >
-> >  /* PCI host controller setup */
-> > -static int rcar_pci_setup(int nr, struct pci_sys_data *sys)
-> > +static void rcar_pci_setup(struct rcar_pci_priv *priv)
-> >  {
-> > -       struct rcar_pci_priv *priv = sys->private_data;
-> > +       struct pci_host_bridge *bridge = pci_host_bridge_from_priv(priv);
-> >         struct device *dev = priv->dev;
-> >         void __iomem *reg = priv->reg;
-> > +       struct resource_entry *entry;
-> > +       unsigned long window_size;
-> > +       unsigned long window_addr;
-> > +       unsigned long window_pci;
-> >         u32 val;
-> > -       int ret;
-> > +
-> > +       entry = resource_list_first_type(&bridge->dma_ranges, IORESOURCE_MEM);
+> diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+> index a6b2082..2df146f 100644
+> --- a/drivers/android/binder.c
+> +++ b/drivers/android/binder.c
+> @@ -72,7 +72,6 @@
 >
-> bridge->dma_ranges is not initialized => BOOM.
+>  #include <asm/cacheflush.h>
 >
-> >  static int rcar_pci_probe(struct platform_device *pdev)
-> >  {
-> >         struct device *dev = &pdev->dev;
-> >         struct resource *cfg_res, *mem_res;
-> >         struct rcar_pci_priv *priv;
-> > +       struct pci_host_bridge *bridge;
-> >         void __iomem *reg;
-> > -       struct hw_pci hw;
-> > -       void *hw_private[1];
-> > +       int ret;
-> > +
-> > +       bridge = devm_pci_alloc_host_bridge(dev, sizeof(*priv));
-> > +       if (!bridge)
-> > +               return -ENOMEM;
-> > +
-> > +       priv = pci_host_bridge_priv(bridge);
+> -#include "binder_alloc.h"
+>  #include "binder_internal.h"
+>  #include "binder_trace.h"
 >
-> This is the "new" priv instance.
+> @@ -160,24 +159,6 @@ static int binder_set_stop_on_user_error(const char *val,
+>  #define to_binder_fd_array_object(hdr) \
+>         container_of(hdr, struct binder_fd_array_object, hdr)
 >
-> > +       bridge->sysdata = priv;
-> >
-> >         cfg_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> >         reg = devm_ioremap_resource(dev, cfg_res);
+> -enum binder_stat_types {
+> -       BINDER_STAT_PROC,
+> -       BINDER_STAT_THREAD,
+> -       BINDER_STAT_NODE,
+> -       BINDER_STAT_REF,
+> -       BINDER_STAT_DEATH,
+> -       BINDER_STAT_TRANSACTION,
+> -       BINDER_STAT_TRANSACTION_COMPLETE,
+> -       BINDER_STAT_COUNT
+> -};
+> -
+> -struct binder_stats {
+> -       atomic_t br[_IOC_NR(BR_FAILED_REPLY) + 1];
+> -       atomic_t bc[_IOC_NR(BC_REPLY_SG) + 1];
+> -       atomic_t obj_created[BINDER_STAT_COUNT];
+> -       atomic_t obj_deleted[BINDER_STAT_COUNT];
+> -};
+> -
+>  static struct binder_stats binder_stats;
 >
-> However, the "old" instance is still allocated below, and should be removed.
+>  static inline void binder_stats_deleted(enum binder_stat_types type)
+> @@ -213,278 +194,11 @@ static struct binder_transaction_log_entry *binder_transaction_log_add(
+>         return e;
+>  }
 >
-> I've send a patch to fix that, which should appear soon at
-> https://lore.kernel.org/r/20200804120430.9253-1-geert+renesas@glider.be
+> -/**
+> - * struct binder_work - work enqueued on a worklist
+> - * @entry:             node enqueued on list
+> - * @type:              type of work to be performed
+> - *
+> - * There are separate work lists for proc, thread, and node (async).
+> - */
+> -struct binder_work {
+> -       struct list_head entry;
+> -
+> -       enum {
+> -               BINDER_WORK_TRANSACTION = 1,
+> -               BINDER_WORK_TRANSACTION_COMPLETE,
+> -               BINDER_WORK_RETURN_ERROR,
+> -               BINDER_WORK_NODE,
+> -               BINDER_WORK_DEAD_BINDER,
+> -               BINDER_WORK_DEAD_BINDER_AND_CLEAR,
+> -               BINDER_WORK_CLEAR_DEATH_NOTIFICATION,
+> -       } type;
+> -};
+> -
+> -struct binder_error {
+> -       struct binder_work work;
+> -       uint32_t cmd;
+> -};
+> -
+> -/**
+> - * struct binder_node - binder node bookkeeping
+> - * @debug_id:             unique ID for debugging
+> - *                        (invariant after initialized)
+> - * @lock:                 lock for node fields
+> - * @work:                 worklist element for node work
+> - *                        (protected by @proc->inner_lock)
+> - * @rb_node:              element for proc->nodes tree
+> - *                        (protected by @proc->inner_lock)
+> - * @dead_node:            element for binder_dead_nodes list
+> - *                        (protected by binder_dead_nodes_lock)
+> - * @proc:                 binder_proc that owns this node
+> - *                        (invariant after initialized)
+> - * @refs:                 list of references on this node
+> - *                        (protected by @lock)
+> - * @internal_strong_refs: used to take strong references when
+> - *                        initiating a transaction
+> - *                        (protected by @proc->inner_lock if @proc
+> - *                        and by @lock)
+> - * @local_weak_refs:      weak user refs from local process
+> - *                        (protected by @proc->inner_lock if @proc
+> - *                        and by @lock)
+> - * @local_strong_refs:    strong user refs from local process
+> - *                        (protected by @proc->inner_lock if @proc
+> - *                        and by @lock)
+> - * @tmp_refs:             temporary kernel refs
+> - *                        (protected by @proc->inner_lock while @proc
+> - *                        is valid, and by binder_dead_nodes_lock
+> - *                        if @proc is NULL. During inc/dec and node release
+> - *                        it is also protected by @lock to provide safety
+> - *                        as the node dies and @proc becomes NULL)
+> - * @ptr:                  userspace pointer for node
+> - *                        (invariant, no lock needed)
+> - * @cookie:               userspace cookie for node
+> - *                        (invariant, no lock needed)
+> - * @has_strong_ref:       userspace notified of strong ref
+> - *                        (protected by @proc->inner_lock if @proc
+> - *                        and by @lock)
+> - * @pending_strong_ref:   userspace has acked notification of strong ref
+> - *                        (protected by @proc->inner_lock if @proc
+> - *                        and by @lock)
+> - * @has_weak_ref:         userspace notified of weak ref
+> - *                        (protected by @proc->inner_lock if @proc
+> - *                        and by @lock)
+> - * @pending_weak_ref:     userspace has acked notification of weak ref
+> - *                        (protected by @proc->inner_lock if @proc
+> - *                        and by @lock)
+> - * @has_async_transaction: async transaction to node in progress
+> - *                        (protected by @lock)
+> - * @accept_fds:           file descriptor operations supported for node
+> - *                        (invariant after initialized)
+> - * @min_priority:         minimum scheduling priority
+> - *                        (invariant after initialized)
+> - * @txn_security_ctx:     require sender's security context
+> - *                        (invariant after initialized)
+> - * @async_todo:           list of async work items
+> - *                        (protected by @proc->inner_lock)
+> - *
+> - * Bookkeeping structure for binder nodes.
+> - */
+> -struct binder_node {
+> -       int debug_id;
+> -       spinlock_t lock;
+> -       struct binder_work work;
+> -       union {
+> -               struct rb_node rb_node;
+> -               struct hlist_node dead_node;
+> -       };
+> -       struct binder_proc *proc;
+> -       struct hlist_head refs;
+> -       int internal_strong_refs;
+> -       int local_weak_refs;
+> -       int local_strong_refs;
+> -       int tmp_refs;
+> -       binder_uintptr_t ptr;
+> -       binder_uintptr_t cookie;
+> -       struct {
+> -               /*
+> -                * bitfield elements protected by
+> -                * proc inner_lock
+> -                */
+> -               u8 has_strong_ref:1;
+> -               u8 pending_strong_ref:1;
+> -               u8 has_weak_ref:1;
+> -               u8 pending_weak_ref:1;
+> -       };
+> -       struct {
+> -               /*
+> -                * invariant after initialization
+> -                */
+> -               u8 accept_fds:1;
+> -               u8 txn_security_ctx:1;
+> -               u8 min_priority;
+> -       };
+> -       bool has_async_transaction;
+> -       struct list_head async_todo;
+> -};
+> -
+> -struct binder_ref_death {
+> -       /**
+> -        * @work: worklist element for death notifications
+> -        *        (protected by inner_lock of the proc that
+> -        *        this ref belongs to)
+> -        */
+> -       struct binder_work work;
+> -       binder_uintptr_t cookie;
+> -};
+> -
+> -/**
+> - * struct binder_ref_data - binder_ref counts and id
+> - * @debug_id:        unique ID for the ref
+> - * @desc:            unique userspace handle for ref
+> - * @strong:          strong ref count (debugging only if not locked)
+> - * @weak:            weak ref count (debugging only if not locked)
+> - *
+> - * Structure to hold ref count and ref id information. Since
+> - * the actual ref can only be accessed with a lock, this structure
+> - * is used to return information about the ref to callers of
+> - * ref inc/dec functions.
+> - */
+> -struct binder_ref_data {
+> -       int debug_id;
+> -       uint32_t desc;
+> -       int strong;
+> -       int weak;
+> -};
+> -
+> -/**
+> - * struct binder_ref - struct to track references on nodes
+> - * @data:        binder_ref_data containing id, handle, and current refcounts
+> - * @rb_node_desc: node for lookup by @data.desc in proc's rb_tree
+> - * @rb_node_node: node for lookup by @node in proc's rb_tree
+> - * @node_entry:  list entry for node->refs list in target node
+> - *               (protected by @node->lock)
+> - * @proc:        binder_proc containing ref
+> - * @node:        binder_node of target node. When cleaning up a
+> - *               ref for deletion in binder_cleanup_ref, a non-NULL
+> - *               @node indicates the node must be freed
+> - * @death:       pointer to death notification (ref_death) if requested
+> - *               (protected by @node->lock)
+> - *
+> - * Structure to track references from procA to target node (on procB). This
+> - * structure is unsafe to access without holding @proc->outer_lock.
+> - */
+> -struct binder_ref {
+> -       /* Lookups needed: */
+> -       /*   node + proc => ref (transaction) */
+> -       /*   desc + proc => ref (transaction, inc/dec ref) */
+> -       /*   node => refs + procs (proc exit) */
+> -       struct binder_ref_data data;
+> -       struct rb_node rb_node_desc;
+> -       struct rb_node rb_node_node;
+> -       struct hlist_node node_entry;
+> -       struct binder_proc *proc;
+> -       struct binder_node *node;
+> -       struct binder_ref_death *death;
+> -};
+> -
+>  enum binder_deferred_state {
+>         BINDER_DEFERRED_FLUSH        = 0x01,
+>         BINDER_DEFERRED_RELEASE      = 0x02,
+>  };
 >
-> BTW, the conversion has the following impact on r8a7791/koelsch:
+> -/**
+> - * struct binder_proc - binder process bookkeeping
+> - * @proc_node:            element for binder_procs list
+> - * @threads:              rbtree of binder_threads in this proc
+> - *                        (protected by @inner_lock)
+> - * @nodes:                rbtree of binder nodes associated with
+> - *                        this proc ordered by node->ptr
+> - *                        (protected by @inner_lock)
+> - * @refs_by_desc:         rbtree of refs ordered by ref->desc
+> - *                        (protected by @outer_lock)
+> - * @refs_by_node:         rbtree of refs ordered by ref->node
+> - *                        (protected by @outer_lock)
+> - * @waiting_threads:      threads currently waiting for proc work
+> - *                        (protected by @inner_lock)
+> - * @pid                   PID of group_leader of process
+> - *                        (invariant after initialized)
+> - * @tsk                   task_struct for group_leader of process
+> - *                        (invariant after initialized)
+> - * @deferred_work_node:   element for binder_deferred_list
+> - *                        (protected by binder_deferred_lock)
+> - * @deferred_work:        bitmap of deferred work to perform
+> - *                        (protected by binder_deferred_lock)
+> - * @is_dead:              process is dead and awaiting free
+> - *                        when outstanding transactions are cleaned up
+> - *                        (protected by @inner_lock)
+> - * @todo:                 list of work for this process
+> - *                        (protected by @inner_lock)
+> - * @stats:                per-process binder statistics
+> - *                        (atomics, no lock needed)
+> - * @delivered_death:      list of delivered death notification
+> - *                        (protected by @inner_lock)
+> - * @max_threads:          cap on number of binder threads
+> - *                        (protected by @inner_lock)
+> - * @requested_threads:    number of binder threads requested but not
+> - *                        yet started. In current implementation, can
+> - *                        only be 0 or 1.
+> - *                        (protected by @inner_lock)
+> - * @requested_threads_started: number binder threads started
+> - *                        (protected by @inner_lock)
+> - * @tmp_ref:              temporary reference to indicate proc is in use
+> - *                        (protected by @inner_lock)
+> - * @default_priority:     default scheduler priority
+> - *                        (invariant after initialized)
+> - * @debugfs_entry:        debugfs node
+> - * @alloc:                binder allocator bookkeeping
+> - * @context:              binder_context for this proc
+> - *                        (invariant after initialized)
+> - * @inner_lock:           can nest under outer_lock and/or node lock
+> - * @outer_lock:           no nesting under innor or node lock
+> - *                        Lock order: 1) outer, 2) node, 3) inner
+> - * @binderfs_entry:       process-specific binderfs log file
+> - *
+> - * Bookkeeping structure for binder processes
+> - */
+> -struct binder_proc {
+> -       struct hlist_node proc_node;
+> -       struct rb_root threads;
+> -       struct rb_root nodes;
+> -       struct rb_root refs_by_desc;
+> -       struct rb_root refs_by_node;
+> -       struct list_head waiting_threads;
+> -       int pid;
+> -       struct task_struct *tsk;
+> -       struct hlist_node deferred_work_node;
+> -       int deferred_work;
+> -       bool is_dead;
+> -
+> -       struct list_head todo;
+> -       struct binder_stats stats;
+> -       struct list_head delivered_death;
+> -       int max_threads;
+> -       int requested_threads;
+> -       int requested_threads_started;
+> -       int tmp_ref;
+> -       long default_priority;
+> -       struct dentry *debugfs_entry;
+> -       struct binder_alloc alloc;
+> -       struct binder_context *context;
+> -       spinlock_t inner_lock;
+> -       spinlock_t outer_lock;
+> -       struct dentry *binderfs_entry;
+> -};
+> -
+>  enum {
+>         BINDER_LOOPER_STATE_REGISTERED  = 0x01,
+>         BINDER_LOOPER_STATE_ENTERED     = 0x02,
+> @@ -495,125 +209,6 @@ enum {
+>  };
 >
->     -pci-rcar-gen2 ee090000.pci: PCI: bus0 revision 11
->     +pci-rcar-gen2 ee090000.pci: host bridge /soc/pci@ee090000 ranges:
->     +pci-rcar-gen2 ee090000.pci:      MEM 0x00ee080000..0x00ee08ffff
-> -> 0x00ee080000
->     +pci-rcar-gen2 ee090000.pci: PCI: revision 11
->      pci-rcar-gen2 ee090000.pci: PCI host bridge to bus 0000:00
->     -pci_bus 0000:00: root bus resource [mem 0xee080000-0xee0810ff]
->                                              ^^^^^^^^^^^^^^^^^^^^^
->     -pci_bus 0000:00: No busn resource found for root bus, will use [bus 00-ff]
->     +pci_bus 0000:00: root bus resource [bus 00]
->     +pci_bus 0000:00: root bus resource [mem 0xee080000-0xee08ffff]
->                                              ^^^^^^^^^^^^^^^^^^^^^
+>  /**
+> - * struct binder_thread - binder thread bookkeeping
+> - * @proc:                 binder process for this thread
+> - *                        (invariant after initialization)
+> - * @rb_node:              element for proc->threads rbtree
+> - *                        (protected by @proc->inner_lock)
+> - * @waiting_thread_node:  element for @proc->waiting_threads list
+> - *                        (protected by @proc->inner_lock)
+> - * @pid:                  PID for this thread
+> - *                        (invariant after initialization)
+> - * @looper:               bitmap of looping state
+> - *                        (only accessed by this thread)
+> - * @looper_needs_return:  looping thread needs to exit driver
+> - *                        (no lock needed)
+> - * @transaction_stack:    stack of in-progress transactions for this thread
+> - *                        (protected by @proc->inner_lock)
+> - * @todo:                 list of work to do for this thread
+> - *                        (protected by @proc->inner_lock)
+> - * @process_todo:         whether work in @todo should be processed
+> - *                        (protected by @proc->inner_lock)
+> - * @return_error:         transaction errors reported by this thread
+> - *                        (only accessed by this thread)
+> - * @reply_error:          transaction errors reported by target thread
+> - *                        (protected by @proc->inner_lock)
+> - * @wait:                 wait queue for thread work
+> - * @stats:                per-thread statistics
+> - *                        (atomics, no lock needed)
+> - * @tmp_ref:              temporary reference to indicate thread is in use
+> - *                        (atomic since @proc->inner_lock cannot
+> - *                        always be acquired)
+> - * @is_dead:              thread is dead and awaiting free
+> - *                        when outstanding transactions are cleaned up
+> - *                        (protected by @proc->inner_lock)
+> - *
+> - * Bookkeeping structure for binder threads.
+> - */
+> -struct binder_thread {
+> -       struct binder_proc *proc;
+> -       struct rb_node rb_node;
+> -       struct list_head waiting_thread_node;
+> -       int pid;
+> -       int looper;              /* only modified by this thread */
+> -       bool looper_need_return; /* can be written by other thread */
+> -       struct binder_transaction *transaction_stack;
+> -       struct list_head todo;
+> -       bool process_todo;
+> -       struct binder_error return_error;
+> -       struct binder_error reply_error;
+> -       wait_queue_head_t wait;
+> -       struct binder_stats stats;
+> -       atomic_t tmp_ref;
+> -       bool is_dead;
+> -};
+> -
+> -/**
+> - * struct binder_txn_fd_fixup - transaction fd fixup list element
+> - * @fixup_entry:          list entry
+> - * @file:                 struct file to be associated with new fd
+> - * @offset:               offset in buffer data to this fixup
+> - *
+> - * List element for fd fixups in a transaction. Since file
+> - * descriptors need to be allocated in the context of the
+> - * target process, we pass each fd to be processed in this
+> - * struct.
+> - */
+> -struct binder_txn_fd_fixup {
+> -       struct list_head fixup_entry;
+> -       struct file *file;
+> -       size_t offset;
+> -};
+> -
+> -struct binder_transaction {
+> -       int debug_id;
+> -       struct binder_work work;
+> -       struct binder_thread *from;
+> -       struct binder_transaction *from_parent;
+> -       struct binder_proc *to_proc;
+> -       struct binder_thread *to_thread;
+> -       struct binder_transaction *to_parent;
+> -       unsigned need_reply:1;
+> -       /* unsigned is_dead:1; */       /* not used at the moment */
+> -
+> -       struct binder_buffer *buffer;
+> -       unsigned int    code;
+> -       unsigned int    flags;
+> -       long    priority;
+> -       long    saved_priority;
+> -       kuid_t  sender_euid;
+> -       struct list_head fd_fixups;
+> -       binder_uintptr_t security_ctx;
+> -       /**
+> -        * @lock:  protects @from, @to_proc, and @to_thread
+> -        *
+> -        * @from, @to_proc, and @to_thread can be set to NULL
+> -        * during thread teardown
+> -        */
+> -       spinlock_t lock;
+> -};
+> -
+> -/**
+> - * struct binder_object - union of flat binder object types
+> - * @hdr:   generic object header
+> - * @fbo:   binder object (nodes and refs)
+> - * @fdo:   file descriptor object
+> - * @bbo:   binder buffer pointer
+> - * @fdao:  file descriptor array
+> - *
+> - * Used for type-independent object copies
+> - */
+> -struct binder_object {
+> -       union {
+> -               struct binder_object_header hdr;
+> -               struct flat_binder_object fbo;
+> -               struct binder_fd_object fdo;
+> -               struct binder_buffer_object bbo;
+> -               struct binder_fd_array_object fdao;
+> -       };
+> -};
+> -
+> -/**
+>   * binder_proc_lock() - Acquire outer lock for given binder_proc
+>   * @proc:         struct binder_proc to acquire
+>   *
+> diff --git a/drivers/android/binder_internal.h b/drivers/android/binder_internal.h
+> index ae99109..5b65413 100644
+> --- a/drivers/android/binder_internal.h
+> +++ b/drivers/android/binder_internal.h
+> @@ -11,6 +11,7 @@
+>  #include <linux/stddef.h>
+>  #include <linux/types.h>
+>  #include <linux/uidgid.h>
+> +#include "binder_alloc.h"
 >
->     pci0: pci@ee090000 {
->             ...
->             reg = <0 0xee090000 0 0xc00>,
->                   <0 0xee080000 0 0x1100>;
->             ...
->             ranges = <0x02000000 0 0xee080000 0 0xee080000 0 0x00010000>;
->             ...
->             usb@1,0 {
->                     reg = <0x800 0 0 0 0>;
->                     ...
->             };
+>  struct binder_context {
+>         struct binder_node *binder_context_mgr_node;
+> @@ -139,6 +140,409 @@ struct binder_transaction_log {
+>         struct binder_transaction_log_entry entry[32];
+>  };
 >
->             usb@2,0 {
->                     reg = <0x1000 0 0 0 0>;
->                     ...
->             };
->
->     }
->
-> The old root bus resource size was based on the "reg" property.
-> The new root bus resource size is based on the "ranges" property.
-
-That was wrong to have PCI memory space in 'reg', but the driver could
-always adjust the size to 0x1100 if needed.
-
-BTW, the binding description seems to have the 'reg' description reversed.
-
-> Given the only children are hardcoded, I guess that is OK?
-
-In the sense that those are the only 2 devices and you know their
-memory fits, yes. However, the memory space itself isn't hardcoded. If
-you wanted to do that, then the children really need
-'assigned-addresses' properties. I guess it happens to work because
-memory space is allocated from the start and goes in order of device
-addresses. But if that changed to top down allocation?
-
-Rob
+> +enum binder_stat_types {
+> +       BINDER_STAT_PROC,
+> +       BINDER_STAT_THREAD,
+> +       BINDER_STAT_NODE,
+> +       BINDER_STAT_REF,
+> +       BINDER_STAT_DEATH,
+> +       BINDER_STAT_TRANSACTION,
+> +       BINDER_STAT_TRANSACTION_COMPLETE,
+> +       BINDER_STAT_COUNT
+> +};
+> +
+> +struct binder_stats {
+> +       atomic_t br[_IOC_NR(BR_FAILED_REPLY) + 1];
+> +       atomic_t bc[_IOC_NR(BC_REPLY_SG) + 1];
+> +       atomic_t obj_created[BINDER_STAT_COUNT];
+> +       atomic_t obj_deleted[BINDER_STAT_COUNT];
+> +};
+> +
+> +/**
+> + * struct binder_work - work enqueued on a worklist
+> + * @entry:             node enqueued on list
+> + * @type:              type of work to be performed
+> + *
+> + * There are separate work lists for proc, thread, and node (async).
+> + */
+> +struct binder_work {
+> +       struct list_head entry;
+> +
+> +       enum {
+> +               BINDER_WORK_TRANSACTION = 1,
+> +               BINDER_WORK_TRANSACTION_COMPLETE,
+> +               BINDER_WORK_RETURN_ERROR,
+> +               BINDER_WORK_NODE,
+> +               BINDER_WORK_DEAD_BINDER,
+> +               BINDER_WORK_DEAD_BINDER_AND_CLEAR,
+> +               BINDER_WORK_CLEAR_DEATH_NOTIFICATION,
+> +       } type;
+> +};
+> +
+> +struct binder_error {
+> +       struct binder_work work;
+> +       uint32_t cmd;
+> +};
+> +
+> +/* struct binder_node - binder node bookkeeping
+> + * @debug_id:             unique ID for debugging
+> + *                        (invariant after initialized)
+> + * @lock:                 lock for node fields
+> + * @work:                 worklist element for node work
+> + *                        (protected by @proc->inner_lock)
+> + * @rb_node:              element for proc->nodes tree
+> + *                        (protected by @proc->inner_lock)
+> + * @dead_node:            element for binder_dead_nodes list
+> + *                        (protected by binder_dead_nodes_lock)
+> + * @proc:                 binder_proc that owns this node
+> + *                        (invariant after initialized)
+> + * @refs:                 list of references on this node
+> + *                        (protected by @lock)
+> + * @internal_strong_refs: used to take strong references when
+> + *                        initiating a transaction
+> + *                        (protected by @proc->inner_lock if @proc
+> + *                        and by @lock)
+> + * @local_weak_refs:      weak user refs from local process
+> + *                        (protected by @proc->inner_lock if @proc
+> + *                        and by @lock)
+> + * @local_strong_refs:    strong user refs from local process
+> + *                        (protected by @proc->inner_lock if @proc
+> + *                        and by @lock)
+> + * @tmp_refs:             temporary kernel refs
+> + *                        (protected by @proc->inner_lock while @proc
+> + *                        is valid, and by binder_dead_nodes_lock
+> + *                        if @proc is NULL. During inc/dec and node release
+> + *                        it is also protected by @lock to provide safety
+> + *                        as the node dies and @proc becomes NULL)
+> + * @ptr:                  userspace pointer for node
+> + *                        (invariant, no lock needed)
+> + * @cookie:               userspace cookie for node
+> + *                        (invariant, no lock needed)
+> + * @has_strong_ref:       userspace notified of strong ref
+> + *                        (protected by @proc->inner_lock if @proc
+> + *                        and by @lock)
+> + * @pending_strong_ref:   userspace has acked notification of strong ref
+> + *                        (protected by @proc->inner_lock if @proc
+> + *                        and by @lock)
+> + * @has_weak_ref:         userspace notified of weak ref
+> + *                        (protected by @proc->inner_lock if @proc
+> + *                        and by @lock)
+> + * @pending_weak_ref:     userspace has acked notification of weak ref
+> + *                        (protected by @proc->inner_lock if @proc
+> + *                        and by @lock)
+> + * @has_async_transaction: async transaction to node in progress
+> + *                        (protected by @lock)
+> + * @accept_fds:           file descriptor operations supported for node
+> + *                        (invariant after initialized)
+> + * @min_priority:         minimum scheduling priority
+> + *                        (invariant after initialized)
+> + * @txn_security_ctx:     require sender's security context
+> + *                        (invariant after initialized)
+> + * @async_todo:           list of async work items
+> + *                        (protected by @proc->inner_lock)
+> + *
+> + * Bookkeeping structure for binder nodes.
+> + */
+> +struct binder_node {
+> +       int debug_id;
+> +       spinlock_t lock;
+> +       struct binder_work work;
+> +       union {
+> +               struct rb_node rb_node;
+> +               struct hlist_node dead_node;
+> +       };
+> +       struct binder_proc *proc;
+> +       struct hlist_head refs;
+> +       int internal_strong_refs;
+> +       int local_weak_refs;
+> +       int local_strong_refs;
+> +       int tmp_refs;
+> +       binder_uintptr_t ptr;
+> +       binder_uintptr_t cookie;
+> +       struct {
+> +               /*
+> +                * bitfield elements protected by
+> +                * proc inner_lock
+> +                */
+> +               u8 has_strong_ref:1;
+> +               u8 pending_strong_ref:1;
+> +               u8 has_weak_ref:1;
+> +               u8 pending_weak_ref:1;
+> +       };
+> +       struct {
+> +               /*
+> +                * invariant after initialization
+> +                */
+> +               u8 accept_fds:1;
+> +               u8 txn_security_ctx:1;
+> +               u8 min_priority;
+> +       };
+> +       bool has_async_transaction;
+> +       struct list_head async_todo;
+> +};
+> +
+> +struct binder_ref_death {
+> +       /**
+> +        * @work: worklist element for death notifications
+> +        *        (protected by inner_lock of the proc that
+> +        *        this ref belongs to)
+> +        */
+> +       struct binder_work work;
+> +       binder_uintptr_t cookie;
+> +};
+> +
+> +/**
+> + * struct binder_ref_data - binder_ref counts and id
+> + * @debug_id:        unique ID for the ref
+> + * @desc:            unique userspace handle for ref
+> + * @strong:          strong ref count (debugging only if not locked)
+> + * @weak:            weak ref count (debugging only if not locked)
+> + *
+> + * Structure to hold ref count and ref id information. Since
+> + * the actual ref can only be accessed with a lock, this structure
+> + * is used to return information about the ref to callers of
+> + * ref inc/dec functions.
+> + */
+> +struct binder_ref_data {
+> +       int debug_id;
+> +       uint32_t desc;
+> +       int strong;
+> +       int weak;
+> +};
+> +
+> +/**
+> + * struct binder_ref - struct to track references on nodes
+> + * @data:        binder_ref_data containing id, handle, and current refcounts
+> + * @rb_node_desc: node for lookup by @data.desc in proc's rb_tree
+> + * @rb_node_node: node for lookup by @node in proc's rb_tree
+> + * @node_entry:  list entry for node->refs list in target node
+> + *               (protected by @node->lock)
+> + * @proc:        binder_proc containing ref
+> + * @node:        binder_node of target node. When cleaning up a
+> + *               ref for deletion in binder_cleanup_ref, a non-NULL
+> + *               @node indicates the node must be freed
+> + * @death:       pointer to death notification (ref_death) if requested
+> + *               (protected by @node->lock)
+> + *
+> + * Structure to track references from procA to target node (on procB). This
+> + * structure is unsafe to access without holding @proc->outer_lock.
+> + */
+> +struct binder_ref {
+> +       /* Lookups needed: */
+> +       /*   node + proc => ref (transaction) */
+> +       /*   desc + proc => ref (transaction, inc/dec ref) */
+> +       /*   node => refs + procs (proc exit) */
+> +       struct binder_ref_data data;
+> +       struct rb_node rb_node_desc;
+> +       struct rb_node rb_node_node;
+> +       struct hlist_node node_entry;
+> +       struct binder_proc *proc;
+> +       struct binder_node *node;
+> +       struct binder_ref_death *death;
+> +};
+> +
+> +/**
+> + * struct binder_proc - binder process bookkeeping
+> + * @proc_node:            element for binder_procs list
+> + * @threads:              rbtree of binder_threads in this proc
+> + *                        (protected by @inner_lock)
+> + * @nodes:                rbtree of binder nodes associated with
+> + *                        this proc ordered by node->ptr
+> + *                        (protected by @inner_lock)
+> + * @refs_by_desc:         rbtree of refs ordered by ref->desc
+> + *                        (protected by @outer_lock)
+> + * @refs_by_node:         rbtree of refs ordered by ref->node
+> + *                        (protected by @outer_lock)
+> + * @waiting_threads:      threads currently waiting for proc work
+> + *                        (protected by @inner_lock)
+> + * @pid                   PID of group_leader of process
+> + *                        (invariant after initialized)
+> + * @tsk                   task_struct for group_leader of process
+> + *                        (invariant after initialized)
+> + * @deferred_work_node:   element for binder_deferred_list
+> + *                        (protected by binder_deferred_lock)
+> + * @deferred_work:        bitmap of deferred work to perform
+> + *                        (protected by binder_deferred_lock)
+> + * @is_dead:              process is dead and awaiting free
+> + *                        when outstanding transactions are cleaned up
+> + *                        (protected by @inner_lock)
+> + * @todo:                 list of work for this process
+> + *                        (protected by @inner_lock)
+> + * @stats:                per-process binder statistics
+> + *                        (atomics, no lock needed)
+> + * @delivered_death:      list of delivered death notification
+> + *                        (protected by @inner_lock)
+> + * @max_threads:          cap on number of binder threads
+> + *                        (protected by @inner_lock)
+> + * @requested_threads:    number of binder threads requested but not
+> + *                        yet started. In current implementation, can
+> + *                        only be 0 or 1.
+> + *                        (protected by @inner_lock)
+> + * @requested_threads_started: number binder threads started
+> + *                        (protected by @inner_lock)
+> + * @tmp_ref:              temporary reference to indicate proc is in use
+> + *                        (protected by @inner_lock)
+> + * @default_priority:     default scheduler priority
+> + *                        (invariant after initialized)
+> + * @debugfs_entry:        debugfs node
+> + * @alloc:                binder allocator bookkeeping
+> + * @context:              binder_context for this proc
+> + *                        (invariant after initialized)
+> + * @inner_lock:           can nest under outer_lock and/or node lock
+> + * @outer_lock:           no nesting under innor or node lock
+> + *                        Lock order: 1) outer, 2) node, 3) inner
+> + * @binderfs_entry:       process-specific binderfs log file
+> + *
+> + * Bookkeeping structure for binder processes
+> + */
+> +struct binder_proc {
+> +       struct hlist_node proc_node;
+> +       struct rb_root threads;
+> +       struct rb_root nodes;
+> +       struct rb_root refs_by_desc;
+> +       struct rb_root refs_by_node;
+> +       struct list_head waiting_threads;
+> +       int pid;
+> +       struct task_struct *tsk;
+> +       struct hlist_node deferred_work_node;
+> +       int deferred_work;
+> +       bool is_dead;
+> +
+> +       struct list_head todo;
+> +       struct binder_stats stats;
+> +       struct list_head delivered_death;
+> +       int max_threads;
+> +       int requested_threads;
+> +       int requested_threads_started;
+> +       int tmp_ref;
+> +       long default_priority;
+> +       struct dentry *debugfs_entry;
+> +       struct binder_alloc alloc;
+> +       struct binder_context *context;
+> +       spinlock_t inner_lock;
+> +       spinlock_t outer_lock;
+> +       struct dentry *binderfs_entry;
+> +};
+> +
+> +/**
+> + * struct binder_thread - binder thread bookkeeping
+> + * @proc:                 binder process for this thread
+> + *                        (invariant after initialization)
+> + * @rb_node:              element for proc->threads rbtree
+> + *                        (protected by @proc->inner_lock)
+> + * @waiting_thread_node:  element for @proc->waiting_threads list
+> + *                        (protected by @proc->inner_lock)
+> + * @pid:                  PID for this thread
+> + *                        (invariant after initialization)
+> + * @looper:               bitmap of looping state
+> + *                        (only accessed by this thread)
+> + * @looper_needs_return:  looping thread needs to exit driver
+> + *                        (no lock needed)
+> + * @transaction_stack:    stack of in-progress transactions for this thread
+> + *                        (protected by @proc->inner_lock)
+> + * @todo:                 list of work to do for this thread
+> + *                        (protected by @proc->inner_lock)
+> + * @process_todo:         whether work in @todo should be processed
+> + *                        (protected by @proc->inner_lock)
+> + * @return_error:         transaction errors reported by this thread
+> + *                        (only accessed by this thread)
+> + * @reply_error:          transaction errors reported by target thread
+> + *                        (protected by @proc->inner_lock)
+> + * @wait:                 wait queue for thread work
+> + * @stats:                per-thread statistics
+> + *                        (atomics, no lock needed)
+> + * @tmp_ref:              temporary reference to indicate thread is in use
+> + *                        (atomic since @proc->inner_lock cannot
+> + *                        always be acquired)
+> + * @is_dead:              thread is dead and awaiting free
+> + *                        when outstanding transactions are cleaned up
+> + *                        (protected by @proc->inner_lock)
+> + *
+> + * Bookkeeping structure for binder threads.
+> + */
+> +struct binder_thread {
+> +       struct binder_proc *proc;
+> +       struct rb_node rb_node;
+> +       struct list_head waiting_thread_node;
+> +       int pid;
+> +       int looper;              /* only modified by this thread */
+> +       bool looper_need_return; /* can be written by other thread */
+> +       struct binder_transaction *transaction_stack;
+> +       struct list_head todo;
+> +       bool process_todo;
+> +       struct binder_error return_error;
+> +       struct binder_error reply_error;
+> +       wait_queue_head_t wait;
+> +       struct binder_stats stats;
+> +       atomic_t tmp_ref;
+> +       bool is_dead;
+> +};
+> +
+> +/**
+> + * struct binder_txn_fd_fixup - transaction fd fixup list element
+> + * @fixup_entry:          list entry
+> + * @file:                 struct file to be associated with new fd
+> + * @offset:               offset in buffer data to this fixup
+> + *
+> + * List element for fd fixups in a transaction. Since file
+> + * descriptors need to be allocated in the context of the
+> + * target process, we pass each fd to be processed in this
+> + * struct.
+> + */
+> +struct binder_txn_fd_fixup {
+> +       struct list_head fixup_entry;
+> +       struct file *file;
+> +       size_t offset;
+> +};
+> +
+> +struct binder_transaction {
+> +       int debug_id;
+> +       struct binder_work work;
+> +       struct binder_thread *from;
+> +       struct binder_transaction *from_parent;
+> +       struct binder_proc *to_proc;
+> +       struct binder_thread *to_thread;
+> +       struct binder_transaction *to_parent;
+> +       unsigned need_reply:1;
+> +       /* unsigned is_dead:1; */       /* not used at the moment */
+> +
+> +       struct binder_buffer *buffer;
+> +       unsigned int    code;
+> +       unsigned int    flags;
+> +       long    priority;
+> +       long    saved_priority;
+> +       kuid_t  sender_euid;
+> +       struct list_head fd_fixups;
+> +       binder_uintptr_t security_ctx;
+> +       /**
+> +        * @lock:  protects @from, @to_proc, and @to_thread
+> +        *
+> +        * @from, @to_proc, and @to_thread can be set to NULL
+> +        * during thread teardown
+> +        */
+> +       spinlock_t lock;
+> +};
+> +
+> +/**
+> + * struct binder_object - union of flat binder object types
+> + * @hdr:   generic object header
+> + * @fbo:   binder object (nodes and refs)
+> + * @fdo:   file descriptor object
+> + * @bbo:   binder buffer pointer
+> + * @fdao:  file descriptor array
+> + *
+> + * Used for type-independent object copies
+> + */
+> +struct binder_object {
+> +       union {
+> +               struct binder_object_header hdr;
+> +               struct flat_binder_object fbo;
+> +               struct binder_fd_object fdo;
+> +               struct binder_buffer_object bbo;
+> +               struct binder_fd_array_object fdao;
+> +       };
+> +};
+> +
+>  extern struct binder_transaction_log binder_transaction_log;
+>  extern struct binder_transaction_log binder_transaction_log_failed;
+>  #endif /* _LINUX_BINDER_INTERNAL_H */
+> --
+> 1.7.9.5
 
 _______________________________________________
 Linux-mediatek mailing list
