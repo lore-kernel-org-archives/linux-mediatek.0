@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0902CC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 16:34:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0845FC433E1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 16:34:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D62BB2177B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 16:34:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D8F0A22D0B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 16:34:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="q5i9jBNa";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="uWaA3C2+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D62BB2177B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PZarT5A2";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="engxWD/2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D8F0A22D0B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,61 +27,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SdTY73bVsrdBDxNF9wj7Tn9kVwkyEiuSPDK+qCKZj/k=; b=q5i9jBNagMiNlaD9JTa8+Q5g9E
-	Mtzas0obvHpYoGWh1heS45eSi0JnAf08uj/eRgCNQH8+u5nqRLmvS1CpQy28f+tTB2Lm3W1I+ppjv
-	9DZaHY5OQqVDGZUKlUH+/IMdPhS65M9gAYXe/2Ff8E727yA//Hqaa3WhbDoQJE2NgsOvzcdWT19O5
-	rhbb8efyh7mN3PjSAsJf6hzidgZ8kj0wtBodCrsrdUt8RRJmI90ivWZBVNdYnTj3BRRP1vO24wvix
-	m5yA2ba9/z3s1RtQwvyql3AYgB3xOfttC1SNUsnyhubieQJfHfjm4Qu7H8Nz+Z4Oj/zvdRKV/Twd7
-	g/Aek/aA==;
+	bh=gMwPh2+ijjZ/o4ehKbJfwz231Kaps0bX3g1uKp5RoqE=; b=PZarT5A2QdkMg4P0/hGv6FYEbm
+	bv+5tZQfEa/xUhR/WT+K60gkxP7O+Wz19peBYs5BDEZs+uKswj+4CvdAWWKXrDjyi8dtL2ETb2UuP
+	H858ex44/mrbZhLCKQe1v9hX51Hqum51tWLQB/hbVFvaRqjanNnolFVmQLEyKljHfYDWJHnx/G5kJ
+	aCo13G49eSLRyGQIlhbh30avKUSub2GOLdINMfIxnpPZW5EG38bm10N4FCIyzFfjc5zHOMJUObHn1
+	Ia6RRaREfiQXWnV46acg3fClJmNmU0w6KLcxmlZRd2TFaTq/jfcRgTU8u7hsCYTHEgUR+5IuisjqF
+	QaDF1q3g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k2zsz-0000DM-Kx; Tue, 04 Aug 2020 16:33:57 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1k2zt4-0000Hp-Pl; Tue, 04 Aug 2020 16:34:02 +0000
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k2zsT-0008Hh-Nq; Tue, 04 Aug 2020 16:33:26 +0000
-Received: by mail-pf1-x441.google.com with SMTP id f193so10276072pfa.12;
- Tue, 04 Aug 2020 09:33:25 -0700 (PDT)
+ id 1k2zsW-0008J4-LQ; Tue, 04 Aug 2020 16:33:29 +0000
+Received: by mail-pj1-x1042.google.com with SMTP id e4so2514758pjd.0;
+ Tue, 04 Aug 2020 09:33:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=un8jH/D2eshkw7Qt1diChiXDaYKwr27b6qcHEOLaKfM=;
- b=uWaA3C2+St8byc6QJ3Fe5yIMWqJpX//7+V935TmXZycJbjhFQLT6kg0Up7RkC6iuwA
- 2fOQGSgr9gdFTEuehYrWtoW7cya0eZz2hdM4fbPyWPo6hFN/8ZrMxegKi/2OMe63sgJ6
- SXotcJu/6RMbVe1SXIpCxfP/cjFWgyHxQ3AVIXydLgE0Kzr47ETELdMFO/6dLYQOyZeg
- P0UrfNHRoXcREcH1SG089tfyctQd2MewlQTevPub0aLj0iafPxNeRTS5Alq+ZoO4Vpls
- z0Srw/Q8VjVhrg9Pb4CKXOGimkcyuv8owr1kQbow6+Tk1h87HfsHQmD+hkvbnA3EsW4d
- YLHQ==
+ bh=f0rQmLd2gYqpAFiuJBl/hAMED12SSRFPW07wfVi8OZw=;
+ b=engxWD/2i+V2t4tSV5/le1iMnbVOBbW/GxmxDrA2C2rs4CWpWnVAScr/gRsHxYe5Ql
+ 1XJSb0ubzDfpLGFa1UhUCUKjN7VsIA6WgAKjcWjNQhM/diQIGj/XB0nbu6+ath8kf4Um
+ mqFSKoLK0bXOsqcZreIn6iwicMAj+JOWWF3bMks0HR6MioLICLqKk4JIGN5PlR62Pe6G
+ JHZjdUpxEZOiA8uOtj3a7rV52qLdOPskqNseSItHRhT1l7NPxWAElZe7qyGCGJJ2RtNu
+ FTXcOPmB8QobtYjCqw5PdXP2TwYF5QMpioXR259dPFWdaIID4eqV3sDFbT4aPJIEqBn8
+ DmzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=un8jH/D2eshkw7Qt1diChiXDaYKwr27b6qcHEOLaKfM=;
- b=IPpgExyzpf1u8mm+ruYDva8XKDg3fDj8NWu8S5pA0AOzYK6B85vAlVW0kP1tBmoJij
- +V8OnTP/Z0xk6dXsn4dhKGFVFN/HLW60ouVroPPt7lavN/867uN5uJljd6HvDhifaXyO
- 8a1QlG6++fXwn7t0MsA+ru1IdbI888Otr0mOp9jUFyFQm66TRspDznrmAGV9ywDjaJmk
- u+yPRQOJFOplyCg6oI7sX9oOr2Y7gTkmGpcsRt2j+nMa/HEB/7hSvuwP0lIidgpDUmBc
- 5lAceSEF7/S5XS0ON4q8C1p1w0AC+ezei3T3Uy82PJYK705+gm7Tw126OlaiLTjbwzzx
- 0Bgw==
-X-Gm-Message-State: AOAM5332+/nYEFz/As6q50K08aW+QCQSvLRIOzyQ2rw3SP9tyKfNhfTQ
- 8YBNbLFR6oiResBP+P9zyBE=
-X-Google-Smtp-Source: ABdhPJxiLlCtNf/oUWkcvYIrRWlM36SWgcYNtF65o7bEkz2649Bvgg2GB3AavWDTrcCu35K4SZQrgQ==
-X-Received: by 2002:aa7:9419:: with SMTP id x25mr21668872pfo.67.1596558803708; 
- Tue, 04 Aug 2020 09:33:23 -0700 (PDT)
+ bh=f0rQmLd2gYqpAFiuJBl/hAMED12SSRFPW07wfVi8OZw=;
+ b=gBkrBe2/ajKIftu72t8lhjk7d1W9Yy5S5KkVe1xU+86pQDRVIi98/V1YSbUxoR/Pqi
+ fh5Jie5e6wLeGy7txL3UDNxhl6mxJIvx5nMt2UhBB+U3PIWU5NM6RqFo5fFu0XMO4KMJ
+ d8mPK4r/c+PsrkJSjxHIBMgl4BvMvSTnE5MuR3YedJ/CnGeranclypsEXiBuhAcY8k9B
+ nkVvLSDWnzkzoz0/mDzsNgQpVrtOYiuTc2wI41SUHsOGOAeigm82vZpxhfLnooTndIHg
+ Q+5iJMnD26+j6wMVRxXJmlthdy7ULgrdWm+mJobBSniw0sNfoU2mKtg5VxcMsMozesAO
+ 4AJw==
+X-Gm-Message-State: AOAM530F6p2bO5e1aFonjEtmcqgEzByNgMhJoMuV0mhtf8p0RKv3gRTo
+ peIkLY+YqOYXp9fLIY3+u5Y=
+X-Google-Smtp-Source: ABdhPJxuZD1NzfjMM1v6tRfNya7PdTVy5RqF4iUWSDT2L02W91t+jOHzvw9orMH0p+VaLSF0t/YBjw==
+X-Received: by 2002:a17:902:fe0d:: with SMTP id
+ g13mr2954693plj.287.1596558806483; 
+ Tue, 04 Aug 2020 09:33:26 -0700 (PDT)
 Received: from localhost.localdomain ([123.110.251.138])
- by smtp.gmail.com with ESMTPSA id m16sm657253pjz.47.2020.08.04.09.33.21
+ by smtp.gmail.com with ESMTPSA id m16sm657253pjz.47.2020.08.04.09.33.23
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 04 Aug 2020 09:33:23 -0700 (PDT)
+ Tue, 04 Aug 2020 09:33:26 -0700 (PDT)
 From: Gene Chen <gene.chen.richtek@gmail.com>
 To: lee.jones@linaro.org,
 	matthias.bgg@gmail.com,
 	rafael@kernel.org
-Subject: [PATCH 5/9] mfd: mt6360: Rename mt6360_pmu_data by mt6360_data
-Date: Wed,  5 Aug 2020 00:32:57 +0800
-Message-Id: <1596558782-3415-6-git-send-email-gene.chen.richtek@gmail.com>
+Subject: [PATCH 5/9] mfd: mt6360: Rename mt6360_pmu_data by mt6360_ddata
+Date: Wed,  5 Aug 2020 00:32:58 +0800
+Message-Id: <1596558782-3415-7-git-send-email-gene.chen.richtek@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1596558782-3415-1-git-send-email-gene.chen.richtek@gmail.com>
 References: <1596558782-3415-1-git-send-email-gene.chen.richtek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200804_123325_850958_6C7C4497 
+X-CRM114-CacheID: sfid-20200804_123328_843673_4F8AF768 
 X-CRM114-Status: GOOD (  17.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -106,7 +107,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Gene Chen <gene_chen@richtek.com>
 
-Rename mt6360_pmu_data by mt6360_data because of including
+Rename mt6360_pmu_data by mt6360_ddata because of including
 not only PMU part, but also entire MT6360 IC.
 
 Signed-off-by: Gene Chen <gene_chen@richtek.com>
