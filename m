@@ -2,81 +2,141 @@ Return-Path: <SRS0=p2pa=BO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2467DC433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 05:27:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A3FBC433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 06:11:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1B6322064B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 05:27:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 085EF20792
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 06:11:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WDgSKiPP";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="bDe7XIag"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1B6322064B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UN68SkSM";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="Y7GhitAF";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="rHpqMp2b"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 085EF20792
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8GEjB1fCiD9AzLhePbqHoTxndb0dgD6kzCKPd5Liivg=; b=WDgSKiPPQJTEk/RqUmOEn2Y+H
-	KFqNZtnDQpA0rfaba1ddtfUfO91QXR4KZ6sdGCq98il3U06IR5bu9c6/L9IWd1zM8krzaGuXilskn
-	pcTNWOUFdLY2Pzr7uy8nuCuLXwrzk9yJu2yJJao3gnPD6cdbUBRl82I2YrBDrYl362AtMCT2k1jsJ
-	Dl/oNpcnnO0kRoQ/zCEqEiaX59Ww/xd14goIUVNUs+7l8jJ99Avkyikt1BJlSlrFWvVct0fCoWmYf
-	KM02SUVr1rU+71hzphZNn1cUop5PVSRTNpJPnM8hYvjuDP+3ASoNNv1p6c51loMO6MyEJwQUaPoZU
-	IpwDyj3rQ==;
+	 bh=ajYbW70jyB6JTz2T0NFCzmE56aAz0nxZYiA+yRx3iE0=; b=UN68SkSMW/4+7OaUNsMPJRjzi
+	yP5C/EUSPbCGNaff+7e6AsdcITu6nk1y9WUx65xZx3B4Vv/rBkcw3fr5qHv8vxur+gIVTUCvkL3l0
+	vZiimPV6NwYewdSX2wLgAWO25ltjb0bmIPgMoE0Ge+w38fmls8Dekq2/zeFYFR6sIepTq3YHeflLE
+	oEnIH0nmeQK5gaCjWZTMPinVSOy0LQEHUr/KQ9gjgHrxhkkDzLhSYJXhOULoD+BL8j/BPXDamVfuj
+	JGzrj/qHd1E7+VPOUOhpKpSvjgvqjhEx8iLTlsDqayZE8XTqWSknYUBQ+8u3xdnDU5xFO1jxiePLp
+	Dr3HyoYMg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k2pUC-0003b6-NN; Tue, 04 Aug 2020 05:27:41 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1k2qA0-0007Dl-MN; Tue, 04 Aug 2020 06:10:52 +0000
+Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k2pU7-0003aL-Ss; Tue, 04 Aug 2020 05:27:37 +0000
-X-UUID: 2f2e6afc8ba14f1bb54fd348ad5e1bbb-20200803
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=77Sk5KuY9/yDjOwJAIOS3itzUTl3XANQ8BVg39iTLyU=; 
- b=bDe7XIagKmMXwHo1dWf3tuh61RVuCBgDxG5TZKk+hkMlbvwSNa+XikMcBq7wr8Hbcod9WrqcdSjM7Vr24IOQPCqRQaPlAMFyRZLL/flF23XyyC9Zz7rqUdYeY4DNTlWI7BWPcGkCwkzrY2kvrAZrDL71PNXtMrXQ15TQkYNL6jE=;
-X-UUID: 2f2e6afc8ba14f1bb54fd348ad5e1bbb-20200803
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1247277569; Mon, 03 Aug 2020 21:27:34 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 3 Aug 2020 22:27:31 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 4 Aug 2020 13:27:29 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 4 Aug 2020 13:27:30 +0800
-Message-ID: <1596518850.27829.5.camel@mtkswgap22>
-Subject: Re: [SPAM]Re: [PATCH v2] scsi: ufs: Fix possible infinite loop in
+ id 1k2q9y-0007D4-DS; Tue, 04 Aug 2020 06:10:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1596521450; x=1628057450;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=G4q1lAOrLUWAkr7qVWAke08zQL6pNzFsAroSVtq4LgY=;
+ b=Y7GhitAFIzN+JUhMNrIhgGeHzGb6EXUqB5VhaIO0rlGzzi2ddetKxbwy
+ MWkt8WuATSniIOW77NdpNhmZoQN4fhdqupA/xN1hZqYJRxIqUC3m3oQTh
+ 1wtaXbTWc4KzmwfZthHbnasFvzCB3iB8yWzeeQXkUjNVQmC3abu8joaWq
+ VZ/44kAiU+7lI0d1C/HJHcX49fxGR2fsbq0H3YQCbIB/r8XebzoTegaHF
+ FkIrWjdD/C6opPxI86YR1isFBYF7nYSneTuLFIa3mv51IaZpM6qjjCnap
+ GibjOU4R0CdUwyKw77z/jGcB9rqKP2N49m69DE78y9MPi3CFP8b/lP1la g==;
+IronPort-SDR: eMiP1YV0r3ifDHR1UoYuXNSA3p/CoVlPpgC6iMTAN5PJfnRr1CwIKLpS/ObHbtdD691GewuVmj
+ +SKxMrtBYTPR/s+IYMfnHeHaYRPCwelGSLBDPCnuEoY04U89zTaTKLH8VAYdWG7sUw5+wH6xiF
+ UVzjjmdrQwP9VNXuSKJJhFAnaOxVqHQQSjfEhWZBDZ9UwkRmKvxCGw5sg6MRNNeGhDpIfqEg+U
+ KXOyCj3BqBVJXlOq+epPm0d6Tcx5WZKgIUJoGMp76JZObUEXa0L/eRRmJwP59Nr/aiK9lgEwW8
+ YO8=
+X-IronPort-AV: E=Sophos;i="5.75,433,1589212800"; d="scan'208";a="148389703"
+Received: from mail-dm6nam11lp2169.outbound.protection.outlook.com (HELO
+ NAM11-DM6-obe.outbound.protection.outlook.com) ([104.47.57.169])
+ by ob1.hgst.iphmx.com with ESMTP; 04 Aug 2020 14:10:43 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Pr1FG74lXyupqxqVz9QHu5AFeQm4UAr9/xKCp5vrInavRtetBJjLNaWpgYwIRsb7+CKt7nqEntMof/3BGAtAeySnrs8nNwnvG75T4wifP4Hb5CWqORABnNNpiwsFkPiWFefFJwdd8x9abcl7SgtBeB+h+WqmUV+0onkhetVKpmLl8nba7Bt22YSO2Ip+Ja/xA+y5FDgjSWAtsLwPi3VcqNjyB3+Q7unxty04OAmJnQdbhraYXoPgrldJNnJrX50navxOeyHC1pwgZ9uGGF0eC2/M8s3S5lYMgH3zHCXHrPusjzKQs9AHp+cn8qdmVuojPCgvn9DI5D9ropdL4Uk0ig==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=G4q1lAOrLUWAkr7qVWAke08zQL6pNzFsAroSVtq4LgY=;
+ b=b8/Dyct7p+4RPbRr7MII8FsLF5PglqRiRLEDtYgQ2kX0z8yKPdiqj4Xa1gpUef71t/ybU2jLiNcF2+NTIIY6Hf0Hb2Qx7dPpu3AjIeAvY9f1cytFO7fnaa49cAZ/smFokXL0Qp0n/PNMyEN/PfZTMw+fz+clYs57mJd6OJzPVF/IAtBRbi+ZV+MCfVvg+ms/vYrb4tAYwzU8GX/ZgssesM7CU3I7NvgVlZznyEsivt4wDYGuze/ZQUqsS/QClx2bGdmFXND7XhPn1QFFKV9JjTp9gIha+BhxhzBqVtl+9ZbnIrXqOth5gNfkNJsLQiVNHCi8eJdp9gXhTbWP1rf86w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=G4q1lAOrLUWAkr7qVWAke08zQL6pNzFsAroSVtq4LgY=;
+ b=rHpqMp2b1AewnWj2jt8pIhY/ocZTaLRG/Ttpk14x3lKG5OdaIjx7Lkw+wzXUBS15BDyRWp+V6QCVVtbf17zEwF3yyNpLRmG1FSTQ03/suNfHGfxztHHP0S/q9oCtmUZPxqtMGEWhPFThtII1ytAVG+Xf88dyprySkXcBwEjQhTI=
+Received: from BYAPR04MB4629.namprd04.prod.outlook.com (2603:10b6:a03:14::14)
+ by BYAPR04MB3878.namprd04.prod.outlook.com (2603:10b6:a02:b8::15)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3239.17; Tue, 4 Aug
+ 2020 06:10:42 +0000
+Received: from BYAPR04MB4629.namprd04.prod.outlook.com
+ ([fe80::40d:aa59:cf3:2386]) by BYAPR04MB4629.namprd04.prod.outlook.com
+ ([fe80::40d:aa59:cf3:2386%7]) with mapi id 15.20.3239.021; Tue, 4 Aug 2020
+ 06:10:42 +0000
+From: Avri Altman <Avri.Altman@wdc.com>
+To: Stanley Chu <stanley.chu@mediatek.com>, Can Guo <cang@codeaurora.org>
+Subject: RE: [SPAM]Re: [PATCH v2] scsi: ufs: Fix possible infinite loop in
  ufshcd_hold
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: Can Guo <cang@codeaurora.org>, "avri.altman@wdc.com" <avri.altman@wdc.com>
-Date: Tue, 4 Aug 2020 13:27:30 +0800
-In-Reply-To: <1596095961.17247.51.camel@mtkswgap22>
+Thread-Topic: [SPAM]Re: [PATCH v2] scsi: ufs: Fix possible infinite loop in
+ ufshcd_hold
+Thread-Index: AQHWZVGu3ObiHVQ3qEGOzD92rO+OpakePgSAgAActwCAAAeXAIABYbSAgAexOwCAAAl5UA==
+Date: Tue, 4 Aug 2020 06:10:41 +0000
+Message-ID: <BYAPR04MB4629D947CAC7E07FF94D55F2FC4A0@BYAPR04MB4629.namprd04.prod.outlook.com>
 References: <20200729024037.23105-1-stanley.chu@mediatek.com>
  <bfbb48b06fa3464da0cbd2aee8a32649@codeaurora.org>
  <1596018374.17247.41.camel@mtkswgap22>
  <4cb7403fae7226b70a133d4a7ecee755@codeaurora.org>
- <1596095961.17247.51.camel@mtkswgap22>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ <1596095961.17247.51.camel@mtkswgap22> <1596518850.27829.5.camel@mtkswgap22>
+In-Reply-To: <1596518850.27829.5.camel@mtkswgap22>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mediatek.com; dkim=none (message not signed)
+ header.d=none;mediatek.com; dmarc=none action=none header.from=wdc.com;
+x-originating-ip: [212.25.79.133]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: a985b5ed-978e-43b3-6928-08d8383d1dfd
+x-ms-traffictypediagnostic: BYAPR04MB3878:
+x-microsoft-antispam-prvs: <BYAPR04MB38784D3AB442860F9FD6A09FFC4A0@BYAPR04MB3878.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:7691;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 7iCnoPGC1vTtnPOmWf93EW5j5RziUVLbOw8o5TAKfa6U+/3WcUPNMBQn65l29KOVAoZwlK5e/tQGsMtlVlwn1uzPZE2CztJd8yG1omOTjfWcQMpUgx//6sBY8iq+H0UfZu/rJTolmpc2iRvF0BND5UrptQ6fhwkY058RT5oVigV9CiGnkqkbQp3r43DNwXlgp7TJVCWtaXFvcACt8aIo9V+NVLWvfT0f2ewgAEDCDzoi05gUxGconIt5JMqGX9qv1IG/wGZzfiAy2V3AGzKVxbhBbkf/5Cqf99TIxJHtXgTb832TXD2nGOwdXcxKvgWA4PSL3pHY6cAhBkZ6rzt/vsF44QMYzftoBChFr8ueO8BD6JeW4+GOgfQoG1fNJfyo
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR04MB4629.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(136003)(346002)(376002)(366004)(396003)(39860400002)(478600001)(9686003)(76116006)(52536014)(55016002)(86362001)(7696005)(83380400001)(6506007)(7416002)(4744005)(26005)(71200400001)(316002)(8936002)(2906002)(186003)(4326008)(8676002)(66946007)(33656002)(5660300002)(66446008)(64756008)(66556008)(66476007)(110136005)(54906003)(217643003);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: nS4fmNhfadkGUdT0Zn3ZHxrcXoidhs95sYiVhq0Rk7DDXfJNOpA9HlQS71CwFirMRBFpGSp4/1aNZSjDBqYqB1asHgre5UVNkrpkEPtJ22pPr9BsXVF4OCxKP6wFHrSciI4LaCU5qB+/lEHNtDSDkNwwaewZWdPW3+lkSBpiKhAwTrj1ZRnC6dSBx7ffCRzv22u3WMwSlyPRdoeohaxxhI9iK/Ab9txPQ4m7DoiqjUiZvaFaNs0aQjFlaBCOreYlZxfSbaYmMNK/6Ib7srwzZwuzNpjA4xQJC7C+rmQjujyTV8Q+BEu4SEJWWIehObaOIA6sqU3X10T+N2Yj7dL+HxsENRHG7xosI59N22fxkcXnxNNyhKocrV4DgBE9N2aXtYfRo63bByqC99lppdCjFNeHoSOQ1PB/TZuiqY3W59O+dgrHiDZLDslDrziPgM06z/UFSPC+PqBQjazw6rtCllu68pOIpTqWqARoXxPjhGuZe0cpd/mhUbf1nTD65SITPJ4LnVqY15mrKkqp4q4aD+bbuwQ75DCEhqzbIk9thy2Vb0QroFTYYgOKsZqSAXxvOvI5BCKAn/Wc58ev4Vo60LeMJsDjWG9TkZI85ozOPmC+K3zOBqMoCeacYab9sG1StbbD+nbZ9MnAJ1fr7P1HFA==
+x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 88DECA28A84F5CC165AA181EDE213214933D215AEC183759C3F913402742CFCE2000:8
-X-MTK: N
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR04MB4629.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a985b5ed-978e-43b3-6928-08d8383d1dfd
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Aug 2020 06:10:41.8383 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: LbXFJztdb5dxJdMUJQzQBiFyGS6nUG3yqLNtkVBW1cRHPxxQayr6Q+Czn4Ava3POK5MT5VGltOTqCf/Yb1x7rg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB3878
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200804_012736_141658_82A3AFDF 
-X-CRM114-Status: GOOD (  51.39  )
+X-CRM114-CacheID: sfid-20200804_021050_773497_1029E46A 
+X-CRM114-Status: GOOD (  15.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,21 +150,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
  "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
- Andy Teng =?UTF-8?Q?=28=E9=84=A7=E5=A6=82=E5=AE=8F=29?=
- <Andy.Teng@mediatek.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- Chun-Hung Wu =?UTF-8?Q?=28=E5=B7=AB=E9=A7=BF=E5=AE=8F=29?=
- <Chun-hung.Wu@mediatek.com>,
- Kuohong Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=8B=E9=B4=BB=29?=
- <kuohong.wang@mediatek.com>,
+ =?utf-8?B?QW5keSBUZW5nICjphKflpoLlro8p?= <Andy.Teng@mediatek.com>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ =?utf-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
+ =?utf-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?= <kuohong.wang@mediatek.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- CC Chou =?UTF-8?Q?=28=E5=91=A8=E5=BF=97=E6=9D=B0=29?= <cc.chou@mediatek.com>,
+ =?utf-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Peter Wang =?UTF-8?Q?=28=E7=8E=8B=E4=BF=A1=E5=8F=8B=29?=
- <peter.wang@mediatek.com>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ =?utf-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
  "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
  "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>,
- Chaotian Jing =?UTF-8?Q?=28=E4=BA=95=E6=9C=9D=E5=A4=A9=29?=
- <Chaotian.Jing@mediatek.com>, "bvanassche@acm.org" <bvanassche@acm.org>,
+ =?utf-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?= <Chaotian.Jing@mediatek.com>,
+ "bvanassche@acm.org" <bvanassche@acm.org>,
  "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
  "beanhuo@micron.com" <beanhuo@micron.com>
 Content-Type: text/plain; charset="us-ascii"
@@ -112,195 +170,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Avri,
-
-Would you have any suggestions for this patch?
-
-We need this patch to enable UFSHCD_CAP_HIBERN8_WITH_CLK_GATING in
-MediaTek platform.
-
-Thanks a lot,
-
-Stanley Chu
-
-On Thu, 2020-07-30 at 15:59 +0800, Stanley Chu wrote:
-> Hi Can,
+ 
+> Hi Avri,
 > 
-> On Wed, 2020-07-29 at 18:53 +0800, Can Guo wrote:
-> > Hi Stanley,
-> > 
-> > On 2020-07-29 18:26, Stanley Chu wrote:
-> > > Hi Can,
-> > > 
-> > > On Wed, 2020-07-29 at 16:43 +0800, Can Guo wrote:
-> > >> Hi Stanley,
-> > >> 
-> > >> On 2020-07-29 10:40, Stanley Chu wrote:
-> > >> > In ufshcd_suspend(), after clk-gating is suspended and link is set
-> > >> > as Hibern8 state, ufshcd_hold() is still possibly invoked before
-> > >> > ufshcd_suspend() returns. For example, MediaTek's suspend vops may
-> > >> > issue UIC commands which would call ufshcd_hold() during the command
-> > >> > issuing flow.
-> > >> >
-> > >> > Now if UFSHCD_CAP_HIBERN8_WITH_CLK_GATING capability is enabled,
-> > >> > then ufshcd_hold() may enter infinite loops because there is no
-> > >> > clk-ungating work scheduled or pending. In this case, ufshcd_hold()
-> > >> > shall just bypass, and keep the link as Hibern8 state.
-> > >> >
-> > >> 
-> > >> The infinite loop is expected as ufshcd_hold is called again after
-> > >> link is put to hibern8 state, so in QCOM's code, we never do this.
-> > > 
-> > > Sadly MediaTek have to do this to make our UniPro to enter low-power
-> > > mode.
-> > > 
-> > >> The cap UFSHCD_CAP_HIBERN8_WITH_CLK_GATING means UIC link state
-> > >> must not be HIBERN8 after ufshcd_hold(async=false) returns.
-> > > 
-> > > If driver is not in PM scenarios, e.g., suspended, above statement 
-> > > shall
-> > > be always followed. But two obvious violations are existed,
-> > > 
-> > > 1. In ufshcd_suspend(), link is set as HIBERN8 behind ufshcd_hold()
-> > > 2. In ufshcd_resume(), link is set back as Active before
-> > > ufshcd_release() is invoked
-> > > 
-> > > So as my understanding, special conditions are allowed in PM scenarios,
-> > > and this is why "hba->clk_gating.is_suspended" is introduced. By this
-> > > thought, I used "hba->clk_gating.is_suspended" in this patch as the
-> > > mandatory condition to allow ufshcd_hold() usage in vendor suspend and
-> > > resume callbacks.
-> > > 
-> > > 
-> > >> Instead of bailing out from that loop, which makes the logic of
-> > >> ufshcd_hold and clk gating even more complex, how about removing
-> > >> ufshcd_hold/release from ufshcd_send_uic_cmd()? I think they are
-> > >> redundant and we should never send DME cmds if clocks/powers are
-> > >> not ready. I mean callers should make sure they are ready to send
-> > >> DME cmds (and only callers know when), but not leave that job to
-> > >> ufshcd_send_uic_cmd(). It is convenient to remove ufshcd_hold/
-> > >> release from ufshcd_send_uic_cmd() as there are not many places
-> > >> sending DME cmds without holding the clocks, ufs_bsg.c is one.
-> > >> And I have tested my idea on my setup, it worked well for me.
-> > >> Another benefit is that it also allows us to use DME cmds
-> > >> in clk gating/ungating contexts if we need to in the future.
-> > >> 
-> > > 
-> > > Brilliant idea! But this may not solve problems if vendor callbacks 
-> > > need
-> > > more than UIC commands in the future.
-> > > 
-> > > This simple patch could make all vendor operations on UFSHCI in PM
-> > > callbacks possible with UFSHCD_CAP_HIBERN8_WITH_CLK_GATING enabled, and
-> > > again, it allows those operations in PM scenarios only.
-> > > 
-> > 
-> > Other than UIC cmds, I can only think of device manangement cmds (like 
-> > query).
-> > If device management cmds come into the way in the future, we fix it as 
-> > well.
-> > I mean that is the right thing to do in my opinion - just like we don't 
-> > call
-> > pm_runtime_get_sync() in ufshcd_send_uic_cmd().
-> > 
-> > I can understand that you want a simple/quick fix to get it work for you 
-> > once
-> > for all, but from my point of view, debugging clk gating/ungating really 
-> > takes
-> > huge efforts sometime (I've spent a lot of time on it). Some flash 
-> > vendors also
-> > use it in their own driver widely which makes some failure scenes even 
-> > harder to
-> > undertand/debug. So the first thing comes to my head is that we should 
-> > avoid
-> > making it more complex or giving it more exceptions.
-> > 
-> >  From functionality point of view, it looks ok to me. It is just that I 
-> > cannot
-> > predict it won't cause new problems since the clk gating/ungating 
-> > sequeces are
-> > like magic in some use cases sometime.
+> Would you have any suggestions for this patch?
 > 
-> Thanks for the functionality review.
+> We need this patch to enable UFSHCD_CAP_HIBERN8_WITH_CLK_GATING in
+> MediaTek platform.
 > 
-> I totally understand what you mentioned above about the clk-gating
-> debugging because we also spent lots of time for issue analysis.
+> Thanks a lot,
 > 
-> I just finished some fault injection for this patch in our platform, the
-> results are fine.
-> 
-> The active window of this patch is limited: Starting from
-> ufshcd_link_state_transition() in ufshcd_suspend to ufshcd_vops_resume()
-> in ufshcd_resume() because the link is back to LINKUP state in MediaTek
-> resume callback. So I was focus on injecting errors in our callbacks
-> between this period and most of injected fails triggered host and device
-> reset flow.
-> 
-> For example,
-> Suspend: UniPro PowerDownControl timeout
-> Resume: hba_enable timeout
-> Resume: UniPro PowerDownControl timeout
-> Resume: HIBERN8 Exit timeout
-> 
-> Hope these tests can ease your concerns.
-> 
-> Thanks,
 > Stanley Chu
-> 
-> > 
-> > Thanks,
-> > 
-> > Can Guo.
-> > 
-> > >> Please let me know your idea, thanks.
-> > >> 
-> > >> Can Guo.
-> > > 
-> > > Thanks,
-> > > Stanley Chu
-> > > 
-> > >> 
-> > >> > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> > >> > Signed-off-by: Andy Teng <andy.teng@mediatek.com>
-> > >> >
-> > >> > ---
-> > >> >
-> > >> > Changes since v1:
-> > >> > - Fix return value: Use unique bool variable to get the result of
-> > >> > flush_work(). Thcan prevent incorrect returned value, i.e., rc, if
-> > >> > flush_work() returns true
-> > >> > - Fix commit message
-> > >> >
-> > >> > ---
-> > >> >  drivers/scsi/ufs/ufshcd.c | 5 ++++-
-> > >> >  1 file changed, 4 insertions(+), 1 deletion(-)
-> > >> >
-> > >> > diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> > >> > index 577cc0d7487f..acba2271c5d3 100644
-> > >> > --- a/drivers/scsi/ufs/ufshcd.c
-> > >> > +++ b/drivers/scsi/ufs/ufshcd.c
-> > >> > @@ -1561,6 +1561,7 @@ static void ufshcd_ungate_work(struct work_struct
-> > >> > *work)
-> > >> >  int ufshcd_hold(struct ufs_hba *hba, bool async)
-> > >> >  {
-> > >> >  	int rc = 0;
-> > >> > +	bool flush_result;
-> > >> >  	unsigned long flags;
-> > >> >
-> > >> >  	if (!ufshcd_is_clkgating_allowed(hba))
-> > >> > @@ -1592,7 +1593,9 @@ int ufshcd_hold(struct ufs_hba *hba, bool async)
-> > >> >  				break;
-> > >> >  			}
-> > >> >  			spin_unlock_irqrestore(hba->host->host_lock, flags);
-> > >> > -			flush_work(&hba->clk_gating.ungate_work);
-> > >> > +			flush_result = flush_work(&hba->clk_gating.ungate_work);
-> > >> > +			if (hba->clk_gating.is_suspended && !flush_result)
-> > >> > +				goto out;
-> > >> >  			spin_lock_irqsave(hba->host->host_lock, flags);
-> > >> >  			goto start;
-> > >> >  		}
-> 
+Let's use it for now as a short-term WA.
+Please work with Can on a proper fix that will utilize his idea to remove ufshcd_hold/release
+From ufshcd_send_uic_cmd, as you are both in agreement that this should work as the long term solution.
 
+
+> > > >
+> > > >>
+> > > >> > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> > > >> > Signed-off-by: Andy Teng <andy.teng@mediatek.com>
+Reviewed-by: Avri Altman <avri.altman@wdc.com>
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
