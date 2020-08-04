@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F151EC433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 15:29:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4CA8FC433E1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 15:45:46 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C94BC2086A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 15:29:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 28FB4207FC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2020 15:45:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3NsdS24T";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="g0VZY3Es"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C94BC2086A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SBKFgPwd";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="WZt3TyXD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 28FB4207FC
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,36 +26,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:From:
 	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qEqx74SN1mU/x9mzwjIg0oXQvQY202W12ElZHba6Wpc=; b=3NsdS24TdHiCurnoLk1LttLN8
-	jqcI2LVullNNwSFxp9xRIWSsKACC0+1g5AqY8AtStEj4TSVPxA4qIHAgmNOB47b0pC8SF1O8iId5L
-	gcpbXmxbLBkkq36lqiSj8uBocOVu5UtG4j/8+bNhCWumNpfdCguuowHQMuAouqscknlvBSkGUji1S
-	DT6Gg0M9l4QnrclHUYdDLd++nbM6Z6hX8G+YFXozkdVat75V6fpg2bDCD+V6pnKzP5TTWH7KPF7g6
-	BW13JwENJ6ZP9RtLiYohaRHX4Kg+819E+SUJpaermStn06khyvz/c0e7qVyMd0Vyx907NQ2yNImqd
-	JgrGK3npg==;
+	 bh=Fg+ONrRVi3JVTUeMtV3XkWpJ+lQ5Mjg/5eql9k6rpuM=; b=SBKFgPwdk0J4chxqwgc94/wXq
+	q16IBa5uENN1GcNmteBFDlskz/KvJTMMjABBj6LsXP11EBMHWT6clEHkrMYXu6hP1dA+QvMZGdrHy
+	NEafJpSlOL+6uNnWrvLRD4f59iCSvq/sNV57YU3/MFL8Z6Lkz86XZY1qOqVICzHmC1ozliRhJ2y/S
+	DNoC8ZDWn64gfrFy9zFQD0NAt1tlk4Ylx4rJvoc/q1hg2YO0qaptjWaUyTGCUi054LJx1ynlLODLU
+	t8K9lKUxIFcC5t+XIhxCv53sFJUpR4EevfRebnNQV9fbVa0lIfVwLtvI9xr0fUBcCwQFbXhdV5ogP
+	NQjcTbuRQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k2ysW-00072v-II; Tue, 04 Aug 2020 15:29:24 +0000
+	id 1k2z8D-0000ly-0K; Tue, 04 Aug 2020 15:45:37 +0000
 Received: from mout.gmx.net ([212.227.17.22])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k2ysU-000721-K4; Tue, 04 Aug 2020 15:29:23 +0000
+ id 1k2z88-0000l2-Ha; Tue, 04 Aug 2020 15:45:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1596554960;
- bh=sjy/7cbvWFDMn93C7JAJB2eqqf8LM8odrGp9n3IbZGk=;
+ s=badeba3b8450; t=1596555926;
+ bh=KVIdFu4snYkr3f0Fmfu+cjnV5+Wi4qwOh8QwNS/ed8c=;
  h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=g0VZY3EsUZEZyNRyV/ulMnGJDWB2MxMuMPQ7wog4KXLutTw5sv2NBfx3c+plIz7Cs
- NtF7kZ6JBjrHMFC4p5247YkSR909c95sy118DGFAwtT5ElevfN3V8BYZRkOJ41mfG3
- yvZ5DnKlN+5S549M7jUmuebBs4hE3QnJG1ILhEOo=
+ b=WZt3TyXDmJfaXYCT6attgxObkAwESD0q7LyuEsKFOsGPUCtLUEi+AZc2Tvjmvnzux
+ s9LW8mzv1gS3o+HzU0aOgQM2uYvgSWWnRwZfrLHV0UH8KkRlq8WJuOVbQHFv0HxELm
+ 7ntmp//QFxU+n5xUvyCrr2WopZ7Q1BdlBeh5SZio=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from [217.61.144.119] ([217.61.144.119]) by web-mail.gmx.net
  (3c-app-gmx-bap28.server.lan [172.19.172.98]) (via HTTP); Tue, 4 Aug 2020
- 17:22:25 +0200
+ 17:38:43 +0200
 MIME-Version: 1.0
-Message-ID: <trinity-e5fb1e73-2aa9-4dd2-a115-3ef216a6336e-1596554545050@3c-app-gmx-bap28>
+Message-ID: <trinity-387bb173-6a50-4227-bf3c-90401dbf77ad-1596555523067@3c-app-gmx-bap28>
 From: Frank Wunderlich <frank-w@public-files.de>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Subject: Aw: Re: [PATCH v3 5/5] arm: dts: mt7623: add display subsystem
  related device nodes
-Date: Tue, 4 Aug 2020 17:22:25 +0200
+Date: Tue, 4 Aug 2020 17:38:43 +0200
 Importance: normal
 Sensitivity: Normal
 In-Reply-To: <CAAOTY_9aDqz3muo6ynqX9r0VjW7tD5vvZOiQyR8UZOTUct8oVA@mail.gmail.com>
@@ -64,25 +64,25 @@ References: <20200804105849.70876-1-linux@fw-web.de>
  <CAAOTY_9aDqz3muo6ynqX9r0VjW7tD5vvZOiQyR8UZOTUct8oVA@mail.gmail.com>
 X-UI-Message-Type: mail
 X-Priority: 3
-X-Provags-ID: V03:K1:7BhFM7ZWcvyKxzn6X4OC4HJ8PW9UUMcnuJQtOpn6fq0ut1vX7rAoKcI91P7RKJEfeCOqY
- I7ot1zQTlWvDkGkrGRSwc/lkJY+S4g36GnrQ5NxM/dnbOI8JKOzLX4hTuObrTliv53GWrt2CH808
- EB+hekE8X9q28nNguT6jIHaJrES3w4QS0pDwZOrkCZ2OW/g+CjeHYytnnCQu5LXkTmsN04KJPo0Y
- e+L5vmaIR6gKZMLOS2YdrJArq4nbjh33LgekvMS14m097X6q2beSmbCZ88D3fUNUe5HurO/Ctvje
- Sc=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ZyjfoH+Qh8c=:QXB9MmyBRvV+uRuYRWpn3q
- hxqgY2sTw/WNFqn57xV5lrwmZr7pToGgYPU+jhx4Nx/erJcrXln2UIG1gjmMzHCoa80qpJCFv
- 4iSBEJdPLJlEwtfVaTwznDbYNc0J1SW5f7Fl/ixf6VhtEh6ARvbxMdI848pFD+BvNiSX2RpbX
- WrfoI2xfJVpDurejmOjOlTQ3cK3vjAdvOlk6bcG6me1ruaIPLAOfTi7scGwwoD2UUKzZq27S9
- dYuuP4/NPdZyleOupOSqTFavMnGhFJ7e3aFrKo7+paBj0W/PpEpWYkF8H2dKQeNDTo1we6NCe
- D7VsPTKDEJXUCTk8MFmvSU3vL4pfDbzeugqHMm4hir5d0wG/nR+WnKNFvAXb7bTsJTyx41sYc
- FUHDCBZbUBqhdydlq9zrHLerhR92CxAz4EUQMHWhR6A4j9rZoDs6IzwhqKf3knLomPwt5Qhuk
- zLPiQaNyrfOOT2MO5IQMF9LyNleQzSeKUp5v862kgBssrlrNdgoarqAJr9Rkh5J7bkalSNSWV
- Y6B2ZVaby7uUCWNwHQ8pQy01hlfIxFuH87Wstx+Aj8n01bvM03yVZHc13QZZPXoys8vVEAzRP
- 1R7ylyj6RNSCmi9AjDV7JRTg3CoCDMIPmiC/IImjTbbqcRYVuw924Z9ED+bQ2xQQexOBJGe/m
- 8uamtuYqJLWcct6LGAq30LcG9ozCqwqR40GTWxxDM0dkxQHRySoLdxucJw4KZnY020B8=
+X-Provags-ID: V03:K1:AvRFvL6vHuGUQ5uZliiJaNJd4wt1NtazV/Qat3cVkfRNTmtJqvMDQKW9h9oDuBiDwO8Mn
+ oi3RObTfOlRtNEXAyVHW2NweYjhXsSP30UIi6LJCUn5BjQhsIpG3/cN1ZFAPV/FIubTZT6SplmHU
+ s5QEmlh5MhkmKG49LRBwwoJgH12ukqlazYcHIs1zvj13WAoYvMCm/GSEsMWaZMCh94kxHAz2BVP8
+ /h4qsIzRszFNz6hkqNQqwICaX/HiDvg+sv31O06HNk842CYF8Gi5tNkKzwy+IUPgZWohVHLA/fS+
+ z4=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:3athUF74o4A=:mr/4RCpfrqOCjW+M7KGbfA
+ xT+vwntVAiScZeGkFKdhvqE4NjqFpmiDaHCBr37uHKbl9x3VE2uS84SAwU5JYkAfuKm5CJ7Iw
+ kJMXOQqkrgH3jRUqdLTGCMCENTQc4DtyGDGIg/GKO4/eSnDKFMBk3rtR1IaOCyYoiO1ES83kx
+ ClYcDYGenraj3mBrZhhBuA8Mm8/yihtDfDQQ22qL+m8zQmAS611MXr/imXqTT7Dsrm5QVkEzc
+ M5sN2vmxYkOn43vw1hsmw+AOwKxb1g8GyeN1+JS1iq35gZjfKt4ZSOUug0oMBhTJ/TkKAB1jV
+ BGHpKPVX7/CzMvp83ODi7TFRli1t8cbizlknclgK6XoNoQZ/yw1MH0xj2scsBUNvufswrck5V
+ Ewhfq1wlOwOSWWDeXDMxkdxBudKKAkDzsqFlblo1CVqMq332IcXQ4fjpWH4kxO/sMT9So2k1d
+ SE5X0hhUw5gwN28FboMEqitVLpqbJGoK119So4EqxMe1v6lkHyQC+BWXyEXLj5giqZIc/osH4
+ 6h5s84xmz/C9YYT+JOT0fUGKTdZYIry2imN5xUVSaKAH2tFIbyGKnctCyfyKK13SKW5UrxvD9
+ sU5WC+dSHkI84e1MRmlBehTNBt4q96yZ80KNMqjwGaizsJkunaP3ogZvdGZdsRQSNVmPdycU/
+ hpiZAzVxjaPB+1cWeQ1vcGnVd4AoZ5VR7rusDtEZTYYyoftEh+c1+7reEE1vDpOVx8Eg=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200804_112922_886339_6DE33F8B 
-X-CRM114-Status: GOOD (  15.36  )
+X-CRM114-CacheID: sfid-20200804_114532_792175_A0730131 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,75 +108,9 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
-
-Except mmsys (i added in Patch #1) all mt7623-compatibles are not defined in code and fallback (mt2701-x/mt8173-x) is used. If i add it in dt-binding, it should be added in code too, right? or should i remove mt7623 compatibles and only add documentation for new mmsys?
-
-regards Frank
-
-
 > Gesendet: Dienstag, 04. August 2020 um 17:00 Uhr
 > Von: "Chun-Kuang Hu" <chunkuang.hu@kernel.org>
-> An: "Frank Wunderlich" <linux@fw-web.de>
-> > +       mipi_tx0: mipi-dphy@10010000 {
-> > +               compatible = "mediatek,mt7623-mipi-tx",
->
-> In mediatek,dsi.txt [1], "mediatek,mt7623-mipi-tx" is undefined.
->
-> [1] https://www.kernel.org/doc/Documentation/devicetree/bindings/display/mediatek/mediatek%2Cdsi.txt
 
-in drivers/gpu/drm/mediatek/mtk_mipi_tx.c only the compatible for mt2701 is defined (which is fallback in dts). So should i remove mt7623 compatible here and in the other occurences?
-
->
-> > +                            "mediatek,mt2701-mipi-tx";
-
-> > +
-> > +       cec: cec@10012000 {
-> > +               compatible = "mediatek,mt7623-cec",
->
-> Please explicitly define "mediatek,mt7623-cec" in mediatek,hdmi.txt [2].
->
-> [2] https://www.kernel.org/doc/Documentation/devicetree/bindings/display/mediatek/mediatek%2Chdmi.txt
->
-> > +                            "mediatek,mt8173-cec";
-
-same here...only mt8173-cec is defined in drivers/gpu/drm/mediatek/mtk_cec.c
-
-> >         cir: cir@10013000 {
-> >                 compatible = "mediatek,mt7623-cir";
-> >                 reg = <0 0x10013000 0 0x1000>;
-> > @@ -369,6 +393,18 @@ apmixedsys: syscon@10209000 {
-> >                 #clock-cells = <1>;
-> >         };
-> >
-> > +       hdmi_phy: phy@10209100 {
-> > +               compatible = "mediatek,mt7623-hdmi-phy",
->
-> Ditto.
->
-> > +                            "mediatek,mt2701-hdmi-phy";
-same as above (./drivers/gpu/drm/mediatek/mtk_hdmi_phy.c)
-
-> > +       hdmiddc0: i2c@11013000 {
-> > +               compatible = "mediatek,mt7623-hdmi-ddc",
->
-> Ditto.
->
-> > +                            "mediatek,mt8173-hdmi-ddc";
-> > +               interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_LOW>;
-> > +               reg = <0 0x11013000 0 0x1C>;
-> > +               clocks = <&pericfg CLK_PERI_I2C3>;
-> > +               clock-names = "ddc-i2c";
-> > +               status = "disabled";
-> > +       };
-> > +
-> >         nor_flash: spi@11014000 {
-> >                 compatible = "mediatek,mt7623-nor",
-> >                              "mediatek,mt8173-nor";
-> > @@ -766,6 +812,84 @@ mmsys: syscon@14000000 {
-> >                 #clock-cells = <1>;
-> >         };
-> >
 > > +       display_components: dispsys@14000000 {
 > > +               compatible = "mediatek,mt7623-mmsys",
 > > +                            "mediatek,mt2701-mmsys";
@@ -188,88 +122,23 @@ same as above (./drivers/gpu/drm/mediatek/mtk_hdmi_phy.c)
 >
 > [3] https://www.kernel.org/doc/Documentation/devicetree/bindings/arm/mediatek/mediatek%2Cmmsys.txt
 
-as i added this in driver, i add this to documentation (and maybe remove the fallback because it results in wrong routing?)
+oh i see i can drop this because there is already a mmsys-node with the compatibles from documentation.
+only powerdomain is missing, but this seems not be needed (hdmi works without this "display_components" node)...
 
->
-> > +               reg = <0 0x14000000 0 0x1000>;
-> > +               power-domains = <&scpsys MT2701_POWER_DOMAIN_DISP>;
-> > +       };
-> > +
-> > +       ovl@14007000 {
-> > +               compatible = "mediatek,mt7623-disp-ovl",
->
-> This is not defined in mediatek,disp.txt [4].
->
-> [4] https://www.kernel.org/doc/Documentation/devicetree/bindings/display/mediatek/mediatek%2Cdisp.txt
-also not defined in drivers/gpu/drm/mediatek/mtk_drm_drv.c so again fallback used
+    mmsys: syscon@14000000 {
+        compatible = "mediatek,mt7623-mmsys",
+                 "mediatek,mt2701-mmsys",
+                 "syscon";
+        reg = <0 0x14000000 0 0x1000>;
+        #clock-cells = <1>;
+    };
 
->
-> > +                            "mediatek,mt2701-disp-ovl";
-
-> > +               reg = <0 0x14007000 0 0x1000>;
-> > +               interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_LOW>;
-> > +               clocks = <&mmsys CLK_MM_DISP_OVL>;
-> > +               iommus = <&iommu MT2701_M4U_PORT_DISP_OVL_0>;
-> > +               mediatek,larb = <&larb0>;
-> > +       };
-> > +
-> > +       rdma0: rdma@14008000 {
-> > +               compatible = "mediatek,mt7623-disp-rdma",
-> > +                            "mediatek,mt2701-disp-rdma";
-> > +               reg = <0 0x14008000 0 0x1000>;
-> > +               interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_LOW>;
-> > +               clocks = <&mmsys CLK_MM_DISP_RDMA>;
-> > +               iommus = <&iommu MT2701_M4U_PORT_DISP_RDMA>;
-> > +               mediatek,larb = <&larb0>;
-> > +       };
-> > +
-> > +       wdma@14009000 {
-> > +               compatible = "mediatek,mt7623-disp-wdma",
-> > +                            "mediatek,mt2701-disp-wdma";
-> > +               reg = <0 0x14009000 0 0x1000>;
-> > +               interrupts = <GIC_SPI 154 IRQ_TYPE_LEVEL_LOW>;
-> > +               clocks = <&mmsys CLK_MM_DISP_WDMA>;
-> > +               iommus = <&iommu MT2701_M4U_PORT_DISP_WDMA>;
-> > +               mediatek,larb = <&larb0>;
-> > +       };
-> > +
-> > +       bls: pwm@1400a000 {
-> > +               compatible = "mediatek,mt7623-disp-pwm",
-> > +                            "mediatek,mt2701-disp-pwm";
-> > +               reg = <0 0x1400a000 0 0x1000>;
-> > +               #pwm-cells = <2>;
-> > +               clocks = <&mmsys CLK_MM_MDP_BLS_26M>,
-> > +                        <&mmsys CLK_MM_DISP_BLS>;
-> > +               clock-names = "main", "mm";
-> > +               status = "disabled";
-> > +       };
-> > +
-> > +       color@1400b000 {
-> > +               compatible = "mediatek,mt7623-disp-color",
-> > +                            "mediatek,mt2701-disp-color";
-> > +               reg = <0 0x1400b000 0 0x1000>;
-> > +               interrupts = <GIC_SPI 156 IRQ_TYPE_LEVEL_LOW>;
-> > +               clocks = <&mmsys CLK_MM_DISP_COLOR>;
-> > +       };
-> > +
-> > +       dsi: dsi@1400c000 {
-> > +               compatible = "mediatek,mt7623-dsi",
->
-> This is not defined in mediatek,dsi.txt [1].
->
-> > +                            "mediatek,mt2701-dsi";
-also fallback used (drivers/gpu/drm/mediatek/mtk_drm_drv.c)
-
-
-> > +       dpi0: dpi@14014000 {
-> > +               compatible = "mediatek,mt7623-dpi",
->
-> This is not defined in mediatek,dpi.txt [5].
->
-> [5] https://www.kernel.org/doc/Documentation/devicetree/bindings/display/mediatek/mediatek%2Cdpi.txt
->
-> > +                            "mediatek,mt2701-dpi";
-
+    display_components: dispsys@14000000 {
+        compatible = "mediatek,mt7623-mmsys",
+                 "mediatek,mt2701-mmsys";
+        reg = <0 0x14000000 0 0x1000>;
+        power-domains = <&scpsys MT2701_POWER_DOMAIN_DISP>;
+    };
 
 _______________________________________________
 Linux-mediatek mailing list
