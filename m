@@ -7,61 +7,100 @@ X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7EE29C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2020 09:05:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A182C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2020 09:19:35 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4022420792
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2020 09:05:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4AD3C22CA1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2020 09:19:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="G5ie/J8o"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4022420792
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=the-dreams.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Vce4AALM";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="uMogUJIQ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="SIpw4/hq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4AD3C22CA1
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:From:
+	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=PA9Bl/0jCB8gRgr+genoxXbRqSH8PsilOCvwQt4g/Xs=; b=G5ie/J8oxL8AQXFT6eZX9tP3L
-	ZtghtTeeqxisIASo4BVMWnjddaf+/gM6Lwc8r87o64gqTbNxJIVQonOTEswnacAP919oZ3PpyXk1U
-	UFHEWLvWNgb4vLI2gir9u4Jy2z85B1FyTvYCrSWXht1QHTR4lLAqUSoVjwVIyTAhjYDnf+ycfwA+7
-	e9lHMQzOah1VP8SvuBe0BWAsKJ7fsQKMpuzI2gv+G33ewTBXQib9P+XDOesRKkbIgTGQoaE0ix7sD
-	PDnOdLlKpdYiciXecGeStGUFRAAaETyU1LbwZM6wsZ2RKi9PncXZBzRFcTgY15jSFjfG6OaQibd1m
-	SDUpQzibw==;
+	 bh=/WXQX337Hcur42A1XQ77XApxD5kRcVfHMdNFL+LWM+k=; b=Vce4AALMVBvNQowiPKZQQ8J6k
+	B60N+1vO/dhl80kzf7BD0DKtOMBNyRTEUYr+TkZwzuWd3EUCHE+rvseWG+hugAPGhoExLGeGynPVk
+	ub2frU5G9Cs0P5ytxAkh65vB0VGNsyBry8pbsQyMVy+/nDGA3XGDA9yjqX8pB5vgstwcU+/OPafJE
+	MQGM5veF9BV+038LlcGJ0QbdLifz1ekvC/iLdTxWP8gxDY13ypUmF7ahgT/LsC2l7seeY5E2MogxD
+	9XcA5qCThFDEHQeyuckvYj/7Vz3gUNHiGdb0r1TMFD7KURfbs4Tedud1EV9hTS6uhmKzwyREpeRQy
+	7pZUTm35w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k3FMA-0005Zi-2N; Wed, 05 Aug 2020 09:05:06 +0000
-Received: from sauhun.de ([88.99.104.3] helo=pokefinder.org)
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3FM5-0005Yf-Ty; Wed, 05 Aug 2020 09:05:03 +0000
-Received: from localhost (router.4pisysteme.de [80.79.225.122])
- by pokefinder.org (Postfix) with ESMTPSA id C67C62C0829;
- Wed,  5 Aug 2020 10:56:34 +0200 (CEST)
-Date: Wed, 5 Aug 2020 10:56:34 +0200
-From: <wsa@the-dreams.de>
-To: Qii Wang <qii.wang@mediatek.com>
-Subject: Re: [PATCH v2 2/4] i2c: mediatek: Add access to more than 8GB dram
- in i2c driver
-Message-ID: <20200805085634.GF1229@kunai>
-Mail-Followup-To: <wsa@the-dreams.de>, Qii Wang <qii.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- <qiangming.xia@mediatek.com>, <devicetree@vger.kernel.org>,
- <srv_heupstream@mediatek.com>, <leilk.liu@mediatek.com>,
- <linux-kernel@vger.kernel.org>, <robh+dt@kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-i2c@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>
-References: <1595939446-5484-1-git-send-email-qii.wang@mediatek.com>
- <1595939446-5484-3-git-send-email-qii.wang@mediatek.com>
- <25ff4899-5e7d-f6e5-599c-4bf368a731e1@gmail.com>
- <1596010499.4371.3.camel@mhfsdcap03>
+	id 1k3Fa2-0007oD-S0; Wed, 05 Aug 2020 09:19:27 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1k3Fa1-0007nf-IK; Wed, 05 Aug 2020 09:19:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:References:
+ In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:
+ Sender:Reply-To:Content-ID:Content-Description;
+ bh=KouBFqPcVdY/N2jpqO+a5lVPiMqUcEXz0mYKHefvmGY=; b=uMogUJIQzeUJU8NGqMi+aNZTiZ
+ mdoJnRKsd6XHRIg9QNrEfPZI+CexS0VDEsu++SrtDO7IQdZlXiaRTVTV+sCw8FQE+L49XTzuHmWR2
+ PFm7frxrxuUdO6B7SAnNRPlJ+MvnEyXJ9O1Nv3PnV5od03mZYp29h23tF4VYD8R8WfRAM8ekiAOJx
+ pypfTCdPDngszqK9JOwFoKZepBrvUwMLvPzfI1QnhcwmoGSLsQMh8lNJole5WEQigKEa13pdHfcE9
+ fqZgpTbf/tXg3cndqiVlc8nLZioR3Lg47hvyHMepA1ng4/ZYvojCR6O3A3mEXuAfVRQ6YgyBFxPDF
+ LuRRB/Xg==;
+Received: from mout.gmx.net ([212.227.17.22])
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1k3FZy-0001aO-HG; Wed, 05 Aug 2020 09:19:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1596619141;
+ bh=KouBFqPcVdY/N2jpqO+a5lVPiMqUcEXz0mYKHefvmGY=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=SIpw4/hq/eXV/LwIQmG110HKr4dqtHrAktDj0pOcB9roVmK0hMNdYHSWo5x0qbPNm
+ A45B8sQLAhNfYF+1i8I+3sjqVncRt0PrK2kVIrxCU4wSk+2NpVMuYmZGyXuwm5hodU
+ ydUIVJ4cOrM5+sVbqrwBSdePMxxRhIYZJyOxtlY8=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [80.208.209.197] ([80.208.209.197]) by web-mail.gmx.net
+ (3c-app-gmx-bap13.server.lan [172.19.172.83]) (via HTTP); Wed, 5 Aug 2020
+ 10:49:56 +0200
 MIME-Version: 1.0
-In-Reply-To: <1596010499.4371.3.camel@mhfsdcap03>
+Message-ID: <trinity-35b75199-be7e-4e56-bfc9-1d8bf7075df1-1596617396324@3c-app-gmx-bap13>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: David Woodhouse <dwmw2@infradead.org>
+Subject: Aw: Re:  Re:  Re: [PATCH v4 6/6] arm: dts: mt7623: add display
+ subsystem related device nodes
+Date: Wed, 5 Aug 2020 10:49:56 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <bde8de134f59c4375e4048faf124c61af0b95920.camel@infradead.org>
+References: <20200804165555.75159-1-linux@fw-web.de>
+ <20200804165555.75159-8-linux@fw-web.de>
+ <3966b4f687f2fabf9041059dd5f39165177a6ef6.camel@infradead.org>
+ <trinity-5335a61e-b8f0-4441-9fe9-0827cdd67ce4-1596562816887@3c-app-gmx-bap28>
+ <45d34c6cc19c2e5c13f9e88a8e04bdae9259ffdc.camel@infradead.org>
+ <trinity-16cee263-ff59-4595-adc1-738071745162-1596612461427@3c-app-gmx-bap13>
+ <bde8de134f59c4375e4048faf124c61af0b95920.camel@infradead.org>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:02+hrQwIbNKgot54dm3HJDNKjTwKbsyfpioUZ2s9RwWRJQMTA7VOZRh/pL3a9UGoFVTCN
+ ERILIMlNaDjkc2TrLP6Gpib+y9jm1gT93Gao0qy6TOyS7ZY5Pcmiwa/hFmqqBw0sETOOim7kdheu
+ QrkKaZxd7kwCxWiPRVRs9Pmzo8H/6Yf7oVgLuRlm1LNtnp20Z0bybSKu/XlUT6O3aPAOSAKdTtL+
+ Z5whKcy09j+dZ6HoVVNVfUZGSTZ1QRskLbtCPoKU8es+a/aXSpcl6T8dUGYxw6dTA/aBrl0rZfzX
+ vE=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:uvhzmjIi23E=:C+pyGM6h8H8+aYRG9JTAcD
+ XVwIln+11uHGLzLGXtVC5+uvPZPCLVTtJEaOJb2YnGb9w/S8bcYDy4m+RLcsTbuQfjJTUJes6
+ v44V7TcfhDP/w1IE4MS2iGXIAOsMvKSteNvGfBu/AI+W7tiPdJ5S4efQA2dwkoJJl/CyVXKcn
+ yULmPFrOT1Hd727/bu+vrtbbpkXXLfQmVLMkI/ajan6cdu9QIH3voTeETjnYLiWqSUd2hcONz
+ 0tkoYHQQLyr5ritMRtIMAxNoxpuy/BMGlLGGLjx6OXQn8QHT4y/C3bNRDR/HRgqMurp232JRD
+ FEo/6EhHYiqedjPzN5naXORqtWdjdU4Fes83M2uJwYCCdkkpedGclPVrb3zIaoZumAkNy7k6v
+ EFo7atg/oU8NHyzME5cB4a+gxIMR+Vu9Wp/cjriPWHHsEmu+tXv4utH94k350fQwYA6SYA5rI
+ 5Wf8dFqSQhLGBs57varpTGxUvTZgwzlbGgFo17pcvI06kb4/wV5VyYTEzFn2ebxFno7zpG2mS
+ yRCasz4mICn/1LBVJsB2yKefZpzpVYEWwiKxc1wkxB2eeK2N7i8EgeTAEQY0MPP2ywvhY+VgG
+ Yeurbj8UrHDhswlf3xzI20kxvHJiPfksxEGLaBYZE6TYKK+TKPsp2acW06rQvCAgYk9JxuUtm
+ lc3q3DLx0Iw3r9+DjBvrwHodncHhOHpqzl2tTbaYc2ThsZu5ZaR6ymOtgeV5l+GAm7Kg=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200805_050502_141345_BB8F7D4D 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20200805_101922_977337_A0900126 
+X-CRM114-Status: GOOD (  15.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,81 +112,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: qiangming.xia@mediatek.com, devicetree@vger.kernel.org,
- srv_heupstream@mediatek.com, leilk.liu@mediatek.com,
- linux-kernel@vger.kernel.org, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Daniel Vetter <daniel@ffwll.ch>, chunhui dai <chunhui.dai@mediatek.com>,
+ David Airlie <airlied@linux.ie>, Sean Wang <sean.wang@mediatek.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
+ Frank Wunderlich <linux@fw-web.de>, Bibby Hsieh <bibby.hsieh@mediatek.com>,
  linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============8498775927279925226=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+> Gesendet: Mittwoch, 05. August 2020 um 10:36 Uhr
+> Von: "David Woodhouse" <dwmw2@infradead.org>
 
---===============8498775927279925226==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="l+goss899txtYvYf"
-Content-Disposition: inline
+> > mt7623.dtsi => mt7623n.dtsi => mt7623n-bananapi-bpi-r2.dts
+> > mt7623.dtsi => mt7623a.dtsi => mt7623a-unielec-u7623.dts (not existing yet,
+> > openwrt seems to use a board-specific dtsi)
+>
+> Yes, I think we should.
 
+i want to see what MTK/DT owner says to this...
+my current way will be still adding the nodes to existing mt7623.dtsi (like ryder lee did it in original patch)
+but disabling them to not break mt7623a and splitting it afterwards.
 
---l+goss899txtYvYf
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> I'll create mt7623a.dtsi and upstream the U7623 support; I think that
+> can happen without conflicting with anything you do.
+>
+> I note that the GPU node has been added to mt7623.dtsi in 5.8 too;
+> that'll want to move to the new mt7623n.dtsi that you create, along
+> with your other new additions.
 
+i guess mali-node also needs to be moved to mt7623n.dtsi, so my current way seems right...
+but it's decision of MTK/DT owner. if they make a note i squash the disabling-commit into this and post v5
 
-> > > -static inline u32 mtk_i2c_set_4g_mode(dma_addr_t addr)
-> > > -{
-> > > -	return (addr & BIT_ULL(32)) ? I2C_DMA_4G_MODE : I2C_DMA_CLR_FLAG;
-> >=20
-> > I think you missed my comment in the last version:
-> > I2C_DMA_4G_MODE is no longer needed, you can delete it.
-> >=20
-> > Regards,
-> > Matthias
-> >=20
->=20
-> Sorry for missing that comment, I will remove it.
-> Thank you for your comments and reminders.
-
-If you send it real soon, I can still include it for 5.9.
-
-(and please guys, shorten mails to the relevant parts)
-
-
---l+goss899txtYvYf
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl8qdEIACgkQFA3kzBSg
-Kba7Cg/+JUqvW+SS4lYtyhkAsyAQbKl2kRygi8PEJ7f9Ag9VkjtcvgcxHaycRiOO
-VXEr7OeKRzQpj0RSYLJXuEDfakHyorDNRDZGPBdLMrMsFh+xhuONqsv7chAQ8mhB
-ZqAJpEgVbUTlJKL3Jee2uAI69e5l2Gn3lz40zBKVeCwVM6HaNNzgxdJ+saDA/PjM
-p9ITszYHi4/DkA2KqeKFAW/NkQ/u1hPPqmPVmTgvj1Ez03w73rKEEUIyIF6URwOU
-jVazs7geKM/IaxxH+Zz8qwRy2t2AmqxAHKwM4WN+XT/nbSPAH6Zg98xLkTS3wi7k
-T3shPDV/R6al8+aths8ph0rf3ejNRoXTKx3FZzzfK9o5G/jmZqc4jz7PLgLxaTd0
-+dcM46y/L30W0JfPJOKFswvycaOn8Z5/p/UAPzO8OF5hpG8r+6Ti3Qrp/lUULvP2
-cs6g5Loma47PFGrSM4VZqldJq3YUHLZOLF4Jh6H4b8ydigBXHrTdLGNlMm3dco8y
-3f/kg4ax5CwOrYy/bx+m8s9ZCdaEmGWcm/IIvrpMK2kKzBBOt8/Kkd3sG7kcGnwN
-zXHfJvpW/ognlMwSbfqO8SopyqtOHpmOnJDioNfgyzL7fO/OMjtKnnuw2kGz+5HL
-nRFdfSmAyrR3us3/xAH0VuKnGlSuEm/B8x7oxrhh6byZYsBQRFE=
-=xphH
------END PGP SIGNATURE-----
-
---l+goss899txtYvYf--
-
-
---===============8498775927279925226==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+regards Frank
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============8498775927279925226==--
-
