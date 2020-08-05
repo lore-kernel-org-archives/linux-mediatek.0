@@ -4,99 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C3A89C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2020 13:03:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4F6E9C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2020 13:56:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 90A6122CE3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2020 13:03:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1B89B23130
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2020 13:56:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="b98i+Zxt";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="Udzag790";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="NvNUEbg1"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 90A6122CE3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ovMbFu6K";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="mPCsyVau"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1B89B23130
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:From:
-	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=C5zDfnX8mfZV8+//bGduhFOvG037VfAV2lfwr4Xi+nY=; b=b98i+Zxt6qlGKKm/lYTZGQUAQ
-	nTvPlrTaq0yY2mJysFKUgSgLDtXmDGauQmygzWaE1PZe8EDUptnZBapI5KcPIy8iQXSsLfu6uXFWM
-	lRcNNqVNKELlXdSJALcZFApB7aDVNgJTzgBeZEG56c5jt5jMPaTocVP5qFwByKkAkk+OQ0vdnkfJ+
-	CXHZZuGzCGPN0yWvI7SzbvOrIe/F7F16mHiPEc9J6P6hrCD90MtC9qujRZaPpUbI09gDWaRk8mYNn
-	ykYTp0+clQp6Us4fxqEy9jTfyHx1kw17+JvPw/HUiTc/eoQAOi/5xQba44JAXjmt5lu6aPo0pSX89
-	BydOfNSnQ==;
+	 bh=0YMxjMG9OGH0yDyBhExiwkOvrBJgMAiTd8cI7AGsjBw=; b=ovMbFu6KimDIX0HbArtzmXcuM
+	e/OhbkBwpZwWhRzBkx8beqCePByf6/Z3cdU/XPAb3NqhHGsraKyhmm27ECVkHb37RrffadaneNbbE
+	GcQLyudsjtjJ0ltW0BX2BPBw1TjR+1hasUn3AE0fkg93K29UtIOkz1C6ZRLWrkQvU1tVwM66FPV5o
+	AzLsgfy7Dd9dKSwBriZFep1bWz16J7veJ6jAhrzLefWs6o1aO14JNqXe5WKnNwHTgAYnMIm/0Ylkk
+	jYF3s1gWeAH4zZzHtRsO1SgC1Oox21rAVnJOjbjoztlVXTpAYniNzujyBlx4i02Nal3csbOJL9nk2
+	MuuqndldA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k3J4f-0001zY-6v; Wed, 05 Aug 2020 13:03:17 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1k3JtX-0007Ai-WF; Wed, 05 Aug 2020 13:55:52 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3J4b-0001y0-5D; Wed, 05 Aug 2020 13:03:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:References:
- In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=2B1nU1he86yO+4/1btIQjiCmEoY6DMth3wUHkH4+Y1k=; b=Udzag790m1ovaGZdsUHyDM+VJf
- iyV85lUHmDFphX+GmnSGjEPNPRypmNWxuO0LfJrD+CB7ZtsD5Oie/n9/Yv0zpQFm0hRKr/A2sTvZY
- dwZKigRghOMigk3hYsfUo/BAHb03H64jRQ4rUdd2HHafH1sABvSIgolvqZGN1+4GFkaNTzgCxcnbR
- 2ob6GEBaoC3TM/rUrWV8oe/6bLr4DzAOX3MHxRPgdmkrhBAVkSQW2w6ieGXScpOR6FVjHq0RaliT1
- SYaypGXwbS6cZVDkXV/YJJJQzBmX3sDj4vc3+qJQPC70Ld6GX8tbwitIkfI/oQexZNa8l43L/bOm1
- pmvVjmww==;
-Received: from mout.gmx.net ([212.227.17.20])
- by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3J4X-0003fC-11; Wed, 05 Aug 2020 13:03:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1596632512;
- bh=30nFNzwPxZmz9Y2oABIElubYun9r6VlJJIvIzFQZ2Xg=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=NvNUEbg1eTjb8vxJMZ0W8xXnbs9/JscXJ3mszIMsD8v9lFpwCVgS5DVp8WSBERSCM
- KGFK7GawcJMt7WSUcLSQG4vMclL0NulaBgvSve8sxjwqV9nIfEirpf19ggzIz1ZoS+
- oUAD6LODuMyoWnSzYRV19IJHRPQpDzIcJizHw1Lg=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [80.208.209.197] ([80.208.209.197]) by web-mail.gmx.net
- (3c-app-gmx-bap13.server.lan [172.19.172.83]) (via HTTP); Wed, 5 Aug 2020
- 15:01:52 +0200
+ id 1k3JtU-00079q-P8
+ for linux-mediatek@lists.infradead.org; Wed, 05 Aug 2020 13:55:49 +0000
+Received: by mail-wr1-x444.google.com with SMTP id 88so40762148wrh.3
+ for <linux-mediatek@lists.infradead.org>; Wed, 05 Aug 2020 06:55:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=ja++vUWPJ08EOA6SgZWSzzzNGHnYWDLpTD9FHTxS0rw=;
+ b=mPCsyVauudhQuP/KJCzACLzD1hGJ28aiHs4qkIVT+dJsG9lMfuT7dSoXYJbFizKZRP
+ kR2I6h/RpqcqrsXsr0WOQrAgDwfnAX/8FSgglt/yxTXrl83b60/gxayRpC2euEgFfaQN
+ aKk3SV25A7zijFrcxS9Y8ftx/QbxX1RciA4Z8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=ja++vUWPJ08EOA6SgZWSzzzNGHnYWDLpTD9FHTxS0rw=;
+ b=iM4FkUcwe3sRI+YEsSy9efQQUdEanPLadrUegnxlChfWYgciA1z6fhmNWfuLnop4fm
+ hzOqeieLY1nPRUsmMQhJqngJIukb4XkGQkArNH8SiQe1C13et6HNEr//L7RUQG7GNKA3
+ 4AGgnLxBaoAKbmGIXf+79omt4A0YjkmXv2ym4Zu/lGjj86b3Sh0eXYesFgKbuO58GN2k
+ SXMtN4uoYN3t0xR3ouBCVutmYJqGBRAr96J0T71Ikroiby6Qhylz4xqx4wcShlmV7Fx+
+ YKEkzYRnYogjGlNBS6iTDPF19dSgXytYX3BXuLK/u9G0zZoHG33LPqbgMCDeGAzB98EP
+ kcgw==
+X-Gm-Message-State: AOAM533TuMEauwIB8Xx8ugiMYJp7YH7lEM9ww+c1X+EhvWR2LCgRmYzi
+ AdvMqbpRH9yk67vAdXJ81lQTUw==
+X-Google-Smtp-Source: ABdhPJxYNtjsQJjSF6xJ7nBQbZo3fBriXEe6OI14ms3Hr23UwjYAMHhqsXQOBERea4H+jC1NM69TBw==
+X-Received: by 2002:a5d:5485:: with SMTP id h5mr2759249wrv.427.1596635746822; 
+ Wed, 05 Aug 2020 06:55:46 -0700 (PDT)
+Received: from chromium.org (205.215.190.35.bc.googleusercontent.com.
+ [35.190.215.205])
+ by smtp.gmail.com with ESMTPSA id p14sm3039630wrg.96.2020.08.05.06.55.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 05 Aug 2020 06:55:46 -0700 (PDT)
+Date: Wed, 5 Aug 2020 13:55:44 +0000
+From: Tomasz Figa <tfiga@chromium.org>
+To: Xia Jiang <xia.jiang@mediatek.com>
+Subject: Re: [PATCH v11 22/28] media: platform: Change the call functions of
+ getting/enable/disable the jpeg's clock
+Message-ID: <20200805135544.GA1014704@chromium.org>
+References: <20200804034102.22983-1-xia.jiang@mediatek.com>
+ <20200804034102.22983-23-xia.jiang@mediatek.com>
 MIME-Version: 1.0
-Message-ID: <trinity-9f86ac52-5249-44e7-b51d-1ee00850f544-1596632511956@3c-app-gmx-bap13>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: David Woodhouse <dwmw2@infradead.org>
-Subject: Aw: [PATCH 2/3] arm: dts: mt7623: move MT7623N GPU to separate
- mt7623n.dtsi file
-Date: Wed, 5 Aug 2020 15:01:52 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <20200805113013.2763510-2-dwmw2@infradead.org>
-References: <8ef96e4d02ef82e171409945ee6cc0348c4fe594.camel@infradead.org>
- <20200805113013.2763510-1-dwmw2@infradead.org>
- <20200805113013.2763510-2-dwmw2@infradead.org>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:G8MRnqoV1D2B0ErxKua+b90DZKS/NUdemUbrgGRwofr3Vs3wa3sLtGJLSaIjAmckjfQuY
- N2q+Z1WAU5keJxhmjgF2SFnKLAx/+ssSg5jG4hUSN4rhMAozwVfyIJHClWHwJMkftrm1YI9Hdl3N
- N2EZp25fXiSYSNd4CgWyeh3C56OTSnt6jPqOH91UQ3q3+VeqQ8/hSKikviDmaPX5zjuc+ZoBk88W
- vF8v75+g6PyEv8XnV1zeMlKR5e7LgiTjKKDbo3QbXbuY0GPdBBboJNcu7cnHK7c5hBWoJyu0lqbH
- o0=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:jiGjo3r8E60=:SBV9Be3eLAX/vuefSNp4aT
- LkYXJUqZT8gJj5PqcNiEwuwkS6pryGTowBjPlaoDRcO0PpqHZF3SIL8U6V3RY7Wn7BCn6bj4o
- Etz6RdBQ4pAfWntN20HvWnRT9RwtwiQNOjdcYq2tiY5pZn0vJ0E62+HJ3KfVh2jc4r4NQgGBY
- PLjmlL2O2TeWsHBqCeIfHIT7Oy2889kOIWIJkWb5iWXv3Suw+lHxJSnxEce3WpXNPFu2whau2
- KaAnWxDuLN5H5mXGf6gf2aYTY5vHoUFB0SDZKnHj30EM/AvPXTIuKM/KZrvAT6CkJZASi1RBW
- wAnnWjiv95cUOcwEJ7yq08IterdkJFn++PEtDgeRpnnCmO9++OPT4wUsdb/uXbOcc26zYB+JU
- ajzULtPfh7SjFTOjPLwj0ypXysExotP3Krs1vBFVECARsiPTfeEgw4HGzjlr+h8kP+afXwAEQ
- yprfDYRgMyKmVj96fjfF3rBhHtytYk1o2UU2t/s4hQssUzGOXf9dLl0cVk//6bqMYnwG8H2cY
- DUzmTP0UOx73F4+nwW2EizlJZcZ7HXTAKRg/sKvuTJ5psVDH5Ss4Dm6TtACBHcFHt8YEkxZnS
- eHzfZXNZXe0d/mR7iMqk1jm7yM3ox7eF2Qqnw/IjwY2BEbL2uXKgFUtltb3qGp4uRqnbAcFOy
- dZZmG6aVBAmKCcWwlGYbwZV5vNM8kXO2C5Pyy1RWYWhkGvsOQsMJ1I7MaJrueJZCof9E=
+Content-Disposition: inline
+In-Reply-To: <20200804034102.22983-23-xia.jiang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200805_140309_296339_27A4A2B7 
-X-CRM114-Status: GOOD (  13.47  )
+X-CRM114-CacheID: sfid-20200805_095548_871803_C181738E 
+X-CRM114-Status: GOOD (  19.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,54 +94,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
- Daniel Vetter <daniel@ffwll.ch>, chunhui dai <chunhui.dai@mediatek.com>,
- David Airlie <airlied@linux.ie>, Sean Wang <sean.wang@mediatek.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
- Frank Wunderlich <linux@fw-web.de>, Bibby Hsieh <bibby.hsieh@mediatek.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: drinkcat@chromium.org, devicetree@vger.kernel.org, mojahsu@chromium.org,
+ srv_heupstream@mediatek.com, Rick Chang <rick.chang@mediatek.com>,
+ senozhatsky@chromium.org, linux-kernel@vger.kernel.org,
+ maoguang.meng@mediatek.com, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-mediatek@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi David
+Hi Xia,
 
-> Gesendet: Mittwoch, 05. August 2020 um 13:30 Uhr
-> Von: "David Woodhouse" <dwmw2@infradead.org>
-> From: David Woodhouse <dwmw@amazon.co.uk>
->
-> The MT7623A doesn't have a GPU; add it only for MT7623N boards.
->
-> Fixes: 1f6ed224594 ("arm: dts: mt7623: add Mali-450 device node")
-> Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+On Tue, Aug 04, 2020 at 11:40:56AM +0800, Xia Jiang wrote:
+> Use the generic clk_bulk_* helpers to enable and disable clocks.
+> 
+> Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
+> ---
+> v11: specify the names of the clocks in the driver
+> ---
+>  .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 28 +++++++++++++------
+>  .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |  8 +++---
+>  2 files changed, 23 insertions(+), 13 deletions(-)
+> 
 
-> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-> index 3a6b856e5b74..dcd2f5ba4e20 100644
-> --- a/arch/arm/boot/dts/mt7623.dtsi
-> +++ b/arch/arm/boot/dts/mt7623.dtsi
-> @@ -734,30 +734,6 @@ g3dsys: syscon@13000000 {
->  		#reset-cells = <1>;
->  	};
->
-> -	mali: gpu@13040000 {
-> -		compatible = "mediatek,mt7623-mali", "arm,mali-450";
-...
-> -		clocks = <&topckgen CLK_TOP_MMPLL>,
-> -			 <&g3dsys CLK_G3DSYS_CORE>;
-> -		clock-names = "bus", "core";
-> -		power-domains = <&scpsys MT2701_POWER_DOMAIN_MFG>;
-> -		resets = <&g3dsys MT2701_G3DSYS_CORE_RST>;
-> -	};
+Thank you for the patch. It looks good to me.
 
-i guess you should to move g3dsys too, and maybe the mmsys which is also drm-related?
+Reviewed-by: Tomasz Figa <tfiga@chromium.org>
 
-I can add this to my series, but before i change my series, i need advice from MTK/DT owners whats the preferred way ;)
+One comment below about a thing that should be fixed in the future,
+separately from this series.
 
-regards Frank
+> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> index 7881e9c93df7..47d570f32e3f 100644
+> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> @@ -783,14 +783,15 @@ static void mtk_jpeg_clk_on(struct mtk_jpeg_dev *jpeg)
+>  	ret = mtk_smi_larb_get(jpeg->larb);
+>  	if (ret)
+>  		dev_err(jpeg->dev, "mtk_smi_larb_get larbvdec fail %d\n", ret);
+> -	clk_prepare_enable(jpeg->clk_jdec_smi);
+> -	clk_prepare_enable(jpeg->clk_jdec);
+> +
+> +	ret = clk_bulk_prepare_enable(jpeg->num_clks, jpeg->clks);
+> +	if (ret)
+> +		dev_err(jpeg->dev, "Failed to open jpeg clk: %d\n", ret);
+
+The errors in this function should be propagated to the caller and
+handled properly across the whole call stack.
+
+Best regards,
+Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
