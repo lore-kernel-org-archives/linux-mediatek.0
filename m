@@ -2,68 +2,101 @@ Return-Path: <SRS0=PAw8=BP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9F2C9C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2020 11:30:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C3A89C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2020 13:03:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6AF2322D04
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2020 11:30:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 90A6122CE3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2020 13:03:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tNuTtDAh";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="DC8aYJFt"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6AF2322D04
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=infradead.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="b98i+Zxt";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="Udzag790";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="NvNUEbg1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 90A6122CE3
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:From:
+	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7+zKu3j2tRCIk+TAB8gVvHALW/XTCH+sAYvUGkoCok4=; b=tNuTtDAhBAi+yTm5LxH7bWRzb
-	QyoUk5lZG+KzzZrnnfaGnLkjLaVZtcyoBPnREfwgTnKY7dxRT85mT5a50rHnujDr/1FFxxqEGHC6k
-	HaPrzlEU4iQhWiQNTDE2io1U6HFUq/iqq5O/uQSMorQiFEAYkO8N0u5ejecwYh7VblpDoAubxpO+/
-	YZkCFSO9B69SQJPtLXoHY1YNCntBqvr8BZiGSHu0t0YmbH2j2ufQsx7p2BrKd7jMh2o7IjJqofm3R
-	fmW//nlHaqXquNVC2A3sLU+e7wSSmbrNRcxWhkrQXZ+0JteiciABSuF6Aie5G3DMc8l9kB1B8GIoz
-	OxwUFhY+A==;
+	 bh=C5zDfnX8mfZV8+//bGduhFOvG037VfAV2lfwr4Xi+nY=; b=b98i+Zxt6qlGKKm/lYTZGQUAQ
+	nTvPlrTaq0yY2mJysFKUgSgLDtXmDGauQmygzWaE1PZe8EDUptnZBapI5KcPIy8iQXSsLfu6uXFWM
+	lRcNNqVNKELlXdSJALcZFApB7aDVNgJTzgBeZEG56c5jt5jMPaTocVP5qFwByKkAkk+OQ0vdnkfJ+
+	CXHZZuGzCGPN0yWvI7SzbvOrIe/F7F16mHiPEc9J6P6hrCD90MtC9qujRZaPpUbI09gDWaRk8mYNn
+	ykYTp0+clQp6Us4fxqEy9jTfyHx1kw17+JvPw/HUiTc/eoQAOi/5xQba44JAXjmt5lu6aPo0pSX89
+	BydOfNSnQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k3Hcn-0002fi-N7; Wed, 05 Aug 2020 11:30:25 +0000
+	id 1k3J4f-0001zY-6v; Wed, 05 Aug 2020 13:03:17 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3Hcf-0002by-Tg; Wed, 05 Aug 2020 11:30:17 +0000
+ id 1k3J4b-0001y0-5D; Wed, 05 Aug 2020 13:03:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
- Reply-To:Content-Type:Content-ID:Content-Description;
- bh=J08654X7H3kbc58/m2gL+bfcL2jyb0HzXVeKBQozN18=; b=DC8aYJFt9cO5OYGZXYZ4pk5oxV
- +8JcsbVbK3VPyo8Rqa1zrayMTV25RJIgCiEFVYdntVbNcbl/W/L8yxfEDBIZxqO7ExarM07ZZLIXF
- /DfydtCqSvavDLR0MTVFO/RKveDDydmsL67zqd02pXJf1i6lK0XPCNARjPP5QG1lVKPo/nOZgIiXH
- kKto+7OnkDAbfE6fGtfntJiJslatSVyIfBpqIqW0R6ofjAhlbBppIAqr/Xu5JC9b/3WP3jyY21ACY
- DFd0XOgngt31L6mWcqKubsxBwHcyGopOuxQzNlWx02B8ygbE/ejNAP/7nr3ygleS1IJbek2tw+PiA
- OYbmVQSg==;
-Received: from i7.infradead.org ([2001:8b0:10b:1:21e:67ff:fecb:7a92])
- by casper.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3Hcc-0007nH-4c; Wed, 05 Aug 2020 11:30:14 +0000
-Received: from dwoodhou by i7.infradead.org with local (Exim 4.93 #3 (Red Hat
- Linux)) id 1k3Hcb-00BavU-NB; Wed, 05 Aug 2020 12:30:13 +0100
-From: David Woodhouse <dwmw2@infradead.org>
-To: Frank Wunderlich <frank-w@public-files.de>
-Subject: [PATCH 1/3] arm: dts: remove stray /dts-v1/ from mt7623a.dtsi
-Date: Wed,  5 Aug 2020 12:30:11 +0100
-Message-Id: <20200805113013.2763510-1-dwmw2@infradead.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <8ef96e4d02ef82e171409945ee6cc0348c4fe594.camel@infradead.org>
-References: <8ef96e4d02ef82e171409945ee6cc0348c4fe594.camel@infradead.org>
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:References:
+ In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:
+ Sender:Reply-To:Content-ID:Content-Description;
+ bh=2B1nU1he86yO+4/1btIQjiCmEoY6DMth3wUHkH4+Y1k=; b=Udzag790m1ovaGZdsUHyDM+VJf
+ iyV85lUHmDFphX+GmnSGjEPNPRypmNWxuO0LfJrD+CB7ZtsD5Oie/n9/Yv0zpQFm0hRKr/A2sTvZY
+ dwZKigRghOMigk3hYsfUo/BAHb03H64jRQ4rUdd2HHafH1sABvSIgolvqZGN1+4GFkaNTzgCxcnbR
+ 2ob6GEBaoC3TM/rUrWV8oe/6bLr4DzAOX3MHxRPgdmkrhBAVkSQW2w6ieGXScpOR6FVjHq0RaliT1
+ SYaypGXwbS6cZVDkXV/YJJJQzBmX3sDj4vc3+qJQPC70Ld6GX8tbwitIkfI/oQexZNa8l43L/bOm1
+ pmvVjmww==;
+Received: from mout.gmx.net ([212.227.17.20])
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1k3J4X-0003fC-11; Wed, 05 Aug 2020 13:03:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1596632512;
+ bh=30nFNzwPxZmz9Y2oABIElubYun9r6VlJJIvIzFQZ2Xg=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=NvNUEbg1eTjb8vxJMZ0W8xXnbs9/JscXJ3mszIMsD8v9lFpwCVgS5DVp8WSBERSCM
+ KGFK7GawcJMt7WSUcLSQG4vMclL0NulaBgvSve8sxjwqV9nIfEirpf19ggzIz1ZoS+
+ oUAD6LODuMyoWnSzYRV19IJHRPQpDzIcJizHw1Lg=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [80.208.209.197] ([80.208.209.197]) by web-mail.gmx.net
+ (3c-app-gmx-bap13.server.lan [172.19.172.83]) (via HTTP); Wed, 5 Aug 2020
+ 15:01:52 +0200
 MIME-Version: 1.0
-X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
- casper.infradead.org. See http://www.infradead.org/rpr.html
+Message-ID: <trinity-9f86ac52-5249-44e7-b51d-1ee00850f544-1596632511956@3c-app-gmx-bap13>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: David Woodhouse <dwmw2@infradead.org>
+Subject: Aw: [PATCH 2/3] arm: dts: mt7623: move MT7623N GPU to separate
+ mt7623n.dtsi file
+Date: Wed, 5 Aug 2020 15:01:52 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20200805113013.2763510-2-dwmw2@infradead.org>
+References: <8ef96e4d02ef82e171409945ee6cc0348c4fe594.camel@infradead.org>
+ <20200805113013.2763510-1-dwmw2@infradead.org>
+ <20200805113013.2763510-2-dwmw2@infradead.org>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:G8MRnqoV1D2B0ErxKua+b90DZKS/NUdemUbrgGRwofr3Vs3wa3sLtGJLSaIjAmckjfQuY
+ N2q+Z1WAU5keJxhmjgF2SFnKLAx/+ssSg5jG4hUSN4rhMAozwVfyIJHClWHwJMkftrm1YI9Hdl3N
+ N2EZp25fXiSYSNd4CgWyeh3C56OTSnt6jPqOH91UQ3q3+VeqQ8/hSKikviDmaPX5zjuc+ZoBk88W
+ vF8v75+g6PyEv8XnV1zeMlKR5e7LgiTjKKDbo3QbXbuY0GPdBBboJNcu7cnHK7c5hBWoJyu0lqbH
+ o0=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:jiGjo3r8E60=:SBV9Be3eLAX/vuefSNp4aT
+ LkYXJUqZT8gJj5PqcNiEwuwkS6pryGTowBjPlaoDRcO0PpqHZF3SIL8U6V3RY7Wn7BCn6bj4o
+ Etz6RdBQ4pAfWntN20HvWnRT9RwtwiQNOjdcYq2tiY5pZn0vJ0E62+HJ3KfVh2jc4r4NQgGBY
+ PLjmlL2O2TeWsHBqCeIfHIT7Oy2889kOIWIJkWb5iWXv3Suw+lHxJSnxEce3WpXNPFu2whau2
+ KaAnWxDuLN5H5mXGf6gf2aYTY5vHoUFB0SDZKnHj30EM/AvPXTIuKM/KZrvAT6CkJZASi1RBW
+ wAnnWjiv95cUOcwEJ7yq08IterdkJFn++PEtDgeRpnnCmO9++OPT4wUsdb/uXbOcc26zYB+JU
+ ajzULtPfh7SjFTOjPLwj0ypXysExotP3Krs1vBFVECARsiPTfeEgw4HGzjlr+h8kP+afXwAEQ
+ yprfDYRgMyKmVj96fjfF3rBhHtytYk1o2UU2t/s4hQssUzGOXf9dLl0cVk//6bqMYnwG8H2cY
+ DUzmTP0UOx73F4+nwW2EizlJZcZ7HXTAKRg/sKvuTJ5psVDH5Ss4Dm6TtACBHcFHt8YEkxZnS
+ eHzfZXNZXe0d/mR7iMqk1jm7yM3ox7eF2Qqnw/IjwY2BEbL2uXKgFUtltb3qGp4uRqnbAcFOy
+ dZZmG6aVBAmKCcWwlGYbwZV5vNM8kXO2C5Pyy1RWYWhkGvsOQsMJ1I7MaJrueJZCof9E=
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20200805_140309_296339_27A4A2B7 
+X-CRM114-Status: GOOD (  13.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,30 +122,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: David Woodhouse <dwmw@amazon.co.uk>
+Hi David
 
-This isn't needed in dtsi files.
+> Gesendet: Mittwoch, 05. August 2020 um 13:30 Uhr
+> Von: "David Woodhouse" <dwmw2@infradead.org>
+> From: David Woodhouse <dwmw@amazon.co.uk>
+>
+> The MT7623A doesn't have a GPU; add it only for MT7623N boards.
+>
+> Fixes: 1f6ed224594 ("arm: dts: mt7623: add Mali-450 device node")
+> Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 
-Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
----
- arch/arm/boot/dts/mt7623a.dtsi | 1 -
- 1 file changed, 1 deletion(-)
+> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> index 3a6b856e5b74..dcd2f5ba4e20 100644
+> --- a/arch/arm/boot/dts/mt7623.dtsi
+> +++ b/arch/arm/boot/dts/mt7623.dtsi
+> @@ -734,30 +734,6 @@ g3dsys: syscon@13000000 {
+>  		#reset-cells = <1>;
+>  	};
+>
+> -	mali: gpu@13040000 {
+> -		compatible = "mediatek,mt7623-mali", "arm,mali-450";
+...
+> -		clocks = <&topckgen CLK_TOP_MMPLL>,
+> -			 <&g3dsys CLK_G3DSYS_CORE>;
+> -		clock-names = "bus", "core";
+> -		power-domains = <&scpsys MT2701_POWER_DOMAIN_MFG>;
+> -		resets = <&g3dsys MT2701_G3DSYS_CORE_RST>;
+> -	};
 
-diff --git a/arch/arm/boot/dts/mt7623a.dtsi b/arch/arm/boot/dts/mt7623a.dtsi
-index 0735a1fb8ad9..a96075206cce 100644
---- a/arch/arm/boot/dts/mt7623a.dtsi
-+++ b/arch/arm/boot/dts/mt7623a.dtsi
-@@ -5,7 +5,6 @@
-  *
-  */
- 
--/dts-v1/;
- #include <dt-bindings/power/mt7623a-power.h>
- #include "mt7623.dtsi"
- 
--- 
-2.26.2
+i guess you should to move g3dsys too, and maybe the mmsys which is also drm-related?
 
+I can add this to my series, but before i change my series, i need advice from MTK/DT owners whats the preferred way ;)
+
+regards Frank
 
 _______________________________________________
 Linux-mediatek mailing list
