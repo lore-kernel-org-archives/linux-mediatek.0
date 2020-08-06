@@ -1,23 +1,23 @@
-Return-Path: <SRS0=PAw8=BP=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=30uw=BQ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 16AB0C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2020 21:57:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 531B6C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 01:25:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DB762206F6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2020 21:57:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2138B2173E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 01:25:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qC7/stfr";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="g58fggaC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DB762206F6
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l1LkFynW";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="zBjyQ7Fq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2138B2173E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,64 +26,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=N+CKtoKw4Bk1Myow4YHM8SuvNfKiswblQr30yOQ3mJY=; b=qC7/stfr722HYDXLnt5nxd7A5
-	Sfb0VbZhx4WtZCQXMAVnR72osflS8pSqUEUpXKl1qhXpUEAKPNY3fITy91aJU+PzR8JVNYQawa0yO
-	w2SSkuxIpY6hTzZ5G2N6XclH0qtGaePNc/umSzc1LJXnhSm29oovJLvU3w3XpDuy2dynGkdhBvWv9
-	ohmUrG7Onm5oOG1AYM3df1vIgX98athQTN8ZvNaLfv2jB6zTXyt7lCgw0j2fN5Tt+hFtxyyueSdVl
-	WqhSA+FWe1Vv3Q01JWt+u2z4UID011awvUDDGxglYU0rCIennzUcLeV0VzQJQbePkOx3pDtmr1SOw
-	uJdCGeHvw==;
+	 bh=096WrlQfhiZZYDv2oMWxk/CQ93ocRloA8SBWBChGRRk=; b=l1LkFynW2lYh4uKNPMSeDgBkK
+	gxqEhn+pNk83kBwRG6wAq/tFkQOlsiECDDlNUusRzzcFokc6zZT8BiIfGPeOXpd0z0922OmO0aToa
+	L8dAoTdQte5RUkKZZlIYSeJM0pYuu5vDi8o5GNzE+kW71kOFMMbr73cHh1CrosmxLLOfOgo338vaW
+	I+IUkLAiSaKXBMvz0qgMUWOGMjJpsOA/sq7A8pQYpdL7aboVrCS2Ty5qeRXqnDxnJQ2lVZUr9VJfM
+	eslCJAFfCj6HjDnSuJID2Xjz88B0IBCUnhg+xBaYpU6eFJOal4MQz5JoQM/S2+UigZSKopu0OszaV
+	JCqn1v1DQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k3RPh-0003Tf-3V; Wed, 05 Aug 2020 21:57:33 +0000
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343])
+	id 1k3Uec-0003j8-Rb; Thu, 06 Aug 2020 01:25:10 +0000
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3RPd-0003Sa-1r
- for linux-mediatek@lists.infradead.org; Wed, 05 Aug 2020 21:57:30 +0000
-Received: by mail-ot1-x343.google.com with SMTP id e11so10390245otk.4
- for <linux-mediatek@lists.infradead.org>; Wed, 05 Aug 2020 14:57:27 -0700 (PDT)
+ id 1k3UeX-0003i9-VL
+ for linux-mediatek@lists.infradead.org; Thu, 06 Aug 2020 01:25:07 +0000
+Received: by mail-ot1-x342.google.com with SMTP id h22so5709021otq.11
+ for <linux-mediatek@lists.infradead.org>; Wed, 05 Aug 2020 18:25:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=EW1xytv7V7gDtjoyC2+l+LNJutA6LsLNhSa7cNIEDgw=;
- b=g58fggaCpWJ8fV/7CT/RBrakbZOA/j2Fa6hXVlgy536iNIRtiT9JteFTdZw86bGzIW
- 83wKiU5+B1Y/On+B5ugh2UKgLeMt+Er1aujK646TJnafUeAHXN92H3DXBvm6t3epbUki
- bsww+LL2RH8kFh6MmhSeZcrHNlUlO+fA/LkNkTdBV72HD1iUiGZc+27+Rhn7Tq8wIldc
- 4FQvVUXkQfW2yVntxTeJ8fe7+Kqhl00eeoTp/2XLaHwhKqiU1kmSvutHH+2J9DwEumnN
- XA2WwC8dwZgkM1kRPUk6LepeVPBvWInffL7Z/YUXHIBkYBI+4HjMqbAl/0PbVMOln4aM
- fpSQ==
+ :cc; bh=k6pimq7S+VITQhnjcjjKsbMV9B3GCD09apLcTf0EFW4=;
+ b=zBjyQ7FqB6dMiThk1hav7gsRnCLpxmI/Fy5uZOtG59LSQ2QsizkGeT9cxRcrrT5uuK
+ IN7w9SlXJWWBuojgD/fhVAol+es3RGGs8AmAlc7M3oYZR77TgO837vZj7SBdpFIojDRw
+ LTKRa9aTIHhvoQX+4vvpYLQ+yGi/UKZ8Y7EbrZD1x6XS4Bd5efeeHiRAUqKaCUK1vNQK
+ lexkbnVoJkHVdOviBHjojnC4qCA6htQXfwn4PGdpQSF16KaqNDXBMqWYqst2HW96Hm7r
+ 2/VNTA/3gvLGwRTGVyBp9ZBPbKUGDZdXhoY6xue1CEj/Gg4kd1FIAb4SqmnPuO8aJGbY
+ 6hng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=EW1xytv7V7gDtjoyC2+l+LNJutA6LsLNhSa7cNIEDgw=;
- b=UgF55V9zToeHtYmelNHpD3UiVQVjXMmO+0B1YoEhtvYNH5/FdE2dqvP29Et/mQaoZl
- Gd1H4pdBU6qkrUpAySnV5xTIck/5OoSG/03zNUy3jKXlZnaCg58BRKva2KAosne3Jzn8
- n5hBM/Tz0KUNm0Vpw8fq43ismS6fHA1SWHq55sM+Ik2uu96xQlqvDWRtDnyMykiVRqBL
- 4PEKUf/444mBbQxRjKiSiQ92QbmYvG/UDbFXyOGMAJwk07BZTsZhc4z055jxdr7KwxFO
- tMv+z5Q5wIJBVDwl67lJDmiaoIPnzJswpUmIseqXx4H74IinFmG/3Ic6SzeyanhuCkFw
- s22g==
-X-Gm-Message-State: AOAM533GSIUBnrIIYesDFVuTFfgLw93XX/iMwP5BHs04znwQsPoAON01
- 3qRYXHgZKqka6DwDcSD0B3tVb/zf/qykpDGMUI3Edw==
-X-Google-Smtp-Source: ABdhPJzBW5pD245rGtYcy2dRuaElWUSO+wS3GTkjkqWacA2ZZgSIt1aLNiPlWdINx/ZIfm6Z0QL6TEq/RfC5ZpgXOXU=
-X-Received: by 2002:a05:6830:237b:: with SMTP id
- r27mr4305663oth.352.1596664645516; 
- Wed, 05 Aug 2020 14:57:25 -0700 (PDT)
+ bh=k6pimq7S+VITQhnjcjjKsbMV9B3GCD09apLcTf0EFW4=;
+ b=EIPnhyXtUO1kMVcj5/q5rmejIyTYQY+Vdp+cRK5kZUHNQGQbIKCY+tPRdgVANywXsI
+ Dbpcmd/GPWkqBv76JdsBRDBx8SYTGOHRJ4mBFt73TrE/qqGDvJszdNP9w+JrSKKeipHg
+ bgHdUjTBS7p4pkzBe2sXahP6bJlQFLRw+FVUZe9kJ7PZpzDKqBx2BiP/UsLaw/YVsqQY
+ d+YMZp8ejtY9nevE7/6jccugbAnjb1wlJRxUVzpECw3KH291L5wpuz40BJTCnGaaCsgF
+ Gy+SHASldfEcihx+A+VhUXh0qln3gz7ZOLqgfw1UEfmffHpwRWvsLBG4+8hVBQ27anGu
+ 5hSw==
+X-Gm-Message-State: AOAM5338kKnU+A8HodRjDr/jWu9V65L45dXPeBGJoO4sn0pXUfabUvx+
+ BnM+5XR0FWwupxN1Y+h8W1R2BPfXVHytZN55U7BKXiM/5js=
+X-Google-Smtp-Source: ABdhPJwp1gy6ICxlR+QU+ROR+YJdoXDHLADEqbolalzpss7WqkKehLyLFZYdIvJ/S4ZjbwkZ1sedTzTnZwQb6ihZJxQ=
+X-Received: by 2002:a05:6830:3196:: with SMTP id
+ p22mr5524618ots.102.1596677102717; 
+ Wed, 05 Aug 2020 18:25:02 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200718000637.3632841-1-saravanak@google.com>
  <20200718000637.3632841-3-saravanak@google.com>
  <CALAqxLVZ+rFE+hM9OtQ46NqpTHeLu6oKLNWKstLv1U5zbwyq7g@mail.gmail.com>
  <CAGETcx_rkK3-bKhDP_N4n_WyXLXFPoaUV9rbY_Y+H1Joj=dCyw@mail.gmail.com>
- <f314b687-11a9-5a5e-e79e-c46dd2f16c6f@kali.org>
- <78ad0914-6173-f753-9eba-b7cbfbb51fd6@kali.org>
-In-Reply-To: <78ad0914-6173-f753-9eba-b7cbfbb51fd6@kali.org>
+In-Reply-To: <CAGETcx_rkK3-bKhDP_N4n_WyXLXFPoaUV9rbY_Y+H1Joj=dCyw@mail.gmail.com>
 From: John Stultz <john.stultz@linaro.org>
-Date: Wed, 5 Aug 2020 14:57:14 -0700
-Message-ID: <CALAqxLXPN9kThwF32YoWyApaWnfjthANXj3uk65Wc3ddaJQFFQ@mail.gmail.com>
+Date: Wed, 5 Aug 2020 18:24:50 -0700
+Message-ID: <CALAqxLUz6GTT96nO9igiWVwyaRs_xbO+=mySLm4BKX6-Uh90ZA@mail.gmail.com>
 Subject: Re: [PATCH v3 2/4] irqchip/qcom-pdc: Switch to using
  IRQCHIP_PLATFORM_DRIVER helper macros
-To: Steev Klimaszewski <steev@kali.org>
+To: Saravana Kannan <saravanak@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200805_175729_365645_D0188A03 
-X-CRM114-Status: GOOD (  21.31  )
+X-CRM114-CacheID: sfid-20200805_212506_357080_4F190415 
+X-CRM114-Status: GOOD (  32.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,9 +94,8 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: CC Hwang <cc.hwang@mediatek.com>, Jason Cooper <jason@lakedaemon.net>,
- Saravana Kannan <saravanak@google.com>, Marc Zyngier <maz@kernel.org>,
- Hanks Chen <hanks.chen@mediatek.com>, Loda Chou <loda.chou@mediatek.com>,
- lkml <linux-kernel@vger.kernel.org>,
+ Marc Zyngier <maz@kernel.org>, Hanks Chen <hanks.chen@mediatek.com>,
+ Loda Chou <loda.chou@mediatek.com>, lkml <linux-kernel@vger.kernel.org>,
  Bjorn Andersson <bjorn.andersson@linaro.org>, Andy Gross <agross@kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
  linux-arm-msm <linux-arm-msm@vger.kernel.org>,
@@ -111,43 +108,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 5, 2020 at 2:47 PM Steev Klimaszewski <steev@kali.org> wrote:
->
->
-> On 8/5/20 4:16 PM, Steev Klimaszewski wrote:
-> > On 8/5/20 3:19 PM, Saravana Kannan wrote:
-> >> On Wed, Aug 5, 2020 at 12:44 AM John Stultz <john.stultz@linaro.org> wrote:
-> >>> <sigh>
-> >>> So this is where I bashfully admit I didn't get a chance to try this
-> >>> patch series out, as I had success with a much older version of
-> >>> Saravana's macro magic.
-> >>>
-> >>> But unfortunately, now that this has landed in mainline, I'm seeing
-> >>> boot regressions on db845c. :( This is in the non-modular case,
-> >>> building the driver in.
-> >> Does that mean the modular version is working? Or you haven't tried
-> >> that yet? I'll wait for your reply before I try to fix it. I don't
-> >> have the hardware, but it should be easy to guess this issue looking
-> >> at the code delta.
-> > For what it's worth, I saw this too on the Lenovo C630 (started on -next
-> > around 20200727, but I didn't track it down as, well, there's less way
-> > to get debug output on the C630.
+On Wed, Aug 5, 2020 at 1:19 PM Saravana Kannan <saravanak@google.com> wrote:
+> On Wed, Aug 5, 2020 at 12:44 AM John Stultz <john.stultz@linaro.org> wrote:
+> > On Fri, Jul 17, 2020 at 5:06 PM Saravana Kannan <saravanak@google.com> wrote:
+> > >
+> > > Switch the driver to use the helper macros. In addition to reducing the
+> > > number of lines, this also adds module unload protection (if the driver
+> > > is compiled as a module) by switching from module_platform_driver to
+> > > builtin_platform_driver.
+> > >
+> > > Signed-off-by: Saravana Kannan <saravanak@google.com>
+> > > ---
+> > >  drivers/irqchip/qcom-pdc.c | 26 +++-----------------------
+> > >  1 file changed, 3 insertions(+), 23 deletions(-)
+> > >
+> > > diff --git a/drivers/irqchip/qcom-pdc.c b/drivers/irqchip/qcom-pdc.c
+> > > index 5b624e3295e4..c1c5dfad57cc 100644
+> > > --- a/drivers/irqchip/qcom-pdc.c
+> > > +++ b/drivers/irqchip/qcom-pdc.c
+> > > @@ -432,28 +432,8 @@ static int qcom_pdc_init(struct device_node *node, struct device_node *parent)
+> > >         return ret;
+> > >  }
+> > >
+> > > -static int qcom_pdc_probe(struct platform_device *pdev)
+> > > -{
+> > > -       struct device_node *np = pdev->dev.of_node;
+> > > -       struct device_node *parent = of_irq_find_parent(np);
+> > > -
+> > > -       return qcom_pdc_init(np, parent);
+> > > -}
+> > > -
+> > > -static const struct of_device_id qcom_pdc_match_table[] = {
+> > > -       { .compatible = "qcom,pdc" },
+> > > -       {}
+> > > -};
+> > > -MODULE_DEVICE_TABLE(of, qcom_pdc_match_table);
+> > > -
+> > > -static struct platform_driver qcom_pdc_driver = {
+> > > -       .probe = qcom_pdc_probe,
+> > > -       .driver = {
+> > > -               .name = "qcom-pdc",
+> > > -               .of_match_table = qcom_pdc_match_table,
+> > > -               .suppress_bind_attrs = true,
+> > > -       },
+> > > -};
+> > > -module_platform_driver(qcom_pdc_driver);
+> > > +IRQCHIP_PLATFORM_DRIVER_BEGIN(qcom_pdc)
+> > > +IRQCHIP_MATCH("qcom,pdc", qcom_pdc_init)
+> > > +IRQCHIP_PLATFORM_DRIVER_END(qcom_pdc)
+> > >  MODULE_DESCRIPTION("Qualcomm Technologies, Inc. Power Domain Controller");
+> > >  MODULE_LICENSE("GPL v2");
 > >
-> > In my testing, module or built-in doesn't matter, but reverting does
-> > allow me to boot again.
+> > <sigh>
+> > So this is where I bashfully admit I didn't get a chance to try this
+> > patch series out, as I had success with a much older version of
+> > Saravana's macro magic.
 > >
-> Actually - I spoke too soon - QCOM_PDC built-in with the commit reverted
-> boots, however, module (on the c630 at least) doesn't boot whether it's
-> a module or built-in.
+> > But unfortunately, now that this has landed in mainline, I'm seeing
+> > boot regressions on db845c. :( This is in the non-modular case,
+> > building the driver in.
+>
+> Does that mean the modular version is working? Or you haven't tried
+> that yet? I'll wait for your reply before I try to fix it. I don't
+> have the hardware, but it should be easy to guess this issue looking
+> at the code delta.
 
-You may need to set deferred_probe_timeout=30 to give things a bit
-more grace time to load.
-(I've mostly recently used qcom-pdc as a module with the android tree,
-so the fw_devlink bits help there, but I need to re-check the state of
-that upstream.)
+I've not yet tested with modules with your patch.
 
-I'll dbl check this and dig more on the issue with the patch in
-question once I can get back in my office later today.
+> The only significant change from what your probe function is doing is
+> this snippet. But it'd be surprising if this only affects the builtin
+> case.
+>
+> + if (par_np == np)
+> +         par_np = NULL;
+> +
+> + /*
+> + * If there's a parent interrupt controller and  none of the parent irq
+> + * domains have been registered, that means the parent interrupt
+> + * controller has not been initialized yet.  it's not time for this
+> + * interrupt controller to initialize. So, defer probe of this
+> + * interrupt controller. The actual initialization callback of this
+> + * interrupt controller can check for specific domains as necessary.
+> + */
+> + if (par_np && !irq_find_matching_host(np, DOMAIN_BUS_ANY))
+> +         return -EPROBE_DEFER;
+
+Yep. We're getting caught on the irq_find_matching_host() check. I'm a
+little lost as when I look at the qcom,pdc node in the dtsi its not
+under a parent controller (instead the soc node).
+Not sure if that's an issue in the dtsi or if par_np check needs to
+ignore the soc node and pass null?
 
 thanks
 -john
