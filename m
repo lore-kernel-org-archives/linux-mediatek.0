@@ -2,83 +2,78 @@ Return-Path: <SRS0=30uw=BQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 329EDC433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 15:12:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C124AC433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 15:28:09 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4E8E523135
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 15:12:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E2C9223137
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 15:28:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cbfubk/j";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="AbFccKDJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4E8E523135
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ftwa9NAM";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="M46TxTpA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E2C9223137
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UdQysFt+fMVPMELLlaBJVczAGeenFac+5j8DT5HhekU=; b=cbfubk/jSRR59crlyZL6iCHUw
-	z6nlC3wXnq4bpp+xg7TL7cNYL/SFXHmm5DSbp0mp59HBmIVMfNrtpONOXWE0rNo2F/kJjKaroxpyD
-	kjKlettgBFBAQV7mPdRlbpO/KMwh23voSQVdx4tHjkw6XpJ7RnsbK7pjpv6RcdgEJWbY5WW2CPRA5
-	TPwPGVB30Y56rJcNuVO7uikAO/jsdcXKde+LQHQVIIXsOEqAzVKqJ9rHFyLcU0/U2ip1z7GC7ddRo
-	Qr2EAz7lLjQEG1D0TyUmS/3eW0etjhwsc+v2UHjYxaOjogrrtupExCQMsPjuM10KRhTFYUiS0IY8P
-	RV46fe72A==;
+	 bh=NNAjS+ewSezx+wjuUh/S2Zo7+AQrPMPEQUgsEaNFfpw=; b=Ftwa9NAM5Q/r1Ro2ZzZcv6SfT
+	qlq6nh41HUULcTr2U+dA8zR/d1yh49AjI7ZNaaED7Dcp3lgn7SEieVj5tT8Ng3e2SXK41BZqIRVj/
+	6MUfU2DIQ1uq1loCubStF3o7FW/xLKjuvZdLmLbUto7H7GfvnTIyHiO0kHGV2FeQjiEhfvXfYkKDv
+	8hh3sOMDFcaiDNlNq7my1FD+Oyw9HOquN2ZJJOVdfp9DbT5QA6sNGCngUURaS0mNY2f6n5m83znJ4
+	hliSt32UIdHZD3GBgljx5rAX3U6q2kVXMqzLqJkQYN7Fr+eEwvDQAQkHgWySmZ2D4ukKRVp6cLqD/
+	UnEQJsodA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k3hZP-00007Y-65; Thu, 06 Aug 2020 15:12:39 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1k3hoE-0001lr-RA; Thu, 06 Aug 2020 15:27:58 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3hZL-00006s-Ka; Thu, 06 Aug 2020 15:12:36 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C5FC523133;
- Thu,  6 Aug 2020 15:12:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1596726754;
- bh=cUg8ko8OEiK/4qIbgfajwCnFYSLMbgT5cLNLiBOA0zc=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=AbFccKDJye+6TKEYkdO27Ltto8sfBzN9avARpUTzS2JIZOCnVJJvIiHQp6vOomQOC
- F8JNZCzIVobAp32SyKnSVXDA/lbtwWMtL78IWNpUC9RYHN0kLSqSvrU3xvklsMNxUQ
- acUSid/EZztAy2Hg3NFiZG8sWBd8qI54SF2roqnw=
-Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
- by disco-boy.misterjones.org with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
- (envelope-from <maz@kernel.org>)
- id 1k3hZJ-000Iec-1O; Thu, 06 Aug 2020 16:12:33 +0100
+ id 1k3hoD-0001kN-4L; Thu, 06 Aug 2020 15:27:58 +0000
+X-UUID: b83bacf6c77b4b0a96d26c0d648c259c-20200806
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=LHDzGNEY2yp40h47jL9qAQX+uM62/KbKM8d4ZyLvJsc=; 
+ b=M46TxTpAo2x/gPQTvKa1lPzDpOMWn8+QyrylN9AXnc71dnFJaoyPpprJ+I7KyeDMzjwvbwnkxMc3hrMQvNGyFUCbfb8i9zs2Hf4oXqvkA6GVigNqetpxBzEqeeRhJttcoY409bnohnPwCxxHdxUbPDrWzihRAvt6a/Sb2MOMo1c=;
+X-UUID: b83bacf6c77b4b0a96d26c0d648c259c-20200806
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <frederic.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1851490407; Thu, 06 Aug 2020 07:27:49 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 6 Aug 2020 08:27:46 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 6 Aug 2020 23:27:44 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 6 Aug 2020 23:27:45 +0800
+Message-ID: <1596727666.963.2.camel@mtksdccf07>
+Subject: Re: [PATCH V1] media: mc-device.c: change
+ media_device_request_alloc to match media_ioctl_info
+From: Frederic Chen <frederic.chen@mediatek.com>
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Date: Thu, 6 Aug 2020 23:27:46 +0800
+In-Reply-To: <4b1291c4-ee97-8ada-fa2c-3eb5ed22305b@xs4all.nl>
+References: <20200806072952.11709-1-frederic.chen@mediatek.com>
+ <20200806072952.11709-2-frederic.chen@mediatek.com>
+ <4b1291c4-ee97-8ada-fa2c-3eb5ed22305b@xs4all.nl>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-Date: Thu, 06 Aug 2020 16:12:32 +0100
-From: Marc Zyngier <maz@kernel.org>
-To: Daniel Palmer <daniel@0x0f.com>, Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Subject: Re: [PATCH 0/2] irqchip: irq-mt58xx: Add mt58xx series interrupt
-In-Reply-To: <CAFr9PXkFJJKnqVkPBXgh1kqL_serK4DmrmJ73xU+ZMA+NuF-bA@mail.gmail.com>
-References: <CAFr9PX=Gk9h6ASi6saBLhoZ45g-WqCzDQo2XWT033fJykFSY_g@mail.gmail.com>
- <20200806140739.31501-1-mark-pk.tsai@mediatek.com>
- <CAFr9PXkFJJKnqVkPBXgh1kqL_serK4DmrmJ73xU+ZMA+NuF-bA@mail.gmail.com>
-User-Agent: Roundcube Webmail/1.4.5
-Message-ID: <654a81dcefb3024d762ff338d4bd7f14@kernel.org>
-X-Sender: maz@kernel.org
-X-SA-Exim-Connect-IP: 51.254.78.96
-X-SA-Exim-Rcpt-To: daniel@0x0f.com, mark-pk.tsai@mediatek.com,
- alix.wu@mediatek.com, devicetree@vger.kernel.org, jason@lakedaemon.net,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, robh+dt@kernel.org,
- tglx@linutronix.de, yj.chiang@mediatek.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200806_111235_863970_1EC83D08 
-X-CRM114-Status: GOOD (  18.39  )
+X-CRM114-CacheID: sfid-20200806_112757_292270_0414C864 
+X-CRM114-Status: GOOD (  21.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,51 +85,79 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: DTML <devicetree@vger.kernel.org>, alix.wu@mediatek.com,
- Jason Cooper <jason@lakedaemon.net>, yj.chiang@mediatek.com,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Cc: Sean.Cheng@mediatek.com, laurent.pinchart+renesas@ideasonboard.com,
+ christie.yu@mediatek.com, srv_heupstream@mediatek.com, tfiga@chromium.org,
+ sj.huang@mediatek.com, yuzhao@chromium.org, hans.verkuil@cisco.com,
+ zwisler@chromium.org, matthias.bgg@gmail.com,
+ linux-mediatek@lists.infradead.org, mchehab@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-08-06 15:58, Daniel Palmer wrote:
-> Hi Mark-PK,
-> 
-> On Thu, 6 Aug 2020 at 23:08, Mark-PK Tsai <mark-pk.tsai@mediatek.com> 
-> wrote:
->> > Do you know if it would be possible to confirm if they are
->> > the
->> > same thing? MediaTek bought MStar a few years ago so it seems likely
->> > but I have no hard information.
->> >
->> 
->> Yes, it's for the same interrupt controller IP.
-> 
-> That's good news. :)
-> 
->> > If they are the same thing could we work on making one series that
->> > supports both use cases?
->> 
->> Sure, and I think the irq controller driver should support both use 
->> cases.
->> So how about keep the MTK version driver?
-> 
-> I'm fine with that. Maybe you can push the MTK version and I can send
-> a small patch after that to add the small bits I need?
+Dear Hans,
 
-In the interest of being vendor agnostic, please rename the properties
-such as mediatek,irqs-map-range to something less brand-specific.
-The compatible string should be enough.
+On Thu, 2020-08-06 at 09:42 +0200, Hans Verkuil wrote:
+> On 06/08/2020 09:29, frederic.chen@mediatek.com wrote:
+> > From: Frederic Chen <frederic.chen@mediatek.com>
+> > 
+> > We modified the type of media_device_request_alloc()'s second
+> > parameter from int* to void* so that it can match the interface
+> > defined in struct media_ioctl_info.
+> > 
+> > Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
+> > ---
+> >  drivers/media/mc/mc-device.c | 5 +++--
+> >  1 file changed, 3 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/media/mc/mc-device.c b/drivers/media/mc/mc-device.c
+> > index da8088351135..bc5b5ecb6581 100644
+> > --- a/drivers/media/mc/mc-device.c
+> > +++ b/drivers/media/mc/mc-device.c
+> > @@ -370,9 +370,10 @@ static long media_device_get_topology(struct media_device *mdev, void *arg)
+> >  	return ret;
+> >  }
+> >  
+> > -static long media_device_request_alloc(struct media_device *mdev,
+> > -				       int *alloc_fd)
+> > +static long media_device_request_alloc(struct media_device *mdev, void *arg)
+> >  {
+> > +	int *alloc_fd = arg;
+> > +
+> >  #ifdef CONFIG_MEDIA_CONTROLLER_REQUEST_API
+> >  	if (!mdev->ops || !mdev->ops->req_validate || !mdev->ops->req_queue)
+> >  		return -ENOTTY;
+> > 
+> 
+> This change is fine, but the reason this wasn't noticed before is the cast in
+> the MEDIA_IOC_ARG define:
+> 
+> #define MEDIA_IOC_ARG(__cmd, func, fl, from_user, to_user)              \
+>         [_IOC_NR(MEDIA_IOC_##__cmd)] = {                                \
+>                 .cmd = MEDIA_IOC_##__cmd,                               \
+>                 .fn = (long (*)(struct media_device *, void *))func,    \
+>                 .flags = fl,                                            \
+>                 .arg_from_user = from_user,                             \
+>                 .arg_to_user = to_user,                                 \
+>         }
+> 
+> When assigning to .fn the func is cast to a specific function prototype.
+> Without that cast the compiler would have warned about the mismatch.
+> 
+> I see no reason for that cast, so drop that cast as well.
 
-Thanks,
+I got it. I will remove the cast in the next patch.
 
-         M.
--- 
-Jazz is not dead. It just smells funny...
+> 
+> Regards,
+> 
+> 	Hans
+
+
+Sincerely,
+
+Frederic Chen
 
 _______________________________________________
 Linux-mediatek mailing list
