@@ -4,77 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 409A7C433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 12:21:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 12095C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 12:22:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 15C2F22D03
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 12:21:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E756F22CF6
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 12:22:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1pq2B3x2";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dpRkaeXr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 15C2F22D03
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DEj0u0On";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=xs4all.nl header.i=@xs4all.nl header.b="sxoCuLkS"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E756F22CF6
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Ab5uEtzXQ8Ni2ia7j/tDGD6MAszcqV2zNOinNhFP5lU=; b=1pq2B3x2cjTcOccCdgZoelYFR
-	uErwpuRv7a1Bybk+EAP9fdh3B8+FVY6JPy4qOz2qxVO1VH9hKQZA3Ueu2w84IX6DDPs7EYvlqvi1i
-	hW2RJI2e9ldJAUQSbRKvwmR0+8f/giIRRWtGsGN7myMKZ2GAQSYEWYe2BNa4Kw64S2wKdH36xgKJd
-	iKouEmrFCfWfU5MnIPJuB0o3oNkm2y9oiSxOOKmIEvTcg97EhnhBKxYwVdHGJ3H4FNu8BcBWW3YcB
-	0TJRbLiBE+uhcXsWclv/an5HdNwXaKu2F0dkHkIlIa7Y+dr8e/8uOFZxqoPSIZhkrgVpgqJI+OlTd
-	J2/5Chwpg==;
+	 bh=NlfOPHlMQtvX9vbLgG8n3XwoTvniL471Tw14FHsiO8Q=; b=DEj0u0OnvxKAMatOP/bPsgchM
+	hrS/BxD9EjqrkbRZkVPzDu5fFSiihTe16f9Lb9jML49c2CksVPSSz+L2+t3wU+l8ZaoLQggW+azLd
+	xoEOE7L5ReGEFdVq5Qjt3PlbOkib3KFZwqvSYjMWP1JFFE0+e0YlUU5Kl2FzvJ939XJSwyOALxo2H
+	OZFE4uX/7OYaXY43VjAOh5AG3W9duXB87LURIf2vbOqSKeY/Xf0kaNHkUT5iPAdupXnyblNDafAvT
+	LEc1QuhrRxL4NIPi0WQhT1VyPiarBC0h23r9pfVp363xLkxuACVigIXXadCTFKph2JhdH93RSkyAK
+	YML5dT/Zg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k3cFz-0000RE-IY; Thu, 06 Aug 2020 09:32:15 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1k3aYR-0004C5-99; Thu, 06 Aug 2020 07:43:11 +0000
+Received: from lb3-smtp-cloud9.xs4all.net ([194.109.24.30])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3cFu-0000OL-Mw; Thu, 06 Aug 2020 09:32:11 +0000
-X-UUID: e702eedd213d48c384781ec42507c988-20200806
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=WTzfa/t8bk8sxGScWdoKmOhtLiKTTktmTscE+vpAf7A=; 
- b=dpRkaeXrcrTSkaMz/rMCmYpW5ekaIgyemFXa9URDgBvBNaXR44tSL+uRk2jZ+eMk6ZcJua5T3kFWSTkpBvZi+ezwA5slZbozPmT8jpmrrKIZmcWJMnBVpsuOIez/5tTqSezAss0t/ZoQPYnOqhh5QSK0339sBJ7HIrtbKdWKVPk=;
-X-UUID: e702eedd213d48c384781ec42507c988-20200806
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <weiyi.lu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 929408052; Thu, 06 Aug 2020 01:32:05 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 6 Aug 2020 02:22:03 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 6 Aug 2020 17:21:59 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 6 Aug 2020 17:21:59 +0800
-From: Weiyi Lu <weiyi.lu@mediatek.com>
-To: Enric Balletbo Serra <eballetbo@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, "Rob
- Herring" <robh@kernel.org>, Sascha Hauer <kernel@pengutronix.de>
-Subject: [PATCH v17 06/12] soc: mediatek: Add support for hierarchical scpsys
- device node
-Date: Thu, 6 Aug 2020 17:21:49 +0800
-Message-ID: <1596705715-15320-7-git-send-email-weiyi.lu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1596705715-15320-1-git-send-email-weiyi.lu@mediatek.com>
-References: <1596705715-15320-1-git-send-email-weiyi.lu@mediatek.com>
+ id 1k3aYN-0004B4-4V; Thu, 06 Aug 2020 07:43:08 +0000
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud9.xs4all.net with ESMTPA
+ id 3aY9k75OMuuXO3aYAknFvT; Thu, 06 Aug 2020 09:42:55 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
+ t=1596699775; bh=T4xmSgXs0W8ROOKjQGmNEDC52VAJozMGJbV9msYiY78=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=sxoCuLkSAHsCrhGUN8kwQr4MgQGFYrWB2DLyVpXFkivfqUfIMRF3Axub2IzCkgVO3
+ i4/o8PgBy5XbA9siZ34LPHqyzlG0rcziTwo96agHx3GCfoNlCSVL3JTmm1Q59UeeE7
+ OaTeQHHtezPZr9n4kHLmlhmR3ZWa1Ps1M26leVB66FAyGAWIONWmxiu18PpPL3P4Jb
+ hbDYpuGX4Kg5445iP1RsVDLeLVeqpJ0oIJvA3pOWMyXA/w4nn4y5u7T+c5tWaSAZ2O
+ /uX6XofWEL7KesSYhtgBeRLO29o1RG2qiSurrhyi6Gptu5bN/hNgua/zfsmPI5z6Ay
+ k6q5TvaPBNwRg==
+Subject: Re: [PATCH V1] media: mc-device.c: change media_device_request_alloc
+ to match media_ioctl_info
+To: frederic.chen@mediatek.com, hans.verkuil@cisco.com,
+ laurent.pinchart+renesas@ideasonboard.com, tfiga@chromium.org,
+ matthias.bgg@gmail.com, mchehab@kernel.org
+References: <20200806072952.11709-1-frederic.chen@mediatek.com>
+ <20200806072952.11709-2-frederic.chen@mediatek.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <4b1291c4-ee97-8ada-fa2c-3eb5ed22305b@xs4all.nl>
+Date: Thu, 6 Aug 2020 09:42:53 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20200806072952.11709-2-frederic.chen@mediatek.com>
+Content-Language: en-US
+X-CMAE-Envelope: MS4wfOrGz3rAhHZCAaKgjiDYR2ekXp4TQjOJE+TmODTu53NnUKnI2WkbUL3u96jvhjAfRgG0gtyQoephVb46g6j0p2btiGqDXzrF9+GySKl3HRFIjJtPMB7W
+ qu3P4GwP3E7L2lEI/Y0GaK8SYEI5KMI8UJB+OzAU64a/Mw067K6o4heiu8xuW46wccZIhdDSt4oRBpnDI5vEB6b2FwwlatIVYvO4PcWCxfbhABAzb1Smt2W2
+ jk/OWrU82UCFeEt7PIc0WjYCoPFdQekx0sUv2jh5G8HN52IEOTUKuR9FWYyKHaHl7Bpmu8zWxNCuW2aaU52r3BNG8/j+pQ/7bImzKoMcL/bzl2vnDQeuIU5a
+ uU/vlDwdeXOpeocMgKqdEZ3lnR3r53/rc8gKy9V96HDGGvi8IZrWs/XcG9NueXn2r2ZidwRdhYswaVyUiGuFzJhtvoeo1E4k9TCCxuAblNL6BtjjypwoxwiT
+ edaovHKNoCPOd3qCawp+IzqkCIoWp7UZZqSev+zRq38QcXn7BMmb9ysjgPJgw01mA2qVEH9ldz4u2Kc1ioZLQweayu3ulPgx+zxiC6xt11WRIBttnDsSuqNu
+ j3msTQY+9chXeMvlHUdj1X5VBosbO0r9S/nl6NkzN2Ahb4c8BADc9386LgNJnnLxVgYsouEvi5OzmLgJNLsWCmS/GOoFmu3h09Fz8zLrhwn/m1l4ioFHqS9d
+ XH8M+05eUIcY1ozUs8wGXx5/d/w7zQkLysZWZEqlHVuyJec1HZrTi8Ka/CGfzwtyt/Z9IaNlMRcLtod7hCqOoF5asPg1n/utpDN7jXenpIVSlZXYFt56uQ==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200806_053210_884641_0F58A794 
-X-CRM114-Status: GOOD (  20.30  )
+X-CRM114-CacheID: sfid-20200806_034307_498429_583BE77C 
+X-CRM114-Status: GOOD (  18.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,177 +87,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>,
- srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Sean.Cheng@mediatek.com, srv_heupstream@mediatek.com, sj.huang@mediatek.com,
+ yuzhao@chromium.org, linux-mediatek@lists.infradead.org, zwisler@chromium.org,
+ christie.yu@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Try to list all the power domains of under power controller
-node to show the dependency between each power domain directly
-instead of filling the dependency in scp_soc_data.
-And could be more clearly to group subsys clocks into power domain
-sub node to introduce subsys clocks of bus protection in next patch.
+On 06/08/2020 09:29, frederic.chen@mediatek.com wrote:
+> From: Frederic Chen <frederic.chen@mediatek.com>
+> 
+> We modified the type of media_device_request_alloc()'s second
+> parameter from int* to void* so that it can match the interface
+> defined in struct media_ioctl_info.
+> 
+> Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
+> ---
+>  drivers/media/mc/mc-device.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/media/mc/mc-device.c b/drivers/media/mc/mc-device.c
+> index da8088351135..bc5b5ecb6581 100644
+> --- a/drivers/media/mc/mc-device.c
+> +++ b/drivers/media/mc/mc-device.c
+> @@ -370,9 +370,10 @@ static long media_device_get_topology(struct media_device *mdev, void *arg)
+>  	return ret;
+>  }
+>  
+> -static long media_device_request_alloc(struct media_device *mdev,
+> -				       int *alloc_fd)
+> +static long media_device_request_alloc(struct media_device *mdev, void *arg)
+>  {
+> +	int *alloc_fd = arg;
+> +
+>  #ifdef CONFIG_MEDIA_CONTROLLER_REQUEST_API
+>  	if (!mdev->ops || !mdev->ops->req_validate || !mdev->ops->req_queue)
+>  		return -ENOTTY;
+> 
 
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
----
- drivers/soc/mediatek/mtk-scpsys.c | 103 +++++++++++++++++++++++++++++++++++---
- 1 file changed, 95 insertions(+), 8 deletions(-)
+This change is fine, but the reason this wasn't noticed before is the cast in
+the MEDIA_IOC_ARG define:
 
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index 5a2c323..502b66f 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -182,11 +182,13 @@ struct scp {
- 	struct regmap *infracfg;
- 	struct regmap *smi_common;
- 	struct scp_ctrl_reg ctrl_reg;
-+	struct list_head dep_links;
- };
- 
- struct scp_subdomain {
- 	int origin;
- 	int subdomain;
-+	struct list_head list;
- };
- 
- struct scp_soc_data {
-@@ -513,6 +515,79 @@ static int init_basic_clks(struct platform_device *pdev, struct clk **clk,
- 	return 0;
- }
- 
-+static int scpsys_get_domain_id(struct device_node *node, u32 *id)
-+{
-+	int ret;
-+
-+	ret = of_property_read_u32(node, "reg", id);
-+	if (ret)
-+		pr_err("%pOFn: failed to retrieve domain id, ret=%d\n", node, ret);
-+
-+	return ret;
-+}
-+
-+static int scpsys_get_domain(struct platform_device *pdev, struct scp *scp,
-+			struct device_node *node, const struct scp_domain_data *data)
-+{
-+	struct scp_subdomain *dep_node;
-+	struct device_node *sub;
-+	u32 parent_id, child_id;
-+	int ret;
-+
-+	ret = scpsys_get_domain_id(node, &parent_id);
-+	if (ret)
-+		return ret;
-+
-+	for_each_child_of_node(node, sub) {
-+		ret = scpsys_get_domain_id(sub, &child_id);
-+		if (ret)
-+			goto out;
-+
-+		dep_node = devm_kzalloc(&pdev->dev, sizeof(*dep_node), GFP_KERNEL);
-+		if (!dep_node) {
-+			ret = -ENOMEM;
-+			goto out;
-+		}
-+
-+		dep_node->origin = parent_id;
-+		dep_node->subdomain = child_id;
-+		list_add(&dep_node->list, &scp->dep_links);
-+
-+		scpsys_get_domain(pdev, scp, sub, data);
-+	}
-+
-+	return 0;
-+
-+out:
-+	of_node_put(sub);
-+	return ret;
-+}
-+
-+static int traverse_scp(struct platform_device *pdev, struct scp *scp,
-+			const struct scp_domain_data *scp_domain_data)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct device_node *np = dev->of_node;
-+	struct device_node *sub;
-+	int ret;
-+
-+	INIT_LIST_HEAD(&scp->dep_links);
-+
-+	for_each_available_child_of_node(np, sub) {
-+		ret = scpsys_get_domain(pdev, scp, sub, scp_domain_data);
-+		if (ret) {
-+			dev_err(&pdev->dev, "failed to handle node %pOFn: %d\n", sub, ret);
-+			goto err;
-+		}
-+	}
-+
-+	return 0;
-+
-+err:
-+	of_node_put(sub);
-+	return ret;
-+}
-+
- static struct scp *init_scp(struct platform_device *pdev,
- 			const struct scp_domain_data *scp_domain_data, int num,
- 			const struct scp_ctrl_reg *scp_ctrl_reg)
-@@ -582,6 +657,10 @@ static struct scp *init_scp(struct platform_device *pdev,
- 
- 	pd_data->num_domains = num;
- 
-+	ret = traverse_scp(pdev, scp, scp_domain_data);
-+	if (ret)
-+		return ERR_PTR(ret);
-+
- 	for (i = 0; i < num; i++) {
- 		struct scp_domain *scpd = &scp->domains[i];
- 		struct generic_pm_domain *genpd = &scpd->genpd;
-@@ -1208,7 +1287,7 @@ static int scpsys_probe(struct platform_device *pdev)
- 	const struct scp_soc_data *soc;
- 	struct scp *scp;
- 	struct genpd_onecell_data *pd_data;
--	int i, ret;
-+	int i, ret = 0;
- 
- 	soc = of_device_get_match_data(&pdev->dev);
- 
-@@ -1220,15 +1299,23 @@ static int scpsys_probe(struct platform_device *pdev)
- 
- 	pd_data = &scp->pd_data;
- 
--	for (i = 0, sd = soc->subdomains; i < soc->num_subdomains; i++, sd++) {
--		ret = pm_genpd_add_subdomain(pd_data->domains[sd->origin],
--					     pd_data->domains[sd->subdomain]);
--		if (ret && IS_ENABLED(CONFIG_PM))
--			dev_err(&pdev->dev, "Failed to add subdomain: %d\n",
--				ret);
-+	if (soc->subdomains && soc->num_subdomains) {
-+		for (i = 0, sd = soc->subdomains; i < soc->num_subdomains; i++, sd++) {
-+			ret = pm_genpd_add_subdomain(pd_data->domains[sd->origin],
-+						     pd_data->domains[sd->subdomain]);
-+			if (ret && IS_ENABLED(CONFIG_PM))
-+				dev_err(&pdev->dev, "Failed to add subdomain: %d\n", ret);
-+		}
-+	} else {
-+		list_for_each_entry(sd, &scp->dep_links, list) {
-+			ret = pm_genpd_add_subdomain(pd_data->domains[sd->origin],
-+						     pd_data->domains[sd->subdomain]);
-+			if (ret && IS_ENABLED(CONFIG_PM))
-+				dev_err(&pdev->dev, "Failed to add subdomain: %d\n", ret);
-+		}
- 	}
- 
--	return 0;
-+	return ret;
- }
- 
- static struct platform_driver scpsys_drv = {
--- 
-1.8.1.1.dirty
+#define MEDIA_IOC_ARG(__cmd, func, fl, from_user, to_user)              \
+        [_IOC_NR(MEDIA_IOC_##__cmd)] = {                                \
+                .cmd = MEDIA_IOC_##__cmd,                               \
+                .fn = (long (*)(struct media_device *, void *))func,    \
+                .flags = fl,                                            \
+                .arg_from_user = from_user,                             \
+                .arg_to_user = to_user,                                 \
+        }
+
+When assigning to .fn the func is cast to a specific function prototype.
+Without that cast the compiler would have warned about the mismatch.
+
+I see no reason for that cast, so drop that cast as well.
+
+Regards,
+
+	Hans
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
