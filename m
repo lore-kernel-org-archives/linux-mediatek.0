@@ -4,93 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,NICE_REPLY_A,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EFB65C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 13:25:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 77CE9C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 13:35:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DDAC52310C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 13:25:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 750802310A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 13:35:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EV89cpbb";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="Ygfsba48"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DDAC52310C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Lio//D+t";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=suse.com header.i=@suse.com header.b="UzDhKFp8"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 750802310A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=n6C6uSuDf+q0Oy2v2CroJxsIIu+9BGW9o95Thp55X28=; b=EV89cpbb6zriPcLzVeTn8RaCj
-	dkYlp+cdbTC5W43pbZepqi/t9KNLtxLZdhFEBaY8lSnwIUUrKZ/mBh3IDFG5VU7clGAcV8WaWxaZJ
-	C9DeQODaxtVki4JwXlTNnuezyb3j/7e986QC4QfqTeOkjy1RiWfq01zNyiHJmMXyS8rHUy++caIkV
-	nyaDdD+lLwZ5jNbBr2KfM1OPHvDFREFORQ6cH2sQen7GDnZfhynD1trB714G4nW0K804Suo4hnOKl
-	ys5PQOLPrmhpclkzfQGh6XwncLK0zvDvHtjls/FFnDZ3qM71zqIlKJ/NU6fq5ZnKdynNg2rkP23yt
-	+HMCoQ22A==;
+	 bh=MXCjmg8tYgCS6H2nmKuVFP8wPSqTC0PgLUkno+6vCC4=; b=Lio//D+trEOARYdrTP8u6bAXN
+	HsPjub9RGUTutLytcBkjSfNKdUHEiTe776/1kTe+LXFxi2tHggYNT6XtgtlnXyLOG0D0bJj1fCkWD
+	l7ZOuv8nomFwu+bDHssqnKFfQ0wYSUFHT3ChjfuoqfEp1rmX5+C1fSpxmc+pgn5949MoS7tvWpsu4
+	xzQ4lXkQA1WKQZxziZxuyQ/48WMg3Bahbs3c/8oxDfsvclTsUBqIxlAWFFw6MKiOcyfBV2ux67lkc
+	7ZBFJ7s1p83igTqosJcwmXVDd9OntY3z+eBZNESHiNUO0oQmtknrZAHgYvgk9Shgw7Zavt+4EkPoO
+	GLPxmODpg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k3ftx-0003le-1b; Thu, 06 Aug 2020 13:25:45 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1k3g38-0005M8-7X; Thu, 06 Aug 2020 13:35:14 +0000
+Received: from de-smtp-delivery-102.mimecast.com ([51.163.158.102])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3ftt-0003kB-P5
- for linux-mediatek@lists.infradead.org; Thu, 06 Aug 2020 13:25:43 +0000
-Received: by mail-wr1-x442.google.com with SMTP id p20so9095656wrf.0
- for <linux-mediatek@lists.infradead.org>; Thu, 06 Aug 2020 06:25:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=57HL3Mhek2tPr4EHNczJ9yRHMOPu9jYI3Mibt+cFat8=;
- b=Ygfsba48/5RguXx55Fy4DT6mPC2nit0tDjqGKYxagikf0yZ3StU3ryTf6RPDTM1Hq8
- CUEa2GWqoHcIj89f5mBjDgLLSYHbJHSK6o0dffWzl2CBwN60qv3ZVD1JrgF3aTx2/Z/a
- WaZJ+kF30wHbGLXbouRXiimf4C/xvYmtcXqejy5J1i5X3m1voxsIDC0v7BVByUh2q6NC
- ZLOZaPCKNi5dXm72yQKqgqS4DBjQcdDklqp2TyRsljH2U2YK6M5RqljImEZuq0wJxcj9
- ItkesKOAxa0KgImYv7gJOOoRy6M56PczFU5tqsc+qq3DtQlHgr6pO7XqvVd025q3jprx
- QWHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=57HL3Mhek2tPr4EHNczJ9yRHMOPu9jYI3Mibt+cFat8=;
- b=TqvYnunmoGThNNXRdeZLSx5K09guZQ980gUz8e1tzGS9bx79CEQlNyuCVdGBy/1tyV
- pjwv4XNslJGC8fHKdx6js/+5et/rVB3GKgryYBT96bTS99voQRawK9HG2sX3BxwVdnaM
- aApFaCGRjpEW8KPO0/e77TiE6TPYXkljd/4hc+3V/UuMTLpjMt3HBvzNw+KR5TqqEHvl
- nYZ/0A8+aE/qYMQrNhcBNJoQrLN77B2ADUUyaJBGQ61qxLchDhIbyFuZIgDx3mgm+ae2
- PzQLo1vFq77cfVenm2i/0sUNcnhr4ZJ4UvSL+gF2HV47Jk8knqG1NkjVpKhiEsU0zFkW
- AsHg==
-X-Gm-Message-State: AOAM532G8/gpYSHZIdyoH/a1ZuSw+LRKVIhwuOz5x1QEYimVdUHOIYNE
- 0f4HRoLAzePwkpPe2TPXoOqhRA==
-X-Google-Smtp-Source: ABdhPJyRXZkGjLDuIuKYo610OUx0FT6uueCMypc6l+mPGszPnxiow1UwkKF7kmNpjRP9XliwnJOwqQ==
-X-Received: by 2002:adf:ee51:: with SMTP id w17mr7779745wro.239.1596720338502; 
- Thu, 06 Aug 2020 06:25:38 -0700 (PDT)
-Received: from linux.local (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr.
- [90.63.244.31])
- by smtp.gmail.com with ESMTPSA id v29sm6558153wrv.51.2020.08.06.06.25.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 06 Aug 2020 06:25:37 -0700 (PDT)
-Subject: Re: [PATCH 2/6] remoteproc: Add a remoteproc driver for the MT8183's
- APU
-To: Mathieu Poirier <mathieu.poirier@linaro.org>
-References: <20200713132927.24925-1-abailon@baylibre.com>
- <20200713132927.24925-3-abailon@baylibre.com>
- <20200720221726.GD1113627@xps15>
-From: Alexandre Bailon <abailon@baylibre.com>
-Message-ID: <0a3ce3bb-87aa-c1a7-6791-b4482117e3e2@baylibre.com>
-Date: Thu, 6 Aug 2020 15:25:38 +0200
+ id 1k3g33-0005KP-K3
+ for linux-mediatek@lists.infradead.org; Thu, 06 Aug 2020 13:35:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com;
+ s=mimecast20200619; t=1596720906;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Y9kBOOdZEEej7ZEMsqH+ctYfRfzHs9cxAnplDiFJTdY=;
+ b=UzDhKFp8lwzXc47oPeYZ+YvKAeb/I/FIqOaZqN0rdT49orjKoKJpqkbfVUkKdsFsdlhKKD
+ Va9vCDbtHwUaM2FFNRIDWQ7AnDmZsrH2A16WPHWOoGNDdQS9ab/AJzt9ja4szuMSdvYLpJ
+ 3Fm/YiVxBEhJJVzVFm6MT+gg4CjBpf0=
+Received: from EUR04-VI1-obe.outbound.protection.outlook.com
+ (mail-vi1eur04lp2054.outbound.protection.outlook.com [104.47.14.54]) (Using
+ TLS) by relay.mimecast.com with ESMTP id
+ de-mta-21-hcpBO9YnP6WiSjWmpHCSUg-1; Thu, 06 Aug 2020 15:35:05 +0200
+X-MC-Unique: hcpBO9YnP6WiSjWmpHCSUg-1
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=OHtNTC/LRi/KQq3xeuhnxPzyqOWh6wd7L2eKLdTlTvveL4U/xCp4hUA8FlTEeWkKOoO6SeK+k9kgOQqencv+lLHLWjmTcZp/QI7yLOao0f3mSQljdOTa31DSACJMhNW0IrepEXOEfDkKRZ7G4/AvLtE5nWSB0vSCcm6CIqsrhCu3ZgFEU+pteT25kCAaw8IqG9fP/3MkXsBzcj+aBNXJYo9HD9ELER+GweuwYdwE/d+Yz24zgvX2Lmk7h7B0VCH1ub8wT9f9HH86eSCfTWQjiPrq0tEoEUwTfxiRLvu0kvUviCJ93G3Y4xslcZvjl4ebQeRMXNURige/+dGuIgonZg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Y9kBOOdZEEej7ZEMsqH+ctYfRfzHs9cxAnplDiFJTdY=;
+ b=GBZuBCuwbgohQG3feJMXudne/aGqQt8iNVcfQtguklFwbvgjhkUU8O4EdYJSUkyOSwhcRSVgAPL6pqVT6KvTSE/jV694ZrAAzpJS1HlosRd768xrP0bzAx07w7c3fQM6w/cJ/xXWb/vYT40j0GMle9pZmyNK57lVaMwddgcMQ5lJ4a635xCnbkMmssuTgTvAROBEjfQbqKm1gxzrZRemNp2xUhEgb34UTJUIRUb13BtgMXeFQhGJ6rgSyT0OgnWdxusmj33pKOQgba1g6wVEyR2wCzhnLOAi8EdSl8IZCG/uIYsIgkTD+egrYUG5KHhUMrqJZQ3/QaVUIkATPGC+uw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=suse.com; dmarc=pass action=none header.from=suse.com;
+ dkim=pass header.d=suse.com; arc=none
+Authentication-Results: vger.kernel.org; dkim=none (message not signed)
+ header.d=none;vger.kernel.org; dmarc=none action=none header.from=suse.com;
+Received: from AM6PR04MB5366.eurprd04.prod.outlook.com (2603:10a6:20b:9d::19)
+ by AM7PR04MB7141.eurprd04.prod.outlook.com (2603:10a6:20b:11d::20)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3261.19; Thu, 6 Aug
+ 2020 13:35:03 +0000
+Received: from AM6PR04MB5366.eurprd04.prod.outlook.com
+ ([fe80::3050:e412:7b95:de7d]) by AM6PR04MB5366.eurprd04.prod.outlook.com
+ ([fe80::3050:e412:7b95:de7d%7]) with mapi id 15.20.3261.019; Thu, 6 Aug 2020
+ 13:35:03 +0000
+Subject: Re: [PATCH] i2c: mediatek: Fix i2c_spec_values description
+To: Qii Wang <qii.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
+References: <c410f784-7b51-0d65-7a41-3845214dd273@gmail.com>
+ <1596712005.8263.4.camel@mhfsdcap03>
+From: Matthias Brugger <mbrugger@suse.com>
+Message-ID: <6e029d96-6171-0006-a5bb-01d0d5a7391b@suse.com>
+Date: Thu, 6 Aug 2020 15:35:00 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
-MIME-Version: 1.0
-In-Reply-To: <20200720221726.GD1113627@xps15>
+ Thunderbird/68.10.0
+In-Reply-To: <1596712005.8263.4.camel@mhfsdcap03>
 Content-Language: en-US
+X-ClientProxiedBy: MR2P264CA0156.FRAP264.PROD.OUTLOOK.COM
+ (2603:10a6:501:1::19) To AM6PR04MB5366.eurprd04.prod.outlook.com
+ (2603:10a6:20b:9d::19)
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from ziggy.stardust (213.195.117.232) by
+ MR2P264CA0156.FRAP264.PROD.OUTLOOK.COM (2603:10a6:501:1::19) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3261.15 via Frontend Transport; Thu, 6 Aug 2020 13:35:02 +0000
+X-Originating-IP: [213.195.117.232]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 2fd860f5-0d0a-4f68-dd8d-08d83a0d860a
+X-MS-TrafficTypeDiagnostic: AM7PR04MB7141:
+X-Microsoft-Antispam-PRVS: <AM7PR04MB7141881A84DCD725D45EFFCDBA480@AM7PR04MB7141.eurprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: lqjE1z8u6le7vfVd+Z82bTP//L7ZcsRrIPJZH7ABJEyx8cPZwgHiWs9AIZyVWwZoAzfKu7TYDi7y+Enqc3m40XyePa9CQDezVLv4uBpqFc+rjZKTkrt9GLayfgnvZNbJH67dp/SoD+M2XqUuBHRG4NGzxO22f7R+kMLNXPJ/lXw8hsYWHjYi1mymKbTe588lu28NCyO+gC8t5A6hjT2p6E7OoBJlsAy4OIy9Y1padcJpHdA4+yi+TK2NAKgtc3owPSvwBTvLww9alF3cuMvxxZXQM2nUmYt8rFJXVGw3jrKdsuS0MEVHVol+elO4GeHCNVHJU1zuEFeBeszIS4+fujtiwj5EyacDoVVot+wXQ7jnUh6vcwDgpm1SGBj9Fh1L
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM6PR04MB5366.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(39860400002)(396003)(136003)(366004)(346002)(376002)(5660300002)(66556008)(86362001)(2616005)(956004)(66946007)(36756003)(66476007)(16526019)(26005)(186003)(6506007)(83380400001)(31696002)(52116002)(53546011)(478600001)(6512007)(4326008)(8676002)(31686004)(6486002)(110136005)(316002)(2906002)(8936002)(43740500002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData: 6t68Zh/YCIxYkAcg1OYO1zrAEF0ZjBuOe381HV1tZ9s0bALfwANkibiTOvC3CyfPAjUkJ5/y8bXvizmAY8nFlPdjjgOZ4Y1ina0bIClGVrnNqPU8gD6or5aC8l0QJApvpjeimkuROuGuJWhB8X2fton9TeBrN3aiEXTWul7fTenen8pZHSPaDkIowVS20xMcrhC2rgXHO8qa1jSjfNnfx1llzg3y1HyifEXDBXonF/dr0q69kLeaHPAVV0kmzVS9X9SuT6t3qpZZqqUp+ocYaxvwSlFXOvI6AYsx3+5NqlVUYJxfEeVgW0HfIF1Cr7wd2dkPR7GjmGosM/7hP7zm51a21LlsrrnWCDBwM4Y4Mg52NrOYHvmCiDO6jkCZ3pDRn8bBnJZVOLv7XmjNYVbKqtfF8F5qpI8KLotPpQGZSzbTqtTshqZavt1a2ZG77GzkJbgixYe1TA8m48r/6Q7aSLwMcgjD9ssg2tQQqxFpgqFEPBFVbhpJnQrHOxWg0zK5Ll12KoJkzpnNcRfqnydyPYAzuB7L22ASwxicCC93rw/Elca3eImvji/0vJ8hYJuaj5fxdoZOX8zIEIjPpRSSd9NFle167QZm2FljT9EZud4nDXDKyZde7A57N4FtGP3jMVxl/rcazwmZIMbvySTfCw==
+X-OriginatorOrg: suse.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2fd860f5-0d0a-4f68-dd8d-08d83a0d860a
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR04MB5366.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Aug 2020 13:35:03.2718 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: f7a17af6-1c5c-4a36-aa8b-f5be247aa4ba
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 8Rd09f+lJJ23Hn4x+zDtD+YCaLi2e5ZHcOeB4n359Ul6JG/azXeMO8BmtVlkngudAK9YGABE6pUX7/4o3NRV+Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM7PR04MB7141
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200806_092542_101887_FF5C7826 
-X-CRM114-Status: GOOD (  43.34  )
+X-CRM114-CacheID: sfid-20200806_093509_767274_B68B9BEE 
+X-CRM114-Status: GOOD (  16.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,445 +135,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: ohad@wizery.com, devicetree@vger.kernel.org,
- linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
- bjorn.andersson@linaro.org, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org
+Cc: wsa@the-dreams.de, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org,
+ yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mathieu,
 
-On 7/21/20 12:17 AM, Mathieu Poirier wrote:
-> On Mon, Jul 13, 2020 at 03:29:23PM +0200, Alexandre Bailon wrote:
->> This adds a driver to control the APU present in the MT8183.
->> This loads the firmware and start the DSP.
+
+On 06/08/2020 13:06, Qii Wang wrote:
+> On Thu, 2020-08-06 at 11:48 +0200, Matthias Brugger wrote:
+>> The struct i2c_spec_values have it's members documented but is missing the
+>> starting '@', which leads to warings like:
 >>
->> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+>> drivers/i2c/busses/i2c-mt65xx.c:267: warning: Function parameter or member
+>> 'min_low_ns' not described in 'i2c_spec_values'
+>>
+>> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
 >> ---
->>   drivers/remoteproc/Kconfig         |  10 +
->>   drivers/remoteproc/Makefile        |   1 +
->>   drivers/remoteproc/mtk_apu_rproc.c | 308 +++++++++++++++++++++++++++++
-> I would name the file mtk_apu.c to be consistent with the existing mtk_scp.c
-I will rename it
->
->>   3 files changed, 319 insertions(+)
->>   create mode 100644 drivers/remoteproc/mtk_apu_rproc.c
+>>    drivers/i2c/busses/i2c-mt65xx.c | 8 ++++----
+>>    1 file changed, 4 insertions(+), 4 deletions(-)
 >>
->> diff --git a/drivers/remoteproc/Kconfig b/drivers/remoteproc/Kconfig
->> index c4d1731295eb..e116d4a12ac3 100644
->> --- a/drivers/remoteproc/Kconfig
->> +++ b/drivers/remoteproc/Kconfig
->> @@ -42,6 +42,16 @@ config MTK_SCP
->>   
->>   	  It's safe to say N here.
->>   
->> +config MTK_APU
->> +	tristate "Mediatek APU remoteproc support"
->> +	depends on ARCH_MEDIATEK
->> +	depends on MTK_IOMMU
->> +	help
->> +	  Say y to support the Mediatek's Accelerated Processing Unit (APU) via
->> +	  the remote processor framework.
->> +
->> +	  It's safe to say N here.
->> +
->>   config OMAP_REMOTEPROC
->>   	tristate "OMAP remoteproc support"
->>   	depends on ARCH_OMAP4 || SOC_OMAP5 || SOC_DRA7XX
->> diff --git a/drivers/remoteproc/Makefile b/drivers/remoteproc/Makefile
->> index e8b886e511f0..2ea231b75fa6 100644
->> --- a/drivers/remoteproc/Makefile
->> +++ b/drivers/remoteproc/Makefile
->> @@ -12,6 +12,7 @@ remoteproc-y				+= remoteproc_elf_loader.o
->>   obj-$(CONFIG_IMX_REMOTEPROC)		+= imx_rproc.o
->>   obj-$(CONFIG_INGENIC_VPU_RPROC)		+= ingenic_rproc.o
->>   obj-$(CONFIG_MTK_SCP)			+= mtk_scp.o mtk_scp_ipi.o
->> +obj-$(CONFIG_MTK_APU)			+= mtk_apu_rproc.o
->>   obj-$(CONFIG_OMAP_REMOTEPROC)		+= omap_remoteproc.o
->>   obj-$(CONFIG_WKUP_M3_RPROC)		+= wkup_m3_rproc.o
->>   obj-$(CONFIG_DA8XX_REMOTEPROC)		+= da8xx_remoteproc.o
->> diff --git a/drivers/remoteproc/mtk_apu_rproc.c b/drivers/remoteproc/mtk_apu_rproc.c
->> new file mode 100644
->> index 000000000000..fb416a817ef3
->> --- /dev/null
->> +++ b/drivers/remoteproc/mtk_apu_rproc.c
->> @@ -0,0 +1,308 @@
->> +// SPDX-License-Identifier: GPL-2.0
->> +/*
->> + * Copyright (C) 2020 BayLibre SAS
->> + */
->> +
->> +#include <linux/bitops.h>
->> +#include <linux/clk.h>
->> +#include <linux/delay.h>
->> +#include <linux/interrupt.h>
->> +#include <linux/io.h>
->> +#include <linux/iommu.h>
->> +#include <linux/irq.h>
->> +#include <linux/kernel.h>
->> +#include <linux/highmem.h>
-> Move this below "delay.h"
->
->> +#include <linux/module.h>
->> +#include <linux/of_reserved_mem.h>
->> +#include <linux/platform_device.h>
->> +#include <linux/remoteproc.h>
->> +
->> +#include "remoteproc_internal.h"
->> +
->> +/* From MT8183 4.5 Vision Processor Unit (VPU).pdf datasheet */
->> +#define SW_RST					(0x0000000C)
->> +#define  SW_RST_OCD_HALT_ON_RST			BIT(12)
->> +#define  SW_RST_IPU_D_RST			BIT(8)
->> +#define  SW_RST_IPU_B_RST			BIT(4)
-> Please don't indent defines.
->
->> +#define CORE_CTRL				(0x00000110)
->> +#define  CORE_CTRL_PDEBUG_ENABLE		BIT(31)
->> +#define	 CORE_CTRL_SRAM_64K_iMEM		(0x00 << 27)
->> +#define	 CORE_CTRL_SRAM_96K_iMEM		(0x01 << 27)
->> +#define	 CORE_CTRL_SRAM_128K_iMEM		(0x02 << 27)
->> +#define	 CORE_CTRL_SRAM_192K_iMEM		(0x03 << 27)
->> +#define	 CORE_CTRL_SRAM_256K_iMEM		(0x04 << 27)
->> +#define  CORE_CTRL_PBCLK_ENABLE			BIT(26)
->> +#define  CORE_CTRL_RUN_STALL			BIT(23)
->> +#define  CORE_CTRL_STATE_VECTOR_SELECT		BIT(19)
->> +#define  CORE_CTRL_PIF_GATED			BIT(17)
->> +#define  CORE_CTRL_NMI				BIT(0)
->> +#define CORE_XTENSA_INT				(0x00000114)
->> +#define CORE_CTL_XTENSA_INT			(0x00000118)
->> +#define CORE_DEFAULT0				(0x0000013C)
->> +#define  CORE_DEFAULT0_QOS_SWAP_0		(0x00 << 28)
->> +#define  CORE_DEFAULT0_QOS_SWAP_1		(0x01 << 28)
->> +#define  CORE_DEFAULT0_QOS_SWAP_2		(0x02 << 28)
->> +#define  CORE_DEFAULT0_QOS_SWAP_3		(0x03 << 28)
->> +#define  CORE_DEFAULT0_ARUSER_USE_IOMMU		(0x10 << 23)
->> +#define  CORE_DEFAULT0_AWUSER_USE_IOMMU		(0x10 << 18)
->> +#define CORE_DEFAULT1				(0x00000140)
->> +#define  CORE_DEFAULT0_ARUSER_IDMA_USE_IOMMU	(0x10 << 0)
->> +#define  CORE_DEFAULT0_AWUSER_IDMA_USE_IOMMU	(0x10 << 5)
->> +#define CORE_XTENSA_ALTRESETVEC			(0x000001F8)
->> +
->> +struct mtk_vpu_rproc {
->> +	struct device *dev;
->> +	struct rproc *rproc;
->> +
->> +	void __iomem *base;
->> +	int irq;
->> +	struct clk *axi;
->> +	struct clk *ipu;
->> +	struct clk *jtag;
->> +};
->> +
->> +static u32 vpu_read32(struct mtk_vpu_rproc *vpu_rproc, u32 off)
->> +{
->> +	return readl(vpu_rproc->base + off);
->> +}
->> +
->> +static void vpu_write32(struct mtk_vpu_rproc *vpu_rproc, u32 off, u32 value)
->> +{
->> +	writel(value, vpu_rproc->base + off);
->> +}
-> Not sure that much is gained by adding the above two functions.  Just using
-> readl/writel would suit me just fine.
-I though this was more convenient to use but using readl/writel is also 
-fine for me.
->> +
->> +static int mtk_vpu_rproc_start(struct rproc *rproc)
->> +{
->> +	struct mtk_vpu_rproc *vpu_rproc = rproc->priv;
->> +	u32 core_ctrl;
->> +
->> +	vpu_write32(vpu_rproc, CORE_XTENSA_ALTRESETVEC, rproc->bootaddr);
->> +
->> +	core_ctrl = vpu_read32(vpu_rproc, CORE_CTRL);
->> +	core_ctrl |= CORE_CTRL_PDEBUG_ENABLE | CORE_CTRL_PBCLK_ENABLE |
->> +		     CORE_CTRL_STATE_VECTOR_SELECT | CORE_CTRL_RUN_STALL |
->> +		     CORE_CTRL_PIF_GATED;
->> +	vpu_write32(vpu_rproc, CORE_CTRL, core_ctrl);
->> +
->> +	vpu_write32(vpu_rproc, SW_RST, SW_RST_OCD_HALT_ON_RST |
->> +				       SW_RST_IPU_B_RST | SW_RST_IPU_D_RST);
->> +	ndelay(27);
-> What is this for?  The state of the VPU can't be polled?
-
-TBH, I don't know. I got the programming model from Mediatek's kernel.
-
-I assumed that was the minimum time required to maintain reset asserted 
-to make it effective.
-
->
->> +	vpu_write32(vpu_rproc, SW_RST, 0);
->> +
->> +	core_ctrl &= ~CORE_CTRL_PIF_GATED;
->> +	vpu_write32(vpu_rproc, CORE_CTRL, core_ctrl);
->> +
->> +	vpu_write32(vpu_rproc, CORE_DEFAULT0, CORE_DEFAULT0_AWUSER_USE_IOMMU |
->> +					      CORE_DEFAULT0_ARUSER_USE_IOMMU |
->> +					      CORE_DEFAULT0_QOS_SWAP_1);
->> +	vpu_write32(vpu_rproc, CORE_DEFAULT1,
->> +		    CORE_DEFAULT0_AWUSER_IDMA_USE_IOMMU |
->> +		    CORE_DEFAULT0_ARUSER_IDMA_USE_IOMMU);
->> +
->> +	core_ctrl &= ~CORE_CTRL_RUN_STALL;
->> +	vpu_write32(vpu_rproc, CORE_CTRL, core_ctrl);
-> I would certainly appreciate more comments that describe that is going on in
-> this function.
-I will try to comment a little more but again, this come from Mediatek's 
-kernel.
-Even if I have access to the datasheet, there are no much details.
->
->> +
->> +	return 0;
->> +}
->> +
->> +static int mtk_vpu_rproc_stop(struct rproc *rproc)
->> +{
->> +	struct mtk_vpu_rproc *vpu_rproc = rproc->priv;
->> +	u32 core_ctrl;
->> +
->> +	core_ctrl = vpu_read32(vpu_rproc, CORE_CTRL);
->> +	vpu_write32(vpu_rproc, CORE_CTRL, core_ctrl | CORE_CTRL_RUN_STALL);
->> +
->> +	return 0;
->> +}
->> +
->> +static void mtk_vpu_rproc_kick(struct rproc *rproc, int vqid)
->> +{
->> +	struct mtk_vpu_rproc *vpu_rproc = rproc->priv;
->> +
->> +	vpu_write32(vpu_rproc, CORE_CTL_XTENSA_INT, 1 << vqid);
->> +}
->> +
->> +static const struct rproc_ops mtk_vpu_rproc_ops = {
->> +	.start		= mtk_vpu_rproc_start,
->> +	.stop		= mtk_vpu_rproc_stop,
->> +	.kick		= mtk_vpu_rproc_kick,
->> +};
->> +
->> +static irqreturn_t mtk_vpu_rproc_callback(int irq, void *data)
->> +{
->> +	struct rproc *rproc = (struct rproc *)data;
-> There is no need to cast when working with a void pointer.  The same comment
-> applies throughout.
->
->> +	struct mtk_vpu_rproc *vpu_rproc = (struct mtk_vpu_rproc *)rproc->priv;
->> +
->> +	vpu_write32(vpu_rproc, CORE_XTENSA_INT, 1);
->> +
->> +	return IRQ_WAKE_THREAD;
->> +}
->> +
->> +static irqreturn_t handle_event(int irq, void *data)
->> +{
->> +	struct rproc *rproc = (struct rproc *)data;
->> +
->> +	rproc_vq_interrupt(rproc, 0);
->> +	rproc_vq_interrupt(rproc, 1);
->> +
->> +	return IRQ_HANDLED;
->> +}
->> +
->> +static int mtk_vpu_rproc_probe(struct platform_device *pdev)
->> +{
->> +	struct device *dev = &pdev->dev;
->> +	struct mtk_vpu_rproc *vpu_rproc;
->> +	struct rproc *rproc;
->> +	struct resource *res;
->> +	int ret;
->> +
->> +	rproc = rproc_alloc(dev, "apu", &mtk_vpu_rproc_ops, NULL,
->> +			    sizeof(*vpu_rproc));
-> The problem with hard coding the name of the remote process is that it work on
-> only when there is a single processor.  Based on the DTS extention sent with
-> this serie, there seems to be a possibility of having more the one.  As such
-> both remote processor will be called "apu", mandating you to look at the
-> platform resources to know which is which.  Consider using dev_name() or
-> dev->of_node->name.
->
->> +	if (!rproc)
->> +		return -ENOMEM;
->> +
->> +	rproc->recovery_disabled = true;
->> +	rproc->has_iommu = false;
->> +
->> +	vpu_rproc = rproc->priv;
->> +	vpu_rproc->rproc = rproc;
->> +	vpu_rproc->dev = dev;
->> +
->> +	platform_set_drvdata(pdev, rproc);
->> +
->> +	rproc->domain = iommu_get_domain_for_dev(dev);
->> +	if (!rproc->domain) {
->> +		dev_err(dev, "Failed to get the IOMMU domain\n");
->> +		ret = -EINVAL;
->> +		goto free_rproc;
->> +	}
->> +
->> +
->> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->> +	vpu_rproc->base = devm_ioremap_resource(&pdev->dev, res);
->> +	if (IS_ERR(vpu_rproc->base)) {
->> +		dev_err(&pdev->dev, "Failed to map mmio\n");
-> Above dev_err() is used with @dev while here @pdev->dev is.  Please pick one you
-> like and stick with it.
->
->> +		ret = PTR_ERR(vpu_rproc->base);
->> +		goto free_rproc;
->> +	}
->> +
->> +	vpu_rproc->irq = platform_get_irq(pdev, 0);
->> +	if (vpu_rproc->irq < 0) {
->> +		ret = vpu_rproc->irq;
->> +		goto free_rproc;
->> +	}
->> +
->> +	ret = devm_request_threaded_irq(dev, vpu_rproc->irq,
->> +					mtk_vpu_rproc_callback, handle_event,
->> +					IRQF_SHARED | IRQF_ONESHOT,
->> +					"mtk_vpu-remoteproc", rproc);
-> Same problem as above, i.e hard coding the name of the interrupt will be
-> confusing when probing sysfs.  Here rproc->index holds the value that
-> corresponds to 'X' in /sys/dev/class/remoteproc/remoteprocX.  Simply build a
-> string using that and feed it to devm_request_threaded_ifq().
->
->
->> +	if (ret) {
->> +		dev_err(dev, "devm_request_threaded_irq error: %d\n", ret);
->> +		goto free_rproc;
->> +	}
->> +
->> +	vpu_rproc->ipu = devm_clk_get(dev, "ipu");
->> +	if (IS_ERR(vpu_rproc->ipu)) {
->> +		dev_err(dev, "Failed to get ipu clock\n");
->> +		ret = PTR_ERR(vpu_rproc->ipu);
->> +		goto free_rproc;
->> +	}
->> +
->> +	ret = clk_prepare_enable(vpu_rproc->ipu);
->> +	if (ret) {
->> +		dev_err(dev, "Failed to enable ipu clock\n");
->> +		goto free_rproc;
->> +	}
->> +
->> +	vpu_rproc->axi = devm_clk_get(dev, "axi");
->> +	if (IS_ERR(vpu_rproc->axi)) {
->> +		dev_err(dev, "Failed to get axi clock\n");
->> +		ret = PTR_ERR(vpu_rproc->axi);
->> +		goto clk_disable_ipu;
->> +	}
->> +
->> +	ret = clk_prepare_enable(vpu_rproc->axi);
->> +	if (ret) {
->> +		dev_err(dev, "Failed to enable axi clock\n");
->> +		goto clk_disable_ipu;
->> +	}a
-> Please look at how Paul use the clock bulk API to deal with multiple clocs in
-> ingenic_rproc.c and see if it is possible to use the same scheme.
-I did not knew the bulk API. I think it should work.
->
->> +
->> +	vpu_rproc->jtag = devm_clk_get_optional(dev, "jtag");
-> Why is the jtag clock optional when the binding document says that it "seems to
-> be required to run the DSP, even when JTAG is not in use"?
-
-I forget to change it to devm_clk_get when I figured out this was 
-actually not optional.
-
-Thanks,
-Alexandre
-
->
->> +	if (IS_ERR(vpu_rproc->jtag)) {
->> +		dev_err(dev, "Failed to enable jtag clock\n");
->> +		ret = PTR_ERR(vpu_rproc->jtag);
->> +		goto clk_disable_axi;
->> +	}
->> +
->> +	ret = clk_prepare_enable(vpu_rproc->jtag);
->> +	if (ret) {
->> +		dev_err(dev, "Failed to enable jtag clock\n");
->> +		goto clk_disable_axi;
->> +	}
->> +
->> +	ret = of_reserved_mem_device_init(dev);
->> +	if (ret) {
->> +		dev_err(dev, "device does not have specific CMA pool\n");
->> +		goto clk_disable_jtag;
->> +	}
->> +
->> +	ret = rproc_add(rproc);
->> +	if (ret) {
->> +		dev_err(dev, "rproc_add failed: %d\n", ret);
->> +		goto free_mem;
->> +	}
->> +
->> +	return 0;
->> +
->> +free_mem:
->> +	of_reserved_mem_device_release(dev);
->> +clk_disable_jtag:
->> +	clk_disable_unprepare(vpu_rproc->jtag);
->> +clk_disable_axi:
->> +	clk_disable_unprepare(vpu_rproc->axi);
->> +clk_disable_ipu:
->> +	clk_disable_unprepare(vpu_rproc->ipu);
->> +free_rproc:
->> +	rproc_free(rproc);
->> +
->> +	return ret;
->> +}
->> +
->> +static int mtk_vpu_rproc_remove(struct platform_device *pdev)
->> +{
->> +	struct rproc *rproc = platform_get_drvdata(pdev);
->> +	struct mtk_vpu_rproc *vpu_rproc = (struct mtk_vpu_rproc *)rproc->priv;
->> +	struct device *dev = &pdev->dev;
->> +
->> +	disable_irq(vpu_rproc->irq);
->> +
->> +	rproc_del(rproc);
->> +	of_reserved_mem_device_release(dev);
->> +	clk_disable_unprepare(vpu_rproc->jtag);
->> +	clk_disable_unprepare(vpu_rproc->axi);
->> +	clk_disable_unprepare(vpu_rproc->ipu);
->> +	rproc_free(rproc);
->> +
->> +	return 0;
->> +}
->> +
->> +static const struct of_device_id mtk_vpu_rproc_of_match[] __maybe_unused = {
-> Why is "__maybe_unused" needed?
->
-> Thanks,
-> Mathieu
->
->
->> +	{ .compatible = "mediatek,mt8183-apu", },
->> +	{ /* sentinel */ },
->> +};
->> +MODULE_DEVICE_TABLE(of, mtk_vpu_rproc_of_match);
->> +
->> +static struct platform_driver mtk_vpu_rproc_driver = {
->> +	.probe = mtk_vpu_rproc_probe,
->> +	.remove = mtk_vpu_rproc_remove,
->> +	.driver = {
->> +		.name = "mtk_vpu-rproc",
->> +		.of_match_table = of_match_ptr(mtk_vpu_rproc_of_match),
->> +	},
->> +};
->> +module_platform_driver(mtk_vpu_rproc_driver);
->> +
->> +MODULE_LICENSE("GPL v2");
->> +MODULE_AUTHOR("Alexandre Bailon");
->> +MODULE_DESCRIPTION("Mt8183 VPU Remote Processor control driver");
->> -- 
->> 2.26.2
+>> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+>> index e889f74703e4..f51b35fc400f 100644
+>> --- a/drivers/i2c/busses/i2c-mt65xx.c
+>> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+>> @@ -253,10 +253,10 @@ struct mtk_i2c {
 >>
+>>    /**
+>>     * struct i2c_spec_values:
+>> - * min_low_ns: min LOW period of the SCL clock
+> 
+> Can you help me add a description of min_high_ns. As
+> @min_high_ns: min HIGH period of the SCL clock
+
+Right, I forgot about this one.
+
+Actually I don't see any code which uses the value, so I think it should be 
+deleted from the struct.
+
+Do you have any thoughts on this.
+
+Regards,
+Matthias
+
 
 _______________________________________________
 Linux-mediatek mailing list
