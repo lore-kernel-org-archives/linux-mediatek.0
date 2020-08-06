@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 853CAC433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 12:18:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3777EC433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 12:18:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6402D204FD
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 12:18:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1294522DFA
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 12:18:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xJSlyf46";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="IpUvh9o8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6402D204FD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ASAPECsN";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="VS7+dU32"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1294522DFA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,54 +27,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lpC9qZ4AOG/WHeAUxIKAmrP6Gjpxgv8QAS0mgiCrZ4g=; b=xJSlyf46D4Vv/fuPuHtvMcKLZ
-	4TUTkD977BNauVycefYY8JYPjTiyUMtw5MUJxPWe1mWzi2/D16w9KtJV2mEJa43n8g6EvNRb8ixhy
-	GAhskb4lzEd/0ak/uX+Zpa9pE9taaFF+181kQLt14Zvh58NsvGvkuIzxaLrQxs/SQARf8sBLjNP5L
-	7UsEWTGg/oHu7sbcKuHe0OuYqCZH7+cMDhEjN3AWPoocrgEMsNiHUG9kUHohh4M4k9KL/1qwc734Q
-	FypYYxngCcLGxh1Gk5eHVLrzkxwQgtzbzlhcgQeGy74h7S/6K6pE2bGECTfn4NDmpKw082klaEQl9
-	XZAtSM5sg==;
+	 bh=wzjTAjrYNjevG2AvFhIw1b0emTVdwkG1tD7Yp/7UBBQ=; b=ASAPECsNO8nncJjhv3SIuRGlB
+	5OAat8OqGQ+19CaqyJTjXMJQEu9MCn+HcmwaXprjaljlDrL3kt1ihoreP+iaA5w6mHz+zdprw8mlE
+	9gx1s0BH0+pBeExg5YduW7u12uL9RvFXJBc86UNVZ977qbPzAtPwj+3XL7xpwNxCYweCGdfuFFUaS
+	OVq55Bn73ULate43cpIFUutI5fEMl5EWJqGuS/0WW5k8QfvJZn5Sytt3170R9edb4hTLRwSrcGzOH
+	1rOGD7TCiS3XQ3XqpOSvG35Ba39O1aZSR7kRltt8CEpBMLW+KsXyjxA7Bqh3sgi+lsqNs/IjyZmry
+	Ow2eIGtLQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k3cFw-0000PY-3u; Thu, 06 Aug 2020 09:32:12 +0000
+	id 1k3c6X-0005OV-AM; Thu, 06 Aug 2020 09:22:29 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3cFu-0000OG-5S; Thu, 06 Aug 2020 09:32:11 +0000
-X-UUID: df7004e9f3ab42bb8f270f4729dd7a62-20200806
+ id 1k3c6J-0005Hb-4a; Thu, 06 Aug 2020 09:22:17 +0000
+X-UUID: 6c58b7598edd4e36ab043bdad8c77eef-20200806
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=dAz5+dikMY45dDgsG5MgvToc8YR8PWJHsZfl2lLC1rs=; 
- b=IpUvh9o85Xes95IFPj8nFoJF1Iv/L0cr/1rdZCcUhyh+EVaMS40dr5IiedZw+CyXebqM6y4ZD8zL/Twvu/26WeWwPLY5FVDx2Q2mgl83r1wCeLtQlbjy4ETPFNcx1u4lpRzdfKQZemGAxtNygI3aRN3gH64dkx5OqhGwFN/7k0w=;
-X-UUID: df7004e9f3ab42bb8f270f4729dd7a62-20200806
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=nV+1VPDViPYhiu9TwtqZGVPTCpQQXdDn8Cms96SrwTc=; 
+ b=VS7+dU328enTGEXFFetr9ubwiEv5DwPum4/5zl6hJ3ePje0PmlRgsem6SMkTE788hpcCi35MLXHBfYPOMVijnRZ85eB30YychJBRUUNrJOewWLibksvQ0P401/MRFsvAEQi3/X0CNSFSJdMpQrXoOJbt6FED3cmznqXUAbqs080=;
+X-UUID: 6c58b7598edd4e36ab043bdad8c77eef-20200806
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1662576680; Thu, 06 Aug 2020 01:32:05 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 1500841474; Thu, 06 Aug 2020 01:22:05 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Thu, 6 Aug 2020 02:22:03 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 6 Aug 2020 17:22:00 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 6 Aug 2020 17:21:59 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 6 Aug 2020 17:22:00 +0800
+ Frontend Transport; Thu, 6 Aug 2020 17:21:59 +0800
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Enric Balletbo Serra <eballetbo@gmail.com>, Matthias Brugger
  <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, "Rob
  Herring" <robh@kernel.org>, Sascha Hauer <kernel@pengutronix.de>
-Subject: [PATCH v17 08/12] soc: mediatek: Add extra sram control
-Date: Thu, 6 Aug 2020 17:21:51 +0800
-Message-ID: <1596705715-15320-9-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v17 07/12] soc: mediatek: Add subsys clock control for bus
+ protection
+Date: Thu, 6 Aug 2020 17:21:50 +0800
+Message-ID: <1596705715-15320-8-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1596705715-15320-1-git-send-email-weiyi.lu@mediatek.com>
 References: <1596705715-15320-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 136E1D456467830D06C2796C988E92E6E87735DDE12877E946BEB67FF3B99FB22000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200806_053210_371800_27C96607 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20200806_052215_341576_8BEEB343 
+X-CRM114-Status: GOOD (  20.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,71 +95,122 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For some power domains like vpu_core on MT8183 whose sram need to
-do clock and internal isolation while power on/off sram.
-We add a cap "MTK_SCPD_SRAM_ISO" to judge if we need to do
-the extra sram isolation control or not.
+For the bus protection operations, some subsys clocks need to be enabled
+before releasing the protection, and vice versa.
+But those subsys clocks could only be controlled once its corresponding
+power domain is turned on first.
+In this patch, we add the subsys clock control into its relevant steps.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
 ---
- drivers/soc/mediatek/mtk-scpsys.c | 22 ++++++++++++++++++++--
- 1 file changed, 20 insertions(+), 2 deletions(-)
+ drivers/soc/mediatek/mtk-scpsys.c | 39 +++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 37 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index ec62143..4587cef 100644
+index 502b66f..ec62143 100644
 --- a/drivers/soc/mediatek/mtk-scpsys.c
 +++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -26,6 +26,7 @@
+@@ -7,6 +7,7 @@
+ #include <linux/io.h>
+ #include <linux/iopoll.h>
+ #include <linux/mfd/syscon.h>
++#include <linux/of_clk.h>
+ #include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_domain.h>
+@@ -97,6 +98,7 @@
+ #define MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT	BIT(23)
  
- #define MTK_SCPD_ACTIVE_WAKEUP		BIT(0)
- #define MTK_SCPD_FWAIT_SRAM		BIT(1)
-+#define MTK_SCPD_SRAM_ISO		BIT(2)
- #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data->caps & (_x))
+ #define MAX_CLKS	3
++#define MAX_SUBSYS_CLKS 10
  
- #define SPM_VDE_PWR_CON			0x0210
-@@ -57,6 +58,8 @@
- #define PWR_ON_BIT			BIT(2)
- #define PWR_ON_2ND_BIT			BIT(3)
- #define PWR_CLK_DIS_BIT			BIT(4)
-+#define PWR_SRAM_CLKISO_BIT		BIT(5)
-+#define PWR_SRAM_ISOINT_B_BIT		BIT(6)
+ #define MAX_STEPS	5
  
- #define PWR_STATUS_CONN			BIT(1)
- #define PWR_STATUS_DISP			BIT(3)
-@@ -290,6 +293,14 @@ static int scpsys_sram_enable(struct scp_domain *scpd, void __iomem *ctl_addr)
- 			return ret;
- 	}
- 
-+	if (MTK_SCPD_CAPS(scpd, MTK_SCPD_SRAM_ISO))	{
-+		val = readl(ctl_addr) | PWR_SRAM_ISOINT_B_BIT;
-+		writel(val, ctl_addr);
-+		udelay(1);
-+		val &= ~PWR_SRAM_CLKISO_BIT;
-+		writel(val, ctl_addr);
-+	}
-+
- 	return 0;
- }
- 
-@@ -299,8 +310,15 @@ static int scpsys_sram_disable(struct scp_domain *scpd, void __iomem *ctl_addr)
- 	u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
- 	int tmp;
- 
--	val = readl(ctl_addr);
--	val |= scpd->data->sram_pdn_bits;
-+	if (MTK_SCPD_CAPS(scpd, MTK_SCPD_SRAM_ISO))	{
-+		val = readl(ctl_addr) | PWR_SRAM_CLKISO_BIT;
-+		writel(val, ctl_addr);
-+		val &= ~PWR_SRAM_ISOINT_B_BIT;
-+		writel(val, ctl_addr);
-+		udelay(1);
-+	}
-+
-+	val = readl(ctl_addr) | scpd->data->sram_pdn_bits;
+@@ -165,6 +167,7 @@ struct scp_domain {
+ 	struct generic_pm_domain genpd;
+ 	struct scp *scp;
+ 	struct clk *clk[MAX_CLKS];
++	struct clk *subsys_clk[MAX_SUBSYS_CLKS];
+ 	const struct scp_domain_data *data;
+ 	struct regulator *supply;
+ };
+@@ -427,16 +430,22 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 	val |= PWR_RST_B_BIT;
  	writel(val, ctl_addr);
  
- 	/* Either wait until SRAM_PDN_ACK all 1 or 0 */
+-	ret = scpsys_sram_enable(scpd, ctl_addr);
++	ret = scpsys_clk_enable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
+ 	if (ret < 0)
+ 		goto err_pwr_ack;
+ 
++	ret = scpsys_sram_enable(scpd, ctl_addr);
++	if (ret < 0)
++		goto err_sram;
++
+ 	ret = scpsys_bus_protect_disable(scpd);
+ 	if (ret < 0)
+-		goto err_pwr_ack;
++		goto err_sram;
+ 
+ 	return 0;
+ 
++err_sram:
++	scpsys_clk_disable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
+ err_pwr_ack:
+ 	scpsys_clk_disable(scpd->clk, MAX_CLKS);
+ err_clk:
+@@ -463,6 +472,8 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+ 	if (ret < 0)
+ 		goto out;
+ 
++	scpsys_clk_disable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
++
+ 	/* subsys power off */
+ 	val = readl(ctl_addr);
+ 	val |= PWR_ISO_BIT;
+@@ -500,6 +511,24 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+ 	return ret;
+ }
+ 
++static int init_subsys_clks(struct device_node *np,
++		struct clk **clk)
++{
++	int sub_clk_cnt = of_clk_get_parent_count(np);
++	int i;
++
++	BUG_ON(sub_clk_cnt > MAX_SUBSYS_CLKS);
++
++	for (i = 0; i < sub_clk_cnt; i++) {
++		clk[i] = of_clk_get(np, i);
++
++		if (IS_ERR(clk[i]))
++			return PTR_ERR(clk[i]);
++	}
++
++	return 0;
++}
++
+ static int init_basic_clks(struct platform_device *pdev, struct clk **clk,
+ 			const char * const *name)
+ {
+@@ -533,11 +562,17 @@ static int scpsys_get_domain(struct platform_device *pdev, struct scp *scp,
+ 	struct device_node *sub;
+ 	u32 parent_id, child_id;
+ 	int ret;
++	struct scp_domain *scpd;
+ 
+ 	ret = scpsys_get_domain_id(node, &parent_id);
+ 	if (ret)
+ 		return ret;
+ 
++	scpd = &scp->domains[parent_id];
++	ret = init_subsys_clks(node, scpd->subsys_clk);
++	if (ret)
++		return ret;
++
+ 	for_each_child_of_node(node, sub) {
+ 		ret = scpsys_get_domain_id(sub, &child_id);
+ 		if (ret)
 -- 
 1.8.1.1.dirty
 _______________________________________________
