@@ -2,75 +2,78 @@ Return-Path: <SRS0=30uw=BQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 099A1C433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 12:26:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A7E3C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 12:27:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D6A4122DFA
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 12:26:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 02E0922DFA
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 12:27:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jPo2ldQ7";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ldAGfpV+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D6A4122DFA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="O6UXI0nn";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="b/NDqJ2c"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 02E0922DFA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Zh1GShiuRe50/hv6YteqenYpLyVW1TWx+VDoKzOpR/k=; b=jPo2ldQ7ezASwunYIY0a2rq9FR
-	ZhNDEsy2P229nSA4UoM0pDMbBfqToFe0gY4Me8mj4hJvKoIjj3nq5L3vUn364p5sldlTEDukYZhqa
-	Uz8fDu5GMRuWUcUGZBoPuuiTSdtQ4xMtaOhTrcDOfcrGMjbVTSrjOaP9XJbCBmdiTIQtk4AjmjDcZ
-	8qK0W31tGYZBDJf48qaRV3aEcap3XR6Yij0LLZICgvHN22OlBiaJViTRd8ypzLfR9MoIbmW8zDqTb
-	tc36xu4L0D171Iwrof6wRl8GITR+y73Crfzw9+to076KnBc4JZeGd8BL4bQG3+a7V/tKCzSBwZ+0+
-	2p/MLw1A==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=QZmnSwMY0gO6caxL1J6KMflCPFbcz4tzM7rRJvGwj9M=; b=O6UXI0nn4g4c+j8WtOPK4vj+4
+	SoGuoFuLWO2EhSiCvW+7eAP+ejXBWAteCNbSKnLbLUTeXHzOTP06DkU0KV5Ke9/UBjMnt2uMZVw3V
+	uAtTTqix/D6uAnG/iSUcBe76ooSi7IqXqvHXvOaQ9fh71p9F6j+idrQzD8Hvmhf5+eU/+LZo/pE4O
+	vUl3WTQE2b0/5yyFq6myQukbaGYlL/BmFsF2IGYDaTJZOuVW/z5sYCfwcijx2RM5bMa46Dvq+8RYv
+	5T+hD0qeAh/CXHcPQDXRKym3XQzUfmgQg6HyX8o0VN/jnR0PD2syhOnU2fGH2puPwcAGQ7ZFUsNoL
+	9kKUh7X2g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k3aMg-0002Ob-TN; Thu, 06 Aug 2020 07:31:02 +0000
+	id 1k3cAp-0007Iq-UC; Thu, 06 Aug 2020 09:26:55 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3aMf-0002Nt-7j; Thu, 06 Aug 2020 07:31:02 +0000
-X-UUID: f0bc0435eeef4ead976e92bf2f99eeaa-20200805
+ id 1k3cAh-0007FH-Ll; Thu, 06 Aug 2020 09:26:49 +0000
+X-UUID: 2fbc15bd891045bfb3e1f4ed03325551-20200806
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=HPY1Y8WchrDTl7dW9nXX5eI/MbrnUntKhJLM+zFG4Ko=; 
- b=ldAGfpV+ws5Wa7QwAJzZLrDKqDaDR8ozIdBSqykIHKFRRFEkFQi6wM+qWHOelZOB01TJjvtwZjrKyu/m11hOotpa9O3BJYKz33Z4UbsKuynxpieDN9ZSDDMb+G8WhFqLQDE0opBURo472+NRY0zrXnTsoiZWy+MpraCiVFVpc24=;
-X-UUID: f0bc0435eeef4ead976e92bf2f99eeaa-20200805
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=CS/Le7cAUQ56oWlindS5L/YWg5qHDp+7IaPFk65rgCU=; 
+ b=b/NDqJ2cTFEcQoRc3TD2DBFWVPvI2cRj+RnHKi0XL9O2ovAbdHI9cgPUy5XQxRmbLTYZKf25n6S+qKpACFfSee0GcIRQKLYIdfUSVjKuYUIlaat+ah8pN0rZKbFEcsFh7N6ZOVQtspddXd/V/AP1qiJKSM2+Nlh7G3yAFXZFcok=;
+X-UUID: 2fbc15bd891045bfb3e1f4ed03325551-20200806
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <frederic.chen@mediatek.com>)
+ (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 138367907; Wed, 05 Aug 2020 23:30:58 -0800
+ with ESMTP id 1134274426; Thu, 06 Aug 2020 01:26:43 -0800
 Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 6 Aug 2020 00:30:06 -0700
+ 15.0.1497.2; Thu, 6 Aug 2020 02:22:06 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 6 Aug 2020 15:29:59 +0800
+ 15.0.1497.2; Thu, 6 Aug 2020 17:21:59 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 6 Aug 2020 15:29:59 +0800
-From: <frederic.chen@mediatek.com>
-To: <hans.verkuil@cisco.com>, <laurent.pinchart+renesas@ideasonboard.com>,
- <tfiga@chromium.org>, <matthias.bgg@gmail.com>, <mchehab@kernel.org>
-Subject: [PATCH 0/1] media: change media_device_request_alloc to match
- media_ioctl_info
-Date: Thu, 6 Aug 2020 15:29:51 +0800
-Message-ID: <20200806072952.11709-1-frederic.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ Frontend Transport; Thu, 6 Aug 2020 17:21:59 +0800
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+To: Enric Balletbo Serra <eballetbo@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, "Rob
+ Herring" <robh@kernel.org>, Sascha Hauer <kernel@pengutronix.de>
+Subject: [PATCH v17 05/12] dt-bindings: soc: Add MT8183 power dt-bindings
+Date: Thu, 6 Aug 2020 17:21:48 +0800
+Message-ID: <1596705715-15320-6-git-send-email-weiyi.lu@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1596705715-15320-1-git-send-email-weiyi.lu@mediatek.com>
+References: <1596705715-15320-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200806_033101_422588_59F79D8A 
-X-CRM114-Status: GOOD (  10.59  )
+X-CRM114-CacheID: sfid-20200806_052647_866523_30326396 
+X-CRM114-Status: GOOD (  18.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,60 +85,187 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sean.Cheng@mediatek.com, srv_heupstream@mediatek.com, sj.huang@mediatek.com,
- yuzhao@chromium.org, linux-mediatek@lists.infradead.org, zwisler@chromium.org,
- christie.yu@mediatek.com, frederic.chen@mediatek.com,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: James Liao <jamesjj.liao@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>,
+ srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-KioqIEJMVVJCIEhFUkUgKioqDQpIZWxsbywNCg0KVGhpcyBwYXRjaCBpcyB0byBtb2RpZnkgbWVk
-aWFfZGV2aWNlX3JlcXVlc3RfYWxsb2MoKSBzbyB0aGF0IGl0IGNhbiBwYXNzDQpDRkkoQ29udHJv
-bCBGbG93IEludGVncml0eSkgY2hlY2suIEkgd291bGQgbGlrZSBzb21lIHJldmlldyBjb21tZW50
-cy4NCg0KbWVkaWFfZGV2aWNlX3JlcXVlc3RfYWxsb2MoKSBpcyBzYXZlZCBpbiBmbiBvZiBtZWRp
-YV9pb2N0bF9pbmZvIHN0cnVjdCwNCndoaWNoIGlzIGRlZmluZWQgYXMgbG9uZyAoKmZuKShzdHJ1
-Y3QgbWVkaWFfZGV2aWNlICpkZXYsIHZvaWQgKmFyZykuIFRoZQ0KdHlwZSBvZiB0aGUgc2Vjb25k
-IHBhcmFtZXRlciBvZiBtZWRpYV9kZXZpY2VfcmVxdWVzdF9hbGxvYygpIGlzIGludCogbm93LA0K
-YnV0IGl0IGlzIHZvaWQqIGluIGZuIG9mIG1lZGlhX2lvY3RsX2luZm8uIFdlIGdvdCBzb21lIEFC
-SSB2aW9sYXRpb24gaGVyZS4NClRoZXJlZm9yZSwgd2Ugd291bGQgbGlrZSB0byB1c2Ugdm9pZCog
-aW5zdGVhZCBvZiBpbnQqIGZvciB0aGUgc2Vjb25kDQpwYXJhbWV0ZXIgb2YgbWVkaWFfZGV2aWNl
-X3JlcXVlc3RfYWxsb2MoKS4NCg0Kc3RhdGljIGxvbmcgbWVkaWFfZGV2aWNlX3JlcXVlc3RfYWxs
-b2Moc3RydWN0IG1lZGlhX2RldmljZSAqbWRldiwNCgkJCQkgICAgICAgaW50ICphbGxvY19mZCk7
-DQoNCnN0cnVjdCBtZWRpYV9pb2N0bF9pbmZvIHsNCgl1bnNpZ25lZCBpbnQgY21kOw0KCXVuc2ln
-bmVkIHNob3J0IGZsYWdzOw0KCWxvbmcgKCpmbikoc3RydWN0IG1lZGlhX2RldmljZSAqZGV2LCB2
-b2lkICphcmcpOw0KCWxvbmcgKCphcmdfZnJvbV91c2VyKSh2b2lkICprYXJnLCB2b2lkIF9fdXNl
-ciAqdWFyZywgdW5zaWduZWQgaW50IGNtZCk7DQoJbG9uZyAoKmFyZ190b191c2VyKSh2b2lkIF9f
-dXNlciAqdWFyZywgdm9pZCAqa2FyZywgdW5zaWduZWQgaW50IGNtZCk7DQp9Ow0KDQoNCkhlcmUg
-aXMgYW4gZXhhbXBsZS4gV2l0aCBBbmRyb2lk4oCZcyBDRkkgY2hlY2tpbmcsIHdlIGdvdCB0aGUg
-Zm9sbG93aW5nIGVycm9yDQp3aXRob3V0IHRoaXMgY2hhbmdlLg0KDQpbICAgMjMuNTAyNDc3XSBt
-dGstY2FtIHNvYzpjYW1pc3A6IHNkOm10ay1jYW0gcmF3LTAgcGFkOjIgc2V0IGZvcm1hdCB3L2gv
-Y29kZSAyMzI4LzE3NDgvMHgzMDA3DQpbICAgMjMuNTE4NjkwXSBLZXJuZWwgcGFuaWMgLSBub3Qg
-c3luY2luZzogQ0ZJIGZhaWx1cmUgKHRhcmdldDogbWVkaWFfZGV2aWNlX3JlcXVlc3RfYWxsb2Mr
-MHgwLzB4NCkNClsgICAyMy41MTk4MDRdIENQVTogNyBQSUQ6IDgxOCBDb21tOiBtdGt2NGwyX3V0
-IFRhaW50ZWQ6IEcgUyAgICAgICAgIE8gICAgICA1LjQuMzktZzAyYzBhNDg1OGJlZC1kaXJ0eSAj
-NDUNClsgICAyMy41MjE1NTNdIENhbGwgdHJhY2U6DQpbICAgMjMuNTIxODY4XSAgZHVtcF9iYWNr
-dHJhY2UuY2ZpX2p0KzB4MC8weDQNClsgICAyMy41MjIzODldICBkdW1wX3N0YWNrKzB4YjgvMHgx
-MTQNClsgICAyMy41MjI4MjRdICBwYW5pYysweDE3MC8weDNlMA0KWyAgIDIzLjUyMzIxNV0gIF9f
-dWJzYW5faGFuZGxlX2NmaV9jaGVja19mYWlsX2Fib3J0KzB4MC8weDE0DQpbICAgMjMuNTIzODk2
-XSAgcGVyZl9wcm9jX3VwZGF0ZV9oYW5kbGVyKzB4MC8weGNjDQpbICAgMjMuNTI0NDYwXSAgX19j
-ZmlfY2hlY2srMHg2MTBjYy8weDY4ZWYwDQpbICAgMjMuNTI0OTU5XSAgbWVkaWFfZGV2aWNlX2lv
-Y3RsKzB4MjE4LzB4MjM4DQpbICAgMjMuNTI1NDg4XSAgbWVkaWFfZGV2aWNlX2NvbXBhdF9pb2N0
-bCsweDYwLzB4N2MNClsgICAyMy41MjYwNzJdICBtZWRpYV9jb21wYXRfaW9jdGwrMHg1OC8weDlj
-DQpbICAgMjMuNTI2NTgxXSAgX19hcm02NF9jb21wYXRfc3lzX2lvY3RsKzB4MTBjLzB4NDM0DQpb
-ICAgMjMuNTI3MTc2XSAgZWwwX3N2Y19jb21tb24rMHhiNC8weDE4Yw0KWyAgIDIzLjUyNzY1MV0g
-IGVsMF9zdmNfY29tcGF0X2hhbmRsZXIrMHgxYy8weDI4DQpbICAgMjMuNTI4MjAyXSAgZWwwX3N2
-Y19jb21wYXQrMHg4LzB4MjQNClsgICAyMy41Mjg2NTldIFNNUDogc3RvcHBpbmcgc2Vjb25kYXJ5
-IENQVXMNClsgICAyMy41MjkxNjFdIEtlcm5lbCBPZmZzZXQ6IDB4MjRiOGMwMDAwMCBmcm9tIDB4
-ZmZmZmZmYzAxMDAwMDAwMA0KWyAgIDIzLjUyOTkwNl0gUEhZU19PRkZTRVQ6IDB4ZmZmZmZmZGQw
-MDAwMDAwMA0KWyAgIDIzLjUzMDQzNF0gQ1BVIGZlYXR1cmVzOiAweDAwMDAwMDA2LDJhODBhMjM4
-DQpbICAgMjMuNTMwOTgzXSBNZW1vcnkgTGltaXQ6IG5vbmUNClBQTF9MT0dfU1RPUkU6IGNoZWNr
-IG9uY2UsIHNpZyB2YWx1ZSAweDI3LCBhZGRyIDB4MTE2MDAwLg0KDQoNCkZyZWRlcmljIENoZW4g
-KDEpOg0KICBtZWRpYTogbWMtZGV2aWNlLmM6IGNoYW5nZSBtZWRpYV9kZXZpY2VfcmVxdWVzdF9h
-bGxvYyB0byBtYXRjaA0KICAgIG1lZGlhX2lvY3RsX2luZm8NCg0KIGRyaXZlcnMvbWVkaWEvbWMv
-bWMtZGV2aWNlLmMgfCA1ICsrKy0tDQogMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwg
-MiBkZWxldGlvbnMoLSkNCg0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1tZWRpYXRlawo=
+Add power dt-bindings of MT8183.
+Add an optional "mediatek,smi" property for phandle to smi-common
+node for power controller.
+Introduce properties for power domain sub nodes.
+
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+---
+ .../devicetree/bindings/soc/mediatek/scpsys.txt    | 81 ++++++++++++++++++++--
+ include/dt-bindings/power/mt8183-power.h           | 26 +++++++
+ 2 files changed, 102 insertions(+), 5 deletions(-)
+ create mode 100644 include/dt-bindings/power/mt8183-power.h
+
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+index 2bc3677..efe2025 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
++++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+@@ -15,8 +15,9 @@ power/power-domain.yaml. It provides the power domains defined in
+ - include/dt-bindings/power/mt2701-power.h
+ - include/dt-bindings/power/mt2712-power.h
+ - include/dt-bindings/power/mt7622-power.h
++- include/dt-bindings/power/mt8183-power.h
+ 
+-Required properties:
++Required properties for power controller:
+ - compatible: Should be one of:
+ 	- "mediatek,mt2701-scpsys"
+ 	- "mediatek,mt2712-scpsys"
+@@ -27,12 +28,15 @@ Required properties:
+ 	- "mediatek,mt7623a-scpsys": For MT7623A SoC
+ 	- "mediatek,mt7629-scpsys", "mediatek,mt7622-scpsys": For MT7629 SoC
+ 	- "mediatek,mt8173-scpsys"
++	- "mediatek,mt8183-scpsys"
+ - #power-domain-cells: Must be 1
++- #address-cells: Should be 1
++- #size-cells: Should be 0
+ - reg: Address range of the SCPSYS unit
+ - infracfg: must contain a phandle to the infracfg controller
+-- clock, clock-names: clocks according to the common clock binding.
+-                      These are clocks which hardware needs to be
+-                      enabled before enabling certain power domains.
++- clocks, clock-names: clocks according to the common clock binding.
++                       These are clocks which hardware needs to be
++                       enabled before enabling certain power domains.
+ 	Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
+ 	Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
+ 	Required clocks for MT6765: MUX: "mm", "mfg"
+@@ -43,8 +47,11 @@ Required properties:
+ 	Required clocks for MT7622 or MT7629: "hif_sel"
+ 	Required clocks for MT7623A: "ethif"
+ 	Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
++	Required clocks for MT8183: "audio", "audio1", "audio2", "mfg", "mm",
++				    "cam", "isp", "vpu", "vpu1", "vpu2",
++				    "vpu3";
+ 
+-Optional properties:
++Optional properties for power controller:
+ - vdec-supply: Power supply for the vdec power domain
+ - venc-supply: Power supply for the venc power domain
+ - isp-supply: Power supply for the isp power domain
+@@ -55,6 +62,16 @@ Optional properties:
+ - mfg_async-supply: Power supply for the mfg_async power domain
+ - mfg_2d-supply: Power supply for the mfg_2d power domain
+ - mfg-supply: Power supply for the mfg power domain
++- mediatek,smi : A phandle to the smi_common node
++
++Required properties for power domain sub nodes:
++- reg: index of the power domain, should use macros in:
++	"include/dt-bindings/power/mt8192-power.h" - for power domain of MT8192.
++
++Optional properties for power domain sub nodes:
++- clocks: clocks according to the common clock binding.
++          These are clocks which hardware needs to be enabled before
++          releasing the bus protection.
+ 
+ Example:
+ 
+@@ -70,6 +87,60 @@ Example:
+ 		clock-names = "mfg", "mm", "venc", "venc_lt";
+ 	};
+ 
++Example(power domain sub node within power controller):
++
++	scpsys: power-controller@10006000 {
++		compatible = "mediatek,mt8183-scpsys", "syscon";
++		reg = <0 0x10006000 0 0x1000>;
++		clocks = <&topckgen CLK_TOP_MUX_MM>,
++			 <&topckgen CLK_TOP_MUX_IPU_IF>,
++			 <&topckgen CLK_TOP_MUX_DSP>,
++			 <&topckgen CLK_TOP_MUX_DSP1>,
++			 <&topckgen CLK_TOP_MUX_DSP2>;
++		clock-names = "mm", "vpu", "vpu1", "vpu2", "vpu3";
++		infracfg = <&infracfg>;
++		mediatek,smi = <&smi_common>;
++		#power-domain-cells = <1>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		conn@MT8183_POWER_DOMAIN_CONN {
++			reg = <MT8183_POWER_DOMAIN_CONN>;
++		};
++
++		disp@MT8183_POWER_DOMAIN_DISP {
++			reg = <MT8183_POWER_DOMAIN_DISP>;
++			clocks = <&mmsys CLK_MM_SMI_COMMON>,
++				 <&mmsys CLK_MM_SMI_LARB0>,
++				 <&mmsys CLK_MM_SMI_LARB1>,
++				 <&mmsys CLK_MM_GALS_COMM0>,
++				 <&mmsys CLK_MM_GALS_COMM1>,
++				 <&mmsys CLK_MM_GALS_CCU2MM>,
++				 <&mmsys CLK_MM_GALS_IPU12MM>,
++				 <&mmsys CLK_MM_GALS_IMG2MM>,
++				 <&mmsys CLK_MM_GALS_CAM2MM>,
++				 <&mmsys CLK_MM_GALS_IPU2MM>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			vpu_top@MT8183_POWER_DOMAIN_VPU_TOP {
++				reg = <MT8183_POWER_DOMAIN_VPU_TOP>;
++				clocks = <&ipu_conn CLK_IPU_CONN_IPU>,
++					 <&ipu_conn CLK_IPU_CONN_AHB>,
++					 <&ipu_conn CLK_IPU_CONN_AXI>,
++					 <&ipu_conn CLK_IPU_CONN_ISP>,
++					 <&ipu_conn CLK_IPU_CONN_CAM_ADL>,
++					 <&ipu_conn CLK_IPU_CONN_IMG_ADL>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				vpu_core0@MT8183_POWER_DOMAIN_VPU_CORE0 {
++					reg = <MT8183_POWER_DOMAIN_VPU_CORE0>;
++				};
++			};
++		};
++	};
++
+ Example consumer:
+ 
+ 	afe: mt8173-afe-pcm@11220000 {
+diff --git a/include/dt-bindings/power/mt8183-power.h b/include/dt-bindings/power/mt8183-power.h
+new file mode 100644
+index 0000000..d1ab387
+--- /dev/null
++++ b/include/dt-bindings/power/mt8183-power.h
+@@ -0,0 +1,26 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (c) 2020 MediaTek Inc.
++ * Author: Weiyi Lu <weiyi.lu@mediatek.com>
++ */
++
++#ifndef _DT_BINDINGS_POWER_MT8183_POWER_H
++#define _DT_BINDINGS_POWER_MT8183_POWER_H
++
++#define MT8183_POWER_DOMAIN_AUDIO	0
++#define MT8183_POWER_DOMAIN_CONN	1
++#define MT8183_POWER_DOMAIN_MFG_ASYNC	2
++#define MT8183_POWER_DOMAIN_MFG		3
++#define MT8183_POWER_DOMAIN_MFG_CORE0	4
++#define MT8183_POWER_DOMAIN_MFG_CORE1	5
++#define MT8183_POWER_DOMAIN_MFG_2D	6
++#define MT8183_POWER_DOMAIN_DISP	7
++#define MT8183_POWER_DOMAIN_CAM		8
++#define MT8183_POWER_DOMAIN_ISP		9
++#define MT8183_POWER_DOMAIN_VDEC	10
++#define MT8183_POWER_DOMAIN_VENC	11
++#define MT8183_POWER_DOMAIN_VPU_TOP	12
++#define MT8183_POWER_DOMAIN_VPU_CORE0	13
++#define MT8183_POWER_DOMAIN_VPU_CORE1	14
++
++#endif /* _DT_BINDINGS_POWER_MT8183_POWER_H */
+-- 
+1.8.1.1.dirty
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
