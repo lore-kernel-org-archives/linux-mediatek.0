@@ -2,78 +2,75 @@ Return-Path: <SRS0=30uw=BQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CC90CC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 12:20:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C3FB3C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 12:20:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 97255204FD
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 12:20:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9D7CA204FD
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 12:20:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LdzMp3cB";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=0x0f.com header.i=@0x0f.com header.b="RCqGu7tx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 97255204FD
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=0x0f.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AXwnEHd7";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="e7LJq29O"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9D7CA204FD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Sh/OHdUh943zpB6H5dsCk/YOIA7loJy8eWWMpfP3f28=; b=LdzMp3cBOQNjbw4rX0zbDk9MZ
-	nRWDgQ7cXxwWNApsY7c6fVNKQff3nP8S6d0eD3z7VvWuoHb8fmwV5EsW1jMO2Vf7uuHQYbd57KM+E
-	/50Ibim7dDr2dXVn4drS6nBsRMcman0We4QtziUmEQDnzdBdnik9tTYOVXbv9fYvnIPLl6jhj2Oyi
-	EFQ6/K5HFV0DA4hCtfhZqRoH0X4d0mgiYfzfvaGIUcJfjgvuyfoqxDY/2/3DuoNRT+wnYwMS8abRd
-	3jUcz+FlA0Uopzk2yPmMq3qH3b+6WGxDKEZgwo4pIWp1H5FoX0TZKlYgh60L99YPa9zXrVwh5L9a8
-	Vo76U1k4A==;
+	 bh=ebONAp7ijB2tgLUSj+1prIZuRVmod4/cmMDPdZX611g=; b=AXwnEHd72sH5XkqbO6ESMc2CQ
+	ExpOf4Flj0JDJ2mXayfbYIVdcH/C+D+h/F/Yq+tHKf1a8mYwISlMIO+r+ggEMC0RC/nciyRgDVH1f
+	PJnyTJ/jO/1czpHptlFu9H/IMJMk2BWAj9/LRVVQ/2ZBuvEB56KwEnwVCemxIO1lCmzVBRFPw3Xbu
+	iEzRPVIsjdiq49VXTUgH6sHVbdUb5GoG4ieqy3/Yf82H70DMc3uM8yv/rCH3JANX13fBMxPvK2sG7
+	aqOfPxSrs7EUe/2Q8VLO9KVK7Zey4gdNFZeIl5J9A4Ws5OZvlEUPDmEuiUW/pinr57I2+VExjizvi
+	abd+aqhwA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k3ct1-0005Ti-FF; Thu, 06 Aug 2020 10:12:35 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1k3dkU-0002Bj-8Q; Thu, 06 Aug 2020 11:07:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3csz-0005Sy-Ja
- for linux-mediatek@lists.infradead.org; Thu, 06 Aug 2020 10:12:34 +0000
-Received: by mail-wm1-x342.google.com with SMTP id t14so9115951wmi.3
- for <linux-mediatek@lists.infradead.org>; Thu, 06 Aug 2020 03:12:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0x0f.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=sVXbFojH/0R1sh5NGJY6hM5Fv6yHchdFYqFYRJiPcsk=;
- b=RCqGu7txZxmTvjk8hFf9VCO6P0oOQtU9w1qLjI9bgEqPurJEc5ppShIfh23PTPqZOF
- Rx4V3jSS2vqgcGVkhDFvZIr71G3bon5/yAvpGu8v4V3+H8kAyNOvxjumBbk9gU8dCboq
- XiuD6bY5nCpwm0ePducl8RnH1HsiCdyzM5SwY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=sVXbFojH/0R1sh5NGJY6hM5Fv6yHchdFYqFYRJiPcsk=;
- b=sUj9gE54d2IbAQveeKszqz1R9p+PTydbPYvY/0xKZP978DSmgn1o76gqOuJLlL8SdP
- WQ8KUFeUlPX4oBy3k5IsTFtqayZNeDHHV5944fVQPnnPCw4KdPN6PJsYqxSdXI3/8h/N
- kD8bz8JcGHYr3rzo05FD/LsOgYahzm0MkaRq2ijn3oBq971ZLIBN1q7b72MgmdycNLhC
- HBJQi6zfgAuTSU/RXkgmv89dPzgOoVmmZG3TWec+PAZN+xdJNzOWz1DfePCqJtkfQ+Y6
- 9QGfBObfF7oprqAE8xBB7uDWmcAF/zi0DmZTQ8hcHlv53VS2FeCuhmGbosXCnKE2MGFL
- wwHg==
-X-Gm-Message-State: AOAM531rlJOuI4gbeqhmnDJIdDtnuOBxbbGe+KQL0cBWyJMwsfF0cIX0
- isOuJ7cRWNQVSr+imlVMFBFq1IZiFEr4gSEZv/nK4g==
-X-Google-Smtp-Source: ABdhPJzlXXZln0onZBt7l5va/GB6ImScyHaiS3RfhGoDY/VOeSuREACSW8Vh6oIT4OB38N29lX47wSMOiyyn3mPjIOY=
-X-Received: by 2002:a1c:2646:: with SMTP id m67mr7719681wmm.137.1596708752740; 
- Thu, 06 Aug 2020 03:12:32 -0700 (PDT)
+ id 1k3dkR-0002Ac-0X; Thu, 06 Aug 2020 11:07:48 +0000
+X-UUID: 412f4fa15cf443439dd20c6cbc3c54a1-20200806
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=81yr++aU7+XxgAqjzy+4dxBSf9qaA6XpetwM97SESGs=; 
+ b=e7LJq29OgasN7UOqAY9dT759QzXEoNacew8H+ap9oqxiKRl+noQDphmm4jZONqrjtTOVt6O80tqAvD+32Ae0uqx0Dtjmu1B5BEmI7tohA802YBAg1GbXii6Hr0DXlmJ6V9YAz7oI1yza4Kqnqf4NH41oykPJ1+mV+zpR/DnP9qw=;
+X-UUID: 412f4fa15cf443439dd20c6cbc3c54a1-20200806
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <qii.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 3606564; Thu, 06 Aug 2020 03:07:36 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 6 Aug 2020 04:07:33 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs02n1.mediatek.inc
+ (172.21.101.77) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 6 Aug 2020 19:07:26 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 6 Aug 2020 19:07:27 +0800
+Message-ID: <1596712005.8263.4.camel@mhfsdcap03>
+Subject: Re: [PATCH] i2c: mediatek: Fix i2c_spec_values description
+From: Qii Wang <qii.wang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Date: Thu, 6 Aug 2020 19:06:45 +0800
+In-Reply-To: <c410f784-7b51-0d65-7a41-3845214dd273@gmail.com>
+References: <c410f784-7b51-0d65-7a41-3845214dd273@gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-References: <20200803062214.24076-1-mark-pk.tsai@mediatek.com>
-In-Reply-To: <20200803062214.24076-1-mark-pk.tsai@mediatek.com>
-From: Daniel Palmer <daniel@0x0f.com>
-Date: Thu, 6 Aug 2020 19:12:21 +0900
-Message-ID: <CAFr9PX=Gk9h6ASi6saBLhoZ45g-WqCzDQo2XWT033fJykFSY_g@mail.gmail.com>
-Subject: Re: [PATCH 0/2] irqchip: irq-mt58xx: Add mt58xx series interrupt
-To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200806_061233_649732_4113C4D2 
-X-CRM114-Status: GOOD (  11.03  )
+X-CRM114-CacheID: sfid-20200806_070747_243406_2A967CBE 
+X-CRM114-Status: GOOD (  15.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,34 +82,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: DTML <devicetree@vger.kernel.org>, alix.wu@mediatek.com,
- jason@lakedaemon.net, Marc Zyngier <maz@kernel.org>, yj.chiang@mediatek.com,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- tglx@linutronix.de, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Cc: Matthias Brugger <mbrugger@suse.com>, wsa@the-dreams.de,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-i2c@vger.kernel.org, yingjoe.chen@mediatek.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mark-PK,
+On Thu, 2020-08-06 at 11:48 +0200, Matthias Brugger wrote:
+> The struct i2c_spec_values have it's members documented but is missing the 
+> starting '@', which leads to warings like:
+> 
+> drivers/i2c/busses/i2c-mt65xx.c:267: warning: Function parameter or member 
+> 'min_low_ns' not described in 'i2c_spec_values'
+> 
+> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+> ---
+>   drivers/i2c/busses/i2c-mt65xx.c | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> index e889f74703e4..f51b35fc400f 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -253,10 +253,10 @@ struct mtk_i2c {
+> 
+>   /**
+>    * struct i2c_spec_values:
+> - * min_low_ns: min LOW period of the SCL clock
 
-Your driver seems to be for the same interrupt controller IP that is
-present in MStar's TV and camera SoCs and now SigmaStar's SoCs.
-I sent a series[0] for a driver very similar to yours but for the
-MStar SoCs. Do you know if it would be possible to confirm if they are
-the
-same thing? MediaTek bought MStar a few years ago so it seems likely
-but I have no hard information.
-
-If they are the same thing could we work on making one series that
-supports both use cases?
-It's also possible that if the interrupt controller is the same some
-other things like the SPI NOR controller etc are also common and
-working
-on a single driver for those would save us both time.
-
-[0] - https://lore.kernel.org/linux-arm-kernel/20200805110052.2655487-1-daniel@0x0f.com/
+Can you help me add a description of min_high_ns. As
+@min_high_ns: min HIGH period of the SCL clock
+Thanks
+ 
+> - * min_su_sta_ns: min set-up time for a repeated START condition
+> - * max_hd_dat_ns: max data hold time
+> - * min_su_dat_ns: min data set-up time
+> + * @min_low_ns: min LOW period of the SCL clock
+> + * @min_su_sta_ns: min set-up time for a repeated START condition
+> + * @max_hd_dat_ns: max data hold time
+> + * @min_su_dat_ns: min data set-up time
+>    */
+>   struct i2c_spec_values {
+>   	unsigned int min_low_ns;
 
 _______________________________________________
 Linux-mediatek mailing list
