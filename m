@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C3951C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 07:57:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A3969C433E1
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 08:28:54 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 91CF121744
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 07:57:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 62BE9221E5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 08:28:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ytGx2hyX";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="smOkKvXl"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 91CF121744
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WF5Nzexz";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mailerdienst.de header.i=@mailerdienst.de header.b="L6y0AFHy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 62BE9221E5
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fw-web.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ZyFDLoO7BF43547wsm29joGi6zt81VsncDToaOrTtzU=; b=ytGx2hyXBdVuzy4B1bmBkAuTr
-	Pb4UfiA3iQ+JHfAZfwU6A6lryHIVRWZdW+sNABU7jHrhXKGEXEwIt21cK1hjuoB6bvKf8EJFlBbLG
-	+MELcVtHkyqyVM59s8Js7ZC//ctLhE1AGpFaLx2AgsZSyP4HiO0jv7XtOkzQVD7KNTJQGOnHAL5S/
-	GWq0tU1ms3uSb+bTkwNSwuWDdDkwbbzGmz7HopDfurDPFXKf3UAJV6JYpkzR2g8eDSd9g0uCB3I98
-	DwZCwrJ+nTybuPO9qY8PYGzAsM4NnzJP78QLNIAEa5j+aslZtA6M+I82X8OEAUlym8ug5Vsl2FiM1
-	QUGbhlrVw==;
+	 bh=E8vj+m4C+nEDTYV5PztN/ijJ0xxJUCrn5hJ1J6QBnks=; b=WF5Nzexz5KLWZEDxCa2koStVd
+	LOX0u8H0A+EkwfTQCH06zKYPHxlDlfyddBMcGvjq1h9pI2uuERkFPmxUFxV43IUtVwmXJ9/FeJWaB
+	2rOpgpyKYP/8J474s3SM19g4SafIfWTEyRxJUlF5rFJ+qQwQnJoWxunt19anaX31cb6rmcfUDc97o
+	GcM5hCmxF6kIRleFgZ50y4zSa0DUARnEx0Uz7hWNrdzmvmMnUv2XSungY4SnHA2kTu1foU8q9YEjb
+	MO5CztmzjJy/KGdfTKzlPegbkXbeFXFUE7hr1YZ7VMrvYbfA/zkzNpxaIVGWoxG7T8BgIRerfcRSQ
+	8R9NnY9bQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k3xFf-00022H-E3; Fri, 07 Aug 2020 07:57:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1k3xk1-0004Ro-AB; Fri, 07 Aug 2020 08:28:41 +0000
+Received: from mxwww.masterlogin.de ([95.129.51.220])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3xFc-00021N-7L; Fri, 07 Aug 2020 07:57:17 +0000
-X-UUID: c812524dbb3d4845ac2bdeb8716ad5f9-20200806
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=EZxnpJDS0ELqN2uc/Zq3rprsvYv0d8wUv0E50ciolpY=; 
- b=smOkKvXlu/PhHL5aKUBZ/pH922mh9wklUmMjl1QqP8zniT13p7dMhgovsg0xEZ1yv17x8RmepWPI60tZG4myJcfpxgIifQ3gATM658fD9810JNxvcsXWCWgW8z3kjObQmsDYMYsxr0WXCF37noagolmvot/31SUg4Px+2kw+ytM=;
-X-UUID: c812524dbb3d4845ac2bdeb8716ad5f9-20200806
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <zhiyong.tao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 541003161; Thu, 06 Aug 2020 23:57:08 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 7 Aug 2020 00:49:54 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 7 Aug 2020 15:49:53 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 7 Aug 2020 15:49:51 +0800
-From: Zhiyong Tao <zhiyong.tao@mediatek.com>
-To: <robh+dt@kernel.org>, <linus.walleij@linaro.org>, <mark.rutland@arm.com>, 
- <matthias.bgg@gmail.com>, <sean.wang@kernel.org>
-Subject: [PATCH v3 2/3] dt-bindings: pinctrl: mt8192: add binding document
-Date: Fri, 7 Aug 2020 15:49:04 +0800
-Message-ID: <20200807074905.23468-3-zhiyong.tao@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200807074905.23468-1-zhiyong.tao@mediatek.com>
-References: <20200807074905.23468-1-zhiyong.tao@mediatek.com>
+ id 1k3xjv-0004Pp-Uf; Fri, 07 Aug 2020 08:28:37 +0000
+Received: from mxout1.routing.net (unknown [192.168.10.81])
+ by forward.mxwww.masterlogin.de (Postfix) with ESMTPS id E83BC962D3;
+ Fri,  7 Aug 2020 08:28:25 +0000 (UTC)
+Received: from mxbox4.masterlogin.de (unknown [192.168.10.79])
+ by mxout1.routing.net (Postfix) with ESMTP id BD50E40118;
+ Fri,  7 Aug 2020 08:28:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+ s=20200217; t=1596788905;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=W3o1FZBLZAbABnpopO+j+qFeIdb+A4jyLTzWb/dtdMM=;
+ b=L6y0AFHy1u8hLARYWAd0PRZdDMnk91T+/BTMPRJBZ9yRczd9CELavinoYlLe18nfPXanvn
+ EOilcbB3HItnnzR9uCrWVpvvmodmj4Bsa2W22w3LpB7+spccsWdJM2Qp21l0yPkbP56OQw
+ 9GtonxsqOwunKHcDs/Izh61F8IWv8bw=
+Received: from localhost.localdomain (fttx-pool-37.60.0.190.bambit.de
+ [37.60.0.190])
+ by mxbox4.masterlogin.de (Postfix) with ESMTPSA id 107D380943;
+ Fri,  7 Aug 2020 08:28:25 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-mediatek@lists.infradead.org
+Subject: [PATCH 2/2] arm: dts: mt7623: add display subsystem related device
+ nodes
+Date: Fri,  7 Aug 2020 10:27:54 +0200
+Message-Id: <20200807082754.6790-3-linux@fw-web.de>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200807082754.6790-1-linux@fw-web.de>
+References: <20200807082754.6790-1-linux@fw-web.de>
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200807_035716_467979_F7EC441B 
-X-CRM114-Status: GOOD (  15.11  )
+X-CRM114-CacheID: sfid-20200807_042836_239137_6AF22F56 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,183 +82,449 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, sean.wang@mediatek.com,
- srv_heupstream@mediatek.com, chuanjia.liu@mediatek.com,
- biao.huang@mediatek.com, zhiyong.tao@mediatek.com, erin.lo@mediatek.com,
- hui.liu@mediatek.com, seiya.wang@mediatek.com, linux-kernel@vger.kernel.org,
- sin_jieyang@mediatek.com, hongzhou.yang@mediatek.com, sj.huang@mediatek.com,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-gpio@vger.kernel.org, eddie.huang@mediatek.com, jg_poxu@mediatek.com
+Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ chunhui dai <chunhui.dai@mediatek.com>, linux-kernel@vger.kernel.org,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Bibby Hsieh <bibby.hsieh@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The commit adds mt8192 compatible node in binding document.
+From: Ryder Lee <ryder.lee@mediatek.com>
 
-Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+Add display subsystem related device nodes for MT7623.
+
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
+Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Tested-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- .../bindings/pinctrl/pinctrl-mt8192.yaml      | 149 ++++++++++++++++++
- 1 file changed, 149 insertions(+)
- create mode 100755 Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml
+changed
+v4->v5:
+  add nodes to new mt7623n.dtsi to avoid conflict with mt7623a
+v3->v4:
+  drop display_components which is duplicate of existing mmsys
+v2->v3:
+  drop bls to dpi routing
+---
+ arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts |  72 ++++++++
+ arch/arm/boot/dts/mt7623n-rfb-emmc.dts        |  72 ++++++++
+ arch/arm/boot/dts/mt7623n.dtsi                | 171 ++++++++++++++++++
+ 3 files changed, 315 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml
-new file mode 100755
-index 000000000000..3b46bbfa38ec
---- /dev/null
-+++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml
-@@ -0,0 +1,149 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/pinctrl/pinctrl-mt8192.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+index 344f8c65c4aa..f41f221e56ca 100644
+--- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
++++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+@@ -21,6 +21,19 @@ chosen {
+ 		stdout-path = "serial2:115200n8";
+ 	};
+ 
++	connector {
++		compatible = "hdmi-connector";
++		label = "hdmi";
++		type = "d";
++		ddc-i2c-bus = <&hdmiddc0>;
 +
-+title: Mediatek MT8192 Pin Controller
++		port {
++			hdmi_connector_in: endpoint {
++				remote-endpoint = <&hdmi0_out>;
++			};
++		};
++	};
 +
-+maintainers:
-+  - Sean Wang <sean.wang@mediatek.com>
+ 	cpus {
+ 		cpu@0 {
+ 			proc-supply = <&mt6323_vproc_reg>;
+@@ -114,10 +127,18 @@ memory@80000000 {
+ 	};
+ };
+ 
++&bls {
++	status = "okay";
++};
 +
-+description: |
-+  The Mediatek's Pin controller is used to control SoC pins.
+ &btif {
+ 	status = "okay";
+ };
+ 
++&cec {
++	status = "okay";
++};
 +
-+properties:
-+  compatible:
-+    const: mediatek,mt8192-pinctrl
+ &cir {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&cir_pins_a>;
+@@ -128,6 +149,21 @@ &crypto {
+ 	status = "okay";
+ };
+ 
++&dpi0 {
++	status = "okay";
 +
-+  gpio-controller: true
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++		port@0 {
++			reg = <0>;
++			dpi0_out: endpoint {
++				remote-endpoint = <&hdmi0_in>;
++			};
++		};
++	};
++};
 +
-+  '#gpio-cells':
-+    description: |
-+      Number of cells in GPIO specifier. Since the generic GPIO binding is used,
-+      the amount of cells must be specified as 2. See the below
-+      mentioned gpio binding representation for description of particular cells.
-+    const: 2
+ &eth {
+ 	status = "okay";
+ 
+@@ -199,6 +235,42 @@ fixed-link {
+ 	};
+ };
+ 
++&hdmi0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&hdmi_pins_a>;
++	status = "okay";
 +
-+  gpio-ranges:
-+    description: gpio valid number range.
-+    maxItems: 1
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++		port@0 {
++			reg = <0>;
++			hdmi0_in: endpoint {
++				remote-endpoint = <&dpi0_out>;
++			};
++		};
 +
-+  reg:
-+    description: |
-+      Physical address base for gpio base registers. There are 11 GPIO
-+      physical address base in mt8192.
-+    maxItems: 11
++		port@1 {
++			reg = <1>;
++			hdmi0_out: endpoint {
++				remote-endpoint = <&hdmi_connector_in>;
++			};
++		};
++	};
++};
 +
-+  reg-names:
-+    description: |
-+      Gpio base register names.
-+    maxItems: 11
++&hdmiddc0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&hdmi_ddc_pins_a>;
++	status = "okay";
++};
 +
-+  interrupt-controller: true
++&hdmi_phy {
++	mediatek,ibias = <0xa>;
++	mediatek,ibias_up = <0x1c>;
++	status = "okay";
++};
 +
-+  '#interrupt-cells':
-+    const: 2
+ &i2c0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c0_pins_a>;
+diff --git a/arch/arm/boot/dts/mt7623n-rfb-emmc.dts b/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
+index f8efcc364bc3..1b9b9a8145a7 100644
+--- a/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
++++ b/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
+@@ -24,6 +24,19 @@ chosen {
+ 		stdout-path = "serial2:115200n8";
+ 	};
+ 
++	connector {
++		compatible = "hdmi-connector";
++		label = "hdmi";
++		type = "d";
++		ddc-i2c-bus = <&hdmiddc0>;
 +
-+  interrupts:
-+    description: The interrupt outputs to sysirq.
-+    maxItems: 1
++		port {
++			hdmi_connector_in: endpoint {
++				remote-endpoint = <&hdmi0_out>;
++			};
++		};
++	};
 +
-+#PIN CONFIGURATION NODES
-+patternProperties:
-+  '^pins':
-+    type: object
-+    description: |
-+      A pinctrl node should contain at least one subnodes representing the
-+      pinctrl groups available on the machine. Each subnode will list the
-+      pins it needs, and how they should be configured, with regard to muxer
-+      configuration, pullups, drive strength, input enable/disable and
-+      input schmitt.
-+      An example of using macro:
-+      pincontroller {
-+        /* GPIO0 set as multifunction GPIO0 */
-+        state_0_node_a {
-+          pinmux = <PINMUX_GPIO0__FUNC_GPIO0>;
-+        };
-+        /* GPIO1 set as multifunction PWM */
-+        state_0_node_a {
-+          pinmux = <PINMUX_GPIO1__FUNC_PWM_1>;
-+        };
-+      };
-+    properties:
-+      pinmux:
-+        $ref: "pinmux-node.yaml"
-+        description: |
-+          Integer array, represents gpio pin number and mux setting.
-+          Supported pin number and mux varies for different SoCs, and are defined
-+          as macros in dt-bindings/pinctrl/<soc>-pinfunc.h directly.
+ 	cpus {
+ 		cpu@0 {
+ 			proc-supply = <&mt6323_vproc_reg>;
+@@ -106,10 +119,18 @@ sound {
+ 	};
+ };
+ 
++&bls {
++	status = "okay";
++};
 +
-+      drive-strength:
-+        description: |
-+          It can support some arguments, such as MTK_DRIVE_4mA, MTK_DRIVE_6mA, etc. See
-+          dt-bindings/pinctrl/mt65xx.h. It can only support 2/4/6/8/10/12/14/16mA in mt8192.
-+        enum: [2, 4, 6, 8, 10, 12, 14, 16]
+ &btif {
+ 	status = "okay";
+ };
+ 
++&cec {
++	status = "okay";
++};
 +
-+      bias-pull-down: true
+ &cir {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&cir_pins_a>;
+@@ -120,6 +141,21 @@ &crypto {
+ 	status = "okay";
+ };
+ 
++&dpi0 {
++	status = "okay";
 +
-+      bias-pull-up: true
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++		port@0 {
++			reg = <0>;
++			dpi0_out: endpoint {
++				remote-endpoint = <&hdmi0_in>;
++			};
++		};
++	};
++};
 +
-+      bias-disable: true
+ &eth {
+ 	status = "okay";
+ 
+@@ -203,6 +239,42 @@ fixed-link {
+ 	};
+ };
+ 
++&hdmi0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&hdmi_pins_a>;
++	status = "okay";
 +
-+      output-high: true
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++		port@0 {
++			reg = <0>;
++			hdmi0_in: endpoint {
++				remote-endpoint = <&dpi0_out>;
++			};
++		};
 +
-+      output-low: true
++		port@1 {
++			reg = <1>;
++			hdmi0_out: endpoint {
++				remote-endpoint = <&hdmi_connector_in>;
++			};
++		};
++	};
++};
 +
-+      input-enable: true
++&hdmiddc0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&hdmi_ddc_pins_a>;
++	status = "okay";
++};
 +
-+      input-disable: true
++&hdmi_phy {
++	mediatek,ibias = <0xa>;
++	mediatek,ibias_up = <0x1c>;
++	status = "okay";
++};
 +
-+      input-schmitt-enable: true
+ &i2c0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c0_pins_a>;
+diff --git a/arch/arm/boot/dts/mt7623n.dtsi b/arch/arm/boot/dts/mt7623n.dtsi
+index a47e82468895..61545fc541c4 100644
+--- a/arch/arm/boot/dts/mt7623n.dtsi
++++ b/arch/arm/boot/dts/mt7623n.dtsi
+@@ -10,6 +10,10 @@
+ #include <dt-bindings/memory/mt2701-larb-port.h>
+ 
+ / {
++	aliases {
++		rdma0 = &rdma0;
++		rdma1 = &rdma1;
++	};
+ 	g3dsys: syscon@13000000 {
+ 		compatible = "mediatek,mt7623-g3dsys",
+ 			     "mediatek,mt2701-g3dsys",
+@@ -131,4 +135,171 @@ smi_common: smi@1000c000 {
+ 		clock-names = "apb", "smi", "async";
+ 		power-domains = <&scpsys MT2701_POWER_DOMAIN_DISP>;
+ 	};
 +
-+      input-schmitt-disable: true
++	ovl: ovl@14007000 {
++		compatible = "mediatek,mt7623-disp-ovl",
++			     "mediatek,mt2701-disp-ovl";
++		reg = <0 0x14007000 0 0x1000>;
++		interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&mmsys CLK_MM_DISP_OVL>;
++		iommus = <&iommu MT2701_M4U_PORT_DISP_OVL_0>;
++		mediatek,larb = <&larb0>;
++	};
 +
-+    required:
-+      - pinmux
++	rdma0: rdma@14008000 {
++		compatible = "mediatek,mt7623-disp-rdma",
++			     "mediatek,mt2701-disp-rdma";
++		reg = <0 0x14008000 0 0x1000>;
++		interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&mmsys CLK_MM_DISP_RDMA>;
++		iommus = <&iommu MT2701_M4U_PORT_DISP_RDMA>;
++		mediatek,larb = <&larb0>;
++	};
 +
-+    additionalProperties:  false
++	wdma@14009000 {
++		compatible = "mediatek,mt7623-disp-wdma",
++			     "mediatek,mt2701-disp-wdma";
++		reg = <0 0x14009000 0 0x1000>;
++		interrupts = <GIC_SPI 154 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&mmsys CLK_MM_DISP_WDMA>;
++		iommus = <&iommu MT2701_M4U_PORT_DISP_WDMA>;
++		mediatek,larb = <&larb0>;
++	};
 +
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - interrupt-controller
-+  - '#interrupt-cells'
-+  - gpio-controller
-+  - '#gpio-cells'
-+  - gpio-ranges
++	bls: pwm@1400a000 {
++		compatible = "mediatek,mt7623-disp-pwm",
++			     "mediatek,mt2701-disp-pwm";
++		reg = <0 0x1400a000 0 0x1000>;
++		#pwm-cells = <2>;
++		clocks = <&mmsys CLK_MM_MDP_BLS_26M>,
++			 <&mmsys CLK_MM_DISP_BLS>;
++		clock-names = "main", "mm";
++		status = "disabled";
++	};
 +
-+additionalProperties: false
++	color: color@1400b000 {
++		compatible = "mediatek,mt7623-disp-color",
++			     "mediatek,mt2701-disp-color";
++		reg = <0 0x1400b000 0 0x1000>;
++		interrupts = <GIC_SPI 156 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&mmsys CLK_MM_DISP_COLOR>;
++	};
 +
-+examples:
-+  - |
-+            #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
-+            #include <dt-bindings/interrupt-controller/arm-gic.h>
-+            pio: pinctrl@10005000 {
-+                    compatible = "mediatek,mt8192-pinctrl";
-+                    reg = <0x10005000 0x1000>,
-+                          <0x11c20000 0x1000>,
-+                          <0x11d10000 0x1000>,
-+                          <0x11d30000 0x1000>,
-+                          <0x11d40000 0x1000>,
-+                          <0x11e20000 0x1000>,
-+                          <0x11e70000 0x1000>,
-+                          <0x11ea0000 0x1000>,
-+                          <0x11f20000 0x1000>,
-+                          <0x11f30000 0x1000>,
-+                          <0x1000b000 0x1000>;
-+                    reg-names = "iocfg0", "iocfg_rm", "iocfg_bm",
-+                          "iocfg_bl", "iocfg_br", "iocfg_lm",
-+                          "iocfg_lb", "iocfg_rt", "iocfg_lt",
-+                          "iocfg_tl", "eint";
-+                    gpio-controller;
-+                    #gpio-cells = <2>;
-+                    gpio-ranges = <&pio 0 0 220>;
-+                    interrupt-controller;
-+                    interrupts = <GIC_SPI 212 IRQ_TYPE_LEVEL_HIGH 0>;
-+                    #interrupt-cells = <2>;
-+            };
++	dsi: dsi@1400c000 {
++		compatible = "mediatek,mt7623-dsi",
++			     "mediatek,mt2701-dsi";
++		reg = <0 0x1400c000 0 0x1000>;
++		interrupts = <GIC_SPI 157 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&mmsys CLK_MM_DSI_ENGINE>,
++			 <&mmsys CLK_MM_DSI_DIG>,
++			 <&mipi_tx0>;
++		clock-names = "engine", "digital", "hs";
++		phys = <&mipi_tx0>;
++		phy-names = "dphy";
++		status = "disabled";
++	};
++
++	mutex: mutex@1400e000 {
++		compatible = "mediatek,mt7623-disp-mutex",
++			     "mediatek,mt2701-disp-mutex";
++		reg = <0 0x1400e000 0 0x1000>;
++		interrupts = <GIC_SPI 161 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&mmsys CLK_MM_MUTEX_32K>;
++	};
++
++	rdma1: rdma@14012000 {
++		compatible = "mediatek,mt7623-disp-rdma",
++			     "mediatek,mt2701-disp-rdma";
++		reg = <0 0x14012000 0 0x1000>;
++		interrupts = <GIC_SPI 164 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&mmsys CLK_MM_DISP_RDMA1>;
++		iommus = <&iommu MT2701_M4U_PORT_DISP_RDMA1>;
++		mediatek,larb = <&larb0>;
++	};
++
++	dpi0: dpi@14014000 {
++		compatible = "mediatek,mt7623-dpi",
++			     "mediatek,mt2701-dpi";
++		reg = <0 0x14014000 0 0x1000>;
++		interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&mmsys CLK_MM_DPI1_DIGL>,
++			 <&mmsys CLK_MM_DPI1_ENGINE>,
++			 <&apmixedsys CLK_APMIXED_TVDPLL>;
++		clock-names = "pixel", "engine", "pll";
++		status = "disabled";
++	};
++
++	hdmi0: hdmi@14015000 {
++		compatible = "mediatek,mt7623-hdmi",
++			     "mediatek,mt8173-hdmi";
++		reg = <0 0x14015000 0 0x400>;
++		clocks = <&mmsys CLK_MM_HDMI_PIXEL>,
++			 <&mmsys CLK_MM_HDMI_PLL>,
++			 <&mmsys CLK_MM_HDMI_AUDIO>,
++			 <&mmsys CLK_MM_HDMI_SPDIF>;
++		clock-names = "pixel", "pll", "bclk", "spdif";
++		phys = <&hdmi_phy>;
++		phy-names = "hdmi";
++		mediatek,syscon-hdmi = <&mmsys 0x900>;
++		cec = <&cec>;
++		status = "disabled";
++	};
++
++	mipi_tx0: mipi-dphy@10010000 {
++		compatible = "mediatek,mt7623-mipi-tx",
++			     "mediatek,mt2701-mipi-tx";
++		reg = <0 0x10010000 0 0x90>;
++		clocks = <&clk26m>;
++		clock-output-names = "mipi_tx0_pll";
++		#clock-cells = <0>;
++		#phy-cells = <0>;
++	};
++
++	cec: cec@10012000 {
++		compatible = "mediatek,mt7623-cec",
++			     "mediatek,mt8173-cec";
++		reg = <0 0x10012000 0 0xbc>;
++		interrupts = <GIC_SPI 182 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&infracfg CLK_INFRA_CEC>;
++		status = "disabled";
++	};
++
++	hdmi_phy: phy@10209100 {
++		compatible = "mediatek,mt7623-hdmi-phy",
++			     "mediatek,mt2701-hdmi-phy";
++		reg = <0 0x10209100 0 0x24>;
++		clocks = <&apmixedsys CLK_APMIXED_HDMI_REF>;
++		clock-names = "pll_ref";
++		clock-output-names = "hdmitx_dig_cts";
++		#clock-cells = <0>;
++		#phy-cells = <0>;
++		status = "disabled";
++	};
++
++	hdmiddc0: i2c@11013000 {
++		compatible = "mediatek,mt7623-hdmi-ddc",
++			     "mediatek,mt8173-hdmi-ddc";
++		interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_LOW>;
++		reg = <0 0x11013000 0 0x1C>;
++		clocks = <&pericfg CLK_PERI_I2C3>;
++		clock-names = "ddc-i2c";
++		status = "disabled";
++	};
++};
++
++&pio {
++	hdmi_pins_a: hdmi-default {
++		pins-hdmi {
++			pinmux = <MT7623_PIN_123_HTPLG_FUNC_HTPLG>;
++			input-enable;
++			bias-pull-down;
++		};
++	};
++
++	hdmi_ddc_pins_a: hdmi_ddc-default {
++		pins-hdmi-ddc {
++			pinmux = <MT7623_PIN_124_GPIO124_FUNC_HDMISCK>,
++				 <MT7623_PIN_125_GPIO125_FUNC_HDMISD>;
++		};
++	};
+ };
 -- 
-2.18.0
+2.25.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
