@@ -7,18 +7,18 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B950C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 02:33:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A4D2DC433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 02:34:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C47272177B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 02:33:36 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7763A2177B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 02:34:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l36ogg4c";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="Ydrt3Ucp";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="lZBUDqW0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C47272177B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ts33jVsg";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="MC/sTLyL";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="bSQPwX3Y"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7763A2177B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,64 +27,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gjIhiJP0oOB1TwoDjyOgqhbpZgGLYNTn+C8s1/pcMgk=; b=l36ogg4crP0U3NW+8Edz5ZFL7
-	AmtRLtJmbelrBFc8CS11h69WP90/+82hWMJHDvzZkaGpYKeWNr7PUOL4ZZVYIOcTRZKbc+zcsCQJo
-	vWLv4o/beMoe0Qv/Gw9Z7N9baPrhXyO5w7hbZICFUSNR4q6YQTZkYQ4Xs9nEnLylRsA/GnbuO+wpl
-	PdZm/EzI7EVozBwrA3lm2VUqh6pZ0rFOk1PcPQ0zKTqjuERY6ZBVJSReCDV48ND+No+9WLkvmEOwQ
-	qKt1Ja8L3KBg9jO93sKk9K1cIPklH7yNaTpF/b7pbgxEOlECnEnLhtdMfFn7nIQ/VhUawlyrbep7z
-	b7J7yoxCg==;
+	 bh=QczYVrDRBc4lNDBcnrCRPnj/bq8B1C1SXrJSFSZU2ec=; b=ts33jVsgAyZPq8vDw7NFrfi1r
+	0dHlAFNpA67LzqLqaG2/hZWiT80v5irz/Z89o88eeb628F+IgcheoNLBvVAZEPHS6x9DQYECEFuR4
+	8xOWF/18dihG9XUof5itjE6AJwxdWoXaacZcR71ZOxdCsS3iAfJrlahMqLKLglq+AYmQVK96hZznm
+	UoXksSSQu7qeZA+FhQHKv7JCgwwPhY5bY3wnXMPg13Yij+AflMJBHNM8z1kMb9IV4ciBfEwc1dYYB
+	6ks1CULXpRW78/4+slAcm6iHonB7zUf6PYtInfd1GeI5fpd0HSPWaUyFhN7G5ggMHy/N5+T9qCiQt
+	zo+ExB1KA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k3sCC-0000VT-DB; Fri, 07 Aug 2020 02:33:24 +0000
+	id 1k3sD5-0000Zl-GV; Fri, 07 Aug 2020 02:34:19 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3sC8-0000V3-07; Fri, 07 Aug 2020 02:33:20 +0000
+ id 1k3sD2-0000Z0-AU; Fri, 07 Aug 2020 02:34:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender
  :Reply-To:Content-ID:Content-Description;
- bh=sU4rKl06jnrJqpkxacbtjbZWpWXsW6hGD15dSaUV7f0=; b=Ydrt3Ucp2wSiN2/uLjXa7vbD/+
- Gcl7LQk+5z++/hjodNUV2mNv5cRjFHyNwL3vyXXWabhpSiZAa17WtdSeEf945Qe0PtDMaKEn/SsBz
- U005ypcRXcJLVvlQj7ARzYRuzGNWCDv4QjuxFhRLyPH0RQKQwTE0NKZrFefADFHS0FG/xPpE63XQh
- JbqTJYw9xQFZlwMQw8O7xX5FaLdEH0NcnMrXA2g+MOrUR8EMDik2ywIbGSzMl7Rgm0CrwZOuVfAMl
- B/X7thVVgfbeINvhMZ9qUnaybTP8zGqHO+oxqm1n6tSHF260Z67FZ3e7SWlAmmUhUyTfyji0aFKf7
- 1RepPYMA==;
+ bh=2RA0I88lr0d0hGwKF//MrgxKAUGZdVtcyAh7Z0um5Ig=; b=MC/sTLyL2ikz670+JqBuu+gUcL
+ F3Q9Pvoqxlq7ReX2kgY9PdlnhzhjD1GStlNtntHF4V3bKE+ct1Md8oNo13+oXurhBe/GvHtNsqUEf
+ teWw4B6b8Qsc/Hl/UrYNbbfJqorYR4KPUP3azM8kQncgEgNVJgIH6cisGBWS4CuEzPhJqJbA1BSA2
+ 7DuyQX/NeJCINirRs798ZZYwx7OzXHyWfEhAG5GmcrQsp58zm+BuOuSz+6dosIufmfuzksBLOZdrG
+ f9Mi42A3uZqtZPnjMO67luiL6MASR5ZgsSWQN3og0sadZvHQUIe7J1vIdWrhgKwyzGPSiF2C8RSv+
+ m8OoCmvA==;
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3sC2-0006YO-44; Fri, 07 Aug 2020 02:33:18 +0000
-X-UUID: 93f2e48711e14c5eb3ce048f2bbf9fc5-20200806
+ id 1k3sCy-0006bR-J2; Fri, 07 Aug 2020 02:34:15 +0000
+X-UUID: 52402fabfc994725bdff4799b401b84c-20200806
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=sU4rKl06jnrJqpkxacbtjbZWpWXsW6hGD15dSaUV7f0=; 
- b=lZBUDqW0v9YD4pM+nq3GwIq3MGd9c8c3Wp0NCC6FRutB7qcdjOkZPR7QEMP5wF0BEQh6abCo/Qg/vS1mHlu+HiIInCtCzSYO8uXw7SgJQbUWsEtThu4Wl95tpXV4B2DOc7o5k5rT6ejG7q9XHCOhg9zNbgymg6j0YvuYFVKQi38=;
-X-UUID: 93f2e48711e14c5eb3ce048f2bbf9fc5-20200806
+ bh=2RA0I88lr0d0hGwKF//MrgxKAUGZdVtcyAh7Z0um5Ig=; 
+ b=bSQPwX3YwHHfu6w+JntOF7IjPxfTOk2KUcqZwb/t5P4qK7qLO8zvd6S2IVrBH48u5uvGL9SH18JjOK5NWY4bmzWE6YWKlHBCBa+/9xMeQ23WO3rDlGqCPOzbhc8xwuM5FBjbwm4lATqldq24NIEhVFTbKhbr+Ehs0JxwqkWfvAQ=;
+X-UUID: 52402fabfc994725bdff4799b401b84c-20200806
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <neal.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2044490595; Thu, 06 Aug 2020 18:32:33 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ with ESMTP id 1692955778; Thu, 06 Aug 2020 18:32:33 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 6 Aug 2020 19:22:28 -0700
+ 15.0.1497.2; Thu, 6 Aug 2020 19:22:32 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 7 Aug 2020 10:22:29 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Fri, 7 Aug 2020 10:22:29 +0800
 From: Neal Liu <neal.liu@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v5 2/2] soc: mediatek: add mt6779 devapc driver
-Date: Fri, 7 Aug 2020 10:22:28 +0800
-Message-ID: <1596766948-29767-3-git-send-email-neal.liu@mediatek.com>
+Subject: [PATCH v5 1/2] dt-bindings: devapc: add bindings for mtk-devapc
+Date: Fri, 7 Aug 2020 10:22:27 +0800
+Message-ID: <1596766948-29767-2-git-send-email-neal.liu@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <1596766948-29767-1-git-send-email-neal.liu@mediatek.com>
 References: <1596766948-29767-1-git-send-email-neal.liu@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 663649B994C2112320BBB7D16ACB11D475D2A51A1B91E389F6AA87C6DCA507042000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200807_033314_997977_AD463E31 
-X-CRM114-Status: GOOD (  25.93  )
+X-CRM114-CacheID: sfid-20200807_033413_178148_337F512E 
+X-CRM114-Status: GOOD (  13.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,376 +105,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek bus fabric provides TrustZone security support and data
-protection to prevent slaves from being accessed by unexpected
-masters.
-The security violation is logged and sent to the processor for
-further analysis or countermeasures.
-
-Any occurrence of security violation would raise an interrupt, and
-it will be handled by mtk-devapc driver. The violation
-information is printed in order to find the murderer.
+Add bindings for mtk-devapc.
 
 Signed-off-by: Neal Liu <neal.liu@mediatek.com>
 ---
- drivers/soc/mediatek/Kconfig      |    9 ++
- drivers/soc/mediatek/Makefile     |    1 +
- drivers/soc/mediatek/mtk-devapc.c |  315 +++++++++++++++++++++++++++++++++++++
- 3 files changed, 325 insertions(+)
- create mode 100644 drivers/soc/mediatek/mtk-devapc.c
+ .../devicetree/bindings/soc/mediatek/devapc.yaml   |   58 ++++++++++++++++++++
+ 1 file changed, 58 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
 
-diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-index 59a56cd..1177c98 100644
---- a/drivers/soc/mediatek/Kconfig
-+++ b/drivers/soc/mediatek/Kconfig
-@@ -17,6 +17,15 @@ config MTK_CMDQ
- 	  time limitation, such as updating display configuration during the
- 	  vblank.
- 
-+config MTK_DEVAPC
-+	tristate "Mediatek Device APC Support"
-+	help
-+	  Say yes here to enable support for Mediatek Device APC driver.
-+	  This driver is mainly used to handle the violation which catches
-+	  unexpected transaction.
-+	  The violation information is logged for further analysis or
-+	  countermeasures.
-+
- config MTK_INFRACFG
- 	bool "MediaTek INFRACFG Support"
- 	select REGMAP
-diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
-index 01f9f87..abfd4ba 100644
---- a/drivers/soc/mediatek/Makefile
-+++ b/drivers/soc/mediatek/Makefile
-@@ -1,5 +1,6 @@
- # SPDX-License-Identifier: GPL-2.0-only
- obj-$(CONFIG_MTK_CMDQ) += mtk-cmdq-helper.o
-+obj-$(CONFIG_MTK_DEVAPC) += mtk-devapc.o
- obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
- obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
- obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
-diff --git a/drivers/soc/mediatek/mtk-devapc.c b/drivers/soc/mediatek/mtk-devapc.c
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml b/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
 new file mode 100644
-index 0000000..73287cf
+index 0000000..6c763f8
 --- /dev/null
-+++ b/drivers/soc/mediatek/mtk-devapc.c
-@@ -0,0 +1,315 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (C) 2020 MediaTek Inc.
-+ */
++++ b/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
+@@ -0,0 +1,58 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++# # Copyright 2020 MediaTek Inc.
++%YAML 1.2
++---
++$id: "http://devicetree.org/schemas/soc/mediatek/devapc.yaml#"
++$schema: "http://devicetree.org/meta-schemas/core.yaml#"
 +
-+#include <linux/clk.h>
-+#include <linux/interrupt.h>
-+#include <linux/iopoll.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <linux/of_device.h>
-+#include <linux/of_irq.h>
-+#include <linux/of_address.h>
++title: MediaTek Device Access Permission Control driver
 +
-+#define VIO_MOD_TO_REG_IND(m)	((m) / 32)
-+#define VIO_MOD_TO_REG_OFF(m)	((m) % 32)
++description: |
++  MediaTek bus fabric provides TrustZone security support and data
++  protection to prevent slaves from being accessed by unexpected masters.
++  The security violation is logged and sent to the processor for further
++  analysis and countermeasures.
 +
-+struct mtk_devapc_vio_dbgs {
-+	union {
-+		u32 vio_dbg0;
-+		struct {
-+			u32 mstid:16;
-+			u32 dmnid:6;
-+			u32 vio_w:1;
-+			u32 vio_r:1;
-+			u32 addr_h:4;
-+			u32 resv:4;
-+		} dbg0_bits;
-+	};
++maintainers:
++  - Neal Liu <neal.liu@mediatek.com>
 +
-+	u32 vio_dbg1;
-+};
++properties:
++  compatible:
++    enum:
++      - mediatek,mt6779-devapc
 +
-+struct mtk_devapc_data {
-+	u32 vio_idx_num;
-+	u32 vio_mask_offset;
-+	u32 vio_sta_offset;
-+	u32 vio_dbg0_offset;
-+	u32 vio_dbg1_offset;
-+	u32 apc_con_offset;
-+	u32 vio_shift_sta_offset;
-+	u32 vio_shift_sel_offset;
-+	u32 vio_shift_con_offset;
-+};
++  reg:
++    description: The base address of devapc register bank
++    maxItems: 1
 +
-+struct mtk_devapc_context {
-+	struct device *dev;
-+	void __iomem *infra_base;
-+	struct clk *infra_clk;
-+	const struct mtk_devapc_data *data;
-+};
++  interrupts:
++    description: A single interrupt specifier
++    maxItems: 1
 +
-+static void clear_vio_status(struct mtk_devapc_context *ctx)
-+{
-+	void __iomem *reg;
-+	int i;
++  clocks:
++    description: Contains module clock source and clock names
++    maxItems: 1
 +
-+	reg = ctx->infra_base + ctx->data->vio_sta_offset;
++  clock-names:
++    description: Names of the clocks list in clocks property
++    maxItems: 1
 +
-+	for (i = 0; i < VIO_MOD_TO_REG_IND(ctx->data->vio_idx_num - 1); i++)
-+		writel(GENMASK(31, 0), reg + 4 * i);
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
 +
-+	writel(GENMASK(VIO_MOD_TO_REG_OFF(ctx->data->vio_idx_num - 1), 0),
-+	       reg + 4 * i);
-+}
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/clock/mt6779-clk.h>
 +
-+static void mask_module_irq(struct mtk_devapc_context *ctx, bool mask)
-+{
-+	void __iomem *reg;
-+	u32 val;
-+	int i;
-+
-+	reg = ctx->infra_base + ctx->data->vio_mask_offset;
-+
-+	if (mask)
-+		val = GENMASK(31, 0);
-+	else
-+		val = 0;
-+
-+	for (i = 0; i < VIO_MOD_TO_REG_IND(ctx->data->vio_idx_num - 1); i++)
-+		writel(val, reg + 4 * i);
-+
-+	val = readl(reg + 4 * i);
-+	if (mask)
-+		val |= GENMASK(VIO_MOD_TO_REG_OFF(ctx->data->vio_idx_num - 1),
-+						 0);
-+	else
-+		val &= ~GENMASK(VIO_MOD_TO_REG_OFF(ctx->data->vio_idx_num - 1),
-+						 0);
-+
-+	writel(val, reg + 4 * i);
-+}
-+
-+#define PHY_DEVAPC_TIMEOUT	0x10000
-+
-+/*
-+ * devapc_sync_vio_dbg - do "shift" mechansim" to get full violation information.
-+ *                       shift mechanism is depends on devapc hardware design.
-+ *                       Mediatek devapc set multiple slaves as a group.
-+ *                       When violation is triggered, violation info is kept
-+ *                       inside devapc hardware.
-+ *                       Driver should do shift mechansim to sync full violation
-+ *                       info to VIO_DBGs registers.
-+ *
-+ */
-+static int devapc_sync_vio_dbg(struct mtk_devapc_context *ctx)
-+{
-+	void __iomem *pd_vio_shift_sta_reg;
-+	void __iomem *pd_vio_shift_sel_reg;
-+	void __iomem *pd_vio_shift_con_reg;
-+	int min_shift_group;
-+	int ret;
-+	u32 val;
-+
-+	pd_vio_shift_sta_reg = ctx->infra_base +
-+			       ctx->data->vio_shift_sta_offset;
-+	pd_vio_shift_sel_reg = ctx->infra_base +
-+			       ctx->data->vio_shift_sel_offset;
-+	pd_vio_shift_con_reg = ctx->infra_base +
-+			       ctx->data->vio_shift_con_offset;
-+
-+	/* Find the minimum shift group which has violation */
-+	val = readl(pd_vio_shift_sta_reg);
-+	if (!val)
-+		return false;
-+
-+	min_shift_group = __ffs(val);
-+
-+	/* Assign the group to sync */
-+	writel(0x1 << min_shift_group, pd_vio_shift_sel_reg);
-+
-+	/* Start syncing */
-+	writel(0x1, pd_vio_shift_con_reg);
-+
-+	ret = readl_poll_timeout(pd_vio_shift_con_reg, val, val == 0x3, 0,
-+				 PHY_DEVAPC_TIMEOUT);
-+	if (ret) {
-+		dev_err(ctx->dev, "%s: Shift violation info failed\n", __func__);
-+		return false;
-+	}
-+
-+	/* Stop syncing */
-+	writel(0x0, pd_vio_shift_con_reg);
-+	writel(0x0, pd_vio_shift_sel_reg);
-+	writel(0x1 << min_shift_group, pd_vio_shift_sta_reg);
-+
-+	return true;
-+}
-+
-+/*
-+ * devapc_extract_vio_dbg - extract full violation information after doing
-+ *                          shift mechanism.
-+ */
-+static void devapc_extract_vio_dbg(struct mtk_devapc_context *ctx)
-+{
-+	struct mtk_devapc_vio_dbgs *vio_dbgs;
-+	void __iomem *vio_dbg0_reg;
-+	void __iomem *vio_dbg1_reg;
-+
-+	vio_dbgs = devm_kzalloc(ctx->dev, sizeof(struct mtk_devapc_vio_dbgs),
-+				GFP_KERNEL);
-+	if (!vio_dbgs)
-+		return;
-+
-+	vio_dbg0_reg = ctx->infra_base + ctx->data->vio_dbg0_offset;
-+	vio_dbg1_reg = ctx->infra_base + ctx->data->vio_dbg1_offset;
-+
-+	vio_dbgs->vio_dbg0 = readl(vio_dbg0_reg);
-+	vio_dbgs->vio_dbg1 = readl(vio_dbg1_reg);
-+
-+	/* Print violation information */
-+	if (vio_dbgs->dbg0_bits.vio_w)
-+		dev_info(ctx->dev, "Write Violation\n");
-+	else if (vio_dbgs->dbg0_bits.vio_r)
-+		dev_info(ctx->dev, "Read Violation\n");
-+
-+	dev_info(ctx->dev, "Bus ID:0x%x, Dom ID:0x%x, Vio Addr:0x%x\n",
-+		 vio_dbgs->dbg0_bits.mstid, vio_dbgs->dbg0_bits.dmnid,
-+		 vio_dbgs->vio_dbg1);
-+}
-+
-+/*
-+ * devapc_violation_irq - the devapc Interrupt Service Routine (ISR) will dump
-+ *                        violation information including which master violates
-+ *                        access slave.
-+ */
-+static irqreturn_t devapc_violation_irq(int irq_number,
-+					struct mtk_devapc_context *ctx)
-+{
-+	/*
-+	 * Mask slave's irq before clearing vio status.
-+	 * Must do it to avoid nested interrupt and prevent
-+	 * unexpected behavior.
-+	 */
-+	mask_module_irq(ctx, true);
-+
-+	while (devapc_sync_vio_dbg(ctx))
-+		devapc_extract_vio_dbg(ctx);
-+
-+	/*
-+	 * Ensure that violation info are written
-+	 * before further operations
-+	 */
-+	smp_mb();
-+
-+	clear_vio_status(ctx);
-+	mask_module_irq(ctx, false);
-+
-+	return IRQ_HANDLED;
-+}
-+
-+/*
-+ * start_devapc - unmask slave's irq to start receiving devapc violation.
-+ */
-+static void start_devapc(struct mtk_devapc_context *ctx)
-+{
-+	void __iomem *pd_apc_con_reg;
-+
-+	pd_apc_con_reg = ctx->infra_base + ctx->data->apc_con_offset;
-+	writel(BIT(31), pd_apc_con_reg);
-+
-+	mask_module_irq(ctx, false);
-+}
-+
-+static const struct mtk_devapc_data devapc_mt6779 = {
-+	.vio_idx_num = 511,
-+	.vio_mask_offset = 0x0,
-+	.vio_sta_offset = 0x400,
-+	.vio_dbg0_offset = 0x900,
-+	.vio_dbg1_offset = 0x904,
-+	.apc_con_offset = 0xF00,
-+	.vio_shift_sta_offset = 0xF10,
-+	.vio_shift_sel_offset = 0xF14,
-+	.vio_shift_con_offset = 0xF20,
-+};
-+
-+static const struct of_device_id mtk_devapc_dt_match[] = {
-+	{
-+		.compatible = "mediatek,mt6779-devapc",
-+		.data = &devapc_mt6779,
-+	}, {
-+	},
-+};
-+
-+static int mtk_devapc_probe(struct platform_device *pdev)
-+{
-+	struct device_node *node = pdev->dev.of_node;
-+	struct mtk_devapc_context *ctx;
-+	u32 devapc_irq;
-+	int ret;
-+
-+	if (IS_ERR(node))
-+		return -ENODEV;
-+
-+	ctx = devm_kzalloc(&pdev->dev, sizeof(*ctx), GFP_KERNEL);
-+	if (!ctx)
-+		return -ENOMEM;
-+
-+	ctx->data = of_device_get_match_data(&pdev->dev);
-+	ctx->dev = &pdev->dev;
-+
-+	ctx->infra_base = of_iomap(node, 0);
-+	if (!ctx->infra_base)
-+		return -EINVAL;
-+
-+	devapc_irq = irq_of_parse_and_map(node, 0);
-+	if (!devapc_irq)
-+		return -EINVAL;
-+
-+	ctx->infra_clk = devm_clk_get(&pdev->dev, "devapc-infra-clock");
-+	if (IS_ERR(ctx->infra_clk))
-+		return -EINVAL;
-+
-+	if (clk_prepare_enable(ctx->infra_clk))
-+		return -EINVAL;
-+
-+	ret = devm_request_irq(&pdev->dev, devapc_irq,
-+			       (irq_handler_t)devapc_violation_irq,
-+			       IRQF_TRIGGER_NONE, "devapc", ctx);
-+	if (ret) {
-+		clk_disable_unprepare(ctx->infra_clk);
-+		return ret;
-+	}
-+
-+	platform_set_drvdata(pdev, ctx);
-+
-+	start_devapc(ctx);
-+
-+	return 0;
-+}
-+
-+static int mtk_devapc_remove(struct platform_device *pdev)
-+{
-+	struct mtk_devapc_context *ctx = platform_get_drvdata(pdev);
-+
-+	if (ctx->infra_clk)
-+		clk_disable_unprepare(ctx->infra_clk);
-+
-+	return 0;
-+}
-+
-+static struct platform_driver mtk_devapc_driver = {
-+	.probe = mtk_devapc_probe,
-+	.remove = mtk_devapc_remove,
-+	.driver = {
-+		.name = KBUILD_MODNAME,
-+		.of_match_table = mtk_devapc_dt_match,
-+	},
-+};
-+
-+module_platform_driver(mtk_devapc_driver);
-+
-+MODULE_DESCRIPTION("Mediatek Device APC Driver");
-+MODULE_AUTHOR("Neal Liu <neal.liu@mediatek.com>");
-+MODULE_LICENSE("GPL");
++    devapc: devapc@10207000 {
++      compatible = "mediatek,mt6779-devapc";
++      reg = <0x10207000 0x1000>;
++      interrupts = <GIC_SPI 168 IRQ_TYPE_LEVEL_LOW>;
++      clocks = <&infracfg_ao CLK_INFRA_DEVICE_APC>;
++      clock-names = "devapc-infra-clock";
++    };
 -- 
 1.7.9.5
 _______________________________________________
