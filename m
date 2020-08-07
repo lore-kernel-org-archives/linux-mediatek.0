@@ -2,82 +2,96 @@ Return-Path: <SRS0=9FsO=BR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 01AF7C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 00:39:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CD1E5C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 00:43:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E48E0206B5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 00:39:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B8871206B5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 00:43:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TuWzTfal";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Uax3yNJO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E48E0206B5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2nslXxEQ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="whSCyRwN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B8871206B5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rglH7cggLTfTfXIibDWNg5tDiZvPt7gZjzzyaziSd3c=; b=TuWzTfalC0s8y2pszyq0iwnzf
-	MG75Sqm8PjHzQuGUhLXi9HqPNn+tKToBEqgqtD4y5LCBIWbTSYkxmUc7ytqnmyc7fDe49jzmADEAF
-	uFpuMv0PKukh5REohbGSQF6hxiztYCgJ4S0wbUkIqQVids8jKpkHpCGm0Aw8HzrKrqNgq//EK0+Sy
-	P1whkiwRbK0yIgQFaj2buPMyiZRGqibVNnzgW8QTJhjcq7BvU/A3tRChA+3qtPTezDXyd6PjgatdX
-	4vC6Iy9DzBLJQPTTW9fJ0Z55sBXNCSAA8xWSdmEiUQDKj4efYKrOj9rPmtjZLQ7kXsevFYRxlMGeY
-	mfbhY7Ihw==;
+	 bh=xwk6hLAd1QGY97Zz/xzJQdIGzsVL3iSOcSO3OkY9/TQ=; b=2nslXxEQLE+kUriAuiQjbUzaU
+	RID5tyWawfE3xWOozUm8+NeBNMMKCZjCOTH4K7BLQqFcl7RO4IOwAZWsI357ATOVr7w/3LQRJ0wJa
+	wRNYkHXSVqKY5LtLUy8T3utDKLZ67j9VMydZG3NTmk6/9OPf/fEjVw5xubYI5rJZDASfXIVuYabr6
+	83uwzVJah07Vq0UiY0nzkvWEt5A7Q7eh0e9NtlNl/SKavzrwgCGRQhUGnFHEIi3gLfogYKM81NQcv
+	RL95snLas7TgmSwNJIk8GXYZ+XruUwlSFqg3tAz1UgGzjGCLf0QXpkpKUuH1KqdMn+SBmfZrng/Lu
+	Y25V78BVQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k3qQA-0001Gk-6d; Fri, 07 Aug 2020 00:39:42 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1k3qU8-0001Yb-IN; Fri, 07 Aug 2020 00:43:48 +0000
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3qQ5-0001Fg-2L; Fri, 07 Aug 2020 00:39:39 +0000
-X-UUID: 24a11b8d293f44b19d1113b256332c0d-20200806
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=bnBFseN4rOUFAaYeG9/B7rSHa4Ze1CslHkpsIkYU4+w=; 
- b=Uax3yNJOKS687oP+vgorpNGrHft4mBgoFRdZ/T/x0+ZGZaOncz3BUvakL7OffvGOCR7fte02sssyoma8lEVtcbwydPzDfCE67Z/wINjdSpy62GHa200QK/UMC/OFG6SpyPGnUZjBu+mCghkAwaBUMTCkLy9VVrALVIE7xrz0KJo=;
-X-UUID: 24a11b8d293f44b19d1113b256332c0d-20200806
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 66219605; Thu, 06 Aug 2020 16:39:27 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 6 Aug 2020 17:39:22 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 7 Aug 2020 08:39:18 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 7 Aug 2020 08:39:14 +0800
-Message-ID: <1596760757.27829.8.camel@mtkswgap22>
-Subject: RE: [PATCH v2] scsi: ufs: Fix possible infinite loop in ufshcd_hold
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: Avri Altman <Avri.Altman@wdc.com>
-Date: Fri, 7 Aug 2020 08:39:17 +0800
-In-Reply-To: <BYAPR04MB4629D947CAC7E07FF94D55F2FC4A0@BYAPR04MB4629.namprd04.prod.outlook.com>
-References: <20200729024037.23105-1-stanley.chu@mediatek.com>
- <bfbb48b06fa3464da0cbd2aee8a32649@codeaurora.org>
- <1596018374.17247.41.camel@mtkswgap22>
- <4cb7403fae7226b70a133d4a7ecee755@codeaurora.org>
- <1596095961.17247.51.camel@mtkswgap22>
- <1596518850.27829.5.camel@mtkswgap22>
- <BYAPR04MB4629D947CAC7E07FF94D55F2FC4A0@BYAPR04MB4629.namprd04.prod.outlook.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1k3qU5-0001XS-9x
+ for linux-mediatek@lists.infradead.org; Fri, 07 Aug 2020 00:43:47 +0000
+Received: by mail-pl1-x642.google.com with SMTP id f10so238673plj.8
+ for <linux-mediatek@lists.infradead.org>; Thu, 06 Aug 2020 17:43:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=RgPXZVMrIckGX5DmfsQv8yNcqJQDdPlKU/7tj+0RAOU=;
+ b=whSCyRwNhpsO+yWDNZ4Cv5qNyZzpLOvp7DiNIK2pc3y7XGe+OgdIGNTYBxcj8Zsxh7
+ zYK0DR66GIMJwtwOdD0UOwxI+I5yf6lNoZKf3J+MlgeO82rATZ4XoQZuFSQZYbA+Y1el
+ SO329IS71+vYIjIWEGLmlMbwErG6gv2/N5bXbsRi6xPMSzueQ04XdqNNg2be3HuBptsM
+ +lJdAMvJDOB5JSozRVKaB3mz6n5A8d428+EF0qwNz/iOBaDczoIhMPLfszGtK7+UWBPK
+ Z67kBsTMFlydITNfQZc49FejvfOdYfrpHYf+O4jF1aB9AFLpGA0O2BcoeO4qSphffdVH
+ WRdA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=RgPXZVMrIckGX5DmfsQv8yNcqJQDdPlKU/7tj+0RAOU=;
+ b=LfVF4xcH+VglDAUVaSJeSRGPXgLSWVSZBhfc2T5P/EyZEzwR4pt0Sse/fuaXjZsFox
+ VpiEY77eGNHfJlmBiTdiRO+fQH2DHicR+OYSxR+ZrySruPhclBN1OJaqTVzzQaqVYPsq
+ Qkmgt2AuegwodVS3UyeZ24F1BFRdcZWRmTn3euqJlfdp+KAU1OfY9GYcYnkMZDLksIuY
+ 3QHKKPLPIMr7tEbJtF5Ak5xuYxUMv6tbQROkEIuQ2z7kTfKeCkSaaBJzu20OBabi+xz7
+ NtX4M69pTQUUhSPo6NI4hBY4HD6xeJnMT37SIG9tgqUWMIDuDUE3rZRNTBz0Hve8HapV
+ O0CA==
+X-Gm-Message-State: AOAM5302KdoKw0fFLAGNf1COlmYumDco5bXkLOseJBEH6jv1i6a+nuP4
+ 2v0hctPWkf5Iw7sHnkPX03qQFA==
+X-Google-Smtp-Source: ABdhPJzzSsdKj+hMfY/ueb2cz2zxYSb8Y/2u33WYsliSAC12b4M2MWm1xSe3yMluHLVX3jxKgljGCQ==
+X-Received: by 2002:a17:902:8a88:: with SMTP id
+ p8mr10174683plo.184.1596761019053; 
+ Thu, 06 Aug 2020 17:43:39 -0700 (PDT)
+Received: from builder.lan (104-188-17-28.lightspeed.sndgca.sbcglobal.net.
+ [104.188.17.28])
+ by smtp.gmail.com with ESMTPSA id b15sm9673497pft.116.2020.08.06.17.43.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 06 Aug 2020 17:43:38 -0700 (PDT)
+Date: Thu, 6 Aug 2020 17:40:01 -0700
+From: Bjorn Andersson <bjorn.andersson@linaro.org>
+To: John Stultz <john.stultz@linaro.org>
+Subject: Re: [PATCH v3 2/4] irqchip/qcom-pdc: Switch to using
+ IRQCHIP_PLATFORM_DRIVER helper macros
+Message-ID: <20200807004001.GF20825@builder.lan>
+References: <20200718000637.3632841-1-saravanak@google.com>
+ <20200718000637.3632841-3-saravanak@google.com>
+ <CALAqxLVZ+rFE+hM9OtQ46NqpTHeLu6oKLNWKstLv1U5zbwyq7g@mail.gmail.com>
+ <CAGETcx_rkK3-bKhDP_N4n_WyXLXFPoaUV9rbY_Y+H1Joj=dCyw@mail.gmail.com>
+ <f314b687-11a9-5a5e-e79e-c46dd2f16c6f@kali.org>
+ <78ad0914-6173-f753-9eba-b7cbfbb51fd6@kali.org>
+ <CALAqxLXPN9kThwF32YoWyApaWnfjthANXj3uk65Wc3ddaJQFFQ@mail.gmail.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 73F1E00256D1A908A1930FBC0D29440FFF3B4AA04CC0F12EC73470C9002285A42000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <CALAqxLXPN9kThwF32YoWyApaWnfjthANXj3uk65Wc3ddaJQFFQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200806_203937_265518_025464F4 
-X-CRM114-Status: GOOD (  15.48  )
+X-CRM114-CacheID: sfid-20200806_204345_777100_375B126F 
+X-CRM114-Status: GOOD (  25.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,66 +103,76 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
- Andy Teng =?UTF-8?Q?=28=E9=84=A7=E5=A6=82=E5=AE=8F=29?=
- <Andy.Teng@mediatek.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- Chun-Hung Wu =?UTF-8?Q?=28=E5=B7=AB=E9=A7=BF=E5=AE=8F=29?=
- <Chun-hung.Wu@mediatek.com>,
- Kuohong Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=8B=E9=B4=BB=29?=
- <kuohong.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>,
- Can Guo <cang@codeaurora.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Peter Wang =?UTF-8?Q?=28=E7=8E=8B=E4=BF=A1=E5=8F=8B=29?=
- <peter.wang@mediatek.com>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "beanhuo@micron.com" <beanhuo@micron.com>,
- Chaotian Jing =?UTF-8?Q?=28=E4=BA=95=E6=9C=9D=E5=A4=A9=29?=
- <Chaotian.Jing@mediatek.com>,
- CC Chou =?UTF-8?Q?=28=E5=91=A8=E5=BF=97=E6=9D=B0=29?= <cc.chou@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "bvanassche@acm.org" <bvanassche@acm.org>
+Cc: CC Hwang <cc.hwang@mediatek.com>, Jason Cooper <jason@lakedaemon.net>,
+ Saravana Kannan <saravanak@google.com>, Marc Zyngier <maz@kernel.org>,
+ Hanks Chen <hanks.chen@mediatek.com>, Loda Chou <loda.chou@mediatek.com>,
+ lkml <linux-kernel@vger.kernel.org>, Steev Klimaszewski <steev@kali.org>,
+ Andy Gross <agross@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Android Kernel Team <kernel-team@android.com>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Avri,
+On Wed 05 Aug 14:57 PDT 2020, John Stultz wrote:
 
-
-On Tue, 2020-08-04 at 06:10 +0000, Avri Altman wrote:
-> > Hi Avri,
-> > 
-> > Would you have any suggestions for this patch?
-> > 
-> > We need this patch to enable UFSHCD_CAP_HIBERN8_WITH_CLK_GATING in
-> > MediaTek platform.
-> > 
-> > Thanks a lot,
-> > 
-> > Stanley Chu
-> Let's use it for now as a short-term WA.
-> Please work with Can on a proper fix that will utilize his idea to remove ufshcd_hold/release
-> From ufshcd_send_uic_cmd, as you are both in agreement that this should work as the long term solution.
+> On Wed, Aug 5, 2020 at 2:47 PM Steev Klimaszewski <steev@kali.org> wrote:
+> >
+> >
+> > On 8/5/20 4:16 PM, Steev Klimaszewski wrote:
+> > > On 8/5/20 3:19 PM, Saravana Kannan wrote:
+> > >> On Wed, Aug 5, 2020 at 12:44 AM John Stultz <john.stultz@linaro.org> wrote:
+> > >>> <sigh>
+> > >>> So this is where I bashfully admit I didn't get a chance to try this
+> > >>> patch series out, as I had success with a much older version of
+> > >>> Saravana's macro magic.
+> > >>>
+> > >>> But unfortunately, now that this has landed in mainline, I'm seeing
+> > >>> boot regressions on db845c. :( This is in the non-modular case,
+> > >>> building the driver in.
+> > >> Does that mean the modular version is working? Or you haven't tried
+> > >> that yet? I'll wait for your reply before I try to fix it. I don't
+> > >> have the hardware, but it should be easy to guess this issue looking
+> > >> at the code delta.
+> > > For what it's worth, I saw this too on the Lenovo C630 (started on -next
+> > > around 20200727, but I didn't track it down as, well, there's less way
+> > > to get debug output on the C630.
+> > >
+> > > In my testing, module or built-in doesn't matter, but reverting does
+> > > allow me to boot again.
+> > >
+> > Actually - I spoke too soon - QCOM_PDC built-in with the commit reverted
+> > boots, however, module (on the c630 at least) doesn't boot whether it's
+> > a module or built-in.
 > 
+> You may need to set deferred_probe_timeout=30 to give things a bit
+> more grace time to load.
+
+With the risk of me reading more into this than what you're saying,
+please don't upstream anything that depend this parameter to be
+increased.
+
+Compiling any of these drivers as module should not require the user to
+pass additional kernel command line parameters in order to get their
+device to boot.
+
+Regards,
+Bjorn
+
+> (I've mostly recently used qcom-pdc as a module with the android tree,
+> so the fw_devlink bits help there, but I need to re-check the state of
+> that upstream.)
 > 
-> > > > >
-> > > > >>
-> > > > >> > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> > > > >> > Signed-off-by: Andy Teng <andy.teng@mediatek.com>
-> Reviewed-by: Avri Altman <avri.altman@wdc.com>
-
-Thanks!
-
-I will continue with the long term solution with Can.
-
-BTW, this mail seems not showing up in LKML or Patchwork, just reply
-this mail with removing "[SPAM]" keyword in title.
-
-Thanks,
-Stanley Chu
+> I'll dbl check this and dig more on the issue with the patch in
+> question once I can get back in my office later today.
+> 
+> thanks
+> -john
 
 _______________________________________________
 Linux-mediatek mailing list
