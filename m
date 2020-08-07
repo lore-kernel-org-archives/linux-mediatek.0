@@ -2,92 +2,77 @@ Return-Path: <SRS0=9FsO=BR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 30F79C433E1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 06:23:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 49C53C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 06:44:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E6D8A2177B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 06:23:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 115142177B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 06:44:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OF+N7HvZ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="tiw6O4XW"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E6D8A2177B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CHwLdL5R";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="S9Cu1qZA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 115142177B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7YIAHohEZigx+jnSDpWuwcqXtlOHr58SPYS33BdnQAM=; b=OF+N7HvZx+ONrgFl9SO/xpZ/2
-	6hPWINdwRB4mIZZuIpASsz8qRoB8OOeKHfBrxdq/UagKe88Nlwr5O14T/9BIoedAmjVfgHOH58PEw
-	ylgsuJLQ+ZnS6CKpjIv2Q+LW+Q3HpAEvyYBIjYuRPd2t0yn6HVsVuzp/4WX4qJYcXf6pQnCxGZume
-	PvB3tRu3s63P2UNbmISRPKiLSPTvKjwhnn3Ei3kgdRd4jWEm0klBwMH+MUrkCEQpFgqwflkDYWyL6
-	ABo1DIpELHXeV/FpKeI5Oi8CaruUIMKySF5dQuisw88h+JdeLBpBKsKg1rBY+shcx7u6qN2PUMZOg
-	dBcyH2sAg==;
+	 bh=LX9EgXlgBQbdR+GD26KP2su7vw3joJWVKDWMEP0wKeo=; b=CHwLdL5R1AEINxB6BlsR2SlxP
+	rFP4NLdMLMWAXugFecYVvHUHNgEggxIC7eNdBQwD/rdDl0SiKsaESh+NUg4kRagb5vJ1pLQR1zPyp
+	0rxzZicEzL+KeXRJOnvEsVH8/WRgpM6PEAoRa8KH3KZ6Cnk3/zL7ahBN6Rm9Yje2y/wrrq5b0A38f
+	o68xthu7vzk+lxg6NCzsOZ6J65+rkYIqqIH0pVFtSFDe/ucdbPYRKkHuZtfWnMFe2nzM20hTVHs+C
+	GesQYKNPkSF47QrDRJSxlSrTwze7rIVc7w7ZoLVHtTKpnzLxEoQI1Lpa2PDyOAUGImZIoKqr/kKuU
+	AFYFe48KA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k3vmv-00014W-5d; Fri, 07 Aug 2020 06:23:33 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1k3w6n-0003LL-K6; Fri, 07 Aug 2020 06:44:05 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3vmr-00013C-SO
- for linux-mediatek@lists.infradead.org; Fri, 07 Aug 2020 06:23:31 +0000
-Received: by mail-pf1-x443.google.com with SMTP id s26so468329pfm.4
- for <linux-mediatek@lists.infradead.org>; Thu, 06 Aug 2020 23:23:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kjYnZO75jW+/NGMWgfsZKGwoEpWRxfcQO49H3CEjGVo=;
- b=tiw6O4XWq6TLskF079PRNCB3yu6v54OlBOgQNGuZ5nyrw6dK8b52GuWCH2diP9RaNK
- QfjP+alu9EsDItQfbi3g8/yH4LN4C0ZtUTlwX0OKDw5v/Z4oth/8HMyVBfhtjaeKFkjM
- F1QCiL+IHiqg4jJ1xADzTqteLK62kx8j9FYoHk3sOjuLLcCwGKDjEmQw4kzejV1iou0B
- H3qhv3iLWMoyRWUaYk9aA0W9xQnr5JJl6ulIn8pEoF1irPSsXi8CKE5UXAkRgmx40LqA
- P7FFdXQazZv1sDUfwnqVmFXIfQ0ANa3JXGF54HlODMIh7ZVAeZAKLMB6WbDaEyau/7U+
- +bfg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kjYnZO75jW+/NGMWgfsZKGwoEpWRxfcQO49H3CEjGVo=;
- b=EqQsiSy930XPFqer5UcTOBWiRmBTKFHVv7LmEPetzeLD1up4FUWScefEkou3RYuZ4O
- MhCgjd7OYydGM6h40l5zmGyVxB9MIyFcreA2ei92nKdUw3rcsPafqgiS2qrAVPY0b42D
- cbZyww5DG6QAnv/rb/XESUyLKTYD0Xhk8N1iBC9uRcb5CZgytr4ObBFmtQUQvMUs2uFj
- oXFAhqpKAzHQNCRDdo0claSjZpi/mx7n620Rzfp9rptKfZKiBag1wvcCDqWXDO7a5Dhv
- YYhs2iE2SEH9TVPy40iYq3A8qPA3bpdse84JCxbx7IoBjh+H2Q5ycq4LV1vAO5OqaeIG
- /dYw==
-X-Gm-Message-State: AOAM532TdTgnpzPJ6h55epQRNktJTKM0pvBMoqn9g240HI3IMwWj89yi
- miOAfbeW8E/SMCiOkD6pBXV/3UrvHZj5lZFpepi8Sg==
-X-Google-Smtp-Source: ABdhPJwQIjDDxXvPIYI66seCVsO7fJloix907UN+BOcP9hYrcizvL0kHTde7padIRCE53hB/GTd7qWRLpnkcrZOrxkc=
-X-Received: by 2002:a65:6381:: with SMTP id h1mr10771109pgv.0.1596781407242;
- Thu, 06 Aug 2020 23:23:27 -0700 (PDT)
+ id 1k3w6h-0003KD-8s; Fri, 07 Aug 2020 06:44:00 +0000
+X-UUID: 34cfe37dc32444a1adf71732b966126d-20200806
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=P8lwiU8BvsXEMdbqXkRf1Fm7PHhWjBVy6655AVZVJEU=; 
+ b=S9Cu1qZAqe5uthC6E+rffIhohzf1ihU+uDGjzrdPzFb6Ukmr5gvvOnTV2+Ua3Y+Mul7zq8rV9hyCWx6uo4sZyCPUYqf99RfNe3RfgPtaD+94BdWiIGmZ253QNLzRlKE4fa8tIR6j/rrufZdOWNr1gbbG5TxOQTWN4kDFvtD03Do=;
+X-UUID: 34cfe37dc32444a1adf71732b966126d-20200806
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <hongxu.zhao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1915645781; Thu, 06 Aug 2020 22:43:47 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 6 Aug 2020 23:33:47 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 7 Aug 2020 14:33:40 +0800
+Received: from [10.15.20.246] (10.15.20.246) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 7 Aug 2020 14:33:39 +0800
+Message-ID: <1596781829.14444.17.camel@mbjsdccf07>
+Subject: Re: [PATCH] staging: Add Mediatek High Frequency Manager Framework
+From: hongxu.zhao <hongxu.zhao@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Date: Fri, 7 Aug 2020 14:30:29 +0800
+In-Reply-To: <20200806105351.GA2829418@kroah.com>
+References: <20200804075339.9820-1-hongxu.zhao@mediatek.com>
+ <20200804081126.GA1765831@kroah.com> <1596702748.6258.3.camel@mbjsdccf07>
+ <20200806105351.GA2829418@kroah.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-References: <20200718000637.3632841-3-saravanak@google.com>
- <CALAqxLVZ+rFE+hM9OtQ46NqpTHeLu6oKLNWKstLv1U5zbwyq7g@mail.gmail.com>
- <CAGETcx_rkK3-bKhDP_N4n_WyXLXFPoaUV9rbY_Y+H1Joj=dCyw@mail.gmail.com>
- <f314b687-11a9-5a5e-e79e-c46dd2f16c6f@kali.org>
- <78ad0914-6173-f753-9eba-b7cbfbb51fd6@kali.org>
- <CALAqxLXPN9kThwF32YoWyApaWnfjthANXj3uk65Wc3ddaJQFFQ@mail.gmail.com>
- <20200807004001.GF20825@builder.lan>
- <CALAqxLWwY00PVUL7EM-tgbXeB5h8MsfPo7EFZTfDSzbb3P3eqQ@mail.gmail.com>
- <20200807013903.GG20825@builder.lan>
- <CALAqxLWmJisTA9836Rvb8f9m4hsTL7iZ=HQtz39anu2Bbgv44g@mail.gmail.com>
- <20200807055842.GP61202@yoga>
-In-Reply-To: <20200807055842.GP61202@yoga>
-From: Saravana Kannan <saravanak@google.com>
-Date: Thu, 6 Aug 2020 23:22:50 -0700
-Message-ID: <CAGETcx8DNDQZ_ikjJD9pybt9-jMeb399am1k3xHOjuTFn1imTg@mail.gmail.com>
-Subject: Re: [PATCH v3 2/4] irqchip/qcom-pdc: Switch to using
- IRQCHIP_PLATFORM_DRIVER helper macros
-To: Bjorn Andersson <bjorn.andersson@linaro.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200807_022329_974289_58E53FF3 
-X-CRM114-Status: GOOD (  54.11  )
+X-CRM114-CacheID: sfid-20200807_024359_600613_97C444A7 
+X-CRM114-Status: GOOD (  46.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,169 +84,206 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Thierry Reding <thierry.reding@gmail.com>, CC Hwang <cc.hwang@mediatek.com>,
- Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <maz@kernel.org>,
- Hanks Chen <hanks.chen@mediatek.com>, Loda Chou <loda.chou@mediatek.com>,
- lkml <linux-kernel@vger.kernel.org>, Steev Klimaszewski <steev@kali.org>,
- Andy Gross <agross@kernel.org>, John Stultz <john.stultz@linaro.org>,
- Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ wsd_upstream@mediatek.com, Weiqi Fu <weiqi.fu@mediatek.com>,
+ Hongxu Zhao <hongxu.zhao@mediatek.com>,
+ open list <linux-kernel@vger.kernel.org>,
+ Cunliang Du <cunliang.du@mediatek.com>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Thomas Gleixner <tglx@linutronix.de>,
- Android Kernel Team <kernel-team@android.com>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+ Zhen jiang <zhen.jiang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC
+ support" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 6, 2020 at 10:58 PM Bjorn Andersson
-<bjorn.andersson@linaro.org> wrote:
->
-> On Thu 06 Aug 19:48 PDT 2020, John Stultz wrote:
->
-> > On Thu, Aug 6, 2020 at 6:42 PM Bjorn Andersson
-> > <bjorn.andersson@linaro.org> wrote:
-> > > On Thu 06 Aug 18:22 PDT 2020, John Stultz wrote:
-> > > > On Thu, Aug 6, 2020 at 5:43 PM Bjorn Andersson
-> > > > <bjorn.andersson@linaro.org> wrote:
-> > > > > On Wed 05 Aug 14:57 PDT 2020, John Stultz wrote:
-> > > > > > On Wed, Aug 5, 2020 at 2:47 PM Steev Klimaszewski <steev@kali.org> wrote:
-> > > > > > > On 8/5/20 4:16 PM, Steev Klimaszewski wrote:
-> > > > > > > > On 8/5/20 3:19 PM, Saravana Kannan wrote:
-> > > > > > > >> On Wed, Aug 5, 2020 at 12:44 AM John Stultz <john.stultz@linaro.org> wrote:
-> > > > > > > >>> <sigh>
-> > > > > > > >>> So this is where I bashfully admit I didn't get a chance to try this
-> > > > > > > >>> patch series out, as I had success with a much older version of
-> > > > > > > >>> Saravana's macro magic.
-> > > > > > > >>>
-> > > > > > > >>> But unfortunately, now that this has landed in mainline, I'm seeing
-> > > > > > > >>> boot regressions on db845c. :( This is in the non-modular case,
-> > > > > > > >>> building the driver in.
-> > > > > > > >> Does that mean the modular version is working? Or you haven't tried
-> > > > > > > >> that yet? I'll wait for your reply before I try to fix it. I don't
-> > > > > > > >> have the hardware, but it should be easy to guess this issue looking
-> > > > > > > >> at the code delta.
-> > > > > > > > For what it's worth, I saw this too on the Lenovo C630 (started on -next
-> > > > > > > > around 20200727, but I didn't track it down as, well, there's less way
-> > > > > > > > to get debug output on the C630.
-> > > > > > > >
-> > > > > > > > In my testing, module or built-in doesn't matter, but reverting does
-> > > > > > > > allow me to boot again.
-> > > > > > > >
-> > > > > > > Actually - I spoke too soon - QCOM_PDC built-in with the commit reverted
-> > > > > > > boots, however, module (on the c630 at least) doesn't boot whether it's
-> > > > > > > a module or built-in.
-> > > > > >
-> > > > > > You may need to set deferred_probe_timeout=30 to give things a bit
-> > > > > > more grace time to load.
-> > > > >
-> > > > > With the risk of me reading more into this than what you're saying,
-> > > > > please don't upstream anything that depend this parameter to be
-> > > > > increased.
-> > > > >
-> > > > > Compiling any of these drivers as module should not require the user to
-> > > > > pass additional kernel command line parameters in order to get their
-> > > > > device to boot.
-> > > >
-> > > > So, ideally I agree, and Saravana's fw_devlink work should allow us to
-> > > > avoid it. But the reality is that it is already required (at least in
-> > > > configurations heavily using modules) to give more time for modules
-> > > > loaded to resolve missing dependencies after init begins (due to
-> > > > changes in the driver core to fail loading after init so that optional
-> > > > dt links aren't eternally looked for). This was seen when trying to
-> > > > enable the qualcom clk drivers to modules.
-> > > >
-> > >
-> > > So to clarify what you're saying, any system that boots successfully
-> > > with the default options is a sign of pure luck - regardless of being
-> > > builtin or modules.
-> > >
-> > >
-> > > And there you have my exact argument against the deferred timeout magic
-> > > going on in the driver core. But as you know people insist that it's
-> > > more important to be able to boot some defunct system from NFS than a
-> > > properly configured one reliably.
-> >
-> > I'd agree, but the NFS case was in use before, and when the original
-> > deferred timeout/optional link handling stuff landed no one complained
-> > they were broken by it (at least at the point where it landed).
->
-> I did object when this was proposed and I've objected for the last two
-> years, because we keep adding more and more subsystems to follow this
-> broken behavior.
->
-> > Only later when we started enabling more lower-level core drivers as
-> > modules did the shortened dependency resolution time start to bite
-> > folks.  My attempt to set the default to be 30 seconds helped there,
-> > but caused trouble and delays for the NFS case, and "don't break
-> > existing users" seemed to rule, so I set the default timeout back to
-> > 0.
-> >
->
-> I can't argue with that and I'm at loss on how to turn this around.
->
-> > > > It doesn't seem necessary in this case, but I suggested it here as
-> > > > I've got it enabled by default in my AOSP builds so that the
-> > > > module-heavy configs for GKI boot properly (even if Saravana's
-> > > > fw_devlink work is disabled).
-> > > >
-> > >
-> > > With all due respect, that's your downstream kernel, the upstream kernel
-> > > should not rely on luck, out-of-tree patches or kernel parameters.
-> >
-> > I agree that would be preferred. But kernel parameters are often there
-> > for these sorts of cases where we can't always do the right thing.
-> > As for out-of-tree patches, broken things don't get fixed until
-> > out-of-tree patches are developed and upstreamed, and I know Saravana
-> > is doing exactly that, and I hope his fw_devlink work helps fix it so
-> > the module loading is not just a matter of luck.
-> >
->
-> I don't agree with this, upstream should be functional in its default
-> configuration. Out-of-tree patches might be necessary to enable features
-> or get the most out of the hardware, but what we have upstream should
-> work.  And no, this is not always the case, but we should at least aim
-> for this.
->
-> > Also I think Thierry's comments in the other thread today are also
-> > good ideas for ways to better handle the optional dt link handling
-> > (rather than using a timeout).
-> >
->
-> I'll take a look at that, but to repeat what I've said many times
-> before, for Qualcomm platforms there's pretty much no such thing as
-> optional links.
+On Thu, 2020-08-06 at 12:53 +0200, Greg Kroah-Hartman wrote:
+> On Thu, Aug 06, 2020 at 04:32:28PM +0800, hongxu.zhao wrote:
+> > On Tue, 2020-08-04 at 10:11 +0200, Greg Kroah-Hartman wrote:
+> > > On Tue, Aug 04, 2020 at 03:52:49PM +0800, hongxu.zhao wrote:
+> > > > Add a new sensor framework into linux kernel which can support multi client request sensor data.
+> > > > There are the following features:
+> > > >     1.Ringbuffer between manager and client;
+> > > >     2.Kernel space user interface;
+> > > >     3.User space user interface with syscall;
+> > > >     4.Each client hang detect mechanism;
+> > > >     5.Polling timer management in framework no need driver concern;
+> > > >     6.Polling kthread work intergrated into a single kthread
+> > > >       worker to save system resources in framework no need driver concern;
+> > > >     7.Proc file system to show manager device and client details;
+> > > >     8.Compitable with android and widely used in many mediatek platform products;
+> > > > 
+> > > > Change-Id: I6361cdc2d51de50f66eede7df099c4575e7ec473
+> > > 
+> > > Did you not run checkpatch.pl on this?  :)
+> > > 
+> > > No need for change-id here.
+> > > 
+> > > But, most importantly, why is this in drivers/staging?  What keeps it
+> > > from being in the "real" part of the kernel?  I need a TODO file in the
+> > > directory of the driver listing what remains to be done and who is
+> > > responsible for doing this work and reviewing patches.
+> > > 
+> > > Can you resend this with that file added and the Change-id removed?
+> > > 
+> > > Also, why not just use the IIO interface, why are you creating
+> > > yet-another api for sensors?  We already have 2, making a third seems
+> > > like something that guarantees this will never be mergable to the
+> > > correct part of the kernel.
+> > > 
+> > > And finally, /proc/ is not for devices, that is what sysfs is for,
+> > > please use that.
+> > 
+> > I have modified checkpatch issue, but blocked by ARCH=alpha build error
+> > and I can't reproduce this build error in mediatek environment. I need
+> > spend some time setting up an environment to solve this problem and will
+> > send you the latest patch together after solving the problem of alpha
+> > build error.
+> 
+> If you can't easily fix the alpha issue, you can just mark the driver as
+> not able to be built there for now.
+> 
+> > Firstly I want keep it in the real part of kernel and I send mail to
+> > community to find the right maintainer, unfortunately, several emails
+> > were not answered.
+> 
+> Pointers to those emails on lore.kernel.org?
 
-Nicolas had suggested earlier that we could have a way to enable
-fw_devlink=on in DT under the "chosen" node. I liked that idea, but
-wasn't sure how easy it would be to convince DT maintainers to allow
-it. If that happens, we could just set that and not have to worry
-about these timeouts for QC platforms.
+I sended mail to linux-kernel@vger.kernel.org
 
-Not sure how easy it is to update DT in a DB 845c though. But for
-cases where DT can't be updated, we'd still have the crappy timeout to
-plaster over the issue.
+> > Secondly I found iio upstream history it also started from staging at
+> > the beginning, maybe staging is the best start until it become mature we
+> > can move it to the real part of kernel.
+> 
+> iio started in staging, but now that the infrastructure is out of it,
+> there should not be any reason that new drivers be forced to go into
+> staging too.  You only want to do it this way if for some reason you can
+> not get the work done on your own.
 
-Something like this or whatever sensible name that suggests that the
-dependencies in DT are reliable enough to use for probe ordering,
-deferred probe, etc. Then once that's there, we can turn on
-fw_devlink=on and that'd completely skip this timeout code path (and
-has a bunch of other benefits).
+Yes, I want started in staging and want more sensor driver(vendor
+driver) added to high frequency manager framework.
 
-chosen {
-        linux,reliable-dt-dependencies;
-}
+> > Actually, we have already assessed IIO subsystem, but the conclusion is
+> > that it doesn't meet our requirement:
+> > 1. iio doesn't have sensor manager in kernel space.
+> 
+> What exactly do you mean by this?  Who needs to be a "manager" here?
 
-Just some food for thought.
+From our experience, mediatek have many platforms and different
+customers have different requirement.
 
-Also, Thierry's idea would work, but it'll need changes to multiple
-drivers. Also, I don't think it'll work for drivers that'll need to
-ignore vs not ignore dependencies based on what board they are used
-in. It's still better than the blind timeout though.
+Firstly customer requirement:
+   Kernel space         |           user space
+----------------------------------------------------------------
+driver -- framework -- syscall -- client get data in process
 
--Saravana
+Face this demand, first architecture have no manager service.
+
+Secondly customer requirement:
+    Kernel space         |         user space
+---------------------------------------------------------------------
+driver -- framework -- syscall -- framework service --IPC -- client A
+
+|--IPC --client B 
+
+Face this demand, second architecture we add a sensor manager framework
+as service in user space, receive client's enable disable command and
+dispatch data to those clients.
+Then second architecture have a sensor manager in user space and through
+ipc communicate;
+
+Thirdly customer requirement:
+    Kernel space                 |                 user space
+--------------------------------------------------------------------------
+driver -- framework service -- syscall -- client A get data in process A
+                |                      |--client B get data in process B
+                |--client C get data in kernel space
+
+Face this demand, sensor manager framework service in user space can't
+meet this requirement, so third architecture we put sensor manager
+framework service to kernel space; Client A and client B through syscall
+communicate with framework service, client c through function call
+communicate with framework service. This is our finally architecture, we
+called high frequency sensor manager framework, high frequency means
+reduce one IPC transfer between framework service and client in user
+space, this architecture will have better performance, and no need
+manager service in user space through ipc communicate between service
+and client.
+
+> > 2. each driver under the iio subsystem needs to create workqueue or
+> > kthread by itself, waste system resources.
+> 
+> workqueues are very light, how many sensors and what type of resources
+> are you referring to here?  And adding a whole new user api is not
+> exactly "tiny" either :)
+
+Yes, workqueue are very light, but high frequency sensor (gyro accel and
+so on care latency) can't use system workqueue, must use high prority
+kthread or single thread workqueue. In android system, there are almost
+20 - 30 sensor types, one sensor driver user one kthread or single
+thread workqueue maybe not good.:)
+
+> > 3. iio doesn't have hang detect mechanism to detect polling thread hang.
+> 
+> That's userspace's issue, right?
+
+No, in finally architecture, polling thread is not only user space
+issue, kernel space also have polling thread to poll sensor data. When
+sensor generate an event and through manager framework dispatch to
+client A B C, hang detect mechanism will detect which client don't
+response to service then service don't dispatch data to this client.:)
+
+> > We need a sensor manager architecture in kernel space to select the best
+> > delay and latency that multi-client(user space or kernel space user)
+> > requested at the same time, and finally dispatch data to each client.
+> 
+> Why does that have to be in the kernel?
+
+The reason answered before.
+
+> > We need lower resource comsumption, each driver can poll data by kthread
+> > work which intergrated into a single kthread worker to save system
+> > resources in framework.
+> 
+> Again, how many resources are you really saving here with a whole new
+> framework?
+
+Assume high frequency manager framework and iio framework the same code
+size, but for drivers, each driver use one  kthread or single thread
+workqueue compare to N drivers use a kthread worker, which is better?:)
+
+> > We need detect polling thread hang to decide whether to send data to
+> > him.
+> 
+> Data to where?
+
+Data don't send to polling thread who hanged.
+
+> > About proc, proc is only for High Frequency Manager Framework to show
+> > manager details and client details, is not for device drivers.
+> 
+> Then it is not needed :)
+> 
+> > we recommend device driver(like test/test_app.c) use sysfs which under
+> > High Frequency Manager Framework.
+> 
+> Then you need to document it really well as to what you are doing here.
+> 
+> But again, please try working with the IIO framework as that is what we
+> have today.  Any improvements you make to it will help everyone out.
+> 
+> Adding a third way to handle sensor data to the kernel is probably not
+> going to work well for anyone...
+
+Yes, I approve your ideas, but iio framework is too much more
+complicated and widely used, if I improve iio framework maybe not
+compatible with old interface. Then I decide add a new framework to
+staging. :)
+
+thanks
+
+hognxu zhao
 
 _______________________________________________
 Linux-mediatek mailing list
