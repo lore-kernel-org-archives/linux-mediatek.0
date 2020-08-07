@@ -2,78 +2,89 @@ Return-Path: <SRS0=9FsO=BR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 23BD8C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 02:15:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B950C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 02:33:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E6E07221E4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 02:15:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C47272177B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 02:33:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1ZOT7pnI";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="l+RBTv0D"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E6E07221E4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l36ogg4c";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="Ydrt3Ucp";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="lZBUDqW0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C47272177B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=hlYXDxB7hnosfe470YXc8GcxBEjX3UeYA1KK+qq4vUM=; b=1ZOT7pnI7M3nvRPVOnuv1w4iX
-	V6VRY7s1rgX9EGdsIEa+chCLwxiJNA7U2Kqk0AaIQMXKHCm4JovWdrxCRZaeCS1Ub1SXt7dKOQmoO
-	urU6on89pWu3HCkOwNBTWzNADQ1Bpnw9dw6wZYW8kxormdnfoltrXy6LTm0kQlUEoj4f7auhWG7yN
-	sxEVFIWZN4KzkaOaL+JhrkQusSgjj7qfcFVlV8nKCW7PFLAXCZatpjkzeo0HiLgTC3UEGAEZ7Y8Bi
-	ZBqAMYcbIHA/YVg1ACEUwBoTVDlSOK6/nKIjKYMqgfyzGdeJE9L4G7k5YXKIUKGQq/n9XJLws4CcJ
-	sMEPatqaA==;
+	 bh=gjIhiJP0oOB1TwoDjyOgqhbpZgGLYNTn+C8s1/pcMgk=; b=l36ogg4crP0U3NW+8Edz5ZFL7
+	AmtRLtJmbelrBFc8CS11h69WP90/+82hWMJHDvzZkaGpYKeWNr7PUOL4ZZVYIOcTRZKbc+zcsCQJo
+	vWLv4o/beMoe0Qv/Gw9Z7N9baPrhXyO5w7hbZICFUSNR4q6YQTZkYQ4Xs9nEnLylRsA/GnbuO+wpl
+	PdZm/EzI7EVozBwrA3lm2VUqh6pZ0rFOk1PcPQ0zKTqjuERY6ZBVJSReCDV48ND+No+9WLkvmEOwQ
+	qKt1Ja8L3KBg9jO93sKk9K1cIPklH7yNaTpF/b7pbgxEOlECnEnLhtdMfFn7nIQ/VhUawlyrbep7z
+	b7J7yoxCg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k3ruP-0006mo-Ag; Fri, 07 Aug 2020 02:15:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1k3sCC-0000VT-DB; Fri, 07 Aug 2020 02:33:24 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3ruL-0006lM-O7; Fri, 07 Aug 2020 02:14:59 +0000
-X-UUID: 670f058df33a4e22aae4c82da28ba5d3-20200806
+ id 1k3sC8-0000V3-07; Fri, 07 Aug 2020 02:33:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
+ MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender
+ :Reply-To:Content-ID:Content-Description;
+ bh=sU4rKl06jnrJqpkxacbtjbZWpWXsW6hGD15dSaUV7f0=; b=Ydrt3Ucp2wSiN2/uLjXa7vbD/+
+ Gcl7LQk+5z++/hjodNUV2mNv5cRjFHyNwL3vyXXWabhpSiZAa17WtdSeEf945Qe0PtDMaKEn/SsBz
+ U005ypcRXcJLVvlQj7ARzYRuzGNWCDv4QjuxFhRLyPH0RQKQwTE0NKZrFefADFHS0FG/xPpE63XQh
+ JbqTJYw9xQFZlwMQw8O7xX5FaLdEH0NcnMrXA2g+MOrUR8EMDik2ywIbGSzMl7Rgm0CrwZOuVfAMl
+ B/X7thVVgfbeINvhMZ9qUnaybTP8zGqHO+oxqm1n6tSHF260Z67FZ3e7SWlAmmUhUyTfyji0aFKf7
+ 1RepPYMA==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1k3sC2-0006YO-44; Fri, 07 Aug 2020 02:33:18 +0000
+X-UUID: 93f2e48711e14c5eb3ce048f2bbf9fc5-20200806
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=JxLw+a2yeVjmglZikNxU8lr4nwwrSEYeYUL+KumKsqM=; 
- b=l+RBTv0DOOwABLyn0zkSWQ6GJ8dp+dHQh7jy9o88huP1ezHtZpswiLi4IS6t4vysNZ3WnZKAvzeNm7F802Tn6tFz46iVrVweOsEmPLJoiGwUNaSjp3nP/tDKZjsI5aWJLvV3pUwt8nCMcYo6yO6JDhwUjkc3ieKHgRLZceEKWfA=;
-X-UUID: 670f058df33a4e22aae4c82da28ba5d3-20200806
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=sU4rKl06jnrJqpkxacbtjbZWpWXsW6hGD15dSaUV7f0=; 
+ b=lZBUDqW0v9YD4pM+nq3GwIq3MGd9c8c3Wp0NCC6FRutB7qcdjOkZPR7QEMP5wF0BEQh6abCo/Qg/vS1mHlu+HiIInCtCzSYO8uXw7SgJQbUWsEtThu4Wl95tpXV4B2DOc7o5k5rT6ejG7q9XHCOhg9zNbgymg6j0YvuYFVKQi38=;
+X-UUID: 93f2e48711e14c5eb3ce048f2bbf9fc5-20200806
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <neal.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1862859217; Thu, 06 Aug 2020 18:14:47 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 6 Aug 2020 19:14:46 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31DR.mediatek.inc
- (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 7 Aug 2020 10:14:39 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 7 Aug 2020 10:14:41 +0800
-Message-ID: <1596766438.18559.4.camel@mhfsdcap03>
-Subject: Re: [PATCH 11/21] iommu/mediatek: Add power-domain operation
-From: Yong Wu <yong.wu@mediatek.com>
-To: chao hao <Chao.Hao@mediatek.com>
-Date: Fri, 7 Aug 2020 10:13:58 +0800
-In-Reply-To: <1595839778.2350.4.camel@mbjsdccf07>
-References: <20200711064846.16007-1-yong.wu@mediatek.com>
- <20200711064846.16007-12-yong.wu@mediatek.com>
- <1595839778.2350.4.camel@mbjsdccf07>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ with ESMTP id 2044490595; Thu, 06 Aug 2020 18:32:33 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 6 Aug 2020 19:22:28 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 7 Aug 2020 10:22:29 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 7 Aug 2020 10:22:29 +0800
+From: Neal Liu <neal.liu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v5 2/2] soc: mediatek: add mt6779 devapc driver
+Date: Fri, 7 Aug 2020 10:22:28 +0800
+Message-ID: <1596766948-29767-3-git-send-email-neal.liu@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1596766948-29767-1-git-send-email-neal.liu@mediatek.com>
+References: <1596766948-29767-1-git-send-email-neal.liu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 1FA9D0F3014E9C59CFEAA84127CB84AF86104ADCF9CE47405B4B97E5C86E5DE82000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200806_221457_918594_5404F3D5 
-X-CRM114-Status: GOOD (  19.60  )
+X-CRM114-CacheID: sfid-20200807_033314_997977_AD463E31 
+X-CRM114-Status: GOOD (  25.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,67 +96,386 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org, Nicolas
- Boichat <drinkcat@chromium.org>, cui.zhang@mediatek.com,
- srv_heupstream@mediatek.com, Robin Murphy <robin.murphy@arm.com>,
- Joerg Roedel <joro@8bytes.org>, linux-kernel@vger.kernel.org,
- Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>,
- iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- chao hao <"Chao. Hao"@mediatek.com>, ming-fan.chen@mediatek.com,
- anan.sun@mediatek.com, Will
- Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ lkml <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org,
+ Neal Liu <neal.liu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2020-07-27 at 16:49 +0800, chao hao wrote:
-> On Sat, 2020-07-11 at 14:48 +0800, Yong Wu wrote:
-> > In the previous SoC, the M4U HW is in the EMI power domain which is
-> > always on. the latest M4U is in the display power domain which may be
-> > turned on/off, thus we have to add pm_runtime interface for it.
-> > 
-> > we should enable its power before M4U hw initial. and disable it after HW
-> > initialize.
-> > 
-> > When the engine work, the engine always enable the power and clocks for
-> > smi-larb/smi-common, then the M4U's power will always be powered on
-> > automatically via the device link with smi-common.
-> > 
-> > Note: we don't enable the M4U power in iommu_map/unmap for tlb flush.
-> > If its power already is on, of course it is ok. if the power is off,
-> > the main tlb will be reset while M4U power on, thus the tlb flush while
-> > m4u power off is unnecessary, just skip it.
-> > 
-> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+MediaTek bus fabric provides TrustZone security support and data
+protection to prevent slaves from being accessed by unexpected
+masters.
+The security violation is logged and sent to the processor for
+further analysis or countermeasures.
 
-...
+Any occurrence of security violation would raise an interrupt, and
+it will be handled by mtk-devapc driver. The violation
+information is printed in order to find the murderer.
 
-> >  
-> >  	if (data->plat_data->m4u_plat == M4U_MT8173) {
-> > @@ -728,7 +756,15 @@ static int mtk_iommu_probe(struct platform_device *pdev)
-> >  
-> >  	platform_set_drvdata(pdev, data);
-> >  
-> > +	if (dev->pm_domain)
-> > +		pm_runtime_enable(dev);
-> 
-> hi yong,
-> 
-> If you put "pm_runtime_enable" here, it maybe not device_link with
-> smi_common for previous patch: 
-> if(i || !pm_runtime_enabled(dev))
->     continue;
-> 
-> Whether put it up front?
+Signed-off-by: Neal Liu <neal.liu@mediatek.com>
+---
+ drivers/soc/mediatek/Kconfig      |    9 ++
+ drivers/soc/mediatek/Makefile     |    1 +
+ drivers/soc/mediatek/mtk-devapc.c |  315 +++++++++++++++++++++++++++++++++++++
+ 3 files changed, 325 insertions(+)
+ create mode 100644 drivers/soc/mediatek/mtk-devapc.c
 
-Thanks for review. My fault here. I will fix it.
-
-> 
-> best regards,
-> chao
-
+diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+index 59a56cd..1177c98 100644
+--- a/drivers/soc/mediatek/Kconfig
++++ b/drivers/soc/mediatek/Kconfig
+@@ -17,6 +17,15 @@ config MTK_CMDQ
+ 	  time limitation, such as updating display configuration during the
+ 	  vblank.
+ 
++config MTK_DEVAPC
++	tristate "Mediatek Device APC Support"
++	help
++	  Say yes here to enable support for Mediatek Device APC driver.
++	  This driver is mainly used to handle the violation which catches
++	  unexpected transaction.
++	  The violation information is logged for further analysis or
++	  countermeasures.
++
+ config MTK_INFRACFG
+ 	bool "MediaTek INFRACFG Support"
+ 	select REGMAP
+diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
+index 01f9f87..abfd4ba 100644
+--- a/drivers/soc/mediatek/Makefile
++++ b/drivers/soc/mediatek/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0-only
+ obj-$(CONFIG_MTK_CMDQ) += mtk-cmdq-helper.o
++obj-$(CONFIG_MTK_DEVAPC) += mtk-devapc.o
+ obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
+ obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
+ obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
+diff --git a/drivers/soc/mediatek/mtk-devapc.c b/drivers/soc/mediatek/mtk-devapc.c
+new file mode 100644
+index 0000000..73287cf
+--- /dev/null
++++ b/drivers/soc/mediatek/mtk-devapc.c
+@@ -0,0 +1,315 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (C) 2020 MediaTek Inc.
++ */
++
++#include <linux/clk.h>
++#include <linux/interrupt.h>
++#include <linux/iopoll.h>
++#include <linux/module.h>
++#include <linux/platform_device.h>
++#include <linux/of_device.h>
++#include <linux/of_irq.h>
++#include <linux/of_address.h>
++
++#define VIO_MOD_TO_REG_IND(m)	((m) / 32)
++#define VIO_MOD_TO_REG_OFF(m)	((m) % 32)
++
++struct mtk_devapc_vio_dbgs {
++	union {
++		u32 vio_dbg0;
++		struct {
++			u32 mstid:16;
++			u32 dmnid:6;
++			u32 vio_w:1;
++			u32 vio_r:1;
++			u32 addr_h:4;
++			u32 resv:4;
++		} dbg0_bits;
++	};
++
++	u32 vio_dbg1;
++};
++
++struct mtk_devapc_data {
++	u32 vio_idx_num;
++	u32 vio_mask_offset;
++	u32 vio_sta_offset;
++	u32 vio_dbg0_offset;
++	u32 vio_dbg1_offset;
++	u32 apc_con_offset;
++	u32 vio_shift_sta_offset;
++	u32 vio_shift_sel_offset;
++	u32 vio_shift_con_offset;
++};
++
++struct mtk_devapc_context {
++	struct device *dev;
++	void __iomem *infra_base;
++	struct clk *infra_clk;
++	const struct mtk_devapc_data *data;
++};
++
++static void clear_vio_status(struct mtk_devapc_context *ctx)
++{
++	void __iomem *reg;
++	int i;
++
++	reg = ctx->infra_base + ctx->data->vio_sta_offset;
++
++	for (i = 0; i < VIO_MOD_TO_REG_IND(ctx->data->vio_idx_num - 1); i++)
++		writel(GENMASK(31, 0), reg + 4 * i);
++
++	writel(GENMASK(VIO_MOD_TO_REG_OFF(ctx->data->vio_idx_num - 1), 0),
++	       reg + 4 * i);
++}
++
++static void mask_module_irq(struct mtk_devapc_context *ctx, bool mask)
++{
++	void __iomem *reg;
++	u32 val;
++	int i;
++
++	reg = ctx->infra_base + ctx->data->vio_mask_offset;
++
++	if (mask)
++		val = GENMASK(31, 0);
++	else
++		val = 0;
++
++	for (i = 0; i < VIO_MOD_TO_REG_IND(ctx->data->vio_idx_num - 1); i++)
++		writel(val, reg + 4 * i);
++
++	val = readl(reg + 4 * i);
++	if (mask)
++		val |= GENMASK(VIO_MOD_TO_REG_OFF(ctx->data->vio_idx_num - 1),
++						 0);
++	else
++		val &= ~GENMASK(VIO_MOD_TO_REG_OFF(ctx->data->vio_idx_num - 1),
++						 0);
++
++	writel(val, reg + 4 * i);
++}
++
++#define PHY_DEVAPC_TIMEOUT	0x10000
++
++/*
++ * devapc_sync_vio_dbg - do "shift" mechansim" to get full violation information.
++ *                       shift mechanism is depends on devapc hardware design.
++ *                       Mediatek devapc set multiple slaves as a group.
++ *                       When violation is triggered, violation info is kept
++ *                       inside devapc hardware.
++ *                       Driver should do shift mechansim to sync full violation
++ *                       info to VIO_DBGs registers.
++ *
++ */
++static int devapc_sync_vio_dbg(struct mtk_devapc_context *ctx)
++{
++	void __iomem *pd_vio_shift_sta_reg;
++	void __iomem *pd_vio_shift_sel_reg;
++	void __iomem *pd_vio_shift_con_reg;
++	int min_shift_group;
++	int ret;
++	u32 val;
++
++	pd_vio_shift_sta_reg = ctx->infra_base +
++			       ctx->data->vio_shift_sta_offset;
++	pd_vio_shift_sel_reg = ctx->infra_base +
++			       ctx->data->vio_shift_sel_offset;
++	pd_vio_shift_con_reg = ctx->infra_base +
++			       ctx->data->vio_shift_con_offset;
++
++	/* Find the minimum shift group which has violation */
++	val = readl(pd_vio_shift_sta_reg);
++	if (!val)
++		return false;
++
++	min_shift_group = __ffs(val);
++
++	/* Assign the group to sync */
++	writel(0x1 << min_shift_group, pd_vio_shift_sel_reg);
++
++	/* Start syncing */
++	writel(0x1, pd_vio_shift_con_reg);
++
++	ret = readl_poll_timeout(pd_vio_shift_con_reg, val, val == 0x3, 0,
++				 PHY_DEVAPC_TIMEOUT);
++	if (ret) {
++		dev_err(ctx->dev, "%s: Shift violation info failed\n", __func__);
++		return false;
++	}
++
++	/* Stop syncing */
++	writel(0x0, pd_vio_shift_con_reg);
++	writel(0x0, pd_vio_shift_sel_reg);
++	writel(0x1 << min_shift_group, pd_vio_shift_sta_reg);
++
++	return true;
++}
++
++/*
++ * devapc_extract_vio_dbg - extract full violation information after doing
++ *                          shift mechanism.
++ */
++static void devapc_extract_vio_dbg(struct mtk_devapc_context *ctx)
++{
++	struct mtk_devapc_vio_dbgs *vio_dbgs;
++	void __iomem *vio_dbg0_reg;
++	void __iomem *vio_dbg1_reg;
++
++	vio_dbgs = devm_kzalloc(ctx->dev, sizeof(struct mtk_devapc_vio_dbgs),
++				GFP_KERNEL);
++	if (!vio_dbgs)
++		return;
++
++	vio_dbg0_reg = ctx->infra_base + ctx->data->vio_dbg0_offset;
++	vio_dbg1_reg = ctx->infra_base + ctx->data->vio_dbg1_offset;
++
++	vio_dbgs->vio_dbg0 = readl(vio_dbg0_reg);
++	vio_dbgs->vio_dbg1 = readl(vio_dbg1_reg);
++
++	/* Print violation information */
++	if (vio_dbgs->dbg0_bits.vio_w)
++		dev_info(ctx->dev, "Write Violation\n");
++	else if (vio_dbgs->dbg0_bits.vio_r)
++		dev_info(ctx->dev, "Read Violation\n");
++
++	dev_info(ctx->dev, "Bus ID:0x%x, Dom ID:0x%x, Vio Addr:0x%x\n",
++		 vio_dbgs->dbg0_bits.mstid, vio_dbgs->dbg0_bits.dmnid,
++		 vio_dbgs->vio_dbg1);
++}
++
++/*
++ * devapc_violation_irq - the devapc Interrupt Service Routine (ISR) will dump
++ *                        violation information including which master violates
++ *                        access slave.
++ */
++static irqreturn_t devapc_violation_irq(int irq_number,
++					struct mtk_devapc_context *ctx)
++{
++	/*
++	 * Mask slave's irq before clearing vio status.
++	 * Must do it to avoid nested interrupt and prevent
++	 * unexpected behavior.
++	 */
++	mask_module_irq(ctx, true);
++
++	while (devapc_sync_vio_dbg(ctx))
++		devapc_extract_vio_dbg(ctx);
++
++	/*
++	 * Ensure that violation info are written
++	 * before further operations
++	 */
++	smp_mb();
++
++	clear_vio_status(ctx);
++	mask_module_irq(ctx, false);
++
++	return IRQ_HANDLED;
++}
++
++/*
++ * start_devapc - unmask slave's irq to start receiving devapc violation.
++ */
++static void start_devapc(struct mtk_devapc_context *ctx)
++{
++	void __iomem *pd_apc_con_reg;
++
++	pd_apc_con_reg = ctx->infra_base + ctx->data->apc_con_offset;
++	writel(BIT(31), pd_apc_con_reg);
++
++	mask_module_irq(ctx, false);
++}
++
++static const struct mtk_devapc_data devapc_mt6779 = {
++	.vio_idx_num = 511,
++	.vio_mask_offset = 0x0,
++	.vio_sta_offset = 0x400,
++	.vio_dbg0_offset = 0x900,
++	.vio_dbg1_offset = 0x904,
++	.apc_con_offset = 0xF00,
++	.vio_shift_sta_offset = 0xF10,
++	.vio_shift_sel_offset = 0xF14,
++	.vio_shift_con_offset = 0xF20,
++};
++
++static const struct of_device_id mtk_devapc_dt_match[] = {
++	{
++		.compatible = "mediatek,mt6779-devapc",
++		.data = &devapc_mt6779,
++	}, {
++	},
++};
++
++static int mtk_devapc_probe(struct platform_device *pdev)
++{
++	struct device_node *node = pdev->dev.of_node;
++	struct mtk_devapc_context *ctx;
++	u32 devapc_irq;
++	int ret;
++
++	if (IS_ERR(node))
++		return -ENODEV;
++
++	ctx = devm_kzalloc(&pdev->dev, sizeof(*ctx), GFP_KERNEL);
++	if (!ctx)
++		return -ENOMEM;
++
++	ctx->data = of_device_get_match_data(&pdev->dev);
++	ctx->dev = &pdev->dev;
++
++	ctx->infra_base = of_iomap(node, 0);
++	if (!ctx->infra_base)
++		return -EINVAL;
++
++	devapc_irq = irq_of_parse_and_map(node, 0);
++	if (!devapc_irq)
++		return -EINVAL;
++
++	ctx->infra_clk = devm_clk_get(&pdev->dev, "devapc-infra-clock");
++	if (IS_ERR(ctx->infra_clk))
++		return -EINVAL;
++
++	if (clk_prepare_enable(ctx->infra_clk))
++		return -EINVAL;
++
++	ret = devm_request_irq(&pdev->dev, devapc_irq,
++			       (irq_handler_t)devapc_violation_irq,
++			       IRQF_TRIGGER_NONE, "devapc", ctx);
++	if (ret) {
++		clk_disable_unprepare(ctx->infra_clk);
++		return ret;
++	}
++
++	platform_set_drvdata(pdev, ctx);
++
++	start_devapc(ctx);
++
++	return 0;
++}
++
++static int mtk_devapc_remove(struct platform_device *pdev)
++{
++	struct mtk_devapc_context *ctx = platform_get_drvdata(pdev);
++
++	if (ctx->infra_clk)
++		clk_disable_unprepare(ctx->infra_clk);
++
++	return 0;
++}
++
++static struct platform_driver mtk_devapc_driver = {
++	.probe = mtk_devapc_probe,
++	.remove = mtk_devapc_remove,
++	.driver = {
++		.name = KBUILD_MODNAME,
++		.of_match_table = mtk_devapc_dt_match,
++	},
++};
++
++module_platform_driver(mtk_devapc_driver);
++
++MODULE_DESCRIPTION("Mediatek Device APC Driver");
++MODULE_AUTHOR("Neal Liu <neal.liu@mediatek.com>");
++MODULE_LICENSE("GPL");
+-- 
+1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
