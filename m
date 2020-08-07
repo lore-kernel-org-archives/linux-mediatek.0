@@ -1,84 +1,83 @@
-Return-Path: <SRS0=30uw=BQ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=9FsO=BR=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C515C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 22:40:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 01AF7C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 00:39:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0E8EC2086A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2020 22:40:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E48E0206B5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2020 00:39:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eGQOvXZ+";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="E2q1p0JO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E8EC2086A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TuWzTfal";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Uax3yNJO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E48E0206B5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1f7zZgNzUFzQNN1e9/D79B5AyPKUYUpwjBDFiq9GvEk=; b=eGQOvXZ+zXKu/wuqfHNGcI8Zp
-	NGhnNgDJIkGwkPr+qz+icjGH/2F0RvI/lYZ+kS0BtaoiN6wjJIgoVrd9pEMmOalfeCIJAB6hmhFPB
-	hclSU6yxbtc5iXqLvMas8HKFKjMmGSyaoZnyVUflixZmYdc15bMThZprOXhUbzruEVJl+QuLnrSAs
-	CAI+RfaBSEVW4GF7rp0L6NSGPCCRNpwtGvMPovrhyBpV3LBCveslmGO5fnO6smDl6fiGv88NdOhwx
-	tLaqWfebuTmZucGqkiGAaYDqfWR3xmtK0mnV4HmgxXqBc+VRdYdwAY04FKXF/BiFvADlM7eSqrrWc
-	HLmvi2RRA==;
+	 bh=rglH7cggLTfTfXIibDWNg5tDiZvPt7gZjzzyaziSd3c=; b=TuWzTfalC0s8y2pszyq0iwnzf
+	MG75Sqm8PjHzQuGUhLXi9HqPNn+tKToBEqgqtD4y5LCBIWbTSYkxmUc7ytqnmyc7fDe49jzmADEAF
+	uFpuMv0PKukh5REohbGSQF6hxiztYCgJ4S0wbUkIqQVids8jKpkHpCGm0Aw8HzrKrqNgq//EK0+Sy
+	P1whkiwRbK0yIgQFaj2buPMyiZRGqibVNnzgW8QTJhjcq7BvU/A3tRChA+3qtPTezDXyd6PjgatdX
+	4vC6Iy9DzBLJQPTTW9fJ0Z55sBXNCSAA8xWSdmEiUQDKj4efYKrOj9rPmtjZLQ7kXsevFYRxlMGeY
+	mfbhY7Ihw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k3oYC-0001mi-Mc; Thu, 06 Aug 2020 22:39:52 +0000
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244])
+	id 1k3qQA-0001Gk-6d; Fri, 07 Aug 2020 00:39:42 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3oY7-0001il-Da; Thu, 06 Aug 2020 22:39:48 +0000
-Received: by mail-oi1-x244.google.com with SMTP id a24so179048oia.6;
- Thu, 06 Aug 2020 15:39:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QYyChGMYepRNLD8UKgj7thBgwQob2Oa7/EK/gPsMnyo=;
- b=E2q1p0JO2XvfW4MMncIYFDARtHPyS+Dcb3O71GCXktM+fV9+klnIKIxDdRHgU8QHRr
- l7X7JmWn9GB+naSfiniANoD7LR6lGKLMk5kpKOJWxfeJQffooRC0T6skmfrGEC1AMHne
- yKbq2NmQL6q9ywbDwSPKDUz/etM/TXSWury+bF/GcssilJLmAiftBdZFjsPbW9rUAfP+
- /X3iDgd1HOlYlLaINt0FDbT3U2C2Nks5KEEvO3bLUtsyWVHpvQfouOR9Zj9RrV5LhyCL
- Ghy+AmHJ2iZQF63/YcvknmUTlSDTrBqwC41c7/rEggVDsauU9MQ+kT+MyOWnLhLqZ+EL
- IwXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=QYyChGMYepRNLD8UKgj7thBgwQob2Oa7/EK/gPsMnyo=;
- b=Mvly7GHthEVn6VI1/B7GzqrQW6UdjIF6BFImvPpv9RJKdnUvLBvtNid767sPk1ga5S
- bmRJ9aJTWNPNDX71kgtWqHxU3scBZh7STlj5AJcwLZ+3AVo8WGMk/u1QC4s3NY8/YeDZ
- 45nE3lVOA82k6P/0UatLdOoA3yA3CAItNVvxTpeOy0l/91RRiLfYGgqxPOtJuyC3dloo
- 0fzLooIL1x7wHJx/7vetumf+v6Lkntbe87YP7tUCxn1+kT5YIJD1EmmcinazzDo+s15L
- gkf8bOqSTJg2J+LdG3aKFs5SVMyGk/BwbVAZA6orpblNIJlZDuVRWOMyvsIni4TC1L19
- F6WA==
-X-Gm-Message-State: AOAM530wau2+4pWDOs0cshBJ6rj8XIT4T8WPUmNbZpDP5heFdi35/Fdz
- tYBRS3tLNwM/ZSwfJWDQKNjxieVJoqtq0ycZgzo=
-X-Google-Smtp-Source: ABdhPJxgRVHE+w66qKr8NvAura05izXsDohZP4qj6OUjgNalYTkqSJnvf7KROxLkFiU/XGIePEi/yKZRmmb+OQ1qMho=
-X-Received: by 2002:a54:4512:: with SMTP id l18mr8807675oil.148.1596753585500; 
- Thu, 06 Aug 2020 15:39:45 -0700 (PDT)
+ id 1k3qQ5-0001Fg-2L; Fri, 07 Aug 2020 00:39:39 +0000
+X-UUID: 24a11b8d293f44b19d1113b256332c0d-20200806
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=bnBFseN4rOUFAaYeG9/B7rSHa4Ze1CslHkpsIkYU4+w=; 
+ b=Uax3yNJOKS687oP+vgorpNGrHft4mBgoFRdZ/T/x0+ZGZaOncz3BUvakL7OffvGOCR7fte02sssyoma8lEVtcbwydPzDfCE67Z/wINjdSpy62GHa200QK/UMC/OFG6SpyPGnUZjBu+mCghkAwaBUMTCkLy9VVrALVIE7xrz0KJo=;
+X-UUID: 24a11b8d293f44b19d1113b256332c0d-20200806
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 66219605; Thu, 06 Aug 2020 16:39:27 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 6 Aug 2020 17:39:22 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 7 Aug 2020 08:39:18 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 7 Aug 2020 08:39:14 +0800
+Message-ID: <1596760757.27829.8.camel@mtkswgap22>
+Subject: RE: [PATCH v2] scsi: ufs: Fix possible infinite loop in ufshcd_hold
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: Avri Altman <Avri.Altman@wdc.com>
+Date: Fri, 7 Aug 2020 08:39:17 +0800
+In-Reply-To: <BYAPR04MB4629D947CAC7E07FF94D55F2FC4A0@BYAPR04MB4629.namprd04.prod.outlook.com>
+References: <20200729024037.23105-1-stanley.chu@mediatek.com>
+ <bfbb48b06fa3464da0cbd2aee8a32649@codeaurora.org>
+ <1596018374.17247.41.camel@mtkswgap22>
+ <4cb7403fae7226b70a133d4a7ecee755@codeaurora.org>
+ <1596095961.17247.51.camel@mtkswgap22>
+ <1596518850.27829.5.camel@mtkswgap22>
+ <BYAPR04MB4629D947CAC7E07FF94D55F2FC4A0@BYAPR04MB4629.namprd04.prod.outlook.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-References: <20200730205112.2099429-1-ndesaulniers@google.com>
- <20200730205112.2099429-4-ndesaulniers@google.com>
-In-Reply-To: <20200730205112.2099429-4-ndesaulniers@google.com>
-From: Nathan Huckleberry <nhuck15@gmail.com>
-Date: Thu, 6 Aug 2020 17:39:33 -0500
-Message-ID: <CAN=-RxstJBjJUcOf9iuAxEcxYUhJTdF9JhPVWwQuefnE+3s52w@mail.gmail.com>
-Subject: Re: [PATCH 3/4] ARM: backtrace-clang: give labels more descriptive
- names
-To: Nick Desaulniers <ndesaulniers@google.com>
+X-TM-SNTS-SMTP: 73F1E00256D1A908A1930FBC0D29440FFF3B4AA04CC0F12EC73470C9002285A42000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200806_183947_541565_E5EBB3CB 
-X-CRM114-Status: GOOD (  19.18  )
+X-CRM114-CacheID: sfid-20200806_203937_265518_025464F4 
+X-CRM114-Status: GOOD (  15.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,113 +89,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chunyan Zhang <zhang.lyra@gmail.com>, Dmitry Safonov <0x7f454c46@gmail.com>,
- Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org,
- clang-built-linux@googlegroups.com, Miles Chen <miles.chen@mediatek.com>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Nathan Huckleberry <nhuck@google.com>,
- Lvqiang Huang <lvqiang.huang@unisoc.com>, linux-arm-kernel@lists.infradead.org
+Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+ Andy Teng =?UTF-8?Q?=28=E9=84=A7=E5=A6=82=E5=AE=8F=29?=
+ <Andy.Teng@mediatek.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ Chun-Hung Wu =?UTF-8?Q?=28=E5=B7=AB=E9=A7=BF=E5=AE=8F=29?=
+ <Chun-hung.Wu@mediatek.com>,
+ Kuohong Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=8B=E9=B4=BB=29?=
+ <kuohong.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>,
+ Can Guo <cang@codeaurora.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Peter Wang =?UTF-8?Q?=28=E7=8E=8B=E4=BF=A1=E5=8F=8B=29?=
+ <peter.wang@mediatek.com>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "beanhuo@micron.com" <beanhuo@micron.com>,
+ Chaotian Jing =?UTF-8?Q?=28=E4=BA=95=E6=9C=9D=E5=A4=A9=29?=
+ <Chaotian.Jing@mediatek.com>,
+ CC Chou =?UTF-8?Q?=28=E5=91=A8=E5=BF=97=E6=9D=B0=29?= <cc.chou@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "bvanassche@acm.org" <bvanassche@acm.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The style cleanup looks great. I just have one extra thing that
-can probably be thrown into this patch.
+Hi Avri,
 
-On Thu, Jul 30, 2020 at 3:51 PM Nick Desaulniers
-<ndesaulniers@google.com> wrote:
->
-> Removes the 1004 label; it was neither a control flow target, nor an
-> instruction we expect to produce a fault.
->
-> Gives the labels slightly more readable names. The `b` suffixes are
-> handy to disambiguate between labels of the same identifier when there's
-> more than one. Since these labels are unique, let's just give them
-> names.
->
-> Signed-off-by: Nick Desaulniers <ndesaulniers@google.com>
-> ---
->  arch/arm/lib/backtrace-clang.S | 22 ++++++++++------------
->  1 file changed, 10 insertions(+), 12 deletions(-)
->
-> diff --git a/arch/arm/lib/backtrace-clang.S b/arch/arm/lib/backtrace-clang.S
-> index 40eb2215eaf4..7dad2a6843a5 100644
-> --- a/arch/arm/lib/backtrace-clang.S
-> +++ b/arch/arm/lib/backtrace-clang.S
-> @@ -121,8 +121,8 @@ for_each_frame:     tst     frame, mask             @ Check for address exceptions
->   * start. This value gets updated to be the function start later if it is
->   * possible.
->   */
-> -1001:          ldr     sv_pc, [frame, #4]      @ get saved 'pc'
-> -1002:          ldr     sv_fp, [frame, #0]      @ get saved fp
-> +load_pc:       ldr     sv_pc, [frame, #4]      @ get saved 'pc'
-> +load_fp:       ldr     sv_fp, [frame, #0]      @ get saved fp
->
->                 teq     sv_fp, mask             @ make sure next frame exists
->                 beq     no_frame
-> @@ -142,7 +142,7 @@ for_each_frame:     tst     frame, mask             @ Check for address exceptions
->   * registers for the current function, but the stacktrace is still printed
->   * properly.
->   */
-> -1003:          ldr     sv_lr, [sv_fp, #4]      @ get saved lr from next frame
-> +load_lr:       ldr     sv_lr, [sv_fp, #4]      @ get saved lr from next frame
->
->                 tst     sv_lr, #0               @ If there's no previous lr,
->                 beq     finished_setup          @ we're done.
-> @@ -166,8 +166,7 @@ finished_setup:
->  /*
->   * Print the function (sv_pc) and where it was called from (sv_lr).
->   */
-> -1004:          mov     r0, sv_pc
-> -
-> +               mov     r0, sv_pc
->                 mov     r1, sv_lr
->                 mov     r2, frame
->                 bic     r1, r1, mask            @ mask PC/LR for the mode
-> @@ -182,7 +181,7 @@ finished_setup:
->   * pointer the comparison will fail and no registers will print. Unwinding will
->   * continue as if there had been no registers stored in this frame.
->   */
-> -1005:          ldr     r1, [sv_pc, #0]         @ if stmfd sp!, {..., fp, lr}
-> +load_stmfd:    ldr     r1, [sv_pc, #0]         @ if stmfd sp!, {..., fp, lr}
->                 ldr     r3, .Lopcode            @ instruction exists,
->                 teq     r3, r1, lsr #11
->                 ldr     r0, [frame]             @ locals are stored in
-> @@ -201,7 +200,7 @@ finished_setup:
->                 mov     frame, sv_fp            @ above the current frame
->                 bhi     for_each_frame
->
-> -1006:          adr     r0, .Lbad
-> +bad_frame:     adr     r0, .Lbad
->                 mov     r1, loglvl
->                 mov     r2, frame
->                 bl      printk
-> @@ -216,11 +215,10 @@ bad_lr:           mov     sv_fp, #0
->  ENDPROC(c_backtrace)
->                 .pushsection __ex_table,"a"
->                 .align  3
-> -               .long   1001b, 1006b
-> -               .long   1002b, 1006b
-> -               .long   1003b, 1006b
-> -               .long   1004b, 1006b
-> -               .long   1005b, 1006b
-> +               .long   load_pc, bad_frame
-> +               .long   load_fp, bad_frame
-> +               .long   load_lr, bad_frame
-> +               .long   load_stmfd, bad_frame
 
-Load_stmfd should get its own fixup
-handler since it should emit errors about a bad
-pc, not a bad frame pointer.
+On Tue, 2020-08-04 at 06:10 +0000, Avri Altman wrote:
+> > Hi Avri,
+> > 
+> > Would you have any suggestions for this patch?
+> > 
+> > We need this patch to enable UFSHCD_CAP_HIBERN8_WITH_CLK_GATING in
+> > MediaTek platform.
+> > 
+> > Thanks a lot,
+> > 
+> > Stanley Chu
+> Let's use it for now as a short-term WA.
+> Please work with Can on a proper fix that will utilize his idea to remove ufshcd_hold/release
+> From ufshcd_send_uic_cmd, as you are both in agreement that this should work as the long term solution.
+> 
+> 
+> > > > >
+> > > > >>
+> > > > >> > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> > > > >> > Signed-off-by: Andy Teng <andy.teng@mediatek.com>
+> Reviewed-by: Avri Altman <avri.altman@wdc.com>
 
->                 .long   prev_call, bad_lr
->                 .popsection
->
-> --
-> 2.28.0.163.g6104cc2f0b6-goog
->
+Thanks!
+
+I will continue with the long term solution with Can.
+
+BTW, this mail seems not showing up in LKML or Patchwork, just reply
+this mail with removing "[SPAM]" keyword in title.
+
+Thanks,
+Stanley Chu
 
 _______________________________________________
 Linux-mediatek mailing list
