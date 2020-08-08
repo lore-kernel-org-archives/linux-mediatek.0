@@ -2,83 +2,67 @@ Return-Path: <SRS0=PvK4=BS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 20B8BC433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat,  8 Aug 2020 18:01:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AD2F3C433E0
+	for <linux-mediatek@archiver.kernel.org>; Sat,  8 Aug 2020 22:05:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E43ED206E9
-	for <linux-mediatek@archiver.kernel.org>; Sat,  8 Aug 2020 18:01:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 79E0F206C3
+	for <linux-mediatek@archiver.kernel.org>; Sat,  8 Aug 2020 22:05:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rt6jOW9g";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="RrDAKLp+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E43ED206E9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="B/rzgnvX";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.b="Kbq7pkBR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 79E0F206C3
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=emK/PluO2Z63mYpO/i7HJ3n/lXYBxsZfWogpFjH7aYQ=; b=rt6jOW9ghJdy8lNWVVFis2ByZ
-	OmL4C6I0pRpc8CJgcU+jRgNJAkeTMXYSQZ0KMZ4MvG4yBUuyb0qXl6DtoLoRO8ZFDWpsP77K7VdL6
-	0YfJR1Jdp6te/ivlLRGMLDHkiq9BVyCJBKWVaX2mR9yZ76dppiszetHEYurD+pAJnUC3uS8rVDyBO
-	N7G//cfuadlGm3T2n8bi97OGdfKqcPXlRs9d1RvLajJ48YS8KM7B7hygrGEVKwVkutpM2aJRdQ+0l
-	cVns041HsqVVzPy05JJKIftXF2H9er1IJegl+D+uEnkz8KMcWAgVrtOR2oyuEQDAunuQd8nqXzThI
-	x66WFfUxg==;
+	 bh=aL1+Czz4YWRg+XcXZkv+93yO9YeUQhsY5eJM2wSI5wU=; b=B/rzgnvXIzNTyeq4Lg11wFs45
+	5bIWmFApa6jNoiV+tP6Kwjh/V2ewfHdIh6Alwyqt9u8pl7wDDfaG2DtU/aqjgX/szuZ0GI5inPtOa
+	3u+1LSUWkFBNuw1uH7lvjdEtOvUD2bp/1qE6t7FIZlmnP6C1P+2VdNhYg8NjIQgqYtQ4xatmjokgc
+	D/cBi2UtfXSiGfpFnV5lNuDNvSbMzWQPlSMByW+0yaQA/cN7Bk15zeIL6jvPj+d42WEm5o2W9brVp
+	wcK2CeUr2q5Ops0lmFdk3TguvbS19cCMBx9L2f+b7T/XGFLFhPATEwDFXlVFCyhlT1FARz98R1dxS
+	QdLA4AnxA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k4T9t-0007at-9i; Sat, 08 Aug 2020 18:01:29 +0000
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541])
+	id 1k4Wxb-0003PO-73; Sat, 08 Aug 2020 22:05:03 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k4T9q-0007aO-U3
- for linux-mediatek@lists.infradead.org; Sat, 08 Aug 2020 18:01:27 +0000
-Received: by mail-ed1-x541.google.com with SMTP id v22so3541021edy.0
- for <linux-mediatek@lists.infradead.org>; Sat, 08 Aug 2020 11:01:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=wNMGWRpxLCRNhvFBGn2jHdGfSMLwsC5v0n8Wvl9tloI=;
- b=RrDAKLp+DIWJDyBxuL7EGjOl+uvuEsQWiMmxUldIQgundkg4I5B+fJZqXWuFx1vMnE
- pGVgzvDoVkSAMQbP7EjI/F3/LUYCucJecIctDzjrUp1n9/R+VfYTI2JS0QkiRDYQOF4Z
- DvM6XxjspJ+Ff2KVkWQTDpGIaMdlspoiKIuCCuRkWxDbgrkWLMy4FRvrDIbmocZj4aao
- LnARnBq7PpbwacoH6MRpzJ/o6Ny1JRIJ1hBmPBh5jCyuaH4iz87VK/hWMo1flcQec+z+
- MEf8hrDrO+GsKiYxtexufv5iIz5CuLQEVdukZdjPrIi1MY8tbeJySfoN/6gPb7DlJmDH
- N+7Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=wNMGWRpxLCRNhvFBGn2jHdGfSMLwsC5v0n8Wvl9tloI=;
- b=KIJkLFepT4TkJZaGhTWPWYhlLftjn2+DKRSBrELpJCH7ADuwsZxXgaKjb41XhMPJoO
- da4Asv1qsFPgT97KoNSptBcAcp+CCVVIKcYka2xqiGEahi+xYeE92Qb48mAXm8aZAH8A
- TpzZy4vhvuRUh6rOIQ0YjxSExjqyQWmyosQAvulGaJipILJL1ucLS+hF5vo2TEAKWpNW
- OYuPUdNoitec8m/+JrpuPMbSEWrkg8CJSGFCLULVM29DoIR8oTFkCJQ1/nh0Cos+qZ85
- pyanhUlPTtg3zEzWwKc8kVEF/KikI8/hDRwdBbUq4xjBGJfJxALVG1YCkN1c+BZKbjDp
- HO+Q==
-X-Gm-Message-State: AOAM532soUxjoBGlVmbT3VGyPtdXUNL/zD+shJQyeP49dD5evdzjUReC
- 7tgcD7rgTIYukB4eqk9srPVJ+Cnlgdj8JAnNKWjKyw==
-X-Google-Smtp-Source: ABdhPJwO+qAYZzfY4DVdu4jrtJuqEQEAgJDBQPgUcmUAsW8uqauCkwC2Ac8pWaKoqOLRGUTaLHz6kTE1GQvFWurJiiY=
-X-Received: by 2002:a05:6402:6cc:: with SMTP id
- n12mr14807902edy.258.1596909683186; 
- Sat, 08 Aug 2020 11:01:23 -0700 (PDT)
+ id 1k4WxS-0003NU-5D; Sat, 08 Aug 2020 22:04:55 +0000
+Received: from pendragon.ideasonboard.com (85-76-78-184-nat.elisa-mobile.fi
+ [85.76.78.184])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 90F1BF9;
+ Sun,  9 Aug 2020 00:04:35 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1596924280;
+ bh=/Ahnodr9RqbqcUOwUfhTd06mCNouczDt++/t+ejw0Po=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Kbq7pkBRQzU5SVvHPcAGZ+K7jXtRT/C4/wy/aXyh4qGPqgiZ3Buk+8Tqr8b1EAHPy
+ 2Z259suOzD5zxZbz8rBMhkkBMuONLujjPouxzCFRQtTmjxylX/aPqJc/nrxmK+CIPb
+ 8Xkag+BGeKOOxcI5nSgH2C212JEOHfPYFYerM0b8=
+Date: Sun, 9 Aug 2020 01:04:19 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: frederic.chen@mediatek.com
+Subject: Re: [PATCH V2,1/1] media: mc-device.c: change
+ media_device_request_alloc to match media_ioctl_info
+Message-ID: <20200808220419.GY6186@pendragon.ideasonboard.com>
+References: <20200806155822.3772-1-frederic.chen@mediatek.com>
+ <20200806155822.3772-2-frederic.chen@mediatek.com>
 MIME-Version: 1.0
-References: <20200804104535.GA398141@mwanda>
-In-Reply-To: <20200804104535.GA398141@mwanda>
-From: Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>
-Date: Sat, 8 Aug 2020 20:01:16 +0200
-Message-ID: <CAA2SeNKdO6bq5yp4k3q6phJmTDnU5oL5vbJ_mFY78uKMz4CFgQ@mail.gmail.com>
-Subject: Re: [bug report] mt76: mt7615: wake device before accessing regmap in
- debugfs
-To: Dan Carpenter <dan.carpenter@oracle.com>
+Content-Disposition: inline
+In-Reply-To: <20200806155822.3772-2-frederic.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200808_140127_011104_E141386A 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20200808_180454_329758_931190C7 
+X-CRM114-Status: GOOD (  17.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,69 +74,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-wireless <linux-wireless@vger.kernel.org>,
- linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Sean.Cheng@mediatek.com, laurent.pinchart+renesas@ideasonboard.com,
+ christie.yu@mediatek.com, srv_heupstream@mediatek.com, tfiga@chromium.org,
+ sj.huang@mediatek.com, yuzhao@chromium.org, hans.verkuil@cisco.com,
+ zwisler@chromium.org, matthias.bgg@gmail.com,
+ linux-mediatek@lists.infradead.org, mchehab@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->
-> Hello Lorenzo Bianconi,
->
-> The patch ea4906c4be49: "mt76: mt7615: wake device before accessing
-> regmap in debugfs" from Jul 3, 2020, leads to the following static
-> checker warning:
+Hi Frederic,
 
-Hi Dan,
+Thank you for the patch.
 
-thx for the report. I will post a fix soon.
+On Thu, Aug 06, 2020 at 11:58:22PM +0800, frederic.chen@mediatek.com wrote:
+> From: Frederic Chen <frederic.chen@mediatek.com>
+> 
+> We modified the type of media_device_request_alloc()'s second
+> parameter from int* to void* so that it can match the interface
+> defined in struct media_ioctl_info.
+> 
+> Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
 
-Regards,
-Lorenzo
+This looks fine to me.
 
->
->         drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c:179 mt7615_reset_test_set()
->         warn: inconsistent returns 'dev->mt76.mutex'.
->
-> drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
->    159  static int
->    160  mt7615_reset_test_set(void *data, u64 val)
->    161  {
->    162          struct mt7615_dev *dev = data;
->    163          struct sk_buff *skb;
->    164
->    165          if (!mt7615_wait_for_mcu_init(dev))
->    166                  return 0;
->    167
->    168          mt7615_mutex_acquire(dev);
->    169
->    170          skb = alloc_skb(1, GFP_KERNEL);
->    171          if (!skb)
->    172                  return -ENOMEM;
->                         ^^^^^^^^^^^^^^
-> This is returning with the mutex held.  What is the mutex protecting?
-> We could move the allocation and the skb_put() before the
-> mt7615_mutex_acquire().
->
->    173
->    174          skb_put(skb, 1);
->    175          mt76_tx_queue_skb_raw(dev, 0, skb, 0);
->    176
->    177          mt7615_mutex_release(dev);
->    178
->    179          return 0;
->    180  }
->
-> regards,
-> dan carpenter
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-
+> ---
+>  drivers/media/mc/mc-device.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/media/mc/mc-device.c b/drivers/media/mc/mc-device.c
+> index da8088351135..6b66c2091bae 100644
+> --- a/drivers/media/mc/mc-device.c
+> +++ b/drivers/media/mc/mc-device.c
+> @@ -370,9 +370,10 @@ static long media_device_get_topology(struct media_device *mdev, void *arg)
+>  	return ret;
+>  }
+>  
+> -static long media_device_request_alloc(struct media_device *mdev,
+> -				       int *alloc_fd)
+> +static long media_device_request_alloc(struct media_device *mdev, void *arg)
+>  {
+> +	int *alloc_fd = arg;
+> +
+>  #ifdef CONFIG_MEDIA_CONTROLLER_REQUEST_API
+>  	if (!mdev->ops || !mdev->ops->req_validate || !mdev->ops->req_queue)
+>  		return -ENOTTY;
+> @@ -407,7 +408,7 @@ static long copy_arg_to_user(void __user *uarg, void *karg, unsigned int cmd)
+>  #define MEDIA_IOC_ARG(__cmd, func, fl, from_user, to_user)		\
+>  	[_IOC_NR(MEDIA_IOC_##__cmd)] = {				\
+>  		.cmd = MEDIA_IOC_##__cmd,				\
+> -		.fn = (long (*)(struct media_device *, void *))func,	\
+> +		.fn = func,						\
+>  		.flags = fl,						\
+>  		.arg_from_user = from_user,				\
+>  		.arg_to_user = to_user,					\
 
 -- 
-UNIX is Sexy: who | grep -i blonde | talk; cd ~; wine; talk; touch;
-unzip; touch; strip; gasp; finger; gasp; mount; fsck; more; yes; gasp;
-umount; make clean; sleep
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-mediatek mailing list
