@@ -1,68 +1,78 @@
-Return-Path: <SRS0=PvK4=BS=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=12Pn=BT=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AD2F3C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat,  8 Aug 2020 22:05:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E387C433E0
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2020 00:17:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 79E0F206C3
-	for <linux-mediatek@archiver.kernel.org>; Sat,  8 Aug 2020 22:05:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 16D122067D
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2020 00:17:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="B/rzgnvX";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.b="Kbq7pkBR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 79E0F206C3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="E00IF0P/";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Vv9wm6DI"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16D122067D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=aL1+Czz4YWRg+XcXZkv+93yO9YeUQhsY5eJM2wSI5wU=; b=B/rzgnvXIzNTyeq4Lg11wFs45
-	5bIWmFApa6jNoiV+tP6Kwjh/V2ewfHdIh6Alwyqt9u8pl7wDDfaG2DtU/aqjgX/szuZ0GI5inPtOa
-	3u+1LSUWkFBNuw1uH7lvjdEtOvUD2bp/1qE6t7FIZlmnP6C1P+2VdNhYg8NjIQgqYtQ4xatmjokgc
-	D/cBi2UtfXSiGfpFnV5lNuDNvSbMzWQPlSMByW+0yaQA/cN7Bk15zeIL6jvPj+d42WEm5o2W9brVp
-	wcK2CeUr2q5Ops0lmFdk3TguvbS19cCMBx9L2f+b7T/XGFLFhPATEwDFXlVFCyhlT1FARz98R1dxS
-	QdLA4AnxA==;
+	 bh=U95MO3p2skp4LohT/wt11v1Otv+MLIq22km1S4PXD3I=; b=E00IF0P/q3muC+/dZgtLHYq+S
+	Gv8UaFKfA1qOCcBeSLGnjbsyHJhox9IVl9sPF9qy3Q1bBCg65dRz/zbxswu2dTRZk6YmQBz2eupmb
+	/kEX7bwqCTAlpd3/k41YzRdcJ6kfn69LBiR0FjwwuRFj9Z5gXLMazunjg2OhzbibJSgC3fCSgdwet
+	Zpro9B+01U60grgOMVvag1qXh1mL9F3Gnkk1jKOOWJwhmygpNhEl2TzxwVS9AkFya+otSMsbgYCLt
+	hQcmzhDSyWYcrokD2fYyBSQaeX+wQmT7V1F7RZJEDqHDocNUyj0dRduktFQztsm5ZXVvk2j96PxYC
+	7Jvw+boxQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k4Wxb-0003PO-73; Sat, 08 Aug 2020 22:05:03 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1k4Z1h-0004tm-Lb; Sun, 09 Aug 2020 00:17:25 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k4WxS-0003NU-5D; Sat, 08 Aug 2020 22:04:55 +0000
-Received: from pendragon.ideasonboard.com (85-76-78-184-nat.elisa-mobile.fi
- [85.76.78.184])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 90F1BF9;
- Sun,  9 Aug 2020 00:04:35 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1596924280;
- bh=/Ahnodr9RqbqcUOwUfhTd06mCNouczDt++/t+ejw0Po=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Kbq7pkBRQzU5SVvHPcAGZ+K7jXtRT/C4/wy/aXyh4qGPqgiZ3Buk+8Tqr8b1EAHPy
- 2Z259suOzD5zxZbz8rBMhkkBMuONLujjPouxzCFRQtTmjxylX/aPqJc/nrxmK+CIPb
- 8Xkag+BGeKOOxcI5nSgH2C212JEOHfPYFYerM0b8=
-Date: Sun, 9 Aug 2020 01:04:19 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: frederic.chen@mediatek.com
-Subject: Re: [PATCH V2,1/1] media: mc-device.c: change
- media_device_request_alloc to match media_ioctl_info
-Message-ID: <20200808220419.GY6186@pendragon.ideasonboard.com>
-References: <20200806155822.3772-1-frederic.chen@mediatek.com>
- <20200806155822.3772-2-frederic.chen@mediatek.com>
+ id 1k4Z1c-0004sW-Hl; Sun, 09 Aug 2020 00:17:21 +0000
+Received: from mail-ej1-f42.google.com (mail-ej1-f42.google.com
+ [209.85.218.42])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 424E22068F;
+ Sun,  9 Aug 2020 00:17:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1596932232;
+ bh=uzR2Q9T845pna8XP3B5MtZKhh2vQixFYmQxSnDQle0Q=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=Vv9wm6DIxUbHozRvA1AyxMizji9rUv8gSn3bnmKzgNyQUT59XCuSpVianl1FP2xDO
+ NSa6d3yKuHd8zLwIotp5zI0vf34jeLzSopbflNOV58GA3NKWOO1xrTfdkvhQG92GG4
+ 0YgAHkE74fzWggP0wdmyN1FmG2fZVztME3deAnKA=
+Received: by mail-ej1-f42.google.com with SMTP id t10so1487041ejs.8;
+ Sat, 08 Aug 2020 17:17:12 -0700 (PDT)
+X-Gm-Message-State: AOAM530V6E6NRRQD53Dh9FmgqgDNJclnLudv4s5+BH/lRvSqmGP0m6g5
+ O2ZXNlc3YXrOShDCTyBBb0CzL3jM28vwjrIn0Q==
+X-Google-Smtp-Source: ABdhPJxtuqSyNCglh1lnoj77PKcLmVpUqyOklSdTDUwAHMVSJ1wm9tl/cLlSapqD2wcderKhmNy5ajxAxrVAyBhhL3s=
+X-Received: by 2002:a17:906:60d5:: with SMTP id
+ f21mr15560600ejk.94.1596932230832; 
+ Sat, 08 Aug 2020 17:17:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200806155822.3772-2-frederic.chen@mediatek.com>
+References: <20200807082754.6790-1-linux@fw-web.de>
+ <20200807082754.6790-2-linux@fw-web.de>
+ <trinity-f5a5deb1-c123-44d7-b7ca-1f7a8dbe1c1c-1596889651064@3c-app-gmx-bap69>
+In-Reply-To: <trinity-f5a5deb1-c123-44d7-b7ca-1f7a8dbe1c1c-1596889651064@3c-app-gmx-bap69>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Sun, 9 Aug 2020 08:16:59 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9o_hBWxWBdDoeeJ6zuV4rb4R_yEoN5+L0uHBGMw4Kduw@mail.gmail.com>
+Message-ID: <CAAOTY_9o_hBWxWBdDoeeJ6zuV4rb4R_yEoN5+L0uHBGMw4Kduw@mail.gmail.com>
+Subject: Re: [PATCH 1/2] arm: dts: mt7623: move more display-related nodes to
+ mt7623n.dtsi
+To: Frank Wunderlich <frank-w@public-files.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200808_180454_329758_931190C7 
-X-CRM114-Status: GOOD (  17.13  )
+X-CRM114-CacheID: sfid-20200808_201720_716612_E524F1EA 
+X-CRM114-Status: GOOD (  20.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,71 +84,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sean.Cheng@mediatek.com, laurent.pinchart+renesas@ideasonboard.com,
- christie.yu@mediatek.com, srv_heupstream@mediatek.com, tfiga@chromium.org,
- sj.huang@mediatek.com, yuzhao@chromium.org, hans.verkuil@cisco.com,
- zwisler@chromium.org, matthias.bgg@gmail.com,
- linux-mediatek@lists.infradead.org, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
+ chunkuang Hu <chunkuang.hu@kernel.org>, Sean Wang <sean.wang@mediatek.com>,
+ linux-kernel <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <linux@fw-web.de>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Frederic,
-
-Thank you for the patch.
-
-On Thu, Aug 06, 2020 at 11:58:22PM +0800, frederic.chen@mediatek.com wrote:
-> From: Frederic Chen <frederic.chen@mediatek.com>
-> 
-> We modified the type of media_device_request_alloc()'s second
-> parameter from int* to void* so that it can match the interface
-> defined in struct media_ioctl_info.
-> 
-> Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
-
-This looks fine to me.
-
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-
-> ---
->  drivers/media/mc/mc-device.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/media/mc/mc-device.c b/drivers/media/mc/mc-device.c
-> index da8088351135..6b66c2091bae 100644
-> --- a/drivers/media/mc/mc-device.c
-> +++ b/drivers/media/mc/mc-device.c
-> @@ -370,9 +370,10 @@ static long media_device_get_topology(struct media_device *mdev, void *arg)
->  	return ret;
->  }
->  
-> -static long media_device_request_alloc(struct media_device *mdev,
-> -				       int *alloc_fd)
-> +static long media_device_request_alloc(struct media_device *mdev, void *arg)
->  {
-> +	int *alloc_fd = arg;
-> +
->  #ifdef CONFIG_MEDIA_CONTROLLER_REQUEST_API
->  	if (!mdev->ops || !mdev->ops->req_validate || !mdev->ops->req_queue)
->  		return -ENOTTY;
-> @@ -407,7 +408,7 @@ static long copy_arg_to_user(void __user *uarg, void *karg, unsigned int cmd)
->  #define MEDIA_IOC_ARG(__cmd, func, fl, from_user, to_user)		\
->  	[_IOC_NR(MEDIA_IOC_##__cmd)] = {				\
->  		.cmd = MEDIA_IOC_##__cmd,				\
-> -		.fn = (long (*)(struct media_device *, void *))func,	\
-> +		.fn = func,						\
->  		.flags = fl,						\
->  		.arg_from_user = from_user,				\
->  		.arg_to_user = to_user,					\
-
--- 
-Regards,
-
-Laurent Pinchart
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEZyYW5rOgoKRnJhbmsgV3VuZGVybGljaCA8ZnJhbmstd0BwdWJsaWMtZmlsZXMuZGU+IOaW
+vCAyMDIw5bm0OOaciDjml6Ug6YCx5YWtIOS4i+WNiDg6Mjflr6vpgZPvvJoKPgo+IEhpLAo+Cj4g
+YXMgaSBtYWRlIGEgbWlzdGFrZSBpbiBjb3Zlci1sZXR0ZXIsIGl0IGlzIG5vdCBhc3NpZ25lZCB0
+byB0aGUgc2VyaWVzLgo+Cj4gdG8gc2hvdyBpdHMgY29udGVudCwgaSBzZW5kIGl0IGhlcmUgYXMg
+Y29tbWVudCAoaW5zdGVhZCBvZiByZXNlbmRpbmcgdGhlIHdob2xlIHNlcmllcyk6Cj4KPiBiYXNl
+ZCBvbiBzZXJpZXMgZnJvbSBEYXZpZCBXb29kaG91c2UgWzFdCj4gaSBtb3ZlZCBtb3JlIGRpc3Bs
+YXktbm9kZXMgb3V0IG9mIG10NzYyMy5kdHNpIHRvIG5ldyBtdDc2MjNuLmR0c2kKPiBhbmQgY2hh
+bmdlZCBsYXN0IHBhcnQgZnJvbSBteSBzZXJpZXMgWzJdIHRvIGFkZCB0aGVzZSBub2RlcyB0byB0
+aGlzIG5ldyBkdHNpCj4KPiB0aGUgZGVwZW5jeSBvZiBkdHNpLWR0c2ktZHRzIGlzIGFscmVhZHkg
+ZG9uZSBmb3IgbXQ3NjIzYSwgc28gaSBndWVzcyBpdCdzIGEgZ29vZAo+IHdheSB0byB1c2UgaXQg
+Zm9yIG10NzYyM24gdG9vLgo+Cj4gdGhpcyBmaXJzdCBzZXQgaXMgYW4gUkZDIGlmIGFsbCBub2Rl
+cyBhcmUgaW4gcmlnaHQgb3JkZXIgYW5kIGlmIGl0IGlzIHdhbnRlZCB0byBtb3ZlCj4gdGhlbSBv
+dXQgYXMgaSBoYXZlIG5vIHRlY2huaWNhbCBkb2N1bWVudCBhYm91dCBtdDc2MjNhL24gd2hpY2gg
+ZGVzY3JpYmVzIHdoaWNoIHBhcnRzCj4gYXJlIGF2YWlsYWJsZSBvbiBib3RoIG9yIG9ubHkgb24g
+b25lIG9mIHRoZW0KPgo+IGFkZGVkIE1USyBEUk0gTWFpbnRhaW5lciBDSyBIdSwgUnlkZXIgTGVl
+IGFuZCBTZWFuIFdhbmcsIG1heWJlIHRoZXkgY2FuIGdpdmUgbWUgc29tZSBhZHZpY2UKPiBob3cg
+dG8gcHJvY2VlZCBmdXJ0aGVyIGhlcmUKPgo+IFsxXSBodHRwczovL3BhdGNod29yay5rZXJuZWwu
+b3JnL3Byb2plY3QvbGludXgtbWVkaWF0ZWsvbGlzdC8/c2VyaWVzPTMyOTIwOQo+IFsyXSBodHRw
+czovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzExNzAwNjk5LwoKSSB3b3VsZCBsaWtlIHRv
+IHB1dCBhbGwgZGV2aWNlIGluIG10NzYyMy5kdHNpIHdpdGggc29tZSBkZXZpY2UncwpzdGF0dXMg
+aXMgImRpc2FibGVkIiBhbmQgY2hhbmdlIGl0cyBzdGF0dXMgaW4gcGxhdGZvcm0gZHRzaS4KSSB3
+b3VsZCBsaWtlIHRvIHNlZSBhbGwgZGV2aWNlIGluIG10NzYyMy5kdHNpIGJlY2F1c2Ugb2YgaXRz
+IG5hbWUuIElmCnlvdSBtb3ZlIHNvbWUgZGV2aWNlIHRvIHBsYXRmb3JtIGR0c2ksIHdlIHdvdWxk
+IHRyYWNlIGFsbCBwbGF0Zm9ybQpkdHNpIHRvIGZpbmQgb3V0IGhvdyBtYW55IGRldmljZSBpbiBt
+dDc2MjMuIE9uZSBkYXkgYSBuZXcgcGxhdGZvcm0KZW5hYmxlIGRpZmZlcmVudCBkZXZpY2VzLCB5
+b3Ugd291bGQgcmVvcmdhbml6ZSBhbGwgdGhlc2UgcGxhdGZvcm0KZHRzaT8KClJlZ2FyZHMsCkNo
+dW4tS3VhbmcuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LW1lZGlhdGVrCg==
