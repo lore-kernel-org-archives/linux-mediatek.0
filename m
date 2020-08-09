@@ -2,77 +2,76 @@ Return-Path: <SRS0=12Pn=BT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B5B0C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2020 01:09:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DF09CC433E0
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2020 05:09:06 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CC4632067D
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2020 01:09:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AAC40206C0
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2020 05:09:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JBZMfhlg";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="j3ycVpAK"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC4632067D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BGysj3JW";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="bd896+5y"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AAC40206C0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=21M1bLc6zxK80ZjAlfWBdSz+Za8FMOoAQA1xpGt9YPo=; b=JBZMfhlguQVQTfq+Z+QqiiKvQ
-	ddQAzs1xszM3mSycOq72BwrqYA5JkZ3PWadM3eL+fbsFFyUd0D35Lyt98vL6iLCsvXBrSznF9nmIz
-	bWdGUSUxIxiQHh37JZ4tJmbGLdIgMWZz8EDNMwIwwF4DJoJrgAvjzfCCk5y06jqFi05rrF6xQ7QZM
-	D/q3jpDwBIuDLl5+uVB6nYmeqM169NGs//45YnNGZMn6jNUvTSwNWnAZxnTaop+OyclRvDnsrzcSM
-	LJwrm1l1gy9V3MT0UKSHeU4Q5W96eBxuT/sIplo9QKpN01BztIHLdkzTYE3BweKPpmyXC4hd/Ubsv
-	tY+b4ngzQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NzO2LLvM3ChFN1L8fiaL9doLBXkjFp4exZPYEePVunc=; b=BGysj3JWZmD9dmrj96DOdgywu5
+	ZH5z0qUBvxplIXMmyi/HTDl3QR2Abc8BGqyl9wHfobh6dFr4RGKFD+dP5QCuksURhQdRrQqWaPK5L
+	T/Xi/L3kGp5y3m82HqcIc5i8AnzgVoyy+QyQPgUeCP8qLaYfQzwMBIiMtdB4fWsHDzQj3vo1F3Bvb
+	bIs+dQX6m1/8N16UwC3aqlWNnQz9yCds1cyReQLHMuB9Aas1jkalmtn/7cSdRRzWo9BzXkWE2fpkE
+	R3y0OnZxKqMs97qzxn/8IMQCrkWd0bxLbNPd4ElpenV0dy0mKVEv/wp1dXbL/UQI8tbFgDnmkc9uu
+	f2UvzwVg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k4Zpe-00013X-Cy; Sun, 09 Aug 2020 01:09:02 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1k4dZj-00071B-Hk; Sun, 09 Aug 2020 05:08:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k4Zpa-00012m-Df; Sun, 09 Aug 2020 01:08:59 +0000
-Received: from mail-ej1-f42.google.com (mail-ej1-f42.google.com
- [209.85.218.42])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 524F220772;
- Sun,  9 Aug 2020 01:08:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1596935337;
- bh=eqq7sVY8BRS8obJcxE/XbjiiZrd9saTF1MqNPfw36BM=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=j3ycVpAK+U2RAxmk8LW1Cm4sWW/Dd9s3TyWPyq4VS0zdIUaZ+FtAwQ/ut5Dbvd46Z
- 4SicMmRxX+ahR9u5GQPPSWj1yVQ8LO8U/aVZjPpSb7EEViz9zYf1wHawG+9T0TFvEm
- eBZgQjGig5PXmey8AKQwA+Etvnivf2RmrKLM3hBA=
-Received: by mail-ej1-f42.google.com with SMTP id o23so5915864ejr.1;
- Sat, 08 Aug 2020 18:08:57 -0700 (PDT)
-X-Gm-Message-State: AOAM5332AikTC/0IhUozRcxuOBzzc4zphzhMNIPb6xXk3N5EdU4FUOVo
- bDWbLsLDkNvQAETvT94u8eJ33lQZbUIrIbdNQA==
-X-Google-Smtp-Source: ABdhPJyt5U/LEKGnmkq7BQqREwAcqBg7M1Dqq6mXYt8dTYgXNNhPV/x47So5Wr70sZ5dRyMB8d2S5BnxaVfn+mAciEA=
-X-Received: by 2002:a17:906:7492:: with SMTP id
- e18mr15505191ejl.375.1596935335797; 
- Sat, 08 Aug 2020 18:08:55 -0700 (PDT)
+ id 1k4dZc-000707-4M; Sun, 09 Aug 2020 05:08:46 +0000
+X-UUID: 656dd90e9a8a4eaba8d7eb798eeaafda-20200808
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=n5rpOkS/9YzOZBQ2IqBRfdrcZmfEvjOti8eNGJiZ+ys=; 
+ b=bd896+5yIlzMczsrDT+5GvUq7hAwlVB10L1XylVZcrM8XFC9aX1rly6CpnZ+cpzfsIQgLj9B3QD4/9ig+FQSeDwPqObsx0OzY7GUpN+8unEpJ10g2O39JWJh2GvAs0lRveuXrZIRD035V5gaIwKtGmQWooUt3zDydHPM1ITg7Zo=;
+X-UUID: 656dd90e9a8a4eaba8d7eb798eeaafda-20200808
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1045131230; Sat, 08 Aug 2020 21:08:18 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 8 Aug 2020 22:08:31 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 9 Aug 2020 13:07:33 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sun, 9 Aug 2020 13:07:33 +0800
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+ <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
+ <bvanassche@acm.org>
+Subject: [PATCH v3] scsi: ufs: Fix possible infinite loop in ufshcd_hold
+Date: Sun, 9 Aug 2020 13:07:34 +0800
+Message-ID: <20200809050734.18740-1-stanley.chu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <1596855231-5782-1-git-send-email-yongqiang.niu@mediatek.com>
- <1596855231-5782-2-git-send-email-yongqiang.niu@mediatek.com>
- <CAAOTY_9myENG+APAhC6MANHn3bqGZ-jtq08v4pTWCq2v9DDjNA@mail.gmail.com>
-In-Reply-To: <CAAOTY_9myENG+APAhC6MANHn3bqGZ-jtq08v4pTWCq2v9DDjNA@mail.gmail.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Sun, 9 Aug 2020 09:08:44 +0800
-X-Gmail-Original-Message-ID: <CAAOTY__b8h9FaqaeBb0Ewf9m0t8qVBzwgrF3n1RynR7+BAFGwg@mail.gmail.com>
-Message-ID: <CAAOTY__b8h9FaqaeBb0Ewf9m0t8qVBzwgrF3n1RynR7+BAFGwg@mail.gmail.com>
-Subject: Re: [RESEND v7, PATCH 1/7] dt-bindings: mediatek: add rdma_fifo_size
- description for mt8183 display
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+X-TM-SNTS-SMTP: BE00B5FA824ED99B1C6B9E2F0B73FA1E619CF8E4178918B797D1658D07BEBB112000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200808_210858_685404_0C4A919A 
-X-CRM114-Status: GOOD (  22.50  )
+X-CRM114-CacheID: sfid-20200809_010844_472227_8DF9D06E 
+X-CRM114-Status: GOOD (  13.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,63 +83,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
- Daniel Vetter <daniel@ffwll.ch>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Stanley Chu <stanley.chu@mediatek.com>, andy.teng@mediatek.com,
+ cc.chou@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, beanhuo@micron.com, chaotian.jing@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIFlvbmdxaWFuZzoKCkNodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPiDm
-lrwgMjAyMOW5tDjmnIg55pelIOmAseaXpSDkuIrljYg4OjU25a+r6YGT77yaCj4KPiBIaSwgWW9u
-Z3FpYW5nOgo+Cj4gWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+IOaW
-vCAyMDIw5bm0OOaciDjml6Ug6YCx5YWtIOS4iuWNiDExOjA05a+r6YGT77yaCj4gPgo+ID4gcmRt
-YSBmaWZvIHNpemUgbWF5IGJlIGRpZmZlcmVudCBldmVuIGluIHNhbWUgU09DLCBhZGQgdGhpcwo+
-ID4gcHJvcGVydHkgdG8gdGhlIGNvcnJlc3BvbmRpbmcgcmRtYQo+ID4KPiA+IENoYW5nZS1JZDog
-STY3NjM1ZWM3ZjNmNTljZjRjYmM3NzM3Mjg1ZTVlMjhmZjBhYjcxYzkKPgo+IFJlbW92ZSBjaGFu
-Z2UtaWQuCj4KPiA+IFNpZ25lZC1vZmYtYnk6IFlvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVA
-bWVkaWF0ZWsuY29tPgo+ID4gLS0tCj4gPiAgLi4uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxh
-eS9tZWRpYXRlay9tZWRpYXRlayxkaXNwLnR4dCB8IDE0ICsrKysrKysrKysrKysrCj4gPiAgMSBm
-aWxlIGNoYW5nZWQsIDE0IGluc2VydGlvbnMoKykKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlz
-cC50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRl
-ay9tZWRpYXRlayxkaXNwLnR4dAo+ID4gaW5kZXggYjkxZTcwOS4uZTZiYmUzMiAxMDA2NDQKPiA+
-IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVr
-L21lZGlhdGVrLGRpc3AudHh0Cj4gPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
-ZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkaXNwLnR4dAo+ID4gQEAgLTY2LDYgKzY2
-LDExIEBAIFJlcXVpcmVkIHByb3BlcnRpZXMgKERNQSBmdW5jdGlvbiBibG9ja3MpOgo+ID4gICAg
-YXJndW1lbnQsIHNlZSBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvaW9tbXUvbWVk
-aWF0ZWssaW9tbXUudHh0Cj4gPiAgICBmb3IgZGV0YWlscy4KPiA+Cj4gPiArT3B0aW9uYWwgcHJv
-cGVydGllcyAoUkRNQSBmdW5jdGlvbiBibG9ja3MpOgo+ID4gKy0gbWVkaWF0ZWsscmRtYV9maWZv
-X3NpemU6IHJkbWEgZmlmbyBzaXplIG1heSBiZSBkaWZmZXJlbnQgZXZlbiBpbiBzYW1lIFNPQywg
-YWRkIHRoaXMKPiA+ICsgIHByb3BlcnR5IHRvIHRoZSBjb3JyZXNwb25kaW5nIHJkbWEKPiA+ICsg
-IHRoZSB2YWx1ZSBpcyB0aGUgTWF4IHZhbHVlIHdoaWNoIGRlZmluZWQgaW4gaGFyZHdhcmUgZGF0
-YSBzaGVldC4KPiA+ICsKPiA+ICBFeGFtcGxlczoKPiA+Cj4gPiAgbW1zeXM6IGNsb2NrLWNvbnRy
-b2xsZXJAMTQwMDAwMDAgewo+ID4gQEAgLTIwNywzICsyMTIsMTIgQEAgb2RAMTQwMjMwMDAgewo+
-ID4gICAgICAgICBwb3dlci1kb21haW5zID0gPCZzY3BzeXMgTVQ4MTczX1BPV0VSX0RPTUFJTl9N
-TT47Cj4gPiAgICAgICAgIGNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJU1BfT0Q+Owo+ID4gIH07
-Cj4gPiArCj4gPiArcmRtYTE6IHJkbWFAMTQwMGMwMDAgewo+ID4gKyAgICAgICBjb21wYXRpYmxl
-ID0gIm1lZGlhdGVrLG10ODE4My1kaXNwLXJkbWEiOwo+ID4gKyAgICAgICByZWcgPSA8MCAweDE0
-MDBjMDAwIDAgMHgxMDAwPjsKPiA+ICsgICAgICAgaW50ZXJydXB0cyA9IDxHSUNfU1BJIDIyOSBJ
-UlFfVFlQRV9MRVZFTF9MT1c+Owo+ID4gKyAgICAgICBwb3dlci1kb21haW5zID0gPCZzY3BzeXMg
-TVQ4MTgzX1BPV0VSX0RPTUFJTl9ESVNQPjsKPiA+ICsgICAgICAgY2xvY2tzID0gPCZtbXN5cyBD
-TEtfTU1fRElTUF9SRE1BMT47Cj4gPiArICAgICAgIG1lZGlhdGVrLHJkbWFfZmlmb19zaXplID0g
-PDIwNDg+Owo+ID4gK307Cj4KPiBJIHdvdWxkIGxpa2UgeW91IHRvIHNob3cgcmRtYTAgYXMgd2Vs
-bCBzbyB0aGF0IGNvdWxkIHByb3ZlIHR3byByZG1hCj4gaGF2ZSBkaWZmZXJlbnQgZmlmbyBzaXpl
-IGluIHRoZSBzYW1lIFNvQy4KClNvcnJ5LCByZG1hMCBpcyBhbHJlYWR5IGRlZmluZSBpbiB0aGlz
-IGZpbGUuIEp1c3QgaWdub3JlIHRoaXMgY29tbWVudC4KClJlZ2FyZHMsCkNodW4tS3VhbmcuCgo+
-Cj4gUmVnYXJkcywKPiBDaHVuLUt1YW5nLgo+Cj4gPiAtLQo+ID4gMS44LjEuMS5kaXJ0eQo+ID4g
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiA+IExpbnV4
-LW1lZGlhdGVrIG1haWxpbmcgbGlzdAo+ID4gTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwo+ID4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
-eC1tZWRpYXRlawoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
-eC1tZWRpYXRlawo=
+In ufshcd_suspend(), after clk-gating is suspended and link is set
+as Hibern8 state, ufshcd_hold() is still possibly invoked before
+ufshcd_suspend() returns. For example, MediaTek's suspend vops may
+issue UIC commands which would call ufshcd_hold() during the command
+issuing flow.
+
+Now if UFSHCD_CAP_HIBERN8_WITH_CLK_GATING capability is enabled,
+then ufshcd_hold() may enter infinite loops because there is no
+clk-ungating work scheduled or pending. In this case, ufshcd_hold()
+shall just bypass, and keep the link as Hibern8 state.
+
+Co-Developed-by: Andy Teng <andy.teng@mediatek.com>
+Reviewed-by: Avri Altman <avri.altman@wdc.com>
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+Changes since v2:
+    - Rebase to the latest Martin's queue branch
+    - Add missing Reviewed tag since Avri's letter is not showing up in LKML and Patchwork
+---
+ drivers/scsi/ufs/ufshcd.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 307622284239..b4f948027b3e 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -1561,6 +1561,7 @@ static void ufshcd_ungate_work(struct work_struct *work)
+ int ufshcd_hold(struct ufs_hba *hba, bool async)
+ {
+ 	int rc = 0;
++	bool flush_result;
+ 	unsigned long flags;
+ 
+ 	if (!ufshcd_is_clkgating_allowed(hba))
+@@ -1592,7 +1593,9 @@ int ufshcd_hold(struct ufs_hba *hba, bool async)
+ 				break;
+ 			}
+ 			spin_unlock_irqrestore(hba->host->host_lock, flags);
+-			flush_work(&hba->clk_gating.ungate_work);
++			flush_result = flush_work(&hba->clk_gating.ungate_work);
++			if (hba->clk_gating.is_suspended && !flush_result)
++				goto out;
+ 			spin_lock_irqsave(hba->host->host_lock, flags);
+ 			goto start;
+ 		}
+-- 
+2.18.0
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
