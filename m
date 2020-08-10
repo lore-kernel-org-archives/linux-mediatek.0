@@ -2,79 +2,94 @@ Return-Path: <SRS0=/jeW=BU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3B450C433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 07:01:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A4329C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 07:09:01 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E9FF2206B5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 07:01:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6EC3E20734
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 07:09:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="A9pxSE40";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="CVnQ6MNd"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9FF2206B5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="f42j+Pgr";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="zcKtsfc8"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6EC3E20734
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=iVISoBdVmKkWwR2UtNMkErd4hQgruMXR69Hq8WE/Cak=; b=A9pxSE40sI3rPM0xkFnB0HKyi
-	U9FcZ08pEJ2FfqBuQk9UVhcyu8vwCN1YOkegySKLgv4eiGrSX2OPmgINUcbbeZmNLk21vJN2pWsuv
-	RBLGcHypdX1ZnRL/4r4mCpu6VQNUNVUEIwc+cwqRScEvNVV9RASDEja4moSNcgr0XhakYlOgsFI7F
-	+MQb4CUNvDEDQv6NqetI6V1/WgAi+++jckdzAmfSe/jsCaxW05PRaTlHHjeUNEG/CEnJfYr4R6rca
-	Qfh+FWaDMc/AaOBGoMyjYl8/h1jwBy9fAjfompFkW64qV4VmrMkGHOcxcLnLLirROpmGEfySIHN1K
-	1pyUWe9NA==;
+	 bh=D+NdrZqJ4UA1nIgWnTLsvrfscYgbiE7F9sOFzaX5R9o=; b=f42j+PgrhY2m/upymTC7m5GJT
+	/Fq/w2F+rheZeO9a8DdL3VWyvoQ6GWpPBsNP35w8V774Xevusj6A+yTKOi2B6X6X3zkzwcj7X7Q/m
+	mlyqNy07O6o9U4UEiGx66eO5xyrWDzl6z0wMq3nX+2K+0z0i00Kt91O+tx28TqRTkH9H/x1y0g1gx
+	fsj1DEnORopp5HtM1JZf7YCbZcZZRRanPf9+Nrw4hYwnAyAxHgolYELR8UQXm7iM9Gzv/hX3/hjQZ
+	bkgbrQTV/wGpXTrWbmxqLtbAWEcBxCbGR8xxET0ryHNl171rPrxt/5b9ZeWKJYlBarBfmBQBcaAxc
+	TdgR/qJug==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k51nb-0000L5-72; Mon, 10 Aug 2020 07:00:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1k51vO-00016R-Qs; Mon, 10 Aug 2020 07:08:50 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k51nX-0000KJ-IK; Mon, 10 Aug 2020 07:00:44 +0000
-X-UUID: 33cd942851fe48468ca4039c0b885527-20200809
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=Xw9BjZ4pnzLPpecBByDNDqBMr0STEN5PIXp+ijmFw1o=; 
- b=CVnQ6MNdd+98Yf1QkoGZ1+qh6kLncmNYqDm6rNNlVR/CWrjaUMYFbhixEtjnukXhEsK1mJ60jLjZIuqfMEuSHAZpdmHWsY0WeLzO1LrFoc67e4nkYpq2KPLWrS8MOjuJuk9WrnIMUFezFE79wKvIn8JLEZzaGseggxiwlESZYro=;
-X-UUID: 33cd942851fe48468ca4039c0b885527-20200809
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <crystal.guo@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 636002178; Sun, 09 Aug 2020 22:58:29 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 9 Aug 2020 23:58:29 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 10 Aug 2020 14:58:25 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 10 Aug 2020 14:58:24 +0800
-Message-ID: <1597042656.11360.39.camel@mhfsdcap03>
-Subject: Re: [v2,5/6] reset-controller: ti: Introduce force-update method
-From: Crystal Guo <crystal.guo@mediatek.com>
-To: Philipp Zabel <p.zabel@pengutronix.de>, Suman Anna <s-anna@ti.com>,
- "Andrew F. Davis" <afd@ti.com>
-Date: Mon, 10 Aug 2020 14:57:36 +0800
-In-Reply-To: <3413ca889fcef11c6dafe1d6b135e1887d84a6e4.camel@pengutronix.de>
-References: <20200803061511.29555-1-crystal.guo@mediatek.com>
- <20200803061511.29555-6-crystal.guo@mediatek.com>
- <3413ca889fcef11c6dafe1d6b135e1887d84a6e4.camel@pengutronix.de>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1k51vM-00015b-QF
+ for linux-mediatek@lists.infradead.org; Mon, 10 Aug 2020 07:08:50 +0000
+Received: by mail-wm1-x342.google.com with SMTP id 3so7288383wmi.1
+ for <linux-mediatek@lists.infradead.org>; Mon, 10 Aug 2020 00:08:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=47Gs9F1F8d09vZAc729o4HZeuw/VZH9JG+bx1Ajssig=;
+ b=zcKtsfc8/Kleb9yRFPedZRukZN5BBfo337spqmdbUq9GEygQLbhq2BJ4pzaTY0/jUo
+ 91w5WkpjQW5DWV6jefPAnIRJvmGRiwiJcMfFNoOeDvuYJEa4PNoh36UhmSwof/MQAsGR
+ m2xJsQK9B/9RZimDRm5uYXPUQq58wChaHdgj7XJYw6L6cMig5+QJ0+Wgg7VLEwzrU3DU
+ fuRLexZM8n86RWBdX+vcqa9boVH8K2D3ntwLzct/OLmqy7m1Yy5+7NR2s0Qj1AER3+BE
+ HFEDUEbuI0RitlAe4uPcyWkF19VwDo7tD381Uy/kh964R5Znw1VCtPGix9HAT4eUIFKZ
+ kz8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=47Gs9F1F8d09vZAc729o4HZeuw/VZH9JG+bx1Ajssig=;
+ b=tcXw2wpNsp6zaRLa2cQ4FRRfQI7C8q6QZDiHSDJUuNRPNqSeB/C1LFBykiJbgP68+Y
+ FGlqMgATdwLc3KlPVrx7zIGYZJRKwcWtTial6mRY3N/pxShCqjglC1KFIQdp45Iw/ms4
+ 2fun96wGx0RTU0oSPhZOWkZg8howy2LIDHDFjUoPCfKq9x4yeNlliI2yigVEy2/N+38C
+ 2Yx91GzmPYlS0Ht9/klldyN1bSFV9vtOJEL8OBiXXT49gh7BcE6Eu672cqt3g5h4xPqw
+ 0D4oXHbiIqzxpyf2YRAFGVS7RLEaPIGhW52ZqYaGSnB80a5qEH6s38u4ugYp7Dd3uO6B
+ lDDw==
+X-Gm-Message-State: AOAM530yEnvzQXRfODDa7vzjSweibVsu7azdZYZnAXbjBdF0pHsvhtQS
+ ZsUdGZ4nqN5jqkWQNbuPo7S6rw==
+X-Google-Smtp-Source: ABdhPJzaszzYjiz41rjzxkM5loaOj5BIe+vF8wU0E97WRWint16E9KsV5ipy0b3/vzW4w2iwnkZh7Q==
+X-Received: by 2002:a7b:c4d5:: with SMTP id g21mr25757680wmk.185.1597043325510; 
+ Mon, 10 Aug 2020 00:08:45 -0700 (PDT)
+Received: from dell ([2.27.167.73])
+ by smtp.gmail.com with ESMTPSA id w10sm20031948wmk.0.2020.08.10.00.08.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 10 Aug 2020 00:08:44 -0700 (PDT)
+Date: Mon, 10 Aug 2020 08:08:43 +0100
+From: Lee Jones <lee.jones@linaro.org>
+To: Gene Chen <gene.chen.richtek@gmail.com>
+Subject: Re: [PATCH 9/9] mfd: mt6360: Merge different sub-devices I2C
+ read/write
+Message-ID: <20200810070843.GA4411@dell>
+References: <1596558782-3415-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1596558782-3415-11-git-send-email-gene.chen.richtek@gmail.com>
+ <20200805161021.GK5556@sirena.org.uk>
+ <CAE+NS360iKLoGxiiz8NmQqCp2Uge98Eehe4g2sn_N0e-E3DgyQ@mail.gmail.com>
+ <20200806121332.GB6442@sirena.org.uk>
+ <CAE+NS37tr65GnTue89wJkPvJzddahKj__KPgzmjzwkOfWQnc8g@mail.gmail.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 51D951749A9B482193787EAABBD8C446E680275178669CECFC7FA62C607318CF2000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <CAE+NS37tr65GnTue89wJkPvJzddahKj__KPgzmjzwkOfWQnc8g@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200810_030043_753419_E137F90A 
-X-CRM114-Status: GOOD (  22.90  )
+X-CRM114-CacheID: sfid-20200810_030849_180636_AA62E745 
+X-CRM114-Status: GOOD (  22.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,108 +101,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Yong
- Liang =?UTF-8?Q?=28=E6=A2=81=E5=8B=87=29?= <Yong.Liang@mediatek.com>, Suman
- Anna <s-anna@ti.com>, srv_heupstream <srv_heupstream@mediatek.com>,
- Seiya Wang =?UTF-8?Q?=28=E7=8E=8B=E8=BF=BA=E5=90=9B=29?=
- <seiya.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "Andrew F. Davis" <afd@ti.com>,
- Fan Chen =?UTF-8?Q?=28=E9=99=B3=E5=87=A1=29?= <fan.chen@mediatek.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?=
- <Yingjoe.Chen@mediatek.com>,
- Stanley Chu =?UTF-8?Q?=28=E6=9C=B1=E5=8E=9F=E9=99=9E=29?=
- <stanley.chu@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Gene Chen <gene_chen@richtek.com>, rafael@kernel.org,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
+ benjamin.chao@mediatek.com, Mark Brown <broonie@kernel.org>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, shufan_lee@richtek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2020-08-04 at 15:03 +0800, Philipp Zabel wrote:
-> Hi Crystal,
-> 
-> On Mon, 2020-08-03 at 14:15 +0800, Crystal Guo wrote:
-> > Introduce force-update method for assert and deassert interface,
-> > which force the write operation in case the read already happens
-> > to return the correct value.
-> > 
-> > Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
-> 
-> Added Suman and Andrew for confirmation: I think writing unconditionally
-> can't break any existing user. Just changing to regmap_write_bits()
-> instead of adding the update-force property as in v1 should be fine.
-> 
-> regards
-> Philipp
-> 
-Hi Suman, Andrew,
-
-Can you help to give some suggestions about this change.
-Is this can be changed to write unconditionally, or should I add a
-update-force property to force the write operation.
-
-Best regards
-Crystal.
-
-> > ---
-> >  drivers/reset/reset-ti-syscon.c | 15 +++++++++++++--
-> >  1 file changed, 13 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/reset/reset-ti-syscon.c b/drivers/reset/reset-ti-syscon.c
-> > index 1c74bcb9a6c3..f4baf78afd14 100644
-> > --- a/drivers/reset/reset-ti-syscon.c
-> > +++ b/drivers/reset/reset-ti-syscon.c
-> > @@ -57,6 +57,7 @@ struct ti_syscon_reset_data {
-> >  	struct ti_syscon_reset_control *controls;
-> >  	unsigned int nr_controls;
-> >  	bool assert_deassert_together;
-> > +	bool update_force;
-> >  };
-> >  
-> >  #define to_ti_syscon_reset_data(rcdev)	\
-> > @@ -90,7 +91,10 @@ static int ti_syscon_reset_assert(struct reset_controller_dev *rcdev,
-> >  	mask = BIT(control->assert_bit);
-> >  	value = (control->flags & ASSERT_SET) ? mask : 0x0;
-> >  
-> > -	return regmap_update_bits(data->regmap, control->assert_offset, mask, value);
-> > +	if (data->update_force)
-> > +		return regmap_write_bits(data->regmap, control->assert_offset, mask, value);
-> > +	else
-> > +		return regmap_update_bits(data->regmap, control->assert_offset, mask, value);
-> >  }
-> >  
-> >  /**
-> > @@ -121,7 +125,10 @@ static int ti_syscon_reset_deassert(struct reset_controller_dev *rcdev,
-> >  	mask = BIT(control->deassert_bit);
-> >  	value = (control->flags & DEASSERT_SET) ? mask : 0x0;
-> >  
-> > -	return regmap_update_bits(data->regmap, control->deassert_offset, mask, value);
-> > +	if (data->update_force)
-> > +		return regmap_write_bits(data->regmap, control->deassert_offset, mask, value);
-> > +	else
-> > +		return regmap_update_bits(data->regmap, control->deassert_offset, mask, value);
-> >  }
-> >  
-> >  /**
-> > @@ -223,6 +230,10 @@ static int ti_syscon_reset_probe(struct platform_device *pdev)
-> >  		data->assert_deassert_together = true;
-> >  	else
-> >  		data->assert_deassert_together = false;
-> > +	if (of_property_read_bool(np, "update-force"))
-> > +		data->update_force = true;
-> > +	else
-> > +		data->update_force = false;
-> >  
-> >  	data->rcdev.ops = &ti_syscon_reset_ops;
-> >  	data->rcdev.owner = THIS_MODULE;
-> > -- 
-> > 2.18.0
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gRnJpLCAwNyBBdWcgMjAyMCwgR2VuZSBDaGVuIHdyb3RlOgoKPiBNYXJrIEJyb3duIDxicm9v
+bmllQGtlcm5lbC5vcmc+IOaWvCAyMDIw5bm0OOaciDbml6Ug6YCx5ZubIOS4i+WNiDg6MTPlr6vp
+gZPvvJoKPiA+Cj4gPiBPbiBUaHUsIEF1ZyAwNiwgMjAyMCBhdCAxMTozMDo1NkFNICswODAwLCBH
+ZW5lIENoZW4gd3JvdGU6Cj4gPiA+IE1hcmsgQnJvd24gPGJyb29uaWVAa2VybmVsLm9yZz4g5pa8
+IDIwMjDlubQ45pyINuaXpSDpgLHlm5sg5LiK5Y2IMTI6MTDlr6vpgZPvvJoKPiA+Cj4gPiA+ID4g
+SXQncyBub3QgY2xlYXIgd2h5IHRoaXMgaXNuJ3QganVzdCBkb25lIGluIHRoZSBkZXZpY2UgcmVn
+bWFwLCB0aGVyZSdzCj4gPiA+ID4gZXhhY3RseSBvbmUgdXNlcj8KPiA+Cj4gPiA+IGJlY2F1c2Ug
+SSB1c2Ugb25lIHJlZ21hcCB0byBhY2Nlc3MgNCBJMkMgZGV2aWNlcywKPiA+Cj4gPiBUaGVyZSBh
+cHBlYXJzIHRvIGJlIG9ubHkgb25lIGRldmljZSBoZXJlPwo+ID4KPiA+ID4gSSBuZWVkIGNoYW5n
+ZSB0aGUgcmVnbWFwX2J1cyBzdHJ1Y3QgdG8gZml0IEkyQyByZWFkL3dyaXRlIHdpdGggQ1JDIGJp
+dAo+ID4gPiBUaGVyZWZvcmUsIE1GRCByZXZpZXdlciBzdWdnZXN0cyBJIGNhbiBtb3ZlIHRoZSBy
+ZWdtYXAgYXBpIHRvIHJlZ21hcAo+ID4gPiBmb2xkZXIgc3VjaCBhcyByZWdtYXAtYWM5Ny5jCj4g
+Pgo+ID4gQUMnOTcgaXMgYW4gaW5kdXN0cnkgc3RhbmRhcmQgYnVzIHVzZWQgYnkgYSByYW5nZSBv
+ZiBkZXZpY2VzIGluCj4gPiBkaWZmZXJlbnQgc3Vic3lzdGVtcy4gIFlvdSBjYW4gYWxyZWFkeSBo
+YXZlIGN1c3RvbSBvcGVyYXRpb25zIGZvciBhCj4gPiBkZXZpY2UganVzdCBpbiBhIHJlZ3VsYXIg
+cmVnbWFwIHVzaW5nIHRoZSByZWdfcmVhZCgpIGFuZCByZWdfd3JpdGUoKQo+ID4gb3BlcmF0aW9u
+cyB3aGljaCBhcmUgdGhlcmUgc28gZGV2aWNlcyB0aGF0IGluZGl2aWR1YWwgZGV2aWNlIHN1cHBv
+cnQKPiA+IGRvZXNuJ3QgbmVlZCB0byBiZSBhZGRlZCB0byB0aGUgcmVnbWFwIGNvcmUuCj4gPgo+
+IAo+IEkgbmVlZCB1c2UgcmVnbWFwX3Jhd19yZWFkIHRvIGFjY2VzcyBNVDYzNjAgVFlQRUMgcGFy
+dCwgc28gd2UgbmVlZAo+IGltcGxlbWVudCBidXMgcmVhZCBjb250cm9sCj4gCj4gPiBZb3UgcmVh
+bGx5IGFsc28gbmVlZCB0byB3cml0ZSBhIG11Y2ggY2xlYXJlciBjaGFuZ2Vsb2csIEkgd291bGQg
+YmUgaGFyZAo+ID4gcHJlc3NlZCB0byB0ZWxsIGZyb20gdGhlIGNoYW5nZWxvZyB0aGF0IHRoaXMg
+d2FzIG1vdmluZyB0aGluZ3MgdG8gdGhlCj4gPiByZWdtYXAgY29yZSByYXRoZXIgdGhhbiBzaHVm
+ZmxpbmcgcmVnbWFwcyB3aXRoaW4gdGhlIGRldmljZS4KPiAKPiBNVDYzNjAgaGFzIDQgSTJDIHdv
+cmtlciBkZXZpY2VzCj4gRmlyc3QsIEkgaW5jcmVhc2UgcmVnX2JpdHMgZnJvbSA4IHRvIDE2IGJp
+dHMuCj4gSGlnaGVyIDggYml0cywgYmFuaywgaW5kaWNhdGVkIHdoaWNoIHdvcmtlciBkZXZpY2Ug
+SSB3YW50IGFjY2Vzcwo+IFRoZW4sIGlmIHdvcmtlciBkZXZpY2VzIGlzIFBNSUMgb3IgTERPIHBh
+cnQsIEkgbmVlZCBjYWxjdWxhdGUgb3IgY2hlY2sKPiBDUkM4IGJpdHMgd2hlbiB3ZSB3cml0ZSBv
+ciByZWFkIGRhdGEuCj4gQ1JDOCBiaXRzIGlzIGNhbGN1bGF0ZWQgYnkgMyBwYXJ0cy4KPiAxJ3N0
+IHBhcnQgaW5jbHVkZSAxIGJ5dGUgaXMgd29ya2VyIGFkZHJlc3MgYW5kIFIvVyBpbiBMU0IuCj4g
+MiduZCBwYXJ0IGluY2x1ZGUgMSBieXRlIGlzIHJlZ2lzdGVyIGFkZHJlc3MKPiAzJ25kIHBhcnQg
+aW5jbHVkZSB3cml0dGVuIGRhdGEgb3IgcmVhZCBkYXRhIGZyb20gTVQ2MzYwCj4gSSBhbHNvIG5l
+ZWQgMSBkdW1teSBieXRlIHdoZW4gd3JpdGUgZGF0YQo+IAo+IEBMZWUgSm9uZXMsCj4gSSBmb3Vu
+ZCBvdXQgZHJpdmVycy9paW8vY2hlbWljYWwvYm1lNjgwX3NwaS5jIGltcGxlbWVudCB0aGVpciBv
+d24KPiByZWdtYXBfYnVzIHRvby4KPiBDYW4gSSBtb3ZlIHJlZ21hcCBjb250cm9sIGJhY2sgdG8g
+bXQ2MzYwLWNvcmUuYz8KClllcywgaWYgdGhhdCBpcyB0aGUgJ2RvbmUgdGhpbmcnLgoKLS0gCkxl
+ZSBKb25lcyBb5p2O55C85pavXQpTZW5pb3IgVGVjaG5pY2FsIExlYWQgLSBEZXZlbG9wZXIgU2Vy
+dmljZXMKTGluYXJvLm9yZyDilIIgT3BlbiBzb3VyY2Ugc29mdHdhcmUgZm9yIEFybSBTb0NzCkZv
+bGxvdyBMaW5hcm86IEZhY2Vib29rIHwgVHdpdHRlciB8IEJsb2cKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlz
+dApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
