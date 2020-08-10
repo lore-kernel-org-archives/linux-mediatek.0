@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 095A2C433E3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 19:14:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 45E75C433E3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 19:15:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CA15522BEB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 19:14:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 12C7E2080C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 19:15:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l0ojsjr+";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="y9yv68ic"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA15522BEB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="u00CSsH0";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="K9uYnChq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 12C7E2080C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,46 +26,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UYUKiMniZVRrG8OZVwxBg1HK9igoNNKnbEswfdA9kzI=; b=l0ojsjr+GHsT/giFCzWnmsye7
-	U2r2MbtQYmeitJrR9kx2sTEUmxEYvDPMGhaw3J5qvYkM0DWyAtqcxasgefPYwD9B6d4Fhqv7YsFj4
-	lJe9HBLYsIv+4doH+TuoExg2lw+PW2PREbByTe1Pz5nsB053mTlOf6Pmup4OQSMm8uzLqkW2dBjYb
-	1LiyLIXXicQmbKADcxScy1r3y1tocAtWeBVTyIANbzRdCM7GuATs5b1H9iyD5fGVPsbq3GgUMnPTg
-	RIrJI01pUnD0BkHcb0DUodFWZZSiFZvzWQpyYCoPsk0YRnD5O4KBwbxSpeIRAHJ//WLOZ4HvES3cs
-	0Cv+i2+WA==;
+	 bh=UYUKiMniZVRrG8OZVwxBg1HK9igoNNKnbEswfdA9kzI=; b=u00CSsH0XEA4OlJ8HuW/MwKie
+	1XHvFVYP9/1/JmKhew5+LN/pb+CJ5dsSRWCRYU4ainD/7FnRVjOXKrTw3RaOEgcwioEYLvpYDUy5r
+	EcYn3HGTy1TcBZZrEPkRobsfRaRmB1Mpqxm/TyfXO0FslB0pfCbwmfLiZnQ3hSokCVIBEyFl8VjSR
+	Udzp0718ZQQVnIF5ouT74hD+8X30Fo4whei2g6/8XShVMHoOZXblq7EdStG0vuARn4T9hDI90hitS
+	wwx1pPWJ9uL7zYTqeNozEav9EiZWqVf8cJmGyRoKCbcEbKZkdkicsKAPhqqbxr9Y6cpCsPGCmOr/+
+	dBN0jXEbQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k5DFG-0007ms-ER; Mon, 10 Aug 2020 19:14:06 +0000
+	id 1k5DGe-0000Bv-Ns; Mon, 10 Aug 2020 19:15:32 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k5DEb-0007Lg-8I; Mon, 10 Aug 2020 19:13:28 +0000
+ id 1k5DFA-0007iZ-1m; Mon, 10 Aug 2020 19:14:01 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6895F22B47;
- Mon, 10 Aug 2020 19:13:23 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7B008207FF;
+ Mon, 10 Aug 2020 19:13:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597086804;
+ s=default; t=1597086839;
  bh=UvyLGOZAXxTrvvSw24b2SeCrhm6Zmcnzhh3c+8qLyNs=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=y9yv68ic9Z1ZPSxc25Hm0ztm6vcfioJjGFAzNZS7ZI4R23JwU1irCswX21tW5NSPX
- FPjrub0LyBchLYUtdXBYysDNUSXjJRLSWcj5dkDfEH0q77dIF8NiaXlSY/LVkWf9bt
- rYLzGdLvHfINoy9st9f7GbNeuHOUfLZcMUa90iLU=
+ b=K9uYnChqkZa4jiS830cwaG3wFNI+i4vlEa4TvR5Fw4vSS/o/C2bwvhOZOE6EKK5sy
+ T1H/8BvMWvAnqPWq+eHtAdE8yFd3cklVc+87XvjYEHm5/cCDcF3yc9KYhmJYbDoG4g
+ xDYlLUFIlorClciYpb7z5o8AM3Hz/ztMKqspnNtE=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 17/31] irqchip/irq-mtk-sysirq: Replace spinlock
+Subject: [PATCH AUTOSEL 4.14 10/22] irqchip/irq-mtk-sysirq: Replace spinlock
  with raw_spinlock
-Date: Mon, 10 Aug 2020 15:12:45 -0400
-Message-Id: <20200810191259.3794858-17-sashal@kernel.org>
+Date: Mon, 10 Aug 2020 15:13:32 -0400
+Message-Id: <20200810191345.3795166-10-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200810191259.3794858-1-sashal@kernel.org>
-References: <20200810191259.3794858-1-sashal@kernel.org>
+In-Reply-To: <20200810191345.3795166-1-sashal@kernel.org>
+References: <20200810191345.3795166-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200810_151325_557796_DFDF01B2 
+X-CRM114-CacheID: sfid-20200810_151400_280754_977769D5 
 X-CRM114-Status: GOOD (  14.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
