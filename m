@@ -2,81 +2,140 @@ Return-Path: <SRS0=/jeW=BU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A2EEC433E1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 19:17:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 95416C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 20:59:17 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 48B9D2080C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 19:17:37 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5C0B020716
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 20:59:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EVQ0UFdP";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="RalHA/4+";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="aMSpvbZo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 48B9D2080C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KNMDATwq";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="K8An+YpM";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="ZxOYay2L"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5C0B020716
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=WH1Vi6bZv1+g6pj8Iif/gCs7yUBnHzAzAa1PmQRGqgU=; b=EVQ0UFdPKBD95ogUVBmgOeCKg
-	gVc/a6Xp/X5dyvZ7EA9uZPee75X0qEkGEyzsdGjWtDZmSdyYpcXuRqXG1gocHdqU37JwkWLCs6Pjs
-	0qc0wfBCpCYHPF8nXhQXIbZjLYFSWzTdLQoSHCVqHg9n1hQeAjGrw/NhXVLpS6I0X0QjcZdwAqaDB
-	poxRIXj7/GZm28Kggdh2kxAzkf6pgXZPtHNevbtrU06bfbWT1VPhggcZWB5fKUIK77Rmq8T9pExj2
-	MjRuXMrXt0FZrIQXKSjIgn9Y4tUdirKwxGVZDkvGvYlqgOqhZKAg/aIjnxaTVWKPPbYynx/A1Cu1c
-	k+i+7CJcg==;
+	 bh=GhcpBgT+Ej2ajj/i9AnyNaRFgkMv8JZO723zStfixas=; b=KNMDATwqDQz6wYsFs5VIWowqx
+	jFhJvVeSDVgj7vMTkF0hlVs901CvuUYILsD/dR9LR+5q7UIPB9lBTOXFvAsABvNz5YmgLigTSyB5D
+	xQNF/8a6jXrFr7TPE7QiPGkMMktlHsP+xhTf/5O7N7pkSY0VqFd5yHpzjHaGlR8iaQgV9wvm2/pns
+	qABKRByR6XKRZwbwrlCx7eyJ5U96PgGOZFlAfV3tNMuOCej5d8+QuVRmdPezvMNTF+kkgWtjwfZyY
+	p3KoXQnqm7hHhmJj7z3n3N48vjytPUJnxOcRcGMJ7zR624zXCLitHreSwMFytT+1Mx1ijOdIrJKL8
+	3qPRrpGNw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k5DIR-0001BE-8P; Mon, 10 Aug 2020 19:17:23 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1k5Ess-0001WE-Si; Mon, 10 Aug 2020 20:59:06 +0000
+Received: from esa5.hgst.iphmx.com ([216.71.153.144])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k5DI6-00010e-AK; Mon, 10 Aug 2020 19:17:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=oSdDu/oe+7lC7iCCSLwdJOWyBtbfEmy0k1aDXacoqqg=; b=RalHA/4+sAbSZfcxM/Blkl6pTg
- fmu673RdDPQiqtH/MhPQTXfg19hl2t31fc2Na2z8T7TbbUFlgD4lwgv0H8u7gbQFSawE2hFcACSrn
- xNVLmnWRMS6C2N4Bv7eNQ8rAsW/UclXYmpT07dMD3nuW2LhWgb7jW5kwHlrODFXlj6rQOSBHC7yKO
- SA86jrFfse4CISQ2Ymva78OWRAvyk7CDeYffHI8TuqW3IX5rZcZHg+/F6RBG+fYJdhBPXux4lNTaT
- KGbu3qLiV/OWUX9X8yKFX4XZAUeWUiDm/U7S/0cL9OelyegDNRz9Dbsl8JWGD1Qb/azeHWi184goN
- zewynIyg==;
-Received: from mail.kernel.org ([198.145.29.99])
- by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k5D1i-0000ir-Tk; Mon, 10 Aug 2020 19:01:26 +0000
-Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 36726221E2;
- Mon, 10 Aug 2020 18:59:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597085998;
- bh=0HJsvBhDgtMd4mAfQ0IClkR95U5B70Iyt02xN0TkLRE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=aMSpvbZonA3oWK0xvB/yax4FSrQgALfDEtyp7u69heNiQkz85DxmhF24Zwy83vKAU
- Mfm7ehaatohrYVb7vx7e/NX3PkpY8YH5ZmgDV8s5rCJHfonsIVyD23cgmOs3P1ot9d
- IJqH8xPbXjukRPEjSOp0pxkpna/oN2MvpjTv42+w=
-Date: Mon, 10 Aug 2020 19:59:33 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Subject: Re: [PATCH v2 1/2] ASoC: mediatek: mt6359: add codec driver
-Message-ID: <20200810185933.GI6438@sirena.org.uk>
-References: <1597028754-7732-1-git-send-email-jiaxin.yu@mediatek.com>
- <1597028754-7732-2-git-send-email-jiaxin.yu@mediatek.com>
+ id 1k5Esq-0001VH-PI; Mon, 10 Aug 2020 20:59:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1597093145; x=1628629145;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=0FohuZoPBfwK4Oz+oXKhchVmpsOsG84ZbQ/rE1JNQvw=;
+ b=K8An+YpMp+iAh61O/JUGvgzSY/8Iqb8bKeds2vBRBUBCSj56POoyg4ro
+ 35GbX1aMP8wRoiaZhJJ7uxzvtHXCV7vRZ/QfpMplaNp3F1vkEadKi3n9V
+ zHsywuzw5364EyF1zhWTeRfS4y5wVNVd32rp3zXy6CSU5phsqtaJ8kRVM
+ rytD0tuUKwlXLSPXVKzF+hANR44nJ4b5HmWWaXVClCJIAl32bogLNI/v4
+ YNzDENChpk2rhTJCuMx/Hzpu5VIdRUnF+4O69vxyfcjkyvUg/RTx8SS0t
+ Df9EfMkJQneJaVgBaQObw5p4FsPyt2/1YMileSHp2oery3xDVQp5QVYtk g==;
+IronPort-SDR: xEQXW6nFhxVE10SdrZVyjXdxoLjPq5F33p22FgfNhJuFfhYuMAi//WPF8eyXDRqwIAUlGr7YLw
+ px0Ez9HckPRKfW24y12qk1I58+dXVZAjAvQGfGdXY/0guOu0PnzEwzR0w7UCZsgS8nkHxTs2eU
+ h7zEI+vpDxbNqbv3RITn/X1HQrlcEzjzvszWNJcaSK/qnMVeLUdokoPMWXUqD/EwFHkS4Vqkr4
+ 2KpsTin4Ef4r3Z4/VCr84rMyE7WysVbl7G8o6T43ajM4nav2pR7zQ5uWoWscInaDPnFiTWUGZf
+ gBk=
+X-IronPort-AV: E=Sophos;i="5.75,458,1589212800"; d="scan'208";a="144657934"
+Received: from mail-bn3nam04lp2059.outbound.protection.outlook.com (HELO
+ NAM04-BN3-obe.outbound.protection.outlook.com) ([104.47.46.59])
+ by ob1.hgst.iphmx.com with ESMTP; 11 Aug 2020 04:58:59 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=UxtFvqYCOi57m1fnYZJ+0hQZ5YBct0lkAjFkC/MITcSNjZ08EVE2O6Sgl9VkEEis3ZYVZl99hXD6hsRWP5NFpEy1oLrnM+uORumBxuAU6rJF0C0OYnxZIwgMpNUDPCdW+bR6XyeXLs5cKKSyyJRMf14YAW3YL6tEkyRMJOKKIBEPVOe0qWKqpnITVhv7n2YbNOWbqCrpUiY1tx/YESRCVmQCMpX89zwvFgkt/i1zl/TDR/f97t3RuRXaTLQtH7+0uabUXxkHKACMmps0nLehaabiUzHrHC+dxqc9glgDiatjs1HmeUK6163w9XVOUfB9Y+7vimz2Wjjt/GFXmdVA7g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0FohuZoPBfwK4Oz+oXKhchVmpsOsG84ZbQ/rE1JNQvw=;
+ b=gvBj/nej6jJnFlDJi2CHY/5tIDbw6hIguXO8k8FoDudYsOsQZ5yEDv/WxwM9ClGmPLNArW6RZaQDeosGGr2AQogcnL4EWqLLeX1qx49hEhRfSjLs/HdCKWK0BzNHGipHiLz1qXzJSxQ4dFiX0PqUU3pERRQNw63I1LRFhRXa8xDNvqBTPGngZfdoxP5TYVdwdZswP0wtDjG1EZFOJ7num5U5LRYj39mia71XeNMVc2cPCAbLxPqzw//cdhGb5yw7hnmfJJNs2qtHBE+zx+8/EPBC036NPo+j8YzYKqi42wXX5Hanelke4X/PIdkgsllnBPsE9gCvt7bENrmGs8ztug==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0FohuZoPBfwK4Oz+oXKhchVmpsOsG84ZbQ/rE1JNQvw=;
+ b=ZxOYay2LfX87Dz9398rBZd5/+Q8CadxQ5Y+TEEhDPtcN3BldjBhX4/Qs1qT6ocy1QyoO3bxFyY7qlUR9+CVWlsr7yG2Jf/dzvO/R0xXc3PWuACpEHKXEcsVIs95vRFrXc5l34OTYRgTh3m663gXpPY6Bw35/VJNdwPy5oW+q9TY=
+Received: from SN6PR04MB4640.namprd04.prod.outlook.com (2603:10b6:805:a4::19)
+ by SN4PR0401MB3551.namprd04.prod.outlook.com (2603:10b6:803:45::24)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3261.22; Mon, 10 Aug
+ 2020 20:58:57 +0000
+Received: from SN6PR04MB4640.namprd04.prod.outlook.com
+ ([fe80::c86c:8b99:3242:2c68]) by SN6PR04MB4640.namprd04.prod.outlook.com
+ ([fe80::c86c:8b99:3242:2c68%7]) with mapi id 15.20.3261.024; Mon, 10 Aug 2020
+ 20:58:57 +0000
+From: Avri Altman <Avri.Altman@wdc.com>
+To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
+ <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
+ <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
+ <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>
+Subject: RE: [PATCH v1] scsi: ufs-mediatek: Fix incorrect time to wait link
+ status
+Thread-Topic: [PATCH v1] scsi: ufs-mediatek: Fix incorrect time to wait link
+ status
+Thread-Index: AQHWbhHwgR3BsHpWkEyhFBMFuXwxrKkx1cJA
+Date: Mon, 10 Aug 2020 20:58:57 +0000
+Message-ID: <SN6PR04MB464019F00686A7F82547E99EFC440@SN6PR04MB4640.namprd04.prod.outlook.com>
+References: <20200809055702.20140-1-stanley.chu@mediatek.com>
+In-Reply-To: <20200809055702.20140-1-stanley.chu@mediatek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mediatek.com; dkim=none (message not signed)
+ header.d=none;mediatek.com; dmarc=none action=none header.from=wdc.com;
+x-originating-ip: [77.138.4.172]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: 3f1fca3f-1ec1-41c7-c2e8-08d83d70332d
+x-ms-traffictypediagnostic: SN4PR0401MB3551:
+x-microsoft-antispam-prvs: <SN4PR0401MB3551D7B6AF4C4AFC2F2F1C8DFC440@SN4PR0401MB3551.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:2958;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Q9cz6l5XtBu/cVAcgu5E+6iroukpH4zZrlS/jyKzEXiK4pu9W6lB2X9WoFSzuvFbue0BWgnjVE0noa4A9lgwygglikzjjxXvCvRgpuf0SJOFjA+sU2Lotd8AG1HGg8MPjEm2jRS00Ng5vP63SOfcACOSX8iYhcYpClSy7mFNoqorOKliHdh9ohXC+hsQaKWYJPGCFoceB3uEq7SF+dTbGYmj3Vm1GXeOjtzeJva1x3Ok0ehkWB3QzuD6xkcn9IUuKQwsurVMnJxtj7DeziHVSiKfvJi4jSLoHKvmLPKK8eg9WeF68XsFeaQbWITrXAv02KLkGBVacZNLHgoxfZQyOA==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR04MB4640.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(366004)(136003)(396003)(346002)(376002)(39860400002)(8936002)(8676002)(52536014)(4326008)(64756008)(478600001)(5660300002)(66946007)(76116006)(66446008)(66556008)(66476007)(110136005)(316002)(54906003)(9686003)(2906002)(55016002)(83380400001)(33656002)(7696005)(7416002)(86362001)(558084003)(26005)(71200400001)(186003)(6506007);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: kNnqc5MvNwsS8gcLMdmx7c/i4nQ5HAsVEiEqImLcoJ+ID0iGJjt29V2xyN9RDxkI6blz6tiuEqUaTl3b7TXYqsWuOrSkB9HoOs2lUNrPVzEPDCuElwjKUKyfdEtt8WDlnkkAkxFI81fhXAL1hG1wEXmjJrOM1XTmEodVNvoFqhkqAknvq5FuPvWWlUvO0axR2r21sOIlNczdpKXwTCZZkIuBZwgiFaQfmNDNlXex30KKEs7vikfvDSGMp8vaPIm+4G7tQemnrVAqButDmpNOdDU7PZfH3OGFjwt6OSGKbRU+byKYioyq0PUPZVrPq+dyi197sGgB/tUknxYJLRkjUGx/i9kikfesqHvnRE3CgtXgq6NHraHsnI0Yo5vypzjuvpxvY9xUbpH3YPHiLKtUY5tTFduU7MdMm1ZsUdML4zhlLorPTuKEDnvEzU9G11ludK0B4DLm89YziFWq3ON0BXoy0A/IeYjB6Xep+3O/B5qSJJffoLEqYcVFoq4Njx6SSg4/5uAiD+ggTJY5HK2ElxHMpi6B4kIwosX4XnhVY5+rhWLCdgF0AZ8tHZ02N7kpy5/jj0rbGViYlZ+KjfzmA36PnHK4/U3GRoWjGjNxxImeBPcvHc3aKYg/hIDcqU4jgFtLT3TH9CXcIct3E3Gp3A==
+x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
-In-Reply-To: <1597028754-7732-2-git-send-email-jiaxin.yu@mediatek.com>
-X-Cookie: Walk softly and carry a megawatt laser.
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR04MB4640.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3f1fca3f-1ec1-41c7-c2e8-08d83d70332d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Aug 2020 20:58:57.5784 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: g4jG0ej/nNGObeumoWDC+XQeG9FoBYGloT+2VPxFRMce/W55J+Fck5y7MKlNZEYDim6thtj8ePSV5QGIbOFd3w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN4PR0401MB3551
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200810_200010_561247_7C8A3950 
-X-CRM114-Status: GOOD (  33.05  )
+X-CRM114-CacheID: sfid-20200810_165904_975382_63D29BE8 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,247 +147,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, shane.chien@mediatek.com,
- howie.huang@mediatek.com, tiwai@suse.com, linux-kernel@vger.kernel.org,
- tzungbi@google.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
- eason.yen@mediatek.com, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============8140390521562291330=="
+Cc: "bvanassche@acm.org" <bvanassche@acm.org>,
+ "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
+ "cc.chou@mediatek.com" <cc.chou@mediatek.com>,
+ "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
+ "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "chaotian.jing@mediatek.com" <chaotian.jing@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---===============8140390521562291330==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="tctmm6wHVGT/P6vA"
-Content-Disposition: inline
-
-
---tctmm6wHVGT/P6vA
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Mon, Aug 10, 2020 at 11:05:53AM +0800, Jiaxin Yu wrote:
-
-> +void mt6359_set_playback_gpio(struct snd_soc_component *cmpnt)
-> +{
-> +	struct mt6359_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-
-> +void mt6359_reset_playback_gpio(struct snd_soc_component *cmpnt)
-> +{
-> +	struct mt6359_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-
-> +void mt6359_set_capture_gpio(struct snd_soc_component *cmpnt)
-> +{
-
-> +void mt6359_reset_capture_gpio(struct snd_soc_component *cmpnt)
-> +{
-
-What are these, should they not be managed through gpiolib and/or
-pinctrl?
-
-> +/* use only when doing mtkaif calibraiton at the boot time */
-> +static int mt6359_set_dcxo(struct mt6359_priv *priv, bool enable)
-> +{
-> +	regmap_update_bits(priv->regmap, MT6359_DCXO_CW12,
-> +			   0x1 << RG_XO_AUDIO_EN_M_SFT,
-> +			   (enable ? 1 : 0) << RG_XO_AUDIO_EN_M_SFT);
-> +	return 0;
-
-Either don't have a return value or use the result of
-regmap_update_bits().  There's similar issues with some other functions
-in here.
-
-> +int mt6359_mtkaif_calibration_enable(struct snd_soc_pcm_runtime *rtd)
-> +{
-
-> +EXPORT_SYMBOL_GPL(mt6359_mtkaif_calibration_enable);
-
-Why is this exported?
-
-> +static void hp_aux_feedback_loop_gain_ramp(struct mt6359_priv *priv, bool up)
-> +{
-> +	int i = 0, stage = 0;
-> +
-> +	/* Reduce HP aux feedback loop gain step by step */
-> +	for (i = 0; i <= 0xf; i++) {
-> +		stage = up ? i : 0xf - i;
-
-Please write normal conditional statements, it helps legibility.
-
-> +static int mt6359_put_volsw(struct snd_kcontrol *kcontrol,
-> +			    struct snd_ctl_elem_value *ucontrol)
-> +{
-> +	struct snd_soc_component *component =
-> +			snd_soc_kcontrol_component(kcontrol);
-> +	struct mt6359_priv *priv = snd_soc_component_get_drvdata(component);
-> +	struct soc_mixer_control *mc =
-> +			(struct soc_mixer_control *)kcontrol->private_value;
-> +	unsigned int reg;
-> +	int index = ucontrol->value.integer.value[0];
-> +	int ret;
-> +
-> +	ret = snd_soc_put_volsw(kcontrol, ucontrol);
-> +	if (ret < 0)
-> +		return ret;
-
-So we make the volume change actually take effect...
-
-> +	switch (mc->reg) {
-> +	case MT6359_ZCD_CON2:
-> +		regmap_read(priv->regmap, MT6359_ZCD_CON2, &reg);
-> +		priv->ana_gain[AUDIO_ANALOG_VOLUME_HPOUTL] =
-> +			(reg >> RG_AUDHPLGAIN_SFT) & RG_AUDHPLGAIN_MASK;
-> +		priv->ana_gain[AUDIO_ANALOG_VOLUME_HPOUTR] =
-> +			(reg >> RG_AUDHPRGAIN_SFT) & RG_AUDHPRGAIN_MASK;
-> +		break;
-
-...then read the value that was set and store it elsewhere.  What's
-going on here?
-
-> +/*HP MUX */
-> +static const char * const hp_in_mux_map[] = {
-> +	"Open",
-> +	"LoudSPK Playback",
-> +	"Audio Playback",
-> +	"Test Mode",
-> +	"HP Impedance",
-> +	"undefined1",
-> +	"undefined2",
-> +	"undefined3",
-> +};
-
-Why expose undefined (and presumably out of spec) values to userspace?
-
-> +static int mt_clksq_event(struct snd_soc_dapm_widget *w,
-> +			  struct snd_kcontrol *kcontrol,
-> +			  int event)
-> +{
-> +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-> +	struct mt6359_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-> +
-> +	dev_dbg(priv->dev, "%s(), event = 0x%x\n", __func__, event);
-> +
-> +	switch (event) {
-> +	case SND_SOC_DAPM_PRE_PMU:
-> +		/* audio clk source from internal dcxo */
-> +		regmap_update_bits(priv->regmap, MT6359_AUDENC_ANA_CON23,
-> +				   RG_CLKSQ_IN_SEL_TEST_MASK_SFT,
-> +				   0x0);
-
-This also appeared to be controlled in _set_clkseq() - are we sure that
-things couldn't get confused about the state?
-
-> +	/* HP damp circuit enable */
-> +	/*Enable HPRN/HPLN output 4K to VCM */
-
-Spaces around the /* */
-
-> +static int mt_hp_event(struct snd_soc_dapm_widget *w,
-> +		       struct snd_kcontrol *kcontrol,
-> +		       int event)
-> +{
-> +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-> +	struct mt6359_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-> +	unsigned int mux = dapm_kcontrol_get_value(w->kcontrols[0]);
-> +	int device = DEVICE_HP;
-> +
-> +	dev_dbg(priv->dev, "%s(), event 0x%x, dev_counter[DEV_HP] %d, mux %u\n",
-> +		__func__, event, priv->dev_counter[device], mux);
-> +
-> +	switch (event) {
-> +	case SND_SOC_DAPM_PRE_PMU:
-> +		priv->dev_counter[device]++;
-> +		if (priv->dev_counter[device] > 1)
-> +			break;	/* already enabled, do nothing */
-> +		else if (priv->dev_counter[device] <= 0)
-
-Why are we doing additional refcounting on top of what DAPM is doing?
-This seems like there should be at least one widget representing the
-shared bits of the audio path.
-
-> +#define MT6359_FORMATS (SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S16_BE |\
-> +			SNDRV_PCM_FMTBIT_U16_LE | SNDRV_PCM_FMTBIT_U16_BE |\
-> +			SNDRV_PCM_FMTBIT_S24_LE | SNDRV_PCM_FMTBIT_S24_BE |\
-> +			SNDRV_PCM_FMTBIT_U24_LE | SNDRV_PCM_FMTBIT_U24_BE |\
-> +			SNDRV_PCM_FMTBIT_S32_LE | SNDRV_PCM_FMTBIT_S32_BE |\
-> +			SNDRV_PCM_FMTBIT_U32_LE | SNDRV_PCM_FMTBIT_U32_BE)
-
-The driver doesn't appear to configure anything except the sample rate -
-how are all these formats supported?
-
-> +	/* hp gain ctl default choose ZCD */
-> +	priv->hp_gain_ctl = HP_GAIN_CTL_ZCD;
-> +	hp_gain_ctl_select(priv, priv->hp_gain_ctl);
-
-Why not use the hardware default?
-
-> +	mt6359_codec_init_reg(cmpnt);
-> +
-> +	priv->ana_gain[AUDIO_ANALOG_VOLUME_HPOUTL] = 8;
-> +	priv->ana_gain[AUDIO_ANALOG_VOLUME_HPOUTR] = 8;
-> +	priv->ana_gain[AUDIO_ANALOG_VOLUME_MICAMP1] = 3;
-> +	priv->ana_gain[AUDIO_ANALOG_VOLUME_MICAMP2] = 3;
-> +	priv->ana_gain[AUDIO_ANALOG_VOLUME_MICAMP3] = 3;
-
-Same here.
-
-> +	ret = regulator_enable(priv->avdd_reg);
-> +	if (ret) {
-> +		dev_err(priv->dev, "%s(), failed to enable regulator!\n",
-> +			__func__);
-> +		return ret;
-> +	}
-
-Perhaps make this a DAPM widget?
-
-> +	priv->avdd_reg = devm_regulator_get(&pdev->dev, "vaud18");
-> +	if (IS_ERR(priv->avdd_reg)) {
-> +		dev_err(&pdev->dev, "%s(), have no vaud18 supply", __func__);
-> +		return PTR_ERR(priv->avdd_reg);
-> +	}
-
-It's better to print error codes to help people debugging problems.
-
-> +static const struct of_device_id mt6359_of_match[] = {
-> +	{.compatible = "mediatek,mt6359-sound",},
-> +	{}
-> +};
-> +MODULE_DEVICE_TABLE(of, mt6359_of_match);
-
-We don't need a compatible here, we know that this device is here since
-it's part of the parent device and isn't something that might appear in
-another device.  This is reflecting the Linux driver model, not the
-hardware.
-
---tctmm6wHVGT/P6vA
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl8xmRQACgkQJNaLcl1U
-h9AwIgf/ayU+/rwIHTkJ6VHfejmdeAG1IuGX9PJk/02XeL8eLs6JB9rj9SSoU2pO
-G0QckxHzOBj3IgDORpJy47BJv7U2KM5LH5XctLsQGImG9/M+eZcQ/1lAymOqJIcx
-PEzpnBRXrIwwJYwWw+mr3EZB0fqpDUW2mXiNQ7izPT2AVi7zb0DFXFNaptVHxXoc
-EeL/LPmaj53Gla+Yzf7jgx7D3aVqD2jBvSbn7ZUdxC9UZ251BNUhgfp3qL0AoUZS
-maoxcbO9NL3J9L03l9EGTOUY1lqIqV086dq9Li6SShSkhBa75Qi62p5ekPMqzNZo
-iOIMD+8g6aPEauTaCnT4ozpXpwiPvA==
-=J0i4
------END PGP SIGNATURE-----
-
---tctmm6wHVGT/P6vA--
-
-
---===============8140390521562291330==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+ 
+> 
+> Fix incorrect calculation of "ms" based waiting time in
+> function ufs_mtk_setup_clocks().
+> 
+> Fixes: 9006e3986f66 ("scsi: ufs-mediatek: Do not gate clocks if auto-hibern8 is
+> not entered yet")
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Avri Altman <avri.altman@wdc.com>
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============8140390521562291330==--
-
