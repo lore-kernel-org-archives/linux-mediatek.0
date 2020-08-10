@@ -2,71 +2,81 @@ Return-Path: <SRS0=/jeW=BU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 45E75C433E3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 19:15:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A2EEC433E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 19:17:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 12C7E2080C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 19:15:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 48B9D2080C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 19:17:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="u00CSsH0";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="K9uYnChq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 12C7E2080C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EVQ0UFdP";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="RalHA/4+";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="aMSpvbZo"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 48B9D2080C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UYUKiMniZVRrG8OZVwxBg1HK9igoNNKnbEswfdA9kzI=; b=u00CSsH0XEA4OlJ8HuW/MwKie
-	1XHvFVYP9/1/JmKhew5+LN/pb+CJ5dsSRWCRYU4ainD/7FnRVjOXKrTw3RaOEgcwioEYLvpYDUy5r
-	EcYn3HGTy1TcBZZrEPkRobsfRaRmB1Mpqxm/TyfXO0FslB0pfCbwmfLiZnQ3hSokCVIBEyFl8VjSR
-	Udzp0718ZQQVnIF5ouT74hD+8X30Fo4whei2g6/8XShVMHoOZXblq7EdStG0vuARn4T9hDI90hitS
-	wwx1pPWJ9uL7zYTqeNozEav9EiZWqVf8cJmGyRoKCbcEbKZkdkicsKAPhqqbxr9Y6cpCsPGCmOr/+
-	dBN0jXEbQ==;
+	 bh=WH1Vi6bZv1+g6pj8Iif/gCs7yUBnHzAzAa1PmQRGqgU=; b=EVQ0UFdPKBD95ogUVBmgOeCKg
+	gVc/a6Xp/X5dyvZ7EA9uZPee75X0qEkGEyzsdGjWtDZmSdyYpcXuRqXG1gocHdqU37JwkWLCs6Pjs
+	0qc0wfBCpCYHPF8nXhQXIbZjLYFSWzTdLQoSHCVqHg9n1hQeAjGrw/NhXVLpS6I0X0QjcZdwAqaDB
+	poxRIXj7/GZm28Kggdh2kxAzkf6pgXZPtHNevbtrU06bfbWT1VPhggcZWB5fKUIK77Rmq8T9pExj2
+	MjRuXMrXt0FZrIQXKSjIgn9Y4tUdirKwxGVZDkvGvYlqgOqhZKAg/aIjnxaTVWKPPbYynx/A1Cu1c
+	k+i+7CJcg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k5DGe-0000Bv-Ns; Mon, 10 Aug 2020 19:15:32 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1k5DIR-0001BE-8P; Mon, 10 Aug 2020 19:17:23 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k5DFA-0007iZ-1m; Mon, 10 Aug 2020 19:14:01 +0000
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ id 1k5DI6-00010e-AK; Mon, 10 Aug 2020 19:17:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=oSdDu/oe+7lC7iCCSLwdJOWyBtbfEmy0k1aDXacoqqg=; b=RalHA/4+sAbSZfcxM/Blkl6pTg
+ fmu673RdDPQiqtH/MhPQTXfg19hl2t31fc2Na2z8T7TbbUFlgD4lwgv0H8u7gbQFSawE2hFcACSrn
+ xNVLmnWRMS6C2N4Bv7eNQ8rAsW/UclXYmpT07dMD3nuW2LhWgb7jW5kwHlrODFXlj6rQOSBHC7yKO
+ SA86jrFfse4CISQ2Ymva78OWRAvyk7CDeYffHI8TuqW3IX5rZcZHg+/F6RBG+fYJdhBPXux4lNTaT
+ KGbu3qLiV/OWUX9X8yKFX4XZAUeWUiDm/U7S/0cL9OelyegDNRz9Dbsl8JWGD1Qb/azeHWi184goN
+ zewynIyg==;
+Received: from mail.kernel.org ([198.145.29.99])
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1k5D1i-0000ir-Tk; Mon, 10 Aug 2020 19:01:26 +0000
+Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7B008207FF;
- Mon, 10 Aug 2020 19:13:58 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 36726221E2;
+ Mon, 10 Aug 2020 18:59:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597086839;
- bh=UvyLGOZAXxTrvvSw24b2SeCrhm6Zmcnzhh3c+8qLyNs=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=K9uYnChqkZa4jiS830cwaG3wFNI+i4vlEa4TvR5Fw4vSS/o/C2bwvhOZOE6EKK5sy
- T1H/8BvMWvAnqPWq+eHtAdE8yFd3cklVc+87XvjYEHm5/cCDcF3yc9KYhmJYbDoG4g
- xDYlLUFIlorClciYpb7z5o8AM3Hz/ztMKqspnNtE=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.14 10/22] irqchip/irq-mtk-sysirq: Replace spinlock
- with raw_spinlock
-Date: Mon, 10 Aug 2020 15:13:32 -0400
-Message-Id: <20200810191345.3795166-10-sashal@kernel.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200810191345.3795166-1-sashal@kernel.org>
-References: <20200810191345.3795166-1-sashal@kernel.org>
+ s=default; t=1597085998;
+ bh=0HJsvBhDgtMd4mAfQ0IClkR95U5B70Iyt02xN0TkLRE=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=aMSpvbZonA3oWK0xvB/yax4FSrQgALfDEtyp7u69heNiQkz85DxmhF24Zwy83vKAU
+ Mfm7ehaatohrYVb7vx7e/NX3PkpY8YH5ZmgDV8s5rCJHfonsIVyD23cgmOs3P1ot9d
+ IJqH8xPbXjukRPEjSOp0pxkpna/oN2MvpjTv42+w=
+Date: Mon, 10 Aug 2020 19:59:33 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Subject: Re: [PATCH v2 1/2] ASoC: mediatek: mt6359: add codec driver
+Message-ID: <20200810185933.GI6438@sirena.org.uk>
+References: <1597028754-7732-1-git-send-email-jiaxin.yu@mediatek.com>
+ <1597028754-7732-2-git-send-email-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+In-Reply-To: <1597028754-7732-2-git-send-email-jiaxin.yu@mediatek.com>
+X-Cookie: Walk softly and carry a megawatt laser.
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200810_151400_280754_977769D5 
-X-CRM114-Status: GOOD (  14.48  )
+X-CRM114-CacheID: sfid-20200810_200010_561247_7C8A3950 
+X-CRM114-Status: GOOD (  33.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,109 +88,247 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Marc Zyngier <maz@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: alsa-devel@alsa-project.org, shane.chien@mediatek.com,
+ howie.huang@mediatek.com, tiwai@suse.com, linux-kernel@vger.kernel.org,
+ tzungbi@google.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
+ eason.yen@mediatek.com, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============8140390521562291330=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 
-[ Upstream commit 6eeb997ab5075e770a002c51351fa4ec2c6b5c39 ]
+--===============8140390521562291330==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="tctmm6wHVGT/P6vA"
+Content-Disposition: inline
 
-This driver may take a regular spinlock when a raw spinlock
-(irq_desc->lock) is already taken which results in the following
-lockdep splat:
 
-=============================
-[ BUG: Invalid wait context ]
-5.7.0-rc7 #1 Not tainted
------------------------------
-swapper/0/0 is trying to lock:
-ffffff800303b798 (&chip_data->lock){....}-{3:3}, at: mtk_sysirq_set_type+0x48/0xc0
-other info that might help us debug this:
-context-{5:5}
-2 locks held by swapper/0/0:
- #0: ffffff800302ee68 (&desc->request_mutex){....}-{4:4}, at: __setup_irq+0xc4/0x8a0
- #1: ffffff800302ecf0 (&irq_desc_lock_class){....}-{2:2}, at: __setup_irq+0xe4/0x8a0
-stack backtrace:
-CPU: 0 PID: 0 Comm: swapper/0 Not tainted 5.7.0-rc7 #1
-Hardware name: Pumpkin MT8516 (DT)
-Call trace:
- dump_backtrace+0x0/0x180
- show_stack+0x14/0x20
- dump_stack+0xd0/0x118
- __lock_acquire+0x8c8/0x2270
- lock_acquire+0xf8/0x470
- _raw_spin_lock_irqsave+0x50/0x78
- mtk_sysirq_set_type+0x48/0xc0
- __irq_set_trigger+0x58/0x170
- __setup_irq+0x420/0x8a0
- request_threaded_irq+0xd8/0x190
- timer_of_init+0x1e8/0x2c4
- mtk_gpt_init+0x5c/0x1dc
- timer_probe+0x74/0xf4
- time_init+0x14/0x44
- start_kernel+0x394/0x4f0
+--tctmm6wHVGT/P6vA
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Replace the spinlock_t with raw_spinlock_t to avoid this warning.
+On Mon, Aug 10, 2020 at 11:05:53AM +0800, Jiaxin Yu wrote:
 
-Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-Signed-off-by: Marc Zyngier <maz@kernel.org>
-Link: https://lore.kernel.org/r/20200615074445.3579-1-brgl@bgdev.pl
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/irqchip/irq-mtk-sysirq.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+> +void mt6359_set_playback_gpio(struct snd_soc_component *cmpnt)
+> +{
+> +	struct mt6359_priv *priv = snd_soc_component_get_drvdata(cmpnt);
 
-diff --git a/drivers/irqchip/irq-mtk-sysirq.c b/drivers/irqchip/irq-mtk-sysirq.c
-index 90aaf190157f7..42455f31b0611 100644
---- a/drivers/irqchip/irq-mtk-sysirq.c
-+++ b/drivers/irqchip/irq-mtk-sysirq.c
-@@ -23,7 +23,7 @@
- #include <linux/spinlock.h>
- 
- struct mtk_sysirq_chip_data {
--	spinlock_t lock;
-+	raw_spinlock_t lock;
- 	u32 nr_intpol_bases;
- 	void __iomem **intpol_bases;
- 	u32 *intpol_words;
-@@ -45,7 +45,7 @@ static int mtk_sysirq_set_type(struct irq_data *data, unsigned int type)
- 	reg_index = chip_data->which_word[hwirq];
- 	offset = hwirq & 0x1f;
- 
--	spin_lock_irqsave(&chip_data->lock, flags);
-+	raw_spin_lock_irqsave(&chip_data->lock, flags);
- 	value = readl_relaxed(base + reg_index * 4);
- 	if (type == IRQ_TYPE_LEVEL_LOW || type == IRQ_TYPE_EDGE_FALLING) {
- 		if (type == IRQ_TYPE_LEVEL_LOW)
-@@ -61,7 +61,7 @@ static int mtk_sysirq_set_type(struct irq_data *data, unsigned int type)
- 
- 	data = data->parent_data;
- 	ret = data->chip->irq_set_type(data, type);
--	spin_unlock_irqrestore(&chip_data->lock, flags);
-+	raw_spin_unlock_irqrestore(&chip_data->lock, flags);
- 	return ret;
- }
- 
-@@ -220,7 +220,7 @@ static int __init mtk_sysirq_of_init(struct device_node *node,
- 		ret = -ENOMEM;
- 		goto out_free_which_word;
- 	}
--	spin_lock_init(&chip_data->lock);
-+	raw_spin_lock_init(&chip_data->lock);
- 
- 	return 0;
- 
--- 
-2.25.1
+> +void mt6359_reset_playback_gpio(struct snd_soc_component *cmpnt)
+> +{
+> +	struct mt6359_priv *priv = snd_soc_component_get_drvdata(cmpnt);
 
+> +void mt6359_set_capture_gpio(struct snd_soc_component *cmpnt)
+> +{
+
+> +void mt6359_reset_capture_gpio(struct snd_soc_component *cmpnt)
+> +{
+
+What are these, should they not be managed through gpiolib and/or
+pinctrl?
+
+> +/* use only when doing mtkaif calibraiton at the boot time */
+> +static int mt6359_set_dcxo(struct mt6359_priv *priv, bool enable)
+> +{
+> +	regmap_update_bits(priv->regmap, MT6359_DCXO_CW12,
+> +			   0x1 << RG_XO_AUDIO_EN_M_SFT,
+> +			   (enable ? 1 : 0) << RG_XO_AUDIO_EN_M_SFT);
+> +	return 0;
+
+Either don't have a return value or use the result of
+regmap_update_bits().  There's similar issues with some other functions
+in here.
+
+> +int mt6359_mtkaif_calibration_enable(struct snd_soc_pcm_runtime *rtd)
+> +{
+
+> +EXPORT_SYMBOL_GPL(mt6359_mtkaif_calibration_enable);
+
+Why is this exported?
+
+> +static void hp_aux_feedback_loop_gain_ramp(struct mt6359_priv *priv, bool up)
+> +{
+> +	int i = 0, stage = 0;
+> +
+> +	/* Reduce HP aux feedback loop gain step by step */
+> +	for (i = 0; i <= 0xf; i++) {
+> +		stage = up ? i : 0xf - i;
+
+Please write normal conditional statements, it helps legibility.
+
+> +static int mt6359_put_volsw(struct snd_kcontrol *kcontrol,
+> +			    struct snd_ctl_elem_value *ucontrol)
+> +{
+> +	struct snd_soc_component *component =
+> +			snd_soc_kcontrol_component(kcontrol);
+> +	struct mt6359_priv *priv = snd_soc_component_get_drvdata(component);
+> +	struct soc_mixer_control *mc =
+> +			(struct soc_mixer_control *)kcontrol->private_value;
+> +	unsigned int reg;
+> +	int index = ucontrol->value.integer.value[0];
+> +	int ret;
+> +
+> +	ret = snd_soc_put_volsw(kcontrol, ucontrol);
+> +	if (ret < 0)
+> +		return ret;
+
+So we make the volume change actually take effect...
+
+> +	switch (mc->reg) {
+> +	case MT6359_ZCD_CON2:
+> +		regmap_read(priv->regmap, MT6359_ZCD_CON2, &reg);
+> +		priv->ana_gain[AUDIO_ANALOG_VOLUME_HPOUTL] =
+> +			(reg >> RG_AUDHPLGAIN_SFT) & RG_AUDHPLGAIN_MASK;
+> +		priv->ana_gain[AUDIO_ANALOG_VOLUME_HPOUTR] =
+> +			(reg >> RG_AUDHPRGAIN_SFT) & RG_AUDHPRGAIN_MASK;
+> +		break;
+
+...then read the value that was set and store it elsewhere.  What's
+going on here?
+
+> +/*HP MUX */
+> +static const char * const hp_in_mux_map[] = {
+> +	"Open",
+> +	"LoudSPK Playback",
+> +	"Audio Playback",
+> +	"Test Mode",
+> +	"HP Impedance",
+> +	"undefined1",
+> +	"undefined2",
+> +	"undefined3",
+> +};
+
+Why expose undefined (and presumably out of spec) values to userspace?
+
+> +static int mt_clksq_event(struct snd_soc_dapm_widget *w,
+> +			  struct snd_kcontrol *kcontrol,
+> +			  int event)
+> +{
+> +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
+> +	struct mt6359_priv *priv = snd_soc_component_get_drvdata(cmpnt);
+> +
+> +	dev_dbg(priv->dev, "%s(), event = 0x%x\n", __func__, event);
+> +
+> +	switch (event) {
+> +	case SND_SOC_DAPM_PRE_PMU:
+> +		/* audio clk source from internal dcxo */
+> +		regmap_update_bits(priv->regmap, MT6359_AUDENC_ANA_CON23,
+> +				   RG_CLKSQ_IN_SEL_TEST_MASK_SFT,
+> +				   0x0);
+
+This also appeared to be controlled in _set_clkseq() - are we sure that
+things couldn't get confused about the state?
+
+> +	/* HP damp circuit enable */
+> +	/*Enable HPRN/HPLN output 4K to VCM */
+
+Spaces around the /* */
+
+> +static int mt_hp_event(struct snd_soc_dapm_widget *w,
+> +		       struct snd_kcontrol *kcontrol,
+> +		       int event)
+> +{
+> +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
+> +	struct mt6359_priv *priv = snd_soc_component_get_drvdata(cmpnt);
+> +	unsigned int mux = dapm_kcontrol_get_value(w->kcontrols[0]);
+> +	int device = DEVICE_HP;
+> +
+> +	dev_dbg(priv->dev, "%s(), event 0x%x, dev_counter[DEV_HP] %d, mux %u\n",
+> +		__func__, event, priv->dev_counter[device], mux);
+> +
+> +	switch (event) {
+> +	case SND_SOC_DAPM_PRE_PMU:
+> +		priv->dev_counter[device]++;
+> +		if (priv->dev_counter[device] > 1)
+> +			break;	/* already enabled, do nothing */
+> +		else if (priv->dev_counter[device] <= 0)
+
+Why are we doing additional refcounting on top of what DAPM is doing?
+This seems like there should be at least one widget representing the
+shared bits of the audio path.
+
+> +#define MT6359_FORMATS (SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S16_BE |\
+> +			SNDRV_PCM_FMTBIT_U16_LE | SNDRV_PCM_FMTBIT_U16_BE |\
+> +			SNDRV_PCM_FMTBIT_S24_LE | SNDRV_PCM_FMTBIT_S24_BE |\
+> +			SNDRV_PCM_FMTBIT_U24_LE | SNDRV_PCM_FMTBIT_U24_BE |\
+> +			SNDRV_PCM_FMTBIT_S32_LE | SNDRV_PCM_FMTBIT_S32_BE |\
+> +			SNDRV_PCM_FMTBIT_U32_LE | SNDRV_PCM_FMTBIT_U32_BE)
+
+The driver doesn't appear to configure anything except the sample rate -
+how are all these formats supported?
+
+> +	/* hp gain ctl default choose ZCD */
+> +	priv->hp_gain_ctl = HP_GAIN_CTL_ZCD;
+> +	hp_gain_ctl_select(priv, priv->hp_gain_ctl);
+
+Why not use the hardware default?
+
+> +	mt6359_codec_init_reg(cmpnt);
+> +
+> +	priv->ana_gain[AUDIO_ANALOG_VOLUME_HPOUTL] = 8;
+> +	priv->ana_gain[AUDIO_ANALOG_VOLUME_HPOUTR] = 8;
+> +	priv->ana_gain[AUDIO_ANALOG_VOLUME_MICAMP1] = 3;
+> +	priv->ana_gain[AUDIO_ANALOG_VOLUME_MICAMP2] = 3;
+> +	priv->ana_gain[AUDIO_ANALOG_VOLUME_MICAMP3] = 3;
+
+Same here.
+
+> +	ret = regulator_enable(priv->avdd_reg);
+> +	if (ret) {
+> +		dev_err(priv->dev, "%s(), failed to enable regulator!\n",
+> +			__func__);
+> +		return ret;
+> +	}
+
+Perhaps make this a DAPM widget?
+
+> +	priv->avdd_reg = devm_regulator_get(&pdev->dev, "vaud18");
+> +	if (IS_ERR(priv->avdd_reg)) {
+> +		dev_err(&pdev->dev, "%s(), have no vaud18 supply", __func__);
+> +		return PTR_ERR(priv->avdd_reg);
+> +	}
+
+It's better to print error codes to help people debugging problems.
+
+> +static const struct of_device_id mt6359_of_match[] = {
+> +	{.compatible = "mediatek,mt6359-sound",},
+> +	{}
+> +};
+> +MODULE_DEVICE_TABLE(of, mt6359_of_match);
+
+We don't need a compatible here, we know that this device is here since
+it's part of the parent device and isn't something that might appear in
+another device.  This is reflecting the Linux driver model, not the
+hardware.
+
+--tctmm6wHVGT/P6vA
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl8xmRQACgkQJNaLcl1U
+h9AwIgf/ayU+/rwIHTkJ6VHfejmdeAG1IuGX9PJk/02XeL8eLs6JB9rj9SSoU2pO
+G0QckxHzOBj3IgDORpJy47BJv7U2KM5LH5XctLsQGImG9/M+eZcQ/1lAymOqJIcx
+PEzpnBRXrIwwJYwWw+mr3EZB0fqpDUW2mXiNQ7izPT2AVi7zb0DFXFNaptVHxXoc
+EeL/LPmaj53Gla+Yzf7jgx7D3aVqD2jBvSbn7ZUdxC9UZ251BNUhgfp3qL0AoUZS
+maoxcbO9NL3J9L03l9EGTOUY1lqIqV086dq9Li6SShSkhBa75Qi62p5ekPMqzNZo
+iOIMD+8g6aPEauTaCnT4ozpXpwiPvA==
+=J0i4
+-----END PGP SIGNATURE-----
+
+--tctmm6wHVGT/P6vA--
+
+
+--===============8140390521562291330==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============8140390521562291330==--
+
