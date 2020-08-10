@@ -2,97 +2,77 @@ Return-Path: <SRS0=/jeW=BU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 21D0EC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 05:45:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A1452C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 06:44:57 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D74F520734
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 05:45:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6CCF420734
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2020 06:44:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="T6Rg+Esg";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="HEKVH8m5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D74F520734
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lap9FKFb";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qLKGYriw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6CCF420734
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:Reply-To:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:From:To:Subject:MIME-Version:References:
-	In-Reply-To:Date:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=77HBV7PMSVqSSw3KaWIq711V1qvEhchtEoWwT6baokM=; b=T6Rg+EsgKaAOBKptOS9E5IzZnS
-	M1W2rvpAs7GU4JzMrCbDug0+lbu7jXRyvEbxJZ5Ej/ZkioHZ/47xI+K116014I8OEgtXT4r1UKsVx
-	E45x5kMrZfwr9piy6RkMLA6xA7V24NzRf5YH84sc2+50VslmVrTp5C3QXzUrrQLuPCRSBFOwj52Wa
-	6codRdbhUr4wG7/M6vnT4QpiMgmKDjs8p2KiDfsLOS515YeSx7VpRXrbC7gvPvVMzVkMR4DlCHfOc
-	CAwF5oC+LvvEPoFMaIQvsNNW/3AugNJ5kQmE+P97/1zr/mdd+LVbyEqJfw7cAFbAQn1TXXCeGF5vy
-	jRnNJ8YA==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Djt5I1H7wfVAPeFUByCewjrzUx8SbWVCxIunk6MLLWU=; b=lap9FKFbQ/reV0r8UccTZNHHvr
+	ZTOFebLwm+x+PqrMnHHMxGrwQgaTtyR65NCRuc8IaDMR+hGXoArXJI/3mM32njEu4Qx0Kw2QfKBE0
+	H+TN0//Cl/PJn3YejC3O8IsEbPUwpoVPn9OCYXe+jLNawz50LT2NOkE8OiRQLXb9xVQFinUQioCYk
+	yuY/xKh0ZilqrKKUzTUNc86p1BLs0jNs8iuvpjpOR2ll2W2fT2t+KnYHa4fAmm6qs7Aes+a2IY03v
+	5VBWwlhcxfRe7ou5fwwN6mfe9XNwJq4Sl4UCpPGoMR3deV/UGoiMUgRhX1dN3VyOFZhgUeZqBYZzf
+	4xA9Vvdg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k50cz-0003ZC-At; Mon, 10 Aug 2020 05:45:45 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1k51Y4-0006Il-O3; Mon, 10 Aug 2020 06:44:45 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k50cv-0003OH-PF
- for linux-mediatek@lists.infradead.org; Mon, 10 Aug 2020 05:45:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1597038319;
- bh=pLncW+jsTSqwL2/XFxBd7F5/jdIdJnDnczpYfxUFrHM=;
- h=X-UI-Sender-Class:Date:In-Reply-To:References:Subject:Reply-to:To:
- CC:From;
- b=HEKVH8m5mf5Mq50g0FXUdFWDs+R14m+lNrj1nAAQmKwJ2hLX852r4yG5lVq7oqBxB
- nt/c8aDrIBoSYktOPBDEoloYuZEOnfKRSZ6iSZrQFmGCcLtfyhhoJLH5ukQYy0iNuL
- AwvgWdQ+3WbPYqDc86fHcDiQ9io20PFW/XkBD6f4=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from frank-s9 ([37.60.4.172]) by mail.gmx.com (mrgmx005
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MFbW0-1jvfGw3I0E-00H73E; Mon, 10
- Aug 2020 07:39:36 +0200
-Date: Mon, 10 Aug 2020 07:39:32 +0200
-User-Agent: K-9 Mail for Android
-In-Reply-To: <CAAOTY_-DYsbAWkdKfiGeJOwmPUOO1T+6WmOmhDQEUbzoRh+KPw@mail.gmail.com>
-References: <20200807082754.6790-1-linux@fw-web.de>
- <20200807082754.6790-2-linux@fw-web.de>
- <trinity-f5a5deb1-c123-44d7-b7ca-1f7a8dbe1c1c-1596889651064@3c-app-gmx-bap69>
- <CAAOTY_9o_hBWxWBdDoeeJ6zuV4rb4R_yEoN5+L0uHBGMw4Kduw@mail.gmail.com>
- <81DFA743-B455-498F-B2F2-161DD9D51F57@public-files.de>
- <CAAOTY_-DYsbAWkdKfiGeJOwmPUOO1T+6WmOmhDQEUbzoRh+KPw@mail.gmail.com>
+ id 1k51Y1-0006IG-H5; Mon, 10 Aug 2020 06:44:43 +0000
+X-UUID: 4e83687bf66248fa83dd94d0a2900a64-20200809
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=8XxePLI7nFgfwgRBPMrxedK9zh1gfeaUqdGvz1nAhqo=; 
+ b=qLKGYriwPiauQT8U/dE8nJsI9GyYyuiLC+YDovMBB/wsbvOLWkWH0Ut01AMtN4H0HY2cP4ADUV+J0Rb5vhowFpIlpFbkStj1rFleZ1p7HxutE6ih5B2+Et4xL1gVaCdFuRMh/yT2SXZgoygGhRmmDwAoHISVIerAdh84tboeINI=;
+X-UUID: 4e83687bf66248fa83dd94d0a2900a64-20200809
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <fengping.yu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1417046659; Sun, 09 Aug 2020 22:44:31 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 9 Aug 2020 23:44:31 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 10 Aug 2020 14:44:28 +0800
+Received: from localhost.localdomain (10.15.20.246) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 10 Aug 2020 14:44:22 +0800
+From: Fengping Yu <fengping.yu@mediatek.com>
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Rob Herring
+ <robh+dt@kernel.org>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, Marco Felsch
+ <m.felsch@pengutronix.de>
+Subject: [PATCH v17] Add matrix keypad driver support for Mediatek SoCs 
+Date: Mon, 10 Aug 2020 14:40:55 +0800
+Message-ID: <20200810064058.6467-1-fengping.yu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Subject: Re: [PATCH 1/2] arm: dts: mt7623: move more display-related nodes to
- mt7623n.dtsi
-To: linux-mediatek@lists.infradead.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Bibby Hsieh <bibby.hsieh@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
-From: Frank Wunderlich <frank-w@public-files.de>
-Message-ID: <F446502F-E898-465C-9273-813CD032B40F@public-files.de>
-X-Provags-ID: V03:K1:5IVYYxOkmECFWiGF+n4+3P6wuzhQjm/Mwi6B6QcyROBdlqK+Xyv
- qGLxbENEomX3fdARW2G1IrCKDsKVoGwag9vcdwl3A8L3DxlC6sYMe9XWdIrshdkxig+a2MS
- N+7JBeLAvN88QJ8AkyL+qo9SRo2hFT28DWerRjlLrf4Edny8i86CVHt7HDWGvWCB8pTbCwX
- q7CNSqs/0jSGwHCIcI39A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:bD8Gqi2dqFw=:RJxG4snddAxTEJ387YhkfC
- bni9mhLjs5XGVdHkhiDGUKop9OETmbQisRQglFzoQBfVO1gXxonNxHtZAHDw7fp5TaT8C9mE+
- J8s2xmqNXZy6tSd/UXGFLdhyUgqT1QUMa2+6Uu1QiuxDWhND3ERr/HvkgEHUXX7V2ewgJkDjE
- 82bPO/ebVwDRi/pNDaQpyWRtO34RENl5A9XZBmCcMqVkDSkv2sdsX0TZ7IwMndpRWENXrxTvb
- V41VBT+1lzt9KDJrjhdMxXky1dHCmf0sCSRTPan3mhPw2QdJFQVbTmK6gWw0vzUHsvRQ90Nge
- KfRNKPsTB63c3TCsEibXD9swYq1YVblqXcOrDZ+Pyh4fm1p/BkNIBWiMKfDyXlWnUhqwT4tK2
- NO3pt/FkUYZJsR3GAl53akQqSFKD3HjHk2dlqeRsqL66Pirnk0b3s6MLLInMU2XcZN2dJ98jU
- I0Xi3Xn9jmCswHwPJkDIYBJfPITiRWhz5T76M7Qf4wGmlTe14zygSNpGMPxfdn3wgHyYLn2M1
- X5SBjSekKGubd93bogUdkIq1mV1xhp7ur107fKZJeN03zxyE3qNEgTWgLKbFMwlWrMNV0mE67
- oin3kSpOaPE4Kh52nZMEb6qyjv2b0QvbG0CI6OvQWrrGfFUqwiCVHQxZ93Xj9+YWfy0BkEJxj
- gXAlfzIZll2mbWnH9cW4610y58rI4EGWyGxqFhzZrr0r0fY3P5v5U2XjwMlrKbeQH0T8hE7TR
- x6/pLeCMUx2kPfVOZ0NleIzfVSFl+vjADzNaFsz9jm2U841LiuRTmBuilX2zDC7HWZ3dXpS1B
- vMN9jfkEhzTb9PMnMTfh64XrW3PAjIOzc8JziJ5+X84vaZxWrtVTP1KxMrrxN0MlKrAsj66Id
- WP3Q6KfmyaRMQE4BLmXYC+XbuVarUp+sAUoGSXQbnqt4vjd7gfxGUuAN6syZEK868wh95+oAq
- 0crmYoDLrsijgPG4BTZJ7v7IN9a6bpBJaB9z2L/rSb7iZB7/ifi8q7bc0CKd+OOpZBKDfhKpV
- 89ByC0peT/1/Z+ISmqjy0SircFRKeGxyWGBuNooeNsOO3eqkmo4sCW9TfaO/3/UyPtA36ygvd
- vYTLIwKg5Xkq8ZZ9BzRxK3xAkVE+FtbmQbVCpwQrQ/bo+7uz/uBwE2sZ2z4L8rYOf26/VgUR1
- Yq6h2DExsipkq/wWBlpferzLundkNxUvmZvmO/gbQXl9FSCVTBE0aSOd7G7WQ/qZwDUownckE
- dOHVaVR/vBaJ/Xxdu47Ie1/Tr6SpXpwJJ+7JKvQ==
+X-TM-SNTS-SMTP: 1F61BB53A9223881FA07901E69688B6D5142A20DD83F6084DC1401474804DFFC2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200810_014542_127224_C449CFD5 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20200810_024441_775740_3457C1CC 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,38 +84,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
-Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
- linux-kernel <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <linux@fw-web.de>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-input@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
+Change since v16:
+- list clock-names in devicetree binding documentation
+- remove pinctrl in binding documentation
+- add default value for keypad,num-columns and keypad,num-rows
 
-Am 10. August 2020 02:06:27 MESZ schrieb Chun-Kuang Hu <chunkuang.hu@kernel.org>:
+fengping.yu (3):
+  dt-bindings: Add bindings for Mediatek matrix keypad
+  drivers: input: keyboard: Add mtk keypad driver
+  configs: defconfig: Add CONFIG_KEYBOARD_MTK_KPD=m
 
->Alphabetical order is better.
-In dts there is alphabetical order but not yet in dtsi...i try to fix this.
+ .../devicetree/bindings/input/mtk-kpd.yaml    |  87 ++++++++
+ arch/arm64/configs/defconfig                  |   1 +
+ drivers/input/keyboard/Kconfig                |  11 +
+ drivers/input/keyboard/Makefile               |   1 +
+ drivers/input/keyboard/mtk-kpd.c              | 209 ++++++++++++++++++
+ 5 files changed, 309 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/input/mtk-kpd.yaml
+ create mode 100644 drivers/input/keyboard/mtk-kpd.c
 
->> Is the tmds Patch ok? (because review missing)
->https://patchwork.kernel.org/patch/11700679/
->
->That patch looks really like a hack patch. I would wait for a long
->time to see whether any one has comment for this. Or you could have a
->better explain for it.
-As i have documentation for mt7623 and there were no further comments on old series (https://patchwork.kernel.org/patch/10903303/) i guess i cannot fix this. I only know it is needed to get clear image on my 1280x1024 display with this Patch
-
-I adressed Ryder and Bibby directly maybe they can help here
-
->I could apply other patches first.
-
-I guess i need to fix order in dtsi first...afair any hdmi node creates an serial device moved the others +1. So maybe nodes need to be added after uartx (or at least the one if i found out which).
-regards Frank
+--
+2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
