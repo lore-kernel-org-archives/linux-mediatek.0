@@ -2,93 +2,90 @@ Return-Path: <SRS0=Jt7l=BW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EA203C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 20:05:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 59B03C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 22:14:17 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ADC612076B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 20:05:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 20CBB2076B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 22:14:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Tun4+ZJ5";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="YVa9oILP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ADC612076B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zx0i4VE0";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="vB/mP0Ns"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 20CBB2076B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:Reply-To:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:From:To:Subject:MIME-Version:References:
-	In-Reply-To:Date:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E2EWMaxlSFw8Nqjzu4JtzO9Gu/GASP4jNZgh/PJZTMc=; b=Tun4+ZJ5fWIOVPXpw/ZwfH7IW9
-	WNM6MknrynBnTabRaWtFQ/m/wexS6Ct+JZ0wNplmSuYRtQYke/WT+y5AbZw1fcBk1VPhdZDgVeigp
-	bD4uq4S7l4miMifWTMTDYENkPyPNbSwHLIHK+mbxzUDax7Fb7YqlXZDNxfrXn1RAsWXzVImICKOdK
-	XUy5SM7Jst7za31xGSA1PuqLeQVt4mBT9BEe69JRtoVu3Mc/i/AxdObPmw8SWuZZ5ryXMKWoUmjsV
-	KsYwiorMyWReosY1pwzy7yrTj+G+xj4YKlqBIn3adTNmOw8wwjgHJRAotJTimGOw+HPtII1AzX+uk
-	j23F/SNA==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=6dwDJZDTkwxcT8Wgu+vQaNGZ2vCgM/x9y+536t7u4z0=; b=zx0i4VE09oU5pnkFIjC6SiZTo
+	4uzbpE6rIeRvs1FU8bwsm3WR+VzXsVILjTEZzIjugQhbs0iGcmYqhAtIE7O2Pb9wAnjUM2Pz7+Aao
+	ze/LCTvsHy6V/qdb7bAO85VNsMKw1H66ePTK8yyBVG4x6qbTdUcI5Acl1WarkbCPMYPCyKpstwIeo
+	YZdJ9xxDwUFeiM9qVT7DAvIlP0hBupSnUucJ0EN+zDM39sVYlYhAikcNoRBUZ3sGxSf6bwjLqLqiv
+	dv+6ytZVdpkEF4ZvwFKcF7xyfsCMZbaCkDduZrSz+4HSOH1ycUa46wxLLtVDRLzcPazzEdjSq4zQ8
+	9FMI3BgTw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k5x0F-0002X4-Kf; Wed, 12 Aug 2020 20:05:39 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1k5z0Y-0007sd-Hb; Wed, 12 Aug 2020 22:14:06 +0000
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k5x0B-0002WP-8v; Wed, 12 Aug 2020 20:05:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1597262733;
- bh=KtVP+9CoE4x+P4vIm7WdD2oTdBMHgUjg2pO7nFUsGy4=;
- h=X-UI-Sender-Class:Date:In-Reply-To:References:Subject:Reply-to:To:
- CC:From;
- b=YVa9oILP8mB1y99a9PqUdhxz30UbXeKG+B98hic8qwAd5Oo1FCE05dzsWdkAqV3Hb
- eIjHZFRaZ6MMMrdoWPKXG7SO1EbIUlDiESglYftfJkmJ5UIbkmFCeY60DU/3dek1IJ
- VLe5uhXo9qAZtj2zUp9Clbuxe7rCcUV33q1rZcWs=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from frank-s9 ([37.60.0.210]) by mail.gmx.com (mrgmx105
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1M8hVB-1k1qJ80Cen-004kFf; Wed, 12
- Aug 2020 21:59:55 +0200
-Date: Wed, 12 Aug 2020 21:59:48 +0200
-User-Agent: K-9 Mail for Android
-In-Reply-To: <f65aeebb6c372a7138e496a30ce39f879d4e24ed.camel@pengutronix.de>
-References: <20200812093726.10123-1-wenbin.mei@mediatek.com>
- <20200812093726.10123-4-wenbin.mei@mediatek.com>
- <f65aeebb6c372a7138e496a30ce39f879d4e24ed.camel@pengutronix.de>
+ id 1k5z0V-0007sA-OB; Wed, 12 Aug 2020 22:14:04 +0000
+Received: by mail-pf1-x441.google.com with SMTP id d188so1730332pfd.2;
+ Wed, 12 Aug 2020 15:14:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=lW7/4eKV/BIv6DOQAynrxiasqUawM2e6k23o2vSUtRg=;
+ b=vB/mP0Nsnkr6cRD7/pR4Cz9oQ3xTivBb8JU/zagbvd3bAkgkx0xOy3XIdZXG1nnTPd
+ byRxNsMP1miGLAcBNyEgQGtQV6e4G963v8jG2ihlzbKYjujy4E2DEk1Ag+TNZXKeJ6Uv
+ Z3/aQc2CFYLFBVKxLRlb/5kSSvzzJiME3hgk0DMuwNH9XJc9oqp1lmxgc43DGK4Mzs+L
+ K5AgbrC5KZAzjIXDWmdiawfuxysWR+U8/xK/oQgkU2FHf2STI9AQBdt9PbHy9RIdlrNV
+ GJe4xOnig387XFN8v+7AGgFyUcptGoYATA9GlqmPLbxSwx9SbCKhlgKYytX+x6W5e/0P
+ UTgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=lW7/4eKV/BIv6DOQAynrxiasqUawM2e6k23o2vSUtRg=;
+ b=Kbs/scYsGf/XIYQ9fmDpeDHx+E2fQrK62Qf+eXqUrFqRxZtEYduZnPNj/wg2JXnX1l
+ 8ZVBQCNe6+Sg8TZ4tZedRYYJPHIpOLic926C38EWJ4zx8eTN8Tb+9AAK6AKlKt6asvc3
+ Adp+kVSay4axyCrO/7WG4R7h/mzw2HOaGjw0ec8UogfBUCBefa0OV+lovZvNWg4B1DlG
+ KmCs4Cr2Uqa4+y3oeuNRLu5KgtB12BtuSjcC2QGHsBzmp/poinq8s+IT7rOUFpKMLwUy
+ E8ImkwaRDnC07YOTbQyQ+I6ppRLjX15ar/IxxpBitphK9A6fNrVrcRXNoIT+gRyVWrqV
+ rYLg==
+X-Gm-Message-State: AOAM530agb84OBwXVEIT77TBeWEHwv3qwKi4X+UyFQmk6j2/SiPgUeQb
+ KS6PMXnlLHIT3ezeHGw5S4M=
+X-Google-Smtp-Source: ABdhPJxXev+6QoPGs9bZPI7LelcdOihL8c1PxoXHznyZAiNi1UYiit1+dSyyAauBMLff8UdiLX2Otg==
+X-Received: by 2002:a63:e20:: with SMTP id d32mr1079233pgl.53.1597270440514;
+ Wed, 12 Aug 2020 15:14:00 -0700 (PDT)
+Received: from dtor-ws ([2620:15c:202:201:a6ae:11ff:fe11:fcc3])
+ by smtp.gmail.com with ESMTPSA id d80sm3428651pfd.22.2020.08.12.15.13.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 12 Aug 2020 15:13:59 -0700 (PDT)
+Date: Wed, 12 Aug 2020 15:13:57 -0700
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH v17 1/3] dt-bindings: Add bindings for Mediatek matrix
+ keypad
+Message-ID: <20200812221357.GS1665100@dtor-ws>
+References: <20200810064058.6467-1-fengping.yu@mediatek.com>
+ <20200810064058.6467-2-fengping.yu@mediatek.com>
+ <1597110443.22273.5.camel@mtksdaap41>
 MIME-Version: 1.0
-Subject: Re: [PATCH 3/3] mmc: mediatek: add optional module reset property
-To: linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
- Wenbin Mei <wenbin.mei@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>,
- Rob Herring <robh+dt@kernel.org>
-From: Frank Wunderlich <frank-w@public-files.de>
-Message-ID: <68A53B8B-6646-4A99-B1E3-FAC3D550D67E@public-files.de>
-X-Provags-ID: V03:K1:vDQU52f3FqwgkLuBMaKcXThRs6qVswcU8BOJ+WZ5ghW9KrzJQ1q
- e/SI6LMvfIkwUCO3/Wa8qTqwpiEn9lGtWcc9VzeTHsed9ct4Dp0qg03i8ENLNZiOYuppXS3
- ZiDR5ZvJxbjcXUiwqK0mToyPDSNFJiguxIaXWS8y+YN3e8zyjGVErKWEl4V8Q8Zlj94L71v
- hnzH1BLS79HezmS/FRhuA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:5PHJLg427Gg=:G5MqpBrQfxFHtMemq6F2/N
- Fe5EQSNKhTjEZ7T6tDRsfCvf0HjbyS0CIhSeMoTScCHlYI6mGkDVCX3CP5+dRj/BqLtmq2Swh
- 5aA0DHp9Il/w5B8FPAEnXxrr7J4En0ntKWy3aK2H0UCkTbr9BTDjA9TllJQvBrMOI/XxBiRvG
- Pq0i0LZDzrpbWpJiypI0XuKddP35iSp4UqDz7V+OgY3vO6ygD1FeQlKnxI8GZ4G+fAbRJZk4c
- qA/KakYdCHzBlLB6eACplAf9kJpMDAUyBGGfdYKA44GFNFOCf/qNd4nE5m2ukTLdzMArcUwLB
- aykzos8+RSyQs4/AJBsh4vizD1rSC92hhULIYEcTekjXWhCygJSMCLmsZ/Agpz505l0VD5cvP
- fRNCnlnMkH2stIOPi6V9tgK+Lgd7WhyE3S15vzyXn3iNJDIrliR7n6V0EpwLSg6TmEsDNtRq9
- /hvcVxe+VPWYUmE+Gnxla6yH7qAg4+pXkR0ks14Xfn9dzOLPooGmUE+kxe10S7QP+l3C/Pdme
- IFb+fZgAcZ7OmQLdjX3Dru+nKgO8cYPbHEcPAH9lam+uVftVNeKIEsLBGVhasthdsPaoLRvSP
- dupr6+MqcINNDu7QDZC/vO8FaFsSrCZy2XffUelgL/JUuXg9KxiP63FUq5ifAA0JsW1Dy0M9a
- QhKi6CA+1Ele4amyLD4GTdAj1WcfcSZEnc10AVsMx2tJ5bjFNahyTJmtxdWyDUU21jCkaAauO
- Y8B9znQ6BuNYYDtRfiqz3wZbFEpXOXngBOh6s0Tc/PzotKTexuyTzTQ5nRNRHBqkLuMPtpTpV
- NSfw0YoXGy8mQQzUbDEA3TIxx4yiZeeLkdggijXvXpoGiVZnZ1VFv9nQLgiu4AweW4A3ltZZj
- Ot5MIONcGGExyd3e0VPA1KZvsSTYWzinF6govWxDBMkRBav6G7rzyPUBOWqjKL73GXG3L1Q3Y
- wciID8F3J/4P9pmXeF433qhIY01W+BGZa4NftgMysSLsP6YkWit89g7VIddMAJGnbMBNiY6hd
- xpiFtsDWqAvgFwjBC8es6psTtqZ4WwL0tl5rMYhoegxFaFGsqFQhMM19MOX7bOqNoYuSxiQWh
- nnPsX+NbWIpBhKTQlalmW+JATIiLGgjph7wq6wKLxtiYF2hIe/jcXCyILCYKo1V3EQV5ACzc3
- 3eHqdAhB2xWtumJRr+iI/9SBnCcpsclaAOmgDj1mijoGxhzpP3htELQGSrPTRy8+HMPbikxsd
- vhIJUbpg+EzdHXkyhKdbMRlyOGuAzb4fNFQAZJA==
+Content-Disposition: inline
+In-Reply-To: <1597110443.22273.5.camel@mtksdaap41>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200812_160535_536115_4470BE3F 
-X-CRM114-Status: UNSURE (   9.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200812_181403_809096_CC404BE5 
+X-CRM114-Status: GOOD (  24.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,56 +97,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: devicetree@vger.kernel.org, Fengping Yu <fengping.yu@mediatek.com>,
+ Marco Felsch <m.felsch@pengutronix.de>, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-input@vger.kernel.org,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Tested with these 2 changes below too.
+Hi,
 
-Am 12. August 2020 14:08:19 MESZ schrieb Philipp Zabel <p.zabel@pengutronix.de>:
+On Tue, Aug 11, 2020 at 09:47:23AM +0800, Yingjoe Chen wrote:
+> Hi,
+> 
+> 
+> On Mon, 2020-08-10 at 14:40 +0800, Fengping Yu wrote:
+> > From: "fengping.yu" <fengping.yu@mediatek.com>
+> > 
+> > This patch add devicetree bindings for Mediatek matrix keypad driver.
+> > 
+> > Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/input/mtk-kpd.yaml    | 87 +++++++++++++++++++
+> >  1 file changed, 87 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/input/mtk-kpd.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/input/mtk-kpd.yaml b/Documentation/devicetree/bindings/input/mtk-kpd.yaml
+> > new file mode 100644
+> > index 000000000000..d74dd8a6fbde
+> 
+> <...>
+> 
+> 
+> > +  keypad,num-columns:
+> > +    description: Number of column lines connected to the keypad controller,
+> > +    it is not equal to PCB columns number, instead you should add required value
+> > +    for each IC. If not specified, the default value is 1.
+> > +
+> > +  keypad,num-rows:
+> > +    description: Number of row lines connected to the keypad controller, it is
+> > +    not equal to PCB rows number, instead you should add required value for each IC.
+> > +    If not specified, the default value is 1.
+> 
+> Your source code can't really handle dts without rows/columns
+> properties. Also, the default value doesn't make any sense. No IC will
+> have rows or columns set to 1.
+> 
+> Since these are IC specified, not board specified, I think you should
+> just have the correct numbers in driver.
 
->> +	if (!IS_ERR(host->reset)) {
->> +		reset_control_assert(host->reset);
->> +		usleep_range(10, 50);
->> +		reset_control_deassert(host->reset);
->> +	}
->> +
->
->This should be:
->
->	if (host->reset) {
->		reset_control_assert(host->reset);
->		usleep_range(10, 50);
->		reset_control_deassert(host->reset);
->	}
->
+It is actually property of board to decide how many keys it wants to
+wire up. In extreme case it will be a single key, i.e. number of rows
+and columns will indeed be 1.
 
->> +	host->reset = devm_reset_control_get_optional_exclusive(&pdev->dev,
->> +								"hrst");
->> +	if (PTR_ERR(host->reset) == -EPROBE_DEFER)
->> +		return PTR_ERR(host->reset);
->> +
->
->This should be:
->
->	host->reset = devm_reset_control_get_optional_exclusive(&pdev->dev,
->								"hrst");
->	if (IS_ERR(host->reset))
->		return PTR_ERR(host->reset);
->
+Thanks.
 
->With these two changes,
->
->Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
-
-regards Frank
+-- 
+Dmitry
 
 _______________________________________________
 Linux-mediatek mailing list
