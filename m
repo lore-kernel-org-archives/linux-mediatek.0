@@ -2,20 +2,20 @@ Return-Path: <SRS0=Jt7l=BW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
 	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DB4F6C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 16:26:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5AE9C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 16:55:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9AB8B2076B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 16:26:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B2EC7206C3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 16:55:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oITB9dBG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9AB8B2076B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="W39yJOfU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B2EC7206C3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,56 +24,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9VGWp8Z38bSbJuIGS7y102et/80PODBu2sXUK5418vc=; b=oITB9dBGDF2fGQx6LFf+N4ZkJ
-	jjg+KBfxu4YiQAqpV6FH+lhwh7picqCrkqs33xm1QoehzgRtloWBBWVsa5JbFWgwsrM6cmhN4L4aU
-	TeQP5S7JL5AcLcbjsqYNX085fMiLjTFSshOOJvGNEWhDjHCWWsUitJdN+A7doxTXfXhhGYp8uLsHj
-	wRiLKwEf7BreXDl/oEBbzSLfljvvayKSDK9mJB8o5vPmJDZXAV6tU5s0nTswXHBjvtvJsZtFx6OUz
-	mYnYebSq3fcoboUF81ltxOtpohqS5ON6hxSTOOAtmt9KkuURamc4yj+4IHZ1MTWbno+Eo49dNVBsZ
-	XoOciSyjg==;
+	 bh=t2NjmYL2WNlcbrZXq91FADAuGhzkk2XMZFHi5kQ965w=; b=W39yJOfUYX6GT1r6N+tNPtNFC
+	S2Y9tLfZiODnsqe4j71LcGQ/Dhu7bl3i/2wF70wo8RF58DeK9KD1u3zFFhkMih4nnGMXVd261fSCI
+	fug0GE7O1yqpVIkRDiT9KylTpfT0KeV1I8RaoPIVE365beh+DYHsH9CddjLesdJw5OhPfupYcEClr
+	Cn33h4Kh5Ky+XRtDcbtCm26gwJmHzEBYI6m6TGJnP+v1NQA+9SfeATG10tAmFgMjKP12T3MjSRV1b
+	0KnXoUdan7oJNEVEDBuaFBEkQdJXyYMrLrp85mb0TnCfbuMwlOwoHBvGe/PWAGpzzdl/rlyKgY5nb
+	NvW3XO9vg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k5tZv-0007qG-Pw; Wed, 12 Aug 2020 16:26:15 +0000
-Received: from mail-il1-f193.google.com ([209.85.166.193])
+	id 1k5u25-0004G2-Ll; Wed, 12 Aug 2020 16:55:21 +0000
+Received: from mail-io1-f66.google.com ([209.85.166.66])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k5tZq-0007pK-Fn; Wed, 12 Aug 2020 16:26:11 +0000
-Received: by mail-il1-f193.google.com with SMTP id x1so2306402ilp.7;
- Wed, 12 Aug 2020 09:26:08 -0700 (PDT)
+ id 1k5u1t-00049B-Bx; Wed, 12 Aug 2020 16:55:10 +0000
+Received: by mail-io1-f66.google.com with SMTP id j8so3516276ioe.9;
+ Wed, 12 Aug 2020 09:55:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=xT4SACgf5ifSMoS9uK+2nXefsvRA+9v+8cofR3WoWzc=;
- b=CSj+XqLsistLMahTzYAumgVlKJ4gjywspeXj/xtt1JnQtikZi52vQcsG1Qdo3Zcpec
- XKSIzM3r1Sq+/A5if7W69Mua40f4rwCT49uQ6WOtOzjkDUemDLZt4IDsrCYWxoPTghTF
- Ac4d3tXnJ9AGa8w2IJ/3zQibYNbmMOOtHyW704+0AE6sMuG9DYpar9JvU+P8JOU8MJqB
- oawwrdqNSXq2tjR0SPH/3jwhRuDuqz/4HI/nVX9RUSdDtokggromajis8vx/pqGDQuTC
- nODSxmX7kP6YGPmlGeWvMPfniYXPeZaZErJY2V1meuFqRvqYsYLnXKh8dv8gzD+SqcfQ
- QKaQ==
-X-Gm-Message-State: AOAM533SYpzwnxw8p6C5h4a1m3VnOQzBD2mbJ4iNVKU567rO7S5Bi47B
- 9Lhk9SQven0xBrUUcYW7gA==
-X-Google-Smtp-Source: ABdhPJxhvNiEn01QPTStOSaoRMJBQMRWM+MEiL+Bc4h8Pvco/4kQQxQ01omTeuR5kwXN7ubmYfG9+w==
-X-Received: by 2002:a92:5b1c:: with SMTP id p28mr452119ilb.133.1597249567760; 
- Wed, 12 Aug 2020 09:26:07 -0700 (PDT)
+ bh=OnKPv+qr/0SKiO3J0pJxrPNLJqM+U78LQKFRagi2BS8=;
+ b=oKE+8pzwEPZd8g7naXW8MZpGgaL55brPV2w2tjBhsvT2uipNXwuJkEIUbDM3Oq/QyU
+ KunaqKDVpy6Rkhi2UNUi7MxdRM8e5koEAyX4HwXoLjbdWvFfFDgIpaLgQDryTw4rN4Qh
+ t7olrs1nHZIF7PAE9R6GgSlvo2w4UF9ltNRp3gTH2W9JKyWl3kariILzaiVki0iAXbL/
+ H7bNqE48C0KvWH9k2kKr6YOpYW+kOeonTKVCmEaBrmhHRGz4/0HT1GTJfE6cgEqKYAGM
+ wbZIQMgW/J1xLS7mhydxp+jzhpNCeiYR4xwQ194MY///1GcZoklRfBflpw5t7JsmwG02
+ LPlA==
+X-Gm-Message-State: AOAM531KlvP/OC8nJYSXaaHFL/Q5o9NRW8/S7T1NNlv+TfsrnFWdG5t4
+ /D0MV5Hsxfm0HY3uHYbamw==
+X-Google-Smtp-Source: ABdhPJwYwyFOnVugtnOVfg8AgmEVYg3C6rf+Hwcjg8rs7FalCUYOI3v0RNnferAdv8WDFYik34UcAQ==
+X-Received: by 2002:a6b:7e41:: with SMTP id k1mr718192ioq.130.1597251308230;
+ Wed, 12 Aug 2020 09:55:08 -0700 (PDT)
 Received: from xps15 ([64.188.179.248])
- by smtp.gmail.com with ESMTPSA id k18sm1185733ioh.50.2020.08.12.09.26.05
+ by smtp.gmail.com with ESMTPSA id a9sm1236374iol.9.2020.08.12.09.55.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 Aug 2020 09:26:06 -0700 (PDT)
-Received: (nullmailer pid 2319809 invoked by uid 1000);
- Wed, 12 Aug 2020 16:26:04 -0000
-Date: Wed, 12 Aug 2020 10:26:04 -0600
+ Wed, 12 Aug 2020 09:55:07 -0700 (PDT)
+Received: (nullmailer pid 2363799 invoked by uid 1000);
+ Wed, 12 Aug 2020 16:55:04 -0000
+Date: Wed, 12 Aug 2020 10:55:04 -0600
 From: Rob Herring <robh@kernel.org>
-To: Hector Yuan <hector.yuan@mediatek.com>
-Subject: Re: [PATCH v1 2/2] dt-bindings: cpufreq: add  MediaTek cpufreq
- bindings
-Message-ID: <20200812162604.GA2319433@bogus>
-References: <1596716320-19811-1-git-send-email-hector.yuan@mediatek.com>
- <1596716320-19811-3-git-send-email-hector.yuan@mediatek.com>
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Subject: Re: [RESEND v7, PATCH 1/7] dt-bindings: mediatek: add rdma_fifo_size
+ description for mt8183 display
+Message-ID: <20200812165504.GA2361465@bogus>
+References: <1596855231-5782-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1596855231-5782-2-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1596716320-19811-3-git-send-email-hector.yuan@mediatek.com>
+In-Reply-To: <1596855231-5782-2-git-send-email-yongqiang.niu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200812_122610_560395_632F4768 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20200812_125509_793574_DAE82EFE 
+X-CRM114-Status: GOOD (  17.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,49 +85,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Will Deacon <will@kernel.org>, wsd_upstream@mediatek.com,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Anson Huang <Anson.Huang@nxp.com>, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, Arnd Bergmann <arnd@arndb.de>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, Olof Johansson <olof@lixom.net>,
- Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Viresh Kumar <viresh.kumar@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Li Yang <leoyang.li@nxp.com>,
- Shawn Guo <shawnguo@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 06 Aug 2020 20:18:40 +0800, Hector Yuan wrote:
-> From: "Hector.Yuan" <hector.yuan@mediatek.com>
+On Sat, Aug 08, 2020 at 10:53:45AM +0800, Yongqiang Niu wrote:
+> rdma fifo size may be different even in same SOC, add this
+> property to the corresponding rdma
 > 
-> Add devicetree bindings for MediaTek HW driver.
-> 
-> Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
+> Change-Id: I67635ec7f3f59cf4cbc7737285e5e28ff0ab71c9
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 > ---
->  .../bindings/cpufreq/cpufreq-mediatek-hw.yaml      |   56 ++++++++++++++++++++
->  1 file changed, 56 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
+>  .../devicetree/bindings/display/mediatek/mediatek,disp.txt | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
 > 
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> index b91e709..e6bbe32 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> @@ -66,6 +66,11 @@ Required properties (DMA function blocks):
+>    argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+>    for details.
+>  
+> +Optional properties (RDMA function blocks):
+> +- mediatek,rdma_fifo_size: rdma fifo size may be different even in same SOC, add this
 
+mediatek,rdma-fifo-size
 
-My bot found errors running 'make dt_binding_check' on your patch:
+What's the range/set of valid values?
 
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.example.dt.yaml: example-0: cpufreq@11bc00:reg:0: [0, 1162256, 0, 140] is too long
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.example.dt.yaml: example-0: cpufreq@11bc00:reg:1: [0, 1162400, 0, 140] is too long
+> +  property to the corresponding rdma
+> +  the value is the Max value which defined in hardware data sheet.
+> +
+>  Examples:
+>  
+>  mmsys: clock-controller@14000000 {
+> @@ -207,3 +212,12 @@ od@14023000 {
+>  	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+>  	clocks = <&mmsys CLK_MM_DISP_OD>;
+>  };
+> +
+> +rdma1: rdma@1400c000 {
 
+Does a new property really need a whole new example?
 
-See https://patchwork.ozlabs.org/patch/1341854
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure dt-schema is up to date:
-
-pip3 install git+https://github.com/devicetree-org/dt-schema.git@master --upgrade
-
-Please check and re-submit.
-
+> +	compatible = "mediatek,mt8183-disp-rdma";
+> +	reg = <0 0x1400c000 0 0x1000>;
+> +	interrupts = <GIC_SPI 229 IRQ_TYPE_LEVEL_LOW>;
+> +	power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
+> +	clocks = <&mmsys CLK_MM_DISP_RDMA1>;
+> +	mediatek,rdma_fifo_size = <2048>;
+> +};
+> -- 
+> 1.8.1.1.dirty
 
 _______________________________________________
 Linux-mediatek mailing list
