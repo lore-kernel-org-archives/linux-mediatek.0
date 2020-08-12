@@ -2,20 +2,20 @@ Return-Path: <SRS0=Jt7l=BW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E5AE9C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 16:55:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 812D0C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 19:44:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B2EC7206C3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 16:55:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4D45D206DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 19:44:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="W39yJOfU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B2EC7206C3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JLRAHXq3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4D45D206DA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,56 +24,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=t2NjmYL2WNlcbrZXq91FADAuGhzkk2XMZFHi5kQ965w=; b=W39yJOfUYX6GT1r6N+tNPtNFC
-	S2Y9tLfZiODnsqe4j71LcGQ/Dhu7bl3i/2wF70wo8RF58DeK9KD1u3zFFhkMih4nnGMXVd261fSCI
-	fug0GE7O1yqpVIkRDiT9KylTpfT0KeV1I8RaoPIVE365beh+DYHsH9CddjLesdJw5OhPfupYcEClr
-	Cn33h4Kh5Ky+XRtDcbtCm26gwJmHzEBYI6m6TGJnP+v1NQA+9SfeATG10tAmFgMjKP12T3MjSRV1b
-	0KnXoUdan7oJNEVEDBuaFBEkQdJXyYMrLrp85mb0TnCfbuMwlOwoHBvGe/PWAGpzzdl/rlyKgY5nb
-	NvW3XO9vg==;
+	 bh=TfyJLyZVzEuVUWhPaVqlLX3Fc9Vdi58VaPgXjb3j37Q=; b=JLRAHXq345MpCdHXVAQRUzkJc
+	Sg6O0z6lkmYwlWWvdW0t8fbsJDWRY/uWVNIlCMGjRTwHApchkFuLVkLqsVAesaxXuh54RYZIF/H4y
+	lnOl1+XIzqWwKQLD7BEJ8Z69vnhl8D7NNim24AQddnKTL6YzrAAtgc0IPWJmHrrEm7P3bvCHyEdx7
+	qPN34QyNX9sibc1ASfPSqxA3GA5zh3UJEtgt6qJm7qkqtP+1PLGYDhOetMEazQfgZXdu/bI0ozRA+
+	pCHrfj6Rnw3EoL3B2iNBtnEeyqbttUcclKaVf52boZKRVabsrmGhJCKaO5FpvzmJTwPT4qJp4jCHC
+	OP1r7selw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k5u25-0004G2-Ll; Wed, 12 Aug 2020 16:55:21 +0000
-Received: from mail-io1-f66.google.com ([209.85.166.66])
+	id 1k5wfn-0005TN-Sy; Wed, 12 Aug 2020 19:44:31 +0000
+Received: from mail-io1-f68.google.com ([209.85.166.68])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k5u1t-00049B-Bx; Wed, 12 Aug 2020 16:55:10 +0000
-Received: by mail-io1-f66.google.com with SMTP id j8so3516276ioe.9;
- Wed, 12 Aug 2020 09:55:08 -0700 (PDT)
+ id 1k5wfl-0005SV-01; Wed, 12 Aug 2020 19:44:29 +0000
+Received: by mail-io1-f68.google.com with SMTP id g19so4295833ioh.8;
+ Wed, 12 Aug 2020 12:44:28 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=OnKPv+qr/0SKiO3J0pJxrPNLJqM+U78LQKFRagi2BS8=;
- b=oKE+8pzwEPZd8g7naXW8MZpGgaL55brPV2w2tjBhsvT2uipNXwuJkEIUbDM3Oq/QyU
- KunaqKDVpy6Rkhi2UNUi7MxdRM8e5koEAyX4HwXoLjbdWvFfFDgIpaLgQDryTw4rN4Qh
- t7olrs1nHZIF7PAE9R6GgSlvo2w4UF9ltNRp3gTH2W9JKyWl3kariILzaiVki0iAXbL/
- H7bNqE48C0KvWH9k2kKr6YOpYW+kOeonTKVCmEaBrmhHRGz4/0HT1GTJfE6cgEqKYAGM
- wbZIQMgW/J1xLS7mhydxp+jzhpNCeiYR4xwQ194MY///1GcZoklRfBflpw5t7JsmwG02
- LPlA==
-X-Gm-Message-State: AOAM531KlvP/OC8nJYSXaaHFL/Q5o9NRW8/S7T1NNlv+TfsrnFWdG5t4
- /D0MV5Hsxfm0HY3uHYbamw==
-X-Google-Smtp-Source: ABdhPJwYwyFOnVugtnOVfg8AgmEVYg3C6rf+Hwcjg8rs7FalCUYOI3v0RNnferAdv8WDFYik34UcAQ==
-X-Received: by 2002:a6b:7e41:: with SMTP id k1mr718192ioq.130.1597251308230;
- Wed, 12 Aug 2020 09:55:08 -0700 (PDT)
+ bh=PI60pBGvyY4YK8WMXJBtlmGtDEkgGzmHg6VvPJsaQpE=;
+ b=eJ874VHOYPMdxeTWNeCgt3YdTezskxX9QyVgy8q7HwaSYvpiwheQHSi4tHP5+0qZJG
+ Kg+lUK4Ml4r+MpccoiEl6PUs+Z1nv6hweo/d6sXCNSygXD+QT1E1Dc1OM+IRQUTWCWcY
+ k/xXfp9JaB/RHCTCEuX7EmQsC2bbottuHYWohpqt4YF9kOP5pa/CTAw9uVwtMIQFM/+z
+ bQ9W+p0/czZCrr+bHr+0OkmpXWpghO6bb3q/rdI5AMnNWBM77fqsu79fU04653pUSYmv
+ Joz8Uvbxp4SKbFHSckUeoYPQ65PFANCBk1uwHLZspuQef7a7bWm48L9GGKHO8C5oQlpV
+ rf5Q==
+X-Gm-Message-State: AOAM531vAvMfoof8i4XLixdF8QRqFSdqskhLG9h/RGHnZ3P4ZSDoitHt
+ CYLNyqYLAyDpUoGsFXgDBw==
+X-Google-Smtp-Source: ABdhPJxtdZ8IsN1XGqyW7GSknz7VmFg9WPtG4jxsvpLrp0sWIqvvPreSCVcRhSyLZtRAjKXTfLscmA==
+X-Received: by 2002:a6b:6c13:: with SMTP id a19mr1392236ioh.31.1597261468379; 
+ Wed, 12 Aug 2020 12:44:28 -0700 (PDT)
 Received: from xps15 ([64.188.179.248])
- by smtp.gmail.com with ESMTPSA id a9sm1236374iol.9.2020.08.12.09.55.05
+ by smtp.gmail.com with ESMTPSA id m7sm1540808ilq.45.2020.08.12.12.44.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 Aug 2020 09:55:07 -0700 (PDT)
-Received: (nullmailer pid 2363799 invoked by uid 1000);
- Wed, 12 Aug 2020 16:55:04 -0000
-Date: Wed, 12 Aug 2020 10:55:04 -0600
+ Wed, 12 Aug 2020 12:44:27 -0700 (PDT)
+Received: (nullmailer pid 2587368 invoked by uid 1000);
+ Wed, 12 Aug 2020 19:44:23 -0000
+Date: Wed, 12 Aug 2020 13:44:23 -0600
 From: Rob Herring <robh@kernel.org>
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Subject: Re: [RESEND v7, PATCH 1/7] dt-bindings: mediatek: add rdma_fifo_size
- description for mt8183 display
-Message-ID: <20200812165504.GA2361465@bogus>
-References: <1596855231-5782-1-git-send-email-yongqiang.niu@mediatek.com>
- <1596855231-5782-2-git-send-email-yongqiang.niu@mediatek.com>
+To: Zhiyong Tao <zhiyong.tao@mediatek.com>
+Subject: Re: [PATCH v3 1/3] dt-bindings: pinctrl: mt8192: add pinctrl file
+Message-ID: <20200812194423.GA2587320@bogus>
+References: <20200807074905.23468-1-zhiyong.tao@mediatek.com>
+ <20200807074905.23468-2-zhiyong.tao@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1596855231-5782-2-git-send-email-yongqiang.niu@mediatek.com>
+In-Reply-To: <20200807074905.23468-2-zhiyong.tao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200812_125509_793574_DAE82EFE 
-X-CRM114-Status: GOOD (  17.40  )
+X-CRM114-CacheID: sfid-20200812_154429_088207_A70DF925 
+X-CRM114-Status: GOOD (  10.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,66 +84,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: mark.rutland@arm.com, linus.walleij@linaro.org, hongzhou.yang@mediatek.com,
+ biao.huang@mediatek.com, devicetree@vger.kernel.org, hui.liu@mediatek.com,
+ seiya.wang@mediatek.com, sean.wang@mediatek.com, linux-gpio@vger.kernel.org,
+ sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, eddie.huang@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
+ chuanjia.liu@mediatek.com, erin.lo@mediatek.com, sean.wang@kernel.org,
+ linux-kernel@vger.kernel.org, sin_jieyang@mediatek.com, jg_poxu@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Aug 08, 2020 at 10:53:45AM +0800, Yongqiang Niu wrote:
-> rdma fifo size may be different even in same SOC, add this
-> property to the corresponding rdma
+On Fri, 07 Aug 2020 15:49:03 +0800, Zhiyong Tao wrote:
+> This patch adds pinctrl file for mt8192.
 > 
-> Change-Id: I67635ec7f3f59cf4cbc7737285e5e28ff0ab71c9
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
 > ---
->  .../devicetree/bindings/display/mediatek/mediatek,disp.txt | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
+>  include/dt-bindings/pinctrl/mt8192-pinfunc.h | 1344 ++++++++++++++++++
+>  1 file changed, 1344 insertions(+)
+>  create mode 100644 include/dt-bindings/pinctrl/mt8192-pinfunc.h
 > 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> index b91e709..e6bbe32 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> @@ -66,6 +66,11 @@ Required properties (DMA function blocks):
->    argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
->    for details.
->  
-> +Optional properties (RDMA function blocks):
-> +- mediatek,rdma_fifo_size: rdma fifo size may be different even in same SOC, add this
 
-mediatek,rdma-fifo-size
-
-What's the range/set of valid values?
-
-> +  property to the corresponding rdma
-> +  the value is the Max value which defined in hardware data sheet.
-> +
->  Examples:
->  
->  mmsys: clock-controller@14000000 {
-> @@ -207,3 +212,12 @@ od@14023000 {
->  	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
->  	clocks = <&mmsys CLK_MM_DISP_OD>;
->  };
-> +
-> +rdma1: rdma@1400c000 {
-
-Does a new property really need a whole new example?
-
-> +	compatible = "mediatek,mt8183-disp-rdma";
-> +	reg = <0 0x1400c000 0 0x1000>;
-> +	interrupts = <GIC_SPI 229 IRQ_TYPE_LEVEL_LOW>;
-> +	power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
-> +	clocks = <&mmsys CLK_MM_DISP_RDMA1>;
-> +	mediatek,rdma_fifo_size = <2048>;
-> +};
-> -- 
-> 1.8.1.1.dirty
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
