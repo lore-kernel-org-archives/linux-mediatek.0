@@ -2,22 +2,22 @@ Return-Path: <SRS0=Jt7l=BW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 09290C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 09:18:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D9839C433E4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 09:26:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BCDDE2083B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 09:18:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AA1F1206C3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 09:26:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eQJu6Ccl";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="bR8KKaZI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BCDDE2083B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kyBarrew";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="FKy0fCxb"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AA1F1206C3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=XR31RapgkcxglCmm1Ov4xApm1DspdjRQ+MGRaeSJUx4=; b=eQJu6CclAv3bxRwN9noKszOSf
-	m7puQ8iww8fNupFmEFMBBp0zhrUPbuMr7JZLKYayxXVoxwieQytXuPrkrIqjhgEQAbmDoLSQMQQZU
-	uxaFrMMsugHSXTeI+BLuWAvPnHiiGUHsppb/y5oCP6KaEjCn2Irzuvl9OTYelAT217lQx6HdDNLyO
-	5W86sOw4L/B3wyhZQd1sYGJ8f3zUWzkrgapAXc/hDavh/49X2lkf7klsrPpaWuL3OdwO7b6AR5Zko
-	HgwbvM+ZpomDiAM6ntkZ4EfRwz0/2epVIAejQYAbn54waQCBuCvyuH7Ez4lysYe+m+ge/LTVqyJhz
-	Jt9Euji3w==;
+	 bh=kHhdX8yZ6FbTHTlX+zV5TN4b14TUOU2PNvY5zcJpRNM=; b=kyBarrewJVmtf0AjZWWUiR6Nw
+	7iC+xdhloPI9gwaKOb65GZwUWbqYz7J7fIMDRPdipgmJeOglzmAhlkU5to7ZUldCCflTSd+lwYkDa
+	W2tPwLELOSrug6UgA+3lTRFD4zeVu56lmfW/wIav4zx/BUL1e9pxgeC6VfjrgWUwpCPvSmcIs7k/F
+	p6ARey/pku3Sdh/IqI+ZXFlH73LtQ4AIYTA+iL1o5JXWqHAe3SBynaZ+t0eagIbcD5pD/W5lUugsr
+	DGvX1/7Xdea3Nqoq6BXwOAaGmfochIJM5sXgwyXQU/O9B23BvoyEhXRAtIjfmM1TmA+7Zx+6tLSoe
+	xc/IgSVuw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k5mtQ-0002fJ-CC; Wed, 12 Aug 2020 09:17:56 +0000
+	id 1k5n1U-0003rG-Rq; Wed, 12 Aug 2020 09:26:16 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k5mtO-0002eJ-7R
- for linux-mediatek@lists.infradead.org; Wed, 12 Aug 2020 09:17:55 +0000
-X-UUID: 497eb3491bf345faa3ed6851ba83a531-20200812
+ id 1k5n1P-0003oS-Ik; Wed, 12 Aug 2020 09:26:12 +0000
+X-UUID: bc12796cab914a4ca68cc4a6f0177629-20200812
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=UqdzDWD86OrCp6wEU2YB9Bwu97TCSXyPz6lXG6Qwo4U=; 
- b=bR8KKaZIG/GiDAYXoffnL7verGe3koQ8uq1m2yOEm9mD7Yx4TB6p5N/7qMHK/YkYtZN3ytIYzdBUgad8kH5JPBl7INF1U4C7FsI/EZ17Sgyo31ELFABOWS4BOx3gozDO8orgV/vAWBdaA9Av0FpP2/G0AR7DXmzMG/Ihvsg9U80=;
-X-UUID: 497eb3491bf345faa3ed6851ba83a531-20200812
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
+ bh=ubj2ydOGUWBxq24rYpXstL71ZWF/3bPYbt3glBglWZg=; 
+ b=FKy0fCxbi/CMJ+6HIO8CwF5mNN0ozbsXxyo4cRBgzCYeA5DolJwlwhRmfJMY0DJzF4tWVbdnfNM8vcOKSKTsa13V7XNLbi0E6ZBbI/hxaxiGWlLstEk5qDwbw5bBgFsc6o0aV7sa7zzjw4lPjrchcXGZf23PipL1rM4+WcICSKk=;
+X-UUID: bc12796cab914a4ca68cc4a6f0177629-20200812
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chinwen.chang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1806498109; Wed, 12 Aug 2020 01:17:46 -0800
+ with ESMTP id 1441867781; Wed, 12 Aug 2020 01:26:05 -0800
 Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 Aug 2020 02:17:44 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 12 Aug 2020 02:26:03 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 Aug 2020 17:17:29 +0800
+ 15.0.1497.2; Wed, 12 Aug 2020 17:26:01 +0800
 Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 12 Aug 2020 17:17:29 +0800
-Message-ID: <1597223851.5467.12.camel@mtkswgap22>
-Subject: Re: [PATCH] net: untag pointer in sockptr_is_kernel
-From: Miles Chen <miles.chen@mediatek.com>
-To: kernel test robot <lkp@intel.com>
-Date: Wed, 12 Aug 2020 17:17:31 +0800
-In-Reply-To: <202008112018.fpLyWmTj%lkp@intel.com>
-References: <20200811102704.17875-1-miles.chen@mediatek.com>
- <202008112018.fpLyWmTj%lkp@intel.com>
+ Transport; Wed, 12 Aug 2020 17:26:01 +0800
+Message-ID: <1597224363.32469.12.camel@mtkswgap22>
+Subject: Re: [PATCH 2/2] mm: proc: smaps_rollup: do not stall write attempts
+ on mmap_lock
+From: Chinwen Chang <chinwen.chang@mediatek.com>
+To: Steven Price <steven.price@arm.com>
+Date: Wed, 12 Aug 2020 17:26:03 +0800
+In-Reply-To: <bf40676e-b14b-44cd-75ce-419c70194783@arm.com>
+References: <1597120955-16495-1-git-send-email-chinwen.chang@mediatek.com>
+ <1597120955-16495-3-git-send-email-chinwen.chang@mediatek.com>
+ <bf40676e-b14b-44cd-75ce-419c70194783@arm.com>
 X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200812_051754_408942_9208402D 
-X-CRM114-Status: GOOD (  26.03  )
+X-CRM114-CacheID: sfid-20200812_052611_820763_5C594C16 
+X-CRM114-Status: GOOD (  32.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,94 +85,144 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kbuild-all@lists.01.org, wsd_upstream@mediatek.com,
- linux-kernel@vger.kernel.org, "David S . Miller" <davem@davemloft.net>,
- clang-built-linux@googlegroups.com, linux-mediatek@lists.infradead.org,
- Christoph Hellwig <hch@lst.de>
+Cc: linux-arm-kernel@lists.infradead.org, Song Liu <songliubraving@fb.com>,
+ wsd_upstream@mediatek.com, Davidlohr Bueso <dbueso@suse.de>,
+ linux-kernel@vger.kernel.org,
+ "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
+ Daniel Jordan <daniel.m.jordan@oracle.com>, Jason Gunthorpe <jgg@ziepe.ca>,
+ linux-mediatek@lists.infradead.org, Jimmy Assarsson <jimmyassarsson@gmail.com>,
+ Huang Ying <ying.huang@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
+ Michel Lespinasse <walken@google.com>, Alexey Dobriyan <adobriyan@gmail.com>,
+ Vlastimil Babka <vbabka@suse.cz>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2020-08-11 at 20:28 +0800, kernel test robot wrote:
-> Hi Miles,
+On Wed, 2020-08-12 at 09:39 +0100, Steven Price wrote:
+> On 11/08/2020 05:42, Chinwen Chang wrote:
+> > smaps_rollup will try to grab mmap_lock and go through the whole vma
+> > list until it finishes the iterating. When encountering large processes,
+> > the mmap_lock will be held for a longer time, which may block other
+> > write requests like mmap and munmap from progressing smoothly.
+> > 
+> > There are upcoming mmap_lock optimizations like range-based locks, but
+> > the lock applied to smaps_rollup would be the coarse type, which doesn't
+> > avoid the occurrence of unpleasant contention.
+> > 
+> > To solve aforementioned issue, we add a check which detects whether
+> > anyone wants to grab mmap_lock for write attempts.
+> > 
+> > Signed-off-by: Chinwen Chang <chinwen.chang@mediatek.com>
+> > ---
+> >   fs/proc/task_mmu.c | 21 +++++++++++++++++++++
+> >   1 file changed, 21 insertions(+)
+> > 
+> > diff --git a/fs/proc/task_mmu.c b/fs/proc/task_mmu.c
+> > index dbda449..4b51f25 100644
+> > --- a/fs/proc/task_mmu.c
+> > +++ b/fs/proc/task_mmu.c
+> > @@ -856,6 +856,27 @@ static int show_smaps_rollup(struct seq_file *m, void *v)
+> >   	for (vma = priv->mm->mmap; vma; vma = vma->vm_next) {
+> >   		smap_gather_stats(vma, &mss);
+> >   		last_vma_end = vma->vm_end;
+> > +
+> > +		/*
+> > +		 * Release mmap_lock temporarily if someone wants to
+> > +		 * access it for write request.
+> > +		 */
+> > +		if (mmap_lock_is_contended(mm)) {
+> > +			mmap_read_unlock(mm);
+> > +			ret = mmap_read_lock_killable(mm);
+> > +			if (ret) {
+> > +				release_task_mempolicy(priv);
+> > +				goto out_put_mm;
+> > +			}
+> > +
+> > +			/* Check whether current vma is available */
+> > +			vma = find_vma(mm, last_vma_end - 1);
+> > +			if (vma && vma->vm_start < last_vma_end)
 > 
-> Thank you for the patch! Yet something to improve:
+> I may be wrong, but this looks like it could return incorrect results. 
+> For example if we start reading with the following VMAs:
 > 
-> [auto build test ERROR on net-next/master]
-> [also build test ERROR on linus/master]
-> [cannot apply to net/master hch-configfs/for-next sparc-next/master v5.8 next-20200811]
-> [If your patch is applied to the wrong git tree, kindly drop us a note.
-> And when submitting patch, we suggest to use '--base' as documented in
-> https://git-scm.com/docs/git-format-patch]
+>   +------+------+-----------+
+>   | VMA1 | VMA2 | VMA3      |
+>   +------+------+-----------+
+>   |      |      |           |
+> 4k     8k     16k         400k
+> 
+> Then after reading VMA2 we drop the lock due to contention. So:
+> 
+>    last_vma_end = 16k
+> 
+> Then if VMA2 is freed while the lock is dropped, so we have:
+> 
+>   +------+      +-----------+
+>   | VMA1 |      | VMA3      |
+>   +------+      +-----------+
+>   |      |      |           |
+> 4k     8k     16k         400k
+> 
+> find_vma(mm, 16k-1) will then return VMA3 and the condition vm_start < 
+> last_vma_end will be false.
+> 
+Hi Steve,
 
-hi test robot,
+Thank you for reviewing this patch.
 
-thanks for the report.
+You are correct. If the contention is detected and the current vma(here
+is VMA2) is freed while the lock is dropped, it will report an
+incomplete result.
 
-6d04fe15f78a ("net: optimize the sockptr_t for unified kernel/user
-address spaces") has been reverted, so I will not sent patch v2 for this
-build error.
+> > +				continue;
+> > +
+> > +			/* Current vma is not available, just break */
+> > +			break;
+> 
+> Which means we break out here and report an incomplete output (the 
+> numbers will be much smaller than reality).
+> 
+> Would it be better to have a loop like:
+> 
+> 	for (vma = priv->mm->mmap; vma;) {
+> 		smap_gather_stats(vma, &mss);
+> 		last_vma_end = vma->vm_end;
+> 
+> 		if (contended) {
+> 			/* drop/acquire lock */
+> 
+> 			vma = find_vma(mm, last_vma_end - 1);
+> 			if (!vma)
+> 				break;
+> 			if (vma->vm_start >= last_vma_end)
+> 				continue;
+> 		}
+> 		vma = vma->vm_next;
+> 	}
+> 
+> that way if the VMA is removed while the lock is dropped the loop can 
+> just continue from the next VMA.
+> 
+Thanks a lot for your great suggestion.
 
-Miles
+> Or perhaps I missed something obvious? I haven't actually tested 
+> anything above.
+> 
+> Steve
 
-> url:    https://github.com/0day-ci/linux/commits/Miles-Chen/net-untag-pointer-in-sockptr_is_kernel/20200811-18303
-> base:   https://git.kernel.org/pub/scm/linux/kernel/git/davem/net-next.git bfdd5aaa54b0a44d9df550fe4c9db7e1470a11b8
-> config: x86_64-randconfig-a013-20200811 (attached as .config)
-> compiler: clang version 12.0.0 (https://github.com/llvm/llvm-project 4f2ad15db535873dda9bfe248a2771023b64a43c)
-> reproduce (this is a W=1 build):
->         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
->         chmod +x ~/bin/make.cross
->         # install x86_64 cross compiling tool for clang build
->         # apt-get install binutils-x86-64-linux-gnu
->         # save the attached .config to linux build tree
->         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross ARCH=x86_64 
+I will prepare new patch series for further reviews.
+
+Thank you.
+Chinwen
 > 
-> If you fix the issue, kindly add following tag as appropriate
-> Reported-by: kernel test robot <lkp@intel.com>
+> > +		}
+> >   	}
+> >   
+> >   	show_vma_header_prefix(m, priv->mm->mmap->vm_start,
+> > 
 > 
-> All errors (new ones prefixed by >>):
-> 
->    In file included from net/ipv6/af_inet6.c:29:
->    In file included from include/linux/net.h:24:
-> >> include/linux/sockptr.h:23:24: error: implicit declaration of function 'untagged_addr' [-Werror,-Wimplicit-function-declaration]
->            return (unsigned long)untagged_addr(sockptr.kernel) >= TASK_SIZE;
->                                  ^
->    1 error generated.
-> --
->    In file included from net/ipv6/udp.c:24:
->    In file included from include/linux/net.h:24:
-> >> include/linux/sockptr.h:23:24: error: implicit declaration of function 'untagged_addr' [-Werror,-Wimplicit-function-declaration]
->            return (unsigned long)untagged_addr(sockptr.kernel) >= TASK_SIZE;
->                                  ^
->    net/ipv6/udp.c:1029:30: warning: no previous prototype for function 'udp_v6_early_demux' [-Wmissing-prototypes]
->    INDIRECT_CALLABLE_SCOPE void udp_v6_early_demux(struct sk_buff *skb)
->                                 ^
->    net/ipv6/udp.c:1029:25: note: declare 'static' if the function is not intended to be used outside of this translation unit
->    INDIRECT_CALLABLE_SCOPE void udp_v6_early_demux(struct sk_buff *skb)
->                            ^
->                            static 
->    net/ipv6/udp.c:1070:29: warning: no previous prototype for function 'udpv6_rcv' [-Wmissing-prototypes]
->    INDIRECT_CALLABLE_SCOPE int udpv6_rcv(struct sk_buff *skb)
->                                ^
->    net/ipv6/udp.c:1070:25: note: declare 'static' if the function is not intended to be used outside of this translation unit
->    INDIRECT_CALLABLE_SCOPE int udpv6_rcv(struct sk_buff *skb)
->                            ^
->                            static 
->    2 warnings and 1 error generated.
-> 
-> vim +/untagged_addr +23 include/linux/sockptr.h
-> 
->     20	
->     21	static inline bool sockptr_is_kernel(sockptr_t sockptr)
->     22	{
->   > 23		return (unsigned long)untagged_addr(sockptr.kernel) >= TASK_SIZE;
->     24	}
->     25	
-> 
-> ---
-> 0-DAY CI Kernel Test Service, Intel Corporation
-> https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
 _______________________________________________
 Linux-mediatek mailing list
