@@ -7,18 +7,18 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 627A2C433DF
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 75E00C433E1
 	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 13:25:54 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 333262080C
+	by mail.kernel.org (Postfix) with ESMTPS id 45B7620855
 	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 13:25:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZN8RjwJ6";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kroah.com header.i=@kroah.com header.b="SWWPiB4Q";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=messagingengine.com header.i=@messagingengine.com header.b="H81HBxxX"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 333262080C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VGYZF69V";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kroah.com header.i=@kroah.com header.b="EBXQHQd4";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=messagingengine.com header.i=@messagingengine.com header.b="DD3j5hLY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 45B7620855
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=kroah.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,44 +27,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Scxra+e2AImJqexWaXBHRz1Q4ggNWpeRL5bEr+j2pkw=; b=ZN8RjwJ6eHZPOZle5mlDrpnFZ
-	bq1ASUrvcRuMa3uoDdXY4r2lZECubOzRb3kDNH56O6DyFcdP7+NsLB4MLPXU4ShrYbD8ERjqt36th
-	UbWI2UK8oSe+RU5V/kNN2V8518hJOhrV52+ik0Skhg/q0nNAmDKUq+p1bHt5IdOS3HMgR4ohb+L6O
-	2ERdeEVwFN0NVf/mLO8U1+86dibIeXyJO9j3J89m7uXc7eiljFIXC2obGneEcTcFVNRxeHbaxt8wF
-	6aOwCo5w8RO6/H97YsBEZc81yKAndv3utePDsy3gwagUOcwMuNYLNevDrzKEjkZTxRfAzFEJLoakF
-	tgFBthxYQ==;
+	 bh=fM218NgkhyzC702OWLh6Iw19r+MV3LRPmhyCzRdjArk=; b=VGYZF69VjGVNty06RROALNZ+b
+	/eAgWkeQAtAY1UL2842y6xHKfCZL5HzwP0igvLECcGQbbhphzGSHbZ4BHzHIgFVDOSNNkYXaXTSV+
+	S4lYJ1t9Uq88bka+wuD9fplQ4Mfx6JDRV4+vVzjqEdLGVlql0PWKOxk0JB/f/s75EEZjpMN7ZUyfi
+	g3+cOiwi5IucTQhT2O8MagbP1JuuM+Dd3qQycRGUYLkhRrCl6/s6AYakxys/3ACRZxIVSZ05+RckL
+	nscnl+vaKhjTJErxb0h5qTlGyTt3U9LGXEOVXvC3u1RMlsaNfbFwaEoYQlF6TDra53ww2am59uKxx
+	RbMuoZfsQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k5ql9-00031a-Pl; Wed, 12 Aug 2020 13:25:39 +0000
+	id 1k5qlE-00033t-87; Wed, 12 Aug 2020 13:25:44 +0000
 Received: from new1-smtp.messagingengine.com ([66.111.4.221])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k5ql2-0002zI-Hr; Wed, 12 Aug 2020 13:25:33 +0000
+ id 1k5ql9-000317-7E; Wed, 12 Aug 2020 13:25:40 +0000
 Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailnew.nyi.internal (Postfix) with ESMTP id 49D315803DD;
- Wed, 12 Aug 2020 09:25:32 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute1.internal (MEProxy); Wed, 12 Aug 2020 09:25:32 -0400
+ by mailnew.nyi.internal (Postfix) with ESMTP id E19AB5803DD;
+ Wed, 12 Aug 2020 09:25:38 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute1.internal (MEProxy); Wed, 12 Aug 2020 09:25:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
  date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm1; bh=i8XRP2VVPIQwUPhvLuLe5eBXjcL
- /b/B3ukCtwKVvXZk=; b=SWWPiB4QgAlnbKDiZPT8AW01PsffGj0mrWQyc97g3/v
- 8EPAPSx3q4uR8pxdunQOQdU3CYfzEhUxi5IhHk/51NWbbiJ01IZM+D1Y9okbKR4l
- 1PA/DephHOSIaKmiDIX1mNczVU915u5qaonwiLa6hKJcIGUSoay3uhJFlrsVIxJ0
- 7bDIfW5zXV/E5r2IjpFq47bwdwj6ZFNEEqd62aGIxTOxMpjNpdWmcS2QsRKUHAAx
- 4dvCTHv7OU9ZD8yLwR/pgNv3x3mMxC6LjFM9z2SmWrAnkZlG4lm8pmvECAj2ezxX
- Yvocn/52skKMNrlbvLEw/W0WigZZNHGM+fzo6gL6zfw==
+ :content-type:in-reply-to; s=fm1; bh=8E1y/NnvHjfdOcfGM816z3reqbY
+ KZDOAgNdGXHxjGaw=; b=EBXQHQd4ryb+F9ZSaBv9Q4BavNlR/kSgNXRrWiDRI1M
+ rxeNQQFxG65rc1Yo47lPFN8Jyaf6x3tQTN9x5PxHbMiI8CZYVqj5mj7SpNIZ1+/v
+ i6JCDMCBxgm5UDsN0pRYM6PWGU4Pa6RXLBObLzVe8OSzopE/saG4c//y9c+OzA3/
+ g18/6YPPjk63YYfX/XAqBaw+lgydli57DeWdQkQuWRZXS/2RBOZk5VYR5rye/h2w
+ 6kIhzTUVwyCw+EwEgwPLuKLwnP2WI7pJExI6SXmuj/+gc6vWIHlNOPnDZ1stzS+L
+ iZxMDCLnoVLMQtnEEBl6nTkd4V3BEPvNFCKywTJnKug==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=i8XRP2
- VVPIQwUPhvLuLe5eBXjcL/b/B3ukCtwKVvXZk=; b=H81HBxxX4JrQ1zha30YBda
- yr7S3/jm8F8i9uy8C00665rTJX54SHUOYIgS8RGB4a2RB06bU/IoQOeP7JmGSe+d
- qXCpfzLe7HemRq/yohmq4iJQp6jivUGOaMmt4LuxgpanlaXXjL16Nv4QJuAzvo+l
- m1LWrhDUBu1dtyZS26dubDnv6zrkRrRwejUK+FsgoobjYVpZcZkrj9T63yd3fo6s
- l19ih6HVi9IwN4jRG4/HfexvL1K3lg1saqBGFn+JqYfCz3kkffosOCXqwFZgXCGb
- pDY7ilHTwGAixd0Dw5LeOAeKncOxiQQOm5qGbgUPZCjr3dJkq14I1GGMdv6sI0cg
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=8E1y/N
+ nvHjfdOcfGM816z3reqbYKZDOAgNdGXHxjGaw=; b=DD3j5hLY3gCCHmltFjc/qD
+ 4XSow+h2EY4M35Ttu0HlDWYygxXfBUz6ovouBxVz8QShSE/jLsjnbpBnE9rAhngP
+ m6d1gNp/PQhTe/AbC8cmC9ckDj1tIHwMQtJ2keG+TBowaNZ4DHZTQm0ch2JN0/E4
+ lISnpo6kthmnm+I3Ptf80NM3gAEKw6td2qEDNzEqJRszc9ZKshmMRoVXpyyVreho
+ Jz0kY/Fe3/fpI+G7f0Sn3SivkoIjRFBKVfZyXBF1ETnTRN19ML8GKx52ghO7FeMi
+ goclXhwsQYFOUFVhvPve1YmedholFb6yPO/OzRUOBfBLpThaxMDm0TIrV56hF+TQ
  ==
-X-ME-Sender: <xms:zO0zX8_wVHT6keAG2IM9EuvNFhU4C5-AX9rYIl_H8Fv46Xfa_Q45mQ>
+X-ME-Sender: <xms:0u0zXyalJ6S-Oy_DwzV1_DLJBLdT8_moKz1CeSKyFv0w6Gvxce2_XQ>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduiedrledvgdeifecutefuodetggdotefrodftvf
  curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
  uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
@@ -72,29 +72,30 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduiedrledvgdeifecutefuodetggdote
  jfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecuggftrfgrthhtvghrnhepueelledthe
  ekleethfeludduvdfhffeuvdffudevgeehkeegieffveehgeeftefgnecuffhomhgrihhn
  pehkvghrnhgvlhdrohhrghenucfkphepkeefrdekiedrkeelrddutdejnecuvehluhhsth
- gvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepghhrvghgsehkrhhorghh
+ gvrhfuihiivgepudenucfrrghrrghmpehmrghilhhfrhhomhepghhrvghgsehkrhhorghh
  rdgtohhm
-X-ME-Proxy: <xmx:zO0zX0ueTqGbRvjnBEbuQALeQ5o0wI2a13y2RDS_hugxcXohwqCI8w>
- <xmx:zO0zXyAgNT_2F1bYAu-jI8QUAQdouYfi0Mic-WLHGhTqOkxbtDsdrA>
- <xmx:zO0zX8fZ3kavY9GE9pSuhTtb6NLKG9QmvKTAGaypXZRRBEiLw_jQJA>
- <xmx:zO0zX0r6iSe_5AL_yw0hjMkHh0CPJdYs_vqclR_254UT70VS5pKEaA>
+X-ME-Proxy: <xmx:0u0zX1aRP_6XWlm8ufBhncwcIEifV7fQNN0vpHh8Zp8w4l2X1Iv3Bw>
+ <xmx:0u0zX899TOTDry5VHQUw8-EwbWyTN6zscayViVbfxj25jXWRDeP47w>
+ <xmx:0u0zX0r3UK9LEkh89x2oBMqz5hVf5FYhbB0o4HcRSSg7G5yWRiB_Vw>
+ <xmx:0u0zX41-GhDh1hDSkwwNTNcrmCmnfuvYrNMVBs-dNAq4868WjfJMJA>
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
- by mail.messagingengine.com (Postfix) with ESMTPA id B536B328005D;
- Wed, 12 Aug 2020 09:25:31 -0400 (EDT)
-Date: Wed, 12 Aug 2020 15:25:42 +0200
+ by mail.messagingengine.com (Postfix) with ESMTPA id 4BA133060717;
+ Wed, 12 Aug 2020 09:25:38 -0400 (EDT)
+Date: Wed, 12 Aug 2020 15:25:49 +0200
 From: Greg KH <greg@kroah.com>
 To: Wenbin Mei <wenbin.mei@mediatek.com>
-Subject: Re: [v2,2/3] arm64: dts: mt7622: add reset node for mmc device
-Message-ID: <20200812132542.GB2489711@kroah.com>
+Subject: Re: [v2,1/3] mmc: dt-bindings: Add resets/reset-names for Mediatek
+ MMC bindings
+Message-ID: <20200812132549.GC2489711@kroah.com>
 References: <20200812130129.13519-1-wenbin.mei@mediatek.com>
- <20200812130129.13519-3-wenbin.mei@mediatek.com>
+ <20200812130129.13519-2-wenbin.mei@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200812130129.13519-3-wenbin.mei@mediatek.com>
+In-Reply-To: <20200812130129.13519-2-wenbin.mei@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200812_092532_675749_7C4E72DC 
-X-CRM114-Status: GOOD (  16.46  )
+X-CRM114-CacheID: sfid-20200812_092539_409494_FFB9E019 
+X-CRM114-Status: GOOD (  16.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,29 +119,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 12, 2020 at 09:01:28PM +0800, Wenbin Mei wrote:
-> This commit adds reset node for mmc device.
+On Wed, Aug 12, 2020 at 09:01:27PM +0800, Wenbin Mei wrote:
+> Add description for resets/reset-names.
 > 
-> Fixes: 966580ad236e ("mmc: mediatek: add support for MT7622 SoC")
 > Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
-> Tested-by: Frank Wunderlich <frank-w@public-files.de>
 > ---
->  arch/arm64/boot/dts/mediatek/mt7622.dtsi | 2 ++
+>  Documentation/devicetree/bindings/mmc/mtk-sd.txt | 2 ++
 >  1 file changed, 2 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> index 1a39e0ef776b..5b9ec032ce8d 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> @@ -686,6 +686,8 @@
->  		clocks = <&pericfg CLK_PERI_MSDC30_0_PD>,
->  			 <&topckgen CLK_TOP_MSDC50_0_SEL>;
->  		clock-names = "source", "hclk";
-> +		resets = <&pericfg MT7622_PERI_MSDC0_SW_RST>;
-> +		reset-names = "hrst";
->  		status = "disabled";
->  	};
+> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> index 8a532f4453f2..15d42595a3f3 100644
+> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> @@ -49,6 +49,8 @@ Optional properties:
+>  		     error caused by stop clock(fifo full)
+>  		     Valid range = [0:0x7]. if not present, default value is 0.
+>  		     applied to compatible "mediatek,mt2701-mmc".
+> +- resets: Phandle and reset specifier pair to softreset line of MSDC IP.
+> +- reset-names: should be "hrst".
 >  
+>  Examples:
+>  mmc0: mmc@11230000 {
 > -- 
 > 2.18.0
 
