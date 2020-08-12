@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B9A0C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 11:57:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E9BD1C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 11:58:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 26B282065C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 11:57:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B3C112065C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2020 11:58:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="E+42mVvx";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="M5Ikbd4q"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 26B282065C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aW3sJfZG";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="nRKpy3VZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B3C112065C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=g6QheoXPq/tjQHyRN5Xws6DMwT5C8H8K5LRWiYT3+j8=; b=E+42mVvxTecur8by4qjK2bNQx
-	y2y2SI3h9xoIUJxTK6BG8JJ7ryG6gjDvPRUG/dJ/puHg2LzRlVgHD0KSCjaO6/iVTSg/2FetNwNuR
-	i2vI+jiHvjR3f1AxsINbcJYpjHRksSJwNh3adOPSrX0VlQk8qsvYa9zsPV+BzT3ZEPBB7jREOhrD7
-	bILKfWqYnq6HbLWPxRgPTVKTw6gnWcqhbkaZHLoCbCdqe5BJuzeM4opRuENZ+z4LScp4Z1vdXYbWN
-	UxugG2MMBcb9FEZrUCHPLkm6x4d8glV4Pj7dH9a5QtEr56HqKLPZ9Cv2fjp2ToFzll6gTkrEQOeVt
-	Aeo19nDrw==;
+	 bh=ZwDS1Sgxag+S5Z0+L5Q/TLJBqukwTDgc4ofu4PY1MvQ=; b=aW3sJfZGTikxyqHq4zlblPQ+n
+	g1wXq398n3xFdYXRrGPw3XeBEJTYuiGvDVdorgrHGZwWz+jjkTlNxLSX/acu7o5NMXuAn9ITRHG4q
+	QKKWdKDfOWVwrqsrUlINGF0JAbl/xjsdDWTY3BZwqb/xcuNox/kbePtdHZ454wZF/Sd0rrfq9aUcf
+	5Zlce9xU2UGatjv452wOlLuM7sHQSxlguxtJZEhN7b/4tbn+cT5EVSRmWaLDGUANa5vzALI/3qnrA
+	QVBQuH8cCBfIdME/ln4mA4w8VBQRECcQj5y+xrV7npgiPALL+cMu/Q+pzHgSVpgS3B1RjZwXgd1md
+	zIKt5zrKA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k5pNP-0005gL-9I; Wed, 12 Aug 2020 11:57:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1k5pOa-0005mX-KS; Wed, 12 Aug 2020 11:58:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k5pNK-0005fR-3j; Wed, 12 Aug 2020 11:56:59 +0000
-X-UUID: 12baea6004584c36850085653f8ce21b-20200812
+ id 1k5pOV-0005lD-Is; Wed, 12 Aug 2020 11:58:13 +0000
+X-UUID: fed16cddf68540a3a91277e00f894035-20200812
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=CPfvLHBxlQlMKioayJomvxJW3VbWFN9owalBbLtburM=; 
- b=M5Ikbd4qPeLS5jyUTSz9kWCUmWje9AsCNpgncMYhCDsGxhvzgS/aydCT5ulaJQ0lpBXlwWRZDdIo+HUX2sF0sEpRFanHFKOa8wv2eL7fy0sLKlLdGggqpCKA8T9S3sYQKP0TktNrTUozxuzuQnnVatXMv/Tu8jg5e/ejlnwF8fQ=;
-X-UUID: 12baea6004584c36850085653f8ce21b-20200812
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=D6lfhIK0juhubU0dZSLfqofcrBNMDDsBIY7w5I1uBv4=; 
+ b=nRKpy3VZDSoVi4nWSZxdi0nOaZzDOu3eon/6GKkSILA938TjEfYHJDixHbzAoEgzxAGbM6D5Gdp0yB+7/h7dwhhu9kyxCRt6f0x1YJYOT/Dcx8MDtyPE6JyZX5MzUYVeqB/0lMrsh8z/PSQxMGVXXVYfrUU5Pyusq2wS5zIICrs=;
+X-UUID: fed16cddf68540a3a91277e00f894035-20200812
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <wenbin.mei@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1222777576; Wed, 12 Aug 2020 03:56:51 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ with ESMTP id 566238408; Wed, 12 Aug 2020 03:58:03 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 Aug 2020 04:56:49 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 12 Aug 2020 19:56:46 +0800
+ 15.0.1497.2; Wed, 12 Aug 2020 04:58:00 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 12 Aug 2020 19:57:58 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 12 Aug 2020 19:56:46 +0800
-Message-ID: <1597233352.10188.2.camel@mhfsdcap03>
-Subject: Re: Aw: [PATCH 3/3] mmc: mediatek: add optional module reset property
+ Transport; Wed, 12 Aug 2020 19:57:58 +0800
+Message-ID: <1597233424.10188.4.camel@mhfsdcap03>
+Subject: Re: Aw: [PATCH 2/3] arm64: dts: mt7622: add reset node for mmc device
 From: Wenbin Mei <wenbin.mei@mediatek.com>
 To: Frank Wunderlich <frank-w@public-files.de>
-Date: Wed, 12 Aug 2020 19:55:52 +0800
-In-Reply-To: <trinity-5b810acf-eb8f-452e-b08a-30e1fe46226d-1597226878715@3c-app-gmx-bap56>
+Date: Wed, 12 Aug 2020 19:57:04 +0800
+In-Reply-To: <trinity-a4a4e709-ca8d-4867-8f90-d0ddbfca05cb-1597228420620@3c-app-gmx-bap56>
 References: <20200812093726.10123-1-wenbin.mei@mediatek.com>
- <20200812093726.10123-4-wenbin.mei@mediatek.com>
- <trinity-5b810acf-eb8f-452e-b08a-30e1fe46226d-1597226878715@3c-app-gmx-bap56>
+ <20200812093726.10123-3-wenbin.mei@mediatek.com>
+ <trinity-a4a4e709-ca8d-4867-8f90-d0ddbfca05cb-1597228420620@3c-app-gmx-bap56>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: EE4356F3A23EF08C004D9C72FDAC0CE917E712D37CC61975CF9F4085EF6906DC2000:8
+X-TM-SNTS-SMTP: B32ACDD6AC6B4D175228B6D78D1775133AD378FB68C06E1E2B072AAC9B9554922000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200812_075658_359729_D4ACF7A0 
-X-CRM114-Status: GOOD (  17.17  )
+X-CRM114-CacheID: sfid-20200812_075812_554052_6B7FBA22 
+X-CRM114-Status: GOOD (  16.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,7 +100,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Thanks for your reply.
 I will add this in the next version.
-On Wed, 2020-08-12 at 12:07 +0200, Frank Wunderlich wrote:
+On Wed, 2020-08-12 at 12:33 +0200, Frank Wunderlich wrote:
 > > Gesendet: Mittwoch, 12. August 2020 um 11:37 Uhr
 > > Von: "Wenbin Mei" <wenbin.mei@mediatek.com>
 > > Betreff: [PATCH 3/3] mmc: mediatek: add optional module reset property
@@ -112,13 +112,7 @@ On Wed, 2020-08-12 at 12:07 +0200, Frank Wunderlich wrote:
 > > Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
 > 
 > Thanks for posting the fix to Mainline
-> 
-> imho this should contain a fixes-Tag as it fixes eMMC-Access on mt7622/Bpi-R64
-> 
-> before we got these Errors on mounting eMMC ion R64:
-> 
-> [   48.664925] blk_update_request: I/O error, dev mmcblk0, sector 204800 op 0x1:(WRITE) flags 0x800 phys_seg 1 prio class 0
-> [   48.676019] Buffer I/O error on dev mmcblk0p1, logical block 0, lost sync page write
+> same as 3/3, dts-patch is also needed for fixing eMMC-Issue on R64
 > 
 > Fixes: 966580ad236e ("mmc: mediatek: add support for MT7622 SoC")
 > Tested-By: Frank Wunderlich <frank-w@public-files.de>
