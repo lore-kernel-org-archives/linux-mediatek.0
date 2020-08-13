@@ -2,88 +2,77 @@ Return-Path: <SRS0=lgZq=BX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E429EC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 00:55:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A17CCC433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 01:46:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A37A720774
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 00:55:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7150221775
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 01:46:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="o5ObCvT9";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="sZ9TH9eQ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A37A720774
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="p0wUTrLE";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="PVYnGy0Z"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7150221775
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tX+GHbSXRfUZPxcgtfIEl7MCw1Ng850qf1l6IZA/LxY=; b=o5ObCvT9CsRGkGU2L9oyEAl3h
-	8vZatQ9Ml+2KxKGKNH+muBmUbviFZ+9QNVqh0xq8GgGS+gu5FuECENU0J/7c+mBJ1ypPFpB5Sjhbq
-	NTV7oJdpW3T76Eu1X2pBNs5sygkDaCm6MWCSE47By8py3VKjZ+PF3bxnEqEvAFLPV4y0FXxTlF5/X
-	FEVIGTw/7kGtPrm/yydy8hMU0Maot6GlNRZgFRksa4F2/UUitQ3XOdze3id2HTbqHnDFihoNPEyxK
-	41gWA+2oZ7YkeVo5V3tdWLSgKVd7c8/+tpXJXCv5svXq2R9liyA5Sd84ORCVyU5NDfQJCU4p4zATO
-	WQvM69iFg==;
+	 bh=J4OqebYh0E+tqYVzNWz08/JP0auDP52kMzm9Fb4200g=; b=p0wUTrLE4EULkRrONGXD8KYS8
+	LwE+Fk1nYx1DELf5l3amkZSOsynXjX6dJEDmkbwnzvRsyWT4YPbixz3PGXIG+9G0/aOgn4hb2fqj5
+	fwODryPWyDu7I5kLwyVLihWfw/8YL0Gwoc9Gy1c8+8jm1u70WngQ0lxnmc9L7rEOT52BdFBNT2bM+
+	n/F/EZDTEYNVttRT8TP3vzpm3V9aE41LbffB5SWsO+69ibqUWLvzYFPycKEG+vJSVG6b+VEBmV4aJ
+	lFBWYHcvI/fL0TQle8r+O5UWR+ZL4XHBlAd63NStppGOJgZevFLHutIo430Qor2+/txpK0y+WLBq/
+	hoTbyR2gw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k61WX-0004GC-7b; Thu, 13 Aug 2020 00:55:17 +0000
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+	id 1k62KO-0000Sv-IC; Thu, 13 Aug 2020 01:46:48 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k61WU-0004FA-Vo; Thu, 13 Aug 2020 00:55:15 +0000
-Received: by mail-pl1-x643.google.com with SMTP id bh1so1863183plb.12;
- Wed, 12 Aug 2020 17:55:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=L72AixCjmIL5nTmTYWBqEVGjNBVygWMA6aC5X+fGUQg=;
- b=sZ9TH9eQbB30KGwF/1m6APTfHpivFvCrS29509/UKJ1ZyLdwwO39FO+8ZHyTLjoc2K
- bvoEWCl/KPIB8uJl+wS4Ye6l119GxmtS/O4LGDfdfpd/YKHgIHdRExDaLPlNllgQkieK
- 2+MUHAi2kqU4x4EIptTMdIm0ZaDkfOvgcyOpBL8lwW0vTb88eSQQCQnCkxaSgT39DTB7
- AI2iBO+3TFhvHwjflmx6zx1kTPM9FiLj/xsBS4r/4U4p8Fbl5AGQBRzdvnzzxh2jyaPA
- Vf+H5qqmwrAMyzfq2P8rtN+VzimQbnuDvvuSWkq9K73hlXwBMFojMTQLm3FJX1dV23bd
- 8kyA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=L72AixCjmIL5nTmTYWBqEVGjNBVygWMA6aC5X+fGUQg=;
- b=Tsx3c7dzaNL8Rb91LpQGaxApYJeAE4rx8rNW9/qCxNVTHEQnnR/QmE5/Ia2RyFU6BL
- 8CSy208iM+kLrqeAAxFpOlN+N/gmzinOaOm6YrbW1qapNyS3NnW1f7L6vxXCVIHj9ytP
- KSkR2ieee5KZ73GrGzVJAvPx3G+pYXPtiyaoZMgKnRmgHPF9r5O4gwCRsJFEFJ26o5RX
- 68uUVM3+dBGWIi/5dHmpEasZyqbqCdNM7TvNQNDIMC5+9zHqeFzht7q2V+WirWKfzpe1
- 43uoP9eTUkrU/sSeVPjnC0XSdi2I/9WN9FxFs+pC1togfPqet6Fvw2+xaQISopCfaF3d
- dhrw==
-X-Gm-Message-State: AOAM532pXtmaHQWnzLSAyoXABB0QV+sO2bMKABUYhCmx+pn7VqiqMR+F
- Eo+WQLSUx8vX+c/BZVarYkA=
-X-Google-Smtp-Source: ABdhPJw0GZ9/sb6W+cfplAXSHIBjU73nMYp8L7xjKLPlNkDwJuYwtVA8Cvx8pFGhtgSrX5IjvCN++A==
-X-Received: by 2002:a17:90a:1f8c:: with SMTP id
- x12mr2566640pja.186.1597280112671; 
- Wed, 12 Aug 2020 17:55:12 -0700 (PDT)
-Received: from dtor-ws ([2620:15c:202:201:a6ae:11ff:fe11:fcc3])
- by smtp.gmail.com with ESMTPSA id j10sm3571681pff.171.2020.08.12.17.55.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 Aug 2020 17:55:12 -0700 (PDT)
-Date: Wed, 12 Aug 2020 17:55:09 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Fengping Yu <fengping.yu@mediatek.com>
-Subject: Re: [PATCH v17 2/3] drivers: input: keyboard: Add mtk keypad driver
-Message-ID: <20200813005509.GU1665100@dtor-ws>
-References: <20200810065128.3324-3-fengping.yu@mediatek.com>
+ id 1k62KJ-0000Rf-UK; Thu, 13 Aug 2020 01:46:45 +0000
+X-UUID: 35d6b568a0514bc5933790c3e7e27d45-20200812
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=asJV3IBv1/0dhV/oRZH8LjXOLv7AOsr87CflwjOG1gY=; 
+ b=PVYnGy0ZK311eNEtTn2eQmP3xSy5bUO3wADqWYO4OGKZRd21CPQXoGLDpw6KidMHoHJqQFYZVqjd5KqftvCA55YxNTcywwQwq0WrwKvTgpoYF0IAaDNoQawR29c4nbIraJkRSMSmCL8sk05nNlKBwn42ciaBiAn5Cuo1AgxgGI8=;
+X-UUID: 35d6b568a0514bc5933790c3e7e27d45-20200812
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <walter-zh.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 255767147; Wed, 12 Aug 2020 17:46:22 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 12 Aug 2020 18:46:17 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 13 Aug 2020 09:46:19 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 13 Aug 2020 09:46:15 +0800
+Message-ID: <1597283178.9999.19.camel@mtksdccf07>
+Subject: Re: [PATCH 1/5] timer: kasan: record and print timer stack
+From: Walter Wu <walter-zh.wu@mediatek.com>
+To: Marco Elver <elver@google.com>
+Date: Thu, 13 Aug 2020 09:46:18 +0800
+In-Reply-To: <CANpmjNO9=JBcSV-nif9a=4Zt7gTCp6e5c2jVXMCSFgP3v2P9-w@mail.gmail.com>
+References: <20200810072313.529-1-walter-zh.wu@mediatek.com>
+ <CANpmjNO9=JBcSV-nif9a=4Zt7gTCp6e5c2jVXMCSFgP3v2P9-w@mail.gmail.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200810065128.3324-3-fengping.yu@mediatek.com>
+X-TM-SNTS-SMTP: A828CD4FB1E137D0EE7E3C33E0D2CE14A46CDB2C1BF3FFD27ED08E538949AC012000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200812_205515_074012_B2DE0805 
-X-CRM114-Status: GOOD (  33.68  )
+X-CRM114-CacheID: sfid-20200812_214644_105934_D5EC2E55 
+X-CRM114-Status: GOOD (  41.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,320 +84,195 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Marco Felsch <m.felsch@pengutronix.de>,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org,
- Yingjoe Chen <yingjoe.chen@mediatek.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: John Stultz <john.stultz@linaro.org>,
+ wsd_upstream <wsd_upstream@mediatek.com>, Stephen
+ Boyd <sboyd@kernel.org>, linux-mediatek@lists.infradead.org,
+ LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>,
+ Linux Memory Management List <linux-mm@kvack.org>,
+ Alexander Potapenko <glider@google.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Andrey Ryabinin <aryabinin@virtuozzo.com>,
+ Andrew Morton <akpm@linux-foundation.org>, Thomas
+ Gleixner <tglx@linutronix.de>, Dmitry Vyukov <dvyukov@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 10, 2020 at 02:51:28PM +0800, Fengping Yu wrote:
-> From: "fengping.yu" <fengping.yu@mediatek.com>
+On Wed, 2020-08-12 at 16:13 +0200, Marco Elver wrote:
+> On Mon, 10 Aug 2020 at 09:23, Walter Wu <walter-zh.wu@mediatek.com> wrote:
+> > This patch records the last two timer queueing stacks and prints
+> > up to 2 timer stacks in KASAN report. It is useful for programmers
+> > to solve use-after-free or double-free memory timer issues.
+> >
+> > When timer_setup() or timer_setup_on_stack() is called, then it
+> > prepares to use this timer and sets timer callback, we store
+> > this call stack in order to print it in KASAN report.
+> >
+> > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> > Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
+> > Cc: Dmitry Vyukov <dvyukov@google.com>
+> > Cc: Alexander Potapenko <glider@google.com>
+> > Cc: Thomas Gleixner <tglx@linutronix.de>
+> > Cc: John Stultz <john.stultz@linaro.org>
+> > Cc: Stephen Boyd <sboyd@kernel.org>
+> > Cc: Andrew Morton <akpm@linux-foundation.org>
+> > ---
+> >  include/linux/kasan.h |  2 ++
+> >  kernel/time/timer.c   |  2 ++
+> >  mm/kasan/generic.c    | 21 +++++++++++++++++++++
+> >  mm/kasan/kasan.h      |  4 +++-
+> >  mm/kasan/report.c     | 11 +++++++++++
+> >  5 files changed, 39 insertions(+), 1 deletion(-)
 > 
-> This patch adds matrix keypad support for Mediatek SoCs.
+> I'm commenting on the code here, but it also applies to patch 2/5, as
+> it's almost a copy-paste.
 > 
-> Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
-> Reviewed-by: Marco Felsch <m.felsch@pengutronix.de>
-> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
-> ---
->  drivers/input/keyboard/Kconfig   |  11 ++
->  drivers/input/keyboard/Makefile  |   1 +
->  drivers/input/keyboard/mtk-kpd.c | 209 +++++++++++++++++++++++++++++++
->  3 files changed, 221 insertions(+)
->  create mode 100644 drivers/input/keyboard/mtk-kpd.c
+> In general, I'd say the solution to get this feature is poorly
+> designed, resulting in excessive LOC added. The logic added already
+> exists for the aux stacks.
 > 
-> diff --git a/drivers/input/keyboard/Kconfig b/drivers/input/keyboard/Kconfig
-> index 793ecbbda32c..1ee845c292c6 100644
-> --- a/drivers/input/keyboard/Kconfig
-> +++ b/drivers/input/keyboard/Kconfig
-> @@ -782,6 +782,17 @@ config KEYBOARD_BCM
->  	  To compile this driver as a module, choose M here: the
->  	  module will be called bcm-keypad.
->  
-> +config KEYBOARD_MTK_KPD
-> +	tristate "MediaTek Keypad Support"
-> +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	select REGMAP_MMIO
-> +	select INPUT_MATRIXKMAP
-> +	help
-> +	  Say Y here if you want to use the keypad on MediaTek SoCs.
-> +	  If unsure, say N.
-> +	  To compile this driver as a module, choose M here: the
-> +	  module will be called mtk-kpd.
-> +
->  config KEYBOARD_MTK_PMIC
->  	tristate "MediaTek PMIC keys support"
->  	depends on MFD_MT6397
-> diff --git a/drivers/input/keyboard/Makefile b/drivers/input/keyboard/Makefile
-> index 1d689fdd5c00..6c9d852c377e 100644
-> --- a/drivers/input/keyboard/Makefile
-> +++ b/drivers/input/keyboard/Makefile
-> @@ -43,6 +43,7 @@ obj-$(CONFIG_KEYBOARD_MATRIX)		+= matrix_keypad.o
->  obj-$(CONFIG_KEYBOARD_MAX7359)		+= max7359_keypad.o
->  obj-$(CONFIG_KEYBOARD_MCS)		+= mcs_touchkey.o
->  obj-$(CONFIG_KEYBOARD_MPR121)		+= mpr121_touchkey.o
-> +obj-$(CONFIG_KEYBOARD_MTK_KPD)		+= mtk-kpd.o
->  obj-$(CONFIG_KEYBOARD_MTK_PMIC) 	+= mtk-pmic-keys.o
->  obj-$(CONFIG_KEYBOARD_NEWTON)		+= newtonkbd.o
->  obj-$(CONFIG_KEYBOARD_NOMADIK)		+= nomadik-ske-keypad.o
-> diff --git a/drivers/input/keyboard/mtk-kpd.c b/drivers/input/keyboard/mtk-kpd.c
-> new file mode 100644
-> index 000000000000..451b3bc61c6f
-> --- /dev/null
-> +++ b/drivers/input/keyboard/mtk-kpd.c
-> @@ -0,0 +1,209 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (C) 2019 MediaTek Inc.
-> + * Author Fengping Yu <fengping.yu@mediatek.com>
-> + */
-> +#include <linux/bitops.h>
-> +#include <linux/clk.h>
-> +#include <linux/input/matrix_keypad.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/module.h>
-> +#include <linux/property.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/regmap.h>
-> +
-> +#define MTK_KPD_NAME		"mtk-kpd"
-> +#define MTK_KPD_MEM		0x0004
-> +#define MTK_KPD_DEBOUNCE	0x0018
-> +#define MTK_KPD_DEBOUNCE_MASK	GENMASK(13, 0)
-> +#define MTK_KPD_DEBOUNCE_MAX_US	256000
-> +#define MTK_KPD_NUM_MEMS	5
-> +#define MTK_KPD_NUM_BITS	136	/* 4*32+8 MEM5 only use 8 BITS */
-> +
-> +struct mtk_keypad {
-> +	struct regmap *regmap;
-> +	struct input_dev *input_dev;
-> +	struct clk *clk;
-> +	void __iomem *base;
-> +	u32 n_rows;
-> +	u32 n_cols;
-> +	DECLARE_BITMAP(keymap_state, MTK_KPD_NUM_BITS);
-> +};
-> +
-> +static const struct regmap_config keypad_regmap_cfg = {
-> +	.reg_bits = 32,
-> +	.val_bits = 32,
-> +	.reg_stride = sizeof(u32),
-> +	.max_register = 36,
-> +};
-> +
-> +static irqreturn_t kpd_irq_handler(int irq, void *dev_id)
-> +{
-> +	struct mtk_keypad *keypad = dev_id;
-> +	unsigned short *keycode = keypad->input_dev->keycode;
-> +	DECLARE_BITMAP(new_state, MTK_KPD_NUM_BITS);
-> +	DECLARE_BITMAP(change, MTK_KPD_NUM_BITS);
-> +	int bit_nr;
-> +	int pressed;
-> +	unsigned short code;
-> +
-> +	regmap_bulk_read(keypad->regmap, MTK_KPD_MEM,
-> +			new_state, MTK_KPD_NUM_MEMS);
-> +
-> +	bitmap_xor(change, new_state, keypad->keymap_state, MTK_KPD_NUM_BITS);
-> +
-> +	for_each_set_bit(bit_nr, change, MTK_KPD_NUM_BITS) {
 
-Should we be explicit:
+That's true, we will have refactoring for it.
 
-		if (bit_nr % 32 >= 16) // or "if ((bit_nr / 16) % 2)"
-			continue;
+> > diff --git a/include/linux/kasan.h b/include/linux/kasan.h
+> > index 23b7ee00572d..763664b36dc6 100644
+> > --- a/include/linux/kasan.h
+> > +++ b/include/linux/kasan.h
+> > @@ -175,12 +175,14 @@ static inline size_t kasan_metadata_size(struct kmem_cache *cache) { return 0; }
+> >  void kasan_cache_shrink(struct kmem_cache *cache);
+> >  void kasan_cache_shutdown(struct kmem_cache *cache);
+> >  void kasan_record_aux_stack(void *ptr);
+> > +void kasan_record_tmr_stack(void *ptr);
+> >
+> >  #else /* CONFIG_KASAN_GENERIC */
+> >
+> >  static inline void kasan_cache_shrink(struct kmem_cache *cache) {}
+> >  static inline void kasan_cache_shutdown(struct kmem_cache *cache) {}
+> >  static inline void kasan_record_aux_stack(void *ptr) {}
+> > +static inline void kasan_record_tmr_stack(void *ptr) {}
+> 
+> It appears that the 'aux' stack is currently only used for call_rcu
+> stacks, but this interface does not inherently tie it to call_rcu. The
+> only thing tying it to call_rcu is the fact that the report calls out
+> call_rcu.
+> 
+> >  /**
+> > diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
+> > index 4b3cbad7431b..f35dcec990ab 100644
+> > --- a/mm/kasan/generic.c
+> > +++ b/mm/kasan/generic.c
+> > @@ -347,6 +347,27 @@ void kasan_record_aux_stack(void *addr)
+> >         alloc_info->aux_stack[0] = kasan_save_stack(GFP_NOWAIT);
+> >  }
+> >
+> > +void kasan_record_tmr_stack(void *addr)
+> > +{
+> > +       struct page *page = kasan_addr_to_page(addr);
+> > +       struct kmem_cache *cache;
+> > +       struct kasan_alloc_meta *alloc_info;
+> > +       void *object;
+> > +
+> > +       if (!(page && PageSlab(page)))
+> > +               return;
+> > +
+> > +       cache = page->slab_cache;
+> > +       object = nearest_obj(cache, page, addr);
+> > +       alloc_info = get_alloc_info(cache, object);
+> > +
+> > +       /*
+> > +        * record the last two timer stacks.
+> > +        */
+> > +       alloc_info->tmr_stack[1] = alloc_info->tmr_stack[0];
+> > +       alloc_info->tmr_stack[0] = kasan_save_stack(GFP_NOWAIT);
+> > +}
+> 
+> The solution here is, unfortunately, poorly designed. This is a
+> copy-paste of the kasan_record_aux_stack() function.
+> 
 
-so that we sure we do not trip over garbage (if any) in the unused
-bits?
+kasan_record_aux_stack() will be re-used for call_rcu, timer, and
+workqueue.
+
+> >  void kasan_set_free_info(struct kmem_cache *cache,
+> >                                 void *object, u8 tag)
+> >  {
+> > diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
+> > index ef655a1c6e15..c50827f388a3 100644
+> > --- a/mm/kasan/kasan.h
+> > +++ b/mm/kasan/kasan.h
+> > @@ -108,10 +108,12 @@ struct kasan_alloc_meta {
+> >         struct kasan_track alloc_track;
+> >  #ifdef CONFIG_KASAN_GENERIC
+> >         /*
+> > -        * call_rcu() call stack is stored into struct kasan_alloc_meta.
+> > +        * call_rcu() call stack and timer queueing stack are stored
+> > +        * into struct kasan_alloc_meta.
+> >          * The free stack is stored into struct kasan_free_meta.
+> >          */
+> >         depot_stack_handle_t aux_stack[2];
+> > +       depot_stack_handle_t tmr_stack[2];
+> >  #else
+> >         struct kasan_track free_track[KASAN_NR_FREE_STACKS];
+> >  #endif
+> > diff --git a/mm/kasan/report.c b/mm/kasan/report.c
+> > index fed3c8fdfd25..6fa3bfee381f 100644
+> > --- a/mm/kasan/report.c
+> > +++ b/mm/kasan/report.c
+> > @@ -191,6 +191,17 @@ static void describe_object(struct kmem_cache *cache, void *object,
+> >                         print_stack(alloc_info->aux_stack[1]);
+> >                         pr_err("\n");
+> >                 }
+> > +
+> > +               if (alloc_info->tmr_stack[0]) {
+> > +                       pr_err("Last timer stack:\n");
+> > +                       print_stack(alloc_info->tmr_stack[0]);
+> > +                       pr_err("\n");
+> > +               }
+> > +               if (alloc_info->tmr_stack[1]) {
+> > +                       pr_err("Second to last timer stack:\n");
+> > +                       print_stack(alloc_info->tmr_stack[1]);
+> > +                       pr_err("\n");
+> > +               }
+> 
+> Why can't we just use the aux stack for everything, and simply change
+> the message printed in the report. After all, the stack trace will
+> include all the information to tell if it's call_rcu, timer, or
+> workqueue.
+> 
+
+This is a good suggestion, next patch will do it.
+
+> The reporting code would simply have to be changed to say something
+> like "Last potentially related work creation:" -- because what the
+> "aux" thing is trying to abstract are stack traces to work creations
+> that took an address that is closely related. Whether or not you want
+> to call it "work" is up to you, but that's the most generic term I
+> could think of right now (any better terms?).
+> 
+
+Work is good.
+
+> Another argument for this consolidation is that it's highly unlikely
+> that aux_stack[a] && tmr_stack[b] && wq_stack[c], and you need to
+> print all the stacks. If you are worried we need more aux stacks, just
+> make the array size 3+ (but I think it's not necessary).
+> 
+
+We hope that next patch keep it as it is aux_stack[2], it may record
+call_rcu, timer, or workqueue. Because struct kasan_alloc_meta is 16
+bytes, it will have the minimal redzone size and good alignment, lets
+get better memory consumption.
 
 
-> +		/* 1: not pressed, 0: pressed */
-> +		pressed = !test_bit(bit_nr, new_state);
-> +		dev_dbg(&keypad->input_dev->dev, "%s",
-> +			pressed ? "pressed" : "released");
-> +
-> +		/* 32bit register only use low 16bit as keypad mem register */
-> +		code = keycode[bit_nr - 16 * (BITS_TO_U32(bit_nr) - 1)];
+Thanks for your good suggestion.
 
-This will give index of 16 for (0,0). Is this what we want? Hmm, this is
-all weird... I think we need:
+Walter
 
-		row = bit_nr / 32;
-		col = bit_nr % 32;
-		if (col > 15)
-			continue;
 
-		// set row_shift in probe() as:
-		// keypad_data->row_shift =
-		//		get_count_order(keypad_data->n_cols);
-		code = keycode[MATRIX_SCAN_CODE(row, col,
-						keypad_data->row_shift)];
-
-This will properly unpack the keymap built by
-matrix_keypad_build_keymap().
-
-> +
-> +		input_report_key(keypad->input_dev, code, pressed);
-> +		input_sync(keypad->input_dev);
-> +
-> +		dev_dbg(&keypad->input_dev->dev,
-> +			"report Linux keycode = %d\n", code);
-> +	}
-> +
-> +	bitmap_copy(keypad->keymap_state, new_state, MTK_KPD_NUM_BITS);
-> +
-> +	return IRQ_HANDLED;
-> +}
-> +
-> +static void kpd_clk_disable(void *data)
-> +{
-> +	clk_disable_unprepare(data);
-> +}
-> +
-> +static int kpd_pdrv_probe(struct platform_device *pdev)
-> +{
-> +	struct mtk_keypad *keypad;
-> +	unsigned int irq;
-> +	u32 debounce;
-> +	bool wakeup;
-> +	int ret;
-
-Can we call this variable "error" please?
-
-> +
-> +	keypad = devm_kzalloc(&pdev->dev, sizeof(*keypad), GFP_KERNEL);
-> +	if (!keypad)
-> +		return -ENOMEM;
-> +
-> +	keypad->base = devm_platform_ioremap_resource(pdev, 0);
-> +	if (IS_ERR(keypad->base))
-> +		return PTR_ERR(keypad->base);
-> +
-> +	keypad->regmap = devm_regmap_init_mmio(&pdev->dev,
-> +					       keypad->base,
-> +					       &keypad_regmap_cfg);
-> +	if (IS_ERR(keypad->regmap)) {
-> +		dev_err(&pdev->dev,
-> +			"regmap init failed:%pe\n", keypad->regmap);
-> +		return PTR_ERR(keypad->regmap);
-> +	}
-> +
-> +	bitmap_fill(keypad->keymap_state, MTK_KPD_NUM_BITS);
-> +
-> +	keypad->input_dev = devm_input_allocate_device(&pdev->dev);
-> +	if (!keypad->input_dev) {
-> +		dev_err(&pdev->dev, "Failed to allocate input dev\n");
-> +		return -ENOMEM;
-> +	}
-> +
-> +	keypad->input_dev->name = MTK_KPD_NAME;
-> +	keypad->input_dev->id.bustype = BUS_HOST;
-> +
-> +	ret = matrix_keypad_parse_properties(&pdev->dev, &keypad->n_rows,
-> +					     &keypad->n_cols);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "Failed to parse keypad params\n");
-> +		return ret;
-> +	}
-> +
-> +	if (device_property_read_u32(&pdev->dev, "mediatek,debounce-us",
-> +				     &debounce))
-> +		debounce = 16000;
-> +
-> +	if (debounce > MTK_KPD_DEBOUNCE_MAX_US) {
-> +		dev_err(&pdev->dev, "Debounce time exceeds the maximum allowed time %dus\n",
-> +			MTK_KPD_DEBOUNCE_MAX_US);
-> +		return -EINVAL;
-> +	}
-> +
-> +	wakeup = device_property_read_bool(&pdev->dev, "wakeup-source");
-> +
-> +	dev_dbg(&pdev->dev, "n_row=%d n_col=%d debounce=%d\n",
-> +		keypad->n_rows, keypad->n_cols, debounce);
-> +
-> +	ret = matrix_keypad_build_keymap(NULL, NULL,
-> +					 keypad->n_rows,
-> +					 keypad->n_cols,
-> +					 NULL,
-> +					 keypad->input_dev);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "Failed to build keymap\n");
-> +		return ret;
-> +	}
-> +
-> +	regmap_write(keypad->regmap, MTK_KPD_DEBOUNCE,
-> +		     debounce * 32 / 1000 & MTK_KPD_DEBOUNCE_MASK);
-> +
-> +	keypad->clk = devm_clk_get(&pdev->dev, "kpd");
-> +	if (IS_ERR(keypad->clk))
-> +		return PTR_ERR(keypad->clk);
-> +
-> +	ret = clk_prepare_enable(keypad->clk);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "cannot prepare/enable keypad clock\n");
-> +		return ret;
-> +	}
-> +
-> +	ret = devm_add_action_or_reset(&pdev->dev, kpd_clk_disable, keypad->clk);
-> +	if (ret)
-> +		return ret;
-> +
-> +	irq = platform_get_irq(pdev, 0);
-> +	if (irq < 0)
-> +		return irq;
-> +
-> +	ret = devm_request_threaded_irq(&pdev->dev, irq,
-> +					NULL, kpd_irq_handler, IRQF_ONESHOT,
-> +					MTK_KPD_NAME, keypad);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "Failed to request IRQ#%d:%d\n",
-> +			irq, ret);
-> +		return ret;
-> +	}
-> +
-> +	ret = input_register_device(keypad->input_dev);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "Failed to register device\n");
-> +		return ret;
-> +	}
-> +
-> +	ret =  device_init_wakeup(&pdev->dev, wakeup);
-> +	if (ret)
-> +		dev_warn(&pdev->dev, "device_init_wakeup fail\n");
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct of_device_id kpd_of_match[] = {
-> +	{ .compatible = "mediatek,mt6779-keypad" },
-> +	{ .compatible = "mediatek,mt6873-keypad" },
-> +	{ /* sentinel */ }
-> +};
-> +
-> +static struct platform_driver kpd_pdrv = {
-> +	.probe = kpd_pdrv_probe,
-> +	.driver = {
-> +		   .name = MTK_KPD_NAME,
-> +		   .of_match_table = kpd_of_match,
-> +	},
-> +};
-> +module_platform_driver(kpd_pdrv);
-> +
-> +MODULE_AUTHOR("Mediatek Corporation");
-> +MODULE_DESCRIPTION("MTK Keypad (KPD) Driver");
-> +MODULE_LICENSE("GPL");
-> -- 
-> 2.18.0
-
-Thanks.
-
--- 
-Dmitry
+> Thanks,
+> -- Marco
 
 _______________________________________________
 Linux-mediatek mailing list
