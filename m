@@ -2,75 +2,101 @@ Return-Path: <SRS0=lgZq=BX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8371AC433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 09:17:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F0F91C433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 09:28:01 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4F99020781
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 09:17:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BDDF120781
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 09:28:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fjuFB6xE";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="b7xCoKf8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4F99020781
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YTE+hReK";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="kKZUrXyN";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="XU2DRv/M"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BDDF120781
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:From:
+	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wqhFr+aS90hmR1mbNUkiiPkPbKAkklAPoorc5/UlS7I=; b=fjuFB6xEBDaZlEgyylCGHeQbb
-	dtLeH6DPhBMEU/zQVMK9QRMQnz8WNjtB3nGMMJ6rHxtd8sytslXxEKu8RbH8m28Pj9bIWoYrACDYF
-	xAWRsaDHf/aES1ecN5bFBIs7c0SBG4xXkZxMk8NZ5TyIMULser9osgCWjoy7s09N2qz//GZcpAkZ5
-	pCNo41wZ8hqZJYV11OzmX2SK7WjQK3RJTzskfGHr/8ObTZ8yHTDfCxYX3ReUaG0oMFHzJZ3BZQGMr
-	cb32xPeYZG9L49ZQ75NIxLVWdtrDfAWevWOxWJnR8x6KGYVqAYMWX8kkXOILilVz45lX7Pi0zrj4Z
-	Fmc3cob7g==;
+	 bh=WfiKK9VKLHlrBYja72Zbs96FhCxpiW7c7jfuGoQWtQI=; b=YTE+hReKDGuWwhs8jBBaEdkWf
+	d340XYhff/A+DM1fGO0+TLIP9yRJHj1py304toDI4wkBqWeRZyoi3QQ7a3qxhxxCE2k67tewtpWLw
+	jNVTFRvsBdLsd2oAnrqjS48loXUUDeq0JCO3s4d7X9FXXL2IBKcTYVCuTSIH+3y6XmXjl56OarUSD
+	t5FVeu3vR42a1vyVY0QHgtRe+5CVMmkTnr/1OosjgVq/SGwo98yL7aJ2Cma5KZc+ljl8B9FMD0ScQ
+	oi9fbFVMc+TXinQRgtrtGrzmetJdyPrs3BsQXJNYDCVDwgS8XUmHEiWbC/ERoMrVy3WN0+nPnrkwB
+	vJRPU75Eg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k69Me-0001Eq-Si; Thu, 13 Aug 2020 09:17:36 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1k69Wa-0002oC-1V; Thu, 13 Aug 2020 09:27:52 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k69MW-0001Bl-Kp; Thu, 13 Aug 2020 09:17:30 +0000
-X-UUID: 61c17a9f99dc47189d76263a4f67517b-20200813
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=v5RL6V9x3ufySZ6lQXXP3W0N4mG04Wkwj8+hcLlIG0M=; 
- b=b7xCoKf8OA74GZtLEi66e55I4YMaROmG4DF5OsPC9td9b0BXYWuxPfmi+/v3LaLCdHCt7dEJwbjV90HzRjngfqHCAKW1PutW1/KZP0/KjwoMnkJ9T7Bf6M1zKlIh44BGirkq8EEmn958/9B1Y8VgrNppQX1xsMV5yGUoEERoIGo=;
-X-UUID: 61c17a9f99dc47189d76263a4f67517b-20200813
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <wenbin.mei@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 517142134; Thu, 13 Aug 2020 01:17:23 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 13 Aug 2020 02:07:20 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 13 Aug 2020 17:07:19 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 13 Aug 2020 17:07:18 +0800
-From: Wenbin Mei <wenbin.mei@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>
-Subject: [v4,2/3] arm64: dts: mt7622: add reset node for mmc device
-Date: Thu, 13 Aug 2020 17:06:17 +0800
-Message-ID: <20200813090618.28009-3-wenbin.mei@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1k69WY-0002nt-R9; Thu, 13 Aug 2020 09:27:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=References:In-Reply-To:Date:
+ Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=QQgcAqFsQMdctRYRQQkFM4/FaAdJSbAly6eNGHWh7JY=; b=kKZUrXyNEmu9QvbwdnJbjej/Dp
+ 9aYRwGfNwegCTq/MKijPfqNF6Kym47/1YFjoIved043v2Vhw1ZVl8a/sLYpYUJVhleGIbShW/Qkmn
+ r/TJvAzm34UE9QiPlNiw3GlU4szcDV+5IJpfBj2emMkAKmm0dC1gEdCe55aMg/KmAyN5qlrzLlIh/
+ YXtaCbUNXxFWRO60bwykLYJ0FkQgO2mwDNjUZ6ddMxn3YBkhCsLv70f56v3uT5tkCwSEMnsskcu9j
+ PciKH6JRTysvSOLfktDYLYAt9zaxx0AtqjLeWfR2ZA8DrCKDzB3anNVOAdQpawQD6B4Ny3Y+hpKz5
+ XTB5gjLA==;
+Received: from mout.gmx.net ([212.227.17.20])
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1k69WU-00032r-RM; Thu, 13 Aug 2020 09:27:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1597310848;
+ bh=QQgcAqFsQMdctRYRQQkFM4/FaAdJSbAly6eNGHWh7JY=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=XU2DRv/M7Qr/SvQ4xb30m4g28JCoCIPLm6mmgWJQR0UE8+iK6wvgOkE9T31svAh8K
+ RCM9gAi7SG7BudQpY4+Hx3Ya6rgtF4G/3PewRpJ3m/6UDmlrxu1hWkgpRfK0RXpV+Q
+ Qg73xMfvZy9980EHBipZMpFjdr6MaV+TdayPqbMk=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [185.75.75.198] ([185.75.75.198]) by web-mail.gmx.net
+ (3c-app-gmx-bap04.server.lan [172.19.172.74]) (via HTTP); Thu, 13 Aug 2020
+ 11:27:28 +0200
+MIME-Version: 1.0
+Message-ID: <trinity-ba9f3a8a-4588-48d3-8131-ce2a7ab5403e-1597310848667@3c-app-gmx-bap04>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Wenbin Mei <wenbin.mei@mediatek.com>
+Subject: Aw: [v4, 0/3] mmc: mediatek: add optional reset property mmc:
+ mediatek: add optional module reset property arm64: dts: mt7622: add reset
+ node for mmc device Documentation/devicetree/bindings/mmc/mtk-sd.txt | 2 ++
+ arch/arm64/boot/dts/mediatek/mt7622.d
+Date: Thu, 13 Aug 2020 11:27:28 +0200
+Importance: normal
+Sensitivity: Normal
 In-Reply-To: <20200813090618.28009-1-wenbin.mei@mediatek.com>
 References: <20200813090618.28009-1-wenbin.mei@mediatek.com>
-MIME-Version: 1.0
-X-MTK: N
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:mXGJHHF88bG10JaMCy6eru/9VAgIE4rI2I0CB2gNmVZ1v9dYAOF3QLGE1FofnG1OstrvN
+ KvylGzK5GMDiyOno6TRQVoetCMIsdujumuFaURvjxwPLw8J7eEtyRWW3TZU9CuRo/nCSWvDCvfnQ
+ sXHdssRZ8ti/DhpGRn4ubmTmP/ocOwo5VUKfORmwt0Qt1Em77zg2+Q2YV39v0nL5niPDaUFYr4Lz
+ K54oLCH6eOWM5iwr+NTcggvyefPblhKiFYN7HZRzUbTXTbgax995RoUe60r5+xPg/qFizEKdpO5Q
+ iQ=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Vw33wiRjJGk=:p++MCWCwlhii3JRTH6pCA8
+ 8WIzt/TEIBJ4unZ8aragxwA2U3wg1XZGiKYnR3e8b5VPNV9nl9lmhde0bBDjMUj4DTYCU5bs6
+ qXoBZzlmOem/1Vf3EGxPlO7vxCPlomiH6fbc7U1XmRHSB/NQvCSXqRfcjIqW5AVPBxmX1hqie
+ x0zo8kAjNmj8AbHm/kxvLTCfrn4/YaaHl70652fQ10Me84Bmn5sCjB5c8zFrALc+xInNN4JN2
+ su1uyZTasOqQKH3/VZWJVOBuiOpM7Kqo1WXaxZXWfcDUWiCKf1sGDd9IdG0GRFWT0BOF78dPZ
+ Y8qE3JrkBuPgwccKNEIki/hgqALwb/ecmyONQ3HRRbv7PHexLQBrtX1CsgjHYFw3OSsdNIMOw
+ fdSDZw0b3vaJlJ66fe82fQKsbp4TI29F1JphoESRDJXL5uLQllHTpu7OowVRxirjcFgi1Tk4C
+ wOrOdyDkLjxLGuAMm4t5bYmg7sJjlMq2MMb4siJDaExN+tcQckr3daXZY27FJ1OaiBseKY0A/
+ laQy6hITzbHX/QgdJvIrTXRp/CR7MqPiuH5sm45RmDycUtJGWhK2mDfaaPH3yfp2fUspmKwPj
+ 3gYuoFUdOKkI4+QxUpdzrMK1fKMHYpsNTN154qKFFAIfmnvTeUj8seEb/qeEUylk0h+KEX7ov
+ XTaLna95HIosfil7jXgStJ0WRVqvgX3II4ftvv0azxnR9cI+U37ORAN+MQxiJoi3MGVg=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200813_051728_866848_92D43DAA 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20200813_102747_319000_C1EA1032 
+X-CRM114-Status: UNSURE (   8.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,43 +108,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Wenbin Mei <wenbin.mei@mediatek.com>,
+Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>,
  srv_heupstream@mediatek.com, linux-mmc@vger.kernel.org,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Chaotian Jing <chaotian.jing@mediatek.com>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This commit adds reset node for mmc device.
+Hi,
 
-Cc: <stable@vger.kernel.org> # v5.4+
-Fixes: 966580ad236e ("mmc: mediatek: add support for MT7622 SoC")
-Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
-Tested-by: Frank Wunderlich <frank-w@public-files.de>
----
- arch/arm64/boot/dts/mediatek/mt7622.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+it looks like you still miss a blank line between subject and your text in cover-letter
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-index 1a39e0ef776b..5b9ec032ce8d 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-@@ -686,6 +686,8 @@
- 		clocks = <&pericfg CLK_PERI_MSDC30_0_PD>,
- 			 <&topckgen CLK_TOP_MSDC50_0_SEL>;
- 		clock-names = "source", "hclk";
-+		resets = <&pericfg MT7622_PERI_MSDC0_SW_RST>;
-+		reset-names = "hrst";
- 		status = "disabled";
- 	};
- 
--- 
-2.18.0
+regards Frank
+
+> Betreff: [v4, 0/3] mmc: mediatek: add optional reset property mmc: mediatek: add optional module reset property arm64: dts: mt7622: add reset node for mmc device Documentation/devicetree/bindings/mmc/mtk-sd.txt | 2 ++ arch/arm64/boot/dts/mediatek/mt7622.dtsi | 2 ++ drivers/mmc/host/mtk-sd.c | 13 +++++++++++++ 3 files changed, 17 insertions(+)
+>
+> --
+> 2.18.0
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
