@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BAA77C433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 12:26:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3676AC433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 12:51:17 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 839732078D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 12:26:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AF24A20791
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 12:51:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sAjOxNux";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GmWMcG+B"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 839732078D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="He6Wkwg9";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="BOIL1Rth"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF24A20791
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ngqCMVGLf7oeuJc98mXg0PCVcSPLlamHnAIrEyMInAk=; b=sAjOxNux/rEoYIDgnY3HLPAc2
-	iGcdK/4L6Hj7mEvJrqQ8Z42TivmwS/2QzZqnBSg/dx7+EyYn501w632rh+o+r42bf2YHQh9Ufh/Ov
-	qMBuE7xTBZ42vYfO2soeiuabEy6rhsvwJ4Iw2FF9R49P/dHrJLNRUKmXX/h23ORSC9yJMvYhfW+eC
-	ZRrkZCdMzxcufXT9WVKydeS6JZLs6QUWKCDqfWRCSlNLWaNCWrwPSYtzLCy58WVVA8gzYPJ56lQPo
-	mB1BYDfZNWSDFbfb5Ma7UqhPyXtxuVpTAmjiIqhiMZ84ZqymkXsasz+VCo84BNuv6jX14uWJF1u4o
-	ReukBB9dQ==;
+	 bh=HGn1DoICqXw4nvGu4Uvj2hBRGeNUNpU+hJfwofugAEg=; b=He6Wkwg9mU4c9I913mmnylkLA
+	Z+JCeA6QGtemPJ2bY5aXMp7baGFUPMLaLIQdOPLLNZA+8KqvZNmfaSy2435jHfpqulZZfGrmJtyDS
+	vf76d/1VS4SODby1vcDhB7gI4vRothc2WTKmyyet8+F5x+6qvDnTE5xOTDpby44W3kRkUKGprdURB
+	H+fiXBIdi+419Nmk8mPYtdvimvL+MWcIfh77tL3wRMFz8Ty6oFaAaNRQJFtiyeRJSUX1dvva+8Btv
+	ZG5vRM+TW+m6wU+KP+fsGvfZj7HMt0HdGA544LE3O57tpZSan4p8Yu0iRhiydSOyu3WXAflG/YebY
+	2fIkkx41g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k6CJE-00013z-Ag; Thu, 13 Aug 2020 12:26:16 +0000
+	id 1k6ChA-0005Qg-Dg; Thu, 13 Aug 2020 12:51:00 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k6CJ9-00012u-4f; Thu, 13 Aug 2020 12:26:12 +0000
-X-UUID: 4056165f5dd74230a73c1333f3521aa4-20200813
+ id 1k6CfJ-0004TP-4C; Thu, 13 Aug 2020 12:49:09 +0000
+X-UUID: bd8aaff32b07494b8f9b751b447b8803-20200813
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=e41c5oYHqFyVyE7RzGdj+2oNjx9zrZ3d7b52Xcy+lRI=; 
- b=GmWMcG+BIBGO22uTdBbkrn4zxhcIScGQV8kNkFh3aoyvpEBcuhLidVJYbbOhI7ChlNj7U0MR6x8qdXG3THfdCkFhm7VpvhPJEMlezo1v5OQOoERcGV2c9B+IZGSLTcjzEh7wEH6hX8AF+hKfpd2LTpG5oADKtYgSGq3d9Cca9V0=;
-X-UUID: 4056165f5dd74230a73c1333f3521aa4-20200813
+ bh=aaE6HcSMNBLCW8HhXQtINfxBXNzqkMSqUtGQrGAVPSM=; 
+ b=BOIL1Rthkq9dh/cIjPy+2394BryYEPZfVPl/p+WsDexLcm3qgQzNuBPsL0vAbg37mWo9/dLo2BbPnRGsW8DFgSdQLfM7yeckhVTy/TqVPueTsFo02M+ubzkfdnErZR0RGBMNia4m2X8yPfKS1hN2oImOc4oPWc9W6sKsqNaEzNA=;
+X-UUID: bd8aaff32b07494b8f9b751b447b8803-20200813
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <walter-zh.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1124127630; Thu, 13 Aug 2020 04:26:06 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ with ESMTP id 1844085126; Thu, 13 Aug 2020 04:49:00 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 13 Aug 2020 05:26:02 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 13 Aug 2020 20:25:54 +0800
-Received: from [172.21.84.99] (172.21.84.99) by MTKCAS06.mediatek.inc
+ 15.0.1497.2; Thu, 13 Aug 2020 05:48:57 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 13 Aug 2020 20:48:55 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 13 Aug 2020 20:25:54 +0800
-Message-ID: <1597321556.9999.27.camel@mtksdccf07>
+ Transport; Thu, 13 Aug 2020 20:48:57 +0800
+Message-ID: <1597322937.9999.42.camel@mtksdccf07>
 Subject: Re: [PATCH 1/5] timer: kasan: record and print timer stack
 From: Walter Wu <walter-zh.wu@mediatek.com>
 To: Thomas Gleixner <tglx@linutronix.de>
-Date: Thu, 13 Aug 2020 20:25:56 +0800
+Date: Thu, 13 Aug 2020 20:48:57 +0800
 In-Reply-To: <87d03ulqbp.fsf@nanos.tec.linutronix.de>
 References: <20200810072313.529-1-walter-zh.wu@mediatek.com>
  <87d03ulqbp.fsf@nanos.tec.linutronix.de>
 X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 6EB2F04DEDD30544E1EE481F458926A2139F49991264C64715B53AF6C629549C2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200813_082611_310021_831DFDFF 
-X-CRM114-Status: GOOD (  37.90  )
+X-CRM114-CacheID: sfid-20200813_084905_463179_9E5C9661 
+X-CRM114-Status: GOOD (  40.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,6 +95,11 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+
+Hi Thomas,
+
+Please ignore my previous mail. Thanks.
+
 
 On Thu, 2020-08-13 at 13:48 +0200, Thomas Gleixner wrote:
 > Walter,
@@ -142,13 +146,17 @@ Thanks for your information.
 > ifself and do not have to be epxlained in the changelog.
 > 
 
+Thanks for your explanation, Our patch will use this as a template from
+now on.
+
 > For the technical explanation which you need to add, you really need to
 > tell what's the advantage or additional coverage vs. existing debug
 > facilities like debugobjects. Just claiming that it's useful does not
 > make an argument.
 > 
 
-
+We originally wanted him to have similar functions. Maybe he can't
+completely replace, but KASAN can ave this ability.
 
 > The UAF problem with timers is nasty because if you free an active timer
 > then either the softirq which expires the timer will corrupt potentially
@@ -161,13 +169,13 @@ Thanks for your information.
 > init function is pretty uninteresting in that case because you really
 > want to know where the freeing of the active object happens.
 > 
-
-It is what we want to achieve, maybe we have shortcomings, but my patch
-
 > So if KASAN detects UAF in the timer softirq then the init trace is not
 > giving any information especially not in cases where the timer is part
 > of a common and frequently allocated/freed other data structure.
 > 
+
+I don't have experience using this tool, but I will survey it.
+
 > >  static inline void kasan_cache_shrink(struct kmem_cache *cache) {}
 > >  static inline void kasan_cache_shutdown(struct kmem_cache *cache) {}
 > >  static inline void kasan_record_aux_stack(void *ptr) {}
@@ -185,6 +193,10 @@ It is what we want to achieve, maybe we have shortcomings, but my patch
 > clear which object is affected. If the two aux records are not enough
 > then making the array larger is not the end of the world.
 > 
+
+My previous mail say that we will re-use kasan_record_aux_stack() and
+only have aux_stack.
+
 > >  #endif /* CONFIG_KASAN_GENERIC */
 > >  
 > > diff --git a/kernel/time/timer.c b/kernel/time/timer.c
@@ -205,14 +217,19 @@ It is what we want to achieve, maybe we have shortcomings, but my patch
 > and for timers which are statically allocated at compile time. How is
 > that supposed to work?
 > 
+
+If I understand correctly, KASAN report have this record only for slub
+variable. So what you said shouldn't be a problem.
+
 > These kind of things want to be explained upfront an not left to the
 > reviewer as an exercise.
 > 
+
+Sorry, My fault. Later we will be more cautious to send patch.
+
 > Thanks,
 > 
 >         tglx
-
-I have already 
 
 _______________________________________________
 Linux-mediatek mailing list
