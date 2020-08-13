@@ -2,45 +2,45 @@ Return-Path: <SRS0=lgZq=BX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5C526C43446
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 08:37:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A6A3C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 08:37:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2835820781
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 08:37:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2781B20781
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 08:37:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XvUwpyOp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2835820781
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dnbA3AXo"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2781B20781
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=5Ks6qz9RIrnkQZVXN4jNCiizo9Ac2LOWYa8+O+oyjXw=; b=XvUwpyOpi2KG6iZktVDW15Dbg9
-	ww0bXwr8ywarmftKgHf8eQlQP57N2qbUyb7iXP6YQcT/cOXlqr8XtcFbUs2RD7jgVUJbFvJumkeBu
-	J5zMqY9K9T2X06h+0Nne9lWFep/WFhXlzAQAR4IguHqhha17jeMwMGdoLFMPRFOcXKcFYc0BXZsEg
-	Kn9kzmSnMttkCMaiTttNnGYByfXA6W0TBMW98aFnGItPAoHa+RQuBczTxJ2Z9k+sm6Y0Dz8oaOI/c
-	E6Mi0UadybFBaCeIqkLu+nhDy6UNSJlZ5GXfMFhpdQve25f2gdW91ob1cOE0xZ99nMDHC9ZFrqs68
-	PRrl4e1A==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=1GYbSlemTaUcu0SUNvyT3iFYC0VlIViEyVZ4NF6sseI=; b=dnbA3AXowYNliUvB7bgjh03YP
+	l5z1i3Y9z+TsvTML64EvM5ZsBLStHZGYaqtXzF+SkkFUzUEU2RYh7NpnHg/JhDE4nwN9iRVNNbk2a
+	XkRvhGG9rzAMN8sV9Ea9l8vgj2bvbmN3MGQLfcihrkql93YG8bJS1l80/M86VAZ2xLq6BCnvtlX2K
+	35CG5l311iOrvYwoHCBefIWOj5ac1eNOiMYaXV0YOSEuuOR+giO5iK+Pe9N3FvmRGUnwnoNctY77l
+	tIq1B69v3tdgUPQka5T/F/dLh3YUNeJWWuG+rZdKeJTMeAq3+UVoUs9rGtTEdEFu4bbRQ38oY23iH
+	irl1QKRUw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k68jS-0001xr-QF; Thu, 13 Aug 2020 08:37:06 +0000
+	id 1k68jW-00020n-8q; Thu, 13 Aug 2020 08:37:10 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k68jH-0001qh-0M; Thu, 13 Aug 2020 08:36:58 +0000
+ id 1k68jH-0001qk-IN; Thu, 13 Aug 2020 08:36:58 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 5A629AE35;
- Thu, 13 Aug 2020 08:37:13 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 757D3AFCD;
+ Thu, 13 Aug 2020 08:37:15 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  daniel@ffwll.ch, linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
@@ -63,14 +63,16 @@ To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  matthew.auld@intel.com, abdiel.janulgue@linux.intel.com,
  tvrtko.ursulin@linux.intel.com, andi.shyti@intel.com, sam@ravnborg.org,
  miaoqinglang@huawei.com, emil.velikov@collabora.com
-Subject: [PATCH 00/20] Convert all remaining drivers to GEM object functions
-Date: Thu, 13 Aug 2020 10:36:24 +0200
-Message-Id: <20200813083644.31711-1-tzimmermann@suse.de>
+Subject: [PATCH 03/20] drm/etnaviv: Introduce GEM object functions
+Date: Thu, 13 Aug 2020 10:36:27 +0200
+Message-Id: <20200813083644.31711-4-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.28.0
+In-Reply-To: <20200813083644.31711-1-tzimmermann@suse.de>
+References: <20200813083644.31711-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200813_043655_335607_B24009EB 
-X-CRM114-Status: GOOD (  14.66  )
+X-CRM114-CacheID: sfid-20200813_043655_861082_66A20B92 
+X-CRM114-Status: GOOD (  14.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,107 +96,109 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The GEM and PRIME related callbacks in struct drm_driver are deprecated in
-favor of GEM object functions in struct drm_gem_object_funcs. This patchset
-converts the remaining drivers to object functions and removes most of the
-obsolete interfaces.
+GEM object functions deprecate several similar callback interfaces in
+struct drm_driver. This patch replaces the per-driver callbacks with
+per-instance callbacks in etnaviv. The only exception is gem_prime_mmap,
+which is non-trivial to convert.
 
-Patches #1 to #18 convert DRM drivers to GEM object functions, one by one.
-Each patch moves existing callbacks from struct drm_driver to an instance
-of struct drm_gem_object_funcs, and sets these funcs when the GEM object is
-initialized. The expection is .gem_prime_mmap. There are different ways of
-how drivers implement the callback, and moving it to GEM object functions
-requires a closer review for each.
+Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+---
+ drivers/gpu/drm/etnaviv/etnaviv_drv.c | 13 -------------
+ drivers/gpu/drm/etnaviv/etnaviv_drv.h |  1 -
+ drivers/gpu/drm/etnaviv/etnaviv_gem.c | 19 ++++++++++++++++++-
+ 3 files changed, 18 insertions(+), 15 deletions(-)
 
-Patch #19 converts xlnx to CMA helper macros. There's no apparent reason
-why the driver does the GEM setup on it's own. Using CMA helper macros
-adds GEM object functions implicitly.
-
-With most of the GEM and PRIME moved to GEM object functions, related code
-in struct drm_driver and in the DRM core/helpers is being removed by patch
-#20.
-
-Further testing is welcome. I tested the drivers for which I have HW
-available, which are gma500, i915, nouveau, radeon and vc4. The console,
-Weston and Xorg apparently work with the patches applied.
-
-Thomas Zimmermann (20):
-  drm/amdgpu: Introduce GEM object functions
-  drm/armada: Introduce GEM object functions
-  drm/etnaviv: Introduce GEM object functions
-  drm/exynos: Introduce GEM object functions
-  drm/gma500: Introduce GEM object functions
-  drm/i915: Introduce GEM object functions
-  drm/mediatek: Introduce GEM object functions
-  drm/msm: Introduce GEM object funcs
-  drm/nouveau: Introduce GEM object functions
-  drm/omapdrm: Introduce GEM object functions
-  drm/pl111: Introduce GEM object functions
-  drm/radeon: Introduce GEM object functions
-  drm/rockchip: Convert to drm_gem_object_funcs
-  drm/tegra: Introduce GEM object functions
-  drm/vc4: Introduce GEM object functions
-  drm/vgem: Introduce GEM object functions
-  drm/vkms: Introduce GEM object functions
-  drm/xen: Introduce GEM object functions
-  drm/xlnx: Initialize DRM driver instance with CMA helper macro
-  drm: Remove obsolete GEM and PRIME callbacks from struct drm_driver
-
- drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c       |  6 --
- drivers/gpu/drm/amd/amdgpu/amdgpu_object.c    | 12 +++
- drivers/gpu/drm/armada/armada_drv.c           |  3 -
- drivers/gpu/drm/armada/armada_gem.c           | 12 ++-
- drivers/gpu/drm/armada/armada_gem.h           |  2 -
- drivers/gpu/drm/drm_gem.c                     | 35 ++------
- drivers/gpu/drm/drm_gem_cma_helper.c          |  6 +-
- drivers/gpu/drm/drm_prime.c                   | 17 ++--
- drivers/gpu/drm/etnaviv/etnaviv_drv.c         | 13 ---
- drivers/gpu/drm/etnaviv/etnaviv_drv.h         |  1 -
- drivers/gpu/drm/etnaviv/etnaviv_gem.c         | 19 ++++-
- drivers/gpu/drm/exynos/exynos_drm_drv.c       | 10 ---
- drivers/gpu/drm/exynos/exynos_drm_gem.c       | 15 ++++
- drivers/gpu/drm/gma500/framebuffer.c          |  2 +
- drivers/gpu/drm/gma500/gem.c                  | 18 +++-
- drivers/gpu/drm/gma500/gem.h                  |  3 +
- drivers/gpu/drm/gma500/psb_drv.c              |  9 --
- drivers/gpu/drm/gma500/psb_drv.h              |  2 -
- drivers/gpu/drm/i915/gem/i915_gem_object.c    |  9 +-
- drivers/gpu/drm/i915/i915_drv.c               | 10 ++-
- drivers/gpu/drm/i915/i915_drv.h               |  1 +
- .../gpu/drm/i915/selftests/mock_gem_device.c  |  3 -
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  5 --
- drivers/gpu/drm/mediatek/mtk_drm_gem.c        | 11 +++
- drivers/gpu/drm/msm/msm_drv.c                 | 13 ---
- drivers/gpu/drm/msm/msm_drv.h                 |  1 -
- drivers/gpu/drm/msm/msm_gem.c                 | 19 ++++-
- drivers/gpu/drm/nouveau/nouveau_drm.c         |  9 --
- drivers/gpu/drm/nouveau/nouveau_gem.c         | 13 +++
- drivers/gpu/drm/nouveau/nouveau_gem.h         |  2 +
- drivers/gpu/drm/nouveau/nouveau_prime.c       |  2 +
- drivers/gpu/drm/omapdrm/omap_drv.c            |  9 --
- drivers/gpu/drm/omapdrm/omap_gem.c            | 16 +++-
- drivers/gpu/drm/omapdrm/omap_gem.h            |  1 -
- drivers/gpu/drm/pl111/pl111_drv.c             | 28 +++++-
- drivers/gpu/drm/radeon/radeon_drv.c           | 23 +----
- drivers/gpu/drm/radeon/radeon_object.c        | 26 ++++++
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |  5 --
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c   | 10 +++
- drivers/gpu/drm/tegra/drm.c                   |  4 -
- drivers/gpu/drm/tegra/gem.c                   |  8 ++
- drivers/gpu/drm/vc4/vc4_bo.c                  | 21 ++++-
- drivers/gpu/drm/vc4/vc4_drv.c                 | 12 ---
- drivers/gpu/drm/vc4/vc4_drv.h                 |  1 -
- drivers/gpu/drm/vgem/vgem_drv.c               | 21 +++--
- drivers/gpu/drm/vkms/vkms_drv.c               |  8 --
- drivers/gpu/drm/vkms/vkms_gem.c               | 13 +++
- drivers/gpu/drm/xen/xen_drm_front.c           | 12 +--
- drivers/gpu/drm/xen/xen_drm_front.h           |  2 +
- drivers/gpu/drm/xen/xen_drm_front_gem.c       | 15 ++++
- drivers/gpu/drm/xlnx/zynqmp_dpsub.c           | 14 +--
- include/drm/drm_drv.h                         | 85 +------------------
- 52 files changed, 311 insertions(+), 306 deletions(-)
-
---
+diff --git a/drivers/gpu/drm/etnaviv/etnaviv_drv.c b/drivers/gpu/drm/etnaviv/etnaviv_drv.c
+index a9a3afaef9a1..aa270b79e585 100644
+--- a/drivers/gpu/drm/etnaviv/etnaviv_drv.c
++++ b/drivers/gpu/drm/etnaviv/etnaviv_drv.c
+@@ -468,12 +468,6 @@ static const struct drm_ioctl_desc etnaviv_ioctls[] = {
+ 	ETNA_IOCTL(PM_QUERY_SIG, pm_query_sig, DRM_RENDER_ALLOW),
+ };
+ 
+-static const struct vm_operations_struct vm_ops = {
+-	.fault = etnaviv_gem_fault,
+-	.open = drm_gem_vm_open,
+-	.close = drm_gem_vm_close,
+-};
+-
+ static const struct file_operations fops = {
+ 	.owner              = THIS_MODULE,
+ 	.open               = drm_open,
+@@ -490,16 +484,9 @@ static struct drm_driver etnaviv_drm_driver = {
+ 	.driver_features    = DRIVER_GEM | DRIVER_RENDER,
+ 	.open               = etnaviv_open,
+ 	.postclose           = etnaviv_postclose,
+-	.gem_free_object_unlocked = etnaviv_gem_free_object,
+-	.gem_vm_ops         = &vm_ops,
+ 	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
+ 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
+-	.gem_prime_pin      = etnaviv_gem_prime_pin,
+-	.gem_prime_unpin    = etnaviv_gem_prime_unpin,
+-	.gem_prime_get_sg_table = etnaviv_gem_prime_get_sg_table,
+ 	.gem_prime_import_sg_table = etnaviv_gem_prime_import_sg_table,
+-	.gem_prime_vmap     = etnaviv_gem_prime_vmap,
+-	.gem_prime_vunmap   = etnaviv_gem_prime_vunmap,
+ 	.gem_prime_mmap     = etnaviv_gem_prime_mmap,
+ #ifdef CONFIG_DEBUG_FS
+ 	.debugfs_init       = etnaviv_debugfs_init,
+diff --git a/drivers/gpu/drm/etnaviv/etnaviv_drv.h b/drivers/gpu/drm/etnaviv/etnaviv_drv.h
+index 4d8dc9236e5f..914f0867ff71 100644
+--- a/drivers/gpu/drm/etnaviv/etnaviv_drv.h
++++ b/drivers/gpu/drm/etnaviv/etnaviv_drv.h
+@@ -49,7 +49,6 @@ int etnaviv_ioctl_gem_submit(struct drm_device *dev, void *data,
+ 		struct drm_file *file);
+ 
+ int etnaviv_gem_mmap(struct file *filp, struct vm_area_struct *vma);
+-vm_fault_t etnaviv_gem_fault(struct vm_fault *vmf);
+ int etnaviv_gem_mmap_offset(struct drm_gem_object *obj, u64 *offset);
+ struct sg_table *etnaviv_gem_prime_get_sg_table(struct drm_gem_object *obj);
+ void *etnaviv_gem_prime_vmap(struct drm_gem_object *obj);
+diff --git a/drivers/gpu/drm/etnaviv/etnaviv_gem.c b/drivers/gpu/drm/etnaviv/etnaviv_gem.c
+index f06e19e7be04..66de9f299c76 100644
+--- a/drivers/gpu/drm/etnaviv/etnaviv_gem.c
++++ b/drivers/gpu/drm/etnaviv/etnaviv_gem.c
+@@ -170,7 +170,7 @@ int etnaviv_gem_mmap(struct file *filp, struct vm_area_struct *vma)
+ 	return obj->ops->mmap(obj, vma);
+ }
+ 
+-vm_fault_t etnaviv_gem_fault(struct vm_fault *vmf)
++static vm_fault_t etnaviv_gem_fault(struct vm_fault *vmf)
+ {
+ 	struct vm_area_struct *vma = vmf->vma;
+ 	struct drm_gem_object *obj = vma->vm_private_data;
+@@ -560,6 +560,22 @@ void etnaviv_gem_obj_add(struct drm_device *dev, struct drm_gem_object *obj)
+ 	mutex_unlock(&priv->gem_lock);
+ }
+ 
++static const struct vm_operations_struct vm_ops = {
++	.fault = etnaviv_gem_fault,
++	.open = drm_gem_vm_open,
++	.close = drm_gem_vm_close,
++};
++
++static const struct drm_gem_object_funcs etnaviv_gem_object_funcs = {
++	.free = etnaviv_gem_free_object,
++	.pin = etnaviv_gem_prime_pin,
++	.unpin = etnaviv_gem_prime_unpin,
++	.get_sg_table = etnaviv_gem_prime_get_sg_table,
++	.vmap = etnaviv_gem_prime_vmap,
++	.vunmap = etnaviv_gem_prime_vunmap,
++	.vm_ops = &vm_ops,
++};
++
+ static int etnaviv_gem_new_impl(struct drm_device *dev, u32 size, u32 flags,
+ 	const struct etnaviv_gem_ops *ops, struct drm_gem_object **obj)
+ {
+@@ -594,6 +610,7 @@ static int etnaviv_gem_new_impl(struct drm_device *dev, u32 size, u32 flags,
+ 	INIT_LIST_HEAD(&etnaviv_obj->vram_list);
+ 
+ 	*obj = &etnaviv_obj->base;
++	(*obj)->funcs = &etnaviv_gem_object_funcs;
+ 
+ 	return 0;
+ }
+-- 
 2.28.0
 
 
