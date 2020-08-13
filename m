@@ -2,173 +2,74 @@ Return-Path: <SRS0=lgZq=BX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EDE70C433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 11:20:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 214BCC433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 11:28:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A1F7520791
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 11:20:36 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E26B220791
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 11:28:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JHiAmQPD";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=epam.com header.i=@epam.com header.b="w0RBY+eA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A1F7520791
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=epam.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="esZC6Nve";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="H6qde4EG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E26B220791
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=iRP07qgQHAqYE4ECJdjCVSwqcQvnfCusIhFNKJ1DlFo=; b=JHiAmQPDCbwBbr68+PHb+wA1n
-	w0Fy/zCBx+Onsp2U0jqXc6tOp/gn6Czgx1JwnQAxxziRsQlXIWW+WpqYEXyb+QdPGJARyxGYu7rzX
-	7DALlXsCYDtog625ppIMcxsE6vV5HmtZXGRimt9qVOZEifyQoqPLakVW4JuBF72pKXEpwYp6mTQJE
-	EKzUYLXkt2i6HznnumV4g9Mmvjyu6YymDabU+BMXdK1RM69fVFmFnjWezYDWhT1cHqP5/ajA/Eve5
-	mVX/JquwSoxgCS6CoehTHQji/uCtV+h9/qmSYEOEY4PuqfY53nPXSTBdqVkTwFv8GNSWFsWDKEM0Q
-	ewgCicllw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=drcUgPK0p0T/ze0WKSPUih6tZWEilVSd8zYUDrZuGow=; b=esZC6NveTzAgW7Ykt3+NsbWlxi
+	cQvdlO4txvL/V6u/Z2UDYQ0qvKVheB/Gj5CgHCXEy5beKFTdJhAxQnF3oBVryDWfRyNZFEcl2Xtzn
+	n5DKZC/0E59AXptDxAbuU9kyi1HQVANDaRhYFTlOQQlbYVE07a4Pqz8mfgdLlkhh+YZLu2y2Pskx2
+	5YmVhWTPO2KOGFd+TjUezMyfiDIgwpZejn1Sdq8as99Er6QvofmFs0Z6zY9RWz2rBnLb9PIdQog3m
+	S3sUh24b5KT2Ymlmi6IfKZrIVb4prCJAXcA1nmSoRZbQcIw7L9qgprtGajIt3ozKMRY0M/EofzA3O
+	P5ua2wUQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k6BHW-0001LL-Qj; Thu, 13 Aug 2020 11:20:26 +0000
-Received: from mx0a-0039f301.pphosted.com ([148.163.133.242])
+	id 1k6BOn-00038w-Ty; Thu, 13 Aug 2020 11:27:57 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k6BHS-0001KH-Qi; Thu, 13 Aug 2020 11:20:24 +0000
-Received: from pps.filterd (m0174676.ppops.net [127.0.0.1])
- by mx0a-0039f301.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 07DBAhIo032308; Thu, 13 Aug 2020 11:19:48 GMT
-Received: from eur01-ve1-obe.outbound.protection.outlook.com
- (mail-ve1eur01lp2050.outbound.protection.outlook.com [104.47.1.50])
- by mx0a-0039f301.pphosted.com with ESMTP id 32vyhf16ah-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 13 Aug 2020 11:19:48 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Ytoj84cGx07WDOAYCzIkNgAt5bJioV7W5YtrVQQAS/+DhksIreP6wUY2d7IxNw3e1dabLKO/joyhyWebgFQqE7U8FYMt8ZYhPnCqjE5ZIzWeJKfvh6OOtWmbCaoocBhxVDJghXveZhwrRLWUgpYJoUeJivPrrUx1cDSfoZ1X4Jed6KVCVnEtCywv0EJXptrjjIlxNbLZDgnkBtcViT9MIz5xfnuKWrBu18bowc9xWX03oicTJdWZ/BnK5NGg1irxdBljvs2qWsyrCW6lxrzabvSp8t9NDmP8axaAZebkUB8HE2VdtkyqacdQWdZWmR0DlAoyL5JuHkuQCowNN55twA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fc8o5Gg9pCw3D3wzThNao2OARb2LAoDAO0TM8iReMrs=;
- b=FA7ZbC6kciQiDieES6zzXHbSBfxZUGb12XnTnuuuSTbWoHlcbY/pT+hwappdevHvqexWw/Bz8Q3o54YGu+tjl6vRVDeK78eNIKpH5yzt/n7WIoLrFXY4aV0JyWHJkdIoz2BQUJsh3tZzWwZ6bc5eQ+LCtWLgiIAm3lqIfD+rBIgFimrNgU9NILIddLJaOJBvfokjHR1rH9cCNDsdKqUQUYGUg4ozdb6KGT2+pO9RFz+mujUN/Rw1GEbte2Iy5nbG5oAd2Rp4R307KczLAP1co92UuESu2fqk5bXsxRQesZhQvPXAEpxgYTIwo/PJxqc4eIXw8dhpotVco9zVWZbrpg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=epam.com; dmarc=pass action=none header.from=epam.com;
- dkim=pass header.d=epam.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=epam.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fc8o5Gg9pCw3D3wzThNao2OARb2LAoDAO0TM8iReMrs=;
- b=w0RBY+eABwbLn3WzOKHTQ+/6O47gVx9rhalSLNXWETvTcqRI0v/DAlgzUBuGpVyIziCE00oFTPjIM/iudEjyjQVk+XvLxQ8tI2UJ5bJ0CSCE5TLL7VWkb4nKcKqCVaUImcwC5/+COKOhReKDCguIyo1dXrlnKyPnLBzbzwEGVBF74jfS8ALEQu9QqmcwTjtmInyu8pDWb/LtEDVmpxcJlsOJI60844+BquPe/P2FPh9BUJGiy1dA6ylKrn30TvBeZ+1hIcjNPxuHT4KWjo5Nk4+ACUgIdU5r3kpetdSHTZvtESHa48wY8dYQLaaop8HgjQTTD4jLAVU3rXpLMWUvLg==
-Received: from AM7PR03MB6325.eurprd03.prod.outlook.com (2603:10a6:20b:13c::18)
- by AM6PR03MB4294.eurprd03.prod.outlook.com (2603:10a6:20b:4::29) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3283.18; Thu, 13 Aug
- 2020 11:19:44 +0000
-Received: from AM7PR03MB6325.eurprd03.prod.outlook.com
- ([fe80::1c2:462c:58b8:7ee9]) by AM7PR03MB6325.eurprd03.prod.outlook.com
- ([fe80::1c2:462c:58b8:7ee9%7]) with mapi id 15.20.3283.018; Thu, 13 Aug 2020
- 11:19:44 +0000
-From: Oleksandr Andrushchenko <Oleksandr_Andrushchenko@epam.com>
-To: Thomas Zimmermann <tzimmermann@suse.de>, "alexander.deucher@amd.com"
- <alexander.deucher@amd.com>, "christian.koenig@amd.com"
- <christian.koenig@amd.com>, "airlied@linux.ie" <airlied@linux.ie>,
- "daniel@ffwll.ch" <daniel@ffwll.ch>, "linux@armlinux.org.uk"
- <linux@armlinux.org.uk>, "maarten.lankhorst@linux.intel.com"
- <maarten.lankhorst@linux.intel.com>, "mripard@kernel.org"
- <mripard@kernel.org>, "l.stach@pengutronix.de" <l.stach@pengutronix.de>,
- "christian.gmeiner@gmail.com" <christian.gmeiner@gmail.com>,
- "inki.dae@samsung.com" <inki.dae@samsung.com>, "jy0922.shim@samsung.com"
- <jy0922.shim@samsung.com>,
- "sw0312.kim@samsung.com" <sw0312.kim@samsung.com>,
- "kyungmin.park@samsung.com" <kyungmin.park@samsung.com>, "kgene@kernel.org"
- <kgene@kernel.org>, "krzk@kernel.org" <krzk@kernel.org>,
- "patrik.r.jakobsson@gmail.com" <patrik.r.jakobsson@gmail.com>,
- "jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>,
- "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>,
- "rodrigo.vivi@intel.com" <rodrigo.vivi@intel.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "robdclark@gmail.com"
- <robdclark@gmail.com>, "sean@poorly.run" <sean@poorly.run>,
- "bskeggs@redhat.com" <bskeggs@redhat.com>, "tomi.valkeinen@ti.com"
- <tomi.valkeinen@ti.com>, "eric@anholt.net" <eric@anholt.net>,
- "hjc@rock-chips.com" <hjc@rock-chips.com>, "heiko@sntech.de"
- <heiko@sntech.de>, "thierry.reding@gmail.com" <thierry.reding@gmail.com>,
- "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
- "rodrigosiqueiramelo@gmail.com" <rodrigosiqueiramelo@gmail.com>,
- "hamohammed.sa@gmail.com" <hamohammed.sa@gmail.com>, "hyun.kwon@xilinx.com"
- <hyun.kwon@xilinx.com>, "laurent.pinchart@ideasonboard.com"
- <laurent.pinchart@ideasonboard.com>, "michal.simek@xilinx.com"
- <michal.simek@xilinx.com>, "sumit.semwal@linaro.org"
- <sumit.semwal@linaro.org>, "evan.quan@amd.com" <evan.quan@amd.com>,
- "Hawking.Zhang@amd.com" <Hawking.Zhang@amd.com>, "tianci.yin@amd.com"
- <tianci.yin@amd.com>, "marek.olsak@amd.com" <marek.olsak@amd.com>,
- "hdegoede@redhat.com" <hdegoede@redhat.com>, "andrey.grodzovsky@amd.com"
- <andrey.grodzovsky@amd.com>, "Felix.Kuehling@amd.com"
- <Felix.Kuehling@amd.com>, "xinhui.pan@amd.com" <xinhui.pan@amd.com>,
- "aaron.liu@amd.com" <aaron.liu@amd.com>, "nirmoy.das@amd.com"
- <nirmoy.das@amd.com>,
- "chris@chris-wilson.co.uk" <chris@chris-wilson.co.uk>,
- "matthew.auld@intel.com" <matthew.auld@intel.com>,
- "abdiel.janulgue@linux.intel.com" <abdiel.janulgue@linux.intel.com>,
- "tvrtko.ursulin@linux.intel.com" <tvrtko.ursulin@linux.intel.com>,
- "andi.shyti@intel.com" <andi.shyti@intel.com>, "sam@ravnborg.org"
- <sam@ravnborg.org>, "miaoqinglang@huawei.com" <miaoqinglang@huawei.com>,
- "emil.velikov@collabora.com" <emil.velikov@collabora.com>
-Subject: Re: [PATCH 18/20] drm/xen: Introduce GEM object functions
-Thread-Topic: [PATCH 18/20] drm/xen: Introduce GEM object functions
-Thread-Index: AQHWcUzwRlAvqlodBUmjrM9igZrPiqk15K+A
-Date: Thu, 13 Aug 2020 11:19:44 +0000
-Message-ID: <1fe5f918-2445-d2e6-a501-881e70929404@epam.com>
-References: <20200813083644.31711-1-tzimmermann@suse.de>
- <20200813083644.31711-19-tzimmermann@suse.de>
-In-Reply-To: <20200813083644.31711-19-tzimmermann@suse.de>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: suse.de; dkim=none (message not signed)
- header.d=none;suse.de; dmarc=none action=none header.from=epam.com;
-x-originating-ip: [185.199.97.5]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 98c2df7f-79af-4148-ee6b-08d83f7ac817
-x-ms-traffictypediagnostic: AM6PR03MB4294:
-x-microsoft-antispam-prvs: <AM6PR03MB42948483A47DA7E7FF20A061E7430@AM6PR03MB4294.eurprd03.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:2201;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 9OuhwFxQyiR1r6WZCNoxvlXl+F4BeIHs0Lj7XIYCOMfjlBUvc5wx2AH3cjVee20NCw2z2cPzZ66ecnTR62GJzmNWY8h8LSmhhC/EsaiBe0DBD2OfrRcKJAT4hamZv2xqu3XMDY6/N716vxoQ8fp7BqbbQbIDCLa6KvKOARS0o2KWYxXwggf2rh3Z4TMmiBtUgvIk8eryhP305FHCtCAkHlKgq8qasIbIPBMwIY3hW23rQo+9HVzXRQQYsnqfTqyMMVE2X6wNsxG5m6ioY6ZblXGROvXJZlZX1Zm5fQD2yiFyx/T9McHKZt6C1RvPJcolYPLatWRukLV4k9PA/9VbSZwEpt3OcTTDIS93rscyCcpYbHBB+xFV1WyOX/f4hJur
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:AM7PR03MB6325.eurprd03.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(39860400002)(136003)(366004)(346002)(376002)(396003)(4326008)(76116006)(7406005)(316002)(7416002)(6512007)(54906003)(7366002)(66946007)(110136005)(478600001)(6506007)(53546011)(64756008)(86362001)(66476007)(2906002)(8676002)(66446008)(66556008)(71200400001)(8936002)(6486002)(31696002)(26005)(5660300002)(1191002)(186003)(31686004)(83380400001)(36756003)(2616005)(921003);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: RE/ytRISihDqVWLNAbZa6AMa6DykADf3L3prJiKeO9tLqyEL6pS7z6d7YS/5xwHDeDnKCuUMAUmNfHTLmpHstKw4/sCkLIAw55CLJasWUweCRGjRetUQX23J26TgBD/3q2hA+QG2a44++Ls8adHHKalvWZWDn281MI14G54ooFjzYTb1CoYbryKGXOxahysDtcfCSiaMSrC6WABHJkkf6gYfccHAzJMIiaMW9sYyJRML3v9o4BkX9/DtM5QFLa2ZCOQeqKWhPY9jcLPYo8K/HC7vabBlWXoXJmrw4avg7Gdr9wagIg3ESoB/dKSGWQOT3cM+HB5sLxxHaiuv16rgMNbqMTNhYQvuGVWu6Yg+sJOvNxDbEStBRe/tuvuBnI7ozGt+r2+JNK5UywIbuXtD12UAOe+aM5uJxsOoXGefBlaXFbgRH9WdPmrjtIS2HphZvjKFIPRlY9RScte8D1bScGUcLYqflfIw+LQ0S8AGQ9LoOQM8dKyWpHwc7GO+AbyLxT1ZmLLBeJ+I5PMqJc0k95MxFi4ueOcymKFCKNtfckT5jweqr2mtlrsTaEmc5dzsPQVDY42C+4nZspiabPTq7k3I0wzwW9xn6wWhbuLhoh+xI97P9riZFZygqwzUUj254yzRx2ZF3X1qCi5s/u/zlA==
-x-ms-exchange-transport-forked: True
-Content-ID: <73B83228210C8B4092A3A2E420A1C72C@eurprd03.prod.outlook.com>
+ id 1k6BOj-000384-G9; Thu, 13 Aug 2020 11:27:54 +0000
+X-UUID: 4124eab063ef4cab9257352beae974e0-20200813
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=+eK+7a9oUt+gCi+OClb3sCo/w04UAPvGt6ggiOIBy5Y=; 
+ b=H6qde4EG8EeLLRpTWKS52TkfyvMJetMMmyhfYTW9ggBepKebJ2snWhzLHqM7Duo2E5WZ6VnbHEIesZYA/cou4DQBDB5ReNIfDA/SmVW5Hn52XfhhxjnFS/bPqj4bM3HsMdKKewHaEhnBIPwhl6he0kbQGWgztD5erfg+QZNG0CU=;
+X-UUID: 4124eab063ef4cab9257352beae974e0-20200813
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <hanks.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1510983952; Thu, 13 Aug 2020 03:18:24 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 13 Aug 2020 04:14:32 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 13 Aug 2020 19:14:22 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 13 Aug 2020 19:14:23 +0800
+From: Hanks Chen <hanks.chen@mediatek.com>
+To: Sean Wang <sean.wang@kernel.org>, Linus Walleij
+ <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH] pinctrl: mediatek: check mtk_is_virt_gpio input parameter
+Date: Thu, 13 Aug 2020 19:14:20 +0800
+Message-ID: <1597317260-24348-1-git-send-email-hanks.chen@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-X-OriginatorOrg: epam.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: AM7PR03MB6325.eurprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 98c2df7f-79af-4148-ee6b-08d83f7ac817
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Aug 2020 11:19:44.5649 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b41b72d0-4e9f-4c26-8a69-f949f367c91d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Uf3Ju+H72OtC//NmTqgcZeFyfKALyi2YcwCTi756Jif6gg6QmkKzaeMSl8qoWK868gGdtmA2N9qB0vAvmyjlq1MS3Eh0vEaiNq869roKrHvQDdr2jkXV8UZTYjjxWvux
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR03MB4294
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235, 18.0.687
- definitions=2020-08-13_10:2020-08-13,
- 2020-08-13 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0
- malwarescore=0 phishscore=0 clxscore=1011 bulkscore=0 impostorscore=0
- suspectscore=0 spamscore=0 mlxscore=0 mlxlogscore=999 priorityscore=1501
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2006250000 definitions=main-2008130085
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200813_072023_361023_B7BFB7ED 
-X-CRM114-Status: GOOD (  21.95  )
+X-CRM114-CacheID: sfid-20200813_072753_754641_665A99B9 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -180,134 +81,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "etnaviv@lists.freedesktop.org" <etnaviv@lists.freedesktop.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>,
- "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
- "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
- "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
- "freedreno@lists.freedesktop.org" <freedreno@lists.freedesktop.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: CC Hwang <cc.hwang@mediatek.com>, sin_jieyang <sin_jieyang@mediatek.com>,
+ Hanks Chen <hanks.chen@mediatek.com>, linux-kernel@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+check mtk_is_virt_gpio input parameter,
+virtual gpio need to support eint mode.
 
-On 8/13/20 11:36 AM, Thomas Zimmermann wrote:
-> GEM object functions deprecate several similar callback interfaces in
-> struct drm_driver. This patch replaces the per-driver callbacks with
-> per-instance callbacks in xen. The only exception is gem_prime_mmap,
-> which is non-trivial to convert.
->
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> ---
->   drivers/gpu/drm/xen/xen_drm_front.c     | 12 +-----------
->   drivers/gpu/drm/xen/xen_drm_front.h     |  2 ++
->   drivers/gpu/drm/xen/xen_drm_front_gem.c | 15 +++++++++++++++
->   3 files changed, 18 insertions(+), 11 deletions(-)
->
-> diff --git a/drivers/gpu/drm/xen/xen_drm_front.c b/drivers/gpu/drm/xen/xen_drm_front.c
-> index 3e660fb111b3..bd9af1875af1 100644
-> --- a/drivers/gpu/drm/xen/xen_drm_front.c
-> +++ b/drivers/gpu/drm/xen/xen_drm_front.c
-> @@ -433,7 +433,7 @@ static int xen_drm_drv_dumb_create(struct drm_file *filp,
->   	return ret;
->   }
->   
-> -static void xen_drm_drv_free_object_unlocked(struct drm_gem_object *obj)
-> +void xen_drm_drv_free_object_unlocked(struct drm_gem_object *obj)
+add error handler for the ko case
+to fix this boot fail:
+pc : mtk_is_virt_gpio+0x20/0x38 [pinctrl_mtk_common_v2]
+lr : mtk_gpio_get_direction+0x44/0xb0 [pinctrl_paris]
 
-Can we please have naming consistent and name it as
+Fixes: edd546465002 ("pinctrl: mediatek: avoid virtual gpio trying to set reg")
+Singed-off-by: sin_jieyang <sin_jieyang@mediatek.com>
+Signed-off-by: Hanks Chen <hanks.chen@mediatek.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-xen_drm_front_drv_free_object_unlocked or any other name if this seems to be too long,
-
-but starting with xen_drm_front_ as the rest of exported functions?
-
-With this,
-
-Acked-by: Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>
-
-Thank you,
-
-Oleksandr
-
->   {
->   	struct xen_drm_front_drm_info *drm_info = obj->dev->dev_private;
->   	int idx;
-> @@ -481,22 +481,12 @@ static const struct file_operations xen_drm_dev_fops = {
->   	.mmap           = xen_drm_front_gem_mmap,
->   };
->   
-> -static const struct vm_operations_struct xen_drm_drv_vm_ops = {
-> -	.open           = drm_gem_vm_open,
-> -	.close          = drm_gem_vm_close,
-> -};
-> -
->   static struct drm_driver xen_drm_driver = {
->   	.driver_features           = DRIVER_GEM | DRIVER_MODESET | DRIVER_ATOMIC,
->   	.release                   = xen_drm_drv_release,
-> -	.gem_vm_ops                = &xen_drm_drv_vm_ops,
-> -	.gem_free_object_unlocked  = xen_drm_drv_free_object_unlocked,
->   	.prime_handle_to_fd        = drm_gem_prime_handle_to_fd,
->   	.prime_fd_to_handle        = drm_gem_prime_fd_to_handle,
->   	.gem_prime_import_sg_table = xen_drm_front_gem_import_sg_table,
-> -	.gem_prime_get_sg_table    = xen_drm_front_gem_get_sg_table,
-> -	.gem_prime_vmap            = xen_drm_front_gem_prime_vmap,
-> -	.gem_prime_vunmap          = xen_drm_front_gem_prime_vunmap,
->   	.gem_prime_mmap            = xen_drm_front_gem_prime_mmap,
->   	.dumb_create               = xen_drm_drv_dumb_create,
->   	.fops                      = &xen_drm_dev_fops,
-> diff --git a/drivers/gpu/drm/xen/xen_drm_front.h b/drivers/gpu/drm/xen/xen_drm_front.h
-> index f92c258350ca..93e60c1db550 100644
-> --- a/drivers/gpu/drm/xen/xen_drm_front.h
-> +++ b/drivers/gpu/drm/xen/xen_drm_front.h
-> @@ -160,4 +160,6 @@ int xen_drm_front_page_flip(struct xen_drm_front_info *front_info,
->   void xen_drm_front_on_frame_done(struct xen_drm_front_info *front_info,
->   				 int conn_idx, u64 fb_cookie);
->   
-> +void xen_drm_drv_free_object_unlocked(struct drm_gem_object *obj);
-> +
->   #endif /* __XEN_DRM_FRONT_H_ */
-> diff --git a/drivers/gpu/drm/xen/xen_drm_front_gem.c b/drivers/gpu/drm/xen/xen_drm_front_gem.c
-> index f0b85e094111..7b315c08bcfc 100644
-> --- a/drivers/gpu/drm/xen/xen_drm_front_gem.c
-> +++ b/drivers/gpu/drm/xen/xen_drm_front_gem.c
-> @@ -56,6 +56,19 @@ static void gem_free_pages_array(struct xen_gem_object *xen_obj)
->   	xen_obj->pages = NULL;
->   }
->   
-> +static const struct vm_operations_struct xen_drm_drv_vm_ops = {
-> +	.open           = drm_gem_vm_open,
-> +	.close          = drm_gem_vm_close,
-> +};
-> +
-> +static const struct drm_gem_object_funcs xen_drm_front_gem_object_funcs = {
-> +	.free = xen_drm_drv_free_object_unlocked,
-> +	.get_sg_table = xen_drm_front_gem_get_sg_table,
-> +	.vmap = xen_drm_front_gem_prime_vmap,
-> +	.vunmap = xen_drm_front_gem_prime_vunmap,
-> +	.vm_ops = &xen_drm_drv_vm_ops,
-> +};
-> +
->   static struct xen_gem_object *gem_create_obj(struct drm_device *dev,
->   					     size_t size)
->   {
-> @@ -66,6 +79,8 @@ static struct xen_gem_object *gem_create_obj(struct drm_device *dev,
->   	if (!xen_obj)
->   		return ERR_PTR(-ENOMEM);
->   
-> +	xen_obj->base.funcs = &xen_drm_front_gem_object_funcs;
-> +
->   	ret = drm_gem_object_init(dev, &xen_obj->base, size);
->   	if (ret < 0) {
->   		kfree(xen_obj);
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+index c53e2c391e32..27ab9c512ae1 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+@@ -259,6 +259,10 @@ bool mtk_is_virt_gpio(struct mtk_pinctrl *hw, unsigned int gpio_n)
+ 
+ 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio_n];
+ 
++	/* if the GPIO is not supported for eint mode */
++	if (desc->eint.eint_m == EINT_NA)
++		return virt_gpio;
++
+ 	if (desc->funcs && !desc->funcs[desc->eint.eint_m].name)
+ 		virt_gpio = true;
+ 
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
