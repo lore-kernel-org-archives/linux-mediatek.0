@@ -2,82 +2,65 @@ Return-Path: <SRS0=lgZq=BX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9AF50C433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 10:00:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0EED2C433E3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 10:17:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 67AFF20781
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 10:00:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BFD5920768
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 10:17:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RA9Jbsor";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="mgQJdDhF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 67AFF20781
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e47LTwdk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BFD5920768
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=WpIGuOZL7uVX7j6rC67waozgSj3kP026U+KrQKuQtOs=; b=RA9JbsorQXo/e387DwjZYPKCo
-	6u2MUhuVTtQVf8Oqr5IEb8msEV1MgCLBaqPpMxDJDyxmLFFm8UEFlN+rBbRFvSubjsPNLHavAh2LT
-	vp/XRIn55RoVC4NqcZjuwL0lbbWz/fLFTmcNIPLG+czdBYIIUSGgQfPMQSRoCbKsUPGcapctxhAhW
-	xytaDOD+n/jtp5sxeep1B1CjpWAqJPwPdmKt/idGddtOhjs6C/EAC3sdKY7JwtYBMBjsblwvGUvBA
-	cnjZiw7CKgF9d1P+2rG6fWLfR86nCrvzn4aiHw9sT7mn2LEseu82zs/DW+Ia62remERsP13Flr4sU
-	KnL0dUOEA==;
+	 bh=a7rBkKqkteFfKN0+Qp7X89Na6pf8RPAY1OlvR+XNKq4=; b=e47LTwdkDARjBsJA/spPUzfCz
+	CjPMvixFYi3Su2eK8ENG9deK7oOhs5tOKbFuQRGPVyj3DHWUmwz/vLETuOcQMehw6RX1FvXphJiST
+	BNQp8HDe/pIAH0fbrQm9HGdyCmQvlkFkvokQkaXHOYT/hYfQYQ1NsapQvZyCrJQcR1KYFDVmKhPh8
+	vm95zXKlx/E+P/ltVav5ROihxpesoTSipiv+NZSr6EyFe7g+55lkl6VYg9yH+lEllPAcRxPpxVG+b
+	eAWh63EFA9TBO0H8sELMMHnuu2YXam914vegTBxiZQNo+lUNBMk/6pGWbiSa+speTaV7qVZ50z6H8
+	eYheK/bfA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k6A2P-0008Ht-Cw; Thu, 13 Aug 2020 10:00:45 +0000
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
+	id 1k6AIP-0002Tm-IP; Thu, 13 Aug 2020 10:17:17 +0000
+Received: from asavdk4.altibox.net ([109.247.116.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k6A2N-0008Gw-LO; Thu, 13 Aug 2020 10:00:44 +0000
-Received: by mail-pj1-x1043.google.com with SMTP id l60so2547174pjb.3;
- Thu, 13 Aug 2020 03:00:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=lr+XPSui9MVitN/YHK0a7wRgaRs8jhxh1g6LAoEgFFI=;
- b=mgQJdDhFJsY+4ZZX7nEd7PUwFxnI/GND9MTZddYsJCzitgcZ8MJKOwXL8SWS8NZDjY
- R3WQ0U7ZX6RWtqId3eSKxzrexiVUkm2RMXbUo5ZS1MN3yIse3C5RWZVhXDKYtP/GuldE
- mgF1hswi5xwPoWYi3izh0o7+NrQ5IYVWkka5O99Ga5km9xVUt8hYGWD0FOWJj10lyO0b
- 8B1ajYPiFpCYyMoGEfYJOVJdE8b9GuCrYYoF6wwfPEJq+HWjmJLHJGB7GhGKLpDXgCtg
- cdp0MyDny9Xmw6tbbDHfgqlm6hkES9WGQrf1WUbgF4aHv7BGVPCOlR7iJy1eubUGuXiv
- tFJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=lr+XPSui9MVitN/YHK0a7wRgaRs8jhxh1g6LAoEgFFI=;
- b=FXCF0bBsGdpkKnNFxrx/aDqEdvm2KGxtAh2I35kZAS/nz1h4sQc/IVQQBTwSXlOIkk
- AwvfBK+Ymbf6iAJ00z8YGU092tV9niZ+SmRchMnQtIAaq5T/tGLQbtzvG47i9llHL6Kn
- lwlpemj2qysR+uZy+EwOI05saRFpg3hlPXggSqsbChcoEkc1Ery6m4vGJPuHtGdDHwLe
- QRlggrCizfNvRagEWBZgIcyLRuchx52DU2HKqSbMZ8i16V4ykwmcE8eIvKZ0cKZjPBlD
- c/+3s5h2sSCuNkioL7r+uafsAYs7HIupO33AyHPO0pZvb6GKa+F4V9wGO+GGa91ijb0Z
- c3gQ==
-X-Gm-Message-State: AOAM5320taaXNeqMIQ9TaXpLY+CH7z6ug0d3jJCvQonirKqDdxpOYk8C
- bBkf31JzgqdfC39HtFlL1Fkar75S7btUgnG3cyw=
-X-Google-Smtp-Source: ABdhPJz38GeLmThoezC6lraEWn1MkImxxv3Tn3zbkSqQi3x5qtMSX50ThTooPvM8JHxj3dDmc1o23Vd8TYq7Iec2SNE=
-X-Received: by 2002:a17:902:d3cb:: with SMTP id
- w11mr3178004plb.255.1597312839745; 
- Thu, 13 Aug 2020 03:00:39 -0700 (PDT)
+ id 1k6AIL-0002Ry-Tu; Thu, 13 Aug 2020 10:17:15 +0000
+Received: from ravnborg.org (unknown [188.228.123.71])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by asavdk4.altibox.net (Postfix) with ESMTPS id 346C580503;
+ Thu, 13 Aug 2020 12:17:01 +0200 (CEST)
+Date: Thu, 13 Aug 2020 12:16:59 +0200
+From: Sam Ravnborg <sam@ravnborg.org>
+To: Thomas Zimmermann <tzimmermann@suse.de>
+Subject: Re: [PATCH 20/20] drm: Remove obsolete GEM and PRIME callbacks from
+ struct drm_driver
+Message-ID: <20200813101659.GA752979@ravnborg.org>
+References: <20200813083644.31711-1-tzimmermann@suse.de>
+ <20200813083644.31711-21-tzimmermann@suse.de>
 MIME-Version: 1.0
-References: <20200810065128.3324-3-fengping.yu@mediatek.com>
- <20200813005509.GU1665100@dtor-ws>
-In-Reply-To: <20200813005509.GU1665100@dtor-ws>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Thu, 13 Aug 2020 13:00:24 +0300
-Message-ID: <CAHp75VfKckoK4facC3nMDLLUYUtd5Y66+E5xgkVpVYfyTTa9Hg@mail.gmail.com>
-Subject: Re: [PATCH v17 2/3] drivers: input: keyboard: Add mtk keypad driver
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20200813083644.31711-21-tzimmermann@suse.de>
+X-CMAE-Score: 0
+X-CMAE-Analysis: v=2.3 cv=aP3eV41m c=1 sm=1 tr=0
+ a=S6zTFyMACwkrwXSdXUNehg==:117 a=S6zTFyMACwkrwXSdXUNehg==:17
+ a=kj9zAlcOel0A:10 a=N6sGBX8BiyC5GP_3pz8A:9 a=EQFFPReBfTXNiWI6:21
+ a=YPaO2tjWljxz4Jer:21 a=CjuIK1q_8ugA:10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200813_060043_731360_AB9946B7 
-X-CRM114-Status: GOOD (  23.18  )
+X-CRM114-CacheID: sfid-20200813_061714_470081_1EB47762 
+X-CRM114-Status: GOOD (  42.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,107 +72,419 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree <devicetree@vger.kernel.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Marco Felsch <m.felsch@pengutronix.de>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-input <linux-input@vger.kernel.org>,
- Yingjoe Chen <yingjoe.chen@mediatek.com>,
- Fengping Yu <fengping.yu@mediatek.com>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Cc: hamohammed.sa@gmail.com, heiko@sntech.de, andrey.grodzovsky@amd.com,
+ airlied@linux.ie, nouveau@lists.freedesktop.org,
+ joonas.lahtinen@linux.intel.com, dri-devel@lists.freedesktop.org,
+ michal.simek@xilinx.com, eric@anholt.net, thierry.reding@gmail.com,
+ robdclark@gmail.com, krzk@kernel.org, sumit.semwal@linaro.org,
+ emil.velikov@collabora.com, abdiel.janulgue@linux.intel.com,
+ linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com,
+ oleksandr_andrushchenko@epam.com, tomi.valkeinen@ti.com,
+ linux-tegra@vger.kernel.org, linux@armlinux.org.uk,
+ patrik.r.jakobsson@gmail.com, jonathanh@nvidia.com,
+ linux-rockchip@lists.infradead.org, kgene@kernel.org, bskeggs@redhat.com,
+ xen-devel@lists.xenproject.org, miaoqinglang@huawei.com,
+ intel-gfx@lists.freedesktop.org, matthew.auld@intel.com,
+ chunkuang.hu@kernel.org, andi.shyti@intel.com, daniel@ffwll.ch,
+ linux-arm-msm@vger.kernel.org, marek.olsak@amd.com, tianci.yin@amd.com,
+ maarten.lankhorst@linux.intel.com, etnaviv@lists.freedesktop.org,
+ jani.nikula@linux.intel.com, inki.dae@samsung.com, hdegoede@redhat.com,
+ christian.gmeiner@gmail.com, linux-mediatek@lists.infradead.org,
+ mripard@kernel.org, rodrigo.vivi@intel.com, matthias.bgg@gmail.com,
+ evan.quan@amd.com, sean@poorly.run, linux-arm-kernel@lists.infradead.org,
+ tvrtko.ursulin@linux.intel.com, amd-gfx@lists.freedesktop.org,
+ laurent.pinchart@ideasonboard.com, hyun.kwon@xilinx.com,
+ rodrigosiqueiramelo@gmail.com, aaron.liu@amd.com, Felix.Kuehling@amd.com,
+ xinhui.pan@amd.com, sw0312.kim@samsung.com, hjc@rock-chips.com,
+ chris@chris-wilson.co.uk, kyungmin.park@samsung.com, nirmoy.das@amd.com,
+ p.zabel@pengutronix.de, alexander.deucher@amd.com, Hawking.Zhang@amd.com,
+ freedreno@lists.freedesktop.org, christian.koenig@amd.com,
+ l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 13, 2020 at 3:57 AM Dmitry Torokhov
-<dmitry.torokhov@gmail.com> wrote:
-> On Mon, Aug 10, 2020 at 02:51:28PM +0800, Fengping Yu wrote:
-> > From: "fengping.yu" <fengping.yu@mediatek.com>
-> >
-> > This patch adds matrix keypad support for Mediatek SoCs.
+Hi Thomas.
 
-...
+On Thu, Aug 13, 2020 at 10:36:44AM +0200, Thomas Zimmermann wrote:
+> Several GEM and PRIME callbacks have been deprecated in favor of
+> per-instance GEM object functions. Remove the callbacks as they are
+> now unused. The only exception is .gem_prime_mmap, which is still
+> in use by several drivers.
+> 
+> What is also gone is gem_vm_ops in struct drm_driver. All drivers now
+> use struct drm_gem_object_funcs.vm_ops instead.
+> 
+> While at it, the patch also improves error handling around calls
+> to .free and .get_sg_table callbacks.
+> 
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 
-> > +static irqreturn_t kpd_irq_handler(int irq, void *dev_id)
-> > +{
-> > +     struct mtk_keypad *keypad = dev_id;
-> > +     unsigned short *keycode = keypad->input_dev->keycode;
-> > +     DECLARE_BITMAP(new_state, MTK_KPD_NUM_BITS);
-> > +     DECLARE_BITMAP(change, MTK_KPD_NUM_BITS);
-> > +     int bit_nr;
-> > +     int pressed;
-> > +     unsigned short code;
-> > +
-> > +     regmap_bulk_read(keypad->regmap, MTK_KPD_MEM,
-> > +                     new_state, MTK_KPD_NUM_MEMS);
-> > +
-> > +     bitmap_xor(change, new_state, keypad->keymap_state, MTK_KPD_NUM_BITS);
-> > +
-> > +     for_each_set_bit(bit_nr, change, MTK_KPD_NUM_BITS) {
->
-> Should we be explicit:
->
->                 if (bit_nr % 32 >= 16) // or "if ((bit_nr / 16) % 2)"
->                         continue;
->
-> so that we sure we do not trip over garbage (if any) in the unused
-> bits?
+After this following entry in todo.rst is done?
 
-Shouldn't we rather rely on the fact that bitmap API explicitly takes
-a bit number as an argument. What garbage are you thinking of?
-If you are talking about gaps, then probably existing
-for_each_set_clump8() or free size analogue (not yet in upstream,
-though) should be used instead?
+"
+struct drm_gem_object_funcs
+---------------------------
 
-> > +             /* 1: not pressed, 0: pressed */
-> > +             pressed = !test_bit(bit_nr, new_state);
-> > +             dev_dbg(&keypad->input_dev->dev, "%s",
-> > +                     pressed ? "pressed" : "released");
-> > +
-> > +             /* 32bit register only use low 16bit as keypad mem register */
-> > +             code = keycode[bit_nr - 16 * (BITS_TO_U32(bit_nr) - 1)];
->
-> This will give index of 16 for (0,0).
+GEM objects can now have a function table instead of having the callbacks on the
+DRM driver struct. This is now the preferred way and drivers can be moved over.
 
-I was also puzzled by this in one of the review rounds, but I don't
-remember what was the explanation.
+We also need a 2nd version of the CMA define that doesn't require the
+vmapping to be present (different hook for prime importing). Plus this needs to
+be rolled out to all drivers using their own implementations, too.
+"
 
-> Is this what we want? Hmm, this is
-> all weird... I think we need:
->
->                 row = bit_nr / 32;
->                 col = bit_nr % 32;
->                 if (col > 15)
->                         continue;
->
->                 // set row_shift in probe() as:
->                 // keypad_data->row_shift =
->                 //              get_count_order(keypad_data->n_cols);
->                 code = keycode[MATRIX_SCAN_CODE(row, col,
->                                                 keypad_data->row_shift)];
->
-> This will properly unpack the keymap built by
-> matrix_keypad_build_keymap().
->
-> > +
-> > +             input_report_key(keypad->input_dev, code, pressed);
-> > +             input_sync(keypad->input_dev);
-> > +
-> > +             dev_dbg(&keypad->input_dev->dev,
-> > +                     "report Linux keycode = %d\n", code);
-> > +     }
-> > +
-> > +     bitmap_copy(keypad->keymap_state, new_state, MTK_KPD_NUM_BITS);
-> > +
-> > +     return IRQ_HANDLED;
-> > +}
+If yes, then delete it too.
 
--- 
-With Best Regards,
-Andy Shevchenko
+	Sam
+
+> ---
+>  drivers/gpu/drm/drm_gem.c            | 35 +++---------
+>  drivers/gpu/drm/drm_gem_cma_helper.c |  6 +-
+>  drivers/gpu/drm/drm_prime.c          | 17 +++---
+>  include/drm/drm_drv.h                | 85 ++--------------------------
+>  4 files changed, 23 insertions(+), 120 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/drm_gem.c b/drivers/gpu/drm/drm_gem.c
+> index 19d73868490e..96945bed8291 100644
+> --- a/drivers/gpu/drm/drm_gem.c
+> +++ b/drivers/gpu/drm/drm_gem.c
+> @@ -247,12 +247,9 @@ drm_gem_object_release_handle(int id, void *ptr, void *data)
+>  {
+>  	struct drm_file *file_priv = data;
+>  	struct drm_gem_object *obj = ptr;
+> -	struct drm_device *dev = obj->dev;
+>  
+>  	if (obj->funcs && obj->funcs->close)
+>  		obj->funcs->close(obj, file_priv);
+> -	else if (dev->driver->gem_close_object)
+> -		dev->driver->gem_close_object(obj, file_priv);
+>  
+>  	drm_gem_remove_prime_handles(obj, file_priv);
+>  	drm_vma_node_revoke(&obj->vma_node, file_priv);
+> @@ -407,10 +404,6 @@ drm_gem_handle_create_tail(struct drm_file *file_priv,
+>  		ret = obj->funcs->open(obj, file_priv);
+>  		if (ret)
+>  			goto err_revoke;
+> -	} else if (dev->driver->gem_open_object) {
+> -		ret = dev->driver->gem_open_object(obj, file_priv);
+> -		if (ret)
+> -			goto err_revoke;
+>  	}
+>  
+>  	*handlep = handle;
+> @@ -982,12 +975,11 @@ drm_gem_object_free(struct kref *kref)
+>  {
+>  	struct drm_gem_object *obj =
+>  		container_of(kref, struct drm_gem_object, refcount);
+> -	struct drm_device *dev = obj->dev;
+>  
+> -	if (obj->funcs)
+> -		obj->funcs->free(obj);
+> -	else if (dev->driver->gem_free_object_unlocked)
+> -		dev->driver->gem_free_object_unlocked(obj);
+> +	if (drm_WARN_ON_ONCE(obj->dev, !obj->funcs || !obj->funcs->free))
+> +		return;
+> +
+> +	obj->funcs->free(obj);
+>  }
+>  EXPORT_SYMBOL(drm_gem_object_free);
+>  
+> @@ -1049,9 +1041,9 @@ EXPORT_SYMBOL(drm_gem_vm_close);
+>   * @obj_size: the object size to be mapped, in bytes
+>   * @vma: VMA for the area to be mapped
+>   *
+> - * Set up the VMA to prepare mapping of the GEM object using the gem_vm_ops
+> - * provided by the driver. Depending on their requirements, drivers can either
+> - * provide a fault handler in their gem_vm_ops (in which case any accesses to
+> + * Set up the VMA to prepare mapping of the GEM object using the GEM object's
+> + * vm_ops. Depending on their requirements, GEM objects can either
+> + * provide a fault handler in their vm_ops (in which case any accesses to
+>   * the object will be trapped, to perform migration, GTT binding, surface
+>   * register allocation, or performance monitoring), or mmap the buffer memory
+>   * synchronously after calling drm_gem_mmap_obj.
+> @@ -1065,12 +1057,11 @@ EXPORT_SYMBOL(drm_gem_vm_close);
+>   * callers must verify access restrictions before calling this helper.
+>   *
+>   * Return 0 or success or -EINVAL if the object size is smaller than the VMA
+> - * size, or if no gem_vm_ops are provided.
+> + * size, or if no vm_ops are provided.
+>   */
+>  int drm_gem_mmap_obj(struct drm_gem_object *obj, unsigned long obj_size,
+>  		     struct vm_area_struct *vma)
+>  {
+> -	struct drm_device *dev = obj->dev;
+>  	int ret;
+>  
+>  	/* Check for valid size. */
+> @@ -1095,8 +1086,6 @@ int drm_gem_mmap_obj(struct drm_gem_object *obj, unsigned long obj_size,
+>  	} else {
+>  		if (obj->funcs && obj->funcs->vm_ops)
+>  			vma->vm_ops = obj->funcs->vm_ops;
+> -		else if (dev->driver->gem_vm_ops)
+> -			vma->vm_ops = dev->driver->gem_vm_ops;
+>  		else {
+>  			drm_gem_object_put(obj);
+>  			return -EINVAL;
+> @@ -1206,8 +1195,6 @@ int drm_gem_pin(struct drm_gem_object *obj)
+>  {
+>  	if (obj->funcs && obj->funcs->pin)
+>  		return obj->funcs->pin(obj);
+> -	else if (obj->dev->driver->gem_prime_pin)
+> -		return obj->dev->driver->gem_prime_pin(obj);
+>  	else
+>  		return 0;
+>  }
+> @@ -1216,8 +1203,6 @@ void drm_gem_unpin(struct drm_gem_object *obj)
+>  {
+>  	if (obj->funcs && obj->funcs->unpin)
+>  		obj->funcs->unpin(obj);
+> -	else if (obj->dev->driver->gem_prime_unpin)
+> -		obj->dev->driver->gem_prime_unpin(obj);
+>  }
+>  
+>  void *drm_gem_vmap(struct drm_gem_object *obj)
+> @@ -1226,8 +1211,6 @@ void *drm_gem_vmap(struct drm_gem_object *obj)
+>  
+>  	if (obj->funcs && obj->funcs->vmap)
+>  		vaddr = obj->funcs->vmap(obj);
+> -	else if (obj->dev->driver->gem_prime_vmap)
+> -		vaddr = obj->dev->driver->gem_prime_vmap(obj);
+>  	else
+>  		vaddr = ERR_PTR(-EOPNOTSUPP);
+>  
+> @@ -1244,8 +1227,6 @@ void drm_gem_vunmap(struct drm_gem_object *obj, void *vaddr)
+>  
+>  	if (obj->funcs && obj->funcs->vunmap)
+>  		obj->funcs->vunmap(obj, vaddr);
+> -	else if (obj->dev->driver->gem_prime_vunmap)
+> -		obj->dev->driver->gem_prime_vunmap(obj, vaddr);
+>  }
+>  
+>  /**
+> diff --git a/drivers/gpu/drm/drm_gem_cma_helper.c b/drivers/gpu/drm/drm_gem_cma_helper.c
+> index 822edeadbab3..209202257cc2 100644
+> --- a/drivers/gpu/drm/drm_gem_cma_helper.c
+> +++ b/drivers/gpu/drm/drm_gem_cma_helper.c
+> @@ -419,7 +419,7 @@ EXPORT_SYMBOL(drm_gem_cma_print_info);
+>   *
+>   * This function exports a scatter/gather table suitable for PRIME usage by
+>   * calling the standard DMA mapping API. Drivers using the CMA helpers should
+> - * set this as their &drm_driver.gem_prime_get_sg_table callback.
+> + * set this as their &drm_gem_object_funcs.get_sg_table callback.
+>   *
+>   * Returns:
+>   * A pointer to the scatter/gather table of pinned pages or NULL on failure.
+> @@ -542,7 +542,7 @@ EXPORT_SYMBOL_GPL(drm_gem_cma_prime_mmap);
+>   * virtual address space. Since the CMA buffers are already mapped into the
+>   * kernel virtual address space this simply returns the cached virtual
+>   * address. Drivers using the CMA helpers should set this as their DRM
+> - * driver's &drm_driver.gem_prime_vmap callback.
+> + * driver's &drm_gem_object_funcs.vmap callback.
+>   *
+>   * Returns:
+>   * The kernel virtual address of the CMA GEM object's backing store.
+> @@ -564,7 +564,7 @@ EXPORT_SYMBOL_GPL(drm_gem_cma_prime_vmap);
+>   * This function removes a buffer exported via DRM PRIME from the kernel's
+>   * virtual address space. This is a no-op because CMA buffers cannot be
+>   * unmapped from kernel space. Drivers using the CMA helpers should set this
+> - * as their &drm_driver.gem_prime_vunmap callback.
+> + * as their &drm_gem_object_funcs.vunmap callback.
+>   */
+>  void drm_gem_cma_prime_vunmap(struct drm_gem_object *obj, void *vaddr)
+>  {
+> diff --git a/drivers/gpu/drm/drm_prime.c b/drivers/gpu/drm/drm_prime.c
+> index 1693aa7c14b5..9a87639e7008 100644
+> --- a/drivers/gpu/drm/drm_prime.c
+> +++ b/drivers/gpu/drm/drm_prime.c
+> @@ -386,10 +386,6 @@ static struct dma_buf *export_and_register_object(struct drm_device *dev,
+>  
+>  	if (obj->funcs && obj->funcs->export)
+>  		dmabuf = obj->funcs->export(obj, flags);
+> -	else if (dev->driver->gem_prime_export)
+> -		dmabuf = dev->driver->gem_prime_export(obj, flags);
+> -	else
+> -		dmabuf = drm_gem_prime_export(obj, flags);
+>  	if (IS_ERR(dmabuf)) {
+>  		/* normally the created dma-buf takes ownership of the ref,
+>  		 * but if that fails then drop the ref
+> @@ -419,7 +415,7 @@ static struct dma_buf *export_and_register_object(struct drm_device *dev,
+>   * This is the PRIME export function which must be used mandatorily by GEM
+>   * drivers to ensure correct lifetime management of the underlying GEM object.
+>   * The actual exporting from GEM object to a dma-buf is done through the
+> - * &drm_driver.gem_prime_export driver callback.
+> + * &drm_gem_object_funcs.export callback.
+>   */
+>  int drm_gem_prime_handle_to_fd(struct drm_device *dev,
+>  			       struct drm_file *file_priv, uint32_t handle,
+> @@ -616,15 +612,18 @@ struct sg_table *drm_gem_map_dma_buf(struct dma_buf_attachment *attach,
+>  				     enum dma_data_direction dir)
+>  {
+>  	struct drm_gem_object *obj = attach->dmabuf->priv;
+> -	struct sg_table *sgt;
+> +	struct sg_table *sgt = NULL;
+>  
+>  	if (WARN_ON(dir == DMA_NONE))
+>  		return ERR_PTR(-EINVAL);
+>  
+> -	if (obj->funcs)
+> +	if (obj->funcs && obj->funcs->get_sg_table)
+>  		sgt = obj->funcs->get_sg_table(obj);
+> -	else
+> -		sgt = obj->dev->driver->gem_prime_get_sg_table(obj);
+> +
+> +	if (!sgt)
+> +		return ERR_PTR(-EINVAL);
+> +	else if (IS_ERR(sgt))
+> +		return sgt;
+>  
+>  	if (!dma_map_sg_attrs(attach->dev, sgt->sgl, sgt->nents, dir,
+>  			      DMA_ATTR_SKIP_CPU_SYNC)) {
+> diff --git a/include/drm/drm_drv.h b/include/drm/drm_drv.h
+> index 7116abc1a04e..8b325bf6cef4 100644
+> --- a/include/drm/drm_drv.h
+> +++ b/include/drm/drm_drv.h
+> @@ -36,10 +36,12 @@ struct drm_file;
+>  struct drm_gem_object;
+>  struct drm_master;
+>  struct drm_minor;
+> +struct dma_buf;
+>  struct dma_buf_attachment;
+>  struct drm_display_mode;
+>  struct drm_mode_create_dumb;
+>  struct drm_printer;
+> +struct sg_table;
+>  
+>  /**
+>   * enum drm_driver_feature - feature flags
+> @@ -327,32 +329,6 @@ struct drm_driver {
+>  	 */
+>  	void (*debugfs_init)(struct drm_minor *minor);
+>  
+> -	/**
+> -	 * @gem_free_object_unlocked: deconstructor for drm_gem_objects
+> -	 *
+> -	 * This is deprecated and should not be used by new drivers. Use
+> -	 * &drm_gem_object_funcs.free instead.
+> -	 */
+> -	void (*gem_free_object_unlocked) (struct drm_gem_object *obj);
+> -
+> -	/**
+> -	 * @gem_open_object:
+> -	 *
+> -	 * This callback is deprecated in favour of &drm_gem_object_funcs.open.
+> -	 *
+> -	 * Driver hook called upon gem handle creation
+> -	 */
+> -	int (*gem_open_object) (struct drm_gem_object *, struct drm_file *);
+> -
+> -	/**
+> -	 * @gem_close_object:
+> -	 *
+> -	 * This callback is deprecated in favour of &drm_gem_object_funcs.close.
+> -	 *
+> -	 * Driver hook called upon gem handle release
+> -	 */
+> -	void (*gem_close_object) (struct drm_gem_object *, struct drm_file *);
+> -
+>  	/**
+>  	 * @gem_create_object: constructor for gem objects
+>  	 *
+> @@ -361,6 +337,7 @@ struct drm_driver {
+>  	 */
+>  	struct drm_gem_object *(*gem_create_object)(struct drm_device *dev,
+>  						    size_t size);
+> +
+>  	/**
+>  	 * @prime_handle_to_fd:
+>  	 *
+> @@ -383,14 +360,7 @@ struct drm_driver {
+>  	 */
+>  	int (*prime_fd_to_handle)(struct drm_device *dev, struct drm_file *file_priv,
+>  				int prime_fd, uint32_t *handle);
+> -	/**
+> -	 * @gem_prime_export:
+> -	 *
+> -	 * Export hook for GEM drivers. Deprecated in favour of
+> -	 * &drm_gem_object_funcs.export.
+> -	 */
+> -	struct dma_buf * (*gem_prime_export)(struct drm_gem_object *obj,
+> -					     int flags);
+> +
+>  	/**
+>  	 * @gem_prime_import:
+>  	 *
+> @@ -400,29 +370,6 @@ struct drm_driver {
+>  	 */
+>  	struct drm_gem_object * (*gem_prime_import)(struct drm_device *dev,
+>  				struct dma_buf *dma_buf);
+> -
+> -	/**
+> -	 * @gem_prime_pin:
+> -	 *
+> -	 * Deprecated hook in favour of &drm_gem_object_funcs.pin.
+> -	 */
+> -	int (*gem_prime_pin)(struct drm_gem_object *obj);
+> -
+> -	/**
+> -	 * @gem_prime_unpin:
+> -	 *
+> -	 * Deprecated hook in favour of &drm_gem_object_funcs.unpin.
+> -	 */
+> -	void (*gem_prime_unpin)(struct drm_gem_object *obj);
+> -
+> -
+> -	/**
+> -	 * @gem_prime_get_sg_table:
+> -	 *
+> -	 * Deprecated hook in favour of &drm_gem_object_funcs.get_sg_table.
+> -	 */
+> -	struct sg_table *(*gem_prime_get_sg_table)(struct drm_gem_object *obj);
+> -
+>  	/**
+>  	 * @gem_prime_import_sg_table:
+>  	 *
+> @@ -433,22 +380,6 @@ struct drm_driver {
+>  				struct drm_device *dev,
+>  				struct dma_buf_attachment *attach,
+>  				struct sg_table *sgt);
+> -	/**
+> -	 * @gem_prime_vmap:
+> -	 *
+> -	 * Deprecated vmap hook for GEM drivers. Please use
+> -	 * &drm_gem_object_funcs.vmap instead.
+> -	 */
+> -	void *(*gem_prime_vmap)(struct drm_gem_object *obj);
+> -
+> -	/**
+> -	 * @gem_prime_vunmap:
+> -	 *
+> -	 * Deprecated vunmap hook for GEM drivers. Please use
+> -	 * &drm_gem_object_funcs.vunmap instead.
+> -	 */
+> -	void (*gem_prime_vunmap)(struct drm_gem_object *obj, void *vaddr);
+> -
+>  	/**
+>  	 * @gem_prime_mmap:
+>  	 *
+> @@ -523,14 +454,6 @@ struct drm_driver {
+>  			    struct drm_device *dev,
+>  			    uint32_t handle);
+>  
+> -	/**
+> -	 * @gem_vm_ops: Driver private ops for this object
+> -	 *
+> -	 * For GEM drivers this is deprecated in favour of
+> -	 * &drm_gem_object_funcs.vm_ops.
+> -	 */
+> -	const struct vm_operations_struct *gem_vm_ops;
+> -
+>  	/** @major: driver major number */
+>  	int major;
+>  	/** @minor: driver minor number */
+> -- 
+> 2.28.0
 
 _______________________________________________
 Linux-mediatek mailing list
