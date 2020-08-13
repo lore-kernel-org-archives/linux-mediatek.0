@@ -2,23 +2,23 @@ Return-Path: <SRS0=lgZq=BX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B898DC433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 09:53:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9AF50C433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 10:00:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 863D72074D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 09:53:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 67AFF20781
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 10:00:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="arfYHFh/";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="g4mDUYV/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 863D72074D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RA9Jbsor";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="mgQJdDhF"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 67AFF20781
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,58 +26,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=I2ikKU+pKPWY9KqYPeEnLDx5re9GwaVFWxkxkZsbwws=; b=arfYHFh/+vBOoty32S7cYR8Y6
-	hJsdzBpXPvvPU2eCl+Eg9rTHaaDehYv9h1FjeBfZCtZbfcCwxu2fjWqmdbBpMukpkpco1dTTd24T8
-	Y91d1FrwasBBrY6ZGK78HCAWvTNtNl9o6nu6HVYXpeWJFJlVgwMarf08xbxM1UJShGkSFQxNRsdDA
-	FBpqzq3i+L1yj5M4jgTOmbD8UFnkKrLAUJwKh7Rxzcs5AHg13Y5N5c8G50zS/W7m8ZNBzdWOgMG/y
-	0xCltik/VOUPy2ud9vqdZNgh+LoOLYQAQy4h6YpcbmpKaJVGceJOZt6YbkWIYqNhxmhA81JwILcCn
-	valRKlNyw==;
+	 bh=WpIGuOZL7uVX7j6rC67waozgSj3kP026U+KrQKuQtOs=; b=RA9JbsorQXo/e387DwjZYPKCo
+	6u2MUhuVTtQVf8Oqr5IEb8msEV1MgCLBaqPpMxDJDyxmLFFm8UEFlN+rBbRFvSubjsPNLHavAh2LT
+	vp/XRIn55RoVC4NqcZjuwL0lbbWz/fLFTmcNIPLG+czdBYIIUSGgQfPMQSRoCbKsUPGcapctxhAhW
+	xytaDOD+n/jtp5sxeep1B1CjpWAqJPwPdmKt/idGddtOhjs6C/EAC3sdKY7JwtYBMBjsblwvGUvBA
+	cnjZiw7CKgF9d1P+2rG6fWLfR86nCrvzn4aiHw9sT7mn2LEseu82zs/DW+Ia62remERsP13Flr4sU
+	KnL0dUOEA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k69vX-0007MT-2m; Thu, 13 Aug 2020 09:53:39 +0000
-Received: from mail-yb1-xb44.google.com ([2607:f8b0:4864:20::b44])
+	id 1k6A2P-0008Ht-Cw; Thu, 13 Aug 2020 10:00:45 +0000
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k69vU-0007HU-7J
- for linux-mediatek@lists.infradead.org; Thu, 13 Aug 2020 09:53:37 +0000
-Received: by mail-yb1-xb44.google.com with SMTP id g3so2997823ybc.3
- for <linux-mediatek@lists.infradead.org>; Thu, 13 Aug 2020 02:53:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ id 1k6A2N-0008Gw-LO; Thu, 13 Aug 2020 10:00:44 +0000
+Received: by mail-pj1-x1043.google.com with SMTP id l60so2547174pjb.3;
+ Thu, 13 Aug 2020 03:00:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Yul9D5KaapMfO0wSYYumb3nXfH25wAQuTtPB6LytFFQ=;
- b=g4mDUYV/kR2xqvMovbB9tOP1UwfQk6O047mQnaEfU/wAgqPu1NK8GhI6gfzcY5gZQ3
- kZdFLbxgB7OqRvASEeMmcEe99LPAOZaz1kZskBXb/8XLTVke3a8uOYyXOpCAh4FedTtR
- 9E7hUlfMGcRn3WfwvWi5YlF/FOSHG3E+wgdpSgj+p9Y2eLtGyRueVDENXxuIaA1s3otY
- fFOfdc7Cz1qEY35Es+aJJFSnpioiFZWGZk+LMsIWu/gGIUaAk2if4K2HJi4QVVS8cDdU
- ckMfr+jW5QSRMSVhuiCR8ex32+qd5wmgdgLepZcJIB/BCSs6gIOX0NPYuRcry/7YIAgL
- JPPg==
+ :cc; bh=lr+XPSui9MVitN/YHK0a7wRgaRs8jhxh1g6LAoEgFFI=;
+ b=mgQJdDhFJsY+4ZZX7nEd7PUwFxnI/GND9MTZddYsJCzitgcZ8MJKOwXL8SWS8NZDjY
+ R3WQ0U7ZX6RWtqId3eSKxzrexiVUkm2RMXbUo5ZS1MN3yIse3C5RWZVhXDKYtP/GuldE
+ mgF1hswi5xwPoWYi3izh0o7+NrQ5IYVWkka5O99Ga5km9xVUt8hYGWD0FOWJj10lyO0b
+ 8B1ajYPiFpCYyMoGEfYJOVJdE8b9GuCrYYoF6wwfPEJq+HWjmJLHJGB7GhGKLpDXgCtg
+ cdp0MyDny9Xmw6tbbDHfgqlm6hkES9WGQrf1WUbgF4aHv7BGVPCOlR7iJy1eubUGuXiv
+ tFJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Yul9D5KaapMfO0wSYYumb3nXfH25wAQuTtPB6LytFFQ=;
- b=fnZu2F+YTHdxwQVf7mRlibDrS4ArNyk61ixEUhGHx2rrPIGwk+BxmDsglzuAEeDRuN
- 7QW4Aa1/kDZIL4/cUIlWtld4oiBzXnXAuo2kKf16IPDfEKBUXu4NPaaR80Fz/BYUFmHl
- C0QN9uo8GHiyQEL8dbE5lU/AeE+Hwr77YBT9Ddeu5W6W77XvfbbK7AUsoqJl2LTkfIxQ
- gTXRVwQi6Ag43Ny9k21sKsNkIWG7cigiIZCVuwrrLNq5NbmHr2JRYzCoq2OnyecGMvv+
- ibYjFACfrupWRz54txqas6tTjCHPy3Cfot9zxbp97J2IKpt9ihgcD9DhaJHa0CFdJqCX
- /uxw==
-X-Gm-Message-State: AOAM531nrUd/aDESDuDPtwtmwUCQMAvsUvZCvqxinWiOp5I9UUKaoa4r
- KuXL5r87oynqPrzBZYR390g3Ur5aFsClHp8bnNiy9Q==
-X-Google-Smtp-Source: ABdhPJzfpaSBTx1xrZzflOrcYcv5QD4lOFsRlbhX3DHwVGqruN6Tmp191fs//DhyO/wYUtsNm9az23vyctAAcFPz7n0=
-X-Received: by 2002:a25:ab34:: with SMTP id u49mr5170276ybi.516.1597312412264; 
- Thu, 13 Aug 2020 02:53:32 -0700 (PDT)
+ bh=lr+XPSui9MVitN/YHK0a7wRgaRs8jhxh1g6LAoEgFFI=;
+ b=FXCF0bBsGdpkKnNFxrx/aDqEdvm2KGxtAh2I35kZAS/nz1h4sQc/IVQQBTwSXlOIkk
+ AwvfBK+Ymbf6iAJ00z8YGU092tV9niZ+SmRchMnQtIAaq5T/tGLQbtzvG47i9llHL6Kn
+ lwlpemj2qysR+uZy+EwOI05saRFpg3hlPXggSqsbChcoEkc1Ery6m4vGJPuHtGdDHwLe
+ QRlggrCizfNvRagEWBZgIcyLRuchx52DU2HKqSbMZ8i16V4ykwmcE8eIvKZ0cKZjPBlD
+ c/+3s5h2sSCuNkioL7r+uafsAYs7HIupO33AyHPO0pZvb6GKa+F4V9wGO+GGa91ijb0Z
+ c3gQ==
+X-Gm-Message-State: AOAM5320taaXNeqMIQ9TaXpLY+CH7z6ug0d3jJCvQonirKqDdxpOYk8C
+ bBkf31JzgqdfC39HtFlL1Fkar75S7btUgnG3cyw=
+X-Google-Smtp-Source: ABdhPJz38GeLmThoezC6lraEWn1MkImxxv3Tn3zbkSqQi3x5qtMSX50ThTooPvM8JHxj3dDmc1o23Vd8TYq7Iec2SNE=
+X-Received: by 2002:a17:902:d3cb:: with SMTP id
+ w11mr3178004plb.255.1597312839745; 
+ Thu, 13 Aug 2020 03:00:39 -0700 (PDT)
 MIME-Version: 1.0
-References: <1597284810-17454-1-git-send-email-chinwen.chang@mediatek.com>
-In-Reply-To: <1597284810-17454-1-git-send-email-chinwen.chang@mediatek.com>
-From: Michel Lespinasse <walken@google.com>
-Date: Thu, 13 Aug 2020 02:53:20 -0700
-Message-ID: <CANN689G0DkL-wpxMha=nyysPYG6LM3Aw7060k2xQTxTA4PAf-w@mail.gmail.com>
-Subject: Re: [PATCH v2 0/2] Try to release mmap_lock temporarily in
- smaps_rollup
-To: Chinwen Chang <chinwen.chang@mediatek.com>
+References: <20200810065128.3324-3-fengping.yu@mediatek.com>
+ <20200813005509.GU1665100@dtor-ws>
+In-Reply-To: <20200813005509.GU1665100@dtor-ws>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Thu, 13 Aug 2020 13:00:24 +0300
+Message-ID: <CAHp75VfKckoK4facC3nMDLLUYUtd5Y66+E5xgkVpVYfyTTa9Hg@mail.gmail.com>
+Subject: Re: [PATCH v17 2/3] drivers: input: keyboard: Add mtk keypad driver
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200813_055336_290751_68013F44 
-X-CRM114-Status: GOOD (  18.50  )
+X-CRM114-CacheID: sfid-20200813_060043_731360_AB9946B7 
+X-CRM114-Status: GOOD (  23.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,53 +89,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arm-kernel@lists.infradead.org, Song Liu <songliubraving@fb.com>,
- wsd_upstream@mediatek.com, Davidlohr Bueso <dbueso@suse.de>,
- LKML <linux-kernel@vger.kernel.org>,
- "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
- Daniel Jordan <daniel.m.jordan@oracle.com>, Jason Gunthorpe <jgg@ziepe.ca>,
- linux-mediatek@lists.infradead.org, Jimmy Assarsson <jimmyassarsson@gmail.com>,
- Huang Ying <ying.huang@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
- Steven Price <steven.price@arm.com>, Alexey Dobriyan <adobriyan@gmail.com>,
- Vlastimil Babka <vbabka@suse.cz>
+Cc: devicetree <devicetree@vger.kernel.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Marco Felsch <m.felsch@pengutronix.de>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-input <linux-input@vger.kernel.org>,
+ Yingjoe Chen <yingjoe.chen@mediatek.com>,
+ Fengping Yu <fengping.yu@mediatek.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 12, 2020 at 7:14 PM Chinwen Chang
-<chinwen.chang@mediatek.com> wrote:
-> Recently, we have observed some janky issues caused by unpleasantly long
-> contention on mmap_lock which is held by smaps_rollup when probing large
-> processes. To address the problem, we let smaps_rollup detect if anyone
-> wants to acquire mmap_lock for write attempts. If yes, just release the
-> lock temporarily to ease the contention.
->
-> smaps_rollup is a procfs interface which allows users to summarize the
-> process's memory usage without the overhead of seq_* calls. Android uses it
-> to sample the memory usage of various processes to balance its memory pool
-> sizes. If no one wants to take the lock for write requests, smaps_rollup
-> with this patch will behave like the original one.
->
-> Although there are on-going mmap_lock optimizations like range-based locks,
-> the lock applied to smaps_rollup would be the coarse one, which is hard to
-> avoid the occurrence of aforementioned issues. So the detection and
-> temporary release for write attempts on mmap_lock in smaps_rollup is still
-> necessary.
+On Thu, Aug 13, 2020 at 3:57 AM Dmitry Torokhov
+<dmitry.torokhov@gmail.com> wrote:
+> On Mon, Aug 10, 2020 at 02:51:28PM +0800, Fengping Yu wrote:
+> > From: "fengping.yu" <fengping.yu@mediatek.com>
+> >
+> > This patch adds matrix keypad support for Mediatek SoCs.
 
-I do not mind extending the mmap lock API as needed. However, in the
-past I have tried adding rwsem_is_contended to mlock(), and later to
-mm_populate() paths, and IIRC gotten pushback on it both times. I
-don't feel strongly on this, but would prefer if someone else approved
-the rwsem_is_contended() use case.
+...
 
-Couple related questions, how many VMAs are we looking at here ? Would
-need_resched() be workable too ?
+> > +static irqreturn_t kpd_irq_handler(int irq, void *dev_id)
+> > +{
+> > +     struct mtk_keypad *keypad = dev_id;
+> > +     unsigned short *keycode = keypad->input_dev->keycode;
+> > +     DECLARE_BITMAP(new_state, MTK_KPD_NUM_BITS);
+> > +     DECLARE_BITMAP(change, MTK_KPD_NUM_BITS);
+> > +     int bit_nr;
+> > +     int pressed;
+> > +     unsigned short code;
+> > +
+> > +     regmap_bulk_read(keypad->regmap, MTK_KPD_MEM,
+> > +                     new_state, MTK_KPD_NUM_MEMS);
+> > +
+> > +     bitmap_xor(change, new_state, keypad->keymap_state, MTK_KPD_NUM_BITS);
+> > +
+> > +     for_each_set_bit(bit_nr, change, MTK_KPD_NUM_BITS) {
+>
+> Should we be explicit:
+>
+>                 if (bit_nr % 32 >= 16) // or "if ((bit_nr / 16) % 2)"
+>                         continue;
+>
+> so that we sure we do not trip over garbage (if any) in the unused
+> bits?
+
+Shouldn't we rather rely on the fact that bitmap API explicitly takes
+a bit number as an argument. What garbage are you thinking of?
+If you are talking about gaps, then probably existing
+for_each_set_clump8() or free size analogue (not yet in upstream,
+though) should be used instead?
+
+> > +             /* 1: not pressed, 0: pressed */
+> > +             pressed = !test_bit(bit_nr, new_state);
+> > +             dev_dbg(&keypad->input_dev->dev, "%s",
+> > +                     pressed ? "pressed" : "released");
+> > +
+> > +             /* 32bit register only use low 16bit as keypad mem register */
+> > +             code = keycode[bit_nr - 16 * (BITS_TO_U32(bit_nr) - 1)];
+>
+> This will give index of 16 for (0,0).
+
+I was also puzzled by this in one of the review rounds, but I don't
+remember what was the explanation.
+
+> Is this what we want? Hmm, this is
+> all weird... I think we need:
+>
+>                 row = bit_nr / 32;
+>                 col = bit_nr % 32;
+>                 if (col > 15)
+>                         continue;
+>
+>                 // set row_shift in probe() as:
+>                 // keypad_data->row_shift =
+>                 //              get_count_order(keypad_data->n_cols);
+>                 code = keycode[MATRIX_SCAN_CODE(row, col,
+>                                                 keypad_data->row_shift)];
+>
+> This will properly unpack the keymap built by
+> matrix_keypad_build_keymap().
+>
+> > +
+> > +             input_report_key(keypad->input_dev, code, pressed);
+> > +             input_sync(keypad->input_dev);
+> > +
+> > +             dev_dbg(&keypad->input_dev->dev,
+> > +                     "report Linux keycode = %d\n", code);
+> > +     }
+> > +
+> > +     bitmap_copy(keypad->keymap_state, new_state, MTK_KPD_NUM_BITS);
+> > +
+> > +     return IRQ_HANDLED;
+> > +}
 
 -- 
-Michel "Walken" Lespinasse
-A program is never fully debugged until the last user dies.
+With Best Regards,
+Andy Shevchenko
 
 _______________________________________________
 Linux-mediatek mailing list
