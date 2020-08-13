@@ -2,94 +2,74 @@ Return-Path: <SRS0=lgZq=BX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-0.9 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+	FREEMAIL_REPLYTO_END_DIGIT,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 617E7C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 13:55:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 36208C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 13:56:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2E53A20774
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 13:55:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id ED39A20791
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 13:56:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="y81W7RKI";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="agccP1KP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2E53A20774
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="n452QGdp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ED39A20791
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=peTE+oyX/8RTfSJw/bjyRj2eYrxhnnrVgVLTdaHs1XU=; b=y81W7RKImdOqQx20uUrLyQUiQ
-	QOTp2XsWz31MNGKU7LMI7bCI4VgiM44lNgUOdvhOjOk0+I+HWH+lCTS/mvThrqAPxCAcuKf+UH69b
-	hR8lmBnTL2gZu+x1/l8YR+pr7PJ9BAy4UFxdHM6I2m/znCbLQxbn/Osqk4xIA2f/BVM3zpwMFTI8S
-	jBAZ06BonUq0OxBexCl9CyXsQF88qMYOh9E4qHURVG2nkzaOZ8hi/F8ieraHpVuEXJa7vcysJ+Ldy
-	6GyBcHpVWYtWncVQ8v77odLiir/9TiRfNyexGZoGAb1CgioGR8zDKDksFkXmYTFXL3FKV+P8Ft5D0
-	xJLAi17Cw==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Reply-To:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:Message-ID:From:Date:Subject:To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9G3kzGjxNT3CxJr+O+gducpBvg1lyVSUvFedFVbtutM=; b=n452QGdpDtradFfTwvVtv3bpzS
+	3ULtTJ9Y9G+z5PqaW8EOIofgmpnRk3pD5ApxSsaq7kM7ayx44AfbkoUt492TCo20wztX98iJvL5MU
+	LdnbSHLzVKgKWAPSwstEIMDu6ed33eWTBrPc5Oc+HyDC4PC/PdxVUPjE8lXo8/GfQT9OYW+bYCY2a
+	eh/yUZdhkj1OeL1oMwcVu3CD3OQXsm0rXOE1vBn9wx80PU0X0D4LNNlHHKbK7FyxFD3Bmo2R0zTTv
+	WI2RUzwVABregDQXAAOnyld5Rm1P20g6bIxRtLX31kkUBBB8L4ZoKGWza2ydpvDOto0K/VAM8RNh4
+	ZW+QXWeA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k6Dh5-0006Nq-2B; Thu, 13 Aug 2020 13:54:59 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1k6Di6-0006Th-N3; Thu, 13 Aug 2020 13:56:03 +0000
+Received: from [165.231.4.194]
+ (helo=sweden.20170731-fs887s5sfsffsdf.hostfull.net)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k6Dh2-0006NR-Bz; Thu, 13 Aug 2020 13:54:57 +0000
-Received: by mail-wr1-x430.google.com with SMTP id r2so5370472wrs.8;
- Thu, 13 Aug 2020 06:54:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Sf/SftiD46KRmjklcq1t9/LS42BB5ZSQCo3saQVqHK4=;
- b=agccP1KPb72z/gkb04zLo4qeG+xd1UJrYMzK6+6w2B5gLm7docgWCP89TW72fBpoDC
- gK3gYReadqOvxeO3T3OBj/myfHOMgMIXdtASuHjb+Mo8O81lOlagy1/PmU1qOF52zfjk
- zQgRoDH8U9pV24TmfiDp1egqvLvJRcU9M1NOM0MBFNh+uuh75gvtvbV4X9DCFQCPc8hI
- 6rupc6mD5ELdrBa9CKbNWdrjC5wMPQXnLkH4lUH6vw3WoITYNcI+/7JvJYML5FXe5U4b
- ak5dCSGmE3XPBAyu25fDau+VFmXGAXBLylk/PE17rShq8CfrErx4lRoDYwVDOweHf7kd
- lHZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Sf/SftiD46KRmjklcq1t9/LS42BB5ZSQCo3saQVqHK4=;
- b=f0GA7ix1VSow8OT+DJ1+xmofdiWzE/dpzXePhCj5dv7FWEpnDDAU5kBRnoFK2I9pFl
- 1srMdhIfEzwjSUwhl8fiGtWoJbemUNpXOLFS5/333ggvPu5kggns77fX1C2OS+//N4FM
- NE7s4LN8nAChWlcu3zh/eDliZelD/roqazRi+RK9UIgwxpvCeezvEhxZ/odojWUvODJq
- 51rS6RJw1JZrDp03cFLBf+wng/dUBYZgNjV0ViwDu1y9Q5SXooxccilk4kVtwqmgU91X
- W+0fJTNV3s6SfdMPrjmaENyOI9sT7nc3sQGFLmS4VjtIqjoBZull4K2XwDrHAuZcMrTJ
- /wFA==
-X-Gm-Message-State: AOAM533aYybMzcUdji29PuYvuL7KdQl+E2HhZ8vf51W5Mkz/shM4bsxZ
- SmB2C+IUSjc0KAQjXDkcYVc=
-X-Google-Smtp-Source: ABdhPJyMDNz+ijdz996HXAu4epKQmW0kjeI+dQKGPU5iYnfmtaSci40eu1LwseA1AoxXvZNnOWVDuA==
-X-Received: by 2002:adf:e504:: with SMTP id j4mr4292799wrm.205.1597326893217; 
- Thu, 13 Aug 2020 06:54:53 -0700 (PDT)
-Received: from ziggy.stardust ([213.195.117.232])
- by smtp.gmail.com with ESMTPSA id z8sm9339432wmf.42.2020.08.13.06.54.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 13 Aug 2020 06:54:52 -0700 (PDT)
-Subject: Re: [v4,0/3] mmc: mediatek: add optional reset property mmc:
- mediatek: add optional module reset property arm64: dts: mt7622: add reset
- node for mmc device Documentation/devicetree/bindings/mmc/mtk-sd.txt | 2 ++
- arch/arm64/boot/dts/mediatek/mt7622.dtsi | 2 ++ drivers/mmc/host/mtk-sd.c |
- 13 +++++++++++++ 3 files changed, 17 insertions(+)
-To: Wenbin Mei <wenbin.mei@mediatek.com>, Ulf Hansson
- <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>
-References: <20200813090618.28009-1-wenbin.mei@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <195c7bfc-38e4-8d5e-af79-cc3f00b552a4@gmail.com>
-Date: Thu, 13 Aug 2020 15:54:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ id 1k6Di3-0006T1-Kh
+ for linux-mediatek@lists.infradead.org; Thu, 13 Aug 2020 13:56:01 +0000
+Received: from skelt2840 by sweden.20170731-fs887s5sfsffsdf.hostfull.net with
+ local (Exim 4.93) (envelope-from <service.emma1@gmail.com>)
+ id 1k6DIC-0004sb-Pe
+ for linux-mediatek@lists.infradead.org; Thu, 13 Aug 2020 09:29:17 -0400
+To: linux-mediatek@lists.infradead.org
+Subject: Conferma avvenuta iscrizione a www.skelters.it
+X-PHP-Script: www.skelters.it/index.php for 195.181.170.225
+X-PHP-Originating-Script: 905:class.phpmailer.php
+Date: Thu, 13 Aug 2020 13:29:16 +0000
+From: "www.skelters.it" <service.emma1@gmail.com>
+Message-ID: <704f306f5e401e6fd0f51b17071e4f9c@www.skelters.it>
+X-Priority: 3
+X-Mailer: PHPMailer [version 1.73] via Zen Cart
 MIME-Version: 1.0
-In-Reply-To: <20200813090618.28009-1-wenbin.mei@mediatek.com>
-Content-Language: en-US
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - sweden.20170731-fs887s5sfsffsdf.hostfull.net
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [905 497] / [47 12]
+X-AntiAbuse: Sender Address Domain - gmail.com
+X-Get-Message-Sender-Via: sweden.20170731-fs887s5sfsffsdf.hostfull.net: authenticated_id:
+ skelt2840/only user confirmed/virtual account not confirmed
+X-Authenticated-Sender: sweden.20170731-fs887s5sfsffsdf.hostfull.net: skelt2840
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200813_095456_510288_F32B7DF8 
-X-CRM114-Status: GOOD (  15.58  )
+X-CRM114-CacheID: sfid-20200813_095559_910788_895BA121 
+X-CRM114-Status: UNSURE (  -4.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,28 +81,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Chaotian Jing <chaotian.jing@mediatek.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Reply-To: "www.skelters.it" <service.emma1@gmail.com>
+Content-Type: multipart/mixed; boundary="===============5563842661025014485=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It would be good to provide a list of the changes, so that one can easily 
-understand what's the difference between v3 and v4. On a quick glimpse I didn't 
-see any changes.
+--===============5563842661025014485==
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
 
-Regards,
-Matthias
+Egregio Signor ONLINE VERDIENEN VOR 6875 EUR AM TAG - IN EINEM MONAT KONNEN
+SIE SICH EIN TEURES AUTO KAUFEN:
+https://www.google.hk/url?q=https://cr-blog-1.blogspot.gr?VERDIENST-ONLINE=8958-EURO-PRO-TAG,
 
-On 13/08/2020 11:06, Wenbin Mei wrote:
-> --
-> 2.18.0
-> 
+Siamo lieti di accoglierti fra gli amici di www.skelters.it.
+
+
+
+Ora che disponi del tuo account puoi avvalerti dei vari servizi studiati per
+i nostri clienti. Segnaliamo in particolare:
+
+Carrello permanente - Gli articoli che inserirai nel tuo carrello virtuale
+vi rimarranno fin a quando deciderai di eliminarli o di acquistarli.
+
+Rubrica indirizzi - Grazie a questo servizio, possiamo spedire gli articoli
+da te acquistati a indirizzi diversi dal tuo! Un modo ideale per fare regali
+alle persone care senza muoverti da casa.
+
+Cronologia richieste - Un registro chiaro e ordinato degli acquisti
+effettuati presso di noi.
+
+Commenti - Scambia le tue impressioni sui vari prodotti con gli altri nostri
+Clienti.
+
+Per qualsiasi informazione riguardante i nostri servizi online, invia con
+fiducia una e-mail al nostro responsabile: service.emma1@gmail.com 
+
+Con i migliori saluti,
+
+andy
+
+http://www.skelters.it
+
+
+
+Questo indirizzo e-mail ci è stato fornito da uno dei nostri Clienti. Se
+però non intendi creare un account, o se questa e-mail ti è giunta per
+sbaglio, ti preghiamo di inviare una e-mail a service.emma1@gmail.com 
+
+
+Se non desideri più ricevere questa email puoi richiedere la rimozione a
+questo indirizzo.
+
+
+
+--===============5563842661025014485==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============5563842661025014485==--
