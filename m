@@ -2,22 +2,22 @@ Return-Path: <SRS0=lgZq=BX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6DB6DC433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 05:02:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DE7C6C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 06:55:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 283AC20768
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 05:02:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A916720771
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2020 06:55:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="0gSsY8Pt";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="nQIRT8+H"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 283AC20768
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fp5FbY9E";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Zv0rqyCg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A916720771
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lytslA4t8Cpzj4sQu8Wg3p77NGk1aUYRblbuiprbKRg=; b=0gSsY8Pt99pMkguRHuQ4zd/ov
-	BnfhdTEqqkbI44pTFhF4BUXSERZCN6My2/rFmvoYpr7P8xEJpsqbWo4ax92i237PFelJUNfP2k8uB
-	ehK4WwK890er6yBUoDaRl9Q202vpSgm3WJG2BPaj+bgGSS4IUngX9o9iQfuIC5jLlXT1yi1a8mhSl
-	MxtVuEjXeOCZJwi8IMIUW51PBWELKBRRQBU7Xk8GMu77hS69DA9DPX/di6NWy1s18YAxYCDsxIokj
-	IAVxGeCT7voaHKWPPqE1XZydwvjOp1YllL9CYudMjS3sQ6CPXtXtO6FwI1Uo2LoYUyEfsVtF0yWvL
-	yqeR4tv0A==;
+	 bh=M7Tg56vd1893vCFJIzudLNOGcWf887YoMNZq2QtWzYQ=; b=fp5FbY9EWQZt5t6DKr3iVdp6N
+	PQbzxXRPjnCllMiGXD7PKb2g6xFRgKIEK/82KYSjcJhN+p/4DKkmdnMRvmdGEVYn/CvmGMIC3I7A/
+	m8CVNjst74fzWlFHxXj3MFJ3zBOT5C58SjkDu8VppOyDa2OjXwZqiqcYgkmYiTboMlkA8vJiSsd2n
+	g+mNzKxwFF29DEu1rhKZpTE3I+0aySGhQzZK21fPzzfOoTmYafxaStxaDbfO0pByKZl9oxpCtivQo
+	QvywZRhBd/NQ95FQuoxoAiNXVe/PIn1wqPQDz2SwiCxhoCVWgRyPNBX4Y8VtTltyBEvLQOH/49lWb
+	ePkOFqRwQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k65Ny-0007vT-L0; Thu, 13 Aug 2020 05:02:42 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1k679M-0006Vr-N4; Thu, 13 Aug 2020 06:55:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k65Nv-0007ud-9w; Thu, 13 Aug 2020 05:02:40 +0000
-X-UUID: 1359d4a49b8e4485b1d3f1f4ed5be80c-20200812
+ id 1k679I-0006UT-3o; Thu, 13 Aug 2020 06:55:43 +0000
+X-UUID: 301652ffd019420483df71c59a6473b4-20200812
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=vc0/8bE6UotQMHbyr5S0xQjHvklXp5WypDibcqFMXHo=; 
- b=nQIRT8+HQ0fCRyWTUobaV1i5dmltDjpkPegt6WMx47+4xcaROz9Qo0leU+Fk6FsLqoMObf8bnARUmtk2XFN8XM4XYnxmQ+o7NF5Yn8ndkmV1wz7x2rjSGn6iASl6RvwLWIPfsKjWQbhGQzmzM0Ls5aMmAoriPP+oci/VCMAI7qY=;
-X-UUID: 1359d4a49b8e4485b1d3f1f4ed5be80c-20200812
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yingjoe.chen@mediatek.com>)
+ bh=K8cY7A6xcVtlMwzfYxfFED43cNL6JNqBX8t0cFFimHQ=; 
+ b=Zv0rqyCg/8SmMpAAmWEGVLVVgSxmvqF+VtlOzl24RMp1xePrs/jXu1IyX5DZjDrRk/CZJ08SLB48grPlin2+XVdVPzoE79vOuDDxR87STNZr2Yjyt0dWn0+RkKNszDJigAiMfKzPfIrKHqIxIzqsuU7M7l7Sd8LWuM1WDizLU2g=;
+X-UUID: 301652ffd019420483df71c59a6473b4-20200812
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <hector.yuan@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 412545462; Wed, 12 Aug 2020 21:02:30 -0800
-Received: from MTKMBS32DR.mediatek.inc (172.27.6.104) by
+ with ESMTP id 2080624391; Wed, 12 Aug 2020 22:55:33 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 Aug 2020 22:02:29 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS32DR.mediatek.inc (172.27.6.104) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 13 Aug 2020 13:02:21 +0800
-Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
+ 15.0.1497.2; Wed, 12 Aug 2020 23:55:32 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 13 Aug 2020 14:55:15 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 13 Aug 2020 13:02:24 +0800
-Message-ID: <1597294944.31472.2.camel@mtksdaap41>
-Subject: Re: [PATCH v17 1/3] dt-bindings: Add bindings for Mediatek matrix
- keypad
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Date: Thu, 13 Aug 2020 13:02:24 +0800
-In-Reply-To: <20200812221357.GS1665100@dtor-ws>
-References: <20200810064058.6467-1-fengping.yu@mediatek.com>
- <20200810064058.6467-2-fengping.yu@mediatek.com>
- <1597110443.22273.5.camel@mtksdaap41> <20200812221357.GS1665100@dtor-ws>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ Transport; Thu, 13 Aug 2020 14:55:15 +0800
+Message-ID: <1597301716.7652.1.camel@mtkswgap22>
+Subject: Re: [PATCH v1 2/2] dt-bindings: cpufreq: add  MediaTek cpufreq
+ bindings
+From: Hector.Yuan <hector.yuan@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+Date: Thu, 13 Aug 2020 14:55:16 +0800
+In-Reply-To: <20200812162604.GA2319433@bogus>
+References: <1596716320-19811-1-git-send-email-hector.yuan@mediatek.com>
+ <1596716320-19811-3-git-send-email-hector.yuan@mediatek.com>
+ <20200812162604.GA2319433@bogus>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: BA401CDDF3393E80B94BDC4FC2C3180630F59DD1B08243174249AEA12A760DA12000:8
+X-TM-SNTS-SMTP: EABEB4EA3A04522E2AB0A2F60DAB2E236AD01C5E53B97674C796187486C045402000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200813_010239_488119_304F4AA5 
-X-CRM114-Status: GOOD (  29.10  )
+X-CRM114-CacheID: sfid-20200813_025540_402586_D4DB2A0B 
+X-CRM114-Status: GOOD (  18.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,72 +86,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Fengping Yu <fengping.yu@mediatek.com>,
- Marco Felsch <m.felsch@pengutronix.de>, linux-kernel@vger.kernel.org,
+Cc: Will Deacon <will@kernel.org>, wsd_upstream@mediatek.com,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Anson Huang <Anson.Huang@nxp.com>, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, Catalin
+ Marinas <catalin.marinas@arm.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ Arnd Bergmann <arnd@arndb.de>, Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Olof Johansson <olof@lixom.net>, Vinod Koul <vkoul@kernel.org>,
  Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- linux-input@vger.kernel.org,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- linux-arm-kernel@lists.infradead.org
+ Viresh Kumar <viresh.kumar@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Li Yang <leoyang.li@nxp.com>, Shawn
+ Guo <shawnguo@kernel.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2020-08-12 at 15:13 -0700, Dmitry Torokhov wrote:
-> Hi,
+On Wed, 2020-08-12 at 10:26 -0600, Rob Herring wrote:
+> On Thu, 06 Aug 2020 20:18:40 +0800, Hector Yuan wrote:
+> > From: "Hector.Yuan" <hector.yuan@mediatek.com>
+> > 
+> > Add devicetree bindings for MediaTek HW driver.
+> > 
+> > Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
+> > ---
+> >  .../bindings/cpufreq/cpufreq-mediatek-hw.yaml      |   56 ++++++++++++++++++++
+> >  1 file changed, 56 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
+> > 
 > 
-> On Tue, Aug 11, 2020 at 09:47:23AM +0800, Yingjoe Chen wrote:
-> > Hi,
-> > 
-> > 
-> > On Mon, 2020-08-10 at 14:40 +0800, Fengping Yu wrote:
-> > > From: "fengping.yu" <fengping.yu@mediatek.com>
-> > > 
-> > > This patch add devicetree bindings for Mediatek matrix keypad driver.
-> > > 
-> > > Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
-> > > ---
-> > >  .../devicetree/bindings/input/mtk-kpd.yaml    | 87 +++++++++++++++++++
-> > >  1 file changed, 87 insertions(+)
-> > >  create mode 100644 Documentation/devicetree/bindings/input/mtk-kpd.yaml
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/input/mtk-kpd.yaml b/Documentation/devicetree/bindings/input/mtk-kpd.yaml
-> > > new file mode 100644
-> > > index 000000000000..d74dd8a6fbde
-> > 
-> > <...>
-> > 
-> > 
-> > > +  keypad,num-columns:
-> > > +    description: Number of column lines connected to the keypad controller,
-> > > +    it is not equal to PCB columns number, instead you should add required value
-> > > +    for each IC. If not specified, the default value is 1.
-> > > +
-> > > +  keypad,num-rows:
-> > > +    description: Number of row lines connected to the keypad controller, it is
-> > > +    not equal to PCB rows number, instead you should add required value for each IC.
-> > > +    If not specified, the default value is 1.
-> > 
-> > Your source code can't really handle dts without rows/columns
-> > properties. Also, the default value doesn't make any sense. No IC will
-> > have rows or columns set to 1.
-> > 
-> > Since these are IC specified, not board specified, I think you should
-> > just have the correct numbers in driver.
 > 
-> It is actually property of board to decide how many keys it wants to
-> wire up. In extreme case it will be a single key, i.e. number of rows
-> and columns will indeed be 1.
+> My bot found errors running 'make dt_binding_check' on your patch:
 > 
-> Thanks.
+> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.example.dt.yaml: example-0: cpufreq@11bc00:reg:0: [0, 1162256, 0, 140] is too long
+> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.example.dt.yaml: example-0: cpufreq@11bc00:reg:1: [0, 1162400, 0, 140] is too long
 > 
-
-From the binding "it is not equal to PCB columns number, instead you
-should add required value for each IC."
-Driver code use this to calculate bit position in register, which is IC
-dependent.
-
-Joe.C
+> 
+> See https://patchwork.ozlabs.org/patch/1341854
+> 
+> If you already ran 'make dt_binding_check' and didn't see the above
+> error(s), then make sure dt-schema is up to date:
+> 
+> pip3 install git+https://github.com/devicetree-org/dt-schema.git@master --upgrade
+> 
+> Please check and re-submit.
+> OK, will modify and re-submit @ V2
 
 _______________________________________________
 Linux-mediatek mailing list
