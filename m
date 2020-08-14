@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DB88DC433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2020 07:26:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D18C0C433E1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2020 07:27:53 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9634120639
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2020 07:26:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9BC2C20639
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2020 07:27:53 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PnayNJi/";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="FOik2Fr3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9634120639
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fgDIzp0F";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Q4FZNr8x"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9BC2C20639
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VLW0drRYcYTVxYnHzEPdnSROH3NS3UvtKx0xAInRNqs=; b=PnayNJi/KHLqgkU746ycRYvRZ
-	xoW6HErXhR/ZUrvpRO74aB4yzwa/FfDUkJk5Turp4jzGIcG7rz+Ip6MQtzt+/HU+vLLwL3gSXM+kN
-	Z4Hlu7fp7KzmM+sCilr1nu3iVog5dwgtUX88rA3W9FoQ8YP3r8n+MEZfrOlqux/Fh0u7n28gR6LUZ
-	q2JAhebQGzIbbM1Mkhz7/j3Kale+AFb/xcK5ovB7y2ZCa6dqrggKRXa2E9eim3goO6QpoxMmwF9/Z
-	xJIfFDrs7VvUiQTqoR2/MZWlBb9p5Mg4GMEQZXb9ob6iV0pJ3kVDD/q7XHiEHxwXjgDscomno9wvK
-	44a6L+0RQ==;
+	 bh=v7vWpZpUKIeT/W/cmr5caxWFu4uoIrFy4enzVxMfIgU=; b=fgDIzp0FSQeYcy8sVr/QYOTM4
+	Fzmg34132vw4ClhRW7mLORA9BDXnyv1ry7b9WnZCOo02tEmrU8niMVOleqqWUqO3HOhvYXeoPG2Vb
+	xuBCGPTQAW9bKSnj+iYSMPxRDULtBbVLs7YDsxANZtQABdTycG9Yv7l++DKxTGPjVa4sdNxKaeEB8
+	lkRPps1aU48JtDHbCZlon6/ZMpY8EIOfwUgptzCs4KGFBU77ROx9DP+oTYP/6EtI7U24Nvw0m8cQk
+	s6NiZ/44nQg0Vf6cu/DEPMXZfrIE2cpiwWu2zJcnYbOYsejejfXu/aZIfYe4XQUorE+D2YwO8Xrna
+	puPlyK+Sg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k6U6n-0005Jz-QJ; Fri, 14 Aug 2020 07:26:38 +0000
+	id 1k6U7q-0005y9-9b; Fri, 14 Aug 2020 07:27:42 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k6U3r-0003N6-NI; Fri, 14 Aug 2020 07:23:38 +0000
-X-UUID: 1ec7f97417af498a8c4004972d9ac863-20200813
+ id 1k6U3u-0003N6-Ns; Fri, 14 Aug 2020 07:23:40 +0000
+X-UUID: 55eba76e6244401a9f78bc6028fa765d-20200813
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=crUvt8nuDvIwkxYvh2kPsXXjmR/Sm+iXYgNO4EY94dM=; 
- b=FOik2Fr3cge/8JCtF0XbXi722S4yRAFu+3jhXrhln04FP/IDbiErniAvpOJWICqqT7i5SsSvwmiv7qg3yuUUBrXFljBKQ4jFS+EfRry5gcBgNxWK6sK1ykzZsJPytmlyjDNtnMgrenoslUWgvffceaOfu/FH3NV5Re7WibpAZ6s=;
-X-UUID: 1ec7f97417af498a8c4004972d9ac863-20200813
+ bh=2zPntONkKnkp5l1KK/PD1A/DoZsVva102ZW4aWaLmvQ=; 
+ b=Q4FZNr8xgJB4iju1sUK1gjp4E/+3egM+zHPA0+YHltHaK8sIP2KNB8xYPKn1CDdAjLJeN9Hs1MbSsTAKX4R15JLyHTfDLVMeBExAMTkpiz9n8dZP4NT2e1yEFgyJbRhEP5rkN/joAg53A7CzVTOgLt70BnOn5P9FujfjFVnhCxQ=;
+X-UUID: 55eba76e6244401a9f78bc6028fa765d-20200813
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <xia.jiang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1669631603; Thu, 13 Aug 2020 23:23:16 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1207602744; Thu, 13 Aug 2020 23:23:16 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 14 Aug 2020 00:13:31 -0700
+ 15.0.1497.2; Fri, 14 Aug 2020 00:13:37 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 14 Aug 2020 15:13:28 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 14 Aug 2020 15:13:34 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 14 Aug 2020 15:13:27 +0800
+ Transport; Fri, 14 Aug 2020 15:13:33 +0800
 From: Xia Jiang <xia.jiang@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
  <mchehab+samsung@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
  Brugger" <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>
-Subject: [PATCH v12 21/29] media: platform: Change the colorspace of jpeg to
- the fixed value
-Date: Fri, 14 Aug 2020 15:11:54 +0800
-Message-ID: <20200814071202.25067-23-xia.jiang@mediatek.com>
+Subject: [PATCH v12 26/29] media: platform: Rename jpeg dec file name
+Date: Fri, 14 Aug 2020 15:11:59 +0800
+Message-ID: <20200814071202.25067-28-xia.jiang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200814071202.25067-1-xia.jiang@mediatek.com>
 References: <20200814071202.25067-1-xia.jiang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200814_032335_950750_E298CE6F 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20200814_032339_012581_473DEF7B 
+X-CRM114-Status: GOOD (  14.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,67 +96,121 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Jpeg doesn't support colorspace conversion, so it shouldn't accept any
-other colorspace in S_FMT.
-Change the colorspace of jpeg to the fixed value.
+Rename the files which are for decode feature. This is preparing
+path since the jpeg enc patch will be added later.
 
 Reviewed-by: Tomasz Figa <tfiga@chromium.org>
 Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
 ---
 v12: no changes
 ---
- .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 24 +++++++++----------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ drivers/media/platform/mtk-jpeg/Makefile                      | 2 +-
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c               | 4 ++--
+ .../platform/mtk-jpeg/{mtk_jpeg_hw.c => mtk_jpeg_dec_hw.c}    | 2 +-
+ .../platform/mtk-jpeg/{mtk_jpeg_hw.h => mtk_jpeg_dec_hw.h}    | 2 +-
+ .../mtk-jpeg/{mtk_jpeg_parse.c => mtk_jpeg_dec_parse.c}       | 2 +-
+ .../mtk-jpeg/{mtk_jpeg_parse.h => mtk_jpeg_dec_parse.h}       | 2 +-
+ .../platform/mtk-jpeg/{mtk_jpeg_reg.h => mtk_jpeg_dec_reg.h}  | 0
+ 7 files changed, 7 insertions(+), 7 deletions(-)
+ rename drivers/media/platform/mtk-jpeg/{mtk_jpeg_hw.c => mtk_jpeg_dec_hw.c} (99%)
+ rename drivers/media/platform/mtk-jpeg/{mtk_jpeg_hw.h => mtk_jpeg_dec_hw.h} (98%)
+ rename drivers/media/platform/mtk-jpeg/{mtk_jpeg_parse.c => mtk_jpeg_dec_parse.c} (98%)
+ rename drivers/media/platform/mtk-jpeg/{mtk_jpeg_parse.h => mtk_jpeg_dec_parse.h} (92%)
+ rename drivers/media/platform/mtk-jpeg/{mtk_jpeg_reg.h => mtk_jpeg_dec_reg.h} (100%)
 
+diff --git a/drivers/media/platform/mtk-jpeg/Makefile b/drivers/media/platform/mtk-jpeg/Makefile
+index 92a4fc046bfe..48516dcf96e6 100644
+--- a/drivers/media/platform/mtk-jpeg/Makefile
++++ b/drivers/media/platform/mtk-jpeg/Makefile
+@@ -1,3 +1,3 @@
+ # SPDX-License-Identifier: GPL-2.0-only
+-mtk_jpeg-objs := mtk_jpeg_core.o mtk_jpeg_hw.o mtk_jpeg_parse.o
++mtk_jpeg-objs := mtk_jpeg_core.o mtk_jpeg_dec_hw.o mtk_jpeg_dec_parse.o
+ obj-$(CONFIG_VIDEO_MEDIATEK_JPEG) += mtk_jpeg.o
 diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index 01f4656fe2b3..0376bd3bdbbb 100644
+index 47d570f32e3f..5e57aed2e90f 100644
 --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
 +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -320,10 +320,10 @@ static int mtk_jpeg_s_fmt_mplane(struct mtk_jpeg_ctx *ctx,
- 					   pix_mp->pixelformat, fmt_type);
- 	q_data->pix_mp.width = pix_mp->width;
- 	q_data->pix_mp.height = pix_mp->height;
--	q_data->pix_mp.colorspace = pix_mp->colorspace;
--	q_data->pix_mp.ycbcr_enc = pix_mp->ycbcr_enc;
--	q_data->pix_mp.xfer_func = pix_mp->xfer_func;
--	q_data->pix_mp.quantization = pix_mp->quantization;
-+	q_data->pix_mp.colorspace = V4L2_COLORSPACE_SRGB;
-+	q_data->pix_mp.ycbcr_enc = V4L2_YCBCR_ENC_601;
-+	q_data->pix_mp.xfer_func = V4L2_XFER_FUNC_SRGB;
-+	q_data->pix_mp.quantization = V4L2_QUANTIZATION_FULL_RANGE;
+@@ -23,9 +23,9 @@
+ #include <media/videobuf2-dma-contig.h>
+ #include <soc/mediatek/smi.h>
  
- 	v4l2_dbg(1, debug, &jpeg->v4l2_dev, "(%d) s_fmt:%c%c%c%c wxh:%ux%u\n",
- 		 f->type,
-@@ -846,10 +846,10 @@ static void mtk_jpeg_set_default_params(struct mtk_jpeg_ctx *ctx)
- 	struct mtk_jpeg_q_data *q = &ctx->out_q;
- 	int i;
+-#include "mtk_jpeg_hw.h"
++#include "mtk_jpeg_dec_hw.h"
+ #include "mtk_jpeg_core.h"
+-#include "mtk_jpeg_parse.h"
++#include "mtk_jpeg_dec_parse.h"
  
--	q->pix_mp.colorspace = V4L2_COLORSPACE_JPEG,
--	q->pix_mp.ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
--	q->pix_mp.quantization = V4L2_QUANTIZATION_DEFAULT;
--	q->pix_mp.xfer_func = V4L2_XFER_FUNC_DEFAULT;
-+	q->pix_mp.colorspace = V4L2_COLORSPACE_SRGB;
-+	q->pix_mp.ycbcr_enc = V4L2_YCBCR_ENC_601;
-+	q->pix_mp.quantization = V4L2_QUANTIZATION_FULL_RANGE;
-+	q->pix_mp.xfer_func = V4L2_XFER_FUNC_SRGB;
+ static struct mtk_jpeg_fmt mtk_jpeg_formats[] = {
+ 	{
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c
+similarity index 99%
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c
+rename to drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c
+index 68abcfd7494d..afbbfd5d02bc 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c
+@@ -9,7 +9,7 @@
+ #include <linux/kernel.h>
+ #include <media/videobuf2-core.h>
  
- 	q->fmt = mtk_jpeg_find_format(mtk_jpeg_formats, MTK_JPEG_NUM_FORMATS,
- 				      V4L2_PIX_FMT_JPEG,
-@@ -863,10 +863,10 @@ static void mtk_jpeg_set_default_params(struct mtk_jpeg_ctx *ctx)
- 	q->fmt = mtk_jpeg_find_format(mtk_jpeg_formats, MTK_JPEG_NUM_FORMATS,
- 				      V4L2_PIX_FMT_YUV420M,
- 				      MTK_JPEG_FMT_FLAG_DEC_CAPTURE);
--	q->pix_mp.colorspace = V4L2_COLORSPACE_JPEG,
--	q->pix_mp.ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
--	q->pix_mp.quantization = V4L2_QUANTIZATION_DEFAULT;
--	q->pix_mp.xfer_func = V4L2_XFER_FUNC_DEFAULT;
-+	q->pix_mp.colorspace = V4L2_COLORSPACE_SRGB;
-+	q->pix_mp.ycbcr_enc = V4L2_YCBCR_ENC_601;
-+	q->pix_mp.quantization = V4L2_QUANTIZATION_FULL_RANGE;
-+	q->pix_mp.xfer_func = V4L2_XFER_FUNC_SRGB;
- 	q->pix_mp.width = MTK_JPEG_MIN_WIDTH;
- 	q->pix_mp.height = MTK_JPEG_MIN_HEIGHT;
+-#include "mtk_jpeg_hw.h"
++#include "mtk_jpeg_dec_hw.h"
  
+ #define MTK_JPEG_DUNUM_MASK(val)	(((val) - 1) & 0x3)
+ 
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h
+similarity index 98%
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h
+rename to drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h
+index 7b0687f8f4b6..1cc37dbfc8e7 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h
+@@ -11,7 +11,7 @@
+ #include <media/videobuf2-core.h>
+ 
+ #include "mtk_jpeg_core.h"
+-#include "mtk_jpeg_reg.h"
++#include "mtk_jpeg_dec_reg.h"
+ 
+ enum {
+ 	MTK_JPEG_DEC_RESULT_EOF_DONE		= 0,
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.c
+similarity index 98%
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c
+rename to drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.c
+index f862d38f3af7..b95c45791c29 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.c
+@@ -8,7 +8,7 @@
+ #include <linux/kernel.h>
+ #include <linux/videodev2.h>
+ 
+-#include "mtk_jpeg_parse.h"
++#include "mtk_jpeg_dec_parse.h"
+ 
+ #define TEM	0x01
+ #define SOF0	0xc0
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.h
+similarity index 92%
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h
+rename to drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.h
+index 0a48eeabaff2..2918f15811f8 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.h
+@@ -8,7 +8,7 @@
+ #ifndef _MTK_JPEG_PARSE_H
+ #define _MTK_JPEG_PARSE_H
+ 
+-#include "mtk_jpeg_hw.h"
++#include "mtk_jpeg_dec_hw.h"
+ 
+ bool mtk_jpeg_parse(struct mtk_jpeg_dec_param *param, u8 *src_addr_va,
+ 		    u32 src_size);
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_reg.h
+similarity index 100%
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
+rename to drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_reg.h
 -- 
 2.18.0
 _______________________________________________
