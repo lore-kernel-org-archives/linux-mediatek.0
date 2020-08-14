@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 166ABC433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2020 07:25:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 04607C433E3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2020 07:25:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DBC30206DA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2020 07:25:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C775A20656
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2020 07:25:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gdEeraCQ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="lLt6aLCi"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DBC30206DA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="m1OSCPoX";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="QT5oVWUZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C775A20656
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=PgHZ0sS7LAXNkrnK0KKT5QIzPAn3yphUmI+b3OJNxMI=; b=gdEeraCQGeraw1R84XXXmZIaO
-	IWH45Yc+5WwJbLJht7QQtAlvT3QAbsGxkDSvJr7g+ITGe3SV49jPQbKhUlppDiorMyl2GWuXLQliW
-	qv15cHnBV/ftAUijDhFlVBeyGHQmjb6FWJNyWCS6M6TJMxECl0kSJPAdW8N/qYo21vzpk5rG7YPlg
-	wmQip9nZHzUHj72VvZCFT7Z9LNYg8V2LDmtXqXhyJcRhnd/+Bbt1ySRP37S8vkoAY3dI4dgRAVwOl
-	tFTFMwDmeBTCjBBmsYT/2pWG2Br/xeb1aE72kI//KK+0p0QuhlUj95yx8tPkCp+qNNMcS3pvQqPl6
-	75X7iyaVg==;
+	 bh=thNuWyjy8lf78kbOi+SLxcQR+bl+6m/RpsQoiVEDIb8=; b=m1OSCPoXg/0Q6wLDmiqLruO4Q
+	U+svQEL69ykxYq2RJiwFskZZ9UppzhYiqAPI2aug3fIu1qbZ3w5cy8+2e87BZOU4x/DwMteHxdy19
+	FcQ7MDBv9Qcfu0EbYdlXvihUUFuus/Yl58HF91plOa+VkW9mVaAQCysk6cu7KRZD04qFBaHthN72s
+	+/Vb7aEmWDgh67N71yVssFchPRxPSbKUAHdt6eHdxpiQebCXpBUtYcDHROGRF7U34ZebU259bvKBP
+	66gIDg1XenVFetAVYYWCyudt6AoLIw4brDTODgmdxIvFFgTANEHVAWcmWGlainlKs/8E132Mt+u4z
+	vw+UiBFtg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k6U5L-0004LL-O6; Fri, 14 Aug 2020 07:25:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1k6U5R-0004PX-Os; Fri, 14 Aug 2020 07:25:14 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k6U3g-0003RT-QW; Fri, 14 Aug 2020 07:23:28 +0000
-X-UUID: bcea2412ccf9498d8a1ab05d515fb903-20200813
+ id 1k6U3k-0003N6-Bd; Fri, 14 Aug 2020 07:23:31 +0000
+X-UUID: f527c5ca93274e03a5b5670a5beec92a-20200813
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=JVwDOg6la3xVjIKe7t7Rmn06/K7gWcAPsOXGtl+cR28=; 
- b=lLt6aLCi9GzTJXht1voTQkufL8kI1Tgf/ATU9y+yBnesEh8jiusNR/8nv5CJFEPbq/hyjdq87+5fckbyVDVxpQsnRUfyQOlo9T1VaYsRUawz9GHwxVeXZvjL2poxS50pOhySx9i1EGF/4Ap0LGy/q4ctsnMVhxXI455h+JYzuhA=;
-X-UUID: bcea2412ccf9498d8a1ab05d515fb903-20200813
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=VQndAw3Wc5VGkMdTLx6vWC4Gckl+0qt4QnzB3h/4oKU=; 
+ b=QT5oVWUZaSnPOr2SfuECejXtDGX8WB1UD57uUHjgIr69pxfS50+CVqrhALnaA9MJmYkBLQMSJuhOUWbDIUqu63BoLIvLXPoF4NP2F5tSgjJzm6FPc0mCoIRkAHl1wG0bfJ2SRkXZqJHtSzqdrnIW1vDQtPx+tNWOnwXMlDZIbo4=;
+X-UUID: f527c5ca93274e03a5b5670a5beec92a-20200813
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <xia.jiang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1060653142; Thu, 13 Aug 2020 23:23:20 -0800
+ with ESMTP id 350877470; Thu, 13 Aug 2020 23:23:16 -0800
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 14 Aug 2020 00:13:34 -0700
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 14 Aug 2020 00:13:22 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 14 Aug 2020 15:13:32 +0800
+ 15.0.1497.2; Fri, 14 Aug 2020 15:13:19 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 14 Aug 2020 15:13:31 +0800
+ Transport; Fri, 14 Aug 2020 15:13:18 +0800
 From: Xia Jiang <xia.jiang@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
  <mchehab+samsung@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
  Brugger" <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>
-Subject: [PATCH v12 24/29] media: dt-bindings: Add jpeg enc device tree node
- document
-Date: Fri, 14 Aug 2020 15:11:57 +0800
-Message-ID: <20200814071202.25067-26-xia.jiang@mediatek.com>
+Subject: [PATCH v12 14/29] media: platform: Change MTK_JPEG_COMP_MAX macro
+ definition location
+Date: Fri, 14 Aug 2020 15:11:47 +0800
+Message-ID: <20200814071202.25067-16-xia.jiang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200814071202.25067-1-xia.jiang@mediatek.com>
 References: <20200814071202.25067-1-xia.jiang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200814_032325_076514_A4E1342B 
-X-CRM114-Status: GOOD (  14.40  )
+X-CRM114-CacheID: sfid-20200814_032328_575947_C274D462 
+X-CRM114-Status: GOOD (  13.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,59 +97,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add jpeg enc device tree node document.
+Move MTK_JPEG_COMP_MAX definition to mtk_jpeg_core.h file, because it
+is used by mtk_jpeg_core.c file.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
 Reviewed-by: Tomasz Figa <tfiga@chromium.org>
 Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
 ---
 v12: no changes
 ---
- .../bindings/media/mediatek-jpeg-encoder.txt  | 35 +++++++++++++++++++
- 1 file changed, 35 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h | 2 ++
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h  | 1 -
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt
-new file mode 100644
-index 000000000000..736be7cad385
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt
-@@ -0,0 +1,35 @@
-+* MediaTek JPEG Encoder
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+index c9f5162d2924..4d62438963c0 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+@@ -15,6 +15,8 @@
+ 
+ #define MTK_JPEG_NAME		"mtk-jpeg"
+ 
++#define MTK_JPEG_COMP_MAX		3
 +
-+MediaTek JPEG Encoder is the JPEG encode hardware present in MediaTek SoCs
-+
-+Required properties:
-+- compatible : "mediatek,mt2701-jpgenc"
-+  followed by "mediatek,mtk-jpgenc"
-+- reg : physical base address of the JPEG encoder registers and length of
-+  memory mapped region.
-+- interrupts : interrupt number to the interrupt controller.
-+- clocks: device clocks, see
-+  Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
-+- clock-names: must contain "jpgenc". It is the clock of JPEG encoder.
-+- power-domains: a phandle to the power domain, see
-+  Documentation/devicetree/bindings/power/power_domain.txt for details.
-+- mediatek,larb: must contain the local arbiters in the current SoCs, see
-+  Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
-+  for details.
-+- iommus: should point to the respective IOMMU block with master port as
-+  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
-+  for details.
-+
-+Example:
-+	jpegenc: jpegenc@1500a000 {
-+		compatible = "mediatek,mt2701-jpgenc",
-+			     "mediatek,mtk-jpgenc";
-+		reg = <0 0x1500a000 0 0x1000>;
-+		interrupts = <GIC_SPI 141 IRQ_TYPE_LEVEL_LOW>;
-+		clocks =  <&imgsys CLK_IMG_VENC>;
-+		clock-names = "jpgenc";
-+		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
-+		mediatek,larb = <&larb2>;
-+		iommus = <&iommu MT2701_M4U_PORT_JPGENC_RDMA>,
-+			 <&iommu MT2701_M4U_PORT_JPGENC_BSDMA>;
-+	};
+ #define MTK_JPEG_FMT_FLAG_DEC_OUTPUT	BIT(0)
+ #define MTK_JPEG_FMT_FLAG_DEC_CAPTURE	BIT(1)
+ 
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
+index 2945da842dfa..21ec8f96797f 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
+@@ -8,7 +8,6 @@
+ #ifndef _MTK_JPEG_REG_H
+ #define _MTK_JPEG_REG_H
+ 
+-#define MTK_JPEG_COMP_MAX		3
+ #define MTK_JPEG_BLOCK_MAX		10
+ #define MTK_JPEG_DCTSIZE		8
+ 
 -- 
 2.18.0
 _______________________________________________
