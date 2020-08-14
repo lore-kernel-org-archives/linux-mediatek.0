@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 73B27C433E1
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E75B3C433E3
 	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2020 07:25:55 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3B26720639
+	by mail.kernel.org (Postfix) with ESMTPS id B38F020708
 	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2020 07:25:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HNA9WNzm";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="L/U9aMOg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B26720639
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l9XzQJ2q";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="NSOB8tng"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B38F020708
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=sowvFBPGvDuc90WwlP/iU0MbzEwIWpEzYmssjskfLTw=; b=HNA9WNzmadJwKTEQ4+7QJxPTm
-	4XFAdwGqQA/kdC8KYPUiGBWdBsfI4jZayP6tcN0cqOZe0vHT/lZ4RDJtH3Cnjc083mZWke836SVD0
-	Hdr8TIdLvqxLGbW5K+1rDcNCBfFgyzmthNhHklBsz2oCSDntq5c4+QYtXZz9NZQLa/kvRN+Xx8m8n
-	6LR1ULhjSbJfOvLiPA6qvPS7kCFnxPezsnrM2mhDHKcGxb2JHyd3bVCQ29n/VObEDJ3u4C6edmDFa
-	ahwr3AFMuoEUoLmvcrpdx3hI0whyeubnIy2m1NIx7dvb4+OkpumsaMKapsr9eERmnpFMIHzKpN/Hu
-	kijhqRqtg==;
+	 bh=ov+5WcXDWCfnMxuJlp0wcLVNMMxo9q2k43Y2hf0APv8=; b=l9XzQJ2q6QrQMJEk63Vl0Rf5N
+	OxHETd5PztJ8h16VPX7v8vUcEWi8GxJUgLpw8jZD02Rjl44Rnhkb4PTP0naFMoVj2sEvD5pQ4bGH1
+	iH7OHGWXFE1EqSUXA5CtE7rYFIf1Eac1kr4mZn2A6l5ub9lJ4UXq1vYL07km4hqszPBptxUDzNH06
+	KlcIoKW8ddX6xhIvkzqR7TS+af9W5SqlZNbHevpLvO1HXwITXoF7MFpepEOE12fNZu1+e/2uCqEw6
+	DQoySOAJGtGsPIHIM2vhL654kuiR3tTPgZEIlM9W/aRa++VWbv8RlMEII/FyICEHeAbNU5qfhjTId
+	mTxFP5Zyg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k6U5v-0004jX-4i; Fri, 14 Aug 2020 07:25:43 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1k6U5w-0004lU-Un; Fri, 14 Aug 2020 07:25:45 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k6U3k-0003S3-Iy; Fri, 14 Aug 2020 07:23:32 +0000
-X-UUID: f165aedbda9643a39d9774e227d1c498-20200813
+ id 1k6U3o-0003N6-10; Fri, 14 Aug 2020 07:23:35 +0000
+X-UUID: 0cde0ff807b14031932f171703c3d0d2-20200813
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=I0GLGOxPXlyGkCl5e7bMVC2v+8ArI+SrTNrO2lRJXd0=; 
- b=L/U9aMOgwGOaTzPCFGzPknhDXQT1R95lZFQHm1OCtKvz4CsO8zyWH0mShNZddM8GdCef7I2aGmay1CmkZ6pBvuaXAOG4JHSXXm/Z4cO7kyHgqh7PxWuLDY6q96Eparp/WMaVF3IwErOz2RmykWEupMlhl2mwxBekKvOnNkj0+KU=;
-X-UUID: f165aedbda9643a39d9774e227d1c498-20200813
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=RWe0Ff77FvM6nCgnp8TrIQ2+6TXTbgL+dXGr6O+hJsw=; 
+ b=NSOB8tngHnSpVGHYtLkFS/s/OI04thOAE1BGU5JG3bRJHxie3xu+0CXdhsJbWOsIpqk3dHuThou9/8TUDY7oips+Q+6ZTkuvRRq0HEmIpCrzqzInNLLYIuSrUUgl03iSX4PwgjOUlekU08LA75LY9ANTe5hF/tDu/6YZtgVXl28=;
+X-UUID: 0cde0ff807b14031932f171703c3d0d2-20200813
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <xia.jiang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2099957681; Thu, 13 Aug 2020 23:23:20 -0800
+ with ESMTP id 410258854; Thu, 13 Aug 2020 23:23:16 -0800
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 14 Aug 2020 00:13:19 -0700
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 14 Aug 2020 00:13:15 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 14 Aug 2020 15:13:17 +0800
+ 15.0.1497.2; Fri, 14 Aug 2020 15:13:12 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 14 Aug 2020 15:13:16 +0800
+ Transport; Fri, 14 Aug 2020 15:13:11 +0800
 From: Xia Jiang <xia.jiang@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
  <mchehab+samsung@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
  Brugger" <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>
-Subject: [PATCH v12 12/29] media: platform: Stylistic changes for improving
- code quality
-Date: Fri, 14 Aug 2020 15:11:45 +0800
-Message-ID: <20200814071202.25067-14-xia.jiang@mediatek.com>
+Subject: [PATCH v12 08/29] media: platform: Improve the implementation of the
+ system PM ops
+Date: Fri, 14 Aug 2020 15:11:41 +0800
+Message-ID: <20200814071202.25067-10-xia.jiang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200814071202.25067-1-xia.jiang@mediatek.com>
 References: <20200814071202.25067-1-xia.jiang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200814_032328_836063_BAAF3BCC 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20200814_032332_319395_B6D6782C 
+X-CRM114-Status: GOOD (  15.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,81 +97,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change register offset hex numerals from uppercase to lowercase.
-Change data type of max/min width/height from integer to unsigned
-integer.
+Add v4l2_m2m_suspend() function call in mtk_jpeg_suspend() to make sure
+that the current frame is processed completely before suspend.
+Add v4l2_m2m_resume() function call in mtk_jpeg_resume() to unblock the
+driver from scheduling next frame.
 
 Reviewed-by: Tomasz Figa <tfiga@chromium.org>
 Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
 ---
 v12: no changes
 ---
- .../media/platform/mtk-jpeg/mtk_jpeg_core.h    |  8 ++++----
- drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h | 18 +++++++++---------
- 2 files changed, 13 insertions(+), 13 deletions(-)
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.c    | 18 ++++++++----------
+ 1 file changed, 8 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-index 320c4f8a014a..c9f5162d2924 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-@@ -21,10 +21,10 @@
- #define MTK_JPEG_FMT_TYPE_OUTPUT	1
- #define MTK_JPEG_FMT_TYPE_CAPTURE	2
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+index 7f74597262fc..ee4aaf618551 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+@@ -1207,24 +1207,22 @@ static __maybe_unused int mtk_jpeg_pm_resume(struct device *dev)
  
--#define MTK_JPEG_MIN_WIDTH	32
--#define MTK_JPEG_MIN_HEIGHT	32
--#define MTK_JPEG_MAX_WIDTH	8192
--#define MTK_JPEG_MAX_HEIGHT	8192
-+#define MTK_JPEG_MIN_WIDTH	32U
-+#define MTK_JPEG_MIN_HEIGHT	32U
-+#define MTK_JPEG_MAX_WIDTH	8192U
-+#define MTK_JPEG_MAX_HEIGHT	8192U
+ static __maybe_unused int mtk_jpeg_suspend(struct device *dev)
+ {
+-	int ret;
+-
+-	if (pm_runtime_suspended(dev))
+-		return 0;
++	struct mtk_jpeg_dev *jpeg = dev_get_drvdata(dev);
  
- #define MTK_JPEG_DEFAULT_SIZEIMAGE	(1 * 1024 * 1024)
+-	ret = mtk_jpeg_pm_suspend(dev);
+-	return ret;
++	v4l2_m2m_suspend(jpeg->m2m_dev);
++	return pm_runtime_force_suspend(dev);
+ }
  
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
-index 94db04e9cdb6..2945da842dfa 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
-@@ -20,29 +20,29 @@
- #define BIT_INQST_MASK_ALLIRQ		0x37
+ static __maybe_unused int mtk_jpeg_resume(struct device *dev)
+ {
++	struct mtk_jpeg_dev *jpeg = dev_get_drvdata(dev);
+ 	int ret;
  
- #define JPGDEC_REG_RESET		0x0090
--#define JPGDEC_REG_BRZ_FACTOR		0x00F8
--#define JPGDEC_REG_DU_NUM		0x00FC
-+#define JPGDEC_REG_BRZ_FACTOR		0x00f8
-+#define JPGDEC_REG_DU_NUM		0x00fc
- #define JPGDEC_REG_DEST_ADDR0_Y		0x0140
- #define JPGDEC_REG_DEST_ADDR0_U		0x0144
- #define JPGDEC_REG_DEST_ADDR0_V		0x0148
--#define JPGDEC_REG_DEST_ADDR1_Y		0x014C
-+#define JPGDEC_REG_DEST_ADDR1_Y		0x014c
- #define JPGDEC_REG_DEST_ADDR1_U		0x0150
- #define JPGDEC_REG_DEST_ADDR1_V		0x0154
- #define JPGDEC_REG_STRIDE_Y		0x0158
--#define JPGDEC_REG_STRIDE_UV		0x015C
-+#define JPGDEC_REG_STRIDE_UV		0x015c
- #define JPGDEC_REG_IMG_STRIDE_Y		0x0160
- #define JPGDEC_REG_IMG_STRIDE_UV	0x0164
--#define JPGDEC_REG_WDMA_CTRL		0x016C
-+#define JPGDEC_REG_WDMA_CTRL		0x016c
- #define JPGDEC_REG_PAUSE_MCU_NUM	0x0170
--#define JPGDEC_REG_OPERATION_MODE	0x017C
-+#define JPGDEC_REG_OPERATION_MODE	0x017c
- #define JPGDEC_REG_FILE_ADDR		0x0200
--#define JPGDEC_REG_COMP_ID		0x020C
-+#define JPGDEC_REG_COMP_ID		0x020c
- #define JPGDEC_REG_TOTAL_MCU_NUM	0x0210
- #define JPGDEC_REG_COMP0_DATA_UNIT_NUM	0x0224
--#define JPGDEC_REG_DU_CTRL		0x023C
-+#define JPGDEC_REG_DU_CTRL		0x023c
- #define JPGDEC_REG_TRIG			0x0240
- #define JPGDEC_REG_FILE_BRP		0x0248
--#define JPGDEC_REG_FILE_TOTAL_SIZE	0x024C
-+#define JPGDEC_REG_FILE_TOTAL_SIZE	0x024c
- #define JPGDEC_REG_QT_ID		0x0270
- #define JPGDEC_REG_INTERRUPT_STATUS	0x0274
- #define JPGDEC_REG_STATUS		0x0278
+-	if (pm_runtime_suspended(dev))
+-		return 0;
+-
+-	ret = mtk_jpeg_pm_resume(dev);
++	ret = pm_runtime_force_resume(dev);
++	if (ret < 0)
++		return ret;
+ 
++	v4l2_m2m_resume(jpeg->m2m_dev);
+ 	return ret;
+ }
+ 
 -- 
 2.18.0
 _______________________________________________
