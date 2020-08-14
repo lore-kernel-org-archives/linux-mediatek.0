@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C428C433E1
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E3AB6C433E3
 	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2020 07:23:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DE3E0206DA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2020 07:23:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B2F5C20639
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2020 07:23:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="B/T4wBL7";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qQotuhIp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DE3E0206DA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ipZ7xgUv";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="b0DJoj0Y"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B2F5C20639
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vyR4gQRJjKCXg6deqn82By0McfBxU1YXO/gfJCd+pJQ=; b=B/T4wBL7nBlz3wTfuWHxTZUP2
-	eufMw5h6MkccSiCXlNDAMcWRS1NSC0yYEWqwlXmp7zTWBPZvRh84i05FLqTmjfMrfUUVLso/+Jwp2
-	3Ta8wUVBG1wSWQW7ezvo71Mk+fgDr8ntvBxU7b7CcJSDNKDvlRf4Oz22UMjHIG0kpa7O8KxQBYlrW
-	0jE1WPja2xEJFXs8AFWb3yZJ+vyKpm73FdO2Cgy9fH4KSgPqxuiByX68+dDBOh6oJ9pu9vXJQdF3Y
-	iaheJzDpvG3PUMeZ8yR1rC10iZJn5DnS/4W26wLqZUbK1W9rctVuKtKNfMBr0klBN022j1Pm7KwSf
-	qtms/chbw==;
+	 bh=noKZm1hiAaCFb9z5JoJzscZALAbgQEOGPo0qe4/XJog=; b=ipZ7xgUv8F3QNFCHUXu/yeRaR
+	BDz6T3Ey3WaAAIQAt+1l8eLbuTdDLnaXgtmfR5H8MJlHPXk7HJsIlZNfyYE9x1CbtZ0AvRSRm/2qB
+	1om4rpTdNB6c9oskDzHrEEMSB2li+yCQfk+qNA7lAmtFdHC6dly9Gj6dLTtiLi3FIdJhmyLApjlMh
+	cXMm1xoLe1I+0vvN3sI08mK9/nuVgQpreUJLtsAZw2ed7pNCX4IlZ7UmDd0dEStRDPEOp8TBEZp75
+	V+35psvmDmPKc4P4Ezp2xoOxdlTvKZ69t9drXyZv4JZ0ixxNUzuJIVNjt/eO+tOiJW9Zplh++YBfS
+	93QVISQTg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k6U42-0003dI-Hh; Fri, 14 Aug 2020 07:23:46 +0000
+	id 1k6U43-0003dZ-Iy; Fri, 14 Aug 2020 07:23:47 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k6U3a-0003N6-3o; Fri, 14 Aug 2020 07:23:19 +0000
-X-UUID: 8b5e13835c72421c9fbaf88ad280fa95-20200813
+ id 1k6U3a-0003N2-7R; Fri, 14 Aug 2020 07:23:19 +0000
+X-UUID: cd902e4f5aaa4531aab42bd36ccf3d05-20200813
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ZQxsYXMiSFwPrZ111f4m+gouEH0cxDJ3i9R7i1HIQcc=; 
- b=qQotuhIpYSzWX5egqZDxhBvZjQrZzIRNS218scN5VCiWRaeyEtLZfnV7MRy7iSz9Q01nSwEqTYfGWFIIwod9Z9aScTcMmhBdSpBfD+viLFES4gbTbbK9nc8ui9zRzy0/TKX50bTj5DhH3HC61T8V5da8XDW5Jax35pASzV06QwA=;
-X-UUID: 8b5e13835c72421c9fbaf88ad280fa95-20200813
+ bh=L1y9pPxdA0pzcOflsm1/2eGbT5uGkzxv9JWPGmzEw9Q=; 
+ b=b0DJoj0YqADKBaXpxk+vmcVrEluKyj3Cdj3OI4B09zTfR2N+C04BPqu4n470ubi0Xr6TVeVgTx/F1RtaSIHcxHlEwfaa6+o7TDGWkw1fwvEGEsvgTlYvp3V9FAARengNWXZEeEreKoJGPhVNTEveuS8A7mpTgOc8rL73fpsJyRg=;
+X-UUID: cd902e4f5aaa4531aab42bd36ccf3d05-20200813
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <xia.jiang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1833343676; Thu, 13 Aug 2020 23:23:11 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 285386415; Thu, 13 Aug 2020 23:23:11 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 14 Aug 2020 00:13:26 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 14 Aug 2020 15:13:20 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 14 Aug 2020 15:13:22 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 14 Aug 2020 15:13:19 +0800
+ Transport; Fri, 14 Aug 2020 15:13:21 +0800
 From: Xia Jiang <xia.jiang@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
  <mchehab+samsung@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
  Brugger" <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>
-Subject: [PATCH v12 15/29] media: platform: Delete redundant code and add
- annotation for an enum
-Date: Fri, 14 Aug 2020 15:11:48 +0800
-Message-ID: <20200814071202.25067-17-xia.jiang@mediatek.com>
+Subject: [PATCH v12 16/29] media: platform: Delete vidioc_s_selection ioctl of
+ jpeg dec
+Date: Fri, 14 Aug 2020 15:11:49 +0800
+Message-ID: <20200814071202.25067-18-xia.jiang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200814071202.25067-1-xia.jiang@mediatek.com>
 References: <20200814071202.25067-1-xia.jiang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200814_032318_338896_816EF8DD 
-X-CRM114-Status: GOOD (  15.97  )
+X-CRM114-CacheID: sfid-20200814_032318_488741_D1F41A86 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,93 +97,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Delete unused member variables annotation.
-Delete unused variable definition.
-Delete redundant log print, because V4L2 debug logs already print it.
-Add annotation for enum mtk_jpeg_ctx_state.
+JPEG dec does't support setting a compose rectangle, so remove
+mtk_jpeg_dec_s_selection().
 
 Reviewed-by: Tomasz Figa <tfiga@chromium.org>
 Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
 ---
 v12: no changes
 ---
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 15 ++-------------
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h |  8 ++++++--
- 2 files changed, 8 insertions(+), 15 deletions(-)
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 22 -------------------
+ 1 file changed, 22 deletions(-)
 
 diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index 980500be027b..db3a8b22dccd 100644
+index db3a8b22dccd..9d1935d0782b 100644
 --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
 +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -176,14 +176,13 @@ static int mtk_jpeg_try_fmt_mplane(struct v4l2_format *f,
- 				   struct mtk_jpeg_ctx *ctx, int q_type)
- {
- 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
--	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
- 	int i;
- 
- 	pix_mp->field = V4L2_FIELD_NONE;
- 
- 	if (ctx->state != MTK_JPEG_INIT) {
- 		mtk_jpeg_adjust_fmt_mplane(ctx, f);
--		goto end;
-+		return 0;
- 	}
- 
- 	pix_mp->num_planes = fmt->colplanes;
-@@ -202,7 +201,7 @@ static int mtk_jpeg_try_fmt_mplane(struct v4l2_format *f,
- 		pfmt->sizeimage = round_up(pfmt->sizeimage, 128);
- 		if (pfmt->sizeimage == 0)
- 			pfmt->sizeimage = MTK_JPEG_DEFAULT_SIZEIMAGE;
--		goto end;
-+		return 0;
- 	}
- 
- 	/* type is MTK_JPEG_FMT_TYPE_CAPTURE */
-@@ -219,16 +218,6 @@ static int mtk_jpeg_try_fmt_mplane(struct v4l2_format *f,
- 		pfmt->bytesperline = stride;
- 		pfmt->sizeimage = stride * h;
- 	}
--end:
--	v4l2_dbg(2, debug, &jpeg->v4l2_dev, "wxh:%ux%u\n",
--		 pix_mp->width, pix_mp->height);
--	for (i = 0; i < pix_mp->num_planes; i++) {
--		v4l2_dbg(2, debug, &jpeg->v4l2_dev,
--			 "plane[%d] bpl=%u, size=%u\n",
--			 i,
--			 pix_mp->plane_fmt[i].bytesperline,
--			 pix_mp->plane_fmt[i].sizeimage);
--	}
+@@ -439,27 +439,6 @@ static int mtk_jpeg_g_selection(struct file *file, void *priv,
  	return 0;
  }
  
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-index 4d62438963c0..9b46b0507187 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-@@ -32,6 +32,12 @@
+-static int mtk_jpeg_s_selection(struct file *file, void *priv,
+-				struct v4l2_selection *s)
+-{
+-	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
+-
+-	if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
+-		return -EINVAL;
+-
+-	switch (s->target) {
+-	case V4L2_SEL_TGT_COMPOSE:
+-		s->r.left = 0;
+-		s->r.top = 0;
+-		s->r.width = ctx->out_q.w;
+-		s->r.height = ctx->out_q.h;
+-		break;
+-	default:
+-		return -EINVAL;
+-	}
+-	return 0;
+-}
+-
+ static const struct v4l2_ioctl_ops mtk_jpeg_ioctl_ops = {
+ 	.vidioc_querycap                = mtk_jpeg_querycap,
+ 	.vidioc_enum_fmt_vid_cap	= mtk_jpeg_enum_fmt_vid_cap,
+@@ -473,7 +452,6 @@ static const struct v4l2_ioctl_ops mtk_jpeg_ioctl_ops = {
+ 	.vidioc_qbuf                    = v4l2_m2m_ioctl_qbuf,
+ 	.vidioc_subscribe_event         = mtk_jpeg_subscribe_event,
+ 	.vidioc_g_selection		= mtk_jpeg_g_selection,
+-	.vidioc_s_selection		= mtk_jpeg_s_selection,
  
- #define MTK_JPEG_HW_TIMEOUT_MSEC 1000
- 
-+/**
-+ * enum mtk_jpeg_ctx_state - states of the context state machine
-+ * @MTK_JPEG_INIT:		current state is initialized
-+ * @MTK_JPEG_RUNNING:		current state is running
-+ * @MTK_JPEG_SOURCE_CHANGE:	current state is source resolution change
-+ */
- enum mtk_jpeg_ctx_state {
- 	MTK_JPEG_INIT = 0,
- 	MTK_JPEG_RUNNING,
-@@ -113,9 +119,7 @@ struct mtk_jpeg_q_data {
-  * @out_q:		source (output) queue information
-  * @cap_q:		destination (capture) queue queue information
-  * @fh:			V4L2 file handle
-- * @dec_param		parameters for HW decoding
-  * @state:		state of the context
-- * @header_valid:	set if header has been parsed and valid
-  * @colorspace: enum v4l2_colorspace; supplemental to pixelformat
-  * @ycbcr_enc: enum v4l2_ycbcr_encoding, Y'CbCr encoding
-  * @quantization: enum v4l2_quantization, colorspace quantization
+ 	.vidioc_create_bufs		= v4l2_m2m_ioctl_create_bufs,
+ 	.vidioc_prepare_buf		= v4l2_m2m_ioctl_prepare_buf,
 -- 
 2.18.0
 _______________________________________________
