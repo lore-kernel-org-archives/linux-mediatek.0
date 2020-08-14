@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D18C0C433E1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2020 07:27:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 63466C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2020 07:27:55 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9BC2C20639
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2020 07:27:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EA05B20639
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2020 07:27:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fgDIzp0F";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Q4FZNr8x"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9BC2C20639
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DGb9sHNB";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="pz/JjDFr"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA05B20639
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=v7vWpZpUKIeT/W/cmr5caxWFu4uoIrFy4enzVxMfIgU=; b=fgDIzp0FSQeYcy8sVr/QYOTM4
-	Fzmg34132vw4ClhRW7mLORA9BDXnyv1ry7b9WnZCOo02tEmrU8niMVOleqqWUqO3HOhvYXeoPG2Vb
-	xuBCGPTQAW9bKSnj+iYSMPxRDULtBbVLs7YDsxANZtQABdTycG9Yv7l++DKxTGPjVa4sdNxKaeEB8
-	lkRPps1aU48JtDHbCZlon6/ZMpY8EIOfwUgptzCs4KGFBU77ROx9DP+oTYP/6EtI7U24Nvw0m8cQk
-	s6NiZ/44nQg0Vf6cu/DEPMXZfrIE2cpiwWu2zJcnYbOYsejejfXu/aZIfYe4XQUorE+D2YwO8Xrna
-	puPlyK+Sg==;
+	 bh=Xw9/Rpps9TVjTPEFDfdaJhP62g7lQdIblG+DzljxXK0=; b=DGb9sHNBVcAQtzrhh9ao2C7gs
+	VojB23uMrEoPZ2rmP1TXHWPB3aRJf07tMDW6wfcwKfh+EzpGPZW36k5gv0rtDW+lVg3WhAbAkuCGK
+	NP9m19aahl4D1cldBpzkfMD6EJ+iTjcUXkWoQjxoSrPoL+gdS58JWRvrmnS7E9nLk0AYrhuMpHR+Z
+	KR8M6V7eIpFnBXFwtWA+P8l9/TXAyyLsaUpU2T+mFcPSqtQRR1fk7to/iX4JKu80VreF4t87DCs9Z
+	zrJy4lPNEB6ZmB8nDf35Yfa400dxx2pjhNUuszltpsVmWbe/pw9hU4rRiiUeOK9DVYtI/bpXoF44j
+	X2qOC0cHQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k6U7q-0005y9-9b; Fri, 14 Aug 2020 07:27:42 +0000
+	id 1k6U7o-0005x2-TU; Fri, 14 Aug 2020 07:27:40 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k6U3u-0003N6-Ns; Fri, 14 Aug 2020 07:23:40 +0000
-X-UUID: 55eba76e6244401a9f78bc6028fa765d-20200813
+ id 1k6U3u-0003N2-Fj; Fri, 14 Aug 2020 07:23:40 +0000
+X-UUID: d0bdd9b8bab34203bb21f59aaa7fb208-20200813
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=2zPntONkKnkp5l1KK/PD1A/DoZsVva102ZW4aWaLmvQ=; 
- b=Q4FZNr8xgJB4iju1sUK1gjp4E/+3egM+zHPA0+YHltHaK8sIP2KNB8xYPKn1CDdAjLJeN9Hs1MbSsTAKX4R15JLyHTfDLVMeBExAMTkpiz9n8dZP4NT2e1yEFgyJbRhEP5rkN/joAg53A7CzVTOgLt70BnOn5P9FujfjFVnhCxQ=;
-X-UUID: 55eba76e6244401a9f78bc6028fa765d-20200813
+ bh=/dg5C3FKQsCiarf1haqEJ1lyLt8qaoaRqSR02dgllkQ=; 
+ b=pz/JjDFryGJEOGJz/5yXyqkvg6z8uYb0uW4lNYAdr2Ym72OEjKB10qyotLzY/yDKt3t5tAbRSUO7qnhjlsPfnp9g4AncUwwnSLXaBMB5Ib/ITx1GWxdCXBqzq3B36dEsl9839pwcvFDiArfXqHQNFmyt7LTOEUf7oAW8T1Zt/CY=;
+X-UUID: d0bdd9b8bab34203bb21f59aaa7fb208-20200813
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <xia.jiang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1207602744; Thu, 13 Aug 2020 23:23:16 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1275356434; Thu, 13 Aug 2020 23:23:16 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 14 Aug 2020 00:13:37 -0700
+ 15.0.1497.2; Fri, 14 Aug 2020 00:13:21 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 14 Aug 2020 15:13:34 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 14 Aug 2020 15:13:18 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 14 Aug 2020 15:13:33 +0800
+ Transport; Fri, 14 Aug 2020 15:13:17 +0800
 From: Xia Jiang <xia.jiang@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
  <mchehab+samsung@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
  Brugger" <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>
-Subject: [PATCH v12 26/29] media: platform: Rename jpeg dec file name
-Date: Fri, 14 Aug 2020 15:11:59 +0800
-Message-ID: <20200814071202.25067-28-xia.jiang@mediatek.com>
+Subject: [PATCH v12 13/29] media: platform: Use generic rounding helpers
+Date: Fri, 14 Aug 2020 15:11:46 +0800
+Message-ID: <20200814071202.25067-15-xia.jiang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200814071202.25067-1-xia.jiang@mediatek.com>
 References: <20200814071202.25067-1-xia.jiang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200814_032339_012581_473DEF7B 
-X-CRM114-Status: GOOD (  14.87  )
+X-CRM114-CacheID: sfid-20200814_032338_707628_15922CAD 
+X-CRM114-Status: GOOD (  16.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,121 +96,129 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Rename the files which are for decode feature. This is preparing
-path since the jpeg enc patch will be added later.
+Use clamp() to replace mtk_jpeg_bound_align_image() and round() to
+replace mtk_jpeg_align().
 
 Reviewed-by: Tomasz Figa <tfiga@chromium.org>
 Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
 ---
 v12: no changes
 ---
- drivers/media/platform/mtk-jpeg/Makefile                      | 2 +-
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c               | 4 ++--
- .../platform/mtk-jpeg/{mtk_jpeg_hw.c => mtk_jpeg_dec_hw.c}    | 2 +-
- .../platform/mtk-jpeg/{mtk_jpeg_hw.h => mtk_jpeg_dec_hw.h}    | 2 +-
- .../mtk-jpeg/{mtk_jpeg_parse.c => mtk_jpeg_dec_parse.c}       | 2 +-
- .../mtk-jpeg/{mtk_jpeg_parse.h => mtk_jpeg_dec_parse.h}       | 2 +-
- .../platform/mtk-jpeg/{mtk_jpeg_reg.h => mtk_jpeg_dec_reg.h}  | 0
- 7 files changed, 7 insertions(+), 7 deletions(-)
- rename drivers/media/platform/mtk-jpeg/{mtk_jpeg_hw.c => mtk_jpeg_dec_hw.c} (99%)
- rename drivers/media/platform/mtk-jpeg/{mtk_jpeg_hw.h => mtk_jpeg_dec_hw.h} (98%)
- rename drivers/media/platform/mtk-jpeg/{mtk_jpeg_parse.c => mtk_jpeg_dec_parse.c} (98%)
- rename drivers/media/platform/mtk-jpeg/{mtk_jpeg_parse.h => mtk_jpeg_dec_parse.h} (92%)
- rename drivers/media/platform/mtk-jpeg/{mtk_jpeg_reg.h => mtk_jpeg_dec_reg.h} (100%)
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 41 +++++--------------
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c |  8 ++--
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h |  5 ---
+ 3 files changed, 15 insertions(+), 39 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-jpeg/Makefile b/drivers/media/platform/mtk-jpeg/Makefile
-index 92a4fc046bfe..48516dcf96e6 100644
---- a/drivers/media/platform/mtk-jpeg/Makefile
-+++ b/drivers/media/platform/mtk-jpeg/Makefile
-@@ -1,3 +1,3 @@
- # SPDX-License-Identifier: GPL-2.0-only
--mtk_jpeg-objs := mtk_jpeg_core.o mtk_jpeg_hw.o mtk_jpeg_parse.o
-+mtk_jpeg-objs := mtk_jpeg_core.o mtk_jpeg_dec_hw.o mtk_jpeg_dec_parse.o
- obj-$(CONFIG_VIDEO_MEDIATEK_JPEG) += mtk_jpeg.o
 diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index 47d570f32e3f..5e57aed2e90f 100644
+index 0153d57af466..980500be027b 100644
 --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
 +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -23,9 +23,9 @@
- #include <media/videobuf2-dma-contig.h>
- #include <soc/mediatek/smi.h>
+@@ -151,25 +151,6 @@ static struct mtk_jpeg_fmt *mtk_jpeg_find_format(struct mtk_jpeg_ctx *ctx,
+ 	return NULL;
+ }
  
--#include "mtk_jpeg_hw.h"
-+#include "mtk_jpeg_dec_hw.h"
- #include "mtk_jpeg_core.h"
--#include "mtk_jpeg_parse.h"
-+#include "mtk_jpeg_dec_parse.h"
+-static void mtk_jpeg_bound_align_image(u32 *w, unsigned int wmin,
+-				       unsigned int wmax, unsigned int walign,
+-				       u32 *h, unsigned int hmin,
+-				       unsigned int hmax, unsigned int halign)
+-{
+-	int width, height, w_step, h_step;
+-
+-	width = *w;
+-	height = *h;
+-	w_step = 1 << walign;
+-	h_step = 1 << halign;
+-
+-	v4l_bound_align_image(w, wmin, wmax, walign, h, hmin, hmax, halign, 0);
+-	if (*w < width && (*w + w_step) <= wmax)
+-		*w += w_step;
+-	if (*h < height && (*h + h_step) <= hmax)
+-		*h += h_step;
+-}
+-
+ static void mtk_jpeg_adjust_fmt_mplane(struct mtk_jpeg_ctx *ctx,
+ 				       struct v4l2_format *f)
+ {
+@@ -211,24 +192,24 @@ static int mtk_jpeg_try_fmt_mplane(struct v4l2_format *f,
+ 	if (q_type == MTK_JPEG_FMT_TYPE_OUTPUT) {
+ 		struct v4l2_plane_pix_format *pfmt = &pix_mp->plane_fmt[0];
  
- static struct mtk_jpeg_fmt mtk_jpeg_formats[] = {
- 	{
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c
-similarity index 99%
-rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c
-rename to drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c
-index 68abcfd7494d..afbbfd5d02bc 100644
+-		mtk_jpeg_bound_align_image(&pix_mp->width, MTK_JPEG_MIN_WIDTH,
+-					   MTK_JPEG_MAX_WIDTH, 0,
+-					   &pix_mp->height, MTK_JPEG_MIN_HEIGHT,
+-					   MTK_JPEG_MAX_HEIGHT, 0);
++		pix_mp->height = clamp(pix_mp->height, MTK_JPEG_MIN_HEIGHT,
++				       MTK_JPEG_MAX_HEIGHT);
++		pix_mp->width = clamp(pix_mp->width, MTK_JPEG_MIN_WIDTH,
++				      MTK_JPEG_MAX_WIDTH);
+ 
+ 		pfmt->bytesperline = 0;
+ 		/* Source size must be aligned to 128 */
+-		pfmt->sizeimage = mtk_jpeg_align(pfmt->sizeimage, 128);
++		pfmt->sizeimage = round_up(pfmt->sizeimage, 128);
+ 		if (pfmt->sizeimage == 0)
+ 			pfmt->sizeimage = MTK_JPEG_DEFAULT_SIZEIMAGE;
+ 		goto end;
+ 	}
+ 
+ 	/* type is MTK_JPEG_FMT_TYPE_CAPTURE */
+-	mtk_jpeg_bound_align_image(&pix_mp->width, MTK_JPEG_MIN_WIDTH,
+-				   MTK_JPEG_MAX_WIDTH, fmt->h_align,
+-				   &pix_mp->height, MTK_JPEG_MIN_HEIGHT,
+-				   MTK_JPEG_MAX_HEIGHT, fmt->v_align);
++	pix_mp->height = clamp(round_up(pix_mp->height, fmt->v_align),
++			       MTK_JPEG_MIN_HEIGHT, MTK_JPEG_MAX_HEIGHT);
++	pix_mp->width = clamp(round_up(pix_mp->width, fmt->h_align),
++			      MTK_JPEG_MIN_WIDTH, MTK_JPEG_MAX_WIDTH);
+ 
+ 	for (i = 0; i < fmt->colplanes; i++) {
+ 		struct v4l2_plane_pix_format *pfmt = &pix_mp->plane_fmt[i];
+@@ -711,8 +692,8 @@ static void mtk_jpeg_set_dec_src(struct mtk_jpeg_ctx *ctx,
+ {
+ 	bs->str_addr = vb2_dma_contig_plane_dma_addr(src_buf, 0);
+ 	bs->end_addr = bs->str_addr +
+-			 mtk_jpeg_align(vb2_get_plane_payload(src_buf, 0), 16);
+-	bs->size = mtk_jpeg_align(vb2_plane_size(src_buf, 0), 128);
++		       round_up(vb2_get_plane_payload(src_buf, 0), 16);
++	bs->size = round_up(vb2_plane_size(src_buf, 0), 128);
+ }
+ 
+ static int mtk_jpeg_set_dec_dst(struct mtk_jpeg_ctx *ctx,
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c
+index ddf0dfa78e20..68abcfd7494d 100644
 --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c
-@@ -9,7 +9,7 @@
- #include <linux/kernel.h>
- #include <media/videobuf2-core.h>
- 
--#include "mtk_jpeg_hw.h"
-+#include "mtk_jpeg_dec_hw.h"
- 
- #define MTK_JPEG_DUNUM_MASK(val)	(((val) - 1) & 0x3)
- 
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h
-similarity index 98%
-rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h
-rename to drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h
-index 7b0687f8f4b6..1cc37dbfc8e7 100644
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c
+@@ -153,10 +153,10 @@ static int mtk_jpeg_calc_dst_size(struct mtk_jpeg_dec_param *param)
+ 				param->sampling_w[i];
+ 		/* output format is 420/422 */
+ 		param->comp_w[i] = padding_w >> brz_w[i];
+-		param->comp_w[i] = mtk_jpeg_align(param->comp_w[i],
+-						  MTK_JPEG_DCTSIZE);
+-		param->img_stride[i] = i ? mtk_jpeg_align(param->comp_w[i], 16)
+-					: mtk_jpeg_align(param->comp_w[i], 32);
++		param->comp_w[i] = round_up(param->comp_w[i],
++					    MTK_JPEG_DCTSIZE);
++		param->img_stride[i] = i ? round_up(param->comp_w[i], 16)
++					: round_up(param->comp_w[i], 32);
+ 		ds_row_h[i] = (MTK_JPEG_DCTSIZE * param->sampling_h[i]);
+ 	}
+ 	param->dec_w = param->img_stride[0];
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h
+index 9c6584eaad99..7b0687f8f4b6 100644
 --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h
-@@ -11,7 +11,7 @@
- #include <media/videobuf2-core.h>
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h
+@@ -54,11 +54,6 @@ struct mtk_jpeg_dec_param {
+ 	u8 uv_brz_w;
+ };
  
- #include "mtk_jpeg_core.h"
--#include "mtk_jpeg_reg.h"
-+#include "mtk_jpeg_dec_reg.h"
- 
- enum {
- 	MTK_JPEG_DEC_RESULT_EOF_DONE		= 0,
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.c
-similarity index 98%
-rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c
-rename to drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.c
-index f862d38f3af7..b95c45791c29 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.c
-@@ -8,7 +8,7 @@
- #include <linux/kernel.h>
- #include <linux/videodev2.h>
- 
--#include "mtk_jpeg_parse.h"
-+#include "mtk_jpeg_dec_parse.h"
- 
- #define TEM	0x01
- #define SOF0	0xc0
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.h
-similarity index 92%
-rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h
-rename to drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.h
-index 0a48eeabaff2..2918f15811f8 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.h
-@@ -8,7 +8,7 @@
- #ifndef _MTK_JPEG_PARSE_H
- #define _MTK_JPEG_PARSE_H
- 
--#include "mtk_jpeg_hw.h"
-+#include "mtk_jpeg_dec_hw.h"
- 
- bool mtk_jpeg_parse(struct mtk_jpeg_dec_param *param, u8 *src_addr_va,
- 		    u32 src_size);
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_reg.h
-similarity index 100%
-rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
-rename to drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_reg.h
+-static inline u32 mtk_jpeg_align(u32 val, u32 align)
+-{
+-	return (val + align - 1) & ~(align - 1);
+-}
+-
+ struct mtk_jpeg_bs {
+ 	dma_addr_t	str_addr;
+ 	dma_addr_t	end_addr;
 -- 
 2.18.0
 _______________________________________________
