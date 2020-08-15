@@ -3,74 +3,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D1413C433E1
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Aug 2020 03:04:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B5D0BC433E1
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Aug 2020 06:21:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9350D22DBF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Aug 2020 03:04:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7613822DD3
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Aug 2020 06:21:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TxKXVGaS";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="aPLmc5XI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9350D22DBF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mLWKjojk";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="r3stySv2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7613822DD3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=iKwnQVUBMY7uQFlGO4tAnQR2TGsw4YyCo1+pJ5bppGQ=; b=TxKXVGaSxmlFh/Gzpt0ridwxj
-	DihbxW91OX9iEVDVS6ybj50pD8E64g7YKSc9K7BPqYupDPaYa0Xn2tjBGLWMvU7ccQj308gkX8vQF
-	gLrSKavxYK2rbmSY/m8lQgUfx+7Owjb4H3Jr+X7bBHx8hoZAej5RQR0o2/TF5ChMxqIsZEcW1ejFl
-	2V9pR1V1kryr+zWC+sg0Xf3iqZ8XzC/fcLN8X2m+i+j0s4hLayOWPqdwO4eNE0QkGaBIQB6MCJEW0
-	lsMCwbv55tYeuXi8QzA4mhIXcK2zTr6VqBz0kWPgN70rsLJ6nmhLrA+2p9seG0j+XlI2r97Wxi+uq
-	zAGl9nl/w==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=QbhtW4YeDkSA09heYnwfgFleHQHxcLj1+ctSNcFqwJc=; b=mLWKjojktTYdaWeMffx2H8tG0I
+	d7O9lXfoaRR8yeZedCtbEOc5VvNsWHpr34dwWjJ128cbZ+fi//jSHGKUQr0RgrSsSwNI5lGo1Ae3L
+	N7Cm+ka3ATvOMmm7ffZP+P4kBBqMX0jM5W7gpn9DOqdDv2+CT63P/VZ1WafngmBMLrOTVj3NBVLon
+	YJybE9PbbxbrZa50zYsh1AmFA+H1fb8V36FQMCiT7s1Fucx7L0LKDH4hiVR+8ZMRX3Rj2joNOrdHk
+	UDZleGCZe8F46UnQg1/GjsEslYXRpl4rgAy77ZC1NQNftQVI7XjCycoVfS7nIrZg1vjhYaRz+vZkN
+	lCxh0Qow==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k6mTy-00022Y-NO; Sat, 15 Aug 2020 03:03:46 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1k6pZJ-0002Lm-Ux; Sat, 15 Aug 2020 06:21:29 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k6mTr-00021j-Mz; Sat, 15 Aug 2020 03:03:40 +0000
-Received: from mail-ej1-f47.google.com (mail-ej1-f47.google.com
- [209.85.218.47])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 2E34B22E01;
- Sat, 15 Aug 2020 03:03:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597460618;
- bh=LWZ3gG05lyWwHbQNUP3ksCUHLVF4wFzI8rRKV3uiNak=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=aPLmc5XIVhNgOz/dUkmBwJHhTub2jfiFdCUnXPgEVZvsfdM60xwqSPiHXUjZo/gZg
- W13nLli/i5dcL9+RLLKwoyKEj/1rS4pFIGP+81I7TUivDsE3PPl0LwR+oPRQbUf2eR
- Zq7320V1UEnYBmGlW09/3R0ltEf9DMa1/eUQy5SE=
-Received: by mail-ej1-f47.google.com with SMTP id g19so11865604ejc.9;
- Fri, 14 Aug 2020 20:03:38 -0700 (PDT)
-X-Gm-Message-State: AOAM531q/5KktA61CmktY9OInoIeo33Y5Ah1mQghf9IOw7V/lURR9erG
- d17A9SGaFhfpQgcdPDDUDSEx2FqdZrzJL8rvJw==
-X-Google-Smtp-Source: ABdhPJyt/63tP7h7Rcip1YksjvsGO7WzFuUVEIVYhoFntsd6TkK7JtmalTJjkuyszotatOlhPqyFfaDNHeccHlw5oaU=
-X-Received: by 2002:a17:906:7492:: with SMTP id
- e18mr5232063ejl.375.1597460616714; 
- Fri, 14 Aug 2020 20:03:36 -0700 (PDT)
+ id 1k6pZA-0002JF-NI; Sat, 15 Aug 2020 06:21:22 +0000
+X-UUID: 8fa563bcb5b74b0581717b90ba73b18a-20200814
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=GFI+val4GU2tEbPQV6aLWgII/YcqB20UyChxuiD1c4Y=; 
+ b=r3stySv2lrmBVVNsHYPPb3rBbR1H5WeQ8jTKhZBBiilPwb8WZm98ZT0BgSdlnvulCReE+F4lUYI9iS2BkZv57K6QSaUfOayM5sFXwqkp9irztUIi1xQruhG0VWOR5ItiOSVI+vsljO8DerIMDw9mVsWHD1EueSWtuFazyqqdQCI=;
+X-UUID: 8fa563bcb5b74b0581717b90ba73b18a-20200814
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <chinwen.chang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 500955223; Fri, 14 Aug 2020 22:21:06 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 14 Aug 2020 23:21:06 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 15 Aug 2020 14:20:51 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sat, 15 Aug 2020 14:20:53 +0800
+From: Chinwen Chang <chinwen.chang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Michel Lespinasse
+ <walken@google.com>, Andrew Morton <akpm@linux-foundation.org>, "Vlastimil
+ Babka" <vbabka@suse.cz>, Daniel Jordan <daniel.m.jordan@oracle.com>,
+ "Davidlohr Bueso" <dbueso@suse.de>, Chinwen Chang
+ <chinwen.chang@mediatek.com>, "Alexey Dobriyan" <adobriyan@gmail.com>,
+ "Matthew Wilcox (Oracle)" <willy@infradead.org>, Jason Gunthorpe
+ <jgg@ziepe.ca>, Steven Price <steven.price@arm.com>, Song Liu
+ <songliubraving@fb.com>, Jimmy Assarsson <jimmyassarsson@gmail.com>, Huang
+ Ying <ying.huang@intel.com>, Daniel Kiss <daniel.kiss@arm.com>, Laurent
+ Dufour <ldufour@linux.ibm.com>
+Subject: [PATCH v3 0/3] Try to release mmap_lock temporarily in smaps_rollup
+Date: Sat, 15 Aug 2020 14:20:16 +0800
+Message-ID: <1597472419-32314-1-git-send-email-chinwen.chang@mediatek.com>
+X-Mailer: git-send-email 1.9.1
 MIME-Version: 1.0
-References: <1597289564-17030-1-git-send-email-neal.liu@mediatek.com>
- <1597289564-17030-3-git-send-email-neal.liu@mediatek.com>
-In-Reply-To: <1597289564-17030-3-git-send-email-neal.liu@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Sat, 15 Aug 2020 11:03:24 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_88YSHOvDEHm+rM1=fTv_y25nUh1tuLUH8YSxH5UD1bug@mail.gmail.com>
-Message-ID: <CAAOTY_88YSHOvDEHm+rM1=fTv_y25nUh1tuLUH8YSxH5UD1bug@mail.gmail.com>
-Subject: Re: [PATCH v6 2/2] soc: mediatek: add mt6779 devapc driver
-To: Neal Liu <neal.liu@mediatek.com>
+X-TM-SNTS-SMTP: 6AA49C9BAEA802EB08C17F40AE22768D271BE6B44FA9A7B98C33BE7BA3C3EE2B2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200814_230339_888241_050D6339 
-X-CRM114-Status: GOOD (  19.65  )
+X-CRM114-CacheID: sfid-20200815_022120_902876_CCA3C783 
+X-CRM114-Status: GOOD (  12.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,68 +90,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, wsd_upstream <wsd_upstream@mediatek.com>,
- lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-fsdevel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ wsd_upstream@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIE5lYWw6CgpOZWFsIExpdSA8bmVhbC5saXVAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5tDjm
-nIgxM+aXpSDpgLHlm5sg5LiK5Y2IMTE6MzPlr6vpgZPvvJoKPgo+IE1lZGlhVGVrIGJ1cyBmYWJy
-aWMgcHJvdmlkZXMgVHJ1c3Rab25lIHNlY3VyaXR5IHN1cHBvcnQgYW5kIGRhdGEKPiBwcm90ZWN0
-aW9uIHRvIHByZXZlbnQgc2xhdmVzIGZyb20gYmVpbmcgYWNjZXNzZWQgYnkgdW5leHBlY3RlZAo+
-IG1hc3RlcnMuCj4gVGhlIHNlY3VyaXR5IHZpb2xhdGlvbiBpcyBsb2dnZWQgYW5kIHNlbnQgdG8g
-dGhlIHByb2Nlc3NvciBmb3IKPiBmdXJ0aGVyIGFuYWx5c2lzIG9yIGNvdW50ZXJtZWFzdXJlcy4K
-Pgo+IEFueSBvY2N1cnJlbmNlIG9mIHNlY3VyaXR5IHZpb2xhdGlvbiB3b3VsZCByYWlzZSBhbiBp
-bnRlcnJ1cHQsIGFuZAo+IGl0IHdpbGwgYmUgaGFuZGxlZCBieSBtdGstZGV2YXBjIGRyaXZlci4g
-VGhlIHZpb2xhdGlvbgo+IGluZm9ybWF0aW9uIGlzIHByaW50ZWQgaW4gb3JkZXIgdG8gZmluZCB0
-aGUgbXVyZGVyZXIuCj4KPiBTaWduZWQtb2ZmLWJ5OiBOZWFsIExpdSA8bmVhbC5saXVAbWVkaWF0
-ZWsuY29tPgo+IC0tLQoKW3NuaXBdCgo+ICsvKgo+ICsgKiBkZXZhcGNfdmlvbGF0aW9uX2lycSAt
-IHRoZSBkZXZhcGMgSW50ZXJydXB0IFNlcnZpY2UgUm91dGluZSAoSVNSKSB3aWxsIGR1bXAKPiAr
-ICogICAgICAgICAgICAgICAgICAgICAgICB2aW9sYXRpb24gaW5mb3JtYXRpb24gaW5jbHVkaW5n
-IHdoaWNoIG1hc3RlciB2aW9sYXRlcwo+ICsgKiAgICAgICAgICAgICAgICAgICAgICAgIGFjY2Vz
-cyBzbGF2ZS4KPiArICovCj4gK3N0YXRpYyBpcnFyZXR1cm5fdCBkZXZhcGNfdmlvbGF0aW9uX2ly
-cShpbnQgaXJxX251bWJlciwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgc3RydWN0IG10a19kZXZhcGNfY29udGV4dCAqY3R4KQo+ICt7Cj4gKyAgICAgICAvKgo+ICsg
-ICAgICAgICogTWFzayBzbGF2ZSdzIGlycSBiZWZvcmUgY2xlYXJpbmcgdmlvIHN0YXR1cy4KPiAr
-ICAgICAgICAqIE11c3QgZG8gaXQgdG8gYXZvaWQgbmVzdGVkIGludGVycnVwdCBhbmQgcHJldmVu
-dAo+ICsgICAgICAgICogdW5leHBlY3RlZCBiZWhhdmlvci4KPiArICAgICAgICAqLwo+ICsgICAg
-ICAgbWFza19tb2R1bGVfaXJxKGN0eCwgdHJ1ZSk7CgpJIHN0aWxsIGRvbid0IHVuZGVyc3RhbmQg
-d2h5IG5lc3RlZCBpbnRlcnJ1cHQgaGFwcGVuLiBJZiB0d28gQ1BVCnByb2Nlc3MgZGlmZmVyZW50
-IGRldmFwYyBpbnRlcnJ1cHQgYXQgdGhlIHNhbWUgdGltZSwgbWFzayBpbnRlcnJ1cHQKY291bGQg
-bm90IHByZXZlbnQgdGhlc2UgdHdvIENQVSB0byBzeW5jIHZpbyBkYmcgYXQgdGhlIHNhbWUgdGlt
-ZS4gQXMgSQprbm93LCBpbiBBUk0gQ1BVLCBvbmx5IENQVTAgcHJvY2VzcyBpcnEgaGFuZGxlciwg
-YW5kIGFsbCBkZXZhcGMKaW50ZXJydXB0IGhhcyB0aGUgc2FtZSBwcmlvcml0eSwgc28gd2h5IG5l
-c3RlZCBpbnRlcnJ1cHQgaGFwcGVuPyBDb3VsZAp5b3UgZXhwbGFpbiBtb3JlIGRldGFpbCBhYm91
-dCBob3cgbmVzdGVkIGludGVycnVwdCBoYXBwZW4/Cgo+ICsKPiArICAgICAgIHdoaWxlIChkZXZh
-cGNfc3luY192aW9fZGJnKGN0eCkpCj4gKyAgICAgICAgICAgICAgIGRldmFwY19leHRyYWN0X3Zp
-b19kYmcoY3R4KTsKPiArCj4gKyAgICAgICAvKgo+ICsgICAgICAgICogRW5zdXJlIHRoYXQgdmlv
-bGF0aW9uIGluZm8gYXJlIHdyaXR0ZW4KPiArICAgICAgICAqIGJlZm9yZSBmdXJ0aGVyIG9wZXJh
-dGlvbnMKPiArICAgICAgICAqLwo+ICsgICAgICAgc21wX21iKCk7Cj4gKwo+ICsgICAgICAgY2xl
-YXJfdmlvX3N0YXR1cyhjdHgpOwo+ICsgICAgICAgbWFza19tb2R1bGVfaXJxKGN0eCwgZmFsc2Up
-Owo+ICsKPiArICAgICAgIHJldHVybiBJUlFfSEFORExFRDsKPiArfQo+ICsKCltzbmlwXQoKPiAr
-Cj4gK3N0YXRpYyBpbnQgbXRrX2RldmFwY19yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAq
-cGRldikKPiArewo+ICsgICAgICAgc3RydWN0IG10a19kZXZhcGNfY29udGV4dCAqY3R4ID0gcGxh
-dGZvcm1fZ2V0X2RydmRhdGEocGRldik7Cj4gKwo+ICsgICAgICAgc3RvcF9kZXZhcGMoY3R4KTsK
-PiArCj4gKyAgICAgICBpZiAoY3R4LT5pbmZyYV9jbGspCgpUaGlzIGFsd2F5cyB0cnVlLgoKUmVn
-YXJkcywKQ2h1bi1LdWFuZy4KCj4gKyAgICAgICAgICAgICAgIGNsa19kaXNhYmxlX3VucHJlcGFy
-ZShjdHgtPmluZnJhX2Nsayk7Cj4gKwo+ICsgICAgICAgcmV0dXJuIDA7Cj4gK30KPiArCj4gK3N0
-YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIG10a19kZXZhcGNfZHJpdmVyID0gewo+ICsgICAg
-ICAgLnByb2JlID0gbXRrX2RldmFwY19wcm9iZSwKPiArICAgICAgIC5yZW1vdmUgPSBtdGtfZGV2
-YXBjX3JlbW92ZSwKPiArICAgICAgIC5kcml2ZXIgPSB7Cj4gKyAgICAgICAgICAgICAgIC5uYW1l
-ID0gS0JVSUxEX01PRE5BTUUsCj4gKyAgICAgICAgICAgICAgIC5vZl9tYXRjaF90YWJsZSA9IG10
-a19kZXZhcGNfZHRfbWF0Y2gsCj4gKyAgICAgICB9LAo+ICt9Owo+ICsKPiArbW9kdWxlX3BsYXRm
-b3JtX2RyaXZlcihtdGtfZGV2YXBjX2RyaXZlcik7Cj4gKwo+ICtNT0RVTEVfREVTQ1JJUFRJT04o
-Ik1lZGlhdGVrIERldmljZSBBUEMgRHJpdmVyIik7Cj4gK01PRFVMRV9BVVRIT1IoIk5lYWwgTGl1
-IDxuZWFsLmxpdUBtZWRpYXRlay5jb20+Iik7Cj4gK01PRFVMRV9MSUNFTlNFKCJHUEwiKTsKPiAt
-LQo+IDEuNy45LjUKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwo+IExpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdAo+IExpbnV4LW1lZGlhdGVrQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LW1lZGlhdGVrCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LW1lZGlhdGVrCg==
+Recently, we have observed some janky issues caused by unpleasantly long
+contention on mmap_lock which is held by smaps_rollup when probing large
+processes. To address the problem, we let smaps_rollup detect if anyone
+wants to acquire mmap_lock for write attempts. If yes, just release the
+lock temporarily to ease the contention.
+
+smaps_rollup is a procfs interface which allows users to summarize the
+process's memory usage without the overhead of seq_* calls. Android uses it
+to sample the memory usage of various processes to balance its memory pool
+sizes. If no one wants to take the lock for write requests, smaps_rollup
+with this patch will behave like the original one.
+
+Although there are on-going mmap_lock optimizations like range-based locks,
+the lock applied to smaps_rollup would be the coarse one, which is hard to
+avoid the occurrence of aforementioned issues. So the detection and
+temporary release for write attempts on mmap_lock in smaps_rollup is still
+necessary.
+
+Change since v1:
+- If current VMA is freed after dropping the lock, it will return
+- incomplete result. To fix this issue, refine the code flow as
+- suggested by Steve. [1]
+
+Change since v2:
+- When getting back the mmap lock, the address where you stopped last
+- time could now be in the middle of a vma. Add one more check to handle
+- this case as suggested by Michel. [2]
+
+[1] https://lore.kernel.org/lkml/bf40676e-b14b-44cd-75ce-419c70194783@arm.com/
+[2] https://lore.kernel.org/lkml/CANN689FtCsC71cjAjs0GPspOhgo_HRj+diWsoU1wr98YPktgWg@mail.gmail.com/
+
+
+Chinwen Chang (3):
+  mmap locking API: add mmap_lock_is_contended()
+  mm: smaps*: extend smap_gather_stats to support specified beginning
+  mm: proc: smaps_rollup: do not stall write attempts on mmap_lock
+
+ fs/proc/task_mmu.c        | 101 ++++++++++++++++++++++++++++++++++----
+ include/linux/mmap_lock.h |   5 ++
+ 2 files changed, 96 insertions(+), 10 deletions(-)
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
