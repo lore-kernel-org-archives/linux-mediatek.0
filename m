@@ -2,78 +2,75 @@ Return-Path: <SRS0=yC7h=B3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C656DC433E1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 21:53:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E7ACCC433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 23:43:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9349E2072E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 21:53:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B33D12072E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 23:43:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="0offOHuR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9349E2072E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NZgjOUM5";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="jc/vz+UQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B33D12072E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/iQTje4xQ34YSHNkBseyVJ/jp63a0SmZWNoAu3DNyXk=; b=0offOHuR6yzX5RBfytteQPX7U
-	twL87evHcAo144XzdJYYiQGVfdnWGNA/ZcjiUSM1EtR1eXs95pydgxUXna6OFiqH35yzFwE8lWiyT
-	ztdC5536J26GG4cT/wkCHbNpMYB6SQZf7pV8gLk6fsR1x7UpHeMV7zyNFCfedoLzFMyNjkPDRlbGx
-	30hBcsx5m90SKLYd+R2CTJQQfKriCrXgnYiHKk2s6VPNpp3DcaITdy3/Sw42SeOGPGcxuxSGfKKp/
-	Fcl7RFMb6lF8UKail0yO9TTEjlHQNQLS5ddqSbrF/AE/NKMp6R6Xak+xt2w55KoojgSTC1apimwte
-	6enMfd6RA==;
+	 bh=YuY3PPbRgkxRFCLQnjdzV9KthXm20sHeE4NFMmXu1j8=; b=NZgjOUM5MSLwi1vaRUlFNAJoQ
+	GyyN8hZ3XGj+Q8MvmR8QoTBtmi8tQl53nV19eWrfdU8VyZwpC0nUDygc1SWs45+M0rnFaEyWCxiKI
+	cZk3sqISpUC2Fzc4/b6RepYK5SV4BCIjpATF+uLCypxTV+7p1t4iREh3Gnd96/9Qk58VWobAjEt7P
+	BcuA+qDxH4Cfiiw9W6+lhUMp1zLpL1FYdxtynYWjbvyELIPzPSBRLc2kmmB+D88IP65zsOO1cgSbQ
+	Cj6UbkxI1u3vP0cbC6uCrNdqwNRKIDn4H2vpZVL0clfmJzzonhpNeSaSdDqGw2g4E7oFGIKo8FSGK
+	kz8Pxh6qg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k7n4O-0002Mb-An; Mon, 17 Aug 2020 21:53:32 +0000
-Received: from mail-il1-f196.google.com ([209.85.166.196])
+	id 1k7omN-0008O8-Jd; Mon, 17 Aug 2020 23:43:03 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k7n4K-0002Lo-FY; Mon, 17 Aug 2020 21:53:29 +0000
-Received: by mail-il1-f196.google.com with SMTP id q14so15867131ilj.8;
- Mon, 17 Aug 2020 14:53:28 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=K0MBZ3ff1Lrj093EuPk59+KL9AiNGoiCQzLPeqa9FjI=;
- b=PW29+TSnUHICT6RwY0oDX+evgNPoxNnxTSV6HbxNDbcFhHTZ5roK3mktlaxpeUcSfj
- LCOQG8LwvqJsM3/9G0zWDMsEY9okmyuPysuwswdclkFfpH3MnfyeK3tN4zslyWFaM7Ru
- 3KcpvR2viaelNuNq6pnUKrxaE1Vw/a3XrX72lUCez5EifD+i8JcHZ5TmwqfhV7zA+3mM
- Exk6qo1C8lwgaLZRDdRSdnEMsTOQ3+4LNz6hjFdWXTGZbIE9QVsJ2pntK4p7183a0sb4
- kpM8YGRDWKFBT3oD29x0EKE78zaoaXKcmnIKW1N30PB6zSl5yGXiwHuDd3hHV26tRECH
- yU7Q==
-X-Gm-Message-State: AOAM5312yKNo9PLiGKlCZmN12IIsxgMPAT9U9QDJZkJk6P/aOLtfWro3
- aImckUNOqikYsKTE+8qBsw==
-X-Google-Smtp-Source: ABdhPJxdet1AhMrLuocVe04RePHBDGwtg0ouAbeoFlf73so3cW8xW9b09tjlxnoH1Zlf/p9lfYPpVQ==
-X-Received: by 2002:a05:6e02:c2e:: with SMTP id
- q14mr15985757ilg.286.1597701207712; 
- Mon, 17 Aug 2020 14:53:27 -0700 (PDT)
-Received: from xps15 ([64.188.179.249])
- by smtp.gmail.com with ESMTPSA id q14sm9665388ioi.48.2020.08.17.14.53.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Aug 2020 14:53:27 -0700 (PDT)
-Received: (nullmailer pid 1637578 invoked by uid 1000);
- Mon, 17 Aug 2020 21:53:24 -0000
-Date: Mon, 17 Aug 2020 15:53:24 -0600
-From: Rob Herring <robh@kernel.org>
-To: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: Re: [PATCH v17 05/12] dt-bindings: soc: Add MT8183 power dt-bindings
-Message-ID: <20200817215324.GA1637549@bogus>
-References: <1596705715-15320-1-git-send-email-weiyi.lu@mediatek.com>
- <1596705715-15320-6-git-send-email-weiyi.lu@mediatek.com>
+ id 1k7omG-0008Ld-Kc; Mon, 17 Aug 2020 23:42:57 +0000
+Received: from mail-ej1-f52.google.com (mail-ej1-f52.google.com
+ [209.85.218.52])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8A5192078B;
+ Mon, 17 Aug 2020 23:42:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1597707775;
+ bh=x2x17PXByjmc5GL+cpiiMIiGtoeX2KrAjZvn4MxGmjM=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=jc/vz+UQzZaY3RWlTnKJ/1TkiZZistwAP8D5Rbr8gGMvQbCioL9ezZGWDCLTThzMQ
+ I5yeRps1Ms1E0aACHi+zxzWiY6evzagCBlM0RQAdSbsnhAHBIiYPfeCGeWc7+3eOqs
+ dR1K0IcG7QqNsmy+9iOB1VtJ8Sl6Xkug3njoTXFI=
+Received: by mail-ej1-f52.google.com with SMTP id c16so19870635ejx.12;
+ Mon, 17 Aug 2020 16:42:55 -0700 (PDT)
+X-Gm-Message-State: AOAM530wW6Y+zTc9BF+BAY2DgdPKQy8MxbDG7EvWTRzZq1g6dw1OH3wV
+ GqJ/zshVqV0g3xMAVlA3gWiOVTVxJm99dAS+mg==
+X-Google-Smtp-Source: ABdhPJz1blTGXowp+NNEIdFVKpxsWzYUxZj6C7dOmrD54k7lOK5kU33K3omXAVdbUpjCWHkbhkIeIAutfvc+KMgeqYw=
+X-Received: by 2002:a17:906:d92c:: with SMTP id
+ rn12mr16958911ejb.187.1597707774145; 
+ Mon, 17 Aug 2020 16:42:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1596705715-15320-6-git-send-email-weiyi.lu@mediatek.com>
+References: <20200817130640.18021-1-jitao.shi@mediatek.com>
+In-Reply-To: <20200817130640.18021-1-jitao.shi@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Tue, 18 Aug 2020 07:42:38 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9ggDUdDD9KoOaWBx3XaK+=Q=5qxahG7SJ5uYBQZ4aadw@mail.gmail.com>
+Message-ID: <CAAOTY_9ggDUdDD9KoOaWBx3XaK+=Q=5qxahG7SJ5uYBQZ4aadw@mail.gmail.com>
+Subject: Re: [PATCH v2] drm/mediatek: dsi: fix scrolling of panel with small
+ hfp or hbp
+To: Jitao Shi <jitao.shi@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200817_175328_538334_D51E06A1 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20200817_194256_914400_8D44AAE5 
+X-CRM114-Status: GOOD (  20.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,35 +82,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: James Liao <jamesjj.liao@mediatek.com>,
- Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org, Enric Balletbo Serra <eballetbo@gmail.com>,
- linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>,
- linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Bibby Hsieh <bibby.hsieh@mediatek.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>, David Airlie <airlied@linux.ie>,
+ huijuan.xie@mediatek.com, stonea168@163.com,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>, cawa.cheng@mediatek.com,
+ CK Hu <ck.hu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 06 Aug 2020 17:21:48 +0800, Weiyi Lu wrote:
-> Add power dt-bindings of MT8183.
-> Add an optional "mediatek,smi" property for phandle to smi-common
-> node for power controller.
-> Introduce properties for power domain sub nodes.
-> 
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> ---
->  .../devicetree/bindings/soc/mediatek/scpsys.txt    | 81 ++++++++++++++++++++--
->  include/dt-bindings/power/mt8183-power.h           | 26 +++++++
->  2 files changed, 102 insertions(+), 5 deletions(-)
->  create mode 100644 include/dt-bindings/power/mt8183-power.h
-> 
-
-Reviewed-by: Rob Herring <robh@kernel.org>
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEppdGFvOgoKSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5
+tDjmnIgxN+aXpSDpgLHkuIAg5LiL5Y2IOTowN+Wvq+mBk++8mgo+Cj4gaG9yaXpvbnRhbF9iYWNr
+cG9yY2hfYnl0ZSBzaG91bGQgYmUgaGJwICogYnBwIC0gaGJwIGV4dHJhIGJ5dGVzLgo+IFNvIHJl
+bW92ZSB0aGUgd3Jvbmcgc3VidHJhY3Rpb24gMTAuCj4KPiBTaWduZWQtb2ZmLWJ5OiBKaXRhbyBT
+aGkgPGppdGFvLnNoaUBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHNpLmMgfCA5ICsrKystLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRp
+b25zKCspLCA1IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4g
+aW5kZXggMjcwYmYyMmM5OGZlLi41ZDAzMWU2MzQ1NzEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZHNpLmMKPiBAQCAtNDczLDE0ICs0NzMsMTMgQEAgc3RhdGljIHZvaWQgbXRrX2RzaV9j
+b25maWdfdmRvX3RpbWluZyhzdHJ1Y3QgbXRrX2RzaSAqZHNpKQo+ICAgICAgICAgaG9yaXpvbnRh
+bF9zeW5jX2FjdGl2ZV9ieXRlID0gKHZtLT5oc3luY19sZW4gKiBkc2lfdG1wX2J1Zl9icHAgLSAx
+MCk7CgpTbyB0aGlzIHN1YnRyYWN0aW9uIDEwIGlzIGNvcnJlY3Q/CgpSZWdhcmRzLApDaHVuLUt1
+YW5nLgoKPgo+ICAgICAgICAgaWYgKGRzaS0+bW9kZV9mbGFncyAmIE1JUElfRFNJX01PREVfVklE
+RU9fU1lOQ19QVUxTRSkKPiAtICAgICAgICAgICAgICAgaG9yaXpvbnRhbF9iYWNrcG9yY2hfYnl0
+ZSA9Cj4gLSAgICAgICAgICAgICAgICAgICAgICAgKHZtLT5oYmFja19wb3JjaCAqIGRzaV90bXBf
+YnVmX2JwcCAtIDEwKTsKPiArICAgICAgICAgICAgICAgaG9yaXpvbnRhbF9iYWNrcG9yY2hfYnl0
+ZSA9IHZtLT5oYmFja19wb3JjaCAqIGRzaV90bXBfYnVmX2JwcDsKPiAgICAgICAgIGVsc2UKPiAt
+ICAgICAgICAgICAgICAgaG9yaXpvbnRhbF9iYWNrcG9yY2hfYnl0ZSA9ICgodm0tPmhiYWNrX3Bv
+cmNoICsgdm0tPmhzeW5jX2xlbikgKgo+IC0gICAgICAgICAgICAgICAgICAgICAgIGRzaV90bXBf
+YnVmX2JwcCAtIDEwKTsKPiArICAgICAgICAgICAgICAgaG9yaXpvbnRhbF9iYWNrcG9yY2hfYnl0
+ZSA9ICh2bS0+aGJhY2tfcG9yY2ggKyB2bS0+aHN5bmNfbGVuKSAqCj4gKyAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkc2lfdG1wX2J1Zl9icHA7Cj4KPiAgICAgICAg
+IGRhdGFfcGh5X2N5Y2xlcyA9IHRpbWluZy0+bHB4ICsgdGltaW5nLT5kYV9oc19wcmVwYXJlICsK
+PiAtICAgICAgICAgICAgICAgICAgICAgICAgIHRpbWluZy0+ZGFfaHNfemVybyArIHRpbWluZy0+
+ZGFfaHNfZXhpdCArIDM7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgICB0aW1pbmctPmRhX2hz
+X3plcm8gKyB0aW1pbmctPmRhX2hzX2V4aXQ7Cj4KPiAgICAgICAgIGlmIChkc2ktPm1vZGVfZmxh
+Z3MgJiBNSVBJX0RTSV9NT0RFX1ZJREVPX0JVUlNUKSB7Cj4gICAgICAgICAgICAgICAgIGlmICgo
+dm0tPmhmcm9udF9wb3JjaCArIHZtLT5oYmFja19wb3JjaCkgKiBkc2lfdG1wX2J1Zl9icHAgPgo+
+IC0tCj4gMi4xMi41Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KPiBMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKPiBMaW51eC1tZWRpYXRla0BsaXN0
+cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1tZWRpYXRlawoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1tZWRpYXRlawo=
