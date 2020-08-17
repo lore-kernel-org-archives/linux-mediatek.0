@@ -2,77 +2,90 @@ Return-Path: <SRS0=yC7h=B3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 52B72C433E1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 21:19:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 12F0DC433E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 21:20:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1D25620674
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 21:19:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D87A52072E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 21:20:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RSotT6qI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1D25620674
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JUuTyfCd";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=tcd-ie.20150623.gappssmtp.com header.i=@tcd-ie.20150623.gappssmtp.com header.b="tQ0FE9hL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D87A52072E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=tcd.ie
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=koqTW0KuiWZZIILbmTAJyJ4sRXCCU8Ax0cOYJzioYc8=; b=RSotT6qIDlX9lXnTOlHvtqOk/
-	qXoDELaifR7Ut+vn9HnzXR8gSQvK0Sjk68B99jyObLOv8Ti01Qe60GCjdM6yjEbfo9RiAD5ZtH+/P
-	021w61sR/IDo6mGsUm/NnGFs0Wp7+WOuN4GYRGNI6Mxc8m+EMxq4erTAjLMfh8WzLou5NhhOz4JJ8
-	HWgmJm5TMqYH8yJYR1wuTR2wCV9UKIl/VXjAFLSvhHJ2H01V5MF23ZrEg/nzG8N+SzT31cHNYF3GE
-	6b+/qaVtuX+5eJumNzS1H8+8/7cAmjoylFOXEa/qvbYEtgO7PqYfpfXbtXwOE+l1J3H71PbD1EUbL
-	9l0gm2gGQ==;
+	 bh=NwQwVe7510PwvAm6HgHKcQQqOsaEcoXMX3DEgK/aZmo=; b=JUuTyfCdZTC8G35AKamDnss9t
+	kCcvxFYcVXSmLSQCvho/+SZCGAZ9GybkvCRFzV3+zZ8dR3cKXrgIE9RzCd1gnz7uWOF+B7AUu8kPY
+	292blL6rbob2Jcy75WdshLgDltyiPCqDulf5Adqk6dnQraEwpag2BCo3xrdYO4qrsnRvyE0bmgwQP
+	mu9+Pd+GLIQoqHyFnY3iKoQrspfaJT8L8jrLZ3a2ITAxGnjc0cZhoTwhmXrpbOFt030YoU9m8Lfg9
+	PvV6gPie1hvucKS19UIEgpVrVZYjfl6MMsGF06rAdhvl3GCc3VR/xGk8P8Yd5yPKtOyN+HdxOafq+
+	7M1xmY6bA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k7mWv-0003Zx-Pu; Mon, 17 Aug 2020 21:18:58 +0000
-Received: from mail-il1-f195.google.com ([209.85.166.195])
+	id 1k7mYC-0003v1-MT; Mon, 17 Aug 2020 21:20:16 +0000
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k7mWr-0003Yj-Hp; Mon, 17 Aug 2020 21:18:54 +0000
-Received: by mail-il1-f195.google.com with SMTP id 77so15781792ilc.5;
- Mon, 17 Aug 2020 14:18:53 -0700 (PDT)
+ id 1k7mY0-0003pj-9K
+ for linux-mediatek@lists.infradead.org; Mon, 17 Aug 2020 21:20:07 +0000
+Received: by mail-pj1-x1042.google.com with SMTP id l60so8415311pjb.3
+ for <linux-mediatek@lists.infradead.org>; Mon, 17 Aug 2020 14:20:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=tcd-ie.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=a6SU4e7qioZa1MSGn21iWR1ma/iTKUTYpUuysCGcy14=;
+ b=tQ0FE9hLvaMYPBTVoFLMvapqE3NmtNzvVLom8ama2749kqs+FHz9nxs7AHIJO7mDBv
+ K8Q+pQ4G/b4TMv1DEEAJUykFiG2bIYGrU3nC3oR7j6f2NPSzKfCcVFaY4kOAcXUttSVT
+ FcQd5pxyrvBzc1oQk+/2JMAu6G+p7dtknI9bruysURWXuQybraU9AWYk41P2rQ/Ugs1V
+ KCxO0AsJuqMRVrwiHYTBB1bwM8dzGrwTw+I2FuHbRzUP2Mdhb2OLUMXYWcNu2LS9HUSM
+ o/iArU0Mr099iYvhHaRGgPLkM2XevIGWNnpUQKOQ1d+f4UwWeBsVd7zpHvgp1Gst8iud
+ sCxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=geakMjJ0wC5hy5d3euSCjFu1HAbmBgNytwcQ+UliUsk=;
- b=Ciht3oFk1BVUx4T5sMJekrMHI7A0L3FE+T2A9HSabCjmFmoIv5HAM2I8BWpTSnQ1ew
- 8mt0TZVRVypvk1VjA3RrraWFA61UBsR1j/Amycy8FvqQ7Pisx27+ky+rVqZVofTbbN8c
- Y7CRfNnnTp76YOSievLXUDRXnYpkISAWfthHFyaWnio/pxP6anhPRcFxemRfkAryuwZd
- jpfDB2OUXq0cPmQX5iYoge7lR7fy95Z19KUk+sj/dR0wP6cnV76M/38U34tzixkfbseT
- HKgIx/LY6AkKorx/f5tp+E5zx8DaBpD3JzRLJjUSj5WNWjgOxSpRe1LjluyCZwPbiEx5
- IlpA==
-X-Gm-Message-State: AOAM5311QFaBKw2ogTJjBREP1FrJ7YhWcDgNExaRsAo2JEw5+xs//pRK
- fPfwiExdPGzBq8cZJLWd3g==
-X-Google-Smtp-Source: ABdhPJzgYo1j7hVzM+6ZhuRDNmWl1GrhNDq9PAyoWLoOxviTDWJK7503lqqSnTedMJ9QvkwK4yUYKA==
-X-Received: by 2002:a92:cbc1:: with SMTP id s1mr10494025ilq.248.1597699132910; 
- Mon, 17 Aug 2020 14:18:52 -0700 (PDT)
-Received: from xps15 ([64.188.179.249])
- by smtp.gmail.com with ESMTPSA id s3sm9759604iol.49.2020.08.17.14.18.51
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=a6SU4e7qioZa1MSGn21iWR1ma/iTKUTYpUuysCGcy14=;
+ b=k851lwoVBnvrhWp2Cw0HkzXFaRV7vNnNjq3vS3XLSpwr6l4oBb+E2FY51O8/7wv5Bw
+ QmTzVSTMTJ1v8SX2e+EAT1mPu7NiwC2Enus6e5GKwsEknSaLNvTS5cOv5MbEhA1V27Zu
+ 2CF91gGC5w6p9q1TAD40qWajPUUDo9J0d/MwFhQbH69RiIBg+RtABFMIsMZlXLURqOk6
+ ZqG1E8uuFtWT+zrZr6IjCi6oaHX8S/i9BBth8yfNIY8xJy64NKCHuiCmSlmR4qZEeHXO
+ gfgg1o/9+ekECI6Pm+ph2Xsjf32nL6xvysnhdWXgY8NkI9K+9Sb+YvGlthoWlshweYdn
+ Dt3Q==
+X-Gm-Message-State: AOAM532RZiusJdbUCRz+6BdfshWxetcYQytyImBoWRrx0b9Qq6HfVRNz
+ KkkQSwro96guCa3Q25hkM+9yfg==
+X-Google-Smtp-Source: ABdhPJxLpxYOD9HqJyjPsE+aMSLqEST9f99mfp5IwRRr6pkeOH6GEyp42pRMo63jP9uxCJQN7toCzQ==
+X-Received: by 2002:a17:90b:128e:: with SMTP id
+ fw14mr14318007pjb.66.1597699202157; 
+ Mon, 17 Aug 2020 14:20:02 -0700 (PDT)
+Received: from localhost.localdomain (S0106ac17c8c0ce82.vc.shawcable.net.
+ [24.87.214.6])
+ by smtp.googlemail.com with ESMTPSA id q10sm20733468pfs.75.2020.08.17.14.20.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Aug 2020 14:18:52 -0700 (PDT)
-Received: (nullmailer pid 1580937 invoked by uid 1000);
- Mon, 17 Aug 2020 21:18:51 -0000
-Date: Mon, 17 Aug 2020 15:18:51 -0600
-From: Rob Herring <robh@kernel.org>
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Subject: Re: [PATCH 2/3] regulator: bindings: Add document for MT6315 regulator
-Message-ID: <20200817211851.GA1579018@bogus>
-References: <1596445047-2975-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1596445047-2975-3-git-send-email-hsin-hsiung.wang@mediatek.com>
+ Mon, 17 Aug 2020 14:20:01 -0700 (PDT)
+From: Tom Murphy <murphyt7@tcd.ie>
+To: iommu@lists.linux-foundation.org
+Subject: [PATCH 2/2] Handle init_iova_flush_queue failure in dma-iommu path
+Date: Mon, 17 Aug 2020 22:19:50 +0100
+Message-Id: <20200817211951.14794-2-murphyt7@tcd.ie>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200817211951.14794-1-murphyt7@tcd.ie>
+References: <20200817211951.14794-1-murphyt7@tcd.ie>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1596445047-2975-3-git-send-email-hsin-hsiung.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200817_171853_601465_294FE60A 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20200817_172004_380460_5AF953A4 
+X-CRM114-Status: GOOD (  14.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,30 +97,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- Stephen Boyd <sboyd@kernel.org>, linux-arm-msm@vger.kernel.org,
- Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
- Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, linux-tegra@vger.kernel.org,
+ Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will@kernel.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ linux-samsung-soc@vger.kernel.org, kvm@vger.kernel.org,
+ Joerg Roedel <joro@8bytes.org>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org,
+ Chen-Yu Tsai <wens@csie.org>, Andy Gross <agross@kernel.org>,
+ Gerald Schaefer <gerald.schaefer@linux.ibm.com>, linux-s390@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, Maxime Ripard <mripard@kernel.org>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ virtualization@lists.linux-foundation.org,
+ linux-arm-kernel@lists.infradead.org, David Woodhouse <dwmw2@infradead.org>,
+ Cornelia Huck <cohuck@redhat.com>, linux-kernel@vger.kernel.org,
+ Tom Murphy <murphyt7@tcd.ie>, Rob Clark <robdclark@gmail.com>,
+ Kukjin Kim <kgene@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ Lu Baolu <baolu.lu@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 03, 2020 at 04:57:26PM +0800, Hsin-Hsiung Wang wrote:
-> Add device tree binding information for mt6315 regulator driver.
-> Example bindings for mt6315 are added.
-> 
-> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> ---
->  .../bindings/regulator/mt6315-regulator.txt        | 45 ++++++++++++++++++++++
->  1 file changed, 45 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/regulator/mt6315-regulator.txt
+init_iova_flush_queue can fail if we run out of memory. Fall back to no
+flush queue if it fails.
 
-Bindings should be DT schema format now.
+Signed-off-by: Tom Murphy <murphyt7@tcd.ie>
+---
+ drivers/iommu/dma-iommu.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-Rob
+diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
+index 7433f74d921a..5445e2be08b5 100644
+--- a/drivers/iommu/dma-iommu.c
++++ b/drivers/iommu/dma-iommu.c
+@@ -356,9 +356,11 @@ static int iommu_dma_init_domain(struct iommu_domain *domain, dma_addr_t base,
+ 
+ 	if (!cookie->fq_domain && !iommu_domain_get_attr(domain,
+ 			DOMAIN_ATTR_DMA_USE_FLUSH_QUEUE, &attr) && attr) {
+-		cookie->fq_domain = domain;
+-		init_iova_flush_queue(iovad, iommu_dma_flush_iotlb_all,
+-				iommu_dma_entry_dtor);
++		if (init_iova_flush_queue(iovad, iommu_dma_flush_iotlb_all,
++				iommu_dma_entry_dtor))
++			pr_warn("iova flush queue initialization failed\n");
++		else
++			cookie->fq_domain = domain;
+ 	}
+ 
+ 	if (!dev)
+-- 
+2.20.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
