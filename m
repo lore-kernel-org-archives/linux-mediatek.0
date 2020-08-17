@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B493C433E3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 08:27:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 052F4C433E3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 08:29:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0B8122063A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 08:27:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A66AD20658
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 08:29:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Fl/0iDTu";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="OYFh+2d+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0B8122063A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BT7bJKDK";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="XH24MgRj"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A66AD20658
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,49 +27,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/KqyZbot7nnFQnWMMjwHOl1rOReSu+tXG6B+jolp/oo=; b=Fl/0iDTuStoYv84sk80gra0G5F
-	WoieVuQFn4GcF36hwbR9iGaWU2eZ0pFPYBe7u+X4BIji1OidaAcGmz1UW2uTy0IRdgvlcxQU+YQwT
-	Y27qlr2/YAFcPpLiybJ05VS3RpVHGyMHTButL2lCzKZErWwpAw8xzyvQTCCoeltDIhJx2YIrHE8d3
-	k1zxm/vHgQe1T2ky2D7ytcH5b7uzH5g9J2Da+XyDN0ucQzGpDfcjHnNit9P/Fr5LNkt82DDD9XvAb
-	3rkwA1j6Mf/OyvjF8fSj5aZmR/XQgreFXeNxP/mXPT2LC6oMvdIOxrtywOHFX6iGoBvqOXaC1YRW5
-	UIYapynA==;
+	bh=mqO2kAb5ltqe79cO5IzEPyqwpzVdbWE3zJqQUR+q5vk=; b=BT7bJKDKNr+KHfWtNIRKB4nYVx
+	H1EKt1Bo/Rm7neC7yisPiTmigOwcOabSiiOOn9VvI+7ppNSKFger5Vex9clCrgI1PHGKqS+CD1UrH
+	Q10d8tWeX8MkLF9ZLXQkSbP2orCb52tFttRg9qjeX8dcRhqgeqCYgmP81a9M5Foz61o7EYb9bMMru
+	HCG/7orhyKzz0RcdMp+oE7urgBHPJVoZCVDjPrI8W3jKPgnYQbCTtKhA30eQFbViTPEis6D69D9ut
+	hIQYBD6tUvV2tLeJMisvUNfDICOT5kb6FdyXEOiM4D2jMoiuhwk3ElbwKQiTbA32Fi8xQ99zEZs7z
+	oKQgUmZA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k7aU7-000346-8V; Mon, 17 Aug 2020 08:27:15 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1k7aW0-0004F9-0k; Mon, 17 Aug 2020 08:29:12 +0000
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k7aMQ-0007hc-Ov; Mon, 17 Aug 2020 08:19:35 +0000
-Received: by mail-pg1-x541.google.com with SMTP id g33so7759417pgb.4;
- Mon, 17 Aug 2020 01:19:18 -0700 (PDT)
+ id 1k7aMa-0007mw-V7; Mon, 17 Aug 2020 08:19:47 +0000
+Received: by mail-pj1-x1043.google.com with SMTP id t6so7341301pjr.0;
+ Mon, 17 Aug 2020 01:19:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=jWR4tpYKdIgwTfTifXGcZkODpDZhHIDKqvJr9MK44Qo=;
- b=OYFh+2d+PvKPM1X1rs+IA+8SX7qx1z1ncQwibPS2FwYo+kTpxsmxlZE9XxbUtNm+tv
- AtBfUUth4VbOKdd2rod3vSx5BrzO6OfIsUX4eNFbo63ls/Un+mZgFuOI9zrd5PSmi0mW
- H16w2TyJV7ro8jO/jGh4t4forYJtnlH6hrEdr4/bfLh3c7tlqcu7pV8ykwMCV1ujbk1I
- /vRGMPVCJk6q71CRLDZ896xcZRAOaVw4MLpDpGh/5Rfo8xdzG+956Z1u+uG0lqEebRuf
- G+wjGGZFdWy/VHbmmvR2INPNPdeEJO0RrFN0fVosHIqm+ZdcpzHMVsoAyb+OwlMi1/EG
- vONA==
+ bh=SduS7GYrzCMOuDhMx/Gh1w2hqriGD/sY89ZovbEjnFE=;
+ b=XH24MgRjHRYGPePUOq3aw4H5z0Vr33lqZWU9Wlczqoofn0SYwK930nVcgDozCL8vcP
+ ONUcHFit8FvUlnNJY5xZECDV8iv+6xLVTKQ51c+RuZNBgtHQXOY1YvG7uubgdAg0SP0+
+ BlK2QMTQVwwlmyoXsxrDybqm5kQaTHAjfYUT2t2hvzw9+gGVNwXNfcAYWDayGD9olG3b
+ OBoUq3H+ZOsSslRrqPcZ3iLi6s6rKmvSoeWvJZibcRh0V6l2wlYaBuJUsu34hYRO3ENW
+ vQfu4wD4n4yQItLkaeBkT6PTj9aQ22IIwUHUmAkUYdIhhbuZBRV/D/32Uky9eonf9Wnp
+ jCJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=jWR4tpYKdIgwTfTifXGcZkODpDZhHIDKqvJr9MK44Qo=;
- b=TNaE1xL9z9sIJv1dv08x0QGpBR6GB5IomIQcUnodgpvpgxoMlFFa3uYzZ9ddJcTzON
- vSMc1rB5U+gPzW16oPBt5NeCpla7ChhjKp8uWOB1yggOXkrh91ef1HulOAjtwFxLDUiV
- j3Ce5o+0P8rXvscn4h5nxJXLp9a3pz4GizwwRHccNNLcLDxPgjCO0Pxkytq+B2CqKL/p
- a6QwGlOpkUwpZbwo6B/xvyPRNL6pFtJZEvUTXSO9ns4XaWLpcLWd2xlae8Oe/K1KvYep
- vANPIr8Z1ZdQH6XhOUdREvgUB4Dw+pq/WZvM81TT2OqvXHZFKvnBcY1QRLIXzk4FoZhd
- Vqhg==
-X-Gm-Message-State: AOAM533yUXiAV8i93X8jiVfXOeRMuzTns22wMpofXj4D6eugEE/uWJmd
- xXprJAd65dtpOzZ+F9UOvNo=
-X-Google-Smtp-Source: ABdhPJzQZQ8jCbyqROLlM27Ni7dlU0vjA+PPip0ZkkUZjaj/KtF/PrsiQ7sLHmgguZb6B+CXPAkl7w==
-X-Received: by 2002:a63:fa09:: with SMTP id y9mr9461516pgh.0.1597652356434;
- Mon, 17 Aug 2020 01:19:16 -0700 (PDT)
+ bh=SduS7GYrzCMOuDhMx/Gh1w2hqriGD/sY89ZovbEjnFE=;
+ b=SdZtGCo5w85jvDBYMc1nmzPVAPXp+gGhkz5A4wNmAgl2BKixKdh4minV2BA64810Ct
+ j0h0P3bascMTS8plNWwFmk488X1oBtYHKPQ5YIotiOVCrop0JIV6PDGpUWo7t3+8rI6B
+ cHVZTxXTeXCxRb6D/p6zUC+NbyATcZQ4X23qckhx5H7pi2mmRsouQx/SOqTxdDe+tO8L
+ Y0bgW1Kjj0lQ5VmBIntHqJeAHoL1Bu7PM7GYnvTvBO3NO8eviwbCPs8l0soeVnlfz+tA
+ sqX84GZhG9ZX6158rLT2AdXnlpvxTQZ+iWYx79sYmc3hMneWuXP9CU3giBvUuYiklnkZ
+ qo4Q==
+X-Gm-Message-State: AOAM533/zS7uxXePeZYZ/3pU0rBGnCz9xznyIHraVD70p0ZHxFsVV+pE
+ IMIC3DsMAfPK4CHruMq7RDA=
+X-Google-Smtp-Source: ABdhPJzroCaU+Tt7oEAw88lrMX/tAJLQhR1tAgJzO5Lh4HdTX+ecDGKk5WTyNolUBaI2A4dXtvY8dg==
+X-Received: by 2002:a17:902:ee82:: with SMTP id
+ a2mr10184305pld.204.1597652366238; 
+ Mon, 17 Aug 2020 01:19:26 -0700 (PDT)
 Received: from localhost.localdomain ([49.207.202.98])
- by smtp.gmail.com with ESMTPSA id d93sm16735334pjk.44.2020.08.17.01.19.03
+ by smtp.gmail.com with ESMTPSA id d93sm16735334pjk.44.2020.08.17.01.19.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Aug 2020 01:19:15 -0700 (PDT)
+ Mon, 17 Aug 2020 01:19:25 -0700 (PDT)
 From: Allen Pais <allen.lkml@gmail.com>
 To: shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
  festevam@gmail.com, linux-imx@nxp.com, ast@kernel.org,
@@ -78,16 +79,16 @@ To: shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
  baohua@kernel.org, mripard@kernel.org, wens@csie.org,
  thierry.reding@gmail.com, jonathanh@nvidia.com, michal.simek@xilinx.com,
  matthias.bgg@gmail.com
-Subject: [PATCH 09/35] dma: ioat: convert tasklets to use new tasklet_setup()
- API
-Date: Mon, 17 Aug 2020 13:47:00 +0530
-Message-Id: <20200817081726.20213-10-allen.lkml@gmail.com>
+Subject: [PATCH 10/35] dma: iop_adma: convert tasklets to use new
+ tasklet_setup() API
+Date: Mon, 17 Aug 2020 13:47:01 +0530
+Message-Id: <20200817081726.20213-11-allen.lkml@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200817081726.20213-1-allen.lkml@gmail.com>
 References: <20200817081726.20213-1-allen.lkml@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200817_041918_975521_BDA9753F 
-X-CRM114-Status: GOOD (  15.06  )
+X-CRM114-CacheID: sfid-20200817_041929_142051_D3AFBBAB 
+X-CRM114-Status: GOOD (  13.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,71 +118,36 @@ and from_tasklet() to pass the tasklet pointer explicitly.
 Signed-off-by: Romain Perier <romain.perier@gmail.com>
 Signed-off-by: Allen Pais <allen.lkml@gmail.com>
 ---
- drivers/dma/ioat/dma.c  | 6 +++---
- drivers/dma/ioat/dma.h  | 2 +-
- drivers/dma/ioat/init.c | 4 +---
- 3 files changed, 5 insertions(+), 7 deletions(-)
+ drivers/dma/iop-adma.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/dma/ioat/dma.c b/drivers/dma/ioat/dma.c
-index a814b200299b..bfcf67febfe6 100644
---- a/drivers/dma/ioat/dma.c
-+++ b/drivers/dma/ioat/dma.c
-@@ -165,7 +165,7 @@ void ioat_stop(struct ioatdma_chan *ioat_chan)
- 	tasklet_kill(&ioat_chan->cleanup_task);
- 
- 	/* final cleanup now that everything is quiesced and can't re-arm */
--	ioat_cleanup_event((unsigned long)&ioat_chan->dma_chan);
-+	ioat_cleanup_event(&ioat_chan->cleanup_task);
+diff --git a/drivers/dma/iop-adma.c b/drivers/dma/iop-adma.c
+index 3350bffb2e93..81f177894d1f 100644
+--- a/drivers/dma/iop-adma.c
++++ b/drivers/dma/iop-adma.c
+@@ -238,9 +238,10 @@ iop_adma_slot_cleanup(struct iop_adma_chan *iop_chan)
+ 	spin_unlock_bh(&iop_chan->lock);
  }
  
- static void __ioat_issue_pending(struct ioatdma_chan *ioat_chan)
-@@ -690,9 +690,9 @@ static void ioat_cleanup(struct ioatdma_chan *ioat_chan)
- 	spin_unlock_bh(&ioat_chan->cleanup_lock);
- }
- 
--void ioat_cleanup_event(unsigned long data)
-+void ioat_cleanup_event(struct tasklet_struct *t)
+-static void iop_adma_tasklet(unsigned long data)
++static void iop_adma_tasklet(struct tasklet_struct *t)
  {
--	struct ioatdma_chan *ioat_chan = to_ioat_chan((void *)data);
-+	struct ioatdma_chan *ioat_chan = from_tasklet(ioat_chan, t, cleanup_task);
+-	struct iop_adma_chan *iop_chan = (struct iop_adma_chan *) data;
++	struct iop_adma_chan *iop_chan = from_tasklet(iop_chan, t,
++						      irq_tasklet);
  
- 	ioat_cleanup(ioat_chan);
- 	if (!test_bit(IOAT_RUN, &ioat_chan->state))
-diff --git a/drivers/dma/ioat/dma.h b/drivers/dma/ioat/dma.h
-index f7f31fdf14cf..140cfe3782fb 100644
---- a/drivers/dma/ioat/dma.h
-+++ b/drivers/dma/ioat/dma.h
-@@ -393,7 +393,7 @@ int ioat_reset_hw(struct ioatdma_chan *ioat_chan);
- enum dma_status
- ioat_tx_status(struct dma_chan *c, dma_cookie_t cookie,
- 		struct dma_tx_state *txstate);
--void ioat_cleanup_event(unsigned long data);
-+void ioat_cleanup_event(struct tasklet_struct *t);
- void ioat_timer_event(struct timer_list *t);
- int ioat_check_space_lock(struct ioatdma_chan *ioat_chan, int num_descs);
- void ioat_issue_pending(struct dma_chan *chan);
-diff --git a/drivers/dma/ioat/init.c b/drivers/dma/ioat/init.c
-index 8a53f5c96b16..191b59279007 100644
---- a/drivers/dma/ioat/init.c
-+++ b/drivers/dma/ioat/init.c
-@@ -767,8 +767,6 @@ ioat_init_channel(struct ioatdma_device *ioat_dma,
- 		  struct ioatdma_chan *ioat_chan, int idx)
- {
- 	struct dma_device *dma = &ioat_dma->dma_dev;
--	struct dma_chan *c = &ioat_chan->dma_chan;
--	unsigned long data = (unsigned long) c;
+ 	/* lockdep will flag depedency submissions as potentially
+ 	 * recursive locking, this is not the case as a dependency
+@@ -1351,8 +1352,7 @@ static int iop_adma_probe(struct platform_device *pdev)
+ 		ret = -ENOMEM;
+ 		goto err_free_iop_chan;
+ 	}
+-	tasklet_init(&iop_chan->irq_tasklet, iop_adma_tasklet, (unsigned long)
+-		iop_chan);
++	tasklet_setup(&iop_chan->irq_tasklet, iop_adma_tasklet);
  
- 	ioat_chan->ioat_dma = ioat_dma;
- 	ioat_chan->reg_base = ioat_dma->reg_base + (0x80 * (idx + 1));
-@@ -778,7 +776,7 @@ ioat_init_channel(struct ioatdma_device *ioat_dma,
- 	list_add_tail(&ioat_chan->dma_chan.device_node, &dma->channels);
- 	ioat_dma->idx[idx] = ioat_chan;
- 	timer_setup(&ioat_chan->timer, ioat_timer_event, 0);
--	tasklet_init(&ioat_chan->cleanup_task, ioat_cleanup_event, data);
-+	tasklet_setup(&ioat_chan->cleanup_task, ioat_cleanup_event);
- }
- 
- #define IOAT_NUM_SRC_TEST 6 /* must be <= 8 */
+ 	/* clear errors before enabling interrupts */
+ 	iop_adma_device_clear_err_status(iop_chan);
 -- 
 2.17.1
 
