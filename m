@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 770E3C433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 08:34:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7FC48C433E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 08:34:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4769B2072D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 08:34:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4E4BC2072D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 08:34:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="n5OYlPJG";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="KRBYv0V7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4769B2072D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bkBJgxKy";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="DhBo3QVZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4E4BC2072D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,49 +27,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zPq+sdhQYgS9/zWui8XnY9YEpv3BxNKoGO2YEac0u/A=; b=n5OYlPJGs4mWE/8a/+RLlbSn0j
-	Y2Y6zwygdEipiw9a+OR1zdeHjVf6JibpWE21m/khaFBZGskvKOLKvS2O69PjoygUuY61+fDl1CKtP
-	pm60CzH2rXaGQOXA362JRyawa5Icyzn2mh3Ac05p2WTpHnYSKlERb1lXnEpLny5QI5pX+PGQ6QCBd
-	LVKD/d4gVwH5dQbGd/p3ifwh5xPF8R2E+WwHMot3GXbWN2FwfNF8pHhr06QSs5eE1KXIbJVoAMdQc
-	eRFyLr+TPKIorNq3fiTcCyPe19+NSE20Nk0oIA9DftMeMzPN2UKGAeI0UbQfSma0cq7NWnHKt205A
-	miVV/fkQ==;
+	bh=2l/dfY6CTiNry2p70fw2aq5bqC6Rb5GXEn2wnDvlihY=; b=bkBJgxKyzmJPpRgGFuHrd9fmJO
+	VpDi27QoqE90XWlIATx9qk/xatYu7cNLMS7JV163/S0X8MUbAnwLYzJY5qHM6nBp+9xw3slvgUEaN
+	MYB6jLG8TGOgbv3b2Kes2CuzCjolkjKgSnkT0N+Mw+HFeJDewvX1gaT8l5ADTiOSRuuvuFTSFjbGV
+	2hFCfhGOgWJC3bHTI7dXQ097fU59QlXELAT9qS0nKNDxh51glnKY0SU2ogeMnGYjw8w5dXOe3zrc6
+	JpR7St5y/wiI+PSxZL7T7M4b8WCxSCbBfZWQric2zbgC4djIn8pKGKBT2EDamk3xUmNhYZLhWPIe6
+	5DHf7wcw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k7aad-0006pa-K6; Mon, 17 Aug 2020 08:33:59 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1k7aap-0006xh-33; Mon, 17 Aug 2020 08:34:11 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k7aNv-0008PC-T0; Mon, 17 Aug 2020 08:20:53 +0000
-Received: by mail-pg1-x541.google.com with SMTP id 189so7122396pgg.13;
- Mon, 17 Aug 2020 01:20:50 -0700 (PDT)
+ id 1k7aO3-0008Tx-GR; Mon, 17 Aug 2020 08:21:01 +0000
+Received: by mail-pf1-x442.google.com with SMTP id m8so7874229pfh.3;
+ Mon, 17 Aug 2020 01:20:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=dqznZ0QFtNhvUqAjtholQ/Q+9qOGKPjtIbAySrocxDs=;
- b=KRBYv0V7RGxjCNY2koURdTLqlf5T4Z5jbej72if9UXEFoL/RlV6R2AvNxEL7dsnkWj
- 0Ocb0N5z5mpfGDeBczn80DTSBEiOrPHHULXZM2bbF2PT18waNq8KIv/teDOjtojWbR/o
- +utDsvnj0AiO/C0hDKdBK5L3ZEIFNo1ncyj3M37kjc5nrD+4woYiqlvpl7WkU63sNC3s
- /z4oHsk2a5X6cL0vJjbAo8Q0jygbeBZTUK1omsbE3UDj2SLH/dnrgSMmm41FmZ4H/Jqb
- uQF+QmUGHr2ATgAq4IklyAkVPA8988eGdhnOuKCkWnKzJ1jh6EvOFScbKkNP2V/Z+eeY
- +WTQ==
+ bh=dBdUK8kTW7LlD2iWbT6JIJ3+2TeLAftGafICpZAEwWI=;
+ b=DhBo3QVZ7RG3vmgoNkItvwt1S5mOvic4xOre9KplQouw/zjrMkde3nmUrVsRNShSgQ
+ tPrNCl473k5OZbUWRxdiDJpQXpEIYG14b+73qK8djI5DITUJ6lihsmtYD7kPn1KlDVX2
+ ZtX0p/IGpjDOl4xzqiKlPdZfFh+q96wAvw/z5dqY/kpvVYALHYAYtGZzvFEd4k1jYUTa
+ QYPpbUn5w1xwiPMA3ppiW0gqQX1HFzJUDf85kqm+UcfpWqbypl3AQdwR1TfnHTaB0lvq
+ bYrknS9FRIOZUI/R2DT1dEU2sI7BXsnpQLIayv3U4tE70PZpg0yne09vnOwYATGXrAWi
+ AeEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=dqznZ0QFtNhvUqAjtholQ/Q+9qOGKPjtIbAySrocxDs=;
- b=Bvqs8HnMjNPCll+vrUCA4fWg/QJg6vVpY4j3jHt5ny6nDTxuHpM3Uo7Nbsb2gUZQKL
- mSCrT5vUKL06NsgVH5tiv57UHNSxDg/nBEX9vt0XOo2ep1Z0Jn/YZ6+cOWsg3msE+8ff
- aOO0VT1aKqekqIZ3uc7yjynMlcQIQ7/d/IhIUytoxoqiXd5+fg4tDNeQjBAc66z1Wvrj
- ttt4BsUJtIa7rk6czPtwuKcoYBh+rFc6m0VeSBCsY1wKaZVaIe0x3VrI/+ZxPplinqy2
- eWwQwiU+Y6GlNwAuJ3QkcXbTNmq+3mpAovBQeXeRZTG2soQ27AM+Hkns3MLrpBP86F60
- rk1Q==
-X-Gm-Message-State: AOAM531J07Rhfs5Nc+Xgpem83GwS7AMx+j0enROhM3pP6osk4FkbetEJ
- xgu/TVVBtSZHeJgabR2EWrk=
-X-Google-Smtp-Source: ABdhPJzX+N/OkXU+vrrmrFmCMg/4yjHapdnCrzQXpTIDVt6HxLMh86+qWux6PojScRvt2WSRNYNUQw==
-X-Received: by 2002:a62:1543:: with SMTP id 64mr10645592pfv.242.1597652447996; 
- Mon, 17 Aug 2020 01:20:47 -0700 (PDT)
+ bh=dBdUK8kTW7LlD2iWbT6JIJ3+2TeLAftGafICpZAEwWI=;
+ b=B8Qq8JcnDkPbSNMfGKlbJ8JRlycqwaVEk/XbSuQvOAbb8OEufr654JRH4BHjGK4/zh
+ 04F5zXUO4RkD/EzNKjeNq7swQYHmwdAnBPxh2C7Q3sUGVqixG7KzVZ5H20FvQ/ZCOXUd
+ gGMemqlYhngwIhjSuJEtks+VgBjQX44R0D2rtl7dFpm3SQyMZay0cnUA1sEooozn979d
+ 9rb7R01y4y2/7eLyf7fNDbofcdrK87r2KFUkt8fV/oo3NGoDmpLjFynthQoHh7AyFWE8
+ 1zaM9a1EpvzXgVUVygKNjNf/qT2F0YX7MHbfXMvyj46Do4L/+DylYy3PE9+p06eEYa78
+ Ejcg==
+X-Gm-Message-State: AOAM531rlpzyOZjEQbudPz5Sq73dNbixSSmi+KzuPMO/ahNSxWfN0xtk
+ NF7OAv0DwOnjRksoprn0ev+qsTd/hpiiEQ==
+X-Google-Smtp-Source: ABdhPJxV6aGgsyONYJ85KZCc26Mwj2MNfgxuNI7M/Y4k7HNeoWAcKtP56vFtLZwXEmS9pw15U3I4EQ==
+X-Received: by 2002:a63:d40d:: with SMTP id a13mr385021pgh.232.1597652457198; 
+ Mon, 17 Aug 2020 01:20:57 -0700 (PDT)
 Received: from localhost.localdomain ([49.207.202.98])
- by smtp.gmail.com with ESMTPSA id d93sm16735334pjk.44.2020.08.17.01.20.39
+ by smtp.gmail.com with ESMTPSA id d93sm16735334pjk.44.2020.08.17.01.20.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Aug 2020 01:20:47 -0700 (PDT)
+ Mon, 17 Aug 2020 01:20:56 -0700 (PDT)
 From: Allen Pais <allen.lkml@gmail.com>
 To: shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
  festevam@gmail.com, linux-imx@nxp.com, ast@kernel.org,
@@ -78,16 +78,16 @@ To: shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
  baohua@kernel.org, mripard@kernel.org, wens@csie.org,
  thierry.reding@gmail.com, jonathanh@nvidia.com, michal.simek@xilinx.com,
  matthias.bgg@gmail.com
-Subject: [PATCH 18/35] dma: nbpfaxi: convert tasklets to use new
+Subject: [PATCH 19/35] dma: pch_dma: convert tasklets to use new
  tasklet_setup() API
-Date: Mon, 17 Aug 2020 13:47:09 +0530
-Message-Id: <20200817081726.20213-19-allen.lkml@gmail.com>
+Date: Mon, 17 Aug 2020 13:47:10 +0530
+Message-Id: <20200817081726.20213-20-allen.lkml@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200817081726.20213-1-allen.lkml@gmail.com>
 References: <20200817081726.20213-1-allen.lkml@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200817_042052_235770_CBBDD2C9 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20200817_042059_700597_42A50F83 
+X-CRM114-Status: GOOD (  12.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,34 +117,35 @@ and from_tasklet() to pass the tasklet pointer explicitly.
 Signed-off-by: Romain Perier <romain.perier@gmail.com>
 Signed-off-by: Allen Pais <allen.lkml@gmail.com>
 ---
- drivers/dma/nbpfaxi.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/dma/pch_dma.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/dma/nbpfaxi.c b/drivers/dma/nbpfaxi.c
-index 74df621402e1..4ef0838840f3 100644
---- a/drivers/dma/nbpfaxi.c
-+++ b/drivers/dma/nbpfaxi.c
-@@ -1113,9 +1113,9 @@ static struct dma_chan *nbpf_of_xlate(struct of_phandle_args *dma_spec,
- 	return dchan;
+diff --git a/drivers/dma/pch_dma.c b/drivers/dma/pch_dma.c
+index a3b0b4c56a19..0cd0311e6e87 100644
+--- a/drivers/dma/pch_dma.c
++++ b/drivers/dma/pch_dma.c
+@@ -670,9 +670,9 @@ static int pd_device_terminate_all(struct dma_chan *chan)
+ 	return 0;
  }
  
--static void nbpf_chan_tasklet(unsigned long data)
-+static void nbpf_chan_tasklet(struct tasklet_struct *t)
+-static void pdc_tasklet(unsigned long data)
++static void pdc_tasklet(struct tasklet_struct *t)
  {
--	struct nbpf_channel *chan = (struct nbpf_channel *)data;
-+	struct nbpf_channel *chan = from_tasklet(chan, t, tasklet);
- 	struct nbpf_desc *desc, *tmp;
- 	struct dmaengine_desc_callback cb;
+-	struct pch_dma_chan *pd_chan = (struct pch_dma_chan *)data;
++	struct pch_dma_chan *pd_chan = from_tasklet(pd_chan, t, tasklet);
+ 	unsigned long flags;
  
-@@ -1260,7 +1260,7 @@ static int nbpf_chan_probe(struct nbpf_device *nbpf, int n)
+ 	if (!pdc_is_idle(pd_chan)) {
+@@ -898,8 +898,7 @@ static int pch_dma_probe(struct pci_dev *pdev,
+ 		INIT_LIST_HEAD(&pd_chan->queue);
+ 		INIT_LIST_HEAD(&pd_chan->free_list);
  
- 	snprintf(chan->name, sizeof(chan->name), "nbpf %d", n);
+-		tasklet_init(&pd_chan->tasklet, pdc_tasklet,
+-			     (unsigned long)pd_chan);
++		tasklet_setup(&pd_chan->tasklet, pdc_tasklet);
+ 		list_add_tail(&pd_chan->chan.device_node, &pd->dma.channels);
+ 	}
  
--	tasklet_init(&chan->tasklet, nbpf_chan_tasklet, (unsigned long)chan);
-+	tasklet_setup(&chan->tasklet, nbpf_chan_tasklet);
- 	ret = devm_request_irq(dma_dev->dev, chan->irq,
- 			nbpf_chan_irq, IRQF_SHARED,
- 			chan->name, chan);
 -- 
 2.17.1
 
