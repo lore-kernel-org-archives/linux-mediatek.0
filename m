@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 856DEC433DF
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 919E0C433E1
 	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 02:50:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 53B1D20658
+	by mail.kernel.org (Postfix) with ESMTPS id 63958207FF
 	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 02:50:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Qi2jGurD";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GW+/3iDI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 53B1D20658
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="g6G50rel";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="JLxLRJ1I"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 63958207FF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,52 +26,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=d634Cq6ryiOtTqNS0gkFtoP1hIik+ZWWSNlP4cO9IhM=; b=Qi2jGurDsQEn4D5EPoeoPCLEk
-	iXi0tGi0CXV4TBjS2ej0RFu1zQsejliDB6qsMIA6Nmr95yQYuGuxaikLJG+qfTD5iqF95r9lzQ2ql
-	M3aySuQKfNcQ57YyPN7MvQw8bxLh9vIziv1lcika5Q8ly3mR54NLQJ7nw9HHc7MJ4LuEHiMaxMR3o
-	yud31B+geCgDniNrCb2Y/O2G7LchXpAz2t7g6B76ciHAAgw9f/+AYIgtZ9UY7zhHwHJwJp8ltWg6a
-	jn2cmwKVj2jnKpstcCnRhjSVFy7GlEgGUJjTnHWBbLRmrLs1vjOtKZz4EJatNHYyPITKHjqdCyk6J
-	P4Qg5vahw==;
+	 bh=REGmAzWGrW3NsQQQ3Vm1w4EASI3Wpj69y7igGbNxL5s=; b=g6G50relewLu9YVOhQ9yvqJDT
+	5q4GCtNytPIZMEuoF5FuTVqx5uhFDDS8W1b4ppBT2C4oJwscjJaV/myBnZSgXUn/FqWTKHr+tgF9g
+	bv/fOaM5tSrQPpfKxGPhNe6kWmMit15he9aeYCNTImUTkZhhIJeGA14D44Dc3Hg4AC2O+Cj21fN1b
+	gjzIySnf2G8/+T8vL9YXBinkGBsLWnjswFEhWifivGVN+vRnhgNUWSOOcJirU2QYRJgBkcF0QEXL7
+	0hnZz+rk3qudbd/+ed6nUPDuWH1QPU9qGX/juwDeH8kpEESstrIWS1n0a6jPk5cS0n65cAvG+9KcE
+	/JcMDCdyg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k7VEI-0004Og-1o; Mon, 17 Aug 2020 02:50:34 +0000
+	id 1k7VEI-0004On-Mw; Mon, 17 Aug 2020 02:50:34 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k7VE9-0004LZ-1x; Mon, 17 Aug 2020 02:50:27 +0000
-X-UUID: deecb8b36fb24c05be075d6b0fc1da7c-20200816
+ id 1k7VE9-0004MG-2o; Mon, 17 Aug 2020 02:50:27 +0000
+X-UUID: 8f3658c561c34637a810e23d96898ea5-20200816
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=JJlKMP7ee02ays8KbIJqTQ/xkRTBFEVByYajjiFisPk=; 
- b=GW+/3iDIILtb1nDctYPMebyBQ258ydRh9L1J/d9xSV60Jy/qoODNxOaLmQxdIRHed8QnNOt3YYMhWk7sbGrRy+SITfN1aiY/N1K9ZWucTQLM8tKT9T8exOQKyXG4QDMhhpVZ2nKhZbt/i61G+a3fjlANamvFiBx8g7h/Y9TEjq0=;
-X-UUID: deecb8b36fb24c05be075d6b0fc1da7c-20200816
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=keeKoJIRKUWFE6P/EASXouOcJ/N4TDpUj5yGA3TaFgs=; 
+ b=JLxLRJ1I4279hHgA4aVe2HMhLsaWkykIAV7aMnLd9Kh3y/XkhYSIDeU75RS3Burmsk9Bs6ityN5D58CWEfJKNLnAmYoslMdmYe8D7svs18hofMbi6Sv4sSGTmFhdjmoTDYgDXB1pm6cR3PDJWrYDZRQhX14Y/O8KYF09X9Nj5tM=;
+X-UUID: 8f3658c561c34637a810e23d96898ea5-20200816
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <crystal.guo@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1324397410; Sun, 16 Aug 2020 18:50:15 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 16 Aug 2020 19:50:14 -0700
+ with ESMTP id 2085031841; Sun, 16 Aug 2020 18:50:22 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 16 Aug 2020 19:50:20 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 17 Aug 2020 10:50:11 +0800
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 17 Aug 2020 10:50:12 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 17 Aug 2020 10:50:10 +0800
+ Transport; Mon, 17 Aug 2020 10:50:12 +0800
 From: Crystal Guo <crystal.guo@mediatek.com>
 To: <p.zabel@pengutronix.de>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
-Subject: [v3, 2/4] dt-binding: reset-controller: ti: add 'mediatek,
- infra-reset' to compatible
-Date: Mon, 17 Aug 2020 10:48:40 +0800
-Message-ID: <20200817024842.5289-3-crystal.guo@mediatek.com>
+Subject: [v3,3/4] reset-controller: ti: introduce a new reset handler
+Date: Mon, 17 Aug 2020 10:48:41 +0800
+Message-ID: <20200817024842.5289-4-crystal.guo@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200817024842.5289-1-crystal.guo@mediatek.com>
 References: <20200817024842.5289-1-crystal.guo@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200816_225025_265561_2DBAD1D0 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20200816_225025_282554_2AB7FE20 
+X-CRM114-Status: GOOD (  14.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,27 +92,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The TI syscon reset controller provides a common reset management,
-and is suitable for MTK SoCs. Add compatible 'mediatek,infra-reset',
-which denotes to use ti reset-controller driver directly.
+Introduce ti_syscon_reset() to integrate assert and deassert together.
+If some modules need do serialized assert and deassert operations
+to reset itself, reset_control_reset can be called for convenience.
+
+Such as reset-qcom-aoss.c, it integrates assert and deassert together
+by 'reset' method. MTK Socs also need this method to perform reset.
 
 Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
 ---
- Documentation/devicetree/bindings/reset/ti-syscon-reset.txt | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/reset/reset-ti-syscon.c | 26 ++++++++++++++++++++++++--
+ 1 file changed, 24 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/reset/ti-syscon-reset.txt b/Documentation/devicetree/bindings/reset/ti-syscon-reset.txt
-index ab041032339b..5a0e9365b51b 100644
---- a/Documentation/devicetree/bindings/reset/ti-syscon-reset.txt
-+++ b/Documentation/devicetree/bindings/reset/ti-syscon-reset.txt
-@@ -25,6 +25,7 @@ Required properties:
- 			    "ti,k2l-pscrst"
- 			    "ti,k2hk-pscrst"
- 			    "ti,syscon-reset"
-+			    "mediatek,infra-reset", "ti,syscon-reset"
-  - #reset-cells		: Should be 1. Please see the reset consumer node below
- 			  for usage details
-  - ti,reset-bits	: Contains the reset control register information
+diff --git a/drivers/reset/reset-ti-syscon.c b/drivers/reset/reset-ti-syscon.c
+index a2635c21db7f..08289342f9af 100644
+--- a/drivers/reset/reset-ti-syscon.c
++++ b/drivers/reset/reset-ti-syscon.c
+@@ -15,6 +15,7 @@
+  * GNU General Public License for more details.
+  */
+ 
++#include <linux/delay.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+@@ -56,6 +57,7 @@ struct ti_syscon_reset_data {
+ 	struct regmap *regmap;
+ 	struct ti_syscon_reset_control *controls;
+ 	unsigned int nr_controls;
++	unsigned int reset_duration_us;
+ };
+ 
+ #define to_ti_syscon_reset_data(rcdev)	\
+@@ -89,7 +91,7 @@ static int ti_syscon_reset_assert(struct reset_controller_dev *rcdev,
+ 	mask = BIT(control->assert_bit);
+ 	value = (control->flags & ASSERT_SET) ? mask : 0x0;
+ 
+-	return regmap_update_bits(data->regmap, control->assert_offset, mask, value);
++	return regmap_write_bits(data->regmap, control->assert_offset, mask, value);
+ }
+ 
+ /**
+@@ -120,7 +122,7 @@ static int ti_syscon_reset_deassert(struct reset_controller_dev *rcdev,
+ 	mask = BIT(control->deassert_bit);
+ 	value = (control->flags & DEASSERT_SET) ? mask : 0x0;
+ 
+-	return regmap_update_bits(data->regmap, control->deassert_offset, mask, value);
++	return regmap_write_bits(data->regmap, control->deassert_offset, mask, value);
+ }
+ 
+ /**
+@@ -158,9 +160,26 @@ static int ti_syscon_reset_status(struct reset_controller_dev *rcdev,
+ 		!(control->flags & STATUS_SET);
+ }
+ 
++static int ti_syscon_reset(struct reset_controller_dev *rcdev,
++				  unsigned long id)
++{
++	struct ti_syscon_reset_data *data = to_ti_syscon_reset_data(rcdev);
++	int ret;
++
++	ret = ti_syscon_reset_assert(rcdev, id);
++	if (ret)
++		return ret;
++
++	if (data->reset_duration_us)
++		usleep_range(data->reset_duration_us, data->reset_duration_us * 2);
++
++	return ti_syscon_reset_deassert(rcdev, id);
++}
++
+ static const struct reset_control_ops ti_syscon_reset_ops = {
+ 	.assert		= ti_syscon_reset_assert,
+ 	.deassert	= ti_syscon_reset_deassert,
++	.reset		= ti_syscon_reset,
+ 	.status		= ti_syscon_reset_status,
+ };
+ 
+@@ -204,6 +223,9 @@ static int ti_syscon_reset_probe(struct platform_device *pdev)
+ 		controls[i].flags = be32_to_cpup(list++);
+ 	}
+ 
++	of_property_read_u32(pdev->dev.of_node,	"reset-duration-us",
++				&data->reset_duration_us);
++
+ 	data->rcdev.ops = &ti_syscon_reset_ops;
+ 	data->rcdev.owner = THIS_MODULE;
+ 	data->rcdev.of_node = np;
 -- 
 2.18.0
 _______________________________________________
