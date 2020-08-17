@@ -2,82 +2,78 @@ Return-Path: <SRS0=yC7h=B3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A4E72C433E3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 12:44:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 00C9CC433E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 13:07:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 729ED2072D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 12:44:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C26BF2072E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 13:07:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Wg2NzNq9";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="NRz/bP0l"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 729ED2072D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="r3N9eaxP";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ja8TmubB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C26BF2072E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=M5IgwmpbC0VtG7pgzlbgz/ZmTuGFOveqTUvQmGm/F40=; b=Wg2NzNq9qMzljTRgecDxqITgQ
-	ETntUfgSIfp2w7LLeArjSp/1PSiuuZBcjVVuCgeN6LO7jgYmpMpMkh8xJRUQFEbSMto3y5M6cDNrJ
-	3eIDwdExfTthcwqbnqP1EDXzdi8BY/Ow+a4dNxHzvy2HiqbbYNIfm6sYNOao+KIcvP2Boi7ttHU9d
-	QddsC7SHVxdfABTp7T3mHa8LK4zjrCWEG1OdVeRBi54PtkruWgGByQpBygxl99QOnXCKJALw4J3Vv
-	zuCuuEMhJQNl6XHDbdm8+OxsOtNhunFHy7CFUtxuEnijyrcrHJLdPKd8UUgqx7KkouvZcj63AAoT7
-	AKS1APAYg==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2TkH56hc2nv/uP1FASoQVWwGcQaGGGqVK6UYy7O51qQ=; b=r3N9eaxPSgmpgJ9oUua53bZY/4
+	XMWKc2ViCmbts8MIz3FiFt2cdCN0avwxBZZExLoZVb1Nu0h8MHvdgsoZHwkSfo5w5zJSdglaZq3Jy
+	jnt+ogxQXXxapLbN/b9p7PnMogzyN/da+Q+7uLMT7Jj255okB7qYcqdzLxTeeS0ftiye2Vbs/LSAg
+	+NftXw3Vh6Y5Dr4rwRKTv+LE2wT/uiJ/Sk27dir0XPNA8aCM2EVetWm2BeGzSgyPSlyAbcQyyvezL
+	AIzZMpprSqSrCoj8qpCRm0K5gCqwiqU6xR7T0gDd0L6KJQv7fHbnfI82dd6lG1OySTUoCN5LDfDUk
+	g3QXy6yA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k7eUW-00072Q-FD; Mon, 17 Aug 2020 12:43:56 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1k7eqn-0002sT-QZ; Mon, 17 Aug 2020 13:06:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k7eUP-0006yp-EP; Mon, 17 Aug 2020 12:43:50 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7FE342072D;
- Mon, 17 Aug 2020 12:43:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597668228;
- bh=jVzU+QI/ys+RIOWMYaLR4j+zEZXuCKR6ULaqdtkwbiM=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=NRz/bP0lJDXOQpw3C0MOSAVz/meHd71Q/Bj/trpsWtNq3haGujLAVHpSZWOiroKYE
- 3d/XHZeBjT/9FFL6y6+gMRAof/ypmIDKfv1aKzYZ13yBOlmrDo70HwCa0Y52DRwWmI
- nMLyA7zFyko0EJlsoSemO/W4+bQtbiXsRD+PrZ7w=
-Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
- by disco-boy.misterjones.org with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
- (envelope-from <maz@kernel.org>)
- id 1k7eUL-003ZBx-P4; Mon, 17 Aug 2020 13:43:45 +0100
+ id 1k7eqk-0002rL-Jd; Mon, 17 Aug 2020 13:06:55 +0000
+X-UUID: eb6cdcac9fd144c0ba697d173e1fbfc7-20200817
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=Kc2wbQ5/5ctPeZ+MBcGEqqORVXhdRTfyC3iZHOQDq5c=; 
+ b=ja8TmubBv78/qB7FOeuvo3C9/tBdX+EV2uq7cuJQ58QN9JBAue9/G6c44JFV5RF0z6Ido+6i4SoKC0/GiDsGql08SsZ39U+1kAL58NXVp+9yt8NXU5RT+/bfXvHePAEhlR8NQ5Rq6UWPYlSMRiuNE2FD601f//1hTUIjCXEEkLU=;
+X-UUID: eb6cdcac9fd144c0ba697d173e1fbfc7-20200817
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <jitao.shi@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 363408388; Mon, 17 Aug 2020 05:06:43 -0800
+Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 17 Aug 2020 06:06:41 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N1.mediatek.inc
+ (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 17 Aug 2020 21:06:36 +0800
+Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
+ MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Mon, 17 Aug 2020 21:06:35 +0800
+From: Jitao Shi <jitao.shi@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
+ <linux-kernel@vger.kernel.org>
+Subject: [PATCH v2] drm/mediatek: dsi: fix scrolling of panel with small hfp
+ or hbp
+Date: Mon, 17 Aug 2020 21:06:40 +0800
+Message-ID: <20200817130640.18021-1-jitao.shi@mediatek.com>
+X-Mailer: git-send-email 2.12.5
 MIME-Version: 1.0
-Date: Mon, 17 Aug 2020 13:43:45 +0100
-From: Marc Zyngier <maz@kernel.org>
-To: Guillaume Tucker <guillaume.tucker@collabora.com>
-Subject: Re: mainline/master bisection: baseline.login on mt8173-elm-hana
-In-Reply-To: <e1e21bc9-75a8-e0f7-7b87-57b147962115@collabora.com>
-References: <5f391c17.1c69fb81.ef475.be70@mx.google.com>
- <e1e21bc9-75a8-e0f7-7b87-57b147962115@collabora.com>
-User-Agent: Roundcube Webmail/1.4.7
-Message-ID: <d9b04fa244fb2b3e4db64e6b833bcdb6@kernel.org>
-X-Sender: maz@kernel.org
-X-SA-Exim-Connect-IP: 51.254.78.96
-X-SA-Exim-Rcpt-To: guillaume.tucker@collabora.com, hanks.chen@mediatek.com,
- saravanak@google.com, kernelci-results@groups.io, jason@lakedaemon.net,
- kernel@collabora.com, linux-arm-kernel@lists.infradead.org, tglx@linutronix.de,
- matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, enric.balletbo@collabora.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+X-TM-SNTS-SMTP: 4BE646BE1621BC9DA9C810CAA548159897D201F4DC13F4A0D86FCF88B04C65B62000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200817_084349_686337_F36E0279 
-X-CRM114-Status: GOOD (  15.85  )
+X-CRM114-CacheID: sfid-20200817_090654_844022_08EEB1A0 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,70 +85,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Saravana Kannan <saravanak@google.com>, kernelci-results@groups.io,
- Hanks Chen <hanks.chen@mediatek.com>, linux-kernel@vger.kernel.org,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, kernel@collabora.com,
- linux-arm-kernel@lists.infradead.org, Jason Cooper <jason@lakedaemon.net>
+Cc: devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>,
+ srv_heupstream@mediatek.com, huijuan.xie@mediatek.com, stonea168@163.com,
+ cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org,
+ bibby.hsieh@mediatek.com, ck.hu@mediatek.com, yingjoe.chen@mediatek.com,
+ eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-08-17 11:20, Guillaume Tucker wrote:
-> Please see the bisection report below about a boot failure.
-> 
-> Reports aren't automatically sent to the public while we're
-> trialing new bisection features on kernelci.org but this one
-> looks valid.
-> 
-> The log doesn't appear to be showing anything from the kernel, so
-> it's likely to be crashing very early.  Please let us know if you
-> need some help with investigating this issue, to try booting with
-> earlyprintk or anything.
-> 
-> Hope this helps.
-> 
-> Thanks,
-> Guillaume
-> 
-> On 16/08/2020 12:44, KernelCI bot wrote:
->> * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
->> * This automated bisection report was sent to you on the basis  *
->> * that you may be involved with the breaking commit it has      *
->> * found.  No manual investigation has been done to verify it,   *
->> * and the root cause of the problem may be somewhere else.      *
->> *                                                               *
->> * If you do send a fix, please include this trailer:            *
->> *   Reported-by: "kernelci.org bot" <bot@kernelci.org>          *
->> *                                                               *
->> * Hope this helps!                                              *
->> * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
->> 
->> mainline/master bisection: baseline.login on mt8173-elm-hana
->> 
->> Summary:
->>   Start:      a1d21081a60d Merge 
->> git://git.kernel.org/pub/scm/linux/kernel/git/netdev/net
->>   Plain log:  
->> https://storage.kernelci.org/mainline/master/v5.8-13249-ga1d21081a60d/arm64/defconfig+CONFIG_RANDOMIZE_BASE=y/gcc-8/lab-collabora/baseline-mt8173-elm-hana.txt
->>   HTML log:   
->> https://storage.kernelci.org/mainline/master/v5.8-13249-ga1d21081a60d/arm64/defconfig+CONFIG_RANDOMIZE_BASE=y/gcc-8/lab-collabora/baseline-mt8173-elm-hana.html
->>   Result:     f97dbf48ca43 irqchip/mtk-sysirq: Convert to a platform 
->> driver
+horizontal_backporch_byte should be hbp * bpp - hbp extra bytes.
+So remove the wrong subtraction 10.
 
-Please have a go at this[1] patch, which should solve the issue.
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
-Thanks,
-
-         M.
-
-[1] 
-https://git.kernel.org/pub/scm/linux/kernel/git/maz/arm-platforms.git/commit/?h=irq/irqchip-next&id=7828a3ef8646fb2e69ed45616c8453a037ca7867
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 270bf22c98fe..5d031e634571 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -473,14 +473,13 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+ 	horizontal_sync_active_byte = (vm->hsync_len * dsi_tmp_buf_bpp - 10);
+ 
+ 	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE)
+-		horizontal_backporch_byte =
+-			(vm->hback_porch * dsi_tmp_buf_bpp - 10);
++		horizontal_backporch_byte = vm->hback_porch * dsi_tmp_buf_bpp;
+ 	else
+-		horizontal_backporch_byte = ((vm->hback_porch + vm->hsync_len) *
+-			dsi_tmp_buf_bpp - 10);
++		horizontal_backporch_byte = (vm->hback_porch + vm->hsync_len) *
++					    dsi_tmp_buf_bpp;
+ 
+ 	data_phy_cycles = timing->lpx + timing->da_hs_prepare +
+-			  timing->da_hs_zero + timing->da_hs_exit + 3;
++			  timing->da_hs_zero + timing->da_hs_exit;
+ 
+ 	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) {
+ 		if ((vm->hfront_porch + vm->hback_porch) * dsi_tmp_buf_bpp >
 -- 
-Jazz is not dead. It just smells funny...
-
+2.12.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
