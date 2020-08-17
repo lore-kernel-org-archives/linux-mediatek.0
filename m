@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 41E37C433E1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 08:26:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 617FAC433E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 08:26:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EC9B62063A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 08:26:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 16E4C21744
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2020 08:26:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jnR2wTaC";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ZPj6GIc3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EC9B62063A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NKlA2BIs";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="kVYLm00p"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16E4C21744
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,49 +27,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LCYadgOZdz0LtZCPDqXolHb6ByvO133aoFOwOBtK7/s=; b=jnR2wTaCJQDPk4ScLHzNjhas12
-	6HIeuaP8SKKn0zs0XeJsqcMC5Jv+pLx2qnsWqvh0SIXF5mnbSBM+DblgLmIupU003i5GkCq5s38ye
-	Idsk+ylJi4QpieqS3PDhvZtOxQJwAKsmjebQtjwxgJKfkS1LAqvyo6LMzt4mxxgBVQqikVlCSVACJ
-	0FG0M6sGePClTkR0QFrI+Wu6n1+N8Huu4SbSk6+OMRq2UZxd/O4Q+YQCWqnc5I17pJj4fbGxbi0xi
-	k5FcJOYFcUskj8dKKpOevbr0adyfYNC8ZuC2/TVjTtTPYooN7gzTZJtC+85MRi1G/eGClb6mH9w4b
-	52LWOzCQ==;
+	bh=TOLFRxtpkAfe3G5EuQo58Sir7E058ptWNz30BpOrHsY=; b=NKlA2BIsm8XjY5YvCFbQgciYNz
+	xkjebBeML3cQOfDx5/nrCbDYBkn9RJEy98H19v5PxI8iAGqb6gy+ZZBmpTIZOqzmcWy9nG3FQnkcn
+	VeUdyHHAgeJlw0Q73cCMsbkJz1HrQ9VG4iilg/lSIumApcpqK08FoXIz9yqC74ZR+xRUkZlEHtu2Q
+	DsgWVEyuFxkyHNNDHbReKFvvxwte7qkIQq2eKnJX54LBkqHcm/AjZddtBKTebBED0kLU4T6eWKhEF
+	4hBZEO87MKdlyb1cJgTAmEP0pboS6kjFii7Oa6R1f+EsX1m4Q5S0XggACiVa2gGIFwcM5aq01Ui5k
+	aA6THdcA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k7aT4-0002VB-0V; Mon, 17 Aug 2020 08:26:10 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1k7aTF-0002ZH-RW; Mon, 17 Aug 2020 08:26:21 +0000
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k7aLv-0007R4-OP; Mon, 17 Aug 2020 08:18:49 +0000
-Received: by mail-pg1-x541.google.com with SMTP id o13so7776235pgf.0;
- Mon, 17 Aug 2020 01:18:46 -0700 (PDT)
+ id 1k7aM4-0007Wa-3x; Mon, 17 Aug 2020 08:19:00 +0000
+Received: by mail-pj1-x1041.google.com with SMTP id f9so7331157pju.4;
+ Mon, 17 Aug 2020 01:18:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=KmEcBHcde06arqa/qnAKRl0EaY2afCtuj8GLj4ZTRM0=;
- b=ZPj6GIc3bq6Ex5uJOYWUiGSZFLN/814K7fHM5oA+Mq5dpIS8LCQPwVQNUGtj44Ywuf
- 8JGtsTJ5CYKCtK8MFgtkNaoVPuAzeoHi+Tf3kpf+KX/PviAbimyTxiPKekd25Jr4pMVy
- UCEnQYTEvlOVJ0m/i6dJ8djGZdkbONwIig2dW9klIJEKOz/te71+Z0SNAVizpQ8BCtCA
- WFL7ORtS8TH2YerqRUJ9EvA9XeGa7yQV7z9UH/4tqceHCXwSO0uNAaMdNJMJH8OlIb5H
- U/inY8+aVvTB9Fx/gLIu/Qpk4P+/FpisLIjv90NGEiWRW3fmCAqamLg/CeJUW/Ku0hVg
- fRaA==
+ bh=31As0TImtle4pJMBIPFKRSxatdRKcSvERFzrO8LgibE=;
+ b=kVYLm00pzoz/kYADfRgu3biXEv4rb/ftLTz6v+Mm2Ug1uaoBSCJnXIC+O5/vlEqHEG
+ SoN3MeizX3SsTGtWi6lLT9/XOUnxZn/8BU5hyYewUWLtJfBx1RGXKoxz0pPr7dx+pghg
+ M69hQ46jFRp9eVSk7AR9qrZQAp0f37Kc+9Kk24UnbEqn+oajrWQG3MApns/YsJSZV7qC
+ siz5ss3nuBGRrY6Mk/RvwVMbxpPKrWRPH5w8tLvplV3bADjPVgOmly7i4G9W49hfdmb5
+ /Y17AISDHxF/rZ0dkCDnZKnr/Mbd4cPQ5DApM8nSF4Yo0pFYNuJi3oYRNJIU6q03IpKG
+ IKaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=KmEcBHcde06arqa/qnAKRl0EaY2afCtuj8GLj4ZTRM0=;
- b=Y9caYcCzzfiDtzEqwMKyzlBTYPhm1HzWzWacefWvqFmLLrFqMd5/i8wTYtiqeASj0A
- k1N77M4YtyvHKPJFs5uhOhmqBeeEwjSgjzuSNBpXgY0gpBdhI4mXb+pzPKDGRzjbAj4C
- Nj8C6vub9IZyUqdlODsezyVWSJ+7REiL3m55Sv0o7+OrviT1NKIIV+dBXWhoqD5XZo8R
- /VCUM22LL5VKTICXHk+zlDRo1WH/HH1HOINPv8UC1AFzhGVHd/0u4Ft4Pfe407eQX0W6
- 7jw1wNugcwNU6bcAIp9/AK/GUc3wupnk4n2+Xc5yRm6sWctufsVVxqr5n2lQXPmbWU97
- P2EQ==
-X-Gm-Message-State: AOAM530DHKbllExWyEp8FPJH1VclCtI/QV6Ca5FSZ9zUHb8jhOzO1Kr1
- p+yBw1KlTVsBx8e9J25PKLs=
-X-Google-Smtp-Source: ABdhPJzTO4xmXekUKvlKfpAmGwBic+Bzzl9KrxVjZgG/u8ypYaxKauNmxFYJuyl0vzE9Xwqlt1/nCA==
-X-Received: by 2002:a63:ed07:: with SMTP id d7mr8896251pgi.414.1597652324466; 
- Mon, 17 Aug 2020 01:18:44 -0700 (PDT)
+ bh=31As0TImtle4pJMBIPFKRSxatdRKcSvERFzrO8LgibE=;
+ b=ZPVqMJ/GBbSpBG9duT19GLgD9NozFj88MP+Z74lFjCL2iaIOpqavO0lrrCDpw61nb6
+ hc9YH4na1UKAEJbX3CkFIDN5xXlsPV+ZBC43ZYPPm89/3w6LTeN1+NqRP2i4IjzcaD3m
+ hlILIluw2c7Zwtmscznuj1HJEmZ51N6x+iNNXDgs9Vqj3iFH65r+rYG2vtTDD0IiUWIS
+ I3Irqgblw6lIExaPVuadWm3eUVQOTNre8TD03lRNwlmN0S98n2NNMHg0RSDwnuOeTzBq
+ z5QWF9Y1eR2okGOZAq0HWI72i0zCfI0/VGIesYUW0dRUWiarckjEbtVA+AYz5qAB/f39
+ bNnw==
+X-Gm-Message-State: AOAM531JRutQvwVZpexkQOWHFUQmHqIgPDXoQlpTQPhbARKhdyYCKpaV
+ uTgVY9b9GsmP76OOJbuN5SA=
+X-Google-Smtp-Source: ABdhPJwP0zc4e3EnKYz6OndviVPG8NIAeh1Tmemt35ITvR7gj8KaKxs7FZF0RqsD/VedpkC323b1fw==
+X-Received: by 2002:a17:902:e905:: with SMTP id
+ k5mr9889863pld.342.1597652333981; 
+ Mon, 17 Aug 2020 01:18:53 -0700 (PDT)
 Received: from localhost.localdomain ([49.207.202.98])
- by smtp.gmail.com with ESMTPSA id d93sm16735334pjk.44.2020.08.17.01.18.35
+ by smtp.gmail.com with ESMTPSA id d93sm16735334pjk.44.2020.08.17.01.18.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Aug 2020 01:18:44 -0700 (PDT)
+ Mon, 17 Aug 2020 01:18:53 -0700 (PDT)
 From: Allen Pais <allen.lkml@gmail.com>
 To: shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
  festevam@gmail.com, linux-imx@nxp.com, ast@kernel.org,
@@ -78,16 +79,16 @@ To: shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
  baohua@kernel.org, mripard@kernel.org, wens@csie.org,
  thierry.reding@gmail.com, jonathanh@nvidia.com, michal.simek@xilinx.com,
  matthias.bgg@gmail.com
-Subject: [PATCH 06/35] dma: ep93xx: convert tasklets to use new
- tasklet_setup() API
-Date: Mon, 17 Aug 2020 13:46:57 +0530
-Message-Id: <20200817081726.20213-7-allen.lkml@gmail.com>
+Subject: [PATCH 07/35] dma: fsl: convert tasklets to use new tasklet_setup()
+ API
+Date: Mon, 17 Aug 2020 13:46:58 +0530
+Message-Id: <20200817081726.20213-8-allen.lkml@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200817081726.20213-1-allen.lkml@gmail.com>
 References: <20200817081726.20213-1-allen.lkml@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200817_041847_928195_5E96E509 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20200817_041856_303673_F1EB42BA 
+X-CRM114-Status: GOOD (  14.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,35 +118,60 @@ and from_tasklet() to pass the tasklet pointer explicitly.
 Signed-off-by: Romain Perier <romain.perier@gmail.com>
 Signed-off-by: Allen Pais <allen.lkml@gmail.com>
 ---
- drivers/dma/ep93xx_dma.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ drivers/dma/fsl_raid.c | 6 +++---
+ drivers/dma/fsldma.c   | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/dma/ep93xx_dma.c b/drivers/dma/ep93xx_dma.c
-index 87a246012629..01027779beb8 100644
---- a/drivers/dma/ep93xx_dma.c
-+++ b/drivers/dma/ep93xx_dma.c
-@@ -745,9 +745,9 @@ static void ep93xx_dma_advance_work(struct ep93xx_dma_chan *edmac)
- 	spin_unlock_irqrestore(&edmac->lock, flags);
+diff --git a/drivers/dma/fsl_raid.c b/drivers/dma/fsl_raid.c
+index 493dc6c59d1d..26764bf2fc6d 100644
+--- a/drivers/dma/fsl_raid.c
++++ b/drivers/dma/fsl_raid.c
+@@ -154,9 +154,9 @@ static void fsl_re_cleanup_descs(struct fsl_re_chan *re_chan)
+ 	fsl_re_issue_pending(&re_chan->chan);
  }
  
--static void ep93xx_dma_tasklet(unsigned long data)
-+static void ep93xx_dma_tasklet(struct tasklet_struct *t)
+-static void fsl_re_dequeue(unsigned long data)
++static void fsl_re_dequeue(struct tasklet_struct *t)
  {
--	struct ep93xx_dma_chan *edmac = (struct ep93xx_dma_chan *)data;
-+	struct ep93xx_dma_chan *edmac = from_tasklet(edmac, t, tasklet);
- 	struct ep93xx_dma_desc *desc, *d;
- 	struct dmaengine_desc_callback cb;
- 	LIST_HEAD(list);
-@@ -1353,8 +1353,7 @@ static int __init ep93xx_dma_probe(struct platform_device *pdev)
- 		INIT_LIST_HEAD(&edmac->active);
- 		INIT_LIST_HEAD(&edmac->queue);
- 		INIT_LIST_HEAD(&edmac->free_list);
--		tasklet_init(&edmac->tasklet, ep93xx_dma_tasklet,
--			     (unsigned long)edmac);
-+		tasklet_setup(&edmac->tasklet, ep93xx_dma_tasklet);
+-	struct fsl_re_chan *re_chan;
++	struct fsl_re_chan *re_chan from_tasklet(re_chan, t, irqtask);
+ 	struct fsl_re_desc *desc, *_desc;
+ 	struct fsl_re_hw_desc *hwdesc;
+ 	unsigned long flags;
+@@ -671,7 +671,7 @@ static int fsl_re_chan_probe(struct platform_device *ofdev,
+ 	snprintf(chan->name, sizeof(chan->name), "re_jr%02d", q);
  
- 		list_add_tail(&edmac->chan.device_node,
- 			      &dma_dev->channels);
+ 	chandev = &chan_ofdev->dev;
+-	tasklet_init(&chan->irqtask, fsl_re_dequeue, (unsigned long)chandev);
++	tasklet_setup(&chan->irqtask, fsl_re_dequeue);
+ 
+ 	ret = request_irq(chan->irq, fsl_re_isr, 0, chan->name, chandev);
+ 	if (ret) {
+diff --git a/drivers/dma/fsldma.c b/drivers/dma/fsldma.c
+index ad72b3f42ffa..3ce9cf3d62f5 100644
+--- a/drivers/dma/fsldma.c
++++ b/drivers/dma/fsldma.c
+@@ -976,9 +976,9 @@ static irqreturn_t fsldma_chan_irq(int irq, void *data)
+ 	return IRQ_HANDLED;
+ }
+ 
+-static void dma_do_tasklet(unsigned long data)
++static void dma_do_tasklet(struct tasklet_struct *t)
+ {
+-	struct fsldma_chan *chan = (struct fsldma_chan *)data;
++	struct fsldma_chan *chan = from_tasklet(chan, t, tasklet);
+ 
+ 	chan_dbg(chan, "tasklet entry\n");
+ 
+@@ -1151,7 +1151,7 @@ static int fsl_dma_chan_probe(struct fsldma_device *fdev,
+ 	}
+ 
+ 	fdev->chan[chan->id] = chan;
+-	tasklet_init(&chan->tasklet, dma_do_tasklet, (unsigned long)chan);
++	tasklet_setup(&chan->tasklet, dma_do_tasklet);
+ 	snprintf(chan->name, sizeof(chan->name), "chan%d", chan->id);
+ 
+ 	/* Initialize the channel */
 -- 
 2.17.1
 
