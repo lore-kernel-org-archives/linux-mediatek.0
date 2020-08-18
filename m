@@ -4,107 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1AA56C433E1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2020 17:46:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B360DC433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2020 18:00:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C781F2078B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2020 17:46:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8128D206B5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2020 18:00:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RFI9aSNp";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="bpkSb33S";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="Vwp8PzhV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C781F2078B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VZ5/WVQd";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="HRBaEU/l"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8128D206B5
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:Reply-To:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:From:To:Subject:MIME-Version:References:
-	In-Reply-To:Date:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oPd5TkTb/CtG4IVDgnTd4UFkN2EODa6P3R4ofeXChvg=; b=RFI9aSNpn4O4bIsDg8Ex2c7m2a
-	SNQkuHMNAGsS+5voQ6lDfyme3C/Jw2iOfBKewW4LqUBVXvYmcyos0ZA0hiLySnzQWOV+i0T5TfNZT
-	WkgoSSJb0+0XXSIXW1fBjx1NO5NF/5FHct7WNp1RoVPrBuq8+Adrje2uxcTaG5/u3UnTBeAAJ2Kbs
-	+2GdKRdqaeFjM7M1sm+IgfWH0+HEIOrVFqlg+T+cdqCcIiBnslyzC4tO8SsQIKy+4Y/kLq8pLtzCt
-	nK9nE9KASOEMwwiVZLj7r2aMGJKCFxraGF9Vv00XOYUacakHFV8mEnZqUtcGO4JHTZJy1xqe5R75F
-	cxwWx2oA==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:From:
+	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=7mQCNc9Kxx0+fR8grcK2fTDxAjEaCMEe1EpEQPPWP0U=; b=VZ5/WVQdPr4PSr1C6zAvj+PXt
+	teemV+THt1upvTMMoGYjvkBNaNp6qzsQ/JOWrZTL/mFAUSntl7oE1zAOix3ZEMNHb+4jBtAT/ZiWY
+	uEG+fKn0kvorsAFx66W5Dae+EnyW6NLQ4foS71lO6Up2fQVhHwkrOAZm7VXV3H07RezkIuAi4neAs
+	z5whozn8dSMsvJBXUrFtOQfhkQNBQbNmgfnt6j8/lLbHKJmCR0YesFvEq38M1c3vlAQZ97sBwS4S+
+	88rroJwSFW3NeYsYFXnZyoLCPF0e5egFShhaFFQQfRoI8TFCHuCJ1E2oEhuNGaqeZgwVMiX8sgIbP
+	gxj353lRw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k85gK-0004Iy-4B; Tue, 18 Aug 2020 17:45:56 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1k85uh-0006YN-PU; Tue, 18 Aug 2020 18:00:47 +0000
+Received: from mout.gmx.net ([212.227.17.20])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k85gJ-0004Im-B4
- for linux-mediatek@merlin.infradead.org; Tue, 18 Aug 2020 17:45:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Message-ID:From:CC:To:Reply-to:Subject:
- Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
- Date:Sender:Content-ID:Content-Description;
- bh=MuzodkzXFlQqlZOXkPhy7wbYV96XJcj5ljN9UAV22AI=; b=bpkSb33Sa2/BoV0CzN+lPMWIKA
- qEi+ZfvxFa9F1nWUcQay/JVCCw5M0RmiLLAJ2FRiK4YGD5T5sCyCuxrHqVpbeEhOhhMH6Y5RhHFBg
- a4flvjTgR3YWB80v4fwI38sykIqni4ZzPqpAd0MiwtDoutd71DqK5xbH0Zjw9IzOjYLhodNfA2rGW
- PbhF6Hlf6SvQ7mQeX6iayez9rrUtimedy/4nJ3nj6g3SL9sG/ngagZRgQjpec+UObiVRB5rPWw8Ey
- 9PheQghQ3Ciczmq/37D8sbTaVQgo2ywpV0mBln1Hgue7QEFVeWuJM4hNr/mEklhKF8M7je4u2IP7D
- yk/8Hbgw==;
-Received: from mout.gmx.net ([212.227.15.18])
- by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k85gF-0006iE-LY
- for linux-mediatek@lists.infradead.org; Tue, 18 Aug 2020 17:45:54 +0000
+ id 1k85uf-0006Xg-NH
+ for linux-mediatek@lists.infradead.org; Tue, 18 Aug 2020 18:00:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1597772742;
- bh=MuzodkzXFlQqlZOXkPhy7wbYV96XJcj5ljN9UAV22AI=;
- h=X-UI-Sender-Class:Date:In-Reply-To:References:Subject:Reply-to:To:
- CC:From;
- b=Vwp8PzhV+f8vekFQeh5Tp0knoNs82z55QGjhZqtMcdwCJ5gZjkwvDE1Y56efHqrej
- m6ljQNhPV2makXelfYOymVY4TQim5MX+wMLeUwc8QL/T44nftQdOcJVXJdFqN+z3NH
- Zr9lgGEBKLrjfFLwi7ebxNnu7uUJyGizrX2ouohg=
+ s=badeba3b8450; t=1597773642;
+ bh=ThYSr0h07PGP1iFZ6rJ9QbxAVk1GY6nk6qUL/FemZjQ=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=HRBaEU/li2kEgxCDEF+rbzVwNaGn9TebEjIOYRL3bj8S+sGeaeg9WB9GaDRqNnBKa
+ tv4800n4BqhiBqhHL/taXfTXXc4q02yej18695iFbfWUvTdoyvOP+hq6Hxyae3FYQ5
+ xYnHmQjzaU+G9JDag5Cj52q1jV6dnHo1GSVlU8O4=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from frank-s9 ([185.53.43.192]) by mail.gmx.com (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MWAOW-1kAvuv1BcY-00XdDL; Tue, 18
- Aug 2020 19:31:19 +0200
-Date: Tue, 18 Aug 2020 19:31:01 +0200
-User-Agent: K-9 Mail for Android
-In-Reply-To: <a56f3029b913d31fbd27562b98d485e981815165.1597729692.git.landen.chao@mediatek.com>
-References: <cover.1597729692.git.landen.chao@mediatek.com>
- <a56f3029b913d31fbd27562b98d485e981815165.1597729692.git.landen.chao@mediatek.com>
+Received: from [185.53.43.192] ([185.53.43.192]) by web-mail.gmx.net
+ (3c-app-gmx-bs30.server.lan [172.19.170.82]) (via HTTP); Tue, 18 Aug 2020
+ 19:54:41 +0200
 MIME-Version: 1.0
-Subject: Re: [PATCH net-next v2 3/7] net: dsa: mt7530: Extend device data
- ready for adding a new hardware
-To: linux-mediatek@lists.infradead.org, Landen Chao <landen.chao@mediatek.com>,
- andrew@lunn.ch, f.fainelli@gmail.com, vivien.didelot@savoirfairelinux.com,
- matthias.bgg@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com
+Message-ID: <trinity-fb75beca-fce7-4d9e-b427-0e3e261ef8ca-1597773281910@3c-app-gmx-bs30>
 From: Frank Wunderlich <frank-w@public-files.de>
-Message-ID: <883BB20A-48CD-4B73-9D2F-E5CC21DD2B70@public-files.de>
-X-Provags-ID: V03:K1:RHA4uIrsqvBmFN2vJOdO4H+IjP89S5tlylzz2vL0VK7JvBRx6Zg
- D2a9/54EsigXuEOoaa6ykZRzsCqJxH8BVSzQlxQMcnlf1RdYxa8ovqah6R/3d2kzFK3PMky
- x/cq2s51kaoZ9F3ESokT3WIp815pypysw1/mAQehDEoopEiDUrN5JKceIjW34ySZTbyuEpz
- YTWXV/lC4Hk4rOBll4UJg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:hHhIxY4GH7U=:w6YBcpORh/mD/Zs1mS/Sbk
- mVvJD2oza68+X2NcvkvJNeT2Ra4tCSWF1ENtc8hgHjZ2y8T17zNYw4dYnIQ6Ol9ec3hqi2wRS
- QcSolSiIOdL8WF9001vCszOhYsdMMtHnoFPXtkJZMFPB8VKYoIIvjuWwrCP2v1EMW1VEPSrKN
- yMO/SDvxGv7wPQyuOgqZxch2KP26zldcsh0SXe/wTVxt8Pf87l8CgB56V9pIQblhI7ZsYMsZt
- jHwgEK5S4E+ipuMSW3QHvA6hrRAxUeMVQD4RYoHFSUC7M94qPL/4R7GPDFsYRfkSS4+Das26A
- loym3Igszu74PrMixDOQVDzRaJPOBzrmylfaOaQPNDSWx5wmYemDKb5ov7xJPh+d7fjcnxIVD
- 00PxULPl9r/Ndqq+ENy4qFjwjxQM5qv3ilmTm5PbYNdajfP1V8+Aj9iUSDh/Z/a7DyO+OkNNw
- 5q+r5ctsyOcRFS9gQOj81fo5d+7nEpMRsfONwuCOCHHHXENT35E21nHavcG6lYCceLa1f+jqr
- BS9biPafFanLOXPjE0MjuAKSpk3AXs1/nvlmfumO0QQHERbyyBhYCoarfjb6ihJupf3Qw3Kiu
- qh8PavsFglKLPQ1MMyd+/tjwQjmnoI2SFK9rDfILmUZJ/XbnW8DSdoCZahr8lptxv3HaT+mH5
- 2zs6OUSRPPdAaBJqAEXvfujanvUc/FpRbiW/zO3KP4pIn/Gm0qYkYnGmuqGFfy0FXY0YtEN6/
- BcvE8GeSvihcEv2vS5wQfpgNegb4Bq1+EqCiQgNAnRgre4S4yLF7pvn3Sb+0RhPx9WL305+IP
- EMkf7efCnxD08wO4oFx6J60r6ZdH00dmOILZPPYXDAQotbKR+NW7jOl6DeMd2E4up6JE9UUh4
- ZuPni4dSb250jZ0SXxpHyfeYjL0NA5qFtQZJAuLSqSt/Jc3h8sdSMqimwusClgqFF+Ei1mqJ8
- 9KEisAcXS4R6WBX48V/jzM+59F/jeSYipVUhElVzUMbPwtijAFdikZ2F97OpnWE5+5yNNVXI6
- AKr4aQJRzP5gTS6/QrMQXEuYPvHfLwD9g2NEVqW+g1seup+RsCdVHKO+cuIRLyaLtnT2cXqbN
- vzR3SzD8gV0UHDmdrBajyx8dVExNUFgrGD2BsccNQ4/DYftvKc1qXjOHbCPARnBt0UB1OnfIQ
- /Quvvq/6N2n/CutjSrxDeZeHYtmBfESB2xK0MPEHlWLhV6RvtXBe5zmgg0WfDbeIxnj+DbzJC
- o7vgL7zlDwD9g1FEW5/ayD2mXEzjhkhbSB2/VgA==
+To: Landen Chao <landen.chao@mediatek.com>
+Subject: Aw: [PATCH net-next v2 0/7] net-next: dsa: mt7530: add support for
+ MT7531
+Date: Tue, 18 Aug 2020 19:54:41 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <cover.1597729692.git.landen.chao@mediatek.com>
+References: <cover.1597729692.git.landen.chao@mediatek.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:Ds7VLClrKGTh8K23luUtZMtW5sd/BqVZ/QNFG8icOaN//D2sZPAPHdI401Z6MtEtACOkM
+ VZax2EdaXstWLv+op9BWiVSjga+IuK3OVvw4bazTpeIyWGzp3V2nSFk2ZPa3H1t0cXMQXjK3oa3g
+ dDCIWWlrAsWSKRsQYqwRhlAz9VfEbn2PAPSGiHX2UHC47xQqMD1/BXMgEdoTYQPkzJySeXhJgCa9
+ QEMpMC7X4AwLQB0A/+r/DMv1nLio3QOlGuDPEjGKJeANp5DEfgMocu2TSqshfeXKqp+LB/X/9Qx6
+ co=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:EC4Sg1NFbyM=:hvXsVpj0ZARTT5OfrSrxgP
+ A66E/kocCqYLXzDX68Q0PowLE8liKeZQf9iLVB1Ja2fqxDpo/4QrpzKtjp4IEbxi8dxx2Q5qr
+ xn5OMhRVs96VHcY4bzM8a227j8g5DnBGNfhwDMfEOIEX8stKK9J6z3aktTpIPgk4z3qsv2EQ9
+ b/P8jzmDN5xOr0P6nytdLuKJo/EmkP93tizYzlRaVln+7x2iCLho+veYZkJS2cizQdNoiB4kB
+ p4SbjVmfP+lBHHvzfSh2kgHsBJ/Sr0Y2CDeYQHP9wndO9NZCPSGSRgutR5pg7tRXrRKKzKjc4
+ tY3hUZW2Uej/nHPydr7VZguOaSZYl6WlBJNLYWObZprOQeS5cr3RM5uqN7l+r2AbdtfCvFG6h
+ OXGe+3nxO4e1vjDz4NRS+z1n+rzDwxgDxv2Lugq8BNqGx+vuGFDHGEE+vCQklGzTZ0M+JWqOs
+ YdlSDaEX43tF9Dk/L9r8Nn5H7Q6WtsqsdMXg4LticDOayleSrkw2ip2p7vwCnKQNLlyiPG8JM
+ bBxZnLUjvnjWVfZJ+sK2+SdMjr6iVSI/bTLziETMDXAuOf193mJIxWRCfrS295BaTmv8WwAX2
+ yb9yuIdjWmmi02GKiFUrDHe1P22lGArqe8EtR8rVIlfjsrUyRAWk+h4XQYOI3N3qN8c88sTQK
+ zpHPBC+tmqwS7uSTCFu0VoW3DjSgF+64G1zY/LBAxW4213qFkIy8VB0FHmdSy0Tk990k=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200818_184552_102338_4CCA1AD3 
-X-CRM114-Status: UNSURE (   5.28  )
+X-CRM114-CacheID: sfid-20200818_140045_987880_33E192A8 
+X-CRM114-Status: UNSURE (   6.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -117,20 +93,22 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
-Cc: devicetree@vger.kernel.org, dqfext@gmail.com, netdev@vger.kernel.org,
- sean.wang@mediatek.com, linux-kernel@vger.kernel.org, opensource@vdorst.com,
- davem@davemloft.net
+Cc: mark.rutland@arm.com, andrew@lunn.ch, dqfext@gmail.com,
+ f.fainelli@gmail.com, vivien.didelot@savoirfairelinux.com,
+ netdev@vger.kernel.org, sean.wang@mediatek.com, linux-kernel@vger.kernel.org,
+ opensource@vdorst.com, devicetree@vger.kernel.org, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ Landen Chao <landen.chao@mediatek.com>, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Just a little typo you've inherited from existing code
+Tested full series on Bananapi-R2+R64 with5.9-rc1 (iperf3 no retransmitts, Throughput >900Mbit/s)
 
->+/* Setup TX circuit incluing relevant PAD and driving */
+Tested-By: Frank Wunderlich <frank-w@public-files.de>
 
-including
+maybe you can include the port_change_mtu callback you've send me? or do you want to send it separately
 
 regards Frank
 
