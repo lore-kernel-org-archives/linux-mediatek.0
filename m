@@ -2,81 +2,92 @@ Return-Path: <SRS0=p+jW=B4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7BE1AC433E1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2020 06:21:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3AEB4C433E1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2020 07:17:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3E747207DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2020 06:21:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 02093205CB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2020 07:17:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WyxI64qR";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Cjg5zhaY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3E747207DF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EPhDopXD";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="lh4ywpSP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 02093205CB
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:From:
+	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NY0KbQs2rdQvGCK7atnkMpl0LxJczgM/jc8aQkMHY/c=; b=WyxI64qRAJMhZd0IgpEZhZXIS
-	gdl2UGcWrm87jlKrz5tuNfobfhV6W+PgItdlX7SEJgog99MR8NUp2isyXajjFs5z5ittk4OfByrK2
-	guupdpiNlUVi/tRZOKLCW0bGfC2S2awsYYCyYaFmMHbTXklPQmPnmPD34nLcOeYlCndxP8l8p0PMP
-	wR6kQ+p7chH/B59eGDCIDtubSQfegtXV8U1OyL2Y9ePoSSJuNbQkCVJMymzwfsmNAzA6uJqC/bOlb
-	BV3M3mpJp1optcbWPf+LGLtaU6GEDvk1hMve5epc/LzfejkNiR/Oj58DgGg/8DbZ3y1aw9lbdJVtx
-	FfxLHG6qQ==;
+	 bh=qCnMsZJ8e5meXdW4jQqkLH9RO49ILm0jzpO+jTkqPl8=; b=EPhDopXDzgc28Ew2PNiM7ZIrs
+	bzFIh4bOkvrte8T4hWGxYadMoZWgIA9/i3dVssQj9k0Q8Gjn5yXriIFFcH9vLtZEPeVQju59u+hjZ
+	oq9Qls4NcUZ4gZ6gsZ/fR/Zu0BZHlJLjhMwdrzklAhEeOTHDE0wK2yp/F6T5VAc4Ikw2vybzcCmHL
+	0ZqKKtKhm1Ebiz8MKTQooyFew1+m0o2M6v3scowX4NyFm3mqnd0427kuZ94+7TBYnyBorf0cAJZEt
+	a3Ei0/6C4ZGpjJVHt3NOOkA4K684tnyzRFkmedqS0OFpg9XPpDW2AjqkNhsNy8TzZAjSbvONvU8wy
+	HDnvnXimQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k7uza-0002S5-Vx; Tue, 18 Aug 2020 06:21:07 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1k7vrt-0004Qc-Qt; Tue, 18 Aug 2020 07:17:13 +0000
+Received: from mout.gmx.net ([212.227.17.22])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k7uzW-0002R5-FI; Tue, 18 Aug 2020 06:21:04 +0000
-X-UUID: 45b69de5fca747c1b53b203aa0dd73f7-20200817
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=26U75Xf8g/WhSUg+fpLBfSWdLyg0Hh99bzHnWDgzNQI=; 
- b=Cjg5zhaYwf9cfA3c8Cybl9hjbo25D2Uy/6xcPO6b4PMcFDHuLUhOXdpm+h9WrE78kOnEH392sGqV8Y/MpTAIESKmKlBVr809R3vmkJq9VhxQN9n9s+gTKrmlsAqy5YcyR78KxpFYVpzS4y6YnClora+2pT5c1TC6bTZUArtww3A=;
-X-UUID: 45b69de5fca747c1b53b203aa0dd73f7-20200817
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <neal.liu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 805410188; Mon, 17 Aug 2020 22:20:54 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 17 Aug 2020 23:20:56 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 18 Aug 2020 14:20:43 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 18 Aug 2020 14:20:43 +0800
-Message-ID: <1597731644.12680.2.camel@mtkswgap22>
-Subject: Re: [PATCH v6 2/2] soc: mediatek: add mt6779 devapc driver
-From: Neal Liu <neal.liu@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 18 Aug 2020 14:20:44 +0800
-In-Reply-To: <1597718679.5704.3.camel@mtkswgap22>
-References: <1597289564-17030-1-git-send-email-neal.liu@mediatek.com>
- <1597289564-17030-3-git-send-email-neal.liu@mediatek.com>
- <CAAOTY_88YSHOvDEHm+rM1=fTv_y25nUh1tuLUH8YSxH5UD1bug@mail.gmail.com>
- <1597636953.3394.7.camel@mtkswgap22>
- <CAAOTY__7gmvp+U+xD12KJkxuya=CkD8xV67S3pfC60gyfajQiA@mail.gmail.com>
- <1597718679.5704.3.camel@mtkswgap22>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1k7vro-0004Mz-KX
+ for linux-mediatek@lists.infradead.org; Tue, 18 Aug 2020 07:17:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1597734987;
+ bh=oAd2cewFPaqUFLZ825vpetOfnNifBeng1WfOCc45x7o=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=lh4ywpSPgTuw2+vKtgXZiBpwaHVsXoWsPYpFSQ5yTaca5iVHubtO2j+pUlSZ+aYLB
+ EJ7D6oCT0ibJ5pMymMDm7GDF/aRyZMxMJ4rj9GjhoDyiGSdTUBmg8LhYgdKESQKxDc
+ csduBV8n1+LYWN02Vf1EEBmq2/kHQhlhB+f83JLE=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [185.53.43.192] ([185.53.43.192]) by web-mail.gmx.net
+ (3c-app-gmx-bap75.server.lan [172.19.172.175]) (via HTTP); Tue, 18 Aug 2020
+ 09:16:27 +0200
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 3245D93C313EC4131B92236A87711428C0F20780901D818E97FCD5D4F858A47D2000:8
-X-MTK: N
+Message-ID: <trinity-bbc9a618-a916-40bb-b144-bffe715646a4-1597734987449@3c-app-gmx-bap75>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: David Woodhouse <dwmw2@infradead.org>, chunkuang Hu
+ <chunkuang.hu@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang
+ <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Aw: Re: [PATCH 1/2] arm: dts: mt7623: move more display-related
+ nodes to mt7623n.dtsi
+Date: Tue, 18 Aug 2020 09:16:27 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <cefc273c226c93c605f4dc76afa9eb5aacceaf26.camel@infradead.org>
+References: <20200807082754.6790-1-linux@fw-web.de>
+ <20200807082754.6790-2-linux@fw-web.de>
+ <trinity-f5a5deb1-c123-44d7-b7ca-1f7a8dbe1c1c-1596889651064@3c-app-gmx-bap69>
+ <CAAOTY_9o_hBWxWBdDoeeJ6zuV4rb4R_yEoN5+L0uHBGMw4Kduw@mail.gmail.com>
+ <cefc273c226c93c605f4dc76afa9eb5aacceaf26.camel@infradead.org>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:1zwmta4pmD/tPLfGTCCkcWs2zRHllJCy6YJ+kiLxsZskXTnr6VI37DUYsFlii4Xb4L08W
+ f2dRJpeQO0Xs1eLFfAzuNdy11GpFvoPIlEnBL0LGojAuTwkkdU4u9mDaJ53bY//epXuPgtboJj5e
+ wvDFl4BGFQ/pR+khAiwc/2oyW5ZZEormFDLxWYj3P807hxx03892Jyud3Sbff7fo8/rtF9LtPCgf
+ PXbFKcG9T23FVEUswYe0ufzVDzP0VnJL8QnXAhUqz94I8tYigJUPnMKNmQGVIm6NKBE/5NvuA2Qx
+ JQ=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:+cfbgQjm7mI=:SgaOEzSXg+wCJWY5AoxjuP
+ otZlxD2w7vmKWZ0OW8VcgB5OgLlWU/wmglcguOXtoDxp+A30SPlQ2PV3NapgExPgxnMkz1PVH
+ +lSPdQOfVlKm77RKjzy2JfzQXm1lTm7mfbOfEl4srcL37dLSvM10l+qRv5djodSPI5jUWZO4q
+ BzD726N7/qJHoTmMNIaT4Ons7mokzH66J4WNsihDxmehoDi28uBXOxTippUEXXwXLyJlvK/jr
+ fv1l/UO5uSeDX9HROqOSHa1Tg7qBBWcCUt0MZL3w/r5xXuMvif67tqtal/AvGspe20BS7UgYm
+ +S+jPblDaSLwTd1rT1YIwmka9FRyomNcyoql6ldmvJaLmBedNTlX5py3UYBYnJVT3BPHQ4PF9
+ TMT86q/MJUsHxmtLf8NT3wpw8Mje/RwpUiD92s8b2o6md2cZbJ99h2jwheFqq/eQmBeUCUojt
+ VUfhOd02amsMdKJS6dwghPXAh3DU+6WNwULDJQmZD8pMCeU4fBcoJCEZuyCXCZBMKGNYaINzI
+ gMjau/hDHSBhztJViUijPQHUyOlZ+qR7sL7S0y+8k9fSvZoIU8X4ddcCAYHfz3gZtxQ+vTKNX
+ hCngHwksomg/alFbQ+w6B+362elm6LNU7wOIChRHZAroRphhwlVxSHl3YCwvi1Vx/2+6pDUiH
+ W02yOGvfIT0+bGM+JSu7/PXsNbI0yN9aNzyJ9cN8P85Mbm35k2ZA1qJ6UPmX25EnZSnY=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200818_022102_748039_9FC77E0A 
-X-CRM114-Status: GOOD (  39.09  )
+X-CRM114-CacheID: sfid-20200818_031709_012958_DFF4F042 
+X-CRM114-Status: GOOD (  20.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,126 +99,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- wsd_upstream <wsd_upstream@mediatek.com>, lkml <linux-kernel@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Neal Liu <neal.liu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devicetree@vger.kernel.org, "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQ2h1bi1LdWFuZywNCg0KT24gVHVlLCAyMDIwLTA4LTE4IGF0IDEwOjQ0ICswODAwLCBOZWFs
-IExpdSB3cm90ZToNCj4gSGkgQ2h1bi1LdWFuZywNCj4gDQo+IE9uIE1vbiwgMjAyMC0wOC0xNyBh
-dCAyMzoxMyArMDgwMCwgQ2h1bi1LdWFuZyBIdSB3cm90ZToNCj4gPiBIaSwgTmVhbDoNCj4gPiAN
-Cj4gPiBOZWFsIExpdSA8bmVhbC5saXVAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5tDjmnIgxN+aX
-pSDpgLHkuIAg5LiL5Y2IMTI6MDLlr6vpgZPvvJoNCj4gPiA+DQo+ID4gPiBIaSBDaHVuLUt1YW5n
-LA0KPiA+ID4NCj4gPiA+IE9uIFNhdCwgMjAyMC0wOC0xNSBhdCAxMTowMyArMDgwMCwgQ2h1bi1L
-dWFuZyBIdSB3cm90ZToNCj4gPiA+ID4gSGksIE5lYWw6DQo+ID4gPiA+DQo+ID4gPiA+IE5lYWwg
-TGl1IDxuZWFsLmxpdUBtZWRpYXRlay5jb20+IOaWvCAyMDIw5bm0OOaciDEz5pelIOmAseWbmyDk
-uIrljYgxMTozM+Wvq+mBk++8mg0KPiA+ID4gPiA+DQo+ID4gPiA+ID4gTWVkaWFUZWsgYnVzIGZh
-YnJpYyBwcm92aWRlcyBUcnVzdFpvbmUgc2VjdXJpdHkgc3VwcG9ydCBhbmQgZGF0YQ0KPiA+ID4g
-PiA+IHByb3RlY3Rpb24gdG8gcHJldmVudCBzbGF2ZXMgZnJvbSBiZWluZyBhY2Nlc3NlZCBieSB1
-bmV4cGVjdGVkDQo+ID4gPiA+ID4gbWFzdGVycy4NCj4gPiA+ID4gPiBUaGUgc2VjdXJpdHkgdmlv
-bGF0aW9uIGlzIGxvZ2dlZCBhbmQgc2VudCB0byB0aGUgcHJvY2Vzc29yIGZvcg0KPiA+ID4gPiA+
-IGZ1cnRoZXIgYW5hbHlzaXMgb3IgY291bnRlcm1lYXN1cmVzLg0KPiA+ID4gPiA+DQo+ID4gPiA+
-ID4gQW55IG9jY3VycmVuY2Ugb2Ygc2VjdXJpdHkgdmlvbGF0aW9uIHdvdWxkIHJhaXNlIGFuIGlu
-dGVycnVwdCwgYW5kDQo+ID4gPiA+ID4gaXQgd2lsbCBiZSBoYW5kbGVkIGJ5IG10ay1kZXZhcGMg
-ZHJpdmVyLiBUaGUgdmlvbGF0aW9uDQo+ID4gPiA+ID4gaW5mb3JtYXRpb24gaXMgcHJpbnRlZCBp
-biBvcmRlciB0byBmaW5kIHRoZSBtdXJkZXJlci4NCj4gPiA+ID4gPg0KPiA+ID4gPiA+IFNpZ25l
-ZC1vZmYtYnk6IE5lYWwgTGl1IDxuZWFsLmxpdUBtZWRpYXRlay5jb20+DQo+ID4gPiA+ID4gLS0t
-DQo+ID4gPiA+DQo+ID4gPiA+IFtzbmlwXQ0KPiA+ID4gPg0KPiA+ID4gPiA+ICsvKg0KPiA+ID4g
-PiA+ICsgKiBkZXZhcGNfdmlvbGF0aW9uX2lycSAtIHRoZSBkZXZhcGMgSW50ZXJydXB0IFNlcnZp
-Y2UgUm91dGluZSAoSVNSKSB3aWxsIGR1bXANCj4gPiA+ID4gPiArICogICAgICAgICAgICAgICAg
-ICAgICAgICB2aW9sYXRpb24gaW5mb3JtYXRpb24gaW5jbHVkaW5nIHdoaWNoIG1hc3RlciB2aW9s
-YXRlcw0KPiA+ID4gPiA+ICsgKiAgICAgICAgICAgICAgICAgICAgICAgIGFjY2VzcyBzbGF2ZS4N
-Cj4gPiA+ID4gPiArICovDQo+ID4gPiA+ID4gK3N0YXRpYyBpcnFyZXR1cm5fdCBkZXZhcGNfdmlv
-bGF0aW9uX2lycShpbnQgaXJxX251bWJlciwNCj4gPiA+ID4gPiArICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgc3RydWN0IG10a19kZXZhcGNfY29udGV4dCAqY3R4KQ0KPiA+
-ID4gPiA+ICt7DQo+ID4gPiA+ID4gKyAgICAgICAvKg0KPiA+ID4gPiA+ICsgICAgICAgICogTWFz
-ayBzbGF2ZSdzIGlycSBiZWZvcmUgY2xlYXJpbmcgdmlvIHN0YXR1cy4NCj4gPiA+ID4gPiArICAg
-ICAgICAqIE11c3QgZG8gaXQgdG8gYXZvaWQgbmVzdGVkIGludGVycnVwdCBhbmQgcHJldmVudA0K
-PiA+ID4gPiA+ICsgICAgICAgICogdW5leHBlY3RlZCBiZWhhdmlvci4NCj4gPiA+ID4gPiArICAg
-ICAgICAqLw0KPiA+ID4gPiA+ICsgICAgICAgbWFza19tb2R1bGVfaXJxKGN0eCwgdHJ1ZSk7DQo+
-ID4gPiA+DQo+ID4gPiA+IEkgc3RpbGwgZG9uJ3QgdW5kZXJzdGFuZCB3aHkgbmVzdGVkIGludGVy
-cnVwdCBoYXBwZW4uIElmIHR3byBDUFUNCj4gPiA+ID4gcHJvY2VzcyBkaWZmZXJlbnQgZGV2YXBj
-IGludGVycnVwdCBhdCB0aGUgc2FtZSB0aW1lLCBtYXNrIGludGVycnVwdA0KPiA+ID4gPiBjb3Vs
-ZCBub3QgcHJldmVudCB0aGVzZSB0d28gQ1BVIHRvIHN5bmMgdmlvIGRiZyBhdCB0aGUgc2FtZSB0
-aW1lLiBBcyBJDQo+ID4gPiA+IGtub3csIGluIEFSTSBDUFUsIG9ubHkgQ1BVMCBwcm9jZXNzIGly
-cSBoYW5kbGVyLCBhbmQgYWxsIGRldmFwYw0KPiA+ID4gPiBpbnRlcnJ1cHQgaGFzIHRoZSBzYW1l
-IHByaW9yaXR5LCBzbyB3aHkgbmVzdGVkIGludGVycnVwdCBoYXBwZW4/IENvdWxkDQo+ID4gPiA+
-IHlvdSBleHBsYWluIG1vcmUgZGV0YWlsIGFib3V0IGhvdyBuZXN0ZWQgaW50ZXJydXB0IGhhcHBl
-bj8NCj4gPiA+DQo+ID4gPiBJZiB0aGVyZSBpcyBhbm90aGVyIHZpb2xhdGlvbiBoYXBwZW5lZCBi
-ZWZvcmUgcHJldmlvdXMgdmlvbGF0aW9uIGlzDQo+ID4gPiBmdWxseSBoYW5kbGVkLCBuZXN0ZWQg
-aW50ZXJydXB0IHdvdWxkIGhhcHBlbi4NCj4gPiA+DQo+ID4gPiBMZXQncyBtZSB0YWtlIGFuIGV4
-YW1wbGU6DQo+ID4gPiB2aW8gQSBoYXBwZW4NCj4gPiA+IGVudGVyIEEgSVNSDQo+ID4gPiAuLi4g
-ICAgICAgICAgICAgdmlvIEIgaGFwcGVuDQo+ID4gPiBmaW5pc2ggQSBJU1IgICAgZW50ZXIgQiBJ
-U1INCj4gPiA+ICAgICAgICAgICAgICAgICAuLi4NCj4gPiA+ICAgICAgICAgICAgICAgICBmaW5p
-c2ggQiBJU1INCj4gPiA+DQo+ID4gPiBXZSBtYXNrIGFsbCBtb2R1bGUncyBpcnEgdG8gYXZvaWQg
-bmVzdGVkIGludGVycnVwdC4NCj4gPiANCj4gPiBUaGlzIGlzIG5vdCAnbmVzdGVkJyBpbnRlcnJ1
-cHQuIEFmdGVyIEEgSVNSIGlzIGZpbmlzaGVkLCBCIElTUiBoYXBwZW4uDQo+ID4gU28gQSBJU1Ig
-YW5kIEIgSVNSIGFyZSBjb25zZWN1dGl2ZSBpbnRlcnJ1cHQsIG5vdCBuZXN0ZWQgaW50ZXJydXB0
-Lg0KPiA+IFRvIGNvbXBhcmUgbWFzayBpcnEgYW5kIG5vIG1hc2sgaXJxLCBMZXQncyBjb25zaWRl
-ciB0aGlzIHNpdHVhdGlvbjoNCj4gPiANCj4gPiAxLiAxMDAwIGNvbnNlY3V0aXZlIHZpb2xhdGlv
-biBoYXBwZW4sIHRoZSB0aW1lIHBlcmlvZCBiZXR3ZWVuIHR3bw0KPiA+IHZpb2xhdGlvbiBpcyAw
-LjAxIG1zLCBzbyB0aGUgdG90YWwgdGltZSBpcyAxMG1zLiAoSW4gMTBtcywgMTAwMA0KPiA+IHZp
-b2xhdGlvbiBoYXBwZW4pDQo+ID4gMi4gT25lIElTUiBoYW5kbGUgdGltZSBpcyAxIG1zLCBzbyBp
-biBvbmUgSVNSIGhhbmRsZXIsIDEwMCB2aW9sYXRpb24gaGFwcGVuLg0KPiA+IA0KPiA+IEZvciBt
-YXNrIGlycSBzb2x1dGlvbiwgMTAgSVNSIGhhbmRsZXIgaXMgdHJpZ2dlci4gRm9yIG5vIG1hc2sg
-aXJxDQo+ID4gc29sdXRpb24sIDExIElTUiBoYW5kbGVyIGlzIHRyaWdnZXIuDQo+ID4gSSB0aGlu
-ayB0aGVzZSB0d28gc29sdXRpb24gaGF2ZSBzaW1pbGFyIHJlc3VsdCwgYW5kIG5vIG1hc2sgaXJx
-DQo+ID4gc29sdXRpb24gcHJpbnQgbW9yZSBpbmZvcm1hdGlvbiAoSWYgdGhlc2UgMTAwMCB2aW9s
-YXRpb24gaXMgdHJpZ2dlciBieQ0KPiA+IDIwIGRpZmZlcmVudCBkcml2ZXIsIG5vIG1hc2sgc29s
-dXRpb24gbWF5IHNob3cgb25lIG1vcmUgZHJpdmVyIHRoYW4NCj4gPiBtYXNrIHNvbHV0aW9uKQ0K
-PiA+IFNvIEkgdGhpbmsgaXQncyBub3QgbmVjZXNzYXJ5IHRvIG1hc2sgaXJxIGluIGlycSBoYW5k
-bGVyLg0KPiA+IA0KPiANCj4gTm8sIG15IGV4YW1wbGUgaXMgQiBJU1IgaXMgZW50ZXJlZCBiZWZv
-cmUgQSBJU1IgZmluaXNoZWQuDQo+IFdoeSB0aGlzIGlzIG5vdCBuZXN0ZWQ/DQo+IHZpbyBBIGhh
-cHBlbg0KPiBlbnRlciBBIElTUg0KPiAuLi4gICAgICAgICAgICAgdmlvIEIgaGFwcGVuDQo+IC4u
-LgkJZW50ZXIgQiBJU1INCj4gZmluaXNoIEEgSVNSDQo+ICAgICAgICAgICAgICAgICAuLi4NCj4g
-CQkuLi4NCj4gICAgICAgICAgICAgICAgIGZpbmlzaCBCIElTUg0KPiANCg0KSSBoYXZlIHNvbWUg
-bWlzdW5kZXJzdGFuZGluZyBhYm91dCBob3cgQVJNIENQVSAmIEdJQyB3b3Jrcy4gSSdsbCBjb25m
-aXJtDQppdCBhbmQgZ2V0IGJhY2sgdG8geW91LiBQbGVhc2UgaWdub3JlIHByZXZpb3VzIG1haWwg
-dGhyZWFkLg0KVGhhbmtzICENCg0KPiA+ID4NCj4gPiA+ID4NCj4gPiA+ID4gPiArDQo+ID4gPiA+
-ID4gKyAgICAgICB3aGlsZSAoZGV2YXBjX3N5bmNfdmlvX2RiZyhjdHgpKQ0KPiA+ID4gPiA+ICsg
-ICAgICAgICAgICAgICBkZXZhcGNfZXh0cmFjdF92aW9fZGJnKGN0eCk7DQo+ID4gPiA+ID4gKw0K
-PiA+ID4gPiA+ICsgICAgICAgLyoNCj4gPiA+ID4gPiArICAgICAgICAqIEVuc3VyZSB0aGF0IHZp
-b2xhdGlvbiBpbmZvIGFyZSB3cml0dGVuDQo+ID4gPiA+ID4gKyAgICAgICAgKiBiZWZvcmUgZnVy
-dGhlciBvcGVyYXRpb25zDQo+ID4gPiA+ID4gKyAgICAgICAgKi8NCj4gPiA+ID4gPiArICAgICAg
-IHNtcF9tYigpOw0KPiA+ID4gPiA+ICsNCj4gPiA+ID4gPiArICAgICAgIGNsZWFyX3Zpb19zdGF0
-dXMoY3R4KTsNCj4gPiA+ID4gPiArICAgICAgIG1hc2tfbW9kdWxlX2lycShjdHgsIGZhbHNlKTsN
-Cj4gPiA+ID4gPiArDQo+ID4gPiA+ID4gKyAgICAgICByZXR1cm4gSVJRX0hBTkRMRUQ7DQo+ID4g
-PiA+ID4gK30NCj4gPiA+ID4gPiArDQo+ID4gPiA+DQo+ID4gPiA+IFtzbmlwXQ0KPiA+ID4gPg0K
-PiA+ID4gPiA+ICsNCj4gPiA+ID4gPiArc3RhdGljIGludCBtdGtfZGV2YXBjX3JlbW92ZShzdHJ1
-Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQ0KPiA+ID4gPiA+ICt7DQo+ID4gPiA+ID4gKyAgICAg
-ICBzdHJ1Y3QgbXRrX2RldmFwY19jb250ZXh0ICpjdHggPSBwbGF0Zm9ybV9nZXRfZHJ2ZGF0YShw
-ZGV2KTsNCj4gPiA+ID4gPiArDQo+ID4gPiA+ID4gKyAgICAgICBzdG9wX2RldmFwYyhjdHgpOw0K
-PiA+ID4gPiA+ICsNCj4gPiA+ID4gPiArICAgICAgIGlmIChjdHgtPmluZnJhX2NsaykNCj4gPiA+
-ID4NCj4gPiA+ID4gVGhpcyBhbHdheXMgdHJ1ZS4NCj4gPiA+DQo+ID4gPiBEb2VzIGl0IG1lYW4g
-dGhhdCByZW1vdmUgZnVuY3Rpb24gd291bGQgYmUgY2FsbGVkIG9ubHkgaWYgcHJvYmUgZnVuY3Rp
-b24NCj4gPiA+IGlzIHJldHVybmVkIHN1Y2Nlc3NmdWxseT8NCj4gPiANCj4gPiBZZXMuDQo+ID4g
-DQo+ID4gPiBJcyB0aGVyZSBhbnkgY2hhbmNlIHRoaXMgZnVuY3Rpb24gd291bGQgYmUgY2FsbGVk
-IGRpcmVjdGx5Pw0KPiA+IA0KPiA+IE5vLg0KPiA+IA0KPiA+IFJlZ2FyZHMsDQo+ID4gQ2h1bi1L
-dWFuZy4NCj4gPiANCj4gPiA+DQo+ID4gPiA+DQo+ID4gPiA+IFJlZ2FyZHMsDQo+ID4gPiA+IENo
-dW4tS3VhbmcuDQo+ID4gPiA+DQo+ID4gPiA+ID4gKyAgICAgICAgICAgICAgIGNsa19kaXNhYmxl
-X3VucHJlcGFyZShjdHgtPmluZnJhX2Nsayk7DQo+ID4gPiA+ID4gKw0KPiA+ID4gPiA+ICsgICAg
-ICAgcmV0dXJuIDA7DQo+ID4gPiA+ID4gK30NCj4gPiA+ID4gPiArDQo+ID4gPiA+ID4gK3N0YXRp
-YyBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIG10a19kZXZhcGNfZHJpdmVyID0gew0KPiA+ID4gPiA+
-ICsgICAgICAgLnByb2JlID0gbXRrX2RldmFwY19wcm9iZSwNCj4gPiA+ID4gPiArICAgICAgIC5y
-ZW1vdmUgPSBtdGtfZGV2YXBjX3JlbW92ZSwNCj4gPiA+ID4gPiArICAgICAgIC5kcml2ZXIgPSB7
-DQo+ID4gPiA+ID4gKyAgICAgICAgICAgICAgIC5uYW1lID0gS0JVSUxEX01PRE5BTUUsDQo+ID4g
-PiA+ID4gKyAgICAgICAgICAgICAgIC5vZl9tYXRjaF90YWJsZSA9IG10a19kZXZhcGNfZHRfbWF0
-Y2gsDQo+ID4gPiA+ID4gKyAgICAgICB9LA0KPiA+ID4gPiA+ICt9Ow0KPiA+ID4gPiA+ICsNCj4g
-PiA+ID4gPiArbW9kdWxlX3BsYXRmb3JtX2RyaXZlcihtdGtfZGV2YXBjX2RyaXZlcik7DQo+ID4g
-PiA+ID4gKw0KPiA+ID4gPiA+ICtNT0RVTEVfREVTQ1JJUFRJT04oIk1lZGlhdGVrIERldmljZSBB
-UEMgRHJpdmVyIik7DQo+ID4gPiA+ID4gK01PRFVMRV9BVVRIT1IoIk5lYWwgTGl1IDxuZWFsLmxp
-dUBtZWRpYXRlay5jb20+Iik7DQo+ID4gPiA+ID4gK01PRFVMRV9MSUNFTlNFKCJHUEwiKTsNCj4g
-PiA+ID4gPiAtLQ0KPiA+ID4gPiA+IDEuNy45LjUNCj4gPiA+ID4gPiBfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KPiA+ID4gPiA+IExpbnV4LW1lZGlhdGVr
-IG1haWxpbmcgbGlzdA0KPiA+ID4gPiA+IExpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5v
-cmcNCj4gPiA+ID4gPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LW1lZGlhdGVrDQo+ID4gPg0KPiANCj4gDQoNCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51
-eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+Hi,
+
+i rebased changes to 5.9-rc1 [1] and include parts from Davids Series in my one.
+
+David: is it ok to squash your mali-commit with mine moving the other display-related nodes and use me as author?
+
+CK Hu/Matthias/Ryder/Sean: is the structure of DTS ok now?
+
+regards Frank
+
+[1] https://github.com/frank-w/BPI-R2-4.14/commits/5.9-hdmi
+
+> Gesendet: Montag, 10. August 2020 um 09:48 Uhr
+> Von: "David Woodhouse" <dwmw2@infradead.org>
+> Betreff: Re: [PATCH 1/2] arm: dts: mt7623: move more display-related nodes to mt7623n.dtsi
+>
+> On Sun, 2020-08-09 at 08:16 +0800, Chun-Kuang Hu wrote:
+> > I would like to put all device in mt7623.dtsi with some device's
+> > status is "disabled" and change its status in platform dtsi.
+> > I would like to see all device in mt7623.dtsi because of its name. If
+> > you move some device to platform dtsi, we would trace all platform
+> > dtsi to find out how many device in mt7623. One day a new platform
+> > enable different devices, you would reorganize all these platform
+> > dtsi?
+>
+> No, this isn't "platform dtsi", surely? This is mt7623a and mt7623n
+> dtsi for the two different SoCs, and platforms then just include
+> mt7623a.dtsi or mt7623n.dtsi as appropriate for the SoC they are using.
+>
+> If you really want *all* the nodes for both MT7623A and MT7623N chips
+> in a single mt7623.dtsi but disabled, could we still have mt7623a.dtsi
+> and mt7623n.dtsi for the chips, enabling the nodes that are only-for-A
+> or only-for-N, so that each platform doesn't have to do that for
+> itself?
+>
+> Although putting those nodes that exist only in one chip or the other
+> directly into the mt7623[an].dtsi still seems to make more sense to
+> me.
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
