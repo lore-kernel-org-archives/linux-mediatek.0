@@ -2,21 +2,21 @@ Return-Path: <SRS0=p+jW=B4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AEA1AC433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2020 15:50:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 96718C433E1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2020 15:56:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C556208B3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2020 15:50:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6987F2080C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2020 15:56:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eh5Htfqe"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C556208B3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="w26pccmQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6987F2080C
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lunn.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,37 +25,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=frvXrluqcaQBRW6kfWxT06NIjTDMIqfXRnHM7NS9Bgo=; b=eh5HtfqeS/b+7qh5PwF1tXlyv
-	bhSIMbhiX48WgXaATCQkzc/EyZzkKuYUWrzp9cc9RtvoV2NWjRaE6LZcsSVAtduzLoX7S7NHYulv0
-	pzOqpyGmnxkfNZsgXYCMpvriHXq6sbWjEOKMn99Q79sVIX2mBceV1bdCTegaD1NETAUQ3mXRj3NMz
-	AcDcBSMQI7pvXSHv+xy1rm1xZrfdQkX4m4Kot/GhjzPY7NOSQtzw9FK/mkGO4uSS69gPk736YOGMy
-	HbmA8++3tjLId9lZtmA60ds8O+EjrHku5KDHf6vwx6C68h7h+WTFzIFRSs7eGmUiPFrnaQ8f8E5Cv
-	2WEGYWjoQ==;
+	 bh=ikQ3cBxlfSw9cyvZ3lywo1Xvw8ZaRpZ1TL8BGJV4+vc=; b=w26pccmQDiw1T5A+NPc6FsuEf
+	nLsnngKkSmewZP+/MzhdrcEypBtQhfwC/oMwywGXh70wjzNV6aZ3iAPNzhR1y5WaMQ1sjIWY7qNe2
+	xBzvCb+M+VdeTerh+cMocMp4aTb42Mmyovi9oAWA73a33cb7D6QdC5Kiva0HKgJjnPiSeVfWVO7d3
+	2dpcC5aSJWixQnqn5FsoVFWKij6JbhOC3HEOsFkgVeVyCnb08XfNGM37M0LeVB2qgkw36kEAkkYNo
+	fOWsqLFwfG3AFd+esBf2BSc7U6JrqD9Hg0r5bEVyrxk5KOWhsRh0Ccx7Unev7LxC4wfZ4JbLKOwt3
+	favWXp9FA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k83s8-0007uK-I3; Tue, 18 Aug 2020 15:50:00 +0000
+	id 1k83yO-0000xp-Oj; Tue, 18 Aug 2020 15:56:28 +0000
 Received: from vps0.lunn.ch ([185.16.172.187])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k83s6-0007to-7q
- for linux-mediatek@lists.infradead.org; Tue, 18 Aug 2020 15:49:59 +0000
+ id 1k83yN-0000x6-HU
+ for linux-mediatek@lists.infradead.org; Tue, 18 Aug 2020 15:56:28 +0000
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94)
  (envelope-from <andrew@lunn.ch>)
- id 1k83ro-009vpx-V1; Tue, 18 Aug 2020 17:49:40 +0200
-Date: Tue, 18 Aug 2020 17:49:40 +0200
+ id 1k83yH-009vuo-8G; Tue, 18 Aug 2020 17:56:21 +0200
+Date: Tue, 18 Aug 2020 17:56:21 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Landen Chao <landen.chao@mediatek.com>
-Subject: Re: [PATCH net-next v2 2/7] net: dsa: mt7530: support full-duplex
- gigabit only
-Message-ID: <20200818154940.GD2330298@lunn.ch>
+Subject: Re: [PATCH net-next v2 3/7] net: dsa: mt7530: Extend device data
+ ready for adding a new hardware
+Message-ID: <20200818155621.GE2330298@lunn.ch>
 References: <cover.1597729692.git.landen.chao@mediatek.com>
- <56f9cfec4d337c57e1cb1ea512a2fb404004757a.1597729692.git.landen.chao@mediatek.com>
+ <a56f3029b913d31fbd27562b98d485e981815165.1597729692.git.landen.chao@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <56f9cfec4d337c57e1cb1ea512a2fb404004757a.1597729692.git.landen.chao@mediatek.com>
+In-Reply-To: <a56f3029b913d31fbd27562b98d485e981815165.1597729692.git.landen.chao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200818_114958_288790_B239AA06 
-X-CRM114-Status: UNSURE (   7.21  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200818_115627_660873_ECB5723A 
+X-CRM114-Status: GOOD (  16.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,17 +76,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 18, 2020 at 03:14:07PM +0800, Landen Chao wrote:
-> Remove 1000baseT_Half to advertise correct hardware capability in
-> phylink_validate() callback function.
+On Tue, Aug 18, 2020 at 03:14:08PM +0800, Landen Chao wrote:
+> Add a structure holding required operations for each device such as device
+> initialization, PHY port read or write, a checker whether PHY interface is
+> supported on a certain port, MAC port setup for either bus pad or a
+> specific PHY interface.
+> 
+> The patch is done for ready adding a new hardware MT7531.
+> 
+> Signed-off-by: Landen Chao <landen.chao@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  drivers/net/dsa/mt7530.c | 272 +++++++++++++++++++++++++++++----------
+>  drivers/net/dsa/mt7530.h |  37 +++++-
+>  2 files changed, 240 insertions(+), 69 deletions(-)
+> 
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index 0fd50798aa42..d30b41725b4d 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -372,8 +372,9 @@ mt7530_fdb_write(struct mt7530_priv *priv, u16 vid,
+>  		mt7530_write(priv, MT7530_ATA1 + (i * 4), reg[i]);
+>  }
+>  
+> +/* Setup TX circuit incluing relevant PAD and driving */
+>  static int
+> -mt7530_pad_clk_setup(struct dsa_switch *ds, int mode)
+> +mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+>  {
+>  	struct mt7530_priv *priv = ds->priv;
+>  	u32 ncpo1, ssc_delta, trgint, i, xtal;
+> @@ -387,7 +388,7 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, int mode)
+>  		return -EINVAL;
+>  	}
+>  
+> -	switch (mode) {
+> +	switch (interface) {
+>  	case PHY_INTERFACE_MODE_RGMII:
+>  		trgint = 0;
+>  		/* PLL frequency: 125MHz */
 
-Hi Landem
+Do you actually need to support all 4 RGMII modes?
 
-This seems like a fix? Please submit it against the net tree, and add
-a Fixes: tag.
+...
 
-Thanks
-  Andrew
++			goto unsupported;
+> +		break;
+> +	case 6: /* 1st cpu port */
+> +		if (state->interface != PHY_INTERFACE_MODE_RGMII &&
+> +		    state->interface != PHY_INTERFACE_MODE_TRGMII)
+
+phy_interface_mode_is_rgmii()?
+
+	Andrew
 
 _______________________________________________
 Linux-mediatek mailing list
