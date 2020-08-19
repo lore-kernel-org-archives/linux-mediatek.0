@@ -2,70 +2,58 @@ Return-Path: <SRS0=3kTb=B5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D811C433E3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 15:45:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3B0DBC433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 15:58:57 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1A78F20882
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 15:45:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 077192078D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 15:58:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="axI9BIb1";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="JnXgq60L"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1A78F20882
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mG+GOFxz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 077192078D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=infradead.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iUb5D3jv18pW612UsBEX1evDcIzrMjohKy0bAs196qo=; b=axI9BIb1xg1D/XzeD3Fd/CieQD
-	ZGtjbp/ejlHuyhMggMgqk111HrFqEV+LCZBI+kPbUPjO3qhljKj2f7mqK/+co43W3W/YaozUH4ej6
-	IDXkEyYDphPP6VRfP9ArDWO++RtZMTFg4wTlk0Nh48YmwTgDzgTNeJOVBPN7NNi4prBgJjEnDqTPv
-	ov7jfF2pWQ673TWbpancT8ObZx2n9559ON5cJlJY7TUKluLOMOfJ/oeTq8G8xRx520qm1OWtYsO1X
-	l6p1pPP9XsbVwC12odijDdT2Qkj+HzTy08sZkGNj7bRTdDwuNRxe5bAYpLruf4SY4xePfValzgHUx
-	VDpHIK4Q==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=qyqAWLIVAVE1UA3sEDAXbPyA/vf7Z/+hv1w2x/+LF4M=; b=mG+GOFxzHGICQPJPb/ixlVwcA
+	ob41MCFC3yAlHRDBaDY+eGQ/M8gGsiU1wg7Y/DwvJRRvEKfwnSOqBtqVjr6SYrC9ObMyA7PMkmZ/h
+	LB4BwdTf26J2hQCVAfVc0ejhYCJc1bcVTk0sAK/mVl+JhVnEJMo1I3Rj63fbd0q0aEEVupO1x4QvV
+	JKbd4RROPpjaaWgeHw6glgq5SQCYmdykmjBjR0vtfTKs0ZUWau267YNXXjkaLSQTr/tx8w0Ni3qxw
+	je7A3iOm3JHpAYnNRLOHn28+F5FSTBzwlSaoXY0sD20FksdRoBdpeSWimUwlRkCGLx79mJsW1tuHD
+	l2WgTxybw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8QH7-0000Q7-Kj; Wed, 19 Aug 2020 15:45:17 +0000
-Received: from mail.kernel.org ([198.145.29.99])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8QH3-0000NV-9N
- for linux-mediatek@lists.infradead.org; Wed, 19 Aug 2020 15:45:14 +0000
-Received: from DESKTOP-GFFITBK.localdomain (218-161-90-76.HINET-IP.hinet.net
- [218.161.90.76])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C0320214F1;
- Wed, 19 Aug 2020 15:45:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597851912;
- bh=BezFOoaDmBZMcNTvmxTbP7GmF8Yi46thyB2BlvRmFFc=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=JnXgq60LTY1LRTG8gsVxPtAo0+iD/bpplHZHDVwl3QrBIvPstTqwpGHfRIDoJwwz/
- Y3XipOLN8FI+EKRrUGWmbl3PfuIeEzsScLJlQbt70+QePRjjwYyZ34Y+vZyctoPmOD
- W/NcFzM02Dbexw3SGo8n019/eZfInE/NiQbxBcLw=
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+	id 1k8QUC-0001Xw-JR; Wed, 19 Aug 2020 15:58:48 +0000
+Received: from [2601:1c0:6280:3f0::19c2]
+ by merlin.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1k8QU9-0001XB-6B; Wed, 19 Aug 2020 15:58:45 +0000
+Subject: Re: [PATCH v4 2/4] drm/mediatek: Separate mtk_hdmi_phy to an
+ independent module
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
  Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
  Chunfeng Yun <chunfeng.yun@mediatek.com>,
  Kishon Vijay Abraham I <kishon@ti.com>
-Subject: [PATCH v4 4/4] MAINTAINERS: add files for Mediatek DRM drivers
-Date: Wed, 19 Aug 2020 23:44:21 +0800
-Message-Id: <20200819154421.7013-5-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200819154421.7013-1-chunkuang.hu@kernel.org>
 References: <20200819154421.7013-1-chunkuang.hu@kernel.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_114513_413289_5F4D70CA 
-X-CRM114-Status: GOOD (  12.20  )
+ <20200819154421.7013-3-chunkuang.hu@kernel.org>
+From: Randy Dunlap <rdunlap@infradead.org>
+Message-ID: <eec33300-f921-03d1-5bcf-788e4e2ce342@infradead.org>
+Date: Wed, 19 Aug 2020 08:58:39 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+In-Reply-To: <20200819154421.7013-3-chunkuang.hu@kernel.org>
+Content-Language: en-US
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,38 +65,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-mediatek@lists.infradead.org,
+Cc: CK Hu <ck.hu@mediatek.com>, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Mediatek HDMI phy driver is moved from drivers/gpu/drm/mediatek to
-drivers/phy/mediatek, so add the new folder to the Mediatek DRM drivers'
-information.
+On 8/19/20 8:44 AM, Chun-Kuang Hu wrote:
+> diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
+> index aa74aac3cbcc..ca3cd871a350 100644
+> --- a/drivers/gpu/drm/mediatek/Kconfig
+> +++ b/drivers/gpu/drm/mediatek/Kconfig
+> @@ -24,6 +24,13 @@ config DRM_MEDIATEK_HDMI
+>  	tristate "DRM HDMI Support for Mediatek SoCs"
+>  	depends on DRM_MEDIATEK
+>  	select SND_SOC_HDMI_CODEC if SND_SOC
+> -	select GENERIC_PHY
+> +	select PHY_MTK_HDMI
+>  	help
+>  	  DRM/KMS HDMI driver for Mediatek SoCs
+> +
+> +config PHY_MTK_HDMI
+> +    tristate "MediaTek HDMI-PHY Driver"
+> +    depends on ARCH_MEDIATEK && OF
+> +    select GENERIC_PHY
+> +    help
+> +          Enable this to support HDMI-PHY
 
-Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
----
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+Please fix all of these newly added lines.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index deaafb617361..191bacf02209 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -5793,6 +5793,7 @@ L:	dri-devel@lists.freedesktop.org
- S:	Supported
- F:	Documentation/devicetree/bindings/display/mediatek/
- F:	drivers/gpu/drm/mediatek/
-+F:	drivers/phy/mediatek/phy-mtk-hdmi*
- 
- DRM DRIVERS FOR NVIDIA TEGRA
- M:	Thierry Reding <thierry.reding@gmail.com>
+from Documentation/process/coding-style.rst:
+
+Lines under a ``config`` definition
+are indented with one tab, while help text is indented an additional two
+spaces.
+
+
 -- 
-2.17.1
+~Randy
 
 
 _______________________________________________
