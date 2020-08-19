@@ -5,21 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-12.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D1C6C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 10:44:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 16579C433E1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 11:37:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 16235206DA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 10:44:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D8CB22078D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 11:37:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="T4iCZde8";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="hq3DNU8G"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16235206DA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QEshwukJ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=xs4all.nl header.i=@xs4all.nl header.b="H95Be/lv"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D8CB22078D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -27,82 +26,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JcyfTyPEZH69Sd2fbklr0X4gHjR+I4NnxIOInOz8klA=; b=T4iCZde8MosYAvvesByw5TPu2
-	H7tuuUcnPcViRlv8kplqHEu4gd6dL0Nx0+hEUdhIkIEmoFpMiQ3RNeiZntNhd+8L+p0TPqs5dveat
-	KY4QK8DtK/KkkuvYveUoIa8T4QhaGnSVkvI+G51RN31nx+lB7O4k3UJrKyqVonvB+h39eYslfe3Cg
-	c2ER7BbhGLWnG1T/M3pjAcP7xCvuevnNb9oAi5MMQ8by5mnqZRmEk4QsVZfUSEmD1Qkw4kDPBHJA/
-	tythWFwIAqVilgU54dgegVxSczh5RRPCUYQ+6h9q5txnI3vMmEftHfrjDCCkNalCsdLUli7UUN+Th
-	WCdJpOykA==;
+	 bh=od/Ztr/2OKPgB6t4BJXEvKmmLWZveYhAOMBZmCmT9nQ=; b=QEshwukJ8OtHZyslcOYGW15xW
+	VafRd6Kbw+GVAjdgftoJ9/O6A5KEeQVhk1it6WpSFfAA6/08tWFxmD1mtAoE+xBhJ7WHNsO0vWLPk
+	pob+FrN83m9pAtKAQ64TBkPDNfy5g/Df1cwG2UnmfNjQGG00GmyuAg/TVdZ3Af33tcEIteTu0sO+u
+	aP0UkVFfPFiEII2afHt5RoWdithNU0bfHfaJzHgFP+KLM+hBnb6tf8fVW4P//zdZnrsmNpTQURIdh
+	wfpwvCNMkOBYq0gptC6cmDF/ggfnEc5CZtfJmkEmxlIV+cD0LlHT94F8xhwWrJtOL6v9WBxeifsUy
+	D/6rQEqgQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8LaD-0002Ea-4J; Wed, 19 Aug 2020 10:44:41 +0000
-Received: from lelv0142.ext.ti.com ([198.47.23.249])
+	id 1k8MPD-0002ZN-6P; Wed, 19 Aug 2020 11:37:23 +0000
+Received: from lb1-smtp-cloud9.xs4all.net ([194.109.24.22])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8La9-0002Bk-BH; Wed, 19 Aug 2020 10:44:39 +0000
-Received: from fllv0034.itg.ti.com ([10.64.40.246])
- by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 07JAhS5P011860;
- Wed, 19 Aug 2020 05:43:28 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1597833808;
- bh=FQ/P96RlmX4WL6iS15Y4+TdcnOXuRLw5jD5fcCLIPRM=;
- h=Subject:To:CC:References:From:Date:In-Reply-To;
- b=hq3DNU8GyRjS+6Rnn7skcN1ku0AwIVNiB8bZ3hVmcFFpSNzKBAUK00toMRz1KnLCE
- NxcnurQiObMWPuedh5shwC1BCu6hnnUua5zjmH8lZNKmxDlxcyNuA14gMqszA0YtC2
- JjErGKTXzkqOL97zfTZs8nV570QUwaiW3pOgGLAw=
-Received: from DLEE114.ent.ti.com (dlee114.ent.ti.com [157.170.170.25])
- by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 07JAhSRj019744
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 19 Aug 2020 05:43:28 -0500
-Received: from DLEE111.ent.ti.com (157.170.170.22) by DLEE114.ent.ti.com
- (157.170.170.25) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Wed, 19
- Aug 2020 05:43:28 -0500
-Received: from fllv0039.itg.ti.com (10.64.41.19) by DLEE111.ent.ti.com
- (157.170.170.22) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Wed, 19 Aug 2020 05:43:27 -0500
-Received: from [192.168.2.6] (ileax41-snat.itg.ti.com [10.172.224.153])
- by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 07JAhFih039071;
- Wed, 19 Aug 2020 05:43:15 -0500
-Subject: Re: [PATCH 10/20] drm/omapdrm: Introduce GEM object functions
-To: Thomas Zimmermann <tzimmermann@suse.de>, <alexander.deucher@amd.com>,
- <christian.koenig@amd.com>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <linux@armlinux.org.uk>, <maarten.lankhorst@linux.intel.com>,
- <mripard@kernel.org>, <l.stach@pengutronix.de>,
- <christian.gmeiner@gmail.com>, <inki.dae@samsung.com>,
- <jy0922.shim@samsung.com>, <sw0312.kim@samsung.com>,
- <kyungmin.park@samsung.com>, <kgene@kernel.org>, <krzk@kernel.org>,
- <patrik.r.jakobsson@gmail.com>, <jani.nikula@linux.intel.com>,
- <joonas.lahtinen@linux.intel.com>, <rodrigo.vivi@intel.com>,
- <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>,
- <matthias.bgg@gmail.com>, <robdclark@gmail.com>, <sean@poorly.run>,
- <bskeggs@redhat.com>, <eric@anholt.net>, <hjc@rock-chips.com>,
- <heiko@sntech.de>, <thierry.reding@gmail.com>, <jonathanh@nvidia.com>,
- <rodrigosiqueiramelo@gmail.com>, <hamohammed.sa@gmail.com>,
- <oleksandr_andrushchenko@epam.com>, <hyun.kwon@xilinx.com>,
- <laurent.pinchart@ideasonboard.com>, <michal.simek@xilinx.com>,
- <sumit.semwal@linaro.org>, <evan.quan@amd.com>,
- <Hawking.Zhang@amd.com>, <tianci.yin@amd.com>, <marek.olsak@amd.com>,
- <hdegoede@redhat.com>, <andrey.grodzovsky@amd.com>,
- <Felix.Kuehling@amd.com>, <xinhui.pan@amd.com>, <aaron.liu@amd.com>,
- <nirmoy.das@amd.com>, <chris@chris-wilson.co.uk>,
- <matthew.auld@intel.com>, <abdiel.janulgue@linux.intel.com>,
- <tvrtko.ursulin@linux.intel.com>, <andi.shyti@intel.com>,
- <sam@ravnborg.org>, <miaoqinglang@huawei.com>, <emil.velikov@collabora.com>
-References: <20200813083644.31711-1-tzimmermann@suse.de>
- <20200813083644.31711-11-tzimmermann@suse.de>
-From: Tomi Valkeinen <tomi.valkeinen@ti.com>
-Message-ID: <8739b085-0342-4c43-60e3-a21d6b257319@ti.com>
-Date: Wed, 19 Aug 2020 13:43:14 +0300
+ id 1k8MP8-0002XL-By; Wed, 19 Aug 2020 11:37:19 +0000
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud9.xs4all.net with ESMTPA
+ id 8MOzkc5mbuuXO8MP0kgj4W; Wed, 19 Aug 2020 13:37:10 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
+ t=1597837030; bh=on3DJuNUCZBYzh3vyKVks+qUN0daYY+qcqHSyxAtABs=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=H95Be/lv/Z6sIV2ZjHnezlJeoXNXGSJox1mqCQdOpG7Ot7IbrXAC5w5bBW9RAi9XG
+ O1zcUUWgj1di8ZybVj8HJYG0HO+WwnA4EMJF3/W0ZoCXLbrm8RsatHZtI53iaOyuAX
+ 1bzN656HdjSujpxy/AcA1LbCfZ61bGLem3kZFUZ9bGrwEf+oitaXfHhtWBTeCsIu8R
+ AaKyG1XFmKZTMnZIbFb5aKP/dQ1cYDH4fDqkluLOit6jXh+KV12sleISEI2/sac0Je
+ FgwjUEccqqXdUxb1EckRVvzp1eMO6BLXU8l9zFcGnpIy6t+Op4X35XVRdKC7iUvDh/
+ pPyebpuGH7FNQ==
+Subject: Re: [PATCH v12 25/29] arm: dts: mt2701: Add jpeg enc device tree node
+To: Xia Jiang <xia.jiang@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Rick Chang <rick.chang@mediatek.com>
+References: <20200814071202.25067-1-xia.jiang@mediatek.com>
+ <20200814071202.25067-27-xia.jiang@mediatek.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Message-ID: <9a35791d-51f6-2429-5bcc-2149ac1b60c7@xs4all.nl>
+Date: Wed, 19 Aug 2020 13:37:09 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200813083644.31711-11-tzimmermann@suse.de>
+In-Reply-To: <20200814071202.25067-27-xia.jiang@mediatek.com>
 Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+X-CMAE-Envelope: MS4wfBpjNEODcQO4JphfVy6aBaq/j9bEl9E8js4YNmvSiO0Bv837GBTpHXA6jtL2w1CMAv8Jmpc2mcp6RnvgCrWdrB1beAzVXNrT66JiYvfczlfYx06XV8CB
+ B98UpcGJa7XDNnxwdu2DifltSLBFjf8NeYIcfeCup84Mr8jAzdIj+Des65oJu1GlPGL0YMXcMb8CWSfS2RFDmWKAf1tFZrDT+yO5sKApps5l4D6oucLLfOM+
+ kMakCGE7HijJoy1Sjg8caHFTqlteIYiug6vF1rNK7+OZZ7wmcLC9nxcvHz9tsm4r+Rgcv/4JymkYZ9GgA/X8mxzLvjcwBp/+s0EIeN2Dphpyi1BjDRUvZZ0z
+ mOZsThJ3nnYUlEA3H4FZYo8p72u7MHowzEW5UfWhi67fICV6FgV+eUre65EI1My60vU68FAFmcewcLoxCQ7nzoDcLBygZrWjVYwPACskFS5ztjgH/ZLzXokH
+ C/gPdfUjVbFV7YQudvj214sx4lhUr7ZvvKSlNDSHq6o7xpMFn75OWNI7EOmpNh7sVjnYIiLQCH7TvB2YX+DCPr3dFbBhk/C7P45pSgKLo3fFap+33+4XUOQl
+ /hZbTunleSAz7YPhRbfSa59y7BCOTQFO+T1/ZJILjAy+iVe97UpVGQY4G5aEklGqHzHfrvzOfAgQV40HBjpSflKzAttaKJGSjyRGxTuAlIoErAxMHZxPHsX3
+ HOxmzsnsza51QQyGbe0nQp0CNHINjjul4QnZ/gzeINq6wvpz3Mn7G44ePwx2cVLWdqtQ9QeDeHbVWnq5gwc4PowVx0eOmHsnvd72aWjgWrNpO8ifx0q1+kEO
+ REvQxerPdF3ZEZvMWWJzZ1QZwA8wDp1V+NPDFSumOJssS+oz3TRA6r3YvrwsaQ==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_064437_545994_EFB036FE 
-X-CRM114-Status: GOOD (  22.58  )
+X-CRM114-CacheID: sfid-20200819_073718_570837_F8E215FC 
+X-CRM114-Status: GOOD (  17.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,125 +88,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- nouveau@lists.freedesktop.org, linux-tegra@vger.kernel.org,
- xen-devel@lists.xenproject.org, freedreno@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org
+Cc: maoguang.meng@mediatek.com, devicetree@vger.kernel.org,
+ mojahsu@chromium.org, srv_heupstream@mediatek.com,
+ linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
+ senozhatsky@chromium.org, drinkcat@chromium.org,
+ linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Xia,
 
-On 13/08/2020 11:36, Thomas Zimmermann wrote:
-> GEM object functions deprecate several similar callback interfaces in
-> struct drm_driver. This patch replaces the per-driver callbacks with
-> per-instance callbacks in omapdrm.
+I made a PR for all other patches of this series for 5.10, so this patch can be merged
+by whoever takes care of these dts patches.
+
+Regards,
+
+	Hans
+
+On 14/08/2020 09:11, Xia Jiang wrote:
+> Add jpeg enc device tree node.
 > 
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+> Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
 > ---
->  drivers/gpu/drm/omapdrm/omap_drv.c |  9 ---------
->  drivers/gpu/drm/omapdrm/omap_gem.c | 16 +++++++++++++++-
->  drivers/gpu/drm/omapdrm/omap_gem.h |  1 -
->  3 files changed, 15 insertions(+), 11 deletions(-)
+> v12: no changes
+> ---
+>  arch/arm/boot/dts/mt2701.dtsi | 13 +++++++++++++
+>  1 file changed, 13 insertions(+)
 > 
-> diff --git a/drivers/gpu/drm/omapdrm/omap_drv.c b/drivers/gpu/drm/omapdrm/omap_drv.c
-> index 53d5e184ee77..2e598b8b72af 100644
-> --- a/drivers/gpu/drm/omapdrm/omap_drv.c
-> +++ b/drivers/gpu/drm/omapdrm/omap_drv.c
-> @@ -521,12 +521,6 @@ static int dev_open(struct drm_device *dev, struct drm_file *file)
->  	return 0;
->  }
+> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
+> index 8d43a502aada..1c1c2132234f 100644
+> --- a/arch/arm/boot/dts/mt2701.dtsi
+> +++ b/arch/arm/boot/dts/mt2701.dtsi
+> @@ -568,6 +568,19 @@
+>  			 <&iommu MT2701_M4U_PORT_JPGDEC_BSDMA>;
+>  	};
 >  
-> -static const struct vm_operations_struct omap_gem_vm_ops = {
-> -	.fault = omap_gem_fault,
-> -	.open = drm_gem_vm_open,
-> -	.close = drm_gem_vm_close,
-> -};
-> -
->  static const struct file_operations omapdriver_fops = {
->  	.owner = THIS_MODULE,
->  	.open = drm_open,
-> @@ -549,10 +543,7 @@ static struct drm_driver omap_drm_driver = {
->  #endif
->  	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
->  	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
-> -	.gem_prime_export = omap_gem_prime_export,
->  	.gem_prime_import = omap_gem_prime_import,
-> -	.gem_free_object_unlocked = omap_gem_free_object,
-> -	.gem_vm_ops = &omap_gem_vm_ops,
->  	.dumb_create = omap_gem_dumb_create,
->  	.dumb_map_offset = omap_gem_dumb_map_offset,
->  	.ioctls = ioctls,
-> diff --git a/drivers/gpu/drm/omapdrm/omap_gem.c b/drivers/gpu/drm/omapdrm/omap_gem.c
-> index d0d12d5dd76c..d68dc63dea0a 100644
-> --- a/drivers/gpu/drm/omapdrm/omap_gem.c
-> +++ b/drivers/gpu/drm/omapdrm/omap_gem.c
-> @@ -487,7 +487,7 @@ static vm_fault_t omap_gem_fault_2d(struct drm_gem_object *obj,
->   * vma->vm_private_data points to the GEM object that is backing this
->   * mapping.
->   */
-> -vm_fault_t omap_gem_fault(struct vm_fault *vmf)
-> +static vm_fault_t omap_gem_fault(struct vm_fault *vmf)
->  {
->  	struct vm_area_struct *vma = vmf->vma;
->  	struct drm_gem_object *obj = vma->vm_private_data;
-> @@ -1169,6 +1169,18 @@ static bool omap_gem_validate_flags(struct drm_device *dev, u32 flags)
->  	return true;
->  }
->  
-> +static const struct vm_operations_struct omap_gem_vm_ops = {
-> +	.fault = omap_gem_fault,
-> +	.open = drm_gem_vm_open,
-> +	.close = drm_gem_vm_close,
-> +};
+> +	jpegenc: jpegenc@1500a000 {
+> +		compatible = "mediatek,mt2701-jpgenc",
+> +			     "mediatek,mtk-jpgenc";
+> +		reg = <0 0x1500a000 0 0x1000>;
+> +		interrupts = <GIC_SPI 141 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks =  <&imgsys CLK_IMG_VENC>;
+> +		clock-names = "jpgenc";
+> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
+> +		mediatek,larb = <&larb2>;
+> +		iommus = <&iommu MT2701_M4U_PORT_JPGENC_RDMA>,
+> +			 <&iommu MT2701_M4U_PORT_JPGENC_BSDMA>;
+> +	};
 > +
-> +static const struct drm_gem_object_funcs omap_gem_object_funcs = {
-> +	.free = omap_gem_free_object,
-> +	.export = omap_gem_prime_export,
-> +	.vm_ops = &omap_gem_vm_ops,
-> +};
-> +
->  /* GEM buffer object constructor */
->  struct drm_gem_object *omap_gem_new(struct drm_device *dev,
->  		union omap_gem_size gsize, u32 flags)
-> @@ -1236,6 +1248,8 @@ struct drm_gem_object *omap_gem_new(struct drm_device *dev,
->  		size = PAGE_ALIGN(gsize.bytes);
->  	}
->  
-> +	obj->funcs = &omap_gem_object_funcs;
-> +
->  	/* Initialize the GEM object. */
->  	if (!(flags & OMAP_BO_MEM_SHMEM)) {
->  		drm_gem_private_object_init(dev, obj, size);
-> diff --git a/drivers/gpu/drm/omapdrm/omap_gem.h b/drivers/gpu/drm/omapdrm/omap_gem.h
-> index 729b7812a815..9e6b5c8195d9 100644
-> --- a/drivers/gpu/drm/omapdrm/omap_gem.h
-> +++ b/drivers/gpu/drm/omapdrm/omap_gem.h
-> @@ -69,7 +69,6 @@ struct dma_buf *omap_gem_prime_export(struct drm_gem_object *obj, int flags);
->  struct drm_gem_object *omap_gem_prime_import(struct drm_device *dev,
->  		struct dma_buf *buffer);
->  
-> -vm_fault_t omap_gem_fault(struct vm_fault *vmf);
->  int omap_gem_roll(struct drm_gem_object *obj, u32 roll);
->  void omap_gem_cpu_sync_page(struct drm_gem_object *obj, int pgoff);
->  void omap_gem_dma_sync_buffer(struct drm_gem_object *obj,
+>  	vdecsys: syscon@16000000 {
+>  		compatible = "mediatek,mt2701-vdecsys", "syscon";
+>  		reg = <0 0x16000000 0 0x1000>;
+> 
 
-omap_gem_free_object() can also be made static, and removed from omap_gem.h.
-
-Tested on AM5 EVM.
-
-Reviewed-by: Tomi Valkeinen <tomi.valkeinen@ti.com>
-
- Tomi
-
--- 
-Texas Instruments Finland Oy, Porkkalankatu 22, 00180 Helsinki.
-Y-tunnus/Business ID: 0615521-4. Kotipaikka/Domicile: Helsinki
 
 _______________________________________________
 Linux-mediatek mailing list
