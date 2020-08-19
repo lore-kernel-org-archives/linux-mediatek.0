@@ -2,85 +2,68 @@ Return-Path: <SRS0=3kTb=B5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 11FFDC433E1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 15:42:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 53474C433E3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 15:45:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D0DF320639
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 15:42:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2218E21734
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 15:45:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gNhtpKWC";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="vyFC/q8s"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D0DF320639
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Gfi/1EDb";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="i2B8F28m"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2218E21734
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=MMaE8VpI7pv8meWBnrtg5551cV8UItkZ3xfpXuqL6VM=; b=gNhtpKWCtYpDAdYR/B3hKJqPi
-	bLumCbl5lYIVqC3mnN+KxvfUWbULlR9MkECOAaMVaG19Msbvp9KOyFlhUg9k2I+r2b9qTnEyu+tMP
-	0Q/mYbhdZlVNWOHPn5Li4v+lv9XET+q0Yp+5zyr7acKYv6DiKu3e5SklrDtpuHRm2RwaQjNtHWijg
-	i6ljYamJgfhobkMByMUxLemSJQ7KkPz0t4VD8JNctZ++alpieGsmrXiOEAyRd1bo5bSZ4m/OGaFJm
-	CqZxtrFQCWplyveVJtSRY1AhKoi/cbjiC7cT49B6WiOTuJdLUbNjAI7gwfCC5UtMTbqsfFM1aRbCR
-	wsy1mSKuA==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KtWfQnBFF7NahJbS8YweDGGLK9YbBzsYTvzROWeMkCQ=; b=Gfi/1EDbzn7vCB9LhNyWK0BmO3
+	PTp+4F5yZMTiMV9YVR0KvqXb+H/bpxoXss57hHOw4qxemJQe0/XujjZwPAkOMSmtHoa1ToQMi9/Qa
+	6amUW0Yuog46oxePdCScrJOFNLQZu2a0K/KTDSUyFwiV5UgTIOvEw2Hv4v+zle+dEuijP/605wr9C
+	WtIs61vgGpRhwN0E2Fqst7rWcJRz6LXd0nRAwTSzbDmb/KK80OJMtgYlzF3dAm8GEpcRhIcnfXmFY
+	+HCEgX4koV6OgSaFJLDxg7qdWgg/KUUUbDPTvws/nhp+Wgx5GINYSBPXFy07D1YuqfpwWoYcjeh+B
+	VG7lY4ew==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8QEf-0008Hx-TY; Wed, 19 Aug 2020 15:42:45 +0000
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
+	id 1k8QGw-0000Jq-3t; Wed, 19 Aug 2020 15:45:06 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8QEc-0008GB-Re
- for linux-mediatek@lists.infradead.org; Wed, 19 Aug 2020 15:42:44 +0000
-Received: by mail-io1-xd42.google.com with SMTP id s189so25210706iod.2
- for <linux-mediatek@lists.infradead.org>; Wed, 19 Aug 2020 08:42:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ueFYm1qfrvuVokkg4cIykC1xT41ucWkogT7CDyG2LEU=;
- b=vyFC/q8s7Zxi5luvZu57+hMwrLU8LK8+zh8k/3QGJnwNPklGHQVFn2JSh/YLamJcLL
- dVyeG61lKntoHmN6060nH0IO4HWaUJX0LqqBgWtxW8WyLrtmgssiU5sjKlg4yhOX/q1t
- fdGs7fiCQ+sU2oEF/hOCkMLAqsZwGnmJHj4OpaUMI9oUOu7iL/SI8A5yu3wC5+GerAdd
- pl3GHIdx7erT7nBPzRnndZ08iGPoyojlCOo4MiTJ7ZXnz6wULYITEeIaKSor5wagiy/M
- mgDddCeDdC1Kn1z3f/ICNgJ4KaVFxiCrb1r/cqyLXk1krv+su7Z571TImb/kFrQFwsY7
- OjAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ueFYm1qfrvuVokkg4cIykC1xT41ucWkogT7CDyG2LEU=;
- b=kvQQXoQ9DQGILyi3dtDB21Yf5A0Morn4cPRm25L0b/7MUZkxBzsQiWwCKODuKaAGgU
- g61SIROd1DP3MznqQO0Q4D7OGf8wRSmYlId3K7RhneccblzQTb/7Wf2e1AtKDX9vNgM0
- qdYAkKm8fMj4mWYzeEPSCqysa4N+Z+WM2VFfdlBbzxh2w8CYQKVQiNrYsboSh9Z01sKf
- /a8Cun41/ZujLsorWzX4S8jHVs3Yz8EmOwvFb8WJcFQUBX1BfbR3Ah/++Is7J18/LsCL
- hfF/zqc4+h8uI6np+gmr/O16ZaIbyEM72TU4Ys4kvZwNR0kEliNDTvsLyaWizd+N2XPJ
- yr1w==
-X-Gm-Message-State: AOAM530B7eHvu1xHMIoSptJAk72QHSqscQd0Sw8L1/FAmw6OxEy5GFK2
- Sl644eTu9zSjrkwWL1tFUGG55CX3C7LU92f1E7VVvg==
-X-Google-Smtp-Source: ABdhPJwRnmRf3OMplQbhMziRPhYyjn2uBddwGEzf/xhJv6+J11j8DMc8iwUkJYiK9rDVOAjuTBdAroFLZAE/nvkCCKE=
-X-Received: by 2002:a02:a584:: with SMTP id b4mr23503993jam.68.1597851758905; 
- Wed, 19 Aug 2020 08:42:38 -0700 (PDT)
-MIME-Version: 1.0
-References: <1597644455-8216-1-git-send-email-jiaxin.yu@mediatek.com>
- <1597644455-8216-3-git-send-email-jiaxin.yu@mediatek.com>
- <CA+Px+wXSbGLb+AZnF8ETRycRUVjqk4xacm5DH6MzuMw0vh6Wzg@mail.gmail.com>
- <CA+Px+wUMXoSL6w0wBduE7obJRWgCteeT8=_=U=8LR34JKTTGZA@mail.gmail.com>
- <20200819103730.GB5441@sirena.org.uk>
-In-Reply-To: <20200819103730.GB5441@sirena.org.uk>
-From: Tzung-Bi Shih <tzungbi@google.com>
-Date: Wed, 19 Aug 2020 23:42:27 +0800
-Message-ID: <CA+Px+wUV89KO8JJd3+HpOrgFRSc7sdg-DBW44C31262Qx9NzVg@mail.gmail.com>
-Subject: Re: [PATCH v5 2/2] dt-bindings: mediatek: mt6359: add codec document
-To: Mark Brown <broonie@kernel.org>
+ id 1k8QGu-0000Fb-79
+ for linux-mediatek@lists.infradead.org; Wed, 19 Aug 2020 15:45:05 +0000
+Received: from DESKTOP-GFFITBK.localdomain (218-161-90-76.HINET-IP.hinet.net
+ [218.161.90.76])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id ED1D220639;
+ Wed, 19 Aug 2020 15:45:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1597851902;
+ bh=SYJC1gKfrfOoJ3hUhVfyy/GFNr1FeV/aeAmVqjZ8Mc4=;
+ h=From:To:Cc:Subject:Date:From;
+ b=i2B8F28mZfGP9HW2IbHytbUrhOdKJrpfS0PDdPffY4OJ1zjpH6fizph6kwqHdXPr6
+ QVrJsnq6G+JyYZrxfiPiKfz26IoK4RrVV7agP9hmoINVq3ZlidiTFRV09suDdZnrLd
+ T57d2Yp0zzp0N7UoG9iBPQSU1TiySoUyZ4dg7YEQ=
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>
+Subject: [PATCH v4 0/4] Move Mediatek HDMI PHY driver from DRM folder to PHY
+ folder
+Date: Wed, 19 Aug 2020 23:44:17 +0800
+Message-Id: <20200819154421.7013-1-chunkuang.hu@kernel.org>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_114242_993019_91847B9E 
-X-CRM114-Status: GOOD (  13.74  )
+X-CRM114-CacheID: sfid-20200819_114504_334204_3542277A 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,34 +75,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: ALSA development <alsa-devel@alsa-project.org>, howie.huang@mediatek.com,
- Takashi Iwai <tiwai@suse.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- shane.chien@mediatek.com, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, eason.yen@mediatek.com,
- Matthias Brugger <matthias.bgg@gmail.com>, bicycle.tsai@mediatek.com,
- linux-arm-kernel@lists.infradead.org
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 19, 2020 at 6:38 PM Mark Brown <broonie@kernel.org> wrote:
->
-> On Mon, Aug 17, 2020 at 04:11:03PM +0800, Tzung-Bi Shih wrote:
-> > I misunderstood.  It still needs the compatible string to match the
-> > corresponding driver.
->
-> No, it doesn't.  The MFD should be registering the platform device.
+mtk_hdmi_phy is currently placed inside mediatek drm driver, but it's
+more suitable to place a phy driver into phy driver folder, so move
+mtk_hdmi_phy driver into phy driver folder.
 
-I guess I see.  It lists the mfd_cell when calling
-devm_mfd_add_devices() in drivers/mfd/mt6397-core.c.  It falls back to
-use driver name and device name to match.  As long as the name
-provided in mfd_cell matches the platform driver name, it works.
+Changes in v4:
+- Rebase onto 5.9-rc1
+- Remove mtk_hdmi_conf_mt8173.
 
-But I found struct mfd_cell also contains member .of_compatible.  What
-is the difference if we use compatible string (as is) for this device
-instead of falling back to use device name to match?
+Changes in v3:
+- Modify [PATCH v2 3/4] prefix.
+
+Changes in v2:
+- include module.h in mtk_hdmi.c
+
+CK Hu (3):
+  drm/mediatek: Move tz_disabled from mtk_hdmi_phy to mtk_hdmi driver
+  drm/mediatek: Separate mtk_hdmi_phy to an independent module
+  phy: mediatek: Move mtk_hdmi_phy driver into drivers/phy/mediatek
+    folder
+
+Chun-Kuang Hu (1):
+  MAINTAINERS: add files for Mediatek DRM drivers
+
+ MAINTAINERS                                   |  1 +
+ drivers/gpu/drm/mediatek/Kconfig              |  2 +-
+ drivers/gpu/drm/mediatek/Makefile             |  5 +----
+ drivers/gpu/drm/mediatek/mtk_hdmi.c           | 21 +++++++++++++++----
+ drivers/gpu/drm/mediatek/mtk_hdmi.h           |  1 -
+ drivers/phy/mediatek/Kconfig                  |  7 +++++++
+ drivers/phy/mediatek/Makefile                 |  6 ++++++
+ .../mediatek/phy-mtk-hdmi-mt2701.c}           |  3 +--
+ .../mediatek/phy-mtk-hdmi-mt8173.c}           |  2 +-
+ .../mediatek/phy-mtk-hdmi.c}                  |  3 ++-
+ .../mediatek/phy-mtk-hdmi.h}                  |  2 --
+ 11 files changed, 37 insertions(+), 16 deletions(-)
+ rename drivers/{gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c => phy/mediatek/phy-mtk-hdmi-mt2701.c} (99%)
+ rename drivers/{gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c => phy/mediatek/phy-mtk-hdmi-mt8173.c} (99%)
+ rename drivers/{gpu/drm/mediatek/mtk_hdmi_phy.c => phy/mediatek/phy-mtk-hdmi.c} (98%)
+ rename drivers/{gpu/drm/mediatek/mtk_hdmi_phy.h => phy/mediatek/phy-mtk-hdmi.h} (95%)
+
+-- 
+2.17.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
