@@ -2,68 +2,54 @@ Return-Path: <SRS0=3kTb=B5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 69A38C433E1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 16:04:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CF9E5C433E1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 16:19:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 35BB52078D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 16:04:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 94FFF2078D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 16:19:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BeCNShp1"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 35BB52078D
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rwqmYjmB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 94FFF2078D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wJI/uwADNCfm2Y6E4wHcVkg1Ckri/xi3xeixazyZ5K4=; b=BeCNShp14/uM4fBKuatezGeA+
-	+J6zX23x8v3rNbNUNbQek+7RFPugkwBB353/iXvPz2njFVMSiVgRKXG8qoU2U5Sn2XJeo7mTwNkjp
-	ZJzeiFJXdpNIFp5EhvBNs41yNjn2cP88fXH+Q8nvmVwWjVYq3xmk7M+lScNZJQQifpUfR2vUXw0Gm
-	eS9N/oZEyKVKYhGt+fAU8ZZhlddm59tZNEsDG7xewkHtjvE3ZZht3Y2mJ3TFPMxXmgJranKqBysWH
-	U6CelKqyAFH5G7zAO1X3zgqCIDJggN4x5AMpnsj531lAspwyQii0qdSlsgAqYHumWoy/aFAGUpw2c
-	tdx/upnqQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UNu9eSy5i0fannYlH5PxbJOgIvsdgN20CtWDt+STqx8=; b=rwqmYjmB76IpgNg432IgLJq+2p
+	mm5wdMbFKgjSKWEvFYPc6iUgYuipvyYOjoX+9W8sDWS/sNFQi0wgqp5j/W+2DpWF5fTE1QvkdGPIr
+	O1I2LyZEtz9xMwSZQnmnfuShDoRNZebCHvA0ovDwYcd0wZeS35/mL7C06Ucxr1NTBwAt3iJOt5159
+	bE+vGuMieUBzocMQvX6SnmJakL6ml3oSaBjGobAfkkVfefrjFVJWxOcxxxnNFx5tPedYeFHxEyQ1I
+	r5p8cnYCaeNY4I+ZHAWXaFcbdc+qPT7PfC14DKdSW/qAwSCc8JsxKwwc5++j8k4OM1RWUNJASR7l0
+	RehkFlXQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8QZx-0002bM-CC; Wed, 19 Aug 2020 16:04:45 +0000
-Received: from asavdk3.altibox.net ([109.247.116.14])
+	id 1k8Qo7-0005Lf-05; Wed, 19 Aug 2020 16:19:23 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8QZt-0002Yw-Kt
- for linux-mediatek@lists.infradead.org; Wed, 19 Aug 2020 16:04:43 +0000
-Received: from ravnborg.org (unknown [188.228.123.71])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by asavdk3.altibox.net (Postfix) with ESMTPS id AB31720024;
- Wed, 19 Aug 2020 18:04:35 +0200 (CEST)
-Date: Wed, 19 Aug 2020 18:04:34 +0200
-From: Sam Ravnborg <sam@ravnborg.org>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: Re: [PATCH v4 3/4] phy: mediatek: Move mtk_hdmi_phy driver into
- drivers/phy/mediatek folder
-Message-ID: <20200819160434.GA2655@ravnborg.org>
-References: <20200819154421.7013-1-chunkuang.hu@kernel.org>
- <20200819154421.7013-4-chunkuang.hu@kernel.org>
+ id 1k8Qo1-0005K1-Ul; Wed, 19 Aug 2020 16:19:19 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id A77BF299C37
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH] Revert "irqchip/mtk-sysirq: Convert to a platform driver"
+Date: Wed, 19 Aug 2020 18:19:07 +0200
+Message-Id: <20200819161907.1155110-1-enric.balletbo@collabora.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200819154421.7013-4-chunkuang.hu@kernel.org>
-X-CMAE-Score: 0
-X-CMAE-Analysis: v=2.3 cv=f+hm+t6M c=1 sm=1 tr=0
- a=S6zTFyMACwkrwXSdXUNehg==:117 a=S6zTFyMACwkrwXSdXUNehg==:17
- a=kj9zAlcOel0A:10 a=mpaa-ttXAAAA:8 a=VwQbUJbxAAAA:8 a=pGLkceISAAAA:8
- a=e5mUnYsNAAAA:8 a=tnxLhXcf9_o-TLNqnQEA:9 a=CjuIK1q_8ugA:10
- a=6heAxKwa5pAsJatQ0mat:22 a=AjGcO6oz07-iQ99wixmX:22
- a=Vxmtnl_E_bksehYqCbjh:22
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_120442_451839_B3AFDCAB 
-X-CRM114-Status: GOOD (  25.70  )
+X-CRM114-CacheID: sfid-20200819_121918_104476_400A5310 
+X-CRM114-Status: GOOD (  15.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,179 +61,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Kishon Vijay Abraham I <kishon@ti.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: drinkcat@chromium.org, Jason Cooper <jason@lakedaemon.net>,
+ Saravana Kannan <saravanak@google.com>, Marc Zyngier <maz@kernel.org>,
+ Hanks Chen <hanks.chen@mediatek.com>, linux-mediatek@lists.infradead.org,
+ hsinyi@chromium.org, matthias.bgg@gmail.com,
+ Frank Wunderlich <linux@fw-web.de>, Collabora Kernel ML <kernel@collabora.com>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chun-Kuang
+This reverts commit f97dbf48ca43009e8b8bcdf07f47fc9f06149b36.
 
-Two small details below.
+Although converting to a platform driver sounds good, doing this for the
+MediaTek devices has a side effect, the probe of the driver is delayed
+and the interrupt controller is not available for other drivers when
+they probe. For MT8173 that means that the `systimer` and `mtk_cmdq`
+drivers will fail to probe with the following errors:
 
-	Sam
+  [    0.000197] Failed to map interrupt for /soc/timer@10008000
+  [    0.000209] Failed to initialize '/soc/timer@10008000': -22
+  [    0.067386] mtk_cmdq 10212000.mailbox: failed to register ISR (-22)
 
-On Wed, Aug 19, 2020 at 11:44:20PM +0800, Chun-Kuang Hu wrote:
-> From: CK Hu <ck.hu@mediatek.com>
-> 
-> mtk_hdmi_phy is currently placed inside mediatek drm driver, but it's
-> more suitable to place a phy driver into phy driver folder, so move
-> mtk_hdmi_phy driver into phy driver folder.
-> 
-> Signed-off-by: CK Hu <ck.hu@mediatek.com>
-> Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> Reviewed-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> ---
->  drivers/gpu/drm/mediatek/Kconfig                           | 7 -------
->  drivers/gpu/drm/mediatek/Makefile                          | 6 ------
->  drivers/phy/mediatek/Kconfig                               | 7 +++++++
->  drivers/phy/mediatek/Makefile                              | 6 ++++++
->  .../mediatek/phy-mtk-hdmi-mt2701.c}                        | 2 +-
->  .../mediatek/phy-mtk-hdmi-mt8173.c}                        | 2 +-
->  .../mtk_hdmi_phy.c => phy/mediatek/phy-mtk-hdmi.c}         | 2 +-
->  .../mtk_hdmi_phy.h => phy/mediatek/phy-mtk-hdmi.h}         | 0
->  8 files changed, 16 insertions(+), 16 deletions(-)
->  rename drivers/{gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c => phy/mediatek/phy-mtk-hdmi-mt2701.c} (99%)
->  rename drivers/{gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c => phy/mediatek/phy-mtk-hdmi-mt8173.c} (99%)
->  rename drivers/{gpu/drm/mediatek/mtk_hdmi_phy.c => phy/mediatek/phy-mtk-hdmi.c} (99%)
->  rename drivers/{gpu/drm/mediatek/mtk_hdmi_phy.h => phy/mediatek/phy-mtk-hdmi.h} (100%)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
-> index ca3cd871a350..65cd03a4be29 100644
-> --- a/drivers/gpu/drm/mediatek/Kconfig
-> +++ b/drivers/gpu/drm/mediatek/Kconfig
-> @@ -27,10 +27,3 @@ config DRM_MEDIATEK_HDMI
->  	select PHY_MTK_HDMI
->  	help
->  	  DRM/KMS HDMI driver for Mediatek SoCs
-> -
-> -config PHY_MTK_HDMI
-> -    tristate "MediaTek HDMI-PHY Driver"
-> -    depends on ARCH_MEDIATEK && OF
-> -    select GENERIC_PHY
-> -    help
-> -          Enable this to support HDMI-PHY
-> diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
-> index fcbef23aa6ce..77b0fd86063d 100644
-> --- a/drivers/gpu/drm/mediatek/Makefile
-> +++ b/drivers/gpu/drm/mediatek/Makefile
-> @@ -22,9 +22,3 @@ mediatek-drm-hdmi-objs := mtk_cec.o \
->  			  mtk_hdmi_ddc.o
->  
->  obj-$(CONFIG_DRM_MEDIATEK_HDMI) += mediatek-drm-hdmi.o
-> -
-> -phy-mtk-hdmi-drv-objs := mtk_hdmi_phy.o \
-> -			 mtk_mt2701_hdmi_phy.o \
-> -			 mtk_mt8173_hdmi_phy.o
-> -
-> -obj-$(CONFIG_PHY_MTK_HDMI) += phy-mtk-hdmi-drv.o
-> diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
-> index dee757c957f2..10f0ec2d5b54 100644
-> --- a/drivers/phy/mediatek/Kconfig
-> +++ b/drivers/phy/mediatek/Kconfig
-> @@ -35,3 +35,10 @@ config PHY_MTK_XSPHY
->  	  Enable this to support the SuperSpeedPlus XS-PHY transceiver for
->  	  USB3.1 GEN2 controllers on MediaTek chips. The driver supports
->  	  multiple USB2.0, USB3.1 GEN2 ports.
-> +
-> +config PHY_MTK_HDMI
-> +    tristate "MediaTek HDMI-PHY Driver"
-> +    depends on ARCH_MEDIATEK && OF
-> +    select GENERIC_PHY
-> +    help
-> +          Enable this to support HDMI-PHY
-This helptext could use a bit more love and care - it is not obvious
-from the help text what this option does.
+For MT8183, apart from the above errors, you will get the `pinctrl`
+driver without the EINT support, because the `pinctrl` is probed before
+the interrupt controller, for what is worth, then it doesn't booting
+properly.
 
+  [    0.062309] mt8183-pinctrl 10005000.pinctrl: Failed to add EINT, but pinctrl still can work
 
-> diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
-> index 08a8e6a97b1e..c9a3641f0b16 100644
-> --- a/drivers/phy/mediatek/Makefile
-> +++ b/drivers/phy/mediatek/Makefile
-> @@ -6,3 +6,9 @@
->  obj-$(CONFIG_PHY_MTK_TPHY)		+= phy-mtk-tphy.o
->  obj-$(CONFIG_PHY_MTK_UFS)		+= phy-mtk-ufs.o
->  obj-$(CONFIG_PHY_MTK_XSPHY)		+= phy-mtk-xsphy.o
-> +
-> +phy-mtk-hdmi-drv-objs := phy-mtk-hdmi.o \
-> +			 phy-mtk-hdmi-mt2701.o \
-> +			 phy-mtk-hdmi-mt8173.o
-> +
-The modern syntax is to use -y and not -objs.
-And getting rid of '\' would also be nice.
-So something like this:
+While deferring these drivers until the irqchip is available could be an
+option, at this point, seems reasonable to revert this commit for now until
+all these drivers are properly handling/deferring when the irqchip is not
+available.
 
-phy-mtk-hdmi-drv-y := phy-mtk-hdmi.o 
-phy-mtk-hdmi-drv-y += phy-mtk-hdmi-mt2701.o
-phy-mtk-hdmi-drv-y += phy-mtk-hdmi-mt8173.o
+Cc: Saravana Kannan <saravanak@google.com>
+Cc: Marc Zyngier <maz@kernel.org>
+Cc: Hanks Chen <hanks.chen@mediatek.com>
+Fixes: f97dbf48ca43 ("irqchip/mtk-sysirq: Convert to a platform driver")
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+---
 
-Looks much more readable to me.
+ drivers/irqchip/irq-mtk-sysirq.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-> +obj-$(CONFIG_PHY_MTK_HDMI) += phy-mtk-hdmi-drv.o
-> diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
-> similarity index 99%
-> rename from drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-> rename to drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
-> index 99fe05cd3598..a6cb1dea3d0c 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-> +++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
-> @@ -4,7 +4,7 @@
->   * Author: Chunhui Dai <chunhui.dai@mediatek.com>
->   */
->  
-> -#include "mtk_hdmi_phy.h"
-> +#include "phy-mtk-hdmi.h"
->  
->  #define HDMI_CON0	0x00
->  #define RG_HDMITX_DRV_IBIAS		0
-> diff --git a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c
-> similarity index 99%
-> rename from drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-> rename to drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c
-> index 827b93786fac..6cdfdf5a698a 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-> +++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c
-> @@ -4,7 +4,7 @@
->   * Author: Jie Qiu <jie.qiu@mediatek.com>
->   */
->  
-> -#include "mtk_hdmi_phy.h"
-> +#include "phy-mtk-hdmi.h"
->  
->  #define HDMI_CON0		0x00
->  #define RG_HDMITX_PLL_EN		BIT(31)
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c b/drivers/phy/mediatek/phy-mtk-hdmi.c
-> similarity index 99%
-> rename from drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-> rename to drivers/phy/mediatek/phy-mtk-hdmi.c
-> index fe022acddbef..8fc83f01a720 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-> +++ b/drivers/phy/mediatek/phy-mtk-hdmi.c
-> @@ -4,7 +4,7 @@
->   * Author: Jie Qiu <jie.qiu@mediatek.com>
->   */
->  
-> -#include "mtk_hdmi_phy.h"
-> +#include "phy-mtk-hdmi.h"
->  
->  static int mtk_hdmi_phy_power_on(struct phy *phy);
->  static int mtk_hdmi_phy_power_off(struct phy *phy);
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h b/drivers/phy/mediatek/phy-mtk-hdmi.h
-> similarity index 100%
-> rename from drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-> rename to drivers/phy/mediatek/phy-mtk-hdmi.h
-> -- 
-> 2.17.1
-> 
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+diff --git a/drivers/irqchip/irq-mtk-sysirq.c b/drivers/irqchip/irq-mtk-sysirq.c
+index 7299c5ab4d10..6ff98b87e5c0 100644
+--- a/drivers/irqchip/irq-mtk-sysirq.c
++++ b/drivers/irqchip/irq-mtk-sysirq.c
+@@ -231,6 +231,4 @@ static int __init mtk_sysirq_of_init(struct device_node *node,
+ 	kfree(chip_data);
+ 	return ret;
+ }
+-IRQCHIP_PLATFORM_DRIVER_BEGIN(mtk_sysirq)
+-IRQCHIP_MATCH("mediatek,mt6577-sysirq", mtk_sysirq_of_init)
+-IRQCHIP_PLATFORM_DRIVER_END(mtk_sysirq)
++IRQCHIP_DECLARE(mtk_sysirq, "mediatek,mt6577-sysirq", mtk_sysirq_of_init);
+-- 
+2.28.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
