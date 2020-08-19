@@ -2,75 +2,84 @@ Return-Path: <SRS0=3kTb=B5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1297BC433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 07:38:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C5C3CC433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 08:14:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D3B1A20738
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 07:38:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 905672067C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 08:14:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Y2zohU1u";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Wq6KxU26"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D3B1A20738
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SRnV6QPp";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="wXcQEVBg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 905672067C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
+	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=duOMDcQZj6CWqdwFz15gjobAOpGY8EPKTZIe/NaoMNI=; b=Y2zohU1uUrTC/sTFawpjXvNZF
-	8Oxn691LUQeH/FgfcHe3Osmd/66huAWGkgst/I+thnSUYBRhqUQg1vTuhzeRTTmpzRJRRgODyyQli
-	isA272Eua85DmjzLmEu3mxIMyEfND8smZdlE7RBwnOm8c/Zrsqop1MvUdkL9Q3JKm5Mc6S/Ag8ej1
-	JhST91Kmot4Fb7F81tRxu5PQVQD6zOHkedqV4lzuBYb2TybNpokvyDZP8LhYH48UOJABHxut5IVqg
-	OwbimpQElrkKM8adpIXeO3AetDdByO1OTqXocuhr6flV9gQshCiePoy5qC9QonyER4+xbwRoTsy7Y
-	+cSgpacEQ==;
+	 bh=0y9JCn2QC4W+P3gC60At9oA/5hdIsGlaNRnd4aW8tDg=; b=SRnV6QPpA+ZxA9y4OrWfL3Qdn
+	fhf8CllEy0MOWudsuBTnsKO2LBqtRsolwfA/QXThxPG2KfmDL4xGclAHimMrVqtf2vWAtpspxK0rH
+	ZyDKMlysTxTiHtAFy28mG87FEA2NLEfm8ltPdmIp8nOEAiDx/pnOTsPFsqM9e6rqpx0BCVhXBsDE6
+	WXNZAhkdDMjaQzR9ENES1nxtBJUSuMS1gJjoXmfPeGv3UEmiEp4+MCNahMzuCCdZaCv2BHHozB3HE
+	d8kJo68MMoIQ7wamHwLcXBfxZccNUlxpTRRLXjQGvrgEmITCilfjq4j7J3HZdI47BCglGvwkzc6/G
+	J72Bjzncw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8IgH-0002yD-4t; Wed, 19 Aug 2020 07:38:45 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1k8JEu-0007V4-0V; Wed, 19 Aug 2020 08:14:32 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8IgD-0002wI-Hw
- for linux-mediatek@lists.infradead.org; Wed, 19 Aug 2020 07:38:43 +0000
-X-UUID: 1f58720f0c1e4c5e821195695d39ab91-20200818
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=fA1ZbejQFXPVLQG+Xp5gLcjblRbOlo94pfMY0RDgam0=; 
- b=Wq6KxU26E3Hy1RaGgPDFkuiC1wtJh3NWU9TaEzhThMlD9GaXmHENZhNPnsPC7HQnnjXE2BwAhxR3HTpvzjVFRgW27h3lhsGvukd7t/hGDk2y7Wzq9Um8IcuWMPZ8ccC2tLjz+4opqS8oZ16viCadWg7a9/nrJLEIyjPMCuQ/D5Y=;
-X-UUID: 1f58720f0c1e4c5e821195695d39ab91-20200818
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <landen.chao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2032377120; Tue, 18 Aug 2020 23:38:33 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 19 Aug 2020 00:38:35 -0700
-Received: from [172.21.84.99] (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 19 Aug 2020 15:38:23 +0800
-Message-ID: <1597822704.31846.27.camel@mtksdccf07>
-Subject: Re: [PATCH net-next v2 0/7] net-next: dsa: mt7530: add support for
- MT7531
-From: Landen Chao <landen.chao@mediatek.com>
-To: DENG Qingfang <dqfext@gmail.com>
-Date: Wed, 19 Aug 2020 15:38:24 +0800
-In-Reply-To: <CALW65jZRWwW4DqpsCM9J=GRp6KnxqT-9MHUO7WSRJtp4E9vnFw@mail.gmail.com>
-References: <cover.1597729692.git.landen.chao@mediatek.com>
- <CALW65jZRWwW4DqpsCM9J=GRp6KnxqT-9MHUO7WSRJtp4E9vnFw@mail.gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1k8JEq-0007UP-BR; Wed, 19 Aug 2020 08:14:29 +0000
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id CE2A32067C;
+ Wed, 19 Aug 2020 08:14:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1597824867;
+ bh=iy+98yEcdg/0uWleUjvQdBaqa49qL9P2nF4i2FkdT2A=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=wXcQEVBgl6gRt6zks0dWmKVMFlAzkCtEZDMYnPA6DuqthOP094xV1VaxIUawwgw+P
+ QCKJaN1lzEMP1zW4sfFXVoabfiV2M7n3g2bUntkIbRym+mus27wuntlh2TpKF7V4+X
+ L2cLsx7ijMk875QJrkeze4eKLwS/ok1aYxoD+GVo=
+Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
+ by disco-boy.misterjones.org with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
+ (envelope-from <maz@kernel.org>)
+ id 1k8JEm-0048ZR-Qj; Wed, 19 Aug 2020 09:14:25 +0100
 MIME-Version: 1.0
-X-MTK: N
+Date: Wed, 19 Aug 2020 09:14:24 +0100
+From: Marc Zyngier <maz@kernel.org>
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Subject: Re: [PATCH 1/2] irqchip: irq-mst: Add MStar interrupt controller
+ support
+In-Reply-To: <20200819034231.20726-2-mark-pk.tsai@mediatek.com>
+References: <20200819034231.20726-1-mark-pk.tsai@mediatek.com>
+ <20200819034231.20726-2-mark-pk.tsai@mediatek.com>
+User-Agent: Roundcube Webmail/1.4.7
+Message-ID: <a8ee65eb4d86963bd2b56e86eec0ab3e@kernel.org>
+X-Sender: maz@kernel.org
+X-SA-Exim-Connect-IP: 51.254.78.96
+X-SA-Exim-Rcpt-To: mark-pk.tsai@mediatek.com, tglx@linutronix.de,
+ jason@lakedaemon.net, robh+dt@kernel.org, matthias.bgg@gmail.com,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ yj.chiang@mediatek.com, alix.wu@mediatek.com, daniel@0x0f.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_033841_967038_4DF9CE0E 
-X-CRM114-Status: GOOD (  11.75  )
+X-CRM114-CacheID: sfid-20200819_041428_523504_2F8C3588 
+X-CRM114-Status: GOOD (  29.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,53 +91,291 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>, Andrew Lunn <andrew@lunn.ch>,
- Frank Wunderlich <frank-w@public-files.de>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "vivien.didelot@savoirfairelinux.com" <vivien.didelot@savoirfairelinux.com>,
- netdev <netdev@vger.kernel.org>, Sean Wang <Sean.Wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- =?ISO-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, David Miller <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
+Cc: devicetree@vger.kernel.org, alix.wu@mediatek.com, jason@lakedaemon.net,
+ yj.chiang@mediatek.com, daniel@0x0f.com, linux-kernel@vger.kernel.org,
+ robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ tglx@linutronix.de, linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi DENG,
-
-MT7531 mirror port has been fixed by new definition of register base in 
-header file. The logic of mirror port setting in 7530.c is reused.
-
-@@ -41,6 +42,33 @@  enum mt753x_id {
- #define  MIRROR_PORT(x)			((x) & 0x7)
- #define  MIRROR_MASK			0x7
- 
-+/* Registers for CPU forward control */
-+#define MT7531_CFC			0x4
-+#define  MT7531_MIRROR_EN		BIT(19)
-+#define  MT7531_MIRROR_MASK		(MIRROR_MASK << 16)
-+#define  MT7531_MIRROR_PORT_GET(x)	(((x) >> 16) & MIRROR_MASK)
-+#define  MT7531_MIRROR_PORT_SET(x)	(((x) & MIRROR_MASK) << 16)
-+#define  MT7531_CPU_PMAP_MASK		GENMASK(7, 0)
-+
-+#define MT753X_MIRROR_REG(id)		(((id) == ID_MT7531) ? \
-+					 MT7531_CFC : MT7530_MFC)
-+#define MT753X_MIRROR_EN(id)		(((id) == ID_MT7531) ? \
-+					 MT7531_MIRROR_EN : MIRROR_EN)
-+#define MT753X_MIRROR_MASK(id)		(((id) == ID_MT7531) ? \
-+					 MT7531_MIRROR_MASK : MIRROR_MASK)
-
-
-On Wed, 2020-08-19 at 11:49 +0800, DENG Qingfang wrote:
-> Hi,
+On 2020-08-19 04:42, Mark-PK Tsai wrote:
+> Add MStar interrupt controller support using hierarchy irq
+> domain.
 > 
-> Is port mirroring working? Port mirroring registers on MT7531 have
-> moved, according to bpi's MT7531 reference manual.
-> Please fix that as well.
+> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> ---
+>  drivers/irqchip/Kconfig        |   7 ++
+>  drivers/irqchip/Makefile       |   1 +
+>  drivers/irqchip/irq-mst-intc.c | 195 +++++++++++++++++++++++++++++++++
+>  3 files changed, 203 insertions(+)
+>  create mode 100644 drivers/irqchip/irq-mst-intc.c
+> 
+> diff --git a/drivers/irqchip/Kconfig b/drivers/irqchip/Kconfig
+> index bb70b7177f94..c3a9d880a4ea 100644
+> --- a/drivers/irqchip/Kconfig
+> +++ b/drivers/irqchip/Kconfig
+> @@ -571,4 +571,11 @@ config LOONGSON_PCH_MSI
+>  	help
+>  	  Support for the Loongson PCH MSI Controller.
+> 
+> +config MST_IRQ
+> +	bool "MStar Interrupt Controller"
+> +	select IRQ_DOMAIN
+> +	select IRQ_DOMAIN_HIERARCHY
+> +	help
+> +	  Support MStar Interrupt Controller.
+
+What selects it? Can it have a default for the relevant platforms?
+
+> +
+>  endmenu
+> diff --git a/drivers/irqchip/Makefile b/drivers/irqchip/Makefile
+> index 133f9c45744a..e2688a62403e 100644
+> --- a/drivers/irqchip/Makefile
+> +++ b/drivers/irqchip/Makefile
+> @@ -111,3 +111,4 @@ obj-$(CONFIG_LOONGSON_HTPIC)		+= 
+> irq-loongson-htpic.o
+>  obj-$(CONFIG_LOONGSON_HTVEC)		+= irq-loongson-htvec.o
+>  obj-$(CONFIG_LOONGSON_PCH_PIC)		+= irq-loongson-pch-pic.o
+>  obj-$(CONFIG_LOONGSON_PCH_MSI)		+= irq-loongson-pch-msi.o
+> +obj-$(CONFIG_MST_IRQ)			+= irq-mst-intc.o
+> diff --git a/drivers/irqchip/irq-mst-intc.c 
+> b/drivers/irqchip/irq-mst-intc.c
+> new file mode 100644
+> index 000000000000..38d567741860
+> --- /dev/null
+> +++ b/drivers/irqchip/irq-mst-intc.c
+> @@ -0,0 +1,195 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR BSD-3-Clause)
+> +/*
+> + * Copyright (c) 2020 MediaTek Inc.
+> + * Author Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> + */
+> +#include <linux/interrupt.h>
+> +#include <linux/io.h>
+> +#include <linux/irq.h>
+> +#include <linux/irqchip.h>
+> +#include <linux/irqdomain.h>
+> +#include <linux/of.h>
+> +#include <linux/of_address.h>
+> +#include <linux/of_irq.h>
+> +#include <linux/slab.h>
+> +#include <linux/spinlock.h>
+> +
+> +#define INTC_MASK	0x0
+> +#define INTC_EOI	0x20
+> +
+> +struct mst_intc_chip_data {
+> +	raw_spinlock_t lock;
+> +	unsigned int irq_start, nr_irqs;
+> +	void __iomem *base;
+> +	bool no_eoi;
+
+nit: please align the fields of the data structure on a vertical line.
+
+> +};
+> +
+> +static void mst_poke_irq(struct irq_data *d, u32 offset)
+
+Given that this is supposed to be the opposite of "clear", this
+should be mst_set_irq().
+
+> +{
+> +	irq_hw_number_t hwirq = irqd_to_hwirq(d);
+> +	struct mst_intc_chip_data *cd = irq_data_get_irq_chip_data(d);
+> +	u16 val, mask;
+> +
+> +	mask = 1 << (hwirq % 16);
+> +	offset += (hwirq / 16) * 4;
+> +
+> +	raw_spin_lock(&cd->lock);
+> +	val = readw_relaxed(cd->base + offset) | mask;
+> +	writew_relaxed(val, cd->base + offset);
+> +	raw_spin_unlock(&cd->lock);
+
+Small improvement, but you still miss the fact that a masking
+operation can also occur from an interrupt handler, and this
+will cause a deadlock. You need to disable interrupts as well.
+
+> +}
+> +
+> +static void mst_clear_irq(struct irq_data *d, u32 offset)
+> +{
+> +	irq_hw_number_t hwirq = irqd_to_hwirq(d);
+> +	struct mst_intc_chip_data *cd = irq_data_get_irq_chip_data(d);
+> +	u16 val, mask;
+> +
+> +	mask = 1 << (hwirq % 16);
+> +	offset += (hwirq / 16) * 4;
+> +
+> +	raw_spin_lock(&cd->lock);
+> +	val = readw_relaxed(cd->base + offset) & ~mask;
+> +	writew_relaxed(val, cd->base + offset);
+> +	raw_spin_unlock(&cd->lock);
+> +}
+> +
+> +static void mst_intc_mask_irq(struct irq_data *d)
+> +{
+> +	mst_poke_irq(d, INTC_MASK);
+> +	irq_chip_mask_parent(d);
+> +}
+> +
+> +static void mst_intc_unmask_irq(struct irq_data *d)
+> +{
+> +	mst_clear_irq(d, INTC_MASK);
+> +	irq_chip_unmask_parent(d);
+> +}
+> +
+> +static void mst_intc_eoi_irq(struct irq_data *d)
+> +{
+> +	struct mst_intc_chip_data *cd = irq_data_get_irq_chip_data(d);
+> +
+> +	if (!cd->no_eoi)
+> +		mst_poke_irq(d, INTC_EOI);
+> +
+> +	irq_chip_eoi_parent(d);
+> +}
+> +
+> +static struct irq_chip mst_intc_chip = {
+> +	.name			= "mst-intc",
+> +	.irq_mask		= mst_intc_mask_irq,
+> +	.irq_unmask		= mst_intc_unmask_irq,
+> +	.irq_eoi		= mst_intc_eoi_irq,
+> +	.irq_get_irqchip_state	= irq_chip_get_parent_state,
+> +	.irq_set_irqchip_state	= irq_chip_set_parent_state,
+> +	.irq_set_affinity	= irq_chip_set_affinity_parent,
+> +	.irq_set_vcpu_affinity	= irq_chip_set_vcpu_affinity_parent,
+> +	.irq_set_type		= irq_chip_set_type_parent,
+> +	.irq_retrigger		= irq_chip_retrigger_hierarchy,
+> +	.flags			= IRQCHIP_SET_TYPE_MASKED |
+> +				  IRQCHIP_SKIP_SET_WAKE |
+> +				  IRQCHIP_MASK_ON_SUSPEND,
+> +};
+> +
+> +static int mst_intc_domain_translate(struct irq_domain *d,
+> +				     struct irq_fwspec *fwspec,
+> +				     unsigned long *hwirq,
+> +				     unsigned int *type)
+> +{
+> +	if (is_of_node(fwspec->fwnode)) {
+> +		if (fwspec->param_count != 3)
+> +			return -EINVAL;
+> +
+> +		/* No PPI should point to this domain */
+> +		if (fwspec->param[0] != 0)
+> +			return -EINVAL;
+> +
+> +		*hwirq = fwspec->param[1];
+> +		*type = fwspec->param[2] & IRQ_TYPE_SENSE_MASK;
+> +		return 0;
+> +	}
+> +
+> +	return -EINVAL;
+> +}
+> +
+> +static int mst_intc_domain_alloc(struct irq_domain *domain, unsigned 
+> int virq,
+> +				 unsigned int nr_irqs, void *data)
+> +{
+> +	int i;
+> +	irq_hw_number_t hwirq;
+> +	struct irq_fwspec parent_fwspec, *fwspec = data;
+> +	struct mst_intc_chip_data *cd = (struct mst_intc_chip_data
+> *)domain->host_data;
+
+No cast necessary here.
+
+> +
+> +	/* Not GIC compliant */
+> +	if (fwspec->param_count != 3)
+> +		return -EINVAL;
+> +
+> +	/* No PPI should point to this domain */
+> +	if (fwspec->param[0])
+> +		return -EINVAL;
+> +
+> +	if (fwspec->param[1] >= cd->nr_irqs)
+
+This condition is bogus, as it doesn't take into account the nr_irqs
+parameter.
+
+> +		return -EINVAL;
+> +
+> +	hwirq = fwspec->param[1];
+> +	for (i = 0; i < nr_irqs; i++)
+> +		irq_domain_set_hwirq_and_chip(domain, virq + i, hwirq + i,
+> +					      &mst_intc_chip,
+> +					      domain->host_data);
+> +
+> +	parent_fwspec = *fwspec;
+> +	parent_fwspec.fwnode = domain->parent->fwnode;
+> +	parent_fwspec.param[1] = cd->irq_start + hwirq;
+> +	return irq_domain_alloc_irqs_parent(domain, virq, nr_irqs, 
+> &parent_fwspec);
+> +}
+> +
+> +static const struct irq_domain_ops mst_intc_domain_ops = {
+> +	.translate	= mst_intc_domain_translate,
+> +	.alloc		= mst_intc_domain_alloc,
+> +	.free		= irq_domain_free_irqs_common,
+> +};
+> +
+> +int __init
+> +mst_intc_of_init(struct device_node *dn, struct device_node *parent)
+> +{
+> +	struct irq_domain *domain, *domain_parent;
+> +	struct mst_intc_chip_data *cd;
+> +	unsigned int irq_start, irq_end;
+
+unsigned int != u32.
+
+> +
+> +	domain_parent = irq_find_host(parent);
+> +	if (!domain_parent) {
+> +		pr_err("mst-intc: interrupt-parent not found\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	if (of_property_read_u32_index(dn, "mstar,irqs-map-range", 0, 
+> &irq_start) ||
+> +	    of_property_read_u32_index(dn, "mstar,irqs-map-range", 1, 
+> &irq_end))
+> +		return -EINVAL;
+> +
+> +	cd = kzalloc(sizeof(*cd), GFP_KERNEL);
+> +	if (!cd)
+> +		return -ENOMEM;
+> +
+> +	cd->base = of_iomap(dn, 0);
+> +	if (!cd->base) {
+> +		kfree(cd);
+> +		return -ENOMEM;
+> +	}
+> +
+> +	cd->no_eoi = of_property_read_bool(dn, "mstar,intc-no-eoi");
+> +	raw_spin_lock_init(&cd->lock);
+> +	cd->irq_start = irq_start;
+> +	cd->nr_irqs = irq_end - irq_start + 1;
+> +	domain = irq_domain_add_hierarchy(domain_parent, 0, cd->nr_irqs, dn,
+> +					  &mst_intc_domain_ops, cd);
+> +	if (!domain) {
+> +		iounmap(cd->base);
+> +		kfree(cd);
+> +		return -ENOMEM;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +IRQCHIP_DECLARE(mst_intc, "mstar,mst-intc", mst_intc_of_init);
+
+Thanks,
+
+         M.
+-- 
+Jazz is not dead. It just smells funny...
 
 _______________________________________________
 Linux-mediatek mailing list
