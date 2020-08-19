@@ -2,69 +2,107 @@ Return-Path: <SRS0=3kTb=B5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4470EC433E1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 10:38:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D1C6C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 10:44:50 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 115FD2072D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 10:38:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 16235206DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 10:44:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MUCcutvE";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="toLXAql2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 115FD2072D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="T4iCZde8";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="hq3DNU8G"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16235206DA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FB69l9xk1FZoZTl8MXFoBK+LZmEPVYRM83N0n97c5UM=; b=MUCcutvEAZttuDk5razuOBYKj
-	PyQDU3geJ8mIv9FzAwKkomPTfWA1ThQMnx4OMnG2GJs8WIHRUql89TrNomENpik6c6XZaeI04Iai6
-	1tzzLQECgpE53SCJjYOER1NneRq7GeDeQr42cIIVkgWe/BkgJYecjFpKakKaxgzp4a/LvAvkO104S
-	kTf5uJ61I5Slt/psRKfq1cXabfB45T0B5rIXUXaVxHXEJu7pW5XS3mdtQg8RBE3crXgc5HqVoekjf
-	It/CaujScSFHMvX7fiNZj68cLxHDERqEhqN5+Zyjn9Z5ED/z8Fh0u3BBaruu/TmIDWLELAN6/ktbX
-	As3HojsKQ==;
+	 bh=JcyfTyPEZH69Sd2fbklr0X4gHjR+I4NnxIOInOz8klA=; b=T4iCZde8MosYAvvesByw5TPu2
+	H7tuuUcnPcViRlv8kplqHEu4gd6dL0Nx0+hEUdhIkIEmoFpMiQ3RNeiZntNhd+8L+p0TPqs5dveat
+	KY4QK8DtK/KkkuvYveUoIa8T4QhaGnSVkvI+G51RN31nx+lB7O4k3UJrKyqVonvB+h39eYslfe3Cg
+	c2ER7BbhGLWnG1T/M3pjAcP7xCvuevnNb9oAi5MMQ8by5mnqZRmEk4QsVZfUSEmD1Qkw4kDPBHJA/
+	tythWFwIAqVilgU54dgegVxSczh5RRPCUYQ+6h9q5txnI3vMmEftHfrjDCCkNalCsdLUli7UUN+Th
+	WCdJpOykA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8LTt-0000NS-3v; Wed, 19 Aug 2020 10:38:09 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1k8LaD-0002Ea-4J; Wed, 19 Aug 2020 10:44:41 +0000
+Received: from lelv0142.ext.ti.com ([198.47.23.249])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8LTn-0000Lh-3A; Wed, 19 Aug 2020 10:38:03 +0000
-Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id BC7B52072D;
- Wed, 19 Aug 2020 10:38:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597833482;
- bh=y+M69Til1EvJORNhPxvngspprJECf70sXE+hyFMk3+Y=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=toLXAql2wtllHm023rx293u6rgtg4oRalT1G7c7wfPh7zw6tadzcKc0nAX0mtQSv9
- cJCv8nopRHdF9FKLtrxwQZ8GdvEdfF2+RWPKX1UAnOfdE43dVszrqRdv7WbdIxH5JE
- UIM61liYddD+z/S7aiK9zvrhAesojjkLfn5YxTb0=
-Date: Wed, 19 Aug 2020 11:37:30 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Tzung-Bi Shih <tzungbi@google.com>
-Subject: Re: [PATCH v5 2/2] dt-bindings: mediatek: mt6359: add codec document
-Message-ID: <20200819103730.GB5441@sirena.org.uk>
-References: <1597644455-8216-1-git-send-email-jiaxin.yu@mediatek.com>
- <1597644455-8216-3-git-send-email-jiaxin.yu@mediatek.com>
- <CA+Px+wXSbGLb+AZnF8ETRycRUVjqk4xacm5DH6MzuMw0vh6Wzg@mail.gmail.com>
- <CA+Px+wUMXoSL6w0wBduE7obJRWgCteeT8=_=U=8LR34JKTTGZA@mail.gmail.com>
+ id 1k8La9-0002Bk-BH; Wed, 19 Aug 2020 10:44:39 +0000
+Received: from fllv0034.itg.ti.com ([10.64.40.246])
+ by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 07JAhS5P011860;
+ Wed, 19 Aug 2020 05:43:28 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1597833808;
+ bh=FQ/P96RlmX4WL6iS15Y4+TdcnOXuRLw5jD5fcCLIPRM=;
+ h=Subject:To:CC:References:From:Date:In-Reply-To;
+ b=hq3DNU8GyRjS+6Rnn7skcN1ku0AwIVNiB8bZ3hVmcFFpSNzKBAUK00toMRz1KnLCE
+ NxcnurQiObMWPuedh5shwC1BCu6hnnUua5zjmH8lZNKmxDlxcyNuA14gMqszA0YtC2
+ JjErGKTXzkqOL97zfTZs8nV570QUwaiW3pOgGLAw=
+Received: from DLEE114.ent.ti.com (dlee114.ent.ti.com [157.170.170.25])
+ by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 07JAhSRj019744
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 19 Aug 2020 05:43:28 -0500
+Received: from DLEE111.ent.ti.com (157.170.170.22) by DLEE114.ent.ti.com
+ (157.170.170.25) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Wed, 19
+ Aug 2020 05:43:28 -0500
+Received: from fllv0039.itg.ti.com (10.64.41.19) by DLEE111.ent.ti.com
+ (157.170.170.22) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
+ Frontend Transport; Wed, 19 Aug 2020 05:43:27 -0500
+Received: from [192.168.2.6] (ileax41-snat.itg.ti.com [10.172.224.153])
+ by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 07JAhFih039071;
+ Wed, 19 Aug 2020 05:43:15 -0500
+Subject: Re: [PATCH 10/20] drm/omapdrm: Introduce GEM object functions
+To: Thomas Zimmermann <tzimmermann@suse.de>, <alexander.deucher@amd.com>,
+ <christian.koenig@amd.com>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <linux@armlinux.org.uk>, <maarten.lankhorst@linux.intel.com>,
+ <mripard@kernel.org>, <l.stach@pengutronix.de>,
+ <christian.gmeiner@gmail.com>, <inki.dae@samsung.com>,
+ <jy0922.shim@samsung.com>, <sw0312.kim@samsung.com>,
+ <kyungmin.park@samsung.com>, <kgene@kernel.org>, <krzk@kernel.org>,
+ <patrik.r.jakobsson@gmail.com>, <jani.nikula@linux.intel.com>,
+ <joonas.lahtinen@linux.intel.com>, <rodrigo.vivi@intel.com>,
+ <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>,
+ <matthias.bgg@gmail.com>, <robdclark@gmail.com>, <sean@poorly.run>,
+ <bskeggs@redhat.com>, <eric@anholt.net>, <hjc@rock-chips.com>,
+ <heiko@sntech.de>, <thierry.reding@gmail.com>, <jonathanh@nvidia.com>,
+ <rodrigosiqueiramelo@gmail.com>, <hamohammed.sa@gmail.com>,
+ <oleksandr_andrushchenko@epam.com>, <hyun.kwon@xilinx.com>,
+ <laurent.pinchart@ideasonboard.com>, <michal.simek@xilinx.com>,
+ <sumit.semwal@linaro.org>, <evan.quan@amd.com>,
+ <Hawking.Zhang@amd.com>, <tianci.yin@amd.com>, <marek.olsak@amd.com>,
+ <hdegoede@redhat.com>, <andrey.grodzovsky@amd.com>,
+ <Felix.Kuehling@amd.com>, <xinhui.pan@amd.com>, <aaron.liu@amd.com>,
+ <nirmoy.das@amd.com>, <chris@chris-wilson.co.uk>,
+ <matthew.auld@intel.com>, <abdiel.janulgue@linux.intel.com>,
+ <tvrtko.ursulin@linux.intel.com>, <andi.shyti@intel.com>,
+ <sam@ravnborg.org>, <miaoqinglang@huawei.com>, <emil.velikov@collabora.com>
+References: <20200813083644.31711-1-tzimmermann@suse.de>
+ <20200813083644.31711-11-tzimmermann@suse.de>
+From: Tomi Valkeinen <tomi.valkeinen@ti.com>
+Message-ID: <8739b085-0342-4c43-60e3-a21d6b257319@ti.com>
+Date: Wed, 19 Aug 2020 13:43:14 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <CA+Px+wUMXoSL6w0wBduE7obJRWgCteeT8=_=U=8LR34JKTTGZA@mail.gmail.com>
-X-Cookie: I wish you were a Scotch on the rocks.
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20200813083644.31711-11-tzimmermann@suse.de>
+Content-Language: en-US
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_063803_254459_008B3E7D 
-X-CRM114-Status: GOOD (  15.26  )
+X-CRM114-CacheID: sfid-20200819_064437_545994_EFB036FE 
+X-CRM114-Status: GOOD (  22.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,69 +114,127 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: ALSA development <alsa-devel@alsa-project.org>, howie.huang@mediatek.com,
- Takashi Iwai <tiwai@suse.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- shane.chien@mediatek.com, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, eason.yen@mediatek.com,
- Matthias Brugger <matthias.bgg@gmail.com>, bicycle.tsai@mediatek.com,
+Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ nouveau@lists.freedesktop.org, linux-tegra@vger.kernel.org,
+ xen-devel@lists.xenproject.org, freedreno@lists.freedesktop.org,
  linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============4023337924594562016=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
---===============4023337924594562016==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="/WwmFnJnmDyWGHa4"
-Content-Disposition: inline
+On 13/08/2020 11:36, Thomas Zimmermann wrote:
+> GEM object functions deprecate several similar callback interfaces in
+> struct drm_driver. This patch replaces the per-driver callbacks with
+> per-instance callbacks in omapdrm.
+> 
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> ---
+>  drivers/gpu/drm/omapdrm/omap_drv.c |  9 ---------
+>  drivers/gpu/drm/omapdrm/omap_gem.c | 16 +++++++++++++++-
+>  drivers/gpu/drm/omapdrm/omap_gem.h |  1 -
+>  3 files changed, 15 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/omapdrm/omap_drv.c b/drivers/gpu/drm/omapdrm/omap_drv.c
+> index 53d5e184ee77..2e598b8b72af 100644
+> --- a/drivers/gpu/drm/omapdrm/omap_drv.c
+> +++ b/drivers/gpu/drm/omapdrm/omap_drv.c
+> @@ -521,12 +521,6 @@ static int dev_open(struct drm_device *dev, struct drm_file *file)
+>  	return 0;
+>  }
+>  
+> -static const struct vm_operations_struct omap_gem_vm_ops = {
+> -	.fault = omap_gem_fault,
+> -	.open = drm_gem_vm_open,
+> -	.close = drm_gem_vm_close,
+> -};
+> -
+>  static const struct file_operations omapdriver_fops = {
+>  	.owner = THIS_MODULE,
+>  	.open = drm_open,
+> @@ -549,10 +543,7 @@ static struct drm_driver omap_drm_driver = {
+>  #endif
+>  	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
+>  	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
+> -	.gem_prime_export = omap_gem_prime_export,
+>  	.gem_prime_import = omap_gem_prime_import,
+> -	.gem_free_object_unlocked = omap_gem_free_object,
+> -	.gem_vm_ops = &omap_gem_vm_ops,
+>  	.dumb_create = omap_gem_dumb_create,
+>  	.dumb_map_offset = omap_gem_dumb_map_offset,
+>  	.ioctls = ioctls,
+> diff --git a/drivers/gpu/drm/omapdrm/omap_gem.c b/drivers/gpu/drm/omapdrm/omap_gem.c
+> index d0d12d5dd76c..d68dc63dea0a 100644
+> --- a/drivers/gpu/drm/omapdrm/omap_gem.c
+> +++ b/drivers/gpu/drm/omapdrm/omap_gem.c
+> @@ -487,7 +487,7 @@ static vm_fault_t omap_gem_fault_2d(struct drm_gem_object *obj,
+>   * vma->vm_private_data points to the GEM object that is backing this
+>   * mapping.
+>   */
+> -vm_fault_t omap_gem_fault(struct vm_fault *vmf)
+> +static vm_fault_t omap_gem_fault(struct vm_fault *vmf)
+>  {
+>  	struct vm_area_struct *vma = vmf->vma;
+>  	struct drm_gem_object *obj = vma->vm_private_data;
+> @@ -1169,6 +1169,18 @@ static bool omap_gem_validate_flags(struct drm_device *dev, u32 flags)
+>  	return true;
+>  }
+>  
+> +static const struct vm_operations_struct omap_gem_vm_ops = {
+> +	.fault = omap_gem_fault,
+> +	.open = drm_gem_vm_open,
+> +	.close = drm_gem_vm_close,
+> +};
+> +
+> +static const struct drm_gem_object_funcs omap_gem_object_funcs = {
+> +	.free = omap_gem_free_object,
+> +	.export = omap_gem_prime_export,
+> +	.vm_ops = &omap_gem_vm_ops,
+> +};
+> +
+>  /* GEM buffer object constructor */
+>  struct drm_gem_object *omap_gem_new(struct drm_device *dev,
+>  		union omap_gem_size gsize, u32 flags)
+> @@ -1236,6 +1248,8 @@ struct drm_gem_object *omap_gem_new(struct drm_device *dev,
+>  		size = PAGE_ALIGN(gsize.bytes);
+>  	}
+>  
+> +	obj->funcs = &omap_gem_object_funcs;
+> +
+>  	/* Initialize the GEM object. */
+>  	if (!(flags & OMAP_BO_MEM_SHMEM)) {
+>  		drm_gem_private_object_init(dev, obj, size);
+> diff --git a/drivers/gpu/drm/omapdrm/omap_gem.h b/drivers/gpu/drm/omapdrm/omap_gem.h
+> index 729b7812a815..9e6b5c8195d9 100644
+> --- a/drivers/gpu/drm/omapdrm/omap_gem.h
+> +++ b/drivers/gpu/drm/omapdrm/omap_gem.h
+> @@ -69,7 +69,6 @@ struct dma_buf *omap_gem_prime_export(struct drm_gem_object *obj, int flags);
+>  struct drm_gem_object *omap_gem_prime_import(struct drm_device *dev,
+>  		struct dma_buf *buffer);
+>  
+> -vm_fault_t omap_gem_fault(struct vm_fault *vmf);
+>  int omap_gem_roll(struct drm_gem_object *obj, u32 roll);
+>  void omap_gem_cpu_sync_page(struct drm_gem_object *obj, int pgoff);
+>  void omap_gem_dma_sync_buffer(struct drm_gem_object *obj,
 
+omap_gem_free_object() can also be made static, and removed from omap_gem.h.
 
---/WwmFnJnmDyWGHa4
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Tested on AM5 EVM.
 
-On Mon, Aug 17, 2020 at 04:11:03PM +0800, Tzung-Bi Shih wrote:
-> On Mon, Aug 17, 2020 at 3:29 PM Tzung-Bi Shih <tzungbi@google.com> wrote:
+Reviewed-by: Tomi Valkeinen <tomi.valkeinen@ti.com>
 
-> > > +required:
-> > > +  - compatible
+ Tomi
 
-> > And the same here.
-
-> I misunderstood.  It still needs the compatible string to match the
-> corresponding driver.
-
-No, it doesn't.  The MFD should be registering the platform device.
-
---/WwmFnJnmDyWGHa4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl89AOkACgkQJNaLcl1U
-h9Dwbwf8COv9Rs7LMNn91TpJLXgOTRfXxwmnESd9+12yTNqmd+k9YAgp3PaB7PBq
-GX1hQYeOeClZMGMGnjCt2RAkfT5A0/5SwKVsASefRpA6CTlKNCUk+5WQ6pK/LLqA
-TH0RRiA3Z8ZS5WfUsZrovdCsHlCEQ+gCNctOyf3RqmX33RmycE1YWyWlQS3qLK7v
-W7/F7t/mOMbrEAT4a4YHtbSYf/xT8aDr81GyndfpV6zwtQlWAmw4lI2IT0+XX4hr
-BDwHxr6/Te3UgU6p+9xq5UgrIyXkR5htNv+49VqxNFNUhhPMgd00IO47kda9kvHP
-rIO1YU5Mf+STMsbFuTk3zmEfud3FkQ==
-=7xtJ
------END PGP SIGNATURE-----
-
---/WwmFnJnmDyWGHa4--
-
-
---===============4023337924594562016==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+Texas Instruments Finland Oy, Porkkalankatu 22, 00180 Helsinki.
+Y-tunnus/Business ID: 0615521-4. Kotipaikka/Domicile: Helsinki
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============4023337924594562016==--
-
