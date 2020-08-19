@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 68624C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 23:12:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C7960C433E3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 23:43:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3505020786
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 23:12:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 97F9A20885
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 23:43:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BDVMPgKk";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="msr7ExZT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3505020786
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NWwWtsZD";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="lsGv7Ijx"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 97F9A20885
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,52 +26,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=queTqIe5N26ysubSMY+wsOiyz+/V/ii+qH1Py7S84N0=; b=BDVMPgKk9n9XHF36I9McIdOzY
-	Tsnf/4CZqm9czlI+jp+MLkK+Unkqu3wzibTKB2bk14llfIpUqTGj6GC4FncNbhrvzEoZlQZPOGeBv
-	Mkp/m3PhQQbnlZ3aRFMMi+fRfn5ExbF579eCBQdckbpNQStPpKgS8QDWDujoUw0AwlfA8dTp09x91
-	nAslvi3lTutDqD2penV2WnMHYW4Ry5SFHBQDSce1FrD55HKqy24iqBni8Bca0tFp00uxZu6SwgH9K
-	unxv0OpVj+SbM/6lSYkdB7jasuW5FFZOrYSLZscW6TZDVlVL8fCHkK0TwJXwXHIFTrz3f0sYkPQxb
-	ow1eFq4sg==;
+	 bh=eFkzR9VjFcNjd7NoXaX8B0EdfGkvLe5t/RDIMQ3jToU=; b=NWwWtsZDBlNyIMvnfaqsAJ70W
+	zC7ZAEJh2wCVuewZaA2fG/5Ta/d/EBjvrF2Rp4DfPMoAEA4IBkvwUcoLWadYZ6XIwXp6+FaF1W3+c
+	4tCceBC2l/DDbII0IVlwwnTmfuck/AuCoDuHxm2FX2FboMaYD3a03uc2NakwwP9SzEwTXce/EOWZq
+	wsQmSIQYR/U6x6xaIfbx1uKMdS7T00IrPWVUL3iIfYnsQxhJ4ILfvHbYKrj4/YU3TGjpiq03BkpM6
+	A01gpfCXLAfRGfQsBiuKsPk6ov9HoSS3Cq0OGzIJTq7cFB9o+BKAhg2Fdkfc/7hZAm/2LfwkuBAPX
+	IuASrn53Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8XFK-0005h9-AG; Wed, 19 Aug 2020 23:11:54 +0000
+	id 1k8Xk0-0007FI-1V; Wed, 19 Aug 2020 23:43:36 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8XFH-0005ge-En
- for linux-mediatek@lists.infradead.org; Wed, 19 Aug 2020 23:11:52 +0000
-Received: from mail-il1-f181.google.com (mail-il1-f181.google.com
- [209.85.166.181])
+ id 1k8Xjv-0007Dr-Az; Wed, 19 Aug 2020 23:43:32 +0000
+Received: from mail-io1-f53.google.com (mail-io1-f53.google.com
+ [209.85.166.53])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id DD64D20786
- for <linux-mediatek@lists.infradead.org>; Wed, 19 Aug 2020 23:11:49 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id D41E3208DB;
+ Wed, 19 Aug 2020 23:43:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597878710;
- bh=HSrbY+CwG0o4kd/iplMaWaPq8ahQhPaEf0XUQCHWYaM=;
+ s=default; t=1597880609;
+ bh=ElRgQNa+eCXKxKGiAwXCvT5SEdd/aIQYRPIeKR0A834=;
  h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=msr7ExZThidS+96kINTJqR4YknRvaeVHO5jJ1KSUefdmKuLrbcBNBH0K8+hAwMxL2
- T4ijatTXL6TM1zu729++oTuLZ+U2WOBdGjY+h7zKvrdwnh+JqV3A4J4iTuXUBY54NR
- iF9KjejifDWBPNrSpvMpzWrbqLhc2p2KYygjyAmo=
-Received: by mail-il1-f181.google.com with SMTP id f12so202470ils.6
- for <linux-mediatek@lists.infradead.org>; Wed, 19 Aug 2020 16:11:49 -0700 (PDT)
-X-Gm-Message-State: AOAM531ATVYLA8iiAne3iJNulymBVWV9FvYo07vy4jiy+AarozPRNgg8
- XBJRdPpCUGaEPVZdnAc96NgiFPJFJVTlumEYCec=
-X-Google-Smtp-Source: ABdhPJxFWTX1ujNyvxatyeyEWG8Qo5p3LPsyFmE3L/4R9pvY1L5UJaeUyca2FF9CpWOJiicuARMLZ6YV/t5Mc47vD2w=
-X-Received: by 2002:a92:d488:: with SMTP id p8mr299429ilg.43.1597878709284;
- Wed, 19 Aug 2020 16:11:49 -0700 (PDT)
+ b=lsGv7IjxoikfbbLi8veuPzeJZ4LzzUuP8aF0z+SUXXzi6hloYN69Oxkth75X7fuhx
+ Pq3maN5J9QUHHgZNAc7O730nLvimgC0Ja4dzYQj3ncuK3mseUtibMYtnsOLeW8ZhvH
+ SJUXUHgEK++U51u9gKAggXVtsIWRGANPt6nP1VBw=
+Received: by mail-io1-f53.google.com with SMTP id a5so477566ioa.13;
+ Wed, 19 Aug 2020 16:43:29 -0700 (PDT)
+X-Gm-Message-State: AOAM5334Tqd43iz2FXVQg00uRS6814mIdJXdODZvgjF22zGHVo11Tx6h
+ 6BC71c2ROAT90vVnsHoPuKh1USviiogMvyltj20=
+X-Google-Smtp-Source: ABdhPJywImw8dXNnBobaBopdocSp5GlcwoPSbxbSaryZt8nivOMkmwgkEBFD3B3CiPbqAgeiGZaHFLwLGbaFwxJnAgc=
+X-Received: by 2002:a6b:c88f:: with SMTP id y137mr321019iof.55.1597880609305; 
+ Wed, 19 Aug 2020 16:43:29 -0700 (PDT)
 MIME-Version: 1.0
-References: <1597739776-15944-1-git-send-email-light.hsieh@mediatek.com>
-In-Reply-To: <1597739776-15944-1-git-send-email-light.hsieh@mediatek.com>
+References: <1597317260-24348-1-git-send-email-hanks.chen@mediatek.com>
+In-Reply-To: <1597317260-24348-1-git-send-email-hanks.chen@mediatek.com>
 From: Sean Wang <sean.wang@kernel.org>
-Date: Wed, 19 Aug 2020 16:11:38 -0700
-X-Gmail-Original-Message-ID: <CAGp9Lzo31FPCQ5PMyA7wAgB_pGM3bZbxP84XYqL7Njb9d+w6Fw@mail.gmail.com>
-Message-ID: <CAGp9Lzo31FPCQ5PMyA7wAgB_pGM3bZbxP84XYqL7Njb9d+w6Fw@mail.gmail.com>
-Subject: Re: [PATCH v1 1/2] pinctrl: mediatek: support access registers
- without race-condition
-To: Light Hsieh <light.hsieh@mediatek.com>
+Date: Wed, 19 Aug 2020 16:43:18 -0700
+X-Gmail-Original-Message-ID: <CAGp9Lzq7H_KREyhxNy1zBsBJdFRAA7Zc1jkGc=ZiN_og1H9KBQ@mail.gmail.com>
+Message-ID: <CAGp9Lzq7H_KREyhxNy1zBsBJdFRAA7Zc1jkGc=ZiN_og1H9KBQ@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: mediatek: check mtk_is_virt_gpio input parameter
+To: Hanks Chen <hanks.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_191151_630843_AE4F8602 
-X-CRM114-Status: GOOD (  30.00  )
+X-CRM114-CacheID: sfid-20200819_194331_447762_B1FA0F29 
+X-CRM114-Status: GOOD (  20.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,196 +81,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
+Cc: CC Hwang <cc.hwang@mediatek.com>, sin_jieyang <sin_jieyang@mediatek.com>,
+ Linus Walleij <linus.walleij@linaro.org>, lkml <linux-kernel@vger.kernel.org>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- lkml <linux-kernel@vger.kernel.org>, kuohong.wang@mediatek.com
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Light,
+Hi Hanks,
 
-On Tue, Aug 18, 2020 at 1:36 AM <light.hsieh@mediatek.com> wrote:
+On Thu, Aug 13, 2020 at 4:14 AM Hanks Chen <hanks.chen@mediatek.com> wrote:
 >
-> From: Light Hsieh <light.hsieh@mediatek.com>
+> check mtk_is_virt_gpio input parameter,
+> virtual gpio need to support eint mode.
 >
-> Some MediaTek SOC provide more control registers other than value register.
+> add error handler for the ko case
+> to fix this boot fail:
+> pc : mtk_is_virt_gpio+0x20/0x38 [pinctrl_mtk_common_v2]
+> lr : mtk_gpio_get_direction+0x44/0xb0 [pinctrl_paris]
 
-s/MT6765/Some MediaTek SoC/
+it is better we post the complete call stack when the failure occurs
 
-> Generanll, a value register need read-modify-write is at offset 0xXXXXXXXX0.
-
-s/Generally/Generanll/
-
-> A corresponding SET register is at offset 0xXXXXXXX4. Write 1s' to some bits
->   of SET register will set same bits in value register.
-> A corresponding CLR register is at offset 0xXXXXXXX8. Write 1s' to some bits
->   of CLR register will clear same bits in value register.
-> For GPIO mode selection, MWR register is provided at offset 0xXXXXXXXC.
->   With MWR, the MSBit of GPIO mode selection field is for modification-enable,
->   not for GPIO mode selection, and the remaining LSBits are for mode
->   selection.
->   Take mode selection field with 4-bits as example, to select mode 0~7 via
->   MWR register, 8~15 (instead of 0~7) shall be written to corresponding mode
->   selection field.
-> When using SET/CLR/MWR registers, read-modify-write of value register is not
->   necessary. This can prevent from race condition when multiple bus masters
->   concurrently read-modify-write the same value register for setting different
->   fields of the same value register.
 >
-> Signed-off-by: Light Hsieh <light.hsieh@mediatek.com>
+> Fixes: edd546465002 ("pinctrl: mediatek: avoid virtual gpio trying to set reg")
+> Singed-off-by: sin_jieyang <sin_jieyang@mediatek.com>
+
+signed-off-by with the full name
+
+> Signed-off-by: Hanks Chen <hanks.chen@mediatek.com>
 > ---
->  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 69 ++++++++++++++++++++++--
->  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h |  2 +
->  2 files changed, 67 insertions(+), 4 deletions(-)
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 4 ++++
+>  1 file changed, 4 insertions(+)
 >
 > diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> index b77b18f..51f0b53 100644
+> index c53e2c391e32..27ab9c512ae1 100644
 > --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
 > +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> @@ -18,6 +18,29 @@
->  #include "mtk-eint.h"
->  #include "pinctrl-mtk-common-v2.h"
+> @@ -259,6 +259,10 @@ bool mtk_is_virt_gpio(struct mtk_pinctrl *hw, unsigned int gpio_n)
 >
-> +/* Some MediaTek SOC provide more control registers other than value register.
-
-s/MT6765/Some MediaTek SoC/
-
-> + * Generanll, a value register need read-modify-write is at offset 0xXXXXXXXX0.
-
-s/Generally/Generanll/
-
-> + * A corresponding SET register is at offset 0xXXXXXXX4. Write 1s' to some bits
-> + *  of SET register will set same bits in value register.
-> + * A corresponding CLR register is at offset 0xXXXXXXX8. Write 1s' to some bits
-> + *  of CLR register will clear same bits in value register.
-> + * For GPIO mode selection, MWR register is provided at offset 0xXXXXXXXC.
-> + *  With MWR, the MSBit of GPIO mode selection field is for modification-enable,
-> + *  not for GPIO mode selection, and the remaining LSBits are for mode
-> + *  selection.
-> + *  Take mode selection field with 4-bits as example, to select mode 0~7 via
-> + *  MWR register, 8~15 (instead of 0~7) shall be written to corresponding mode
-> + *  selection field.
-> + * When using SET/CLR/MWR registers, read-modify-write of value register is not
-> + *  necessary. This can prevent from race condition when multiple bus masters
-> + *  concurrently read-modify-write the same value register for setting different
-> + *  fields of the same value register.
-> + */
-> +
-> +#define SET_OFFSET 0x4
-> +#define CLR_OFFSET 0x8
-
-can set/clr offset work for mode register?
-
-> +#define MWR_OFFSET 0xC
-> +
->  /**
->   * struct mtk_drive_desc - the structure that holds the information
->   *                         of the driving current
-> @@ -64,6 +87,38 @@ void mtk_rmw(struct mtk_pinctrl *pctl, u8 i, u32 reg, u32 mask, u32 set)
->         mtk_w32(pctl, i, reg, val);
->  }
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio_n];
 >
+> +       /* if the GPIO is not supported for eint mode */
+> +       if (desc->eint.eint_m == EINT_NA)
+
+s/NO_EINT_SUPPORT/EINT_NA/ to align with pinctrl/mediatek/pinctrl-mtk-mt*.h uses
+
+> +               return virt_gpio;
 > +
-> +static void mtk_hw_set_value_race_free(struct mtk_pinctrl *pctl,
-> +               struct mtk_pin_field *pf, u32 value)
-
-s/mtk_hw_set_value_race_free/mtk_hw_w1sc/ to explictly indicate
-write-one ethier set or clear operation supported by hw
-
-> +{
-> +       unsigned int set, clr;
-> +
-> +       set = value & pf->mask;
-> +       clr = (~set) & pf->mask;
-> +
-> +       if (set)
-> +               mtk_w32(pctl, pf->index, pf->offset + SET_OFFSET,
-> +                       set << pf->bitpos);
-> +       if (clr)
-> +               mtk_w32(pctl, pf->index, pf->offset + CLR_OFFSET,
-> +                       clr << pf->bitpos);
-> +}
-> +
-> +static void mtk_hw_set_mode_race_free(struct mtk_pinctrl *pctl,
-> +               struct mtk_pin_field *pf, u32 value)
-
-s/mtk_hw_set_mode_race_free/mtk_hw_mwr/
-
-> +{
-> +       unsigned int value_new;
-> +
-> +       /* MSB of mask is modification-enable bit, set this bit */
-> +       value_new = (1 << (pctl->soc->mwr_field_width - 1)) | value;
-
-it seems to be we can use fls(pf->mask) to replace ctl->soc->mwr_field_width
-
-> +       if (value_new == value)
-> +               dev_notice(pctl->dev,
-> +                       "invalid mode 0x%x, use it by ignoring MSBit!\n",
-> +                       value);
-> +       mtk_w32(pctl, pf->index, pf->offset + MWR_OFFSET,
-> +               value_new << pf->bitpos);
-> +}
-> +
->  static int mtk_hw_pin_field_lookup(struct mtk_pinctrl *hw,
->                                    const struct mtk_pin_desc *desc,
->                                    int field, struct mtk_pin_field *pfd)
-> @@ -197,10 +252,16 @@ int mtk_hw_set_value(struct mtk_pinctrl *hw, const struct mtk_pin_desc *desc,
->         if (value < 0 || value > pf.mask)
->                 return -EINVAL;
->
-> -       if (!pf.next)
-> -               mtk_rmw(hw, pf.index, pf.offset, pf.mask << pf.bitpos,
-> -                       (value & pf.mask) << pf.bitpos);
-> -       else
-> +       if (!pf.next) {
-> +               if (hw->soc->race_free_access) {
-
-let's create an extra flags caps under hw->soc and the SoC capability
-check, something like hw->soc->caps & MTK_HW_CAPS_RMW_ATOMIC to easily
-extend various things for future SoC
-
-> +                       if (field == PINCTRL_PIN_REG_MODE)
-> +                               mtk_hw_set_mode_race_free(hw, &pf, value);
-> +                       else
-> +                               mtk_hw_set_value_race_free(hw, &pf, value);
-> +               }
-
-let's create a function holding that specific hardware stuff (at least
-currently it look like), something like
-
-static void mtk_hw_rmw(struct mtk_pinctrl *pctl,  struct mtk_pin_field *pf)
-{
-     if (pf->field == PINCTRL_PIN_REG_MODE) /* create a member field for pf */
-            mtk_hw_mwr(...);
-    else
-            mtk_hw_w1sc(...);
-}
-
-> +                       mtk_rmw(hw, pf.index, pf.offset, pf.mask << pf.bitpos,
-> +                               (value & pf.mask) << pf.bitpos);
-> +       } else
->                 mtk_hw_write_cross_field(hw, &pf, value);
->
->         return 0;
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-> index 27df087..95fb329 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-> @@ -203,6 +203,8 @@ struct mtk_pin_soc {
->         /* Specific parameters per SoC */
->         u8                              gpio_m;
->         bool                            ies_present;
-> +       bool                            race_free_access;
-> +       unsigned int                    mwr_field_width;
->         const char * const              *base_names;
->         unsigned int                    nbase_names;
+>         if (desc->funcs && !desc->funcs[desc->eint.eint_m].name)
+>                 virt_gpio = true;
 >
 > --
-> 1.8.1.1.dirty
+> 2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
