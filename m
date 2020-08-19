@@ -2,71 +2,92 @@ Return-Path: <SRS0=3kTb=B5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2B4B7C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 19:40:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D2A6C433E1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 22:39:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F18B7207BB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 19:40:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DDF88207FF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 22:39:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="spNJj2kl";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Ua92POSn"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F18B7207BB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qqLzGTbL";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="UiFY5EFg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DDF88207FF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=SMgXGj0fZ7ODetSDxXxoiGYngHiGbazQdM7gqaktjz8=; b=spNJj2klwop9jNkkHs2LTW4g0
-	8ruRxNqka5DrdnyC9CLTr8pdk56ZWxa4cqBaxS+Jcpy6fjLA47bwo0/wcCQ99bR5NNUofRDGK9Uh2
-	Zoi6xB/g9RKIStep+8x9M576Zt48ehNDuj6rpA5KBf7CU/5jIOkrd10UyFgj/YcybyGT7chrnUy80
-	5Cek+uej1vdMMdC45fTY761aZHYYnKUaY+ZaNJkLdCIl1K53/evd5NML/cYaF2W8F0NIrPUKRlLfb
-	/KT+MwGgUyv7NICCUU0oWxO7m1TUjEuKkhMWiCCI3xT1A26AEVAn8zMWPRfyOXsmXg3ZRdbjwJNfo
-	N3X3WOfnA==;
+	 bh=KlzNKHzW2KhE1S5oYR/DFPS5o5sd7z9Yikf9DFDxgMc=; b=qqLzGTbLnnqRM8tva6xHFF+ya
+	zHbIJo/ltAwRJ6xLunnGiRWQN3HhnExAm6uoFnIQ5agesZcPxL1K0RD41X2S4fxrn4w6bRDnw0Cui
+	ibk0oPq8CSEjAHCDSvPVzsCnQWftQAjqv510b2Rdq4QhavCJX4jPEqQRpdFIvdt4Q7nrmhnYK7ABr
+	verJf0SsUSSvQ9wHJMTn61+q9dhL3r6+jrZ72phYH+X16jrZb7SThR6bN5dkYvVL8VEcqlOJ6uQsf
+	9vonPkeYAK22HSisTAWSLczFwA18sf7irOM56Zx9DCGHPyHDAOC0Qh8El37vaXoTOAS2J1scqe/rq
+	sy1tSNMow==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8Twx-0007iF-6H; Wed, 19 Aug 2020 19:40:43 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1k8Wjy-0002V5-3L; Wed, 19 Aug 2020 22:39:30 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8Tws-0007hF-Qe; Wed, 19 Aug 2020 19:40:39 +0000
-Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6F545207BB;
- Wed, 19 Aug 2020 19:40:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597866038;
- bh=4AK5v821zy1PWvts/5ogFBjV+oVDZUgiOW/Z26HFexU=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Ua92POSnqY57JylYmFlW/zoes2kP0GYGQbu4I2NNqI7oKhrS+kId6nciud6UtU/53
- xxjtEqyOGHXub4q0MJZENkMJiLMST98/X3qRGgvZaSsOkDwX/+1iT3sCek7q/zCe9/
- 6H3LuAli7CzlhN/nPXo39fhV7mSt1VLrJDKdV/2k=
-Date: Wed, 19 Aug 2020 20:40:05 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Tzung-Bi Shih <tzungbi@google.com>
-Subject: Re: [PATCH v5 2/2] dt-bindings: mediatek: mt6359: add codec document
-Message-ID: <20200819194005.GC38371@sirena.org.uk>
-References: <1597644455-8216-1-git-send-email-jiaxin.yu@mediatek.com>
- <1597644455-8216-3-git-send-email-jiaxin.yu@mediatek.com>
- <CA+Px+wXSbGLb+AZnF8ETRycRUVjqk4xacm5DH6MzuMw0vh6Wzg@mail.gmail.com>
- <CA+Px+wUMXoSL6w0wBduE7obJRWgCteeT8=_=U=8LR34JKTTGZA@mail.gmail.com>
- <20200819103730.GB5441@sirena.org.uk>
- <CA+Px+wUV89KO8JJd3+HpOrgFRSc7sdg-DBW44C31262Qx9NzVg@mail.gmail.com>
+ id 1k8Wjv-0002UU-FR; Wed, 19 Aug 2020 22:39:28 +0000
+Received: by mail-wr1-x443.google.com with SMTP id z18so237899wrm.12;
+ Wed, 19 Aug 2020 15:39:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=nRpCADsHOf/cWhcypV5jnkA5SHzSc6g+QJdTCoTw3Ds=;
+ b=UiFY5EFg4f9I/213bZd57Gg8sKrk9+m6VDfEtWtAXi5DIt7Kb8yENRGuPg46iMtuHO
+ VF/6fWP3m0inhANxal8sMy2Cpy1Ui8Jj3ChCNwbL6voIjWBhlUHLJ+bjN/ihOAqJz1hJ
+ o95p+grke16tJSIiwBcl8gtbdLXl3Svbs6OEWhABY7wR+sIhu1pe2gIaPtSyEtxibn5k
+ xug8GlgMoFMeeCbtQrEtAZYZSifQ6miaW8ubqwnodnY8bA5c9bWJPEwr8f5qdyR1XxYF
+ UWqevL4r4pxh+pa70G0+Eo7ngQCEflQln2vQjxdqJS5TBMbmFVUjOGdBWBcT3aTEF0Ec
+ yFGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=nRpCADsHOf/cWhcypV5jnkA5SHzSc6g+QJdTCoTw3Ds=;
+ b=Z9BQg1lloNqb1qWDYim94ji+j1ogUqugWz4gwNf3t1KyM7379Y/LS51PYjL3c/AbGw
+ fvXQ1r/mRxWnPw+hzuiuvtPjVdpr2l6a7d78zwU+9XGZVSZ221/7ASHU7CkNCzhhfTW+
+ 3N/FCFO/eyYPZYDWmEHtsVT4xmMteVS7kFRGFogR9OwZ8yNABbz9o4ACOIqWl/D3SeAw
+ hixLoDXmHl7CAb+2hfDDMVXnTq9CuCIEkGtoEd0ZMdfrLRqtdF5yqZ4Y+jsQ/Ba2iBjR
+ +WqzVENaB5/UzdSBKb1yJs32loc5McfL6+Zwh+D/sKGrw41rLnqtkZN2+u0aGcIxRoZ8
+ /J/w==
+X-Gm-Message-State: AOAM530ucPj6tPheh9P2Vz20FzzM0XSVkGJKGlYNAJzPpV9m8U8K7+oe
+ 8PhlnTYZjAdFyNV5GXz/YH0=
+X-Google-Smtp-Source: ABdhPJyFRJO0AZRVyZ+C0c3HOnzZQn+Vqb9ABZGDytFjKz/PRua8HhDRp9AbY74tQIK5x195uVkZ5g==
+X-Received: by 2002:a5d:4d8f:: with SMTP id b15mr191393wru.341.1597876766413; 
+ Wed, 19 Aug 2020 15:39:26 -0700 (PDT)
+Received: from ziggy.stardust ([93.176.180.54])
+ by smtp.gmail.com with ESMTPSA id u7sm414472wrq.89.2020.08.19.15.39.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 19 Aug 2020 15:39:25 -0700 (PDT)
+Subject: Re: [PATCH 1/2] soc: mediatek: mtk-infracfg: Fix kerneldoc
+To: Krzysztof Kozlowski <krzk@kernel.org>
+References: <20200729074415.28393-1-krzk@kernel.org>
+ <92ac7165-765e-da75-4c0b-3b232521b5e9@gmail.com>
+ <20200819174805.GA394@kozik-lap>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <38e5f452-d049-f323-4a24-f7dafcbdb72f@gmail.com>
+Date: Thu, 20 Aug 2020 00:39:24 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <CA+Px+wUV89KO8JJd3+HpOrgFRSc7sdg-DBW44C31262Qx9NzVg@mail.gmail.com>
-X-Cookie: Absence makes the heart grow frantic.
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20200819174805.GA394@kozik-lap>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_154038_971032_03849BE5 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20200819_183927_531562_6CA04800 
+X-CRM114-Status: GOOD (  16.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,66 +99,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: ALSA development <alsa-devel@alsa-project.org>, howie.huang@mediatek.com,
- Takashi Iwai <tiwai@suse.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- shane.chien@mediatek.com, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, eason.yen@mediatek.com,
- Matthias Brugger <matthias.bgg@gmail.com>, bicycle.tsai@mediatek.com,
- linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============8478474792349239729=="
+Cc: linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, Andy Gross <agross@kernel.org>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============8478474792349239729==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="V88s5gaDVPzZ0KCq"
-Content-Disposition: inline
 
+On 19/08/2020 19:48, Krzysztof Kozlowski wrote:
+> On Wed, Jul 29, 2020 at 09:53:59AM +0200, Matthias Brugger wrote:
+>>
+>>
+>> On 29/07/2020 09:44, Krzysztof Kozlowski wrote:
+>>> Fix W=1 compile warnings (invalid kerneldoc):
+>>>
+>>>       drivers/soc/mediatek/mtk-infracfg.c:34: warning: Function parameter or member 'infracfg' not described in 'mtk_infracfg_set_bus_protection'
+>>>       drivers/soc/mediatek/mtk-infracfg.c:34: warning: Excess function parameter 'regmap' description in 'mtk_infracfg_set_bus_protection'
+>>>
+>>> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+>>
+>> Queued for v5.9-next/soc
+> 
+> Hi,
+> 
+> It looks like this missed the merge window. Do you plan to keep it for
+> v5.10?
+> 
 
---V88s5gaDVPzZ0KCq
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Yes. I'm using the confusing way of v5.9-next branch, which means v5.10, as long 
+as Linus does not decide to switch to v6.x
 
-On Wed, Aug 19, 2020 at 11:42:27PM +0800, Tzung-Bi Shih wrote:
+Anyway it's queued for v5.10
 
-> But I found struct mfd_cell also contains member .of_compatible.  What
-> is the difference if we use compatible string (as is) for this device
-> instead of falling back to use device name to match?
-
-That's for binding the MFD subdevice to an OF node, you don't need to do
-that for a device like this - you can just use the of_node of the parent
-to get at the properties.
-
---V88s5gaDVPzZ0KCq
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl89gBUACgkQJNaLcl1U
-h9D/+gf/Ux+96dRrUQezVV+5UF/r90Gm5dpzj3qN3D3o9ZNOhCUt2+i9Js4F/YDL
-LL4dlrRI1Yg/CpFwunLwTiy3q2xYqUIFODQq/u2fkSDyejrXkt6R3NqxlaG5Jc0K
-EpOxKm07grdw9WOWls6UmbeJLTL8jHp2KWUqGL5t2KiVLPAaxXvCOzI5MugAp3W1
-B80S4jndViv3IEGEgKqvuS8PxVxmXuNe1gVH6arMvmDmK2NQWEIpit4dpWiuT7UY
-EbAJsnABzE8jasbBRLHt5F7VRdU004CyjtsoZswk9b+otbSwvW82CRUQ8oD7t83+
-VQcrX/wlkN3yNdkNF4CwrbBmV9d7sA==
-=eiwO
------END PGP SIGNATURE-----
-
---V88s5gaDVPzZ0KCq--
-
-
---===============8478474792349239729==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Regards,
+Matthias
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============8478474792349239729==--
-
