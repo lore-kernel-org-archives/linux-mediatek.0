@@ -2,110 +2,69 @@ Return-Path: <SRS0=3kTb=B5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 63920C433E1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 16:31:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C0A14C433E3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 16:32:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 324AD207BB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 16:31:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9166220885
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 16:32:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YSu084VG";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="fbrrgDoX"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 324AD207BB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YxDW0CsP";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="EVyoNLed"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9166220885
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7g7l4l26h3nncYeVEbbP0kih3nq0uhKAvxphU+np8mw=; b=YSu084VGNOx2/ESOpLvrGXR49
-	WjRGjDO+sVi5yXGe5KG0t5GeM0up85ZT+EHtgCfOPd2C0cMz3boV/MqITyV4tTdCSO7midL2cEGqX
-	NtgWPlqoeOgM+NRSUE1c0zSB3y2e9NhlvtlPoqouDTYHKFr7XN2uEu0QCGh+X5R/fGCmA8AJFeDI4
-	Cu6bNcX4uWxDrWd5JjKgFZ7sBR/1mi1UE1BZAkyjfIDH7vxiGcI1VGdvZgw0P3YZY0Ex+6YHotSpd
-	rrCAn5Ps1k+GB9nWjUGFCj91SVPI+u36RBHodBZUOkNj/RV8g2LpTzRef+T9EBk5CkerjSInzFWkx
-	wZ3P4weMw==;
+	 bh=6GB7mp1nzgKGf0CVjwfVuVqtpIU2fX4wEBJF92mpkps=; b=YxDW0CsP+2aW9l3ME9AZ/l7yR
+	PcpT8kuthC9nEMKbtve3yy3yyCFuzV6JP/w169wlyOAA+2Kl2+tnvK1aOE99Mt3+ATBgnOG8amC/+
+	ChRTKXXvLMKqF+frm2eXiwYH/Clnv3en/6NwXBzAZ4g637BiQEBVOx4L13n2pMZpNbVnG4WU/Enmd
+	FuEGCKXZgSjx5hAiMN/qF6naDtKdR9L6dcyR4O5IqRXfcV1ffPrkj12dJ2PTdGm0Yl3P3xwsFi1GG
+	7PvgvtdUU+hsYb9k9hMhxJTnAgY7/wuGF5giQPvy7kwLt7we4ZpCKSR2wgVQdEgKCTI8AMNDq4Kas
+	CG6uD+c3Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8QzX-0006p0-LZ; Wed, 19 Aug 2020 16:31:11 +0000
+	id 1k8R0L-0006u6-5l; Wed, 19 Aug 2020 16:32:01 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8QzP-0006nj-FN; Wed, 19 Aug 2020 16:31:08 +0000
-Received: from [192.168.1.28] (cpe-70-114-128-244.austin.res.rr.com
- [70.114.128.244])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ id 1k8R0I-0006tc-8z
+ for linux-mediatek@lists.infradead.org; Wed, 19 Aug 2020 16:31:59 +0000
+Received: from kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com (unknown
+ [163.114.132.1])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8A851207BB;
- Wed, 19 Aug 2020 16:31:01 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id B5C5B207BB;
+ Wed, 19 Aug 2020 16:31:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597854661;
- bh=p+GmceSL3hFyKC+D+cAPmwNsVXVQUA1FR3m52kgDseU=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=fbrrgDoXwxjvC+s81tECyntNe0eb7Br2UNrb/XQoM9pdzq1J979oJx89X7k6YwuIr
- IKUjreX/XwVDP51x9/uvr2EcqBnwDZqXX5RCOCuts4esJTYIawSDfBQ7v4hF4dKPKk
- cY0f/VGcs/535zuWgvFnKzb3VwuGb9CsLJ93wjVo=
-Subject: Re: [BUG] build error due to AGILEX_NAND_X_CLK
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-References: <1597807371.5429.28.camel@mhfsdcap03>
-From: Dinh Nguyen <dinguyen@kernel.org>
-Autocrypt: addr=dinguyen@kernel.org; prefer-encrypt=mutual; keydata=
- xsFNBFEnvWwBEAC44OQqJjuetSRuOpBMIk3HojL8dY1krl8T8GJjfgc/Gh97CfVbrqhV5yQ3
- Sk/MW9mxO9KNvQCbZtthfn62YHmroNwipjZ6wKOMfKdtJR4+8JW/ShIJYnrMfwN8Wki6O+5a
- yPNNCeENHleV0FLVXw3aACxOcjEzGJHYmg4UC+56rfoxPEhKF6aGBTV5aGKMtQy77ywuqt12
- c+hlRXHODmXdIeT2V4/u/AsFNAq6UFUEvHrVj+dMIyv2VhjRvkcESIGnG12ifPdU7v/+wom/
- smtfOAGojgTCqpwd0Ay2xFzgGnSCIFRHp0I/OJqhUcwAYEAdgHSBVwiyTQx2jP+eDu3Q0jI3
- K/x5qrhZ7lj8MmJPJWQOSYC4fYSse2oVO+2msoMTvMi3+Jy8k+QNH8LhB6agq7wTgF2jodwO
- yij5BRRIKttp4U62yUgfwbQtEUvatkaBQlG3qSerOzcdjSb4nhRPxasRqNbgkBfs7kqH02qU
- LOAXJf+y9Y1o6Nk9YCqb5EprDcKCqg2c8hUya8BYqo7y+0NkBU30mpzhaJXncbCMz3CQZYgV
- 1TR0qEzMv/QtoVuuPtWH9RCC83J5IYw1uFUG4RaoL7Z03fJhxGiXx3/r5Kr/hC9eMl2he6vH
- 8rrEpGGDm/mwZOEoG5D758WQHLGH4dTAATg0+ZzFHWBbSnNaSQARAQABzSFEaW5oIE5ndXll
- biA8ZGluZ3V5ZW5Aa2VybmVsLm9yZz7CwXgEEwECACIFAlbG5oQCGwMGCwkIBwMCBhUIAgkK
- CwQWAgMBAh4BAheAAAoJEBmUBAuBoyj0fIgQAICrZ2ceRWpkZv1UPM/6hBkWwOo3YkzSQwL+
- AH15hf9xx0D5mvzEtZ97ZoD0sAuB+aVIFwolet+nw49Q8HA3E/3j0DT7sIAqJpcPx3za+kKT
- twuQ4NkQTTi4q5WCpA5b6e2qzIynB50b3FA6bCjJinN06PxhdOixJGv1qDDmJ01fq2lA7/PL
- cny/1PIo6PVMWo9nf77L6iXVy8sK/d30pa1pjhMivfenIleIPYhWN1ZdRAkH39ReDxdqjQXN
- NHanNtsnoCPFsqeCLmuUwcG+XSTo/gEM6l2sdoMF4qSkD4DdrVf5rsOyN4KJAY9Uqytn4781
- n6l1NAQSRr0LPT5r6xdQ3YXIbwUfrBWh2nDPm0tihuHoH0CfyJMrFupSmjrKXF84F3cq0DzC
- yasTWUKyW/YURbWeGMpQH3ioDLvBn0H3AlVoSloaRzPudQ6mP4O8mY0DZQASGf6leM82V3t0
- Gw8MxY9tIiowY7Yl2bHqXCorPlcEYXjzBP32UOxIK7y7AQ1JQkcv6pZ0/6lX6hMshzi9Ydw0
- m8USfFRZb48gsp039gODbSMCQ2NfxBEyUPw1O9nertCMbIO/0bHKkP9aiHwg3BPwm3YL1UvM
- ngbze/8cyjg9pW3Eu1QAzMQHYkT1iiEjJ8fTssqDLjgJyp/I3YHYUuAf3i8SlcZTusIwSqnD
- zsFNBFEnvWwBEADZqma4LI+vMqJYe15fxnX8ANw+ZuDeYHy17VXqQ7dA7n8E827ndnoXoBKB
- 0n7smz1C0I9StarHQPYTUciMLsaUpedEfpYgqLa7eRLFPvk/cVXxmY8Pk+aO8zHafr8yrFB1
- cYHO3Ld8d/DvF2DuC3iqzmgXzaRQhvQZvJ513nveCa2zTPPCj5w4f/Qkq8OgCz9fOrf/CseM
- xcP3Jssyf8qTZ4CTt1L6McRZPA/oFNTTgS/KA22PMMP9i8E6dF0Nsj0MN0R7261161PqfA9h
- 5c+BBzKZ6IHvmfwY+Fb0AgbqegOV8H/wQYCltPJHeA5y1kc/rqplw5I5d8Q6B29p0xxXSfaP
- UQ/qmXUkNQPNhsMnlL3wRoCol60IADiEyDJHVZRIl6U2K54LyYE1vkf14JM670FsUH608Hmk
- 30FG8bxax9i+8Muda9ok/KR4Z/QPQukmHIN9jVP1r1C/aAEvjQ2PK9aqrlXCKKenQzZ8qbeC
- rOTXSuJgWmWnPWzDrMxyEyy+e84bm+3/uPhZjjrNiaTzHHSRnF2ffJigu9fDKAwSof6SwbeH
- eZcIM4a9Dy+Ue0REaAqFacktlfELeu1LVzMRvpIfPua8izTUmACTgz2kltTaeSxAXZwIziwY
- prPU3cfnAjqxFHO2TwEpaQOMf8SH9BSAaCXArjfurOF+Pi3lKwARAQABwsFfBBgBAgAJBQJR
- J71sAhsMAAoJEBmUBAuBoyj0MnIQAI+bcNsfTNltf5AbMJptDgzISZJrYCXuzOgv4+d1CubD
- 83s0k6VJgsiCIEpvELQJsr58xB6l+o3yTBZRo/LViNLk0jF4CmCdXWjTyaQAIceEdlaeeTGH
- d5GqAud9rv9q1ERHTcvmoEX6pwv3m66ANK/dHdBV97vXacl+BjQ71aRiAiAFySbJXnqj+hZQ
- K8TCI/6TOtWJ9aicgiKpmh/sGmdeJCwZ90nxISvkxDXLEmJ1prvbGc74FGNVNTW4mmuNqj/p
- oNr0iHan8hjPNXwoyLNCtj3I5tBmiHZcOiHDUufHDyKQcsKsKI8kqW3pJlDSACeNpKkrjrib
- 3KLQHSEhTQCt3ZUDf5xNPnFHOnBjQuGkumlmhkgD5RVguki39AP2BQYp/mdk1NCRQxz5PR1B
- 2w0QaTgPY24chY9PICcMw+VeEgHZJAhuARKglxiYj9szirPd2kv4CFu2w6a5HNMdVT+i5Hov
- cJEJNezizexE0dVclt9OS2U9Xwb3VOjs1ITMEYUf8T1j83iiCCFuXqH4U3Eji0nDEiEN5Ac0
- Jn/EGOBG2qGyKZ4uOec9j5ABF7J6hyO7H6LJaX5bLtp0Z7wUbyVaR4UIGdIOchNgNQk4stfm
- JiyuXyoFl/1ihREfvUG/e7+VAAoOBnMjitE5/qUERDoEkkuQkMcAHyEyd+XZMyXY
-Message-ID: <56d67cd1-0f08-e81d-8abe-b641d8d6bf0e@kernel.org>
-Date: Wed, 19 Aug 2020 11:30:59 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ s=default; t=1597854717;
+ bh=7UssN4aoqka0Tt/QHgPvZmzPeV4QpvTSg1+ALPNrWcA=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=EVyoNLedXCdfCwl20CFZYp6HjXdvxJHF+Rrh2tVroK6s6PDeYduXl2PlU6VLERA2D
+ A5YhpWqfxSrasIWuXwFHe3xxhZbm/BSWjuGfUd6/NAuVnQCDRBzikeOqDK+KT+411l
+ yQpve8uYiuQ5eYD0A7CHaz6Rb/Ug0BVEUaJ0maow=
+Date: Wed, 19 Aug 2020 09:31:55 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH 15/28] wireless: mediatek: mt7601u: phy: Fix misnaming
+ when documented function parameter 'dac'
+Message-ID: <20200819093155.14df0526@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <20200819072402.3085022-16-lee.jones@linaro.org>
+References: <20200819072402.3085022-1-lee.jones@linaro.org>
+ <20200819072402.3085022-16-lee.jones@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <1597807371.5429.28.camel@mhfsdcap03>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_123103_661135_6A89254F 
-X-CRM114-Status: GOOD (  12.37  )
+X-CRM114-CacheID: sfid-20200819_123158_397504_1BD18611 
+X-CRM114-Status: UNSURE (   8.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,26 +76,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: Felix Fietkau <nbd@openwrt.org>, Jakub Kicinski <kubakici@wp.pl>,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, davem@davemloft.net,
+ kvalo@codeaurora.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-This is an old error and has been fixed in v5.9-rc1.
-
-Dinh
-
-On 8/18/20 10:22 PM, Chunfeng Yun wrote:
-> tax error
-> FATAL ERROR: Unable to parse input tree
+On Wed, 19 Aug 2020 08:23:49 +0100 Lee Jones wrote:
+> Fixes the following W=1 kernel build warning(s):
 > 
-> it's introduced by patch:
-> 
-> commit d4ae4dd346cd49302d157b129ead2f60d3a82534
+>  drivers/net/wireless/mediatek/mt7601u/phy.c:1216: warning: Function parameter or member 'dac' not described in 'mt7601u_set_tx_dac'
+>  drivers/net/wireless/mediatek/mt7601u/phy.c:1216: warning: Excess function parameter 'path' description in 'mt7601u_set_tx_dac'
+
+Acked-by: Jakub Kicinski <kubakici@wp.pl>
 
 _______________________________________________
 Linux-mediatek mailing list
