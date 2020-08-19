@@ -2,54 +2,110 @@ Return-Path: <SRS0=3kTb=B5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AEE70C433E1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 16:20:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 63920C433E1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 16:31:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7D0D82078D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 16:20:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 324AD207BB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 16:31:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FWFqlMOs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7D0D82078D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YSu084VG";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="fbrrgDoX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 324AD207BB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Qd71bfvGR72LWBuqmkQQLhv2e30faEnWKByMJLBVzio=; b=FWFqlMOsbR0drjOLa2oFk9nBp3
-	AHydhfbUP3VD3YGft5MFj82hf16MTUHQqXIlDa/bQ+JW5scllrSUd9a7wyn8O0/dF01atE4xh8exQ
-	rZxpJ/fv5puDVL+j0as7fvGeyQ7NUcDyrsOtsM8NqkaeymQ2bzzL/gmwMtA/D02J2Q4Tqi80BLbOj
-	dTbQ2IpZ4Ltnw+Rmtdf9TSP+HPr9gLVG+eDE1gfiFc6CuQE7/f0kSRohXH4Xm03i1MSX7HRIBSpgp
-	8gI2ARDomsepk+l8EX6SVolrb2m4BDvHPiHSteXu1MqZtk7HcnKqQUUVZLVLiMRcaYEoCY6tWdAiF
-	dCMtNE3g==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=7g7l4l26h3nncYeVEbbP0kih3nq0uhKAvxphU+np8mw=; b=YSu084VGNOx2/ESOpLvrGXR49
+	WjRGjDO+sVi5yXGe5KG0t5GeM0up85ZT+EHtgCfOPd2C0cMz3boV/MqITyV4tTdCSO7midL2cEGqX
+	NtgWPlqoeOgM+NRSUE1c0zSB3y2e9NhlvtlPoqouDTYHKFr7XN2uEu0QCGh+X5R/fGCmA8AJFeDI4
+	Cu6bNcX4uWxDrWd5JjKgFZ7sBR/1mi1UE1BZAkyjfIDH7vxiGcI1VGdvZgw0P3YZY0Ex+6YHotSpd
+	rrCAn5Ps1k+GB9nWjUGFCj91SVPI+u36RBHodBZUOkNj/RV8g2LpTzRef+T9EBk5CkerjSInzFWkx
+	wZ3P4weMw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8Qog-0005Rx-Et; Wed, 19 Aug 2020 16:19:58 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1k8QzX-0006p0-LZ; Wed, 19 Aug 2020 16:31:11 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8Qob-0005QI-Mu; Wed, 19 Aug 2020 16:19:54 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id D7A56299CAD
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH] pinctrl: mediatek: Free eint data on failure
-Date: Wed, 19 Aug 2020 18:19:45 +0200
-Message-Id: <20200819161945.1155298-1-enric.balletbo@collabora.com>
-X-Mailer: git-send-email 2.28.0
+ id 1k8QzP-0006nj-FN; Wed, 19 Aug 2020 16:31:08 +0000
+Received: from [192.168.1.28] (cpe-70-114-128-244.austin.res.rr.com
+ [70.114.128.244])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8A851207BB;
+ Wed, 19 Aug 2020 16:31:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1597854661;
+ bh=p+GmceSL3hFyKC+D+cAPmwNsVXVQUA1FR3m52kgDseU=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=fbrrgDoXwxjvC+s81tECyntNe0eb7Br2UNrb/XQoM9pdzq1J979oJx89X7k6YwuIr
+ IKUjreX/XwVDP51x9/uvr2EcqBnwDZqXX5RCOCuts4esJTYIawSDfBQ7v4hF4dKPKk
+ cY0f/VGcs/535zuWgvFnKzb3VwuGb9CsLJ93wjVo=
+Subject: Re: [BUG] build error due to AGILEX_NAND_X_CLK
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+References: <1597807371.5429.28.camel@mhfsdcap03>
+From: Dinh Nguyen <dinguyen@kernel.org>
+Autocrypt: addr=dinguyen@kernel.org; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <56d67cd1-0f08-e81d-8abe-b641d8d6bf0e@kernel.org>
+Date: Wed, 19 Aug 2020 11:30:59 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+In-Reply-To: <1597807371.5429.28.camel@mhfsdcap03>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_121953_936930_C973A727 
-X-CRM114-Status: GOOD (  17.42  )
+X-CRM114-CacheID: sfid-20200819_123103_661135_6A89254F 
+X-CRM114-Status: GOOD (  12.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,159 +117,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: drinkcat@chromium.org, Linus Walleij <linus.walleij@linaro.org>,
- Sean Wang <sean.wang@kernel.org>, linux-gpio@vger.kernel.org,
- linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
- matthias.bgg@gmail.com, Collabora Kernel ML <kernel@collabora.com>,
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The pinctrl driver can work without the EINT resource, but, if it is
-expected to have this resource but the mtk_build_eint() function fails
-after allocating their data (because can't get the resource or can't map
-the irq), the data is not freed and you end with a NULL pointer
-dereference. Fix this by freeing the data if mtk_build_eint() fails, so
-pinctrl still works and doesn't hang.
+Hi,
 
-This is noticeable after commit f97dbf48ca43 ("irqchip/mtk-sysirq: Convert
-to a platform driver") on MT8183 because, due this commit, the pinctrl driver
-fails to map the irq and spots the following bug:
+This is an old error and has been fixed in v5.9-rc1.
 
-[    1.947597] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000004
-[    1.956404] Mem abort info:
-[    1.959203]   ESR = 0x96000004
-[    1.962259]   EC = 0x25: DABT (current EL), IL = 32 bits
-[    1.967565]   SET = 0, FnV = 0
-[    1.970613]   EA = 0, S1PTW = 0
-[    1.973747] Data abort info:
-[    1.976619]   ISV = 0, ISS = 0x00000004
-[    1.980447]   CM = 0, WnR = 0
-[    1.983410] [0000000000000004] user address but active_mm is swapper
-[    1.989759] Internal error: Oops: 96000004 [#1] PREEMPT SMP
-[    1.995322] Modules linked in:
-[    1.998371] CPU: 7 PID: 1 Comm: swapper/0 Not tainted 5.9.0-rc1+ #44
-[    2.004715] Hardware name: MediaTek krane sku176 board (DT)
-[    2.010280] pstate: 60000005 (nZCv daif -PAN -UAO BTYPE=--)
-[    2.015850] pc : mtk_eint_set_debounce+0x48/0x1b8
-[    2.020546] lr : mtk_eint_set_debounce+0x34/0x1b8
-[    2.025239] sp : ffff80001008baa0
-[    2.028544] x29: ffff80001008baa0 x28: ffff0000ff7ff790
-[    2.033847] x27: ffff0000f9ec34b0 x26: ffff0000f9ec3480
-[    2.039150] x25: ffff0000fa576410 x24: ffff0000fa502800
-[    2.044453] x23: 0000000000001388 x22: ffff0000fa635f80
-[    2.049755] x21: 0000000000000008 x20: 0000000000000000
-[    2.055058] x19: 0000000000000071 x18: 0000000000000001
-[    2.060360] x17: 0000000000000000 x16: 0000000000000000
-[    2.065662] x15: ffff0000facc8470 x14: ffffffffffffffff
-[    2.070965] x13: 0000000000000001 x12: 00000000000000c0
-[    2.076267] x11: 0000000000000040 x10: 0000000000000070
-[    2.081569] x9 : ffffaec0063d24d8 x8 : ffff0000fa800270
-[    2.086872] x7 : 0000000000000000 x6 : 0000000000000011
-[    2.092174] x5 : ffff0000fa800248 x4 : ffff0000fa800270
-[    2.097476] x3 : ffff8000100c5000 x2 : 0000000000000000
-[    2.102778] x1 : 0000000000000000 x0 : 0000000000000000
-[    2.108081] Call trace:
-[    2.110520]  mtk_eint_set_debounce+0x48/0x1b8
-[    2.114870]  mtk_gpio_set_config+0x5c/0x78
-[    2.118958]  gpiod_set_config+0x5c/0x78
-[    2.122786]  gpiod_set_debounce+0x18/0x28
-[    2.126789]  gpio_keys_probe+0x50c/0x910
-[    2.130705]  platform_drv_probe+0x54/0xa8
-[    2.134705]  really_probe+0xe4/0x3b0
-[    2.138271]  driver_probe_device+0x58/0xb8
-[    2.142358]  device_driver_attach+0x74/0x80
-[    2.146532]  __driver_attach+0x58/0xe0
-[    2.150274]  bus_for_each_dev+0x70/0xc0
-[    2.154100]  driver_attach+0x24/0x30
-[    2.157666]  bus_add_driver+0x14c/0x1f0
-[    2.161493]  driver_register+0x64/0x120
-[    2.165319]  __platform_driver_register+0x48/0x58
-[    2.170017]  gpio_keys_init+0x1c/0x28
-[    2.173672]  do_one_initcall+0x54/0x1b4
-[    2.177499]  kernel_init_freeable+0x1d0/0x238
-[    2.181848]  kernel_init+0x14/0x118
-[    2.185328]  ret_from_fork+0x10/0x34
-[    2.188899] Code: a9438ac1 12001266 f94006c3 121e766a (b9400421)
-[    2.194991] ---[ end trace 168cf7b3324b6570 ]---
-[    2.199611] Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b
-[    2.207260] SMP: stopping secondary CPUs
-[    2.211294] Kernel Offset: 0x2ebff4800000 from 0xffff800010000000
-[    2.217377] PHYS_OFFSET: 0xffffb50500000000
-[    2.221551] CPU features: 0x0240002,2188200c
-[    2.225811] Memory Limit: none
-[    2.228860] ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b ]---
+Dinh
 
-Fixes: 89132dd8ffd2 ("pinctrl: mediatek: extend eint build to pinctrl-mtk-common-v2.c")
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
-
- .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 27 ++++++++++++++-----
- 1 file changed, 20 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-index 2f3dfb56c3fa..4b532e6b9038 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-@@ -355,6 +355,7 @@ int mtk_build_eint(struct mtk_pinctrl *hw, struct platform_device *pdev)
- {
- 	struct device_node *np = pdev->dev.of_node;
- 	struct resource *res;
-+	int ret;
- 
- 	if (!IS_ENABLED(CONFIG_EINT_MTK))
- 		return 0;
-@@ -369,19 +370,26 @@ int mtk_build_eint(struct mtk_pinctrl *hw, struct platform_device *pdev)
- 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "eint");
- 	if (!res) {
- 		dev_err(&pdev->dev, "Unable to get eint resource\n");
--		return -ENODEV;
-+		ret = -ENODEV;
-+		goto err_free_eint;
- 	}
- 
- 	hw->eint->base = devm_ioremap_resource(&pdev->dev, res);
--	if (IS_ERR(hw->eint->base))
--		return PTR_ERR(hw->eint->base);
-+	if (IS_ERR(hw->eint->base)) {
-+		ret = PTR_ERR(hw->eint->base);
-+		goto err_free_eint;
-+	}
- 
- 	hw->eint->irq = irq_of_parse_and_map(np, 0);
--	if (!hw->eint->irq)
--		return -EINVAL;
-+	if (!hw->eint->irq) {
-+		ret = -EINVAL;
-+		goto err_free_eint;
-+	}
- 
--	if (!hw->soc->eint_hw)
--		return -ENODEV;
-+	if (!hw->soc->eint_hw) {
-+		ret = -ENODEV;
-+		goto err_free_eint;
-+	}
- 
- 	hw->eint->dev = &pdev->dev;
- 	hw->eint->hw = hw->soc->eint_hw;
-@@ -389,6 +397,11 @@ int mtk_build_eint(struct mtk_pinctrl *hw, struct platform_device *pdev)
- 	hw->eint->gpio_xlate = &mtk_eint_xt;
- 
- 	return mtk_eint_do_init(hw->eint);
-+
-+err_free_eint:
-+	devm_kfree(hw->dev, hw->eint);
-+	hw->eint = NULL;
-+	return ret;
- }
- EXPORT_SYMBOL_GPL(mtk_build_eint);
- 
--- 
-2.28.0
-
+On 8/18/20 10:22 PM, Chunfeng Yun wrote:
+> tax error
+> FATAL ERROR: Unable to parse input tree
+> 
+> it's introduced by patch:
+> 
+> commit d4ae4dd346cd49302d157b129ead2f60d3a82534
 
 _______________________________________________
 Linux-mediatek mailing list
