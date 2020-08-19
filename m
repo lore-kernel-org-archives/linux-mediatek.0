@@ -2,83 +2,107 @@ Return-Path: <SRS0=3kTb=B5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CDBE9C433E1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 18:52:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 244E6C433E4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 19:12:15 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7D53420B1F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 18:52:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EE0FA207BB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 19:12:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yBFdPUQ+";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="QUGdMAQC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7D53420B1F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ozYBQfix";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="PZ1jHbRA";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="MYGTZ6o7"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EE0FA207BB
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zIMxZAQan2h+GcPveE03vtlEm9e32bB+f7w/4xxrAlE=; b=yBFdPUQ+Yei8E3pJ5wwkPS4q6
-	ZpEHJ4CnBdWIjd2QQw+qCoQLwpJRX3VwL2DLYlo67I7K0e8eIh/BxKrOecW8GI5WCcjSmiPMpKMcn
-	PIWvqHz3CO6FBn0iFOFi+uCj55t1zsvAwQFJIPgiL92DFm3m1m24heSslNsDrcS5XKAWbAhW6J4Vr
-	Oxp8VCTo5wP88nqGmXrBP7c8NUY4VTgbEshDvZdLqdqZJylRPWBSHycGuarti90f8mfz6w29qlu9e
-	dLrQuxbo8etbSFTRLYQ2aCB+dqfT9MPSM7O41CKBQOBy7jYMktGFu2ZJ/W1RWdc6ry5vB5mYIWoon
-	s5oBinZkg==;
+	Content-Type:Cc:Reply-To:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:From:To:Subject:MIME-Version:References:
+	In-Reply-To:Date:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=d5O5RSy0p7h74VG2zko5S6uP2UHL14Wfjd6q4KhnYg4=; b=ozYBQfix8+vZI9DEi1Cck/50Yz
+	y8SPrM4h0joKcBjOid1KnvXYjm5rWBXy7atMsEtWMMXnipfJpl4jwsOpBkkpPGRTcM6GTcb4EZ1Jq
+	z8U9mPqu97KanMcKxVbHxiQnrramdiw1gybvbxuPavO4erknVThMWKnKgpuT225ypaDdNDbAE+CgE
+	nH5ubk9vsYsFM8SkmVQ2eackypcLkEtwpWRmWDKhoS/1IsN3cgEnZZ3Fn9svKSgPlKBbzO9/YMfDn
+	U32pHUwD350EzUmTNtnGptNDLqiaeJ/m/zOOXI60zCP+PsT6bQk5hOxQdidW9JL16lLcqffquoT+i
+	wEtDJe4A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8TC5-000665-MB; Wed, 19 Aug 2020 18:52:17 +0000
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+	id 1k8TVE-0003YC-0L; Wed, 19 Aug 2020 19:12:04 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8TC1-00064w-W0
- for linux-mediatek@lists.infradead.org; Wed, 19 Aug 2020 18:52:14 +0000
-Received: by mail-pl1-x643.google.com with SMTP id k13so11244764plk.13
- for <linux-mediatek@lists.infradead.org>; Wed, 19 Aug 2020 11:52:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=CyYpI1eTNYdHfR0G2Gw+QKYgydAMFbim5qzbpHh6tkk=;
- b=QUGdMAQCv2M76+xBa+GQ4k3SZJrORZYHLCCkIjlZQ6h6BuPiFrBf8ntRTn7pJ7ESLX
- NYfyLE4eWMQQbrkEaO4gdrdZGhVtdFz7Qs/ib6J7P26b6WRVMcUEIfHOy43P5MugHuuX
- P+PkU2F1tqZii+G/WNiLWnEjqIDyNG4b5SBNMI1xVb80e0mHHRsHwaFdzg0yhWEx8knh
- 32dUu1hlBEd8aoRPrLgWyax7nhv+hIwUUMjngchHb4DqvAwr4qVedog+2wzGltISDkgS
- 44Dunb7gYpI8+bkYDHZXw3XlxbdfaJ53i6lFlezKGwAXnTA5LPs0gTrfkaOBsg4+g3su
- aLpg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=CyYpI1eTNYdHfR0G2Gw+QKYgydAMFbim5qzbpHh6tkk=;
- b=r2/SLL1IF+uHE5oLD/UK3BxlJs6pgTFBOc/b6p6WmLgVtRLF1eh616VOjQ2xa3MwlL
- YzCjL0wbnKgaKVTBpSuR4wVGix/lykzyGRCJUn+G2iaVCTRQLab3ffX9h38WUycqIAK+
- Y4GZkHFziiW0g0qUx1d0IK1mJ7DQvAjhjNJAIHRWug1cfQoO7A8avjgvI1jimF19JkVn
- NkK4R3jKATcf9rYZDG+ShMcfBJfC6XKzOuPx+1IZRku8p96TejG59c/K8FpR2YA9UjtB
- HsamG03In4zmFlpzTyKwkdKxD/7Rn5f2m0NDmanFEMwfq5A8RYcLKVcEYYJJjXl6ybae
- lPkg==
-X-Gm-Message-State: AOAM530S2nyAu6C50bRdTLZeE3UO+MNrH8lQQsb04cqCmALfwcwPUkvw
- m/NOPCP2apM0xyqVB5cmdvDCXCFS9MCsjowPRvanbQ==
-X-Google-Smtp-Source: ABdhPJxKaH/KH85qKcrDnnxPhxKHsYCEW4OLxljbbjCOZt7Mzu97zAqCPy4Kf8PFve9OS/InPqY8ntjOIBiOaMnYRvQ=
-X-Received: by 2002:a17:902:8543:: with SMTP id
- d3mr19798331plo.244.1597863130537; 
- Wed, 19 Aug 2020 11:52:10 -0700 (PDT)
+ id 1k8TVA-0003XN-L4; Wed, 19 Aug 2020 19:12:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Message-ID:From:CC:To:Reply-to:Subject:
+ Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+ Date:Sender:Content-ID:Content-Description;
+ bh=ovNaBxbYuzERcRwnFXmf/W5lE2dfM3JaLykQcJudcuE=; b=PZ1jHbRANlvODEQG30JotFTGbh
+ ZoWPnOZNyQTtSmcSx3PxbJfS7U0U9L1RA1OkfeG7iLay9stceVxKQy99UAESslwPymQxnGzXPLq2s
+ +vm4BXUVP4LZGn4VsUmvh3HDXA2CNYFEWQjkPHFnZm6GCjIE8RD+GfBjMECqXHarmv2IDlSzYXQev
+ gf8unzLe9a1ANduI3FEEncDzyahkN+k9kzIh2tQEn4gPBXipCOjgvBDbSyfaE3T1gkU/FPx13feb2
+ 5c0P38stGSh3WTJBEKYE6USijbZ3YhIy4P/V27sxbGMXP4viethiQVpySzHWR3wEl4tG/cU8JeOUQ
+ aOkXorFA==;
+Received: from mout.gmx.net ([212.227.15.19])
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1k8TV6-0000HA-Qf; Wed, 19 Aug 2020 19:11:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1597864304;
+ bh=ovNaBxbYuzERcRwnFXmf/W5lE2dfM3JaLykQcJudcuE=;
+ h=X-UI-Sender-Class:Date:In-Reply-To:References:Subject:Reply-to:To:
+ CC:From;
+ b=MYGTZ6o7CwB5moYNS/xpsSacNZxfKQUraJUskz7XOZgjLeLcYy82vjfX4MlxHgkbt
+ 3Jjqtsh0YNqc4cr1ELXbtQm2J42eeETfcpb23j9y9C/ndgVPNCuxLfeLUQLMWKtSQI
+ r+SO28JuMjHja0aPu2uVKD5pyEiPJ8/r9D5NKqiE=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from frank-s9 ([185.76.97.101]) by mail.gmx.com (mrgmx004
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MmULr-1kYhLD0Egz-00iQta; Wed, 19
+ Aug 2020 21:05:02 +0200
+Date: Wed, 19 Aug 2020 21:04:55 +0200
+User-Agent: K-9 Mail for Android
+In-Reply-To: <f68cf4c2-6c79-fe46-b7b4-bcc49e0b6b69@gmail.com>
+References: <20200819081752.4805-1-linux@fw-web.de>
+ <20200819081752.4805-4-linux@fw-web.de>
+ <f68cf4c2-6c79-fe46-b7b4-bcc49e0b6b69@gmail.com>
 MIME-Version: 1.0
-References: <20200819161907.1155110-1-enric.balletbo@collabora.com>
- <C9E59107-CE83-4554-9447-5DE5BEE09A3B@fw-web.de>
-In-Reply-To: <C9E59107-CE83-4554-9447-5DE5BEE09A3B@fw-web.de>
-From: Saravana Kannan <saravanak@google.com>
-Date: Wed, 19 Aug 2020 11:51:34 -0700
-Message-ID: <CAGETcx9_A-E5b-JxT2G142mGxqoo8xqFNEgT+CNWt=oOv0Z5+w@mail.gmail.com>
-Subject: Re: [PATCH] Revert "irqchip/mtk-sysirq: Convert to a platform driver"
-To: Frank Wunderlich <wichtig@fw-web.de>
+Subject: Re: [PATCH v5 3/7] drm/mediatek: disable tmds on mt2701
+To: linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <linux@fw-web.de>
+From: Frank Wunderlich <frank-w@public-files.de>
+Message-ID: <0E911554-482A-47C2-B2C6-136486C5ACB5@public-files.de>
+X-Provags-ID: V03:K1:I1SQA8RLE1ho3CZGRQd83x4wiGBSFj41+sUykOdSORmkkaF6OAt
+ LPaLS/DxLwr1BK9smzW08UYet6YtujrlLy/ipTjGyg26bR8OGsQswRLSDPc+hIp/4vhJM9/
+ eP7n24GYoCV/19w6QRWwlGTAp2W2A/7MpXBFp7OBhIOqWgJw+YlUSuj5RB+fC7Icw5fuBLt
+ YSsIWMLrNHtWZkdwk1Tcg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:GHpggIKUubA=:ToY9tWIt890OIj5iUjEM7Z
+ g4T3cq0TgEsm4G/S3HUfPmH25Sa8RvgkOltswQLSNOFlu1tD2YO9vM8vTjkmJldvvkr5lz7HE
+ tnwKsY+BVhFHPm+roxDHfrvtfCaGGGov5HZ6o11I4/KCvjPPPWSOWP539AsAmOvweLN9gSt7b
+ cNThz0//3USZXRlfKnNhEb+popGRmJToGtbFpr0iltvjU5j8uMLeWphKtzRHqqfbOdW2V21WT
+ eIhW9eINAJ7IJmncPgTxW5ge7VHXb7xKeEalJ/bR+rJqiTt8bdZobbZyYEpqOEV9Sra0+hbjp
+ KmYRD5oBtHnpzVRLZrtUq8TJ2DAFbj+3Vjzs1F2f8Vg/786JZQsuqx78xVXIeNrywlDzSq/zZ
+ ggt+kPYBqYNE0m+9z4eWl2cr1HJbbIBTnMn/aypDllZBljVOQEdwy5kOyK9KIonwDnTQce1fA
+ QTFLPBp/MBjcxoTSNFrOirfEzEifbUs+OPMTJ575a8PTM+jP3EhxhcB5QHHMg3/PG7PTht6zo
+ NAkKWq4gdarLUGhvKd58aBnBrSgkFQvlbzOXv/xN12+b9/0CHuoLDYcjwMMSjjXHbkclzSX4R
+ oRnxh+qsA7oLAyOOLbfmnZdKjCYs8R2m7DnYt9dyeYGVDXZ3iPX6ffspnAaTnp6l7B2Tib6A8
+ Hwg08m3Ky0UItf3RVFpniVrXyzcRt4bkf5SnrX6PgaXPn9z6jRxI5RrXbazT/xYCWTvWiPq4P
+ qfCW7FuBBc964S0EQMiqxXOCQtGmObHju13m2smbHGhCdjlFxMsf+2ucHM9qYl/HOLAguo2kF
+ E7ukdq5wAqwiBNWZxH6zPA4Te9SeXfp/daed3vUW5X/aCHOgfpnDfMkPx8MPiVLiWOLvQ7sqY
+ eUQqCihICB3vTQsbRRKOOAbt0wcIrVwYjELTIBct0ABWol8MtlhjgSPaCnJ/dM55ZcvVtRQi6
+ TlPa5XWXWfXnYqViM9sJ0+UuzBFOmqdM1pLRsg4BwzvUD+GuAEu8R6YbJExWB8n+q7Ww7oUIH
+ Pw1jl+bTWcCrgl0us/eoPSOGdRvn6+wosvpOl/8H6QCHmQ31zuL0mxMZHBXuO/Znwb3FK2XRd
+ jM4MRkMGGgLjDUzI3BATRShutaaUgkkVFhfep8iqEdUnmIkW4Nxfk7FHHgjrs6ZwNpS4HzDDa
+ JeRQff8RVad6v/UOrpN60DNIPsWLeGs8SVdNtf5RdYTVSl2ffufbvOHkAQQxL3RxrdAeZ7mAU
+ EACvwkZR8oejrggIkTluLuXQdPcQloo6KJho1lw==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_145214_064126_0E41CBEF 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20200819_201157_170163_6ED671F8 
+X-CRM114-Status: UNSURE (   6.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,36 +114,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nicolas Boichat <drinkcat@chromium.org>,
- Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <maz@kernel.org>,
- Hanks Chen <hanks.chen@mediatek.com>, LKML <linux-kernel@vger.kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Frank Wunderlich <linux@fw-web.de>, Collabora Kernel ML <kernel@collabora.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Reply-To: frank-w@public-files.de
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, chunhui dai <chunhui.dai@mediatek.com>,
+ David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 19, 2020 at 9:52 AM Frank Wunderlich <wichtig@fw-web.de> wrote:
->
-> hi,
->
-> does the fix you've linked to my revert [1] not work in your case?
->
-> [1] https://patchwork.kernel.org/patch/11718481/
 
-Thanks for pointing it out Frank. Also, might want to avoid top
-posting in the future.
 
-Enric, Can you please try that other fix and see if that solves your issue?
+Am 19. August 2020 19:12:29 MESZ schrieb Matthias Brugger <matthias.bgg@gmail.com>:
 
-Thanks,
-Saravana
+>Isn't that worth a Fixes tag?
+
+This could be
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0fc721b2968e3cadec520c60d2fc63498d865055 (add support for mt2701/mt7623).
+
+It uses existing framework which calls mtk_hdmi_phy_enable_tmds by default in mtk_hdmi_phy_power_on.
+
+Another way to fix it maybe not enabling it (use the flag in mtk_hdmi_phy_power_on) there instead of disabling after enabling it.
+
+Maybe this is less hacky than current way (as ck hu pointed in v2).
+regards Frank
 
 _______________________________________________
 Linux-mediatek mailing list
