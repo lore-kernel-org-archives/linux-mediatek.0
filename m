@@ -4,19 +4,19 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3B0DBC433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 15:58:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 00C85C433E3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 16:00:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 077192078D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 15:58:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C82DE2078D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 16:00:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mG+GOFxz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 077192078D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RbMy6lRk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C82DE2078D
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=infradead.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,34 +25,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qyqAWLIVAVE1UA3sEDAXbPyA/vf7Z/+hv1w2x/+LF4M=; b=mG+GOFxzHGICQPJPb/ixlVwcA
-	ob41MCFC3yAlHRDBaDY+eGQ/M8gGsiU1wg7Y/DwvJRRvEKfwnSOqBtqVjr6SYrC9ObMyA7PMkmZ/h
-	LB4BwdTf26J2hQCVAfVc0ejhYCJc1bcVTk0sAK/mVl+JhVnEJMo1I3Rj63fbd0q0aEEVupO1x4QvV
-	JKbd4RROPpjaaWgeHw6glgq5SQCYmdykmjBjR0vtfTKs0ZUWau267YNXXjkaLSQTr/tx8w0Ni3qxw
-	je7A3iOm3JHpAYnNRLOHn28+F5FSTBzwlSaoXY0sD20FksdRoBdpeSWimUwlRkCGLx79mJsW1tuHD
-	l2WgTxybw==;
+	 bh=GAxrJXVp3MttCfSnhlRVRc6U3LZY57KcJr2NWDhcVPw=; b=RbMy6lRklKOJ9y2FrL/FMM115
+	mKcylB1ZkJ2ZmDcfjspYxAqOfGse4arXLfY3nGfDcxqSt9Ovr3mYWTCGBV6nWKjkRr8yxuAy13ZVA
+	d3WkrKt49fkjiF8K1c+u/OaWolNT+5kELCA5+vLMnJt6tlLFko9U967YG3A6Acdqe7y+NksAjvInO
+	50qAovO+E6xGTSCihpnuXspv2vKNsZgxZ4HJYHGHWfso8EATM4r4FTuHfCzbYLL5xnNuaneMhcrm7
+	PlMZsGk1CzL3UAocdPUdwSVk0HrpvUDWTysqBg7G1l4++qhXNLhGo+ExzZvRwqDNWmvwMz61rg7hh
+	clUAP7lUg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8QUC-0001Xw-JR; Wed, 19 Aug 2020 15:58:48 +0000
+	id 1k8QVQ-0001fZ-LK; Wed, 19 Aug 2020 16:00:04 +0000
 Received: from [2601:1c0:6280:3f0::19c2]
  by merlin.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8QU9-0001XB-6B; Wed, 19 Aug 2020 15:58:45 +0000
-Subject: Re: [PATCH v4 2/4] drm/mediatek: Separate mtk_hdmi_phy to an
- independent module
+ id 1k8QVO-0001e6-04; Wed, 19 Aug 2020 16:00:02 +0000
+Subject: Re: [PATCH v4 3/4] phy: mediatek: Move mtk_hdmi_phy driver into
+ drivers/phy/mediatek folder
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
  Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
  Chunfeng Yun <chunfeng.yun@mediatek.com>,
  Kishon Vijay Abraham I <kishon@ti.com>
 References: <20200819154421.7013-1-chunkuang.hu@kernel.org>
- <20200819154421.7013-3-chunkuang.hu@kernel.org>
+ <20200819154421.7013-4-chunkuang.hu@kernel.org>
 From: Randy Dunlap <rdunlap@infradead.org>
-Message-ID: <eec33300-f921-03d1-5bcf-788e4e2ce342@infradead.org>
-Date: Wed, 19 Aug 2020 08:58:39 -0700
+Message-ID: <919b4b36-8deb-dfbe-81fe-c12f8da65dac@infradead.org>
+Date: Wed, 19 Aug 2020 08:59:56 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200819154421.7013-3-chunkuang.hu@kernel.org>
+In-Reply-To: <20200819154421.7013-4-chunkuang.hu@kernel.org>
 Content-Language: en-US
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -73,18 +73,14 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 8/19/20 8:44 AM, Chun-Kuang Hu wrote:
-> diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
-> index aa74aac3cbcc..ca3cd871a350 100644
-> --- a/drivers/gpu/drm/mediatek/Kconfig
-> +++ b/drivers/gpu/drm/mediatek/Kconfig
-> @@ -24,6 +24,13 @@ config DRM_MEDIATEK_HDMI
->  	tristate "DRM HDMI Support for Mediatek SoCs"
->  	depends on DRM_MEDIATEK
->  	select SND_SOC_HDMI_CODEC if SND_SOC
-> -	select GENERIC_PHY
-> +	select PHY_MTK_HDMI
->  	help
->  	  DRM/KMS HDMI driver for Mediatek SoCs
+> diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
+> index dee757c957f2..10f0ec2d5b54 100644
+> --- a/drivers/phy/mediatek/Kconfig
+> +++ b/drivers/phy/mediatek/Kconfig
+> @@ -35,3 +35,10 @@ config PHY_MTK_XSPHY
+>  	  Enable this to support the SuperSpeedPlus XS-PHY transceiver for
+>  	  USB3.1 GEN2 controllers on MediaTek chips. The driver supports
+>  	  multiple USB2.0, USB3.1 GEN2 ports.
 > +
 > +config PHY_MTK_HDMI
 > +    tristate "MediaTek HDMI-PHY Driver"
@@ -93,15 +89,9 @@ On 8/19/20 8:44 AM, Chun-Kuang Hu wrote:
 > +    help
 > +          Enable this to support HDMI-PHY
 
-Please fix all of these newly added lines.
+Fix indentation above.
 
-from Documentation/process/coding-style.rst:
-
-Lines under a ``config`` definition
-are indented with one tab, while help text is indented an additional two
-spaces.
-
-
+thanks.
 -- 
 ~Randy
 
