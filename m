@@ -2,76 +2,58 @@ Return-Path: <SRS0=3kTb=B5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D7DE4C433E1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 14:56:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 72AB5C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 15:00:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 96B812083B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 14:56:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 381AF206FA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 15:00:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zRofyYtE";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="CuUdyapr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 96B812083B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bUkV/yYc"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 381AF206FA
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rowland.harvard.edu
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=HROZMo3oGJny7TkVWHZ6wxJWtVr86BmCgiaoU3xEvX4=; b=zRofyYtEyE0Y7+0cy5FSJK0xz
-	w3UBUKcYZohQqrnRx0mGJWK7dtBp+4K5/ttH5GaBW2uCLY1vNv9quLurln3CnhAHxQv8//+U1pwqS
-	PMx/2zNpr4qCmChqVWh/lb0QJ3DYzNQRdrIHM8jUDqfw0WwEyOBd1K7d29dYFY1REoG/hUgW8cUX8
-	dxWYpbEycpQOfLbtvIBgXLQPJtOWW7G+jxDj+wHVmyx+PmK0o9eGfjgxaHc6wfArxj4kGpI/ZQMh2
-	IBOyEzEChnXJsbYKTfb6ML2qs7+hh6H72FGWfGX4xRT9EuffnlHZ2a2B5IBpRGQrMf4kwx2xNRunf
-	z4nH7tmCA==;
+	 bh=0tU0HKBsZYGk3V3NuK5rRz3EDB2tpZt/slbwyCwPjQw=; b=bUkV/yYcKJA3n503gAV2G1K7H
+	6aMPrPZJzs13vVhobv6gTJBDPPNiImzRCMMvMXRzMziI6KJDmv18fA3S8xMRnmwjA4Jm86k84AHF3
+	7EKbhSN7JtBG3pa0eet9/EFFPtmlIjlKQ7euXgFLSteIfdgm+tosO70OgR2SfPUnFO564Q1WwaXoz
+	/FeL/p2xVOsvbr6sGyn3qKDSQdAxBdEI6+3FSiA+Uuzuld5yniyPk8PeG7mKP0ecKnIpR/6n05N/l
+	ydDLHnBGaJSe3yoC8HeZO6wAjpe6GFV/HVucSG61fQBMtf3IdS/rbZ77Wk98/CabErzqt8kCpDXN4
+	9C+ZPU1Qw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8PVf-0008Oa-Ea; Wed, 19 Aug 2020 14:56:15 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8PVc-0008MY-5a; Wed, 19 Aug 2020 14:56:14 +0000
-X-UUID: 2bf4708b966640e4be42e1ed016dfbd4-20200819
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=AoeUUvCjkrCNhYfqve8JEcUAO7P8LbXeCUbXyAWumY0=; 
- b=CuUdyaprq4NzPSfPJNniWUlBoger3pChNskh8ssVrfZkkrpRIie3itK8Yk71o2YN2bvd3Htc5bWN4pkwZzpnj/sMbfMKGkfI5rd1ivuaPFfKXem+oJnEacT4gBBt2rzkacpfKEk9MZx6pL+9dtwJE8vPx0yeCm9KU05fqTUkf5M=;
-X-UUID: 2bf4708b966640e4be42e1ed016dfbd4-20200819
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <mark-pk.tsai@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 286300020; Wed, 19 Aug 2020 06:56:07 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 19 Aug 2020 07:56:06 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 19 Aug 2020 22:56:05 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 19 Aug 2020 22:56:02 +0800
-From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-To: <maz@kernel.org>, Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Subject: Re: [PATCH 1/2] irqchip: irq-mst: Add MStar interrupt controller
- support
-Date: Wed, 19 Aug 2020 22:55:26 +0800
-Message-ID: <20200819145525.26315-1-mark-pk.tsai@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <f593f5e395c8558657a3f265b7038ec3@kernel.org>
-References: <f593f5e395c8558657a3f265b7038ec3@kernel.org>
+	id 1k8PZZ-0001H3-0j; Wed, 19 Aug 2020 15:00:17 +0000
+Received: from netrider.rowland.org ([192.131.102.5])
+ by merlin.infradead.org with smtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1k8PZJ-00019L-6Z
+ for linux-mediatek@lists.infradead.org; Wed, 19 Aug 2020 15:00:08 +0000
+Received: (qmail 183296 invoked by uid 1000); 19 Aug 2020 10:59:57 -0400
+Date: Wed, 19 Aug 2020 10:59:57 -0400
+From: Alan Stern <stern@rowland.harvard.edu>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH 10/10] usb: udc: net2280: convert to
+ readl_poll_timeout_atomic()
+Message-ID: <20200819145957.GA183103@rowland.harvard.edu>
+References: <1597840865-26631-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1597840865-26631-10-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1597840865-26631-10-git-send-email-chunfeng.yun@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_105613_068966_7A82EAD0 
-X-CRM114-Status: GOOD (  18.58  )
+X-CRM114-CacheID: sfid-20200819_110001_503028_8C29A7BE 
+X-CRM114-Status: GOOD (  17.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,105 +65,75 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, alix.wu@mediatek.com, jason@lakedaemon.net,
- yj.chiang@mediatek.com, daniel@0x0f.com, linux-kernel@vger.kernel.org,
- robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- tglx@linutronix.de, linux-arm-kernel@lists.infradead.org
+Cc: Felipe Balbi <balbi@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Marc Zyngier <maz@kernel.org>
+On Wed, Aug 19, 2020 at 08:41:05PM +0800, Chunfeng Yun wrote:
+> Use readl_poll_timeout_atomic() to simplify code
+> 
+> Cc: Alan Stern <stern@rowland.harvard.edu>
+> Cc: Felipe Balbi <balbi@kernel.org>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  drivers/usb/gadget/udc/net2280.c | 21 ++++++++++-----------
+>  1 file changed, 10 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/usb/gadget/udc/net2280.c b/drivers/usb/gadget/udc/net2280.c
+> index 7530bd9..f1a21f4 100644
+> --- a/drivers/usb/gadget/udc/net2280.c
+> +++ b/drivers/usb/gadget/udc/net2280.c
+> @@ -52,6 +52,7 @@
+>  #include <linux/usb/gadget.h>
+>  #include <linux/prefetch.h>
+>  #include <linux/io.h>
+> +#include <linux/iopoll.h>
+>  
+>  #include <asm/byteorder.h>
+>  #include <asm/irq.h>
+> @@ -360,18 +361,16 @@ static inline void enable_pciirqenb(struct net2280_ep *ep)
+>  static int handshake(u32 __iomem *ptr, u32 mask, u32 done, int usec)
+>  {
+>  	u32	result;
+> +	int	ret;
+>  
+> -	do {
+> -		result = readl(ptr);
+> -		if (result == ~(u32)0)		/* "device unplugged" */
+> -			return -ENODEV;
+> -		result &= mask;
+> -		if (result == done)
+> -			return 0;
+> -		udelay(1);
+> -		usec--;
+> -	} while (usec > 0);
+> -	return -ETIMEDOUT;
+> +	ret = readl_poll_timeout_atomic(ptr, result,
+> +					((result & mask) == done ||
+> +					 result == U32_MAX),
+> +					1, usec);
+> +	if (result == U32_MAX)		/* device unplugged */
+> +		return -ENODEV;
+> +
+> +	return ret;
+>  }
+>  
+>  static const struct usb_ep_ops net2280_ep_ops;
+> -- 
 
->On 2020-08-19 14:31, Mark-PK Tsai wrote:
->> From: Marc Zyngier <maz@kernel.org>
->> 
->>> > +
->>> > +static int mst_intc_domain_alloc(struct irq_domain *domain, unsigned
->>> > int virq,
->>> > +				 unsigned int nr_irqs, void *data)
->>> > +{
->>> > +	int i;
->>> > +	irq_hw_number_t hwirq;
->>> > +	struct irq_fwspec parent_fwspec, *fwspec = data;
->>> > +	struct mst_intc_chip_data *cd = (struct mst_intc_chip_data
->>> > *)domain->host_data;
->>> 
->>> No cast necessary here.
->>> 
->>> > +
->>> > +	/* Not GIC compliant */
->>> > +	if (fwspec->param_count != 3)
->>> > +		return -EINVAL;
->>> > +
->>> > +	/* No PPI should point to this domain */
->>> > +	if (fwspec->param[0])
->>> > +		return -EINVAL;
->>> > +
->>> > +	if (fwspec->param[1] >= cd->nr_irqs)
->>> 
->>> This condition is bogus, as it doesn't take into account the nr_irqs
->>> parameter.
->>> 
->> 
->> 
->> The hwirq number need to be in the irq map range. (property:
->> mstar,irqs-map-range)
->> If it's not, it must be incorrect configuration.
->
->I agree. And since you are checking whether the configuration is 
->correct,
->it'd better be completely correct.
->
->> So how about use the condition as following?
->> 
->> if (hwirq >= cd->nr_irqs)
->> 	return -EINVAL;
->
->Again, this says nothing of the validity of (hwirq + nr_irqs - 1)...
->
+Acked-by: Alan Stern <stern@rowland.harvard.edu>
 
-How about move this to mst_intc_domain_translate? Then all the irq_fwspec
-point to domain mst_intc should be valid.
+However, I noticed that the kerneldoc for readl_poll_timeout_atomic() is 
+out of date.  Can you fix it up?
 
-The mst_intc_domain_translate will be as following:
+Alan Stern
 
-static int mst_intc_domain_translate(struct irq_domain *d,
-				     struct irq_fwspec *fwspec,
-				     unsigned long *hwirq,
-				     unsigned int *type)
-{
-	struct mst_intc_chip_data *cd = d->host_data;
-
-	if (is_of_node(fwspec->fwnode)) {
-		if (fwspec->param_count != 3)
-			return -EINVAL;
-
-		/* No PPI should point to this domain */
-		if (fwspec->param[0] != 0)
-			return -EINVAL;
-
-		if (fwspec->param[1] >= cd->nr_irqs)
-			return -EINVAL;
-
-		*hwirq = fwspec->param[1];
-		*type = fwspec->param[2] & IRQ_TYPE_SENSE_MASK;
-		return 0;
-	}
-
-	return -EINVAL;
-}
-
-
->> 
->>> > +		return -EINVAL;
->>> > +
->>> > +	hwirq = fwspec->param[1];
->>> > +	for (i = 0; i < nr_irqs; i++)
->>> > +		irq_domain_set_hwirq_and_chip(domain, virq + i, hwirq + i,
->>> > +					      &mst_intc_chip,
->>> > +					      domain->host_data);
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
