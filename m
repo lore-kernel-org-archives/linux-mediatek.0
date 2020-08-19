@@ -2,81 +2,77 @@ Return-Path: <SRS0=3kTb=B5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 16579C433E1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 11:37:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 31C83C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 12:43:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D8CB22078D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 11:37:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F02E8206B5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 12:43:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QEshwukJ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=xs4all.nl header.i=@xs4all.nl header.b="H95Be/lv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D8CB22078D
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2r8y9ZsO";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="symRFg/p"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F02E8206B5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=od/Ztr/2OKPgB6t4BJXEvKmmLWZveYhAOMBZmCmT9nQ=; b=QEshwukJ8OtHZyslcOYGW15xW
-	VafRd6Kbw+GVAjdgftoJ9/O6A5KEeQVhk1it6WpSFfAA6/08tWFxmD1mtAoE+xBhJ7WHNsO0vWLPk
-	pob+FrN83m9pAtKAQ64TBkPDNfy5g/Df1cwG2UnmfNjQGG00GmyuAg/TVdZ3Af33tcEIteTu0sO+u
-	aP0UkVFfPFiEII2afHt5RoWdithNU0bfHfaJzHgFP+KLM+hBnb6tf8fVW4P//zdZnrsmNpTQURIdh
-	wfpwvCNMkOBYq0gptC6cmDF/ggfnEc5CZtfJmkEmxlIV+cD0LlHT94F8xhwWrJtOL6v9WBxeifsUy
-	D/6rQEqgQ==;
+	 bh=MwTwAxRNM1TBUaqAn/Xefa3r675ihbGVTuV2XY9rcEc=; b=2r8y9ZsO8U+/5YcqTSOasYXmH
+	nTluWcAgEwjWRc/UKT/naBQZjGHqZl9cQXXXt+31gvWWZHXtUSGL25WZ4Yco4bvh2ux/qlwcUMlCH
+	qd8TfCGzMNSlkdHODswoKel5qDW9HvdqJoehrA8mT5JXl7QSyBX9ibTx4J/kGNjYUyspumt89diZg
+	MsQffgk9lclBI1BUooe5oxfXJkR3LkQXB4XPU0hCIIhRCqqfNAWHH5mJpPaNQDDTa/pLKX26nTFiG
+	CtRmcAo+XcSZMpyRxyrFjhsOZ6fJymOf6vnIMYSBIYw4/JlXk74asy118TTMCpLMEpZ2JuRxwHIB1
+	j4KqTh8PA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8MPD-0002ZN-6P; Wed, 19 Aug 2020 11:37:23 +0000
-Received: from lb1-smtp-cloud9.xs4all.net ([194.109.24.22])
+	id 1k8NQh-0001rI-Pz; Wed, 19 Aug 2020 12:42:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8MP8-0002XL-By; Wed, 19 Aug 2020 11:37:19 +0000
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud9.xs4all.net with ESMTPA
- id 8MOzkc5mbuuXO8MP0kgj4W; Wed, 19 Aug 2020 13:37:10 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
- t=1597837030; bh=on3DJuNUCZBYzh3vyKVks+qUN0daYY+qcqHSyxAtABs=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=H95Be/lv/Z6sIV2ZjHnezlJeoXNXGSJox1mqCQdOpG7Ot7IbrXAC5w5bBW9RAi9XG
- O1zcUUWgj1di8ZybVj8HJYG0HO+WwnA4EMJF3/W0ZoCXLbrm8RsatHZtI53iaOyuAX
- 1bzN656HdjSujpxy/AcA1LbCfZ61bGLem3kZFUZ9bGrwEf+oitaXfHhtWBTeCsIu8R
- AaKyG1XFmKZTMnZIbFb5aKP/dQ1cYDH4fDqkluLOit6jXh+KV12sleISEI2/sac0Je
- FgwjUEccqqXdUxb1EckRVvzp1eMO6BLXU8l9zFcGnpIy6t+Op4X35XVRdKC7iUvDh/
- pPyebpuGH7FNQ==
-Subject: Re: [PATCH v12 25/29] arm: dts: mt2701: Add jpeg enc device tree node
-To: Xia Jiang <xia.jiang@mediatek.com>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Rick Chang <rick.chang@mediatek.com>
-References: <20200814071202.25067-1-xia.jiang@mediatek.com>
- <20200814071202.25067-27-xia.jiang@mediatek.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Message-ID: <9a35791d-51f6-2429-5bcc-2149ac1b60c7@xs4all.nl>
-Date: Wed, 19 Aug 2020 13:37:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1k8NQe-0001pA-AR; Wed, 19 Aug 2020 12:42:57 +0000
+X-UUID: 8363af15f11b4356bd22353fcc97a2f5-20200819
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=gbEvkNvLGl7XkhJbIl8Am9oqDys+ugPHHJ4cNwALPbg=; 
+ b=symRFg/pIqoSot9Y2muUGLgHLRU5BFlxhtrrtLlDiRT0puX2QLaDnYPRIZ5IOedhljC+9Yavplcf/8fh6m3N/L+Wnmlm+GVDQ0R99JXCXtlZ8YN6vzQnjGyCsz/JOCPLRi9Fc1opUf1WVuUa2lWoVEKcUFYRWTIg3qLEoEFWJOM=;
+X-UUID: 8363af15f11b4356bd22353fcc97a2f5-20200819
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1978801214; Wed, 19 Aug 2020 04:42:51 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 19 Aug 2020 05:42:48 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 19 Aug 2020 20:42:44 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 19 Aug 2020 20:42:43 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 02/10] usb: early: ehci-dbgp: convert to
+ readl_poll_timeout_atomic()
+Date: Wed, 19 Aug 2020 20:40:57 +0800
+Message-ID: <1597840865-26631-2-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1597840865-26631-1-git-send-email-chunfeng.yun@mediatek.com>
+References: <1597840865-26631-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <20200814071202.25067-27-xia.jiang@mediatek.com>
-Content-Language: en-US
-X-CMAE-Envelope: MS4wfBpjNEODcQO4JphfVy6aBaq/j9bEl9E8js4YNmvSiO0Bv837GBTpHXA6jtL2w1CMAv8Jmpc2mcp6RnvgCrWdrB1beAzVXNrT66JiYvfczlfYx06XV8CB
- B98UpcGJa7XDNnxwdu2DifltSLBFjf8NeYIcfeCup84Mr8jAzdIj+Des65oJu1GlPGL0YMXcMb8CWSfS2RFDmWKAf1tFZrDT+yO5sKApps5l4D6oucLLfOM+
- kMakCGE7HijJoy1Sjg8caHFTqlteIYiug6vF1rNK7+OZZ7wmcLC9nxcvHz9tsm4r+Rgcv/4JymkYZ9GgA/X8mxzLvjcwBp/+s0EIeN2Dphpyi1BjDRUvZZ0z
- mOZsThJ3nnYUlEA3H4FZYo8p72u7MHowzEW5UfWhi67fICV6FgV+eUre65EI1My60vU68FAFmcewcLoxCQ7nzoDcLBygZrWjVYwPACskFS5ztjgH/ZLzXokH
- C/gPdfUjVbFV7YQudvj214sx4lhUr7ZvvKSlNDSHq6o7xpMFn75OWNI7EOmpNh7sVjnYIiLQCH7TvB2YX+DCPr3dFbBhk/C7P45pSgKLo3fFap+33+4XUOQl
- /hZbTunleSAz7YPhRbfSa59y7BCOTQFO+T1/ZJILjAy+iVe97UpVGQY4G5aEklGqHzHfrvzOfAgQV40HBjpSflKzAttaKJGSjyRGxTuAlIoErAxMHZxPHsX3
- HOxmzsnsza51QQyGbe0nQp0CNHINjjul4QnZ/gzeINq6wvpz3Mn7G44ePwx2cVLWdqtQ9QeDeHbVWnq5gwc4PowVx0eOmHsnvd72aWjgWrNpO8ifx0q1+kEO
- REvQxerPdF3ZEZvMWWJzZ1QZwA8wDp1V+NPDFSumOJssS+oz3TRA6r3YvrwsaQ==
+X-TM-SNTS-SMTP: 65E32546313909D0757CC1C22E12E8B6E09145F4B7102037ADFB3A642D9C03412000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_073718_570837_F8E215FC 
-X-CRM114-Status: GOOD (  17.96  )
+X-CRM114-CacheID: sfid-20200819_084256_558644_3AEABE5E 
+X-CRM114-Status: GOOD (  15.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,65 +84,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: maoguang.meng@mediatek.com, devicetree@vger.kernel.org,
- mojahsu@chromium.org, srv_heupstream@mediatek.com,
- linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
- senozhatsky@chromium.org, drinkcat@chromium.org,
- linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: Felipe Balbi <balbi@kernel.org>, Petr Mladek <pmladek@suse.com>,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-mediatek@lists.infradead.org,
+ "Eric W. Biederman" <ebiederm@xmission.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Xia,
+Use readl_poll_timeout_atomic() to simplify code
 
-I made a PR for all other patches of this series for 5.10, so this patch can be merged
-by whoever takes care of these dts patches.
+Cc: "Eric W. Biederman" <ebiederm@xmission.com>
+Cc: Petr Mladek <pmladek@suse.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ drivers/usb/early/ehci-dbgp.c | 15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
 
-Regards,
-
-	Hans
-
-On 14/08/2020 09:11, Xia Jiang wrote:
-> Add jpeg enc device tree node.
-> 
-> Reviewed-by: Tomasz Figa <tfiga@chromium.org>
-> Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
-> ---
-> v12: no changes
-> ---
->  arch/arm/boot/dts/mt2701.dtsi | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
-> 
-> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-> index 8d43a502aada..1c1c2132234f 100644
-> --- a/arch/arm/boot/dts/mt2701.dtsi
-> +++ b/arch/arm/boot/dts/mt2701.dtsi
-> @@ -568,6 +568,19 @@
->  			 <&iommu MT2701_M4U_PORT_JPGDEC_BSDMA>;
->  	};
->  
-> +	jpegenc: jpegenc@1500a000 {
-> +		compatible = "mediatek,mt2701-jpgenc",
-> +			     "mediatek,mtk-jpgenc";
-> +		reg = <0 0x1500a000 0 0x1000>;
-> +		interrupts = <GIC_SPI 141 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks =  <&imgsys CLK_IMG_VENC>;
-> +		clock-names = "jpgenc";
-> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
-> +		mediatek,larb = <&larb2>;
-> +		iommus = <&iommu MT2701_M4U_PORT_JPGENC_RDMA>,
-> +			 <&iommu MT2701_M4U_PORT_JPGENC_BSDMA>;
-> +	};
-> +
->  	vdecsys: syscon@16000000 {
->  		compatible = "mediatek,mt2701-vdecsys", "syscon";
->  		reg = <0 0x16000000 0 0x1000>;
-> 
-
-
+diff --git a/drivers/usb/early/ehci-dbgp.c b/drivers/usb/early/ehci-dbgp.c
+index b075dbf..45b42d8 100644
+--- a/drivers/usb/early/ehci-dbgp.c
++++ b/drivers/usb/early/ehci-dbgp.c
+@@ -15,6 +15,7 @@
+ #include <linux/console.h>
+ #include <linux/errno.h>
+ #include <linux/init.h>
++#include <linux/iopoll.h>
+ #include <linux/pci_regs.h>
+ #include <linux/pci_ids.h>
+ #include <linux/usb/ch9.h>
+@@ -161,17 +162,11 @@ static inline u32 dbgp_pid_read_update(u32 x, u32 tok)
+ static int dbgp_wait_until_complete(void)
+ {
+ 	u32 ctrl;
+-	int loop = DBGP_TIMEOUT;
+-
+-	do {
+-		ctrl = readl(&ehci_debug->control);
+-		/* Stop when the transaction is finished */
+-		if (ctrl & DBGP_DONE)
+-			break;
+-		udelay(1);
+-	} while (--loop > 0);
++	int ret;
+ 
+-	if (!loop)
++	ret = readl_poll_timeout_atomic(&ehci_debug->control, ctrl,
++				(ctrl & DBGP_DONE), 1, DBGP_TIMEOUT);
++	if (ret)
+ 		return -DBGP_TIMEOUT;
+ 
+ 	/*
+-- 
+1.9.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
