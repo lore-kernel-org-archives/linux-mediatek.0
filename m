@@ -2,76 +2,71 @@ Return-Path: <SRS0=3kTb=B5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D8638C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 08:15:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A909C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 08:18:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A5F8C20738
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 08:15:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DFC6C20738
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 08:18:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="csQjOkhK";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="TTPgISsf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A5F8C20738
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jsubPd6B";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mailerdienst.de header.i=@mailerdienst.de header.b="ySkla1aR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DFC6C20738
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fw-web.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=idDhUVXxjc9evsxk3Bdw3k5zRP40ofqasjetfOVELz4=; b=csQjOkhKNhGWvuE/SRpL/p3t5
-	N7CqUkGVgFUjwP6ZO48C8fAX6i4Hkafc2fGy+pNkVkpBsLYSEuMHkptDc0Exkv5uwNZBpVTEzDctZ
-	OwLhPt2fb4tuQquGNtzZ+SbcQ1DtqjZ4xrs1ZFw+fVZbK3wN32fj/7kheaC2H+M7h4XWmbFUkLL8Q
-	zcO9IxnonkDQtzLfsiwcEGGxO/6kRYcvnOr3PK7r6+G0rAZoEBDRRR5Q5PdDWkNH4OPlRhuTRbZcU
-	U5QkSn/b8RlYqcLA0ZJW1u1d+XCDsT8BoBDBiJ6jVPJatNAwtJfoGsNCLMSR+IQdhGF9UxW3/By8d
-	kZF5xEexQ==;
+	 bh=1vOOhmv7DbJmPP7psqTuRGfi9fcnBCYfUE+qvr0VZOg=; b=jsubPd6B09GsBZOJx9UkvVvkI
+	11BSIKj7u/GHA3t9w217dDigKoJ9JE1A/kvIAaz70IxG/JWt4kg7Xc1mQTtFK497+TB8klxgEElTE
+	Q3phpu1eVl2YxiEUiEVmozExyn/JS/dhekzYZr8tLbyNXh7TkWhMS/52HviYlSfAr6ahviGyHF8f2
+	5NPifAciAYK9QGUkbsGExXHw3oxFUpVC+CGGs7aAzeHepS3MaQ/Rw+vWw/UDAvBOp57r3jVZE5crE
+	Xk9VKidJsjz5Auj69VAXFTCkW39v6hy9YXpsXTPtvkv0+zy8V1tn/v9s/XHghm9hrL5EIUvcc4eZF
+	eC3sniVvw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8JFj-0007ec-Hb; Wed, 19 Aug 2020 08:15:23 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1k8JIU-0007xg-Rz; Wed, 19 Aug 2020 08:18:14 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8JFh-0007dh-Lx
- for linux-mediatek@lists.infradead.org; Wed, 19 Aug 2020 08:15:22 +0000
-X-UUID: ba0809d2b066492597e51416d4076c62-20200819
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=QpCVJ4N+EUwFvE449ymwTfmxve8XNAYqWnZtBe4BZEA=; 
- b=TTPgISsfpcHTz1wn1542ppt7yDvS+sigVRpJ5bnyIPjKgbZvQckjKEqQFWY69joUd6hFcgWcTrX7jgcOaUIugl1DySfb1Kh/+kGqCnoEfM9kPikQKN6+aaH87hQpnvRr0hWe5zigEsYI2WXGM4Pf4bRVmQQWJbXxXAlV8vBVJ4Y=;
-X-UUID: ba0809d2b066492597e51416d4076c62-20200819
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <landen.chao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2016469299; Wed, 19 Aug 2020 00:15:04 -0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 19 Aug 2020 01:15:02 -0700
-Received: from [172.21.84.99] (172.21.84.99) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 19 Aug 2020 16:15:00 +0800
-Message-ID: <1597824901.31846.42.camel@mtksdccf07>
-Subject: Re: [PATCH net-next v2 7/7] arm64: dts: mt7622: add mt7531 dsa to
- bananapi-bpi-r64 board
-From: Landen Chao <landen.chao@mediatek.com>
-To: Vladimir Oltean <olteanv@gmail.com>
-Date: Wed, 19 Aug 2020 16:15:01 +0800
-In-Reply-To: <20200818162433.elqh3dxmk6vilq6u@skbuf>
-References: <cover.1597729692.git.landen.chao@mediatek.com>
- <2a986604b49f7bfbee3898c8870bb0cf8182e879.1597729692.git.landen.chao@mediatek.com>
- <20200818162433.elqh3dxmk6vilq6u@skbuf>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1k8JIO-0007uC-DG; Wed, 19 Aug 2020 08:18:09 +0000
+Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
+ by mxout2.routing.net (Postfix) with ESMTP id 9A3CA5FA67;
+ Wed, 19 Aug 2020 08:18:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+ s=20200217; t=1597825080;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ds7XnKX+bqH2VkRPifcHXESaPz03te6uVWAvUOl32R0=;
+ b=ySkla1aRE7AZ2s0mZi8YaD3ILgpg37tqRiYTVDFQ+thqdhkAktB8/FvChqSSGS9fjg1EcP
+ FcDHwoXH4qKxAs0A9XJse9fzm6Vgq0rCb7n4s4CFKD9cg2SQFJdk09/uWbi4M6dW3F00of
+ fceqAWRMJ6awtSfuakJ30cBNxzZIqlI=
+Received: from localhost.localdomain (fttx-pool-185.76.97.101.bambit.de
+ [185.76.97.101])
+ by mxbox2.masterlogin.de (Postfix) with ESMTPSA id E571310058A;
+ Wed, 19 Aug 2020 08:17:59 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-mediatek@lists.infradead.org
+Subject: [PATCH v5 2/7] drm/mediatek: add ddp routing for mt7623
+Date: Wed, 19 Aug 2020 10:17:47 +0200
+Message-Id: <20200819081752.4805-3-linux@fw-web.de>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200819081752.4805-1-linux@fw-web.de>
+References: <20200819081752.4805-1-linux@fw-web.de>
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_041521_909657_79A7A441 
-X-CRM114-Status: GOOD (  19.10  )
+X-CRM114-CacheID: sfid-20200819_041808_593684_C5F07F02 
+X-CRM114-Status: GOOD (  12.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,74 +78,79 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
- "andrew@lunn.ch" <andrew@lunn.ch>,
- "frank-w@public-files.de" <frank-w@public-files.de>,
- "f.fainelli@gmail.com" <f.fainelli@gmail.com>,
- "dqfext@gmail.com" <dqfext@gmail.com>,
- "vivien.didelot@savoirfairelinux.com" <vivien.didelot@savoirfairelinux.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Sean Wang <Sean.Wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "opensource@vdorst.com" <opensource@vdorst.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "davem@davemloft.net" <davem@davemloft.net>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Frank Wunderlich <frank-w@public-files.de>, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2020-08-19 at 00:24 +0800, Vladimir Oltean wrote:
-> On Tue, Aug 18, 2020 at 03:14:12PM +0800, Landen Chao wrote:
-> > Add mt7531 dsa to bananapi-bpi-r64 board for 5 giga Ethernet ports support.
-> > 
-> > Signed-off-by: Landen Chao <landen.chao@mediatek.com>
-> > ---
-> >  .../dts/mediatek/mt7622-bananapi-bpi-r64.dts  | 44 +++++++++++++++++++
-> >  1 file changed, 44 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-> > index d174ad214857..c57b2571165f 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-> > +++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-> > @@ -143,6 +143,50 @@
-> >  	mdio: mdio-bus {
-> >  		#address-cells = <1>;
-> >  		#size-cells = <0>;
-> > +
-> > +		switch@0 {
-> > +			compatible = "mediatek,mt7531";
-> > +
-[snip]
-> > +				port@6 {
-> > +					reg = <6>;
-> > +					label = "cpu";
-> > +					ethernet = <&gmac0>;
-> > +					phy-mode = "2500base-x";
-> > +				};
-> 
-> Is there any reason why you're not specifying a fixed-link node here?
-I got the below feedback in v1, so I follow the DSA common design in v2.
-v2 can work with fixed-link node or without fixed-link node in CPU port
-node.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-  "This fixed-link should not be needed. The DSA driver is supposed to
-   configure the CPU port to its fastest speed by default. 2500 is
-   the fastest speed a 2500Base-X link can do..."
-> > +			};
-> > +		};
-> > +
-> >  	};
-> >  };
-> >  
-> > -- 
-> > 2.17.1
-> 
-> Thanks,
-> -Vladimir
+on BPi-R2/mt7623 main-path have to be routed to DPI0 (hdmi) instead of DSI0
+using compatible "mt7623-mmsys" already defined in dts
+
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 040a8f393fe2..2350e3200b59 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -74,6 +74,19 @@ static const enum mtk_ddp_comp_id mt2701_mtk_ddp_ext[] = {
+ 	DDP_COMPONENT_DPI0,
+ };
+ 
++static const enum mtk_ddp_comp_id mt7623_mtk_ddp_main[] = {
++	DDP_COMPONENT_OVL0,
++	DDP_COMPONENT_RDMA0,
++	DDP_COMPONENT_COLOR0,
++	DDP_COMPONENT_BLS,
++	DDP_COMPONENT_DPI0,
++};
++
++static const enum mtk_ddp_comp_id mt7623_mtk_ddp_ext[] = {
++	DDP_COMPONENT_RDMA1,
++	DDP_COMPONENT_DSI0,
++};
++
+ static const enum mtk_ddp_comp_id mt2712_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_OVL0,
+ 	DDP_COMPONENT_COLOR0,
+@@ -127,6 +140,14 @@ static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+ 	.shadow_register = true,
+ };
+ 
++static const struct mtk_mmsys_driver_data mt7623_mmsys_driver_data = {
++	.main_path = mt7623_mtk_ddp_main,
++	.main_len = ARRAY_SIZE(mt7623_mtk_ddp_main),
++	.ext_path = mt7623_mtk_ddp_ext,
++	.ext_len = ARRAY_SIZE(mt7623_mtk_ddp_ext),
++	.shadow_register = true,
++};
++
+ static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
+ 	.main_path = mt2712_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt2712_mtk_ddp_main),
+@@ -422,6 +443,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ static const struct of_device_id mtk_drm_of_ids[] = {
+ 	{ .compatible = "mediatek,mt2701-mmsys",
+ 	  .data = &mt2701_mmsys_driver_data},
++	{ .compatible = "mediatek,mt7623-mmsys",
++	  .data = &mt7623_mmsys_driver_data},
+ 	{ .compatible = "mediatek,mt2712-mmsys",
+ 	  .data = &mt2712_mmsys_driver_data},
+ 	{ .compatible = "mediatek,mt8173-mmsys",
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
