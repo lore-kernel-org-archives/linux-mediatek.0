@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 15EB2C433E8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 15:12:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DA611C433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 15:12:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B2E8D208C7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 15:12:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9DC8D204EA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 15:12:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yAQLZHZS"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B2E8D208C7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gzv2zL/N"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9DC8D204EA
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,39 +25,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=EN6ObqVKbXS+G79S2JXBD6SGxIJ96KXSZyxBEY7PNjU=; b=yAQLZHZSXVlvdm2aByWj5cqCh
-	wGElLpR7Z7bpbHa5Fvb2jHtk36gYJUHpAnqe5Zyf+yY5/XfB93MzKFFwweZPONPezFCICa8SHr64r
-	ORVQyWCPVprgYYc1SyKqQaTDrx8F+urwYHFhTIKx13Bg4i1Ar2NkeiVUJqvI1yWK1iGe/0swNc9Mf
-	YFi4jDXq+GKPPwXen5ib6+fboJl+sXrLe599aDlRRNpesY2XX4ufOtb0KtkvtAe/aGSAx15bYwKrx
-	L2yTtB/dwfQ+Fmnt1dFLC6oX9Ve39nugtmOl0IIARIn/vB4ZN+Ft6CMfYIoFhUKVxtuIIS645pUDi
-	ZIuwlXFRg==;
+	 bh=AzfbEmxdzUQwFX4VeNflYrJ/eGFo9sTYHfIR78Gtxas=; b=gzv2zL/N4FAOPU+LbJu2J3ipl
+	iew4VusG+D8LzbAtUFfVR0lmQs0a450IC1P5ePjQHL4ippI0hTRwu7tMjDSoi6ssoi2URXksqodOD
+	88CbzrmiZ1z7o51mq5tMNZEsMxJrM3IXUWtPP/I1wo0M6kG5mDHKUAjrRk0hCkKf8jQe6duvvB2Y4
+	Fadal9dMgH/YvR82m8FiCDj6uSwXageljsWYoyhA+zrCBuIURhwgeAr/qs2ueml0gVYsh/v7I8WCk
+	aIy6qeBd1AeNAy0JyzGKDJwgn1C4aVtb6QKkeHKBL2ScZIFWb32WUisHBY05VKgNjjzfgijuc8iSF
+	fPYLuZt3A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8mEL-0003tC-B2; Thu, 20 Aug 2020 15:11:53 +0000
+	id 1k8mEf-00047Q-2D; Thu, 20 Aug 2020 15:12:13 +0000
 Received: from foss.arm.com ([217.140.110.172])
  by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8mC1-0002JT-60; Thu, 20 Aug 2020 15:09:40 +0000
+ id 1k8mC8-0002Fr-55; Thu, 20 Aug 2020 15:09:46 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 370C8143B;
- Thu, 20 Aug 2020 08:09:28 -0700 (PDT)
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A704E1477;
+ Thu, 20 Aug 2020 08:09:35 -0700 (PDT)
 Received: from e121345-lin.cambridge.arm.com (e121345-lin.cambridge.arm.com
  [10.1.196.37])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 863493F6CF;
- Thu, 20 Aug 2020 08:09:24 -0700 (PDT)
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 226C33F6CF;
+ Thu, 20 Aug 2020 08:09:32 -0700 (PDT)
 From: Robin Murphy <robin.murphy@arm.com>
 To: hch@lst.de,
 	joro@8bytes.org,
 	linux@armlinux.org.uk
-Subject: [PATCH 09/18] iommu/mediatek-v1: Add IOMMU_DOMAIN_DMA support
-Date: Thu, 20 Aug 2020 16:08:28 +0100
-Message-Id: <a259b248ffb14273b56f8473c20b0381e8d74c7a.1597931876.git.robin.murphy@arm.com>
+Subject: [PATCH 11/18] iommu/omap: Add IOMMU_DOMAIN_DMA support
+Date: Thu, 20 Aug 2020 16:08:30 +0100
+Message-Id: <5ac3788f9f61f7698cfa9c5924d62714e230f678.1597931876.git.robin.murphy@arm.com>
 X-Mailer: git-send-email 2.28.0.dirty
 In-Reply-To: <cover.1597931875.git.robin.murphy@arm.com>
 References: <cover.1597931875.git.robin.murphy@arm.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200820_110929_394944_871DD1BA 
-X-CRM114-Status: GOOD (  24.52  )
+X-CRM114-CacheID: sfid-20200820_110936_374259_831B9B1B 
+X-CRM114-Status: GOOD (  17.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,267 +86,79 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Now that arch/arm is wired up for default domains and iommu-dma,
-implement the corresponding driver-side support for groups and DMA
-domains to replace the shared mapping workaround.
+implement the corresponding driver-side support for DMA domains.
 
 Signed-off-by: Robin Murphy <robin.murphy@arm.com>
 ---
- drivers/iommu/mtk_iommu.h    |   2 -
- drivers/iommu/mtk_iommu_v1.c | 153 +++++++++++------------------------
- 2 files changed, 48 insertions(+), 107 deletions(-)
+ drivers/iommu/omap-iommu.c | 22 +++++++++++++++++++++-
+ 1 file changed, 21 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-index 122925dbe547..6253e98d810c 100644
---- a/drivers/iommu/mtk_iommu.h
-+++ b/drivers/iommu/mtk_iommu.h
-@@ -67,8 +67,6 @@ struct mtk_iommu_data {
- 	struct iommu_device		iommu;
- 	const struct mtk_iommu_plat_data *plat_data;
+diff --git a/drivers/iommu/omap-iommu.c b/drivers/iommu/omap-iommu.c
+index 71f29c0927fc..ea25c2fe0418 100644
+--- a/drivers/iommu/omap-iommu.c
++++ b/drivers/iommu/omap-iommu.c
+@@ -9,6 +9,7 @@
+  *		Paul Mundt and Toshihiro Kobayashi
+  */
  
--	struct dma_iommu_mapping	*mapping; /* For mtk_iommu_v1.c */
--
- 	struct list_head		list;
- 	struct mtk_smi_larb_iommu	larb_imu[MTK_LARB_NR_MAX];
- };
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 82ddfe9170d4..40c89b8d3ac4 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -28,7 +28,6 @@
++#include <linux/dma-iommu.h>
+ #include <linux/dma-mapping.h>
+ #include <linux/err.h>
  #include <linux/slab.h>
- #include <linux/spinlock.h>
- #include <asm/barrier.h>
--#include <asm/dma-iommu.h>
- #include <linux/init.h>
- #include <dt-bindings/memory/mt2701-larb-port.h>
- #include <soc/mediatek/smi.h>
-@@ -240,13 +239,18 @@ static struct iommu_domain *mtk_iommu_domain_alloc(unsigned type)
+@@ -1574,13 +1575,19 @@ static struct iommu_domain *omap_iommu_domain_alloc(unsigned type)
  {
- 	struct mtk_iommu_domain *dom;
+ 	struct omap_iommu_domain *omap_domain;
  
 -	if (type != IOMMU_DOMAIN_UNMANAGED)
 +	if (type != IOMMU_DOMAIN_UNMANAGED && type != IOMMU_DOMAIN_DMA)
  		return NULL;
  
- 	dom = kzalloc(sizeof(*dom), GFP_KERNEL);
- 	if (!dom)
+ 	omap_domain = kzalloc(sizeof(*omap_domain), GFP_KERNEL);
+ 	if (!omap_domain)
  		return NULL;
  
-+	if (type == IOMMU_DOMAIN_DMA && iommu_get_dma_cookie(&dom->domain)) {
-+		kfree(dom);
++	if (type == IOMMU_DOMAIN_DMA &&
++	    iommu_get_dma_cookie(&omap_domain->domain)) {
++		kfree(omap_domain);
 +		return NULL;
 +	}
 +
- 	return &dom->domain;
+ 	spin_lock_init(&omap_domain->lock);
+ 
+ 	omap_domain->domain.geometry.aperture_start = 0;
+@@ -1601,6 +1608,7 @@ static void omap_iommu_domain_free(struct iommu_domain *domain)
+ 	if (omap_domain->dev)
+ 		_omap_iommu_detach_dev(omap_domain, omap_domain->dev);
+ 
++	iommu_put_dma_cookie(&omap_domain->domain);
+ 	kfree(omap_domain);
  }
  
-@@ -257,6 +261,7 @@ static void mtk_iommu_domain_free(struct iommu_domain *domain)
- 
- 	dma_free_coherent(data->dev, M2701_IOMMU_PGT_SIZE,
- 			dom->pgt_va, dom->pgt_pa);
-+	iommu_put_dma_cookie(domain);
- 	kfree(to_mtk_domain(domain));
+@@ -1736,6 +1744,17 @@ static struct iommu_group *omap_iommu_device_group(struct device *dev)
+ 	return group;
  }
  
-@@ -265,14 +270,8 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- {
- 	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
- 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
--	struct dma_iommu_mapping *mtk_mapping;
- 	int ret;
- 
--	/* Only allow the domain created internally. */
--	mtk_mapping = data->mapping;
--	if (mtk_mapping->domain != domain)
--		return 0;
--
- 	if (!data->m4u_dom) {
- 		data->m4u_dom = dom;
- 		ret = mtk_iommu_domain_finalise(data);
-@@ -358,18 +357,39 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
- 
- static const struct iommu_ops mtk_iommu_ops;
- 
--/*
-- * MTK generation one iommu HW only support one iommu domain, and all the client
-- * sharing the same iova address space.
-- */
--static int mtk_iommu_create_mapping(struct device *dev,
--				    struct of_phandle_args *args)
-+static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
- {
- 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
- 	struct mtk_iommu_data *data;
-+
-+	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
-+		return ERR_PTR(-ENODEV); /* Not a iommu client device */
-+
-+	data = dev_iommu_priv_get(dev);
-+
-+	return &data->iommu;
-+}
-+
-+static void mtk_iommu_release_device(struct device *dev)
++static int omap_iommu_of_xlate(struct device *dev,
++			       struct of_phandle_args *args)
 +{
-+	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-+
-+	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
-+		return;
-+
-+	iommu_fwspec_free(dev);
-+}
-+
-+static struct iommu_group *mtk_iommu_device_group(struct device *dev)
-+{
-+	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
-+
-+	return iommu_group_ref_get(data->m4u_group);
-+}
-+
-+static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
-+{
- 	struct platform_device *m4updev;
--	struct dma_iommu_mapping *mtk_mapping;
--	int ret;
- 
- 	if (args->args_count != 1) {
- 		dev_err(dev, "invalid #iommu-cells(%d) property for IOMMU\n",
-@@ -377,15 +397,6 @@ static int mtk_iommu_create_mapping(struct device *dev,
- 		return -EINVAL;
- 	}
- 
--	if (!fwspec) {
--		ret = iommu_fwspec_init(dev, &args->np->fwnode, &mtk_iommu_ops);
--		if (ret)
--			return ret;
--		fwspec = dev_iommu_fwspec_get(dev);
--	} else if (dev_iommu_fwspec_get(dev)->ops != &mtk_iommu_ops) {
--		return -EINVAL;
--	}
--
- 	if (!dev_iommu_priv_get(dev)) {
- 		/* Get the m4u device */
- 		m4updev = of_find_device_by_node(args->np);
-@@ -395,83 +406,7 @@ static int mtk_iommu_create_mapping(struct device *dev,
- 		dev_iommu_priv_set(dev, platform_get_drvdata(m4updev));
- 	}
- 
--	ret = iommu_fwspec_add_ids(dev, args->args, 1);
--	if (ret)
--		return ret;
--
--	data = dev_iommu_priv_get(dev);
--	mtk_mapping = data->mapping;
--	if (!mtk_mapping) {
--		/* MTK iommu support 4GB iova address space. */
--		mtk_mapping = arm_iommu_create_mapping(&platform_bus_type,
--						0, 1ULL << 32);
--		if (IS_ERR(mtk_mapping))
--			return PTR_ERR(mtk_mapping);
--
--		data->mapping = mtk_mapping;
--	}
--
--	return 0;
--}
--
--static int mtk_iommu_def_domain_type(struct device *dev)
--{
--	return IOMMU_DOMAIN_UNMANAGED;
--}
--
--static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
--{
--	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
--	struct of_phandle_args iommu_spec;
--	struct of_phandle_iterator it;
--	struct mtk_iommu_data *data;
--	int err;
--
--	of_for_each_phandle(&it, err, dev->of_node, "iommus",
--			"#iommu-cells", -1) {
--		int count = of_phandle_iterator_args(&it, iommu_spec.args,
--					MAX_PHANDLE_ARGS);
--		iommu_spec.np = of_node_get(it.node);
--		iommu_spec.args_count = count;
--
--		mtk_iommu_create_mapping(dev, &iommu_spec);
--
--		/* dev->iommu_fwspec might have changed */
--		fwspec = dev_iommu_fwspec_get(dev);
--
--		of_node_put(iommu_spec.np);
--	}
--
--	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
--		return ERR_PTR(-ENODEV); /* Not a iommu client device */
--
--	data = dev_iommu_priv_get(dev);
--
--	return &data->iommu;
--}
--
--static void mtk_iommu_probe_finalize(struct device *dev)
--{
--	struct dma_iommu_mapping *mtk_mapping;
--	struct mtk_iommu_data *data;
--	int err;
--
--	data        = dev_iommu_priv_get(dev);
--	mtk_mapping = data->mapping;
--
--	err = arm_iommu_attach_device(dev, mtk_mapping);
--	if (err)
--		dev_err(dev, "Can't create IOMMU mapping - DMA-OPS will not work\n");
--}
--
--static void mtk_iommu_release_device(struct device *dev)
--{
--	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
--
--	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
--		return;
--
--	iommu_fwspec_free(dev);
-+	return iommu_fwspec_add_ids(dev, args->args, 1);
- }
- 
- static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
-@@ -524,10 +459,9 @@ static const struct iommu_ops mtk_iommu_ops = {
- 	.unmap		= mtk_iommu_unmap,
- 	.iova_to_phys	= mtk_iommu_iova_to_phys,
- 	.probe_device	= mtk_iommu_probe_device,
--	.probe_finalize = mtk_iommu_probe_finalize,
- 	.release_device	= mtk_iommu_release_device,
--	.def_domain_type = mtk_iommu_def_domain_type,
--	.device_group	= generic_device_group,
-+	.device_group	= mtk_iommu_device_group,
-+	.of_xlate	= mtk_iommu_of_xlate,
- 	.pgsize_bitmap	= ~0UL << MT2701_IOMMU_PAGE_SHIFT,
- };
- 
-@@ -626,6 +560,14 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 	if (ret)
- 		return ret;
- 
 +	/*
-+	 * MTK generation one iommu HW only support one iommu domain,
-+	 * and all the client sharing the same iova address space.
++	 * Logically, some of the housekeeping from _omap_iommu_add_device()
++	 * should probably move here, but the minimum we *need* is simply to
++	 * cooperate with of_iommu at all to let iommu-dma work.
 +	 */
-+	data->m4u_group = iommu_group_alloc();
-+	if (IS_ERR(data->m4u_group))
-+		return PTR_ERR(data->m4u_group);
++	return 0;
++}
 +
- 	if (!iommu_present(&platform_bus_type))
- 		bus_set_iommu(&platform_bus_type,  &mtk_iommu_ops);
- 
-@@ -636,6 +578,7 @@ static int mtk_iommu_remove(struct platform_device *pdev)
- {
- 	struct mtk_iommu_data *data = platform_get_drvdata(pdev);
- 
-+	iommu_group_put(data->m4u_group);
- 	iommu_device_sysfs_remove(&data->iommu);
- 	iommu_device_unregister(&data->iommu);
+ static const struct iommu_ops omap_iommu_ops = {
+ 	.domain_alloc	= omap_iommu_domain_alloc,
+ 	.domain_free	= omap_iommu_domain_free,
+@@ -1747,6 +1766,7 @@ static const struct iommu_ops omap_iommu_ops = {
+ 	.probe_device	= omap_iommu_probe_device,
+ 	.release_device	= omap_iommu_release_device,
+ 	.device_group	= omap_iommu_device_group,
++	.of_xlate	= omap_iommu_of_xlate,
+ 	.pgsize_bitmap	= OMAP_IOMMU_PGSIZES,
+ };
  
 -- 
 2.28.0.dirty
