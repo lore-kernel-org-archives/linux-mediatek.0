@@ -2,63 +2,86 @@ Return-Path: <SRS0=4nm1=B6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E468AC433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 17:25:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C775CC433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 19:40:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AA86720724
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 17:25:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 82957207DE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 19:40:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pN+p0POU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AA86720724
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eUz+/xc6";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="Byh29kc4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 82957207DE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=IZTmglPtWa9UcHOmWLWyBfSttBLmzpe3o2mH98LVPjQ=; b=pN+p0POUzVqMjgS9Pxdk88uzg
-	6gae1qD0Nh9VJI7SppwkgAugXpYyIr0jX5VNrgJ9OFHpHbO7IIoYJELdyVwl0bqLybl3O1eLIc/kC
-	u23Kgg88IuqkvhFqRFtZSK/TVMhaANkZdcclVgUDwakrwgZAtybfJptj43A330IEs6zhnec9mzNjl
-	hAjhzFwVzMfJcohslPLdrW1A4L1gK/adwXk520FTUg31DKFoPSLlEyfJT0qymd6gbYVZE70T9ISp3
-	WNrYWKp9R2+d+chA8RQFgdB5M3NZ9ySHwZfIlut7oeRIRUzQbuF7FhocoMDZihuw6vKKZlaU8KTgt
-	A7XulN7zw==;
+	 bh=dB2GNfZuYdqPvpLJ75c0Uq7qdebAV41xVfOK7xOkgD4=; b=eUz+/xc66pw8jyIX4rgbHdkGw
+	eNSEoKqcHZJ4IXcBnvTa64dt/IcV0vKBhG31H6tDKd0pg3VWcsSNW/sKw8quFOCDVHGX2EOQi4py1
+	gL1tljytBW75PrMTyvmVLTTMK6XyZXTQTfJb5mIJyb1BPr2dmKAAWZpspUtqCAJgSxXjxnkO82IoR
+	E9Plgjn1Q4RxlBaYMH2MWfO06PUjvJZMQrQdEzR6SxsneEy8E+gkvruZmrGP3q0ZfB41hOoxJLQ9R
+	EBu/scuACi+5HILnSki/gruELa/f98V4v7dlHY4+bnmnSGyVqqvAQuhYV+SBTHOlpABiRjp0nqmk8
+	UsZjpz1lQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8oJi-00018C-To; Thu, 20 Aug 2020 17:25:34 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8oJe-00017G-SQ; Thu, 20 Aug 2020 17:25:32 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 1012B30E;
- Thu, 20 Aug 2020 10:25:29 -0700 (PDT)
-Received: from [10.57.40.122] (unknown [10.57.40.122])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 7D2D63F66B;
- Thu, 20 Aug 2020 10:25:21 -0700 (PDT)
-Subject: Re: [PATCH 17/18] media/omap3isp: Clean up IOMMU workaround
-To: Sakari Ailus <sakari.ailus@iki.fi>
-References: <cover.1597931875.git.robin.murphy@arm.com>
- <11d8419744e4e744a9448180801b0c4683328afd.1597931876.git.robin.murphy@arm.com>
- <20200820165339.GK7145@valkosipuli.retiisi.org.uk>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <be010209-4abc-ba48-4e31-185427776a13@arm.com>
-Date: Thu, 20 Aug 2020 18:25:19 +0100
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+	id 1k8qPf-00033a-BL; Thu, 20 Aug 2020 19:39:51 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1k8qPb-00032S-FD
+ for linux-mediatek@lists.infradead.org; Thu, 20 Aug 2020 19:39:48 +0000
+Received: by mail-pg1-x541.google.com with SMTP id j21so1620766pgi.9
+ for <linux-mediatek@lists.infradead.org>; Thu, 20 Aug 2020 12:39:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=wXIlJgCi0Hc+qjW3EmvatA+4YXMKzONFgX9ZK9vfGVU=;
+ b=Byh29kc4cV3ARFPI/Wlk0/U6LwFlY3do928FTIcxGaxbCcgFUm40Fzo6EZmoH3jf45
+ +KHAV91KvPEzkBIC7pCOmnlKjPlO9OUxadtclYKUsLIjezrJ5oPyqd+OsJBpn6tvS2gD
+ VCLQnLIrRJqQajFge2GUlSju3XU+/A55+NmWf00MIxOvw0bxwSdj3zAI5bL5tGNznh6z
+ VHQsBRta/AHkcLLRJV/d9fgZ7ctTUA7xvEWhJGEkw/i6rv0IFX6M62y1ovizLidR9Ypg
+ IGYdP77Gjil0K1X56UqtZ8ROL3LlqTumNtyDnnHVrIJ5Clw03mIbYH0jxLXG63DW8k/5
+ alKg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=wXIlJgCi0Hc+qjW3EmvatA+4YXMKzONFgX9ZK9vfGVU=;
+ b=Czx8pD5EdeshBgdp+GwsL/eUPUXxwan3l98bn2PsIsnsJ8aF1CFXuLleYkgNRVtuOi
+ lQ5HldENZ+yNWNR/j7Bu/hDpNlTHjG3ZepE9XUdsCkuIzQXSlbsNYxlo5BPFq4Pvj7ex
+ 58T9RvBl/6T1Ym5SXKxIGl3bLx5O9S4C/d3uW6Kw0lN2RDqSNoOzz1UkRvR+5I3oN+5g
+ ntE8ylFnO8Iaca6ncFVKU91PbG7N4bvmIPwtJX9ETP6/k8oAFljO2E5yjD85VD7ip/yX
+ rm9TCdPjfkW4eOnWTEgNwn3l7zPFzo82dawJfFcatgbxti+VrWZ8G6pgKELASAX4jhiy
+ sOhw==
+X-Gm-Message-State: AOAM533JQMKnuLKbru1DkxSbAbYIn66oKHUiRGWP031C6Ty/QWNqh1vp
+ /kszjAqPI07x8/3V//1FF3FUKZ3PBWVMGiYJMnZZSw==
+X-Google-Smtp-Source: ABdhPJym/FbUKNACd+sG+GCzf3AR9j9nUiLJQxeLO2wEIc43GF74XHG+gaLLRAbnKyQMsx9vmJyOQlV2oIBMWjeQigQ=
+X-Received: by 2002:a63:fa09:: with SMTP id y9mr271539pgh.0.1597952383386;
+ Thu, 20 Aug 2020 12:39:43 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200820165339.GK7145@valkosipuli.retiisi.org.uk>
-Content-Language: en-GB
+References: <20200819161907.1155110-1-enric.balletbo@collabora.com>
+ <C9E59107-CE83-4554-9447-5DE5BEE09A3B@fw-web.de>
+ <CAGETcx9_A-E5b-JxT2G142mGxqoo8xqFNEgT+CNWt=oOv0Z5+w@mail.gmail.com>
+ <a23bac35d20eb002bdfb5263bf5dd213@kernel.org>
+ <CAGETcx-NpRzzeXYN-UBP1eAsC3s_AofSQ9rXOEmCjhLhKLnxWg@mail.gmail.com>
+ <14b8f4b9667d29ee25e25eb19c69e3f7@kernel.org>
+In-Reply-To: <14b8f4b9667d29ee25e25eb19c69e3f7@kernel.org>
+From: Saravana Kannan <saravanak@google.com>
+Date: Thu, 20 Aug 2020 12:39:07 -0700
+Message-ID: <CAGETcx9TB9HNd3WKwQ=p8VYy1-gLYqpGCtvk9QsdG1fvprROYQ@mail.gmail.com>
+Subject: Re: [PATCH] Revert "irqchip/mtk-sysirq: Convert to a platform driver"
+To: Marc Zyngier <maz@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200820_132531_130897_C29E6BF5 
-X-CRM114-Status: GOOD (  21.16  )
+X-CRM114-CacheID: sfid-20200820_153947_578735_BC9A9DE0 
+X-CRM114-Status: GOOD (  34.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,122 +93,93 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: geert+renesas@glider.be, dri-devel@lists.freedesktop.org,
- bjorn.andersson@linaro.org, linux-tegra@vger.kernel.org,
- thierry.reding@gmail.com, laurent.pinchart@ideasonboard.com, digetx@gmail.com,
- s-anna@ti.com, will@kernel.org, hch@lst.de, m.szyprowski@samsung.com,
- linux-samsung-soc@vger.kernel.org, joro@8bytes.org, magnus.damm@gmail.com,
- linux@armlinux.org.uk, jonathanh@nvidia.com, agross@kernel.org,
- yong.wu@mediatek.com, linux-media@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, inki.dae@samsung.com, vdumpa@nvidia.com,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org, sw0312.kim@samsung.com,
- iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org,
- t-kristo@ti.com, kyungmin.park@samsung.com
+Cc: Nicolas Boichat <drinkcat@chromium.org>,
+ Jason Cooper <jason@lakedaemon.net>, Hanks Chen <hanks.chen@mediatek.com>,
+ Frank Wunderlich <wichtig@fw-web.de>, LKML <linux-kernel@vger.kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Frank Wunderlich <linux@fw-web.de>, Collabora Kernel ML <kernel@collabora.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-08-20 17:53, Sakari Ailus wrote:
-> Hi Robin,
-> 
-> On Thu, Aug 20, 2020 at 04:08:36PM +0100, Robin Murphy wrote:
->> Now that arch/arm is wired up for default domains and iommu-dma, devices
->> behind IOMMUs will get mappings set up automatically as appropriate, so
->> there is no need for drivers to do so manually.
->>
->> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
-> 
-> Thanks for the patch.
+On Thu, Aug 20, 2020 at 7:53 AM Marc Zyngier <maz@kernel.org> wrote:
+>
+> On 2020-08-20 09:07, Saravana Kannan wrote:
+> > On Thu, Aug 20, 2020 at 12:56 AM Marc Zyngier <maz@kernel.org> wrote:
+> >>
+> >> On 2020-08-19 19:51, Saravana Kannan wrote:
+> >> > On Wed, Aug 19, 2020 at 9:52 AM Frank Wunderlich <wichtig@fw-web.de>
+> >> > wrote:
+> >> >>
+> >> >> hi,
+> >> >>
+> >> >> does the fix you've linked to my revert [1] not work in your case?
+> >> >>
+> >> >> [1] https://patchwork.kernel.org/patch/11718481/
+> >> >
+> >> > Thanks for pointing it out Frank. Also, might want to avoid top
+> >> > posting in the future.
+> >> >
+> >> > Enric, Can you please try that other fix and see if that solves your
+> >> > issue?
+> >>
+> >> I think Enric was clear that the driver does probe correctly
+> >> (meaning that he has the fix in his tree). It is everything else
+> >> that breaks, because none of the drivers on the platform are
+> >> equipped to defer their own probing.
+> >>
+> >> I think we need to change this works right now, meaning that we can't
+> >> blindly change the behaviour of *built-in* drivers. I'll see if I can
+> >> come up with something quickly, but I'll otherwise take Enric patch.
+> >
+> > Sounds fair Marc.
+> >
+> > Btw, Enric, out of curiosity, can you try adding "fw_devlink=on" to
+> > your kernel command line to see if it helps? It basically ensures
+> > proper probe ordering without depending on the drivers. There are some
+> > corner cases where it still can't work properly (too much to explain
+> > for a late night email), but if the platforms don't have those corner
+> > cases it'll work perfectly.
+> >
+> > I'm fine with the revert if Marc isn't able to find a quick fix to the
+> > drivers, but this might also fix your problem right away.
+>
+> I'm afraid there is no quick fix if we want to preserve the current
+> behavior with built-in drivers,
 
-Many thanks for testing so quickly!
+> and not having "fw_devlink=on" by
+> default makes it irrelevant for most people.
 
-> I haven't looked at the details but it seems that this causes the buffer
-> memory allocation to be physically contiguous, which causes a failure to
-> allocate video buffers of entirely normal size. I guess that was not
-> intentional?
+Agreed.
 
-Hmm, it looks like the device ends up with the wrong DMA ops, which 
-implies something didn't go as expected with the earlier IOMMU setup and 
-default domain creation. Chances are that either I missed some subtlety 
-in the omap_iommu change, or I've fundamentally misjudged how the ISP 
-probing works and it never actually goes down the of_iommu_configure() 
-path in the first place. Do you get any messages from the IOMMU layer 
-earlier on during boot?
+> fw_devlink also prevents my test platforms from booting (my rk3399
+> doesn't find its PCI devices with it), while the same kernel boots
+> just fine without it. It could well be that the corner case is
+> likely to be more prevalent than you seem to expect.
 
-Robin.
+Yeah, I know it has a few corner cases I need to deal with.
 
-> -----------------8<---------------------------
-> [  218.934448] WARNING: CPU: 0 PID: 1994 at mm/page_alloc.c:4859 __alloc_pages_nodemask+0x9c/0xb1c
-> [  218.943847] Modules linked in: omap3_isp videobuf2_dma_contig videobuf2_memops videobuf2_v4l2 videobuf2_common leds_as3645a smiapp v4l2_flash_led_class led_class_flash v4l2_fwnode smiapp_pll videodev leds_gpio mc led_class
-> [  218.964660] CPU: 0 PID: 1994 Comm: yavta Not tainted 5.9.0-rc1-dirty #1818
-> [  218.972442] Hardware name: Generic OMAP36xx (Flattened Device Tree)
-> [  218.978973] Backtrace:
-> [  218.981842] [<c010bf90>] (dump_backtrace) from [<c010c350>] (show_stack+0x20/0x24)
-> [  218.989715]  r7:00000000 r6:00000009 r5:c08f03bc r4:c08f2fef
-> [  218.995880] [<c010c330>] (show_stack) from [<c03d3328>] (dump_stack+0x28/0x30)
-> [  219.003631] [<c03d3300>] (dump_stack) from [<c012e324>] (__warn+0x100/0x118)
-> [  219.010955]  r5:c08f03bc r4:00000000
-> [  219.014953] [<c012e224>] (__warn) from [<c012e6f4>] (warn_slowpath_fmt+0x84/0xa8)
-> [  219.022949]  r9:c0232090 r8:c08f03bc r7:c0b08a88 r6:00000009 r5:000012fb r4:00000000
-> [  219.031036] [<c012e674>] (warn_slowpath_fmt) from [<c0232090>] (__alloc_pages_nodemask+0x9c/0xb1c)
-> [  219.040557]  r9:c0185c3c r8:00000000 r7:010ec000 r6:00000000 r5:0000000d r4:00000000
-> [  219.048858] [<c0231ff4>] (__alloc_pages_nodemask) from [<c01108f0>] (__dma_alloc_buffer.constprop.14+0x3c/0x90)
-> [  219.059570]  r10:00000cc0 r9:c0185c3c r8:00000000 r7:010ec000 r6:0000000d r5:c0b08a88
-> [  219.067901]  r4:00000cc0
-> [  219.070587] [<c01108b4>] (__dma_alloc_buffer.constprop.14) from [<c0110a6c>] (remap_allocator_alloc+0x34/0x7c)
-> [  219.081207]  r9:c0185c3c r8:00000247 r7:e6d7fb84 r6:010ec000 r5:c0b08a88 r4:00000001
-> [  219.089263] [<c0110a38>] (remap_allocator_alloc) from [<c010f4f4>] (__dma_alloc+0x124/0x21c)
-> [  219.098236]  r9:ed99fc10 r8:e69aa890 r7:00000000 r6:ffffffff r5:c0b08a88 r4:e6fdd680
-> [  219.106536] [<c010f3d0>] (__dma_alloc) from [<c010f69c>] (arm_dma_alloc+0x68/0x74)
-> [  219.114654]  r10:00000cc0 r9:c0185c3c r8:00000cc0 r7:e69aa890 r6:010ec000 r5:ed99fc10
-> [  219.122985]  r4:00000000
-> [  219.125671] [<c010f634>] (arm_dma_alloc) from [<c0185c3c>] (dma_alloc_attrs+0xe4/0x120)
-> [  219.134216]  r9:00000000 r8:e69aa890 r7:010ec000 r6:c0b08a88 r5:ed99fc10 r4:c010f634
-> [  219.142517] [<c0185b58>] (dma_alloc_attrs) from [<bf095c3c>] (vb2_dc_alloc+0xcc/0x108 [videobuf2_dma_contig])
-> [  219.153076]  r10:e6885ca8 r9:e6abfc48 r8:00000002 r7:00000000 r6:010ec000 r5:ed99fc10
-> [  219.161407]  r4:e69aa880
-> [  219.164184] [<bf095b70>] (vb2_dc_alloc [videobuf2_dma_contig]) from [<bf080fd0>] (__vb2_queue_alloc+0x258/0x4a4 [videobuf2_common])
-> [  219.176696]  r8:bf095b70 r7:010ec000 r6:00000000 r5:e6885ca8 r4:e6abfc00
-> [  219.183959] [<bf080d78>] (__vb2_queue_alloc [videobuf2_common]) from [<bf0833a0>] (vb2_core_reqbufs+0x408/0x498 [videobuf2_common])
-> [  219.196533]  r10:e6885ce8 r9:00000000 r8:e6d7fe24 r7:e6d7fcec r6:bf09ced4 r5:bf088580
-> [  219.204895]  r4:e6885ca8
-> [  219.207672] [<bf082f98>] (vb2_core_reqbufs [videobuf2_common]) from [<bf08e1cc>] (vb2_reqbufs+0x64/0x70 [videobuf2_v4l2])
-> [  219.219268]  r10:00000000 r9:bf032bc0 r8:c0145608 r7:bf0ad4a4 r6:e6885ca8 r5:00000000
-> [  219.227600]  r4:e6d7fe24
-> [  219.230499] [<bf08e168>] (vb2_reqbufs [videobuf2_v4l2]) from [<bf09d7b4>] (isp_video_reqbufs+0x40/0x54 [omap3_isp])
-> [  219.241607]  r7:bf0ad4a4 r6:e6d7fe24 r5:e6885c00 r4:e6cca928
-> [  219.247924] [<bf09d774>] (isp_video_reqbufs [omap3_isp]) from [<bf01de4c>] (v4l_reqbufs+0x4c/0x50 [videodev])
-> [  219.258514]  r7:bf0ad4a4 r6:e6885c00 r5:e6d7fe24 r4:e7efbec0
-> [  219.264984] [<bf01de00>] (v4l_reqbufs [videodev]) from [<bf01eeb4>] (__video_do_ioctl+0x2d8/0x414 [videodev])
-> [  219.275512]  r7:bf01de00 r6:00000000 r5:00000000 r4:e6cca2e0
-> [  219.281982] [<bf01ebdc>] (__video_do_ioctl [videodev]) from [<bf01fa1c>] (video_usercopy+0x144/0x508 [videodev])
-> [  219.292816]  r10:e7efbec0 r9:c0145608 r8:e6d7fe24 r7:00000000 r6:00000000 r5:bf01ebdc
-> [  219.300933]  r4:c0145608
-> [  219.304168] [<bf01f8d8>] (video_usercopy [videodev]) from [<bf01fdfc>] (video_ioctl2+0x1c/0x24 [videodev])
-> [  219.314453]  r10:e7fbfda0 r9:e7efbec0 r8:00000003 r7:00000000 r6:bee658f4 r5:c0145608
-> [  219.322784]  r4:e7efbec0
-> [  219.325775] [<bf01fde0>] (video_ioctl2 [videodev]) from [<bf01814c>] (v4l2_ioctl+0x50/0x64 [videodev])
-> [  219.335845] [<bf0180fc>] (v4l2_ioctl [videodev]) from [<c02654a0>] (vfs_ioctl+0x30/0x44)
-> [  219.344482]  r7:00000000 r6:e7efbec0 r5:bee658f4 r4:c0145608
-> [  219.350402] [<c0265470>] (vfs_ioctl) from [<c0265e9c>] (sys_ioctl+0xdc/0x7ec)
-> [  219.358062] [<c0265dc0>] (sys_ioctl) from [<c0100080>] (ret_fast_syscall+0x0/0x28)
-> [  219.366149] Exception stack(0xe6d7ffa8 to 0xe6d7fff0)
-> [  219.371673] ffa0:                   00000000 bee65c1a 00000003 c0145608 bee658f4 00000001
-> [  219.380157] ffc0: 00000000 bee65c1a 00000000 00000036 000009a0 00000000 0000ef30 010eb400
-> [  219.388885] ffe0: 0001716c bee65104 0000b588 b6e413ac
-> [  219.394409]  r10:00000036 r9:e6d7e000 r8:c0100244 r7:00000036 r6:00000000 r5:bee65c1a
-> [  219.402740]  r4:00000000
-> [  219.405426] irq event stamp: 5075
-> [  219.408905] hardirqs last  enabled at (5083): [<c01778b0>] console_unlock+0x4cc/0x524
-> [  219.417297] hardirqs last disabled at (5092): [<c01777ac>] console_unlock+0x3c8/0x524
-> [  219.425628] softirqs last  enabled at (4532): [<c01017d8>] __do_softirq+0x1f0/0x490
-> [  219.433837] softirqs last disabled at (4493): [<c0132c20>] irq_exit+0xe4/0x160
-> [  219.441558] ---[ end trace 8c56810633cf24db ]---
-> [  219.446502] omap3isp 480bc000.isp: dma_alloc_coherent of size 17743872 failed
-> -----------------8<---------------------------
-> 
+> I will probably end-up end-up queuing reverts for both mtk-sysirq,
+> mtk-cirq, and qcom-pdc (the first two can't be built as module with
+> mainline anyway, and I seem to remember that the latter caused some
+> controversy as well).
+>
+> As an experiment, I have pushed out a branch[1] that implements
+> a "hybrid" probe, retaining the previous early probe mechanism when
+> the driver is built-in, and letting things rip when built as a
+> module (if you do that, you hopefully know what you are doing).
+> I'd welcome some testing on affected platforms (I don't have
+> anything I can run mainline on that'd be affected).
+
+I like [1] and the code looks good. Hopefully, we can stick with that.
+
+-Saravana
 
 _______________________________________________
 Linux-mediatek mailing list
