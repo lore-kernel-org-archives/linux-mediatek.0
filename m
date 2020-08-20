@@ -2,139 +2,77 @@ Return-Path: <SRS0=4nm1=B6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+X-Spam-Status: No, score=-9.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4692CC433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 06:04:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AA1F2C433E3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 06:05:55 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 113C02078D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 06:04:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 77C09207DE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 06:05:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fjt1KOaY";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="DkmopyRC";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="yRC+Vy3N"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 113C02078D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="w7QcjR9E";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="tZisOrLY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 77C09207DE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=GTjWb9yp3fZRjg+gkcsRHygcvIyXL0r/UMyaufJPbOU=; b=fjt1KOaY4+jprMLUvXnme9Rc4
-	41r8k7cXLXfT6lAP9auHVk73FA4Ap1+k5q72KZy9xu8M0QciYPtHxPw0SiRmcR+/NWwqyT2BZ4EDT
-	cP92nbaCWVutPbwiolzdq6Zm/shTVne4O2H9/kWqPDhif2d5jMQzqRAXyH3nFNTiWB3ZqLJKCiASL
-	XmW9t64UKNNFoYo+jelDc4ZjwqC1eCS3GnMfz7gY76lapeurxy7j0bVRIS99Ns2ywzRKsZQLeptDZ
-	kMUffUcqohFv4zAuaQHtNBJAtiisOC3Si5KJshjQq3BBnkzfuDohAqB0lRGErUxMRSKJreqGuGtAx
-	B9MKExBzw==;
+	 bh=P7x9XwqwmvBfTKydFAXJiYt85jPRseiqoLbZ9aQYgF0=; b=w7QcjR9EMOrOytIrwrYGVRRLq
+	A393oMvZTxKX2c8Ihv+JR1PWgeG1UyDd79FGMW3wPNRnOsxzka7l26gV7yzM3VakHUrqkuSo3/jDM
+	dGYCl+6DVG0ddtejF3CnmZYUJO8mtVwhpOemLkYte9DN/lnE+bRxieRqtLV6nB/5TO4NFDXQXzEcc
+	meTIWbHSO4bIMOisVR79GUeIuIJaKKq32rqmRp3Y3X1+0/b3DQkVr7aVOrEwmIw+bSRvGBmzVBwE+
+	9LLfEdhs3OUWphQgeZEaaZC158a1NCs+ATFvcwfIlxvtNq6naFwThrxllvNveZ69e30OkDjpDNzLj
+	tcb/nHVEQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8dg1-0003Mg-Vy; Thu, 20 Aug 2020 06:03:54 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1k8dhp-0004zB-EJ; Thu, 20 Aug 2020 06:05:45 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8dfy-0003LE-CK; Thu, 20 Aug 2020 06:03:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1597903431; x=1629439431;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=sOXwJsCQWu+b4I7y3270lKaVRfDiZrhJKY8XBiceV0Q=;
- b=DkmopyRC0FnwIRMKESpLeeME93DW0L8cyMmZEMUsamdwY7YmX/hOCple
- f9UPCqmx2uadQijQFB6LFaC5vF/ITEZb3b9SmsiuTyNQIwNY3GBiu/inE
- dNcEcI5A48xiYOpbDTEKhQA7fvzGlT6YMIVx7i+9OXZApi9VxEIO/h1Cj
- 4jDtesUwACJIrth0skpp93VTocaMmeyTXgx8hGGqRDNYWqT2LG7JtXFLK
- YZlZqhljf81FdhKpUkrQbCYH3I6R952yHDRuX+Zmt0csZOrEkYhZ7szQn
- 5PyxiuonCTRoKPT5ItViAKcY7V++JUsZV+5PMXhkzyuNllRx8FsgpMk38 w==;
-IronPort-SDR: S3bT1xzbnBuEoNX+9Z0NH553IqVw2cY7wIATP2k+3sQiSjp14IPlFGCUmEr/U5tyD6b9k+Szfc
- NyUwRi+yKm/+I+5aTrmO/+KqN7n6hb1aNOuLOqdaDwp8Yw/WvMc7JK29CIHmdUte9qT7U99yak
- 7rTZ75hqBiwejlCtc5U7XRLN6ITcw2ff1YJRONe7yQ6KxbvWXgI3ntPnVdgMFNaEOBEvGn80+M
- eprZkn/QjU3/qMdXAx/V5of0ZQmXfg1IzlC0+LQlFk8j1wMlWJondn7arpVLtZ1Z7qBDdlI6eb
- zFw=
-X-IronPort-AV: E=Sophos;i="5.76,332,1592841600"; d="scan'208";a="146607435"
-Received: from mail-sn1nam04lp2054.outbound.protection.outlook.com (HELO
- NAM04-SN1-obe.outbound.protection.outlook.com) ([104.47.44.54])
- by ob1.hgst.iphmx.com with ESMTP; 20 Aug 2020 14:03:47 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WeGVGiVKmfEZcNCe+RsfzK54N6TsltllNQVDt2NrzM8DPIRp7ehnW9aSmjHDSo42JL6cgPmg3v3NUxhDEhz57WH8tBTkt+HHaZ9mbx4jND1tu47AK+14NDnSUtWutMBL0nd8waLCM8uj+bKv1LPSoi0dd4JRheh2pLbTU+Ru4NYb2xd2pOlNy+0DEl6qMRQa5XD0Pn2fgUgsy7E5pCQSyWED4N2kN714790MLo8B8Mh359iMq7h0+t3+cZqdKAo5HnJ9oaVtuTAlutyJRUWGc+lQJ47zFDpISvlc36UIwE84qcy6ZEpC5yYtUVQeyfisyAis0nvyCaBcOLf/jQmFbw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sOXwJsCQWu+b4I7y3270lKaVRfDiZrhJKY8XBiceV0Q=;
- b=Wn/yksH1cxbPpoK1W2Pke2svT2ClSDlL5gA/EJSO2gI7hkz8ZcDsq0hYvm/0ZM/7rS18r1MkPshIszTCxN9tFc0pME6oi7o5z+FQPoMQPX7RNzrhOT0E60fNnBQFgA9G3hHKJ1wc5k+ZSrz5N78MtsocjIAJUcWjUVxclUyDNQGa7nf1y4pU0MbMdVxsQ6LQuAb3JRqWvziOR+NCFQDFVbuVwKFLbDxrU1wC2W3Jtl5CzUb+3Wtx8Jw+TDsRkjA16VDm2zgzOS2qKGTCOKHcky5p+5n1QDd73WJWumSb0HXsMk3i9eVc5H4HrnvkXWucA+YjgUdYVk5YDzagWfSSpw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sOXwJsCQWu+b4I7y3270lKaVRfDiZrhJKY8XBiceV0Q=;
- b=yRC+Vy3Nx/3y8zeLwqJ6SDUGNM7f1Q9OvaO8bRZ4X4AF2emWB5BXVR6y0dB4qzspXovHyjgvLwCU5lnX6QPVgFG+2FBso/T7+SqRhHow+/BHGMcnOAFO0DcInoAme8ZJ9cp7opNQMhMwa4EnAokMlrrDfSv8KVfEImr2fUwurNc=
-Received: from BY5PR04MB6705.namprd04.prod.outlook.com (2603:10b6:a03:220::8)
- by BYAPR04MB5447.namprd04.prod.outlook.com (2603:10b6:a03:c5::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3283.16; Thu, 20 Aug
- 2020 06:03:45 +0000
-Received: from BY5PR04MB6705.namprd04.prod.outlook.com
- ([fe80::1083:4093:49fa:a3fd]) by BY5PR04MB6705.namprd04.prod.outlook.com
- ([fe80::1083:4093:49fa:a3fd%2]) with mapi id 15.20.3283.028; Thu, 20 Aug 2020
- 06:03:45 +0000
-From: Avri Altman <Avri.Altman@wdc.com>
-To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
- <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
- <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
- <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>
-Subject: RE: [PATCH] scsi: ufs-mediatek: Modify the minimum RX/TX lane count
- to 2
-Thread-Topic: [PATCH] scsi: ufs-mediatek: Modify the minimum RX/TX lane count
- to 2
-Thread-Index: AQHWdgTc2Id9u3Ln3Ua1qwoK877ZRalAgmqA
-Date: Thu, 20 Aug 2020 06:03:45 +0000
-Message-ID: <BY5PR04MB67057C0623170CFABE9E8AFBFC5A0@BY5PR04MB6705.namprd04.prod.outlook.com>
-References: <20200819084340.7021-1-stanley.chu@mediatek.com>
-In-Reply-To: <20200819084340.7021-1-stanley.chu@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mediatek.com; dkim=none (message not signed)
- header.d=none;mediatek.com; dmarc=none action=none header.from=wdc.com;
-x-originating-ip: [212.25.79.133]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 8db1184b-285a-4a59-dfb6-08d844cecc84
-x-ms-traffictypediagnostic: BYAPR04MB5447:
-x-microsoft-antispam-prvs: <BYAPR04MB54471D0DA44EAA6716359F5FFC5A0@BYAPR04MB5447.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:8273;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: YNBgw1mtvTp58eP0gvij6Fdt6w2nXWh1CJRRRnmkGnotlojNBdw5MO1hM+JpPGrgJGf+Fwh0pKL4mnLZHQJx3oKDDn3vNHJnRcUELgVaXPAAAiywlZzta7qI6HoBdc5JVIDjvqCXgeruPMh5mO4feyGeU5XBYEZFMVAseF0adkI2ZoTnOdVRM+lZTPryriNdyK1FFfpBpNRAv/PmgMpJ9iIgPXOmf2pgsqIceDRydjnwrQjj/XUCJNNP1XtFxTwDU4BLoEuTUR4yzNT0Cmmo5Ce+fjp+0lpy3onCrBO5xCruVH9U6zgzSWbFGwgQasqBjJRrrX8G0+lx43911xQgNw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY5PR04MB6705.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(396003)(376002)(136003)(39860400002)(346002)(366004)(6506007)(76116006)(2906002)(7416002)(186003)(83380400001)(33656002)(316002)(8676002)(54906003)(110136005)(5660300002)(71200400001)(66946007)(52536014)(66556008)(9686003)(86362001)(8936002)(4744005)(64756008)(478600001)(66446008)(26005)(55016002)(7696005)(4326008)(66476007);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: PHOGIh4suJWpg+gypi/j+EwCdKrWaBmf+mwVKZDQmjvJ5x7QGIGZuVzUx6Law1ApiD6xk1WLjIBSYy00Ev7evU+Oli9jnuBmuYbPRmkQh/l/wIu9LaE0guQPAjEtDxSNwyMq/quze6kU6aAudBBG71FuNTi8bEYZUfjiLXct9BWGW12YZ8IghtJp+5rd3PhfVk12Afxv9DmWz9Zdr3ce+CG+I6++x2u5ScbBXiVDfioycqlgEGyDVHw7fhaNLLdoGRmjKH734pHAPffIQP+UANq0vki2ep+XDQDteskWzRi6qQra81r25h67ORSv8jyPGxdqgpIR+3TfTl/6llPgqwtTe/IYyBVS7wrkOk6h4jBtKZhvvAoqaI/uPE6IYDReZeXdhGhQC9xV1lVKGvfmygU9lXK8XvBhGxYcI5RCxvQB/3FrpyD3SstMo9Unaj4MTlfOwzzQiXkmlm1hA9x/K7lZsVHwdPBgbJrgGvIhy+7/pzzhKJRrucAIJZLRsXAV4D1C40H8WDkdGa3NB0NHmGkONUNWMmilBbLJdMnXQNg36CcjZRCyE7ToSucuLUAOy5hflelofewWdbEaoEoG87ZBKEwB4x8A/67fqJEvZcuBqVPsj7qwJy8nyBBhax1Nef3ipqsg1DYagE0JSIRMIg==
-x-ms-exchange-transport-forked: True
+ id 1k8dhm-0004vl-HB; Thu, 20 Aug 2020 06:05:43 +0000
+X-UUID: 56f2c38856e5484e868213cc52a6f21b-20200819
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=bwYl3rcHgTIQ25qpI38KvxgwPkB5MaFcy5ozufwMs3c=; 
+ b=tZisOrLY/RP6d158eAu8WZFlJu2ogRjpthiBctRBBOxmxgnlle7QpbxG8Qap52qBKptWbTnVS2t7DAKiWYpfQqBO2KP8Fx9ilYYi6UVXlcSIoYA2mKJGzavDag8+TMRWu+8HyweCDlVpGYbiZHB4kJ2tuhKYNYimaX+qnlcWNOg=;
+X-UUID: 56f2c38856e5484e868213cc52a6f21b-20200819
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <yongqiang.niu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 332597887; Wed, 19 Aug 2020 22:05:37 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 19 Aug 2020 23:05:35 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 20 Aug 2020 14:05:33 +0800
+Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 20 Aug 2020 14:05:32 +0800
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Rob
+ Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v1 02/21] drm/mediatek: add component POSTMASK
+Date: Thu, 20 Aug 2020 14:03:59 +0800
+Message-ID: <1597903458-8055-3-git-send-email-yongqiang.niu@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1597903458-8055-1-git-send-email-yongqiang.niu@mediatek.com>
+References: <1597903458-8055-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6705.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8db1184b-285a-4a59-dfb6-08d844cecc84
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Aug 2020 06:03:45.7290 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: q6e1elYAWlc/NWkq2qYda2Yr2FwSVLwXAYnwAcZOeAiGMOSopLhwrHPIItbV/C+FDbaKYFw+nVRqSyOESXFLFg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5447
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200820_020350_741872_14EE403C 
-X-CRM114-Status: GOOD (  13.34  )
+X-CRM114-CacheID: sfid-20200820_020542_718058_BF37B6B3 
+X-CRM114-Status: GOOD (  16.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -146,45 +84,121 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "bvanassche@acm.org" <bvanassche@acm.org>,
- "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
- "cc.chou@mediatek.com" <cc.chou@mediatek.com>,
- "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
- "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "chaotian.jing@mediatek.com" <chaotian.jing@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This patch add component POSTMASK
+
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 31 +++++++++++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  1 +
+ include/linux/soc/mediatek/mtk-mmsys.h      |  1 +
+ 3 files changed, 33 insertions(+)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index 5e97ca5..8b9fb5e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -58,6 +58,10 @@
+ #define DISP_GAMMA_SIZE				0x0030
+ #define DISP_GAMMA_LUT				0x0700
  
-> 
-> From: Andy Teng <andy.teng@mediatek.com>
-> 
-> MediaTek UFS host starts to support 2 lanes, thus modify the
-> minimum lane count to 2.
-> 
-> This modification shall not impact old 1-lane host because
-> PA_CONNECTEDRXDATALANES and PA_CONNECTEDTXDATALANES will limit
-> the
-> target lanes properly during power mode change. So we could relax
-> the limitation in ufs_dev_params.
-> 
-> Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
-> Signed-off-by: Andy Teng <andy.teng@mediatek.com>
-> Singed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-Reviewed-by: Avri Altman <avri.altman@wdc.com>
-
-But then again, why those constants needs to be re-negotiated every pre-change?
-
-Thanks,
-Avri
-
++#define DISP_POSTMASK_EN			0x0000
++#define DISP_POSTMASK_CFG			0x0020
++#define DISP_POSTMASK_SIZE			0x0030
++
+ #define LUT_10BIT_MASK				0x03ff
+ 
+ #define OD_RELAYMODE				BIT(0)
+@@ -319,6 +323,24 @@ static void mtk_gamma_set(struct mtk_ddp_comp *comp,
+ 	}
+ }
+ 
++static void mtk_postmask_config(struct mtk_ddp_comp *comp, unsigned int w,
++			      unsigned int h, unsigned int vrefresh,
++			      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
++{
++	mtk_ddp_write(cmdq_pkt, w << 16 | h, comp, DISP_POSTMASK_SIZE);
++	mtk_ddp_write(cmdq_pkt, DITHER_RELAY_MODE, comp, DISP_POSTMASK_CFG);
++}
++
++static void mtk_postmask_start(struct mtk_ddp_comp *comp)
++{
++	writel(DITHER_EN, comp->regs + DISP_POSTMASK_EN);
++}
++
++static void mtk_postmask_stop(struct mtk_ddp_comp *comp)
++{
++	writel_relaxed(0x0, comp->regs + DISP_POSTMASK_EN);
++}
++
+ static const struct mtk_ddp_comp_funcs ddp_aal = {
+ 	.gamma_set = mtk_gamma_set,
+ 	.config = mtk_aal_config,
+@@ -346,6 +368,12 @@ static void mtk_gamma_set(struct mtk_ddp_comp *comp,
+ 	.stop = mtk_gamma_stop,
+ };
+ 
++static const struct mtk_ddp_comp_funcs ddp_postmask = {
++	.config = mtk_postmask_config,
++	.start = mtk_postmask_start,
++	.stop = mtk_postmask_stop,
++};
++
+ static const struct mtk_ddp_comp_funcs ddp_od = {
+ 	.config = mtk_od_config,
+ 	.start = mtk_od_start,
+@@ -372,6 +400,7 @@ static void mtk_gamma_set(struct mtk_ddp_comp *comp,
+ 	[MTK_DISP_MUTEX] = "mutex",
+ 	[MTK_DISP_OD] = "od",
+ 	[MTK_DISP_BLS] = "bls",
++	[MTK_DISP_POSTMASK] = "postmask",
+ };
+ 
+ struct mtk_ddp_comp_match {
+@@ -402,6 +431,8 @@ struct mtk_ddp_comp_match {
+ 	[DDP_COMPONENT_OVL_2L0]	= { MTK_DISP_OVL_2L,	0, NULL },
+ 	[DDP_COMPONENT_OVL_2L1]	= { MTK_DISP_OVL_2L,	1, NULL },
+ 	[DDP_COMPONENT_OVL_2L2]	= { MTK_DISP_OVL_2L,	2, NULL },
++	[DDP_COMPONENT_POSTMASK0]
++				= { MTK_DISP_POSTMASK,	0, &ddp_postmask },
+ 	[DDP_COMPONENT_PWM0]	= { MTK_DISP_PWM,	0, NULL },
+ 	[DDP_COMPONENT_PWM1]	= { MTK_DISP_PWM,	1, NULL },
+ 	[DDP_COMPONENT_PWM2]	= { MTK_DISP_PWM,	2, NULL },
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index 161201f..ae11b46 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -29,6 +29,7 @@ enum mtk_ddp_comp_type {
+ 	MTK_DISP_UFOE,
+ 	MTK_DSI,
+ 	MTK_DPI,
++	MTK_DISP_POSTMASK,
+ 	MTK_DISP_PWM,
+ 	MTK_DISP_MUTEX,
+ 	MTK_DISP_OD,
+diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
+index 268d95a..cc22c3e 100644
+--- a/include/linux/soc/mediatek/mtk-mmsys.h
++++ b/include/linux/soc/mediatek/mtk-mmsys.h
+@@ -31,6 +31,7 @@ enum mtk_ddp_comp_id {
+ 	DDP_COMPONENT_OVL_2L1,
+ 	DDP_COMPONENT_OVL_2L2,
+ 	DDP_COMPONENT_OVL1,
++	DDP_COMPONENT_POSTMASK0,
+ 	DDP_COMPONENT_PWM0,
+ 	DDP_COMPONENT_PWM1,
+ 	DDP_COMPONENT_PWM2,
+-- 
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
