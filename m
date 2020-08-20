@@ -2,85 +2,79 @@ Return-Path: <SRS0=4nm1=B6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F27B0C433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 00:14:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C8F7C433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 01:58:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C10E02075E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 00:14:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EE3D9207DA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 01:58:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zLQyMPH8";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="GZgsINVj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C10E02075E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EoxBT2I9";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="J1IlM1Yh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EE3D9207DA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wifisLGK1/3VM5gq4akpSvefwwMtw+u/y958HBqpcMc=; b=zLQyMPH8GlVer0CAl6RLHOp6O
-	YWcbJ/GBK5D19ChKbmDej+7ARvxMhEHm/xNcceTAfR2rJ6zgvfayPcTwpAE5UIjMqQVmNSSA/RS8a
-	63sTIMhPH6ucyD42dMKe8epoysuc5vfYtYMIkgWz3NMRe94FdK3lwkmuItY94FVem4g8jaWRDNPsw
-	rePEJEINPXh6a2gKty4XGy1wrkPMbVC0+TbJaGl04OVGI8pT37TcN5Bhp7QVKerB/3YsGjbxyQbP6
-	N8kXHB3cywAvuwVQpo05ekx823E6hTkIK9T7APXc/wMAXsfB9AH+4T6y+pK7FYkkRpEOLu3sB86O0
-	r1MWEFfRw==;
+	 bh=JUZZaJJYWWiyow6ZThypOHGlFq4aUI3OgxHzRlKTKPI=; b=EoxBT2I9h9IPkG4CDSyKvESQ8
+	Q/xt84t2MmmgnR9GtHhmfexkvCUtDsWOntXP3v4vbIHu4DqJ/aZCR0RJ9E6ZOjoWwht/XB6ShqQrn
+	Y7GUMeCFCFJmXp06xjghqdcH8hJZSaBL2LVsxipfCKt01MvHO38CXopnKmcE7FNnBwSQujrxwJRLr
+	237KU0isUW57BT8+qktGvlUnYBtwiIlEu3OjlYE9UbfYeNch5ExjHSymUOYpReQH2aXKiKlaZg/Kn
+	+Syn1qkEELJ6eIUpIfwMakQFYDHJkUDXCegwziBNFm+xn4x6fCOlT8hNQS+1RPEn11okN9WQaifIR
+	cPdIOBKog==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8YDV-0005xV-3v; Thu, 20 Aug 2020 00:14:05 +0000
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
+	id 1k8ZqW-0005k8-4v; Thu, 20 Aug 2020 01:58:28 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8YDR-0005wS-LO
- for linux-mediatek@lists.infradead.org; Thu, 20 Aug 2020 00:14:02 +0000
-Received: by mail-pj1-x1043.google.com with SMTP id mw10so191819pjb.2
- for <linux-mediatek@lists.infradead.org>; Wed, 19 Aug 2020 17:14:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=fSEYrX5ACCj62ngKp36MmVum7AWiPuR/R+X34o+7xuE=;
- b=GZgsINVjA/iPVwpqT/wdawM2LvRnSYS0j70GlPgoxgV9M4sanwWBFOsmDMGbuAVIRa
- fInE81nFqMhoKq8aeK2wXF23ckv+8mvNAsIAMNsaEXyznMXVLd+MFeyWTryUYHfbHhoL
- kS9sYMtCAKiqoxBbxYxGEpzZdonBKqbwUdIwbuasbQS/1Reg518ZvopiGNEAOnVxezPZ
- 0fc1L1znuoVPGemAh7QXesW7icu7VBfCaj9yWLu28K5Ix0mIvzQPh6O3AT9pCabC9Qlt
- bd32bNMb1gX+jDIWkWEa7SXABnbuMe2PsEgAvpvtqbTRKy6kOBIF4TCyzYtrGbZrqAki
- rq8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=fSEYrX5ACCj62ngKp36MmVum7AWiPuR/R+X34o+7xuE=;
- b=n93cGvCPs2F9msYsmRGaByBKbeon6+2Qh7gYbdhPoA8rz3E2eeXBnuZa/Baq0+egc3
- tw6gWNetUcGfb6bSuEhIuVJuMzLC6vDHmQBtNAScCE59jsUmcL4JMY8iDSI4mc6Cjj0u
- 6VKr9rxt3eSYukPSJviHHz3O7j/HhlOOCQQfOoLwLBa/d8jnAXS7K8N25/yqPiw1NQUv
- bD95meenpZG0wmbDszLzMl32IQ0hFG0dcYGfPMGbzxzsKvNUngyt5ACTrUKQRjkX+DNk
- h1njy111WPunsIZCDBfxMJ9XM553AZBTwrvdbikvBnb2Xm7Dt4CU6WoX43eNgHd3lxeN
- aDZQ==
-X-Gm-Message-State: AOAM530fsmXnRrDMOQ72VgzBYVjD9OXF/INPFlRumx4sdAAE1GrTlHQz
- 78nN1ha1lrIZ+fHjP/PryvY0AYdgZgXeN83aUOO+6A==
-X-Google-Smtp-Source: ABdhPJzl6F5E2iWMKn+8J0GL89vR8SvenD67R1x0TWLjRLW3Uw/3w3cewKL6RgzutABpZ4MtNfBH5ztYpmF9l9LEG8A=
-X-Received: by 2002:a17:90a:a10c:: with SMTP id
- s12mr340778pjp.32.1597882439098; 
- Wed, 19 Aug 2020 17:13:59 -0700 (PDT)
+ id 1k8ZqQ-0005j4-OJ; Thu, 20 Aug 2020 01:58:23 +0000
+X-UUID: 2f6d2dfb8f6d456aaa9b9ae808eede03-20200819
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=EFWywN6zeLfx3mYDlfu+y15rEMdXgmrxserMhZ887hk=; 
+ b=J1IlM1Yh+IHRVrTZB10AbJJjGKJIysMwZxenNX8Ft9rLwFeBaUaZpAmzSONDJdkWSaIEyuXNZrptSzF00gOsovKM15ESR3J7/GOay1iESu2CnkD99HcLAahG3JqX0QJF6e0qy2hezG2roBv4hil5Of18//EPupwNMU9T1Xqd/v8=;
+X-UUID: 2f6d2dfb8f6d456aaa9b9ae808eede03-20200819
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1685836257; Wed, 19 Aug 2020 17:58:18 -0800
+Received: from MTKMBS33DR.mediatek.inc (172.27.6.106) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 19 Aug 2020 18:58:17 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33DR.mediatek.inc
+ (172.27.6.106) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 20 Aug 2020 09:58:14 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 20 Aug 2020 09:58:10 +0800
+Message-ID: <1597888623.23067.19.camel@mhfsdcap03>
+Subject: Re: [PATCH 10/10] usb: udc: net2280: convert to
+ readl_poll_timeout_atomic()
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Alan Stern <stern@rowland.harvard.edu>
+Date: Thu, 20 Aug 2020 09:57:03 +0800
+In-Reply-To: <20200819145957.GA183103@rowland.harvard.edu>
+References: <1597840865-26631-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1597840865-26631-10-git-send-email-chunfeng.yun@mediatek.com>
+ <20200819145957.GA183103@rowland.harvard.edu>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-References: <20200730205112.2099429-1-ndesaulniers@google.com>
- <20200730205112.2099429-3-ndesaulniers@google.com>
- <CAN=-Rxty=Ux5rj-VQSZH-ryj1RiNJvy7mRE7uyx_YAndGtcq7Q@mail.gmail.com>
- <CAKwvOdkNLK2cRfY+DA0u3KuY5PuEss5Qox6X3zzpL053pARfrA@mail.gmail.com>
-In-Reply-To: <CAKwvOdkNLK2cRfY+DA0u3KuY5PuEss5Qox6X3zzpL053pARfrA@mail.gmail.com>
-From: Nick Desaulniers <ndesaulniers@google.com>
-Date: Wed, 19 Aug 2020 17:13:47 -0700
-Message-ID: <CAKwvOdnDyUw7TZ-ZsWQ=d7ZNPM_ziFnimmbYoVAexWmg2DL36A@mail.gmail.com>
-Subject: Re: [PATCH 2/4] ARM: backtrace-clang: add fixup for lr dereference
-To: Nathan Huckleberry <nhuck15@gmail.com>
+X-TM-SNTS-SMTP: 22D2EDA70C9DE4A57BACB86CCD4B9AF55312C82D351F55D5F12277413D9518212000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_201401_719048_A5CC0C97 
-X-CRM114-Status: GOOD (  16.33  )
+X-CRM114-CacheID: sfid-20200819_215822_985067_0C21BACB 
+X-CRM114-Status: GOOD (  21.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,55 +86,77 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chunyan Zhang <zhang.lyra@gmail.com>, Dmitry Safonov <0x7f454c46@gmail.com>,
- Russell King <linux@armlinux.org.uk>, "# 3.4.x" <stable@vger.kernel.org>,
- LKML <linux-kernel@vger.kernel.org>,
- clang-built-linux <clang-built-linux@googlegroups.com>,
- Miles Chen <miles.chen@mediatek.com>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Nathan Huckleberry <nhuck@google.com>,
- Lvqiang Huang <lvqiang.huang@unisoc.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: Felipe Balbi <balbi@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 10, 2020 at 3:33 PM Nick Desaulniers
-<ndesaulniers@google.com> wrote:
->
-> On Thu, Aug 6, 2020 at 3:39 PM Nathan Huckleberry <nhuck15@gmail.com> wrote:
-> >
-> > Mostly looks good to me. Just a minor nit.
-> >
-> > On Thu, Jul 30, 2020 at 3:51 PM Nick Desaulniers
-> > <ndesaulniers@google.com> wrote:
-> > > +/*
-> > > + * Accessing the address pointed to by the link register triggered an
-> > > + * exception, don't try to unwind through it.
-> > > + */
-> > > +bad_lr:                mov     sv_fp, #0
-> >
-> > It might be nice to emit a warning here since we'll
-> > only hit this case if something fishy is going on
-> > with the saved lr.
->
-> Yeah, something fishy is going on if that ever happens.  Let me create
-> a V2 with an additional print.
+On Wed, 2020-08-19 at 10:59 -0400, Alan Stern wrote:
+> On Wed, Aug 19, 2020 at 08:41:05PM +0800, Chunfeng Yun wrote:
+> > Use readl_poll_timeout_atomic() to simplify code
+> > 
+> > Cc: Alan Stern <stern@rowland.harvard.edu>
+> > Cc: Felipe Balbi <balbi@kernel.org>
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> >  drivers/usb/gadget/udc/net2280.c | 21 ++++++++++-----------
+> >  1 file changed, 10 insertions(+), 11 deletions(-)
+> > 
+> > diff --git a/drivers/usb/gadget/udc/net2280.c b/drivers/usb/gadget/udc/net2280.c
+> > index 7530bd9..f1a21f4 100644
+> > --- a/drivers/usb/gadget/udc/net2280.c
+> > +++ b/drivers/usb/gadget/udc/net2280.c
+> > @@ -52,6 +52,7 @@
+> >  #include <linux/usb/gadget.h>
+> >  #include <linux/prefetch.h>
+> >  #include <linux/io.h>
+> > +#include <linux/iopoll.h>
+> >  
+> >  #include <asm/byteorder.h>
+> >  #include <asm/irq.h>
+> > @@ -360,18 +361,16 @@ static inline void enable_pciirqenb(struct net2280_ep *ep)
+> >  static int handshake(u32 __iomem *ptr, u32 mask, u32 done, int usec)
+> >  {
+> >  	u32	result;
+> > +	int	ret;
+> >  
+> > -	do {
+> > -		result = readl(ptr);
+> > -		if (result == ~(u32)0)		/* "device unplugged" */
+> > -			return -ENODEV;
+> > -		result &= mask;
+> > -		if (result == done)
+> > -			return 0;
+> > -		udelay(1);
+> > -		usec--;
+> > -	} while (usec > 0);
+> > -	return -ETIMEDOUT;
+> > +	ret = readl_poll_timeout_atomic(ptr, result,
+> > +					((result & mask) == done ||
+> > +					 result == U32_MAX),
+> > +					1, usec);
+> > +	if (result == U32_MAX)		/* device unplugged */
+> > +		return -ENODEV;
+> > +
+> > +	return ret;
+> >  }
+> >  
+> >  static const struct usb_ep_ops net2280_ep_ops;
+> > -- 
+> 
+> Acked-by: Alan Stern <stern@rowland.harvard.edu>
+> 
+> However, I noticed that the kerneldoc for readl_poll_timeout_atomic() is 
+> out of date.  Can you fix it up?
+Ok, will do it, thanks
 
-FWIW, I ran into another bug on -next when trying to update this.
-
-Report:
-https://lore.kernel.org/lkml/20200811204729.1116341-1-ndesaulniers@google.com/
-Fix:
-https://lore.kernel.org/lkml/20200814212525.6118-1-john.ogness@linutronix.de/T/#t
-
-Then I got bogged down in planning for plumbers and other fires. I
-hope to revisit the series after plumbers.
--- 
-Thanks,
-~Nick Desaulniers
+> 
+> Alan Stern
 
 _______________________________________________
 Linux-mediatek mailing list
