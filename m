@@ -2,89 +2,77 @@ Return-Path: <SRS0=4nm1=B6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CA929C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 05:28:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3FEBEC433E3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 05:47:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 977052078D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 05:28:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 11A3120724
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 05:47:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="11Lf/x/i";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="HEfyNLiU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 977052078D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="syvt3ypJ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="O8UwMUw9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 11A3120724
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=y4mX/fE26QK2aOmQ1Ggd6Gn3mip/lZcId+Dtv+mrILg=; b=11Lf/x/ihQqqVCaS1sIwMZvrv+
-	IpoWsaB4eAqTeT0MiDvJ5F+ZudIAe2+9vTAjKjTyhzB/5gEzOVQqKILNzyfqfEmSune0fZ7/kUdf4
-	UBKXSEbR1sRb+NRHi4WR5a/3BeohH+NUM1URAgXEJ1wEc7VBU2NeyFMQj+5BkM+u9sJ+pWcADjxlE
-	s7M+JMkKJaxCP+TdUSkGbWxkQLSfo3hYbhFoH74aqAlYgvQd9uFdq6k4OWy+BjENOq3SeORR+V5QI
-	KQstrlwC+gP4XnrWXdYhNO2+SXHcQShTSrLLcjdMnkTXi7kcExFesFqRvZew0ADAZXI1np8vC76HO
-	33RPeCMw==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=86VzNfcCYrWzXEGW9OAshEYOG1uYc3Iy29p/J2ry9w8=; b=syvt3ypJV1xspypqJbKJJsTfI
+	AyML9SQZUy95lxWYZL1Nt6uIAdJMwmUGATE9H1SMaB5j/bmFMsWISzsKHB+xFZB6Dl1OzEH1eHjwB
+	SXabrVCZSSPZ3t090/L4cx7FJopRJycPP1rELpTDxeLdMqi3CpwZVpSg4iI2iyCSbyvaRHJpnhUG6
+	cdmUAuwoSLJfxxc6QqSfpI81aYlikTmIumtaoWp+tCUvbR8kaFh8cigVWsLPLNUHmmsEyJ9l5cMT8
+	OE9obis7ggsKxkZCg7iveTE0Z7P14cIGxNpHm1X31lgUCQpfGAsu7aLy4XHCxBVEJ6w4uUkVdwchh
+	648JnvYCw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8d7w-0007l2-GE; Thu, 20 Aug 2020 05:28:40 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1k8dQ8-0003Bm-87; Thu, 20 Aug 2020 05:47:28 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8d7u-0007jR-0B
- for linux-mediatek@lists.infradead.org; Thu, 20 Aug 2020 05:28:39 +0000
-Received: by mail-pl1-x642.google.com with SMTP id v16so529582plo.1
- for <linux-mediatek@lists.infradead.org>; Wed, 19 Aug 2020 22:28:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=TkqRaEwUdqUnb95WVdVlCchzd1qlKL9sLuvpdnztiiE=;
- b=HEfyNLiUb9BwML/beUT//mZWp7qHeGG07YaD02RicYRn6Bl0q7qQyZZ4/8niITC+nE
- n6OazTrtuuQpthpqGLbS+6gdm8SLsftJZqgSW0uL5xbLqeg9d+BZHWRYA2XL7D7xm9an
- V23P3cIGtpKRCKyPxZY6SBHZtZqtDs4xuZlnw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=TkqRaEwUdqUnb95WVdVlCchzd1qlKL9sLuvpdnztiiE=;
- b=K/1DSEJ4c9nIdB8usC2Zmzhie561UY3hhCtceeJHrZAkxXJrj+A3zJslfbfCFg2i4P
- kR49g0pNFdYqmQ51HgCp6HlfoLB/M1VgF1yrMfNH/WRELZHMfjyDTUM0qdjD//fmeuT/
- vx4q+3LX+dBNQbcnRzXpgbq3GIw5YDC/Xc9T5FkNj/Vc5YI74FeCvBqNWgeC8WrctYGn
- uUguyg5scPr04h7TGIlctb8TdgRoP0SRXtKUfZZv7ILnDdVbqmX/u33CPZRxBMdjFgMP
- atqjuK1sygOjauZjISv1Q04wUPppDBoaVzc+LBqY7pczPAlkuerJwSW7eH672mXz/zma
- CU/w==
-X-Gm-Message-State: AOAM531B/F69RlYOOnKXkCRSWDZZJdAxD/LiOJmgGYSUXAOzLbfDNM/g
- 9RuqkyZOfUAZMUNElubPaKSYsw==
-X-Google-Smtp-Source: ABdhPJzG23peNv1YpN3uI1M3H6MtjjsKVYg0YIfEoz+DOlg57gm3MMONcE+5PjCcUZgPUVW9OXt/ow==
-X-Received: by 2002:a17:90a:6343:: with SMTP id
- v3mr1089145pjs.163.1597901314127; 
- Wed, 19 Aug 2020 22:28:34 -0700 (PDT)
-Received: from ikjn-p920.tpe.corp.google.com
- ([2401:fa00:1:10:f693:9fff:fef4:a8fc])
- by smtp.gmail.com with ESMTPSA id j198sm1110740pfd.205.2020.08.19.22.28.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 Aug 2020 22:28:33 -0700 (PDT)
-From: Ikjoon Jang <ikjn@chromium.org>
-To: Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Bayi Cheng <bayi.cheng@mediatek.com>, Chuanhong Guo <gch981213@gmail.com>,
- linux-spi@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] dt-bindings: spi: Convert spi-mtk-nor to json-schema
-Date: Thu, 20 Aug 2020 13:28:27 +0800
-Message-Id: <20200820052827.2642164-1-ikjn@chromium.org>
-X-Mailer: git-send-email 2.28.0.220.ged08abb693-goog
+ id 1k8dQ4-00038P-IN; Thu, 20 Aug 2020 05:47:26 +0000
+X-UUID: b80263587d1843689c2f5f90ce16045e-20200819
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=oAP5zwZxDjrS5iQRAq1dYHyOyODPcgJHQ5kTHeYS9H8=; 
+ b=O8UwMUw9lSVGZvMhCMgvO1bsTRmAorNEsDp/Jsfl7mWccv+tJnK6iOVbfWcLdxEt5rA1rHZoEFMv1eiTDkvQ66AVTGjEF1BFsyEU1KFxgr2hTTUDAGPb4VRAu1R1wN9yUlCK2xgUkcI9LtKKi7JxC2KFkzL4u2aV+GBm5AUjDF8=;
+X-UUID: b80263587d1843689c2f5f90ce16045e-20200819
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 301967878; Wed, 19 Aug 2020 21:47:15 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 19 Aug 2020 22:47:13 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 20 Aug 2020 13:47:09 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 20 Aug 2020 13:47:08 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v2 02/11] usb: early: ehci-dbgp: convert to
+ readl_poll_timeout_atomic()
+Date: Thu, 20 Aug 2020 13:45:40 +0800
+Message-ID: <1597902349-8998-2-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1597902349-8998-1-git-send-email-chunfeng.yun@mediatek.com>
+References: <1597902349-8998-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: E1099680E78D2534BB6ACBE72C4DD5FBD99438982FDEED0B0161D86D052EE3452000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200820_012838_085311_49394591 
-X-CRM114-Status: GOOD (  17.40  )
+X-CRM114-CacheID: sfid-20200820_014724_836089_DB452DDC 
+X-CRM114-Status: GOOD (  15.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,168 +84,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ikjoon Jang <ikjn@chromium.org>
+Cc: Felipe Balbi <balbi@kernel.org>, Petr Mladek <pmladek@suse.com>,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-mediatek@lists.infradead.org,
+ "Eric W. Biederman" <ebiederm@xmission.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert Mediatek ARM SOC's serial NOR flash controller binding
-to json-schema format.
+Use readl_poll_timeout_atomic() to simplify code
 
-Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+Cc: "Eric W. Biederman" <ebiederm@xmission.com>
+Cc: Petr Mladek <pmladek@suse.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- .../bindings/spi/mediatek,spi-mtk-nor.yaml    | 82 +++++++++++++++++++
- .../devicetree/bindings/spi/spi-mtk-nor.txt   | 47 -----------
- 2 files changed, 82 insertions(+), 47 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
- delete mode 100644 Documentation/devicetree/bindings/spi/spi-mtk-nor.txt
+v2: no changes
+---
+ drivers/usb/early/ehci-dbgp.c | 15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
-new file mode 100644
-index 000000000000..1e4bcf691539
---- /dev/null
-+++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
-@@ -0,0 +1,82 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/spi/mediatek,spi-mtk-nor.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Serial NOR flash controller for MediaTek ARM SoCs
-+
-+maintainers:
-+  - Bayi Cheng <bayi.cheng@mediatek.com>
-+  - Chuanhong Guo <gch981213@gmail.com>
-+
-+description: |
-+  This spi controller support single, dual, or quad mode transfer for
-+  SPI NOR flash. There should be only one spi slave device following
-+  generic spi bindings. It's not recommended to use this controller
-+  for devices other than SPI NOR flash due to limited transfer
-+  capability of this controller.
-+
-+allOf:
-+  - $ref: /spi/spi-controller.yaml#
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+          - enum:
-+              - mediatek,mt2701-nor
-+              - mediatek,mt2712-nor
-+              - mediatek,mt7622-nor
-+              - mediatek,mt7623-nor
-+              - mediatek,mt7629-nor
-+          - enum:
-+              - mediatek,mt8173-nor
-+      - items:
-+          - const: mediatek,mt8173-nor
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: clock used for spi bus
-+      - description: clock used for controller
-+
-+  clock-names:
-+    items:
-+      - const: "spi"
-+      - const: "sf"
-+
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - clock-names
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8173-clk.h>
-+
-+    soc {
-+      #address-cells = <2>;
-+      #size-cells = <2>;
-+
-+      nor_flash: spi@1100d000 {
-+        compatible = "mediatek,mt8173-nor";
-+        reg = <0 0x1100d000 0 0xe0>;
-+        interrupts = <&spi_flash_irq>;
-+        clocks = <&pericfg CLK_PERI_SPI>, <&topckgen CLK_TOP_SPINFI_IFR_SEL>;
-+        clock-names = "spi", "sf";
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        flash@0 {
-+          compatible = "jedec,spi-nor";
-+          reg = <0>;
-+        };
-+      };
-+    };
-+
-diff --git a/Documentation/devicetree/bindings/spi/spi-mtk-nor.txt b/Documentation/devicetree/bindings/spi/spi-mtk-nor.txt
-deleted file mode 100644
-index 984ae7fd4f94..000000000000
---- a/Documentation/devicetree/bindings/spi/spi-mtk-nor.txt
-+++ /dev/null
-@@ -1,47 +0,0 @@
--* Serial NOR flash controller for MediaTek ARM SoCs
+diff --git a/drivers/usb/early/ehci-dbgp.c b/drivers/usb/early/ehci-dbgp.c
+index b075dbf..45b42d8 100644
+--- a/drivers/usb/early/ehci-dbgp.c
++++ b/drivers/usb/early/ehci-dbgp.c
+@@ -15,6 +15,7 @@
+ #include <linux/console.h>
+ #include <linux/errno.h>
+ #include <linux/init.h>
++#include <linux/iopoll.h>
+ #include <linux/pci_regs.h>
+ #include <linux/pci_ids.h>
+ #include <linux/usb/ch9.h>
+@@ -161,17 +162,11 @@ static inline u32 dbgp_pid_read_update(u32 x, u32 tok)
+ static int dbgp_wait_until_complete(void)
+ {
+ 	u32 ctrl;
+-	int loop = DBGP_TIMEOUT;
 -
--Required properties:
--- compatible: 	  For mt8173, compatible should be "mediatek,mt8173-nor",
--		  and it's the fallback compatible for other Soc.
--		  For every other SoC, should contain both the SoC-specific compatible
--		  string and "mediatek,mt8173-nor".
--		  The possible values are:
--		  "mediatek,mt2701-nor", "mediatek,mt8173-nor"
--		  "mediatek,mt2712-nor", "mediatek,mt8173-nor"
--		  "mediatek,mt7622-nor", "mediatek,mt8173-nor"
--		  "mediatek,mt7623-nor", "mediatek,mt8173-nor"
--		  "mediatek,mt7629-nor", "mediatek,mt8173-nor"
--		  "mediatek,mt8173-nor"
--- reg: 		  physical base address and length of the controller's register
--- interrupts:	  Interrupt number used by the controller.
--- clocks: 	  the phandle of the clocks needed by the nor controller
--- clock-names: 	  the names of the clocks
--		  the clocks should be named "spi" and "sf". "spi" is used for spi bus,
--		  and "sf" is used for controller, these are the clocks witch
--		  hardware needs to enabling nor flash and nor flash controller.
--		  See Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
--- #address-cells: should be <1>
--- #size-cells:	  should be <0>
--
--There should be only one spi slave device following generic spi bindings.
--It's not recommended to use this controller for devices other than SPI NOR
--flash due to limited transfer capability of this controller.
--
--Example:
--
--nor_flash: spi@1100d000 {
--	compatible = "mediatek,mt8173-nor";
--	reg = <0 0x1100d000 0 0xe0>;
--	interrupts = <&spi_flash_irq>;
--	clocks = <&pericfg CLK_PERI_SPI>,
--		 <&topckgen CLK_TOP_SPINFI_IFR_SEL>;
--	clock-names = "spi", "sf";
--	#address-cells = <1>;
--	#size-cells = <0>;
--
--	flash@0 {
--		compatible = "jedec,spi-nor";
--		reg = <0>;
--	};
--};
--
+-	do {
+-		ctrl = readl(&ehci_debug->control);
+-		/* Stop when the transaction is finished */
+-		if (ctrl & DBGP_DONE)
+-			break;
+-		udelay(1);
+-	} while (--loop > 0);
++	int ret;
+ 
+-	if (!loop)
++	ret = readl_poll_timeout_atomic(&ehci_debug->control, ctrl,
++				(ctrl & DBGP_DONE), 1, DBGP_TIMEOUT);
++	if (ret)
+ 		return -DBGP_TIMEOUT;
+ 
+ 	/*
 -- 
-2.28.0.220.ged08abb693-goog
-
-
+1.9.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
