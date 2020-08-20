@@ -5,18 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9049CC433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 15:11:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AD27CC433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 15:11:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 46CE2204EA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 15:11:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5951C204EA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 15:11:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1OCtIHst"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 46CE2204EA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XfbV18jY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5951C204EA
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,39 +25,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=pCLO7sKw9AFSdFi5qY5U/u9i9aPp5X4OLsTkN9xUMSw=; b=1OCtIHstj+NNtblz+ciVQ2PnK
-	QJgx5a7kTlgCNnbYiEum6KOYfn0AAK2JbZavRnFHrMsloR1KjXQWjaruL+OWj4Xy13Tgl0OfuexxU
-	vKMrDYEKZjLOiVsGKOvlk05amE3yc/gA/ptSD7+7zV5B4txCA7kTDJ1aVu5svBTtBqPEgrOqQFVRB
-	zv5dWLdjy7yU4PhPiILauo0WRaLRkLz2qkEqwZecjPXDlvnvWHt3KlYcGKMcM7QB8KT2tSbCjT9Mw
-	mFcuAymA6uSuQDtFbaNoUm2Jcr4jt3LfbnRPdKhzWVOwGiHLqJDYJoy0Edhi+QPfllKBKryQTMjCT
-	EgkXhqUTA==;
+	 bh=Yl8iY1UQyDQIBIApOhEUzYmz5+caEUWJGW04QnGeCGE=; b=XfbV18jY6IIDEMCeYOEaAsQRO
+	zDBCBvS4zNCMsHNRYeI6HcxyjeyUvXpCn1TZp6wUgEFo/cg/a7kpvNW6wh2yqzunp/JLGHiL+JQzO
+	jH2mJgaP6W103j4zwhyZVRQ5OnUD1QiERQe/DCgc/5TTQyI/9YXxJ4tgbrMVlGLVHARMKfIX1B6hF
+	b5h2R+HNUQqVKP6IKOX8bG+l6tF0XTryn9Vq0sOlrMbRmknEONdDqajuQBfxwcOvJmgIRElbqXJmf
+	/qBcrKf1gGVy4Lwsg5/tFQE1EThKvAq2t37L1L2d5OgqFuQnQMF1Sek+bhRjjcQbKNzpNjEnsxnxM
+	+5xNJjFSQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8mDx-0003d0-D5; Thu, 20 Aug 2020 15:11:29 +0000
+	id 1k8mDy-0003de-8D; Thu, 20 Aug 2020 15:11:30 +0000
 Received: from foss.arm.com ([217.140.110.172])
  by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8mBx-0002Ft-3L; Thu, 20 Aug 2020 15:09:34 +0000
+ id 1k8mBx-0002Fr-3a; Thu, 20 Aug 2020 15:09:35 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 7D16D1424;
- Thu, 20 Aug 2020 08:09:20 -0700 (PDT)
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 4642D142F;
+ Thu, 20 Aug 2020 08:09:24 -0700 (PDT)
 Received: from e121345-lin.cambridge.arm.com (e121345-lin.cambridge.arm.com
  [10.1.196.37])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id DE4803F6CF;
- Thu, 20 Aug 2020 08:09:16 -0700 (PDT)
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id B557C3F6CF;
+ Thu, 20 Aug 2020 08:09:20 -0700 (PDT)
 From: Robin Murphy <robin.murphy@arm.com>
 To: hch@lst.de,
 	joro@8bytes.org,
 	linux@armlinux.org.uk
-Subject: [PATCH 07/18] iommu/arm-smmu: Remove arch/arm workaround
-Date: Thu, 20 Aug 2020 16:08:26 +0100
-Message-Id: <ef39be82b98d2471c9e99c82d0eeda37ba30e4fa.1597931876.git.robin.murphy@arm.com>
+Subject: [PATCH 08/18] iommu/renesas: Remove arch/arm workaround
+Date: Thu, 20 Aug 2020 16:08:27 +0100
+Message-Id: <8489dd1d9224ad60e63b9903c40832481eab622f.1597931876.git.robin.murphy@arm.com>
 X-Mailer: git-send-email 2.28.0.dirty
 In-Reply-To: <cover.1597931875.git.robin.murphy@arm.com>
 References: <cover.1597931875.git.robin.murphy@arm.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200820_110925_269591_59FE502F 
-X-CRM114-Status: GOOD (  13.91  )
+X-CRM114-CacheID: sfid-20200820_110925_359736_2C16FD37 
+X-CRM114-Status: GOOD (  19.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,35 +86,130 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Now that arch/arm is wired up for default domains and iommu-dma, remove
-the add_device workaround.
+the shared mapping workaround and rely on groups there as well.
 
 Signed-off-by: Robin Murphy <robin.murphy@arm.com>
 ---
- drivers/iommu/arm/arm-smmu/arm-smmu.c | 10 ----------
- 1 file changed, 10 deletions(-)
+ drivers/iommu/ipmmu-vmsa.c | 69 --------------------------------------
+ 1 file changed, 69 deletions(-)
 
-diff --git a/drivers/iommu/arm/arm-smmu/arm-smmu.c b/drivers/iommu/arm/arm-smmu/arm-smmu.c
-index 09c42af9f31e..4e52d8cb67dd 100644
---- a/drivers/iommu/arm/arm-smmu/arm-smmu.c
-+++ b/drivers/iommu/arm/arm-smmu/arm-smmu.c
-@@ -1164,17 +1164,7 @@ static int arm_smmu_attach_dev(struct iommu_domain *domain, struct device *dev)
- 		return -ENXIO;
- 	}
+diff --git a/drivers/iommu/ipmmu-vmsa.c b/drivers/iommu/ipmmu-vmsa.c
+index 0f18abda0e20..8ad74a76f402 100644
+--- a/drivers/iommu/ipmmu-vmsa.c
++++ b/drivers/iommu/ipmmu-vmsa.c
+@@ -26,15 +26,6 @@
+ #include <linux/slab.h>
+ #include <linux/sys_soc.h>
  
--	/*
--	 * FIXME: The arch/arm DMA API code tries to attach devices to its own
--	 * domains between of_xlate() and probe_device() - we have no way to cope
--	 * with that, so until ARM gets converted to rely on groups and default
--	 * domains, just say no (but more politely than by dereferencing NULL).
--	 * This should be at least a WARN_ON once that's sorted.
--	 */
- 	cfg = dev_iommu_priv_get(dev);
--	if (!cfg)
--		return -ENODEV;
+-#if defined(CONFIG_ARM) && !defined(CONFIG_IOMMU_DMA)
+-#include <asm/dma-iommu.h>
+-#else
+-#define arm_iommu_create_mapping(...)	NULL
+-#define arm_iommu_attach_device(...)	-ENODEV
+-#define arm_iommu_release_mapping(...)	do {} while (0)
+-#define arm_iommu_detach_device(...)	do {} while (0)
+-#endif
 -
- 	smmu = cfg->smmu;
+ #define IPMMU_CTX_MAX		8U
+ #define IPMMU_CTX_INVALID	-1
  
- 	ret = arm_smmu_rpm_get(smmu);
+@@ -67,7 +58,6 @@ struct ipmmu_vmsa_device {
+ 	s8 utlb_ctx[IPMMU_UTLB_MAX];
+ 
+ 	struct iommu_group *group;
+-	struct dma_iommu_mapping *mapping;
+ };
+ 
+ struct ipmmu_vmsa_domain {
+@@ -805,50 +795,6 @@ static int ipmmu_of_xlate(struct device *dev,
+ 	return ipmmu_init_platform_device(dev, spec);
+ }
+ 
+-static int ipmmu_init_arm_mapping(struct device *dev)
+-{
+-	struct ipmmu_vmsa_device *mmu = to_ipmmu(dev);
+-	int ret;
+-
+-	/*
+-	 * Create the ARM mapping, used by the ARM DMA mapping core to allocate
+-	 * VAs. This will allocate a corresponding IOMMU domain.
+-	 *
+-	 * TODO:
+-	 * - Create one mapping per context (TLB).
+-	 * - Make the mapping size configurable ? We currently use a 2GB mapping
+-	 *   at a 1GB offset to ensure that NULL VAs will fault.
+-	 */
+-	if (!mmu->mapping) {
+-		struct dma_iommu_mapping *mapping;
+-
+-		mapping = arm_iommu_create_mapping(&platform_bus_type,
+-						   SZ_1G, SZ_2G);
+-		if (IS_ERR(mapping)) {
+-			dev_err(mmu->dev, "failed to create ARM IOMMU mapping\n");
+-			ret = PTR_ERR(mapping);
+-			goto error;
+-		}
+-
+-		mmu->mapping = mapping;
+-	}
+-
+-	/* Attach the ARM VA mapping to the device. */
+-	ret = arm_iommu_attach_device(dev, mmu->mapping);
+-	if (ret < 0) {
+-		dev_err(dev, "Failed to attach device to VA mapping\n");
+-		goto error;
+-	}
+-
+-	return 0;
+-
+-error:
+-	if (mmu->mapping)
+-		arm_iommu_release_mapping(mmu->mapping);
+-
+-	return ret;
+-}
+-
+ static struct iommu_device *ipmmu_probe_device(struct device *dev)
+ {
+ 	struct ipmmu_vmsa_device *mmu = to_ipmmu(dev);
+@@ -862,20 +808,8 @@ static struct iommu_device *ipmmu_probe_device(struct device *dev)
+ 	return &mmu->iommu;
+ }
+ 
+-static void ipmmu_probe_finalize(struct device *dev)
+-{
+-	int ret = 0;
+-
+-	if (IS_ENABLED(CONFIG_ARM) && !IS_ENABLED(CONFIG_IOMMU_DMA))
+-		ret = ipmmu_init_arm_mapping(dev);
+-
+-	if (ret)
+-		dev_err(dev, "Can't create IOMMU mapping - DMA-OPS will not work\n");
+-}
+-
+ static void ipmmu_release_device(struct device *dev)
+ {
+-	arm_iommu_detach_device(dev);
+ }
+ 
+ static struct iommu_group *ipmmu_find_group(struct device *dev)
+@@ -905,7 +839,6 @@ static const struct iommu_ops ipmmu_ops = {
+ 	.iova_to_phys = ipmmu_iova_to_phys,
+ 	.probe_device = ipmmu_probe_device,
+ 	.release_device = ipmmu_release_device,
+-	.probe_finalize = ipmmu_probe_finalize,
+ 	.device_group = IS_ENABLED(CONFIG_ARM) && !IS_ENABLED(CONFIG_IOMMU_DMA)
+ 			? generic_device_group : ipmmu_find_group,
+ 	.pgsize_bitmap = SZ_1G | SZ_2M | SZ_4K,
+@@ -1118,8 +1051,6 @@ static int ipmmu_remove(struct platform_device *pdev)
+ 	iommu_device_sysfs_remove(&mmu->iommu);
+ 	iommu_device_unregister(&mmu->iommu);
+ 
+-	arm_iommu_release_mapping(mmu->mapping);
+-
+ 	ipmmu_device_reset(mmu);
+ 
+ 	return 0;
 -- 
 2.28.0.dirty
 
