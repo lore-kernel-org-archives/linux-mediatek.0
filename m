@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 77556C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 11:32:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3B88DC433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 11:32:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4467C207BB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 11:32:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0B87F2076E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 11:32:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XR0w3Cjv";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Tc/fI4EM"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4467C207BB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YHObD9XK";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="TbxbBa3P"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0B87F2076E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=U/6acfs1z7TT1ubxsfsTO/udwvH7/6X+Y9Dssx60L8I=; b=XR0w3CjvvR/4UhPonQoWHNh/3
-	DqEi0DTGVdtEYOOzI3Lm7FEwx9SLpkJGeKhzhay66bXr1OMZIhZRcJ2VMXSQPDtySGBRP62HUOQDH
-	obIKLakGBF7QRVO6OqJFAzwpih8dXEBh0k8bPfktZ24kclbd6nXiQ1LVCi4rg+xJewY4Z/qAnMLRF
-	n44EHFIRhDXuL9zV0lXLSXWBf0h3aaKsXfW9MDk2lOFH41MJU19gRqY98wLZPUxYBBZCaWdKHovQ3
-	dDFj+aFxAkGiPIiaguFWRe4RaRfvVrSrZDCUJubgrQAChG0s5WWG482vywp314+kRfIsng2uuDUV+
-	KNvSuNkyQ==;
+	 bh=KZiN/4GsM4p6clomOjLjGyf1MzXSQYXzRZQGrTYMTrQ=; b=YHObD9XKiefxdl6kZPTmzLCxI
+	XmNCIKEWc9MlEufPzpe0Bt2/HSjbN6nXaVZljd5izztIm4AJrHkIsjJ0JN0Pgh7ddkWcs0gTRKdDv
+	ICmiZLMeHZEIzx7fvFCFWI+EUqgz/TFfNRZVLVZn12FoZxampbSk+i6u/R0udZVUUQoKitGboHEMN
+	h+lyzu+P1Oc5Rb0PcAZEFmzoLlZ8JR5k1PshfaXtiTQhYXF2lLV3er6f/smvtwxGTXvcDNrOd/ep6
+	mxH2yxbErAkwSuPsLpf/abQNe1ie/XdysPCeP6glZi6UeQVmnz31MsP1MhJ8bNdhUwMz9ek74UHgV
+	6eTN8y5Pg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8ioA-0004bB-C9; Thu, 20 Aug 2020 11:32:39 +0000
+	id 1k8ioC-0004c4-MP; Thu, 20 Aug 2020 11:32:40 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8io7-0004aA-St; Thu, 20 Aug 2020 11:32:37 +0000
-X-UUID: 49bbfeb43fe8490885f32515135b19d5-20200820
+ id 1k8io9-0004af-GP; Thu, 20 Aug 2020 11:32:38 +0000
+X-UUID: 9f5a521fe56f458f8d2dd0886d50da1d-20200820
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=nqIW9nkZa6YaLLhjqZ7kmnfueTv+c8ATeMbx5VhqlUE=; 
- b=Tc/fI4EMfmLjy9zxEJbWmDDY75ukJE2Z7a+frAH0rONccXWGgcYg/1Di7gnfYz6+831/IxecAqWkotK9W7Btlr/WrMmeEojTpfK+hHFZPRI4sgLdpnU5u8QBTngBrOnbjbFwKCO//DcxHwWYi4W1v4aWvWwd58BWbflsaKzARa4=;
-X-UUID: 49bbfeb43fe8490885f32515135b19d5-20200820
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=rUjS11blM0i2nbEVgBDdodrrb27dEhfpxPSUWZxykdw=; 
+ b=TbxbBa3PsrVkFxwN8+QcCy9vfx1xQcCRTAsGU/4KfjNcFy4cpFlO8V8DQodunCjWewiNH+wboIYLw6HlihOZIENf54JOF3utSZFpDoTFj9jz5qz5HXrKd6LB2ItUWRdHW/3Qy8cGznOkmAdhxJNLI9tpx06Z61auhbIcuF6MQHc=;
+X-UUID: 9f5a521fe56f458f8d2dd0886d50da1d-20200820
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 711926127; Thu, 20 Aug 2020 03:32:30 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ with ESMTP id 681267613; Thu, 20 Aug 2020 03:32:33 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 20 Aug 2020 04:32:29 -0700
+ 15.0.1497.2; Thu, 20 Aug 2020 04:32:31 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 20 Aug 2020 19:32:24 +0800
+ MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 20 Aug 2020 19:32:28 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 20 Aug 2020 19:32:23 +0800
+ Transport; Thu, 20 Aug 2020 19:32:25 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Felipe Balbi <balbi@kernel.org>, Florian Fainelli <f.fainelli@gmail.com>
-Subject: [PATCH v2 04/11] usb: gadget: bdc: fix warning of embedded function
- name
-Date: Thu, 20 Aug 2020 19:30:39 +0800
-Message-ID: <1597923046-12535-4-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH v2 06/11] usb: gadget: bdc: add identifier name for function
+ declaraion
+Date: Thu, 20 Aug 2020 19:30:41 +0800
+Message-ID: <1597923046-12535-6-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1597923046-12535-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1597923046-12535-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 6383ADABD7F212A8A9044CDB2A9F22B99617E7E34FD6E99648EA7A911117483D2000:8
+X-TM-SNTS-SMTP: 52D2E40CD77ED8F45B911AA3C223BEAAE034D4FFD7A2B61AE5760C8962D475982000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200820_073236_150371_46850148 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20200820_073237_740129_C6C8AA35 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,58 +97,129 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use '"%s...", __func__' to replace embedded function name
+This is used to avoid the warning of function arguments, e.g.
+  WARNING:FUNCTION_ARGUMENTS: function definition argument 'u32'
+  should also have an identifier name
 
 Cc: Florian Fainelli <f.fainelli@gmail.com>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
 v2: add Cc Florian
 ---
- drivers/usb/gadget/udc/bdc/bdc_dbg.c | 2 +-
- drivers/usb/gadget/udc/bdc/bdc_ep.c  | 6 +++---
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/usb/gadget/udc/bdc/bdc.h     | 28 ++++++++++++++--------------
+ drivers/usb/gadget/udc/bdc/bdc_cmd.h | 18 +++++++++---------
+ drivers/usb/gadget/udc/bdc/bdc_dbg.h |  8 ++++----
+ drivers/usb/gadget/udc/bdc/bdc_ep.h  |  8 ++++----
+ 4 files changed, 31 insertions(+), 31 deletions(-)
 
-diff --git a/drivers/usb/gadget/udc/bdc/bdc_dbg.c b/drivers/usb/gadget/udc/bdc/bdc_dbg.c
-index 7ba7448..9c03e13 100644
---- a/drivers/usb/gadget/udc/bdc/bdc_dbg.c
-+++ b/drivers/usb/gadget/udc/bdc/bdc_dbg.c
-@@ -68,7 +68,7 @@ void bdc_dbg_srr(struct bdc *bdc, u32 srr_num)
+diff --git a/drivers/usb/gadget/udc/bdc/bdc.h b/drivers/usb/gadget/udc/bdc/bdc.h
+index c0ee735..658abef 100644
+--- a/drivers/usb/gadget/udc/bdc/bdc.h
++++ b/drivers/usb/gadget/udc/bdc/bdc.h
+@@ -466,24 +466,24 @@ static inline void bdc_writel(void __iomem *base, u32 offset, u32 value)
+ }
  
- 	sr = bdc->srr.sr_bds;
- 	addr = bdc->srr.dma_addr;
--	dev_vdbg(bdc->dev, "bdc_dbg_srr sr:%p dqp_index:%d\n",
-+	dev_vdbg(bdc->dev, "%s sr:%p dqp_index:%d\n", __func__,
- 						sr, bdc->srr.dqp_index);
- 	for (i = 0; i < NUM_SR_ENTRIES; i++) {
- 		sr = &bdc->srr.sr_bds[i];
-diff --git a/drivers/usb/gadget/udc/bdc/bdc_ep.c b/drivers/usb/gadget/udc/bdc/bdc_ep.c
-index 76463de..44f3a12 100644
---- a/drivers/usb/gadget/udc/bdc/bdc_ep.c
-+++ b/drivers/usb/gadget/udc/bdc/bdc_ep.c
-@@ -756,7 +756,7 @@ static int ep_dequeue(struct bdc_ep *ep, struct bdc_req *req)
+ /* Buffer descriptor list operations */
+-void bdc_notify_xfr(struct bdc *, u32);
+-void bdc_softconn(struct bdc *);
+-void bdc_softdisconn(struct bdc *);
+-int bdc_run(struct bdc *);
+-int bdc_stop(struct bdc *);
+-int bdc_reset(struct bdc *);
+-int bdc_udc_init(struct bdc *);
+-void bdc_udc_exit(struct bdc *);
+-int bdc_reinit(struct bdc *);
++void bdc_notify_xfr(struct bdc *bdc, u32 epnum);
++void bdc_softconn(struct bdc *bdc);
++void bdc_softdisconn(struct bdc *bdc);
++int bdc_run(struct bdc *bdc);
++int bdc_stop(struct bdc *bdc);
++int bdc_reset(struct bdc *bdc);
++int bdc_udc_init(struct bdc *bdc);
++void bdc_udc_exit(struct bdc *bdc);
++int bdc_reinit(struct bdc *bdc);
  
- 	dev_dbg(bdc->dev, "%s ep:%s start:%d end:%d\n",
- 					__func__, ep->name, start_bdi, end_bdi);
--	dev_dbg(bdc->dev, "ep_dequeue ep=%p ep->desc=%p\n",
-+	dev_dbg(bdc->dev, "%s ep=%p ep->desc=%p\n", __func__,
- 						ep, (void *)ep->usb_ep.desc);
- 	/* if still connected, stop the ep to see where the HW is ? */
- 	if (!(bdc_readl(bdc->regs, BDC_USPC) & BDC_PST_MASK)) {
-@@ -1858,12 +1858,12 @@ static int bdc_gadget_ep_enable(struct usb_ep *_ep,
- 	int ret;
+ /* Status report handlers */
+ /* Upstream port status change sr */
+-void bdc_sr_uspc(struct bdc *, struct bdc_sr *);
++void bdc_sr_uspc(struct bdc *bdc, struct bdc_sr *sreport);
+ /* transfer sr */
+-void bdc_sr_xsf(struct bdc *, struct bdc_sr *);
++void bdc_sr_xsf(struct bdc *bdc, struct bdc_sr *sreport);
+ /* EP0 XSF handlers */
+-void bdc_xsf_ep0_setup_recv(struct bdc *, struct bdc_sr *);
+-void bdc_xsf_ep0_data_start(struct bdc *, struct bdc_sr *);
+-void bdc_xsf_ep0_status_start(struct bdc *, struct bdc_sr *);
++void bdc_xsf_ep0_setup_recv(struct bdc *bdc, struct bdc_sr *sreport);
++void bdc_xsf_ep0_data_start(struct bdc *bdc, struct bdc_sr *sreport);
++void bdc_xsf_ep0_status_start(struct bdc *bdc, struct bdc_sr *sreport);
  
- 	if (!_ep || !desc || desc->bDescriptorType != USB_DT_ENDPOINT) {
--		pr_debug("bdc_gadget_ep_enable invalid parameters\n");
-+		pr_debug("%s invalid parameters\n", __func__);
- 		return -EINVAL;
- 	}
+ #endif /* __LINUX_BDC_H__ */
+diff --git a/drivers/usb/gadget/udc/bdc/bdc_cmd.h b/drivers/usb/gadget/udc/bdc/bdc_cmd.h
+index a3a6dbd..533ad52 100644
+--- a/drivers/usb/gadget/udc/bdc/bdc_cmd.h
++++ b/drivers/usb/gadget/udc/bdc/bdc_cmd.h
+@@ -10,14 +10,14 @@
+ #define __LINUX_BDC_CMD_H__
  
- 	if (!desc->wMaxPacketSize) {
--		pr_debug("bdc_gadget_ep_enable missing wMaxPacketSize\n");
-+		pr_debug("%s missing wMaxPacketSize\n", __func__);
- 		return -EINVAL;
- 	}
+ /* Command operations */
+-int bdc_address_device(struct bdc *, u32);
+-int bdc_config_ep(struct bdc *, struct bdc_ep *);
+-int bdc_dconfig_ep(struct bdc *, struct bdc_ep *);
+-int bdc_stop_ep(struct bdc *, int);
+-int bdc_ep_set_stall(struct bdc *, int);
+-int bdc_ep_clear_stall(struct bdc *, int);
+-int bdc_ep_bla(struct bdc *, struct bdc_ep *, dma_addr_t);
+-int bdc_function_wake(struct bdc*, u8);
+-int bdc_function_wake_fh(struct bdc*, u8);
++int bdc_address_device(struct bdc *bdc, u32 add);
++int bdc_config_ep(struct bdc *bdc, struct bdc_ep *ep);
++int bdc_dconfig_ep(struct bdc *bdc, struct bdc_ep *ep);
++int bdc_stop_ep(struct bdc *bdc, int epnum);
++int bdc_ep_set_stall(struct bdc *bdc, int epnum);
++int bdc_ep_clear_stall(struct bdc *bdc, int epnum);
++int bdc_ep_bla(struct bdc *bdc, struct bdc_ep *ep, dma_addr_t dma_addr);
++int bdc_function_wake(struct bdc *bdc, u8 intf);
++int bdc_function_wake_fh(struct bdc *bdc, u8 intf);
  
+ #endif /* __LINUX_BDC_CMD_H__ */
+diff --git a/drivers/usb/gadget/udc/bdc/bdc_dbg.h b/drivers/usb/gadget/udc/bdc/bdc_dbg.h
+index 859d588..acd8332 100644
+--- a/drivers/usb/gadget/udc/bdc/bdc_dbg.h
++++ b/drivers/usb/gadget/udc/bdc/bdc_dbg.h
+@@ -12,10 +12,10 @@
+ #include "bdc.h"
+ 
+ #ifdef CONFIG_USB_GADGET_VERBOSE
+-void bdc_dbg_bd_list(struct bdc *, struct bdc_ep*);
+-void bdc_dbg_srr(struct bdc *, u32);
+-void bdc_dbg_regs(struct bdc *);
+-void bdc_dump_epsts(struct bdc *);
++void bdc_dbg_bd_list(struct bdc *bdc, struct bdc_ep *ep);
++void bdc_dbg_srr(struct bdc *bdc, u32 srr_num);
++void bdc_dbg_regs(struct bdc *bdc);
++void bdc_dump_epsts(struct bdc *bdc);
+ #else
+ static inline void bdc_dbg_regs(struct bdc *bdc)
+ { }
+diff --git a/drivers/usb/gadget/udc/bdc/bdc_ep.h b/drivers/usb/gadget/udc/bdc/bdc_ep.h
+index 5bbd73f..4d3affd 100644
+--- a/drivers/usb/gadget/udc/bdc/bdc_ep.h
++++ b/drivers/usb/gadget/udc/bdc/bdc_ep.h
+@@ -9,9 +9,9 @@
+ #ifndef __LINUX_BDC_EP_H__
+ #define __LINUX_BDC_EP_H__
+ 
+-int bdc_init_ep(struct bdc *);
+-int bdc_ep_disable(struct bdc_ep *);
+-int bdc_ep_enable(struct bdc_ep *);
+-void bdc_free_ep(struct bdc *);
++int bdc_init_ep(struct bdc *bdc);
++int bdc_ep_disable(struct bdc_ep *ep);
++int bdc_ep_enable(struct bdc_ep *ep);
++void bdc_free_ep(struct bdc *bdc);
+ 
+ #endif /* __LINUX_BDC_EP_H__ */
 -- 
 1.9.1
 _______________________________________________
