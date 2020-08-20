@@ -2,92 +2,75 @@ Return-Path: <SRS0=4nm1=B6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.4 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ABFADC433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 09:13:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3382BC433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 09:49:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7C511207DE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 09:13:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F41E92078D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 09:49:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="23yjiOMc";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="HAqCRnYo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7C511207DE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cxSqlklr";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="u4kmujXa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F41E92078D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lY/uRN3GQPZXwl5013lVaSmOit5aflEBiQW69dlZ7+8=; b=23yjiOMc5zkyg/3hYksf26Ip6
-	LqicYBqcOoEAJM5azxM8QMa4/UJ2bNdSEqDy35pj6cDlFgtDXE1FgMIGy++nqnBUTauGd9t4NIQVt
-	biU8SF6EWvDJ43EBrrBOCRyoPPebH2ubIYPcLoZisjBlljGlR9wVp6izJIutw8qd2ncnXS7ad2tIH
-	DbY+avL8GW2wQERFaJ42OrIAluk6Crr+ADFDV9/WoPIEGmMRKkWz5OGe/z/84pEXZ8ofYpwI3QEQY
-	AmtmUjsJYhIoMZ1BoKU5mGNovHY70nyaIYyL2cWPF0BBqP42BQeXEeF98IayVSvDUPhPx6Rdy+wdP
-	GcDw6W7Tg==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=IahzXQHyeJtIXYCBgsVdCoR//1IS7a1wbVZwaeGsdwo=; b=cxSqlklr0gNEwi/QOiNZIUrwfG
+	BgaYf4bd/dX6/4KjbLphI0uNbCNfJ3+O9aPJg5Y9wun0PDGgd5C8m2k1xI6ggYQsNRIcYMLtxXf2L
+	SF6xKeq3uSPMtYal6IlNWssf+Xa5Cu5OQw6TESFpMTPHUjcx2IICjntJv8cxGZjl0DINXBkCKh1pK
+	BdD9BVPXTySQ1wF9zpDjrDIojRIeJ10MFFdlMYG8PbA7T6WhKb7zSpiQVyRrIiHVJSa9h7Rgm7PO3
+	PRB5hSEWlXkFjBq1XqUosTJdTDfpBLlpp8VLG68mNpNlp0rBDcGeLgRpCjQknDhnC7UPBv+tuL7qh
+	gAvxkXng==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8gdW-0006vf-Ou; Thu, 20 Aug 2020 09:13:30 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1k8hC3-0002Tj-NZ; Thu, 20 Aug 2020 09:49:11 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8gdU-0006vH-PW; Thu, 20 Aug 2020 09:13:29 +0000
-Received: by mail-wr1-x442.google.com with SMTP id z18so1265784wrm.12;
- Thu, 20 Aug 2020 02:13:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=0JbEGUpzUPbEtjAsVmRvH6bX5043+AS9qSE1XvD9D/U=;
- b=HAqCRnYoKh4shWP1Bh6iF2OQL1zyAwfk3BldT7lyFCXSdpMbI5McqVXvAg1y2E5Fl/
- PJRjYvURrqHmVTi6+1hqi+MzoxqmfJjkbsv2yAi3BiinfthNgiMYJFXnlbqQFxa6Z2+Q
- 9USt7O5dHznyME7cQG9Pc9EGe6vfd/GJApL4neO9QkscPj91V6pZwbPzo5LMTMmWFm4i
- 09CDuv2FV4cv8RPcIHCuHvYNgUP7CdFzpNOfobwbe7AYSX2EcHEDaEsgAxgG925H7BnC
- rPm2/6G8Ne1qVDOcsLcg11RLDMNcmshDznM87XgprKE9l3MFiwpM9U3ZkEhOmcSSBTI4
- n0UA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=0JbEGUpzUPbEtjAsVmRvH6bX5043+AS9qSE1XvD9D/U=;
- b=YPiw9J+gFULlN/vcz7mUcfyVf15nsbAVSbwtmVLF7gfjFuY2B0Z6Zt1Yj1uIz1ixmZ
- CKY7M3bz5UhhWUiaLv/sPjtGgiRJGIV+xfdFz5/OXQnsbSYFwi9SLrUhr20qoy80bDW1
- ZI1XpLXCF1ZCpJf9K3+hAzbHodvY/jKj+wa4/sd069990iNLZNq2Lw+phc4SlxaAdjbB
- Hla0pPTLukaEeJVGNMvEyh+unq3aTpUnUNycKIN95HeVr+1kAnbgHRvPb2vPx0a+/Saj
- 7kApYsjLdG6SCyJimN28c26ilb4pF9pOPoUEdeHwnhQlvy7uqGtEB9igaW0SX0nqb060
- T2aQ==
-X-Gm-Message-State: AOAM5337sUXxKdBMPa3JEpBh79mZvrKyKEkzEXgwCxjuN8bLpOF5k2wR
- z1a0rrklErOl0JZmi4AAcTjbbzuU1c6WtQ==
-X-Google-Smtp-Source: ABdhPJxoY9JmdC2hvKhv7zPTHozm34JZIknaHlVUcr+Fi116POuZOZYfQqOQ5WVjgvJwAFPP1yh0VA==
-X-Received: by 2002:a5d:464a:: with SMTP id j10mr2318764wrs.187.1597914807249; 
- Thu, 20 Aug 2020 02:13:27 -0700 (PDT)
-Received: from ziggy.stardust (81.172.57.81.dyn.user.ono.com. [81.172.57.81])
- by smtp.gmail.com with ESMTPSA id
- a3sm3045157wme.34.2020.08.20.02.13.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 20 Aug 2020 02:13:26 -0700 (PDT)
-Subject: Re: [PATCH v1 00/21] add drm support for MT8192
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>
-References: <1597903458-8055-1-git-send-email-yongqiang.niu@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <d723ec4f-b251-5a94-4939-01f2df61f7d8@gmail.com>
-Date: Thu, 20 Aug 2020 11:13:24 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ id 1k8hC1-0002Sd-Va
+ for linux-mediatek@lists.infradead.org; Thu, 20 Aug 2020 09:49:11 +0000
+X-UUID: 23ec3a9a046c46b48722ff70e78dba2b-20200820
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=PEJq9o5rjHt9Tgt/ghXvLxkCSShvH3PLy1g95tCOzfo=; 
+ b=u4kmujXaQXvIQTsiNtWhYp1Ir+63ck6qM6hUbYor08fTrvamxwsGwbRChhAqFPiLrA3xaTpNnbvg32Cg13H6mcCd2Sj711agi0uo1EFrzigGdJdgjUoNngR2Cj32wiXN3MUHrkEPJa3rJEvgTrgPTrBkHmKmq51H/c4Z4ZEzPE0=;
+X-UUID: 23ec3a9a046c46b48722ff70e78dba2b-20200820
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <light.hsieh@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 712067444; Thu, 20 Aug 2020 01:49:04 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 20 Aug 2020 02:40:44 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 20 Aug 2020 17:40:39 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 20 Aug 2020 17:40:40 +0800
+From: <light.hsieh@mediatek.com>
+To: <linus.walleij@linaro.org>
+Subject: [PATCH v1 1/1] pinctrl: mediatek: refine mtk_pmx_get_funcs_cnt()
+Date: Thu, 20 Aug 2020 17:40:39 +0800
+Message-ID: <1597916439-26376-1-git-send-email-light.hsieh@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
 MIME-Version: 1.0
-In-Reply-To: <1597903458-8055-1-git-send-email-yongqiang.niu@mediatek.com>
-Content-Language: en-US
+X-TM-SNTS-SMTP: 89E841128ED7E0737F0C5C3B513376298F38FFC82A08151051B83A73D1B33ED22000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200820_051328_919611_FA1082BC 
-X-CRM114-Status: GOOD (  18.47  )
+X-CRM114-CacheID: sfid-20200820_054910_217008_11D4CF48 
+X-CRM114-Status: GOOD (  12.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,77 +82,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, linux-arm-kernel@lists.infradead.org
+Cc: sean.wang@kernel.org, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, Light Hsieh <light.hsieh@mediatek.com>,
+ linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Light Hsieh <light.hsieh@mediatek.com>
 
+Refine implementation of mtk_pmx_get_funcs_cnt().
+The original implementation always return ARRAY_SIZE(mtk_gpio_functions)
+which is 16.
 
-On 20/08/2020 08:03, Yongqiang Niu wrote:
-> Changes in v1:
-> - add some more ddp component
-> - add mt8192 mmsys support
-> - add ovl mount on support
-> - add 2 more clock into mutex device
-> - fix ovl smi_id_en and fb null software bug
-> - fix ddp compoent size config bug
-> - add mt8192 drm support
-> - add ddp bypass shadow register function
-> - add 8192 dts description
-> 
-> Yongqiang Niu (21):
->    drm/mediatek: add component OVL_2L2
->    drm/mediatek: add component POSTMASK
->    drm/mediatek: add component RDMA4
->    mtk-mmsys: add mt8192 mmsys support
->    mtk-mmsys: add ovl mout on  support
->    drm/mediatek: add disp config and mm 26mhz clock into mutex device
->    drm/mediatek: enable OVL_LAYER_SMI_ID_EN for multi-layer usecase
->    drm/mediatek: check if fb is null
->    drm/mediatek: fix aal size config
->    drm/mediatek: fix dither size config
->    drm/mediatek: fix gamma size config
->    drm/mediatek: fix ccorr size config
->    drm/mediatek: add support for mediatek SOC MT8192
->    drm/mediatek: add bypass shadow register function call for ddp
->      component
->    drm/mediatek: add color bypass shadow register function
->    drm/mediatek: add ovl bypass shadow register function
->    drm/mediatek: add rdma bypass shadow register function
->    drm/mediatek: add dither bypass shadow register function
->    drm/mediatek: add aal bypass shadow register function
->    drm/mediatek: add ccorr bypass shadow register function
->    arm64: dts: mt8192: add display node
-> 
+However, MT6765/MT6779 only support 8 functions per GPIO pin. So returning
+16 is improper. The new implementation check member nfuncs of struct
+mtk_pin_soc for a platform. If nfuncs is not zero, return nfuncs.
+If nfuncs is zero, fallback to original implementation by returning
+ARRAY_SIZE(mtk_gpio_functions).
 
-At least regarding mmsys and dtsi patches, these are not based on upstream. 
-Please rebase.
+Signed-off-by: Light Hsieh <light.hsieh@mediatek.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-mt6765.c | 1 +
+ drivers/pinctrl/mediatek/pinctrl-mt6779.c | 1 +
+ drivers/pinctrl/mediatek/pinctrl-paris.c  | 4 ++++
+ 3 files changed, 6 insertions(+)
 
-Regards,
-Matthias
-
->   arch/arm64/boot/dts/mediatek/mt8192.dtsi    | 126 +++++++++++++++++++
->   drivers/gpu/drm/mediatek/mtk_disp_color.c   |  22 ++++
->   drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |  41 ++++++-
->   drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |  27 +++++
->   drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |   3 +
->   drivers/gpu/drm/mediatek/mtk_drm_ddp.c      |  84 +++++++++++--
->   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  80 +++++++++++-
->   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   8 ++
->   drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  48 ++++++++
->   drivers/soc/mediatek/mmsys/Makefile         |   1 +
->   drivers/soc/mediatek/mmsys/mt8192-mmsys.c   | 182 ++++++++++++++++++++++++++++
->   drivers/soc/mediatek/mtk-mmsys.c            |   8 ++
->   include/linux/soc/mediatek/mtk-mmsys.h      |   6 +
->   13 files changed, 623 insertions(+), 13 deletions(-)
->   create mode 100644 drivers/soc/mediatek/mmsys/mt8192-mmsys.c
-> 
-
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6765.c b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
+index 2c59d39..8d9f3ea 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt6765.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
+@@ -1069,6 +1069,7 @@
+ 	.pins = mtk_pins_mt6765,
+ 	.npins = ARRAY_SIZE(mtk_pins_mt6765),
+ 	.ngrps = ARRAY_SIZE(mtk_pins_mt6765),
++	.nfuncs = 8,
+ 	.eint_hw = &mt6765_eint_hw,
+ 	.gpio_m = 0,
+ 	.base_names = mt6765_pinctrl_register_base_names,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6779.c b/drivers/pinctrl/mediatek/pinctrl-mt6779.c
+index bb0851c..1f26adb 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt6779.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt6779.c
+@@ -744,6 +744,7 @@
+ 	.pins = mtk_pins_mt6779,
+ 	.npins = ARRAY_SIZE(mtk_pins_mt6779),
+ 	.ngrps = ARRAY_SIZE(mtk_pins_mt6779),
++	.nfuncs = 8,
+ 	.eint_hw = &mt6779_eint_hw,
+ 	.gpio_m = 0,
+ 	.ies_present = true,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index a23c182..96f9f86 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -657,6 +657,10 @@ static void mtk_pctrl_dbg_show(struct pinctrl_dev *pctldev, struct seq_file *s,
+ 
+ static int mtk_pmx_get_funcs_cnt(struct pinctrl_dev *pctldev)
+ {
++	struct mtk_pinctrl *hw = pinctrl_dev_get_drvdata(pctldev);
++ 
++	if (hw->soc->nfuncs)
++		return (int)hw->soc->nfuncs;
+ 	return ARRAY_SIZE(mtk_gpio_functions);
+ }
+ 
+-- 
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
