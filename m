@@ -1,88 +1,75 @@
-Return-Path: <SRS0=3kTb=B5=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=4nm1=B6=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 13172C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 23:46:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DA44C433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 00:00:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D199E20786
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2020 23:46:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 487C920639
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 00:00:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="d2i8iYHC";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=vdorst.com header.i=@vdorst.com header.b="qGHOkhBi"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D199E20786
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=vdorst.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hzznZgqU";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="TQF/TVzR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 487C920639
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Subject:To:From:
-	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=L2UYM5xCIHewCu0AXG5mj9nixYsRSp6jtN+Q/QoYdtM=; b=d2i8iYHCvkEvN5q9qSAMA41xf
-	adU0jrvKpo8ltvLWmTR1R1wQS9uRA4w1teRxmf1uSOVcf8sIW/kTlpcokSv57WF9Zub2RRJfM7wRq
-	nM4YzbvQRE2UDXk7aTG8+Bg22/fxCRea+gfE8s/Ckpug1/kUup/BtBPEuyAZ59pfRQ2DcrxI/cL2P
-	4y4dEDB5qKisAZiROYFdF+jRV6VUKWgwyJBXlj4jKP8uUJFjbF37nArgu5hsx6HN20ibbxWZ7M14N
-	pZuJg9vltpQIY4tpzHiNY6UCll2Sxb1VpLq2lHmnbHynzhm57AzCTn1P/X1YK9l24I9bd/7Bb8t9m
-	Q+ZEGufMQ==;
+	 bh=7zzuQkYHG/vGg0QK+DDpmbAOfkiybcDxYGHR0eA227g=; b=hzznZgqU7IcsG8H4SV1VLORbV
+	fRCtTJ5vu3RkBW2rPaX7ze+aa2ONOK0I1nTcFx7V1swj5b7pLk0pWayc+9EUejuG5F2MZkwhh+7h1
+	s8dhAUcx8/AQF3qEJGCBW0/pEynq/pdTCWeZ5vPF/2eGEutbZw8NyDxqzKSfHX+uCKHE3O1gyds22
+	Hzi0DYIXS2eGrc9vIbYx+wDeRXlkDK4dbE+eoG8WZxOyGmlKL8gI9vz4BEhnBm3j5tfNj62nRGdM1
+	kwG5Iye43/J8aOQoX8ByevM+urPaJkvCB6bK0/ONY+m7fx7XNIT7QkuVt7Gapx1jz1jf/27LDN2T1
+	ASbzzVjXw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8Xmk-0007g0-S0; Wed, 19 Aug 2020 23:46:27 +0000
-Received: from mx.0dd.nl ([5.2.79.48])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8Xmi-0007eR-GM
- for linux-mediatek@lists.infradead.org; Wed, 19 Aug 2020 23:46:25 +0000
-Received: from mail.vdorst.com (mail.vdorst.com [IPv6:fd00::1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx.0dd.nl (Postfix) with ESMTPS id 622575FB19;
- Thu, 20 Aug 2020 01:46:13 +0200 (CEST)
-Authentication-Results: mx.0dd.nl; dkim=pass (2048-bit key;
- secure) header.d=vdorst.com header.i=@vdorst.com header.b="qGHOkhBi"; 
- dkim-atps=neutral
-Received: from www (unknown [192.168.2.222])
+	id 1k8Y0K-0000AW-SU; Thu, 20 Aug 2020 00:00:28 +0000
+Received: from mail.kernel.org ([198.145.29.99])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1k8Y0G-00009a-M1; Thu, 20 Aug 2020 00:00:25 +0000
+Received: from mail-il1-f181.google.com (mail-il1-f181.google.com
+ [209.85.166.181])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.vdorst.com (Postfix) with ESMTPSA id 1AE02687EC9;
- Thu, 20 Aug 2020 01:46:13 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.vdorst.com 1AE02687EC9
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vdorst.com;
- s=default; t=1597880773;
- bh=yV6u6+GKP89ZhLaPI4Lclma8HJH4chY3sZJwJgORk04=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=qGHOkhBi2BTnqCwqZeHEocVi0xr7Hlg1vEMcqqjBkt7QaRBDN87wOOJsh+wstepJc
- BLBrC0D257eGFvdyNvkLXFw7tnEgF9TlxcWZNKHcWzxamHDQkgWmFMvNev3biAagL+
- obPPQiN1S161exlA+7gLw44fgJ1tA3e1wannKNZUl+omiK78VI73vMbmpdKL2JCf8M
- jEg9PcmXnsGis7G4+BRnCdGye6An3tITSzJohT4BePTEVfdsqqsu5769Kx/vFCx4xM
- KUMF64MUQNhaVummXc5au5TALXk37O4RdLEY22WLMnjDgzkX7ww7Je19UbkJ2njkTf
- dYy2Z1eIRviMQ==
-Received: from pc-rene.lan.vdorst.com (pc-rene.lan.vdorst.com
- [192.168.2.14]) by www.vdorst.com (Horde Framework) with HTTPS; Wed, 19 Aug
- 2020 23:46:13 +0000
-Date: Wed, 19 Aug 2020 23:46:13 +0000
-Message-ID: <20200819234613.Horde.oQiJhMCnUINwnQP-5_MyHh-@www.vdorst.com>
-From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource@vdorst.com>
-To: Landen Chao <landen.chao@mediatek.com>
-Subject: Re: [PATCH net-next v2 5/7] net: dsa: mt7530: Add the support of
- MT7531 switch
-References: <cover.1597729692.git.landen.chao@mediatek.com>
- <e980fda45e0fb478f55e72765643bb641f352c65.1597729692.git.landen.chao@mediatek.com>
- <20200818160901.GF2330298@lunn.ch> <1597830248.31846.78.camel@mtksdccf07>
-In-Reply-To: <1597830248.31846.78.camel@mtksdccf07>
-User-Agent: Horde Application Framework 5
+ by mail.kernel.org (Postfix) with ESMTPSA id A8E90207DA;
+ Thu, 20 Aug 2020 00:00:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1597881623;
+ bh=0vycRTEeeBdj+dFUoX/HgFRCl8uwmaqhcCCn+aBekpU=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=TQF/TVzRsZiyEOtuCO2nax72h/3qbmm2InffKR0nnN2G+0PCM9SGXMPO/IO71dYr4
+ 5aTyy1N/4n39VfbjF09tCcTzXFalIgs87UHmfo+hbYjVSHYNGS5E2F7X6LdugHQRbJ
+ i0KTTg92kLgY/7XPh+Ggr/8eoBUO8aTUI77w39KI=
+Received: by mail-il1-f181.google.com with SMTP id t4so308005iln.1;
+ Wed, 19 Aug 2020 17:00:23 -0700 (PDT)
+X-Gm-Message-State: AOAM530trSp+hZyiDsXSWaDC6KyTWdCpRBxc0SlCX3midXmuMTvcnoQh
+ CjqhiP86JCsVXtGTFusuhmOw8r4TDsYlazQqcs4=
+X-Google-Smtp-Source: ABdhPJyB6Po7iKwA/ejWuqNc1cFuP3GSPXRSd8MiDhAB/4dEkY5cF2upLARpUQTZHnrpwGjaF+/PpevXuEQt3pLBaOU=
+X-Received: by 2002:a92:c8cd:: with SMTP id c13mr447921ilq.162.1597881623057; 
+ Wed, 19 Aug 2020 17:00:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
+References: <20200819161945.1155298-1-enric.balletbo@collabora.com>
+In-Reply-To: <20200819161945.1155298-1-enric.balletbo@collabora.com>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Wed, 19 Aug 2020 17:00:12 -0700
+X-Gmail-Original-Message-ID: <CAGp9Lzqw3KMgAYL9yF74BQFSrgv5GMcROeUEyQbfCeGZnPsgGg@mail.gmail.com>
+Message-ID: <CAGp9Lzqw3KMgAYL9yF74BQFSrgv5GMcROeUEyQbfCeGZnPsgGg@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: mediatek: Free eint data on failure
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_194624_743849_D9A0204E 
-X-CRM114-Status: GOOD (  29.32  )
+X-CRM114-CacheID: sfid-20200819_200024_853945_BCCD5F92 
+X-CRM114-Status: GOOD (  28.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,80 +81,171 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, Andrew Lunn <andrew@lunn.ch>, frank-w@public-files.de,
- f.fainelli@gmail.com, vivien.didelot@savoirfairelinux.com,
- netdev@vger.kernel.org, Sean Wang <Sean.Wang@mediatek.com>,
- linux-kernel@vger.kernel.org, dqfext@gmail.com, devicetree@vger.kernel.org,
- robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- davem@davemloft.net
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"; DelSp="Yes"
+Cc: Nicolas Boichat <drinkcat@chromium.org>,
+ Linus Walleij <linus.walleij@linaro.org>, lkml <linux-kernel@vger.kernel.org>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ hsinyi@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Collabora Kernel ML <kernel@collabora.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-UXVvdGluZyBMYW5kZW4gQ2hhbyA8bGFuZGVuLmNoYW9AbWVkaWF0ZWsuY29tPjoKCj4gT24gV2Vk
-LCAyMDIwLTA4LTE5IGF0IDAwOjA5ICswODAwLCBBbmRyZXcgTHVubiB3cm90ZToKPj4gT24gVHVl
-LCBBdWcgMTgsIDIwMjAgYXQgMDM6MTQ6MTBQTSArMDgwMCwgTGFuZGVuIENoYW8gd3JvdGU6Cj4+
-ID4gQWRkIG5ldyBzdXBwb3J0IGZvciBNVDc1MzE6Cj4+ID4KPj4gPiBNVDc1MzEgaXMgdGhlIG5l
-eHQgZ2VuZXJhdGlvbiBvZiBNVDc1MzAuIEl0IGlzIGFsc28gYSA3LXBvcnRzIHN3aXRjaCB3aXRo
-Cj4+ID4gNSBnaWdhIGVtYmVkZGVkIHBoeXMsIDIgY3B1IHBvcnRzLCBhbmQgdGhlIHNhbWUgTUFD
-IGxvZ2ljIG9mIE1UNzUzMC4gQ3B1Cj4+ID4gcG9ydCA2IG9ubHkgc3VwcG9ydHMgU0dNSUkgaW50
-ZXJmYWNlLiBDcHUgcG9ydCA1IHN1cHBvcnRzIGVpdGhlciBSR01JSQo+PiA+IG9yIFNHTUlJIGlu
-IGRpZmZlcmVudCBIVyBza3UuIER1ZSB0byBTR01JSSBpbnRlcmZhY2Ugc3VwcG9ydCwgcGxsLCBh
-bmQKPj4gPiBwYWQgc2V0dGluZyBhcmUgZGlmZmVyZW50IGZyb20gTVQ3NTMwLiBUaGlzIHBhdGNo
-IGFkZHMgZGlmZmVyZW50IGluaXRpYWwKPj4gPiBzZXR0aW5nLCBhbmQgU0dNSUkgcGh5bGluayBo
-YW5kbGVycyBvZiBNVDc1MzEuCj4+ID4KPj4gPiBNVDc1MzEgU0dNSUkgaW50ZXJmYWNlIGNhbiBi
-ZSBjb25maWd1cmVkIGluIGZvbGxvd2luZyBtb2RlOgo+PiA+IC0gJ1NHTUlJIEFOIG1vZGUnIHdp
-dGggaW4tYmFuZCBuZWdvdGlhdGlvbiBjYXBhYmlsaXR5Cj4+ID4gICAgIHdoaWNoIGlzIGNvbXBh
-dGlibGUgd2l0aCBQSFlfSU5URVJGQUNFX01PREVfU0dNSUkuCj4+ID4gLSAnU0dNSUkgZm9yY2Ug
-bW9kZScgd2l0aG91dCBpbi1ibmFkIG5lZ290aWF0aW9uCj4+Cj4+IGJhbmQKPiBTb3JyeSwgSSds
-bCBmaXggaXQuCj4+Cj4+ID4gICAgIHdoaWNoIGlzIGNvbXBhdGlibGUgd2l0aCAxMEIvOEIgZW5j
-b2Rpbmcgb2YKPj4gPiAgICAgUEhZX0lOVEVSRkFDRV9NT0RFXzEwMDBCQVNFWCB3aXRoIGZpeGVk
-IGZ1bGwtZHVwbGV4IGFuZCBmaXhlZCBwYXVzZS4KPj4gPiAtIDIuNSB0aW1lcyBmYXN0ZXIgY2xv
-Y2tlZCAnU0dNSUkgZm9yY2UgbW9kZScgd2l0aG91dCBpbi1ibmFkIG5lZ290aWF0aW9uCj4+Cj4+
-IGJhbmQKPiBTb3JyeSwgSSdsbCBmaXggaXQuCj4+Cj4+ID4gK3N0YXRpYyBpbnQgbXQ3NTMxX3Jn
-bWlpX3NldHVwKHN0cnVjdCBtdDc1MzBfcHJpdiAqcHJpdiwgdTMyIHBvcnQsCj4+ID4gKwkJCSAg
-ICAgIHBoeV9pbnRlcmZhY2VfdCBpbnRlcmZhY2UpCj4+ID4gK3sKPj4gPiArCXUzMiB2YWw7Cj4+
-ID4gKwo+PiA+ICsJaWYgKCFtdDc1MzFfaXNfcmdtaWlfcG9ydChwcml2LCBwb3J0KSkgewo+PiA+
-ICsJCWRldl9lcnIocHJpdi0+ZGV2LCAiUkdNSUkgbW9kZSBpcyBub3QgYXZhaWxhYmxlIGZvciBw
-b3J0ICVkXG4iLAo+PiA+ICsJCQlwb3J0KTsKPj4gPiArCQlyZXR1cm4gLUVJTlZBTDsKPj4gPiAr
-CX0KPj4gPiArCj4+ID4gKwl2YWwgPSBtdDc1MzBfcmVhZChwcml2LCBNVDc1MzFfQ0xLR0VOX0NU
-UkwpOwo+PiA+ICsJdmFsIHw9IEdQX0NMS19FTjsKPj4gPiArCXZhbCAmPSB+R1BfTU9ERV9NQVNL
-Owo+PiA+ICsJdmFsIHw9IEdQX01PREUoTVQ3NTMxX0dQX01PREVfUkdNSUkpOwo+PiA+ICsJdmFs
-ICY9IH4oVFhDTEtfTk9fUkVWRVJTRSB8IFJYQ0xLX05PX0RFTEFZKTsKPj4gPiArCXN3aXRjaCAo
-aW50ZXJmYWNlKSB7Cj4+ID4gKwljYXNlIFBIWV9JTlRFUkZBQ0VfTU9ERV9SR01JSToKPj4gPiAr
-CQl2YWwgfD0gVFhDTEtfTk9fUkVWRVJTRTsKPj4gPiArCQl2YWwgfD0gUlhDTEtfTk9fREVMQVk7
-Cj4+ID4gKwkJYnJlYWs7Cj4+ID4gKwljYXNlIFBIWV9JTlRFUkZBQ0VfTU9ERV9SR01JSV9SWElE
-Ogo+PiA+ICsJCXZhbCB8PSBUWENMS19OT19SRVZFUlNFOwo+PiA+ICsJCWJyZWFrOwo+PiA+ICsJ
-Y2FzZSBQSFlfSU5URVJGQUNFX01PREVfUkdNSUlfVFhJRDoKPj4gPiArCQl2YWwgfD0gUlhDTEtf
-Tk9fREVMQVk7Cj4+ID4gKwkJYnJlYWs7Cj4+ID4gKwljYXNlIFBIWV9JTlRFUkZBQ0VfTU9ERV9S
-R01JSV9JRDoKPj4gPiArCQlicmVhazsKPj4gPiArCWRlZmF1bHQ6Cj4+ID4gKwkJcmV0dXJuIC1F
-SU5WQUw7Cj4+ID4gKwl9Cj4+Cj4+IFlvdSBuZWVkIHRvIGJlIGNhcmVmdWwgaGVyZS4gSWYgdGhl
-IE1BQyBpcyBkb2luZyB0aGUgUkdNSUkgZGVsYXlzLCB5b3UKPj4gbmVlZCB0byBlbnN1cmUgdGhl
-IFBIWSBpcyBub3QuIFdoYXQgaW50ZXJmYWNlIG1vZGUgaXMgcGFzc2VkIHRvIHRoZQo+PiBQSFk/
-Cj4gSGkgQW5kcmV3LAo+Cj4gbXQ3NTMxIFJHTUlJIHBvcnQgaXMgYSBNQUMtb25seSBwb3J0LCBp
-dCBjYW4gYmUgY29ubmVjdGVkIHRvIENQVSBNQUMgb3IKPiBleHRlcm5hbCBwaHkuIEluIGJwaS1y
-NjQgYm9hcmQsIG10NzUzMSBSR01JSSBpcyBjb25uZWN0ZWQgdG8gQ1BVIE1BQywgc28KPiBJIHRl
-bmQgdG8gaW1wbGVtZW50IFJHTUlJIGxvZ2ljIGZvciB1c2UgY2FzZSBvZiBicGktcjY0Lgo+Cj4g
-SW4gZ2VuZXJhbCwgYWNjb3JkaW5nIHRvIHBoeS5yc3QsIFJHTUlJIGRlbGF5IHNob3VsZCBiZSBk
-b25lIGJ5IHBoeSwgYnV0Cj4gc29tZSBNb0NBIHByb2R1Y3QgbmVlZCBSR01JSSBkZWxheSBpbiBN
-QUMuIFRoZXNlIHR3byByZXF1aXJlbWVudHMKPiBjb25mbGljdC4gSXMgdGhlcmUgYW55IHN1Z2dl
-c3Rpb24gdG8gc29sdmUgdGhlIGNvbmZsaWN0Pwo+Cj4gSWYgbXQ3NTMxIFJHTUlJIGltcGxlbWVu
-dGF0aW9uIG5lZWRzIHRvIHNhdGlzZnkgZWl0aGVyIHBoeS5yc3Qgb3IKPiBzcGVjaWFsIE1vQ0Eg
-cHJvZHVjdCwgSSB3b3VsZCBsaWtlIHRvIHNhdGlzZnkgcGh5LnJzdCBhbmQgcmVtb3ZlIE1BQwo+
-IFJHTUlJIGRlbGF5IGluIHYzLiBGb3Igc3BlY2lhbCBwcm9kdWN0IG5lZWRzIE1BQyBSR01JSSBk
-ZWxheSwgdGhpcyBwYXRjaAo+IGNhbiBiZSB1c2VkIGluIGl0cyBsb2NhbCBjb2RlYmFzZS4KCkhp
-IExhbmRlbiwKCldpdGggdGhlIGN1cnJlbnQgbWFpbmxpbmUgY29kZSBbMV0sIHRoZSBkc2EgY29k
-ZSB0cmllcyB0byBkZXRlY3QgaG93IHRoZSBNQUM1CmlzIHVzZWQuIEFsbCB0aGUgdGhyZWUgbW9k
-ZXMgYXJlIHN1cHBvcnRlZC4gTUFDNSAtPiBQSFkwLCBNQUM1IC0+ICAKUEhZNCwgTUFDNSAtPgpF
-WFRFUk5BTCBQSFkgYW5kIE1BQzUgdG8gZXh0ZXJuYWwgTUFDLgoKV2hlbiBNQUM1IGlzIGEgRFNB
-IHBvcnQgaXQgc2tpcHMgc2V0dGluZ3MgdGhlIGRlbGF5IHNldHRpbmdzLiBTZWUgWzJdLgoKTWF5
-YmUgeW91IGNhbiB1c2UgYSBzaW1pbGFyIGNvbmNlcHQuCgpHcmVhdHMsCgpSZW7DqQoKClsxXSAg
-Cmh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L25ldGRldi9u
-ZXQtbmV4dC5naXQvdHJlZS9kcml2ZXJzL25ldC9kc2EvbXQ3NTMwLmMjbjEzMDMKWzJdICAKaHR0
-cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvbmV0ZGV2L25ldC1u
-ZXh0LmdpdC90cmVlL2RyaXZlcnMvbmV0L2RzYS9tdDc1MzAuYyNuNTk4Cgo+Cj4gTGFuZGVuCj4+
-Cj4+IAlBbmRyZXcKCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtbWVkaWF0ZWsK
+On Wed, Aug 19, 2020 at 9:19 AM Enric Balletbo i Serra
+<enric.balletbo@collabora.com> wrote:
+>
+> The pinctrl driver can work without the EINT resource, but, if it is
+> expected to have this resource but the mtk_build_eint() function fails
+> after allocating their data (because can't get the resource or can't map
+> the irq), the data is not freed and you end with a NULL pointer
+> dereference. Fix this by freeing the data if mtk_build_eint() fails, so
+> pinctrl still works and doesn't hang.
+>
+> This is noticeable after commit f97dbf48ca43 ("irqchip/mtk-sysirq: Convert
+> to a platform driver") on MT8183 because, due this commit, the pinctrl driver
+> fails to map the irq and spots the following bug:
+>
+> [    1.947597] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000004
+> [    1.956404] Mem abort info:
+> [    1.959203]   ESR = 0x96000004
+> [    1.962259]   EC = 0x25: DABT (current EL), IL = 32 bits
+> [    1.967565]   SET = 0, FnV = 0
+> [    1.970613]   EA = 0, S1PTW = 0
+> [    1.973747] Data abort info:
+> [    1.976619]   ISV = 0, ISS = 0x00000004
+> [    1.980447]   CM = 0, WnR = 0
+> [    1.983410] [0000000000000004] user address but active_mm is swapper
+> [    1.989759] Internal error: Oops: 96000004 [#1] PREEMPT SMP
+> [    1.995322] Modules linked in:
+> [    1.998371] CPU: 7 PID: 1 Comm: swapper/0 Not tainted 5.9.0-rc1+ #44
+> [    2.004715] Hardware name: MediaTek krane sku176 board (DT)
+> [    2.010280] pstate: 60000005 (nZCv daif -PAN -UAO BTYPE=--)
+> [    2.015850] pc : mtk_eint_set_debounce+0x48/0x1b8
+> [    2.020546] lr : mtk_eint_set_debounce+0x34/0x1b8
+> [    2.025239] sp : ffff80001008baa0
+> [    2.028544] x29: ffff80001008baa0 x28: ffff0000ff7ff790
+> [    2.033847] x27: ffff0000f9ec34b0 x26: ffff0000f9ec3480
+> [    2.039150] x25: ffff0000fa576410 x24: ffff0000fa502800
+> [    2.044453] x23: 0000000000001388 x22: ffff0000fa635f80
+> [    2.049755] x21: 0000000000000008 x20: 0000000000000000
+> [    2.055058] x19: 0000000000000071 x18: 0000000000000001
+> [    2.060360] x17: 0000000000000000 x16: 0000000000000000
+> [    2.065662] x15: ffff0000facc8470 x14: ffffffffffffffff
+> [    2.070965] x13: 0000000000000001 x12: 00000000000000c0
+> [    2.076267] x11: 0000000000000040 x10: 0000000000000070
+> [    2.081569] x9 : ffffaec0063d24d8 x8 : ffff0000fa800270
+> [    2.086872] x7 : 0000000000000000 x6 : 0000000000000011
+> [    2.092174] x5 : ffff0000fa800248 x4 : ffff0000fa800270
+> [    2.097476] x3 : ffff8000100c5000 x2 : 0000000000000000
+> [    2.102778] x1 : 0000000000000000 x0 : 0000000000000000
+> [    2.108081] Call trace:
+> [    2.110520]  mtk_eint_set_debounce+0x48/0x1b8
+> [    2.114870]  mtk_gpio_set_config+0x5c/0x78
+> [    2.118958]  gpiod_set_config+0x5c/0x78
+> [    2.122786]  gpiod_set_debounce+0x18/0x28
+> [    2.126789]  gpio_keys_probe+0x50c/0x910
+> [    2.130705]  platform_drv_probe+0x54/0xa8
+> [    2.134705]  really_probe+0xe4/0x3b0
+> [    2.138271]  driver_probe_device+0x58/0xb8
+> [    2.142358]  device_driver_attach+0x74/0x80
+> [    2.146532]  __driver_attach+0x58/0xe0
+> [    2.150274]  bus_for_each_dev+0x70/0xc0
+> [    2.154100]  driver_attach+0x24/0x30
+> [    2.157666]  bus_add_driver+0x14c/0x1f0
+> [    2.161493]  driver_register+0x64/0x120
+> [    2.165319]  __platform_driver_register+0x48/0x58
+> [    2.170017]  gpio_keys_init+0x1c/0x28
+> [    2.173672]  do_one_initcall+0x54/0x1b4
+> [    2.177499]  kernel_init_freeable+0x1d0/0x238
+> [    2.181848]  kernel_init+0x14/0x118
+> [    2.185328]  ret_from_fork+0x10/0x34
+> [    2.188899] Code: a9438ac1 12001266 f94006c3 121e766a (b9400421)
+> [    2.194991] ---[ end trace 168cf7b3324b6570 ]---
+> [    2.199611] Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b
+> [    2.207260] SMP: stopping secondary CPUs
+> [    2.211294] Kernel Offset: 0x2ebff4800000 from 0xffff800010000000
+> [    2.217377] PHYS_OFFSET: 0xffffb50500000000
+> [    2.221551] CPU features: 0x0240002,2188200c
+> [    2.225811] Memory Limit: none
+> [    2.228860] ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b ]---
+>
+> Fixes: 89132dd8ffd2 ("pinctrl: mediatek: extend eint build to pinctrl-mtk-common-v2.c")
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> ---
+>
+>  .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 27 ++++++++++++++-----
+>  1 file changed, 20 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> index 2f3dfb56c3fa..4b532e6b9038 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> @@ -355,6 +355,7 @@ int mtk_build_eint(struct mtk_pinctrl *hw, struct platform_device *pdev)
+>  {
+>         struct device_node *np = pdev->dev.of_node;
+>         struct resource *res;
+> +       int ret;
+>
+>         if (!IS_ENABLED(CONFIG_EINT_MTK))
+>                 return 0;
+> @@ -369,19 +370,26 @@ int mtk_build_eint(struct mtk_pinctrl *hw, struct platform_device *pdev)
+>         res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "eint");
+>         if (!res) {
+>                 dev_err(&pdev->dev, "Unable to get eint resource\n");
+> -               return -ENODEV;
+> +               ret = -ENODEV;
+> +               goto err_free_eint;
+>         }
+>
+>         hw->eint->base = devm_ioremap_resource(&pdev->dev, res);
+> -       if (IS_ERR(hw->eint->base))
+> -               return PTR_ERR(hw->eint->base);
+> +       if (IS_ERR(hw->eint->base)) {
+> +               ret = PTR_ERR(hw->eint->base);
+> +               goto err_free_eint;
+> +       }
+>
+>         hw->eint->irq = irq_of_parse_and_map(np, 0);
+> -       if (!hw->eint->irq)
+> -               return -EINVAL;
+> +       if (!hw->eint->irq) {
+> +               ret = -EINVAL;
+> +               goto err_free_eint;
+> +       }
+>
+> -       if (!hw->soc->eint_hw)
+> -               return -ENODEV;
+> +       if (!hw->soc->eint_hw) {
+> +               ret = -ENODEV;
+> +               goto err_free_eint;
+> +       }
+>
+>         hw->eint->dev = &pdev->dev;
+>         hw->eint->hw = hw->soc->eint_hw;
+> @@ -389,6 +397,11 @@ int mtk_build_eint(struct mtk_pinctrl *hw, struct platform_device *pdev)
+>         hw->eint->gpio_xlate = &mtk_eint_xt;
+>
+>         return mtk_eint_do_init(hw->eint);
+> +
+
+Similarly, I think we have to call devm_ioremap_release to explicitly
+free resource when a certain failure occurs after
+devm_ioremap_resource, right?
+
+> +err_free_eint:
+> +       devm_kfree(hw->dev, hw->eint);
+> +       hw->eint = NULL;
+> +       return ret;
+>  }
+>  EXPORT_SYMBOL_GPL(mtk_build_eint);
+>
+> --
+> 2.28.0
+>
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
