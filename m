@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CBEFFC433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 00:01:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2DE33C433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 00:02:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8C707207DA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 00:01:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EBC0A214F1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2020 00:02:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EYrIRDXT";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="ImpcUHiS"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8C707207DA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SCghUtTE";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="oHo4nC+P"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EBC0A214F1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,45 +26,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vVdXurDWMpLeBOfZSIYg0tmsJp3M9aQ/Gwq6g5nTRPo=; b=EYrIRDXTHZfsEut1IRrpncd1q4
-	kGYzGvJfoOVuG/bF+n0iVeAkmRMy+HDRcIH3jCul6gw7hA6X5g8NRQXNDn+kXKL5n6BO8Ve/MBf8k
-	c0SG0UvfxknQ37FSh9h9WDWbUbXixra+wI4GZv0r/Ox+no0P7DpAbHCMiy9V+nms2TMmu7SZ47J8W
-	ws/cocF5KJJhU0VZ2yZ4ipBOabMc5hJbfg0aZrzPcYTrGfE0dbnZizZqrNw6pcRQ/320QdmMKgnSG
-	iWve/gEpgEr1nqDAeEe2zvgEZ7CNPv7gvhMoTRj/TLRMc9T+tgVAXxq/ifeNu70NS5KxNPs+HZUtG
-	Rr2I41fA==;
+	bh=Q6P2pCPENzL7Y894qNbVpS+VQ4sgoGnh0Y9p0CvdX3Y=; b=SCghUtTEV+DyQW4BxemGOAmozu
+	MugtJls3/v9A8H95d86TQb9IZxu6cMWXzhF3N6T7mRcoX94/nEIxm+n+GdXgsvAw4EYXl8c5U1RFH
+	YR96zDLLK8FU1aYIjZDFH/uxHYI4+nNjm1aOLMQey4uTe/rIQZ1tf5A+a0X4GkBKDzJG14RAv5dfO
+	5rGFM7/UNBZmKE2p0vG/XFeJDUuGVhQi8UGwkdAh9p6pL9UJC2gP/Kn4kCJ9ctxDq7gC+7Ngstk2v
+	I2XzP/11MLpO3t3uhAqQfngHSFhlB5Z96SUw3WnYxCnZ8J4mRCtw6BtP22NcA8/pMFkx4MeKYBiiV
+	+hHPJB+Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8Y1F-0000Ot-56; Thu, 20 Aug 2020 00:01:25 +0000
+	id 1k8Y1u-0000f8-Nr; Thu, 20 Aug 2020 00:02:06 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8Y19-0000Mr-U0; Thu, 20 Aug 2020 00:01:20 +0000
+ id 1k8Y1m-0000cJ-Jb; Thu, 20 Aug 2020 00:01:59 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 282862075E;
- Thu, 20 Aug 2020 00:01:18 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id C6DC4208C7;
+ Thu, 20 Aug 2020 00:01:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597881679;
- bh=s/D/qiAaCF1snixtrG3SCNq7pL3NmmMR9KoywVt2AF0=;
+ s=default; t=1597881717;
+ bh=o77i1BTdhg3uW3SiGZF7MwLyI/AyQJIQE+HUN78af4E=;
  h=From:To:Cc:Subject:Date:From;
- b=ImpcUHiS1FuKK5fhxL5XD281QPJdpMWzBhJgiqA4grRQeGAKmdBkOvWuJBnCllOqi
- SNOrELB8RVxaDF4NPHZmhfXbkigVARTJvY/NsuCB0GsGWaG9S0753YzitsI0Qm/7Rt
- cRe/2gU5vKL/DDCdvONfEKhfU+0jkNM+QNNzIbOg=
+ b=oHo4nC+PYVnMLiRbY3TUqijfrnF2qwqHxxe3Q0/vNDMWG8phDVREZ8KNgiAUMS7CD
+ YgslQ+62WpNp4leVPzwEGNxbVk6LjVzjTXFPnptlr5M6dMdzNEyLMWKiURkyfckGFG
+ Wccjit/acgDmkyDa9T/98/+YRZuyfQinO+v90lpQ=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.8 01/27] scsi: ufs: Add DELAY_BEFORE_LPM quirk for
+Subject: [PATCH AUTOSEL 5.7 01/24] scsi: ufs: Add DELAY_BEFORE_LPM quirk for
  Micron devices
-Date: Wed, 19 Aug 2020 20:00:50 -0400
-Message-Id: <20200820000116.214821-1-sashal@kernel.org>
+Date: Wed, 19 Aug 2020 20:01:32 -0400
+Message-Id: <20200820000155.215089-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_200120_064932_3D14D70E 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20200819_200158_748314_206B258B 
+X-CRM114-Status: GOOD (  12.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,7 +106,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  2 files changed, 3 insertions(+)
 
 diff --git a/drivers/scsi/ufs/ufs_quirks.h b/drivers/scsi/ufs/ufs_quirks.h
-index e3175a63c676b..e80d5f26a4424 100644
+index df7a1e6805a3b..c3af72c58805d 100644
 --- a/drivers/scsi/ufs/ufs_quirks.h
 +++ b/drivers/scsi/ufs/ufs_quirks.h
 @@ -12,6 +12,7 @@
@@ -118,10 +118,10 @@ index e3175a63c676b..e80d5f26a4424 100644
  #define UFS_VENDOR_SAMSUNG     0x1CE
  #define UFS_VENDOR_SKHYNIX     0x1AD
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index a483c0720a0c1..9a692354ee199 100644
+index 7ca32ede5e172..610e3a0e98ff4 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -216,6 +216,8 @@ ufs_get_desired_pm_lvl_for_dev_link_state(enum ufs_dev_pwr_mode dev_state,
+@@ -211,6 +211,8 @@ ufs_get_desired_pm_lvl_for_dev_link_state(enum ufs_dev_pwr_mode dev_state,
  
  static struct ufs_dev_fix ufs_fixups[] = {
  	/* UFS cards deviations table */
