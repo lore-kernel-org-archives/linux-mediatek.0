@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E87A6C433E3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2020 10:35:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 02C33C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2020 10:35:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B9484204EC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2020 10:35:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B73FE20738
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2020 10:35:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="idY2muxk";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="lXZJddLs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B9484204EC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OYuLIeCc";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="V2xwG4HN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B73FE20738
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,68 +26,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=DcW9JxK5oemEEIP+osLMnFXKl1bedMC8nSOoa/vj5Cg=; b=idY2muxkbgB8KaQqC5k/d7wrm
-	4derJvzNbiyFUR20USkNrwSDmauZ8QyiQahcwFuiM4aeLyu+PGTxoYPXlUmhu/WD9HHbzyiSBPej2
-	2HHljrd6uQ5ZrIoqj2pSQ/wuQ2MWGPj6eapsIDH8SOcvtg2gnf3UfwEreg4t2lDcmwlTVekkIgTZm
-	y2b4/WK+NfY4sqwkLm1VorqCWUUvhBH7n/jztcAA5jUOS12GIISD7sUJm2JRyvQXxTISV1puidZ/L
-	PzonagZo9S0hps4NiPmo8xAAYNehqOT8tuGufdqMFhesLLmKz7Tz4Fmn0WLYF8BK4Uke4+ZN8YFEt
-	FhoM18n2A==;
+	 bh=Y3AnxXX0C0xuICrHBdpTXxHo4ztBx5iKONHTbeqbEXA=; b=OYuLIeCcNVYewOvE8hyPZdRNk
+	00ZDd6FzAMxZzATA3fZlstcK/1i49HtcC6JdZfCEU8HNlpI95GKHJiyZ30Pfoc4N5a5bzANYgjlcn
+	6mF8y/gVOINFaY9iltNQxTz7O/1hN3fD017wC2Hr14wcDsyai9D8tKwhT72YVVETRiq6BTraJOCKL
+	DQ1bJT4f8UKFtoXqkpGCtH3cu5ifzVcEeg2ltV8Zvkbcwv953Qq98fm9miDtpo44Uz3jBJ9yvXU1K
+	W6s7TP/2O8D0LONN4VhO2aZ030GU4Y06lz9dDVENHQstOraC4iGSB8zy2MrDJSiD/jkS4WNKzuuY9
+	Be88Qhvyw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k94OX-0001n2-6x; Fri, 21 Aug 2020 10:35:37 +0000
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
+	id 1k94Ol-0001r9-Pb; Fri, 21 Aug 2020 10:35:51 +0000
+Received: from mail-oo1-xc42.google.com ([2607:f8b0:4864:20::c42])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k94OV-0001mT-NH
- for linux-mediatek@lists.infradead.org; Fri, 21 Aug 2020 10:35:36 +0000
-Received: by mail-ot1-x344.google.com with SMTP id t7so1228139otp.0
- for <linux-mediatek@lists.infradead.org>; Fri, 21 Aug 2020 03:35:35 -0700 (PDT)
+ id 1k94Oj-0001qG-SK
+ for linux-mediatek@lists.infradead.org; Fri, 21 Aug 2020 10:35:50 +0000
+Received: by mail-oo1-xc42.google.com with SMTP id x6so241252ooe.8
+ for <linux-mediatek@lists.infradead.org>; Fri, 21 Aug 2020 03:35:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=EfdWudG0h0q5CaIQdMWXtuPOgO5LF8y0CpSBc1t8Vmo=;
- b=lXZJddLsySTWLGE+UKv+3I86NhQqIIkV25M4nrFxsyNqk9bRGqRcr/4gkY5vkypS3r
- wOPaCUxWj0gLJv835VT/xORv9cX8tCUo6OPSPVTSyJeHT2tLG5KU8SaeHkzuAU8g9g3P
- sB8dCJJ+xxPfWuX2xnQJgFAjw346ICZ01pnVE=
+ :cc; bh=Byvzby1llxcruzsj3OyuSTWoxQgTt17xzrKtgbxngX8=;
+ b=V2xwG4HNtfiwcTEvM+eOUgJtUT4hqHMmCb944VuZ7yrG29MjfY6fz9c3sxBeEEZVp2
+ P0s9hcx/LY0NfbaBe4Pn++Lvu+J/gW2NSftHgmLlXCh1WsYuynORV/D9mxeC8PC6yEIw
+ C1reXI2nSvv+GSmQWUMNPyZyTmMgJSGFbINk4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=EfdWudG0h0q5CaIQdMWXtuPOgO5LF8y0CpSBc1t8Vmo=;
- b=EjoNTrLsnuoBw9Ib1EsDC8xvyDg68ubHYLRvzhkSQrVtxbWxMGFO9RXGHX0E606Rh3
- I+rP2PPvY0ViairzyZ98iSN1zqjlpfz57RSG7t8diMax7yYukuvfuoh1669IY0EKBWD6
- c9G+Cv7vRhpCcUQpPojo5NJL3F/T8gh7BoQRYsboe/MOnH2iC7qxlr+xhM5KB9e36fXM
- iFqADUId8Yxw6oDI9upjmMnh6y4fc0UzCs5rMDFchNerb77qfTTVk9mQ77/OVRnacUHb
- fCJduiUSs6GsNEDB5bvVBndCA5tj9Xt1ncmBIzuJh50lYQUG6Hk4Oc2F3dIshVUMEKC6
- TDxA==
-X-Gm-Message-State: AOAM533pVRyA3ALnK8ISolQR7w0ygzU/SbGvrN7j2I1vYvIGJNuOj2xP
- 70kWD2SVZz7E9ejB5PZPM5AzH/xzM5yXZiee
-X-Google-Smtp-Source: ABdhPJwFNAY6+eEdH4aAvqmmOUKq9dFa9DHyZ6Dpenjo+Ov73UZTvFntasOoGX00G3Q4/RaiTW60NQ==
-X-Received: by 2002:a9d:ed0:: with SMTP id 74mr1347750otj.269.1598006133069;
- Fri, 21 Aug 2020 03:35:33 -0700 (PDT)
-Received: from mail-oi1-f181.google.com (mail-oi1-f181.google.com.
- [209.85.167.181])
- by smtp.gmail.com with ESMTPSA id y66sm292656otb.37.2020.08.21.03.35.31
+ bh=Byvzby1llxcruzsj3OyuSTWoxQgTt17xzrKtgbxngX8=;
+ b=RTYAAFI0aP2Ef1xUvJvrwIhIKo5iyk0314DGo8kPPb3bDeQTsycdaVF5NL/svI8qdP
+ JGzZ2mAp8msu6kjWaOatT+Isvu96Yy+N8CftwbsBzPwshSH18jjVhrSDRuda8MZ7EDUI
+ Iv3HMopCpq1yip+7jFu8dJacRZ7FS7mFiPO4iFGKZbgvzcxLg/Eop5w3mNan9BHTib2B
+ C+W2MuDzVCSQcvXZvsZYLdNz36biekvWeBIPbmjY7qKHfCMZkVUm7E7GVgjlx83flqoL
+ 4Q6l2vEHIfFrVZdt5PLcyP3JnjCn7z3hQqKO1CKQ/vVYXQh/uWoMRiGprwzCEwYKsgrZ
+ og/w==
+X-Gm-Message-State: AOAM533CUNHxOxAg/cyNrWjg9bmQ2sekBICEkwC/xLGsuvU3y1ANK1/r
+ OH6wNaDPmIdpCxL5o69LVFLM/xpYzhsjWYwI
+X-Google-Smtp-Source: ABdhPJxnWngXsY4bqRRb5G/+JF3iS1w3dPamWG1jD6BNKJoAi5HerbLJFukGQ2swO4qbHnRzM87/dA==
+X-Received: by 2002:a4a:9298:: with SMTP id i24mr1536146ooh.5.1598006147006;
+ Fri, 21 Aug 2020 03:35:47 -0700 (PDT)
+Received: from mail-ot1-f45.google.com (mail-ot1-f45.google.com.
+ [209.85.210.45])
+ by smtp.gmail.com with ESMTPSA id k1sm328933oot.20.2020.08.21.03.35.45
  for <linux-mediatek@lists.infradead.org>
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 21 Aug 2020 03:35:32 -0700 (PDT)
-Received: by mail-oi1-f181.google.com with SMTP id k4so1143290oik.2
- for <linux-mediatek@lists.infradead.org>; Fri, 21 Aug 2020 03:35:31 -0700 (PDT)
-X-Received: by 2002:a05:6808:196:: with SMTP id
- w22mr1229658oic.55.1598006131352; 
- Fri, 21 Aug 2020 03:35:31 -0700 (PDT)
+ Fri, 21 Aug 2020 03:35:46 -0700 (PDT)
+Received: by mail-ot1-f45.google.com with SMTP id a65so1191240otc.8
+ for <linux-mediatek@lists.infradead.org>; Fri, 21 Aug 2020 03:35:45 -0700 (PDT)
+X-Received: by 2002:a9d:5f0c:: with SMTP id f12mr1361858oti.141.1598006145135; 
+ Fri, 21 Aug 2020 03:35:45 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200713060842.471356-1-acourbot@chromium.org>
- <20200713060842.471356-3-acourbot@chromium.org>
- <CAGb2v66rFAb6eczD=ct68b7Q60ZvFyMCRN6XdY-rUAbk6zVupw@mail.gmail.com>
-In-Reply-To: <CAGb2v66rFAb6eczD=ct68b7Q60ZvFyMCRN6XdY-rUAbk6zVupw@mail.gmail.com>
+ <20200713060842.471356-4-acourbot@chromium.org>
+ <CAAEAJfBO1Sih3r_RqxYCLRxtx6SoDq674zrvqhJiEBJeiDAtvw@mail.gmail.com>
+ <CAPBb6MV=oo-a9POY_qedcJYU_qSJ695FwJthBrp3SQUK+g0JvA@mail.gmail.com>
+ <CAAEAJfD6tiJKLNoSJbvJkafLrU8s5Y8mZOg038SuH1QNCO-+_g@mail.gmail.com>
+In-Reply-To: <CAAEAJfD6tiJKLNoSJbvJkafLrU8s5Y8mZOg038SuH1QNCO-+_g@mail.gmail.com>
 From: Alexandre Courbot <acourbot@chromium.org>
-Date: Fri, 21 Aug 2020 19:35:20 +0900
-X-Gmail-Original-Message-ID: <CAPBb6MXZ4WoRcdpO42RAbBJZGdWteE76=jMM2HjTfMukUYf4Qg@mail.gmail.com>
-Message-ID: <CAPBb6MXZ4WoRcdpO42RAbBJZGdWteE76=jMM2HjTfMukUYf4Qg@mail.gmail.com>
-Subject: Re: [PATCH v3 02/16] dt-bindings: media: mtk-vcodec: document SCP node
-To: Chen-Yu Tsai <wens@kernel.org>
+Date: Fri, 21 Aug 2020 19:35:34 +0900
+X-Gmail-Original-Message-ID: <CAPBb6MV4bk4iYR6NkX+pttMA3SEyPsWCgk-iwRmAYKmDjXtPRA@mail.gmail.com>
+Message-ID: <CAPBb6MV4bk4iYR6NkX+pttMA3SEyPsWCgk-iwRmAYKmDjXtPRA@mail.gmail.com>
+Subject: Re: [PATCH v3 03/16] media: mtk-vcodec: add SCP firmware ops
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200821_063535_775837_52269334 
-X-CRM114-Status: GOOD (  17.40  )
+X-CRM114-CacheID: sfid-20200821_063549_958092_882437DA 
+X-CRM114-Status: GOOD (  41.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,45 +104,221 @@ Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Maoguang Meng <maoguang.meng@mediatek.com>,
  devicetree <devicetree@vger.kernel.org>,
  Yunfei Dong <yunfei.dong@mediatek.com>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
  Hans Verkuil <hverkuil-cisco@xs4all.nl>,
  Tiffany Lin <tiffany.lin@mediatek.com>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+ linux-media <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 13, 2020 at 3:20 PM Chen-Yu Tsai <wens@kernel.org> wrote:
+On Mon, Jul 27, 2020 at 11:09 PM Ezequiel Garcia
+<ezequiel@vanguardiasur.com.ar> wrote:
 >
-> On Mon, Jul 13, 2020 at 2:09 PM Alexandre Courbot <acourbot@chromium.org> wrote:
+> On Mon, 27 Jul 2020 at 06:06, Alexandre Courbot <acourbot@chromium.org> wrote:
 > >
-> > The mediatek codecs can use either the VPU or the SCP as their interface
-> > to firmware. Reflect this in the DT bindings.
+> > On Thu, Jul 23, 2020 at 6:40 AM Ezequiel Garcia
+> > <ezequiel@vanguardiasur.com.ar> wrote:
+> > >
+> > > On Mon, 13 Jul 2020 at 03:09, Alexandre Courbot <acourbot@chromium.org> wrote:
+> > > >
+> > > > From: Yunfei Dong <yunfei.dong@mediatek.com>
+> > > >
+> > > > Add support for communicating with the SCP firmware, which will be used
+> > > > by MT8183.
+> > > >
+> > > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> > > > [acourbot: refactor, cleanup and split]
+> > > > Co-developed-by: Alexandre Courbot <acourbot@chromium.org>
+> > > > Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+> > > > Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
+> > > > ---
+> > > >  drivers/media/platform/Kconfig                |  1 +
+> > > >  .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  3 +
+> > > >  .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  3 +
+> > > >  .../media/platform/mtk-vcodec/mtk_vcodec_fw.c | 56 +++++++++++++++++++
+> > > >  .../media/platform/mtk-vcodec/mtk_vcodec_fw.h |  2 +
+> > > >  5 files changed, 65 insertions(+)
+> > > >
+> > > > diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
+> > > > index c57ee78fa99d..f0dbe048efea 100644
+> > > > --- a/drivers/media/platform/Kconfig
+> > > > +++ b/drivers/media/platform/Kconfig
+> > > > @@ -256,6 +256,7 @@ config VIDEO_MEDIATEK_VCODEC
+> > > >         select VIDEOBUF2_DMA_CONTIG
+> > > >         select V4L2_MEM2MEM_DEV
+> > > >         select VIDEO_MEDIATEK_VPU
+> > > > +       select MTK_SCP
+> > > >         help
+> > > >             Mediatek video codec driver provides HW capability to
+> > > >             encode and decode in a range of video formats
+> > > > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> > > > index 4f07a5fcce7f..5b5765b98e57 100644
+> > > > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> > > > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> > > > @@ -225,6 +225,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+> > > >         if (!of_property_read_u32(pdev->dev.of_node, "mediatek,vpu",
+> > > >                                   &rproc_phandle)) {
+> > > >                 fw_type = VPU;
+> > > > +       } else if (!of_property_read_u32(pdev->dev.of_node, "mediatek,scp",
+> > > > +                                        &rproc_phandle)) {
+> > > > +               fw_type = SCP;
+> > > >         } else {
+> > > >                 mtk_v4l2_err("Could not get vdec IPI device");
+> > > >                 return -ENODEV;
+> > > > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> > > > index 4340ea10afd0..42530cd01a30 100644
+> > > > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> > > > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> > > > @@ -233,6 +233,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+> > > >         if (!of_property_read_u32(pdev->dev.of_node, "mediatek,vpu",
+> > > >                                   &rproc_phandle)) {
+> > > >                 fw_type = VPU;
+> > > > +       } else if (!of_property_read_u32(pdev->dev.of_node, "mediatek,scp",
+> > > > +                                        &rproc_phandle)) {
+> > > > +               fw_type = SCP;
+> > > >         } else {
+> > > >                 mtk_v4l2_err("Could not get venc IPI device");
+> > > >                 return -ENODEV;
+> > > > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
+> > > > index 967bb100a990..f2a62ea62fc6 100644
+> > > > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
+> > > > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
+> > > > @@ -19,6 +19,7 @@ struct mtk_vcodec_fw {
+> > > >         enum mtk_vcodec_fw_type type;
+> > > >         const struct mtk_vcodec_fw_ops *ops;
+> > > >         struct platform_device *pdev;
+> > > > +       struct mtk_scp *scp;
+> > > >  };
+> > > >
+> > > >  static int mtk_vcodec_vpu_load_firmware(struct mtk_vcodec_fw *fw)
+> > > > @@ -71,6 +72,48 @@ static const struct mtk_vcodec_fw_ops mtk_vcodec_vpu_msg = {
+> > > >         .ipi_send = mtk_vcodec_vpu_ipi_send,
+> > > >  };
+> > > >
+> > > > +static int mtk_vcodec_scp_load_firmware(struct mtk_vcodec_fw *fw)
+> > > > +{
+> > > > +       return rproc_boot(scp_get_rproc(fw->scp));
+> > > > +}
+> > > > +
+> > > > +static unsigned int mtk_vcodec_scp_get_vdec_capa(struct mtk_vcodec_fw *fw)
+> > > > +{
+> > > > +       return scp_get_vdec_hw_capa(fw->scp);
+> > > > +}
+> > > > +
+> > > > +static unsigned int mtk_vcodec_scp_get_venc_capa(struct mtk_vcodec_fw *fw)
+> > > > +{
+> > > > +       return scp_get_venc_hw_capa(fw->scp);
+> > > > +}
+> > > > +
+> > > > +static void *mtk_vcodec_vpu_scp_dm_addr(struct mtk_vcodec_fw *fw,
+> > > > +                                       u32 dtcm_dmem_addr)
+> > > > +{
+> > > > +       return scp_mapping_dm_addr(fw->scp, dtcm_dmem_addr);
+> > > > +}
+> > > > +
+> > > > +static int mtk_vcodec_scp_set_ipi_register(struct mtk_vcodec_fw *fw, int id,
+> > > > +               mtk_vcodec_ipi_handler handler, const char *name, void *priv)
+> > > > +{
+> > > > +       return scp_ipi_register(fw->scp, id, handler, priv);
+> > > > +}
+> > > > +
+> > > > +static int mtk_vcodec_scp_ipi_send(struct mtk_vcodec_fw *fw, int id, void *buf,
+> > > > +               unsigned int len, unsigned int wait)
+> > > > +{
+> > > > +       return scp_ipi_send(fw->scp, id, buf, len, wait);
+> > > > +}
+> > > > +
+> > > > +static const struct mtk_vcodec_fw_ops mtk_vcodec_rproc_msg = {
+> > > > +       .load_firmware = mtk_vcodec_scp_load_firmware,
+> > > > +       .get_vdec_capa = mtk_vcodec_scp_get_vdec_capa,
+> > > > +       .get_venc_capa = mtk_vcodec_scp_get_venc_capa,
+> > > > +       .map_dm_addr = mtk_vcodec_vpu_scp_dm_addr,
+> > > > +       .ipi_register = mtk_vcodec_scp_set_ipi_register,
+> > > > +       .ipi_send = mtk_vcodec_scp_ipi_send,
+> > > > +};
+> > > > +
+> > > >  static void mtk_vcodec_reset_handler(void *priv)
+> > > >  {
+> > > >         struct mtk_vcodec_dev *dev = priv;
+> > > > @@ -94,6 +137,7 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
+> > > >         const struct mtk_vcodec_fw_ops *ops;
+> > > >         struct mtk_vcodec_fw *fw;
+> > > >         struct platform_device *fw_pdev = NULL;
+> > > > +       struct mtk_scp *scp = NULL;
+> > > >
+> > > >         switch (type) {
+> > > >         case VPU:
+> > > > @@ -106,6 +150,14 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
+> > > >                 vpu_wdt_reg_handler(fw_pdev, mtk_vcodec_reset_handler,
+> > > >                                     dev, rst_id);
+> > > >                 break;
+> > > > +       case SCP:
+> > > > +               ops = &mtk_vcodec_rproc_msg;
+> > > > +               scp = scp_get(dev->plat_dev);
+> > > > +               if (!scp) {
+> > > > +                       mtk_v4l2_err("could not get vdec scp handle");
+> > > > +                       return ERR_PTR(-EPROBE_DEFER);
+> > >
+> > > I suspect the EPROBE_DEFER should be returned by scp_get
+> > > itself instead.
 > >
-> > Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-> > Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
-> > ---
-> >  Documentation/devicetree/bindings/media/mediatek-vcodec.txt | 4 +++-
-> >  1 file changed, 3 insertions(+), 1 deletion(-)
+> > scp_get() is a function of of mtk_scp remoteproc driver, so even if we
+> > decide this is desirable (which I am not convinced, as the current
+> > code leaves the freedom to decide how the absence of SCP should be
+> > interpreted to the driver) this is beyond the scope of this series.
 > >
-> > diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> > index b6b5dde6abd8..7aef0a4fe207 100644
-> > --- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> > +++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> > @@ -19,7 +19,9 @@ Required properties:
-> >  - iommus : should point to the respective IOMMU block with master port as
-> >    argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
-> >    for details.
-> > -- mediatek,vpu : the node of video processor unit
-> > +One of the two following nodes:
-> > +- mediatek,vpu : the node of the video processor unit, if using VPU.
-> > +- mediatek,scp : the noode of the SCP unit, if using SCP.
 >
->                          ^ typo / extra o
+> How can the consumer decide if it should defer probing or not?
 
-Fixed, thanks!
+Fair point. Looking at the code of scp_get(), the only failure points
+are of_parse_phandle() and of_find_device_by_node(), which both return
+NULL upon failure. So I cannot think of a way that could make
+scp_get() decide to return EPROBE_DEFER vs. another error code, which
+is probably why it just returns NULL for the moment.
+
+Now that means that the code above also has no reason to make that
+decision, and EPROBE_DEFER is probably not valid for all cases. For
+now I don't see how we could improve this however.
+
+
+>
+> > >
+> > > > +               }
+> > > > +               break;
+> > > >         default:
+> > > >                 mtk_v4l2_err("invalid vcodec fw type");
+> > > >                 return ERR_PTR(-EINVAL);
+> > > > @@ -118,6 +170,7 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
+> > > >         fw->type = type;
+> > > >         fw->ops = ops;
+> > > >         fw->pdev = fw_pdev;
+> > > > +       fw->scp = scp;
+> > > >
+> > > >         return fw;
+> > > >  }
+> > > > @@ -129,6 +182,9 @@ void mtk_vcodec_fw_release(struct mtk_vcodec_fw *fw)
+> > > >         case VPU:
+> > > >                 put_device(&fw->pdev->dev);
+> > > >                 break;
+> > > > +       case SCP:
+> > > > +               scp_put(fw->scp);
+> > >
+> > > Interestingly scp_put is a wrapper around put_device :-)
+> > > Perhaps not a reason to violate the layering.
+> >
+> > I don't see what is wrong with the current code? If SCP is in use, we
+> > use SCP functions to manage it. If in the future SCP involves in such
+> > a way that we need to do more than a put_device(), we are covered. Or
+> > am I missing something?
+>
+> Oh, nothing wrong. I just found it interesting that scp_put was
+> just wrapping put_device. Nothing to fix really.
+>
+> Thanks!
+> Ezequiel
 
 _______________________________________________
 Linux-mediatek mailing list
