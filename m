@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D493C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2020 10:37:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AD451C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2020 10:37:09 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2C61A20738
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2020 10:37:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6E395207DE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2020 10:37:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oPX45q2t";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="R+zAOoZH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C61A20738
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fJ8vP5fM";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="bhZYyEtq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6E395207DE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,50 +26,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VV+XksqIc2gv0UWPuFs5N0q8jrQQwHfuz/g/Jx+MOD4=; b=oPX45q2tDMDbdn8dEIBwYJPis
-	GjeGR87PQLUsPOC7utLyNoCS1/rC+Fl5qQ8F4cVmkz8fcRRieXc+qUZb/GrcMUA6g+sP06+SZYqoJ
-	dDdKGI412z28LdsNiMTdHnoqRB+ZqiP29oJGcLmOL1/jJbPb4SOd2vmPwM9HuFs3KDv4uDHuJ0NAi
-	UTh3TfS0PzZKAy8/BSDgGQcpP0E0go3eCzTXvQsrSxm+tcYjLPi+K6Jr3oewgyflfgkIN14uC9Qad
-	4dhlpY+bFJ5dio1A29FKoq/lEqtAh6GEpXx65JKvszF8y1sknKFZURnjR6EQNJPh2XlKU3eobejYm
-	V3pk6z5rw==;
+	 bh=FsoQhMYEHjjH28enw2FLd1Hl3kVWhYv1w73g+VnithU=; b=fJ8vP5fMaL0RhBRQT8Kvp4tp2
+	s+6Ow8459QlYPakqllXjVAUTddjc0R5uBMos7i1U3nZKSUfFNAkMRQQg96kwMqglPoP2owtvuAWls
+	lY6PfiiIp/NICuGSOCvLC+9Tb5TsVgU0RXwguPbTNdC89HlInG7Akn4bcABU2We9kBPxAlAQsDfbv
+	YJXSsGz3HGOku6Qi013Mo8OY0F/FNV8auQVmFUi430MMBkz6qLqZJNjX+BcPqnYhYF16na3brnJvM
+	WkG6EyyDdC2Wo9QuouVkJWPZR6BLhBVYhHeQwXiiJaJH5PXh8gUguxrGJL9zfQUTijkQRISH1Wsqu
+	AQLAdd7VQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k94Pp-0002B5-7C; Fri, 21 Aug 2020 10:36:57 +0000
-Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
+	id 1k94Ps-0002Cp-MI; Fri, 21 Aug 2020 10:37:00 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k94Pn-00028K-GR
- for linux-mediatek@lists.infradead.org; Fri, 21 Aug 2020 10:36:56 +0000
-Received: by mail-pj1-x1042.google.com with SMTP id n3so622801pjq.1
- for <linux-mediatek@lists.infradead.org>; Fri, 21 Aug 2020 03:36:54 -0700 (PDT)
+ id 1k94Pq-0002As-6o
+ for linux-mediatek@lists.infradead.org; Fri, 21 Aug 2020 10:36:59 +0000
+Received: by mail-pf1-x442.google.com with SMTP id x25so871928pff.4
+ for <linux-mediatek@lists.infradead.org>; Fri, 21 Aug 2020 03:36:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=wSZSbDZ08cylSEX/G8IrfjovP8UHcDWFoSMCGLeK/OE=;
- b=R+zAOoZHsNc/stod/r/22gFK6RbLZtdiNUGAaLfmTULxkEppYgt/JtzLl+/kg+PIoa
- Cn+eEXY+M2apC2Klr5JWM02ho9+2TEBh45Viqjg9UsCOaH7VZMTCfeZB5vN4pES1P4Sy
- Gr53ndmfioz+ugcsmrGOsngymjRQUKuQdjkOQ=
+ bh=aN9wJjKWlBuMt9QxJMGDDO/dNeyp37Ozs7wYfZxyngQ=;
+ b=bhZYyEtqkoJLdVWoZYuLfd//by+FAm/UhV36qtkkk7KNZrnONYnaXO1MgsXMuJWN4s
+ /n0NTZm5445QPqs1NEDUIwFXTSo/f/Q/i+vd+VBcTHI0mDN4h4swzy2CyO99rVjPHNDL
+ EpEnhdT/+8pDJriNSZtCt0bFKqegigO92U4ks=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=wSZSbDZ08cylSEX/G8IrfjovP8UHcDWFoSMCGLeK/OE=;
- b=dx+rKT/O64lhAsgnuv/ohk9FoVHDjKeSfdJsxpE1z5qR3Ia6l2PnI0IXd3SJjXjGHS
- 8Y2PqxsbaQzLsF41j2bsGbRvTpnJd1ddPvNBHoP8GLkXZQWcgrtR796eDZjyDA/JdYcF
- l5ByoeE2cjLHnDsC1+lxXUr2eOkQaxX6EG2SVGta9E/77nf/yI1fmV/NCMCK/Gwh/2OO
- o+TL2kurNGVp5B6c9Me2xvd3gjcSh4ixz14ZI3RIlzaPn4+s7XkmtgVGoiu8zSHy0CY4
- 9B7FiR82zIj23xHvlmyt1X+IhFlzeYdCaqoBosj52wWwNN9AOeyXVO40mZ+qUZo3MA70
- vUSQ==
-X-Gm-Message-State: AOAM533HToJT3ZRr7qOSCoD9mBta2qjZlm8XmbNYVaW07V4yYs3MRSJ6
- LziRE4NQbN57+TMFBEbzYdQ4fA==
-X-Google-Smtp-Source: ABdhPJxOimO6yUX1CD+nnRroMZNOhDxgH6Dc+cxLXKfy60hZyujyWWzQxkjkFARUJ+QFUULBwkeb5g==
-X-Received: by 2002:a17:902:c286:: with SMTP id
- i6mr1820004pld.63.1598006212707; 
- Fri, 21 Aug 2020 03:36:52 -0700 (PDT)
+ bh=aN9wJjKWlBuMt9QxJMGDDO/dNeyp37Ozs7wYfZxyngQ=;
+ b=Q8MsyIA/eEzR0L0k24/EI1+hQayLoCwfkHus/h++vzV7eYm5AUDqYnPAH1M0+e3Uyi
+ qNFV9ibouCgvIG0EWb/bod7iqV9SGOzQ2U6Q8zYc9EZcVcxrZyMD5BIWDT1ndVtLoaKM
+ ABduzf+v/kPfDQxL0bWe4TJxSSykiB4y6zmTqcDYD70//MZGrKsgCMbtF05cU4l2twsN
+ QwjO2io/W41I/+GGEVAOmI1gC+LssQ5ypzucyFFA5hkIr7D9BvOMz5yyHlDjJavOEdHM
+ VGptEd9jK74/A0pdRpRbiTwwzRedr/i2CqmN5mDd5k68VNLob7bpef7ClGMbHWa+u3qe
+ kJCw==
+X-Gm-Message-State: AOAM531se4SoVEdl4aSprhVRy452mtOni4odevKIXWW45vQhy+GMt2M3
+ VxmR9E5y6Sl/1n5UdUrjb/InSg==
+X-Google-Smtp-Source: ABdhPJzZJ5E9ihdSlt9q2A2S/gfUjUMPDtR1tQEgpU+iH6hijr1JkN4EdfFp+G1gJrFbdpkqkt+Ujg==
+X-Received: by 2002:a65:680b:: with SMTP id l11mr1860539pgt.440.1598006216096; 
+ Fri, 21 Aug 2020 03:36:56 -0700 (PDT)
 Received: from acourbot.tok.corp.google.com
  ([2401:fa00:8f:203:eeb1:d7ff:fe57:b7e5])
- by smtp.gmail.com with ESMTPSA id y20sm2081525pfn.183.2020.08.21.03.36.49
+ by smtp.gmail.com with ESMTPSA id y20sm2081525pfn.183.2020.08.21.03.36.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Aug 2020 03:36:51 -0700 (PDT)
+ Fri, 21 Aug 2020 03:36:55 -0700 (PDT)
 From: Alexandre Courbot <acourbot@chromium.org>
 To: Tiffany Lin <tiffany.lin@mediatek.com>,
  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
@@ -77,17 +76,17 @@ To: Tiffany Lin <tiffany.lin@mediatek.com>,
  Yunfei Dong <yunfei.dong@mediatek.com>,
  Maoguang Meng <maoguang.meng@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v4 06/17] media: mtk-vcodec: venc: specify bitrate range
+Subject: [PATCH v4 07/17] media: mtk-vcodec: venc: specify supported formats
  per-chip
-Date: Fri, 21 Aug 2020 19:35:57 +0900
-Message-Id: <20200821103608.2310097-7-acourbot@chromium.org>
+Date: Fri, 21 Aug 2020 19:35:58 +0900
+Message-Id: <20200821103608.2310097-8-acourbot@chromium.org>
 X-Mailer: git-send-email 2.28.0.297.g1956fa8f8d-goog
 In-Reply-To: <20200821103608.2310097-1-acourbot@chromium.org>
 References: <20200821103608.2310097-1-acourbot@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200821_063655_559638_BBCAB8B5 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20200821_063658_522918_4864B14F 
+X-CRM114-Status: GOOD (  21.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,65 +106,334 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Different chips have different supported bitrate ranges. Move the min
-and max supported bitrates to the platform data.
+Different chips have different supported formats. Move the list of
+supported formats to the platform data, and split the output and capture
+formats into two lists to make it easier to find the default format for
+each queue.
 
 Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
 Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h     | 4 ++++
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c     | 3 ++-
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c | 2 ++
- 3 files changed, 8 insertions(+), 1 deletion(-)
+ .../platform/mtk-vcodec/mtk_vcodec_drv.h      |   8 ++
+ .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 122 +++++++-----------
+ .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  40 ++++++
+ 3 files changed, 95 insertions(+), 75 deletions(-)
 
 diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-index 1676c26eb229..e4b28fefcc95 100644
+index e4b28fefcc95..ba4045d64212 100644
 --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
 +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-@@ -311,12 +311,16 @@ enum mtk_chip {
-  *
-  * @uses_ext: whether the encoder uses the extended firmware messaging format
+@@ -313,6 +313,10 @@ enum mtk_chip {
   * @has_lt_irq: whether the encoder uses the LT irq
-+ * @min_birate: minimum supported encoding bitrate
-+ * @max_bitrate: maximum supported encoding bitrate
+  * @min_birate: minimum supported encoding bitrate
+  * @max_bitrate: maximum supported encoding bitrate
++ * @capture_formats: array of supported capture formats
++ * @num_capture_formats: number of entries in capture_formats
++ * @output_formats: array of supported output formats
++ * @num_output_formats: number of entries in output_formats
   */
  struct mtk_vcodec_enc_pdata {
  	enum mtk_chip chip;
- 
- 	bool uses_ext;
+@@ -321,6 +325,10 @@ struct mtk_vcodec_enc_pdata {
  	bool has_lt_irq;
-+	unsigned long min_bitrate;
-+	unsigned long max_bitrate;
+ 	unsigned long min_bitrate;
+ 	unsigned long max_bitrate;
++	const struct mtk_video_fmt *capture_formats;
++	size_t num_capture_formats;
++	const struct mtk_video_fmt *output_formats;
++	size_t num_output_formats;
  };
  
  #define MTK_ENC_CTX_IS_EXT(ctx) ((ctx)->dev->venc_pdata->uses_ext)
 diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-index d469ff6464b2..50ba9da59153 100644
+index 50ba9da59153..05743a745a11 100644
 --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
 +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-@@ -1232,7 +1232,8 @@ int mtk_vcodec_enc_ctrls_setup(struct mtk_vcodec_ctx *ctx)
- 	v4l2_ctrl_handler_init(handler, MTK_MAX_CTRLS_HINT);
+@@ -23,47 +23,9 @@
+ #define DFT_CFG_WIDTH	MTK_VENC_MIN_W
+ #define DFT_CFG_HEIGHT	MTK_VENC_MIN_H
+ #define MTK_MAX_CTRLS_HINT	20
+-#define OUT_FMT_IDX		0
+-#define CAP_FMT_IDX		4
+-
  
- 	v4l2_ctrl_new_std(handler, ops, V4L2_CID_MPEG_VIDEO_BITRATE,
--			1, 4000000, 1, 4000000);
-+			  ctx->dev->venc_pdata->min_bitrate,
-+			  ctx->dev->venc_pdata->max_bitrate, 1, 4000000);
- 	v4l2_ctrl_new_std(handler, ops, V4L2_CID_MPEG_VIDEO_B_FRAMES,
- 			0, 2, 1, 0);
- 	v4l2_ctrl_new_std(handler, ops, V4L2_CID_MPEG_VIDEO_FRAME_RC_ENABLE,
+ static void mtk_venc_worker(struct work_struct *work);
+ 
+-static const struct mtk_video_fmt mtk_video_formats[] = {
+-	{
+-		.fourcc = V4L2_PIX_FMT_NV12M,
+-		.type = MTK_FMT_FRAME,
+-		.num_planes = 2,
+-	},
+-	{
+-		.fourcc = V4L2_PIX_FMT_NV21M,
+-		.type = MTK_FMT_FRAME,
+-		.num_planes = 2,
+-	},
+-	{
+-		.fourcc = V4L2_PIX_FMT_YUV420M,
+-		.type = MTK_FMT_FRAME,
+-		.num_planes = 3,
+-	},
+-	{
+-		.fourcc = V4L2_PIX_FMT_YVU420M,
+-		.type = MTK_FMT_FRAME,
+-		.num_planes = 3,
+-	},
+-	{
+-		.fourcc = V4L2_PIX_FMT_H264,
+-		.type = MTK_FMT_ENC,
+-		.num_planes = 1,
+-	},
+-	{
+-		.fourcc = V4L2_PIX_FMT_VP8,
+-		.type = MTK_FMT_ENC,
+-		.num_planes = 1,
+-	},
+-};
+-
+-#define NUM_FORMATS ARRAY_SIZE(mtk_video_formats)
+-
+ static const struct mtk_codec_framesizes mtk_venc_framesizes[] = {
+ 	{
+ 		.fourcc	= V4L2_PIX_FMT_H264,
+@@ -156,27 +118,17 @@ static const struct v4l2_ctrl_ops mtk_vcodec_enc_ctrl_ops = {
+ 	.s_ctrl = vidioc_venc_s_ctrl,
+ };
+ 
+-static int vidioc_enum_fmt(struct v4l2_fmtdesc *f, bool output_queue)
++static int vidioc_enum_fmt(struct v4l2_fmtdesc *f,
++			   const struct mtk_video_fmt *formats,
++			   size_t num_formats)
+ {
+-	const struct mtk_video_fmt *fmt;
+-	int i, j = 0;
++	if (f->index >= num_formats)
++		return -EINVAL;
+ 
+-	for (i = 0; i < NUM_FORMATS; ++i) {
+-		if (output_queue && mtk_video_formats[i].type != MTK_FMT_FRAME)
+-			continue;
+-		if (!output_queue && mtk_video_formats[i].type != MTK_FMT_ENC)
+-			continue;
++	f->pixelformat = formats[f->index].fourcc;
++	memset(f->reserved, 0, sizeof(f->reserved));
+ 
+-		if (j == f->index) {
+-			fmt = &mtk_video_formats[i];
+-			f->pixelformat = fmt->fourcc;
+-			memset(f->reserved, 0, sizeof(f->reserved));
+-			return 0;
+-		}
+-		++j;
+-	}
+-
+-	return -EINVAL;
++	return 0;
+ }
+ 
+ static int vidioc_enum_framesizes(struct file *file, void *fh,
+@@ -202,13 +154,21 @@ static int vidioc_enum_framesizes(struct file *file, void *fh,
+ static int vidioc_enum_fmt_vid_cap(struct file *file, void *priv,
+ 				   struct v4l2_fmtdesc *f)
+ {
+-	return vidioc_enum_fmt(f, false);
++	const struct mtk_vcodec_enc_pdata *pdata =
++		fh_to_ctx(priv)->dev->venc_pdata;
++
++	return vidioc_enum_fmt(f, pdata->capture_formats,
++			       pdata->num_capture_formats);
+ }
+ 
+ static int vidioc_enum_fmt_vid_out(struct file *file, void *priv,
+ 				   struct v4l2_fmtdesc *f)
+ {
+-	return vidioc_enum_fmt(f, true);
++	const struct mtk_vcodec_enc_pdata *pdata =
++		fh_to_ctx(priv)->dev->venc_pdata;
++
++	return vidioc_enum_fmt(f, pdata->output_formats,
++			       pdata->num_output_formats);
+ }
+ 
+ static int vidioc_venc_querycap(struct file *file, void *priv,
+@@ -266,13 +226,20 @@ static struct mtk_q_data *mtk_venc_get_q_data(struct mtk_vcodec_ctx *ctx,
+ 	return &ctx->q_data[MTK_Q_DATA_DST];
+ }
+ 
+-static const struct mtk_video_fmt *mtk_venc_find_format(struct v4l2_format *f)
++static const struct mtk_video_fmt *mtk_venc_find_format(struct v4l2_format *f,
++	const struct mtk_vcodec_enc_pdata *pdata)
+ {
+ 	const struct mtk_video_fmt *fmt;
+ 	unsigned int k;
+ 
+-	for (k = 0; k < NUM_FORMATS; k++) {
+-		fmt = &mtk_video_formats[k];
++	for (k = 0; k < pdata->num_capture_formats; k++) {
++		fmt = &pdata->capture_formats[k];
++		if (fmt->fourcc == f->fmt.pix.pixelformat)
++			return fmt;
++	}
++
++	for (k = 0; k < pdata->num_output_formats; k++) {
++		fmt = &pdata->output_formats[k];
+ 		if (fmt->fourcc == f->fmt.pix.pixelformat)
+ 			return fmt;
+ 	}
+@@ -414,6 +381,7 @@ static int vidioc_venc_s_fmt_cap(struct file *file, void *priv,
+ 			     struct v4l2_format *f)
+ {
+ 	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
++	const struct mtk_vcodec_enc_pdata *pdata = ctx->dev->venc_pdata;
+ 	struct vb2_queue *vq;
+ 	struct mtk_q_data *q_data;
+ 	int i, ret;
+@@ -436,10 +404,10 @@ static int vidioc_venc_s_fmt_cap(struct file *file, void *priv,
+ 		return -EINVAL;
+ 	}
+ 
+-	fmt = mtk_venc_find_format(f);
++	fmt = mtk_venc_find_format(f, pdata);
+ 	if (!fmt) {
+-		f->fmt.pix.pixelformat = mtk_video_formats[CAP_FMT_IDX].fourcc;
+-		fmt = mtk_venc_find_format(f);
++		fmt = &ctx->dev->venc_pdata->capture_formats[0];
++		f->fmt.pix.pixelformat = fmt->fourcc;
+ 	}
+ 
+ 	q_data->fmt = fmt;
+@@ -476,6 +444,7 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
+ 			     struct v4l2_format *f)
+ {
+ 	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
++	const struct mtk_vcodec_enc_pdata *pdata = ctx->dev->venc_pdata;
+ 	struct vb2_queue *vq;
+ 	struct mtk_q_data *q_data;
+ 	int ret, i;
+@@ -499,10 +468,10 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
+ 		return -EINVAL;
+ 	}
+ 
+-	fmt = mtk_venc_find_format(f);
++	fmt = mtk_venc_find_format(f, pdata);
+ 	if (!fmt) {
+-		f->fmt.pix.pixelformat = mtk_video_formats[OUT_FMT_IDX].fourcc;
+-		fmt = mtk_venc_find_format(f);
++		fmt = &ctx->dev->venc_pdata->output_formats[0];
++		f->fmt.pix.pixelformat = fmt->fourcc;
+ 	}
+ 
+ 	pix_fmt_mp->height = clamp(pix_fmt_mp->height,
+@@ -580,11 +549,12 @@ static int vidioc_try_fmt_vid_cap_mplane(struct file *file, void *priv,
+ {
+ 	const struct mtk_video_fmt *fmt;
+ 	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
++	const struct mtk_vcodec_enc_pdata *pdata = ctx->dev->venc_pdata;
+ 
+-	fmt = mtk_venc_find_format(f);
++	fmt = mtk_venc_find_format(f, pdata);
+ 	if (!fmt) {
+-		f->fmt.pix.pixelformat = mtk_video_formats[CAP_FMT_IDX].fourcc;
+-		fmt = mtk_venc_find_format(f);
++		fmt = &ctx->dev->venc_pdata->capture_formats[0];
++		f->fmt.pix.pixelformat = fmt->fourcc;
+ 	}
+ 	f->fmt.pix_mp.colorspace = ctx->colorspace;
+ 	f->fmt.pix_mp.ycbcr_enc = ctx->ycbcr_enc;
+@@ -598,11 +568,13 @@ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
+ 					 struct v4l2_format *f)
+ {
+ 	const struct mtk_video_fmt *fmt;
++	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
++	const struct mtk_vcodec_enc_pdata *pdata = ctx->dev->venc_pdata;
+ 
+-	fmt = mtk_venc_find_format(f);
++	fmt = mtk_venc_find_format(f, pdata);
+ 	if (!fmt) {
+-		f->fmt.pix.pixelformat = mtk_video_formats[OUT_FMT_IDX].fourcc;
+-		fmt = mtk_venc_find_format(f);
++		fmt = &ctx->dev->venc_pdata->output_formats[0];
++		f->fmt.pix.pixelformat = fmt->fourcc;
+ 	}
+ 	if (!f->fmt.pix_mp.colorspace) {
+ 		f->fmt.pix_mp.colorspace = V4L2_COLORSPACE_REC709;
+@@ -1187,7 +1159,7 @@ void mtk_vcodec_enc_set_default_params(struct mtk_vcodec_ctx *ctx)
+ 	q_data->coded_height = DFT_CFG_HEIGHT;
+ 	q_data->field = V4L2_FIELD_NONE;
+ 
+-	q_data->fmt = &mtk_video_formats[OUT_FMT_IDX];
++	q_data->fmt = &ctx->dev->venc_pdata->output_formats[0];
+ 
+ 	v4l_bound_align_image(&q_data->coded_width,
+ 				MTK_VENC_MIN_W,
+@@ -1216,7 +1188,7 @@ void mtk_vcodec_enc_set_default_params(struct mtk_vcodec_ctx *ctx)
+ 	memset(q_data, 0, sizeof(struct mtk_q_data));
+ 	q_data->coded_width = DFT_CFG_WIDTH;
+ 	q_data->coded_height = DFT_CFG_HEIGHT;
+-	q_data->fmt = &mtk_video_formats[CAP_FMT_IDX];
++	q_data->fmt = &ctx->dev->venc_pdata->capture_formats[0];
+ 	q_data->field = V4L2_FIELD_NONE;
+ 	ctx->q_data[MTK_Q_DATA_DST].sizeimage[0] =
+ 		DFT_CFG_WIDTH * DFT_CFG_HEIGHT;
 diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-index 379b6638f7a9..602f6a9c13e3 100644
+index 602f6a9c13e3..569698f63515 100644
 --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
 +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-@@ -386,6 +386,8 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+@@ -26,6 +26,42 @@
+ module_param(mtk_v4l2_dbg_level, int, S_IRUGO | S_IWUSR);
+ module_param(mtk_vcodec_dbg, bool, S_IRUGO | S_IWUSR);
+ 
++static const struct mtk_video_fmt mtk_video_formats_output_mt8173[] = {
++	{
++		.fourcc = V4L2_PIX_FMT_NV12M,
++		.type = MTK_FMT_FRAME,
++		.num_planes = 2,
++	},
++	{
++		.fourcc = V4L2_PIX_FMT_NV21M,
++		.type = MTK_FMT_FRAME,
++		.num_planes = 2,
++	},
++	{
++		.fourcc = V4L2_PIX_FMT_YUV420M,
++		.type = MTK_FMT_FRAME,
++		.num_planes = 3,
++	},
++	{
++		.fourcc = V4L2_PIX_FMT_YVU420M,
++		.type = MTK_FMT_FRAME,
++		.num_planes = 3,
++	},
++};
++
++static const struct mtk_video_fmt mtk_video_formats_capture_mt8173[] =  {
++	{
++		.fourcc = V4L2_PIX_FMT_H264,
++		.type = MTK_FMT_ENC,
++		.num_planes = 1,
++	},
++	{
++		.fourcc = V4L2_PIX_FMT_VP8,
++		.type = MTK_FMT_ENC,
++		.num_planes = 1,
++	},
++};
++
+ /* Wake up context wait_queue */
+ static void wake_up_ctx(struct mtk_vcodec_ctx *ctx, unsigned int reason)
+ {
+@@ -386,6 +422,10 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
  static const struct mtk_vcodec_enc_pdata mt8173_pdata = {
  	.chip = MTK_MT8173,
  	.has_lt_irq = true,
-+	.min_bitrate = 1,
-+	.max_bitrate = 4000000,
++	.capture_formats = mtk_video_formats_capture_mt8173,
++	.num_capture_formats = ARRAY_SIZE(mtk_video_formats_capture_mt8173),
++	.output_formats = mtk_video_formats_output_mt8173,
++	.num_output_formats = ARRAY_SIZE(mtk_video_formats_output_mt8173),
+ 	.min_bitrate = 1,
+ 	.max_bitrate = 4000000,
  };
- 
- static const struct of_device_id mtk_vcodec_enc_match[] = {
 -- 
 2.28.0.297.g1956fa8f8d-goog
 
