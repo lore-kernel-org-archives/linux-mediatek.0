@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0710CC433DF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Aug 2020 08:11:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EDABAC433DF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Aug 2020 08:19:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C4B9D21734
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Aug 2020 08:11:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AAABA20825
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Aug 2020 08:19:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sPG0yTSl";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="PAKp/NoK"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C4B9D21734
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kGXVxUiH";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EWQYwgKW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AAABA20825
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ll1ZuahIq7Na8jvGxfkY9WdSbjTFrmZ272UDMkbSxJA=; b=sPG0yTSlPYCkA4e65g2/yDDiZ
-	rDkimQVfdWx6CuhBb774BxdT/vwdfwmXf1S3T313aY5E0YU4+jJ8ePp894GaFjHYHBN/miGt+1IZc
-	BpZ2BHRBDMgVBtkE+Ea4sxpndp39Z0GhbOLqH2knKKs30jd5JQjVlaY0lvkGa+XyfwFdtALePNd9l
-	C7FUROSPSzuF2c3LEjmOE874fhnRNx1UMeO24+16vTplXVBoX8CCimKGPZjxUisxGbZLs1t6Sk71+
-	HTRK15Cs0whJ9pw5BRyS8tzW3dFHqzDL6uSYgpf28PTL5S7zmBTAlHeY8NuAGdhSKOTMvr5faNJio
-	HyvsjmKVQ==;
+	 bh=dNCILT26TSn8xlL5/vLRsQJhyXfe4yhHcHiWis1Ejes=; b=kGXVxUiHCjSiKsDpvDaqBaATW
+	K5KJY0MM4bxe7opgfDxFBXKrJ5e18MKPzDQNfSZO6+IdQhrPiN4x3YHYyqmAnh4feMdruY1GisQZ4
+	n6Ui+D4XFQa544v9JD4xO2xeeblYtjTXa2WVEq7Zhn3w67upaRuj3ux9MByC6xeaU5dD5ZZYZ2TU+
+	3gjnU8P1DoXk+Pj9t61+4caiW6bkxke4lguuxsGv6QFYPLdCdG+4rmWxJeAZJZ0eos4yVh4gxYPTU
+	M53uwJzWumZgaX72IGdHjx99YfUpIUZkNioNQpT+qcIOreU1c2TdK+sox793rJL74cQOgmVmvVGCO
+	aNKsg3j8Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k9Oci-0005gV-Ik; Sat, 22 Aug 2020 08:11:36 +0000
+	id 1k9OkB-0007GX-To; Sat, 22 Aug 2020 08:19:20 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k9OcR-0005a4-Pk; Sat, 22 Aug 2020 08:11:20 +0000
-X-UUID: e9c6e916a2e24dad9e026463ef0338ab-20200822
+ id 1k9Ok9-0007EN-DE; Sat, 22 Aug 2020 08:19:18 +0000
+X-UUID: 6479c7f7748d41ae9b5be941eb3b5030-20200822
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=alOtbDy8sNebdE7u73c0CBOo4U8QiV6rJoaa+rnc/yY=; 
- b=PAKp/NoKXQ7nf8PQscA2+Ynt6kxiZFa7GJk0+gbNZCGou29A39HApQA3VXpymsLtTzOkx5jpRCO7hLZGHPAoVJB9EktKROJ4KAWmpkBvcrT7AMUdbSeBxYHkipSdJTJbTw97dFxXFsiRWPkHXeVVgu/Twk+4efu/DvT6Do3xG+E=;
-X-UUID: e9c6e916a2e24dad9e026463ef0338ab-20200822
+ bh=vQDriCyMjYjM6pnqq6iAk0QyjJohTMSr6/4Cj53MUf4=; 
+ b=EWQYwgKW9INvhUdqVoPGVHQ4lRCeAX+DIS/0eKiqI46NBFpzqFBZn2dxGXvOayJL96dPfdb3Cxb1JDQpV9wuJOrEYQzrXOgVzVfFYWtPui296h9JfQzmchfMGeocup3PmmhQgscaTsS0lWZfY+eyp1vk57iwShxVTuv1q1KjrS4=;
+X-UUID: 6479c7f7748d41ae9b5be941eb3b5030-20200822
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1856156238; Sat, 22 Aug 2020 00:11:16 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 22 Aug 2020 01:09:18 -0700
+ with ESMTP id 437584264; Sat, 22 Aug 2020 00:19:13 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 22 Aug 2020 01:09:11 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 22 Aug 2020 16:09:16 +0800
+ MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 22 Aug 2020 16:09:10 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 22 Aug 2020 16:09:13 +0800
+ Transport; Sat, 22 Aug 2020 16:09:08 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v3 08/11] usb: phy-ulpi-viewport: convert to
+Subject: [PATCH v3 03/11] usb: pci-quirks: convert to
  readl_poll_timeout_atomic()
-Date: Sat, 22 Aug 2020 16:05:50 +0800
-Message-ID: <1598083553-31896-8-git-send-email-chunfeng.yun@mediatek.com>
+Date: Sat, 22 Aug 2020 16:05:45 +0800
+Message-ID: <1598083553-31896-3-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1598083553-31896-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1598083553-31896-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: DCC594ADF85CB99770292AA43E90FFC70F6299400CE9D63C91AF1884A63E303E2000:8
+X-TM-SNTS-SMTP: 14BCA79F542CC2DF6DF6C45CF08EFBF2CF6ED65BFFE122FDEB764F68DF392D022000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200822_041119_985754_93635079 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20200822_041917_684415_8133F1FE 
+X-CRM114-Status: GOOD (  13.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,6 +85,7 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: Felipe Balbi <balbi@kernel.org>,
+ Mathias Nyman <mathias.nyman@linux.intel.com>,
  Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>,
  linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
  Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-mediatek@lists.infradead.org,
@@ -97,44 +98,45 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Use readl_poll_timeout_atomic() to simplify code
 
+Cc: Mathias Nyman <mathias.nyman@linux.intel.com>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
 v2~v3: no changes
 ---
- drivers/usb/phy/phy-ulpi-viewport.c | 12 +++---------
- 1 file changed, 3 insertions(+), 9 deletions(-)
+ drivers/usb/host/pci-quirks.c | 13 ++++---------
+ 1 file changed, 4 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/usb/phy/phy-ulpi-viewport.c b/drivers/usb/phy/phy-ulpi-viewport.c
-index 7a14e0e..0f61e32 100644
---- a/drivers/usb/phy/phy-ulpi-viewport.c
-+++ b/drivers/usb/phy/phy-ulpi-viewport.c
-@@ -7,6 +7,7 @@
- #include <linux/kernel.h>
- #include <linux/usb.h>
- #include <linux/io.h>
+diff --git a/drivers/usb/host/pci-quirks.c b/drivers/usb/host/pci-quirks.c
+index b8961c0..8920566 100644
+--- a/drivers/usb/host/pci-quirks.c
++++ b/drivers/usb/host/pci-quirks.c
+@@ -16,6 +16,7 @@
+ #include <linux/export.h>
+ #include <linux/acpi.h>
+ #include <linux/dmi.h>
 +#include <linux/iopoll.h>
- #include <linux/usb/otg.h>
- #include <linux/usb/ulpi.h>
  
-@@ -20,16 +21,9 @@
+ #include <soc/bcm2835/raspberrypi-firmware.h>
  
- static int ulpi_viewport_wait(void __iomem *view, u32 mask)
+@@ -1012,15 +1013,9 @@ static int handshake(void __iomem *ptr, u32 mask, u32 done,
  {
--	unsigned long usec = 2000;
-+	u32 val;
+ 	u32	result;
  
--	while (usec--) {
--		if (!(readl(view) & mask))
+-	do {
+-		result = readl(ptr);
+-		result &= mask;
+-		if (result == done)
 -			return 0;
--
--		udelay(1);
--	}
--
+-		udelay(delay_usec);
+-		wait_usec -= delay_usec;
+-	} while (wait_usec > 0);
 -	return -ETIMEDOUT;
-+	return readl_poll_timeout_atomic(view, val, !(val & mask), 1, 2000);
++	return readl_poll_timeout_atomic(ptr, result,
++					 ((result & mask) == done),
++					 delay_usec, wait_usec);
  }
  
- static int ulpi_viewport_read(struct usb_phy *otg, u32 reg)
+ /*
 -- 
 1.9.1
 _______________________________________________
