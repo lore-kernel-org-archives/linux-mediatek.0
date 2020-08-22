@@ -2,80 +2,77 @@ Return-Path: <SRS0=DMob=CA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A30CC433DF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Aug 2020 04:48:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D9EABC433E1
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Aug 2020 08:10:04 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 368432078D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Aug 2020 04:48:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A66602173E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Aug 2020 08:10:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XiqKCfLz";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=0x0f.com header.i=@0x0f.com header.b="E04jO1Xa"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 368432078D
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=0x0f.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3ZW9p8vJ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="AujKItQ0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A66602173E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=PqNdB7D1YOB6ZY1z0UMSgNMITAzcGkWVuOsnUmhHEvM=; b=XiqKCfLzGRwGAK3v5pjKNhKeG
-	58aqmt/hMTlkLwVdh2jFRmv1/y5ha8JkPiF8S4xgTaPY9nTKcHL3jNM2VYg4kPs5z3ayH45De+1KQ
-	0LV1jJStWyxFeTde4yHi9giFRgJRiKd736NfBxLJBamIa6xshTGQLrPRM7YwneQkcBEWkCC6toa5m
-	Ewz6FR54ydQdC7bXjQf1cL+DGaqGy7y+NDHWM57DJG76kP36Sy9Bz+sTjVQgEXbvUWbgu38iIY/uU
-	53RbVArTF8zNYu0apS6ZhP6TkBWAmK/JJI/0FVwfuHfFBCprWiKSpATTMSjd25WFPC+p5cDPq2jN7
-	988jww3fg==;
+	 bh=xRWwunozkDvxxqP7kTCkrD7i+wyOirBRByR5cqrNlRY=; b=3ZW9p8vJ557C0F+Hp9aj5xqSw
+	U3RoE3f2vJrDs5fRU2IeYD5F3DIFad7F7TY8cliQ/X0Kd6qSXbspv9DPVFPX7TRrGfkGRT7im5l21
+	IGMk4ErhJFhxW6ZHV7eYLyLc9irItfbZD0b6p9kqU+yNnDJX+G/DPNUxW/MvvnNBkEqjkoVjPdt16
+	XboCFyKQKk+WiP0bVWUm2b4w/cUD5zdsMCEUZDrzgVDoFMmu6+tbgMRgQn4W+8WlElXGG92pYyFXI
+	WCUaRxuKDZ7IRTVqQw2Dm70kEcspbgsuNXWUgTiYYw1+vWU1f0TKnvCAbmlG/grNhzsNmphP7InMa
+	2bfEmuEXA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k9LSA-0005K9-IJ; Sat, 22 Aug 2020 04:48:30 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1k9Ob2-0005P8-7z; Sat, 22 Aug 2020 08:09:52 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k9LS7-0005JM-Hj
- for linux-mediatek@lists.infradead.org; Sat, 22 Aug 2020 04:48:29 +0000
-Received: by mail-wm1-x344.google.com with SMTP id k8so3615441wma.2
- for <linux-mediatek@lists.infradead.org>; Fri, 21 Aug 2020 21:48:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0x0f.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=8EpfXuOfl5Lc4X03a/2NthXamDtm3ZTxJlpaERf1P2M=;
- b=E04jO1XaLwTEoC5F7ckK/3aQt1ozC0Fcmt/b8GJiWlnGHUdQBoV46zHaqX8lhyuA6t
- 61+o8lWe+YunryUin42fuZz646fxNWnJy0TAxA/h6js4kvJ1SF9qesCf7SuIuuoB8HGl
- AVSzLN/Orw0rBpLQpmsY/cxB9ued9UHWTnUR4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=8EpfXuOfl5Lc4X03a/2NthXamDtm3ZTxJlpaERf1P2M=;
- b=m/3g3o6N0hZtgL5wcZ6EGdXOJXD6QRMGkbKOoy/70yhv9dkALwh0/kJ5yt4hbZYXMX
- pcfo5TSeGhCf2ERTF8ohVmk4GmkeMxgnAUwqJYnRVsFzusTZSrL7DzivgtUHiRgdN4dB
- unDAiqP5kkFVfeiR5lINfqyD/HrZOqQLIIYF0fkXcyAY6qC7xiwx5urP0g2fb8wUEc+8
- BiGCi6decUYe2XmrRtBJisPuYxGfMDQ2MuCsEeqy+UyKi2doj7qG2I4GLbgLIxzec7Tn
- mU84KuJdz8m2gZ3q8B0WK11wYdZfDMyo7AvOegMIvUHAYeIEJ20bd9xTgz18xRxFlDDw
- GW3Q==
-X-Gm-Message-State: AOAM533CWiaP/KThK/atEUxAA1EZMCl5XvdSilcVKfNA6af6LpZqqZhi
- JUNYDNTE1TAE6d2FYyTrQQa/wQlUkMiB8SNuWAJ+bA==
-X-Google-Smtp-Source: ABdhPJw7xCkJoXDkG4cyA0Eab/W2Nf7VdU8EymJP8iNVywtv1/Z8GU515lX7IbfzvyLf86zSlVJwlLuih6meBwQ3rx0=
-X-Received: by 2002:a7b:c10d:: with SMTP id w13mr6535376wmi.2.1598071704261;
- Fri, 21 Aug 2020 21:48:24 -0700 (PDT)
+ id 1k9Oas-0005Me-BS; Sat, 22 Aug 2020 08:09:43 +0000
+X-UUID: 75b6d8d7ab404b1ba1422c13576b7f9a-20200822
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=glUu4ILa56NmCzEya+FLhC/5JYoRtBGd30upHM8qMX0=; 
+ b=AujKItQ0PtargzNMc5jD/YMWIhajEGDAnWAnb95Fy4XT6NIqYQr4xfI2EchdnWcXI7iJemaN5I3rTpDxqfbSP5qf6GPNsMWLWALuvKy/LyqLqbOM4+GWHEBxUVi1N3bbl1FNs8pY8sjIIekV1F81LhH7p/h4JznQmwh2xZPm0PY=;
+X-UUID: 75b6d8d7ab404b1ba1422c13576b7f9a-20200822
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1293440793; Sat, 22 Aug 2020 00:09:18 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 22 Aug 2020 01:09:16 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 22 Aug 2020 16:09:12 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 22 Aug 2020 16:09:10 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v3 05/11] usb: oxu210hp-hcd: convert to
+ readl_poll_timeout_atomic()
+Date: Sat, 22 Aug 2020 16:05:47 +0800
+Message-ID: <1598083553-31896-5-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1598083553-31896-1-git-send-email-chunfeng.yun@mediatek.com>
+References: <1598083553-31896-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-References: <20200819034231.20726-1-mark-pk.tsai@mediatek.com>
- <20200819153757.28993-1-mark-pk.tsai@mediatek.com>
-In-Reply-To: <20200819153757.28993-1-mark-pk.tsai@mediatek.com>
-From: Daniel Palmer <daniel@0x0f.com>
-Date: Sat, 22 Aug 2020 13:48:13 +0900
-Message-ID: <CAFr9PXni=BmDY6_iuJPnYb3d6XB1VrxE6WP3YtSBxT6NciZMMA@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] irqchip: irq-mst: Add MStar interrupt controller
- support
-To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+X-TM-SNTS-SMTP: 90167F4D4D50A24168BBC3B4AC9B44B4F7352DDF6393F3281A30FA7401C0BCE52000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200822_004827_817801_D6658B3C 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20200822_040942_529192_B98F7292 
+X-CRM114-Status: GOOD (  14.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,59 +84,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: DTML <devicetree@vger.kernel.org>, alix.wu@mediatek.com,
- Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <maz@kernel.org>,
- yj.chiang@mediatek.com, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Cc: Felipe Balbi <balbi@kernel.org>,
+ Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mark-PK,
+Use readl_poll_timeout_atomic() to simplify code
 
-On Thu, 20 Aug 2020 at 00:38, Mark-PK Tsai <mark-pk.tsai@mediatek.com> wrote:
->
-> Add MStar interrupt controller support using hierarchy irq
-> domain.
->
-> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+v2~v3: no changes
+---
+ drivers/usb/host/oxu210hp-hcd.c | 21 ++++++++++-----------
+ 1 file changed, 10 insertions(+), 11 deletions(-)
 
-I've integrated this version into my MStar/SigmaStar tree and tested
-on an MStar MSC313E
-based board (BreadBee) and I'm happy to say it seems to be working:
-
-$ cat /proc/interrupts
-          CPU0
-17:       1219     GIC-0  29 Level     arch_timer
-18:          0     GIC-0  30 Level     arch_timer
-21:          0     GIC-0  42 Level     arm-pmu
-24:          0  mst-intc  44 Level     1f002400.rtc
-30:          0  mst-intc   2 Level     1f006000.wdt
-31:          0  mst-intc   0 Level     1f006040.timer
-32:          0  mst-intc   1 Level     1f006080.timer
-33:          0  mst-intc  12 Level     1f0060c0.timer
-34:          0  mst-intc  40 Level     1f200400.bdma
-35:       3977  mst-intc  41 Level     1f200400.bdma
-37:        196  mst-intc  34 Level     ttyS0
-40:          0  mst-intc  30 Level     soc:usbphy@0
-<snip>
-
-So here's my tested by:
-
-Tested-by: Daniel Palmer <daniel@thingy.jp>
-
-I don't think your series contained an update to MAINTAINERS.
-If/when you add this could you add my address above as a reviewer so
-I'm in the loop if anyone makes changes to this going forward?
-
-Thanks,
-
-Daniel
-
+diff --git a/drivers/usb/host/oxu210hp-hcd.c b/drivers/usb/host/oxu210hp-hcd.c
+index cfa7dd2..27dbbe1 100644
+--- a/drivers/usb/host/oxu210hp-hcd.c
++++ b/drivers/usb/host/oxu210hp-hcd.c
+@@ -24,6 +24,7 @@
+ #include <linux/moduleparam.h>
+ #include <linux/dma-mapping.h>
+ #include <linux/io.h>
++#include <linux/iopoll.h>
+ 
+ #include <asm/irq.h>
+ #include <asm/unaligned.h>
+@@ -748,18 +749,16 @@ static int handshake(struct oxu_hcd *oxu, void __iomem *ptr,
+ 					u32 mask, u32 done, int usec)
+ {
+ 	u32 result;
++	int ret;
+ 
+-	do {
+-		result = readl(ptr);
+-		if (result == ~(u32)0)		/* card removed */
+-			return -ENODEV;
+-		result &= mask;
+-		if (result == done)
+-			return 0;
+-		udelay(1);
+-		usec--;
+-	} while (usec > 0);
+-	return -ETIMEDOUT;
++	ret = readl_poll_timeout_atomic(ptr, result,
++					((result & mask) == done ||
++					 result == U32_MAX),
++					1, usec);
++	if (result == U32_MAX)		/* card removed */
++		return -ENODEV;
++
++	return ret;
+ }
+ 
+ /* Force HC to halt state from unknown (EHCI spec section 2.3) */
+-- 
+1.9.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
