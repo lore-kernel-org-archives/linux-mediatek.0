@@ -2,99 +2,80 @@ Return-Path: <SRS0=DMob=CA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DATE_IN_PAST_12_24,
-	DKIMWL_WL_HIGH,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6DC22C433DF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Aug 2020 00:57:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A30CC433DF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Aug 2020 04:48:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 34F952067C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Aug 2020 00:57:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 368432078D
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Aug 2020 04:48:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CaVRfx+Q";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="kSvRPjAx";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="EqE8Zd5b"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 34F952067C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XiqKCfLz";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=0x0f.com header.i=@0x0f.com header.b="E04jO1Xa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 368432078D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=0x0f.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:From:
-	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8pBERK29t0rhKOhsv4iO6/hXc1i3QOf4+cLy4FT7upA=; b=CaVRfx+Q6valgunc7/kR0b0WN
-	Wo7uuUC29hqbutNpruoum8m2MjxZOh6+uhQiybkAsw5AphX14AZPtHu2gCAQbDmMHYfpc0tWFSkm3
-	nud4j5nV36Eudc3nCdCPuhZ910q+Ig7PLuiQOOxtqhAtCiZWgOTgNbZDCb+8McQrToZgRYIppoE3O
-	k+O1O7IHXkCqBv0asOFi0RVHklDKQ1vzdZdRisAQp1NJBA7PglnjGLKz3ISNWaIgeAW/MrCayZiYz
-	wd6Z3LQd/FIOhprulQxu0EXtox7HSiESzjD1QjFg+/c4L2EGDN3X+2n7MVrqAG154zjEvxz/thh5z
-	wAjK+3tbw==;
+	 bh=PqNdB7D1YOB6ZY1z0UMSgNMITAzcGkWVuOsnUmhHEvM=; b=XiqKCfLzGRwGAK3v5pjKNhKeG
+	58aqmt/hMTlkLwVdh2jFRmv1/y5ha8JkPiF8S4xgTaPY9nTKcHL3jNM2VYg4kPs5z3ayH45De+1KQ
+	0LV1jJStWyxFeTde4yHi9giFRgJRiKd736NfBxLJBamIa6xshTGQLrPRM7YwneQkcBEWkCC6toa5m
+	Ewz6FR54ydQdC7bXjQf1cL+DGaqGy7y+NDHWM57DJG76kP36Sy9Bz+sTjVQgEXbvUWbgu38iIY/uU
+	53RbVArTF8zNYu0apS6ZhP6TkBWAmK/JJI/0FVwfuHfFBCprWiKSpATTMSjd25WFPC+p5cDPq2jN7
+	988jww3fg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k9Hqp-0007QA-Pb; Sat, 22 Aug 2020 00:57:43 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1k9LSA-0005K9-IJ; Sat, 22 Aug 2020 04:48:30 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k9Hqm-0007Pm-Qt; Sat, 22 Aug 2020 00:57:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:References:
- In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=bVggNUCpCpR2RKntphSBxa4nDtjA5O6ebCHd6l3A6Lk=; b=kSvRPjAx6SB7fT4ikwAC+1kJcp
- wBjjfMXmkA9HNiMKv10P/q5FJsPs0K5laX+gOL00mz7rxnJYU1EzHT5ixOUvFvSMNIdYoyxsHtdnL
- 01pF7d89ss2ynVAbYjNeAufUlJBHJs77kNBDy5w5AK13ZyhbBq4VL4/Y4pg+xQPopJ0wkdbQ++d2g
- GNFF/X3P1eGSLefDrpeuQVrWom6/n3IkhgEMdcoLtfO6qSKbIAgWFNYfGMDD1oq2Q+4pBQ8emZDSQ
- aAhv/GN0T1eIcf0KMXX7U4PHybZBXrrpBJdeiffTwbiM6keotJsID6HRbCAD5vDIBcexl8DWELMjl
- hcb9euVQ==;
-Received: from mout.gmx.net ([212.227.17.21])
- by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k9Hqh-0006sd-Ay; Sat, 22 Aug 2020 00:57:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1598057845;
- bh=RKUSb1KT1trkVNW36+e3JD1DffRwh/W1OBUG1JuN6uA=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=EqE8Zd5b11VTxkx9uQu5m/ZijgUhXe5iEAkqCnwNtLLjH/etxsULk5iW09CiPWaey
- Az8uDAnYtk0THD/L7rvvkZu3m1VxHpImrt/yUld+WThPLkZ4J2Y7nBA+FkWn51b5NB
- AhNLDK3YtmxV1w5eMaW/qtVMCMV1th0lb3CiGyas=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [185.76.97.101] ([185.76.97.101]) by web-mail.gmx.net
- (3c-app-gmx-bs37.server.lan [172.19.170.89]) (via HTTP); Fri, 21 Aug 2020
- 09:17:15 +0200
+ id 1k9LS7-0005JM-Hj
+ for linux-mediatek@lists.infradead.org; Sat, 22 Aug 2020 04:48:29 +0000
+Received: by mail-wm1-x344.google.com with SMTP id k8so3615441wma.2
+ for <linux-mediatek@lists.infradead.org>; Fri, 21 Aug 2020 21:48:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0x0f.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=8EpfXuOfl5Lc4X03a/2NthXamDtm3ZTxJlpaERf1P2M=;
+ b=E04jO1XaLwTEoC5F7ckK/3aQt1ozC0Fcmt/b8GJiWlnGHUdQBoV46zHaqX8lhyuA6t
+ 61+o8lWe+YunryUin42fuZz646fxNWnJy0TAxA/h6js4kvJ1SF9qesCf7SuIuuoB8HGl
+ AVSzLN/Orw0rBpLQpmsY/cxB9ued9UHWTnUR4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=8EpfXuOfl5Lc4X03a/2NthXamDtm3ZTxJlpaERf1P2M=;
+ b=m/3g3o6N0hZtgL5wcZ6EGdXOJXD6QRMGkbKOoy/70yhv9dkALwh0/kJ5yt4hbZYXMX
+ pcfo5TSeGhCf2ERTF8ohVmk4GmkeMxgnAUwqJYnRVsFzusTZSrL7DzivgtUHiRgdN4dB
+ unDAiqP5kkFVfeiR5lINfqyD/HrZOqQLIIYF0fkXcyAY6qC7xiwx5urP0g2fb8wUEc+8
+ BiGCi6decUYe2XmrRtBJisPuYxGfMDQ2MuCsEeqy+UyKi2doj7qG2I4GLbgLIxzec7Tn
+ mU84KuJdz8m2gZ3q8B0WK11wYdZfDMyo7AvOegMIvUHAYeIEJ20bd9xTgz18xRxFlDDw
+ GW3Q==
+X-Gm-Message-State: AOAM533CWiaP/KThK/atEUxAA1EZMCl5XvdSilcVKfNA6af6LpZqqZhi
+ JUNYDNTE1TAE6d2FYyTrQQa/wQlUkMiB8SNuWAJ+bA==
+X-Google-Smtp-Source: ABdhPJw7xCkJoXDkG4cyA0Eab/W2Nf7VdU8EymJP8iNVywtv1/Z8GU515lX7IbfzvyLf86zSlVJwlLuih6meBwQ3rx0=
+X-Received: by 2002:a7b:c10d:: with SMTP id w13mr6535376wmi.2.1598071704261;
+ Fri, 21 Aug 2020 21:48:24 -0700 (PDT)
 MIME-Version: 1.0
-Message-ID: <trinity-14a1b182-38ab-4f84-bb72-94d448b05fd5-1597994235320@3c-app-gmx-bs37>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Frank Wunderlich <linux@fw-web.de>, chunkuang Hu <chunkuang.hu@kernel.org>
-Subject: Aw: [PATCH v5 3/7] drm/mediatek: disable tmds on mt2701
-Date: Fri, 21 Aug 2020 09:17:15 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <20200819081752.4805-4-linux@fw-web.de>
-References: <20200819081752.4805-1-linux@fw-web.de>
- <20200819081752.4805-4-linux@fw-web.de>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:G4xmr717AcDMw6ju9c+MTAh1ENstXifUuqwYk2JTQndtKaX+h68KJhQwkJXqNtEhaI343
- d6puxE4NpPUj+poBeraf/qvlP8/zlGCK6Ny4BEOvyctzZ6JW5GK5gYOA2ouK05E3eS6AHof6QCyR
- HijgcCsdNhWCwFIt+hfPGBLFffWcDTSIulRfvsWGY+CqWp0ly5ETHWIjQTDnzwrGYlwUfeRHfoMe
- f2h68lhCDY3XrUEzaxP1W7UIznEzCAiQbhQklhh1HMZwjtEfuIwnkveAyPmmdHcUXfhatuW1pNPz
- ko=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:EVI72efk3gQ=:/wM6dcT3Obvi6LtuuZNseG
- 8S/L1OvGa+KY4H/encnmhhJUS5wFlrdhpfXmT+U7snPU1FRXhzUqoqmMUPYKwKRX3e/CJn4i9
- mOgfQ3UrY4CvHJu1sgigkE+3Is12Oxihv3TyjQW9PzmBKdGj4I+dB7HPzBhY2g6v4ZoW5mGY5
- P/DNXsT6NYoBwbwM7gFY74HSZX3Zv8yFU+FQ5oKhieuEszFyvqzM08wrvnbODtPxleL8gdm/i
- mlTapZ4nrOVgaARs/rW7jVvDL9UXmm+QDJU9OWfF1hF0X6oTg9HeeWccxIQQl2ng/c3BAk/1E
- rkmh/6jcSqNZNKtGQKp9qE3jgz/5+M2QUE/wGZSBW1397t5i5UnsN4Z8/mZgcbuiTbnGsR+Ij
- AUQ31ZPE4A3acypfZlTPy5A1nxFAZ5n8AMEQQOYyiGWHuB/Ljg/1JX0GHMbaKhX03+ZaZmxZ4
- iFCRS0FVjJ/MO0jajdb1AMph8+6UecQvkCD7+ZRxgWXPt87TYK3O5p1xWvdhPquhCKcPGgyxS
- VBhOj7K9jBfev+yekybM5x/i+lRSpnx9oWWJZ/qwsyaVEwrk/OiAAkTsPhLv+30908CP+bJsv
- UwyZqRaRo72hQZs9iHIU8bP2ABdh5Ai41D+5czUbKr6nbHlj56Y9VRunWSmA5Gz3s727UKajl
- CCSfwBCellSakWrR+muqMB5I4hA3eMO7t7ip3Uv41CQbQFoVB3+d1e9Ra5Vd43o2vsto=
+References: <20200819034231.20726-1-mark-pk.tsai@mediatek.com>
+ <20200819153757.28993-1-mark-pk.tsai@mediatek.com>
+In-Reply-To: <20200819153757.28993-1-mark-pk.tsai@mediatek.com>
+From: Daniel Palmer <daniel@0x0f.com>
+Date: Sat, 22 Aug 2020 13:48:13 +0900
+Message-ID: <CAFr9PXni=BmDY6_iuJPnYb3d6XB1VrxE6WP3YtSBxT6NciZMMA@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] irqchip: irq-mst: Add MStar interrupt controller
+ support
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200822_015735_568406_7B2B26B3 
-X-CRM114-Status: GOOD (  11.75  )
+X-CRM114-CacheID: sfid-20200822_004827_817801_D6658B3C 
+X-CRM114-Status: GOOD (  11.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,64 +87,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- Philipp Zabel <p.zabel@pengutronix.de>,
+Cc: DTML <devicetree@vger.kernel.org>, alix.wu@mediatek.com,
+ Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <maz@kernel.org>,
+ yj.chiang@mediatek.com, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
  Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+ Thomas Gleixner <tglx@linutronix.de>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-> index 5223498502c4..edadb7a700f1 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-> @@ -184,6 +184,9 @@ static int mtk_hdmi_phy_probe(struct platform_device *pdev)
->  		return PTR_ERR(phy_provider);
->  	}
+Hi Mark-PK,
+
+On Thu, 20 Aug 2020 at 00:38, Mark-PK Tsai <mark-pk.tsai@mediatek.com> wrote:
 >
-> +	if (hdmi_phy->conf->pll_default_off)
-> +		hdmi_phy->conf->hdmi_phy_disable_tmds(hdmi_phy);
-> +
->  	return of_clk_add_provider(dev->of_node, of_clk_src_simple_get,
->  				   hdmi_phy->pll);
->  }
+> Add MStar interrupt controller support using hierarchy irq
+> domain.
+>
+> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
 
-tried modifying mtk_hdmi_phy_power_on using the new flag to not enable tmds instead of enabling and later disabling it, but this does not work...
+I've integrated this version into my MStar/SigmaStar tree and tested
+on an MStar MSC313E
+based board (BreadBee) and I'm happy to say it seems to be working:
 
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-@@ -62,7 +62,8 @@ static int mtk_hdmi_phy_power_on(struct phy *phy)
-        if (ret < 0)
-                return ret;
+$ cat /proc/interrupts
+          CPU0
+17:       1219     GIC-0  29 Level     arch_timer
+18:          0     GIC-0  30 Level     arch_timer
+21:          0     GIC-0  42 Level     arm-pmu
+24:          0  mst-intc  44 Level     1f002400.rtc
+30:          0  mst-intc   2 Level     1f006000.wdt
+31:          0  mst-intc   0 Level     1f006040.timer
+32:          0  mst-intc   1 Level     1f006080.timer
+33:          0  mst-intc  12 Level     1f0060c0.timer
+34:          0  mst-intc  40 Level     1f200400.bdma
+35:       3977  mst-intc  41 Level     1f200400.bdma
+37:        196  mst-intc  34 Level     ttyS0
+40:          0  mst-intc  30 Level     soc:usbphy@0
+<snip>
 
--       hdmi_phy->conf->hdmi_phy_enable_tmds(hdmi_phy);
-+       if (!hdmi_phy->conf->pll_default_off)
-+               hdmi_phy->conf->hdmi_phy_enable_tmds(hdmi_phy);
-        return 0;
- }
+So here's my tested by:
 
-@@ -184,8 +185,8 @@ static int mtk_hdmi_phy_probe(struct platform_device *pdev)
-                return PTR_ERR(phy_provider);
-        }
+Tested-by: Daniel Palmer <daniel@thingy.jp>
 
--       if (hdmi_phy->conf->pll_default_off)
--               hdmi_phy->conf->hdmi_phy_disable_tmds(hdmi_phy);
-+       //if (hdmi_phy->conf->pll_default_off)
-+       //      hdmi_phy->conf->hdmi_phy_disable_tmds(hdmi_phy);
+I don't think your series contained an update to MAINTAINERS.
+If/when you add this could you add my address above as a reviewer so
+I'm in the loop if anyone makes changes to this going forward?
 
-        return of_clk_add_provider(dev->of_node, of_clk_src_simple_get,
-                                   hdmi_phy->pll);
+Thanks,
 
-
-same problem as without this Patch (horizontally distorted image flickering on 1280x1024)
-
-any idea CK Hu?
-
-regards Frank
+Daniel
 
 _______________________________________________
 Linux-mediatek mailing list
