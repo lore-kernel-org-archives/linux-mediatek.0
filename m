@@ -2,56 +2,83 @@ Return-Path: <SRS0=ROsh=CB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 13E44C433E1
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Aug 2020 14:29:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C087AC433DF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Aug 2020 18:51:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D5BF12067C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Aug 2020 14:29:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8EB0E20706
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Aug 2020 18:51:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ysHsH+GQ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D5BF12067C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lunn.ch
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="h33yBnlU";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="T+y2mGrE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8EB0E20706
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3davWU+WXvC/hlcotsEA8Xm9o9RR4qNqbh4LSDiTTFY=; b=ysHsH+GQZE1j1WaoJ7Pb7bkCb
-	3ztga3W/SZBTRscePXZQceDB2KPcufxKHpKTJkP00UkHFty0Wy9rHMo4TGqNnDHXJ/Cj4M4F97VZV
-	+Rt5aTTqTisnVay5mgOapK0FEpP+vSTzPXhb8d0B90K6mutmLsfNJxRg7sg8K3y/3f8xJBRzDKYLX
-	H4SkxyHV6N8x0cIeFNKwprofp5cAbhM9fY/EDi6060IVM7khOl+TuKWT65wyHI75a3oi+IqiH0lg7
-	COSANAbtllDHBWzBxCjK8wu2atkNcQM7j+KjZH0Cj0eWGKVlExb6O2T+XcOvKqYSX5waoAKa0rxXk
-	K3LhuFD4w==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mE4+asXZfu/iaxlO7fvGdPXwksCjpkMZk+EsFgkfXSg=; b=h33yBnlUpJYU3J+6aPjPIBnTgu
+	pC0rJH/TCXxjDCk1uCwpewpEZKf3NJzJf3PFqyUX2m5JLPedUDCaHqQEeIaxtFGI1xGMpRE/3aGJ2
+	kVADuoa603fCqxCkuUG6Zrdh5bccU5KmqKlqxAZtuQ7A3dBKiReSiTKhmheKPZdoGumQVBBHS0ekR
+	CjD6+kCiW227WWGVF4n4dpoh4T6mQbQ7m88aKpigHWNeORUVYCqrJJLwUIc5cZF/adiV7J03RPQ8g
+	zxmGD4xKSqm7lG7g2aUQAoFO9O0K4LLBBiLQO4qt02RUkRbj7V/Y0HmEBwa4MVjc5If6bRSwEDLII
+	9o/ecoHg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k9qzP-00051u-7T; Sun, 23 Aug 2020 14:28:55 +0000
-Received: from vps0.lunn.ch ([185.16.172.187])
+	id 1k9v5E-0008On-TD; Sun, 23 Aug 2020 18:51:12 +0000
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k9qzL-000519-8d; Sun, 23 Aug 2020 14:28:52 +0000
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94)
- (envelope-from <andrew@lunn.ch>)
- id 1k9qz7-00BN35-V6; Sun, 23 Aug 2020 16:28:37 +0200
-Date: Sun, 23 Aug 2020 16:28:37 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Sumera Priyadarsini <sylphrenadin@gmail.com>
-Subject: Re: [PATCH] net: dsa: Add of_node_put() before break statement
-Message-ID: <20200823142837.GD2588906@lunn.ch>
-References: <20200823140116.6606-1-sylphrenadin@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200823140116.6606-1-sylphrenadin@gmail.com>
+ id 1k9v59-0008LJ-Sf; Sun, 23 Aug 2020 18:51:09 +0000
+Received: by mail-pj1-x1043.google.com with SMTP id q1so3038727pjd.1;
+ Sun, 23 Aug 2020 11:51:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=wyU9tpC675HB0ixAAkXh4+zgCwIcMMcXIhj+1AOnOR8=;
+ b=T+y2mGrEVr3tz7PLuTgcYkJwIC5IeEx/hSpwak1i56n6onfu7wNEQacYGOUsksCnSK
+ gIlJQAsHS+JwZ5GaMMJbKk6TLlk90nA61uboFEsGFaUNEKNjyQc0eOiusrgcuSz27dmD
+ Em8M9lUKz4Mjqcgp2V2oHAW7Lkz5wxsAb0fc4d/uCFZ+1R5XQdYFLHwEjNvXp39WmEC8
+ owsUxAW2xm4CkegIi0/KuYVAYGKdq8u9XcrwR0p/rX3w1l6AObuM2w2tEnos07ulT974
+ x2AlLnStHMVE5GPytevXmWOJsnguZsjstl5C4mRWPW1sSEXuqAu11MK7r7OiN5km2n72
+ 2KwQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=wyU9tpC675HB0ixAAkXh4+zgCwIcMMcXIhj+1AOnOR8=;
+ b=hstc9/UVl++cGQTNJtEa60PkKsoIGdlU4w9ttazdB03fLU1iCenwO0PIRQPWRh2Ik8
+ raJf58mlwDYU8BqsKDtRM3nIYDYvaP4EFP96DakglOh3crOLbtmk0rpFJ8HND66LNTy5
+ w2aJ2p/bW2J99Ksg3HkI/dLCimjsQtgy4QzgDlfyfFoDYY05EnxDKxWcJaWlFiL21SLY
+ gmianVQzZ5S53gFA8B6wtMWVnnQ8Z7IL6mAgFnAeww4TdFg6n7PK/0/uQvZ9qtmkesJE
+ cE/oiE3sHIaCCWMvEFcvn1l6F8Hhr4zQTfQ25PPQ5t+KW/ZBCfwYAcrDA0LBBMBmWvdF
+ 5hXg==
+X-Gm-Message-State: AOAM53039pEqpT2QKW5X9PJmVbKuJJW7J4WeD44JstXWXB/XHRywOF0a
+ mzxizaQfJs8LWKaPNf3MTvA=
+X-Google-Smtp-Source: ABdhPJyaXB8AyrP/r8i55ExjjRdmeAd9G4Y9G2Cu8hHrxOKgTyf3tRAZ4Qd1pUWDrt9kNSOh62DXCA==
+X-Received: by 2002:a17:902:16a:: with SMTP id
+ 97mr1516013plb.207.1598208665945; 
+ Sun, 23 Aug 2020 11:51:05 -0700 (PDT)
+Received: from localhost.localdomain ([49.207.217.77])
+ by smtp.gmail.com with ESMTPSA id s8sm861116pfm.180.2020.08.23.11.51.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 23 Aug 2020 11:51:05 -0700 (PDT)
+From: Sumera Priyadarsini <sylphrenadin@gmail.com>
+To: davem@davemloft.net
+Subject: [PATCH V2] net: dsa: Add of_node_put() before break statement
+Date: Mon, 24 Aug 2020 00:20:56 +0530
+Message-Id: <20200823185056.16641-1-sylphrenadin@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200823_102851_342503_92F6954B 
-X-CRM114-Status: GOOD (  18.02  )
+X-CRM114-CacheID: sfid-20200823_145108_045432_7F4782AF 
+X-CRM114-Status: GOOD (  13.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,56 +90,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: f.fainelli@gmail.com, netdev@vger.kernel.org, sean.wang@mediatek.com,
- linux-kernel@vger.kernel.org, vivien.didelot@gmail.com, Julia.Lawall@lip6.fr,
+Cc: andrew@lunn.ch, f.fainelli@gmail.com,
+ Sumera Priyadarsini <sylphrenadin@gmail.com>, netdev@vger.kernel.org,
+ sean.wang@mediatek.com, linux-kernel@vger.kernel.org, Julia.Lawall@lip6.fr,
  linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, kuba@kernel.org,
- davem@davemloft.net, linux-arm-kernel@lists.infradead.org
+ vivien.didelot@gmail.com, linux-arm-kernel@lists.infradead.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Aug 23, 2020 at 07:31:16PM +0530, Sumera Priyadarsini wrote:
-> Every iteration of for_each_child_of_node() decrements
-> the reference count of the previous node, however when control
-> is transferred from the middle of the loop, as in the case of
-> a return or break or goto, there is no decrement thus ultimately
-> resulting in a memory leak.
-> 
-> Fix a potential memory leak in mt7530.c by inserting of_node_put()
-> before the break statement.
-> 
-> Issue found with Coccinelle.
-> 
-> Signed-off-by: Sumera Priyadarsini <sylphrenadin@gmail.com>
-> ---
->  drivers/net/dsa/mt7530.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 8dcb8a49ab67..af83e5034842 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -1334,6 +1334,7 @@ mt7530_setup(struct dsa_switch *ds)
->  				if (id == 4)
->  					priv->p5_intf_sel = P5_INTF_SEL_PHY_P4;
->  			}
-> +			of_node_put(mac_np);
->  			of_node_put(phy_node);
->  			break;
->  		}
+Every iteration of for_each_child_of_node() decrements
+the reference count of the previous node, however when control
+is transferred from the middle of the loop, as in the case of
+a return or break or goto, there is no decrement thus ultimately
+resulting in a memory leak.
 
-Within the same loop is:
+Fix a potential memory leak in mt7530.c by inserting of_node_put()
+before the break statement.
 
-                       if (phy_node->parent == priv->dev->of_node->parent) {
-                                ret = of_get_phy_mode(mac_np, &interface);
-                                if (ret && ret != -ENODEV)
-                                        return ret;
+Issue found with Coccinelle.
 
+---
+Changes in v2:
+	Add another of_node_put() in for_each_child_of_node() as pointed
+out by Andrew.
 
-shouldn't this also have a put?
+---
 
-	  Andrew
+Signed-off-by: Sumera Priyadarsini <sylphrenadin@gmail.com>
+---
+ drivers/net/dsa/mt7530.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 8dcb8a49ab67..e81198a65c26 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -1327,6 +1327,7 @@ mt7530_setup(struct dsa_switch *ds)
+ 			if (phy_node->parent == priv->dev->of_node->parent) {
+ 				ret = of_get_phy_mode(mac_np, &interface);
+ 				if (ret && ret != -ENODEV)
++					of_node_put(mac_np)
+ 					return ret;
+ 				id = of_mdio_parse_addr(ds->dev, phy_node);
+ 				if (id == 0)
+@@ -1334,6 +1335,7 @@ mt7530_setup(struct dsa_switch *ds)
+ 				if (id == 4)
+ 					priv->p5_intf_sel = P5_INTF_SEL_PHY_P4;
+ 			}
++			of_node_put(mac_np);
+ 			of_node_put(phy_node);
+ 			break;
+ 		}
+-- 
+2.17.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
