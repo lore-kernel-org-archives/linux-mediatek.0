@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F3224C433DF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Aug 2020 01:49:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC441C433E1
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Aug 2020 01:49:04 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BF17B206DA
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Aug 2020 01:49:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BDCBE2080D
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Aug 2020 01:49:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CMd7Lpje";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="nE5HMsab"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BF17B206DA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OOiIB8ao";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="2STsKKzx"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BDCBE2080D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,47 +26,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b2vps7/QUn5HJmIuP8ZEwUGydXqcr3gXz+hdfx4LOJ8=; b=CMd7Lpje34hOsb9hmPAl/JEp+I
-	K6f+wVcqdIb+RvzOMcLhpbA8yO4WIw6Xp3YNUMbr8i/oKRmqoHCMvPa1k3Jo8wpBJ31hv89IbZhdL
-	rms+dvggwqTepHpEu17yc4CMnJAWVvGRmFlopZjpD2zJGCJU8wM1XIVUV6CG9TjbiexlUGgHenxXL
-	sKHh8VetWT8zk9MWQQ4Qzihpyv1CQURUO3Vtm1RJCt9lRwNGUTpUZcXE+1B9ihTGGH2JpaaoBFe5B
-	7KaIaLtDizSpgbEeBypZmkYzD3iqLVEi48HvN6Fw5YiII/qnoOZem9iz4NCrS1o/X37UjlwlXkVHN
-	wKi9CW8A==;
+	bh=iUb5D3jv18pW612UsBEX1evDcIzrMjohKy0bAs196qo=; b=OOiIB8aoHjLJJTE9vbuTjNL7re
+	Wb3Gkhgjf+4nteaM8OKUES+xcgJKRdgDRsS733rXCtF3pWbL54kjkM7fxdfPPlEHjFhSc+xUwg3Gy
+	7WDseTzJc9S5KeFl9j/mLbZPHZfVBav7mNXNrDXvJNkwQ9+VAgM2hFKvHjbJyaeO+6y288y/4Yg42
+	NBaVUlIdTtj2/1+FE0FrLQ1c9f1Bn6iZF2HsChXOSYjih7F120gfJwx8Xz+heODplWpQHh1TXMDTg
+	xhZ9tCfMGAqdk8IINBGqRDcz5JJGHYj2JShswd4/GYMtbH5vwnHmBM8g8gDy/Nk985/jKAx+9r+hK
+	du1ysUgw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k9f7s-0000G7-KB; Sun, 23 Aug 2020 01:48:52 +0000
+	id 1k9f7w-0000Mj-T9; Sun, 23 Aug 2020 01:48:56 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k9f7o-0000DB-JS
- for linux-mediatek@lists.infradead.org; Sun, 23 Aug 2020 01:48:49 +0000
+ id 1k9f7t-0000K7-KR
+ for linux-mediatek@lists.infradead.org; Sun, 23 Aug 2020 01:48:54 +0000
 Received: from DESKTOP-GFFITBK.localdomain (218-161-90-76.HINET-IP.hinet.net
  [218.161.90.76])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id EDA462173E;
- Sun, 23 Aug 2020 01:48:45 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1A6A521741;
+ Sun, 23 Aug 2020 01:48:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598147328;
- bh=wR6gn5yGrKnL5wxGbxgqCjb6y52GlqGRAiBOKRoCeJY=;
+ s=default; t=1598147333;
+ bh=BezFOoaDmBZMcNTvmxTbP7GmF8Yi46thyB2BlvRmFFc=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=nE5HMsabATXc6P6Zg9YJOr7E0BXJPCfg7oXx2RMByalZCHYahLCWhVU17fXZnInrq
- gf5Pll1dB8jn6AXrfE9LcUdjh65ukAGfxRrZb3oLqkm52MUkGd2/5TrOktraGyVeiP
- yrW4UnOQDD847up250ink7vCD3CI3qZ3OcHj7ciA=
+ b=2STsKKzxGHAFGA9tqr9CrDo3pQ70tPq4xuSA8+7BW7tsuYL9jORwEbEP5T/TNog4h
+ XkhiJw3+1zzK6Rk1YWv3eOLK/OHwmU6zkZVUy0rR+1USw/jBpeTyZ4REE/VrBILWS4
+ 2Hp65dJLuITAy3bC65tmBplvFYoN5ekgZJHX26qc=
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 To: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
  Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
  Chunfeng Yun <chunfeng.yun@mediatek.com>,
  Kishon Vijay Abraham I <kishon@ti.com>
-Subject: [PATCH v5 2/4] drm/mediatek: Separate mtk_hdmi_phy to an independent
- module
-Date: Sun, 23 Aug 2020 09:48:28 +0800
-Message-Id: <20200823014830.15962-3-chunkuang.hu@kernel.org>
+Subject: [PATCH v5 4/4] MAINTAINERS: add files for Mediatek DRM drivers
+Date: Sun, 23 Aug 2020 09:48:30 +0800
+Message-Id: <20200823014830.15962-5-chunkuang.hu@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200823014830.15962-1-chunkuang.hu@kernel.org>
 References: <20200823014830.15962-1-chunkuang.hu@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200822_214848_988259_D205B4AD 
-X-CRM114-Status: GOOD (  18.12  )
+X-CRM114-CacheID: sfid-20200822_214853_800376_51B46C64 
+X-CRM114-Status: GOOD (  11.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,128 +77,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: CK Hu <ck.hu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: CK Hu <ck.hu@mediatek.com>
+Mediatek HDMI phy driver is moved from drivers/gpu/drm/mediatek to
+drivers/phy/mediatek, so add the new folder to the Mediatek DRM drivers'
+information.
 
-mtk_hdmi_phy is a part of mtk_hdmi module, but phy driver should be an
-independent module rather than be part of drm module, so separate the phy
-driver to an independent module.
-
-Signed-off-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 ---
- drivers/gpu/drm/mediatek/Kconfig        |  9 ++++++++-
- drivers/gpu/drm/mediatek/Makefile       | 11 +++++++----
- drivers/gpu/drm/mediatek/mtk_hdmi.c     |  2 +-
- drivers/gpu/drm/mediatek/mtk_hdmi.h     |  1 -
- drivers/gpu/drm/mediatek/mtk_hdmi_phy.c |  1 +
- drivers/gpu/drm/mediatek/mtk_hdmi_phy.h |  1 -
- 6 files changed, 17 insertions(+), 8 deletions(-)
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
-index aa74aac3cbcc..6363f2c1cdbc 100644
---- a/drivers/gpu/drm/mediatek/Kconfig
-+++ b/drivers/gpu/drm/mediatek/Kconfig
-@@ -24,6 +24,13 @@ config DRM_MEDIATEK_HDMI
- 	tristate "DRM HDMI Support for Mediatek SoCs"
- 	depends on DRM_MEDIATEK
- 	select SND_SOC_HDMI_CODEC if SND_SOC
--	select GENERIC_PHY
-+	select PHY_MTK_HDMI
- 	help
- 	  DRM/KMS HDMI driver for Mediatek SoCs
-+
-+config PHY_MTK_HDMI
-+	tristate "MediaTek HDMI-PHY Driver"
-+	depends on ARCH_MEDIATEK && OF
-+	select GENERIC_PHY
-+	help
-+	  Support HDMI PHY for Mediatek SoCs.
-diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
-index b7a82ed5788f..fcbef23aa6ce 100644
---- a/drivers/gpu/drm/mediatek/Makefile
-+++ b/drivers/gpu/drm/mediatek/Makefile
-@@ -19,9 +19,12 @@ obj-$(CONFIG_DRM_MEDIATEK) += mediatek-drm.o
+diff --git a/MAINTAINERS b/MAINTAINERS
+index deaafb617361..191bacf02209 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -5793,6 +5793,7 @@ L:	dri-devel@lists.freedesktop.org
+ S:	Supported
+ F:	Documentation/devicetree/bindings/display/mediatek/
+ F:	drivers/gpu/drm/mediatek/
++F:	drivers/phy/mediatek/phy-mtk-hdmi*
  
- mediatek-drm-hdmi-objs := mtk_cec.o \
- 			  mtk_hdmi.o \
--			  mtk_hdmi_ddc.o \
--			  mtk_mt2701_hdmi_phy.o \
--			  mtk_mt8173_hdmi_phy.o \
--			  mtk_hdmi_phy.o
-+			  mtk_hdmi_ddc.o
- 
- obj-$(CONFIG_DRM_MEDIATEK_HDMI) += mediatek-drm-hdmi.o
-+
-+phy-mtk-hdmi-drv-objs := mtk_hdmi_phy.o \
-+			 mtk_mt2701_hdmi_phy.o \
-+			 mtk_mt8173_hdmi_phy.o
-+
-+obj-$(CONFIG_PHY_MTK_HDMI) += phy-mtk-hdmi-drv.o
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index d44348c7ecbe..0ed7b0b1a022 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -12,6 +12,7 @@
- #include <linux/io.h>
- #include <linux/kernel.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/module.h>
- #include <linux/mutex.h>
- #include <linux/of_platform.h>
- #include <linux/of.h>
-@@ -1832,7 +1833,6 @@ static struct platform_driver mtk_hdmi_driver = {
- };
- 
- static struct platform_driver * const mtk_hdmi_drivers[] = {
--	&mtk_hdmi_phy_driver,
- 	&mtk_hdmi_ddc_driver,
- 	&mtk_cec_driver,
- 	&mtk_hdmi_driver,
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.h b/drivers/gpu/drm/mediatek/mtk_hdmi.h
-index bb3653de6bd1..472bf141c92b 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.h
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.h
-@@ -5,7 +5,6 @@
-  */
- #ifndef _MTK_HDMI_CTRL_H
- #define _MTK_HDMI_CTRL_H
--#include "mtk_hdmi_phy.h"
- 
- struct platform_driver;
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-index 5223498502c4..fe022acddbef 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-@@ -205,6 +205,7 @@ struct platform_driver mtk_hdmi_phy_driver = {
- 		.of_match_table = mtk_hdmi_phy_match,
- 	},
- };
-+module_platform_driver(mtk_hdmi_phy_driver);
- 
- MODULE_DESCRIPTION("MediaTek HDMI PHY Driver");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-index fc1c2efd1128..b13e1d5f8e78 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-@@ -49,7 +49,6 @@ void mtk_hdmi_phy_mask(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
- 		       u32 val, u32 mask);
- struct mtk_hdmi_phy *to_mtk_hdmi_phy(struct clk_hw *hw);
- 
--extern struct platform_driver mtk_hdmi_phy_driver;
- extern struct mtk_hdmi_phy_conf mtk_hdmi_phy_8173_conf;
- extern struct mtk_hdmi_phy_conf mtk_hdmi_phy_2701_conf;
- 
+ DRM DRIVERS FOR NVIDIA TEGRA
+ M:	Thierry Reding <thierry.reding@gmail.com>
 -- 
 2.17.1
 
