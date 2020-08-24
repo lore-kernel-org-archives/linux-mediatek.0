@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B329C433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 16:47:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9615BC433E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 16:48:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 16FED20578
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 16:47:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5D183207CD
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 16:48:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="irQObpse";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="VHxm5wKC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16FED20578
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gDHDxIyn";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="zhJVv/np"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5D183207CD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,47 +26,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lyogntDGn3eimK8taInekxqjlRW9wZxmhuZdg+CD/78=; b=irQObpseo8PS87+Fk81l4svhZ
-	8XtRuxBPN/MTA8qixcpzDvihR9KXFnYLF7vTpILeh1pdpQ8Cc10Kr90rfOKQluLs38CBwQDwFROxC
-	NhDKbk7+d+Jdp2ssoJSWrZgplo3tuiRD3vqhPQqlSh/5J3lVTi/MZgNF+HUN2nVPrrGOZJ1XM1snK
-	59ElV2W8/J7WEEdO4H1utJ0qLx5ZQLesRQrkdxMgM+PmwDytfcWjwHjNV3nTZhss/W/s/D/Cc/GX5
-	erCXL2YL5u84+stov+mSMQSltcOMW2A4jGAa8AEbz39eNiTGab1w8LfwDAZDpWENKrhlIwEWBL1o2
-	90yOyVYBQ==;
+	 bh=TLPfikRVTGUVSfX8Sc89dWSSOKAdXy4Emn3xvA1erus=; b=gDHDxIynyQfnDJyikJvRktA3q
+	OW4aO6gJQ926qNxqLKTP3eojIHax7wpc/Hx7/xDCIpadhnTyS9V8/9qxFkdQAiSGbdykvpchh8kJ9
+	kFIIFc9HEIhxm7tyeLZtFWAZVjqWruoACJeyUVJFY8XcM2Y6GNH6xuILzM9JbCekcMLRDuRdqfUMm
+	s+IfJm6Zef8SU9OVEAdlICR/D4ciA7q4eJ1+wQZutu+I+mDtsWaI3sD6H2w8cnygM8Td/mhmM3RaP
+	g1ySZWVYMO+m8xLLVH77OAda8Ha2f6ZiQNML3nAwhvzmfww0bI3IYAKX7WkZOZcNwE5F5gPwueO7j
+	FxtoHJWEw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kAFcj-0005mA-Up; Mon, 24 Aug 2020 16:47:11 +0000
+	id 1kAFdn-0006Md-Pl; Mon, 24 Aug 2020 16:48:16 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAFUy-0001HG-Af; Mon, 24 Aug 2020 16:39:09 +0000
+ id 1kAFVT-0001X5-W0; Mon, 24 Aug 2020 16:39:41 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4152F22D02;
- Mon, 24 Aug 2020 16:39:05 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8E22F22D6D;
+ Mon, 24 Aug 2020 16:39:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598287146;
- bh=gM8butPAb14I94cSkihJEec7V6B/JnReAt5N+x82qVA=;
+ s=default; t=1598287178;
+ bh=75Bie9OU8MrRuaLihnpcNDnU86VQmJoXU5qfWfKM3ig=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=VHxm5wKC5B/UlWgx7Yx1HIcSsF66uNWaUQluxKA9urKwxCUQ/meDlXoI7RNLYzXoT
- z6pTmi+FmURiL+2GHYoKVYngFbR1CwC+4XZ46bQ5UbxYoEqwrAVmRbN8Qvxvrluy+k
- NmjVaPKeEFnnxwx8i60MiqIWgREIzut9QoYMfvhI=
+ b=zhJVv/npPECVFr0XYHM1D5VSjF+X9zD3dVkEUbUE9qbwbPHsGyQbwrilh5f5Qa5w4
+ 1dy8skVcyAP3p+F7+75UaPexKySBwzGxwmQTJKu+tA1jviaAnXi5hNdMQvdvw1p0nL
+ hcSBn9lMLiv6diRaDBWl9h877fGdCT11ocVYVM3w=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 15/21] scsi: ufs: Clean up completed request
- without interrupt notification
-Date: Mon, 24 Aug 2020 12:38:39 -0400
-Message-Id: <20200824163845.606933-15-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.9 5/8] scsi: ufs: Fix possible infinite loop in
+ ufshcd_hold
+Date: Mon, 24 Aug 2020 12:39:28 -0400
+Message-Id: <20200824163931.607291-5-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200824163845.606933-1-sashal@kernel.org>
-References: <20200824163845.606933-1-sashal@kernel.org>
+In-Reply-To: <20200824163931.607291-1-sashal@kernel.org>
+References: <20200824163931.607291-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200824_123908_874853_1BBCB7D1 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20200824_123940_313036_99B11CDE 
+X-CRM114-Status: GOOD (  14.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,11 +78,11 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, linux-scsi@vger.kernel.org,
- "Martin K . Petersen" <martin.petersen@oracle.com>,
- Avri Altman <avri.altman@wdc.com>, Can Guo <cang@codeaurora.org>,
+Cc: Sasha Levin <sashal@kernel.org>,
+ "Martin K . Petersen" <martin.petersen@oracle.com>, linux-scsi@vger.kernel.org,
+ Andy Teng <andy.teng@mediatek.com>, Avri Altman <avri.altman@wdc.com>,
  linux-mediatek@lists.infradead.org, Stanley Chu <stanley.chu@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, Bean Huo <beanhuo@micron.com>
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -90,52 +90,53 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Stanley Chu <stanley.chu@mediatek.com>
 
-[ Upstream commit b10178ee7fa88b68a9e8adc06534d2605cb0ec23 ]
+[ Upstream commit 93b6c5db06028a3b55122bbb74d0715dd8ca4ae0 ]
 
-If somehow no interrupt notification is raised for a completed request and
-its doorbell bit is cleared by host, UFS driver needs to cleanup its
-outstanding bit in ufshcd_abort(). Otherwise, system may behave abnormally
-in the following scenario:
+In ufshcd_suspend(), after clk-gating is suspended and link is set
+as Hibern8 state, ufshcd_hold() is still possibly invoked before
+ufshcd_suspend() returns. For example, MediaTek's suspend vops may
+issue UIC commands which would call ufshcd_hold() during the command
+issuing flow.
 
-After ufshcd_abort() returns, this request will be requeued by SCSI layer
-with its outstanding bit set. Any future completed request will trigger
-ufshcd_transfer_req_compl() to handle all "completed outstanding bits". At
-this time the "abnormal outstanding bit" will be detected and the "requeued
-request" will be chosen to execute request post-processing flow. This is
-wrong because this request is still "alive".
+Now if UFSHCD_CAP_HIBERN8_WITH_CLK_GATING capability is enabled,
+then ufshcd_hold() may enter infinite loops because there is no
+clk-ungating work scheduled or pending. In this case, ufshcd_hold()
+shall just bypass, and keep the link as Hibern8 state.
 
-Link: https://lore.kernel.org/r/20200811141859.27399-2-huobean@gmail.com
-Reviewed-by: Can Guo <cang@codeaurora.org>
-Acked-by: Avri Altman <avri.altman@wdc.com>
+Link: https://lore.kernel.org/r/20200809050734.18740-1-stanley.chu@mediatek.com
+Reviewed-by: Avri Altman <avri.altman@wdc.com>
+Co-developed-by: Andy Teng <andy.teng@mediatek.com>
+Signed-off-by: Andy Teng <andy.teng@mediatek.com>
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-Signed-off-by: Bean Huo <beanhuo@micron.com>
 Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/scsi/ufs/ufshcd.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/scsi/ufs/ufshcd.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 72879280df776..546bf4f960f91 100644
+index af4b0a2021d6c..1eee82b18be4e 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -5928,7 +5928,7 @@ static int ufshcd_abort(struct scsi_cmnd *cmd)
- 			/* command completed already */
- 			dev_err(hba->dev, "%s: cmd at tag %d successfully cleared from DB.\n",
- 				__func__, tag);
--			goto out;
-+			goto cleanup;
- 		} else {
- 			dev_err(hba->dev,
- 				"%s: no response from device. tag = %d, err %d\n",
-@@ -5962,6 +5962,7 @@ static int ufshcd_abort(struct scsi_cmnd *cmd)
- 		goto out;
- 	}
+@@ -657,6 +657,7 @@ static void ufshcd_ungate_work(struct work_struct *work)
+ int ufshcd_hold(struct ufs_hba *hba, bool async)
+ {
+ 	int rc = 0;
++	bool flush_result;
+ 	unsigned long flags;
  
-+cleanup:
- 	scsi_dma_unmap(cmd);
- 
- 	spin_lock_irqsave(host->host_lock, flags);
+ 	if (!ufshcd_is_clkgating_allowed(hba))
+@@ -688,7 +689,9 @@ int ufshcd_hold(struct ufs_hba *hba, bool async)
+ 				break;
+ 			}
+ 			spin_unlock_irqrestore(hba->host->host_lock, flags);
+-			flush_work(&hba->clk_gating.ungate_work);
++			flush_result = flush_work(&hba->clk_gating.ungate_work);
++			if (hba->clk_gating.is_suspended && !flush_result)
++				goto out;
+ 			spin_lock_irqsave(hba->host->host_lock, flags);
+ 			goto start;
+ 		}
 -- 
 2.25.1
 
