@@ -2,22 +2,22 @@ Return-Path: <SRS0=7UDR=CC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-7.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CA774C433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 11:46:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8C9C2C433E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 11:49:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9A986206BE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 11:46:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5BA75206BE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 11:49:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mYWhZ77n";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="iuMev4pI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9A986206BE
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gi2m5RIs";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="ifu4mAhc"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5BA75206BE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,57 +26,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JweiDqakYx7BYdfyE3d7UxAdKFymXNpn9/8/EMtADWg=; b=mYWhZ77n6/auXWx4xU7pnsU7c
-	cKpOAPZnluKr8/pu1UE3/qeucQFLZ3sEl2bmoZhBgUnCOMdWdZr41x6JSdt9D8E6Ij4cnkpKIZNRA
-	m1x+m2neOwVbiVv03Qhpap2ofWtxy+avD/qzVwQxhGhz+qLQG5IKq3/q58shaHOt+q4EwTovb1sx0
-	3UkmVrm/Zl0B6DFuEwevzUbPAf7DkbMk+QGmdmTo17616tIKbcz1K9A9DxyIC2jyfdJVVMxt1ci6j
-	k9lZgOGjpBaTJQd7yd+S6R3FPStcKeMINk3oxgVZlQJ+VlonDUN8Yy/hGs9AeIQCwxEpp0Ci+AAU2
-	Tfzxxirjw==;
+	 bh=lwgaBjJlzrt+tN/0GsDCnGqp7W58x+Z9E7YiE5aYhg0=; b=gi2m5RIsSbeDaSIyfq2F7rirk
+	8bU6sL57K7xeNDY1gEHxVjaePvY2u39QpbWhGZ3aSbS/laPZHBcQF2nFbqcBuaePnW984TQtUvva8
+	/bBn9Sk8BB4cEEZCzAkp031GdwIxulnpqWskYhj819fGDhIcPPMD/2BesJq2Ept4TyL649mnynnhT
+	TTLnK4h8D4F6/niTik8b52XM/FFkNPTxBknMWo9J+qB2zdqdFN51AzMS9keH4y94J9XlOmBpxeZ5l
+	4IGVLU6iMOXqYTfYd5rlqrp7xJUIqTWV/2b1pMwE+r9WuLOhajLz/xWyDOGuJqTt62LviJpbx1S17
+	IoJtlWC1A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kAAw1-0002zq-Vx; Mon, 24 Aug 2020 11:46:46 +0000
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242])
+	id 1kAAyf-0003T6-Oi; Mon, 24 Aug 2020 11:49:29 +0000
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAAvw-0002xP-SH
- for linux-mediatek@lists.infradead.org; Mon, 24 Aug 2020 11:46:42 +0000
-Received: by mail-oi1-x242.google.com with SMTP id b9so4522176oiy.3
- for <linux-mediatek@lists.infradead.org>; Mon, 24 Aug 2020 04:46:38 -0700 (PDT)
+ id 1kAAye-0003SD-3d
+ for linux-mediatek@lists.infradead.org; Mon, 24 Aug 2020 11:49:28 +0000
+Received: by mail-ot1-x344.google.com with SMTP id t7so7032628otp.0
+ for <linux-mediatek@lists.infradead.org>; Mon, 24 Aug 2020 04:49:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=HSpd9ndfyXeRtsopkN5H4Z9El4e9MphbysoofBmUjKk=;
- b=iuMev4pI1UXTK36SU5vo9Kb9A9hOWP30Dj81Zo7qdgxbcyzH0j8fQwJHFTueOj095U
- 5slvsAiAYB4ZSz7mRzUwSk2bkGa0/TJnvlcnEPFiEug1QedBDSwH6I5zjK3kSswknmUx
- Lzol4pMRkdLbVAB94FPqz4XQkcp8nuM2aRbklxyqY7e/ebJt0i1fNKFTvYbotc4DVv+b
- FSS6rdqU4gpSNqKcv464DOsapk+LPNAJUGEC6e5l72ZEKjM0PscLBYKA6KntyFjA96ud
- rjUhcbtVF+UYWBO11lyINnbB1kgj9RQdFFUSLkEH7UzhcbNRix3StySlX86yNNgHEeTe
- F4Wg==
+ :cc; bh=IfIxkLsRxova3XYkDm6i/K8H2HRLaB3EQ7huQjW3f6w=;
+ b=ifu4mAhcTRgtT25z97rVnVLSZIehYoWZP8njiAuMAclckn9QF6jbVP9Hz7Htj0eApu
+ mAtaaK9Vv7vTMujUpSkvkdv59rffw4S+b4wo7FklQ4IG/DkO+lejrQgJuaRUVn5yPkkf
+ Ugo6AK2ksLHd7xu8urFifQ5nbrZf01NR6zdW3IrCwjZ2bEo68yYEKe+C3635MLiW5BSV
+ Mmy+tihlpl7pk1aBdkegmzmwQtmMwLz+rebJoqtGTgAG8H+Fr6z5tMjoYOB8Diw+cuRa
+ 7z2JPsLcyQRrjG2k9P3H0xHTrBpndrxWp3GysVNseNU2L1WSHLLP7FLCS1SQXOXp1UY8
+ EWWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=HSpd9ndfyXeRtsopkN5H4Z9El4e9MphbysoofBmUjKk=;
- b=CAo3hX4ZeSxuhRroauC6a/pntlTUzmTF52cH9oXIzW0UuanbpgzE7bl/ep7oE6GIjd
- m29tJlIyv+RmWBiOI/f24yACgjuUwkNw6Qrgho2eko4LZUInhoJTawwgYpwZxhnbrJ5g
- GupsBEf5B+W8ew+aV0fXQJmfJqp5/Q/o+vcOlRwkO4N0hv7JBA0IaowUevKP+e+5d98L
- SGHW6zf1PKFkkGttz3qHzAhJCIQ+K97KlqBfwi+z7WMloFZbB06de//Qa8XhXYJvv+Wx
- 8Mbo3ETPxnlGgKNkbRIwesGieB8fiRo+9tYLmLUjjOc4zQPzTchEEPva4OSP3wLJQlpL
- qDzg==
-X-Gm-Message-State: AOAM533akCcWVJ9WP/mn1Sv3g1Mh4Sf9OX8me/QF/b7ecS/7ml1y5bq2
- KRkU5QhbVDiyr7HZvGmFhSR6kFKKz60nNg7vQnVZdA==
-X-Google-Smtp-Source: ABdhPJy6Rvbpz4OVF7+E6Ibj6h44yQcnycBjoZStHMF7KBGlki8rKNee1gTheosMNsZuvJoobdu2aNNGxai7LvPhZeA=
-X-Received: by 2002:aca:cd12:: with SMTP id d18mr156277oig.70.1598269596930;
- Mon, 24 Aug 2020 04:46:36 -0700 (PDT)
+ bh=IfIxkLsRxova3XYkDm6i/K8H2HRLaB3EQ7huQjW3f6w=;
+ b=X9W8TFG80TqZeFJ+Vrh7o0jo4dUICRPlMizZgWKQDdoc5LIz6rEe2HGJebVAVnJuF1
+ VANigz6mNMORMzwPYQqdnnrhP7Y4S6/tmsNYKkk7Ehy2ltffoHOLUDYHIU4E1xjux+p4
+ 3HyJdA9cOv0TBD4XeVA+8q5ZnoYIqEBHfRPhHr0SUli0TMm4hQg4wgHuSMB2VDL0nmL1
+ ghI4KB68ZW4YgKbi8nEWSrS7bLAz7E7VbrG0JP0abQZrTLRE45B4KcIc8Qm232tSSP2O
+ 5ma0x7djJmhlx+O2gR94L/OUhWW2sBh/1zoVqdV7DlGtj82dddShEYDc1E8ggV7G3f+o
+ 8nIw==
+X-Gm-Message-State: AOAM533Raa6MuKSVCM3J1uMropVHGmzx4GIUkE2hxwXnnV/mAEZkNhLb
+ mn4CfITH/i9afNhes2M0oIJgvlttc8Rx8go0+NWdlQ==
+X-Google-Smtp-Source: ABdhPJx8/ShV3Gs8ffER3S7rZnw0ZFPWF5N02fGQqTCvCQFx6YSWKYgZLvFexBYVMpA5tpKhoxssOwaUlfs41PMlPVI=
+X-Received: by 2002:a05:6830:1612:: with SMTP id
+ g18mr3040756otr.251.1598269765865; 
+ Mon, 24 Aug 2020 04:49:25 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200824081433.25198-1-walter-zh.wu@mediatek.com>
-In-Reply-To: <20200824081433.25198-1-walter-zh.wu@mediatek.com>
+References: <20200824081353.25148-1-walter-zh.wu@mediatek.com>
+In-Reply-To: <20200824081353.25148-1-walter-zh.wu@mediatek.com>
 From: Marco Elver <elver@google.com>
-Date: Mon, 24 Aug 2020 13:46:25 +0200
-Message-ID: <CANpmjNOSKQi+wYbCVYqL-LriqCD37GtOfrArB0hyKysaPYyzGQ@mail.gmail.com>
-Subject: Re: [PATCH v2 6/6] kasan: update documentation for generic kasan
+Date: Mon, 24 Aug 2020 13:49:14 +0200
+Message-ID: <CANpmjNNf5pr=0hKVo92M9fEnCy7sYbv==6Bv_sVSmn=rZi7JEA@mail.gmail.com>
+Subject: Re: [PATCH v2 5/6] kasan: add tests for workqueue stack recording
 To: Walter Wu <walter-zh.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200824_074641_045034_79B0D19D 
-X-CRM114-Status: GOOD (  17.46  )
+X-CRM114-CacheID: sfid-20200824_074928_213399_8DF8150B 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,9 +89,9 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream <wsd_upstream@mediatek.com>, Jonathan Corbet <corbet@lwn.net>,
- linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>,
- kasan-dev <kasan-dev@googlegroups.com>,
+Cc: wsd_upstream <wsd_upstream@mediatek.com>,
+ Andrey Konovalov <andreyknvl@google.com>, linux-mediatek@lists.infradead.org,
+ LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>,
  Linux Memory Management List <linux-mm@kvack.org>,
  Alexander Potapenko <glider@google.com>,
  Linux ARM <linux-arm-kernel@lists.infradead.org>,
@@ -103,37 +104,47 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On Mon, 24 Aug 2020 at 10:14, Walter Wu <walter-zh.wu@mediatek.com> wrote:
 >
-> Generic KASAN support to record the last two timer and workqueue
-> stacks and print them in KASAN report. So that need to update
-> documentation.
+> Adds a test to verify workqueue stack recording and print it in
+> KASAN report.
+>
+> The KASAN report was as follows(cleaned up slightly):
+>
+>  BUG: KASAN: use-after-free in kasan_workqueue_uaf
+>
+>  Freed by task 54:
+>   kasan_save_stack+0x24/0x50
+>   kasan_set_track+0x24/0x38
+>   kasan_set_free_info+0x20/0x40
+>   __kasan_slab_free+0x10c/0x170
+>   kasan_slab_free+0x10/0x18
+>   kfree+0x98/0x270
+>   kasan_workqueue_work+0xc/0x18
+>
+>  Last potentially related work creation:
+>   kasan_save_stack+0x24/0x50
+>   kasan_record_wq_stack+0xa8/0xb8
+>   insert_work+0x48/0x288
+>   __queue_work+0x3e8/0xc40
+>   queue_work_on+0xf4/0x118
+>   kasan_workqueue_uaf+0xfc/0x190
 >
 > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
 > Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
 > Cc: Dmitry Vyukov <dvyukov@google.com>
 > Cc: Alexander Potapenko <glider@google.com>
-> Cc: Jonathan Corbet <corbet@lwn.net>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Andrey Konovalov <andreyknvl@google.com>
 > ---
->  Documentation/dev-tools/kasan.rst | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/Documentation/dev-tools/kasan.rst b/Documentation/dev-tools/kasan.rst
-> index fede42e6536b..5a4c5da8bda8 100644
-> --- a/Documentation/dev-tools/kasan.rst
-> +++ b/Documentation/dev-tools/kasan.rst
-> @@ -193,8 +193,8 @@ function calls GCC directly inserts the code to check the shadow memory.
->  This option significantly enlarges kernel but it gives x1.1-x2 performance
->  boost over outline instrumented kernel.
->
-> -Generic KASAN prints up to 2 call_rcu() call stacks in reports, the last one
-> -and the second to last.
-> +Generic KASAN prints up to 2 call_rcu() call stacks, timer queueing stacks,
-> +or workqueue queueing stacks in reports, the last one and the second to last.
+>  lib/test_kasan.c | 29 +++++++++++++++++++++++++++++
+>  1 file changed, 29 insertions(+)
 
-We could make this more readable by writing something like this:
+These will majorly conflict with the KASAN-test KUnit rework, which I
+don't know what the status is. AFAIK, these are not yet in -mm tree.
 
-"Generic KASAN also reports the last 2 call stacks to creation of work
-that potentially has access to an object. Call stacks for the
-following are shown: call_rcu(), timer and workqueue queuing."
+I think the KASAN-test KUnit rework has priority, as rebasing that
+work on top of this patch is going to be difficult. So maybe these
+test additions can be declared optional if there are conflicts coming,
+and if that'll be the case you'll have to rebase and resend the test.
 
 Thanks,
 -- Marco
