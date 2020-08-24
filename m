@@ -2,86 +2,84 @@ Return-Path: <SRS0=7UDR=CC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 29152C433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 20:03:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AD458C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 21:40:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DF0D720656
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 20:03:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6035620702
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 21:40:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="y7c3r4H8";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="c2U6POoJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DF0D720656
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZDL88u1A";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="tJ6RhK6w"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6035620702
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From:Date:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HR2mPc53sNDbLQFZjRZ0A8GiCNSzInb/q17CCGcgBUU=; b=y7c3r4H8FQCB+oy76jjUlwTTau
-	V7Q37avtNkny2SbEIRimh4MUUBBAg/zzeRyOL73K+df6a6h6OKKwYs011f4o/OH1RvGjnd4sG0c/i
-	5WpzsM3W1dFLgPVhz1zI35bwUbhUOPAS1TSs3pVrwk5Y4CQ28i3oCm0qO3ZJU4Y/vxzLr+j4R4M9l
-	JlpDrFJn3cN3dod9FIDTdEkhxT+1W+oXeKBGtPbB3F+2nLPlyBXmpk8MNkNc1PFX2p0npm3iJKO0R
-	2NDG/9njWCSwc87hdGT6nHquW6Fr2HB1XQtQUG6TtJoSbts00RJP6jbCiS4XRcKkyFxzc8OmYUa7C
-	85A4bXbQ==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=9zQqXhSxuOINpcER06rJSZZGW94g7moUUWiM2ALLR/A=; b=ZDL88u1AbfZRHe4V+HPWXkREW
+	8qXUOb4gr+PZkVdrmsxXwn7XKK7tc3kIH0dRq71ZdZIHlAOnfxDo9JHFx9Cx/p+KqapJB+JP3qv6C
+	mv0EUpZ0XPznDJnNQHJttV7QhmAFeuOipHXVufNFOyS/x0oDXMeE0VbA9UNQ/iMeNLcar69TVGAev
+	AAITKDeHIXNpl+DlV97GxuwQXzEGOTdxFSjU4ouMpfiFhbc+Uze53gB4YPcr2Wbh543yb9pmhVkE7
+	VQ24CrMWxp5p/PBGgEyWYRg/xfr9FV99TgXoLGk7bfAR5HCpP92HU73bFfgwNF6Ai5U4Gg7cDI4u7
+	URHIIhXSw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kAIgd-0008RX-5K; Mon, 24 Aug 2020 20:03:23 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1kAKCe-0000FV-I7; Mon, 24 Aug 2020 21:40:32 +0000
+Received: from lelv0143.ext.ti.com ([198.47.23.248])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAIgY-0008Qf-Tv; Mon, 24 Aug 2020 20:03:19 +0000
-Received: by mail-pf1-x441.google.com with SMTP id m8so5476239pfh.3;
- Mon, 24 Aug 2020 13:03:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=isOavbC0CqCTOWpwarMOyw2TDbIMP+uJPiDdCwZdCm4=;
- b=c2U6POoJvv+0vYTJHvEKQaX7ET3zmfZwu9hCOQz2NJZ+PiNfhFvjFQkeNq2hSR42uW
- 7S8VHrutiLhiRBILzasdfdAJAUnRG1BHOCXg+p3O3MnhKvLqagdmz9JFCDcXCQjh55oY
- +f/IPLBAsnBHlUOyvhRwO9nsmc8HG92Qbgce3slKVbJKFawgJNYx1D+Z4lADIh2TFrhG
- AAQvK+mlzor09CElVJkoHNgs8uWmwthGXkvATFK48jV6B9yy1Bwy7gHmmM7rktLFFFkg
- xOykXFC2KPGf9A+h/7exWOnjehmtzUPeRqpqsFOFSR19UiXRudkmG3F43aht6Jpr7lZ7
- wN7Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=isOavbC0CqCTOWpwarMOyw2TDbIMP+uJPiDdCwZdCm4=;
- b=mU4iDRC+UCyQfmZWD0jHgZGf1aBTtGsKb6e8GSLlPSEWYA8KdmKTCP09G1JCyCijIs
- co44LSd1zeB/s4HgPpqKf5rRbr2k7qjUaWyyZHxAe4p9yPDBV4H3Q+TdgrCLRJV6Uosw
- y0kj3l5+BTxzUAieqH+ljQOdphq7lZoPD3OWPioSpOv48opZ2UqdwsuA2pbWCL//nEU4
- W6aK++qJQcAf8wYQft0RPUJNEVz+WsnA6OnYG/84MaHaua2OnTH2U7JaXfH7D02anD5G
- ZFwkvfwg6xl9vYjbdIaKmVKL21rQu+Z1K8Us87RHlWj5LaM3q02o25eMamnKP+gGnMp7
- GDJA==
-X-Gm-Message-State: AOAM532PCwXqtIljlazb7iE14bTy2zIam/pugTWtYzbUBofEQms9GAA3
- JcvpeSRDPrC28rgqXbO1ZOs=
-X-Google-Smtp-Source: ABdhPJyNNJ7ZQ0kH+sJbXxUJ+q4pt6tVcRPH37tIEAQf5D8RdnbjPmfJNMPVfDiij6bCHTAMNMa81g==
-X-Received: by 2002:a63:7018:: with SMTP id l24mr4221170pgc.55.1598299396720; 
- Mon, 24 Aug 2020 13:03:16 -0700 (PDT)
-Received: from Kaladin ([49.207.215.194])
- by smtp.gmail.com with ESMTPSA id d23sm10418236pgm.11.2020.08.24.13.03.13
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 24 Aug 2020 13:03:16 -0700 (PDT)
-Date: Tue, 25 Aug 2020 01:33:11 +0530
-From: Sumera Priyadarsini <sylphrenadin@gmail.com>
-To: davem@davemloft.net
-Subject: [PATCH V4] net: dsa: mt7530: Add of_node_put() before break and
- return statements
-Message-ID: <20200824200311.GA19436@Kaladin>
+ id 1kAKCc-0000EU-6m; Mon, 24 Aug 2020 21:40:31 +0000
+Received: from fllv0034.itg.ti.com ([10.64.40.246])
+ by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 07OLdsPY046027;
+ Mon, 24 Aug 2020 16:39:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1598305194;
+ bh=bf+6mDZifTI9HQJSeivn4me8d5zREYk1XPJ3eAaDXHY=;
+ h=Subject:To:CC:References:From:Date:In-Reply-To;
+ b=tJ6RhK6wvGyEiAhqwOPDwT69Y3+7BoJNjgEuOOW+0PGCMSlzIrjy7T2GrEFwuAAcZ
+ 51c8X4oGyc7X5b+1hxYLGjFw1iyT+DGwI6G2Whe/r0fmJRG1pX1zZGWT3yn2053eaa
+ 4Szann3xS0X39D0KAerooEYGEMuFIf1zy1xME1pQ=
+Received: from DFLE104.ent.ti.com (dfle104.ent.ti.com [10.64.6.25])
+ by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 07OLdr7q044652
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Mon, 24 Aug 2020 16:39:53 -0500
+Received: from DFLE100.ent.ti.com (10.64.6.21) by DFLE104.ent.ti.com
+ (10.64.6.25) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Mon, 24
+ Aug 2020 16:39:53 -0500
+Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE100.ent.ti.com
+ (10.64.6.21) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
+ Frontend Transport; Mon, 24 Aug 2020 16:39:53 -0500
+Received: from [10.250.32.171] (ileax41-snat.itg.ti.com [10.172.224.153])
+ by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 07OLdqBH090259;
+ Mon, 24 Aug 2020 16:39:52 -0500
+Subject: Re: [PATCH 11/18] iommu/omap: Add IOMMU_DOMAIN_DMA support
+To: Robin Murphy <robin.murphy@arm.com>, <hch@lst.de>, <joro@8bytes.org>,
+ <linux@armlinux.org.uk>
+References: <cover.1597931875.git.robin.murphy@arm.com>
+ <5ac3788f9f61f7698cfa9c5924d62714e230f678.1597931876.git.robin.murphy@arm.com>
+From: Suman Anna <s-anna@ti.com>
+Message-ID: <c98765ad-e824-a54c-7cf8-c245dbf960d3@ti.com>
+Date: Mon, 24 Aug 2020 16:39:52 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <5ac3788f9f61f7698cfa9c5924d62714e230f678.1597931876.git.robin.murphy@arm.com>
+Content-Language: en-US
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200824_160319_027447_C000946B 
-X-CRM114-Status: GOOD (  14.75  )
+X-CRM114-CacheID: sfid-20200824_174030_517557_06A4202A 
+X-CRM114-Status: GOOD (  26.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,70 +91,120 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: andrew@lunn.ch, f.fainelli@gmail.com, netdev@vger.kernel.org,
- sean.wang@mediatek.com, linux-kernel@vger.kernel.org, Julia.Lawall@lip6.fr,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, kuba@kernel.org,
- vivien.didelot@gmail.com, linux-arm-kernel@lists.infradead.org
+Cc: geert+renesas@glider.be, dri-devel@lists.freedesktop.org,
+ bjorn.andersson@linaro.org, matthias.bgg@gmail.com, thierry.reding@gmail.com,
+ laurent.pinchart@ideasonboard.com, digetx@gmail.com, will@kernel.org,
+ m.szyprowski@samsung.com, linux-samsung-soc@vger.kernel.org,
+ magnus.damm@gmail.com, kyungmin.park@samsung.com, jonathanh@nvidia.com,
+ agross@kernel.org, yong.wu@mediatek.com, linux-media@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, inki.dae@samsung.com, vdumpa@nvidia.com,
+ linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, sw0312.kim@samsung.com,
+ linux-kernel@vger.kernel.org, t-kristo@ti.com,
+ iommu@lists.linux-foundation.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Every iteration of for_each_child_of_node() decrements
-the reference count of the previous node, however when control
-is transferred from the middle of the loop, as in the case of
-a return or break or goto, there is no decrement thus ultimately
-resulting in a memory leak.
+Hi Robin,
 
-Fix a potential memory leak in mt7530.c by inserting of_node_put()
-before the break and return statements.
+On 8/20/20 10:08 AM, Robin Murphy wrote:
+> Now that arch/arm is wired up for default domains and iommu-dma,
+> implement the corresponding driver-side support for DMA domains.
+> 
+> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+> ---
+>  drivers/iommu/omap-iommu.c | 22 +++++++++++++++++++++-
+>  1 file changed, 21 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/iommu/omap-iommu.c b/drivers/iommu/omap-iommu.c
+> index 71f29c0927fc..ea25c2fe0418 100644
+> --- a/drivers/iommu/omap-iommu.c
+> +++ b/drivers/iommu/omap-iommu.c
+> @@ -9,6 +9,7 @@
+>   *		Paul Mundt and Toshihiro Kobayashi
+>   */
+>  
+> +#include <linux/dma-iommu.h>
+>  #include <linux/dma-mapping.h>
+>  #include <linux/err.h>
+>  #include <linux/slab.h>
+> @@ -1574,13 +1575,19 @@ static struct iommu_domain *omap_iommu_domain_alloc(unsigned type)
+>  {
+>  	struct omap_iommu_domain *omap_domain;
+>  
+> -	if (type != IOMMU_DOMAIN_UNMANAGED)
+> +	if (type != IOMMU_DOMAIN_UNMANAGED && type != IOMMU_DOMAIN_DMA)
+>  		return NULL;
+>  
+>  	omap_domain = kzalloc(sizeof(*omap_domain), GFP_KERNEL);
+>  	if (!omap_domain)
+>  		return NULL;
+>  
+> +	if (type == IOMMU_DOMAIN_DMA &&
+> +	    iommu_get_dma_cookie(&omap_domain->domain)) {
+> +		kfree(omap_domain);
+> +		return NULL;
+> +	}
+> +
+>  	spin_lock_init(&omap_domain->lock);
+>  
+>  	omap_domain->domain.geometry.aperture_start = 0;
+> @@ -1601,6 +1608,7 @@ static void omap_iommu_domain_free(struct iommu_domain *domain)
+>  	if (omap_domain->dev)
+>  		_omap_iommu_detach_dev(omap_domain, omap_domain->dev);
+>  
+> +	iommu_put_dma_cookie(&omap_domain->domain);
+>  	kfree(omap_domain);
+>  }
+>  
+> @@ -1736,6 +1744,17 @@ static struct iommu_group *omap_iommu_device_group(struct device *dev)
+>  	return group;
+>  }
+>  
+> +static int omap_iommu_of_xlate(struct device *dev,
+> +			       struct of_phandle_args *args)
+> +{
+> +	/*
+> +	 * Logically, some of the housekeeping from _omap_iommu_add_device()
+> +	 * should probably move here, but the minimum we *need* is simply to
+> +	 * cooperate with of_iommu at all to let iommu-dma work.
+> +	 */
+> +	return 0;
+> +}
+> +
 
-Issue found with Coccinelle.
+I have tested this series, and it is breaking the OMAP remoteproc functionality.
+We definitely need some more plumbing. I am currently getting MMU faults and
+also the DMA allocated addresses are not coming from the device-specific CMA
+pools (opposite of what Sakari has reported with OMAP3 ISP). Just removing the
+of_xlate gets me back the expected allocations, and no MMU faults, but I don't
+see any valid traces.
 
-Signed-off-by: Sumera Priyadarsini <sylphrenadin@gmail.com>
----
-Changes in v2:
-        Add another of_node_put() in for_each_child_of_node() as
-pointed out by Andrew.
+The MMU devices that the OMAP IOMMU driver deals with are not traditional
+bus-level IOMMU devices, but local MMU devices that are present within a remote
+processor sub-system or hardware accelerator (eg: OMAP3 ISP). The usage is also
+slightly different between remoteprocs and OMAP3 ISP. The former uses the CMA
+pools and iommu_map/unmap API (UNMANAGED iommu domain), as the allocated regions
+need to be mapped using specific device addresses adhering to the firmware
+linker map, while OMAP3 ISP uses it like a traditional DMA pool.
 
-Changes in v3:
-        - Correct syntax errors
-        - Modify commit message
+regards
+Suman
 
-Changes in v4:
-	- Change commit prefix to include the driver name,
-mt7530, as pointed out by Vladimir.
-	- Change the signoff to the correct format.
-
----
- drivers/net/dsa/mt7530.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 8dcb8a49ab67..4b4701c69fe1 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -1326,14 +1326,17 @@ mt7530_setup(struct dsa_switch *ds)
- 
- 			if (phy_node->parent == priv->dev->of_node->parent) {
- 				ret = of_get_phy_mode(mac_np, &interface);
--				if (ret && ret != -ENODEV)
-+				if (ret && ret != -ENODEV) {
-+					of_node_put(mac_np);
- 					return ret;
-+				}
- 				id = of_mdio_parse_addr(ds->dev, phy_node);
- 				if (id == 0)
- 					priv->p5_intf_sel = P5_INTF_SEL_PHY_P0;
- 				if (id == 4)
- 					priv->p5_intf_sel = P5_INTF_SEL_PHY_P4;
- 			}
-+			of_node_put(mac_np);
- 			of_node_put(phy_node);
- 			break;
- 		}
--- 
-2.17.1
+>  static const struct iommu_ops omap_iommu_ops = {
+>  	.domain_alloc	= omap_iommu_domain_alloc,
+>  	.domain_free	= omap_iommu_domain_free,
+> @@ -1747,6 +1766,7 @@ static const struct iommu_ops omap_iommu_ops = {
+>  	.probe_device	= omap_iommu_probe_device,
+>  	.release_device	= omap_iommu_release_device,
+>  	.device_group	= omap_iommu_device_group,
+> +	.of_xlate	= omap_iommu_of_xlate,
+>  	.pgsize_bitmap	= OMAP_IOMMU_PGSIZES,
+>  };
+>  
+> 
 
 
 _______________________________________________
