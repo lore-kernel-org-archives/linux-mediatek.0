@@ -2,88 +2,77 @@ Return-Path: <SRS0=7UDR=CC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D1E56C433E1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 00:05:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 740FCC433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 02:47:00 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A0D1920720
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 00:05:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3E3A420768
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 02:47:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="t5897/ZN";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=tcd-ie.20150623.gappssmtp.com header.i=@tcd-ie.20150623.gappssmtp.com header.b="ph3cmZei"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A0D1920720
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=tcd.ie
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DUMWbXzP";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="NkEM55mq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3E3A420768
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=WiuAFjZn9PjGI16Rpwkk9x+6nrbvnjHesFhnpSKcTC8=; b=t5897/ZNyyp5iOCfcHofs5Kby
-	GllEGUC7PRUyjW1mOTkbOPRhfg7AV2ySIHH1klA70UWHzdKWseA3WFlyMEt30+86VLh5ck2dGZfU1
-	EMeKe9NNhBoQ/nxc/7+eKKpJ/NSV5E/F3njojUaS1wuiKmuD7Z316SHIcUZD0rJukLtm/5SeTcOtE
-	gMgWcfPGKeUBVa4r1YaUO3BGf8TXCj09F/K0HxGT4k8dCCvjge1KPUX8xvDs0hAPirWeiTNrd43u4
-	zVifUHmgu0UWvkls5ZuCzEgxqBiHHglUNi2urx1W8ZIeoPdMqkDqGGhcCi1NNmZ1XsMvAEGZO/3vE
-	ocy7o6oAA==;
+	 bh=Q80NI9QWA/8t2aoemUimiMc5lwUINqJOVG4BYuQT9dU=; b=DUMWbXzPSupJpjtnNAIabCIJu
+	r/K6QasiCDOKYo6EYmTeCDzwMRSVCEhhIsRFMqZVehdpqymxHtsMz+8WwrJJWlxzpLS1oAg2GkRe0
+	hNqYt+fPSX2BJJDrLEvmDenmrYPkmHQku/uxCDKKB/Efohjnc3Hy5zTiow41rTY+yRmwPOwqWxTaZ
+	Hxc5yDQUJtIUclMHX+X0eEMMe/2JmwlskP6XcEX8nCsGH68bfhUn5WJBEmR+g4VK9HPoFBqcTTaeh
+	UyjGDb0s49M0BASCFgH6PQlR/CXiVBOEdxLl6ft8eSWbapmUD+NPUOVbgwq+Fzu0tqMOuTMzQbkKD
+	6jOzEzNiQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k9zyr-000684-Gz; Mon, 24 Aug 2020 00:04:57 +0000
-Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141])
+	id 1kA2VU-0006hg-25; Mon, 24 Aug 2020 02:46:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k9zyk-00065s-IG
- for linux-mediatek@lists.infradead.org; Mon, 24 Aug 2020 00:04:52 +0000
-Received: by mail-il1-x141.google.com with SMTP id v2so5821025ilq.4
- for <linux-mediatek@lists.infradead.org>; Sun, 23 Aug 2020 17:04:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=tcd-ie.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=2qvzvkep7ZlQHNyjrGsuXQAp+x7s+RjdNiOv81NxtoQ=;
- b=ph3cmZeijsQTsHnHnrr9eCGgxMPexaLwCGnu3F9Od9T7oE9SJ1xriseSecoaLR+A31
- cxdttU99z8vHmtpSvs9wLGOOgPOY6GzwuKuovZh4UMjplaxKJu/wyAtKKGV99cTnuUCc
- b9jW667DJd78gpOSqL093TQrnCvZ9zpW4sDgc9e3s4gqdpHbIh0cqwIbSVLaQrTLqDAX
- thER0vKrZAtqkOJvYQeGZuITMeh4kPZ6AWC1kOvIEmnWvuxZr35lD2OOnlXMpkqB5GBo
- XlqFU7D/ggoXmysuTUVEiDWk1jvnBEMzHRuwpliqu/K2HYrSEPvB6WXxqYArt4mYifKa
- QdMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=2qvzvkep7ZlQHNyjrGsuXQAp+x7s+RjdNiOv81NxtoQ=;
- b=cAsztpCyrQzFWp8UQ4couJOCkcSKQQDA6JMP7xYQBLU8Js1qdf9SYT0161tTMGcYgE
- vkmqclcRkfCtWR42F3qBCM8eSsysmusFhfaW/FHR+G05zpC56QO6Vrx1fMFb8/UYao95
- dTgCZXAYmSWuMlN70dxbnNWb7cK26ly2bm95O1Uvq2J5hstVFxn9AiQtmsaco/uR6wCA
- d0XDPkLCjnvl02mg2ZEtUmjzyvCYPWcXSyi8b0Wvc6zGKkyKm13U3yS1eCNGyexGWkMA
- Q7aExZ7brL4Mre4utG1sYITGPHbXOCYeTo1kY2HWkTW3kZmnhGyCqEkbSyYFxTTm6k1O
- Okig==
-X-Gm-Message-State: AOAM530Wb4iWF5blTHjmMhF/7MsCI1mtOnH2XjQCGvYjsfIS07e5oZEB
- IyigL4WBBPsWre1BJm+UJ9pEQa+xGR7MXNlu9u+vbg==
-X-Google-Smtp-Source: ABdhPJx+Rb9Dh5afCkPV93ubbfa83YINwHuyBNL6aGGIC9gNFt/GVdQQ5DqMV2LQPpqLPd5cGrS+QMzugsAJ9rHE3h4=
-X-Received: by 2002:a92:4f:: with SMTP id 76mr2640989ila.11.1598227486317;
- Sun, 23 Aug 2020 17:04:46 -0700 (PDT)
+ id 1kA2VJ-0006gn-Hd; Mon, 24 Aug 2020 02:46:39 +0000
+X-UUID: 0ff17aaef5084377aac0fcc5584642d1-20200823
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=DGXAb/0Vl5Dez9+vEDFYuUVf9EcPLGR8eaFdhVWVXVQ=; 
+ b=NkEM55mqaTTFbe9ofPB2EPse6Ev1uXSjFyTDSKG1xnK+iIVkvAWzUO1CZDrNM9jX+bXsZfh3gwwXa8MPfsewfZoJmyr9hdJs05kLnMR2gnLc4mreJbPkJ/Tpk7ZFKwT92LTizzMD7/iOY9JwSATfY8Z6e2mc+oTgWVbOXwVtpzk=;
+X-UUID: 0ff17aaef5084377aac0fcc5584642d1-20200823
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <mark-pk.tsai@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1857532782; Sun, 23 Aug 2020 18:46:28 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 23 Aug 2020 19:36:26 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 24 Aug 2020 10:36:25 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 24 Aug 2020 10:36:24 +0800
+From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+To: <daniel@0x0f.com>, Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Subject: Re: [PATCH v2 1/2] irqchip: irq-mst: Add MStar interrupt controller
+ support
+Date: Mon, 24 Aug 2020 10:36:08 +0800
+Message-ID: <20200824023608.12694-1-mark-pk.tsai@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <CAFr9PXni=BmDY6_iuJPnYb3d6XB1VrxE6WP3YtSBxT6NciZMMA@mail.gmail.com>
+References: <CAFr9PXni=BmDY6_iuJPnYb3d6XB1VrxE6WP3YtSBxT6NciZMMA@mail.gmail.com>
 MIME-Version: 1.0
-References: <20191221150402.13868-1-murphyt7@tcd.ie>
- <465815ae-9292-f37a-59b9-03949cb68460@deltatee.com>
- <20200529124523.GA11817@infradead.org>
- <CGME20200529190523eucas1p2c086133e707257c0cdc002f502d4f51d@eucas1p2.samsung.com>
- <33137cfb-603c-86e8-1091-f36117ecfaf3@deltatee.com>
- <ef2150d5-7b6a-df25-c10d-e43316fe7812@samsung.com>
- <b9140772-0370-a858-578c-af503a06d8e9@deltatee.com>
-In-Reply-To: <b9140772-0370-a858-578c-af503a06d8e9@deltatee.com>
-From: Tom Murphy <murphyt7@tcd.ie>
-Date: Mon, 24 Aug 2020 01:04:35 +0100
-Message-ID: <CALQxJuutRaeX89k2o4ffTKYRMizmMu0XbRnzpFuSSrkQR02jKg@mail.gmail.com>
-Subject: Re: [PATCH 0/8] Convert the intel iommu driver to the dma-iommu api
-To: Logan Gunthorpe <logang@deltatee.com>
+X-TM-SNTS-SMTP: 6E4C3BF49D4DFB9E466CFBA5624D59848AA25DE09D0CFEF9A30BC7D17FB7468C2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200823_200450_847833_32602958 
-X-CRM114-Status: GOOD (  27.26  )
+X-CRM114-CacheID: sfid-20200823_224637_928000_B027A567 
+X-CRM114-Status: GOOD (  13.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,97 +84,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Bjorn Andersson <bjorn.andersson@linaro.org>,
- linux-tegra@vger.kernel.org, Julien Grall <julien.grall@arm.com>,
- Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will@kernel.org>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- linux-samsung-soc@vger.kernel.org, Marc Zyngier <maz@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
- Christoph Hellwig <hch@infradead.org>, linux-rockchip@lists.infradead.org,
- Andy Gross <agross@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- linux-mediatek@lists.infradead.org, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- virtualization@lists.linux-foundation.org,
- Gerald Schaefer <gerald.schaefer@de.ibm.com>,
- David Woodhouse <dwmw2@infradead.org>, Cornelia Huck <cohuck@redhat.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- iommu@lists.linux-foundation.org, Kukjin Kim <kgene@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>
+Cc: devicetree@vger.kernel.org, alix.wu@mediatek.com, jason@lakedaemon.net,
+ maz@kernel.org, yj.chiang@mediatek.com, linux-kernel@vger.kernel.org,
+ robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ tglx@linutronix.de, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Logan/All,
+From: Daniel Palmer <daniel@0x0f.com>
 
-I have added a check for the sg_dma_len == 0 :
-"""
- } __sgt_iter(struct scatterlist *sgl, bool dma) {
-        struct sgt_iter s = { .sgp = sgl };
-
-+       if (sgl && sg_dma_len(sgl) == 0)
-+           s.sgp = NULL;
-
-        if (s.sgp) {
-            .....
-"""
-at location [1].
-but it doens't fix the problem.
-
-You're right though, this change does need to be made, this code
-doesn't handle pages of sg_dma_len(sg) == 0 correctly
-So my guess is that we have more bugs in other parts of the i915
-driver (or there is a problem with my "sg_dma_len == 0" fix above).
-I have been trying to spot where else the code might be buggy but I
-haven't had any luck so far.
-
-I'm doing a microconfernce (at LPC 2020) this wednesdays [1] on this
-if you're interested in attending.
-I'm hoping I can chat about it with a few people and find how can
-reproduce and fix this issues. I don't have any more time I can give
-to this unfortunately and it would be a shame for the work to go to
-waste.
-
-[0] https://github.com/torvalds/linux/blob/d012a7190fc1fd72ed48911e77ca97ba4521bccd/drivers/gpu/drm/i915/i915_scatterlist.h#L28
-[1] https://linuxplumbersconf.org/event/7/contributions/846/
-
-On Fri, 29 May 2020 at 22:21, Logan Gunthorpe <logang@deltatee.com> wrote:
+>Hi Mark-PK,
 >
+>On Thu, 20 Aug 2020 at 00:38, Mark-PK Tsai <mark-pk.tsai@mediatek.com> wrote:
+>>
+>> Add MStar interrupt controller support using hierarchy irq
+>> domain.
+>>
+>> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
 >
+>I've integrated this version into my MStar/SigmaStar tree and tested
+>on an MStar MSC313E
+>based board (BreadBee) and I'm happy to say it seems to be working:
 >
-> On 2020-05-29 3:11 p.m., Marek Szyprowski wrote:
-> > Patches are pending:
-> > https://lore.kernel.org/linux-iommu/20200513132114.6046-1-m.szyprowski@samsung.com/T/
+>$ cat /proc/interrupts
+>          CPU0
+>17:       1219     GIC-0  29 Level     arch_timer
+>18:          0     GIC-0  30 Level     arch_timer
+>21:          0     GIC-0  42 Level     arm-pmu
+>24:          0  mst-intc  44 Level     1f002400.rtc
+>30:          0  mst-intc   2 Level     1f006000.wdt
+>31:          0  mst-intc   0 Level     1f006040.timer
+>32:          0  mst-intc   1 Level     1f006080.timer
+>33:          0  mst-intc  12 Level     1f0060c0.timer
+>34:          0  mst-intc  40 Level     1f200400.bdma
+>35:       3977  mst-intc  41 Level     1f200400.bdma
+>37:        196  mst-intc  34 Level     ttyS0
+>40:          0  mst-intc  30 Level     soc:usbphy@0
+><snip>
 >
-> Cool, nice! Though, I still don't think that fixes the issue in
-> i915_scatterlist.h given it still ignores sg_dma_len() and strictly
-> relies on sg_next()/sg_is_last() to stop iterating -- and I suspect this
-> is the bug that got in Tom's way.
+>So here's my tested by:
 >
-> >> However, as Robin pointed out, there are other ugly tricks like stopping
-> >> iterating through the SGL when sg_dma_len() is zero. For example, the
-> >> AMD driver appears to use drm_prime_sg_to_page_addr_arrays() which does
-> >> this trick and thus likely isn't buggy (otherwise, I'd expect someone to
-> >> have complained by now seeing AMD has already switched to IOMMU-DMA.
-> >
-> > I'm not sure that this is a trick. Stopping at zero sg_dma_len() was
-> > somewhere documented.
+>Tested-by: Daniel Palmer <daniel@thingy.jp>
 >
-> Well whatever you want to call it, it is ugly to have some drivers doing
-> one thing with the returned value and others assuming there's an extra
-> zero at the end. It just causes confusion for people reading/copying the
-> code. It would be better if they are all consistent. However, I concede
-> stopping at zero should not be broken, presently.
->
-> Logan
 
+Thanks for your test.
+
+>I don't think your series contained an update to MAINTAINERS.
+>If/when you add this could you add my address above as a reviewer so
+>I'm in the loop if anyone makes changes to this going forward?
+>
+
+Sure, I will add your address in there. :)
+Can I just add a patch in this thread which only contain MAINTAINERS update?
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
