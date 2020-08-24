@@ -2,71 +2,69 @@ Return-Path: <SRS0=7UDR=CC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-6.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A46FAC433E3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 17:51:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 246C2C433E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 19:49:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 787F62075B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 17:51:59 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CAE6420706
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2020 19:49:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VHwafpfm";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="hbnAwGvY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 787F62075B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ezoBOnnO";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="unHmRmq5"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CAE6420706
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qSiQwrZXzAh0DCt5ApYn3yP0Cx54FZXV8NKSxyT77iE=; b=VHwafpfm1FdxrvS6NTgm+SYxc
-	O6AZ82xMcRSq2XUy5KpgmiMo429WD80nrlTkdPlSEKD7ijW+PF0ic2YWQ2pjUFUSLFX19sJDeqGMU
-	zdrPMj96IjWwrF1Smf33AOL6YDCdVM+J3cgGC7nVKeKL9e9R2xGd6qFeqiL4ufFIOUrknJGJatt1Z
-	4tL4FvJ+qht5JelKkVQElNjuJzhJdGUFmoCmZugb/4lTw9BXZ4H7F8B31RS1fzw4IHVsjlXyRrlo1
-	H2X8EDKepIHU+Xh+RV5Hkkfb5gX9PrFBVrOD4FDLzOhiwTK3G9VyWEHIGcTXp0hdapS9QbuZjE5AA
-	76E3BWxFw==;
+	 bh=uLv5wdBIM4vlY6YMx9ASo74qV4A6Hxb5QnKzYIUp/9g=; b=ezoBOnnOmEhwnbV3uGHk5yqtn
+	fYyrZTlUp5ZJFc4ucDZGzE7X326i0VH0PYp5cTvZIYRop8j7R62Mi3LNE2WldaYgjwRxOgNYcOS/b
+	NJ9EoYM141OOil7xxTAVya922r91v4HvTA9YXSqhDBLgFt5ZidT6Veq6CIIdrBp37OZppJ7r5rwNY
+	oAA/jpp2HsGM/L89IdvL5+9TPY7Khb0qCbVyM+H7v1Aq6bStxgBlUOLjItil9jtei0YzBnqi1mXVA
+	BJLHya5ByTLZSGHPKmhBPpWw6R0FlVVrb5fWlKthbPCH0+kMAZ0B9Nxlno4ssCsl736CG0zyCvkWy
+	UPtyqxgLQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kAGdQ-0003cT-CW; Mon, 24 Aug 2020 17:51:56 +0000
+	id 1kAIT1-00075I-V4; Mon, 24 Aug 2020 19:49:20 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAFVI-0001Rs-Ml; Mon, 24 Aug 2020 16:39:29 +0000
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ id 1kAISx-00074R-Pu; Mon, 24 Aug 2020 19:49:16 +0000
+Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9D6A322CBB;
- Mon, 24 Aug 2020 16:39:26 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 342F520706;
+ Mon, 24 Aug 2020 19:49:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598287167;
- bh=mP7f/35t0buhJdl6gvrlRmzPT52jFNIIFbiX0HJFYaQ=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=hbnAwGvY3UkIuqNso8Yhi33Iuf3OID446kzSnyWYJi9ZO+2KzNTr/Fm6wE3RmQiIY
- uafjwn6Ouv1xbov+XNIKCL25mw3Y/4AT96OflNo4o6kwcQMyFqjbY7ut5Es3/I2+ky
- cdFN3lfcpZoT4/4pOzvhi480x5rObATRt57GiBhA=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.14 09/11] scsi: ufs: Clean up completed request
- without interrupt notification
-Date: Mon, 24 Aug 2020 12:39:12 -0400
-Message-Id: <20200824163914.607152-9-sashal@kernel.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200824163914.607152-1-sashal@kernel.org>
-References: <20200824163914.607152-1-sashal@kernel.org>
+ s=default; t=1598298554;
+ bh=mwscSKU6PEXC91lvhthJtvDN6yZmk6pyRkDdDWHNMjE=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=unHmRmq5SzE2wUxKaRZVNXlbJunyWBVrwYm8Sosw6nG18Exlno4oGHKWx1QLCg1lN
+ 2WItwmNJaNTUoFLUJ6i3d5bctlz01NLYcjdTYJrtOEjGJhewcNBfajxu3y/E4wq0Ne
+ zb+8EhZqZu85SzjqP+4/e6MXt1b/OtsHBPg2f0Uc=
+Date: Mon, 24 Aug 2020 20:48:40 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Gene Chen <gene.chen.richtek@gmail.com>
+Subject: Re: [PATCH v3 2/2] regulator: mt6360: Add DT binding documentation
+Message-ID: <20200824194840.GF4676@sirena.org.uk>
+References: <1597910022-22617-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1597910022-22617-3-git-send-email-gene.chen.richtek@gmail.com>
+ <20200820113015.GB5854@sirena.org.uk>
+ <CAE+NS36C0AwbrFJdYGY6_n_g3DVitp_e1GfZUxjMbKu1bJ_t4w@mail.gmail.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+In-Reply-To: <CAE+NS36C0AwbrFJdYGY6_n_g3DVitp_e1GfZUxjMbKu1bJ_t4w@mail.gmail.com>
+X-Cookie: Weekend, where are you?
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200824_123928_962800_B08348E7 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20200824_154915_998959_2C4F9510 
+X-CRM114-Status: GOOD (  12.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,69 +76,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, linux-scsi@vger.kernel.org,
- "Martin K . Petersen" <martin.petersen@oracle.com>,
- Avri Altman <avri.altman@wdc.com>, Can Guo <cang@codeaurora.org>,
- linux-mediatek@lists.infradead.org, Stanley Chu <stanley.chu@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, Bean Huo <beanhuo@micron.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Gene Chen <gene_chen@richtek.com>, devicetree@vger.kernel.org,
+ lgirdwood@gmail.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============1012980455244729755=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Stanley Chu <stanley.chu@mediatek.com>
 
-[ Upstream commit b10178ee7fa88b68a9e8adc06534d2605cb0ec23 ]
+--===============1012980455244729755==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="2FkSFaIQeDFoAt0B"
+Content-Disposition: inline
 
-If somehow no interrupt notification is raised for a completed request and
-its doorbell bit is cleared by host, UFS driver needs to cleanup its
-outstanding bit in ufshcd_abort(). Otherwise, system may behave abnormally
-in the following scenario:
 
-After ufshcd_abort() returns, this request will be requeued by SCSI layer
-with its outstanding bit set. Any future completed request will trigger
-ufshcd_transfer_req_compl() to handle all "completed outstanding bits". At
-this time the "abnormal outstanding bit" will be detected and the "requeued
-request" will be chosen to execute request post-processing flow. This is
-wrong because this request is still "alive".
+--2FkSFaIQeDFoAt0B
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Link: https://lore.kernel.org/r/20200811141859.27399-2-huobean@gmail.com
-Reviewed-by: Can Guo <cang@codeaurora.org>
-Acked-by: Avri Altman <avri.altman@wdc.com>
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-Signed-off-by: Bean Huo <beanhuo@micron.com>
-Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/scsi/ufs/ufshcd.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+On Mon, Aug 24, 2020 at 03:21:57PM +0800, Gene Chen wrote:
+> > On Thu, Aug 20, 2020 at 03:53:42PM +0800, Gene Chen wrote:
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 4eaecc3cdebc8..4f32d794c9378 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -5692,7 +5692,7 @@ static int ufshcd_abort(struct scsi_cmnd *cmd)
- 			/* command completed already */
- 			dev_err(hba->dev, "%s: cmd at tag %d successfully cleared from DB.\n",
- 				__func__, tag);
--			goto out;
-+			goto cleanup;
- 		} else {
- 			dev_err(hba->dev,
- 				"%s: no response from device. tag = %d, err %d\n",
-@@ -5726,6 +5726,7 @@ static int ufshcd_abort(struct scsi_cmnd *cmd)
- 		goto out;
- 	}
- 
-+cleanup:
- 	scsi_dma_unmap(cmd);
- 
- 	spin_lock_irqsave(host->host_lock, flags);
--- 
-2.25.1
+> > > +  LDO_VIN3-supply:
+> > > +    description: Input supply phandle(s) for LDO3
 
+> > Only LDO3 needs a supply?
+
+> LDO_VIN1/LDO_VIN2 is real MT6360 pin supply from VSYS to LDO1/2/3/5
+> LDO_VIN3 is also real pin supply from BUCK2 to LDO6/7
+
+So shouldn't there be a documented LDO_VIN1/2 then?
+
+--2FkSFaIQeDFoAt0B
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl9EGZcACgkQJNaLcl1U
+h9C+yQf+L9lKWcQ3xqYmQlPlgMYNCT+yaAkHdHpJM6dVTHnNOqyv/z73C/e/NU6N
+JtvI9bR0aFytdFSRmSsfEhHmd0k2XzKAqqT66jzCLZTpT0BGtDxhQ+DLjaACr6Hm
+n3wwxVJQx0ZpQd5zUijzCfHbStmLmPf8qHfiedPGYsdNZx2T76kAG4p9kDh3/sz0
+tCW2DuMt2YGEbk8NGvCsZop7n7fCNQA6Ap1mdlJY7pa60ARNFxvLJHqYEDHZiLgB
+cjbeVNOwKcT8ujUGvm2cRKL92qYi5b7xDHRGKqNgM0kJ3QWvzBgGDxNGak5IicVo
+OGjqBFp7aLfwRU1KePiVK2qoXdKzxA==
+=0Aah
+-----END PGP SIGNATURE-----
+
+--2FkSFaIQeDFoAt0B--
+
+
+--===============1012980455244729755==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============1012980455244729755==--
+
