@@ -2,90 +2,79 @@ Return-Path: <SRS0=9GQg=CD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8905EC433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 01:55:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0CED0C433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 01:57:17 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 48D4720706
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 01:55:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CF8C8204EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 01:57:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uNpYnHEa";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Nc+qJFPb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 48D4720706
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hcCOMJ8e";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="vIAQSCJL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CF8C8204EC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=u6oXGqF5OMTPRs4EbaGsmYS0lb2Vyd7QaaidRJ1MnNQ=; b=uNpYnHEaHyQb8cXjlgGTlBSGh
-	aN6TZ49jeXN7YC+VLGwGFrcPWOVgTzQHhuZwXBYgIg5YR22f+FpDXyIpHjvKLUe4YaGzQtinU+V1J
-	8s5aGZmehFWV20GmFvPXWrYhvGj0ygHeKkF8uUQHlXuRBe+WY9j82dqR5G5J6yg+AoIsPS05YABSq
-	mcV5sF2wkFcYh4V5mNTCbz0ky/ZLjjTFm4x/ffizMU7xUftq6PuNxGDDAbMrMNMGK9xGvxC0Pz6wu
-	kK+E1V8vCrd2HtpYIE6hs4G1AADCROr3+kfDTKKQXOUePx+FFkXf9o1ZS17NGZ9wls1pPwT9GDF5s
-	WBM+9uq+A==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0JsdGq+YAe1cWMwlPz4jEVRe3+4najufTIgRq5XR5gQ=; b=hcCOMJ8egPzdt4AjxBdmx2b5Qq
+	A/uZAUs3+OkmTdVWmXjVCvge4nJODCK4LnMg00FY3WQWDz2g+ul3d0iabpODV77Rl3xS2LfWk1iNt
+	WQ8KXi8hdDu+y0S5+lXpOy1Tbep0QdzEy4KvMGpmvXEwLIV7xjFV+WnKuocrREUdW2RzGMiRKbArc
+	KUYXXznUgpUPrw+J0c2Bz8dGRqK7szWqmWPm1PoJSIjkMcxwmqZ+QkznJvbpXsCHfPOxdO8mj9VGv
+	dML/q2qhnNG0bMBoGE7J2DzDNsnVXF+WADGkQGGwlhVCFB9HccFMKG2oWBBAoT45CQxKvahltv3RZ
+	zGI8VyAg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kAOAm-0002c8-Lu; Tue, 25 Aug 2020 01:54:52 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kAOD0-0002oY-3Y; Tue, 25 Aug 2020 01:57:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAOAi-0002aD-Ic; Tue, 25 Aug 2020 01:54:51 +0000
-X-UUID: 19ab63c53af5411eb1cb0b1d931825c1-20200824
+ id 1kAOCv-0002mx-0p; Tue, 25 Aug 2020 01:57:06 +0000
+X-UUID: ee74d0703abd4266a2e8893ed6f9c379-20200824
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=KRs+vSlYwGYwpiFLXL5EtWaoxOEeTH5+ThF/MdrmqRY=; 
- b=Nc+qJFPbU1aDX+6tVFadNaPs4NQ9CK01nN4fJVImQ0Ftel0OUz0ve34rCvOFhwxBTWkikmxFm8cH/Nn7DoeXSEyoAJz0HrhHAYBKIQTyCfRLvv0howAs5g1AW3mLrVXtFNoDSr4xPQl3rhtdKTFSIiK3jMSL6KKvvtWV19mbQOs=;
-X-UUID: 19ab63c53af5411eb1cb0b1d931825c1-20200824
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <dongchun.zhu@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=dui2EisGgR0+t0THBhS3OAXFKeQaKCwjzNylFyfsynE=; 
+ b=vIAQSCJL2GMmOBhY1FXjNbDc0jvqU73eR4Jrjw+GvFGcspFaq8vu1mXNKn1Deij8FXbf3N4t0XoB3x1SwDmfR1M0v1tT22xDaTdnpafXrpuW5pWSHMD6IH9A/eAs5G7D9UKLkyk4PpHK6so5CMYy3sjFB79O7fbbX86D8qz+ehs=;
+X-UUID: ee74d0703abd4266a2e8893ed6f9c379-20200824
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <walter-zh.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 678305001; Mon, 24 Aug 2020 17:54:39 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 Aug 2020 18:54:37 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 25 Aug 2020 09:54:33 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 25 Aug 2020 09:54:33 +0800
-Message-ID: <1598320393.24928.10.camel@mhfsdcap03>
-Subject: Re: [V7, 1/2] media: dt-bindings: media: i2c: Document OV02A10
- bindings
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: Tomasz Figa <tfiga@chromium.org>, Sakari Ailus
- <sakari.ailus@linux.intel.com>
-Date: Tue, 25 Aug 2020 09:53:13 +0800
-In-Reply-To: <1595212256.17166.116.camel@mhfsdcap03>
-References: <20200505070451.GS9190@paasikivi.fi.intel.com>
- <1588688238.8804.150.camel@mhfsdcap03>
- <20200506112136.GV9190@paasikivi.fi.intel.com>
- <1588856325.8804.179.camel@mhfsdcap03>
- <CAAFQd5CXRD_j7Xkxb4=9kkd+pDy4W5pirAPSG8RsMVH6L-MU2w@mail.gmail.com>
- <20200507141147.GF9190@paasikivi.fi.intel.com>
- <CAAFQd5DgDk57MCc4vE9VmifZYjtO_SUFss+vc8W-28SFHbKDrA@mail.gmail.com>
- <1588920685.8804.230.camel@mhfsdcap03>
- <20200510223552.GA11272@paasikivi.fi.intel.com>
- <1589197265.8804.262.camel@mhfsdcap03>
- <20200715140110.GD16711@paasikivi.fi.intel.com>
- <CAAFQd5A9L73et30Fr_91sqfQGue7Qo05yCchU_S6bh5H4sBiMQ@mail.gmail.com>
- <1595212256.17166.116.camel@mhfsdcap03>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ with ESMTP id 105142900; Mon, 24 Aug 2020 17:56:59 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 24 Aug 2020 18:56:56 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 25 Aug 2020 09:56:54 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 25 Aug 2020 09:56:55 +0800
+From: Walter Wu <walter-zh.wu@mediatek.com>
+To: Marco Elver <elver@google.com>, Andrey Ryabinin <aryabinin@virtuozzo.com>, 
+ Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, John Stultz
+ <john.stultz@linaro.org>, Stephen Boyd <sboyd@kernel.org>, Andrew Morton
+ <akpm@linux-foundation.org>, Tejun Heo <tj@kernel.org>, Lai Jiangshan
+ <jiangshanlai@gmail.com>
+Subject: [PATCH v3 0/6] kasan: add workqueue and timer stack for generic KASAN
+Date: Tue, 25 Aug 2020 09:56:54 +0800
+Message-ID: <20200825015654.27781-1-walter-zh.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 336B04A51CECF995964F7A8EEDF5A999871FBFCBA977263E2275B3AF5D7BB85C2000:8
+X-TM-SNTS-SMTP: A71BEAAB700B14FB398E93913C82E2C0D2E251B57762600FE97A0A54DAEC618C2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200824_215448_822434_87228AB4 
-X-CRM114-Status: GOOD (  38.73  )
+X-CRM114-CacheID: sfid-20200824_215705_234135_6C82492B 
+X-CRM114-Status: GOOD (  11.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,314 +86,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Nicolas Boichat <drinkcat@chromium.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- linux-devicetree <devicetree@vger.kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>, Shengnan
- Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=A3=E7=94=B7=29?=
- <shengnan.wang@mediatek.com>, Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- dongchun.zhu@mediatek.com, Louis Kuo <louis.kuo@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
- matrix.zhu@aliyun.com, Mauro Carvalho Chehab <mchehab@kernel.org>,
- "list@263.net:IOMMU DRIVERS
- <iommu@lists.linux-foundation.org>, Joerg  Roedel <joro@8bytes.org>,
- " <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: Walter Wu <walter-zh.wu@mediatek.com>,
+ wsd_upstream <wsd_upstream@mediatek.com>, linux-kernel@vger.kernel.org,
+ kasan-dev@googlegroups.com, linux-mm@kvack.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sakari,
+Syzbot reports many UAF issues for workqueue or timer, see [1] and [2].
+In some of these access/allocation happened in process_one_work(),
+we see the free stack is useless in KASAN report, it doesn't help
+programmers to solve UAF on workqueue. The same may stand for times.
 
-Pardon, have you noticed my rely below?
-Please let us know of any questions or suggestions you have.
+This patchset improves KASAN reports by making them to have workqueue
+queueing stack and timer stack information. It is useful for programmers
+to solve use-after-free or double-free memory issue.
 
-On Mon, 2020-07-20 at 10:30 +0800, Dongchun Zhu wrote:
-> Hi Sakari, Tomasz,
-> 
-> Thanks for the review.
-> 
-> On Thu, 2020-07-16 at 16:57 +0200, Tomasz Figa wrote:
-> > On Wed, Jul 15, 2020 at 4:01 PM Sakari Ailus
-> > <sakari.ailus@linux.intel.com> wrote:
-> > >
-> > > hi Dongchun,
-> > >
-> > > On Mon, May 11, 2020 at 07:41:05PM +0800, Dongchun Zhu wrote:
-> > > > Hi Sakari,
-> > > >
-> > > > On Mon, 2020-05-11 at 01:35 +0300, Sakari Ailus wrote:
-> > > > > Hi Dongchun,
-> > > > >
-> > > > > On Fri, May 08, 2020 at 02:51:25PM +0800, Dongchun Zhu wrote:
-> > > > > > Hi Sakari, Tomasz,
-> > > > > >
-> > > > > > On Thu, 2020-05-07 at 16:25 +0200, Tomasz Figa wrote:
-> > > > > > > On Thu, May 7, 2020 at 4:12 PM Sakari Ailus
-> > > > > > > <sakari.ailus@linux.intel.com> wrote:
-> > > > > > > >
-> > > > > > > > Hi Tomasz, Dongchun,
-> > > > > > > >
-> > > > > > > > On Thu, May 07, 2020 at 03:50:40PM +0200, Tomasz Figa wrote:
-> > > > > > > > > Hi Sakari and Dongchun,
-> > > > > > > > >
-> > > > > > > > > On Thu, May 7, 2020 at 3:00 PM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
-> > > > > > > > > >
-> > > > > > > > > > Hi Sakari,
-> > > > > > > > > >
-> > > > > > > > > > Thanks for the review.
-> > > > > > > > > >
-> > > > > > > > > > On Wed, 2020-05-06 at 14:21 +0300, Sakari Ailus wrote:
-> > > > > > > > > > > Hi Dongchun,
-> > > > > > > > > > >
-> > > > > > > > > > > On Tue, May 05, 2020 at 10:17:18PM +0800, Dongchun Zhu wrote:
-> > > > > > > > > > > > Hi Sakari,
-> > > > > > > > > > > >
-> > > > > > > > > > > > Thanks for the review.
-> > > > > > > > > > > >
-> > > > > > > > > > > > On Tue, 2020-05-05 at 10:04 +0300, Sakari Ailus wrote:
-> > > > > > > > > > > > > Hi Dongchun,
-> > > > > > > > > > > > >
-> > > > > > > > > > > > > On Thu, Apr 30, 2020 at 04:09:23PM +0800, Dongchun Zhu wrote:
-> > > > > > > > > > > > > > Add DT bindings documentation for Omnivision OV02A10 image sensor.
-> > > > > > > > > > > > > >
-> > > > > > > > > > > > > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > > > > > > > > > > > > ---
-> > > > > > > > > > > > > >  .../bindings/media/i2c/ovti,ov02a10.yaml           | 148 +++++++++++++++++++++
-> > > > > > > > > > > > > >  MAINTAINERS                                        |   7 +
-> > > > > > > > > > > > > >  2 files changed, 155 insertions(+)
-> > > > > > > > > > > > > >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > > > > > > > > > > > >
-> > > > > > > > > > > > > > diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > > > > > > > > > > > > new file mode 100644
-> > > > > > > > > > > > > > index 0000000..2be4bd2
-> > > > > > > > > > > > > > --- /dev/null
-> > > > > > > > > > > > > > +++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > > > > > > > > > > > > @@ -0,0 +1,148 @@
-> > > > > > > > > > > > > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > > > > > > > > > > > > > +# Copyright (c) 2020 MediaTek Inc.
-> > > > > > > > > > > > > > +%YAML 1.2
-> > > > > > > > > > > > > > +---
-> > > > > > > > > > > > > > +$id: http://devicetree.org/schemas/media/i2c/ovti,ov02a10.yaml#
-> > > > > > > > > > > > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > > > > > > > > > > > > +
-> > > > > > > > > > > > > > +title: Omnivision OV02A10 CMOS Sensor Device Tree Bindings
-> > > > > > > > > > > > > > +
-> > > > > > > > > > > > > > +maintainers:
-> > > > > > > > > > > > > > +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > > > > > > > > > > > > +
-> > > > > > > > > > > > > > +description: |-
-> > > > > > > > > > > > > > +  The Omnivision OV02A10 is a low-cost, high performance, 1/5-inch, 2 megapixel
-> > > > > > > > > > > > > > +  image sensor, which is the latest production derived from Omnivision's CMOS
-> > > > > > > > > > > > > > +  image sensor technology. Ihis chip supports high frame rate speeds up to 30fps
-> > > > > > > > > > > > > > +  @ 1600x1200 (UXGA) resolution transferred over a 1-lane MIPI interface. The
-> > > > > > > > > > > > > > +  sensor output is available via CSI-2 serial data output.
-> > > > > > > > > > > > > > +
-> > > > > > > > > > > > > > +properties:
-> > > > > > > > > > > > > > +  compatible:
-> > > > > > > > > > > > > > +    const: ovti,ov02a10
-> > > > > > > > > > > > > > +
-> > > > > > > > > > > > > > +  reg:
-> > > > > > > > > > > > > > +    maxItems: 1
-> > > > > > > > > > > > > > +
-> > > > > > > > > > > > > > +  clocks:
-> > > > > > > > > > > > > > +    items:
-> > > > > > > > > > > > > > +      - description: top mux camtg clock
-> > > > > > > > > > > > > > +      - description: devider clock
-> > > > > > > > > > > > > > +
-> > > > > > > > > > > > > > +  clock-names:
-> > > > > > > > > > > > > > +    items:
-> > > > > > > > > > > > > > +      - const: eclk
-> > > > > > > > > > > > > > +      - const: freq_mux
-> > > > > > > > > > > > > > +
-> > > > > > > > > > > > > > +  clock-frequency:
-> > > > > > > > > > > > > > +    description:
-> > > > > > > > > > > > > > +      Frequency of the eclk clock in Hertz.
-> > > > > > > > > > > > > > +
-> > > > > > > > > > > > > > +  dovdd-supply:
-> > > > > > > > > > > > > > +    description:
-> > > > > > > > > > > > > > +      Definition of the regulator used as interface power supply.
-> > > > > > > > > > > > > > +
-> > > > > > > > > > > > > > +  avdd-supply:
-> > > > > > > > > > > > > > +    description:
-> > > > > > > > > > > > > > +      Definition of the regulator used as analog power supply.
-> > > > > > > > > > > > > > +
-> > > > > > > > > > > > > > +  dvdd-supply:
-> > > > > > > > > > > > > > +    description:
-> > > > > > > > > > > > > > +      Definition of the regulator used as digital power supply.
-> > > > > > > > > > > > > > +
-> > > > > > > > > > > > > > +  powerdown-gpios:
-> > > > > > > > > > > > > > +    description:
-> > > > > > > > > > > > > > +      The phandle and specifier for the GPIO that controls sensor powerdown.
-> > > > > > > > > > > > > > +
-> > > > > > > > > > > > > > +  reset-gpios:
-> > > > > > > > > > > > > > +    description:
-> > > > > > > > > > > > > > +      The phandle and specifier for the GPIO that controls sensor reset.
-> > > > > > > > > > > > > > +
-> > > > > > > > > > > > > > +  rotation:
-> > > > > > > > > > > > > > +    description:
-> > > > > > > > > > > > > > +      Definition of the sensor's placement, valid values are 0 and 180.
-> > > > > > > > > > > > > > +    allOf:
-> > > > > > > > > > > > > > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> > > > > > > > > > > > > > +      - enum:
-> > > > > > > > > > > > > > +          - 0    # Sensor Mounted Upright
-> > > > > > > > > > > > > > +          - 180  # Sensor Mounted Upside Down
-> > > > > > > > > > > > > > +
-> > > > > > > > > > > > > > +  ovti,mipi-tx-speed:
-> > > > > > > > > > > > > > +    description:
-> > > > > > > > > > > > > > +      Indication of MIPI transmission speed select.
-> > > > > > > > > > > > >
-> > > > > > > > > > > > > What exactly does this signify? And how do you come up with the number?
-> > > > > > > > > > > > >
-> > > > > > > > > > > >
-> > > > > > > > > > > > Apologies for not addressing this number clear.
-> > > > > > > > > > > >
-> > > > > > > > > > > > From the datasheet, P1:0xA1 register represents TX_SPEED_AREA_SEL with
-> > > > > > > > > > > > the default val: 0x03.
-> > > > > > > > > > > > The description of this RW register is as below:
-> > > > > > > > > > > > Bit[2:0]: MIPI transmission speed select.
-> > > > > > > > > > > >
-> > > > > > > > > > > > Thus the enum should be definited as [ 0, 1, 2, 3, 4, 5, 6, 7 ].
-> > > > > > > > > > > > This would be fixed in next release.
-> > > > > > > > > > > >
-> > > > > > > > > > > > In the meantime, as the default val of P1:0xA1 is 0x03, we hope to keep
-> > > > > > > > > > > > that value if there is no setting for this private property in DT.
-> > > > > > > > > > > > The caller in driver would be updated like this in next release.
-> > > > > > > > > > > > if (ov02a10->mipi_clock_tx_speed)
-> > > > > > > > > > > >     ret = i2c_smbus_write_byte_data(...,...);
-> > > > > > > > > > >
-> > > > > > > > > > > How did you pick the value in the example? And why do you believe it is
-> > > > > > > > > > > specific to a platform, and not e.g. a sensor mode?
-> > > > > > > > > > >
-> > > > > > > > > >
-> > > > > > > > > > We look into P1:0XA1, one register that defines MIPI transmission speed
-> > > > > > > > > > select.
-> > > > > > > > > > From the datasheet, we can get the possible values that could be set to
-> > > > > > > > > > P1:0xA1.
-> > > > > > > > > >
-> > > > > > > > > > Actually this register is an independent of sensor mode, it is just
-> > > > > > > > > > included in sensor mode's register setting table.
-> > > > > > > > > >
-> > > > > > > > > > In addition, this private DT Property is created to fix the MIPI test
-> > > > > > > > > > failure. The register values are adjusted and verified from vendor to
-> > > > > > > > > > make sensor signal meet MIPI specification.
-> > > > > > > > > >
-> > > > > > > > >
-> > > > > > > > > In theory the value could depend on the mode, because different link
-> > > > > > > > > rate could impose different requirements for the physical interface.
-> > > > > > > > > In practice, we haven't seen any hardware that would require different
-> > > > > > > > > values for different modes.
-> > > > > > > >
-> > > > > > > > The mode (possibly in conjunction with other information available to the
-> > > > > > > > driver via V4L2 fwnode interface) precisely defines the parameters of the
-> > > > > > > > CSI-2 bus --- apart from the possible exception of the bus timing related
-> > > > > > > > parameters but this is not supported by the name of the parameter.
-> > > > > > > >
-> > > > > > > > Therefore I don't see how this parameter, which supposedly is used to
-> > > > > > > > determine the CSI-2 transmissions speed, could be board specific and thus
-> > > > > > > > belong to DT.
-> > > > > > >
-> > > > > > > According to the very imprecise information I have access to, it is
-> > > > > > > not about the CSI-2 bus itself, but rather some internal parameter of
-> > > > > > > the sensor's CSI interface. Unfortunately there isn't much information
-> > > > > > > on what this value exactly controls...
-> > > > > > >
-> > > > > > > Best regards,
-> > > > > > > Tomasz
-> > > > > >
-> > > > > > Just got some feedback from OV vendor about this parameter.
-> > > > > >
-> > > > > > P1:0xA1 is the register to control D-PHY timing setting based on bclk.
-> > > > > > It is to adjust the MIPI clock voltage to improve the clock drive
-> > > > > > capability, and has no affect on the transmission speed of MIPI data.
-> > > > > >
-> > > > > > From vendor's perspective, P1:0xA1 depends upon the length of FPC of
-> > > > > > camera module that used on the board. Considering the physical
-> > > > > > connections for MIPI signals to user-facing camera are very different
-> > > > > > between our 2 projects, it can be very difficult to find universal SI
-> > > > > > parameters for both projects.
-> > > > >
-> > > > > Are you using different values for this parameter on these two projects?
-> > > > >
-> > > >
-> > > > Yes. We're actually assigning two different values to this property.
-> > > > One is 0x03, the other is 0x04.
-> > > >
-> > > > > >
-> > > > > > Thus here we create one new DT property to separate these tuning in
-> > > > > > driver, to be more like project-specific.
-> > > > > >
-> > > > > > More details about the register is as below.
-> > > > > > P1:0xA1 val: 0x03 default
-> > > > > > Case: 0  20MHz-30MHz
-> > > > > >       1  30MHz-50MHz
-> > > > > >       2  50MHz-75MHz
-> > > > > >       3  75MHz-100MHz   (default, old DB setting use)
-> > > > > >       4  100MHz-130MHz  (suggested, new DB setting use)
-> > > > > >       5  Manual
-> > > > > > So the value in the example should be [ 0, 1, 2, 3, 4, 5 ].
-> > > > > >
-> > > > > > Additionally, P1:0xA1 is recommended to be set as 0x04 in the newest DB
-> > > > > > setting. We would adjust the register in next release.
-> > > > >
-> > > > > Thank you for digging into the issue.
-> > > > >
-> > > > > Based on the above description, the parameter would depend on both the link
-> > > > > frequency and possibly also on wire length. I guess there's no harm from
-> > > > > using too strong drive, apart from perhaps power consumption? As in
-> > > > > principle this could be different for different sensor modes. Albeit I
-> > > > > don't remember seeing a sensor where such a parameter would have been
-> > > > > needed to be modified.
-> > > > >
-> > > >
-> > > > This may be related to something about sensor fine tuning.
-> > > > As OV vendor pointed out, the sensor chip provides such one property
-> > > > that user could adjust based on their specific project.
-> > > > Also, case 4 (0x04) setting is confirmed to have a little more power
-> > > > consumption than case 3 (0x03).
-> > >
-> > > Apologies for bringing back an old topic --- the driver supports just a
-> > > single mode, using a specific data rate.
-> > >
-> > > If another mode is added later on, will it continue to use the same value
-> > > for this? Based on the documentation, it seems that this is primarily
-> > > defined by the frequency of the bus, not by board design. Therefore putting
-> > > this to DT (and thus ignoring the frequency) appears wrong.
-> > 
-> > I don't think this is exactly implied by the frequency of the bus. The
-> > values there are recommended for given frequency ranges, but there are
-> > real cases where depending on the board different values are needed.
-> > 
-> 
-> Sorry for coming late.
-> For the reg P1: 0xA1, I re-confirmed the setting of the param with OVT.
-> The replies are as follow.
-> 1. P1:0xA1 is one register to control D-PHY timing parameters based on
-> bclk. Its setting shall match the MIPI CSI-2 timing clock.
-> 2. For one another scenario, if MIPI pixel rate(link frequency) differs
-> between scenarios, the setting of this parameter may also be different.
-> 3. In one special case, we may also need to adjust the value, even for
-> the same scenario, such as the failure of a certain MIPI test.
-> 
-> From my perspective, temporally we don't plan to have a different
-> scenario for OV02A10, as the current resolution(1600x1200) is near to
-> the lower limit of most smart mobile devices.
-> In the meantime, considering the difference of the physical connections
-> for MIPI signals to user-facing camera between our 2 projects, it seems
-> to be very difficult to find universal SI parameters for both projects.
-> So for this case, I wonder whether we could reserve this private
-> property to maintain such flexibility.
-> 
-> > Best regards,
-> > Tomasz
-> 
-> 
+Generic KASAN also records the last two workqueue and timer stacks and
+prints them in KASAN report. It is only suitable for generic KASAN.
 
+[1]https://groups.google.com/g/syzkaller-bugs/search?q=%22use-after-free%22+process_one_work
+[2]https://groups.google.com/g/syzkaller-bugs/search?q=%22use-after-free%22%20expire_timers
+[3]https://bugzilla.kernel.org/show_bug.cgi?id=198437
+
+Walter Wu (6):
+timer: kasan: record timer stack
+workqueue: kasan: record workqueue stack
+kasan: print timer and workqueue stack
+lib/test_kasan.c: add timer test case
+lib/test_kasan.c: add workqueue test case
+kasan: update documentation for generic kasan
+
+---
+
+Changes since v2:
+- modify kasan document to be more readable.
+  Thanks for Marco suggestion.
+
+Changes since v1:
+- Thanks for Marco and Thomas suggestion.
+- Remove unnecessary code and fix commit log
+- reuse kasan_record_aux_stack() and aux_stack
+  to record timer and workqueue stack.
+- change the aux stack title for common name.
+
+---
+
+Documentation/dev-tools/kasan.rst |  4 ++--
+kernel/time/timer.c               |  3 +++
+kernel/workqueue.c                |  3 +++
+lib/test_kasan.c                  | 54 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+mm/kasan/report.c                 |  4 ++--
+5 files changed, 64 insertions(+), 4 deletions(-)
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
