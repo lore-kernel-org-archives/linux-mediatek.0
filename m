@@ -2,22 +2,22 @@ Return-Path: <SRS0=9GQg=CD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0CED0C433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 01:57:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D1F9DC433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 01:58:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CF8C8204EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 01:57:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A14E7204EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 01:58:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hcCOMJ8e";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="vIAQSCJL"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CF8C8204EC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="seXrHW1o";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="LYPsrwgh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A14E7204EC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0JsdGq+YAe1cWMwlPz4jEVRe3+4najufTIgRq5XR5gQ=; b=hcCOMJ8egPzdt4AjxBdmx2b5Qq
-	A/uZAUs3+OkmTdVWmXjVCvge4nJODCK4LnMg00FY3WQWDz2g+ul3d0iabpODV77Rl3xS2LfWk1iNt
-	WQ8KXi8hdDu+y0S5+lXpOy1Tbep0QdzEy4KvMGpmvXEwLIV7xjFV+WnKuocrREUdW2RzGMiRKbArc
-	KUYXXznUgpUPrw+J0c2Bz8dGRqK7szWqmWPm1PoJSIjkMcxwmqZ+QkznJvbpXsCHfPOxdO8mj9VGv
-	dML/q2qhnNG0bMBoGE7J2DzDNsnVXF+WADGkQGGwlhVCFB9HccFMKG2oWBBAoT45CQxKvahltv3RZ
-	zGI8VyAg==;
+	bh=lOxrOe0PgamL7ljWrgKeA5gBw149yNYDiT93Y6CAVq0=; b=seXrHW1omCrF8XGJOQYX0J6kgv
+	QprWJbUvVYbuRubGnmuRApD0ZP7CrHI0c0jnjiFASi82zJyceCyuQR3zgK/DuD1RBqbx77BPqLhED
+	x/dOeyYsyboGu5ZrPz2zt6UkePvAFNkhjh9Tuccr466BKgNrVv/Cay3DhWxkCvmKDX/Pw+/rimGt8
+	7KYofR63z9poPQxxTet2NvObL1UyvK67Rqpsidojz7cD7TfuWpiSss+24qAg+4kovNv/ESx6IcIWM
+	wWnmKE/jSalatKRLbrUsWCjcv4KWII8KzrZNYUB+R6ZyGev7QQHBACqk+NjhU1JWJLy5JHIo51n1o
+	WltJomYA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kAOD0-0002oY-3Y; Tue, 25 Aug 2020 01:57:10 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kAODv-0002zx-93; Tue, 25 Aug 2020 01:58:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAOCv-0002mx-0p; Tue, 25 Aug 2020 01:57:06 +0000
-X-UUID: ee74d0703abd4266a2e8893ed6f9c379-20200824
+ id 1kAODo-0002xY-Rg; Tue, 25 Aug 2020 01:58:02 +0000
+X-UUID: 8d92ac44ebec4b46aa9a448454027548-20200824
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=dui2EisGgR0+t0THBhS3OAXFKeQaKCwjzNylFyfsynE=; 
- b=vIAQSCJL2GMmOBhY1FXjNbDc0jvqU73eR4Jrjw+GvFGcspFaq8vu1mXNKn1Deij8FXbf3N4t0XoB3x1SwDmfR1M0v1tT22xDaTdnpafXrpuW5pWSHMD6IH9A/eAs5G7D9UKLkyk4PpHK6so5CMYy3sjFB79O7fbbX86D8qz+ehs=;
-X-UUID: ee74d0703abd4266a2e8893ed6f9c379-20200824
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=r0Oq0tBfZ8jFMLMVK7p67PPtKlTRIAQp8x2ll2ZCeYU=; 
+ b=LYPsrwghAovTKnj/ZetTzL4lji/Z19ESHWJgRI7exMSlno0PdUfhIJTrpb3xeo7f0sL4ITKIPsZDpxzNK6afFU/LMDFxJE6tzzS9U2GX/1vYIgwU+gbtDe2gt2+nuCDZkayiVPyqMnMWL8Lt8GqLlx/Xv5fkiceCsxiFeQFnyNU=;
+X-UUID: 8d92ac44ebec4b46aa9a448454027548-20200824
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <walter-zh.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 105142900; Mon, 24 Aug 2020 17:56:59 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ with ESMTP id 1910488385; Mon, 24 Aug 2020 17:57:57 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 Aug 2020 18:56:56 -0700
+ 15.0.1497.2; Mon, 24 Aug 2020 18:57:54 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 Aug 2020 09:56:54 +0800
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 25 Aug 2020 09:57:52 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 25 Aug 2020 09:56:55 +0800
+ Frontend Transport; Tue, 25 Aug 2020 09:57:53 +0800
 From: Walter Wu <walter-zh.wu@mediatek.com>
-To: Marco Elver <elver@google.com>, Andrey Ryabinin <aryabinin@virtuozzo.com>, 
- Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, John Stultz
- <john.stultz@linaro.org>, Stephen Boyd <sboyd@kernel.org>, Andrew Morton
- <akpm@linux-foundation.org>, Tejun Heo <tj@kernel.org>, Lai Jiangshan
- <jiangshanlai@gmail.com>
-Subject: [PATCH v3 0/6] kasan: add workqueue and timer stack for generic KASAN
-Date: Tue, 25 Aug 2020 09:56:54 +0800
-Message-ID: <20200825015654.27781-1-walter-zh.wu@mediatek.com>
+To: Marco Elver <elver@google.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko
+ <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, John Stultz <john.stultz@linaro.org>, Stephen Boyd
+ <sboyd@kernel.org>, Andrew Morton <akpm@linux-foundation.org>
+Subject: [PATCH v3 1/6] timer: kasan: record timer stack
+Date: Tue, 25 Aug 2020 09:57:52 +0800
+Message-ID: <20200825015752.27841-1-walter-zh.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: A71BEAAB700B14FB398E93913C82E2C0D2E251B57762600FE97A0A54DAEC618C2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200824_215705_234135_6C82492B 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20200824_215801_040302_01C935B7 
+X-CRM114-Status: GOOD (  13.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,51 +93,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Syzbot reports many UAF issues for workqueue or timer, see [1] and [2].
-In some of these access/allocation happened in process_one_work(),
-we see the free stack is useless in KASAN report, it doesn't help
-programmers to solve UAF on workqueue. The same may stand for times.
+When analyze use-after-free or double-free issue, recording the timer
+stacks is helpful to to preserve usage history which potentially gives
+a hint about the affected code.
 
-This patchset improves KASAN reports by making them to have workqueue
-queueing stack and timer stack information. It is useful for programmers
-to solve use-after-free or double-free memory issue.
+Record the most recent two timer init calls in KASAN which are printed
+on failure in the KASAN report.
 
-Generic KASAN also records the last two workqueue and timer stacks and
-prints them in KASAN report. It is only suitable for generic KASAN.
+For timers it has turned out to be useful to record the stack trace
+of the timer init call. Because if the UAF root cause is in timer init,
+then user can see KASAN report to get where it is registered and find
+out the root cause. It don't need to enable DEBUG_OBJECTS_TIMERS,
+but they have a chance to find out the root cause.
 
-[1]https://groups.google.com/g/syzkaller-bugs/search?q=%22use-after-free%22+process_one_work
-[2]https://groups.google.com/g/syzkaller-bugs/search?q=%22use-after-free%22%20expire_timers
-[3]https://bugzilla.kernel.org/show_bug.cgi?id=198437
-
-Walter Wu (6):
-timer: kasan: record timer stack
-workqueue: kasan: record workqueue stack
-kasan: print timer and workqueue stack
-lib/test_kasan.c: add timer test case
-lib/test_kasan.c: add workqueue test case
-kasan: update documentation for generic kasan
-
+Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+Suggested-by: Marco Elver <elver@google.com>
+Suggested-by: Thomas Gleixner <tglx@linutronix.de>
+Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
+Cc: Dmitry Vyukov <dvyukov@google.com>
+Cc: Alexander Potapenko <glider@google.com>
+Cc: John Stultz <john.stultz@linaro.org>
+Cc: Thomas Gleixner <tglx@linutronix.de>
+Cc: Stephen Boyd <sboyd@kernel.org>
 ---
 
-Changes since v2:
-- modify kasan document to be more readable.
-  Thanks for Marco suggestion.
-
-Changes since v1:
+v2:
 - Thanks for Marco and Thomas suggestion.
 - Remove unnecessary code and fix commit log
 - reuse kasan_record_aux_stack() and aux_stack
   to record timer and workqueue stack.
-- change the aux stack title for common name.
 
 ---
+ kernel/time/timer.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Documentation/dev-tools/kasan.rst |  4 ++--
-kernel/time/timer.c               |  3 +++
-kernel/workqueue.c                |  3 +++
-lib/test_kasan.c                  | 54 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
-mm/kasan/report.c                 |  4 ++--
-5 files changed, 64 insertions(+), 4 deletions(-)
+diff --git a/kernel/time/timer.c b/kernel/time/timer.c
+index a16764b0116e..1ed8f8aca7f5 100644
+--- a/kernel/time/timer.c
++++ b/kernel/time/timer.c
+@@ -796,6 +796,9 @@ static void do_init_timer(struct timer_list *timer,
+ 	timer->function = func;
+ 	timer->flags = flags | raw_smp_processor_id();
+ 	lockdep_init_map(&timer->lockdep_map, name, key, 0);
++
++	/* record the timer stack in order to print it in KASAN report */
++	kasan_record_aux_stack(timer);
+ }
+ 
+ /**
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
