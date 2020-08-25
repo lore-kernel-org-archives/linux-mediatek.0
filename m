@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 54970C433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 01:59:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B33BAC433E1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 02:00:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 230FB204EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 01:59:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 81F46204EC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 02:00:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tYUfpo+R";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="CkY8+fD9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 230FB204EC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BImHE4zB";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="AEwEMb9K"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 81F46204EC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,51 +26,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=PE9XR53h6nCuG7GUBrh0ZckS9cjUHb7fnm48KohHcEM=; b=tYUfpo+RB4I4rMGGl5dVq7HMko
-	qK8bG/lxvN07Ms77OASVFac7WePHdLaAmId9aJOOwMyGGdhCer2NmROWP/x7yHTXVeH49XEfFubkE
-	BFSig0LtGNvV1orAYbCz+oIOc+x/cLNGlW1WM023SW5kLUiTLTek5oLx2m2i2gEOzrER6XTG+GVXa
-	gNqS2etP83DEoXPgFZHz4TokuM39ixP5YIEdjWfvwJsZWsnE1RV8T6iCflKBJ1wnN6TH35TwYPQlA
-	zxNDzinOPJAevUIgjmHxSJjk2aTr12rLUTHU2YFUEGJ9MhLdfvIP8q3Wp0VNjxIDPYBZu/i151zVu
-	kigldXgA==;
+	bh=FsPSUAPtQCcDaazrZWjfIktr1OTxf3B9a9U3ZbtF5bk=; b=BImHE4zBkQkHv7yDwkpATUAmFC
+	DOSRo0eEiz/H7TSFGh8DSvDoHCqdF2wutMWNQZB0qDb/ipzRZBqfT/4RhEVEXwT7s6amImo+tpUkJ
+	k8llxVtBeq2XrpPRm/4OSUgavms7IFObVZUzoh+PuVrI/s0hzdTSTNd4PbywLXo8JEDqRGqUOhPne
+	Uvpddmgzzl+J+z5MAnlnan0S6RGLl0uvWJi6iJnoM6K6j1yE54wqbgpD7d2Xx6CTt3cYLLqMaRn1M
+	zLVepJ+qU6XaBzU6/SrHjD5s0RkbUJ1Epv0Mz89ZR4lCZNmFb+fww0jYbpkLYcC7AVJqd/GRT0LK+
+	DXwAVugw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kAOF8-0003Hm-4k; Tue, 25 Aug 2020 01:59:22 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kAOFh-0003T6-5D; Tue, 25 Aug 2020 01:59:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAOF3-0003G8-O9; Tue, 25 Aug 2020 01:59:18 +0000
-X-UUID: 8cd626b3af0049d1b1f31b15ec3b9b34-20200824
+ id 1kAOFa-0003Po-5t; Tue, 25 Aug 2020 01:59:51 +0000
+X-UUID: 4ee25e408e9e46bea8350b91524f12c1-20200824
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=HDzXMXMz+Dzcg9DxfMTu2qwgwLYa3ujPve0aUqFM/KA=; 
- b=CkY8+fD91Y9Ppm4YktSKuklZvE9EhtNf0Jh+t/uJj4TSZUSbDZteRMrgYyy+ErGHI6Xh+Q7rpiF+caZO4Jua+9w4sDvDoFGfj6j2dP/iHHO+yZkIoTLkdQ8lhaHNFA3scyvTAULE32u8VT4kTR6WHiZGkAyCdOowtNAZ9kIUCnU=;
-X-UUID: 8cd626b3af0049d1b1f31b15ec3b9b34-20200824
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ bh=epF31PMWeocflqrG14ZTfXrn/tbNID2roIzjg+E6Ras=; 
+ b=AEwEMb9K8jHXQhtm1jmHcpHTtD9AbzKGC1usSQ3WtypOZF91E8I/dhllIU1p5SfTEpIkY/X6Ampw+WyFNU6/Q4iuQvaQJnYbFDxI+pGJ+gozbRiOVp8MQQbmKgXlinFRi2Pnd/72tdJMvCgnKX6pmiDiWHob/9a66pE/o+K3ISk=;
+X-UUID: 4ee25e408e9e46bea8350b91524f12c1-20200824
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <walter-zh.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 834529245; Mon, 24 Aug 2020 17:59:13 -0800
+ with ESMTP id 605914030; Mon, 24 Aug 2020 17:59:47 -0800
 Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 Aug 2020 18:59:10 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 24 Aug 2020 18:59:44 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 Aug 2020 09:59:03 +0800
+ 15.0.1497.2; Tue, 25 Aug 2020 09:59:43 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 25 Aug 2020 09:59:04 +0800
+ Frontend Transport; Tue, 25 Aug 2020 09:59:44 +0800
 From: Walter Wu <walter-zh.wu@mediatek.com>
-To: Marco Elver <elver@google.com>, Andrey Ryabinin <aryabinin@virtuozzo.com>, 
- Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v3 3/6] kasan: print timer and workqueue stack
-Date: Tue, 25 Aug 2020 09:59:02 +0800
-Message-ID: <20200825015902.27951-1-walter-zh.wu@mediatek.com>
+To: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko
+ <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>
+Subject: [PATCH v3 4/6] kasan: add tests for timer stack recording
+Date: Tue, 25 Aug 2020 09:59:42 +0800
+Message-ID: <20200825015942.28005-1-walter-zh.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200824_215917_950259_4CEC8DB9 
-X-CRM114-Status: GOOD (  12.82  )
+X-CRM114-CacheID: sfid-20200824_215950_435145_3D40D455 
+X-CRM114-Status: GOOD (  12.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,7 +83,8 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: Walter Wu <walter-zh.wu@mediatek.com>,
- wsd_upstream <wsd_upstream@mediatek.com>, linux-kernel@vger.kernel.org,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ Andrey Konovalov <andreyknvl@google.com>, linux-kernel@vger.kernel.org,
  kasan-dev@googlegroups.com, linux-mm@kvack.org,
  linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
@@ -91,46 +92,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The aux_stack[2] is reused to record the call_rcu() call stack,
-timer init call stack, and enqueuing work call stacks. So that
-we need to change the auxiliary stack title for common title,
-print them in KASAN report.
+Adds a test to verify timer stack recording and print it
+in KASAN report.
+
+The KASAN report was as follows(cleaned up slightly):
+
+ BUG: KASAN: use-after-free in kasan_timer_uaf
+ 
+ Freed by task 0:
+  kasan_save_stack+0x24/0x50
+  kasan_set_track+0x24/0x38
+  kasan_set_free_info+0x20/0x40
+  __kasan_slab_free+0x10c/0x170
+  kasan_slab_free+0x10/0x18
+  kfree+0x98/0x270
+  kasan_timer_function+0x1c/0x28
+ 
+ Last potentially related work creation:
+  kasan_save_stack+0x24/0x50
+  kasan_record_tmr_stack+0xa8/0xb8
+  init_timer_key+0xf0/0x248
+  kasan_timer_uaf+0x5c/0xd8
 
 Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-Suggested-by: Marco Elver <elver@google.com>
 Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
 Cc: Dmitry Vyukov <dvyukov@google.com>
 Cc: Alexander Potapenko <glider@google.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Andrey Konovalov <andreyknvl@google.com>
 ---
+ lib/test_kasan.c | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-v2:
-- Thanks for Marco suggestion.
-- We modify aux stack title name in KASAN report
-  in order to print call_rcu()/timer/workqueue stack.
-
----
- mm/kasan/report.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/mm/kasan/report.c b/mm/kasan/report.c
-index 4f49fa6cd1aa..886809d0a8dd 100644
---- a/mm/kasan/report.c
-+++ b/mm/kasan/report.c
-@@ -183,12 +183,12 @@ static void describe_object(struct kmem_cache *cache, void *object,
+diff --git a/lib/test_kasan.c b/lib/test_kasan.c
+index 6e5fb05d42d8..2bd61674c7a3 100644
+--- a/lib/test_kasan.c
++++ b/lib/test_kasan.c
+@@ -821,6 +821,30 @@ static noinline void __init kasan_rcu_uaf(void)
+ 	call_rcu(&global_ptr->rcu, kasan_rcu_reclaim);
+ }
  
- #ifdef CONFIG_KASAN_GENERIC
- 		if (alloc_info->aux_stack[0]) {
--			pr_err("Last call_rcu():\n");
-+			pr_err("Last potentially related work creation:\n");
- 			print_stack(alloc_info->aux_stack[0]);
- 			pr_err("\n");
- 		}
- 		if (alloc_info->aux_stack[1]) {
--			pr_err("Second to last call_rcu():\n");
-+			pr_err("Second to last potentially related work creation:\n");
- 			print_stack(alloc_info->aux_stack[1]);
- 			pr_err("\n");
- 		}
++static noinline void __init kasan_timer_function(struct timer_list *timer)
++{
++	del_timer(timer);
++	kfree(timer);
++}
++
++static noinline void __init kasan_timer_uaf(void)
++{
++	struct timer_list *timer;
++
++	timer = kmalloc(sizeof(struct timer_list), GFP_KERNEL);
++	if (!timer) {
++		pr_err("Allocation failed\n");
++		return;
++	}
++
++	timer_setup(timer, kasan_timer_function, 0);
++	add_timer(timer);
++	msleep(100);
++
++	pr_info("use-after-free on timer\n");
++	((volatile struct timer_list *)timer)->expires;
++}
++
+ static int __init kmalloc_tests_init(void)
+ {
+ 	/*
+@@ -869,6 +893,7 @@ static int __init kmalloc_tests_init(void)
+ 	kmalloc_double_kzfree();
+ 	vmalloc_oob();
+ 	kasan_rcu_uaf();
++	kasan_timer_uaf();
+ 
+ 	kasan_restore_multi_shot(multishot);
+ 
 -- 
 2.18.0
 _______________________________________________
