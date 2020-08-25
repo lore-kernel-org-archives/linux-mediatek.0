@@ -2,78 +2,82 @@ Return-Path: <SRS0=9GQg=CD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 04E60C433E3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 05:50:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 15347C433E1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 08:26:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CAA832071E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 05:50:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DB3BD2067C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 08:26:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3f6uRm4s";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="f4MMUG2H"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CAA832071E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PfPaxTFY";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="mE7Ydj/t"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DB3BD2067C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=2L1YiHnrURHMLkP19bzBoqidH5ylKaylmaRic1COZFU=; b=3f6uRm4s2FPlfYbriu1SEARy/
-	MS0vsJrKyeIuSUzXj0ak+ZtVE/5RRi6PgGD9eSssz80syBkW8DpefjrENbwiswA0VuEd8diZXHNaA
-	5csh+canU+hY2oaRHR2SgMCM7yUR/EJKEPP3obod5DgYBl+INdwz51YWlUKCqpcajEp0x0flj9nfS
-	UMixIZ0WqnKGiJpx28fj3NCl7vPnsDyvdtkYuoDGJQMuqD/+q5QKd7yDYWtr8eNAfQBQ4nR4F82SX
-	xFPCKYI7USu71ZH4PYUq0urbOgyrKlFQwgz3FjMyT9iPzGj8NsP4wWDGNlRI1fiYXqlLvJ/0PSawQ
-	ddX0gASVQ==;
+	 bh=+9XMjiWu5ObetewhG5AMDI/XoGxKAKAKcxD1YZ4j4MY=; b=PfPaxTFYw0/QiS7nf7jkXN/gG
+	0c79o0ZxqQ0XnyPRzDEa2LrX6hlMrop39zh6Du8mOFqfdoSGFqPpYf1cN0MfGewWEfraS8vGTELPq
+	lGp2Yc/suXzFrZSVs4QzRdRhSWVG0Z4CudGrDa/FNvYR0Tn6ZZx+t0QctIF5AszKMoQGjmQo8brKy
+	ZtfVzSd7KofXn52jvfTRycnQLqkQRnV69C6BOhe+hPFqspllQQUIbGHi4UNrg+/FZvd0qTGAi6aDZ
+	r14waQsbPi8BWqZC5yHNNk61FJPiZ1+xcIHLOWMs17dfcHKaZxt4+9WC3cH9PZISpzNgWZoOlavA7
+	ujSBJiEmQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kARqL-0008Lq-Rq; Tue, 25 Aug 2020 05:50:02 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kAUI4-0005Op-QE; Tue, 25 Aug 2020 08:26:48 +0000
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kARqK-0008LF-LP
- for linux-mediatek@lists.infradead.org; Tue, 25 Aug 2020 05:50:01 +0000
-X-UUID: 29030e156bb9496fa244588575b9da54-20200824
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=x24GTs4og816xQigVioi/+Ob9pQhy96LyKGjS7OYRMc=; 
- b=f4MMUG2HZvbU+nLyemBn5sbLJQqxN3UgFBWLB62Rkh/Ilnok8QZBv+JcN43G+tz8dvNRbKwGxlOiAd7UcxRjEYVUjjwcSUpqw9OF7Gs6vNtdUFjCT8iwgU3nEeHHht9otWTwHW+Nys4zEKQ7GLOap/FmaMqJGT7JonCNkeN+Dxg=;
-X-UUID: 29030e156bb9496fa244588575b9da54-20200824
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <tiffany.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2077685296; Mon, 24 Aug 2020 21:49:56 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 Aug 2020 22:49:53 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 Aug 2020 13:49:53 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 25 Aug 2020 13:49:54 +0800
-Message-ID: <1598334593.1969.3.camel@mtksdaap41>
-Subject: Re: [PATCH v4 17/17] media: mtk-vcodec: venc: fix invalid time per
- frame in S_PARM
-From: Tiffany Lin <tiffany.lin@mediatek.com>
-To: Alexandre Courbot <acourbot@chromium.org>
-Date: Tue, 25 Aug 2020 13:49:53 +0800
-In-Reply-To: <20200821103608.2310097-18-acourbot@chromium.org>
-References: <20200821103608.2310097-1-acourbot@chromium.org>
- <20200821103608.2310097-18-acourbot@chromium.org>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kAUHz-0005Mr-Nf
+ for linux-mediatek@lists.infradead.org; Tue, 25 Aug 2020 08:26:44 +0000
+Received: by mail-oi1-x244.google.com with SMTP id z22so10895919oid.1
+ for <linux-mediatek@lists.infradead.org>; Tue, 25 Aug 2020 01:26:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=FC5Hg6COXCLaWmmWNTz40PS96oTnHUqlyjZL5YEDjmI=;
+ b=mE7Ydj/tIvyII6lomwmN1NR0MhMKAfEoekSi7y1J/k3ZNS2dnD6AhDjL5WPSSwIQhm
+ 2Q0JrJSi23rD3J5faSQlxhqF+ng5SP2GoY1jmrM9ck4FQNHYVtYw5Xf9DtY3k+SyszJ0
+ uuXE7w7FrYLEXnDuOEPQx1wFVWbq40auNwZI2K+5sQsOdeUllOFcORseNaiXyghzY8Fz
+ zTncDRbkjQoLPYoEXGJhL8nVkDUwA2XLDskzTyh7KR1ULBHzjN+sdbf3m8I9nksHQLrj
+ PL+6W5Xb9f2gylfIg2mMFkN2yhST1Xw0vv/Cenk0s0RPc9aixJEPovw86FBtXCDVSMDv
+ o98A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=FC5Hg6COXCLaWmmWNTz40PS96oTnHUqlyjZL5YEDjmI=;
+ b=cyLUqMHF7AeSwl0SZxJD+lE/8ZkhhLegLDKHnyp4lWdsezFGylCaxLA45dMM+wqqb1
+ AZC5QXBFNVUWUvAKEIPp50wzsfije7AXNTeBRt8W5JD2GQS9BF6w39NULYOEq4K6nFi6
+ eEseQeK/plGhSIH8VHaL2UdQQ6FS2ylH6DRTFbjVqsWhPgP4Ja6uIT7xUsuQWeUS+7H6
+ 63GLW0Os+7OV6fOU5gUJK69eJD1UNJNZV3Y6RMZOanzPX3bxmy/1i91ScycMWZ7fLSYy
+ ilDe1s2ce+cMtuPHBHGFL4WFTXHToN5MgXF8gp82a41lhVvM2i8xEv4ztlcsXGpKRt2K
+ F6Jg==
+X-Gm-Message-State: AOAM533aPhz9JGZglHjiCMruDNPz4Jf2/ksNR+PCWdl/3LTuW2UnIRBI
+ 8mhT5G/7eYXDxuPZ5behvT2Pa+Q3bdVqoO0R3NJGTA==
+X-Google-Smtp-Source: ABdhPJxD71P1F4ZzbI6iFZEZrr1MZD1sm9wMnlc4GSnJlk+0Zk7Erabn/fwXngbccV76Y6VS7e44EThTikvb+R3DQfs=
+X-Received: by 2002:aca:aa8c:: with SMTP id t134mr407296oie.121.1598344001584; 
+ Tue, 25 Aug 2020 01:26:41 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20200825015654.27781-1-walter-zh.wu@mediatek.com>
+In-Reply-To: <20200825015654.27781-1-walter-zh.wu@mediatek.com>
+From: Marco Elver <elver@google.com>
+Date: Tue, 25 Aug 2020 10:26:30 +0200
+Message-ID: <CANpmjNOvj+=v7VDVDXpsUNZ9o0+KoJVJs0MjLhwr0XpYcYQZ5g@mail.gmail.com>
+Subject: Re: [PATCH v3 0/6] kasan: add workqueue and timer stack for generic
+ KASAN
+To: Walter Wu <walter-zh.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200825_015000_886882_45BA799C 
-X-CRM114-Status: GOOD (  17.30  )
+X-CRM114-CacheID: sfid-20200825_042643_911449_A8379B2C 
+X-CRM114-Status: GOOD (  19.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,56 +89,78 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Maoguang
- Meng <maoguang.meng@mediatek.com>, devicetree@vger.kernel.org,
- Yunfei Dong <yunfei.dong@mediatek.com>, linux-kernel@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-media@vger.kernel.org
+Cc: John Stultz <john.stultz@linaro.org>,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ Linux Memory Management List <linux-mm@kvack.org>,
+ Stephen Boyd <sboyd@kernel.org>, Lai Jiangshan <jiangshanlai@gmail.com>,
+ LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>,
+ Tejun Heo <tj@kernel.org>, linux-mediatek@lists.infradead.org,
+ Alexander Potapenko <glider@google.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Andrey Ryabinin <aryabinin@virtuozzo.com>,
+ Andrew Morton <akpm@linux-foundation.org>, Dmitry Vyukov <dvyukov@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-08-21 at 19:36 +0900, Alexandre Courbot wrote:
-> v4l2-compliance expects the driver to adjust the time per frame if it is
-> invalid (numerator or denominator set to 0). Adjust it to the default
-> value in these cases.
-> 
+On Tue, 25 Aug 2020 at 03:57, Walter Wu <walter-zh.wu@mediatek.com> wrote:
+>
+> Syzbot reports many UAF issues for workqueue or timer, see [1] and [2].
+> In some of these access/allocation happened in process_one_work(),
+> we see the free stack is useless in KASAN report, it doesn't help
+> programmers to solve UAF on workqueue. The same may stand for times.
+>
+> This patchset improves KASAN reports by making them to have workqueue
+> queueing stack and timer stack information. It is useful for programmers
+> to solve use-after-free or double-free memory issue.
+>
+> Generic KASAN also records the last two workqueue and timer stacks and
+> prints them in KASAN report. It is only suitable for generic KASAN.
+>
+> [1]https://groups.google.com/g/syzkaller-bugs/search?q=%22use-after-free%22+process_one_work
+> [2]https://groups.google.com/g/syzkaller-bugs/search?q=%22use-after-free%22%20expire_timers
+> [3]https://bugzilla.kernel.org/show_bug.cgi?id=198437
+>
+> Walter Wu (6):
+> timer: kasan: record timer stack
+> workqueue: kasan: record workqueue stack
+> kasan: print timer and workqueue stack
+> lib/test_kasan.c: add timer test case
+> lib/test_kasan.c: add workqueue test case
+> kasan: update documentation for generic kasan
 
-Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
+Acked-by: Marco Elver <elver@google.com>
 
-> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+
+
 > ---
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c | 12 ++++++++----
->  1 file changed, 8 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> index 09baac2dbc36..82b04714f750 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> @@ -200,14 +200,18 @@ static int vidioc_venc_s_parm(struct file *file, void *priv,
->  			      struct v4l2_streamparm *a)
->  {
->  	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-> +	struct v4l2_fract *timeperframe = &a->parm.output.timeperframe;
->  
->  	if (a->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
->  		return -EINVAL;
->  
-> -	ctx->enc_params.framerate_num =
-> -			a->parm.output.timeperframe.denominator;
-> -	ctx->enc_params.framerate_denom =
-> -			a->parm.output.timeperframe.numerator;
-> +	if (timeperframe->numerator == 0 || timeperframe->denominator == 0) {
-> +		timeperframe->numerator = MTK_DEFAULT_FRAMERATE_NUM;
-> +		timeperframe->denominator = MTK_DEFAULT_FRAMERATE_DENOM;
-> +	}
-> +
-> +	ctx->enc_params.framerate_num = timeperframe->denominator;
-> +	ctx->enc_params.framerate_denom = timeperframe->numerator;
->  	ctx->param_change |= MTK_ENCODE_PARAM_FRAMERATE;
->  
->  	a->parm.output.capability = V4L2_CAP_TIMEPERFRAME;
+>
+> Changes since v2:
+> - modify kasan document to be more readable.
+>   Thanks for Marco suggestion.
+>
+> Changes since v1:
+> - Thanks for Marco and Thomas suggestion.
+> - Remove unnecessary code and fix commit log
+> - reuse kasan_record_aux_stack() and aux_stack
+>   to record timer and workqueue stack.
+> - change the aux stack title for common name.
+>
+> ---
+>
+> Documentation/dev-tools/kasan.rst |  4 ++--
+> kernel/time/timer.c               |  3 +++
+> kernel/workqueue.c                |  3 +++
+> lib/test_kasan.c                  | 54 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+> mm/kasan/report.c                 |  4 ++--
+> 5 files changed, 64 insertions(+), 4 deletions(-)
+>
+> --
+> You received this message because you are subscribed to the Google Groups "kasan-dev" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/20200825015654.27781-1-walter-zh.wu%40mediatek.com.
 
 _______________________________________________
 Linux-mediatek mailing list
