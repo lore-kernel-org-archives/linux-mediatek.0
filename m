@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
 	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 91309C433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 19:48:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 988C0C433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 21:49:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 643772074D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 19:48:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5C2DA2071E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 21:49:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Qvpxr5Hk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 643772074D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iwKo9TE/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5C2DA2071E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,58 +24,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Hkft46L3NFsWqApEN4pycX8jZWVE6rqthK7RWu7w3Mo=; b=Qvpxr5HkIn6GlitFBEgrCA/JT
-	H/EYt2iYUkVI58cdj5Wa40qq8aHq13qz2pE/5qDAmgttLsOovptvpl5dGbGYJw3h3dV+J4WIa8HA0
-	3sphb4ZbwPg6TzZcDspnwODxR3Mv5Z4T/ClGgr+YMoSmy+4aSIi/RMjYfQEOrYdnpdCyHlhy/Ols1
-	ydw311kXzv9bvmO2eLe0m3rlssMCqL8o3CFLuAlNDtwXHv4Cz7CK6Yk/21cODyw2dq16xrFbFnpMV
-	Zo4EeFrJNkAj8z94aVWKs5B4iUVFLa9t6Qkw0d9eVpzMWOBlrqLdoS8U5L3r5aPdGFIADm2/kGNa5
-	Csmw4HaUg==;
+	 bh=z7wa/Q3BHaq7Cih2U1NVcWtHGGiIIsplG+mCn8AUY7s=; b=iwKo9TE/YRPb82Y8H7NhOYE27
+	c/fKbGSXEPwtUgCxkKi4gkrl0n5cY5GXrRW1eCTKPt6ZS1uK+FiZEid8akdYKX22o5H0Cc7iVaUjh
+	tdRmGBSVptzATmjry75lIvcahp9cHKVLDi1NdvzXNUsgSbRG5DI77z8emTH9UXJN/FtCAnycD9IkO
+	nEWrAUGe2MaN2J5flPzdgoTLjb+9ltXuhhaHJHQRF2rblR4Boun29CwtLINAfbg7KTMkIUuuYTJvw
+	3dK7O/akrvjLYVP+jmdcy722Jjvnb6a587q5m0h0lMUfDrOC0oWj8NQcS6YsXGiRjK0kDDkFKo3AX
+	VUMQxyiIg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kAevO-0000pR-S7; Tue, 25 Aug 2020 19:48:06 +0000
-Received: from mail-io1-f66.google.com ([209.85.166.66])
+	id 1kAgoG-0007yD-9h; Tue, 25 Aug 2020 21:48:52 +0000
+Received: from mail-io1-f67.google.com ([209.85.166.67])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAeqe-0003Ef-Nc
- for linux-mediatek@lists.infradead.org; Tue, 25 Aug 2020 19:43:18 +0000
-Received: by mail-io1-f66.google.com with SMTP id s2so13776303ioo.2
- for <linux-mediatek@lists.infradead.org>; Tue, 25 Aug 2020 12:43:10 -0700 (PDT)
+ id 1kAgoC-0007uw-M3; Tue, 25 Aug 2020 21:48:49 +0000
+Received: by mail-io1-f67.google.com with SMTP id b16so70838ioj.4;
+ Tue, 25 Aug 2020 14:48:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=xFa4K2EMnvtSpb7MXWNHE/NvCVe7Pt+4e7+jJHBanys=;
- b=n74FXHGz8nLxXLC15eQqHXHlvvmqk7tDtJuKK2BfKHN6R6fq/xr5WnbcZGrx5m9SPe
- HZQD2eZnlxP/QLCtT5pGL6LqIcLNYFyR5jWl1gOK3W3Wpm0qtAYEZLWt/lsoj/QrTxml
- TwZChXGkY7J5rBYXDzqgACKiGSylz1nQM+2lhyfAzk68EIDEMJwq89CKB//r6c3HrTGs
- YY26nvAcldBjiFcBP3oKAHM4ysBXHZDZYj9btnV9IrUwNxUvsVaZQqaUtzz/alIiObmB
- uF7UKeyFiYThZ/8Tk7+MBNXb3CW8LDZG3elCW/z/qAfBgm2xrnmZyiiGvJZm72FLb7DL
- eNCg==
-X-Gm-Message-State: AOAM53273eGF8ctsL/UM3tfge247EHgHZ+GR0GimLtfpopXrNVb+txzB
- t2nWB7vWmHyjgCWTmy7t9w==
-X-Google-Smtp-Source: ABdhPJw/xaJIuCeQO1r6j9JB2bC93O0bNOs9R51Cj4LIZPtj20c0bgEkzt2KrzZok2oxQxpiHdKeDg==
-X-Received: by 2002:a6b:bfc1:: with SMTP id
- p184mr10370531iof.193.1598384589390; 
- Tue, 25 Aug 2020 12:43:09 -0700 (PDT)
+ bh=RQP52sLIM0MfnF4NggVw656j4jf7VJADZKCoTHNbNKI=;
+ b=CuH4scQAG/39lqYH3ozvysccZY65f+r9Y2QoRQz92HL++l7kckJEsBeuBsAQjodewB
+ /ivPuK9uGz/eA478crh9ubJ/3RNEMouF+FAbv08AZWSonp0Ezukf/CnTtwliLJj2IGhu
+ PCAg3oxPpUEsD6UlcE+0/urpc2SXaXKjglBAGZ9DrFbBkMZ7g6M18vQbbRSxcRm57dds
+ YR4EIgfvdgA1yoLd11+8mmBLUmQ+GZKBmeesEFz7ZkZPDZScSjshhskca3+9IcqN70aY
+ 4HWl8cIHwrPCWkC5Eb+ITlCTH28ckQURdkfn7o2HEggj7zWMEOGiYZ25hrC0qHrR6yl7
+ rZ0Q==
+X-Gm-Message-State: AOAM533yoGec3u3OfzVXP960OXJUrzgBMvfkHJUSdXMw6q57EFseaXXe
+ WsjzfPkf1UlsSWdEhlK8jQ==
+X-Google-Smtp-Source: ABdhPJwIny58KBr2tW0qD6I6vbfQzkQqr7DvAVQaFDJyISwKyKf4dn22aFNXa8TQpK0wTX1V5yeJGQ==
+X-Received: by 2002:a6b:5009:: with SMTP id e9mr10947465iob.156.1598392127545; 
+ Tue, 25 Aug 2020 14:48:47 -0700 (PDT)
 Received: from xps15 ([64.188.179.249])
- by smtp.gmail.com with ESMTPSA id f128sm9645725ilh.71.2020.08.25.12.43.07
+ by smtp.gmail.com with ESMTPSA id t187sm23566iof.54.2020.08.25.14.48.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Aug 2020 12:43:08 -0700 (PDT)
-Received: (nullmailer pid 1198512 invoked by uid 1000);
- Tue, 25 Aug 2020 19:43:06 -0000
-Date: Tue, 25 Aug 2020 13:43:06 -0600
+ Tue, 25 Aug 2020 14:48:47 -0700 (PDT)
+Received: (nullmailer pid 1396452 invoked by uid 1000);
+ Tue, 25 Aug 2020 21:48:42 -0000
+Date: Tue, 25 Aug 2020 15:48:42 -0600
 From: Rob Herring <robh@kernel.org>
-To: Landen Chao <landen.chao@mediatek.com>
-Subject: Re: [PATCH net-next v2 4/7] dt-bindings: net: dsa: add new MT7531
- binding to support MT7531
-Message-ID: <20200825194306.GA1160944@bogus>
-References: <cover.1597729692.git.landen.chao@mediatek.com>
- <1ec38b68deec6f1c23e1236d38035b1823ea2ebf.1597729692.git.landen.chao@mediatek.com>
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Subject: Re: [PATCH 2/2] dt-bindings: interrupt-controller: Add MStar
+ interrupt controller
+Message-ID: <20200825214842.GA1367012@bogus>
+References: <20200819034231.20726-1-mark-pk.tsai@mediatek.com>
+ <20200819034231.20726-3-mark-pk.tsai@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1ec38b68deec6f1c23e1236d38035b1823ea2ebf.1597729692.git.landen.chao@mediatek.com>
+In-Reply-To: <20200819034231.20726-3-mark-pk.tsai@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200825_154312_846549_BE9A2CB3 
-X-CRM114-Status: GOOD (  19.41  )
+X-CRM114-CacheID: sfid-20200825_174848_765086_FD9A888E 
+X-CRM114-Status: GOOD (  25.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,126 +85,163 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, andrew@lunn.ch, frank-w@public-files.de,
- f.fainelli@gmail.com, dqfext@gmail.com, devicetree@vger.kernel.org,
- netdev@vger.kernel.org, vivien.didelot@savoirfairelinux.com,
- linux-kernel@vger.kernel.org, opensource@vdorst.com,
- linux-mediatek@lists.infradead.org, sean.wang@mediatek.com,
- matthias.bgg@gmail.com, davem@davemloft.net
+Cc: devicetree@vger.kernel.org, alix.wu@mediatek.com, jason@lakedaemon.net,
+ maz@kernel.org, yj.chiang@mediatek.com, daniel@0x0f.com,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, tglx@linutronix.de,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 18, 2020 at 03:14:09PM +0800, Landen Chao wrote:
-> Add devicetree binding to support the compatible mt7531 switch as used
-> in the MediaTek MT7531 switch.
+On Wed, Aug 19, 2020 at 11:42:31AM +0800, Mark-PK Tsai wrote:
+> Add binding for MStar interrupt controller.
 > 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: Landen Chao <landen.chao@mediatek.com>
+> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
 > ---
->  .../devicetree/bindings/net/dsa/mt7530.txt    | 71 ++++++++++++++++++-
->  1 file changed, 68 insertions(+), 3 deletions(-)
+>  .../interrupt-controller/mstar,mst-intc.yaml  | 82 +++++++++++++++++++
+>  1 file changed, 82 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/interrupt-controller/mstar,mst-intc.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/net/dsa/mt7530.txt b/Documentation/devicetree/bindings/net/dsa/mt7530.txt
-> index c5ed5d25f642..50eaf40fb612 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/mt7530.txt
-> +++ b/Documentation/devicetree/bindings/net/dsa/mt7530.txt
-> @@ -5,6 +5,7 @@ Required properties:
->  
->  - compatible: may be compatible = "mediatek,mt7530"
->  	or compatible = "mediatek,mt7621"
-> +	or compatible = "mediatek,mt7531"
->  - #address-cells: Must be 1.
->  - #size-cells: Must be 0.
->  - mediatek,mcm: Boolean; if defined, indicates that either MT7530 is the part
-> @@ -32,10 +33,13 @@ Required properties for the child nodes within ports container:
->  
->  - reg: Port address described must be 6 for CPU port and from 0 to 5 for
->  	user ports.
-> -- phy-mode: String, must be either "trgmii" or "rgmii" for port labeled
-> -	 "cpu".
-> +- phy-mode: String, the follow value would be acceptable for port labeled "cpu"
-> +	If compatible mediatek,mt7530 or mediatek,mt7621 is set,
-> +	must be either "trgmii" or "rgmii"
-> +	If compatible mediatek,mt7531 is set,
-> +	must be either "sgmii", "1000base-x" or "2500base-x"
->  
-> -Port 5 of the switch is muxed between:
-> +Port 5 of mt7530 and mt7621 switch is muxed between:
->  1. GMAC5: GMAC5 can interface with another external MAC or PHY.
->  2. PHY of port 0 or port 4: PHY interfaces with an external MAC like 2nd GMAC
->     of the SOC. Used in many setups where port 0/4 becomes the WAN port.
-> @@ -308,3 +312,64 @@ Example 3: MT7621: Port 5 is connected to external PHY: Port 5 -> external PHY.
->  		};
->  	};
->  };
-> +
-> +Example 4: MT7531BE port6 -- up-clocked 2.5Gbps SGMII -- MT7622 CPU 1st GMAC
+> diff --git a/Documentation/devicetree/bindings/interrupt-controller/mstar,mst-intc.yaml b/Documentation/devicetree/bindings/interrupt-controller/mstar,mst-intc.yaml
+> new file mode 100644
+> index 000000000000..6e383315e529
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/interrupt-controller/mstar,mst-intc.yaml
+> @@ -0,0 +1,82 @@
+> +# SPDX-License-Identifier: GPL-2.0
 
-Does this really need another example?
+Dual license new bindings.
+
+(GPL-2.0-only OR BSD-2-Clause)
+
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/interrupt-controller/mstar,mst-intc.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MStar Interrupt Controller
+> +
+> +maintainers:
+> +  - Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> +
+> +description: |+
+> +  MStar, SigmaStar and Mediatek DTV SoCs contain multiple legacy
+> +  interrupt controllers that routes interrupts to the GIC.
+> +
+> +  The HW block exposes a number of interrupt controllers, each
+> +  can support up to 64 interrupts.
+> +
+> +allOf:
+> +  - $ref: /schemas/interrupt-controller.yaml#
+
+Drop this. It is applied based on node name matching already.
 
 > +
-> +&eth {
-> +	gmac0: mac@0 {
-> +		compatible = "mediatek,eth-mac";
-> +		reg = <0>;
-> +		phy-mode = "2500base-x";
+> +properties:
+> +  compatible:
+> +    items:
+> +      - const: mstar,mst-intc
+> +      - enum:
+> +          - mediatek,mt58xx-intc
+
+Normally, the 1st entry would be enum as that's where you'd add new 
+compatibles (as the fallback is constant). But if you don't forsee any 
+additions, just make both 'const'
+
 > +
-> +		fixed-link {
-> +			speed = <2500>;
-> +			full-duplex;
-> +			pause;
-> +		};
-> +	};
+> +  interrupt-controller: true
 > +
-> +	&mdio0 {
-> +		switch@0 {
-> +			compatible = "mediatek,mt7531";
-> +			reg = <0>;
-> +			reset-gpios = <&pio 54 0>;
+> +  "#address-cells":
+> +    enum: [ 0, 1, 2 ]
+
+This would normally be 0 in an interrupt controller. It's only relevant 
+if you have an 'interrupt-map' which this is the parent for.
+
+> +  "#size-cells":
+> +    enum: [ 1, 2 ]
+
+And this should be dropped.
+
 > +
-> +			ports {
-> +				#address-cells = <1>;
-> +				#size-cells = <0>;
-> +				reg = <0>;
+> +  "#interrupt-cells":
+> +    const: 3
+> +    description: |
+> +      Use the same format as specified by GIC in arm,gic.yaml.
+
+That's odd. You have the same SPI and PPI stuff?
+
 > +
-> +				port@0 {
-> +					reg = <0>;
-> +					label = "lan0";
-> +				};
+> +  reg:
+> +    description: |
+> +      Physical base address of the mstar interrupt controller
+> +      registers and length of memory mapped region.
+
+Drop this. That's every 'reg' property.
+
+> +    minItems: 1
+
+maxItems is more logical.
+
 > +
-> +				port@1 {
-> +					reg = <1>;
-> +					label = "lan1";
-> +				};
+> +  mstar,irqs-map-range:
+> +    description: |
+> +      The range of parent interrupt controller's interrupt lines
+> +      that are hardwired to mstar interrupt controller.
+
+Is this <start size> or <start end>?
+
+Really, this should just use 'interrupts' even though that's a bit 
+verbose. Or be implied by the compatible string. What's the maximum 
+number of parent interrupts?
+
+In any case, we really need to stop having vendor specific properties 
+for this.
+
+> +    $ref: /schemas/types.yaml#/definitions/uint32-matrix
+> +    items:
+> +      minItems: 2
+> +      maxItems: 2
 > +
-> +				port@2 {
-> +					reg = <2>;
-> +					label = "lan2";
-> +				};
+> +  mstar,intc-no-eoi:
+> +    description: |
+
+Don't need '|' if there's no formatting.
+
+> +      Mark this controller has no End Of Interrupt(EOI) implementation.
+> +      This is a empty, boolean property.
+
+You can drop this line. The schema says this.
+
+> +    type: boolean
 > +
-> +				port@3 {
-> +					reg = <3>;
-> +					label = "lan3";
-> +				};
+> +required:
+> +  - compatible
+> +  - reg
+> +  - mstar,irqs-map-range
 > +
-> +				port@4 {
-> +					reg = <4>;
-> +					label = "wan";
-> +				};
+> +additionalProperties: false
 > +
-> +				port@6 {
-> +					reg = <6>;
-> +					label = "cpu";
-> +					ethernet = <&gmac0>;
-> +					phy-mode = "2500base-x";
-> +				};
-> +			};
-> +		};
-> +	};
+> +examples:
+> +  - |
+> +    mst_intc0: interrupt-controller@1f2032d0 {
+> +      compatible = "mstar,mst-intc", "mediatek,mt58xx-intc";
+> +      interrupt-controller;
+> +      #interrupt-cells = <3>;
+> +      #address-cells = <1>;
+> +      #size-cells = <1>;
+> +      interrupt-parent = <&gic>;
+> +      reg = <0x1f2032d0 0x30>;
+> +      mstar,irqs-map-range = <0 63>;
+
+Is 0 a PPI or SPI? This property is making some assumption and wouldn't 
+be able to support both types or another parent interrupt controller.
+
+> +    };
+> +...
 > -- 
-> 2.17.1
+> 2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
