@@ -5,73 +5,74 @@ X-Spam-Level:
 X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E30B5C433E1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 02:11:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 64288C433E1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 02:13:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AFD3220578
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 02:11:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 322D920578
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2020 02:13:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GQsp8LQN";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="eS/4hTLS"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AFD3220578
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KUJFnZVK";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="LmWvS4+o"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 322D920578
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=YTNSgRl/g+qpJBfTRu78LTozoTv88S7KuK3IxAdGVj0=; b=GQsp8LQNI5jj5i28Q3lVAxbFvE
-	FLFuPHmvMEfiEeV8YVWYNha/EDYI5CJ18vJJztt0zRUWSYIgBmBzjxzOS0LWWaacLiXB9c8W3nkTe
-	sspKtcHcqPB3+aiZqd9MlkvEPuAo8ysc8EdPsLEvzRnSXMAi67q+6U2LwNiCm4/2RHGGdj572fyA4
-	4UmCAigfVZrFie04PQcDFtxD03abrZErd1zIJc+fRZ0YUur98uSsmia10Gyc8EbRhmsUosMc+pSbv
-	WInDMaajxK1yyCk1RFrqIQeEgKR9GanW7izrQeRzbC9wrK5q1YHJlcsprByTQM4NHKQivNDwZWxMc
-	xR8VVk7Q==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=9Lm2PIYQbPxkZZEKgKMOrTv5zmAMqf6kSzOz7ikA8Mo=; b=KUJFnZVKawfl3uOeRFAhi2Yuk
+	wd0+GICydonGJjWrOTjwZi2jS3AAjs9EyI9kB4Mlj7t+GqR1uLleoeFxMQ7ZMwXu8qLvj3bbnR1r0
+	UUomSPHj7I4aXadkghhZraEG3z35L2wz54VdIPOLT/qdr7+HMV5UsewR4QsXc2S9rPOPPXStqcfVM
+	Wn8ahcm60T8euJJrTvO2L9EyBo/Zh1QrH0hxHifg2TQSO5KFB35Ajch34fZ9uB8PJ2tZzx+DnmlmF
+	Qt0Y+ticbQBlCszFfD76IbmklF87zG8+dKCV2nG1EBeRyEAJm5Fd2CyrRILS7zgHwFgucf+M9TGXe
+	vSsc7t+Sw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kAOQP-0005RF-Dc; Tue, 25 Aug 2020 02:11:01 +0000
+	id 1kAOSs-0005zp-Po; Tue, 25 Aug 2020 02:13:34 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAOQJ-0005P2-EB; Tue, 25 Aug 2020 02:10:56 +0000
-X-UUID: 82854f9762cd4060bba19eb7ad94ade8-20200824
+ id 1kAOSj-0005v6-OU; Tue, 25 Aug 2020 02:13:26 +0000
+X-UUID: 1ad309f5b9314b8785e4601a5809a4ab-20200824
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=9sZ1Q2VJIj3D6DYv93PbNUEMzsMoXEFwRyYq2J0814A=; 
- b=eS/4hTLSwSIlOSRdtmlkPcp10xhkBJIWzxLyocPknHUVExR6agIKJhUSC6Bf7It1N/LRzRlTLvF2n46A2IAAEJx8h6GtIYLV5ynqXKNVA0qq6LD6eXbmHZNW5lmjT37kOAFfSBvAAz4gE3iQG/ilInAUNH3AOFnnP88FyBrzfEI=;
-X-UUID: 82854f9762cd4060bba19eb7ad94ade8-20200824
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=21CT99gVNFEuuNYXRK1dReZRVbPZKir3/U3fY5f7SKg=; 
+ b=LmWvS4+oE1bv/R5iHNQEfDM5HVV81nAfdKJnU4TppPOqI62eIgibeEGV5nW+aPoT1PCPNrHJ3g+LmWIW8HadFo/ASBWTcquSJt8w6U3XjpBJU2ZB2pfV3ISfkatMvHB2N3eXKM1V0dM9F0earbRygXF0DLrz+B4iw+8VGpnap90=;
+X-UUID: 1ad309f5b9314b8785e4601a5809a4ab-20200824
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <walter-zh.wu@mediatek.com>)
+ (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1590773547; Mon, 24 Aug 2020 18:10:52 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 Aug 2020 19:02:10 -0700
+ with ESMTP id 1626132765; Mon, 24 Aug 2020 18:10:14 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 24 Aug 2020 19:04:42 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 Aug 2020 10:02:08 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 25 Aug 2020 10:02:09 +0800
-From: Walter Wu <walter-zh.wu@mediatek.com>
-To: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko
- <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Jonathan Corbet <corbet@lwn.net>
-Subject: [PATCH v3 6/6] kasan: update documentation for generic kasan
-Date: Tue, 25 Aug 2020 10:02:08 +0800
-Message-ID: <20200825020208.28950-1-walter-zh.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 25 Aug 2020 10:04:39 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 25 Aug 2020 10:04:39 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Subject: [PATCH 3/6] phy: phy-bcm-sr-usb: convert to
+ readl_poll_timeout_atomic()
+Date: Tue, 25 Aug 2020 10:03:04 +0800
+Message-ID: <1598320987-25518-3-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1598320987-25518-1-git-send-email-chunfeng.yun@mediatek.com>
+References: <1598320987-25518-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: FF79C89B95B5EEC808E61E9DE96777FD0981D12178444CA2009311433735FC3A2000:8
+X-TM-SNTS-SMTP: 588180CEE0623FA533389B0780B86B46F91CBD423006F5AC70031FD8AFAC5E452000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200824_221055_682129_79BCFB37 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20200824_221325_939105_9B7047A6 
+X-CRM114-Status: GOOD (  12.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,52 +84,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Walter Wu <walter-zh.wu@mediatek.com>,
- wsd_upstream <wsd_upstream@mediatek.com>, linux-kernel@vger.kernel.org,
- kasan-dev@googlegroups.com, linux-mm@kvack.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Bharat Gooty <bharat.gooty@broadcom.com>,
+ Rayagonda Kokatanur <rayagonda.kokatanur@broadcom.com>,
+ linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, Rikard
+ Falkeborn <rikard.falkeborn@gmail.com>, Bjorn
+ Andersson <bjorn.andersson@linaro.org>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Andy Gross <agross@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Generic KASAN also supports to record the last two timer and workqueue
-stacks and print them in KASAN report. So that need to update
-documentation.
+Use readl_poll_timeout_atomic() to simplify code
 
-Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-Suggested-by: Marco Elver <elver@google.com>
-Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
-Cc: Dmitry Vyukov <dvyukov@google.com>
-Cc: Alexander Potapenko <glider@google.com>
-Cc: Jonathan Corbet <corbet@lwn.net>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
+ drivers/phy/broadcom/phy-bcm-sr-usb.c | 19 ++++++++-----------
+ 1 file changed, 8 insertions(+), 11 deletions(-)
 
-v3:
-- Thanks for Macro suggestion
-
----
- Documentation/dev-tools/kasan.rst | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/Documentation/dev-tools/kasan.rst b/Documentation/dev-tools/kasan.rst
-index 38fd5681fade..698ccb65e634 100644
---- a/Documentation/dev-tools/kasan.rst
-+++ b/Documentation/dev-tools/kasan.rst
-@@ -190,8 +190,9 @@ function calls GCC directly inserts the code to check the shadow memory.
- This option significantly enlarges kernel but it gives x1.1-x2 performance
- boost over outline instrumented kernel.
+diff --git a/drivers/phy/broadcom/phy-bcm-sr-usb.c b/drivers/phy/broadcom/phy-bcm-sr-usb.c
+index 77c025a..c3e99ad 100644
+--- a/drivers/phy/broadcom/phy-bcm-sr-usb.c
++++ b/drivers/phy/broadcom/phy-bcm-sr-usb.c
+@@ -5,6 +5,7 @@
  
--Generic KASAN prints up to 2 call_rcu() call stacks in reports, the last one
--and the second to last.
-+Generic KASAN also reports the last 2 call stacks to creation of work that
-+potentially has access to an object. Call stacks for the following are shown:
-+call_rcu(), timer and workqueue queuing.
+ #include <linux/delay.h>
+ #include <linux/io.h>
++#include <linux/iopoll.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/phy/phy.h>
+@@ -109,19 +110,15 @@ static inline void bcm_usb_reg32_setbits(void __iomem *addr, uint32_t set)
  
- Software tag-based KASAN
- ~~~~~~~~~~~~~~~~~~~~~~~~
+ static int bcm_usb_pll_lock_check(void __iomem *addr, u32 bit)
+ {
+-	int retry;
+-	u32 rd_data;
++	u32 data;
++	int ret;
+ 
+-	retry = PLL_LOCK_RETRY_COUNT;
+-	do {
+-		rd_data = readl(addr);
+-		if (rd_data & bit)
+-			return 0;
+-		udelay(1);
+-	} while (--retry > 0);
++	ret = readl_poll_timeout_atomic(addr, data, (data & bit), 1,
++					PLL_LOCK_RETRY_COUNT);
++	if (ret)
++		pr_err("%s: FAIL\n", __func__);
+ 
+-	pr_err("%s: FAIL\n", __func__);
+-	return -ETIMEDOUT;
++	return ret;
+ }
+ 
+ static int bcm_usb_ss_phy_init(struct bcm_usb_phy_cfg *phy_cfg)
 -- 
-2.18.0
+1.9.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
