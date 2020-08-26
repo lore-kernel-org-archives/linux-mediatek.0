@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1651BC433E1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2020 11:11:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 32648C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2020 11:11:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D56C92080C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2020 11:11:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0223C2080C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2020 11:11:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="H2BKMR2h";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="nnIuJBO3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D56C92080C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RaQ2Wk0b";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="aqoihg3I"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0223C2080C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=hzMV9St2rUcJ9OnQjZvNCIejmLSSOtOSu1cs7deSROI=; b=H2BKMR2hKZffF920mn3QqfwzL
-	RtnohZfWh2JewYK2fHGNvAEcQ/eEAJjcpWtXqJyaYLnLzz/wyfK3QIzLobgTS5vhkPqgYKFLuXY4E
-	VWE3co7DAvHJWuhbphX2Px0kE+0LhzX2PXHrNXeHEvnau+/jmz6jfiQFF/X9NMLj/NK1rXsTkubrq
-	kTgPf8MQvahOVegkeF5jC4KddYeltTJjZeH46//ctO2hALougIdZ0BPuntSa7QPyr9wrvUQacwWNU
-	GSIqOY8eWy4TQSB6M/tPblGGIotpuEelkclHsIGyyyFrewyKC0NnEKHOCfh7/RfUV47p29nAf2Vjx
-	9BHU6MVnQ==;
+	 bh=xoexyYXqm/Fc5ePHlLOxf67L+f2fTHLzGW8UrdKNfAU=; b=RaQ2Wk0bUlV2qanOg4WnIZRs1
+	4kPFkIy7tkPR//fS5TOJS1UcFt9W8q+uL22uY3UKgDzUjC+HTj2nMB1slBtFL6YrUKDfS8bMIW2jR
+	6CoIPWGs5rYFbp/E4zFXYNDUttVqUys52NHuFqiccHws9ja7W4zptn18AjNiXQzTfskR/+gDPbkl+
+	Ii1P1SkC0EvRA9kQ6DfQGOGVGr3/M8FOqKsVKwIDHsdURQsvH8JGEPRJ671dC0CB673B2t56H0qvB
+	jKpY/qEYhe6t02hUNrtC11VD4hNxJc0VMTXRx9Itoo5u+60XKh7XANWL1ntycx+cpqxfA7C0v92Wi
+	lMgNjY3Bg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kAtKV-0003hr-3D; Wed, 26 Aug 2020 11:10:59 +0000
+	id 1kAtKn-0003mN-4N; Wed, 26 Aug 2020 11:11:17 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAtKQ-0003gp-38; Wed, 26 Aug 2020 11:10:55 +0000
-X-UUID: 16c6b0728e4044e1bb92093fc6c4d1c4-20200826
+ id 1kAtKj-0003l1-DU; Wed, 26 Aug 2020 11:11:14 +0000
+X-UUID: 6273f392ca7249eaba3055d0916ef99f-20200826
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=pnlfpEAFsOOmXFIeR1iCQGXMDaBl8g+2wdRlohePfrs=; 
- b=nnIuJBO324rDoCeil/c+H+QsWE21nPnyLgP/NhW7P0T5/pvghlHa5DT5QuKGOC2MH9WGQFQtbkI5pYzM5OiYEsn+pJsu/6s+rt2covtMNHXZihotQIaUsCCfwVAtSZWCCH4cFkJJxzd/CoVffeksJL1xkWkXtMJhpV9olDwwFDA=;
-X-UUID: 16c6b0728e4044e1bb92093fc6c4d1c4-20200826
+ bh=A/c+zO1Bn8tRKZBh2n+Hldsc4ufJubZKEbW6ppLUBsk=; 
+ b=aqoihg3It/4Hf77PUejyDJWtM8XDztDF4++8he97g9PETyl31mp4aRKcZXGqci+A4SstpPsqQXDjuCeN+PkqIHCvhgmUFfohx+rv77y71cXcBVRibEDJdTA+fo2ADJUXK4dAaqtb3sm4mdOU1dt+DIgzzqPQMzC1cmSCCfokloY=;
+X-UUID: 6273f392ca7249eaba3055d0916ef99f-20200826
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <crystal.guo@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 960856155; Wed, 26 Aug 2020 03:10:47 -0800
+ with ESMTP id 433719935; Wed, 26 Aug 2020 03:11:10 -0800
 Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 26 Aug 2020 04:10:45 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 26 Aug 2020 04:11:07 -0700
 Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
  (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 26 Aug 2020 19:10:42 +0800
+ Wed, 26 Aug 2020 19:11:05 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 26 Aug 2020 19:10:41 +0800
-Message-ID: <1598440159.30048.13.camel@mhfsdcap03>
-Subject: Re: [v4,1/4] dt-binding: reset-controller: ti: add
- reset-duration-us property
+ Transport; Wed, 26 Aug 2020 19:11:05 +0800
+Message-ID: <1598440183.30048.14.camel@mhfsdcap03>
+Subject: Re: [v4,2/4] dt-binding: reset-controller: ti: add
+ 'mediatek,infra-reset' to compatible
 From: Crystal Guo <crystal.guo@mediatek.com>
 To: Rob Herring <robh@kernel.org>
-Date: Wed, 26 Aug 2020 19:09:19 +0800
-In-Reply-To: <20200825174215.GA999117@bogus>
+Date: Wed, 26 Aug 2020 19:09:43 +0800
+In-Reply-To: <20200825190219.GA1125997@bogus>
 References: <20200817030324.5690-1-crystal.guo@mediatek.com>
- <20200817030324.5690-2-crystal.guo@mediatek.com>
- <20200825174215.GA999117@bogus>
+ <20200817030324.5690-3-crystal.guo@mediatek.com>
+ <20200825190219.GA1125997@bogus>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: CD4A58937EB8860E7A6649B1B9819A2D1F0714F405492412FB5A47804F237A782000:8
+X-TM-SNTS-SMTP: F5BA3F4B05E182D188D3A309D1F49535F9637CD33A5A9DB6DAE3FFCC36DBD5282000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200826_071054_361515_2F11D66D 
-X-CRM114-Status: GOOD (  21.08  )
+X-CRM114-CacheID: sfid-20200826_071113_624604_2793F2E2 
+X-CRM114-Status: GOOD (  19.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,52 +106,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2020-08-26 at 01:42 +0800, Rob Herring wrote:
-> On Mon, Aug 17, 2020 at 11:03:21AM +0800, Crystal Guo wrote:
-> > introduce 'reset' method to allow device do serialized assert and
-> > deassert operations in a single step, which needs a minimum delay
-> > to be waited between assert and deassert.
-> 
-> Why is Mediatek adding to a TI binding?
-
-TI reset-controller provides a common reset management,
-and is suitable for Mediatek SoCs, thus Mediatek wants to reuse this
-driver for reset.
-
-> 
+On Wed, 2020-08-26 at 03:02 +0800, Rob Herring wrote:
+> On Mon, Aug 17, 2020 at 11:03:22AM +0800, Crystal Guo wrote:
+> > The TI syscon reset controller provides a common reset management,
+> > and is suitable for MTK SoCs. Add compatible 'mediatek,infra-reset',
+> > which denotes to use ti reset-controller driver directly.
 > > 
 > > Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
 > > ---
-> >  Documentation/devicetree/bindings/reset/ti-syscon-reset.txt | 5 +++++
-> >  1 file changed, 5 insertions(+)
+> >  Documentation/devicetree/bindings/reset/ti-syscon-reset.txt | 1 +
+> >  1 file changed, 1 insertion(+)
 > > 
 > > diff --git a/Documentation/devicetree/bindings/reset/ti-syscon-reset.txt b/Documentation/devicetree/bindings/reset/ti-syscon-reset.txt
-> > index 86945502ccb5..ab041032339b 100644
+> > index ab041032339b..5a0e9365b51b 100644
 > > --- a/Documentation/devicetree/bindings/reset/ti-syscon-reset.txt
 > > +++ b/Documentation/devicetree/bindings/reset/ti-syscon-reset.txt
-> > @@ -59,6 +59,11 @@ Required properties:
-> >  Please also refer to Documentation/devicetree/bindings/reset/reset.txt for
-> >  common reset controller usage by consumers.
-> >  
-> > +Optional properties:
-> > +- reset-duration-us: When do serialized assert and deassert operations, minimum delay in microseconds
-> > +is needed to be waited between an assert and a deassert to reset the device. This value can be 0, 0 means
-> > +that such a delay is not needed.
+> > @@ -25,6 +25,7 @@ Required properties:
+> >  			    "ti,k2l-pscrst"
+> >  			    "ti,k2hk-pscrst"
+> >  			    "ti,syscon-reset"
+> > +			    "mediatek,infra-reset", "ti,syscon-reset"
 > 
-> This goes in the reset controller node or each consumer? For the latter, 
-> it should be a cell in 'resets' if you need this. But really, I think 
-> the reset controller should enforce some minimum time that works for all 
-> consumers. Surely having a minimum time per reset isn't really needed.
+> You need your own binding doc. If you can use the same driver then fine, 
+> but that's a separate issue. There's also reset-simple driver if you 
+> have just array of 32-bit registers with a bit per reset.
 > 
-> Rob
+> Don't repeat 'ti,reset-bits' either.
 
-'reset-duration-us' will be in the reset controller node, and it's
-optional. If minimum delay is needed to be waited between an assert and
-a deassert to reset the device, this property will be set.Otherwise no
-need to set this property.
+Do you mean I should add a Mediatek reset binding doc, although Mediatek
+reuse the TI reset controller directly?
 
 Best Regards
 Crystal
+> 
+> >   - #reset-cells		: Should be 1. Please see the reset consumer node below
+> >  			  for usage details
+> >   - ti,reset-bits	: Contains the reset control register information
+> > -- 
+> > 2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
