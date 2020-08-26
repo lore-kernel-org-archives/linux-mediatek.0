@@ -2,127 +2,75 @@ Return-Path: <SRS0=weZ6=CE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3DE71C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2020 06:38:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E0AB1C433E1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2020 07:34:53 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0A7682071E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2020 06:38:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AD6E6206FA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2020 07:34:53 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VYnYUlJl";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="siRwixq0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0A7682071E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qAPFBow1";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="BtdjxSGo"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AD6E6206FA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q+03bLg5Tq2KD4eJkBeH3X+qRSy0hc4Q4CpYNGJNQpg=; b=VYnYUlJl73sxgL6IXihxUBJzPW
-	8qORy+9ZvDJOQBloir7zxeVfnAx2lymfewYkkDoCAmc4sUgcacWsaIyTrqtQ+jF2jqajKfsDU9Dn1
-	eWFFlVpt4YommJFfPRwXPr1xz1N5MYQBOxx7OvEmL/GgfKhgLvj6omJzhvwsyxeaM5Mov9BW7JrMQ
-	/0rcetRyaY8v+iUIM7zabvWf12wvb9Y0YGd4nhx7WjlJ4IwegIkaMnOjkUDDuZVuBqir+goLAKEqY
-	3d19DV9mavIodhP4Irsv/f+Z8Axsfvulwl57jhPcgJEf6wCEEA4yu5ftTBdpXAQddHI7fFjaxBgM/
-	Do72mNtQ==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=FHmdV31LV2wAx45YNjqKlXB4d1rKrhQcdJb0JMKmz7Q=; b=qAPFBow1Lthy2NoZYwoZtsWbz
+	TcEiJUWxuTggu5Nh1g8xFQFK79uuutq+Vh/eYU1MQrcIYdbVhRi01s+cfHnef48QvlvZqUAJpZO/6
+	YDbWS9rFYLy7Ew/Jcf8q87zoNY2v1uQB1DWZVv1rFDkixOWf0GPmXLvmnuhJSLvb9FTtpgl9oF6QA
+	D0h1amedeO03StLr5RGRXcLx6U2iDiO98vh4Y3Qdrkjh7MFpGjuqy0/kmQoEpcSPKOvsyL/g72R4+
+	alNALsj58GMm37ot301ZeTFtVO6+g+i06SP7go6Mx85SplHVBQcKj+IclkD6vn8SOYV+bN0iRpQTN
+	NLGsyvO+g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kAp4h-00047i-Lf; Wed, 26 Aug 2020 06:38:23 +0000
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
+	id 1kApxE-0000jS-SF; Wed, 26 Aug 2020 07:34:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAp1z-0002rP-W5
- for linux-mediatek@lists.infradead.org; Wed, 26 Aug 2020 06:35:44 +0000
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
- by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id
- 20200826063535euoutp023060a2b233f61d28eb6bcfb7356feb66~uvesOlGRf1514215142euoutp02H
- for <linux-mediatek@lists.infradead.org>; Wed, 26 Aug 2020 06:35:35 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com
- 20200826063535euoutp023060a2b233f61d28eb6bcfb7356feb66~uvesOlGRf1514215142euoutp02H
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1598423735;
- bh=dgA8N0ViLqnC/QZEgzrc3l/K0+XnEV3AJx7m2vhhZ9o=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=siRwixq0qBG0Qn2SJuB5/YMjcftDmJsRVhKz0TJ2IYzfgC1tUaggXPaNcR6gkzCB+
- QiOyOM51FONo+vebrSvxZB9Bax6QQ9NGE8NWi+iZ2BTSQ8bcLzVAIno21Z5Lb34cIH
- SveSt/yqiHMePpywTOj6jHlwtF91X1hgRUm1jFZA=
-Received: from eusmges3new.samsung.com (unknown [203.254.199.245]) by
- eucas1p2.samsung.com (KnoxPortal) with ESMTP id
- 20200826063534eucas1p270a1c2e25b72630202fda78d4f366ae5~uver8bPkT0402704027eucas1p2j;
- Wed, 26 Aug 2020 06:35:34 +0000 (GMT)
-Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
- eusmges3new.samsung.com (EUCPMTA) with SMTP id 6F.4D.06318.6B2064F5; Wed, 26
- Aug 2020 07:35:34 +0100 (BST)
-Received: from eusmtrp2.samsung.com (unknown [182.198.249.139]) by
- eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
- 20200826063534eucas1p2647f5e9679f79f568e184b092f743f8b~uvermfILm0402704027eucas1p2i;
- Wed, 26 Aug 2020 06:35:34 +0000 (GMT)
-Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
- eusmtrp2.samsung.com (KnoxPortal) with ESMTP id
- 20200826063534eusmtrp2e49ad1248f6754d2c01d073c550e1795~uverl2G8a0466204662eusmtrp2I;
- Wed, 26 Aug 2020 06:35:34 +0000 (GMT)
-X-AuditID: cbfec7f5-38bff700000018ae-da-5f4602b6da51
-Received: from eusmtip2.samsung.com ( [203.254.199.222]) by
- eusmgms2.samsung.com (EUCPMTA) with SMTP id A1.53.06017.6B2064F5; Wed, 26
- Aug 2020 07:35:34 +0100 (BST)
-Received: from AMDC2765.digital.local (unknown [106.120.51.73]) by
- eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
- 20200826063533eusmtip22cc306bbc45cef23b492bdcd73791658~uveq_oHja0302003020eusmtip2o;
- Wed, 26 Aug 2020 06:35:33 +0000 (GMT)
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-To: dri-devel@lists.freedesktop.org, iommu@lists.linux-foundation.org,
- linaro-mm-sig@lists.linaro.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v9 11/32] drm: mediatek: use common helper for extracting
- pages array
-Date: Wed, 26 Aug 2020 08:32:55 +0200
-Message-Id: <20200826063316.23486-12-m.szyprowski@samsung.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200826063316.23486-1-m.szyprowski@samsung.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA0WSWUwTURSGvZ3pdECqYyFwgyjauGFkC5KMYXFBzBh9INFEY8JSYCxIC6QF
- ZHlgU6JlRxJJ3UoVUAqCSMqmIEQohFVABbXIHqqihi2KLLYM6Nt3/vOf+5+cXBzhadiWeHBo
- BC0JFYj4mDGqbvndbatmnfJ16GzeT6Z3tbHIZ3llbFKZno6Sq+pshOyf/4GRT1TNLFLR4ELO
- 9Y+wyIqxd2yyr/YuRvYlvwFk6Wsth0y65kRqh1pRsvHnOPvYVqrkfgmgXi4oUKpGruVQFcU3
- MapqYZhNfU7VsKjnj+KpjytjCHVroAhQdYMJGJW57EBlVBYDarZipxf3krFrIC0KjqIl9u5+
- xkGy5WokfNgoeiDrK5IAcnEZMMIhcRiqdd85BuYRjwHsnHJgeA7AmZWzDM8COKiM2/BPyrVs
- GTDW60UA3qlPWy/0A/eyOtgGF0Y4Qtm0DDOwGXEdwNZ0E4MJIV4gUFm7iBoapsQF2PmrbS0a
- JfbCgvKaNeYS7rCtJBVh4qyhqvzVGhvpdU1qJmZ4CBKjHNhRVYgyppOwriB/nU3hF00lh2Er
- uFrzgMUMJAM40lXKYYo0APuS8gDjcoGfuhb1z+L6/WxgWa09Ix+HUxMtazIktsCB6W0GGdFj
- jvo2wshceCOFx7j3Qbnm6b/Yxp7e9f0pmNjajDEXytafsbeBkwWs5f/DFAAUAws6UioW0lKn
- UPqqnVQglkaGCu0CwsQVQP+92lc089Wgfsm/CRA44JtwFZinL48tiJLGiJsAxBG+GfdEZ7sP
- jxsoiImlJWG+kkgRLW0C23GUb8F1Uuq8eYRQEEGH0HQ4LdnosnAjywTgIfhWJop2XTkfqyx0
- O+L8tm4m0Tbc7mFNOd/abYdSnDeBV1u17iogBhd0OTYp3SHe5tpJL7/caZ/2yKU9R7syVZuH
- DjmoAi4q4vxLR3dzoHCTCVF+5sBkvCjfU5eqbvxzWqgTXX4vVC1nNJZNFp+zbgluSDMfVyY4
- D1yRe/R84KPSIIHjQUQiFfwF5PuO7FoDAAA=
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrFIsWRmVeSWpSXmKPExsVy+t/xe7rbmNziDVasE7LoPXeSyWLjjPWs
- Fot6e1ks/m+byGxx5et7NouVq48yWSzYb23x5cpDJotNj6+xWlzeNYfN4nLzRUaLtUfusls0
- tRhb3L13gsXi4IcnrA78HmvmrWH02PttAYvHzll32T02repk89j+7QGrx/3u40wem5fUe9z+
- 95jZY/KN5Yweu282sHn0/zXw6NuyitHj8ya5AN4oPZui/NKSVIWM/OISW6VoQwsjPUNLCz0j
- E0s9Q2PzWCsjUyV9O5uU1JzMstQifbsEvYyuvzuYCx5wVtyY8Jq5gXEKRxcjJ4eEgInEs1l3
- WbsYuTiEBJYySjz7sJ0FIiEjcXJaAyuELSzx51oXG4gtJPCJUaL5DD+IzSZgKNH1FiTOxSEi
- 0MkoMa37IzuIwyxwjFli4+P3zCBVwgKhEmt+PwCbxCKgKrF0w052EJtXwE7i5JpuZogN8hKr
- NxwAszmB4se7+6G22UqcXjuDeQIj3wJGhlWMIqmlxbnpucVGesWJucWleel6yfm5mxiB8bTt
- 2M8tOxi73gUfYhTgYFTi4V3A5hovxJpYVlyZe4hRgoNZSYTX6ezpOCHelMTKqtSi/Pii0pzU
- 4kOMpkBHTWSWEk3OB8Z6Xkm8oamhuYWlobmxubGZhZI4b4fAwRghgfTEktTs1NSC1CKYPiYO
- TqkGxpVtrhV6Fw4ZSLnlKV2ZvXmX+YtM16gOp56HVjvf/+57zy3KJrZiyTSPnexrv18W8tn5
- ZeOTvNUGkyxOXci8Vs1xXW++weQsBsmz0lPCKtZUvd3AuZF9oUHBxXvLDFl61+x9aRS/onH3
- k6sMu6WMq/58fHsk+uAtbp8VQR/cZu+/2Ce2Qo+v7aYSS3FGoqEWc1FxIgCa5HSqvQIAAA==
-X-CMS-MailID: 20200826063534eucas1p2647f5e9679f79f568e184b092f743f8b
-X-Msg-Generator: CA
-X-RootMTR: 20200826063534eucas1p2647f5e9679f79f568e184b092f743f8b
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20200826063534eucas1p2647f5e9679f79f568e184b092f743f8b
-References: <20200826063316.23486-1-m.szyprowski@samsung.com>
- <CGME20200826063534eucas1p2647f5e9679f79f568e184b092f743f8b@eucas1p2.samsung.com>
+ id 1kApxB-0000ic-01; Wed, 26 Aug 2020 07:34:42 +0000
+X-UUID: d125fe5d0a45471385bf7a0184d8b0fa-20200825
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=5F2u2VX8q773AZrGxIKFo0mNHhzUD6g58juvoBIk0sM=; 
+ b=BtdjxSGo7DqQ8It57yghfwy3OZ4a3Qsiz53axPWMPW2MUmBQUw58pejoy/uCk7MZ7q6jODzMSVv+67nlpyoNyiA70XPlsKpvPJjIpB6WE6JqTLAMaHBTYrjJUbhtZIpMZvRVu0j+wnpO/BTPoqqoEtwHFcHYOO10pJkCqRPJXIo=;
+X-UUID: d125fe5d0a45471385bf7a0184d8b0fa-20200825
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1984864445; Tue, 25 Aug 2020 23:34:36 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 26 Aug 2020 00:34:34 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 26 Aug 2020 15:34:31 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 26 Aug 2020 15:34:31 +0800
+Message-ID: <1598427273.27965.0.camel@mtksdaap41>
+Subject: Re: [PATCH v2] nvmem: mtk-efuse: Remove EFUSE register write support
+From: CK Hu <ck.hu@mediatek.com>
+To: Chih-En Hsu <chih-en.hsu@mediatek.com>
+Date: Wed, 26 Aug 2020 15:34:33 +0800
+In-Reply-To: <20200826062148.27293-1-chih-en.hsu@mediatek.com>
+References: <20200826062148.27293-1-chih-en.hsu@mediatek.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200826_023536_278254_9B0EFDEF 
-X-CRM114-Status: GOOD (  14.18  )
+X-CRM114-CacheID: sfid-20200826_033441_250878_E9891BC3 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -134,59 +82,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- David Airlie <airlied@linux.ie>, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- Robin Murphy <robin.murphy@arm.com>, Christoph Hellwig <hch@lst.de>,
- linux-arm-kernel@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>
-MIME-Version: 1.0
+Cc: Andrew-CT.Chen@mediatek.com, srv_heupstream@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, Michael.Mei@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use common helper for converting a sg_table object into struct
-page pointer array.
+Hi, Chih-En:
 
-Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_gem.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+On Wed, 2020-08-26 at 14:21 +0800, Chih-En Hsu wrote:
+> This patch is to remove function "mtk_reg_write" since
+> Mediatek EFUSE hardware only supports read functionality
+> for NVMEM consumers.
+> 
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-index 3654ec732029..0583e557ad37 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-@@ -233,9 +233,7 @@ void *mtk_drm_gem_prime_vmap(struct drm_gem_object *obj)
- {
- 	struct mtk_drm_gem_obj *mtk_gem = to_mtk_gem_obj(obj);
- 	struct sg_table *sgt;
--	struct sg_page_iter iter;
- 	unsigned int npages;
--	unsigned int i = 0;
- 
- 	if (mtk_gem->kvaddr)
- 		return mtk_gem->kvaddr;
-@@ -249,11 +247,8 @@ void *mtk_drm_gem_prime_vmap(struct drm_gem_object *obj)
- 	if (!mtk_gem->pages)
- 		goto out;
- 
--	for_each_sg_page(sgt->sgl, &iter, sgt->orig_nents, 0) {
--		mtk_gem->pages[i++] = sg_page_iter_page(&iter);
--		if (i > npages)
--			break;
--	}
-+	drm_prime_sg_to_page_addr_arrays(sgt, mtk_gem->pages, NULL, npages);
-+
- 	mtk_gem->kvaddr = vmap(mtk_gem->pages, npages, VM_MAP,
- 			       pgprot_writecombine(PAGE_KERNEL));
- 
--- 
-2.17.1
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 
+> Fixes: 4c7e4fe37766 ("nvmem: mediatek: Add Mediatek EFUSE driver")
+> Signed-off-by: Chih-En Hsu <chih-en.hsu@mediatek.com>
+> ---
+>  drivers/nvmem/mtk-efuse.c | 14 --------------
+>  1 file changed, 14 deletions(-)
+> 
+> diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
+> index 856d9c3fc38e..6a537d959f14 100644
+> --- a/drivers/nvmem/mtk-efuse.c
+> +++ b/drivers/nvmem/mtk-efuse.c
+> @@ -28,19 +28,6 @@ static int mtk_reg_read(void *context,
+>  	return 0;
+>  }
+>  
+> -static int mtk_reg_write(void *context,
+> -			 unsigned int reg, void *_val, size_t bytes)
+> -{
+> -	struct mtk_efuse_priv *priv = context;
+> -	u32 *val = _val;
+> -	int i = 0, words = bytes / 4;
+> -
+> -	while (words--)
+> -		writel(*val++, priv->base + reg + (i++ * 4));
+> -
+> -	return 0;
+> -}
+> -
+>  static int mtk_efuse_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+> @@ -61,7 +48,6 @@ static int mtk_efuse_probe(struct platform_device *pdev)
+>  	econfig.stride = 4;
+>  	econfig.word_size = 4;
+>  	econfig.reg_read = mtk_reg_read;
+> -	econfig.reg_write = mtk_reg_write;
+>  	econfig.size = resource_size(res);
+>  	econfig.priv = priv;
+>  	econfig.dev = dev;
 
 _______________________________________________
 Linux-mediatek mailing list
