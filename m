@@ -2,84 +2,84 @@ Return-Path: <SRS0=weZ6=CE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CBE46C433E1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2020 11:54:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 86851C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2020 12:31:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8C12F20707
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2020 11:54:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 51CE320707
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2020 12:31:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aOli1MTp";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="oFXSr8rr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8C12F20707
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ouncgWmd";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="QakGTVbn"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 51CE320707
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mh6s+V40HPVWurs6rU3bH9vmWix43H295DBrv5Qf8gY=; b=aOli1MTpaurUbK84DIG8caQls
-	oiS/rxxPb7VpH1FPPi+j1oTve/vLMwGD8+Lb0cEwulcehbSjzhof4lgF7xi+y+NV9jdsJg1prI4Uj
-	8XZohqNVSfNEB/7LHUOaStJYW+SL74MrTMOJsikxm93TVHR68hphlDB33DNVCFYxbk/LRVFa3y5IF
-	Uy91UbpW+O0jDDkISWP0R8FmNcixXw6oIRSmnN8Xzssib05bX6u/DJk5tYLhNIMpOt9XSZzv9igGd
-	nMUhkrP67UUc7Rbt+Hci+ONO7kz3aM44GfXQzIt5DHlU9iPackVgHpanDWSq52S5WFtINNfnQK3nO
-	bPkMPoO5Q==;
+	 bh=OrAOch+Fot7yY5yMHI2pycpGRKhN4yw0ekP+/MU2iyo=; b=ouncgWmdlMxTvY2au5yij95XR
+	YpfCb53calQfHpEeCkwsbNAW82fP7rjGeDEiLXxXp1Zac2WOsOefjt9ekWZXiGKXlGsqYnhBqQacR
+	VYsIGyePaKCMNsF+x+nwF6lIkPEGtw1rOChZ73X3HvmD9mVjORxjKlxXNdfyrY5EQeupIO6MWluMQ
+	IjAe7xWW5EnfTGKYNiyRED0aaXc9AGvTeeJ3e110/M04fvOb/XXD3S0QmFmxWJK7Vvvskuylm1t9P
+	ay3iAAU4oT5f7b6hBhFmJPlf6ryCFsBLz2oia6k6AV1qZnkotXRqpSh45Qva9hGdZe/Ags7oekAjL
+	7tybyCIPg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kAu0W-0001YC-Ov; Wed, 26 Aug 2020 11:54:24 +0000
-Received: from lelv0143.ext.ti.com ([198.47.23.248])
+	id 1kAuZn-00067c-RJ; Wed, 26 Aug 2020 12:30:51 +0000
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAu0R-0001Vz-F7; Wed, 26 Aug 2020 11:54:20 +0000
-Received: from lelv0266.itg.ti.com ([10.180.67.225])
- by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 07QBsHd2011740;
- Wed, 26 Aug 2020 06:54:17 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1598442857;
- bh=7JbYWbrP9n+hcQ/zh3iXK/TqWpH2A4yaS5facefQiAo=;
- h=Subject:To:CC:References:From:Date:In-Reply-To;
- b=oFXSr8rr31TE3eJ9f/HW9iGEl6X0XzJiaN+N6kQ4kgMn8V6Vh1mUkjaohMHgZ5jzq
- ZDpQYhNO9r4PCUDdM4Hw8ip8M6NfP8wV8sa0IPHJjSUM6qyC27ECzPlhhgY9w+xC6S
- oS8CUiZHoSxLWmueCL/rIBNbarRG2d2nEqr0n/HQ=
-Received: from DFLE100.ent.ti.com (dfle100.ent.ti.com [10.64.6.21])
- by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 07QBsHTg028820
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 26 Aug 2020 06:54:17 -0500
-Received: from DFLE114.ent.ti.com (10.64.6.35) by DFLE100.ent.ti.com
- (10.64.6.21) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Wed, 26
- Aug 2020 06:54:17 -0500
-Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE114.ent.ti.com
- (10.64.6.35) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Wed, 26 Aug 2020 06:54:17 -0500
-Received: from [10.250.68.181] (ileax41-snat.itg.ti.com [10.172.224.153])
- by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 07QBsG6i079719;
- Wed, 26 Aug 2020 06:54:16 -0500
-Subject: Re: [PATCH 2/2] dt-bindings: leds: Add bindings for MT6360 LED
-To: Gene Chen <gene.chen.richtek@gmail.com>, <jacek.anaszewski@gmail.com>,
- <pavel@ucw.cz>, <matthias.bgg@gmail.com>
-References: <1598441840-15226-1-git-send-email-gene.chen.richtek@gmail.com>
- <1598441840-15226-3-git-send-email-gene.chen.richtek@gmail.com>
-From: Dan Murphy <dmurphy@ti.com>
-Message-ID: <06b19a38-6850-01b1-7a43-b61aec4079b8@ti.com>
-Date: Wed, 26 Aug 2020 06:54:16 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1kAuZl-00066R-Ow
+ for linux-mediatek@lists.infradead.org; Wed, 26 Aug 2020 12:30:51 +0000
+Received: by mail-pj1-x1042.google.com with SMTP id ds1so817408pjb.1
+ for <linux-mediatek@lists.infradead.org>; Wed, 26 Aug 2020 05:30:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=lKGfppbU0E9vUo/Yy4y4n653KjJPK3r8SJn5wAvVr+w=;
+ b=QakGTVbnXji0yIrLxFbJeBQ4Wf27OXuadMyAl+bRhLmub3MVtzX2wowojkT9zFhudo
+ 4ecf/bj36eiq5t7/Xlbi1OBjE9CSJ7lTTQASsQMdjzAM31kZSMAdmbDPkmsDq62jIWLm
+ 4EPiv8fBPc0g7CfEV5HS/ESM5rtS1YmNgyo2FrY7BWcOfbcCTHN6Ub1BNh5nv7MvTo2f
+ NgNHpBVzB+w4EAVGzWptlpbZqkUVaejmuPBIF8xTNSRptmsxR3s7Pbv+rkmxNVC4irOT
+ TNt184ss1jrFY2Ino4qBMzI6FBff3MO38MvnQxyQ/EKBCU/t3uQH9iZ3kPgbQ/KIzYzM
+ HEVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=lKGfppbU0E9vUo/Yy4y4n653KjJPK3r8SJn5wAvVr+w=;
+ b=JK1ThK3qco1FrCru0kqh+M0FJpcH6S8qg2lSm/Ne3SeAD6WJ2k2L/wQh9npYbGByl1
+ wR7ec/cLsbuJSDvUFFuibzHuWaGFakVmlvCbNahuwK9uEfTCm8qcxWk8PenYTpPq58tV
+ EC8nbSfBDkAFN+zAMzdD9CWCPJXQIsY219D2HkLxNCM02YX3UReNKj1wAv4zWJ5bk1No
+ E/Hpm6z9/gNKvZE6sEUI8waDuh8pAlsd7Snat2q0gmStbW/64l8eZpltJMlt8MA3UywQ
+ YUJwEkrkyU8or4N0WJJVOJBSkLL9SBIgY+onWTgoMvPEq5OOOSYFmJDe9d+3Z59HVnkt
+ Iycw==
+X-Gm-Message-State: AOAM532rfdyPd+Op+D1tHdIfYsbME1Gti0K2c6iikkG9fB0Ke+rS3Oq2
+ c9Qj76rAJc33HZ4HEj2kbdfUMxlcol+SQmH7AcIORw==
+X-Google-Smtp-Source: ABdhPJzfN5W9BaSlDLOyQZ1bH05/BwCHKG7L/Q3MInfwi5CE5Y8xF3ppMa98+Luw2xoB+7F0FyfkJUjO7daLVC4QNBI=
+X-Received: by 2002:a17:90a:2d82:: with SMTP id
+ p2mr5048424pjd.166.1598445045375; 
+ Wed, 26 Aug 2020 05:30:45 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1598441840-15226-3-git-send-email-gene.chen.richtek@gmail.com>
-Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+References: <20200825015654.27781-1-walter-zh.wu@mediatek.com>
+ <CANpmjNOvj+=v7VDVDXpsUNZ9o0+KoJVJs0MjLhwr0XpYcYQZ5g@mail.gmail.com>
+In-Reply-To: <CANpmjNOvj+=v7VDVDXpsUNZ9o0+KoJVJs0MjLhwr0XpYcYQZ5g@mail.gmail.com>
+From: Andrey Konovalov <andreyknvl@google.com>
+Date: Wed, 26 Aug 2020 14:30:34 +0200
+Message-ID: <CAAeHK+yVShDPCxVKDsO_5SwoM2ZG7x7byUJ74PtB7ekY61L2YQ@mail.gmail.com>
+Subject: Re: [PATCH v3 0/6] kasan: add workqueue and timer stack for generic
+ KASAN
+To: Marco Elver <elver@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200826_075420_038889_DB8D39DC 
-X-CRM114-Status: GOOD (  21.73  )
+X-CRM114-CacheID: sfid-20200826_083049_855009_9015CD18 
+X-CRM114-Status: GOOD (  23.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,99 +91,89 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
- benjamin.chao@mediatek.com, linux-mediatek@lists.infradead.org,
- linux-leds@vger.kernel.org, Wilma.Wu@mediatek.com,
- linux-arm-kernel@lists.infradead.org, shufan_lee@richtek.com
+Cc: Walter Wu <walter-zh.wu@mediatek.com>, John Stultz <john.stultz@linaro.org>,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ Linux Memory Management List <linux-mm@kvack.org>,
+ Stephen Boyd <sboyd@kernel.org>, Lai Jiangshan <jiangshanlai@gmail.com>,
+ LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>,
+ Tejun Heo <tj@kernel.org>, linux-mediatek@lists.infradead.org,
+ Alexander Potapenko <glider@google.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Andrey Ryabinin <aryabinin@virtuozzo.com>,
+ Andrew Morton <akpm@linux-foundation.org>, Dmitry Vyukov <dvyukov@google.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Gene
-
-On 8/26/20 6:37 AM, Gene Chen wrote:
-> From: Gene Chen <gene_chen@richtek.com>
+On Tue, Aug 25, 2020 at 10:26 AM 'Marco Elver' via kasan-dev
+<kasan-dev@googlegroups.com> wrote:
 >
-> Add bindings document for LED support on MT6360 PMIC
-
-Usually bindings are 1/x in the patchset.
-
-And you should cc Rob Herring and the Device tree mail list other wise 
-the maintainer will not apply this patch without their ACKs
-
-
-> Signed-off-by: Gene Chen <gene_chen@richtek.com>
-> ---
->   .../devicetree/bindings/leds/leds-mt6360.yaml      | 50 ++++++++++++++++++++++
->   1 file changed, 50 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/leds/leds-mt6360.yaml
+> On Tue, 25 Aug 2020 at 03:57, Walter Wu <walter-zh.wu@mediatek.com> wrote:
+> >
+> > Syzbot reports many UAF issues for workqueue or timer, see [1] and [2].
+> > In some of these access/allocation happened in process_one_work(),
+> > we see the free stack is useless in KASAN report, it doesn't help
+> > programmers to solve UAF on workqueue. The same may stand for times.
+> >
+> > This patchset improves KASAN reports by making them to have workqueue
+> > queueing stack and timer stack information. It is useful for programmers
+> > to solve use-after-free or double-free memory issue.
+> >
+> > Generic KASAN also records the last two workqueue and timer stacks and
+> > prints them in KASAN report. It is only suitable for generic KASAN.
+> >
+> > [1]https://groups.google.com/g/syzkaller-bugs/search?q=%22use-after-free%22+process_one_work
+> > [2]https://groups.google.com/g/syzkaller-bugs/search?q=%22use-after-free%22%20expire_timers
+> > [3]https://bugzilla.kernel.org/show_bug.cgi?id=198437
+> >
+> > Walter Wu (6):
+> > timer: kasan: record timer stack
+> > workqueue: kasan: record workqueue stack
+> > kasan: print timer and workqueue stack
+> > lib/test_kasan.c: add timer test case
+> > lib/test_kasan.c: add workqueue test case
+> > kasan: update documentation for generic kasan
 >
-> diff --git a/Documentation/devicetree/bindings/leds/leds-mt6360.yaml b/Documentation/devicetree/bindings/leds/leds-mt6360.yaml
-> new file mode 100644
-> index 0000000..4598be5
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/leds/leds-mt6360.yaml
-> @@ -0,0 +1,50 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/leds/leds-mt6360.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: LED driver for MT6360 PMIC from MediaTek Integrated.
-> +
-> +maintainers:
-> +  - Gene Chen <gene_chen@richtek.com>
-> +
-> +description: |
-> +  This module is part of the MT6360 MFD device. For more details
-> +  see Documentation/devicetree/bindings/mfd/mt6360.yaml.
+> Acked-by: Marco Elver <elver@google.com>
 
-I think you need to include this yaml using allof tag
+Reviewed-by: Andrey Konovalov <andreyknvl@google.com>
 
-
-> +
-> +  The LED controller is represented as a sub-node of the PMIC node on
-> +  the device tree.
-> +
-> +  This device has six current sinks.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt6360-led
-> +
-> +  "#address-cells":
-> +    const: 1
-> +
-> +  "#size-cells":
-> +    const: 0
-> +
-> +patternProperties:
-> +  "^led@[0-5]$":
-> +    type: object
-> +    description: |
-> +      Properties for a single LED.
-> +
-> +    properties:
-> +      reg:
-> +        description:
-> +          Index of the LED.
-> +        minimum: 0
-> +        maximum: 5
-> +
-> +required:
-> +  - compatible
-> +  - "#address-cells"
-> +  - "#size-cells"
-> +additionalProperties: false
-> +
-Need a new line
-
-
-And an example
-
-> +...
+>
+>
+>
+> > ---
+> >
+> > Changes since v2:
+> > - modify kasan document to be more readable.
+> >   Thanks for Marco suggestion.
+> >
+> > Changes since v1:
+> > - Thanks for Marco and Thomas suggestion.
+> > - Remove unnecessary code and fix commit log
+> > - reuse kasan_record_aux_stack() and aux_stack
+> >   to record timer and workqueue stack.
+> > - change the aux stack title for common name.
+> >
+> > ---
+> >
+> > Documentation/dev-tools/kasan.rst |  4 ++--
+> > kernel/time/timer.c               |  3 +++
+> > kernel/workqueue.c                |  3 +++
+> > lib/test_kasan.c                  | 54 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+> > mm/kasan/report.c                 |  4 ++--
+> > 5 files changed, 64 insertions(+), 4 deletions(-)
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "kasan-dev" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/20200825015654.27781-1-walter-zh.wu%40mediatek.com.
+>
+> --
+> You received this message because you are subscribed to the Google Groups "kasan-dev" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/CANpmjNOvj%2B%3Dv7VDVDXpsUNZ9o0%2BKoJVJs0MjLhwr0XpYcYQZ5g%40mail.gmail.com.
 
 _______________________________________________
 Linux-mediatek mailing list
