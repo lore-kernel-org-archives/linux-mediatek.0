@@ -2,85 +2,86 @@ Return-Path: <SRS0=xkEi=CF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C66FC433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 01:12:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 389EBC433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 01:50:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D04582073A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 01:12:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 048F32087C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 01:50:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="S7Ih7qPH";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="TTA3SJS1"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D04582073A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PDbUwjtD";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="fT+dW9P/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 048F32087C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gfXHlW778Hvmug7GEer+KztwQGw6lGm406HV/LcZdcQ=; b=S7Ih7qPHauXMNlPCvx/+YL7/j
-	Rq/SUinMiAOXxNBc2j11ShYkbtT0udvS7QUGBnazXcj2vmNzoZlFReuoOiym7U75m85tYeVVnmQNH
-	tcnZyRZ53BOZtU7B+BpJH5TWLMPIU6/MhgZFS2oB052gFfHXef9nrlLr1zNrQX9seEfdHjcXJRNha
-	QPznI4i7qwWIcCt7j0s6PDYd/JDh9TqyOi1w4M/LiKEDANzyDasloTy/+mECujnTZSO0Wr8IKyg8g
-	9u324tX7u11T482MOL2viDy8YehhejOHCWtYNnU2wOEDu9xW82bn09BEfNehBhBVIQJymOatxOpYW
-	g6ZdQ85Fw==;
+	List-Unsubscribe:List-Id:To:From:Subject:Mime-Version:Message-Id:Date:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1Ep0zTkqew/+U8xAvHwNcZc3FcptyUPzq/AwpJGmL3I=; b=PDbUwjtD7VvGgor+JMRj61O+5r
+	hg49plJjRZCyfO9LW8cRoraaYjf5a50DUer5iyLfcqNQUtD+BJjMVnpY++FeuJ4eEUIK5R4QhOg0m
+	u5bHyUsJxH8MWe6LtoPxGBOQuipeAja3TyA/0sr0yhY7KVk50Mgh7pDwBIXq0EotwefayxVAy6za9
+	+oPbpMLjkSc9Q+HLcaByOILyho0uRNkkAwyn2Nxqn2ojBi7IDlwaVJv2kZSGG3ckySNdBT5TngSjp
+	qBvD0jmtTW4sOqehxhizv+T/lxq4zi/1Hi46TbPh59QUtA5W+7cpuGYY409p6rA+IAvyIwSs8M6dl
+	1gQtzIkw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kB6SO-0001wJ-K7; Thu, 27 Aug 2020 01:12:00 +0000
-Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242])
+	id 1kB73O-0004lf-JR; Thu, 27 Aug 2020 01:50:14 +0000
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kB6SL-0001vY-Gb; Thu, 27 Aug 2020 01:11:58 +0000
-Received: by mail-lj1-x242.google.com with SMTP id f26so4500578ljc.8;
- Wed, 26 Aug 2020 18:11:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=m/8pB8Sw21i7XQLubODjblLQyuDRrCYhn+Eq3ZDQVx0=;
- b=TTA3SJS1N/caMZX9Nag1kHB/iT0fK4yOYmxP3aMRd75Z2BueqjS4WGzvX3hU8cgNYw
- br9qLPus7nDMRlbM630MvGiWgR1tFlr7ZG7v8SNBu0iNMCvRVjwsOqIkMyz8/8fUKaIx
- C6hGhspEoFOxM6rUY5ERS3UNGItKKusEBXK6LvtdJK9W/07KMy6mXl8uaaEVjKS4knsy
- bXY4/ngTaCKfitIuKfJkwr4X4xSCDpUlXpf+EOUZN6EZwNhHrX7mHfgfrp4hX3TLmvib
- E3oxNcnZGr5WYLHtA4bAkRY6e6wnO+UOegOwN9VrxZtijgjOT8pY3w02NPCumMMjc8BF
- JhBg==
+ id 1kB73L-0004kF-8q
+ for linux-mediatek@lists.infradead.org; Thu, 27 Aug 2020 01:50:11 +0000
+Received: by mail-yb1-xb49.google.com with SMTP id e12so5292203ybc.18
+ for <linux-mediatek@lists.infradead.org>; Wed, 26 Aug 2020 18:50:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=sender:date:message-id:mime-version:subject:from:to:cc;
+ bh=kI87pt4IL87WeMlhQ+cq6jv+hjTA9JuH40a82jlPo3k=;
+ b=fT+dW9P/B2jsQN6UzMCNYitt1FhkZ2EgLVRxO8SI73Y1MIl175TvZVJOkeJv9lKYS1
+ 7j7v0LBE4pPOY3NjfW6igBChFc3bFulo5XuCcTVNGL6EGEj/jy1O3fS2KTtezXxdNy6d
+ 4JgoLTvPWczkkgoEda/iQXFy8xIvKYGO2X9Tm/iu/qTwCPTOKjWrk0OoBWs/yAXNFvVW
+ luyC/lOKK26zqSoITqE2rn+7SfNFHjHOgAOaBWoX3wFdfZcADbdpqh/aFFZ0enNR/nMQ
+ QlXeMC7wmizyvNElsGqxvEopYaPtOY9pzv5nPsNasRj/3iVDas8cSQZBfiiFo/M2zSpO
+ 1+iQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=m/8pB8Sw21i7XQLubODjblLQyuDRrCYhn+Eq3ZDQVx0=;
- b=OiWcwt5MFw1YdSsjeehVgkfe9bmes2XV0V7W9Tul1ocWRaRAbKre4IZv1GBS0eniHU
- ZpgYytX4oaOFo1MSGy7f6LOYJU6Ld8kv9gngJQxAA2QKVgEHTij9f5dX0axyDpl9Iyp+
- 1/VIbqM7oIYZ1KYYRgBJdNpbAzTieZjltlX/mF0I4Yc4e2MlUgRhyDFhvrRfPxOwskDx
- aynBZpeznDuL4h1Yu/OiuMkozyHlMg0/b+z/6Hp3l9KTbSCYZ6psIyzj8CYLDp4KtbQS
- 2h/RK1FJMLovrpbkJ8iYRSLoQUEhcH55bykwOP3v3NxJ3208fArcxx+FZarHYSALyuWv
- nLLA==
-X-Gm-Message-State: AOAM531Af/At3QHWBac4hvfbH5aifsOV3ypGMKVfkBGvE+xajnWzQcGT
- vJrxNpn1WBEBnjtnEyADd6Vi9x4BuNH4qc/AfVU=
-X-Google-Smtp-Source: ABdhPJydzD1WwH6+x47tyNqs5lJxZhmJOXy71zWRsrVhFlJb3UW8drng/iudHsH+0nuncrCwHunivBrN3aq1Cyaa5dk=
-X-Received: by 2002:a2e:2c0e:: with SMTP id s14mr8994396ljs.28.1598490716116; 
- Wed, 26 Aug 2020 18:11:56 -0700 (PDT)
-MIME-Version: 1.0
-References: <1598440602-8648-1-git-send-email-u0084500@gmail.com>
- <a7d1a5d9-97e9-bcf6-23f4-2c4be356913f@roeck-us.net>
- <CADiBU3_x5-P8A0erchFpWucX4_R8M01-CdOJv38FjrPGSn+55A@mail.gmail.com>
- <627dd188-9379-1179-432e-b53948052823@roeck-us.net>
-In-Reply-To: <627dd188-9379-1179-432e-b53948052823@roeck-us.net>
-From: =?UTF-8?B?5ZWf5Y6f6buD?= <u0084500@gmail.com>
-Date: Thu, 27 Aug 2020 09:11:44 +0800
-Message-ID: <CADiBU3_GX+BvxQCDkMtf70sXHnwFVNmBCJsrydROHjy5Lr9B4g@mail.gmail.com>
-Subject: Re: [PATCH 1/2] usb typec: mt6360: Add support for mt6360 Type-C
- driver
-To: Guenter Roeck <linux@roeck-us.net>
+ h=x-gm-message-state:sender:date:message-id:mime-version:subject:from
+ :to:cc;
+ bh=kI87pt4IL87WeMlhQ+cq6jv+hjTA9JuH40a82jlPo3k=;
+ b=DyYnAhQsxHNp4c00gYUAySzUTF+Nb0V2cxeW2YhtCwlbJcsQZI8N9CJ+/cTIXgur0T
+ zucNCS3yZdRgTcog91hKhOf2TQt10W1vkL+b0gOvxI/yIQoWaSXyutoENzEmiB+a6OI7
+ ANgNF1DHrj3tftOTqr34xqDoTz5ljajgDszPlr+PoiA1FOLXpcsjlPMkox4r4py7xNbR
+ C/IwAMxUbYApJ4fFyiY/qIhSsqCDggMXV+iPa8aKKcaMamNAcPHbIDMszwGTceqS7HIF
+ ffoP0CXk7ItDTS3eIndGFAl7T2vQWkpqTqFLurU6zJARdiYznwMJ7s2HVq4kLmQF0Efq
+ XyYA==
+X-Gm-Message-State: AOAM533NxqQI+GFWe3xVu0zGikKC+iLEuMr9lViC41aSooHl9SNSfI2H
+ se/bVlaqHpWwVWIneKZt2ZYYbez3HvqlMWKdu5YZHaAht7o9HPwSfvaezB6pt8PcCshtGy4jjIu
+ lYeJ3zg0kxXyjUpirBmFXNIc1M65w6bwq54ORfJc5Ztlmyh3NHxb9rNdExf9O05UVhr8tnmYOmX
+ rxUzOP
+X-Google-Smtp-Source: ABdhPJwa3pv3Hu/+UkZbQW3sc70xWqy/UBXE05JvwXvifOJWs+ZvIJGMacTjSpT/pEhrLHiVX/Z062RKwsuI
+X-Received: from nandos.syd.corp.google.com
+ ([2401:fa00:9:14:725a:fff:fe46:72ab])
+ (user=amistry job=sendgmr) by 2002:a25:8b09:: with SMTP id
+ i9mr25344049ybl.149.1598493004751; Wed, 26 Aug 2020 18:50:04 -0700 (PDT)
+Date: Thu, 27 Aug 2020 11:49:52 +1000
+Message-Id: <20200827114934.v2.1.I6d12081e37d27ba7580a1af877727d882935787a@changeid>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.28.0.297.g1956fa8f8d-goog
+Subject: [PATCH v2] arm64: dts: mt8173-elm: Set GPU power regulator to always
+ on
+From: Anand K Mistry <amistry@google.com>
+To: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200826_211157_661697_F6C65AE1 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20200826_215011_310519_0D4B0EBF 
+X-CRM114-Status: GOOD (  18.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,32 +93,95 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, devicetree@vger.kernel.org,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>,
- Greg KH <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, cy_huang <cy_huang@richtek.com>,
- robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+Cc: devicetree@vger.kernel.org, Anand K Mistry <amistry@google.com>,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-R3VlbnRlciBSb2VjayA8bGludXhAcm9lY2stdXMubmV0PiDmlrwgMjAyMOW5tDjmnIgyN+aXpSDp
-gLHlm5sg5LiK5Y2IOTowMuWvq+mBk++8mgo+Cj4gT24gOC8yNi8yMCA1OjU5IFBNLCDllZ/ljp/p
-u4Mgd3JvdGU6Cj4gWyAuLi4gXQo+ID4+PiArc3RhdGljIGludCBtdDYzNjBfdGNwY19yZW1vdmUo
-c3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiA+Pj4gK3sKPiA+Pj4gKyAgICAgc3RydWN0
-IG10NjM2MF90Y3BjX2luZm8gKm10aSA9IHBsYXRmb3JtX2dldF9kcnZkYXRhKHBkZXYpOwo+ID4+
-PiArCj4gPj4+ICsgICAgIHRjcGNpX3VucmVnaXN0ZXJfcG9ydChtdGktPnRjcGNpKTsKPiA+Pgo+
-ID4+IFRoYXQgbGVhdmVzIGludGVycnVwdHMgZW5hYmxlZCwgd2hpY2ggbWlnaHQgYmUgcmFjeQo+
-ID4+IGJlY2F1c2UgaW50ZXJydXB0cyBhcmUgc3RpbGwgZW5hYmxlZCBoZXJlLgo+ID4gTS4uLiwg
-eWVzLCBpdCB3aWxsIGNhdXNlIHRoZSByYWNlIGNvbmRpdGlvbiBkdXJpbmcgbW9kdWxlIHJlbW92
-ZS4KPiA+IEknbGwgYWRkIGRpc2FibGVfaXJxIGJlZm9yZSB0Y3BjaSB1bnJlZ2lzdGVyIHRvIHBy
-ZXZlbnQgaXQuCj4KPiBPciBqdXN0IHNldCBUQ1BDX0FMRVJUX01BU0sgdG8gMCwgYXMgaW4gdGNw
-Y2kuYy4KQm90aCBhcmUgcmlnaHQsIFRoeC4gSSdsbCBjaG9vc2Ugb25lLgoKQlRXLCBpdCBzZWVt
-cyBlbnVtIHR5cGVjX2NjX3N0YXR1cyBpcyB1c2VkIGJ5IHRjcGNpLmguCklmIEkgZG9uJ3QgaW5j
-bHVkZSB0Y3BtLmgsIGl0IHdpbGwgcmFpc2UgYSB3YXJuaW5nIGR1cmluZyB0aGUgY29tcGlsZSB0
-aW1lLgo+Cj4gR3VlbnRlcgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1tZWRpYXRlawo=
+Keep the da9212 BUCKB always-on. This works around an issue on Elm/Hana
+devices where sometimes, the regulator is disabled before scpsys is
+suspended, causing the suspension of scpsys to fail.
+
+Usually, the GPU and scpsys are suspended by the runtime PM before the
+system is suspended, due to the GPU being idle. In this case, scpsys is
+suspended inline with the GPU suspend, which then disables the
+regulator. However, if the GPU is still active when system is suspended,
+GPU suspend occurs but defers suspending scpsys to the PM's noirq phase.
+Since GPU suspend disables the regulator, scpsys isn't powered and
+suspending it fails with the following error:
+[  523.773227] mtk-scpsys 10006000.scpsys: Failed to power off domain mfg_2d
+
+On resume, scpsys is resumed in the noirq phase. Since scpsys requires
+power from the regulator, which is still disabled at this point,
+attempting to turn it on will hang the CPU. A HW watchdog eventually
+reboots the system.
+
+The obvious solution would be to add a link to the regulator from scpsys
+in the devicetree. This would prevent the regulator from being disabled
+until scpsys is suspended. However, in the case where suspending scpsys
+is deferred to the noirq phase, disabling the regulator will fail since
+it is connected over I2C which requires IRQs to be enabled. Even in the
+usual case where scpsys is suspended inline with the GPU, PM will always
+attempt to resume scpsys in noirq. This will attempt to enable the
+regulator, which will also fail due to being unable to communicate over
+I2C.
+
+Since I2C can't be using with IRQs disabled, a workaround is to never
+turn off the regulator.
+
+Measuring power on the GPU rail on an Elm DVT device shows that the
+change in power usage is negligible. The two relavent cases are S0 with
+an idle GPU, and S3 (system suspended). Measurements taken using a debug
+board every 100ms for 1 minute.
+
+In S0 with an idle GPU, current behaviour with the regulator off:
+@@           NAME  COUNT  AVERAGE  STDDEV      MAX    MIN
+@@         gpu_mw    600     1.74    1.31     6.75   0.00
+... and with the regulator on, but no load:
+@@           NAME  COUNT  AVERAGE  STDDEV     MAX    MIN
+@@         gpu_mw    600     1.68    1.25    7.13   0.00
+The difference being well within the margin of error.
+
+In S3, current behaviour with the regulator off:
+@@           NAME  COUNT  AVERAGE  STDDEV     MAX    MIN
+@@         gpu_mw    600     0.94    0.74    3.25   0.00
+... and with the regulator on:
+@@           NAME  COUNT  AVERAGE  STDDEV     MAX     MIN
+@@         gpu_mw    600     0.83    0.66    3.25    0.00
+
+Signed-off-by: Anand K Mistry <amistry@google.com>
+
+---
+
+Changes in v2:
+- Remove CHROMIUM from subject line
+- Correct device in subject line (8183 -> 8173)
+- Grammar/clarity changes in description
+
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+index a5a12b2599a4..1294f27b21c1 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+@@ -304,6 +304,7 @@ da9211_vgpu_reg: BUCKB {
+ 				regulator-min-microamp  = <2000000>;
+ 				regulator-max-microamp  = <3000000>;
+ 				regulator-ramp-delay = <10000>;
++				regulator-always-on;
+ 			};
+ 		};
+ 	};
+-- 
+2.28.0.297.g1956fa8f8d-goog
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
