@@ -2,80 +2,83 @@ Return-Path: <SRS0=xkEi=CF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 66C90C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 14:42:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2CB1DC433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 14:52:15 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 341C92087D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 14:42:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F0BBC2054F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 14:52:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="brH/8jbi";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="lnJ3q6CH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 341C92087D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QZ9hdQf1";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="gjBwiPji"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F0BBC2054F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NatJMvNvc7BuCMLg/HXQXipT3uj1CZuGuOayE6g+ZaU=; b=brH/8jbiiWHZ5TkP/RuaSsYFp
-	8BJEg7NGhmN+kx7h2KFxnUt0ftaS/f1vk/0mJgMMoL2ln72hsJ3mMpYDRhnCJx9ELVFtwKha2aAuB
-	UmMlNBRlz2IkowVf/YJUrm7qyarhvsiSc0dmthtZnMrEEabUXUxVA5I4vD5wohCbYMEabNM7vBL6W
-	WUlxyfwXn1kI0yt0k+5RNDvKo4n7CESzxIkX3ZgNDMGBGsIMPj9NfnWTW8QUbwPRWhOkgXAffNBL2
-	V6r2CxHhVzWevcHto1OpjvkkG1z5HeXOuRxuDRqxzOAGWHStz8f4a8G37yz2Eeq9g01kL6w0mVxRl
-	SNW70Eq9w==;
+	 bh=GQV+1aDskdupoqXZD1jNgzJz2kP+S4IaSI9/qMBZyNM=; b=QZ9hdQf17VC2hI/As5IsgEi2t
+	YBU9dFR8MW2v2HG0hkI6MDLQ13jolJNTivAVf/Ih9mP80v6sO5XrpPIJlZ3uuf53vz/FJwj0lJDEM
+	eqae1hPgoj08ledA6CgDJu2/ov4st0Kifj+R/zdePx7VyRUS0+Zi3DBZqhf2E7vBy3O0oeIXyWq6q
+	/uscjpLw0W7Cor4YH9+T1GVaHn43OxgVGDnLrW4UVMlWH3zHu5nb6/rOWvp+9GMdat2hand/zvmqQ
+	QqxC2ne9N0v6eWkourlVQI2Cbfh9I8Si9406dzEs4xP0uvNr+c5ZNuEhULvV3DrHL+w4wqDMV6cJE
+	8+XSkqK7A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kBJ6r-00050K-Oh; Thu, 27 Aug 2020 14:42:37 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kBJFz-0007Mu-Q3; Thu, 27 Aug 2020 14:52:03 +0000
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kBJ6p-0004zQ-2a; Thu, 27 Aug 2020 14:42:36 +0000
-X-UUID: d582b4c7e031419587dc441df0759958-20200827
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=JxbZixmFJh9c+WT3U8OFN0KHuXjwMU2nmEwM8sSXHVA=; 
- b=lnJ3q6CHyNUcNdP7kS4JAoOimbkAzmCuZZyAkKKR4L3yWup+DMqb5OkvaRULBGIN+j4h0oY1evQt7EeBfoR+n7Pj8DdcQlBBMASHErdarC81l3G3mr9ucNpzhtkH3/LCa5kmqK9D+AzzcqTy5wIfEYKLnVXv35ohu2OlzI5cNMc=;
-X-UUID: d582b4c7e031419587dc441df0759958-20200827
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <macpaul.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 706360946; Thu, 27 Aug 2020 06:42:26 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 27 Aug 2020 07:42:23 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 27 Aug 2020 22:42:14 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 27 Aug 2020 22:42:14 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Alan Stern <stern@rowland.harvard.edu>, Felipe Balbi <balbi@kernel.org>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- <linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v4] usb: mtu3: fix panic in mtu3_gadget_stop()
-Date: Thu, 27 Aug 2020 22:42:08 +0800
-Message-ID: <1598539328-1976-1-git-send-email-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1598520178-17301-1-git-send-email-macpaul.lin@mediatek.com>
-References: <1598520178-17301-1-git-send-email-macpaul.lin@mediatek.com>
+ id 1kBJFr-0007Jn-V9; Thu, 27 Aug 2020 14:51:56 +0000
+Received: by mail-lj1-x243.google.com with SMTP id t6so6738389ljk.9;
+ Thu, 27 Aug 2020 07:51:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=txhfrSF9RX3MqxwN9hoW/kar0+P8SVn2XnHOzqJQ9IY=;
+ b=gjBwiPji3SaNbCP9jML1HZoNahK/I6qqs0rl0EygcZbZRptYdcMLHdy1mv7UHcaDp0
+ +SUHGKslVz5TRz1z7pi7ETrhxoG2F4LiDXmAi5z22/+KyryUnUvOlH3Du1iqooWTAmiI
+ gyt4ZHvwYsreEvMfFGES4WdC5hyJ9xDyNT6KxBEdkshROOsM3DbwVyaKf5XqbIzaLCW3
+ 2lgsa4SeK2WfjzhOr36LgK+d+MnFbnwSH3ryYf8jPNSSscvVS66RS1qRwWmJCTBwaMcE
+ NwJdJy/VloyZP1dH0avdKUyPtuRnd6MBdpz+2Rhxdc+62XDR8G5XrE3S0sk3qNda5+Jq
+ Uswg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=txhfrSF9RX3MqxwN9hoW/kar0+P8SVn2XnHOzqJQ9IY=;
+ b=nLLY46iD1TjI7pQ92PrLyQXYwgeHKd4pvwjRnd3ypYzATcJOzSgwaAj9oWU6xuD4h/
+ ykqgNKPmKGm0iNjSM2IPVYoEWhhTxypNaGRpyLXsrx0VSxwJz8U3C/KyuGqtI4F+8ZfO
+ JU72ZVRa5M9JqVGx3sOMYzUWDABX3NwLaY6lvyRRDQ37UJEh5mLZOjwT3I9Lv9tu53ni
+ QMCnjjAuz6+ltTe7YAUlSDaREWW2HXGnbeAyDAbQH0zI7xEce+RNoAHFRINNG1eaQzJH
+ atm3iq7KvhkTPzYqERAYyjcxMhGsUJnkYKL6jtCbNk0NNLfQEwe/CJTCeF/FBGlKJMot
+ VDEQ==
+X-Gm-Message-State: AOAM530Hjxzbd2uGBdSzLrqz7Kylh5N1XfuSFLAzWq3zkW6kkMwtOuTn
+ ZfgWr9tS/AKKgMXeBdloFx36CnjZXbQsZ7XlVS+n3nNYdas=
+X-Google-Smtp-Source: ABdhPJxkVhI0j2VsdBWVwc0FSlt/bcCfk71WFFX36z10VABx6cu21rQwkSKWef3JMaP2Bwmgr7KClVB6jt0m6gXA8C8=
+X-Received: by 2002:a2e:160d:: with SMTP id w13mr10443684ljd.470.1598539914375; 
+ Thu, 27 Aug 2020 07:51:54 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: AAD9FDC317E12DCC933D9F09EE1697932188FE17584BD9F57F94349FC182C0932000:8
-X-MTK: N
+References: <1598527137-6915-1-git-send-email-u0084500@gmail.com>
+ <20200827140001.GE813478@kuha.fi.intel.com>
+In-Reply-To: <20200827140001.GE813478@kuha.fi.intel.com>
+From: ChiYuan Huang <u0084500@gmail.com>
+Date: Thu, 27 Aug 2020 22:51:43 +0800
+Message-ID: <CADiBU393V_iQw_8Hx2braL=8QpvQuTY0059C-XkqmjO9W=aBgQ@mail.gmail.com>
+Subject: Re: [PATCH v3 1/3] usb typec: mt6360: Add support for mt6360 Type-C
+ driver
+To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200827_104235_340892_2FE83273 
-X-CRM114-Status: GOOD (  15.40  )
+X-CRM114-CacheID: sfid-20200827_105156_054840_F4F0ED84 
+X-CRM114-Status: GOOD (  20.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,88 +90,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- Eddie Hung <eddie.hung@mediatek.com>, linux-kernel@vger.kernel.org,
- stable@vger.kernel.org, Ainge Hsu <ainge.hsu@mediatek.com>,
- Macpaul Lin <macpaul.lin@gmail.com>, Macpaul Lin <macpaul.lin@mediatek.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: gene_chen@richtek.com, devicetree@vger.kernel.org,
+ Greg KH <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, cy_huang <cy_huang@richtek.com>,
+ robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
+ Guenter Roeck <linux@roeck-us.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch fixes a possible issue when mtu3_gadget_stop()
-already assigned NULL to mtu->gadget_driver during mtu_gadget_disconnect().
-
-[<ffffff9008161974>] notifier_call_chain+0xa4/0x128
-[<ffffff9008161fd4>] __atomic_notifier_call_chain+0x84/0x138
-[<ffffff9008162ec0>] notify_die+0xb0/0x120
-[<ffffff900809e340>] die+0x1f8/0x5d0
-[<ffffff90080d03b4>] __do_kernel_fault+0x19c/0x280
-[<ffffff90080d04dc>] do_bad_area+0x44/0x140
-[<ffffff90080d0f9c>] do_translation_fault+0x4c/0x90
-[<ffffff9008080a78>] do_mem_abort+0xb8/0x258
-[<ffffff90080849d0>] el1_da+0x24/0x3c
-[<ffffff9009bde01c>] mtu3_gadget_disconnect+0xac/0x128
-[<ffffff9009bd576c>] mtu3_irq+0x34c/0xc18
-[<ffffff90082ac03c>] __handle_irq_event_percpu+0x2ac/0xcd0
-[<ffffff90082acae0>] handle_irq_event_percpu+0x80/0x138
-[<ffffff90082acc44>] handle_irq_event+0xac/0x148
-[<ffffff90082b71cc>] handle_fasteoi_irq+0x234/0x568
-[<ffffff90082a8708>] generic_handle_irq+0x48/0x68
-[<ffffff90082a96ac>] __handle_domain_irq+0x264/0x1740
-[<ffffff90080819f4>] gic_handle_irq+0x14c/0x250
-[<ffffff9008084cec>] el1_irq+0xec/0x194
-[<ffffff90085b985c>] dma_pool_alloc+0x6e4/0xae0
-[<ffffff9008d7f890>] cmdq_mbox_pool_alloc_impl+0xb0/0x238
-[<ffffff9008d80904>] cmdq_pkt_alloc_buf+0x2dc/0x7c0
-[<ffffff9008d80f60>] cmdq_pkt_add_cmd_buffer+0x178/0x270
-[<ffffff9008d82320>] cmdq_pkt_perf_begin+0x108/0x148
-[<ffffff9008d824d8>] cmdq_pkt_create+0x178/0x1f0
-[<ffffff9008f96230>] mtk_crtc_config_default_path+0x328/0x7a0
-[<ffffff90090246cc>] mtk_drm_idlemgr_kick+0xa6c/0x1460
-[<ffffff9008f9bbb4>] mtk_drm_crtc_atomic_begin+0x1a4/0x1a68
-[<ffffff9008e8df9c>] drm_atomic_helper_commit_planes+0x154/0x878
-[<ffffff9008f2fb70>] mtk_atomic_complete.isra.16+0xe80/0x19c8
-[<ffffff9008f30910>] mtk_atomic_commit+0x258/0x898
-[<ffffff9008ef142c>] drm_atomic_commit+0xcc/0x108
-[<ffffff9008ef7cf0>] drm_mode_atomic_ioctl+0x1c20/0x2580
-[<ffffff9008ebc768>] drm_ioctl_kernel+0x118/0x1b0
-[<ffffff9008ebcde8>] drm_ioctl+0x5c0/0x920
-[<ffffff900863b030>] do_vfs_ioctl+0x188/0x1820
-[<ffffff900863c754>] SyS_ioctl+0x8c/0xa0
-
-Fixes: df2069acb005 ("usb: Add MediaTek USB3 DRD driver")
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: stable@vger.kernel.org
----
-Changes for v4:
-  - Add a "Fixes:" line.  Thanks Felipe.
-Changes for v3:
-  - Call synchronize_irq() in mtu3_gadget_stop() instead of remembering
-    callback function in mtu3_gadget_disconnect().
-    Thanks for Alan's suggestion.
-Changes for v2:
-  - Check mtu_gadget_driver out of spin_lock might still not work.
-    We use a temporary pointer to remember the callback function.
-
- drivers/usb/mtu3/mtu3_gadget.c |    1 +
- 1 file changed, 1 insertions(+)
-
-diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
-index 1de5c9a..1ab3d3a 100644
---- a/drivers/usb/mtu3/mtu3_gadget.c
-+++ b/drivers/usb/mtu3/mtu3_gadget.c
-@@ -564,6 +564,7 @@ static int mtu3_gadget_stop(struct usb_gadget *g)
- 
- 	spin_unlock_irqrestore(&mtu->lock, flags);
- 
-+	synchronize_irq(mtu->irq);
- 	return 0;
- }
- 
--- 
-1.7.9.5
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGVpa2tpIEtyb2dlcnVzIDxoZWlra2kua3JvZ2VydXNAbGludXguaW50ZWwuY29tPiDmlrwgMjAy
+MOW5tDjmnIgyN+aXpSDpgLHlm5sg5LiL5Y2IMTA6MDDlr6vpgZPvvJoKPgo+IE9uIFRodSwgQXVn
+IDI3LCAyMDIwIGF0IDA3OjE4OjU1UE0gKzA4MDAsIGN5X2h1YW5nIHdyb3RlOgo+ID4gRnJvbTog
+Q2hpWXVhbiBIdWFuZyA8Y3lfaHVhbmdAcmljaHRlay5jb20+Cj4gPgo+ID4gTWVkaWF0ZWsgTVQ2
+MzYwIGlzIGEgbXVsdGktZnVuY3Rpb25hbCBJQyB0aGF0IGluY2x1ZGVzIFVTQiBUeXBlLUMuCj4g
+PiBJdCB3b3JrcyB3aXRoIFR5cGUtQyBQb3J0IENvbnRyb2xsZXIgTWFuYWdlciB0byBwcm92aWRl
+IFVTQiBQRAo+ID4gYW5kIFVTQiBUeXBlLUMgZnVuY3Rpb25hbGl0aWVzLgo+ID4KPiA+IHYxIHRv
+IHYyCj4gPiAxLiBBZGQgZml4IHRvIFByZXZlbnQgdGhlIHJhY2UgY29uZGl0aW9uIGZyb20gaW50
+ZXJydXB0IGFuZCB0Y3BjaSBwb3J0Cj4gPiB1bnJlZ2lzdGVyIGR1cmluZyBtb2R1bGUgcmVtb3Zl
+Lgo+ID4KPiA+IHYyIHRvIHYzCj4gPiAxLiBDaGFuZ2UgY29tbWVudCBzdHlsZSBmb3IgdGhlIGhl
+YWQgb2Ygc291cmNlIGNvZGUuCj4gPiAyLiBObyBuZWVkIHRvIHByaW50IGVycm9yIGZvciBwbGF0
+Zm9ybV9nZXRfaXJxX2J5bmFtZS4KPiA+IDMuIEZpeCB0Y3BjaV9yZWdpc3Rlcl9wb3J0IGNoZWNr
+IGZyb20gSVNfRVJSX09SX05VTEwgdG8gSVNfRVJSLgo+ID4gNC4gUmVuYW1lIGRyaXZlci9LY29u
+ZmlnL01ha2VmaWxlIGZvcm0gbXQ2MzYwIHRvIG10NjM2eC4KPiA+IDUuIFJlbmFtZSBEVCBiaW5k
+aW5nIGRvY3VtZW50cyBmcm9tIG10NjM2MCB0byBtdDYzNnguCj4KPiBZb3UgZG9uJ3QgcGxhY2Ug
+YWRkaXRpb25hbCBjaGFuZ2Vsb2cgaGVyZS4uLgo+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBDaGlZdWFu
+IEh1YW5nIDxjeV9odWFuZ0ByaWNodGVrLmNvbT4KPiA+IC0tLQo+Cj4gWW91IHB1dCBpdCBoZXJl
+LCBhZnRlciB0aGF0ICctLS0nIG1hcmtlcjoKPiBodHRwczovL3d3dy5rZXJuZWwub3JnL2RvYy9o
+dG1sL2xhdGVzdC9wcm9jZXNzL3N1Ym1pdHRpbmctcGF0Y2hlcy5odG1sI3RoZS1jYW5vbmljYWwt
+cGF0Y2gtZm9ybWF0Cj4KSEkgSGVra2k6CiAgICAgYWZ0ZXIgcmVhZGluZyB0aGUgZG9jdW1lbnQs
+IEkgaGF2ZSBhIGxpdHRsZSBiaXQgY29uZnVzZWQgaG93IHRvCnVzZSBkaWZmc3RhdCBmb3IgdGhl
+IGNoYW5nZWxvZy4KICAgICAgSXMgdGhlcmUgYW55IGV4YW1wbGUgdGhhdCBtYWtlIG1lIGtub3cg
+dG8gd3JpdGUgYSBjbGVhcgpkZXNjcmlwdGlvbiBmb3IgdGhlIGNoYW5nZWxvZz8KPgo+ID4gIGRy
+aXZlcnMvdXNiL3R5cGVjL3RjcG0vS2NvbmZpZyAgICAgICAgfCAgIDggKysKPiA+ICBkcml2ZXJz
+L3VzYi90eXBlYy90Y3BtL01ha2VmaWxlICAgICAgIHwgICAxICsKPiA+ICBkcml2ZXJzL3VzYi90
+eXBlYy90Y3BtL3RjcGNpX210NjM2MC5jIHwgMjEyICsrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysKPiA+ICAzIGZpbGVzIGNoYW5nZWQsIDIyMSBpbnNlcnRpb25zKCspCj4gPiAgY3Jl
+YXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvdXNiL3R5cGVjL3RjcG0vdGNwY2lfbXQ2MzYwLmMKPgo+
+IHRoYW5rcywKPgo+IC0tCj4gaGVpa2tpCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0
+ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
