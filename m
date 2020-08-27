@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,
 	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A4392C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 09:53:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B361C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 10:04:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 729CE207CD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 09:53:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1541320825
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 10:04:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="09AwUthk";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="j/Iiqx0C"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 729CE207CD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hKyKvGQB";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="XMFTr9tV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1541320825
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,68 +27,72 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9H9tQgePS6Zp4dsne+ZoYt018JNms8WItu6tTYdG0wQ=; b=09AwUthketf7uijE2MIrK+6zs
-	HiLjL0lMKK2GZsRrGNWbwpErRanVjCJbH114ZVCT5zUEYQUQ0qk6Hz3Wo+pZijqi97cxHPxzjLl/w
-	159C5VSIhqukab+s+t/ko0Wq8fm4sUJ9DUs8XfiwGVuRmL/H6IlvXqZRhYUToA527dmnmmYxj/x7C
-	0yxwa87rvtvJ4jrmZHom6h1J+E6/Seiaz00RUIf12cuiu87WfZgI4C8E0rgcAxxZ4+LWEZlnx6IZ6
-	+1AwhnE5SxrKquuIdt+O9FKHIarlTrG3MYjMxhkugCVZjmq8WpLR/Aghv8ndIy5fj+XMyn1krsTDS
-	v+DoR2lVg==;
+	 bh=eIgbE6DaQ6K2pA27kDEpgdT0KiL/pJBdNME2+ZmymCQ=; b=hKyKvGQB/C3HdnynJIyT8X6Oh
+	17hW5eSZn4ilm5a1ynBiafc/uzmGSA/ouBTWTnKoI30/F3J+FxmSYt2MUTdgLujmytpwPkTf+Sh5S
+	pxSTa3Lsh8Qh0xPX1WVJKcNVLTnszRX6CK57JNGNLPUs3fF8Vy9eRvLBLZAVr2w2DkScVpZUomWfo
+	Ix+TK67jcYbExX5FMInZaQdlnq/2ZwNA+wMOtCs7tMu/aCWkv3ziYfhbsI2Glz5TuukvbKJtikukf
+	tDd5w8QTLUhbM9opy4ZBmfCqThZVKMe9K+Zbg3MWUfoCXZ8O9ZsVJ6LjXubU1E/vOFahYZYlWnTWA
+	87BljrVSQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kBEat-0002Qr-E9; Thu, 27 Aug 2020 09:53:19 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1kBEl8-0003xx-HD; Thu, 27 Aug 2020 10:03:54 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kBEar-0002Q0-2f; Thu, 27 Aug 2020 09:53:18 +0000
-Received: by mail-wr1-x442.google.com with SMTP id k15so960301wrn.10;
- Thu, 27 Aug 2020 02:53:15 -0700 (PDT)
+ id 1kBEl6-0003xN-S6
+ for linux-mediatek@lists.infradead.org; Thu, 27 Aug 2020 10:03:53 +0000
+Received: by mail-wm1-x343.google.com with SMTP id k20so4564261wmi.5
+ for <linux-mediatek@lists.infradead.org>; Thu, 27 Aug 2020 03:03:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=3S2ltGK2B4ahfxRE0OqRsWU+E5mMz97vYPSClpVkEpw=;
- b=j/Iiqx0CIhx0nsty8bj+dxZr7X5let9JMzxAJtte6vf0GUcfyJn+kxd/lKo8+1aVU3
- LEoLd1clGvpkQaBGLO6T22hrbWW3S8KWsahbXmqEp1+sSwllynNwQsbtOpuZrOnwGvqM
- XCJCrMkGqxNCg1Y8mYDi07x+C2FsgXBF6bYz4iIeEkgH+T+4h7v2X6kT+DzKQ9btHwm4
- b1WQKZKh48+9ZASVFD0W+dA+aGB6ZsGDeLi+EZEbtUJddD07+SrIXiriWuVFqaKfZhks
- oUl1IkoQfBshCWgRjZvV1DId5tUXKSI25nx9fubmMDQDS7yn7DPzcIWVgP3PXaLAg7vu
- Y6Nw==
+ bh=P77OjdgSVrs1pV3ulE59aHFIhH+ydWYh3mBhaqATpgo=;
+ b=XMFTr9tVl/x4UBOBhwEoZx9P/wMBMJogiYORKo1QLMt6s8t3aH47qy57Z63cuJy6a7
+ hLqcHTD0DG1RsuWnHIdQK/c3Y4YlibYVpb40gHEGnOKRDFuD+xUoHssi3XA7TsukLXZ/
+ LHvd6QLcjjRkdkB73PTEtrHvfaTdOZRMsx7ziN1EAHS4DVrbZ0o+Hncc3Ex5V5iXEnYJ
+ k8R2OCfUK3sSbuLAtHLadBTiy9QE44ofQIr7GZgnt7BhYD1GPq9vXpywjKovoZJz4ViG
+ gEZ4ZMxVJC+7FJdzILHI70OnJfDgICffpskEfHiAOKFdulGf30AYg+jctfR8ViNVJsvn
+ qgqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=3S2ltGK2B4ahfxRE0OqRsWU+E5mMz97vYPSClpVkEpw=;
- b=iIQTqeXixQ4tRwf27nYqFB76dfzR3R/LixDAReNGavBedavux+JtPidmcWqFWRLAuf
- r0fbgcnsqvJ5OHrzumiat5pvjK3T9YzlYORrx/ePd9SvfSwXRUHD5pwSMrEhQZEtHKI+
- tFuJpDHJOW44ubzDF9U0lCmtz7Pz6V64kqySGvdY4+JfCGvUbEJWaNCzuH5lTXEelNEd
- 82IU8M6oAuKkjx5YYuJLV7MNItK6fhJAEDaIeW12gLrnfe908KWSmOIooiRsW0iWqs2f
- RuyKSPMMBTJItl1nP6UtXi/XwnOskkO/HknR5pmsULLmHW2F7fd/KJa1X1aPvK3W8PGT
- n/tw==
-X-Gm-Message-State: AOAM5337LbDRPONYPFrqrJNKBlKmtWacPocXqkODbaTzGG81D9PEusGQ
- pwmc4R7Q6pnmrziXTmSo/HA=
-X-Google-Smtp-Source: ABdhPJxCQib2nyRWJhQUT1arhmXoAnRcByD/McQ+QvDCu5PGTRgjO4PCrkOK/qYUpcMj1POZM32MmA==
-X-Received: by 2002:a05:6000:1248:: with SMTP id
- j8mr106089wrx.292.1598521994965; 
- Thu, 27 Aug 2020 02:53:14 -0700 (PDT)
+ bh=P77OjdgSVrs1pV3ulE59aHFIhH+ydWYh3mBhaqATpgo=;
+ b=Wfh3UCkvzW3fs89WLj+SWpVrsQNYj1PPXjsBlBauzIsFwzlPpBwK3F6zy4y93GFZgy
+ nuDxXZh6ebxd6UL5j8/oGqg7Bsn3YUri/idbFiq7ytr8zrGmzipZS3SafgOf6Kmhy2WB
+ sTDsq4a0gPY2C5mC0J8+bMR98BnKNiHgUWHnUHh4VsqBYBWEbjy8t0uTDpHSiRYqsy0x
+ uGazFuO7jMxcwAeNKvW/NrcqV53WmGcC5qv8xsdUzhNnK1bGdr5+Acl1LFN0r7qQIqPj
+ Yc3EOSR1VxBtnp1W7SIUhiW+fdkfE1dd4qFfc82AfussHsi+eC6CxOEnZz31uEpJx6o3
+ MXVQ==
+X-Gm-Message-State: AOAM5319+C/Gm9fgFu8O/NeOCM4yN9wH+VsudG0yvyXFt9dtGcqJ0K6y
+ iveRFgAsjVvlrgPJIsPaHH2FfY+7E39MSQ==
+X-Google-Smtp-Source: ABdhPJy0dRPhZCuViCq8m2QlMCz6uEz38kuyN8jKB+CT3sdi+Qn/nenwqTLS4GhPUOGsx0NoxIby1Q==
+X-Received: by 2002:a7b:c5c6:: with SMTP id n6mr10974844wmk.120.1598522631666; 
+ Thu, 27 Aug 2020 03:03:51 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.119.187])
- by smtp.gmail.com with ESMTPSA id s8sm3707553wmc.1.2020.08.27.02.53.13
+ by smtp.gmail.com with ESMTPSA id b131sm4538541wmc.8.2020.08.27.03.03.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 27 Aug 2020 02:53:14 -0700 (PDT)
-Subject: Re: [RESEND PATCH v4] iommu/mediatek: check 4GB mode by reading
- infracfg
-To: Miles Chen <miles.chen@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Rob Herring <robh@kernel.org>
-References: <20200826085618.2889-1-miles.chen@mediatek.com>
+ Thu, 27 Aug 2020 03:03:50 -0700 (PDT)
+Subject: Re: [PATCH v4 09/17] arm64: dts: mt8183: add encoder node
+To: Alexandre Courbot <acourbot@chromium.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Maoguang Meng <maoguang.meng@mediatek.com>
+References: <20200821103608.2310097-1-acourbot@chromium.org>
+ <20200821103608.2310097-10-acourbot@chromium.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <0d1a4c6d-03ce-a5c4-d17b-26f5203e899a@gmail.com>
-Date: Thu, 27 Aug 2020 11:53:13 +0200
+Message-ID: <02eaeace-22dd-02ea-7162-90200fe1cffe@gmail.com>
+Date: Thu, 27 Aug 2020 12:03:49 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200826085618.2889-1-miles.chen@mediatek.com>
+In-Reply-To: <20200821103608.2310097-10-acourbot@chromium.org>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200827_055317_139313_8D3E2F1D 
-X-CRM114-Status: GOOD (  27.45  )
+X-CRM114-CacheID: sfid-20200827_060352_933425_EF6FE2F1 
+X-CRM114-Status: GOOD (  18.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,11 +104,8 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream@mediatek.com, David Hildenbrand <david@redhat.com>,
- linux-kernel@vger.kernel.org, Mike Rapoport <rppt@linux.ibm.com>,
- iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- Yong Wu <yong.wu@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>,
- Christoph Hellwig <hch@lst.de>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -112,141 +113,131 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 26/08/2020 10:56, Miles Chen wrote:
-> In previous discussion [1] and [2], we found that it is risky to
-> use max_pfn or totalram_pages to tell if 4GB mode is enabled.
-> 
-> Check 4GB mode by reading infracfg register, remove the usage
-> of the un-exported symbol max_pfn.
-> 
-> This is a step towards building mtk_iommu as a kernel module.
-> 
-> [1] https://lore.kernel.org/lkml/20200603161132.2441-1-miles.chen@mediatek.com/
-> [2] https://lore.kernel.org/lkml/20200604080120.2628-1-miles.chen@mediatek.com/
-> [3] https://lore.kernel.org/lkml/20200715205120.GA778876@bogus/
-> 
-> Cc: Mike Rapoport <rppt@linux.ibm.com>
-> Cc: David Hildenbrand <david@redhat.com>
-> Cc: Yong Wu <yong.wu@mediatek.com>
-> Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>
-> Cc: Christoph Hellwig <hch@lst.de>
-> Cc: Rob Herring <robh@kernel.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+On 21/08/2020 12:36, Alexandre Courbot wrote:
+> Now that the MT8183 encoder driver is ready, add its DT node. Also pull
+> the iommu and scp ones, which the encoder depends upon.
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Please don't do that. Instead of pulling in other DT nodes, it would be handy to 
+get a reference of the series this is based on.
+
+Let me try to hunt them down now :)
+
+Regards,
+Matthias
 
 > 
+> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
 > ---
+>   arch/arm64/boot/dts/mediatek/mt8183-evb.dts   | 10 ++++++
+>   .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 12 +++++++
+>   arch/arm64/boot/dts/mediatek/mt8183.dtsi      | 36 +++++++++++++++++++
+>   3 files changed, 58 insertions(+)
 > 
-> Change since v3
-> - use lore.kernel.org links
-> - move "change since..." after "---"
-> 
-> Change since v2:
-> - determine compatible string by m4u_plat
-> - rebase to next-20200720
-> - add "---"
-> 
-> Change since v1:
-> - remove the phandle usage, search for infracfg instead [3]
-> - use infracfg instead of infracfg_regmap
-> - move infracfg definitaions to linux/soc/mediatek/infracfg.h
-> - update enable_4GB only when has_4gb_mode
-> ---
->   drivers/iommu/mtk_iommu.c             | 34 +++++++++++++++++++++++----
->   include/linux/soc/mediatek/infracfg.h |  3 +++
->   2 files changed, 32 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 785b228d39a6..adc350150492 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -3,7 +3,6 @@
->    * Copyright (c) 2015-2016 MediaTek Inc.
->    * Author: Yong Wu <yong.wu@mediatek.com>
->    */
-> -#include <linux/memblock.h>
->   #include <linux/bug.h>
->   #include <linux/clk.h>
->   #include <linux/component.h>
-> @@ -15,13 +14,16 @@
->   #include <linux/iommu.h>
->   #include <linux/iopoll.h>
->   #include <linux/list.h>
-> +#include <linux/mfd/syscon.h>
->   #include <linux/of_address.h>
->   #include <linux/of_iommu.h>
->   #include <linux/of_irq.h>
->   #include <linux/of_platform.h>
->   #include <linux/platform_device.h>
-> +#include <linux/regmap.h>
->   #include <linux/slab.h>
->   #include <linux/spinlock.h>
-> +#include <linux/soc/mediatek/infracfg.h>
->   #include <asm/barrier.h>
->   #include <soc/mediatek/smi.h>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> index ae405bd8f06b..9e77b420eee8 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> @@ -25,6 +25,16 @@ memory@40000000 {
+>   	chosen {
+>   		stdout-path = "serial0:921600n8";
+>   	};
+> +	reserved-memory {
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +		scp_mem_reserved: scp_mem_region {
+> +			compatible = "shared-dma-pool";
+> +			reg = <0 0x50000000 0 0x2900000>;
+> +			no-map;
+> +		};
+> +	};
+>   };
 >   
-> @@ -640,8 +642,11 @@ static int mtk_iommu_probe(struct platform_device *pdev)
->   	struct resource         *res;
->   	resource_size_t		ioaddr;
->   	struct component_match  *match = NULL;
-> +	struct regmap		*infracfg;
->   	void                    *protect;
->   	int                     i, larb_nr, ret;
-> +	u32			val;
-> +	char                    *p;
+>   &auxadc {
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> index f0a070535b34..3c763be658da 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> @@ -90,6 +90,18 @@ pp3300_alw: regulator6 {
+>   		regulator-max-microvolt = <3300000>;
+>   	};
 >   
->   	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
->   	if (!data)
-> @@ -655,10 +660,29 @@ static int mtk_iommu_probe(struct platform_device *pdev)
->   		return -ENOMEM;
->   	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
->   
-> -	/* Whether the current dram is over 4GB */
-> -	data->enable_4GB = !!(max_pfn > (BIT_ULL(32) >> PAGE_SHIFT));
-> -	if (!MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE))
-> -		data->enable_4GB = false;
-> +	data->enable_4GB = false;
-> +	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE)) {
-> +		switch (data->plat_data->m4u_plat) {
-> +		case M4U_MT2712:
-> +			p = "mediatek,mt2712-infracfg";
-> +			break;
-> +		case M4U_MT8173:
-> +			p = "mediatek,mt8173-infracfg";
-> +			break;
-> +		default:
-> +			p = NULL;
-> +		}
+> +	reserved_memory: reserved-memory {
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
 > +
-> +		infracfg = syscon_regmap_lookup_by_compatible(p);
+> +		scp_mem_reserved: scp_mem_region {
+> +			compatible = "shared-dma-pool";
+> +			reg = <0 0x50000000 0 0x2900000>;
+> +			no-map;
+> +		};
+> +	};
 > +
-> +		if (IS_ERR(infracfg))
-> +			return PTR_ERR(infracfg);
-> +
-> +		ret = regmap_read(infracfg, REG_INFRA_MISC, &val);
-> +		if (ret)
-> +			return ret;
-> +		data->enable_4GB = !!(val & F_DDR_4GB_SUPPORT_EN);
-> +	}
+>   	max98357a: codec0 {
+>   		compatible = "maxim,max98357a";
+>   		sdmode-gpios = <&pio 175 0>;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 102105871db2..8f77eea6df27 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -8,6 +8,7 @@
+>   #include <dt-bindings/clock/mt8183-clk.h>
+>   #include <dt-bindings/interrupt-controller/arm-gic.h>
+>   #include <dt-bindings/interrupt-controller/irq.h>
+> +#include <dt-bindings/memory/mt8183-larb-port.h>
+>   #include <dt-bindings/reset-controller/mt8183-resets.h>
+>   #include <dt-bindings/phy/phy.h>
+>   #include "mt8183-pinfunc.h"
+> @@ -339,6 +340,25 @@ pwrap: pwrap@1000d000 {
+>   			clock-names = "spi", "wrap";
+>   		};
 >   
->   	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->   	data->base = devm_ioremap_resource(dev, res);
-> diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-> index fd25f0148566..233463d789c6 100644
-> --- a/include/linux/soc/mediatek/infracfg.h
-> +++ b/include/linux/soc/mediatek/infracfg.h
-> @@ -32,6 +32,9 @@
->   #define MT7622_TOP_AXI_PROT_EN_WB		(BIT(2) | BIT(6) | \
->   						 BIT(7) | BIT(8))
->   
-> +#define REG_INFRA_MISC				0xf00
-> +#define F_DDR_4GB_SUPPORT_EN			BIT(13)
+> +		iommu: iommu@10205000 {
+> +			compatible = "mediatek,mt8183-m4u";
+> +			reg = <0 0x10205000 0 0x1000>;
+> +			interrupts = <GIC_SPI 166 IRQ_TYPE_LEVEL_LOW>;
+> +			#iommu-cells = <1>;
+> +		};
 > +
->   int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
->   		bool reg_update);
->   int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
+> +		scp: scp@10500000 {
+> +			compatible = "mediatek,mt8183-scp";
+> +			reg = <0 0x10500000 0 0x80000>,
+> +			      <0 0x105c0000 0 0x19080>;
+> +			reg-names = "sram", "cfg";
+> +			interrupts = <GIC_SPI 174 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&infracfg CLK_INFRA_SCPSYS>;
+> +			clock-names = "main";
+> +			memory-region = <&scp_mem_reserved>;
+> +			status = "disabled";
+> +		};
+> +
+>   		systimer: timer@10017000 {
+>   			compatible = "mediatek,mt8183-timer",
+>   				     "mediatek,mt6765-timer";
+> @@ -772,6 +792,22 @@ vencsys: syscon@17000000 {
+>   			#clock-cells = <1>;
+>   		};
+>   
+> +		vcodec_enc: vcodec@17020000 {
+> +			compatible = "mediatek,mt8183-vcodec-enc";
+> +			reg = <0 0x17020000 0 0x1000>;
+> +			interrupts = <GIC_SPI 247 IRQ_TYPE_LEVEL_LOW>;
+> +			iommus = <&iommu M4U_PORT_VENC_REC>,
+> +				 <&iommu M4U_PORT_VENC_BSDMA>,
+> +				 <&iommu M4U_PORT_VENC_RD_COMV>,
+> +				 <&iommu M4U_PORT_VENC_CUR_LUMA>,
+> +				 <&iommu M4U_PORT_VENC_CUR_CHROMA>,
+> +				 <&iommu M4U_PORT_VENC_REF_LUMA>,
+> +				 <&iommu M4U_PORT_VENC_REF_CHROMA>;
+> +			mediatek,scp = <&scp>;
+> +			clocks = <&vencsys CLK_VENC_VENC>;
+> +			clock-names = "MT_CG_VENC";
+> +		};
+> +
+>   		ipu_conn: syscon@19000000 {
+>   			compatible = "mediatek,mt8183-ipu_conn", "syscon";
+>   			reg = <0 0x19000000 0 0x1000>;
 > 
 
 _______________________________________________
