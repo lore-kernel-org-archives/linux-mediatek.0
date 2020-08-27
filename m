@@ -2,138 +2,85 @@ Return-Path: <SRS0=xkEi=CF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7705CC433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 01:03:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C66FC433E1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 01:12:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 41D5A2073A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 01:03:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D04582073A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 01:12:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="p0RfEwC3";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="jT0escb3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 41D5A2073A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="S7Ih7qPH";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="TTA3SJS1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D04582073A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ubVqjZRPMYmnXOFNi8MkfxZUKyqVIrralBpSEfg+DEQ=; b=p0RfEwC3Ymbu2xDfDpQ+UEpdP
-	USfh055aX5nifXgQUnkEs6M47tcttaulCPBFClHYW16YWAKjigPE8LOS1JCG0DJx1AoBm2pCfEt8D
-	w4t8OC8WABPuMymGUcJ8vyu3XL+JBbGeV8bwKsnqTeHwQ/3fPYO5an4tCirQIKDyxRjMWFKR++jRE
-	Lo8oScJ07N1WvIIQJJm3+VlKOBNo+LTVgGzTlmuxWwpUOCA0UMVXVYq+8M2+5nzZdCdUqEt9MIJ92
-	iRPXy3QQxX7cfulJcGMokjLm7RivtNd2b0F2QgIbVln1+d2dm98w2dtuMX6M2n2NJQx6sBOKrOt41
-	MDz7ZTc3w==;
+	 bh=gfXHlW778Hvmug7GEer+KztwQGw6lGm406HV/LcZdcQ=; b=S7Ih7qPHauXMNlPCvx/+YL7/j
+	Rq/SUinMiAOXxNBc2j11ShYkbtT0udvS7QUGBnazXcj2vmNzoZlFReuoOiym7U75m85tYeVVnmQNH
+	tcnZyRZ53BOZtU7B+BpJH5TWLMPIU6/MhgZFS2oB052gFfHXef9nrlLr1zNrQX9seEfdHjcXJRNha
+	QPznI4i7qwWIcCt7j0s6PDYd/JDh9TqyOi1w4M/LiKEDANzyDasloTy/+mECujnTZSO0Wr8IKyg8g
+	9u324tX7u11T482MOL2viDy8YehhejOHCWtYNnU2wOEDu9xW82bn09BEfNehBhBVIQJymOatxOpYW
+	g6ZdQ85Fw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kB6JY-0001Fh-F5; Thu, 27 Aug 2020 01:02:52 +0000
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
+	id 1kB6SO-0001wJ-K7; Thu, 27 Aug 2020 01:12:00 +0000
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kB6JW-0001F5-SD; Thu, 27 Aug 2020 01:02:51 +0000
-Received: by mail-pj1-x1043.google.com with SMTP id z18so1740442pjr.2;
- Wed, 26 Aug 2020 18:02:49 -0700 (PDT)
+ id 1kB6SL-0001vY-Gb; Thu, 27 Aug 2020 01:11:58 +0000
+Received: by mail-lj1-x242.google.com with SMTP id f26so4500578ljc.8;
+ Wed, 26 Aug 2020 18:11:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=aEHjPYOnd6oLhAz099CXgJXhYfDhe4uUMY6k0zBbbpI=;
- b=jT0escb3is6K1eZ4R4uWXgKJSYB4sGkaDhoKZaKHd9ii1DT4GGUdz4nZ1gsSqObxbK
- MlWZH6ayqmw5OBQ9SRe/3yr1dgJt2saBcKQGpyYJbI1+at9e++tNasmfwbv7uiKGKdEH
- WwpP1SjQK56gMIy1BZtyhqV46NrmMaqM3SSBmoCwpCl4m1RmkMts8f725I+9QhZ4K+Re
- Q3bZzy61HOBfGs0YMWbUPrLeUAm3+18suWkZOgUPrRkjcKVOATIxHVhkyE9BxKXgcm3J
- RcNk8oPLzh4CorpbK2OgyVzndi02VzhlXXjWDbJfvF+MSp4t7ogs6VJpAxUoKgJGR3pl
- RjhQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=m/8pB8Sw21i7XQLubODjblLQyuDRrCYhn+Eq3ZDQVx0=;
+ b=TTA3SJS1N/caMZX9Nag1kHB/iT0fK4yOYmxP3aMRd75Z2BueqjS4WGzvX3hU8cgNYw
+ br9qLPus7nDMRlbM630MvGiWgR1tFlr7ZG7v8SNBu0iNMCvRVjwsOqIkMyz8/8fUKaIx
+ C6hGhspEoFOxM6rUY5ERS3UNGItKKusEBXK6LvtdJK9W/07KMy6mXl8uaaEVjKS4knsy
+ bXY4/ngTaCKfitIuKfJkwr4X4xSCDpUlXpf+EOUZN6EZwNhHrX7mHfgfrp4hX3TLmvib
+ E3oxNcnZGr5WYLHtA4bAkRY6e6wnO+UOegOwN9VrxZtijgjOT8pY3w02NPCumMMjc8BF
+ JhBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=aEHjPYOnd6oLhAz099CXgJXhYfDhe4uUMY6k0zBbbpI=;
- b=sHkPmyAKn0aOZ+hRxx7rOnLTmFn+PyMohTHKP9VDRnZKgymDVAl+heGk/K4Eq3N+c6
- Mgx9NfgIVjTMhfkFZBJQO17Be6kjlea0wxS2NABiRWBwJxI5TNLmaEbUH8YUN4aGtAab
- mjjm+QgD7ykQ6gUzVwOqr8fyaRSf5/fG3AhX8WJXuyqQ99jhwZZH2TEbKMaZYAnIT9nb
- /876FrEaPnTjU33uZB2SmB5aqNNqxw8PnD/Waz6occ+DRii+Zs7l30dLy95huvZuL1Xz
- celvPg8tl0s/aut0EXdh1qi7pPGCjbUBntb09nhdT3TDXbP2uvnhXwY7aHUEH+eiXCnW
- YsHw==
-X-Gm-Message-State: AOAM532RyK5YWVoryWD+3ARJUWfsVAiEiKqoC9JB2G8eUJcV6SdeifOW
- MqfZq3oE7Nisvo+54igr/Cs=
-X-Google-Smtp-Source: ABdhPJzoWNpDb/2Zum2cV/0MKUuZPsZdi45n9UqsZvjV6/tcO+IblLgwKVxpUyhSrXEDGzm+gbTeEQ==
-X-Received: by 2002:a17:90a:b296:: with SMTP id
- c22mr8830412pjr.170.1598490167824; 
- Wed, 26 Aug 2020 18:02:47 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- q18sm408188pfn.106.2020.08.26.18.02.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 26 Aug 2020 18:02:46 -0700 (PDT)
-Subject: Re: [PATCH 1/2] usb typec: mt6360: Add support for mt6360 Type-C
- driver
-To: =?UTF-8?B?5ZWf5Y6f6buD?= <u0084500@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=m/8pB8Sw21i7XQLubODjblLQyuDRrCYhn+Eq3ZDQVx0=;
+ b=OiWcwt5MFw1YdSsjeehVgkfe9bmes2XV0V7W9Tul1ocWRaRAbKre4IZv1GBS0eniHU
+ ZpgYytX4oaOFo1MSGy7f6LOYJU6Ld8kv9gngJQxAA2QKVgEHTij9f5dX0axyDpl9Iyp+
+ 1/VIbqM7oIYZ1KYYRgBJdNpbAzTieZjltlX/mF0I4Yc4e2MlUgRhyDFhvrRfPxOwskDx
+ aynBZpeznDuL4h1Yu/OiuMkozyHlMg0/b+z/6Hp3l9KTbSCYZ6psIyzj8CYLDp4KtbQS
+ 2h/RK1FJMLovrpbkJ8iYRSLoQUEhcH55bykwOP3v3NxJ3208fArcxx+FZarHYSALyuWv
+ nLLA==
+X-Gm-Message-State: AOAM531Af/At3QHWBac4hvfbH5aifsOV3ypGMKVfkBGvE+xajnWzQcGT
+ vJrxNpn1WBEBnjtnEyADd6Vi9x4BuNH4qc/AfVU=
+X-Google-Smtp-Source: ABdhPJydzD1WwH6+x47tyNqs5lJxZhmJOXy71zWRsrVhFlJb3UW8drng/iudHsH+0nuncrCwHunivBrN3aq1Cyaa5dk=
+X-Received: by 2002:a2e:2c0e:: with SMTP id s14mr8994396ljs.28.1598490716116; 
+ Wed, 26 Aug 2020 18:11:56 -0700 (PDT)
+MIME-Version: 1.0
 References: <1598440602-8648-1-git-send-email-u0084500@gmail.com>
  <a7d1a5d9-97e9-bcf6-23f4-2c4be356913f@roeck-us.net>
  <CADiBU3_x5-P8A0erchFpWucX4_R8M01-CdOJv38FjrPGSn+55A@mail.gmail.com>
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- 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
- mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-Message-ID: <627dd188-9379-1179-432e-b53948052823@roeck-us.net>
-Date: Wed, 26 Aug 2020 18:02:45 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
-In-Reply-To: <CADiBU3_x5-P8A0erchFpWucX4_R8M01-CdOJv38FjrPGSn+55A@mail.gmail.com>
-Content-Language: en-US
+ <627dd188-9379-1179-432e-b53948052823@roeck-us.net>
+In-Reply-To: <627dd188-9379-1179-432e-b53948052823@roeck-us.net>
+From: =?UTF-8?B?5ZWf5Y6f6buD?= <u0084500@gmail.com>
+Date: Thu, 27 Aug 2020 09:11:44 +0800
+Message-ID: <CADiBU3_GX+BvxQCDkMtf70sXHnwFVNmBCJsrydROHjy5Lr9B4g@mail.gmail.com>
+Subject: Re: [PATCH 1/2] usb typec: mt6360: Add support for mt6360 Type-C
+ driver
+To: Guenter Roeck <linux@roeck-us.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200826_210250_940421_D0E34B10 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20200826_211157_661697_F6C65AE1 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -156,16 +103,21 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gOC8yNi8yMCA1OjU5IFBNLCDllZ/ljp/pu4Mgd3JvdGU6ClsgLi4uIF0KPj4+ICtzdGF0aWMg
-aW50IG10NjM2MF90Y3BjX3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+Pj4g
-K3sKPj4+ICsgICAgIHN0cnVjdCBtdDYzNjBfdGNwY19pbmZvICptdGkgPSBwbGF0Zm9ybV9nZXRf
-ZHJ2ZGF0YShwZGV2KTsKPj4+ICsKPj4+ICsgICAgIHRjcGNpX3VucmVnaXN0ZXJfcG9ydChtdGkt
-PnRjcGNpKTsKPj4KPj4gVGhhdCBsZWF2ZXMgaW50ZXJydXB0cyBlbmFibGVkLCB3aGljaCBtaWdo
-dCBiZSByYWN5Cj4+IGJlY2F1c2UgaW50ZXJydXB0cyBhcmUgc3RpbGwgZW5hYmxlZCBoZXJlLgo+
-IE0uLi4sIHllcywgaXQgd2lsbCBjYXVzZSB0aGUgcmFjZSBjb25kaXRpb24gZHVyaW5nIG1vZHVs
-ZSByZW1vdmUuCj4gSSdsbCBhZGQgZGlzYWJsZV9pcnEgYmVmb3JlIHRjcGNpIHVucmVnaXN0ZXIg
-dG8gcHJldmVudCBpdC4KCk9yIGp1c3Qgc2V0IFRDUENfQUxFUlRfTUFTSyB0byAwLCBhcyBpbiB0
-Y3BjaS5jLgoKR3VlbnRlcgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+R3VlbnRlciBSb2VjayA8bGludXhAcm9lY2stdXMubmV0PiDmlrwgMjAyMOW5tDjmnIgyN+aXpSDp
+gLHlm5sg5LiK5Y2IOTowMuWvq+mBk++8mgo+Cj4gT24gOC8yNi8yMCA1OjU5IFBNLCDllZ/ljp/p
+u4Mgd3JvdGU6Cj4gWyAuLi4gXQo+ID4+PiArc3RhdGljIGludCBtdDYzNjBfdGNwY19yZW1vdmUo
+c3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiA+Pj4gK3sKPiA+Pj4gKyAgICAgc3RydWN0
+IG10NjM2MF90Y3BjX2luZm8gKm10aSA9IHBsYXRmb3JtX2dldF9kcnZkYXRhKHBkZXYpOwo+ID4+
+PiArCj4gPj4+ICsgICAgIHRjcGNpX3VucmVnaXN0ZXJfcG9ydChtdGktPnRjcGNpKTsKPiA+Pgo+
+ID4+IFRoYXQgbGVhdmVzIGludGVycnVwdHMgZW5hYmxlZCwgd2hpY2ggbWlnaHQgYmUgcmFjeQo+
+ID4+IGJlY2F1c2UgaW50ZXJydXB0cyBhcmUgc3RpbGwgZW5hYmxlZCBoZXJlLgo+ID4gTS4uLiwg
+eWVzLCBpdCB3aWxsIGNhdXNlIHRoZSByYWNlIGNvbmRpdGlvbiBkdXJpbmcgbW9kdWxlIHJlbW92
+ZS4KPiA+IEknbGwgYWRkIGRpc2FibGVfaXJxIGJlZm9yZSB0Y3BjaSB1bnJlZ2lzdGVyIHRvIHBy
+ZXZlbnQgaXQuCj4KPiBPciBqdXN0IHNldCBUQ1BDX0FMRVJUX01BU0sgdG8gMCwgYXMgaW4gdGNw
+Y2kuYy4KQm90aCBhcmUgcmlnaHQsIFRoeC4gSSdsbCBjaG9vc2Ugb25lLgoKQlRXLCBpdCBzZWVt
+cyBlbnVtIHR5cGVjX2NjX3N0YXR1cyBpcyB1c2VkIGJ5IHRjcGNpLmguCklmIEkgZG9uJ3QgaW5j
+bHVkZSB0Y3BtLmgsIGl0IHdpbGwgcmFpc2UgYSB3YXJuaW5nIGR1cmluZyB0aGUgY29tcGlsZSB0
+aW1lLgo+Cj4gR3VlbnRlcgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
 X19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3Rz
 LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
 by9saW51eC1tZWRpYXRlawo=
