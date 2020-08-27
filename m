@@ -6,19 +6,19 @@ X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4FA85C433E3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 03:26:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 21268C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 03:26:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 13B3B21741
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 03:26:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E004D2078A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 03:26:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kyMnqfFK";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="CjjYCWWo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 13B3B21741
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EyiGTifk";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="juyCGc0D"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E004D2078A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,62 +27,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F8j4sC2OyvHBZS87hQV4/YRa/8AYeiM4wlvH/4A6QOc=; b=kyMnqfFKWKRN5kQGCNIvAhZbLM
-	475NPXGcJQDM+djNOZkA6Ls3FS7Zegmr+JQ5ovZgI6WLkwgKW8TwdZcjqQ4E+5W1kj2Q7rd8pwUCg
-	2Nq8C5sMh/4J2NLyZn/QFgV85TUkDi7X5N7UDJGCRnviAt4QYG5LLevU+wfEAqPxCxX5Xd7FTnGNy
-	oz+iHvAEwz21oK8IEVJT2g6b/QvgqXQt+VjMHfEIsaRYRvxAyoE25keZXovEKEzMMF8+3nMLCghTi
-	H1fUFhoyTCxg1ONptqB1K3cnVRYQhcDNnGc6x6alqh0Ny1Y90amMXTV/GmFAMSJGCs5hrj3YK06Qa
-	hn3Flm0Q==;
+	bh=DfHsQp/s2SWdhfugM6D8oqfyDa0N5CC01N8u3hR+ZJI=; b=EyiGTifkDFRqgkyMCgX0+0RhWd
+	NXvxv3fJ9ulqf6BlafufyJ2axS+mG8bEpaJhAF5gYWLPSpWSsH0uZHt4wmw5+h1CoPg0R6QAGR7B3
+	ENqw0oUrPBrnjL9ymFi0pAi+4tqrHs5W3MSHYKxZeoHf5MGXFNb4BZvAbItgFRo6y/SVz4vh6jHmz
+	fd/KKooQRhTcvCGFkH+vGDIKMM67QMcI2ObsSrWPnjoKzkpDUtfy+Z8Az8q1ns2dS4sQgdPERaeXO
+	Ln6AFS8P+T3wGgJio6ym8r/zdsmdwngiLC8niBcM7E08kdLmVvgxbq2DlTnqn/Ff9W7XoLIi01usW
+	CYdRXSxw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kB8YH-000396-39; Thu, 27 Aug 2020 03:26:13 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1kB8YQ-0003Cg-W3; Thu, 27 Aug 2020 03:26:23 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kB8YB-00037d-7r; Thu, 27 Aug 2020 03:26:08 +0000
-Received: by mail-pg1-x543.google.com with SMTP id m34so2317643pgl.11;
- Wed, 26 Aug 2020 20:26:06 -0700 (PDT)
+ id 1kB8YN-0003AR-5v; Thu, 27 Aug 2020 03:26:19 +0000
+Received: by mail-pg1-x542.google.com with SMTP id g29so1320260pgl.2;
+ Wed, 26 Aug 2020 20:26:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=9BLb5SG/442AGlteVEU+VMTqxtoAM2EGD3L4sUWx4Zo=;
- b=CjjYCWWooFK0EHgHSecto1ocZEzgllCZ6bs5diPkpf5KyxPD/2P8ma/JoTJrC/I9kg
- IrZ8+T8EjNNw5L4HIuw8fdnnF7fHtKv7eleB9/ryEWChUMheH7av2zhsM4pVpbOvUzB9
- bndcr9i7J6qk72NPvxT5Pj0VuVCc6JwM47s8q06EI5Xl+EMY7qG4QjzCQbDl6CJYyAFN
- hCueWm2YbBNWGs19NIorW/WjzSeDn44oax4oZ1gBtppkmpCNYSnseFKrirnw7Nu5EnOO
- WRvdQZP5BAg9jjMrW+LZh8am0Qh/PFgLe+Ba3L50V+L2q5iIkRCJyatZPqi3T5mi5w1D
- axpw==
+ bh=rN37qI20ECUBatR6H4A3g3beWRHeq6Mi+Lp9BztZsHQ=;
+ b=juyCGc0DIHQSjOjHsrh+qOzPev0piOd8Bz8V5NomMrKpRtgz1hEkev8rk95Rfosf++
+ lnk73HOq4CZaRbiG0/oPUOppYKjNDDv+GrKz5yob2Q+JLlv/uQhRgO5ugFKMGUCEMAJO
+ HQoMI3sVkJ+892Dgoc35biNla/wrHNjbvXHmSuHdtOgUlE6ARLsD4FsGP0TfpePwMpoS
+ iinEOqJzEcZh3fQje53unSjcBpdNpYqMREd+jzPdufjB4ixU9P6StstghAsr9tlHzPMi
+ ZDvtBdi9SR1ibwo1pQDX8rWLe4aSnHgcfYebs+L6FpQM1Vj5hvbYYY1mQ9Zx6ayBfHA4
+ yl+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=9BLb5SG/442AGlteVEU+VMTqxtoAM2EGD3L4sUWx4Zo=;
- b=H0Vgv5QZ8uJaR3a3jEbi1NRkhFXuwM2z9TMuotGo8drcp8gh94qvMPZ4UHRQCdjg2I
- 4jcKz9uXTw6Ld9f37Tv13wWIG2Kkg/pARvfPwE2QUuglJyNqppzaH2Dsxi3MuShwv5Uc
- 2NKStbVsLywOXDEoefQVOat2mk9S4sx1YBX0sRd4EYPx0LG6VXag1vRRLrTe0yb6NESU
- TXxz4SxQqHW0LTShe3cSN6IjwKdAMhGOU6I3ziyvS6R9HqVBc9HDXGkdIsR6xyvEt81O
- QlQ6p6s301Ii+esElKKKdKNcyb8hbUxLKVptQT48uzdSdR7pjYMvrDdamStyktUFh2dA
- ZP9g==
-X-Gm-Message-State: AOAM532ccGSpEU+/Fl8s3PjuinZkbgsKXNeQ8vlUmYnj1LL5JRCwzPMt
- uEKyh2sF8EckmRxnUO1V33o=
-X-Google-Smtp-Source: ABdhPJxlJIglwtNYpMjmJH4S3OB5DwjsuyaIuykvQ+ZOQ/mqrYP2KbU2xeXAzeBV0qrWumABBG0xHw==
-X-Received: by 2002:a63:4955:: with SMTP id y21mr12686551pgk.180.1598498764661; 
- Wed, 26 Aug 2020 20:26:04 -0700 (PDT)
+ bh=rN37qI20ECUBatR6H4A3g3beWRHeq6Mi+Lp9BztZsHQ=;
+ b=INMhgRdtsmG41UfmhxueI5YeEkHzg4tmbUaCdZwgEDAwbMJTG+GXrn7zMsPybkFNi7
+ M/cYgbEuFN23wH+MYLUiGKcG4aunppU1iLCKpp6KUz97omPCWmOQykw4FFmStU0YfUA8
+ kiKd+c0PfQEBuxHeJ/9SRX+3J81pe8n9uH7MR3lFGNidm065CVTJnkRwLWbvUZw2Ftum
+ dz4oJCWVxBNxWwJ0GEnfu105J/hcgEmFN6l2gxxzzk5sDveBLk1+OMKE6DzZUAQGeGf8
+ eu0kFt0Ie5DxIOKKLVmFz2a+QRoLFmmEwdGkfcLRuebLByEd9qv4S84PjSPJp/YtpEDf
+ rbcQ==
+X-Gm-Message-State: AOAM531qwUw7V4fjYzA/An+S7D+7EluoWge92xcssKDTmRy2q+Zd6u5w
+ n/lkTiCyR5PQvDQv0aOs1LA=
+X-Google-Smtp-Source: ABdhPJxs3SdM7Lc3+cmlB678u24GpPwR5yvBajty/DF5b6W58gTKmaqbA8z69x1z9NNVbSOoHjIFhQ==
+X-Received: by 2002:a17:902:b589:: with SMTP id
+ a9mr14117797pls.98.1598498776792; 
+ Wed, 26 Aug 2020 20:26:16 -0700 (PDT)
 Received: from localhost.localdomain ([2402:7500:57b:156e:1129:dc1b:b8d8:6430])
- by smtp.gmail.com with ESMTPSA id 70sm676982pfu.107.2020.08.26.20.25.55
+ by smtp.gmail.com with ESMTPSA id 70sm676982pfu.107.2020.08.26.20.26.06
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 26 Aug 2020 20:26:03 -0700 (PDT)
+ Wed, 26 Aug 2020 20:26:16 -0700 (PDT)
 From: cy_huang <u0084500@gmail.com>
 To: gregkh@linuxfoundation.org, robh+dt@kernel.org, matthias.bgg@gmail.com,
  linux@roeck-us.net, heikki.krogerus@linux.intel.com
-Subject: [PATCH v2 2/3] usb typec: mt6360: Add MT6360 Type-C DT binding
- documentation
-Date: Thu, 27 Aug 2020 11:25:31 +0800
-Message-Id: <1598498732-25194-2-git-send-email-u0084500@gmail.com>
+Subject: [PATCH v2 3/3] usb typec: mt6360: Prevent the race condition during
+ module remove
+Date: Thu, 27 Aug 2020 11:25:32 +0800
+Message-Id: <1598498732-25194-3-git-send-email-u0084500@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1598498732-25194-1-git-send-email-u0084500@gmail.com>
 References: <1598498732-25194-1-git-send-email-u0084500@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200826_232607_626068_969DB08C 
-X-CRM114-Status: GOOD (  15.22  )
+X-CRM114-CacheID: sfid-20200826_232619_247019_4D711DCE 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,93 +106,26 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: ChiYuan Huang <cy_huang@richtek.com>
 
-Add a devicetree binding documentation for the MT6360 Type-C driver.
+Prevent the race condition from interrupt and tcpci port unregister
+during module remove.
 
 Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
 ---
- .../bindings/usb/mediatek,mt6360-tcpc.yaml         | 73 ++++++++++++++++++++++
- 1 file changed, 73 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
+ drivers/usb/typec/tcpm/tcpci_mt6360.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml b/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
-new file mode 100644
-index 00000000..9e8ab0d
---- /dev/null
-+++ b/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
-@@ -0,0 +1,73 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: "http://devicetree.org/schemas/usb/mediatek,mt6360-tcpc.yaml#"
-+$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-+
-+title: Mediatek MT6360 Type-C Port Switch and Power Delivery controller DT bindings
-+
-+maintainers:
-+  - ChiYuan Huang <cy_huang@richtek.com>
-+
-+description: |
-+  Mediatek MT6360 is a multi-functional device. It integrates charger, ADC, flash, RGB indicators,
-+  regulators (BUCKs/LDOs), and TypeC Port Switch with Power Delivery controller.
-+  This document only describes MT6360 Type-C Port Switch and Power Delivery controller.
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt6360-tcpc
-+
-+  interrupts-extended:
-+    maxItems: 1
-+
-+  interrupt-names:
-+    items:
-+      - const: PD_IRQB
-+
-+patternProperties:
-+  "connector":
-+    type: object
-+    $ref: ../connector/usb-connector.yaml#
-+    description:
-+      Properties for usb c connector.
-+
-+additionalProperties: false
-+
-+required:
-+  - compatible
-+  - interrupts-extended
-+  - interrupt-names
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/usb/pd.h>
-+    i2c0 {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        mt6360@34 {
-+            compatible = "mediatek,mt6360";
-+            reg = <0x34>;
-+
-+            tcpc {
-+                compatible = "mediatek,mt6360-tcpc";
-+                interrupts-extended = <&gpio26 3 IRQ_TYPE_LEVEL_LOW>;
-+                interrupt-names = "PD_IRQB";
-+
-+                connector {
-+                        compatible = "usb-c-connector";
-+                        label = "USB-C";
-+                        data-role = "dual";
-+                        power-role = "dual";
-+                        try-power-role = "sink";
-+                        source-pdos = <PDO_FIXED(5000, 1000, PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP)>;
-+                        sink-pdos = <PDO_FIXED(5000, 2000, PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP)>;
-+                        op-sink-microwatt = <10000000>;
-+                };
-+            };
-+        };
-+    };
-+...
+diff --git a/drivers/usb/typec/tcpm/tcpci_mt6360.c b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+index 6a28193..a381b5d 100644
+--- a/drivers/usb/typec/tcpm/tcpci_mt6360.c
++++ b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+@@ -164,6 +164,7 @@ static int mt6360_tcpc_remove(struct platform_device *pdev)
+ {
+ 	struct mt6360_tcpc_info *mti = platform_get_drvdata(pdev);
+ 
++	disable_irq(mti->irq);
+ 	tcpci_unregister_port(mti->tcpci);
+ 	return 0;
+ }
 -- 
 2.7.4
 
