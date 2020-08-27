@@ -2,83 +2,67 @@ Return-Path: <SRS0=xkEi=CF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4672FC433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 07:11:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C802AC433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 07:26:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 14CC420786
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 07:11:37 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9532E22BEA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2020 07:26:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Fp5hD7U3";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="crDap6mO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 14CC420786
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F9qFgPmR";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="oKECoV8C"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9532E22BEA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5nlD1XLawZj2XIGEKw7+rHfbLVIqADkbPvd3W8ShOnY=; b=Fp5hD7U39luVU+dZiiWEL/GmY
-	x/eC3QAPZCzX1aCGubTl7mBQ23pCqTwHwkdHBD8raump3dLQdLauH9yQScDIUJ9PXo3+ekSFjZo+Z
-	l4R8tNTT6m65uHU6q5/6dYonKmY6QWAw/ATPiaGMaeEONsQ7F6kDL/VABTuOBSEJL4/zigM/bXm6l
-	5NDTzirBfW5OrXPFnnySaz98BtSRn/AQNPim3FKeGQ5RnCfj7423P+vWFtpHzt6WQCcCDCJZkpK8I
-	9sCPdMVX/eTKF3DsVYsdjMrR0V9Lt08NVcqrcdSPoyLYB1+BsHPbbncSzfnZsczc6CiPZvmrVoZqa
-	bp2oW6k4g==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=r98JuQQxzN9qt4T69LhdNzniKicYq+xsiBLWYua0Tlo=; b=F9qFgPmRDoR6ZXMVSToOMMbPAG
+	7BWUBtHzdKe7KngOpl6+PmymJQETVoh2wcB3s1oRNGBnSjaKMhO1aSbWogTRly+iL8YUfNW/tYGS+
+	KRuXu+WllRQ0bBbVAf9hCo8rgcVtwpWZKg30ttEUQW73T25v8lz80H1rjRzjwM5X980X6XnwkyKX1
+	teBlAsQM1u1qzbqfNNx7uJj0yZMkAcxeKfWIZTsebNBsAGFdyv9pbWVf1m7N5bljXzf9e/VCXr4xs
+	uCPk+LFBaKdxW8MgJmzAJIP2ucGan2Iieo6cPq1TNkq8WdQ8L+5jx9+VB0o4Ox9nDAgGmmutk2SPG
+	AzcstyQw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kBC4G-0004ZY-Ij; Thu, 27 Aug 2020 07:11:28 +0000
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
+	id 1kBCIw-00074P-Bp; Thu, 27 Aug 2020 07:26:38 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kBC4C-0004YU-6L; Thu, 27 Aug 2020 07:11:24 +0000
-Received: by mail-lj1-x243.google.com with SMTP id w14so5246105ljj.4;
- Thu, 27 Aug 2020 00:11:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Nv57Gn1eKFngv8s/vSw/Btf+G9R1mZ77PltJIm2hCKI=;
- b=crDap6mOKZrR9ZAtjqKwuhuwWvD9xNLGT8q+sm69RRILe0fG9BkjV+7z0DZ127asDo
- I+jEutBlwKivDNRYRbrGNS/OqE+tcpehypYt15HUhqc2Kjr7Y1OukJc8fcpJnUpQ2WOh
- Dha8PJ14CUJGcZNonjI7mLJZVzAp9qOi39Cdrq5+DZ1Fv2v4QyP7va94M9rrogworQaC
- 0SJXA3ZT22RqBUuEUM+8IZqjPOLxlVfBCVQ8Sb6qktu2lK0dfk15e8RrPKWBpWVW6eL9
- P8gH2vpUjlpKXaGVoT08tvMnBDWyerZBD7A+LvO1/xiF7WA8g8bRemf27ZBqYN+JDM7R
- HhcQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Nv57Gn1eKFngv8s/vSw/Btf+G9R1mZ77PltJIm2hCKI=;
- b=K1+fafJ6svby2Z2hGVDmmTdBG2dV+zHjqi8exea1jHqNA3gmsG3vD8uI5i1tomEw0Q
- 9XglrZyFtLILadOgoQu2XnxZ/AT4Bf790h5ZaPs1hcAAqdwokHyc7Q4sX/1i4Q0kTXYw
- lH3VafL8jP3MegJDaYgwKpxxAAgDU/8HrIir5lzDqVg0CIfk2hIeYv6aEferTRLIPTZV
- 80Y6QbAv3j/3SwITxfxUnMdg6asY3i/TkG01kUJ2F216Av6v+XWuFnXgaWXfvN4vQtmv
- x7OKa6tDCYzpsOfmnBoFFDqMKy5IklyOEZ/iz34bTPI3aP+4BypuuGxQncXjhbps46G0
- K9VQ==
-X-Gm-Message-State: AOAM530zJM+xglJJYVvT5zqndZqY4Koc7i9ro0W+mZaTjYi2jEFluCSv
- hOEUkq0Xv3Z5tCSPGG+nhBYCy/FtwYPMh3m0QKA=
-X-Google-Smtp-Source: ABdhPJzvJAEB9d5r9zidPaU9W1O7zcbNFi6NXmIb7tdkFFR+S/4m355fVHEQ2ZvkrN/Z08JyvffpgZG4T1Axqa0ooPg=
-X-Received: by 2002:a2e:9b08:: with SMTP id u8mr8377257lji.208.1598512282738; 
- Thu, 27 Aug 2020 00:11:22 -0700 (PDT)
-MIME-Version: 1.0
-References: <1598503859-29620-1-git-send-email-u0084500@gmail.com>
- <20200827070010.GD813478@kuha.fi.intel.com>
-In-Reply-To: <20200827070010.GD813478@kuha.fi.intel.com>
-From: =?UTF-8?B?5ZWf5Y6f6buD?= <u0084500@gmail.com>
-Date: Thu, 27 Aug 2020 15:11:11 +0800
-Message-ID: <CADiBU3-GFkjA8p_tOkF-YcJf69K=Z48oDpme-rWWH3kEj=eaDA@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] usb typec: mt6360: Add support for mt6360 Type-C
- driver
-To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+ id 1kBCIq-00071h-0S; Thu, 27 Aug 2020 07:26:32 +0000
+Received: from kozik-lap.mshome.net (unknown [194.230.155.216])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 00AA622BEA;
+ Thu, 27 Aug 2020 07:26:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1598513191;
+ bh=90a9ZhlFuSPAOjQxk04wDw4LIX5PUnsmuyC3grz/ji8=;
+ h=From:To:Cc:Subject:Date:From;
+ b=oKECoV8CYsgDpAvjo7nOxplkehdURqkHPlg65V1JVtuu77hPtxa6fOKrcMnyoCKaQ
+ DIt6A2PvzLkzmlx4pCEeF80ZdllmPjytdu/u23q6ubzm7RtTLbFWEPcTGlOjaAUGe5
+ hfsdgV1C1q24sJ6MrAAE0rx1Hluvdr6ummKnbO4U=
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Jassi Brar <jassisinghbrar@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Houlong Wei <houlong.wei@mediatek.com>, HS Liao <hs.liao@mediatek.com>,
+ CK Hu <ck.hu@mediatek.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH] maiblox: mediatek: Fix handling of platform_get_irq() error
+Date: Thu, 27 Aug 2020 09:26:26 +0200
+Message-Id: <20200827072626.23331-1-krzk@kernel.org>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200827_031124_283430_0D94B04F 
-X-CRM114-Status: GOOD (  15.58  )
+X-CRM114-CacheID: sfid-20200827_032632_123917_5CAB0668 
+X-CRM114-Status: GOOD (  13.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,39 +74,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, devicetree@vger.kernel.org,
- Greg KH <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, cy_huang <cy_huang@richtek.com>,
- robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
- Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Krzysztof Kozlowski <krzk@kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGVpa2tpIEtyb2dlcnVzIDxoZWlra2kua3JvZ2VydXNAbGludXguaW50ZWwuY29tPiDmlrwgMjAy
-MOW5tDjmnIgyN+aXpSDpgLHlm5sg5LiL5Y2IMzowMOWvq+mBk++8mgo+Cj4gT24gVGh1LCBBdWcg
-MjcsIDIwMjAgYXQgMTI6NTA6NThQTSArMDgwMCwgY3lfaHVhbmcgd3JvdGU6Cj4gPiBGcm9tOiBD
-aGlZdWFuIEh1YW5nIDxjeV9odWFuZ0ByaWNodGVrLmNvbT4KPiA+Cj4gPiBNZWRpYXRlayBNVDYz
-NjAgaXMgYSBtdWx0aS1mdW5jdGlvbmFsIElDIHRoYXQgaW5jbHVkZXMgVVNCIFR5cGUtQy4KPiA+
-IEl0IHdvcmtzIHdpdGggVHlwZS1DIFBvcnQgQ29udHJvbGxlciBNYW5hZ2VyIHRvIHByb3ZpZGUg
-VVNCIFBECj4gPiBhbmQgVVNCIFR5cGUtQyBmdW5jdGlvbmFsaXRpZXMuCj4gPgo+ID4gQWRkIGZp
-eCB0byBQcmV2ZW50IHRoZSByYWNlIGNvbmRpdGlvbiBmcm9tIGludGVycnVwdCBhbmQgdGNwY2kg
-cG9ydCB1bnJlZ2lzdGVyCj4gPiBkdXJpbmcgbW9kdWxlIHJlbW92ZS4KPgo+IFlvdSBtZXJnZWQg
-dHdvIHBhdGNoZXMgZnJvbSB2MiB0b2dldGhlciwgc28gdGhhdCByZWFsbHkgbWFrZXMgdGhpcwo+
-IHYzLiBXaGVyZSBpcyB0aGUgY2hhbmdlbG9nPwoKY2hhbmdlbG9nCkFkZCBmaXggdG8gUHJldmVu
-dCB0aGUgcmFjZSBjb25kaXRpb24gZnJvbSBpbnRlcnJ1cHQgYW5kIHRjcGNpIHBvcnQgdW5yZWdp
-c3RlcgpkdXJpbmcgbW9kdWxlIHJlbW92ZS4KCkRvIEkgbmVlZCB0byByZXNlbnQgdGhlIHJlYWwg
-VjMgYW5kIG1hcmsgdGhlIGZpcnN0IHBhdGNoIGZvciB0aGUKY29tbWl0IGxvZyBsaWtlIGFzIGJl
-bG93IHRleHQ/CgpNZWRpYXRlayBNVDYzNjAgaXMgYSBtdWx0aS1mdW5jdGlvbmFsIElDIHRoYXQg
-aW5jbHVkZXMgVVNCIFR5cGUtQy4KSXQgd29ya3Mgd2l0aCBUeXBlLUMgUG9ydCBDb250cm9sbGVy
-IE1hbmFnZXIgdG8gcHJvdmlkZSBVU0IgUEQKYW5kIFVTQiBUeXBlLUMgZnVuY3Rpb25hbGl0aWVz
-LgoKVjEgLT4gVjIKMS4gQWRkIGZpeCB0byBQcmV2ZW50IHRoZSByYWNlIGNvbmRpdGlvbiBmcm9t
-IGludGVycnVwdCBhbmQgdGNwY2kgcG9ydAp1bnJlZ2lzdGVyCmR1cmluZyBtb2R1bGUgcmVtb3Zl
-LgoKVjIgLT4gVjMKMS4gTWVyZ2UgVjIgY2hhbmdlIGludG8gdGhlIGZpcnN0IHBhdGNoLgoKCklm
-IHllcywgSSBjYW4gdXNlIHRoaXMgd2F5IHRvIHJlc2VuZCBwYXRjaCB2MyBmb3IgdGhlIHJlYWRh
-YmlsaXR5Lgo+Cj4gdGhhbmtzLAo+Cj4gLS0KPiBoZWlra2kKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApM
-aW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
-b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+platform_get_irq() returns -ERRNO on error.  In such case comparison
+to 0 would pass the check.
+
+Fixes: 623a6143a845 ("mailbox: mediatek: Add Mediatek CMDQ driver")
+Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+---
+ drivers/mailbox/mtk-cmdq-mailbox.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index 484d4438cd83..76e4dfcf5228 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -525,10 +525,8 @@ static int cmdq_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	cmdq->irq = platform_get_irq(pdev, 0);
+-	if (!cmdq->irq) {
+-		dev_err(dev, "failed to get irq\n");
+-		return -EINVAL;
+-	}
++	if (!cmdq->irq < 0)
++		return cmdq->irq;
+ 
+ 	plat_data = (struct gce_plat *)of_device_get_match_data(dev);
+ 	if (!plat_data) {
+-- 
+2.17.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
