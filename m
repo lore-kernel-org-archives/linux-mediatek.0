@@ -2,85 +2,84 @@ Return-Path: <SRS0=47V3=CG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0A3E4C433E2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 08:44:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8DAD8C433E6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 09:25:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C7B1B2086A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 08:44:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4BDA7208CA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 09:25:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s0tHy9Ut";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="LvoKCakW"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C7B1B2086A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="El2S9PRw";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="gZCwBlbC"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4BDA7208CA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bdbHBPSiKlwSQJ2NL/iNdra7y5SkTQK13Y+NyJ+zTlg=; b=s0tHy9UtsMr+dGJUrkRZYJOrj
-	KHk+X1K52F3bpaecWrSfJ9ybffxdvEJUJPYRIYnz8A6NtUGV+XW/fkE8WCOggEOqvoP5y6Y3ht358
-	kI//0SACjf4FH5H5bf5hHsQngh41Yu+OkBaf/usidXs2VbSicLsgHyGcmsHa41p8g7WsnmjbqkuMv
-	ucwkEJ1qe/L0C7rmgvkgiANtj9pJbqjibaWFZZJj6sSfVTl5etVTeVekXCEh7vKORxMfl/1oXLIqT
-	8BbH47/0rpCn0i+j5vrdzIH4iOa/42ATCa9QQtb3wPmz9DBKuKE++G+q198FNnN1DUCN+idogHA/T
-	tYgRtxTRA==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Q0apavoVI7BJhBcB4wnKWsFUI6ZWK2auvdweQO9ZkR4=; b=El2S9PRw1qixywF0dwdi28G6CJ
+	6R425K6VkZ1AfdXUcm6oZ7JIptcaD94Klv69hBuPZaIeMhxfrc2ULru4ihGoM1qWmj1P34cd5afbQ
+	4ASOThRVHA6SlrV5q63e6f8/Hva/5s/eAS1ZqAtdbzNDf52BGuaWtlkWo2xb4VANfrjf8GXfLgd7Y
+	nzrY0zsyZptIERDSn1yPcR8163hzLPsDmSnnHwPP4PcrHDhk3bU/6i3iqvou8UqbZu14XL1jVoGMz
+	iTisrWm/q2FtGHVoyVS0O/2tOD3NKW1JJVL/NW6+PLYEMdyBA/3LSznjk7JDwKe/YhoVXOeJX/cPP
+	N/jelP0g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kBZzg-00053z-Ax; Fri, 28 Aug 2020 08:44:20 +0000
-Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944])
+	id 1kBacx-0003ay-JV; Fri, 28 Aug 2020 09:24:55 +0000
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kBZzc-00051j-8q
- for linux-mediatek@lists.infradead.org; Fri, 28 Aug 2020 08:44:17 +0000
-Received: by mail-ua1-x944.google.com with SMTP id y15so137719uan.9
- for <linux-mediatek@lists.infradead.org>; Fri, 28 Aug 2020 01:44:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zeXlfnXZ4sTJswhwNtffWf0Y5RYZt7CDOEurreh9XAI=;
- b=LvoKCakWRKLvx/0BHLE5JGzq92yOk3o/lHDjeCNYJRZW2x4PnX4osD+BUJKunyCUj2
- /bqB9UVotpxVrZ5G923Rznp1fq4DzwoO4tD3hKWIMMQNSfyK3iXaOd14ozrYm5Ye5HCq
- 0Rzr3iNz8cf5rlznhBgAvVEGYCLwb4S4oXh7MRVdr9zhOVoLT4PZvIkIJuc4utbIjTcz
- UqJF64cJ6Jk/hR8jwWu49mRJ8G2l8vDf+TK1xPJS06hCvHJZ7/rD3Laa0bSm+pCy/iJL
- 0Mb1WU+Xtn3sOlJLpNsl3jOqTIEXq6svmJo31r7nkA/4n6OYkyyD33PSoncLANEO2ydm
- Em/w==
+ id 1kBacp-0003Wq-6I; Fri, 28 Aug 2020 09:24:48 +0000
+Received: by mail-pg1-x543.google.com with SMTP id g1so173832pgm.9;
+ Fri, 28 Aug 2020 02:24:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=M1FlYZLcL52u9lLRYgnY8fCdIXyqHdQIr7XeJHgCly4=;
+ b=gZCwBlbCzym5anAj94Q0FTuoFXWM9xy9urm+sUHnvLZ7Ox0DFsxX52+YoTSuky8B1T
+ KVZaR6QXX+ZBqtbr9QDTUzCHtOIArId8jDh0NgFSbfttsJDEYdpP1YTAtCaWU0nQfQeT
+ zybwm6LPV0j4QcNUFFHcnVLE11YX6p1t/Y/EcvVaafBR6ME96eiqio1eLBTUy09K+U4D
+ LJfY58ABIIU+DNd3rmFJ2omk8yjQebEN7aGPqENDVB5Y61ZgYXiCqkRFWct8ZaMdoYs+
+ mUqAxKcIibGorJ4saYADhv9x0o2zestIUZgevwwE5XpYbRlh27wgMJEu9D5paMnECd79
+ CGOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=zeXlfnXZ4sTJswhwNtffWf0Y5RYZt7CDOEurreh9XAI=;
- b=Z487pL9HXalT/3q06W7p6cBRCmOrjMDKr6CMy3I8TPNTDGiVR7ysU4UmEkGL+qZT3j
- 2eZDEauaFdpr6IJo/ewCjdghfwwEk8TTP3vfabriAFTvMI5rlk6mUFvVTdNcFL2JWOT1
- f2WmoCK3ntX1GOjS8+5UBOfAuyp3efgc4WNDeTgKpTCyMSFpzH3hSddZ/mtcxVhfy8X2
- 5DgcAzgs+okLJ6B6UUfm78LQJbYm4UzMN3Uvmo1f5i2GVuFdvA6A+g5UQI0Zm7kwoSVU
- E8JZZ6kM9nb+znIVQdlZt2VTaT7IjROVwwqFRtwAMcUYhhCEhUOh6ehBWlqLICTfi/uB
- 2Hig==
-X-Gm-Message-State: AOAM530qnO/fCf5FsNZfgAwg+UYAgke+ahimCSJxT41Z1cvjjeTsAlDV
- aeX7qCcJZR1flUbMC5yyVHZmIUuFg9xgRQukUzAQ6w==
-X-Google-Smtp-Source: ABdhPJxDXAOV/vb6si47r9ICjb8OmqVI+/7MJPxURFzZTGQqh0+TR5mXHiyTJTbQAY+DumtfmYUO31qltv4NzpdAdck=
-X-Received: by 2002:ab0:2848:: with SMTP id c8mr283199uaq.15.1598604253138;
- Fri, 28 Aug 2020 01:44:13 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200814014346.6496-1-wenbin.mei@mediatek.com>
- <20200814014346.6496-3-wenbin.mei@mediatek.com>
- <CAPDyKFpt6-a+pkTXb2RZdx=yTONetugSCKbtSsRD2xQ3PRPhDQ@mail.gmail.com>
- <1dfc1938-f5e8-c4c8-57c7-d7b6c33dcb1d@gmail.com>
-In-Reply-To: <1dfc1938-f5e8-c4c8-57c7-d7b6c33dcb1d@gmail.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Fri, 28 Aug 2020 10:43:34 +0200
-Message-ID: <CAPDyKFp+nFq11YcnNSe6sfDx-gkBHiYAjNE+r-OQ8HdrK1LBKw@mail.gmail.com>
-Subject: Re: [v5,2/3] arm64: dts: mt7622: add reset node for mmc device
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- Wenbin Mei <wenbin.mei@mediatek.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=M1FlYZLcL52u9lLRYgnY8fCdIXyqHdQIr7XeJHgCly4=;
+ b=BkomHSxrSkvJmNXRn8Nv8hdJgo5aeR4eYqZdiBZR8EGLDjgXCiWVZsKI3XLW0eE/vx
+ G3N9zQ/01GF9NfoJPyOCk8PrsGy6aYefGmKc7JCxNZTeQ6w8B+TdVu87sL6Rci6q7pHJ
+ SGx46C093wi0j1tvbWBryVGy+vz4gg5+s12ZEfEgpKyga0upJMNEiC6tA7t+4iuht3CB
+ RUxh67nVdPYObbKhQqKFzO5EzIwP6XmAMHKeQOu6s7FLXF/CiuORmEb/RAUhn+49iUbs
+ 62kPAHYkMdDorg2KYXGCX0TLz/X5PUtnOrDcpcnW8ksKll1fONIwqktPglU/YGriSWAV
+ 4wDA==
+X-Gm-Message-State: AOAM530vWp+uFcxsJKokAnteXgUMNIsuvQ2w28Zz6aS1ECufpfvgh1mj
+ xuSSdK+/GkEpmA94pHzXmttTXaIWkb/AbQ==
+X-Google-Smtp-Source: ABdhPJyRPK9buy/ryobjtdS7ex+y4BxQJGdaot6lJ8PeV//MVzhjmuSydgCukBx9dibDtUpdVm7oow==
+X-Received: by 2002:a65:4183:: with SMTP id a3mr557204pgq.448.1598606684691;
+ Fri, 28 Aug 2020 02:24:44 -0700 (PDT)
+Received: from localhost.localdomain ([2402:7500:46a:912:593d:4bfb:3bf8:35e0])
+ by smtp.gmail.com with ESMTPSA id
+ n68sm813563pfn.145.2020.08.28.02.24.40
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 28 Aug 2020 02:24:43 -0700 (PDT)
+From: cy_huang <u0084500@gmail.com>
+To: gregkh@linuxfoundation.org, robh+dt@kernel.org, matthias.bgg@gmail.com,
+ linux@roeck-us.net, heikki.krogerus@linux.intel.com
+Subject: [PATCH v4 1/2] usb typec: mt6360: Add support for mt6360 Type-C driver
+Date: Fri, 28 Aug 2020 17:24:33 +0800
+Message-Id: <1598606674-32326-1-git-send-email-u0084500@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200828_044416_337924_A2112A1D 
-X-CRM114-Status: GOOD (  13.15  )
+X-CRM114-CacheID: sfid-20200828_052447_295030_2D5B744B 
+X-CRM114-Status: GOOD (  24.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,49 +91,293 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: DTML <devicetree@vger.kernel.org>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "# 4.0+" <stable@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: gene_chen@richtek.com, devicetree@vger.kernel.org,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 27 Aug 2020 at 10:23, Matthias Brugger <matthias.bgg@gmail.com> wrote:
->
->
->
-> On 24/08/2020 11:50, Ulf Hansson wrote:
-> > On Fri, 14 Aug 2020 at 03:44, Wenbin Mei <wenbin.mei@mediatek.com> wrote:
-> >>
-> >> This commit adds reset node for mmc device.
-> >>
-> >> Cc: <stable@vger.kernel.org> # v5.4+
-> >> Fixes: 966580ad236e ("mmc: mediatek: add support for MT7622 SoC")
-> >> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
-> >> Tested-by: Frank Wunderlich <frank-w@public-files.de>
-> >
-> > I can pick this for my fixes branch, together with the other changes,
-> > however deferring that until Matthias acks it.
->
-> Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
->
-> My understanding is, that this will land also in v5.9-rc[3,4], correct?
+From: ChiYuan Huang <cy_huang@richtek.com>
 
-Correct.
+Mediatek MT6360 is a multi-functional IC that includes USB Type-C.
+It works with Type-C Port Controller Manager to provide USB PD
+and USB Type-C functionalities.
 
-Applied for fixes, thanks!
+Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+---
+v1 to v2
+1. Add fix to Prevent the race condition from interrupt and tcpci port
+unregister during module remove.
 
-[...]
+v2 to v3
+1. Change comment style for the head of source code.
+2. No need to print error for platform_get_irq_byname.
+3. Fix tcpci_register_port check from IS_ERR_OR_NULL to IS_ERR.
+4. Rename driver/Kconfig/Makefile form mt6360 to mt636x.
+5. Rename DT binding documents from mt6360 to mt636x.
 
-Kind regards
-Uffe
+v3 to v4
+1. revert v3 item 4 for mt636x patch in driver/Kconfig/Makefile.
+2. revert v3 item 5 for mt636x DT binding document.
+
+ drivers/usb/typec/tcpm/Kconfig        |   8 ++
+ drivers/usb/typec/tcpm/Makefile       |   1 +
+ drivers/usb/typec/tcpm/tcpci_mt6360.c | 212 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 221 insertions(+)
+ create mode 100644 drivers/usb/typec/tcpm/tcpci_mt6360.c
+
+diff --git a/drivers/usb/typec/tcpm/Kconfig b/drivers/usb/typec/tcpm/Kconfig
+index fa3f393..58a64e1 100644
+--- a/drivers/usb/typec/tcpm/Kconfig
++++ b/drivers/usb/typec/tcpm/Kconfig
+@@ -27,6 +27,14 @@ config TYPEC_RT1711H
+ 	  Type-C Port Controller Manager to provide USB PD and USB
+ 	  Type-C functionalities.
+ 
++config TYPEC_MT6360
++	tristate "Mediatek MT6360 Type-C driver"
++	depends on MFD_MT6360
++	help
++	  Mediatek MT6360 is a multi-functional IC that includes
++	  USB Type-C. It works with Type-C Port Controller Manager
++	  to provide USB PD and USB Type-C functionalities.
++
+ endif # TYPEC_TCPCI
+ 
+ config TYPEC_FUSB302
+diff --git a/drivers/usb/typec/tcpm/Makefile b/drivers/usb/typec/tcpm/Makefile
+index a5ff6c8..7592ccb 100644
+--- a/drivers/usb/typec/tcpm/Makefile
++++ b/drivers/usb/typec/tcpm/Makefile
+@@ -5,3 +5,4 @@ obj-$(CONFIG_TYPEC_WCOVE)	+= typec_wcove.o
+ typec_wcove-y			:= wcove.o
+ obj-$(CONFIG_TYPEC_TCPCI)	+= tcpci.o
+ obj-$(CONFIG_TYPEC_RT1711H)	+= tcpci_rt1711h.o
++obj-$(CONFIG_TYPEC_MT6360)	+= tcpci_mt6360.o
+diff --git a/drivers/usb/typec/tcpm/tcpci_mt6360.c b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+new file mode 100644
+index 00000000..f1bd9e0
+--- /dev/null
++++ b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+@@ -0,0 +1,212 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Copyright (C) 2020 MediaTek Inc.
++ *
++ * Author: ChiYuan Huang <cy_huang@richtek.com>
++ */
++
++#include <linux/interrupt.h>
++#include <linux/kernel.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
++#include <linux/regmap.h>
++#include <linux/usb/tcpm.h>
++
++#include "tcpci.h"
++
++#define MT6360_REG_VCONNCTRL1	0x8C
++#define MT6360_REG_MODECTRL2	0x8F
++#define MT6360_REG_SWRESET	0xA0
++#define MT6360_REG_DEBCTRL1	0xA1
++#define MT6360_REG_DRPCTRL1	0xA2
++#define MT6360_REG_DRPCTRL2	0xA3
++#define MT6360_REG_I2CTORST	0xBF
++#define MT6360_REG_RXCTRL2	0xCF
++#define MT6360_REG_CTDCTRL2	0xEC
++
++/* MT6360_REG_VCONNCTRL1 */
++#define MT6360_VCONNCL_ENABLE	BIT(0)
++/* MT6360_REG_RXCTRL2 */
++#define MT6360_OPEN40M_ENABLE	BIT(7)
++/* MT6360_REG_CTDCTRL2 */
++#define MT6360_RPONESHOT_ENABLE	BIT(6)
++
++struct mt6360_tcpc_info {
++	struct tcpci_data tdata;
++	struct tcpci *tcpci;
++	struct device *dev;
++	int irq;
++};
++
++static inline int mt6360_tcpc_read16(struct regmap *regmap,
++				     unsigned int reg, u16 *val)
++{
++	return regmap_raw_read(regmap, reg, val, sizeof(u16));
++}
++
++static inline int mt6360_tcpc_write16(struct regmap *regmap,
++				      unsigned int reg, u16 val)
++{
++	return regmap_raw_write(regmap, reg, &val, sizeof(u16));
++}
++
++static int mt6360_tcpc_init(struct tcpci *tcpci, struct tcpci_data *tdata)
++{
++	struct regmap *regmap = tdata->regmap;
++	int ret;
++
++	ret = regmap_write(regmap, MT6360_REG_SWRESET, 0x01);
++	if (ret)
++		return ret;
++
++	/* after reset command, wait 1~2ms to wait IC action */
++	usleep_range(1000, 2000);
++
++	/* write all alert to masked */
++	ret = mt6360_tcpc_write16(regmap, TCPC_ALERT_MASK, 0);
++	if (ret)
++		return ret;
++
++	/* config I2C timeout reset enable , and timeout to 200ms */
++	ret = regmap_write(regmap, MT6360_REG_I2CTORST, 0x8F);
++	if (ret)
++		return ret;
++
++	/* config CC Detect Debounce : 26.7*val us */
++	ret = regmap_write(regmap, MT6360_REG_DEBCTRL1, 0x10);
++	if (ret)
++		return ret;
++
++	/* DRP Toggle Cycle : 51.2 + 6.4*val ms */
++	ret = regmap_write(regmap, MT6360_REG_DRPCTRL1, 4);
++	if (ret)
++		return ret;
++
++	/* DRP Duyt Ctrl : dcSRC: /1024 */
++	ret = mt6360_tcpc_write16(regmap, MT6360_REG_DRPCTRL2, 330);
++	if (ret)
++		return ret;
++
++	/* Enable VCONN Current Limit function */
++	ret = regmap_update_bits(regmap, MT6360_REG_VCONNCTRL1, MT6360_VCONNCL_ENABLE,
++				 MT6360_VCONNCL_ENABLE);
++	if (ret)
++		return ret;
++
++	/* Enable cc open 40ms when pmic send vsysuv signal */
++	ret = regmap_update_bits(regmap, MT6360_REG_RXCTRL2, MT6360_OPEN40M_ENABLE,
++				 MT6360_OPEN40M_ENABLE);
++	if (ret)
++		return ret;
++
++	/* Enable Rpdet oneshot detection */
++	ret = regmap_update_bits(regmap, MT6360_REG_CTDCTRL2, MT6360_RPONESHOT_ENABLE,
++				 MT6360_RPONESHOT_ENABLE);
++	if (ret)
++		return ret;
++
++	/* Set shipping mode off, AUTOIDLE on */
++	return regmap_write(regmap, MT6360_REG_MODECTRL2, 0x7A);
++}
++
++static irqreturn_t mt6360_irq(int irq, void *dev_id)
++{
++	struct mt6360_tcpc_info *mti = dev_id;
++
++	return tcpci_irq(mti->tcpci);
++}
++
++static int mt6360_tcpc_probe(struct platform_device *pdev)
++{
++	struct mt6360_tcpc_info *mti;
++	int ret;
++
++	mti = devm_kzalloc(&pdev->dev, sizeof(*mti), GFP_KERNEL);
++	if (!mti)
++		return -ENOMEM;
++
++	mti->dev = &pdev->dev;
++
++	mti->tdata.regmap = dev_get_regmap(pdev->dev.parent, NULL);
++	if (!mti->tdata.regmap) {
++		dev_err(&pdev->dev, "Failed to get parent regmap\n");
++		return -ENODEV;
++	}
++
++	mti->irq = platform_get_irq_byname(pdev, "PD_IRQB");
++	if (mti->irq < 0)
++		return mti->irq;
++
++	mti->tdata.init = mt6360_tcpc_init;
++	mti->tcpci = tcpci_register_port(&pdev->dev, &mti->tdata);
++	if (IS_ERR(mti->tcpci)) {
++		dev_err(&pdev->dev, "Failed to register tcpci port\n");
++		return PTR_ERR(mti->tcpci);
++	}
++
++	ret = devm_request_threaded_irq(mti->dev, mti->irq, NULL, mt6360_irq, IRQF_ONESHOT,
++					dev_name(&pdev->dev), mti);
++	if (ret) {
++		dev_err(mti->dev, "Failed to register irq\n");
++		tcpci_unregister_port(mti->tcpci);
++		return ret;
++	}
++
++	device_init_wakeup(&pdev->dev, true);
++	platform_set_drvdata(pdev, mti);
++
++	return 0;
++}
++
++static int mt6360_tcpc_remove(struct platform_device *pdev)
++{
++	struct mt6360_tcpc_info *mti = platform_get_drvdata(pdev);
++
++	disable_irq(mti->irq);
++	tcpci_unregister_port(mti->tcpci);
++	return 0;
++}
++
++static int __maybe_unused mt6360_tcpc_suspend(struct device *dev)
++{
++	struct mt6360_tcpc_info *mti = dev_get_drvdata(dev);
++
++	if (device_may_wakeup(dev))
++		enable_irq_wake(mti->irq);
++
++	return 0;
++}
++
++static int __maybe_unused mt6360_tcpc_resume(struct device *dev)
++{
++	struct mt6360_tcpc_info *mti = dev_get_drvdata(dev);
++
++	if (device_may_wakeup(dev))
++		disable_irq_wake(mti->irq);
++
++	return 0;
++}
++
++static SIMPLE_DEV_PM_OPS(mt6360_tcpc_pm_ops, mt6360_tcpc_suspend, mt6360_tcpc_resume);
++
++static const struct of_device_id __maybe_unused mt6360_tcpc_of_id[] = {
++	{ .compatible = "mediatek,mt6360-tcpc", },
++	{},
++};
++MODULE_DEVICE_TABLE(of, mt6360_tcpc_of_id);
++
++static struct platform_driver mt6360_tcpc_driver = {
++	.driver = {
++		.name = "mt6360-tcpc",
++		.pm = &mt6360_tcpc_pm_ops,
++		.of_match_table = mt6360_tcpc_of_id,
++	},
++	.probe = mt6360_tcpc_probe,
++	.remove = mt6360_tcpc_remove,
++};
++module_platform_driver(mt6360_tcpc_driver);
++
++MODULE_AUTHOR("ChiYuan Huang <cy_huang@richtek.com>");
++MODULE_DESCRIPTION("MT6360 USB Type-C Port Controller Interface Driver");
++MODULE_LICENSE("GPL v2");
+-- 
+2.7.4
+
 
 _______________________________________________
 Linux-mediatek mailing list
