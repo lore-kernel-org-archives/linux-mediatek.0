@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7AD26C43461
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 14:43:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4AA99C433E2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 14:49:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3E81620757
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 14:43:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 01F7F207DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 14:49:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UECEwoGG";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="fG0ygNRN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3E81620757
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CLkPsqdX";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ZVxBAghH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 01F7F207DF
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,58 +26,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Ma7HvKypXo2Uj7HBmPlTrKX0YaZI344K58VYd+uGN+c=; b=UECEwoGGNTx9JgHp+hIMp7df3
-	KCbW7O5WyRC3pq0lBS0GljZtWTMWUSNV/uRj8VMDMEHO8v7QjF4ErlQvf02RS3WcJDnoNivgYhKN3
-	z6/Gg8TWbsWHPG4W1723IPFSW4wq1dD+Bijxw6SUfwnjvazGWbhprRAWhqX5mkTAwda5Fj/V0eFYT
-	y40HYEwbtQOFbcS2w3J+qsVG6jJlsq5Lu65+g3pujREPxUXt3MDuaGz2o3fLHrliBE3l1WaRPDyWw
-	kCR9VBgQ9VLTHs2wshRNpSY8su90b7BFrN+OJLPLts95hBetrq5PyxXvO+weVBABmey7lUfSAys1s
-	Lbz2Vjnkg==;
+	 bh=JW4jrxvgFpXyLw8I7Bz5/9FjkxKCEN7DhdqTnv1KpyA=; b=CLkPsqdXtuz1ll8TFPcU55JYy
+	xBbSyqn9VK2sAnLRdIR37dVEJ9bn6qaSmnQJE2OmrOO1xxso0dHaFTogREWvFTATPjVQPTWCjsV7w
+	xhoioemm6jhuNx5oCbWAGPt0kerP9zW7I9ewCUqi0qNr4ooZcLiYkq6hByx4z3tgGUENbBNoHWqwU
+	V9VRA2Vyt2z1IydYdYMHQVoT62hx2A6lBc57Bwm8/oiBn8nyebCrYpMymEnbGV67A2vlKH96fFz6V
+	xX0MCDvd+owPQ5hK2bOiL8rYGtYCI7LU2xAMOjwN+4zTkLhL8O+yynRpUut3edSkMT/nVtdgkfCXI
+	Qx172vDbQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kBfbS-0004ZO-GZ; Fri, 28 Aug 2020 14:43:42 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1kBfgc-0005X3-Rv; Fri, 28 Aug 2020 14:49:02 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kBfbP-0004Yg-NE; Fri, 28 Aug 2020 14:43:40 +0000
-Received: by mail-pg1-x542.google.com with SMTP id 31so541970pgy.13;
- Fri, 28 Aug 2020 07:43:38 -0700 (PDT)
+ id 1kBfgb-0005Um-0D; Fri, 28 Aug 2020 14:49:02 +0000
+Received: by mail-pl1-x643.google.com with SMTP id 10so561321plg.8;
+ Fri, 28 Aug 2020 07:49:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:autocrypt:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Z7btAAWQXIeh5Wvc1WRslKUwM9zCoPL9pUGkhG8ougw=;
- b=fG0ygNRNkw3tD9lleOAqe0rpzuGDx/8Gswm9bCZh4YkI8Lf/Pik9P8I7S6BUE3juCo
- Vp8yz9rtts+RH29WoRNw7QxTrneF88Lis/2gNo5sgwMQUzFEtLitJ35A3H5ijqmxpRAm
- fmPrkEuibSR/KdeiXp4T9uGNmlkXn+2KLhHdk+bgRWaP6vWEpyWISklIrpX/3B2k+Yf1
- TQ7RDcywxzjlVPEwbkvZhTEAcbYUwTPOD9H0Cl9yYjWn2D3wl7BFaTOcSffwtZKcnG9C
- DCirG/lFo/P9KuvmxQz6A6VRIz73q65CBKlZMPc7r9QquWTPaNqq/UJNBoymJabH+3P0
- zacA==
+ bh=GwsJK12F/RO3TxV8DL1QHEyRAdItfHxC7ojNdGJazTI=;
+ b=ZVxBAghHGheQcnCpCUTauZpnptW7RVAxlmJDMKuCA7iIDe5ETmEImECQ9Jvmm02dRX
+ T4MU583V9ZKesh7713tJxKze+vdNFvA40Hq87T3tevYQtp7jV8Nd5NSzKJXELNcRPV3H
+ Y1S3vt9sy1JrZK8GodFt74OByaJii4IONE3KVY+8NEry1TRm0W9RqNFL6bpk0KybHvi8
+ LIL7YTQOhBKX8mqUgLjCR+n4upgy3Em8KKwYyxacXs2YmuMiNpbQqU/nQ5LdeWf+As+n
+ QlnjmOdRh/xsYWsTz98yc9F2JM0lWmGaTf3IZ77RIW8BrQ8MBmxNqTd0998Rf+3/tGz/
+ 4hig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=Z7btAAWQXIeh5Wvc1WRslKUwM9zCoPL9pUGkhG8ougw=;
- b=gFFF3Vl75kgpDkit17gVeg6i81LxLNEaSikekfzRKIOIOzfFE0lxrhiWjxHPp+dmbn
- QvKmjW7BQ43k7kcx9Ck7SjMA5NgnHhEW3onZzZaDJk8ax5tK6lVHOveVxVrt09Pe+b7a
- rDqIJlieMeErB0dkEyVfVbTcOcO1fgY6efRKerz5tueGfLpxUXPFObaRI+aGjnay2Ev4
- qgfPVDtCjC3VTy324AZHY1kzzFGODzjS5KbeDr1pyKwNeYUl8mVDjxD0FBI+AhOxijux
- 78iwjBt5ry2qLUjwvuFqfUJ8Wt3eqBscBMREClUR49/LwCRzudIgurmkPT/c+f7ahHDU
- q7qw==
-X-Gm-Message-State: AOAM532lDlB8pIhH29Lbrr2Wva7VrNf2YRgQlx4ZGQZT+oH9IT4SNUOD
- BD0hCTwTeQP5tcXNMYw8QIo=
-X-Google-Smtp-Source: ABdhPJwyP6UlKArRlv0hURODrIMuc2owYl+cCc3zDHTz0oQU/YoCt8VOG576EJkRfKVjRvSPDfZjlA==
-X-Received: by 2002:a63:4a17:: with SMTP id x23mr1501946pga.380.1598625817302; 
- Fri, 28 Aug 2020 07:43:37 -0700 (PDT)
+ bh=GwsJK12F/RO3TxV8DL1QHEyRAdItfHxC7ojNdGJazTI=;
+ b=R1lkPyDrJXvyrxYWe9woo3mPc5YQUH8FTcPk6uGhEla6MyBRxNLQLMdeextYZN62pr
+ j0ZFucV13M6YdACvRcdJE13OCEFo9G4ZqSsSXbMTIe7iOUqKdsY2KLaq/S8NJEs2E9ev
+ DV5DFnQZux88Z81WURzdtMx1qOLmbA8+hUV3tR/IjVUuJjJ3MuFj2rgCA3Q/niQeAX9J
+ UMIhXwHMXWp65u2gVRAftrd1qYFdVJ4y5gBIKhQVjSm7Zcr5lyFNcaeYeiLLoAnuutdK
+ dVlfOh6LaVGEmvRCgzd64Koy0gKN2vjEokywC5VPaiRBM2eCZQgk5bwgL2y6CeExavSn
+ C14g==
+X-Gm-Message-State: AOAM531Lec3zrixKu/NTqMnYXFevbPN1StX8j89qirCI1tBjHRpDqzvd
+ NaVjHPnfDXbiVgIOwxdPEnI=
+X-Google-Smtp-Source: ABdhPJyb+pG0Wk74bLWhX8DcPqkmUTC9YoFj3AX5iklc5Qnyy9Hg1smucBxCDLJ+Ti74vRo4D6DvVA==
+X-Received: by 2002:a17:902:8e85:: with SMTP id
+ bg5mr1567021plb.306.1598626138765; 
+ Fri, 28 Aug 2020 07:48:58 -0700 (PDT)
 Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
  by smtp.gmail.com with ESMTPSA id
- b20sm2063104pfp.140.2020.08.28.07.43.35
+ f4sm1901303pgi.49.2020.08.28.07.48.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 28 Aug 2020 07:43:36 -0700 (PDT)
-Subject: Re: [PATCH v4 1/2] usb typec: mt6360: Add support for mt6360 Type-C
+ Fri, 28 Aug 2020 07:48:58 -0700 (PDT)
+Subject: Re: [PATCH v3 1/3] usb typec: mt6360: Add support for mt6360 Type-C
  driver
-To: cy_huang <u0084500@gmail.com>, gregkh@linuxfoundation.org,
- robh+dt@kernel.org, matthias.bgg@gmail.com, heikki.krogerus@linux.intel.com
-References: <1598610636-4939-1-git-send-email-u0084500@gmail.com>
+To: ChiYuan Huang <u0084500@gmail.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>
+References: <1598527137-6915-1-git-send-email-u0084500@gmail.com>
+ <1598616616.7054.3.camel@mhfsdcap03>
+ <CADiBU3_-Jvk8ORu1MxrccJkdK0_1WdH4Yd8AR-cGyDMEA3Htpw@mail.gmail.com>
 From: Guenter Roeck <linux@roeck-us.net>
 Autocrypt: addr=linux@roeck-us.net; keydata=
  xsFNBE6H1WcBEACu6jIcw5kZ5dGeJ7E7B2uweQR/4FGxH10/H1O1+ApmcQ9i87XdZQiB9cpN
@@ -122,16 +125,16 @@ Autocrypt: addr=linux@roeck-us.net; keydata=
  WkRwrSuCn7UG+qVWZeKEsFKFOkynOs3pVbcbq1pxbhk3TRWCGRU5JolI4ohy/7JV1TVbjiDI
  HP/aVnm6NC8of26P40Pg8EdAhajZnHHjA7FrJXsy3cyIGqvg9os4rNkUWmrCfLLsZDHD8FnU
  mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-Message-ID: <59480731-a09f-a92d-4ab2-84374cd539c6@roeck-us.net>
-Date: Fri, 28 Aug 2020 07:43:35 -0700
+Message-ID: <6a66d52d-5f30-5982-e14c-12d81863f684@roeck-us.net>
+Date: Fri, 28 Aug 2020 07:48:56 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <1598610636-4939-1-git-send-email-u0084500@gmail.com>
+In-Reply-To: <CADiBU3_-Jvk8ORu1MxrccJkdK0_1WdH4Yd8AR-cGyDMEA3Htpw@mail.gmail.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200828_104339_793280_A093618F 
-X-CRM114-Status: GOOD (  32.40  )
+X-CRM114-CacheID: sfid-20200828_104901_101798_49B1B969 
+X-CRM114-Status: GOOD (  25.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -144,305 +147,114 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: gene_chen@richtek.com, devicetree@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ Greg KH <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, cy_huang <cy_huang@richtek.com>,
+ robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/28/20 3:30 AM, cy_huang wrote:
-> From: ChiYuan Huang <cy_huang@richtek.com>
-> 
-> Mediatek MT6360 is a multi-functional IC that includes USB Type-C.
-> It works with Type-C Port Controller Manager to provide USB PD
-> and USB Type-C functionalities.
-> 
-> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
-
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
-
-Note: I didn't verify all registers, but I did confirm that
-writing 16 bit into TCPC_ALERT_MASK and MT6360_REG_DRPCTRL2
-is intentional (both are 16-bit registers).
-
-Thanks,
-Guenter
-
-> ---
-> v2
-> 1. Add fix to Prevent the race condition from interrupt and tcpci port
-> unregister during module remove.
-> 
-> v3
-> 1. Change comment style for the head of source code.
-> 2. No need to print error for platform_get_irq_byname.
-> 3. Fix tcpci_register_port check from IS_ERR_OR_NULL to IS_ERR.
-> 4. Rename driver/Kconfig/Makefile form mt6360 to mt636x.
-> 5. Rename DT binding documents from mt6360 to mt636x.
-> 
-> v4
-> 1. revert v3 item 4 for mt636x patch in driver/Kconfig/Makefile
-> 2. revert v3 item 5 for mt636x DT binding document.
-> 
-> added the mark line after changelog ended.
-> ---
->  drivers/usb/typec/tcpm/Kconfig        |   8 ++
->  drivers/usb/typec/tcpm/Makefile       |   1 +
->  drivers/usb/typec/tcpm/tcpci_mt6360.c | 212 ++++++++++++++++++++++++++++++++++
->  3 files changed, 221 insertions(+)
->  create mode 100644 drivers/usb/typec/tcpm/tcpci_mt6360.c
-> 
-> diff --git a/drivers/usb/typec/tcpm/Kconfig b/drivers/usb/typec/tcpm/Kconfig
-> index fa3f393..58a64e1 100644
-> --- a/drivers/usb/typec/tcpm/Kconfig
-> +++ b/drivers/usb/typec/tcpm/Kconfig
-> @@ -27,6 +27,14 @@ config TYPEC_RT1711H
->  	  Type-C Port Controller Manager to provide USB PD and USB
->  	  Type-C functionalities.
->  
-> +config TYPEC_MT6360
-> +	tristate "Mediatek MT6360 Type-C driver"
-> +	depends on MFD_MT6360
-> +	help
-> +	  Mediatek MT6360 is a multi-functional IC that includes
-> +	  USB Type-C. It works with Type-C Port Controller Manager
-> +	  to provide USB PD and USB Type-C functionalities.
-> +
->  endif # TYPEC_TCPCI
->  
->  config TYPEC_FUSB302
-> diff --git a/drivers/usb/typec/tcpm/Makefile b/drivers/usb/typec/tcpm/Makefile
-> index a5ff6c8..7592ccb 100644
-> --- a/drivers/usb/typec/tcpm/Makefile
-> +++ b/drivers/usb/typec/tcpm/Makefile
-> @@ -5,3 +5,4 @@ obj-$(CONFIG_TYPEC_WCOVE)	+= typec_wcove.o
->  typec_wcove-y			:= wcove.o
->  obj-$(CONFIG_TYPEC_TCPCI)	+= tcpci.o
->  obj-$(CONFIG_TYPEC_RT1711H)	+= tcpci_rt1711h.o
-> +obj-$(CONFIG_TYPEC_MT6360)	+= tcpci_mt6360.o
-> diff --git a/drivers/usb/typec/tcpm/tcpci_mt6360.c b/drivers/usb/typec/tcpm/tcpci_mt6360.c
-> new file mode 100644
-> index 00000000..f1bd9e0
-> --- /dev/null
-> +++ b/drivers/usb/typec/tcpm/tcpci_mt6360.c
-> @@ -0,0 +1,212 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Copyright (C) 2020 MediaTek Inc.
-> + *
-> + * Author: ChiYuan Huang <cy_huang@richtek.com>
-> + */
-> +
-> +#include <linux/interrupt.h>
-> +#include <linux/kernel.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/regmap.h>
-> +#include <linux/usb/tcpm.h>
-> +
-> +#include "tcpci.h"
-> +
-> +#define MT6360_REG_VCONNCTRL1	0x8C
-> +#define MT6360_REG_MODECTRL2	0x8F
-> +#define MT6360_REG_SWRESET	0xA0
-> +#define MT6360_REG_DEBCTRL1	0xA1
-> +#define MT6360_REG_DRPCTRL1	0xA2
-> +#define MT6360_REG_DRPCTRL2	0xA3
-> +#define MT6360_REG_I2CTORST	0xBF
-> +#define MT6360_REG_RXCTRL2	0xCF
-> +#define MT6360_REG_CTDCTRL2	0xEC
-> +
-> +/* MT6360_REG_VCONNCTRL1 */
-> +#define MT6360_VCONNCL_ENABLE	BIT(0)
-> +/* MT6360_REG_RXCTRL2 */
-> +#define MT6360_OPEN40M_ENABLE	BIT(7)
-> +/* MT6360_REG_CTDCTRL2 */
-> +#define MT6360_RPONESHOT_ENABLE	BIT(6)
-> +
-> +struct mt6360_tcpc_info {
-> +	struct tcpci_data tdata;
-> +	struct tcpci *tcpci;
-> +	struct device *dev;
-> +	int irq;
-> +};
-> +
-> +static inline int mt6360_tcpc_read16(struct regmap *regmap,
-> +				     unsigned int reg, u16 *val)
-> +{
-> +	return regmap_raw_read(regmap, reg, val, sizeof(u16));
-> +}
-> +
-> +static inline int mt6360_tcpc_write16(struct regmap *regmap,
-> +				      unsigned int reg, u16 val)
-> +{
-> +	return regmap_raw_write(regmap, reg, &val, sizeof(u16));
-> +}
-> +
-> +static int mt6360_tcpc_init(struct tcpci *tcpci, struct tcpci_data *tdata)
-> +{
-> +	struct regmap *regmap = tdata->regmap;
-> +	int ret;
-> +
-> +	ret = regmap_write(regmap, MT6360_REG_SWRESET, 0x01);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* after reset command, wait 1~2ms to wait IC action */
-> +	usleep_range(1000, 2000);
-> +
-> +	/* write all alert to masked */
-> +	ret = mt6360_tcpc_write16(regmap, TCPC_ALERT_MASK, 0);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* config I2C timeout reset enable , and timeout to 200ms */
-> +	ret = regmap_write(regmap, MT6360_REG_I2CTORST, 0x8F);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* config CC Detect Debounce : 26.7*val us */
-> +	ret = regmap_write(regmap, MT6360_REG_DEBCTRL1, 0x10);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* DRP Toggle Cycle : 51.2 + 6.4*val ms */
-> +	ret = regmap_write(regmap, MT6360_REG_DRPCTRL1, 4);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* DRP Duyt Ctrl : dcSRC: /1024 */
-> +	ret = mt6360_tcpc_write16(regmap, MT6360_REG_DRPCTRL2, 330);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* Enable VCONN Current Limit function */
-> +	ret = regmap_update_bits(regmap, MT6360_REG_VCONNCTRL1, MT6360_VCONNCL_ENABLE,
-> +				 MT6360_VCONNCL_ENABLE);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* Enable cc open 40ms when pmic send vsysuv signal */
-> +	ret = regmap_update_bits(regmap, MT6360_REG_RXCTRL2, MT6360_OPEN40M_ENABLE,
-> +				 MT6360_OPEN40M_ENABLE);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* Enable Rpdet oneshot detection */
-> +	ret = regmap_update_bits(regmap, MT6360_REG_CTDCTRL2, MT6360_RPONESHOT_ENABLE,
-> +				 MT6360_RPONESHOT_ENABLE);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* Set shipping mode off, AUTOIDLE on */
-> +	return regmap_write(regmap, MT6360_REG_MODECTRL2, 0x7A);
-> +}
-> +
-> +static irqreturn_t mt6360_irq(int irq, void *dev_id)
-> +{
-> +	struct mt6360_tcpc_info *mti = dev_id;
-> +
-> +	return tcpci_irq(mti->tcpci);
-> +}
-> +
-> +static int mt6360_tcpc_probe(struct platform_device *pdev)
-> +{
-> +	struct mt6360_tcpc_info *mti;
-> +	int ret;
-> +
-> +	mti = devm_kzalloc(&pdev->dev, sizeof(*mti), GFP_KERNEL);
-> +	if (!mti)
-> +		return -ENOMEM;
-> +
-> +	mti->dev = &pdev->dev;
-> +
-> +	mti->tdata.regmap = dev_get_regmap(pdev->dev.parent, NULL);
-> +	if (!mti->tdata.regmap) {
-> +		dev_err(&pdev->dev, "Failed to get parent regmap\n");
-> +		return -ENODEV;
-> +	}
-> +
-> +	mti->irq = platform_get_irq_byname(pdev, "PD_IRQB");
-> +	if (mti->irq < 0)
-> +		return mti->irq;
-> +
-> +	mti->tdata.init = mt6360_tcpc_init;
-> +	mti->tcpci = tcpci_register_port(&pdev->dev, &mti->tdata);
-> +	if (IS_ERR(mti->tcpci)) {
-> +		dev_err(&pdev->dev, "Failed to register tcpci port\n");
-> +		return PTR_ERR(mti->tcpci);
-> +	}
-> +
-> +	ret = devm_request_threaded_irq(mti->dev, mti->irq, NULL, mt6360_irq, IRQF_ONESHOT,
-> +					dev_name(&pdev->dev), mti);
-> +	if (ret) {
-> +		dev_err(mti->dev, "Failed to register irq\n");
-> +		tcpci_unregister_port(mti->tcpci);
-> +		return ret;
-> +	}
-> +
-> +	device_init_wakeup(&pdev->dev, true);
-> +	platform_set_drvdata(pdev, mti);
-> +
-> +	return 0;
-> +}
-> +
-> +static int mt6360_tcpc_remove(struct platform_device *pdev)
-> +{
-> +	struct mt6360_tcpc_info *mti = platform_get_drvdata(pdev);
-> +
-> +	disable_irq(mti->irq);
-> +	tcpci_unregister_port(mti->tcpci);
-> +	return 0;
-> +}
-> +
-> +static int __maybe_unused mt6360_tcpc_suspend(struct device *dev)
-> +{
-> +	struct mt6360_tcpc_info *mti = dev_get_drvdata(dev);
-> +
-> +	if (device_may_wakeup(dev))
-> +		enable_irq_wake(mti->irq);
-> +
-> +	return 0;
-> +}
-> +
-> +static int __maybe_unused mt6360_tcpc_resume(struct device *dev)
-> +{
-> +	struct mt6360_tcpc_info *mti = dev_get_drvdata(dev);
-> +
-> +	if (device_may_wakeup(dev))
-> +		disable_irq_wake(mti->irq);
-> +
-> +	return 0;
-> +}
-> +
-> +static SIMPLE_DEV_PM_OPS(mt6360_tcpc_pm_ops, mt6360_tcpc_suspend, mt6360_tcpc_resume);
-> +
-> +static const struct of_device_id __maybe_unused mt6360_tcpc_of_id[] = {
-> +	{ .compatible = "mediatek,mt6360-tcpc", },
-> +	{},
-> +};
-> +MODULE_DEVICE_TABLE(of, mt6360_tcpc_of_id);
-> +
-> +static struct platform_driver mt6360_tcpc_driver = {
-> +	.driver = {
-> +		.name = "mt6360-tcpc",
-> +		.pm = &mt6360_tcpc_pm_ops,
-> +		.of_match_table = mt6360_tcpc_of_id,
-> +	},
-> +	.probe = mt6360_tcpc_probe,
-> +	.remove = mt6360_tcpc_remove,
-> +};
-> +module_platform_driver(mt6360_tcpc_driver);
-> +
-> +MODULE_AUTHOR("ChiYuan Huang <cy_huang@richtek.com>");
-> +MODULE_DESCRIPTION("MT6360 USB Type-C Port Controller Interface Driver");
-> +MODULE_LICENSE("GPL v2");
-> 
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gOC8yOC8yMCA3OjMzIEFNLCBDaGlZdWFuIEh1YW5nIHdyb3RlOgo+IENodW5mZW5nIFl1biA8
+Y2h1bmZlbmcueXVuQG1lZGlhdGVrLmNvbT4g5pa8IDIwMjDlubQ45pyIMjjml6Ug6YCx5LqUIOS4
+i+WNiDg6MTHlr6vpgZPvvJoKPj4KPj4gT24gVGh1LCAyMDIwLTA4LTI3IGF0IDE5OjE4ICswODAw
+LCBjeV9odWFuZyB3cm90ZToKPj4+IEZyb206IENoaVl1YW4gSHVhbmcgPGN5X2h1YW5nQHJpY2h0
+ZWsuY29tPgo+Pj4KPj4+IE1lZGlhdGVrIE1UNjM2MCBpcyBhIG11bHRpLWZ1bmN0aW9uYWwgSUMg
+dGhhdCBpbmNsdWRlcyBVU0IgVHlwZS1DLgo+Pj4gSXQgd29ya3Mgd2l0aCBUeXBlLUMgUG9ydCBD
+b250cm9sbGVyIE1hbmFnZXIgdG8gcHJvdmlkZSBVU0IgUEQKPj4+IGFuZCBVU0IgVHlwZS1DIGZ1
+bmN0aW9uYWxpdGllcy4KPj4+Cj4+PiB2MSB0byB2Mgo+Pj4gMS4gQWRkIGZpeCB0byBQcmV2ZW50
+IHRoZSByYWNlIGNvbmRpdGlvbiBmcm9tIGludGVycnVwdCBhbmQgdGNwY2kgcG9ydAo+Pj4gdW5y
+ZWdpc3RlciBkdXJpbmcgbW9kdWxlIHJlbW92ZS4KPj4+Cj4+PiB2MiB0byB2Mwo+Pj4gMS4gQ2hh
+bmdlIGNvbW1lbnQgc3R5bGUgZm9yIHRoZSBoZWFkIG9mIHNvdXJjZSBjb2RlLgo+Pj4gMi4gTm8g
+bmVlZCB0byBwcmludCBlcnJvciBmb3IgcGxhdGZvcm1fZ2V0X2lycV9ieW5hbWUuCj4+PiAzLiBG
+aXggdGNwY2lfcmVnaXN0ZXJfcG9ydCBjaGVjayBmcm9tIElTX0VSUl9PUl9OVUxMIHRvIElTX0VS
+Ui4KPj4+IDQuIFJlbmFtZSBkcml2ZXIvS2NvbmZpZy9NYWtlZmlsZSBmb3JtIG10NjM2MCB0byBt
+dDYzNnguCj4+PiA1LiBSZW5hbWUgRFQgYmluZGluZyBkb2N1bWVudHMgZnJvbSBtdDYzNjAgdG8g
+bXQ2MzZ4Lgo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IENoaVl1YW4gSHVhbmcgPGN5X2h1YW5nQHJp
+Y2h0ZWsuY29tPgo+Pj4gLS0tCj4+PiAgZHJpdmVycy91c2IvdHlwZWMvdGNwbS9LY29uZmlnICAg
+ICAgICB8ICAgOCArKwo+Pj4gIGRyaXZlcnMvdXNiL3R5cGVjL3RjcG0vTWFrZWZpbGUgICAgICAg
+fCAgIDEgKwo+Pj4gIGRyaXZlcnMvdXNiL3R5cGVjL3RjcG0vdGNwY2lfbXQ2MzYwLmMgfCAyMTIg
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+Pj4gIDMgZmlsZXMgY2hhbmdlZCwg
+MjIxIGluc2VydGlvbnMoKykKPj4+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy91c2IvdHlw
+ZWMvdGNwbS90Y3BjaV9tdDYzNjAuYwo+Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3VzYi90
+eXBlYy90Y3BtL0tjb25maWcgYi9kcml2ZXJzL3VzYi90eXBlYy90Y3BtL0tjb25maWcKPj4+IGlu
+ZGV4IGZhM2YzOTMuLjU4YTY0ZTEgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL3VzYi90eXBlYy90
+Y3BtL0tjb25maWcKPj4+ICsrKyBiL2RyaXZlcnMvdXNiL3R5cGVjL3RjcG0vS2NvbmZpZwo+Pj4g
+QEAgLTI3LDYgKzI3LDE0IEBAIGNvbmZpZyBUWVBFQ19SVDE3MTFICj4+PiAgICAgICAgIFR5cGUt
+QyBQb3J0IENvbnRyb2xsZXIgTWFuYWdlciB0byBwcm92aWRlIFVTQiBQRCBhbmQgVVNCCj4+PiAg
+ICAgICAgIFR5cGUtQyBmdW5jdGlvbmFsaXRpZXMuCj4+Pgo+Pj4gK2NvbmZpZyBUWVBFQ19NVDYz
+NjAKPj4+ICsgICAgIHRyaXN0YXRlICJNZWRpYXRlayBNVDYzNjAgVHlwZS1DIGRyaXZlciIKPj4+
+ICsgICAgIGRlcGVuZHMgb24gTUZEX01UNjM2MAo+Pj4gKyAgICAgaGVscAo+Pj4gKyAgICAgICBN
+ZWRpYXRlayBNVDYzNjAgaXMgYSBtdWx0aS1mdW5jdGlvbmFsIElDIHRoYXQgaW5jbHVkZXMKPj4+
+ICsgICAgICAgVVNCIFR5cGUtQy4gSXQgd29ya3Mgd2l0aCBUeXBlLUMgUG9ydCBDb250cm9sbGVy
+IE1hbmFnZXIKPj4+ICsgICAgICAgdG8gcHJvdmlkZSBVU0IgUEQgYW5kIFVTQiBUeXBlLUMgZnVu
+Y3Rpb25hbGl0aWVzLgo+Pj4gKwo+Pj4gIGVuZGlmICMgVFlQRUNfVENQQ0kKPj4+Cj4+PiAgY29u
+ZmlnIFRZUEVDX0ZVU0IzMDIKPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3VzYi90eXBlYy90Y3Bt
+L01ha2VmaWxlIGIvZHJpdmVycy91c2IvdHlwZWMvdGNwbS9NYWtlZmlsZQo+Pj4gaW5kZXggYTVm
+ZjZjOC4uNzU5MmNjYiAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvdXNiL3R5cGVjL3RjcG0vTWFr
+ZWZpbGUKPj4+ICsrKyBiL2RyaXZlcnMvdXNiL3R5cGVjL3RjcG0vTWFrZWZpbGUKPj4+IEBAIC01
+LDMgKzUsNCBAQCBvYmotJChDT05GSUdfVFlQRUNfV0NPVkUpICAgICArPSB0eXBlY193Y292ZS5v
+Cj4+PiAgdHlwZWNfd2NvdmUteSAgICAgICAgICAgICAgICAgICAgICAgIDo9IHdjb3ZlLm8KPj4+
+ICBvYmotJChDT05GSUdfVFlQRUNfVENQQ0kpICAgICs9IHRjcGNpLm8KPj4+ICBvYmotJChDT05G
+SUdfVFlQRUNfUlQxNzExSCkgICs9IHRjcGNpX3J0MTcxMWgubwo+Pj4gK29iai0kKENPTkZJR19U
+WVBFQ19NVDYzNjApICAgKz0gdGNwY2lfbXQ2MzYwLm8KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L3VzYi90eXBlYy90Y3BtL3RjcGNpX210NjM2MC5jIGIvZHJpdmVycy91c2IvdHlwZWMvdGNwbS90
+Y3BjaV9tdDYzNjAuYwo+Pj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPj4+IGluZGV4IDAwMDAwMDAw
+Li5mMWJkOWUwCj4+PiAtLS0gL2Rldi9udWxsCj4+PiArKysgYi9kcml2ZXJzL3VzYi90eXBlYy90
+Y3BtL3RjcGNpX210NjM2MC5jCj4+PiBAQCAtMCwwICsxLDIxMiBAQAo+Pj4gKy8vIFNQRFgtTGlj
+ZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wLW9ubHkKPj4+ICsvKgo+Pj4gKyAqIENvcHlyaWdodCAo
+QykgMjAyMCBNZWRpYVRlayBJbmMuCj4+PiArICoKPj4+ICsgKiBBdXRob3I6IENoaVl1YW4gSHVh
+bmcgPGN5X2h1YW5nQHJpY2h0ZWsuY29tPgo+Pj4gKyAqLwo+Pj4gKwo+Pj4gKyNpbmNsdWRlIDxs
+aW51eC9pbnRlcnJ1cHQuaD4KPj4+ICsjaW5jbHVkZSA8bGludXgva2VybmVsLmg+Cj4+PiArI2lu
+Y2x1ZGUgPGxpbnV4L21vZHVsZS5oPgo+Pj4gKyNpbmNsdWRlIDxsaW51eC9vZi5oPgo+Pj4gKyNp
+bmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPj4+ICsjaW5jbHVkZSA8bGludXgvcmVn
+bWFwLmg+Cj4+PiArI2luY2x1ZGUgPGxpbnV4L3VzYi90Y3BtLmg+Cj4+PiArCj4+PiArI2luY2x1
+ZGUgInRjcGNpLmgiCj4+PiArCj4+PiArI2RlZmluZSBNVDYzNjBfUkVHX1ZDT05OQ1RSTDEgICAg
+ICAgIDB4OEMKPj4+ICsjZGVmaW5lIE1UNjM2MF9SRUdfTU9ERUNUUkwyIDB4OEYKPj4+ICsjZGVm
+aW5lIE1UNjM2MF9SRUdfU1dSRVNFVCAgIDB4QTAKPj4+ICsjZGVmaW5lIE1UNjM2MF9SRUdfREVC
+Q1RSTDEgIDB4QTEKPj4+ICsjZGVmaW5lIE1UNjM2MF9SRUdfRFJQQ1RSTDEgIDB4QTIKPj4+ICsj
+ZGVmaW5lIE1UNjM2MF9SRUdfRFJQQ1RSTDIgIDB4QTMKPj4+ICsjZGVmaW5lIE1UNjM2MF9SRUdf
+STJDVE9SU1QgIDB4QkYKPj4+ICsjZGVmaW5lIE1UNjM2MF9SRUdfUlhDVFJMMiAgIDB4Q0YKPj4+
+ICsjZGVmaW5lIE1UNjM2MF9SRUdfQ1REQ1RSTDIgIDB4RUMKPj4+ICsKPj4+ICsvKiBNVDYzNjBf
+UkVHX1ZDT05OQ1RSTDEgKi8KPj4+ICsjZGVmaW5lIE1UNjM2MF9WQ09OTkNMX0VOQUJMRSAgICAg
+ICAgQklUKDApCj4+PiArLyogTVQ2MzYwX1JFR19SWENUUkwyICovCj4+PiArI2RlZmluZSBNVDYz
+NjBfT1BFTjQwTV9FTkFCTEUgICAgICAgIEJJVCg3KQo+Pj4gKy8qIE1UNjM2MF9SRUdfQ1REQ1RS
+TDIgKi8KPj4+ICsjZGVmaW5lIE1UNjM2MF9SUE9ORVNIT1RfRU5BQkxFICAgICAgQklUKDYpCj4+
+PiArCj4+PiArc3RydWN0IG10NjM2MF90Y3BjX2luZm8gewo+Pj4gKyAgICAgc3RydWN0IHRjcGNp
+X2RhdGEgdGRhdGE7Cj4+PiArICAgICBzdHJ1Y3QgdGNwY2kgKnRjcGNpOwo+Pj4gKyAgICAgc3Ry
+dWN0IGRldmljZSAqZGV2Owo+Pj4gKyAgICAgaW50IGlycTsKPj4+ICt9Owo+Pj4gKwo+Pj4gK3N0
+YXRpYyBpbmxpbmUgaW50IG10NjM2MF90Y3BjX3JlYWQxNihzdHJ1Y3QgcmVnbWFwICpyZWdtYXAs
+Cj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHVuc2lnbmVkIGludCByZWcs
+IHUxNiAqdmFsKQo+Pj4gK3sKPj4+ICsgICAgIHJldHVybiByZWdtYXBfcmF3X3JlYWQocmVnbWFw
+LCByZWcsIHZhbCwgc2l6ZW9mKHUxNikpOwo+Pj4gK30KPj4+ICsKPj4+ICtzdGF0aWMgaW5saW5l
+IGludCBtdDYzNjBfdGNwY193cml0ZTE2KHN0cnVjdCByZWdtYXAgKnJlZ21hcCwKPj4+ICsgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHVuc2lnbmVkIGludCByZWcsIHUxNiB2YWwp
+Cj4+PiArewo+Pj4gKyAgICAgcmV0dXJuIHJlZ21hcF9yYXdfd3JpdGUocmVnbWFwLCByZWcsICZ2
+YWwsIHNpemVvZih1MTYpKTsKPj4+ICt9Cj4+PiArCj4+PiArc3RhdGljIGludCBtdDYzNjBfdGNw
+Y19pbml0KHN0cnVjdCB0Y3BjaSAqdGNwY2ksIHN0cnVjdCB0Y3BjaV9kYXRhICp0ZGF0YSkKPj4+
+ICt7Cj4+PiArICAgICBzdHJ1Y3QgcmVnbWFwICpyZWdtYXAgPSB0ZGF0YS0+cmVnbWFwOwo+Pj4g
+KyAgICAgaW50IHJldDsKPj4+ICsKPj4+ICsgICAgIHJldCA9IHJlZ21hcF93cml0ZShyZWdtYXAs
+IE1UNjM2MF9SRUdfU1dSRVNFVCwgMHgwMSk7Cj4+PiArICAgICBpZiAocmV0KQo+Pj4gKyAgICAg
+ICAgICAgICByZXR1cm4gcmV0Owo+Pj4gKwo+Pj4gKyAgICAgLyogYWZ0ZXIgcmVzZXQgY29tbWFu
+ZCwgd2FpdCAxfjJtcyB0byB3YWl0IElDIGFjdGlvbiAqLwo+Pj4gKyAgICAgdXNsZWVwX3Jhbmdl
+KDEwMDAsIDIwMDApOwo+Pj4gKwo+Pj4gKyAgICAgLyogd3JpdGUgYWxsIGFsZXJ0IHRvIG1hc2tl
+ZCAqLwo+Pj4gKyAgICAgcmV0ID0gbXQ2MzYwX3RjcGNfd3JpdGUxNihyZWdtYXAsIFRDUENfQUxF
+UlRfTUFTSywgMCk7Cj4+IFdvbmRlciB3aHkgYWNjZXNzIHNvbWUgcmVnaXN0ZXIgYnkgMmJ5dGVz
+LCBhbmQgb3RoZXJzIDRieXRlcz8KPj4gY2FuIHdlIGFjY2VzcyB0aGVtIGFsbCBieSA0Ynl0ZXM/
+Cj4gCj4gQWN0dWFsbHksIHRoZSBhY2Nlc3MgYnVzIGlzIHN0aWxsIEkyQy4KPiBFYWNoIHJlZ2lz
+dGVyIGlzIHN0aWxsIG9uZSBieXRlIG9ubHkuCj4gUmVnaXN0ZXIgYWRkcmVzcyBsaWtlIGFzIFRD
+UENfQUxFUlRfTUFTSyBhcmUgY29udGludW91cyB0d28gYnl0ZSB1c2VkCj4gYXMgSVJRIE1BU0su
+Cj4gVGhhdCdzIHdoeSBpdCdzIHVzZWQgd2lydGUxNiBmdW5jdGlvbiB0byBhY2Nlc3MuCj4gCj4g
+QWN0dWFsbHksIHlvdSBhbHNvIGNhbiBkaXZpZGVkIGludG8gdHdvIGJ5dGVzIHdyaXRlIGludG8g
+b25lIGJ5dGUKPiBhY2Nlc3MgYnkgdHdvIHRpbWVzLgo+IEZvciBJMkMgYnVzIGVmZmljaWVuY3ks
+IGl0IHNlZW1zIGJhZC4KCkZvciBNVDYzNjBfUkVHX0RSUENUUkwyLCBpdCBtaWdodCBhbHNvIGJl
+IHJhY3ksIHNpbmNlIHRoZSB0d28gaTJjIGFkZHJlc3NlcwphcmUgcmVhbGx5IG9uZSByZWdpc3Rl
+ciBjb250YWluaW5nIGEgMTAtYml0IHZhbHVlLiBJIHdvdWxkIHByb2JhYmx5IG5vdCBtYXR0ZXIK
+aGVyZSAoYWZhaWNzIHRoZSB2YWx1ZSBpcyBjaGFuZ2VkIGZyb20gdGhlIGRlZmF1bHQgMzI3IHRv
+IDMzMCksIGJ1dCBpbiBnZW5lcmFsCml0IHNlZW1zIHNhZmVyIHRvIHdyaXRlIHN1Y2ggYSB2YWx1
+ZSB3aXRoIGEgc2luZ2xlIDE2LWJpdCBpMmMgd3JpdGUuCgpHdWVudGVyCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5n
+IGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
