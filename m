@@ -2,78 +2,68 @@ Return-Path: <SRS0=47V3=CG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=no autolearn_force=no version=3.4.0
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6D50EC433E6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 07:50:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A489AC433E6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 07:53:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 30C1B2078A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 07:50:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6FC382078A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 07:53:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kXJVug+l";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="a8d/peyy"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 30C1B2078A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aiwIS2Bh";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Htf22TTB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6FC382078A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=GajBxGqPupG57YSOKVk2qa1x3cdXDtP3JaNtTuUSVbs=; b=kXJVug+llIITbsZzhq3jieoM03
-	YpE8iWRT1zuJU1cPnBwNqR4GWW+I4PKizOOVtkZNAjor+n92YZuxllc6lG0Wj4rbQX4jmDmjZqY3B
-	FoGknvBYZ0H3KMxsxumi6gzJhi9Xyp2XgJC8wVrTQ1L7vHFQEFKXzqovAbV4msgWU6Yk0KsrDlWO1
-	r20arHLudTa81trzGo9NSWEryaamPiNL/jwQ/R24KixzL8N1zjg8pPm7gZHrIcVZmqWnQzNm3I5uL
-	kmrbQAoJB5cgoIcCED/iP6vy9wamVYG0txBU6lyLG59U4rFXHDVFQiJM+Az3oAuzM2NDlL/pt04tJ
-	IHlhPflA==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=ozKg7pkVcXs07I3CyrKZgmTNqKXPgxrzP9s4jU/rn/0=; b=aiwIS2BhLiYyhd16VM/zHw4ZE
+	YSf0T3i78kgy8lZHn3mGl47JvGoWOqvyRQa7yC2Bbwm3L7/Tos6+nkhnwqHkEeDO9Da8h6SOMw7Za
+	474ne4tWDNhMRvIkZdMO4jdpBb99HVibUnDwsUSwyukUv5yi7q4q6vw9Icm92phqHUr1E2vpans4E
+	ELpq0MrbWFukCjJTFQ7oggBbizhOAVtf4IegcjW4g1NS5I9XwIq5Ti4UKMEF6e88ieBD2CTsEPzei
+	Yvnkyj/hKLzrvhwcHczpQqY5hUA5PQ8y7OZo5PAGDLUnbSUt+aSRxe8UyITZ3mVwZBDM/cUMhep30
+	TjpsKHvuA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kBZ97-0008M7-P7; Fri, 28 Aug 2020 07:50:01 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kBZCR-0000DS-5H; Fri, 28 Aug 2020 07:53:27 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kBZ93-0008Jy-Er; Fri, 28 Aug 2020 07:49:58 +0000
-X-UUID: 66a2b50871bf47dfaa170299434053f5-20200827
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=0EKafp0Drld7nVRG3II9HXY8sizTyEYsQ0QqqSX3Mxw=; 
- b=a8d/peyy+GFrYEF9CYvnWm8+9kIJPVnJqhyXSuwUP9asBnqEA9mtfcOABJMTCUnXTfzAqnhVdk2TUlP1GKOQ62vq2e+iNmlToJalzwBREXamkeh7buqxW+5svNfoGo5So3eEWkgR4pjro6OAnQwnqScw/FO9QvIioUoYMXXY1QY=;
-X-UUID: 66a2b50871bf47dfaa170299434053f5-20200827
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <freddy.hsin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1108724681; Thu, 27 Aug 2020 23:49:48 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 28 Aug 2020 00:49:46 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 28 Aug 2020 15:49:43 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 28 Aug 2020 15:49:46 +0800
-From: Freddy Hsin <freddy.hsin@mediatek.com>
-To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Matthias Brugger <matthias.bgg@gmail.com>,
- <linux-kernel@vger.kernel.org>, <linux-watchdog@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 0/1] Refine mtk wdt driver init flow
-Date: Fri, 28 Aug 2020 15:49:27 +0800
-Message-ID: <1598600968-28498-1-git-send-email-freddy.hsin@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
+ id 1kBZCM-0000Co-Ms; Fri, 28 Aug 2020 07:53:23 +0000
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0C6F92078A;
+ Fri, 28 Aug 2020 07:53:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1598601201;
+ bh=JhNpVsbHlCL1Udn63YeuVXj535D89OBHVFbUoaahHqY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Htf22TTBK/Pxy8ac6VUWhqB+Gt6XhjgKwY/e110mYWixXOR676XFHXlk9ZGaTk20G
+ yMBKVKO/e7vnCTWesykp7ysxN4e9vwj2ZpV8j52yto8TWV4NG8nO+FCFK1iAj5r/SG
+ WPQyb84RZUDPXCyBbDoAsLZ+OTxGLsLtjBs7yFYQ=
+Date: Fri, 28 Aug 2020 09:53:34 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH v3 01/11] usb: early: convert to
+ readl_poll_timeout_atomic()
+Message-ID: <20200828075334.GA998738@kroah.com>
+References: <1598083553-31896-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: F61C1D996371B3870C761BAAAB54EFE1717CDD80FFDF00FED470060D87C340982000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1598083553-31896-1-git-send-email-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200828_034957_678359_4C7EACD3 
-X-CRM114-Status: UNSURE (   8.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200828_035322_909945_D695247C 
+X-CRM114-Status: GOOD (  13.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,21 +75,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kuohong.wang@mediatek.com, chun-hung.wu@mediatek.com,
- chang-an.chen@mediatek.com, wsd_upstream@mediatek.com
+Cc: Felipe Balbi <balbi@kernel.org>,
+ Mathias Nyman <mathias.nyman@linux.intel.com>,
+ Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org,
+ Lu Baolu <baolu.lu@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mtk_wdt_init() functin in probe flow to determine
-enable/disable the hw watchdog by its original setting
+On Sat, Aug 22, 2020 at 04:05:43PM +0800, Chunfeng Yun wrote:
+> Use readl_poll_timeout_atomic() to simplify code
+> 
+> Cc: Lu Baolu <baolu.lu@linux.intel.com>
+> Cc: Mathias Nyman <mathias.nyman@linux.intel.com>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+> v2~v3: no changes
+> ---
+>  drivers/usb/early/xhci-dbc.c | 14 ++++----------
+>  1 file changed, 4 insertions(+), 10 deletions(-)
 
-Freddy Hsin (1):
-  driver: watchdog: Add mtk_wdt_init for mediatek watchdog hw init
+No patches in this series applied to my tree :(
 
- drivers/watchdog/mtk_wdt.c |   22 +++++++++++++++++++++-
- 1 file changed, 21 insertions(+), 1 deletion(-)
+Please rebase and resend them against the usb-next branch of my usb.git
+tree on git.kernel.org
+
+thanks,
+
+greg k-h
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
