@@ -2,139 +2,94 @@ Return-Path: <SRS0=47V3=CG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4AA99C433E2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 14:49:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A265EC433E2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 17:26:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 01F7F207DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 14:49:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 630B920872
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 17:26:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CLkPsqdX";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ZVxBAghH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 01F7F207DF
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sbc3J9W9";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="nVl5V6UK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 630B920872
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JW4jrxvgFpXyLw8I7Bz5/9FjkxKCEN7DhdqTnv1KpyA=; b=CLkPsqdXtuz1ll8TFPcU55JYy
-	xBbSyqn9VK2sAnLRdIR37dVEJ9bn6qaSmnQJE2OmrOO1xxso0dHaFTogREWvFTATPjVQPTWCjsV7w
-	xhoioemm6jhuNx5oCbWAGPt0kerP9zW7I9ewCUqi0qNr4ooZcLiYkq6hByx4z3tgGUENbBNoHWqwU
-	V9VRA2Vyt2z1IydYdYMHQVoT62hx2A6lBc57Bwm8/oiBn8nyebCrYpMymEnbGV67A2vlKH96fFz6V
-	xX0MCDvd+owPQ5hK2bOiL8rYGtYCI7LU2xAMOjwN+4zTkLhL8O+yynRpUut3edSkMT/nVtdgkfCXI
-	Qx172vDbQ==;
+	 bh=sbw9qr40wOtAXmo1ebMoIjDVv05uBautwgFSWm+oqic=; b=sbc3J9W95Z4lMuGVi/Roz7ugE
+	+ValTk8IgQlCgmCf0CpfdNMIMWH+0BPnCy4V/HjeFo031JNc6eYW8wRGeXpz84209g+1LD5ng+9Z9
+	8OoEfGMMqCh/p2LE130tAvFayc9YjB17q1OftOU+kEqNXmIurgptw1X8J5zfNW/3NtwYZ7IdQ6EEp
+	+VIR5RIJQnYb6DIEGcbbocW5gWlnKKa0722VvpEYkPAWFv0wmF6sxMeXjn5zoEEoJgR7ug1A5Ma2b
+	7fhay8/R9Xb4QsRZZDAEHlq2bkp81FsBjsu1iQj1GJnQ/VYeCwl07O9nDKwBXP19iezED+IDsp+y8
+	soxx0njAg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kBfgc-0005X3-Rv; Fri, 28 Aug 2020 14:49:02 +0000
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+	id 1kBi9C-00073I-Ml; Fri, 28 Aug 2020 17:26:42 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kBfgb-0005Um-0D; Fri, 28 Aug 2020 14:49:02 +0000
-Received: by mail-pl1-x643.google.com with SMTP id 10so561321plg.8;
- Fri, 28 Aug 2020 07:49:00 -0700 (PDT)
+ id 1kBi99-00072A-W6
+ for linux-mediatek@lists.infradead.org; Fri, 28 Aug 2020 17:26:41 +0000
+Received: by mail-wr1-x443.google.com with SMTP id c18so1982263wrm.9
+ for <linux-mediatek@lists.infradead.org>; Fri, 28 Aug 2020 10:26:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=GwsJK12F/RO3TxV8DL1QHEyRAdItfHxC7ojNdGJazTI=;
- b=ZVxBAghHGheQcnCpCUTauZpnptW7RVAxlmJDMKuCA7iIDe5ETmEImECQ9Jvmm02dRX
- T4MU583V9ZKesh7713tJxKze+vdNFvA40Hq87T3tevYQtp7jV8Nd5NSzKJXELNcRPV3H
- Y1S3vt9sy1JrZK8GodFt74OByaJii4IONE3KVY+8NEry1TRm0W9RqNFL6bpk0KybHvi8
- LIL7YTQOhBKX8mqUgLjCR+n4upgy3Em8KKwYyxacXs2YmuMiNpbQqU/nQ5LdeWf+As+n
- QlnjmOdRh/xsYWsTz98yc9F2JM0lWmGaTf3IZ77RIW8BrQ8MBmxNqTd0998Rf+3/tGz/
- 4hig==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=aI5m0rhpkkZ7NckEYHoD7GvRLNlY5UcLJfSO75qLPWI=;
+ b=nVl5V6UKuaz55MYPnt9XgUMNRyBG/emO+ddzLM/8ChMkYVN4rqBV2/FRmWlwpjSedc
+ SWBgiWdxktsnZ4Y4LvMkhjL87IgdS30n1TTPTpTzmpvSc0sXKMM8mpSnL1NalCujLDw4
+ 08LkVQwPzkV0vrgl93a65X+AnQHK5j+y1ROfJ8953kE5tiiIQysF0jKud1fUFnJGyMvu
+ iNHVFIYYWBLs8A8bANum4nmP9o6DDvD91Pvm0yk4GhXbLWrx5xxSQ8hRuScyex4Q3YzY
+ Y4JAmcdfndXlJAnCAB2f/NP1UwczcdjToHNJQiS/vlRl4Y54BupJPoDCFQ6I40eEdDBI
+ g6mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=GwsJK12F/RO3TxV8DL1QHEyRAdItfHxC7ojNdGJazTI=;
- b=R1lkPyDrJXvyrxYWe9woo3mPc5YQUH8FTcPk6uGhEla6MyBRxNLQLMdeextYZN62pr
- j0ZFucV13M6YdACvRcdJE13OCEFo9G4ZqSsSXbMTIe7iOUqKdsY2KLaq/S8NJEs2E9ev
- DV5DFnQZux88Z81WURzdtMx1qOLmbA8+hUV3tR/IjVUuJjJ3MuFj2rgCA3Q/niQeAX9J
- UMIhXwHMXWp65u2gVRAftrd1qYFdVJ4y5gBIKhQVjSm7Zcr5lyFNcaeYeiLLoAnuutdK
- dVlfOh6LaVGEmvRCgzd64Koy0gKN2vjEokywC5VPaiRBM2eCZQgk5bwgL2y6CeExavSn
- C14g==
-X-Gm-Message-State: AOAM531Lec3zrixKu/NTqMnYXFevbPN1StX8j89qirCI1tBjHRpDqzvd
- NaVjHPnfDXbiVgIOwxdPEnI=
-X-Google-Smtp-Source: ABdhPJyb+pG0Wk74bLWhX8DcPqkmUTC9YoFj3AX5iklc5Qnyy9Hg1smucBxCDLJ+Ti74vRo4D6DvVA==
-X-Received: by 2002:a17:902:8e85:: with SMTP id
- bg5mr1567021plb.306.1598626138765; 
- Fri, 28 Aug 2020 07:48:58 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- f4sm1901303pgi.49.2020.08.28.07.48.57
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=aI5m0rhpkkZ7NckEYHoD7GvRLNlY5UcLJfSO75qLPWI=;
+ b=NSCRjycDRcfv1hLPskR63UMqEEZTl3CeEWND4+OKiFkH9xyEO8Bx6s/YYbackG/vHX
+ 3PDU7Q607rfjRgnJwniho3huYR+FXSC9mVr7FEe6jQPiyvGxjnW23ZmbqVylFuoxmyV2
+ Mdc/1vTbDRdS1b/J+d8QCxdtfTIINhOtKA3Pf98Ypu61UZq0C3v0M4z4qseWN17NpIq9
+ xjZYz+ZkEwo7ZIKxdWAsXAJXOpfrmqEsQzDi4RwdAPnhnqC2tTnT7RLASDDWI6zseALj
+ B35LXygFBuIM9Z6Dktpd/kjpKawz3KtD6UTDVn6x44fjcOPL5Buj0BXoyDU1vWkGJ+8Y
+ QgNg==
+X-Gm-Message-State: AOAM533hk+Gvn4Z6ODPAdx1wlz2mHWPYObKq3wO6PJm8ay/mAshBCHN2
+ oK1PGzPXb0o4+lFTT6rYVLg=
+X-Google-Smtp-Source: ABdhPJyct+GOi/3IdUQHKBhrr7sOcNwgB76XSh27/cmbtdvmBfEvHdokYtpIKxXmBjMexjde0Rzh3Q==
+X-Received: by 2002:adf:f605:: with SMTP id t5mr80267wrp.144.1598635597020;
+ Fri, 28 Aug 2020 10:26:37 -0700 (PDT)
+Received: from ziggy.stardust ([213.195.119.187])
+ by smtp.gmail.com with ESMTPSA id n124sm78581wmn.29.2020.08.28.10.26.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 28 Aug 2020 07:48:58 -0700 (PDT)
-Subject: Re: [PATCH v3 1/3] usb typec: mt6360: Add support for mt6360 Type-C
- driver
-To: ChiYuan Huang <u0084500@gmail.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>
-References: <1598527137-6915-1-git-send-email-u0084500@gmail.com>
- <1598616616.7054.3.camel@mhfsdcap03>
- <CADiBU3_-Jvk8ORu1MxrccJkdK0_1WdH4Yd8AR-cGyDMEA3Htpw@mail.gmail.com>
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- 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
- mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-Message-ID: <6a66d52d-5f30-5982-e14c-12d81863f684@roeck-us.net>
-Date: Fri, 28 Aug 2020 07:48:56 -0700
+ Fri, 28 Aug 2020 10:26:36 -0700 (PDT)
+Subject: Re: [PATCH] media: mtk-mdp: Fix Null pointer dereference when calling
+ list_add
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-media@vger.kernel.org
+References: <20200828135541.8282-1-dafna.hirschfeld@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <90836e4f-c3de-32f7-6a23-2093203e124d@gmail.com>
+Date: Fri, 28 Aug 2020 19:26:34 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <CADiBU3_-Jvk8ORu1MxrccJkdK0_1WdH4Yd8AR-cGyDMEA3Htpw@mail.gmail.com>
+In-Reply-To: <20200828135541.8282-1-dafna.hirschfeld@collabora.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200828_104901_101798_49B1B969 
-X-CRM114-Status: GOOD (  25.20  )
+X-CRM114-CacheID: sfid-20200828_132640_067529_B9F6D5DD 
+X-CRM114-Status: GOOD (  22.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -146,115 +101,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, devicetree@vger.kernel.org,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>,
- Greg KH <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, cy_huang <cy_huang@richtek.com>,
- robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: hverkuil@xs4all.nl, enric.balletbo@collabora.com, dafna3@gmail.com,
+ mchehab@kernel.org, kernel@collabora.com
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gOC8yOC8yMCA3OjMzIEFNLCBDaGlZdWFuIEh1YW5nIHdyb3RlOgo+IENodW5mZW5nIFl1biA8
-Y2h1bmZlbmcueXVuQG1lZGlhdGVrLmNvbT4g5pa8IDIwMjDlubQ45pyIMjjml6Ug6YCx5LqUIOS4
-i+WNiDg6MTHlr6vpgZPvvJoKPj4KPj4gT24gVGh1LCAyMDIwLTA4LTI3IGF0IDE5OjE4ICswODAw
-LCBjeV9odWFuZyB3cm90ZToKPj4+IEZyb206IENoaVl1YW4gSHVhbmcgPGN5X2h1YW5nQHJpY2h0
-ZWsuY29tPgo+Pj4KPj4+IE1lZGlhdGVrIE1UNjM2MCBpcyBhIG11bHRpLWZ1bmN0aW9uYWwgSUMg
-dGhhdCBpbmNsdWRlcyBVU0IgVHlwZS1DLgo+Pj4gSXQgd29ya3Mgd2l0aCBUeXBlLUMgUG9ydCBD
-b250cm9sbGVyIE1hbmFnZXIgdG8gcHJvdmlkZSBVU0IgUEQKPj4+IGFuZCBVU0IgVHlwZS1DIGZ1
-bmN0aW9uYWxpdGllcy4KPj4+Cj4+PiB2MSB0byB2Mgo+Pj4gMS4gQWRkIGZpeCB0byBQcmV2ZW50
-IHRoZSByYWNlIGNvbmRpdGlvbiBmcm9tIGludGVycnVwdCBhbmQgdGNwY2kgcG9ydAo+Pj4gdW5y
-ZWdpc3RlciBkdXJpbmcgbW9kdWxlIHJlbW92ZS4KPj4+Cj4+PiB2MiB0byB2Mwo+Pj4gMS4gQ2hh
-bmdlIGNvbW1lbnQgc3R5bGUgZm9yIHRoZSBoZWFkIG9mIHNvdXJjZSBjb2RlLgo+Pj4gMi4gTm8g
-bmVlZCB0byBwcmludCBlcnJvciBmb3IgcGxhdGZvcm1fZ2V0X2lycV9ieW5hbWUuCj4+PiAzLiBG
-aXggdGNwY2lfcmVnaXN0ZXJfcG9ydCBjaGVjayBmcm9tIElTX0VSUl9PUl9OVUxMIHRvIElTX0VS
-Ui4KPj4+IDQuIFJlbmFtZSBkcml2ZXIvS2NvbmZpZy9NYWtlZmlsZSBmb3JtIG10NjM2MCB0byBt
-dDYzNnguCj4+PiA1LiBSZW5hbWUgRFQgYmluZGluZyBkb2N1bWVudHMgZnJvbSBtdDYzNjAgdG8g
-bXQ2MzZ4Lgo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IENoaVl1YW4gSHVhbmcgPGN5X2h1YW5nQHJp
-Y2h0ZWsuY29tPgo+Pj4gLS0tCj4+PiAgZHJpdmVycy91c2IvdHlwZWMvdGNwbS9LY29uZmlnICAg
-ICAgICB8ICAgOCArKwo+Pj4gIGRyaXZlcnMvdXNiL3R5cGVjL3RjcG0vTWFrZWZpbGUgICAgICAg
-fCAgIDEgKwo+Pj4gIGRyaXZlcnMvdXNiL3R5cGVjL3RjcG0vdGNwY2lfbXQ2MzYwLmMgfCAyMTIg
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+Pj4gIDMgZmlsZXMgY2hhbmdlZCwg
-MjIxIGluc2VydGlvbnMoKykKPj4+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy91c2IvdHlw
-ZWMvdGNwbS90Y3BjaV9tdDYzNjAuYwo+Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3VzYi90
-eXBlYy90Y3BtL0tjb25maWcgYi9kcml2ZXJzL3VzYi90eXBlYy90Y3BtL0tjb25maWcKPj4+IGlu
-ZGV4IGZhM2YzOTMuLjU4YTY0ZTEgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL3VzYi90eXBlYy90
-Y3BtL0tjb25maWcKPj4+ICsrKyBiL2RyaXZlcnMvdXNiL3R5cGVjL3RjcG0vS2NvbmZpZwo+Pj4g
-QEAgLTI3LDYgKzI3LDE0IEBAIGNvbmZpZyBUWVBFQ19SVDE3MTFICj4+PiAgICAgICAgIFR5cGUt
-QyBQb3J0IENvbnRyb2xsZXIgTWFuYWdlciB0byBwcm92aWRlIFVTQiBQRCBhbmQgVVNCCj4+PiAg
-ICAgICAgIFR5cGUtQyBmdW5jdGlvbmFsaXRpZXMuCj4+Pgo+Pj4gK2NvbmZpZyBUWVBFQ19NVDYz
-NjAKPj4+ICsgICAgIHRyaXN0YXRlICJNZWRpYXRlayBNVDYzNjAgVHlwZS1DIGRyaXZlciIKPj4+
-ICsgICAgIGRlcGVuZHMgb24gTUZEX01UNjM2MAo+Pj4gKyAgICAgaGVscAo+Pj4gKyAgICAgICBN
-ZWRpYXRlayBNVDYzNjAgaXMgYSBtdWx0aS1mdW5jdGlvbmFsIElDIHRoYXQgaW5jbHVkZXMKPj4+
-ICsgICAgICAgVVNCIFR5cGUtQy4gSXQgd29ya3Mgd2l0aCBUeXBlLUMgUG9ydCBDb250cm9sbGVy
-IE1hbmFnZXIKPj4+ICsgICAgICAgdG8gcHJvdmlkZSBVU0IgUEQgYW5kIFVTQiBUeXBlLUMgZnVu
-Y3Rpb25hbGl0aWVzLgo+Pj4gKwo+Pj4gIGVuZGlmICMgVFlQRUNfVENQQ0kKPj4+Cj4+PiAgY29u
-ZmlnIFRZUEVDX0ZVU0IzMDIKPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3VzYi90eXBlYy90Y3Bt
-L01ha2VmaWxlIGIvZHJpdmVycy91c2IvdHlwZWMvdGNwbS9NYWtlZmlsZQo+Pj4gaW5kZXggYTVm
-ZjZjOC4uNzU5MmNjYiAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvdXNiL3R5cGVjL3RjcG0vTWFr
-ZWZpbGUKPj4+ICsrKyBiL2RyaXZlcnMvdXNiL3R5cGVjL3RjcG0vTWFrZWZpbGUKPj4+IEBAIC01
-LDMgKzUsNCBAQCBvYmotJChDT05GSUdfVFlQRUNfV0NPVkUpICAgICArPSB0eXBlY193Y292ZS5v
-Cj4+PiAgdHlwZWNfd2NvdmUteSAgICAgICAgICAgICAgICAgICAgICAgIDo9IHdjb3ZlLm8KPj4+
-ICBvYmotJChDT05GSUdfVFlQRUNfVENQQ0kpICAgICs9IHRjcGNpLm8KPj4+ICBvYmotJChDT05G
-SUdfVFlQRUNfUlQxNzExSCkgICs9IHRjcGNpX3J0MTcxMWgubwo+Pj4gK29iai0kKENPTkZJR19U
-WVBFQ19NVDYzNjApICAgKz0gdGNwY2lfbXQ2MzYwLm8KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJz
-L3VzYi90eXBlYy90Y3BtL3RjcGNpX210NjM2MC5jIGIvZHJpdmVycy91c2IvdHlwZWMvdGNwbS90
-Y3BjaV9tdDYzNjAuYwo+Pj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPj4+IGluZGV4IDAwMDAwMDAw
-Li5mMWJkOWUwCj4+PiAtLS0gL2Rldi9udWxsCj4+PiArKysgYi9kcml2ZXJzL3VzYi90eXBlYy90
-Y3BtL3RjcGNpX210NjM2MC5jCj4+PiBAQCAtMCwwICsxLDIxMiBAQAo+Pj4gKy8vIFNQRFgtTGlj
-ZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wLW9ubHkKPj4+ICsvKgo+Pj4gKyAqIENvcHlyaWdodCAo
-QykgMjAyMCBNZWRpYVRlayBJbmMuCj4+PiArICoKPj4+ICsgKiBBdXRob3I6IENoaVl1YW4gSHVh
-bmcgPGN5X2h1YW5nQHJpY2h0ZWsuY29tPgo+Pj4gKyAqLwo+Pj4gKwo+Pj4gKyNpbmNsdWRlIDxs
-aW51eC9pbnRlcnJ1cHQuaD4KPj4+ICsjaW5jbHVkZSA8bGludXgva2VybmVsLmg+Cj4+PiArI2lu
-Y2x1ZGUgPGxpbnV4L21vZHVsZS5oPgo+Pj4gKyNpbmNsdWRlIDxsaW51eC9vZi5oPgo+Pj4gKyNp
-bmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPj4+ICsjaW5jbHVkZSA8bGludXgvcmVn
-bWFwLmg+Cj4+PiArI2luY2x1ZGUgPGxpbnV4L3VzYi90Y3BtLmg+Cj4+PiArCj4+PiArI2luY2x1
-ZGUgInRjcGNpLmgiCj4+PiArCj4+PiArI2RlZmluZSBNVDYzNjBfUkVHX1ZDT05OQ1RSTDEgICAg
-ICAgIDB4OEMKPj4+ICsjZGVmaW5lIE1UNjM2MF9SRUdfTU9ERUNUUkwyIDB4OEYKPj4+ICsjZGVm
-aW5lIE1UNjM2MF9SRUdfU1dSRVNFVCAgIDB4QTAKPj4+ICsjZGVmaW5lIE1UNjM2MF9SRUdfREVC
-Q1RSTDEgIDB4QTEKPj4+ICsjZGVmaW5lIE1UNjM2MF9SRUdfRFJQQ1RSTDEgIDB4QTIKPj4+ICsj
-ZGVmaW5lIE1UNjM2MF9SRUdfRFJQQ1RSTDIgIDB4QTMKPj4+ICsjZGVmaW5lIE1UNjM2MF9SRUdf
-STJDVE9SU1QgIDB4QkYKPj4+ICsjZGVmaW5lIE1UNjM2MF9SRUdfUlhDVFJMMiAgIDB4Q0YKPj4+
-ICsjZGVmaW5lIE1UNjM2MF9SRUdfQ1REQ1RSTDIgIDB4RUMKPj4+ICsKPj4+ICsvKiBNVDYzNjBf
-UkVHX1ZDT05OQ1RSTDEgKi8KPj4+ICsjZGVmaW5lIE1UNjM2MF9WQ09OTkNMX0VOQUJMRSAgICAg
-ICAgQklUKDApCj4+PiArLyogTVQ2MzYwX1JFR19SWENUUkwyICovCj4+PiArI2RlZmluZSBNVDYz
-NjBfT1BFTjQwTV9FTkFCTEUgICAgICAgIEJJVCg3KQo+Pj4gKy8qIE1UNjM2MF9SRUdfQ1REQ1RS
-TDIgKi8KPj4+ICsjZGVmaW5lIE1UNjM2MF9SUE9ORVNIT1RfRU5BQkxFICAgICAgQklUKDYpCj4+
-PiArCj4+PiArc3RydWN0IG10NjM2MF90Y3BjX2luZm8gewo+Pj4gKyAgICAgc3RydWN0IHRjcGNp
-X2RhdGEgdGRhdGE7Cj4+PiArICAgICBzdHJ1Y3QgdGNwY2kgKnRjcGNpOwo+Pj4gKyAgICAgc3Ry
-dWN0IGRldmljZSAqZGV2Owo+Pj4gKyAgICAgaW50IGlycTsKPj4+ICt9Owo+Pj4gKwo+Pj4gK3N0
-YXRpYyBpbmxpbmUgaW50IG10NjM2MF90Y3BjX3JlYWQxNihzdHJ1Y3QgcmVnbWFwICpyZWdtYXAs
-Cj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHVuc2lnbmVkIGludCByZWcs
-IHUxNiAqdmFsKQo+Pj4gK3sKPj4+ICsgICAgIHJldHVybiByZWdtYXBfcmF3X3JlYWQocmVnbWFw
-LCByZWcsIHZhbCwgc2l6ZW9mKHUxNikpOwo+Pj4gK30KPj4+ICsKPj4+ICtzdGF0aWMgaW5saW5l
-IGludCBtdDYzNjBfdGNwY193cml0ZTE2KHN0cnVjdCByZWdtYXAgKnJlZ21hcCwKPj4+ICsgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHVuc2lnbmVkIGludCByZWcsIHUxNiB2YWwp
-Cj4+PiArewo+Pj4gKyAgICAgcmV0dXJuIHJlZ21hcF9yYXdfd3JpdGUocmVnbWFwLCByZWcsICZ2
-YWwsIHNpemVvZih1MTYpKTsKPj4+ICt9Cj4+PiArCj4+PiArc3RhdGljIGludCBtdDYzNjBfdGNw
-Y19pbml0KHN0cnVjdCB0Y3BjaSAqdGNwY2ksIHN0cnVjdCB0Y3BjaV9kYXRhICp0ZGF0YSkKPj4+
-ICt7Cj4+PiArICAgICBzdHJ1Y3QgcmVnbWFwICpyZWdtYXAgPSB0ZGF0YS0+cmVnbWFwOwo+Pj4g
-KyAgICAgaW50IHJldDsKPj4+ICsKPj4+ICsgICAgIHJldCA9IHJlZ21hcF93cml0ZShyZWdtYXAs
-IE1UNjM2MF9SRUdfU1dSRVNFVCwgMHgwMSk7Cj4+PiArICAgICBpZiAocmV0KQo+Pj4gKyAgICAg
-ICAgICAgICByZXR1cm4gcmV0Owo+Pj4gKwo+Pj4gKyAgICAgLyogYWZ0ZXIgcmVzZXQgY29tbWFu
-ZCwgd2FpdCAxfjJtcyB0byB3YWl0IElDIGFjdGlvbiAqLwo+Pj4gKyAgICAgdXNsZWVwX3Jhbmdl
-KDEwMDAsIDIwMDApOwo+Pj4gKwo+Pj4gKyAgICAgLyogd3JpdGUgYWxsIGFsZXJ0IHRvIG1hc2tl
-ZCAqLwo+Pj4gKyAgICAgcmV0ID0gbXQ2MzYwX3RjcGNfd3JpdGUxNihyZWdtYXAsIFRDUENfQUxF
-UlRfTUFTSywgMCk7Cj4+IFdvbmRlciB3aHkgYWNjZXNzIHNvbWUgcmVnaXN0ZXIgYnkgMmJ5dGVz
-LCBhbmQgb3RoZXJzIDRieXRlcz8KPj4gY2FuIHdlIGFjY2VzcyB0aGVtIGFsbCBieSA0Ynl0ZXM/
-Cj4gCj4gQWN0dWFsbHksIHRoZSBhY2Nlc3MgYnVzIGlzIHN0aWxsIEkyQy4KPiBFYWNoIHJlZ2lz
-dGVyIGlzIHN0aWxsIG9uZSBieXRlIG9ubHkuCj4gUmVnaXN0ZXIgYWRkcmVzcyBsaWtlIGFzIFRD
-UENfQUxFUlRfTUFTSyBhcmUgY29udGludW91cyB0d28gYnl0ZSB1c2VkCj4gYXMgSVJRIE1BU0su
-Cj4gVGhhdCdzIHdoeSBpdCdzIHVzZWQgd2lydGUxNiBmdW5jdGlvbiB0byBhY2Nlc3MuCj4gCj4g
-QWN0dWFsbHksIHlvdSBhbHNvIGNhbiBkaXZpZGVkIGludG8gdHdvIGJ5dGVzIHdyaXRlIGludG8g
-b25lIGJ5dGUKPiBhY2Nlc3MgYnkgdHdvIHRpbWVzLgo+IEZvciBJMkMgYnVzIGVmZmljaWVuY3ks
-IGl0IHNlZW1zIGJhZC4KCkZvciBNVDYzNjBfUkVHX0RSUENUUkwyLCBpdCBtaWdodCBhbHNvIGJl
-IHJhY3ksIHNpbmNlIHRoZSB0d28gaTJjIGFkZHJlc3NlcwphcmUgcmVhbGx5IG9uZSByZWdpc3Rl
-ciBjb250YWluaW5nIGEgMTAtYml0IHZhbHVlLiBJIHdvdWxkIHByb2JhYmx5IG5vdCBtYXR0ZXIK
-aGVyZSAoYWZhaWNzIHRoZSB2YWx1ZSBpcyBjaGFuZ2VkIGZyb20gdGhlIGRlZmF1bHQgMzI3IHRv
-IDMzMCksIGJ1dCBpbiBnZW5lcmFsCml0IHNlZW1zIHNhZmVyIHRvIHdyaXRlIHN1Y2ggYSB2YWx1
-ZSB3aXRoIGEgc2luZ2xlIDE2LWJpdCBpMmMgd3JpdGUuCgpHdWVudGVyCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5n
-IGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+
+
+On 28/08/2020 15:55, Dafna Hirschfeld wrote:
+> In list_add, the first variable is the new node and the second
+> is the list head. The function is called with a wrong order causing
+> NULL dereference:
+> 
+> [   15.527030] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000008
+> [   15.542317] Mem abort info:
+> [   15.545152]   ESR = 0x96000044
+> [   15.548248]   EC = 0x25: DABT (current EL), IL = 32 bits
+> [   15.553624]   SET = 0, FnV = 0
+> [   15.556715]   EA = 0, S1PTW = 0
+> [   15.559892] Data abort info:
+> [   15.562799]   ISV = 0, ISS = 0x00000044
+> [   15.566678]   CM = 0, WnR = 1
+> [   15.569683] user pgtable: 4k pages, 48-bit VAs, pgdp=00000001373f0000
+> [   15.576196] [0000000000000008] pgd=0000000000000000, p4d=0000000000000000
+> [   15.583101] Internal error: Oops: 96000044 [#1] PREEMPT SMP
+> [   15.588747] Modules linked in: mtk_mdp(+) cfg80211 v4l2_mem2mem videobuf2_vmalloc videobuf2_dma_contig videobuf2_memops videobuf2_v4l2 videobuf2_common vide
+> odev mt8173_rt5650 smsc95xx usbnet ecdh_generic ecc snd_soc_rt5645 mc mt8173_afe_pcm rfkill cros_ec_sensors snd_soc_mtk_common elan_i2c crct10dif_ce cros_ec_se
+> nsors_core snd_soc_rl6231 elants_i2c industrialio_triggered_buffer kfifo_buf mtk_vpu cros_ec_chardev cros_usbpd_charger cros_usbpd_logger sbs_battery display_c
+> onnector pwm_bl ip_tables x_tables ipv6
+> [   15.634295] CPU: 0 PID: 188 Comm: systemd-udevd Not tainted 5.9.0-rc2+ #69
+> [   15.641242] Hardware name: Google Elm (DT)
+> [   15.645381] pstate: 20000005 (nzCv daif -PAN -UAO BTYPE=--)
+> [   15.651022] pc : mtk_mdp_probe+0x134/0x3a8 [mtk_mdp]
+> [   15.656041] lr : mtk_mdp_probe+0x128/0x3a8 [mtk_mdp]
+> [   15.661055] sp : ffff80001255b910
+> [   15.669548] x29: ffff80001255b910 x28: 0000000000000000
+> [   15.679973] x27: ffff800009089bf8 x26: ffff0000fafde800
+> [   15.690347] x25: ffff0000ff7d2768 x24: ffff800009089010
+> [   15.700670] x23: ffff0000f01a7cd8 x22: ffff0000fafde810
+> [   15.710940] x21: ffff0000f01a7c80 x20: ffff0000f0c3c180
+> [   15.721148] x19: ffff0000ff7f1618 x18: 0000000000000010
+> [   15.731289] x17: 0000000000000000 x16: 0000000000000000
+> [   15.741375] x15: 0000000000aaaaaa x14: 0000000000000020
+> [   15.751399] x13: 00000000ffffffff x12: 0000000000000020
+> [   15.761363] x11: 0000000000000028 x10: 0101010101010101
+> [   15.771279] x9 : 0000000000000004 x8 : 7f7f7f7f7f7f7f7f
+> [   15.781148] x7 : 646bff6171606b2b x6 : 0000000000806d65
+> [   15.790981] x5 : ffff0000ff7f8360 x4 : 0000000000000000
+> [   15.800767] x3 : 0000000000000004 x2 : 0000000000000001
+> [   15.810501] x1 : 0000000000000005 x0 : 0000000000000000
+> [   15.820171] Call trace:
+> [   15.826944]  mtk_mdp_probe+0x134/0x3a8 [mtk_mdp]
+> [   15.835908]  platform_drv_probe+0x54/0xa8
+> [   15.844247]  really_probe+0xe4/0x3b0
+> [   15.852104]  driver_probe_device+0x58/0xb8
+> [   15.860457]  device_driver_attach+0x74/0x80
+> [   15.868854]  __driver_attach+0x58/0xe0
+> [   15.876770]  bus_for_each_dev+0x70/0xc0
+> [   15.884726]  driver_attach+0x24/0x30
+> [   15.892374]  bus_add_driver+0x14c/0x1f0
+> [   15.900295]  driver_register+0x64/0x120
+> [   15.908168]  __platform_driver_register+0x48/0x58
+> [   15.916864]  mtk_mdp_driver_init+0x20/0x1000 [mtk_mdp]
+> [   15.925943]  do_one_initcall+0x54/0x1b4
+> [   15.933662]  do_init_module+0x54/0x200
+> [   15.941246]  load_module+0x1cf8/0x22d0
+> [   15.948798]  __do_sys_finit_module+0xd8/0xf0
+> [   15.956829]  __arm64_sys_finit_module+0x20/0x30
+> [   15.965082]  el0_svc_common.constprop.0+0x6c/0x168
+> [   15.973527]  do_el0_svc+0x24/0x90
+> [   15.980403]  el0_sync_handler+0x90/0x198
+> [   15.987867]  el0_sync+0x158/0x180
+> [   15.994653] Code: 9400014b 2a0003fc 35000920 f9400280 (f9000417)
+> [   16.004299] ---[ end trace 76fee0203f9898e5 ]---
+> 
+> Fixes: 86698b9505bbc ("media: mtk-mdp: convert mtk_mdp_dev.comp array to list")
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+> ---
+>   drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> index f96c8b3bf861..976aa1f4829b 100644
+> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> @@ -94,7 +94,7 @@ static void mtk_mdp_reset_handler(void *priv)
+>   void mtk_mdp_register_component(struct mtk_mdp_dev *mdp,
+>   				struct mtk_mdp_comp *comp)
+>   {
+> -	list_add(&mdp->comp_list, &comp->node);
+> +	list_add(&comp->node, &mdp->comp_list);
+>   }
+>   
+>   void mtk_mdp_unregister_component(struct mtk_mdp_dev *mdp,
+> 
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
