@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
 	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7AFDAC433E2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 22:05:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AAE45C433E6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 22:06:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 42822205CB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 22:05:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 738D520838
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2020 22:06:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HDJ7Mo7c"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 42822205CB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="abXq0iUt"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 738D520838
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,57 +24,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Mw4aW6KyQRTZN8U9p5RTp7Rehg6yDpDmAJpDqiisecY=; b=HDJ7Mo7cj7KTi9AION7Ut7SH0
-	JXy7Rf94ek2VHc5oSvrfYhmBrCGGVK8XK0oLCfg+tuNdEEgJXu72DOvPGkWdxnEJRpa3YZe1GLdbu
-	xinMfwF65DdlXtfXMU5HAU9D3kMHKs6pIYF2G9P1svfG9XazirLAv65v4FAS/8gWQ7kcMACk4vS/P
-	4qubglJUovnxz5Y5kdtAGajxaE6/FSy/IE6br77ZR3+WIShzxoQ0GcqcvlqlzLUJXrnQd354oNsFW
-	EpQTc3m2FN8RRDL+L6tRrYSHPvvjZKDm38uTa3LYLKX4W3fP0OHBlQTmlwhcZiWDRVkLJuf5Z9Ejs
-	ClH110ZXQ==;
+	 bh=Z7PCzSnGlH1lh43iNGXz9nz1dzHFbvrbadHChVUSia4=; b=abXq0iUt03qDryqL3HoHrbsrI
+	VgclX3bvVyfv60A/nwX6xCaj16FQdr2Y0zIDMWz3PMR55aAlVtAl/wbhU7/ETxm3+JITI9y55jnJT
+	hNfHWmHt5iOSlBqMjM+h7ct18yxG/FaTYc8d4msxXk9WT6f8xDK9XSHjanOUF6Hs5GRTVtpHRGCms
+	Sy82Td29AhNaT8zyrDVaMCk40D9bHqWuMhsfz6t5wPAPI8pBT9K5K8FDwaqQYV3ZbFDx/u42HYdEa
+	FOYDcw1rI/LFGqHAYq7dOreq+s0PeCM/6Mn7DXcqXBXIx8oRWk7e0ta0VD4JyDAm9dl3VhLvM4MYf
+	mqCiHHPcQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kBmV0-00010x-05; Fri, 28 Aug 2020 22:05:30 +0000
-Received: from mail-il1-f193.google.com ([209.85.166.193])
+	id 1kBmWA-0001Uj-AR; Fri, 28 Aug 2020 22:06:42 +0000
+Received: from mail-io1-f65.google.com ([209.85.166.65])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kBmUt-0000xv-W0; Fri, 28 Aug 2020 22:05:25 +0000
-Received: by mail-il1-f193.google.com with SMTP id q14so1943131ilj.8;
- Fri, 28 Aug 2020 15:05:23 -0700 (PDT)
+ id 1kBmW1-0001Q8-W4; Fri, 28 Aug 2020 22:06:35 +0000
+Received: by mail-io1-f65.google.com with SMTP id m23so556232iol.8;
+ Fri, 28 Aug 2020 15:06:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=hEjjUFT83iNRg02ncmXB05CfgHtGJIWhaDk9gjoB/yw=;
- b=thSpzInxf1CPte8/jUe/ZaADoq1pWycaRSFqVpov42iOgjxaSXN8XTNrVsjd8jli5i
- KVEc8Tkt0lVuxI9/2uhGDHCZHIL8ZrPhJyyNZE0YpLLa0WSfxl1P3tL6Qvjoh5BrQCl4
- XelAO6Ss9dTGdIKS/RiYLoG10jcMimPnxbD3j2M+Wyb9LTvuh4D3iy/a0c4YyNpFsrc5
- O0pO4lLRXVA0TLZqGVNGdhNTYTdjmphEkrWHfHuaRLU9uKLcy2pTMCr5iexuWoSZICUv
- TtPtrF8WHxgaWvnJQ40t8HKb0lWhr9SsIXiYnGIk2XEC/Ykv7x7ZEiXn0ZisZsiEbpyY
- kUAQ==
-X-Gm-Message-State: AOAM531/ObvCyEabwT8CnFBSZI82ttVi1F4i548PN2uk657tVFMRFuAZ
- DeMjEaz/yCZa+NnP1fQTiw==
-X-Google-Smtp-Source: ABdhPJxm/ppsdTb0g25vKmMiz/juduCbS2JSibG+yBa7cfosxhP0iu5fPruCrPy6GFCcFSyoZ/Y5fQ==
-X-Received: by 2002:a05:6e02:13c6:: with SMTP id
- v6mr804659ilj.87.1598652323060; 
- Fri, 28 Aug 2020 15:05:23 -0700 (PDT)
+ bh=39/6+NdecqvikGjg8YBo+lOCsS3fMVVJzywnwgJFjx0=;
+ b=I8M/WHRg3/ok/5k+YznZe0nRvDcYr4HIJSfP56EKDmgpbWvhlq++sH8/5nbgPRS8IY
+ AsS2LMYReHcGzObBD1H4v0EsNfWJgtLANWuLcLDc2DAKmFwG14Y2Zh2DdzOEdUyLcNOH
+ HRV2VVK7aMBm9R/nkaMolLQh9f4Ajw87i8lb6qNJmfm9PgYlex+JxA7eE1kd5vryH0xS
+ rwuOLCP+vKfpASy3g3c9JkuDlyn4OQ88RBDjkOOdH3UrImX/0hltYoBf9kwXNMpcbUXQ
+ EHgrw9VIKbu4Vkzwj4IM+aBxfiIZHoCGReSYs+hIuViVjn2FU/NMkCNzYf6wkg5U90CA
+ 0pAw==
+X-Gm-Message-State: AOAM533zvl+o0lO5ZjfnEBmdheudLiavF2aLxPvNS1t0bAchr8H5fqZC
+ 6a81xRl49TbADMzUSL3nyA==
+X-Google-Smtp-Source: ABdhPJwVv8s/hJTLnejTHw2Frk9tNzJBWfrJVda7OMvoSYV6El+lEe6dFH5QofuW1HtBydBRzeP9uw==
+X-Received: by 2002:a05:6638:1393:: with SMTP id
+ w19mr2971735jad.113.1598652393099; 
+ Fri, 28 Aug 2020 15:06:33 -0700 (PDT)
 Received: from xps15 ([64.188.179.249])
- by smtp.gmail.com with ESMTPSA id q23sm238341ior.47.2020.08.28.15.05.21
+ by smtp.gmail.com with ESMTPSA id v11sm342684ili.66.2020.08.28.15.06.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Aug 2020 15:05:22 -0700 (PDT)
-Received: (nullmailer pid 3486516 invoked by uid 1000);
- Fri, 28 Aug 2020 22:05:20 -0000
-Date: Fri, 28 Aug 2020 16:05:20 -0600
+ Fri, 28 Aug 2020 15:06:32 -0700 (PDT)
+Received: (nullmailer pid 3488084 invoked by uid 1000);
+ Fri, 28 Aug 2020 22:06:30 -0000
+Date: Fri, 28 Aug 2020 16:06:30 -0600
 From: Rob Herring <robh@kernel.org>
 To: cy_huang <u0084500@gmail.com>
 Subject: Re: [PATCH v4 2/2] usb typec: mt6360: Add MT6360 Type-C DT binding
  documentation
-Message-ID: <20200828220520.GA3482472@bogus>
+Message-ID: <20200828220630.GB3482472@bogus>
 References: <1598610636-4939-1-git-send-email-u0084500@gmail.com>
  <1598610636-4939-2-git-send-email-u0084500@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <1598610636-4939-2-git-send-email-u0084500@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200828_180524_097615_0B5A266E 
-X-CRM114-Status: GOOD (  18.95  )
+X-CRM114-CacheID: sfid-20200828_180634_066361_465EE6E4 
+X-CRM114-Status: GOOD (  18.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -137,10 +137,6 @@ On Fri, Aug 28, 2020 at 06:30:36PM +0800, cy_huang wrote:
 > +      - mediatek,mt6360-tcpc
 > +
 > +  interrupts-extended:
-
-Use 'interrupts'. The tooling will automatically support 
-'interrupts-extended'.
-
 > +    maxItems: 1
 > +
 > +  interrupt-names:
@@ -149,6 +145,10 @@ Use 'interrupts'. The tooling will automatically support
 > +
 > +patternProperties:
 > +  "connector":
+
+Also, this is not a pattern, so should be under 'properties', and it 
+doesn't need quotes.
+
 > +    type: object
 > +    $ref: ../connector/usb-connector.yaml#
 > +    description:
@@ -179,11 +179,6 @@ Use 'interrupts'. The tooling will automatically support
 > +                interrupt-names = "PD_IRQB";
 > +
 > +                connector {
-
-Where's the data connections? The assumption of the binding is the USB 
-(2 and 3) connections come from the parent if there's no graph to the 
-USB controller(s).
-
 > +                        compatible = "usb-c-connector";
 > +                        label = "USB-C";
 > +                        data-role = "dual";
