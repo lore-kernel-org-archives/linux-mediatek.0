@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B2075C433E2
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Aug 2020 08:51:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D328C433E6
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Aug 2020 10:06:54 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7F034208A9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Aug 2020 08:51:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 04AF220825
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Aug 2020 10:06:53 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DrwgYUYa";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="oujsTXUC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7F034208A9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="B1F0LlKI";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="iJqgYe2I"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 04AF220825
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4HocYWavSpuQPh5qhyONH/TNT80ag+0eP/khuqb0C1c=; b=DrwgYUYaq4kZFlKqAyGTwL37x
-	Em+zGh93QFTOcVQjotSU2NmynwB8srJY3lswZkqPhKQaSN/rVj9AbCXGO89FcFM+hEQUXAZlUw/mo
-	DpOjw3GyXDmVJ8SZ9saRTDzPCGcXbYFOCExkXGfjuDNKujCXfqGJe5XjK6LktKTOJfFYM6ZFymlma
-	LA6T01Jpeym9D3ju0/50C1bcqtJ38TWnXG51NSiIjIHpfmTm+6zH7XA8fAR53tmciyc6x3PBJ5Inu
-	32n3YQeU4aJcpUqXnStJiJN6uZvKQ+anfuXnm/Ie/ySgI7JWNT1XvDUETq1QB51MGzIt7+sntGpPQ
-	FFF4K7vwg==;
+	 bh=WElBoCNcCDNUlW0IXeWT4jzvkByrHNdyTdFO5LnG+GM=; b=B1F0LlKItBwSCqDUGx3MPH/7m
+	B7kFXDzOTfUW583syh28uOnUldsLaqWOwfCtqOSn17JGw59BfFqePPW9ZSUNdpjxN+NxyRr3L2kmc
+	BRGMf6p1+9uYjN/woP/MxpkmkEIM41cB5rhG9MhyQdnLGZnh6CQ7rpBmG+EkTnUZp6xHLxU2eMaa5
+	FSc0HsN/NZldxSoQkV1nNKW1yLQsYZzii9SAtzLZ//7lKuXu0KzjWBZEltmEHYfRY+dtzy/5RDwWW
+	Q1zKb6ekPBP7N75qv3MLi96yaK+Ru0lZBoiEl7VQ3QNV9WnNmjkOeUPyA2WlibapgZU+1ztT0ttKh
+	UR2gJz+aA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kBwaI-0006nk-Ow; Sat, 29 Aug 2020 08:51:38 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kBxkv-0003Mh-Vv; Sat, 29 Aug 2020 10:06:42 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kBwaC-0006mw-MP; Sat, 29 Aug 2020 08:51:35 +0000
-X-UUID: 92cf99a54b3240f6a9fb8595410eff54-20200829
+ id 1kBxkr-0003Ld-35; Sat, 29 Aug 2020 10:06:38 +0000
+X-UUID: 60bc2226bf494daa84bb4c54766162bc-20200829
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=qB65JvNr4zmGYx3nhQrYXy0tBUEmKp+M+ZtGMwCgkrg=; 
- b=oujsTXUCDqf+QWdrAu7a/79gwwtkl5e6g3+g1HAGGm5sMzA/qsDpG4N/rmU06a+Ls1KIpXdVA9/opTd0M683IQ96dFs9PWeRuT7u/0wwpnUlyXPo/p832x1H3V/ubbaCTOQ2mxWE9DdMvEFVjfT93slVvf2NNuQQHoiOh6HAdAg=;
-X-UUID: 92cf99a54b3240f6a9fb8595410eff54-20200829
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
+ bh=YQ4nWNJaU2/84I56GfA7izeF71Nu7GxMGRIJ/4QLhhI=; 
+ b=iJqgYe2INoU7y5RbgeFWvqv7yXDT7wXXuH6QVWH8MwimigaAtcURtEZCqOdT81bfUhVmsmSMN0cgKkkduDX0H0CGIdSOMIeqyALhmkFm3cZq6FZ8b5Y573JvKeY6fGwQjf1MnghwP2HLQpe0YZOO0SZ+7z8XJSjwGZQ7GXZNHEA=;
+X-UUID: 60bc2226bf494daa84bb4c54766162bc-20200829
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1699459301; Sat, 29 Aug 2020 00:51:24 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 29 Aug 2020 01:51:21 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 29 Aug 2020 16:51:19 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 29 Aug 2020 16:51:19 +0800
-Message-ID: <1598691080.9982.9.camel@mtkswgap22>
-Subject: Re: [RESEND PATCH v4] iommu/mediatek: check 4GB mode by reading
- infracfg
-From: Miles Chen <miles.chen@mediatek.com>
+ with ESMTP id 1895685805; Sat, 29 Aug 2020 02:06:27 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 29 Aug 2020 02:56:24 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sat, 29 Aug 2020 17:56:20 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 29 Aug 2020 17:56:20 +0800
+Message-ID: <1598694891.19851.12.camel@mhfsdcap03>
+Subject: Re: [PATCH 09/18] iommu/mediatek-v1: Add IOMMU_DOMAIN_DMA support
+From: Yong Wu <yong.wu@mediatek.com>
 To: Robin Murphy <robin.murphy@arm.com>
-Date: Sat, 29 Aug 2020 16:51:20 +0800
-In-Reply-To: <e34db4dc-49a6-d414-e438-b528703ffb80@arm.com>
-References: <20200826085618.2889-1-miles.chen@mediatek.com>
- <1598506280.19851.5.camel@mhfsdcap03>
- <e34db4dc-49a6-d414-e438-b528703ffb80@arm.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+Date: Sat, 29 Aug 2020 17:54:51 +0800
+In-Reply-To: <a259b248ffb14273b56f8473c20b0381e8d74c7a.1597931876.git.robin.murphy@arm.com>
+References: <cover.1597931875.git.robin.murphy@arm.com>
+ <a259b248ffb14273b56f8473c20b0381e8d74c7a.1597931876.git.robin.murphy@arm.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: CC0124F12646A90ABE3CE289DF8E2C577772453E21C8EABC2308FFBE2B5335F42000:8
+X-TM-SNTS-SMTP: AA63C797C93CBD61B254A639A39F87490728FF8037E9BB375825F26FABF9D7122000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200829_045132_945604_D45954CC 
-X-CRM114-Status: GOOD (  35.35  )
+X-CRM114-CacheID: sfid-20200829_060637_615288_3705DA3C 
+X-CRM114-Status: GOOD (  29.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,195 +84,310 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, wsd_upstream@mediatek.com,
- David Hildenbrand <david@redhat.com>, Joerg
- Roedel <joro@8bytes.org>, linux-kernel@vger.kernel.org,
- Mike Rapoport <rppt@linux.ibm.com>, iommu@lists.linux-foundation.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Yingjoe Chen <yingjoe.chen@mediatek.com>, Christoph Hellwig <hch@lst.de>,
- Yong Wu <yong.wu@mediatek.com>
+Cc: geert+renesas@glider.be, dri-devel@lists.freedesktop.org,
+ bjorn.andersson@linaro.org, linux-tegra@vger.kernel.org,
+ thierry.reding@gmail.com, laurent.pinchart@ideasonboard.com, digetx@gmail.com,
+ s-anna@ti.com, will@kernel.org, hch@lst.de, m.szyprowski@samsung.com,
+ linux-samsung-soc@vger.kernel.org, joro@8bytes.org, magnus.damm@gmail.com,
+ linux@armlinux.org.uk, jonathanh@nvidia.com, agross@kernel.org,
+ kyungmin.park@samsung.com, linux-media@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, inki.dae@samsung.com, vdumpa@nvidia.com,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org, sw0312.kim@samsung.com,
+ linux-kernel@vger.kernel.org, t-kristo@ti.com,
+ iommu@lists.linux-foundation.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2020-08-27 at 20:27 +0100, Robin Murphy wrote:
-> On 2020-08-27 06:31, Yong Wu wrote:
-> > On Wed, 2020-08-26 at 16:56 +0800, Miles Chen wrote:
-> >> In previous discussion [1] and [2], we found that it is risky to
-> >> use max_pfn or totalram_pages to tell if 4GB mode is enabled.
-> >>
-> >> Check 4GB mode by reading infracfg register, remove the usage
-> >> of the un-exported symbol max_pfn.
-> >>
-> >> This is a step towards building mtk_iommu as a kernel module.
-> >>
-> >> [1] https://lore.kernel.org/lkml/20200603161132.2441-1-miles.chen@mediatek.com/
-> >> [2] https://lore.kernel.org/lkml/20200604080120.2628-1-miles.chen@mediatek.com/
-> >> [3] https://lore.kernel.org/lkml/20200715205120.GA778876@bogus/
-> >>
-> >> Cc: Mike Rapoport <rppt@linux.ibm.com>
-> >> Cc: David Hildenbrand <david@redhat.com>
-> >> Cc: Yong Wu <yong.wu@mediatek.com>
-> >> Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>
-> >> Cc: Christoph Hellwig <hch@lst.de>
-> >> Cc: Rob Herring <robh@kernel.org>
-> >> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> >> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-> >>
-> >> ---
-> >>
-> >> Change since v3
-> >> - use lore.kernel.org links
-> >> - move "change since..." after "---"
-> >>
-> >> Change since v2:
-> >> - determine compatible string by m4u_plat
-> >> - rebase to next-20200720
-> >> - add "---"
-> >>
-> >> Change since v1:
-> >> - remove the phandle usage, search for infracfg instead [3]
-> >> - use infracfg instead of infracfg_regmap
-> >> - move infracfg definitaions to linux/soc/mediatek/infracfg.h
-> >> - update enable_4GB only when has_4gb_mode
-> >> ---
-> >>   drivers/iommu/mtk_iommu.c             | 34 +++++++++++++++++++++++----
-> >>   include/linux/soc/mediatek/infracfg.h |  3 +++
-> >>   2 files changed, 32 insertions(+), 5 deletions(-)
-> >>
-> >> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> >> index 785b228d39a6..adc350150492 100644
-> >> --- a/drivers/iommu/mtk_iommu.c
-> >> +++ b/drivers/iommu/mtk_iommu.c
-> >> @@ -3,7 +3,6 @@
-> >>    * Copyright (c) 2015-2016 MediaTek Inc.
-> >>    * Author: Yong Wu <yong.wu@mediatek.com>
-> >>    */
-> >> -#include <linux/memblock.h>
-> >>   #include <linux/bug.h>
-> >>   #include <linux/clk.h>
-> >>   #include <linux/component.h>
-> >> @@ -15,13 +14,16 @@
-> >>   #include <linux/iommu.h>
-> >>   #include <linux/iopoll.h>
-> >>   #include <linux/list.h>
-> >> +#include <linux/mfd/syscon.h>
-> >>   #include <linux/of_address.h>
-> >>   #include <linux/of_iommu.h>
-> >>   #include <linux/of_irq.h>
-> >>   #include <linux/of_platform.h>
-> >>   #include <linux/platform_device.h>
-> >> +#include <linux/regmap.h>
-> >>   #include <linux/slab.h>
-> >>   #include <linux/spinlock.h>
-> >> +#include <linux/soc/mediatek/infracfg.h>
-> >>   #include <asm/barrier.h>
-> >>   #include <soc/mediatek/smi.h>
-> >>   
-> >> @@ -640,8 +642,11 @@ static int mtk_iommu_probe(struct platform_device *pdev)
-> >>   	struct resource         *res;
-> >>   	resource_size_t		ioaddr;
-> >>   	struct component_match  *match = NULL;
-> >> +	struct regmap		*infracfg;
-> >>   	void                    *protect;
-> >>   	int                     i, larb_nr, ret;
-> >> +	u32			val;
-> >> +	char                    *p;
-> >>   
-> >>   	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
-> >>   	if (!data)
-> >> @@ -655,10 +660,29 @@ static int mtk_iommu_probe(struct platform_device *pdev)
-> >>   		return -ENOMEM;
-> >>   	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
-> >>   
-> >> -	/* Whether the current dram is over 4GB */
-> >> -	data->enable_4GB = !!(max_pfn > (BIT_ULL(32) >> PAGE_SHIFT));
-> >> -	if (!MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE))
-> >> -		data->enable_4GB = false;
-> >> +	data->enable_4GB = false;
+On Thu, 2020-08-20 at 16:08 +0100, Robin Murphy wrote:
+> Now that arch/arm is wired up for default domains and iommu-dma,
+> implement the corresponding driver-side support for groups and DMA
+> domains to replace the shared mapping workaround.
 > 
-> Nit: this isn't really necessary, since the structure is kzalloc()ed.
+> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+> ---
+>  drivers/iommu/mtk_iommu.h    |   2 -
+>  drivers/iommu/mtk_iommu_v1.c | 153 +++++++++++------------------------
+>  2 files changed, 48 insertions(+), 107 deletions(-)
 
-Thanks for the comment, I will remove this this in v5.
-> 
-> >> +	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE)) {
-> >> +		switch (data->plat_data->m4u_plat) {
-> >> +		case M4U_MT2712:
-> >> +			p = "mediatek,mt2712-infracfg";
-> >> +			break;
-> >> +		case M4U_MT8173:
-> >> +			p = "mediatek,mt8173-infracfg";
-> >> +			break;
-> >> +		default:
-> >> +			p = NULL;
-> >> +		}
-> >> +
-> > 
-> > This can be simplified:
-> > 
-> >          if (data->plat_data->m4u_plat == M4U_MT2712)
-> > 		p = "mediatek,mt2712-infracfg";
-> > 	else if(data->plat_data->m4u_plat == M4U_MT8173)
-> > 		p = "mediatek,mt8173-infracfg";
-> > 	else
-> > 		return -EINVAL;
-> 
-> Right, at this point the HAS_4GB_MODE flag is entirely redundant and 
-> should be removed. FWIW I still think your suggestion of putting the 
-> infracfg names into plat_data would be even better and cleaner - there's 
-> plenty of precedent for that sort of thing (see "git grep '\.clk_name'" 
-> for example).
-> 
-> Robin.
+Hi Robin,
 
-hmm, I have no strong opinion about this. We have discussed this
-approach before and built this patch based on the discussion.
-https://lore.kernel.org/patchwork/patch/1276801/
+Thanks very much for this patch, It makes the code much cleaner.
+
+Please help squash the little change in this patch,
+
+--- a/drivers/iommu/mtk_iommu_v1.c
++++ b/drivers/iommu/mtk_iommu_v1.c
+@@ -555,6 +555,7 @@ static int mtk_iommu_probe(struct platform_device
+*pdev)
+ 		return ret;
+ 
+ 	iommu_device_set_ops(&data->iommu, &mtk_iommu_ops);
++	iommu_device_set_fwnode(&data->iommu, &dev->of_node->fwnode);
+ 
+ 	ret = iommu_device_register(&data->iommu);
+ 	if (ret)
 
 
+Then,
+Tested-by: Yong Wu <yong.wu@mediatek.com>
 
-Miles
 > 
-> > 
-> > Then,
-> > Reviewed-by: Yong Wu <yong.wu@mediatek.com>
-> > 	
-> > 
-> >> +		infracfg = syscon_regmap_lookup_by_compatible(p);
-> >> +
-> >> +		if (IS_ERR(infracfg))
-> >> +			return PTR_ERR(infracfg);
-> >> +
-> >> +		ret = regmap_read(infracfg, REG_INFRA_MISC, &val);
-> >> +		if (ret)
-> >> +			return ret;
-> >> +		data->enable_4GB = !!(val & F_DDR_4GB_SUPPORT_EN);
-> >> +	}
-> >>   
-> >>   	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> >>   	data->base = devm_ioremap_resource(dev, res);
-> >> diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-> >> index fd25f0148566..233463d789c6 100644
-> >> --- a/include/linux/soc/mediatek/infracfg.h
-> >> +++ b/include/linux/soc/mediatek/infracfg.h
-> >> @@ -32,6 +32,9 @@
-> >>   #define MT7622_TOP_AXI_PROT_EN_WB		(BIT(2) | BIT(6) | \
-> >>   						 BIT(7) | BIT(8))
-> >>   
-> >> +#define REG_INFRA_MISC				0xf00
-> >> +#define F_DDR_4GB_SUPPORT_EN			BIT(13)
-> >> +
-> >>   int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
-> >>   		bool reg_update);
-> >>   int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
-> > 
-> > _______________________________________________
-> > linux-arm-kernel mailing list
-> > linux-arm-kernel@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-> > 
+> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+> index 122925dbe547..6253e98d810c 100644
+> --- a/drivers/iommu/mtk_iommu.h
+> +++ b/drivers/iommu/mtk_iommu.h
+> @@ -67,8 +67,6 @@ struct mtk_iommu_data {
+>  	struct iommu_device		iommu;
+>  	const struct mtk_iommu_plat_data *plat_data;
+>  
+> -	struct dma_iommu_mapping	*mapping; /* For mtk_iommu_v1.c */
+> -
+>  	struct list_head		list;
+>  	struct mtk_smi_larb_iommu	larb_imu[MTK_LARB_NR_MAX];
+>  };
+> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+> index 82ddfe9170d4..40c89b8d3ac4 100644
+> --- a/drivers/iommu/mtk_iommu_v1.c
+> +++ b/drivers/iommu/mtk_iommu_v1.c
+> @@ -28,7 +28,6 @@
+>  #include <linux/slab.h>
+>  #include <linux/spinlock.h>
+>  #include <asm/barrier.h>
+> -#include <asm/dma-iommu.h>
+>  #include <linux/init.h>
+>  #include <dt-bindings/memory/mt2701-larb-port.h>
+>  #include <soc/mediatek/smi.h>
+> @@ -240,13 +239,18 @@ static struct iommu_domain *mtk_iommu_domain_alloc(unsigned type)
+>  {
+>  	struct mtk_iommu_domain *dom;
+>  
+> -	if (type != IOMMU_DOMAIN_UNMANAGED)
+> +	if (type != IOMMU_DOMAIN_UNMANAGED && type != IOMMU_DOMAIN_DMA)
+>  		return NULL;
+>  
+>  	dom = kzalloc(sizeof(*dom), GFP_KERNEL);
+>  	if (!dom)
+>  		return NULL;
+>  
+> +	if (type == IOMMU_DOMAIN_DMA && iommu_get_dma_cookie(&dom->domain)) {
+> +		kfree(dom);
+> +		return NULL;
+> +	}
+> +
+>  	return &dom->domain;
+>  }
+>  
+> @@ -257,6 +261,7 @@ static void mtk_iommu_domain_free(struct iommu_domain *domain)
+>  
+>  	dma_free_coherent(data->dev, M2701_IOMMU_PGT_SIZE,
+>  			dom->pgt_va, dom->pgt_pa);
+> +	iommu_put_dma_cookie(domain);
+>  	kfree(to_mtk_domain(domain));
+>  }
+>  
+> @@ -265,14 +270,8 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+>  {
+>  	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
+>  	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+> -	struct dma_iommu_mapping *mtk_mapping;
+>  	int ret;
+>  
+> -	/* Only allow the domain created internally. */
+> -	mtk_mapping = data->mapping;
+> -	if (mtk_mapping->domain != domain)
+> -		return 0;
+> -
+>  	if (!data->m4u_dom) {
+>  		data->m4u_dom = dom;
+>  		ret = mtk_iommu_domain_finalise(data);
+> @@ -358,18 +357,39 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
+>  
+>  static const struct iommu_ops mtk_iommu_ops;
+>  
+> -/*
+> - * MTK generation one iommu HW only support one iommu domain, and all the client
+> - * sharing the same iova address space.
+> - */
+> -static int mtk_iommu_create_mapping(struct device *dev,
+> -				    struct of_phandle_args *args)
+> +static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
+>  {
+>  	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+>  	struct mtk_iommu_data *data;
+> +
+> +	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
+> +		return ERR_PTR(-ENODEV); /* Not a iommu client device */
+> +
+> +	data = dev_iommu_priv_get(dev);
+> +
+> +	return &data->iommu;
+> +}
+> +
+> +static void mtk_iommu_release_device(struct device *dev)
+> +{
+> +	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+> +
+> +	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
+> +		return;
+> +
+> +	iommu_fwspec_free(dev);
+> +}
+> +
+> +static struct iommu_group *mtk_iommu_device_group(struct device *dev)
+> +{
+> +	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
+> +
+> +	return iommu_group_ref_get(data->m4u_group);
+> +}
+> +
+> +static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
+> +{
+>  	struct platform_device *m4updev;
+> -	struct dma_iommu_mapping *mtk_mapping;
+> -	int ret;
+>  
+>  	if (args->args_count != 1) {
+>  		dev_err(dev, "invalid #iommu-cells(%d) property for IOMMU\n",
+> @@ -377,15 +397,6 @@ static int mtk_iommu_create_mapping(struct device *dev,
+>  		return -EINVAL;
+>  	}
+>  
+> -	if (!fwspec) {
+> -		ret = iommu_fwspec_init(dev, &args->np->fwnode, &mtk_iommu_ops);
+> -		if (ret)
+> -			return ret;
+> -		fwspec = dev_iommu_fwspec_get(dev);
+> -	} else if (dev_iommu_fwspec_get(dev)->ops != &mtk_iommu_ops) {
+> -		return -EINVAL;
+> -	}
+> -
+>  	if (!dev_iommu_priv_get(dev)) {
+>  		/* Get the m4u device */
+>  		m4updev = of_find_device_by_node(args->np);
+> @@ -395,83 +406,7 @@ static int mtk_iommu_create_mapping(struct device *dev,
+>  		dev_iommu_priv_set(dev, platform_get_drvdata(m4updev));
+>  	}
+>  
+> -	ret = iommu_fwspec_add_ids(dev, args->args, 1);
+> -	if (ret)
+> -		return ret;
+> -
+> -	data = dev_iommu_priv_get(dev);
+> -	mtk_mapping = data->mapping;
+> -	if (!mtk_mapping) {
+> -		/* MTK iommu support 4GB iova address space. */
+> -		mtk_mapping = arm_iommu_create_mapping(&platform_bus_type,
+> -						0, 1ULL << 32);
+> -		if (IS_ERR(mtk_mapping))
+> -			return PTR_ERR(mtk_mapping);
+> -
+> -		data->mapping = mtk_mapping;
+> -	}
+> -
+> -	return 0;
+> -}
+> -
+> -static int mtk_iommu_def_domain_type(struct device *dev)
+> -{
+> -	return IOMMU_DOMAIN_UNMANAGED;
+> -}
+> -
+> -static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
+> -{
+> -	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+> -	struct of_phandle_args iommu_spec;
+> -	struct of_phandle_iterator it;
+> -	struct mtk_iommu_data *data;
+> -	int err;
+> -
+> -	of_for_each_phandle(&it, err, dev->of_node, "iommus",
+> -			"#iommu-cells", -1) {
+> -		int count = of_phandle_iterator_args(&it, iommu_spec.args,
+> -					MAX_PHANDLE_ARGS);
+> -		iommu_spec.np = of_node_get(it.node);
+> -		iommu_spec.args_count = count;
+> -
+> -		mtk_iommu_create_mapping(dev, &iommu_spec);
+> -
+> -		/* dev->iommu_fwspec might have changed */
+> -		fwspec = dev_iommu_fwspec_get(dev);
+> -
+> -		of_node_put(iommu_spec.np);
+> -	}
+> -
+> -	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
+> -		return ERR_PTR(-ENODEV); /* Not a iommu client device */
+> -
+> -	data = dev_iommu_priv_get(dev);
+> -
+> -	return &data->iommu;
+> -}
+> -
+> -static void mtk_iommu_probe_finalize(struct device *dev)
+> -{
+> -	struct dma_iommu_mapping *mtk_mapping;
+> -	struct mtk_iommu_data *data;
+> -	int err;
+> -
+> -	data        = dev_iommu_priv_get(dev);
+> -	mtk_mapping = data->mapping;
+> -
+> -	err = arm_iommu_attach_device(dev, mtk_mapping);
+> -	if (err)
+> -		dev_err(dev, "Can't create IOMMU mapping - DMA-OPS will not work\n");
+> -}
+> -
+> -static void mtk_iommu_release_device(struct device *dev)
+> -{
+> -	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+> -
+> -	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
+> -		return;
+> -
+> -	iommu_fwspec_free(dev);
+> +	return iommu_fwspec_add_ids(dev, args->args, 1);
+>  }
+>  
+>  static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+> @@ -524,10 +459,9 @@ static const struct iommu_ops mtk_iommu_ops = {
+>  	.unmap		= mtk_iommu_unmap,
+>  	.iova_to_phys	= mtk_iommu_iova_to_phys,
+>  	.probe_device	= mtk_iommu_probe_device,
+> -	.probe_finalize = mtk_iommu_probe_finalize,
+>  	.release_device	= mtk_iommu_release_device,
+> -	.def_domain_type = mtk_iommu_def_domain_type,
+> -	.device_group	= generic_device_group,
+> +	.device_group	= mtk_iommu_device_group,
+> +	.of_xlate	= mtk_iommu_of_xlate,
+>  	.pgsize_bitmap	= ~0UL << MT2701_IOMMU_PAGE_SHIFT,
+>  };
+>  
+> @@ -626,6 +560,14 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>  	if (ret)
+>  		return ret;
+>  
+> +	/*
+> +	 * MTK generation one iommu HW only support one iommu domain,
+> +	 * and all the client sharing the same iova address space.
+> +	 */
+> +	data->m4u_group = iommu_group_alloc();
+> +	if (IS_ERR(data->m4u_group))
+> +		return PTR_ERR(data->m4u_group);
+> +
+>  	if (!iommu_present(&platform_bus_type))
+>  		bus_set_iommu(&platform_bus_type,  &mtk_iommu_ops);
+>  
+> @@ -636,6 +578,7 @@ static int mtk_iommu_remove(struct platform_device *pdev)
+>  {
+>  	struct mtk_iommu_data *data = platform_get_drvdata(pdev);
+>  
+> +	iommu_group_put(data->m4u_group);
+>  	iommu_device_sysfs_remove(&data->iommu);
+>  	iommu_device_unregister(&data->iommu);
+>  
 
 _______________________________________________
 Linux-mediatek mailing list
