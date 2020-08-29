@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3CD73C433E2
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Aug 2020 06:36:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B2075C433E2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Aug 2020 08:51:50 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 09850207BB
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Aug 2020 06:36:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7F034208A9
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Aug 2020 08:51:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BlVkBwPt";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="j3yC42Qf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 09850207BB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DrwgYUYa";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="oujsTXUC"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7F034208A9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7fsOwSGGA0XzAuN0VeK3oVO2SuBfIivPEU3hnaMVyO0=; b=BlVkBwPtchyy5VgWa05aDkuYu
-	TniKoZJJ4f/8QDhoS/LP5UjQhLF2qeL83HtFgyjM++GPSRan3/xcvSIh9yKbwxjrMR5+YlRnmSuWQ
-	XtKoGfotIFvkdFWOzH50L8ky0QvzlWu3pHSiPEy8vW7A6pIXR+KitZh9PDbeW8SHXz7NGtxtVOuY6
-	MZ5XpIVXKTuEHthcqB4m0Is740UItUj2MMsRpO0VFQjkIR9hjrz0+BuQGFpByWfSyLT7tqjcf8xAF
-	V+UnjuA4oassQTQS9XcKVX9oEB+1Xyw5kKZ0nOECR+qqFoQgIcR7SX44ryjDerOEHzE5Qz8a8UveW
-	OwCdJ3LWw==;
+	 bh=4HocYWavSpuQPh5qhyONH/TNT80ag+0eP/khuqb0C1c=; b=DrwgYUYaq4kZFlKqAyGTwL37x
+	Em+zGh93QFTOcVQjotSU2NmynwB8srJY3lswZkqPhKQaSN/rVj9AbCXGO89FcFM+hEQUXAZlUw/mo
+	DpOjw3GyXDmVJ8SZ9saRTDzPCGcXbYFOCExkXGfjuDNKujCXfqGJe5XjK6LktKTOJfFYM6ZFymlma
+	LA6T01Jpeym9D3ju0/50C1bcqtJ38TWnXG51NSiIjIHpfmTm+6zH7XA8fAR53tmciyc6x3PBJ5Inu
+	32n3YQeU4aJcpUqXnStJiJN6uZvKQ+anfuXnm/Ie/ySgI7JWNT1XvDUETq1QB51MGzIt7+sntGpPQ
+	FFF4K7vwg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kBuTk-0001py-Fx; Sat, 29 Aug 2020 06:36:44 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kBwaI-0006nk-Ow; Sat, 29 Aug 2020 08:51:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kBuTf-0001pE-Tk; Sat, 29 Aug 2020 06:36:41 +0000
-X-UUID: 055275b5131740a9abeb70e52e5f4267-20200828
+ id 1kBwaC-0006mw-MP; Sat, 29 Aug 2020 08:51:35 +0000
+X-UUID: 92cf99a54b3240f6a9fb8595410eff54-20200829
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=7d446flNlXqERo30OxiNXzjgNqEd2wybxd1E9tnSaiU=; 
- b=j3yC42QfFwaMVkWBOfFqt9parUQUdB8Jgl90h0+6I35iMwb9HcK3JnKDf6TvRZ258SeBGMWA/qNaXb1fFBYDZ8tV6XRohXMWqhZ1nJ4xzBnZ4ev1OZ2T46kzd5f5MsOgmMOExxRlj4uwzzj0S0cl74Ipmo8VCuEpiaVWCYaFVHI=;
-X-UUID: 055275b5131740a9abeb70e52e5f4267-20200828
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <freddy.hsin@mediatek.com>)
+ bh=qB65JvNr4zmGYx3nhQrYXy0tBUEmKp+M+ZtGMwCgkrg=; 
+ b=oujsTXUCDqf+QWdrAu7a/79gwwtkl5e6g3+g1HAGGm5sMzA/qsDpG4N/rmU06a+Ls1KIpXdVA9/opTd0M683IQ96dFs9PWeRuT7u/0wwpnUlyXPo/p832x1H3V/ubbaCTOQ2mxWE9DdMvEFVjfT93slVvf2NNuQQHoiOh6HAdAg=;
+X-UUID: 92cf99a54b3240f6a9fb8595410eff54-20200829
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1558123554; Fri, 28 Aug 2020 22:36:12 -0800
+ with ESMTP id 1699459301; Sat, 29 Aug 2020 00:51:24 -0800
 Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 28 Aug 2020 23:26:09 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ 15.0.1497.2; Sat, 29 Aug 2020 01:51:21 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 29 Aug 2020 14:26:01 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
+ 15.0.1497.2; Sat, 29 Aug 2020 16:51:19 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 29 Aug 2020 14:26:02 +0800
-Message-ID: <1598682362.14037.28.camel@mtkswgap22>
-Subject: Re: [PATCH v1 1/1] driver: watchdog: Add mtk_wdt_init for mediatek
- watchdog hw init
-From: Freddy.Hsin <freddy.hsin@mediatek.com>
-To: Guenter Roeck <linux@roeck-us.net>
-Date: Sat, 29 Aug 2020 14:26:02 +0800
-In-Reply-To: <a63e9613-d448-d784-0c60-0fd8d1b9b937@roeck-us.net>
-References: <1598600968-28498-1-git-send-email-freddy.hsin@mediatek.com>
- <1598600968-28498-2-git-send-email-freddy.hsin@mediatek.com>
- <a63e9613-d448-d784-0c60-0fd8d1b9b937@roeck-us.net>
+ Transport; Sat, 29 Aug 2020 16:51:19 +0800
+Message-ID: <1598691080.9982.9.camel@mtkswgap22>
+Subject: Re: [RESEND PATCH v4] iommu/mediatek: check 4GB mode by reading
+ infracfg
+From: Miles Chen <miles.chen@mediatek.com>
+To: Robin Murphy <robin.murphy@arm.com>
+Date: Sat, 29 Aug 2020 16:51:20 +0800
+In-Reply-To: <e34db4dc-49a6-d414-e438-b528703ffb80@arm.com>
+References: <20200826085618.2889-1-miles.chen@mediatek.com>
+ <1598506280.19851.5.camel@mhfsdcap03>
+ <e34db4dc-49a6-d414-e438-b528703ffb80@arm.com>
 X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 6B6BA55B1AE0D64803E09E8B3B9BC22621E37215DCECAB7005722416B9C2EF1F2000:8
+X-TM-SNTS-SMTP: CC0124F12646A90ABE3CE289DF8E2C577772453E21C8EABC2308FFBE2B5335F42000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200829_023640_197454_CFDDCF71 
-X-CRM114-Status: GOOD (  30.45  )
+X-CRM114-CacheID: sfid-20200829_045132_945604_D45954CC 
+X-CRM114-Status: GOOD (  35.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,121 +86,195 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-watchdog@vger.kernel.org, wsd_upstream@mediatek.com,
- chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, chang-an.chen@mediatek.com,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
- linux-arm-kernel@lists.infradead.org
+Cc: Rob Herring <robh@kernel.org>, wsd_upstream@mediatek.com,
+ David Hildenbrand <david@redhat.com>, Joerg
+ Roedel <joro@8bytes.org>, linux-kernel@vger.kernel.org,
+ Mike Rapoport <rppt@linux.ibm.com>, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Yingjoe Chen <yingjoe.chen@mediatek.com>, Christoph Hellwig <hch@lst.de>,
+ Yong Wu <yong.wu@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-08-28 at 07:26 -0700, Guenter Roeck wrote:
-> On 8/28/20 12:49 AM, Freddy Hsin wrote:
-> > 1. add a hw initialization function
-> > 2. enable/disable the watchdog depends on the original hw setting
-> > 3. set WDOD_HW_RUNNING in start function in order to start
-> >    kicker after driver probe and clear the bit in stop function
+On Thu, 2020-08-27 at 20:27 +0100, Robin Murphy wrote:
+> On 2020-08-27 06:31, Yong Wu wrote:
+> > On Wed, 2020-08-26 at 16:56 +0800, Miles Chen wrote:
+> >> In previous discussion [1] and [2], we found that it is risky to
+> >> use max_pfn or totalram_pages to tell if 4GB mode is enabled.
+> >>
+> >> Check 4GB mode by reading infracfg register, remove the usage
+> >> of the un-exported symbol max_pfn.
+> >>
+> >> This is a step towards building mtk_iommu as a kernel module.
+> >>
+> >> [1] https://lore.kernel.org/lkml/20200603161132.2441-1-miles.chen@mediatek.com/
+> >> [2] https://lore.kernel.org/lkml/20200604080120.2628-1-miles.chen@mediatek.com/
+> >> [3] https://lore.kernel.org/lkml/20200715205120.GA778876@bogus/
+> >>
+> >> Cc: Mike Rapoport <rppt@linux.ibm.com>
+> >> Cc: David Hildenbrand <david@redhat.com>
+> >> Cc: Yong Wu <yong.wu@mediatek.com>
+> >> Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>
+> >> Cc: Christoph Hellwig <hch@lst.de>
+> >> Cc: Rob Herring <robh@kernel.org>
+> >> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> >> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> >>
+> >> ---
+> >>
+> >> Change since v3
+> >> - use lore.kernel.org links
+> >> - move "change since..." after "---"
+> >>
+> >> Change since v2:
+> >> - determine compatible string by m4u_plat
+> >> - rebase to next-20200720
+> >> - add "---"
+> >>
+> >> Change since v1:
+> >> - remove the phandle usage, search for infracfg instead [3]
+> >> - use infracfg instead of infracfg_regmap
+> >> - move infracfg definitaions to linux/soc/mediatek/infracfg.h
+> >> - update enable_4GB only when has_4gb_mode
+> >> ---
+> >>   drivers/iommu/mtk_iommu.c             | 34 +++++++++++++++++++++++----
+> >>   include/linux/soc/mediatek/infracfg.h |  3 +++
+> >>   2 files changed, 32 insertions(+), 5 deletions(-)
+> >>
+> >> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> >> index 785b228d39a6..adc350150492 100644
+> >> --- a/drivers/iommu/mtk_iommu.c
+> >> +++ b/drivers/iommu/mtk_iommu.c
+> >> @@ -3,7 +3,6 @@
+> >>    * Copyright (c) 2015-2016 MediaTek Inc.
+> >>    * Author: Yong Wu <yong.wu@mediatek.com>
+> >>    */
+> >> -#include <linux/memblock.h>
+> >>   #include <linux/bug.h>
+> >>   #include <linux/clk.h>
+> >>   #include <linux/component.h>
+> >> @@ -15,13 +14,16 @@
+> >>   #include <linux/iommu.h>
+> >>   #include <linux/iopoll.h>
+> >>   #include <linux/list.h>
+> >> +#include <linux/mfd/syscon.h>
+> >>   #include <linux/of_address.h>
+> >>   #include <linux/of_iommu.h>
+> >>   #include <linux/of_irq.h>
+> >>   #include <linux/of_platform.h>
+> >>   #include <linux/platform_device.h>
+> >> +#include <linux/regmap.h>
+> >>   #include <linux/slab.h>
+> >>   #include <linux/spinlock.h>
+> >> +#include <linux/soc/mediatek/infracfg.h>
+> >>   #include <asm/barrier.h>
+> >>   #include <soc/mediatek/smi.h>
+> >>   
+> >> @@ -640,8 +642,11 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+> >>   	struct resource         *res;
+> >>   	resource_size_t		ioaddr;
+> >>   	struct component_match  *match = NULL;
+> >> +	struct regmap		*infracfg;
+> >>   	void                    *protect;
+> >>   	int                     i, larb_nr, ret;
+> >> +	u32			val;
+> >> +	char                    *p;
+> >>   
+> >>   	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
+> >>   	if (!data)
+> >> @@ -655,10 +660,29 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+> >>   		return -ENOMEM;
+> >>   	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
+> >>   
+> >> -	/* Whether the current dram is over 4GB */
+> >> -	data->enable_4GB = !!(max_pfn > (BIT_ULL(32) >> PAGE_SHIFT));
+> >> -	if (!MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE))
+> >> -		data->enable_4GB = false;
+> >> +	data->enable_4GB = false;
+> 
+> Nit: this isn't really necessary, since the structure is kzalloc()ed.
+
+Thanks for the comment, I will remove this this in v5.
+> 
+> >> +	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE)) {
+> >> +		switch (data->plat_data->m4u_plat) {
+> >> +		case M4U_MT2712:
+> >> +			p = "mediatek,mt2712-infracfg";
+> >> +			break;
+> >> +		case M4U_MT8173:
+> >> +			p = "mediatek,mt8173-infracfg";
+> >> +			break;
+> >> +		default:
+> >> +			p = NULL;
+> >> +		}
+> >> +
 > > 
-> > Change-Id: I25aa797f3b88288f26984455e499e599e27f09fa
-> > Signed-off-by: Freddy Hsin <freddy.hsin@mediatek.com>
-> 
-> The subject is misleading - what this really does it to honor
-> that/if a watchdog is already running. However, WDOG_HW_RUNNING
-> should not generally be set/cleared in the start/stop function.
-> Also, calling mtk_wdt_stop is pointless if WDT_MODE_EN is not set,
-> since clearing WDT_MODE_EN is all it does. On top of that,
-> setting WDOG_HW_RUNNING in the probe function requires that
-> max_hw_heartbeat_ms is set (instead of max_timeout).
-> 
-> So if you really want to honor that the watchdog is already running
-> at boot, you would have to initialize max_hw_heartbeat_ms, set
-> WDOG_HW_RUNNING explicitly, and possibly call the ping function
-> before changing the timeout.
-> 
-> Thanks,
-> Guenter
-
-Hi Guenter,
-
-Thanks for you suggestion. I will submit a new patch according to
-your advice.
-
-The purpose of this patch is to control WDT_MODE_EN in the first stage
-of preloader bring up, and it should not be disabled afterward to
-prevent the system freeze and cannot be reset, so remove the
-mtk_wdt_stop function and keep the original state set in preloader.
-
-> 
-> > ---
-> >  drivers/watchdog/mtk_wdt.c |   22 +++++++++++++++++++++-
-> >  1 file changed, 21 insertions(+), 1 deletion(-)
+> > This can be simplified:
 > > 
-> > diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-> > index d6a6393..59b5061 100644
-> > --- a/drivers/watchdog/mtk_wdt.c
-> > +++ b/drivers/watchdog/mtk_wdt.c
-> > @@ -57,6 +57,9 @@
-> >  static bool nowayout = WATCHDOG_NOWAYOUT;
-> >  static unsigned int timeout;
-> >  
-> > +static int mtk_wdt_start(struct watchdog_device *wdt_dev);
-> > +static int mtk_wdt_stop(struct watchdog_device *wdt_dev);
-> > +
-> >  struct mtk_wdt_dev {
-> >  	struct watchdog_device wdt_dev;
-> >  	void __iomem *wdt_base;
-> > @@ -148,6 +151,19 @@ static int toprgu_register_reset_controller(struct platform_device *pdev,
-> >  	return ret;
-> >  }
-> >  
-> > +static int mtk_wdt_init(struct watchdog_device *wdt_dev)
-> > +{
-> > +	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdt_dev);
-> > +	void __iomem *wdt_base;
-> > +
-> > +	wdt_base = mtk_wdt->wdt_base;
-> > +
-> > +	if (readl(wdt_base + WDT_MODE) & WDT_MODE_EN)
-> > +		mtk_wdt_start(wdt_dev);
-> > +	else
-> > +		mtk_wdt_stop(wdt_dev);
-> > +}
-> > +
-> >  static int mtk_wdt_restart(struct watchdog_device *wdt_dev,
-> >  			   unsigned long action, void *data)
-> >  {
-> > @@ -206,6 +222,8 @@ static int mtk_wdt_stop(struct watchdog_device *wdt_dev)
-> >  	reg |= WDT_MODE_KEY;
-> >  	iowrite32(reg, wdt_base + WDT_MODE);
-> >  
-> > +	clear_bit(WDOG_HW_RUNNING, &wdt_dev->status);
-> > +
-> >  	return 0;
-> >  }
-> >  
-> > @@ -225,6 +243,8 @@ static int mtk_wdt_start(struct watchdog_device *wdt_dev)
-> >  	reg |= (WDT_MODE_EN | WDT_MODE_KEY);
-> >  	iowrite32(reg, wdt_base + WDT_MODE);
-> >  
-> > +	set_bit(WDOG_HW_RUNNING, &wdt_dev->status);
-> > +
-> >  	return 0;
-> >  }
-> >  
-> > @@ -274,7 +294,7 @@ static int mtk_wdt_probe(struct platform_device *pdev)
-> >  
-> >  	watchdog_set_drvdata(&mtk_wdt->wdt_dev, mtk_wdt);
-> >  
-> > -	mtk_wdt_stop(&mtk_wdt->wdt_dev);
-> > +	mtk_wdt_init(&mtk_wdt->wdt_dev);
-> >  
-> >  	watchdog_stop_on_reboot(&mtk_wdt->wdt_dev);
-> >  	err = devm_watchdog_register_device(dev, &mtk_wdt->wdt_dev);
-> > 
+> >          if (data->plat_data->m4u_plat == M4U_MT2712)
+> > 		p = "mediatek,mt2712-infracfg";
+> > 	else if(data->plat_data->m4u_plat == M4U_MT8173)
+> > 		p = "mediatek,mt8173-infracfg";
+> > 	else
+> > 		return -EINVAL;
 > 
+> Right, at this point the HAS_4GB_MODE flag is entirely redundant and 
+> should be removed. FWIW I still think your suggestion of putting the 
+> infracfg names into plat_data would be even better and cleaner - there's 
+> plenty of precedent for that sort of thing (see "git grep '\.clk_name'" 
+> for example).
+> 
+> Robin.
+
+hmm, I have no strong opinion about this. We have discussed this
+approach before and built this patch based on the discussion.
+https://lore.kernel.org/patchwork/patch/1276801/
+
+
+
+Miles
+> 
+> > 
+> > Then,
+> > Reviewed-by: Yong Wu <yong.wu@mediatek.com>
+> > 	
+> > 
+> >> +		infracfg = syscon_regmap_lookup_by_compatible(p);
+> >> +
+> >> +		if (IS_ERR(infracfg))
+> >> +			return PTR_ERR(infracfg);
+> >> +
+> >> +		ret = regmap_read(infracfg, REG_INFRA_MISC, &val);
+> >> +		if (ret)
+> >> +			return ret;
+> >> +		data->enable_4GB = !!(val & F_DDR_4GB_SUPPORT_EN);
+> >> +	}
+> >>   
+> >>   	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> >>   	data->base = devm_ioremap_resource(dev, res);
+> >> diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
+> >> index fd25f0148566..233463d789c6 100644
+> >> --- a/include/linux/soc/mediatek/infracfg.h
+> >> +++ b/include/linux/soc/mediatek/infracfg.h
+> >> @@ -32,6 +32,9 @@
+> >>   #define MT7622_TOP_AXI_PROT_EN_WB		(BIT(2) | BIT(6) | \
+> >>   						 BIT(7) | BIT(8))
+> >>   
+> >> +#define REG_INFRA_MISC				0xf00
+> >> +#define F_DDR_4GB_SUPPORT_EN			BIT(13)
+> >> +
+> >>   int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
+> >>   		bool reg_update);
+> >>   int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
+> > 
+> > _______________________________________________
+> > linux-arm-kernel mailing list
+> > linux-arm-kernel@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+> > 
 
 _______________________________________________
 Linux-mediatek mailing list
