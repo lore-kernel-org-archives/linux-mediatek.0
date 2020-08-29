@@ -2,77 +2,68 @@ Return-Path: <SRS0=O+qu=CH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_2 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D328C433E6
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Aug 2020 10:06:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5F659C433E2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Aug 2020 17:12:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 04AF220825
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Aug 2020 10:06:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2167520757
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Aug 2020 17:12:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="B1F0LlKI";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="iJqgYe2I"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 04AF220825
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dcOUsJmv";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="jPZCAqsG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2167520757
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=WElBoCNcCDNUlW0IXeWT4jzvkByrHNdyTdFO5LnG+GM=; b=B1F0LlKItBwSCqDUGx3MPH/7m
-	B7kFXDzOTfUW583syh28uOnUldsLaqWOwfCtqOSn17JGw59BfFqePPW9ZSUNdpjxN+NxyRr3L2kmc
-	BRGMf6p1+9uYjN/woP/MxpkmkEIM41cB5rhG9MhyQdnLGZnh6CQ7rpBmG+EkTnUZp6xHLxU2eMaa5
-	FSc0HsN/NZldxSoQkV1nNKW1yLQsYZzii9SAtzLZ//7lKuXu0KzjWBZEltmEHYfRY+dtzy/5RDwWW
-	Q1zKb6ekPBP7N75qv3MLi96yaK+Ru0lZBoiEl7VQ3QNV9WnNmjkOeUPyA2WlibapgZU+1ztT0ttKh
-	UR2gJz+aA==;
+	 bh=FUndp4sqOBPHFFiEL21yhCe3fsxSLxFeICwwHNr6aYI=; b=dcOUsJmvQLyJCRmjucuoXEyWy
+	vpgvCJ3e7o90B3yIAf3hWTRG7q9w3knlp2ZKhvMc7REr2sV0O+6/288iYEZRjn+wdwJW3/4ovYmQ9
+	roUKiRsoKKCV1b6mtX81+TOVA2PPXgd+cu/3vPuNX1hdn2gvXJLLt80t+TdQQoQFywar6dEcXIlKp
+	JaQ4E1Usx1nKQiULWekfTiCdY3hjvhcqSCZS/umjz6q0s32f/3mH1uhJDovqfJt3t9GbByoSCQTLn
+	qGN+cN92xcFHiqg9mzh4wgG0RVacl2/wKxausXiCULhky/Sd+KSLZjSxSe04xBSvueh3ua7BRvtjb
+	rgPG2l6nA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kBxkv-0003Mh-Vv; Sat, 29 Aug 2020 10:06:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kC4Om-0001dE-GW; Sat, 29 Aug 2020 17:12:16 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kBxkr-0003Ld-35; Sat, 29 Aug 2020 10:06:38 +0000
-X-UUID: 60bc2226bf494daa84bb4c54766162bc-20200829
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=YQ4nWNJaU2/84I56GfA7izeF71Nu7GxMGRIJ/4QLhhI=; 
- b=iJqgYe2INoU7y5RbgeFWvqv7yXDT7wXXuH6QVWH8MwimigaAtcURtEZCqOdT81bfUhVmsmSMN0cgKkkduDX0H0CGIdSOMIeqyALhmkFm3cZq6FZ8b5Y573JvKeY6fGwQjf1MnghwP2HLQpe0YZOO0SZ+7z8XJSjwGZQ7GXZNHEA=;
-X-UUID: 60bc2226bf494daa84bb4c54766162bc-20200829
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1895685805; Sat, 29 Aug 2020 02:06:27 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 29 Aug 2020 02:56:24 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 29 Aug 2020 17:56:20 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 29 Aug 2020 17:56:20 +0800
-Message-ID: <1598694891.19851.12.camel@mhfsdcap03>
-Subject: Re: [PATCH 09/18] iommu/mediatek-v1: Add IOMMU_DOMAIN_DMA support
-From: Yong Wu <yong.wu@mediatek.com>
-To: Robin Murphy <robin.murphy@arm.com>
-Date: Sat, 29 Aug 2020 17:54:51 +0800
-In-Reply-To: <a259b248ffb14273b56f8473c20b0381e8d74c7a.1597931876.git.robin.murphy@arm.com>
-References: <cover.1597931875.git.robin.murphy@arm.com>
- <a259b248ffb14273b56f8473c20b0381e8d74c7a.1597931876.git.robin.murphy@arm.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kC4OZ-0001W8-H3; Sat, 29 Aug 2020 17:12:04 +0000
+Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net
+ [82.4.196.95])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 2CA1920757;
+ Sat, 29 Aug 2020 17:12:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1598721122;
+ bh=TBTW6O/SOyrWxdXint2uEy+GVrwvDDBzwDYVjwcSQxg=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=jPZCAqsG+xlsKiz40FHC48oCdoZkwsosNUckCNH5WIzBokR6tiKs9NrP7LBKWqOpR
+ baVFgd74/jXK0a4FRAtfKhzvEocuTh7oTYIDkOZdJrQpl4lhLs98qaLA66R2sSWJ61
+ +5M/yvYV+4GhJg7lAsnpApCxwpy/8KORrEMHLaes=
+Date: Sat, 29 Aug 2020 18:11:57 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Gene Chen <gene.chen.richtek@gmail.com>
+Subject: Re: [PATCH v3 1/2] iio: adc: mt6360: Add ADC driver for MT6360
+Message-ID: <20200829181157.1b653a88@archlinux>
+In-Reply-To: <1598259985-12517-2-git-send-email-gene.chen.richtek@gmail.com>
+References: <1598259985-12517-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1598259985-12517-2-git-send-email-gene.chen.richtek@gmail.com>
+X-Mailer: Claws Mail 3.17.6 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: AA63C797C93CBD61B254A639A39F87490728FF8037E9BB375825F26FABF9D7122000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200829_060637_615288_3705DA3C 
-X-CRM114-Status: GOOD (  29.14  )
+X-CRM114-CacheID: sfid-20200829_131203_768101_5DCB1BDD 
+X-CRM114-Status: GOOD (  37.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,310 +75,421 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: geert+renesas@glider.be, dri-devel@lists.freedesktop.org,
- bjorn.andersson@linaro.org, linux-tegra@vger.kernel.org,
- thierry.reding@gmail.com, laurent.pinchart@ideasonboard.com, digetx@gmail.com,
- s-anna@ti.com, will@kernel.org, hch@lst.de, m.szyprowski@samsung.com,
- linux-samsung-soc@vger.kernel.org, joro@8bytes.org, magnus.damm@gmail.com,
- linux@armlinux.org.uk, jonathanh@nvidia.com, agross@kernel.org,
- kyungmin.park@samsung.com, linux-media@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, inki.dae@samsung.com, vdumpa@nvidia.com,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org, sw0312.kim@samsung.com,
- linux-kernel@vger.kernel.org, t-kristo@ti.com,
- iommu@lists.linux-foundation.org
+Cc: gene_chen@richtek.com, lars@metafoo.de, linux-iio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, cy_huang@richtek.com, benjamin.chao@mediatek.com,
+ linux-mediatek@lists.infradead.org, pmeerw@pmeerw.net, knaack.h@gmx.de,
+ matthias.bgg@gmail.com, Wilma.Wu@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, shufan_lee@richtek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2020-08-20 at 16:08 +0100, Robin Murphy wrote:
-> Now that arch/arm is wired up for default domains and iommu-dma,
-> implement the corresponding driver-side support for groups and DMA
-> domains to replace the shared mapping workaround.
+On Mon, 24 Aug 2020 17:06:24 +0800
+Gene Chen <gene.chen.richtek@gmail.com> wrote:
+
+> From: Gene Chen <gene_chen@richtek.com>
 > 
-> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+> Add MT6360 ADC driver include Charger Current, Voltage, and
+> Temperature.
+> 
+> Signed-off-by: Gene Chen <gene_chen@richtek.com>
+Hi Gene,
+
+A few comments inline.  The big one centres on why we can't
+expose the channels as _raw, _offset and _scale?
+
+Thanks,
+
+Jonathan
+
 > ---
->  drivers/iommu/mtk_iommu.h    |   2 -
->  drivers/iommu/mtk_iommu_v1.c | 153 +++++++++++------------------------
->  2 files changed, 48 insertions(+), 107 deletions(-)
-
-Hi Robin,
-
-Thanks very much for this patch, It makes the code much cleaner.
-
-Please help squash the little change in this patch,
-
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -555,6 +555,7 @@ static int mtk_iommu_probe(struct platform_device
-*pdev)
- 		return ret;
- 
- 	iommu_device_set_ops(&data->iommu, &mtk_iommu_ops);
-+	iommu_device_set_fwnode(&data->iommu, &dev->of_node->fwnode);
- 
- 	ret = iommu_device_register(&data->iommu);
- 	if (ret)
-
-
-Then,
-Tested-by: Yong Wu <yong.wu@mediatek.com>
-
+>  drivers/iio/adc/Kconfig      |  11 ++
+>  drivers/iio/adc/Makefile     |   1 +
+>  drivers/iio/adc/mt6360-adc.c | 366 +++++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 378 insertions(+)
+>  create mode 100644 drivers/iio/adc/mt6360-adc.c
 > 
-> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> index 122925dbe547..6253e98d810c 100644
-> --- a/drivers/iommu/mtk_iommu.h
-> +++ b/drivers/iommu/mtk_iommu.h
-> @@ -67,8 +67,6 @@ struct mtk_iommu_data {
->  	struct iommu_device		iommu;
->  	const struct mtk_iommu_plat_data *plat_data;
+> diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
+> index 66d9cc0..07dcea7 100644
+> --- a/drivers/iio/adc/Kconfig
+> +++ b/drivers/iio/adc/Kconfig
+> @@ -703,6 +703,17 @@ config MCP3911
+>  	  This driver can also be built as a module. If so, the module will be
+>  	  called mcp3911.
 >  
-> -	struct dma_iommu_mapping	*mapping; /* For mtk_iommu_v1.c */
-> -
->  	struct list_head		list;
->  	struct mtk_smi_larb_iommu	larb_imu[MTK_LARB_NR_MAX];
->  };
-> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-> index 82ddfe9170d4..40c89b8d3ac4 100644
-> --- a/drivers/iommu/mtk_iommu_v1.c
-> +++ b/drivers/iommu/mtk_iommu_v1.c
-> @@ -28,7 +28,6 @@
->  #include <linux/slab.h>
->  #include <linux/spinlock.h>
->  #include <asm/barrier.h>
-> -#include <asm/dma-iommu.h>
->  #include <linux/init.h>
->  #include <dt-bindings/memory/mt2701-larb-port.h>
->  #include <soc/mediatek/smi.h>
-> @@ -240,13 +239,18 @@ static struct iommu_domain *mtk_iommu_domain_alloc(unsigned type)
->  {
->  	struct mtk_iommu_domain *dom;
->  
-> -	if (type != IOMMU_DOMAIN_UNMANAGED)
-> +	if (type != IOMMU_DOMAIN_UNMANAGED && type != IOMMU_DOMAIN_DMA)
->  		return NULL;
->  
->  	dom = kzalloc(sizeof(*dom), GFP_KERNEL);
->  	if (!dom)
->  		return NULL;
->  
-> +	if (type == IOMMU_DOMAIN_DMA && iommu_get_dma_cookie(&dom->domain)) {
-> +		kfree(dom);
-> +		return NULL;
+> +config MEDIATEK_MT6360_ADC
+> +	tristate "Mediatek MT6360 ADC Part"
+> +	depends on MFD_MT6360
+> +	select IIO_BUFFER
+> +	select IIO_TRIGGERED_BUFFER
+> +	help
+> +	  Say Y here to enable MT6360 ADC Part.
+> +	  Integrated for System Monitoring include
+> +	  Charger and Battery Current, Voltage and
+> +	  Temperature
+> +
+>  config MEDIATEK_MT6577_AUXADC
+>  	tristate "MediaTek AUXADC driver"
+>  	depends on ARCH_MEDIATEK || COMPILE_TEST
+> diff --git a/drivers/iio/adc/Makefile b/drivers/iio/adc/Makefile
+> index 90f94ad..5fca90a 100644
+> --- a/drivers/iio/adc/Makefile
+> +++ b/drivers/iio/adc/Makefile
+> @@ -65,6 +65,7 @@ obj-$(CONFIG_MAX9611) += max9611.o
+>  obj-$(CONFIG_MCP320X) += mcp320x.o
+>  obj-$(CONFIG_MCP3422) += mcp3422.o
+>  obj-$(CONFIG_MCP3911) += mcp3911.o
+> +obj-$(CONFIG_MEDIATEK_MT6360_ADC) += mt6360-adc.o
+>  obj-$(CONFIG_MEDIATEK_MT6577_AUXADC) += mt6577_auxadc.o
+>  obj-$(CONFIG_MEN_Z188_ADC) += men_z188_adc.o
+>  obj-$(CONFIG_MESON_SARADC) += meson_saradc.o
+> diff --git a/drivers/iio/adc/mt6360-adc.c b/drivers/iio/adc/mt6360-adc.c
+> new file mode 100644
+> index 0000000..5eed812
+> --- /dev/null
+> +++ b/drivers/iio/adc/mt6360-adc.c
+> @@ -0,0 +1,366 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2020 MediaTek Inc.
+> + *
+> + * Author: Gene Chen <gene_chen@richtek.com>
+> + */
+> +
+> +#include <linux/completion.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/iio/buffer.h>
+> +#include <linux/iio/iio.h>
+> +#include <linux/iio/trigger_consumer.h>
+> +#include <linux/iio/triggered_buffer.h>
+> +#include <linux/irq.h>
+> +#include <linux/kernel.h>
+> +#include <linux/ktime.h>
+> +#include <linux/module.h>
+> +#include <linux/mutex.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/regmap.h>
+> +
+> +#define MT6360_REG_PMUCHGCTRL3	0x313
+> +#define MT6360_REG_PMUADCCFG	0x356
+> +#define MT6360_REG_PMUADCRPT1	0x35A
+> +
+> +/* PMUCHGCTRL3 0x313 */
+> +#define MT6360_AICR_MASK	0xFC
+> +#define MT6360_AICR_SHFT	2
+> +#define MT6360_AICR_400MA	0x6
+> +/* PMUADCCFG 0x356 */
+> +#define MT6360_ADCEN_MASK	0x8000
+> +/* PMUADCRPT1 0x35A */
+> +#define MT6360_PREFERCH_MASK	0xF0
+> +#define MT6360_PREFERCH_SHFT	4
+> +#define MT6360_RPTCH_MASK	0x0F
+> +
+> +enum {
+> +	MT6360_CHAN_USBID = 0,
+> +	MT6360_CHAN_VBUSDIV5,
+> +	MT6360_CHAN_VBUSDIV2,
+> +	MT6360_CHAN_VSYS,
+> +	MT6360_CHAN_VBAT,
+> +	MT6360_CHAN_IBUS,
+> +	MT6360_CHAN_IBAT,
+> +	MT6360_CHAN_CHG_VDDP,
+> +	MT6360_CHAN_TEMP_JC,
+> +	MT6360_CHAN_VREF_TS,
+> +	MT6360_CHAN_TS,
+> +	MT6360_CHAN_MAX,
+> +};
+> +
+> +struct mt6360_adc_data {
+> +	struct device *dev;
+> +	struct regmap *regmap;
+> +	struct completion adc_complete;
+> +	struct mutex adc_lock;
+> +	ktime_t last_off_timestamps[MT6360_CHAN_MAX];
+> +	int irq;
+> +};
+> +
+> +static inline int mt6360_adc_val_converter(int val, int multiplier, int offset, int divisor)
+> +{
+> +	return ((val * multiplier) + offset) / divisor;
+
+Why could we not report these values to userspace or consumer drivers and let
+them deal with the conversion if they actually needed it?
+Mapping this to
+
+(val + new_offset) * multiplier would be a little messy, but not too bad.
+
+The advantage would be that we would then be providing the data needed
+to get real units for values read from the buffers without having to
+do all the maths in kernel (without access to floating point).
+
+ 
+> +}
+> +
+> +static int mt6360_adc_convert_processed_val(struct mt6360_adc_data *info, int chan_idx, int *val)
+> +{
+> +	unsigned int regval = 0;
+> +	const struct converter {
+> +		int multiplier;
+> +		int offset;
+> +		int divisor;
+> +	} adc_converter[MT6360_CHAN_MAX] = {
+> +		{ 1250, 0, 1}, /* USBID */
+> +		{ 6250, 0, 1}, /* VBUSDIV5 */
+> +		{ 2500, 0, 1}, /* VBUSDIV2 */
+> +		{ 1250, 0, 1}, /* VSYS */
+> +		{ 1250, 0, 1}, /* VBAT */
+> +		{ 2500, 0, 1}, /* IBUS */
+> +		{ 2500, 0, 1}, /* IBAT */
+> +		{ 1250, 0, 1}, /* CHG_VDDP */
+> +		{ 105, -8000, 100}, /* TEMP_JC */
+> +		{ 1250, 0, 1}, /* VREF_TS */
+> +		{ 1250, 0, 1}, /* TS */
+> +	}, sp_ibus_adc_converter = { 1900, 0, 1 }, *sel_converter;
+> +	int ret;
+> +
+> +	sel_converter = adc_converter + chan_idx;
+> +	if (chan_idx == MT6360_CHAN_IBUS) {
+> +		/* ibus chan will be affected by aicr config */
+> +		/* if aicr < 400, apply the special ibus converter */
+> +		ret = regmap_read(info->regmap, MT6360_REG_PMUCHGCTRL3, &regval);
+> +		if (ret)
+> +			return ret;
+> +
+> +		regval = (regval & MT6360_AICR_MASK) >> MT6360_AICR_SHFT;
+> +		if (regval < MT6360_AICR_400MA)
+> +			sel_converter = &sp_ibus_adc_converter;
 > +	}
 > +
->  	return &dom->domain;
->  }
->  
-> @@ -257,6 +261,7 @@ static void mtk_iommu_domain_free(struct iommu_domain *domain)
->  
->  	dma_free_coherent(data->dev, M2701_IOMMU_PGT_SIZE,
->  			dom->pgt_va, dom->pgt_pa);
-> +	iommu_put_dma_cookie(domain);
->  	kfree(to_mtk_domain(domain));
->  }
->  
-> @@ -265,14 +270,8 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
->  {
->  	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
->  	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-> -	struct dma_iommu_mapping *mtk_mapping;
->  	int ret;
->  
-> -	/* Only allow the domain created internally. */
-> -	mtk_mapping = data->mapping;
-> -	if (mtk_mapping->domain != domain)
-> -		return 0;
-> -
->  	if (!data->m4u_dom) {
->  		data->m4u_dom = dom;
->  		ret = mtk_iommu_domain_finalise(data);
-> @@ -358,18 +357,39 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
->  
->  static const struct iommu_ops mtk_iommu_ops;
->  
-> -/*
-> - * MTK generation one iommu HW only support one iommu domain, and all the client
-> - * sharing the same iova address space.
-> - */
-> -static int mtk_iommu_create_mapping(struct device *dev,
-> -				    struct of_phandle_args *args)
-> +static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
->  {
->  	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
->  	struct mtk_iommu_data *data;
+> +	*val = mt6360_adc_val_converter(*val, sel_converter->multiplier, sel_converter->offset,
+> +					sel_converter->divisor);
 > +
-> +	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
-> +		return ERR_PTR(-ENODEV); /* Not a iommu client device */
-> +
-> +	data = dev_iommu_priv_get(dev);
-> +
-> +	return &data->iommu;
+> +	return 0;
 > +}
 > +
-> +static void mtk_iommu_release_device(struct device *dev)
+> +static int mt6360_adc_read_processed(struct mt6360_adc_data *mad, int channel, int *val)
 > +{
-> +	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+> +	u16 adc_enable;
+> +	u8 rpt[3];
+> +	ktime_t start_t, predict_end_t;
+> +	long timeout;
+> +	int value, ret;
 > +
-> +	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
-> +		return;
+> +	mutex_lock(&mad->adc_lock);
 > +
-> +	iommu_fwspec_free(dev);
+> +	/* select preferred channel that we want */
+> +	ret = regmap_update_bits(mad->regmap, MT6360_REG_PMUADCRPT1, MT6360_PREFERCH_MASK,
+> +				 channel << MT6360_PREFERCH_SHFT);
+> +	if (ret)
+> +		goto out_adc;
+> +
+> +	/* enable adc channel we want and adc_en */
+> +	adc_enable = MT6360_ADCEN_MASK | BIT(channel);
+> +	adc_enable = cpu_to_be16(adc_enable);
+
+Use a local be16 to store that. It will make it a little clearer
+that we are doing something 'unusual' here.  Perhaps a comment on
+why this odd code exists would also help?
+
+> +	ret = regmap_raw_write(mad->regmap, MT6360_REG_PMUADCCFG, (void *)&adc_enable, sizeof(u16));
+> +	if (ret)
+> +		goto out_adc;
+> +
+> +	start_t = ktime_get();
+> +	predict_end_t = ktime_add_ms(mad->last_off_timestamps[channel], 50);
+> +
+> +	if (ktime_after(start_t, predict_end_t))
+> +		predict_end_t = ktime_add_ms(start_t, 25);
+> +	else
+> +		predict_end_t = ktime_add_ms(start_t, 75);
+> +
+> +	enable_irq(mad->irq);
+> +adc_retry:
+> +	reinit_completion(&mad->adc_complete);
+> +
+> +	/* wait for conversion to complete */
+> +	timeout = wait_for_completion_timeout(&mad->adc_complete, msecs_to_jiffies(200));
+> +	if (timeout == 0) {
+> +		ret = -ETIMEDOUT;
+> +		goto out_adc_conv;
+> +	} else if (timeout < 0) {
+> +		ret = -EINTR;
+> +		goto out_adc_conv;
+> +	}
+> +
+> +	ret = regmap_raw_read(mad->regmap, MT6360_REG_PMUADCRPT1, rpt, sizeof(rpt));
+> +	if (ret)
+> +		goto out_adc_conv;
+> +
+> +	/* check the current reported channel */
+> +	if ((rpt[0] & MT6360_RPTCH_MASK) != channel) {
+> +		dev_dbg(mad->dev, "not wanted channel report [%02x]\n", rpt[0]);
+
+This and the one below feel like error messages rather than debug ones.
+
+> +		goto adc_retry;
+> +	}
+> +
+> +	if (!ktime_after(ktime_get(), predict_end_t)) {
+> +		dev_dbg(mad->dev, "time is not after one adc_conv_t\n");
+
+Does this actually happen? If feels like we are being a bit over protective
+here.  I'd definitely like to see a comment saying why this protection
+might be needed.
+
+> +		goto adc_retry;
+> +	}
+> +
+> +	value = (rpt[1] << 8) | rpt[2];
+> +
+> +	ret = mt6360_adc_convert_processed_val(mad, channel, &value);
+> +	if (ret)
+> +		goto out_adc_conv;
+> +
+> +	*val = value;
+> +	ret = IIO_VAL_INT;
+> +
+> +out_adc_conv:
+> +	disable_irq(mad->irq);
+> +	adc_enable = MT6360_ADCEN_MASK;
+> +	adc_enable = cpu_to_be16(adc_enable);
+> +	regmap_raw_write(mad->regmap, MT6360_REG_PMUADCCFG, (void *)&adc_enable, sizeof(u16));
+> +	mad->last_off_timestamps[channel] = ktime_get();
+> +	/* set prefer channel to 0xf */
+> +	regmap_update_bits(mad->regmap, MT6360_REG_PMUADCRPT1, MT6360_PREFERCH_MASK,
+> +			   0xF << MT6360_PREFERCH_SHFT);
+> +out_adc:
+> +	mutex_unlock(&mad->adc_lock);
+> +
+> +	return ret;
 > +}
 > +
-> +static struct iommu_group *mtk_iommu_device_group(struct device *dev)
+> +static int mt6360_adc_read_raw(struct iio_dev *iio_dev, const struct iio_chan_spec *chan,
+> +			       int *val, int *val2, long mask)
 > +{
-> +	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
+> +	struct mt6360_adc_data *mad = iio_priv(iio_dev);
 > +
-> +	return iommu_group_ref_get(data->m4u_group);
+> +	if (mask == IIO_CHAN_INFO_PROCESSED)
+> +		return mt6360_adc_read_processed(mad, chan->channel, val);
+> +
+> +	return -EINVAL;
 > +}
 > +
-> +static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
-> +{
->  	struct platform_device *m4updev;
-> -	struct dma_iommu_mapping *mtk_mapping;
-> -	int ret;
->  
->  	if (args->args_count != 1) {
->  		dev_err(dev, "invalid #iommu-cells(%d) property for IOMMU\n",
-> @@ -377,15 +397,6 @@ static int mtk_iommu_create_mapping(struct device *dev,
->  		return -EINVAL;
->  	}
->  
-> -	if (!fwspec) {
-> -		ret = iommu_fwspec_init(dev, &args->np->fwnode, &mtk_iommu_ops);
-> -		if (ret)
-> -			return ret;
-> -		fwspec = dev_iommu_fwspec_get(dev);
-> -	} else if (dev_iommu_fwspec_get(dev)->ops != &mtk_iommu_ops) {
-> -		return -EINVAL;
-> -	}
-> -
->  	if (!dev_iommu_priv_get(dev)) {
->  		/* Get the m4u device */
->  		m4updev = of_find_device_by_node(args->np);
-> @@ -395,83 +406,7 @@ static int mtk_iommu_create_mapping(struct device *dev,
->  		dev_iommu_priv_set(dev, platform_get_drvdata(m4updev));
->  	}
->  
-> -	ret = iommu_fwspec_add_ids(dev, args->args, 1);
-> -	if (ret)
-> -		return ret;
-> -
-> -	data = dev_iommu_priv_get(dev);
-> -	mtk_mapping = data->mapping;
-> -	if (!mtk_mapping) {
-> -		/* MTK iommu support 4GB iova address space. */
-> -		mtk_mapping = arm_iommu_create_mapping(&platform_bus_type,
-> -						0, 1ULL << 32);
-> -		if (IS_ERR(mtk_mapping))
-> -			return PTR_ERR(mtk_mapping);
-> -
-> -		data->mapping = mtk_mapping;
-> -	}
-> -
-> -	return 0;
-> -}
-> -
-> -static int mtk_iommu_def_domain_type(struct device *dev)
-> -{
-> -	return IOMMU_DOMAIN_UNMANAGED;
-> -}
-> -
-> -static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
-> -{
-> -	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-> -	struct of_phandle_args iommu_spec;
-> -	struct of_phandle_iterator it;
-> -	struct mtk_iommu_data *data;
-> -	int err;
-> -
-> -	of_for_each_phandle(&it, err, dev->of_node, "iommus",
-> -			"#iommu-cells", -1) {
-> -		int count = of_phandle_iterator_args(&it, iommu_spec.args,
-> -					MAX_PHANDLE_ARGS);
-> -		iommu_spec.np = of_node_get(it.node);
-> -		iommu_spec.args_count = count;
-> -
-> -		mtk_iommu_create_mapping(dev, &iommu_spec);
-> -
-> -		/* dev->iommu_fwspec might have changed */
-> -		fwspec = dev_iommu_fwspec_get(dev);
-> -
-> -		of_node_put(iommu_spec.np);
-> -	}
-> -
-> -	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
-> -		return ERR_PTR(-ENODEV); /* Not a iommu client device */
-> -
-> -	data = dev_iommu_priv_get(dev);
-> -
-> -	return &data->iommu;
-> -}
-> -
-> -static void mtk_iommu_probe_finalize(struct device *dev)
-> -{
-> -	struct dma_iommu_mapping *mtk_mapping;
-> -	struct mtk_iommu_data *data;
-> -	int err;
-> -
-> -	data        = dev_iommu_priv_get(dev);
-> -	mtk_mapping = data->mapping;
-> -
-> -	err = arm_iommu_attach_device(dev, mtk_mapping);
-> -	if (err)
-> -		dev_err(dev, "Can't create IOMMU mapping - DMA-OPS will not work\n");
-> -}
-> -
-> -static void mtk_iommu_release_device(struct device *dev)
-> -{
-> -	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-> -
-> -	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
-> -		return;
-> -
-> -	iommu_fwspec_free(dev);
-> +	return iommu_fwspec_add_ids(dev, args->args, 1);
->  }
->  
->  static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
-> @@ -524,10 +459,9 @@ static const struct iommu_ops mtk_iommu_ops = {
->  	.unmap		= mtk_iommu_unmap,
->  	.iova_to_phys	= mtk_iommu_iova_to_phys,
->  	.probe_device	= mtk_iommu_probe_device,
-> -	.probe_finalize = mtk_iommu_probe_finalize,
->  	.release_device	= mtk_iommu_release_device,
-> -	.def_domain_type = mtk_iommu_def_domain_type,
-> -	.device_group	= generic_device_group,
-> +	.device_group	= mtk_iommu_device_group,
-> +	.of_xlate	= mtk_iommu_of_xlate,
->  	.pgsize_bitmap	= ~0UL << MT2701_IOMMU_PAGE_SHIFT,
->  };
->  
-> @@ -626,6 +560,14 @@ static int mtk_iommu_probe(struct platform_device *pdev)
->  	if (ret)
->  		return ret;
->  
-> +	/*
-> +	 * MTK generation one iommu HW only support one iommu domain,
-> +	 * and all the client sharing the same iova address space.
-> +	 */
-> +	data->m4u_group = iommu_group_alloc();
-> +	if (IS_ERR(data->m4u_group))
-> +		return PTR_ERR(data->m4u_group);
+> +static const struct iio_info mt6360_adc_iio_info = {
+> +	.read_raw = mt6360_adc_read_raw,
+> +};
 > +
->  	if (!iommu_present(&platform_bus_type))
->  		bus_set_iommu(&platform_bus_type,  &mtk_iommu_ops);
->  
-> @@ -636,6 +578,7 @@ static int mtk_iommu_remove(struct platform_device *pdev)
->  {
->  	struct mtk_iommu_data *data = platform_get_drvdata(pdev);
->  
-> +	iommu_group_put(data->m4u_group);
->  	iommu_device_sysfs_remove(&data->iommu);
->  	iommu_device_unregister(&data->iommu);
->  
+> +#define MT6360_ADC_CHAN(_idx, _type) {				\
+> +	.type = _type,						\
+> +	.channel = MT6360_CHAN_##_idx,				\
+> +	.scan_index = MT6360_CHAN_##_idx,			\
+> +	.extend_name = #_idx,					\
+> +	.datasheet_name = #_idx,				\
+> +	.scan_type =  {						\
+> +		.sign = 's',					\
+> +		.realbits = 32,					\
+> +		.storagebits = 32,				\
+> +		.endianness = IIO_CPU,				\
+> +	},							\
+> +	.info_mask_separate = BIT(IIO_CHAN_INFO_PROCESSED),	\
+> +	.indexed = 1,						\
+> +}
+> +
+> +static const struct iio_chan_spec mt6360_adc_channels[] = {
+> +	MT6360_ADC_CHAN(USBID, IIO_VOLTAGE),
+> +	MT6360_ADC_CHAN(VBUSDIV5, IIO_VOLTAGE),
+> +	MT6360_ADC_CHAN(VBUSDIV2, IIO_VOLTAGE),
+> +	MT6360_ADC_CHAN(VSYS, IIO_VOLTAGE),
+> +	MT6360_ADC_CHAN(VBAT, IIO_VOLTAGE),
+> +	MT6360_ADC_CHAN(IBUS, IIO_CURRENT),
+> +	MT6360_ADC_CHAN(IBAT, IIO_CURRENT),
+> +	MT6360_ADC_CHAN(CHG_VDDP, IIO_VOLTAGE),
+> +	MT6360_ADC_CHAN(TEMP_JC, IIO_TEMP),
+> +	MT6360_ADC_CHAN(VREF_TS, IIO_VOLTAGE),
+> +	MT6360_ADC_CHAN(TS, IIO_VOLTAGE),
+> +	IIO_CHAN_SOFT_TIMESTAMP(MT6360_CHAN_MAX),
+> +};
+> +
+> +static irqreturn_t mt6360_pmu_adc_donei_handler(int irq, void *data)
+> +{
+> +	struct mt6360_adc_data *mad = iio_priv(data);
+> +
+> +	complete(&mad->adc_complete);
+> +	return IRQ_HANDLED;
+> +}
+> +
+...
+
+> +
+> +static int mt6360_adc_probe(struct platform_device *pdev)
+> +{
+> +	struct mt6360_adc_data *mad;
+> +	struct iio_dev *indio_dev;
+> +	int ret;
+> +
+> +	indio_dev = devm_iio_device_alloc(&pdev->dev, sizeof(*mad));
+> +	if (!indio_dev)
+> +		return -ENOMEM;
+> +
+> +	mad = iio_priv(indio_dev);
+> +	mad->dev = &pdev->dev;
+> +	init_completion(&mad->adc_complete);
+> +	mutex_init(&mad->adc_lock);
+> +
+> +	mad->regmap = dev_get_regmap(pdev->dev.parent, NULL);
+> +	if (!mad->regmap) {
+> +		dev_err(&pdev->dev, "Failed to get parent regmap\n");
+> +		return -ENODEV;
+> +	}
+> +
+> +	ret = mt6360_adc_reset(mad);
+> +	if (ret < 0) {
+> +		dev_err(&pdev->dev, "Failed to reset adc\n");
+> +		return ret;
+> +	}
+> +
+> +	mad->irq = platform_get_irq_byname(pdev, "adc_donei");
+> +	if (mad->irq < 0) {
+> +		dev_err(&pdev->dev, "Failed to get adc_done irq\n");
+> +		return mad->irq;
+> +	}
+> +
+> +	irq_set_status_flags(mad->irq, IRQ_NOAUTOEN);
+
+As we are going to have a v5 anyway to clean up that endian warning,
+please could you add a comment to explain the need for IRQ_NOAUTOEN?
+
+> +	ret = devm_request_threaded_irq(&pdev->dev, mad->irq, NULL, mt6360_pmu_adc_donei_handler, 0,
+> +					"adc_donei", indio_dev);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Failed to register adc_done irq\n");
+> +		return ret;
+> +	}
+> +
+> +	indio_dev->name = dev_name(&pdev->dev);
+> +	indio_dev->dev.parent = &pdev->dev;
+> +	indio_dev->info = &mt6360_adc_iio_info;
+> +	indio_dev->modes = INDIO_DIRECT_MODE;
+> +	indio_dev->channels = mt6360_adc_channels;
+> +	indio_dev->num_channels = ARRAY_SIZE(mt6360_adc_channels);
+> +
+> +	ret = devm_iio_triggered_buffer_setup(&pdev->dev, indio_dev, NULL,
+> +					      mt6360_adc_trigger_handler, NULL);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Failed to allocate iio trigger buffer\n");
+> +		return ret;
+> +	}
+> +
+> +	ret = devm_iio_device_register(&pdev->dev, indio_dev);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Failed to register iio device\n");
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+...
 
 _______________________________________________
 Linux-mediatek mailing list
