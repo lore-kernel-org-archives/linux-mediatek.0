@@ -2,81 +2,99 @@ Return-Path: <SRS0=MWo0=CI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D20CC433E2
-	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Aug 2020 17:40:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 20010C433E2
+	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Aug 2020 19:44:54 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6A91620707
-	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Aug 2020 17:40:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E14402071B
+	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Aug 2020 19:44:53 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="L3aukLLl";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="tUffjiQ1"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6A91620707
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l0knf1OA";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="fhzf3GQj"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E14402071B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=2PCyJzs99LqkH3j3vXmdVHNNr6JJvHokDBeqwsu1kM4=; b=L3aukLLlCuOqBF9XxHMlxufKN
-	Stz6YUbWbivGN4uwlP9bOwYURzACTnYglUJMRv1eg16Y6fXjsQZa2iXNG3dnkg5dQVJZYLWpXmq56
-	odb9pswvGYmhARXvLAUTobxminhLsIOCxmd+oJ1nsjMdQlHvdWBtNHoIWuNYpkgkxaoRMetIxIbCZ
-	q0SzB7AEk9sQFm32mmLf1guROjYU37Ksk/JrSDFdDlF4KgOGT2361h6Imo45s2Ts+CwecS0qZf56V
-	CukkOf1j1uhjW/RY7l+aQE8i6Qo401EG+NZjyzmqrg6Jt+OgOKF+/K+Magp/Dn4CRpm0jddIZC2zU
-	zqCpzfI6Q==;
+	 bh=N94mSmdCUkfQG4glBjXJGhhcfRBqI3QOJIN4IOwMLDw=; b=l0knf1OAx9sPPkb7jDBAa10Bq
+	/1yuGY8koZwPkq2yuL61KH8iq+KVZsfZsE7S3gKkgW53iW4jRq4SFZiAd2x5h4aW4qv2IA2iNZSZO
+	o3xU49pcQAYuKJJaGvz9AYLZeovPDOcIEXTxzMSpL2N5/qhIWsaZmfdrSw7pLpBQai6QeRoAeJmi8
+	2yy2UUL+vS6Z/d/oSWZjOl/nHib9yfBLuvSVkaE8A0iWB3CvpUGJK02Og6UhNYUpoF+oJ0sIscsfZ
+	IuFnDlEWzc8MpZDCefEjFs4lpidDssCiV08YLwvJdRmp+JPn65sinWJFbiZaK8OgssY6urlZ6WQ3h
+	7LXhHZYRw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kCRJS-0000P3-DX; Sun, 30 Aug 2020 17:40:18 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1kCTFs-0007CK-QE; Sun, 30 Aug 2020 19:44:44 +0000
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kCRJM-0000Nz-N4; Sun, 30 Aug 2020 17:40:13 +0000
-Received: by mail-pg1-x543.google.com with SMTP id d19so2988625pgl.10;
- Sun, 30 Aug 2020 10:40:10 -0700 (PDT)
+ id 1kCTFr-0007B9-0N; Sun, 30 Aug 2020 19:44:43 +0000
+Received: by mail-lj1-x243.google.com with SMTP id y4so3263955ljk.8;
+ Sun, 30 Aug 2020 12:44:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=X723aEDZab551p4YPovWdlB8+uUD9xkovcO1mRr3nko=;
- b=tUffjiQ1/Yl3+XS5cw2GTmvnGn5kbNZYNt7GVW3IeClGL6N7CteNtHxVIKOHI7Nueu
- d30lE5OUjSbeg/o3atMmKxo0lEuV+cTb3FWGP6EjDs488DL/U8bZxS7xNSSIMdJwZPj4
- 1pp/+yDFm/PNjcxZqbcNq9GWKlxuRvvDQBxCzDbVCuTD97MPZANszNFdPEw1BH0dYJIw
- ojpw1F47YtFd2XEcVupLJuL93Ux4gDOLde79XZoeWN6uRJGZ95/0h4ykaLdkw5T6re7U
- BH24moiO1rMJiBK8UxNmZq4pPgUzFPJ3AWVx/YNhi8V6XzpZxfYLqqWMSmQ+PwJNKwTl
- IB5w==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=w2b3uQ3grQuHzLpPQOfEHno6ki6zY9r+UONQurulOvI=;
+ b=fhzf3GQjA1EtS/4zAwotNBVfEP5BgQC/vHh7NlqVuoqdj7ROn0tVvewLZVBzxTj4Pv
+ 4uAEsVCRdvMO7MN38yRhvjx55DRhviVUp+DeySquLtSENxd8LUNUq5mIKtUDp7268hWj
+ EiAUYpoHBSpKqaW7iOB+cqshvXFhudBmVbsI7vuQfku+8lEdvR++g+KmaUBIrqUudFxn
+ W8bUy8KkEXDCgYhxAAGz+7w9KmUMEitnB8JF5nbRsi/deNwUInd6AYGqmk3s0Ib8ljbl
+ l0EyB1+767rr0k5EB5hEav1tXcXzg8p3RaCj4yuxNRG9oCWCo1/o1xG6lEcvfnnZFy/d
+ 3pcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=X723aEDZab551p4YPovWdlB8+uUD9xkovcO1mRr3nko=;
- b=TgJMw9SZVKrthJhuPKie9xu/hm1Qfe6UjO87cs2KgXWQB+21UBIZvgdaPdZRs8Rd+D
- gn79E/kMQnFWlVAdCC6TgRtfSUswiyTMa9drVY/8rUdoDI6sDwYxy7/4x/33/Kg1e5f3
- uWlMsrMuZtpbF2jhSTYGyVqTSZUcwXwQ4kWohkSQh3m6dyx3b9MFn3ls4zj0a05GS5H8
- qi2RjcAkAhJsErUUoDG834jzTSEUYA1QNMyPcBYt6lwuDZ8z5qGfaxT+KwSEwjnTFKld
- 9JhbgA/pD9gdjeNAmOgea7ZIjRij5WZLqIybsePj6IqWjGY+CT5YK7ixdvJGWgIFLfIx
- TNmw==
-X-Gm-Message-State: AOAM533t5TrrZUY7rh61GLgJur70Bsxw32H1NOC+e6q7HAkiLkMKf4Ca
- MccwI6Mf+KfJR03Cyee8iYPufMxEO9p3vjmIRhk=
-X-Google-Smtp-Source: ABdhPJybwiDaC0Kgjc3ue8z1ZXQZWjlwcmOPK8godMBjRwwDDBANG3jTHYPKKr6N705Bp/GHxvNsgwZPdsiKF9vPhms=
-X-Received: by 2002:a63:ec4c:: with SMTP id r12mr5412712pgj.74.1598809208515; 
- Sun, 30 Aug 2020 10:40:08 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=w2b3uQ3grQuHzLpPQOfEHno6ki6zY9r+UONQurulOvI=;
+ b=QReRvG/zv27rgVJ0HAQyFSTeYZZt4BRFRJNO0iwRbBkHYibpWIKvoZobLUS9HBc7vU
+ lMg7e2kW093Ycp+B0NS6pOMZ/5MIdym9rWaaEfUjsvsr4C8gmQLse6Pec53WWnbzgNbh
+ 5CuJiSKWvvyOBi9xu251HNiHTzo19zV9b04hweBfMwwI36TbPCRNBlHHqyx0GGvc9Nb2
+ tUhh/Q34n16QYrYe10Sxh4RqAFKZ4JmlCwDeP+b8v4AOlmkeHTLZUZycbWHIg9BvalaK
+ N6dzTw+kDEoDdRST7y9n5yBSk/Qzz16RMnQa6D2KshaHetOjPvpBfHbMf83L8bXKznpX
+ SfcA==
+X-Gm-Message-State: AOAM530TPkgoo4MJAXoc4scjLvEA9rWwqMAZhqW+lcjAMnvjlJopJKIY
+ rYbDm4eMy0Bl7tj3+MLMeSI=
+X-Google-Smtp-Source: ABdhPJz59TfkPi8wlRB5m8RE5yjEcxQe68Z6X9P8P2LdznriMOncqOezMDUqioFbPNx1FbZLjJi8TA==
+X-Received: by 2002:a05:651c:11c5:: with SMTP id
+ z5mr3132694ljo.74.1598816680601; 
+ Sun, 30 Aug 2020 12:44:40 -0700 (PDT)
+Received: from [192.168.2.145] (109-252-170-211.dynamic.spd-mgts.ru.
+ [109.252.170.211])
+ by smtp.googlemail.com with ESMTPSA id e8sm1114886lja.93.2020.08.30.12.44.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 30 Aug 2020 12:44:39 -0700 (PDT)
+Subject: Re: [PATCH 16/18] staging/media/tegra-vde: Clean up IOMMU workaround
+To: Thierry Reding <thierry.reding@gmail.com>
+References: <cover.1597931875.git.robin.murphy@arm.com>
+ <3535c205b9bce52556abbf2f63384fb38e009df9.1597931876.git.robin.murphy@arm.com>
+ <07135a55-cbc9-83e5-60dc-731282192554@gmail.com>
+ <cb12808b-7316-19db-7413-b7f852a6f8ae@arm.com>
+ <62a72187-442b-2103-46c3-39d3cd999f54@gmail.com>
+ <affe2cfb-19e8-8e55-acd0-7170e274ab34@arm.com>
+ <f1923a53-e799-e63c-fd22-4a6cca3b8212@gmail.com>
+ <20200827155446.GB1660457@ulmo>
+From: Dmitry Osipenko <digetx@gmail.com>
+Message-ID: <f6240633-feed-70b7-2fe8-49fcee687676@gmail.com>
+Date: Sun, 30 Aug 2020 22:44:38 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-References: <1598259985-12517-1-git-send-email-gene.chen.richtek@gmail.com>
- <1598259985-12517-2-git-send-email-gene.chen.richtek@gmail.com>
-In-Reply-To: <1598259985-12517-2-git-send-email-gene.chen.richtek@gmail.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Sun, 30 Aug 2020 20:39:52 +0300
-Message-ID: <CAHp75VdmzurQQB2597VB=PCt0THV0TRVdhXdvO3Z3qcdLCeEPg@mail.gmail.com>
-Subject: Re: [PATCH v3 1/2] iio: adc: mt6360: Add ADC driver for MT6360
-To: Gene Chen <gene.chen.richtek@gmail.com>
+In-Reply-To: <20200827155446.GB1660457@ulmo>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200830_134012_806237_4C4037D4 
-X-CRM114-Status: GOOD (  22.09  )
+X-CRM114-CacheID: sfid-20200830_154443_106636_77EADF46 
+X-CRM114-Status: GOOD (  17.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,248 +106,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, Lars-Peter Clausen <lars@metafoo.de>,
- linux-iio <linux-iio@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, cy_huang@richtek.com,
- benjamin.chao@mediatek.com,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
- Peter Meerwald <pmeerw@pmeerw.net>, Hartmut Knaack <knaack.h@gmx.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, Wilma.Wu@mediatek.com,
- Jonathan Cameron <jic23@kernel.org>, shufan_lee@richtek.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: geert+renesas@glider.be, dri-devel@lists.freedesktop.org,
+ bjorn.andersson@linaro.org, linux-tegra@vger.kernel.org,
+ laurent.pinchart@ideasonboard.com, s-anna@ti.com, will@kernel.org, hch@lst.de,
+ m.szyprowski@samsung.com, linux-samsung-soc@vger.kernel.org, joro@8bytes.org,
+ magnus.damm@gmail.com, linux@armlinux.org.uk, jonathanh@nvidia.com,
+ agross@kernel.org, yong.wu@mediatek.com, kyungmin.park@samsung.com,
+ linux-media@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ inki.dae@samsung.com, vdumpa@nvidia.com, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
+ sw0312.kim@samsung.com, linux-kernel@vger.kernel.org, t-kristo@ti.com,
+ iommu@lists.linux-foundation.org, Robin Murphy <robin.murphy@arm.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 24, 2020 at 12:07 PM Gene Chen <gene.chen.richtek@gmail.com> wrote:
->
-> Add MT6360 ADC driver include Charger Current, Voltage, and
-
-include -> that includes
-
-> Temperature.
-
-...
-
-> +       help
-> +         Say Y here to enable MT6360 ADC Part.
-> +         Integrated for System Monitoring include
-> +         Charger and Battery Current, Voltage and
-> +         Temperature
-
-We have a wider field for this text. Also, use proper punctuation.
-
-...
-
-> +#include <linux/completion.h>
-> +#include <linux/interrupt.h>
-
-> +#include <linux/iio/buffer.h>
-> +#include <linux/iio/iio.h>
-> +#include <linux/iio/trigger_consumer.h>
-> +#include <linux/iio/triggered_buffer.h>
-
-I would rather move this block after linux/* headers because it's
-subsystem related (not so generic).
-
-> +#include <linux/irq.h>
-
-Are you sure about this?
-
-> +#include <linux/kernel.h>
-> +#include <linux/ktime.h>
-> +#include <linux/module.h>
-> +#include <linux/mutex.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/regmap.h>
-
-...
-
-> +#define MT6360_AICR_MASK       0xFC
-
-GENMASK() (and include bits.h for that).
-
-> +#define MT6360_ADCEN_MASK      0x8000
-
-> +#define MT6360_PREFERCH_MASK   0xF0
-
-> +#define MT6360_RPTCH_MASK      0x0F
-
-Ditto for all above.
-
-...
-
-> +enum {
-> +       MT6360_CHAN_USBID = 0,
-> +       MT6360_CHAN_VBUSDIV5,
-> +       MT6360_CHAN_VBUSDIV2,
-> +       MT6360_CHAN_VSYS,
-> +       MT6360_CHAN_VBAT,
-> +       MT6360_CHAN_IBUS,
-> +       MT6360_CHAN_IBAT,
-> +       MT6360_CHAN_CHG_VDDP,
-> +       MT6360_CHAN_TEMP_JC,
-> +       MT6360_CHAN_VREF_TS,
-> +       MT6360_CHAN_TS,
-
-> +       MT6360_CHAN_MAX,
-
-No comma for terminator.
-
-> +};
-
-...
-
-> +       const struct converter {
-> +               int multiplier;
-> +               int offset;
-> +               int divisor;
-> +       } adc_converter[MT6360_CHAN_MAX] = {
-> +               { 1250, 0, 1}, /* USBID */
-> +               { 6250, 0, 1}, /* VBUSDIV5 */
-> +               { 2500, 0, 1}, /* VBUSDIV2 */
-> +               { 1250, 0, 1}, /* VSYS */
-> +               { 1250, 0, 1}, /* VBAT */
-> +               { 2500, 0, 1}, /* IBUS */
-> +               { 2500, 0, 1}, /* IBAT */
-> +               { 1250, 0, 1}, /* CHG_VDDP */
-> +               { 105, -8000, 100}, /* TEMP_JC */
-> +               { 1250, 0, 1}, /* VREF_TS */
-> +               { 1250, 0, 1}, /* TS */
-> +       }, sp_ibus_adc_converter = { 1900, 0, 1 }, *sel_converter;
-
-This is quite hidden in the code. Better to move out from the function at least.
-
-...
-
-> +       start_t = ktime_get();
-> +       predict_end_t = ktime_add_ms(mad->last_off_timestamps[channel], 50);
-> +
-> +       if (ktime_after(start_t, predict_end_t))
-> +               predict_end_t = ktime_add_ms(start_t, 25);
-> +       else
-> +               predict_end_t = ktime_add_ms(start_t, 75);
-> +
-
-> +       timeout = wait_for_completion_timeout(&mad->adc_complete, msecs_to_jiffies(200));
-
-Above code full of magic numbers.
-
-...
-
-> +       value = (rpt[1] << 8) | rpt[2];
-
-put_unaligned_be16() (or what is this?)
-
-...
-
-> +       /* set prefer channel to 0xf */
-
-What 0x0f is?
-
-> +       regmap_update_bits(mad->regmap, MT6360_REG_PMUADCRPT1, MT6360_PREFERCH_MASK,
-> +                          0xF << MT6360_PREFERCH_SHFT);
-
-0xf should be GENMASK() and have its descriptive name.
-
-> +out_adc:
-
-The rule of thumb is to explain in the label what is going to do,
-rather than some abstract words. Here, i.e.,
-out_mutex_unlock:
-
-> +       mutex_unlock(&mad->adc_lock);
-
-...
-
-> +       if (mask == IIO_CHAN_INFO_PROCESSED)
-> +               return mt6360_adc_read_processed(mad, chan->channel, val);
-> +
-> +       return -EINVAL;
-
-Usual pattern is
- if (err_condition)
-  ...handle error...
-
-...
-
-> +       /* 11 ch s32 numbers + 1 s64 timestamp */
-> +       s32 data[MT6360_CHAN_MAX + 2] __aligned(8);
-
-We have a better approach now (with a struct being used).
-
-...
-
-> +       u8 configs[3] = {0x80, 0, 0};
-
-Magic.
-
-...
-
-> +static int mt6360_adc_probe(struct platform_device *pdev)
-> +{
-
-> +       mad->regmap = dev_get_regmap(pdev->dev.parent, NULL);
-> +       if (!mad->regmap) {
-> +               dev_err(&pdev->dev, "Failed to get parent regmap\n");
-> +               return -ENODEV;
-> +       }
-
-You may do this before allocation happens. Also consider to introduce
-temporary variable to simplify below code, i.e.
-
-struct device *dev = &pdev->dev;
-struct regmap *regmap;
-
-...
-
-> +       mad->irq = platform_get_irq_byname(pdev, "adc_donei");
-> +       if (mad->irq < 0) {
-
-> +               dev_err(&pdev->dev, "Failed to get adc_done irq\n");
-
-This duplicates the core message.
-
-> +               return mad->irq;
-> +       }
-
-...
-
-> +       irq_set_status_flags(mad->irq, IRQ_NOAUTOEN);
-
-Why?
-
-
-> +       ret = devm_iio_device_register(&pdev->dev, indio_dev);
-> +       if (ret) {
-> +               dev_err(&pdev->dev, "Failed to register iio device\n");
-
-> +               return ret;
-> +       }
-> +
-> +       return 0;
-
-return ret; (At least, but I would go even further and do return
-devm_iio_device_register(); directly)
-
-> +}
-
-...
-
-> +static const struct of_device_id __maybe_unused mt6360_adc_of_id[] = {
-> +       { .compatible = "mediatek,mt6360-adc", },
-> +       {},
-
-No comma for terminator line.
-
-> +};
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+MjcuMDguMjAyMCAxODo1NCwgVGhpZXJyeSBSZWRpbmcg0L/QuNGI0LXRgjoKLi4uCj4+IFRoZSBU
+ZWdyYSBEUk0gaGFzIGEgdmVyeSBzcGVjaWFsIHF1aXJrIGZvciBBUk0zMiB0aGF0IHdhcyBhZGRl
+ZCBpbiB0aGlzCj4+IGNvbW1pdCBbMl0gYW5kIGRyaXZlciByZWxpZXMgb24gY2hlY2tpbmcgb2Yg
+d2hldGhlciBleHBsaWNpdCBvciBpbXBsaWNpdAo+PiBJT01NVSBpcyB1c2VkIGluIG9yZGVyIHRv
+IGFjdGl2YXRlIHRoZSBxdWlyay4KPj4KPj4gWzJdCj4+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcv
+cHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L25leHQvbGludXgtbmV4dC5naXQvY29tbWl0Lz9pZD0y
+NzNkYTVhMDQ2OTY1Y2NmMGVjNzllYjYzZjJkNTE3MzQ2N2UyMGZhCj4+Cj4+IE9uY2UgdGhlIGlt
+cGxpY2l0IElPTU1VIGlzIHVzZWQgZm9yIHRoZSBEUk0gZHJpdmVyLCB0aGUgcXVpcmsgbm8gbG9u
+Z2VyCj4+IHdvcmtzIChpZiBJJ20gbm90IG1pc3Npbmcgc29tZXRoaW5nKS4gVGhpcyBwcm9ibGVt
+IG5lZWRzIHRvIGJlIHJlc29sdmVkCj4+IGJlZm9yZSBpbXBsaWNpdCBJT01NVSBjb3VsZCBiZSB1
+c2VkIGJ5IHRoZSBUZWdyYSBEUk0gb24gQVJNMzIuCi4uLgo+IEkgZG8gaGF2ZSBhIHBhdGNoIGx5
+aW5nIGFyb3VuZCBzb21ld2hlcmUgdGhhdCBpbXBsZW1lbnRzIHRoZSBtYXBwaW5nCj4gY2FjaGUg
+dGhhdCB3YXMgcmVmZXJlbmNlZCBpbiB0aGUgYWJvdmUgY29tbWl0LiBMZXQgbWUga25vdyBpZiBJ
+IHNob3VsZAo+IGRpZyB0aGF0IHVwIGFuZCBzZW5kIGl0IG91dC4KCkhlbGxvLCBUaGllcnJ5ISBJ
+dCBjZXJ0YWlubHkgd2lsbCBiZSBpbnRlcmVzdGluZyB0byB0YWtlIGEgbG9vayBhdCB5b3Vycwpw
+YXRjaCEKCkkgdGhpbmsgdGhhdCB0aGUgY2FjaGluZyBzaG91bGRuJ3QgYmUgc3RyaWN0bHkgbmVj
+ZXNzYXJ5IGZvciBrZWVwaW5nIHRoZQpjdXJyZW50IHdvcmthcm91bmQgd29ya2luZyBhbmQgaXQg
+c2hvdWxkIGJlIHBvc3NpYmxlIHRvIGtlZXAgdGhlIGNvZGUKYXMtaXMgYnkgcmVwbGFjaW5nIHRo
+ZSBkb21haW4tdHlwZSBjaGVja2luZyB3aXRoIHRoZSBTb0MtZ2VuZXJhdGlvbgpjaGVjayBpbiB0
+aGUgVGVncmEgRFJNIGRyaXZlci4KCkluIGdlbmVyYWwsIElNTyBpdCBzaG91bGQgYmUgYmV0dGVy
+IHRvIHN0YXNoIHRoZSBjb21wbGV4IGNoYW5nZXMgdW50aWwKd2UnbGwgZ2V0IGNsb3NlciB0byBh
+ZG9wdGluZyB0aGUgbmV3IFVBUEkgYXMgaXQgd2lsbCBjZXJ0YWlubHkgdG91Y2ggdGhlCmFzcGVj
+dCBvZiB0aGUgcGVyLWRldmljZSBtYXBwaW5ncy4gQnV0IGlmIHlvdXJzIHBhdGNoIGlzIGxlc3Mg
+dGhhbiAxMDAKTE9DLCB0aGVuIG1heWJlIHdlIGNvdWxkIGNvbnNpZGVyIGFwcGx5aW5nIGl0IHJp
+Z2h0IG5vdyEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+bWVkaWF0ZWsK
