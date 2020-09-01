@@ -2,82 +2,83 @@ Return-Path: <SRS0=VWIa=CK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F530C433E7
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2020 02:04:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0613CC433E6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2020 02:41:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C5E79208DB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2020 02:04:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AF06A20719
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2020 02:41:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FdcqvrU5";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Fi7qFUyc"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C5E79208DB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GSR2UhmR";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="KiRVaznv"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF06A20719
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=M6fexb2LBeqULsyppekx42bHxwIWlSEwKnnQPnMpXRM=; b=FdcqvrU5QAjpSTcxaDwKKNBLS
-	njNJ+EfV9XJNESez1cmtfeRpGHMS62jplqvqR+G/uNVvmp4t/y/ByBMeuI6qKpZe8KZ5+nfum6wei
-	+dVZt4IBrQbH7NzikSswu1aQQTd6KRvhq4lX0czLsI/2hviTGSbD+HP9qVF8CWkNw9tomjIYEAd4/
-	SS3FqrXAxNclc5BZLt2oe1iZkeiSYjDo7YSVmBwk9teDS0OUz468w4UFQdtJuclih9E6VA2pUNS6J
-	UIiQEWZ2CmP7bnyUxhjvOFSkgyz4xgENr+XPRtVaiDRTlVtLUvar3Rb9Z6VBgey8KdEj6ierWIeE4
-	ybnRPHtOw==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fqAlmvGvhP9HXT/oX9y3PjrG1ePqbvONki04WGz/EB4=; b=GSR2UhmRZSVWHGZSmK9ZnB1Upb
+	1KWNRsZtNDEOi31Vb/P104cPaOfXwtWb6sFDupJOOJ4BeSjfziJdSyaBpxbivx3TLt4NOBvB1BbsA
+	QBMFupDgF0LS6JSq2x+/OMl+bZLSvL23vV47OauGdbszhn7/A7PnBPppfEx9rYYYSZyQqkusuNF3B
+	1NBS+AXC6V8e5+I+tsOtkalCWD/b/djKuBoGGpjQ9GKTbikoTrtiqHFL2imowO1kn0h/OHtO8UMIO
+	X2EZa4OCZExrKzYjvl2zTEF9j7gOvFEXGxwEcL5RdcYX7miBxL82624anvbB9U2YIWc+4SfrY5g4D
+	1p1owMjw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kCved-0002Ym-S3; Tue, 01 Sep 2020 02:04:11 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kCwEL-0005H8-5l; Tue, 01 Sep 2020 02:41:05 +0000
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kCvea-0002YF-Ss
- for linux-mediatek@lists.infradead.org; Tue, 01 Sep 2020 02:04:10 +0000
-X-UUID: 99a732f09c3142bfa3c7399298f031a4-20200831
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=KuV50q8eX8YDPDH40TNrRuhoBgswtMheYwcCpsv6uYg=; 
- b=Fi7qFUycSMzaU3SiO6MEUhEzyQmlTBMP7nmQmnoPAuu1w3odZEWMvflTJmOwcz31WX5ES3MOJNb3I2P9crMYWXTSLPrTBLKMtzfTGJujwzLhVypYB8gWFanS8hgtjes6vwNCIChk02rjdDVY3MDmRSz0Yk9DujWu42V/160y0SE=;
-X-UUID: 99a732f09c3142bfa3c7399298f031a4-20200831
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 74830815; Mon, 31 Aug 2020 18:04:04 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 31 Aug 2020 18:54:01 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs05n1.mediatek.inc
- (172.21.101.15) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 1 Sep 2020 09:53:59 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 1 Sep 2020 09:53:59 +0800
-Message-ID: <1598925144.11403.5.camel@mhfsdcap03>
-Subject: Re: [PATCH v5 3/4] phy: mediatek: Move mtk_hdmi_phy driver into
- drivers/phy/mediatek folder
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 1 Sep 2020 09:52:24 +0800
-In-Reply-To: <CAAOTY__+oAynmN6--z4j8vYNRdGVXE+Do=YBkW7CtSROBBwU7Q@mail.gmail.com>
-References: <20200823014830.15962-1-chunkuang.hu@kernel.org>
- <20200823014830.15962-4-chunkuang.hu@kernel.org>
- <CAAOTY__mJ=+Mg7PikH+bZ9kPxO8yiURhJSt0Ms_Z9=YGuBwCRg@mail.gmail.com>
- <1598838410.7054.7.camel@mhfsdcap03>
- <CAAOTY__+oAynmN6--z4j8vYNRdGVXE+Do=YBkW7CtSROBBwU7Q@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
-MIME-Version: 1.0
-X-MTK: N
+ id 1kCwEG-0005Fg-NL; Tue, 01 Sep 2020 02:41:01 +0000
+Received: by mail-pf1-x441.google.com with SMTP id d22so1821766pfn.5;
+ Mon, 31 Aug 2020 19:40:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=XgSMDKovWrXPZObAnCDSbopO8IOH/Wu5SJIfR8in4pw=;
+ b=KiRVaznv72M48i0QVeOO1wPJn1ALbaohzQdBZtFY1slniisBOdX0nxqjuoyofY90ct
+ FRPn3fk+wVzmX7lU/6kVXoWhKqGLyPJr5qZEEym/RK6wJl1Ui4YCaNqTZUX4Lkkd9dsj
+ dQw+YSs3/QQSL0qCHeApUDuEMpSEeM/qUrhQD5xf0Ki0+Q11NnaJ9/de9RKtHgnpwKnS
+ cb0ibLRgOkiKxb0XWD3YN1+O9Soa9oP+7zn5D0ImhpWBu6sv71Hu+uABxKmAJRSSE1jd
+ Q4gwdypNh3I44eoV70VlUaPXfLLPAMg1nRscl3hOqlQlI9HqTs5duUpVusC3LukIxWJT
+ 6+ag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=XgSMDKovWrXPZObAnCDSbopO8IOH/Wu5SJIfR8in4pw=;
+ b=pO1TW7Oq9UGxlCWogqvVsuCNENRW5339lL6pMj4TLZJ6oLAogBZEuC/GdpJcHdDgnx
+ kCf3Hw65RmKcDUwoPTEJ0WGgSxfjRN4txBpDuGOrOuU2S6YRoleyDyE32MXLz2EMQeOA
+ jrB9tF4NNj0kGCDGXeHPICgQFgcRCP6HmHP0lTFEhBXDwrmV3rrD/92vaXeh+/kZjEvF
+ 9MHGQVIR4dOLuchpsinQ8RNdMbpI5k65GUi3ZY8rmG2e8E9zrHUY7flbrWxnN2QFyciP
+ Jn40rKz5J8gBjrKXFeDPiq/3bt+tMDc0iHiy9k6tBit6xE94Oix8IEOtEGBL7rNZTknl
+ dBew==
+X-Gm-Message-State: AOAM530950UxmiNMPAZDyHSXOFYf50KedJ8krtNkZ9CnSiY1lA7xSsUg
+ AibmXQVoIHxRrVS2DFn9Wjc=
+X-Google-Smtp-Source: ABdhPJwj/E2xUfMOnGLl0sKHDsv/0/qIdXYtES19cpiiFRWCNmpnKtgetMmKHH+F+UNgIWRYxr/AnQ==
+X-Received: by 2002:a63:5b42:: with SMTP id l2mr3562510pgm.197.1598928054366; 
+ Mon, 31 Aug 2020 19:40:54 -0700 (PDT)
+Received: from localhost.localdomain ([2402:7500:587:32f7:442c:d2ca:adcb:b859])
+ by smtp.gmail.com with ESMTPSA id u2sm933743pjj.57.2020.08.31.19.40.49
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 31 Aug 2020 19:40:53 -0700 (PDT)
+From: cy_huang <u0084500@gmail.com>
+To: gregkh@linuxfoundation.org, robh+dt@kernel.org, matthias.bgg@gmail.com,
+ linux@roeck-us.net, heikki.krogerus@linux.intel.com
+Subject: [PATCH v5 1/2] usb typec: mt6360: Add support for mt6360 Type-C driver
+Date: Tue,  1 Sep 2020 10:40:41 +0800
+Message-Id: <1598928042-22115-1-git-send-email-u0084500@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200831_220409_117512_1F52E725 
-X-CRM114-Status: GOOD (  26.62  )
+X-CRM114-CacheID: sfid-20200831_224100_815299_7DB084E5 
+X-CRM114-Status: GOOD (  25.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,150 +90,302 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Kishon Vijay Abraham I <kishon@ti.com>, CK Hu <ck.hu@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: gene_chen@richtek.com, devicetree@vger.kernel.org,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAyMDIwLTA5LTAxIGF0IDAwOjAxICswODAwLCBDaHVuLUt1YW5nIEh1IHdyb3RlOg0K
-PiBIaSwgQ2h1bmZlbmc6DQo+IA0KPiBDaHVuZmVuZyBZdW4gPGNodW5mZW5nLnl1bkBtZWRpYXRl
-ay5jb20+IOaWvCAyMDIw5bm0OOaciDMx5pelIOmAseS4gCDkuIrljYg5OjQ45a+r6YGT77yaDQo+
-ID4NCj4gPiBPbiBNb24sIDIwMjAtMDgtMzEgYXQgMDc6MDMgKzA4MDAsIENodW4tS3VhbmcgSHUg
-d3JvdGU6DQo+ID4gPiBIaSwgQ2h1bmZlbmcgJiBLaXNob246DQo+ID4gPg0KPiA+ID4gSG93IGRv
-IHlvdSBmZWVsIGFib3V0IHRoaXMgcGF0Y2g/DQo+ID4gSXQncyBmaW5lIHRvIG1lLA0KPiA+DQo+
-ID4gUmV2aWV3ZWQtYnk6IENodW5mZW5nIFl1biA8Y2h1bmZlbmcueXVuQG1lZGlhdGVrLmNvbT4N
-Cj4gPg0KPiANCj4gQ291bGQgeW91IGdpdmUgYW4gJ0Fja2VkLWJ5JyB0YWcgb24gdGhpcyBwYXRj
-aD8gU28gSSBjb3VsZCBhcHBseSB0aGUNCj4gd2hvbGUgc2VyaWVzIGludG8gbXkgdHJlZS4NCkFj
-a2VkLWJ5OiBDaHVuZmVuZyBZdW4gPGNodW5mZW5nLnl1bkBtZWRpYXRlay5jb20+DQoNClRoYW5r
-cw0KDQo+IA0KPiBSZWdhcmRzLA0KPiBDaHVuLUt1YW5nLg0KPiANCj4gPiBUaGFua3MgYSBsb3QN
-Cj4gPg0KPiA+ID4NCj4gPiA+IFJlZ2FyZHMsDQo+ID4gPiBDaHVuLUt1YW5nLg0KPiA+ID4NCj4g
-PiA+IENodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPiDmlrwgMjAyMOW5tDjm
-nIgyM+aXpSDpgLHml6Ug5LiK5Y2IOTo0OOWvq+mBk++8mg0KPiA+ID4gPg0KPiA+ID4gPiBGcm9t
-OiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPg0KPiA+ID4gPg0KPiA+ID4gPiBtdGtfaGRtaV9w
-aHkgaXMgY3VycmVudGx5IHBsYWNlZCBpbnNpZGUgbWVkaWF0ZWsgZHJtIGRyaXZlciwgYnV0IGl0
-J3MNCj4gPiA+ID4gbW9yZSBzdWl0YWJsZSB0byBwbGFjZSBhIHBoeSBkcml2ZXIgaW50byBwaHkg
-ZHJpdmVyIGZvbGRlciwgc28gbW92ZQ0KPiA+ID4gPiBtdGtfaGRtaV9waHkgZHJpdmVyIGludG8g
-cGh5IGRyaXZlciBmb2xkZXIuDQo+ID4gPiA+DQo+ID4gPiA+IFNpZ25lZC1vZmYtYnk6IENLIEh1
-IDxjay5odUBtZWRpYXRlay5jb20+DQo+ID4gPiA+IFNpZ25lZC1vZmYtYnk6IENodW4tS3Vhbmcg
-SHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPg0KPiA+ID4gPiAtLS0NCj4gPiA+ID4gIGRyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgICAgICAgfCA3
-IC0tLS0tLS0NCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtlZmlsZSAgICAg
-ICAgICAgICAgICAgICAgICAgICAgfCA2IC0tLS0tLQ0KPiA+ID4gPiAgZHJpdmVycy9waHkvbWVk
-aWF0ZWsvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IDcgKysrKysrKw0K
-PiA+ID4gPiAgZHJpdmVycy9waHkvbWVkaWF0ZWsvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICB8IDUgKysrKysNCj4gPiA+ID4gIC4uLi9tZWRpYXRlay9waHktbXRrLWhkbWkt
-bXQyNzAxLmN9ICAgICAgICAgICAgICAgICAgICAgICAgfCAyICstDQo+ID4gPiA+ICAuLi4vbWVk
-aWF0ZWsvcGh5LW10ay1oZG1pLW10ODE3My5jfSAgICAgICAgICAgICAgICAgICAgICAgIHwgMiAr
-LQ0KPiA+ID4gPiAgLi4uL210a19oZG1pX3BoeS5jID0+IHBoeS9tZWRpYXRlay9waHktbXRrLWhk
-bWkuY30gICAgICAgICB8IDIgKy0NCj4gPiA+ID4gIC4uLi9tdGtfaGRtaV9waHkuaCA9PiBwaHkv
-bWVkaWF0ZWsvcGh5LW10ay1oZG1pLmh9ICAgICAgICAgfCAwDQo+ID4gPiA+ICA4IGZpbGVzIGNo
-YW5nZWQsIDE1IGluc2VydGlvbnMoKyksIDE2IGRlbGV0aW9ucygtKQ0KPiA+ID4gPiAgcmVuYW1l
-IGRyaXZlcnMve2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210MjcwMV9oZG1pX3BoeS5jID0+IHBoeS9t
-ZWRpYXRlay9waHktbXRrLWhkbWktbXQyNzAxLmN9ICg5OSUpDQo+ID4gPiA+ICByZW5hbWUgZHJp
-dmVycy97Z3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMgPT4gcGh5L21lZGlh
-dGVrL3BoeS1tdGstaGRtaS1tdDgxNzMuY30gKDk5JSkNCj4gPiA+ID4gIHJlbmFtZSBkcml2ZXJz
-L3tncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5jID0+IHBoeS9tZWRpYXRlay9waHktbXRr
-LWhkbWkuY30gKDk5JSkNCj4gPiA+ID4gIHJlbmFtZSBkcml2ZXJzL3tncHUvZHJtL21lZGlhdGVr
-L210a19oZG1pX3BoeS5oID0+IHBoeS9tZWRpYXRlay9waHktbXRrLWhkbWkuaH0gKDEwMCUpDQo+
-ID4gPiA+DQo+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvS2Nv
-bmZpZyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9LY29uZmlnDQo+ID4gPiA+IGluZGV4IDYz
-NjNmMmMxY2RiYy4uNjVjZDAzYTRiZTI5IDEwMDY0NA0KPiA+ID4gPiAtLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvS2NvbmZpZw0KPiA+ID4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvS2NvbmZpZw0KPiA+ID4gPiBAQCAtMjcsMTAgKzI3LDMgQEAgY29uZmlnIERSTV9NRURJ
-QVRFS19IRE1JDQo+ID4gPiA+ICAgICAgICAgc2VsZWN0IFBIWV9NVEtfSERNSQ0KPiA+ID4gPiAg
-ICAgICAgIGhlbHANCj4gPiA+ID4gICAgICAgICAgIERSTS9LTVMgSERNSSBkcml2ZXIgZm9yIE1l
-ZGlhdGVrIFNvQ3MNCj4gPiA+ID4gLQ0KPiA+ID4gPiAtY29uZmlnIFBIWV9NVEtfSERNSQ0KPiA+
-ID4gPiAtICAgICAgIHRyaXN0YXRlICJNZWRpYVRlayBIRE1JLVBIWSBEcml2ZXIiDQo+ID4gPiA+
-IC0gICAgICAgZGVwZW5kcyBvbiBBUkNIX01FRElBVEVLICYmIE9GDQo+ID4gPiA+IC0gICAgICAg
-c2VsZWN0IEdFTkVSSUNfUEhZDQo+ID4gPiA+IC0gICAgICAgaGVscA0KPiA+ID4gPiAtICAgICAg
-ICAgU3VwcG9ydCBIRE1JIFBIWSBmb3IgTWVkaWF0ZWsgU29Dcy4NCj4gPiA+ID4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtlZmlsZSBiL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9NYWtlZmlsZQ0KPiA+ID4gPiBpbmRleCBmY2JlZjIzYWE2Y2UuLjc3YjBmZDg2MDYz
-ZCAxMDA2NDQNCj4gPiA+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL01ha2VmaWxl
-DQo+ID4gPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtlZmlsZQ0KPiA+ID4g
-PiBAQCAtMjIsOSArMjIsMyBAQCBtZWRpYXRlay1kcm0taGRtaS1vYmpzIDo9IG10a19jZWMubyBc
-DQo+ID4gPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgbXRrX2hkbWlfZGRjLm8NCj4gPiA+
-ID4NCj4gPiA+ID4gIG9iai0kKENPTkZJR19EUk1fTUVESUFURUtfSERNSSkgKz0gbWVkaWF0ZWst
-ZHJtLWhkbWkubw0KPiA+ID4gPiAtDQo+ID4gPiA+IC1waHktbXRrLWhkbWktZHJ2LW9ianMgOj0g
-bXRrX2hkbWlfcGh5Lm8gXA0KPiA+ID4gPiAtICAgICAgICAgICAgICAgICAgICAgICAgbXRrX210
-MjcwMV9oZG1pX3BoeS5vIFwNCj4gPiA+ID4gLSAgICAgICAgICAgICAgICAgICAgICAgIG10a19t
-dDgxNzNfaGRtaV9waHkubw0KPiA+ID4gPiAtDQo+ID4gPiA+IC1vYmotJChDT05GSUdfUEhZX01U
-S19IRE1JKSArPSBwaHktbXRrLWhkbWktZHJ2Lm8NCj4gPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvcGh5L21lZGlhdGVrL0tjb25maWcgYi9kcml2ZXJzL3BoeS9tZWRpYXRlay9LY29uZmlnDQo+
-ID4gPiA+IGluZGV4IGRlZTc1N2M5NTdmMi4uNTBjNWU5MzA2ZTE5IDEwMDY0NA0KPiA+ID4gPiAt
-LS0gYS9kcml2ZXJzL3BoeS9tZWRpYXRlay9LY29uZmlnDQo+ID4gPiA+ICsrKyBiL2RyaXZlcnMv
-cGh5L21lZGlhdGVrL0tjb25maWcNCj4gPiA+ID4gQEAgLTM1LDMgKzM1LDEwIEBAIGNvbmZpZyBQ
-SFlfTVRLX1hTUEhZDQo+ID4gPiA+ICAgICAgICAgICBFbmFibGUgdGhpcyB0byBzdXBwb3J0IHRo
-ZSBTdXBlclNwZWVkUGx1cyBYUy1QSFkgdHJhbnNjZWl2ZXIgZm9yDQo+ID4gPiA+ICAgICAgICAg
-ICBVU0IzLjEgR0VOMiBjb250cm9sbGVycyBvbiBNZWRpYVRlayBjaGlwcy4gVGhlIGRyaXZlciBz
-dXBwb3J0cw0KPiA+ID4gPiAgICAgICAgICAgbXVsdGlwbGUgVVNCMi4wLCBVU0IzLjEgR0VOMiBw
-b3J0cy4NCj4gPiA+ID4gKw0KPiA+ID4gPiArY29uZmlnIFBIWV9NVEtfSERNSQ0KPiA+ID4gPiAr
-ICAgICAgIHRyaXN0YXRlICJNZWRpYVRlayBIRE1JLVBIWSBEcml2ZXIiDQo+ID4gPiA+ICsgICAg
-ICAgZGVwZW5kcyBvbiBBUkNIX01FRElBVEVLICYmIE9GDQo+ID4gPiA+ICsgICAgICAgc2VsZWN0
-IEdFTkVSSUNfUEhZDQo+ID4gPiA+ICsgICAgICAgaGVscA0KPiA+ID4gPiArICAgICAgICAgU3Vw
-cG9ydCBIRE1JIFBIWSBmb3IgTWVkaWF0ZWsgU29Dcy4NCj4gPiA+ID4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvcGh5L21lZGlhdGVrL01ha2VmaWxlIGIvZHJpdmVycy9waHkvbWVkaWF0ZWsvTWFrZWZp
-bGUNCj4gPiA+ID4gaW5kZXggMDhhOGU2YTk3YjFlLi42MzI1ZTM4NzA5ZWQgMTAwNjQ0DQo+ID4g
-PiA+IC0tLSBhL2RyaXZlcnMvcGh5L21lZGlhdGVrL01ha2VmaWxlDQo+ID4gPiA+ICsrKyBiL2Ry
-aXZlcnMvcGh5L21lZGlhdGVrL01ha2VmaWxlDQo+ID4gPiA+IEBAIC02LDMgKzYsOCBAQA0KPiA+
-ID4gPiAgb2JqLSQoQ09ORklHX1BIWV9NVEtfVFBIWSkgICAgICAgICAgICAgKz0gcGh5LW10ay10
-cGh5Lm8NCj4gPiA+ID4gIG9iai0kKENPTkZJR19QSFlfTVRLX1VGUykgICAgICAgICAgICAgICs9
-IHBoeS1tdGstdWZzLm8NCj4gPiA+ID4gIG9iai0kKENPTkZJR19QSFlfTVRLX1hTUEhZKSAgICAg
-ICAgICAgICs9IHBoeS1tdGsteHNwaHkubw0KPiA+ID4gPiArDQo+ID4gPiA+ICtwaHktbXRrLWhk
-bWktZHJ2LXkgICAgICAgICAgICAgICAgICAgICA6PSBwaHktbXRrLWhkbWkubw0KPiA+ID4gPiAr
-cGh5LW10ay1oZG1pLWRydi15ICAgICAgICAgICAgICAgICAgICAgKz0gcGh5LW10ay1oZG1pLW10
-MjcwMS5vDQo+ID4gPiA+ICtwaHktbXRrLWhkbWktZHJ2LXkgICAgICAgICAgICAgICAgICAgICAr
-PSBwaHktbXRrLWhkbWktbXQ4MTczLm8NCj4gPiA+ID4gK29iai0kKENPTkZJR19QSFlfTVRLX0hE
-TUkpICAgICAgICAgICAgICs9IHBoeS1tdGstaGRtaS1kcnYubw0KPiA+ID4gPiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDI3MDFfaGRtaV9waHkuYyBiL2RyaXZl
-cnMvcGh5L21lZGlhdGVrL3BoeS1tdGstaGRtaS1tdDI3MDEuYw0KPiA+ID4gPiBzaW1pbGFyaXR5
-IGluZGV4IDk5JQ0KPiA+ID4gPiByZW5hbWUgZnJvbSBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX210MjcwMV9oZG1pX3BoeS5jDQo+ID4gPiA+IHJlbmFtZSB0byBkcml2ZXJzL3BoeS9tZWRp
-YXRlay9waHktbXRrLWhkbWktbXQyNzAxLmMNCj4gPiA+ID4gaW5kZXggOTlmZTA1Y2QzNTk4Li5h
-NmNiMWRlYTNkMGMgMTAwNjQ0DQo+ID4gPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfbXQyNzAxX2hkbWlfcGh5LmMNCj4gPiA+ID4gKysrIGIvZHJpdmVycy9waHkvbWVkaWF0
-ZWsvcGh5LW10ay1oZG1pLW10MjcwMS5jDQo+ID4gPiA+IEBAIC00LDcgKzQsNyBAQA0KPiA+ID4g
-PiAgICogQXV0aG9yOiBDaHVuaHVpIERhaSA8Y2h1bmh1aS5kYWlAbWVkaWF0ZWsuY29tPg0KPiA+
-ID4gPiAgICovDQo+ID4gPiA+DQo+ID4gPiA+IC0jaW5jbHVkZSAibXRrX2hkbWlfcGh5LmgiDQo+
-ID4gPiA+ICsjaW5jbHVkZSAicGh5LW10ay1oZG1pLmgiDQo+ID4gPiA+DQo+ID4gPiA+ICAjZGVm
-aW5lIEhETUlfQ09OMCAgICAgIDB4MDANCj4gPiA+ID4gICNkZWZpbmUgUkdfSERNSVRYX0RSVl9J
-QklBUyAgICAgICAgICAgIDANCj4gPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMgYi9kcml2ZXJzL3BoeS9tZWRpYXRlay9waHkt
-bXRrLWhkbWktbXQ4MTczLmMNCj4gPiA+ID4gc2ltaWxhcml0eSBpbmRleCA5OSUNCj4gPiA+ID4g
-cmVuYW1lIGZyb20gZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxNzNfaGRtaV9waHku
-Yw0KPiA+ID4gPiByZW5hbWUgdG8gZHJpdmVycy9waHkvbWVkaWF0ZWsvcGh5LW10ay1oZG1pLW10
-ODE3My5jDQo+ID4gPiA+IGluZGV4IDgyN2I5Mzc4NmZhYy4uNmNkZmRmNWE2OThhIDEwMDY0NA0K
-PiA+ID4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210ODE3M19oZG1pX3Bo
-eS5jDQo+ID4gPiA+ICsrKyBiL2RyaXZlcnMvcGh5L21lZGlhdGVrL3BoeS1tdGstaGRtaS1tdDgx
-NzMuYw0KPiA+ID4gPiBAQCAtNCw3ICs0LDcgQEANCj4gPiA+ID4gICAqIEF1dGhvcjogSmllIFFp
-dSA8amllLnFpdUBtZWRpYXRlay5jb20+DQo+ID4gPiA+ICAgKi8NCj4gPiA+ID4NCj4gPiA+ID4g
-LSNpbmNsdWRlICJtdGtfaGRtaV9waHkuaCINCj4gPiA+ID4gKyNpbmNsdWRlICJwaHktbXRrLWhk
-bWkuaCINCj4gPiA+ID4NCj4gPiA+ID4gICNkZWZpbmUgSERNSV9DT04wICAgICAgICAgICAgICAw
-eDAwDQo+ID4gPiA+ICAjZGVmaW5lIFJHX0hETUlUWF9QTExfRU4gICAgICAgICAgICAgICBCSVQo
-MzEpDQo+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hk
-bWlfcGh5LmMgYi9kcml2ZXJzL3BoeS9tZWRpYXRlay9waHktbXRrLWhkbWkuYw0KPiA+ID4gPiBz
-aW1pbGFyaXR5IGluZGV4IDk5JQ0KPiA+ID4gPiByZW5hbWUgZnJvbSBkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmMNCj4gPiA+ID4gcmVuYW1lIHRvIGRyaXZlcnMvcGh5L21l
-ZGlhdGVrL3BoeS1tdGstaGRtaS5jDQo+ID4gPiA+IGluZGV4IGZlMDIyYWNkZGJlZi4uOGZjODNm
-MDFhNzIwIDEwMDY0NA0KPiA+ID4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2hkbWlfcGh5LmMNCj4gPiA+ID4gKysrIGIvZHJpdmVycy9waHkvbWVkaWF0ZWsvcGh5LW10ay1o
-ZG1pLmMNCj4gPiA+ID4gQEAgLTQsNyArNCw3IEBADQo+ID4gPiA+ICAgKiBBdXRob3I6IEppZSBR
-aXUgPGppZS5xaXVAbWVkaWF0ZWsuY29tPg0KPiA+ID4gPiAgICovDQo+ID4gPiA+DQo+ID4gPiA+
-IC0jaW5jbHVkZSAibXRrX2hkbWlfcGh5LmgiDQo+ID4gPiA+ICsjaW5jbHVkZSAicGh5LW10ay1o
-ZG1pLmgiDQo+ID4gPiA+DQo+ID4gPiA+ICBzdGF0aWMgaW50IG10a19oZG1pX3BoeV9wb3dlcl9v
-bihzdHJ1Y3QgcGh5ICpwaHkpOw0KPiA+ID4gPiAgc3RhdGljIGludCBtdGtfaGRtaV9waHlfcG93
-ZXJfb2ZmKHN0cnVjdCBwaHkgKnBoeSk7DQo+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmggYi9kcml2ZXJzL3BoeS9tZWRpYXRlay9waHkt
-bXRrLWhkbWkuaA0KPiA+ID4gPiBzaW1pbGFyaXR5IGluZGV4IDEwMCUNCj4gPiA+ID4gcmVuYW1l
-IGZyb20gZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5oDQo+ID4gPiA+IHJl
-bmFtZSB0byBkcml2ZXJzL3BoeS9tZWRpYXRlay9waHktbXRrLWhkbWkuaA0KPiA+ID4gPiAtLQ0K
-PiA+ID4gPiAyLjE3LjENCj4gPiA+ID4NCj4gPg0KDQpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgt
-bWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+From: ChiYuan Huang <cy_huang@richtek.com>
+
+Mediatek MT6360 is a multi-functional IC that includes USB Type-C.
+It works with Type-C Port Controller Manager to provide USB PD
+and USB Type-C functionalities.
+
+Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+---
+v1 to v2
+1. Add fix to Prevent the race condition from interrupt and tcpci port
+   unregister during module remove.
+
+v2 to v3
+1. Change comment style for the head of source code.
+2. No need to print error for platform_get_irq_byname.
+3. Fix tcpci_register_port check from IS_ERR_OR_NULL to IS_ERR.
+4. Rename driver/Kconfig/Makefile form mt6360 to mt636x.
+5. Rename DT binding documents from mt6360 to mt636x.
+
+v3 to v4
+1. revert v3 item 4 for mt636x patch in driver/Kconfig/Makefile
+2. revert v3 item 5 for mt636x DT binding document.
+
+v4 to v5
+All changes are for DT binding document. See patch 2.
+1. Fix schema style (using spaces instead of tabs)
+2. move connector into the properties block.
+3. Add ports node into the binding example refer to USB HS/SS/DPMux.
+
+---
+ drivers/usb/typec/tcpm/Kconfig        |   8 ++
+ drivers/usb/typec/tcpm/Makefile       |   1 +
+ drivers/usb/typec/tcpm/tcpci_mt6360.c | 212 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 221 insertions(+)
+ create mode 100644 drivers/usb/typec/tcpm/tcpci_mt6360.c
+
+diff --git a/drivers/usb/typec/tcpm/Kconfig b/drivers/usb/typec/tcpm/Kconfig
+index fa3f393..58a64e1 100644
+--- a/drivers/usb/typec/tcpm/Kconfig
++++ b/drivers/usb/typec/tcpm/Kconfig
+@@ -27,6 +27,14 @@ config TYPEC_RT1711H
+ 	  Type-C Port Controller Manager to provide USB PD and USB
+ 	  Type-C functionalities.
+ 
++config TYPEC_MT6360
++	tristate "Mediatek MT6360 Type-C driver"
++	depends on MFD_MT6360
++	help
++	  Mediatek MT6360 is a multi-functional IC that includes
++	  USB Type-C. It works with Type-C Port Controller Manager
++	  to provide USB PD and USB Type-C functionalities.
++
+ endif # TYPEC_TCPCI
+ 
+ config TYPEC_FUSB302
+diff --git a/drivers/usb/typec/tcpm/Makefile b/drivers/usb/typec/tcpm/Makefile
+index a5ff6c8..7592ccb 100644
+--- a/drivers/usb/typec/tcpm/Makefile
++++ b/drivers/usb/typec/tcpm/Makefile
+@@ -5,3 +5,4 @@ obj-$(CONFIG_TYPEC_WCOVE)	+= typec_wcove.o
+ typec_wcove-y			:= wcove.o
+ obj-$(CONFIG_TYPEC_TCPCI)	+= tcpci.o
+ obj-$(CONFIG_TYPEC_RT1711H)	+= tcpci_rt1711h.o
++obj-$(CONFIG_TYPEC_MT6360)	+= tcpci_mt6360.o
+diff --git a/drivers/usb/typec/tcpm/tcpci_mt6360.c b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+new file mode 100644
+index 00000000..f1bd9e0
+--- /dev/null
++++ b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+@@ -0,0 +1,212 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Copyright (C) 2020 MediaTek Inc.
++ *
++ * Author: ChiYuan Huang <cy_huang@richtek.com>
++ */
++
++#include <linux/interrupt.h>
++#include <linux/kernel.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
++#include <linux/regmap.h>
++#include <linux/usb/tcpm.h>
++
++#include "tcpci.h"
++
++#define MT6360_REG_VCONNCTRL1	0x8C
++#define MT6360_REG_MODECTRL2	0x8F
++#define MT6360_REG_SWRESET	0xA0
++#define MT6360_REG_DEBCTRL1	0xA1
++#define MT6360_REG_DRPCTRL1	0xA2
++#define MT6360_REG_DRPCTRL2	0xA3
++#define MT6360_REG_I2CTORST	0xBF
++#define MT6360_REG_RXCTRL2	0xCF
++#define MT6360_REG_CTDCTRL2	0xEC
++
++/* MT6360_REG_VCONNCTRL1 */
++#define MT6360_VCONNCL_ENABLE	BIT(0)
++/* MT6360_REG_RXCTRL2 */
++#define MT6360_OPEN40M_ENABLE	BIT(7)
++/* MT6360_REG_CTDCTRL2 */
++#define MT6360_RPONESHOT_ENABLE	BIT(6)
++
++struct mt6360_tcpc_info {
++	struct tcpci_data tdata;
++	struct tcpci *tcpci;
++	struct device *dev;
++	int irq;
++};
++
++static inline int mt6360_tcpc_read16(struct regmap *regmap,
++				     unsigned int reg, u16 *val)
++{
++	return regmap_raw_read(regmap, reg, val, sizeof(u16));
++}
++
++static inline int mt6360_tcpc_write16(struct regmap *regmap,
++				      unsigned int reg, u16 val)
++{
++	return regmap_raw_write(regmap, reg, &val, sizeof(u16));
++}
++
++static int mt6360_tcpc_init(struct tcpci *tcpci, struct tcpci_data *tdata)
++{
++	struct regmap *regmap = tdata->regmap;
++	int ret;
++
++	ret = regmap_write(regmap, MT6360_REG_SWRESET, 0x01);
++	if (ret)
++		return ret;
++
++	/* after reset command, wait 1~2ms to wait IC action */
++	usleep_range(1000, 2000);
++
++	/* write all alert to masked */
++	ret = mt6360_tcpc_write16(regmap, TCPC_ALERT_MASK, 0);
++	if (ret)
++		return ret;
++
++	/* config I2C timeout reset enable , and timeout to 200ms */
++	ret = regmap_write(regmap, MT6360_REG_I2CTORST, 0x8F);
++	if (ret)
++		return ret;
++
++	/* config CC Detect Debounce : 26.7*val us */
++	ret = regmap_write(regmap, MT6360_REG_DEBCTRL1, 0x10);
++	if (ret)
++		return ret;
++
++	/* DRP Toggle Cycle : 51.2 + 6.4*val ms */
++	ret = regmap_write(regmap, MT6360_REG_DRPCTRL1, 4);
++	if (ret)
++		return ret;
++
++	/* DRP Duyt Ctrl : dcSRC: /1024 */
++	ret = mt6360_tcpc_write16(regmap, MT6360_REG_DRPCTRL2, 330);
++	if (ret)
++		return ret;
++
++	/* Enable VCONN Current Limit function */
++	ret = regmap_update_bits(regmap, MT6360_REG_VCONNCTRL1, MT6360_VCONNCL_ENABLE,
++				 MT6360_VCONNCL_ENABLE);
++	if (ret)
++		return ret;
++
++	/* Enable cc open 40ms when pmic send vsysuv signal */
++	ret = regmap_update_bits(regmap, MT6360_REG_RXCTRL2, MT6360_OPEN40M_ENABLE,
++				 MT6360_OPEN40M_ENABLE);
++	if (ret)
++		return ret;
++
++	/* Enable Rpdet oneshot detection */
++	ret = regmap_update_bits(regmap, MT6360_REG_CTDCTRL2, MT6360_RPONESHOT_ENABLE,
++				 MT6360_RPONESHOT_ENABLE);
++	if (ret)
++		return ret;
++
++	/* Set shipping mode off, AUTOIDLE on */
++	return regmap_write(regmap, MT6360_REG_MODECTRL2, 0x7A);
++}
++
++static irqreturn_t mt6360_irq(int irq, void *dev_id)
++{
++	struct mt6360_tcpc_info *mti = dev_id;
++
++	return tcpci_irq(mti->tcpci);
++}
++
++static int mt6360_tcpc_probe(struct platform_device *pdev)
++{
++	struct mt6360_tcpc_info *mti;
++	int ret;
++
++	mti = devm_kzalloc(&pdev->dev, sizeof(*mti), GFP_KERNEL);
++	if (!mti)
++		return -ENOMEM;
++
++	mti->dev = &pdev->dev;
++
++	mti->tdata.regmap = dev_get_regmap(pdev->dev.parent, NULL);
++	if (!mti->tdata.regmap) {
++		dev_err(&pdev->dev, "Failed to get parent regmap\n");
++		return -ENODEV;
++	}
++
++	mti->irq = platform_get_irq_byname(pdev, "PD_IRQB");
++	if (mti->irq < 0)
++		return mti->irq;
++
++	mti->tdata.init = mt6360_tcpc_init;
++	mti->tcpci = tcpci_register_port(&pdev->dev, &mti->tdata);
++	if (IS_ERR(mti->tcpci)) {
++		dev_err(&pdev->dev, "Failed to register tcpci port\n");
++		return PTR_ERR(mti->tcpci);
++	}
++
++	ret = devm_request_threaded_irq(mti->dev, mti->irq, NULL, mt6360_irq, IRQF_ONESHOT,
++					dev_name(&pdev->dev), mti);
++	if (ret) {
++		dev_err(mti->dev, "Failed to register irq\n");
++		tcpci_unregister_port(mti->tcpci);
++		return ret;
++	}
++
++	device_init_wakeup(&pdev->dev, true);
++	platform_set_drvdata(pdev, mti);
++
++	return 0;
++}
++
++static int mt6360_tcpc_remove(struct platform_device *pdev)
++{
++	struct mt6360_tcpc_info *mti = platform_get_drvdata(pdev);
++
++	disable_irq(mti->irq);
++	tcpci_unregister_port(mti->tcpci);
++	return 0;
++}
++
++static int __maybe_unused mt6360_tcpc_suspend(struct device *dev)
++{
++	struct mt6360_tcpc_info *mti = dev_get_drvdata(dev);
++
++	if (device_may_wakeup(dev))
++		enable_irq_wake(mti->irq);
++
++	return 0;
++}
++
++static int __maybe_unused mt6360_tcpc_resume(struct device *dev)
++{
++	struct mt6360_tcpc_info *mti = dev_get_drvdata(dev);
++
++	if (device_may_wakeup(dev))
++		disable_irq_wake(mti->irq);
++
++	return 0;
++}
++
++static SIMPLE_DEV_PM_OPS(mt6360_tcpc_pm_ops, mt6360_tcpc_suspend, mt6360_tcpc_resume);
++
++static const struct of_device_id __maybe_unused mt6360_tcpc_of_id[] = {
++	{ .compatible = "mediatek,mt6360-tcpc", },
++	{},
++};
++MODULE_DEVICE_TABLE(of, mt6360_tcpc_of_id);
++
++static struct platform_driver mt6360_tcpc_driver = {
++	.driver = {
++		.name = "mt6360-tcpc",
++		.pm = &mt6360_tcpc_pm_ops,
++		.of_match_table = mt6360_tcpc_of_id,
++	},
++	.probe = mt6360_tcpc_probe,
++	.remove = mt6360_tcpc_remove,
++};
++module_platform_driver(mt6360_tcpc_driver);
++
++MODULE_AUTHOR("ChiYuan Huang <cy_huang@richtek.com>");
++MODULE_DESCRIPTION("MT6360 USB Type-C Port Controller Interface Driver");
++MODULE_LICENSE("GPL v2");
+-- 
+2.7.4
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
