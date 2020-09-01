@@ -2,83 +2,81 @@ Return-Path: <SRS0=VWIa=CK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A23E9C433E6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2020 12:30:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D205FC433E2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2020 14:37:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6ACA920767
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2020 12:30:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9C41820767
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2020 14:37:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zwuz0yh7";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="CWt5TTyF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6ACA920767
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hviS+qe7";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EJBRW0sy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9C41820767
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=L5If6ad49czxMZIh4KEN1Y1cEfVSQREL9nh/iAeJ1gw=; b=zwuz0yh7pdpBJEhr/xJqBS7t3
-	YWyLvRa26QG3EDg9HVQWiFP1yNeGqUBaxcPumCnpgprC7v8LauaYKIvZfRP1Ab+8HrRIu/s5yQq1u
-	SEt34CpP06QXB8g4tUSPrQTUwhiJ6BW3i62Zk9k5HhLSbpgLvexJa7tnEAI25PFwE+h/0EvbSo2rT
-	Ew86yqHIyhFrQTYk+a0BTXsfd/7LkExoPQmeeG8/8S8aMmm4rdlWbFUNjTnpRVpPzioqu3Vs69tnR
-	+gO8fAfIXbq5jTSEkRSE+5fbnYvka0jeIinS05vk2m8MKInA3+sAgnTex3iC+nLHQevn+oSGr+940
-	9X5DrpOYA==;
+	 bh=DXSXptA0KINb9VDifkD/wv/cCTJbaNxxHAiGmz82n7g=; b=hviS+qe7EMPiJUGOI8CBP/+If
+	jKHS/LqDTbvyZ1vjxbrX537ZMTX+eEMN0AXERUjKXkWzAu4Ovxr+9hyy75eCpW/HZQwbuqB3s9NvW
+	T2zGMEXp3uX1JdcHdTSylDKLoc6+aelMcFIKsE/weG2fq7eJhxd8J2rHTGZ2syzBqLmkolhkpBgIs
+	m1KH39zHIrCuQDqpi3msAyadbUkbY4nhDeq8X/n291a4EytaykzZyY8JuLRcIs71ml/YuG3lrZc4J
+	s5hBW6MfprbLPgT0YSDCqR6mcdpwp1GQz9QdXYF0lfcUkRtsGOVrbeQ9jxXNzdwRQyt8ccYdQBr7d
+	IgmkWBZVA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kD5Q9-0004G1-S9; Tue, 01 Sep 2020 12:29:53 +0000
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
+	id 1kD7Pi-00053u-A1; Tue, 01 Sep 2020 14:37:34 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kD5Q6-0004Ep-De; Tue, 01 Sep 2020 12:29:51 +0000
-Received: by mail-io1-xd42.google.com with SMTP id h4so983935ioe.5;
- Tue, 01 Sep 2020 05:29:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=nr3oAO1J7ou/Wa9BRVlR/mWJbOSg9zgxTm5r/RYqoxo=;
- b=CWt5TTyFycCJCtjJPv8aWy8tpmsRd8b/odwKabtR23wfFxkLqHSNKNG41TvRZHSAF1
- u1ZjDzx+V7+Un/FOxvqZNnaIwViOUFnKv8+IDkqp/amKHRaROg5FjoikQvk/UcHTvVhg
- dUeSyBvmhuMLAC3ShQr7SqvYMxG0ums6/1iPOoawhFdq/NG6mETYKZTTGbMfhWJ2HVsl
- vL60M+aBY95RET5WKuUFFrQn/ZRVslJR9zJmR+GTKcduhqny4OwwPTj/mfo5VdtNVekY
- qrFNcPKoGmd1xDeK63cX/W5BhGvWK4IGrn4jlJnqofXBtZZDh767L+P8JkPsQJup9WO1
- I3Hg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=nr3oAO1J7ou/Wa9BRVlR/mWJbOSg9zgxTm5r/RYqoxo=;
- b=QgLY/zVSGmRiBBUm2W4xS97DILPZujL10COr4imIwWHmoTseBjZqwiCt/uJfEKP2Ct
- dfwhOwoKnX+pg6TJ0QMHopfwZmjWsi7rpdRqX4JzImlBphu52mHKGO+KyRl148q2ey5g
- sUkXhEmkKL4nDsudaKsjzgRTBkN/r73KCBOLjk2mBrQQgeFMcU/oXz4VgEm2s5R0Mh0X
- UYc7CUgPn/svtQ3ScWo6p3mwHQ/svdNepXlT5Qbc9B8fygG4ax7fUDL12CNr6fM1AmKH
- T/2cuaNnFzKZZjz2qOEERGq8QmFqnNZzbAQK74ixCr8fhVFfi6VzxAkKqQbdBbCL+mBA
- N69Q==
-X-Gm-Message-State: AOAM532BUuv8bHZ4iTxx9CS8HonmeOQBmRGKvxzGxHa0x/i9fOGMEwAI
- MAYSv+v9khEPi6LOZWLne4KMoEUhK5wVyk9ZqEw=
-X-Google-Smtp-Source: ABdhPJyoc+ysyeuiX9W3a9XcXr6aUKFAc1uY9bosrpv8NxM0mimkeTh0YjpVyD3McAmhUwVQkjUVzsH5DCRKbbjXjLE=
-X-Received: by 2002:a5e:8e0a:: with SMTP id a10mr1255594ion.200.1598963388756; 
- Tue, 01 Sep 2020 05:29:48 -0700 (PDT)
+ id 1kD7Pf-00052x-MU; Tue, 01 Sep 2020 14:37:33 +0000
+X-UUID: c66e7895058f4ab8ac1e6f39176790a8-20200901
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=i/M1pWATEggY6t0efcPJUKkWQXwt7jVFmbATAeUxAOU=; 
+ b=EJBRW0syQgoRchR5DfJWuP0QP7ePjlYlefYApyEO13j8PAvDViol5N7jl1rEr2myN2pvHGI+Yq79fpYMBZfvEYvUU36NFHvhInbDAEkvZ55RkxkwyK0Ca8X3A+8xIem4Gm5ZMheXR9+GTSqeMqqzBQt9DFzs/ETp9HOJr3/4EJQ=;
+X-UUID: c66e7895058f4ab8ac1e6f39176790a8-20200901
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <dongchun.zhu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 367147839; Tue, 01 Sep 2020 06:37:18 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 1 Sep 2020 07:37:16 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 1 Sep 2020 22:37:12 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 1 Sep 2020 22:37:11 +0800
+Message-ID: <1598970937.4733.21.camel@mhfsdcap03>
+Subject: Re: [PATCH v13 1/2] media: dt-bindings: media: i2c: Document
+ OV02A10 bindings
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>, Tomasz Figa
+ <tfiga@chromium.org>
+Date: Tue, 1 Sep 2020 22:35:37 +0800
+In-Reply-To: <20200831160644.GL31019@paasikivi.fi.intel.com>
+References: <20200710101850.4604-1-dongchun.zhu@mediatek.com>
+ <20200710101850.4604-2-dongchun.zhu@mediatek.com>
+ <CAAFQd5BB3c9nvruY0jcVbRZtbUyiFj0v8=D6KA7EPtN4rz=+wA@mail.gmail.com>
+ <20200831160644.GL31019@paasikivi.fi.intel.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-References: <1598441840-15226-1-git-send-email-gene.chen.richtek@gmail.com>
- <1598441840-15226-2-git-send-email-gene.chen.richtek@gmail.com>
- <f35bf9c1-6397-3369-954d-fe05d77438cd@infradead.org>
-In-Reply-To: <f35bf9c1-6397-3369-954d-fe05d77438cd@infradead.org>
-From: Gene Chen <gene.chen.richtek@gmail.com>
-Date: Tue, 1 Sep 2020 20:29:37 +0800
-Message-ID: <CAE+NS36MAwNJkbNV30h=bjB6UnW8u9XuzNkDB4Nor=x63Oz3Eg@mail.gmail.com>
-Subject: Re: [PATCH 1/2] leds: mt6360: Add LED driver for MT6360
-To: Randy Dunlap <rdunlap@infradead.org>
+X-TM-SNTS-SMTP: 445E85A69E8366B468046E9E6B70917AF91F340655DCFA76B1105FB898ACB8272000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200901_082950_460741_30FE8EBC 
-X-CRM114-Status: GOOD (  16.46  )
+X-CRM114-CacheID: sfid-20200901_103731_978914_2EA5BA19 
+X-CRM114-Status: GOOD (  41.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,43 +88,225 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Dan Murphy <dmurphy@ti.com>, Gene Chen <gene_chen@richtek.com>,
- linux-kernel@vger.kernel.org, cy_huang@richtek.com, benjamin.chao@mediatek.com,
- linux-mediatek@lists.infradead.org, linux-leds@vger.kernel.org, pavel@ucw.cz,
- Matthias Brugger <matthias.bgg@gmail.com>, shufan_lee@richtek.com,
- Wilma.Wu@mediatek.com, linux-arm-kernel@lists.infradead.org,
- jacek.anaszewski@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Mark
+ Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@chromium.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ linux-devicetree <devicetree@vger.kernel.org>,
+ Shengnan Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=A3=E7=94=B7=29?=
+ <shengnan.wang@mediatek.com>, Louis Kuo <louis.kuo@mediatek.com>,
+ Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ dongchun.zhu@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>,
+ Cao Bing Bu <bingbu.cao@intel.com>, matrix.zhu@aliyun.com,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, "list@263.net:IOMMU DRIVERS
+ <iommu@lists.linux-foundation.org>, Joerg  Roedel <joro@8bytes.org>,
+ " <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-UmFuZHkgRHVubGFwIDxyZHVubGFwQGluZnJhZGVhZC5vcmc+IOaWvCAyMDIw5bm0OOaciDI25pel
-IOmAseS4iSDkuIvljYgxMTozMOWvq+mBk++8mgo+Cj4gT24gOC8yNi8yMCA0OjM3IEFNLCBHZW5l
-IENoZW4gd3JvdGU6Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9sZWRzL0tjb25maWcgYi9kcml2
-ZXJzL2xlZHMvS2NvbmZpZwo+ID4gaW5kZXggMWMxODFkZi4uY2U5NWVhZCAxMDA2NDQKPiA+IC0t
-LSBhL2RyaXZlcnMvbGVkcy9LY29uZmlnCj4gPiArKysgYi9kcml2ZXJzL2xlZHMvS2NvbmZpZwo+
-ID4gQEAgLTI3MSw2ICsyNzEsMTcgQEAgY29uZmlnIExFRFNfTVQ2MzIzCj4gPiAgICAgICAgIFRo
-aXMgb3B0aW9uIGVuYWJsZXMgc3VwcG9ydCBmb3Igb24tY2hpcCBMRUQgZHJpdmVycyBmb3VuZCBv
-bgo+ID4gICAgICAgICBNZWRpYXRlayBNVDYzMjMgUE1JQy4KPiA+Cj4gPiArY29uZmlnIExFRFNf
-TVQ2MzYwCj4gPiArICAgICB0cmlzdGF0ZSAiTEVEIFN1cHBvcnQgZm9yIE1lZGlhdGVrIE1UNjM2
-MCBQTUlDIgo+ID4gKyAgICAgZGVwZW5kcyBvbiBMRURTX0NMQVNTX0ZMQVNIICYmIE9GCj4gPiAr
-ICAgICBkZXBlbmRzIG9uIFY0TDJfRkxBU0hfTEVEX0NMQVNTIHx8ICFWNEwyX0ZMQVNIX0xFRF9D
-TEFTUwo+ID4gKyAgICAgZGVwZW5kcyBvbiBNRkRfTVQ2MzYwCj4gPiArICAgICBoZWxwCj4gPiAr
-ICAgICAgIFRoaXMgb3B0aW9uIGVuYWJsZXMgc3VwcG9ydCBmb3IgZHVhbCBGbGFzaCBMRUQgZHJp
-dmVycyBmb3VuZCBvbgo+ID4gKyAgICAgICBNZWRpYXRlayBNVDYzNjAgUE1JQy4KPiA+ICsgICAg
-ICAgU3VwcG9ydCBUb3JjaCBhbmQgU3Ryb2JlIG1vZGUgaW5kZXBlbmRlbnRseSBjdXJyZW50IHNv
-dXJjZS4KPgo+ICAgICAgICAgICBTdXBwb3J0cyAgICAgICAgICAgICAgICAgICAgICBpbmRlcGVu
-ZGVudGx5IG9mIGN1cnJlbnQgc291cmNlLgo+Cj4gSSdtIGd1ZXNzaW5nIG9uIHRoYXQgZW5kaW5n
-OyBJIHdhc24ndCBzdXJlIHdoYXQgd2FzIGludGVuZGVkLCBidXQgaXQgZG9lc24ndAo+IG1ha2Ug
-c2Vuc2UgYXMgcG9zdGVkLgo+Cj4KCkkgd2FudCB0byBzYXkgaXMgZmxlZDEvMiBjYW4gaW5kZXBl
-bmRlbnRseSBjb250cm9sLgpGb3IgZXhhbXBsZSwgZmxlZDEgaW4gc3Ryb2JlIG1vZGUsIG9yIGZs
-ZWQyIGluIHRvcmNoIG1vZGUsCm9yIGJvdGggZmxlZDEgYW5kIGZsZWQyIGluIHRvcmNoIG9yIHN0
-cm9iZSBtb2RlCgo+ID4gKyAgICAgICBJbmNsdWRlIExvdy1WRiBhbmQgc2hvcnQgcHJvdGVjdGlv
-bi4KPgo+ICAgICAgICAgICBJbmNsdWRlcwo+CgpBQ0sKCj4gPiArCj4gPiAgY29uZmlnIExFRFNf
-UzNDMjRYWAo+ID4gICAgICAgdHJpc3RhdGUgIkxFRCBTdXBwb3J0IGZvciBTYW1zdW5nIFMzQzI0
-WFggR1BJTyBMRURzIgo+ID4gICAgICAgZGVwZW5kcyBvbiBMRURTX0NMQVNTCj4KPgo+IHRoYW5r
-cy4KPiAtLQo+IH5SYW5keQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1tZWRpYXRlawo=
+Hi Tomasz, Sakari,
+
+Thanks for digging into the imperfections.
+
+On Mon, 2020-08-31 at 19:06 +0300, Sakari Ailus wrote:
+> Hi Tomasz,
+> 
+> Thanks for dressing this into words.
+> 
+> On Mon, Aug 31, 2020 at 01:44:27PM +0200, Tomasz Figa wrote:
+> > Hi Dongchun,
+> > 
+> > On Fri, Jul 10, 2020 at 12:19 PM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
+> > >
+> > > Add YAML device tree binding for OV02A10 CMOS image sensor,
+> > > and the relevant MAINTAINERS entries.
+> > >
+> > > Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+> > > Reviewed-by: Rob Herring <robh@kernel.org>
+> > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > > ---
+> > >  .../bindings/media/i2c/ovti,ov02a10.yaml           | 172 +++++++++++++++++++++
+> > >  MAINTAINERS                                        |   7 +
+> > >  2 files changed, 179 insertions(+)
+> > >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> > >
+> > > diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> > > new file mode 100644
+> > > index 0000000..3a916cc
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> > > @@ -0,0 +1,172 @@
+> > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > > +# Copyright (c) 2020 MediaTek Inc.
+> > > +%YAML 1.2
+> > > +---
+> > > +$id: http://devicetree.org/schemas/media/i2c/ovti,ov02a10.yaml#
+> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > +
+> > > +title: Omnivision OV02A10 CMOS Sensor Device Tree Bindings
+> > > +
+> > > +maintainers:
+> > > +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > > +
+> > > +description: |-
+> > > +  The Omnivision OV02A10 is a low-cost, high performance, 1/5-inch, 2 megapixel
+> > > +  image sensor, which is the latest production derived from Omnivision's CMOS
+> > > +  image sensor technology. Ihis chip supports high frame rate speeds up to 30fps
+> > > +  @ 1600x1200 (UXGA) resolution transferred over a 1-lane MIPI interface. The
+> > > +  sensor output is available via CSI-2 serial data output.
+> > > +
+> > > +properties:
+> > > +  compatible:
+> > > +    const: ovti,ov02a10
+> > > +
+> > > +  reg:
+> > > +    maxItems: 1
+> > > +
+> > > +  clocks:
+> > > +    items:
+> > > +      - description: top mux camtg clock
+> > > +      - description: divider clock
+> > > +
+> > > +  clock-names:
+> > > +    items:
+> > > +      - const: eclk
+> > > +      - const: freq_mux
+> > 
+> > Why do we have two clocks here? Looking at the example suggests that
+> > they may be the clocks of the SoC that the integration was done with.
+> > However, the binding must only define the aspects of the particular
+> > device, i.e. this sensor.
+> > 
+> > I suppose we should only have "eclk" here and it should be described
+> > as "external clock for the sensor".
+> > 
+
+I cannot agree with you more, it would be fixed in next release.
+
+> > > +
+> > > +  clock-frequency:
+> > > +    description:
+> > > +      Frequency of the eclk clock in Hertz.
+> > 
+> > nit: maybe Hz?
+> > 
+
+Both shall be okay, let's use Hz instead, which seems to be more simple.
+
+> > > +
+> > > +  dovdd-supply:
+> > > +    description:
+> > > +      Definition of the regulator used as Digital I/O voltage supply.
+> > > +
+> > > +  avdd-supply:
+> > > +    description:
+> > > +      Definition of the regulator used as Analog voltage supply.
+> > > +
+> > > +  dvdd-supply:
+> > > +    description:
+> > > +      Definition of the regulator used as Digital core voltage supply.
+> > > +
+> > > +  powerdown-gpios:
+> > > +    description:
+> > > +      Must be the device tree identifier of the GPIO connected to the
+> > > +      PD_PAD pin. This pin is used to place the OV02A10 into standby mode
+> > > +      or shutdown mode. As the line needs to be high for the powerdown mode
+> > > +      to be active, it should be marked GPIO_ACTIVE_HIGH.
+> > > +    maxItems: 1
+> > > +
+> > > +  reset-gpios:
+> > > +    description:
+> > > +      Must be the device tree identifier of the GPIO connected to the
+> > > +      RST_PD pin. If specified, it will be asserted during driver probe.
+> > > +      As the line needs to be low for the reset to be active, it should be
+> > > +      marked GPIO_ACTIVE_LOW.
+> > > +    maxItems: 1
+> > > +
+> > > +  rotation:
+> > > +    description:
+> > > +      Definition of the sensor's placement.
+> > > +    allOf:
+> > > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
+> > > +      - enum:
+> > > +          - 0    # Sensor Mounted Upright
+> > > +          - 180  # Sensor Mounted Upside Down
+> > > +        default: 0
+> > > +
+> > > +  ovti,mipi-tx-speed:
+> > > +    description:
+> > > +      Indication of MIPI transmission speed select, which is to control D-PHY
+> > > +      timing setting by adjusting MIPI clock voltage to improve the clock
+> > > +      driver capability.
+> > 
+> > The description says that the value adjusts "MIPI clock voltage".
+> > Should the property be renamed to "ovti,mipi-clock-voltage"?
+> > 
+
+Sure, mipi-clock-voltage seems more clear, perfect naming :-)
+
+> > > +    allOf:
+> > > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
+> > > +      - enum:
+> > > +          - 0    #  20MHz -  30MHz
+> > > +          - 1    #  30MHz -  50MHz
+> > > +          - 2    #  50MHz -  75MHz
+> > > +          - 3    #  75MHz - 100MHz
+> > > +          - 4    # 100MHz - 130MHz
+> > > +        default: 3
+> > > +
+> > 
+> > I've discussed this on IRC with Sakari. It sounds like this works as
+> > is for us because the driver currently only supports 1 mode, always
+> > running the link at 390 MHz. This won't scale if one intends to add
+> > more modes, because DT can't be expected to be updated when the driver
+> > changes. The two are expected to be separate and backwards compatible.
+> > 
+> > I think we could model this in DT as an array of <link speed, clock
+> > voltage> pairs. Similarly to the OPP bindings [1]. An example to have
+> > all link speeds up to 390 MHz use the value 4:
+> > 
+> > ovti,mipi-clock-voltages = <
+> >               /* KHz         clock voltage unit */
+> >                  390000    4
+> > >;
+> > 
+> > if one wants to select different voltage for different link, they
+> > could do so as well. With the example below, the driver should
+> > configure "3" for link frequencies <= 150 MHz and "4" for > 150 MHz <=
+> > 390 MHz. Link frequencies > 390 MHz should be disallowed.
+> > 
+> > ovti,mipi-clock-voltages = <
+> >               /* KHz         clock voltage unit */
+> >                  150000    3
+> >                  390000    4
+> > >;
+> > 
+> > What do you think?
+> 
+
+So now we define the MIPI clock voltage (unit) as one function of link
+frequency?
+
+For current sensor mode (1600x1200, 390MHz link frequency), we then
+shall always use the value 4 to configure the MIPI transmission speed
+selection (P1:0xA1). Am I correct in thinking that?
+
+> One more note on my proposal: use the index of the link frequency to access
+> the ovti,mipi-clock-voltages array. That should be more simple for the
+> driver, as the driver is expected to use only link frequencies listed in DT
+> bindings anyway.
+> 
+
+Good idea! That's exactly what I mean.
+Just submitted one draft change to handle the new property in DT.
+@Sakari @Tomasz please help to review it.
+https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2387980/1/drivers/media/i2c/ov02a10.c#883
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
