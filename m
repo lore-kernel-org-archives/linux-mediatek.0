@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F4A4C433E2
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2020 23:29:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8AF0DC433E2
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2020 23:40:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3FCFC207D3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2020 23:29:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4FC0B206E7
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2020 23:40:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BMpipBHs";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="T+if4hZP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3FCFC207D3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ylp1GcOV";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="DXxDiC6z"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4FC0B206E7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,60 +26,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mrvqQIqKoY0IIJyEkOSMcIaO4ixpDKmK7aqbG1KTMN0=; b=BMpipBHsws2y53hi/B+iZVQ1c
-	0y770EI3v+Eixu3HKzDZvbcUdV8PgDT1Y0Lwew4Be9m4ANJVQFobSV8d8AhbKVKDLttif614oOcq2
-	HKl1nUIyQ1OY8eAzYh1YfrkFpgtG5awMux03NolPmKAL8AWttNlQ49aYTM5N4zuL87UrImX95SMyF
-	dbW8Nl8RiaOVBof3CbX+9jQuo9QSSzHTLz3926Yg7EwQI1tYy4u3SNLT+c+bovsYreOZ1n19C0qV2
-	3gBXxdN00ikbM/kitktjmV2tjA7AkmklPt0T2TCh4zVEnPBGrdB6SF4qYM7d6XhaEkVjjIq9IGmkj
-	peLVfyU/w==;
+	 bh=BP4ttzHNKxk+Om6GZ+5wzsCPcO7Gf39tW4MTQ5e1S4A=; b=Ylp1GcOVq59i3Iz8NXnWl4FRZ
+	iJfqmp0UyD1o3xD7VGiAQ68a/vI35MLJVfj9E/+MpLcqgnG7/CZ6qy7DbdEgOUmV26+1G8rXKDCvT
+	vHNyd23knvHgj/GYz/koKc/h2uPX1pc3QDsJ9vPDmOiB5iZhBgWRjuRQFzviJw5gcrNr8h2kpcnjR
+	hoszGpifjcKGIwerd6TO8CY3fY/WeAq/t8H3urKl+NyPmF3o3Ne0rq+lASzqJy6RLo861mHPIhunn
+	dVjIuUJhgLItqTVCA75dem6/3v00kVpOwYheXjjhpPE8JNbEvaraP4u3Sj0W7DmA+Xres2jQ1gaiX
+	eZY2eB+qQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kDcCK-0003PB-Mx; Wed, 02 Sep 2020 23:29:48 +0000
-Received: from lelv0143.ext.ti.com ([198.47.23.248])
+	id 1kDcMl-0004dt-Vs; Wed, 02 Sep 2020 23:40:36 +0000
+Received: from fllv0016.ext.ti.com ([198.47.19.142])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kDcCG-0003OO-I4; Wed, 02 Sep 2020 23:29:47 +0000
-Received: from fllv0034.itg.ti.com ([10.64.40.246])
- by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 082NTg7N023002;
- Wed, 2 Sep 2020 18:29:42 -0500
+ id 1kDcMj-0004dJ-Bc; Wed, 02 Sep 2020 23:40:34 +0000
+Received: from lelv0266.itg.ti.com ([10.180.67.225])
+ by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 082NeUfk061757;
+ Wed, 2 Sep 2020 18:40:30 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1599089382;
- bh=5ismlKMcchJg6W6QoumUCgvbzAC8BXk4SjpAViJ4qts=;
+ s=ti-com-17Q1; t=1599090030;
+ bh=BFbzFeJpfcaC6ycaf4eZClFigSVdESVAB5glK64fSDw=;
  h=Subject:To:CC:References:From:Date:In-Reply-To;
- b=T+if4hZPcBLlHYJ6RddogpPBKvM+LOIs76Kcmmi5a7euud7ZIX0A3u6rSz+Q0MYxS
- YM/ns7UgKhc+OZkWjq/7VBP9DQWEV3HfnHpCfXbL6+pCLX8c5R4IcFRKpfGNdXiDVm
- 9f5vBGDdAgy/4z7sSoVAQ7yzdxWYcHk29EUV/kTo=
-Received: from DLEE109.ent.ti.com (dlee109.ent.ti.com [157.170.170.41])
- by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 082NTgES068502
+ b=DXxDiC6zHHq3/4GkD5eKFXhhia0zcyCk6W9P2W7ahuO56qpqpRtTnwP4Wv3T0Irsi
+ orCV1XB9pxji1b3LegMI8OO9432U5YNH0JeIZnS/7BnOPlSiwIXvRufYKvjg7FQP/A
+ 0Po+cNMcrA6g3+Jmh34JsJo+Gf9bdynE17JtAhzM=
+Received: from DLEE102.ent.ti.com (dlee102.ent.ti.com [157.170.170.32])
+ by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 082NeUX1040689
  (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 2 Sep 2020 18:29:42 -0500
-Received: from DLEE105.ent.ti.com (157.170.170.35) by DLEE109.ent.ti.com
- (157.170.170.41) with Microsoft SMTP Server (version=TLS1_2,
+ Wed, 2 Sep 2020 18:40:30 -0500
+Received: from DLEE108.ent.ti.com (157.170.170.38) by DLEE102.ent.ti.com
+ (157.170.170.32) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Wed, 2 Sep
- 2020 18:29:42 -0500
-Received: from lelv0326.itg.ti.com (10.180.67.84) by DLEE105.ent.ti.com
- (157.170.170.35) with Microsoft SMTP Server (version=TLS1_2,
+ 2020 18:40:29 -0500
+Received: from fllv0040.itg.ti.com (10.64.41.20) by DLEE108.ent.ti.com
+ (157.170.170.38) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Wed, 2 Sep 2020 18:29:42 -0500
+ Frontend Transport; Wed, 2 Sep 2020 18:40:29 -0500
 Received: from [10.250.34.112] (ileax41-snat.itg.ti.com [10.172.224.153])
- by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 082NTfUQ128253;
- Wed, 2 Sep 2020 18:29:41 -0500
-Subject: Re: [v4,4/4] arm64: dts: mt8192: add infracfg_rst node
+ by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 082NeTBX025309;
+ Wed, 2 Sep 2020 18:40:29 -0500
+Subject: Re: [v4,3/4] reset-controller: ti: introduce a new reset handler
 To: Crystal Guo <crystal.guo@mediatek.com>, <p.zabel@pengutronix.de>,
  <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
 References: <20200817030324.5690-1-crystal.guo@mediatek.com>
- <20200817030324.5690-5-crystal.guo@mediatek.com>
+ <20200817030324.5690-4-crystal.guo@mediatek.com>
 From: Suman Anna <s-anna@ti.com>
-Message-ID: <211bd78f-3b70-1e65-eea9-75cc73a3dfdd@ti.com>
-Date: Wed, 2 Sep 2020 18:29:41 -0500
+Message-ID: <3a5decee-5f31-e27d-a120-1f835241a87c@ti.com>
+Date: Wed, 2 Sep 2020 18:40:24 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200817030324.5690-5-crystal.guo@mediatek.com>
+In-Reply-To: <20200817030324.5690-4-crystal.guo@mediatek.com>
 Content-Language: en-US
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200902_192944_698060_A40EC799 
-X-CRM114-Status: GOOD (  17.19  )
+X-CRM114-CacheID: sfid-20200902_194033_676408_B9428E55 
+X-CRM114-Status: GOOD (  25.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,52 +104,109 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Hi Crystal,
 
 On 8/16/20 10:03 PM, Crystal Guo wrote:
-> add infracfg_rst node which is for MT8192 platform
+> Introduce ti_syscon_reset() to integrate assert and deassert together.
+> If some modules need do serialized assert and deassert operations
+> to reset itself, reset_control_reset can be called for convenience.
+
+There are multiple changes in this same patch. I think you should split this
+functionality away from the change for the regmap_update_bits() to
+regmap_write_bits(), similar to what you have done in your v2 Patch 4.
+
+> 
+> Such as reset-qcom-aoss.c, it integrates assert and deassert together
+> by 'reset' method. MTK Socs also need this method to perform reset.
 > 
 > Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
+> ---
+>  drivers/reset/reset-ti-syscon.c | 26 ++++++++++++++++++++++++--
+>  1 file changed, 24 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/reset/reset-ti-syscon.c b/drivers/reset/reset-ti-syscon.c
+> index a2635c21db7f..08289342f9af 100644
+> --- a/drivers/reset/reset-ti-syscon.c
+> +++ b/drivers/reset/reset-ti-syscon.c
+> @@ -15,6 +15,7 @@
+>   * GNU General Public License for more details.
+>   */
+>  
+> +#include <linux/delay.h>
+>  #include <linux/mfd/syscon.h>
+>  #include <linux/module.h>
+>  #include <linux/of.h>
+> @@ -56,6 +57,7 @@ struct ti_syscon_reset_data {
+>  	struct regmap *regmap;
+>  	struct ti_syscon_reset_control *controls;
+>  	unsigned int nr_controls;
+> +	unsigned int reset_duration_us;
+>  };
+>  
+>  #define to_ti_syscon_reset_data(rcdev)	\
+> @@ -89,7 +91,7 @@ static int ti_syscon_reset_assert(struct reset_controller_dev *rcdev,
+>  	mask = BIT(control->assert_bit);
+>  	value = (control->flags & ASSERT_SET) ? mask : 0x0;
+>  
+> -	return regmap_update_bits(data->regmap, control->assert_offset, mask, value);
+> +	return regmap_write_bits(data->regmap, control->assert_offset, mask, value);
+>  }
+>  
+>  /**
+> @@ -120,7 +122,7 @@ static int ti_syscon_reset_deassert(struct reset_controller_dev *rcdev,
+>  	mask = BIT(control->deassert_bit);
+>  	value = (control->flags & DEASSERT_SET) ? mask : 0x0;
+>  
+> -	return regmap_update_bits(data->regmap, control->deassert_offset, mask, value);
+> +	return regmap_write_bits(data->regmap, control->deassert_offset, mask, value);
+>  }
+>  
+>  /**
+> @@ -158,9 +160,26 @@ static int ti_syscon_reset_status(struct reset_controller_dev *rcdev,
+>  		!(control->flags & STATUS_SET);
+>  }
+>  
+> +static int ti_syscon_reset(struct reset_controller_dev *rcdev,
+> +				  unsigned long id)
+> +{
+> +	struct ti_syscon_reset_data *data = to_ti_syscon_reset_data(rcdev);
+> +	int ret;
+> +
+> +	ret = ti_syscon_reset_assert(rcdev, id);
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (data->reset_duration_us)
+> +		usleep_range(data->reset_duration_us, data->reset_duration_us * 2);
+> +
+> +	return ti_syscon_reset_deassert(rcdev, id);
 
-I understand you are posting these together for complete reference, but driver
-subsystem maintainers typically don't pick dts patches. In anycase, can you
-clarify if your registers are self-clearing registers?
+I echo Philipp's comments [1] from your original v1 series about this. We don't
+need a property to distinguish this, but you could add a flag using match data
+and Mediatek compatible, and use that within this function, or optionally set
+this ops based on compatible (whatever is preferred by Philipp).
 
 regards
 Suman
 
-> ---
->  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 11 ++++++++++-
->  1 file changed, 10 insertions(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> index 931e1ca17220..a0cb9904706b 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -10,6 +10,7 @@
->  #include <dt-bindings/interrupt-controller/irq.h>
->  #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
->  #include <dt-bindings/power/mt8192-power.h>
-> +#include <dt-bindings/reset/ti-syscon.h>
->  
->  / {
->  	compatible = "mediatek,mt8192";
-> @@ -219,9 +220,17 @@
->  		};
->  
->  		infracfg: infracfg@10001000 {
-> -			compatible = "mediatek,mt8192-infracfg", "syscon";
-> +			compatible = "mediatek,mt8192-infracfg", "syscon", "simple-mfd";
->  			reg = <0 0x10001000 0 0x1000>;
->  			#clock-cells = <1>;
+[1] https://patchwork.kernel.org/comment/23519193/
+
+> +}
 > +
-> +			infracfg_rst: reset-controller {
-> +				compatible = "mediatek,infra-reset", "ti,syscon-reset";
-> +				#reset-cells = <1>;
-> +				ti,reset-bits = <
-> +					0x140 15 0x144 15 0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* 0: pcie */
-> +				>;
-> +			};
->  		};
+>  static const struct reset_control_ops ti_syscon_reset_ops = {
+>  	.assert		= ti_syscon_reset_assert,
+>  	.deassert	= ti_syscon_reset_deassert,
+> +	.reset		= ti_syscon_reset,
+>  	.status		= ti_syscon_reset_status,
+>  };
 >  
->  		pericfg: pericfg@10003000 {
+> @@ -204,6 +223,9 @@ static int ti_syscon_reset_probe(struct platform_device *pdev)
+>  		controls[i].flags = be32_to_cpup(list++);
+>  	}
+>  
+> +	of_property_read_u32(pdev->dev.of_node,	"reset-duration-us",
+> +				&data->reset_duration_us);
+> +
+>  	data->rcdev.ops = &ti_syscon_reset_ops;
+>  	data->rcdev.owner = THIS_MODULE;
+>  	data->rcdev.of_node = np;
 > 
 
 
