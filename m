@@ -2,76 +2,74 @@ Return-Path: <SRS0=6rwz=CL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 07B98C433E7
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2020 06:34:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2DD12C433E2
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2020 06:44:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C347320758
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2020 06:34:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id ED1CE20826
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2020 06:44:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KsK/Y4ri";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="L0GglRgr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C347320758
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="m0soeHR8";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="MXugq3VM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ED1CE20826
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VDxLD/hWUowSe3ceHES3Qf18j2ZhS1XVyNl45PUiH7I=; b=KsK/Y4ribCKSb5S65hMwHMn1u
-	lbwC1yRiNDK+Zbg/885ofWIOY0zJUTr469qoMmsB97xfJ9mLB/i/Q1gxshEf7Vn8Aqon+fSNYO8Kz
-	2R21SUz1LNq1RRcwzyzCM7CP2dGJVfxpus2qw3ZmQw2XTPCBwhl7fSAHFZ/VXmmod2wlMAiaXMBGJ
-	Bju0Lk0kL30DOCNTh6f+Sod1GaHMSkYs4r7yK45Gmmlxye1twtRI5itrdRwVcVCSLEGNZ0JsPtYXt
-	jvOSl3ezXPkN7Eolh3Dkm9qBrHRkdxP8mY4IvsAE2HUsmsoxI3pm0+1Cj+NcuY/Gnr+CfZMqmUo5i
-	woUvqjD0Q==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=N4ATKQd4tA3tmHwgwTEGe/jDD7Bz2hotAK3v3vp7lAg=; b=m0soeHR8ouEFcQC6ivdsfcjSRt
+	23QzQXMVzmZYdM0oLHOrTk3oAK6KHpqwiGjS4Uf64YKwGsKMp/yV/Aecq+Pk/ahGxYvKhUfTZM4Or
+	YIPSgxDuwKuiE9j7diGAbJMq2uKPtQYUNAUAoDQBUGIqA5BxNuewqgXmtgDYAt7jHcYzrrXn9r9xy
+	BPpi7leii+pbvn03d8Txqrsk1ztGJhT4CM/gQ6UqUmQCScWAAHrzLNPBy2ogWXlvcK2uVYS8/mAXn
+	YK0qdAgJhTTiW57gKFlH215LTQ/l93j1ANGw9h1sQgNWW2kDBr0HoAJ67h5toE7GP6HgVjzbJyOar
+	xn9FcQtQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kDMLh-0001tI-0B; Wed, 02 Sep 2020 06:34:25 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kDMV9-0002t7-L7; Wed, 02 Sep 2020 06:44:11 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kDMLc-0001py-AV; Wed, 02 Sep 2020 06:34:21 +0000
-X-UUID: 691249e71d06437ebfc1e0775f973734-20200901
+ id 1kDMV5-0002sU-Tb; Wed, 02 Sep 2020 06:44:09 +0000
+X-UUID: 154642a99f3c46ca8ca9abaa007ee3b0-20200901
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=t/mmIReHAuUCSGNHgLFwXSx2t7ItYAk8SFunmzCQg/w=; 
- b=L0GglRgrtTVb+znavw1s5/tOgP2Lrkn+QNYIDyUgLRh1b7R+AZrAdQiHcAM2T5yk8yXDW3Mm90VdKt46VwX5SPGmAyw2b/LZungNDUa2L3a6D7UPfPBxZzK9EVJORG7BgZ8SiGujEjHwnDzqeA1/wGF9R0DV3HdBR9qbKsBHyNA=;
-X-UUID: 691249e71d06437ebfc1e0775f973734-20200901
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=53c4sfWtEQp/XsUMnsdRSVYymnKtnC0kh8GaID/rOdQ=; 
+ b=MXugq3VMRYL5rjYhb/JoyiA/KO5ioxaPkVh4L1I5VXGd4hcm1pi8ljz/j4YyUaeHIYjlJQylj+oXAsqThnPiWYiCANpvpEL46LZ3kYsR/DimlTzDWqzjugSS9OR7EnMLkFVw23UQTYEZ5Fe5GlGO3HSqSdP+DIpmwIhni0RmfRo=;
+X-UUID: 154642a99f3c46ca8ca9abaa007ee3b0-20200901
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <mark-pk.tsai@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1209470942; Tue, 01 Sep 2020 22:34:08 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 1 Sep 2020 23:34:06 -0700
+ with ESMTP id 863051134; Tue, 01 Sep 2020 22:44:04 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 1 Sep 2020 23:34:01 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 2 Sep 2020 14:34:05 +0800
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 2 Sep 2020 14:34:00 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 2 Sep 2020 14:34:05 +0800
+ Frontend Transport; Wed, 2 Sep 2020 14:33:59 +0800
 From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
 To: <maz@kernel.org>, <robh+dt@kernel.org>
-Subject: [PATCH v3 2/2] dt-bindings: interrupt-controller: Add MStar interrupt
- controller
-Date: Wed, 2 Sep 2020 14:33:44 +0800
-Message-ID: <20200902063344.1852-3-mark-pk.tsai@mediatek.com>
+Subject: [PATCH v3 0/2] Add MStar interrupt controller support
+Date: Wed, 2 Sep 2020 14:33:42 +0800
+Message-ID: <20200902063344.1852-1-mark-pk.tsai@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200902063344.1852-1-mark-pk.tsai@mediatek.com>
-References: <20200902063344.1852-1-mark-pk.tsai@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 2774D7340570A9ED91DE96DFC9244A13846B9F0DE513AC10544567D01A222CA22000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200902_023420_507750_AABD7B88 
-X-CRM114-Status: GOOD (  14.87  )
+X-CRM114-CacheID: sfid-20200902_024408_098996_98401CAC 
+X-CRM114-Status: GOOD (  10.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,84 +91,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add binding for MStar interrupt controller.
+MStar contain a legacy interrupt controller that routes interrupts
+to the GIC. SigmaStar and Mediatek TV SoCs also have this interrupt
+controller IP.
 
-Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
----
- .../interrupt-controller/mstar,mst-intc.yaml  | 64 +++++++++++++++++++
- 1 file changed, 64 insertions(+)
+Mark-PK Tsai (2):
+  irqchip: irq-mst: Add MStar interrupt controller support
+  dt-bindings: interrupt-controller: Add MStar interrupt controller
+
+ .../interrupt-controller/mstar,mst-intc.yaml  |  64 ++++++
+ MAINTAINERS                                   |   7 +
+ drivers/irqchip/Kconfig                       |   8 +
+ drivers/irqchip/Makefile                      |   1 +
+ drivers/irqchip/irq-mst-intc.c                | 199 ++++++++++++++++++
+ 5 files changed, 279 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/interrupt-controller/mstar,mst-intc.yaml
+ create mode 100644 drivers/irqchip/irq-mst-intc.c
 
-diff --git a/Documentation/devicetree/bindings/interrupt-controller/mstar,mst-intc.yaml b/Documentation/devicetree/bindings/interrupt-controller/mstar,mst-intc.yaml
-new file mode 100644
-index 000000000000..bbf0f26cd008
---- /dev/null
-+++ b/Documentation/devicetree/bindings/interrupt-controller/mstar,mst-intc.yaml
-@@ -0,0 +1,64 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/interrupt-controller/mstar,mst-intc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MStar Interrupt Controller
-+
-+maintainers:
-+  - Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-+
-+description: |+
-+  MStar, SigmaStar and Mediatek TV SoCs contain multiple legacy
-+  interrupt controllers that routes interrupts to the GIC.
-+
-+  The HW block exposes a number of interrupt controllers, each
-+  can support up to 64 interrupts.
-+
-+properties:
-+  compatible:
-+    const: mstar,mst-intc
-+
-+  interrupt-controller: true
-+
-+  "#interrupt-cells":
-+    const: 3
-+    description: |
-+      Use the same format as specified by GIC in arm,gic.yaml.
-+
-+  reg:
-+    maxItems: 1
-+
-+  mstar,irqs-map-range:
-+    description: |
-+      The range <start, end> of parent interrupt controller's interrupt
-+      lines that are hardwired to mstar interrupt controller.
-+    $ref: /schemas/types.yaml#/definitions/uint32-matrix
-+    items:
-+      minItems: 2
-+      maxItems: 2
-+
-+  mstar,intc-no-eoi:
-+    description:
-+      Mark this controller has no End Of Interrupt(EOI) implementation.
-+    type: boolean
-+
-+required:
-+  - compatible
-+  - reg
-+  - mstar,irqs-map-range
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    mst_intc0: interrupt-controller@1f2032d0 {
-+      compatible = "mstar,mst-intc";
-+      interrupt-controller;
-+      #interrupt-cells = <3>;
-+      interrupt-parent = <&gic>;
-+      reg = <0x1f2032d0 0x30>;
-+      mstar,irqs-map-range = <0 63>;
-+    };
-+...
 -- 
 2.18.0
 _______________________________________________
