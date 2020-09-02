@@ -2,22 +2,23 @@ Return-Path: <SRS0=6rwz=CL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D9B06C433E7
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2020 09:03:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4FC3BC43461
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2020 11:04:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A968520709
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2020 09:03:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1679E2078E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2020 11:04:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="srDuQDXd";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="VZzoNgJo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A968520709
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="D8wZh7xh";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="jvktss2w"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1679E2078E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -25,58 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UbJRvZ3/knHEntZ840hWseaXUv4xJKOQrx8EWjpFFCE=; b=srDuQDXdBW9lFGNEsSAl0mcsq
-	ajTX0iKI3svOKw7/uueM8C/xfj5OQL8sFPRk/mC8YClCv/Ug8k3mcb3q/9BOhOIoGBNV/e01rjwDJ
-	SJ4JwdL6BIJJTojvJ12f8Uf0wArw2GIdIfkD/g6TdJ/2o/adEKcR8y6TJqxCDv+pmMa2Yo4V//Ee2
-	JDIeOAdd/Jfrp/uMUyUmKocnUi93ZQA6xJnHAFnlvxPTyaquoluRxmZllx+gY/He+mNkP+Siz687V
-	aDCWgZyKBTcjSVcY9e/KaL5Vom47AzGdBKZ4uLblv6VqPNCmKTFffMphA617JbJVB7w8TCuEqXNhb
-	r2pEiu/yQ==;
+	 bh=UFEgThLm3ixN+ostC8UX3uvAAUZCrWnzbBivumPaHmM=; b=D8wZh7xh9lQQeTfsjcNt0lO0O
+	eHPhONKYsNLhHH4RyFCihHQ1EckX4KQW8iAtO8VkQlXK1C5yGCvIg3OoLz9olUSu4fLoV0TCIO6Yl
+	UY51SQHFHLm+RoPVQozMoTMUvhJS7yQt3RMB6Hpb05mOZnM0VE5TUo17xc3x+O91OYjegOJynPJa2
+	Oc0KbgMSumNCJ3ru9Op6mqAmOckdz4vtDdEmSsx5m6J7THRU8yj+4CtTxRxU6EUUJgGuA41XREBCE
+	Nhh3svXAo1BdL9dN1yJobyqCEAnP2SURXVYykpfjYlk80noYFsBpD3KY5y7LqK/oDO8hd8rgiZzrn
+	d/p7xFw+A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kDOgA-0005lE-45; Wed, 02 Sep 2020 09:03:42 +0000
-Received: from mail-vs1-xe43.google.com ([2607:f8b0:4864:20::e43])
+	id 1kDQZI-00010h-CD; Wed, 02 Sep 2020 11:04:44 +0000
+Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kDOg6-0005jn-RO
- for linux-mediatek@lists.infradead.org; Wed, 02 Sep 2020 09:03:39 +0000
-Received: by mail-vs1-xe43.google.com with SMTP id b123so2161147vsd.10
- for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2020 02:03:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ id 1kDQZE-0000z8-Jg
+ for linux-mediatek@lists.infradead.org; Wed, 02 Sep 2020 11:04:41 +0000
+Received: by mail-ua1-x944.google.com with SMTP id e41so1431485uad.6
+ for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2020 04:04:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=FFV82M/6u73GqedIKaydXrEwLHTHCWqg1HfMv/IVCCs=;
- b=VZzoNgJoW9pVvA92M/1zKgvhm4xk1DywhQbKr9lziWr2euc7xr7tJqZ7BV3F/7mBJe
- Rmi5STwCgT2WSV4eEldILAKBitUAPowEDgRa/Q2ABJz5ba4q+r3+spzDSFyor3Rhdn6H
- ej0ejV3kcN029m/W+Y0vu38NG7P+7Wp8He8+AbEMlArg2sNq05tNxqKEHeu7J+ZVDFLl
- mjnYOinwdHXOv8naM4Hzpmxan4ss9+v9lUC81Gg4dy1bJ7rF8jf/wmAzXdKlZVnmjqmi
- 3yAIZwjpvP4EZ0xlfoa1K8iiJFMZurKo5lfU3hqX1jqHjJdZjS3KO0vEIUqHL188eslq
- uTTg==
+ :cc:content-transfer-encoding;
+ bh=Hf0PIlZBH2f6tZjqIqPKdTSDxg4ey5IHqqV7o7zs3fA=;
+ b=jvktss2wubUFAj/XGva63/p+i21EmUocT+VKMGriS4nO/cV/LZCl8IS0SS4RAI5I1B
+ PGSRGdX07J/2Y9ObU8kQKYXMoS2CyQ51/SiA8HmfDEN9bG6zj5ZUQSltN4eQYx5vC305
+ jUIYB6t85WIce/eXD6+90KH03m60MDMZHE6SI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=FFV82M/6u73GqedIKaydXrEwLHTHCWqg1HfMv/IVCCs=;
- b=tsZIt1MtnfA3l9gd9hRXugLbnEKcqmMHgZx0mGMUoeb6YMM8KlyDPniuSYg1EEXL7q
- boDCWI7QOe/w+TX/z2RlMWSCg7eUGqiSnb7nz7nDFtkaiQrU/ENVjQuEhJsVrn6QcaJR
- E0fZGTWjm+h5Ht/YODCtmpDK9tUMzeWUyz8sCYWFXSi/xpPLv2hmXM2ydOQYerge1MGR
- x3OAQZTp+Tkln+MSa9nD8HMp6F3NidhFglXDxzToo6z0L/sP0tH4ymGeFJpN/DhyIpT7
- uG9K6/qYMegmEN9GK8BC4KSxdKYVAdecKSCfGX0ic45W7URBaFYNJD489JBlt6+84Wpq
- 8kSw==
-X-Gm-Message-State: AOAM531mqBJPpwhloG1sl+ozpifnwck8S8d27WdnPeh1FxU5XJoE9PaT
- AsFM36Is/Fl392ksgpzkIUgM1I7p4lIwiePAy0cB4Q==
-X-Google-Smtp-Source: ABdhPJwsRg1A+IZemgbWMk9SB448rUC9bgen53U3T2+v8AYT3LANtcX7wdMKlegnvUy0kMb/FNEB0pRyZk8gx49TIgM=
-X-Received: by 2002:a67:b44a:: with SMTP id c10mr4491532vsm.35.1599037416050; 
- Wed, 02 Sep 2020 02:03:36 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=Hf0PIlZBH2f6tZjqIqPKdTSDxg4ey5IHqqV7o7zs3fA=;
+ b=O3P4r5EtY/i9nY8BiYqjR2qdE3Ujv0RCkNt+tomM/iLcVLgtodFEJSPU8oGCqrhNXR
+ FgnDLVIo2GaQKtVer3fGN3LkcYScB5eCP46lgPmTsUrtEcKN0sC6OEaDiErAvjj8O9QK
+ ZUoHUhmKsepUg5g+R7DdXg91XWg5y8yE/otyVHzTaaRUARFJEJtcMxQdX8TuOpDpSOXS
+ mNLM2OKwiwBgnYxqqu9fJE6BC5aFrWcikUhxJPR2EeIgkrRDWVaXbDP05WvFoCvWTqhg
+ LPm08mhm+N4Ebc5XR1fU0XJa8cC9XVD/xIXxTxxzWOAu1TiCIuwLiF5DyZp1ot1yMTBY
+ 6tZg==
+X-Gm-Message-State: AOAM531BckAt6syWgIMh9Qrh9vBD84MDV5Vc8tKcZK17BTiR9GLdkl5J
+ 0qjycnU7gpTBzCdFTyvZq1jCuS5YdtviskO8Ax7nQw==
+X-Google-Smtp-Source: ABdhPJwTAJmdVSE4G5yw+xOM510eJCrk4CeFZ0EVNnIfqJUjO0bPMVj4+uBwlLwieWiC9A5BtacoHnsFLK6H+cR9mhI=
+X-Received: by 2002:ab0:1e84:: with SMTP id o4mr4725479uak.74.1599044678604;
+ Wed, 02 Sep 2020 04:04:38 -0700 (PDT)
 MIME-Version: 1.0
-References: <1598520783-25250-1-git-send-email-chun-hung.wu@mediatek.com>
-In-Reply-To: <1598520783-25250-1-git-send-email-chun-hung.wu@mediatek.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Wed, 2 Sep 2020 11:02:59 +0200
-Message-ID: <CAPDyKFp+RKTcssd-zpiOnvfNsv5=7b8mtEw645JQ+MLmH-XGhg@mail.gmail.com>
-Subject: Re: [PATCH v1 0/2] mmc: cqhci: Add pre_enable() and post_disable()
- hook function
-To: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+References: <9f4fb922-4aa3-0b63-6d81-c83daefd13b9@web.de>
+In-Reply-To: <9f4fb922-4aa3-0b63-6d81-c83daefd13b9@web.de>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Wed, 2 Sep 2020 19:04:27 +0800
+Message-ID: <CANMq1KBJTpnYG59B1V=y_emqD3dtMZQAPY9bWJOC8FW2fNRgsA@mail.gmail.com>
+Subject: Re: [PATCH] rpmsg: Avoid double-free in mtk_rpmsg_register_device()
+To: Markus Elfring <Markus.Elfring@web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200902_050338_898407_8D042C0B 
-X-CRM114-Status: GOOD (  14.49  )
+X-CRM114-CacheID: sfid-20200902_070440_698167_B3ACD380 
+X-CRM114-Status: GOOD (  15.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,65 +86,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Kate Stewart <kstewart@linuxfoundation.org>, wsd_upstream@mediatek.com,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>, Al Cooper <alcooperx@gmail.com>,
+Cc: Ohad Ben-Cohen <ohad@wizery.com>, kernel-janitors@vger.kernel.org,
+ "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
+ <linux-remoteproc@vger.kernel.org>, lkml <linux-kernel@vger.kernel.org>,
  Bjorn Andersson <bjorn.andersson@linaro.org>,
- linux-tegra <linux-tegra@vger.kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>, Pavel Machek <pavel@ucw.cz>,
- Ritesh Harjani <riteshh@codeaurora.org>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Michal Simek <michal.simek@xilinx.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Andy Gross <agross@kernel.org>,
- BCM Kernel Feedback <bcm-kernel-feedback-list@broadcom.com>,
- Allison Randal <allison@lohutok.net>,
- Android Kernel Team <kernel-team@android.com>, Pan Bian <bianpan2016@163.com>,
- DTML <devicetree@vger.kernel.org>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- =?UTF-8?B?TWljaGHFgiBNaXJvc8WCYXc=?= <mirq-linux@rere.qmqm.pl>,
- Rob Herring <robh+dt@kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, Stanley Chu <stanley.chu@mediatek.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Mathieu Malaterre <malat@debian.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Kuohong Wang <kuohong.wang@mediatek.com>,
- Adrian Hunter <adrian.hunter@intel.com>, Mao Yong <yong.mao@mediatek.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Asutosh Das <asutoshd@codeaurora.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Pi-Hsun Shih <pihsun@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 27 Aug 2020 at 11:33, Chun-Hung Wu <chun-hung.wu@mediatek.com> wrote:
->
-> This series provides MediaTek cqhci implementations as below:
->   - Add cqhci_host_ops->pre_enable() and cqhci_host_ops->post_disable()
->   - Implement MediaTek's hook functions
->
-> Chun-Hung Wu (2):
->   mmc: cqhci: add new cqhci_host_ops pre_enable() and post_disable()
->   mmc: mediatek: add pre_enable() and post_disable() hook function
->
->  drivers/mmc/host/cqhci.c  |    6 ++++++
->  drivers/mmc/host/cqhci.h  |    2 ++
->  drivers/mmc/host/mtk-sd.c |   22 ++++++++++++++++++++++
->  3 files changed, 30 insertions(+)
->
-> --
-> 1.7.9.5
-
-Applied for next, thanks!
-
-Kind regards
-Uffe
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gV2VkLCBTZXAgMiwgMjAyMCBhdCA1OjMzIFBNIE1hcmt1cyBFbGZyaW5nIDxNYXJrdXMuRWxm
+cmluZ0B3ZWIuZGU+IHdyb3RlOgo+Cj4gPiBJZiBycG1zZ19yZWdpc3Rlcl9kZXZpY2UgZmFpbHMs
+IGl0IHdpbGwgY2FsbAo+ID4gbXRrX3JwbXNnX3JlbGVhc2VfZGV2aWNlIHdoaWNoIGFscmVhZHkg
+ZnJlZXMgbWRldi4KPgo+IENhbiBhbm90aGVyIGltcGVyYXRpdmUgd29yZGluZyBiZWNvbWUgaGVs
+cGZ1bCBmb3IgdGhlIGNoYW5nZSBkZXNjcmlwdGlvbj8KPiBodHRwczovL2dpdC5rZXJuZWwub3Jn
+L3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90b3J2YWxkcy9saW51eC5naXQvdHJlZS9Eb2N1bWVu
+dGF0aW9uL3Byb2Nlc3Mvc3VibWl0dGluZy1wYXRjaGVzLnJzdD9pZD05YzdkNjE5YmU1YTAwMmVh
+MjljMTcyZGY1ZTNjMTIyN2MyMmNiYjQxI24xNTEKCkxvb2tpbmcgYXQgeW91ciBwb3N0aW5nIGhp
+c3RvcnksIEknbGwgbGVhdmUgaXQgdXAgdG8gdGhlIG1haW50YWluZXIuCgo+IOKApgo+ID4gKysr
+IGIvZHJpdmVycy9ycG1zZy9tdGtfcnBtc2cuYwo+ID4gQEAgLTIyMCwxMCArMjIwLDggQEAgIHN0
+YXRpYyBpbnQgbXRrX3JwbXNnX3JlZ2lzdGVyX2RldmljZShzdHJ1Y3QgbXRrX3JwbXNnX3Jwcm9j
+X3N1YmRldiAqbXRrX3N1YmRldiwKPiA+ICAgICAgIHJwZGV2LT5kZXYucmVsZWFzZSA9IG10a19y
+cG1zZ19yZWxlYXNlX2RldmljZTsKPiA+Cj4gPiAgICAgICByZXQgPSBycG1zZ19yZWdpc3Rlcl9k
+ZXZpY2UocnBkZXYpOwo+ID4gLSAgICAgaWYgKHJldCkgewo+ID4gLSAgICAgICAgICAgICBrZnJl
+ZShtZGV2KTsKPiA+ICsgICAgIGlmIChyZXQpCj4gPiAgICAgICAgICAgICAgIHJldHVybiByZXQ7
+Cj4gPiAtICAgICB9Cj4gPgo+ID4gICAgICAgcmV0dXJuIDA7Cj4gPiAgfQo+Cj4KPiAqIEhvdyBk
+byB5b3UgdGhpbmsgYWJvdXQgdG8gdXNlIHRoZSBmb2xsb3dpbmcgY29kZSB2YXJpYW50IGluc3Rl
+YWQ/Cj4KPiAgICAgICAgIHJldHVybiBycG1zZ19yZWdpc3Rlcl9kZXZpY2UocnBkZXYpOwo+Cj4g
+KiBXb3VsZCB5b3UgbGlrZSB0byBvbWl0IHRoZSB2YXJpYWJsZSDigJxyZXTigJ0gZm9yIHRoaXMg
+ZnVuY3Rpb24gaW1wbGVtZW50YXRpb24/CgpUaGF0J3MgYSBnb29kIHN1Z2dlc3Rpb24sIEknbGwg
+dXBkYXRlIGFuZCBzZW5kIGEgdjIuCgo+Cj4gUmVnYXJkcywKPiBNYXJrdXMKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxp
+bmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
