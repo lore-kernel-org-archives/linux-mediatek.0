@@ -2,80 +2,76 @@ Return-Path: <SRS0=6rwz=CL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1CDC9C433E2
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C7CD9C43461
 	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2020 12:04:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DA70A2078E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2020 12:04:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9782A2078B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2020 12:04:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="on6Wpgaq";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="QujEtpGg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DA70A2078E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="i/IdWOZ1";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="SMr3bXOu"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9782A2078B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rFrWrH5+TWItbLpsUcIyM0bQnAkg4AIBCUzo+d3w8E0=; b=on6Wpgaqn7KqXPHhly7HY8w2Y
-	D7vCqqnJp3YsIRAJByvbrGHOoIIaYuFlG1M3HnMH+B/XmztVp5yZeKcOvpTsee/Cht9S/HX5HxJCe
-	7gkTUjRHyEKDAhGJy4T1Q4Au8B4pdIaFkgUo8ynA61F6A7BD+9nKz8RsFnRBF0yMHAWhdv9cCvFaR
-	XVNCRL0eE69c6uDrXHvOcr1DLP29ZKRZoB6crXStz3sCYN2gOkR0yrpuZifWLY+K5qhXiUDmqVPCt
-	47b+o3WqXjcAstxsFEnq9sjeBtNyQUkUpgbQeVfs7JJqz+z5JulKI813bS74NT+kYtpHNSEy+H7fJ
-	02WaGnOXw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=A5+7lMk2h+9VrCftWiNy0v2Vqy2prXoj+F9DjlB4U8w=; b=i/IdWOZ1YEqM5InZxBFrKF/KiF
+	6jlUlAs2Dv4nSDcIHEh1KzZ/e6g6rQ+Yf09BWE+4owz162nCh7IVHlZ0yJuCDYGEJySNyYk+8CUdG
+	l7IPovkq6gmizcMRG0wWNethd+aSKrEzRRLD7uOTQPf7V9Vu43ggq4G9V1MFicDY68CEZU4PNeKPA
+	KHKzLOpo3aBS7ZMRipfGcWP9VfxtxMOe40aphw+HreUAEXGFIT7qCz3mhqUYhz6jdMc1eLgMFKzuk
+	hlqe6ngjdnaqm8S+3sJZ06/ejsGSBh+YYJxCEGuQwAAao56yDYxWYQgVlLK7amBkCQVHmGCtjjmj2
+	LjVD4qRw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kDRUg-0007rh-RD; Wed, 02 Sep 2020 12:04:02 +0000
+	id 1kDRUg-0007rZ-BA; Wed, 02 Sep 2020 12:04:02 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kDRUd-0007qH-Ol; Wed, 02 Sep 2020 12:04:01 +0000
-X-UUID: 2b10c8f1eb004039ae786ac7d3381c1a-20200902
+ id 1kDRUd-0007q6-Ol; Wed, 02 Sep 2020 12:04:01 +0000
+X-UUID: a1c4b629f02046fe8e88bf7bc3d9381f-20200902
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=vzYMtXsB4AaXM+b4fO6hFxcNKqQVSl9azzTJyvqvlHk=; 
- b=QujEtpGgU2dgc4b/cCAwBnLfJmiszdRSXVEmKGUB44JMKD3kHSO8JkWZAKajSXA8glrEfeCq0X1/zOq+72kI6bp724jGH7gveS9fpNX1x/8wSyyxqxjKu8ZGKB6g2T9u/yYLZ7pr4IRvbuD25XtR51pz+tB2KBY1tn95l4d/n7Q=;
-X-UUID: 2b10c8f1eb004039ae786ac7d3381c1a-20200902
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=DMolEQgcko1Hi3JfFgntu1uI44EPYKHXW5wUFW7a+48=; 
+ b=SMr3bXOu9PWhs1WeLiZD8aOIYVrLc4096OxzB9UIVGCCONXuOogWRk1fa83SCR4UraUODQgn47tEVMNUFdZOqAauyNBkVFpAPl35okKFwu7msPrjY7pgFbBT4iT3QA0EMJZpT2gr1VbU+QqAo8zpY8JZ9fpW68Zs0wf4hvaGaes=;
+X-UUID: a1c4b629f02046fe8e88bf7bc3d9381f-20200902
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <dongchun.zhu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 227447823; Wed, 02 Sep 2020 04:03:43 -0800
+ with ESMTP id 1875689013; Wed, 02 Sep 2020 04:03:43 -0800
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 2 Sep 2020 05:03:41 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 2 Sep 2020 20:03:39 +0800
+ 15.0.1497.2; Wed, 2 Sep 2020 20:03:38 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 2 Sep 2020 20:03:38 +0800
+ Transport; Wed, 2 Sep 2020 20:03:37 +0800
 From: Dongchun Zhu <dongchun.zhu@mediatek.com>
 To: <mchehab@kernel.org>, <andriy.shevchenko@linux.intel.com>,
  <robh+dt@kernel.org>, <mark.rutland@arm.com>, <sakari.ailus@linux.intel.com>, 
  <drinkcat@chromium.org>, <tfiga@chromium.org>, <matthias.bgg@gmail.com>,
  <bingbu.cao@intel.com>
-Subject: [PATCH v14 1/2] media: dt-bindings: media: i2c: Document OV02A10
- bindings
-Date: Wed, 2 Sep 2020 20:01:21 +0800
-Message-ID: <20200902120122.24456-2-dongchun.zhu@mediatek.com>
+Subject: [PATCH v14 0/2] media: i2c: Add support for OV02A10 sensor
+Date: Wed, 2 Sep 2020 20:01:20 +0800
+Message-ID: <20200902120122.24456-1-dongchun.zhu@mediatek.com>
 X-Mailer: git-send-email 2.9.2
-In-Reply-To: <20200902120122.24456-1-dongchun.zhu@mediatek.com>
-References: <20200902120122.24456-1-dongchun.zhu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200902_080359_980095_22C3CF4E 
-X-CRM114-Status: GOOD (  18.61  )
+X-CRM114-CacheID: sfid-20200902_080359_943005_8A731DF0 
+X-CRM114-Status: GOOD (  14.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,201 +93,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add YAML device tree binding for OV02A10 CMOS image sensor,
-and the relevant MAINTAINERS entries.
+Hello,
 
-Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
----
- .../bindings/media/i2c/ovti,ov02a10.yaml           | 161 +++++++++++++++++++++
- MAINTAINERS                                        |   7 +
- 2 files changed, 168 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+This series adds YAML DT binding and V4L2 sub-device driver for Omnivision's
+OV02A10 2-megapixel 10-bit RAW CMOS 1/5" sensor, which has a single MIPI lane
+interface and uses the I2C bus for control and the CSI-2 bus for data.
 
-diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-new file mode 100644
-index 0000000..8c30505
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-@@ -0,0 +1,161 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+# Copyright (c) 2020 MediaTek Inc.
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/i2c/ovti,ov02a10.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Omnivision OV02A10 CMOS Sensor Device Tree Bindings
-+
-+maintainers:
-+  - Dongchun Zhu <dongchun.zhu@mediatek.com>
-+
-+description: |-
-+  The Omnivision OV02A10 is a low-cost, high performance, 1/5-inch, 2 megapixel
-+  image sensor, which is the latest production derived from Omnivision's CMOS
-+  image sensor technology. Ihis chip supports high frame rate speeds up to 30fps
-+  @ 1600x1200 (UXGA) resolution transferred over a 1-lane MIPI interface. The
-+  sensor output is available via CSI-2 serial data output.
-+
-+properties:
-+  compatible:
-+    const: ovti,ov02a10
-+
-+  reg:
-+    maxItems: 1
-+
-+  clocks:
-+    maxItems: 1
-+
-+  clock-names:
-+    description:
-+      External clock for the sensor.
-+    items:
-+      - const: eclk
-+
-+  clock-frequency:
-+    description:
-+      Frequency of the eclk clock in Hz.
-+
-+  dovdd-supply:
-+    description:
-+      Definition of the regulator used as Digital I/O voltage supply.
-+
-+  avdd-supply:
-+    description:
-+      Definition of the regulator used as Analog voltage supply.
-+
-+  dvdd-supply:
-+    description:
-+      Definition of the regulator used as Digital core voltage supply.
-+
-+  powerdown-gpios:
-+    description:
-+      Must be the device tree identifier of the GPIO connected to the
-+      PD_PAD pin. This pin is used to place the OV02A10 into standby mode
-+      or shutdown mode. As the line needs to be high for the powerdown mode
-+      to be active, it should be marked GPIO_ACTIVE_HIGH.
-+    maxItems: 1
-+
-+  reset-gpios:
-+    description:
-+      Must be the device tree identifier of the GPIO connected to the
-+      RST_PD pin. If specified, it will be asserted during driver probe.
-+      As the line needs to be low for the reset to be active, it should be
-+      marked GPIO_ACTIVE_LOW.
-+    maxItems: 1
-+
-+  rotation:
-+    description:
-+      Definition of the sensor's placement.
-+    allOf:
-+      - $ref: "/schemas/types.yaml#/definitions/uint32"
-+      - enum:
-+          - 0    # Sensor Mounted Upright
-+          - 180  # Sensor Mounted Upside Down
-+        default: 0
-+
-+  ovti,mipi-clock-voltage:
-+    description:
-+      An array of 2-tuples items, and each item consists of link frequency and
-+      MIPI clock voltage unit like <freq-kHz volt-unit>. Clock voltage unit is
-+      dependent upon link speed, indicating MIPI transmission speed select that
-+      controls D-PHY timing setting by adjusting MIPI clock voltage to improve
-+      the clock driver capability.
-+    $ref: "/schemas/types.yaml#/definitions/uint32-array"
-+    minItems: 2
-+    default: [390000, 4]
-+
-+  # See ../video-interfaces.txt for details
-+  port:
-+    type: object
-+    additionalProperties: false
-+    description:
-+      Output port node, single endpoint describing the CSI-2 transmitter.
-+
-+    properties:
-+      endpoint:
-+        type: object
-+        additionalProperties: false
-+
-+        properties:
-+          link-frequencies: true
-+          remote-endpoint: true
-+
-+        required:
-+          - link-frequencies
-+          - remote-endpoint
-+
-+    required:
-+      - endpoint
-+
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - clock-names
-+  - clock-frequency
-+  - dovdd-supply
-+  - avdd-supply
-+  - dvdd-supply
-+  - powerdown-gpios
-+  - reset-gpios
-+  - port
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+
-+    i2c {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        ov02a10: camera-sensor@3d {
-+            compatible = "ovti,ov02a10";
-+            reg = <0x3d>;
-+
-+            powerdown-gpios = <&pio 107 GPIO_ACTIVE_HIGH>;
-+            reset-gpios = <&pio 109 GPIO_ACTIVE_LOW>;
-+
-+            clocks = <&ov02a10_clk>;
-+            clock-names = "eclk";
-+            clock-frequency = <24000000>;
-+
-+            rotation = <180>;
-+            ovti,mipi-clock-voltage = <390000 4>;
-+
-+            dovdd-supply = <&ov02a10_dovdd>;
-+            avdd-supply = <&ov02a10_avdd>;
-+            dvdd-supply = <&ov02a10_dvdd>;
-+
-+            port {
-+                wcam_out: endpoint {
-+                    link-frequencies = /bits/ 64 <390000000>;
-+                    remote-endpoint = <&mipi_in_wcam>;
-+                };
-+            };
-+        };
-+    };
-+
-+...
-diff --git a/MAINTAINERS b/MAINTAINERS
-index deaafb6..48aa7a7 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -12718,6 +12718,13 @@ M:	Harald Welte <laforge@gnumonks.org>
- S:	Maintained
- F:	drivers/char/pcmcia/cm4040_cs.*
+The driver is implemented with V4L2 framework.
+ - Async registered as a V4L2 sub-device.
+ - As the first component of camera system including Seninf, ISP pipeline.
+ - A media entity that provides one source pad in common and two for dual-cam.
+
+Also this driver supports following features:
+ - Manual exposure and analog gain control support
+ - Vertical blanking control support
+ - Test pattern support
+ - Media controller support
+ - Runtime PM support
+ - Support resolution: 1600x1200 at 30FPS
  
-+OMNIVISION OV02A10 SENSOR DRIVER
-+M:	Dongchun Zhu <dongchun.zhu@mediatek.com>
-+L:	linux-media@vger.kernel.org
-+S:	Maintained
-+T:	git git://linuxtv.org/media_tree.git
-+F:	Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-+
- OMNIVISION OV13858 SENSOR DRIVER
- M:	Sakari Ailus <sakari.ailus@linux.intel.com>
- L:	linux-media@vger.kernel.org
+Previous versions of this patch-set can be found here:
+ v13: https://lore.kernel.org/linux-media/20200710101850.4604-1-dongchun.zhu@mediatek.com/
+ v12: https://lore.kernel.org/linux-media/20200702115223.21507-1-dongchun.zhu@mediatek.com/
+ v11: https://lore.kernel.org/linux-media/20200630024942.20891-1-dongchun.zhu@mediatek.com/
+ v10: https://lore.kernel.org/linux-media/20200615122937.18965-3-dongchun.zhu@mediatek.com/
+ v09: https://lore.kernel.org/linux-media/20200523084103.31276-1-dongchun.zhu@mediatek.com/
+ v08: https://lore.kernel.org/linux-media/20200509080627.23222-1-dongchun.zhu@mediatek.com/
+ v07: https://lore.kernel.org/linux-media/20200430080924.1140-1-dongchun.zhu@mediatek.com/
+ v06: https://lore.kernel.org/linux-media/20191211112849.16705-1-dongchun.zhu@mediatek.com/
+ v05: https://lore.kernel.org/linux-media/20191104105713.24311-1-dongchun.zhu@mediatek.com/
+ v04: https://lore.kernel.org/linux-media/20190907092728.23897-1-dongchun.zhu@mediatek.com/
+ v03: https://lore.kernel.org/linux-media/20190819034331.13098-1-dongchun.zhu@mediatek.com/
+ v02: https://lore.kernel.org/linux-media/20190704084651.3105-1-dongchun.zhu@mediatek.com/
+ v01: https://lore.kernel.org/linux-media/20190523102204.24112-1-dongchun.zhu@mediatek.com/
+
+Changes of v14 mainly address comments from Tomasz and Sakari.
+Compared to v13:
+ - Fix imperfections in DT
+ - Use an array property "ovti,mipi-clock-voltage" to indicate MIPI TX speed
+ - Add the handler to the optional property "ovti,mipi-clock-voltage" in driver
+
+Please help to review this patch.
+Thanks.
+
+Dongchun Zhu (2):
+  media: dt-bindings: media: i2c: Document OV02A10 bindings
+  media: i2c: Add OV02A10 image sensor driver
+
+ .../bindings/media/i2c/ovti,ov02a10.yaml           |  161 +++
+ MAINTAINERS                                        |    8 +
+ drivers/media/i2c/Kconfig                          |   13 +
+ drivers/media/i2c/Makefile                         |    1 +
+ drivers/media/i2c/ov02a10.c                        | 1083 ++++++++++++++++++++
+ 5 files changed, 1266 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+ create mode 100644 drivers/media/i2c/ov02a10.c
+
 -- 
 2.9.2
 _______________________________________________
