@@ -5,18 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 11643C433E7
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2020 09:45:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D32A5C43461
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2020 09:49:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8CD7620709
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2020 09:45:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 693B320709
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2020 09:49:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xeB7uFUt"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8CD7620709
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MQWxFRub"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 693B320709
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ite.com.tw
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,46 +25,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=YStt5DPrLUkUaWJoDhIy9DgRI3/UBGKEJ77JZ3ZHJ1I=; b=xeB7uFUtC/trenqAsXgNgXEO8F
-	8XxgkfoIgA5MDoAZVTP7QXIrVjT1dOQ44DSFmVZxe4KosN1NUq5O4TbZiooYUxA1FEwbXdjbe8ONK
-	Mf2UDJ90Musq8KJ9CRtOHYluQU93W1q3l9d9TZjxHoZs8B/JwKlnjk4PI95NMD5Zw1BBeJ1hMT/ns
-	M/r9YqIFmSood6ZcAxXAaairnBXukDK6mpKvh/nBwB51R09RXVS8SllEM0hDK0GlfiEzyjSoe+1/7
-	z5TLaQQFDWkTGhSbXDQBZUl8zV8KsRG2ks29RmLkjqRe0GqzSYTyAdl1E2B90FzGo0J4fm9kTbPrE
-	hXGby1Cg==;
+	bh=Mw0JHQCwgLIKv5dVL1WsgG5jALwBWg/6A6TKfQM1uJg=; b=MQWxFRubGxaPVcVxt6ACTIiu0a
+	HTX/iAXQwsLOUN/yXs5QQiwjREu4MYt3+YIwQYmQx6BbmlhnrLPyidTZMU6zS3vFGO4MBUJAIoglC
+	13nG7bhzlPfMpAxLDVNvpcL++837HBK4oHPgeNrGD4TPRr2hoAoOwTXNV+cIMxwfi2DxsNqKd+fCo
+	SxnT8/G5C+9qHCpwBlI49rMmod6z8AQ/rTa6q1/dwK6NebjzNwYKvEc5JW2ndZ7Luxea+u5nSWX2j
+	xrW87xO+MfbKOjsSWc03Vpmh0lg6NHAQ6I8e/ZApC84qQ+7YJwweM//0cYb5EgXtb40YTybX+DQCi
+	JND5v4LQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kDlnf-0007pb-D2; Thu, 03 Sep 2020 09:44:59 +0000
+	id 1kDlrp-0008V4-Ay; Thu, 03 Sep 2020 09:49:17 +0000
 Received: from 60-251-196-230.hinet-ip.hinet.net ([60.251.196.230]
  helo=ironport.ite.com.tw)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kDlna-0007p9-7d; Thu, 03 Sep 2020 09:44:57 +0000
-IronPort-SDR: 4LN//4MVXlku1KqMsHXVrpcG1J+m/m4kBVez8vTKNt4AmLbbOnm1zV4vZB5f7ZTE+/Ukatyxn7
- QLkqRyd03XGg==
+ id 1kDlrk-0008Ta-JB; Thu, 03 Sep 2020 09:49:16 +0000
+IronPort-SDR: ovLPfrJvufwUIVunz2Xj6BuH6wFc8LBfdp9biIy7m0b0zNabpEBbm9055mhc3qO/zYkmJsmF74
+ 0zs+e+7zjq0A==
 Received: from unknown (HELO mse.ite.com.tw) ([192.168.35.30])
- by ironport.ite.com.tw with ESMTP; 03 Sep 2020 17:44:43 +0800
+ by ironport.ite.com.tw with ESMTP; 03 Sep 2020 17:49:10 +0800
 Received: from CSBMAIL1.internal.ite.com.tw (csbmail1.internal.ite.com.tw
- [192.168.65.58]) by mse.ite.com.tw with ESMTP id 0839ichB068690;
- Thu, 3 Sep 2020 17:44:38 +0800 (GMT-8)
+ [192.168.65.58]) by mse.ite.com.tw with ESMTP id 0839n2Mx071028;
+ Thu, 3 Sep 2020 17:49:02 +0800 (GMT-8)
  (envelope-from allen.chen@ite.com.tw)
 Received: from VirtualBox.internal.ite.com.tw (192.168.70.14) by
  CSBMAIL1.internal.ite.com.tw (192.168.65.58) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1713.5; Thu, 3 Sep 2020 17:44:38 +0800
+ 15.1.1713.5; Thu, 3 Sep 2020 17:49:03 +0800
 From: allen <allen.chen@ite.com.tw>
 To: 
-Subject: [PATCH] drm/bridge: add it6505 driver
-Date: Thu, 3 Sep 2020 17:43:58 +0800
-Message-ID: <20200903094402.331348-1-allen.chen@ite.com.tw>
+Subject: [PATCH v2] drm/bridge: add it6505 driver
+Date: Thu, 3 Sep 2020 17:48:31 +0800
+Message-ID: <20200903094835.331525-1-allen.chen@ite.com.tw>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-Originating-IP: [192.168.70.14]
 X-ClientProxiedBy: CSBMAIL1.internal.ite.com.tw (192.168.65.58) To
  CSBMAIL1.internal.ite.com.tw (192.168.65.58)
-X-TM-SNTS-SMTP: F06FCF3A032C202C3EF4F7B53F341CA65379AC2AE2C8B3330D9A238BFF351C8C2000:8
-X-MAIL: mse.ite.com.tw 0839ichB068690
+X-TM-SNTS-SMTP: 88FA3F7FAD5B3D3394F4448D0AFE56123EE693C7FC598C5B1973E24AF640EE0D2000:8
+X-MAIL: mse.ite.com.tw 0839n2Mx071028
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200903_054455_051632_F887D6BE 
-X-CRM114-Status: GOOD (  18.27  )
+X-CRM114-CacheID: sfid-20200903_054913_656374_D90D97C9 
+X-CRM114-Status: GOOD (  18.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,7 +103,6 @@ Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
 Signed-off-by: Yilun Lin <yllin@google.com>
 Signed-off-by: Hermes Wu <hermes.wu@ite.com.tw>
 Signed-off-by: Allen Chen <allen.chen@ite.com.tw>
-
 ---
  drivers/gpu/drm/bridge/Kconfig      |    7 +
  drivers/gpu/drm/bridge/Makefile     |    1 +
