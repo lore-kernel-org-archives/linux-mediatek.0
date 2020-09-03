@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B4B6AC433E7
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2020 03:23:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BE908C433E7
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2020 03:23:54 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 856552080C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2020 03:23:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8EBDE207D3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2020 03:23:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VQ1DkXyt";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GmcOmGcg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 856552080C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yE5kJKU4";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ZYSR+IWN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8EBDE207D3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Q5WQQ/RU5nRF1/WEsN3sAk2vJ1yOej3qCD4MeIO2/Ps=; b=VQ1DkXytGijEq39y7YMskxb9F
-	8ZAD+c2RWsklZ/kJKDS6BMnEem4XyB82IBeRc3SXT3kH3PBh3W4+poNjwZDfoBuOg9UsWUhKaZ5h4
-	UeVCTsP0KnlqJ5Kozn9YC178/sAm3IdddH+ucY15ddfYBt0OPE04hgvS/te1Gi3nYbcDJt01CjYXV
-	/0g7ewPDWJlHCU5DVNMEZ0MJPyGZxWNz2WjdPo9aplvu9NYR/zvtChqZZViTtTK8pHOLVwV6wIt+m
-	Lq0/fg8E9fpKxzldN8hXVNfSxg7Kl0sBoJS/u8qJGcH9O984Zc2wBK+UsYpQcwjQoKaJAl0A5SpIf
-	3HMSuP7Ng==;
+	 bh=iFzdWq/5H0OWE+sHIRZk/RvC6CNwrA6EgCSAGBMpK6w=; b=yE5kJKU4KF2la7/b945vkShHU
+	fRD7Mz5LOLAzJPsjBIJE+MRte+yPryE49Ec6dfe0x+9P/CLTHirUOynCRjOQ31T2aOMB2TVcB9xQS
+	+j0tttMplPM0KZcpAhpTUwx9IVJymEUq89Shk4p0NcfPt14eeh7BNeHzHDyi5YjiD/KKFdV9VQ5Jg
+	A0kIHBXv3EOA9qi2GDqwzGBNiEpvV19OLL3eBpADrIRoMdXpr4JiEZWPGwXKK26f6aor5dfQmRxWE
+	3Daw+eEaNIyAzdyUXEm0cpij45zoFGyQSHj4MO4wuvx0D/mOPovWeAkyXYl/leez4+zJDDqMJEl9U
+	6qHvQ9nWQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kDfqg-0003lX-Un; Thu, 03 Sep 2020 03:23:42 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kDfqh-0003lz-F2; Thu, 03 Sep 2020 03:23:43 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kDfqX-0003hs-OH; Thu, 03 Sep 2020 03:23:35 +0000
-X-UUID: e5fb8de63756471183dd2dfee8786307-20200902
+ id 1kDfqX-0003hr-M1; Thu, 03 Sep 2020 03:23:35 +0000
+X-UUID: 3fdb35a3563040e6961453a1417542ab-20200902
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=6GC5eAEhDoBuRbi+wwESswcqG++nDs52pqdjgqQ4Kzg=; 
- b=GmcOmGcg5ODq6pzJRiuKhETv8OU3gliwCfSKMW5Ig+47/NOSeoSt6G8HjqF9gCh+PpBnSKZrJ65ZezowOkJugJR/F23Yy+HXcvwK4l+xVh5N/vcDUJdgO+ra0Kjdi5RM181Lb57TTny1jDTu1KprBf0yvz7KC7+altu74mn1LCc=;
-X-UUID: e5fb8de63756471183dd2dfee8786307-20200902
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=xbGtYfiqOBoAH84SUqyBCJUyixev6shccupNf5Ss+JU=; 
+ b=ZYSR+IWNgpJ+8o71ed01j+7fd3MOyv13L2Zq6PGgolmcxn6jcese5n71UBEQKITYI699IghURR0NG6MjjrsPHkm7yCNYrPcfCwyg3tqdB8Pt9nVU9OrcXTW7EmqCJKwubzXgASO5Klmd04VOmnPkCOReMIf8XnqXuBwt1QctcYA=;
+X-UUID: 3fdb35a3563040e6961453a1417542ab-20200902
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 100851545; Wed, 02 Sep 2020 19:23:28 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ with ESMTP id 21661471; Wed, 02 Sep 2020 19:23:27 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 2 Sep 2020 20:23:26 -0700
+ 15.0.1497.2; Wed, 2 Sep 2020 20:23:25 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 3 Sep 2020 11:23:24 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 3 Sep 2020 11:23:23 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 3 Sep 2020 11:23:25 +0800
+ Frontend Transport; Thu, 3 Sep 2020 11:23:24 +0800
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
  Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
-Subject: [PATCH v3 8/9] clk: mediatek: Add configurable enable control to
- mtk_pll_data
-Date: Thu, 3 Sep 2020 11:22:59 +0800
-Message-ID: <1599103380-4155-9-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v3 3/9] dt-bindings: ARM: Mediatek: Document bindings for
+ MT8192 Multimedia
+Date: Thu, 3 Sep 2020 11:22:54 +0800
+Message-ID: <1599103380-4155-4-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1599103380-4155-1-git-send-email-weiyi.lu@mediatek.com>
 References: <1599103380-4155-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200902_232333_948218_33731C7A 
-X-CRM114-Status: GOOD (  18.38  )
+X-CRM114-CacheID: sfid-20200902_232333_846379_8ECFE71A 
+X-CRM114-Status: GOOD (  16.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,97 +93,144 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In all MediaTek PLL design, bit0 of CON0 register is always
-the enable bit.
-However, there's a special case of usbpll on MT8192.
-The enable bit of usbpll is moved to bit2 of other register.
-Add configurable en_reg and pll_en_bit for enable control or
-default 0 where pll data are static variables.
-Hence, CON0_BASE_EN could also be removed.
-And there might have another special case on other chips,
-the enable bit is still on CON0 register but not at bit0.
+This patch adds the binding documentation of mdpsys, mmsys,
+vdecsys-soc, vdecsys and vencsys for Mediatek MT8192.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mtk.h |  2 ++
- drivers/clk/mediatek/clk-pll.c | 16 ++++++++++------
- 2 files changed, 12 insertions(+), 6 deletions(-)
+ .../bindings/arm/mediatek/mediatek,mdpsys.yaml     | 38 ++++++++++++++++++++++
+ .../bindings/arm/mediatek/mediatek,mmsys.txt       |  1 +
+ .../arm/mediatek/mediatek,vdecsys-soc.yaml         | 38 ++++++++++++++++++++++
+ .../bindings/arm/mediatek/mediatek,vdecsys.txt     |  1 +
+ .../bindings/arm/mediatek/mediatek,vencsys.txt     |  1 +
+ 5 files changed, 79 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys-soc.yaml
 
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index c3d6756..c580663 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -233,6 +233,8 @@ struct mtk_pll_data {
- 	uint32_t pcw_chg_reg;
- 	const struct mtk_pll_div_table *div_table;
- 	const char *parent_name;
-+	uint32_t en_reg;
-+	uint8_t pll_en_bit; /* Assume 0, indicates BIT(0) by default */
- };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml
+new file mode 100644
+index 0000000..831acdc
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml
+@@ -0,0 +1,38 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mdpsys.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MDPSYS Controller
++
++maintainers:
++  - Weiyi Lu <weiyi.lu@mediatek.com>
++
++description:
++  The Mediatek mdpsys controller provides functional configurations and clocks to the system.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8192-mdpsys
++      - const: syscon
++
++  reg:
++    maxItems: 1
++
++  '#clock-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++
++examples:
++  - |
++    mdpsys: syscon@1f000000 {
++        compatible = "mediatek,mt8192-mdpsys", "syscon";
++        reg = <0 0x1f000000 0 0x1000>;
++        #clock-cells = <1>;
++    };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+index d8c9108..81fa345 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+@@ -15,6 +15,7 @@ Required Properties:
+ 	- "mediatek,mt7623-mmsys", "mediatek,mt2701-mmsys", "syscon"
+ 	- "mediatek,mt8173-mmsys", "syscon"
+ 	- "mediatek,mt8183-mmsys", "syscon"
++	- "mediatek,mt8192-mmsys", "syscon"
+ - #clock-cells: Must be 1
  
- void mtk_clk_register_plls(struct device_node *node,
-diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index e0b00bc..bd91113 100644
---- a/drivers/clk/mediatek/clk-pll.c
-+++ b/drivers/clk/mediatek/clk-pll.c
-@@ -16,7 +16,6 @@
- #define REG_CON0		0
- #define REG_CON1		4
+ For the clock control, the mmsys controller uses the common clk binding from
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys-soc.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys-soc.yaml
+new file mode 100644
+index 0000000..082f22e
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys-soc.yaml
+@@ -0,0 +1,38 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,vdecsys-soc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek VDECSYS SOC Controller
++
++maintainers:
++  - Weiyi Lu <weiyi.lu@mediatek.com>
++
++description:
++  The Mediatek vdecsys soc controller provides functional configurations and clocks to the system.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8192-vdecsys_soc
++      - const: syscon
++
++  reg:
++    maxItems: 1
++
++  '#clock-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++
++examples:
++  - |
++    vdecsys_soc: syscon@1600f000 {
++        compatible = "mediatek,mt8192-vdecsys_soc", "syscon";
++        reg = <0 0x1600f000 0 0x1000>;
++        #clock-cells = <1>;
++    };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
+index 7894558..ee679e0 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
+@@ -13,6 +13,7 @@ Required Properties:
+ 	- "mediatek,mt7623-vdecsys", "mediatek,mt2701-vdecsys", "syscon"
+ 	- "mediatek,mt8173-vdecsys", "syscon"
+ 	- "mediatek,mt8183-vdecsys", "syscon"
++	- "mediatek,mt8192-vdecsys", "syscon"
+ - #clock-cells: Must be 1
  
--#define CON0_BASE_EN		BIT(0)
- #define CON0_PWR_ON		BIT(0)
- #define CON0_ISO_EN		BIT(1)
- #define PCW_CHG_MASK		BIT(31)
-@@ -44,6 +43,7 @@ struct mtk_clk_pll {
- 	void __iomem	*tuner_en_addr;
- 	void __iomem	*pcw_addr;
- 	void __iomem	*pcw_chg_addr;
-+	void __iomem	*en_addr;
- 	const struct mtk_pll_data *data;
- };
+ The vdecsys controller uses the common clk binding from
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
+index 6a6a14e..d22de01 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
+@@ -11,6 +11,7 @@ Required Properties:
+ 	- "mediatek,mt6797-vencsys", "syscon"
+ 	- "mediatek,mt8173-vencsys", "syscon"
+ 	- "mediatek,mt8183-vencsys", "syscon"
++	- "mediatek,mt8192-vencsys", "syscon"
+ - #clock-cells: Must be 1
  
-@@ -56,7 +56,7 @@ static int mtk_pll_is_prepared(struct clk_hw *hw)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 
--	return (readl(pll->base_addr + REG_CON0) & CON0_BASE_EN) != 0;
-+	return (readl(pll->en_addr) & BIT(pll->data->pll_en_bit)) != 0;
- }
- 
- static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 fin,
-@@ -247,8 +247,8 @@ static int mtk_pll_prepare(struct clk_hw *hw)
- 	writel(r, pll->pwr_addr);
- 	udelay(1);
- 
--	r = readl(pll->base_addr + REG_CON0) | CON0_BASE_EN;
--	writel(r, pll->base_addr + REG_CON0);
-+	r = readl(pll->en_addr) | BIT(pll->data->pll_en_bit);
-+	writel(r, pll->en_addr);
- 
- 	if (pll->data->en_mask) {
- 		r = readl(pll->base_addr + REG_CON0) | pll->data->en_mask;
-@@ -286,8 +286,8 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
- 		writel(r, pll->base_addr + REG_CON0);
- 	}
- 
--	r = readl(pll->base_addr + REG_CON0) & ~CON0_BASE_EN;
--	writel(r, pll->base_addr + REG_CON0);
-+	r = readl(pll->en_addr) & ~BIT(pll->data->pll_en_bit);
-+	writel(r, pll->en_addr);
- 
- 	r = readl(pll->pwr_addr) | CON0_ISO_EN;
- 	writel(r, pll->pwr_addr);
-@@ -329,6 +329,10 @@ static struct clk *mtk_clk_register_pll(const struct mtk_pll_data *data,
- 		pll->tuner_addr = base + data->tuner_reg;
- 	if (data->tuner_en_reg)
- 		pll->tuner_en_addr = base + data->tuner_en_reg;
-+	if (data->en_reg)
-+		pll->en_addr = base + data->en_reg;
-+	else
-+		pll->en_addr = pll->base_addr + REG_CON0;
- 	pll->hw.init = &init;
- 	pll->data = data;
- 
+ The vencsys controller uses the common clk binding from
 -- 
 1.8.1.1.dirty
 _______________________________________________
