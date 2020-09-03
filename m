@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 00433C433E7
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2020 03:24:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EE495C433E2
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2020 03:24:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B4EFF207D3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2020 03:24:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AE7562080C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2020 03:24:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="m3HKz/j6";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ZQRCUXnk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B4EFF207D3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="W7W55a8K";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="SicIgIJF"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AE7562080C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=70+yFM5gRCpGs/z0143cEd+zNWCnoprizBDMh0Yr9CI=; b=m3HKz/j65sy+yaMYuYXDTXwOW
-	KICVhf7KDp/dLDa32kOCL3c0CkNoNsC5BlBwjPfpsB/ZxvY3UjlmdS8aMqWIGGaAmQHbP0e6ZQA+O
-	1nsAoiUQSnkZhjERN0akDXXHMCZd056Tbp9GSbJdvFA99ri7NgxhP92DD5I9HnkJYokLfPvx8zEgK
-	RAzR5DZd7YeHKeTjHOBr0amN3zVCBMu8Pr/NszggspL1T2T9PMYruJeW8SbWWNJo6feczUfGA+9cb
-	Cp0htljMwizIHiN91w1ZyO1foTPfIkDEaOtKv+jk1PFMCIHTqvzUJbTngRbm9wcR/FtsQFj3+aLVf
-	xitcT1Ilg==;
+	 bh=j36vEHa02cmHphV031hWFFO1CIoyFhqeXQRUO6JsnPU=; b=W7W55a8KIexhTf0DgTOTNUO5W
+	PqUOpJIbtAgS0HkTT7z4PTL/Kn8GXHMsxW1elNjngyiUyHvAdW70BvUELqGmDPOvB8zpBlJvb1Iab
+	JqsIpUQFJ0ZbluesPDb7jt6mTrvBXBN4dTsCeRoC1gb9Qa+ZzIy8aHHw89PC2GgSbPjZRQ5/T4U1p
+	NMwiaygcUZKLvBqZDSKotmC/iVLwBCPe4JVGrDkOLnPYow111JzfChyylI7nd8QSA1HFc+XIvygM+
+	isp8mpEA++Oom3Al40f+AJCnJ9Q2Fwd99iKVb/pH7NFHa/HTE3JhAXeZSBYJ6EAv+P24uWelmDWdL
+	v1HVC7H8g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kDfrC-0003zP-8x; Thu, 03 Sep 2020 03:24:14 +0000
+	id 1kDfrK-000468-Ql; Thu, 03 Sep 2020 03:24:22 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kDfqc-0003hq-1G; Thu, 03 Sep 2020 03:23:41 +0000
-X-UUID: 1dedfc97ff614f2cab36e891d73207d0-20200902
+ id 1kDfqg-0003hq-5d; Thu, 03 Sep 2020 03:23:44 +0000
+X-UUID: b050328510084212b106aa7623caff92-20200902
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=daQevrDgeqN3Q2MzzZbAL08I3EUNH+MZP8YFgO/brTA=; 
- b=ZQRCUXnkNoCUMJ7+eTtmmE+QjQu4e9xuCXSoCX16KOLuCZdfgZghta1UrxE43mZm9RPaGpqNhVZui4BPUykqJiMjxNQsY6HWQIfPC6VDOpAZbAVUKUuV2oZiXakfwfBSZwNUK37OUOdIEGLYSnjziTVtegM3MwGPIpGFUNI24u0=;
-X-UUID: 1dedfc97ff614f2cab36e891d73207d0-20200902
+ bh=SuVfNNgws7WNnAB3N380H4VUO8zkXKIzgzKfC1S8vxk=; 
+ b=SicIgIJF6j6sDsTxgDxUzRrc0x7YJUO6IiAmtmlzyEvn9qDj4fCfMpEmOzp36uj9vcvWVhLlZRLCIIMqbzmMaH6oXocsYaLkjOFBSXiddPQd6na8FP8tFYDoQNc96uAww256n58hw2UBQPj4nOnY6g+JfDpGy/Yd+TwXJ4sOdFY=;
+X-UUID: b050328510084212b106aa7623caff92-20200902
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1105554589; Wed, 02 Sep 2020 19:23:26 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 2 Sep 2020 20:23:25 -0700
+ with ESMTP id 1103018802; Wed, 02 Sep 2020 19:23:33 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 2 Sep 2020 20:23:32 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 3 Sep 2020 11:23:24 +0800
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 3 Sep 2020 11:23:23 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 3 Sep 2020 11:23:25 +0800
+ Frontend Transport; Thu, 3 Sep 2020 11:23:23 +0800
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
  Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
-Subject: [PATCH v3 7/9] clk: mediatek: Fix asymmetrical PLL enable and disable
- control
-Date: Thu, 3 Sep 2020 11:22:58 +0800
-Message-ID: <1599103380-4155-8-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v3 1/9] dt-bindings: ARM: Mediatek: Document bindings for
+ MT8192 BSP
+Date: Thu, 3 Sep 2020 11:22:52 +0800
+Message-ID: <1599103380-4155-2-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1599103380-4155-1-git-send-email-weiyi.lu@mediatek.com>
 References: <1599103380-4155-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: A1D0353343BFDC419B3F36B9B6227D0C15AF7C5FBEF07525CAB6E028144821E32000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200902_232338_326576_74BEEEC1 
-X-CRM114-Status: GOOD (  12.40  )
+X-CRM114-CacheID: sfid-20200902_232342_426394_D797CDC3 
+X-CRM114-Status: GOOD (  15.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,457 +94,205 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The en_mask actually is a combination of divider enable mask
-and pll enable bit(bit0).
-Before this patch, we enabled both divider mask and bit0 in prepare(),
-but only cleared the bit0 in unprepare().
-Now, setting the enable register(CON0) in 2 steps: first divider mask,
-then bit0 during prepare(), vice versa.
-Hence, en_mask will only be used as divider enable mask.
-Meanwhile, all the SoC PLL data are updated.
+This patch adds the binding documentation of apmixedsys, imp_iic_wrap,
+infracfg, msdc, pericfg and topckgen for Mediatek MT8192.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mt2701.c | 26 +++++++++++++-------------
- drivers/clk/mediatek/clk-mt2712.c | 30 +++++++++++++++---------------
- drivers/clk/mediatek/clk-mt6765.c | 20 ++++++++++----------
- drivers/clk/mediatek/clk-mt6779.c | 24 ++++++++++++------------
- drivers/clk/mediatek/clk-mt6797.c | 20 ++++++++++----------
- drivers/clk/mediatek/clk-mt7622.c | 18 +++++++++---------
- drivers/clk/mediatek/clk-mt7629.c | 12 ++++++------
- drivers/clk/mediatek/clk-mt8173.c | 28 ++++++++++++++--------------
- drivers/clk/mediatek/clk-mt8183.c | 22 +++++++++++-----------
- drivers/clk/mediatek/clk-pll.c    | 16 ++++++++++++----
- 10 files changed, 112 insertions(+), 104 deletions(-)
+ .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |  1 +
+ .../arm/mediatek/mediatek,imp_iic_wrap.yaml        | 78 ++++++++++++++++++++++
+ .../bindings/arm/mediatek/mediatek,infracfg.txt    |  1 +
+ .../bindings/arm/mediatek/mediatek,msdc.yaml       | 46 +++++++++++++
+ .../bindings/arm/mediatek/mediatek,pericfg.yaml    |  1 +
+ .../bindings/arm/mediatek/mediatek,topckgen.txt    |  1 +
+ 6 files changed, 128 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
 
-diff --git a/drivers/clk/mediatek/clk-mt2701.c b/drivers/clk/mediatek/clk-mt2701.c
-index 695be0f..462a998 100644
---- a/drivers/clk/mediatek/clk-mt2701.c
-+++ b/drivers/clk/mediatek/clk-mt2701.c
-@@ -934,31 +934,31 @@ static int mtk_pericfg_init(struct platform_device *pdev)
- 	}
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+index bd7a0fa..6942ad4 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+@@ -17,6 +17,7 @@ Required Properties:
+ 	- "mediatek,mt8135-apmixedsys"
+ 	- "mediatek,mt8173-apmixedsys"
+ 	- "mediatek,mt8183-apmixedsys", "syscon"
++	- "mediatek,mt8192-apmixedsys", "syscon"
+ 	- "mediatek,mt8516-apmixedsys"
+ - #clock-cells: Must be 1
  
- static const struct mtk_pll_data apmixed_plls[] = {
--	PLL(CLK_APMIXED_ARMPLL, "armpll", 0x200, 0x20c, 0x80000001,
-+	PLL(CLK_APMIXED_ARMPLL, "armpll", 0x200, 0x20c, 0x80000000,
- 			PLL_AO, 21, 0x204, 24, 0x0, 0x204, 0),
--	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x210, 0x21c, 0xf0000001,
-+	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x210, 0x21c, 0xf0000000,
- 		  HAVE_RST_BAR, 21, 0x210, 4, 0x0, 0x214, 0),
--	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x220, 0x22c, 0xf3000001,
-+	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x220, 0x22c, 0xf3000000,
- 		  HAVE_RST_BAR, 7, 0x220, 4, 0x0, 0x224, 14),
--	PLL(CLK_APMIXED_MMPLL, "mmpll", 0x230, 0x23c, 0x00000001, 0,
-+	PLL(CLK_APMIXED_MMPLL, "mmpll", 0x230, 0x23c, 0, 0,
- 				21, 0x230, 4, 0x0, 0x234, 0),
--	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x240, 0x24c, 0x00000001, 0,
-+	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x240, 0x24c, 0, 0,
- 				21, 0x240, 4, 0x0, 0x244, 0),
--	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x250, 0x25c, 0x00000001, 0,
-+	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x250, 0x25c, 0, 0,
- 				21, 0x250, 4, 0x0, 0x254, 0),
--	PLL(CLK_APMIXED_AUD1PLL, "aud1pll", 0x270, 0x27c, 0x00000001, 0,
-+	PLL(CLK_APMIXED_AUD1PLL, "aud1pll", 0x270, 0x27c, 0, 0,
- 				31, 0x270, 4, 0x0, 0x274, 0),
--	PLL(CLK_APMIXED_TRGPLL, "trgpll", 0x280, 0x28c, 0x00000001, 0,
-+	PLL(CLK_APMIXED_TRGPLL, "trgpll", 0x280, 0x28c, 0, 0,
- 				31, 0x280, 4, 0x0, 0x284, 0),
--	PLL(CLK_APMIXED_ETHPLL, "ethpll", 0x290, 0x29c, 0x00000001, 0,
-+	PLL(CLK_APMIXED_ETHPLL, "ethpll", 0x290, 0x29c, 0, 0,
- 				31, 0x290, 4, 0x0, 0x294, 0),
--	PLL(CLK_APMIXED_VDECPLL, "vdecpll", 0x2a0, 0x2ac, 0x00000001, 0,
-+	PLL(CLK_APMIXED_VDECPLL, "vdecpll", 0x2a0, 0x2ac, 0, 0,
- 				31, 0x2a0, 4, 0x0, 0x2a4, 0),
--	PLL(CLK_APMIXED_HADDS2PLL, "hadds2pll", 0x2b0, 0x2bc, 0x00000001, 0,
-+	PLL(CLK_APMIXED_HADDS2PLL, "hadds2pll", 0x2b0, 0x2bc, 0, 0,
- 				31, 0x2b0, 4, 0x0, 0x2b4, 0),
--	PLL(CLK_APMIXED_AUD2PLL, "aud2pll", 0x2c0, 0x2cc, 0x00000001, 0,
-+	PLL(CLK_APMIXED_AUD2PLL, "aud2pll", 0x2c0, 0x2cc, 0, 0,
- 				31, 0x2c0, 4, 0x0, 0x2c4, 0),
--	PLL(CLK_APMIXED_TVD2PLL, "tvd2pll", 0x2d0, 0x2dc, 0x00000001, 0,
-+	PLL(CLK_APMIXED_TVD2PLL, "tvd2pll", 0x2d0, 0x2dc, 0, 0,
- 				21, 0x2d0, 4, 0x0, 0x2d4, 0),
- };
- 
-diff --git a/drivers/clk/mediatek/clk-mt2712.c b/drivers/clk/mediatek/clk-mt2712.c
-index a3bd9a1..fd81162 100644
---- a/drivers/clk/mediatek/clk-mt2712.c
-+++ b/drivers/clk/mediatek/clk-mt2712.c
-@@ -1222,38 +1222,38 @@
- };
- 
- static const struct mtk_pll_data plls[] = {
--	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0230, 0x023C, 0xf0000101,
-+	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0230, 0x023C, 0xf0000100,
- 		HAVE_RST_BAR, 31, 0x0230, 4, 0, 0, 0, 0x0234, 0),
--	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x0240, 0x024C, 0xfe000101,
-+	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x0240, 0x024C, 0xfe000100,
- 		HAVE_RST_BAR, 31, 0x0240, 4, 0, 0, 0, 0x0244, 0),
--	PLL(CLK_APMIXED_VCODECPLL, "vcodecpll", 0x0320, 0x032C, 0xc0000101,
-+	PLL(CLK_APMIXED_VCODECPLL, "vcodecpll", 0x0320, 0x032C, 0xc0000100,
- 		0, 31, 0x0320, 4, 0, 0, 0, 0x0324, 0),
--	PLL(CLK_APMIXED_VENCPLL, "vencpll", 0x0280, 0x028C, 0x00000101,
-+	PLL(CLK_APMIXED_VENCPLL, "vencpll", 0x0280, 0x028C, 0x00000100,
- 		0, 31, 0x0280, 4, 0, 0, 0, 0x0284, 0),
--	PLL(CLK_APMIXED_APLL1, "apll1", 0x0330, 0x0340, 0x00000101,
-+	PLL(CLK_APMIXED_APLL1, "apll1", 0x0330, 0x0340, 0x00000100,
- 		0, 31, 0x0330, 4, 0x0338, 0x0014, 0, 0x0334, 0),
--	PLL(CLK_APMIXED_APLL2, "apll2", 0x0350, 0x0360, 0x00000101,
-+	PLL(CLK_APMIXED_APLL2, "apll2", 0x0350, 0x0360, 0x00000100,
- 		0, 31, 0x0350, 4, 0x0358, 0x0014, 1, 0x0354, 0),
--	PLL(CLK_APMIXED_LVDSPLL, "lvdspll", 0x0370, 0x037c, 0x00000101,
-+	PLL(CLK_APMIXED_LVDSPLL, "lvdspll", 0x0370, 0x037c, 0x00000100,
- 		0, 31, 0x0370, 4, 0, 0, 0, 0x0374, 0),
--	PLL(CLK_APMIXED_LVDSPLL2, "lvdspll2", 0x0390, 0x039C, 0x00000101,
-+	PLL(CLK_APMIXED_LVDSPLL2, "lvdspll2", 0x0390, 0x039C, 0x00000100,
- 		0, 31, 0x0390, 4, 0, 0, 0, 0x0394, 0),
--	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x0270, 0x027C, 0x00000101,
-+	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x0270, 0x027C, 0x00000100,
- 		0, 31, 0x0270, 4, 0, 0, 0, 0x0274, 0),
--	PLL(CLK_APMIXED_MSDCPLL2, "msdcpll2", 0x0410, 0x041C, 0x00000101,
-+	PLL(CLK_APMIXED_MSDCPLL2, "msdcpll2", 0x0410, 0x041C, 0x00000100,
- 		0, 31, 0x0410, 4, 0, 0, 0, 0x0414, 0),
--	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x0290, 0x029C, 0xc0000101,
-+	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x0290, 0x029C, 0xc0000100,
- 		0, 31, 0x0290, 4, 0, 0, 0, 0x0294, 0),
--	PLL_B(CLK_APMIXED_MMPLL, "mmpll", 0x0250, 0x0260, 0x00000101,
-+	PLL_B(CLK_APMIXED_MMPLL, "mmpll", 0x0250, 0x0260, 0x00000100,
- 		0, 31, 0x0250, 4, 0, 0, 0, 0x0254, 0,
- 		mmpll_div_table),
--	PLL_B(CLK_APMIXED_ARMCA35PLL, "armca35pll", 0x0100, 0x0110, 0xf0000101,
-+	PLL_B(CLK_APMIXED_ARMCA35PLL, "armca35pll", 0x0100, 0x0110, 0xf0000100,
- 		HAVE_RST_BAR, 31, 0x0100, 4, 0, 0, 0, 0x0104, 0,
- 		armca35pll_div_table),
--	PLL_B(CLK_APMIXED_ARMCA72PLL, "armca72pll", 0x0210, 0x0220, 0x00000101,
-+	PLL_B(CLK_APMIXED_ARMCA72PLL, "armca72pll", 0x0210, 0x0220, 0x00000100,
- 		0, 31, 0x0210, 4, 0, 0, 0, 0x0214, 0,
- 		armca72pll_div_table),
--	PLL(CLK_APMIXED_ETHERPLL, "etherpll", 0x0300, 0x030C, 0xc0000101,
-+	PLL(CLK_APMIXED_ETHERPLL, "etherpll", 0x0300, 0x030C, 0xc0000100,
- 		0, 31, 0x0300, 4, 0, 0, 0, 0x0304, 0),
- };
- 
-diff --git a/drivers/clk/mediatek/clk-mt6765.c b/drivers/clk/mediatek/clk-mt6765.c
-index db8db1b..097bbc4 100644
---- a/drivers/clk/mediatek/clk-mt6765.c
-+++ b/drivers/clk/mediatek/clk-mt6765.c
-@@ -747,26 +747,26 @@
- 			_pcw_reg, _pcw_shift, NULL)	\
- 
- static const struct mtk_pll_data plls[] = {
--	PLL(CLK_APMIXED_ARMPLL_L, "armpll_l", 0x021C, 0x0228, BIT(0),
-+	PLL(CLK_APMIXED_ARMPLL_L, "armpll_l", 0x021C, 0x0228, 0,
- 	    PLL_AO, 22, 8, 0x0220, 24, 0, 0, 0, 0x0220, 0),
--	PLL(CLK_APMIXED_ARMPLL, "armpll", 0x020C, 0x0218, BIT(0),
-+	PLL(CLK_APMIXED_ARMPLL, "armpll", 0x020C, 0x0218, 0,
- 	    PLL_AO, 22, 8, 0x0210, 24, 0, 0, 0, 0x0210, 0),
--	PLL(CLK_APMIXED_CCIPLL, "ccipll", 0x022C, 0x0238, BIT(0),
-+	PLL(CLK_APMIXED_CCIPLL, "ccipll", 0x022C, 0x0238, 0,
- 	    PLL_AO, 22, 8, 0x0230, 24, 0, 0, 0, 0x0230, 0),
--	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x023C, 0x0248, BIT(0),
-+	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x023C, 0x0248, 0,
- 	    (HAVE_RST_BAR | PLL_AO), 22, 8, 0x0240, 24, 0, 0, 0, 0x0240,
- 	    0),
--	PLL(CLK_APMIXED_MFGPLL, "mfgpll", 0x024C, 0x0258, BIT(0),
-+	PLL(CLK_APMIXED_MFGPLL, "mfgpll", 0x024C, 0x0258, 0,
- 	    0, 22, 8, 0x0250, 24, 0, 0, 0, 0x0250, 0),
--	PLL(CLK_APMIXED_MMPLL, "mmpll", 0x025C, 0x0268, BIT(0),
-+	PLL(CLK_APMIXED_MMPLL, "mmpll", 0x025C, 0x0268, 0,
- 	    0, 22, 8, 0x0260, 24, 0, 0, 0, 0x0260, 0),
--	PLL(CLK_APMIXED_UNIV2PLL, "univ2pll", 0x026C, 0x0278, BIT(0),
-+	PLL(CLK_APMIXED_UNIV2PLL, "univ2pll", 0x026C, 0x0278, 0,
- 	    HAVE_RST_BAR, 22, 8, 0x0270, 24, 0, 0, 0, 0x0270, 0),
--	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x027C, 0x0288, BIT(0),
-+	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x027C, 0x0288, 0,
- 	    0, 22, 8, 0x0280, 24, 0, 0, 0, 0x0280, 0),
--	PLL(CLK_APMIXED_APLL1, "apll1", 0x028C, 0x029C, BIT(0),
-+	PLL(CLK_APMIXED_APLL1, "apll1", 0x028C, 0x029C, 0,
- 	    0, 32, 8, 0x0290, 24, 0x0040, 0x000C, 0, 0x0294, 0),
--	PLL(CLK_APMIXED_MPLL, "mpll", 0x02A0, 0x02AC, BIT(0),
-+	PLL(CLK_APMIXED_MPLL, "mpll", 0x02A0, 0x02AC, 0,
- 	    PLL_AO, 22, 8, 0x02A4, 24, 0, 0, 0, 0x02A4, 0),
- };
- 
-diff --git a/drivers/clk/mediatek/clk-mt6779.c b/drivers/clk/mediatek/clk-mt6779.c
-index 9766ccc..d8444ed 100644
---- a/drivers/clk/mediatek/clk-mt6779.c
-+++ b/drivers/clk/mediatek/clk-mt6779.c
-@@ -1178,33 +1178,33 @@
- 			_pcw_chg_reg, NULL)
- 
- static const struct mtk_pll_data plls[] = {
--	PLL(CLK_APMIXED_ARMPLL_LL, "armpll_ll", 0x0200, 0x020C, BIT(0),
-+	PLL(CLK_APMIXED_ARMPLL_LL, "armpll_ll", 0x0200, 0x020C, 0,
- 	    PLL_AO, 0, 22, 8, 0x0204, 24, 0, 0, 0, 0x0204, 0, 0),
--	PLL(CLK_APMIXED_ARMPLL_BL, "armpll_bl", 0x0210, 0x021C, BIT(0),
-+	PLL(CLK_APMIXED_ARMPLL_BL, "armpll_bl", 0x0210, 0x021C, 0,
- 	    PLL_AO, 0, 22, 8, 0x0214, 24, 0, 0, 0, 0x0214, 0, 0),
--	PLL(CLK_APMIXED_CCIPLL, "ccipll", 0x02A0, 0x02AC, BIT(0),
-+	PLL(CLK_APMIXED_CCIPLL, "ccipll", 0x02A0, 0x02AC, 0,
- 	    PLL_AO, 0, 22, 8, 0x02A4, 24, 0, 0, 0, 0x02A4, 0, 0),
--	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0230, 0x023C, BIT(0),
-+	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0230, 0x023C, 0,
- 	    (HAVE_RST_BAR), BIT(24), 22, 8, 0x0234, 24, 0, 0, 0,
- 	    0x0234, 0, 0),
--	PLL(CLK_APMIXED_UNIV2PLL, "univ2pll", 0x0240, 0x024C, BIT(0),
-+	PLL(CLK_APMIXED_UNIV2PLL, "univ2pll", 0x0240, 0x024C, 0,
- 	    (HAVE_RST_BAR), BIT(24), 22, 8, 0x0244, 24,
- 	    0, 0, 0, 0x0244, 0, 0),
--	PLL(CLK_APMIXED_MFGPLL, "mfgpll", 0x0250, 0x025C, BIT(0),
-+	PLL(CLK_APMIXED_MFGPLL, "mfgpll", 0x0250, 0x025C, 0,
- 	    0, 0, 22, 8, 0x0254, 24, 0, 0, 0, 0x0254, 0, 0),
--	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x0260, 0x026C, BIT(0),
-+	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x0260, 0x026C, 0,
- 	    0, 0, 22, 8, 0x0264, 24, 0, 0, 0, 0x0264, 0, 0),
--	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x0270, 0x027C, BIT(0),
-+	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x0270, 0x027C, 0,
- 	    0, 0, 22, 8, 0x0274, 24, 0, 0, 0, 0x0274, 0, 0),
--	PLL(CLK_APMIXED_ADSPPLL, "adsppll", 0x02b0, 0x02bC, BIT(0),
-+	PLL(CLK_APMIXED_ADSPPLL, "adsppll", 0x02b0, 0x02bC, 0,
- 	    (HAVE_RST_BAR), BIT(23), 22, 8, 0x02b4, 24,
- 	    0, 0, 0, 0x02b4, 0, 0),
--	PLL(CLK_APMIXED_MMPLL, "mmpll", 0x0280, 0x028C, BIT(0),
-+	PLL(CLK_APMIXED_MMPLL, "mmpll", 0x0280, 0x028C, 0,
- 	    (HAVE_RST_BAR), BIT(23), 22, 8, 0x0284, 24,
- 	    0, 0, 0, 0x0284, 0, 0),
--	PLL(CLK_APMIXED_APLL1, "apll1", 0x02C0, 0x02D0, BIT(0),
-+	PLL(CLK_APMIXED_APLL1, "apll1", 0x02C0, 0x02D0, 0,
- 	    0, 0, 32, 8, 0x02C0, 1, 0, 0x14, 0, 0x02C4, 0, 0x2C0),
--	PLL(CLK_APMIXED_APLL2, "apll2", 0x02D4, 0x02E4, BIT(0),
-+	PLL(CLK_APMIXED_APLL2, "apll2", 0x02D4, 0x02E4, 0,
- 	    0, 0, 32, 8, 0x02D4, 1, 0, 0x14, 1, 0x02D8, 0, 0x02D4),
- };
- 
-diff --git a/drivers/clk/mediatek/clk-mt6797.c b/drivers/clk/mediatek/clk-mt6797.c
-index f35389a..4395423 100644
---- a/drivers/clk/mediatek/clk-mt6797.c
-+++ b/drivers/clk/mediatek/clk-mt6797.c
-@@ -638,25 +638,25 @@ static int mtk_infrasys_init(struct platform_device *pdev)
- 			NULL)
- 
- static const struct mtk_pll_data plls[] = {
--	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0220, 0x022C, 0xF0000101, PLL_AO,
-+	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0220, 0x022C, 0xF0000100, PLL_AO,
- 	    21, 0x220, 4, 0x0, 0x224, 0),
--	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x0230, 0x023C, 0xFE000011, 0, 7,
-+	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x0230, 0x023C, 0xFE000010, 0, 7,
- 	    0x230, 4, 0x0, 0x234, 14),
--	PLL(CLK_APMIXED_MFGPLL, "mfgpll", 0x0240, 0x024C, 0x00000101, 0, 21,
-+	PLL(CLK_APMIXED_MFGPLL, "mfgpll", 0x0240, 0x024C, 0x00000100, 0, 21,
- 	    0x244, 24, 0x0, 0x244, 0),
--	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x0250, 0x025C, 0x00000121, 0, 21,
-+	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x0250, 0x025C, 0x00000120, 0, 21,
- 	    0x250, 4, 0x0, 0x254, 0),
--	PLL(CLK_APMIXED_IMGPLL, "imgpll", 0x0260, 0x026C, 0x00000121, 0, 21,
-+	PLL(CLK_APMIXED_IMGPLL, "imgpll", 0x0260, 0x026C, 0x00000120, 0, 21,
- 	    0x260, 4, 0x0, 0x264, 0),
--	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x0270, 0x027C, 0xC0000121, 0, 21,
-+	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x0270, 0x027C, 0xC0000120, 0, 21,
- 	    0x270, 4, 0x0, 0x274, 0),
--	PLL(CLK_APMIXED_CODECPLL, "codecpll", 0x0290, 0x029C, 0x00000121, 0, 21,
-+	PLL(CLK_APMIXED_CODECPLL, "codecpll", 0x0290, 0x029C, 0x00000120, 0, 21,
- 	    0x290, 4, 0x0, 0x294, 0),
--	PLL(CLK_APMIXED_VDECPLL, "vdecpll", 0x02E4, 0x02F0, 0x00000121, 0, 21,
-+	PLL(CLK_APMIXED_VDECPLL, "vdecpll", 0x02E4, 0x02F0, 0x00000120, 0, 21,
- 	    0x2E4, 4, 0x0, 0x2E8, 0),
--	PLL(CLK_APMIXED_APLL1, "apll1", 0x02A0, 0x02B0, 0x00000131, 0, 31,
-+	PLL(CLK_APMIXED_APLL1, "apll1", 0x02A0, 0x02B0, 0x00000130, 0, 31,
- 	    0x2A0, 4, 0x2A8, 0x2A4, 0),
--	PLL(CLK_APMIXED_APLL2, "apll2", 0x02B4, 0x02C4, 0x00000131, 0, 31,
-+	PLL(CLK_APMIXED_APLL2, "apll2", 0x02B4, 0x02C4, 0x00000130, 0, 31,
- 	    0x2B4, 4, 0x2BC, 0x2B8, 0),
- };
- 
-diff --git a/drivers/clk/mediatek/clk-mt7622.c b/drivers/clk/mediatek/clk-mt7622.c
-index ef5947e1..2fdb27a 100644
---- a/drivers/clk/mediatek/clk-mt7622.c
-+++ b/drivers/clk/mediatek/clk-mt7622.c
-@@ -328,23 +328,23 @@
- };
- 
- static const struct mtk_pll_data plls[] = {
--	PLL(CLK_APMIXED_ARMPLL, "armpll", 0x0200, 0x020C, 0x00000001,
-+	PLL(CLK_APMIXED_ARMPLL, "armpll", 0x0200, 0x020C, 0,
- 	    PLL_AO, 21, 0x0204, 24, 0, 0x0204, 0),
--	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0210, 0x021C, 0x00000001,
-+	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0210, 0x021C, 0,
- 	    HAVE_RST_BAR, 21, 0x0214, 24, 0, 0x0214, 0),
--	PLL(CLK_APMIXED_UNIV2PLL, "univ2pll", 0x0220, 0x022C, 0x00000001,
-+	PLL(CLK_APMIXED_UNIV2PLL, "univ2pll", 0x0220, 0x022C, 0,
- 	    HAVE_RST_BAR, 7, 0x0224, 24, 0, 0x0224, 14),
--	PLL(CLK_APMIXED_ETH1PLL, "eth1pll", 0x0300, 0x0310, 0x00000001,
-+	PLL(CLK_APMIXED_ETH1PLL, "eth1pll", 0x0300, 0x0310, 0,
- 	    0, 21, 0x0300, 1, 0, 0x0304, 0),
--	PLL(CLK_APMIXED_ETH2PLL, "eth2pll", 0x0314, 0x0320, 0x00000001,
-+	PLL(CLK_APMIXED_ETH2PLL, "eth2pll", 0x0314, 0x0320, 0,
- 	    0, 21, 0x0314, 1, 0, 0x0318, 0),
--	PLL(CLK_APMIXED_AUD1PLL, "aud1pll", 0x0324, 0x0330, 0x00000001,
-+	PLL(CLK_APMIXED_AUD1PLL, "aud1pll", 0x0324, 0x0330, 0,
- 	    0, 31, 0x0324, 1, 0, 0x0328, 0),
--	PLL(CLK_APMIXED_AUD2PLL, "aud2pll", 0x0334, 0x0340, 0x00000001,
-+	PLL(CLK_APMIXED_AUD2PLL, "aud2pll", 0x0334, 0x0340, 0,
- 	    0, 31, 0x0334, 1, 0, 0x0338, 0),
--	PLL(CLK_APMIXED_TRGPLL, "trgpll", 0x0344, 0x0354, 0x00000001,
-+	PLL(CLK_APMIXED_TRGPLL, "trgpll", 0x0344, 0x0354, 0,
- 	    0, 21, 0x0344, 1, 0, 0x0348, 0),
--	PLL(CLK_APMIXED_SGMIPLL, "sgmipll", 0x0358, 0x0368, 0x00000001,
-+	PLL(CLK_APMIXED_SGMIPLL, "sgmipll", 0x0358, 0x0368, 0,
- 	    0, 21, 0x0358, 1, 0, 0x035C, 0),
- };
- 
-diff --git a/drivers/clk/mediatek/clk-mt7629.c b/drivers/clk/mediatek/clk-mt7629.c
-index b73bdf1..e2105ea 100644
---- a/drivers/clk/mediatek/clk-mt7629.c
-+++ b/drivers/clk/mediatek/clk-mt7629.c
-@@ -335,17 +335,17 @@
- };
- 
- static const struct mtk_pll_data plls[] = {
--	PLL(CLK_APMIXED_ARMPLL, "armpll", 0x0200, 0x020C, 0x00000001,
-+	PLL(CLK_APMIXED_ARMPLL, "armpll", 0x0200, 0x020C, 0,
- 	    0, 21, 0x0204, 24, 0, 0x0204, 0),
--	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0210, 0x021C, 0x00000001,
-+	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0210, 0x021C, 0,
- 	    HAVE_RST_BAR, 21, 0x0214, 24, 0, 0x0214, 0),
--	PLL(CLK_APMIXED_UNIV2PLL, "univ2pll", 0x0220, 0x022C, 0x00000001,
-+	PLL(CLK_APMIXED_UNIV2PLL, "univ2pll", 0x0220, 0x022C, 0,
- 	    HAVE_RST_BAR, 7, 0x0224, 24, 0, 0x0224, 14),
--	PLL(CLK_APMIXED_ETH1PLL, "eth1pll", 0x0300, 0x0310, 0x00000001,
-+	PLL(CLK_APMIXED_ETH1PLL, "eth1pll", 0x0300, 0x0310, 0,
- 	    0, 21, 0x0300, 1, 0, 0x0304, 0),
--	PLL(CLK_APMIXED_ETH2PLL, "eth2pll", 0x0314, 0x0320, 0x00000001,
-+	PLL(CLK_APMIXED_ETH2PLL, "eth2pll", 0x0314, 0x0320, 0,
- 	    0, 21, 0x0314, 1, 0, 0x0318, 0),
--	PLL(CLK_APMIXED_SGMIPLL, "sgmipll", 0x0358, 0x0368, 0x00000001,
-+	PLL(CLK_APMIXED_SGMIPLL, "sgmipll", 0x0358, 0x0368, 0,
- 	    0, 21, 0x0358, 1, 0, 0x035C, 0),
- };
- 
-diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
-index 8f898ac..f309e78 100644
---- a/drivers/clk/mediatek/clk-mt8173.c
-+++ b/drivers/clk/mediatek/clk-mt8173.c
-@@ -972,20 +972,20 @@ struct mtk_clk_usb {
- };
- 
- static const struct mtk_pll_data plls[] = {
--	PLL(CLK_APMIXED_ARMCA15PLL, "armca15pll", 0x200, 0x20c, 0x00000001, 0, 21, 0x204, 24, 0x0, 0x204, 0),
--	PLL(CLK_APMIXED_ARMCA7PLL, "armca7pll", 0x210, 0x21c, 0x00000001, 0, 21, 0x214, 24, 0x0, 0x214, 0),
--	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x220, 0x22c, 0xf0000101, HAVE_RST_BAR, 21, 0x220, 4, 0x0, 0x224, 0),
--	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x230, 0x23c, 0xfe000001, HAVE_RST_BAR, 7, 0x230, 4, 0x0, 0x234, 14),
--	PLL_B(CLK_APMIXED_MMPLL, "mmpll", 0x240, 0x24c, 0x00000001, 0, 21, 0x244, 24, 0x0, 0x244, 0, mmpll_div_table),
--	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x250, 0x25c, 0x00000001, 0, 21, 0x250, 4, 0x0, 0x254, 0),
--	PLL(CLK_APMIXED_VENCPLL, "vencpll", 0x260, 0x26c, 0x00000001, 0, 21, 0x260, 4, 0x0, 0x264, 0),
--	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x270, 0x27c, 0x00000001, 0, 21, 0x270, 4, 0x0, 0x274, 0),
--	PLL(CLK_APMIXED_MPLL, "mpll", 0x280, 0x28c, 0x00000001, 0, 21, 0x280, 4, 0x0, 0x284, 0),
--	PLL(CLK_APMIXED_VCODECPLL, "vcodecpll", 0x290, 0x29c, 0x00000001, 0, 21, 0x290, 4, 0x0, 0x294, 0),
--	PLL(CLK_APMIXED_APLL1, "apll1", 0x2a0, 0x2b0, 0x00000001, 0, 31, 0x2a0, 4, 0x2a4, 0x2a4, 0),
--	PLL(CLK_APMIXED_APLL2, "apll2", 0x2b4, 0x2c4, 0x00000001, 0, 31, 0x2b4, 4, 0x2b8, 0x2b8, 0),
--	PLL(CLK_APMIXED_LVDSPLL, "lvdspll", 0x2d0, 0x2dc, 0x00000001, 0, 21, 0x2d0, 4, 0x0, 0x2d4, 0),
--	PLL(CLK_APMIXED_MSDCPLL2, "msdcpll2", 0x2f0, 0x2fc, 0x00000001, 0, 21, 0x2f0, 4, 0x0, 0x2f4, 0),
-+	PLL(CLK_APMIXED_ARMCA15PLL, "armca15pll", 0x200, 0x20c, 0, 0, 21, 0x204, 24, 0x0, 0x204, 0),
-+	PLL(CLK_APMIXED_ARMCA7PLL, "armca7pll", 0x210, 0x21c, 0, 0, 21, 0x214, 24, 0x0, 0x214, 0),
-+	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x220, 0x22c, 0xf0000100, HAVE_RST_BAR, 21, 0x220, 4, 0x0, 0x224, 0),
-+	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x230, 0x23c, 0xfe000000, HAVE_RST_BAR, 7, 0x230, 4, 0x0, 0x234, 14),
-+	PLL_B(CLK_APMIXED_MMPLL, "mmpll", 0x240, 0x24c, 0, 0, 21, 0x244, 24, 0x0, 0x244, 0, mmpll_div_table),
-+	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x250, 0x25c, 0, 0, 21, 0x250, 4, 0x0, 0x254, 0),
-+	PLL(CLK_APMIXED_VENCPLL, "vencpll", 0x260, 0x26c, 0, 0, 21, 0x260, 4, 0x0, 0x264, 0),
-+	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x270, 0x27c, 0, 0, 21, 0x270, 4, 0x0, 0x274, 0),
-+	PLL(CLK_APMIXED_MPLL, "mpll", 0x280, 0x28c, 0, 0, 21, 0x280, 4, 0x0, 0x284, 0),
-+	PLL(CLK_APMIXED_VCODECPLL, "vcodecpll", 0x290, 0x29c, 0, 0, 21, 0x290, 4, 0x0, 0x294, 0),
-+	PLL(CLK_APMIXED_APLL1, "apll1", 0x2a0, 0x2b0, 0, 0, 31, 0x2a0, 4, 0x2a4, 0x2a4, 0),
-+	PLL(CLK_APMIXED_APLL2, "apll2", 0x2b4, 0x2c4, 0, 0, 31, 0x2b4, 4, 0x2b8, 0x2b8, 0),
-+	PLL(CLK_APMIXED_LVDSPLL, "lvdspll", 0x2d0, 0x2dc, 0, 0, 21, 0x2d0, 4, 0x0, 0x2d4, 0),
-+	PLL(CLK_APMIXED_MSDCPLL2, "msdcpll2", 0x2f0, 0x2fc, 0, 0, 21, 0x2f0, 4, 0x0, 0x2f4, 0),
- };
- 
- static void __init mtk_apmixedsys_init(struct device_node *node)
-diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
-index 5046852..608108c 100644
---- a/drivers/clk/mediatek/clk-mt8183.c
-+++ b/drivers/clk/mediatek/clk-mt8183.c
-@@ -1121,34 +1121,34 @@
- };
- 
- static const struct mtk_pll_data plls[] = {
--	PLL_B(CLK_APMIXED_ARMPLL_LL, "armpll_ll", 0x0200, 0x020C, 0x00000001,
-+	PLL_B(CLK_APMIXED_ARMPLL_LL, "armpll_ll", 0x0200, 0x020C, 0,
- 		HAVE_RST_BAR | PLL_AO, BIT(24), 22, 8, 0x0204, 24, 0x0, 0x0, 0,
- 		0x0204, 0, 0, armpll_div_table),
--	PLL_B(CLK_APMIXED_ARMPLL_L, "armpll_l", 0x0210, 0x021C, 0x00000001,
-+	PLL_B(CLK_APMIXED_ARMPLL_L, "armpll_l", 0x0210, 0x021C, 0,
- 		HAVE_RST_BAR | PLL_AO, BIT(24), 22, 8, 0x0214, 24, 0x0, 0x0, 0,
- 		0x0214, 0, 0, armpll_div_table),
--	PLL(CLK_APMIXED_CCIPLL, "ccipll", 0x0290, 0x029C, 0x00000001,
-+	PLL(CLK_APMIXED_CCIPLL, "ccipll", 0x0290, 0x029C, 0,
- 		HAVE_RST_BAR | PLL_AO, BIT(24), 22, 8, 0x0294, 24, 0x0, 0x0, 0,
- 		0x0294, 0, 0),
--	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0220, 0x022C, 0x00000001,
-+	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0220, 0x022C, 0,
- 		HAVE_RST_BAR, BIT(24), 22, 8, 0x0224, 24, 0x0, 0x0, 0,
- 		0x0224, 0, 0),
--	PLL(CLK_APMIXED_UNIV2PLL, "univ2pll", 0x0230, 0x023C, 0x00000001,
-+	PLL(CLK_APMIXED_UNIV2PLL, "univ2pll", 0x0230, 0x023C, 0,
- 		HAVE_RST_BAR, BIT(24), 22, 8, 0x0234, 24, 0x0, 0x0, 0,
- 		0x0234, 0, 0),
--	PLL_B(CLK_APMIXED_MFGPLL, "mfgpll", 0x0240, 0x024C, 0x00000001,
-+	PLL_B(CLK_APMIXED_MFGPLL, "mfgpll", 0x0240, 0x024C, 0,
- 		0, 0, 22, 8, 0x0244, 24, 0x0, 0x0, 0, 0x0244, 0, 0,
- 		mfgpll_div_table),
--	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x0250, 0x025C, 0x00000001,
-+	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x0250, 0x025C, 0,
- 		0, 0, 22, 8, 0x0254, 24, 0x0, 0x0, 0, 0x0254, 0, 0),
--	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x0260, 0x026C, 0x00000001,
-+	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x0260, 0x026C, 0,
- 		0, 0, 22, 8, 0x0264, 24, 0x0, 0x0, 0, 0x0264, 0, 0),
--	PLL(CLK_APMIXED_MMPLL, "mmpll", 0x0270, 0x027C, 0x00000001,
-+	PLL(CLK_APMIXED_MMPLL, "mmpll", 0x0270, 0x027C, 0,
- 		HAVE_RST_BAR, BIT(23), 22, 8, 0x0274, 24, 0x0, 0x0, 0,
- 		0x0274, 0, 0),
--	PLL(CLK_APMIXED_APLL1, "apll1", 0x02A0, 0x02B0, 0x00000001,
-+	PLL(CLK_APMIXED_APLL1, "apll1", 0x02A0, 0x02B0, 0,
- 		0, 0, 32, 8, 0x02A0, 1, 0x02A8, 0x0014, 0, 0x02A4, 0, 0x02A0),
--	PLL(CLK_APMIXED_APLL2, "apll2", 0x02b4, 0x02c4, 0x00000001,
-+	PLL(CLK_APMIXED_APLL2, "apll2", 0x02b4, 0x02c4, 0,
- 		0, 0, 32, 8, 0x02B4, 1, 0x02BC, 0x0014, 1, 0x02B8, 0, 0x02B4),
- };
- 
-diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index f440f2cd..e0b00bc 100644
---- a/drivers/clk/mediatek/clk-pll.c
-+++ b/drivers/clk/mediatek/clk-pll.c
-@@ -247,10 +247,14 @@ static int mtk_pll_prepare(struct clk_hw *hw)
- 	writel(r, pll->pwr_addr);
- 	udelay(1);
- 
--	r = readl(pll->base_addr + REG_CON0);
--	r |= pll->data->en_mask;
-+	r = readl(pll->base_addr + REG_CON0) | CON0_BASE_EN;
- 	writel(r, pll->base_addr + REG_CON0);
- 
-+	if (pll->data->en_mask) {
-+		r = readl(pll->base_addr + REG_CON0) | pll->data->en_mask;
-+		writel(r, pll->base_addr + REG_CON0);
-+	}
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
+new file mode 100644
+index 0000000..5d0cf37
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
+@@ -0,0 +1,78 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,imp_iic_wrap.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
- 	__mtk_pll_tuner_enable(pll);
- 
- 	udelay(20);
-@@ -277,8 +281,12 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
- 
- 	__mtk_pll_tuner_disable(pll);
- 
--	r = readl(pll->base_addr + REG_CON0);
--	r &= ~CON0_BASE_EN;
-+	if (pll->data->en_mask) {
-+		r = readl(pll->base_addr + REG_CON0) & ~pll->data->en_mask;
-+		writel(r, pll->base_addr + REG_CON0);
-+	}
++title: MediaTek IMP I2C Wrapper Controller
 +
-+	r = readl(pll->base_addr + REG_CON0) & ~CON0_BASE_EN;
- 	writel(r, pll->base_addr + REG_CON0);
++maintainers:
++  - Weiyi Lu <weiyi.lu@mediatek.com>
++
++description:
++  The Mediatek imp i2c wrapper controller provides functional configurations and clocks to the system.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8192-imp_iic_wrap_c
++          - mediatek,mt8192-imp_iic_wrap_e
++          - mediatek,mt8192-imp_iic_wrap_s
++          - mediatek,mt8192-imp_iic_wrap_ws
++          - mediatek,mt8192-imp_iic_wrap_w
++          - mediatek,mt8192-imp_iic_wrap_n
++      - const: syscon
++
++  reg:
++    maxItems: 1
++
++  '#clock-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++
++examples:
++  - |
++    imp_iic_wrap_c: syscon@11007000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_c", "syscon";
++        reg = <0 0x11007000 0 0x1000>;
++        #clock-cells = <1>;
++    };
++
++  - |
++    imp_iic_wrap_e: syscon@11cb1000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_e", "syscon";
++        reg = <0 0x11cb1000 0 0x1000>;
++        #clock-cells = <1>;
++    };
++
++  - |
++    imp_iic_wrap_s: syscon@11d03000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_s", "syscon";
++        reg = <0 0x11d03000 0 0x1000>;
++        #clock-cells = <1>;
++    };
++
++  - |
++    imp_iic_wrap_ws: syscon@11d23000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_ws", "syscon";
++        reg = <0 0x11d23000 0 0x1000>;
++        #clock-cells = <1>;
++    };
++
++  - |
++    imp_iic_wrap_w: syscon@11e01000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_w", "syscon";
++        reg = <0 0x11e01000 0 0x1000>;
++        #clock-cells = <1>;
++    };
++
++  - |
++    imp_iic_wrap_n: syscon@11f02000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_n", "syscon";
++        reg = <0 0x11f02000 0 0x1000>;
++        #clock-cells = <1>;
++    };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
+index 49a968b..ba5e781 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
+@@ -18,6 +18,7 @@ Required Properties:
+ 	- "mediatek,mt8135-infracfg", "syscon"
+ 	- "mediatek,mt8173-infracfg", "syscon"
+ 	- "mediatek,mt8183-infracfg", "syscon"
++	- "mediatek,mt8192-infracfg", "syscon"
+ 	- "mediatek,mt8516-infracfg", "syscon"
+ - #clock-cells: Must be 1
+ - #reset-cells: Must be 1
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
+new file mode 100644
+index 0000000..5aa9536
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
+@@ -0,0 +1,46 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,msdc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MSDC Controller
++
++maintainers:
++  - Weiyi Lu <weiyi.lu@mediatek.com>
++
++description:
++  The Mediatek msdc controller provides functional configurations and clocks to the system.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8192-msdc
++          - mediatek,mt8192-msdc_top
++      - const: syscon
++
++  reg:
++    maxItems: 1
++
++  '#clock-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++
++examples:
++  - |
++    msdc: syscon@11f60000 {
++        compatible = "mediatek,mt8192-msdc", "syscon";
++        reg = <0 0x11f60000 0 0x1000>;
++        #clock-cells = <1>;
++    };
++
++  - |
++    msdc_top: syscon@11f10000 {
++        compatible = "mediatek,mt8192-msdc_top", "syscon";
++        reg = <0 0x11f10000 0 0x1000>;
++        #clock-cells = <1>;
++    };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
+index 1af30174..b672c91 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
+@@ -26,6 +26,7 @@ properties:
+               - mediatek,mt8135-pericfg
+               - mediatek,mt8173-pericfg
+               - mediatek,mt8183-pericfg
++              - mediatek,mt8192-pericfg
+               - mediatek,mt8516-pericfg
+           - const: syscon
+       - items:
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
+index 9b0394c..c480278 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
+@@ -17,6 +17,7 @@ Required Properties:
+ 	- "mediatek,mt8135-topckgen"
+ 	- "mediatek,mt8173-topckgen"
+ 	- "mediatek,mt8183-topckgen", "syscon"
++	- "mediatek,mt8192-topckgen", "syscon"
+ 	- "mediatek,mt8516-topckgen"
+ - #clock-cells: Must be 1
  
- 	r = readl(pll->pwr_addr) | CON0_ISO_EN;
 -- 
 1.8.1.1.dirty
 _______________________________________________
