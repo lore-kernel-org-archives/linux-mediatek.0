@@ -2,80 +2,77 @@ Return-Path: <SRS0=sr8Z=CM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2354BC433E2
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2020 00:08:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E78C7C433E2
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2020 02:14:41 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E19AE20773
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2020 00:08:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B410E20786
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2020 02:14:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xJ5YdCBp";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="ZVPNUDXf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E19AE20773
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nFxeLEQl";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EZ1kaKjO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B410E20786
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ePixGgc9P5WOAQAZdRuiOl/Tpk8W6fqziFu64FLRcPo=; b=xJ5YdCBpmeMDC9WIca8pfJvX1
-	2wkrx8HlaXSgB5KE6aejs0SvWZFIzimNM5zYEYtnZZ7ap24C2eGyHZhfD/BGNoHQCSO4bbtOfKk44
-	ZwjDZRbjwr+umEwYeIBDbCaBEGZ51d3gsFob9OfuE+ki+vtIx3vsb/eGeh0DhMlBP4/3wOKCUmc7P
-	HsE0p/iU4tY6TOSvSDBDVmpxG3JW7nuiHHLj8lwEuSvtGZbid538Zgl9yiS1QSjtGpYFwq6zPIEdb
-	rnkBunD2XDoHyNYjWzO1mKo4FjQyVosdJu4/7wWAxDBM2SNJRiDL7lddgafcqzriHuI359nbBrU03
-	KfGmwEpAA==;
+	 bh=+tP5qLGsmRlK3tFNFu1nCLWGRiydpaQ7G3+fr2W8n2s=; b=nFxeLEQl2ca0xjKigTd8RO1Hp
+	Zh1bprTjHCLXEzVxO4wObSEhEzSqqG+uhKkAIgGUGzep4DYNASuB+b9UsFDHtkeyK4lln81lCDGYx
+	hfejzIh3ecBqNRjgE7eXM6Ho/TGXJP66FM7skoGafRG7HcCCfYlSimQ+yDJIjwUHe9ZaV+2cdca2X
+	Ku7j/u1Z2u4BruZIUpbDCj+F6yF4bwulmo+KQbxaH66wHeeaRXdyeU4/6KqOatETIYQf5AegctNJg
+	Y+O3c1GO0XABA6G4y+pFtSFqQh5zFTdsfoQwjWjqYmZoHjofVjqrZDWRURlrkGRCweLIO/N/4fAIR
+	DT58DMDJg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kDcnX-00073q-46; Thu, 03 Sep 2020 00:08:15 +0000
-Received: from mail-vs1-xe44.google.com ([2607:f8b0:4864:20::e44])
+	id 1kDelg-0008Qy-6f; Thu, 03 Sep 2020 02:14:28 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kDcnU-00072l-Sj
- for linux-mediatek@lists.infradead.org; Thu, 03 Sep 2020 00:08:13 +0000
-Received: by mail-vs1-xe44.google.com with SMTP id o184so747677vsc.0
- for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2020 17:08:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=vNGK0drLoWNgYFtnyo0bGiJC6OE4+o9KPc4VANTcGUU=;
- b=ZVPNUDXf6tQVcgw8kkHHQyjEAOsLqycSIz1ehYZm+uVXTd9CN/j5btk5vfe+0MxcpN
- z0MpYoLoq3SETJ9XNMrcemRwFcAyZQadJmVdpxOACzSkHQKavJzwtcVAxvf6+bGo337V
- G47Y0VYQUWmV0mr4nvMqdD/QNGIE9tI4Bw3wQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=vNGK0drLoWNgYFtnyo0bGiJC6OE4+o9KPc4VANTcGUU=;
- b=B1J7qDwHlhbQzCVK5BeUzhHmKvQPcsbVzlTd8HyCArFp3ar3UKvBhgLcS+/TNOH0Bd
- IzE16wJzyij/4hUguSuAzEq4NSq5uAnpNyY3ZbiHSZ46NaSRXpA0ACowioz1/LmgY9CK
- pReh7zf2df8V3IYRrrJ+UjJUzHF4F2wy7mfRLraQHWSdh18be11z4tToLMCtT3n+0NHq
- 6KWJXsSCRqdk7I0aWN9DIbRPnpAGKf5wN0ZFTqQ4/rKPuHrAhgiasi5/UqTYN6cjrMlW
- aAsRmNvdFeOdHNrxGtjXoiaL7j5GRDGERNB0NbaGOQEFBuUUvRiHs/amL27CRZbkYnBI
- tM1A==
-X-Gm-Message-State: AOAM531qJ2RE/Km358svPO04YznxM+mPM+mUoMe+iY3lCXe64zpk8Lw6
- g6yFiaAF9FzQBs3CrOkxLTzOjY7VqJQXCF2HeeJTMA==
-X-Google-Smtp-Source: ABdhPJyyh8r00V5dnzC7J663uWgsb6bIr45zqffFvMVOa7JwQMs1QHsDUIoUGvYd0l5Gb33OEKfuJA9HIJBcdXdIKco=
-X-Received: by 2002:a05:6102:3d7:: with SMTP id
- n23mr164533vsq.57.1599091690996; 
- Wed, 02 Sep 2020 17:08:10 -0700 (PDT)
+ id 1kDelb-0008Pq-VU; Thu, 03 Sep 2020 02:14:26 +0000
+X-UUID: 68dc97f0ca474a7aaf850b66d612bb0e-20200902
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=AajrTFn3Auk2rKVdZkKi5kCzYDhKTsT5vsI2D4hD++Q=; 
+ b=EZ1kaKjOaJXCgq9CSc/GJa0d6scGXUi12iacVmetb4oWXI5LQeIxFP3dv+kDGi+NRLBuXadjY9QM1DuSqHqlLmWx6hMW4wWAB1biiv1r3eH1IPb3XxAUg8y8Pp/d5QpOtIDaQIPAEiGeH+LQ+WuYL4qGeiE75HHVtFyzEcFd6qA=;
+X-UUID: 68dc97f0ca474a7aaf850b66d612bb0e-20200902
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <claude.yen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 184725020; Wed, 02 Sep 2020 18:14:10 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 2 Sep 2020 19:14:09 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 3 Sep 2020 10:14:06 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 3 Sep 2020 10:14:06 +0800
+Message-ID: <1599099247.4435.4.camel@mtksdccf07>
+Subject: Re: [PATCH] PM: s2idle: Introduce syscore callbacks in s2idle flow
+From: Claude.Yen <Claude.Yen@mediatek.com>
+To: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Thu, 3 Sep 2020 10:14:07 +0800
+In-Reply-To: <CAJZ5v0hOGEUamXw124q4CnL67o97qRHy9Vv9_F2AQqefDdu3vQ@mail.gmail.com>
+References: <1598943859-21857-1-git-send-email-claude.yen@mediatek.com>
+ <CAJZ5v0hOGEUamXw124q4CnL67o97qRHy9Vv9_F2AQqefDdu3vQ@mail.gmail.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-References: <20200902190709.v2.1.I56cf27cd59f4013bd074dc622c8b8248b034a4cc@changeid>
- <20200902165505.GA280378@xps15>
-In-Reply-To: <20200902165505.GA280378@xps15>
-From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Thu, 3 Sep 2020 08:08:00 +0800
-Message-ID: <CANMq1KDcYRKWxQ6+AQ=eTRcHdkiWyzH7BTahXdag5=FdnF7e1g@mail.gmail.com>
-Subject: Re: [PATCH v2] rpmsg: Avoid double-free in mtk_rpmsg_register_device
-To: Mathieu Poirier <mathieu.poirier@linaro.org>
+X-TM-SNTS-SMTP: 1BF4C1899FB0BB2C5EFD5FF48193355333B30A741024572127D6DC6D18D88B412000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200902_200812_932628_1AC7D6BC 
-X-CRM114-Status: GOOD (  19.92  )
+X-CRM114-CacheID: sfid-20200902_221424_201672_BA85A603 
+X-CRM114-Status: GOOD (  21.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,72 +84,93 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ohad Ben-Cohen <ohad@wizery.com>,
- "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
- <linux-remoteproc@vger.kernel.org>, lkml <linux-kernel@vger.kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Pi-Hsun Shih <pihsun@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Cc: wsd_upstream <wsd_upstream@mediatek.com>,
+ Linux PM <linux-pm@vger.kernel.org>, Frederic Weisbecker <fweisbec@gmail.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, Douglas
+ Anderson <dianders@chromium.org>, Bjorn Andersson <bjorn.andersson@linaro.org>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Stephen Boyd <swboyd@chromium.org>,
+ Ingo Molnar <mingo@kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 3, 2020 at 12:55 AM Mathieu Poirier
-<mathieu.poirier@linaro.org> wrote:
->
-> On Wed, Sep 02, 2020 at 07:07:15PM +0800, Nicolas Boichat wrote:
-> > If rpmsg_register_device fails, it will call
-> > mtk_rpmsg_release_device which already frees mdev.
+On Tue, 2020-09-01 at 13:57 +0200, Rafael J. Wysocki wrote:
+> On Tue, Sep 1, 2020 at 9:05 AM Claude Yen <claude.yen@mediatek.com> wrote:
 > >
-> > Fixes: 7017996951fde84 ("rpmsg: add rpmsg support for mt8183 SCP.")
->
-> The SHA should be 12 characters instead of 15.  With that:
+> > This series based on 5.9-rc1
+> > This patch makes s2idle call existing syscore callbacks. Currently,
+> > when s2idle is selected as system suspend method, callbacks hooked
+> > by register_syscore_ops() will not be triggered. This may induce
+> > unexpected results.
+> 
+> They are not executed by design.
+> 
+> > For example, sched_clock_suspend() was added to s2idle flow in
+> > commit 3f2552f7e9c5 ("timers/sched_clock: Prevent generic sched_clock
+> > wrap caused by tick_freeze()") to fix clock wrap problem. However,
+> > sched_clock_suspend() is originally registered in syscore callback.
+> 
+> I'm not sure why this matters here.
 
-Done in v3, thanks (and fixed my process for next time).
+If functions in syscore callbacks are needed in s2idle, explicit
+migration is needed like commit 3f2552f7e9c5 ("timers/sched_clock:
+Prevent generic sched_clock wrap caused by tick_freeze()").
+Thus, I am wondering if such effort could be saved.
 
-> Reviewed-by: Mathieu Poirier <mathieu.poirier@linaro.org>
->
-> > Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-> > ---
-> >
-> > Changes in v2:
-> >  - Drop useless if and ret variable (Markus Elfring)
-> >
-> >  drivers/rpmsg/mtk_rpmsg.c | 9 +--------
-> >  1 file changed, 1 insertion(+), 8 deletions(-)
-> >
-> > diff --git a/drivers/rpmsg/mtk_rpmsg.c b/drivers/rpmsg/mtk_rpmsg.c
-> > index 83f2b8804ee989d..96a17ec2914011d 100644
-> > --- a/drivers/rpmsg/mtk_rpmsg.c
-> > +++ b/drivers/rpmsg/mtk_rpmsg.c
-> > @@ -200,7 +200,6 @@ static int mtk_rpmsg_register_device(struct mtk_rpmsg_rproc_subdev *mtk_subdev,
-> >       struct rpmsg_device *rpdev;
-> >       struct mtk_rpmsg_device *mdev;
-> >       struct platform_device *pdev = mtk_subdev->pdev;
-> > -     int ret;
-> >
-> >       mdev = kzalloc(sizeof(*mdev), GFP_KERNEL);
-> >       if (!mdev)
-> > @@ -219,13 +218,7 @@ static int mtk_rpmsg_register_device(struct mtk_rpmsg_rproc_subdev *mtk_subdev,
-> >       rpdev->dev.parent = &pdev->dev;
-> >       rpdev->dev.release = mtk_rpmsg_release_device;
-> >
-> > -     ret = rpmsg_register_device(rpdev);
-> > -     if (ret) {
-> > -             kfree(mdev);
-> > -             return ret;
-> > -     }
-> > -
-> > -     return 0;
-> > +     return rpmsg_register_device(rpdev);
-> >  }
-> >
-> >  static void mtk_register_device_work_function(struct work_struct *register_work)
-> > --
-> > 2.28.0.402.g5ffc5be6b7-goog
-> >
+> > With this patch, if another syscore callback is needed in s2idle,
+> > additional migration effort could be saved.
+> 
+> s2idle cannot execute syscore callbacks, because it doesn' take
+> non-boot CPUs offline and it won't do that.
+> 
+> Thanks!
+
+Yes, the current design of syscore callback needs non-boot CPUs offline.
+Considering the following case: in s2idle flow, there is a status that
+only one CPU is alive and other CPUs have enter deepest idle state.
+This situation is similar to getting non-boot CPUs offline, though all
+CPUs are online from kernel's perspective.
+
+Reply from Stephen mentioned that if an operation is needed in both
+S2R and s2idle, CPU_PM notifier can be utilized. 
+In my opinion, CPU_PM notifier is particularly for CPU entering idle
+state. In contrast, syscore callback is for system going low power
+state. There exists semantic difference between these two callbacks.
+
+Could the current design of syscore callback be re-designed as
+system-wide suspend callback?
+
+Proposed suspend flow in this patch:
+
+    Freeze tasks
+        |
+        V
+    Device suspend callbacks
+        |
+        |-------------s2idle----------
+        |                            |
+        V                            |
+    Disable nonboot CPUs    Is this CPU last core to enter idle?
+        |                            |
+        V                            |-------------
+    syscore callbacks                |            |
+        |                           No           Yes
+        V                            |            |
+    platform suspend                 V            V
+                                 enter idle     syscore callback
+                                                  |
+                                                  V
+                                                enter idle
+
+Regards,
+Claude
 
 _______________________________________________
 Linux-mediatek mailing list
