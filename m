@@ -2,79 +2,91 @@ Return-Path: <SRS0=heX2=CN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 89D66C433E2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 03:31:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 980FAC433E2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 03:48:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4C69F206D4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 03:31:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5E8E0206F2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 03:48:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="a9gZ4Ru1";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="RfFQcZ/9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4C69F206D4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NkL6A9Hy";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="mb+Hl9XG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E8E0206F2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1il60Y2HNYB4BhzJjgtVimzt9bz8dTbjvyCiQd1v1y8=; b=a9gZ4Ru1CbPibglCDuDqUTxPo
-	NX3t03klGrt1fJ3E7imSdp1huWcFoNjMejqGbtRYdKpX5NCmq5yK/4SE6dERPo6c/GmH8DdYF0pLo
-	CmkB0MJsvQD228HKbJWYPLjxI4yCEAiJJsrjtvw0kxt/BToCujUA164i2zFgYJ7c2LRhZD0LzU2S/
-	PzyHtz+r/0kyYxLEQjQJXukKqSXN7YkSsek8Ezr6sH+ROivi76X61opL+WH72GakpfDfZfZTrfwAg
-	AYVBLo65nBMzMenREb9DLe6bsjI4lLAv3Ujx0ZD1bTP3fcRwqBgMNEzGzdnf/akoteC6KeSLQE30f
-	WT4h8ab1Q==;
+	 bh=zg4NhVW80RWjYdXabntnnG5YxfzyXBkhGn/CsF+h0jw=; b=NkL6A9Hy7eKPzu3VAz2uKlsWi
+	8RpepauHOigDPesonfuPJzeKx9znIV35v00+hjNnHHNhLtRdAM/Ha283yGNe6a3iStWWi+B5B4I0+
+	FXRLDhZTNrsPF2dtkbEwilKuoip7VVuG85YjcC/OuBEPHJ0FTvAhHtjG54/eQ7FFs4h8i4p8X0Xqa
+	qQwd42NOOg1Mfvtvc6LqVWNzUnMtd9zEnKdfVnGXBLbQ+5/j4quglv7RF/ABq7uxZ09RjokYLdP1F
+	mqAMSmcOXmtSe+pcXY2BIK01VB4ADeIDNKl2nzTED5AN1VR0ICNIps4USfOZI8w/xALkbWP2zJX9t
+	g+BKfEYrQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kE2S1-0002lg-2w; Fri, 04 Sep 2020 03:31:45 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kE2i9-0003Gi-Vt; Fri, 04 Sep 2020 03:48:26 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kE2Rw-0002kz-79; Fri, 04 Sep 2020 03:31:41 +0000
-X-UUID: a638e8d826444015a124ef6a2ef907d8-20200903
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=MgYZSn5dO120VGKzJXvetFyHicODTuH1UC+5Qr8NQKo=; 
- b=RfFQcZ/956mQaCGQB8khZaUU64zSLA4lYxxs/0i+gC/TuB2wxWY1YlcCtXGUNtkKMhIQm1tZMo29EqPXPNLGv3Xz57DGpdqkCuVuQt7Cc9XdgSfeQVs3h/ORocY9PlmB+V7Bx1ALyaK0eLEoicHa8kEsXGcTR/I0Cltbxx+z8pw=;
-X-UUID: a638e8d826444015a124ef6a2ef907d8-20200903
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <dongchun.zhu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 19380118; Thu, 03 Sep 2020 19:31:29 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 3 Sep 2020 20:25:56 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 4 Sep 2020 11:25:52 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 4 Sep 2020 11:25:50 +0800
-Message-ID: <1599189850.4733.26.camel@mhfsdcap03>
-Subject: Re: [PATCH v14 1/2] media: dt-bindings: media: i2c: Document
- OV02A10 bindings
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-Date: Fri, 4 Sep 2020 11:24:10 +0800
-In-Reply-To: <20200903161346.GA2875415@bogus>
-References: <20200902120122.24456-1-dongchun.zhu@mediatek.com>
- <20200902120122.24456-2-dongchun.zhu@mediatek.com>
- <20200903161346.GA2875415@bogus>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kE2i7-0003Fu-N5; Fri, 04 Sep 2020 03:48:24 +0000
+Received: by mail-pf1-x443.google.com with SMTP id o20so3857387pfp.11;
+ Thu, 03 Sep 2020 20:48:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=LLqMfP2X1w4/jx53zQazins9pmX04Mu60TQfw9itrD8=;
+ b=mb+Hl9XGSjFDxPd2p1f2pWmrMALZyTgnOGltZSsAKY+ceyLlc25uoUfqCfv4SGdZ00
+ 2BzApt7dNMGm+qM2lH5spgflbHWPIL3hTYvYi7oTiHQEgy1gnoriuYH07qsaYIcDXcxe
+ YqNwQkWYLjmcNDkwWgO1c8/O4/aOD19xb59o8nsrrFITpflaTq1Z9MOI1/aEMHLEo+2n
+ 4mP/M/E62GB5R5TVEOnbfSEtgoggO2tp/eNAXS+OECnOsToBoqM30yFjE27oXhgd7/2D
+ 36ReqsHdWTuMfW512oIc8gHkBGvfq0holRoO8LXq/p2yy5uTS7h9k+nBo7S5wAtodOht
+ P3kw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=LLqMfP2X1w4/jx53zQazins9pmX04Mu60TQfw9itrD8=;
+ b=qtHFw+KYp6ahLr7vN9a9RaRUthizbSF6H8Mz0aXEakI/8q5G2hFz4ir30fejkFgoPG
+ 9pjxVqDxwauwldTGpsPbkCX9BtdO5Mzyy4mQ+SdrYvqY+cMW9Y7lWn2p8F1EzLbUTjk+
+ veXbK4htvxJsAQSmaVVhKPlbM1hHwzEtBH053ztpPe7NhZxWxOusCZpJwLUvouNsAE5l
+ ZG8HwQi1GkJAH8jy+zkrmR0w1S5Li+DIFGPPCpkXCWbE5pQglYkGta8O9lkxNMghTAJi
+ fFyWYuDvfBOdFYIV/cV0yQT0Um9xP5wsGn7IRWFpEi//F6TsYPKYkUs6LFRNG8vSwI4+
+ 95Rg==
+X-Gm-Message-State: AOAM5318o5wZTRIILsuXstHNrxOcBlROsIuB/mfIW5l761a+xtDNjIG+
+ 0iAsJY+LSsAWIe7McUHU+HOuCiJde6s=
+X-Google-Smtp-Source: ABdhPJxZxpzdB4FVjwyhMcw6LmWXi5pm+av3ieAQSNIpqfV1v7ZJR5459FGAK0H8X2gf8VjSQVuWzg==
+X-Received: by 2002:aa7:9582:: with SMTP id z2mr47814pfj.257.1599191298737;
+ Thu, 03 Sep 2020 20:48:18 -0700 (PDT)
+Received: from [10.230.30.107] ([192.19.223.252])
+ by smtp.gmail.com with ESMTPSA id n11sm4224831pgd.2.2020.09.03.20.48.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 03 Sep 2020 20:48:17 -0700 (PDT)
+Subject: Re: [PATCH v2 01/11] usb: gadget: bdc: fix improper SPDX comment
+ style for header file
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Felipe Balbi <balbi@kernel.org>
+References: <1597923046-12535-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Florian Fainelli <f.fainelli@gmail.com>
+Message-ID: <4ef74f8d-bbb3-2503-ed3e-8b5ce385a7eb@gmail.com>
+Date: Thu, 3 Sep 2020 20:48:15 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.1.1
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: A7ECABCC12E377294537EB3BB11E063BA24C5E44B727A27FB45E9077160807172000:8
-X-MTK: N
+In-Reply-To: <1597923046-12535-1-git-send-email-chunfeng.yun@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200903_233140_460621_00E4E385 
-X-CRM114-Status: GOOD (  17.69  )
+X-CRM114-CacheID: sfid-20200903_234823_792335_9A42D5F4 
+X-CRM114-Status: GOOD (  12.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,60 +98,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org,
- srv_heupstream@mediatek.com, mchehab@kernel.org, shengnan.wang@mediatek.com,
- tfiga@chromium.org, louis.kuo@mediatek.com, sj.huang@mediatek.com,
- robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
- dongchun.zhu@mediatek.com, sakari.ailus@linux.intel.com,
- matthias.bgg@gmail.com, bingbu.cao@intel.com, matrix.zhu@aliyun.com,
- andriy.shevchenko@linux.intel.com, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: Peter Chen <peter.chen@nxp.com>, Sasi Kumar <sasi.kumar@broadcom.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Al Cooper <alcooperx@gmail.com>, linux-kernel@vger.kernel.org,
+ Minas Harutyunyan <hminas@synopsys.com>, linux-usb@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>,
+ Nathan Chancellor <natechancellor@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Rob,
 
-Thanks for the review.
 
-On Thu, 2020-09-03 at 10:13 -0600, Rob Herring wrote:
-> On Wed, 02 Sep 2020 20:01:21 +0800, Dongchun Zhu wrote:
-> > Add YAML device tree binding for OV02A10 CMOS image sensor,
-> > and the relevant MAINTAINERS entries.
-> > 
-> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > ---
-> >  .../bindings/media/i2c/ovti,ov02a10.yaml           | 161 +++++++++++++++++++++
-> >  MAINTAINERS                                        |   7 +
-> >  2 files changed, 168 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > 
+On 8/20/2020 4:30 AM, Chunfeng Yun wrote:
+> For C header files Documentation/process/license-rules.rst
+> mandates C-like comments (opposed to C source files where
+> C++ style should be used).
 > 
-> 
-> My bot found errors running 'make dt_binding_check' on your patch:
-> 
-> Error: Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.example.dts:28.45-46 syntax error
-> FATAL ERROR: Unable to parse input tree
-> make[1]: *** [scripts/Makefile.lib:342: Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.example.dt.yaml] Error 1
-> make[1]: *** Waiting for unfinished jobs....
-> make: *** [Makefile:1366: dt_binding_check] Error 2
-> 
-> 
-> See https://patchwork.ozlabs.org/patch/1355723
-> 
-> If you already ran 'make dt_binding_check' and didn't see the above
-> error(s), then make sure dt-schema is up to date:
-> 
-> pip3 install git+https://github.com/devicetree-org/dt-schema.git@master --upgrade
-> 
-> Please check and re-submit.
-> 
+> Cc: Florian Fainelli <f.fainelli@gmail.com>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
-So much sorry for the mistake I've made.
-I forgot to include the header file 'dt-bindings/gpio/gpio.h'.
-This would be fixed in next release :-)
-
+Acked-by: Florian Fainelli <f.fainelli@gmail.com>
+-- 
+Florian
 
 _______________________________________________
 Linux-mediatek mailing list
