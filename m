@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 980FAC433E2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 03:48:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 82399C433E2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 03:49:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5E8E0206F2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 03:48:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 490F12073B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 03:49:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NkL6A9Hy";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="mb+Hl9XG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E8E0206F2
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dIA556FE";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="tyk6us76"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 490F12073B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,66 +27,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zg4NhVW80RWjYdXabntnnG5YxfzyXBkhGn/CsF+h0jw=; b=NkL6A9Hy7eKPzu3VAz2uKlsWi
-	8RpepauHOigDPesonfuPJzeKx9znIV35v00+hjNnHHNhLtRdAM/Ha283yGNe6a3iStWWi+B5B4I0+
-	FXRLDhZTNrsPF2dtkbEwilKuoip7VVuG85YjcC/OuBEPHJ0FTvAhHtjG54/eQ7FFs4h8i4p8X0Xqa
-	qQwd42NOOg1Mfvtvc6LqVWNzUnMtd9zEnKdfVnGXBLbQ+5/j4quglv7RF/ABq7uxZ09RjokYLdP1F
-	mqAMSmcOXmtSe+pcXY2BIK01VB4ADeIDNKl2nzTED5AN1VR0ICNIps4USfOZI8w/xALkbWP2zJX9t
-	g+BKfEYrQ==;
+	 bh=Dm0bFnBvaB3F4Tg2stosacfndxeChCB956E9ln1nzWc=; b=dIA556FEugVkdwX7UDgZqXv72
+	5fwtSHVfumxJE2d78PVqyH+t7VMfyzNQgq5MXYJhXIxx0J4ssMkix4dfCLE0eP38JCEz9ugEeOS75
+	hYjcY3r0QjAu/qee/xD0Jqk/lJRulgsoJtPMXHFn7Ewt+wF4rATiaudh/7Rkdhdk5l3xqddIZztN8
+	xMydFHNFhE96aPvAl/+OriN6ZlMemF1WgkGQmwpaRbc5gOQPg+IAVGXF/8bF7q1KxE/RKgzccsK+Z
+	ueawTK/QopOT+5fANkgBhRfqeU5T0WsxGa7nVNqx5ZElfqbNXL8qj9uN/3bOF17IJzshwyqT+YMxj
+	WBPXVLhSg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kE2i9-0003Gi-Vt; Fri, 04 Sep 2020 03:48:26 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1kE2j4-0003NL-58; Fri, 04 Sep 2020 03:49:22 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kE2i7-0003Fu-N5; Fri, 04 Sep 2020 03:48:24 +0000
-Received: by mail-pf1-x443.google.com with SMTP id o20so3857387pfp.11;
- Thu, 03 Sep 2020 20:48:20 -0700 (PDT)
+ id 1kE2j2-0003Mi-6m; Fri, 04 Sep 2020 03:49:20 +0000
+Received: by mail-pf1-x442.google.com with SMTP id f18so3861294pfa.10;
+ Thu, 03 Sep 2020 20:49:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=LLqMfP2X1w4/jx53zQazins9pmX04Mu60TQfw9itrD8=;
- b=mb+Hl9XGSjFDxPd2p1f2pWmrMALZyTgnOGltZSsAKY+ceyLlc25uoUfqCfv4SGdZ00
- 2BzApt7dNMGm+qM2lH5spgflbHWPIL3hTYvYi7oTiHQEgy1gnoriuYH07qsaYIcDXcxe
- YqNwQkWYLjmcNDkwWgO1c8/O4/aOD19xb59o8nsrrFITpflaTq1Z9MOI1/aEMHLEo+2n
- 4mP/M/E62GB5R5TVEOnbfSEtgoggO2tp/eNAXS+OECnOsToBoqM30yFjE27oXhgd7/2D
- 36ReqsHdWTuMfW512oIc8gHkBGvfq0holRoO8LXq/p2yy5uTS7h9k+nBo7S5wAtodOht
- P3kw==
+ bh=yUwNeEcHskKzWXeX8bUdAXXsdwwyVt0UyxCmSAJpfmw=;
+ b=tyk6us76VRM4mNiW0Eg6ePdDKdKOGwiBjuyTBC7Z3460Na9zVaSTCOUrjpfiUqlx0U
+ kplUyxRHHyR4whbnU5QO/T3CuIXW7sOSDRNgKjmZZNRS/X8B2ID9gb0xlvWUmaQLF/MM
+ x77Zs4doxxCKG0YalXTsYEFr+Qm6d8CpLImz4sjf+rJyoO3//GDoVj7um1EkWmuT7N/J
+ 0XFB/5jphJEuKY3Pv27sScIGzwJY3VO043Sc8C7DoR9OjtstL+u4GAqIZKVi/KK5Fe9J
+ MOPxj5sSp052Key0MB0ywJl6JOsqsMo91tyOPoN8Cu87dIb2TWfvsoyr1m/oIiNoszg+
+ WLww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=LLqMfP2X1w4/jx53zQazins9pmX04Mu60TQfw9itrD8=;
- b=qtHFw+KYp6ahLr7vN9a9RaRUthizbSF6H8Mz0aXEakI/8q5G2hFz4ir30fejkFgoPG
- 9pjxVqDxwauwldTGpsPbkCX9BtdO5Mzyy4mQ+SdrYvqY+cMW9Y7lWn2p8F1EzLbUTjk+
- veXbK4htvxJsAQSmaVVhKPlbM1hHwzEtBH053ztpPe7NhZxWxOusCZpJwLUvouNsAE5l
- ZG8HwQi1GkJAH8jy+zkrmR0w1S5Li+DIFGPPCpkXCWbE5pQglYkGta8O9lkxNMghTAJi
- fFyWYuDvfBOdFYIV/cV0yQT0Um9xP5wsGn7IRWFpEi//F6TsYPKYkUs6LFRNG8vSwI4+
- 95Rg==
-X-Gm-Message-State: AOAM5318o5wZTRIILsuXstHNrxOcBlROsIuB/mfIW5l761a+xtDNjIG+
- 0iAsJY+LSsAWIe7McUHU+HOuCiJde6s=
-X-Google-Smtp-Source: ABdhPJxZxpzdB4FVjwyhMcw6LmWXi5pm+av3ieAQSNIpqfV1v7ZJR5459FGAK0H8X2gf8VjSQVuWzg==
-X-Received: by 2002:aa7:9582:: with SMTP id z2mr47814pfj.257.1599191298737;
- Thu, 03 Sep 2020 20:48:18 -0700 (PDT)
+ bh=yUwNeEcHskKzWXeX8bUdAXXsdwwyVt0UyxCmSAJpfmw=;
+ b=fa1JKuYv7b4mUGjTqqzUaWyQ1rNhR8ZJ/xstX2yM41QLGPSlgZOqDNpLtJzdd+DOjn
+ g9NExUq4WMRza4FOrNyjWWMAHp4R8QEdVOOhuIiiaz6WchsyYTM2BaroujdLS4WYcwee
+ 6+2mYFY2GVU2HKQeVopfPw2hNXEIrdmFWQ7Rp6LAY3H1en+lNJvJpVHtEStcgcYQXteU
+ 5S7u83xPg+DVRwLQtu9ziLzregG5uT7SprTOa1l4LNlgIetWQvoqTsdR2inA2gDjaMVX
+ Kt5N2X+UJ4t/QaOInC7iKfTR5+/hhqkdbBRFeNQylSlTnScBpVh4BrmgHll311Pz1qZz
+ tY6A==
+X-Gm-Message-State: AOAM533IESfRnWKFMLID8iRZ4TY3UIZ9x3UuzsaRGd82LCjfinmTSs6L
+ Np6OJ0WqjmyqDfh4BCmjHluTFRIH0TU=
+X-Google-Smtp-Source: ABdhPJw/eSFC88ac0saM3t/fXQyFfUeCxGYnQbVZj3Us6hTMEURv3VFykxvAb+PJBLvFU9K6D56eKQ==
+X-Received: by 2002:a62:14ca:: with SMTP id 193mr6553252pfu.13.1599191357764; 
+ Thu, 03 Sep 2020 20:49:17 -0700 (PDT)
 Received: from [10.230.30.107] ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id n11sm4224831pgd.2.2020.09.03.20.48.16
+ by smtp.gmail.com with ESMTPSA id l9sm4481197pgg.29.2020.09.03.20.49.15
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 03 Sep 2020 20:48:17 -0700 (PDT)
-Subject: Re: [PATCH v2 01/11] usb: gadget: bdc: fix improper SPDX comment
- style for header file
+ Thu, 03 Sep 2020 20:49:17 -0700 (PDT)
+Subject: Re: [PATCH v2 02/11] usb: gadget: bdc: remove bdc_ep_set_halt()
+ declaration
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Felipe Balbi <balbi@kernel.org>
 References: <1597923046-12535-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1597923046-12535-2-git-send-email-chunfeng.yun@mediatek.com>
 From: Florian Fainelli <f.fainelli@gmail.com>
-Message-ID: <4ef74f8d-bbb3-2503-ed3e-8b5ce385a7eb@gmail.com>
-Date: Thu, 3 Sep 2020 20:48:15 -0700
+Message-ID: <0e482eba-7f5d-ce25-8237-ab4c4278e0cc@gmail.com>
+Date: Thu, 3 Sep 2020 20:49:14 -0700
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
  Firefox/78.0 Thunderbird/78.1.1
 MIME-Version: 1.0
-In-Reply-To: <1597923046-12535-1-git-send-email-chunfeng.yun@mediatek.com>
+In-Reply-To: <1597923046-12535-2-git-send-email-chunfeng.yun@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200903_234823_792335_9A42D5F4 
-X-CRM114-Status: GOOD (  12.22  )
+X-CRM114-CacheID: sfid-20200903_234920_261163_0F0A3921 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,9 +115,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 8/20/2020 4:30 AM, Chunfeng Yun wrote:
-> For C header files Documentation/process/license-rules.rst
-> mandates C-like comments (opposed to C source files where
-> C++ style should be used).
+> No definition for bdc_ep_set_halt(), so remove it.
 > 
 > Cc: Florian Fainelli <f.fainelli@gmail.com>
 > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
