@@ -2,92 +2,75 @@ Return-Path: <SRS0=heX2=CN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 14709C43461
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 03:53:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 72F1CC43461
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 06:01:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CD15E20748
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 03:53:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1DFD6206E7
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 06:01:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yVX3nUK9";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WrkeKOpL"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD15E20748
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lRr9ZC5I";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="jOi6ySow"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1DFD6206E7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ZStVM4fpmxX7RXPvXQhmroV0wVsWt5MryPvThjiL6v0=; b=yVX3nUK9JprWetUtyObxJgK05
-	qUS++7p5cFO5DIgM7cexsSfM/G6680a0aIUOxslU2Q/GJkHq8piyIHCXWrVKUykqYjmnoIBtnLvlc
-	ukwB330Qlr7XXOW3hinhbaU3sJbKI78Wji5qLD9VpuWzOjHdtpsqZ8FPSHvid2VhdMMzO6Pd/FKlI
-	OOl1TLVN3IWLw+3Dhp9ZfBnFmPOTKnnE6cg30MXUl8HcROP83JfSjvhs7+1zT9W6sJmqw2avXcoN1
-	KiKlWL07y5wZgjOIZEW80I/wDf12N9IzBQd9oo21Nlnve0MQ3oIrRUiEIkRLGyRjg4Abvob5zPqMQ
-	rVfQHO9jQ==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=T1qF+aLyI6XeN/OrvZZC/5E6RFuF6dD1hkkfJZF9oLA=; b=lRr9ZC5Ih1xs7q6Ck+GOzPjc7P
+	9YIfLz98yp/OS0trZelrqCPkrFlWTD0kJhfbK7WGIBryJWCUWSl3a5sE+FGBfByr1WhleNCcgwBot
+	eQMLsfl81WborwAZ0tT6qSUjgrK5dEWeKoSGoYgB7izeDArtqavZaKYxwah0efl1CewUYlGWXNqAL
+	EB8ytUfvhFYkR5FoKAbF1azx9lDcuqQZxsY0ZCMBtt+C3az8bqC93jUTsWEwshF1gGreuM91rB1VF
+	SPWSe2Wl7tPgTW0pLJXJmTScum/krRamKCKWDmmndVxTc+5m6oaNCA/K1LE6uKow0An2s8E2eo/0H
+	ywmca+4g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kE2mq-00053W-Lr; Fri, 04 Sep 2020 03:53:16 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1kE4mx-0005kd-II; Fri, 04 Sep 2020 06:01:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kE2mo-00051I-Hg; Fri, 04 Sep 2020 03:53:15 +0000
-Received: by mail-pg1-x544.google.com with SMTP id v15so3641422pgh.6;
- Thu, 03 Sep 2020 20:53:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=hKioT0wjDTd3HyPaP33TayX+qRWZn7CovAFQRZ/15Ww=;
- b=WrkeKOpLSbJxDXVmyA8s6DCES7y33/VoPusNxlh12V8XVbhCn6FLIWQujlJfM5Zf2J
- 60lvZ3ZjeOCFcct2uoED5eOjgSM+yJdPNtcH9JdHIE4QlZsIr7sbDyg/vyFihcDjFwFt
- 65lDb+Nyb+YNTN7E5gCFk8FbEIYXyqbaJphxDj/sNiw7kEOh4tx1/ewUXSopDRrUoZmL
- 3AN5RiRbfrwjm0YX9G6WqNv966ktq92Vhl9hW5frdqJe20khkiOubc5Akn09KWyW42R+
- n/VhMC+eDVV1JMCeGEJIuXjKFt3K6FHIPd3DlJmyuZGfQmA6siRQKz8lNYEMAiUf3RwS
- mJFg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=hKioT0wjDTd3HyPaP33TayX+qRWZn7CovAFQRZ/15Ww=;
- b=KYpZT7DrWdE79NtdDICXwZepWcDMzAU6mJhl6oGEeveaatO/w7xzwqMLV6B+2fvovb
- +sMo8egnJq8C/M437tibHhMULuUUiuoHioC6c3xqQR2OHibfMtQEwW+KTDsDb+k2X420
- maGCr6mNi6XHD8gUVMGdxlbMLk0sQjIAhhb1T0xoue1tl8QIZGlanZtovBKtDTcT4gOa
- 2C//59pL1MXq6lyvTTKiKora+i6m/n8u6nL+Gmqk9UwyuYfK+hB5/rFNJdNOzqUC003p
- fSgzXAZZOtTA649/Ac0ErnUUDkG9Nd98zX6b4Z1QDBkZYeTZX1kvPjXpEKFrqXOl6S6J
- CWpg==
-X-Gm-Message-State: AOAM532MjaFr3KR464rKTt37QM/G/DuGeeMP376v5pmoD384V8Rysvun
- BSMb6gd1Wy3FHZuSqx9Fycl1mfqDq4Q=
-X-Google-Smtp-Source: ABdhPJzqti3IptrNuUSV13GjWu324l+mciLP0rzdo4Vg7VMbN/JnTv9YYroozlxYfRpDVFnkrgZAfg==
-X-Received: by 2002:a62:e404:: with SMTP id r4mr6625289pfh.213.1599191592357; 
- Thu, 03 Sep 2020 20:53:12 -0700 (PDT)
-Received: from [10.230.30.107] ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id x140sm4690544pfc.211.2020.09.03.20.53.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 03 Sep 2020 20:53:11 -0700 (PDT)
-Subject: Re: [PATCH v2 01/11] usb: gadget: bdc: fix improper SPDX comment
- style for header file
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-References: <1597923046-12535-1-git-send-email-chunfeng.yun@mediatek.com>
- <1599189448.11403.33.camel@mhfsdcap03>
-From: Florian Fainelli <f.fainelli@gmail.com>
-Message-ID: <4c7e1125-beef-51ae-2784-2850b38cc8e1@gmail.com>
-Date: Thu, 3 Sep 2020 20:53:10 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.1.1
+ id 1kE4mu-0005j5-Lx
+ for linux-mediatek@lists.infradead.org; Fri, 04 Sep 2020 06:01:29 +0000
+X-UUID: 24512b8599314a33ac01bd32e8d63ee6-20200903
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=jPwwJyFn/+V/3BD7kswj4A4OC14ihyANbZY+bcDcNig=; 
+ b=jOi6ySowdlOa3/dwTxbrW1Wr5jWrpcmDZ4A+QHZ14oEYKgvn5sovrc5+5keTFOaC5OU8mYDeTWSrSGgnDi3KttN29wIl+7yab3nLobMMj8SrIzT0pbPLuON3kunkUgjKHCOMU6Cts6pO5zxdvwXynxBeAvzZW9bnTNLFA/tk9xM=;
+X-UUID: 24512b8599314a33ac01bd32e8d63ee6-20200903
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 442623124; Thu, 03 Sep 2020 22:01:14 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 3 Sep 2020 22:51:12 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 4 Sep 2020 13:51:02 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 4 Sep 2020 13:51:03 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+Subject: [PATCH] mt76: mt7915: fix unexpected firmware mode
+Date: Fri, 4 Sep 2020 13:51:02 +0800
+Message-ID: <1ff9c333497bc23c535028c53e19e9d9724cf4c0.1599099379.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <1599189448.11403.33.camel@mhfsdcap03>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200903_235314_613299_53FBEE3D 
-X-CRM114-Status: GOOD (  14.51  )
+X-CRM114-CacheID: sfid-20200904_020128_895791_A6558975 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,41 +82,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Felipe Balbi <balbi@kernel.org>, Sasi Kumar <sasi.kumar@broadcom.com>,
- Peter Chen <peter.chen@nxp.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Al Cooper <alcooperx@gmail.com>, linux-kernel@vger.kernel.org,
- Minas Harutyunyan <hminas@synopsys.com>, linux-usb@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Colin Ian King <colin.king@canonical.com>,
- Nathan Chancellor <natechancellor@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ Chih-Min Chen <chih-min.chen@mediatek.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Shayne Chen <shayne.chen@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Chih-Min Chen <chih-min.chen@mediatek.com>
 
+Avoid firmware falling into spectrum mode since that will set
+unexpected PSE/PLE thresholds which lead to Tx hang.
 
-On 9/3/2020 8:17 PM, Chunfeng Yun wrote:
-> Hi Florian,
-> 
-> On Thu, 2020-08-20 at 19:30 +0800, Chunfeng Yun wrote:
->> For C header files Documentation/process/license-rules.rst
->> mandates C-like comments (opposed to C source files where
->> C++ style should be used).
->>
->> Cc: Florian Fainelli <f.fainelli@gmail.com>
->> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
->> ---
-[snip]
-> Would you please take a look at this series?
-> I'll drop the patches that not fine with you.
+This mode should be cleaned before firmware download stage.
 
-It all looks good to me, thanks and sorry for not responding earlier.
+Signed-off-by: Chih-Min Chen <chih-min.chen@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c | 6 ++++++
+ drivers/net/wireless/mediatek/mt76/mt7915/regs.h | 7 +++++++
+ 2 files changed, 13 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index 517f526ec852..5a2dbbd9aa5a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -139,6 +139,12 @@ static int mt7915_init_hardware(struct mt7915_dev *dev)
+ 
+ 	set_bit(MT76_STATE_INITIALIZED, &dev->mphy.state);
+ 
++	/*
++	 * force firmware operation mode into normal state,
++	 * which should be set before firmware download stage.
++	 */
++	mt76_wr(dev, MT_SWDEF_MODE, MT_SWDEF_NORMAL_MODE);
++
+ 	ret = mt7915_mcu_init(dev);
+ 	if (ret)
+ 		return ret;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+index e06c4d6cd2fc..cb852a4bfd97 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+@@ -371,6 +371,13 @@ static inline u32 mt7915_int_rx_mask(enum mt76_rxq_id q)
+ #define MT_HIF_REMAP_L2_BASE		GENMASK(31, 12)
+ #define MT_HIF_REMAP_BASE_L2		0x00000
+ 
++#define MT_SWDEF_BASE			0x41f200
++#define MT_SWDEF(ofs)			(MT_SWDEF_BASE + (ofs))
++#define MT_SWDEF_MODE			MT_SWDEF(0x3c)
++#define MT_SWDEF_NORMAL_MODE		0
++#define MT_SWDEF_ICAP_MODE		1
++#define MT_SWDEF_SPECTRUM_MODE		2
++
+ #define MT_TOP_BASE			0x18060000
+ #define MT_TOP(ofs)			(MT_TOP_BASE + (ofs))
+ 
 -- 
-Florian
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
