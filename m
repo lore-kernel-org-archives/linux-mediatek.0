@@ -2,75 +2,70 @@ Return-Path: <SRS0=heX2=CN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 41D3CC433E2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 10:41:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 04635C433E2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 11:00:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0A920208C7
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 10:41:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BE4DB2074D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 11:00:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uh18cY7M";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="vDafAjZh"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0A920208C7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YKIeOQB8";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mailerdienst.de header.i=@mailerdienst.de header.b="mbfzMJdQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE4DB2074D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fw-web.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HaW+8t5hw2emg7EcgKc+un2MYhpn5v24EPm0zpXjP1o=; b=uh18cY7Mi6PSdlkHdKBBlhRcaV
-	XUzKPBL4HXCZa1rzAAYgRvRl985xjQ3u6kzpISUfH3ICULSFI2oPB1H2odkilw/wPc+ywIOBnSVXh
-	nyGcnJXVCIIFOQSc6Qgrl5vvswOpPKlteifKIk9SZufPAzgcxkxyuAtyCXSKXKtLSlpfm1+klvVdW
-	hppaQN4QNz8HehCZbsYk100TLymzTu4f4JjLTVXmxkigWTqkejlIDaqXbnmy5u4+NgVD3ySW0w79Z
-	HIhg10Sakt0AjmX+8xquSnLaBFlzcD31t6s/Mr+G4jDzUbZ3ypqp823Gc2SsOfRu7cJjw0ppOIePs
-	TQFaXM3w==;
+	bh=i/bK215HYKxPtV7A0LCc+DbDiTyaIAjFcTd3wZPlV7s=; b=YKIeOQB8FCEyrB3u/EW54vsyXG
+	fF0qFt2htDmnZeUFl7jz+jz1wgFedo9DS1bn/lYpQRxZjSbyLzSuiH4fAoe5B1K8LNHkOa4reWNru
+	+CCiUKf0QVIpBKbj8LDGLgmwwayIzOUjSLHT+0EN80JBv+nAKwLM590jQheV794ZaK2bGBkXejyBH
+	3Tohvabbd8lk4uybYtAmDz++aqun+AVC/3Du/ix2g0s8IBcH9IhJjUioau5GTd+pYGx8wlgOi4bBT
+	83Q5c+PSazVijDG+M/RqXkGl4ARm9bQplfplOE1DNAJHdKL0XrF049pPGLvbK1HAgwOhcV2WoWPzD
+	35W2IVEg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kE99K-0002jY-Lt; Fri, 04 Sep 2020 10:40:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kE9Sb-0008Pc-Qt; Fri, 04 Sep 2020 11:00:49 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kE99I-0002i0-2y; Fri, 04 Sep 2020 10:40:53 +0000
-X-UUID: b5ddd92ee60b4daebe61c74b31a4244c-20200904
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=+foNOXIgIh1kuuS1RTWqR7W2PgiV9fXKECaUSNGOkmY=; 
- b=vDafAjZhBr9b/kXzS0qNaq3RDs99RuSW6YrpiKIdChoe8TQO7mt2uBDWk+92uM/+9gZRLjnCkoK6zbTx7aXf8zJ6bIjOkKKERyhmYW+6RE67OHhLNhhO1V9nTG5Jk4l8BlQ3Tc1vBujjLyDBio9VvAMZDQgF2oAg6W/8mkwIDus=;
-X-UUID: b5ddd92ee60b4daebe61c74b31a4244c-20200904
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1487320958; Fri, 04 Sep 2020 02:40:49 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Sep 2020 03:40:47 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Sep 2020 18:40:37 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 4 Sep 2020 18:40:37 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
- "Matthias Brugger" <matthias.bgg@gmail.com>
-Subject: [RESEND PATCHv5] iommu/mediatek: check 4GB mode by reading infracfg
-Date: Fri, 4 Sep 2020 18:40:38 +0800
-Message-ID: <20200904104038.4979-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1kE9SS-0008M6-EG; Fri, 04 Sep 2020 11:00:41 +0000
+Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
+ by mxout1.routing.net (Postfix) with ESMTP id 1407E4026B;
+ Fri,  4 Sep 2020 11:00:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+ s=20200217; t=1599217229;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=DXWunT6/1oNeLvT/FMsXBR2HIErDGDCvRZEkb2LPbhU=;
+ b=mbfzMJdQ5aIC4rkeOeCzXpVZ4rxaoYZIYGpWAvoU0cVbfERXsjipPqZWVy1yY9CjS3k5yN
+ 0JVVKhL9gdwN9bTa5lcZK4bDOjUTUFonAdLrjEWoN8gRVSqnRNzUCJmfTHh3gpoEvxitb1
+ imA54I3xXc9FhWom/zIHN2K2gttkXYI=
+Received: from localhost.localdomain (fttx-pool-217.61.147.193.bambit.de
+ [217.61.147.193])
+ by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 2B322360469;
+ Fri,  4 Sep 2020 11:00:28 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-mediatek@lists.infradead.org,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v6 0/4] make hdmi work on bananapi-r2
+Date: Fri,  4 Sep 2020 12:59:58 +0200
+Message-Id: <20200904110002.88966-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200904_064052_338227_6FC5E94D 
-X-CRM114-Status: GOOD (  21.49  )
+X-CRM114-CacheID: sfid-20200904_070041_006528_2F8D6BFF 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,156 +77,77 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
- wsd_upstream@mediatek.com, David Hildenbrand <david@redhat.com>,
- linux-kernel@vger.kernel.org, Mike
- Rapoport <rppt@linux.ibm.com>, Chao Hao <chao.hao@mediatek.com>,
- iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- Yong Wu <yong.wu@mediatek.com>, Miles Chen <miles.chen@mediatek.com>,
- Yingjoe Chen <yingjoe.chen@mediatek.com>, Christoph Hellwig <hch@lst.de>,
- linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
+ Frank Wunderlich <frank-w@public-files.de>, Sean Wang <sean.wang@mediatek.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In previous discussion [1] and [2], we found that it is risky to
-use max_pfn or totalram_pages to tell if 4GB mode is enabled.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Check 4GB mode by reading infracfg register, remove the usage
-of the un-exported symbol max_pfn.
+This Patch-Series adds missing Patches/Bugfixes to get hdmi working
+on BPI-R2
 
-This is a step towards building mtk_iommu as a kernel module.
+v5->v6:
+ - drop parts already merged to mediatek-drm-next
+ - include lima-regulator-patch
+ - rebase on changes in mediatek-drm-next tree (hdmi/hdmi-phy patches)
+ - fix compatible of hdmi0 because of changes in hdmi-driver
+v4->v5:
+ - rebased on 5.9-rc1
+ - move existing display-related dts nodes to new mt7623n.dtsi
+   because mt7623a does not have gpu
+ - add new display nodes to this new dtsi
+v3->v4:
+ - fix removed const in "add ddp routing for mt7623"
+ - change subjects to "drm/mediatek:..."
+ - add documentation for mt7623-* compatibles
+ - dropped redundant display_components node (mmsys compatible)
+ - add reviewd-by collected in v3
+v2->v3:
+ - use own mmsys-routing for mt7623 instead of code getting different
+   routing from dts
+ - remove ddp routing bls -> dpi from bpir2/rfb dts
+ - updated some commit-Messages as suggested by CK Hu
+v1->v2:
+ - using get_possible_crtc API instead of hardcoded
+ - drop unused dts-nodes
+ - refine commit-messages as far as i can :)
+   "config component output by device node port" is needed to fix a WARN_ON()
+   "fix boot up for 720 and 480 but 1080" fixes flickering, 
+     which may cause also some resolutions not working on some TFT
 
-[1] https://lore.kernel.org/lkml/20200603161132.2441-1-miles.chen@mediatek.com/
-[2] https://lore.kernel.org/lkml/20200604080120.2628-1-miles.chen@mediatek.com/
-[3] https://lore.kernel.org/lkml/20200715205120.GA778876@bogus/
+Alex Ryabchenko (1):
+  arm: dts: mt7623: add lima related regulator
 
-Cc: Mike Rapoport <rppt@linux.ibm.com>
-Cc: David Hildenbrand <david@redhat.com>
-Cc: Yong Wu <yong.wu@mediatek.com>
-Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: Christoph Hellwig <hch@lst.de>
-Cc: Rob Herring <robh@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Joerg Roedel <joro@8bytes.org>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+Frank Wunderlich (1):
+  arm: dts: mt7623: move display nodes to separate mt7623n.dtsi
 
----
+Ryder Lee (1):
+  arm: dts: mt7623: add display subsystem related device nodes
 
-Change since v4
-- remove unnecessary data->enable_4GB = false, since it is kzalloc()ed.
+chunhui dai (1):
+  drm/mediatek: disable tmds on mt2701
 
-Change since v3
-- use lore.kernel.org links
-- move "change since..." after "---"
+ arch/arm/boot/dts/mt7623.dtsi                 | 123 -------
+ arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts |  87 ++++-
+ arch/arm/boot/dts/mt7623n-rfb-emmc.dts        |  74 ++++-
+ arch/arm/boot/dts/mt7623n.dtsi                | 306 ++++++++++++++++++
+ drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c    |   1 +
+ drivers/phy/mediatek/phy-mtk-hdmi.c           |   3 +
+ drivers/phy/mediatek/phy-mtk-hdmi.h           |   1 +
+ 7 files changed, 469 insertions(+), 126 deletions(-)
+ create mode 100644 arch/arm/boot/dts/mt7623n.dtsi
 
-Change since v2:
-- determine compatible string by m4u_plat
-- rebase to next-20200720
-- add "---"
-
-Change since v1:
-- remove the phandle usage, search for infracfg instead [3]
-- use infracfg instead of infracfg_regmap
-- move infracfg definitaions to linux/soc/mediatek/infracfg.h
-- update enable_4GB only when has_4gb_mode
----
- drivers/iommu/mtk_iommu.c             | 33 +++++++++++++++++++++++----
- include/linux/soc/mediatek/infracfg.h |  3 +++
- 2 files changed, 31 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 785b228d39a6..e7b8b2bb08a9 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -3,7 +3,6 @@
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Yong Wu <yong.wu@mediatek.com>
-  */
--#include <linux/memblock.h>
- #include <linux/bug.h>
- #include <linux/clk.h>
- #include <linux/component.h>
-@@ -15,13 +14,16 @@
- #include <linux/iommu.h>
- #include <linux/iopoll.h>
- #include <linux/list.h>
-+#include <linux/mfd/syscon.h>
- #include <linux/of_address.h>
- #include <linux/of_iommu.h>
- #include <linux/of_irq.h>
- #include <linux/of_platform.h>
- #include <linux/platform_device.h>
-+#include <linux/regmap.h>
- #include <linux/slab.h>
- #include <linux/spinlock.h>
-+#include <linux/soc/mediatek/infracfg.h>
- #include <asm/barrier.h>
- #include <soc/mediatek/smi.h>
- 
-@@ -640,8 +642,11 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 	struct resource         *res;
- 	resource_size_t		ioaddr;
- 	struct component_match  *match = NULL;
-+	struct regmap		*infracfg;
- 	void                    *protect;
- 	int                     i, larb_nr, ret;
-+	u32			val;
-+	char                    *p;
- 
- 	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
- 	if (!data)
-@@ -655,10 +660,28 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
- 
--	/* Whether the current dram is over 4GB */
--	data->enable_4GB = !!(max_pfn > (BIT_ULL(32) >> PAGE_SHIFT));
--	if (!MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE))
--		data->enable_4GB = false;
-+	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE)) {
-+		switch (data->plat_data->m4u_plat) {
-+		case M4U_MT2712:
-+			p = "mediatek,mt2712-infracfg";
-+			break;
-+		case M4U_MT8173:
-+			p = "mediatek,mt8173-infracfg";
-+			break;
-+		default:
-+			p = NULL;
-+		}
-+
-+		infracfg = syscon_regmap_lookup_by_compatible(p);
-+
-+		if (IS_ERR(infracfg))
-+			return PTR_ERR(infracfg);
-+
-+		ret = regmap_read(infracfg, REG_INFRA_MISC, &val);
-+		if (ret)
-+			return ret;
-+		data->enable_4GB = !!(val & F_DDR_4GB_SUPPORT_EN);
-+	}
- 
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	data->base = devm_ioremap_resource(dev, res);
-diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-index fd25f0148566..233463d789c6 100644
---- a/include/linux/soc/mediatek/infracfg.h
-+++ b/include/linux/soc/mediatek/infracfg.h
-@@ -32,6 +32,9 @@
- #define MT7622_TOP_AXI_PROT_EN_WB		(BIT(2) | BIT(6) | \
- 						 BIT(7) | BIT(8))
- 
-+#define REG_INFRA_MISC				0xf00
-+#define F_DDR_4GB_SUPPORT_EN			BIT(13)
-+
- int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
- 		bool reg_update);
- int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
 -- 
-2.18.0
+2.25.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
