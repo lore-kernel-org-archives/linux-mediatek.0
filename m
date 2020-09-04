@@ -2,74 +2,93 @@ Return-Path: <SRS0=heX2=CN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0F1B8C433E2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 11:01:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 43563C43461
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 11:08:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B9D0720770
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 11:01:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EF1622087C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 11:08:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xPBKsyu5";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mailerdienst.de header.i=@mailerdienst.de header.b="bdpplkmo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B9D0720770
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fw-web.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ttsmpl5+";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="hJEFGVhk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF1622087C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vQFuiMZparaBp52fb4eD1TFmqNl3/K/3ixDDaCM8Wwc=; b=xPBKsyu5FOp2exSWSI6RUPPLL
-	zYVmqnVujWdK/S3OT7RNlK3NXyAERlVBvyR6IqjjiaSxgLFZZ50cwZa5FBbhXlS8oGPsG8fvP6f6r
-	sP9q8DIZnUR4oNz8kto4OiuSaeDec2zAG46SUF/eqSwbzoi5Vq+RRMdXoXQ7JR1NpDdFZNSYa70R6
-	g41f0zrXUzruG1A8OKExDkbZmvrEczgkYTJcYOMvRSxEhgnXljql15uIlTYvnN53Syw1e48v0d1P9
-	3QUSRviB2dzWrQ1G3aoDnPoA79W4NjDwjETknYqJZtNQED8Vf5aEER8ucoAXNBXEXWWqSDpXrYA+v
-	2NQCFnSRA==;
+	 bh=CHaethFD3TWPK53mkoFKEzRA8gNQTKEolPmIcp8gkpg=; b=ttsmpl5+rEYjmWHnjYO7Z5OIG
+	aR7SOojl+yW3DwVWroP42AIok197hzHxxVDR3EBnFUE51Uj5ZZQnYSkQeqrCX/3D+i7YtXlJLeWs6
+	Cz3xrZQr2aW+rWGhUUsKo3NELagqYvZIsRhrYxlUJXILChABhFzscZJ01Q2QHgLb+MayxnJEnaG6V
+	WEWCcIxGgQ4TgpQWYJO6zmtBOcwnvz0xjm1D9TkQy7/qG9DEDQo0oFVFqQB1XjUQWaZMG+NAFgTxF
+	qtlqk3kDLc97xQ8Otku6+0uz8lVEQSR8rvzpQdtMxkC48vSHZEy5NUPen9efLguAhaETWVYyF7Ool
+	HUCe2Gbqw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kE9St-0008VN-Es; Fri, 04 Sep 2020 11:01:07 +0000
-Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	id 1kE9ZR-0001ct-RP; Fri, 04 Sep 2020 11:07:53 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kE9ST-0008MX-F6; Fri, 04 Sep 2020 11:00:43 +0000
-Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
- by mxout4.routing.net (Postfix) with ESMTP id 4A9FF101526;
- Fri,  4 Sep 2020 11:00:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
- s=20200217; t=1599217231;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ppDWfJAd/jA3m9aGO327KiGAx1XEkMrfYwNEBQ5LlLQ=;
- b=bdpplkmoaJrB2iBcY4g2VVbN+v7z7TsKrRe8efp38zWpN5d0xEH6uNBiWqOR9D+ASlmRRg
- inw2RKlIStx113x8H+O+CdIhUklqcbxs0QYWwPBXs2Wjb27SXtb53egi4p390yvTSmcdB/
- hRMsqN7DxoVH+YdIx5iJPRkEj6nu/zA=
-Received: from localhost.localdomain (fttx-pool-217.61.147.193.bambit.de
- [217.61.147.193])
- by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 753FA36026E;
- Fri,  4 Sep 2020 11:00:30 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-mediatek@lists.infradead.org,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ id 1kE9ZO-0001cB-Il
+ for linux-mediatek@lists.infradead.org; Fri, 04 Sep 2020 11:07:51 +0000
+Received: by mail-wm1-x344.google.com with SMTP id w2so5709158wmi.1
+ for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2020 04:07:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=YAvy/uLp7+cWVzWcV7xfgGlutHlCEWW9xHSoG33J/ZM=;
+ b=hJEFGVhkBiKv0X9JtFq+P0TptyE7m8g1Hv8atN9oETRU18f720U2R9pjRGxc5WE6ru
+ MNpnlEYeH/pHp8cQ+akgH7rNybAHXwbEE76XXgOVzriCuj7sPzPlpti/J8l3vVQRevS7
+ RfOcFLZwsntcuwTRyQBOUkFdiT4bWpJRnvp2DC7DgoH5dlmXOynRNqMa6jslNPT8KVGf
+ nVTsCyg+8M3HcXYFG6OZnj7KyAQzUjDCe3QMDnSFPRNEOfhaYdA1sn+CTb0P7/qePNCP
+ fZTULBhyBnts/A40ISXfeNiv7ykKaZXJVjdM5V1DBIgkr05EKWAWo0wuF8hPowIm5weK
+ kPoQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=YAvy/uLp7+cWVzWcV7xfgGlutHlCEWW9xHSoG33J/ZM=;
+ b=P/gKd8Bw7nUND7wvfi6+DZNtk46n3EJ/6Gf7GkkERi9HP/4w4X4pbl5RqesSm4G0w9
+ QvOriyx8MnTP4h8GNWILK4xJLldOae+5HsMKOOY4JEXuG3uiwa7ODmKEi/cZfGG+m5k8
+ IyVNmnVUwE9zfqmTS8eFUtkr/fyrJkykfnjWFyXNvgRX6f3w7iiLaHq06D+ZvBRJlxxM
+ N5g4N45RqvPgR5Ni6wXj8b5tqr0p5m1wnN3gHZejAHNJ0fanIz2O+5f/x4lU0MbOpUQP
+ ojs7RxuJPtUhq6dpLeiT6gS4O68PiH4C920yM8JPhcKWZV/fOYncMS4+NWYMUkW/KTgZ
+ cz4A==
+X-Gm-Message-State: AOAM530jv8ETH5U5Pux/i/RmRE/nOZ+esEIvT2fOot2UmYPcjIi4HwVe
+ dSE9drVsLN0wp+MgCzhxW/GqiQ==
+X-Google-Smtp-Source: ABdhPJyJMFbpGk2JfuZru3rTIMQyff/CzsQ264cZGW7mm28Ks3LDPLGUswtRAjDnUTNZ6YAtlD43aQ==
+X-Received: by 2002:a1c:7405:: with SMTP id p5mr7028460wmc.35.1599217667800;
+ Fri, 04 Sep 2020 04:07:47 -0700 (PDT)
+Received: from [192.168.86.34]
+ (cpc86377-aztw32-2-0-cust226.18-1.cable.virginm.net. [92.233.226.227])
+ by smtp.googlemail.com with ESMTPSA id
+ q186sm11566637wma.45.2020.09.04.04.07.46
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 04 Sep 2020 04:07:47 -0700 (PDT)
+Subject: Re: [PATCH v3] nvmem: mtk-efuse: Remove EFUSE register write support
+To: Chih-En Hsu <chih-en.hsu@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v6 3/4] arm: dts: mt7623: add display subsystem related device
- nodes
-Date: Fri,  4 Sep 2020 13:00:01 +0200
-Message-Id: <20200904110002.88966-4-linux@fw-web.de>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200904110002.88966-1-linux@fw-web.de>
-References: <20200904110002.88966-1-linux@fw-web.de>
+References: <20200826083943.810-1-chih-en.hsu@mediatek.com>
+From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Message-ID: <21d857b5-9b6a-7e77-a725-18a1adf3e92a@linaro.org>
+Date: Fri, 4 Sep 2020 12:07:46 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
+In-Reply-To: <20200826083943.810-1-chih-en.hsu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200904_070041_722025_059E65D6 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20200904_070750_660039_E38D9DF9 
+X-CRM114-Status: GOOD (  18.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,454 +100,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
- Bibby Hsieh <bibby.hsieh@mediatek.com>,
- Frank Wunderlich <frank-w@public-files.de>,
- chunhui dai <chunhui.dai@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: Andrew-CT.Chen@mediatek.com, srv_heupstream@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Michael.Mei@mediatek.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ryder Lee <ryder.lee@mediatek.com>
 
-Add display subsystem related device nodes for MT7623.
 
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
-Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-Tested-by: Frank Wunderlich <frank-w@public-files.de>
----
-changed
-v5->v6:
-  change compatible of hdmi-node because of changes in hdmi-phy
-v4->v5:
-  add nodes to new mt7623n.dtsi to avoid conflict with mt7623a
-v3->v4:
-  drop display_components which is duplicate of existing mmsys
-v2->v3:
-  drop bls to dpi routing
+On 26/08/2020 09:39, Chih-En Hsu wrote:
+> This patch is to remove function "mtk_reg_write" since
+> Mediatek EFUSE hardware only supports read functionality
+> for NVMEM consumers.
+> 
+> Fixes: ba360fd040e3 ("nvmem: mtk-efuse: remove nvmem regmap dependency")
+> Signed-off-by: Chih-En Hsu <chih-en.hsu@mediatek.com>
+> ---
+>   drivers/nvmem/mtk-efuse.c | 14 --------------
+>   1 file changed, 14 deletions(-)
 
-arm: dts: mt7623: use mt2701 compatible for hdmi node
----
- arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts |  72 ++++++++
- arch/arm/boot/dts/mt7623n-rfb-emmc.dts        |  72 ++++++++
- arch/arm/boot/dts/mt7623n.dtsi                | 172 ++++++++++++++++++
- 3 files changed, 316 insertions(+)
 
-diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-index 344f8c65c4aa..f41f221e56ca 100644
---- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-+++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-@@ -21,6 +21,19 @@ chosen {
- 		stdout-path = "serial2:115200n8";
- 	};
- 
-+	connector {
-+		compatible = "hdmi-connector";
-+		label = "hdmi";
-+		type = "d";
-+		ddc-i2c-bus = <&hdmiddc0>;
-+
-+		port {
-+			hdmi_connector_in: endpoint {
-+				remote-endpoint = <&hdmi0_out>;
-+			};
-+		};
-+	};
-+
- 	cpus {
- 		cpu@0 {
- 			proc-supply = <&mt6323_vproc_reg>;
-@@ -114,10 +127,18 @@ memory@80000000 {
- 	};
- };
- 
-+&bls {
-+	status = "okay";
-+};
-+
- &btif {
- 	status = "okay";
- };
- 
-+&cec {
-+	status = "okay";
-+};
-+
- &cir {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&cir_pins_a>;
-@@ -128,6 +149,21 @@ &crypto {
- 	status = "okay";
- };
- 
-+&dpi0 {
-+	status = "okay";
-+
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		port@0 {
-+			reg = <0>;
-+			dpi0_out: endpoint {
-+				remote-endpoint = <&hdmi0_in>;
-+			};
-+		};
-+	};
-+};
-+
- &eth {
- 	status = "okay";
- 
-@@ -199,6 +235,42 @@ fixed-link {
- 	};
- };
- 
-+&hdmi0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&hdmi_pins_a>;
-+	status = "okay";
-+
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		port@0 {
-+			reg = <0>;
-+			hdmi0_in: endpoint {
-+				remote-endpoint = <&dpi0_out>;
-+			};
-+		};
-+
-+		port@1 {
-+			reg = <1>;
-+			hdmi0_out: endpoint {
-+				remote-endpoint = <&hdmi_connector_in>;
-+			};
-+		};
-+	};
-+};
-+
-+&hdmiddc0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&hdmi_ddc_pins_a>;
-+	status = "okay";
-+};
-+
-+&hdmi_phy {
-+	mediatek,ibias = <0xa>;
-+	mediatek,ibias_up = <0x1c>;
-+	status = "okay";
-+};
-+
- &i2c0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c0_pins_a>;
-diff --git a/arch/arm/boot/dts/mt7623n-rfb-emmc.dts b/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
-index f8efcc364bc3..1b9b9a8145a7 100644
---- a/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
-+++ b/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
-@@ -24,6 +24,19 @@ chosen {
- 		stdout-path = "serial2:115200n8";
- 	};
- 
-+	connector {
-+		compatible = "hdmi-connector";
-+		label = "hdmi";
-+		type = "d";
-+		ddc-i2c-bus = <&hdmiddc0>;
-+
-+		port {
-+			hdmi_connector_in: endpoint {
-+				remote-endpoint = <&hdmi0_out>;
-+			};
-+		};
-+	};
-+
- 	cpus {
- 		cpu@0 {
- 			proc-supply = <&mt6323_vproc_reg>;
-@@ -106,10 +119,18 @@ sound {
- 	};
- };
- 
-+&bls {
-+	status = "okay";
-+};
-+
- &btif {
- 	status = "okay";
- };
- 
-+&cec {
-+	status = "okay";
-+};
-+
- &cir {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&cir_pins_a>;
-@@ -120,6 +141,21 @@ &crypto {
- 	status = "okay";
- };
- 
-+&dpi0 {
-+	status = "okay";
-+
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		port@0 {
-+			reg = <0>;
-+			dpi0_out: endpoint {
-+				remote-endpoint = <&hdmi0_in>;
-+			};
-+		};
-+	};
-+};
-+
- &eth {
- 	status = "okay";
- 
-@@ -203,6 +239,42 @@ fixed-link {
- 	};
- };
- 
-+&hdmi0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&hdmi_pins_a>;
-+	status = "okay";
-+
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		port@0 {
-+			reg = <0>;
-+			hdmi0_in: endpoint {
-+				remote-endpoint = <&dpi0_out>;
-+			};
-+		};
-+
-+		port@1 {
-+			reg = <1>;
-+			hdmi0_out: endpoint {
-+				remote-endpoint = <&hdmi_connector_in>;
-+			};
-+		};
-+	};
-+};
-+
-+&hdmiddc0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&hdmi_ddc_pins_a>;
-+	status = "okay";
-+};
-+
-+&hdmi_phy {
-+	mediatek,ibias = <0xa>;
-+	mediatek,ibias_up = <0x1c>;
-+	status = "okay";
-+};
-+
- &i2c0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c0_pins_a>;
-diff --git a/arch/arm/boot/dts/mt7623n.dtsi b/arch/arm/boot/dts/mt7623n.dtsi
-index a47e82468895..1880ac9e32cf 100644
---- a/arch/arm/boot/dts/mt7623n.dtsi
-+++ b/arch/arm/boot/dts/mt7623n.dtsi
-@@ -10,6 +10,11 @@
- #include <dt-bindings/memory/mt2701-larb-port.h>
- 
- / {
-+	aliases {
-+		rdma0 = &rdma0;
-+		rdma1 = &rdma1;
-+	};
-+
- 	g3dsys: syscon@13000000 {
- 		compatible = "mediatek,mt7623-g3dsys",
- 			     "mediatek,mt2701-g3dsys",
-@@ -131,4 +136,171 @@ smi_common: smi@1000c000 {
- 		clock-names = "apb", "smi", "async";
- 		power-domains = <&scpsys MT2701_POWER_DOMAIN_DISP>;
- 	};
-+
-+	ovl: ovl@14007000 {
-+		compatible = "mediatek,mt7623-disp-ovl",
-+			     "mediatek,mt2701-disp-ovl";
-+		reg = <0 0x14007000 0 0x1000>;
-+		interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&mmsys CLK_MM_DISP_OVL>;
-+		iommus = <&iommu MT2701_M4U_PORT_DISP_OVL_0>;
-+		mediatek,larb = <&larb0>;
-+	};
-+
-+	rdma0: rdma@14008000 {
-+		compatible = "mediatek,mt7623-disp-rdma",
-+			     "mediatek,mt2701-disp-rdma";
-+		reg = <0 0x14008000 0 0x1000>;
-+		interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&mmsys CLK_MM_DISP_RDMA>;
-+		iommus = <&iommu MT2701_M4U_PORT_DISP_RDMA>;
-+		mediatek,larb = <&larb0>;
-+	};
-+
-+	wdma@14009000 {
-+		compatible = "mediatek,mt7623-disp-wdma",
-+			     "mediatek,mt2701-disp-wdma";
-+		reg = <0 0x14009000 0 0x1000>;
-+		interrupts = <GIC_SPI 154 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&mmsys CLK_MM_DISP_WDMA>;
-+		iommus = <&iommu MT2701_M4U_PORT_DISP_WDMA>;
-+		mediatek,larb = <&larb0>;
-+	};
-+
-+	bls: pwm@1400a000 {
-+		compatible = "mediatek,mt7623-disp-pwm",
-+			     "mediatek,mt2701-disp-pwm";
-+		reg = <0 0x1400a000 0 0x1000>;
-+		#pwm-cells = <2>;
-+		clocks = <&mmsys CLK_MM_MDP_BLS_26M>,
-+			 <&mmsys CLK_MM_DISP_BLS>;
-+		clock-names = "main", "mm";
-+		status = "disabled";
-+	};
-+
-+	color: color@1400b000 {
-+		compatible = "mediatek,mt7623-disp-color",
-+			     "mediatek,mt2701-disp-color";
-+		reg = <0 0x1400b000 0 0x1000>;
-+		interrupts = <GIC_SPI 156 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&mmsys CLK_MM_DISP_COLOR>;
-+	};
-+
-+	dsi: dsi@1400c000 {
-+		compatible = "mediatek,mt7623-dsi",
-+			     "mediatek,mt2701-dsi";
-+		reg = <0 0x1400c000 0 0x1000>;
-+		interrupts = <GIC_SPI 157 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&mmsys CLK_MM_DSI_ENGINE>,
-+			 <&mmsys CLK_MM_DSI_DIG>,
-+			 <&mipi_tx0>;
-+		clock-names = "engine", "digital", "hs";
-+		phys = <&mipi_tx0>;
-+		phy-names = "dphy";
-+		status = "disabled";
-+	};
-+
-+	mutex: mutex@1400e000 {
-+		compatible = "mediatek,mt7623-disp-mutex",
-+			     "mediatek,mt2701-disp-mutex";
-+		reg = <0 0x1400e000 0 0x1000>;
-+		interrupts = <GIC_SPI 161 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&mmsys CLK_MM_MUTEX_32K>;
-+	};
-+
-+	rdma1: rdma@14012000 {
-+		compatible = "mediatek,mt7623-disp-rdma",
-+			     "mediatek,mt2701-disp-rdma";
-+		reg = <0 0x14012000 0 0x1000>;
-+		interrupts = <GIC_SPI 164 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&mmsys CLK_MM_DISP_RDMA1>;
-+		iommus = <&iommu MT2701_M4U_PORT_DISP_RDMA1>;
-+		mediatek,larb = <&larb0>;
-+	};
-+
-+	dpi0: dpi@14014000 {
-+		compatible = "mediatek,mt7623-dpi",
-+			     "mediatek,mt2701-dpi";
-+		reg = <0 0x14014000 0 0x1000>;
-+		interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&mmsys CLK_MM_DPI1_DIGL>,
-+			 <&mmsys CLK_MM_DPI1_ENGINE>,
-+			 <&apmixedsys CLK_APMIXED_TVDPLL>;
-+		clock-names = "pixel", "engine", "pll";
-+		status = "disabled";
-+	};
-+
-+	hdmi0: hdmi@14015000 {
-+		compatible = "mediatek,mt7623-hdmi",
-+			     "mediatek,mt2701-hdmi";
-+		reg = <0 0x14015000 0 0x400>;
-+		clocks = <&mmsys CLK_MM_HDMI_PIXEL>,
-+			 <&mmsys CLK_MM_HDMI_PLL>,
-+			 <&mmsys CLK_MM_HDMI_AUDIO>,
-+			 <&mmsys CLK_MM_HDMI_SPDIF>;
-+		clock-names = "pixel", "pll", "bclk", "spdif";
-+		phys = <&hdmi_phy>;
-+		phy-names = "hdmi";
-+		mediatek,syscon-hdmi = <&mmsys 0x900>;
-+		cec = <&cec>;
-+		status = "disabled";
-+	};
-+
-+	mipi_tx0: mipi-dphy@10010000 {
-+		compatible = "mediatek,mt7623-mipi-tx",
-+			     "mediatek,mt2701-mipi-tx";
-+		reg = <0 0x10010000 0 0x90>;
-+		clocks = <&clk26m>;
-+		clock-output-names = "mipi_tx0_pll";
-+		#clock-cells = <0>;
-+		#phy-cells = <0>;
-+	};
-+
-+	cec: cec@10012000 {
-+		compatible = "mediatek,mt7623-cec",
-+			     "mediatek,mt8173-cec";
-+		reg = <0 0x10012000 0 0xbc>;
-+		interrupts = <GIC_SPI 182 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&infracfg CLK_INFRA_CEC>;
-+		status = "disabled";
-+	};
-+
-+	hdmi_phy: phy@10209100 {
-+		compatible = "mediatek,mt7623-hdmi-phy",
-+			     "mediatek,mt2701-hdmi-phy";
-+		reg = <0 0x10209100 0 0x24>;
-+		clocks = <&apmixedsys CLK_APMIXED_HDMI_REF>;
-+		clock-names = "pll_ref";
-+		clock-output-names = "hdmitx_dig_cts";
-+		#clock-cells = <0>;
-+		#phy-cells = <0>;
-+		status = "disabled";
-+	};
-+
-+	hdmiddc0: i2c@11013000 {
-+		compatible = "mediatek,mt7623-hdmi-ddc",
-+			     "mediatek,mt8173-hdmi-ddc";
-+		interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_LOW>;
-+		reg = <0 0x11013000 0 0x1C>;
-+		clocks = <&pericfg CLK_PERI_I2C3>;
-+		clock-names = "ddc-i2c";
-+		status = "disabled";
-+	};
-+};
-+
-+&pio {
-+	hdmi_pins_a: hdmi-default {
-+		pins-hdmi {
-+			pinmux = <MT7623_PIN_123_HTPLG_FUNC_HTPLG>;
-+			input-enable;
-+			bias-pull-down;
-+		};
-+	};
-+
-+	hdmi_ddc_pins_a: hdmi_ddc-default {
-+		pins-hdmi-ddc {
-+			pinmux = <MT7623_PIN_124_GPIO124_FUNC_HDMISCK>,
-+				 <MT7623_PIN_125_GPIO125_FUNC_HDMISD>;
-+		};
-+	};
- };
--- 
-2.25.1
+Applied thanks!
 
+--srini
+
+> 
+> diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
+> index 856d9c3fc38e..6a537d959f14 100644
+> --- a/drivers/nvmem/mtk-efuse.c
+> +++ b/drivers/nvmem/mtk-efuse.c
+> @@ -28,19 +28,6 @@ static int mtk_reg_read(void *context,
+>   	return 0;
+>   }
+>   
+> -static int mtk_reg_write(void *context,
+> -			 unsigned int reg, void *_val, size_t bytes)
+> -{
+> -	struct mtk_efuse_priv *priv = context;
+> -	u32 *val = _val;
+> -	int i = 0, words = bytes / 4;
+> -
+> -	while (words--)
+> -		writel(*val++, priv->base + reg + (i++ * 4));
+> -
+> -	return 0;
+> -}
+> -
+>   static int mtk_efuse_probe(struct platform_device *pdev)
+>   {
+>   	struct device *dev = &pdev->dev;
+> @@ -61,7 +48,6 @@ static int mtk_efuse_probe(struct platform_device *pdev)
+>   	econfig.stride = 4;
+>   	econfig.word_size = 4;
+>   	econfig.reg_read = mtk_reg_read;
+> -	econfig.reg_write = mtk_reg_write;
+>   	econfig.size = resource_size(res);
+>   	econfig.priv = priv;
+>   	econfig.dev = dev;
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
