@@ -7,71 +7,70 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0056AC43461
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D1CD7C28E83
 	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 08:18:22 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A996820791
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 08:18:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 89A96206CA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 08:18:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DevQdh36";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="WZAyFRkq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A996820791
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jCkI8YLi";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="CUYM0LnH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 89A96206CA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uhZSp3Uo3pn+nycG9uZ6uf3aosS6g1OUXbEDZfvQ8zY=; b=DevQdh36eHMAm0TFqff90AeGz
-	eniIDLjZPBRxizP9/tDZNU5ZYz9CBXSNEd3Rfw0x2wgdlBIHoy3ecF4h0fQ1fKkm76aTlOjrbioDo
-	gLNNIMD+go6xYaNEXCeYRADiNGsjnM0Sv1DYr+4XVtDyLwOxuFcSfLFSHxwm7ME3kKyPLSj74zXyH
-	JEecsc3GydGzIUXq+hVkMPWcTZsdWTPksiOc8KbHJDFJmjXZnroKELijfIjjgnsejcECjcrRf/mda
-	4gXn0/m2QHsh+SorJJPj6nJv7x5pPUt06GFM8GYnK9FYmT/yH/JUXI8FkFephJszWiod4lRQMRuN8
-	Sj06KGdaQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8uYhn2eqU5X1Luv937lsH8u5gaGU335D+r3ThL6jjmo=; b=jCkI8YLiKlNMh8KBgHWbaJ934s
+	lygfJ3EXj++7oVDgRKP2Nais2mVzqwcJeYaoyFRY8Z6NOtzn8CCgIgZBH/c0jH85Bxh4uC5pMV6ko
+	SRs254qNfSlJYJZMoqX8JS0si/07L/4CFJ57ZYcsZiseKtzYHT3eVG7mRD4v7SsGWQfe0Jvxqq5Hi
+	oWhkv4DQlQchAq3/kM0nXnRRaD47R69/YZDB+TlcSTs8OoWkNENUPkzSFBrhrhaKhYaXbYTOsr0Qn
+	rDSnlFaRQSw3KjfcDSAHQkWjv1oH/3ZSQeIqbMJwFRnJkR+o1MmdN97nXrGzfq6PkWn1S9OzhxRaU
+	XeY4olXQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kE6vC-0006Re-6b; Fri, 04 Sep 2020 08:18:10 +0000
+	id 1kE6vD-0006SG-Pm; Fri, 04 Sep 2020 08:18:11 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kE6vA-0006Ph-1W; Fri, 04 Sep 2020 08:18:09 +0000
-X-UUID: ed65be8d993945d2a036ea442f0a9166-20200904
+ id 1kE6vA-0006Pm-1U; Fri, 04 Sep 2020 08:18:09 +0000
+X-UUID: b35925d0d79b4fadbf4a78dd6a6dafe9-20200904
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=8rRrbCmdA3reTEcnRumgB1k/g3lTeehQQDEOoft6l6Y=; 
- b=WZAyFRkqGESgqiNjzJnb3RA0PdEM+n1eHQWK9FkN19RiEpp1bEQj6M5mwT7nxxfGsGbAzkU2mx1jhS3mGqNUOqyCxnVOBGKBzS0Z0ilzFnndbY1nMHlIGOVLOKtA5gBI2feKosYfZzppVebNq/uXTgRRw7TUseTXks4c6INc1aY=;
-X-UUID: ed65be8d993945d2a036ea442f0a9166-20200904
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=upMNS0MB3Ur6gFFBG2sLXkXEri5loD8L5SIhf1iYAyQ=; 
+ b=CUYM0LnHruRgV1/J1cf93Ng3qB5fV+fE9gxX2pA/+zzo0wa2dVbEdUz1rddUTuRDxevA9YYsISqMbHL+J/dIiET4neYzAlY5UfVkm2Lsl0NiWUaYsGvE3uMinA4ljhP6zciDgi81fRBBcMhtrBaynSjPl0lYjqGMXKfleyyMocc=;
+X-UUID: b35925d0d79b4fadbf4a78dd6a6dafe9-20200904
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1698213443; Fri, 04 Sep 2020 00:17:37 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ with ESMTP id 1841201178; Fri, 04 Sep 2020 00:17:37 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 4 Sep 2020 01:17:35 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Sep 2020 16:17:30 +0800
+ MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 4 Sep 2020 16:17:29 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 4 Sep 2020 16:17:29 +0800
+ Transport; Fri, 4 Sep 2020 16:17:28 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Zhanyong Wang <zhanyong.wang@mediatek.com>
-Subject: [RFC PATCH v2 2/4] usb: xhci-mtk: add mt8192 wakeup
-Date: Fri, 4 Sep 2020 16:15:38 +0800
-Message-ID: <1599207340-4673-2-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [RFC PATCH v2 1/4] usb: xhci-mtk: improve bandwidth scheduling with
+ multi-TT
+Date: Fri, 4 Sep 2020 16:15:37 +0800
+Message-ID: <1599207340-4673-1-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1599207340-4673-1-git-send-email-chunfeng.yun@mediatek.com>
-References: <1599207340-4673-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 2EBBA91619F7DF239197DD7B7CD12799BA62E7C589CD9089C0DA839B21AE0BD52000:8
+X-TM-SNTS-SMTP: 430485D858A4CFB133030A5B5ABA27634A483D908A1E5E217CE6FB000C5E0BBA2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200904_041808_273212_7BD496DA 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20200904_041808_265844_05C462D3 
+X-CRM114-Status: GOOD (  19.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,9 +82,9 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
+Cc: Yaqii Wu <yaqii.wu@mediatek.com>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -93,50 +92,243 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Zhanyong Wang <zhanyong.wang@mediatek.com>
 
-need to add wakeup solution as V3
-since not support presently.
+After inserted the usb type-c 3.5mm dongle with headset, dmesg showed:
+usb 1-1.1: new full-speed USB device number 5 using xhci-mtk
+usb 1-1.1: New USB device found, idVendor=05ac, idProduct=110a, bcdDevice=26.11
+usb 1-1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+usb 1-1.1: Product: USB-C to 3.5mm Headphone Jack Adapter
+usb 1-1.1: Manufacturer: Apple, Inc.
+usb 1-1.1: SerialNumber: DWH915501TFJKLTAM
+xhci-mtk 11200000.xhci: Not enough bandwidth!
+usb 1-1.1: can't set config #2, error -28
 
-Signed-off-by: Zhanyong Wang <zhanyong.wang@mediatek.com>
+improve low-speed/full-speed INT/ISOC bandwidth scheduling with USB
+muli-TT.
+
+Signed-off-by: Yaqii Wu <yaqii.wu@mediatek.com>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
 v2: no changes
 ---
- drivers/usb/host/xhci-mtk.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
- mode change 100644 => 100755 drivers/usb/host/xhci-mtk.c
+ drivers/usb/host/xhci-mtk-sch.c | 91 ++++++++++++++++++++++++++++++++++-------
+ drivers/usb/host/xhci-mtk.h     |  8 +++-
+ 2 files changed, 84 insertions(+), 15 deletions(-)
+ mode change 100644 => 100755 drivers/usb/host/xhci-mtk-sch.c
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
 old mode 100644
 new mode 100755
-index 4311d4c..d95221f
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -68,9 +68,13 @@
- #define SSC_IP_SLEEP_EN	BIT(4)
- #define SSC_SPM_INT_EN		BIT(1)
+index 45c54d56..94292b9
+--- a/drivers/usb/host/xhci-mtk-sch.c
++++ b/drivers/usb/host/xhci-mtk-sch.c
+@@ -383,7 +383,9 @@ static int check_sch_tt(struct usb_device *udev,
+ 	u32 fs_budget_start;
+ 	u32 start_ss, last_ss;
+ 	u32 start_cs, last_cs;
+-	int i;
++	u32 num_esit, base;
++	int i, j;
++	u32 tmp;
  
-+/* mt8192 etc */
-+#define SSC_IP_SLEEP_EN_V3	BIT(6)
+ 	start_ss = offset % 8;
+ 	fs_budget_start = (start_ss + 1) % 8;
+@@ -398,10 +400,13 @@ static int check_sch_tt(struct usb_device *udev,
+ 		if (!(start_ss == 7 || last_ss < 6))
+ 			return -ERANGE;
+ 
+-		for (i = 0; i < sch_ep->cs_count; i++)
+-			if (test_bit(offset + i, tt->split_bit_map))
++		for (i = 0; i < sch_ep->cs_count; i++) {
++			if (test_bit(offset + i, tt->ss_bit_map))
+ 				return -ERANGE;
+ 
++			if (test_bit(offset + i, tt->cs_bit_map))
++				return -ERANGE;
++		}
+ 	} else {
+ 		u32 cs_count = DIV_ROUND_UP(sch_ep->maxpkt, FS_PAYLOAD_MAX);
+ 
+@@ -428,8 +433,10 @@ static int check_sch_tt(struct usb_device *udev,
+ 		if (cs_count > 7)
+ 			cs_count = 7; /* HW limit */
+ 
+-		for (i = 0; i < cs_count + 2; i++) {
+-			if (test_bit(offset + i, tt->split_bit_map))
++		if (test_bit(offset, tt->ss_bit_map))
++			return -ERANGE;
++		for (i = 0; i < cs_count; i++) {
++			if (test_bit(offset + 2 + i, tt->cs_bit_map))
+ 				return -ERANGE;
+ 		}
+ 
+@@ -445,11 +452,22 @@ static int check_sch_tt(struct usb_device *udev,
+ 			sch_ep->num_budget_microframes = sch_ep->esit;
+ 	}
+ 
++	num_esit = XHCI_MTK_MAX_ESIT / sch_ep->esit;
++	for (i = 0; i < num_esit; i++) {
++		base = sch_ep->offset + i * sch_ep->esit;
++		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
++			tmp = tt->fs_bus_bw[base + j]
++			      + sch_ep->bw_cost_per_microframe;
++			if (tmp > FS_PAYLOAD_MAX)
++				return -ERANGE;
++		}
++	}
 +
- enum ssusb_uwk_vers {
- 	SSUSB_UWK_V1 = 1,
- 	SSUSB_UWK_V2,
-+	SSUSB_UWK_V3,
+ 	return 0;
+ }
+ 
+ static void update_sch_tt(struct usb_device *udev,
+-	struct mu3h_sch_ep_info *sch_ep)
++	struct mu3h_sch_ep_info *sch_ep, bool used)
+ {
+ 	struct mu3h_sch_tt *tt = sch_ep->sch_tt;
+ 	u32 base, num_esit;
+@@ -458,11 +476,52 @@ static void update_sch_tt(struct usb_device *udev,
+ 	num_esit = XHCI_MTK_MAX_ESIT / sch_ep->esit;
+ 	for (i = 0; i < num_esit; i++) {
+ 		base = sch_ep->offset + i * sch_ep->esit;
+-		for (j = 0; j < sch_ep->num_budget_microframes; j++)
+-			set_bit(base + j, tt->split_bit_map);
++		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
++			if (used)
++				set_bit(base + j, tt->split_bit_map);
++			else
++				clear_bit(base + j, tt->split_bit_map);
++		}
++
++		if (sch_ep->ep_type == ISOC_OUT_EP) {
++			for (j = 0; j < sch_ep->num_budget_microframes; j++) {
++				if (used) {
++					set_bit(base + j, tt->ss_bit_map);
++					set_bit(base + j, tt->cs_bit_map);
++					tt->fs_bus_bw[base + j] +=
++						sch_ep->bw_cost_per_microframe;
++				} else {
++					clear_bit(base + j, tt->ss_bit_map);
++					clear_bit(base + j, tt->cs_bit_map);
++					tt->fs_bus_bw[base + j] -=
++						sch_ep->bw_cost_per_microframe;
++				}
++			}
++		} else {
++			if (used)
++				set_bit(base, tt->ss_bit_map);
++			else
++				clear_bit(base, tt->ss_bit_map);
++
++			for (j = 0; j < sch_ep->cs_count; j++) {
++				if (used) {
++					set_bit(base + 2 + j, tt->cs_bit_map);
++
++					tt->fs_bus_bw[base + 2 + j] +=
++						sch_ep->bw_cost_per_microframe;
++				} else {
++					clear_bit(base + 2 + j, tt->cs_bit_map);
++					tt->fs_bus_bw[base + 2 + j] -=
++						sch_ep->bw_cost_per_microframe;
++				}
++			}
++		}
+ 	}
+ 
+-	list_add_tail(&sch_ep->tt_endpoint, &tt->ep_list);
++	if (used)
++		list_add_tail(&sch_ep->tt_endpoint, &tt->ep_list);
++	else
++		list_del(&sch_ep->tt_endpoint);
+ }
+ 
+ static int check_sch_bw(struct usb_device *udev,
+@@ -470,6 +529,7 @@ static int check_sch_bw(struct usb_device *udev,
+ {
+ 	u32 offset;
+ 	u32 esit;
++	u32 boundary;
+ 	u32 min_bw;
+ 	u32 min_index;
+ 	u32 worst_bw;
+@@ -487,10 +547,13 @@ static int check_sch_bw(struct usb_device *udev,
+ 	 */
+ 	min_bw = ~0;
+ 	min_index = 0;
++	boundary = esit;
+ 	min_cs_count = sch_ep->cs_count;
+ 	min_num_budget = sch_ep->num_budget_microframes;
+ 	for (offset = 0; offset < esit; offset++) {
+ 		if (is_fs_or_ls(udev->speed)) {
++			if (sch_ep->ep_type != ISOC_OUT_EP)
++				boundary = esit + 1;
+ 			ret = check_sch_tt(udev, sch_ep, offset);
+ 			if (ret)
+ 				continue;
+@@ -498,7 +561,7 @@ static int check_sch_bw(struct usb_device *udev,
+ 				tt_offset_ok = true;
+ 		}
+ 
+-		if ((offset + sch_ep->num_budget_microframes) > sch_ep->esit)
++		if ((offset + sch_ep->num_budget_microframes) > boundary)
+ 			break;
+ 
+ 		worst_bw = get_max_bw(sch_bw, sch_ep, offset);
+@@ -532,7 +595,7 @@ static int check_sch_bw(struct usb_device *udev,
+ 		if (!tt_offset_ok)
+ 			return -ERANGE;
+ 
+-		update_sch_tt(udev, sch_ep);
++		update_sch_tt(udev, sch_ep, 1);
+ 	}
+ 
+ 	/* update bus bandwidth info */
+@@ -696,12 +759,12 @@ void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
+ 
+ 	list_for_each_entry(sch_ep, &sch_bw->bw_ep_list, endpoint) {
+ 		if (sch_ep->ep == ep) {
+-			update_bus_bw(sch_bw, sch_ep, 0);
+-			list_del(&sch_ep->endpoint);
+ 			if (is_fs_or_ls(udev->speed)) {
+-				list_del(&sch_ep->tt_endpoint);
++				update_sch_tt(udev, sch_ep, 0);
+ 				drop_tt(udev);
+ 			}
++			update_bus_bw(sch_bw, sch_ep, 0);
++			list_del(&sch_ep->endpoint);
+ 			kfree(sch_ep);
+ 			break;
+ 		}
+diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
+index a93cfe8..323b281 100644
+--- a/drivers/usb/host/xhci-mtk.h
++++ b/drivers/usb/host/xhci-mtk.h
+@@ -21,12 +21,18 @@
+ 
+ /**
+  * @split_bit_map: used to avoid split microframes overlay
++ * @ss_bit_map: used to avoid start split microframes overlay
++ * @cs_bit_map: used to avoid complete split microframes overlay
++ * @fs_bus_bw: array to keep track of bandwidth already used at full speed
+  * @ep_list: Endpoints using this TT
+  * @usb_tt: usb TT related
+  * @tt_port: TT port number
+  */
+ struct mu3h_sch_tt {
+ 	DECLARE_BITMAP(split_bit_map, XHCI_MTK_MAX_ESIT);
++	DECLARE_BITMAP(ss_bit_map, XHCI_MTK_MAX_ESIT);
++	DECLARE_BITMAP(cs_bit_map, XHCI_MTK_MAX_ESIT + 1);
++	u32 fs_bus_bw[XHCI_MTK_MAX_ESIT];
+ 	struct list_head ep_list;
+ 	struct usb_tt *usb_tt;
+ 	int tt_port;
+@@ -42,7 +48,7 @@ struct mu3h_sch_tt {
+  * two bandwidth domains, one for IN eps and another for OUT eps.
+  */
+ struct mu3h_sch_bw_info {
+-	u32 bus_bw[XHCI_MTK_MAX_ESIT];
++	u32 bus_bw[XHCI_MTK_MAX_ESIT + 1];
+ 	struct list_head bw_ep_list;
  };
  
- static int xhci_mtk_host_enable(struct xhci_hcd_mtk *mtk)
-@@ -305,6 +309,11 @@ static void usb_wakeup_ip_sleep_set(struct xhci_hcd_mtk *mtk, bool enable)
- 		msk = SSC_IP_SLEEP_EN | SSC_SPM_INT_EN;
- 		val = enable ? msk : 0;
- 		break;
-+	case SSUSB_UWK_V3:
-+		reg = mtk->uwk_reg_base + PERI_SSUSB_SPM_CTRL;
-+		msk = SSC_IP_SLEEP_EN_V3 | SSC_SPM_INT_EN;
-+		val = enable ? msk : 0;
-+		break;
- 	default:
- 		return;
- 	}
 -- 
 1.9.1
 _______________________________________________
