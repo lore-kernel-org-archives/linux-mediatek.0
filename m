@@ -2,62 +2,75 @@ Return-Path: <SRS0=heX2=CN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 592DDC28E83
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 08:02:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 848B3C433E2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 08:18:15 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1FA6B206B8
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 08:02:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DF547206CA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 08:18:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AO5g686c"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1FA6B206B8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VqCfhjln";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="gB9s9Im4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DF547206CA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/FCj/UB2W1oL6WXLNn4McdjOtAtVDeCcjTmCpJFHU3A=; b=AO5g686cQz2WjsN2Kjyh6q/bL
-	fGXL9Pyee+w5NpJ+V9ZdafLD6OpxNJr4Otakz/uP4QbfaHXlopzstRFH1ZEqqthQgSV+IGs1ERiC/
-	vDXqPeMSVzCNNPM7ZgAgb9KRfjmBI/ZAOCQwdHZBZ2qoGiRI/tZro7Ff/FvvRBQ5AwkLh9e94VCmH
-	ht0/DT024thLE/DzIu8HKY2lXF+f8BP5sjNPzT7FoSVib13fHde/1I14Nk5TiSdX+wXALjInUJKb7
-	e1L8xA2DU/FARSA2FStAklQz/cI87o5Kq+odKhpUZRSA/WVB2ryxysH/NpIsGel/F9W4UHfRSUHjb
-	9QBfkJi1g==;
+	 bh=UxFq0zzMn6XrObTVIQyA1gvrjaybST2158BxzUKnIHg=; b=VqCfhjlnJIULU1OJuZ5lPhLna
+	o4ulViQ9lb8uqxvrMaaUsv+h/78jXeXWoKVmR+6reMWM7wShf9JvHLkCke2vmkMVHllvhtscfpQdn
+	sxjuFUGdWQZQhcL09abb/QD7bDMHQz46gywP+GYM/YRx6+nlNHQceTDAY5ANaGQUe58Q2A6KAmkXY
+	c+7brKR6GEJtG1BUNVTcX3UG4LdjXcSQp2k0upLhdh9m7YJVrNA3mGafUtvlyzN3nh0PuwZYvI168
+	+cQXYE1lp6EJseOwBMqQxn6FdcTKtEjXnArflEeOFjHwtbRgPKJ/7n5Waa2HAGlAtC5as0ejBxD7z
+	+hSBA1ZsA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kE6g4-0004zB-HP; Fri, 04 Sep 2020 08:02:32 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kE6v8-0006Pk-86; Fri, 04 Sep 2020 08:18:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kE6g0-0004yF-DA; Fri, 04 Sep 2020 08:02:29 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 149A22958A0
-Subject: Re: [PATCH] arm64: dts: mt8173-elm: fix supported values for
- regulator-allowed-modes of da9211
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- matthias.bgg@gmail.com, robh+dt@kernel.org
-References: <20200903142819.24487-1-dafna.hirschfeld@collabora.com>
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <5d504bea-0934-91a9-c052-e463ad6c6d95@collabora.com>
-Date: Fri, 4 Sep 2020 10:02:24 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ id 1kE6v5-0006P2-7H; Fri, 04 Sep 2020 08:18:04 +0000
+X-UUID: 2c7dcafd5b594d76b820cd9a528eeac5-20200904
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=8KlZ7pVH1HpYEsFsI6Kzg4cC/zSEHHe6xE+vEzxM9rk=; 
+ b=gB9s9Im4cOn0dtbVCHJvaxDsTVaY1dtldgWL5P+vluN7eOJFfIsRZwpCpdFLyAA/PvqD//Bi2XdKPeQcoq6EsPiHvs6WUUS2T2H91oju2iiYLJDVRfdXEozD4EJ4+/d0PAX7nkxnDa+h0xoHvmUadnOL/84JGE0FSHC4duUNcLI=;
+X-UUID: 2c7dcafd5b594d76b820cd9a528eeac5-20200904
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 631162703; Fri, 04 Sep 2020 00:17:36 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 4 Sep 2020 01:17:35 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 4 Sep 2020 16:17:31 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 4 Sep 2020 16:17:30 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Zhanyong Wang <zhanyong.wang@mediatek.com>
+Subject: [RFC PATCH v2 3/4] usb: xhci-mtk: add support runtime pm
+Date: Fri, 4 Sep 2020 16:15:39 +0800
+Message-ID: <1599207340-4673-3-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1599207340-4673-1-git-send-email-chunfeng.yun@mediatek.com>
+References: <1599207340-4673-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <20200903142819.24487-1-dafna.hirschfeld@collabora.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200904_040228_546195_0482380F 
-X-CRM114-Status: GOOD (  18.39  )
+X-CRM114-CacheID: sfid-20200904_041803_427501_AF3DDDD8 
+X-CRM114-Status: GOOD (  24.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,59 +82,596 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: dafna3@gmail.com, kernel@collabora.com
+Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-mediatek@lists.infradead.org,
+ CK Hu <ck.hu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dafna,
+From: CK Hu <ck.hu@mediatek.com>
 
-Thank you to work on this.
+add support runtime pm feature
 
-On 3/9/20 16:28, Dafna Hirschfeld wrote:
-> According to the datasheet the allowed modes for the da9211
-> regulator are sync and auto mode. This should be changed in the
-> devicetree. This also fix an error message
-> 'BUCKA: invalid regulator-allowed-modes element 0'
-> since value 0 is invalid.
-> 
-> Fixes: 689b937beddeb ("arm64: dts: mediatek: add mt8173 elm and hana board")
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Signed-off-by: Zhanyong Wang <zhanyong.wang@mediatek.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+v2: fix error caused by request irq suggested by CK
+---
+ drivers/usb/host/xhci-mtk.c | 446 +++++++++++++++++++++++++++++++++++++++++++-
+ drivers/usb/host/xhci-mtk.h |  14 ++
+ 2 files changed, 455 insertions(+), 5 deletions(-)
+ mode change 100644 => 100755 drivers/usb/host/xhci-mtk.h
 
-Double checked the regulator supported modes and I can confirm that this patch
-gets rid of the error message, so:
-
-Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-
-> ---
->  arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> index 1fe5dac24ba1..1a51879d5c6f 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> @@ -5,6 +5,7 @@
->  
->  #include <dt-bindings/input/input.h>
->  #include <dt-bindings/input/linux-event-codes.h>
-> +#include <dt-bindings/regulator/dlg,da9211-regulator.h>
->  #include <dt-bindings/gpio/gpio.h>
->  #include "mt8173.dtsi"
->  
-> @@ -293,7 +294,8 @@
->  				regulator-max-microamp  = <4400000>;
->  				regulator-ramp-delay = <10000>;
->  				regulator-always-on;
-> -				regulator-allowed-modes = <0 1>;
-> +				regulator-allowed-modes = <DA9211_BUCK_MODE_SYNC
-> +							   DA9211_BUCK_MODE_AUTO>;
->  			};
->  
->  			da9211_vgpu_reg: BUCKB {
-> 
-
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index d95221f..da4ebc9 100755
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -14,6 +14,7 @@
+ #include <linux/mfd/syscon.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
++#include <linux/of_irq.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/regmap.h>
+@@ -77,6 +78,228 @@ enum ssusb_uwk_vers {
+ 	SSUSB_UWK_V3,
+ };
+ 
++int xhci_mtk_runtime_ready;
++
++#if IS_ENABLED(CONFIG_PM)
++static int xhci_mtk_runtime_suspend(struct device *dev);
++static int xhci_mtk_runtime_resume(struct device *dev);
++static int xhci_mtk_runtime_idle(struct device *dev);
++static ssize_t xhci_mtk_runtime_show(struct device *dev,
++				     struct device_attribute *attr,
++				     char *buf)
++{
++	int i;
++	int ret = 0;
++	int num_ports;
++	struct xhci_hcd_mtk *mtk = dev_get_drvdata(dev);
++	struct usb_hcd *hcd;
++	struct xhci_hcd *xhci;
++	struct xhci_hub *usb2_rhub;
++	struct xhci_hub *usb3_rhub;
++	struct xhci_bus_state *bus_state;
++	struct xhci_port *port;
++	u32 usb2_suspended_ports = -1;
++	u32 usb3_suspended_ports = -1;
++	u16 status;
++
++	if (!mtk->hcd)
++		return -ESHUTDOWN;
++
++	if (!xhci_mtk_runtime_ready)
++		return	sprintf(buf,
++			"xhci_mtk_runtime_ready is not ready yet!\n");
++
++	if (!mtk->hcd)
++		return -ESHUTDOWN;
++
++	hcd = mtk->hcd;
++	xhci = hcd_to_xhci(hcd);
++	if ((xhci->xhc_state & XHCI_STATE_REMOVING) ||
++			(xhci->xhc_state & XHCI_STATE_HALTED)) {
++		return -ESHUTDOWN;
++	}
++
++	usb2_rhub = &xhci->usb2_rhub;
++	if (usb2_rhub) {
++		bus_state  = &usb2_rhub->bus_state;
++		num_ports  = usb2_rhub->num_ports;
++		usb2_suspended_ports  = bus_state->suspended_ports;
++		usb2_suspended_ports ^= (BIT(num_ports) - 1);
++		usb2_suspended_ports &= (BIT(num_ports) - 1);
++		for (i = 0; i < num_ports; i++) {
++			if (usb2_suspended_ports & BIT(i)) {
++				port = usb2_rhub->ports[i];
++				status = readl(port->addr);
++
++				xhci_info(xhci, "USB2: portsc[%i]: 0x%04X\n",
++					  i, status);
++
++				if (!(status & PORT_CONNECT))
++					usb2_suspended_ports &= ~BIT(i);
++			}
++		}
++	}
++
++	usb3_rhub = &xhci->usb3_rhub;
++	if (usb3_rhub) {
++		bus_state  = &usb3_rhub->bus_state;
++		num_ports  = usb3_rhub->num_ports;
++		usb3_suspended_ports  = bus_state->suspended_ports;
++		usb3_suspended_ports ^= (BIT(num_ports) - 1);
++		usb3_suspended_ports &= (BIT(num_ports) - 1);
++		for (i = 0; i < num_ports; i++) {
++			if (usb3_suspended_ports & BIT(i)) {
++				port = usb3_rhub->ports[i];
++				status = readl(port->addr);
++
++				xhci_info(xhci, "USB3: portsc[%i]: 0x%04X\n",
++					  i, status);
++
++				if (!(status & PORT_CONNECT))
++					usb3_suspended_ports &= ~BIT(i);
++			}
++		}
++	}
++
++	return sprintf(buf, "USB20: 0x%08X, USB30: 0x%08X ret: %i\n",
++			usb2_suspended_ports, usb3_suspended_ports, ret);
++}
++
++static ssize_t xhci_mtk_runtime_store(struct device *dev,
++				      struct device_attribute *attr,
++				      const char *buf, size_t count)
++{
++	int len = count;
++	char *cp;
++	int rc = count;
++	static const char suspend_string[] = "suspend";
++	static const char resume_string[]  = "resume";
++	static const char idle_string[]    = "idle";
++
++	cp = memchr(buf, '\n', count);
++	if (cp)
++		len = cp - buf;
++
++	if (!xhci_mtk_runtime_ready) {
++		rc = -EAGAIN;
++		dev_info(dev,
++			"xhci_mtk_runtime_ready is not ready yet!\n");
++		goto exit;
++	}
++
++	if (len == sizeof(suspend_string) - 1 &&
++			strncmp(buf, suspend_string, len) == 0)
++		xhci_mtk_runtime_suspend(dev);
++	else if (len == sizeof(resume_string) - 1 &&
++			strncmp(buf, resume_string, len) == 0)
++		xhci_mtk_runtime_resume(dev);
++	else if (len == sizeof(idle_string) - 1 &&
++			strncmp(buf, idle_string, len) == 0)
++		xhci_mtk_runtime_idle(dev);
++	else
++		rc = -EINVAL;
++
++exit:
++	return rc;
++}
++static DEVICE_ATTR_RW(xhci_mtk_runtime);
++
++static ssize_t seal_runtime_status_show(struct device *dev,
++				struct device_attribute *attr, char *buf)
++{
++	static char *const seal_status[] = {
++		"SEAL_BUSY",
++		"SEAL_SUSPENDING",
++		"SEAL_SUSPENDED",
++		"SEAL_RESUMING",
++		"SEAL_RESUMED"
++	};
++	struct xhci_hcd_mtk  *mtk = dev_get_drvdata(dev);
++
++	return sprintf(buf, "status: %s(%i)\n",
++			seal_status[mtk->seal_status], mtk->seal_status);
++}
++static DEVICE_ATTR_RO(seal_runtime_status);
++
++static struct attribute *power_attrs[] = {
++	&dev_attr_xhci_mtk_runtime.attr,
++	&dev_attr_seal_runtime_status.attr,
++	NULL,
++};
++
++static struct attribute_group power_attr_group = {
++	.name	= power_group_name,
++	.attrs	= power_attrs,
++};
++
++static int add_power_attributes(struct device *dev)
++{
++	int rc = 0;
++
++	rc = sysfs_merge_group(&dev->kobj, &power_attr_group);
++
++	return rc;
++}
++
++static void remove_power_attributes(struct device *dev)
++{
++	sysfs_unmerge_group(&dev->kobj, &power_attr_group);
++}
++#else
++#define add_power_attributes(dev)	do {} while (0)
++#define remove_power_attributes(dev)	do {} while (0)
++#endif
++
++static void xhci_mtk_seal_work(struct work_struct *work)
++{
++	struct xhci_hcd_mtk *mtk =
++			container_of(work, struct xhci_hcd_mtk, seal.work);
++	struct usb_hcd *hcd = mtk->hcd;
++	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
++
++	xhci_dbg(xhci, "spm unseals xHCI controller %i\n", mtk->seal_status);
++	if (mtk->seal_status == SEAL_SUSPENDED) {
++		mtk->seal_status = SEAL_RESUMING;
++		pm_runtime_put_sync_autosuspend(mtk->dev);
++	} else {
++		xhci_warn(xhci,
++		 "Ignore seal wakeup source disordered in xHCI controller\n");
++	}
++}
++
++static irqreturn_t xhci_mtk_seal_irq(int irq, void *data)
++{
++	struct xhci_hcd_mtk *mtk = data;
++	struct usb_hcd *hcd = mtk->hcd;
++	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
++
++	xhci_dbg(xhci, "seal irq ISR invoked\n");
++
++	schedule_delayed_work(&mtk->seal, 0);
++
++	return IRQ_HANDLED;
++}
++
++static void xhci_mtk_seal_wakeup_enable(struct xhci_hcd_mtk *mtk, bool enable)
++{
++	struct irq_desc *desc;
++	struct device *dev = mtk->dev;
++
++	if (mtk && mtk->seal_irq) {
++		desc = irq_to_desc(mtk->seal_irq);
++		if (enable) {
++			desc->irq_data.chip->irq_ack(&desc->irq_data);
++			enable_irq(mtk->seal_irq);
++			dev_dbg(dev, "%s: enable_irq %i\n",
++				 __func__, mtk->seal_irq);
++		} else {
++			disable_irq(mtk->seal_irq);
++			dev_dbg(dev, "%s: disable_irq %i\n",
++				 __func__, mtk->seal_irq);
++		}
++	}
++}
++
+ static int xhci_mtk_host_enable(struct xhci_hcd_mtk *mtk)
+ {
+ 	struct mu3c_ippc_regs __iomem *ippc = mtk->ippc_regs;
+@@ -344,7 +567,6 @@ static int usb_wakeup_of_property_parse(struct xhci_hcd_mtk *mtk,
+ 			mtk->uwk_reg_base, mtk->uwk_vers);
+ 
+ 	return PTR_ERR_OR_ZERO(mtk->uwk);
+-
+ }
+ 
+ static void usb_wakeup_set(struct xhci_hcd_mtk *mtk, bool enable)
+@@ -479,9 +701,11 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
+ 
++	pm_runtime_set_active(dev);
++	pm_runtime_use_autosuspend(dev);
++	pm_runtime_set_autosuspend_delay(dev,
++				CONFIG_USB_AUTOSUSPEND_DELAY * 1000);
+ 	pm_runtime_enable(dev);
+-	pm_runtime_get_sync(dev);
+-	device_enable_async_suspend(dev);
+ 
+ 	ret = xhci_mtk_ldos_enable(mtk);
+ 	if (ret)
+@@ -496,6 +720,14 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+ 		ret = irq;
+ 		goto disable_clk;
+ 	}
++	dev_dbg(dev, "irq %i\n", irq);
++
++	mtk->seal_irq = platform_get_irq_optional(pdev, 1);
++	if (mtk->seal_irq < 0) {
++		ret = mtk->seal_irq;
++		goto disable_clk;
++	}
++	dev_dbg(dev, "seal_irq %i\n", mtk->seal_irq);
+ 
+ 	hcd = usb_create_hcd(driver, dev, dev_name(dev));
+ 	if (!hcd) {
+@@ -562,6 +794,31 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		goto dealloc_usb2_hcd;
+ 
++	INIT_DELAYED_WORK(&mtk->seal, xhci_mtk_seal_work);
++	snprintf(mtk->seal_descr, sizeof(mtk->seal_descr), "seal%s:usb%d",
++		 hcd->driver->description, hcd->self.busnum);
++	ret = devm_request_irq(dev, mtk->seal_irq, &xhci_mtk_seal_irq,
++			  IRQF_TRIGGER_FALLING,	mtk->seal_descr, mtk);
++	if (ret != 0) {
++		dev_err(dev, "seal request interrupt %d failed\n",
++			mtk->seal_irq);
++		goto dealloc_usb2_hcd;
++	}
++	xhci_mtk_seal_wakeup_enable(mtk, false);
++
++	device_enable_async_suspend(dev);
++	xhci_mtk_runtime_ready = 1;
++
++	ret = add_power_attributes(dev);
++	if (ret)
++		goto dealloc_usb2_hcd;
++
++	pm_runtime_mark_last_busy(dev);
++	pm_runtime_put_autosuspend(dev);
++
++	dev_dbg(dev, "%s: xhci_mtk_runtime_ready %i",
++		 __func__, xhci_mtk_runtime_ready);
++
+ 	return 0;
+ 
+ dealloc_usb2_hcd:
+@@ -584,7 +841,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+ 	xhci_mtk_ldos_disable(mtk);
+ 
+ disable_pm:
+-	pm_runtime_put_sync(dev);
++	pm_runtime_put_sync_autosuspend(dev);
+ 	pm_runtime_disable(dev);
+ 	return ret;
+ }
+@@ -598,7 +855,9 @@ static int xhci_mtk_remove(struct platform_device *dev)
+ 
+ 	pm_runtime_put_noidle(&dev->dev);
+ 	pm_runtime_disable(&dev->dev);
++	remove_power_attributes(&dev->dev);
+ 
++	xhci_mtk_runtime_ready = 0;
+ 	usb_remove_hcd(shared_hcd);
+ 	xhci->shared_hcd = NULL;
+ 	device_init_wakeup(&dev->dev, false);
+@@ -635,6 +894,7 @@ static int __maybe_unused xhci_mtk_suspend(struct device *dev)
+ 	xhci_mtk_host_disable(mtk);
+ 	xhci_mtk_clks_disable(mtk);
+ 	usb_wakeup_set(mtk, true);
++
+ 	return 0;
+ }
+ 
+@@ -656,10 +916,185 @@ static int __maybe_unused xhci_mtk_resume(struct device *dev)
+ 	return 0;
+ }
+ 
++static int __maybe_unused xhci_mtk_bus_status(struct device *dev)
++{
++	struct xhci_hcd_mtk *mtk = dev_get_drvdata(dev);
++	struct usb_hcd *hcd;
++	struct xhci_hcd *xhci;
++	struct xhci_hub *usb2_rhub;
++	struct xhci_hub *usb3_rhub;
++	struct xhci_bus_state *bus_state;
++	struct xhci_port *port;
++	u32	usb2_suspended_ports = -1;
++	u32	usb3_suspended_ports = -1;
++	u16 status;
++	int num_ports;
++	int ret = 0;
++	int i;
++
++	if (!mtk->hcd)
++		return -ESHUTDOWN;
++
++	hcd = mtk->hcd;
++	xhci = hcd_to_xhci(hcd);
++	if ((xhci->xhc_state & XHCI_STATE_REMOVING) ||
++			(xhci->xhc_state & XHCI_STATE_HALTED)) {
++		return -ESHUTDOWN;
++	}
++
++	usb2_rhub = &xhci->usb2_rhub;
++	if (usb2_rhub) {
++		bus_state  = &usb2_rhub->bus_state;
++		num_ports  = usb2_rhub->num_ports;
++		usb2_suspended_ports  = bus_state->suspended_ports;
++		usb2_suspended_ports ^= (BIT(num_ports) - 1);
++		usb2_suspended_ports &= (BIT(num_ports) - 1);
++		for (i = 0; i < num_ports; i++) {
++			if (usb2_suspended_ports & (1UL << i)) {
++				port = usb2_rhub->ports[i];
++				status = readl(port->addr);
++
++				xhci_dbg(xhci,
++					  "USB20: portsc[%i]: 0x%04X\n",
++					  i, status);
++
++				if (!(status & PORT_CONNECT))
++					usb2_suspended_ports &= ~(1UL << i);
++			}
++		}
++
++		if (usb2_suspended_ports) {
++			ret = -EBUSY;
++			goto ebusy;
++		}
++	}
++
++	usb3_rhub = &xhci->usb3_rhub;
++	if (usb3_rhub) {
++		bus_state  = &usb3_rhub->bus_state;
++		num_ports  = usb3_rhub->num_ports;
++		usb3_suspended_ports  = bus_state->suspended_ports;
++		usb3_suspended_ports ^= (BIT(num_ports) - 1);
++		usb3_suspended_ports &= (BIT(num_ports) - 1);
++		for (i = 0; i < num_ports; i++) {
++			if (usb3_suspended_ports & BIT(i)) {
++				port = usb3_rhub->ports[i];
++				status = readl(port->addr);
++
++				xhci_dbg(xhci, "USB3: portsc[%i]: 0x%04X\n",
++					  i, status);
++
++				if (!(status & PORT_CONNECT))
++					usb3_suspended_ports &= ~BIT(i);
++			}
++		}
++
++		if (usb3_suspended_ports) {
++			ret = -EBUSY;
++			goto ebusy;
++		}
++	}
++
++ebusy:
++	xhci_dbg(xhci, "%s: USB2: 0x%08X, USB3: 0x%08X ret: %i\n",
++		  __func__, usb2_suspended_ports,
++		  usb3_suspended_ports, ret);
++
++	return ret;
++}
++
++static int __maybe_unused xhci_mtk_runtime_suspend(struct device *dev)
++{
++	bool wakeup = device_may_wakeup(dev);
++	struct xhci_hcd_mtk  *mtk = dev_get_drvdata(dev);
++	struct usb_hcd *hcd;
++	struct xhci_hcd *xhci;
++	int ret = 0;
++
++	if (!mtk->hcd)
++		return -ESHUTDOWN;
++
++	hcd = mtk->hcd;
++	xhci = hcd_to_xhci(hcd);
++	if ((xhci->xhc_state & XHCI_STATE_REMOVING) ||
++			(xhci->xhc_state & XHCI_STATE_HALTED)) {
++		return -ESHUTDOWN;
++	}
++
++	mtk->seal_status = SEAL_BUSY;
++	ret = xhci_mtk_bus_status(dev);
++	if (wakeup && !ret) {
++		mtk->seal_status = SEAL_SUSPENDING;
++		xhci_mtk_suspend(dev);
++		xhci_mtk_seal_wakeup_enable(mtk, true);
++		mtk->seal_status = SEAL_SUSPENDED;
++		xhci_dbg(xhci, "%s: seals xHCI controller\n", __func__);
++	}
++
++	xhci_dbg(xhci, "%s: seals wakeup = %i, ret = %i!\n",
++		  __func__, wakeup, ret);
++
++	return ret;
++}
++
++static int __maybe_unused xhci_mtk_runtime_resume(struct device *dev)
++{
++	bool wakeup = device_may_wakeup(dev);
++	struct xhci_hcd_mtk  *mtk = dev_get_drvdata(dev);
++	struct usb_hcd *hcd;
++	struct xhci_hcd *xhci;
++
++	if (!mtk->hcd)
++		return -ESHUTDOWN;
++
++	hcd = mtk->hcd;
++	xhci = hcd_to_xhci(hcd);
++	if ((xhci->xhc_state & XHCI_STATE_REMOVING) ||
++			(xhci->xhc_state & XHCI_STATE_HALTED)) {
++		return -ESHUTDOWN;
++	}
++
++	/*
++	 *  list cases by one extra interrupt named seal to process!!!
++	 *  Who to process these module reinitilization after SPM wakeup
++	 *  case 1: usb remote wakeup, therefore xHCI need reinitilizate also.
++	 *  case 2: other-wakeup-source wakeup, therefore, xHCI need reinit
++	 *  case 3: usb client driver can invoke it in runtime mechanism
++	 *  case 4: user active
++	 */
++	if (wakeup) {
++		xhci_mtk_seal_wakeup_enable(mtk, false);
++		xhci_mtk_resume(dev);
++		xhci_dbg(xhci, "%s: unseals xHCI controller\n", __func__);
++	}
++	mtk->seal_status = SEAL_RESUMED;
++
++	xhci_dbg(xhci, "%s: unseals wakeup = %i\n", __func__, wakeup);
++
++	return 0;
++}
++
++static int __maybe_unused xhci_mtk_runtime_idle(struct device *dev)
++{
++	int ret = 0;
++
++	dev_dbg(dev, "%s: xhci_mtk_runtime_ready %i",
++		 __func__, xhci_mtk_runtime_ready);
++
++	if (!xhci_mtk_runtime_ready)
++		ret = -EAGAIN;
++
++	return ret;
++}
++
+ static const struct dev_pm_ops xhci_mtk_pm_ops = {
+ 	SET_SYSTEM_SLEEP_PM_OPS(xhci_mtk_suspend, xhci_mtk_resume)
++	SET_RUNTIME_PM_OPS(xhci_mtk_runtime_suspend,
++			   xhci_mtk_runtime_resume,
++			   xhci_mtk_runtime_idle)
+ };
+-#define DEV_PM_OPS IS_ENABLED(CONFIG_PM) ? &xhci_mtk_pm_ops : NULL
++
++#define DEV_PM_OPS (IS_ENABLED(CONFIG_PM) ? &xhci_mtk_pm_ops : NULL)
+ 
+ #ifdef CONFIG_OF
+ static const struct of_device_id mtk_xhci_of_match[] = {
+@@ -683,6 +1118,7 @@ static int __maybe_unused xhci_mtk_resume(struct device *dev)
+ 
+ static int __init xhci_mtk_init(void)
+ {
++	xhci_mtk_runtime_ready = 0;
+ 	xhci_init_driver(&xhci_mtk_hc_driver, &xhci_mtk_overrides);
+ 	return platform_driver_register(&mtk_xhci_driver);
+ }
+diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
+old mode 100644
+new mode 100755
+index 323b281..103d83c
+--- a/drivers/usb/host/xhci-mtk.h
++++ b/drivers/usb/host/xhci-mtk.h
+@@ -133,6 +133,14 @@ struct mu3c_ippc_regs {
+ 	__le32 reserved3[33]; /* 0x80 ~ 0xff */
+ };
+ 
++enum xhci_mtk_seal {
++	SEAL_BUSY = 0,
++	SEAL_SUSPENDING,
++	SEAL_SUSPENDED,
++	SEAL_RESUMING,
++	SEAL_RESUMED
++};
++
+ struct xhci_hcd_mtk {
+ 	struct device *dev;
+ 	struct usb_hcd *hcd;
+@@ -158,6 +166,12 @@ struct xhci_hcd_mtk {
+ 	struct regmap *uwk;
+ 	u32 uwk_reg_base;
+ 	u32 uwk_vers;
++
++	/* usb eint wakeup source */
++	int seal_irq;
++	enum xhci_mtk_seal seal_status;
++	struct delayed_work  seal;
++	char   seal_descr[32];	/* "seal" + driver + bus # */
+ };
+ 
+ static inline struct xhci_hcd_mtk *hcd_to_mtk(struct usb_hcd *hcd)
+-- 
+1.9.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
