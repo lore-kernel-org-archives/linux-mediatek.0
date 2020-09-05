@@ -1,84 +1,75 @@
-Return-Path: <SRS0=heX2=CN=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=aCep=CO=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 935A4C433E2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 21:54:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 450ACC43461
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Sep 2020 08:11:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E2CA72087C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2020 21:54:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B1A2E2074D
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Sep 2020 08:11:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gY+VI9E2";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=googlemail.com header.i=@googlemail.com header.b="HLrVQ6tZ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E2CA72087C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=googlemail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pwSK565+";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="mFC6jncq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B1A2E2074D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=39amgWAY92wv+K3R0gIEerku69mY/V/ln3HJAd2yVAU=; b=gY+VI9E2l5zrLlf8ybp/U/Lto
-	FtqHgFplvCPXiJzddYHUhQd+GkTUE326k6ny4JSDFS9YRye6QmWnpV0MhRnjrc+wZLyyp2u7oUh9G
-	93qr/AeuSWj3lEEWc+yxmmLFKh+86Eujh0N89tlcHl0+tTZDETusOLNkFf3fcI1LX8YLWq8AUXssK
-	vaf6bwRsT4TPK6E+hydDLcMLaLpXkMVD8fGoUPMibdtWk4dfh9Jdr8eNX0gbUwaDDu1zF5qRXyyEx
-	uQSrDzjy82v59rmN93aTXFJaIqTbnCFDPKHHusAZ7oOLZnig83PeGGE6h2zHtMLSXlyW/lxRXCX5f
-	pY9kVAXKA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2BLdnvo0y5H6PAq+ihqmdtyraF3qot3ClfHRHgBfJK8=; b=pwSK565+bi3p23qsHapQApfivE
+	Dk/NPD1AXgvs8RmBtUtlRqBbw51xAlyajoNik5AabnrD799GiRswmwhpa03r7t3w+O48HiSsJBp1a
+	/kS1Mr/kS7zHQZzoQETUVhTUfJnij0ojd1id7+ICkvkWiHDNjyTO5mf1mrceqQKUhFp+nvBVNoVW/
+	Ddlbw0AtUgcLUVHYZ4PiUkKJbB1gXb4OmyPn9RoUXs9muqMF0W++UK1i0J2yY4FkkgHYFhZPOdzGu
+	GTVv77+buDX6r5amrdR7YepPG+JSqreTZEU8rhLxyISMm6KhMTL30rFseOzKBwQ+w2ypDb4UWYNYw
+	5Cil/3FQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kEJea-00013P-GK; Fri, 04 Sep 2020 21:53:52 +0000
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643])
+	id 1kETIR-0008Ku-1v; Sat, 05 Sep 2020 08:11:39 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kEJeU-00012J-IC; Fri, 04 Sep 2020 21:53:47 +0000
-Received: by mail-ej1-x643.google.com with SMTP id lo4so10460156ejb.8;
- Fri, 04 Sep 2020 14:53:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=googlemail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kOwVSLuqcLcRrAi0V+2JGPo0oopvFB+z94xUxkMesDk=;
- b=HLrVQ6tZkH1co3Lk465rPx2SlpB/uLObbOIcPvHSfCBwts/RQPF5CgGMNVmaj4MK7Z
- hM8rOxprckSExPV5UPi7iGwtTkKCeM9VcF0yHBShpNJCY60GZi/vbqRtRSXqV1ACMDT8
- DAJBNlz6YQZ9CbDc/ZsqOsrIxoHl0OZTb6+iUz1GGtXvXNWF+7yt1hyGvxryzDo4yD9P
- VogwbEuV/nXAY5Ty008NE1BhuUF/CXyxYxw+Q1Lk38iuluHt+aaRVah6X/m3nqGbew/E
- imoF2TxEmXdyebzAbdOysU/Nm4D4BZ88c4km1sm+ZxUh5los1kSJlEWtNVdMaSmrcoa3
- Iqdg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kOwVSLuqcLcRrAi0V+2JGPo0oopvFB+z94xUxkMesDk=;
- b=dmW1gQNyp4gW/kCvFS5UDnSRojzW4NN+PMksmLUfD5OGklz42XwQLZV8zdBgMjf/Fb
- SR/NXJ+MuRun+Nb6sEklLxefFRnqiv3XbZOnup8cKxFLj5DXwy/eAFMKNnsBDkRXdq20
- WqIj8vJKK5w+lSaq+f5wnbO31lUMGqcuhcHi0mKM7J0+KLoTsvlitwfE5DzOuU7m8l6F
- dzAiUu8h5AYcGhAcmNnkf3REoD61/ipsvILoakZYtKPZhR+tFWPhbIFzdI53n6dLQoMK
- 3ZcDHbBtzNf/jlRet4OcKhN/gxfbvDro1Z9hkhfKOcydg6/KmI3rIBJMlju0fzyLdV6D
- uQ7Q==
-X-Gm-Message-State: AOAM530gdrP7ZuLDGjdFCPASYmexmkbHzg1EqZ3CxBiLe1gbsvykcS2Y
- zaNtMev3wEnn1XxI7sU37cy4eEUvTN3UNbUHamU=
-X-Google-Smtp-Source: ABdhPJzvZdR4PefRtIkw7lE/tNoQ9kzV/q7D1Napwk+pHgOuj3FJd4E/vlUR+sMicupDfupaIit4ahWr1LQB95n65bo=
-X-Received: by 2002:a17:906:8690:: with SMTP id
- g16mr9400161ejx.187.1599256423525; 
- Fri, 04 Sep 2020 14:53:43 -0700 (PDT)
+ id 1kETIL-0008Jy-Tb; Sat, 05 Sep 2020 08:11:35 +0000
+X-UUID: 8aa852ad21864de2ae22f0976efb7275-20200905
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=gtR2LkYO0KLOhvo1ozezWqVLOaBl17wQ1j3LTpLY/+U=; 
+ b=mFC6jncquVt1XwBLEgLVuahLfdjPm8zr75yXPYZRQujmuxMNuDNDupJvD3x+BuT/q+7v4VSsqDHcVKFdcy0lZQ+gcwaZINf1oFGQ7jmj0IXV55Sqm7o2s1MESo7Yg9EPzBOkG1YUzARzHDC50MblVOy3v//+7zdFG6oC24iDs10=;
+X-UUID: 8aa852ad21864de2ae22f0976efb7275-20200905
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 680439113; Sat, 05 Sep 2020 00:11:23 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 5 Sep 2020 01:11:21 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 5 Sep 2020 16:11:19 +0800
+Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 5 Sep 2020 16:11:18 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ Rob Herring <robh+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>
+Subject: [PATCH v2 00/23] MT8192 IOMMU support
+Date: Sat, 5 Sep 2020 16:08:57 +0800
+Message-ID: <20200905080920.13396-1-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20200903232441.2694866-1-dianders@chromium.org>
-In-Reply-To: <20200903232441.2694866-1-dianders@chromium.org>
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Date: Fri, 4 Sep 2020 23:53:32 +0200
-Message-ID: <CAFBinCBcbEpHX7eUbznuDo6oKO_9JrOK2w+Bx1=e-bwuS609bw@mail.gmail.com>
-Subject: Re: [PATCH 0/6] mmc: Set PROBE_PREFER_ASYNCHRONOUS for all host
- drivers
-To: Douglas Anderson <dianders@chromium.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200904_175346_655706_FA47772D 
-X-CRM114-Status: GOOD (  16.18  )
+X-CRM114-CacheID: sfid-20200905_041134_150772_357D049F 
+X-CRM114-Status: GOOD (  14.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,91 +81,111 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Linus Walleij <linus.walleij@linaro.org>,
- Peter Ujfalusi <peter.ujfalusi@ti.com>, Jerome Brunet <jbrunet@baylibre.com>,
- linux-samsung-soc@vger.kernel.org, Aaro Koskinen <aaro.koskinen@iki.fi>,
- Kevin Hilman <khilman@baylibre.com>, Michal Simek <michal.simek@xilinx.com>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- NXP Linux Team <linux-imx@nxp.com>, linux-tegra@vger.kernel.org,
- Sascha Hauer <s.hauer@pengutronix.de>, swboyd@chromium.org,
- Lars Persson <lars.persson@axis.com>, linux-omap@vger.kernel.org,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Scott Branden <sbranden@broadcom.com>, Andrew Jeffery <andrew@aj.id.au>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- linux-kernel@vger.kernel.org, Pengutronix Kernel Team <kernel@pengutronix.de>,
- Eugen Hristev <eugen.hristev@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- linux-aspeed@lists.ozlabs.org, Yangtao Li <tiny.windzz@gmail.com>,
- Hu Ziji <huziji@marvell.com>, Thierry Reding <thierry.reding@gmail.com>,
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- Jesper Nilsson <jesper.nilsson@axis.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- linux-arm-kernel@axis.com, Jonathan Hunter <jonathanh@nvidia.com>,
- linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>,
- Pierre Ossman <pierre@ossman.eu>, Saiyam Doshi <saiyamdoshi.in@gmail.com>,
- Maxime Ripard <mripard@kernel.org>, linux-rpi-kernel@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Barry Song <baohua@kernel.org>, Nicolas Pitre <nico@fluxnic.net>,
- Patrice Chotard <patrice.chotard@st.com>,
- Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>,
- Stefan Wahren <wahrenst@gmx.net>,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- Ricky Wu <ricky_wu@realtek.com>,
- Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
- Ulf Hansson <ulf.hansson@linaro.org>, Neil Armstrong <narmstrong@baylibre.com>,
- Al Cooper <alcooperx@gmail.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Fabio Estevam <festevam@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Steen Hegelund <Steen.Hegelund@microchip.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>,
- Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com,
- Joel Stanley <joel@jms.id.au>, Orson Zhai <orsonzhai@gmail.com>,
- Ray Jui <rjui@broadcom.com>, Ben Dooks <ben-linux@fluff.org>,
- Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mmc@vger.kernel.org,
- Baolin Wang <baolin.wang7@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
- =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
- "H. Nikolaus Schaller" <hns@goldelico.com>,
- Adrian Hunter <adrian.hunter@intel.com>, Paul Cercueil <paul@crapouillou.net>,
- Lee Jones <lee.jones@linaro.org>, Marek Vasut <marex@denx.de>,
- Anson Huang <Anson.Huang@nxp.com>, Jaehoon Chung <jh80.chung@samsung.com>,
- Rui Miguel Silva <rmfrfs@gmail.com>, linux-mediatek@lists.infradead.org,
- Manuel Lauss <manuel.lauss@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- =?UTF-8?B?TWljaGHFgiBNaXJvc8WCYXc=?= <mirq-linux@rere.qmqm.pl>,
- Angelo Dureghello <angelo.dureghello@timesys.com>,
- Lars Povlsen <lars.povlsen@microchip.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Tony Prisk <linux@prisktech.co.nz>, Vinod Koul <vkoul@kernel.org>,
- Robert Richter <rrichter@marvell.com>, Viresh Kumar <vireshk@kernel.org>,
- Jun Nie <jun.nie@linaro.org>
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
+ Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
+ chao.hao@mediatek.com, linux-kernel@vger.kernel.org,
+ Evan Green <evgreen@chromium.org>, Tomasz
+ Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, yong.wu@mediatek.com,
+ ming-fan.chen@mediatek.com, anan.sun@mediatek.com,
+ Will Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Douglas,
+This patch mainly adds support for mt8192 IOMMU and SMI.
 
-On Fri, Sep 4, 2020 at 1:25 AM Douglas Anderson <dianders@chromium.org> wrote:
->
-> As per discussion [1], it seems like it should be quite safe to turn
-> on PROBE_PREFER_ASYNCHRONOUS for all sd/mmc host controllers.  Let's
-> give it a shot.  For some discussion about this flag, see the commit
-> message for commit 3d3451124f3d ("mmc: sdhci-msm: Prefer asynchronous
-> probe").
-can this somehow change the order in which the MMC drivers end up loading?
-on Amlogic SoCs we have up to three MMC controllers, some SoCs even
-use two different MMC controller IPs (and therefore two different
-drivers).
-so far the MMC controller naming (/dev/mmcblk* etc.) was consistent -
-can that change with this patch?
+mt8192 also is MTK IOMMU gen2 which uses ARM Short-Descriptor translation
+table format. The M4U-SMI HW diagram is as below:
 
-apologies if this has been discussed and answered anywhere
+                          EMI
+                           |
+                          M4U
+                           |
+                      ------------
+                       SMI Common
+                      ------------
+                           |
+  +-------+------+------+----------------------+-------+
+  |       |      |      |       ......         |       |
+  |       |      |      |                      |       |
+larb0   larb1  larb2  larb4     ......      larb19   larb20
+disp0   disp1   mdp    vdec                   IPE      IPE
 
+All the connections are HW fixed, SW can NOT adjust it.
 
-Best regards,
-Martin
+Comparing with the preview SoC, this patchset mainly adds two new functions:
+a) add iova 34 bits support.
+b) add multi domains support since several HW has the special iova
+region requirement.
+
+this patchset depend on v5.9-rc1.
+
+change note:
+v2:
+  a) Convert IOMMU/SMI dt-binding to DT schema.
+  b) Fix some comment from Pi-Hsun and Nicolas. like use
+  generic_iommu_put_resv_regions.
+  c) Reword some comment, like add how to use domain-id.
+  
+v1: https://lore.kernel.org/linux-iommu/20200711064846.16007-1-yong.wu@mediatek.com/
+
+Yong Wu (23):
+  dt-bindings: iommu: mediatek: Convert IOMMU to DT schema
+  dt-bindings: memory: mediatek: Convert SMI to DT schema
+  dt-bindings: memory: mediatek: Add a common larb-port header file
+  dt-bindings: memory: mediatek: Extend LARB_NR_MAX to 32
+  dt-bindings: memory: mediatek: Add domain definition
+  dt-bindings: mediatek: Add binding for mt8192 IOMMU and SMI
+  iommu/mediatek: Use the common mtk-smi-larb-port.h
+  iommu/io-pgtable-arm-v7s: Use ias to check the valid iova in unmap
+  iommu/io-pgtable-arm-v7s: Extend PA34 for MediaTek
+  iommu/io-pgtable-arm-v7s: Add cfg as a param in some macros
+  iommu/io-pgtable-arm-v7s: Quad lvl1 pgtable for MediaTek
+  iommu/mediatek: Move hw_init into attach_device
+  iommu/mediatek: Add device link for smi-common and m4u
+  iommu/mediatek: Add power-domain operation
+  iommu/mediatek: Add iova reserved function
+  iommu/mediatek: Add single domain
+  iommu/mediatek: Support master use iova over 32bit
+  iommu/mediatek: Support up to 34bit iova in tlb flush
+  iommu/mediatek: Support report iova 34bit translation fault in ISR
+  iommu/mediatek: Add support for multi domain
+  iommu/mediatek: Adjust the structure
+  iommu/mediatek: Add mt8192 support
+  memory: mtk-smi: Add mt8192 support
+
+ .../bindings/iommu/mediatek,iommu.txt         | 103 --------
+ .../bindings/iommu/mediatek,iommu.yaml        | 155 +++++++++++
+ .../mediatek,smi-common.txt                   |  49 ----
+ .../mediatek,smi-common.yaml                  |  97 +++++++
+ .../memory-controllers/mediatek,smi-larb.txt  |  49 ----
+ .../memory-controllers/mediatek,smi-larb.yaml |  86 ++++++
+ drivers/iommu/io-pgtable-arm-v7s.c            |  57 ++--
+ drivers/iommu/mtk_iommu.c                     | 247 ++++++++++++++----
+ drivers/iommu/mtk_iommu.h                     |  11 +-
+ drivers/memory/mtk-smi.c                      |  27 ++
+ include/dt-bindings/memory/mt2712-larb-port.h |   2 +-
+ include/dt-bindings/memory/mt6779-larb-port.h |   2 +-
+ include/dt-bindings/memory/mt8173-larb-port.h |   2 +-
+ include/dt-bindings/memory/mt8183-larb-port.h |   2 +-
+ include/dt-bindings/memory/mt8192-larb-port.h | 239 +++++++++++++++++
+ .../dt-bindings/memory/mtk-smi-larb-port.h    |  22 ++
+ include/linux/io-pgtable.h                    |   4 +-
+ include/soc/mediatek/smi.h                    |   3 +-
+ 18 files changed, 880 insertions(+), 277 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+ create mode 100644 Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+ delete mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+ create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+ delete mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+ create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+ create mode 100644 include/dt-bindings/memory/mt8192-larb-port.h
+ create mode 100644 include/dt-bindings/memory/mtk-smi-larb-port.h
+
+-- 
+2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
