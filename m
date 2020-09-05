@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 75BCBC433E2
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Sep 2020 08:22:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 859B2C43461
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Sep 2020 08:22:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 074DA20757
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Sep 2020 08:22:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1338E2074D
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Sep 2020 08:22:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lNZWO+Ak";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Hn+K0H4o"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 074DA20757
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lnfAt8kp";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Xlc0k3O+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1338E2074D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,52 +27,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rcdYCjjK2xK+0n255eKQhkmKwzmJ/7fHnu3ZDkhEwC8=; b=lNZWO+AkBWUt40tU4g3GmtWZP
-	yJNuZU8bMgHsBkdWxRHHskXD13t8G/wzVU3hOJ9dBXEbL7B9Uc0btAQvv1INPyRtqE3moVUCkgWsv
-	OV0Nm407dO0lWb7yVGe1ylKbiKhR3TOEJ6oE2p2mol0/ZgyZsRtxxBHMU85xsNGNUt9hUCXrF09t8
-	XnjX7YhJmgia0w+kLASyBtDKipFo9ctp3+mqWD25HDtmsdmaAdVZL+i/GLtS65DSU8Zh3DbFoY24x
-	az4RF+JIR9Py/OJajg66ZjUxLuErIE7qH07yVUTfI6Prv3mWCmgxrCK61UPywrWBrb6AE6A9pPwjA
-	LSj4jJ0nQ==;
+	 bh=fl2a2MopYrYFZ+uL+xTPwbAuO7AVXg53RGKRkKGzZ9A=; b=lnfAt8kph4MMZwtGgHxk4drNt
+	IbJfVGuc7GbZw5FfdJ40C9T+g5Snbf5ftcpT4joF1AiOo8dmE+H/EU+3HUpdjNSOEPBkCRKaf3/Iy
+	TKB1XwJVNj0z5M74dfhV9B3+rlx7RhCasG/5Nsd0sGTk7qK6rcV9zA1jDm8uP0ZcY7FXV5Zl3ilTL
+	06Y9YnY4WDjUJSYaz9bBXLnljrDaCgASqSh829qnHMge5i9oFbrKQ/HhFYoN+GHcLeS7JJfN/acDl
+	hGaXf6kZ/yW4apcOlzk7x+xM7S8n36jaoJ5VbH/OX2DqkyjVPFYgYaPei9gayZVZ6/Y2VtZYCsL+y
+	gD+CS/6Uw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kETSf-0001vm-6O; Sat, 05 Sep 2020 08:22:13 +0000
+	id 1kETSg-0001wW-JX; Sat, 05 Sep 2020 08:22:14 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kETSP-0001pJ-SR; Sat, 05 Sep 2020 08:21:59 +0000
-X-UUID: bc55673a89c649ba8b34305347943e39-20200905
+ id 1kETSP-0001pI-VT; Sat, 05 Sep 2020 08:21:59 +0000
+X-UUID: 92a6ffc67dee415b96fc129de464f7ae-20200905
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=kyiSD5ll/l+umL1tJW3bLJdxa7buk3hxzI6oAafzwXY=; 
- b=Hn+K0H4oPPv5g2Up2wCDdLuIZWTMfr/qDFIkzRPSx5B/o2Vrqht2tXU6GIuJDq1QDMkyFyyrVNcs7VybWljkDBpHFtSrbXdGi0bDZ0eE9WWC4hRXbtLFkYxYLtIM6WDXl0PCyzf7gII0UMdjf7ADc3WJtyz9hoSh5e99hkAlyoo=;
-X-UUID: bc55673a89c649ba8b34305347943e39-20200905
+ bh=YgbhxdRSKSgUmadwuBOtslkD8OH4/8zNd1m9CMScLVc=; 
+ b=Xlc0k3O+8GT6yfNy9V99A9YAVLRWC3xK3Zvp+2An7rfVG25VsNZ80dANAHfeiCcbRUFQFLxOFc3GDA75SNMypyvnMhvVeSMvwXfcCJEy5/vfbGcNsw7eW323J9NVQyYKIIkBItoh4RudMmcL6h7D0yLi9iAaMj5oRet+A4B5IdI=;
+X-UUID: 92a6ffc67dee415b96fc129de464f7ae-20200905
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1338880354; Sat, 05 Sep 2020 00:21:52 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1664799763; Sat, 05 Sep 2020 00:21:52 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 5 Sep 2020 01:14:27 -0700
+ 15.0.1497.2; Sat, 5 Sep 2020 01:12:03 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 5 Sep 2020 16:14:24 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 5 Sep 2020 16:11:47 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 5 Sep 2020 16:14:24 +0800
+ Transport; Sat, 5 Sep 2020 16:11:41 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
  Rob Herring <robh+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH v2 20/23] iommu/mediatek: Add support for multi domain
-Date: Sat, 5 Sep 2020 16:09:17 +0800
-Message-ID: <20200905080920.13396-21-yong.wu@mediatek.com>
+Subject: [PATCH v2 02/23] dt-bindings: memory: mediatek: Convert SMI to DT
+ schema
+Date: Sat, 5 Sep 2020 16:08:59 +0800
+Message-ID: <20200905080920.13396-3-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200905080920.13396-1-yong.wu@mediatek.com>
 References: <20200905080920.13396-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200905_042158_105373_ED0C8D3B 
-X-CRM114-Status: GOOD (  22.86  )
+X-CRM114-CacheID: sfid-20200905_042158_259316_828B1437 
+X-CRM114-Status: GOOD (  19.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,158 +98,323 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some HW IP(ex: CCU) require the special iova range. That means the
-iova got from dma_alloc_attrs for that devices must locate in his
-special range. In this patch, we allocate a special iova_range for
-each a special requirement and create each a iommu domain for each
-a iova_range.
-
-meanwhile we still use one pagetable which support 16GB iova.
-
-After this patch, If the iova range of a master is over 4G, the master
-should:
-a) Declare its special dma_ranges in its dtsi node. For example, If we
-   preassign the iova 4G-8G for vcodec, then the vcodec dtsi node should
-   add this:
-   /*
-    * iova start at 0x1_0000_0000, pa still start at 0x4000_0000
-    * size is 0x1_0000_0000.
-    */
-   dma-ranges = <0x1 0x0 0x0 0x40000000 0x1 0x0>;  /* 4G ~ 8G */
- Note: we don't have a actual bus concept here. the master doesn't have its
- special parent node, thus this dma-ranges can only be put in the master's
- node.
-
-b) Update the dma_mask:
-  dma_set_mask_and_coherent(dev, DMA_BIT_MASK(33));
+Convert MediaTek SMI to DT schema.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/iommu/mtk_iommu.c | 47 +++++++++++++++++++++++++++++++--------
- drivers/iommu/mtk_iommu.h |  3 ++-
- 2 files changed, 40 insertions(+), 10 deletions(-)
+ .../mediatek,smi-common.txt                   | 49 ----------
+ .../mediatek,smi-common.yaml                  | 96 +++++++++++++++++++
+ .../memory-controllers/mediatek,smi-larb.txt  | 49 ----------
+ .../memory-controllers/mediatek,smi-larb.yaml | 85 ++++++++++++++++
+ 4 files changed, 181 insertions(+), 98 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+ create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+ delete mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+ create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 4da92e5739f3..93ce4fa806cf 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -350,6 +350,14 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
- {
- 	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
- 
-+	/* Use the exist domain as there is only one m4u pgtable here. */
-+	if (data->m4u_dom) {
-+		dom->iop = data->m4u_dom->iop;
-+		dom->cfg = data->m4u_dom->cfg;
-+		dom->domain.pgsize_bitmap = data->m4u_dom->cfg.pgsize_bitmap;
-+		return 0;
-+	}
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+deleted file mode 100644
+index b64573680b42..000000000000
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
++++ /dev/null
+@@ -1,49 +0,0 @@
+-SMI (Smart Multimedia Interface) Common
+-
+-The hardware block diagram please check bindings/iommu/mediatek,iommu.txt
+-
+-Mediatek SMI have two generations of HW architecture, here is the list
+-which generation the SoCs use:
+-generation 1: mt2701 and mt7623.
+-generation 2: mt2712, mt6779, mt8173 and mt8183.
+-
+-There's slight differences between the two SMI, for generation 2, the
+-register which control the iommu port is at each larb's register base. But
+-for generation 1, the register is at smi ao base(smi always on register
+-base). Besides that, the smi async clock should be prepared and enabled for
+-SMI generation 1 to transform the smi clock into emi clock domain, but that is
+-not needed for SMI generation 2.
+-
+-Required properties:
+-- compatible : must be one of :
+-	"mediatek,mt2701-smi-common"
+-	"mediatek,mt2712-smi-common"
+-	"mediatek,mt6779-smi-common"
+-	"mediatek,mt7623-smi-common", "mediatek,mt2701-smi-common"
+-	"mediatek,mt8173-smi-common"
+-	"mediatek,mt8183-smi-common"
+-- reg : the register and size of the SMI block.
+-- power-domains : a phandle to the power domain of this local arbiter.
+-- clocks : Must contain an entry for each entry in clock-names.
+-- clock-names : must contain 3 entries for generation 1 smi HW and 2 entries
+-  for generation 2 smi HW as follows:
+-  - "apb" : Advanced Peripheral Bus clock, It's the clock for setting
+-	    the register.
+-  - "smi" : It's the clock for transfer data and command.
+-	    They may be the same if both source clocks are the same.
+-  - "async" : asynchronous clock, it help transform the smi clock into the emi
+-	      clock domain, this clock is only needed by generation 1 smi HW.
+-  and these 2 option clocks for generation 2 smi HW:
+-  - "gals0": the path0 clock of GALS(Global Async Local Sync).
+-  - "gals1": the path1 clock of GALS(Global Async Local Sync).
+-  Here is the list which has this GALS: mt6779 and mt8183.
+-
+-Example:
+-	smi_common: smi@14022000 {
+-		compatible = "mediatek,mt8173-smi-common";
+-		reg = <0 0x14022000 0 0x1000>;
+-		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-		clocks = <&mmsys CLK_MM_SMI_COMMON>,
+-			 <&mmsys CLK_MM_SMI_COMMON>;
+-		clock-names = "apb", "smi";
+-	};
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+new file mode 100644
+index 000000000000..781d7b7617d9
+--- /dev/null
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+@@ -0,0 +1,96 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/memory-controllers/mediatek,smi-common.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
- 	dom->cfg = (struct io_pgtable_cfg) {
- 		.quirks = IO_PGTABLE_QUIRK_ARM_NS |
- 			IO_PGTABLE_QUIRK_NO_PERMS |
-@@ -375,6 +383,8 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
- 
- static struct iommu_domain *mtk_iommu_domain_alloc(unsigned type)
- {
-+	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
-+	const struct mtk_iommu_iova_region *region;
- 	struct mtk_iommu_domain *dom;
- 
- 	if (type != IOMMU_DOMAIN_DMA)
-@@ -390,8 +400,9 @@ static struct iommu_domain *mtk_iommu_domain_alloc(unsigned type)
- 	if (mtk_iommu_domain_finalise(dom))
- 		goto  put_dma_cookie;
- 
--	dom->domain.geometry.aperture_start = 0;
--	dom->domain.geometry.aperture_end = DMA_BIT_MASK(32);
-+	region = data->plat_data->iova_region + data->cur_domid;
-+	dom->domain.geometry.aperture_start = region->iova_base;
-+	dom->domain.geometry.aperture_end = region->iova_base + region->size - 1;
- 	dom->domain.geometry.force_aperture = true;
- 
- 	return &dom->domain;
-@@ -535,19 +546,31 @@ static void mtk_iommu_release_device(struct device *dev)
- static struct iommu_group *mtk_iommu_device_group(struct device *dev)
- {
- 	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
-+	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-+	struct iommu_group *group;
-+	int domid;
- 
- 	if (!data)
- 		return ERR_PTR(-ENODEV);
- 
--	/* All the client devices are in the same m4u iommu-group */
--	if (!data->m4u_group) {
--		data->m4u_group = iommu_group_alloc();
--		if (IS_ERR(data->m4u_group))
-+	domid = MTK_M4U_TO_DOM(fwspec->ids[0]);
-+	if (domid >= data->plat_data->iova_region_nr) {
-+		dev_err(dev, "iommu domain id(%d/%d) is error.\n", domid,
-+			data->plat_data->iova_region_nr);
-+		return ERR_PTR(-EINVAL);
-+	}
++title: SMI (Smart Multimedia Interface) Common
 +
-+	group = data->m4u_group[domid];
-+	if (!group) {
-+		group = iommu_group_alloc();
-+		if (IS_ERR(group))
- 			dev_err(dev, "Failed to allocate M4U IOMMU group\n");
-+		data->m4u_group[domid] = group;
- 	} else {
--		iommu_group_ref_get(data->m4u_group);
-+		iommu_group_ref_get(group);
- 	}
--	return data->m4u_group;
-+	data->cur_domid = domid;
-+	return group;
- }
- 
- static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
-@@ -576,14 +599,20 @@ static void mtk_iommu_get_resv_regions(struct device *dev,
- 				       struct list_head *head)
- {
- 	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
--	const struct mtk_iommu_iova_region *resv;
-+	const struct mtk_iommu_iova_region *resv, *curdom;
- 	struct iommu_resv_region *region;
- 	int prot = IOMMU_WRITE | IOMMU_READ;
- 	unsigned int i;
- 
-+	curdom = data->plat_data->iova_region + data->cur_domid;
- 	for (i = 0; i < data->plat_data->iova_region_nr; i++) {
- 		resv = data->plat_data->iova_region + i;
- 
-+		/* Only reserve when the region is in the current domain */
-+		if (resv->iova_base <= curdom->iova_base ||
-+		    resv->iova_base + resv->size >= curdom->iova_base + curdom->size)
-+			continue;
++maintainers:
++  - Yong Wu <yong.wu@mediatek.com>
 +
- 		region = iommu_alloc_resv_region(resv->iova_base, resv->size,
- 						 prot, IOMMU_RESV_RESERVED);
- 		if (!region)
-diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-index d45c13c9d324..5e346464cdf8 100644
---- a/drivers/iommu/mtk_iommu.h
-+++ b/drivers/iommu/mtk_iommu.h
-@@ -66,7 +66,7 @@ struct mtk_iommu_data {
- 	phys_addr_t			protect_base; /* protect memory base */
- 	struct mtk_iommu_suspend_reg	reg;
- 	struct mtk_iommu_domain		*m4u_dom;
--	struct iommu_group		*m4u_group;
-+	struct iommu_group		*m4u_group[MTK_M4U_DOM_NR_MAX];
- 	bool                            enable_4GB;
- 	spinlock_t			tlb_lock; /* lock for tlb range flush */
- 
-@@ -76,6 +76,7 @@ struct mtk_iommu_data {
- 
- 	struct dma_iommu_mapping	*mapping; /* For mtk_iommu_v1.c */
- 
-+	unsigned int			cur_domid;
- 	struct list_head		list;
- 	struct mtk_smi_larb_iommu	larb_imu[MTK_LARB_NR_MAX];
- };
++description: |+
++  The hardware block diagram please check bindings/iommu/mediatek,iommu.yaml
++
++  MediaTek SMI have two generations of HW architecture, here is the list
++  which generation the SoCs use:
++  generation 1: mt2701 and mt7623.
++  generation 2: mt2712, mt6779, mt8173 and mt8183.
++
++  There's slight differences between the two SMI, for generation 2, the
++  register which control the iommu port is at each larb's register base. But
++  for generation 1, the register is at smi ao base(smi always on register
++  base). Besides that, the smi async clock should be prepared and enabled for
++  SMI generation 1 to transform the smi clock into emi clock domain, but that is
++  not needed for SMI generation 2.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt2701-smi-common
++      - mediatek,mt2712-smi-common
++      - mediatek,mt6779-smi-common
++      - mediatek,mt7623-smi-common, mediatek,mt2701-smi-common
++      - mediatek,mt8173-smi-common
++      - mediatek,mt8183-smi-common
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    description: |
++      apb and smi are mandatory. the async is only for generation 1 smi HW.
++      gals(global async local sync) also is optional, here is the list which
++      require gals: mt6779 and mt8183.
++    minItems: 2
++    maxItems: 4
++    items:
++      - description: apb is Advanced Peripheral Bus clock, It's the clock for
++          setting the register.
++      - description: smi is the clock for transfer data and command.
++      - description: async is asynchronous clock, it help transform the smi clock
++          into the emi clock domain.
++      - description: gals0 is the path0 clock of gals.
++      - description: gals1 is the path1 clock of gals.
++
++  clock-names:
++    oneOf:
++      - items:
++          - const: apb
++          - const: smi
++      - items:
++          - const: apb
++          - const: smi
++          - const: async
++      - items:
++          - const: apb
++          - const: smi
++          - const: gals0
++          - const: gals1
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - clock-names
++  - power-domains
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/power/mt8173-power.h>
++
++    smi_common: smi@14022000 {
++            compatible = "mediatek,mt8173-smi-common";
++            reg = <0x14022000 0x1000>;
++            power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++            clocks = <&mmsys CLK_MM_SMI_COMMON>,
++                     <&mmsys CLK_MM_SMI_COMMON>;
++            clock-names = "apb", "smi";
++    };
++
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+deleted file mode 100644
+index 8f19dfe7d80e..000000000000
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
++++ /dev/null
+@@ -1,49 +0,0 @@
+-SMI (Smart Multimedia Interface) Local Arbiter
+-
+-The hardware block diagram please check bindings/iommu/mediatek,iommu.txt
+-
+-Required properties:
+-- compatible : must be one of :
+-		"mediatek,mt2701-smi-larb"
+-		"mediatek,mt2712-smi-larb"
+-		"mediatek,mt6779-smi-larb"
+-		"mediatek,mt7623-smi-larb", "mediatek,mt2701-smi-larb"
+-		"mediatek,mt8173-smi-larb"
+-		"mediatek,mt8183-smi-larb"
+-- reg : the register and size of this local arbiter.
+-- mediatek,smi : a phandle to the smi_common node.
+-- power-domains : a phandle to the power domain of this local arbiter.
+-- clocks : Must contain an entry for each entry in clock-names.
+-- clock-names: must contain 2 entries, as follows:
+-  - "apb" : Advanced Peripheral Bus clock, It's the clock for setting
+-	    the register.
+-  - "smi" : It's the clock for transfer data and command.
+-  and this optional clock name:
+-  - "gals": the clock for GALS(Global Async Local Sync).
+-  Here is the list which has this GALS: mt8183.
+-
+-Required property for mt2701, mt2712, mt6779 and mt7623:
+-- mediatek,larb-id :the hardware id of this larb.
+-
+-Example:
+-	larb1: larb@16010000 {
+-		compatible = "mediatek,mt8173-smi-larb";
+-		reg = <0 0x16010000 0 0x1000>;
+-		mediatek,smi = <&smi_common>;
+-		power-domains = <&scpsys MT8173_POWER_DOMAIN_VDEC>;
+-		clocks = <&vdecsys CLK_VDEC_CKEN>,
+-			 <&vdecsys CLK_VDEC_LARB_CKEN>;
+-		clock-names = "apb", "smi";
+-	};
+-
+-Example for mt2701:
+-	larb0: larb@14010000 {
+-		compatible = "mediatek,mt2701-smi-larb";
+-		reg = <0 0x14010000 0 0x1000>;
+-		mediatek,smi = <&smi_common>;
+-		mediatek,larb-id = <0>;
+-		clocks = <&mmsys CLK_MM_SMI_LARB0>,
+-			 <&mmsys CLK_MM_SMI_LARB0>;
+-		clock-names = "apb", "smi";
+-		power-domains = <&scpsys MT2701_POWER_DOMAIN_DISP>;
+-	};
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+new file mode 100644
+index 000000000000..e8919f280c84
+--- /dev/null
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+@@ -0,0 +1,85 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/memory-controllers/mediatek,smi-larb.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: SMI (Smart Multimedia Interface) Local Arbiter
++
++maintainers:
++  - Yong Wu <yong.wu@mediatek.com>
++
++description: |+
++  The hardware block diagram please check bindings/iommu/mediatek,iommu.yaml
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt2701-smi-larb
++      - mediatek,mt2712-smi-larb
++      - mediatek,mt6779-smi-larb
++      - mediatek,mt7623-smi-larb, mediatek,mt2701-smi-larb
++      - mediatek,mt8173-smi-larb
++      - mediatek,mt8183-smi-larb
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    description: |
++      apb and smi are mandatory. gals(global async local sync) is optional,
++      here is the list which require gals: mt8183.
++    minItems: 2
++    maxItems: 3
++    items:
++       - description: apb is Advanced Peripheral Bus clock, It's the clock for
++           setting the register.
++       - description: smi is the clock for transfer data and command.
++       - description: the clock for gals.
++
++  clock-names:
++    oneOf:
++      - items:
++         - const: apb
++         - const: smi
++      - items:
++         - const: apb
++         - const: smi
++         - const: gals
++
++  power-domains:
++    maxItems: 1
++
++  mediatek,smi:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    description: a phandle to the smi_common node.
++
++  mediatek,larb-id:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: the hardware id of this larb.
++      Required property for mt2701, mt2712, mt6779 and mt7623.
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - clock-names
++  - power-domains
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/power/mt8173-power.h>
++
++    larb1: larb@16010000 {
++      compatible = "mediatek,mt8173-smi-larb";
++      reg = <0x16010000 0x1000>;
++      mediatek,smi = <&smi_common>;
++      power-domains = <&scpsys MT8173_POWER_DOMAIN_VDEC>;
++      clocks = <&vdecsys CLK_VDEC_CKEN>,
++               <&vdecsys CLK_VDEC_LARB_CKEN>;
++      clock-names = "apb", "smi";
++    };
++
 -- 
 2.18.0
 _______________________________________________
