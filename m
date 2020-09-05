@@ -2,23 +2,22 @@ Return-Path: <SRS0=aCep=CO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1587AC43461
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Sep 2020 08:12:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0D576C433E2
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Sep 2020 08:12:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BC7B520760
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Sep 2020 08:12:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B6AEB20760
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Sep 2020 08:12:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="b5NFch1w";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="p5VANSK6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC7B520760
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="O/KRHhtU";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="R4fm8hlR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B6AEB20760
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,54 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+7zZl+4p+xLHpVOq66Cp/Ad8N7ejVSF41lMVqH28l4I=; b=b5NFch1wAmoWF0uiTxjNbVpxF
-	Jj2vRjnZPgdnPq+Hj3/GrSQTwqGI1z5Eo8YhKfcMa6wIskAmpWoP0lSvMMUy5UBjV5gN30D5Lr3r9
-	iEj7IniYNzFd690DdYf5Dq0koJ+tlA88JdGO1PwZ96anGhmBaui6RgAS6HFNUQXAnohMelVe0VxkO
-	QfTNhHnQlW6i7lsbQYGfqfqLAleoRsizw7xrdFOupfRQFH61Bd7wsaP49DcePDD3lEtELnXv1xtTn
-	oDMegp2yS32e++3NdfWfj7w47OcWc/CA/cgl7pZn6ngIf3mAZG0kpnP5eiZGgVpFFpoFr8s6gpWmQ
-	zE12Vip3w==;
+	 bh=/ki9mrKVBszCSAFlHA46xF82Fjr5rh06znvCTMl/5lc=; b=O/KRHhtUEFq09zg1w5hCFNE2g
+	cz5bW1mgwFjY2a2JcZgxem2t9iEOhcSQmwWLlcs8XL+o+8qbbDyHii/zYPsnKlxnDTCCWzhZxtz9E
+	7eLoHWnPBhzaLYUue+aPC1sM46VoR/IIY/NiCsF4KVDtWZSPdemH3nsOe0QDOBD11p44Bx7MhM0tt
+	ZHPI3LqIhCztVBH5rQv5OdRqXgtwX89QHhk9HAbC+5WWj00Q/rxeAbZ9HSuNywsXwRPT/se7HxqAf
+	jQgsVd2ZH44xJqt3cS7h1CxMgPtEqZ78ei0Ky8K1C4TZd55rCgrsBCGQrDvbwBY61CjOYdXlb++lU
+	8OJFnNS6Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kETJ6-0008TH-Ax; Sat, 05 Sep 2020 08:12:20 +0000
+	id 1kETJB-0008Vh-Td; Sat, 05 Sep 2020 08:12:25 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kETJ1-0008Qo-80; Sat, 05 Sep 2020 08:12:16 +0000
-X-UUID: a9240a8dc7aa4171a69e3e9b0d199739-20200905
+ id 1kETJ7-0008TV-7V; Sat, 05 Sep 2020 08:12:22 +0000
+X-UUID: e9383d05e6034198b8ee33223ffa9252-20200905
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=OKnMLRRVuoIcgS5aIEFwmMOna1kSiQnret3TGnTwRls=; 
- b=p5VANSK6MsDnMbJ8LDuG/NgpDW8lggA4LwrJ0AaMIzHA9/Q7gIq1QbECYlaFYQrs+OmmoOtZ6Enntq8P+yY/euODK9ocS5iX7m0QKWg9UHZAAbnSx1INGNVNgXUZHEGCz+/jOp4wRx+t/tpMUVqldhEuyCK5vhWnWyaDrF3nCAE=;
-X-UUID: a9240a8dc7aa4171a69e3e9b0d199739-20200905
+ bh=axtHnh7qKvv1KMMgmnGRSN/KcSTs8AdXhfI9O+e7IvY=; 
+ b=R4fm8hlRJMhN/gkgRcvJU1nxfP5fBn02N+4buuS2K7xaLVHVZmjya1luY+NMUfyZ6qu4K97/QZAp5VPvcgIDsD7g19xssbVnRAnbj+enAEXojv4YqxGzIuyWtCNvRA1TbpDUqpV42OVXYGL5F6Jb+quq6qeMUtCLw6UICFkO9Fk=;
+X-UUID: e9383d05e6034198b8ee33223ffa9252-20200905
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 372921419; Sat, 05 Sep 2020 00:12:08 -0800
+ with ESMTP id 120831112; Sat, 05 Sep 2020 00:12:17 -0800
 Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 5 Sep 2020 01:12:06 -0700
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 5 Sep 2020 01:12:15 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 5 Sep 2020 16:12:02 +0800
+ 15.0.1497.2; Sat, 5 Sep 2020 16:12:12 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 5 Sep 2020 16:12:03 +0800
+ Transport; Sat, 5 Sep 2020 16:12:12 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
  Rob Herring <robh+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH v2 04/23] dt-bindings: memory: mediatek: Extend LARB_NR_MAX to
- 32
-Date: Sat, 5 Sep 2020 16:09:01 +0800
-Message-ID: <20200905080920.13396-5-yong.wu@mediatek.com>
+Subject: [PATCH v2 05/23] dt-bindings: memory: mediatek: Add domain definition
+Date: Sat, 5 Sep 2020 16:09:02 +0800
+Message-ID: <20200905080920.13396-6-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200905080920.13396-1-yong.wu@mediatek.com>
 References: <20200905080920.13396-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 184159C0C52A59F0F86A1F2834490BAB06944A950F397786991DCDAABF9EE53E2000:8
+X-TM-SNTS-SMTP: 6BDB272421E35EDA65A7640FEC91A413578AB2B5B6E49F4A371C208976D97BA92000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200905_041215_479454_46BD9B47 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20200905_041221_469308_52612227 
+X-CRM114-Status: GOOD (  12.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,29 +97,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Extend the max larb number definition as mt8192 has larb_nr over 16.
+In the latest SoC, there are several HW IP require a sepecial iova
+range, mainly CCU and VPU has this requirement. Take CCU as a example,
+CCU require its iova locate in the range(0x4000_0000 ~ 0x43ff_ffff).
+
+In this patch we add a domain definition for the special port. In the
+example of CCU, If we preassign CCU port in domain1, then iommu driver
+will prepare a independent iommu domain of the special iova range for it,
+then the iova got from dma_alloc_attrs(ccu-dev) will locate in its special
+range.
+
+This is a preparing patch for multi-domain support.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
 ---
- include/dt-bindings/memory/mtk-smi-larb-port.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ include/dt-bindings/memory/mtk-smi-larb-port.h | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/include/dt-bindings/memory/mtk-smi-larb-port.h b/include/dt-bindings/memory/mtk-smi-larb-port.h
-index 2ec7fe5ce4e9..f4d8e3aed0bc 100644
+index f4d8e3aed0bc..d00f5de8438b 100644
 --- a/include/dt-bindings/memory/mtk-smi-larb-port.h
 +++ b/include/dt-bindings/memory/mtk-smi-larb-port.h
-@@ -6,10 +6,10 @@
- #ifndef __DTS_MTK_IOMMU_PORT_H_
+@@ -7,9 +7,16 @@
  #define __DTS_MTK_IOMMU_PORT_H_
  
--#define MTK_LARB_NR_MAX			16
-+#define MTK_LARB_NR_MAX			32
+ #define MTK_LARB_NR_MAX			32
++#define MTK_M4U_DOM_NR_MAX		8
++
++#define MTK_M4U_DOM_ID(domid, larb, port)	\
++	(((domid) & 0x7) << 16 | (((larb) & 0x1f) << 5) | ((port) & 0x1f))
++
++/* The default dom id is 0. */
++#define MTK_M4U_ID(larb, port)		MTK_M4U_DOM_ID(0, larb, port)
  
- #define MTK_M4U_ID(larb, port)		(((larb) << 5) | (port))
--#define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0xf)
-+#define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0x1f)
+-#define MTK_M4U_ID(larb, port)		(((larb) << 5) | (port))
+ #define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0x1f)
  #define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
++#define MTK_M4U_TO_DOM(id)		(((id) >> 16) & 0x7)
  
  #endif
 -- 
