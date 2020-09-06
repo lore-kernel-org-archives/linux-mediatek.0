@@ -1,68 +1,91 @@
-Return-Path: <SRS0=aCep=CO=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=UOtS=CP=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D1F6C433E2
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Sep 2020 23:51:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7816DC43461
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Sep 2020 15:19:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DB8BD2072D
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Sep 2020 23:51:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EA0AF20714
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Sep 2020 15:19:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="0lStUO+l";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="WcGkCr4t"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DB8BD2072D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qhabzVUc";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="SX4GDYqT"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA0AF20714
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cULxzniudc+MGNs2cEMgO+PRsDN5uf3OjqeE4d/CmT4=; b=0lStUO+lHYldLxnKVXFtUcazE
-	KIRIRJ3ZY0v7SANOpqriBv4sWit769qL9nR+4uqq0O2iGuwH5Jjj+5uOwaziUqoyN4ggfCw+TJpgg
-	jihxWFLcPhBgziGifH0eYB/S3dOmseCSKapOuxXePkJbqoDG/CKEILPstS6t9rNs75ttDdo7CgGfL
-	DHjGJulUaKOtkQ1lw/c0KNREYqy69mnVSQUVoE4rxefRn6+BXTtrHO4FxkUPlexSbMh05wK9evc1q
-	9uccLbcqKYa71iD3xHnXlXUiVRkBlK1XzalQuqslhsLVjsTGhbAePF5+MWVY8D8JEpRZupj7Aoyqg
-	pAzsM3eAg==;
+	 bh=NosoArPnhL3ON0JiwGAtaxFRan6kCxvyBDk4WRLHXEU=; b=qhabzVUc2bZSpdWpeSxnxJ4io
+	qDrOZ7TsWuIhhNB4Dqi83ZI5LXnYu91jQs6sawi95ThCj5ivn8IgjxgvkOd3wcXxMMQdixjS8zs4d
+	8vb3Z0Izg9aom8J/7tIiquaQjXvuA/WFg637Bl08dPorM5nY7Uulk+RFEyXhfCSpV6XQqjWz600YD
+	+omuO+apcLHmntYFRSaTEckMBSYHRV2QZbTibmv/o3oViKll4TJWQNkTCw6g8iUIYEovpLJ0moWQ1
+	KOMECIwds1nkVkhfN7dntx74OIQSfSYekHRY6Za9jES4tPLxvuy1Cq9uDojactlSiIK/cSCupTMrM
+	1j8+kGeRw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kEhxP-0005Fz-H1; Sat, 05 Sep 2020 23:50:55 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kEwSF-0004Od-Iz; Sun, 06 Sep 2020 15:19:43 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kEhxL-0005F0-1z; Sat, 05 Sep 2020 23:50:52 +0000
-Received: from kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com (unknown
- [163.114.132.7])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 2411B2072D;
- Sat,  5 Sep 2020 23:50:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1599349849;
- bh=h0R4sF+5A4qwm1j7RZDzVqY8zeUBVfqPznj/PjB+chg=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=WcGkCr4t1aHtiLM2bweaw/TvLg1ZWv+tDICD8sUu3E2m4RaqIarx2DnPeOjVa1urZ
- lDJcH+vYwCyDVzHZGwXi0NtftkjtgUuddnMa3y6xealnrlMs0fMdi7/EV6k9GQJLBm
- 81nAsgH8dEH01nbQBQpGx5PtLOpiXs1toeaMOg5Y=
-Date: Sat, 5 Sep 2020 16:50:47 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Landen Chao <landen.chao@mediatek.com>
-Subject: Re: [PATCH net-next v3 4/6] net: dsa: mt7530: Add the support of
- MT7531 switch
-Message-ID: <20200905165047.32f94ae5@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <63041b5c2c346b874e92761b3b3d6553106dde98.1599228079.git.landen.chao@mediatek.com>
-References: <cover.1599228079.git.landen.chao@mediatek.com>
- <63041b5c2c346b874e92761b3b3d6553106dde98.1599228079.git.landen.chao@mediatek.com>
+ id 1kEwS8-0004Lk-Is
+ for linux-mediatek@lists.infradead.org; Sun, 06 Sep 2020 15:19:38 +0000
+Received: by mail-wm1-x341.google.com with SMTP id o21so11045953wmc.0
+ for <linux-mediatek@lists.infradead.org>; Sun, 06 Sep 2020 08:19:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=uHlPaejxaoEdhUtjcAkbEk5MwemH61sGbulo7nTGaVI=;
+ b=SX4GDYqTPOGWjEBwAPJ+63c5XJ+ugOUtKfk2l97qxzdS2k0Gs3m/RL1RxgLIqb9BGI
+ GJzExp+fn4OA+P/b5Kx45NWqujGTB+EFHnJLjWDAsCu5e9IAyZe5RTNQSeCuXK1iGUBg
+ ViS+LLN/xduUf/moO8/9B9eaCe2k/rBPGM05InBZDCSiKeQiJJgeD5+Wd7nRJfvpJl3D
+ rseB2sAArVCsO6cAhTtEUqykbhjl/MSC3j2sngJ0x8bc5ATvxhvVw41dNoxye+lbXAZg
+ zDoeVjmXF3eC9s4u20sPCwq2i26V0JPWhbcBJaBEQi1yTJcqExo3/h/EsPvOUeklCzVx
+ +XvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=uHlPaejxaoEdhUtjcAkbEk5MwemH61sGbulo7nTGaVI=;
+ b=nRhYc7I4Yh7feClJJA1XMj4SUuFIZxq1vJgqgdGOEmANkGPhM3qrwIj1QJ2f+4c9Rv
+ SS2p4dLgHDYwFWZXu+9dB8BmgmxV+GAUDXB7uH9H22rXt3VIZRP+/3IEZW4ZYPlj3KkJ
+ JXVJMhKJy8ClmX6HubGNMgoql/O22GDxPE632wVGO5JPKqUuKNELsxHKBLiu2fMOIAfJ
+ M3E0VcC70ESBX8vjad15Y3yaAG6uESKkmG8SXNuUq78fqeH5/n4sXpXJqliOEZNW8ddY
+ bjAiq7d2v28B0f6vqfckjlCvFZcTX2r7rpkORrlOLUnnmI9OwZQs373MA5ngTxEJ0b5n
+ KL2Q==
+X-Gm-Message-State: AOAM530eDp7OwWeHQpfaSnm2im8HdjS5RwhGN4vvYvTS2BHE2+1Hxv3G
+ RMi12p0UdXeVfOi+H/pgNGhRww==
+X-Google-Smtp-Source: ABdhPJxTiP5W3hXf0jIMlYDRBifFpSbd8PfKRCSzquyfrJqE89SWeJ2IDFhFHf02RC+vrWN02y3xIw==
+X-Received: by 2002:a1c:c90d:: with SMTP id f13mr16979046wmb.25.1599405575412; 
+ Sun, 06 Sep 2020 08:19:35 -0700 (PDT)
+Received: from localhost.localdomain (208.19.23.93.rev.sfr.net. [93.23.19.208])
+ by smtp.gmail.com with ESMTPSA id a15sm26420646wrn.3.2020.09.06.08.19.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 06 Sep 2020 08:19:34 -0700 (PDT)
+From: Fabien Parent <fparent@baylibre.com>
+To: iommu@lists.linux-foundation.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH v3 2/3] iommu/mediatek: add flag for legacy ivrp paddr
+Date: Sun,  6 Sep 2020 17:19:27 +0200
+Message-Id: <20200906151928.881209-2-fparent@baylibre.com>
+X-Mailer: git-send-email 2.28.0
+In-Reply-To: <20200906151928.881209-1-fparent@baylibre.com>
+References: <20200906151928.881209-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200905_195051_474323_F433DC30 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20200906_111936_650506_76E298F0 
+X-CRM114-Status: GOOD (  13.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,48 +97,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, frank-w@public-files.de,
- Florian Fainelli <f.fainelli@gmail.com>, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, netdev@vger.kernel.org, dqfext@gmail.com,
- Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>,
- "David S . Miller" <davem@davemloft.net>, opensource@vdorst.com,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: matthias.bgg@gmail.com, Fabien Parent <fparent@baylibre.com>,
+ joro@8bytes.org, robh+dt@kernel.org, yong.wu@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 4 Sep 2020 22:21:59 +0800 Landen Chao wrote:
-> +static int
-> +mt7531_cpu_port_config(struct dsa_switch *ds, int port)
-> +{
-> +	struct mt7530_priv *priv = ds->priv;
-> +	phy_interface_t interface;
-> +	int speed;
-> +
-> +	switch (port) {
-> +	case 5:
-> +		if (mt7531_is_rgmii_port(priv, port))
-> +			interface = PHY_INTERFACE_MODE_RGMII;
-> +		else
-> +			interface = PHY_INTERFACE_MODE_2500BASEX;
-> +
-> +		priv->p5_interface = interface;
-> +		break;
-> +	case 6:
-> +		interface = PHY_INTERFACE_MODE_2500BASEX;
-> +
-> +		mt7531_pad_setup(ds, interface);
-> +
-> +		priv->p6_interface = interface;
-> +		break;
-> +	};
+Add a new flag in order to select which IVRP_PADDR format is used
+by an SoC.
 
-stray semicolon
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
+
+v3: set LEGACY_IVRP_PADDR as a flag instead of platform data
+v2: new patch
+
+---
+ drivers/iommu/mtk_iommu.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 785b228d39a6..b1f85a7e9346 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -116,6 +116,7 @@
+ #define OUT_ORDER_WR_EN			BIT(4)
+ #define HAS_SUB_COMM			BIT(5)
+ #define WR_THROT_EN			BIT(6)
++#define HAS_LEGACY_IVRP_PADDR		BIT(7)
+ 
+ #define MTK_IOMMU_HAS_FLAG(pdata, _x) \
+ 		((((pdata)->flags) & (_x)) == (_x))
+@@ -582,7 +583,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+ 		F_INT_PRETETCH_TRANSATION_FIFO_FAULT;
+ 	writel_relaxed(regval, data->base + REG_MMU_INT_MAIN_CONTROL);
+ 
+-	if (data->plat_data->m4u_plat == M4U_MT8173)
++	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_LEGACY_IVRP_PADDR))
+ 		regval = (data->protect_base >> 1) | (data->enable_4GB << 31);
+ 	else
+ 		regval = lower_32_bits(data->protect_base) |
+@@ -818,7 +819,8 @@ static const struct mtk_iommu_plat_data mt6779_data = {
+ 
+ static const struct mtk_iommu_plat_data mt8173_data = {
+ 	.m4u_plat     = M4U_MT8173,
+-	.flags	      = HAS_4GB_MODE | HAS_BCLK | RESET_AXI,
++	.flags	      = HAS_4GB_MODE | HAS_BCLK | RESET_AXI |
++			HAS_LEGACY_IVRP_PADDR,
+ 	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
+ 	.larbid_remap = {{0}, {1}, {2}, {3}, {4}, {5}}, /* Linear mapping. */
+ };
+-- 
+2.28.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
