@@ -4,87 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4ADB1C433E2
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Sep 2020 17:24:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0AE1EC43461
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Sep 2020 18:10:06 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D5C4C2075A
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Sep 2020 17:24:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 635682078E
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Sep 2020 18:10:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Blf/IfEe";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="GSYmCjav"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D5C4C2075A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Jz/GGPIW";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="nzzQyiNa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 635682078E
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=PYb2AmcYuKaDctjUee3SCmSAcxAEjiKu3GbS22k8s64=; b=Blf/IfEe7tKYIvDsNNxGU6z5s
-	inqk22I9TcRvJIdLqeCWqy90AJehEGN60kpk7gFtYA8m+PK3OuPFOeR0T3qkoQGfyQwBWOLWDQDub
-	svRfna+ZSvkd0qDU9wZyB5BPycBD9LnflvHR8osc3zabkfkhc64yGB1w3rOW7uNBIvRAw/9vMGkmQ
-	Bkg0aaFVDT3FjsPqZhr/9xPESKj7+t1OW+po+sr9LwlNBTO74Fdt+S7UNsVLi/KQsasmvCNDA6jci
-	cKGHw5QZ+VOOmWs3IphHoaSn0UaY52+FjyuhpkORhjRIYRPiZoC4cP9Y8b+od2IpD698XG3mLSphy
-	5ipS4LMdA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+sq0MQmjP5lJSMMTW6JXvLR9eJ3tjrrBZWaRNU/a8WY=; b=Jz/GGPIWvjYOLHpqzm/OBmbOSi
+	xpVRz/FlS9gRgsk3DQqXeW+Hzl5BVyDN9LYz6aOovrkXtyV3cuuPNUSCqrQoCSv6C/PEuiVJBnzV4
+	wXkhYcB7ltEl6m9C+bWPkQSSqM/v5/ih4Aqtc5Zs1zDcJOnhZkYdwb/G422ReEc0WwQ0Ij40ZtnR7
+	8coP3g+8e8Q4oNZ8TDhy7hXhiMbse4r+E6RBqE/E1GLvC0DxsLEN/l8vLFfwpbruUOA2magT/NFKF
+	P9D7lnxksCZAFG8Cf+RWcVryf0HZZ9Hjqzh27FNo9rCMdjy2AWXf2qFl8YMHw9IKDaOxbhc8JDHaw
+	gLp3Gogg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kEyOS-0005h3-O9; Sun, 06 Sep 2020 17:23:56 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1kEz6w-0007Z7-0p; Sun, 06 Sep 2020 18:09:54 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kEyON-0005fT-2S
- for linux-mediatek@lists.infradead.org; Sun, 06 Sep 2020 17:23:52 +0000
-Received: by mail-wr1-x442.google.com with SMTP id a17so12554143wrn.6
- for <linux-mediatek@lists.infradead.org>; Sun, 06 Sep 2020 10:23:50 -0700 (PDT)
+ id 1kEz6r-0007XV-45
+ for linux-mediatek@lists.infradead.org; Sun, 06 Sep 2020 18:09:50 +0000
+Received: by mail-wm1-x341.google.com with SMTP id q9so11426652wmj.2
+ for <linux-mediatek@lists.infradead.org>; Sun, 06 Sep 2020 11:09:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=5LFv5ZzrVOAZXLCXj1U+E9oMgR2hqbPqCxx8fHUWScg=;
- b=GSYmCjav2aZ0QhgMTTV2qcj7Jla39knHA76pCWIbROE5UHL1B9bue+wfrpvN6uUQ+u
- Mt471x1TRdzFcB2Hovb9nv1XWxAVTGOc4yd3LS9jyA8Eo7XoVXR83/X/eVOqOS/3FA1g
- RblNCxiwOGushHpmwDedToQykLg1aa3C29ePp+XuqhbkxX1QAu4EFdkX9JGXzuSCkhfb
- yir95FfKypfPGgQT+tyOvkHtmn3nNrzlT4MbFzgQ2Moh4ciUVxa5+/jxTL1wBdqSJU1D
- nGNs6t2sFGAXTXFmoUdir4ih8dho/XmuoECl60z5gK73qlfw4DkGAva44YPtencAF9Cm
- gR3w==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=NQSqriQ+Oe6AXLkXoxURAgwhIAz5B8mg5HUOyceRaNE=;
+ b=nzzQyiNa8rQcUAxBAKtcjxvn8Z/NBnTq1BCOt8tepxUgorNExl1s0ZkDz1CyCc70xC
+ bB6xvUMwoV0UTUU+mv8bjg0hWZsvrsrou45DpBCu1+OOH5Vru8A0mFbQVD7cMcVkAOVp
+ xropCu5NotExuTib2BY0RPN6qsRiItiRgcwYGWErDtodSMgW/THTIDr8AJDLBNSR/0Q8
+ BuShhulLeCJf9gnEO/WeZi4COs/OvEoUU5TdwNCVZvKW9Y+iZoLCtao6AHDCc8bI6As4
+ EVclkLAEDCZ+PzcLZF2pVQr+a11H8d7nHYuFG8LyislgqlcZphJTPeufC68EkzllDA7g
+ lnEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=5LFv5ZzrVOAZXLCXj1U+E9oMgR2hqbPqCxx8fHUWScg=;
- b=tIt5lD8Zw5e8lPgKLrwNMdYdbVHCt8kJBG2blRPQHSyLySfF8EcukwepZd/kxQdYw6
- 1JQLDS7oayuG0WiqLlWn0TTEhftoh5Vt7O15bs4NxPiE44CoBmk3rLMVYvLjR4ztfeIA
- AMY2cQkSm6MPXk9N/vBnfKST8/+RRJUyEkQ5PO8ROXLNmc/QI+jKX1JnSftrHri+IJRi
- 5A7BHvyEuJjPO7pF3L3TCwIzMS5QBHHqjQPWqeqpH/9sTv6adafiKW6xvNzXpkw2ZHVO
- 6uLvnJiOS1iy6gs0m3med2k2QdVvSLJbZk0SSnTJDWft95QjxhQACrTsQ+TYUIPwb2Rg
- huDg==
-X-Gm-Message-State: AOAM531XAQtU+NDHmb32I9VI3ANg0j34c+Yd3yfD0tZLItQ3p0V8gePB
- ej3jAJTKBgN8SNMZOtNBi6CsPw==
-X-Google-Smtp-Source: ABdhPJxdwKrbmm/JNyMDgs0+HCcl31Zmvuic08YJEaYa3l1Ok6Ysb6o9cijYOYLzCz/0m5GNM6rTAQ==
-X-Received: by 2002:adf:e2c7:: with SMTP id d7mr17499432wrj.110.1599413029588; 
- Sun, 06 Sep 2020 10:23:49 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=NQSqriQ+Oe6AXLkXoxURAgwhIAz5B8mg5HUOyceRaNE=;
+ b=BVqOYQWjC0fBBQLkri+44dGcuZQWxPxsQhbwVmH8KbmtK1EO1zx8FFP6CvRiREe0v6
+ qM/kn6RUxtagYScA/IJ3NaabhREgLeZSD4TgcKMPghyJAzgtGJF07olXRneaUglaPhwZ
+ TT8DvEBDCqjkF5aMtDZVj7OtzqO726WEvJ7BvQpYq+vkQ/UNBp+RQCw+bi4WIdv0AVYd
+ lqOXf3sMhgXu2SxxqXv9OxBOBVu3HRSCwt6Pqr2kNEdnT/kJvFk1HMBdImzgGj+KF4hD
+ 0SRk5pWNLH93hz688wg5i796qFUQ6sDWXz9tEvLkneYAPXJKzQtz7lpZ4vxpJQt8V1Hq
+ jgfA==
+X-Gm-Message-State: AOAM530knAmitGE3Ee68X5x6aDM1995GT26ZDNdGMyMzeVbRSkpUaLHA
+ eRU2nokW5DGtXt7Jzs5Y6GlaQTpNQkFCeQ==
+X-Google-Smtp-Source: ABdhPJwT0GnOgudgWfvSH7xfMSErDdiy138y71snJGOMmAaWrk+a+mBdo9cAwboSzipzn8KYwteQtw==
+X-Received: by 2002:a7b:c84a:: with SMTP id c10mr17091888wml.139.1599415787873; 
+ Sun, 06 Sep 2020 11:09:47 -0700 (PDT)
 Received: from localhost.localdomain (208.19.23.93.rev.sfr.net. [93.23.19.208])
- by smtp.gmail.com with ESMTPSA id p18sm4490311wrx.47.2020.09.06.10.23.47
+ by smtp.gmail.com with ESMTPSA id s11sm24593937wrt.43.2020.09.06.11.09.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 06 Sep 2020 10:23:49 -0700 (PDT)
+ Sun, 06 Sep 2020 11:09:47 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
-To: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH 2/2] soc: mediatek: add SCPSYS power dmain for MT8167 SoC
-Date: Sun,  6 Sep 2020 19:23:37 +0200
-Message-Id: <20200906172337.1052933-2-fparent@baylibre.com>
+To: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: [PATCH 1/2] dt-bindings: mediatek: Add binding for MT8167 SMI
+Date: Sun,  6 Sep 2020 20:09:37 +0200
+Message-Id: <20200906180938.1117526-1-fparent@baylibre.com>
 X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20200906172337.1052933-1-fparent@baylibre.com>
-References: <20200906172337.1052933-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200906_132351_158051_148661C5 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20200906_140949_284101_8BE44FDE 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,187 +94,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: ulf.hansson@linaro.org, krzk@kernel.org,
- Fabien Parent <fparent@baylibre.com>, robh+dt@kernel.org,
- mars.cheng@mediatek.com, macpaul.lin@mediatek.com, matthias.bgg@gmail.com,
- owen.chen@mediatek.com
+Cc: matthias.bgg@gmail.com, Fabien Parent <fparent@baylibre.com>,
+ robh+dt@kernel.org, krzk@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add SCPSYS power domain support for MT8167 SoC.
+Add device tree bindings documentation for MT8167 SMI.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
- drivers/soc/mediatek/mtk-scpsys.c     | 99 +++++++++++++++++++++++++++
- include/linux/soc/mediatek/infracfg.h |  8 +++
- 2 files changed, 107 insertions(+)
+ .../bindings/memory-controllers/mediatek,smi-common.txt        | 3 ++-
+ .../bindings/memory-controllers/mediatek,smi-larb.txt          | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index f669d3754627..ce897720ef17 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -18,6 +18,7 @@
- #include <dt-bindings/power/mt6797-power.h>
- #include <dt-bindings/power/mt7622-power.h>
- #include <dt-bindings/power/mt7623a-power.h>
-+#include <dt-bindings/power/mt8167-power.h>
- #include <dt-bindings/power/mt8173-power.h>
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+index b64573680b42..dbafffe3f41e 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+@@ -5,7 +5,7 @@ The hardware block diagram please check bindings/iommu/mediatek,iommu.txt
+ Mediatek SMI have two generations of HW architecture, here is the list
+ which generation the SoCs use:
+ generation 1: mt2701 and mt7623.
+-generation 2: mt2712, mt6779, mt8173 and mt8183.
++generation 2: mt2712, mt6779, mt8167, mt8173 and mt8183.
  
- #define MTK_POLL_DELAY_US   10
-@@ -89,6 +90,7 @@ enum clk_id {
- 	CLK_HIFSEL,
- 	CLK_JPGDEC,
- 	CLK_AUDIO,
-+	CLK_AXI_MFG,
- 	CLK_MAX,
- };
+ There's slight differences between the two SMI, for generation 2, the
+ register which control the iommu port is at each larb's register base. But
+@@ -20,6 +20,7 @@ Required properties:
+ 	"mediatek,mt2712-smi-common"
+ 	"mediatek,mt6779-smi-common"
+ 	"mediatek,mt7623-smi-common", "mediatek,mt2701-smi-common"
++	"mediatek,mt8167-smi-common"
+ 	"mediatek,mt8173-smi-common"
+ 	"mediatek,mt8183-smi-common"
+ - reg : the register and size of the SMI block.
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+index 8f19dfe7d80e..0c5de12b5496 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+@@ -8,6 +8,7 @@ Required properties:
+ 		"mediatek,mt2712-smi-larb"
+ 		"mediatek,mt6779-smi-larb"
+ 		"mediatek,mt7623-smi-larb", "mediatek,mt2701-smi-larb"
++		"mediatek,mt8167-smi-larb"
+ 		"mediatek,mt8173-smi-larb"
+ 		"mediatek,mt8183-smi-larb"
+ - reg : the register and size of this local arbiter.
+@@ -22,7 +23,7 @@ Required properties:
+   - "gals": the clock for GALS(Global Async Local Sync).
+   Here is the list which has this GALS: mt8183.
  
-@@ -103,6 +105,7 @@ static const char * const clk_names[] = {
- 	"hif_sel",
- 	"jpgdec",
- 	"audio",
-+	"axi_mfg",
- 	NULL,
- };
+-Required property for mt2701, mt2712, mt6779 and mt7623:
++Required property for mt2701, mt2712, mt6779, mt7623 and mt8167:
+ - mediatek,larb-id :the hardware id of this larb.
  
-@@ -911,6 +914,87 @@ static const struct scp_domain_data scp_domain_data_mt7623a[] = {
- 	},
- };
- 
-+/*
-+ * MT8167 power domain support
-+ */
-+#define PWR_STATUS_MFG_2D_MT8167	BIT(24)
-+#define PWR_STATUS_MFG_ASYNC_MT8167	BIT(25)
-+
-+static const struct scp_domain_data scp_domain_data_mt8167[] = {
-+	[MT8167_POWER_DOMAIN_DISP] = {
-+		.name = "disp",
-+		.sta_mask = PWR_STATUS_DISP,
-+		.ctl_offs = SPM_DIS_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.bus_prot_mask = MT8167_TOP_AXI_PROT_EN_MM_EMI |
-+				 MT8167_TOP_AXI_PROT_EN_MCU_MM,
-+		.clk_id = {CLK_MM},
-+		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-+	},
-+	[MT8167_POWER_DOMAIN_VDEC] = {
-+		.name = "vdec",
-+		.sta_mask = PWR_STATUS_VDEC,
-+		.ctl_offs = SPM_VDE_PWR_CON,
-+		.sram_pdn_bits = GENMASK(8, 8),
-+		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.clk_id = {CLK_MM, CLK_VDEC},
-+		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-+	},
-+	[MT8167_POWER_DOMAIN_ISP] = {
-+		.name = "isp",
-+		.sta_mask = PWR_STATUS_ISP,
-+		.ctl_offs = SPM_ISP_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(13, 12),
-+		.clk_id = {CLK_MM},
-+		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-+	},
-+	[MT8167_POWER_DOMAIN_MFG_ASYNC] = {
-+		.name = "mfg_async",
-+		.sta_mask = PWR_STATUS_MFG_ASYNC_MT8167,
-+		.ctl_offs = SPM_MFG_ASYNC_PWR_CON,
-+		.sram_pdn_bits = 0,
-+		.sram_pdn_ack_bits = 0,
-+		.bus_prot_mask = MT8167_TOP_AXI_PROT_EN_MCU_MFG |
-+				 MT8167_TOP_AXI_PROT_EN_MFG_EMI,
-+		.clk_id = {CLK_MFG, CLK_AXI_MFG},
-+	},
-+	[MT8167_POWER_DOMAIN_MFG_2D] = {
-+		.name = "mfg_2d",
-+		.sta_mask = PWR_STATUS_MFG_2D_MT8167,
-+		.ctl_offs = SPM_MFG_2D_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(15, 12),
-+		.clk_id = {CLK_NONE},
-+	},
-+	[MT8167_POWER_DOMAIN_MFG] = {
-+		.name = "mfg",
-+		.sta_mask = PWR_STATUS_MFG,
-+		.ctl_offs = SPM_MFG_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(15, 12),
-+		.clk_id = {CLK_NONE},
-+	},
-+	[MT8167_POWER_DOMAIN_CONN] = {
-+		.name = "conn",
-+		.sta_mask = PWR_STATUS_CONN,
-+		.ctl_offs = SPM_CONN_PWR_CON,
-+		.sram_pdn_bits = GENMASK(8, 8),
-+		.sram_pdn_ack_bits = 0,
-+		.bus_prot_mask = MT8167_TOP_AXI_PROT_EN_CONN_EMI |
-+				 MT8167_TOP_AXI_PROT_EN_CONN_MCU |
-+				 MT8167_TOP_AXI_PROT_EN_MCU_CONN,
-+		.clk_id = {CLK_NONE},
-+		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-+	},
-+};
-+
-+static const struct scp_subdomain scp_subdomain_mt8167[] = {
-+	{MT8167_POWER_DOMAIN_MFG_ASYNC, MT8167_POWER_DOMAIN_MFG_2D},
-+	{MT8167_POWER_DOMAIN_MFG_2D, MT8167_POWER_DOMAIN_MFG},
-+};
-+
- /*
-  * MT8173 power domain support
-  */
-@@ -1064,6 +1148,18 @@ static const struct scp_soc_data mt7623a_data = {
- 	.bus_prot_reg_update = true,
- };
- 
-+static const struct scp_soc_data mt8167_data = {
-+	.domains = scp_domain_data_mt8167,
-+	.num_domains = ARRAY_SIZE(scp_domain_data_mt8167),
-+	.subdomains = scp_subdomain_mt8167,
-+	.num_subdomains = ARRAY_SIZE(scp_subdomain_mt8167),
-+	.regs = {
-+		.pwr_sta_offs = SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-+	},
-+	.bus_prot_reg_update = true,
-+};
-+
- static const struct scp_soc_data mt8173_data = {
- 	.domains = scp_domain_data_mt8173,
- 	.num_domains = ARRAY_SIZE(scp_domain_data_mt8173),
-@@ -1096,6 +1192,9 @@ static const struct of_device_id of_scpsys_match_tbl[] = {
- 	}, {
- 		.compatible = "mediatek,mt7623a-scpsys",
- 		.data = &mt7623a_data,
-+	}, {
-+		.compatible = "mediatek,mt8167-scpsys",
-+		.data = &mt8167_data,
- 	}, {
- 		.compatible = "mediatek,mt8173-scpsys",
- 		.data = &mt8173_data,
-diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-index fd25f0148566..6ee49bf90acf 100644
---- a/include/linux/soc/mediatek/infracfg.h
-+++ b/include/linux/soc/mediatek/infracfg.h
-@@ -2,6 +2,14 @@
- #ifndef __SOC_MEDIATEK_INFRACFG_H
- #define __SOC_MEDIATEK_INFRACFG_H
- 
-+#define MT8167_TOP_AXI_PROT_EN_MM_EMI		BIT(1)
-+#define MT8167_TOP_AXI_PROT_EN_MCU_MFG		BIT(2)
-+#define MT8167_TOP_AXI_PROT_EN_CONN_EMI		BIT(4)
-+#define MT8167_TOP_AXI_PROT_EN_MFG_EMI		BIT(5)
-+#define MT8167_TOP_AXI_PROT_EN_CONN_MCU		BIT(8)
-+#define MT8167_TOP_AXI_PROT_EN_MCU_CONN		BIT(9)
-+#define MT8167_TOP_AXI_PROT_EN_MCU_MM		BIT(11)
-+
- #define MT8173_TOP_AXI_PROT_EN_MCI_M2		BIT(0)
- #define MT8173_TOP_AXI_PROT_EN_MM_M0		BIT(1)
- #define MT8173_TOP_AXI_PROT_EN_MM_M1		BIT(2)
+ Example:
 -- 
 2.28.0
 
