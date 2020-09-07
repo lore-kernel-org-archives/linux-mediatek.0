@@ -2,22 +2,22 @@ Return-Path: <SRS0=DUBy=CQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 38FFBC433E2
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 04:05:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 017EAC43461
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 04:08:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 87ACC21534
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 04:05:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A2D872137B
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 04:08:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Wdcs8uHZ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 87ACC21534
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=csie.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zmof+Ips";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="eibc2WSy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A2D872137B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -25,60 +25,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vMPrpSWO3h2X6UD1CFTgsTbGHrHMNSigWMJTljp4DDk=; b=Wdcs8uHZ4lXKYJo/Ucw+k0OYN
-	uQrndpzL2X19EmQYEhRi6LBN6wxrOlhthPWMjyqx3ZD5teg1mKGH/yuc3N+dOXAFj7gdTbSpPCV61
-	XWVCNPmZ6JyTYRrYlDWxlIp0EUmollYXGtE7P5Vhqg78AsMQUKB081AwzBju1IGi9Vk4Y7aKhIIIk
-	xoZj/f1OZqdDGGyN1PZT8dbV8aMVBjI5JZ7ljbfFSANOaCwjlDsa1UbEsHHRXT02NC31POkGyBFob
-	6BOjBJw9c0nYg34fx/I8cos23Qr3C/U3edd31QYkYikHOzCe/WhxlJdD9dmt0GhFzJ1FPNqbVRplb
-	eMLl0u6uw==;
+	 bh=RZaBKwmsAIkHq4Mp1PVEfk3BUC9WasTIw/9hEDwQLOQ=; b=zmof+IpsELub0CDc4pPoBh1HM
+	bPI+GWPGz9zWsbjnWHDs9C4uqTVvYCHtkQKUBl53S2xJsI896l3J7YCdqdeaJJjJlT9/2R8nAQjhk
+	4p16nsQHueIFjvDR4SFODXZdEETCx/D/1DNrajX53+rH0vfomxjwom6+lYmRw7bQUyXPteAkG8QSK
+	m+oNUWM64YgH4S/v/brJKEG/TcyYDDm/D+1U7g9+6ztHWEufDPJQxvaoapnYjhOzRO/JQ+jkaSzSA
+	mFdotKd13wI59FwoqOI3W68vGIVDQ1dQL7AYnM7HrDR78SeK67X38Y61ceepkOyaNYk3oYfKl6keO
+	ochcXa8Ig==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kF8P7-0007U4-VH; Mon, 07 Sep 2020 04:05:18 +0000
-Received: from mail-lf1-f68.google.com ([209.85.167.68])
+	id 1kF8S3-0007hi-G9; Mon, 07 Sep 2020 04:08:19 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kF8P3-0007TF-GW; Mon, 07 Sep 2020 04:05:15 +0000
-Received: by mail-lf1-f68.google.com with SMTP id u27so6732620lfm.13;
- Sun, 06 Sep 2020 21:05:11 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=SVTRnwHT0ZnDLhJu0EOE7eABaLeVlG6E4x1hUJwJd80=;
- b=r/33ZopUYrCCcIWutiTM/cyhjGOiWYuLBRScmNjxUiP4SSv/U3Wi7n04eEwUP2r4pf
- fyngJObxyt+sKpeE4E/0fWRWqY22NZmzhNG3wSyCzjTUHOvc2cA7U60OO+kqLm+0f7JL
- 40GzNVw9zPiRrItsAHp4mICeni1Ox1f5BgzSmh4YXwsmYDKV2qfaWikuOpsi0Cbt2gId
- LiIMN4wSSMFnmEVdjLOlwTdnZX0v11RpNo7jimFqXK17iE5BlIZCaLaTJArYSWXobdiT
- CApNvPAe+t2MIEjVfPlJh07zSejf9ckiNgF9iY9IngMhVH5/tfAmTnIx3Da/geyVpP6U
- 75hw==
-X-Gm-Message-State: AOAM533WXkeh1d05YV4F95yGpodj7J+cWJEoTk/cgqIR4NGbHdn/SbKB
- FcbmweXbLqJX7Wy9x3zakWWfEHpunnt2ByuJ
-X-Google-Smtp-Source: ABdhPJwMEpZ7jfuf4r/YgXjY0mbNK1OKTP/hB09LBD17nntsqDdGtmWMMRT+XSEYi+tt1lQfUPtpbQ==
-X-Received: by 2002:a19:942:: with SMTP id 63mr9124227lfj.23.1599451509879;
- Sun, 06 Sep 2020 21:05:09 -0700 (PDT)
-Received: from mail-lf1-f49.google.com (mail-lf1-f49.google.com.
- [209.85.167.49])
- by smtp.gmail.com with ESMTPSA id s3sm5930165ljd.44.2020.09.06.21.05.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 06 Sep 2020 21:05:09 -0700 (PDT)
-Received: by mail-lf1-f49.google.com with SMTP id y11so6783978lfl.5;
- Sun, 06 Sep 2020 21:05:07 -0700 (PDT)
-X-Received: by 2002:a2e:83cf:: with SMTP id s15mr9643337ljh.47.1599451506843; 
- Sun, 06 Sep 2020 21:05:06 -0700 (PDT)
+ id 1kF8Ry-0007gx-3V; Mon, 07 Sep 2020 04:08:16 +0000
+Received: from mail-ej1-f42.google.com (mail-ej1-f42.google.com
+ [209.85.218.42])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1521921D24;
+ Mon,  7 Sep 2020 04:08:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1599451691;
+ bh=ONkeX70fx/wV703g/+Q6baBO4TgEFwMz42jO1XVwCZo=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=eibc2WSyZR1TDb+In6hRhTRZuvGYrHfruxryvJjPIdfaVZtHHKZmmYfdMsGVM1m9h
+ tTjysyi7/D6ZC1T+4tB3Gi4jTUymclWSbJhsgr1KvaHCHDcrjlxjCgNfwg8a6ehxAW
+ s0kBkbnQivJ3xz9qtGSE/k1REiqmbnnE0bi1usVw=
+Received: by mail-ej1-f42.google.com with SMTP id j11so16408780ejk.0;
+ Sun, 06 Sep 2020 21:08:11 -0700 (PDT)
+X-Gm-Message-State: AOAM531bvoXeI4vZwaxj65Egd6PwU3Zkp2aAu4BVrppBcjITujaodlGp
+ dcJtcmmEOpn1p88QvPLna1V1wkkttC+cbdGkOjU=
+X-Google-Smtp-Source: ABdhPJxxd2BogwYi+hnmteCVzWiY87kx0dBQtNlTmTb01SAJQcu/UlZfk3j6QtUx+mA1R0RzQuwv5PUSfbz7UnXRWvU=
+X-Received: by 2002:ac2:5398:: with SMTP id g24mr2917539lfh.7.1599451688702;
+ Sun, 06 Sep 2020 21:08:08 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200903232441.2694866-1-dianders@chromium.org>
  <CAFBinCBcbEpHX7eUbznuDo6oKO_9JrOK2w+Bx1=e-bwuS609bw@mail.gmail.com>
  <CANAwSgTv2ZAvPKG2aChs8NwZL32TF+MtcaFbehQWWSf_TFXF6A@mail.gmail.com>
 In-Reply-To: <CANAwSgTv2ZAvPKG2aChs8NwZL32TF+MtcaFbehQWWSf_TFXF6A@mail.gmail.com>
-From: Chen-Yu Tsai <wens@csie.org>
-Date: Mon, 7 Sep 2020 12:04:53 +0800
-X-Gmail-Original-Message-ID: <CAGb2v66URSyd4WPkM6bJ9wTeZdT-GwS+-R5UymywNxa7HW8pfg@mail.gmail.com>
-Message-ID: <CAGb2v66URSyd4WPkM6bJ9wTeZdT-GwS+-R5UymywNxa7HW8pfg@mail.gmail.com>
+From: Chen-Yu Tsai <wens@kernel.org>
+Date: Mon, 7 Sep 2020 12:07:55 +0800
+X-Gmail-Original-Message-ID: <CAGb2v67dPaV9tP4piV9MHe9QeJAq0RyvOO3ypJ3ZBW1-ffpjKA@mail.gmail.com>
+Message-ID: <CAGb2v67dPaV9tP4piV9MHe9QeJAq0RyvOO3ypJ3ZBW1-ffpjKA@mail.gmail.com>
 Subject: Re: [PATCH 0/6] mmc: Set PROBE_PREFER_ASYNCHRONOUS for all host
  drivers
 To: Anand Moon <linux.amoon@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200907_000513_559939_2BBD3F59 
-X-CRM114-Status: GOOD (  24.58  )
+X-CRM114-CacheID: sfid-20200907_000814_348918_E1929874 
+X-CRM114-Status: GOOD (  25.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -162,6 +155,8 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+
+(Resent from kernel.org)
 
 On Mon, Sep 7, 2020 at 11:57 AM Anand Moon <linux.amoon@gmail.com> wrote:
 >
