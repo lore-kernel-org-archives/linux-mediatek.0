@@ -2,23 +2,23 @@ Return-Path: <SRS0=DUBy=CQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8709DC433E2
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 10:06:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A329C2D0A7
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 10:08:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 07CEF207C3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 10:06:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 31BC720C09
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 10:08:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UvCyNiAF";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="1NqE+sdR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 07CEF207C3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XUl4FEqN";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="GdR9hDKN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 31BC720C09
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,60 +26,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JQiC7MfzyzaWhPdgNqbc0nKD4hzeEuOfW3bxMgtg5lU=; b=UvCyNiAFi9oTr6iLM8SL5Bjps
-	3eQBpMM+33cOu43SZ4VvgAU6vT6fauivwZv/g19IBZPSjd6dGlG8G0LZzyOJ5n1OjAR9X/2vcJpAZ
-	jpMEn0bsc/7Neeh49abbHVHtcljxiwV/b3iRzR9umqBMVAyVtecV/ZoJI149FIuFgbMtEo+Gf78zP
-	kqn8arlMkDGhyowjdHaD4gxWzvVCQVXQgC+yjazp/eD7PM2o+8RRsQVOUVjPDwk/24fkKBkIvPhJC
-	Kbey/+0NkYGLUwA4YMRo7u1SNKCPY2eAzp6P8gC0jbKZPBRFiXADgaDEwFcoiPH1vwHvNdKt+xhrv
-	N0yKpP4iA==;
+	 bh=4fjO02Zgvxse1lRknLzpxfLczseBkLPtAxPZoGvNPdE=; b=XUl4FEqNXieob7yvy9Cut4rml
+	nJ8EZFIJBtTgZ3gpqeW6xyFNdctU8KCOzy2C68RRbst+diFbEyjC5RWT8f1IuJckeDYrNx+bhSkTJ
+	eALrv6IzKtiAauxNoQGEbDv0+OUk2V4vK0NIb1G/IJsDPbqKcyPj5LTebzOA7eNSAfdGxyssfCrfC
+	s7UEPtcLag0rnegrBLfmqW7lh9QsSn5w2y2W2a/NM0TKpj+hA9tKUKAYU37hAm8nQpdQSnANp8J5L
+	UNmUarjVC8CpY4yx5FuEfLhW1nsv0MzRMzkmGCC2dzayKCfeZi8txzL+D3YqU0lvbOsQH/P5UlRhQ
+	hxHHciVnw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFE2V-0008KG-V7; Mon, 07 Sep 2020 10:06:20 +0000
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
+	id 1kFE4E-0000HI-D1; Mon, 07 Sep 2020 10:08:06 +0000
+Received: from mail-ua1-x943.google.com ([2607:f8b0:4864:20::943])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFE2T-0008J8-S8
- for linux-mediatek@lists.infradead.org; Mon, 07 Sep 2020 10:06:19 +0000
-Received: by mail-io1-xd43.google.com with SMTP id u126so13348148iod.12
- for <linux-mediatek@lists.infradead.org>; Mon, 07 Sep 2020 03:06:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ id 1kFE4A-0000Ee-76
+ for linux-mediatek@lists.infradead.org; Mon, 07 Sep 2020 10:08:03 +0000
+Received: by mail-ua1-x943.google.com with SMTP id u48so4017601uau.0
+ for <linux-mediatek@lists.infradead.org>; Mon, 07 Sep 2020 03:07:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=v0OvTuxE+/iMswMQTjQb/bjlIs084TlMlRT8WNmVF+Y=;
- b=1NqE+sdR4ONCLnZ5XhFqnlHSfQVFov4iy/cT+yyxmAzy5+YCr/Ul9KigmS858zeHof
- veerpBJ8XhqPoT84DSedPKvLdYY3GqAGqRsEkjV+NU9bChBpBNA1NZNkxENzA7KPM1cJ
- YbNZSDGYeZOwNGjxpWRPNef161HXLK7nWTU8e4wLNPz62F/si1Y2ll6mGdGWppAmk1hR
- XDf6BujzOkpGItyYi/ysU1ESNG0WrA8+8+xAtGfGZlmB8cW9STc/iJZZuljVuRxIfSg+
- PhJx7H8iMDclSVWwaOTyu7KmLReNaaaD0MY9P/+s2Gt3YrLzIKH9AUN2tCQZJViElB9G
- Vc5Q==
+ :cc:content-transfer-encoding;
+ bh=QuNLltsEiIW4LCbpFyTWl1p44IkTT3QJmbdClg97dn0=;
+ b=GdR9hDKN5L9o4E+D9klMf226TdSBiyQrmIJFqTy1wvu7JgUOP5hnq9D/dbGUt34nVN
+ XTE9ZkkMZYDWJkEj8/LXyenZz3T0Irx/WXSUQIYDB4F7XGGOjeU/eP0cHxgH70gtpxoS
+ 593wZnUVUiqgZqhmNZJBvdbDOEAjelVZNg7W3uJxmMeE2W2+4ryrLED4uLWr5d2on/1Y
+ V+k0+LPGbknr9eHhBtS9n9cOKc/o9fFLWU4T/+6C9EhAuV3OtNNgAG8pjet6UXydTeg8
+ /OlJ55P8StYowRupDWz7iqCrO55GZV8SHF0Qf78K+dPX1qyWPG1Pi5uUN5Re3N+8QgpF
+ Opsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=v0OvTuxE+/iMswMQTjQb/bjlIs084TlMlRT8WNmVF+Y=;
- b=KeCDBY/+tJRexQdHa18d9MEBKsvuyyB8NMDoFe8gwTmy6iYCnjLiPs/AsKWumfz6QP
- OnkD+CkEB0U5Uq5AXwYtAqZS3L2+pE0C7TdVDaktjLRg/dMmb24GAEwrPJKE+VlTUhda
- YBuHZGGsxUgOd06BAymn705is6VKdgpPFyJH7cd05dhkjrOwFZsKRjLhJ5/Cjo447R3G
- LwQDhE/nxlLmukn+GcicLzt4ZX6EEAy3go4vS0t++P5vpEZCEvu4O0QinrvlyVITY4C+
- abAdklWoOstIl0vERCEXIuH9W1NMaV2ATlqMkOuP/Hu2bOqr/UMBBLrc5oAv3DtP9bCI
- fbTg==
-X-Gm-Message-State: AOAM5310jzsWAH4F08EcDoFLlSW+bFbIRvz52YCWKWCki6yVuHLJrFg1
- yZ9aa1mWkpMaBjIZ81Ft/2zu0Uqj9iJuO4LTZiEjTA==
-X-Google-Smtp-Source: ABdhPJw52QuX8XyBkW5w5YSCJbnGbo22v3h5joTjE50AnRXJMICHttb6i5OzXghJCZwUuJmPrBvIE2wQCbUxcbTWSzI=
-X-Received: by 2002:a5d:80d6:: with SMTP id h22mr2869058ior.154.1599473174144; 
- Mon, 07 Sep 2020 03:06:14 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=QuNLltsEiIW4LCbpFyTWl1p44IkTT3QJmbdClg97dn0=;
+ b=Q3+j2tq27/O5RX5/VtpKGfckGWbzai3Sk8n93coznL6SzGTiWpBfvqewFIVAsIXRjn
+ +ux1DwGXrGKAn1yoiEF4P6ZUXq2yfEirUFRDdCwWtNujEm8ayBP90tmaRzgo9F6WhQr6
+ thn6Uop/Ocm4gAl0A61bG1J1NI9QAyGUclLf925OXCKdNKhFIGfFFXip8uDOABpUQ+RL
+ OJMSLXkWcG8s9uCchyOr06p6Dd33ybUTMx+S/6ez2ZPTwRV+mHwNRe0Hx5F7Peo5Zl54
+ bmYnmff6cOvPOCDuKEbXP3typomAwcemqj0oz2mbiYNtqALkiEVJMluSQY5NGFz/c3qL
+ FxfA==
+X-Gm-Message-State: AOAM532py9Z1EMDy6ieWjU1v6QHqzA/n8mqZuaUzikFyXxwcNHYMdb4W
+ k+Z8UAhYVd8I7gh1QwQB3wiwp7ZfirYCXS5ajQpiJg==
+X-Google-Smtp-Source: ABdhPJylvGTfdGwP02Q+D0hgvcDauwlOQni6HAn5s7aLot2eLwS2w0Wmn0FgXWKx98K2aaDsiVxs7F4QHZfQitRnsZs=
+X-Received: by 2002:ab0:130a:: with SMTP id g10mr1522518uae.100.1599473277782; 
+ Mon, 07 Sep 2020 03:07:57 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200906151928.881209-1-fparent@baylibre.com>
- <20200906151928.881209-3-fparent@baylibre.com>
- <1599450232.27773.13.camel@mhfsdcap03>
-In-Reply-To: <1599450232.27773.13.camel@mhfsdcap03>
-From: Fabien Parent <fparent@baylibre.com>
-Date: Mon, 7 Sep 2020 12:06:03 +0200
-Message-ID: <CAOwMV_wXM9Tt-NhKQ05juvj06reD70AXUNzqWTEMeAgqcmnO0g@mail.gmail.com>
-Subject: Re: [PATCH v3 3/3] iommu/mediatek: add support for MT8167
-To: Yong Wu <yong.wu@mediatek.com>
+References: <20200904164315.24618-1-krzk@kernel.org>
+In-Reply-To: <20200904164315.24618-1-krzk@kernel.org>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Mon, 7 Sep 2020 12:07:21 +0200
+Message-ID: <CAPDyKFrzDeNqvM4cc69iCdVW7QnF=O9C=v13+o5bGBSCSzZfWA@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] mmc: host: Drop unneeded MMC dependency in Kconfig
+To: Krzysztof Kozlowski <krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200907_060617_939074_A2A432C0 
-X-CRM114-Status: GOOD (  11.37  )
+X-CRM114-CacheID: sfid-20200907_060802_319177_1E28AEC7 
+X-CRM114-Status: GOOD (  17.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,33 +89,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: DTML <devicetree@vger.kernel.org>, joro@8bytes.org,
- linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- miles.chen@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ linux-samsung-soc <linux-samsung-soc@vger.kernel.org>,
+ linux-aspeed <linux-aspeed@lists.ozlabs.org>, Arnd Bergmann <arnd@arndb.de>,
+ linux-omap <linux-omap@vger.kernel.org>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+ =?UTF-8?B?TWljaGHFgiBNaXJvc8WCYXc=?= <mirq-linux@rere.qmqm.pl>,
+ "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-arm-kernel@axis.com, Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Manjunath M B <manjumb@synopsys.com>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Prabu Thangamuthu <prabu.t@synopsys.com>,
+ "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>,
+ linux-tegra <linux-tegra@vger.kernel.org>,
+ Manuel Lauss <manuel.lauss@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>,
+ linux-stm32@st-md-mailman.stormreply.com,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> > +static const struct mtk_iommu_plat_data mt8167_data = {
-> > +     .m4u_plat     = M4U_MT8167,
-> > +     .flags        = HAS_4GB_MODE | RESET_AXI | HAS_LEGACY_IVRP_PADDR,
->
-> The 4GB mode flow was improved at[1] which has just been applied.
->
-> If you add 4gb_mode flag but don't have "mt8167-infracfg", the probe may
-> be failed.
-
-Looking back at the datasheet I don't think HAS_4GB_MODE should have
-been enabled for MT8167 anyway. I just removed it and retested the
-patch. I will fix it in v4. Thanks
-
-> [1]
-> https://lore.kernel.org/linux-iommu/20200904112117.GC16609@8bytes.org/T/#m613e9926735d07ad004fddbbcedaa50b5afacca1
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gRnJpLCA0IFNlcCAyMDIwIGF0IDE4OjQzLCBLcnp5c3p0b2YgS296bG93c2tpIDxrcnprQGtl
+cm5lbC5vcmc+IHdyb3RlOgo+Cj4gQWxsIGVudHJpZXMgaW4gS2NvbmZpZyBhcmUgYWxyZWFkeSBw
+YXJ0IG9mICJpZiBNTUMiLCBzbyB0aGVyZSBpcyBubyBuZWVkCj4gZm9yIGFkZGl0aW9uYWwgZGVw
+ZW5kZW5jeSBvbiBNTUMuCj4KPiBTdWdnZXN0ZWQtYnk6IE1pY2hhxYIgTWlyb3PFgmF3IDxtaXJx
+LWxpbnV4QHJlcmUucW1xbS5wbD4KPiBTaWduZWQtb2ZmLWJ5OiBLcnp5c3p0b2YgS296bG93c2tp
+IDxrcnprQGtlcm5lbC5vcmc+CgpBcHBsaWVkIGZvciBuZXh0LCB0aGFua3MhCgpLaW5kIHJlZ2Fy
+ZHMKVWZmZQoKCj4KPiAtLS0KPgo+IENoYW5nZXMgc2luY2UgdjE6Cj4gMS4gTmV3IHBhdGNoCj4g
+LS0tCj4gIGRyaXZlcnMvbW1jL2hvc3QvS2NvbmZpZyB8IDQgKystLQo+ICAxIGZpbGUgY2hhbmdl
+ZCwgMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvbW1jL2hvc3QvS2NvbmZpZyBiL2RyaXZlcnMvbW1jL2hvc3QvS2NvbmZpZwo+IGluZGV4IGI5
+NWY3OWY1MzM5NS4uZWVhMDFmZGUwNTkxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbW1jL2hvc3Qv
+S2NvbmZpZwo+ICsrKyBiL2RyaXZlcnMvbW1jL2hvc3QvS2NvbmZpZwo+IEBAIC00MjIsNyArNDIy
+LDcgQEAgY29uZmlnIE1NQ19TREhDSV9JUFJPQwo+Cj4gIGNvbmZpZyBNTUNfTUVTT05fR1gKPiAg
+ICAgICAgIHRyaXN0YXRlICJBbWxvZ2ljIFM5MDUvR1gqL0FYRyBTRC9NTUMgSG9zdCBDb250cm9s
+bGVyIHN1cHBvcnQiCj4gLSAgICAgICBkZXBlbmRzIG9uIEFSQ0hfTUVTT04gJiYgTU1DCj4gKyAg
+ICAgICBkZXBlbmRzIG9uIEFSQ0hfTUVTT04KPiAgICAgICAgIGhlbHAKPiAgICAgICAgICAgVGhp
+cyBzZWxlY3RzIHN1cHBvcnQgZm9yIHRoZSBBbWxvZ2ljIFNEL01NQyBIb3N0IENvbnRyb2xsZXIK
+PiAgICAgICAgICAgZm91bmQgb24gdGhlIFM5MDUvR1gqL0FYRyBmYW1pbHkgb2YgU29Dcy4gIFRo
+aXMgY29udHJvbGxlciBpcwo+IEBAIC00NTgsNyArNDU4LDcgQEAgY29uZmlnIE1NQ19NRVNPTl9N
+WF9TRElPCj4KPiAgY29uZmlnIE1NQ19NT1hBUlQKPiAgICAgICAgIHRyaXN0YXRlICJNT1hBUlQg
+U0QvTU1DIEhvc3QgQ29udHJvbGxlciBzdXBwb3J0Igo+IC0gICAgICAgZGVwZW5kcyBvbiBBUkNI
+X01PWEFSVCAmJiBNTUMKPiArICAgICAgIGRlcGVuZHMgb24gQVJDSF9NT1hBUlQKPiAgICAgICAg
+IGhlbHAKPiAgICAgICAgICAgVGhpcyBzZWxlY3RzIHN1cHBvcnQgZm9yIHRoZSBNT1hBUlQgU0Qv
+TU1DIEhvc3QgQ29udHJvbGxlci4KPiAgICAgICAgICAgTU9YQSBwcm92aWRlcyBvbmUgbXVsdGkt
+ZnVuY3Rpb25hbCBjYXJkIHJlYWRlciB3aGljaCBjYW4KPiAtLQo+IDIuMTcuMQo+CgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBt
+YWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
