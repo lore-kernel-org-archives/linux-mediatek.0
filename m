@@ -2,23 +2,23 @@ Return-Path: <SRS0=DUBy=CQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8AF58C433E2
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 13:15:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7032FC43461
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 13:37:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2DFE0207C3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 13:15:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D45C5215A4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 13:37:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UlMDRTTi";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Tr/UEPlB"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2DFE0207C3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VA9Jb0qH";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="hEXKQqhJ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D45C5215A4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,71 +26,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ZdTIkMpVu91qDLz2zdX3waZC4QzMUD+pSuYHPF8kdYY=; b=UlMDRTTiYPMs6Yy0GkOucjO4I
-	kuv54YFtgRG2C5Cr99zzwvGD9GeO5SOAvD6PZgoGJ/mdmyd6sYXMBJPzZwwIbsg6/gVgPl4MK8YH3
-	9xBuzGdSe/k8lC/LRqLkXyocNXITP/u0geGZ1KghBrLiTwWNDpLReewVqsBLmZBO5p4P2G182xbBo
-	jyUmFgcRacSxVehlJ2U64ftAF0Z8jWQHif8+MFWQuJLs+QcRY3ykbYPfqZH3OqwdPSuZymqgDxJfz
-	IFYPFJfNZwnVABK+ka3ohdFef1KNLy5BVBvoi5wHXx2d9KtlnM9Q5kxd1Xt5u8gp/y4z4MeDLhr3N
-	QZ8C03uBQ==;
+	 bh=YviOzMKnn3tJNqQU4s+mWcMh/93ra4H1oD7EaZ+TeyY=; b=VA9Jb0qHJRCuljOudP2+M2ioq
+	k8ewHJuYX8U/eaPvYZiotoh/oPRJ6373zvrgRQNDldQroOfe6pe4oZU7HEzr2LR9cbgnnn+9EveBJ
+	BsiMMqBhp9FZrtzJ2aWxb3MTOPytyN/sfrRECcWQfOWPWfWCujcOvZj6zN9N3WzVpm9pfAUYKgWAc
+	thw44r78PCC8Sp+RtsZEUOZ1M5ltgZcHRaqTm/n4DGsylvqmLRKyfVWAglZpEyKPuMuH8yo7+V4qd
+	/Eetu8hDlfWKKtF83v6QbbeWQOnJecNlD+WN11cgTqGccQF5FuB8GW8kaValub2+Ya5XFtTOVkv4G
+	A3i0FxbVg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFGzg-0007Jl-Q7; Mon, 07 Sep 2020 13:15:36 +0000
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641])
+	id 1kFHKs-0003DE-Ut; Mon, 07 Sep 2020 13:37:30 +0000
+Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFGzc-0007IC-E6
- for linux-mediatek@lists.infradead.org; Mon, 07 Sep 2020 13:15:33 +0000
-Received: by mail-ej1-x641.google.com with SMTP id o8so4982781ejb.10
- for <linux-mediatek@lists.infradead.org>; Mon, 07 Sep 2020 06:15:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ id 1kFHKp-0003C2-Pl
+ for linux-mediatek@lists.infradead.org; Mon, 07 Sep 2020 13:37:28 +0000
+Received: by mail-il1-x143.google.com with SMTP id p13so12533468ils.3
+ for <linux-mediatek@lists.infradead.org>; Mon, 07 Sep 2020 06:37:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gw9lL2TvHDntCUhAnmDZSsRD6P570jc9dLDcigHjLqo=;
- b=Tr/UEPlBz2fsDMLmFd0VCTGHcFQoc3bi3jh3lDW53ENl1TrQGuLEKeEciByE6ZA2WD
- XSmZEXdGl7UtzQnOv0mi030b/ZpXsd3jp6njzQGgvSUCvjgszzE07oO7iR4juvN86L83
- BBDqz5v7eDZQXHBAJ4NVL4rmU5c4uIBCozDxg=
+ :cc; bh=PZpEmEr02MkgLosT7vPqFBX5vy+59cEEz8jZk2wlsPE=;
+ b=hEXKQqhJ9NmSx4YCpKMr1NwW45bcnwzOkhMBL8DjeyYLJm78qmx6PfgWclUzVWmb2h
+ fxaV6Sz2P9KxPrZSNITJVINtrvSAgSVSURAAgX1ASuRkdCqb7E91FrXanXeSPkc3ujAX
+ +FFNNl0haD5QGCZw+GF/SsD6+N2HO6LCjCJF+VFuY1mxeUJW36pdkCIztgxwx60mVlQc
+ yje66pdfUrcr4zkkHKkQoPkqLGdiP14j1niS7UWlfzNhCz3KJsftBXf8hOEiYD7uSXY9
+ mrAxej+Mmxa5Rq3IupJGnTLeDACHso2O2gLPL+GCXy5RjeQSrH+CAHW5xCBbD046Gi6G
+ Fe4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=gw9lL2TvHDntCUhAnmDZSsRD6P570jc9dLDcigHjLqo=;
- b=CLd9e1dX+ZIoEyhcBw5k3iVqehXSb6rLO3/NDc2pfVaDe1q+vrAEbUa8O4zBcfRjpH
- ahZG3KXQDzgnp+FSFa2atIsQQwa34BX/IwAjXffbVUHEK0oA5eo+WCJqVNmFQy00sAtA
- R3ZeTyZa9fDxl2xvPnM3zX5Ywqi1dcluhfjh41uB06lyl3QXONDau8ltY9vC70nYuLH/
- L1IqfvoVZYn48XV6+JVt6FybTJli7tX8KUKwPc5bqCen0CsZxxDSEEtCbBRCw7Klj9Cj
- k83S9kFg6icpZk/L6y6cxRdG4f246zHug2jJqkyAT2oWtlJmhYdMAf+e0MKPqXWDltXD
- AEXw==
-X-Gm-Message-State: AOAM533xNnV8IWBIqNn3nQs71u9ATW12cgJ3carA6rqPG1ef8zS1d9Sa
- 2k/yHUHkJOtJ9HuL+LHOKpRxTfLjmEUIbw==
-X-Google-Smtp-Source: ABdhPJyUwKHshM3Yt6hlFGYyTMztoUG7AoIOK3hvJlyhA+8ja/jWL14KilNRNweaEC8UYEBRxoN6tQ==
-X-Received: by 2002:a17:906:8690:: with SMTP id
- g16mr20552336ejx.187.1599484530669; 
- Mon, 07 Sep 2020 06:15:30 -0700 (PDT)
-Received: from mail-wm1-f52.google.com (mail-wm1-f52.google.com.
- [209.85.128.52])
- by smtp.gmail.com with ESMTPSA id w14sm15302255ejn.36.2020.09.07.06.15.29
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 07 Sep 2020 06:15:29 -0700 (PDT)
-Received: by mail-wm1-f52.google.com with SMTP id e11so12312773wme.0
- for <linux-mediatek@lists.infradead.org>; Mon, 07 Sep 2020 06:15:29 -0700 (PDT)
-X-Received: by 2002:a1c:a5c8:: with SMTP id
- o191mr21337268wme.127.1599484528763; 
- Mon, 07 Sep 2020 06:15:28 -0700 (PDT)
+ bh=PZpEmEr02MkgLosT7vPqFBX5vy+59cEEz8jZk2wlsPE=;
+ b=BUWYgpE7kH7sGiEHQTE2KouDo2iR12PSofqqMbS1D01zJOfioNE0APORZ1CuX1TIyq
+ Oo/8mJpUCVj2W33yTkN1/wzv0edqGwN8V5egvmj8xGhtjYWIFu4xnaPYQ44TIjApclh/
+ 2MfEItP07kpC7apdPfdPpxSf2jNoLV/tws8xF0+ORI7VXjqeN6syKQPmltAQs0iayABW
+ KqOjos+aKfOgDYqiQ666BtwFJuDyBi+FH6UaIqoQORCxDXwmimJtLgUjkT3wzVWliGtY
+ 1c4t5jPZ1C5jEk+yl4znIUT8rPWsB8Qv9bU9K36C+FZiP2X5NnNYq2uzt43s4bxhYHOk
+ rCWw==
+X-Gm-Message-State: AOAM5319UB/FxIPQb+FtmuPOzcV6Gh4EjGkCoqk9EXn23Sq2itzvPkTN
+ 1FgqAF1wQCMIXnfq8jOeOwvKopo5ilWfJIOf4vLzHg==
+X-Google-Smtp-Source: ABdhPJyBenIIH2d8wv7qBpX9DpeJamhA8s78sQ62WqhL82+W2hjTg5gPuJzXToQlghF4RNr5s/7pUi3tIrgzsCAuZGI=
+X-Received: by 2002:a05:6e02:c26:: with SMTP id
+ q6mr19152124ilg.235.1599485843333; 
+ Mon, 07 Sep 2020 06:37:23 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200902120122.24456-1-dongchun.zhu@mediatek.com>
- <20200902120122.24456-3-dongchun.zhu@mediatek.com>
- <20200902134421.GN1891694@smile.fi.intel.com>
- <1599225767.4733.64.camel@mhfsdcap03>
- <CAHp75Ve8WNuCuRmFcXaZHLjHMGfsvM=69ii5g4H+NYud6N95eQ@mail.gmail.com>
-In-Reply-To: <CAHp75Ve8WNuCuRmFcXaZHLjHMGfsvM=69ii5g4H+NYud6N95eQ@mail.gmail.com>
-From: Tomasz Figa <tfiga@chromium.org>
-Date: Mon, 7 Sep 2020 15:15:17 +0200
-X-Gmail-Original-Message-ID: <CAAFQd5BH4NZrhg=abqc=P9Uzf+t4Davn4SP9i3QktS4Q05WtzA@mail.gmail.com>
-Message-ID: <CAAFQd5BH4NZrhg=abqc=P9Uzf+t4Davn4SP9i3QktS4Q05WtzA@mail.gmail.com>
-Subject: Re: [PATCH v14 2/2] media: i2c: Add OV02A10 image sensor driver
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
+References: <1597644455-8216-1-git-send-email-jiaxin.yu@mediatek.com>
+ <1597644455-8216-3-git-send-email-jiaxin.yu@mediatek.com>
+ <CA+Px+wXSbGLb+AZnF8ETRycRUVjqk4xacm5DH6MzuMw0vh6Wzg@mail.gmail.com>
+ <CA+Px+wUMXoSL6w0wBduE7obJRWgCteeT8=_=U=8LR34JKTTGZA@mail.gmail.com>
+ <20200819103730.GB5441@sirena.org.uk>
+ <CA+Px+wUV89KO8JJd3+HpOrgFRSc7sdg-DBW44C31262Qx9NzVg@mail.gmail.com>
+ <20200819194005.GC38371@sirena.org.uk>
+In-Reply-To: <20200819194005.GC38371@sirena.org.uk>
+From: Tzung-Bi Shih <tzungbi@google.com>
+Date: Mon, 7 Sep 2020 21:37:12 +0800
+Message-ID: <CA+Px+wWMH6iUzFq0g4BFC5qA993r9UBobmNAyS2ie+xDwci-yg@mail.gmail.com>
+Subject: Re: [PATCH v5 2/2] dt-bindings: mediatek: mt6359: add codec document
+To: Mark Brown <broonie@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200907_091532_485198_27A91323 
-X-CRM114-Status: GOOD (  25.51  )
+X-CRM114-CacheID: sfid-20200907_093727_847317_00E9C030 
+X-CRM114-Status: GOOD (  15.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,90 +95,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Nicolas Boichat <drinkcat@chromium.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- devicetree <devicetree@vger.kernel.org>,
- =?UTF-8?B?U2hlbmduYW4gV2FuZyAo546L5Zyj55S3KQ==?= <shengnan.wang@mediatek.com>,
- Louis Kuo <louis.kuo@mediatek.com>, Sj Huang <sj.huang@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Dongchun Zhu <dongchun.zhu@mediatek.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Bingbu Cao <bingbu.cao@intel.com>,
- matrix.zhu@aliyun.com, Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: ALSA development <alsa-devel@alsa-project.org>, howie.huang@mediatek.com,
+ Takashi Iwai <tiwai@suse.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ shane.chien@mediatek.com, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, eason.yen@mediatek.com,
+ Matthias Brugger <matthias.bgg@gmail.com>, bicycle.tsai@mediatek.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 4, 2020 at 4:06 PM Andy Shevchenko
-<andy.shevchenko@gmail.com> wrote:
+On Thu, Aug 20, 2020 at 3:40 AM Mark Brown <broonie@kernel.org> wrote:
 >
-> On Fri, Sep 4, 2020 at 4:48 PM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
-> > On Wed, 2020-09-02 at 16:44 +0300, Andy Shevchenko wrote:
-> > > On Wed, Sep 02, 2020 at 08:01:22PM +0800, Dongchun Zhu wrote:
+> On Wed, Aug 19, 2020 at 11:42:27PM +0800, Tzung-Bi Shih wrote:
 >
-> ...
+> > But I found struct mfd_cell also contains member .of_compatible.  What
+> > is the difference if we use compatible string (as is) for this device
+> > instead of falling back to use device name to match?
 >
-> > > > +   struct i2c_client *client = to_i2c_client(dev);
-> > > > +   struct v4l2_subdev *sd = i2c_get_clientdata(client);
-> > >
-> > >       struct v4l2_subdev *sd = dev_get_drvdata(dev);
-> > >
-> > > Same for the rest similar cases.
-> >
-> > We've discussed the issue in DW9768 V2.
-> >
-> > For V4L2 sub-device drivers, dev_get_drvdata() shouldn't be used
-> > directly.
-> >
-> > More details please check the Google Issue:
-> > https://partnerissuetracker.corp.google.com/issues/147957975
->
-> This is not a public link. Can you remind me what was the issue?
->
+> That's for binding the MFD subdevice to an OF node, you don't need to do
+> that for a device like this - you can just use the of_node of the parent
+> to get at the properties.
 
-v4l2-subdev framework uses dev drvdata for its own purposes. However,
-that problem was about the driver setting its own drvdata and having
-it overridden by the framework. There is nothing wrong in using
-dev_get_drvdata(), assuming the correct type is known and here it's
-guaranteed to be v4l2_subdev for the v4l2-subdev framework.
+There is an issue we overlooked.  In sound/soc/codecs/mt6359.c,
+mt6359_parse_dt() cannot read the DT properties
+(https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git/tree/sound/soc/codecs/mt6359.c?h=for-next#n2640).
 
-In fact i2c_get_clientdata() [1] is just a wrapper that calls
-dev_get_drvdata(&client->dev).
+The original DTS is as following:
+pmic {
+  compatible = "mediatek,mt6359";
 
-[1] https://elixir.bootlin.com/linux/v5.9-rc3/source/include/linux/i2c.h#L351
+  mt6359codec: mt6359codec {
+    compatible = "mediatek,mt6359-sound";  (1)
+    mediatek,dmic-mode = <1>;
+    mediatek,mic-type-0 = <2>;
+  }
+}
+After removing the line at (1), mt6359_parse_dt() cannot read the DT properties.
 
-> ...
->
-> > > > +   if (!bus_cfg.nr_of_link_frequencies) {
-> > > > +           dev_err(dev, "no link frequencies defined\n");
-> > > > +           ret = -EINVAL;
-> > > > +           goto check_hwcfg_error;
-> > > > +   }
-> > >
-> > > If it's 0, the below will break on 'if (j == 0)' with slightly different but
-> > > informative enough message. What do you keep above check for?
-> >
-> > I still prefer to the original version.
-> > If 'bus_cfg.nr_of_link_frequencies' is 0, shouldn't we directly return
-> > error?
->
-> But that will happen anyway. I will leave this to Sakari and
-> maintainers to decide.
->
+The PMIC drivers/mfd/mt6397-core.c:
+- "mediatek,mt6359"
+- has the struct mfd_cell of mt6359-sound
+- adds all mfd_cells via devm_mfd_add_devices().
 
-I agree with Andy on this. The check is redundant. In fact, the later
-error message is more meaningful, because it at least suggests a
-frequency that must be supported, while the earlier one only states
-the fact.
+The audio codec sound/soc/codecs/mt6359.c:
+- "mediatek,mt6359-sound"
 
-Best regards,
-Tomasz
+
+Here are a few options we can come out with.
+1. adds back the compatible string in the DTS
+2. gets of_node of parent in mt6359.c, and iterates all children nodes
+to get the desired properties
+3. parses all children nodes in the PMIC driver, and put them into
+either platform_data or device properties
+(https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git/tree/include/linux/mfd/core.h?h=for-next#n77)
+- The PMIC is common for several sub-devices.  It makes less sense to
+handle subdevice specific logic in the common code.
+4. others
+
+Could you share with us what would you suggest for fixing the issue?
 
 _______________________________________________
 Linux-mediatek mailing list
