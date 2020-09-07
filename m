@@ -2,83 +2,90 @@ Return-Path: <SRS0=DUBy=CQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 482B3C2BB84
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 10:08:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 16E1FC43461
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 10:17:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C62B5207C3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 10:08:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8B906207C3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 10:17:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZsRQVesX";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="O2L0eLGd"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C62B5207C3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TjvXV98P";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="i4VYynak"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8B906207C3
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qodO09WJl42hJR1QlDNs9fW6cxF5H5lWpNb/1Lg2GKg=; b=ZsRQVesXzoN9Q/lh/CYBr47ZQ
-	ve5zMNb5PNz5IhEyIdbXkQWe3s4jbwcUH4Yq0YSUS69fGUrr7UTSrKoWjZaeulyIA44PHJ8mk3Usk
-	FYQE1PRXCPNf+TsSiGCb2cjlZCut53zyaroXBnbiGDk7J6uJQYI/uoRFYRdHa0yMszX+5VtPL632X
-	Wnkm/2Pcylc8YVEe8TD99Ml5BLYFNM/PpYKdJ9jq5WjsYWKs+Z7ZI6V1Q7juxP5ODXqA3oZvTwSOw
-	oVpkC5uhSwtCj5z++Cd625XG8DS5je0rYWo0+aGeNFYx0PZH43P0y7aDpwIO9q8eZ6+5VCi5B4rWl
-	kYQw0Qegg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=d+jjLrXRuYEzOMPaB7zgLl321/mPsxWjvQLeie54Pp8=; b=TjvXV98PBczknnyjnFozdNIHxW
+	S7/xctVsHGbvLNVfSJ0wNDzDTqiqFHGZWmRKirOzXz9SAoxB9fJcoGNB2WN8eXssBWkQhz8j6nSNX
+	kZQG2+2HMo9rUKUxdCWRmhHWXHrGhsu0AgjSj6XN0fpGT6SertZlzW3E6LSWsolX/og4dIDwSTWj3
+	N9lF65LtDDmMeqwnUyczDnBG2I61cld64YXG1k2shZIMSk1Hvxz5dU0KCwP6taUYUwgHZ4kZnjRZo
+	/Ga+p13oyKXnvZ52ABaaV/uNVVArRCKLMDBm9ftmnnlDwIxeFQrnpj9t4lG5K58Sp+48fnbFlfziw
+	7s2Sr5zg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFE4M-0000Lb-CH; Mon, 07 Sep 2020 10:08:14 +0000
-Received: from mail-vs1-xe43.google.com ([2607:f8b0:4864:20::e43])
+	id 1kFECs-00027l-WD; Mon, 07 Sep 2020 10:17:03 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFE4H-0000Ht-Cj
- for linux-mediatek@lists.infradead.org; Mon, 07 Sep 2020 10:08:11 +0000
-Received: by mail-vs1-xe43.google.com with SMTP id a16so7050118vsp.12
- for <linux-mediatek@lists.infradead.org>; Mon, 07 Sep 2020 03:08:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=dZ0cXtIu18O1k22F/ZDQa/bXyptLZb81gkafcnjYNcM=;
- b=O2L0eLGdR+6+ZhRzQIz42SKnDGT0lu7O6LKXrLLcRyWaY3A4BOwdgSFgeWg0bN/Efh
- Fak+f85L/g4Qpl1UXC9ta/tPAic75s2ru0IsLhvDD2XT0lreXQnG2ksFAt+N7DJC4PPi
- wFXZ9JNFr9qbD8MbzUBRhihO6wvFInG8xlAksZhYEBTIuKx37atFH1d1LsgK4GPU86nj
- ntwGoA9ZTlttMtr4Shq+5qxC2Je3wJUNjtyK4S35317lToJbFRdKk5QfAkZfAFYxeGNP
- dLMfjTTk1zo1FLQYxPqUOg6XydIgz4lUKW6utGB7GnMK2FNEU3y6QkiZCiXYZSJ4NHbq
- cTkg==
+ id 1kFECo-00025Z-2c
+ for linux-mediatek@lists.infradead.org; Mon, 07 Sep 2020 10:16:59 +0000
+Received: by mail-wr1-x444.google.com with SMTP id z1so15241354wrt.3
+ for <linux-mediatek@lists.infradead.org>; Mon, 07 Sep 2020 03:16:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=o7KIQGaZLRrmrAAlxdI4JNMVSiQlEJ8fSUoBN8I+Xf8=;
+ b=i4VYynakNDb2WI/pIy79r9zqh8yP1EVq+qeDo4qGHXp6XQgH1ROgPsIkGIWc1nFutG
+ 5jepqFgTB+vcAG3t2zeStqop0UdEX6MXpv3tB4Cj5b2RssOnT5VPAs1aaE0/iAPESeiM
+ OtPy1xSO8kcCtXB6IN5xY34elUra0SQkPrXuB2zC/spDCmucT9x7TD8xqwMmk6SaCJ49
+ ml7kphiRwIc4RFi1AROi2GqTNj5g5K9jB4exHnQ0wfWRrKFdDqtGIJrO8dydH53ntpFX
+ aY5rfeEj8/CF7dhqCYZaECerEPGZi5FMVpZheuA3v2emjVRQOMpBu3njhrdBDCRBPeVt
+ O/4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=dZ0cXtIu18O1k22F/ZDQa/bXyptLZb81gkafcnjYNcM=;
- b=AoucIDMBfqTeJYP1EjT0t73iM3UjfNZQHEo67S7fopJWaZcDpjyoQfJsQVvNMMoPdo
- zQmbMEpg9dWirCcP5bDrYLB20J9uZEHkIJvsaR4wmXsNE6t3dft93NIEsrX44DJHP4VX
- gsobvaauMZpuC1vzLsNHhfYdQBv5Clmr+Xgv2kXm3/gHTtMnHLZ04cg3pDZq0FbESdCo
- Iy86q/ghDOCXvQmYfat8RICoDYt/2jE8z/HCvTK67bgdaCb0GREWsEJ/WE4cZBMqanwR
- lYh1QeZSudiYq96qWSRr/mm/Z4VYh07svLu2pZnV3BYApAeVKm+4TubfQnD7CXBJeWXC
- HnzQ==
-X-Gm-Message-State: AOAM532FE1oLsFzfAcmwCjmidkJLKiSwGJ9OzZyQ3eShVTCCzJeZW/kO
- pUMxPkRy0ZvmJfo3Zq/OPAxlYisX0HhYJFs3bl8EHA==
-X-Google-Smtp-Source: ABdhPJzK8imxVzFICBf5slUvnoT+nIGcFmxhDDZ+N5lgeyXxY/MWgnT4W+c7RvwPtr/PAV7TEjJg1KFBqInVadg+qOY=
-X-Received: by 2002:a67:308c:: with SMTP id w134mr10855802vsw.8.1599473287226; 
- Mon, 07 Sep 2020 03:08:07 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=o7KIQGaZLRrmrAAlxdI4JNMVSiQlEJ8fSUoBN8I+Xf8=;
+ b=UGrD5pBhGrUPFNDWd0C86zc4q4CQb6BNZWKFwA2Pkezu8qzM6Oe3F3KdeKtBEzQnGS
+ 9sj8RsapaZp2USV4PH1/+0QKOYw0KNMKy20hUqywr0wDRLpTIeaGRa28XdArtJu81chy
+ iRe75b6oORM7V09RfRixLQS3FVXVBKclAvMkBLR61TqfYJZe3QZLUTVAlwRwIFBWvSY4
+ pqkMQM3Ggofjedf+TRGdj44FE600UF2n8UqIICJbzZ5UOEdcAng5yQyUVjHi2B3r5GmN
+ JSmtr0V1/Gyzb6EZXFpoN1QPGczdB/tiM5HdXSk26mIpoLNlDvWfezlpDtwD3G559IC/
+ iEXQ==
+X-Gm-Message-State: AOAM5306MqC/rhTjK9OJaDvRtuctEPkvgmvu2YuZKN/lvpGW9p1A1kHy
+ 3LjIGTBKCByN+/0WRyMdubOrZw==
+X-Google-Smtp-Source: ABdhPJzoP9v7yuMPfMOlA8vMx95R4j+MIfrbjA33m48SJ7NXSflBVbFFQtTensuBMDC6CFNSOjR9aQ==
+X-Received: by 2002:adf:f4c6:: with SMTP id h6mr20427607wrp.310.1599473816656; 
+ Mon, 07 Sep 2020 03:16:56 -0700 (PDT)
+Received: from localhost.localdomain (122.105.23.93.rev.sfr.net.
+ [93.23.105.122])
+ by smtp.gmail.com with ESMTPSA id j7sm28728689wrw.35.2020.09.07.03.16.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 07 Sep 2020 03:16:56 -0700 (PDT)
+From: Fabien Parent <fparent@baylibre.com>
+To: iommu@lists.linux-foundation.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH v4 1/3] dt-bindings: iommu: Add binding for MediaTek MT8167
+ IOMMU
+Date: Mon,  7 Sep 2020 12:16:47 +0200
+Message-Id: <20200907101649.1573134-1-fparent@baylibre.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-References: <20200904164315.24618-1-krzk@kernel.org>
- <20200904164315.24618-2-krzk@kernel.org>
-In-Reply-To: <20200904164315.24618-2-krzk@kernel.org>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 7 Sep 2020 12:07:30 +0200
-Message-ID: <CAPDyKFo2Kqcpjb7QmsNgyD_kji2vXt3G2SqdDp9DUnvotKyojA@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] mmc: host: Enable compile testing of multiple
- drivers
-To: Krzysztof Kozlowski <krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200907_060809_491534_F5E2DDC0 
-X-CRM114-Status: GOOD (  21.25  )
+X-CRM114-CacheID: sfid-20200907_061658_140285_2C133568 
+X-CRM114-Status: GOOD (  14.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,234 +97,113 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
- linux-samsung-soc <linux-samsung-soc@vger.kernel.org>,
- linux-aspeed <linux-aspeed@lists.ozlabs.org>, Arnd Bergmann <arnd@arndb.de>,
- linux-omap <linux-omap@vger.kernel.org>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- =?UTF-8?B?TWljaGHFgiBNaXJvc8WCYXc=?= <mirq-linux@rere.qmqm.pl>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-arm-kernel@axis.com, Nicolas Ferre <nicolas.ferre@microchip.com>,
- Manjunath M B <manjumb@synopsys.com>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Prabu Thangamuthu <prabu.t@synopsys.com>,
- "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>,
- linux-tegra <linux-tegra@vger.kernel.org>,
- Manuel Lauss <manuel.lauss@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>,
- linux-stm32@st-md-mailman.stormreply.com,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: Rob Herring <robh@kernel.org>, joro@8bytes.org,
+ Fabien Parent <fparent@baylibre.com>, miles.chen@mediatek.com,
+ robh+dt@kernel.org, matthias.bgg@gmail.com, yong.wu@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 4 Sep 2020 at 18:43, Krzysztof Kozlowski <krzk@kernel.org> wrote:
->
-> Multiple MMC host controller driver can be compile tested as they do not
-> depend on architecture specific headers.
->
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+This commit adds IOMMU binding documentation and larb port definitions
+for the MT8167 SoC.
 
-I tried to apply this, but there was a conflict around the SDHCI_S3C.
-Can you please rebase.
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
 
-Kind regards
-Uffe
+V4:
+	* Added path to mt8167 larb header file
+	* Added Honghui Zhang in copyright header
+V3: Added mt8167-larb-port.h file for iommu port definitions
+V2: no change
 
+---
+ .../bindings/iommu/mediatek,iommu.txt         |  2 +
+ include/dt-bindings/memory/mt8167-larb-port.h | 51 +++++++++++++++++++
+ 2 files changed, 53 insertions(+)
+ create mode 100644 include/dt-bindings/memory/mt8167-larb-port.h
 
->
-> ---
->
-> Changes since v1:
-> 1. Add COMMON_CLK dependency to MESON_GX to fix errors like:
->    ERROR: modpost: "devm_clk_register" [drivers/mmc/host/meson-gx-mmc.ko] undefined!
-> ---
->  drivers/mmc/host/Kconfig | 41 +++++++++++++++++++++-------------------
->  1 file changed, 22 insertions(+), 19 deletions(-)
->
-> diff --git a/drivers/mmc/host/Kconfig b/drivers/mmc/host/Kconfig
-> index eea01fde0591..93db789cf8ec 100644
-> --- a/drivers/mmc/host/Kconfig
-> +++ b/drivers/mmc/host/Kconfig
-> @@ -178,7 +178,7 @@ config MMC_SDHCI_OF_AT91
->  config MMC_SDHCI_OF_ESDHC
->         tristate "SDHCI OF support for the Freescale eSDHC controller"
->         depends on MMC_SDHCI_PLTFM
-> -       depends on PPC || ARCH_MXC || ARCH_LAYERSCAPE
-> +       depends on PPC || ARCH_MXC || ARCH_LAYERSCAPE || COMPILE_TEST
->         select MMC_SDHCI_IO_ACCESSORS
->         select FSL_GUTS
->         help
-> @@ -216,7 +216,7 @@ config MMC_SDHCI_OF_DWCMSHC
->  config MMC_SDHCI_OF_SPARX5
->         tristate "SDHCI OF support for the MCHP Sparx5 SoC"
->         depends on MMC_SDHCI_PLTFM
-> -       depends on ARCH_SPARX5
-> +       depends on ARCH_SPARX5 || COMPILE_TEST
->         help
->           This selects the Secure Digital Host Controller Interface (SDHCI)
->           found in the MCHP Sparx5 SoC.
-> @@ -238,7 +238,7 @@ config MMC_SDHCI_CADENCE
->
->  config MMC_SDHCI_CNS3XXX
->         tristate "SDHCI support on the Cavium Networks CNS3xxx SoC"
-> -       depends on ARCH_CNS3XXX
-> +       depends on ARCH_CNS3XXX || COMPILE_TEST
->         depends on MMC_SDHCI_PLTFM
->         help
->           This selects the SDHCI support for CNS3xxx System-on-Chip devices.
-> @@ -262,7 +262,7 @@ config MMC_SDHCI_ESDHC_MCF
->
->  config MMC_SDHCI_ESDHC_IMX
->         tristate "SDHCI support for the Freescale eSDHC/uSDHC i.MX controller"
-> -       depends on ARCH_MXC
-> +       depends on ARCH_MXC || COMPILE_TEST
->         depends on MMC_SDHCI_PLTFM
->         select MMC_SDHCI_IO_ACCESSORS
->         select MMC_CQHCI
-> @@ -276,7 +276,7 @@ config MMC_SDHCI_ESDHC_IMX
->
->  config MMC_SDHCI_DOVE
->         tristate "SDHCI support on Marvell's Dove SoC"
-> -       depends on ARCH_DOVE || MACH_DOVE
-> +       depends on ARCH_DOVE || MACH_DOVE || COMPILE_TEST
->         depends on MMC_SDHCI_PLTFM
->         select MMC_SDHCI_IO_ACCESSORS
->         help
-> @@ -289,7 +289,7 @@ config MMC_SDHCI_DOVE
->
->  config MMC_SDHCI_TEGRA
->         tristate "SDHCI platform support for the Tegra SD/MMC Controller"
-> -       depends on ARCH_TEGRA
-> +       depends on ARCH_TEGRA || COMPILE_TEST
->         depends on MMC_SDHCI_PLTFM
->         select MMC_SDHCI_IO_ACCESSORS
->         select MMC_CQHCI
-> @@ -301,7 +301,8 @@ config MMC_SDHCI_TEGRA
->
->  config MMC_SDHCI_S3C
->         tristate "SDHCI support on Samsung S3C SoC"
-> -       depends on MMC_SDHCI && (PLAT_SAMSUNG || ARCH_S5PV210 || ARCH_EXYNOS)
-> +       depends on MMC_SDHCI
-> +       depends on PLAT_SAMSUNG || ARCH_S5PV210 || ARCH_EXYNOS || COMPILE_TEST
->         help
->           This selects the Secure Digital Host Controller Interface (SDHCI)
->           often referrered to as the HSMMC block in some of the Samsung S3C
-> @@ -313,7 +314,7 @@ config MMC_SDHCI_S3C
->
->  config MMC_SDHCI_SIRF
->         tristate "SDHCI support on CSR SiRFprimaII and SiRFmarco SoCs"
-> -       depends on ARCH_SIRF
-> +       depends on ARCH_SIRF || COMPILE_TEST
->         depends on MMC_SDHCI_PLTFM
->         select MMC_SDHCI_IO_ACCESSORS
->         help
-> @@ -351,7 +352,8 @@ config MMC_SDHCI_PXAV2
->
->  config MMC_SDHCI_SPEAR
->         tristate "SDHCI support on ST SPEAr platform"
-> -       depends on MMC_SDHCI && PLAT_SPEAR
-> +       depends on MMC_SDHCI
-> +       depends on PLAT_SPEAR || COMPILE_TEST
->         depends on OF
->         help
->           This selects the Secure Digital Host Controller Interface (SDHCI)
-> @@ -374,7 +376,7 @@ config MMC_SDHCI_S3C_DMA
->
->  config MMC_SDHCI_BCM_KONA
->         tristate "SDHCI support on Broadcom KONA platform"
-> -       depends on ARCH_BCM_MOBILE
-> +       depends on ARCH_BCM_MOBILE || COMPILE_TEST
->         depends on MMC_SDHCI_PLTFM
->         help
->           This selects the Broadcom Kona Secure Digital Host Controller
-> @@ -422,7 +424,8 @@ config MMC_SDHCI_IPROC
->
->  config MMC_MESON_GX
->         tristate "Amlogic S905/GX*/AXG SD/MMC Host Controller support"
-> -       depends on ARCH_MESON
-> +       depends on ARCH_MESON || COMPILE_TEST
-> +       depends on COMMON_CLK
->         help
->           This selects support for the Amlogic SD/MMC Host Controller
->           found on the S905/GX*/AXG family of SoCs.  This controller is
-> @@ -458,7 +461,7 @@ config MMC_MESON_MX_SDIO
->
->  config MMC_MOXART
->         tristate "MOXART SD/MMC Host Controller support"
-> -       depends on ARCH_MOXART
-> +       depends on ARCH_MOXART || COMPILE_TEST
->         help
->           This selects support for the MOXART SD/MMC Host Controller.
->           MOXA provides one multi-functional card reader which can
-> @@ -467,7 +470,7 @@ config MMC_MOXART
->
->  config MMC_SDHCI_ST
->         tristate "SDHCI support on STMicroelectronics SoC"
-> -       depends on ARCH_STI || FSP2
-> +       depends on ARCH_STI || FSP2 || COMPILE_TEST
->         depends on MMC_SDHCI_PLTFM
->         select MMC_SDHCI_IO_ACCESSORS
->         help
-> @@ -587,7 +590,7 @@ config MMC_TIFM_SD
->
->  config MMC_MVSDIO
->         tristate "Marvell MMC/SD/SDIO host driver"
-> -       depends on PLAT_ORION
-> +       depends on PLAT_ORION || (COMPILE_TEST && ARM)
->         depends on OF
->         help
->           This selects the Marvell SDIO host driver.
-> @@ -599,7 +602,7 @@ config MMC_MVSDIO
->
->  config MMC_DAVINCI
->         tristate "TI DAVINCI Multimedia Card Interface support"
-> -       depends on ARCH_DAVINCI
-> +       depends on ARCH_DAVINCI || COMPILE_TEST
->         help
->           This selects the TI DAVINCI Multimedia card Interface.
->           If you have an DAVINCI board with a Multimedia Card slot,
-> @@ -628,7 +631,7 @@ config MMC_SPI
->
->  config MMC_S3C
->         tristate "Samsung S3C SD/MMC Card Interface support"
-> -       depends on ARCH_S3C24XX
-> +       depends on ARCH_S3C24XX || COMPILE_TEST
->         depends on S3C24XX_DMAC
->         help
->           This selects a driver for the MCI interface found in
-> @@ -681,7 +684,7 @@ config MMC_SDRICOH_CS
->
->  config MMC_SDHCI_SPRD
->         tristate "Spreadtrum SDIO host Controller"
-> -       depends on ARCH_SPRD
-> +       depends on ARCH_SPRD || COMPILE_TEST
->         depends on MMC_SDHCI_PLTFM
->         select MMC_SDHCI_IO_ACCESSORS
->         select MMC_HSQ
-> @@ -698,7 +701,7 @@ config MMC_TMIO_CORE
->
->  config MMC_TMIO
->         tristate "Toshiba Mobile IO Controller (TMIO) MMC/SD function support"
-> -       depends on MFD_TMIO || MFD_ASIC3
-> +       depends on MFD_TMIO || MFD_ASIC3 || COMPILE_TEST
->         select MMC_TMIO_CORE
->         help
->           This provides support for the SD/MMC cell found in TC6393XB,
-> @@ -971,7 +974,7 @@ config MMC_REALTEK_USB
->
->  config MMC_SUNXI
->         tristate "Allwinner sunxi SD/MMC Host Controller support"
-> -       depends on ARCH_SUNXI
-> +       depends on ARCH_SUNXI || COMPILE_TEST
->         help
->           This selects support for the SD/MMC Host Controller on
->           Allwinner sunxi SoCs.
-> --
-> 2.17.1
->
+diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt b/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+index c1ccd8582eb2..ac949f7fe3d4 100644
+--- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
++++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+@@ -61,6 +61,7 @@ Required properties:
+ 	"mediatek,mt6779-m4u" for mt6779 which uses generation two m4u HW.
+ 	"mediatek,mt7623-m4u", "mediatek,mt2701-m4u" for mt7623 which uses
+ 						     generation one m4u HW.
++	"mediatek,mt8167-m4u" for mt8167 which uses generation two m4u HW.
+ 	"mediatek,mt8173-m4u" for mt8173 which uses generation two m4u HW.
+ 	"mediatek,mt8183-m4u" for mt8183 which uses generation two m4u HW.
+ - reg : m4u register base and size.
+@@ -80,6 +81,7 @@ Required properties:
+ 	dt-binding/memory/mt2701-larb-port.h for mt2701, mt7623
+ 	dt-binding/memory/mt2712-larb-port.h for mt2712,
+ 	dt-binding/memory/mt6779-larb-port.h for mt6779,
++	dt-binding/memory/mt8167-larb-port.h for mt8167,
+ 	dt-binding/memory/mt8173-larb-port.h for mt8173, and
+ 	dt-binding/memory/mt8183-larb-port.h for mt8183.
+ 
+diff --git a/include/dt-bindings/memory/mt8167-larb-port.h b/include/dt-bindings/memory/mt8167-larb-port.h
+new file mode 100644
+index 000000000000..000fb299a408
+--- /dev/null
++++ b/include/dt-bindings/memory/mt8167-larb-port.h
+@@ -0,0 +1,51 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (c) 2020 MediaTek Inc.
++ * Copyright (c) 2020 BayLibre, SAS
++ * Author: Honghui Zhang <honghui.zhang@mediatek.com>
++ * Author: Fabien Parent <fparent@baylibre.com>
++ */
++#ifndef __DTS_IOMMU_PORT_MT8167_H
++#define __DTS_IOMMU_PORT_MT8167_H
++
++#define MTK_M4U_ID(larb, port)		(((larb) << 5) | (port))
++
++#define M4U_LARB0_ID			0
++#define M4U_LARB1_ID			1
++#define M4U_LARB2_ID			2
++
++/* larb0 */
++#define M4U_PORT_DISP_OVL0		MTK_M4U_ID(M4U_LARB0_ID, 0)
++#define M4U_PORT_DISP_RDMA0		MTK_M4U_ID(M4U_LARB0_ID, 1)
++#define M4U_PORT_DISP_WDMA0		MTK_M4U_ID(M4U_LARB0_ID, 2)
++#define M4U_PORT_DISP_RDMA1		MTK_M4U_ID(M4U_LARB0_ID, 3)
++#define M4U_PORT_MDP_RDMA		MTK_M4U_ID(M4U_LARB0_ID, 4)
++#define M4U_PORT_MDP_WDMA		MTK_M4U_ID(M4U_LARB0_ID, 5)
++#define M4U_PORT_MDP_WROT		MTK_M4U_ID(M4U_LARB0_ID, 6)
++#define M4U_PORT_DISP_FAKE		MTK_M4U_ID(M4U_LARB0_ID, 7)
++
++/* larb1*/
++#define M4U_PORT_CAM_IMGO		MTK_M4U_ID(M4U_LARB1_ID, 0)
++#define M4U_PORT_CAM_IMG2O		MTK_M4U_ID(M4U_LARB1_ID, 1)
++#define M4U_PORT_CAM_LSCI		MTK_M4U_ID(M4U_LARB1_ID, 2)
++#define M4U_PORT_CAM_ESFKO		MTK_M4U_ID(M4U_LARB1_ID, 3)
++#define M4U_PORT_CAM_AAO		MTK_M4U_ID(M4U_LARB1_ID, 4)
++#define M4U_PORT_VENC_REC		MTK_M4U_ID(M4U_LARB1_ID, 5)
++#define M4U_PORT_VENC_BSDMA		MTK_M4U_ID(M4U_LARB1_ID, 6)
++#define M4U_PORT_VENC_RD_COMV		MTK_M4U_ID(M4U_LARB1_ID, 7)
++#define M4U_PORT_CAM_IMGI		MTK_M4U_ID(M4U_LARB1_ID, 8)
++#define M4U_PORT_VENC_CUR_LUMA		MTK_M4U_ID(M4U_LARB1_ID, 9)
++#define M4U_PORT_VENC_CUR_CHROMA	MTK_M4U_ID(M4U_LARB1_ID, 10)
++#define M4U_PORT_VENC_REF_LUMA		MTK_M4U_ID(M4U_LARB1_ID, 11)
++#define M4U_PORT_VENC_REF_CHROMA	MTK_M4U_ID(M4U_LARB1_ID, 12)
++
++/* larb2*/
++#define M4U_PORT_HW_VDEC_MC_EXT		MTK_M4U_ID(M4U_LARB2_ID, 0)
++#define M4U_PORT_HW_VDEC_PP_EXT		MTK_M4U_ID(M4U_LARB2_ID, 1)
++#define M4U_PORT_HW_VDEC_VLD_EXT	MTK_M4U_ID(M4U_LARB2_ID, 2)
++#define M4U_PORT_HW_VDEC_AVC_MV_EXT	MTK_M4U_ID(M4U_LARB2_ID, 3)
++#define M4U_PORT_HW_VDEC_PRED_RD_EXT	MTK_M4U_ID(M4U_LARB2_ID, 4)
++#define M4U_PORT_HW_VDEC_PRED_WR_EXT	MTK_M4U_ID(M4U_LARB2_ID, 5)
++#define M4U_PORT_HW_VDEC_PPWRAP_EXT	MTK_M4U_ID(M4U_LARB2_ID, 6)
++
++#endif
+-- 
+2.28.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
