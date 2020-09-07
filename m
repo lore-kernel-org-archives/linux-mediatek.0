@@ -2,82 +2,90 @@ Return-Path: <SRS0=DUBy=CQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3231CC43461
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 12:29:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 82CE9C433E2
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 12:57:04 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C528F206E6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 12:29:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EBE0121481
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 12:57:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YRpAMe/H";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="uQQtOtMz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C528F206E6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2GtBJfu8";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="BUFYxvRH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EBE0121481
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=nKTIvpDtKxnSD8RzCYFyYy5sGI4mJFYY5jda3z1Uva8=; b=YRpAMe/HZPg+bKA2idCiHYyJr
-	18CnVGqrKw2UjDRPNEB7TrVx6lVABWUOdNRWmok0u/UHDfAcN0NNxQT0efeSL0XsyqDj0HiKeR+i2
-	eoeMEi3QJ4W7sCb7ZCg52dS/XseZ2Freon+Cw+phndrRZU8CYU6FBFpr1D1TZbdnhQp8w59gekPnk
-	ka1qGKhN32WoeDIwwTEQcwsHD8moPbSx+KBCSTTG5BR053cD8kxZesKYISKHn69bWJmH5AbnHDNyf
-	4KxRO5BvgdniO94ERFNGaKRrw+Wa7ZypqEJpjUtg7PmLYQj7xhO9gEhwMZ+52K7lkJwXqyZ3hMHQv
-	mmnZ3FRag==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8d+QKU5FKteV1X+ShSr4k5M98jdBsIyRIVFo7V/tM3w=; b=2GtBJfu8STQ8l3wuESDU2c83Vx
+	Vhe2ay2XkN/guXq9bULJsjVZFxFCW/M9DzNtaYJurGtgVweBfVFjRe3DIfjoSH73QSZp+JGBydjvI
+	qVAZNriU0U5Kz/5ONLkcxuIdEJZb7zKlJMzqrgu3WbSfCPUgIbxNpvCY3UkJmpUJKNrDEkodEV8h9
+	3nXzEmm5IlgmphznUhnaZ8hZdRo4/m7nKtflXbgUgAIgOkBMbgjC0uhbTqi4O4F0+RGSZKMhwc3OC
+	VEzMbvcOOSGsdOTSwV4W4Nd/MDN9laPd0IcbJ+3RsM+ibXD7UzMXcLsjuzPwLVfPIm3GVQplLBAAu
+	YwMMkAMQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFGGU-0002lt-VG; Mon, 07 Sep 2020 12:28:55 +0000
-Received: from mail-ua1-x943.google.com ([2607:f8b0:4864:20::943])
+	id 1kFGhb-0005IY-Mj; Mon, 07 Sep 2020 12:56:55 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFGGR-0002kA-Cy
- for linux-mediatek@lists.infradead.org; Mon, 07 Sep 2020 12:28:52 +0000
-Received: by mail-ua1-x943.google.com with SMTP id o14so1221569ual.11
- for <linux-mediatek@lists.infradead.org>; Mon, 07 Sep 2020 05:28:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=8iVJ2Y8DEp3E0XkrRL3vpRQ7yO+SYLZGU2xwg3pZn7w=;
- b=uQQtOtMz9h++aYiUpsU46MiJXh7DHCcguAo/zJU+YS89m53bIsw6fdvtT/tTOunUyR
- JJBiFLggFSuqeEl8r29jqfLHoAxfIBpkSm4q4BV1wLUnhcEg5BhKtw4yN9E3KWnlQi5Q
- rCpJseHbu1nV0RKPbba4IW2CSH1ZbVbSELCGxUJCzfawo7q5fo02iJXwGc7JPE8tkB4q
- RNrmFl7UapRVJ4X+zZHU2t2qQDe2KMqFrTt1qU1mQ/xsI6rXnxItRXjcEJnYkUO0DNyF
- eGUgMMDfflC6QbVhVustSwl2/RbNWfSaweZxAisnFopk4/vjCZaqjr03ExUXBskH+JSu
- 107Q==
+ id 1kFGhY-0005Hp-7v
+ for linux-mediatek@lists.infradead.org; Mon, 07 Sep 2020 12:56:54 +0000
+Received: by mail-wr1-x443.google.com with SMTP id w5so15713847wrp.8
+ for <linux-mediatek@lists.infradead.org>; Mon, 07 Sep 2020 05:56:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=UCzAly/0nJVCfCDesjIWsuPixCCm9Upr/s0zYEfIO3o=;
+ b=BUFYxvRHRgKC5ncXH85VxOzRmvu5RblAUQSDL1NdiJ/Xkn/+okQNWorZtycgiLWKPE
+ aoHJ7A+tighMYuB1c3SjlYa7jmU5T+E1kpwVNXtY5JOOEBk9DC1AsHxavHwD5xmopRGh
+ FiSvsPcp/taYNnX960IWEM+AsNhKasxEFp4hOgEFGoz9GJInt6jNCldG6nIb7/fNPvC8
+ PCYS8+Swm/zJi553TMirU61YOXooAgqqfKaGcZA8TLcE6w6YtkqMePf5VadrHhfS5Ur8
+ ne24iPl4d3R9ADjL2trf8OVcnW5t8p/w6YdMhuhsU6mh909amvQPzeC/I3OlIUcGKm3/
+ XCRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=8iVJ2Y8DEp3E0XkrRL3vpRQ7yO+SYLZGU2xwg3pZn7w=;
- b=q12MYegCvB0BcIUW2OPWwxqHvyjsSEZbQDccppysABzdsN6eADNyKjZfy1PreZBaF5
- ZwILV8EdNoooQRI8LgHesZjDAvHuds0W7jSDgxQWwMOpSltKO6EOMhY7jL/tYa57oeoI
- JcwIiw7gVp2TCsb4DuGBCe+AIIT1dUFgBf7pbQZbiQNiKB8EoDYRfK4QSyXnAsnJOHLZ
- VbCMq9NsPv+9zuiHAr7yPw24qw0zHKFvqsg7w/IuIkhkzhlV4bieP4TEcK6V4MBrYBMG
- MPTRlUEBZ+C1sezpI6p2ICR25bX1CV6x2fDXIAbZMhLaxZCBnevoTyBZBiS25hQpgQf3
- BIUw==
-X-Gm-Message-State: AOAM532YzLs24FUgtCA7Y3WqSzAaSKmhi1j8HblYA3McZtbpmLn74TZ1
- feRgI4mXedKaXOCTio8gfeAeVr01u/HkDuAMqcJ70Q==
-X-Google-Smtp-Source: ABdhPJy6I2uvtSFaZhO3P4JEWmrE8eH+U+1Xn5WxmNVFnMTl2QPXi6bmEQ1vz+4fPNN/0nIdBxJ7hVghl+1FhXG+hRM=
-X-Received: by 2002:ab0:4041:: with SMTP id h59mr8011331uad.19.1599481728409; 
- Mon, 07 Sep 2020 05:28:48 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=UCzAly/0nJVCfCDesjIWsuPixCCm9Upr/s0zYEfIO3o=;
+ b=SwlUrmywkLnPnwJ8mrofmwidR6r0oywMNBcLxuwUsLDP1z9nRrOtDBFIjFFOFLgl52
+ opZzszunjMNwISC4K3iJmC533EHW8VC7OYllcwM4Va/WIIls8jM0EcdOdR2i4p1+MhUU
+ /kvsb4uoZzTDyPLL6I3Mqz3OGXUXtZInIokeQVxaF3vE0VHTv1hDYC/Zd4dDedcbLK6O
+ qwuKRTv8wJVWCGsC9QLyxbvdrMfexAiisrjufYfHkC2QID30bt+Se1AIV+shJ1zD+qtE
+ cWi8miqo3YtWnlJRwCI3IheP0AjNBEUs/Q/xopx+P9n5GSpw+cVrOud/gDTZJoOqmEXE
+ d2mw==
+X-Gm-Message-State: AOAM531S3ukewlLYTYOmEUHgE6Cow2/jXScRcn0wochxS1xtX2QPNVbq
+ wllEkPDjHFraQUc3b0uit2tn+M8Yaz+AA6+9
+X-Google-Smtp-Source: ABdhPJxhcZdfCuLpTThVNnmLYN235Mar/1UTcpUqAvP3ZFEZGRRqteFw+fGsTsmT+xY1mE7YxrH0RQ==
+X-Received: by 2002:a5d:620e:: with SMTP id y14mr23278493wru.371.1599483410542; 
+ Mon, 07 Sep 2020 05:56:50 -0700 (PDT)
+Received: from localhost.localdomain (122.105.23.93.rev.sfr.net.
+ [93.23.105.122])
+ by smtp.gmail.com with ESMTPSA id o4sm24845215wru.55.2020.09.07.05.56.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 07 Sep 2020 05:56:49 -0700 (PDT)
+From: Fabien Parent <fparent@baylibre.com>
+To: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org
+Subject: [PATCH 1/2] dt-bindings: clock: mediatek: add bindings for MT8167
+ clocks
+Date: Mon,  7 Sep 2020 14:56:45 +0200
+Message-Id: <20200907125646.1946282-1-fparent@baylibre.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-References: <20200903232441.2694866-1-dianders@chromium.org>
-In-Reply-To: <20200903232441.2694866-1-dianders@chromium.org>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 7 Sep 2020 14:28:12 +0200
-Message-ID: <CAPDyKFqTjFUaqx6phBGdPuv6hz8dsevsO_UhoOhFT+oOFrhFjA@mail.gmail.com>
-Subject: Re: [PATCH 0/6] mmc: Set PROBE_PREFER_ASYNCHRONOUS for all host
- drivers
-To: Douglas Anderson <dianders@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200907_082851_641007_6FCBC260 
-X-CRM114-Status: GOOD (  30.14  )
+X-CRM114-CacheID: sfid-20200907_085652_476893_F18FC615 
+X-CRM114-Status: GOOD (  14.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,240 +97,256 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Linus Walleij <linus.walleij@linaro.org>,
- Peter Ujfalusi <peter.ujfalusi@ti.com>, Jerome Brunet <jbrunet@baylibre.com>,
- linux-samsung-soc <linux-samsung-soc@vger.kernel.org>,
- Aaro Koskinen <aaro.koskinen@iki.fi>, Kevin Hilman <khilman@baylibre.com>,
- Michal Simek <michal.simek@xilinx.com>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- NXP Linux Team <linux-imx@nxp.com>, linux-tegra <linux-tegra@vger.kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Stephen Boyd <swboyd@chromium.org>,
- Lars Persson <lars.persson@axis.com>, linux-omap <linux-omap@vger.kernel.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Scott Branden <sbranden@broadcom.com>, Andrew Jeffery <andrew@aj.id.au>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Eugen Hristev <eugen.hristev@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- linux-aspeed <linux-aspeed@lists.ozlabs.org>,
- Yangtao Li <tiny.windzz@gmail.com>, Hu Ziji <huziji@marvell.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- Jesper Nilsson <jesper.nilsson@axis.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- linux-arm-kernel@axis.com, Jonathan Hunter <jonathanh@nvidia.com>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Kukjin Kim <kgene@kernel.org>, Pierre Ossman <pierre@ossman.eu>,
- Saiyam Doshi <saiyamdoshi.in@gmail.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Maxime Ripard <mripard@kernel.org>,
- "moderated list:BROADCOM BCM2835..." <linux-rpi-kernel@lists.infradead.org>,
- "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Barry Song <baohua@kernel.org>, Nicolas Pitre <nico@fluxnic.net>,
- Patrice Chotard <patrice.chotard@st.com>,
- Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>,
- Stefan Wahren <wahrenst@gmx.net>,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- Ricky Wu <ricky_wu@realtek.com>,
- Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
- Neil Armstrong <narmstrong@baylibre.com>, Al Cooper <alcooperx@gmail.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Fabio Estevam <festevam@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Steen Hegelund <Steen.Hegelund@microchip.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>,
- Chen-Yu Tsai <wens@csie.org>,
- BCM Kernel Feedback <bcm-kernel-feedback-list@broadcom.com>,
- Joel Stanley <joel@jms.id.au>, Orson Zhai <orsonzhai@gmail.com>,
- Ray Jui <rjui@broadcom.com>, Ben Dooks <ben-linux@fluff.org>,
- Masahiro Yamada <yamada.masahiro@socionext.com>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- Baolin Wang <baolin.wang7@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
- =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
- "H. Nikolaus Schaller" <hns@goldelico.com>,
- Adrian Hunter <adrian.hunter@intel.com>, Paul Cercueil <paul@crapouillou.net>,
- Lee Jones <lee.jones@linaro.org>, Marek Vasut <marex@denx.de>,
- Anson Huang <Anson.Huang@nxp.com>, Jaehoon Chung <jh80.chung@samsung.com>,
- Rui Miguel Silva <rmfrfs@gmail.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Manuel Lauss <manuel.lauss@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- =?UTF-8?B?TWljaGHFgiBNaXJvc8WCYXc=?= <mirq-linux@rere.qmqm.pl>,
- Angelo Dureghello <angelo.dureghello@timesys.com>,
- Lars Povlsen <lars.povlsen@microchip.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Tony Prisk <linux@prisktech.co.nz>, Vinod Koul <vkoul@kernel.org>,
- Robert Richter <rrichter@marvell.com>, Viresh Kumar <vireshk@kernel.org>,
- Jun Nie <jun.nie@linaro.org>
+Cc: Fabien Parent <fparent@baylibre.com>, sboyd@kernel.org,
+ masahiroy@kernel.org, krzk@kernel.org, ck.hu@mediatek.com, robh+dt@kernel.org,
+ mars.cheng@mediatek.com, macpaul.lin@mediatek.com,
+ enric.balletbo@collabora.com, wendell.lin@mediatek.com, owen.chen@mediatek.com,
+ matthias.bgg@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 4 Sep 2020 at 01:25, Douglas Anderson <dianders@chromium.org> wrote:
->
-> As per discussion [1], it seems like it should be quite safe to turn
-> on PROBE_PREFER_ASYNCHRONOUS for all sd/mmc host controllers.  Let's
-> give it a shot.  For some discussion about this flag, see the commit
-> message for commit 3d3451124f3d ("mmc: sdhci-msm: Prefer asynchronous
-> probe").
->
-> I've broken this series into chunks based on LTS kernel releases to
-> attempt to make it easier if someone wanted to cherry-pick it to an
-> older kernel.  While these cherry-picks won't be conflict free, there
-> should only be trivial context conflicts and no problems with drivers
-> that are totally missing.  This is a bit of a compromise between a
-> 1-big patch and a many-part patch series.
->
-> I have only tested this on a rk3399-kevin (sdhci-of-arasan) and a
-> rk3288-veyron (dw_mmc-rockchip) device and only lightly.  If this
-> patch causes anyone problems those drivers should be marked with
-> PROBE_FORCE_SYNCHRONOUS, debugged, and then go back to prefer
-> asynchronous.  Any problems are likely just a hidden bug that has been
-> exposed by this change.
->
-> NOTE: in theory, it'd be nice if there was a KConfig option that we
-> could flip that would turn on async probe everywhere (except for those
-> that opt out by adding PROBE_FORCE_SYNCHRONOUS).  My hope is that by
-> adding this flag in more places it will become clear that this flag is
-> working reliably and easier to move over when we're ready.
->
-> While coccinelle is too difficult for my feeble brain, I managed to
-> whip up a pretty terrible python script to help with this.  For your
-> edification:
->
-> import os
-> import sys
-> import re
->
-> for filename in os.listdir("."):
->     found_plat = False
->     found_driver = False
->     output = []
->     for line in open(filename, "r").readlines():
->         output.append(line)
->
->         if "struct platform_driver" in line:
->             found_plat = True
->         if found_plat and re.search(r"\t\.driver\s*=\s*{", line):
->             found_driver = True
->             found_plat = False
->         mo = re.search(r"(\s*)\.name(\s*)=", line)
->         if found_driver and mo:
->             if mo.group(2) == " ":
->                 space = " "
->             elif mo.group(2) == "\t":
->                 # Best we can do
->                 space = " "
->             elif mo.group(2).startswith("\t"):
->                 # Guess that removing one tab is right
->                 space = mo.group(2)[1:]
->             else:
->                 # Guess it's all spaces
->                 space = mo.group(2)[7:] + " "
->
->             output.append("%s.probe_type%s= PROBE_PREFER_ASYNCHRONOUS,\n" % (mo.group(1), space))
->             found_driver = False
->
->     open(filename, "w").write("".join(output))
->
-> [1] https://lore.kernel.org/r/CAPDyKFq31bucJhP9hp1HSqh-qM2uNGHgDoyQpmbJf00nEf_T4Q@mail.gmail.com/
->
->
-> Douglas Anderson (6):
->   mmc: Set PROBE_PREFER_ASYNCHRONOUS for drivers that existed in v4.4
->   mmc: Set PROBE_PREFER_ASYNCHRONOUS for drivers that existed in v4.9
->   mmc: Set PROBE_PREFER_ASYNCHRONOUS for drivers that existed in v4.14
->   mmc: Set PROBE_PREFER_ASYNCHRONOUS for drivers that existed in v4.19
->   mmc: Set PROBE_PREFER_ASYNCHRONOUS for drivers that existed in v5.4
->   mmc: Set PROBE_PREFER_ASYNCHRONOUS for drivers that are newer than 5.4
->
->  drivers/mmc/host/alcor.c                      | 1 +
->  drivers/mmc/host/android-goldfish.c           | 1 +
->  drivers/mmc/host/atmel-mci.c                  | 1 +
->  drivers/mmc/host/au1xmmc.c                    | 1 +
->  drivers/mmc/host/bcm2835.c                    | 1 +
->  drivers/mmc/host/cavium-octeon.c              | 1 +
->  drivers/mmc/host/davinci_mmc.c                | 1 +
->  drivers/mmc/host/dw_mmc-bluefield.c           | 1 +
->  drivers/mmc/host/dw_mmc-exynos.c              | 1 +
->  drivers/mmc/host/dw_mmc-hi3798cv200.c         | 1 +
->  drivers/mmc/host/dw_mmc-k3.c                  | 1 +
->  drivers/mmc/host/dw_mmc-pltfm.c               | 1 +
->  drivers/mmc/host/dw_mmc-rockchip.c            | 1 +
->  drivers/mmc/host/dw_mmc-zx.c                  | 1 +
->  drivers/mmc/host/jz4740_mmc.c                 | 1 +
->  drivers/mmc/host/meson-gx-mmc.c               | 1 +
->  drivers/mmc/host/meson-mx-sdhc-mmc.c          | 1 +
->  drivers/mmc/host/meson-mx-sdio.c              | 1 +
->  drivers/mmc/host/moxart-mmc.c                 | 1 +
->  drivers/mmc/host/mtk-sd.c                     | 1 +
->  drivers/mmc/host/mvsdio.c                     | 1 +
->  drivers/mmc/host/mxcmmc.c                     | 1 +
->  drivers/mmc/host/mxs-mmc.c                    | 1 +
->  drivers/mmc/host/omap.c                       | 1 +
->  drivers/mmc/host/omap_hsmmc.c                 | 1 +
->  drivers/mmc/host/owl-mmc.c                    | 1 +
->  drivers/mmc/host/pxamci.c                     | 1 +
->  drivers/mmc/host/renesas_sdhi_internal_dmac.c | 1 +
->  drivers/mmc/host/renesas_sdhi_sys_dmac.c      | 1 +
->  drivers/mmc/host/rtsx_pci_sdmmc.c             | 1 +
->  drivers/mmc/host/rtsx_usb_sdmmc.c             | 1 +
->  drivers/mmc/host/s3cmci.c                     | 1 +
->  drivers/mmc/host/sdhci-acpi.c                 | 1 +
->  drivers/mmc/host/sdhci-bcm-kona.c             | 1 +
->  drivers/mmc/host/sdhci-brcmstb.c              | 1 +
->  drivers/mmc/host/sdhci-cadence.c              | 1 +
->  drivers/mmc/host/sdhci-cns3xxx.c              | 1 +
->  drivers/mmc/host/sdhci-dove.c                 | 1 +
->  drivers/mmc/host/sdhci-esdhc-imx.c            | 1 +
->  drivers/mmc/host/sdhci-esdhc-mcf.c            | 1 +
->  drivers/mmc/host/sdhci-iproc.c                | 1 +
->  drivers/mmc/host/sdhci-milbeaut.c             | 1 +
->  drivers/mmc/host/sdhci-of-arasan.c            | 1 +
->  drivers/mmc/host/sdhci-of-aspeed.c            | 2 ++
->  drivers/mmc/host/sdhci-of-at91.c              | 1 +
->  drivers/mmc/host/sdhci-of-dwcmshc.c           | 1 +
->  drivers/mmc/host/sdhci-of-esdhc.c             | 1 +
->  drivers/mmc/host/sdhci-of-hlwd.c              | 1 +
->  drivers/mmc/host/sdhci-of-sparx5.c            | 1 +
->  drivers/mmc/host/sdhci-omap.c                 | 1 +
->  drivers/mmc/host/sdhci-pic32.c                | 1 +
->  drivers/mmc/host/sdhci-pxav2.c                | 1 +
->  drivers/mmc/host/sdhci-pxav3.c                | 1 +
->  drivers/mmc/host/sdhci-s3c.c                  | 1 +
->  drivers/mmc/host/sdhci-sirf.c                 | 1 +
->  drivers/mmc/host/sdhci-spear.c                | 1 +
->  drivers/mmc/host/sdhci-sprd.c                 | 1 +
->  drivers/mmc/host/sdhci-st.c                   | 1 +
->  drivers/mmc/host/sdhci-tegra.c                | 1 +
->  drivers/mmc/host/sdhci-xenon.c                | 1 +
->  drivers/mmc/host/sdhci_am654.c                | 1 +
->  drivers/mmc/host/sdhci_f_sdh30.c              | 1 +
->  drivers/mmc/host/sh_mmcif.c                   | 1 +
->  drivers/mmc/host/sunxi-mmc.c                  | 1 +
->  drivers/mmc/host/tmio_mmc.c                   | 1 +
->  drivers/mmc/host/uniphier-sd.c                | 1 +
->  drivers/mmc/host/usdhi6rol0.c                 | 1 +
->  drivers/mmc/host/wbsd.c                       | 1 +
->  drivers/mmc/host/wmt-sdmmc.c                  | 1 +
->  69 files changed, 70 insertions(+)
->
-> --
-> 2.28.0.526.ge36021eeef-goog
->
+Add binding documentation for topckgen, apmixedsys, infracfg, audsys,
+imgsys, mfgcfg, mmsys, vdecsys on MT8167 SoC.
 
-An interesting idea about a patch per LTS release. I think it makes
-perfect sense in this type of case.
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
+ .../arm/mediatek/mediatek,apmixedsys.txt      |   1 +
+ .../bindings/arm/mediatek/mediatek,audsys.txt |   1 +
+ .../bindings/arm/mediatek/mediatek,imgsys.txt |   1 +
+ .../arm/mediatek/mediatek,infracfg.txt        |   1 +
+ .../bindings/arm/mediatek/mediatek,mfgcfg.txt |   1 +
+ .../arm/mediatek/mediatek,topckgen.txt        |   1 +
+ .../arm/mediatek/mediatek,vdecsys.txt         |   1 +
+ include/dt-bindings/clock/mt8167-clk.h        | 131 ++++++++++++++++++
+ 8 files changed, 138 insertions(+)
+ create mode 100644 include/dt-bindings/clock/mt8167-clk.h
 
-Let's give this a shot in next and see how it goes. So, applied for
-next, thanks!
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+index bd7a0fa5801b..ea827e8763de 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+@@ -15,6 +15,7 @@ Required Properties:
+ 	- "mediatek,mt7623-apmixedsys", "mediatek,mt2701-apmixedsys"
+ 	- "mediatek,mt7629-apmixedsys"
+ 	- "mediatek,mt8135-apmixedsys"
++	- "mediatek,mt8167-apmixedsys", "syscon"
+ 	- "mediatek,mt8173-apmixedsys"
+ 	- "mediatek,mt8183-apmixedsys", "syscon"
+ 	- "mediatek,mt8516-apmixedsys"
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
+index 38309db115f5..b32d374193c7 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
+@@ -11,6 +11,7 @@ Required Properties:
+ 	- "mediatek,mt6779-audio", "syscon"
+ 	- "mediatek,mt7622-audsys", "syscon"
+ 	- "mediatek,mt7623-audsys", "mediatek,mt2701-audsys", "syscon"
++	- "mediatek,mt8167-audiosys", "syscon"
+ 	- "mediatek,mt8183-audiosys", "syscon"
+ 	- "mediatek,mt8516-audsys", "syscon"
+ - #clock-cells: Must be 1
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
+index 1e1f00718a7d..dce4c9241932 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
+@@ -12,6 +12,7 @@ Required Properties:
+ 	- "mediatek,mt6779-imgsys", "syscon"
+ 	- "mediatek,mt6797-imgsys", "syscon"
+ 	- "mediatek,mt7623-imgsys", "mediatek,mt2701-imgsys", "syscon"
++	- "mediatek,mt8167-imgsys", "syscon"
+ 	- "mediatek,mt8173-imgsys", "syscon"
+ 	- "mediatek,mt8183-imgsys", "syscon"
+ - #clock-cells: Must be 1
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
+index 49a968be1a80..eb3523c7a7be 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
+@@ -16,6 +16,7 @@ Required Properties:
+ 	- "mediatek,mt7623-infracfg", "mediatek,mt2701-infracfg", "syscon"
+ 	- "mediatek,mt7629-infracfg", "syscon"
+ 	- "mediatek,mt8135-infracfg", "syscon"
++	- "mediatek,mt8167-infracfg", "syscon"
+ 	- "mediatek,mt8173-infracfg", "syscon"
+ 	- "mediatek,mt8183-infracfg", "syscon"
+ 	- "mediatek,mt8516-infracfg", "syscon"
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
+index ad5f9d2f6818..054424fb64b4 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
+@@ -8,6 +8,7 @@ Required Properties:
+ - compatible: Should be one of:
+ 	- "mediatek,mt2712-mfgcfg", "syscon"
+ 	- "mediatek,mt6779-mfgcfg", "syscon"
++	- "mediatek,mt8167-mfgcfg", "syscon"
+ 	- "mediatek,mt8183-mfgcfg", "syscon"
+ - #clock-cells: Must be 1
+ 
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
+index 9b0394cbbdc9..5ce7578cf274 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
+@@ -15,6 +15,7 @@ Required Properties:
+ 	- "mediatek,mt7623-topckgen", "mediatek,mt2701-topckgen"
+ 	- "mediatek,mt7629-topckgen"
+ 	- "mediatek,mt8135-topckgen"
++	- "mediatek,mt8167-topckgen", "syscon"
+ 	- "mediatek,mt8173-topckgen"
+ 	- "mediatek,mt8183-topckgen", "syscon"
+ 	- "mediatek,mt8516-topckgen"
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
+index 7894558b7a1c..98195169176a 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
+@@ -11,6 +11,7 @@ Required Properties:
+ 	- "mediatek,mt6779-vdecsys", "syscon"
+ 	- "mediatek,mt6797-vdecsys", "syscon"
+ 	- "mediatek,mt7623-vdecsys", "mediatek,mt2701-vdecsys", "syscon"
++	- "mediatek,mt8167-vdecsys", "syscon"
+ 	- "mediatek,mt8173-vdecsys", "syscon"
+ 	- "mediatek,mt8183-vdecsys", "syscon"
+ - #clock-cells: Must be 1
+diff --git a/include/dt-bindings/clock/mt8167-clk.h b/include/dt-bindings/clock/mt8167-clk.h
+new file mode 100644
+index 000000000000..a96158edd817
+--- /dev/null
++++ b/include/dt-bindings/clock/mt8167-clk.h
+@@ -0,0 +1,131 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (c) 2020 MediaTek Inc.
++ * Copyright (c) 2020 BayLibre, SAS.
++ * Author: James Liao <jamesjj.liao@mediatek.com>
++ *         Fabien Parent <fparent@baylibre.com>
++ */
++
++#ifndef _DT_BINDINGS_CLK_MT8167_H
++#define _DT_BINDINGS_CLK_MT8167_H
++
++/* MT8167 is based on MT8516 */
++#include <dt-bindings/clock/mt8516-clk.h>
++
++/* APMIXEDSYS */
++
++#define CLK_APMIXED_TVDPLL		(CLK_APMIXED_NR_CLK + 0)
++#define CLK_APMIXED_LVDSPLL		(CLK_APMIXED_NR_CLK + 1)
++#define CLK_APMIXED_HDMI_REF		(CLK_APMIXED_NR_CLK + 2)
++#define MT8167_CLK_APMIXED_NR_CLK	(CLK_APMIXED_NR_CLK + 3)
++
++/* TOPCKGEN */
++
++#define CLK_TOP_DSI0_LNTC_DSICK		(CLK_TOP_NR_CLK + 0)
++#define CLK_TOP_VPLL_DPIX		(CLK_TOP_NR_CLK + 1)
++#define CLK_TOP_LVDSTX_CLKDIG_CTS	(CLK_TOP_NR_CLK + 2)
++#define CLK_TOP_HDMTX_CLKDIG_CTS	(CLK_TOP_NR_CLK + 3)
++#define CLK_TOP_LVDSPLL			(CLK_TOP_NR_CLK + 4)
++#define CLK_TOP_LVDSPLL_D2		(CLK_TOP_NR_CLK + 5)
++#define CLK_TOP_LVDSPLL_D4		(CLK_TOP_NR_CLK + 6)
++#define CLK_TOP_LVDSPLL_D8		(CLK_TOP_NR_CLK + 7)
++#define CLK_TOP_MIPI_26M		(CLK_TOP_NR_CLK + 8)
++#define CLK_TOP_TVDPLL			(CLK_TOP_NR_CLK + 9)
++#define CLK_TOP_TVDPLL_D2		(CLK_TOP_NR_CLK + 10)
++#define CLK_TOP_TVDPLL_D4		(CLK_TOP_NR_CLK + 11)
++#define CLK_TOP_TVDPLL_D8		(CLK_TOP_NR_CLK + 12)
++#define CLK_TOP_TVDPLL_D16		(CLK_TOP_NR_CLK + 13)
++#define CLK_TOP_PWM_MM			(CLK_TOP_NR_CLK + 14)
++#define CLK_TOP_CAM_MM			(CLK_TOP_NR_CLK + 15)
++#define CLK_TOP_MFG_MM			(CLK_TOP_NR_CLK + 16)
++#define CLK_TOP_SPM_52M			(CLK_TOP_NR_CLK + 17)
++#define CLK_TOP_MIPI_26M_DBG		(CLK_TOP_NR_CLK + 18)
++#define CLK_TOP_SCAM_MM			(CLK_TOP_NR_CLK + 19)
++#define CLK_TOP_SMI_MM			(CLK_TOP_NR_CLK + 20)
++#define CLK_TOP_26M_HDMI_SIFM		(CLK_TOP_NR_CLK + 21)
++#define CLK_TOP_26M_CEC			(CLK_TOP_NR_CLK + 22)
++#define CLK_TOP_32K_CEC			(CLK_TOP_NR_CLK + 23)
++#define CLK_TOP_GCPU_B			(CLK_TOP_NR_CLK + 24)
++#define CLK_TOP_RG_VDEC			(CLK_TOP_NR_CLK + 25)
++#define CLK_TOP_RG_FDPI0		(CLK_TOP_NR_CLK + 26)
++#define CLK_TOP_RG_FDPI1		(CLK_TOP_NR_CLK + 27)
++#define CLK_TOP_RG_AXI_MFG		(CLK_TOP_NR_CLK + 28)
++#define CLK_TOP_RG_SLOW_MFG		(CLK_TOP_NR_CLK + 29)
++#define CLK_TOP_GFMUX_EMI1X_SEL		(CLK_TOP_NR_CLK + 30)
++#define CLK_TOP_CSW_MUX_MFG_SEL		(CLK_TOP_NR_CLK + 31)
++#define CLK_TOP_CAMTG_MM_SEL		(CLK_TOP_NR_CLK + 32)
++#define CLK_TOP_PWM_MM_SEL		(CLK_TOP_NR_CLK + 33)
++#define CLK_TOP_SPM_52M_SEL		(CLK_TOP_NR_CLK + 34)
++#define CLK_TOP_MFG_MM_SEL		(CLK_TOP_NR_CLK + 35)
++#define CLK_TOP_SMI_MM_SEL		(CLK_TOP_NR_CLK + 36)
++#define CLK_TOP_SCAM_MM_SEL		(CLK_TOP_NR_CLK + 37)
++#define CLK_TOP_VDEC_MM_SEL		(CLK_TOP_NR_CLK + 38)
++#define CLK_TOP_DPI0_MM_SEL		(CLK_TOP_NR_CLK + 39)
++#define CLK_TOP_DPI1_MM_SEL		(CLK_TOP_NR_CLK + 40)
++#define CLK_TOP_AXI_MFG_IN_SEL		(CLK_TOP_NR_CLK + 41)
++#define CLK_TOP_SLOW_MFG_SEL		(CLK_TOP_NR_CLK + 42)
++#define MT8167_CLK_TOP_NR_CLK		(CLK_TOP_NR_CLK + 43)
++
++/* MFGCFG */
++
++#define CLK_MFG_BAXI			0
++#define CLK_MFG_BMEM			1
++#define CLK_MFG_BG3D			2
++#define CLK_MFG_B26M			3
++#define CLK_MFG_NR_CLK			4
++
++/* MMSYS */
++
++#define CLK_MM_SMI_COMMON		0
++#define CLK_MM_SMI_LARB0		1
++#define CLK_MM_CAM_MDP			2
++#define CLK_MM_MDP_RDMA			3
++#define CLK_MM_MDP_RSZ0			4
++#define CLK_MM_MDP_RSZ1			5
++#define CLK_MM_MDP_TDSHP		6
++#define CLK_MM_MDP_WDMA			7
++#define CLK_MM_MDP_WROT			8
++#define CLK_MM_FAKE_ENG			9
++#define CLK_MM_DISP_OVL0		10
++#define CLK_MM_DISP_RDMA0		11
++#define CLK_MM_DISP_RDMA1		12
++#define CLK_MM_DISP_WDMA		13
++#define CLK_MM_DISP_COLOR		14
++#define CLK_MM_DISP_CCORR		15
++#define CLK_MM_DISP_AAL			16
++#define CLK_MM_DISP_GAMMA		17
++#define CLK_MM_DISP_DITHER		18
++#define CLK_MM_DISP_UFOE		19
++#define CLK_MM_DISP_PWM_MM		20
++#define CLK_MM_DISP_PWM_26M		21
++#define CLK_MM_DSI_ENGINE		22
++#define CLK_MM_DSI_DIGITAL		23
++#define CLK_MM_DPI0_ENGINE		24
++#define CLK_MM_DPI0_PXL			25
++#define CLK_MM_LVDS_PXL			26
++#define CLK_MM_LVDS_CTS			27
++#define CLK_MM_DPI1_ENGINE		28
++#define CLK_MM_DPI1_PXL			29
++#define CLK_MM_HDMI_PXL			30
++#define CLK_MM_HDMI_SPDIF		31
++#define CLK_MM_HDMI_ADSP_BCK		32
++#define CLK_MM_HDMI_PLL			33
++#define CLK_MM_NR_CLK			34
++
++/* IMGSYS */
++
++#define CLK_IMG_LARB1_SMI		0
++#define CLK_IMG_CAM_SMI			1
++#define CLK_IMG_CAM_CAM			2
++#define CLK_IMG_SEN_TG			3
++#define CLK_IMG_SEN_CAM			4
++#define CLK_IMG_VENC			5
++#define CLK_IMG_NR_CLK			6
++
++/* VDECSYS */
++
++#define CLK_VDEC_CKEN			0
++#define CLK_VDEC_LARB1_CKEN		1
++#define CLK_VDEC_NR_CLK			2
++
++#endif /* _DT_BINDINGS_CLK_MT8167_H */
+-- 
+2.28.0
 
-Kind regards
-Uffe
 
 _______________________________________________
 Linux-mediatek mailing list
