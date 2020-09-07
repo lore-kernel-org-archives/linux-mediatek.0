@@ -2,66 +2,77 @@ Return-Path: <SRS0=DUBy=CQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AABDBC433E2
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 07:42:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 68705C433E2
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 08:30:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 35213207C3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 07:42:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 05E55208C7
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2020 08:30:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tdU+FgnK";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="ZdAosuz8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 35213207C3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cg23HDVn";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=codeaurora.org header.i=@codeaurora.org header.b="Q5FRZguo";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amazonses.com header.i=@amazonses.com header.b="dbiCg0mc"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 05E55208C7
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Date:Message-ID:To:References:In-Reply-To:From:
+	Subject:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=29ixGBngXm/WPBzA0PhUurjPXEWiJoNDBcsmB3/srno=; b=tdU+FgnKieUThKNFcup9bjqNq
-	mSkjfKkACr6qCoR/erxq0Fd16+nwhpRRiGCOP3yF20Ja2w9calncLkj9tcHSaYeCZYKTV76fNEiiE
-	bPCGK8VS1qTgIXu48DyJDVHyrkFJoqmvHTh5dcJNBfkWrQWQqwdZZMweN+07Wny8Z/cOKUCNT3qG1
-	PSrQJ1ZDV+87y5adVtYIq91k+ZHepiRLIpqpmotxsgpwfpkdNyOHUPiNQYn0rnrx7BmdrUdwf2UU+
-	pjPKPfvwYdb35LHCt23RqCwV1srRWwt38l3BQFWYKfdWmP7Wva+04eWUEZtnE3KhsGXihuGiDOZw7
-	xsk28zE2g==;
+	 bh=4j2+gSJX3R2gqVfFd/WIDhX30beGfVh0NI19GXgyxUU=; b=cg23HDVnrvraFp56RCPMk9AaU
+	f0axm4fAGOW5/UvnFG3qEGVdkmdSrpaG4b/WU3AIQBESDNVG8akbspzQ5Bo+yJ7E6MSDEYGyFQWoM
+	r8NZLY0a+qgqGzwmK3h4R1OCkomfkuC9qXne2PxdfXgSqWedzwkreQZGNXpsyiV/ZmqhB4nIw3uqN
+	Dm3aQpll796/J/vPwdOJYxFWjofi5OBxpZHJutWg9y1Vg+yg+gzH97aLoUNDQ1VRwvhrUaH0lcchG
+	jn1a3uOJw0tmOKoqnAFakqYclLNP1YpHeIsY4Fc8zKnxLwNTB0ujENcLt8VzvwTrFy6/vZek/dDBj
+	r1sede3Ew==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFBnc-0004Qf-J1; Mon, 07 Sep 2020 07:42:48 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kFCXZ-0002lD-5f; Mon, 07 Sep 2020 08:30:17 +0000
+Received: from a27-187.smtp-out.us-west-2.amazonses.com ([54.240.27.187])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFBnX-0004Om-UX; Mon, 07 Sep 2020 07:42:45 +0000
-Received: from saruman (91-155-214-58.elisa-laajakaista.fi [91.155.214.58])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0ED4F207C3;
- Mon,  7 Sep 2020 07:42:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1599464562;
- bh=TIs5JwlDQRvebAekInbuV/2Ii2UXnxsq8CLe4ACPU+M=;
- h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
- b=ZdAosuz8jovwbxcvibwH+AMwYlv8fVIdxYehYYIMNofF7Hdu8yCh/CLKMCMmpbTgw
- 4wamX9ZzzgWOMEl58JmSh533zvU4viY96+uz2MYAE2tQi9xDLG6ywD80olFAs0Zg7N
- rFTtOIOwjPflEPKvMzFCPqdDhFOPaMT+g+n/5do8=
-From: Felipe Balbi <balbi@kernel.org>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH 1/7] usb: mtu3: convert to
- devm_platform_ioremap_resource_byname
-In-Reply-To: <1595404275-8449-1-git-send-email-chunfeng.yun@mediatek.com>
-References: <1595404275-8449-1-git-send-email-chunfeng.yun@mediatek.com>
-Date: Mon, 07 Sep 2020 10:42:35 +0300
-Message-ID: <87d02y1190.fsf@kernel.org>
+ id 1kFCXU-0002jy-RZ; Mon, 07 Sep 2020 08:30:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+ s=zsmsymrwgfyinv5wlfyidntwsjeeldzt; d=codeaurora.org; t=1599467407;
+ h=Content-Type:MIME-Version:Content-Transfer-Encoding:Subject:From:In-Reply-To:References:To:Cc:Message-Id:Date;
+ bh=8o5pkbbwRSOnppHz4VSCmTzwH503Kp85jZQlaDj4Y44=;
+ b=Q5FRZguoyMLJvyIx8qemqfWeJ+8Q/A35Yy3rLLVRDP/ZxVTOt3i9GfEllzT0FfOy
+ 9QfH0RjM+1xX1z3dKnhHI9oHpCumdHm36gHNhEC+eoScKGX6mrJ4+LjGXkNyHpM2s1S
+ NmkWOM1DcvDQFLn1YaMRKK7tp1yvJgl6GITQI/Xg=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+ s=hsbnp7p3ensaochzwyq5wwmceodymuwv; d=amazonses.com; t=1599467407;
+ h=Content-Type:MIME-Version:Content-Transfer-Encoding:Subject:From:In-Reply-To:References:To:Cc:Message-Id:Date:Feedback-ID;
+ bh=8o5pkbbwRSOnppHz4VSCmTzwH503Kp85jZQlaDj4Y44=;
+ b=dbiCg0mc+gaG1qoIsn7TeCn4dHuv7HCjlATCIzeUdrbKHN7a76FQ87WJVsiOkx1N
+ kQNxrWfx8+ljWhlysoXRiuFuVnCVYYfNxryGtA/k84FrydjluZ9GsoWo7vC+Q/Bzvh6
+ QILkJV7gc9R0OFq18sJatdRONDcOeLBLXruA3ywU=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 780D9C4345E
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=fail smtp.mailfrom=kvalo@codeaurora.org
 MIME-Version: 1.0
+Subject: Re: [PATCH][next] mt7601u: Use fallthrough pseudo-keyword
+From: Kalle Valo <kvalo@codeaurora.org>
+In-Reply-To: <20200901173603.GA2701@embeddedor>
+References: <20200901173603.GA2701@embeddedor>
+To: "Gustavo A. R. Silva" <gustavoars@kernel.org>
+User-Agent: pwcli/0.1.0-git (https://github.com/kvalo/pwcli/) Python/3.5.2
+Message-ID: <0101017467afc7e0-bfeea581-1dea-4e42-8f93-042ee8ab2c58-000000@us-west-2.amazonses.com>
+Date: Mon, 7 Sep 2020 08:30:07 +0000
+X-SES-Outgoing: 2020.09.07-54.240.27.187
+Feedback-ID: 1.us-west-2.CZuq2qbDmUIuT3qdvXlRHZZCpfZqZ4GtG9v3VKgRyF0=:AmazonSES
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200907_034244_507046_2E85DCF4 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20200907_043012_961622_CB556BC3 
+X-CRM114-Status: UNSURE (   7.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,74 +84,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============7629087197249944859=="
+Cc: Jakub Kicinski <kubakici@wp.pl>, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---===============7629087197249944859==
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha256; protocol="application/pgp-signature"
+"Gustavo A. R. Silva" <gustavoars@kernel.org> wrote:
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+> Replace the existing /* fall through */ comments and its variants with
+> the new pseudo-keyword macro fallthrough[1]. Also, remove unnecessary
+> fall-through markings when it is the case.
+> 
+> [1] https://www.kernel.org/doc/html/v5.7/process/deprecated.html?highlight=fallthrough#implicit-switch-case-fall-through
+> 
+> Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
 
+Patch applied to wireless-drivers-next.git, thanks.
 
-Hi,
+1808191dca82 mt7601u: Use fallthrough pseudo-keyword
 
-Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
-> Use devm_platform_ioremap_resource_byname() to simplify code
->
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+-- 
+https://patchwork.kernel.org/patch/11749303/
 
-why is it so that your patches always come base64 encoded? They look
-fine on the email client, but when I try to pipe the message to git am
-it always gives me a lot of trouble and I have to manually decode the
-body of your messages and recombine with the patch.
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
-Can you try to send your patches as actual plain text without encoding
-the body with base64?
-
-=2D-=20
-balbi
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQJFBAEBCAAvFiEElLzh7wn96CXwjh2IzL64meEamQYFAl9V5GsRHGJhbGJpQGtl
-cm5lbC5vcmcACgkQzL64meEamQbf5A/9GQSFGsCjJVDMN491TnVJU2UcuvE0m1yH
-PuO6qqWoETNQrMIeT0hIx8IED30Szqy7LB/i1VRA/xIaN354CvgWKNyIooryvqXe
-G7E9zb/0BmiTGLoCzt0cKl12pLDz+vGQ4/F4iMm5Aqw+FoaMIPbI+VxWt1TRmdFu
-akic1csqJULetfSI7aqxuMnUJ9FFijZRTFMkLUnxYS1HNH0Ox8rncv1HmRgd+M+E
-Dmpezs3HLQH2bL6vv+k9Cf75JR5agb8fAbxKvsI00uSK6SdNVmNtOaoJCdE3eaj3
-oG5YdX+lvRW3xO+oPyPypxke3FgQdqZwaRBxBduVsVptgZ5zEmEmjKHfqKCv1nvw
-r8aTppriB+8UNkNjnMLmvbkRRaOFtHlxXGM45vNDGrQGFnMgHcsixmfXiy65/AoK
-cNXPN8TTUm0A9CZ6sAe34raZ3H3LPAX1Mg/GuP7Is6Lm7FiiA6X9J0fC46YzK4ZE
-EEhfn9VNYzDbgVpcgPDdMIe+Lvrzm5ATkFvpVrhz/WUcCT0stSPpXZIHjkAyrmUD
-n47a1pTiVpN3ChKyFMH5IlZSihwpMdkG19LRFnryn2NRaiNQEng3qhpJ9YpekN5Z
-cHprLCzqjPM5FzafSiOVLr3mwKhMcQoL7e9M5T1q2OZ26Rharbx2iMHjoDSW8Jbn
-NyfsrIki6cs=
-=vjAN
------END PGP SIGNATURE-----
---=-=-=--
-
-
---===============7629087197249944859==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============7629087197249944859==--
-
