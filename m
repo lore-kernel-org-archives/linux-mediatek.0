@@ -2,75 +2,78 @@ Return-Path: <SRS0=x1vn=CR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6FC29C2BBD0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 06:45:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DE3ADC433E2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 06:45:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 23C5D2065E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 06:45:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 95BB92065E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 06:45:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="B4RPZGjo";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="IVsOyrvR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 23C5D2065E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pY7rcMUS";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="BHDKsJwh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 95BB92065E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ut/+lCgw0m3NHs14j5SimPL7wcrtSZauX4dyZ+L0qtQ=; b=B4RPZGjoZ+ciVHvWJTOM//lTq+
-	TrQKjYXThOfAitHC+Hj4OKicGkG3B8Kavw8vWUKKOjMm6akTLKItgmNPEtFpdbFh/xcgHUQCsflJw
-	xesC2XKC5BQ84I6N9WiTe9HCrhtawR+SE8pNayX26Sm9cHiU+sFwbOXn+F7ZTJ92jDLqWPMLv6qMB
-	yWbG0bGKhxYDrVvuww+kfFwd4yavTSfTM5uWA1QWStK5kNbSDvobbDQCy+cL78gOfSquLX1HQ1R7E
-	sbt9ciBGCnXjI90wPpMnjM/khsCj6xfMLgbrcgeuBf9v2a1arsjKV/s+w/XBg2w00GdZ2XG/Ie8W1
-	9VZPH5cg==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=1e3aWzcO5du8tNDguqDGaR4MCx+MIOjviWehZhV366A=; b=pY7rcMUSs97au/P16uSjpp25k
+	YHFEAo7ITNaJL1xZywYSk00g8L1OAwfXjR+U6zVfIomg9FiYSSzhQJzH3pc6zS7qywSv47xmgU3Y8
+	AwOanOSshJObjDU2Y2kQ+olRNRYqxBPHkc9u9bNmL9+OqQNQTSJ/7rYBy75T0DAs/2OEqFupthCFK
+	nCYvegPU4TFEGyHKcXU0Z4OUkmjf8LbQQdA6rrdMlI6Bk/RxlMIrHvET13SzgXNYB/+jgzKujM87T
+	1dt1G4h6q1CF/Gfd5enUxfFRamAzEfI+RwVMNsE9kjsrT4lRCOwQpx5hG/LYsQqLlYEXZtq3OcAbg
+	59ALRepOA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFXNd-0004Ql-SO; Tue, 08 Sep 2020 06:45:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kFXNi-0004SL-TW; Tue, 08 Sep 2020 06:45:30 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFXNb-0004PA-MU; Tue, 08 Sep 2020 06:45:24 +0000
-X-UUID: 618004427fcc4ea0984e417c95e977e4-20200907
+ id 1kFXNc-0004P5-9A; Tue, 08 Sep 2020 06:45:25 +0000
+X-UUID: 31df335e890545e289e248f37062c27e-20200907
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=gpE1ctEiw5a0F49dlYTrRDICddTGz2kby8/WkqyE3fU=; 
- b=IVsOyrvR1xoP9HQU2vpQd0/hs1fQmA+JYN94Ekmwakrvat1li8+OfIBmghT466vCjLy/Gxr6ycrg0gKa1bQO2443/gdjrCOzXVZ1NCbuhwBaxtugrRhboTc71njJlVkttkCX59Hf4dqCbEwUoSnlDRM9Mpc/mETKi0JqXmnlBYs=;
-X-UUID: 618004427fcc4ea0984e417c95e977e4-20200907
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=2vPo2/6SWh33ktkAO3akjLdPD6CXJMF1HZ7GeTdKNVI=; 
+ b=BHDKsJwhismPLDdjnUL0WUichZGiN5ewYYgBkqHkaOH5U8S59oT75CPqUqloPqE/YQJrzb2AqK9WOLnlZBYVKR/1U/KuKImepV5vKzz6IapAs/e/sveFRjchGhyja6VgN3HcMseeiYPk/dfLp3LOzzvm934VKZcPvBnJU1Iiv0E=;
+X-UUID: 31df335e890545e289e248f37062c27e-20200907
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 147755546; Mon, 07 Sep 2020 22:45:19 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 7 Sep 2020 23:45:17 -0700
+ with ESMTP id 423538681; Mon, 07 Sep 2020 22:45:14 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 7 Sep 2020 23:45:13 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 8 Sep 2020 14:45:09 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 8 Sep 2020 14:45:09 +0800
+ Frontend Transport; Tue, 8 Sep 2020 14:45:10 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH 0/4] scsi: ufs-mediatek: Fixes for kernel v5.10
-Date: Tue, 8 Sep 2020 14:45:03 +0800
-Message-ID: <20200908064507.30774-1-stanley.chu@mediatek.com>
+Subject: [PATCH 1/4] scsi: ufs-mediatek: Eliminate error message for unbound
+ mphy
+Date: Tue, 8 Sep 2020 14:45:04 +0800
+Message-ID: <20200908064507.30774-2-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20200908064507.30774-1-stanley.chu@mediatek.com>
+References: <20200908064507.30774-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 09CF89399DBA7DE7D6B84CA40E7393B33CDCBF42D6BC4B72E193E381E4D0D5B42000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200908_024523_883676_03F0D58D 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200908_024524_452622_B2736A4D 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,25 +96,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Martin, Avri,
+Some MediaTek platforms does not have to bind MPHY so users
+shall not see any unnecessary logs. Simply remove logs for this
+case.
 
-This series fix some defects and introduce host reset mechanism in MediaTek UFS platforms.
-Please consider this patch series for kernel v5.10.
+Fixes: fc4983018fea ("scsi: ufs-mediatek: Allow unbound mphy")
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/scsi/ufs/ufs-mediatek.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-Thanks,
-
-Stanley Chu
-
-Stanley Chu (4):
-  scsi: ufs-mediatek: Eliminate error message for unbound mphy
-  scsi: ufs-mediatek: Fix HOST_PA_TACTIVATE quirk
-  scsi: ufs-mediatek: Fix flag of unipro low-power mode
-  scsi: ufs-mediatek: Add host reset mechanism
-
- drivers/scsi/ufs/ufs-mediatek.c | 79 ++++++++++++++++++++++++++-------
- drivers/scsi/ufs/ufs-mediatek.h |  3 ++
- 2 files changed, 67 insertions(+), 15 deletions(-)
-
+diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+index 29cd017c1aa0..7487b25fa651 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.c
++++ b/drivers/scsi/ufs/ufs-mediatek.c
+@@ -129,7 +129,10 @@ static int ufs_mtk_bind_mphy(struct ufs_hba *hba)
+ 			__func__, err);
+ 	} else if (IS_ERR(host->mphy)) {
+ 		err = PTR_ERR(host->mphy);
+-		dev_info(dev, "%s: PHY get failed %d\n", __func__, err);
++		if (err != -ENODEV) {
++			dev_info(dev, "%s: PHY get failed %d\n", __func__,
++				 err);
++		}
+ 	}
+ 
+ 	if (err)
 -- 
 2.18.0
 _______________________________________________
