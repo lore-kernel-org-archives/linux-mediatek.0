@@ -2,119 +2,87 @@ Return-Path: <SRS0=qDs2=CS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
+X-Spam-Status: No, score=-8.0 required=3.0 tests=BAYES_00,DATE_IN_PAST_06_12,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C99AC43461
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 05:05:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 76F24C10DAA
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 07:10:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AEA5B206A5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 05:05:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D28AA21919
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 07:10:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lxp+QAC6";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=ibm.com header.i=@ibm.com header.b="D8DWbtaC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AEA5B206A5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.ibm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rSxBFDVQ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="HX+OlvYf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D28AA21919
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:Reply-To:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7GN5xKR5IugMS2hqjpBqdI3ETIQOlbQ4hpkYz5Cw5N8=; b=lxp+QAC6Ml5ePGgZYT8T/hOI78
-	OXDY3tkUEiYVp2XI19eesyyFI7703FOpH7JTESahipxrElMB9yDjqNyUM1IDMBh1kCYeOkp5DTKfI
-	zMU7VAKlT3Rjs5AEDn60R/bnT+RMlzRfNPKYsTkpj+NmNu8tFoJrzuk5nSw8v5v3oPzcPNEemOTcD
-	wtTqRm0UCDQWySDuItArgHm1+8gi6mbjrPYhM/PXu/3+5xMXapmCTTVE8PgnGvX/CpMlz3KvXNGRq
-	JyynPBOG7tm9GmTAS/vFsbEw3f5Epe2gZKSSphX26vea2l+1raf5CpXbG9no0qLNcsOMMDaDJV/fJ
-	XXzxZvDQ==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=vjtV8T8DNKPVWaIXhQ55hQPn7sLvvxnKE/yWjQYZJEE=; b=rSxBFDVQR7u+i3dCvMROhHakV
+	mkh5ZgtoClgLNKv1UnFPEF5XpbxkbMwzbpzs4Tn5wagX3DqbaAgODK2/eP26xW/bw8qGYWVOl5Z/e
+	K3iJzERO3+nFzmymn9ziahCf6BdDsS/tyvlTalosKprq8JqbHPL64a6KkA0K4jBl/59tD+Ug3lAZT
+	prJFtkBG2D7VAhnXfc/XwS69BsrZRWd4NSni9dVMWM+Vo5YY5a5IPTwc+lNfVWgX27PuLh6OTlKSD
+	pPcRfaXMbLldss9r67vQqlS1nvjkFS6O91EY13rzAOsGLQGi6/7ht44pMWRZvZHh+AoShGpcO0Edc
+	KRC0zYwHw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFsIO-0000sy-0B; Wed, 09 Sep 2020 05:05:24 +0000
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]
- helo=mx0a-001b2d01.pphosted.com)
+	id 1kFuEz-0008V8-26; Wed, 09 Sep 2020 07:10:01 +0000
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFsIK-0000sQ-4r; Wed, 09 Sep 2020 05:05:21 +0000
-Received: from pps.filterd (m0098416.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 089519og052859; Wed, 9 Sep 2020 01:05:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : subject :
- from : reply-to : to : cc : date : in-reply-to : references : content-type
- : mime-version : content-transfer-encoding; s=pp1;
- bh=upUKW1wfH6tUScMMqZ4LJBIsyfo7taO8e7cu/MaUiSc=;
- b=D8DWbtaCustHMVeKhhusyL120QJsAUw5+N9Cw6xtl7Nm6Qry25bSaEc2dqIT6qiLTanK
- vDMYDgaNPoHIxUUuosxlIrRam9nAWqlSKgWsoo8CIq1wp9DXVHbVjUkI99SfAknYcPUN
- Ng6TyGn1Z5xAw3BbiqudkzbkJnsx1KnHvaxaanoPELn4lf1VBtIkY1v1nQVkHrzUoLAf
- u05NvpIKwhFXoh7UI5594ZYBkDTwyyC0jTulCkvmXnBaIbVlyOAmlKzef0VBk47hs75r
- V0J3hsPJPGW3FaICcrDv14CdxlFDvX/QgDAajEjJLK4kSwctCCv9baEPCHKBBPRHZVsf oQ== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com with ESMTP id 33eqgwsmt4-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 09 Sep 2020 01:05:14 -0400
-Received: from m0098416.ppops.net (m0098416.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 089541dA062667;
- Wed, 9 Sep 2020 01:05:13 -0400
-Received: from ppma01wdc.us.ibm.com (fd.55.37a9.ip4.static.sl-reverse.com
- [169.55.85.253])
- by mx0b-001b2d01.pphosted.com with ESMTP id 33eqgwsmsq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 09 Sep 2020 01:05:13 -0400
-Received: from pps.filterd (ppma01wdc.us.ibm.com [127.0.0.1])
- by ppma01wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 08951c8N002829;
- Wed, 9 Sep 2020 05:05:12 GMT
-Received: from b03cxnp07028.gho.boulder.ibm.com
- (b03cxnp07028.gho.boulder.ibm.com [9.17.130.15])
- by ppma01wdc.us.ibm.com with ESMTP id 33c2a8vqkc-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 09 Sep 2020 05:05:12 +0000
-Received: from b03ledav004.gho.boulder.ibm.com
- (b03ledav004.gho.boulder.ibm.com [9.17.130.235])
- by b03cxnp07028.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 08955BS552363556
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 9 Sep 2020 05:05:11 GMT
-Received: from b03ledav004.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6C0037805E;
- Wed,  9 Sep 2020 05:05:11 +0000 (GMT)
-Received: from b03ledav004.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 1F28F78064;
- Wed,  9 Sep 2020 05:05:08 +0000 (GMT)
-Received: from [153.66.254.174] (unknown [9.85.154.61])
- by b03ledav004.gho.boulder.ibm.com (Postfix) with ESMTP;
- Wed,  9 Sep 2020 05:05:07 +0000 (GMT)
-Message-ID: <1599627906.10803.65.camel@linux.ibm.com>
-Subject: Re: [PATCH v2 1/2] scsi: ufs: Abort tasks before clear them from
- doorbell
-From: James Bottomley <jejb@linux.ibm.com>
-To: Can Guo <cang@codeaurora.org>, asutoshd@codeaurora.org,
- nguyenb@codeaurora.org, hongwus@codeaurora.org,
- ziqichen@codeaurora.org, rnayak@codeaurora.org,
- linux-scsi@vger.kernel.org, kernel-team@android.com,
- saravanak@google.com, salyzyn@google.com
-Date: Tue, 08 Sep 2020 22:05:06 -0700
-In-Reply-To: <1599099873-32579-2-git-send-email-cang@codeaurora.org>
-References: <1599099873-32579-1-git-send-email-cang@codeaurora.org>
- <1599099873-32579-2-git-send-email-cang@codeaurora.org>
-X-Mailer: Evolution 3.26.6 
-Mime-Version: 1.0
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235, 18.0.687
- definitions=2020-09-09_02:2020-09-08,
- 2020-09-09 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 clxscore=1011
- lowpriorityscore=0 adultscore=0 priorityscore=1501 mlxlogscore=999
- impostorscore=0 mlxscore=0 bulkscore=0 phishscore=0 malwarescore=0
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2006250000 definitions=main-2009090040
+ id 1kFuEv-0008Tw-GE; Wed, 09 Sep 2020 07:09:58 +0000
+Received: by mail-il1-x142.google.com with SMTP id b17so1369860ilh.4;
+ Wed, 09 Sep 2020 00:09:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=K5nt6NW95MoUAw6MEltboJP4x+aHBBR4bvSni/nMTG8=;
+ b=HX+OlvYfFmyRY5KpnVk1/SUaMZH+K1Xnbx4XAYBPTuFmyWdcLqS50beKODjTdFXU38
+ ueuKrhflniqebAemuOkyT7bjtG/DbEI26PRkrdAVlMTxbNRBHL3FVNHv6rRbySPWYwM2
+ oinTrfj9fbCM547HrtJlFn1ROfb8IdjVvi1E17ndMY9F6Oub5qfD4i3uxav+hRjHKbmn
+ otQy3DKscJbCeBBmuAZ951ikCqkzbXQCMWcCjUNIqDQEzJuPP8axmWCPpa6CALAZPRrd
+ SncUjs/kvzfLyisAKFoz1NhI/4LYSp1QG4p7E+nthO8NTQeq73mjmjB7o8fGjOtymCxv
+ GTXQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=K5nt6NW95MoUAw6MEltboJP4x+aHBBR4bvSni/nMTG8=;
+ b=etJBc0/4y6wCXbQixYp4iXq1jMCQV1zCxC6htGoAgr+sA4F4b0XZGvVck31ad/6QGK
+ 3wRmH3XnIYynWQBky+pnxNDg0gL1GQIArU81N8ATmccWiSNLY+3lAOudh+zBsLlD2EQa
+ j/+O2zTpKOfdxiODkcji1Aru5QNiMVz5fGCRZ+i3beJxeuNJVRAl1ZNYj7xpMEyes/8Z
+ dfzrcfqa7inM9qkze4reGqjE+rncLQh0hRlN3UUUx6iJ914XmxD3iyiBh3nJP9I0tIiz
+ 5q2qBulJPB4r/AGkGq1+BCqNcN5odXSF/qneMkOPwx2EAzgOK5qfqIRvpycsfBWg0nc8
+ LJXg==
+X-Gm-Message-State: AOAM530JEfKB37UX/yfvSHhbzxPexMGnaSoFApLvM1jF2A2opj4rDl4Y
+ MH9Fe2hD5bmTf0hW5ar4WkatiQCb1dQ+Nr/cTsE=
+X-Google-Smtp-Source: ABdhPJwIA2ommqfDJurjDZrxOv9h0V7R0Dq40OXozD6jcy0NEPGLU4HA7zRSMsxBa1m/L5xOhP6cWc1IIKoPAjG7CgQ=
+X-Received: by 2002:a92:d188:: with SMTP id z8mr2525174ilz.292.1599635395503; 
+ Wed, 09 Sep 2020 00:09:55 -0700 (PDT)
+MIME-Version: 1.0
+References: <1597661277-27862-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1597661277-27862-10-git-send-email-gene.chen.richtek@gmail.com>
+ <20200828104053.GM1826686@dell>
+ <CAE+NS37uFoDhWyGkw0WTu+tR+_85EwzYRqecNMG6nK6b2J=9jg@mail.gmail.com>
+ <20200908114819.GO4400@dell>
+In-Reply-To: <20200908114819.GO4400@dell>
+From: Gene Chen <gene.chen.richtek@gmail.com>
+Date: Wed, 9 Sep 2020 07:09:44 +0800
+Message-ID: <CAE+NS36MVA=9e0Ev73gpJ-gOcY+_aNveTr+DhquD6iqY-GKXCQ@mail.gmail.com>
+Subject: Re: [PATCH v4 9/9] mfd: mt6360: Merge different sub-devices I2C
+ read/write
+To: Lee Jones <lee.jones@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200909_010520_348930_4822D678 
-X-CRM114-Status: GOOD (  31.33  )
+X-CRM114-CacheID: sfid-20200909_030957_571118_1156F06B 
+X-CRM114-Status: GOOD (  35.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -126,230 +94,113 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: jejb@linux.ibm.com
-Cc: Bart Van Assche <bvanassche@acm.org>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- open list <linux-kernel@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Stanley Chu <stanley.chu@mediatek.com>, "moderated
- list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
- Bean Huo <beanhuo@micron.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Gene Chen <gene_chen@richtek.com>, linux-kernel@vger.kernel.org,
+ cy_huang@richtek.com, benjamin.chao@mediatek.com,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, shufan_lee@richtek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-I can't reconcile this hunk:
-
-On Wed, 2020-09-02 at 19:24 -0700, Can Guo wrote:
-> @@ -6504,6 +6505,80 @@ static void ufshcd_set_req_abort_skip(struct
-> ufs_hba *hba, unsigned long bitmap)
->   * issued. To avoid that, first issue UFS_QUERY_TASK to check if the
-> command is
->   * really issued and then try to abort it.
->   *
-> + * Returns zero on success, non-zero on failure
-> + */
-> +static int ufshcd_try_to_abort_task(struct ufs_hba *hba, int tag)
-> +{
-> +	struct ufshcd_lrb *lrbp = &hba->lrb[tag];
-> +	int err = 0;
-> +	int poll_cnt;
-> +	u8 resp = 0xF;
-> +	u32 reg;
-> +
-> +	for (poll_cnt = 100; poll_cnt; poll_cnt--) {
-> +		err = ufshcd_issue_tm_cmd(hba, lrbp->lun, lrbp-
-> >task_tag,
-> +				UFS_QUERY_TASK, &resp);
-> +		if (!err && resp ==
-> UPIU_TASK_MANAGEMENT_FUNC_SUCCEEDED) {
-> +			/* cmd pending in the device */
-> +			dev_err(hba->dev, "%s: cmd pending in the
-> device. tag = %d\n",
-> +				__func__, tag);
-> +			break;
-> +		} else if (!err && resp ==
-> UPIU_TASK_MANAGEMENT_FUNC_COMPL) {
-> +			/*
-> +			 * cmd not pending in the device, check if
-> it is
-> +			 * in transition.
-> +			 */
-> +			dev_err(hba->dev, "%s: cmd at tag %d not
-> pending in the device.\n",
-> +				__func__, tag);
-> +			reg = ufshcd_readl(hba,
-> REG_UTP_TRANSFER_REQ_DOOR_BELL);
-> +			if (reg & (1 << tag)) {
-> +				/* sleep for max. 200us to stabilize
-> */
-> +				usleep_range(100, 200);
-> +				continue;
-> +			}
-> +			/* command completed already */
-> +			dev_err(hba->dev, "%s: cmd at tag %d
-> successfully cleared from DB.\n",
-> +				__func__, tag);
-> +			goto out;
-> +		} else {
-> +			dev_err(hba->dev,
-> +				"%s: no response from device. tag =
-> %d, err %d\n",
-> +				__func__, tag, err);
-> +			if (!err)
-> +				err = resp; /* service response
-> error */
-> +			goto out;
-> +		}
-> +	}
-> +
-> +	if (!poll_cnt) {
-> +		err = -EBUSY;
-> +		goto out;
-> +	}
-> +
-> +	err = ufshcd_issue_tm_cmd(hba, lrbp->lun, lrbp->task_tag,
-> +			UFS_ABORT_TASK, &resp);
-> +	if (err || resp != UPIU_TASK_MANAGEMENT_FUNC_COMPL) {
-> +		if (!err) {
-> +			err = resp; /* service response error */
-> +			dev_err(hba->dev, "%s: issued. tag = %d, err
-> %d\n",
-> +				__func__, tag, err);
-> +		}
-> +		goto out;
-> +	}
-> +
-> +	err = ufshcd_clear_cmd(hba, tag);
-> +	if (err)
-> +		dev_err(hba->dev, "%s: Failed clearing cmd at tag
-> %d, err %d\n",
-> +			__func__, tag, err);
-> +
-> +out:
-> +	return err;
-> +}
-> +
-> +/**
-> + * ufshcd_abort - scsi host template eh_abort_handler callback
-> + * @cmd: SCSI command pointer
-> + *
->   * Returns SUCCESS/FAILED
->   */
->  static int ufshcd_abort(struct scsi_cmnd *cmd)
-> @@ -6513,8 +6588,6 @@ static int ufshcd_abort(struct scsi_cmnd *cmd)
->  	unsigned long flags;
->  	unsigned int tag;
->  	int err = 0;
-> -	int poll_cnt;
-> -	u8 resp = 0xF;
->  	struct ufshcd_lrb *lrbp;
->  	u32 reg;
->  
-> @@ -6583,63 +6656,9 @@ static int ufshcd_abort(struct scsi_cmnd *cmd)
->  		goto out;
->  	}
->  
-> -	for (poll_cnt = 100; poll_cnt; poll_cnt--) {
-> -		err = ufshcd_issue_tm_cmd(hba, lrbp->lun, lrbp-
-> >task_tag,
-> -				UFS_QUERY_TASK, &resp);
-> -		if (!err && resp ==
-> UPIU_TASK_MANAGEMENT_FUNC_SUCCEEDED) {
-> -			/* cmd pending in the device */
-> -			dev_err(hba->dev, "%s: cmd pending in the
-> device. tag = %d\n",
-> -				__func__, tag);
-> -			break;
-> -		} else if (!err && resp ==
-> UPIU_TASK_MANAGEMENT_FUNC_COMPL) {
-> -			/*
-> -			 * cmd not pending in the device, check if
-> it is
-> -			 * in transition.
-> -			 */
-> -			dev_err(hba->dev, "%s: cmd at tag %d not
-> pending in the device.\n",
-> -				__func__, tag);
-> -			reg = ufshcd_readl(hba,
-> REG_UTP_TRANSFER_REQ_DOOR_BELL);
-> -			if (reg & (1 << tag)) {
-> -				/* sleep for max. 200us to stabilize
-> */
-> -				usleep_range(100, 200);
-> -				continue;
-> -			}
-> -			/* command completed already */
-> -			dev_err(hba->dev, "%s: cmd at tag %d
-> successfully cleared from DB.\n",
-> -				__func__, tag);
-> -			goto out;
-> -		} else {
-> -			dev_err(hba->dev,
-> -				"%s: no response from device. tag =
-> %d, err %d\n",
-> -				__func__, tag, err);
-> -			if (!err)
-> -				err = resp; /* service response
-> error */
-> -			goto out;
-> -		}
-> -	}
-> -
-> -	if (!poll_cnt) {
-> -		err = -EBUSY;
-> -		goto out;
-> -	}
-> -
-> -	err = ufshcd_issue_tm_cmd(hba, lrbp->lun, lrbp->task_tag,
-> -			UFS_ABORT_TASK, &resp);
-> -	if (err || resp != UPIU_TASK_MANAGEMENT_FUNC_COMPL) {
-> -		if (!err) {
-> -			err = resp; /* service response error */
-> -			dev_err(hba->dev, "%s: issued. tag = %d, err
-> %d\n",
-> -				__func__, tag, err);
-> -		}
-> -		goto out;
-> -	}
-> -
-> -	err = ufshcd_clear_cmd(hba, tag);
-> -	if (err) {
-> -		dev_err(hba->dev, "%s: Failed clearing cmd at tag
-> %d, err %d\n",
-> -			__func__, tag, err);
-> +	err = ufshcd_try_to_abort_task(hba, tag);
-> +	if (err)
->  		goto out;
-> -	}
->  
->  	spin_lock_irqsave(host->host_lock, flags);
->  	__ufshcd_transfer_req_compl(hba, (1UL << tag));
-
-
-With the change in this fix:
-
-commit b10178ee7fa88b68a9e8adc06534d2605cb0ec23
-Author: Stanley Chu <stanley.chu@mediatek.com>
-Date:   Tue Aug 11 16:18:58 2020 +0200
-
-    scsi: ufs: Clean up completed request without interrupt
-notification
-
-
-It looks like there have to be two separate error returns from your new
-ufshcd_try_to_abort_function() so it knows to continue with
-usfhcd_transfer_req_complete(), or the whole function needs to be
-refactored, but if this goes upstream as is it looks like it will
-eliminate the bug fix.
-
-James
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+TGVlIEpvbmVzIDxsZWUuam9uZXNAbGluYXJvLm9yZz4g5pa8IDIwMjDlubQ55pyIOOaXpSDpgLHk
+uowg5LiL5Y2INzo0OOWvq+mBk++8mgo+Cj4gT24gVHVlLCAwMSBTZXAgMjAyMCwgR2VuZSBDaGVu
+IHdyb3RlOgo+Cj4gPiBMZWUgSm9uZXMgPGxlZS5qb25lc0BsaW5hcm8ub3JnPiDmlrwgMjAyMOW5
+tDjmnIgyOOaXpSDpgLHkupQg5LiL5Y2INjo0MOWvq+mBk++8mgo+ID4gPgo+ID4gPiBPbiBNb24s
+IDE3IEF1ZyAyMDIwLCBHZW5lIENoZW4gd3JvdGU6Cj4gPiA+Cj4gPiA+ID4gRnJvbTogR2VuZSBD
+aGVuIDxnZW5lX2NoZW5AcmljaHRlay5jb20+Cj4gPiA+ID4KPiA+ID4gPiBSZW1vdmUgdW51c2Ug
+cmVnaXN0ZXIgZGVmaW5pdGlvbi4KPiA+ID4KPiA+ID4gVGhpcyBzaG91bGQgYmUgaW4gYSBzZXBh
+cmF0ZSBwYXRjaC4KPiA+ID4KPiA+ID4gPiBNZXJnZSBkaWZmZXJlbnQgc3ViLWRldmljZXMgSTJD
+IHJlYWQvd3JpdGUgZnVuY3Rpb25zIGludG8gb25lIFJlZ21hcCwKPiA+ID4gPiBiZWNhdXNlIFBN
+SUMgYW5kIExETyBwYXJ0IG5lZWQgQ1JDIGJpdHMgZm9yIGFjY2VzcyBwcm90ZWN0aW9uLgo+ID4g
+PiA+Cj4gPiA+ID4gU2lnbmVkLW9mZi1ieTogR2VuZSBDaGVuIDxnZW5lX2NoZW5AcmljaHRlay5j
+b20+Cj4gPiA+ID4gLS0tCj4gPiA+ID4gIGRyaXZlcnMvbWZkL0tjb25maWcgICAgICAgIHwgICAx
+ICsKPiA+ID4gPiAgZHJpdmVycy9tZmQvbXQ2MzYwLWNvcmUuYyAgfCAyNjAgKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrLS0tLS0tCj4gPiA+ID4gIGluY2x1ZGUvbGludXgv
+bWZkL210NjM2MC5oIHwgMjQwIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tCj4gPiA+ID4gIDMgZmlsZXMgY2hhbmdlZCwgMjI2IGluc2VydGlvbnMoKyksIDI3NSBkZWxl
+dGlvbnMoLSkKPiA+ID4gPiAgZGVsZXRlIG1vZGUgMTAwNjQ0IGluY2x1ZGUvbGludXgvbWZkL210
+NjM2MC5oCj4gPiA+ID4KPiA+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZmQvS2NvbmZpZyBi
+L2RyaXZlcnMvbWZkL0tjb25maWcKPiA+ID4gPiBpbmRleCBhMzdkN2QxLi4wNjg0ZGRjIDEwMDY0
+NAo+ID4gPiA+IC0tLSBhL2RyaXZlcnMvbWZkL0tjb25maWcKPiA+ID4gPiArKysgYi9kcml2ZXJz
+L21mZC9LY29uZmlnCj4gPiA+ID4gQEAgLTkxMyw2ICs5MTMsNyBAQCBjb25maWcgTUZEX01UNjM2
+MAo+ID4gPiA+ICAgICAgIHNlbGVjdCBNRkRfQ09SRQo+ID4gPiA+ICAgICAgIHNlbGVjdCBSRUdN
+QVBfSTJDCj4gPiA+ID4gICAgICAgc2VsZWN0IFJFR01BUF9JUlEKPiA+ID4gPiArICAgICBzZWxl
+Y3QgQ1JDOAo+ID4gPiA+ICAgICAgIGRlcGVuZHMgb24gSTJDCj4gPiA+ID4gICAgICAgaGVscAo+
+ID4gPiA+ICAgICAgICAgU2F5IFkgaGVyZSB0byBlbmFibGUgTVQ2MzYwIFBNVS9QTUlDL0xETyBm
+dW5jdGlvbmFsIHN1cHBvcnQuCj4gPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWZkL210NjM2
+MC1jb3JlLmMgYi9kcml2ZXJzL21mZC9tdDYzNjAtY29yZS5jCj4gPiA+ID4gaW5kZXggNjc3Yzk3
+NC4uZTk5NTIyMCAxMDA2NDQKPiA+ID4gPiAtLS0gYS9kcml2ZXJzL21mZC9tdDYzNjAtY29yZS5j
+Cj4gPiA+ID4gKysrIGIvZHJpdmVycy9tZmQvbXQ2MzYwLWNvcmUuYwo+ID4gPiA+IEBAIC0xNCw3
+ICsxNCw1MyBAQAo+ID4gPiA+ICAjaW5jbHVkZSA8bGludXgvcmVnbWFwLmg+Cj4gPiA+ID4gICNp
+bmNsdWRlIDxsaW51eC9zbGFiLmg+Cj4gPiA+ID4KPiA+ID4gPiAtI2luY2x1ZGUgPGxpbnV4L21m
+ZC9tdDYzNjAuaD4KPiA+ID4gPiArZW51bSB7Cj4gPiA+ID4gKyAgICAgTVQ2MzYwX1NMQVZFX1RD
+UEMgPSAwLAo+ID4gPiA+ICsgICAgIE1UNjM2MF9TTEFWRV9QTUlDLAo+ID4gPiA+ICsgICAgIE1U
+NjM2MF9TTEFWRV9MRE8sCj4gPiA+ID4gKyAgICAgTVQ2MzYwX1NMQVZFX1BNVSwKPiA+ID4gPiAr
+ICAgICBNVDYzNjBfU0xBVkVfTUFYLAo+ID4gPiA+ICt9Owo+ID4gPiA+ICsKPiA+ID4gPiArc3Ry
+dWN0IG10NjM2MF9kZGF0YSB7Cj4gPiA+ID4gKyAgICAgc3RydWN0IGkyY19jbGllbnQgKmkyY1tN
+VDYzNjBfU0xBVkVfTUFYXTsKPiA+ID4gPiArICAgICBzdHJ1Y3QgZGV2aWNlICpkZXY7Cj4gPiA+
+ID4gKyAgICAgc3RydWN0IHJlZ21hcCAqcmVnbWFwOwo+ID4gPiA+ICsgICAgIHN0cnVjdCByZWdt
+YXBfaXJxX2NoaXBfZGF0YSAqaXJxX2RhdGE7Cj4gPiA+ID4gKyAgICAgdW5zaWduZWQgaW50IGNo
+aXBfcmV2Owo+ID4gPiA+ICsgICAgIHU4IGNyYzhfdGJsW0NSQzhfVEFCTEVfU0laRV07Cj4gPiA+
+ID4gK307Cj4gPiA+Cj4gPiA+IFRoaXMgaXMgbm90IGEgbmV3IHN0cnVjdHVyZSwgcmlnaHQ/ICBX
+aGVyZSB3YXMgdGhpcyBiZWZvcmU/ICBTdXJlbHkgaXQKPiA+ID4gc2hvdWxkIGJlIHJlbW92ZWQg
+ZnJvbSB3aGVyZXZlciBpdCB3YXMgaW4gdGhlIHNhbWUgcGF0Y2ggdGhhdCBwbGFjZXMKPiA+ID4g
+aXQgaGVyZT8KPiA+ID4KPiA+Cj4gPiBObywgaXQgaXMgbWVyZ2UgZnJvbSBoZWFkZXIgZmlsZSB0
+byBzb3VyY2UgY29kZSBmb3IgdW51c2UgaW4gb3RoZXIgc3ViLW1vZHVsZS4KPgo+IFNvIHdoZXJl
+IGRpZCBpdCBjb21lIGZyb20gYW5kIHdoeSBkb24ndCBJIHNlZSB0aGUgcmVtb3ZhbCBpbiB0aGlz
+Cj4gcGF0Y2g/Cj4KCkNoYW5nZSBpcyBpbiB0aGUgYm90dG9tIG9mIHRoaXMgcGF0Y2guClRoZXJl
+IGlzIGEgbGl0dGxlIGNvbmZ1c2UgcGFydCBpbiAiW1BBVENIIHY0IDUvOV0gbWZkOiBtdDYzNjA6
+IFJlbmFtZQptdDYzNjBfcG11X2RhdGEgYnkgbXQ2MzYwX2RkYXRhIgpUaGUgIlBBVENIIDUvOSIg
+Y2hhbmdlIG10NjM2MF9wbXVfZGF0YSB0byBtdDYzNjBfZGRhdGEgaW5zdGVhZCBvZiBtdDYzNjBf
+ZGF0YS4KSSB3aWxsIHVwZGF0ZSBQQVRDSCB2NSB0byBmaXggaXQuCgpbUEFUQ0ggdjQgOS85XQpk
+aWZmIC0tZ2l0IGEvaW5jbHVkZS9saW51eC9tZmQvbXQ2MzYwLmggYi9pbmNsdWRlL2xpbnV4L21m
+ZC9tdDYzNjAuaAotc3RydWN0IG10NjM2MF9kYXRhIHsKLSAgICAgICBzdHJ1Y3QgaTJjX2NsaWVu
+dCAqaTJjW01UNjM2MF9TTEFWRV9NQVhdOwotICAgICAgIHN0cnVjdCBkZXZpY2UgKmRldjsKLSAg
+ICAgICBzdHJ1Y3QgcmVnbWFwICpyZWdtYXA7Ci0gICAgICAgc3RydWN0IHJlZ21hcF9pcnFfY2hp
+cF9kYXRhICppcnFfZGF0YTsKLSAgICAgICB1bnNpZ25lZCBpbnQgY2hpcF9yZXY7Ci19OwoKW1BB
+VENIIHY0IDUvOV0KZGlmZiAtLWdpdCBhL2luY2x1ZGUvbGludXgvbWZkL210NjM2MC5oIGIvaW5j
+bHVkZS9saW51eC9tZmQvbXQ2MzYwLmgKLXN0cnVjdCBtdDYzNjBfcG11X2RhdGEgeworc3RydWN0
+IG10NjM2MF9kYXRhIHsKICAgICAgICBzdHJ1Y3QgaTJjX2NsaWVudCAqaTJjW01UNjM2MF9TTEFW
+RV9NQVhdOwogICAgICAgIHN0cnVjdCBkZXZpY2UgKmRldjsKICAgICAgICBzdHJ1Y3QgcmVnbWFw
+ICpyZWdtYXA7CgoKPiBbLi4uXQo+Cj4gPiA+ID4gLXN0YXRpYyBjb25zdCB1bnNpZ25lZCBzaG9y
+dCBtdDYzNjBfc2xhdmVfYWRkcltNVDYzNjBfU0xBVkVfTUFYXSA9IHsKPiA+ID4gPiAtICAgICBN
+VDYzNjBfUE1VX1NMQVZFSUQsCj4gPiA+ID4gK3N0YXRpYyBjb25zdCB1MTYgbXQ2MzYwX3NsYXZl
+X2FkZHJzW01UNjM2MF9TTEFWRV9NQVhdID0gewo+ID4gPgo+ID4gPiBXaHkgYXJlIHlvdSBjaGFu
+Z2luZyB0aGUgZGF0YSB0eXBlPwo+ID4gPgo+ID4KPiA+IEVhc3kgdG8gcmVhZC4KPiA+IEkgdGhp
+bmsgaXQncyB0aGUgc2FtZT8KPgo+IEl0J3MgYW4gdW5yZWxhdGVkIGNoYW5nZSBhbmQgc2hvdWxk
+IG5vdCBiZSBpbiB0aGlzIHBhdGNoLgo+Cj4gUGxlYXNlIHNlcGFyYXRlIHBhdGNoZXMgaW50byBm
+dW5jdGlvbmFsIGNoYW5nZXMuCj4KCkFDSy4gSXQncyBub3QgdmVyeSBpbXBvcnRhbnQgY2hhbmdl
+LiBJIHdpbGwgcmV2ZXJ0IGl0LgoKPiA+ID4gPiArICAgICBNVDYzNjBfVENQQ19TTEFWRUlELAo+
+ID4gPiA+ICAgICAgIE1UNjM2MF9QTUlDX1NMQVZFSUQsCj4gPiA+ID4gICAgICAgTVQ2MzYwX0xE
+T19TTEFWRUlELAo+ID4gPiA+IC0gICAgIE1UNjM2MF9UQ1BDX1NMQVZFSUQsCj4gPiA+ID4gKyAg
+ICAgTVQ2MzYwX1BNVV9TTEFWRUlELAo+ID4gPiA+ICt9Owo+Cj4gWy4uLl0KPgo+ID4gPiA+ICBz
+dGF0aWMgaW50IG10NjM2MF9wcm9iZShzdHJ1Y3QgaTJjX2NsaWVudCAqY2xpZW50KQo+ID4gPiA+
+IEBAIC0zMjksOSArNTIxLDIzIEBAIHN0YXRpYyBpbnQgbXQ2MzYwX3Byb2JlKHN0cnVjdCBpMmNf
+Y2xpZW50ICpjbGllbnQpCj4gPiA+ID4gICAgICAgICAgICAgICByZXR1cm4gLUVOT01FTTsKPiA+
+ID4gPgo+ID4gPiA+ICAgICAgIGRkYXRhLT5kZXYgPSAmY2xpZW50LT5kZXY7Cj4gPiA+ID4gLSAg
+ICAgaTJjX3NldF9jbGllbnRkYXRhKGNsaWVudCwgZGRhdGEpOwo+ID4gPiA+Cj4gPiA+ID4gLSAg
+ICAgZGRhdGEtPnJlZ21hcCA9IGRldm1fcmVnbWFwX2luaXRfaTJjKGNsaWVudCwgJm10NjM2MF9w
+bXVfcmVnbWFwX2NvbmZpZyk7Cj4gPiA+ID4gKyAgICAgZm9yIChpID0gMDsgaSA8IE1UNjM2MF9T
+TEFWRV9NQVggLSAxOyBpKyspIHsKPiA+ID4gPiArICAgICAgICAgICAgIGRkYXRhLT5pMmNbaV0g
+PSBkZXZtX2kyY19uZXdfZHVtbXlfZGV2aWNlKCZjbGllbnQtPmRldiwKPiA+ID4gPiArICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsaWVudC0+
+YWRhcHRlciwKPiA+ID4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIG10NjM2MF9zbGF2ZV9hZGRyc1tpXSk7Cj4gPiA+ID4gKyAgICAgICAg
+ICAgICBpZiAoSVNfRVJSKGRkYXRhLT5pMmNbaV0pKSB7Cj4gPiA+ID4gKyAgICAgICAgICAgICAg
+ICAgICAgIGRldl9lcnIoJmNsaWVudC0+ZGV2LAo+ID4gPiA+ICsgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICJGYWlsZWQgdG8gZ2V0IG5ldyBkdW1teSBJMkMgZGV2aWNlIGZvciBhZGRyZXNz
+IDB4JXgiLAo+ID4gPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG10NjM2MF9zbGF2
+ZV9hZGRyc1tpXSk7Cj4gPiA+ID4gKyAgICAgICAgICAgICAgICAgICAgIHJldHVybiBQVFJfRVJS
+KGRkYXRhLT5pMmNbaV0pOwo+ID4gPgo+ID4gPiBEbyB5b3UgaGF2ZSB0byBmcmVlIHRoZSBuZXcg
+ZGV2aWNlcyB5b3UganVzdCBhbGxvY2F0ZWQ/Cj4gPiA+Cj4gPgo+ID4gVXN1YWxseSBubyBuZWVk
+IHRvIGZyZWUgZGV2bV9pMmNfbmV3X2R1bW15X2RldmljZSwKPiA+IFNob3VsZCBJIHVzZSBrZnJl
+ZShkZGF0YS0+aTJjW2ldKTs/Cj4KPiBZb3UgdGVsbCBtZS4KPgoKSSBzdXJ2ZXkgdGhlIHVwc3Ry
+ZWFtIGNvZGUgZS5xLiBkcml2ZXJzL21mZC90cHM4MDAzMS5jCkl0JyBzaG91bGQgbm90IGhhdmUg
+dG8gZnJlZSB0aGUgbWVtb3J5LgoKPiAtLQo+IExlZSBKb25lcyBb5p2O55C85pavXQo+IFNlbmlv
+ciBUZWNobmljYWwgTGVhZCAtIERldmVsb3BlciBTZXJ2aWNlcwo+IExpbmFyby5vcmcg4pSCIE9w
+ZW4gc291cmNlIHNvZnR3YXJlIGZvciBBcm0gU29Dcwo+IEZvbGxvdyBMaW5hcm86IEZhY2Vib29r
+IHwgVHdpdHRlciB8IEJsb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtbWVkaWF0ZWsK
