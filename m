@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DE3ADC433E2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 06:45:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3CAE8C43461
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 06:45:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 95BB92065E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 06:45:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C932F2065E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 06:45:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pY7rcMUS";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="BHDKsJwh"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 95BB92065E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Oml0+vVs";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="HHJnF2BY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C932F2065E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,34 +26,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1e3aWzcO5du8tNDguqDGaR4MCx+MIOjviWehZhV366A=; b=pY7rcMUSs97au/P16uSjpp25k
-	YHFEAo7ITNaJL1xZywYSk00g8L1OAwfXjR+U6zVfIomg9FiYSSzhQJzH3pc6zS7qywSv47xmgU3Y8
-	AwOanOSshJObjDU2Y2kQ+olRNRYqxBPHkc9u9bNmL9+OqQNQTSJ/7rYBy75T0DAs/2OEqFupthCFK
-	nCYvegPU4TFEGyHKcXU0Z4OUkmjf8LbQQdA6rrdMlI6Bk/RxlMIrHvET13SzgXNYB/+jgzKujM87T
-	1dt1G4h6q1CF/Gfd5enUxfFRamAzEfI+RwVMNsE9kjsrT4lRCOwQpx5hG/LYsQqLlYEXZtq3OcAbg
-	59ALRepOA==;
+	 bh=PILwAMNzVY+XlVnMXXFUNIW9T7JvsE5WRdSsUdVv2vg=; b=Oml0+vVsr/wF5tDi5lFaKjn6C
+	wmQ4BQxQndo+m+b31E683xYkhS7AzN/gQn28hW9y6XFsijagqK+Qs2v1lgpLdNWSI/WGj5CrxYk3x
+	BX61Zn8cVvRzqPlA8r7oQmr3FpgZK+YicyyUiSq8gtvH4qB7XjFT9klv2U0uGiXdCV+PAicu0cLwt
+	OlZ9Bi7ReqKftWGnBghJA2VC8vXlNZ/+lcb2rNuu7BKMXDTQnOcLhN9vMJird/AMRE5jWsBPPQgiA
+	3bp7r1NMf+gSvFlc0qAdEBGSCm+Oa6UoVBFKTRMWkjx/U1mTBIGl+PIS1tfIP+ttuSzzBnskdBcr0
+	bWXtikhpA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFXNi-0004SL-TW; Tue, 08 Sep 2020 06:45:30 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kFXNj-0004Sc-Mi; Tue, 08 Sep 2020 06:45:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFXNc-0004P5-9A; Tue, 08 Sep 2020 06:45:25 +0000
-X-UUID: 31df335e890545e289e248f37062c27e-20200907
+ id 1kFXNc-0004PL-EZ; Tue, 08 Sep 2020 06:45:25 +0000
+X-UUID: fa789bdebf1d45c9bf9770eb7389d629-20200907
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=2vPo2/6SWh33ktkAO3akjLdPD6CXJMF1HZ7GeTdKNVI=; 
- b=BHDKsJwhismPLDdjnUL0WUichZGiN5ewYYgBkqHkaOH5U8S59oT75CPqUqloPqE/YQJrzb2AqK9WOLnlZBYVKR/1U/KuKImepV5vKzz6IapAs/e/sveFRjchGhyja6VgN3HcMseeiYPk/dfLp3LOzzvm934VKZcPvBnJU1Iiv0E=;
-X-UUID: 31df335e890545e289e248f37062c27e-20200907
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=GsiSLSlMLBzu8jCR1E1cgx6iwjYy7jwBAV6+lW5fHzQ=; 
+ b=HHJnF2BYHhvzwAc3UFmOG0Q7h7U4S38jlwtV2c/gUH81t/dDEXBO1aQEF69C8gyqObwuSgX/BO9j+9Veys2KLsDAy7xRxWhCXZ+sd4dMLZrxTalbtn4LIDvB4KSTpmr9fotgXvip4JMisWpbhWdrn5XlqMDuVsIUE4KuSQtFhOE=;
+X-UUID: fa789bdebf1d45c9bf9770eb7389d629-20200907
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 423538681; Mon, 07 Sep 2020 22:45:14 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 7 Sep 2020 23:45:13 -0700
+ with ESMTP id 479636662; Mon, 07 Sep 2020 22:45:19 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 7 Sep 2020 23:45:18 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 8 Sep 2020 14:45:09 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -61,19 +61,17 @@ Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH 1/4] scsi: ufs-mediatek: Eliminate error message for unbound
- mphy
-Date: Tue, 8 Sep 2020 14:45:04 +0800
-Message-ID: <20200908064507.30774-2-stanley.chu@mediatek.com>
+Subject: [PATCH 2/4] scsi: ufs-mediatek: Fix HOST_PA_TACTIVATE quirk
+Date: Tue, 8 Sep 2020 14:45:05 +0800
+Message-ID: <20200908064507.30774-3-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200908064507.30774-1-stanley.chu@mediatek.com>
 References: <20200908064507.30774-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 09CF89399DBA7DE7D6B84CA40E7393B33CDCBF42D6BC4B72E193E381E4D0D5B42000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200908_024524_452622_B2736A4D 
-X-CRM114-Status: GOOD (  11.64  )
+X-CRM114-CacheID: sfid-20200908_024524_651486_CA6ED730 
+X-CRM114-Status: GOOD (  10.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,32 +94,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some MediaTek platforms does not have to bind MPHY so users
-shall not see any unnecessary logs. Simply remove logs for this
-case.
+Simply add HOST_PA_TACTIVATE quirk back since it was incorrectly
+removed before.
 
-Fixes: fc4983018fea ("scsi: ufs-mediatek: Allow unbound mphy")
+Fixes: 47d054580a75 ("scsi: ufs-mediatek: fix HOST_PA_TACTIVATE quirk for Samsung UFS Devices")
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
- drivers/scsi/ufs/ufs-mediatek.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/scsi/ufs/ufs-mediatek.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
 diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-index 29cd017c1aa0..7487b25fa651 100644
+index 7487b25fa651..887c03e8bcc0 100644
 --- a/drivers/scsi/ufs/ufs-mediatek.c
 +++ b/drivers/scsi/ufs/ufs-mediatek.c
-@@ -129,7 +129,10 @@ static int ufs_mtk_bind_mphy(struct ufs_hba *hba)
- 			__func__, err);
- 	} else if (IS_ERR(host->mphy)) {
- 		err = PTR_ERR(host->mphy);
--		dev_info(dev, "%s: PHY get failed %d\n", __func__, err);
-+		if (err != -ENODEV) {
-+			dev_info(dev, "%s: PHY get failed %d\n", __func__,
-+				 err);
-+		}
- 	}
+@@ -672,13 +672,7 @@ static int ufs_mtk_apply_dev_quirks(struct ufs_hba *hba)
  
- 	if (err)
+ static void ufs_mtk_fixup_dev_quirks(struct ufs_hba *hba)
+ {
+-	struct ufs_dev_info *dev_info = &hba->dev_info;
+-	u16 mid = dev_info->wmanufacturerid;
+-
+ 	ufshcd_fixup_dev_quirks(hba, ufs_mtk_dev_fixups);
+-
+-	if (mid == UFS_VENDOR_SAMSUNG)
+-		hba->dev_quirks &= ~UFS_DEVICE_QUIRK_HOST_PA_TACTIVATE;
+ }
+ 
+ /**
 -- 
 2.18.0
 _______________________________________________
