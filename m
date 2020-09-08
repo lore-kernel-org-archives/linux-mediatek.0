@@ -2,79 +2,77 @@ Return-Path: <SRS0=x1vn=CR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EA737C2BBD0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 07:36:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1B441C433E2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 07:36:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A2A19218AC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 07:36:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B7A4C218AC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 07:36:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dLlKMJlY";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="WQDDly0w"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A2A19218AC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yzOwhBkM";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="IukL+6rO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B7A4C218AC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=j5ayyPcruY5IwVP0TvQAjbpd5zTQVqkSwMl72scBCbI=; b=dLlKMJlY3vRBScthrWp6Z28uG
-	iv+7eYuS7GZQIssBnBFnT0/rFKTXIe5bfw6Z6OTka/bnVT80T0ebmCNhPWL0n8QKg5G3BAbTmwYu9
-	3mXmYHJituGJo7GkT6boauhNR3AT/LXQSPy1RDXnaf/jaZrhUloRCYBk4/LwF9JXrLdbZlL3+IsCJ
-	L9qbvfPYFt22HgGH1EwNx0QqpMWK0IvsuNLfmxxYD9TOkyZ+iSFp6iQMYQ0NJcfP5M+kjHYsJwrYu
-	F3KTO70wku0RpTBpz5BdihZtvC4h7QdJoS03HNBYO3y5B35+A4wnGtRmBPG63HxdJK4JPONvA06jW
-	b3UKl/teQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2VMhN985GPjwrBjqrSVfS8KGJNXEgxwzA8igNZe3dFM=; b=yzOwhBkMdoKwqQt0sA1CL6AWQR
+	s6ZxqPYpxnntrx4ZWlXwG7l+Ini7ujGXkHIqWkeUfKSLrAUADakQjQHer6bJO1KB9DirNDG9oOW6g
+	/sjjNGcW+rv/sEsIamGhBnjQE6hqM3fXMgg2bXtTJ4MywwodV8Mq+ng7gkBlto8Jau7inkK0xAC2K
+	R7LsCRMquRn/GsS5zC918lA5r7/NO0A61XG5HsH2suPIeTkHk9lpnuFw4imtWYsMInsFTgGvVt36Z
+	qBs4cw3o/UN46i1SQllqIj/cTaOM/R83tJdVStpGi3WpU7J6CezEGCE6IaAuirXLbUjFUoezweYqT
+	g7kTJq6A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFYAn-00031G-0P; Tue, 08 Sep 2020 07:36:13 +0000
+	id 1kFYAo-00031l-2G; Tue, 08 Sep 2020 07:36:14 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFYAe-0002xk-3c; Tue, 08 Sep 2020 07:36:05 +0000
-X-UUID: ab7c1cd580174625ab8763c5849507fd-20200907
+ id 1kFYAe-0002xb-3c; Tue, 08 Sep 2020 07:36:05 +0000
+X-UUID: aba4fe4fd6434d89b16d54e0dcf07e53-20200907
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=CxyzFCyyAUAD9dzrQYeXJkejylJ8fCzMCpGiZ2fc9dM=; 
- b=WQDDly0wKHZRSk18tVb76XOK42a5J0Ogl+Gn8JUfXSjAmIM/K+Bt+P50I7oPQ1UPsyIqGvGe0/hjseCGsd4hv8p/GM1+zAFR+Z5nrpCGzn46mC3WfZOUmHFQdnfT0X0YIYi+xI1Y4LypvcfZX7VLeod9kmb531YUAmuGzTHYhgA=;
-X-UUID: ab7c1cd580174625ab8763c5849507fd-20200907
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=hbb4qHCvH9B4+P53YMJXs/+DzoBkaX6B2n9wmkiuJ2o=; 
+ b=IukL+6rOfILeoHFR9voJKoXI3zlg3iiO43uMBfI0/MCayXdJswUvmMR3IfTHMU9fPZrhRBDSaME+l9c+ic5rZM/uDapUg2I+3TusBGGVn61t/XYBxjuhKKk17iQP/DVBYOOaLUGayNLyz+44Q47YEa99g9toQXJkfTLfbOjV4Ew=;
+X-UUID: aba4fe4fd6434d89b16d54e0dcf07e53-20200907
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <hector.yuan@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 406021057; Mon, 07 Sep 2020 23:35:59 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 2129770095; Mon, 07 Sep 2020 23:35:59 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 8 Sep 2020 00:35:58 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Sep 2020 15:35:56 +0800
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 8 Sep 2020 15:35:50 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 8 Sep 2020 15:35:56 +0800
+ Frontend Transport; Tue, 8 Sep 2020 15:35:51 +0800
 From: Hector Yuan <hector.yuan@mediatek.com>
 To: <linux-mediatek@lists.infradead.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-pm@vger.kernel.org>,
  <devicetree@vger.kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
  "Viresh Kumar" <viresh.kumar@linaro.org>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v4 2/2] dt-bindings: cpufreq: add bindings for MediaTek
- cpufreq HW
-Date: Tue, 8 Sep 2020 15:35:47 +0800
-Message-ID: <1599550547-27767-3-git-send-email-hector.yuan@mediatek.com>
+Subject: [PATCH v4] cpufreq: mediatek-hw: Add support for Mediatek cpufreq HW
+ driver
+Date: Tue, 8 Sep 2020 15:35:45 +0800
+Message-ID: <1599550547-27767-1-git-send-email-hector.yuan@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1599550547-27767-1-git-send-email-hector.yuan@mediatek.com>
-References: <1599550547-27767-1-git-send-email-hector.yuan@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200908_033604_299127_88356B77 
-X-CRM114-Status: GOOD (  14.78  )
+X-CRM114-CacheID: sfid-20200908_033604_294122_63766CA4 
+X-CRM114-Status: GOOD (  10.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,165 +91,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Hector.Yuan" <hector.yuan@mediatek.com>
+This patch depends on the MT6799 DTS patch submitted by Hanks Chen
+ https://lkml.org/lkml/2020/8/4/1094
 
-Add devicetree bindings for MediaTek HW driver.
 
-Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
----
- .../bindings/cpufreq/cpufreq-mediatek-hw.yaml      |  141 ++++++++++++++++++++
- 1 file changed, 141 insertions(+)
+Hector.Yuan (2):
+  cpufreq: mediatek-hw: Add support for Mediatek cpufreq HW driver
+  dt-bindings: cpufreq: add bindings for MediaTek cpufreq HW
+
+ .../bindings/cpufreq/cpufreq-mediatek-hw.yaml      |  141 ++++++++++
+ drivers/cpufreq/Kconfig.arm                        |   12 +
+ drivers/cpufreq/Makefile                           |    1 +
+ drivers/cpufreq/mediatek-cpufreq-hw.c              |  294 ++++++++++++++++++++
+ 4 files changed, 448 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-
-diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-new file mode 100644
-index 0000000..5be5867
---- /dev/null
-+++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-@@ -0,0 +1,141 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/cpufreq/cpufreq-mediatek-hw.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek's CPUFREQ Bindings
-+
-+maintainers:
-+  - Hector Yuan <hector.yuan@mediatek.com>
-+
-+description:
-+  CPUFREQ HW is a hardware engine used by MediaTek
-+  SoCs to manage frequency in hardware. It is capable of controlling frequency
-+  for multiple clusters.
-+
-+properties:
-+  compatible:
-+    const: mediatek,cpufreq-hw
-+
-+  reg:
-+    minItems: 1
-+    maxItems: 2
-+    description: |
-+      Addresses and sizes for the memory of the HW bases in each frequency domain.
-+
-+  reg-names:
-+    items:
-+      - const: "freq-domain0"
-+      - const: "freq-domain1"
-+    description: |
-+      Frequency domain name. i.e.
-+      "freq-domain0", "freq-domain1".
-+
-+  "#freq-domain-cells":
-+    const: 1
-+    description: |
-+      Number of cells in a freqency domain specifier.
-+
-+  mtk-freq-domain:
-+    maxItems: 1
-+    description: |
-+      Define this cpu belongs to which frequency domain. i.e.
-+      cpu0-3 belong to frequency domain0,
-+      cpu4-6 belong to frequency domain1.
-+
-+required:
-+  - compatible
-+  - reg
-+  - reg-names
-+  - "#freq-domain-cells"
-+
-+examples:
-+  - |
-+    cpus {
-+            #address-cells = <1>;
-+            #size-cells = <0>;
-+
-+            cpu0: cpu@0 {
-+                device_type = "cpu";
-+                compatible = "arm,cortex-a55";
-+                enable-method = "psci";
-+                mtk-freq-domain = <&cpufreq_hw 0>;
-+                reg = <0x000>;
-+            };
-+
-+            cpu1: cpu@1 {
-+                device_type = "cpu";
-+                compatible = "arm,cortex-a55";
-+                enable-method = "psci";
-+                mtk-freq-domain = <&cpufreq_hw 0>;
-+                reg = <0x100>;
-+            };
-+
-+            cpu2: cpu@2 {
-+                device_type = "cpu";
-+                compatible = "arm,cortex-a55";
-+                enable-method = "psci";
-+                mtk-freq-domain = <&cpufreq_hw 0>;
-+                reg = <0x200>;
-+            };
-+
-+            cpu3: cpu@3 {
-+                device_type = "cpu";
-+                compatible = "arm,cortex-a55";
-+                enable-method = "psci";
-+                mtk-freq-domain = <&cpufreq_hw 0>;
-+                reg = <0x300>;
-+            };
-+
-+            cpu4: cpu@4 {
-+                device_type = "cpu";
-+                compatible = "arm,cortex-a55";
-+                enable-method = "psci";
-+                mtk-freq-domain = <&cpufreq_hw 1>;
-+                reg = <0x400>;
-+            };
-+
-+            cpu5: cpu@5 {
-+                device_type = "cpu";
-+                compatible = "arm,cortex-a55";
-+                enable-method = "psci";
-+                mtk-freq-domain = <&cpufreq_hw 1>;
-+                reg = <0x500>;
-+            };
-+
-+            cpu6: cpu@6 {
-+                device_type = "cpu";
-+                compatible = "arm,cortex-a75";
-+                enable-method = "psci";
-+                mtk-freq-domain = <&cpufreq_hw 1>;
-+                reg = <0x600>;
-+            };
-+
-+            cpu7: cpu@7 {
-+                device_type = "cpu";
-+                compatible = "arm,cortex-a75";
-+                enable-method = "psci";
-+                mtk-freq-domain = <&cpufreq_hw 1>;
-+                reg = <0x700>;
-+            };
-+    };
-+
-+    /* ... */
-+
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+
-+        cpufreq_hw: cpufreq@11bc00 {
-+            compatible = "mediatek,cpufreq-hw";
-+            reg = <0 0x11bc10 0 0x8c>,
-+               <0 0x11bca0 0 0x8c>;
-+            reg-names = "freq-domain0", "freq-domain1";
-+            #freq-domain-cells = <1>;
-+        };
-+    };
-+
-+
-+
-+
--- 
-1.7.9.5
+ create mode 100644 drivers/cpufreq/mediatek-cpufreq-hw.c
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
