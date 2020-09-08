@@ -2,21 +2,20 @@ Return-Path: <SRS0=x1vn=CR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7FCA3C433E2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 20:34:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 66E11C43461
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 20:50:09 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 398A7208FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 20:34:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EA93520936
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 20:50:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="R8g4pZj6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 398A7208FE
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="v8hUur6C"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA93520936
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,56 +24,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=2NvOeWPPmemSF5ANor8hY3Co4B9M5OLexR6XT1/seaM=; b=R8g4pZj6b7faQ5bFc8xoadBKd
-	tqEZYcxaDu68xEGG4tX05VwIGi+mxwI947j/V56NbQE/gaa8F1yvHdhD68kCw9PZF194vB48Vbq8N
-	jeqYnq7SPa7meuXtzXBBBZuR1QZebht+K3upTjL5Cil1VAZj/H7zcQsewJN8aUzdIYAI3v6tJKsnP
-	x1584RImga2J65s9SGVuubHgRhss0j1ZUpkW0rSA+2vKSXHLI9JOIONxQDtVOsVGQYMDyhpHDyVUe
-	yOGtZuJ5xPH9ckC4krzkdZMRtvYlLNuCFJwUAkVBtx6+Rb97JnPMv6Awk8vhetQ3bCf3dLZ2a+oHp
-	ER0mIT+1g==;
+	 bh=iqtoWLaqiRfdV9tpQFfyR/Ta/yXMfQI6qwqmmZF2wsQ=; b=v8hUur6CPaYQGWNyy2REoS/QJ
+	dGDTRGNT8hEviEHZdYNJNJSYf7oKO5+5m/nCpcFNXu8y/UTvzqw7Akl+No6G/UwN+PLps0hSRKpZd
+	in1D+9QPCFaX8cLWJpPUWEn0kRkNzTEuxrxh3PoL5muPAXBQLTL0AJXTxPpzTQ65I0merHa6p2S3O
+	jr1Nq7rDaipdw4wgJQLqDwpVSnjKK12y6cbBJXZ+m/cMaafvwTTccBa5qZ7POCoJjoGe/Na8071T1
+	4HXgYXxE4kSsCLLmYI3/WpfdMjRCG3kFdB1WET7+se1uuMmlS4iZbksvyrVlMEr3Xae1dIpiCeKzm
+	apR75fnAw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFkJb-000400-OS; Tue, 08 Sep 2020 20:34:08 +0000
-Received: from mail-il1-f196.google.com ([209.85.166.196])
+	id 1kFkYy-0004yF-9n; Tue, 08 Sep 2020 20:50:00 +0000
+Received: from mail-io1-f67.google.com ([209.85.166.67])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFkJX-0003yv-In; Tue, 08 Sep 2020 20:34:04 +0000
-Received: by mail-il1-f196.google.com with SMTP id t13so185823ile.9;
- Tue, 08 Sep 2020 13:34:03 -0700 (PDT)
+ id 1kFkYs-0004vm-EQ; Tue, 08 Sep 2020 20:49:55 +0000
+Received: by mail-io1-f67.google.com with SMTP id r9so860902ioa.2;
+ Tue, 08 Sep 2020 13:49:52 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=gleTakc4Nn6mTISuQkejPMu6ISZTqy+j8/Bxw7G61oU=;
- b=GhskKucbKKritiO7iI5YJW9P3Yxn6WpSBgf1r26GI0u3WCk4kVbosfoD7gZh1QPQLo
- jcrnZoN8/KpGQQMpgUsWJAI5h5crveM7/rSNB+9qLSzsuc/QPpuAKzzYtTtFq/OE6EGR
- ugz3UPClm42Qsbju93O+aHBbJRKdHx+wkrLO+db1R5Yy/MlBhhef5pwAfmxpRcRL1AOL
- HGLbZpInunO7K1+fQzQdU39o4npaqGSRDbcYBr5aJ9l8glUJFCHLfA1vTp3C8lIEVjuf
- ZVO8UVX1hWdWQOqn/lnL6juLngUZ9YHaG88Y2OGcAXapO6p/bd0Jlnh9RPtuz1CMZ4iL
- iwMA==
-X-Gm-Message-State: AOAM532ifTDaR79/L0t6sCL5BCVCaXzIxBqrJ+1sbqP9WAGe37u3pMwm
- 9KzAgk8avbE2TtmDW3IkYQ==
-X-Google-Smtp-Source: ABdhPJzCHoj/ZvrJj7t400J/VsMUBFrd75e5tcT3ln+3OZZL67b775TNHUe3xKteGxNcW5bAkZ322A==
-X-Received: by 2002:a92:c049:: with SMTP id o9mr483817ilf.193.1599597242634;
- Tue, 08 Sep 2020 13:34:02 -0700 (PDT)
+ bh=l6Ml6GUsFvFs2hmUbBhScVBvUaAujChY5id6z4NCBL4=;
+ b=i8FqNGT5046L4xdJwoEyMKM7v8+dg48hsztp5dS8G1ecF/EYoJhia9TORyh51XtGEi
+ hnm0Fr6YvzBveK/uOL4WbERP3cRTmqgGCC6LZgmRAnTkHr7BEhROsl3c90fyJ2gug1xM
+ 2c4IRlrSpDzseqkW2xb1RTejBzsWKPQfioIQdFoK4ZGegMMo8oQtNcw2vLQ+i3Hxkxsx
+ DYclzsR0zHj7xX/VA02hrxwaaHCuu7OJMyJ4dmI899m/nM81PSyaJkWlTuPikNSxE9y6
+ Zh6t9gfo9CV6uBZljhDuPz2vcGCXDAI54AX3Vm5gfggJHrQ90Y6vKBN2KjdlJEsR6tlF
+ 90Yg==
+X-Gm-Message-State: AOAM533iHeOUHY6HmlKDKFgJE5111itAUVASiIYXcdzHk5ctPwYm71dm
+ r515k5dIwAa9sg9ihzOqSKfQB9wgTsD6
+X-Google-Smtp-Source: ABdhPJyul47wGDEorl9zgNUus3MDtK7opu0OS0zlBS8occCySSRUeRKc5hrknvTvzMWAL0NLClcy2Q==
+X-Received: by 2002:a02:ccdb:: with SMTP id k27mr768174jaq.103.1599598192571; 
+ Tue, 08 Sep 2020 13:49:52 -0700 (PDT)
 Received: from xps15 ([64.188.179.251])
- by smtp.gmail.com with ESMTPSA id k14sm217738ioa.7.2020.09.08.13.33.59
+ by smtp.gmail.com with ESMTPSA id i10sm209529ioi.39.2020.09.08.13.49.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Sep 2020 13:34:02 -0700 (PDT)
-Received: (nullmailer pid 868500 invoked by uid 1000);
- Tue, 08 Sep 2020 20:33:57 -0000
-Date: Tue, 8 Sep 2020 14:33:57 -0600
+ Tue, 08 Sep 2020 13:49:52 -0700 (PDT)
+Received: (nullmailer pid 894747 invoked by uid 1000);
+ Tue, 08 Sep 2020 20:49:50 -0000
+Date: Tue, 8 Sep 2020 14:49:50 -0600
 From: Rob Herring <robh@kernel.org>
-To: Cheng-Yi Chiang <cychiang@chromium.org>
-Subject: Re: [PATCH v7 2/3] ASoC: qcom: dt-bindings: Add sc7180 machine
- bindings
-Message-ID: <20200908203357.GA861143@bogus>
-References: <20200907100039.1731457-1-cychiang@chromium.org>
- <20200907100039.1731457-3-cychiang@chromium.org>
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: spmi: document binding for the
+ Mediatek SPMI controller
+Message-ID: <20200908204950.GA893759@bogus>
+References: <1598006677-7953-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1598006677-7953-2-git-send-email-hsin-hsiung.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200907100039.1731457-3-cychiang@chromium.org>
+In-Reply-To: <1598006677-7953-2-git-send-email-hsin-hsiung.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200908_163403_641042_78C6E0A9 
-X-CRM114-Status: GOOD (  16.76  )
+X-CRM114-CacheID: sfid-20200908_164954_511292_F2283DDF 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,80 +85,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Taniya Das <tdas@codeaurora.org>, alsa-devel@alsa-project.org,
- Banajit Goswami <bgoswami@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>,
- Takashi Iwai <tiwai@suse.com>, Rohit kumar <rohitkr@codeaurora.org>,
- Patrick Lai <plai@codeaurora.org>, linux-rockchip@lists.infradead.org,
- Andy Gross <agross@kernel.org>, dgreid@chromium.org,
- Jaroslav Kysela <perex@perex.cz>, devicetree@vger.kernel.org,
- tzungbi@chromium.org, Stephan Gerhold <stephan@gerhold.net>,
- linux-arm-msm@vger.kernel.org, Mark Brown <broonie@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- linux-arm-kernel@lists.infradead.org, dianders@chromium.org,
- Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
- Srini Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ Stephen Boyd <sboyd@kernel.org>, linux-arm-msm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 07, 2020 at 06:00:38PM +0800, Cheng-Yi Chiang wrote:
-> Add devicetree bindings documentation file for sc7180 sound card.
+On Fri, Aug 21, 2020 at 06:44:36PM +0800, Hsin-Hsiung Wang wrote:
+> This adds documentation for the SPMI controller found on Mediatek SoCs.
 > 
-> Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 > ---
->  .../bindings/sound/qcom,sc7180.yaml           | 143 ++++++++++++++++++
->  1 file changed, 143 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml b/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
-> new file mode 100644
-> index 000000000000..ae809346ca80
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
-> @@ -0,0 +1,143 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/sound/qcom,sc7180.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Qualcomm Technologies Inc. SC7180 ASoC sound card driver
-> +
-> +maintainers:
-> +  - Rohit kumar <rohitkr@codeaurora.org>
-> +  - Cheng-Yi Chiang <cychiang@chromium.org>
-> +
-> +description:
-> +  This binding describes the SC7180 sound card which uses LPASS for audio.
-> +
-> +properties:
-> +  compatible:
-> +    const: qcom,sc7180-sndcard
-> +
-> +  audio-routing:
-> +    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
-> +    description:
-> +      A list of the connections between audio components. Each entry is a
-> +      pair of strings, the first being the connection's sink, the second
-> +      being the connection's source.
-> +
-> +  model:
-> +    $ref: /schemas/types.yaml#/definitions/string
-> +    description: User specified audio sound card name
-> +
-> +  headset-jack:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: phandle of the codec for headset detection
-> +
-> +  hdmi-jack:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: phandle of the codec for hdmi jack detection
+>  .../devicetree/bindings/spmi/spmi-mtk-pmif.txt     | 33 ++++++++++++++++++++++
+>  1 file changed, 33 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/spmi/spmi-mtk-pmif.txt
 
-You already have links to these devices. Why duplicate it here? 
-
-What if you had 2 headsets? This doesn't scale.
+Bindings are in DT schema format now. Please convert this.
 
 Rob
 
