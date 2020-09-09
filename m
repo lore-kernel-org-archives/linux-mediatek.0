@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A978FC43461
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 07:45:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BC378C43461
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 07:45:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4BE1A20659
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 07:45:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 60E6320659
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 07:45:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JdRfOAbX";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="pb3C821k"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4BE1A20659
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="v9+lgMTP";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Pu/6zr7b"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 60E6320659
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,52 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=QQ8w0ZTOJQDaBufuIVU5bx8OPxAh902zajEu8vioCP0=; b=JdRfOAbXms+i92yHBI1idn6G6
-	7KxZeGKj/oMvEB5kazq/1sWMiddIWDFViw8YzkT60TmS7tReDKgUSEa+1B0ssCWVCvI3KRnPdJ8BZ
-	aW8c6efx6U8Qkp7hIUdKJFupGYehfqch/Jq4Ge97Ge5JHAun6X9JJoJ0Pm3EdSKU1JzLWVOB3Tuca
-	IJtO3GoWG63WhmCjXqMkWqwX5JQ1UgtwpRPtxWlyw/bf1Nb24MsfsqpbT9FnKM8HXHHuubwdqGxFz
-	QoqEhkPRrvnfI6R+rqhWUwEGCf7n7bOgyeEJxC90993xERBuOff6rvDlC+22WE4+cm7G1BLkqCHar
-	JFCX+m2Uw==;
+	 bh=RluBSRy7m9ZDQ9fkKHQdtt/kI85DhwtE+MrAMsrqyAk=; b=v9+lgMTPba3hwKJMm9oY8iJNG
+	1RTFhI8V0HuWNlHdjvUXU65fGsW5ii/ZgXnYqIIERIjGEySGTgs4lv8OSEnFl2iw7EbRyGsmGbbUX
+	g5tn9cGxdBs7rl4jSOB85h2fCTcqRzCd4u9CdQRFYvQ1y+4UfHQudYJsFLge+sZlOQIQmI9upNuaY
+	POtparfGZP11KvXG9oLZ680p7UgjdUHoncaJKTfjlngH2Mgtia5jHVm6H21ux8FOjMIdIHFn1kfwz
+	B3yszyfAJ1bjWTFg7m+BKsJBWmxvtPyiAq5yfMWEfQI7J/xOOdO22W43wOXp4KSOFrzVhCD4+Pf7J
+	gUoG/CnKQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFunS-0006Pf-9l; Wed, 09 Sep 2020 07:45:38 +0000
+	id 1kFunT-0006QT-NP; Wed, 09 Sep 2020 07:45:39 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFun9-0006Eo-SB; Wed, 09 Sep 2020 07:45:21 +0000
-X-UUID: 8822b9830ccb4169a39646385a3a5fd8-20200908
+ id 1kFun9-0006El-VM; Wed, 09 Sep 2020 07:45:21 +0000
+X-UUID: 97a52fe922e7475c9519391feca89cae-20200908
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=UU4g24a8gBnKtYu4tzeO/9s0b7IrNvX3qtQVd8/MiV4=; 
- b=pb3C821k14yZI1N8hWvgy6/00XTGprrhtPch8U6st/qWOCbbjcltyghmng1cw3evdVxTjoc75aJggsv2zmEvYpGJBe5tKj6hu9ZISMZQNsS9JS35BhT0ZGbIXdJ9ouGDHAaEtLH43AAVRw/po+bxSh4UMQNBVRf2MSIXcvW0Ub4=;
-X-UUID: 8822b9830ccb4169a39646385a3a5fd8-20200908
+ bh=L++qiABiAzjVbnpi2fjLv+qiJlqqsDdE0Ctsz0YdEqI=; 
+ b=Pu/6zr7bMaVpb7Tf0+Ysfji8WU7+fx3erunVWwgGlfYbhuz5Wtgey3gChgGdFI1KQkE6Hbm22XRoZFW7Ef0Rs9llYZ1w5l5+4AIhtx4yxC0v6pqXeO7ZJVD7Ad120nyd69lrIKvpSe977fn5LGUtV3rzppP3Twx2BXLf8yuKJ58=;
+X-UUID: 97a52fe922e7475c9519391feca89cae-20200908
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 27532719; Tue, 08 Sep 2020 23:45:15 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ with ESMTP id 1921909804; Tue, 08 Sep 2020 23:45:15 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Sep 2020 00:35:20 -0700
+ 15.0.1497.2; Wed, 9 Sep 2020 00:35:13 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Sep 2020 15:35:17 +0800
+ MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 9 Sep 2020 15:35:10 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 9 Sep 2020 15:35:16 +0800
+ Transport; Wed, 9 Sep 2020 15:35:09 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Felipe Balbi <balbi@kernel.org>, Florian Fainelli <f.fainelli@gmail.com>
-Subject: [PATCH v3 09/11] usb: gadget: bdc: fix checkpatch.pl tab warning
-Date: Wed, 9 Sep 2020 15:33:00 +0800
-Message-ID: <1599636782-7654-9-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH v3 05/11] usb: gadget: bdc: fix check warning of block
+ comments alignment
+Date: Wed, 9 Sep 2020 15:32:56 +0800
+Message-ID: <1599636782-7654-5-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1599636782-7654-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1599636782-7654-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 2AA1BD8FC07D38044651672ED39F80B5D8FADBE1F94501DD414C70C1A821AA682000:8
+X-TM-SNTS-SMTP: DD16086163576B271617247AF4A04ADBA9B69AF6347209373CFBDBA2295189502000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200909_034520_079924_F8080997 
-X-CRM114-Status: GOOD (  14.14  )
+X-CRM114-CacheID: sfid-20200909_034520_204547_54D32478 
+X-CRM114-Status: GOOD (  16.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,8 +97,9 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-WARNING:SUSPECT_CODE_INDENT: suspect code indent for conditional statements
-WARNING:TABSTOP: Statements should start on a tabstop
+fix the warning:
+  WARNING:BLOCK_COMMENT_STYLE:
+  Block comments should align the * on each line
 
 Cc: Florian Fainelli <f.fainelli@gmail.com>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
@@ -107,45 +109,68 @@ v3: add acked-by Florian
 
 v2: add Cc Florian
 ---
- drivers/usb/gadget/udc/bdc/bdc_cmd.c | 2 +-
- drivers/usb/gadget/udc/bdc/bdc_ep.c  | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/usb/gadget/udc/bdc/bdc.h     | 2 +-
+ drivers/usb/gadget/udc/bdc/bdc_ep.c  | 2 +-
+ drivers/usb/gadget/udc/bdc/bdc_udc.c | 6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/usb/gadget/udc/bdc/bdc_cmd.c b/drivers/usb/gadget/udc/bdc/bdc_cmd.c
-index 44c2a5e..995f79c 100644
---- a/drivers/usb/gadget/udc/bdc/bdc_cmd.c
-+++ b/drivers/usb/gadget/udc/bdc/bdc_cmd.c
-@@ -163,7 +163,7 @@ int bdc_config_ep(struct bdc *bdc, struct bdc_ep *ep)
- 					usb_endpoint_xfer_isoc(desc)) {
- 			param2 |= si;
- 			if (usb_endpoint_xfer_isoc(desc) && comp_desc)
--					mul = comp_desc->bmAttributes;
-+				mul = comp_desc->bmAttributes;
- 
- 		}
- 		param2 |= mul << EPM_SHIFT;
+diff --git a/drivers/usb/gadget/udc/bdc/bdc.h b/drivers/usb/gadget/udc/bdc/bdc.h
+index fcba77e..c0ee735 100644
+--- a/drivers/usb/gadget/udc/bdc/bdc.h
++++ b/drivers/usb/gadget/udc/bdc/bdc.h
+@@ -35,7 +35,7 @@
+ /*
+  * Maximum size of ep0 response buffer for ch9 requests,
+  * the set_sel request uses 6 so far, the max.
+-*/
++ */
+ #define EP0_RESPONSE_BUFF  6
+ /* Start with SS as default */
+ #define EP0_MAX_PKT_SIZE 512
 diff --git a/drivers/usb/gadget/udc/bdc/bdc_ep.c b/drivers/usb/gadget/udc/bdc/bdc_ep.c
-index 3fb36c8..d227d26 100644
+index 44f3a12..3fb36c8 100644
 --- a/drivers/usb/gadget/udc/bdc/bdc_ep.c
 +++ b/drivers/usb/gadget/udc/bdc/bdc_ep.c
-@@ -275,7 +275,7 @@ static inline int find_end_bdi(struct bdc_ep *ep, int next_hwd_bdi)
- 	end_bdi = next_hwd_bdi - 1;
- 	if (end_bdi < 0)
- 		end_bdi = ep->bd_list.max_bdi - 1;
--	 else if ((end_bdi % (ep->bd_list.num_bds_table-1)) == 0)
-+	else if ((end_bdi % (ep->bd_list.num_bds_table-1)) == 0)
- 		end_bdi--;
- 
- 	return end_bdi;
-@@ -795,7 +795,7 @@ static int ep_dequeue(struct bdc_ep *ep, struct bdc_req *req)
- 			start_pending = true;
- 			end_pending = true;
- 		} else if (end_bdi >= curr_hw_dqpi || end_bdi <= eqp_bdi) {
--				end_pending = true;
-+			end_pending = true;
- 		}
- 	} else {
- 		if (start_bdi >= curr_hw_dqpi) {
+@@ -68,7 +68,7 @@ static void ep_bd_list_free(struct bdc_ep *ep, u32 num_tabs)
+ 		 * check if the bd_table struct is allocated ?
+ 		 * if yes, then check if bd memory has been allocated, then
+ 		 * free the dma_pool and also the bd_table struct memory
+-		*/
++		 */
+ 		bd_table = bd_list->bd_table_array[index];
+ 		dev_dbg(bdc->dev, "bd_table:%p index:%d\n", bd_table, index);
+ 		if (!bd_table) {
+diff --git a/drivers/usb/gadget/udc/bdc/bdc_udc.c b/drivers/usb/gadget/udc/bdc/bdc_udc.c
+index 248426a..0c1ab95 100644
+--- a/drivers/usb/gadget/udc/bdc/bdc_udc.c
++++ b/drivers/usb/gadget/udc/bdc/bdc_udc.c
+@@ -164,7 +164,7 @@ static void bdc_func_wake_timer(struct work_struct *work)
+ 	/*
+ 	 * Check if host has started transferring on endpoints
+ 	 * FUNC_WAKE_ISSUED is cleared when transfer has started after resume
+-	*/
++	 */
+ 	if (bdc->devstatus & FUNC_WAKE_ISSUED) {
+ 		dev_dbg(bdc->dev, "FUNC_WAKE_ISSUED FLAG IS STILL SET\n");
+ 		/* flag is still set, so again send func wake */
+@@ -205,7 +205,7 @@ static void handle_link_state_change(struct bdc *bdc, u32 uspc)
+ 				 * if not then send function wake again every
+ 				 * TNotification secs until host initiates
+ 				 * transfer to BDC, USB3 spec Table 8.13
+-				*/
++				 */
+ 				schedule_delayed_work(
+ 						&bdc->func_wake_notify,
+ 						msecs_to_jiffies(BDC_TNOTIFY));
+@@ -379,7 +379,7 @@ static int bdc_udc_start(struct usb_gadget *gadget,
+ 	 * Run the controller from here and when BDC is connected to
+ 	 * Host then driver will receive a USPC SR with VBUS present
+ 	 * and then driver will do a softconnect.
+-	*/
++	 */
+ 	ret = bdc_run(bdc);
+ 	if (ret) {
+ 		dev_err(bdc->dev, "%s bdc run fail\n", __func__);
 -- 
 1.9.1
 _______________________________________________
