@@ -2,86 +2,81 @@ Return-Path: <SRS0=qDs2=CS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,HK_RANDOM_FROM,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6474EC10DAA
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 09:17:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8DDF8C43461
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 09:24:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 08D8B20708
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 09:17:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 133912145D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 09:24:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s+9xaxRv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 08D8B20708
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SaSetiab";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="lgk3l2Qh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 133912145D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=D6KCTCLE9wZ51hygg/zBi3g2hHUMFDj/gHAFY0dwqoE=; b=s+9xaxRv9VSD2vspxg/4i8Dqj
-	ym1o1G+f84VgT5LpbEjM8ABZq7wK7/mpj3PkfxG7zu5SV4DkNJpA5Wg8N3M2otrzPENU7FXEH2jb1
-	gEqg8gvVpYJK9vp3tt/ude9CHrEblVjg+CM/pYWI/hiBIkUImNPGd6EjRf/evY956zBDCQi1D2DO7
-	MEwbdb2+NNbNx4hvyXFBMtMZyC34a+EfmRPPh4oHKvucZvMWEOPS2BbiN7j1FvwElbuFx93DN806/
-	Ah9h9GxhyB8rpVZTXUbY5aDh0+7dskU20aePLgvuuySeRpe/NKTG9aGH+qKDk03Id1iQQM9fuvHNS
-	x+1PhYp/w==;
+	 bh=yNWHHDcYhzRqRwS48Wy6kXBRNd8ok0Bu6pebdEiZkKw=; b=SaSetiabiy0K0UVJMWW0y9sqt
+	knDfJ1Q/nI3oWrBefJL1gfzcx2+SRGKs8SFBwM8gEUCDSzQMqmAWl7NUa9a2bRzeNhoENq4GF5VAM
+	A9MaU7gvqMnkN9gHcBig8G5yrGFbrD+DPfIzH7bQ6OPJB/7vrxaQQsbMcw/1y5P4LPeQfnD7fX+b7
+	n3fE8oKy5xdFdj2OItv6pjyl0iAudVE19Ond2S52QRS6oScjhWASq6bEJUdRT3rXzdlrDhfdyjZFe
+	BaM8wfnQiUW6PZi0oL4l7Z9ZI3GWhDUfQqp66r4FxziYs2A1gQcyUnTaaw736KxiUkFC/zPSFWHwp
+	kGBIybcYA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFwDp-0003x7-Bg; Wed, 09 Sep 2020 09:16:57 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1kFwKv-00053V-Te; Wed, 09 Sep 2020 09:24:17 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFwDn-0003vt-1X; Wed, 09 Sep 2020 09:16:56 +0000
-IronPort-SDR: 27xtQ/WCw9o/q5poDQ9n6d9uBgDjPQ5+LaSP63hlEQscm3WVm74Jq1qnk+seqvPlKXjhicR2C9
- uzIs1wRLx/kA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9738"; a="157573574"
-X-IronPort-AV: E=Sophos;i="5.76,409,1592895600"; d="scan'208";a="157573574"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Sep 2020 02:16:53 -0700
-IronPort-SDR: Eu5LFEF7mQvPvjaKgHiNi+EAI6twzANJVXLRWHJjqt2BIA4DKeAAOOzWigLRgh7pJRkcZk2JZB
- paZ/kvhmY5KQ==
-X-IronPort-AV: E=Sophos;i="5.76,409,1592895600"; d="scan'208";a="480390735"
-Received: from vdc-station-04.ger.corp.intel.com (HELO [10.251.165.91])
- ([10.251.165.91])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Sep 2020 02:16:41 -0700
-Subject: Re: [Intel-gfx] [PATCH 0/8] Convert the intel iommu driver to the
- dma-iommu api
-To: Tom Murphy <murphyt7@tcd.ie>
-References: <20191221150402.13868-1-murphyt7@tcd.ie>
- <465815ae-9292-f37a-59b9-03949cb68460@deltatee.com>
- <20200529124523.GA11817@infradead.org>
- <CGME20200529190523eucas1p2c086133e707257c0cdc002f502d4f51d@eucas1p2.samsung.com>
- <33137cfb-603c-86e8-1091-f36117ecfaf3@deltatee.com>
- <ef2150d5-7b6a-df25-c10d-e43316fe7812@samsung.com>
- <b9140772-0370-a858-578c-af503a06d8e9@deltatee.com>
- <CALQxJuutRaeX89k2o4ffTKYRMizmMu0XbRnzpFuSSrkQR02jKg@mail.gmail.com>
- <766525c3-4da9-6db7-cd90-fb4b82cd8083@deltatee.com>
- <60a82319-cbee-4cd1-0d5e-3c407cc51330@linux.intel.com>
- <e598fb31-ef7a-c2ee-8a54-bf62d50c480c@deltatee.com>
- <b27cae1f-07ff-bef2-f125-a5f0d968016d@linux.intel.com>
- <CALQxJut5c=cWdi+SVkN3JnbkhPSYmLkOyRUhduL-UJ9gyKn9Ow@mail.gmail.com>
-From: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
-Organization: Intel Corporation UK Plc
-Message-ID: <7106602a-9964-851e-9c4e-d8acf4033b89@linux.intel.com>
-Date: Wed, 9 Sep 2020 10:16:38 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1kFwKr-00051m-Ai
+ for linux-mediatek@lists.infradead.org; Wed, 09 Sep 2020 09:24:15 +0000
+Received: by mail-wm1-x342.google.com with SMTP id w2so1572999wmi.1
+ for <linux-mediatek@lists.infradead.org>; Wed, 09 Sep 2020 02:24:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=AmAjr6xvyauDkIBPHoJreMuavbYPMqoWr9WPQMiNPkg=;
+ b=lgk3l2QheCZRIdB/DXYePwXEoUJvYOIpV83Gh1pRZ2BYhkcAj5c3ogzbaLtFuFI9ts
+ jpGHnH6HqqegvOnM9Uqug7F1IJiuwk+eek3yWSn2ufF9Y+cYzVYdiFc0zs3ZtTMRf5cM
+ XT5LclUiUzG/7eZUxr9lBGgyThOWt8HJEhlvI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=AmAjr6xvyauDkIBPHoJreMuavbYPMqoWr9WPQMiNPkg=;
+ b=CXYLgwIPihvxVm3irjNW2/N5MT37F2oVA5lTIojv55oK1h00SVnVnd+pNrkvSBeWDr
+ ztaUSUnPkwI/w/AB7tlL3woMqSJc0vi+z7g62bqQRTATODSYuSADwo0qI1T3tEuKGjZ6
+ CdpASGjW0IiqwNCNmzn7ZQjQfV72B+uC/W40CVSq+PdY5Jz5GYUr6zJdljy4ZlC4rvom
+ mdT72l/QGBn3hecXipNfQ0feNh9x0Q+In5aCsNQBohHEWo7zxc+o+7QhjFZzsjXyl4id
+ 7svpMDQ+WYuqv+452yjHDOCAOcXDWP08K9pi4Cx5pswjbrxMJTP560Yb7MOcrSWJTFKL
+ RN3Q==
+X-Gm-Message-State: AOAM531GJq0S0v7VmJOWXHO4+MYnwkb7neJkIygetw2nfuoFI+4WADku
+ ioYPKpryRJ8PpD7nYI2i+AGFZ1HdYB+W4ja+tYuNJA==
+X-Google-Smtp-Source: ABdhPJyCFk+9azkQozj50ygO4Fld+/Ww0XhKIzoSM/wUVfsy/tdWyDVDQ6WSJk0DhWTK8YoZzQXF1zAmuO+KS+gPPFU=
+X-Received: by 2002:a7b:c3c8:: with SMTP id t8mr2599038wmj.101.1599643450162; 
+ Wed, 09 Sep 2020 02:24:10 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CALQxJut5c=cWdi+SVkN3JnbkhPSYmLkOyRUhduL-UJ9gyKn9Ow@mail.gmail.com>
-Content-Language: en-US
+References: <20200907100039.1731457-1-cychiang@chromium.org>
+ <20200907100039.1731457-3-cychiang@chromium.org>
+ <20200908203357.GA861143@bogus>
+In-Reply-To: <20200908203357.GA861143@bogus>
+From: Cheng-yi Chiang <cychiang@chromium.org>
+Date: Wed, 9 Sep 2020 17:23:43 +0800
+Message-ID: <CAFv8NwLMAkFhVT-ML7QHbnSkqmgh=5SrNSik5eSCTHB1=DGQ0A@mail.gmail.com>
+Subject: Re: [PATCH v7 2/3] ASoC: qcom: dt-bindings: Add sc7180 machine
+ bindings
+To: Rob Herring <robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200909_051655_236229_467E3759 
-X-CRM114-Status: GOOD (  29.70  )
+X-CRM114-CacheID: sfid-20200909_052413_408163_17EFECFC 
+X-CRM114-Status: GOOD (  24.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,127 +88,111 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, David Airlie <airlied@linux.ie>,
- dri-devel@lists.freedesktop.org, Bjorn Andersson <bjorn.andersson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Julien Grall <julien.grall@arm.com>,
- Will Deacon <will@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- linux-samsung-soc@vger.kernel.org, Marc Zyngier <maz@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
- Christoph Hellwig <hch@infradead.org>, linux-rockchip@lists.infradead.org,
- Andy Gross <agross@kernel.org>, Gerald Schaefer <gerald.schaefer@de.ibm.com>,
- linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, Robin Murphy <robin.murphy@arm.com>,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
- Thomas Gleixner <tglx@linutronix.de>,
- virtualization@lists.linux-foundation.org,
- linux-arm-kernel@lists.infradead.org, David Woodhouse <dwmw2@infradead.org>,
- Cornelia Huck <cohuck@redhat.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- iommu@lists.linux-foundation.org, Kukjin Kim <kgene@kernel.org>,
- Logan Gunthorpe <logang@deltatee.com>
+Cc: Taniya Das <tdas@codeaurora.org>,
+ "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..."
+ <alsa-devel@alsa-project.org>, Banajit Goswami <bgoswami@codeaurora.org>,
+ Heiko Stuebner <heiko@sntech.de>, Takashi Iwai <tiwai@suse.com>,
+ Rohit kumar <rohitkr@codeaurora.org>, Patrick Lai <plai@codeaurora.org>,
+ linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>,
+ Dylan Reid <dgreid@chromium.org>, Jaroslav Kysela <perex@perex.cz>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Tzung-Bi Shih <tzungbi@chromium.org>,
+ Stephan Gerhold <stephan@gerhold.net>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>, Mark Brown <broonie@kernel.org>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Doug Anderson <dianders@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Srini Kandagatla <srinivas.kandagatla@linaro.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, Sep 9, 2020 at 4:34 AM Rob Herring <robh@kernel.org> wrote:
+>
+> On Mon, Sep 07, 2020 at 06:00:38PM +0800, Cheng-Yi Chiang wrote:
+> > Add devicetree bindings documentation file for sc7180 sound card.
+> >
+> > Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+> > ---
+> >  .../bindings/sound/qcom,sc7180.yaml           | 143 ++++++++++++++++++
+> >  1 file changed, 143 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
+> >
+> > diff --git a/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml b/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
+> > new file mode 100644
+> > index 000000000000..ae809346ca80
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
+> > @@ -0,0 +1,143 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/sound/qcom,sc7180.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Qualcomm Technologies Inc. SC7180 ASoC sound card driver
+> > +
+> > +maintainers:
+> > +  - Rohit kumar <rohitkr@codeaurora.org>
+> > +  - Cheng-Yi Chiang <cychiang@chromium.org>
+> > +
+> > +description:
+> > +  This binding describes the SC7180 sound card which uses LPASS for audio.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: qcom,sc7180-sndcard
+> > +
+> > +  audio-routing:
+> > +    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
+> > +    description:
+> > +      A list of the connections between audio components. Each entry is a
+> > +      pair of strings, the first being the connection's sink, the second
+> > +      being the connection's source.
+> > +
+> > +  model:
+> > +    $ref: /schemas/types.yaml#/definitions/string
+> > +    description: User specified audio sound card name
+> > +
+> > +  headset-jack:
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > +    description: phandle of the codec for headset detection
+> > +
+> > +  hdmi-jack:
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > +    description: phandle of the codec for hdmi jack detection
+>
+> You already have links to these devices. Why duplicate it here?
+>
+> What if you had 2 headsets? This doesn't scale.
+>
+Hi Rob, thanks for reviewing.
+There was some discussion in
+https://patchwork.kernel.org/patch/11737905/#23571643 about how to
+specify the dailink that has a headset jack.
+I would like to pass the information of headset jack and hdmi jack to
+the machine driver so the machine driver can call
+snd_soc_component_set_jack to set jack when init the corresponding link.
+Headset jack and hdmi jack will be treated differently for button and
+event type.
+Because of this, we can not just set a property "jack" in the link.
 
-On 08/09/2020 23:43, Tom Murphy wrote:
-> On Tue, 8 Sep 2020 at 16:56, Tvrtko Ursulin
-> <tvrtko.ursulin@linux.intel.com> wrote:
->>
->>
->> On 08/09/2020 16:44, Logan Gunthorpe wrote:
->>> On 2020-09-08 9:28 a.m., Tvrtko Ursulin wrote:
->>>>>
->>>>> diff --git a/drivers/gpu/drm/i915/i915_scatterlist.h
->>>>> b/drivers/gpu/drm/i915/i915
->>>>> index b7b59328cb76..9367ac801f0c 100644
->>>>> --- a/drivers/gpu/drm/i915/i915_scatterlist.h
->>>>> +++ b/drivers/gpu/drm/i915/i915_scatterlist.h
->>>>> @@ -27,13 +27,19 @@ static __always_inline struct sgt_iter {
->>>>>     } __sgt_iter(struct scatterlist *sgl, bool dma) {
->>>>>            struct sgt_iter s = { .sgp = sgl };
->>>>>
->>>>> +       if (sgl && !sg_dma_len(s.sgp))
->>>>
->>>> I'd extend the condition to be, just to be safe:
->>>>       if (dma && sgl && !sg_dma_len(s.sgp))
->>>>
->>>
->>> Right, good catch, that's definitely necessary.
->>>
->>>>> +               s.sgp = NULL;
->>>>> +
->>>>>            if (s.sgp) {
->>>>>                    s.max = s.curr = s.sgp->offset;
->>>>> -               s.max += s.sgp->length;
->>>>> -               if (dma)
->>>>> +
->>>>> +               if (dma) {
->>>>> +                       s.max += sg_dma_len(s.sgp);
->>>>>                            s.dma = sg_dma_address(s.sgp);
->>>>> -               else
->>>>> +               } else {
->>>>> +                       s.max += s.sgp->length;
->>>>>                            s.pfn = page_to_pfn(sg_page(s.sgp));
->>>>> +               }
->>>>
->>>> Otherwise has this been tested or alternatively how to test it? (How to
->>>> repro the issue.)
->>>
->>> It has not been tested. To test it, you need Tom's patch set without the
->>> last "DO NOT MERGE" patch:
->>>
->>> https://lkml.kernel.org/lkml/20200907070035.GA25114@infradead.org/T/
->>
->> Tom, do you have a branch somewhere I could pull from? (Just being lazy
->> about downloading a bunch of messages from the archives.)
-> 
-> I don't unfortunately. I'm working locally with poor internet.
-> 
->>
->> What GPU is in your Lenovo x1 carbon 5th generation and what
->> graphical/desktop setup I need to repro?
-> 
-> 
-> Is this enough info?:
-> 
-> $ lspci -vnn | grep VGA -A 12
-> 00:02.0 VGA compatible controller [0300]: Intel Corporation HD
-> Graphics 620 [8086:5916] (rev 02) (prog-if 00 [VGA controller])
->      Subsystem: Lenovo ThinkPad X1 Carbon 5th Gen [17aa:224f]
->      Flags: bus master, fast devsel, latency 0, IRQ 148
->      Memory at eb000000 (64-bit, non-prefetchable) [size=16M]
->      Memory at 60000000 (64-bit, prefetchable) [size=256M]
->      I/O ports at e000 [size=64]
->      [virtual] Expansion ROM at 000c0000 [disabled] [size=128K]
->      Capabilities: [40] Vendor Specific Information: Len=0c <?>
->      Capabilities: [70] Express Root Complex Integrated Endpoint, MSI 00
->      Capabilities: [ac] MSI: Enable+ Count=1/1 Maskable- 64bit-
->      Capabilities: [d0] Power Management version 2
->      Capabilities: [100] Process Address Space ID (PASID)
->      Capabilities: [200] Address Translation Service (ATS)
+As for the 2 headsets case (I guess you mean hp jack and mic jack), on
+this board we will not have this use case.
+If someone really wants to build hp jack and mic jack on the board
+based on this machine driver, we can add two more property hp-jack and
+mic-jack to specify that,
+as the machine driver will need to know the different jack types
+anyway. What do you think ?
 
-Works for a start. What about the steps to repro? Any desktop 
-environment and it is just visual corruption, no hangs/stalls or such?
+Or could you please suggest a proper way to pass such information ?
 
-I've submitted a series consisting of what I understood are the patches 
-needed to repro the issue to our automated CI here:
-
-https://patchwork.freedesktop.org/series/81489/
-
-So will see if it will catch something, or more targeted testing will be 
-required. Hopefully it does trip over in which case I can add the patch 
-suggested by Logan on top and see if that fixes it. Or I'll need to 
-write a new test case.
-
-If you could glance over my series to check I identified the patches 
-correctly it would be appreciated.
-
-Regards,
-
-Tvrtko
+Thanks!
+>
+> Rob
 
 _______________________________________________
 Linux-mediatek mailing list
