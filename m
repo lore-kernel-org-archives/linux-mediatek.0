@@ -2,82 +2,68 @@ Return-Path: <SRS0=qDs2=CS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BB8B6C43461
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 10:20:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E4940C433E2
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 11:00:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4ECFB21D7B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 10:20:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5DB8B21D7A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 11:00:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lpp9ww0H";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="nvSB7U1Y"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4ECFB21D7B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RsW0vahm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5DB8B21D7A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=perches.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=R6I2kaOybmOjWm22p5HEWP5TxtSshh2DKZ9HpG37bas=; b=lpp9ww0HqZPFmnmvEsP38bOb7
-	MXs99K/Lf7txlJTU4FHkqu9oKM1yuuvn8Q8YTmPdaW6pvp3rnDL4frPbhs9IfzpliFyBiKlz/QKl7
-	0RqNVU8pRUQf6+Nm+nC4dbHnlxNphUsbXjTElzD+soQaaLvD4bsXweQR0tdhw/wyGr0DwINo7jZ4I
-	TxoVKWNNNrTyz93L+yxAHZnlPzYlytymrfKOJyN6nk7jgQI7u+lJqTk3kRDCTcMTphYA1FmxpdbCu
-	gxAm3mdv0oRsv9+8zfXlXUvajOXyNLnQg74mIXVgNKvSqwszP2f4PrmERFf51NWV8fz7mE1T2FUhP
-	+R7eRHzwQ==;
+	 bh=I8fP05gB0cleL2Q8YtL4il9+BngCLd/et7BaYCYClw8=; b=RsW0vahmwI595BK4FIoWfTWpA
+	yN1hmlT2dosraHSDW7l3aEUj5hY/Rf9s2Ta0oOkl+f6zcDQQXBagDrfNQZ01+ZOle8ITzH3Z4VzVv
+	tT+y+D8L9ulvCOj3K42TpP+Pr3W9OrJEdSVigjD42sP9MQip+aI65uJDhZEXYq857odfDoqibF8jP
+	/fj83Qr8HXxA7SGiQ6WAShzic+9a2rVGWXNTfOxcGej5o8tkp3YF00l6yRaLkWD9WBPHyntauPzCV
+	XO2WJSZyEweSDEsxGVzbI0G2T92qpB5e/uXU5DSE8AN+EP1pJf9E7Y8ibf93D6AiD5IyQQ2kiV0zL
+	IUJo/Exzw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFxCf-0006ov-FT; Wed, 09 Sep 2020 10:19:49 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1kFxpy-0002lL-3z; Wed, 09 Sep 2020 11:00:26 +0000
+Received: from smtprelay0147.hostedemail.com ([216.40.44.147]
+ helo=smtprelay.hostedemail.com)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFxCa-0006nY-Eg
- for linux-mediatek@lists.infradead.org; Wed, 09 Sep 2020 10:19:46 +0000
-Received: by mail-wm1-x342.google.com with SMTP id c19so1499527wmd.1
- for <linux-mediatek@lists.infradead.org>; Wed, 09 Sep 2020 03:19:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=MYtyV9sjpexCNQizdjqRW/SdiWDHf0KUeZqsLzbBBXw=;
- b=nvSB7U1YSQLRXpNDcMP9RUL4PGdEF8Pp4cI2ebpoYmMzEcjiDJLpG6b3HJObeEVAxL
- cijYVLuZEmfuyeKiiZN8Q6lt2h87SXNCljv8Xm5odSlNFG3IzsWZMaKBsHIF8GcmTvzX
- tAKWudAP91pOakcxDjcrP8IsABvDDWwVina9w=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=MYtyV9sjpexCNQizdjqRW/SdiWDHf0KUeZqsLzbBBXw=;
- b=Ua9WUVNPXsGYg8DAsLCQuYZQcfLglpHpTRRZwTS34lRS2avPN6zMhGqUXvOoWhuLzF
- TYQsHx6VQ3plo1nshKawkx9NgnPvG7fysByo3xcqt7bkxkOoVoj23UIr8C+8gqOAOnDL
- n+nCPZoMqXGWvIOzw4d7eqtoXQdBvNywhEyn+eZMP6FXnH7mMijp/bjyCfHhYTwQLG8H
- Cwg4bSKp1wT8XEMMnJQhfVKNWI6dC2NGAZUbk5LGhLyhEnw9JtOwoTZmrYDA7K9sMVqI
- nKFSD+MovVwNSs6h9Qx47mwqtSx/avX2ZTP4ZIdZhD2x/hlFRmj5jAY5I2RlbiCuyAMz
- RFwg==
-X-Gm-Message-State: AOAM531TXYjvo/LGp8WLeGPnwYIcZs/9rAWsQQAAc6wfC/PSq+ml8rOs
- y9g/ckCLbYq7UE3vvwp3ioiJFX+tiSRld7b5t4Di2Q==
-X-Google-Smtp-Source: ABdhPJyiGLD2o5Mp0hKfuqc3sTpSUwV4QU2ftFwRMsUfKEu8ElxuFddp9M1CKV0LCUYsOZUPyqBuF/zKTLMFrnRTRBU=
-X-Received: by 2002:a7b:c3c8:: with SMTP id t8mr2821349wmj.101.1599646782754; 
- Wed, 09 Sep 2020 03:19:42 -0700 (PDT)
+ id 1kFxpu-0002kQ-9c; Wed, 09 Sep 2020 11:00:23 +0000
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay01.hostedemail.com (Postfix) with ESMTP id 479AC100E7B45;
+ Wed,  9 Sep 2020 11:00:19 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-HE-Tag: horn54_50064b2270dc
+X-Filterd-Recvd-Size: 1987
+Received: from XPS-9350.home (unknown [47.151.133.149])
+ (Authenticated sender: joe@perches.com)
+ by omf04.hostedemail.com (Postfix) with ESMTPA;
+ Wed,  9 Sep 2020 11:00:17 +0000 (UTC)
+Message-ID: <e2dfa0e0c279cd39a0b7ab725a634831e1f188cc.camel@perches.com>
+Subject: Re: [PATCH][next] mt7601u: Use fallthrough pseudo-keyword
+From: Joe Perches <joe@perches.com>
+To: "Gustavo A. R. Silva" <gustavoars@kernel.org>, Jakub Kicinski
+ <kubakici@wp.pl>, Kalle Valo <kvalo@codeaurora.org>, "David S. Miller"
+ <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>
+Date: Wed, 09 Sep 2020 04:00:16 -0700
+In-Reply-To: <20200901173603.GA2701@embeddedor>
+References: <20200901173603.GA2701@embeddedor>
+User-Agent: Evolution 3.36.4-0ubuntu1 
 MIME-Version: 1.0
-References: <20200907100039.1731457-1-cychiang@chromium.org>
- <20200907100039.1731457-3-cychiang@chromium.org>
- <20200908203357.GA861143@bogus>
- <CAFv8NwLMAkFhVT-ML7QHbnSkqmgh=5SrNSik5eSCTHB1=DGQ0A@mail.gmail.com>
-In-Reply-To: <CAFv8NwLMAkFhVT-ML7QHbnSkqmgh=5SrNSik5eSCTHB1=DGQ0A@mail.gmail.com>
-From: Cheng-yi Chiang <cychiang@chromium.org>
-Date: Wed, 9 Sep 2020 18:19:16 +0800
-Message-ID: <CAFv8NwJXyzUsCQZu1cU0t7NUJDpS_DyxZM=ZhU+jGoQj97i3Jw@mail.gmail.com>
-Subject: Re: [PATCH v7 2/3] ASoC: qcom: dt-bindings: Add sc7180 machine
- bindings
-To: Rob Herring <robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200909_061944_590621_3A063D90 
-X-CRM114-Status: GOOD (  33.76  )
+X-CRM114-CacheID: sfid-20200909_070022_362728_A5ED024B 
+X-CRM114-Status: UNSURE (   9.07  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,144 +75,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Taniya Das <tdas@codeaurora.org>,
- "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..."
- <alsa-devel@alsa-project.org>, Banajit Goswami <bgoswami@codeaurora.org>,
- Heiko Stuebner <heiko@sntech.de>, Takashi Iwai <tiwai@suse.com>,
- Rohit kumar <rohitkr@codeaurora.org>, Patrick Lai <plai@codeaurora.org>,
- linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>,
- Dylan Reid <dgreid@chromium.org>, Jaroslav Kysela <perex@perex.cz>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Tzung-Bi Shih <tzungbi@chromium.org>,
- Stephan Gerhold <stephan@gerhold.net>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>, Mark Brown <broonie@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Doug Anderson <dianders@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- Srini Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 9, 2020 at 5:23 PM Cheng-yi Chiang <cychiang@chromium.org> wrote:
->
-> On Wed, Sep 9, 2020 at 4:34 AM Rob Herring <robh@kernel.org> wrote:
-> >
-> > On Mon, Sep 07, 2020 at 06:00:38PM +0800, Cheng-Yi Chiang wrote:
-> > > Add devicetree bindings documentation file for sc7180 sound card.
-> > >
-> > > Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
-> > > ---
-> > >  .../bindings/sound/qcom,sc7180.yaml           | 143 ++++++++++++++++++
-> > >  1 file changed, 143 insertions(+)
-> > >  create mode 100644 Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
-> > >
-> > > diff --git a/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml b/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
-> > > new file mode 100644
-> > > index 000000000000..ae809346ca80
-> > > --- /dev/null
-> > > +++ b/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
-> > > @@ -0,0 +1,143 @@
-> > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > > +%YAML 1.2
-> > > +---
-> > > +$id: http://devicetree.org/schemas/sound/qcom,sc7180.yaml#
-> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > +
-> > > +title: Qualcomm Technologies Inc. SC7180 ASoC sound card driver
-> > > +
-> > > +maintainers:
-> > > +  - Rohit kumar <rohitkr@codeaurora.org>
-> > > +  - Cheng-Yi Chiang <cychiang@chromium.org>
-> > > +
-> > > +description:
-> > > +  This binding describes the SC7180 sound card which uses LPASS for audio.
-> > > +
-> > > +properties:
-> > > +  compatible:
-> > > +    const: qcom,sc7180-sndcard
-> > > +
-> > > +  audio-routing:
-> > > +    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
-> > > +    description:
-> > > +      A list of the connections between audio components. Each entry is a
-> > > +      pair of strings, the first being the connection's sink, the second
-> > > +      being the connection's source.
-> > > +
-> > > +  model:
-> > > +    $ref: /schemas/types.yaml#/definitions/string
-> > > +    description: User specified audio sound card name
-> > > +
-> > > +  headset-jack:
-> > > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > > +    description: phandle of the codec for headset detection
-> > > +
-> > > +  hdmi-jack:
-> > > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > > +    description: phandle of the codec for hdmi jack detection
-> >
-> > You already have links to these devices. Why duplicate it here?
-> >
-> > What if you had 2 headsets? This doesn't scale.
-> >
-> Hi Rob, thanks for reviewing.
-> There was some discussion in
-> https://patchwork.kernel.org/patch/11737905/#23571643 about how to
-> specify the dailink that has a headset jack.
-> I would like to pass the information of headset jack and hdmi jack to
-> the machine driver so the machine driver can call
-> snd_soc_component_set_jack to set jack when init the corresponding link.
-> Headset jack and hdmi jack will be treated differently for button and
-> event type.
-> Because of this, we can not just set a property "jack" in the link.
->
-> As for the 2 headsets case (I guess you mean hp jack and mic jack), on
-> this board we will not have this use case.
-> If someone really wants to build hp jack and mic jack on the board
-> based on this machine driver, we can add two more property hp-jack and
-> mic-jack to specify that,
-> as the machine driver will need to know the different jack types
-> anyway. What do you think ?
->
-> Or could you please suggest a proper way to pass such information ?
->
-> Thanks!
-> >
-Alternatively we can probably do
+On Tue, 2020-09-01 at 12:36 -0500, Gustavo A. R. Silva wrote:
+> Replace the existing /* fall through */ comments and its variants with
+> the new pseudo-keyword macro fallthrough[1]. Also, remove unnecessary
+> fall-through markings when it is the case.
+[]
+> diff --git a/drivers/net/wireless/mediatek/mt7601u/dma.c b/drivers/net/wireless/mediatek/mt7601u/dma.c
+[]
+> @@ -196,7 +196,7 @@ static void mt7601u_complete_rx(struct urb *urb)
+>  	default:
+>  		dev_err_ratelimited(dev->dev, "rx urb failed: %d\n",
+>  				    urb->status);
+> -		/* fall through */
+> +		fallthrough;
+		
+		fallthrough to break is odd.
+		break would probably be better.
 
-                dai-link@0 {
-                        link-name = "MultiMedia0";
-                        reg = <0>;
-                        cpu {
-                                sound-dai = <&lpass_cpu 0>;
-                        };
-                        headset_jack;
-                        codec {
-                                sound-dai = <&alc5682 0>;
-                        };
-                };
-                dai-link@2 {
-                        link-name = "MultiMedia2";
-                        reg = <2>;
-                        cpu {
-                                sound-dai = <&lpass_hdmi 0>;
-                        };
-                        hdmi_jack;
-                        codec {
-                                sound-dai = <&msm_dp>;
-                        };
-                };
+>  	case 0:
+>  		break;
+>  	}
+> @@ -241,7 +241,7 @@ static void mt7601u_complete_tx(struct urb *urb)
+>  	default:
+>  		dev_err_ratelimited(dev->dev, "tx urb failed: %d\n",
+>  				    urb->status);
+> -		/* fall through */
+> +		fallthrough;
 
-Or even put the flag into codec {}.
-Please let me know if you feel this is a better way.
-I think it will make the driver code a little more complicated, but
-the interface on dts might looks cleaner.
-Thanks!
+here too...
 
-> > Rob
+>  	case 0:
+>  		break;
+>  	}
+> 
+
 
 _______________________________________________
 Linux-mediatek mailing list
