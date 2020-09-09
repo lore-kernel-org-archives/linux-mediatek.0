@@ -1,76 +1,103 @@
-Return-Path: <SRS0=x1vn=CR=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=qDs2=CS=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C2156C43461
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 23:00:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 955C1C43461
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 02:18:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6E06D205F4
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2020 23:00:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 49FB92080C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 02:18:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tApbR1SS";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="tVBq29fR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6E06D205F4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="vfxSv1PN";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="Tw2Y/Kfr"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 49FB92080C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=A3gOK4eIAF/7Ow8xcYTS3ilDEms+44T2vmvRdEll2S8=; b=tApbR1SSm1xoBa4jpEBmDKbbz
-	RhfzS/EQGOVpOa8m6ceHQqEYSvnbP3Fk1U/iywrSYwfE55RBr+rgrDTSyalokpjgHC3pHaNDr6LQ3
-	IEOmV5PaCH3VFLOjEjxkCNylfSfgWROJSSsJbXBAi9H1gKv6MyirJmGXOVrV32Y1hJeyhUgNAbeLp
-	D9v15AR7BT+Ci91DOfeu+xsSAvecPYsiWKrxMhAY4ZIWGFqlrYj23aqPxJ9OxFtoUIPMFPfFhPtak
-	FB44PZuX42HmgtkOdtk2XD16pq27gYpLxhxkr1WcMGCgfG0w0zgJuKcRBnsg82b9Gw1cjkFB4GBlC
-	rfPx32Z4w==;
+	 bh=HMaWl2mL6MKVmn+LiyfZzVw6LsCXeqyiaGrQrfwMk/Y=; b=vfxSv1PNN4SXS1d78Z1oBLR4E
+	w/m4b6S/xJWLXoZmHt+juLlNnDFasMUGfelOtmMF/iNoZZKOvTIKdum67ZRiKFFFijn7cLfVaiJHZ
+	yDexb+ifpAd7o9t+FNY620+SGoJPbBsD0SDcRHm4rqRHG4m509gRoLQg/C8roKzBUjIKC7RIvgW+X
+	dxQVSFbEd+2MK33bTzr+mCiVZ5D1tuPUBleUBCeIkGBCv9IlKc5/BYDMQVQMvf7UfRDpBETNZoJqL
+	P6EfwBnGi6ZuUaS4FOYvGMd38jXeB5To3wLVUeGSA2QcPUGkJwS/5z4l+h+AmHj0twBd2ywOEZUR4
+	szIzij6Hw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFmbS-000665-NQ; Tue, 08 Sep 2020 23:00:42 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kFpgK-0007Ji-WD; Wed, 09 Sep 2020 02:17:57 +0000
+Received: from aserp2120.oracle.com ([141.146.126.78])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFmbP-000659-NX
- for linux-mediatek@lists.infradead.org; Tue, 08 Sep 2020 23:00:40 +0000
-Received: from mail-ed1-f42.google.com (mail-ed1-f42.google.com
- [209.85.208.42])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C930C21741
- for <linux-mediatek@lists.infradead.org>; Tue,  8 Sep 2020 23:00:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1599606038;
- bh=kitxeKqTb1SkttblH1PFR/F1RSZAOgchGlw4pmXLPR4=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=tVBq29fRvmgkUXqxtVlm1rv0uHT4MUPp1xMvHuV1D1PBfL8JsX2z9h9MaOwikARcG
- TMy632/+ui+jSUSg2LS8DlwAfVWVl2KI4fIdyXZZVaXr9dCE1TzkXbDxRvfm8ARw5b
- TjUN3NvzpAV3wyNEiXREwDiQR0y8E8RA0WI7cxSQ=
-Received: by mail-ed1-f42.google.com with SMTP id i1so751407edv.2
- for <linux-mediatek@lists.infradead.org>; Tue, 08 Sep 2020 16:00:37 -0700 (PDT)
-X-Gm-Message-State: AOAM531uzBvDVoLwKbFjJeGirWnULNClGVvwIdwmIDIQOOs3b0bTa5U9
- cv2mPGVOfg2wLISOdGB8lA7pA+CIGahbcKZ3lg==
-X-Google-Smtp-Source: ABdhPJyPiIdQrdq1PbYXe0iA9zr48itBPN3RHIQwoJr3R0CaiWDz9cHj2oGQBCui9qdbPA6GuRLYiCuHQpDGngRMWok=
-X-Received: by 2002:aa7:c158:: with SMTP id r24mr1265632edp.61.1599606036304; 
- Tue, 08 Sep 2020 16:00:36 -0700 (PDT)
+ id 1kFpgI-0007It-GM; Wed, 09 Sep 2020 02:17:55 +0000
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0892EXVH110453;
+ Wed, 9 Sep 2020 02:17:50 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding; s=corp-2020-01-29;
+ bh=+6EeTRUGbtx/wzn7rd/wXstaBoeEwA1blINQVhp/ggI=;
+ b=Tw2Y/KfrfMFylSY28sOErTj+Kv+Koy80AGC8Hfh7UWI7p0C4G8JhtBoQGsKHZGE1lLm4
+ Y0WXzgWTKyO7CiFfZ1bcp+5g/l/eBlhfyMYjfioJYxMCsn2vgcE1bijUTkc41Q3guw9D
+ sdbvmXvpDqESeOniudx3yF5tdhMdI4naajt1iY58GIH1Z8dSlaPwlRWfE2FfYm/XkdBj
+ oLpe2rYMXqzrvksx1rDEpTWmGNo0QjB7YRH57KSgUGU4hBkFQrpFARzBzv0Rlojnf99W
+ U5UuWyFU1Un701QmE3JrBdqeBJ1KJXHDKsRFijsT7cSpr3HMgxhtt4HiXVN+Ahp3F9u2 uA== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 33c2mkxw9v-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 09 Sep 2020 02:17:50 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0892GLKE025937;
+ Wed, 9 Sep 2020 02:17:49 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3030.oracle.com with ESMTP id 33cmkwwtqb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 09 Sep 2020 02:17:49 +0000
+Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 0892HlwM009697;
+ Wed, 9 Sep 2020 02:17:48 GMT
+Received: from ca-mkp.ca.oracle.com (/10.156.108.201)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 08 Sep 2020 19:17:47 -0700
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: alim.akhtar@samsung.com, jejb@linux.ibm.com,
+ Stanley Chu <stanley.chu@mediatek.com>, linux-scsi@vger.kernel.org,
+ avri.altman@wdc.com
+Subject: Re: [PATCH] scsi: ufs-mediatek: Modify the minimum RX/TX lane count
+ to 2
+Date: Tue,  8 Sep 2020 22:17:31 -0400
+Message-Id: <159961781204.6233.3580543216052006167.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.28.0
+In-Reply-To: <20200819084340.7021-1-stanley.chu@mediatek.com>
+References: <20200819084340.7021-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
-References: <20200902220542.60-1-chunkuang.hu@kernel.org>
-In-Reply-To: <20200902220542.60-1-chunkuang.hu@kernel.org>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Wed, 9 Sep 2020 07:00:25 +0800
-X-Gmail-Original-Message-ID: <CAAOTY__aLb+mm1v5bCRVTaOGM7Q=pyc0t995kmMY23ktqs3OkA@mail.gmail.com>
-Message-ID: <CAAOTY__aLb+mm1v5bCRVTaOGM7Q=pyc0t995kmMY23ktqs3OkA@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Use CPU when fail to get cmdq event
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9738
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ phishscore=0 suspectscore=0
+ spamscore=0 mlxlogscore=999 adultscore=0 malwarescore=0 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2009090019
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9738
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ priorityscore=1501
+ phishscore=0 adultscore=0 bulkscore=0 clxscore=1011 mlxlogscore=999
+ malwarescore=0 suspectscore=0 lowpriorityscore=0 spamscore=0
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2009090019
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200908_190039_884958_30002A86 
-X-CRM114-Status: GOOD (  17.67  )
+X-CRM114-CacheID: sfid-20200908_221754_645832_B77F2724 
+X-CRM114-Status: GOOD (  17.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,56 +109,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- DRI Development <dri-devel@lists.freedesktop.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-arm-kernel@lists.infradead.org, bvanassche@acm.org,
+ "Martin K . Petersen" <martin.petersen@oracle.com>, andy.teng@mediatek.com,
+ cc.chou@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ peter.wang@mediatek.com, matthias.bgg@gmail.com, chaotian.jing@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Q2h1bi1LdWFuZyBIdSA8Y2h1bmt1YW5nLmh1QGtlcm5lbC5vcmc+IOaWvCAyMDIw5bm0OeaciDPm
-l6Ug6YCx5ZubIOS4iuWNiDY6MDblr6vpgZPvvJoKPgo+IEV2ZW4gdGhvdWdoIGNtZHEgY2xpZW50
-IGlzIGNyZWF0ZWQgc3VjY2Vzc2Z1bGx5LCB3aXRob3V0IHRoZSBjbWRxIGV2ZW50LAo+IGNtZHEg
-Y291bGQgbm90IHdvcmsgY29ycmVjdGx5LCBzbyB1c2UgQ1BVIHdoZW4gZmFpbCB0byBnZXQgY21k
-cSBldmVudC4KCkFwcGxpZWQgdG8gbWVkaWF0ZWstZHJtLWZpeGVzIFsxXS4KClsxXSBodHRwczov
-L2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9jaHVua3VhbmcuaHUvbGlu
-dXguZ2l0L2xvZy8/aD1tZWRpYXRlay1kcm0tZml4ZXMKClJlZ2FyZHMsCkNodW4tS3VhbmcuCgo+
-Cj4gRml4ZXM6IDYwZmE4YzEzYWIxYSAoImRybS9tZWRpYXRlazogTW92ZSBnY2UgZXZlbnQgcHJv
-cGVydHkgdG8gbXV0ZXggZGV2aWNlIG5vZGUiKQo+IFNpZ25lZC1vZmYtYnk6IENodW4tS3Vhbmcg
-SHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RybV9jcnRjLmMgfCAyMCArKysrKysrKysrKysrLS0tLS0tLQo+ICAxIGZpbGUg
-Y2hhbmdlZCwgMTMgaW5zZXJ0aW9ucygrKSwgNyBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQg
-YS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgYi9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMKPiBpbmRleCAzZmM1NTExMzMwYjkuLjRkMjk1Njhi
-ZTNmNSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRj
-LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMKPiBAQCAt
-ODMxLDEzICs4MzEsMTkgQEAgaW50IG10a19kcm1fY3J0Y19jcmVhdGUoc3RydWN0IGRybV9kZXZp
-Y2UgKmRybV9kZXYsCj4gICAgICAgICAgICAgICAgICAgICAgICAgZHJtX2NydGNfaW5kZXgoJm10
-a19jcnRjLT5iYXNlKSk7Cj4gICAgICAgICAgICAgICAgIG10a19jcnRjLT5jbWRxX2NsaWVudCA9
-IE5VTEw7Cj4gICAgICAgICB9Cj4gLSAgICAgICByZXQgPSBvZl9wcm9wZXJ0eV9yZWFkX3UzMl9p
-bmRleChwcml2LT5tdXRleF9ub2RlLAo+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIm1lZGlhdGVrLGdjZS1ldmVudHMiLAo+IC0gICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgZHJtX2NydGNfaW5kZXgoJm10a19jcnRjLT5iYXNlKSwKPiAtICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICZtdGtfY3J0Yy0+Y21kcV9ldmVu
-dCk7Cj4gLSAgICAgICBpZiAocmV0KQo+IC0gICAgICAgICAgICAgICBkZXZfZGJnKGRldiwgIm10
-a19jcnRjICVkIGZhaWxlZCB0byBnZXQgbWVkaWF0ZWssZ2NlLWV2ZW50cyBwcm9wZXJ0eVxuIiwK
-PiAtICAgICAgICAgICAgICAgICAgICAgICBkcm1fY3J0Y19pbmRleCgmbXRrX2NydGMtPmJhc2Up
-KTsKPiArCj4gKyAgICAgICBpZiAobXRrX2NydGMtPmNtZHFfY2xpZW50KSB7Cj4gKyAgICAgICAg
-ICAgICAgIHJldCA9IG9mX3Byb3BlcnR5X3JlYWRfdTMyX2luZGV4KHByaXYtPm11dGV4X25vZGUs
-Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJtZWRp
-YXRlayxnY2UtZXZlbnRzIiwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgZHJtX2NydGNfaW5kZXgoJm10a19jcnRjLT5iYXNlKSwKPiArICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJm10a19jcnRjLT5jbWRxX2V2
-ZW50KTsKPiArICAgICAgICAgICAgICAgaWYgKHJldCkgewo+ICsgICAgICAgICAgICAgICAgICAg
-ICAgIGRldl9kYmcoZGV2LCAibXRrX2NydGMgJWQgZmFpbGVkIHRvIGdldCBtZWRpYXRlayxnY2Ut
-ZXZlbnRzIHByb3BlcnR5XG4iLAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZHJt
-X2NydGNfaW5kZXgoJm10a19jcnRjLT5iYXNlKSk7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAg
-Y21kcV9tYm94X2Rlc3Ryb3kobXRrX2NydGMtPmNtZHFfY2xpZW50KTsKPiArICAgICAgICAgICAg
-ICAgICAgICAgICBtdGtfY3J0Yy0+Y21kcV9jbGllbnQgPSBOVUxMOwo+ICsgICAgICAgICAgICAg
-ICB9Cj4gKyAgICAgICB9Cj4gICNlbmRpZgo+ICAgICAgICAgcmV0dXJuIDA7Cj4gIH0KPiAtLQo+
-IDIuMTcuMQo+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LW1lZGlhdGVrCg==
+On Wed, 19 Aug 2020 16:43:40 +0800, Stanley Chu wrote:
+
+> MediaTek UFS host starts to support 2 lanes, thus modify the
+> minimum lane count to 2.
+> 
+> This modification shall not impact old 1-lane host because
+> PA_CONNECTEDRXDATALANES and PA_CONNECTEDTXDATALANES will limit the
+> target lanes properly during power mode change. So we could relax
+> the limitation in ufs_dev_params.
+
+Applied to 5.10/scsi-queue, thanks!
+
+[1/1] scsi: ufs: ufs-mediatek: Modify the minimum RX/TX lane count to 2
+      https://git.kernel.org/mkp/scsi/c/460d74a0911c
+
+-- 
+Martin K. Petersen	Oracle Linux Engineering
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
