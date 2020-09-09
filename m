@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7B32EC433E2
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 07:35:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D52AC43461
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 07:35:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 30D5321973
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 07:35:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F22FC21973
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2020 07:35:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jSr8b2c5";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Giwmug0v"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 30D5321973
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pWAzKKpL";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="FIUeHAgP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F22FC21973
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,52 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=PvQ97r/y/OnXROhKUive5eOoLyj32oOo3UqLYyXKLt8=; b=jSr8b2c5kcj0mcRapumiLorgb
-	yO8VNqvJbHg4CVL+G6c+p45FlyYZbrCSMpvwnqErE/P2ckWUs1vxcsmIiZldkPuQ6+GY7pn1T9irF
-	QNrHXvgzZj0C0mIF+t8e5E2mU4ftdPKtM3obWaqEvpm5ozWK3fSTw8Jkyedj8mhVPMz1gzbnrl/kU
-	u+1l8h3ZUTsDAiLX/S0t3P25IbJtCAaBOgftLAutu1bPZd3tspLmBnZp0eGfkAzPd5OO6tAqZ2Wkv
-	9eSsFuLqbTw9MvH+g2Nf9YXVBdWYMOU0W2mmVAnahtNkJE+mnm89lQOCsPcJmt19bjjR0hHdkys4t
-	1a3gEnCvQ==;
+	 bh=gJcaFc2rjy7YA1Q8t2mLREuY4U+2yW3pwJ++/Qi7VIg=; b=pWAzKKpL8xijHYop+xfeWWVcJ
+	4YHxkpu2HLOWf0/IMEb24IPGxyvXwVFjCwHc3w12qmdpUxTLzjPaCRUJ8RXSBttUW4AoeQvR+j1qN
+	Iylm/oAYyBjxrVPRaa0CwA6vPgXviuyFG9+Wme4JO+k36fyYsQJXaXHk5jLtZRjGwz1ezFF36Yxfi
+	lu/TNmKp3N/FQKQh1DbDkhFBrMpcmUBRgg+GUgiESiHTmjwgOUObzK/hDKNjsFLhEp6nEkPfA3JhO
+	+M+X9z8b1NJZ0jVTfE+q1HqeHeW+0H20TiKqrA/3KeXDWX76fxOKsLKUvNPuL1yz8WlI4/VfdmJXS
+	ypw2X6xKg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFudq-0003mx-CG; Wed, 09 Sep 2020 07:35:42 +0000
+	id 1kFudx-0003pF-65; Wed, 09 Sep 2020 07:35:49 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFudf-0003jV-O2; Wed, 09 Sep 2020 07:35:34 +0000
-X-UUID: a109dc01a5af45469f87f6de3758a5ea-20200908
+ id 1kFudi-0003jN-0D; Wed, 09 Sep 2020 07:35:35 +0000
+X-UUID: 4e8cf6865cf44a70ad56e52e498bd1e5-20200908
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=M9B+st9EHiLWNz6oa11lg4+mh5nozfsj2SPClhQffMk=; 
- b=Giwmug0vLHT5wluE9LEhZyvSw8f+KFUEvvoGtHZXTZZBFGMjYhnAbpGyhJprYnCugnAYY/fukmvcvPi/gcBAc7zLpMeX5UCr8bJkranVW3WS+rO23YTvKetdOiTLTvel3hTANVoMiKmD4jbS9F6qsJp2UewvKwmco4w+Ds0gBQY=;
-X-UUID: a109dc01a5af45469f87f6de3758a5ea-20200908
+ bh=VMklwcOhW8OI2ICI2nE8LQDDKCbAyl/WWSvFOiipg3w=; 
+ b=FIUeHAgPeJIiUQQVnqieqQOmxTBjEraMQ1r4ycAK3Rjb97RaGDWoDIikzVTYpcvAUXS9PYG1EG1n09hP/mEuVjHuLKu0utv2LyMhLIQV1JOdd8k8tfchoxfTkp3CXT5gGz2pKqF61ICiJw77lyWWjdbh4Gwewg650X4UzSLrsaI=;
+X-UUID: 4e8cf6865cf44a70ad56e52e498bd1e5-20200908
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1739055537; Tue, 08 Sep 2020 23:35:18 -0800
+ with ESMTP id 1658224491; Tue, 08 Sep 2020 23:35:17 -0800
 Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Sep 2020 00:35:16 -0700
+ 15.0.1497.2; Wed, 9 Sep 2020 00:35:15 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Sep 2020 15:35:14 +0800
+ 15.0.1497.2; Wed, 9 Sep 2020 15:35:12 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 9 Sep 2020 15:35:12 +0800
+ Transport; Wed, 9 Sep 2020 15:35:10 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Felipe Balbi <balbi@kernel.org>, Florian Fainelli <f.fainelli@gmail.com>
-Subject: [PATCH v3 07/11] usb: gadget: bdc: avoid precedence issues
-Date: Wed, 9 Sep 2020 15:32:58 +0800
-Message-ID: <1599636782-7654-7-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH v3 06/11] usb: gadget: bdc: add identifier name for function
+ declaraion
+Date: Wed, 9 Sep 2020 15:32:57 +0800
+Message-ID: <1599636782-7654-6-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1599636782-7654-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1599636782-7654-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 9F11B893D605C1BECD111902489BE88A353AD99B2D417CA66D2A22B31B54C4322000:8
+X-TM-SNTS-SMTP: 4D5F2AAD80551DBD19C9BEEB68C000E644C5A0064BE2A06D4796E7AE36F81B0E2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200909_033532_676124_1B4399A9 
-X-CRM114-Status: GOOD (  11.19  )
+X-CRM114-CacheID: sfid-20200909_033534_206035_98E3EBAD 
+X-CRM114-Status: GOOD (  12.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,7 +97,9 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add () around macro argument to avoid precedence issues
+This is used to avoid the warning of function arguments, e.g.
+  WARNING:FUNCTION_ARGUMENTS: function definition argument 'u32'
+  should also have an identifier name
 
 Cc: Florian Fainelli <f.fainelli@gmail.com>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
@@ -106,67 +109,120 @@ v3: add acked-by Florian
 
 v2: add Cc Florian
 ---
- drivers/usb/gadget/udc/bdc/bdc.h | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ drivers/usb/gadget/udc/bdc/bdc.h     | 28 ++++++++++++++--------------
+ drivers/usb/gadget/udc/bdc/bdc_cmd.h | 18 +++++++++---------
+ drivers/usb/gadget/udc/bdc/bdc_dbg.h |  8 ++++----
+ drivers/usb/gadget/udc/bdc/bdc_ep.h  |  8 ++++----
+ 4 files changed, 31 insertions(+), 31 deletions(-)
 
 diff --git a/drivers/usb/gadget/udc/bdc/bdc.h b/drivers/usb/gadget/udc/bdc/bdc.h
-index 658abef..f8d5958 100644
+index c0ee735..658abef 100644
 --- a/drivers/usb/gadget/udc/bdc/bdc.h
 +++ b/drivers/usb/gadget/udc/bdc/bdc.h
-@@ -86,20 +86,20 @@
- #define BDC_EPSTS5	0x74
- #define BDC_EPSTS6	0x78
- #define BDC_EPSTS7	0x7c
--#define BDC_SRRBAL(n)	(0x200 + (n * 0x10))
--#define BDC_SRRBAH(n)	(0x204 + (n * 0x10))
--#define BDC_SRRINT(n)	(0x208 + (n * 0x10))
--#define BDC_INTCTLS(n)	(0x20c + (n * 0x10))
-+#define BDC_SRRBAL(n)	(0x200 + ((n) * 0x10))
-+#define BDC_SRRBAH(n)	(0x204 + ((n) * 0x10))
-+#define BDC_SRRINT(n)	(0x208 + ((n) * 0x10))
-+#define BDC_INTCTLS(n)	(0x20c + ((n) * 0x10))
+@@ -466,24 +466,24 @@ static inline void bdc_writel(void __iomem *base, u32 offset, u32 value)
+ }
  
- /* Extended capability regs */
- #define BDC_FSCNOC	0xcd4
- #define BDC_FSCNIC	0xce4
--#define NUM_NCS(p)	(p >> 28)
-+#define NUM_NCS(p)	((p) >> 28)
+ /* Buffer descriptor list operations */
+-void bdc_notify_xfr(struct bdc *, u32);
+-void bdc_softconn(struct bdc *);
+-void bdc_softdisconn(struct bdc *);
+-int bdc_run(struct bdc *);
+-int bdc_stop(struct bdc *);
+-int bdc_reset(struct bdc *);
+-int bdc_udc_init(struct bdc *);
+-void bdc_udc_exit(struct bdc *);
+-int bdc_reinit(struct bdc *);
++void bdc_notify_xfr(struct bdc *bdc, u32 epnum);
++void bdc_softconn(struct bdc *bdc);
++void bdc_softdisconn(struct bdc *bdc);
++int bdc_run(struct bdc *bdc);
++int bdc_stop(struct bdc *bdc);
++int bdc_reset(struct bdc *bdc);
++int bdc_udc_init(struct bdc *bdc);
++void bdc_udc_exit(struct bdc *bdc);
++int bdc_reinit(struct bdc *bdc);
  
- /* Register bit fields and Masks */
- /* BDC Configuration 0 */
- #define BDC_PGS(p)	(((p) & (0x7 << 8)) >> 8)
--#define BDC_SPB(p)	(p & 0x7)
-+#define BDC_SPB(p)	((p) & 0x7)
+ /* Status report handlers */
+ /* Upstream port status change sr */
+-void bdc_sr_uspc(struct bdc *, struct bdc_sr *);
++void bdc_sr_uspc(struct bdc *bdc, struct bdc_sr *sreport);
+ /* transfer sr */
+-void bdc_sr_xsf(struct bdc *, struct bdc_sr *);
++void bdc_sr_xsf(struct bdc *bdc, struct bdc_sr *sreport);
+ /* EP0 XSF handlers */
+-void bdc_xsf_ep0_setup_recv(struct bdc *, struct bdc_sr *);
+-void bdc_xsf_ep0_data_start(struct bdc *, struct bdc_sr *);
+-void bdc_xsf_ep0_status_start(struct bdc *, struct bdc_sr *);
++void bdc_xsf_ep0_setup_recv(struct bdc *bdc, struct bdc_sr *sreport);
++void bdc_xsf_ep0_data_start(struct bdc *bdc, struct bdc_sr *sreport);
++void bdc_xsf_ep0_status_start(struct bdc *bdc, struct bdc_sr *sreport);
  
- /* BDC Capability1 */
- #define BDC_P64		(1 << 0)
-@@ -113,7 +113,7 @@
- #define BDC_CMD_DVC	0x1
- #define BDC_CMD_CWS		(0x1 << 5)
- #define BDC_CMD_CST(p)		(((p) & (0xf << 6))>>6)
--#define BDC_CMD_EPN(p)		((p & 0x1f) << 10)
-+#define BDC_CMD_EPN(p)		(((p) & 0x1f) << 10)
- #define BDC_SUB_CMD_ADD		(0x1 << 17)
- #define BDC_SUB_CMD_FWK		(0x4 << 17)
- /* Reset sequence number */
-@@ -163,7 +163,7 @@
- #define BDC_SPEED_HS	0x3
- #define BDC_SPEED_SS	0x4
+ #endif /* __LINUX_BDC_H__ */
+diff --git a/drivers/usb/gadget/udc/bdc/bdc_cmd.h b/drivers/usb/gadget/udc/bdc/bdc_cmd.h
+index a3a6dbd..533ad52 100644
+--- a/drivers/usb/gadget/udc/bdc/bdc_cmd.h
++++ b/drivers/usb/gadget/udc/bdc/bdc_cmd.h
+@@ -10,14 +10,14 @@
+ #define __LINUX_BDC_CMD_H__
  
--#define BDC_PST(p)	(p & 0xf)
-+#define BDC_PST(p)	((p) & 0xf)
- #define BDC_PST_MASK	0xf
+ /* Command operations */
+-int bdc_address_device(struct bdc *, u32);
+-int bdc_config_ep(struct bdc *, struct bdc_ep *);
+-int bdc_dconfig_ep(struct bdc *, struct bdc_ep *);
+-int bdc_stop_ep(struct bdc *, int);
+-int bdc_ep_set_stall(struct bdc *, int);
+-int bdc_ep_clear_stall(struct bdc *, int);
+-int bdc_ep_bla(struct bdc *, struct bdc_ep *, dma_addr_t);
+-int bdc_function_wake(struct bdc*, u8);
+-int bdc_function_wake_fh(struct bdc*, u8);
++int bdc_address_device(struct bdc *bdc, u32 add);
++int bdc_config_ep(struct bdc *bdc, struct bdc_ep *ep);
++int bdc_dconfig_ep(struct bdc *bdc, struct bdc_ep *ep);
++int bdc_stop_ep(struct bdc *bdc, int epnum);
++int bdc_ep_set_stall(struct bdc *bdc, int epnum);
++int bdc_ep_clear_stall(struct bdc *bdc, int epnum);
++int bdc_ep_bla(struct bdc *bdc, struct bdc_ep *ep, dma_addr_t dma_addr);
++int bdc_function_wake(struct bdc *bdc, u8 intf);
++int bdc_function_wake_fh(struct bdc *bdc, u8 intf);
  
- /* USPPMS */
-@@ -228,7 +228,7 @@
- /* status report defines */
- #define SR_XSF		0
- #define SR_USPC		4
--#define SR_BD_LEN(p)    (p & 0xffffff)
-+#define SR_BD_LEN(p)    ((p) & 0xffffff)
+ #endif /* __LINUX_BDC_CMD_H__ */
+diff --git a/drivers/usb/gadget/udc/bdc/bdc_dbg.h b/drivers/usb/gadget/udc/bdc/bdc_dbg.h
+index 859d588..acd8332 100644
+--- a/drivers/usb/gadget/udc/bdc/bdc_dbg.h
++++ b/drivers/usb/gadget/udc/bdc/bdc_dbg.h
+@@ -12,10 +12,10 @@
+ #include "bdc.h"
  
- #define XSF_SUCC	0x1
- #define XSF_SHORT	0x3
+ #ifdef CONFIG_USB_GADGET_VERBOSE
+-void bdc_dbg_bd_list(struct bdc *, struct bdc_ep*);
+-void bdc_dbg_srr(struct bdc *, u32);
+-void bdc_dbg_regs(struct bdc *);
+-void bdc_dump_epsts(struct bdc *);
++void bdc_dbg_bd_list(struct bdc *bdc, struct bdc_ep *ep);
++void bdc_dbg_srr(struct bdc *bdc, u32 srr_num);
++void bdc_dbg_regs(struct bdc *bdc);
++void bdc_dump_epsts(struct bdc *bdc);
+ #else
+ static inline void bdc_dbg_regs(struct bdc *bdc)
+ { }
+diff --git a/drivers/usb/gadget/udc/bdc/bdc_ep.h b/drivers/usb/gadget/udc/bdc/bdc_ep.h
+index 5bbd73f..4d3affd 100644
+--- a/drivers/usb/gadget/udc/bdc/bdc_ep.h
++++ b/drivers/usb/gadget/udc/bdc/bdc_ep.h
+@@ -9,9 +9,9 @@
+ #ifndef __LINUX_BDC_EP_H__
+ #define __LINUX_BDC_EP_H__
+ 
+-int bdc_init_ep(struct bdc *);
+-int bdc_ep_disable(struct bdc_ep *);
+-int bdc_ep_enable(struct bdc_ep *);
+-void bdc_free_ep(struct bdc *);
++int bdc_init_ep(struct bdc *bdc);
++int bdc_ep_disable(struct bdc_ep *ep);
++int bdc_ep_enable(struct bdc_ep *ep);
++void bdc_free_ep(struct bdc *bdc);
+ 
+ #endif /* __LINUX_BDC_EP_H__ */
 -- 
 1.9.1
 _______________________________________________
