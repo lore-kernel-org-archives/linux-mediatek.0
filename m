@@ -2,71 +2,84 @@ Return-Path: <SRS0=yNvG=CT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E3833C43461
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 11:03:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 353B9C433E2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 11:35:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8563620BED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 11:03:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8682C2078B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 11:35:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2XF6I852";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="18mUZhE8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8563620BED
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WjYTBsRQ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="rW+wPK6u"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8682C2078B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jd2pnthWIAx+XhJ6qlbFs3meNA75hofK1y93qS5uAcc=; b=2XF6I852bF7PJFbOTZ82wgnjd
-	OgjUmMBvwAEHgA93d2bkQpwwWyr6WaTxyoBenIUQG66jGEV0Fd9ezEr1QFDGeyUSvF5dObUE9aGyM
-	jbc1yZUPncuDxceM8kBNgevnIG76TIrkojV7CcvxYAFOVg1DmzUcRKHksWciUuUPUI4H5MzxCjDuT
-	9Zy7JFARhYISOeuzkie/SjDeclBnBYEN7WLqfDkLQ9knUETuoqOWEnI8qm9XpbMKdDOFXelMiK8M+
-	/9/UpSmzbGYc2+WsMau7a02tEXwmEzj9o7IpgDL5B3aQwuh4+NsfpEvj3d0iMoo2RAWgJsgp3oV+/
-	wF4VJhQpw==;
+	 bh=LlonSpwDI1wsRoHpVnP3AkNj6KezGI4B9rcdOZ/5nUk=; b=WjYTBsRQPYugkEgeMCku/YAHR
+	125xuZoOY/1hGNi6KMbvuXpDkP2tLuHAlkDAFTpWBUbw9GUL/4PjcTwcGlkm53XugAAjTgmWEWAXF
+	Q4O+nkuxxF5bZR2glLZSr6q9a8lzhvojg2TQvs1LKJmBWnx0HA3ZPNYs5meqkpoT6A/ew1uZOzFOS
+	J7n1SZSd9wOUtRiMaihsJ8GN2qHQAqmVpb950ffZB7OSTi4GZxpyqo4GrJe67DMg04eIUFGnl83IV
+	IGHXDrdzIstvyfiLs3X5YK8FQjK/Ld+peS5sWYaLeveHW+Y2Npze6+yMntuu3Ik3qp1NmQ0Ekit1X
+	x8huYATFg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGKMY-0002i4-Kl; Thu, 10 Sep 2020 11:03:34 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kGKrF-0006T1-U9; Thu, 10 Sep 2020 11:35:17 +0000
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGKMS-0002fy-Jm; Thu, 10 Sep 2020 11:03:29 +0000
-Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id F2DFF20720;
- Thu, 10 Sep 2020 11:03:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1599735807;
- bh=dmrwyQMyeJMFMQp1EmqKFdckpq9rAe0lbenAUyImoHI=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=18mUZhE89SuUR9AkRIvaLcq0CV19oM50ifpHaALiIug/IWYJwyy6/yKbEXGWUq0e2
- ySMgHwdgAHR53xxhtsjqglHPRZ6z18CuVQ19qtjnOwsiniC5WkrCRFiC2Lm3RUg9ox
- sGG3YwHzjYvnF+tl2rakOguBKLp+KG5CEGtVhy5w=
-Date: Thu, 10 Sep 2020 12:02:41 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v7 2/3] ASoC: qcom: dt-bindings: Add sc7180 machine
- bindings
-Message-ID: <20200910110241.GA4898@sirena.org.uk>
-References: <20200907100039.1731457-1-cychiang@chromium.org>
- <20200907100039.1731457-3-cychiang@chromium.org>
- <20200908203357.GA861143@bogus>
- <CAFv8NwLMAkFhVT-ML7QHbnSkqmgh=5SrNSik5eSCTHB1=DGQ0A@mail.gmail.com>
- <CAL_JsqKW2bpHP60MX4eFmtfzkvaHJ670m6e8H29=u=mDAYg63w@mail.gmail.com>
+ id 1kGKrC-0006SL-08; Thu, 10 Sep 2020 11:35:15 +0000
+Received: by mail-pf1-x441.google.com with SMTP id c196so4604121pfc.0;
+ Thu, 10 Sep 2020 04:35:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=OAIIi6uo3XgXFJ7QsLwLusqGAN4H6rcenY71bNI/1l8=;
+ b=rW+wPK6uNUbrUcprGE+bQuCpqDWnZ0VJbYkiOw/LceoiimtmO+K5zGaJ8VH0fntmp+
+ 60B98AoB2KqakAI4TCQ0uZ4WWLuPJehYgr5Srs+vOTsO7s8hRxHwTPM9ARbWajgphq2B
+ eWF9fHapKu16Jsi6TEfaoFS4dpvFBS9QK41CJGk+o7RlAABDvo/dM9b4B650BS9FLS4p
+ yMJaz5yYQL0WEuCDL8GAudTrpDIShQA3TuQLtjqRDVN0d9IrSXJcdxiN51NAOtaJEQnw
+ oxKzVKa1VyeWniKn9nW3b/8r4kUc1kNt9Z6dWm93DAtQAozF65v8SL+LPP/lanfG6nC1
+ uJPg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=OAIIi6uo3XgXFJ7QsLwLusqGAN4H6rcenY71bNI/1l8=;
+ b=oebBMv2VOL5bq6OVEjmsl4J9wktraaDk4xmrvLcmb3RfqhMlMZ82+CdcwZqG2UOa7U
+ 7dcnWQmPJnLXul7BIi22HREru9J2ElrIkPPtRj2YYzW8Fv+9FgmDW/9OP6afuZE6+9Jq
+ i20oK6PnTd674zlGtGjEaSYfKhsrIhCuBqQn0W/isB7oCXQh01TzPUKpQSAGxHORuBFb
+ qjzhgXHO5FgE6Un64JdklDsDNS1RjXYLHR8C5nnURHqg82VK3FJoJPkAVCtZhRRP3AJd
+ yeMR6XDOFEgXO5oVTcaqfTN4VoGFRaNI3YnU0X/vJ+U9/sCyDGdzTphBlmAi6acX28mh
+ hOfg==
+X-Gm-Message-State: AOAM530Z39SS4ViY2mnwfZ1r0EKl+jxQTSelvJVbma+wQCdDQGieHW+i
+ I2w4hiLV2wVXyywGqJ2vfMzHts27X6x+6+870AA=
+X-Google-Smtp-Source: ABdhPJyA7xJQIZk5VHdsH5jeJ1GijVp07O14SJTxho9owohQ9HM6j6M0zAQbtOSB3XzQ6HyGQ+uJhc1FwEQ8T7FSZbs=
+X-Received: by 2002:a63:ec4c:: with SMTP id r12mr4042041pgj.74.1599737711469; 
+ Thu, 10 Sep 2020 04:35:11 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAL_JsqKW2bpHP60MX4eFmtfzkvaHJ670m6e8H29=u=mDAYg63w@mail.gmail.com>
-X-Cookie: I disagree with unanimity.
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <1599474459-20853-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1599474459-20853-2-git-send-email-gene.chen.richtek@gmail.com>
+ <CAHp75VdLDvoQicP1nLnjOiit6qjaw9n7+LuJ-J3MtaoHUOa_2g@mail.gmail.com>
+ <CAE+NS35FETQ9ASJeYP=Sa8dm7ohRBcdAwUioCAnHPY2TiD4pNA@mail.gmail.com>
+ <20200910081814.GB28357@amd>
+In-Reply-To: <20200910081814.GB28357@amd>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Thu, 10 Sep 2020 14:34:54 +0300
+Message-ID: <CAHp75Vds75jP47Fy78gxrg05J-CYQ7yD_EiDqizKkcW5rHL_RA@mail.gmail.com>
+Subject: Re: [PATCH v3 1/2] leds: mt6360: Add LED driver for MT6360
+To: Pavel Machek <pavel@ucw.cz>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200910_070328_805051_70B2BC12 
-X-CRM114-Status: GOOD (  12.25  )
+X-CRM114-CacheID: sfid-20200910_073514_106284_91F70D77 
+X-CRM114-Status: GOOD (  14.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,83 +91,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Taniya Das <tdas@codeaurora.org>,
- "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..."
- <alsa-devel@alsa-project.org>, Banajit Goswami <bgoswami@codeaurora.org>,
- Heiko Stuebner <heiko@sntech.de>, Takashi Iwai <tiwai@suse.com>,
- Rohit kumar <rohitkr@codeaurora.org>, Cheng-yi Chiang <cychiang@chromium.org>,
- Patrick Lai <plai@codeaurora.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Andy Gross <agross@kernel.org>, Dylan Reid <dgreid@chromium.org>,
- Jaroslav Kysela <perex@perex.cz>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Tzung-Bi Shih <tzungbi@chromium.org>,
- Stephan Gerhold <stephan@gerhold.net>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+Cc: linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ devicetree <devicetree@vger.kernel.org>, shufan_lee@richtek.com,
+ cy_huang@richtek.com, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Gene Chen <gene_chen@richtek.com>, benjamin.chao@mediatek.com,
+ Rob Herring <robh+dt@kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Doug Anderson <dianders@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- Srini Kandagatla <srinivas.kandagatla@linaro.org>
-Content-Type: multipart/mixed; boundary="===============0283822021280007661=="
+ Gene Chen <gene.chen.richtek@gmail.com>, Wilma.Wu@mediatek.com,
+ Linux LED Subsystem <linux-leds@vger.kernel.org>, Dan Murphy <dmurphy@ti.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Sep 10, 2020 at 11:18 AM Pavel Machek <pavel@ucw.cz> wrote:
 
---===============0283822021280007661==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="cNdxnHkX5QqsyA0e"
-Content-Disposition: inline
+...
 
+> > > > +enum {
+> > > > +       MT6360_LED_ISNK1 = 0,
+> > > > +       MT6360_LED_ISNK2,
+> > > > +       MT6360_LED_ISNK3,
+> > > > +       MT6360_LED_ISNK4,
+> > > > +       MT6360_LED_FLASH1,
+> > > > +       MT6360_LED_FLASH2,
+> > >
+> > > > +       MT6360_MAX_LEDS,
+> > >
+> > > No comma for terminator entry.
+> > >
+> >
+> > ACK
+>
+> Actually, that comma is fine. Its absence would be fine, too.
 
---cNdxnHkX5QqsyA0e
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+It is slightly better not to have to prevent (theoretical) rebase or
+other similar issues when a new item can go behind the terminator. In
+such a case compiler can easily tell you if something is wrong.
 
-On Wed, Sep 09, 2020 at 11:49:22AM -0600, Rob Herring wrote:
+> > > > +};
 
-> I would assume a codec to be similar. The codec node (the alc5682
-> node) should have any jack related properties (or possibly implicitly
-> support it by default).
+...
 
-This isn't always clear - some jack detection is implemented entirely by
-integrating simple components like GPIOs and ADCs or by integrating
-limited support in one device with some external components to get more
-features (like bolting an ADC on the side for button detect).  I would
-not expect to ever see a device with jack detection support that could
-just be unconditionally enabled, it will always require some board level
-wiring up to provide the connections required to function.
+> > > > +static const struct of_device_id __maybe_unused mt6360_led_of_id[] = {
+> > > > +       { .compatible = "mediatek,mt6360-led", },
+> > >
+> > > > +       {},
+> > >
+> > > No need comma.
+> >
+> > ACK
+>
+> It is also no hurting comma.
 
---cNdxnHkX5QqsyA0e
-Content-Type: application/pgp-signature; name="signature.asc"
+Same explanation. It doesn't hurt per se, but its absence might serve a purpose.
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl9aB9EACgkQJNaLcl1U
-h9AQugf/fpoDHSobmOyj7a1nUYga227O6hgeON+vz+LB7a1JnX599O2oELAe1IGT
-xOV8DGUJpwdKUP1XWMHb/vMrtaS71E8m6Qsulc3s+Hdt6F38ObT5+z7zu0grr0rm
-wN1qRoyWHkPhFczDkvF95J2xO+lbs+5DbmfT/YVL+npWCtyYRVgKDwhmwWvqk/Sv
-5H7dVBlF1ivTTc4mAbG0FGGVlSL9hsg87i9b30jChkitX7BDRyvj41eVOdQs0Dpz
-ghIR+b6ZFI4iihIbFj8kBDL6y6cekl0Cs9YUA5YLsDxSjSJUidnCiuX1UK3NNOW2
-HiD76k32T+eskJVotOs6/DwV7UQS4A==
-=knP8
------END PGP SIGNATURE-----
-
---cNdxnHkX5QqsyA0e--
-
-
---===============0283822021280007661==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+With Best Regards,
+Andy Shevchenko
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============0283822021280007661==--
-
