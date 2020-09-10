@@ -2,57 +2,82 @@ Return-Path: <SRS0=yNvG=CT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F8C7C433E2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 17:31:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B4B16C43461
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 17:58:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DA17A206A1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 17:31:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5081220C09
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 17:58:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qXzN309K"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DA17A206A1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xem9fE93";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="1/dJz17P"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5081220C09
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Af07SpOiOykTn5XlJsB91ns7h7I6M4VozcidUcFakNU=; b=qXzN309KGPFrACwC1NIbtfR6o
-	8Q67JobK860kvbQ952ttDCFiqCj6r6EYFlWZB//YQ9UCKd9GTNhWplxMcmLW3m8o9i0PKUpmFIJk3
-	OdD48p95qks18MHLnFI8XOCzD6i0c3a/caiOT8XJ4/lPuVb212LsK5p9ae/gkrnBomVA5b5d2jSYm
-	6mlCBVp8AwJXglLfHA9QtZmi/GEomaouIZtr8OmNsw8mUxkeM9RldOp3BCdBf5tqzFBEnai+CAzQY
-	tTPmgRmjkqEJk9NDrudJ0qvg0hZbeF0LwPYcpVUeT9X1IDysC1jIqkyfji1xuQ64dIhUKaie/MySQ
-	KMuiFCIuQ==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cIasdaggiI83tt+a/SHw41ngeomCjkM6dO3VHF5FFfc=; b=xem9fE930X5YvZSHxFC1GziaL+
+	siLxAX2kOgtoNKetPvxKXFLcPBejFjAxrJDvrjmnFfS0I2jjCNRQGyj3OgmFmhPWqyQqpGm5biCqR
+	XqCMlvwG+ABpe+NmqeEo7sPnNYUkFJ/hRRYRD5RolRPxhIu/+KRh6nhH60hWa/aEO7th+sRzfxvco
+	6E5prgCMRfkveM1ZFAwOeJpQfXsQXvL77cjnlLEXWvoRO6bpTUql44j2G6YhtQK6BKPZXBiFYEuZ0
+	8hpMV3aPyhRT6GQESqWtD/QUOZOI7Z1L8Ee3sMZ0M3+R7vjI3txxuTEfHGPeh/WseEoV5DfUmMrdq
+	OhtcTNLg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGQPk-0005fy-34; Thu, 10 Sep 2020 17:31:16 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kGQpV-0002Hb-0d; Thu, 10 Sep 2020 17:57:53 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGQNP-0004FC-GK; Thu, 10 Sep 2020 17:28:53 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id CD68729BB09
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH 12/12] arm64: dts: mediatek: Add mt8183 power domains
- controller
-Date: Thu, 10 Sep 2020 19:28:26 +0200
-Message-Id: <20200910172826.3074357-13-enric.balletbo@collabora.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20200910172826.3074357-1-enric.balletbo@collabora.com>
-References: <20200910172826.3074357-1-enric.balletbo@collabora.com>
-MIME-Version: 1.0
+ id 1kGQpQ-0002Gt-Sw; Thu, 10 Sep 2020 17:57:49 +0000
+Received: from localhost.localdomain (unknown [194.230.155.174])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 3808820BED;
+ Thu, 10 Sep 2020 17:57:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1599760667;
+ bh=muQ6zjVn/mf+iXsfCUdXzl3dZG6B8J8l8bbNbkMxaHs=;
+ h=From:To:Cc:Subject:Date:From;
+ b=1/dJz17PLrZMeRIjQd6sFEAce0o7eu4K+r0dL+zosiqq0luiYlHoWB51FielsPqaO
+ Wa3TSJxOyAyZi6SExx28ze23dGlUmJasReiKbjSU4S7it/I5rb2rMggP0mkbcOPGUV
+ cSry5a/sdkrgJlogKXiGfjplhGDzzPpiCOwVMjVI=
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Linus Walleij <linus.walleij@linaro.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ =?UTF-8?q?Beno=C3=AEt=20Cousson?= <bcousson@baylibre.com>,
+ Tony Lindgren <tony@atomide.com>, Russell King <linux@armlinux.org.uk>,
+ Jason Cooper <jason@lakedaemon.net>, Andrew Lunn <andrew@lunn.ch>,
+ Gregory Clement <gregory.clement@bootlin.com>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ NXP Linux Team <linux-imx@nxp.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>, Tero Kristo <t-kristo@ti.com>,
+ Nishanth Menon <nm@ti.com>, Michal Simek <michal.simek@xilinx.com>,
+ Guenter Roeck <linux@roeck-us.net>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+Subject: [PATCH v2 00/15] ARM: dts: / gpio: Add dtschema for NXP PCA953x and
+ correct dts
+Date: Thu, 10 Sep 2020 19:57:18 +0200
+Message-Id: <20200910175733.11046-1-krzk@kernel.org>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200910_132851_738261_2D1F587F 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20200910_135749_099885_9409198B 
+X-CRM114-Status: GOOD (  15.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,215 +89,75 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, drinkcat@chromium.org, weiyi.lu@mediatek.com,
- Rob Herring <robh+dt@kernel.org>, fparent@baylibre.com,
- Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org,
- hsinyi@chromium.org, matthias.bgg@gmail.com,
- Collabora Kernel ML <kernel@collabora.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Krzysztof Kozlowski <krzk@kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Matthias Brugger <mbrugger@suse.com>
+Hi,
 
-Add power domains controller node for SoC mt8183
+Changes since v1:
+1. Patch 1: Use additionalProperties, Add wakeup-source, Add hogs, Extend example with hogs.
+2. New patches: 3, 4, 5, 6, 7, 9, 10, 12, 14 and 15.
 
-Signed-off-by: Matthias Brugger <mbrugger@suse.com>
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
+The patches could be picked up independently if dtschema makes sense.
+The fixes for pins make sense anyway, regardless of dtschema.
 
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 160 +++++++++++++++++++++++
- 1 file changed, 160 insertions(+)
+Best regards,
+Krzysztof
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 102105871db2..7012cdb22bf0 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -8,6 +8,7 @@
- #include <dt-bindings/clock/mt8183-clk.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/power/mt8183-power.h>
- #include <dt-bindings/reset-controller/mt8183-resets.h>
- #include <dt-bindings/phy/phy.h>
- #include "mt8183-pinfunc.h"
-@@ -316,6 +317,160 @@ pio: pinctrl@10005000 {
- 			#interrupt-cells = <2>;
- 		};
- 
-+		scpsys: syscon@10006000 {
-+			compatible = "mediatek,mt8183-power-controller", "syscon";
-+			reg = <0 0x10006000 0 0x1000>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			audio@MT8183_POWER_DOMAIN_AUDIO {
-+				reg = <MT8183_POWER_DOMAIN_AUDIO>;
-+				clocks = <&topckgen CLK_TOP_MUX_AUD_INTBUS>,
-+					 <&infracfg CLK_INFRA_AUDIO>,
-+					 <&infracfg CLK_INFRA_AUDIO_26M_BCLK>;
-+				clock-names = "audio", "audio1", "audio2";
-+				#power-domain-cells = <0>;
-+			};
-+
-+			conn@MT8183_POWER_DOMAIN_CONN {
-+				reg = <MT8183_POWER_DOMAIN_CONN>;
-+				mediatek,infracfg = <&infracfg>;
-+				#power-domain-cells = <0>;
-+			};
-+
-+			mfg_async@MT8183_POWER_DOMAIN_MFG_ASYNC {
-+				reg = <MT8183_POWER_DOMAIN_MFG_ASYNC>;
-+
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+				clocks =  <&topckgen CLK_TOP_MUX_MFG>;
-+				clock-names = "mfg";
-+				#power-domain-cells = <1>;
-+
-+				mfg@MT8183_POWER_DOMAIN_MFG {
-+					reg = <MT8183_POWER_DOMAIN_MFG>;
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					#power-domain-cells = <1>;
-+
-+					mfg_core0@MT8183_POWER_DOMAIN_MFG_CORE0 {
-+						reg = <MT8183_POWER_DOMAIN_MFG_CORE0>;
-+						#power-domain-cells = <0>;
-+					};
-+
-+					mfg_core1@MT8183_POWER_DOMAIN_MFG_CORE1 {
-+						reg = <MT8183_POWER_DOMAIN_MFG_CORE1>;
-+						#power-domain-cells = <0>;
-+					};
-+
-+					mfg_2d@MT8183_POWER_DOMAIN_MFG_2D {
-+						reg = <MT8183_POWER_DOMAIN_MFG_2D>;
-+						mediatek,infracfg = <&infracfg>;
-+						#power-domain-cells = <0>;
-+					};
-+				};
-+			};
-+
-+			disp@MT8183_POWER_DOMAIN_DISP {
-+				reg = <MT8183_POWER_DOMAIN_DISP>;
-+				clocks = <&topckgen CLK_TOP_MUX_MM>,
-+					 <&mmsys CLK_MM_SMI_COMMON>,
-+					 <&mmsys CLK_MM_SMI_LARB0>,
-+					 <&mmsys CLK_MM_SMI_LARB1>,
-+					 <&mmsys CLK_MM_GALS_COMM0>,
-+					 <&mmsys CLK_MM_GALS_COMM1>,
-+					 <&mmsys CLK_MM_GALS_CCU2MM>,
-+					 <&mmsys CLK_MM_GALS_IPU12MM>,
-+					 <&mmsys CLK_MM_GALS_IMG2MM>,
-+					 <&mmsys CLK_MM_GALS_CAM2MM>,
-+					 <&mmsys CLK_MM_GALS_IPU2MM>;
-+				clock-names = "mm", "mm-0", "mm-1", "mm-2", "mm-3",
-+					      "mm-4", "mm-5", "mm-6", "mm-7",
-+					      "mm-8", "mm-9";
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+				mediatek,infracfg = <&infracfg>;
-+				mediatek,smi = <&smi_common>;
-+				#power-domain-cells = <1>;
-+
-+				cam@MT8183_POWER_DOMAIN_CAM {
-+					reg = <MT8183_POWER_DOMAIN_CAM>;
-+					clocks = <&topckgen CLK_TOP_MUX_CAM>,
-+						 <&camsys CLK_CAM_LARB6>,
-+						 <&camsys CLK_CAM_LARB3>,
-+						 <&camsys CLK_CAM_SENINF>,
-+						 <&camsys CLK_CAM_CAMSV0>,
-+						 <&camsys CLK_CAM_CAMSV1>,
-+						 <&camsys CLK_CAM_CAMSV2>,
-+						 <&camsys CLK_CAM_CCU>;
-+					clock-names = "cam", "cam-0", "cam-1",
-+						      "cam-2", "cam-3", "cam-4",
-+						      "cam-5", "cam-6";
-+					mediatek,infracfg = <&infracfg>;
-+					mediatek,smi = <&smi_common>;
-+					#power-domain-cells = <0>;
-+				};
-+
-+				isp@MT8183_POWER_DOMAIN_ISP {
-+					reg = <MT8183_POWER_DOMAIN_ISP>;
-+					clocks = <&topckgen CLK_TOP_MUX_IMG>,
-+						 <&imgsys CLK_IMG_LARB5>,
-+						 <&imgsys CLK_IMG_LARB2>;
-+					clock-names = "isp", "isp-0", "isp-1";
-+					mediatek,infracfg = <&infracfg>;
-+					mediatek,smi = <&smi_common>;
-+					#power-domain-cells = <0>;
-+				};
-+
-+				vdec@MT8183_POWER_DOMAIN_VDEC {
-+					reg = <MT8183_POWER_DOMAIN_VDEC>;
-+					mediatek,smi = <&smi_common>;
-+					#power-domain-cells = <0>;
-+				};
-+
-+				venc@MT8183_POWER_DOMAIN_VENC {
-+					reg = <MT8183_POWER_DOMAIN_VENC>;
-+					mediatek,smi = <&smi_common>;
-+					#power-domain-cells = <0>;
-+				};
-+
-+				vpu_top@MT8183_POWER_DOMAIN_VPU_TOP {
-+					reg = <MT8183_POWER_DOMAIN_VPU_TOP>;
-+					clocks = <&topckgen CLK_TOP_MUX_IPU_IF>,
-+						 <&topckgen CLK_TOP_MUX_DSP>,
-+						 <&ipu_conn CLK_IPU_CONN_IPU>,
-+						 <&ipu_conn CLK_IPU_CONN_AHB>,
-+						 <&ipu_conn CLK_IPU_CONN_AXI>,
-+						 <&ipu_conn CLK_IPU_CONN_ISP>,
-+						 <&ipu_conn CLK_IPU_CONN_CAM_ADL>,
-+						 <&ipu_conn CLK_IPU_CONN_IMG_ADL>;
-+					clock-names = "vpu", "vpu1", "vpu-0", "vpu-1",
-+						      "vpu-2", "vpu-3", "vpu-4", "vpu-5";
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					mediatek,infracfg = <&infracfg>;
-+					mediatek,smi = <&smi_common>;
-+					#power-domain-cells = <1>;
-+
-+					vpu_core0@MT8183_POWER_DOMAIN_VPU_CORE0 {
-+						reg = <MT8183_POWER_DOMAIN_VPU_CORE0>;
-+						clocks = <&topckgen CLK_TOP_MUX_DSP1>;
-+						clock-names = "vpu2";
-+						mediatek,infracfg = <&infracfg>;
-+						#power-domain-cells = <0>;
-+					};
-+
-+					vpu_core1@MT8183_POWER_DOMAIN_VPU_CORE1 {
-+						reg = <MT8183_POWER_DOMAIN_VPU_CORE1>;
-+						clocks = <&topckgen CLK_TOP_MUX_DSP2>;
-+						clock-names = "vpu3";
-+						mediatek,infracfg = <&infracfg>;
-+						#power-domain-cells = <0>;
-+					};
-+				};
-+			};
-+		};
-+
- 		watchdog: watchdog@10007000 {
- 			compatible = "mediatek,mt8183-wdt",
- 				     "mediatek,mt6589-wdt";
-@@ -754,6 +909,11 @@ mmsys: syscon@14000000 {
- 			#clock-cells = <1>;
- 		};
- 
-+		smi_common: smi@14019000 {
-+			compatible = "mediatek,mt8183-smi-common", "syscon";
-+			reg = <0 0x14019000 0 0x1000>;
-+		};
-+
- 		imgsys: syscon@15020000 {
- 			compatible = "mediatek,mt8183-imgsys", "syscon";
- 			reg = <0 0x15020000 0 0x1000>;
+
+Krzysztof Kozlowski (15):
+  dt-bindings: gpio: convert bindings for NXP PCA953x family to dtschema
+  dt-bindings: gpio: convert bindings for Maxim MAX732x family to
+    dtschema
+  arm64: dts: mediatek: fix tca6416 reset GPIOs in pumpkin
+  arm64: dts: mediatek: align GPIO hog names with dtschema
+  arm64: dts: renesas: align GPIO hog names with dtschema
+  arm64: dts: ti: align GPIO hog names with dtschema
+  arm64: dts: xilinx: align GPIO hog names with dtschema
+  ARM: dts: am335x: lxm: fix PCA9539 GPIO expander properties
+  ARM: dts: am335x: t335: align GPIO hog names with dtschema
+  ARM: dts: am3874: iceboard: fix GPIO expander reset GPIOs
+  ARM: dts: aspeed: fix PCA95xx GPIO expander properties on Portwell
+  ARM: dts: aspeed: align GPIO hog names with dtschema
+  ARM: dts: dove: fix PCA95xx GPIO expander properties on A510
+  ARM: dts: armada: align GPIO hog names with dtschema
+  ARM: dts: imx6q: align GPIO hog names with dtschema
+
+ .../devicetree/bindings/gpio/gpio-max732x.txt |  58 -----
+ .../devicetree/bindings/gpio/gpio-pca953x.txt |  90 -------
+ .../bindings/gpio/gpio-pca95xx.yaml           | 234 ++++++++++++++++++
+ .../devicetree/bindings/trivial-devices.yaml  |   4 -
+ arch/arm/boot/dts/am335x-lxm.dts              |   4 +
+ arch/arm/boot/dts/am335x-sbc-t335.dts         |   4 +-
+ arch/arm/boot/dts/am3874-iceboard.dts         |   8 +-
+ arch/arm/boot/dts/armada-388-clearfog.dts     |   4 +-
+ arch/arm/boot/dts/armada-388-clearfog.dtsi    |  10 +-
+ arch/arm/boot/dts/armada-388-helios4.dts      |   6 +-
+ arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts  |   2 +-
+ arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts   |  16 +-
+ .../boot/dts/aspeed-bmc-portwell-neptune.dts  |   2 +
+ arch/arm/boot/dts/dove-sbc-a510.dts           |   1 +
+ arch/arm/boot/dts/imx6q-b450v3.dts            |  14 +-
+ arch/arm/boot/dts/imx6q-b650v3.dts            |  12 +-
+ arch/arm/boot/dts/imx6q-b850v3.dts            |   4 +-
+ arch/arm/boot/dts/imx6q-bx50v3.dtsi           |  12 +-
+ .../boot/dts/mediatek/pumpkin-common.dtsi     |  28 +--
+ .../boot/dts/renesas/r8a77951-salvator-xs.dts |   2 +-
+ .../boot/dts/renesas/r8a77965-salvator-xs.dts |   2 +-
+ arch/arm64/boot/dts/renesas/ulcb-kf.dtsi      |  14 +-
+ .../dts/ti/k3-j721e-common-proc-board.dts     |   4 +-
+ .../boot/dts/xilinx/zynqmp-zcu102-revA.dts    |   8 +-
+ 24 files changed, 316 insertions(+), 227 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/gpio/gpio-max732x.txt
+ delete mode 100644 Documentation/devicetree/bindings/gpio/gpio-pca953x.txt
+ create mode 100644 Documentation/devicetree/bindings/gpio/gpio-pca95xx.yaml
+
 -- 
-2.28.0
+2.17.1
 
 
 _______________________________________________
