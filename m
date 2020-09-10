@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EC93BC43461
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 17:58:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8F1C8C433E2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 17:58:46 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7ABDF214F1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 17:58:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C102321D40
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 17:58:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UozmSDv4";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="JfSBrW4n"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7ABDF214F1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qemzzMcT";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="qD5SpAJw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C102321D40
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rsWMVwOD2o7JsodUMrk7YNqITHyojcwF2pFNYe4pfME=; b=UozmSDv4HSBjwydWPAa1uIw+i7
-	3dIyUGcojyhFtJ+rdKSguF1fHT13qQqHx3VltE9Ow7wJpP9WH+so4A++VvkbLRqgcsik4OW5M9lTE
-	IrTRjyjv6YJ3g/2Y/yb0yx43MYEVDvEkKROz0sme1yL2rVyyhH+wa8Nn3xqJSUY9Mj63pIOHT5xu3
-	6Xc3rMRjDklS8mP8lkVmS8RoLUvzEDsPgbQoR2U1PwHnnWD1RNqI6mWdU8rXVLb3o94OvJF7ukL45
-	kRttoujXIrULl1x2hYnqLeFr7O5+hsqtXX8ZbRBJBaEhKfENmDUPJ4kPBi+eEtpJRa4rdAp/L5dNb
-	O4BfuMrA==;
+	bh=lJje7MSjIGnBEs/lEFwsp34SJt4pJ0tK6nV6qQlxOBo=; b=qemzzMcTvwhUUMXOnvg1ckLjnW
+	1VMt3MPuzYPP0Imajj5Gp1aPiVAi+ekpOJDyL/5P7VkdwwzNOtKp8SrPGmbyUVopErueKvXQ6CjYH
+	C+5lYsfiFPaHzyMY2NZCTgSv/b4KAh0DcT+xkYarTO50Ik2oUVvz41wdNCirxgEkg/DaTC2JXUXBt
+	nMnDDyTwyqqUixq4uouPpzEsvI6al+a1pNyQyTlUNxDa4j5El8IVKc4J47cn/OnEvvnwl0Prs0pIR
+	QiA7hmmTScLbQ2CXSUnKN1ZpZP5TdQyDHvh2JPJ3snfL9K81uqDiMlolxbQArT9sbQRWHrWej0eQP
+	Nv/2V+DA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGQpu-0002Qc-MZ; Thu, 10 Sep 2020 17:58:18 +0000
+	id 1kGQq7-0002XP-MH; Thu, 10 Sep 2020 17:58:31 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGQpk-0002ML-TR; Thu, 10 Sep 2020 17:58:09 +0000
+ id 1kGQpu-0002QQ-LR; Thu, 10 Sep 2020 17:58:19 +0000
 Received: from localhost.localdomain (unknown [194.230.155.174])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 06F6221941;
- Thu, 10 Sep 2020 17:58:01 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8D80B221E2;
+ Thu, 10 Sep 2020 17:58:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1599760688;
- bh=9vEz3caNfDoekMkEldtsPOm1s72Th5+Yg8h2PhuTrWE=;
+ s=default; t=1599760697;
+ bh=udNEmeVyLPWdARKfdcfI5Aq87zp3Ww2DikohbfSaNM8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=JfSBrW4n9ALVGeYax0pjN4g9utKWMKJqAzrptfdBpo/h2cIhJrexdaBHceTCGAEIF
- ezW+6VbN5WT5FEBu1ZWU30dPoT45GIfk2RbH8Loxb9rrs5vdfjpWg6vOT13WM0oGvA
- fmeUt419EE3qF+QMmv8QiOtIZsp/gAVBG1+sYxl0=
+ b=qD5SpAJwCblaZ3hpivgzqSRdZQmdif0nTbQ5ZZR/4Ap7SjEnTGOn0O40cxdUSHxIh
+ H4nKxTtrt62dnBPCVnbSj6iAmKxNIPHtNBHSjXxeLpYie8/AToVbQnbpmwtdc0ftvn
+ irlcQJl2LjvNbp7iPMunJ2IqkMB6RfQJGgTnExSM=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Linus Walleij <linus.walleij@linaro.org>,
  Bartosz Golaszewski <bgolaszewski@baylibre.com>,
@@ -71,16 +71,16 @@ To: Linus Walleij <linus.walleij@linaro.org>,
  linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
  linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-Subject: [PATCH v2 03/15] arm64: dts: mediatek: fix tca6416 reset GPIOs in
- pumpkin
-Date: Thu, 10 Sep 2020 19:57:21 +0200
-Message-Id: <20200910175733.11046-4-krzk@kernel.org>
+Subject: [PATCH v2 04/15] arm64: dts: mediatek: align GPIO hog names with
+ dtschema
+Date: Thu, 10 Sep 2020 19:57:22 +0200
+Message-Id: <20200910175733.11046-5-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200910175733.11046-1-krzk@kernel.org>
 References: <20200910175733.11046-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200910_135809_044619_A802A9E4 
-X-CRM114-Status: GOOD (  15.89  )
+X-CRM114-CacheID: sfid-20200910_135818_926578_96BB6998 
+X-CRM114-Status: GOOD (  13.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,26 +99,123 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Correct the property for reset GPIOs of tca6416 GPIO expander.
+The convention for node names is to use hyphens, not underscores.
+dtschema for pca95xx requires GPIO hogs to end with 'hog' prefix.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
- arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../boot/dts/mediatek/pumpkin-common.dtsi     | 26 +++++++++----------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-index dfceffe6950a..29d8cf6df46b 100644
+index 29d8cf6df46b..351a1905a074 100644
 --- a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-@@ -56,7 +56,7 @@
- 	tca6416: gpio@20 {
- 		compatible = "ti,tca6416";
- 		reg = <0x20>;
--		rst-gpio = <&pio 65 GPIO_ACTIVE_HIGH>;
-+		reset-gpios = <&pio 65 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&tca6416_pins>;
+@@ -63,91 +63,91 @@
+ 		gpio-controller;
+ 		#gpio-cells = <2>;
  
+-		eint20_mux_sel0 {
++		eint20-mux-sel0-hog {
+ 			gpio-hog;
+ 			gpios = <0 0>;
+ 			input;
+ 			line-name = "eint20_mux_sel0";
+ 		};
+ 
+-		expcon_mux_sel1 {
++		expcon-mux-sel1-hog {
+ 			gpio-hog;
+ 			gpios = <1 0>;
+ 			input;
+ 			line-name = "expcon_mux_sel1";
+ 		};
+ 
+-		mrg_di_mux_sel2 {
++		mrg-di-mux-sel2-hog {
+ 			gpio-hog;
+ 			gpios = <2 0>;
+ 			input;
+ 			line-name = "mrg_di_mux_sel2";
+ 		};
+ 
+-		sd_sdio_mux_sel3 {
++		sd-sdio-mux-sel3-hog {
+ 			gpio-hog;
+ 			gpios = <3 0>;
+ 			input;
+ 			line-name = "sd_sdio_mux_sel3";
+ 		};
+ 
+-		sd_sdio_mux_ctrl7 {
++		sd-sdio-mux-ctrl7-hog {
+ 			gpio-hog;
+ 			gpios = <7 0>;
+ 			output-low;
+ 			line-name = "sd_sdio_mux_ctrl7";
+ 		};
+ 
+-		hw_id0 {
++		hw-id0-hog {
+ 			gpio-hog;
+ 			gpios = <8 0>;
+ 			input;
+ 			line-name = "hw_id0";
+ 		};
+ 
+-		hw_id1 {
++		hw-id1-hog {
+ 			gpio-hog;
+ 			gpios = <9 0>;
+ 			input;
+ 			line-name = "hw_id1";
+ 		};
+ 
+-		hw_id2 {
++		hw-id2-hog {
+ 			gpio-hog;
+ 			gpios = <10 0>;
+ 			input;
+ 			line-name = "hw_id2";
+ 		};
+ 
+-		fg_int_n {
++		fg-int-n-hog {
+ 			gpio-hog;
+ 			gpios = <11 0>;
+ 			input;
+ 			line-name = "fg_int_n";
+ 		};
+ 
+-		usba_pwr_en {
++		usba-pwr-en-hog {
+ 			gpio-hog;
+ 			gpios = <12 0>;
+ 			output-high;
+ 			line-name = "usba_pwr_en";
+ 		};
+ 
+-		wifi_3v3_pg {
++		wifi-3v3-pg-hog {
+ 			gpio-hog;
+ 			gpios = <13 0>;
+ 			input;
+ 			line-name = "wifi_3v3_pg";
+ 		};
+ 
+-		cam_rst {
++		cam-rst-hog {
+ 			gpio-hog;
+ 			gpios = <14 0>;
+ 			output-low;
+ 			line-name = "cam_rst";
+ 		};
+ 
+-		cam_pwdn {
++		cam-pwdn-hog {
+ 			gpio-hog;
+ 			gpios = <15 0>;
+ 			output-low;
 -- 
 2.17.1
 
