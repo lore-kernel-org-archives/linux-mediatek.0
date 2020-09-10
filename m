@@ -2,92 +2,85 @@ Return-Path: <SRS0=yNvG=CT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D7C1C43461
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 05:34:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B4265C43461
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 05:47:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DA1FB20719
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 05:34:36 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 45B7D20756
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 05:47:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NWLjZweL";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="CAEWlx6I"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DA1FB20719
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="y06gEnlX";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="ni0hwv4S"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 45B7D20756
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ezlQQ1gvXnwv+oMWxW80Bv0btebjpaS+ZarFwomur+s=; b=NWLjZweLq/7zJweF9rAn+hlIK
-	xA7NfBYpemLXqrSgOEcRNPu9g2UthgMIJaDzaNGMuJtdaGPZ4ApA4gurcjdtK8NvcAYZlCoHvSmOD
-	6NlaDqeJd3l1aY5/0vXN6t0nrxtTfHsB+4+a9WgubwabM/lSL3nI5MPk72XjSfrbqxEenqvbVipc+
-	xOObTJZlRbIsSkqNaI1V2vXdw+AqPJtN5K6exjIjlxXcrAtFin43xMW1obkeXYn7trDLDBW23D3Yb
-	JbilBlu+td8FWJJOD0GonzfUd/3I3PzTIlXB4bd4snPGre3+k6+wsp0J+1mn0unQSYqQBDgH9TIb+
-	IEJC+uGpQ==;
+	 bh=8lWbTbPH7z45qInXxoEPrbNeBvwhObwdsk/44lWL5Wc=; b=y06gEnlXaVe39WowHJYZJyXVX
+	85XyKRDk1y1Lny0NPusHqqu9hzz1GaOPyqmIynSrBjr0TbWW2tFRHNMEjjqZz6k3HOnX8jOSNUXLg
+	N4P21ldbWM2Rj0KTfPVazIzsI8ynsHHw5CjizvSBTh62iDAyFkM5Fgjt4hK2wF0KOKpuugkqVQ+1T
+	QwtMv+V0tWkxb0SK4mLe1WFDRK/97qQNrO4E8Scgl/6Oi+3ipwv1wA/iAa03IT4fxHD+ZVfkNjY+y
+	E7/SGCaT79kCelIszLmHBnJceU3IWggxWJtv3ymsguyT6IHcElj8c2lWqiZ5ImtEQXyR5DQ8UEnx9
+	myU4GNKqQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGFE4-00057s-3R; Thu, 10 Sep 2020 05:34:28 +0000
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
+	id 1kGFQA-0007Gi-WF; Thu, 10 Sep 2020 05:46:59 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGFDx-00055K-DK
- for linux-mediatek@lists.infradead.org; Thu, 10 Sep 2020 05:34:22 +0000
-Received: by mail-pj1-x1043.google.com with SMTP id kk9so2481575pjb.2
- for <linux-mediatek@lists.infradead.org>; Wed, 09 Sep 2020 22:34:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=5lEi/XoDUJ11Wa7F5s06RrCLa2hPWxpKnO1zR9YxyoY=;
- b=CAEWlx6IuBLlkVsW+lOwMOeCTijAw1MpiQ3Ubb2OiqpnJtMewM1XNtUAhSIg1ikgvE
- JpQ79qJ6W+TpKYmuBH7/eBcz5WKzj9GaDsUqhxos2YpwlQsr8aEn9N36PdsFS0hDWe6y
- cNhiV778PgC5as9xtK6R0NroTicROjr76SN0u0Pi4chuP8X3ibTcn/DO0e02C6/yTFtK
- q0uHIk25Jr73tNAPDUqN0E/KWZ2FKnNQcJBseJJm25c6Sm0RT8fYscQXhoYRyGZbGG83
- SI6aRY5TTQMwlVObPlooDffFy48lbHaXcaYOfHW0nENuCCHAJsdeecPwwCjiEoRllUoh
- P+xQ==
+ id 1kGFQ2-0007E6-Uy
+ for linux-mediatek@lists.infradead.org; Thu, 10 Sep 2020 05:46:51 +0000
+Received: by mail-pg1-x542.google.com with SMTP id t14so3625153pgl.10
+ for <linux-mediatek@lists.infradead.org>; Wed, 09 Sep 2020 22:46:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=KtxeUWrBvMNP2Y8KaLxhs4rPoG0ZGE6ZXep9roUJTTI=;
+ b=ni0hwv4SK+Yn1AQHStWD0LBZvoGzYAHaoXq94POyX7VX4VhMHOifOOKEMHU1WZk6jf
+ XvPb2j3qHc7XX6tzQW6QGyUWHeXwi8sgXsmtUpj2yEHoyXmVdFXwCpvZO/goxlAbmS6G
+ MGXBH28wzofwKq4HSd0FhLCD5PVSHoIIWLrUA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=5lEi/XoDUJ11Wa7F5s06RrCLa2hPWxpKnO1zR9YxyoY=;
- b=hVIPaDI6Pz7CD0+aCI0As+IfShuMWuifmiLTLogW5fwVYxDZFI03w2Z2qKnVhKaYHN
- 1s1VbY7AcYg9y+lBDsnYkNk2dlyeg7l4vBlR/2Mgaiv8jpp5P2tmwqVDdUw+PGbXnSHO
- J9VtxgSl3pW5i3N4RezKIa7Pu2+AHY9EmRLe8LfujESnW9wwW27e7/Rq0ZqiTgQTEkh4
- Vo/9O2bl4z5JsLhFLLzjLiVVzhKua0s/epHmyFr+wTdg5Mh0WEA9q8RExglKWo8ISFgc
- R+QBFtvS42FASdtfODG4Ck1xvMGoWtrSd0OaDd979/hWaERbYFWTwJLpeZXyfMFbcTHg
- ZhAw==
-X-Gm-Message-State: AOAM532/jV6Ob/n/ZKjG8CZa+/MmykGakRsBtjPyT1AD2nSmn+kNIRB3
- nIh4yNpGHM8oSqTxJB0TYTu0Yw==
-X-Google-Smtp-Source: ABdhPJz3EgNE/dzdl1waBSoWGoWNzDHErjWDYYygsBmeO19Q5FRz5rTWYfVjdhPhDSbWLy3fyrzRsA==
-X-Received: by 2002:a17:90a:d315:: with SMTP id
- p21mr3945874pju.88.1599716059106; 
- Wed, 09 Sep 2020 22:34:19 -0700 (PDT)
-Received: from localhost ([122.181.54.133])
- by smtp.gmail.com with ESMTPSA id w203sm4575162pff.0.2020.09.09.22.34.18
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 09 Sep 2020 22:34:18 -0700 (PDT)
-Date: Thu, 10 Sep 2020 11:04:06 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Hector Yuan <hector.yuan@mediatek.com>
-Subject: Re: [PATCH v7] cpufreq: mediatek-hw: Add support for Mediatek
- cpufreq HW driver
-Message-ID: <20200910053406.t37rgioykzvk3oem@vireshk-i7>
-References: <1599712262-8819-1-git-send-email-hector.yuan@mediatek.com>
- <20200910050341.pgyieq3q7ijitosn@vireshk-i7>
- <1599715851.7042.9.camel@mtkswgap22>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=KtxeUWrBvMNP2Y8KaLxhs4rPoG0ZGE6ZXep9roUJTTI=;
+ b=NYcrVwArgvsvHo+Lim2t/5tKaqA3WavJUjh2+agz5T6dLyZXE0WUry/cvZKnn0CKEy
+ Xmzy4WrRkBxuMx77efAVyLVoCZPMVf2sSmSP6blmS72/2Mua2IUTHOAl/szYjinl4G0L
+ +XCOHFs8E5iVR4/LWtLChtzu7it6Sps+H7cVAxNB+e2brfrdWRy+O0BSzNNw21reXW0v
+ Kftmqslaek7abYq4Jup7XloU7LJHXJJOffYXuscFpoAqlp9pGty24/cUfAvSpMEIQLaB
+ /Xyii4XXvbEMRZ5QDzd5hA4H3SVynozzvdO4eSis9KRPForx2e9Ee6o08clxWc2cgmk7
+ EPhQ==
+X-Gm-Message-State: AOAM5333/DB/RqGJbMmdc9+/3+XGxLqvFNt1VZBL7aD9iBGkvDfX9ifi
+ ANam6LFcC7oGAERmAfbFK+5TDNjLGh2wxLMJ
+X-Google-Smtp-Source: ABdhPJyj1mfhyj/UVHKPgWsS2TbntfcsawXpCCu4tsBd/teTjIQtkGi104/d+aCaqRrrolJlbM9Ubg==
+X-Received: by 2002:a65:5849:: with SMTP id s9mr3185543pgr.439.1599716806553; 
+ Wed, 09 Sep 2020 22:46:46 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:1a60:24ff:fe89:3e93])
+ by smtp.gmail.com with ESMTPSA id r6sm4598159pfq.11.2020.09.09.22.46.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 09 Sep 2020 22:46:46 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: linux-mediatek@lists.infradead.org
+Subject: [PATCH 2/2] arm64: dts: mt8183: kukui: Set uart0 to mmio32 iotype
+Date: Thu, 10 Sep 2020 13:46:35 +0800
+Message-Id: <20200910054635.3337487-2-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.28.0.526.ge36021eeef-goog
+In-Reply-To: <20200910054635.3337487-1-hsinyi@chromium.org>
+References: <20200910054635.3337487-1-hsinyi@chromium.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1599715851.7042.9.camel@mtkswgap22>
-User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200910_013421_750334_7A1E56AB 
-X-CRM114-Status: GOOD (  18.74  )
+X-CRM114-CacheID: sfid-20200910_014651_029335_7457EB23 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,42 +92,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
- linux-pm@vger.kernel.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10-09-20, 13:30, Hector Yuan wrote:
-> On Thu, 2020-09-10 at 10:33 +0530, Viresh Kumar wrote:
-> > On 10-09-20, 12:31, Hector Yuan wrote:
-> > > The CPUfreq HW present in some Mediatek chipsets offloads the steps necessary for changing the frequency of CPUs. 
-> > > The driver implements the cpufreq driver interface for this hardware engine. 
-> > > 
-> > > This patch depends on the MT6779 DTS patch submitted by Hanks Chen
-> > >  https://lkml.org/lkml/2020/8/4/1094
-> > 
-> > Thanks for hanging there. Looks good to me. I will apply it once Rob
-> > Ack's the binding patch.
-> > 
-> 
-> Many thanks for your help. May I know if you can add Reviewed-by tag to
-> this patch set.
+Set uart0 iotype to mmio32 to make earlycon work with stdout-path.
 
-Since this patchset is going to get merged via my tree (ARM cpufreq
-tree), a reviewed-by isn't required here. I will queue it up for
-5.10-rc1 after I receive an Ack from Rob.
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
 
-> I would like to prepare some patches for more features
-> based on this. Is that okay to you? Thanks again.
-
-That should be fine.
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index f0a070535b340..f6991bdaac1c6 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -750,6 +750,8 @@ &u3phy {
+ &uart0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart0_pins_default>;
++	reg-io-width = <4>;
++	reg-shift = <2>;
+ 	status = "okay";
+ };
+ 
 -- 
-viresh
+2.28.0.526.ge36021eeef-goog
+
 
 _______________________________________________
 Linux-mediatek mailing list
