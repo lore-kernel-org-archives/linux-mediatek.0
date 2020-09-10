@@ -6,19 +6,19 @@ X-Spam-Status: No, score=-14.6 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 91BE8C07548
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 10:25:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 174FFC433E2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 10:44:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 43A3620BED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 10:25:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 87891206B8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 10:44:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MmcJU8w5";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="TtLuCefB"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 43A3620BED
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XX0Md+fQ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="q6Q9EUfg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 87891206B8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,65 +27,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NFkkSF+X15OTUE2+WXwZc+KnD+jwpbXGgdvi2+Qraak=; b=MmcJU8w5fQi3eKx6arM+cFZ5U
-	28CyckG2Yg0Hr0VqQDWlZBVo0zkgFI7vPmj1Uf05YQlr9vMeWXxSh4cTyP8HyfTTl/RePOWRAXYSb
-	z0gNCa7eR1ixSzy5g/h8pw/Kn9qnFcS5hQV0EVakfRIxcwZsjaZIXhcT8J4H2sBzgBEof7kAttkhu
-	3GA19oxdQPk0pkI/lujMDky5994sgFZQepFpR/QRlgzo2UX7E2NAiP8SrDPPdifRdZV+WOrNa7L/f
-	uEqDcWP2kM3z4YN66Xcxwjeke+NBpmuW62N+eGxj6/koYEHWJIiBZYi0GLWXqOEtfP1nQKh5RyWww
-	gF3/m6u1Q==;
+	 bh=24mZ/h6S9LyW0m6q53+8c9/5dx/m5DDN+RWVcDdCNWs=; b=XX0Md+fQql1Luwop9mrZRlY+3
+	9osBR58+6Cx6kpBr/NjDIlxGgCXsq4nddcG43c4STmw7+eGqv1GTtuvQDk3Zpnz60M8kZOtKrB1Ki
+	2hfojkZQxorlcjBOnM8AUBl0u2chClrWVY4zv82J1KeHUdonzwa0FcsWmmOeF1KErbyTSKYi3IPpn
+	CswEJNWbknWpOKPZHCZwls6UA9MUVgYiQbreSCFQ2X0r/dKv9omJ2BC66mdxItB3gBx3gIcK2mebb
+	dvEUeIoscLVwesSorrCx2FGpK19MC8bQLOgIFoJrj+cZdgYYAFt8xdAFAnIhfQ0akjzuYXMux0yWO
+	DLZBJ7YqA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGJlm-0003Lo-9U; Thu, 10 Sep 2020 10:25:34 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1kGK3v-0005si-HD; Thu, 10 Sep 2020 10:44:19 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGJlb-0003Hg-Se; Thu, 10 Sep 2020 10:25:24 +0000
-Received: by mail-wm1-x341.google.com with SMTP id a65so5070952wme.5;
- Thu, 10 Sep 2020 03:25:23 -0700 (PDT)
+ id 1kGK3s-0005rk-AQ; Thu, 10 Sep 2020 10:44:17 +0000
+Received: by mail-wm1-x342.google.com with SMTP id q9so5155865wmj.2;
+ Thu, 10 Sep 2020 03:44:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=uDGopvs8aEy5CLN9XFvGzNsaYZBkoKWrQofytwNxzDI=;
- b=TtLuCefBkaK7TlKv/Sk2EuMm6ot39a7QJqRt/iyU/N/NhshX+ZQAp9ewNvpTs+0Z72
- 8KF8R1rSgMj2lrRVEtQs7czdrs+vh7uMxahg7wcCNOCTeuhnnwrSWxkKefP8zzMlz8fr
- d+hjZlUbxc3sSiCsaeL/0LSEK5HD/coEmRMSUD99K6bySVOliMuw67g1DHV2G65QWMcM
- Awf7VI/yhh1E4RSovGaeLdgUdL8cZSyUB1aHo8KsNAE2Kvx1isaqgWevpgqpHKh5m6ux
- 9jZli4FVifj/fryrULBwtCJrFAQI+fI1nGfp1Vw1RyITZmyJEnxUULbMPtd87vHxZjMB
- 8spw==
+ bh=aOHr73dpDQf8/KvHagwjhuowv7yRQqFneFoh3PGbITM=;
+ b=q6Q9EUfgUkDU+JAG1PhnrxhhQLvngbJ4J1HFd6Py38+r1qzQipjqBpiMaSh+yaS7Gs
+ GYJUb7ocbvFg9BR7VWkRKupAOLCOiLsDJC6zR35YgUVfGVH8MXYsSpkRWs+ibXJHuIIO
+ uz0SUOdv8J7Wt24LFIB8uq1RwkFCYunBIZg2+BDG4fGRkYfoFspsKkEaHViST77yQz8J
+ GjIkXKXwbgdSOlElcBswKxsrO8uc5a5DKTEBWJpTn8aYgDToN8wyHcZObzHDgBWZaEKB
+ sCzKremYu7MRyt3Mm60HStuOKlf6ZSLGuIOMBezuog9DNkxAoJFW7v3zEkSZYQSpmPgT
+ iy2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=uDGopvs8aEy5CLN9XFvGzNsaYZBkoKWrQofytwNxzDI=;
- b=HF+bd4cGoqwblKnWFnkR9EhsEGKHJkgCZH+MzgldRRYvKWftfaWtHCQzTVB44nBKja
- HJk149NGsGTTu9biQa4aEVur0hDLc7U724VpW2hXBDN3Wc86MBAWVkGfHLsNYvXjkV6d
- wfL8m2QmNL0yobR2EHHIKUlnK49UO+nPX7SlfTwb8BJVqseuqz8lPS484dCVwe5lWiJh
- /Zha1JDwcPhOJ31Ob3ibs1QahqG44qyxFcW0K6Q17ePAaxnATV2cvmfufKAJ6+4DeIMR
- O1dbI8OtVwbKH1b1+pE3D+/kvxTrFz17SiRc2mkZI8pELNd9rKHsF4auyzhQnLuAGQv9
- 8K6Q==
-X-Gm-Message-State: AOAM531Uto9g+xtWXuq8cFYceAB6dZ9w0s28rcfA1OmbTQc+8z9L6WRD
- Rt6XtwXU9IlOkKpow7TKpe4=
-X-Google-Smtp-Source: ABdhPJwEntZMPev9H0+UabGQF6k7v0hipNAbHGksKxQPqTzKVMcHb27HZfswdjmY9yMhPtph54h6PA==
-X-Received: by 2002:a1c:5a87:: with SMTP id o129mr8077545wmb.145.1599733522852; 
- Thu, 10 Sep 2020 03:25:22 -0700 (PDT)
+ bh=aOHr73dpDQf8/KvHagwjhuowv7yRQqFneFoh3PGbITM=;
+ b=DY11NWGTYYxWTJrk3j6YSDzjI6ckxshEb8Nw9R6riFU9JM0Gpb4VReLw5Kau5fSpVm
+ vt6DgfPA0om8j5a7/AWdP0msf7yfXajnmzmDVhGgm1JSQqOPKjxyJ7CtsxsvY/SwI+i4
+ 4Bk6llwRAVRhms2RJY1zSvVwALM3qQ8KjshHlrmN50yPLtgOE8FqsbaJNK7KgzBZWZ+m
+ 7coZkCKRRfe6EwfCs+XQTaYxU/fUvr3LhijTRuL3jBufl+V/kGf00zGFlRz3DxVF6nk+
+ hzt9TYc/WOyBwy+uhts85v7Hjov+O6usxGchrRsBK8bvAYxVa2csWPhHCBOgo/0uHz6k
+ xx9w==
+X-Gm-Message-State: AOAM531vPupVysM0hG1XYhGuvoMhbxNvpUMVdOf+7wAm0DV+nN10iFCG
+ TCkRYSottYaC58Q19K0fI4o=
+X-Google-Smtp-Source: ABdhPJzstUYCSIAFw1zbcpfYKdoKEa8qqMY49ikOW8IZMKvNF7nI/+/ZPgIR2t4NGWLpd7xlcoQg6Q==
+X-Received: by 2002:a05:600c:ce:: with SMTP id
+ u14mr8261086wmm.137.1599734655104; 
+ Thu, 10 Sep 2020 03:44:15 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.201])
- by smtp.gmail.com with ESMTPSA id g143sm2937249wme.0.2020.09.10.03.25.21
+ by smtp.gmail.com with ESMTPSA id f1sm8452466wrt.20.2020.09.10.03.44.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 10 Sep 2020 03:25:22 -0700 (PDT)
-Subject: Re: [PATCH v2 1/2] arm64: dts: mt8173: Set uart to mmio32 iotype
-To: Hsin-Yi Wang <hsinyi@chromium.org>, linux-mediatek@lists.infradead.org
-References: <20200910084304.3429494-1-hsinyi@chromium.org>
+ Thu, 10 Sep 2020 03:44:14 -0700 (PDT)
+Subject: Re: [PATCH v5 2/4] PCI: mediatek: Use regmap to get shared pcie-cfg
+ base
+To: Chuanjia Liu <chuanjia.liu@mediatek.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+References: <20200910061115.909-1-chuanjia.liu@mediatek.com>
+ <20200910061115.909-3-chuanjia.liu@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <9ca1b7c0-9fec-27b7-ae08-c00613c3004c@gmail.com>
-Date: Thu, 10 Sep 2020 12:25:21 +0200
+Message-ID: <b627b938-2210-16d2-1682-3c25506e30f3@gmail.com>
+Date: Thu, 10 Sep 2020 12:44:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200910084304.3429494-1-hsinyi@chromium.org>
+In-Reply-To: <20200910061115.909-3-chuanjia.liu@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200910_062523_961370_2C9F1A9B 
-X-CRM114-Status: GOOD (  19.61  )
+X-CRM114-CacheID: sfid-20200910_064416_374011_C6620AFF 
+X-CRM114-Status: GOOD (  25.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,82 +102,119 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
+ Frank Wunderlich <frank-w@public-files.de>, linux-pci@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, yong.wu@mediatek.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-On 10/09/2020 10:43, Hsin-Yi Wang wrote:
-> Set uart iotype to mmio32 to make earlycon work with stdout-path.
+
+On 10/09/2020 08:11, Chuanjia Liu wrote:
+> Use regmap to get shared pcie-cfg base and change
+> the method to get pcie irq.
 > 
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Chuanjia Liu <chuanjia.liu@mediatek.com>
 > ---
->   arch/arm64/boot/dts/mediatek/mt8173.dtsi | 8 ++++++++
->   1 file changed, 8 insertions(+)
+>   drivers/pci/controller/pcie-mediatek.c | 25 ++++++++++++++++++-------
+>   1 file changed, 18 insertions(+), 7 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index 5e046f9d48ce9..ca6ea71f5f435 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -613,6 +613,8 @@ uart0: serial@11002000 {
->   			interrupts = <GIC_SPI 83 IRQ_TYPE_LEVEL_LOW>;
->   			clocks = <&pericfg CLK_PERI_UART0_SEL>, <&pericfg CLK_PERI_UART0>;
->   			clock-names = "baud", "bus";
-> +			reg-io-width = <4>;
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index cf4c18f0c25a..987845d19982 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -14,6 +14,7 @@
+>   #include <linux/irqchip/chained_irq.h>
+>   #include <linux/irqdomain.h>
+>   #include <linux/kernel.h>
+> +#include <linux/mfd/syscon.h>
+>   #include <linux/msi.h>
+>   #include <linux/module.h>
+>   #include <linux/of_address.h>
+> @@ -23,6 +24,7 @@
+>   #include <linux/phy/phy.h>
+>   #include <linux/platform_device.h>
+>   #include <linux/pm_runtime.h>
+> +#include <linux/regmap.h>
+>   #include <linux/reset.h>
+>   
+>   #include "../pci.h"
+> @@ -205,6 +207,7 @@ struct mtk_pcie_port {
+>    * struct mtk_pcie - PCIe host information
+>    * @dev: pointer to PCIe device
+>    * @base: IO mapped register base
+> + * @cfg: IO mapped register map for PCIe config
+>    * @free_ck: free-run reference clock
+>    * @mem: non-prefetchable memory resource
+>    * @ports: pointer to PCIe port information
+> @@ -213,6 +216,7 @@ struct mtk_pcie_port {
+>   struct mtk_pcie {
+>   	struct device *dev;
+>   	void __iomem *base;
+> +	struct regmap *cfg;
+>   	struct clk *free_ck;
+>   
+>   	struct list_head ports;
+> @@ -648,7 +652,7 @@ static int mtk_pcie_setup_irq(struct mtk_pcie_port *port,
+>   		return err;
+>   	}
+>   
+> -	port->irq = platform_get_irq(pdev, port->slot);
+> +	port->irq = platform_get_irq_byname(pdev, "pcie_irq");
+>   	if (port->irq < 0)
+>   		return port->irq;
 
-Why do we need that, we have
-device->port.iotype = UPIO_MEM32;
-in early_mtk8250_setup(). That should do the job already.
-
-
-> +			reg-shift = <2>;
-
-Can't we just add
-device->port.regshift = 2;
-to early_mtk8250_setup()? I think that would be a cleaner solution. As the 
-serial device is the same for all SoCs, I don't expect any regression here.
-
-CCing Eddie to correct me, if I'm wrong :)
+You will need to make sure taht the driver keeps working with the old DTS 
+format. This is not the case here.
 
 Regards,
 Matthias
 
->   			status = "disabled";
->   		};
 >   
-> @@ -623,6 +625,8 @@ uart1: serial@11003000 {
->   			interrupts = <GIC_SPI 84 IRQ_TYPE_LEVEL_LOW>;
->   			clocks = <&pericfg CLK_PERI_UART1_SEL>, <&pericfg CLK_PERI_UART1>;
->   			clock-names = "baud", "bus";
-> +			reg-io-width = <4>;
-> +			reg-shift = <2>;
->   			status = "disabled";
->   		};
+> @@ -674,12 +678,11 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+>   	if (!mem)
+>   		return -EINVAL;
 >   
-> @@ -633,6 +637,8 @@ uart2: serial@11004000 {
->   			interrupts = <GIC_SPI 85 IRQ_TYPE_LEVEL_LOW>;
->   			clocks = <&pericfg CLK_PERI_UART2_SEL>, <&pericfg CLK_PERI_UART2>;
->   			clock-names = "baud", "bus";
-> +			reg-io-width = <4>;
-> +			reg-shift = <2>;
->   			status = "disabled";
->   		};
+> -	/* MT7622 platforms need to enable LTSSM and ASPM from PCIe subsys */
+> -	if (pcie->base) {
+> -		val = readl(pcie->base + PCIE_SYS_CFG_V2);
+> -		val |= PCIE_CSR_LTSSM_EN(port->slot) |
+> -		       PCIE_CSR_ASPM_L1_EN(port->slot);
+> -		writel(val, pcie->base + PCIE_SYS_CFG_V2);
+> +	/* MT7622/MT7629 platforms need to enable LTSSM and ASPM. */
+> +	if (pcie->cfg) {
+> +		val = PCIE_CSR_LTSSM_EN(port->slot) |
+> +		      PCIE_CSR_ASPM_L1_EN(port->slot);
+> +		regmap_update_bits(pcie->cfg, PCIE_SYS_CFG_V2, val, val);
+>   	}
 >   
-> @@ -643,6 +649,8 @@ uart3: serial@11005000 {
->   			interrupts = <GIC_SPI 86 IRQ_TYPE_LEVEL_LOW>;
->   			clocks = <&pericfg CLK_PERI_UART3_SEL>, <&pericfg CLK_PERI_UART3>;
->   			clock-names = "baud", "bus";
-> +			reg-io-width = <4>;
-> +			reg-shift = <2>;
->   			status = "disabled";
->   		};
+>   	/* Assert all reset signals */
+> @@ -983,6 +986,7 @@ static int mtk_pcie_subsys_powerup(struct mtk_pcie *pcie)
+>   	struct device *dev = pcie->dev;
+>   	struct platform_device *pdev = to_platform_device(dev);
+>   	struct resource *regs;
+> +	struct device_node *cfg_node;
+>   	int err;
 >   
+>   	/* get shared registers, which are optional */
+> @@ -995,6 +999,13 @@ static int mtk_pcie_subsys_powerup(struct mtk_pcie *pcie)
+>   		}
+>   	}
+>   
+> +	cfg_node = of_parse_phandle(dev->of_node, "mediatek,pcie-cfg", 0);
+> +	if (cfg_node) {
+> +		pcie->cfg = syscon_node_to_regmap(cfg_node);
+> +		if (IS_ERR(pcie->cfg))
+> +			return PTR_ERR(pcie->cfg);
+> +	}
+> +
+>   	pcie->free_ck = devm_clk_get(dev, "free_ck");
+>   	if (IS_ERR(pcie->free_ck)) {
+>   		if (PTR_ERR(pcie->free_ck) == -EPROBE_DEFER)
 > 
 
 _______________________________________________
