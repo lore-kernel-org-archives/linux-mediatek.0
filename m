@@ -7,80 +7,79 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B4265C43461
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 05:47:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A3D07C433E2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 05:47:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 45B7D20756
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 05:47:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3FBFB20756
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 05:47:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="y06gEnlX";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="ni0hwv4S"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 45B7D20756
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pQv0Pwj/";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Pn9wfWzQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3FBFB20756
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8lWbTbPH7z45qInXxoEPrbNeBvwhObwdsk/44lWL5Wc=; b=y06gEnlXaVe39WowHJYZJyXVX
-	85XyKRDk1y1Lny0NPusHqqu9hzz1GaOPyqmIynSrBjr0TbWW2tFRHNMEjjqZz6k3HOnX8jOSNUXLg
-	N4P21ldbWM2Rj0KTfPVazIzsI8ynsHHw5CjizvSBTh62iDAyFkM5Fgjt4hK2wF0KOKpuugkqVQ+1T
-	QwtMv+V0tWkxb0SK4mLe1WFDRK/97qQNrO4E8Scgl/6Oi+3ipwv1wA/iAa03IT4fxHD+ZVfkNjY+y
-	E7/SGCaT79kCelIszLmHBnJceU3IWggxWJtv3ymsguyT6IHcElj8c2lWqiZ5ImtEQXyR5DQ8UEnx9
-	myU4GNKqQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7tHLajclb6Ks/v+zCLqhYYCoqqnqCC20vKeNg873sa4=; b=pQv0Pwj/biV6qpErPqtXCBTiIb
+	j4qQ4jBuLEbjM9K5lxkAZ0rbupGxEWQCbk0Xu5NrbtzrTzHU8hDhOF0HDg614dgkbs2cO7Izl/dms
+	Nrc4SanG4jN/Pl2kO9p4oHRVFVZXo3dlRC4RxoeC2nJ7mPAQDjLDcKRgI0AsItMst2PoTMAFRsqyL
+	bXc1R8h7QIdp5Nq35UYWrv9bzU4UlyMoKWBe8FQwejX42Mt1D1Zd1CJZyVtyO/y8S9nZkfOtE5pGI
+	gHu7ry6XaoDDnriPaZgensuXByaWGrKx17yaWjPgWG63bA0XzJ0K3cyr3BtROhFaH5xwLAQNHVd1k
+	JeakxL0A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGFQA-0007Gi-WF; Thu, 10 Sep 2020 05:46:59 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1kGFQA-0007GW-8j; Thu, 10 Sep 2020 05:46:58 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGFQ2-0007E6-Uy
+ id 1kGFQ2-0007D7-Je
  for linux-mediatek@lists.infradead.org; Thu, 10 Sep 2020 05:46:51 +0000
-Received: by mail-pg1-x542.google.com with SMTP id t14so3625153pgl.10
- for <linux-mediatek@lists.infradead.org>; Wed, 09 Sep 2020 22:46:48 -0700 (PDT)
+Received: by mail-pl1-x62b.google.com with SMTP id m15so369780pls.8
+ for <linux-mediatek@lists.infradead.org>; Wed, 09 Sep 2020 22:46:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=KtxeUWrBvMNP2Y8KaLxhs4rPoG0ZGE6ZXep9roUJTTI=;
- b=ni0hwv4SK+Yn1AQHStWD0LBZvoGzYAHaoXq94POyX7VX4VhMHOifOOKEMHU1WZk6jf
- XvPb2j3qHc7XX6tzQW6QGyUWHeXwi8sgXsmtUpj2yEHoyXmVdFXwCpvZO/goxlAbmS6G
- MGXBH28wzofwKq4HSd0FhLCD5PVSHoIIWLrUA=
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=uNzBaIddFg4BsU7/nCdz1Go6c2BgLxQ8YsDvHd2gerE=;
+ b=Pn9wfWzQE8+ItwhIP7soVDKiDtcl5l5xGAcjYMIxuGR5mo0tWaO8GE7UdGB1k4pJG/
+ odtC+dog/YuA+Zsr3QMxu+y3DyBDEqppg6v80aXXxlI4rAn+PPdAZT8ZLPovGMc055dk
+ rvT4YrPDfDdYtRL5JWBkzTa5YkYrRHpipfkkk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=KtxeUWrBvMNP2Y8KaLxhs4rPoG0ZGE6ZXep9roUJTTI=;
- b=NYcrVwArgvsvHo+Lim2t/5tKaqA3WavJUjh2+agz5T6dLyZXE0WUry/cvZKnn0CKEy
- Xmzy4WrRkBxuMx77efAVyLVoCZPMVf2sSmSP6blmS72/2Mua2IUTHOAl/szYjinl4G0L
- +XCOHFs8E5iVR4/LWtLChtzu7it6Sps+H7cVAxNB+e2brfrdWRy+O0BSzNNw21reXW0v
- Kftmqslaek7abYq4Jup7XloU7LJHXJJOffYXuscFpoAqlp9pGty24/cUfAvSpMEIQLaB
- /Xyii4XXvbEMRZ5QDzd5hA4H3SVynozzvdO4eSis9KRPForx2e9Ee6o08clxWc2cgmk7
- EPhQ==
-X-Gm-Message-State: AOAM5333/DB/RqGJbMmdc9+/3+XGxLqvFNt1VZBL7aD9iBGkvDfX9ifi
- ANam6LFcC7oGAERmAfbFK+5TDNjLGh2wxLMJ
-X-Google-Smtp-Source: ABdhPJyj1mfhyj/UVHKPgWsS2TbntfcsawXpCCu4tsBd/teTjIQtkGi104/d+aCaqRrrolJlbM9Ubg==
-X-Received: by 2002:a65:5849:: with SMTP id s9mr3185543pgr.439.1599716806553; 
- Wed, 09 Sep 2020 22:46:46 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=uNzBaIddFg4BsU7/nCdz1Go6c2BgLxQ8YsDvHd2gerE=;
+ b=Ma9WFhRkIB+nvodmIxMkCUinXYdR5vSgdHNQjACqJ6T/LOviOy46fCQrVefsrdryYS
+ qGRaTbjD+tEeEPsIi0xXFDb+0ihKyiWdSWmjyK9kv+GxYfRK5fm7YuKONqrr2hnQf2ks
+ MH7V10PIqo84BSVJJYndk0tJVD9mK4yyuohcAaQ3QgQx++XyWRq3I7NqlojLgUo2z1Xx
+ vWzMSUEFuXwWDIHPQEF/Py7IdOOxREUKNbwhtsOqHDHra+bRJyUrLRAP80Vi5mEgZjlA
+ WULEIUjIdje61atDy+tJLsjyPxGPEwV9+kt8VRKKBgz5qI5MjsJaSfJEzdsD4Jad8Y2F
+ NuSQ==
+X-Gm-Message-State: AOAM533ac1mB/7RVRW45h8IjEf+DQUexZcGRzBmF4vwSbtwXAXXuO6dr
+ iawpNA1ugIc/Ao2hDeLlArYMfs5845/z94Vv
+X-Google-Smtp-Source: ABdhPJxsvHDFmBQT3hNQfRc0K4CNX75Rf7CfBpb5b7xGQHDqjr4jxVAld9lsUXWxQm430AApr2JTwQ==
+X-Received: by 2002:a17:90b:e01:: with SMTP id
+ ge1mr3645109pjb.187.1599716802305; 
+ Wed, 09 Sep 2020 22:46:42 -0700 (PDT)
 Received: from hsinyi-z840.tpe.corp.google.com
  ([2401:fa00:1:10:1a60:24ff:fe89:3e93])
- by smtp.gmail.com with ESMTPSA id r6sm4598159pfq.11.2020.09.09.22.46.44
+ by smtp.gmail.com with ESMTPSA id r6sm4598159pfq.11.2020.09.09.22.46.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Sep 2020 22:46:46 -0700 (PDT)
+ Wed, 09 Sep 2020 22:46:41 -0700 (PDT)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: linux-mediatek@lists.infradead.org
-Subject: [PATCH 2/2] arm64: dts: mt8183: kukui: Set uart0 to mmio32 iotype
-Date: Thu, 10 Sep 2020 13:46:35 +0800
-Message-Id: <20200910054635.3337487-2-hsinyi@chromium.org>
+Subject: [PATCH 1/2] arm64: dts: mt8173: elm: Set uart0 to mmio32 iotype
+Date: Thu, 10 Sep 2020 13:46:34 +0800
+Message-Id: <20200910054635.3337487-1-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.28.0.526.ge36021eeef-goog
-In-Reply-To: <20200910054635.3337487-1-hsinyi@chromium.org>
-References: <20200910054635.3337487-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200910_014651_029335_7457EB23 
-X-CRM114-Status: GOOD (  11.74  )
+X-CRM114-CacheID: sfid-20200910_014650_692170_7215A7C5 
+X-CRM114-Status: GOOD (  10.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,17 +104,17 @@ Set uart0 iotype to mmio32 to make earlycon work with stdout-path.
 
 Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 2 ++
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 2 ++
  1 file changed, 2 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index f0a070535b340..f6991bdaac1c6 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -750,6 +750,8 @@ &u3phy {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+index a5a12b2599a4a..d54e62f72c65d 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+@@ -1160,6 +1160,8 @@ &thermal {
+ };
+ 
  &uart0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&uart0_pins_default>;
 +	reg-io-width = <4>;
 +	reg-shift = <2>;
  	status = "okay";
