@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5EEC6C43461
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 17:30:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C7AA4C433E2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 17:31:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E8C2220672
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 17:30:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5E6C0214F1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 17:31:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3fwnsBkt"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E8C2220672
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="i3susZkC"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E6C0214F1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,32 +25,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BN0ALKZ71wFwXuEM4kqjxgSuyLqIYJguCgKj07haGS8=; b=3fwnsBktoM4xhietQ/CawSDrQ
-	hZzlL4wSE6+1BW6cGuu74m36qrShEoq4ysi0eUkgds+V62MrGG4sCpmehP+6c6fJFpa0KErTO3JPF
-	fGeMYCkfR9nag0qECHLnIOf4rV0CHnAG47vjoBqL2Lf4lkZGQ7o4cPIZT/4UlWCi2HGUDIs7yfnhF
-	qka6kM3cvikJYMeM+pNJPANVz9NiHnOTuXGOl+dCZS2S31c5s4wpCf0aPnP2lySjbo1plHQoR6wbD
-	PKKLE5B9PxNUcWWZW6p8caYwUpn2HBY+Q0+fy6x+Ix3+Zj0wi18s7ngu7ezO5LMF9uUYSYKCvFkHV
-	QEktD48rg==;
+	 bh=6ZcA48WOdm6mRB6Zd0Xz2ZLVcZISTTwWq6msn9rxDtE=; b=i3susZkCcSWvmPfhsR/Y4FDnd
+	TpLjuViMML3DZdoB1HlpNuuOMn2NsyIVpQvWr/EpkQ13RD6otKftRE/sCCZcyoadOYepare0Dq+Yi
+	SK9cYfKvuFsX9kiaK2b3LhL/PGwTt81KCC853F1+ORKLZ2xiav5LXsm+O6um46LP2ky7OsV5DebaR
+	rmizkwQUWg/72HWw15hucrX4SQQrPSX+G/dINWiQ1C1cYXcpa9yUYBJemYi+HnxpGK7Lq4bnefrdv
+	eXtCviTfHooDzubcweHCV6vlSQLGJWrpFNYxNtJJiWHDjl2qJi/2QWvRuDLlIIfnZzDMA4+KO8rjm
+	fAF76CbMQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGQP8-0005GI-13; Thu, 10 Sep 2020 17:30:38 +0000
+	id 1kGQPY-0005Xx-2I; Thu, 10 Sep 2020 17:31:04 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGQNL-0004D5-FP; Thu, 10 Sep 2020 17:28:49 +0000
+ id 1kGQNM-0004DJ-4s; Thu, 10 Sep 2020 17:28:49 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id CB2F829BB11
+ (Authenticated sender: eballetbo) with ESMTPSA id A991729BB0A
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH 08/12] soc: mediatek: pm-domains: Add subsystem clocks
-Date: Thu, 10 Sep 2020 19:28:22 +0200
-Message-Id: <20200910172826.3074357-9-enric.balletbo@collabora.com>
+Subject: [PATCH 09/12] soc: mediatek: pm-domains: Allow bus protection to
+ ignore clear ack
+Date: Thu, 10 Sep 2020 19:28:23 +0200
+Message-Id: <20200910172826.3074357-10-enric.balletbo@collabora.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200910172826.3074357-1-enric.balletbo@collabora.com>
 References: <20200910172826.3074357-1-enric.balletbo@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200910_132847_711030_0C6C7E78 
-X-CRM114-Status: GOOD (  21.31  )
+X-CRM114-CacheID: sfid-20200910_132848_303144_2253B7A5 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,190 +75,72 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Matthias Brugger <mbrugger@suse.com>
 
-For the bus protection operations, some subsystem clocks need to be enabled
-before releasing the protection. This patch identifies the subsystem clocks
-by it's name.
+In some cases the hardware does not create an acknowledgment of the
+bus protection clearing. Add a flag to the bus protection indicating
+that a clear event will be ignored.
 
-Suggested-by: Weiyi Lu <weiyi.lu@mediatek.com>
-[Adapted the patch to the mtk-pm-domains driver]
 Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
 
- drivers/soc/mediatek/mtk-pm-domains.c | 82 +++++++++++++++++++++++----
- 1 file changed, 70 insertions(+), 12 deletions(-)
+ drivers/soc/mediatek/mtk-pm-domains.c | 26 +++++++++++++++++---------
+ 1 file changed, 17 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-index 0802eccc3a0b..52a93a87e313 100644
+index 52a93a87e313..29e88adc8ea6 100644
 --- a/drivers/soc/mediatek/mtk-pm-domains.c
 +++ b/drivers/soc/mediatek/mtk-pm-domains.c
-@@ -3,6 +3,7 @@
-  * Copyright (c) 2020 Collabora Ltd.
-  */
- #include <linux/clk.h>
-+#include <linux/clk-provider.h>
- #include <linux/init.h>
- #include <linux/io.h>
- #include <linux/iopoll.h>
-@@ -81,6 +82,8 @@ struct scpsys_bus_prot_data {
+@@ -60,19 +60,23 @@
+ 
+ #define SPM_MAX_BUS_PROT_DATA		3
+ 
+-#define _BUS_PROT(_mask, _set, _clr, _sta, _update) {	\
+-		.bus_prot_mask = (_mask),		\
+-		.bus_prot_set = _set,			\
+-		.bus_prot_clr = _clr,			\
+-		.bus_prot_sta = _sta,			\
+-		.bus_prot_reg_update = _update,		\
++#define _BUS_PROT(_mask, _set, _clr, _sta, _update, _ignore) {	\
++		.bus_prot_mask = (_mask),			\
++		.bus_prot_set = _set,				\
++		.bus_prot_clr = _clr,				\
++		.bus_prot_sta = _sta,				\
++		.bus_prot_reg_update = _update,			\
++		.ignore_clr_ack = _ignore,			\
+ 	}
+ 
+-#define BUS_PROT_WR(_mask, _set, _clr, _sta)		\
+-		_BUS_PROT(_mask, _set, _clr, _sta, false)
++#define BUS_PROT_WR(_mask, _set, _clr, _sta)			\
++		_BUS_PROT(_mask, _set, _clr, _sta, false, false)
++
++#define BUS_PROT_WR_IGN(_mask, _set, _clr, _sta)		\
++		_BUS_PROT(_mask, _set, _clr, _sta, false, true)
+ 
+ #define BUS_PROT_UPDATE(_mask, _set, _clr, _sta)		\
+-		_BUS_PROT(_mask, _set, _clr, _sta, true)
++		_BUS_PROT(_mask, _set, _clr, _sta, true, false)
+ 
+ struct scpsys_bus_prot_data {
+ 	u32 bus_prot_mask;
+@@ -80,6 +84,7 @@ struct scpsys_bus_prot_data {
+ 	u32 bus_prot_clr;
+ 	u32 bus_prot_sta;
  	bool bus_prot_reg_update;
++	bool ignore_clr_ack;
  };
  
-+#define MAX_SUBSYS_CLKS 10
+ #define MAX_SUBSYS_CLKS 10
+@@ -257,6 +262,9 @@ static int _scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
+ 		else
+ 			regmap_write(regmap, bpd[i].bus_prot_clr, mask);
+ 
++		if (bpd[i].ignore_clr_ack)
++			continue;
 +
- /**
-  * struct scpsys_domain_data - scp domain data for power on/off flow
-  * @sta_mask: The mask for power on/off status bit.
-@@ -107,6 +110,8 @@ struct scpsys_domain {
- 	struct scpsys *scpsys;
- 	int num_clks;
- 	struct clk_bulk_data *clks;
-+	int num_subsys_clks;
-+	struct clk_bulk_data *subsys_clks;
- 	struct regmap *infracfg;
- 	struct regmap *smi;
- };
-@@ -309,16 +314,22 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	val |= PWR_RST_B_BIT;
- 	writel(val, ctl_addr);
- 
-+	ret = clk_bulk_enable(pd->num_subsys_clks, pd->subsys_clks);
-+	if (ret)
-+		goto err_pwr_ack;
-+
- 	ret = scpsys_sram_enable(pd, ctl_addr);
- 	if (ret < 0)
--		goto err_pwr_ack;
-+		goto err_sram;
- 
- 	ret = scpsys_bus_protect_disable(pd);
- 	if (ret < 0)
--		goto err_pwr_ack;
-+		goto err_sram;
- 
- 	return 0;
- 
-+err_sram:
-+	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
- err_pwr_ack:
- 	clk_bulk_disable(pd->num_clks, pd->clks);
- 	dev_err(scpsys->dev, "Failed to power on domain %s\n", genpd->name);
-@@ -342,6 +353,8 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	if (ret < 0)
- 		return ret;
- 
-+	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
-+
- 	/* subsys power off */
- 	val = readl(ctl_addr);
- 	val |= PWR_ISO_BIT;
-@@ -374,8 +387,11 @@ static int scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node
- {
- 	const struct scpsys_domain_data *domain_data;
- 	struct scpsys_domain *pd;
--	int i, ret;
-+	int i, ret, num_clks;
- 	u32 id;
-+	int clk_ind = 0;
-+	struct property *prop;
-+	const char *clk_name;
- 
- 	ret = of_property_read_u32(node, "reg", &id);
- 	if (ret) {
-@@ -410,28 +426,60 @@ static int scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node
- 	if (IS_ERR(pd->smi))
- 		pd->smi = NULL;
- 
--	pd->num_clks = of_clk_get_parent_count(node);
--	if (pd->num_clks > 0) {
-+	num_clks = of_clk_get_parent_count(node);
-+	if (num_clks > 0) {
-+		/* Calculate number of subsys_clks */
-+		of_property_for_each_string(node, "clock-names", prop, clk_name) {
-+			char *subsys;
-+
-+			subsys = strchr(clk_name, '-');
-+			if (subsys)
-+				pd->num_subsys_clks++;
-+			else
-+				pd->num_clks++;
-+		}
-+
- 		pd->clks = devm_kcalloc(scpsys->dev, pd->num_clks, sizeof(*pd->clks), GFP_KERNEL);
- 		if (!pd->clks)
- 			return -ENOMEM;
--	} else {
--		pd->num_clks = 0;
-+
-+		pd->subsys_clks = devm_kcalloc(scpsys->dev, pd->num_subsys_clks,
-+					       sizeof(*pd->subsys_clks), GFP_KERNEL);
-+		if (!pd->subsys_clks)
-+			return -ENOMEM;
- 	}
- 
- 	for (i = 0; i < pd->num_clks; i++) {
--		pd->clks[i].clk = of_clk_get(node, i);
--		if (IS_ERR(pd->clks[i].clk)) {
--			ret = PTR_ERR(pd->clks[i].clk);
-+		struct clk *clk = of_clk_get(node, i);
-+		if (IS_ERR(clk)) {
-+			ret = PTR_ERR(clk);
- 			dev_err(scpsys->dev, "%pOFn: failed to get clk at index %d: %d\n", node, i,
- 				ret);
--			return ret;
-+			goto err_put_clocks;
-+		}
-+
-+		pd->clks[clk_ind++].clk = clk;
-+	}
-+
-+	for (i = 0; i < pd->num_subsys_clks; i++) {
-+		struct clk *clk = of_clk_get(node, i + clk_ind);
-+		if (IS_ERR(clk)) {
-+			ret = PTR_ERR(clk);
-+			dev_err(scpsys->dev, "%pOFn: failed to get clk at index %d: %d\n", node,
-+				i + clk_ind, ret);
-+			goto err_put_subsys_clocks;
- 		}
-+
-+		pd->subsys_clks[i].clk = clk;
- 	}
- 
-+	ret = clk_bulk_prepare(pd->num_subsys_clks, pd->subsys_clks);
-+	if (ret)
-+		goto err_put_subsys_clocks;
-+
- 	ret = clk_bulk_prepare(pd->num_clks, pd->clks);
- 	if (ret)
--		goto err_put_clocks;
-+		goto err_unprepare_subsys_clocks;
- 
- 	/*
- 	 * Initially turn on all domains to make the domains usable
-@@ -456,6 +504,12 @@ static int scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node
- 
- err_unprepare_clocks:
- 	clk_bulk_unprepare(pd->num_clks, pd->clks);
-+err_unprepare_subsys_clocks:
-+	clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-+err_put_subsys_clocks:
-+	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
-+	devm_kfree(scpsys->dev, pd->subsys_clks);
-+	pd->num_subsys_clks = 0;
- err_put_clocks:
- 	clk_bulk_put(pd->num_clks, pd->clks);
- 	devm_kfree(scpsys->dev, pd->clks);
-@@ -537,6 +591,10 @@ static void scpsys_remove_one_domain(struct scpsys_domain *pd)
- 	clk_bulk_unprepare(pd->num_clks, pd->clks);
- 	clk_bulk_put(pd->num_clks, pd->clks);
- 	pd->num_clks = 0;
-+
-+	clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-+	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
-+	pd->num_subsys_clks = 0;
- }
- 
- static void scpsys_domain_cleanup(struct scpsys *scpsys)
+ 		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
+ 					       val, !(val & mask),
+ 					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
 -- 
 2.28.0
 
