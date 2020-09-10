@@ -2,90 +2,97 @@ Return-Path: <SRS0=yNvG=CT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A07E9C433E2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 13:12:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 593E1C43461
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 13:34:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4BDF1208E4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 13:12:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EBA572087C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 13:34:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eGScCUPa";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="LxW9JQar"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4BDF1208E4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gu5pUYn/";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=tcd-ie.20150623.gappssmtp.com header.i=@tcd-ie.20150623.gappssmtp.com header.b="fcQ8pRBP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EBA572087C
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=tcd.ie
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rbth9jvtDK4LI/LAgLYLbRxdTMH/iOGP7uPJZca5yAA=; b=eGScCUPacVn4XxgxFF+y0Apmf
-	qQVnJBHKwD7Y9DbQ+X5Jah6pePLuWR/2VlKCW2DJE9JoXK4pafEjdzzNySkyZy/1Zb/FcYtKps8i1
-	X7Qo8+4aCGCUMXc9bX0ZSBrfW+k31brSG8AEfqPe6t5stJYoBcokIhGvdEi7C14Hkw2oTiqjhiMjL
-	BigGkbuelXoCDX6WSl09wDXc4fIDOPKFMOST7CVAniBzrUusYrdbwahxzlMgKoJINj9Tri0Sw/zgI
-	u43iIrJUW2bMSDoV09InQ7kyX4PC8sB75qXfo4L2u30usnHm38YWR9BKWvFUwG5vDIPdjwuhHb/2g
-	cS0o3JLwQ==;
+	 bh=3YF7pd0Q3YfgwJ/+O+vcAJG3IM4Q2ppFxtCX3i2xSnQ=; b=gu5pUYn/TqD0Z1y2EunvL4yO6
+	ZG+GTFDhtz5l7u1J7S73salQWe/b+NIGx4ACttgFci+9FNSQ5bofzDZSpRAVRSgukvjs9TfmqqrBM
+	rN2+/HHK6GioOZwXymR6tCtHfzltG6rH3JurRix4cAwVmwb5VAPwv1vY98Hq3od7mL2HwrMWtOZCH
+	5xI8cJhDeYK/MwCtBoH8y1yp/HkY0NEdsYEn34uZp6eA43XcLVRIDIzO3NXI7azbD1ncbZbEvfHB+
+	ENQVA+I7bZay9YdipCax5p8wPKR3/NzA7XdGsEfjeOnnhY/St1PHnCa++9p51QEyB0+gqa1SkjwqT
+	8jxBHd2ug==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGMNA-0004Eu-9Z; Thu, 10 Sep 2020 13:12:20 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1kGMiD-0007g7-Um; Thu, 10 Sep 2020 13:34:06 +0000
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGMN7-0004DM-QW
- for linux-mediatek@lists.infradead.org; Thu, 10 Sep 2020 13:12:18 +0000
-Received: by mail-wr1-x443.google.com with SMTP id a17so6650475wrn.6
- for <linux-mediatek@lists.infradead.org>; Thu, 10 Sep 2020 06:12:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=Bq+U/roPoyR+PFGiWvFpI6j3vo6m28j+pYae81Oydrk=;
- b=LxW9JQardfe6ovRqT818t4MTPCbypCYUo6YFqdrT244gD5a1S0M2FecEI0fJMIgCzr
- Ar89gXm/TIGENRR2BL49FoHZo7vujerVPjd5M+e2s3HXP4Wo7+O2P4figtbf5/nmwDS/
- Q2R1sft6rUH2GuRa5ewLVT4dLProx4KzE35qEa4E6nG7xI6czJpWrd4mlBvx4KBv1Ccz
- A73yWuTvok4lQOj7F9He312DDKguKWTUTaFTwJ9WMRqZBv5IIXVbgFL3+SKSF4xaBQqF
- 6f2aAKtqQ+uZhXhgjIwYfEadfGfIDAA1hYNVQFQSDpaEu0fH3OPF+Cxvx5kbZQoNIkpH
- Yvmg==
+ id 1kGMi5-0007cG-Uz
+ for linux-mediatek@lists.infradead.org; Thu, 10 Sep 2020 13:34:02 +0000
+Received: by mail-io1-xd42.google.com with SMTP id j2so7044713ioj.7
+ for <linux-mediatek@lists.infradead.org>; Thu, 10 Sep 2020 06:33:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=tcd-ie.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=NA4xq/RvWtw1DoG4R42VuDAYvxbq5gOs0uGkp97do30=;
+ b=fcQ8pRBPaEWiThwI4IpJI/6RvrpktlhqIcuTs8ion57IfAcoLZwMinlg018HPs4g0P
+ PfERQLGzgxTimYY/S16DcluJPa3UrMAv2VeDrvrD2khzMlgcNU3uG+U66xQTcGI4k/PB
+ tyd6Y57erW7Jw7CdoQkzGYnD3z09a+1xAJWCw3ZTA9vq0DdHjCGpzxmBZebxDdyQNZ5o
+ a8n4/aQGMi16zmzKxYbuyXtVYNEIktp6No97ibi4qLI+zDV4g/TXIXD87q5g2S3KNUFg
+ wjgBbIjqjQrEef6DxEeF173z4nhe4RTeiKBDtbYrCu4PSy+IwGvrlXsJFLKINZmU1V2I
+ yoXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=Bq+U/roPoyR+PFGiWvFpI6j3vo6m28j+pYae81Oydrk=;
- b=FQiDIY/cqdty5RIYjmUFBW9z5fTus+18dBPj/nx+swCGNk2+VYjqOW6+rYQxpFGD+b
- 9N5/FzIrdHZtDo9oU5Y+V0C0LwCwXODYePzspEoSHnzM9Ah8hMNuI+23WSzjsoEantY/
- 7d36UAqCZ58GRklQ9amlJRsoOOH7lo2/SYQZIHhVsbH9eMj0LhXXLU0T7coGEyQVlzSh
- vTQg4dcuHrYqeO9lArw+WJo7YXgzTWuy/MsyxNHifvFXc114XeuMvvvlNki03GIYZmgi
- ZFCB55avJHAB0CKujrP34oFYrLshpljI595gl3Y8xGC1q16z9QSrJsfSwKLei5ZCYRs7
- TF8Q==
-X-Gm-Message-State: AOAM5338h6G/P1T6Z4ewU6+Z4+l0K35UCaUzg5bo8gMu9Nuw24ad7f3W
- W6mU/Wu6Q1KmHNb3qBJgd6JUgg==
-X-Google-Smtp-Source: ABdhPJx2Dvf8nFJMefE2zEyQsiA8oS3cus97b9p96If1Q7HdqZx1B5j3NrbyrLIFhtzFYQ1R++dhWQ==
-X-Received: by 2002:a5d:6301:: with SMTP id i1mr8482460wru.323.1599743535091; 
- Thu, 10 Sep 2020 06:12:15 -0700 (PDT)
-Received: from holly.lan (cpc141214-aztw34-2-0-cust773.18-1.cable.virginm.net.
- [86.9.19.6])
- by smtp.gmail.com with ESMTPSA id j14sm3301883wmj.19.2020.09.10.06.12.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Sep 2020 06:12:14 -0700 (PDT)
-Date: Thu, 10 Sep 2020 14:12:12 +0100
-From: Daniel Thompson <daniel.thompson@linaro.org>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH RESEND v3 04/11] usb: xhci-rcar: convert to
- readl_poll_timeout_atomic()
-Message-ID: <20200910131212.wm7zskxvcesl652c@holly.lan>
-References: <1599726112-4439-1-git-send-email-chunfeng.yun@mediatek.com>
- <1599726112-4439-4-git-send-email-chunfeng.yun@mediatek.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=NA4xq/RvWtw1DoG4R42VuDAYvxbq5gOs0uGkp97do30=;
+ b=PBGMG870b0TwAUbVTPCFdKJyqJJAZ7mRSQxTTskEnyZEFs+GTCsyLSuQuCuUJqIHYp
+ C0ON5nKbCf8PL5UpyoS4EBtZ24KrLQ/12Eo/f+LY7NbwXpqBqRK1ggWS7iRGP7QELBPy
+ xPuBckWay8GEo0ArW7DQSXDa1KMFZlegeIxj8uMjp1/HEqouDVhISU/GSwyCRDe2ofNz
+ oVtrDPjudbCKy+xU+J4Dql4qqmTSKIoLoq87R5z8ARTlPKx0ILcXa1z7AFm95Zmgz4/r
+ kKsjI7DAlsXU+2hQL6DBJqpWfpxwaynkIOHg/g0V3X5BR+GQQne//k96Rvw2JFUGBtDK
+ Hw4g==
+X-Gm-Message-State: AOAM531gNEfvq1HKIQb5jdMhz6NXqduuIE9rMzOWYLO1Z+RxZi61rwc3
+ wTuZd+7QCxeSutfDDSiYVIagcpXPurhC90y0VyNeqg==
+X-Google-Smtp-Source: ABdhPJzlID7Qr9FJiMTGq9orpwBT55dMvomyRpqx73nK5lHz5vZjsdxpDDRxLur0/nChDVSeWcISfULGX7CKyavrOhU=
+X-Received: by 2002:a02:834a:: with SMTP id w10mr8873252jag.63.1599744834395; 
+ Thu, 10 Sep 2020 06:33:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1599726112-4439-4-git-send-email-chunfeng.yun@mediatek.com>
+References: <20191221150402.13868-1-murphyt7@tcd.ie>
+ <465815ae-9292-f37a-59b9-03949cb68460@deltatee.com>
+ <20200529124523.GA11817@infradead.org>
+ <CGME20200529190523eucas1p2c086133e707257c0cdc002f502d4f51d@eucas1p2.samsung.com>
+ <33137cfb-603c-86e8-1091-f36117ecfaf3@deltatee.com>
+ <ef2150d5-7b6a-df25-c10d-e43316fe7812@samsung.com>
+ <b9140772-0370-a858-578c-af503a06d8e9@deltatee.com>
+ <CALQxJuutRaeX89k2o4ffTKYRMizmMu0XbRnzpFuSSrkQR02jKg@mail.gmail.com>
+ <766525c3-4da9-6db7-cd90-fb4b82cd8083@deltatee.com>
+ <60a82319-cbee-4cd1-0d5e-3c407cc51330@linux.intel.com>
+ <e598fb31-ef7a-c2ee-8a54-bf62d50c480c@deltatee.com>
+ <b27cae1f-07ff-bef2-f125-a5f0d968016d@linux.intel.com>
+ <CALQxJut5c=cWdi+SVkN3JnbkhPSYmLkOyRUhduL-UJ9gyKn9Ow@mail.gmail.com>
+ <7106602a-9964-851e-9c4e-d8acf4033b89@linux.intel.com>
+ <ea24e077-5aa6-dd8e-69a7-d186b606703f@linux.intel.com>
+In-Reply-To: <ea24e077-5aa6-dd8e-69a7-d186b606703f@linux.intel.com>
+From: Tom Murphy <murphyt7@tcd.ie>
+Date: Thu, 10 Sep 2020 14:33:43 +0100
+Message-ID: <CALQxJus4prs0T6G9Z4bw5BDgwmkaiynBcoknLsYEY45SNZ6Ukg@mail.gmail.com>
+Subject: Re: [Intel-gfx] [PATCH 0/8] Convert the intel iommu driver to the
+ dma-iommu api
+To: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200910_091217_954619_E296A145 
-X-CRM114-Status: GOOD (  22.01  )
+X-CRM114-CacheID: sfid-20200910_093358_136599_70D734A8 
+X-CRM114-Status: GOOD (  35.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,135 +104,144 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arm-kernel@lists.infradead.org, Felipe Balbi <balbi@kernel.org>,
- linux-usb@vger.kernel.org, Mathias Nyman <mathias.nyman@linux.intel.com>,
- Arnd Bergmann <arnd@arndb.de>, Mathias Nyman <mathias.nyman@intel.com>,
- Sumit Garg <sumit.garg@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Jann Horn <jannh@google.com>, Chuhong Yuan <hslester96@gmail.com>,
- Douglas Anderson <dianders@chromium.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Saurav Girepunje <saurav.girepunje@gmail.com>, Jason Yan <yanaijie@huawei.com>,
- linux-mediatek@lists.infradead.org,
- "Eric W. Biederman" <ebiederm@xmission.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
- Ben Dooks <ben.dooks@codethink.co.uk>, linux-kernel@vger.kernel.org
+Cc: kvm@vger.kernel.org, David Airlie <airlied@linux.ie>,
+ dri-devel@lists.freedesktop.org, Bjorn Andersson <bjorn.andersson@linaro.org>,
+ linux-tegra@vger.kernel.org, Julien Grall <julien.grall@arm.com>,
+ Will Deacon <will@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ linux-samsung-soc@vger.kernel.org, Marc Zyngier <maz@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Christoph Hellwig <hch@infradead.org>, linux-rockchip@lists.infradead.org,
+ Andy Gross <agross@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ virtualization@lists.linux-foundation.org,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>,
+ Logan Gunthorpe <logang@deltatee.com>, David Woodhouse <dwmw2@infradead.org>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ iommu@lists.linux-foundation.org, Kukjin Kim <kgene@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 10, 2020 at 04:21:45PM +0800, Chunfeng Yun wrote:
-> Use readl_poll_timeout_atomic() to simplify code
-> 
-> Cc: Mathias Nyman <mathias.nyman@linux.intel.com>
-> Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> v2~v3: no changes
-> ---
->  drivers/usb/host/xhci-rcar.c | 43 ++++++++++++-------------------------------
->  1 file changed, 12 insertions(+), 31 deletions(-)
-> 
-> diff --git a/drivers/usb/host/xhci-rcar.c b/drivers/usb/host/xhci-rcar.c
-> index c1025d3..74f836f 100644
-> --- a/drivers/usb/host/xhci-rcar.c
-> +++ b/drivers/usb/host/xhci-rcar.c
-> @@ -6,6 +6,7 @@
->   */
->  
->  #include <linux/firmware.h>
-> +#include <linux/iopoll.h>
->  #include <linux/module.h>
->  #include <linux/platform_device.h>
->  #include <linux/of.h>
-> @@ -127,8 +128,7 @@ static int xhci_rcar_download_firmware(struct usb_hcd *hcd)
->  	void __iomem *regs = hcd->regs;
->  	struct xhci_plat_priv *priv = hcd_to_xhci_priv(hcd);
->  	const struct firmware *fw;
-> -	int retval, index, j, time;
-> -	int timeout = 10000;
-> +	int retval, index, j;
->  	u32 data, val, temp;
->  	u32 quirks = 0;
->  	const struct soc_device_attribute *attr;
-> @@ -166,32 +166,19 @@ static int xhci_rcar_download_firmware(struct usb_hcd *hcd)
->  		temp |= RCAR_USB3_DL_CTRL_FW_SET_DATA0;
->  		writel(temp, regs + RCAR_USB3_DL_CTRL);
->  
-> -		for (time = 0; time < timeout; time++) {
-> -			val = readl(regs + RCAR_USB3_DL_CTRL);
-> -			if ((val & RCAR_USB3_DL_CTRL_FW_SET_DATA0) == 0)
-> -				break;
-> -			udelay(1);
-> -		}
-> -		if (time == timeout) {
-> -			retval = -ETIMEDOUT;
-> +		retval = readl_poll_timeout_atomic(regs + RCAR_USB3_DL_CTRL,
-> +				val, !(val & RCAR_USB3_DL_CTRL_FW_SET_DATA0),
-> +				1, 10000);
-> +		if (retval < 0)
->  			break;
-> -		}
->  	}
->  
->  	temp = readl(regs + RCAR_USB3_DL_CTRL);
->  	temp &= ~RCAR_USB3_DL_CTRL_ENABLE;
->  	writel(temp, regs + RCAR_USB3_DL_CTRL);
->  
-> -	for (time = 0; time < timeout; time++) {
-> -		val = readl(regs + RCAR_USB3_DL_CTRL);
-> -		if (val & RCAR_USB3_DL_CTRL_FW_SUCCESS) {
-> -			retval = 0;
-> -			break;
-> -		}
-> -		udelay(1);
-> -	}
-> -	if (time == timeout)
-> -		retval = -ETIMEDOUT;
-> +	retval = readl_poll_timeout_atomic((regs + RCAR_USB3_DL_CTRL),
-> +			val, (val & RCAR_USB3_DL_CTRL_FW_SUCCESS), 1, 10000);
+On Wed, 9 Sep 2020 at 13:56, Tvrtko Ursulin
+<tvrtko.ursulin@linux.intel.com> wrote:
+>
+>
+> On 09/09/2020 10:16, Tvrtko Ursulin wrote:
+> > On 08/09/2020 23:43, Tom Murphy wrote:
+> >> On Tue, 8 Sep 2020 at 16:56, Tvrtko Ursulin
+> >> <tvrtko.ursulin@linux.intel.com> wrote:
+> >>> On 08/09/2020 16:44, Logan Gunthorpe wrote:
+> >>>> On 2020-09-08 9:28 a.m., Tvrtko Ursulin wrote:
+> >>>>>>
+> >>>>>> diff --git a/drivers/gpu/drm/i915/i915_scatterlist.h
+> >>>>>> b/drivers/gpu/drm/i915/i915
+> >>>>>> index b7b59328cb76..9367ac801f0c 100644
+> >>>>>> --- a/drivers/gpu/drm/i915/i915_scatterlist.h
+> >>>>>> +++ b/drivers/gpu/drm/i915/i915_scatterlist.h
+> >>>>>> @@ -27,13 +27,19 @@ static __always_inline struct sgt_iter {
+> >>>>>>     } __sgt_iter(struct scatterlist *sgl, bool dma) {
+> >>>>>>            struct sgt_iter s = { .sgp = sgl };
+> >>>>>>
+> >>>>>> +       if (sgl && !sg_dma_len(s.sgp))
+> >>>>>
+> >>>>> I'd extend the condition to be, just to be safe:
+> >>>>>       if (dma && sgl && !sg_dma_len(s.sgp))
+> >>>>>
+> >>>>
+> >>>> Right, good catch, that's definitely necessary.
+> >>>>
+> >>>>>> +               s.sgp = NULL;
+> >>>>>> +
+> >>>>>>            if (s.sgp) {
+> >>>>>>                    s.max = s.curr = s.sgp->offset;
+> >>>>>> -               s.max += s.sgp->length;
+> >>>>>> -               if (dma)
+> >>>>>> +
+> >>>>>> +               if (dma) {
+> >>>>>> +                       s.max += sg_dma_len(s.sgp);
+> >>>>>>                            s.dma = sg_dma_address(s.sgp);
+> >>>>>> -               else
+> >>>>>> +               } else {
+> >>>>>> +                       s.max += s.sgp->length;
+> >>>>>>                            s.pfn = page_to_pfn(sg_page(s.sgp));
+> >>>>>> +               }
+> >>>>>
+> >>>>> Otherwise has this been tested or alternatively how to test it?
+> >>>>> (How to
+> >>>>> repro the issue.)
+> >>>>
+> >>>> It has not been tested. To test it, you need Tom's patch set without
+> >>>> the
+> >>>> last "DO NOT MERGE" patch:
+> >>>>
+> >>>> https://lkml.kernel.org/lkml/20200907070035.GA25114@infradead.org/T/
+> >>>
+> >>> Tom, do you have a branch somewhere I could pull from? (Just being lazy
+> >>> about downloading a bunch of messages from the archives.)
+> >>
+> >> I don't unfortunately. I'm working locally with poor internet.
+> >>
+> >>>
+> >>> What GPU is in your Lenovo x1 carbon 5th generation and what
+> >>> graphical/desktop setup I need to repro?
+> >>
+> >>
+> >> Is this enough info?:
+> >>
+> >> $ lspci -vnn | grep VGA -A 12
+> >> 00:02.0 VGA compatible controller [0300]: Intel Corporation HD
+> >> Graphics 620 [8086:5916] (rev 02) (prog-if 00 [VGA controller])
+> >>      Subsystem: Lenovo ThinkPad X1 Carbon 5th Gen [17aa:224f]
+> >>      Flags: bus master, fast devsel, latency 0, IRQ 148
+> >>      Memory at eb000000 (64-bit, non-prefetchable) [size=16M]
+> >>      Memory at 60000000 (64-bit, prefetchable) [size=256M]
+> >>      I/O ports at e000 [size=64]
+> >>      [virtual] Expansion ROM at 000c0000 [disabled] [size=128K]
+> >>      Capabilities: [40] Vendor Specific Information: Len=0c <?>
+> >>      Capabilities: [70] Express Root Complex Integrated Endpoint, MSI 00
+> >>      Capabilities: [ac] MSI: Enable+ Count=1/1 Maskable- 64bit-
+> >>      Capabilities: [d0] Power Management version 2
+> >>      Capabilities: [100] Process Address Space ID (PASID)
+> >>      Capabilities: [200] Address Translation Service (ATS)
+> >
+> > Works for a start. What about the steps to repro? Any desktop
+> > environment and it is just visual corruption, no hangs/stalls or such?
+> >
+> > I've submitted a series consisting of what I understood are the patches
+> > needed to repro the issue to our automated CI here:
+> >
+> > https://patchwork.freedesktop.org/series/81489/
+> >
+> > So will see if it will catch something, or more targeted testing will be
+> > required. Hopefully it does trip over in which case I can add the patch
+> > suggested by Logan on top and see if that fixes it. Or I'll need to
+> > write a new test case.
+> >
+> > If you could glance over my series to check I identified the patches
+> > correctly it would be appreciated.
+>
+> Our CI was more than capable at catching the breakage so I've copied you
+> on a patch (https://patchwork.freedesktop.org/series/81497/) which has a
+> good potential to fix this. (Or improve the robustness of our sg walks,
+> depends how you look at it.)
+>
+> Would you be able to test it in your environment by any chance? If it
+> works I understand it unblocks your IOMMU work, right?
 
-Directly assigning to retval at this point will clobber a previous
--ETIMEDOUT error.
+I tested your latest patch set ([PATCH 1/2] drm/i915: Fix DMA mapped
+scatterlist walks) and it fixes the issue. great work!
 
-In other words if there is a timeout waiting for FW_SET_DATA0, but not for
-DW_SUCCESS, then we will return the wrong return value.
-
-
-Daniel.
-
-
->  
->  	release_firmware(fw);
->  
-> @@ -200,18 +187,12 @@ static int xhci_rcar_download_firmware(struct usb_hcd *hcd)
->  
->  static bool xhci_rcar_wait_for_pll_active(struct usb_hcd *hcd)
->  {
-> -	int timeout = 1000;
-> +	int retval;
->  	u32 val, mask = RCAR_USB3_AXH_STA_PLL_ACTIVE_MASK;
->  
-> -	while (timeout > 0) {
-> -		val = readl(hcd->regs + RCAR_USB3_AXH_STA);
-> -		if ((val & mask) == mask)
-> -			return true;
-> -		udelay(1);
-> -		timeout--;
-> -	}
-> -
-> -	return false;
-> +	retval = readl_poll_timeout_atomic(hcd->regs + RCAR_USB3_AXH_STA,
-> +			val, ((val & mask) == mask), 1, 1000);
-> +	return !!retval;
-
-This function returns a bool so !! is either wrong or redundant... I
-think in this case it is wrong and should be a single ! .
-
-
-Daniel.
+>
+> Regards,
+>
+> Tvrtko
 
 _______________________________________________
 Linux-mediatek mailing list
