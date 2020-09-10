@@ -2,147 +2,75 @@ Return-Path: <SRS0=yNvG=CT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7897CC433E2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 08:24:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9510BC433E2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 08:30:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C3EDF20708
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 08:24:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 141C42076C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 08:30:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RdUFuokG";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=microchip.com header.i=@microchip.com header.b="YtbC8SsJ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=microchiptechnology.onmicrosoft.com header.i=@microchiptechnology.onmicrosoft.com header.b="nHI74pvW"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C3EDF20708
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=microchip.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MlKEddgG";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="eieQ+3RH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 141C42076C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wQu8pvSt3woks6xwuoC7PCk7EA7KnfZo0H7F1lmxHsQ=; b=RdUFuokGWiVbAEpDWeaYzfNsa
-	azi/T0AF0wlJfsgFpNtgCRXWZewDBw/ORjUpvDoc/MzNTFGzP6/Ex8P+eeuba1Qp6QwKIYOALwwof
-	5esYLCs5H4QH6lk1MCgJWli+Ub6A6zeumvpGEnUy9DgkZU6XwhyBSoNtgeYZpzMk8uMTWG2QLYqng
-	9Ibi3ITmzThfcwZ75pmtc/vu+As83qKzc9FCgVRjwyk5IpCDFBEhZxbNbHvSRXe35ZoCy2VXxu7+M
-	O93Sb+HUBVEbMuFfWGW/obJ/wHwCLhcbwSHmYXH9QKhO31GbcbyvSCWXc9z7UUkY4GXWC+ywh6dBi
-	N3lm9/ucw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=IOgJDN/E2zbnxML0sL2SVC/Q2igpNYDnPUp/+GW4+Eg=; b=MlKEddgGMCRdVDNUShn+uk1OSy
+	4SCAaVYmLxNF/+5QuIstxmolSzSeDmWMRR97Ot5fyxhMA3Zr3jLgaywJq7E2QU4Dv1O2lUVVB17GE
+	ljNRed47fwisNhSvYbRkCc9+ary49+Neg1IBmA5WwDbpRxdVTq/u/FQWzFF31K5eK7d/j05DUFfe7
+	COuYElHWSoOZnfQHavGDWyNbU4E7DzGPHKENkG0qdtIFReL5hujNnJbE3WUgN+JjmOBwC+lMWWItJ
+	Zq5Irc4br6/NTwkgLSZPmCchhAbSl2R1Xhrk7m2GBLiUnUSyNhF3nxdeNI7uwI9uUwAisIcfHg/05
+	OcqzFRig==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGHsj-0002xb-6o; Thu, 10 Sep 2020 08:24:37 +0000
-Received: from esa3.microchip.iphmx.com ([68.232.153.233])
+	id 1kGHyS-000448-6v; Thu, 10 Sep 2020 08:30:32 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGHsg-0002vp-WA; Thu, 10 Sep 2020 08:24:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1599726274; x=1631262274;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=Yyq2EDCS2vKZmH5eLOYYicNPIXcRgkd+H8Ca+7FcXOc=;
- b=YtbC8SsJZM3oVcRCNHAc8fZrYFDtqVP2SOxqU1s5zwp/5kVwzJO425MX
- kQkCvbC8vv0T38dmp4kmj1v/nxcxVJOYm6y7cYJppxZN1I8Fhofn4zGOS
- uRoOOtnIQJLkAcGA1huBPVBdnqdG8ckySPINr3NB4xNsgoiodU579OC/8
- pMX1dRpIIUjp+T22O/HMbda0jIqjTa0ZJgMOcjT1MIjLCKDGFZHXwuKmo
- EkoFhrBu6rmFl4xncj+JWfJhJV1A8NrofU31qNmCcdoh2B0yTO6aokfPx
- qKmmn94zOATVGxlse5CQnsUsOk1PfS4lA+x/x+1456dvWpzypCa1u4o4S Q==;
-IronPort-SDR: ftLnKVJWWVARs6xE60k80lvcWvEF9LnNReTXi2pIeHcFd1pOvCbq5YtWKyNQKbgntoF3PJrEzZ
- yGkW+CSPkTanXwFzN+yaXQvli7N+J9TDXD7EYbxy0puKvjPuscpCKfJznonLOJ1RssHzyGXWld
- FEmXkljrjgcGdATyyJ52ywdn6YOedSeAiw39Unb2/iAlFSlX4xOSaPEQ1oDzJo6jB0orKUYHob
- 8TPZOmriiXyQ/YsxyXR92KLsMxoOl9I7rBMGKN1j5VU4WXWSblm45hfVc18o3BtgyAUNaPQFAh
- yGo=
-X-IronPort-AV: E=Sophos;i="5.76,412,1592895600"; d="scan'208";a="91279822"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 10 Sep 2020 01:24:26 -0700
-Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
- chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1979.3; Thu, 10 Sep 2020 01:24:22 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3
- via Frontend Transport; Thu, 10 Sep 2020 01:24:22 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=itElKv30dbsNhtpfiKLkCOXYopTjtkZ9zEAzRioxDAmgifjIhq6QVV/lc6kfk0TIuSPX1OZAUrSDWVumK4tLXffHjOu4WRZugnRrQRvvAAgpCE7V1+zJn3PyPC0j6/G2aAtgoGzj2pGQVkq35HD5i3ZvkV68QA+ILQVSTYqBA+q+9/IrmOIYHSq5T7WknjE5tqhKpcoEPyxu0LHlp9MR91+nL0ffI8mb6UZ8R19c1Z8LDep20pLw6r6tPamTWrMJ0hAxNX35wsV6GMNcE6JFgdV5g0JfNl3CssuMyPR0eMKE/T9DeShiio5DN/5SR2TytdQ7bAPBSy6lDzF4x9zLmg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/BE3UD6DmJgxUoBN4fm1O92DvDQlokRm7L2E5H8tZ/w=;
- b=aw+E7ncriQCfdGAUGrQZUE/X01NpnQkPaMKg98SJOA6wY+Umt71j+ZM3yJT4X2e4Z3a1Nf1QLyhCWVWM5woSGiSrFRCtJ7Y+axoK5muAMFzy8K/q5zDKA+XhU43kGZTFp6nun78Bc4vdtny2nuHntBDykocQKzISfMU5cKF8KWDvMYiCfneJuxF9RID1NNZC8H0s/Flemt9H/8te0Tc5X4Wgyt0zHH2qftbjcUtGDix9JdV3FbJj+OP489jnkeYYjXBTFPWiX1axHsYPxivLdaeMUWo+d8svoqnPmKjaFYR7H+Czrws9kPnJiEDFXxT1EnrZJjVbs3wTlpHvyWTwVg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/BE3UD6DmJgxUoBN4fm1O92DvDQlokRm7L2E5H8tZ/w=;
- b=nHI74pvWX9voKu6qjF0Kfqy5Sc0AGs+NSCuuZ7eJDs13Cd2LSPaaZXvb/ZjcOfT09uuWHM6p5pmozbJumZzu3LweHgExn3n4A3SazKZjxpV5HJ3Rfd1IYhfQ1vrLcAgTG/9j9wdLhYAt6RaeZr3RJVUTfyzdVhJVMpRZmeQD3Xk=
-Received: from BYAPR11MB3477.namprd11.prod.outlook.com (2603:10b6:a03:7c::28)
- by BY5PR11MB4307.namprd11.prod.outlook.com (2603:10b6:a03:1bd::27)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3370.16; Thu, 10 Sep
- 2020 08:24:22 +0000
-Received: from BYAPR11MB3477.namprd11.prod.outlook.com
- ([fe80::d1dd:de76:4e99:7c85]) by BYAPR11MB3477.namprd11.prod.outlook.com
- ([fe80::d1dd:de76:4e99:7c85%7]) with mapi id 15.20.3348.019; Thu, 10 Sep 2020
- 08:24:21 +0000
-From: <Nicolas.Ferre@microchip.com>
-To: <joe@perches.com>, <linux-kernel@vger.kernel.org>, <trivial@kernel.org>
-Subject: Re: [trivial PATCH] treewide: Convert switch/case fallthrough; to
- break;
-Thread-Topic: [trivial PATCH] treewide: Convert switch/case fallthrough; to
- break;
-Thread-Index: AQHWh0vIy44IYF5A+kuaVLhVJ6ZdVw==
-Date: Thu, 10 Sep 2020 08:24:21 +0000
-Message-ID: <c2929349-ca60-486d-3cad-a83321587c5f@microchip.com>
-References: <e6387578c75736d61b2fe70d9783d91329a97eb4.camel@perches.com>
-In-Reply-To: <e6387578c75736d61b2fe70d9783d91329a97eb4.camel@perches.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-authentication-results: perches.com; dkim=none (message not signed)
- header.d=none;perches.com; dmarc=none action=none header.from=microchip.com;
-x-originating-ip: [2a01:cb1c:8c:b200:d11f:426b:f805:cbe2]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: e351a690-85b8-47aa-f38f-08d85562eb8c
-x-ms-traffictypediagnostic: BY5PR11MB4307:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BY5PR11MB4307E000D4DA0597A74F9A31E0270@BY5PR11MB4307.namprd11.prod.outlook.com>
-x-bypassexternaltag: True
-x-ms-oob-tlc-oobclassifiers: OLM:6108;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: rwdyTK6oNx+pJXY+VYO8jlUUcB5LsJW3ZQhau0YhpysDI1uZrWJ+5KkXmnJNABVwRpL8mxf24YLlXWyB3yirjaXQ/srQXMAk73DmLRMX7FFSd/uWs59kXpR0gz7YIDZpkdEHXR8Ks47+GSWaldjUxHW1dDgr9Bml1Ile+LfAjDi5j/2WavAN5DcmiJhVV86brSYApECTF1sqFMiIoIfargGWcDiXjLp0xoZy1wTF5cYKXSjd2DGvBQRASj+UAeO1Pg9WFEX+2sgdqqFJ/HgGUzu9uaOU20bpHBTTwQw7yoVGql5DTXE+Xr30INsHw1gSuTyHpcI3KtFhJi6QDKEIl6ZhO0EwhNcia52tqGsvyefiqtKNAZSsmZhN9N/OPaNO
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3477.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(136003)(376002)(346002)(396003)(366004)(39860400002)(36756003)(6506007)(4744005)(53546011)(31686004)(4326008)(8676002)(31696002)(6512007)(186003)(478600001)(2616005)(107886003)(83380400001)(54906003)(110136005)(5660300002)(316002)(2906002)(6486002)(76116006)(71200400001)(91956017)(66476007)(66556008)(8936002)(66446008)(66946007)(64756008)(7416002)(7406005)(86362001)(43740500002);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: CK3jnFjP+DaxTGoKSfijNwQSDSi+zYRAANKGWEe0w6BHoCBr3jeo8QFCPrdi+OpT1qz3lmVs3mCRxOmBtUGK5WN0AxOt0wvA3bBJRUyjBicAE+lDMsP7vy1cft0wcXBrEZgdgqF7VD1sQj+khtUTD5EsNnntahNSIGqwN+VZCKQ1QzjPtAbjR2oPP/LrPDKYk//qfKAomMDI7R2fpR0tTUzDMz48DEh+PQCCmr/krCP8U3KTB6FIGhilgI7TLOfsJcLS9qlGh0PGNeVy7GIerGvFEQfkR4YdlzVLyEKvYmf4EXR5wArGM6eS5MMbLL4vYVjGrhiNaJt+earGuTqyYiFZbc+uujPQG9qCWcGOhC7tSaJvV/BIkb7lV8g/yXvxSbayqkCXQ/s7jX+D9fM+ZWNqgoWbSd/P+uuCP7/8e33PXHOet1lAM1sUIHpLxk8RCyecYucN6ijlgMa8IdFcV7U+ZA3zH97/7OWVEtd6OgF0CR21Hki2raxtlS5sca+cVURYu2gcHFAMLULSgaOruMk5qcKurGsgOTL9NDY1H7Jpn1+7gJ+bMQIt2b5OxDFW2nSizeQSfqlNFoprGc6aS71OSv+MwkoEfhBi640q5sGrdYfhliWNj5HhbdiTLJVy1TBmrhSIzi6KODxmStaMlQzfe8a1Otv3042csYwXaPKEPC9i6WiYuHbWrvEwzSbxIsAABeXwAiTaxYC040N9rw==
-Content-ID: <0B2726412C35D14B94E876CA5EB14904@namprd11.prod.outlook.com>
+ id 1kGHyQ-00042R-3X; Thu, 10 Sep 2020 08:30:31 +0000
+X-UUID: 1e1a1279a0eb41d6afaaf8442dae44bd-20200910
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=n+pceR4RMgmAMEAt4bZLKvLzwP+bC0iCUPc31NQ9+9s=; 
+ b=eieQ+3RHKFVXMCqhVGxjClJDEUY+G4tQGPO1UEkAvhuG+flLR13RnzQmGtxzrFyJe/Jg1LZtwXxNgm4y3K7dSltDYxdrWoyzafrqw8s1De9vFplm3F425ZN3p8pC56iCkTK0WMEm2uiyShAJkkqNu5+JYusc6mZRmpZFvGYw+K8=;
+X-UUID: 1e1a1279a0eb41d6afaaf8442dae44bd-20200910
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1705177483; Thu, 10 Sep 2020 00:24:03 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 10 Sep 2020 01:24:01 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 10 Sep 2020 16:23:58 +0800
+Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 10 Sep 2020 16:23:56 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH RESEND v3 01/11] usb: early: convert to
+ readl_poll_timeout_atomic()
+Date: Thu, 10 Sep 2020 16:21:42 +0800
+Message-ID: <1599726112-4439-1-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3477.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e351a690-85b8-47aa-f38f-08d85562eb8c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Sep 2020 08:24:21.4887 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: JW3oElxXZwEvl6R2z5GFIVkcX/+UpGKsEW8MKFxofB9W1y9KDMUkM69WnQUZrCOB/0mudh2ADBhfj0C34gWZhgepCXhZk3LC9prwi+CGg3E=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR11MB4307
+X-TM-SNTS-SMTP: 3CEDF1C9E1989338AB07B01DC590B9649CEE54B7EB8B0190A82F837BF91D34932000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200910_042435_299786_9DE8DC66 
-X-CRM114-Status: GOOD (  10.59  )
+X-CRM114-CacheID: sfid-20200910_043030_275135_4B242461 
+X-CRM114-Status: GOOD (  15.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -154,64 +82,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-wireless@vger.kernel.org, linux-fbdev@vger.kernel.org,
- oss-drivers@netronome.com, nouveau@lists.freedesktop.org,
- alsa-devel@alsa-project.org, dri-devel@lists.freedesktop.org,
- linux-ide@vger.kernel.org, dm-devel@redhat.com, linux-mtd@lists.infradead.org,
- linux-i2c@vger.kernel.org, sparclinux@vger.kernel.org,
- kvmarm@lists.cs.columbia.edu, linux-rtc@vger.kernel.org,
- linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org, dccp@vger.kernel.org,
- linux-rdma@vger.kernel.org, linux-atm-general@lists.sourceforge.net,
- linux-afs@lists.infradead.org, Ludovic.Desroches@microchip.com,
- coreteam@netfilter.org, intel-wired-lan@lists.osuosl.org,
- linux-serial@vger.kernel.org, linux-input@vger.kernel.org,
- linux-mmc@vger.kernel.org, kees.cook@canonical.com,
- linux-media@vger.kernel.org, linux-pm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, linux-sctp@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-nvme@lists.infradead.org,
- storagedev@microchip.com, ceph-devel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
- linux-parisc@vger.kernel.org, netdev@vger.kernel.org,
- linux-usb@vger.kernel.org, ndesaulniers@google.com, linux-mips@vger.kernel.org,
- iommu@lists.linux-foundation.org, netfilter-devel@vger.kernel.org,
- linux-crypto@vger.kernel.org, Eugen.Hristev@microchip.com, bpf@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org
+Cc: "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Douglas Anderson <dianders@chromium.org>,
+ Saurav Girepunje <saurav.girepunje@gmail.com>,
+ Lee Jones <lee.jones@linaro.org>, Daniel
+ Thompson <daniel.thompson@linaro.org>, Mathias Nyman <mathias.nyman@intel.com>,
+ Jann Horn <jannh@google.com>, Ben
+ Dooks <ben.dooks@codethink.co.uk>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Arnd Bergmann <arnd@arndb.de>, Sumit Garg <sumit.garg@linaro.org>,
+ Chuhong Yuan <hslester96@gmail.com>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, Felipe Balbi <balbi@kernel.org>,
+ Mathias Nyman <mathias.nyman@linux.intel.com>, Jason Yan <yanaijie@huawei.com>,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ "Eric W. Biederman" <ebiederm@xmission.com>,
+ Lu Baolu <baolu.lu@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Joe,
+Use readl_poll_timeout_atomic() to simplify code
 
-Please drop this chunk: it's a successive controller version number 
-which are all backward compatible with "fallthrough" on each case so 
-removing from this last one makes it inconsistent.
+Cc: Lu Baolu <baolu.lu@linux.intel.com>
+Cc: Mathias Nyman <mathias.nyman@linux.intel.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+v2~v3: no changes
+---
+ drivers/usb/early/xhci-dbc.c | 14 ++++----------
+ 1 file changed, 4 insertions(+), 10 deletions(-)
 
-In sort: NACK for atmel-mci.
-
-Best regards,
-   Nicolas
-
-
-On 09/09/2020 at 22:06, Joe Perches wrote:
-> diff --git a/drivers/mmc/host/atmel-mci.c b/drivers/mmc/host/atmel-mci.c
-> index 444bd3a0a922..8324312e4f42 100644
-> --- a/drivers/mmc/host/atmel-mci.c
-> +++ b/drivers/mmc/host/atmel-mci.c
-> @@ -2435,7 +2435,7 @@ static void atmci_get_cap(struct atmel_mci *host)
->          case 0x100:
->                  host->caps.has_bad_data_ordering = 0;
->                  host->caps.need_reset_after_xfer = 0;
-> -               fallthrough;
-> +               break;
->          case 0x0:
->                  break;
->          default:
-
-
+diff --git a/drivers/usb/early/xhci-dbc.c b/drivers/usb/early/xhci-dbc.c
+index c050776..be4ecba 100644
+--- a/drivers/usb/early/xhci-dbc.c
++++ b/drivers/usb/early/xhci-dbc.c
+@@ -14,6 +14,7 @@
+ #include <linux/pci_ids.h>
+ #include <linux/memblock.h>
+ #include <linux/io.h>
++#include <linux/iopoll.h>
+ #include <asm/pci-direct.h>
+ #include <asm/fixmap.h>
+ #include <linux/bcd.h>
+@@ -135,16 +136,9 @@ static int handshake(void __iomem *ptr, u32 mask, u32 done, int wait, int delay)
+ {
+ 	u32 result;
+ 
+-	do {
+-		result = readl(ptr);
+-		result &= mask;
+-		if (result == done)
+-			return 0;
+-		udelay(delay);
+-		wait -= delay;
+-	} while (wait > 0);
+-
+-	return -ETIMEDOUT;
++	return readl_poll_timeout_atomic(ptr, result,
++					 ((result & mask) == done),
++					 delay, wait);
+ }
+ 
+ static void __init xdbc_bios_handoff(void)
 -- 
-Nicolas Ferre
-
+1.9.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
