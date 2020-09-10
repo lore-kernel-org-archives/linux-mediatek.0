@@ -2,90 +2,71 @@ Return-Path: <SRS0=yNvG=CT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.6 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EADA2C433E2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 10:52:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E3833C43461
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 11:03:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 82B9C20BED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 10:52:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8563620BED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 11:03:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jzi1SBIW";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="hc08PSXf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 82B9C20BED
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2XF6I852";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="18mUZhE8"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8563620BED
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=emyJkrpc6jDID7Yfp4lKIAQbsJH9pBVoWssG1J8h5Es=; b=jzi1SBIWauXPeUOgqN7U5rbp3
-	a3pGUlLVSNfdP53mfv5/PElnLik/FM9wlynJ7/hQG3J5MG6M5h0dv1LDrfcYksFU3P+LnsZzKCIXt
-	r0KY5p3OQaoBCEBazM9L49CmZTcRqZ/Xqm0ELeHlDd9j8qOiKnm3OUWNSQEVAVNzASdEq2RDu6jE6
-	mHCJazlJC2cpWHxT2Az8BNIUNt1drtPLx4aCHd/swPtx2ZLeR54CK6BsFdnYcQbulGMyQJW1b7fAB
-	CCyU1QzLdGdrjhYnLR4GuAyVvH6vvoOgslMtyd3D5ZSzhBRED62OW06deOZl0GdRHmIMnMXlxNjag
-	d7jYKAntg==;
+	 bh=jd2pnthWIAx+XhJ6qlbFs3meNA75hofK1y93qS5uAcc=; b=2XF6I852bF7PJFbOTZ82wgnjd
+	OgjUmMBvwAEHgA93d2bkQpwwWyr6WaTxyoBenIUQG66jGEV0Fd9ezEr1QFDGeyUSvF5dObUE9aGyM
+	jbc1yZUPncuDxceM8kBNgevnIG76TIrkojV7CcvxYAFOVg1DmzUcRKHksWciUuUPUI4H5MzxCjDuT
+	9Zy7JFARhYISOeuzkie/SjDeclBnBYEN7WLqfDkLQ9knUETuoqOWEnI8qm9XpbMKdDOFXelMiK8M+
+	/9/UpSmzbGYc2+WsMau7a02tEXwmEzj9o7IpgDL5B3aQwuh4+NsfpEvj3d0iMoo2RAWgJsgp3oV+/
+	wF4VJhQpw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGKC0-00079R-6f; Thu, 10 Sep 2020 10:52:40 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1kGKMY-0002i4-Kl; Thu, 10 Sep 2020 11:03:34 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGKBy-00078c-HC; Thu, 10 Sep 2020 10:52:39 +0000
-Received: by mail-wm1-x342.google.com with SMTP id a65so5149605wme.5;
- Thu, 10 Sep 2020 03:52:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=xqxwM/Mvfa18vvLY/SDCcgMXW/SBJ2dGdITvWLFzj1E=;
- b=hc08PSXfEdHk3COElKF3/mNchbHltsWM1NVW016Nef7xJ/Bu/gVPH54E6MsFKRgL3h
- GKHbCyPIpoZqCeDsQzs5wMDpvQDI4pRY07pPOost7/lMarWSz+k7apLCCdPhDXN1RkGX
- czsCIFE4B+dW3XXOyBCy1/5/CJac4LLyQjD+peyjlO+cxyRxlYewCTGAS/2oowKqjh+a
- byRfHewsPXge4IFC+gMrI5ax1hyBFY/5rMBmMfc9KvD2qSyIhqwZ+7hHhk8JqCw3zSbb
- xMC6QkmkvtdhzCMh6TIDMpAxtn4kCukPD5PHdN5pzWbgnAvGJnS8DqtTqscJYfyyVqZH
- i3Qw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=xqxwM/Mvfa18vvLY/SDCcgMXW/SBJ2dGdITvWLFzj1E=;
- b=fIj+lBNzDjXbv8X4OZV1AIQ9LxYyMk3N2QVAiIo0cJsIQ6iLNlz/KVLiP7dKtcibrj
- zO4fl5sX6ZXn5IVkqFsICWKB0p758dZxfbol7BS3T1EoEXjY3MVX4jXC2x/zGYbnfFEe
- ozelMNeMHkZHkZOuzWStS4WHPasCgwXac/CsOFusIbhby82uWGBqD5H0o4E82cx++zu+
- SqMCEQP80lngjUHTZ5U6eV+8lH5YQiuREfjNWQuSXLrBiQNc0mIXC4asPI/GpwHYzmdn
- NIO6c1hdPHxgRZV5hAZxDyltWChyb9lA0aPO7haHiBkWUyPW5epIxkEkGf421Khh9oWy
- 4b6g==
-X-Gm-Message-State: AOAM530YFaU44OckEAhvmXHAO/XdgjP2SgFL9+DmjGumtgD/pz2iYMO+
- lo/q/sH3CkAiB6wqfgJ0ISgTjc2muw0=
-X-Google-Smtp-Source: ABdhPJwk1Wpe3AlLx/+HN1qYohBdzkjzG9xzrHBAw7o7z5BWCvFB04lhR2xSpqcNQYSX+4AgqzKdNg==
-X-Received: by 2002:a1c:cc0d:: with SMTP id h13mr7614433wmb.44.1599735157246; 
- Thu, 10 Sep 2020 03:52:37 -0700 (PDT)
-Received: from ziggy.stardust ([213.195.113.201])
- by smtp.gmail.com with ESMTPSA id a74sm3129769wme.11.2020.09.10.03.52.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 10 Sep 2020 03:52:36 -0700 (PDT)
-Subject: Re: [PATCH v2] arm64: dts: mt8183-kukui: add scp node
-To: Pi-Hsun Shih <pihsun@chromium.org>
-References: <20200909081422.2412795-1-pihsun@chromium.org>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <161d403a-2a3a-3365-1bb2-5067e8fb7cb8@gmail.com>
-Date: Thu, 10 Sep 2020 12:52:35 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ id 1kGKMS-0002fy-Jm; Thu, 10 Sep 2020 11:03:29 +0000
+Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id F2DFF20720;
+ Thu, 10 Sep 2020 11:03:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1599735807;
+ bh=dmrwyQMyeJMFMQp1EmqKFdckpq9rAe0lbenAUyImoHI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=18mUZhE89SuUR9AkRIvaLcq0CV19oM50ifpHaALiIug/IWYJwyy6/yKbEXGWUq0e2
+ ySMgHwdgAHR53xxhtsjqglHPRZ6z18CuVQ19qtjnOwsiniC5WkrCRFiC2Lm3RUg9ox
+ sGG3YwHzjYvnF+tl2rakOguBKLp+KG5CEGtVhy5w=
+Date: Thu, 10 Sep 2020 12:02:41 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v7 2/3] ASoC: qcom: dt-bindings: Add sc7180 machine
+ bindings
+Message-ID: <20200910110241.GA4898@sirena.org.uk>
+References: <20200907100039.1731457-1-cychiang@chromium.org>
+ <20200907100039.1731457-3-cychiang@chromium.org>
+ <20200908203357.GA861143@bogus>
+ <CAFv8NwLMAkFhVT-ML7QHbnSkqmgh=5SrNSik5eSCTHB1=DGQ0A@mail.gmail.com>
+ <CAL_JsqKW2bpHP60MX4eFmtfzkvaHJ670m6e8H29=u=mDAYg63w@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20200909081422.2412795-1-pihsun@chromium.org>
-Content-Language: en-US
+In-Reply-To: <CAL_JsqKW2bpHP60MX4eFmtfzkvaHJ670m6e8H29=u=mDAYg63w@mail.gmail.com>
+X-Cookie: I disagree with unanimity.
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200910_065238_587904_6CB3F9FB 
-X-CRM114-Status: GOOD (  18.51  )
+X-CRM114-CacheID: sfid-20200910_070328_805051_70B2BC12 
+X-CRM114-Status: GOOD (  12.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,99 +78,83 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Erin Lo <erin.lo@mediatek.com>,
- open list <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
+Cc: Taniya Das <tdas@codeaurora.org>,
+ "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..."
+ <alsa-devel@alsa-project.org>, Banajit Goswami <bgoswami@codeaurora.org>,
+ Heiko Stuebner <heiko@sntech.de>, Takashi Iwai <tiwai@suse.com>,
+ Rohit kumar <rohitkr@codeaurora.org>, Cheng-yi Chiang <cychiang@chromium.org>,
+ Patrick Lai <plai@codeaurora.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Andy Gross <agross@kernel.org>, Dylan Reid <dgreid@chromium.org>,
+ Jaroslav Kysela <perex@perex.cz>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Tzung-Bi Shih <tzungbi@chromium.org>,
+ Stephan Gerhold <stephan@gerhold.net>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Eddie Huang <eddie.huang@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Doug Anderson <dianders@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Srini Kandagatla <srinivas.kandagatla@linaro.org>
+Content-Type: multipart/mixed; boundary="===============0283822021280007661=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
+--===============0283822021280007661==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="cNdxnHkX5QqsyA0e"
+Content-Disposition: inline
 
-On 09/09/2020 10:14, Pi-Hsun Shih wrote:
-> Add scp node to mt8183-kukui
-> 
-> Fixes: 0d5e41709f76 ("arm64: dts: mt8183: add scp node")
-> Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
 
-Applied to v5.9-next/dts64
+--cNdxnHkX5QqsyA0e
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-I squashed this fix with the first patch to maintain bisectability.
+On Wed, Sep 09, 2020 at 11:49:22AM -0600, Rob Herring wrote:
 
-Thanks!
+> I would assume a codec to be similar. The codec node (the alc5682
+> node) should have any jack related properties (or possibly implicitly
+> support it by default).
 
-> ---
-> 
-> Change since v1:
-> * Add Fixes tag.
-> 
-> ---
->   .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 30 +++++++++++++++++++
->   1 file changed, 30 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> index f0a070535b34..85f7c33ba446 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> @@ -90,6 +90,18 @@ pp3300_alw: regulator6 {
->   		regulator-max-microvolt = <3300000>;
->   	};
->   
-> +	reserved_memory: reserved-memory {
-> +		#address-cells = <2>;
-> +		#size-cells = <2>;
-> +		ranges;
-> +
-> +		scp_mem_reserved: scp_mem_region {
-> +			compatible = "shared-dma-pool";
-> +			reg = <0 0x50000000 0 0x2900000>;
-> +			no-map;
-> +		};
-> +	};
-> +
->   	max98357a: codec0 {
->   		compatible = "maxim,max98357a";
->   		sdmode-gpios = <&pio 175 0>;
-> @@ -524,6 +536,13 @@ pins_clk {
->   		};
->   	};
->   
-> +	scp_pins: scp {
-> +		pins_scp_uart {
-> +			pinmux = <PINMUX_GPIO110__FUNC_TP_URXD1_AO>,
-> +				 <PINMUX_GPIO112__FUNC_TP_UTXD1_AO>;
-> +		};
-> +	};
-> +
->   	spi0_pins: spi0 {
->   		pins_spi{
->   			pinmux = <PINMUX_GPIO85__FUNC_SPI0_MI>,
-> @@ -651,6 +670,17 @@ pins_wifi_wakeup {
->   	};
->   };
->   
-> +&scp {
-> +	status = "okay";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&scp_pins>;
-> +
-> +	cros_ec {
-> +		compatible = "google,cros-ec-rpmsg";
-> +		mtk,rpmsg-name = "cros-ec-rpmsg";
-> +	};
-> +};
-> +
->   &soc_data {
->   	status = "okay";
->   };
-> 
+This isn't always clear - some jack detection is implemented entirely by
+integrating simple components like GPIOs and ADCs or by integrating
+limited support in one device with some external components to get more
+features (like bolting an ADC on the side for button detect).  I would
+not expect to ever see a device with jack detection support that could
+just be unconditionally enabled, it will always require some board level
+wiring up to provide the connections required to function.
+
+--cNdxnHkX5QqsyA0e
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl9aB9EACgkQJNaLcl1U
+h9AQugf/fpoDHSobmOyj7a1nUYga227O6hgeON+vz+LB7a1JnX599O2oELAe1IGT
+xOV8DGUJpwdKUP1XWMHb/vMrtaS71E8m6Qsulc3s+Hdt6F38ObT5+z7zu0grr0rm
+wN1qRoyWHkPhFczDkvF95J2xO+lbs+5DbmfT/YVL+npWCtyYRVgKDwhmwWvqk/Sv
+5H7dVBlF1ivTTc4mAbG0FGGVlSL9hsg87i9b30jChkitX7BDRyvj41eVOdQs0Dpz
+ghIR+b6ZFI4iihIbFj8kBDL6y6cekl0Cs9YUA5YLsDxSjSJUidnCiuX1UK3NNOW2
+HiD76k32T+eskJVotOs6/DwV7UQS4A==
+=knP8
+-----END PGP SIGNATURE-----
+
+--cNdxnHkX5QqsyA0e--
+
+
+--===============0283822021280007661==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============0283822021280007661==--
+
