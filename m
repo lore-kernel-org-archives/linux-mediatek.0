@@ -2,91 +2,90 @@ Return-Path: <SRS0=yNvG=CT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EB8A1C43461
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 13:02:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A07E9C433E2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 13:12:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9F68B206D4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 13:02:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4BDF1208E4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 13:12:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2gQujwQc";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="PrxFIm+q"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9F68B206D4
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eGScCUPa";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="LxW9JQar"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4BDF1208E4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=HdwEILX9msB+Da+D7DAog2oQbGVmlt/HQ7E5uZPLkWo=; b=2gQujwQcrO9abQEOwlQ/hbK8y
-	3/Uv3rj0DZDmBzpD1DhioKSd23yl8+ErCLXY1obYF8Jmc1H/b85pkh426TdJcBVjOP/YBSBLajNqX
-	4HJKvNCzcaWUcb5G9JCZnElBLQASimLsQsPs/HmP/A97CosUaR+lx89Ql1xb3QX6XGFE7vNPN1Xko
-	jo3DqFUGex4JTqRUtAozw1a1ZndlhsOquLl2JBcSjqpKBUHuoGyeCaZZgAE+pq982YebrWkyWUrpj
-	ZjCqe08NsiPNzWKJX4PMzLIw+RNdRTKB7FeqWmA7gvaUTZTUvFJycWgfYDnAwK/9YrQU2SDQhGNWu
-	tgwaQXsPg==;
+	 bh=rbth9jvtDK4LI/LAgLYLbRxdTMH/iOGP7uPJZca5yAA=; b=eGScCUPacVn4XxgxFF+y0Apmf
+	qQVnJBHKwD7Y9DbQ+X5Jah6pePLuWR/2VlKCW2DJE9JoXK4pafEjdzzNySkyZy/1Zb/FcYtKps8i1
+	X7Qo8+4aCGCUMXc9bX0ZSBrfW+k31brSG8AEfqPe6t5stJYoBcokIhGvdEi7C14Hkw2oTiqjhiMjL
+	BigGkbuelXoCDX6WSl09wDXc4fIDOPKFMOST7CVAniBzrUusYrdbwahxzlMgKoJINj9Tri0Sw/zgI
+	u43iIrJUW2bMSDoV09InQ7kyX4PC8sB75qXfo4L2u30usnHm38YWR9BKWvFUwG5vDIPdjwuhHb/2g
+	cS0o3JLwQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGMDI-0000rd-ID; Thu, 10 Sep 2020 13:02:08 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1kGMNA-0004Eu-9Z; Thu, 10 Sep 2020 13:12:20 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGMCs-0000fW-9H
- for linux-mediatek@lists.infradead.org; Thu, 10 Sep 2020 13:01:48 +0000
-Received: by mail-wr1-x441.google.com with SMTP id s12so6580751wrw.11
- for <linux-mediatek@lists.infradead.org>; Thu, 10 Sep 2020 06:01:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=0sqmFv2eHfj0bGsGV6vzOEYNJHRHbaIrZSb1iBx+VKQ=;
- b=PrxFIm+qcOE/pECnf7g0zilV+8j8fE3iImaK+uxbPgjn59kMBEZfMkdg4ORS781Smo
- lYYl/sJgPqyCEaARQ2FuV8iZn4IkgLY8S5J6CGi9aDUeXATZp/+Q5eV6UQmP/miEogq8
- ZQA/3HYv8K1ArxRnxNiB8N1yKMM6IgKO2ISHyOYHMYCR+oNFpwDb3i5YVB3oglVAacGM
- bX+vw9VM/NL9SuURbUIO+L6oPO8ZswxA7VKZHmYZlSuBOjKPCPEjBIlNI6rP0ON+ouG6
- D1QMY56UgRlfD3tqTVBPpsM3gfnf6I9NrDQVdAPKC5OJ6h8I5FV2JRfm6Ieo0VWAY7Vd
- KB0A==
+ id 1kGMN7-0004DM-QW
+ for linux-mediatek@lists.infradead.org; Thu, 10 Sep 2020 13:12:18 +0000
+Received: by mail-wr1-x443.google.com with SMTP id a17so6650475wrn.6
+ for <linux-mediatek@lists.infradead.org>; Thu, 10 Sep 2020 06:12:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=Bq+U/roPoyR+PFGiWvFpI6j3vo6m28j+pYae81Oydrk=;
+ b=LxW9JQardfe6ovRqT818t4MTPCbypCYUo6YFqdrT244gD5a1S0M2FecEI0fJMIgCzr
+ Ar89gXm/TIGENRR2BL49FoHZo7vujerVPjd5M+e2s3HXP4Wo7+O2P4figtbf5/nmwDS/
+ Q2R1sft6rUH2GuRa5ewLVT4dLProx4KzE35qEa4E6nG7xI6czJpWrd4mlBvx4KBv1Ccz
+ A73yWuTvok4lQOj7F9He312DDKguKWTUTaFTwJ9WMRqZBv5IIXVbgFL3+SKSF4xaBQqF
+ 6f2aAKtqQ+uZhXhgjIwYfEadfGfIDAA1hYNVQFQSDpaEu0fH3OPF+Cxvx5kbZQoNIkpH
+ Yvmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=0sqmFv2eHfj0bGsGV6vzOEYNJHRHbaIrZSb1iBx+VKQ=;
- b=kbiusveJsxSHBLTuJeKPM3W3aZazH478TQEl3kdLoL/4J76ULEto8b3+5PngRem9ff
- 5GbhaiAk86CJGyzbqOE2KPqptK4ysLV601MfsPWqg8ZXw0roxKuVNoo1I69R8WV6Gt1D
- QtcQUL3UH0L6/jKdXmFlzwj2/yhIO+WQ7ZUaQf0UP8VQ52kPc53/GtKTiuIbYyyCaXFI
- TeNBAL6gUwGSuv71/NqSbcUSUfwRrShz2jx7la4Soc/siBeeJPYrrpY4Pr4eixRBqzC9
- M3BusTdNqmaJm1+iq11O7+64DNgMhHAd4kVRgnUwifpXYzTc9Awrj+sJRj+ibTSnj1WQ
- XXaA==
-X-Gm-Message-State: AOAM531xpZKcP+DA0HYXVwLpaOchXsmdLL2BYOcUvbNhKfjFrzcW0rA3
- OCaf/Dm3Su16YFxqlCFledYABQ==
-X-Google-Smtp-Source: ABdhPJyYLi78UG6+M+KyTBE9epJZAgjW7K+uFBmHRxFPQFLB+d//S0LjdkoG9ek90bxop5qFrF9GSg==
-X-Received: by 2002:adf:db43:: with SMTP id f3mr9538768wrj.219.1599742901335; 
- Thu, 10 Sep 2020 06:01:41 -0700 (PDT)
-Received: from alex-xps13.baylibre.local
- (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
- by smtp.gmail.com with ESMTPSA id y1sm9488269wru.87.2020.09.10.06.01.40
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=Bq+U/roPoyR+PFGiWvFpI6j3vo6m28j+pYae81Oydrk=;
+ b=FQiDIY/cqdty5RIYjmUFBW9z5fTus+18dBPj/nx+swCGNk2+VYjqOW6+rYQxpFGD+b
+ 9N5/FzIrdHZtDo9oU5Y+V0C0LwCwXODYePzspEoSHnzM9Ah8hMNuI+23WSzjsoEantY/
+ 7d36UAqCZ58GRklQ9amlJRsoOOH7lo2/SYQZIHhVsbH9eMj0LhXXLU0T7coGEyQVlzSh
+ vTQg4dcuHrYqeO9lArw+WJo7YXgzTWuy/MsyxNHifvFXc114XeuMvvvlNki03GIYZmgi
+ ZFCB55avJHAB0CKujrP34oFYrLshpljI595gl3Y8xGC1q16z9QSrJsfSwKLei5ZCYRs7
+ TF8Q==
+X-Gm-Message-State: AOAM5338h6G/P1T6Z4ewU6+Z4+l0K35UCaUzg5bo8gMu9Nuw24ad7f3W
+ W6mU/Wu6Q1KmHNb3qBJgd6JUgg==
+X-Google-Smtp-Source: ABdhPJx2Dvf8nFJMefE2zEyQsiA8oS3cus97b9p96If1Q7HdqZx1B5j3NrbyrLIFhtzFYQ1R++dhWQ==
+X-Received: by 2002:a5d:6301:: with SMTP id i1mr8482460wru.323.1599743535091; 
+ Thu, 10 Sep 2020 06:12:15 -0700 (PDT)
+Received: from holly.lan (cpc141214-aztw34-2-0-cust773.18-1.cable.virginm.net.
+ [86.9.19.6])
+ by smtp.gmail.com with ESMTPSA id j14sm3301883wmj.19.2020.09.10.06.12.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Sep 2020 06:01:40 -0700 (PDT)
-From: Alexandre Bailon <abailon@baylibre.com>
-To: ohad@wizery.com, bjorn.andersson@linaro.org, robh+dt@kernel.org,
- matthias.bgg@gmail.com, mathieu.poirier@linaro.org
-Subject: [PATCH v2 3/4] remoteproc: mtk_vpu_rproc: Add support of JTAG
-Date: Thu, 10 Sep 2020 15:01:47 +0200
-Message-Id: <20200910130148.8734-4-abailon@baylibre.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200910130148.8734-1-abailon@baylibre.com>
-References: <20200910130148.8734-1-abailon@baylibre.com>
+ Thu, 10 Sep 2020 06:12:14 -0700 (PDT)
+Date: Thu, 10 Sep 2020 14:12:12 +0100
+From: Daniel Thompson <daniel.thompson@linaro.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH RESEND v3 04/11] usb: xhci-rcar: convert to
+ readl_poll_timeout_atomic()
+Message-ID: <20200910131212.wm7zskxvcesl652c@holly.lan>
+References: <1599726112-4439-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1599726112-4439-4-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1599726112-4439-4-git-send-email-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200910_090142_360119_58CD4327 
-X-CRM114-Status: GOOD (  22.90  )
+X-CRM114-CacheID: sfid-20200910_091217_954619_E296A145 
+X-CRM114-Status: GOOD (  22.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,252 +97,135 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, stephane.leprovost@mediatek.com,
- linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
- gpain@baylibre.com, linux-mediatek@lists.infradead.org,
- Alexandre Bailon <abailon@baylibre.com>, linux-arm-kernel@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, Felipe Balbi <balbi@kernel.org>,
+ linux-usb@vger.kernel.org, Mathias Nyman <mathias.nyman@linux.intel.com>,
+ Arnd Bergmann <arnd@arndb.de>, Mathias Nyman <mathias.nyman@intel.com>,
+ Sumit Garg <sumit.garg@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Jann Horn <jannh@google.com>, Chuhong Yuan <hslester96@gmail.com>,
+ Douglas Anderson <dianders@chromium.org>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Saurav Girepunje <saurav.girepunje@gmail.com>, Jason Yan <yanaijie@huawei.com>,
+ linux-mediatek@lists.infradead.org,
+ "Eric W. Biederman" <ebiederm@xmission.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ Ben Dooks <ben.dooks@codethink.co.uk>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The DSP could be debugged using JTAG.
-The support of JTAG could enabled at build time and it could be enabled
-using debugfs.
+On Thu, Sep 10, 2020 at 04:21:45PM +0800, Chunfeng Yun wrote:
+> Use readl_poll_timeout_atomic() to simplify code
+> 
+> Cc: Mathias Nyman <mathias.nyman@linux.intel.com>
+> Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+> v2~v3: no changes
+> ---
+>  drivers/usb/host/xhci-rcar.c | 43 ++++++++++++-------------------------------
+>  1 file changed, 12 insertions(+), 31 deletions(-)
+> 
+> diff --git a/drivers/usb/host/xhci-rcar.c b/drivers/usb/host/xhci-rcar.c
+> index c1025d3..74f836f 100644
+> --- a/drivers/usb/host/xhci-rcar.c
+> +++ b/drivers/usb/host/xhci-rcar.c
+> @@ -6,6 +6,7 @@
+>   */
+>  
+>  #include <linux/firmware.h>
+> +#include <linux/iopoll.h>
+>  #include <linux/module.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/of.h>
+> @@ -127,8 +128,7 @@ static int xhci_rcar_download_firmware(struct usb_hcd *hcd)
+>  	void __iomem *regs = hcd->regs;
+>  	struct xhci_plat_priv *priv = hcd_to_xhci_priv(hcd);
+>  	const struct firmware *fw;
+> -	int retval, index, j, time;
+> -	int timeout = 10000;
+> +	int retval, index, j;
+>  	u32 data, val, temp;
+>  	u32 quirks = 0;
+>  	const struct soc_device_attribute *attr;
+> @@ -166,32 +166,19 @@ static int xhci_rcar_download_firmware(struct usb_hcd *hcd)
+>  		temp |= RCAR_USB3_DL_CTRL_FW_SET_DATA0;
+>  		writel(temp, regs + RCAR_USB3_DL_CTRL);
+>  
+> -		for (time = 0; time < timeout; time++) {
+> -			val = readl(regs + RCAR_USB3_DL_CTRL);
+> -			if ((val & RCAR_USB3_DL_CTRL_FW_SET_DATA0) == 0)
+> -				break;
+> -			udelay(1);
+> -		}
+> -		if (time == timeout) {
+> -			retval = -ETIMEDOUT;
+> +		retval = readl_poll_timeout_atomic(regs + RCAR_USB3_DL_CTRL,
+> +				val, !(val & RCAR_USB3_DL_CTRL_FW_SET_DATA0),
+> +				1, 10000);
+> +		if (retval < 0)
+>  			break;
+> -		}
+>  	}
+>  
+>  	temp = readl(regs + RCAR_USB3_DL_CTRL);
+>  	temp &= ~RCAR_USB3_DL_CTRL_ENABLE;
+>  	writel(temp, regs + RCAR_USB3_DL_CTRL);
+>  
+> -	for (time = 0; time < timeout; time++) {
+> -		val = readl(regs + RCAR_USB3_DL_CTRL);
+> -		if (val & RCAR_USB3_DL_CTRL_FW_SUCCESS) {
+> -			retval = 0;
+> -			break;
+> -		}
+> -		udelay(1);
+> -	}
+> -	if (time == timeout)
+> -		retval = -ETIMEDOUT;
+> +	retval = readl_poll_timeout_atomic((regs + RCAR_USB3_DL_CTRL),
+> +			val, (val & RCAR_USB3_DL_CTRL_FW_SUCCESS), 1, 10000);
 
-Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
----
- drivers/remoteproc/Kconfig   |   9 +++
- drivers/remoteproc/mtk_apu.c | 151 ++++++++++++++++++++++++++++++++++-
- 2 files changed, 159 insertions(+), 1 deletion(-)
+Directly assigning to retval at this point will clobber a previous
+-ETIMEDOUT error.
 
-diff --git a/drivers/remoteproc/Kconfig b/drivers/remoteproc/Kconfig
-index 4ebea57bf4c8..310462346bd8 100644
---- a/drivers/remoteproc/Kconfig
-+++ b/drivers/remoteproc/Kconfig
-@@ -61,6 +61,15 @@ config MTK_APU
- 
- 	  It's safe to say N here.
- 
-+config MTK_APU_JTAG
-+	bool "Enable support of JTAG"
-+	depends on MTK_APU
-+	help
-+	  Say y to enable support of JTAG.
-+	  By default, JTAG will remain disabled until it is enabled using
-+	  debugfs: remoteproc/remoteproc0/jtag. Write 1 to enable it and
-+	  0 to disable it.
-+
- config OMAP_REMOTEPROC
- 	tristate "OMAP remoteproc support"
- 	depends on ARCH_OMAP4 || SOC_OMAP5 || SOC_DRA7XX
-diff --git a/drivers/remoteproc/mtk_apu.c b/drivers/remoteproc/mtk_apu.c
-index 6d2f577cfde5..07157fdc24ba 100644
---- a/drivers/remoteproc/mtk_apu.c
-+++ b/drivers/remoteproc/mtk_apu.c
-@@ -5,6 +5,7 @@
- 
- #include <linux/bitops.h>
- #include <linux/clk.h>
-+#include <linux/debugfs.h>
- #include <linux/delay.h>
- #include <linux/highmem.h>
- #include <linux/interrupt.h>
-@@ -14,6 +15,7 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of_reserved_mem.h>
-+#include <linux/pinctrl/consumer.h>
- #include <linux/platform_device.h>
- #include <linux/remoteproc.h>
- 
-@@ -48,6 +50,11 @@
- #define CORE_DEFAULT1				(0x00000140)
- #define CORE_DEFAULT0_ARUSER_IDMA_USE_IOMMU	(0x10 << 0)
- #define CORE_DEFAULT0_AWUSER_IDMA_USE_IOMMU	(0x10 << 5)
-+#define CORE_DEFAULT2				(0x00000144)
-+#define CORE_DEFAULT2_DBG_EN			BIT(3)
-+#define CORE_DEFAULT2_NIDEN			BIT(2)
-+#define CORE_DEFAULT2_SPNIDEN			BIT(1)
-+#define CORE_DEFAULT2_SPIDEN			BIT(0)
- #define CORE_XTENSA_ALTRESETVEC			(0x000001F8)
- 
- struct mtk_apu_rproc {
-@@ -57,6 +64,13 @@ struct mtk_apu_rproc {
- 	void __iomem *base;
- 	int irq;
- 	struct clk_bulk_data clks[3];
-+
-+#ifdef CONFIG_MTK_APU_JTAG
-+	struct pinctrl *pinctrl;
-+	struct pinctrl_state *pinctrl_jtag;
-+	bool jtag_enabled;
-+	struct mutex jtag_mutex;
-+#endif
- };
- 
- static int mtk_apu_rproc_prepare(struct rproc *rproc)
-@@ -166,6 +180,137 @@ static irqreturn_t handle_event(int irq, void *data)
- 	return IRQ_HANDLED;
- }
- 
-+#ifdef CONFIG_MTK_APU_JTAG
-+
-+static int apu_enable_jtag(struct mtk_apu_rproc *apu_rproc)
-+{
-+	int ret = 0;
-+
-+	mutex_lock(&apu_rproc->jtag_mutex);
-+	if (apu_rproc->jtag_enabled) {
-+		ret = -EINVAL;
-+		goto err_mutex_unlock;
-+	}
-+
-+	writel(CORE_DEFAULT2_SPNIDEN | CORE_DEFAULT2_SPIDEN |
-+		CORE_DEFAULT2_NIDEN | CORE_DEFAULT2_DBG_EN,
-+		apu_rproc->base + CORE_DEFAULT2);
-+
-+	apu_rproc->jtag_enabled = 1;
-+
-+err_mutex_unlock:
-+	mutex_unlock(&apu_rproc->jtag_mutex);
-+
-+	return ret;
-+}
-+
-+static int apu_disable_jtag(struct mtk_apu_rproc *apu_rproc)
-+{
-+	int ret = 0;
-+
-+	mutex_lock(&apu_rproc->jtag_mutex);
-+	if (!apu_rproc->jtag_enabled) {
-+		ret = -EINVAL;
-+		goto err_mutex_unlock;
-+	}
-+
-+	writel(0, apu_rproc->base + CORE_DEFAULT2);
-+
-+	apu_rproc->jtag_enabled = 0;
-+
-+err_mutex_unlock:
-+	mutex_unlock(&apu_rproc->jtag_mutex);
-+
-+	return ret;
-+}
-+
-+static ssize_t rproc_jtag_read(struct file *filp, char __user *userbuf,
-+			       size_t count, loff_t *ppos)
-+{
-+	struct rproc *rproc = filp->private_data;
-+	struct mtk_apu_rproc *apu_rproc = (struct mtk_apu_rproc *)rproc->priv;
-+	char *buf = apu_rproc->jtag_enabled ? "enabled\n" : "disabled\n";
-+
-+	return simple_read_from_buffer(userbuf, count, ppos, buf, strlen(buf));
-+}
-+
-+static ssize_t rproc_jtag_write(struct file *filp, const char __user *user_buf,
-+				size_t count, loff_t *ppos)
-+{
-+	struct rproc *rproc = filp->private_data;
-+	struct mtk_apu_rproc *apu_rproc = (struct mtk_apu_rproc *)rproc->priv;
-+	char buf[10];
-+	int ret;
-+
-+	if (count < 1 || count > sizeof(buf))
-+		return -EINVAL;
-+
-+	ret = copy_from_user(buf, user_buf, count);
-+	if (ret)
-+		return -EFAULT;
-+
-+	/* remove end of line */
-+	if (buf[count - 1] == '\n')
-+		buf[count - 1] = '\0';
-+
-+	if (!strncmp(buf, "enabled", count))
-+		ret = apu_enable_jtag(apu_rproc);
-+	else if (!strncmp(buf, "disabled", count))
-+		ret = apu_disable_jtag(apu_rproc);
-+	else
-+		return -EINVAL;
-+
-+	return ret ? ret : count;
-+}
-+
-+static const struct file_operations rproc_jtag_ops = {
-+	.read = rproc_jtag_read,
-+	.write = rproc_jtag_write,
-+	.open = simple_open,
-+};
-+
-+static int apu_jtag_probe(struct mtk_apu_rproc *apu_rproc)
-+{
-+	int ret;
-+
-+	if (!apu_rproc->rproc->dbg_dir)
-+		return -ENODEV;
-+
-+	apu_rproc->pinctrl = devm_pinctrl_get(apu_rproc->dev);
-+	if (IS_ERR(apu_rproc->pinctrl)) {
-+		dev_warn(apu_rproc->dev, "Failed to find JTAG pinctrl\n");
-+		return PTR_ERR(apu_rproc->pinctrl);
-+	}
-+
-+	apu_rproc->pinctrl_jtag = pinctrl_lookup_state(apu_rproc->pinctrl,
-+						       "jtag");
-+	if (IS_ERR(apu_rproc->pinctrl_jtag))
-+		return PTR_ERR(apu_rproc->pinctrl_jtag);
-+
-+	ret = pinctrl_select_state(apu_rproc->pinctrl,
-+				   apu_rproc->pinctrl_jtag);
-+	if (ret < 0)
-+		return ret;
-+
-+	mutex_init(&apu_rproc->jtag_mutex);
-+
-+	debugfs_create_file("jtag", 0600, apu_rproc->rproc->dbg_dir,
-+			    apu_rproc->rproc, &rproc_jtag_ops);
-+
-+	return 0;
-+}
-+#else
-+static int apu_jtag_probe(struct mtk_apu_rproc *apu_rproc)
-+{
-+	return 0;
-+}
-+
-+static int apu_disable_jtag(struct mtk_apu_rproc *apu_rproc)
-+{
-+	return 0;
-+}
-+#endif /* CONFIG_MTK_APU_JTAG */
-+
- static int mtk_apu_rproc_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-@@ -242,6 +387,10 @@ static int mtk_apu_rproc_probe(struct platform_device *pdev)
- 		goto free_mem;
- 	}
- 
-+	ret = apu_jtag_probe(apu_rproc);
-+	if (ret)
-+		dev_warn(dev, "Failed to configure jtag\n");
-+
- 	return 0;
- 
- free_mem:
-@@ -259,7 +408,7 @@ static int mtk_apu_rproc_remove(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 
- 	disable_irq(apu_rproc->irq);
--
-+	apu_disable_jtag(apu_rproc);
- 	rproc_del(rproc);
- 	of_reserved_mem_device_release(dev);
- 	rproc_free(rproc);
--- 
-2.26.2
+In other words if there is a timeout waiting for FW_SET_DATA0, but not for
+DW_SUCCESS, then we will return the wrong return value.
 
+
+Daniel.
+
+
+>  
+>  	release_firmware(fw);
+>  
+> @@ -200,18 +187,12 @@ static int xhci_rcar_download_firmware(struct usb_hcd *hcd)
+>  
+>  static bool xhci_rcar_wait_for_pll_active(struct usb_hcd *hcd)
+>  {
+> -	int timeout = 1000;
+> +	int retval;
+>  	u32 val, mask = RCAR_USB3_AXH_STA_PLL_ACTIVE_MASK;
+>  
+> -	while (timeout > 0) {
+> -		val = readl(hcd->regs + RCAR_USB3_AXH_STA);
+> -		if ((val & mask) == mask)
+> -			return true;
+> -		udelay(1);
+> -		timeout--;
+> -	}
+> -
+> -	return false;
+> +	retval = readl_poll_timeout_atomic(hcd->regs + RCAR_USB3_AXH_STA,
+> +			val, ((val & mask) == mask), 1, 1000);
+> +	return !!retval;
+
+This function returns a bool so !! is either wrong or redundant... I
+think in this case it is wrong and should be a single ! .
+
+
+Daniel.
 
 _______________________________________________
 Linux-mediatek mailing list
