@@ -2,23 +2,23 @@ Return-Path: <SRS0=yNvG=CT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A5F16C43461
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 13:35:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 61A9AC43461
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 13:41:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 337E22087C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 13:35:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0FD5B20809
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2020 13:41:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="n5owbY3M";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=tcd-ie.20150623.gappssmtp.com header.i=@tcd-ie.20150623.gappssmtp.com header.b="YqA5PLut"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 337E22087C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=tcd.ie
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yT6d64Av";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Ox24dyt6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0FD5B20809
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,74 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=eEdq6hVXUtm+QBB3okiXPkQXGC/6IFDvZ1znnJPcl40=; b=n5owbY3MT5WbZNYa46+9Ow/SS
-	BW0IAqltp36oPOJYzCrIeL5oh01SuE0ZAdshW5PnwvSdOrc8qcGZxvPbq52Mh5qXBh384IFZHwg9a
-	veYtOj2XRzp3Eij0Cpxve4k36syVe4PFDL9RBr9g6jrDz67gY5cNuOTUMkmBMOyaRGlUZSntmECq/
-	Ynr2aSKFtghXyCPun/4nnygaM7ey4qYrLuGsc365xMWzPb3zh6jwV22luqjaRwFXU/wIl7CuUFuik
-	lh73yDkKBlUuFP3x8LHKzGJufpwRq0YtcYQ1dwL/yOrBmwZqWkwO/2PyF1x5OhvbecceWRjh84ntZ
-	adhH9QEVQ==;
+	 bh=PbrBIYpU1SlLqiCQSQkF2LA0Evg4N9lcDYAK5TNFlek=; b=yT6d64AvjAqRklmizo9+0QfOt
+	jS0Awv4xdAchm6ufIo2OP3bkLZB+v4IUBctF3Ua9sS1paT56FnjffRyPhG8d0z63vf0RbMKJ3gWIr
+	xaDtnD+8vaUxVM9VU01y9XkuWHUHoJumFUI+TXmGQAeJGlSq8To6zQyEl5FnxuC93pQJ51clUog04
+	k9wCeQRYTJ2XwwLhA+HrPDTuT9gYATtJtgL8CJCXqNoO64u/GUIEmAaffG3gKC4RYldckzv3CYlEX
+	7t3Dhx/dKMvyChNbPWRyN5EtxfKLzlKCR6r5uohUEAMWfkQCRi0FNVl97+11GBPnGgIi9ZlUMw1Kj
+	VZumejyMw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGMj1-0007ub-U4; Thu, 10 Sep 2020 13:34:56 +0000
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
+	id 1kGMpR-0000dU-P3; Thu, 10 Sep 2020 13:41:33 +0000
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGMix-0007r4-26
- for linux-mediatek@lists.infradead.org; Thu, 10 Sep 2020 13:34:54 +0000
-Received: by mail-io1-xd43.google.com with SMTP id r25so7123826ioj.0
- for <linux-mediatek@lists.infradead.org>; Thu, 10 Sep 2020 06:34:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=tcd-ie.20150623.gappssmtp.com; s=20150623;
+ id 1kGMpM-0000bN-1p
+ for linux-mediatek@lists.infradead.org; Thu, 10 Sep 2020 13:41:29 +0000
+Received: by mail-io1-xd41.google.com with SMTP id b6so7075024iof.6
+ for <linux-mediatek@lists.infradead.org>; Thu, 10 Sep 2020 06:41:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=h8Tpj5wYSQjiK+TAJfFO0Tf9jiEY5yGG/m2aEP5Z4pw=;
- b=YqA5PLut0xGMj0S2JsZ1nqoWnAI87qW2iB6rBuyzlNr/i8p2GIELK1QX+lKWUsTwzK
- J2dSARVPeG4IwzzuA8pE1P+5OVAa2eHFRKGaWb7NjIZv2LfVgNFdgO/O5efipKLRnyRj
- 59Ivydb0yd96322f4OP7eAyli9gq1bJJqNWwr7UQp7WOJw13CiHGa50UV4LiwaciCZ54
- rPVab7PqDAVXapxusuMo+bEb8iCDOteeaNoCp92DVDajkbd2ofZmMkGtoG3Skprhh9uL
- /U8Q1jK9UaeuY5X3L97dgHkQYmRrGLYCXPbuv3z5NyjgpChQ4n/amkDeY/PGFcsIM7Fy
- bAqg==
+ :cc; bh=uTlbqLOdrEt7UPiiXLx6yUBn8+Vw9g0DGn2N0VRJHZQ=;
+ b=Ox24dyt6nVjtGDGN1CPYXDGOo/2oq3U8X/r9mzO/S9lH3U3T8OSsyYjG9fjzR+qgBD
+ 5ugaO811qVghi5tQ9nmTEt34eIyJfKTARh95uAu2ms6P0BKuV2yCJqhhTgTpckA3wY5V
+ 5owBQNpU8wLydaLeTRaUOOfcne0j1r0lFOIQc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=h8Tpj5wYSQjiK+TAJfFO0Tf9jiEY5yGG/m2aEP5Z4pw=;
- b=dj0hNCF+IyM8F6zeYy7JCbBKYT3gq9t6g5/tZoCHBxwry3Kykmtrjv7eCNAyKLhIqe
- mWHg1AhiOqykrEpZ9NImulOjbP6MJ1Xtn0IB4tNt0sCO8KaMFywP8CVHU+MtqKPXpn2Z
- xXQ6hHV9y7qjtNY9aLjSfErD7gWZthB0JmF/jGGOfR78ZHNLv27FB2EPZU/X1To41jIb
- LTFjptG9zqOheC7ydQEXmyoujh0sC99+HhSLDEaUOPAyXttn2AbVe2dvuXDOMHyxixqS
- g6eQ+rycNaTUEVHBDkp621qmXJNFokDYz6xzuoKX/FcPCNWDuK4az/bGxsFBN2R7JzS6
- 73Cw==
-X-Gm-Message-State: AOAM530txlnaUmH/SlqcHkNap5IywZgAeC0vDMMSmz/KGsb/tNY8clyi
- NyZg4W8Lf0/XHIpZUzvUUwYGwVFUjJJqh/BBDfLuNQ==
-X-Google-Smtp-Source: ABdhPJwu6upi5knKzGwyXFCyYTEZCPzreSot+419n5zt9A65oGcyQgjDJ6G718nc8PHKFashtF6vKw91+qlabsYr8+c=
-X-Received: by 2002:a02:b199:: with SMTP id t25mr8370395jah.124.1599744889300; 
- Thu, 10 Sep 2020 06:34:49 -0700 (PDT)
+ bh=uTlbqLOdrEt7UPiiXLx6yUBn8+Vw9g0DGn2N0VRJHZQ=;
+ b=gLNcg9gVGJJMqetH+xoYT5B3dv+zBX+hFilKt4QyT/+nEtpCwyYFGNODyVghTlSj65
+ hEYjJsZ2K5kP/C1spKTINNc6KwwJtTIwDEsfJFqNkFx9yFWESOmDjL4miG3SEtArNfZK
+ BISSP6GZPhIIyuoJGBhz3pWo/l1jgg9mfpW8sTPjiDtKzeqfwaNE1LQxmcRyu5q8z3rx
+ WwAofubMUJPpN9SrdrTZiI4iC+zQYZdfK+r4bnNaxRh1Rx0ElXSFkLk5lYkqsKS0L1Qp
+ Bl45uvcc0zRJrd+MUjsgejY28XEmnzXTysx4jaca/6D8+v/aGNOuejXgF+fGAcOysI4x
+ O6gw==
+X-Gm-Message-State: AOAM530mieOpSo8PzUkGnj96ClT6Z3sWw9cT9Sjn6BNm3x17bj5lJcZ4
+ I3wxMDNd8vkLqUJgAVe5owM8tlbbDZRyJlQw9MpuFw==
+X-Google-Smtp-Source: ABdhPJx7rimxRz7QDx2lJr2uFaq/N7i1d6SG+0JOvjQrq9+OiBQgm/jvkZqZfSOI7yKji0+UoevlSl35L019lILyyVY=
+X-Received: by 2002:a5e:930d:: with SMTP id k13mr7562170iom.40.1599745286349; 
+ Thu, 10 Sep 2020 06:41:26 -0700 (PDT)
 MIME-Version: 1.0
-References: <20191221150402.13868-1-murphyt7@tcd.ie>
- <465815ae-9292-f37a-59b9-03949cb68460@deltatee.com>
- <20200529124523.GA11817@infradead.org>
- <CGME20200529190523eucas1p2c086133e707257c0cdc002f502d4f51d@eucas1p2.samsung.com>
- <33137cfb-603c-86e8-1091-f36117ecfaf3@deltatee.com>
- <ef2150d5-7b6a-df25-c10d-e43316fe7812@samsung.com>
- <b9140772-0370-a858-578c-af503a06d8e9@deltatee.com>
- <CALQxJuutRaeX89k2o4ffTKYRMizmMu0XbRnzpFuSSrkQR02jKg@mail.gmail.com>
- <766525c3-4da9-6db7-cd90-fb4b82cd8083@deltatee.com>
- <60a82319-cbee-4cd1-0d5e-3c407cc51330@linux.intel.com>
- <e598fb31-ef7a-c2ee-8a54-bf62d50c480c@deltatee.com>
- <b27cae1f-07ff-bef2-f125-a5f0d968016d@linux.intel.com>
- <CALQxJut5c=cWdi+SVkN3JnbkhPSYmLkOyRUhduL-UJ9gyKn9Ow@mail.gmail.com>
- <7106602a-9964-851e-9c4e-d8acf4033b89@linux.intel.com>
- <ea24e077-5aa6-dd8e-69a7-d186b606703f@linux.intel.com>
- <CALQxJus4prs0T6G9Z4bw5BDgwmkaiynBcoknLsYEY45SNZ6Ukg@mail.gmail.com>
-In-Reply-To: <CALQxJus4prs0T6G9Z4bw5BDgwmkaiynBcoknLsYEY45SNZ6Ukg@mail.gmail.com>
-From: Tom Murphy <murphyt7@tcd.ie>
-Date: Thu, 10 Sep 2020 14:34:38 +0100
-Message-ID: <CALQxJuuU4vpx=5Dg07epSWws-fshC6PJnrPWu-ir5nadgXspKw@mail.gmail.com>
-Subject: Re: [Intel-gfx] [PATCH 0/8] Convert the intel iommu driver to the
- dma-iommu api
-To: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
+References: <20200910084304.3429494-1-hsinyi@chromium.org>
+ <9ca1b7c0-9fec-27b7-ae08-c00613c3004c@gmail.com>
+In-Reply-To: <9ca1b7c0-9fec-27b7-ae08-c00613c3004c@gmail.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Thu, 10 Sep 2020 21:40:59 +0800
+Message-ID: <CAJMQK-g+pPR6ZrSJHPPcR9Tqw_4QjuMyUqML-RoPOjfnYZ=YGA@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] arm64: dts: mt8173: Set uart to mmio32 iotype
+To: Matthias Brugger <matthias.bgg@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200910_093451_172645_26550A8A 
-X-CRM114-Status: GOOD (  37.64  )
+X-CRM114-CacheID: sfid-20200910_094128_099535_B9ADCFE7 
+X-CRM114-Status: GOOD (  19.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,149 +86,99 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, David Airlie <airlied@linux.ie>,
- dri-devel@lists.freedesktop.org, Bjorn Andersson <bjorn.andersson@linaro.org>,
- linux-tegra@vger.kernel.org, Julien Grall <julien.grall@arm.com>,
- Will Deacon <will@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- linux-samsung-soc@vger.kernel.org, Marc Zyngier <maz@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
- Christoph Hellwig <hch@infradead.org>, linux-rockchip@lists.infradead.org,
- Andy Gross <agross@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- virtualization@lists.linux-foundation.org,
- Gerald Schaefer <gerald.schaefer@de.ibm.com>,
- Logan Gunthorpe <logang@deltatee.com>, David Woodhouse <dwmw2@infradead.org>,
- Cornelia Huck <cohuck@redhat.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- iommu@lists.linux-foundation.org, Kukjin Kim <kgene@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>
+Cc: Devicetree List <devicetree@vger.kernel.org>,
+ lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Eddie Huang <eddie.huang@mediatek.com>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 10 Sep 2020 at 14:33, Tom Murphy <murphyt7@tcd.ie> wrote:
+On Thu, Sep 10, 2020 at 6:25 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
 >
-> On Wed, 9 Sep 2020 at 13:56, Tvrtko Ursulin
-> <tvrtko.ursulin@linux.intel.com> wrote:
+> Hi,
+>
+> On 10/09/2020 10:43, Hsin-Yi Wang wrote:
+> > Set uart iotype to mmio32 to make earlycon work with stdout-path.
 > >
+> > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt8173.dtsi | 8 ++++++++
+> >   1 file changed, 8 insertions(+)
 > >
-> > On 09/09/2020 10:16, Tvrtko Ursulin wrote:
-> > > On 08/09/2020 23:43, Tom Murphy wrote:
-> > >> On Tue, 8 Sep 2020 at 16:56, Tvrtko Ursulin
-> > >> <tvrtko.ursulin@linux.intel.com> wrote:
-> > >>> On 08/09/2020 16:44, Logan Gunthorpe wrote:
-> > >>>> On 2020-09-08 9:28 a.m., Tvrtko Ursulin wrote:
-> > >>>>>>
-> > >>>>>> diff --git a/drivers/gpu/drm/i915/i915_scatterlist.h
-> > >>>>>> b/drivers/gpu/drm/i915/i915
-> > >>>>>> index b7b59328cb76..9367ac801f0c 100644
-> > >>>>>> --- a/drivers/gpu/drm/i915/i915_scatterlist.h
-> > >>>>>> +++ b/drivers/gpu/drm/i915/i915_scatterlist.h
-> > >>>>>> @@ -27,13 +27,19 @@ static __always_inline struct sgt_iter {
-> > >>>>>>     } __sgt_iter(struct scatterlist *sgl, bool dma) {
-> > >>>>>>            struct sgt_iter s = { .sgp = sgl };
-> > >>>>>>
-> > >>>>>> +       if (sgl && !sg_dma_len(s.sgp))
-> > >>>>>
-> > >>>>> I'd extend the condition to be, just to be safe:
-> > >>>>>       if (dma && sgl && !sg_dma_len(s.sgp))
-> > >>>>>
-> > >>>>
-> > >>>> Right, good catch, that's definitely necessary.
-> > >>>>
-> > >>>>>> +               s.sgp = NULL;
-> > >>>>>> +
-> > >>>>>>            if (s.sgp) {
-> > >>>>>>                    s.max = s.curr = s.sgp->offset;
-> > >>>>>> -               s.max += s.sgp->length;
-> > >>>>>> -               if (dma)
-> > >>>>>> +
-> > >>>>>> +               if (dma) {
-> > >>>>>> +                       s.max += sg_dma_len(s.sgp);
-> > >>>>>>                            s.dma = sg_dma_address(s.sgp);
-> > >>>>>> -               else
-> > >>>>>> +               } else {
-> > >>>>>> +                       s.max += s.sgp->length;
-> > >>>>>>                            s.pfn = page_to_pfn(sg_page(s.sgp));
-> > >>>>>> +               }
-> > >>>>>
-> > >>>>> Otherwise has this been tested or alternatively how to test it?
-> > >>>>> (How to
-> > >>>>> repro the issue.)
-> > >>>>
-> > >>>> It has not been tested. To test it, you need Tom's patch set without
-> > >>>> the
-> > >>>> last "DO NOT MERGE" patch:
-> > >>>>
-> > >>>> https://lkml.kernel.org/lkml/20200907070035.GA25114@infradead.org/T/
-> > >>>
-> > >>> Tom, do you have a branch somewhere I could pull from? (Just being lazy
-> > >>> about downloading a bunch of messages from the archives.)
-> > >>
-> > >> I don't unfortunately. I'm working locally with poor internet.
-> > >>
-> > >>>
-> > >>> What GPU is in your Lenovo x1 carbon 5th generation and what
-> > >>> graphical/desktop setup I need to repro?
-> > >>
-> > >>
-> > >> Is this enough info?:
-> > >>
-> > >> $ lspci -vnn | grep VGA -A 12
-> > >> 00:02.0 VGA compatible controller [0300]: Intel Corporation HD
-> > >> Graphics 620 [8086:5916] (rev 02) (prog-if 00 [VGA controller])
-> > >>      Subsystem: Lenovo ThinkPad X1 Carbon 5th Gen [17aa:224f]
-> > >>      Flags: bus master, fast devsel, latency 0, IRQ 148
-> > >>      Memory at eb000000 (64-bit, non-prefetchable) [size=16M]
-> > >>      Memory at 60000000 (64-bit, prefetchable) [size=256M]
-> > >>      I/O ports at e000 [size=64]
-> > >>      [virtual] Expansion ROM at 000c0000 [disabled] [size=128K]
-> > >>      Capabilities: [40] Vendor Specific Information: Len=0c <?>
-> > >>      Capabilities: [70] Express Root Complex Integrated Endpoint, MSI 00
-> > >>      Capabilities: [ac] MSI: Enable+ Count=1/1 Maskable- 64bit-
-> > >>      Capabilities: [d0] Power Management version 2
-> > >>      Capabilities: [100] Process Address Space ID (PASID)
-> > >>      Capabilities: [200] Address Translation Service (ATS)
-> > >
-> > > Works for a start. What about the steps to repro? Any desktop
-> > > environment and it is just visual corruption, no hangs/stalls or such?
-> > >
-> > > I've submitted a series consisting of what I understood are the patches
-> > > needed to repro the issue to our automated CI here:
-> > >
-> > > https://patchwork.freedesktop.org/series/81489/
-> > >
-> > > So will see if it will catch something, or more targeted testing will be
-> > > required. Hopefully it does trip over in which case I can add the patch
-> > > suggested by Logan on top and see if that fixes it. Or I'll need to
-> > > write a new test case.
-> > >
-> > > If you could glance over my series to check I identified the patches
-> > > correctly it would be appreciated.
-> >
-> > Our CI was more than capable at catching the breakage so I've copied you
-> > on a patch (https://patchwork.freedesktop.org/series/81497/) which has a
-> > good potential to fix this. (Or improve the robustness of our sg walks,
-> > depends how you look at it.)
-> >
-> > Would you be able to test it in your environment by any chance? If it
-> > works I understand it unblocks your IOMMU work, right?
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> > index 5e046f9d48ce9..ca6ea71f5f435 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> > @@ -613,6 +613,8 @@ uart0: serial@11002000 {
+> >                       interrupts = <GIC_SPI 83 IRQ_TYPE_LEVEL_LOW>;
+> >                       clocks = <&pericfg CLK_PERI_UART0_SEL>, <&pericfg CLK_PERI_UART0>;
+> >                       clock-names = "baud", "bus";
+> > +                     reg-io-width = <4>;
+>
+> Why do we need that, we have
+> device->port.iotype = UPIO_MEM32;
+> in early_mtk8250_setup(). That should do the job already.
+>
+>
 
-And yes this does unblock the iommu work
+But if we don't change in dts, we would see
+[    0.000000] earlycon: mtk8250 at MMIO 0x0000000011002000 (options '115200n8')
+instead of
+[    0.000000] earlycon: mtk8250 at MMIO32 0x0000000011002000 (options
+'115200n8')
 
+Perhaps we should move the pr_info part in earlycon_init() after
+match->setup(). Since setup may change iotype. What do you think?
+
+
+> > +                     reg-shift = <2>;
 >
-> I tested your latest patch set ([PATCH 1/2] drm/i915: Fix DMA mapped
-> scatterlist walks) and it fixes the issue. great work!
+> Can't we just add
+> device->port.regshift = 2;
+> to early_mtk8250_setup()? I think that would be a cleaner solution. As the
+> serial device is the same for all SoCs, I don't expect any regression here.
 >
+> CCing Eddie to correct me, if I'm wrong :)
+>
+> Regards,
+> Matthias
+>
+> >                       status = "disabled";
+> >               };
 > >
-> > Regards,
+> > @@ -623,6 +625,8 @@ uart1: serial@11003000 {
+> >                       interrupts = <GIC_SPI 84 IRQ_TYPE_LEVEL_LOW>;
+> >                       clocks = <&pericfg CLK_PERI_UART1_SEL>, <&pericfg CLK_PERI_UART1>;
+> >                       clock-names = "baud", "bus";
+> > +                     reg-io-width = <4>;
+> > +                     reg-shift = <2>;
+> >                       status = "disabled";
+> >               };
 > >
-> > Tvrtko
+> > @@ -633,6 +637,8 @@ uart2: serial@11004000 {
+> >                       interrupts = <GIC_SPI 85 IRQ_TYPE_LEVEL_LOW>;
+> >                       clocks = <&pericfg CLK_PERI_UART2_SEL>, <&pericfg CLK_PERI_UART2>;
+> >                       clock-names = "baud", "bus";
+> > +                     reg-io-width = <4>;
+> > +                     reg-shift = <2>;
+> >                       status = "disabled";
+> >               };
+> >
+> > @@ -643,6 +649,8 @@ uart3: serial@11005000 {
+> >                       interrupts = <GIC_SPI 86 IRQ_TYPE_LEVEL_LOW>;
+> >                       clocks = <&pericfg CLK_PERI_UART3_SEL>, <&pericfg CLK_PERI_UART3>;
+> >                       clock-names = "baud", "bus";
+> > +                     reg-io-width = <4>;
+> > +                     reg-shift = <2>;
+> >                       status = "disabled";
+> >               };
+> >
+> >
 
 _______________________________________________
 Linux-mediatek mailing list
