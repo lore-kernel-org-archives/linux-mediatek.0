@@ -2,21 +2,21 @@ Return-Path: <SRS0=cvih=CU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8D638C43461
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 14:26:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7FD7AC43461
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 14:33:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0EAA52073E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 14:26:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F3112222B9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 14:33:48 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="c8yy4/w8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0EAA52073E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KMYejEB4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F3112222B9
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,42 +25,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=iFHdM3t+M5A41tytiribTleCzwu+rWtwgaBHAX/lI18=; b=c8yy4/w8z+B99WjdJlcrn8ZvP
-	gjF8jJEzfgOOm2VJDblpagtVgE2URjkX8COlYXpfkJOKuFo9ylafqoSnY1EClUa+sOJYOaPhepIV7
-	1dh7f3LkSANWXmB0UEMfgN7OQQuCgaDpyEqgQ6eTANO2Qf8+mD0SuuK6PbxeaWwn2igjjX1pCr3Wy
-	IwCl/0nmYoDmgrYN8FsdB5Fd3MiLeya5k7Rx9zZSe75hm4vzWZDczl0qjcwoCoKQcG4R1LVWsJMDM
-	R93AlSqjRlrCBnqA6iNJoBsDZtGt3zEr8PN/iELH5CmSfciasVEE6DVJqvwhpuB2WI69JY+a1TLGg
-	eXWyUWD8Q==;
+	 bh=7rg8xGUw9LtB84tMqnpF4gXeKWTzBQXOwRX0Q0Hcs8c=; b=KMYejEB4ftaqku9Rlt1FYCBbR
+	80aWRAfTs+K94Io6Gn0AusQnHIf1UlSktJHkzT3aSAvUalBBRKWOME60xuCjHCLhCegtWQRSUAfKB
+	JY78MKiSg2B0pmoGjyvIk7N2uhf2WwXHseLDeVxLqzgwNIpDb60dEitmM6r6n6ANXNs/icBJsxWvt
+	8UR4f47NwFbXPpqkRf7ibsh7aZXkFrLvRXktB5EQFez8jPI0DlDxhu8V1yWKId7V/QTnFzS8XDx48
+	vQnRR/kJi6RDWxpYzKoAXAl6yQQZOb7uAHULn0zBYNCUgTm8QvI2HS7o/xu7cgqYtF2ojL2bjqmSK
+	3F264vp5w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGk0h-0000hr-6d; Fri, 11 Sep 2020 14:26:43 +0000
+	id 1kGk7P-0002wE-Ab; Fri, 11 Sep 2020 14:33:39 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGk0f-0000h8-UG
- for linux-mediatek@lists.infradead.org; Fri, 11 Sep 2020 14:26:42 +0000
+ id 1kGk7N-0002un-Kp
+ for linux-mediatek@lists.infradead.org; Fri, 11 Sep 2020 14:33:38 +0000
 Received: from lupine.hi.pengutronix.de
  ([2001:67c:670:100:3ad5:47ff:feaf:1a17] helo=lupine)
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <p.zabel@pengutronix.de>)
- id 1kGk0a-0003r9-8y; Fri, 11 Sep 2020 16:26:36 +0200
+ id 1kGk7E-0004h8-OX; Fri, 11 Sep 2020 16:33:28 +0200
 Received: from pza by lupine with local (Exim 4.92)
  (envelope-from <p.zabel@pengutronix.de>)
- id 1kGk0Y-0003Gl-Ik; Fri, 11 Sep 2020 16:26:34 +0200
-Message-ID: <dae4ab91ec20e72963f2658efca4874a35dd739e.camel@pengutronix.de>
-Subject: Re: [v4,3/4] reset-controller: ti: introduce a new reset handler
+ id 1kGk77-0003hr-RU; Fri, 11 Sep 2020 16:33:21 +0200
+Message-ID: <1ac4ba40a031169b968e3084c132579db921033c.camel@pengutronix.de>
+Subject: Re: [v2,2/3] PCI: mediatek: Add new generation controller support
 From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Crystal Guo <crystal.guo@mediatek.com>, Suman Anna <s-anna@ti.com>
-Date: Fri, 11 Sep 2020 16:26:34 +0200
-In-Reply-To: <1599804422.14806.27.camel@mhfsdcap03>
-References: <20200817030324.5690-1-crystal.guo@mediatek.com>
- <20200817030324.5690-4-crystal.guo@mediatek.com>
- <3a5decee-5f31-e27d-a120-1f835241a87c@ti.com>
- <1599620279.14806.18.camel@mhfsdcap03>
- <096362e9-dee8-4e7a-2518-47328068c2fd@ti.com>
- <1599792140.14806.22.camel@mhfsdcap03>
- <9d72aaef-49fe-ebb6-215d-05ad3ab27af4@ti.com>
- <1599804422.14806.27.camel@mhfsdcap03>
+To: Jianjun Wang <jianjun.wang@mediatek.com>, Bjorn Helgaas
+ <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Lorenzo Pieralisi
+ <lorenzo.pieralisi@arm.com>, Ryder Lee <ryder.lee@mediatek.com>
+Date: Fri, 11 Sep 2020 16:33:21 +0200
+In-Reply-To: <20200910034536.30860-3-jianjun.wang@mediatek.com>
+References: <20200910034536.30860-1-jianjun.wang@mediatek.com>
+ <20200910034536.30860-3-jianjun.wang@mediatek.com>
 User-Agent: Evolution 3.30.5-1.1 
 MIME-Version: 1.0
 X-SA-Exim-Connect-IP: 2001:67c:670:100:3ad5:47ff:feaf:1a17
@@ -69,8 +65,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200911_102641_978526_96EA1DC0 
-X-CRM114-Status: GOOD (  10.49  )
+X-CRM114-CacheID: sfid-20200911_103337_685970_64DF6202 
+X-CRM114-Status: GOOD (  16.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,56 +78,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Yong Liang =?UTF-8?Q?=28=E6=A2=81=E5=8B=87=29?= <Yong.Liang@mediatek.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- Seiya Wang =?UTF-8?Q?=28=E7=8E=8B=E8=BF=BA=E5=90=9B=29?=
- <seiya.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Fan Chen =?UTF-8?Q?=28=E9=99=B3=E5=87=A1=29?= <fan.chen@mediatek.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?=
- <Yingjoe.Chen@mediatek.com>,
- Stanley Chu =?UTF-8?Q?=28=E6=9C=B1=E5=8E=9F=E9=99=9E=29?=
- <stanley.chu@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: devicetree@vger.kernel.org,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Sj Huang <sj.huang@mediatek.com>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ davem@davemloft.net, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Crystal,
+Hi Jianjun,
 
-On Fri, 2020-09-11 at 14:07 +0800, Crystal Guo wrote:
+On Thu, 2020-09-10 at 11:45 +0800, Jianjun Wang wrote:
+> MediaTek's PCIe host controller has three generation HWs, the new
+> generation HW is an individual bridge, it supoorts Gen3 speed and
+> up to 256 MSI interrupt numbers for multi-function devices.
+> 
+> Add support for new Gen3 controller which can be found on MT8192.
+> 
+> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  drivers/pci/controller/Kconfig              |   14 +
+>  drivers/pci/controller/Makefile             |    1 +
+>  drivers/pci/controller/pcie-mediatek-gen3.c | 1076 +++++++++++++++++++
+>  3 files changed, 1091 insertions(+)
+>  create mode 100644 drivers/pci/controller/pcie-mediatek-gen3.c
+> 
 [...]
-> Should I add the SoC-specific data as follows?
-> This may also modify the ti original code, is it OK?
-> 
-> +       data->reset_data = of_device_get_match_data(&pdev->dev);
+> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+> new file mode 100644
+> index 000000000000..f8c8bdf88d33
+> --- /dev/null
+> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+[...]
+> +static int mtk_pcie_power_up(struct mtk_pcie_port *port)
+> +{
+> +	struct device *dev = port->dev;
+> +	int err;
 > +
-> +       list = of_get_property(np, data->reset_data->reset_bits, &size);
-> 
-> +static const struct common_reset_data ti_reset_data = {
-> +       .reset_op_available = false,
-> +       .reset_bits = "ti, reset-bits",
-                            ^
-That space doesn't belong there.
+> +	port->phy_reset = devm_reset_control_get_optional(dev, "phy-rst");
 
-> +};
-> +
-> +static const struct common_reset_data mediatek_reset_data = {
-> +       .reset_op_available = true,
-> +       .reset_bits = "mediatek, reset-bits",
-> +};
+Please use devm_reset_control_get_optional_exclusive() instead.
 
-I understand Robs comments as meaning "ti,reset-bits" should have been
-called "reset-bits" in the first place, and you shouldn't repeat adding
-the vendor prefix, as that is implied by the compatible. So this should
-probably be just "reset-bits".
+> +	if (PTR_ERR(port->phy_reset) == -EPROBE_DEFER)
+> +		return PTR_ERR(port->phy_reset);
 
-Otherwise this looks like it should work.
+This should be
+
+	if (IS_ERR(port->phy_reset))
+		return PTR_ERR(port->phy_reset);
+
+there is no reason to continue if this throws -ENOMEM, for example.
 
 regards
 Philipp
