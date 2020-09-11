@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A0F9C433E2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 02:35:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B3D73C43461
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 02:50:00 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E8EC020732
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 02:35:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5ED582078B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 02:50:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BErSgmuY";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="j/FKkf4w"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E8EC020732
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Mn1KAH82";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="lON8JTY2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5ED582078B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,56 +26,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gkbGNvPvvpD8/iCITng2Ze4iKnLo407fdHwczt0AGH0=; b=BErSgmuY8436gKnjDf+nmB+VK
-	ddRPsjUz1qcM2wbYVZR0N99mNtCnapufPwfdI6wWIRhlNb/0F+L62Yi/17zPPa5lOqoRkeb6UhTAu
-	fIQzQhgy1B8iwXcEzfvVoddslLmHwNLb2CajslKyPyqt9Vmdw9d9I+wDjbVvKjrM6m/pDmc1xSKxN
-	m3Q8aEy7xucULhxurVN4vwaKmrhNytdj7HKC454uE20jSErxvecHUOp0ffgbm5+c+xntOmdixhwSE
-	Ka89ynka/poMNo9Y+rE/xVGUqDr0wvnp8WwlT9QeWgrzJRn30bAFK3K8jxrl1ZWYFa95wcDttPHX5
-	j8i4bUUzA==;
+	 bh=sjGWPhN73R7dYrgf4nYdmy/lrcEttu3cwkG1+7PepjI=; b=Mn1KAH82iAYjVAk594ful2bRM
+	JYIF6b9NclJrH1DySHfzl5NagOQhDR62CqP3JhqqlDDxjCpX4Wlg2LzqiOUdfoL3aCfWb9Z8KlDF+
+	jfzECmiGUXkRZC7pnd4WIX2k8LY2/KR3WN+iEf0FKUWRZRhUx/6lT+SJVbY9Ozu7FhPkdjOfZ6N3y
+	Q5rq7qBciHe+UvLXsxbcKQclX5+HtLbm9UVESr9oD/3DO87RhUiiBhEtynkTyvW4YULwdKD8nKkg7
+	HPEHB42VRQyk6ri5fs0Q9cnYwE2ZeSDh5tOBMnf8PXKKdLeWBBgYIG0sSgR8ZfSpSyvbUGMEh/BOl
+	CzDGWcoLw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGYuS-0006i8-O0; Fri, 11 Sep 2020 02:35:32 +0000
+	id 1kGZ8H-0000f0-UH; Fri, 11 Sep 2020 02:49:50 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGYuR-0006he-0Q; Fri, 11 Sep 2020 02:35:31 +0000
-X-UUID: 8e5f035b24dd4c36bee7fb785fc39d1e-20200910
+ id 1kGZ8A-0000az-Rq; Fri, 11 Sep 2020 02:49:44 +0000
+X-UUID: d25347540e194a3fb8d43ee803d5da84-20200910
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=7MYSoZ5QxzUzH8hLs5rwGOWaWX5IAIFzofz6EFN77nw=; 
- b=j/FKkf4wivoA5ucnYnCKfcuyalX+xfATSkFEQx70M9RwXojUDxWJTWlipjpQqMTsUVWsXnJIPjjwJ55s17SgVITAzdSz2586XRYc79M5A8kV+J8mH3G7M2Mh7xiF8OfweP1aXW8mPJIrNTMC3tbRyTrMdgCi3hWbPeol/Ol6mpM=;
-X-UUID: 8e5f035b24dd4c36bee7fb785fc39d1e-20200910
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
+ bh=iAPpf/+IfeWNrnv4nT68Qa9EWJFrb9ALmYG700BS52w=; 
+ b=lON8JTY2G3UpcWRMvKMJ5usICJPOsp6ElqmPDZ9LTYhU/UF8GkWsuz4zbdUDiLYfnWOh+cUC1HGyRCwGR308cViVb+/qC7nzhgPZl7EBqLbVR4dR4Wpi4e+rIB32FcZI1YYqby0Ky0ENOOP0PkvT8Xops2KMf9CjZSaMhzpgA9c=;
+X-UUID: d25347540e194a3fb8d43ee803d5da84-20200910
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <crystal.guo@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 627694989; Thu, 10 Sep 2020 18:35:22 -0800
-Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 10 Sep 2020 19:35:20 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N2.mediatek.inc
- (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 11 Sep 2020 10:35:16 +0800
+ with ESMTP id 1773258839; Thu, 10 Sep 2020 18:44:21 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 10 Sep 2020 19:44:19 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 11 Sep 2020 10:44:13 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 11 Sep 2020 10:35:13 +0800
-Message-ID: <1599791601.24609.5.camel@mhfsdcap03>
-Subject: Re: [PATCH RESEND v3 04/11] usb: xhci-rcar: convert to
- readl_poll_timeout_atomic()
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Daniel Thompson <daniel.thompson@linaro.org>, Yoshihiro Shimoda
- <yoshihiro.shimoda.uh@renesas.com>
-Date: Fri, 11 Sep 2020 10:33:21 +0800
-In-Reply-To: <20200910131212.wm7zskxvcesl652c@holly.lan>
-References: <1599726112-4439-1-git-send-email-chunfeng.yun@mediatek.com>
- <1599726112-4439-4-git-send-email-chunfeng.yun@mediatek.com>
- <20200910131212.wm7zskxvcesl652c@holly.lan>
+ Transport; Fri, 11 Sep 2020 10:44:12 +0800
+Message-ID: <1599792140.14806.22.camel@mhfsdcap03>
+Subject: Re: [v4,3/4] reset-controller: ti: introduce a new reset handler
+From: Crystal Guo <crystal.guo@mediatek.com>
+To: Suman Anna <s-anna@ti.com>, "p.zabel@pengutronix.de"
+ <p.zabel@pengutronix.de>, "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+Date: Fri, 11 Sep 2020 10:42:20 +0800
+In-Reply-To: <096362e9-dee8-4e7a-2518-47328068c2fd@ti.com>
+References: <20200817030324.5690-1-crystal.guo@mediatek.com>
+ <20200817030324.5690-4-crystal.guo@mediatek.com>
+ <3a5decee-5f31-e27d-a120-1f835241a87c@ti.com>
+ <1599620279.14806.18.camel@mhfsdcap03>
+ <096362e9-dee8-4e7a-2518-47328068c2fd@ti.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 0656D636ED552509600E962FFCC7659B588E3C6D24BA40A07694E3B2815115EF2000:8
+X-TM-SNTS-SMTP: 8500C517F22303B208341FCB4C1D5E487D29F35B29BB79172D43D9C13348FC582000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200910_223531_212976_CD6D1685 
-X-CRM114-Status: GOOD (  25.61  )
+X-CRM114-CacheID: sfid-20200910_224943_173940_F48662A6 
+X-CRM114-Status: GOOD (  33.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,144 +89,172 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arm-kernel@lists.infradead.org, Felipe Balbi <balbi@kernel.org>,
- linux-usb@vger.kernel.org, Mathias Nyman <mathias.nyman@linux.intel.com>,
- Arnd Bergmann <arnd@arndb.de>, Mathias Nyman <mathias.nyman@intel.com>,
- Sumit Garg <sumit.garg@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Jann Horn <jannh@google.com>, Chuhong Yuan <hslester96@gmail.com>,
- Douglas Anderson <dianders@chromium.org>, "Gustavo A. R.
- Silva" <gustavoars@kernel.org>, Saurav Girepunje <saurav.girepunje@gmail.com>,
- Jason Yan <yanaijie@huawei.com>, linux-mediatek@lists.infradead.org,
- "Eric W. Biederman" <ebiederm@xmission.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
- Ben Dooks <ben.dooks@codethink.co.uk>, linux-kernel@vger.kernel.org
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Yong
+ Liang =?UTF-8?Q?=28=E6=A2=81=E5=8B=87=29?= <Yong.Liang@mediatek.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ Seiya Wang =?UTF-8?Q?=28=E7=8E=8B=E8=BF=BA=E5=90=9B=29?=
+ <seiya.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Fan Chen =?UTF-8?Q?=28=E9=99=B3=E5=87=A1=29?= <fan.chen@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?=
+ <Yingjoe.Chen@mediatek.com>,
+ Stanley Chu =?UTF-8?Q?=28=E6=9C=B1=E5=8E=9F=E9=99=9E=29?=
+ <stanley.chu@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2020-09-10 at 14:12 +0100, Daniel Thompson wrote:
-> On Thu, Sep 10, 2020 at 04:21:45PM +0800, Chunfeng Yun wrote:
-> > Use readl_poll_timeout_atomic() to simplify code
+On Wed, 2020-09-09 at 23:39 +0800, Suman Anna wrote:
+> On 9/8/20 9:57 PM, Crystal Guo wrote:
+> > On Thu, 2020-09-03 at 07:40 +0800, Suman Anna wrote:
+> >> Hi Crystal,
+> >>
+> >> On 8/16/20 10:03 PM, Crystal Guo wrote:
+> >>> Introduce ti_syscon_reset() to integrate assert and deassert together.
+> >>> If some modules need do serialized assert and deassert operations
+> >>> to reset itself, reset_control_reset can be called for convenience.
+> >>
+> >> There are multiple changes in this same patch. I think you should split this
+> >> functionality away from the change for the regmap_update_bits() to
+> >> regmap_write_bits(), similar to what you have done in your v2 Patch 4.
+> >>
 > > 
-> > Cc: Mathias Nyman <mathias.nyman@linux.intel.com>
-> > Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> > v2~v3: no changes
-> > ---
-> >  drivers/usb/host/xhci-rcar.c | 43 ++++++++++++-------------------------------
-> >  1 file changed, 12 insertions(+), 31 deletions(-)
+> > Thanks for your suggestion.
+> > I will split this patch in the next version.
 > > 
-> > diff --git a/drivers/usb/host/xhci-rcar.c b/drivers/usb/host/xhci-rcar.c
-> > index c1025d3..74f836f 100644
-> > --- a/drivers/usb/host/xhci-rcar.c
-> > +++ b/drivers/usb/host/xhci-rcar.c
-> > @@ -6,6 +6,7 @@
-> >   */
-> >  
-> >  #include <linux/firmware.h>
-> > +#include <linux/iopoll.h>
-> >  #include <linux/module.h>
-> >  #include <linux/platform_device.h>
-> >  #include <linux/of.h>
-> > @@ -127,8 +128,7 @@ static int xhci_rcar_download_firmware(struct usb_hcd *hcd)
-> >  	void __iomem *regs = hcd->regs;
-> >  	struct xhci_plat_priv *priv = hcd_to_xhci_priv(hcd);
-> >  	const struct firmware *fw;
-> > -	int retval, index, j, time;
-> > -	int timeout = 10000;
-> > +	int retval, index, j;
-> >  	u32 data, val, temp;
-> >  	u32 quirks = 0;
-> >  	const struct soc_device_attribute *attr;
-> > @@ -166,32 +166,19 @@ static int xhci_rcar_download_firmware(struct usb_hcd *hcd)
-> >  		temp |= RCAR_USB3_DL_CTRL_FW_SET_DATA0;
-> >  		writel(temp, regs + RCAR_USB3_DL_CTRL);
-> >  
-> > -		for (time = 0; time < timeout; time++) {
-> > -			val = readl(regs + RCAR_USB3_DL_CTRL);
-> > -			if ((val & RCAR_USB3_DL_CTRL_FW_SET_DATA0) == 0)
-> > -				break;
-> > -			udelay(1);
-> > -		}
-> > -		if (time == timeout) {
-> > -			retval = -ETIMEDOUT;
-> > +		retval = readl_poll_timeout_atomic(regs + RCAR_USB3_DL_CTRL,
-> > +				val, !(val & RCAR_USB3_DL_CTRL_FW_SET_DATA0),
-> > +				1, 10000);
-> > +		if (retval < 0)
-> >  			break;
-> > -		}
-> >  	}
-> >  
-> >  	temp = readl(regs + RCAR_USB3_DL_CTRL);
-> >  	temp &= ~RCAR_USB3_DL_CTRL_ENABLE;
-> >  	writel(temp, regs + RCAR_USB3_DL_CTRL);
-> >  
-> > -	for (time = 0; time < timeout; time++) {
-> > -		val = readl(regs + RCAR_USB3_DL_CTRL);
-> > -		if (val & RCAR_USB3_DL_CTRL_FW_SUCCESS) {
-> > -			retval = 0;
-> > -			break;
-> > -		}
-> > -		udelay(1);
-> > -	}
-> > -	if (time == timeout)
-> > -		retval = -ETIMEDOUT;
-> > +	retval = readl_poll_timeout_atomic((regs + RCAR_USB3_DL_CTRL),
-> > +			val, (val & RCAR_USB3_DL_CTRL_FW_SUCCESS), 1, 10000);
+> >>>
+> >>> Such as reset-qcom-aoss.c, it integrates assert and deassert together
+> >>> by 'reset' method. MTK Socs also need this method to perform reset.
+> >>>
+> >>> Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
+> >>> ---
+> >>>  drivers/reset/reset-ti-syscon.c | 26 ++++++++++++++++++++++++--
+> >>>  1 file changed, 24 insertions(+), 2 deletions(-)
+> >>>
+> >>> diff --git a/drivers/reset/reset-ti-syscon.c b/drivers/reset/reset-ti-syscon.c
+> >>> index a2635c21db7f..08289342f9af 100644
+> >>> --- a/drivers/reset/reset-ti-syscon.c
+> >>> +++ b/drivers/reset/reset-ti-syscon.c
+> >>> @@ -15,6 +15,7 @@
+> >>>   * GNU General Public License for more details.
+> >>>   */
+> >>>  
+> >>> +#include <linux/delay.h>
+> >>>  #include <linux/mfd/syscon.h>
+> >>>  #include <linux/module.h>
+> >>>  #include <linux/of.h>
+> >>> @@ -56,6 +57,7 @@ struct ti_syscon_reset_data {
+> >>>  	struct regmap *regmap;
+> >>>  	struct ti_syscon_reset_control *controls;
+> >>>  	unsigned int nr_controls;
+> >>> +	unsigned int reset_duration_us;
+> >>>  };
+> >>>  
+> >>>  #define to_ti_syscon_reset_data(rcdev)	\
+> >>> @@ -89,7 +91,7 @@ static int ti_syscon_reset_assert(struct reset_controller_dev *rcdev,
+> >>>  	mask = BIT(control->assert_bit);
+> >>>  	value = (control->flags & ASSERT_SET) ? mask : 0x0;
+> >>>  
+> >>> -	return regmap_update_bits(data->regmap, control->assert_offset, mask, value);
+> >>> +	return regmap_write_bits(data->regmap, control->assert_offset, mask, value);
+> >>>  }
+> >>>  
+> >>>  /**
+> >>> @@ -120,7 +122,7 @@ static int ti_syscon_reset_deassert(struct reset_controller_dev *rcdev,
+> >>>  	mask = BIT(control->deassert_bit);
+> >>>  	value = (control->flags & DEASSERT_SET) ? mask : 0x0;
+> >>>  
+> >>> -	return regmap_update_bits(data->regmap, control->deassert_offset, mask, value);
+> >>> +	return regmap_write_bits(data->regmap, control->deassert_offset, mask, value);
+> >>>  }
+> >>>  
+> >>>  /**
+> >>> @@ -158,9 +160,26 @@ static int ti_syscon_reset_status(struct reset_controller_dev *rcdev,
+> >>>  		!(control->flags & STATUS_SET);
+> >>>  }
+> >>>  
+> >>> +static int ti_syscon_reset(struct reset_controller_dev *rcdev,
+> >>> +				  unsigned long id)
+> >>> +{
+> >>> +	struct ti_syscon_reset_data *data = to_ti_syscon_reset_data(rcdev);
+> >>> +	int ret;
+> >>> +
+> >>> +	ret = ti_syscon_reset_assert(rcdev, id);
+> >>> +	if (ret)
+> >>> +		return ret;
+> >>> +
+> >>> +	if (data->reset_duration_us)
+> >>> +		usleep_range(data->reset_duration_us, data->reset_duration_us * 2);
+> >>> +
+> >>> +	return ti_syscon_reset_deassert(rcdev, id);
+> >>
+> >> I echo Philipp's comments [1] from your original v1 series about this. We don't
+> >> need a property to distinguish this, but you could add a flag using match data
+> >> and Mediatek compatible, and use that within this function, or optionally set
+> >> this ops based on compatible (whatever is preferred by Philipp).
+> >>
+> >> regards
+> >> Suman
+> >>
+> >> [1] https://patchwork.kernel.org/comment/23519193/
+> >>
+> > Hi Suman, Philipp
+> > 
+> > Which method would you recommend more?
+> > 1. like v2 patch, but assign the flag "data->assert_deassert_together"
+> > directly (maybe rename "assert_deassert_together" to
+> > "reset_op_available")
+> > 
+> > 2. use Mediatek compatible to decide the reset handler available or not.
 > 
-> Directly assigning to retval at this point will clobber a previous
-> -ETIMEDOUT error.
+> I would go with this option. Anyway, I think you might have to add the reset SoC
+> data as well, based on Rob's comment on the binding.
 > 
-> In other words if there is a timeout waiting for FW_SET_DATA0, but not for
-> DW_SUCCESS, then we will return the wrong return value.
-Yes, agree with you, but seems I keep its original logic unchanged.
+> regards
+> Suman
 
-Hi Yoshihiro,
 
-  What do think about Daniel's suggestion? should I fix it up?
+Thanks for your suggestions
+I will add the following changes in the next version, 
+please correct me if there is any misunderstanding.
+1). revert ti-syscon-reset.txt add a new mediatek reset binding doc.
+2). split the patch [v4,3/4] with the change for the
+regmap_update_bits() to regmap_write_bits() and the change to integrate
+assert and deassert together.
+3). add the reset SoC data, which contains the flag "reset_op_available"
+to decide the reset handler available or not.
+4). separate the dts patch from this patch sets
 
+> > 
+> > Thanks
+> > Crystal
+> > 
+> >>> +}
+> >>> +
+> >>>  static const struct reset_control_ops ti_syscon_reset_ops = {
+> >>>  	.assert		= ti_syscon_reset_assert,
+> >>>  	.deassert	= ti_syscon_reset_deassert,
+> >>> +	.reset		= ti_syscon_reset,
+> >>>  	.status		= ti_syscon_reset_status,
+> >>>  };
+> >>>  
+> >>> @@ -204,6 +223,9 @@ static int ti_syscon_reset_probe(struct platform_device *pdev)
+> >>>  		controls[i].flags = be32_to_cpup(list++);
+> >>>  	}
+> >>>  
+> >>> +	of_property_read_u32(pdev->dev.of_node,	"reset-duration-us",
+> >>> +				&data->reset_duration_us);
+> >>> +
+> >>>  	data->rcdev.ops = &ti_syscon_reset_ops;
+> >>>  	data->rcdev.owner = THIS_MODULE;
+> >>>  	data->rcdev.of_node = np;
+> >>>
+> >>
+> > 
 > 
-> 
-> Daniel.
-> 
-> 
-> >  
-> >  	release_firmware(fw);
-> >  
-> > @@ -200,18 +187,12 @@ static int xhci_rcar_download_firmware(struct usb_hcd *hcd)
-> >  
-> >  static bool xhci_rcar_wait_for_pll_active(struct usb_hcd *hcd)
-> >  {
-> > -	int timeout = 1000;
-> > +	int retval;
-> >  	u32 val, mask = RCAR_USB3_AXH_STA_PLL_ACTIVE_MASK;
-> >  
-> > -	while (timeout > 0) {
-> > -		val = readl(hcd->regs + RCAR_USB3_AXH_STA);
-> > -		if ((val & mask) == mask)
-> > -			return true;
-> > -		udelay(1);
-> > -		timeout--;
-> > -	}
-> > -
-> > -	return false;
-> > +	retval = readl_poll_timeout_atomic(hcd->regs + RCAR_USB3_AXH_STA,
-> > +			val, ((val & mask) == mask), 1, 1000);
-> > +	return !!retval;
-> 
-> This function returns a bool so !! is either wrong or redundant... I
-> think in this case it is wrong and should be a single ! .
-Yes, will fix it
-
-Thanks a lot
-> 
-> 
-> Daniel.
 
 _______________________________________________
 Linux-mediatek mailing list
