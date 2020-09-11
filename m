@@ -2,81 +2,84 @@ Return-Path: <SRS0=cvih=CU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2575AC2BC11
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 09:39:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4816FC433E2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 09:39:57 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 71FFD221EB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 09:39:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DE23921D92
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 09:39:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oshtPZNp";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="RrPviiA1"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 71FFD221EB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HsD6uvKl";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="SsrdoWR2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DE23921D92
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=fxx/NUS7gmAmEYrcPiHsKC9/cMF0HWfpoRIHgD2tEK4=; b=oshtPZNpcEaOxqulzcI4MGtNj
-	G3VPYsJlYbkWc7xgNXLv0cNf6IHaemWRw5GggffCXC/4/brCR6qvUB+7O//CNmCs3Gcm7D0xTXNhy
-	bUXuUf71lVAOcvY+2A9e4xNMQq9X7GN5DDYGAXuMNvZHjv+4coYedEtRdt3DYGSyeff6m1sSf0rG4
-	Q2kVQFAvztVBizafgNXQlSATuZhEEQqC3B+R91U/z3Z5qVRkcUDhR0M0C/4SPK5IE4VNAeUqc8gHW
-	IKd3Jx+ZrBKDizDmd9Xfj7MCeLTVK0i6MmRpNH7b7SludOzmPquAmjq1UQxe9qUKONfEVjFQtbPJ7
-	AwXdsDd3A==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=PZXUR/qvRpc9BvJ7myAhCbyg0LCkYnEU3aSrtCGPRwQ=; b=HsD6uvKl6mN9RunSODpU4vd698
+	JTv1y1ESV2TtrAFGDCbzd9/Gj6o8a5g9REZO02fRYF7feiC+HHpQO8btRWVWbHBnX/FEGlRA3U5iQ
+	Kg89XBEu2CjIaIQmFAD4LyXZ+oZIyhZe7buAXqkR0xxX7DV6onVMIJLv6s51NxKjx8iYpSFZPDx4k
+	Q2gQ0JhGnyJ55XxUIHX3MkifkQitiRY4l6fi/ySE+mCKuquJra2IHbSQXe9DWGPmvnISSqJyn/uQ9
+	Geo0yuemY+/Bl8ZyzbUsdV7vYzM6lIdDRYoq5DoP0b8taE+HL1jJEBRoWu0M04t3YhUqICDWQ4Iih
+	bTnYH9ZA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGfWp-0004Rj-GX; Fri, 11 Sep 2020 09:39:35 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kGfWy-0004VJ-7c; Fri, 11 Sep 2020 09:39:44 +0000
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGfWm-0004Pl-Vc; Fri, 11 Sep 2020 09:39:34 +0000
-X-UUID: 4cad5fe6cc3b4322b47b197f1a531f95-20200911
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=9Aq51FOERNaMNDKcW34Pu/zomNrhFzlYyLddBNePP8k=; 
- b=RrPviiA1n+MOMvMaMxY9I3sOn0TTRqs+F3uW7kwj19JVoca3aOo5DyJFnzYg8ISWubie8YiETntxksi5o4ivDdF+0FQP4eVBKfnZQqDMOZygE1PG9b1MQdkCYMwatT3S5fTw8RJev/SFqlxjtTeiI8DsdQtfCaVXBBqpI+GCxCA=;
-X-UUID: 4cad5fe6cc3b4322b47b197f1a531f95-20200911
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1828146505; Fri, 11 Sep 2020 01:39:24 -0800
-Received: from MTKMBS32DR.mediatek.inc (172.27.6.104) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Sep 2020 02:29:21 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32DR.mediatek.inc
- (172.27.6.104) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 11 Sep 2020 17:29:17 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 11 Sep 2020 17:29:17 +0800
-Message-ID: <1599816442.29909.10.camel@mhfsdcap03>
-Subject: Re: [PATCH RESEND v3 04/11] usb: xhci-rcar: convert to
- readl_poll_timeout_atomic()
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Daniel Thompson <daniel.thompson@linaro.org>
-Date: Fri, 11 Sep 2020 17:27:22 +0800
-In-Reply-To: <20200911083421.g5cidlnwfiksggvk@holly.lan>
-References: <1599726112-4439-1-git-send-email-chunfeng.yun@mediatek.com>
- <1599726112-4439-4-git-send-email-chunfeng.yun@mediatek.com>
- <20200910131212.wm7zskxvcesl652c@holly.lan>
- <1599791601.24609.5.camel@mhfsdcap03>
- <20200911083421.g5cidlnwfiksggvk@holly.lan>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kGfWu-0004Se-L8
+ for linux-mediatek@lists.infradead.org; Fri, 11 Sep 2020 09:39:42 +0000
+Received: by mail-pj1-x1043.google.com with SMTP id b17so1439060pji.1
+ for <linux-mediatek@lists.infradead.org>; Fri, 11 Sep 2020 02:39:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rOvkQbHcqdEEW6imcqo512VuspBp3Sjb9vemZ7YeXi8=;
+ b=SsrdoWR2xJuerEVchmJHs77EJDNTQwhJJ3BSD7dyycqxfJRgwEXXeZLoufITYzxwdf
+ KubMausaC28CReuRTTMNmIOWAOttM0CgeQmKXPHCPJI389V06KhtJx8/5NJYJa9b7l4m
+ 5HXcxWMAP0vD3X1sXf+tvQ2B3z34erifCxIDc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rOvkQbHcqdEEW6imcqo512VuspBp3Sjb9vemZ7YeXi8=;
+ b=HoDnzeUDbzeIWHBNwFdK5l+Xlh6A6t2PL5A8lvYeEtw4cQOIfmEKo4U0ZDCmWS/KzQ
+ XfGiGXUZFwivxZpYdoUjcW+KWqI9vf6ZHfFG8ZNHst89T6kOiawvARYixwF4K6kjkJDs
+ WTNAgRtlZ7WVhw2+GUrCPco2WD95sx8A1FpHqjUq6EaI6K+OHcCTlmC3zzRqMXvSAnE3
+ j3WuG5MkW7Y/64qudl+2dup1HG3OdM+1u+NarlaF/TUFCJUGgP+tcodynpTc69yFbDQk
+ JbZWjt4wbtdJnawIuTwg92unXLJu9M7pVehIAk+9yXYwvHBDF+jB+nIXhegktqDay3Ij
+ bsnQ==
+X-Gm-Message-State: AOAM531JP0LJZp5e5ZTHoYCZ3hDyVWMgrge4d8iVTUdetN3/oXESpDh0
+ IKjFwMVllcs7iq6pbjdkLrKM7g==
+X-Google-Smtp-Source: ABdhPJwmX6yZWnZDIEx+xL+1xsLKAJsdIGcvlBqJnTBWOdo/WI0JBf49uctm86uYeq7xvEW3CgA8Qg==
+X-Received: by 2002:a17:90a:2ec8:: with SMTP id
+ h8mr1461759pjs.173.1599817175625; 
+ Fri, 11 Sep 2020 02:39:35 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:1a60:24ff:fe89:3e93])
+ by smtp.gmail.com with ESMTPSA id v1sm1433465pjh.16.2020.09.11.02.39.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 11 Sep 2020 02:39:34 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: linux-serial@vger.kernel.org
+Subject: [PATCH 1/2] tty: serial: print earlycon info after match->setup
+Date: Fri, 11 Sep 2020 17:39:26 +0800
+Message-Id: <20200911093927.608024-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.28.0.618.gf4bc123cb7-goog
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: D9BF7DBA819C0CCA0CE8880A27C525BF3E313AFA5C9FA45D086E4A91339CB2422000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200911_053933_250514_94BC79C1 
-X-CRM114-Status: GOOD (  28.29  )
+X-CRM114-CacheID: sfid-20200911_053940_763150_900612B9 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,118 +91,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arm-kernel@lists.infradead.org, Felipe Balbi <balbi@kernel.org>,
- linux-usb@vger.kernel.org, Mathias Nyman <mathias.nyman@linux.intel.com>,
- Arnd Bergmann <arnd@arndb.de>, Mathias Nyman <mathias.nyman@intel.com>,
- Sumit Garg <sumit.garg@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Jann Horn <jannh@google.com>, Chuhong Yuan <hslester96@gmail.com>,
- Douglas Anderson <dianders@chromium.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Saurav Girepunje <saurav.girepunje@gmail.com>, Jason Yan <yanaijie@huawei.com>,
- linux-mediatek@lists.infradead.org,
- "Eric W. Biederman" <ebiederm@xmission.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
- Ben Dooks <ben.dooks@codethink.co.uk>, linux-kernel@vger.kernel.org
+Cc: Changqi Hu <changqi.hu@mediatek.com>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Serge Semin <Sergey.Semin@baikalelectronics.ru>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ linux-mediatek@lists.infradead.org, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Jiri Slaby <jirislaby@kernel.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-09-11 at 09:34 +0100, Daniel Thompson wrote:
-> On Fri, Sep 11, 2020 at 10:33:21AM +0800, Chunfeng Yun wrote:
-> > On Thu, 2020-09-10 at 14:12 +0100, Daniel Thompson wrote:
-> > > On Thu, Sep 10, 2020 at 04:21:45PM +0800, Chunfeng Yun wrote:
-> > > > Use readl_poll_timeout_atomic() to simplify code
-> > > > 
-> > > > Cc: Mathias Nyman <mathias.nyman@linux.intel.com>
-> > > > Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
-> > > > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > > > ---
-> > > > v2~v3: no changes
-> > > > ---
-> > > >  drivers/usb/host/xhci-rcar.c | 43 ++++++++++++-------------------------------
-> > > >  1 file changed, 12 insertions(+), 31 deletions(-)
-> > > > 
-> > > > diff --git a/drivers/usb/host/xhci-rcar.c b/drivers/usb/host/xhci-rcar.c
-> > > > index c1025d3..74f836f 100644
-> > > > --- a/drivers/usb/host/xhci-rcar.c
-> > > > +++ b/drivers/usb/host/xhci-rcar.c
-> > > > @@ -6,6 +6,7 @@
-> > > >   */
-> > > >  
-> > > >  #include <linux/firmware.h>
-> > > > +#include <linux/iopoll.h>
-> > > >  #include <linux/module.h>
-> > > >  #include <linux/platform_device.h>
-> > > >  #include <linux/of.h>
-> > > > @@ -127,8 +128,7 @@ static int xhci_rcar_download_firmware(struct usb_hcd *hcd)
-> > > >  	void __iomem *regs = hcd->regs;
-> > > >  	struct xhci_plat_priv *priv = hcd_to_xhci_priv(hcd);
-> > > >  	const struct firmware *fw;
-> > > > -	int retval, index, j, time;
-> > > > -	int timeout = 10000;
-> > > > +	int retval, index, j;
-> > > >  	u32 data, val, temp;
-> > > >  	u32 quirks = 0;
-> > > >  	const struct soc_device_attribute *attr;
-> > > > @@ -166,32 +166,19 @@ static int xhci_rcar_download_firmware(struct usb_hcd *hcd)
-> > > >  		temp |= RCAR_USB3_DL_CTRL_FW_SET_DATA0;
-> > > >  		writel(temp, regs + RCAR_USB3_DL_CTRL);
-> > > >  
-> > > > -		for (time = 0; time < timeout; time++) {
-> > > > -			val = readl(regs + RCAR_USB3_DL_CTRL);
-> > > > -			if ((val & RCAR_USB3_DL_CTRL_FW_SET_DATA0) == 0)
-> > > > -				break;
-> > > > -			udelay(1);
-> > > > -		}
-> > > > -		if (time == timeout) {
-> > > > -			retval = -ETIMEDOUT;
-> > > > +		retval = readl_poll_timeout_atomic(regs + RCAR_USB3_DL_CTRL,
-> > > > +				val, !(val & RCAR_USB3_DL_CTRL_FW_SET_DATA0),
-> > > > +				1, 10000);
-> > > > +		if (retval < 0)
-> > > >  			break;
-> > > > -		}
-> > > >  	}
-> > > >  
-> > > >  	temp = readl(regs + RCAR_USB3_DL_CTRL);
-> > > >  	temp &= ~RCAR_USB3_DL_CTRL_ENABLE;
-> > > >  	writel(temp, regs + RCAR_USB3_DL_CTRL);
-> > > >  
-> > > > -	for (time = 0; time < timeout; time++) {
-> > > > -		val = readl(regs + RCAR_USB3_DL_CTRL);
-> > > > -		if (val & RCAR_USB3_DL_CTRL_FW_SUCCESS) {
-> > > > -			retval = 0;
-Here will set it 0 too
+8250 devices may modify iotype in their own earlycon setup. For example:
+8250_mtk and 8250_uniphier force iotype to be MMIO32. Print earlycon info
+after match->setup to reflect actual earlycon info.
 
-> > > > -			break;
-> > > > -		}
-> > > > -		udelay(1);
-> > > > -	}
-> > > > -	if (time == timeout)
-> > > > -		retval = -ETIMEDOUT;
-> > > > +	retval = readl_poll_timeout_atomic((regs + RCAR_USB3_DL_CTRL),
-> > > > +			val, (val & RCAR_USB3_DL_CTRL_FW_SUCCESS), 1, 10000);
-> > > 
-> > > Directly assigning to retval at this point will clobber a previous
-> > > -ETIMEDOUT error.
-> > > 
-> > > In other words if there is a timeout waiting for FW_SET_DATA0, but not for
-> > > DW_SUCCESS, then we will return the wrong return value.
-> >
-> > Yes, agree with you, but seems I keep its original logic unchanged.
-> 
-> I disagree.
-> 
-> Your patch does not preserve the original logic. Your patch explicitly
-> sets retval to zero if the second loop succeeds. The original code does
-> not do this. As a result there is a change of return code for one of the
-> error paths.
-> 
-> 
-> Daniel.
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+ drivers/tty/serial/earlycon.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/tty/serial/earlycon.c b/drivers/tty/serial/earlycon.c
+index 2ae9190b64bb9..22f0876f72d49 100644
+--- a/drivers/tty/serial/earlycon.c
++++ b/drivers/tty/serial/earlycon.c
+@@ -56,7 +56,6 @@ static void __init earlycon_init(struct earlycon_device *device,
+ 				 const char *name)
+ {
+ 	struct console *earlycon = device->con;
+-	struct uart_port *port = &device->port;
+ 	const char *s;
+ 	size_t len;
+ 
+@@ -70,6 +69,12 @@ static void __init earlycon_init(struct earlycon_device *device,
+ 	len = s - name;
+ 	strlcpy(earlycon->name, name, min(len + 1, sizeof(earlycon->name)));
+ 	earlycon->data = &early_console_dev;
++}
++
++static void __init earlycon_info(struct earlycon_device *device)
++{
++	struct console *earlycon = device->con;
++	struct uart_port *port = &device->port;
+ 
+ 	if (port->iotype == UPIO_MEM || port->iotype == UPIO_MEM16 ||
+ 	    port->iotype == UPIO_MEM32 || port->iotype == UPIO_MEM32BE)
+@@ -140,6 +145,7 @@ static int __init register_earlycon(char *buf, const struct earlycon_id *match)
+ 
+ 	earlycon_init(&early_console_dev, match->name);
+ 	err = match->setup(&early_console_dev, buf);
++	earlycon_info(&early_console_dev);
+ 	if (err < 0)
+ 		return err;
+ 	if (!early_console_dev.con->write)
+@@ -302,6 +308,7 @@ int __init of_setup_earlycon(const struct earlycon_id *match,
+ 	}
+ 	earlycon_init(&early_console_dev, match->name);
+ 	err = match->setup(&early_console_dev, options);
++	earlycon_info(&early_console_dev);
+ 	if (err < 0)
+ 		return err;
+ 	if (!early_console_dev.con->write)
+-- 
+2.28.0.618.gf4bc123cb7-goog
+
 
 _______________________________________________
 Linux-mediatek mailing list
