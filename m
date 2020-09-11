@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 944DEC43461
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 03:50:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E3C7FC43461
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 03:50:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 37D6D221E5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 03:50:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 505B12078D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 03:50:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bbU4jgOm";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ugV0ZgGT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 37D6D221E5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PDxSMw1Y";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ZkDxprwf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 505B12078D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mTcn6mwhnJ/g77Bw1Vc08OGQsqvf+fzksjNd9gvDHdw=; b=bbU4jgOmFU5Uk8EkKXEUAVRt5
-	ontDlORa89G/4cF32Vy9Wnj075bNB/soVZnzMq82YGyJ23lTMLvOooR3MUn2BEn5bud0oDhG+Bdot
-	jiw/wyw4m3F4B5OOZg6MvmNBEnjJfoK3XhLh02+VkQdXQ3H3rPxsTDfUjvhQ5nss/KuFY/lmX+wnp
-	4sEEsU0oebcrH95QyPdWuG+1s+Sp21scw3zxBToU5ubk9IcX2wszyPssj1eEFqoTKcK5bh/jPvYYM
-	VPJOKcIKQDdeJIR6+uTVzKflUUpOxeEStNf9ybd/Uv2bAfbwulewxOKoIJjl8aFFSepqSv2dMANVD
-	mcPt/T/MQ==;
+	 bh=PNv0IbqB0/FXnA53exJW4kaV9NdlTBkIgNxE0Sky7kw=; b=PDxSMw1YU0bzmIL2Uky9Uv9xk
+	XFgBJGND96tNiH7zR8IbbfwzljMlOouyOZXwO4lwswms8VKYAupcxc2wSeAoTTgIUMLm5CcKr1zVe
+	+ovHlw2oNiwFFlFlLoPSa+GfxFAvpomXpPNjuHkfW/eZZ5aKUcfQCt+645nxz4bG1LBwO5lLqizn0
+	jRxDLULqX2AWkYRUisLLbpoJrsOUqR6HfjC3hX6v42XYWjBqMgwd6yK0bc7QCDVXfm3wjwRmD8le5
+	o34MBgF2kMT73o6oW3GcGZIcIzH7ydnpWxgW8SFdDvUbeHcFZ5VUVQhJpcgVCRujilKmO8uxvKymk
+	rcNcriP2Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGa4g-0007Kn-Sf; Fri, 11 Sep 2020 03:50:10 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kGa4m-0007O7-JW; Fri, 11 Sep 2020 03:50:16 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGa4Q-0007D5-MY; Fri, 11 Sep 2020 03:49:56 +0000
-X-UUID: c0317598424345a4b090ce0d2bfadd43-20200910
+ id 1kGa4T-0007EY-9m; Fri, 11 Sep 2020 03:49:58 +0000
+X-UUID: 847fcdd4f7e948d590ea1eacb68da249-20200910
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=DyVs6ZIEDLwe1bQI5yBUIuAZEwUjGoYCgpxKg68T8x8=; 
- b=ugV0ZgGT0jM8ryx+GdGaFCI4OrML5CByodRvkMrk/TKmaYvbBav9Kn+09xyMyfKo7cOuXxAlU4uiskO129S3ezO7pETlgGxXJ0ex3Ghlx7vbS8nkKlTMc+Trca7m5EPX45Pc5lq2H58wazau7B4MLFgRCPEd678niWps7K2zwWw=;
-X-UUID: c0317598424345a4b090ce0d2bfadd43-20200910
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=3PUv1RZDuxtoswhg70U37JDJQ6DCyg4Gxx7SBN2DtaY=; 
+ b=ZkDxprwfW+lgRrq9NEappucCflji8p/bIHaOUHmc4fz28nb2hNKgI3OXIPU39EeJjjkzAWkGrs3/LiXzIDQ+/UtipXTchYZU/aig8V42/Gc3toAFvYCK/VKqIM1DfHo7MkaxxDcpD977kvcxiUU6OVFu2AnOJpH66SWlV8sV6fE=;
+X-UUID: 847fcdd4f7e948d590ea1eacb68da249-20200910
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1574658896; Thu, 10 Sep 2020 19:35:01 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 10 Sep 2020 20:24:59 -0700
+ with ESMTP id 915428558; Thu, 10 Sep 2020 19:47:49 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 10 Sep 2020 20:37:46 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Sep 2020 11:24:50 +0800
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 11 Sep 2020 11:37:36 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 11 Sep 2020 11:24:50 +0800
+ Frontend Transport; Fri, 11 Sep 2020 11:37:36 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <robh+dt@kernel.org>, <robh@kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH 1/2] scsi: ufs-mediatek: Support performance mode for inline
- encryption engine
-Date: Fri, 11 Sep 2020 11:24:48 +0800
-Message-ID: <20200911032449.21577-2-stanley.chu@mediatek.com>
+Subject: [PATCH v2 1/2] scsi: ufs-mediatek: Support performance mode for
+ inline encryption engine
+Date: Fri, 11 Sep 2020 11:37:34 +0800
+Message-ID: <20200911033735.21751-2-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200911032449.21577-1-stanley.chu@mediatek.com>
-References: <20200911032449.21577-1-stanley.chu@mediatek.com>
+In-Reply-To: <20200911033735.21751-1-stanley.chu@mediatek.com>
+References: <20200911033735.21751-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 96D0A24FB338C7B4A1F0089785CC669FB6C20EB81A0CC8E925F63CF5CE713F872000:8
+X-TM-SNTS-SMTP: 207A352C1CC0F5EC89C9BC5EAF09E3B509B89A047E786BBEAA0697EBDF7AE4DA2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200910_234954_914408_A24C8E3E 
-X-CRM114-Status: GOOD (  22.40  )
+X-CRM114-CacheID: sfid-20200910_234957_490156_FECF3213 
+X-CRM114-Status: GOOD (  22.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,12 +114,12 @@ well-declaired in device tree,
 
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
- drivers/scsi/ufs/ufs-mediatek.c | 178 ++++++++++++++++++++++++++++++--
+ drivers/scsi/ufs/ufs-mediatek.c | 176 ++++++++++++++++++++++++++++++--
  drivers/scsi/ufs/ufs-mediatek.h |  22 ++++
- 2 files changed, 194 insertions(+), 6 deletions(-)
+ 2 files changed, 192 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-index 3ec44dfa2567..f6250b54f0a0 100644
+index 3ec44dfa2567..83b83f21067e 100644
 --- a/drivers/scsi/ufs/ufs-mediatek.c
 +++ b/drivers/scsi/ufs/ufs-mediatek.c
 @@ -10,6 +10,7 @@
@@ -159,7 +159,7 @@ index 3ec44dfa2567..f6250b54f0a0 100644
  static void ufs_mtk_cfg_unipro_cg(struct ufs_hba *hba, bool enable)
  {
  	u32 tmp;
-@@ -294,6 +317,139 @@ static void ufs_mtk_mphy_power_on(struct ufs_hba *hba, bool on)
+@@ -294,6 +317,137 @@ static void ufs_mtk_mphy_power_on(struct ufs_hba *hba, bool on)
  	host->mphy_powered_on = on;
  }
  
@@ -232,8 +232,6 @@ index 3ec44dfa2567..f6250b54f0a0 100644
 +	}
 +out:
 +	clk_disable_unprepare(cfg->clk_crypt_mux);
-+
-+	dev_info(hba->dev, "boost %d, %d\n", boost, ret);
 +}
 +
 +static int ufs_mtk_init_host_clk(struct ufs_hba *hba, const char *name,
@@ -299,7 +297,7 @@ index 3ec44dfa2567..f6250b54f0a0 100644
  /**
   * ufs_mtk_setup_clocks - enables/disable clocks
   * @hba: host controller instance
-@@ -336,12 +492,14 @@ static int ufs_mtk_setup_clocks(struct ufs_hba *hba, bool on,
+@@ -336,12 +490,14 @@ static int ufs_mtk_setup_clocks(struct ufs_hba *hba, bool on,
  		}
  
  		if (clk_pwr_off) {
@@ -314,7 +312,7 @@ index 3ec44dfa2567..f6250b54f0a0 100644
  	}
  
  	return ret;
-@@ -359,8 +517,9 @@ static int ufs_mtk_setup_clocks(struct ufs_hba *hba, bool on,
+@@ -359,8 +515,9 @@ static int ufs_mtk_setup_clocks(struct ufs_hba *hba, bool on,
   */
  static int ufs_mtk_init(struct ufs_hba *hba)
  {
@@ -325,7 +323,7 @@ index 3ec44dfa2567..f6250b54f0a0 100644
  	int err = 0;
  
  	host = devm_kzalloc(dev, sizeof(*host), GFP_KERNEL);
-@@ -373,6 +532,18 @@ static int ufs_mtk_init(struct ufs_hba *hba)
+@@ -373,6 +530,18 @@ static int ufs_mtk_init(struct ufs_hba *hba)
  	host->hba = hba;
  	ufshcd_set_variant(hba, host);
  
@@ -344,7 +342,7 @@ index 3ec44dfa2567..f6250b54f0a0 100644
  	err = ufs_mtk_bind_mphy(hba);
  	if (err)
  		goto out_variant_clear;
-@@ -782,11 +953,6 @@ static int ufs_mtk_remove(struct platform_device *pdev)
+@@ -782,11 +951,6 @@ static int ufs_mtk_remove(struct platform_device *pdev)
  	return 0;
  }
  
