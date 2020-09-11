@@ -2,83 +2,92 @@ Return-Path: <SRS0=cvih=CU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.0 required=3.0 tests=BAYES_00,DATE_IN_PAST_06_12,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 28BE0C433E2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 07:25:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F1238C43461
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 08:34:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BDAFA2073E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 07:25:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6024F206F4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2020 08:34:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="btt7NoXR";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="VCg1Rxdg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BDAFA2073E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aNcyzGq0";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="PjsNQ/VG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6024F206F4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=53/okWMO/dsDcoGtRQlJZ1peP647X1BTR0o46QspDUE=; b=btt7NoXReI6ngRExHQUAOzj3R
-	rKeDs5R1HIGSN2mYMmR/a/UwiZsMc/+LY4ujhqere5u+KQnv9i1NceWPRwhMXAHe71pCc5H9/iSN5
-	pC/iAa8QHd/DpuggrWYZIKAVqv3KlDek8gK6L4nG4v16mZzPe6tIvHRWYAY/ORcs7LJx1KUnt9Isn
-	ZePq5FrBrprFN126dQYEj3yhVbSMjbhndANEmnnLM/Y/0v+VeX0p5R4qSeA0D8m9COp5S4C/svjyr
-	QR+8eU8q8Cj1GX/DH84rK9T0zHqJowVtlUWpE3sbiuyrDSGRszmxVnEhe1u59LRJazeLyvZM2Jpsi
-	vZIUg0OVw==;
+	 bh=BoDGJw8o2J60bwfUmlIKqlTIP/3JixCJnh2buykJ1wI=; b=aNcyzGq0I5Eyy0UHmqvAwsl0G
+	qIU28U4HZREisIcp6igmTR6ACPv43LmDCgrqqVI4YqcJwQEG6qqKf8IbMo5U/ymBoUUHOKZvcKPyY
+	eyzosNvSMxJeYvq3K8eqm4Xn5Mjuiqe478twqoJ1OA06afONBbdk+hHVgb5wA+lunwDZDqHHqCQtj
+	5scB3yl5PFLcn1DnfXIM78KoDWxyOkxCySsWHX8hhUBAH4q3iHiVwSkRjWHTz0W58aM7qMbFmwiF4
+	K/tep9il6iY7no+rNd8pbfxGauSmtZz4AyeRL7SUMlP0sZ/5+5khB1/I8acPowdVwrIHY+fEgc90P
+	FjpWok/vw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGdQT-0007Ey-3Y; Fri, 11 Sep 2020 07:24:53 +0000
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143])
+	id 1kGeVo-0000HQ-53; Fri, 11 Sep 2020 08:34:28 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGdQM-0007Ce-Tv; Fri, 11 Sep 2020 07:24:47 +0000
-Received: by mail-il1-x143.google.com with SMTP id a19so3564868ilq.10;
- Fri, 11 Sep 2020 00:24:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=yDDPYjQ6DUX6xXLMzgBfV6buP3oYPEgo+EN2kc6eWTY=;
- b=VCg1Rxdg/5MOXY5w9Loq/ArIKnhcyC7pdwtI0PJCD0vVfIdVBX+RvdOd1Q5EE/A53w
- HWGWf0JGtxHP61Zr4h8gH4j26j5SNSoxD3vtLuGw3a0z0WxP89DkWfDwDzZcnX1R76Ic
- jXruVD3rEZ4UXYCNvS2a7SCyOmZW8U+yp5ao+bAfosxKLd2YKefNhRYzjaJSwazSk08G
- v654syyecqb4nuwrs7j4hZIwCdFoj/l0Ei56xgFfWkIAn4dksivJxtmTJHXaJn+CYlHl
- YLMUqkbMZRmVZbV0VPKguJqZFYMyTDpGNyYxSUjXRJrxYEL6h6Dj3bXA5NYbLYpMKZqk
- ClfQ==
+ id 1kGeVl-0000G4-51
+ for linux-mediatek@lists.infradead.org; Fri, 11 Sep 2020 08:34:26 +0000
+Received: by mail-wr1-x441.google.com with SMTP id t10so10631438wrv.1
+ for <linux-mediatek@lists.infradead.org>; Fri, 11 Sep 2020 01:34:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=M0S4mP0yQ288Ht2IB3N+dbHxuqNNpIHZMkWTvJtXhOc=;
+ b=PjsNQ/VGfWEB/Je9D2ogZjHZiDGDyOpS4ISuRBopjuEgW6j2F2opOiYWud3Q5U5GI3
+ AQeU9UOKGJv01qSSw1DB1PVTcy3ESKJYkbxgo7Nm08xdMV5HNfX1FK0KYi9N4L21ES1k
+ 9U/1QUSJes6b4cEvGOcHiC1J0281ylA2mrnajr+Zz06h9OKNDuFugNOqajsZ3QumU0eZ
+ /x0BHg7x2ioMEalsdP8EQcU998V8ejjZs40169D0Dc4vOzndI7VIzlVpcC+FzfcBXsqq
+ fajcI4JOzvFDntYJ6wFTqoNnvj2yJUr57Lu0jh/M/UeE7LpGNCcTIUhnov7H9XqHLXwX
+ G8uQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=yDDPYjQ6DUX6xXLMzgBfV6buP3oYPEgo+EN2kc6eWTY=;
- b=UNJYh0eDprGI0Qc/QbtXzuFbWtBA5WixBK73cmkuK3ZUMdOtIBBkhxbqSuQqNrM3gN
- Fcl0wcwyy1G1WxJdFGUOkjfA9koK5xh3N5pBsLUzFzKrF2RTa/9RS9luFzPnDL+iz4I2
- I0hj0zxe3RflpQynjnTLVKcIh7WzR2w/mp8Gxdu7LqLNGgWg/PHCKl31+d3otujjXjkF
- KhMuyKKo0LyQrOPqn5v7p4M1dnnN+8X1ifyiHC3KiaRyS38O3NYPkwxMU2iGvDoq0LJp
- zZPqLesI/QwKp3hIZDBALentmiw8NnJWt3xtqS8AS/xam8OBM+yrunMmjCV6orO4kcty
- Souw==
-X-Gm-Message-State: AOAM5303pBtTL16VFbNcZS+FsD+rC0ir2VOau23Sh6CBEkQjB5i64I5n
- aYI+bvFod7x/UfninOdMCwDNt+UYiSljbbu3Gj0=
-X-Google-Smtp-Source: ABdhPJzhSZZfBvon++gRijFHc6uMrRA3K01c6hT3xUWA9CJkZCyxj2DMSIaOlblADANdWJCoh65AMYrunuU/yZTx3G4=
-X-Received: by 2002:a92:d1d1:: with SMTP id u17mr699311ilg.127.1599809083413; 
- Fri, 11 Sep 2020 00:24:43 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=M0S4mP0yQ288Ht2IB3N+dbHxuqNNpIHZMkWTvJtXhOc=;
+ b=F1wx2vyVu8OSjUGyhLC7itsupxm7kBV1siuOzBhLek0oxkRfIEF+kObJ2Al74e3eb9
+ yGpxaY7LssrZCBzmzJ9pswfOncbHYY6TCHm9DceeXgkq3lopZcTv7iM0x4/kVClsfWPP
+ 9l17rdrCMryZNxGBUJd/2sZSWhlw4mFHIdW5gxD96jznlJLAUY/JZ0hJRtD50xGPellw
+ uYfIeqMncCKbxALPP4rCMeU0O5waW8wd4L45HflQmqlPbZwBATf50DCyVTWo13/O52mx
+ Yw67iA1GFzWzFPMIslN3duqfJ/H2f+8+Gyv+nki2Uw1ICcwpiJgud5e9rfRYp67QfHsz
+ u2hA==
+X-Gm-Message-State: AOAM532FLui3tP8YeizNdJ4zJwUzQhPKHD0/MpvOeabFFbxDIoFMZ9F1
+ MzoKN61uoInNLH6yS66rXVPoKQ==
+X-Google-Smtp-Source: ABdhPJz+kgniz8iKUb4blQrRirzDIa4lhBqRbiiOpeC5E8r1DBQFs2ka64TSwdoiUTGozKH7QGOAjw==
+X-Received: by 2002:adf:f290:: with SMTP id k16mr982616wro.124.1599813263810; 
+ Fri, 11 Sep 2020 01:34:23 -0700 (PDT)
+Received: from holly.lan (cpc141214-aztw34-2-0-cust773.18-1.cable.virginm.net.
+ [86.9.19.6])
+ by smtp.gmail.com with ESMTPSA id q186sm2803894wma.45.2020.09.11.01.34.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 11 Sep 2020 01:34:23 -0700 (PDT)
+Date: Fri, 11 Sep 2020 09:34:21 +0100
+From: Daniel Thompson <daniel.thompson@linaro.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH RESEND v3 04/11] usb: xhci-rcar: convert to
+ readl_poll_timeout_atomic()
+Message-ID: <20200911083421.g5cidlnwfiksggvk@holly.lan>
+References: <1599726112-4439-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1599726112-4439-4-git-send-email-chunfeng.yun@mediatek.com>
+ <20200910131212.wm7zskxvcesl652c@holly.lan>
+ <1599791601.24609.5.camel@mhfsdcap03>
 MIME-Version: 1.0
-References: <1599474459-20853-1-git-send-email-gene.chen.richtek@gmail.com>
- <1599474459-20853-2-git-send-email-gene.chen.richtek@gmail.com>
- <559a568e-3a2e-33c6-43aa-547a18f8e26b@gmail.com> <20200911070503.GA9818@amd>
-In-Reply-To: <20200911070503.GA9818@amd>
-From: Gene Chen <gene.chen.richtek@gmail.com>
-Date: Fri, 11 Sep 2020 07:24:31 +0800
-Message-ID: <CAE+NS34aKmu0tjnCPg3nF_vB0ELKsKwZSOeEXsm5V9aPAqqSbQ@mail.gmail.com>
-Subject: Re: [PATCH v3 1/2] leds: mt6360: Add LED driver for MT6360
-To: Pavel Machek <pavel@ucw.cz>
+Content-Disposition: inline
+In-Reply-To: <1599791601.24609.5.camel@mhfsdcap03>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200911_032446_996350_3C1F0537 
-X-CRM114-Status: GOOD (  15.24  )
+X-CRM114-CacheID: sfid-20200911_043425_330113_CEB3FE98 
+X-CRM114-Status: GOOD (  25.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,55 +99,117 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- cy_huang@richtek.com, linux-kernel@vger.kernel.org,
- Gene Chen <gene_chen@richtek.com>, benjamin.chao@mediatek.com,
- robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
- Jacek Anaszewski <jacek.anaszewski@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, shufan_lee@richtek.com,
- Wilma.Wu@mediatek.com, linux-leds@vger.kernel.org, Dan Murphy <dmurphy@ti.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-arm-kernel@lists.infradead.org, Felipe Balbi <balbi@kernel.org>,
+ linux-usb@vger.kernel.org, Mathias Nyman <mathias.nyman@linux.intel.com>,
+ Arnd Bergmann <arnd@arndb.de>, Mathias Nyman <mathias.nyman@intel.com>,
+ Sumit Garg <sumit.garg@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Jann Horn <jannh@google.com>, Chuhong Yuan <hslester96@gmail.com>,
+ Douglas Anderson <dianders@chromium.org>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Saurav Girepunje <saurav.girepunje@gmail.com>, Jason Yan <yanaijie@huawei.com>,
+ linux-mediatek@lists.infradead.org,
+ "Eric W. Biederman" <ebiederm@xmission.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ Ben Dooks <ben.dooks@codethink.co.uk>, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-UGF2ZWwgTWFjaGVrIDxwYXZlbEB1Y3cuY3o+IOaWvCAyMDIw5bm0OeaciDEx5pelIOmAseS6lCDk
-uIvljYgzOjA15a+r6YGT77yaCj4KPiBIaSEKPgo+ID4gPit7Cj4gPiA+KyAgICBzdHJ1Y3QgbXQ2
-MzYwX2xlZCAqbGVkID0gY29udGFpbmVyX29mKGxjZGV2LCBzdHJ1Y3QgbXQ2MzYwX2xlZCwgZmxh
-c2gubGVkX2NkZXYpOwo+ID4gPisgICAgc3RydWN0IG10NjM2MF9wcml2ICpwcml2ID0gbGVkLT5w
-cml2Owo+ID4gPisgICAgdTMyIGVuYWJsZV9tYXNrID0gTVQ2MzYwX1RPUkNIRU5fTUFTSyB8IE1U
-NjM2MF9GTENTRU5fTUFTSyhsZWQtPmxlZF9ubyk7Cj4gPiA+KyAgICB1MzIgdmFsID0gKGxldmVs
-KSA/IE1UNjM2MF9GTENTRU5fTUFTSyhsZWQtPmxlZF9ubykgOiAwOwo+ID4gPisgICAgdTMyIHBy
-ZXYgPSBwcml2LT5mbGVkX3RvcmNoX3VzZWQsIGN1cnI7Cj4gPiA+KyAgICBpbnQgcmV0Owo+ID4g
-PisKPiA+ID4rICAgIGRldl9kYmcobGNkZXYtPmRldiwgIlslZF0gYnJpZ2h0bmVzcyAlZFxuIiwg
-bGVkLT5sZWRfbm8sIGxldmVsKTsKPiA+ID4rICAgIGlmIChwcml2LT5mbGVkX3N0cm9iZV91c2Vk
-KSB7Cj4gPiA+KyAgICAgICAgICAgIGRldl93YXJuKGxjZGV2LT5kZXYsICJQbGVhc2UgZGlzYWJs
-ZSBzdHJvYmUgZmlyc3QgWyVkXVxuIiwgcHJpdi0+ZmxlZF9zdHJvYmVfdXNlZCk7Cj4gPgo+ID4g
-RG9lc24ndCBoYXJkd2FyZSBoYW5kbGUgdGhhdD8gSU9XLCB3aGF0IGhhcHBlbnMgd2hlbiB5b3Ug
-aGF2ZSBlbmFibGVkCj4gPiBib3RoIHRvcmNoIGFuZCBmbGFzaD8gSWYgZmxhc2gganVzdCBvdmVy
-cmlkZXMgdG9yY2ggbW9kZSwgdGhhbiB5b3UKPiA+IHNob3VsZCBub3QgcHJldmVudCBlbmFibGlu
-ZyB0b3JjaCBpbiB0aGlzIGNhc2UuCj4KPiBZZXAsIHRoaXMgaXMgc3RyYW5nZS9jb25mdXNpbmcu
-Li4gYW5kIHdhcyByZWFzb24gd2h5IEkgYXNrZWQgZm9yIG5vdAo+IHN1cHBvcnRpbmcgc3Ryb2Jl
-IGZyb20gc3lzZnMuCj4KPiBDb3VsZCBJIGdldCB5b3UgdG8gcmVtb3ZlIGNvZGUgeW91IGFyZSBu
-b3QgY29tbWVudGluZyBhdCB3aGVuCj4gcmV2aWV3aW5nPwo+CgpNVDYzNjAgRkxFRCByZWdpc3Rl
-ciBkZWZpbmUgaXMgU1RST0JFX0VOL1RPUkNIX0VOL0NTMS9DUzIgKGN1cnJlbnQKc291cmNlKSA0
-IGJpdHMuClRoZSBTVFJPQkVfRU4vVE9SQ0hfRU4gaXMgc2hhcmVkIGJ5IEZMRUQxIGFuZCBGTEVE
-Mi4KSWYgSSB3YW50IHRvIGVuYWJsZSBGTEVEMSB0b3JjaCBtb2RlLCBJIHNldCBUT1JDSF9FTiBh
-bmQgQ1MxCklmIEkgd2FudCB0byBlbmFibGUgRkxFRDIgc3Ryb2JlIG1vZGUsIEkgc2V0IFNUUk9C
-RV9FTiBhbmQgQ1MyCkZvciBleGFtcGxlIEkgc2V0IEZMRUQxIHRvcmNoLCB0aGVuIEkgc2V0IEZM
-RUQyIHN0cm9iZS4KV2hlbiBJIHNldCBGTEVEMiBzdHJvYmUsIEkgd2lsbCBzZWUgdGhlIHN0cm9i
-ZSBjdXJyZW50IGlzIEZMRUQyIGFkZApGTEVEMSBjdXJyZW50IHdoaWNoIGlzIG5vdCBJIHdhbnQu
-ClNvIEkgbmVlZCBkaXNhYmxlIEZMRUQxIHRvcmNoIGZpcnN0LgpDb25zaWRlcmluZyBldmVyeSBj
-aXJjdW1zdGFuY2VzIGlzIGNvbXBsaWNhdGVkIHdoZW4gc2hhcmUgc2FtZSBIL1cKbG9naWMgY29u
-dHJvbC4KQW5kIHRoZSBvdGhlciBwcm9ibGVtIGlzIHRvcmNoIG1vZGUgc3dpdGNoIHRvIHN0cm9i
-ZSBtb2RlIG5lZWRzIHJhbXAKdGltZSBiZWNhdXNlIHN0cm9iZSBhbmQgdG9yY2ggbW9kZSBjYW4n
-dCBiZSBjby1leGlzdC4KCj4gPiA+K01PRFVMRV9BVVRIT1IoIkdlbmUgQ2hlbiA8Z2VuZV9jaGVu
-QHJpY2h0ZWsuY29tPiIpOwo+ID4gPitNT0RVTEVfREVTQ1JJUFRJT04oIk1UNjM2MCBMZWQgRHJp
-dmVyIik7Cj4KPiBMZWQgLT4gTEVELgo+CgpBQ0sKCj4gICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUGF2ZWwKPiAt
-LQo+IChlbmdsaXNoKSBodHRwOi8vd3d3LmxpdmVqb3VybmFsLmNvbS9+cGF2ZWxtYWNoZWsKPiAo
-Y2Vza3ksIHBpY3R1cmVzKSBodHRwOi8vYXRyZXkua2FybGluLm1mZi5jdW5pLmN6L35wYXZlbC9w
-aWN0dXJlL2hvcnNlcy9ibG9nLmh0bWwKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRl
-a0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Fri, Sep 11, 2020 at 10:33:21AM +0800, Chunfeng Yun wrote:
+> On Thu, 2020-09-10 at 14:12 +0100, Daniel Thompson wrote:
+> > On Thu, Sep 10, 2020 at 04:21:45PM +0800, Chunfeng Yun wrote:
+> > > Use readl_poll_timeout_atomic() to simplify code
+> > > 
+> > > Cc: Mathias Nyman <mathias.nyman@linux.intel.com>
+> > > Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
+> > > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > > ---
+> > > v2~v3: no changes
+> > > ---
+> > >  drivers/usb/host/xhci-rcar.c | 43 ++++++++++++-------------------------------
+> > >  1 file changed, 12 insertions(+), 31 deletions(-)
+> > > 
+> > > diff --git a/drivers/usb/host/xhci-rcar.c b/drivers/usb/host/xhci-rcar.c
+> > > index c1025d3..74f836f 100644
+> > > --- a/drivers/usb/host/xhci-rcar.c
+> > > +++ b/drivers/usb/host/xhci-rcar.c
+> > > @@ -6,6 +6,7 @@
+> > >   */
+> > >  
+> > >  #include <linux/firmware.h>
+> > > +#include <linux/iopoll.h>
+> > >  #include <linux/module.h>
+> > >  #include <linux/platform_device.h>
+> > >  #include <linux/of.h>
+> > > @@ -127,8 +128,7 @@ static int xhci_rcar_download_firmware(struct usb_hcd *hcd)
+> > >  	void __iomem *regs = hcd->regs;
+> > >  	struct xhci_plat_priv *priv = hcd_to_xhci_priv(hcd);
+> > >  	const struct firmware *fw;
+> > > -	int retval, index, j, time;
+> > > -	int timeout = 10000;
+> > > +	int retval, index, j;
+> > >  	u32 data, val, temp;
+> > >  	u32 quirks = 0;
+> > >  	const struct soc_device_attribute *attr;
+> > > @@ -166,32 +166,19 @@ static int xhci_rcar_download_firmware(struct usb_hcd *hcd)
+> > >  		temp |= RCAR_USB3_DL_CTRL_FW_SET_DATA0;
+> > >  		writel(temp, regs + RCAR_USB3_DL_CTRL);
+> > >  
+> > > -		for (time = 0; time < timeout; time++) {
+> > > -			val = readl(regs + RCAR_USB3_DL_CTRL);
+> > > -			if ((val & RCAR_USB3_DL_CTRL_FW_SET_DATA0) == 0)
+> > > -				break;
+> > > -			udelay(1);
+> > > -		}
+> > > -		if (time == timeout) {
+> > > -			retval = -ETIMEDOUT;
+> > > +		retval = readl_poll_timeout_atomic(regs + RCAR_USB3_DL_CTRL,
+> > > +				val, !(val & RCAR_USB3_DL_CTRL_FW_SET_DATA0),
+> > > +				1, 10000);
+> > > +		if (retval < 0)
+> > >  			break;
+> > > -		}
+> > >  	}
+> > >  
+> > >  	temp = readl(regs + RCAR_USB3_DL_CTRL);
+> > >  	temp &= ~RCAR_USB3_DL_CTRL_ENABLE;
+> > >  	writel(temp, regs + RCAR_USB3_DL_CTRL);
+> > >  
+> > > -	for (time = 0; time < timeout; time++) {
+> > > -		val = readl(regs + RCAR_USB3_DL_CTRL);
+> > > -		if (val & RCAR_USB3_DL_CTRL_FW_SUCCESS) {
+> > > -			retval = 0;
+> > > -			break;
+> > > -		}
+> > > -		udelay(1);
+> > > -	}
+> > > -	if (time == timeout)
+> > > -		retval = -ETIMEDOUT;
+> > > +	retval = readl_poll_timeout_atomic((regs + RCAR_USB3_DL_CTRL),
+> > > +			val, (val & RCAR_USB3_DL_CTRL_FW_SUCCESS), 1, 10000);
+> > 
+> > Directly assigning to retval at this point will clobber a previous
+> > -ETIMEDOUT error.
+> > 
+> > In other words if there is a timeout waiting for FW_SET_DATA0, but not for
+> > DW_SUCCESS, then we will return the wrong return value.
+>
+> Yes, agree with you, but seems I keep its original logic unchanged.
+
+I disagree.
+
+Your patch does not preserve the original logic. Your patch explicitly
+sets retval to zero if the second loop succeeds. The original code does
+not do this. As a result there is a change of return code for one of the
+error paths.
+
+
+Daniel.
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
