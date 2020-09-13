@@ -2,79 +2,85 @@ Return-Path: <SRS0=V4X5=CW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 55CC0C433E2
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Sep 2020 03:06:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1AABBC43461
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Sep 2020 10:18:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D68C320709
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Sep 2020 03:06:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5244720663
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Sep 2020 10:18:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EAUVYVz9";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="e9Zf+NBq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D68C320709
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="j2e7N5C5";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="nyykmS9A"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5244720663
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Yz4Re4F6FS6DyU+cplNhDL6woOnrxks5zRVpZEIX7FU=; b=EAUVYVz9Ei83RfGvbMC3CD80g
-	fiEmbPH0tW3aLsKUFKBqOVRH1efAQfz1QtR52UeCSnvLYIntu/43KRqMYhz3OTNP/26f4u9RGhQiW
-	npEclk+v+oJ03PbJDZEchSsNTEnHsc9SGZ+EQusyhTtbvI9U95tpuobuJmXlPbnsnyJKhsgZ6SeSd
-	KSact1xsnOv4v47J8TZB26LC6wssc20dcqeQwKGqhzcBn1kG2thoX9E//cCMeSiB0a1zqsyYh+IRD
-	nbjVSC+S9qWavprGbztcMw7hJkYo6XcyC6o0JlUS0xnNI1KD0QYs0k3t9GUovUhZWQudi65NZWGEN
-	i6Pafs3bQ==;
+	 bh=hHx4ibvrbxsnRFlpM4UaqdMZcOqRhG8xHiy0gF9je6E=; b=j2e7N5C5xMf1qIJUQ8XeStvJv
+	aZC4CQFRR5xOPcJqD8oDSGAbDiTMYXulnroDE4a6QLLIwNEDuzaw2vWqU3ols5hTTEiy1VBDVNxH2
+	6PUtFqYnqh/F5I4iZBDAVOrG2L5lMyFL2BNQK+UHZctsOTWiysBdb5WN3aKRhb61T3IZw6RlLI3NY
+	8Jpfq+aAcVt+/atB8m2XP6abAlVadk36RU5QkdhKSfKndvxF+7flCjIP7g/kJ8eZaFsR+y2036Wm6
+	nQWo2rcBebH8tPEPGUPrFRZIpq0lqLJQzbDlIe6kpHRthDk01XeVEwQR/8Rdv4EGfeY8I17llrQiK
+	QLJEZW2mA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kHILm-0006cH-SJ; Sun, 13 Sep 2020 03:06:46 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kHP52-0007E4-9S; Sun, 13 Sep 2020 10:17:56 +0000
+Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kHILj-0006be-8S; Sun, 13 Sep 2020 03:06:45 +0000
-X-UUID: e23fe1e1238246fbb1b7e7a4130c14e0-20200912
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=NwIK9pmWDw8n2NhaZLDMiaMs84qVaaRjufGgH4tn2mU=; 
- b=e9Zf+NBq3/cLU+mpdQTwGmm3jtD3AHFd6xsLkTymLHeWrA6zM3HJVSWRaVq4+pWN+PCGmC2PuWchK+CtaimDYTuu8DrufLX0Pdpc/EilS1w615JwoZVUD1Rg2Ggzvh/s5HMlRmfgvj6WVjryKDjEjKQPgV7O2AD8WBRPlCXoduU=;
-X-UUID: e23fe1e1238246fbb1b7e7a4130c14e0-20200912
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chuanjia.liu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 12018367; Sat, 12 Sep 2020 19:06:41 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 12 Sep 2020 19:56:38 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sun, 13 Sep 2020 10:56:36 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sun, 13 Sep 2020 10:56:37 +0800
-Message-ID: <1599965676.7466.35.camel@mhfsdcap03>
-Subject: Re: [PATCH v5 1/4] dt-bindings: pci: mediatek: Modified the Device
- tree bindings
-From: Chuanjia Liu <chuanjia.liu@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-Date: Sun, 13 Sep 2020 10:54:36 +0800
-In-Reply-To: <20200911225024.GB2960430@bogus>
-References: <20200910061115.909-1-chuanjia.liu@mediatek.com>
- <20200910061115.909-2-chuanjia.liu@mediatek.com>
- <20200911225024.GB2960430@bogus>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kHP4v-0007Cj-Nq
+ for linux-mediatek@lists.infradead.org; Sun, 13 Sep 2020 10:17:51 +0000
+Received: by mail-qk1-x744.google.com with SMTP id v123so14191953qkd.9
+ for <linux-mediatek@lists.infradead.org>; Sun, 13 Sep 2020 03:17:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=2/rTINPcp/OFtffjcOu1onBIlOhuthR1U8PEEQixv6o=;
+ b=nyykmS9AkG4i9TMnFMtKZHTav1DMaE8SUFI+3OiVcdw3B0DLu+pwVWzwQ6kGDjXf+l
+ K7px0dO6gMMsvi3FkubJfozBEGHG+rP93NI06PRHsQgki8OoPHqY4TXz13GUqzh7kCbd
+ eNxIqk344Vpp0aL3iLW26m4v2V5FRN8BDQVamB8DMWFVrdn5Qah6vQTLKhO0Wcbgi3Lw
+ nasjdseAWfh5Qv3irs0+8a5dzF3edJvciMdqoCgZAggoLv6zwMFraDCMREsb8aernu5v
+ dqog9E6ULf0mB0oCupoPtZXG7qAqgf8qf6NbYBR8vFecPrkM+QmWOQrwLg7/iw0aaUS+
+ w0Nw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=2/rTINPcp/OFtffjcOu1onBIlOhuthR1U8PEEQixv6o=;
+ b=qvlcPej+k9vG8SUufEj22dwyp9pTOz9N0QRx0Zrvk3TJuNTuF/bDsnLOpYyEy/yd7+
+ vB+ZY2Z21HAkbQL9l4eM2UVHUqnt0FnNeeCD4ZYH3ocRYolit46BlmWnh2P4vYCVa5vR
+ oiPhzET1PZxoZ/l75PlwlGO0Wcq8byjJAWUzk6Y0o9Ehk7BmCsBv/VzeSyCdQTqrPeBd
+ o7hVYIQMwyKfIZr8dJWo6IMyoL50LWlKoxkphAy0BD2yxwCzQS9KxczItfQDU2mITPep
+ XSpqAbZc9ROm28AiJxIVIso9WpVl8iaSbcwXJzJHpSOVmbMeN3zF1Rf0NTuC5XGtTxDw
+ NZYw==
+X-Gm-Message-State: AOAM532RgWJrkwJHCQa7yrbgIm/afOpAtyr92jX76yLmoUhJUjZYeVSO
+ 150nRy5rPh0iq8y8fu/QTfuc+ek5jvc/GkaOJYksMw==
+X-Google-Smtp-Source: ABdhPJwU0iwVFH+xDwbhrGpX0QTr2ldrPpq71OiTnxbsBdPs9HzLJVfQX1DW0ujxC9OEcCab5tZQ/lNJtojI2hTfw9A=
+X-Received: by 2002:a37:5684:: with SMTP id k126mr8015895qkb.43.1599992264608; 
+ Sun, 13 Sep 2020 03:17:44 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: DCBCCB16731868D242FD5AA8DF4E970B1DADE979873D0CDC402F740BDDA4B1C82000:8
-X-MTK: N
+References: <20200825015654.27781-1-walter-zh.wu@mediatek.com>
+ <CANpmjNOvj+=v7VDVDXpsUNZ9o0+KoJVJs0MjLhwr0XpYcYQZ5g@mail.gmail.com>
+ <CAAeHK+yVShDPCxVKDsO_5SwoM2ZG7x7byUJ74PtB7ekY61L2YQ@mail.gmail.com>
+In-Reply-To: <CAAeHK+yVShDPCxVKDsO_5SwoM2ZG7x7byUJ74PtB7ekY61L2YQ@mail.gmail.com>
+From: Dmitry Vyukov <dvyukov@google.com>
+Date: Sun, 13 Sep 2020 12:17:33 +0200
+Message-ID: <CACT4Y+b1OimWNQCx-rGvSgC1RheLAv9mv2xzRnwkn98AsdTgXA@mail.gmail.com>
+Subject: Re: [PATCH v3 0/6] kasan: add workqueue and timer stack for generic
+ KASAN
+To: Andrey Konovalov <andreyknvl@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200912_230643_562323_BBD8893B 
-X-CRM114-Status: GOOD (  26.26  )
+X-CRM114-CacheID: sfid-20200913_061749_812206_057AFED1 
+X-CRM114-Status: GOOD (  25.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,317 +92,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Frank Wunderlich <frank-w@public-files.de>, linux-pci@vger.kernel.org,
- Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org,
- yong.wu@mediatek.com, Bjorn Helgaas <bhelgaas@google.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Marco Elver <elver@google.com>, John Stultz <john.stultz@linaro.org>,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ Linux Memory Management List <linux-mm@kvack.org>,
+ Stephen Boyd <sboyd@kernel.org>, Lai Jiangshan <jiangshanlai@gmail.com>,
+ Walter Wu <walter-zh.wu@mediatek.com>, kasan-dev <kasan-dev@googlegroups.com>,
+ LKML <linux-kernel@vger.kernel.org>, Tejun Heo <tj@kernel.org>,
+ linux-mediatek@lists.infradead.org, Alexander Potapenko <glider@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Andrey Ryabinin <aryabinin@virtuozzo.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-09-11 at 16:50 -0600, Rob Herring wrote:
-> On Thu, Sep 10, 2020 at 02:11:12PM +0800, Chuanjia Liu wrote:
-> > Split the PCIe node and add pciecfg node to fix MSI issue.
-> > 
-> > Acked-by: Ryder Lee <ryder.lee@mediatek.com>
-> > Signed-off-by: Chuanjia Liu <chuanjia.liu@mediatek.com>
-> > ---
-> >  .../bindings/pci/mediatek-pcie-cfg.yaml       |  38 +++++
-> >  .../devicetree/bindings/pci/mediatek-pcie.txt | 144 +++++++++++-------
-> >  2 files changed, 129 insertions(+), 53 deletions(-)
-> >  create mode 100644 Documentation/devicetree/bindings/pci/mediatek-pcie-cfg.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-cfg.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-cfg.yaml
-> > new file mode 100644
-> > index 000000000000..4d2835ab4858
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-cfg.yaml
-> > @@ -0,0 +1,38 @@
-> > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/pci/mediatek-pcie-cfg.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Mediatek PCIECFG controller
-> > +
-> > +maintainers:
-> > +  - Chuanjia Liu <chuanjia.liu@mediatek.com>
-> > +  - Jianjun Wang <jianjun.wang@mediatek.com>
-> > +
-> > +description: |
-> > +  The MediaTek PCIECFG controller controls some feature about
-> > +  LTSSM, ASPM and so on.
-> > +
-> > +properties:
-> > +  compatible:
-> > +      items:
-> > +        - enum:
-> > +            - mediatek,mt7622-pciecfg
-> > +            - mediatek,mt7629-pciecfg
-> > +        - const: syscon
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +
-> > +examples:
-> > +  - |
-> > +    pciecfg: pciecfg@1a140000 {
-> > +        compatible = "mediatek,mt7622-pciecfg", "syscon";
-> > +        reg = <0 0x1a140000 0 0x1000>;
-> > +    };
-> > +...
-> > diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-> > index 7468d666763a..31e261933685 100644
-> > --- a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-> > +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-> > @@ -8,7 +8,7 @@ Required properties:
-> >  	"mediatek,mt7623-pcie"
-> >  	"mediatek,mt7629-pcie"
-> >  - device_type: Must be "pci"
-> > -- reg: Base addresses and lengths of the PCIe subsys and root ports.
-> > +- reg: Base addresses and lengths of the root ports.
-> >  - reg-names: Names of the above areas to use during resource lookup.
-> >  - #address-cells: Address representation for root ports (must be 3)
-> >  - #size-cells: Size representation for root ports (must be 2)
-> > @@ -19,10 +19,10 @@ Required properties:
-> >     - sys_ckN :transaction layer and data link layer clock
-> >    Required entries for MT2701/MT7623:
-> >     - free_ck :for reference clock of PCIe subsys
-> > -  Required entries for MT2712/MT7622:
-> > +  Required entries for MT2712/MT7622/MT7629:
-> >     - ahb_ckN :AHB slave interface operating clock for CSR access and RC
-> >  	      initiated MMIO access
-> > -  Required entries for MT7622:
-> > +  Required entries for MT7622/MT7629:
-> >     - axi_ckN :application layer MMIO channel operating clock
-> >     - aux_ckN :pe2_mac_bridge and pe2_mac_core operating clock when
-> >  	      pcie_mac_ck/pcie_pipe_ck is turned off
-> > @@ -47,10 +47,13 @@ Required properties for MT7623/MT2701:
-> >  - reset-names: Must be "pcie-rst0", "pcie-rst1", "pcie-rstN".. based on the
-> >    number of root ports.
-> >  
-> > -Required properties for MT2712/MT7622:
-> > +Required properties for MT2712/MT7622/MT7629:
-> >  -interrupts: A list of interrupt outputs of the controller, must have one
-> >  	     entry for each PCIe port
-> >  
-> > +Required properties for MT7622/MT7629:
-> > +- mediatek,pcie-subsys: Should be a phandle of the pciecfg node.
-> > +
-> 
-> You don't need this. You can search for the node by compatible.
-> 
-> Plus it doesn't match the example.
-
-Thanks for you comment, I will change it in the next version.
-
-regards,
-Chuanjia
-> 
-> >  In addition, the device tree node must have sub-nodes describing each
-> >  PCIe port interface, having the following mandatory properties:
-> >  
-> > @@ -143,56 +146,73 @@ Examples for MT7623:
-> >  
-> >  Examples for MT2712:
-> >  
-> > -	pcie: pcie@11700000 {
-> > +	pcie1: pcie@112ff000 {
-> >  		compatible = "mediatek,mt2712-pcie";
-> >  		device_type = "pci";
-> > -		reg = <0 0x11700000 0 0x1000>,
-> > -		      <0 0x112ff000 0 0x1000>;
-> > -		reg-names = "port0", "port1";
-> > +		reg = <0 0x112ff000 0 0x1000>;
-> > +		reg-names = "port1";
-> >  		#address-cells = <3>;
-> >  		#size-cells = <2>;
-> > -		interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH>,
-> > -			     <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>;
-> > -		clocks = <&topckgen CLK_TOP_PE2_MAC_P0_SEL>,
-> > -			 <&topckgen CLK_TOP_PE2_MAC_P1_SEL>,
-> > -			 <&pericfg CLK_PERI_PCIE0>,
-> > +		interrupts = <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>;
-> > +		interrupt-names = "pcie_irq";
-> > +		clocks = <&topckgen CLK_TOP_PE2_MAC_P1_SEL>,
-> >  			 <&pericfg CLK_PERI_PCIE1>;
-> > -		clock-names = "sys_ck0", "sys_ck1", "ahb_ck0", "ahb_ck1";
-> > -		phys = <&pcie0_phy PHY_TYPE_PCIE>, <&pcie1_phy PHY_TYPE_PCIE>;
-> > -		phy-names = "pcie-phy0", "pcie-phy1";
-> > +		clock-names = "sys_ck1", "ahb_ck1";
-> > +		phys = <&u3port1 PHY_TYPE_PCIE>;
-> > +		phy-names = "pcie-phy1";
-> >  		bus-range = <0x00 0xff>;
-> > -		ranges = <0x82000000 0 0x20000000  0x0 0x20000000  0 0x10000000>;
-> > +		ranges = <0x82000000 0 0x11400000  0x0 0x11400000  0 0x300000>;
-> > +		status = "disabled";
-> >  
-> > -		pcie0: pcie@0,0 {
-> > -			reg = <0x0000 0 0 0 0>;
-> > +		slot1: pcie@1,0 {
-> > +			reg = <0x0800 0 0 0 0>;
-> >  			#address-cells = <3>;
-> >  			#size-cells = <2>;
-> >  			#interrupt-cells = <1>;
-> >  			ranges;
-> >  			interrupt-map-mask = <0 0 0 7>;
-> > -			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
-> > -					<0 0 0 2 &pcie_intc0 1>,
-> > -					<0 0 0 3 &pcie_intc0 2>,
-> > -					<0 0 0 4 &pcie_intc0 3>;
-> > -			pcie_intc0: interrupt-controller {
-> > +			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
-> > +					<0 0 0 2 &pcie_intc1 1>,
-> > +					<0 0 0 3 &pcie_intc1 2>,
-> > +					<0 0 0 4 &pcie_intc1 3>;
-> > +			pcie_intc1: interrupt-controller {
-> >  				interrupt-controller;
-> >  				#address-cells = <0>;
-> >  				#interrupt-cells = <1>;
-> >  			};
-> >  		};
-> > +	};
-> >  
-> > -		pcie1: pcie@1,0 {
-> > -			reg = <0x0800 0 0 0 0>;
-> > +	pcie0: pcie@11700000 {
-> > +		compatible = "mediatek,mt2712-pcie";
-> > +		device_type = "pci";
-> > +		reg = <0 0x11700000 0 0x1000>;
-> > +		reg-names = "port0";
-> > +		#address-cells = <3>;
-> > +		#size-cells = <2>;
-> > +		interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH>;
-> > +		interrupt-names = "pcie_irq";
-> > +		clocks = <&topckgen CLK_TOP_PE2_MAC_P0_SEL>,
-> > +			 <&pericfg CLK_PERI_PCIE0>;
-> > +		clock-names = "sys_ck0", "ahb_ck0";
-> > +		phys = <&u3port0 PHY_TYPE_PCIE>;
-> > +		phy-names = "pcie-phy0";
-> > +		bus-range = <0x00 0xff>;
-> > +		ranges = <0x82000000 0 0x20000000 0x0 0x20000000 0 0x10000000>;
-> > +		status = "disabled";
-> > +
-> > +		slot0: pcie@0,0 {
-> > +			reg = <0x0000 0 0 0 0>;
-> >  			#address-cells = <3>;
-> >  			#size-cells = <2>;
-> >  			#interrupt-cells = <1>;
-> >  			ranges;
-> >  			interrupt-map-mask = <0 0 0 7>;
-> > -			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
-> > -					<0 0 0 2 &pcie_intc1 1>,
-> > -					<0 0 0 3 &pcie_intc1 2>,
-> > -					<0 0 0 4 &pcie_intc1 3>;
-> > -			pcie_intc1: interrupt-controller {
-> > +			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
-> > +					<0 0 0 2 &pcie_intc0 1>,
-> > +					<0 0 0 3 &pcie_intc0 2>,
-> > +					<0 0 0 4 &pcie_intc0 3>;
-> > +			pcie_intc0: interrupt-controller {
-> >  				interrupt-controller;
-> >  				#address-cells = <0>;
-> >  				#interrupt-cells = <1>;
-> > @@ -202,39 +222,31 @@ Examples for MT2712:
-> >  
-> >  Examples for MT7622:
-> >  
-> > -	pcie: pcie@1a140000 {
-> > +	pcie0: pcie@1a143000 {
-> >  		compatible = "mediatek,mt7622-pcie";
-> >  		device_type = "pci";
-> > -		reg = <0 0x1a140000 0 0x1000>,
-> > -		      <0 0x1a143000 0 0x1000>,
-> > -		      <0 0x1a145000 0 0x1000>;
-> > -		reg-names = "subsys", "port0", "port1";
-> > +		reg = <0 0x1a143000 0 0x1000>;
-> > +		reg-names = "port0";
-> > +		mediatek,pcie-cfg = <&pciecfg>;
-> >  		#address-cells = <3>;
-> >  		#size-cells = <2>;
-> > -		interrupts = <GIC_SPI 228 IRQ_TYPE_LEVEL_LOW>,
-> > -			     <GIC_SPI 229 IRQ_TYPE_LEVEL_LOW>;
-> > +		interrupts = <GIC_SPI 228 IRQ_TYPE_LEVEL_LOW>;
-> > +		interrupt-names = "pcie_irq";
-> >  		clocks = <&pciesys CLK_PCIE_P0_MAC_EN>,
-> > -			 <&pciesys CLK_PCIE_P1_MAC_EN>,
-> >  			 <&pciesys CLK_PCIE_P0_AHB_EN>,
-> > -			 <&pciesys CLK_PCIE_P1_AHB_EN>,
-> >  			 <&pciesys CLK_PCIE_P0_AUX_EN>,
-> > -			 <&pciesys CLK_PCIE_P1_AUX_EN>,
-> >  			 <&pciesys CLK_PCIE_P0_AXI_EN>,
-> > -			 <&pciesys CLK_PCIE_P1_AXI_EN>,
-> >  			 <&pciesys CLK_PCIE_P0_OBFF_EN>,
-> > -			 <&pciesys CLK_PCIE_P1_OBFF_EN>,
-> > -			 <&pciesys CLK_PCIE_P0_PIPE_EN>,
-> > -			 <&pciesys CLK_PCIE_P1_PIPE_EN>;
-> > -		clock-names = "sys_ck0", "sys_ck1", "ahb_ck0", "ahb_ck1",
-> > -			      "aux_ck0", "aux_ck1", "axi_ck0", "axi_ck1",
-> > -			      "obff_ck0", "obff_ck1", "pipe_ck0", "pipe_ck1";
-> > -		phys = <&pcie0_phy PHY_TYPE_PCIE>, <&pcie1_phy PHY_TYPE_PCIE>;
-> > -		phy-names = "pcie-phy0", "pcie-phy1";
-> > +			 <&pciesys CLK_PCIE_P0_PIPE_EN>;
-> > +		clock-names = "sys_ck0", "ahb_ck0", "aux_ck0",
-> > +			      "axi_ck0", "obff_ck0", "pipe_ck0";
-> > +
-> >  		power-domains = <&scpsys MT7622_POWER_DOMAIN_HIF0>;
-> >  		bus-range = <0x00 0xff>;
-> > -		ranges = <0x82000000 0 0x20000000  0x0 0x20000000  0 0x10000000>;
-> > +		ranges = <0x82000000 0 0x20000000  0x0 0x20000000  0 0x8000000>;
-> > +		status = "disabled";
-> >  
-> > -		pcie0: pcie@0,0 {
-> > +		slot0: pcie@0,0 {
-> >  			reg = <0x0000 0 0 0 0>;
-> >  			#address-cells = <3>;
-> >  			#size-cells = <2>;
-> > @@ -251,8 +263,34 @@ Examples for MT7622:
-> >  				#interrupt-cells = <1>;
-> >  			};
-> >  		};
-> > +	};
-> > +
-> > +	pcie1: pcie@1a145000 {
-> > +		compatible = "mediatek,mt7622-pcie";
-> > +		device_type = "pci";
-> > +		reg = <0 0x1a145000 0 0x1000>;
-> > +		reg-names = "port1";
-> > +		mediatek,pcie-cfg = <&pciecfg>;
-> > +		#address-cells = <3>;
-> > +		#size-cells = <2>;
-> > +		interrupts = <GIC_SPI 229 IRQ_TYPE_LEVEL_LOW>;
-> > +		interrupt-names = "pcie_irq";
-> > +		clocks = <&pciesys CLK_PCIE_P1_MAC_EN>,
-> > +			 /* designer has connect RC1 with p0_ahb clock */
-> > +			 <&pciesys CLK_PCIE_P0_AHB_EN>,
-> > +			 <&pciesys CLK_PCIE_P1_AUX_EN>,
-> > +			 <&pciesys CLK_PCIE_P1_AXI_EN>,
-> > +			 <&pciesys CLK_PCIE_P1_OBFF_EN>,
-> > +			 <&pciesys CLK_PCIE_P1_PIPE_EN>;
-> > +		clock-names = "sys_ck1", "ahb_ck1", "aux_ck1",
-> > +			      "axi_ck1", "obff_ck1", "pipe_ck1";
-> > +
-> > +		power-domains = <&scpsys MT7622_POWER_DOMAIN_HIF0>;
-> > +		bus-range = <0x00 0xff>;
-> > +		ranges = <0x82000000 0 0x28000000  0x0 0x28000000  0 0x8000000>;
-> > +		status = "disabled";
-> >  
-> > -		pcie1: pcie@1,0 {
-> > +		slot1: pcie@1,0 {
-> >  			reg = <0x0800 0 0 0 0>;
-> >  			#address-cells = <3>;
-> >  			#size-cells = <2>;
-> > -- 
-> > 2.18.0
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gV2VkLCBBdWcgMjYsIDIwMjAgYXQgMjozMCBQTSAnQW5kcmV5IEtvbm92YWxvdicgdmlhIGth
+c2FuLWRldgo8a2FzYW4tZGV2QGdvb2dsZWdyb3Vwcy5jb20+IHdyb3RlOgo+Cj4gT24gVHVlLCBB
+dWcgMjUsIDIwMjAgYXQgMTA6MjYgQU0gJ01hcmNvIEVsdmVyJyB2aWEga2FzYW4tZGV2Cj4gPGth
+c2FuLWRldkBnb29nbGVncm91cHMuY29tPiB3cm90ZToKPiA+Cj4gPiBPbiBUdWUsIDI1IEF1ZyAy
+MDIwIGF0IDAzOjU3LCBXYWx0ZXIgV3UgPHdhbHRlci16aC53dUBtZWRpYXRlay5jb20+IHdyb3Rl
+Ogo+ID4gPgo+ID4gPiBTeXpib3QgcmVwb3J0cyBtYW55IFVBRiBpc3N1ZXMgZm9yIHdvcmtxdWV1
+ZSBvciB0aW1lciwgc2VlIFsxXSBhbmQgWzJdLgo+ID4gPiBJbiBzb21lIG9mIHRoZXNlIGFjY2Vz
+cy9hbGxvY2F0aW9uIGhhcHBlbmVkIGluIHByb2Nlc3Nfb25lX3dvcmsoKSwKPiA+ID4gd2Ugc2Vl
+IHRoZSBmcmVlIHN0YWNrIGlzIHVzZWxlc3MgaW4gS0FTQU4gcmVwb3J0LCBpdCBkb2Vzbid0IGhl
+bHAKPiA+ID4gcHJvZ3JhbW1lcnMgdG8gc29sdmUgVUFGIG9uIHdvcmtxdWV1ZS4gVGhlIHNhbWUg
+bWF5IHN0YW5kIGZvciB0aW1lcy4KPiA+ID4KPiA+ID4gVGhpcyBwYXRjaHNldCBpbXByb3ZlcyBL
+QVNBTiByZXBvcnRzIGJ5IG1ha2luZyB0aGVtIHRvIGhhdmUgd29ya3F1ZXVlCj4gPiA+IHF1ZXVl
+aW5nIHN0YWNrIGFuZCB0aW1lciBzdGFjayBpbmZvcm1hdGlvbi4gSXQgaXMgdXNlZnVsIGZvciBw
+cm9ncmFtbWVycwo+ID4gPiB0byBzb2x2ZSB1c2UtYWZ0ZXItZnJlZSBvciBkb3VibGUtZnJlZSBt
+ZW1vcnkgaXNzdWUuCj4gPiA+Cj4gPiA+IEdlbmVyaWMgS0FTQU4gYWxzbyByZWNvcmRzIHRoZSBs
+YXN0IHR3byB3b3JrcXVldWUgYW5kIHRpbWVyIHN0YWNrcyBhbmQKPiA+ID4gcHJpbnRzIHRoZW0g
+aW4gS0FTQU4gcmVwb3J0LiBJdCBpcyBvbmx5IHN1aXRhYmxlIGZvciBnZW5lcmljIEtBU0FOLgo+
+ID4gPgo+ID4gPiBbMV1odHRwczovL2dyb3Vwcy5nb29nbGUuY29tL2cvc3l6a2FsbGVyLWJ1Z3Mv
+c2VhcmNoP3E9JTIydXNlLWFmdGVyLWZyZWUlMjIrcHJvY2Vzc19vbmVfd29yawo+ID4gPiBbMl1o
+dHRwczovL2dyb3Vwcy5nb29nbGUuY29tL2cvc3l6a2FsbGVyLWJ1Z3Mvc2VhcmNoP3E9JTIydXNl
+LWFmdGVyLWZyZWUlMjIlMjBleHBpcmVfdGltZXJzCj4gPiA+IFszXWh0dHBzOi8vYnVnemlsbGEu
+a2VybmVsLm9yZy9zaG93X2J1Zy5jZ2k/aWQ9MTk4NDM3Cj4gPiA+Cj4gPiA+IFdhbHRlciBXdSAo
+Nik6Cj4gPiA+IHRpbWVyOiBrYXNhbjogcmVjb3JkIHRpbWVyIHN0YWNrCj4gPiA+IHdvcmtxdWV1
+ZToga2FzYW46IHJlY29yZCB3b3JrcXVldWUgc3RhY2sKPiA+ID4ga2FzYW46IHByaW50IHRpbWVy
+IGFuZCB3b3JrcXVldWUgc3RhY2sKPiA+ID4gbGliL3Rlc3Rfa2FzYW4uYzogYWRkIHRpbWVyIHRl
+c3QgY2FzZQo+ID4gPiBsaWIvdGVzdF9rYXNhbi5jOiBhZGQgd29ya3F1ZXVlIHRlc3QgY2FzZQo+
+ID4gPiBrYXNhbjogdXBkYXRlIGRvY3VtZW50YXRpb24gZm9yIGdlbmVyaWMga2FzYW4KPiA+Cj4g
+PiBBY2tlZC1ieTogTWFyY28gRWx2ZXIgPGVsdmVyQGdvb2dsZS5jb20+Cj4KPiBSZXZpZXdlZC1i
+eTogQW5kcmV5IEtvbm92YWxvdiA8YW5kcmV5a252bEBnb29nbGUuY29tPgoKUmV2aWV3ZWQtYnk6
+IERtaXRyeSBWeXVrb3YgPGR2eXVrb3ZAZ29vZ2xlLmNvbT4KClRoYW5rcyEgVGhlIFVBRiByZXBv
+cnRzIHdpdGggUkNVIHN0YWNrcyB0aGF0IEkgc2VlIG5vdyBhcmUganVzdCDwn5Sl8J+UpfCflKUK
+Cj4gPiA+IC0tLQo+ID4gPgo+ID4gPiBDaGFuZ2VzIHNpbmNlIHYyOgo+ID4gPiAtIG1vZGlmeSBr
+YXNhbiBkb2N1bWVudCB0byBiZSBtb3JlIHJlYWRhYmxlLgo+ID4gPiAgIFRoYW5rcyBmb3IgTWFy
+Y28gc3VnZ2VzdGlvbi4KPiA+ID4KPiA+ID4gQ2hhbmdlcyBzaW5jZSB2MToKPiA+ID4gLSBUaGFu
+a3MgZm9yIE1hcmNvIGFuZCBUaG9tYXMgc3VnZ2VzdGlvbi4KPiA+ID4gLSBSZW1vdmUgdW5uZWNl
+c3NhcnkgY29kZSBhbmQgZml4IGNvbW1pdCBsb2cKPiA+ID4gLSByZXVzZSBrYXNhbl9yZWNvcmRf
+YXV4X3N0YWNrKCkgYW5kIGF1eF9zdGFjawo+ID4gPiAgIHRvIHJlY29yZCB0aW1lciBhbmQgd29y
+a3F1ZXVlIHN0YWNrLgo+ID4gPiAtIGNoYW5nZSB0aGUgYXV4IHN0YWNrIHRpdGxlIGZvciBjb21t
+b24gbmFtZS4KPiA+ID4KPiA+ID4gLS0tCj4gPiA+Cj4gPiA+IERvY3VtZW50YXRpb24vZGV2LXRv
+b2xzL2thc2FuLnJzdCB8ICA0ICsrLS0KPiA+ID4ga2VybmVsL3RpbWUvdGltZXIuYyAgICAgICAg
+ICAgICAgIHwgIDMgKysrCj4gPiA+IGtlcm5lbC93b3JrcXVldWUuYyAgICAgICAgICAgICAgICB8
+ICAzICsrKwo+ID4gPiBsaWIvdGVzdF9rYXNhbi5jICAgICAgICAgICAgICAgICAgfCA1NCArKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiA+ID4g
+bW0va2FzYW4vcmVwb3J0LmMgICAgICAgICAgICAgICAgIHwgIDQgKystLQo+ID4gPiA1IGZpbGVz
+IGNoYW5nZWQsIDY0IGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0pCj4gPiA+Cj4gPiA+IC0t
+Cj4gPiA+IFlvdSByZWNlaXZlZCB0aGlzIG1lc3NhZ2UgYmVjYXVzZSB5b3UgYXJlIHN1YnNjcmli
+ZWQgdG8gdGhlIEdvb2dsZSBHcm91cHMgImthc2FuLWRldiIgZ3JvdXAuCj4gPiA+IFRvIHVuc3Vi
+c2NyaWJlIGZyb20gdGhpcyBncm91cCBhbmQgc3RvcCByZWNlaXZpbmcgZW1haWxzIGZyb20gaXQs
+IHNlbmQgYW4gZW1haWwgdG8ga2FzYW4tZGV2K3Vuc3Vic2NyaWJlQGdvb2dsZWdyb3Vwcy5jb20u
+Cj4gPiA+IFRvIHZpZXcgdGhpcyBkaXNjdXNzaW9uIG9uIHRoZSB3ZWIgdmlzaXQgaHR0cHM6Ly9n
+cm91cHMuZ29vZ2xlLmNvbS9kL21zZ2lkL2thc2FuLWRldi8yMDIwMDgyNTAxNTY1NC4yNzc4MS0x
+LXdhbHRlci16aC53dSU0MG1lZGlhdGVrLmNvbS4KPiA+Cj4gPiAtLQo+ID4gWW91IHJlY2VpdmVk
+IHRoaXMgbWVzc2FnZSBiZWNhdXNlIHlvdSBhcmUgc3Vic2NyaWJlZCB0byB0aGUgR29vZ2xlIEdy
+b3VwcyAia2FzYW4tZGV2IiBncm91cC4KPiA+IFRvIHVuc3Vic2NyaWJlIGZyb20gdGhpcyBncm91
+cCBhbmQgc3RvcCByZWNlaXZpbmcgZW1haWxzIGZyb20gaXQsIHNlbmQgYW4gZW1haWwgdG8ga2Fz
+YW4tZGV2K3Vuc3Vic2NyaWJlQGdvb2dsZWdyb3Vwcy5jb20uCj4gPiBUbyB2aWV3IHRoaXMgZGlz
+Y3Vzc2lvbiBvbiB0aGUgd2ViIHZpc2l0IGh0dHBzOi8vZ3JvdXBzLmdvb2dsZS5jb20vZC9tc2dp
+ZC9rYXNhbi1kZXYvQ0FOcG1qTk92aiUyQiUzRHY3VkRWRFhwc1VOWjlvMCUyQktvSlZKczBNakxo
+d3IwWHBZY1lRWjVnJTQwbWFpbC5nbWFpbC5jb20uCj4KPiAtLQo+IFlvdSByZWNlaXZlZCB0aGlz
+IG1lc3NhZ2UgYmVjYXVzZSB5b3UgYXJlIHN1YnNjcmliZWQgdG8gdGhlIEdvb2dsZSBHcm91cHMg
+Imthc2FuLWRldiIgZ3JvdXAuCj4gVG8gdW5zdWJzY3JpYmUgZnJvbSB0aGlzIGdyb3VwIGFuZCBz
+dG9wIHJlY2VpdmluZyBlbWFpbHMgZnJvbSBpdCwgc2VuZCBhbiBlbWFpbCB0byBrYXNhbi1kZXYr
+dW5zdWJzY3JpYmVAZ29vZ2xlZ3JvdXBzLmNvbS4KPiBUbyB2aWV3IHRoaXMgZGlzY3Vzc2lvbiBv
+biB0aGUgd2ViIHZpc2l0IGh0dHBzOi8vZ3JvdXBzLmdvb2dsZS5jb20vZC9tc2dpZC9rYXNhbi1k
+ZXYvQ0FBZUhLJTJCeVZTaERQQ3hWS0RzT181U3dvTTJaRzd4N2J5VUo3NFB0Qjdla1k2MUwyWVEl
+NDBtYWlsLmdtYWlsLmNvbS4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtbWVkaWF0ZWsK
