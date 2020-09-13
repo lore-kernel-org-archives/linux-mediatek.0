@@ -2,75 +2,83 @@ Return-Path: <SRS0=V4X5=CW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 22262C43461
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Sep 2020 15:16:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3C553C43461
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Sep 2020 15:59:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 67D9A208DB
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Sep 2020 15:16:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5FCD620829
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Sep 2020 15:59:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="inlrrvFs";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="jGrWJuUP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 67D9A208DB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="u2OESePu";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="UG84Ed1g"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5FCD620829
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:To:From:
+	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=nk6z/9N10GhCNZZq/g6gmDvgZ3DuF6Wz1dFbnINekS8=; b=inlrrvFs2yLnoQTZqRyObsyzj
-	HMJhf6E/cdSa+1DdIz4C4HPaZzdsPo8w2ifSaLkWKzRxAhUpLEzorf0GjxEz4nQe49LrMq0BgMhcN
-	KU4FV5lEu8ZX50z6WeMT2fXWAmvOOcMZ+mhDcBDbhgvJdwbBpRsCeeiUz0wcf+Yxb7IGyPJrdKqly
-	tAwtKJeRF8yRgOSgFcvNbMnFJpBhZmnvXgcg5jDHopL60fqbuyIAIy9Ke0HaKl3fX7h0sp+U8jK5J
-	dIWRmjQ1sYy3mMMW0UzsBOEq1E1oUYCOv64HhXfQpDf5uiM5hm0X/k1iCWMSezmK/JhdLOHAuZVuM
-	bX8nIsrmQ==;
+	 bh=xom39+MbEfxOFk9+gbXdQYeCHc+DtTtgXrxFdiUzPUE=; b=u2OESePuRku2UlgJrFxy4n9UB
+	Ai9xtjHp56VRDwiRCIa/Zl5Hxrd4zqfsw1x5NGbinNOWZTzX4U+UtliY5bRwXcY1UuidEJR7Av0Ke
+	+67ZOBn/nkyBXSShRWoTx6zyUB49Rp50cNCPog7wG+AuqW6U3i/3dQr8nOpij1IeI1KI+GvOCGEs5
+	cCLPxC59kqX2vNrA5/PV9EvvUN/ySW5CuHVqbxvZ4Jf55T4vvy+NjQkDtSAhXW9WaW3Te2kaAs/ns
+	AdJE0dk+RhcJTnEZAttcGFaV5R/UV/VtVT6kU/fRHQGk+jHNU6WDDD84mBIKsh9Ee0O3eLGEYrrGV
+	u+br0OQag==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kHTjj-00011D-Ia; Sun, 13 Sep 2020 15:16:15 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kHUPZ-0003Up-Dl; Sun, 13 Sep 2020 15:59:29 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kHTjf-00010O-JC; Sun, 13 Sep 2020 15:16:14 +0000
-X-UUID: a26f4d72687047498c0f3f0a8fec7d98-20200913
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=tLwz3eUexrO8VmtKUD5bwX6LfX6CNIxcQtdRTSWer2M=; 
- b=jGrWJuUPURVjpcGq8PB1gpwmZGtRNXYjTMzpcIaEfwE9PUn7D38dAWaaLdGYJxc62mSMl7SdFTplv0fO7TxyKp+DvJf/ptD0ygQUzbAGL4SKOxfF/2D4nxOb9w1IN15S4rhiZAgCdmkbd5ZKbdJYYvNhb4eCsJoc6tYDaVnELUE=;
-X-UUID: a26f4d72687047498c0f3f0a8fec7d98-20200913
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yingjoe.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1799732497; Sun, 13 Sep 2020 07:15:59 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 13 Sep 2020 08:15:56 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 13 Sep 2020 23:15:54 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sun, 13 Sep 2020 23:15:54 +0800
-Message-ID: <1600010156.3039.5.camel@mtksdaap41>
-Subject: Re: [PATCH] i2c: mediatek: Fix generic definitions for bus frequencies
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-To: <qii.wang@mediatek.com>
-Date: Sun, 13 Sep 2020 23:15:56 +0800
-In-Reply-To: <1599890246-21191-1-git-send-email-qii.wang@mediatek.com>
-References: <1599890246-21191-1-git-send-email-qii.wang@mediatek.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
-MIME-Version: 1.0
-X-MTK: N
+ id 1kHUPV-0003Tx-MO; Sun, 13 Sep 2020 15:59:26 +0000
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 2CE1320829;
+ Sun, 13 Sep 2020 15:59:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1600012761;
+ bh=p8Bb6GMdDy7UnL5YOcByxpfmN6NE3ouR8FclJzeEgGs=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=UG84Ed1g84ovKlP/SjKDhStfhwy12ui3IbfietyjjY93NEwWTH/rLlzFpy2g09/bA
+ DrgXKav8M+LecsrbGoxrTK1acvLMr/Cl9V+bnQAKw5NgFs/ImlQakpQ/5fZG3ViAHB
+ GgZH9NyddT6Iq1WwplNL0wU5b5TAsqxITkr3M4TU=
+Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
+ helo=wait-a-minute.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <maz@kernel.org>)
+ id 1kHUPO-00BSZj-Ma; Sun, 13 Sep 2020 16:59:19 +0100
+Date: Sun, 13 Sep 2020 16:59:17 +0100
+Message-ID: <87lfhdr7l6.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Subject: Re: [PATCH v3 0/2] Add MStar interrupt controller support
+In-Reply-To: <20200902063344.1852-1-mark-pk.tsai@mediatek.com>
+References: <20200902063344.1852-1-mark-pk.tsai@mediatek.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL/10.8 EasyPG/1.0.0 Emacs/26.3
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 62.31.163.78
+X-SA-Exim-Rcpt-To: mark-pk.tsai@mediatek.com, robh+dt@kernel.org,
+ alix.wu@mediatek.com, daniel@0x0f.com, devicetree@vger.kernel.org,
+ jason@lakedaemon.net, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, tglx@linutronix.de, yj.chiang@mediatek.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200913_111613_429544_F70142E1 
-X-CRM114-Status: GOOD (  17.11  )
+X-CRM114-CacheID: sfid-20200913_115925_793202_C33B72D2 
+X-CRM114-Status: GOOD (  16.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,63 +90,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, wsa@the-dreams.de,
- leilk.liu@mediatek.com, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org, Andy
- Shevchenko <andriy.shevchenko@linux.intel.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, alix.wu@mediatek.com, jason@lakedaemon.net,
+ yj.chiang@mediatek.com, daniel@0x0f.com, linux-kernel@vger.kernel.org,
+ robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ tglx@linutronix.de, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 2020-09-12 at 13:57 +0800, qii.wang@mediatek.com wrote:
-> From: Qii Wang <qii.wang@mediatek.com>
+On Wed, 02 Sep 2020 07:33:42 +0100,
+Mark-PK Tsai <mark-pk.tsai@mediatek.com> wrote:
 > 
-> The master code needs to being sent when the speed is more than
-> I2C_MAX_FAST_MODE_PLUS_FREQ instead of
-> I2C_MAX_HIGH_SPEED_MODE_FREQ. Fix it.
-
-This was introduced by "i2c: drivers: Use generic definitions for bus
-frequencies". You should have
-Fixes: 90224e6468e1 ("i2c: drivers: Use generic definitions for bus
-frequencies")
-
-You can have my reviewed by after you add fixes.
-Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
-
-Joe.C
-
+> MStar contain a legacy interrupt controller that routes interrupts
+> to the GIC. SigmaStar and Mediatek TV SoCs also have this interrupt
+> controller IP.
 > 
-> Signed-off-by: Qii Wang <qii.wang@mediatek.com>
-> ---
->  drivers/i2c/busses/i2c-mt65xx.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-> index efc1404..0cbdfbe 100644
-> --- a/drivers/i2c/busses/i2c-mt65xx.c
-> +++ b/drivers/i2c/busses/i2c-mt65xx.c
-> @@ -681,8 +681,8 @@ static int mtk_i2c_calculate_speed(struct mtk_i2c *i2c, unsigned int clk_src,
->  	unsigned int cnt_mul;
->  	int ret = -EINVAL;
->  
-> -	if (target_speed > I2C_MAX_FAST_MODE_PLUS_FREQ)
-> -		target_speed = I2C_MAX_FAST_MODE_PLUS_FREQ;
-> +	if (target_speed > I2C_MAX_HIGH_SPEED_MODE_FREQ)
-> +		target_speed = I2C_MAX_HIGH_SPEED_MODE_FREQ;
->  
->  	max_step_cnt = mtk_i2c_max_step_cnt(target_speed);
->  	base_step_cnt = max_step_cnt;
-> @@ -759,7 +759,7 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
->  	for (clk_div = 1; clk_div <= max_clk_div; clk_div++) {
->  		clk_src = parent_clk / clk_div;
->  
-> -		if (target_speed > I2C_MAX_FAST_MODE_FREQ) {
-> +		if (target_speed > I2C_MAX_FAST_MODE_PLUS_FREQ) {
->  			/* Set master code speed register */
->  			ret = mtk_i2c_calculate_speed(i2c, clk_src,
->  						      I2C_MAX_FAST_MODE_FREQ,
+> Mark-PK Tsai (2):
+>   irqchip: irq-mst: Add MStar interrupt controller support
+>   dt-bindings: interrupt-controller: Add MStar interrupt controller
+
+Once the binding gets approved, I'll queue this for 5.10.
+
+Thanks,
+
+	M.
+
+-- 
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-mediatek mailing list
