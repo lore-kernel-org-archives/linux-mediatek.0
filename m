@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
 	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1B89AC43461
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 15:14:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 28531C433E2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 15:14:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C6B3220829
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 15:14:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BD320208B3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 15:14:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="c+kNgiuA";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Lq21MYxm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C6B3220829
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FVDmFz96";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WHTD1OJH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD320208B3
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,59 +26,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=siSfd56OX+toSQOA9H3p+1kMtVVXkSGpMi4Rg6zI1W8=; b=c+kNgiuAVdi4Z/atmkauC7cVs
-	5xGx9pWJhoJdi9++a8hhR/otH3TgJkDs8dG70zV3XkWcXmp035EPoSZpGjt1Fa0rFon8lpvmc7CVf
-	BuYt0vpFXNrE18tq7EBiIH7kx4eje/22eaXIv5XIxdpIDaNPBIpTxfpT8iV/17l81oVreTOfisrzX
-	j+ufMsKWBcz2JDb7qOSm2IBR5MgDv7x1nCRWyIPsGRbr1Kk4fjANs+MPhkDxYOrzenSp6OX1R7og3
-	PhLu5ydHkY+dTLIlXAzLhiH/tYXxd2vNJxY7mz98dKkbeMONkUJ1L+WxHgMnm5jvxT7ijAqg0mLvs
-	vx49Mq6lw==;
+	 bh=IhY47D0UXUPLvZ6vaACOQl9Dx7O5gDT0TdttLZVKLfc=; b=FVDmFz96bMTM1roI87HU2DSqS
+	BSHToABcgrjYUtbrIylic2C7T0L3N7zEfIdlBxEOnnrMBL4tsvlD5Vw7r4W2ke+7YcQXZ2UD9YeBr
+	vXFgE6g0c2gaOXWohw29VxDXRr0OqiL+az+mWnNRIlGI7Oa5qJYFnXlGLqaxmr/3iZx1hxsURUQxY
+	+/6L5hw6CaB4wdlW1wobEd/OLKH1kIKpUqF8X0pT5Ut7I09os/S8xQGmuvLgeAPI6fg7RuGi700gc
+	cjurTLN8ZLuFCd/zZ4vpQMnxmmF+Igd7B4C8GLIiu3eXAYTCt6pNvIGfKPDYL5peHgIRHWgkWoPf2
+	D6bAIiw3A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kHqBI-0002ec-JJ; Mon, 14 Sep 2020 15:14:12 +0000
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242])
+	id 1kHqBq-0002sW-FJ; Mon, 14 Sep 2020 15:14:46 +0000
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kHqB8-0002aQ-N3; Mon, 14 Sep 2020 15:14:03 +0000
-Received: by mail-oi1-x242.google.com with SMTP id a3so249551oib.4;
- Mon, 14 Sep 2020 08:14:02 -0700 (PDT)
+ id 1kHqBd-0002mO-DY; Mon, 14 Sep 2020 15:14:34 +0000
+Received: by mail-oi1-x243.google.com with SMTP id n2so272392oij.1;
+ Mon, 14 Sep 2020 08:14:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:autocrypt:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=pExX/qa1szkvPX8pYwNyLmNXDOdTczhRv94lptODYlY=;
- b=Lq21MYxmdCmBtqzyJGaS896KfxOo5bjKXJHhsFNVbjoifXPV9UDZrVxmQuZ6qPS7+o
- 3U1B2VGSZB3K3jp9OpHTtRlld94153F+I4jpf3916EOxDJK5nI78SegmsuzOXFgQRy7R
- X88qb/wg4A9Xxzi936IKQ441au0ulwgg1w5MtaNXSUBdNDbh+Khd44+RH8rveyGjXdBb
- lme/ZiLM+lXxOdO7JF58p31kppmMG6nQWzNTllnhyMX9MqqQ4956apV1CPUDNpAN9gnM
- ZxR3J+slz7o3bs3l7yrj7Pgaeeef+R+SNn6W78w4FIzcfBR/iO5twLID3CUYnCPE8AkE
- Tp2Q==
+ bh=qD8UOak9rcCgSS3n2z3fRwRhSVKqfGfQ7QFMsM1bLpY=;
+ b=WHTD1OJHvqY/Mnvgbhb9QxzsATBhHEjkHOU7A4ZvjqJ1GJdJXPvGk41f3EdkMTqnEG
+ Ro4mQJaqACiEbayqgnNIk+ju/FDcm54lN3Yqe1AkHZobEQvYYcXmP3RAc3J4lOMPctcw
+ qQNN65Av0Mz7QxDLktRntYxpxoJwU4g2pytPnPFbpeutJUKkcDomt922X31R24HuFdhH
+ 4FgE1aT7czoeJhAuGMVyhKRQKJqNf1MYazndwA7WEkAtyUQuoU7fvkLqcd7EsU3zQARG
+ FE6XfeIM4p+7VK5xDH+VMGZxIlnBSiB5Ddj8n3NbLNcP3Lu8VWXUUHSAaUjFYKy0GgRy
+ 2kSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=pExX/qa1szkvPX8pYwNyLmNXDOdTczhRv94lptODYlY=;
- b=c0zEzuNna9pIBbJeUEEhe9PxPCz/YcsnUsau7Ru3Sxt6RN7B24pXlTchy+FM6/s8PT
- r515wc95JzTQRTv7kElqtHI6BnjnYHAxbaow7otbvOPK62apdN/c33QV6qjxJI2BMqm9
- lgoy3HHpPyv3xOwHS/1LMCW11X9XfwS/vDLiIbfZeOCotkilKJwVwrnwGtVipawDmN9o
- uev9yraWKpWuU5eliKz7vNc3yzHqZVhgMrbkPDqmG8be8r+Gvz4R1b8oWfsHoAuOA/B1
- zyUg9gU9+3XHfaGWrgUDwHD2y3duAXz9qPGUOG3vepklTwp0M1PbH1h3gQDN2SgnQJS6
- 8m/g==
-X-Gm-Message-State: AOAM531+eg9wJCXHWTucz+othsDxIlibe/cgwaOoUJfdoi8T27ikJSJ2
- uHEntZZmOnO3cFFGkfsurJ8YxGu2uiU=
-X-Google-Smtp-Source: ABdhPJy66MZDQ76mM9RDDsow5oNvbzte8cjiDXlKDGeUpTels5KbtwNsyP2/155t35QSX+jqrEuAAQ==
-X-Received: by 2002:aca:db42:: with SMTP id s63mr8586805oig.4.1600096440910;
- Mon, 14 Sep 2020 08:14:00 -0700 (PDT)
+ bh=qD8UOak9rcCgSS3n2z3fRwRhSVKqfGfQ7QFMsM1bLpY=;
+ b=CDF4SuHfzhT6Vyw/2guBBHtfmmTdgYtqH/RiPW5I3XMYTZoLG1FjKfUZRjErolF7XF
+ kyhxugeV30ktevGVAAmmZlPttjx8SNV7CjcB9Ij/wtgqup+kpvLGTOoj8Nx3uczjvR+L
+ KGIfF8icqIr2HOyl69r3FOtlRF7GM8HDiPjwzJkNWh7hn5kYz+g3Gn6oFQjO9l4I5jai
+ a3MzEyak1vs/h/DF6g62uBmTNDGWKBjfW1t1Ygo+CK1dEN/Oao7GwSyuCeF1dGrJQvWk
+ mrYXniybQt6H0USzZhVRECDj7yG46NQ+ZuEov9/DB3krKSXrsRLn8v6RkVIKGRxk6ANR
+ EzKA==
+X-Gm-Message-State: AOAM530mBelfQFFFxgT62RjHh14MCFjTdnZ0+F7KRgt+JBHiXG/B9JCQ
+ LKdD3IapyUziKrVZvkV8ihM=
+X-Google-Smtp-Source: ABdhPJyu9UmM4FzHywSsK76o4er/josukRwvwNBlLN2jhwo+O1mjlNgZHu+kJIXr+z4owlFumgJpng==
+X-Received: by 2002:aca:5b03:: with SMTP id p3mr8612480oib.41.1600096471724;
+ Mon, 14 Sep 2020 08:14:31 -0700 (PDT)
 Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
  by smtp.gmail.com with ESMTPSA id
- n37sm3423980ota.20.2020.09.14.08.13.59
+ 126sm4287931oof.28.2020.09.14.08.14.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Sep 2020 08:14:00 -0700 (PDT)
-Subject: Re: [v4,1/5] dt-binding: mediatek: watchdog: fix the description of
- compatible
+ Mon, 14 Sep 2020 08:14:31 -0700 (PDT)
+Subject: Re: [v4,2/5] arm64: dts: mt8183: update watchdog device node
 To: Crystal Guo <crystal.guo@mediatek.com>, robh+dt@kernel.org,
  matthias.bgg@gmail.com
 References: <20200803071501.30634-1-crystal.guo@mediatek.com>
- <20200803071501.30634-2-crystal.guo@mediatek.com>
+ <20200803071501.30634-3-crystal.guo@mediatek.com>
 From: Guenter Roeck <linux@roeck-us.net>
 Autocrypt: addr=linux@roeck-us.net; keydata=
  xsFNBE6H1WcBEACu6jIcw5kZ5dGeJ7E7B2uweQR/4FGxH10/H1O1+ApmcQ9i87XdZQiB9cpN
@@ -123,16 +122,16 @@ Autocrypt: addr=linux@roeck-us.net; keydata=
  WkRwrSuCn7UG+qVWZeKEsFKFOkynOs3pVbcbq1pxbhk3TRWCGRU5JolI4ohy/7JV1TVbjiDI
  HP/aVnm6NC8of26P40Pg8EdAhajZnHHjA7FrJXsy3cyIGqvg9os4rNkUWmrCfLLsZDHD8FnU
  mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-Message-ID: <37c94b62-3802-e6b9-e02a-0d676b8e32d7@roeck-us.net>
-Date: Mon, 14 Sep 2020 08:13:59 -0700
+Message-ID: <01ab02d8-0154-f151-42da-4b46d85b46ac@roeck-us.net>
+Date: Mon, 14 Sep 2020 08:14:29 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200803071501.30634-2-crystal.guo@mediatek.com>
+In-Reply-To: <20200803071501.30634-3-crystal.guo@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200914_111402_803249_3FEF0255 
-X-CRM114-Status: GOOD (  17.28  )
+X-CRM114-CacheID: sfid-20200914_111433_541602_3035C8CB 
+X-CRM114-Status: GOOD (  18.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -153,38 +152,32 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 8/3/20 12:14 AM, Crystal Guo wrote:
-> The watchdog driver for MT2712 and MT8183 relies on DT data, so
-> the fallback compatible MT6589 won't work.
+> The watchdog driver for MT8183 relies on DT data, so the fallback
+> compatible MT6589 won't work, need to update watchdog device node
+> to sync with watchdog dt-binding document.
 > 
 > Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+Acked-by: Guenter Roeck <linux@roeck-us.net>
 
 > ---
->  Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> index 4dd36bd3f1ad..45eedc2c3141 100644
-> --- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> +++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> @@ -4,13 +4,13 @@ Required properties:
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 1e03c849dc5d..f8d835746ab8 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -310,8 +310,7 @@
+>  		};
 >  
->  - compatible should contain:
->  	"mediatek,mt2701-wdt", "mediatek,mt6589-wdt": for MT2701
-> -	"mediatek,mt2712-wdt", "mediatek,mt6589-wdt": for MT2712
-> +	"mediatek,mt2712-wdt": for MT2712
->  	"mediatek,mt6589-wdt": for MT6589
->  	"mediatek,mt6797-wdt", "mediatek,mt6589-wdt": for MT6797
->  	"mediatek,mt7622-wdt", "mediatek,mt6589-wdt": for MT7622
->  	"mediatek,mt7623-wdt", "mediatek,mt6589-wdt": for MT7623
->  	"mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
-> -	"mediatek,mt8183-wdt", "mediatek,mt6589-wdt": for MT8183
-> +	"mediatek,mt8183-wdt": for MT8183
->  	"mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
->  
->  - reg : Specifies base physical address and size of the registers.
+>  		watchdog: watchdog@10007000 {
+> -			compatible = "mediatek,mt8183-wdt",
+> -				     "mediatek,mt6589-wdt";
+> +			compatible = "mediatek,mt8183-wdt";
+>  			reg = <0 0x10007000 0 0x100>;
+>  			#reset-cells = <1>;
+>  		};
 > 
 
 
