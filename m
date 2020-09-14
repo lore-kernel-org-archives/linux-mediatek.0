@@ -2,88 +2,81 @@ Return-Path: <SRS0=gVFe=CX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 20770C43461
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 05:01:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 83F47C2BC11
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 05:01:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C0963208DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 05:01:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 14E81208C7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 05:01:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TctGsrxx";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="MPbn1O1O"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C0963208DB
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eSa8vgC+";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="KjZaVnVw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 14E81208C7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=y7cis7MUinnVH/eG8Ho2J5QsWscBd5ujStw60GsJuZA=; b=TctGsrxx+zCkj8pJP2+bBmrXV
-	hFuj/x3EW89u+VmAs0LVZ+YGFlRbdS4P8ONakMab2jf7boh9av01bDVCIu4AFLwA5Vx8nGYbNjY7k
-	jbgPZfYPkbkKUpXGb3GxbvMNducuqfYFTxvNbUcqjv/iCyXN16DanJCUpIpEvlJhYKHh4sU00UFVq
-	Cypy1Oyx/B6vNb39Vb0LYj+Q4i+G/c/Etri7U84ndrIOyxav6SQ0RmdiJ2wmaHAXUpQWOIivJukMn
-	j4hByIKAz2eonI1sh2PBeRjXO5zHGWD3gj52L3blou5UfZ0MNLhMscVBcwSK0PGOpV0pKhUYCdlk5
-	+gvlmiKbQ==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=EW8pOAVYX2my5hiyxc/P42eW3gPDNFERR0709utcHxA=; b=eSa8vgC+hRM09ZJPS8XO2erS2x
+	+7/oyG+H50ZzkvqNvYwlaCeYXjF6RAJe+8aFAyhUNALfyi5/MuJafxNxzDuREWEPT/H77ziA7VVTz
+	Hh/jidABIyZzYCgccd6HdeI+A2b4fvp3HDMnQlh5GCnZ9LcYMKeee1SyDRrfdeXdHrMGOzYKVIWH6
+	bjNm5XwbEdLFXJceu8bU4onWeXG0OjBYI3mZ/FkLaXjnUTvk6ibohKI6orijfvTAanZc6QO27xxHa
+	ma1L8J4sUvpj/l+xw1BpHtlWnyMtNFbY2VEnkyqEbGWCBRsUpVscttGeeZ1czB2aunCBhgARi+AZ1
+	ZC0ZzOUw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kHgc4-0005Te-8H; Mon, 14 Sep 2020 05:01:12 +0000
-Received: from m43-7.mailgun.net ([69.72.43.7])
+	id 1kHgcE-0005Wm-9V; Mon, 14 Sep 2020 05:01:22 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kHgbu-0005S8-KI
- for linux-mediatek@lists.infradead.org; Mon, 14 Sep 2020 05:01:07 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1600059665; h=Message-ID: References: In-Reply-To: Subject:
- Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
- MIME-Version: Sender; bh=incIykKufp2vCbdHmRPdZFVE3aFFHufJedlCIBpyTrM=;
- b=MPbn1O1OCTPpa/Hih/izYIsXT2Mc5uJGhom8RIRDWnpqjHx3d6Mnt59LuoVzdnyKk+iMGOda
- +PqwaUZAWE+r8bJtS0eJF2ivpe8xRb29WWmvb5+cWKzWZoT5GTMn+lFj5xowjBX72gSKEhsE
- LwyKawI+Sm5FrrjbfUjLAnraKgc=
-X-Mailgun-Sending-Ip: 69.72.43.7
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n07.prod.us-west-2.postgun.com with SMTP id
- 5f5ef8ef25e1ee75869ed566 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Mon, 14 Sep 2020 05:00:31
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 0CC5DC43391; Mon, 14 Sep 2020 05:00:30 +0000 (UTC)
-Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
- (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
- (No client certificate requested) (Authenticated sender: cang)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 4C38FC433C6;
- Mon, 14 Sep 2020 05:00:30 +0000 (UTC)
+ id 1kHgc8-0005Ti-7u
+ for linux-mediatek@lists.infradead.org; Mon, 14 Sep 2020 05:01:19 +0000
+X-UUID: 7ccfd77e43824052874d2a8da24c466c-20200913
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=y7J9twpVOC+9aQM50zQCULERXtYLnva5jEAZbeuXflc=; 
+ b=KjZaVnVwv19PLTf3JI9AxWP/Em7ojvwRcpUwofpCsxpXMItASRws+s3rIOPsTL3u1WqB1F7ELjgVCaYLkjA+g36Y5Aoesw5pwp9FD3gUSt14jL3x1xDQl6bgzE+hHGxXCa+GIa2H4JgFk2NsbkeIlxkX9sYVsw9AY5WdRVTxIi8=;
+X-UUID: 7ccfd77e43824052874d2a8da24c466c-20200913
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 145851321; Sun, 13 Sep 2020 21:01:09 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 13 Sep 2020 22:01:08 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 14 Sep 2020 13:00:54 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 14 Sep 2020 13:00:53 +0800
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <robh+dt@kernel.org>, <robh@kernel.org>, <mark.rutland@arm.com>,
+ <chunfeng.yun@mediatek.com>, <yingjoe.chen@mediatek.com>, <kishon@ti.com>,
+ <martin.petersen@oracle.com>, <avri.altman@wdc.com>,
+ <alim.akhtar@samsung.com>, <pedrom.sousa@synopsys.com>
+Subject: [PATCH v3 0/2] scsi: ufs-mediatek: Support performance mode for
+ inline encryption engine
+Date: Mon, 14 Sep 2020 13:00:50 +0800
+Message-ID: <20200914050052.3974-1-stanley.chu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Date: Mon, 14 Sep 2020 13:00:30 +0800
-From: Can Guo <cang@codeaurora.org>
-To: Bean Huo <huobean@gmail.com>
-Subject: Re: [PATCH v2 1/2] scsi: ufs: Abort tasks before clear them from
- doorbell
-In-Reply-To: <d151d6a2b53cfbd7bf3f9c9313b49c4c404c4c5a.camel@gmail.com>
-References: <1599099873-32579-1-git-send-email-cang@codeaurora.org>
- <1599099873-32579-2-git-send-email-cang@codeaurora.org>
- <1599627906.10803.65.camel@linux.ibm.com>
- <yq14ko62wn5.fsf@ca-mkp.ca.oracle.com>
- <1599706080.10649.30.camel@mtkswgap22>
- <1599718697.3851.3.camel@HansenPartnership.com>
- <1599725880.10649.35.camel@mtkswgap22>
- <1599754148.3575.4.camel@HansenPartnership.com>
- <010101747af387e9-f68ac6fa-1bc6-461d-92ec-dc0ee4486728-000000@us-west-2.amazonses.com>
- <d151d6a2b53cfbd7bf3f9c9313b49c4c404c4c5a.camel@gmail.com>
-Message-ID: <030cecc931ef5d210c89d4541c2adea2@codeaurora.org>
-X-Sender: cang@codeaurora.org
-User-Agent: Roundcube Webmail/1.3.9
+X-TM-SNTS-SMTP: B50865B5C0F509377B995F4AA3A5CBB12A52DFF2A2433CB0F43AFAD9473E04A12000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200914_010105_554028_8BD23B34 
-X-CRM114-Status: GOOD (  22.55  )
+X-CRM114-CacheID: sfid-20200914_010116_469640_499598EE 
+X-CRM114-Status: UNSURE (   8.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,69 +88,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>,
- rnayak@codeaurora.org, linux-scsi@vger.kernel.org,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- open list <linux-kernel@vger.kernel.org>, saravanak@google.com,
- nguyenb@codeaurora.org, ziqichen@codeaurora.org,
- James Bottomley <James.Bottomley@hansenpartnership.com>,
- Avri Altman <avri.altman@wdc.com>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, salyzyn@google.com,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Stanley Chu <stanley.chu@mediatek.com>, kernel-team@android.com,
- Bart Van Assche <bvanassche@acm.org>, hongwus@codeaurora.org,
- asutoshd@codeaurora.org
+Cc: andy.teng@mediatek.com, cc.chou@mediatek.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, henryc.chen@mediatek.com, jiajie.hao@mediatek.com,
+ linux-mediatek@lists.infradead.org, liwei213@huawei.com,
+ vivek.gautam@codeaurora.org, arvin.wang@mediatek.com, matthias.bgg@gmail.com,
+ Stanley Chu <stanley.chu@mediatek.com>, chaotian.jing@mediatek.com,
+ peter.wang@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-09-11 17:09, Bean Huo wrote:
-> On Fri, 2020-09-11 at 02:16 +0000, Can Guo wrote:
->> > >
->> > > So your resolution looks good to me.
->> > >
->> > > Thanks so much : )
->> >
->> > You're welcome ... but just remember I have to explain this to
->> > Linus
->> > when the merge window opens.  It would be a lot easier if this
->> > hadn't
->> > happened so please don't make it any worse ...
->> >
->> > James
->> 
->> Sorry that my changes got you confused and thank you for help
->> resolve
->> the
->> conflicts. My change ("scsi: ufs: Abort tasks before clearing them
->> from
->> doorbell") is to serve my fixes to ufs error recovery which only got
->> picked
->> up on scsi-queue-5.10. So I checked out to scsi-queue-5.10 and made
->> my
->> changes on the tip of scsi-queue-5.10, below 2 changes were not even
->> present in scsi-queue-5.10 back that time.
-> 
-> I mentioned here https://patchwork.kernel.org/patch/11734713/
-> 
-> this change (scsi: ufs: Abort tasks before clearing them from doorbell)
-> has conflicts with the scsi-fixes branch. I don't know which branch is
-> the main branch we should focus on.
-> 
-> 
-> Bean
+Hi Martin, Rob, Avri,
 
-Yeah, I know that one, but I was not even working on scsi-fixes branch
-at that time. Now I have two more fixes to ufshcd_abort(), not sure
-which branch I should work on, so asking the same here.
+This series adds high-performance mode support for MediaTek UFS inline encryption engine.
+This feature is only required in specific platforms, i.e., MT8192 series.
 
-Regards,
+Please help consider this patch set in kernel v5.10.
 
-Can Guo.
+Thanks.
 
+Changes since v2:
+	- Specify required minimum vcore voltage in device tree instead of hard-coded.
+
+Changes since v1:
+	- Remove unnecessary printf.
+
+Stanley Chu (2):
+  scsi: ufs-mediatek: Support performance mode for inline encryption
+    engine
+  dt-bindings: ufs-mediatek: Add mt8192-ufshci compatible string
+
+ .../devicetree/bindings/ufs/ufs-mediatek.txt  |   4 +-
+ drivers/scsi/ufs/ufs-mediatek.c               | 176 +++++++++++++++++-
+ drivers/scsi/ufs/ufs-mediatek.h               |  22 +++
+ 3 files changed, 195 insertions(+), 7 deletions(-)
+
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
