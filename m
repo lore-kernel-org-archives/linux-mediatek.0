@@ -2,78 +2,84 @@ Return-Path: <SRS0=gVFe=CX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E762AC43461
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 08:05:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8C97CC43461
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 08:06:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 712B3204FD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 08:05:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2BFF421741
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 08:06:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RCzSVmEr";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="l6FCLiA7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 712B3204FD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UsHWkpOH";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="SUDEULP4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2BFF421741
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=j4HsYHv7gJg0HwA2cSRwPAyTkXHhAADaTwzR6MA+rXY=; b=RCzSVmErj0Dq2H2WUPbWcbILK
-	0riuvEPQ6t11J0otmbwWlhAoxOiml3DpB286JiOOs8Vd7Ji1q18em83njcOcZLoKvSK/q+Db+Lrr7
-	WiuB28NdUGmZ+0YRYkKtpkQScncu99rnV+mSHsXczwwNre0Q1v5r+sd1LafzYPgTo4D+o5Zs3u9JX
-	ekzqmLxVdjKclNELsM5pABB9x4uKygYaPvljQUqg5oJSqhvRWatq7qmh7nFupsPfsZY+hH5UtfgcU
-	Y/WlPLVCHDoIO3a+2q9IOXCWh2mV8cpuiO+bB04+z9DyTI1ZbWtB9mBEMviQeKw5U2css/lzr7Z42
-	UX5a72KxQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=T1kv0qxRZWCk9XIf/C+KYKUTPqgZEIUJZO4AgaxbaZE=; b=UsHWkpOH4kgOefmAdxkMEtml5o
+	kB+a8UU7E0pe1meDwevXZdnbCYDUZ8kRPKvaaPHyz9FJo+DakxT7O847UHXnelYgUa9EDBPsBMLqf
+	ESp8UYjYUA3KG/kh/it6hyuzCi6ZjQ6gmnwKOmR6T5I9OAaRk19EVQak3cbPL8EDUa1Gi348le1NU
+	ItR29AttDlNCepB4qdIjXxpBJwBq4D513AAA6Xtsz2X86fMH4lBTq3GMzwNXohiYNmtl+R9BZNjDP
+	KmLGZjlIh/6Jggb+Yp1sXxIJy8os67P1Op9pcSqFDN/nrKrExqYCr+OxpVvn6fN+inKn9JL2dXNaL
+	FgCWio4w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kHjUZ-0005iu-6m; Mon, 14 Sep 2020 08:05:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kHjVR-0005uY-LJ; Mon, 14 Sep 2020 08:06:33 +0000
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kHjUV-0005iD-FI; Mon, 14 Sep 2020 08:05:38 +0000
-X-UUID: acf1ab62da4945e4b372fc16e69030aa-20200914
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=o4+81MO/aJXsuzsrMQotH3ExSOvHSioLCD4f6dFJz2w=; 
- b=l6FCLiA7CJi3pAqSW4Cxm/8GBgjW4L6Ft2+GXzUAVTo5Y51qYZWyjZPjj+vUJqg7T/QEgu2STC017M8xWY2DUtZLSqt6psW2BkyPoq7AK/pReqqWCYd5BgAEl3EiVl7uzo/4tXOEiWnCvy13/3lk3DmBtYZU3midJqY7LytMqpc=;
-X-UUID: acf1ab62da4945e4b372fc16e69030aa-20200914
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1458273465; Mon, 14 Sep 2020 00:05:28 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 14 Sep 2020 01:05:26 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by mtkmbs08n2.mediatek.inc
- (172.21.101.56) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 14 Sep 2020 16:05:24 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 14 Sep 2020 16:05:21 +0800
-Message-ID: <1600070601.27773.14.camel@mhfsdcap03>
-Subject: Re: [PATCH v4 3/3] iommu/mediatek: add support for MT8167
-From: Yong Wu <yong.wu@mediatek.com>
-To: Fabien Parent <fparent@baylibre.com>
-Date: Mon, 14 Sep 2020 16:03:21 +0800
-In-Reply-To: <20200907101649.1573134-3-fparent@baylibre.com>
-References: <20200907101649.1573134-1-fparent@baylibre.com>
- <20200907101649.1573134-3-fparent@baylibre.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kHjVO-0005sZ-0W
+ for linux-mediatek@lists.infradead.org; Mon, 14 Sep 2020 08:06:31 +0000
+Received: by mail-pj1-x1042.google.com with SMTP id md22so4819321pjb.0
+ for <linux-mediatek@lists.infradead.org>; Mon, 14 Sep 2020 01:06:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3ox4aNsfcgsY0RPX5lognE3py6DN8GEMGKvGSpSvhHM=;
+ b=SUDEULP4c/8tVHVk7xVbOPiooBoKPwQaZtEi0R6EjvskfHBD+R4GPSOXG962UXjQdn
+ hjEMWNOjCkbELEQDt7lAdtBKEDCKdfaZ/nE6LqBXKxUFgaACGT1SL+AfqiRWV8dTMPOI
+ 8IsvGl5Q4uG7ePFhBrYOXAQZi6rmMGR8iKa5s=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3ox4aNsfcgsY0RPX5lognE3py6DN8GEMGKvGSpSvhHM=;
+ b=NzcXah5XNQDVrsF9cRli0+EZLMMdrPBGCgk6ZjicJ/Ps7/bGWESo9GGsQgliA3YSDy
+ lyId9uSSi38OEZd3x/UU2viaEU2XlBAgebMBbAFHNUbkJFegB+mIvDnCV8rNT9s9HbrO
+ 2nsZScq3qad4oE6ed9fVAXenvKCcyr9+mYOVKiLsFFbdhu8WyXGbZZIcNqfX4lQR5elB
+ WM/eqoOiNhrAVaLru8hOfWTCqTnyTOKAW4BHD0oOmKhJZbjOYpccldmnuz4sZFwWUMZ9
+ /HaC4kOyuR9prPghRY5KSDn/4CA96tBGmSGj9jSui8CkRUdXLPBofI5LAgqt8ar+kemc
+ 6qEA==
+X-Gm-Message-State: AOAM531oOHFvw5nfOyv2jTEk2XcJtjzNJdsz+b6OLAEhTA7fsdQ6K4QA
+ DDqGcUnXds3yCbfasryPr/EjgQ==
+X-Google-Smtp-Source: ABdhPJx6+lhvNIvr9+VBanO1ggP5pmi1cHUcVKYwpq1KgsWsAXysHgZC4IqNJJqD6VKRGJo4WVtKAg==
+X-Received: by 2002:a17:90a:49c8:: with SMTP id
+ l8mr12375320pjm.24.1600070786866; 
+ Mon, 14 Sep 2020 01:06:26 -0700 (PDT)
+Received: from localhost ([2401:fa00:1:10:de4a:3eff:fe7d:d39c])
+ by smtp.gmail.com with ESMTPSA id b10sm3811152pgm.64.2020.09.14.01.06.22
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Sep 2020 01:06:25 -0700 (PDT)
+From: Cheng-Yi Chiang <cychiang@chromium.org>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH v11 0/3] Add documentation and machine driver for SC7180 sound
+ card
+Date: Mon, 14 Sep 2020 16:06:16 +0800
+Message-Id: <20200914080619.4178587-1-cychiang@chromium.org>
+X-Mailer: git-send-email 2.28.0.618.gf4bc123cb7-goog
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 2B396821207B0DA67FA40430B531D336757789FCC3ACCCB9E04E67630009AD4F2000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200914_040535_722179_F6DF8DA5 
-X-CRM114-Status: GOOD (  18.93  )
+X-CRM114-CacheID: sfid-20200914_040630_100121_2E0AB3D6 
+X-CRM114-Status: GOOD (  17.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,75 +91,139 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, joro@8bytes.org, linux-kernel@vger.kernel.org,
- iommu@lists.linux-foundation.org, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, miles.chen@mediatek.com,
- matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+Cc: Taniya Das <tdas@codeaurora.org>, alsa-devel@alsa-project.org,
+ Banajit Goswami <bgoswami@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>,
+ Liam Girdwood <lgirdwood@gmail.com>, Rohit kumar <rohitkr@codeaurora.org>,
+ Cheng-Yi Chiang <cychiang@chromium.org>, Patrick Lai <plai@codeaurora.org>,
+ linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>,
+ dgreid@chromium.org, Jaroslav Kysela <perex@perex.cz>,
+ devicetree@vger.kernel.org, tzungbi@chromium.org,
+ Srinivasa Rao <srivasam@codeaurora.org>, Stephan Gerhold <stephan@gerhold.net>,
+ linux-arm-msm@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, dianders@chromium.org,
+ Takashi Iwai <tiwai@suse.com>, Mark Brown <broonie@kernel.org>,
+ Srini Kandagatla <srinivas.kandagatla@linaro.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2020-09-07 at 12:16 +0200, Fabien Parent wrote:
-> Add support for the IOMMU on MT8167
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Note:
+- The machine driver patch is made by the collaboration of
+  Cheng-Yi Chiang <cychiang@chromium.org>
+  Rohit kumar <rohitkr@codeaurora.org>
+  Ajit Pandey <ajitp@codeaurora.org>
+  But Ajit has left codeaurora.
+- This patch series needs HDMI DAI name SC7180_LPASS_DP defined in sc7180-lpass.h.
+  It will be posted in the newer patchset of https://patchwork.kernel.org/patch/11745565/
 
-Reviewed-by: Yong Wu <yong.wu@mediatek.com>
+Changes from v1 to v2:
+- Ducumentation: Addressed all suggestions from Doug.
+- Machine driver:
+  - Fix comment style for license.
+  - Sort includes.
+  - Remove sc7180_snd_hw_params.
+  - Remove sc7180_dai_init and use aux device instead for headset jack registration.
+  - Statically define format for Primary MI2S.
+  - Atomic is not a concern because there is mutex in card to make sure
+    startup and shutdown happen sequentially.
+  - Fix missing return -EINVAL in startup.
+  - Use static sound card.
+  - Use devm_kzalloc to avoid kfree.
 
-> ---
-> 
-> V4;
-> 	* Removed HAS_4GB_MODE flag since this SoC does not seem to support it
-> V3:
-> 	* use LEGACY_IVRP_PADDR flag instead of using a platform data member
-> V2:
-> 	* removed if based on m4u_plat, and using instead the new
-> 	  has_legacy_ivrp_paddr member that was introduced in patch 2.
-> 
-> ---
->  drivers/iommu/mtk_iommu.c | 8 ++++++++
->  drivers/iommu/mtk_iommu.h | 1 +
->  2 files changed, 9 insertions(+)
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index b1f85a7e9346..4ff071eb5279 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -817,6 +817,13 @@ static const struct mtk_iommu_plat_data mt6779_data = {
->  	.larbid_remap  = {{0}, {1}, {2}, {3}, {5}, {7, 8}, {10}, {9}},
->  };
->  
-> +static const struct mtk_iommu_plat_data mt8167_data = {
-> +	.m4u_plat     = M4U_MT8167,
-> +	.flags        = RESET_AXI | HAS_LEGACY_IVRP_PADDR,
-> +	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
-> +	.larbid_remap = {{0}, {1}, {2}}, /* Linear mapping. */
-> +};
-> +
->  static const struct mtk_iommu_plat_data mt8173_data = {
->  	.m4u_plat     = M4U_MT8173,
->  	.flags	      = HAS_4GB_MODE | HAS_BCLK | RESET_AXI |
-> @@ -835,6 +842,7 @@ static const struct mtk_iommu_plat_data mt8183_data = {
->  static const struct of_device_id mtk_iommu_of_ids[] = {
->  	{ .compatible = "mediatek,mt2712-m4u", .data = &mt2712_data},
->  	{ .compatible = "mediatek,mt6779-m4u", .data = &mt6779_data},
-> +	{ .compatible = "mediatek,mt8167-m4u", .data = &mt8167_data},
->  	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
->  	{ .compatible = "mediatek,mt8183-m4u", .data = &mt8183_data},
->  	{}
-> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> index 122925dbe547..df32b3e3408b 100644
-> --- a/drivers/iommu/mtk_iommu.h
-> +++ b/drivers/iommu/mtk_iommu.h
-> @@ -39,6 +39,7 @@ enum mtk_iommu_plat {
->  	M4U_MT2701,
->  	M4U_MT2712,
->  	M4U_MT6779,
-> +	M4U_MT8167,
->  	M4U_MT8173,
->  	M4U_MT8183,
->  };
+Changes from v2 to v3:
+- Ducumentation: Addressed suggestions from Srini.
+- Machine driver:
+  - Reuse qcom_snd_parse_of to parse properties.
+  - Remove playback-only and capture-only.
+  - Misc fixes to address comments.
+
+Changes from v3 to v4:
+- Ducumentation: Addressed suggestions from Rob.
+ - Remove definition of dai.
+ - Use 'sound-dai: true' for sound-dai schema.
+ - Add reg property to pass 'make dt_binding_check' check although reg is not used in the driver.
+- Machine driver:
+ - Add Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+
+Changes from v4 to v5:
+- Documentation: Addressed suggestions from Rob.
+ - Add definition for "#address-cells" and "#size-cells".
+ - Add additionalProperties: false
+ - Add required properties.
+
+Changes from v5 to v6:
+- Documentation: Addressed suggestions from Rob.
+ - Drop contains in compatible strings.
+ - Only allow dai-link@[0-9]
+ - Remove reg ref since it has a type definition already.
+
+Changes from v6 to v7
+- Documentation:
+  - Add headset-jack and hdmi-jack to specify the codec
+    responsible for jack detection.
+- HDMI codec driver:
+  - Use component set_jack ops instead of exporting hdmi_codec_set_jack_detect.
+- Machine driver:
+  - Removed aux device following Stephan's suggestion.
+  - Use headset-jack and hdmi-jack to specify the codec
+    responsible for jack detection.
+  - Add support for HDMI(actually DP) playback.
+
+Changes from v7 to v8
+- Documentation:
+  - Remove headset-jack and hdmi-jack.
+- Machine driver:
+  - Let machine driver decide whether there is a jack on the DAI.
+
+Changes from v8 to v9
+- hdmi-codec driver:
+  - Fixed the naming.
+- Machine driver:
+  - Fixed unused fields.
+  - Moved snd_soc_card_set_drvdata
+  - Keep the naming of HDMI as dai name until v5 of lpass-hdmi patches.
+
+Changes from v9 to v10
+- Documentation:
+  - Let compatible string be more specific for board configuration to allow
+    for future changes.
+- Machine driver:
+  - Fixed unused include and macro.
+  - Add temporary macro SC7180_LPASS_DP for future change in sc7180-lpass.h.
+  - Let sound card be dynamically allocated.
+  - Change compatible string accordingly.
+
+Changes from v10 to v11
+- Machine driver:
+  - Use temporary macro LPASS_DP_RX for future change in sc7180-lpass.h.
+
+Ajit Pandey (1):
+  ASoC: qcom: sc7180: Add machine driver for sound card registration
+
+Cheng-Yi Chiang (2):
+  ASoC: hdmi-codec: Use set_jack ops to set jack
+  ASoC: qcom: dt-bindings: Add sc7180 machine bindings
+
+ .../bindings/sound/qcom,sc7180.yaml           | 130 +++++++++
+ include/sound/hdmi-codec.h                    |   3 -
+ sound/soc/codecs/hdmi-codec.c                 |  12 +-
+ sound/soc/mediatek/mt8173/mt8173-rt5650.c     |   5 +-
+ .../mediatek/mt8183/mt8183-da7219-max98357.c  |   5 +-
+ .../mt8183/mt8183-mt6358-ts3a227-max98357.c   |   5 +-
+ sound/soc/qcom/Kconfig                        |  12 +
+ sound/soc/qcom/Makefile                       |   2 +
+ sound/soc/qcom/sc7180.c                       | 266 ++++++++++++++++++
+ sound/soc/rockchip/rockchip_max98090.c        |   3 +-
+ 10 files changed, 421 insertions(+), 22 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
+ create mode 100644 sound/soc/qcom/sc7180.c
+
+-- 
+2.28.0.618.gf4bc123cb7-goog
+
 
 _______________________________________________
 Linux-mediatek mailing list
