@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3C946C433E2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 03:14:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F37D6C433E2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 03:15:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E2FB3208C7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 03:14:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9E8D8208C7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 03:15:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aWL9f6qz";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ngZem2Tu"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E2FB3208C7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UdtO8xXA";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="OBMW2y3/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9E8D8208C7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=m6ruRNv7zsKFy46ixrSFOWES94Yun7AG95Y0xxVdI5A=; b=aWL9f6qzvrLFapWMAVv+ErB+/
-	tdyrOlt23blDBQ01Vj5p6hBsBxreoctDP6Z+ZOHcJRRV2EsF6IMggVAaPBuXIQ+TZtbiZ/XynKa8E
-	DcHwvgyTxYzzx8cKVGPqUX/3JHhGUZi3HEGQCX9Yvjx2iii5SQiNnq/g3BLB6Rqsb1E4fU9f+lzry
-	H++mnB4JXsgXqzesfMvNtyt2VCSrpAUii17xwLgbA++KMk9t5ItxqEqQOzMDJidPIPgXeoqDuEgyZ
-	gM+zF2fSzJMlNZwHCkhQ6SACN2S9aBzmbXXCrBwt7RPkLLiGfqgbLMjU+M0QbTnUEQTKXF19aJR5g
-	5N5eLuqeg==;
+	 bh=XASY+OjCRq+2QKklEXAIuJf1AVkXRU9D+M1WjzfEFac=; b=UdtO8xXAY7hJZTYJT7YigHlkT
+	y6wD5uWlvm+cWTlvYnR3FYlzhkwp8jarGSTeC4O5nvJKZcnQ9IjKngpu2orxfB7yizXQHGFYK5/Rj
+	BPaGL8q6UWbQ+ajmsI3hTXwWTNzjnWQuol/ARWMNah6hK6MscVkQogtgLqLx1eJTBYI25N25MNQAU
+	Ns2D3macnTm+rpglg5TcOyQS/GK5MmLSqh7YEgc/aeNVGb7U9WXfdVGngCEGpPOp8AsExMuQ4Rn05
+	T66qWUayK6YzLDIXOeF9HVMahNvBK9ygvdDHQcI/HGSaJekzIGnilWx89sPTXLhzrhJoHxmmW/r9a
+	EMWg1h5AA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kHewW-0004CO-Pa; Mon, 14 Sep 2020 03:14:12 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kHexE-0004eN-HN; Mon, 14 Sep 2020 03:14:56 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kHeug-00033k-QM; Mon, 14 Sep 2020 03:12:19 +0000
-X-UUID: 203b39dd47224eeaad7c04cc4e9444b9-20200913
+ id 1kHewJ-00041x-Ac; Mon, 14 Sep 2020 03:14:01 +0000
+X-UUID: d73b3d08c33842f1a482c58777604801-20200913
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=kIXkw28ypeSGlrofrHlotskDcpcv49IInPwVf49Lb8I=; 
- b=ngZem2TuPv1S1IfcLVrk2WYZ0IdSXDuPH3YTxywmf/cTxKlqVeabyAqQyOfxLstfhR2OlZlgUKBm7G4SWSLtfH74Cu0Pxe9ofbkQoTTm6+1VvvaEJ83PkI3zMaGC8RQ5PqidSnDnjkZFAYEKVXdMP3HcLJuoaURRXsZrU3YhUAU=;
-X-UUID: 203b39dd47224eeaad7c04cc4e9444b9-20200913
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=nOOM9yhncstnm5UMFYqxtAtm4GAlmiu3+ZgwHqj+zAM=; 
+ b=OBMW2y3/AX+IBgx6Zg2YYoKGYryRBGSKbkygopaLP+PhS4DBdnBcPkSM30sd7ECZRmxQjKEEFyyovkPzEBZMhQoGJmJZySBQyaSJpbIDUXxnLQ6N+2EARf5ebKbcpTDTWm3V0mEilm6oCqQbpX+dLfI8hYo5czVNsC5Gt5c7J3c=;
+X-UUID: d73b3d08c33842f1a482c58777604801-20200913
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <henryc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 811806074; Sun, 13 Sep 2020 19:11:53 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 13 Sep 2020 20:04:58 -0700
+ with ESMTP id 395960914; Sun, 13 Sep 2020 19:13:54 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 13 Sep 2020 20:04:50 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 14 Sep 2020 11:04:51 +0800
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 14 Sep 2020 11:04:48 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 14 Sep 2020 11:04:50 +0800
+ Frontend Transport; Mon, 14 Sep 2020 11:04:48 +0800
 From: Henry Chen <henryc.chen@mediatek.com>
 To: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Viresh Kumar
  <vireshk@kernel.org>, Stephen Boyd <swboyd@chromium.org>, Ryan Case
  <ryandcase@chromium.org>, Mark Brown <broonie@kernel.org>
-Subject: [PATCH V5 17/17] arm64: dts: mt8192: add dvfsrc regulator nodes
-Date: Mon, 14 Sep 2020 11:04:44 +0800
-Message-ID: <1600052684-21198-18-git-send-email-henryc.chen@mediatek.com>
+Subject: [PATCH V5 09/17] dt-bindings: interconnect: add MT8183 interconnect
+ dt-bindings
+Date: Mon, 14 Sep 2020 11:04:36 +0800
+Message-ID: <1600052684-21198-10-git-send-email-henryc.chen@mediatek.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1600052684-21198-1-git-send-email-henryc.chen@mediatek.com>
 References: <1600052684-21198-1-git-send-email-henryc.chen@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: E8B3BCFADA3E14EE772850CEBCED82DCA301B421797C3B3E5383680409F1D8C02000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200913_231219_052388_628EA6C6 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20200913_231359_572958_4761E183 
+X-CRM114-Status: GOOD (  15.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,7 +90,7 @@ Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@google.com>,
  Mike
  Turquette <mturquette@linaro.org>, James Liao <jamesjj.liao@mediatek.com>,
  linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- "henryc.chen" <henryc.chen@mediatek.com>, Fan Chen <fan.chen@mediatek.com>,
+ Henry Chen <henryc.chen@mediatek.com>, Fan Chen <fan.chen@mediatek.com>,
  devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
  Arvin Wang <arvin.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
@@ -98,32 +98,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "henryc.chen" <henryc.chen@mediatek.com>
-
-Add dvfsrc regulator nodes which is for MT8192-based platforms
+Add interconnect provider dt-bindings for MT8183.
 
 Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+ .../devicetree/bindings/soc/mediatek/dvfsrc.txt        |  2 ++
+ include/dt-bindings/interconnect/mtk,mt8183-emi.h      | 18 ++++++++++++++++++
+ 2 files changed, 20 insertions(+)
+ create mode 100644 include/dt-bindings/interconnect/mtk,mt8183-emi.h
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 647c57a..9006670 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -422,6 +422,12 @@
- 			compatible = "mediatek,mt8192-dvfsrc";
- 			reg = <0 0x10012000 0 0x1000>;
- 			#interconnect-cells = <1>;
-+			dvfsrc_vcore: dvfsrc-vcore {
-+				regulator-name = "dvfsrc-vcore";
-+				regulator-min-microvolt = <575000>;
-+				regulator-max-microvolt = <725000>;
-+				regulator-always-on;
-+			};
- 		};
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
+index d5a47d8..76ca61d 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
++++ b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
+@@ -14,6 +14,7 @@ Required Properties:
+ - clock-names: Must include the following entries:
+ 	"dvfsrc": DVFSRC module clock
+ - clocks: Must contain an entry for each entry in clock-names.
++- #interconnect-cells : should contain 1
  
- 		systimer: timer@10017000 {
+ Example:
+ 
+@@ -22,4 +23,5 @@ Example:
+ 		reg = <0 0x10012000 0 0x1000>;
+ 		clocks = <&infracfg CLK_INFRA_DVFSRC>;
+ 		clock-names = "dvfsrc";
++		#interconnect-cells = <1>;
+ 	};
+diff --git a/include/dt-bindings/interconnect/mtk,mt8183-emi.h b/include/dt-bindings/interconnect/mtk,mt8183-emi.h
+new file mode 100644
+index 0000000..2a54856
+--- /dev/null
++++ b/include/dt-bindings/interconnect/mtk,mt8183-emi.h
+@@ -0,0 +1,18 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++
++#ifndef __DT_BINDINGS_INTERCONNECT_MTK_MT8183_EMI_H
++#define __DT_BINDINGS_INTERCONNECT_MTK_MT8183_EMI_H
++
++#define MT8183_SLAVE_DDR_EMI			0
++#define MT8183_MASTER_MCUSYS			1
++#define MT8183_MASTER_GPU			2
++#define MT8183_MASTER_MMSYS			3
++#define MT8183_MASTER_MM_VPU			4
++#define MT8183_MASTER_MM_DISP			5
++#define MT8183_MASTER_MM_VDEC			6
++#define MT8183_MASTER_MM_VENC			7
++#define MT8183_MASTER_MM_CAM			8
++#define MT8183_MASTER_MM_IMG			9
++#define MT8183_MASTER_MM_MDP			10
++
++#endif
 -- 
 1.9.1
 _______________________________________________
