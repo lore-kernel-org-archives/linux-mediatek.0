@@ -2,87 +2,94 @@ Return-Path: <SRS0=gVFe=CX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AAE0AC43461
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 08:07:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DD2DC433E2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 08:59:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0FD2B21D80
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 08:07:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2E188221E8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 08:59:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uYj7lAga";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="k2M7YTCI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0FD2B21D80
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="T/rWXs/2";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="JFph4kBz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2E188221E8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=YOr9WFX+7olSFfloTHsAAk8HSitO0lG1EVyxOPmpHDU=; b=uYj7lAgaxgX1iXUONXoN6oXFW
-	vUTfltVWP5LLFjYjA9ELbY5RFGRvzqtzNvpqTJ0OyZ2Eap6yelO3e9XbNt32SRXFjkNd0DoFXT86m
-	lirBP6Z+Sff29oimREYsPRlZz4gwKX9aOxW8wA8bZ4J8H6rtueeqEeFO5dWXz9FCQpF2z1Ju/K7eC
-	Tzx6C5UDS8AP2hqahcItSL2upy8vWIjkpPRQYwYSlgZgNXg+uZCnWaovkZYDMPrp0OitLGQuqddGX
-	0E+qxOFVwHU87MT4U+oTSW8EnQthl5rnVijrlu5qK9XSpj7FsFqIyWQNrFKQmx5IEdy2atl0stprE
-	TcBqSY3gg==;
+	 bh=qXGMtsFP7wOYqlMwgJRSPizYrfmdO2xh4x1wIDa9MVw=; b=T/rWXs/20RZgtceIP2n73Kv/O
+	G/WwLlRmHgJy/IdMyqqBXS6FluYZzmPJlecySWQBeDT+MuBcXRQBRBaQ/3NGYjel1kdVz+wYwpse5
+	PIxPqfpuZoIbKzRKgHMh0uwEJqxvINr4TtVVCm88QYZYVnEz9l9fiUB4KH+xb2l95XmXFIVWKeMDk
+	rNRuryOLGGlUSf+8HnouyJo3tus3fI4t/frxAmYTwnh60tyDS+OZYryVyrp2oVSunIkBYNY1qVJcj
+	2MUTWCEsA1iRvrEqQMAmiYRjzlaa5OmcwbHWagQXJvBuF+iJJP+M6Anb1uRqeJZFYBQDA6R0pbZRA
+	Ea48x5NqA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kHjWC-0006HM-6l; Mon, 14 Sep 2020 08:07:20 +0000
-Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
+	id 1kHkKw-0001cY-3f; Mon, 14 Sep 2020 08:59:46 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kHjVi-00062K-Jd
- for linux-mediatek@lists.infradead.org; Mon, 14 Sep 2020 08:07:00 +0000
-Received: by mail-pj1-x1041.google.com with SMTP id u3so4936296pjr.3
- for <linux-mediatek@lists.infradead.org>; Mon, 14 Sep 2020 01:06:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=wjv7AM8h2QU1K1I/JZG0UZKZmyNTBMTzCWjzUH+khzw=;
- b=k2M7YTCIrKM/0WkCBm4A7HUiZUjSPhzMesKu+vQojt30T2NRC2J7qSS8jlZk9W9x+h
- dTvb5J3Ula347+L6figDAnliwwFTq3OmXJOLJW+N3CefQm4Hw5pQdsAoqS4XIKJ5MBkc
- sEnMVnWFLxe6a387F5IVzEBCni+9jVJPvpzEo=
+ id 1kHkKt-0001bH-Iq; Mon, 14 Sep 2020 08:59:44 +0000
+Received: by mail-wm1-x344.google.com with SMTP id l15so5414213wmh.1;
+ Mon, 14 Sep 2020 01:59:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=/MIKedoIOUsFjweTslvur4pBQa9SNFf9T3eSu+x3ZqE=;
+ b=JFph4kBzYlVFBa10GDi5JH43OZeeNU4SUMmmwxnl5A/9diq+SmrOMfPD/GLMH3oxDe
+ hhOuJgoNfWUovkwB1tKcMiGQTDGPqZEsJjInlTw7pW7SVQNr/d680yEthOrM4IEmJSNE
+ hzdp0ZcibpG2ByVJqTWNgHax8h6YshM4TPFcP/gjlXkb1NbkxqQjozb+U3eRzibzBdAH
+ hCs6kK1VTuZS+pINj4LH0Q33/Zgbxzb4lvWYQkpUwiDMqdpNVZJV/xV5fLEqhonnjJhW
+ 1jWCE44sTq0W7LbmYBbBHjScJk28qHgH5DmVJxrcUhAPjm2ja9RNQYm4AucjQAtdwQ2m
+ fZFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=wjv7AM8h2QU1K1I/JZG0UZKZmyNTBMTzCWjzUH+khzw=;
- b=AXY0YNk6uPfvabRTWTdgBgQXko6+TYg83YuJ6eeoVna8QI0aS40uVGj+8gbfWiHNsk
- trnKfrU4PiYaM3KsLamxPxjMwFvfwRUAXt25R5lfux2FA1Mn/dw6jTz5FXewRvdiABf+
- NwOQ1JeThb9LlH0Ynw52EPOZAk7ZGB3KFebqt27Fpv/PHLpwxEy2KPCz5PDoLy6Qsqi4
- fBYD2MV/8SpmD9eAVuulmVZSYsw5aYX1x6k5d4GRX2J638nlyVSdOMsJup51yH+cHb0A
- z8eD2QAyzr9/KrwzvhpM61gyunogoc37KoWRIE0xDckxzGgUThrXsRWT8Z1xR8Ky0bi2
- hPEw==
-X-Gm-Message-State: AOAM533B3MlmsHH3QIiTYOjrh80tPywy3Cj8/pecRQkEcmS8Nhi009jP
- C5HiSEFX9dNgpWxptvN0egwB7Q==
-X-Google-Smtp-Source: ABdhPJzsjt47G6PDc6AvjCAL657ADxGI4s6Wj63jOtoDN75dcJ2JJ9iJHYbcK2rADqU7KkoPBAUlDw==
-X-Received: by 2002:a17:90a:7487:: with SMTP id
- p7mr13077266pjk.189.1600070807971; 
- Mon, 14 Sep 2020 01:06:47 -0700 (PDT)
-Received: from localhost ([2401:fa00:1:10:de4a:3eff:fe7d:d39c])
- by smtp.gmail.com with ESMTPSA id mh8sm8084570pjb.32.2020.09.14.01.06.43
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=/MIKedoIOUsFjweTslvur4pBQa9SNFf9T3eSu+x3ZqE=;
+ b=SCJdwLtoS/NHDURe5Ps543CB5jS64JrbN0Rjp1MJzjibwec9VvvfKXkpY5xyswoagk
+ 39X7UHq0EN5ZxhK57PxoY5yVL1AALX+io8aP9nmhmTmVYq4tePF8IgG5U/JV6DdW+klC
+ LTWk3CqDVUggbbaBqMAOPeRfvU4a5OsgNh+cgv4qeKrr1ziKUQPSIneYqG9K3oC+dw+x
+ 91Lzx4RBR4qgslA0hb2YtHGKecInatVSK8ErO1wCeb9lg7A0Fu0SIa9zRCphzaC//HiU
+ UYSaUQrwCChLZM71plhq8+GpE+fWqa0cf+VuLqesQblSv8wIQDBXPvKMUj9KHJamniHk
+ yEJQ==
+X-Gm-Message-State: AOAM531YnqadDd2F0F3SFX3sMjIt9Sk3Q9WxzrrDTYF5YtEI3qbvPnyg
+ /veNf1AWVP3/XtVvDm58KCW2W48s9PIV8A==
+X-Google-Smtp-Source: ABdhPJxdQrb1I8Rlz09G/IfEfX9kFrBzNcFYdPCZNmq0bpJ7m6Td4pGvrxBHZyfwPP2YvhAb4HCi5g==
+X-Received: by 2002:a1c:9654:: with SMTP id y81mr14000152wmd.9.1600073980332; 
+ Mon, 14 Sep 2020 01:59:40 -0700 (PDT)
+Received: from ziggy.stardust ([213.195.113.201])
+ by smtp.gmail.com with ESMTPSA id z13sm19391670wro.97.2020.09.14.01.59.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Sep 2020 01:06:47 -0700 (PDT)
-From: Cheng-Yi Chiang <cychiang@chromium.org>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH v11 3/3] ASoC: qcom: sc7180: Add machine driver for sound card
- registration
-Date: Mon, 14 Sep 2020 16:06:19 +0800
-Message-Id: <20200914080619.4178587-4-cychiang@chromium.org>
-X-Mailer: git-send-email 2.28.0.618.gf4bc123cb7-goog
-In-Reply-To: <20200914080619.4178587-1-cychiang@chromium.org>
-References: <20200914080619.4178587-1-cychiang@chromium.org>
+ Mon, 14 Sep 2020 01:59:39 -0700 (PDT)
+Subject: Re: [PATCH 01/12] dt-bindings: power: Add bindings for the Mediatek
+ SCPSYS power domains controller
+To: Rob Herring <robh@kernel.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
+References: <20200910172826.3074357-1-enric.balletbo@collabora.com>
+ <20200910172826.3074357-2-enric.balletbo@collabora.com>
+ <20200911230255.GA2972120@bogus>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <7a1c89b6-f483-5d57-f154-b80b72964077@gmail.com>
+Date: Mon, 14 Sep 2020 10:59:36 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
+In-Reply-To: <20200911230255.GA2972120@bogus>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200914_040650_783010_CB1CA6C6 
-X-CRM114-Status: GOOD (  24.34  )
+X-CRM114-CacheID: sfid-20200914_045943_648598_DA6DFFD3 
+X-CRM114-Status: GOOD (  33.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,356 +101,188 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Taniya Das <tdas@codeaurora.org>, alsa-devel@alsa-project.org,
- Banajit Goswami <bgoswami@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>,
- Liam Girdwood <lgirdwood@gmail.com>, Rohit kumar <rohitkr@codeaurora.org>,
- Cheng-Yi Chiang <cychiang@chromium.org>, Patrick Lai <plai@codeaurora.org>,
- Ajit Pandey <ajitp@codeaurora.org>, linux-rockchip@lists.infradead.org,
- Andy Gross <agross@kernel.org>, dgreid@chromium.org,
- Jaroslav Kysela <perex@perex.cz>, devicetree@vger.kernel.org,
- tzungbi@chromium.org, Srinivasa Rao <srivasam@codeaurora.org>,
- Stephan Gerhold <stephan@gerhold.net>, linux-arm-msm@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- linux-arm-kernel@lists.infradead.org, dianders@chromium.org,
- Takashi Iwai <tiwai@suse.com>, Mark Brown <broonie@kernel.org>,
- Srini Kandagatla <srinivas.kandagatla@linaro.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: devicetree@vger.kernel.org, drinkcat@chromium.org, weiyi.lu@mediatek.com,
+ linux-kernel@vger.kernel.org, fparent@baylibre.com,
+ Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org,
+ hsinyi@chromium.org, Collabora Kernel ML <kernel@collabora.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ajit Pandey <ajitp@codeaurora.org>
 
-Add new driver to register sound card on sc7180 trogdor board and
-do the required configuration for lpass cpu dai and external codecs
-connected over MI2S interfaces.
 
-Signed-off-by: Ajit Pandey <ajitp@codeaurora.org>
-Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
----
- sound/soc/qcom/Kconfig  |  12 ++
- sound/soc/qcom/Makefile |   2 +
- sound/soc/qcom/sc7180.c | 266 ++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 280 insertions(+)
- create mode 100644 sound/soc/qcom/sc7180.c
+On 12/09/2020 01:02, Rob Herring wrote:
+> On Thu, Sep 10, 2020 at 07:28:15PM +0200, Enric Balletbo i Serra wrote:
+>> The System Control Processor System (SCPSYS) has several power management
+>> related tasks in the system. Add the bindings to define the power
+>> domains for the SCPSYS power controller.
+>>
+>> Co-developed-by: Matthias Brugger <mbrugger@suse.com>
+>> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>> ---
+>> Dear Rob,
+>>
+>> I am awasre that this binding is not ready, but I prefered to send because I'm
+>> kind of blocked. Compiling this binding triggers the following error:
+>>
+>>      mediatek,power-controller.example.dt.yaml: syscon@10006000: mfg_async@7:
+>>      '#address-cells', '#size-cells', 'mfg_2d@8'
+>>      do not match any of the regexes: 'pinctrl-[0-9]+'
+>>
+>> This happens when a definition of a power-domain (parent) contains
+>> another power-domain (child), like the example. I am not sure how to
+>> specify this in the yaml and deal with this, so any clue is welcome.
+> 
+> You just have to keep nesting schemas all the way down. Define a
+> grandchild node under the child node and then all of its properties.
+> 
+>>
+>> Thanks,
+>>    Enric
+>>
+>>   .../power/mediatek,power-controller.yaml      | 171 ++++++++++++++++++
+>>   1 file changed, 171 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+>>
+>> diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+>> new file mode 100644
+>> index 000000000000..8be9244ad160
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+>> @@ -0,0 +1,171 @@
+>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>> +%YAML 1.2
+>> +---
+>> +$id: http://devicetree.org/schemas/power/mediatek,power-controller.yaml#
+>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>> +
+>> +title: Mediatek Power Domains Controller
+>> +
+>> +maintainers:
+>> +  - Weiyi Lu <weiyi.lu@mediatek.com>
+>> +  - Matthias Brugger <mbrugger@suse.com>
+>> +
+>> +description: |
+>> +  Mediatek processors include support for multiple power domains which can be
+>> +  powered up/down by software based on different application scenes to save power.
+>> +
+>> +  IP cores belonging to a power domain should contain a 'power-domains'
+>> +  property that is a phandle for SCPSYS node representing the domain.
+>> +
+>> +properties:
+>> +  $nodename:
+>> +    pattern: "^syscon@[0-9a-f]+$"
+>> +
+>> +  compatible:
+>> +    items:
+>> +      - enum:
+>> +        - mediatek,mt8173-power-controller
+>> +      - const: syscon
+>> +
+>> +  reg:
+>> +    maxItems: 1
+>> +
+>> +patternProperties:
+>> +  "^.*@[0-9]$":
+> 
+> Node names should be generic:
+> 
+> power-domain@
+> 
 
-diff --git a/sound/soc/qcom/Kconfig b/sound/soc/qcom/Kconfig
-index a607ace8b089..0459185ee243 100644
---- a/sound/soc/qcom/Kconfig
-+++ b/sound/soc/qcom/Kconfig
-@@ -116,4 +116,16 @@ config SND_SOC_SDM845
- 	  SDM845 SoC-based systems.
- 	  Say Y if you want to use audio device on this SoCs.
- 
-+config SND_SOC_SC7180
-+	tristate "SoC Machine driver for SC7180 boards"
-+	depends on I2C
-+	select SND_SOC_QCOM_COMMON
-+	select SND_SOC_LPASS_SC7180
-+	select SND_SOC_MAX98357A
-+	select SND_SOC_RT5682_I2C
-+	help
-+	  To add support for audio on Qualcomm Technologies Inc.
-+	  SC7180 SoC-based systems.
-+	  Say Y if you want to use audio device on this SoCs.
-+
- endif #SND_SOC_QCOM
-diff --git a/sound/soc/qcom/Makefile b/sound/soc/qcom/Makefile
-index 7972c9479ab0..0cdcbf367ef1 100644
---- a/sound/soc/qcom/Makefile
-+++ b/sound/soc/qcom/Makefile
-@@ -17,12 +17,14 @@ snd-soc-storm-objs := storm.o
- snd-soc-apq8016-sbc-objs := apq8016_sbc.o
- snd-soc-apq8096-objs := apq8096.o
- snd-soc-sdm845-objs := sdm845.o
-+snd-soc-sc7180-objs := sc7180.o
- snd-soc-qcom-common-objs := common.o
- 
- obj-$(CONFIG_SND_SOC_STORM) += snd-soc-storm.o
- obj-$(CONFIG_SND_SOC_APQ8016_SBC) += snd-soc-apq8016-sbc.o
- obj-$(CONFIG_SND_SOC_MSM8996) += snd-soc-apq8096.o
- obj-$(CONFIG_SND_SOC_SDM845) += snd-soc-sdm845.o
-+obj-$(CONFIG_SND_SOC_SC7180) += snd-soc-sc7180.o
- obj-$(CONFIG_SND_SOC_QCOM_COMMON) += snd-soc-qcom-common.o
- 
- #DSP lib
-diff --git a/sound/soc/qcom/sc7180.c b/sound/soc/qcom/sc7180.c
-new file mode 100644
-index 000000000000..0e90448523b0
---- /dev/null
-+++ b/sound/soc/qcom/sc7180.c
-@@ -0,0 +1,266 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+//
-+// Copyright (c) 2020, The Linux Foundation. All rights reserved.
-+//
-+// sc7180.c -- ALSA SoC Machine driver for SC7180
-+
-+#include <dt-bindings/sound/sc7180-lpass.h>
-+#include <linux/module.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
-+#include <sound/core.h>
-+#include <sound/jack.h>
-+#include <sound/pcm.h>
-+#include <sound/soc.h>
-+#include <uapi/linux/input-event-codes.h>
-+
-+#include "../codecs/rt5682.h"
-+#include "common.h"
-+#include "lpass.h"
-+
-+#define DEFAULT_MCLK_RATE		19200000
-+#define RT5682_PLL1_FREQ (48000 * 512)
-+
-+// This will be defined in include/dt-bindings/sound/sc7180-lpass.h
-+#define LPASS_DP_RX 2
-+
-+struct sc7180_snd_data {
-+	struct snd_soc_card card;
-+	u32 pri_mi2s_clk_count;
-+	struct snd_soc_jack hs_jack;
-+	struct snd_soc_jack hdmi_jack;
-+};
-+
-+static void sc7180_jack_free(struct snd_jack *jack)
-+{
-+	struct snd_soc_component *component = jack->private_data;
-+
-+	snd_soc_component_set_jack(component, NULL, NULL);
-+}
-+
-+static int sc7180_headset_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct snd_soc_card *card = rtd->card;
-+	struct sc7180_snd_data *pdata = snd_soc_card_get_drvdata(card);
-+	struct snd_soc_dai *codec_dai = asoc_rtd_to_codec(rtd, 0);
-+	struct snd_soc_component *component = codec_dai->component;
-+	struct snd_jack *jack;
-+	int rval;
-+
-+	rval = snd_soc_card_jack_new(
-+			card, "Headset Jack",
-+			SND_JACK_HEADSET |
-+			SND_JACK_HEADPHONE |
-+			SND_JACK_BTN_0 | SND_JACK_BTN_1 |
-+			SND_JACK_BTN_2 | SND_JACK_BTN_3,
-+			&pdata->hs_jack, NULL, 0);
-+
-+	if (rval < 0) {
-+		dev_err(card->dev, "Unable to add Headset Jack\n");
-+		return rval;
-+	}
-+
-+	jack = pdata->hs_jack.jack;
-+
-+	snd_jack_set_key(jack, SND_JACK_BTN_0, KEY_PLAYPAUSE);
-+	snd_jack_set_key(jack, SND_JACK_BTN_1, KEY_VOICECOMMAND);
-+	snd_jack_set_key(jack, SND_JACK_BTN_2, KEY_VOLUMEUP);
-+	snd_jack_set_key(jack, SND_JACK_BTN_3, KEY_VOLUMEDOWN);
-+
-+	jack->private_data = component;
-+	jack->private_free = sc7180_jack_free;
-+
-+	return snd_soc_component_set_jack(component, &pdata->hs_jack, NULL);
-+}
-+
-+static int sc7180_hdmi_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct snd_soc_card *card = rtd->card;
-+	struct sc7180_snd_data *pdata = snd_soc_card_get_drvdata(card);
-+	struct snd_soc_dai *codec_dai = asoc_rtd_to_codec(rtd, 0);
-+	struct snd_soc_component *component = codec_dai->component;
-+	struct snd_jack *jack;
-+	int rval;
-+
-+	rval = snd_soc_card_jack_new(
-+			card, "HDMI Jack",
-+			SND_JACK_LINEOUT,
-+			&pdata->hdmi_jack, NULL, 0);
-+
-+	if (rval < 0) {
-+		dev_err(card->dev, "Unable to add HDMI Jack\n");
-+		return rval;
-+	}
-+
-+	jack = pdata->hdmi_jack.jack;
-+	jack->private_data = component;
-+	jack->private_free = sc7180_jack_free;
-+
-+	return snd_soc_component_set_jack(component, &pdata->hdmi_jack, NULL);
-+}
-+
-+static int sc7180_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct snd_soc_dai *cpu_dai = asoc_rtd_to_cpu(rtd, 0);
-+
-+	switch (cpu_dai->id) {
-+	case MI2S_PRIMARY:
-+		return sc7180_headset_init(rtd);
-+	case MI2S_SECONDARY:
-+		return 0;
-+	case LPASS_DP_RX:
-+		return sc7180_hdmi_init(rtd);
-+	default:
-+		dev_err(rtd->dev, "%s: invalid dai id 0x%x\n", __func__,
-+			cpu_dai->id);
-+		return -EINVAL;
-+	}
-+	return 0;
-+}
-+
-+static int sc7180_snd_startup(struct snd_pcm_substream *substream)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	struct snd_soc_card *card = rtd->card;
-+	struct sc7180_snd_data *data = snd_soc_card_get_drvdata(card);
-+	struct snd_soc_dai *cpu_dai = asoc_rtd_to_cpu(rtd, 0);
-+	struct snd_soc_dai *codec_dai = asoc_rtd_to_codec(rtd, 0);
-+	int ret;
-+
-+	switch (cpu_dai->id) {
-+	case MI2S_PRIMARY:
-+		if (++data->pri_mi2s_clk_count == 1) {
-+			snd_soc_dai_set_sysclk(cpu_dai,
-+					       LPASS_MCLK0,
-+					       DEFAULT_MCLK_RATE,
-+					       SNDRV_PCM_STREAM_PLAYBACK);
-+		}
-+
-+		snd_soc_dai_set_fmt(codec_dai,
-+				    SND_SOC_DAIFMT_CBS_CFS |
-+				    SND_SOC_DAIFMT_NB_NF |
-+				    SND_SOC_DAIFMT_I2S);
-+
-+		/* Configure PLL1 for codec */
-+		ret = snd_soc_dai_set_pll(codec_dai, 0, RT5682_PLL1_S_MCLK,
-+					  DEFAULT_MCLK_RATE, RT5682_PLL1_FREQ);
-+		if (ret) {
-+			dev_err(rtd->dev, "can't set codec pll: %d\n", ret);
-+			return ret;
-+		}
-+
-+		/* Configure sysclk for codec */
-+		ret = snd_soc_dai_set_sysclk(codec_dai, RT5682_SCLK_S_PLL1,
-+					     RT5682_PLL1_FREQ,
-+					     SND_SOC_CLOCK_IN);
-+		if (ret)
-+			dev_err(rtd->dev, "snd_soc_dai_set_sysclk err = %d\n",
-+				ret);
-+
-+		break;
-+	case MI2S_SECONDARY:
-+		break;
-+	case LPASS_DP_RX:
-+		break;
-+	default:
-+		dev_err(rtd->dev, "%s: invalid dai id 0x%x\n", __func__,
-+			cpu_dai->id);
-+		return -EINVAL;
-+	}
-+	return 0;
-+}
-+
-+static void sc7180_snd_shutdown(struct snd_pcm_substream *substream)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	struct snd_soc_card *card = rtd->card;
-+	struct sc7180_snd_data *data = snd_soc_card_get_drvdata(card);
-+	struct snd_soc_dai *cpu_dai = asoc_rtd_to_cpu(rtd, 0);
-+
-+	switch (cpu_dai->id) {
-+	case MI2S_PRIMARY:
-+		if (--data->pri_mi2s_clk_count == 0) {
-+			snd_soc_dai_set_sysclk(cpu_dai,
-+					       LPASS_MCLK0,
-+					       0,
-+					       SNDRV_PCM_STREAM_PLAYBACK);
-+		}
-+		break;
-+	case MI2S_SECONDARY:
-+		break;
-+	case LPASS_DP_RX:
-+		break;
-+	default:
-+		dev_err(rtd->dev, "%s: invalid dai id 0x%x\n", __func__,
-+			cpu_dai->id);
-+		break;
-+	}
-+}
-+
-+static const struct snd_soc_ops sc7180_ops = {
-+	.startup = sc7180_snd_startup,
-+	.shutdown = sc7180_snd_shutdown,
-+};
-+
-+static const struct snd_soc_dapm_widget sc7180_snd_widgets[] = {
-+	SND_SOC_DAPM_HP("Headphone Jack", NULL),
-+	SND_SOC_DAPM_MIC("Headset Mic", NULL),
-+};
-+
-+static void sc7180_add_ops(struct snd_soc_card *card)
-+{
-+	struct snd_soc_dai_link *link;
-+	int i;
-+
-+	for_each_card_prelinks(card, i, link) {
-+		link->ops = &sc7180_ops;
-+		link->init = sc7180_init;
-+	}
-+}
-+
-+static int sc7180_snd_platform_probe(struct platform_device *pdev)
-+{
-+	struct snd_soc_card *card;
-+	struct sc7180_snd_data *data;
-+	struct device *dev = &pdev->dev;
-+	int ret;
-+
-+	/* Allocate the private data */
-+	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
-+	if (!data)
-+		return -ENOMEM;
-+
-+	card = &data->card;
-+	snd_soc_card_set_drvdata(card, data);
-+
-+	card->owner = THIS_MODULE,
-+	card->dev = dev;
-+	card->dapm_widgets = sc7180_snd_widgets;
-+	card->num_dapm_widgets = ARRAY_SIZE(sc7180_snd_widgets);
-+
-+	ret = qcom_snd_parse_of(card);
-+	if (ret)
-+		return ret;
-+
-+	sc7180_add_ops(card);
-+
-+	return devm_snd_soc_register_card(dev, card);
-+}
-+
-+static const struct of_device_id sc7180_snd_device_id[]  = {
-+	{ .compatible = "qcom,sc7180-sndcard-rt5682-m98357-1mic" },
-+	{},
-+};
-+MODULE_DEVICE_TABLE(of, sc7180_snd_device_id);
-+
-+static struct platform_driver sc7180_snd_driver = {
-+	.probe = sc7180_snd_platform_probe,
-+	.driver = {
-+		.name = "msm-snd-sc7180",
-+		.of_match_table = sc7180_snd_device_id,
-+	},
-+};
-+module_platform_driver(sc7180_snd_driver);
-+
-+MODULE_DESCRIPTION("sc7180 ASoC Machine Driver");
-+MODULE_LICENSE("GPL v2");
--- 
-2.28.0.618.gf4bc123cb7-goog
+Enric correct me if I'm wrong, if we want to see the power domains in debugfs, 
+they are listed by their name. If all are called power-domain then the listing 
+is pretty much useless.
 
+>> +    type: object
+>> +    description: |
+>> +      Represents the power domains within the power controller node as documented
+>> +      in Documentation/devicetree/bindings/power/power-domain.yaml.
+>> +
+>> +    properties:
+>> +      reg:
+>> +        description: |
+>> +          Power domain index. Valid values are defined in:
+>> +              "include/dt-bindings/power/mt8173-power.h" - for MT8173 type power domain.
+>> +        maxItems: 1
+>> +
+>> +      '#power-domain-cells':
+>> +        description:
+>> +          Documented by the generic PM Domain bindings in
+>> +          Documentation/devicetree/bindings/power/power-domain.yaml.
+> 
+> No need to redefine a common property. This should define valid values
+> for it.
+> 
+>> +
+>> +      clocks:
+>> +        description: |
+>> +          A number of phandles to clocks that need to be enabled during domain
+>> +          power-up sequencing.
+> 
+> No need to redefine 'clocks'. You need to define how many, what each one
+> is, and the order.
+> 
+
+Do you mean we have to define each clock for each power domain of each SoC?
+
+>> +
+>> +      clock-names:
+>> +        description: |
+>> +          List of names of clocks, in order to match the power-up sequencing
+>> +          for each power domain we need to group the clocks by name. BASIC
+>> +          clocks need to be enabled before enabling the corresponding power
+>> +          domain, and should not have a '-' in their name (i.e mm, mfg, venc).
+>> +          SUSBYS clocks need to be enabled before releasing the bus protection,
+>> +          and should contain a '-' in their name (i.e mm-0, isp-0, cam-0).
+>> +
+>> +          In order to follow properly the power-up sequencing, the clocks must
+>> +          be specified by order, adding first the BASIC clocks followed by the
+>> +          SUSBSYS clocks.
+> 
+> You need to define the names.
+> 
+>> +
+>> +      mediatek,infracfg:
+>> +        $ref: /schemas/types.yaml#definitions/phandle
+>> +        description: phandle to the device containing the INFRACFG register range.
+>> +
+>> +      mediatek,smi:
+>> +        $ref: /schemas/types.yaml#definitions/phandle
+>> +        description: phandle to the device containing the SMI register range.
+>> +
+>> +    required:
+>> +      - reg
+>> +      - '#power-domain-cells'
+>> +
+>> +    additionalProperties: false
+>> +
+>> +required:
+>> +  - compatible
+>> +  - reg
+>> +
+>> +additionalProperties: false
+>> +
+>> +examples:
+>> +  - |
+>> +    #include <dt-bindings/clock/mt8173-clk.h>
+>> +    #include <dt-bindings/power/mt8173-power.h>
+>> +
+>> +    soc {
+>> +        #address-cells = <2>;
+>> +        #size-cells = <2>;
+>> +
+>> +        scpsys: syscon@10006000 {
+>> +            compatible = "mediatek,mt8173-power-controller", "syscon";
+
+The power domain controller is just one funcionality the SCPSYS block can 
+provide. I think it should be child of the SCPSYS.
+
+Regards,
+Matthias
 
 _______________________________________________
 Linux-mediatek mailing list
