@@ -2,94 +2,85 @@ Return-Path: <SRS0=gVFe=CX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.0 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DFDB4C43461
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 14:01:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D5546C433E2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 14:06:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9291820E65
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 14:01:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F3DFA2074B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 14:06:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e/98VTNW";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="TU+t16F+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9291820E65
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GIuVEkbL";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="IvfVSwBv"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F3DFA2074B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:In-Reply-To:
-	Subject:To:Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6dv6yLZBcAX//De6Djn9BuQMc39bTrgwJiGi1RzX5tg=; b=e/98VTNWmSj9lVCTxQ7TPcZwW
-	McWAD9fqPTRbSIiJp9fDryeBqmWLQJkoxLz0aO9pLCKfcdbuC4+PY2kZPJ0uI/7cUOGj86OF4eZ8u
-	5DCZxF3zVrUd3QNE1v/tLfGrNvnSUZyh1wNMf5ywjphu27uy26Iq1NTfOoixo/g3+UY33mNuDNJbk
-	0YVTJwOwjLyaEXb7LUEkkxCxOxS8mZxQnx6iJct2TjssNJfiWg/BYh/lJExWzm30K5szmZYBUkcHS
-	pWY0PZHJWzX9DcacwWodnDGpGcyKXzzenfvKmTaetG08tPmUbkgrFC8VL4LdWCbeSnDlx3mEBdrGe
-	ozizby0RA==;
+	 bh=nwDYs8L9Q/qm4a4Yy02H8Qd3M9Tm8V8CCV5AI5ZYXwg=; b=GIuVEkbLxje2jIHV/kzIpNFr+
+	uJZn6yBTNj5VRWwWCl200nBpvz3DikPFrR5BYbYqMiJ84eJH05Bk+5MCFaaWjKHCgcTPFOu4VDHM7
+	16rXrKadp7RTHptK+jJUj7JZeqBX8LkKY/lfbgJAnXthy8RN9PkZkMTIcrFgGjILpvmybT3zWJ6Er
+	YawkEsg6ePPqQtG5y/7sUlX5PoTwB3bNX5YSEfQDAHdPoYawWrO7ugdg2JFd9pnM4Gk/aNa6G+rQk
+	1bF8oVKOLRLWXoDjEqaISmtcXx6vBSt66L+E/4VrxNaQ2iRF9E/9tIr7HpyOySOEz+cbgKLU4+Xhr
+	b/PcjjDRQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kHp2p-0003TV-F7; Mon, 14 Sep 2020 14:01:23 +0000
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643])
+	id 1kHp7G-0004Vh-Bi; Mon, 14 Sep 2020 14:05:58 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kHp2k-0003RE-P5
- for linux-mediatek@lists.infradead.org; Mon, 14 Sep 2020 14:01:22 +0000
-Received: by mail-ej1-x643.google.com with SMTP id u21so143608eja.2
- for <linux-mediatek@lists.infradead.org>; Mon, 14 Sep 2020 07:01:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:date:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=FsmZe5O0P/p3M0FxJ0XsG6dr4tN+XjGndrSeePOYVLQ=;
- b=TU+t16F+AZpDvpM6tmEpVlIOQPLAhoPE1cquCeN5k8AOwilOAwh3hRbANn1iX9S8tM
- Zr96G9ieyipocyYfh4C10UpY7mn2twBpkUzfb3GJBn0hkUioI4ehJW/UsMzMpNlBie4U
- +QK+3EOt+8mrpiLz+Dq+Di/QQnudOfmmTypvB06YKcRo8d60/5t/I1oPHkmHShQAXlXk
- z77Ql1eP1gt6V8/1VMigv8oxGZ9gnsoDRzPxevOxyJ3whaW332oGogVqJQKG6RyKw1Ae
- K0cCOtYC4oBurdA6d/AJlZ6F5+V8SkrcyP1wUH+knQFDyg3L6Vd8u1V9um0hlROtbCsi
- gYoA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:date:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=FsmZe5O0P/p3M0FxJ0XsG6dr4tN+XjGndrSeePOYVLQ=;
- b=pCd0QGtxpvZfZWyi8FeU8Y+iPT5OSrViBknPFQGJDk+Rkvjpca3dNbVsXut4g6F6T/
- J0/aLfpECngAJUW3dwkCm0YdkxKJhTnVj+MaZaz2Cku2V7zaFgHGOfYtrrDxrrRIXErD
- EfkSjc2KdebowFaAa49OWdeth1TfF8FKHjKX/xRtFccDin3TzXcaYs9xGZ8VltdRMUIH
- iGqKSqSxpx9KpshjHwyPphlM5NjG8lu1PojE159s9GtrUk1CwDU69u1Q3PpddR+2h+XJ
- 9DsByOxVuJTH9x+3lhub3Mem56bROD1Z9Hb/AosjnudY/d4zDb60KPMwEMiDqaIJLkzS
- xoag==
-X-Gm-Message-State: AOAM5333XY/kEiMuOrk1P0Jh/RIrqUW4VZB4hXwwGfXJ1aA9iNNQ2hqf
- WRdhiHsmdxqK0Li8/elN7D0=
-X-Google-Smtp-Source: ABdhPJy2UBdvzRal8bOeleN4BdmvWhzHCaeHXvF9L0vChKKrvPzgf77fC/MD+0rqVWQT2arqF3Ol0A==
-X-Received: by 2002:a17:906:6b0b:: with SMTP id
- q11mr15310063ejr.412.1600092077249; 
- Mon, 14 Sep 2020 07:01:17 -0700 (PDT)
-Received: from felia ([2001:16b8:2ddc:3000:7936:d9d0:986e:cca5])
- by smtp.gmail.com with ESMTPSA id t4sm7770493ejj.6.2020.09.14.07.01.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Sep 2020 07:01:16 -0700 (PDT)
-From: Lukas Bulwahn <lukas.bulwahn@gmail.com>
-X-Google-Original-From: Lukas Bulwahn <lukas@gmail.com>
-Date: Mon, 14 Sep 2020 16:01:15 +0200 (CEST)
-X-X-Sender: lukas@felia
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] MAINTAINERS: make linux-mediatek list remarks consistent
-In-Reply-To: <9c5aaa15-bdd8-ae4f-0642-092566ab08ba@gmail.com>
-Message-ID: <alpine.DEB.2.21.2009141552570.17999@felia>
-References: <20200914053110.23286-1-lukas.bulwahn@gmail.com>
- <f6bc41d3-5ce4-b9ea-e2bb-e0cee4de3179@gmail.com>
- <alpine.DEB.2.21.2009141208200.17999@felia>
- <9c5aaa15-bdd8-ae4f-0642-092566ab08ba@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+ id 1kHp7A-0004TF-Ss; Mon, 14 Sep 2020 14:05:54 +0000
+X-UUID: 71135805e5e44d8fb0d6fa65273d0471-20200914
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=cLdj0X30p6O5aAOutE1K4/oxJCAmQzrpPvIelAe8dXw=; 
+ b=IvfVSwBvruvn11Wu7+kq5CSUIP1IVhSi/mjYCh7xR+v94CD55Tv6cY94A1hcrm4h4N7D55M0ZlzHBH2TZoVlnkOMFN8zfxMJqLkCM2D9C5ByWQpCaunamMrmdeFyFZGwSQq75EaoqRlpEzVdQvSZWOliNcUVi0NYC5pANZlZJDQ=;
+X-UUID: 71135805e5e44d8fb0d6fa65273d0471-20200914
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <crystal.guo@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1440615605; Mon, 14 Sep 2020 06:02:27 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 14 Sep 2020 07:02:25 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31DR.mediatek.inc
+ (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 14 Sep 2020 22:02:20 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 14 Sep 2020 22:02:20 +0800
+Message-ID: <1600092019.14806.32.camel@mhfsdcap03>
+Subject: Re: [v4,3/4] reset-controller: ti: introduce a new reset handler
+From: Crystal Guo <crystal.guo@mediatek.com>
+To: "robh+dt@kernel.org" <robh+dt@kernel.org>
+Date: Mon, 14 Sep 2020 22:00:19 +0800
+In-Reply-To: <407863ba-e336-11fc-297d-f1be1f58adaa@ti.com>
+References: <20200817030324.5690-1-crystal.guo@mediatek.com>
+ <20200817030324.5690-4-crystal.guo@mediatek.com>
+ <3a5decee-5f31-e27d-a120-1f835241a87c@ti.com>
+ <1599620279.14806.18.camel@mhfsdcap03>
+ <096362e9-dee8-4e7a-2518-47328068c2fd@ti.com>
+ <1599792140.14806.22.camel@mhfsdcap03>
+ <9d72aaef-49fe-ebb6-215d-05ad3ab27af4@ti.com>
+ <1599804422.14806.27.camel@mhfsdcap03>
+ <dae4ab91ec20e72963f2658efca4874a35dd739e.camel@pengutronix.de>
+ <407863ba-e336-11fc-297d-f1be1f58adaa@ti.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 45A69AB5EB0307C47D3EE730CE03B37B6DC73E1E5FF7A7ED01BBCA588A5E68AB2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200914_100118_833320_03ADBA9D 
-X-CRM114-Status: GOOD (  31.16  )
+X-CRM114-CacheID: sfid-20200914_100553_070726_BFA032B1 
+X-CRM114-Status: GOOD (  20.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,103 +92,77 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org,
- kernel-janitors@vger.kernel.org,
- Ralf Ramsauer <ralf.ramsauer@oth-regensburg.de>, linux-kernel@vger.kernel.org,
- Joe Perches <joe@perches.com>, linux-mediatek@lists.infradead.org,
- Bjorn Helgaas <bhelgaas@google.com>, Lukas Bulwahn <lukas.bulwahn@gmail.com>,
- Pia Eichinger <pia.eichinger@st.oth-regensburg.de>
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Yong
+ Liang =?UTF-8?Q?=28=E6=A2=81=E5=8B=87=29?= <Yong.Liang@mediatek.com>,
+ Stanley Chu =?UTF-8?Q?=28=E6=9C=B1=E5=8E=9F=E9=99=9E=29?=
+ <stanley.chu@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>,
+ Seiya Wang =?UTF-8?Q?=28=E7=8E=8B=E8=BF=BA=E5=90=9B=29?=
+ <seiya.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Fan Chen =?UTF-8?Q?=28=E9=99=B3=E5=87=A1=29?= <fan.chen@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?=
+ <Yingjoe.Chen@mediatek.com>, Suman Anna <s-anna@ti.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On Mon, 14 Sep 2020, Matthias Brugger wrote:
-
+On Fri, 2020-09-11 at 22:44 +0800, Suman Anna wrote:
+> On 9/11/20 9:26 AM, Philipp Zabel wrote:
+> > Hi Crystal,
+> > 
+> > On Fri, 2020-09-11 at 14:07 +0800, Crystal Guo wrote:
+> > [...]
+> >> Should I add the SoC-specific data as follows?
+> >> This may also modify the ti original code, is it OK?
+> >>
+> >> +       data->reset_data = of_device_get_match_data(&pdev->dev);
+> >> +
+> >> +       list = of_get_property(np, data->reset_data->reset_bits, &size);
+> >>
+> >> +static const struct common_reset_data ti_reset_data = {
+> >> +       .reset_op_available = false,
+> >> +       .reset_bits = "ti, reset-bits",
+> >                             ^
+> > That space doesn't belong there.
+> > 
+> >> +};
+> >> +
+> >> +static const struct common_reset_data mediatek_reset_data = {
+> >> +       .reset_op_available = true,
+> >> +       .reset_bits = "mediatek, reset-bits",
+> >> +};
+> > 
+> > I understand Robs comments as meaning "ti,reset-bits" should have been
+> > called "reset-bits" in the first place, and you shouldn't repeat adding
+> > the vendor prefix, as that is implied by the compatible. So this should
+> > probably be just "reset-bits".
 > 
+> Hmm, not sure about that. I think Rob wants the reset data itself to be added in
+> the driver as is being done on some other SoCs (eg: like in reset-qcom-pdc.c).
 > 
-> On 14/09/2020 12:20, Lukas Bulwahn wrote:
-> > 
-> > 
-> > On Mon, 14 Sep 2020, Matthias Brugger wrote:
-> > 
-> > > 
-> > > 
-> > > On 14/09/2020 07:31, Lukas Bulwahn wrote:
-> > > > Commit 637cfacae96f ("PCI: mediatek: Add MediaTek PCIe host controller
-> > > > support") does not mention that linux-mediatek@lists.infradead.org is
-> > > > moderated for non-subscribers, but the other eight entries for
-> > > > linux-mediatek@lists.infradead.org do.
-> > > > 
-> > > > Adjust this entry to be consistent with all others.
-> > > > 
-> > > > Signed-off-by: Lukas Bulwahn <lukas.bulwahn@gmail.com>
-> > > 
-> > > Maybe rephrase the commit message to something like:
-> > > "Mark linux-mediatek@lists.infraded.org as moderated for the MediaTek PCIe
-> > > host controller entry, as the list actually is moderated."
-> > > 
-> > > Anyway:
-> > > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> > > 
-> > > > ---
-> > > > applies cleanly on v5.9-rc5 and next-20200911
-> > > > 
-> > > > Ryder, please ack.
-> > > > 
-> > > > Bjorn, Matthias, please pick this minor non-urgent clean-up patch.
-> > > > 
-> > > > This patch submission will also show me if linux-mediatek is moderated
-> > > > or
-> > > > not. I have not subscribed to linux-mediatek and if it shows up quickly
-> > > > in
-> > > > the archive, the list is probably not moderated; and if it takes longer,
-> > > > it
-> > > > is moderated, and hence, validating the patch.
-> > > 
-> > > I can affirm the list is moderated :)
-> > > 
-> > 
-> > Hmm, do we mean the same "moderation" here?
-> > 
-> > I believe a mailing list with the remark "moderated for non-subscribers"
-> > means that a mail from an address that has not subscribed to the mailing
-> > list is put on hold and needs to be manually permitted to be seen on the
-> > mailing list.
-> > 
-> > Matthias, is that also your understanding of "moderated for
-> > non-subscribers" for your Reviewed-by tag?
+> regards
+> Suman
 > 
-> Yes.
->
+Hi Rob,
 
-Okay, then I guess my patch is actually VALID and can be applied.
+Can you help to comment about this point?
+Modify "ti,reset-bits" to "reset-bits" or add "mediatek,reset-bits" ?
+
+Many thanks~
+Crystal
 
 > > 
-> > I am not subscribed to linux-mediatek. When I sent an email to the list,
-> > it showed up really seconds later in the lore.kernel.org of the
-> > linux-mediatek public-inbox repository. So, either it was delivered
-> > quickly as it is not moderated or my check with lore.kernel.org is wrong,
-> > e.g., mails show up in the lore.kernel.org archive, even they were not
-> > yet permitted on the actual list.
+> > Otherwise this looks like it should work.
+> > 
+> > regards
+> > Philipp
 > > 
 > 
-> I'm the moderator and I get requests to moderate emails. I suppose I added you
-> to the accepted list because of earlier emails you send.
->
-
-Okay, I see. I did send some clean-up patch in the past, but I completely 
-forgot that, but my mailbox did not forget. So, now it is clear to me why 
-that mail showed up so quickly.
-
-Thanks for the explanation.
-
-Bjorn, with that confirmation and Reviewed-by from Matthias, could you 
-please pick this patch?
-
-Lukas
 
 _______________________________________________
 Linux-mediatek mailing list
