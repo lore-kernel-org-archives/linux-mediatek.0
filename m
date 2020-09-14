@@ -2,96 +2,81 @@ Return-Path: <SRS0=gVFe=CX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.0 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3EE30C43461
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 14:58:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 07A5AC2D0E4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 15:06:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D856720732
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 14:58:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 85F9020829
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 15:06:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZOYfoZr3";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="GDQV6/Kl"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D856720732
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ey5YLWjx"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 85F9020829
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:References:Message-ID:In-Reply-To:Subject:To:Date:From:Reply-To:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dvJAmMuZ/yVHcTnZaBpcCVsaRY0UfSZw+IFg2ylrGco=; b=ZOYfoZr35Tq6R105X0HkDYj7c
-	mXSKRADlw+b0zjBMF69PSRGuDWt282bH4XMfuMOAFnnGKnj4LUM35Pq3lOZtJDErjIc0JiVEL0VZv
-	3F18VbT+GbX3A+yCRFPXWidRvtUxJ75IB5SNypH3WfSUGEL67D+sf8ZSBBCAwy4TZB8KMzXoFl3dD
-	sDhQVpkfb2i83Z5YLMvqFzgyTq8dPNcnORvZjNBHaeqC/nHsUFERskcPw5qE51nWy1XjkZjpaQwII
-	EYFPINu7xWNHdHjNAMA/wlua2DowJWCRwTd3RWNLg+WuJcxxtRp8o6UTa4HA0UbkhtFO955YZDqTK
-	7D5PL9/Kg==;
+	 bh=izg6BaLwdR6EA6zziC/grleFaY0ozEVLtoZnNHZyckE=; b=Ey5YLWjx2cw32c4R+T1sMapvO
+	oqCJoTUtpDvtiSjbPkcUpeZmWld93j1HKDQ7C/fHrDExG45cZgMKlmcmt09PpMYfl0jNFSVFdHgpk
+	MPhrtFRNNVTxyLUsOH1EhHXQopKpLqwBFS15WGa5PnVi+C7SKZ2B8GKoGQHl3GTYsOSHyV64A01fG
+	qb51XZtyMpLxVYelXMuHPSHkoSMrigHZepB08ZNPppxvt0+hOCGGmsRp6e+qLPXwyrOoaK2U81/WZ
+	GIJLnOk1wcdbD/3eLBc6ZJvKRbRUjJmP0RD71LMqOAbSOBL2kEgaEAmwRbp7Pnreuki/SdHVPoxCl
+	TpXkMyJzg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kHpvV-0005yS-O1; Mon, 14 Sep 2020 14:57:53 +0000
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644])
+	id 1kHq3O-00008j-88; Mon, 14 Sep 2020 15:06:02 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kHpvP-0005vq-1z
- for linux-mediatek@lists.infradead.org; Mon, 14 Sep 2020 14:57:47 +0000
-Received: by mail-ej1-x644.google.com with SMTP id z22so392601ejl.7
- for <linux-mediatek@lists.infradead.org>; Mon, 14 Sep 2020 07:57:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:date:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=Xh4tD223j00jU7T+Vd43Uj9fI1q3F/mpuVRkoDMYyKs=;
- b=GDQV6/KlhWsmL1rEsCarprshmGJdUWS/ItNbt1hdUP+hquCmAK2EBAvPbuO9hNUeNT
- gpil2zbDpNeMWDyOHN7FIa4OEnMzRZbHp1Ptt8vq2EfViROkyIwzl2SUGC61D9+GK6m3
- diaXUiJ71sCdORzU/9+cd6XlwnUk2m0PZOpGJY8yj+mUBgjZ5Jts2WfRXM4RA5C82wYY
- bcqN1zeQLBy96ls/tFFFIRV9uVzSQChTedkI8pzrWVLT4Ml+/oUBZ/v5jBVe3ipRE4wi
- SDFFfQUMX266jrgL9ZJjBSPxet5P8LzJxbRoaYhR2n5rphJo4nuI1ugWkmK7HvAImwJf
- VPBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:date:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=Xh4tD223j00jU7T+Vd43Uj9fI1q3F/mpuVRkoDMYyKs=;
- b=CIJ0PUGg1xsH9JsbU0+M5iD+Ba89BCv0xRuelNspV+zu1o0UVeEegv892JYuv8ZizZ
- mWb9QlUgP7/8/mRJLiIyO5xeKj3JJoxGGEumeZQx7FJbT9FwxdBt0ao/OYe+wV7nKx0z
- ChTs9Kps3Z/COR6ayd+C9LX7DGP8mO/2ZgA7ZEIS3CXGA/swzx4hH+lExznuJj2ooeK4
- ZZmjNTuXVuuzpkwGREpqaKjGqMD8yjx+CkQI3KB1eg4AeQvz91agzNlTLkAbynYHNTOe
- cSDS2tcmJnwbRj4pLtKmqBCvLgCT2A7NxEXgYzwc7nART9WDC4fTYt2GRzQQ3qjizYem
- Fy4A==
-X-Gm-Message-State: AOAM532jaHmgXcZYISXgZ89JLuVcbL1rYBFSvEZQEPdUjbg20r/EGnhz
- QB0sRsfSmW+aq7cCfh6hQ/c=
-X-Google-Smtp-Source: ABdhPJx+0myKK4AhShO6TTXm3+70MJAFc8OcZXHuIWnyTyYe9sX1qwfdEKa81XG8Kuu4WfzQsX5GQA==
-X-Received: by 2002:a17:906:46d5:: with SMTP id
- k21mr14873627ejs.247.1600095465580; 
- Mon, 14 Sep 2020 07:57:45 -0700 (PDT)
-Received: from felia ([2001:16b8:2ddc:3000:7936:d9d0:986e:cca5])
- by smtp.gmail.com with ESMTPSA id d13sm9440145edu.54.2020.09.14.07.57.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Sep 2020 07:57:44 -0700 (PDT)
-From: Lukas Bulwahn <lukas.bulwahn@gmail.com>
-X-Google-Original-From: Lukas Bulwahn <lukas@gmail.com>
-Date: Mon, 14 Sep 2020 16:57:43 +0200 (CEST)
-X-X-Sender: lukas@felia
-To: David Woodhouse <dwmw2@infradead.org>
-Subject: Re: [PATCH] MAINTAINERS: make linux-mediatek list remarks consistent
-In-Reply-To: <7da64c0975c345f1f45034410c9ed7d509ba9831.camel@infradead.org>
-Message-ID: <alpine.DEB.2.21.2009141615020.17999@felia>
-References: <20200914053110.23286-1-lukas.bulwahn@gmail.com>
- <f6bc41d3-5ce4-b9ea-e2bb-e0cee4de3179@gmail.com>
- <alpine.DEB.2.21.2009141208200.17999@felia>
- <9c5aaa15-bdd8-ae4f-0642-092566ab08ba@gmail.com>
- <alpine.DEB.2.21.2009141552570.17999@felia>
- <7da64c0975c345f1f45034410c9ed7d509ba9831.camel@infradead.org>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+ id 1kHq3L-00006N-6E; Mon, 14 Sep 2020 15:06:00 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 8FFDAB1DD;
+ Mon, 14 Sep 2020 15:06:10 +0000 (UTC)
+Subject: Re: [PATCH 01/20] drm/amdgpu: Introduce GEM object functions
+To: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
+ alexander.deucher@amd.com, airlied@linux.ie, daniel@ffwll.ch,
+ linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, l.stach@pengutronix.de, christian.gmeiner@gmail.com,
+ inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, kgene@kernel.org, krzk@kernel.org,
+ patrik.r.jakobsson@gmail.com, jani.nikula@linux.intel.com,
+ joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com,
+ chunkuang.hu@kernel.org, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
+ robdclark@gmail.com, sean@poorly.run, bskeggs@redhat.com,
+ tomi.valkeinen@ti.com, eric@anholt.net, hjc@rock-chips.com, heiko@sntech.de,
+ thierry.reding@gmail.com, jonathanh@nvidia.com,
+ rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
+ oleksandr_andrushchenko@epam.com, hyun.kwon@xilinx.com,
+ laurent.pinchart@ideasonboard.com, michal.simek@xilinx.com,
+ sumit.semwal@linaro.org, evan.quan@amd.com, Hawking.Zhang@amd.com,
+ tianci.yin@amd.com, marek.olsak@amd.com, hdegoede@redhat.com,
+ andrey.grodzovsky@amd.com, Felix.Kuehling@amd.com, xinhui.pan@amd.com,
+ aaron.liu@amd.com, nirmoy.das@amd.com, chris@chris-wilson.co.uk,
+ matthew.auld@intel.com, abdiel.janulgue@linux.intel.com,
+ tvrtko.ursulin@linux.intel.com, andi.shyti@intel.com, sam@ravnborg.org,
+ miaoqinglang@huawei.com, emil.velikov@collabora.com
+References: <20200813083644.31711-1-tzimmermann@suse.de>
+ <20200813083644.31711-2-tzimmermann@suse.de>
+ <5c1b3cab-1898-46df-2c5c-23ab6cbfbb7a@amd.com>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Message-ID: <c445493b-9914-63f2-1cf2-c3c1de14e3e5@suse.de>
+Date: Mon, 14 Sep 2020 17:05:49 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1939471326-1600095464=:17999"
+In-Reply-To: <5c1b3cab-1898-46df-2c5c-23ab6cbfbb7a@amd.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200914_105747_142030_F6B232DD 
-X-CRM114-Status: GOOD (  35.62  )
+X-CRM114-CacheID: sfid-20200914_110559_475761_AB42643B 
+X-CRM114-Status: GOOD (  22.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,75 +88,214 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Joe Perches <joe@perches.com>,
- linux-pci@vger.kernel.org, kernel-janitors@vger.kernel.org,
- Ralf Ramsauer <ralf.ramsauer@oth-regensburg.de>, linux-kernel@vger.kernel.org,
- Bjorn Helgaas <bhelgaas@google.com>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Lukas Bulwahn <lukas.bulwahn@gmail.com>,
- Pia Eichinger <pia.eichinger@st.oth-regensburg.de>
+Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ nouveau@lists.freedesktop.org, linux-tegra@vger.kernel.org,
+ xen-devel@lists.xenproject.org, freedreno@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============4846392293298324939=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============4846392293298324939==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="MeVdSsKebthdc7DC8hvgqWlLwpjnz0H9f"
 
---8323329-1939471326-1600095464=:17999
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--MeVdSsKebthdc7DC8hvgqWlLwpjnz0H9f
+Content-Type: multipart/mixed; boundary="zniUnHMaoWytGRm2jwIkKjV0oPt2fa9bx";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
+ alexander.deucher@amd.com, airlied@linux.ie, daniel@ffwll.ch,
+ linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, l.stach@pengutronix.de, christian.gmeiner@gmail.com,
+ inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, kgene@kernel.org, krzk@kernel.org,
+ patrik.r.jakobsson@gmail.com, jani.nikula@linux.intel.com,
+ joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com,
+ chunkuang.hu@kernel.org, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
+ robdclark@gmail.com, sean@poorly.run, bskeggs@redhat.com,
+ tomi.valkeinen@ti.com, eric@anholt.net, hjc@rock-chips.com, heiko@sntech.de,
+ thierry.reding@gmail.com, jonathanh@nvidia.com,
+ rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
+ oleksandr_andrushchenko@epam.com, hyun.kwon@xilinx.com,
+ laurent.pinchart@ideasonboard.com, michal.simek@xilinx.com,
+ sumit.semwal@linaro.org, evan.quan@amd.com, Hawking.Zhang@amd.com,
+ tianci.yin@amd.com, marek.olsak@amd.com, hdegoede@redhat.com,
+ andrey.grodzovsky@amd.com, Felix.Kuehling@amd.com, xinhui.pan@amd.com,
+ aaron.liu@amd.com, nirmoy.das@amd.com, chris@chris-wilson.co.uk,
+ matthew.auld@intel.com, abdiel.janulgue@linux.intel.com,
+ tvrtko.ursulin@linux.intel.com, andi.shyti@intel.com, sam@ravnborg.org,
+ miaoqinglang@huawei.com, emil.velikov@collabora.com
+Cc: amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ etnaviv@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ freedreno@lists.freedesktop.org, nouveau@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+ xen-devel@lists.xenproject.org
+Message-ID: <c445493b-9914-63f2-1cf2-c3c1de14e3e5@suse.de>
+Subject: Re: [PATCH 01/20] drm/amdgpu: Introduce GEM object functions
+References: <20200813083644.31711-1-tzimmermann@suse.de>
+ <20200813083644.31711-2-tzimmermann@suse.de>
+ <5c1b3cab-1898-46df-2c5c-23ab6cbfbb7a@amd.com>
+In-Reply-To: <5c1b3cab-1898-46df-2c5c-23ab6cbfbb7a@amd.com>
+
+--zniUnHMaoWytGRm2jwIkKjV0oPt2fa9bx
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+Hi
+
+Am 13.08.20 um 12:22 schrieb Christian K=C3=B6nig:
+> Am 13.08.20 um 10:36 schrieb Thomas Zimmermann:
+>> GEM object functions deprecate several similar callback interfaces in
+>> struct drm_driver. This patch replaces the per-driver callbacks with
+>> per-instance callbacks in amdgpu. The only exception is gem_prime_mmap=
+,
+>> which is non-trivial to convert.
+>>
+>> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+>> ---
+>> =C2=A0 drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c=C2=A0=C2=A0=C2=A0 |=C2=A0=
+ 6 ------
+>> =C2=A0 drivers/gpu/drm/amd/amdgpu/amdgpu_object.c | 12 ++++++++++++
+>> =C2=A0 2 files changed, 12 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
+>> b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
+>> index 81a79760ca61..51525b8774c9 100644
+>> --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
+>> +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
+>> @@ -1468,19 +1468,13 @@ static struct drm_driver kms_driver =3D {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .lastclose =3D amdgpu_driver_lastclose_=
+kms,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .irq_handler =3D amdgpu_irq_handler,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .ioctls =3D amdgpu_ioctls_kms,
+>> -=C2=A0=C2=A0=C2=A0 .gem_free_object_unlocked =3D amdgpu_gem_object_fr=
+ee,
+>> -=C2=A0=C2=A0=C2=A0 .gem_open_object =3D amdgpu_gem_object_open,
+>> -=C2=A0=C2=A0=C2=A0 .gem_close_object =3D amdgpu_gem_object_close,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .dumb_create =3D amdgpu_mode_dumb_creat=
+e,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .dumb_map_offset =3D amdgpu_mode_dumb_m=
+map,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .fops =3D &amdgpu_driver_kms_fops,
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .prime_handle_to_fd =3D drm_gem_=
+prime_handle_to_fd,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .prime_fd_to_handle =3D drm_gem_prime_f=
+d_to_handle,
+>> -=C2=A0=C2=A0=C2=A0 .gem_prime_export =3D amdgpu_gem_prime_export,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .gem_prime_import =3D amdgpu_gem_prime_=
+import,
+>> -=C2=A0=C2=A0=C2=A0 .gem_prime_vmap =3D amdgpu_gem_prime_vmap,
+>> -=C2=A0=C2=A0=C2=A0 .gem_prime_vunmap =3D amdgpu_gem_prime_vunmap,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .gem_prime_mmap =3D amdgpu_gem_prime_mm=
+ap,
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .name =3D DRIVER_NAME,
+>> diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
+>> b/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
+>> index 43f4966331dd..ca2b79f94e99 100644
+>> --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
+>> +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
+>> @@ -36,6 +36,7 @@
+>> =C2=A0 #include <drm/amdgpu_drm.h>
+>> =C2=A0 #include <drm/drm_cache.h>
+>> =C2=A0 #include "amdgpu.h"
+>> +#include "amdgpu_dma_buf.h"
+>> =C2=A0 #include "amdgpu_trace.h"
+>> =C2=A0 #include "amdgpu_amdkfd.h"
+>> =C2=A0 @@ -510,6 +511,15 @@ bool amdgpu_bo_support_uswc(u64 bo_flags)
+>> =C2=A0 #endif
+>> =C2=A0 }
+>> =C2=A0 +static const struct drm_gem_object_funcs amdgpu_gem_object_fun=
+cs =3D {
+>> +=C2=A0=C2=A0=C2=A0 .free =3D amdgpu_gem_object_free,
+>> +=C2=A0=C2=A0=C2=A0 .open =3D amdgpu_gem_object_open,
+>> +=C2=A0=C2=A0=C2=A0 .close =3D amdgpu_gem_object_close,
+>> +=C2=A0=C2=A0=C2=A0 .export =3D amdgpu_gem_prime_export,
+>> +=C2=A0=C2=A0=C2=A0 .vmap =3D amdgpu_gem_prime_vmap,
+>> +=C2=A0=C2=A0=C2=A0 .vunmap =3D amdgpu_gem_prime_vunmap,
+>> +};
+>> +
+>=20
+> Wrong file, this belongs into amdgpu_gem.c
+>=20
+>> =C2=A0 static int amdgpu_bo_do_create(struct amdgpu_device *adev,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct amdgpu_bo_param *=
+bp,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct amdgpu_bo **bo_pt=
+r)
+>> @@ -552,6 +562,8 @@ static int amdgpu_bo_do_create(struct
+>> amdgpu_device *adev,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bo =3D kzalloc(sizeof(struct amdgpu_bo)=
+, GFP_KERNEL);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (bo =3D=3D NULL)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return -ENOMEM;=
+
+>> +
+>> +=C2=A0=C2=A0=C2=A0 bo->tbo.base.funcs =3D &amdgpu_gem_object_funcs;
+>=20
+> And this should probably go into amdgpu_gem_object_create().
+
+I'm trying to understand what amdgpu does.  What about all the places
+where amdgpu calls amdgpu_bo_create() internally? Wouldn't these miss
+the free callback for the GEM object?
+
+Best regards
+Thomas
+
+>=20
+> Apart from that looks like a good idea to me.
+>=20
+> Christian.
+>=20
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 drm_gem_private_object_init(adev->ddev,=
+ &bo->tbo.base, size);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 INIT_LIST_HEAD(&bo->shadow_list);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bo->vm_bo =3D NULL;
+>=20
+
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+(HRB 36809, AG N=C3=BCrnberg)
+Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
 
 
+--zniUnHMaoWytGRm2jwIkKjV0oPt2fa9bx--
 
-On Mon, 14 Sep 2020, David Woodhouse wrote:
+--MeVdSsKebthdc7DC8hvgqWlLwpjnz0H9f
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
-> On Mon, 2020-09-14 at 16:01 +0200, Lukas Bulwahn wrote:
-> > > > I am not subscribed to linux-mediatek. When I sent an email to the list,
-> > > > it showed up really seconds later in the lore.kernel.org of the
-> > > > linux-mediatek public-inbox repository. So, either it was delivered
-> > > > quickly as it is not moderated or my check with lore.kernel.org is wrong,
-> > > > e.g., mails show up in the lore.kernel.org archive, even they were not
-> > > > yet permitted on the actual list.
-> > > > 
-> > > 
-> > > I'm the moderator and I get requests to moderate emails. I suppose I added you
-> > > to the accepted list because of earlier emails you send.
-> > > 
-> > 
-> > Okay, I see. I did send some clean-up patch in the past, but I completely 
-> > forgot that, but my mailbox did not forget. So, now it is clear to me why 
-> > that mail showed up so quickly.
-> > 
-> > Thanks for the explanation.
-> 
-> AFAICT the linux-mediatek list isn't configured to automatically
-> moderate messages from non-subscribers. Its generic_nonmember_action
-> setting is 'Accept'. That is the default setting for lists on
-> infradead.org and I strongly encourage list maintainers to leave it
-> that way.
-> 
-> Lukas, I don't see your address in the allowlist either.
-> 
-> There are other reasons why some messages get might trapped for
-> moderation — the message size, number of recipients, spam score, etc.
-> 
-> The mere fact that *some* messages are moderated does not mean that the
-> list is "moderated for non-subscribers" in the sense that the
-> MAINTAINERS file lists.
->
-> > Bjorn, with that confirmation and Reviewed-by from Matthias, could you 
-> > please pick this patch?
-> 
-> I think we should be fixing the ones that *do* say it's moderated for
-> non-subscribers, not the one that correctly didn't :)
-> 
+-----BEGIN PGP SIGNATURE-----
 
-Well, I am happy to send any PATCH v2. I guess we, you, David, Matthias 
-and I, now just need to determine if the list is moderated or not.
+iQFIBAEBCAAyFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl9fhs0UHHR6aW1tZXJt
+YW5uQHN1c2UuZGUACgkQaA3BHVMLeiPJNAgAlfJhPTx8SHwyCGcF7SoXCxqFUag5
+/hXG2aWBOQj0PGNIWjEqH/FwrQApUbBmpbBWXncgOJjyevY1bY3RXSi+ibAW263g
+1lb0Cf5fR55oudCzfJIiQhM5nXHpnbDTdEq1kVtVf4mD3cn1eyPWtOgpXIklFs+w
+YSnklFEtZsXQnHs9whrVXf1UPUoecKtVRfIflZBfGttuRdODIknW+9iFA/+QYggh
+4WsKIHEpME3IpnfYOqS6yZ3oqcKeROalr2HZ6EUy/NaixshxCZxnLQVMNWx7saKP
+aygn2TEK3CwcBwiYGlPcx3/VFCRdviSNuxDmkZ5CV3ceT5gUjE0suBVVaA==
+=QxSN
+-----END PGP SIGNATURE-----
 
-I will then adjust MAINTAINERS to the final conclusion.
+--MeVdSsKebthdc7DC8hvgqWlLwpjnz0H9f--
 
-Lukas
---8323329-1939471326-1600095464=:17999
+
+--===============4846392293298324939==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -182,5 +306,5 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---8323329-1939471326-1600095464=:17999--
+--===============4846392293298324939==--
 
