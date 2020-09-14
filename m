@@ -2,60 +2,76 @@ Return-Path: <SRS0=gVFe=CX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D42B4C2BC11
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 14:26:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C9490C43461
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 14:32:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 64DE821974
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 14:26:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6B1D620829
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 14:32:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BU7WGBvF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 64DE821974
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="niNJ9hD2";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="FwEeRWDt"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6B1D620829
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=IO8ZLLq5MB3z0/5ha8nRP6LNQrLPxRLNfTvWfZLMnXs=; b=BU7WGBvFqCoOsSImdGtJpLmQtW
-	xAIGZLQ5LQZ0U4HQeIBHBamR6fVRzNwHaLNg8hy3hOm3lTFat5Qedkkmg2vd0tiMetAW8jWugmQ02
-	OTEdfNzzGJBoflHTK4DfA2+Cp26xlEkK8zhBJCikrtoiRJ2qfF5e7NtQ2UyPfKuOYGv1PmeaNQFBU
-	kXrJ07YzTzgJb50N3HSpkyqtQotzihmKGvNlLMsQJ99Zd+dDQeAQoEbAX3fw4orpYTbaFZEJ/jv7c
-	V0Zj2iWynzuqpvBLT/5vy+a0oT6P6gyC9i9l9u2OsjrkkXvF819vAjsFqcdvbaVvYACTnrvfgdrgj
-	jsaMTHDA==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=lsyJVThJ9LveO2m/zjy73u2b1NNlI7L15grxQb2p+lY=; b=niNJ9hD2Q+LRmyfCoxJcX13mm
+	TJ66hTAUWY0j9DgD4AxQ8IGWPywQWPJoc9b0d4dlCbNOinVWn/HdCqD90D7pNq9mUU1PqPyCOOOIk
+	Q8IWAa6eGh5As+WMOttuyXlOBIPkUoXAwBW86u0HvEdKcJvuoirA05yQ+W7G2th8V8OCp3qyFn59y
+	Dt1dT9jcWTILKJVEYdoDX9yrkO8lRs46NeZDgmXUBczlRQIlNVfp4eve3W4nTsCYIYBv/io4GFzNS
+	q+UzbCm/AVHY9PgFwt6qiEZsl3KLk4W+UlyHi6SadvP6JNSKNwnXlC3bYZTdWHQAjyDc9lEOdxV5d
+	xPMneTubA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kHpQi-0000qd-GX; Mon, 14 Sep 2020 14:26:04 +0000
-Received: from szxga04-in.huawei.com ([45.249.212.190] helo=huawei.com)
+	id 1kHpX1-00027R-8N; Mon, 14 Sep 2020 14:32:35 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kHpQd-0000nC-NR; Mon, 14 Sep 2020 14:26:00 +0000
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 16D6DB363E1478F62A9C;
- Mon, 14 Sep 2020 22:25:46 +0800 (CST)
-Received: from localhost (10.174.179.108) by DGGEMS402-HUB.china.huawei.com
- (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Mon, 14 Sep 2020
- 22:25:36 +0800
-From: YueHaibing <yuehaibing@huawei.com>
-To: <lee.jones@linaro.org>, <matthias.bgg@gmail.com>, <gene_chen@richtek.com>
-Subject: [PATCH -next] mfd: mt6360: Remove unused including <linux/version.h>
-Date: Mon, 14 Sep 2020 22:25:18 +0800
-Message-ID: <20200914142518.39228-1-yuehaibing@huawei.com>
-X-Mailer: git-send-email 2.10.2.windows.1
+ id 1kHpWw-000263-Mm; Mon, 14 Sep 2020 14:32:32 +0000
+Received: from mail-oi1-f176.google.com (mail-oi1-f176.google.com
+ [209.85.167.176])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id B00BB21D1A;
+ Mon, 14 Sep 2020 14:32:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1600093949;
+ bh=YofIJT7hGk9ue3KB7CrdnFSD9Las8gAsZInxMUkrQk0=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=FwEeRWDtibtWFRoWEuKLy9J20D9HtBVsMhdQsxWx3fFQO3QKYQJ0Vofk2sENchqVG
+ RR2MG6/gA0PyibAp0Xmjjl+3XRamQEAsgJXKN0UDJDxVk+7T3wk6QFN5QzEr6kgOAl
+ iI6Ve1SPgfeIfsMQhiQf2Ox4m435UjK6hkjpHZfw=
+Received: by mail-oi1-f176.google.com with SMTP id d189so37587oig.12;
+ Mon, 14 Sep 2020 07:32:29 -0700 (PDT)
+X-Gm-Message-State: AOAM532eTzdUWucpLV250884Oh19Kx+64c7Rp1VndrO54221Qe81Kivc
+ J29yg+px8kAHynSUXkNL0kFAiTZuEJ/qk1G/OA==
+X-Google-Smtp-Source: ABdhPJzS/DWXs28Wldey5jZtJV5LeOyL6S0f46cXQ+TaUcwK089s3k9DwBs3X8QmwGVKk0CYqSeDKHkiAijt5sj7jCI=
+X-Received: by 2002:aca:4cc7:: with SMTP id z190mr9193353oia.147.1600093948903; 
+ Mon, 14 Sep 2020 07:32:28 -0700 (PDT)
 MIME-Version: 1.0
-X-Originating-IP: [10.174.179.108]
-X-CFilter-Loop: Reflected
+References: <20200910034536.30860-1-jianjun.wang@mediatek.com>
+ <20200910034536.30860-3-jianjun.wang@mediatek.com>
+ <20200911224434.GA2905744@bogus>
+ <1600081533.2521.49.camel@mhfsdcap03>
+In-Reply-To: <1600081533.2521.49.camel@mhfsdcap03>
+From: Rob Herring <robh@kernel.org>
+Date: Mon, 14 Sep 2020 08:32:17 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqJ0sBK0pSDec3KBwNNq9metxn2x1-O9ANzPOktboRxc1A@mail.gmail.com>
+Message-ID: <CAL_JsqJ0sBK0pSDec3KBwNNq9metxn2x1-O9ANzPOktboRxc1A@mail.gmail.com>
+Subject: Re: [v2,2/3] PCI: mediatek: Add new generation controller support
+To: Jianjun Wang <jianjun.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200914_102600_018699_DB7A672D 
-X-CRM114-Status: UNSURE (   7.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200914_103230_947615_7649C403 
+X-CRM114-Status: GOOD (  35.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,37 +83,380 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: YueHaibing <yuehaibing@huawei.com>, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ PCI <linux-pci@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Sj Huang <sj.huang@mediatek.com>,
+ Ryder Lee <ryder.lee@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>, David Miller <davem@davemloft.net>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove including <linux/version.h> that don't need it.
+On Mon, Sep 14, 2020 at 5:07 AM Jianjun Wang <jianjun.wang@mediatek.com> wrote:
+>
+> On Fri, 2020-09-11 at 16:44 -0600, Rob Herring wrote:
+> > On Thu, Sep 10, 2020 at 11:45:35AM +0800, Jianjun Wang wrote:
+> > > MediaTek's PCIe host controller has three generation HWs, the new
+> > > generation HW is an individual bridge, it supoorts Gen3 speed and
+> > > up to 256 MSI interrupt numbers for multi-function devices.
+> > >
+> > > Add support for new Gen3 controller which can be found on MT8192.
+> > >
+> > > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> > > Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+> > > ---
+> > >  drivers/pci/controller/Kconfig              |   14 +
+> > >  drivers/pci/controller/Makefile             |    1 +
+> > >  drivers/pci/controller/pcie-mediatek-gen3.c | 1076 +++++++++++++++++++
+> > >  3 files changed, 1091 insertions(+)
+> > >  create mode 100644 drivers/pci/controller/pcie-mediatek-gen3.c
+> > >
+> > > diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
+> > > index f18c3725ef80..83daa772595b 100644
+> > > --- a/drivers/pci/controller/Kconfig
+> > > +++ b/drivers/pci/controller/Kconfig
+> > > @@ -239,6 +239,20 @@ config PCIE_MEDIATEK
+> > >       Say Y here if you want to enable PCIe controller support on
+> > >       MediaTek SoCs.
+> > >
+> > > +config PCIE_MEDIATEK_GEN3
+> > > +   tristate "MediaTek GEN3 PCIe controller"
+> > > +   depends on ARCH_MEDIATEK || COMPILE_TEST
+> > > +   depends on OF
+> > > +   depends on PCI_MSI_IRQ_DOMAIN
+> > > +   help
+> > > +     Adds support for PCIe Gen3 MAC controller for MediaTek SoCs.
+> > > +     This PCIe controller provides the capable of Gen3, Gen2 and
+> > > +     Gen1 speed, and support up to 256 MSI interrupt numbers for
+> > > +     multi-function devices.
+> > > +
+> > > +     Say Y here if you want to enable Gen3 PCIe controller support on
+> > > +     MediaTek SoCs.
+> > > +
+> > >  config PCIE_TANGO_SMP8759
+> > >     bool "Tango SMP8759 PCIe controller (DANGEROUS)"
+> > >     depends on ARCH_TANGO && PCI_MSI && OF
+> > > diff --git a/drivers/pci/controller/Makefile b/drivers/pci/controller/Makefile
+> > > index bcdbf49ab1e4..9c1b96777597 100644
+> > > --- a/drivers/pci/controller/Makefile
+> > > +++ b/drivers/pci/controller/Makefile
+> > > @@ -27,6 +27,7 @@ obj-$(CONFIG_PCIE_ROCKCHIP) += pcie-rockchip.o
+> > >  obj-$(CONFIG_PCIE_ROCKCHIP_EP) += pcie-rockchip-ep.o
+> > >  obj-$(CONFIG_PCIE_ROCKCHIP_HOST) += pcie-rockchip-host.o
+> > >  obj-$(CONFIG_PCIE_MEDIATEK) += pcie-mediatek.o
+> > > +obj-$(CONFIG_PCIE_MEDIATEK_GEN3) += pcie-mediatek-gen3.o
+> > >  obj-$(CONFIG_PCIE_TANGO_SMP8759) += pcie-tango.o
+> > >  obj-$(CONFIG_VMD) += vmd.o
+> > >  obj-$(CONFIG_PCIE_BRCMSTB) += pcie-brcmstb.o
+> > > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+> > > new file mode 100644
+> > > index 000000000000..f8c8bdf88d33
+> > > --- /dev/null
+> > > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> > > @@ -0,0 +1,1076 @@
+> > > +// SPDX-License-Identifier: GPL-2.0
+> > > +/*
+> > > + * MediaTek PCIe host controller driver.
+> > > + *
+> > > + * Copyright (c) 2020 MediaTek Inc.
+> > > + * Author: Jianjun Wang <jianjun.wang@mediatek.com>
+> > > + */
+> > > +
+> > > +#include <linux/clk.h>
+> > > +#include <linux/delay.h>
+> > > +#include <linux/iopoll.h>
+> > > +#include <linux/irq.h>
+> > > +#include <linux/irqchip/chained_irq.h>
+> > > +#include <linux/irqdomain.h>
+> > > +#include <linux/kernel.h>
+> > > +#include <linux/module.h>
+> > > +#include <linux/msi.h>
+> > > +#include <linux/of_address.h>
+> > > +#include <linux/of_clk.h>
+> > > +#include <linux/of_pci.h>
+> > > +#include <linux/of_platform.h>
+> > > +#include <linux/pci.h>
+> > > +#include <linux/phy/phy.h>
+> > > +#include <linux/platform_device.h>
+> > > +#include <linux/pm_domain.h>
+> > > +#include <linux/pm_runtime.h>
+> > > +#include <linux/reset.h>
+> > > +
+> > > +#include "../pci.h"
+> > > +
+> > > +#define PCIE_SETTING_REG           0x80
+> > > +#define PCIE_PCI_IDS_1                     0x9c
+> > > +#define PCI_CLASS(class)           (class << 8)
+> > > +#define PCIE_RC_MODE                       BIT(0)
+> > > +
+> > > +#define PCIE_CFGNUM_REG                    0x140
+> > > +#define PCIE_CFG_DEVFN(devfn)              ((devfn) & GENMASK(7, 0))
+> > > +#define PCIE_CFG_BUS(bus)          (((bus) << 8) & GENMASK(15, 8))
+> > > +#define PCIE_CFG_BYTE_EN(bytes)            (((bytes) << 16) & GENMASK(19, 16))
+> > > +#define PCIE_CFG_FORCE_BYTE_EN             BIT(20)
+> > > +#define PCIE_CFG_OFFSET_ADDR               0x1000
+> > > +#define PCIE_CFG_HEADER(devfn, bus) \
+> > > +   (PCIE_CFG_DEVFN(devfn) | PCIE_CFG_BUS(bus))
+> > > +
+> > > +#define PCIE_CFG_HEADER_FORCE_BE(devfn, bus, bytes) \
+> > > +   (PCIE_CFG_HEADER(devfn, bus) | PCIE_CFG_BYTE_EN(bytes) \
+> > > +    | PCIE_CFG_FORCE_BYTE_EN)
+> > > +
+> > > +#define PCIE_RST_CTRL_REG          0x148
+> > > +#define PCIE_MAC_RSTB                      BIT(0)
+> > > +#define PCIE_PHY_RSTB                      BIT(1)
+> > > +#define PCIE_BRG_RSTB                      BIT(2)
+> > > +#define PCIE_PE_RSTB                       BIT(3)
+> > > +
+> > > +#define PCIE_MISC_STATUS_REG               0x14C
+> > > +#define PCIE_LTR_MSG_RECEIVED              BIT(0)
+> > > +#define PCIE_PCIE_MSG_RECEIVED             BIT(1)
+> > > +
+> > > +#define PCIE_LTSSM_STATUS_REG              0x150
+> > > +#define PCIE_LTSSM_STATE_MASK              GENMASK(28, 24)
+> > > +#define PCIE_LTSSM_STATE(val)              ((val & PCIE_LTSSM_STATE_MASK) >> 24)
+> > > +#define PCIE_LTSSM_STATE_L0                0x10
+> > > +#define PCIE_LTSSM_STATE_L1_IDLE   0x13
+> > > +#define PCIE_LTSSM_STATE_L2_IDLE   0x14
+> > > +
+> > > +#define PCIE_LINK_STATUS_REG               0x154
+> > > +#define PCIE_PORT_LINKUP           BIT(8)
+> > > +
+> > > +#define PCIE_MSI_SET_NUM           8
+> > > +#define PCIE_MSI_IRQS_PER_SET              32
+> > > +#define PCIE_MSI_IRQS_NUM \
+> > > +   (PCIE_MSI_IRQS_PER_SET * (PCIE_MSI_SET_NUM))
+> > > +
+> > > +#define PCIE_INT_ENABLE_REG                0x180
+> > > +#define PCIE_MSI_MASK                      GENMASK(PCIE_MSI_SET_NUM + 8 - 1, 8)
+> > > +#define PCIE_MSI_SHIFT                     8
+> > > +#define PCIE_INTX_SHIFT                    24
+> > > +#define PCIE_INTX_MASK                     GENMASK(27, 24)
+> > > +#define PCIE_MSG_MASK                      BIT(28)
+> > > +#define PCIE_AER_MASK                      BIT(29)
+> > > +#define PCIE_PM_MASK                       BIT(30)
+> > > +
+> > > +#define PCIE_INT_STATUS_REG                0x184
+> > > +#define PCIE_MSI_SET_ENABLE_REG            0x190
+> > > +
+> > > +#define PCIE_LOW_POWER_CTRL_REG            0x194
+> > > +#define PCIE_DIS_LOWPWR_MASK               GENMASK(3, 0)
+> > > +#define PCIE_DIS_L0S_MASK          BIT(0)
+> > > +#define PCIE_DIS_L1_MASK           BIT(1)
+> > > +#define PCIE_DIS_L11_MASK          BIT(2)
+> > > +#define PCIE_DIS_L12_MASK          BIT(3)
+> > > +#define PCIE_FORCE_DIS_LOWPWR              GENMASK(11, 8)
+> > > +#define PCIE_FORCE_DIS_L0S         BIT(8)
+> > > +#define PCIE_FORCE_DIS_L1          BIT(9)
+> > > +#define PCIE_FORCE_DIS_L11         BIT(10)
+> > > +#define PCIE_FORCE_DIS_L12         BIT(11)
+> > > +
+> > > +#define PCIE_ICMD_PM_REG           0x198
+> > > +#define PCIE_TURN_OFF_LINK         BIT(4)
+> > > +
+> > > +#define PCIE_MSI_ADDR_BASE_REG             0xc00
+> > > +#define PCIE_MSI_SET_OFFSET                0x10
+> > > +#define PCIE_MSI_STATUS_OFFSET             0x04
+> > > +#define PCIE_MSI_ENABLE_OFFSET             0x08
+> > > +
+> > > +#define PCIE_TRANS_TABLE_BASE_REG  0x800
+> > > +#define PCIE_ATR_SRC_ADDR_MSB_OFFSET       0x4
+> > > +#define PCIE_ATR_TRSL_ADDR_LSB_OFFSET      0x8
+> > > +#define PCIE_ATR_TRSL_ADDR_MSB_OFFSET      0xc
+> > > +#define PCIE_ATR_TRSL_PARAM_OFFSET 0x10
+> > > +#define PCIE_ATR_TLB_SET_OFFSET            0x20
+> > > +
+> > > +#define PCIE_MAX_TRANS_TABLES              8
+> > > +#define ATR_EN                             BIT(0)
+> > > +#define ATR_SIZE(size)                     ((((size) - 1) << 1) & GENMASK(6, 1))
+> > > +#define ATR_ID(id)                 (id & GENMASK(3, 0))
+> > > +#define ATR_PARAM(param)           (((param) << 16) & GENMASK(27, 16))
+> > > +
+> > > +/**
+> > > + * struct mtk_pcie_msi - MSI information for each set
+> > > + * @base: IO mapped register base
+> > > + * @hwirq: Hardware interrupt number
+> > > + * @irq: MSI set Interrupt number
+> > > + * @index: MSI set number
+> > > + * @msg_addr: MSI message address
+> > > + * @domain: IRQ domain
+> > > + */
+> > > +struct mtk_pcie_msi {
+> > > +   void __iomem *base;
+> > > +   int hwirq;
+> > > +   int irq;
+> > > +   int index;
+> > > +   phys_addr_t msg_addr;
+> > > +   struct irq_domain *domain;
+> > > +};
+> > > +
+> > > +/**
+> > > + * struct mtk_pcie_port - PCIe port information
+> > > + * @dev: PCIe device
+> > > + * @base: IO mapped register base
+> > > + * @reg_base: Physical register base
+> > > + * @mac_reset: mac reset control
+> > > + * @phy_reset: phy reset control
+> > > + * @phy: PHY controller block
+> > > + * @clks: PCIe clocks
+> > > + * @num_clks: PCIe clocks count for this port
+> > > + * @is_suspended: device suspend state
+> > > + * @irq: PCIe controller interrupt number
+> > > + * @intx_domain: legacy INTx IRQ domain
+> > > + * @msi_domain: MSI IRQ domain
+> > > + * @msi_top_domain: MSI IRQ top domain
+> > > + * @msi_info: MSI sets information
+> > > + * @lock: lock protecting IRQ bit map
+> > > + * @msi_irq_in_use: bit map for assigned MSI IRQ
+> > > + */
+> > > +struct mtk_pcie_port {
+> > > +   struct device *dev;
+> > > +   void __iomem *base;
+> > > +   phys_addr_t reg_base;
+> > > +   struct reset_control *mac_reset;
+> > > +   struct reset_control *phy_reset;
+> > > +   struct phy *phy;
+> > > +   struct clk **clks;
+> > > +   int num_clks;
+> > > +   bool is_suspended;
+> > > +
+> > > +   int irq;
+> > > +   struct irq_domain *intx_domain;
+> > > +   struct irq_domain *msi_domain;
+> > > +   struct irq_domain *msi_top_domain;
+> > > +   struct mtk_pcie_msi **msi_info;
+> > > +   struct mutex lock;
+> > > +   DECLARE_BITMAP(msi_irq_in_use, PCIE_MSI_IRQS_NUM);
+> > > +};
+> > > +
+> > > +static int mtk_pcie_config_read(struct pci_bus *bus, unsigned int devfn,
+> > > +                               int where, int size, u32 *val)
+> > > +{
+> > > +   struct mtk_pcie_port *port = bus->sysdata;
+> > > +   int bytes;
+> > > +
+> > > +   bytes = ((1 << size) - 1) << (where & 0x3);
+> > > +   writel(PCIE_CFG_HEADER_FORCE_BE(devfn, bus->number, bytes),
+> > > +          port->base + PCIE_CFGNUM_REG);
+> > > +
+> > > +   *val = readl(port->base + PCIE_CFG_OFFSET_ADDR + (where & ~0x3));
+> > > +
+> > > +   if (size <= 2)
+> > > +           *val = (*val >> (8 * (where & 0x3))) & ((1 << (size * 8)) - 1);
+> > > +
+> > > +   return PCIBIOS_SUCCESSFUL;
+> > > +}
+> > > +
+> > > +static int mtk_pcie_config_write(struct pci_bus *bus, unsigned int devfn,
+> > > +                                int where, int size, u32 val)
+> > > +{
+> > > +   struct mtk_pcie_port *port = bus->sysdata;
+> > > +   int bytes;
+> > > +
+> > > +   bytes = ((1 << size) - 1) << (where & 0x3);
+> > > +   writel(PCIE_CFG_HEADER_FORCE_BE(devfn, bus->number, bytes),
+> > > +          port->base + PCIE_CFGNUM_REG);
+> > > +
+> > > +   if (size <= 2)
+> > > +           val = (val & ((1 << (size * 8)) - 1)) << ((where & 0x3) * 8);
+> > > +
+> > > +   writel(val, port->base + PCIE_CFG_OFFSET_ADDR + (where & ~0x3));
+> > > +
+> > > +   return PCIBIOS_SUCCESSFUL;
+> > > +}
+> > > +
+> > > +static struct pci_ops mtk_pcie_ops = {
+> > > +   .read  = mtk_pcie_config_read,
+> > > +   .write = mtk_pcie_config_write,
+> > > +};
+> > > +
+> > > +static void mtk_pcie_set_trans_window(void __iomem *reg,
+> > > +                                 resource_size_t cpu_addr,
+> > > +                                 resource_size_t pci_addr, size_t size)
+> > > +{
+> > > +   writel(lower_32_bits(cpu_addr) | ATR_SIZE(fls(size) - 1) | ATR_EN, reg);
+> > > +   writel(upper_32_bits(cpu_addr), reg + PCIE_ATR_SRC_ADDR_MSB_OFFSET);
+> > > +   writel(lower_32_bits(pci_addr), reg + PCIE_ATR_TRSL_ADDR_LSB_OFFSET);
+> > > +   writel(upper_32_bits(pci_addr), reg + PCIE_ATR_TRSL_ADDR_MSB_OFFSET);
+> > > +   writel(ATR_ID(0) | ATR_PARAM(0), reg + PCIE_ATR_TRSL_PARAM_OFFSET);
+> > > +}
+> > > +
+> > > +static int mtk_pcie_set_trans_table(void __iomem *reg,
+> > > +                               resource_size_t cpu_addr,
+> > > +                               resource_size_t pci_addr, size_t size,
+> > > +                               int num)
+> > > +{
+> > > +   void __iomem *table_base;
+> > > +
+> > > +   if (num > PCIE_MAX_TRANS_TABLES)
+> > > +           return -ENODEV;
+> > > +
+> > > +   table_base = reg + num * PCIE_ATR_TLB_SET_OFFSET;
+> > > +   mtk_pcie_set_trans_window(table_base, cpu_addr, pci_addr, size);
+> > > +
+> > > +   return 0;
+> > > +}
+> > > +
+> > > +static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
+> > > +{
+> > > +   struct resource_entry *entry;
+> > > +   struct pci_host_bridge *host = pci_host_bridge_from_priv(port);
+> > > +   u32 val;
+> > > +   int err = 0, table_index = 0;
+> > > +
+> > > +   /* Set as RC mode */
+> > > +   val = readl(port->base + PCIE_SETTING_REG);
+> > > +   val |= PCIE_RC_MODE;
+> > > +   writel(val, port->base + PCIE_SETTING_REG);
+> > > +
+> > > +   /* Set class code */
+> > > +   val = readl(port->base + PCIE_PCI_IDS_1);
+> > > +   val &= ~GENMASK(31, 8);
+> > > +   val |= PCI_CLASS(PCI_CLASS_BRIDGE_PCI << 8);
+> > > +   writel(val, port->base + PCIE_PCI_IDS_1);
+> > > +
+> > > +   /* Assert all reset signals */
+> > > +   val = readl(port->base + PCIE_RST_CTRL_REG);
+> > > +   val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
+> > > +   writel(val, port->base + PCIE_RST_CTRL_REG);
+> > > +
+> > > +   /* De-assert reset signals*/
+> > > +   val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB);
+> > > +   writel(val, port->base + PCIE_RST_CTRL_REG);
+> > > +
+> > > +   usleep_range(100 * 1000, 120 * 1000);
+> >
+> > Seems like a long delay...
+>
+> Yes, it's truly a long delay, the PCI Express Card Electromechanical
+> Specification suggests that the de-assertion of PERST# should be delayed
+> 100ms to wait the reference clocks become stable.I will discuss with the
+> designers to check if we really need that long time and try to make it
+> shorter.
 
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: YueHaibing <yuehaibing@huawei.com>
----
- drivers/mfd/mt6360-core.c | 1 -
- 1 file changed, 1 deletion(-)
+Just add a comment as to what the delay is for or based on.
 
-diff --git a/drivers/mfd/mt6360-core.c b/drivers/mfd/mt6360-core.c
-index e9cacc27d980..4661c1b29a72 100644
---- a/drivers/mfd/mt6360-core.c
-+++ b/drivers/mfd/mt6360-core.c
-@@ -13,7 +13,6 @@
- #include <linux/module.h>
- #include <linux/of_irq.h>
- #include <linux/of_platform.h>
--#include <linux/version.h>
- 
- #include <linux/mfd/mt6360.h>
- 
--- 
-2.17.1
+[...]
 
+> > > +static int __maybe_unused mtk_pcie_suspend_noirq(struct device *dev)
+> >
+> > Why do you need the noirq variant?
+>
+> I think the suspend of bus controller should be the last callback
+> function which will be called, so I add noirq variant to make sure it's
+> called after the device driver's suspend function.
 
+The Linux driver model will ensure that. Child devices will be
+suspended before the parent. If there's some non parent-child
+dependency, that should get handled with devlinks.
+
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
