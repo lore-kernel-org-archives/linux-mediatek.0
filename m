@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 42761C43461
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 03:12:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 59628C43461
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 03:12:46 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DDF08208DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 03:12:36 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EDDA4208DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 03:12:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="0bBPRa3G";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="POTokIb9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DDF08208DB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="H6VEpPN2";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="uLH4nsLh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EDDA4208DB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,35 +26,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ZHo1xN2/IVqRAyzorXG8fvDQd6FJVL2fnzZBpyZZDy0=; b=0bBPRa3GVFikeUdwP8D1UERbd
-	BZkW70uKj6mj5WmbXRj/1L1LpoKst0rh1CNnAlUmXeuJcKYgXvnj3bgKwerZ1nEJ8nN2t/iowxDD+
-	D+gieoq+5VKy7JxcdwyPCIJjkEr+zWKKE3KQOS7Hb01uHbKxjENP25Wij1QQfxrKREkMvFcQ4yDXi
-	t0HItSs5bLlzllrzcEhjnWd6uhfNolFCB2oFBP39UikuXTZ9TZQWgTJJN45qyrdjrQONqCf4xlHEh
-	mWgvSPymN/qvdQ5Zj9ikkMRcuzKIQcGFir+0mkubrQ3t/eox94AZS/HidAKjVf5L+M861DNdg3Jnr
-	ep6qYQpiQ==;
+	 bh=RZdxkcFsDWanD/9PW4xdYCmuGwiaEXORpbQtOtX3YxE=; b=H6VEpPN2+6/vEEYIX5cSHyAgN
+	QO113kSvrUOQ8eIJjABiRIMPlkFLxQVJdFuRxuSeIdpBtYzsQ+PAfn10SzEGx9T4CxMoDimAwLHyU
+	wf90LoBgj3+i062600lh+BLrmpKc7GTGn/2p35SCBxFEo0vKd5AtEJa/Njh+9JwPQhUC03Hcrheol
+	3H513zbGphWGPCYjXogbwYFaRDDgyjQMaUXo+XFjgWQL4fz9NWv7LACBYSiTk8PK9bRRcAzk6w4bW
+	bQcFsbvlPMGQJeKIlEZ49gKpTezFNGQoMToUPMnLZH+g/7FvRn2MG0y7z4lEDP0I3Zxw2hYtduPYu
+	4ZOKMmD5A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kHeun-0003E9-KN; Mon, 14 Sep 2020 03:12:25 +0000
+	id 1kHeuu-0003Gb-Rt; Mon, 14 Sep 2020 03:12:32 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kHeuQ-00033n-C3; Mon, 14 Sep 2020 03:12:03 +0000
-X-UUID: f2d5893cd14c4249bf550a1af6d5d1e9-20200913
+ id 1kHeuQ-00033k-Ek; Mon, 14 Sep 2020 03:12:04 +0000
+X-UUID: 6f384c765b1f41f484dbb38c73c32fbb-20200913
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=chPSICACYR/f8T3XAOtod3g03XTymrRpZAamvhTRi6k=; 
- b=POTokIb9cZ4r+wDvvPEnB/b+OTErBL7ZeLmFk9OeN3gw7bEIwWpLjVUGjrikxtYtx/UzyswpZajqf+e+IXBpE535PDkfziAXPlb/dSFbkyBbpmfzP3vu+2d+LNQmmqkDTI3rqLO3V/nhPV8IX/roOq+g8bkvdcIxkB5vyjbHxGQ=;
-X-UUID: f2d5893cd14c4249bf550a1af6d5d1e9-20200913
+ bh=nvQRJm4sVECHKjdCBLZvn1Ku1AJv7srF1NJ0jCgZY1Q=; 
+ b=uLH4nsLhWgORKbqWBzSNdPQUB+GAxOHLiytR18Tpcu2BwWrVlTLq6AeIClgJkGLWcYf4Zyjsa81BIlXeEh5+QE1rTyOKKnonq2ooQnr60Xs2FzwGts/ku6lwm6gjwnVfeaAKaxnr+GJwaAe5PBVCUYiAAQSCuT4G+KjhrTEw8oI=;
+X-UUID: 6f384c765b1f41f484dbb38c73c32fbb-20200913
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <henryc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1205379745; Sun, 13 Sep 2020 19:11:53 -0800
+ with ESMTP id 1335384962; Sun, 13 Sep 2020 19:11:53 -0800
 Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Sun, 13 Sep 2020 20:04:50 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 14 Sep 2020 11:04:50 +0800
+ 15.0.1497.2; Mon, 14 Sep 2020 11:04:49 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Mon, 14 Sep 2020 11:04:49 +0800
@@ -63,17 +63,18 @@ To: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Viresh Kumar
  <vireshk@kernel.org>, Stephen Boyd <swboyd@chromium.org>, Ryan Case
  <ryandcase@chromium.org>, Mark Brown <broonie@kernel.org>
-Subject: [PATCH V5 15/17] regulator: Regulator driver for the Mediatek DVFSRC
-Date: Mon, 14 Sep 2020 11:04:42 +0800
-Message-ID: <1600052684-21198-16-git-send-email-henryc.chen@mediatek.com>
+Subject: [PATCH V5 11/17] interconnect: mediatek: Add interconnect provider
+ driver
+Date: Mon, 14 Sep 2020 11:04:38 +0800
+Message-ID: <1600052684-21198-12-git-send-email-henryc.chen@mediatek.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1600052684-21198-1-git-send-email-henryc.chen@mediatek.com>
 References: <1600052684-21198-1-git-send-email-henryc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200913_231202_566761_683A67CB 
-X-CRM114-Status: GOOD (  26.26  )
+X-CRM114-CacheID: sfid-20200913_231202_711502_33C0A658 
+X-CRM114-Status: GOOD (  20.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,7 +90,7 @@ Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@google.com>,
  Mike
  Turquette <mturquette@linaro.org>, James Liao <jamesjj.liao@mediatek.com>,
  linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- "henryc.chen" <henryc.chen@mediatek.com>, Fan Chen <fan.chen@mediatek.com>,
+ Henry Chen <henryc.chen@mediatek.com>, Fan Chen <fan.chen@mediatek.com>,
  devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
  Arvin Wang <arvin.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
@@ -97,282 +98,426 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "henryc.chen" <henryc.chen@mediatek.com>
+Introduce Mediatek MT6873/MT8183/MT8192 specific provider driver
+using the interconnect framework.
 
-Driver for regulators exposed by the DVFSRC (dynamic voltage and
-frequency scaling resource collector) found in devices based on
-mt8183 and newer platforms.
+             ICC provider         ICC Nodes
+                              ----          ----
+             ---------       |CPU |   |--- |VPU |
+    -----   |         |-----  ----    |     ----
+   |DRAM |--|DRAM     |       ----    |     ----
+   |     |--|scheduler|----- |GPU |   |--- |DISP|
+   |     |--|(EMI)    |       ----    |     ----
+   |     |--|         |       -----   |     ----
+    -----   |         |----- |MMSYS|--|--- |VDEC|
+             ---------        -----   |     ----
+               /|\                    |     ----
+                |change DRAM freq     |--- |VENC|
+             ----------               |     ----
+            |  DVFSR   |              |
+            |          |              |     ----
+             ----------               |--- |IMG |
+                                      |     ----
+                                      |     ----
+                                      |--- |CAM |
+                                            ----
 
 Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
 ---
- drivers/regulator/Kconfig                |  10 ++
- drivers/regulator/Makefile               |   1 +
- drivers/regulator/mtk-dvfsrc-regulator.c | 224 +++++++++++++++++++++++++++++++
- 3 files changed, 235 insertions(+)
- create mode 100644 drivers/regulator/mtk-dvfsrc-regulator.c
+ drivers/interconnect/Kconfig            |   1 +
+ drivers/interconnect/Makefile           |   1 +
+ drivers/interconnect/mediatek/Kconfig   |  13 ++
+ drivers/interconnect/mediatek/Makefile  |   3 +
+ drivers/interconnect/mediatek/mtk-emi.c | 330 ++++++++++++++++++++++++++++++++
+ 5 files changed, 348 insertions(+)
+ create mode 100644 drivers/interconnect/mediatek/Kconfig
+ create mode 100644 drivers/interconnect/mediatek/Makefile
+ create mode 100644 drivers/interconnect/mediatek/mtk-emi.c
 
-diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
-index de17ef7..dd3b04f 100644
---- a/drivers/regulator/Kconfig
-+++ b/drivers/regulator/Kconfig
-@@ -729,6 +729,16 @@ config REGULATOR_MT6397
- 	  This driver supports the control of different power rails of device
- 	  through regulator interface.
+diff --git a/drivers/interconnect/Kconfig b/drivers/interconnect/Kconfig
+index 5b7204e..e939f5a 100644
+--- a/drivers/interconnect/Kconfig
++++ b/drivers/interconnect/Kconfig
+@@ -13,5 +13,6 @@ if INTERCONNECT
  
-+config REGULATOR_MTK_DVFSRC
-+	tristate "MediaTek DVFSRC regulator driver"
-+	depends on MTK_DVFSRC
-+	help
-+	  Say y here to control regulator by DVFSRC (dynamic voltage
-+	  and frequency scaling resource collector).
-+	  This driver supports to control regulators via the DVFSRC
-+	  of Mediatek. It allows for voting on regulator state
-+	  between multiple users.
-+
- config REGULATOR_PALMAS
- 	tristate "TI Palmas PMIC Regulators"
- 	depends on MFD_PALMAS
-diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
-index d8d3ecf..de858f2 100644
---- a/drivers/regulator/Makefile
-+++ b/drivers/regulator/Makefile
-@@ -90,6 +90,7 @@ obj-$(CONFIG_REGULATOR_MT6323)	+= mt6323-regulator.o
- obj-$(CONFIG_REGULATOR_MT6358)	+= mt6358-regulator.o
- obj-$(CONFIG_REGULATOR_MT6380)	+= mt6380-regulator.o
- obj-$(CONFIG_REGULATOR_MT6397)	+= mt6397-regulator.o
-+obj-$(CONFIG_REGULATOR_MTK_DVFSRC) += mtk-dvfsrc-regulator.o
- obj-$(CONFIG_REGULATOR_QCOM_LABIBB) += qcom-labibb-regulator.o
- obj-$(CONFIG_REGULATOR_QCOM_RPM) += qcom_rpm-regulator.o
- obj-$(CONFIG_REGULATOR_QCOM_RPMH) += qcom-rpmh-regulator.o
-diff --git a/drivers/regulator/mtk-dvfsrc-regulator.c b/drivers/regulator/mtk-dvfsrc-regulator.c
+ source "drivers/interconnect/imx/Kconfig"
+ source "drivers/interconnect/qcom/Kconfig"
++source "drivers/interconnect/mediatek/Kconfig"
+ 
+ endif
+diff --git a/drivers/interconnect/Makefile b/drivers/interconnect/Makefile
+index 4825c28..6f4b88a 100644
+--- a/drivers/interconnect/Makefile
++++ b/drivers/interconnect/Makefile
+@@ -6,3 +6,4 @@ icc-core-objs				:= core.o
+ obj-$(CONFIG_INTERCONNECT)		+= icc-core.o
+ obj-$(CONFIG_INTERCONNECT_IMX)		+= imx/
+ obj-$(CONFIG_INTERCONNECT_QCOM)		+= qcom/
++obj-$(CONFIG_INTERCONNECT_MTK)		+= mediatek/
+diff --git a/drivers/interconnect/mediatek/Kconfig b/drivers/interconnect/mediatek/Kconfig
 new file mode 100644
-index 0000000..041583e
+index 0000000..972d3bb
 --- /dev/null
-+++ b/drivers/regulator/mtk-dvfsrc-regulator.c
-@@ -0,0 +1,224 @@
++++ b/drivers/interconnect/mediatek/Kconfig
+@@ -0,0 +1,13 @@
++config INTERCONNECT_MTK
++	bool "Mediatek Network-on-Chip interconnect drivers"
++	depends on ARCH_MEDIATEK
++	help
++	  Support for Mediatek's Network-on-Chip interconnect hardware.
++
++config INTERCONNECT_MTK_EMI
++	tristate "Mediatek EMI interconnect driver"
++	depends on INTERCONNECT_MTK
++	depends on (MTK_DVFSRC && OF)
++	help
++	  This is a driver for the Mediatek Network-on-Chip on DVFSRC-based
++	  platforms.
+diff --git a/drivers/interconnect/mediatek/Makefile b/drivers/interconnect/mediatek/Makefile
+new file mode 100644
+index 0000000..353842b
+--- /dev/null
++++ b/drivers/interconnect/mediatek/Makefile
+@@ -0,0 +1,3 @@
++# SPDX-License-Identifier: GPL-2.0
++
++obj-$(CONFIG_INTERCONNECT_MTK_EMI) += mtk-emi.o
+\ No newline at end of file
+diff --git a/drivers/interconnect/mediatek/mtk-emi.c b/drivers/interconnect/mediatek/mtk-emi.c
+new file mode 100644
+index 0000000..9670077
+--- /dev/null
++++ b/drivers/interconnect/mediatek/mtk-emi.c
+@@ -0,0 +1,330 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
-+ * Copyright (c) 2019 MediaTek Inc.
++ * Copyright (c) 2020, The Linux Foundation. All rights reserved.
++ *
 + */
 +
-+#include <linux/err.h>
-+#include <linux/init.h>
++#include <linux/device.h>
++#include <linux/interconnect-provider.h>
 +#include <linux/module.h>
-+#include <linux/platform_device.h>
 +#include <linux/of_device.h>
-+#include <linux/of_platform.h>
-+#include <linux/regulator/driver.h>
-+#include <linux/regulator/of_regulator.h>
++#include <linux/platform_device.h>
 +#include <linux/soc/mediatek/mtk_dvfsrc.h>
++#include <dt-bindings/interconnect/mtk,mt8183-emi.h>
++#include <dt-bindings/interconnect/mtk,mt6873-emi.h>
 +
-+#define DVFSRC_ID_VCORE		0
-+#define DVFSRC_ID_VSCP		1
++enum mtk_icc_name {
++	SLAVE_DDR_EMI,
++	MASTER_MCUSYS,
++	MASTER_GPUSYS,
++	MASTER_MMSYS,
++	MASTER_MM_VPU,
++	MASTER_MM_DISP,
++	MASTER_MM_VDEC,
++	MASTER_MM_VENC,
++	MASTER_MM_CAM,
++	MASTER_MM_IMG,
++	MASTER_MM_MDP,
++	MASTER_VPUSYS,
++	MASTER_VPU_PORT_0,
++	MASTER_VPU_PORT_1,
++	MASTER_MDLASYS,
++	MASTER_MDLA_PORT_0,
++	MASTER_UFS,
++	MASTER_PCIE,
++	MASTER_USB,
++	MASTER_WIFI,
++	MASTER_BT,
++	MASTER_NETSYS,
++	MASTER_DBGIF,
 +
-+#define MT_DVFSRC_REGULAR(match, _name,	_volt_table)	\
-+[DVFSRC_ID_##_name] = {					\
-+	.desc = {					\
-+		.name = match,				\
-+		.of_match = of_match_ptr(match),	\
-+		.ops = &dvfsrc_vcore_ops,		\
-+		.type = REGULATOR_VOLTAGE,		\
-+		.id = DVFSRC_ID_##_name,		\
-+		.owner = THIS_MODULE,			\
-+		.n_voltages = ARRAY_SIZE(_volt_table),	\
-+		.volt_table = _volt_table,		\
-+	},	\
-+}
-+
-+/*
-+ * DVFSRC regulators' information
-+ *
-+ * @desc: standard fields of regulator description.
-+ * @voltage_selector:  Selector used for get_voltage_sel() and
-+ *			   set_voltage_sel() callbacks
-+ */
-+
-+struct dvfsrc_regulator {
-+	struct regulator_desc	desc;
++	SLAVE_HRT_DDR_EMI,
++	MASTER_HRT_MMSYS,
++	MASTER_HRT_MM_DISP,
++	MASTER_HRT_MM_VDEC,
++	MASTER_HRT_MM_VENC,
++	MASTER_HRT_MM_CAM,
++	MASTER_HRT_MM_IMG,
++	MASTER_HRT_MM_MDP,
++	MASTER_HRT_DBGIF,
 +};
 +
-+/*
-+ * MTK DVFSRC regulators' init data
-+ *
-+ * @size: num of regulators
-+ * @regulator_info: regulator info.
++#define MT8183_MAX_LINKS	1
++
++/**
++ * struct mtk_icc_node - Mediatek specific interconnect nodes
++ * @name: the node name used in debugfs
++ * @ep : the type of this endpoint
++ * @id: a unique node identifier
++ * @links: an array of nodes where we can go next while traversing
++ * @num_links: the total number of @links
++ * @sum_avg: current sum aggregate value of all avg bw kBps requests
++ * @max_peak: current max aggregate value of all peak bw kBps requests
 + */
-+struct dvfsrc_regulator_init_data {
-+	u32 size;
-+	struct dvfsrc_regulator *regulator_info;
++struct mtk_icc_node {
++	unsigned char *name;
++	int ep;
++	u16 id;
++	u16 links[MT8183_MAX_LINKS];
++	u16 num_links;
++	u64 sum_avg;
++	u64 max_peak;
 +};
 +
-+static inline struct device *to_dvfsrc_dev(struct regulator_dev *rdev)
-+{
-+	return rdev_get_dev(rdev)->parent;
++struct mtk_icc_desc {
++	struct mtk_icc_node **nodes;
++	size_t num_nodes;
++};
++
++#define DEFINE_MNODE(_name, _id, _ep, ...)	\
++		static struct mtk_icc_node _name = {			\
++		.name = #_name,						\
++		.id = _id,						\
++		.ep = _ep,						\
++		.num_links = ARRAY_SIZE(((int[]){ __VA_ARGS__ })),	\
++		.links = { __VA_ARGS__ },				\
 +}
 +
-+static int dvfsrc_set_voltage_sel(struct regulator_dev *rdev,
-+				  unsigned int selector)
-+{
-+	struct device *dvfsrc_dev = to_dvfsrc_dev(rdev);
-+	int id = rdev_get_id(rdev);
++DEFINE_MNODE(ddr_emi, SLAVE_DDR_EMI, 1);
++DEFINE_MNODE(mcusys, MASTER_MCUSYS, 0, SLAVE_DDR_EMI);
++DEFINE_MNODE(gpu, MASTER_GPUSYS, 0, SLAVE_DDR_EMI);
++DEFINE_MNODE(mmsys, MASTER_MMSYS, 0, SLAVE_DDR_EMI);
++DEFINE_MNODE(mm_vpu, MASTER_MM_VPU, 0, MASTER_MMSYS);
++DEFINE_MNODE(mm_disp, MASTER_MM_DISP, 0, MASTER_MMSYS);
++DEFINE_MNODE(mm_vdec, MASTER_MM_VDEC, 0, MASTER_MMSYS);
++DEFINE_MNODE(mm_venc, MASTER_MM_VENC, 0, MASTER_MMSYS);
++DEFINE_MNODE(mm_cam, MASTER_MM_CAM, 0, MASTER_MMSYS);
++DEFINE_MNODE(mm_img, MASTER_MM_IMG, 0, MASTER_MMSYS);
++DEFINE_MNODE(mm_mdp, MASTER_MM_MDP, 0, MASTER_MMSYS);
++DEFINE_MNODE(vpusys, MASTER_VPUSYS, 0, SLAVE_DDR_EMI);
++DEFINE_MNODE(vpu_port_0, MASTER_VPU_PORT_0, 0, MASTER_VPUSYS);
++DEFINE_MNODE(vpu_port_1, MASTER_VPU_PORT_1, 0, MASTER_VPUSYS);
++DEFINE_MNODE(mdlasys, MASTER_MDLASYS, 0, SLAVE_DDR_EMI);
++DEFINE_MNODE(mdla_port_0, MASTER_MDLA_PORT_0, 0, MASTER_MDLASYS);
++DEFINE_MNODE(ufs, MASTER_UFS, 0, SLAVE_DDR_EMI);
++DEFINE_MNODE(pcie, MASTER_PCIE, 0, SLAVE_DDR_EMI);
++DEFINE_MNODE(usb, MASTER_USB, 0, SLAVE_DDR_EMI);
++DEFINE_MNODE(wifi, MASTER_WIFI, 0, SLAVE_DDR_EMI);
++DEFINE_MNODE(bt, MASTER_BT, 0, SLAVE_DDR_EMI);
++DEFINE_MNODE(netsys, MASTER_NETSYS, 0, SLAVE_DDR_EMI);
++DEFINE_MNODE(dbgif, MASTER_DBGIF, 0, SLAVE_DDR_EMI);
 +
-+	switch (id) {
-+	case DVFSRC_ID_VCORE:
-+		mtk_dvfsrc_send_request(dvfsrc_dev,
-+					MTK_DVFSRC_CMD_VCORE_REQUEST,
-+					selector);
-+	break;
-+	case DVFSRC_ID_VSCP:
-+		mtk_dvfsrc_send_request(dvfsrc_dev,
-+					MTK_DVFSRC_CMD_VSCP_REQUEST,
-+					selector);
-+	break;
-+	default:
-+		return -EINVAL;
-+	}
++DEFINE_MNODE(hrt_ddr_emi, SLAVE_HRT_DDR_EMI, 2);
++DEFINE_MNODE(hrt_mmsys, MASTER_HRT_MMSYS, 0, SLAVE_HRT_DDR_EMI);
++DEFINE_MNODE(hrt_mm_disp, MASTER_HRT_MM_DISP, 0, MASTER_HRT_MMSYS);
++DEFINE_MNODE(hrt_mm_vdec, MASTER_HRT_MM_VDEC, 0, MASTER_HRT_MMSYS);
++DEFINE_MNODE(hrt_mm_venc, MASTER_HRT_MM_VENC, 0, MASTER_HRT_MMSYS);
++DEFINE_MNODE(hrt_mm_cam, MASTER_HRT_MM_CAM, 0, MASTER_HRT_MMSYS);
++DEFINE_MNODE(hrt_mm_img, MASTER_HRT_MM_IMG, 0, MASTER_HRT_MMSYS);
++DEFINE_MNODE(hrt_mm_mdp, MASTER_HRT_MM_MDP, 0, MASTER_HRT_MMSYS);
++DEFINE_MNODE(hrt_dbgif, MASTER_HRT_DBGIF, 0, SLAVE_HRT_DDR_EMI);
++
++static struct mtk_icc_node *mt8183_icc_nodes[] = {
++	[MT8183_SLAVE_DDR_EMI] = &ddr_emi,
++	[MT8183_MASTER_MCUSYS] = &mcusys,
++	[MT8183_MASTER_GPU] = &gpu,
++	[MT8183_MASTER_MMSYS] = &mmsys,
++	[MT8183_MASTER_MM_VPU] = &mm_vpu,
++	[MT8183_MASTER_MM_DISP] = &mm_disp,
++	[MT8183_MASTER_MM_VDEC] = &mm_vdec,
++	[MT8183_MASTER_MM_VENC] = &mm_venc,
++	[MT8183_MASTER_MM_CAM] = &mm_cam,
++	[MT8183_MASTER_MM_IMG] = &mm_img,
++	[MT8183_MASTER_MM_MDP] = &mm_mdp,
++};
++
++static const struct mtk_icc_desc mt8183_icc = {
++	.nodes = mt8183_icc_nodes,
++	.num_nodes = ARRAY_SIZE(mt8183_icc_nodes),
++};
++
++static struct mtk_icc_node *mt6873_icc_nodes[] = {
++	[MT6873_SLAVE_DDR_EMI] = &ddr_emi,
++	[MT6873_MASTER_MCUSYS] = &mcusys,
++	[MT6873_MASTER_GPUSYS] = &gpu,
++	[MT6873_MASTER_MMSYS] = &mmsys,
++	[MT6873_MASTER_MM_VPU] = &mm_vpu,
++	[MT6873_MASTER_MM_DISP] = &mm_disp,
++	[MT6873_MASTER_MM_VDEC] = &mm_vdec,
++	[MT6873_MASTER_MM_VENC] = &mm_venc,
++	[MT6873_MASTER_MM_CAM] = &mm_cam,
++	[MT6873_MASTER_MM_IMG] = &mm_img,
++	[MT6873_MASTER_MM_MDP] = &mm_mdp,
++	[MT6873_MASTER_VPUSYS] = &vpusys,
++	[MT6873_MASTER_VPU_0] = &vpu_port_0,
++	[MT6873_MASTER_VPU_1] = &vpu_port_1,
++	[MT6873_MASTER_MDLASYS] = &mdlasys,
++	[MT6873_MASTER_MDLA_0] = &mdla_port_0,
++	[MT6873_MASTER_UFS] = &ufs,
++	[MT6873_MASTER_PCIE] = &pcie,
++	[MT6873_MASTER_USB] = &usb,
++	[MT6873_MASTER_WIFI] = &wifi,
++	[MT6873_MASTER_BT] = &bt,
++	[MT6873_MASTER_NETSYS] = &netsys,
++	[MT6873_MASTER_DBGIF] = &dbgif,
++
++	[MT6873_SLAVE_HRT_DDR_EMI] = &hrt_ddr_emi,
++	[MT6873_MASTER_HRT_MMSYS] = &hrt_mmsys,
++	[MT6873_MASTER_HRT_MM_DISP] = &hrt_mm_disp,
++	[MT6873_MASTER_HRT_MM_VDEC] = &hrt_mm_vdec,
++	[MT6873_MASTER_HRT_MM_VENC] = &hrt_mm_venc,
++	[MT6873_MASTER_HRT_MM_CAM] = &hrt_mm_cam,
++	[MT6873_MASTER_HRT_MM_IMG] = &hrt_mm_img,
++	[MT6873_MASTER_HRT_MM_MDP] = &hrt_mm_mdp,
++	[MT6873_MASTER_HRT_DBGIF] = &hrt_dbgif,
++};
++
++static struct mtk_icc_desc mt6873_icc = {
++	.nodes = mt6873_icc_nodes,
++	.num_nodes = ARRAY_SIZE(mt6873_icc_nodes),
++};
++
++static const struct of_device_id emi_icc_of_match[] = {
++	{ .compatible = "mediatek,mt8183-dvfsrc", .data = &mt8183_icc },
++	{ .compatible = "mediatek,mt8192-dvfsrc", .data = &mt6873_icc },
++	{ .compatible = "mediatek,mt6873-dvfsrc", .data = &mt6873_icc },
++	{ },
++};
++MODULE_DEVICE_TABLE(of, emi_icc_of_match);
++
++static int emi_icc_aggregate(struct icc_node *node, u32 tag, u32 avg_bw,
++			     u32 peak_bw, u32 *agg_avg, u32 *agg_peak)
++{
++	struct mtk_icc_node *in;
++
++	in = node->data;
++
++	*agg_avg += avg_bw;
++	*agg_peak = max_t(u32, *agg_peak, peak_bw);
++
++	in->sum_avg = *agg_avg;
++	in->max_peak = *agg_peak;
 +
 +	return 0;
 +}
 +
-+static int dvfsrc_get_voltage_sel(struct regulator_dev *rdev)
++static int emi_icc_set(struct icc_node *src, struct icc_node *dst)
 +{
-+	struct device *dvfsrc_dev = to_dvfsrc_dev(rdev);
-+	int id = rdev_get_id(rdev);
-+	int val, ret;
++	int ret = 0;
++	struct mtk_icc_node *node;
 +
-+	switch (id) {
-+	case DVFSRC_ID_VCORE:
-+		ret = mtk_dvfsrc_query_info(dvfsrc_dev,
-+					    MTK_DVFSRC_CMD_VCORE_LEVEL_QUERY,
-+					    &val);
-+	break;
-+	case DVFSRC_ID_VSCP:
-+		ret = mtk_dvfsrc_query_info(dvfsrc_dev,
-+					    MTK_DVFSRC_CMD_VSCP_LEVEL_QUERY,
-+					    &val);
-+	break;
-+	default:
-+		return -EINVAL;
++	node = dst->data;
++
++	if (node->ep == 1) {
++		mtk_dvfsrc_send_request(src->provider->dev,
++					MTK_DVFSRC_CMD_PEAK_BW_REQUEST,
++					node->max_peak);
++		mtk_dvfsrc_send_request(src->provider->dev,
++					MTK_DVFSRC_CMD_BW_REQUEST,
++					node->sum_avg);
++	} else if (node->ep == 2) {
++		mtk_dvfsrc_send_request(src->provider->dev,
++					MTK_DVFSRC_CMD_HRTBW_REQUEST,
++					node->sum_avg);
 +	}
 +
-+	if (ret != 0)
-+		return ret;
-+
-+	return val;
++	return ret;
 +}
 +
-+static const struct regulator_ops dvfsrc_vcore_ops = {
-+	.list_voltage = regulator_list_voltage_table,
-+	.get_voltage_sel = dvfsrc_get_voltage_sel,
-+	.set_voltage_sel = dvfsrc_set_voltage_sel,
-+};
-+
-+static const unsigned int mt8183_voltages[] = {
-+	725000,
-+	800000,
-+};
-+
-+static struct dvfsrc_regulator mt8183_regulators[] = {
-+	MT_DVFSRC_REGULAR("dvfsrc-vcore", VCORE,
-+			  mt8183_voltages),
-+};
-+
-+static const struct dvfsrc_regulator_init_data regulator_mt8183_data = {
-+	.size = ARRAY_SIZE(mt8183_regulators),
-+	.regulator_info = &mt8183_regulators[0],
-+};
-+
-+static const unsigned int mt6873_voltages[] = {
-+	575000,
-+	600000,
-+	650000,
-+	725000,
-+};
-+
-+static struct dvfsrc_regulator mt6873_regulators[] = {
-+	MT_DVFSRC_REGULAR("dvfsrc-vcore", VCORE,
-+			  mt6873_voltages),
-+	MT_DVFSRC_REGULAR("dvfsrc-vscp", VSCP,
-+			  mt6873_voltages),
-+};
-+
-+static const struct dvfsrc_regulator_init_data regulator_mt6873_data = {
-+	.size = ARRAY_SIZE(mt6873_regulators),
-+	.regulator_info = &mt6873_regulators[0],
-+};
-+
-+static const struct of_device_id mtk_dvfsrc_regulator_match[] = {
-+	{
-+		.compatible = "mediatek,mt8183-dvfsrc",
-+		.data = &regulator_mt8183_data,
-+	}, {
-+		.compatible = "mediatek,mt8192-dvfsrc",
-+		.data = &regulator_mt6873_data,
-+	}, {
-+		.compatible = "mediatek,mt6873-dvfsrc",
-+		.data = &regulator_mt6873_data,
-+	}, {
-+		/* sentinel */
-+	},
-+};
-+MODULE_DEVICE_TABLE(of, mtk_dvfsrc_regulator_match);
-+
-+static int dvfsrc_vcore_regulator_probe(struct platform_device *pdev)
++static int emi_icc_remove(struct platform_device *pdev);
++static int emi_icc_probe(struct platform_device *pdev)
 +{
 +	const struct of_device_id *match;
++	const struct mtk_icc_desc *desc;
 +	struct device *dev = &pdev->dev;
-+	struct regulator_config config = { };
-+	struct regulator_dev *rdev;
-+	const struct dvfsrc_regulator_init_data *regulator_init_data;
-+	struct dvfsrc_regulator *mt_regulators;
-+	int i;
++	struct icc_node *node;
++	struct icc_onecell_data *data;
++	struct icc_provider *provider;
++	struct mtk_icc_node **mnodes;
++	size_t num_nodes, i, j;
++	int ret;
 +
-+	match = of_match_node(mtk_dvfsrc_regulator_match, dev->parent->of_node);
++	match = of_match_node(emi_icc_of_match, dev->parent->of_node);
 +
 +	if (!match) {
 +		dev_err(dev, "invalid compatible string\n");
 +		return -ENODEV;
 +	}
 +
-+	regulator_init_data = match->data;
++	desc = match->data;
++	mnodes = desc->nodes;
++	num_nodes = desc->num_nodes;
 +
-+	mt_regulators = regulator_init_data->regulator_info;
-+	for (i = 0; i < regulator_init_data->size; i++) {
-+		config.dev = dev->parent;
-+		config.driver_data = (mt_regulators + i);
-+		rdev = devm_regulator_register(dev->parent,
-+					       &(mt_regulators + i)->desc,
-+					       &config);
-+		if (IS_ERR(rdev)) {
-+			dev_err(dev, "failed to register %s\n",
-+				(mt_regulators + i)->desc.name);
-+			return PTR_ERR(rdev);
-+		}
++	provider = devm_kzalloc(dev, sizeof(*provider), GFP_KERNEL);
++	if (!provider)
++		return -ENOMEM;
++
++	data = devm_kzalloc(dev, struct_size(data, nodes, num_nodes),
++			    GFP_KERNEL);
++	if (!data)
++		return -ENOMEM;
++
++	provider->dev = pdev->dev.parent;
++	provider->set = emi_icc_set;
++	provider->aggregate = emi_icc_aggregate;
++	provider->xlate = of_icc_xlate_onecell;
++	INIT_LIST_HEAD(&provider->nodes);
++	provider->data = data;
++
++	ret = icc_provider_add(provider);
++	if (ret) {
++		dev_err(&pdev->dev, "error adding interconnect provider\n");
++		return ret;
 +	}
 +
++	for (i = 0; i < num_nodes; i++) {
++		node = icc_node_create(mnodes[i]->id);
++		if (IS_ERR(node)) {
++			ret = PTR_ERR(node);
++			goto err;
++		}
++
++		node->name = mnodes[i]->name;
++		node->data = mnodes[i];
++		icc_node_add(node, provider);
++
++		for (j = 0; j < mnodes[i]->num_links; j++)
++			icc_link_create(node, mnodes[i]->links[j]);
++
++		data->nodes[i] = node;
++	}
++	data->num_nodes = num_nodes;
++
++	platform_set_drvdata(pdev, provider);
++
 +	return 0;
++err:
++	icc_nodes_remove(provider);
++	return ret;
 +}
 +
-+static struct platform_driver mtk_dvfsrc_regulator_driver = {
++static int emi_icc_remove(struct platform_device *pdev)
++{
++	struct icc_provider *provider = platform_get_drvdata(pdev);
++
++	icc_nodes_remove(provider);
++	return icc_provider_del(provider);
++}
++
++static struct platform_driver emi_icc_driver = {
++	.probe = emi_icc_probe,
++	.remove = emi_icc_remove,
 +	.driver = {
-+		.name  = "mtk-dvfsrc-regulator",
++		.name = "mediatek-emi-icc",
 +	},
-+	.probe = dvfsrc_vcore_regulator_probe,
 +};
 +
-+static int __init mtk_dvfsrc_regulator_init(void)
++static int __init mtk_emi_icc_init(void)
 +{
-+	return platform_driver_register(&mtk_dvfsrc_regulator_driver);
++	return platform_driver_register(&emi_icc_driver);
 +}
-+subsys_initcall(mtk_dvfsrc_regulator_init);
++subsys_initcall(mtk_emi_icc_init);
 +
-+static void __exit mtk_dvfsrc_regulator_exit(void)
++static void __exit mtk_emi_icc_exit(void)
 +{
-+	platform_driver_unregister(&mtk_dvfsrc_regulator_driver);
++	platform_driver_unregister(&emi_icc_driver);
 +}
-+module_exit(mtk_dvfsrc_regulator_exit);
++module_exit(mtk_emi_icc_exit);
 +
-+MODULE_AUTHOR("Arvin wang <arvin.wang@mediatek.com>");
++MODULE_AUTHOR("Henry Chen <henryc.chen@mediatek.com>");
 +MODULE_LICENSE("GPL v2");
 -- 
 1.9.1
