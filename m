@@ -4,83 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
-	autolearn=no autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D5546C433E2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 14:06:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 569DCC43461
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 14:13:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F3DFA2074B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 14:06:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 022CE20672
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2020 14:13:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GIuVEkbL";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="IvfVSwBv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F3DFA2074B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3XA7kAjq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 022CE20672
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=infradead.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Mime-Version:References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=nwDYs8L9Q/qm4a4Yy02H8Qd3M9Tm8V8CCV5AI5ZYXwg=; b=GIuVEkbLxje2jIHV/kzIpNFr+
-	uJZn6yBTNj5VRWwWCl200nBpvz3DikPFrR5BYbYqMiJ84eJH05Bk+5MCFaaWjKHCgcTPFOu4VDHM7
-	16rXrKadp7RTHptK+jJUj7JZeqBX8LkKY/lfbgJAnXthy8RN9PkZkMTIcrFgGjILpvmybT3zWJ6Er
-	YawkEsg6ePPqQtG5y/7sUlX5PoTwB3bNX5YSEfQDAHdPoYawWrO7ugdg2JFd9pnM4Gk/aNa6G+rQk
-	1bF8oVKOLRLWXoDjEqaISmtcXx6vBSt66L+E/4VrxNaQ2iRF9E/9tIr7HpyOySOEz+cbgKLU4+Xhr
-	b/PcjjDRQ==;
+	 bh=buRMx4DNAR8fWwYWxJK2uGxgKs5Adet5XcWCFnk8C+4=; b=3XA7kAjqn1JmnadSIq0esHJ0a
+	roapoEOTqF+nzTq4gsxprxXpMoBcTuq36iaD5XjOO48omXI/u8tsB6ApRI6ort+sC5Wbo8QlYY76E
+	6htGNASajzfZyfTjS2KKDb9S4BuR/5159BOzxNUpPkbzrtfDQguMYBDCfMrWiQmMr7y8JC1Dx0uXc
+	WrNIQyz2yWPIjUsz6WlV5HSCXWlCMmVBFJf7AhI7KenFX2ph5LRzDleYsyNuvdiMvHlrvrNqEo0Rv
+	eycsqJGsi1UXvuvfBHZDyMIUFzR9ht5mowuL+bIm98ENs2CMRmVl5hKXihgWwnc+wB9hs6QYAv2V7
+	YQjw1ElMw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kHp7G-0004Vh-Bi; Mon, 14 Sep 2020 14:05:58 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kHp7A-0004TF-Ss; Mon, 14 Sep 2020 14:05:54 +0000
-X-UUID: 71135805e5e44d8fb0d6fa65273d0471-20200914
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=cLdj0X30p6O5aAOutE1K4/oxJCAmQzrpPvIelAe8dXw=; 
- b=IvfVSwBvruvn11Wu7+kq5CSUIP1IVhSi/mjYCh7xR+v94CD55Tv6cY94A1hcrm4h4N7D55M0ZlzHBH2TZoVlnkOMFN8zfxMJqLkCM2D9C5ByWQpCaunamMrmdeFyFZGwSQq75EaoqRlpEzVdQvSZWOliNcUVi0NYC5pANZlZJDQ=;
-X-UUID: 71135805e5e44d8fb0d6fa65273d0471-20200914
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <crystal.guo@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1440615605; Mon, 14 Sep 2020 06:02:27 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 14 Sep 2020 07:02:25 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31DR.mediatek.inc
- (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 14 Sep 2020 22:02:20 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 14 Sep 2020 22:02:20 +0800
-Message-ID: <1600092019.14806.32.camel@mhfsdcap03>
-Subject: Re: [v4,3/4] reset-controller: ti: introduce a new reset handler
-From: Crystal Guo <crystal.guo@mediatek.com>
-To: "robh+dt@kernel.org" <robh+dt@kernel.org>
-Date: Mon, 14 Sep 2020 22:00:19 +0800
-In-Reply-To: <407863ba-e336-11fc-297d-f1be1f58adaa@ti.com>
-References: <20200817030324.5690-1-crystal.guo@mediatek.com>
- <20200817030324.5690-4-crystal.guo@mediatek.com>
- <3a5decee-5f31-e27d-a120-1f835241a87c@ti.com>
- <1599620279.14806.18.camel@mhfsdcap03>
- <096362e9-dee8-4e7a-2518-47328068c2fd@ti.com>
- <1599792140.14806.22.camel@mhfsdcap03>
- <9d72aaef-49fe-ebb6-215d-05ad3ab27af4@ti.com>
- <1599804422.14806.27.camel@mhfsdcap03>
- <dae4ab91ec20e72963f2658efca4874a35dd739e.camel@pengutronix.de>
- <407863ba-e336-11fc-297d-f1be1f58adaa@ti.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
-MIME-Version: 1.0
-X-TM-SNTS-SMTP: 45A69AB5EB0307C47D3EE730CE03B37B6DC73E1E5FF7A7ED01BBCA588A5E68AB2000:8
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200914_100553_070726_BFA032B1 
-X-CRM114-Status: GOOD (  20.06  )
+	id 1kHpE5-0006nV-Ol; Mon, 14 Sep 2020 14:13:01 +0000
+Received: from 54-240-197-235.amazon.com ([54.240.197.235]
+ helo=u3832b3a9db3152.ant.amazon.com)
+ by merlin.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kHpE2-0006kF-5x; Mon, 14 Sep 2020 14:12:58 +0000
+Message-ID: <7da64c0975c345f1f45034410c9ed7d509ba9831.camel@infradead.org>
+Subject: Re: [PATCH] MAINTAINERS: make linux-mediatek list remarks consistent
+From: David Woodhouse <dwmw2@infradead.org>
+To: Lukas Bulwahn <lukas.bulwahn@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>
+Date: Mon, 14 Sep 2020 15:12:54 +0100
+In-Reply-To: <alpine.DEB.2.21.2009141552570.17999@felia>
+References: <20200914053110.23286-1-lukas.bulwahn@gmail.com>
+ <f6bc41d3-5ce4-b9ea-e2bb-e0cee4de3179@gmail.com>
+ <alpine.DEB.2.21.2009141208200.17999@felia>
+ <9c5aaa15-bdd8-ae4f-0642-092566ab08ba@gmail.com>
+ <alpine.DEB.2.21.2009141552570.17999@felia>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+Mime-Version: 1.0
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,79 +63,188 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Yong
- Liang =?UTF-8?Q?=28=E6=A2=81=E5=8B=87=29?= <Yong.Liang@mediatek.com>,
- Stanley Chu =?UTF-8?Q?=28=E6=9C=B1=E5=8E=9F=E9=99=9E=29?=
- <stanley.chu@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>,
- Seiya Wang =?UTF-8?Q?=28=E7=8E=8B=E8=BF=BA=E5=90=9B=29?=
- <seiya.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Fan Chen =?UTF-8?Q?=28=E9=99=B3=E5=87=A1=29?= <fan.chen@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?=
- <Yingjoe.Chen@mediatek.com>, Suman Anna <s-anna@ti.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org,
+ kernel-janitors@vger.kernel.org,
+ Ralf Ramsauer <ralf.ramsauer@oth-regensburg.de>, linux-kernel@vger.kernel.org,
+ Joe Perches <joe@perches.com>, linux-mediatek@lists.infradead.org,
+ Bjorn Helgaas <bhelgaas@google.com>,
+ Pia Eichinger <pia.eichinger@st.oth-regensburg.de>
+Content-Type: multipart/mixed; boundary="===============4118859752768318382=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-09-11 at 22:44 +0800, Suman Anna wrote:
-> On 9/11/20 9:26 AM, Philipp Zabel wrote:
-> > Hi Crystal,
-> > 
-> > On Fri, 2020-09-11 at 14:07 +0800, Crystal Guo wrote:
-> > [...]
-> >> Should I add the SoC-specific data as follows?
-> >> This may also modify the ti original code, is it OK?
-> >>
-> >> +       data->reset_data = of_device_get_match_data(&pdev->dev);
-> >> +
-> >> +       list = of_get_property(np, data->reset_data->reset_bits, &size);
-> >>
-> >> +static const struct common_reset_data ti_reset_data = {
-> >> +       .reset_op_available = false,
-> >> +       .reset_bits = "ti, reset-bits",
-> >                             ^
-> > That space doesn't belong there.
-> > 
-> >> +};
-> >> +
-> >> +static const struct common_reset_data mediatek_reset_data = {
-> >> +       .reset_op_available = true,
-> >> +       .reset_bits = "mediatek, reset-bits",
-> >> +};
-> > 
-> > I understand Robs comments as meaning "ti,reset-bits" should have been
-> > called "reset-bits" in the first place, and you shouldn't repeat adding
-> > the vendor prefix, as that is implied by the compatible. So this should
-> > probably be just "reset-bits".
-> 
-> Hmm, not sure about that. I think Rob wants the reset data itself to be added in
-> the driver as is being done on some other SoCs (eg: like in reset-qcom-pdc.c).
-> 
-> regards
-> Suman
-> 
-Hi Rob,
 
-Can you help to comment about this point?
-Modify "ti,reset-bits" to "reset-bits" or add "mediatek,reset-bits" ?
+--===============4118859752768318382==
+Content-Type: multipart/signed; micalg="sha-256";
+	protocol="application/x-pkcs7-signature";
+	boundary="=-iW2GtJivDm6iDVzfQw8Z"
 
-Many thanks~
-Crystal
 
-> > 
-> > Otherwise this looks like it should work.
-> > 
-> > regards
-> > Philipp
-> > 
-> 
+--=-iW2GtJivDm6iDVzfQw8Z
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, 2020-09-14 at 16:01 +0200, Lukas Bulwahn wrote:
+> > > I am not subscribed to linux-mediatek. When I sent an email to the li=
+st,
+> > > it showed up really seconds later in the lore.kernel.org of the
+> > > linux-mediatek public-inbox repository. So, either it was delivered
+> > > quickly as it is not moderated or my check with lore.kernel.org is wr=
+ong,
+> > > e.g., mails show up in the lore.kernel.org archive, even they were no=
+t
+> > > yet permitted on the actual list.
+> > >=20
+> >=20
+> > I'm the moderator and I get requests to moderate emails. I suppose I ad=
+ded you
+> > to the accepted list because of earlier emails you send.
+> >=20
+>=20
+> Okay, I see. I did send some clean-up patch in the past, but I completely=
+=20
+> forgot that, but my mailbox did not forget. So, now it is clear to me why=
+=20
+> that mail showed up so quickly.
+>=20
+> Thanks for the explanation.
+
+AFAICT the linux-mediatek list isn't configured to automatically
+moderate messages from non-subscribers. Its generic_nonmember_action
+setting is 'Accept'. That is the default setting for lists on
+infradead.org and I strongly encourage list maintainers to leave it
+that way.
+
+Lukas, I don't see your address in the allowlist either.
+
+There are other reasons why some messages get might trapped for
+moderation =E2=80=94 the message size, number of recipients, spam score, et=
+c.
+
+The mere fact that *some* messages are moderated does not mean that the
+list is "moderated for non-subscribers" in the sense that the
+MAINTAINERS file lists.
+
+> Bjorn, with that confirmation and Reviewed-by from Matthias, could you=
+=20
+> please pick this patch?
+
+I think we should be fixing the ones that *do* say it's moderated for
+non-subscribers, not the one that correctly didn't :)
+
+--=-iW2GtJivDm6iDVzfQw8Z
+Content-Type: application/x-pkcs7-signature; name="smime.p7s"
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCECow
+ggUcMIIEBKADAgECAhEA4rtJSHkq7AnpxKUY8ZlYZjANBgkqhkiG9w0BAQsFADCBlzELMAkGA1UE
+BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgG
+A1UEChMRQ09NT0RPIENBIExpbWl0ZWQxPTA7BgNVBAMTNENPTU9ETyBSU0EgQ2xpZW50IEF1dGhl
+bnRpY2F0aW9uIGFuZCBTZWN1cmUgRW1haWwgQ0EwHhcNMTkwMTAyMDAwMDAwWhcNMjIwMTAxMjM1
+OTU5WjAkMSIwIAYJKoZIhvcNAQkBFhNkd213MkBpbmZyYWRlYWQub3JnMIIBIjANBgkqhkiG9w0B
+AQEFAAOCAQ8AMIIBCgKCAQEAsv3wObLTCbUA7GJqKj9vHGf+Fa+tpkO+ZRVve9EpNsMsfXhvFpb8
+RgL8vD+L133wK6csYoDU7zKiAo92FMUWaY1Hy6HqvVr9oevfTV3xhB5rQO1RHJoAfkvhy+wpjo7Q
+cXuzkOpibq2YurVStHAiGqAOMGMXhcVGqPuGhcVcVzVUjsvEzAV9Po9K2rpZ52FE4rDkpDK1pBK+
+uOAyOkgIg/cD8Kugav5tyapydeWMZRJQH1vMQ6OVT24CyAn2yXm2NgTQMS1mpzStP2ioPtTnszIQ
+Ih7ASVzhV6csHb8Yrkx8mgllOyrt9Y2kWRRJFm/FPRNEurOeNV6lnYAXOymVJwIDAQABo4IB0zCC
+Ac8wHwYDVR0jBBgwFoAUgq9sjPjF/pZhfOgfPStxSF7Ei8AwHQYDVR0OBBYEFLfuNf820LvaT4AK
+xrGK3EKx1DE7MA4GA1UdDwEB/wQEAwIFoDAMBgNVHRMBAf8EAjAAMB0GA1UdJQQWMBQGCCsGAQUF
+BwMEBggrBgEFBQcDAjBGBgNVHSAEPzA9MDsGDCsGAQQBsjEBAgEDBTArMCkGCCsGAQUFBwIBFh1o
+dHRwczovL3NlY3VyZS5jb21vZG8ubmV0L0NQUzBaBgNVHR8EUzBRME+gTaBLhklodHRwOi8vY3Js
+LmNvbW9kb2NhLmNvbS9DT01PRE9SU0FDbGllbnRBdXRoZW50aWNhdGlvbmFuZFNlY3VyZUVtYWls
+Q0EuY3JsMIGLBggrBgEFBQcBAQR/MH0wVQYIKwYBBQUHMAKGSWh0dHA6Ly9jcnQuY29tb2RvY2Eu
+Y29tL0NPTU9ET1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcnQwJAYI
+KwYBBQUHMAGGGGh0dHA6Ly9vY3NwLmNvbW9kb2NhLmNvbTAeBgNVHREEFzAVgRNkd213MkBpbmZy
+YWRlYWQub3JnMA0GCSqGSIb3DQEBCwUAA4IBAQALbSykFusvvVkSIWttcEeifOGGKs7Wx2f5f45b
+nv2ghcxK5URjUvCnJhg+soxOMoQLG6+nbhzzb2rLTdRVGbvjZH0fOOzq0LShq0EXsqnJbbuwJhK+
+PnBtqX5O23PMHutP1l88AtVN+Rb72oSvnD+dK6708JqqUx2MAFLMevrhJRXLjKb2Mm+/8XBpEw+B
+7DisN4TMlLB/d55WnT9UPNHmQ+3KFL7QrTO8hYExkU849g58Dn3Nw3oCbMUgny81ocrLlB2Z5fFG
+Qu1AdNiBA+kg/UxzyJZpFbKfCITd5yX49bOriL692aMVDyqUvh8fP+T99PqorH4cIJP6OxSTdxKM
+MIIFHDCCBASgAwIBAgIRAOK7SUh5KuwJ6cSlGPGZWGYwDQYJKoZIhvcNAQELBQAwgZcxCzAJBgNV
+BAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAY
+BgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMT0wOwYDVQQDEzRDT01PRE8gUlNBIENsaWVudCBBdXRo
+ZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMB4XDTE5MDEwMjAwMDAwMFoXDTIyMDEwMTIz
+NTk1OVowJDEiMCAGCSqGSIb3DQEJARYTZHdtdzJAaW5mcmFkZWFkLm9yZzCCASIwDQYJKoZIhvcN
+AQEBBQADggEPADCCAQoCggEBALL98Dmy0wm1AOxiaio/bxxn/hWvraZDvmUVb3vRKTbDLH14bxaW
+/EYC/Lw/i9d98CunLGKA1O8yogKPdhTFFmmNR8uh6r1a/aHr301d8YQea0DtURyaAH5L4cvsKY6O
+0HF7s5DqYm6tmLq1UrRwIhqgDjBjF4XFRqj7hoXFXFc1VI7LxMwFfT6PStq6WedhROKw5KQytaQS
+vrjgMjpICIP3A/CroGr+bcmqcnXljGUSUB9bzEOjlU9uAsgJ9sl5tjYE0DEtZqc0rT9oqD7U57My
+ECIewElc4VenLB2/GK5MfJoJZTsq7fWNpFkUSRZvxT0TRLqznjVepZ2AFzsplScCAwEAAaOCAdMw
+ggHPMB8GA1UdIwQYMBaAFIKvbIz4xf6WYXzoHz0rcUhexIvAMB0GA1UdDgQWBBS37jX/NtC72k+A
+CsaxitxCsdQxOzAOBgNVHQ8BAf8EBAMCBaAwDAYDVR0TAQH/BAIwADAdBgNVHSUEFjAUBggrBgEF
+BQcDBAYIKwYBBQUHAwIwRgYDVR0gBD8wPTA7BgwrBgEEAbIxAQIBAwUwKzApBggrBgEFBQcCARYd
+aHR0cHM6Ly9zZWN1cmUuY29tb2RvLm5ldC9DUFMwWgYDVR0fBFMwUTBPoE2gS4ZJaHR0cDovL2Ny
+bC5jb21vZG9jYS5jb20vQ09NT0RPUlNBQ2xpZW50QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFp
+bENBLmNybDCBiwYIKwYBBQUHAQEEfzB9MFUGCCsGAQUFBzAChklodHRwOi8vY3J0LmNvbW9kb2Nh
+LmNvbS9DT01PRE9SU0FDbGllbnRBdXRoZW50aWNhdGlvbmFuZFNlY3VyZUVtYWlsQ0EuY3J0MCQG
+CCsGAQUFBzABhhhodHRwOi8vb2NzcC5jb21vZG9jYS5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5m
+cmFkZWFkLm9yZzANBgkqhkiG9w0BAQsFAAOCAQEAC20spBbrL71ZEiFrbXBHonzhhirO1sdn+X+O
+W579oIXMSuVEY1LwpyYYPrKMTjKECxuvp24c829qy03UVRm742R9Hzjs6tC0oatBF7KpyW27sCYS
+vj5wbal+TttzzB7rT9ZfPALVTfkW+9qEr5w/nSuu9PCaqlMdjABSzHr64SUVy4ym9jJvv/FwaRMP
+gew4rDeEzJSwf3eeVp0/VDzR5kPtyhS+0K0zvIWBMZFPOPYOfA59zcN6AmzFIJ8vNaHKy5QdmeXx
+RkLtQHTYgQPpIP1Mc8iWaRWynwiE3ecl+PWzq4i+vdmjFQ8qlL4fHz/k/fT6qKx+HCCT+jsUk3cS
+jDCCBeYwggPOoAMCAQICEGqb4Tg7/ytrnwHV2binUlYwDQYJKoZIhvcNAQEMBQAwgYUxCzAJBgNV
+BAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAY
+BgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMSswKQYDVQQDEyJDT01PRE8gUlNBIENlcnRpZmljYXRp
+b24gQXV0aG9yaXR5MB4XDTEzMDExMDAwMDAwMFoXDTI4MDEwOTIzNTk1OVowgZcxCzAJBgNVBAYT
+AkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAYBgNV
+BAoTEUNPTU9ETyBDQSBMaW1pdGVkMT0wOwYDVQQDEzRDT01PRE8gUlNBIENsaWVudCBBdXRoZW50
+aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAvrOeV6wodnVAFsc4A5jTxhh2IVDzJXkLTLWg0X06WD6cpzEup/Y0dtmEatrQPTRI5Or1u6zf
++bGBSyD9aH95dDSmeny1nxdlYCeXIoymMv6pQHJGNcIDpFDIMypVpVSRsivlJTRENf+RKwrB6vcf
+WlP8dSsE3Rfywq09N0ZfxcBa39V0wsGtkGWC+eQKiz4pBZYKjrc5NOpG9qrxpZxyb4o4yNNwTqza
+aPpGRqXB7IMjtf7tTmU2jqPMLxFNe1VXj9XB1rHvbRikw8lBoNoSWY66nJN/VCJv5ym6Q0mdCbDK
+CMPybTjoNCQuelc0IAaO4nLUXk0BOSxSxt8kCvsUtQIDAQABo4IBPDCCATgwHwYDVR0jBBgwFoAU
+u69+Aj36pvE8hI6t7jiY7NkyMtQwHQYDVR0OBBYEFIKvbIz4xf6WYXzoHz0rcUhexIvAMA4GA1Ud
+DwEB/wQEAwIBhjASBgNVHRMBAf8ECDAGAQH/AgEAMBEGA1UdIAQKMAgwBgYEVR0gADBMBgNVHR8E
+RTBDMEGgP6A9hjtodHRwOi8vY3JsLmNvbW9kb2NhLmNvbS9DT01PRE9SU0FDZXJ0aWZpY2F0aW9u
+QXV0aG9yaXR5LmNybDBxBggrBgEFBQcBAQRlMGMwOwYIKwYBBQUHMAKGL2h0dHA6Ly9jcnQuY29t
+b2RvY2EuY29tL0NPTU9ET1JTQUFkZFRydXN0Q0EuY3J0MCQGCCsGAQUFBzABhhhodHRwOi8vb2Nz
+cC5jb21vZG9jYS5jb20wDQYJKoZIhvcNAQEMBQADggIBAHhcsoEoNE887l9Wzp+XVuyPomsX9vP2
+SQgG1NgvNc3fQP7TcePo7EIMERoh42awGGsma65u/ITse2hKZHzT0CBxhuhb6txM1n/y78e/4ZOs
+0j8CGpfb+SJA3GaBQ+394k+z3ZByWPQedXLL1OdK8aRINTsjk/H5Ns77zwbjOKkDamxlpZ4TKSDM
+KVmU/PUWNMKSTvtlenlxBhh7ETrN543j/Q6qqgCWgWuMAXijnRglp9fyadqGOncjZjaaSOGTTFB+
+E2pvOUtY+hPebuPtTbq7vODqzCM6ryEhNhzf+enm0zlpXK7q332nXttNtjv7VFNYG+I31gnMrwfH
+M5tdhYF/8v5UY5g2xANPECTQdu9vWPoqNSGDt87b3gXb1AiGGaI06vzgkejL580ul+9hz9D0S0U4
+jkhJiA7EuTecP/CFtR72uYRBcunwwH3fciPjviDDAI9SnC/2aPY8ydehzuZutLbZdRJ5PDEJM/1t
+yZR2niOYihZ+FCbtf3D9mB12D4ln9icgc7CwaxpNSCPt8i/GqK2HsOgkL3VYnwtx7cJUmpvVdZ4o
+gnzgXtgtdk3ShrtOS1iAN2ZBXFiRmjVzmehoMof06r1xub+85hFQzVxZx5/bRaTKTlL8YXLI8nAb
+R9HWdFqzcOoB/hxfEyIQpx9/s81rgzdEZOofSlZHynoSMYIDyjCCA8YCAQEwga0wgZcxCzAJBgNV
+BAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAY
+BgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMT0wOwYDVQQDEzRDT01PRE8gUlNBIENsaWVudCBBdXRo
+ZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA4rtJSHkq7AnpxKUY8ZlYZjANBglghkgB
+ZQMEAgEFAKCCAe0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjAw
+OTE0MTQxMjU0WjAvBgkqhkiG9w0BCQQxIgQgzQiC+tgy2dCU0tzB7G3YPW66N9ShTvDTPes0nA1a
+aGEwgb4GCSsGAQQBgjcQBDGBsDCBrTCBlzELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIg
+TWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQx
+PTA7BgNVBAMTNENPTU9ETyBSU0EgQ2xpZW50IEF1dGhlbnRpY2F0aW9uIGFuZCBTZWN1cmUgRW1h
+aWwgQ0ECEQDiu0lIeSrsCenEpRjxmVhmMIHABgsqhkiG9w0BCRACCzGBsKCBrTCBlzELMAkGA1UE
+BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgG
+A1UEChMRQ09NT0RPIENBIExpbWl0ZWQxPTA7BgNVBAMTNENPTU9ETyBSU0EgQ2xpZW50IEF1dGhl
+bnRpY2F0aW9uIGFuZCBTZWN1cmUgRW1haWwgQ0ECEQDiu0lIeSrsCenEpRjxmVhmMA0GCSqGSIb3
+DQEBAQUABIIBAKvxeQqYtscWIw4PpfkdJhNDKbWzHuQuPRIF3tjIvoBwrtK8LqHCFWnQ7K1TwcfD
+zcxMRaA8ez+3kNPbgqB9+fiaQzzi5XaKVbegYPrXrjCpnlXpeMlaxf+IFxYpxV4lQMjyMGbNBn16
+R6UlM5wuAJsZJ+lTZfmUHYWjJDH5l08YyGcbOWRp7RbHrUsqlJqtYzW6JvpL524Dte7GW0yljueS
+JYsp7CaNynkXbFywio38toL2LKNfAC6lD/k9EGggvtJtCZ9kCkA3tLhp71YMZWx5XaW+xN4O2u4j
+bg/c5QK7p+AbKTK9KxiNUe7pywFqCMig8lTPQhcGjSI9U1JXW8EAAAAAAAA=
+
+
+--=-iW2GtJivDm6iDVzfQw8Z--
+
+
+
+--===============4118859752768318382==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============4118859752768318382==--
+
+
