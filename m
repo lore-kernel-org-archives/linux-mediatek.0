@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D0159C3526B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:01:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 34084C35257
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:01:22 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7147620663
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:01:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D5CC220829
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:01:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gfhGGHWe"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7147620663
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3Pk2W9rY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D5CC220829
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,22 +25,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jv3kfq69tFXVubT72K/jm4oWzim6Duu7roglhhUvQB4=; b=gfhGGHWeYcDU2fj5gxCwnvPgD
-	CPrHEyBlWRAsl959GB7fY2fi/YSQJFUA9XL81s1cU9jtlAyzetydj6F6dNT+rLt+PHNg3/YepM12A
-	cwS77fz+2LRDKZjxwwKcAQVaecXCDtDrmiENLoBOZpAc5TbfWF4Sj2IQDvdS7YRmjhSOGBD2ERNjh
-	grCnDzeEQbB5kgFF9ulriNyvNg2QdJJ/qUZThBRQ7AdgR1MQbUksCWyKVj7g2B09y24B1mZ6ISIb3
-	9Iob+PG1MFHUVIU2XkTRzugW35Zo4MBs4gFfa2XLLciKE+91JbE685L88FE49OPKq06bYIpL1Ayja
-	3GqtIUyvw==;
+	 bh=yZ8FjXEEYRyihgPZH3puOk0dJo31sRZ0qvsjwKquOOA=; b=3Pk2W9rYoX7VatYpLLAJeRTEX
+	IgFJBmYErzNpC0PObgh9R0VYyhvmwiLBuV92kgk9PzJP6XxwrWt3fe21fNIYXaeEuU9Cl4h/ALYLx
+	jZ3f0waR5C6M81R7W64Vj2Ded8CQ0nPnIyXTt+kDHzLtgyT8mGOBYNQ7SdZilQGwPCB6P/trVyg2v
+	Q0t5SsaHVHlUaaolIM7Xudmv+/nN0kWDqaf/37J26EVcehE3AdQM6cozq1tI5EyWJGaYg6okv6mVn
+	Jltpkq8cyMwQbf1BW3NGKc/wbmIFN3PUgVJ6YxZy60DYFKZWo29OTiOY2jmJ5mPxi30CDiVarVbrr
+	mtTq1A28g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kICS8-00046b-Kg; Tue, 15 Sep 2020 15:01:04 +0000
+	id 1kICSC-000490-V2; Tue, 15 Sep 2020 15:01:09 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kICRE-0003av-Uh; Tue, 15 Sep 2020 15:00:12 +0000
+ id 1kICRF-0003b9-QG; Tue, 15 Sep 2020 15:00:12 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 54644AF7E;
- Tue, 15 Sep 2020 15:00:21 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id F3C12AFB2;
+ Tue, 15 Sep 2020 15:00:23 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  daniel@ffwll.ch, linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
@@ -63,16 +63,16 @@ To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  matthew.auld@intel.com, tvrtko.ursulin@linux.intel.com,
  andi.shyti@intel.com, sam@ravnborg.org, miaoqinglang@huawei.com,
  emil.velikov@collabora.com
-Subject: [PATCH v2 05/21] drm/gma500: Introduce GEM object functions
-Date: Tue, 15 Sep 2020 16:59:42 +0200
-Message-Id: <20200915145958.19993-6-tzimmermann@suse.de>
+Subject: [PATCH v2 08/21] drm/msm: Introduce GEM object funcs
+Date: Tue, 15 Sep 2020 16:59:45 +0200
+Message-Id: <20200915145958.19993-9-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200915145958.19993-1-tzimmermann@suse.de>
 References: <20200915145958.19993-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200915_110009_304559_3F7E24FF 
-X-CRM114-Status: GOOD (  19.01  )
+X-CRM114-CacheID: sfid-20200915_110010_251615_55816DDF 
+X-CRM114-Status: GOOD (  15.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,145 +98,108 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 GEM object functions deprecate several similar callback interfaces in
 struct drm_driver. This patch replaces the per-driver callbacks with
-per-instance callbacks in gma500.
+per-instance callbacks in msm. The only exception is gem_prime_mmap,
+which is non-trivial to convert.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/gma500/framebuffer.c |  2 ++
- drivers/gpu/drm/gma500/gem.c         | 18 ++++++++++++++++--
- drivers/gpu/drm/gma500/gem.h         |  3 +++
- drivers/gpu/drm/gma500/psb_drv.c     |  9 ---------
- drivers/gpu/drm/gma500/psb_drv.h     |  2 --
- 5 files changed, 21 insertions(+), 13 deletions(-)
+ drivers/gpu/drm/msm/msm_drv.c | 13 -------------
+ drivers/gpu/drm/msm/msm_drv.h |  1 -
+ drivers/gpu/drm/msm/msm_gem.c | 19 ++++++++++++++++++-
+ 3 files changed, 18 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/gpu/drm/gma500/framebuffer.c b/drivers/gpu/drm/gma500/framebuffer.c
-index 54d9876b5305..5ede24fb44ae 100644
---- a/drivers/gpu/drm/gma500/framebuffer.c
-+++ b/drivers/gpu/drm/gma500/framebuffer.c
-@@ -24,6 +24,7 @@
- #include <drm/drm_gem_framebuffer_helper.h>
- 
- #include "framebuffer.h"
-+#include "gem.h"
- #include "gtt.h"
- #include "psb_drv.h"
- #include "psb_intel_drv.h"
-@@ -285,6 +286,7 @@ static struct gtt_range *psbfb_alloc(struct drm_device *dev, int aligned_size)
- 	/* Begin by trying to use stolen memory backing */
- 	backing = psb_gtt_alloc_range(dev, aligned_size, "fb", 1, PAGE_SIZE);
- 	if (backing) {
-+		backing->gem.funcs = &psb_gem_object_funcs;
- 		drm_gem_private_object_init(dev, &backing->gem, aligned_size);
- 		return backing;
- 	}
-diff --git a/drivers/gpu/drm/gma500/gem.c b/drivers/gpu/drm/gma500/gem.c
-index f9c4b1d76f56..8f07de83b6fb 100644
---- a/drivers/gpu/drm/gma500/gem.c
-+++ b/drivers/gpu/drm/gma500/gem.c
-@@ -18,7 +18,9 @@
- 
- #include "psb_drv.h"
- 
--void psb_gem_free_object(struct drm_gem_object *obj)
-+static vm_fault_t psb_gem_fault(struct vm_fault *vmf);
-+
-+static void psb_gem_free_object(struct drm_gem_object *obj)
- {
- 	struct gtt_range *gtt = container_of(obj, struct gtt_range, gem);
- 
-@@ -36,6 +38,17 @@ int psb_gem_get_aperture(struct drm_device *dev, void *data,
- 	return -EINVAL;
- }
- 
-+static const struct vm_operations_struct psb_gem_vm_ops = {
-+	.fault = psb_gem_fault,
-+	.open = drm_gem_vm_open,
-+	.close = drm_gem_vm_close,
-+};
-+
-+const struct drm_gem_object_funcs psb_gem_object_funcs = {
-+	.free = psb_gem_free_object,
-+	.vm_ops = &psb_gem_vm_ops,
-+};
-+
- /**
-  *	psb_gem_create		-	create a mappable object
-  *	@file: the DRM file of the client
-@@ -63,6 +76,7 @@ int psb_gem_create(struct drm_file *file, struct drm_device *dev, u64 size,
- 		dev_err(dev->dev, "no memory for %lld byte GEM object\n", size);
- 		return -ENOSPC;
- 	}
-+	r->gem.funcs = &psb_gem_object_funcs;
- 	/* Initialize the extra goodies GEM needs to do all the hard work */
- 	if (drm_gem_object_init(dev, &r->gem, size) != 0) {
- 		psb_gtt_free_range(dev, r);
-@@ -123,7 +137,7 @@ int psb_gem_dumb_create(struct drm_file *file, struct drm_device *dev,
-  *	vma->vm_private_data points to the GEM object that is backing this
-  *	mapping.
-  */
--vm_fault_t psb_gem_fault(struct vm_fault *vmf)
-+static vm_fault_t psb_gem_fault(struct vm_fault *vmf)
- {
- 	struct vm_area_struct *vma = vmf->vma;
- 	struct drm_gem_object *obj;
-diff --git a/drivers/gpu/drm/gma500/gem.h b/drivers/gpu/drm/gma500/gem.h
-index 4a74dc623b6b..3741a711b9fd 100644
---- a/drivers/gpu/drm/gma500/gem.h
-+++ b/drivers/gpu/drm/gma500/gem.h
-@@ -8,6 +8,9 @@
- #ifndef _GEM_H
- #define _GEM_H
- 
-+extern const struct drm_gem_object_funcs psb_gem_object_funcs;
-+
- extern int psb_gem_create(struct drm_file *file, struct drm_device *dev,
- 			  u64 size, u32 *handlep, int stolen, u32 align);
-+
- #endif
-diff --git a/drivers/gpu/drm/gma500/psb_drv.c b/drivers/gpu/drm/gma500/psb_drv.c
-index 34b4aae9a15e..b13376a6fb91 100644
---- a/drivers/gpu/drm/gma500/psb_drv.c
-+++ b/drivers/gpu/drm/gma500/psb_drv.c
-@@ -480,12 +480,6 @@ static const struct dev_pm_ops psb_pm_ops = {
- 	.runtime_idle = psb_runtime_idle,
+diff --git a/drivers/gpu/drm/msm/msm_drv.c b/drivers/gpu/drm/msm/msm_drv.c
+index 79333842f70a..5952767ea478 100644
+--- a/drivers/gpu/drm/msm/msm_drv.c
++++ b/drivers/gpu/drm/msm/msm_drv.c
+@@ -978,12 +978,6 @@ static const struct drm_ioctl_desc msm_ioctls[] = {
+ 	DRM_IOCTL_DEF_DRV(MSM_SUBMITQUEUE_QUERY, msm_ioctl_submitqueue_query, DRM_RENDER_ALLOW),
  };
  
--static const struct vm_operations_struct psb_gem_vm_ops = {
--	.fault = psb_gem_fault,
+-static const struct vm_operations_struct vm_ops = {
+-	.fault = msm_gem_fault,
 -	.open = drm_gem_vm_open,
 -	.close = drm_gem_vm_close,
 -};
 -
- static const struct file_operations psb_gem_fops = {
- 	.owner = THIS_MODULE,
- 	.open = drm_open,
-@@ -507,9 +501,6 @@ static struct drm_driver driver = {
- 	.irq_uninstall = psb_irq_uninstall,
- 	.irq_handler = psb_irq_handler,
+ static const struct file_operations fops = {
+ 	.owner              = THIS_MODULE,
+ 	.open               = drm_open,
+@@ -1009,18 +1003,11 @@ static struct drm_driver msm_driver = {
+ 	.irq_preinstall     = msm_irq_preinstall,
+ 	.irq_postinstall    = msm_irq_postinstall,
+ 	.irq_uninstall      = msm_irq_uninstall,
+-	.gem_free_object_unlocked = msm_gem_free_object,
+-	.gem_vm_ops         = &vm_ops,
+ 	.dumb_create        = msm_gem_dumb_create,
+ 	.dumb_map_offset    = msm_gem_dumb_map_offset,
+ 	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
+ 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
+-	.gem_prime_pin      = msm_gem_prime_pin,
+-	.gem_prime_unpin    = msm_gem_prime_unpin,
+-	.gem_prime_get_sg_table = msm_gem_prime_get_sg_table,
+ 	.gem_prime_import_sg_table = msm_gem_prime_import_sg_table,
+-	.gem_prime_vmap     = msm_gem_prime_vmap,
+-	.gem_prime_vunmap   = msm_gem_prime_vunmap,
+ 	.gem_prime_mmap     = msm_gem_prime_mmap,
+ #ifdef CONFIG_DEBUG_FS
+ 	.debugfs_init       = msm_debugfs_init,
+diff --git a/drivers/gpu/drm/msm/msm_drv.h b/drivers/gpu/drm/msm/msm_drv.h
+index af259b0573ea..7bcea10be81f 100644
+--- a/drivers/gpu/drm/msm/msm_drv.h
++++ b/drivers/gpu/drm/msm/msm_drv.h
+@@ -269,7 +269,6 @@ void msm_gem_shrinker_cleanup(struct drm_device *dev);
+ int msm_gem_mmap_obj(struct drm_gem_object *obj,
+ 			struct vm_area_struct *vma);
+ int msm_gem_mmap(struct file *filp, struct vm_area_struct *vma);
+-vm_fault_t msm_gem_fault(struct vm_fault *vmf);
+ uint64_t msm_gem_mmap_offset(struct drm_gem_object *obj);
+ int msm_gem_get_iova(struct drm_gem_object *obj,
+ 		struct msm_gem_address_space *aspace, uint64_t *iova);
+diff --git a/drivers/gpu/drm/msm/msm_gem.c b/drivers/gpu/drm/msm/msm_gem.c
+index b4553caaa196..de915ff6f4b4 100644
+--- a/drivers/gpu/drm/msm/msm_gem.c
++++ b/drivers/gpu/drm/msm/msm_gem.c
+@@ -247,7 +247,7 @@ int msm_gem_mmap(struct file *filp, struct vm_area_struct *vma)
+ 	return msm_gem_mmap_obj(vma->vm_private_data, vma);
+ }
  
--	.gem_free_object_unlocked = psb_gem_free_object,
--	.gem_vm_ops = &psb_gem_vm_ops,
--
- 	.dumb_create = psb_gem_dumb_create,
- 	.ioctls = psb_ioctls,
- 	.fops = &psb_gem_fops,
-diff --git a/drivers/gpu/drm/gma500/psb_drv.h b/drivers/gpu/drm/gma500/psb_drv.h
-index 956926341316..c71a5a4e912c 100644
---- a/drivers/gpu/drm/gma500/psb_drv.h
-+++ b/drivers/gpu/drm/gma500/psb_drv.h
-@@ -735,12 +735,10 @@ extern const struct drm_connector_helper_funcs
- extern const struct drm_connector_funcs psb_intel_lvds_connector_funcs;
+-vm_fault_t msm_gem_fault(struct vm_fault *vmf)
++static vm_fault_t msm_gem_fault(struct vm_fault *vmf)
+ {
+ 	struct vm_area_struct *vma = vmf->vma;
+ 	struct drm_gem_object *obj = vma->vm_private_data;
+@@ -994,6 +994,22 @@ int msm_gem_new_handle(struct drm_device *dev, struct drm_file *file,
+ 	return ret;
+ }
  
- /* gem.c */
--extern void psb_gem_free_object(struct drm_gem_object *obj);
- extern int psb_gem_get_aperture(struct drm_device *dev, void *data,
- 			struct drm_file *file);
- extern int psb_gem_dumb_create(struct drm_file *file, struct drm_device *dev,
- 			struct drm_mode_create_dumb *args);
--extern vm_fault_t psb_gem_fault(struct vm_fault *vmf);
++static const struct vm_operations_struct vm_ops = {
++	.fault = msm_gem_fault,
++	.open = drm_gem_vm_open,
++	.close = drm_gem_vm_close,
++};
++
++static const struct drm_gem_object_funcs msm_gem_object_funcs = {
++	.free = msm_gem_free_object,
++	.pin = msm_gem_prime_pin,
++	.unpin = msm_gem_prime_unpin,
++	.get_sg_table = msm_gem_prime_get_sg_table,
++	.vmap = msm_gem_prime_vmap,
++	.vunmap = msm_gem_prime_vunmap,
++	.vm_ops = &vm_ops,
++};
++
+ static int msm_gem_new_impl(struct drm_device *dev,
+ 		uint32_t size, uint32_t flags,
+ 		struct drm_gem_object **obj)
+@@ -1024,6 +1040,7 @@ static int msm_gem_new_impl(struct drm_device *dev,
+ 	INIT_LIST_HEAD(&msm_obj->vmas);
  
- /* psb_device.c */
- extern const struct psb_ops psb_chip_ops;
+ 	*obj = &msm_obj->base;
++	(*obj)->funcs = &msm_gem_object_funcs;
+ 
+ 	return 0;
+ }
 -- 
 2.28.0
 
