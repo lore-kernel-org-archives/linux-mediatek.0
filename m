@@ -2,79 +2,84 @@ Return-Path: <SRS0=MDtk=CY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2CC96C43461
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 00:43:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 289C0C43461
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 01:03:46 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C1B47212CC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 00:43:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C6F2E212CC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 01:03:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cASmv968"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C1B47212CC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UWeMUPuK";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="TQ0tAo4L"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C6F2E212CC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6x0IFq+kxfq8WR5k5uub0pqhSpANXDpy0vVtGYZeg9w=; b=cASmv968jtrYdsbdVYMwH3xdI
-	P0h6goDjwKjW1TJHpOLM84/o88aRWSHlZSAPnQtgq9+1EVc0mBY6l/M1MkNZhvJQ+QqpRvL63rCCe
-	ehsvtwf2QmAtm2qgBXu2w1AEM3+O7l6cuT/VjsHXfn6F4ytoHXH1L6U+9Mwb8DEYoy371rBuxxYXQ
-	22QIJBRAZzoSawMGjxVhR7E0tr/cNsMWcTsilhCdJZunpYasOWX/Qon0FR0jTvnHhJjwNdIIE8pyf
-	DGZ+d9dN8PbaYLlKNocnISGMBDK9sWlJQ8Fty7VHrLTKoVJGoJjbPudoM2S0qVq1FT2OA26hNEYmg
-	pnmbWFSVg==;
+	 bh=sRXMxDKX1HFk/eYQfOPP9FtDvd+EQj9IFDdUhn20Kmg=; b=UWeMUPuKg8zGTEWthm74pBQPH
+	30GnQ9nLfRwhq+PdoU735h6gClCz4ikAm/3ohYoOvslB28tvuTipFtd+J32Z9Ai+TR/T3ZKSnJI0r
+	18PPNYYoe1Z9CPoBqXgZEIZWkAPuxdkbcFgNSSX6wFOjHhULeCPXylEd1oFDeYivG8c0ouNCfcJnk
+	d1p7dBGLZ3WHXNbOjLdUQczJ/y8ikYws4ZTRtDOxqJ7dtUFqrHNiL5n9gWpAPz1/tO024v4HQPj3k
+	KUfYGFuYNWyUIJ0BMevU4mGaL2JrH38WDb2v9e65y01hm6ivlnUs0PVVn9FDO4McMvKXnb3Fndh1n
+	zR4jRF31A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kHz3d-0006zO-SH; Tue, 15 Sep 2020 00:42:53 +0000
-Received: from mail-il1-f193.google.com ([209.85.166.193])
+	id 1kHzNf-00016w-Gz; Tue, 15 Sep 2020 01:03:35 +0000
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kHz3b-0006yS-C7; Tue, 15 Sep 2020 00:42:52 +0000
-Received: by mail-il1-f193.google.com with SMTP id t12so1406218ilh.3;
- Mon, 14 Sep 2020 17:42:50 -0700 (PDT)
+ id 1kHzNa-00016G-VH; Tue, 15 Sep 2020 01:03:31 +0000
+Received: by mail-lj1-x243.google.com with SMTP id r24so1302246ljm.3;
+ Mon, 14 Sep 2020 18:03:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=E1q14rQlgrSLatoty0jVapm3PrkVuxqei5oD9yAnTYA=;
+ b=TQ0tAo4Lk8BmjNMpUM7B2v2eJgGqHIHTW2E4/JxHYLBPYEbL2GOEXa3hYcB88YPV+D
+ rsXL6SY9r8ASAgE8jpvkJDHh7GmJRqXRkxR6+qr8+tk9bxXzavjg3CwjSUtf9LgQObtW
+ Z+EHPWbFuFvC2eCxhz4QYvrSwCiSTExOiHWEXRxGeQE6M2sHxISOTWmc4reYPsdTqqTf
+ FdUJ/4a9+XPrM3y0O/QWI4f2oR7SR4EtfK7OXk6DnUduKU/fV/k6zykUVgrBbLdSMGcs
+ OguZcbCFAGKIoxi3jOmgPotq4ZsnC5XQS4jk6GvHyMXC+pkQkfjwBclCIyq+G4XyQTD1
+ eiWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ljTivD9aPg+KhnR32N2OLptR9gt/0CpuWiMcqWyJCeo=;
- b=KrjnywTg5R95SG9Udf10FruNDHYSXs9g8huDvkhC9wQ/8qGj5bpDbZ095sKAkOco+P
- 6YuBpGqO6jLJcv05pz8pKDTS+Ze2qJwxemC9CQAKlhTC82aMF+fer0F03E20+pBC0z7O
- x7rz82UYyhTNRgZfxSQsiZLmI3TwtN/lmeKnjkYSilKEMWyOf6N8HixT6f21nc0i8rNL
- ML7z7fBxpogvG4OUX274PSTWtw0lCnEn2wC07yvOEBSJvSgdbVjgf0L08/N+pQbNKQHF
- xPKShkMUGeVWxFF5aubiN15VADpon2zhDd0fywFPtIUAUKAyKErpY4Bt3GZOLvuWKPwP
- JPkg==
-X-Gm-Message-State: AOAM53106susNGgGpX/KFvLTNqSs4EPrSulK5/Ia5z2f0XANhVHaIaZS
- Vp/0y2aybV4yoXEVOKCg/g==
-X-Google-Smtp-Source: ABdhPJzUShX3XEFb2+9+p9Q90jl6hIT+CV75GSpVkzUUmQNVd40GkohHW2eQma8HdTG14EAHPUGGzg==
-X-Received: by 2002:a05:6e02:eac:: with SMTP id
- u12mr9654359ilj.285.1600130570492; 
- Mon, 14 Sep 2020 17:42:50 -0700 (PDT)
-Received: from xps15 ([64.188.179.253])
- by smtp.gmail.com with ESMTPSA id m15sm6693979iow.9.2020.09.14.17.42.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Sep 2020 17:42:49 -0700 (PDT)
-Received: (nullmailer pid 591961 invoked by uid 1000);
- Tue, 15 Sep 2020 00:42:45 -0000
-Date: Mon, 14 Sep 2020 18:42:45 -0600
-From: Rob Herring <robh@kernel.org>
-To: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH v2 06/23] dt-bindings: mediatek: Add binding for mt8192
- IOMMU and SMI
-Message-ID: <20200915004245.GA591931@bogus>
-References: <20200905080920.13396-1-yong.wu@mediatek.com>
- <20200905080920.13396-7-yong.wu@mediatek.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=E1q14rQlgrSLatoty0jVapm3PrkVuxqei5oD9yAnTYA=;
+ b=PvqYuN8+828jvPqeRhQk6kVHtoX8+dT/Z/T2e4a4tgOEZG3yiMPAup4NZgM77I+Ro3
+ dpsstEQ5Qr0hgjYN/1KoDBvuSLdN2/GHBAirjoVm48qGRPi7079NjqzKBtvrBvDbNmf/
+ qdgcl8H+lZphWn27Y8zaxLastDV4PYVOE7u1HcT3gi6zLWbdPVv80USiaqyP986RGH4x
+ L5ipj4D896qbqIHMvBSP5JBfUi8lUyt9bdkC81qleal/RHobgz+jcL5aNdWeTUyINKVK
+ kFqRXSArZ3B/C/UsJyUZxkXE8wM+rFC+9S4sfu0anGobz6ADPR/34EdVJ4EiOD/iGea7
+ bJbw==
+X-Gm-Message-State: AOAM532vrR2uO/7oFglFFSXr4pUXh3sOUdGCclhmtIOq73lslTGQy7UE
+ D4lMQMsWVx0CNVgtrp8kD6K7w9edqKvbGXW+lQE=
+X-Google-Smtp-Source: ABdhPJw9ifkbVP+uEe2SD7R2hIj95UXfSck4Zwdz+D0V/9bCy7pHGJ86/66K1wgr6YE3PVf6c5+qVxJJUbQVva9yrXk=
+X-Received: by 2002:a2e:9955:: with SMTP id r21mr1824267ljj.119.1600131807796; 
+ Mon, 14 Sep 2020 18:03:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200905080920.13396-7-yong.wu@mediatek.com>
+References: <1598928042-22115-1-git-send-email-u0084500@gmail.com>
+ <1598928042-22115-2-git-send-email-u0084500@gmail.com>
+ <20200914182916.GA4193162@bogus>
+In-Reply-To: <20200914182916.GA4193162@bogus>
+From: ChiYuan Huang <u0084500@gmail.com>
+Date: Tue, 15 Sep 2020 09:03:15 +0800
+Message-ID: <CADiBU3-Rn9wPNh_17U9yiDmhHSRcxb5L3nqtg+qigbmiYBjrbA@mail.gmail.com>
+Subject: Re: [PATCH v5 2/2] usb typec: mt6360: Add MT6360 Type-C DT binding
+ documentation
+To: Rob Herring <robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200914_204251_424667_70F71883 
-X-CRM114-Status: GOOD (  15.40  )
+X-CRM114-CacheID: sfid-20200914_210331_031364_1C2E79D1 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,67 +91,29 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: anan.sun@mediatek.com, devicetree@vger.kernel.org,
- Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
- chao.hao@mediatek.com, Robin Murphy <robin.murphy@arm.com>,
- Joerg Roedel <joro@8bytes.org>, youlin.pei@mediatek.com,
- linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>,
- Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, ming-fan.chen@mediatek.com,
- Will Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: gene_chen@richtek.com, devicetree@vger.kernel.org,
+ Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ Greg KH <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, cy_huang <cy_huang@richtek.com>,
+ robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
+ Guenter Roeck <linux@roeck-us.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 05 Sep 2020 16:09:03 +0800, Yong Wu wrote:
-> This patch adds decriptions for mt8192 IOMMU and SMI.
-> 
-> mt8192 also is MTK IOMMU gen2 which uses ARM Short-Descriptor translation
-> table format. The M4U-SMI HW diagram is as below:
-> 
->                           EMI
->                            |
->                           M4U
->                            |
->                       ------------
->                        SMI Common
->                       ------------
->                            |
->   +-------+------+------+----------------------+-------+
->   |       |      |      |       ......         |       |
->   |       |      |      |                      |       |
-> larb0   larb1  larb2  larb4     ......      larb19   larb20
-> disp0   disp1   mdp    vdec                   IPE      IPE
-> 
-> All the connections are HW fixed, SW can NOT adjust it.
-> 
-> mt8192 M4U support 0~16GB iova range. we preassign different engines
-> into different iova ranges:
-> 
-> domain-id  module     iova-range                  larbs
->    0       disp        0 ~ 4G                      larb0/1
->    1       vcodec      4G ~ 8G                     larb4/5/7
->    2       cam/mdp     8G ~ 12G             larb2/9/11/13/14/16/17/18/19/20
->    3       CCU0    0x4000_0000 ~ 0x43ff_ffff     larb13: port 9/10
->    4       CCU1    0x4400_0000 ~ 0x47ff_ffff     larb14: port 4/5
-> 
-> The iova range for CCU0/1(camera control unit) is HW requirement.
-> 
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> ---
->  .../bindings/iommu/mediatek,iommu.yaml        |   9 +-
->  .../mediatek,smi-common.yaml                  |   5 +-
->  .../memory-controllers/mediatek,smi-larb.yaml |   3 +-
->  include/dt-bindings/memory/mt8192-larb-port.h | 239 ++++++++++++++++++
->  4 files changed, 251 insertions(+), 5 deletions(-)
->  create mode 100644 include/dt-bindings/memory/mt8192-larb-port.h
-> 
-
-Reviewed-by: Rob Herring <robh@kernel.org>
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Um9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4g5pa8IDIwMjDlubQ55pyIMTXml6Ug6YCx5LqM
+IOS4iuWNiDI6Mjnlr6vpgZPvvJoKPgo+IE9uIFR1ZSwgMDEgU2VwIDIwMjAgMTA6NDA6NDIgKzA4
+MDAsIGN5X2h1YW5nIHdyb3RlOgo+ID4gRnJvbTogQ2hpWXVhbiBIdWFuZyA8Y3lfaHVhbmdAcmlj
+aHRlay5jb20+Cj4gPgo+ID4gQWRkIGEgZGV2aWNldHJlZSBiaW5kaW5nIGRvY3VtZW50YXRpb24g
+Zm9yIHRoZSBNVDYzNjAgVHlwZS1DIGRyaXZlci4KPiA+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBDaGlZ
+dWFuIEh1YW5nIDxjeV9odWFuZ0ByaWNodGVrLmNvbT4KPiA+IC0tLQo+ID4gIC4uLi9iaW5kaW5n
+cy91c2IvbWVkaWF0ZWssbXQ2MzYwLXRjcGMueWFtbCAgICAgICAgIHwgOTUgKysrKysrKysrKysr
+KysrKysrKysrKwo+ID4gIDEgZmlsZSBjaGFuZ2VkLCA5NSBpbnNlcnRpb25zKCspCj4gPiAgY3Jl
+YXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy91c2IvbWVk
+aWF0ZWssbXQ2MzYwLXRjcGMueWFtbAo+ID4KPgo+IFJldmlld2VkLWJ5OiBSb2IgSGVycmluZyA8
+cm9iaEBrZXJuZWwub3JnPgpUaHguCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtA
+bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
