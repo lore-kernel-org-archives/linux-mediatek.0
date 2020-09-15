@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B78D6C433E2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 06:11:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 285CCC433E2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 06:14:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 35DA6206B2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 06:11:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C7F3020829
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 06:14:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rj8YV9aI";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="UDw6mJW3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 35DA6206B2
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZbwX3Nq7";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="mRWJ9u/W"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C7F3020829
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,49 +26,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Hnozp+9ffoQpkk02O+HZU6EW3fUKJh4A2wW86r7XVq0=; b=rj8YV9aIKu/NQ3gQeGpnwwYqWa
-	E92hy8k108GSmPPHhcx+X1Vv0zkqtm1tv82VbggJqRGKkKU4jF9/d67uFHCLr9DLig5kSfD/HTOPg
-	aQw7GGAY08wlAtPyoonPg/7NhlqQy11pxgPVY5beK++iZCJtfot4qmZ2GELkIQLYZ3i3UFbqL2uxv
-	IaCa/vnZFArFkWeP6ZACnmzOtCqrZ8CZFL3W+bTJ4z6dbxTYp7NIllU+R6SZzqsToSM/6EA961obR
-	VTVmoEKOUDj08ijtZMAFkt+SaIdAKJ6OQBuNMCeBVx5+1yCl+TC+ZLOrvIS55w187Dzy0pmXdQg1B
-	0NkvD1WA==;
+	bh=lbAFpG0tyeRyiyscQ6iRVWXIJ2wClYQzDxqq/nl0mV4=; b=ZbwX3Nq77Kv23mr/5q567FSaCc
+	7iPmxlyBN18f95yIvGYpscZPKmdq0AvIryUrV2Tk+0mY7XlPbPqoE6W4hAb32/WUc4GdinRpDtGVK
+	zshm94/WV00FImtiSwgJv6hc32SPsIMyLWs0c/ESreOIrPHnCGjHGXzApfF8fPRaarNc4rWYZeRkF
+	UGJ/DmP5cpP81ZoCOL3RGbRZhuItLTLtQ3xG3+yu9xzzWY49qfv75FgKXhgk8pe/dGuRBAvKi9Smt
+	LOjZf/kjfjhDGMlty0umAZDzZf/oHlnjy89F8ucE1fO8kknXE5lb+VC02rJYEhvWdI+Mz8APXP1Jg
+	SFkaKcRA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kI4B6-00063R-K9; Tue, 15 Sep 2020 06:10:56 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kI4Dy-0006aa-67; Tue, 15 Sep 2020 06:13:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kI4B0-000620-CY; Tue, 15 Sep 2020 06:10:52 +0000
-X-UUID: 9ebe53eb0da04e23a60442933b8d3494-20200914
+ id 1kI4DX-0006RR-7q; Tue, 15 Sep 2020 06:13:29 +0000
+X-UUID: 8f301d9b46dd4730b24fef18ae8f002c-20200914
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=X8Z5QB7G03Bfi4YPnNUVk/455t8rUc87yOD3C0YOlFc=; 
- b=UDw6mJW3/6WPLLn2MutNScXMexqbsbxpIj3VpjBsE8P1AI9mZAtgbSArRiYlYCDZr8pR5ffQV2Ee4Ruz6QvR2YDRE/4O6zP1+kVRQKQeD6kpmPhT8u5rRBBsqbbAJqO5S4KXYuZwk+7ubxi1czczW6ZPIcalkIGvF4q+meBq46A=;
-X-UUID: 9ebe53eb0da04e23a60442933b8d3494-20200914
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=hDwwvEKbQNKWFsUY6/pT152QsMoq9kreFwlKpG3Sd6o=; 
+ b=mRWJ9u/W1Nr9nefrC8hJivdEUw4G/MKEzNyfkvsKglbUNCdERT0vH0dBi4qOlHMJi169qRvIkbwzm9HhPFk2Z/d7V4dNNHZQ/yRGadzKZbyWKGU8vW34CZK4OIEiptoTxhMPEskakJjoPM9451VP0RA9O6T4YNX0aSEsBYS8zAE=;
+X-UUID: 8f301d9b46dd4730b24fef18ae8f002c-20200914
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <wenbin.mei@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1495968081; Mon, 14 Sep 2020 22:10:47 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 14 Sep 2020 23:00:44 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Sep 2020 14:00:42 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
+ with ESMTP id 110277409; Mon, 14 Sep 2020 22:13:22 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 14 Sep 2020 23:13:21 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 15 Sep 2020 14:13:19 +0800
+Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 15 Sep 2020 14:00:42 +0800
+ Transport; Tue, 15 Sep 2020 14:13:18 +0800
 From: Wenbin Mei <wenbin.mei@mediatek.com>
-To: 
-Subject: [PATCH 0/3] Add mmc support for MT8192 SoC
-Date: Tue, 15 Sep 2020 13:58:32 +0800
-Message-ID: <20200915055835.25590-1-wenbin.mei@mediatek.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>
+Subject: [RESEND 0/3] Add mmc support for MT8192 SoC
+Date: Tue, 15 Sep 2020 14:11:07 +0800
+Message-ID: <20200915061110.25833-1-wenbin.mei@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200915_021050_577224_4B0A3475 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20200915_021327_947845_EFDBB12B 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,17 +80,15 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>,
- srv_heupstream@mediatek.com, linux-mmc@vger.kernel.org,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Chaotian Jing <chaotian.jing@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
-
 
 Wenbin Mei (3):
   mmc: dt-bindings: add support for MT8192 SoC
