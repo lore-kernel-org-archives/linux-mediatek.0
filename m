@@ -2,77 +2,66 @@ Return-Path: <SRS0=MDtk=CY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A12A4C433E2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 16:15:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 41596C43461
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 16:18:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 31117206E6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 16:15:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DAD8520756
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 16:18:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="K8y+vT76"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 31117206E6
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WNBHwU8h";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="UuLTJKI/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DAD8520756
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=DK6nw5iNhdyoqS8nJIrbl8omkJLxKZU5/dW3xPVEIIA=; b=K8y+vT76uAkBid3fN/FCw4r5Y
-	aLhzHBj8P0WhzwSSI9rqfuoWnWlTpJDemDI/H55w1CJXP5WuNnJrEqWzQXEr8fMY4UCHbc1Oh41Y5
-	OVK/EJDIlR1aqg0oEef1qyJzYGuZqp8AKAaRGRtnVxGv5+LxyxTdWuhMcm4fKUm2mvvYl5rr5r2pB
-	dSFF7OtxL3pi3yVFSAp4lKXz85f1FHYn4wZITwS+BsvsAkNCluOUSRv3tiDWE8xHuJEP98Zo36spB
-	uwOW0v9ZezvuV41Y2MqTdAepQtxfqG7/Q1jksR+3onVllapG8lZspfxTQscHP09kewMCJNdlkU7dL
-	IZhGVFoFA==;
+	 bh=BPHnEXv5OpPffQoNygSWz5hVT9VIbKS2ngheRbooDYY=; b=WNBHwU8hw4eCiGQ4M5yka8iqd
+	lL3iL0sxBNi2FQeJpPmf3xnKv/LY6e2DzmKNuTxiTq0doeupRbTJLAqiI1rX0R2e4MPIjS8HRdhel
+	sB5lm59O+UVtYVHHfufFFeFdHqEpUFudORRDIpelVAiGgF8nbwHo4liWnFXnIuhfave6p4qZeDFWP
+	C0surtLklvM8XWlgz78PiUHBNbScQwhpnHprTgZNs76znMaD2SsLI5c4I7HnWI03ZfvsYFcv7RfI8
+	ePA7pwWfdBl4uQPTx1V/m5zin2rYTqR2F9GVTx/UXq9UaNxl8EVd3VJMrP8+9mProjMqj5ZKBoug0
+	AGGk1AyTA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIDcQ-0007Hf-IB; Tue, 15 Sep 2020 16:15:46 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1kIDfC-00005E-5C; Tue, 15 Sep 2020 16:18:38 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kICRL-0003eY-Rm; Tue, 15 Sep 2020 15:00:18 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 0D59BB146;
- Tue, 15 Sep 2020 15:00:30 +0000 (UTC)
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
- daniel@ffwll.ch, linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, l.stach@pengutronix.de, christian.gmeiner@gmail.com,
- inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, kgene@kernel.org, krzk@kernel.org,
- patrik.r.jakobsson@gmail.com, jani.nikula@linux.intel.com,
- joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com,
- chunkuang.hu@kernel.org, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
- robdclark@gmail.com, sean@poorly.run, bskeggs@redhat.com,
- tomi.valkeinen@ti.com, eric@anholt.net, hjc@rock-chips.com,
- heiko@sntech.de, thierry.reding@gmail.com, jonathanh@nvidia.com,
- rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
- oleksandr_andrushchenko@epam.com, hyun.kwon@xilinx.com,
- laurent.pinchart@ideasonboard.com, michal.simek@xilinx.com,
- sumit.semwal@linaro.org, evan.quan@amd.com, Hawking.Zhang@amd.com,
- tianci.yin@amd.com, marek.olsak@amd.com, hdegoede@redhat.com,
- andrey.grodzovsky@amd.com, Felix.Kuehling@amd.com, xinhui.pan@amd.com,
- aaron.liu@amd.com, nirmoy.das@amd.com, chris@chris-wilson.co.uk,
- matthew.auld@intel.com, tvrtko.ursulin@linux.intel.com,
- andi.shyti@intel.com, sam@ravnborg.org, miaoqinglang@huawei.com,
- emil.velikov@collabora.com
-Subject: [PATCH v2 15/21] drm/vc4: Introduce GEM object functions
-Date: Tue, 15 Sep 2020 16:59:52 +0200
-Message-Id: <20200915145958.19993-16-tzimmermann@suse.de>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20200915145958.19993-1-tzimmermann@suse.de>
-References: <20200915145958.19993-1-tzimmermann@suse.de>
+ id 1kIDeq-0008OG-QU; Tue, 15 Sep 2020 16:18:21 +0000
+Received: from kernel.org (unknown [87.71.73.56])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 96A0920936;
+ Tue, 15 Sep 2020 16:18:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1600186696;
+ bh=kNS2VFYnEd/KPhRHtnmjYC2U0lgvccEpIWWRdZorjVQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=UuLTJKI/2BDlkCzhAdZXdO7Phze+fU6p3ap+8i/sd3vdr/I5Hi5U4yp9o6PB13lH0
+ ZuDFlAbkp3tgU9RFrayVzFqYW4WJCxXIWagM397axnyN9OCpPbLSgg6bdhU9c5PFF/
+ sRar6wzjO68M3MXjSEmVY0h5IDBQ7UJv15+bCkLU=
+Date: Tue, 15 Sep 2020 19:18:08 +0300
+From: Mike Rapoport <rppt@kernel.org>
+To: Phil Chang <phil.chang@mediatek.com>
+Subject: Re: [PATCH] [PATCH] ARM64: Setup DMA32 zone size by bootargs
+Message-ID: <20200915161808.GH2142832@kernel.org>
+References: <20200915150855.24825-1-phil.chang@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200915150855.24825-1-phil.chang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200915_110016_206517_D551A205 
-X-CRM114-Status: GOOD (  15.80  )
+X-CRM114-CacheID: sfid-20200915_121817_440680_813ACAAB 
+X-CRM114-Status: GOOD (  29.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,133 +73,160 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- Thomas Zimmermann <tzimmermann@suse.de>, nouveau@lists.freedesktop.org,
- linux-tegra@vger.kernel.org, xen-devel@lists.xenproject.org,
- freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Alix Wu <alix.wu@mediatek.com>,
+ Jonathan Corbet <corbet@lwn.net>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Catalin Marinas <catalin.marinas@arm.com>, YJ Chiang <yj.chiang@mediatek.com>,
+ Anshuman Khandual <anshuman.khandual@arm.com>, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Will Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-GEM object functions deprecate several similar callback interfaces in
-struct drm_driver. This patch replaces the per-driver callbacks with
-per-instance callbacks in vc4. The only exception is gem_prime_mmap,
-which is non-trivial to convert.
+On Tue, Sep 15, 2020 at 11:08:55PM +0800, Phil Chang wrote:
+> Allowing the DMA32 zone be configurable in ARM64 but at most 4Gb.
 
-Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-Reviewed-by: Eric Anholt <eric@anholt.net>
----
- drivers/gpu/drm/vc4/vc4_bo.c  | 21 ++++++++++++++++++++-
- drivers/gpu/drm/vc4/vc4_drv.c | 12 ------------
- drivers/gpu/drm/vc4/vc4_drv.h |  1 -
- 3 files changed, 20 insertions(+), 14 deletions(-)
+Please add more details why would you like to limit the DMA32 zone.
 
-diff --git a/drivers/gpu/drm/vc4/vc4_bo.c b/drivers/gpu/drm/vc4/vc4_bo.c
-index 74ceebd62fbc..f432278173cd 100644
---- a/drivers/gpu/drm/vc4/vc4_bo.c
-+++ b/drivers/gpu/drm/vc4/vc4_bo.c
-@@ -21,6 +21,8 @@
- #include "vc4_drv.h"
- #include "uapi/drm/vc4_drm.h"
- 
-+static vm_fault_t vc4_fault(struct vm_fault *vmf);
-+
- static const char * const bo_type_names[] = {
- 	"kernel",
- 	"V3D",
-@@ -374,6 +376,21 @@ static struct vc4_bo *vc4_bo_get_from_cache(struct drm_device *dev,
- 	return bo;
- }
- 
-+static const struct vm_operations_struct vc4_vm_ops = {
-+	.fault = vc4_fault,
-+	.open = drm_gem_vm_open,
-+	.close = drm_gem_vm_close,
-+};
-+
-+static const struct drm_gem_object_funcs vc4_gem_object_funcs = {
-+	.free = vc4_free_object,
-+	.export = vc4_prime_export,
-+	.get_sg_table = drm_gem_cma_prime_get_sg_table,
-+	.vmap = vc4_prime_vmap,
-+	.vunmap = drm_gem_cma_prime_vunmap,
-+	.vm_ops = &vc4_vm_ops,
-+};
-+
- /**
-  * vc4_gem_create_object - Implementation of driver->gem_create_object.
-  * @dev: DRM device
-@@ -400,6 +417,8 @@ struct drm_gem_object *vc4_create_object(struct drm_device *dev, size_t size)
- 	vc4->bo_labels[VC4_BO_TYPE_KERNEL].size_allocated += size;
- 	mutex_unlock(&vc4->bo_lock);
- 
-+	bo->base.base.funcs = &vc4_gem_object_funcs;
-+
- 	return &bo->base.base;
- }
- 
-@@ -684,7 +703,7 @@ struct dma_buf * vc4_prime_export(struct drm_gem_object *obj, int flags)
- 	return dmabuf;
- }
- 
--vm_fault_t vc4_fault(struct vm_fault *vmf)
-+static vm_fault_t vc4_fault(struct vm_fault *vmf)
+> Signed-off-by: Alix Wu <alix.wu@mediatek.com>
+> Signed-off-by: YJ Chiang <yj.chiang@mediatek.com>
+> Signed-off-by: Phil Chang <phil.chang@mediatek.com>
+> ---
+> 
+>  .../admin-guide/kernel-parameters.txt         |  3 ++
+>  arch/arm64/include/asm/memory.h               |  2 +
+>  arch/arm64/mm/init.c                          | 39 +++++++++++++++++--
+>  3 files changed, 41 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
+> index bdc1f33fd3d1..5be6259e9ba8 100644
+> --- a/Documentation/admin-guide/kernel-parameters.txt
+> +++ b/Documentation/admin-guide/kernel-parameters.txt
+> @@ -980,6 +980,9 @@
+>  			The filter can be disabled or changed to another
+>  			driver later using sysfs.
+>  
+> +	dma32_size=nn[MG]  [KNL,BOOT,ARM64]
+> +			Forces the DMA32 zone size of <nn> in MB.
+
+Most of the kernel parameters that deal with memory sizes allow either
+of [KMG] suffixes.
+
+> +
+>  	driver_async_probe=  [KNL]
+>  			List of driver names to be probed asynchronously.
+>  			Format: <driver_name1>,<driver_name2>...
+> diff --git a/arch/arm64/include/asm/memory.h b/arch/arm64/include/asm/memory.h
+> index afa722504bfd..710de08ae8ae 100644
+> --- a/arch/arm64/include/asm/memory.h
+> +++ b/arch/arm64/include/asm/memory.h
+> @@ -175,6 +175,8 @@ extern u64			kimage_vaddr;
+>  /* the offset between the kernel virtual and physical mappings */
+>  extern u64			kimage_voffset;
+>  
+> +extern phys_addr_t		dma32_zone_size;
+> +
+>  static inline unsigned long kaslr_offset(void)
+>  {
+>  	return kimage_vaddr - KIMAGE_VADDR;
+> diff --git a/arch/arm64/mm/init.c b/arch/arm64/mm/init.c
+> index 481d22c32a2e..c8af53680d46 100644
+> --- a/arch/arm64/mm/init.c
+> +++ b/arch/arm64/mm/init.c
+> @@ -60,6 +60,9 @@ EXPORT_SYMBOL(physvirt_offset);
+>  struct page *vmemmap __ro_after_init;
+>  EXPORT_SYMBOL(vmemmap);
+>  
+> +phys_addr_t dma32_zone_size __ro_after_init;
+> +EXPORT_SYMBOL(dma32_zone_size);
+> +
+>  /*
+>   * We create both ZONE_DMA and ZONE_DMA32. ZONE_DMA covers the first 1G of
+>   * memory as some devices, namely the Raspberry Pi 4, have peripherals with
+> @@ -242,6 +245,29 @@ static int __init early_mem(char *p)
+>  }
+>  early_param("mem", early_mem);
+>  
+> +static int __init setup_dma32_zone(char *p)
+> +{
+> +	u64 size;
+> +
+> +	if (!p)
+> +		return -EINVAL;
+> +
+> +	if (kstrtoull(p, 0, &size))
+> +		return -EINVAL;
+
+Better to use memparse() here.
+
+> +
+> +	/* DMA32 zone size should never grater than 4G */
+> +	if (size > max_zone_phys(32) / SZ_1M)
+> +		return -EINVAL;
+> +
+> +	pr_notice("Setup dma32 zone size to %llu Mb\n", size);
+> +
+> +	dma32_zone_size = size * SZ_1M;
+> +
+> +	return 0;
+> +}
+> +
+> +early_param("dma32_size", setup_dma32_zone);
+> +
+>  static int __init early_init_dt_scan_usablemem(unsigned long node,
+>  		const char *uname, int depth, void *data)
+>  {
+> @@ -392,10 +418,17 @@ void __init arm64_memblock_init(void)
+>  		arm64_dma_phys_limit = max_zone_phys(ARM64_ZONE_DMA_BITS);
+>  	}
+>  
+> -	if (IS_ENABLED(CONFIG_ZONE_DMA32))
+> -		arm64_dma32_phys_limit = max_zone_phys(32);
+> -	else
+> +	if (IS_ENABLED(CONFIG_ZONE_DMA32)) {
+> +		if (dma32_zone_size) {
+> +			arm64_dma32_phys_limit = min(max_zone_phys(32),
+> +				dma32_zone_size + memblock_start_of_DRAM());
+> +		} else {
+> +			arm64_dma32_phys_limit = max_zone_phys(32);
+> +			dma32_zone_size = arm64_dma32_phys_limit;
+> +		}
+
+I think this calculations can be hidden in max_zone_phys(), e.g.
+
+diff --git a/arch/arm64/mm/init.c b/arch/arm64/mm/init.c
+index 481d22c32a2e..be3fdfb35a56 100644
+--- a/arch/arm64/mm/init.c
++++ b/arch/arm64/mm/init.c
+@@ -189,7 +189,12 @@ static void __init reserve_elfcorehdr(void)
+ static phys_addr_t __init max_zone_phys(unsigned int zone_bits)
  {
- 	struct vm_area_struct *vma = vmf->vma;
- 	struct drm_gem_object *obj = vma->vm_private_data;
-diff --git a/drivers/gpu/drm/vc4/vc4_drv.c b/drivers/gpu/drm/vc4/vc4_drv.c
-index f1a5fd5dab6f..d27eaa2d0cfe 100644
---- a/drivers/gpu/drm/vc4/vc4_drv.c
-+++ b/drivers/gpu/drm/vc4/vc4_drv.c
-@@ -140,12 +140,6 @@ static void vc4_close(struct drm_device *dev, struct drm_file *file)
- 	kfree(vc4file);
+ 	phys_addr_t offset = memblock_start_of_DRAM() & GENMASK_ULL(63, zone_bits);
+-	return min(offset + (1ULL << zone_bits), memblock_end_of_DRAM());
++	phys_addr_t zone_size = (1ULL << zone_bits);
++
++	if (IS_ENABLED(CONFIG_ZONE_DMA32) && zone_bits == 32 && dma32_zone_size)
++		zone_bits = min(zone_size,dma32_zone_size);
++
++	return min(offset + zone_size, memblock_end_of_DRAM());
  }
  
--static const struct vm_operations_struct vc4_vm_ops = {
--	.fault = vc4_fault,
--	.open = drm_gem_vm_open,
--	.close = drm_gem_vm_close,
--};
--
- static const struct file_operations vc4_drm_fops = {
- 	.owner = THIS_MODULE,
- 	.open = drm_open,
-@@ -195,16 +189,10 @@ static struct drm_driver vc4_drm_driver = {
- #endif
- 
- 	.gem_create_object = vc4_create_object,
--	.gem_free_object_unlocked = vc4_free_object,
--	.gem_vm_ops = &vc4_vm_ops,
- 
- 	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
- 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
--	.gem_prime_export = vc4_prime_export,
--	.gem_prime_get_sg_table	= drm_gem_cma_prime_get_sg_table,
- 	.gem_prime_import_sg_table = vc4_prime_import_sg_table,
--	.gem_prime_vmap = vc4_prime_vmap,
--	.gem_prime_vunmap = drm_gem_cma_prime_vunmap,
- 	.gem_prime_mmap = vc4_prime_mmap,
- 
- 	.dumb_create = vc4_dumb_create,
-diff --git a/drivers/gpu/drm/vc4/vc4_drv.h b/drivers/gpu/drm/vc4/vc4_drv.h
-index 8c8d96b6289f..a22478a35199 100644
---- a/drivers/gpu/drm/vc4/vc4_drv.h
-+++ b/drivers/gpu/drm/vc4/vc4_drv.h
-@@ -799,7 +799,6 @@ int vc4_get_hang_state_ioctl(struct drm_device *dev, void *data,
- 			     struct drm_file *file_priv);
- int vc4_label_bo_ioctl(struct drm_device *dev, void *data,
- 		       struct drm_file *file_priv);
--vm_fault_t vc4_fault(struct vm_fault *vmf);
- int vc4_mmap(struct file *filp, struct vm_area_struct *vma);
- int vc4_prime_mmap(struct drm_gem_object *obj, struct vm_area_struct *vma);
- struct drm_gem_object *vc4_prime_import_sg_table(struct drm_device *dev,
--- 
-2.28.0
+ static void __init zone_sizes_init(unsigned long min, unsigned long max)
 
+> +	} else {
+>  		arm64_dma32_phys_limit = PHYS_MASK + 1;
+> +	}
+>  
+>  	reserve_crashkernel();
+>  
+> -- 
+> 2.18.0
+
+-- 
+Sincerely yours,
+Mike.
 
 _______________________________________________
 Linux-mediatek mailing list
