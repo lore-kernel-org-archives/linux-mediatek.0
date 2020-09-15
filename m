@@ -2,75 +2,73 @@ Return-Path: <SRS0=MDtk=CY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CAD8AC43461
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 06:11:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B78D6C433E2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 06:11:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EA274206B2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 06:11:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 35DA6206B2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 06:11:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jpqEw9ez";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GGRcZNpT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA274206B2
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rj8YV9aI";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="UDw6mJW3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 35DA6206B2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=GPC9J/OKvWusjmG46qfnOVXpEXteGvUrCTEBQNN7IBc=; b=jpqEw9ezwwnZrvCToJgSrKirr
-	g9g54h5FhTtrE/mJ+2zoY5T3CSEnqVWkltgfNaIQmkQAyyErT10A+kEVIc/l6XMeZzHFyBbxxBCN3
-	C4zKgUps1Gg6gf6kxWNXSVWseeJh6AFIsHnfSCSG/Ri7LRvRagDmep0eqSlXxxGsmUR3mVRxvTzvf
-	fOEbyAOmxtnDz0IGLtMqF8fjdJwiysR0k994FD3EouxctdOOKqpH4UfNz24KN2/WbD5av/O4SHDhX
-	Q9F27C/qcQWwDHw077ciNLSEUDcvclqNoI+xH6YqNMMo00j9iFH2c2lDPkf8hk1YqgMDi4zw4y8jS
-	kbZJ7I4+w==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Hnozp+9ffoQpkk02O+HZU6EW3fUKJh4A2wW86r7XVq0=; b=rj8YV9aIKu/NQ3gQeGpnwwYqWa
+	E92hy8k108GSmPPHhcx+X1Vv0zkqtm1tv82VbggJqRGKkKU4jF9/d67uFHCLr9DLig5kSfD/HTOPg
+	aQw7GGAY08wlAtPyoonPg/7NhlqQy11pxgPVY5beK++iZCJtfot4qmZ2GELkIQLYZ3i3UFbqL2uxv
+	IaCa/vnZFArFkWeP6ZACnmzOtCqrZ8CZFL3W+bTJ4z6dbxTYp7NIllU+R6SZzqsToSM/6EA961obR
+	VTVmoEKOUDj08ijtZMAFkt+SaIdAKJ6OQBuNMCeBVx5+1yCl+TC+ZLOrvIS55w187Dzy0pmXdQg1B
+	0NkvD1WA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kI4B3-00062y-Gv; Tue, 15 Sep 2020 06:10:53 +0000
+	id 1kI4B6-00063R-K9; Tue, 15 Sep 2020 06:10:56 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kI4Az-00061y-Vc; Tue, 15 Sep 2020 06:10:51 +0000
-X-UUID: c808474d71b446d2adb3847a4f3411ae-20200914
+ id 1kI4B0-000620-CY; Tue, 15 Sep 2020 06:10:52 +0000
+X-UUID: 9ebe53eb0da04e23a60442933b8d3494-20200914
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=iHk/Tb8hmYsRyxGTjsN+iuA08DZBLpkgjndj3Jtnz5o=; 
- b=GGRcZNpT/LvqPJP2ElaNa822WvYBDcRhLbsBSY7L3aNQda1xPuI5ERHrA8E+UFdjcvm1MVW515CQtR3UqXcH8iwONBpPMan72nxXKgX+5xacyvga5ej3+fs4E9fB5mmj8HwLneIPL4T+4Y8xZbJMZ/kdHuFvtcyBxIgZas9JtGw=;
-X-UUID: c808474d71b446d2adb3847a4f3411ae-20200914
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=X8Z5QB7G03Bfi4YPnNUVk/455t8rUc87yOD3C0YOlFc=; 
+ b=UDw6mJW3/6WPLLn2MutNScXMexqbsbxpIj3VpjBsE8P1AI9mZAtgbSArRiYlYCDZr8pR5ffQV2Ee4Ruz6QvR2YDRE/4O6zP1+kVRQKQeD6kpmPhT8u5rRBBsqbbAJqO5S4KXYuZwk+7ubxi1czczW6ZPIcalkIGvF4q+meBq46A=;
+X-UUID: 9ebe53eb0da04e23a60442933b8d3494-20200914
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <wenbin.mei@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1761968399; Mon, 14 Sep 2020 22:10:47 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1495968081; Mon, 14 Sep 2020 22:10:47 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Mon, 14 Sep 2020 23:00:44 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Sep 2020 14:00:44 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 15 Sep 2020 14:00:42 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 15 Sep 2020 14:00:43 +0800
+ Transport; Tue, 15 Sep 2020 14:00:42 +0800
 From: Wenbin Mei <wenbin.mei@mediatek.com>
 To: 
-Subject: [PATCH 1/3] mmc: dt-bindings: add support for MT8192 SoC
-Date: Tue, 15 Sep 2020 13:58:33 +0800
-Message-ID: <20200915055835.25590-2-wenbin.mei@mediatek.com>
+Subject: [PATCH 0/3] Add mmc support for MT8192 SoC
+Date: Tue, 15 Sep 2020 13:58:32 +0800
+Message-ID: <20200915055835.25590-1-wenbin.mei@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200915055835.25590-1-wenbin.mei@mediatek.com>
-References: <20200915055835.25590-1-wenbin.mei@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200915_021050_310316_87DA7734 
-X-CRM114-Status: GOOD (  13.27  )
+X-CRM114-CacheID: sfid-20200915_021050_577224_4B0A3475 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,10 +81,9 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>,
- Wenbin Mei <wenbin.mei@mediatek.com>, srv_heupstream@mediatek.com,
- linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,
+ srv_heupstream@mediatek.com, linux-mmc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Chaotian Jing <chaotian.jing@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
@@ -94,40 +91,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8192 mmc host ip is compatible with MT8183.
-Add support for this.
 
-Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
+Wenbin Mei (3):
+  mmc: dt-bindings: add support for MT8192 SoC
+  arm64: dts: mt8192: add mmc device node
+  mmc: mediatek: Add subsys clock control for MT8192 msdc
 ---
- Documentation/devicetree/bindings/mmc/mtk-sd.txt | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+This patch depends on
+[v4,1/3] arm64: dts: Add Mediatek SoC MT8192 and evaluation board dts and Makefile
+[v3,1/9] dt-bindings: ARM: Mediatek: Document bindings for MT8192 BSP
+[v3,6/9] clk: mediatek: Add dt-bindings for MT8192 clocks
+[v3,9/9] clk: mediatek: Add MT8192 clock support
+[v3,1/3] dt-bindings: pinctrl: mt8192: add pinctrl file
+[v3,2/3] dt-bindings: pinctrl: mt8192: add binding document
+[v3,3/3] pinctrl: add pinctrl driver on mt8192
+[v2,1/4] soc: mediatek: pwrap: use BIT() macro
+[v2,2/4] soc: mediatek: pwrap: add arbiter capability
+[v2,3/4] dt-bindings: mediatek: add compatible for MT6873/8192 pwrap
+[v2,4/4] soc: mediatek: pwrap: add pwrap driver for MT6873/8192 SoCs
+[2/8] dt-bindings: mfd: Add compatible for the MediaTek MT6359 PMIC
+[3/8] dt-bindings: regulator: Add document for MT6359 regulator
+[4/8] mfd: Add support for the MediaTek MT6359 PMIC
+[5/8] regulator: mt6359: Add support for MT6359 regulator
+[7/8] regulator: mt6359: Add support for MT6359P regulator
+[8/8] arm64: dts: mt6359: add PMIC MT6359 related nodes
 
-diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-index 26a8f320a156..6422ad7d439d 100644
---- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-+++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-@@ -10,7 +10,7 @@ Required properties:
- - compatible: value should be either of the following.
- 	"mediatek,mt8135-mmc": for mmc host ip compatible with mt8135
- 	"mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
--	"mediatek,mt8183-mmc": for mmc host ip compatible with mt8183
-+	"mediatek,mt8192-mmc", "mediatek,mt8183-mmc": for mmc host ip compatible with mt8183
- 	"mediatek,mt8516-mmc": for mmc host ip compatible with mt8516
- 	"mediatek,mt6779-mmc": for mmc host ip compatible with mt6779
- 	"mediatek,mt2701-mmc": for mmc host ip compatible with mt2701
-@@ -27,6 +27,10 @@ Required properties:
- 	"hclk" - HCLK which used for host (required)
- 	"source_cg" - independent source clock gate (required for MT2712)
- 	"bus_clk" - bus clock used for internal register access (required for MT2712 MSDC0/3)
-+	"sys_cg" - msdc subsys clock gate (required for MT8192)
-+	"pclk_cg" - peripheral bus clock gate (required for MT8192)
-+	"axi_cg" - AXI bus clock gate (required for MT8192)
-+	"ahb_cg" - AHB bus clock gate (required for MT8192)
- - pinctrl-names: should be "default", "state_uhs"
- - pinctrl-0: should contain default/high speed pin ctrl
- - pinctrl-1: should contain uhs mode pin ctrl
--- 
+Please also accept this patch together with [1][2][3][4][5]
+to avoid build and dt binding check error.
+[1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=332621
+[2] https://patchwork.kernel.org/project/linux-mediatek/list/?series=342593
+[3] https://patchwork.kernel.org/project/linux-mediatek/list/?series=330017
+[4] https://patchwork.kernel.org/project/linux-mediatek/list/?series=322937
+[5] https://patchwork.kernel.org/project/linux-mediatek/list/?series=323171
+---
+ .../devicetree/bindings/mmc/mtk-sd.txt        |  6 +-
+ arch/arm64/boot/dts/mediatek/mt8192-evb.dts   | 89 +++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi      | 34 +++++++
+ drivers/mmc/host/mtk-sd.c                     | 77 ++++++++++++----
+ 4 files changed, 187 insertions(+), 19 deletions(-)
+
+--
 2.18.0
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
