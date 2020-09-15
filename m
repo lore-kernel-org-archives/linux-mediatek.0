@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 34084C35257
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:01:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B123FC35273
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:01:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D5CC220829
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:01:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4A8CC2074B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:01:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3Pk2W9rY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D5CC220829
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Vq9QSArR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4A8CC2074B
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,21 +25,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=yZ8FjXEEYRyihgPZH3puOk0dJo31sRZ0qvsjwKquOOA=; b=3Pk2W9rYoX7VatYpLLAJeRTEX
-	IgFJBmYErzNpC0PObgh9R0VYyhvmwiLBuV92kgk9PzJP6XxwrWt3fe21fNIYXaeEuU9Cl4h/ALYLx
-	jZ3f0waR5C6M81R7W64Vj2Ded8CQ0nPnIyXTt+kDHzLtgyT8mGOBYNQ7SdZilQGwPCB6P/trVyg2v
-	Q0t5SsaHVHlUaaolIM7Xudmv+/nN0kWDqaf/37J26EVcehE3AdQM6cozq1tI5EyWJGaYg6okv6mVn
-	Jltpkq8cyMwQbf1BW3NGKc/wbmIFN3PUgVJ6YxZy60DYFKZWo29OTiOY2jmJ5mPxi30CDiVarVbrr
-	mtTq1A28g==;
+	 bh=qova5hhEmdcvEJjHAHp3TUMx69GWPygVcNBAglz7fSw=; b=Vq9QSArRcKuNgBNrs94QoNw2f
+	rWXLItFZsFswUA523cwuL4FtuW/x1tynS4XsZa4mBWyvEoVsayFDRBYzncm6fjCF1Qra0hCeGuXCA
+	a5jAmzPIp0WWiqFT50O6jOKYLU1dtllL2mQ5eYGaXBB8ykvvItHggfAoIzsCxlKkg4gUsWdOIr7KZ
+	gG2I14pBL97gtwQ20ohK9ddEL8zG4//Du4OlB5Nl+OtUuKSkgizMZ0CCCclwF6JRa6O/Rn4RAvsJJ
+	kBxSlcW/p2BkMynBTb0zeT+hnQerCvb7oFdlbWAy2AwfQuM5XzwbNQ4yBFy+HoKAgZaaQTtH6ynCu
+	MwsqE7IYg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kICSC-000490-V2; Tue, 15 Sep 2020 15:01:09 +0000
+	id 1kICSF-0004Al-9Y; Tue, 15 Sep 2020 15:01:11 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kICRF-0003b9-QG; Tue, 15 Sep 2020 15:00:12 +0000
+ id 1kICRF-0003ax-87; Tue, 15 Sep 2020 15:00:12 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id F3C12AFB2;
+ by mx2.suse.de (Postfix) with ESMTP id 69906AFB0;
  Tue, 15 Sep 2020 15:00:23 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
@@ -63,16 +63,16 @@ To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  matthew.auld@intel.com, tvrtko.ursulin@linux.intel.com,
  andi.shyti@intel.com, sam@ravnborg.org, miaoqinglang@huawei.com,
  emil.velikov@collabora.com
-Subject: [PATCH v2 08/21] drm/msm: Introduce GEM object funcs
-Date: Tue, 15 Sep 2020 16:59:45 +0200
-Message-Id: <20200915145958.19993-9-tzimmermann@suse.de>
+Subject: [PATCH v2 07/21] drm/mediatek: Introduce GEM object functions
+Date: Tue, 15 Sep 2020 16:59:44 +0200
+Message-Id: <20200915145958.19993-8-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200915145958.19993-1-tzimmermann@suse.de>
 References: <20200915145958.19993-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200915_110010_251615_55816DDF 
-X-CRM114-Status: GOOD (  15.07  )
+X-CRM114-CacheID: sfid-20200915_110009_589509_DCDB21AA 
+X-CRM114-Status: GOOD (  15.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,108 +98,72 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 GEM object functions deprecate several similar callback interfaces in
 struct drm_driver. This patch replaces the per-driver callbacks with
-per-instance callbacks in msm. The only exception is gem_prime_mmap,
+per-instance callbacks in mediatek. The only exception is gem_prime_mmap,
 which is non-trivial to convert.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/msm/msm_drv.c | 13 -------------
- drivers/gpu/drm/msm/msm_drv.h |  1 -
- drivers/gpu/drm/msm/msm_gem.c | 19 ++++++++++++++++++-
- 3 files changed, 18 insertions(+), 15 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c |  5 -----
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c | 11 +++++++++++
+ 2 files changed, 11 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/msm/msm_drv.c b/drivers/gpu/drm/msm/msm_drv.c
-index 79333842f70a..5952767ea478 100644
---- a/drivers/gpu/drm/msm/msm_drv.c
-+++ b/drivers/gpu/drm/msm/msm_drv.c
-@@ -978,12 +978,6 @@ static const struct drm_ioctl_desc msm_ioctls[] = {
- 	DRM_IOCTL_DEF_DRV(MSM_SUBMITQUEUE_QUERY, msm_ioctl_submitqueue_query, DRM_RENDER_ALLOW),
- };
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 040a8f393fe2..2f8d0043fca7 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -301,18 +301,13 @@ struct drm_gem_object *mtk_drm_gem_prime_import(struct drm_device *dev,
+ static struct drm_driver mtk_drm_driver = {
+ 	.driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_ATOMIC,
  
--static const struct vm_operations_struct vm_ops = {
--	.fault = msm_gem_fault,
--	.open = drm_gem_vm_open,
--	.close = drm_gem_vm_close,
--};
--
- static const struct file_operations fops = {
- 	.owner              = THIS_MODULE,
- 	.open               = drm_open,
-@@ -1009,18 +1003,11 @@ static struct drm_driver msm_driver = {
- 	.irq_preinstall     = msm_irq_preinstall,
- 	.irq_postinstall    = msm_irq_postinstall,
- 	.irq_uninstall      = msm_irq_uninstall,
--	.gem_free_object_unlocked = msm_gem_free_object,
--	.gem_vm_ops         = &vm_ops,
- 	.dumb_create        = msm_gem_dumb_create,
- 	.dumb_map_offset    = msm_gem_dumb_map_offset,
+-	.gem_free_object_unlocked = mtk_drm_gem_free_object,
+-	.gem_vm_ops = &drm_gem_cma_vm_ops,
+ 	.dumb_create = mtk_drm_gem_dumb_create,
+ 
  	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
  	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
--	.gem_prime_pin      = msm_gem_prime_pin,
--	.gem_prime_unpin    = msm_gem_prime_unpin,
--	.gem_prime_get_sg_table = msm_gem_prime_get_sg_table,
- 	.gem_prime_import_sg_table = msm_gem_prime_import_sg_table,
--	.gem_prime_vmap     = msm_gem_prime_vmap,
--	.gem_prime_vunmap   = msm_gem_prime_vunmap,
- 	.gem_prime_mmap     = msm_gem_prime_mmap,
- #ifdef CONFIG_DEBUG_FS
- 	.debugfs_init       = msm_debugfs_init,
-diff --git a/drivers/gpu/drm/msm/msm_drv.h b/drivers/gpu/drm/msm/msm_drv.h
-index af259b0573ea..7bcea10be81f 100644
---- a/drivers/gpu/drm/msm/msm_drv.h
-+++ b/drivers/gpu/drm/msm/msm_drv.h
-@@ -269,7 +269,6 @@ void msm_gem_shrinker_cleanup(struct drm_device *dev);
- int msm_gem_mmap_obj(struct drm_gem_object *obj,
- 			struct vm_area_struct *vma);
- int msm_gem_mmap(struct file *filp, struct vm_area_struct *vma);
--vm_fault_t msm_gem_fault(struct vm_fault *vmf);
- uint64_t msm_gem_mmap_offset(struct drm_gem_object *obj);
- int msm_gem_get_iova(struct drm_gem_object *obj,
- 		struct msm_gem_address_space *aspace, uint64_t *iova);
-diff --git a/drivers/gpu/drm/msm/msm_gem.c b/drivers/gpu/drm/msm/msm_gem.c
-index b4553caaa196..de915ff6f4b4 100644
---- a/drivers/gpu/drm/msm/msm_gem.c
-+++ b/drivers/gpu/drm/msm/msm_gem.c
-@@ -247,7 +247,7 @@ int msm_gem_mmap(struct file *filp, struct vm_area_struct *vma)
- 	return msm_gem_mmap_obj(vma->vm_private_data, vma);
- }
+ 	.gem_prime_import = mtk_drm_gem_prime_import,
+-	.gem_prime_get_sg_table = mtk_gem_prime_get_sg_table,
+ 	.gem_prime_import_sg_table = mtk_gem_prime_import_sg_table,
+ 	.gem_prime_mmap = mtk_drm_gem_mmap_buf,
+-	.gem_prime_vmap = mtk_drm_gem_prime_vmap,
+-	.gem_prime_vunmap = mtk_drm_gem_prime_vunmap,
+ 	.fops = &mtk_drm_fops,
  
--vm_fault_t msm_gem_fault(struct vm_fault *vmf)
-+static vm_fault_t msm_gem_fault(struct vm_fault *vmf)
+ 	.name = DRIVER_NAME,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index 6190cc3b7b0d..591b90410e4a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -8,11 +8,20 @@
+ #include <drm/drm.h>
+ #include <drm/drm_device.h>
+ #include <drm/drm_gem.h>
++#include <drm/drm_gem_cma_helper.h>
+ #include <drm/drm_prime.h>
+ 
+ #include "mtk_drm_drv.h"
+ #include "mtk_drm_gem.h"
+ 
++static const struct drm_gem_object_funcs mtk_drm_gem_object_funcs = {
++	.free = mtk_drm_gem_free_object,
++	.get_sg_table = mtk_gem_prime_get_sg_table,
++	.vmap = mtk_drm_gem_prime_vmap,
++	.vunmap = mtk_drm_gem_prime_vunmap,
++	.vm_ops = &drm_gem_cma_vm_ops,
++};
++
+ static struct mtk_drm_gem_obj *mtk_drm_gem_init(struct drm_device *dev,
+ 						unsigned long size)
  {
- 	struct vm_area_struct *vma = vmf->vma;
- 	struct drm_gem_object *obj = vma->vm_private_data;
-@@ -994,6 +994,22 @@ int msm_gem_new_handle(struct drm_device *dev, struct drm_file *file,
- 	return ret;
- }
+@@ -25,6 +34,8 @@ static struct mtk_drm_gem_obj *mtk_drm_gem_init(struct drm_device *dev,
+ 	if (!mtk_gem_obj)
+ 		return ERR_PTR(-ENOMEM);
  
-+static const struct vm_operations_struct vm_ops = {
-+	.fault = msm_gem_fault,
-+	.open = drm_gem_vm_open,
-+	.close = drm_gem_vm_close,
-+};
++	mtk_gem_obj->base.funcs = &mtk_drm_gem_object_funcs;
 +
-+static const struct drm_gem_object_funcs msm_gem_object_funcs = {
-+	.free = msm_gem_free_object,
-+	.pin = msm_gem_prime_pin,
-+	.unpin = msm_gem_prime_unpin,
-+	.get_sg_table = msm_gem_prime_get_sg_table,
-+	.vmap = msm_gem_prime_vmap,
-+	.vunmap = msm_gem_prime_vunmap,
-+	.vm_ops = &vm_ops,
-+};
-+
- static int msm_gem_new_impl(struct drm_device *dev,
- 		uint32_t size, uint32_t flags,
- 		struct drm_gem_object **obj)
-@@ -1024,6 +1040,7 @@ static int msm_gem_new_impl(struct drm_device *dev,
- 	INIT_LIST_HEAD(&msm_obj->vmas);
- 
- 	*obj = &msm_obj->base;
-+	(*obj)->funcs = &msm_gem_object_funcs;
- 
- 	return 0;
- }
+ 	ret = drm_gem_object_init(dev, &mtk_gem_obj->base, size);
+ 	if (ret < 0) {
+ 		DRM_ERROR("failed to initialize gem object\n");
 -- 
 2.28.0
 
