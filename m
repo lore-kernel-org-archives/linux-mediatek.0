@@ -2,97 +2,111 @@ Return-Path: <SRS0=MDtk=CY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.0 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8BDE5C433E2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 08:42:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AFB0CC43461
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 08:57:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 13D8420771
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 08:42:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 524152078D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 08:57:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TD3YkqMa";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="saOqAbec"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 13D8420771
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UR4Qm+Tl"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 524152078D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=YIccGBAFtDlK0nHAPJ5jfd4KUGpaVQS/iHq9NGuNaqs=; b=TD3YkqMaFJE8bm+DJhyR31FQZ
-	ATbdSB5T/sc6DuNevRKpgSURioCSEx466lG5ZPNVSirm1xHFCAFr6EAkpqu+zuOveiz6Qz9xWfOTD
-	bQj+xRpbyjXFi1zxAzVbQupk17Woy8UKor8+BDvCASgfPSY0AMm7xrpAeImVg2yEe7FT9OcatvYWm
-	PmXOaq7UXv18sWqqe9rdEF1rGQ6pRl7aVEGokb8GwCwx08ABCDCPFXoxa7r/7NR0cr8vYkNP5p79u
-	nVMJL2mfaQkrP6FWIqAMtYuHZSkYWI+kpNS3NB3bLRNNLtMDzpLO88I5Hjt2a75JjfE4qiPKhwvLq
-	0VPOj5vYw==;
+	 bh=ht3p7/mC2EuZay3lnk1BKIxpAHxqUMxPm2DD/f/Qr3U=; b=UR4Qm+TlDCYACmPmgZg8Qtj1o
+	UWHPiw1tQyb+UqlqjYqDo0oiEWHJbJG5n/fC0RPKEGN7Jd9rvEyDxyHAcGq5kGuzloKyzNHnhMsQ4
+	W9deg2SCeAvsjsWavwVHPh09BpKmrSwu/iZMrtBwk35phjoWjmYJFxcKgNIWJexbrkXMaeJvNSM+f
+	goMlpUQAZW5MroOWsFn1WCPLMUxkdjXoB2QWzSXhAWfi1ks1XVPF4Q5+ltunfVpPvT5QUR77uvZPv
+	6G8V5ne9ObtacytH4VlNP8OzFhG4IERsTWlnUfEBXwb/yeVoIQQN+q4qeKaA95bopIBbpXRknv2mv
+	RjZb7xG3g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kI6XH-0001mH-KN; Tue, 15 Sep 2020 08:41:59 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1kI6ln-0002pc-QN; Tue, 15 Sep 2020 08:56:59 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kI6XF-0001lW-Cp
- for linux-mediatek@lists.infradead.org; Tue, 15 Sep 2020 08:41:58 +0000
-Received: by mail-wm1-x341.google.com with SMTP id b79so2542910wmb.4
- for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2020 01:41:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=mWxyaW6253KQoFu0UHMqhP8AMPbDHxMp498wfuHOKQs=;
- b=saOqAbectSltZwthpuw0WtmRLXNslq/6YA27xlyKH+Ylqo/uY6YiGQhcX5SylY598U
- /4pxJWKWaFw3E16XlejBDo9W7PkY7tFbRw18KcFD9PmJ3Xt4Zm7sS8CXDAddd9JRmQZu
- +KzPkW6YysKzbKlSB0tygqQY5IdFqBKsaYrZwCaNgqXMkAE43NqCWl6fKy3/GI2DwYBK
- otwIGXfzLFKdY6fNDul1WeGmGb+VXJWn+xfX+j8KU58hd9xe1uzWxBkxOissd7CRzYbz
- XETlbz4gt+x+Bncp6QksrENLbE/Ni2xAGMHPVdnKZPUI7JhPEDd9Tsx3viieTQ+mGDua
- B8Rw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=mWxyaW6253KQoFu0UHMqhP8AMPbDHxMp498wfuHOKQs=;
- b=j9PjJ/4VoLbJhGsrwtxG4FA6FEvt5SE6DFt5bDgQZUaudGoDVQpMVzkOQttq9mzm8N
- k0mzSEz1N1fA8U3E4fhg/8Cvz5Q/UCfClxvCnuIYeP4QRhlKSC+aj149r72sylciyHMP
- MA56kETYEpfBW+FfKW25+kMC8YqUIfNEZOtou3MRx7YqhoJepjGqPRUT9jRYUM2IKboT
- +y0vt/7gW29TBT18MgGHIM8J4pE1aXOow6tsQQ8qUXL+Jx60R/kRUytYVwrwcerZuFlK
- Kuqj3jLv/akpfIqtGKxEtZ1mablxHZpelV8PRZW3ip97xFZhVMK2XFNPPOTGE2bpmdso
- BFmQ==
-X-Gm-Message-State: AOAM531JGVQocbQQUTJufdXl/6m+0Rwd5ME46eT5cMkjIBSjRjznLQhs
- V8lB4wDZdx9JSEkI6OQINLI=
-X-Google-Smtp-Source: ABdhPJw7fbniVY5pujFTy+9h14GxGq4rfw+vU0pN0UCtS1Q/6Sb6mViWzSz+ImsOlxBwh6Dn15tWTw==
-X-Received: by 2002:a7b:ca56:: with SMTP id m22mr3340434wml.12.1600159316177; 
- Tue, 15 Sep 2020 01:41:56 -0700 (PDT)
-Received: from ziggy.stardust ([213.195.113.201])
- by smtp.gmail.com with ESMTPSA id k8sm23349010wma.16.2020.09.15.01.41.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 15 Sep 2020 01:41:55 -0700 (PDT)
-Subject: Re: [PATCH] MAINTAINERS: make linux-mediatek list remarks consistent
-To: David Woodhouse <dwmw2@infradead.org>,
- Lukas Bulwahn <lukas.bulwahn@gmail.com>
-References: <20200914053110.23286-1-lukas.bulwahn@gmail.com>
- <f6bc41d3-5ce4-b9ea-e2bb-e0cee4de3179@gmail.com>
- <alpine.DEB.2.21.2009141208200.17999@felia>
- <9c5aaa15-bdd8-ae4f-0642-092566ab08ba@gmail.com>
- <alpine.DEB.2.21.2009141552570.17999@felia>
- <7da64c0975c345f1f45034410c9ed7d509ba9831.camel@infradead.org>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <14193442-3b41-29f2-4380-e2cbcc00e5d4@gmail.com>
-Date: Tue, 15 Sep 2020 10:41:54 +0200
+ id 1kI6li-0002oZ-6Z; Tue, 15 Sep 2020 08:56:55 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 87BA2AFA9;
+ Tue, 15 Sep 2020 08:57:07 +0000 (UTC)
+Subject: Re: [PATCH 18/20] drm/xen: Introduce GEM object functions
+To: Oleksandr Andrushchenko <Oleksandr_Andrushchenko@epam.com>,
+ "alexander.deucher@amd.com" <alexander.deucher@amd.com>,
+ "christian.koenig@amd.com" <christian.koenig@amd.com>,
+ "airlied@linux.ie" <airlied@linux.ie>, "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "mripard@kernel.org" <mripard@kernel.org>,
+ "l.stach@pengutronix.de" <l.stach@pengutronix.de>,
+ "christian.gmeiner@gmail.com" <christian.gmeiner@gmail.com>,
+ "inki.dae@samsung.com" <inki.dae@samsung.com>,
+ "jy0922.shim@samsung.com" <jy0922.shim@samsung.com>,
+ "sw0312.kim@samsung.com" <sw0312.kim@samsung.com>,
+ "kyungmin.park@samsung.com" <kyungmin.park@samsung.com>,
+ "kgene@kernel.org" <kgene@kernel.org>, "krzk@kernel.org" <krzk@kernel.org>,
+ "patrik.r.jakobsson@gmail.com" <patrik.r.jakobsson@gmail.com>,
+ "jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>,
+ "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>,
+ "rodrigo.vivi@intel.com" <rodrigo.vivi@intel.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "robdclark@gmail.com" <robdclark@gmail.com>,
+ "sean@poorly.run" <sean@poorly.run>, "bskeggs@redhat.com"
+ <bskeggs@redhat.com>, "tomi.valkeinen@ti.com" <tomi.valkeinen@ti.com>,
+ "eric@anholt.net" <eric@anholt.net>, "hjc@rock-chips.com"
+ <hjc@rock-chips.com>, "heiko@sntech.de" <heiko@sntech.de>,
+ "thierry.reding@gmail.com" <thierry.reding@gmail.com>,
+ "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
+ "rodrigosiqueiramelo@gmail.com" <rodrigosiqueiramelo@gmail.com>,
+ "hamohammed.sa@gmail.com" <hamohammed.sa@gmail.com>,
+ "hyun.kwon@xilinx.com" <hyun.kwon@xilinx.com>,
+ "laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>,
+ "michal.simek@xilinx.com" <michal.simek@xilinx.com>,
+ "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>,
+ "evan.quan@amd.com" <evan.quan@amd.com>,
+ "Hawking.Zhang@amd.com" <Hawking.Zhang@amd.com>,
+ "tianci.yin@amd.com" <tianci.yin@amd.com>,
+ "marek.olsak@amd.com" <marek.olsak@amd.com>,
+ "hdegoede@redhat.com" <hdegoede@redhat.com>,
+ "andrey.grodzovsky@amd.com" <andrey.grodzovsky@amd.com>,
+ "Felix.Kuehling@amd.com" <Felix.Kuehling@amd.com>,
+ "xinhui.pan@amd.com" <xinhui.pan@amd.com>,
+ "aaron.liu@amd.com" <aaron.liu@amd.com>,
+ "nirmoy.das@amd.com" <nirmoy.das@amd.com>,
+ "chris@chris-wilson.co.uk" <chris@chris-wilson.co.uk>,
+ "matthew.auld@intel.com" <matthew.auld@intel.com>,
+ "abdiel.janulgue@linux.intel.com" <abdiel.janulgue@linux.intel.com>,
+ "tvrtko.ursulin@linux.intel.com" <tvrtko.ursulin@linux.intel.com>,
+ "andi.shyti@intel.com" <andi.shyti@intel.com>,
+ "sam@ravnborg.org" <sam@ravnborg.org>,
+ "miaoqinglang@huawei.com" <miaoqinglang@huawei.com>,
+ "emil.velikov@collabora.com" <emil.velikov@collabora.com>
+References: <20200813083644.31711-1-tzimmermann@suse.de>
+ <20200813083644.31711-19-tzimmermann@suse.de>
+ <1fe5f918-2445-d2e6-a501-881e70929404@epam.com>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Message-ID: <ea91877b-6398-a398-4972-9794f7965662@suse.de>
+Date: Tue, 15 Sep 2020 10:56:46 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <7da64c0975c345f1f45034410c9ed7d509ba9831.camel@infradead.org>
-Content-Language: en-US
+In-Reply-To: <1fe5f918-2445-d2e6-a501-881e70929404@epam.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200915_044157_498056_9245C44A 
-X-CRM114-Status: GOOD (  26.90  )
+X-CRM114-CacheID: sfid-20200915_045654_519728_420471BE 
+X-CRM114-Status: GOOD (  24.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,53 +118,289 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org,
- kernel-janitors@vger.kernel.org,
- Ralf Ramsauer <ralf.ramsauer@oth-regensburg.de>, linux-kernel@vger.kernel.org,
- Joe Perches <joe@perches.com>, linux-mediatek@lists.infradead.org,
- Bjorn Helgaas <bhelgaas@google.com>,
- Pia Eichinger <pia.eichinger@st.oth-regensburg.de>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+ "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "etnaviv@lists.freedesktop.org" <etnaviv@lists.freedesktop.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>,
+ "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
+ "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
+ "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
+ "freedreno@lists.freedesktop.org" <freedreno@lists.freedesktop.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: multipart/mixed; boundary="===============1005107248180664652=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CgpPbiAxNC8wOS8yMDIwIDE2OjEyLCBEYXZpZCBXb29kaG91c2Ugd3JvdGU6Cj4gT24gTW9uLCAy
-MDIwLTA5LTE0IGF0IDE2OjAxICswMjAwLCBMdWthcyBCdWx3YWhuIHdyb3RlOgo+Pj4+IEkgYW0g
-bm90IHN1YnNjcmliZWQgdG8gbGludXgtbWVkaWF0ZWsuIFdoZW4gSSBzZW50IGFuIGVtYWlsIHRv
-IHRoZSBsaXN0LAo+Pj4+IGl0IHNob3dlZCB1cCByZWFsbHkgc2Vjb25kcyBsYXRlciBpbiB0aGUg
-bG9yZS5rZXJuZWwub3JnIG9mIHRoZQo+Pj4+IGxpbnV4LW1lZGlhdGVrIHB1YmxpYy1pbmJveCBy
-ZXBvc2l0b3J5LiBTbywgZWl0aGVyIGl0IHdhcyBkZWxpdmVyZWQKPj4+PiBxdWlja2x5IGFzIGl0
-IGlzIG5vdCBtb2RlcmF0ZWQgb3IgbXkgY2hlY2sgd2l0aCBsb3JlLmtlcm5lbC5vcmcgaXMgd3Jv
-bmcsCj4+Pj4gZS5nLiwgbWFpbHMgc2hvdyB1cCBpbiB0aGUgbG9yZS5rZXJuZWwub3JnIGFyY2hp
-dmUsIGV2ZW4gdGhleSB3ZXJlIG5vdAo+Pj4+IHlldCBwZXJtaXR0ZWQgb24gdGhlIGFjdHVhbCBs
-aXN0Lgo+Pj4+Cj4+Pgo+Pj4gSSdtIHRoZSBtb2RlcmF0b3IgYW5kIEkgZ2V0IHJlcXVlc3RzIHRv
-IG1vZGVyYXRlIGVtYWlscy4gSSBzdXBwb3NlIEkgYWRkZWQgeW91Cj4+PiB0byB0aGUgYWNjZXB0
-ZWQgbGlzdCBiZWNhdXNlIG9mIGVhcmxpZXIgZW1haWxzIHlvdSBzZW5kLgo+Pj4KPj4KPj4gT2th
-eSwgSSBzZWUuIEkgZGlkIHNlbmQgc29tZSBjbGVhbi11cCBwYXRjaCBpbiB0aGUgcGFzdCwgYnV0
-IEkgY29tcGxldGVseQo+PiBmb3Jnb3QgdGhhdCwgYnV0IG15IG1haWxib3ggZGlkIG5vdCBmb3Jn
-ZXQuIFNvLCBub3cgaXQgaXMgY2xlYXIgdG8gbWUgd2h5Cj4+IHRoYXQgbWFpbCBzaG93ZWQgdXAg
-c28gcXVpY2tseS4KPj4KPj4gVGhhbmtzIGZvciB0aGUgZXhwbGFuYXRpb24uCj4gCj4gQUZBSUNU
-IHRoZSBsaW51eC1tZWRpYXRlayBsaXN0IGlzbid0IGNvbmZpZ3VyZWQgdG8gYXV0b21hdGljYWxs
-eQo+IG1vZGVyYXRlIG1lc3NhZ2VzIGZyb20gbm9uLXN1YnNjcmliZXJzLiBJdHMgZ2VuZXJpY19u
-b25tZW1iZXJfYWN0aW9uCj4gc2V0dGluZyBpcyAnQWNjZXB0Jy4gVGhhdCBpcyB0aGUgZGVmYXVs
-dCBzZXR0aW5nIGZvciBsaXN0cyBvbgo+IGluZnJhZGVhZC5vcmcgYW5kIEkgc3Ryb25nbHkgZW5j
-b3VyYWdlIGxpc3QgbWFpbnRhaW5lcnMgdG8gbGVhdmUgaXQKPiB0aGF0IHdheS4KCk9rLCB0aGFu
-a3MgZm9yIGNsYXJpZmljYXRpb24uIEkgbmV2ZXIgYm90aGVyZWQgdG9vIG11Y2ggd2l0aCBhbGwg
-dGhlIApjb25maWd1cmF0aW9uIG9wdGlvbiBvZiB0aGUgbGlzdC4gOnwKCj4gCj4gTHVrYXMsIEkg
-ZG9uJ3Qgc2VlIHlvdXIgYWRkcmVzcyBpbiB0aGUgYWxsb3dsaXN0IGVpdGhlci4KCkkgdHJpZWQg
-dG8gZmluZCB0aGF0IGluIHRoZSB3ZWIgaW50ZXJmYWNlLCBidXQgd2Fzbid0IGFibGUgdG8gZmlu
-ZCB0aGUgbGlzdC4KClJlZ2FyZHMsCk1hdHRoaWFzCgo+IAo+IFRoZXJlIGFyZSBvdGhlciByZWFz
-b25zIHdoeSBzb21lIG1lc3NhZ2VzIGdldCBtaWdodCB0cmFwcGVkIGZvcgo+IG1vZGVyYXRpb24g
-4oCUIHRoZSBtZXNzYWdlIHNpemUsIG51bWJlciBvZiByZWNpcGllbnRzLCBzcGFtIHNjb3JlLCBl
-dGMuCj4gCj4gVGhlIG1lcmUgZmFjdCB0aGF0ICpzb21lKiBtZXNzYWdlcyBhcmUgbW9kZXJhdGVk
-IGRvZXMgbm90IG1lYW4gdGhhdCB0aGUKPiBsaXN0IGlzICJtb2RlcmF0ZWQgZm9yIG5vbi1zdWJz
-Y3JpYmVycyIgaW4gdGhlIHNlbnNlIHRoYXQgdGhlCj4gTUFJTlRBSU5FUlMgZmlsZSBsaXN0cy4K
-PiAKPj4gQmpvcm4sIHdpdGggdGhhdCBjb25maXJtYXRpb24gYW5kIFJldmlld2VkLWJ5IGZyb20g
-TWF0dGhpYXMsIGNvdWxkIHlvdQo+PiBwbGVhc2UgcGljayB0aGlzIHBhdGNoPwo+IAo+IEkgdGhp
-bmsgd2Ugc2hvdWxkIGJlIGZpeGluZyB0aGUgb25lcyB0aGF0ICpkbyogc2F5IGl0J3MgbW9kZXJh
-dGVkIGZvcgo+IG5vbi1zdWJzY3JpYmVycywgbm90IHRoZSBvbmUgdGhhdCBjb3JyZWN0bHkgZGlk
-bid0IDopCj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LW1lZGlhdGVrCg==
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============1005107248180664652==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="PEKUmr8ZTfzNvLYko4DS4LvqUwNvZCpsP"
+
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--PEKUmr8ZTfzNvLYko4DS4LvqUwNvZCpsP
+Content-Type: multipart/mixed; boundary="kA0kz2rRnYLjEYgqBQNbqkILRFPajOphI";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: Oleksandr Andrushchenko <Oleksandr_Andrushchenko@epam.com>,
+ "alexander.deucher@amd.com" <alexander.deucher@amd.com>,
+ "christian.koenig@amd.com" <christian.koenig@amd.com>,
+ "airlied@linux.ie" <airlied@linux.ie>, "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "mripard@kernel.org" <mripard@kernel.org>,
+ "l.stach@pengutronix.de" <l.stach@pengutronix.de>,
+ "christian.gmeiner@gmail.com" <christian.gmeiner@gmail.com>,
+ "inki.dae@samsung.com" <inki.dae@samsung.com>,
+ "jy0922.shim@samsung.com" <jy0922.shim@samsung.com>,
+ "sw0312.kim@samsung.com" <sw0312.kim@samsung.com>,
+ "kyungmin.park@samsung.com" <kyungmin.park@samsung.com>,
+ "kgene@kernel.org" <kgene@kernel.org>, "krzk@kernel.org" <krzk@kernel.org>,
+ "patrik.r.jakobsson@gmail.com" <patrik.r.jakobsson@gmail.com>,
+ "jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>,
+ "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>,
+ "rodrigo.vivi@intel.com" <rodrigo.vivi@intel.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "robdclark@gmail.com" <robdclark@gmail.com>,
+ "sean@poorly.run" <sean@poorly.run>, "bskeggs@redhat.com"
+ <bskeggs@redhat.com>, "tomi.valkeinen@ti.com" <tomi.valkeinen@ti.com>,
+ "eric@anholt.net" <eric@anholt.net>, "hjc@rock-chips.com"
+ <hjc@rock-chips.com>, "heiko@sntech.de" <heiko@sntech.de>,
+ "thierry.reding@gmail.com" <thierry.reding@gmail.com>,
+ "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
+ "rodrigosiqueiramelo@gmail.com" <rodrigosiqueiramelo@gmail.com>,
+ "hamohammed.sa@gmail.com" <hamohammed.sa@gmail.com>,
+ "hyun.kwon@xilinx.com" <hyun.kwon@xilinx.com>,
+ "laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>,
+ "michal.simek@xilinx.com" <michal.simek@xilinx.com>,
+ "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>,
+ "evan.quan@amd.com" <evan.quan@amd.com>,
+ "Hawking.Zhang@amd.com" <Hawking.Zhang@amd.com>,
+ "tianci.yin@amd.com" <tianci.yin@amd.com>,
+ "marek.olsak@amd.com" <marek.olsak@amd.com>,
+ "hdegoede@redhat.com" <hdegoede@redhat.com>,
+ "andrey.grodzovsky@amd.com" <andrey.grodzovsky@amd.com>,
+ "Felix.Kuehling@amd.com" <Felix.Kuehling@amd.com>,
+ "xinhui.pan@amd.com" <xinhui.pan@amd.com>,
+ "aaron.liu@amd.com" <aaron.liu@amd.com>,
+ "nirmoy.das@amd.com" <nirmoy.das@amd.com>,
+ "chris@chris-wilson.co.uk" <chris@chris-wilson.co.uk>,
+ "matthew.auld@intel.com" <matthew.auld@intel.com>,
+ "abdiel.janulgue@linux.intel.com" <abdiel.janulgue@linux.intel.com>,
+ "tvrtko.ursulin@linux.intel.com" <tvrtko.ursulin@linux.intel.com>,
+ "andi.shyti@intel.com" <andi.shyti@intel.com>,
+ "sam@ravnborg.org" <sam@ravnborg.org>,
+ "miaoqinglang@huawei.com" <miaoqinglang@huawei.com>,
+ "emil.velikov@collabora.com" <emil.velikov@collabora.com>
+Cc: "amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "etnaviv@lists.freedesktop.org" <etnaviv@lists.freedesktop.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+ "freedreno@lists.freedesktop.org" <freedreno@lists.freedesktop.org>,
+ "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
+ "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>
+Message-ID: <ea91877b-6398-a398-4972-9794f7965662@suse.de>
+Subject: Re: [PATCH 18/20] drm/xen: Introduce GEM object functions
+References: <20200813083644.31711-1-tzimmermann@suse.de>
+ <20200813083644.31711-19-tzimmermann@suse.de>
+ <1fe5f918-2445-d2e6-a501-881e70929404@epam.com>
+In-Reply-To: <1fe5f918-2445-d2e6-a501-881e70929404@epam.com>
+
+--kA0kz2rRnYLjEYgqBQNbqkILRFPajOphI
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+Hi
+
+Am 13.08.20 um 13:19 schrieb Oleksandr Andrushchenko:
+> Hi,
+>=20
+> On 8/13/20 11:36 AM, Thomas Zimmermann wrote:
+>> GEM object functions deprecate several similar callback interfaces in
+>> struct drm_driver. This patch replaces the per-driver callbacks with
+>> per-instance callbacks in xen. The only exception is gem_prime_mmap,
+>> which is non-trivial to convert.
+>>
+>> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+>> ---
+>>   drivers/gpu/drm/xen/xen_drm_front.c     | 12 +-----------
+>>   drivers/gpu/drm/xen/xen_drm_front.h     |  2 ++
+>>   drivers/gpu/drm/xen/xen_drm_front_gem.c | 15 +++++++++++++++
+>>   3 files changed, 18 insertions(+), 11 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/xen/xen_drm_front.c b/drivers/gpu/drm/xen=
+/xen_drm_front.c
+>> index 3e660fb111b3..bd9af1875af1 100644
+>> --- a/drivers/gpu/drm/xen/xen_drm_front.c
+>> +++ b/drivers/gpu/drm/xen/xen_drm_front.c
+>> @@ -433,7 +433,7 @@ static int xen_drm_drv_dumb_create(struct drm_file=
+ *filp,
+>>   	return ret;
+>>   }
+>>  =20
+>> -static void xen_drm_drv_free_object_unlocked(struct drm_gem_object *o=
+bj)
+>> +void xen_drm_drv_free_object_unlocked(struct drm_gem_object *obj)
+>=20
+> Can we please have naming consistent and name it as
+>=20
+> xen_drm_front_drv_free_object_unlocked or any other name if this seems =
+to be too long,
+>=20
+> but starting with xen_drm_front_ as the rest of exported functions?
+
+There already is a function with that name in drm_xen_front_gem.c. I'll
+move the callback function next to the object-function structure and
+rename it slightly.
+
+Best regards
+Thomas
+
+>=20
+> With this,
+>=20
+> Acked-by: Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>
+>=20
+> Thank you,
+>=20
+> Oleksandr
+>=20
+>>   {
+>>   	struct xen_drm_front_drm_info *drm_info =3D obj->dev->dev_private;
+>>   	int idx;
+>> @@ -481,22 +481,12 @@ static const struct file_operations xen_drm_dev_=
+fops =3D {
+>>   	.mmap           =3D xen_drm_front_gem_mmap,
+>>   };
+>>  =20
+>> -static const struct vm_operations_struct xen_drm_drv_vm_ops =3D {
+>> -	.open           =3D drm_gem_vm_open,
+>> -	.close          =3D drm_gem_vm_close,
+>> -};
+>> -
+>>   static struct drm_driver xen_drm_driver =3D {
+>>   	.driver_features           =3D DRIVER_GEM | DRIVER_MODESET | DRIVER=
+_ATOMIC,
+>>   	.release                   =3D xen_drm_drv_release,
+>> -	.gem_vm_ops                =3D &xen_drm_drv_vm_ops,
+>> -	.gem_free_object_unlocked  =3D xen_drm_drv_free_object_unlocked,
+>>   	.prime_handle_to_fd        =3D drm_gem_prime_handle_to_fd,
+>>   	.prime_fd_to_handle        =3D drm_gem_prime_fd_to_handle,
+>>   	.gem_prime_import_sg_table =3D xen_drm_front_gem_import_sg_table,
+>> -	.gem_prime_get_sg_table    =3D xen_drm_front_gem_get_sg_table,
+>> -	.gem_prime_vmap            =3D xen_drm_front_gem_prime_vmap,
+>> -	.gem_prime_vunmap          =3D xen_drm_front_gem_prime_vunmap,
+>>   	.gem_prime_mmap            =3D xen_drm_front_gem_prime_mmap,
+>>   	.dumb_create               =3D xen_drm_drv_dumb_create,
+>>   	.fops                      =3D &xen_drm_dev_fops,
+>> diff --git a/drivers/gpu/drm/xen/xen_drm_front.h b/drivers/gpu/drm/xen=
+/xen_drm_front.h
+>> index f92c258350ca..93e60c1db550 100644
+>> --- a/drivers/gpu/drm/xen/xen_drm_front.h
+>> +++ b/drivers/gpu/drm/xen/xen_drm_front.h
+>> @@ -160,4 +160,6 @@ int xen_drm_front_page_flip(struct xen_drm_front_i=
+nfo *front_info,
+>>   void xen_drm_front_on_frame_done(struct xen_drm_front_info *front_in=
+fo,
+>>   				 int conn_idx, u64 fb_cookie);
+>>  =20
+>> +void xen_drm_drv_free_object_unlocked(struct drm_gem_object *obj);
+>> +
+>>   #endif /* __XEN_DRM_FRONT_H_ */
+>> diff --git a/drivers/gpu/drm/xen/xen_drm_front_gem.c b/drivers/gpu/drm=
+/xen/xen_drm_front_gem.c
+>> index f0b85e094111..7b315c08bcfc 100644
+>> --- a/drivers/gpu/drm/xen/xen_drm_front_gem.c
+>> +++ b/drivers/gpu/drm/xen/xen_drm_front_gem.c
+>> @@ -56,6 +56,19 @@ static void gem_free_pages_array(struct xen_gem_obj=
+ect *xen_obj)
+>>   	xen_obj->pages =3D NULL;
+>>   }
+>>  =20
+>> +static const struct vm_operations_struct xen_drm_drv_vm_ops =3D {
+>> +	.open           =3D drm_gem_vm_open,
+>> +	.close          =3D drm_gem_vm_close,
+>> +};
+>> +
+>> +static const struct drm_gem_object_funcs xen_drm_front_gem_object_fun=
+cs =3D {
+>> +	.free =3D xen_drm_drv_free_object_unlocked,
+>> +	.get_sg_table =3D xen_drm_front_gem_get_sg_table,
+>> +	.vmap =3D xen_drm_front_gem_prime_vmap,
+>> +	.vunmap =3D xen_drm_front_gem_prime_vunmap,
+>> +	.vm_ops =3D &xen_drm_drv_vm_ops,
+>> +};
+>> +
+>>   static struct xen_gem_object *gem_create_obj(struct drm_device *dev,=
+
+>>   					     size_t size)
+>>   {
+>> @@ -66,6 +79,8 @@ static struct xen_gem_object *gem_create_obj(struct =
+drm_device *dev,
+>>   	if (!xen_obj)
+>>   		return ERR_PTR(-ENOMEM);
+>>  =20
+>> +	xen_obj->base.funcs =3D &xen_drm_front_gem_object_funcs;
+>> +
+>>   	ret =3D drm_gem_object_init(dev, &xen_obj->base, size);
+>>   	if (ret < 0) {
+>>   		kfree(xen_obj);
+
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+(HRB 36809, AG N=C3=BCrnberg)
+Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
+
+
+--kA0kz2rRnYLjEYgqBQNbqkILRFPajOphI--
+
+--PEKUmr8ZTfzNvLYko4DS4LvqUwNvZCpsP
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFIBAEBCAAyFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl9ggdEUHHR6aW1tZXJt
+YW5uQHN1c2UuZGUACgkQaA3BHVMLeiPDBwf/f2Q/YJ8WXCfC3ehLZzwlJXNPSLdV
+RBu8TYn7lfxxUA4dxKgUAU8gtA/RhGAj6nStvS9xB/lBn3Pzea0Zgxyi9muLzrVj
+AAtdCLdz4ykNSJKXeHJFa2/gNzRETQYNok4p3aC2o7qLw1vUdb3U2GY3PzrEX+CR
+cF1iwAbanJ+/6sT1OATWLOSzjyZ4EkRCP6xclKm6wzrrATaBUeneBeDT0TW4OY1i
+0W8WRT7epjcXidinkJnDOtSXDzLRgl5eV5BnsTioD1vJ12ArZwkW0xG/wTTpNgMq
+Rs06mSE5osC1vjmNLl5TUYmtRzgLkOztpo+HyNQH5SwuMdM1wMCL8OkOVA==
+=swh3
+-----END PGP SIGNATURE-----
+
+--PEKUmr8ZTfzNvLYko4DS4LvqUwNvZCpsP--
+
+
+--===============1005107248180664652==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============1005107248180664652==--
+
