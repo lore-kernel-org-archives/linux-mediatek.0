@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B123FC35273
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:01:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C006EC31E40
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:01:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4A8CC2074B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:01:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5461720936
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:01:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Vq9QSArR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4A8CC2074B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RD9DNqst"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5461720936
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,22 +25,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qova5hhEmdcvEJjHAHp3TUMx69GWPygVcNBAglz7fSw=; b=Vq9QSArRcKuNgBNrs94QoNw2f
-	rWXLItFZsFswUA523cwuL4FtuW/x1tynS4XsZa4mBWyvEoVsayFDRBYzncm6fjCF1Qra0hCeGuXCA
-	a5jAmzPIp0WWiqFT50O6jOKYLU1dtllL2mQ5eYGaXBB8ykvvItHggfAoIzsCxlKkg4gUsWdOIr7KZ
-	gG2I14pBL97gtwQ20ohK9ddEL8zG4//Du4OlB5Nl+OtUuKSkgizMZ0CCCclwF6JRa6O/Rn4RAvsJJ
-	kBxSlcW/p2BkMynBTb0zeT+hnQerCvb7oFdlbWAy2AwfQuM5XzwbNQ4yBFy+HoKAgZaaQTtH6ynCu
-	MwsqE7IYg==;
+	 bh=qSxEmlX1x8pAmN88guO1CYwKPfAqv+rlF/dJGemHL6Y=; b=RD9DNqst0eMU3+ShjpDlhTMeh
+	KQzFw4n5t8CTLJSXYV0WvfjN+sSnwZxhZo900PhtuH/7+Hlumq6xtKe5GStWrjF/4hmXgIw6tGJTz
+	/BYsHdgdQQB/MIFyb2H/fARc5vS5o3cDu/1IhTx3peIj+Au7Xh8JELsV+bXZNfiARcyjfAp0CGInK
+	QQR8Wt3qMGIhC5iaMu696C3ZH2bf+d5yJ1+WJ1vugyl5w63AA+OBCcBC/0GgBvJt4iLGOFI+BcixK
+	ZoMCcvibaFn1NlnwcjCD01nfId9Pu79eB08GQ/EUo5ghCg8Ab/bPU5Nc9V8JrG3Fi3a0YGn+LZevA
+	HSq0sEGNA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kICSF-0004Al-9Y; Tue, 15 Sep 2020 15:01:11 +0000
+	id 1kICSH-0004Bt-9U; Tue, 15 Sep 2020 15:01:13 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kICRF-0003ax-87; Tue, 15 Sep 2020 15:00:12 +0000
+ id 1kICRE-0003aw-Vy; Tue, 15 Sep 2020 15:00:12 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 69906AFB0;
- Tue, 15 Sep 2020 15:00:23 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 2EED5AFA0;
+ Tue, 15 Sep 2020 15:00:22 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  daniel@ffwll.ch, linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
@@ -63,16 +63,16 @@ To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  matthew.auld@intel.com, tvrtko.ursulin@linux.intel.com,
  andi.shyti@intel.com, sam@ravnborg.org, miaoqinglang@huawei.com,
  emil.velikov@collabora.com
-Subject: [PATCH v2 07/21] drm/mediatek: Introduce GEM object functions
-Date: Tue, 15 Sep 2020 16:59:44 +0200
-Message-Id: <20200915145958.19993-8-tzimmermann@suse.de>
+Subject: [PATCH v2 06/21] drm/i915: Introduce GEM object functions
+Date: Tue, 15 Sep 2020 16:59:43 +0200
+Message-Id: <20200915145958.19993-7-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200915145958.19993-1-tzimmermann@suse.de>
 References: <20200915145958.19993-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200915_110009_589509_DCDB21AA 
-X-CRM114-Status: GOOD (  15.44  )
+X-CRM114-CacheID: sfid-20200915_110009_422404_A3B5F62D 
+X-CRM114-Status: GOOD (  17.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,72 +98,119 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 GEM object functions deprecate several similar callback interfaces in
 struct drm_driver. This patch replaces the per-driver callbacks with
-per-instance callbacks in mediatek. The only exception is gem_prime_mmap,
-which is non-trivial to convert.
+per-instance callbacks in i915.
+
+v2:
+	* move object-function instance to i915_gem_object.c (Jani)
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_drv.c |  5 -----
- drivers/gpu/drm/mediatek/mtk_drm_gem.c | 11 +++++++++++
- 2 files changed, 11 insertions(+), 5 deletions(-)
+ drivers/gpu/drm/i915/gem/i915_gem_object.c    | 21 ++++++++++++++++---
+ drivers/gpu/drm/i915/gem/i915_gem_object.h    |  3 ---
+ drivers/gpu/drm/i915/i915_drv.c               |  4 ----
+ .../gpu/drm/i915/selftests/mock_gem_device.c  |  3 ---
+ 4 files changed, 18 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 040a8f393fe2..2f8d0043fca7 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -301,18 +301,13 @@ struct drm_gem_object *mtk_drm_gem_prime_import(struct drm_device *dev,
- static struct drm_driver mtk_drm_driver = {
- 	.driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_ATOMIC,
+diff --git a/drivers/gpu/drm/i915/gem/i915_gem_object.c b/drivers/gpu/drm/i915/gem/i915_gem_object.c
+index c8421fd9d2dc..3389ac972d16 100644
+--- a/drivers/gpu/drm/i915/gem/i915_gem_object.c
++++ b/drivers/gpu/drm/i915/gem/i915_gem_object.c
+@@ -39,9 +39,18 @@ static struct i915_global_object {
+ 	struct kmem_cache *slab_objects;
+ } global;
  
--	.gem_free_object_unlocked = mtk_drm_gem_free_object,
--	.gem_vm_ops = &drm_gem_cma_vm_ops,
- 	.dumb_create = mtk_drm_gem_dumb_create,
++static const struct drm_gem_object_funcs i915_gem_object_funcs;
++
+ struct drm_i915_gem_object *i915_gem_object_alloc(void)
+ {
+-	return kmem_cache_zalloc(global.slab_objects, GFP_KERNEL);
++	struct drm_i915_gem_object *obj;
++
++	obj = kmem_cache_zalloc(global.slab_objects, GFP_KERNEL);
++	if (!obj)
++		return NULL;
++	obj->base.funcs = &i915_gem_object_funcs;
++
++	return obj;
+ }
  
- 	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
- 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
- 	.gem_prime_import = mtk_drm_gem_prime_import,
--	.gem_prime_get_sg_table = mtk_gem_prime_get_sg_table,
- 	.gem_prime_import_sg_table = mtk_gem_prime_import_sg_table,
- 	.gem_prime_mmap = mtk_drm_gem_mmap_buf,
--	.gem_prime_vmap = mtk_drm_gem_prime_vmap,
--	.gem_prime_vunmap = mtk_drm_gem_prime_vunmap,
- 	.fops = &mtk_drm_fops,
+ void i915_gem_object_free(struct drm_i915_gem_object *obj)
+@@ -101,7 +110,7 @@ void i915_gem_object_set_cache_coherency(struct drm_i915_gem_object *obj,
+ 		!(obj->cache_coherent & I915_BO_CACHE_COHERENT_FOR_WRITE);
+ }
  
- 	.name = DRIVER_NAME,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-index 6190cc3b7b0d..591b90410e4a 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-@@ -8,11 +8,20 @@
- #include <drm/drm.h>
- #include <drm/drm_device.h>
- #include <drm/drm_gem.h>
-+#include <drm/drm_gem_cma_helper.h>
- #include <drm/drm_prime.h>
+-void i915_gem_close_object(struct drm_gem_object *gem, struct drm_file *file)
++static void i915_gem_close_object(struct drm_gem_object *gem, struct drm_file *file)
+ {
+ 	struct drm_i915_gem_object *obj = to_intel_bo(gem);
+ 	struct drm_i915_file_private *fpriv = file->driver_priv;
+@@ -264,7 +273,7 @@ static void __i915_gem_free_work(struct work_struct *work)
+ 	i915_gem_flush_free_objects(i915);
+ }
  
- #include "mtk_drm_drv.h"
- #include "mtk_drm_gem.h"
+-void i915_gem_free_object(struct drm_gem_object *gem_obj)
++static void i915_gem_free_object(struct drm_gem_object *gem_obj)
+ {
+ 	struct drm_i915_gem_object *obj = to_intel_bo(gem_obj);
+ 	struct drm_i915_private *i915 = to_i915(obj->base.dev);
+@@ -403,6 +412,12 @@ int __init i915_global_objects_init(void)
+ 	return 0;
+ }
  
-+static const struct drm_gem_object_funcs mtk_drm_gem_object_funcs = {
-+	.free = mtk_drm_gem_free_object,
-+	.get_sg_table = mtk_gem_prime_get_sg_table,
-+	.vmap = mtk_drm_gem_prime_vmap,
-+	.vunmap = mtk_drm_gem_prime_vunmap,
-+	.vm_ops = &drm_gem_cma_vm_ops,
++static const struct drm_gem_object_funcs i915_gem_object_funcs = {
++	.free = i915_gem_free_object,
++	.close = i915_gem_close_object,
++	.export = i915_gem_prime_export,
 +};
 +
- static struct mtk_drm_gem_obj *mtk_drm_gem_init(struct drm_device *dev,
- 						unsigned long size)
- {
-@@ -25,6 +34,8 @@ static struct mtk_drm_gem_obj *mtk_drm_gem_init(struct drm_device *dev,
- 	if (!mtk_gem_obj)
- 		return ERR_PTR(-ENOMEM);
+ #if IS_ENABLED(CONFIG_DRM_I915_SELFTEST)
+ #include "selftests/huge_gem_object.c"
+ #include "selftests/huge_pages.c"
+diff --git a/drivers/gpu/drm/i915/gem/i915_gem_object.h b/drivers/gpu/drm/i915/gem/i915_gem_object.h
+index d46db8d8f38e..eaf3d4147be0 100644
+--- a/drivers/gpu/drm/i915/gem/i915_gem_object.h
++++ b/drivers/gpu/drm/i915/gem/i915_gem_object.h
+@@ -38,9 +38,6 @@ void __i915_gem_object_release_shmem(struct drm_i915_gem_object *obj,
  
-+	mtk_gem_obj->base.funcs = &mtk_drm_gem_object_funcs;
-+
- 	ret = drm_gem_object_init(dev, &mtk_gem_obj->base, size);
- 	if (ret < 0) {
- 		DRM_ERROR("failed to initialize gem object\n");
+ int i915_gem_object_attach_phys(struct drm_i915_gem_object *obj, int align);
+ 
+-void i915_gem_close_object(struct drm_gem_object *gem, struct drm_file *file);
+-void i915_gem_free_object(struct drm_gem_object *obj);
+-
+ void i915_gem_flush_free_objects(struct drm_i915_private *i915);
+ 
+ struct sg_table *
+diff --git a/drivers/gpu/drm/i915/i915_drv.c b/drivers/gpu/drm/i915/i915_drv.c
+index 94e00e450683..011a3fb41ece 100644
+--- a/drivers/gpu/drm/i915/i915_drv.c
++++ b/drivers/gpu/drm/i915/i915_drv.c
+@@ -1750,12 +1750,8 @@ static struct drm_driver driver = {
+ 	.lastclose = i915_driver_lastclose,
+ 	.postclose = i915_driver_postclose,
+ 
+-	.gem_close_object = i915_gem_close_object,
+-	.gem_free_object_unlocked = i915_gem_free_object,
+-
+ 	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
+ 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
+-	.gem_prime_export = i915_gem_prime_export,
+ 	.gem_prime_import = i915_gem_prime_import,
+ 
+ 	.dumb_create = i915_gem_dumb_create,
+diff --git a/drivers/gpu/drm/i915/selftests/mock_gem_device.c b/drivers/gpu/drm/i915/selftests/mock_gem_device.c
+index f127e633f7ca..9244b5d6fb01 100644
+--- a/drivers/gpu/drm/i915/selftests/mock_gem_device.c
++++ b/drivers/gpu/drm/i915/selftests/mock_gem_device.c
+@@ -87,9 +87,6 @@ static struct drm_driver mock_driver = {
+ 	.name = "mock",
+ 	.driver_features = DRIVER_GEM,
+ 	.release = mock_device_release,
+-
+-	.gem_close_object = i915_gem_close_object,
+-	.gem_free_object_unlocked = i915_gem_free_object,
+ };
+ 
+ static void release_dev(struct device *dev)
 -- 
 2.28.0
 
