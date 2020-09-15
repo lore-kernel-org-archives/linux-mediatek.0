@@ -2,22 +2,21 @@ Return-Path: <SRS0=MDtk=CY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3532BC2D0F6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:00:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7455DC31E40
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:00:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 83D8120663
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:00:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EFEDB205CB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:00:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rzLLerL+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 83D8120663
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YV8y9sWW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EFEDB205CB
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,21 +25,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zu1JIgWROn3PFnO9jQ5Xa0sec2xfS4EZdIEX323ZWE4=; b=rzLLerL+XHBcqaXBMszIs1zTl
-	ri96Vic0/RC6Mco0qK9aF7PCTRZQ1tHrbl6oll/OsegsvNrwyq9AOwBQQhvt8htliScVtrgfkoV7q
-	9vP3xPJfvB4XivBiAeO+EDc3b3LbBocYKAlk1kUvxo33Kiaw+ljN43geFlzclKCQbknxGBM0u4zFA
-	OVAj7N0S3fviOMZiK7ci7CpOM1ZaGvBcadZECUGAufZCaXseRyqbRxnz69Ykec29gh4GqCQTn+qFb
-	Jhz3XDJA8kjoy9RHdKj8iWjFf7UXGIe0OeHeLWADXs4pPTTv4a4GWrlw/5m92uPpkKHhugdJeyVCJ
-	UwXkb7QhA==;
+	 bh=Aj5y/FK4yCHvs0MYFhoogZjb4b4UEOuOuVI79D6jqiY=; b=YV8y9sWW6QdAZUHZCADxBey8m
+	+TqSz+5Ic0pmn+bN4HlWuvEszfJBt2M09VtJZUfd6CvLKNr6DCQsrIKAuCafRboyptmrfFZ/Gv11v
+	S5OHaRLEDUFxx9EEhqqKySCFZGo/EbC+R8ivgR8jfEt188ZZ2HPY/hAV9uTG2I27hDlTcLhSk1E5B
+	9XwiE0glRj2LpTvcKTQO3jC+nEVq8zSLZuUWigwWUSTnDNNm/p5P3w8gu5W3E5idQYZb/QETVUFMl
+	FqX8I7FoN4GWLPG/D1DgY3v6TQrVrJxuskjvDwMeFlspGWkEwos2MqH49h18vXe9WMrB0iXI8iLJo
+	z8A8m5ivQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kICRN-0003fW-F7; Tue, 15 Sep 2020 15:00:17 +0000
+	id 1kICRd-0003o7-VQ; Tue, 15 Sep 2020 15:00:34 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kICRC-0003Yy-3Y; Tue, 15 Sep 2020 15:00:07 +0000
+ id 1kICRC-0003Yv-3Y; Tue, 15 Sep 2020 15:00:09 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id BA87AAF5D;
+ by mx2.suse.de (Postfix) with ESMTP id BAEA6AF69;
  Tue, 15 Sep 2020 15:00:18 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
@@ -64,16 +63,16 @@ To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  matthew.auld@intel.com, tvrtko.ursulin@linux.intel.com,
  andi.shyti@intel.com, sam@ravnborg.org, miaoqinglang@huawei.com,
  emil.velikov@collabora.com
-Subject: [PATCH v2 01/21] drm/amdgpu: Introduce GEM object functions
-Date: Tue, 15 Sep 2020 16:59:38 +0200
-Message-Id: <20200915145958.19993-2-tzimmermann@suse.de>
+Subject: [PATCH v2 02/21] drm/armada: Introduce GEM object functions
+Date: Tue, 15 Sep 2020 16:59:39 +0200
+Message-Id: <20200915145958.19993-3-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200915145958.19993-1-tzimmermann@suse.de>
 References: <20200915145958.19993-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200915_110006_484303_3E53A348 
-X-CRM114-Status: GOOD (  17.40  )
+X-CRM114-CacheID: sfid-20200915_110006_484146_BC6DAA22 
+X-CRM114-Status: GOOD (  15.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,137 +98,90 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 GEM object functions deprecate several similar callback interfaces in
 struct drm_driver. This patch replaces the per-driver callbacks with
-per-instance callbacks in amdgpu. The only exception is gem_prime_mmap,
-which is non-trivial to convert.
-
-v2:
-	* move object-function instance to amdgpu_gem.c (Christian)
-	* set callbacks in amdgpu_gem_object_create() (Christian)
+per-instance callbacks in armada.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c    |  6 ------
- drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c    | 23 +++++++++++++++++-----
- drivers/gpu/drm/amd/amdgpu/amdgpu_gem.h    |  5 -----
- drivers/gpu/drm/amd/amdgpu/amdgpu_object.c |  1 +
- 4 files changed, 19 insertions(+), 16 deletions(-)
+ drivers/gpu/drm/armada/armada_drv.c |  3 ---
+ drivers/gpu/drm/armada/armada_gem.c | 12 +++++++++++-
+ drivers/gpu/drm/armada/armada_gem.h |  2 --
+ 3 files changed, 11 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-index 6edde2b9e402..840ca8f9c1e1 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-@@ -1505,19 +1505,13 @@ static struct drm_driver kms_driver = {
- 	.lastclose = amdgpu_driver_lastclose_kms,
- 	.irq_handler = amdgpu_irq_handler,
- 	.ioctls = amdgpu_ioctls_kms,
--	.gem_free_object_unlocked = amdgpu_gem_object_free,
--	.gem_open_object = amdgpu_gem_object_open,
--	.gem_close_object = amdgpu_gem_object_close,
- 	.dumb_create = amdgpu_mode_dumb_create,
- 	.dumb_map_offset = amdgpu_mode_dumb_mmap,
- 	.fops = &amdgpu_driver_kms_fops,
+diff --git a/drivers/gpu/drm/armada/armada_drv.c b/drivers/gpu/drm/armada/armada_drv.c
+index 980d3f1f8f16..22247cfce80b 100644
+--- a/drivers/gpu/drm/armada/armada_drv.c
++++ b/drivers/gpu/drm/armada/armada_drv.c
+@@ -37,13 +37,10 @@ DEFINE_DRM_GEM_FOPS(armada_drm_fops);
  
- 	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
- 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
--	.gem_prime_export = amdgpu_gem_prime_export,
- 	.gem_prime_import = amdgpu_gem_prime_import,
--	.gem_prime_vmap = amdgpu_gem_prime_vmap,
--	.gem_prime_vunmap = amdgpu_gem_prime_vunmap,
- 	.gem_prime_mmap = amdgpu_gem_prime_mmap,
- 
- 	.name = DRIVER_NAME,
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c
-index aa7f230c71bf..aeecd5dc3ce4 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c
-@@ -36,9 +36,12 @@
- 
- #include "amdgpu.h"
- #include "amdgpu_display.h"
-+#include "amdgpu_dma_buf.h"
- #include "amdgpu_xgmi.h"
- 
--void amdgpu_gem_object_free(struct drm_gem_object *gobj)
-+static const struct drm_gem_object_funcs amdgpu_gem_object_funcs;
-+
-+static void amdgpu_gem_object_free(struct drm_gem_object *gobj)
- {
- 	struct amdgpu_bo *robj = gem_to_amdgpu_bo(gobj);
- 
-@@ -87,6 +90,7 @@ int amdgpu_gem_object_create(struct amdgpu_device *adev, unsigned long size,
- 		return r;
- 	}
- 	*obj = &bo->tbo.base;
-+	(*obj)->funcs = &amdgpu_gem_object_funcs;
- 
- 	return 0;
- }
-@@ -119,8 +123,8 @@ void amdgpu_gem_force_release(struct amdgpu_device *adev)
-  * Call from drm_gem_handle_create which appear in both new and open ioctl
-  * case.
-  */
--int amdgpu_gem_object_open(struct drm_gem_object *obj,
--			   struct drm_file *file_priv)
-+static int amdgpu_gem_object_open(struct drm_gem_object *obj,
-+				  struct drm_file *file_priv)
- {
- 	struct amdgpu_bo *abo = gem_to_amdgpu_bo(obj);
- 	struct amdgpu_device *adev = amdgpu_ttm_adev(abo->tbo.bdev);
-@@ -152,8 +156,8 @@ int amdgpu_gem_object_open(struct drm_gem_object *obj,
- 	return 0;
+ static struct drm_driver armada_drm_driver = {
+ 	.lastclose		= drm_fb_helper_lastclose,
+-	.gem_free_object_unlocked = armada_gem_free_object,
+ 	.prime_handle_to_fd	= drm_gem_prime_handle_to_fd,
+ 	.prime_fd_to_handle	= drm_gem_prime_fd_to_handle,
+-	.gem_prime_export	= armada_gem_prime_export,
+ 	.gem_prime_import	= armada_gem_prime_import,
+ 	.dumb_create		= armada_gem_dumb_create,
+-	.gem_vm_ops		= &armada_gem_vm_ops,
+ 	.major			= 1,
+ 	.minor			= 0,
+ 	.name			= "armada-drm",
+diff --git a/drivers/gpu/drm/armada/armada_gem.c b/drivers/gpu/drm/armada/armada_gem.c
+index ecf8a55e93d9..c343fbefe47c 100644
+--- a/drivers/gpu/drm/armada/armada_gem.c
++++ b/drivers/gpu/drm/armada/armada_gem.c
+@@ -25,7 +25,7 @@ static vm_fault_t armada_gem_vm_fault(struct vm_fault *vmf)
+ 	return vmf_insert_pfn(vmf->vma, vmf->address, pfn);
  }
  
--void amdgpu_gem_object_close(struct drm_gem_object *obj,
--			     struct drm_file *file_priv)
-+static void amdgpu_gem_object_close(struct drm_gem_object *obj,
-+				    struct drm_file *file_priv)
- {
- 	struct amdgpu_bo *bo = gem_to_amdgpu_bo(obj);
- 	struct amdgpu_device *adev = amdgpu_ttm_adev(bo->tbo.bdev);
-@@ -211,6 +215,15 @@ void amdgpu_gem_object_close(struct drm_gem_object *obj,
- 	ttm_eu_backoff_reservation(&ticket, &list);
+-const struct vm_operations_struct armada_gem_vm_ops = {
++static const struct vm_operations_struct armada_gem_vm_ops = {
+ 	.fault	= armada_gem_vm_fault,
+ 	.open	= drm_gem_vm_open,
+ 	.close	= drm_gem_vm_close,
+@@ -184,6 +184,12 @@ armada_gem_map_object(struct drm_device *dev, struct armada_gem_object *dobj)
+ 	return dobj->addr;
  }
  
-+static const struct drm_gem_object_funcs amdgpu_gem_object_funcs = {
-+	.free = amdgpu_gem_object_free,
-+	.open = amdgpu_gem_object_open,
-+	.close = amdgpu_gem_object_close,
-+	.export = amdgpu_gem_prime_export,
-+	.vmap = amdgpu_gem_prime_vmap,
-+	.vunmap = amdgpu_gem_prime_vunmap,
++static const struct drm_gem_object_funcs armada_gem_object_funcs = {
++	.free = armada_gem_free_object,
++	.export = armada_gem_prime_export,
++	.vm_ops = &armada_gem_vm_ops,
 +};
 +
- /*
-  * GEM ioctls.
-  */
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.h b/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.h
-index e0f025dd1b14..637bf51dbf06 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.h
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.h
-@@ -33,11 +33,6 @@
- #define AMDGPU_GEM_DOMAIN_MAX		0x3
- #define gem_to_amdgpu_bo(gobj) container_of((gobj), struct amdgpu_bo, tbo.base)
+ struct armada_gem_object *
+ armada_gem_alloc_private_object(struct drm_device *dev, size_t size)
+ {
+@@ -195,6 +201,8 @@ armada_gem_alloc_private_object(struct drm_device *dev, size_t size)
+ 	if (!obj)
+ 		return NULL;
  
--void amdgpu_gem_object_free(struct drm_gem_object *obj);
--int amdgpu_gem_object_open(struct drm_gem_object *obj,
--				struct drm_file *file_priv);
--void amdgpu_gem_object_close(struct drm_gem_object *obj,
--				struct drm_file *file_priv);
- unsigned long amdgpu_gem_timeout(uint64_t timeout_ns);
- 
- /*
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
-index ac043baac05d..c4e82a8fa53f 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
-@@ -561,6 +561,7 @@ static int amdgpu_bo_do_create(struct amdgpu_device *adev,
- 	bo = kzalloc(sizeof(struct amdgpu_bo), GFP_KERNEL);
- 	if (bo == NULL)
- 		return -ENOMEM;
++	obj->obj.funcs = &armada_gem_object_funcs;
 +
- 	drm_gem_private_object_init(adev_to_drm(adev), &bo->tbo.base, size);
- 	INIT_LIST_HEAD(&bo->shadow_list);
- 	bo->vm_bo = NULL;
+ 	drm_gem_private_object_init(dev, &obj->obj, size);
+ 
+ 	DRM_DEBUG_DRIVER("alloc private obj %p size %zu\n", obj, size);
+@@ -214,6 +222,8 @@ static struct armada_gem_object *armada_gem_alloc_object(struct drm_device *dev,
+ 	if (!obj)
+ 		return NULL;
+ 
++	obj->obj.funcs = &armada_gem_object_funcs;
++
+ 	if (drm_gem_object_init(dev, &obj->obj, size)) {
+ 		kfree(obj);
+ 		return NULL;
+diff --git a/drivers/gpu/drm/armada/armada_gem.h b/drivers/gpu/drm/armada/armada_gem.h
+index de04cc2c8f0e..ffcc7e8dd351 100644
+--- a/drivers/gpu/drm/armada/armada_gem.h
++++ b/drivers/gpu/drm/armada/armada_gem.h
+@@ -21,8 +21,6 @@ struct armada_gem_object {
+ 	void			*update_data;
+ };
+ 
+-extern const struct vm_operations_struct armada_gem_vm_ops;
+-
+ #define drm_to_armada_gem(o) container_of(o, struct armada_gem_object, obj)
+ 
+ void armada_gem_free_object(struct drm_gem_object *);
 -- 
 2.28.0
 
