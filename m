@@ -2,73 +2,75 @@ Return-Path: <SRS0=MDtk=CY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 285CCC433E2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 06:14:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 20D20C2D0E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 06:14:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C7F3020829
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 06:14:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C2F87206B2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 06:14:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZbwX3Nq7";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="mRWJ9u/W"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C7F3020829
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rkhE1cNO";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="sE2rMTYI"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C2F87206B2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lbAFpG0tyeRyiyscQ6iRVWXIJ2wClYQzDxqq/nl0mV4=; b=ZbwX3Nq77Kv23mr/5q567FSaCc
-	7iPmxlyBN18f95yIvGYpscZPKmdq0AvIryUrV2Tk+0mY7XlPbPqoE6W4hAb32/WUc4GdinRpDtGVK
-	zshm94/WV00FImtiSwgJv6hc32SPsIMyLWs0c/ESreOIrPHnCGjHGXzApfF8fPRaarNc4rWYZeRkF
-	UGJ/DmP5cpP81ZoCOL3RGbRZhuItLTLtQ3xG3+yu9xzzWY49qfv75FgKXhgk8pe/dGuRBAvKi9Smt
-	LOjZf/kjfjhDGMlty0umAZDzZf/oHlnjy89F8ucE1fO8kknXE5lb+VC02rJYEhvWdI+Mz8APXP1Jg
-	SFkaKcRA==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=x5J4362kDXwKlj0ZyAYyxbWrGmrrCTeZZnXU9aEpvj8=; b=rkhE1cNOdyhnsB7R0j5h8VreQ
+	XQAVnPwn2ILxCQa6AO+6PAxABth0pYAJpa0T8T60ARHPLxa+H+BAG34BwJLPblRLdPWIOk1sRfYn5
+	Sz+cmT55mSyGJn1Wk5AcVaopHsDPZ8K8XOXwNUSZVppVDURvVnCnitv3Cy05H5wwRF8lojTyUI0Cb
+	x0CpTWRJxDA60wufvJdSq7ZzYs3kHprTqTF0QKkY+porvayPH3heEEdqDk14BrgMehq0YleMuqPkW
+	Zhr3d+sDfbY4P7d6vPYgh/TDLt18KGGNm0vhKTr1eODGQztS3FjzChC8txo++PsE7AIpy49RqOxwb
+	iRgVm0lvw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kI4Dy-0006aa-67; Tue, 15 Sep 2020 06:13:54 +0000
+	id 1kI4Dz-0006av-1Z; Tue, 15 Sep 2020 06:13:55 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kI4DX-0006RR-7q; Tue, 15 Sep 2020 06:13:29 +0000
-X-UUID: 8f301d9b46dd4730b24fef18ae8f002c-20200914
+ id 1kI4DX-0006RZ-7q; Tue, 15 Sep 2020 06:13:29 +0000
+X-UUID: 0362965eb94b4bb191fcaaf3881888b7-20200914
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=hDwwvEKbQNKWFsUY6/pT152QsMoq9kreFwlKpG3Sd6o=; 
- b=mRWJ9u/W1Nr9nefrC8hJivdEUw4G/MKEzNyfkvsKglbUNCdERT0vH0dBi4qOlHMJi169qRvIkbwzm9HhPFk2Z/d7V4dNNHZQ/yRGadzKZbyWKGU8vW34CZK4OIEiptoTxhMPEskakJjoPM9451VP0RA9O6T4YNX0aSEsBYS8zAE=;
-X-UUID: 8f301d9b46dd4730b24fef18ae8f002c-20200914
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=7qnmH6zd2m7IXntKt3yluwEtjEbUCrvblIFqr4JiihY=; 
+ b=sE2rMTYIF/ES3v13hQ4LVINuQIaOX8TmX/3/N4DJMb1fgsbikAM+4U7uHNNhAnnYAa2yLp4G4moXV6eJcG37BUCLkLEqlLROSNKypIL31U+UH+2MLsgKqfTm/X9DHnzlJTGRHq1xaSqpIaNt6MPcDS0v7OpD8OxdcPpKvTp+gcA=;
+X-UUID: 0362965eb94b4bb191fcaaf3881888b7-20200914
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <wenbin.mei@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 110277409; Mon, 14 Sep 2020 22:13:22 -0800
+ with ESMTP id 1495412612; Mon, 14 Sep 2020 22:13:22 -0800
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Mon, 14 Sep 2020 23:13:21 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Sep 2020 14:13:19 +0800
+ 15.0.1497.2; Tue, 15 Sep 2020 14:13:20 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 15 Sep 2020 14:13:18 +0800
+ Transport; Tue, 15 Sep 2020 14:13:20 +0800
 From: Wenbin Mei <wenbin.mei@mediatek.com>
 To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>
-Subject: [RESEND 0/3] Add mmc support for MT8192 SoC
-Date: Tue, 15 Sep 2020 14:11:07 +0800
-Message-ID: <20200915061110.25833-1-wenbin.mei@mediatek.com>
+Subject: [RESEND 2/3] arm64: dts: mt8192: add mmc device node
+Date: Tue, 15 Sep 2020 14:11:09 +0800
+Message-ID: <20200915061110.25833-3-wenbin.mei@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20200915061110.25833-1-wenbin.mei@mediatek.com>
+References: <20200915061110.25833-1-wenbin.mei@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200915_021327_947845_EFDBB12B 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20200915_021327_948386_42AA10D1 
+X-CRM114-Status: GOOD (  11.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,9 +82,10 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Chaotian Jing <chaotian.jing@mediatek.com>,
+Cc: devicetree@vger.kernel.org, Wenbin Mei <wenbin.mei@mediatek.com>,
+ srv_heupstream@mediatek.com, linux-mmc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
@@ -90,47 +93,165 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Wenbin Mei (3):
-  mmc: dt-bindings: add support for MT8192 SoC
-  arm64: dts: mt8192: add mmc device node
-  mmc: mediatek: Add subsys clock control for MT8192 msdc
----
-This patch depends on
-[v4,1/3] arm64: dts: Add Mediatek SoC MT8192 and evaluation board dts and Makefile
-[v3,1/9] dt-bindings: ARM: Mediatek: Document bindings for MT8192 BSP
-[v3,6/9] clk: mediatek: Add dt-bindings for MT8192 clocks
-[v3,9/9] clk: mediatek: Add MT8192 clock support
-[v3,1/3] dt-bindings: pinctrl: mt8192: add pinctrl file
-[v3,2/3] dt-bindings: pinctrl: mt8192: add binding document
-[v3,3/3] pinctrl: add pinctrl driver on mt8192
-[v2,1/4] soc: mediatek: pwrap: use BIT() macro
-[v2,2/4] soc: mediatek: pwrap: add arbiter capability
-[v2,3/4] dt-bindings: mediatek: add compatible for MT6873/8192 pwrap
-[v2,4/4] soc: mediatek: pwrap: add pwrap driver for MT6873/8192 SoCs
-[2/8] dt-bindings: mfd: Add compatible for the MediaTek MT6359 PMIC
-[3/8] dt-bindings: regulator: Add document for MT6359 regulator
-[4/8] mfd: Add support for the MediaTek MT6359 PMIC
-[5/8] regulator: mt6359: Add support for MT6359 regulator
-[7/8] regulator: mt6359: Add support for MT6359P regulator
-[8/8] arm64: dts: mt6359: add PMIC MT6359 related nodes
+This commit adds mmc device node for mt8192
 
-Please also accept this patch together with [1][2][3][4][5]
-to avoid build and dt binding check error.
-[1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=332621
-[2] https://patchwork.kernel.org/project/linux-mediatek/list/?series=342593
-[3] https://patchwork.kernel.org/project/linux-mediatek/list/?series=330017
-[4] https://patchwork.kernel.org/project/linux-mediatek/list/?series=322937
-[5] https://patchwork.kernel.org/project/linux-mediatek/list/?series=323171
+Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
 ---
- .../devicetree/bindings/mmc/mtk-sd.txt        |  6 +-
- arch/arm64/boot/dts/mediatek/mt8192-evb.dts   | 89 +++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8192.dtsi      | 34 +++++++
- drivers/mmc/host/mtk-sd.c                     | 77 ++++++++++++----
- 4 files changed, 187 insertions(+), 19 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8192-evb.dts | 89 +++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi    | 34 ++++++++
+ 2 files changed, 123 insertions(+)
 
---
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192-evb.dts b/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
+index 0205837fa698..a4279fa87c2b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
+@@ -5,6 +5,7 @@
+  */
+ /dts-v1/;
+ #include "mt8192.dtsi"
++#include "mt6359.dtsi"
+ 
+ / {
+ 	model = "MediaTek MT8192 evaluation board";
+@@ -27,3 +28,91 @@
+ &uart0 {
+ 	status = "okay";
+ };
++
++&mmc0 {
++	status = "okay";
++	pinctrl-names = "default", "state_uhs";
++	pinctrl-0 = <&mmc0_pins_default>;
++	pinctrl-1 = <&mmc0_pins_uhs>;
++	bus-width = <8>;
++	max-frequency = <200000000>;
++	cap-mmc-highspeed;
++	mmc-hs200-1_8v;
++	mmc-hs400-1_8v;
++	supports-cqe;
++	cap-mmc-hw-reset;
++	no-sdio;
++	no-sd;
++	hs400-ds-delay = <0x12814>;
++	vmmc-supply = <&mt6359_vemc_1_ldo_reg>;
++	vqmmc-supply = <&mt6359_vufs_ldo_reg>;
++	assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
++	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL>;
++	non-removable;
++};
++
++&pio {
++	mmc0_pins_default: mmc0default {
++		pins_cmd_dat {
++			pinmux = <PINMUX_GPIO184__FUNC_MSDC0_DAT0>,
++				 <PINMUX_GPIO188__FUNC_MSDC0_DAT1>,
++				 <PINMUX_GPIO185__FUNC_MSDC0_DAT2>,
++				 <PINMUX_GPIO193__FUNC_MSDC0_DAT3>,
++				 <PINMUX_GPIO186__FUNC_MSDC0_DAT4>,
++				 <PINMUX_GPIO189__FUNC_MSDC0_DAT5>,
++				 <PINMUX_GPIO187__FUNC_MSDC0_DAT6>,
++				 <PINMUX_GPIO190__FUNC_MSDC0_DAT7>,
++				 <PINMUX_GPIO183__FUNC_MSDC0_CMD>;
++			input-enable;
++			drive-strenth = <3>;
++			mediatek,pull-up-adv = <1>;
++		};
++
++		pins_clk {
++			pinmux = <PINMUX_GPIO192__FUNC_MSDC0_CLK>;
++			drive-strenth = <3>;
++			mediatek,pull-down-adv = <2>;
++		};
++
++		pins_rst {
++			pinmux = <PINMUX_GPIO194__FUNC_MSDC0_RSTB>;
++			drive-strenth = <3>;
++			mediatek,pull-up-adv = <1>;
++		};
++	};
++
++	mmc0_pins_uhs: mmc0@0{
++		pins_cmd_dat {
++			pinmux = <PINMUX_GPIO184__FUNC_MSDC0_DAT0>,
++				 <PINMUX_GPIO188__FUNC_MSDC0_DAT1>,
++				 <PINMUX_GPIO185__FUNC_MSDC0_DAT2>,
++				 <PINMUX_GPIO193__FUNC_MSDC0_DAT3>,
++				 <PINMUX_GPIO186__FUNC_MSDC0_DAT4>,
++				 <PINMUX_GPIO189__FUNC_MSDC0_DAT5>,
++				 <PINMUX_GPIO187__FUNC_MSDC0_DAT6>,
++				 <PINMUX_GPIO190__FUNC_MSDC0_DAT7>,
++				 <PINMUX_GPIO183__FUNC_MSDC0_CMD>;
++			input-enable;
++			drive-strenth = <4>;
++			mediatek,pull-up-adv = <1>;
++		};
++
++		pins_clk {
++			pinmux = <PINMUX_GPIO192__FUNC_MSDC0_CLK>;
++			drive-strenth = <4>;
++			mediatek,pull-down-adv = <2>;
++		};
++
++		pins_ds {
++			pinmux = <PINMUX_GPIO191__FUNC_MSDC0_DSL>;
++			drive-strenth = <4>;
++			mediatek,pull-down-adv = <2>;
++		};
++
++		pins_rst {
++			pinmux = <PINMUX_GPIO194__FUNC_MSDC0_RSTB>;
++			drive-strenth = <3>;
++			mediatek,pull-up-adv = <1>;
++		};
++	};
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index faea0d97c2a9..de3d10c0eeef 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -760,6 +760,40 @@
+ 			#clock-cells = <1>;
+ 		};
+ 
++		mmc0: mmc@11f60000 {
++			compatible = "mediatek,mt8192-mmc", "mediatek,mt8183-mmc";
++			reg = <0 0x11f60000 0 0x1000>,
++			      <0 0x11f50000 0 0x1000>;
++			interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>,
++				 <&msdc_top CLK_MSDC_TOP_H_MST_0P>,
++				 <&msdc_top CLK_MSDC_TOP_SRC_0P>,
++				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
++				 <&msdc_top CLK_MSDC_TOP_P_MSDC0>,
++				 <&msdc_top CLK_MSDC_TOP_AXI>,
++				 <&msdc_top CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
++			clock-names = "source", "hclk", "source_cg", "sys_cg",
++				      "pclk_cg", "axi_cg", "ahb_cg";
++			status = "disabled";
++		};
++
++		mmc1: mmc@11f70000 {
++			compatible = "mediatek,mt8192-mmc", "mediatek,mt8183-mmc";
++			reg = <0 0x11f70000 0 0x1000>,
++			      <0 0x11c70000 0 0x1000>;
++			interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&topckgen CLK_TOP_MSDC30_1_SEL>,
++				 <&msdc_top CLK_MSDC_TOP_H_MST_1P>,
++				 <&msdc_top CLK_MSDC_TOP_SRC_1P>,
++				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
++				 <&msdc_top CLK_MSDC_TOP_P_MSDC1>,
++				 <&msdc_top CLK_MSDC_TOP_AXI>,
++				 <&msdc_top CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
++			clock-names = "source", "hclk", "source_cg", "sys_cg",
++				      "pclk_cg", "axi_cg", "ahb_cg";
++			status = "disabled";
++		};
++
+ 		mfgcfg: syscon@13fbf000 {
+ 			compatible = "mediatek,mt8192-mfgcfg", "syscon";
+ 			reg = <0 0x13fbf000 0 0x1000>;
+-- 
 2.18.0
-
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
