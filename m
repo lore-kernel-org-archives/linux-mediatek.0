@@ -5,18 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 12D91C43461
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 11FAAC433E2
 	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:02:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 99E6820663
+	by mail.kernel.org (Postfix) with ESMTPS id 9A589206F4
 	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 15:02:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tPq1K7hA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 99E6820663
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LPjEI4ja"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9A589206F4
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,22 +25,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JxcSPY4X+w4XKrlop755YS9F2oj+XSnadNvW2dDcTMA=; b=tPq1K7hA+hJ8l4ntizOI4oyj6
-	L0N5XoJmSLBHFE4ypPiyMZ2jxD71hdpDW5OdLi0/s7ejnQq7HuAy5yxRm5W9M8q1QkjKWMaUT9jsW
-	Kd4ZmHmbbF6KtrArgornHhoVV0xM/PYjnf0Y3xB7XmMnPu/2PE1w6YQ6caVoLywBmUuXInn96E+58
-	mi7x2cmp25ndWuS0JUcZB2SegJw0glRWe5jGbn2LIzvRob6RY8QtEKJ2dZwFMYWtxup+GKvrOaUlK
-	S6Yu4StQ0v72HFrlrAJvOTSaI95IGY4PuY7ttDri7MLwSwtE/sJpfXMHek3molJxlyXSxFtYE9X0I
-	b+Q2zBhfw==;
+	 bh=rokgj1rBgKZ6imOFCvmJewNGT89XJ7oeeFBp8w7KptU=; b=LPjEI4jaYmun/vkrlrDYkI5BE
+	5s3OhpDKw1a6lFyuvZhpAD6frS8+CmgghkcC9qMO03vdZ99Qw0CxqMGRSRscR7DrT2YjcP5qBRWtR
+	iI6mNd0GUXK9i25XfZkimmJE5IQ6l+6D1ghMrbvolzMxD92KQhLg9Jw5iOWmCpXMXtp8D+1LUd5QV
+	5OnJIt1axSBQVhJVOXX8+uNcc3nrss2/D6GdsDjY+SufjkgNCHnSGmii3yR4ikIMDeN0uMizolbrM
+	Ab5+xgOEnyjfess2rcs5bUN5kshxfTOLRQ0uTajQN15EIViUZPsOGdeKBFabC3gMopf+gBOXft522
+	KNAHNmXOw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kICSn-0004cQ-TF; Tue, 15 Sep 2020 15:01:46 +0000
+	id 1kICSq-0004eF-QA; Tue, 15 Sep 2020 15:01:48 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kICRK-0003dr-AI; Tue, 15 Sep 2020 15:00:16 +0000
+ id 1kICRL-0003eE-2E; Tue, 15 Sep 2020 15:00:17 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 4F700B2A3;
- Tue, 15 Sep 2020 15:00:28 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 25941B158;
+ Tue, 15 Sep 2020 15:00:29 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  daniel@ffwll.ch, linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
@@ -63,16 +63,16 @@ To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  matthew.auld@intel.com, tvrtko.ursulin@linux.intel.com,
  andi.shyti@intel.com, sam@ravnborg.org, miaoqinglang@huawei.com,
  emil.velikov@collabora.com
-Subject: [PATCH v2 13/21] drm/rockchip: Convert to drm_gem_object_funcs
-Date: Tue, 15 Sep 2020 16:59:50 +0200
-Message-Id: <20200915145958.19993-14-tzimmermann@suse.de>
+Subject: [PATCH v2 14/21] drm/tegra: Introduce GEM object functions
+Date: Tue, 15 Sep 2020 16:59:51 +0200
+Message-Id: <20200915145958.19993-15-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200915145958.19993-1-tzimmermann@suse.de>
 References: <20200915145958.19993-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200915_110014_669425_03F19396 
-X-CRM114-Status: GOOD (  14.64  )
+X-CRM114-CacheID: sfid-20200915_110015_361151_63E8613C 
+X-CRM114-Status: GOOD (  14.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,63 +98,57 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 GEM object functions deprecate several similar callback interfaces in
 struct drm_driver. This patch replaces the per-driver callbacks with
-per-instance callbacks in rockchip. The only exception is gem_prime_mmap,
-which is non-trivial to convert.
+per-instance callbacks in tegra.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c |  5 -----
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 10 ++++++++++
- 2 files changed, 10 insertions(+), 5 deletions(-)
+ drivers/gpu/drm/tegra/drm.c | 4 ----
+ drivers/gpu/drm/tegra/gem.c | 8 ++++++++
+ 2 files changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index 0f3eb392fe39..b7654f5e4225 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -212,15 +212,10 @@ static const struct file_operations rockchip_drm_driver_fops = {
- static struct drm_driver rockchip_drm_driver = {
- 	.driver_features	= DRIVER_MODESET | DRIVER_GEM | DRIVER_ATOMIC,
- 	.lastclose		= drm_fb_helper_lastclose,
--	.gem_vm_ops		= &drm_gem_cma_vm_ops,
--	.gem_free_object_unlocked = rockchip_gem_free_object,
- 	.dumb_create		= rockchip_gem_dumb_create,
- 	.prime_handle_to_fd	= drm_gem_prime_handle_to_fd,
- 	.prime_fd_to_handle	= drm_gem_prime_fd_to_handle,
--	.gem_prime_get_sg_table	= rockchip_gem_prime_get_sg_table,
- 	.gem_prime_import_sg_table	= rockchip_gem_prime_import_sg_table,
--	.gem_prime_vmap		= rockchip_gem_prime_vmap,
--	.gem_prime_vunmap	= rockchip_gem_prime_vunmap,
- 	.gem_prime_mmap		= rockchip_gem_mmap_buf,
- 	.fops			= &rockchip_drm_driver_fops,
- 	.name	= DRIVER_NAME,
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-index 0055d86576f7..bddc7d99efe3 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-@@ -296,6 +296,14 @@ static void rockchip_gem_release_object(struct rockchip_gem_object *rk_obj)
- 	kfree(rk_obj);
+diff --git a/drivers/gpu/drm/tegra/drm.c b/drivers/gpu/drm/tegra/drm.c
+index ba9d1c3e7cac..f0f581cd345e 100644
+--- a/drivers/gpu/drm/tegra/drm.c
++++ b/drivers/gpu/drm/tegra/drm.c
+@@ -858,12 +858,8 @@ static struct drm_driver tegra_drm_driver = {
+ 	.debugfs_init = tegra_debugfs_init,
+ #endif
+ 
+-	.gem_free_object_unlocked = tegra_bo_free_object,
+-	.gem_vm_ops = &tegra_bo_vm_ops,
+-
+ 	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
+ 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
+-	.gem_prime_export = tegra_gem_prime_export,
+ 	.gem_prime_import = tegra_gem_prime_import,
+ 
+ 	.dumb_create = tegra_bo_dumb_create,
+diff --git a/drivers/gpu/drm/tegra/gem.c b/drivers/gpu/drm/tegra/gem.c
+index 47e2935b8c68..d481dea4738d 100644
+--- a/drivers/gpu/drm/tegra/gem.c
++++ b/drivers/gpu/drm/tegra/gem.c
+@@ -231,6 +231,12 @@ static int tegra_bo_iommu_unmap(struct tegra_drm *tegra, struct tegra_bo *bo)
+ 	return 0;
  }
  
-+static const struct drm_gem_object_funcs rockchip_gem_object_funcs = {
-+	.free = rockchip_gem_free_object,
-+	.get_sg_table = rockchip_gem_prime_get_sg_table,
-+	.vmap = rockchip_gem_prime_vmap,
-+	.vunmap	= rockchip_gem_prime_vunmap,
-+	.vm_ops = &drm_gem_cma_vm_ops,
++static const struct drm_gem_object_funcs tegra_gem_object_funcs = {
++	.free = tegra_bo_free_object,
++	.export = tegra_gem_prime_export,
++	.vm_ops = &tegra_bo_vm_ops,
 +};
 +
- static struct rockchip_gem_object *
- 	rockchip_gem_alloc_object(struct drm_device *drm, unsigned int size)
+ static struct tegra_bo *tegra_bo_alloc_object(struct drm_device *drm,
+ 					      size_t size)
  {
-@@ -310,6 +318,8 @@ static struct rockchip_gem_object *
+@@ -241,6 +247,8 @@ static struct tegra_bo *tegra_bo_alloc_object(struct drm_device *drm,
+ 	if (!bo)
+ 		return ERR_PTR(-ENOMEM);
  
- 	obj = &rk_obj->base;
- 
-+	obj->funcs = &rockchip_gem_object_funcs;
++	bo->gem.funcs = &tegra_gem_object_funcs;
 +
- 	drm_gem_object_init(drm, obj, size);
+ 	host1x_bo_init(&bo->base, &tegra_bo_ops);
+ 	size = round_up(size, PAGE_SIZE);
  
- 	return rk_obj;
 -- 
 2.28.0
 
