@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ADA2AC43461
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 16:01:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3626EC433E2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 16:01:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4AB13221E3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 16:01:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CC1E5221E3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 16:01:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1JxIJKAO";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="UkMrjjtE"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4AB13221E3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dyJVxjuU";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="cOltaOc3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC1E5221E3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nCdCZkN7enZacqLedmkOeLWbp+wOAifeUSym01c1lys=; b=1JxIJKAOy8PBmmYS41QAWw8iHJ
-	FnNwm6XU2j3wUIh43YwT+FtPgvTSSiDdIVZKj2LqAybnzwVKeXvaJMBBP23Zz3tXgERdfv01vkBvd
-	DrnyilMq/lVDYTsNPZvRa9MoKk6HcY58TsHoK1L7Dd1epCC8Ym1YiVoLMt73tL6ktGFMC0v+FJzjt
-	SpQhthm2xVivUgZLPUsLUks+3tamDA4jUmL9qzeUSQaugc5QWeHWVI9tO+lmChLk9QYPcqsl4ICKi
-	LyKCnJKSMq/GGYn98T+zRrQwJ11krZkKpSwMSGKh6mb2YCRuN4iWBa+FDZl3evQcOlOzXqbH0uZfn
-	tzf5NDgQ==;
+	bh=AdDkbotZX5HlYa0OG3F1t/qDKDo6V1vRff0o6IE7QLA=; b=dyJVxjuUn5GH2ijgEluB7rPQEU
+	tycoFsycRP/hAbMUTMStVJqqrvW+iR5B2XDYuzYjuVICQIxuZc2xC+iaCT7ONhrpEoJWNcS8jTfMT
+	KWr6xNNJhFqOYbPeDXpwPVA6/VlmYBq4m5/RRNo2YFVllUpYqf2Uxp1SRgxp0//r0tV6AuDNjrLgJ
+	aj049EeJ/JOnD9Aq3ndccQMuiHZo75OFhD5knU0TVZXXzeg8uYSP5P3+cW0NRygcwZFRAuQ9Red83
+	QDwrjinyx62S3OrPZeo2eCn6xuL9qhySiVYtjxf8L6ITs9YWgTFEfbDTAfOZKateui8JXWIcx0xlX
+	ei8d+v8g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIZrx-0005J9-IG; Wed, 16 Sep 2020 16:01:17 +0000
+	id 1kIZsB-0005U6-Hm; Wed, 16 Sep 2020 16:01:31 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kIZpn-0004Dd-1S; Wed, 16 Sep 2020 15:59:05 +0000
+ id 1kIZpu-0004H5-RZ; Wed, 16 Sep 2020 15:59:12 +0000
 Received: from kozik-lap.mshome.net (unknown [194.230.155.191])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id ECA15224BD;
- Wed, 16 Sep 2020 15:58:53 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 9921622482;
+ Wed, 16 Sep 2020 15:59:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600271941;
- bh=0+FFO17wAr4hb0tN/J0gdkpjUduKv6+0Pfegkab7QXQ=;
+ s=default; t=1600271949;
+ bh=8OnggKDEvaqUI8NVuFZUCiaEESVDd9WWXRjDl36eKaM=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=UkMrjjtEx8nJ2MjbDqluecoI+lmlFdY6lBVeB1DtyEZ4P5/9ibyTca30rHWlt84X2
- 7ISNGu6iFk3BvKg+ZvWwWHTE+Pw/Y20sjvuPMAEJAonWbJieF84+M3r0FhIzg++Fvu
- 4EdKzMtFbIDODiPmNDwOcbxVDAdYRSP9M2EXJdTQ=
+ b=cOltaOc37anJGjPGtCeapUvOGK58ezeNsETk2WlnLPh/H9imSvV9ZYiUngP40Qz6H
+ LenA5VXXgGBymUBd/S9bxf7yO+jRFyG2gSqTfsnBbFRaAV5+LG+D0Ai1+K19bbdfss
+ CQ2vjjndfd/+x0186rpAjHiELOLs8c0Ww7MAhfPA=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Linus Walleij <linus.walleij@linaro.org>,
  Bartosz Golaszewski <bgolaszewski@baylibre.com>,
@@ -72,16 +72,15 @@ To: Linus Walleij <linus.walleij@linaro.org>,
  linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
  linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-Subject: [PATCH v3 11/15] ARM: dts: aspeed: fix PCA95xx GPIO expander
- properties on Portwell
-Date: Wed, 16 Sep 2020 17:57:11 +0200
-Message-Id: <20200916155715.21009-12-krzk@kernel.org>
+Subject: [PATCH v3 12/15] ARM: dts: aspeed: align GPIO hog names with dtschema
+Date: Wed, 16 Sep 2020 17:57:12 +0200
+Message-Id: <20200916155715.21009-13-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200916155715.21009-1-krzk@kernel.org>
 References: <20200916155715.21009-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200916_115903_577943_C008BBE3 
-X-CRM114-Status: GOOD (  14.94  )
+X-CRM114-CacheID: sfid-20200916_115911_133367_4BECAF5B 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,28 +99,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The PCA95xx GPIO expander requires GPIO controller properties to operate
-properly.
+dtschema for pca95xx expects GPIO hogs to end with 'hog' prefix.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-Acked-by: Joel Stanley <joel@jms.id.au>
 ---
- arch/arm/boot/dts/aspeed-bmc-portwell-neptune.dts | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts |  2 +-
+ arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts  | 16 ++++++++--------
+ 2 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/arch/arm/boot/dts/aspeed-bmc-portwell-neptune.dts b/arch/arm/boot/dts/aspeed-bmc-portwell-neptune.dts
-index 4a1ca8f5b6a7..03c161493ffc 100644
---- a/arch/arm/boot/dts/aspeed-bmc-portwell-neptune.dts
-+++ b/arch/arm/boot/dts/aspeed-bmc-portwell-neptune.dts
-@@ -121,6 +121,8 @@
- 	pca9555@27 {
- 		compatible = "nxp,pca9555";
- 		reg = <0x27>;
-+		gpio-controller;
-+		#gpio-cells = <2>;
- 	};
- };
+diff --git a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts
+index 21ae880c7530..d5ac379c909e 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts
+@@ -564,7 +564,7 @@
+ 		gpio-controller;
+ 		#gpio-cells = <2>;
  
+-		smbus0 {
++		smbus0-hog {
+ 			gpio-hog;
+ 			gpios = <4 GPIO_ACTIVE_HIGH>;
+ 			output-high;
+diff --git a/arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts b/arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts
+index cb85168f6761..577c211c469e 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts
+@@ -827,7 +827,7 @@
+ 				gpio-controller;
+ 				#gpio-cells = <2>;
+ 
+-				smbus0 {
++				smbus0-hog {
+ 					gpio-hog;
+ 					gpios = <4 GPIO_ACTIVE_HIGH>;
+ 					output-high;
+@@ -852,7 +852,7 @@
+ 				gpio-controller;
+ 				#gpio-cells = <2>;
+ 
+-				smbus1 {
++				smbus1-hog {
+ 					gpio-hog;
+ 					gpios = <4 GPIO_ACTIVE_HIGH>;
+ 					output-high;
+@@ -900,7 +900,7 @@
+ 				gpio-controller;
+ 				#gpio-cells = <2>;
+ 
+-				smbus2 {
++				smbus2-hog {
+ 					gpio-hog;
+ 					gpios = <4 GPIO_ACTIVE_HIGH>;
+ 					output-high;
+@@ -925,7 +925,7 @@
+ 				gpio-controller;
+ 				#gpio-cells = <2>;
+ 
+-				smbus3 {
++				smbus3-hog {
+ 					gpio-hog;
+ 					gpios = <4 GPIO_ACTIVE_HIGH>;
+ 					output-high;
+@@ -992,7 +992,7 @@
+ 				gpio-controller;
+ 				#gpio-cells = <2>;
+ 
+-				smbus4 {
++				smbus4-hog {
+ 					gpio-hog;
+ 					gpios = <4 GPIO_ACTIVE_HIGH>;
+ 					output-high;
+@@ -1017,7 +1017,7 @@
+ 				gpio-controller;
+ 				#gpio-cells = <2>;
+ 
+-				smbus5 {
++				smbus5-hog {
+ 					gpio-hog;
+ 					gpios = <4 GPIO_ACTIVE_HIGH>;
+ 					output-high;
+@@ -1065,7 +1065,7 @@
+ 				gpio-controller;
+ 				#gpio-cells = <2>;
+ 
+-				smbus6 {
++				smbus6-hog {
+ 					gpio-hog;
+ 					gpios = <4 GPIO_ACTIVE_HIGH>;
+ 					output-high;
+@@ -1090,7 +1090,7 @@
+ 				gpio-controller;
+ 				#gpio-cells = <2>;
+ 
+-				smbus7 {
++				smbus7-hog {
+ 					gpio-hog;
+ 					gpios = <4 GPIO_ACTIVE_HIGH>;
+ 					output-high;
 -- 
 2.17.1
 
