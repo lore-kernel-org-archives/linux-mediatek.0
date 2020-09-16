@@ -1,112 +1,75 @@
-Return-Path: <SRS0=MDtk=CY=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=dHEP=CZ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D4C47C43461
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 20:21:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9727DC2D0E1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 03:11:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 515D020756
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2020 20:21:59 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3F5EE20770
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 03:11:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2SrfLlUw";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="zuAracgP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 515D020756
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="f1jq8/lP";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="U5L5/9FV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3F5EE20770
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:References:Message-ID:
-	From:Subject:To:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wbqlmjdhNNDaGRKYsknGpuiLDQ+Np58cHRU6dPe7q8s=; b=2SrfLlUwuWuQtnpalGDhnBN8U
-	7gTthRqIEzrc8PvOcPX5lhoObzaPO/JVMC0VMy7VUUAJnh817tF/Gc3dDy+Noh7fBfrvSCqjZVHnO
-	7k6D84PwZ70Qm+N95mmqK2pLTtgj9Z/F434BIEK1pn7U+zptcTrHYUGS7kcXXOQlC7zacgmYCzeU6
-	eya474V6iOMslMRTuOeaYKdhUY6ttECssl9ShpimxOrloV+nCx0is/f/yC3L3BYeUj5PQXGJaxssV
-	TrwnCiJLWPdxIauQ5yh2MzSEb40p9sylGrhXUKyoXQxv1UEwLy9hagMcgOt2BwyrprJDMLzcdTexf
-	TJ+D+5evw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0g7bJnzoKoaWRtht/gMObyrWDEdqxDF/zU98/LxjVeY=; b=f1jq8/lPsoZY5xAR5Y2Y9OyJ5/
+	HGRVo174+nC8WwCg0CkgVL/dftnwX1Eda9kKXzsVXbTNCyBCZp5jF0gKkuWrT60CzxvfJ+US+Rh7P
+	B3XVpM82GJ4kKWSe7mDjFggkkiGGaK7gK8qn8aTueG6dqxokA9mubIwe+DQ7rBg4MPkS3tncROWX5
+	XIIAipP0N4hZ2HCl9Iu8fUUSOV7g/YinYKFtGeIjgCT8HRj65rvYgdF1VXnHZyKQJfVAA4Wq6FAaY
+	oB3hcuIPiA9yQZg2dybnZKlP8g8dAixCv8VyidcbRXRMpCD1rz0JKxWz6+dGW4WGhBoX6xVhthjTd
+	CEMwObvQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIHSZ-0001OA-M8; Tue, 15 Sep 2020 20:21:51 +0000
-Received: from userp2120.oracle.com ([156.151.31.85])
+	id 1kINqp-0006RF-QZ; Wed, 16 Sep 2020 03:11:19 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kIHSX-0001Nh-9o; Tue, 15 Sep 2020 20:21:50 +0000
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08FKIKWe005289;
- Tue, 15 Sep 2020 20:21:40 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=to : cc : subject :
- from : message-id : references : date : in-reply-to : mime-version :
- content-type; s=corp-2020-01-29;
- bh=TnDy68QXwHqhErgx7hW/B1RJIBUXJT65ykDE+gQ4vdc=;
- b=zuAracgPYWMqCuMLq/5WXTa9CFgSuSPkO/5AFp/Y5RS9O/0q/e+i0+eSN7GE4h8fcac9
- By63AzXNOJvZm/R4sHJKNJPgsAu/FCiBqLqY/7skPCG3m5qf9PqV+KfWnngQVbhbzJGS
- mjRwjgUsLR9z8uTrcxMT2LCY2AUiII7TRgRZJWgvQHMpUV8xck0VFb4v3sg96GJkp8hO
- FniuwtpwMC0Of0S7SWRGuuqFTqRWlWlLzPr+3qXJHaPOJrDdzbP9GJ7dFjcVmSeeo/gX
- 5y/sNHqy4i7P0UDbDtsEPjyVYt75IRqQQHOHVxR2Yb3ZhLsaOmZgm8Rk+QPLTtzkGP9n 1g== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2120.oracle.com with ESMTP id 33j91dh1nq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 15 Sep 2020 20:21:40 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08FKFpfb106804;
- Tue, 15 Sep 2020 20:21:39 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3020.oracle.com with ESMTP id 33hm3171h5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 15 Sep 2020 20:21:39 +0000
-Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 08FKLb47018439;
- Tue, 15 Sep 2020 20:21:37 GMT
-Received: from ca-mkp.ca.oracle.com (/10.159.214.123)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 15 Sep 2020 20:21:36 +0000
-To: Can Guo <cang@codeaurora.org>
-Subject: Re: [PATCH v2 1/2] scsi: ufs: Abort tasks before clear them from
- doorbell
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Organization: Oracle Corporation
-Message-ID: <yq1wo0u6bdw.fsf@ca-mkp.ca.oracle.com>
-References: <1599099873-32579-1-git-send-email-cang@codeaurora.org>
- <1599099873-32579-2-git-send-email-cang@codeaurora.org>
- <1599627906.10803.65.camel@linux.ibm.com>
- <yq14ko62wn5.fsf@ca-mkp.ca.oracle.com>
- <1599706080.10649.30.camel@mtkswgap22>
- <1599718697.3851.3.camel@HansenPartnership.com>
- <1599725880.10649.35.camel@mtkswgap22>
- <1599754148.3575.4.camel@HansenPartnership.com>
- <010101747af387e9-f68ac6fa-1bc6-461d-92ec-dc0ee4486728-000000@us-west-2.amazonses.com>
- <d151d6a2b53cfbd7bf3f9c9313b49c4c404c4c5a.camel@gmail.com>
- <4017d039fa323a63f89f01b5bf4cf714@codeaurora.org>
-Date: Tue, 15 Sep 2020 16:21:32 -0400
-In-Reply-To: <4017d039fa323a63f89f01b5bf4cf714@codeaurora.org> (Can Guo's
- message of "Tue, 15 Sep 2020 11:14:17 +0800")
+ id 1kINqk-0006Pe-P0; Wed, 16 Sep 2020 03:11:15 +0000
+X-UUID: 5c260bac1ecf4dcfaa020bfaeb18b873-20200915
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=XdGgRW/3OeKuYJf8ldjX1lPp2lx16y2TaHXPel27PiI=; 
+ b=U5L5/9FV0DUL5oLnBSSDezrmApetUpN4JZqZ5+M7wgiajBFkFXpi+SjNkIKL8YHRVl+4ld7JijH/yCDwVZriKw/52+XCeVqxc+Fx+nonO0R+Hz3aD7Oi+yqKfQm8VtOmE7SvbdKvBEpzTZxcrtZWtuVnHaRj/LZXfytPfq0eRyU=;
+X-UUID: 5c260bac1ecf4dcfaa020bfaeb18b873-20200915
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 495881314; Tue, 15 Sep 2020 19:11:02 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 15 Sep 2020 20:10:59 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Sep 2020 11:10:52 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 16 Sep 2020 11:10:52 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: Alexey Dobriyan <adobriyan@gmail.com>
+Subject: [RESEND PATCHv1] proc: use untagged_addr() for pagemap_read addresses
+Date: Wed, 16 Sep 2020 11:10:51 +0800
+Message-ID: <20200916031051.18064-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9745
- signatures=668679
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- bulkscore=0 mlxlogscore=999
- malwarescore=0 mlxscore=0 phishscore=0 adultscore=0 suspectscore=1
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2009150158
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9745
- signatures=668679
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- impostorscore=0
- priorityscore=1501 malwarescore=0 suspectscore=1 mlxlogscore=999
- clxscore=1015 adultscore=0 lowpriorityscore=0 spamscore=0 mlxscore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2006250000 definitions=main-2009150158
+X-TM-SNTS-SMTP: CE19B1F2FC9FC8C2D05489159D298EA6D34DC5946529AE6C8C162F3A4E39F4C32000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200915_162149_480224_509A5644 
-X-CRM114-Status: GOOD (  19.88  )
+X-CRM114-CacheID: sfid-20200915_231114_936590_F96B05CB 
+X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,40 +81,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>,
- Bean Huo <huobean@gmail.com>, linux-scsi@vger.kernel.org,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- open list <linux-kernel@vger.kernel.org>, saravanak@google.com,
- nguyenb@codeaurora.org, ziqichen@codeaurora.org,
- James Bottomley <James.Bottomley@hansenpartnership.com>,
- Avri Altman <avri.altman@wdc.com>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, salyzyn@google.com,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, rnayak@codeaurora.org,
- Stanley Chu <stanley.chu@mediatek.com>, kernel-team@android.com,
- Bart Van Assche <bvanassche@acm.org>, hongwus@codeaurora.org,
- asutoshd@codeaurora.org
+Cc: wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
+ Miles Chen <miles.chen@mediatek.com>, linux-mediatek@lists.infradead.org,
+ linux-fsdevel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+When we try to visit the pagemap of a tagged userspace pointer, we find
+that the start_vaddr is not correct because of the tag.
+To fix it, we should untag the usespace pointers in pagemap_read().
 
-Can,
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+---
+ fs/proc/task_mmu.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-> Do you know when can this change be picked up in scsi-queue-5.10?
-> If I push my fixes to ufshcd_abort() on scsi-queue-5.10, they will
-> run into conflicts with this one again, right? How should I move
-> forward now?
-
-You should be able to use 5.10/scsi-queue as baseline now.
-
-For 5.11 I think I'll do a separate branch for UFS.
-
+diff --git a/fs/proc/task_mmu.c b/fs/proc/task_mmu.c
+index 5066b0251ed8..ee0ac09e79fc 100644
+--- a/fs/proc/task_mmu.c
++++ b/fs/proc/task_mmu.c
+@@ -1541,11 +1541,11 @@ static ssize_t pagemap_read(struct file *file, char __user *buf,
+ 
+ 	src = *ppos;
+ 	svpfn = src / PM_ENTRY_BYTES;
+-	start_vaddr = svpfn << PAGE_SHIFT;
++	start_vaddr = untagged_addr(svpfn << PAGE_SHIFT);
+ 	end_vaddr = mm->task_size;
+ 
+ 	/* watch out for wraparound */
+-	if (svpfn > mm->task_size >> PAGE_SHIFT)
++	if (start_vaddr > mm->task_size)
+ 		start_vaddr = end_vaddr;
+ 
+ 	/*
 -- 
-Martin K. Petersen	Oracle Linux Engineering
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
