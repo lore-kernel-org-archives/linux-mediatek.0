@@ -2,91 +2,75 @@ Return-Path: <SRS0=dHEP=CZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B8754C433E2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 06:34:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 25836C43461
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 07:22:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 59F0D206A5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 06:34:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B62F52076C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 07:22:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aX3cB12U";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="GLCirnJ0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 59F0D206A5
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mc9/6TK7";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="s9CwiA9x"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B62F52076C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=fxq2b52Xq5/AGhDukP4xM7UaNAxYW5D61GGHeJcYhjE=; b=aX3cB12UUdiG+xB+wfOHKKUon
-	HX4bS42FVj53AQlhDaDq85a+cJQzrRJap4YNWqUZ4ndc1coYs3XJepP4SzQDdr6j3PqJ77CiksyQ5
-	VYzD2ofij1d6QeE5+OwJCeYgdmYl4tyR+BpxE6C2x2QzLsaeSzMBsmiSnmAHUi12TmU05fXir8+e4
-	g1SYTqL8JJBuZQUJbtfFZnN4LZOA7A5AZE9pPwkfS3ti3GOCHqXEFnBxF4PwXb/NFtw2mCrcib/eI
-	eSSf6nPzxJtwO7y+wGHCny7IpXl/WJ8xUh06pyFglCB2uu0oT0WFu+m5w4EmhqDps5o8JpShUpTh1
-	mS2wP1W/g==;
+	 bh=zzcDqVRoxCEclf5mDkfq/2bOaJQ4gHgv34Khd1orEFI=; b=mc9/6TK7uO2IIynVjE7P4FIfo
+	MbdlONluIQV6kUXqTnDX0xww6+XKTj3KvCm9meVi6YIuDwoBcrkUuTJ4ymNmTOgKWdUR40HUY+c5N
+	uNdJUJrqTrzVbmauxyOnu3/YfVbOVYwjMDxqIKRkJqchAymBY7DP4sbhWms1xoZuW+Mxrlz7hwG3M
+	dbjZeUocgkMkUpytUD3JErIdKosda/FJpVb9Uvz6uxZn2rw7JDmH80CAgILbHaJ3sYKIw3mR8Jw1z
+	0ldQR2JgBGKaTLHcGyFxSMwMogqISeKucu6n53RVGSGezStjYBec17jOfI08EKzBBWaWoo7UHw7ik
+	6pzLK59gg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIR1J-0001Rj-Fz; Wed, 16 Sep 2020 06:34:21 +0000
-Received: from m43-7.mailgun.net ([69.72.43.7])
+	id 1kIRlp-0007Ud-L2; Wed, 16 Sep 2020 07:22:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kIR1C-0001P3-KQ
- for linux-mediatek@lists.infradead.org; Wed, 16 Sep 2020 06:34:18 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1600238057; h=Message-ID: References: In-Reply-To: Subject:
- Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
- MIME-Version: Sender; bh=prCtKq1R1zy4yEQC9e7arLt8v2FySSHVYD5hW893oqo=;
- b=GLCirnJ0kfuUnnyt7/f8LmtLMct8W60uLFKE66nekNUXfLDPj1BSOFZz5wrSUkKfNEEyQsgm
- c17hKmdOQr3E0uciG1/9S9f9DmUVDT/G5ZwdfVIMKi8+XhsZhZx0/mRfE/maNL7+pfIq7ANm
- nCMYxL0ymO6MdLemNDJGiqYrB8I=
-X-Mailgun-Sending-Ip: 69.72.43.7
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n01.prod.us-west-2.postgun.com with SMTP id
- 5f61b1e2d2819a18464f19a1 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Wed, 16 Sep 2020 06:34:10
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 71B26C433C8; Wed, 16 Sep 2020 06:34:10 +0000 (UTC)
-Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
- (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
- (No client certificate requested) (Authenticated sender: cang)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id B3651C433F1;
- Wed, 16 Sep 2020 06:34:08 +0000 (UTC)
+ id 1kIRll-0007TE-GV; Wed, 16 Sep 2020 07:22:24 +0000
+X-UUID: 396f014f978341eaaff4e3d6d12b8e0c-20200915
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=vdwmOxjXadac1jyLHZrPCTrO5x1Edd+RZbD6GV3fJf8=; 
+ b=s9CwiA9xkwEqaNfiWAc9u/TBsexRjof9hpqIPdHZ0O1kXTY1XMtl7tlUEnGzDS6OvKqHahnJTGKcmPGvX3/sglOcOiCvWyloTxrfr3BiOKRfft0wnfv2WwsHYI5Fnj5MeMifKpKvqW5gOH4YYLrmmWv4kNTkmmOwbp/LBKCVwwE=;
+X-UUID: 396f014f978341eaaff4e3d6d12b8e0c-20200915
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <phil.chang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1239780873; Tue, 15 Sep 2020 23:22:12 -0800
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Sep 2020 00:22:10 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Sep 2020 15:22:09 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 16 Sep 2020 15:22:07 +0800
+From: Phil Chang <phil.chang@mediatek.com>
+To: <linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH] [PATCH] ARM64: Setup DMA32 zone size by bootargs
+Date: Wed, 16 Sep 2020 15:22:06 +0800
+Message-ID: <20200916072206.27499-1-phil.chang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20200915150855.24825-1-phil.chang@mediatek.com>
+References: <20200915150855.24825-1-phil.chang@mediatek.com>
 MIME-Version: 1.0
-Date: Wed, 16 Sep 2020 14:34:08 +0800
-From: Can Guo <cang@codeaurora.org>
-To: "Martin K. Petersen" <martin.petersen@oracle.com>
-Subject: Re: [PATCH v2 1/2] scsi: ufs: Abort tasks before clear them from
- doorbell
-In-Reply-To: <yq1wo0u6bdw.fsf@ca-mkp.ca.oracle.com>
-References: <1599099873-32579-1-git-send-email-cang@codeaurora.org>
- <1599099873-32579-2-git-send-email-cang@codeaurora.org>
- <1599627906.10803.65.camel@linux.ibm.com>
- <yq14ko62wn5.fsf@ca-mkp.ca.oracle.com>
- <1599706080.10649.30.camel@mtkswgap22>
- <1599718697.3851.3.camel@HansenPartnership.com>
- <1599725880.10649.35.camel@mtkswgap22>
- <1599754148.3575.4.camel@HansenPartnership.com>
- <010101747af387e9-f68ac6fa-1bc6-461d-92ec-dc0ee4486728-000000@us-west-2.amazonses.com>
- <d151d6a2b53cfbd7bf3f9c9313b49c4c404c4c5a.camel@gmail.com>
- <4017d039fa323a63f89f01b5bf4cf714@codeaurora.org>
- <yq1wo0u6bdw.fsf@ca-mkp.ca.oracle.com>
-Message-ID: <149974f6d7073dae363797874fc088bf@codeaurora.org>
-X-Sender: cang@codeaurora.org
-User-Agent: Roundcube Webmail/1.3.9
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200916_023417_426525_151F369B 
-X-CRM114-Status: GOOD (  12.18  )
+X-CRM114-CacheID: sfid-20200916_032221_695148_FAD3705B 
+X-CRM114-Status: GOOD (  19.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,42 +82,115 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, Bean Huo <huobean@gmail.com>,
- saravanak@google.com, linux-scsi@vger.kernel.org,
- open list <linux-kernel@vger.kernel.org>, Bean Huo <beanhuo@micron.com>,
- nguyenb@codeaurora.org, ziqichen@codeaurora.org,
- James Bottomley <James.Bottomley@hansenpartnership.com>,
- Avri Altman <avri.altman@wdc.com>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, salyzyn@google.com,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, rnayak@codeaurora.org,
- Stanley Chu <stanley.chu@mediatek.com>, kernel-team@android.com,
- Bart Van Assche <bvanassche@acm.org>, hongwus@codeaurora.org,
- asutoshd@codeaurora.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Alix Wu <alix.wu@mediatek.com>,
+ linux-doc@vger.kernel.org, Anshuman Khandual <anshuman.khandual@arm.com>,
+ Mauro Carvalho
+ Chehab <mchehab+huawei@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>,
+ YJ Chiang <yj.chiang@mediatek.com>, Jonathan Corbet <corbet@lwn.net>,
+ Phil Chang <phil.chang@mediatek.com>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Will Deacon <will@kernel.org>,
+ Mike Rapoport <rppt@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-09-16 04:21, Martin K. Petersen wrote:
-> Can,
-> 
->> Do you know when can this change be picked up in scsi-queue-5.10?
->> If I push my fixes to ufshcd_abort() on scsi-queue-5.10, they will
->> run into conflicts with this one again, right? How should I move
->> forward now?
-> 
-> You should be able to use 5.10/scsi-queue as baseline now.
-> 
-> For 5.11 I think I'll do a separate branch for UFS.
+this patch allowing the DMA32 zone be configurable in ARM64.
 
-Thanks for the information.
+Signed-off-by: Alix Wu <alix.wu@mediatek.com>
+Signed-off-by: YJ Chiang <yj.chiang@mediatek.com>
+Signed-off-by: Phil Chang <phil.chang@mediatek.com>
+---
+For some devices, the main memory split into 2 part due to the memory
+architecture, the efficient and less inefficient part.
+One of the use case is fine-tune the dma32 size to contain all the
+efficient part of memory block on this kind of architecture
 
-Regards,
+ .../admin-guide/kernel-parameters.txt         |  3 +++
+ arch/arm64/include/asm/memory.h               |  2 ++
+ arch/arm64/mm/init.c                          | 26 ++++++++++++++++++-
+ 3 files changed, 30 insertions(+), 1 deletion(-)
 
-Can Guo.
-
+diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
+index bdc1f33fd3d1..ef3bc3d4931a 100644
+--- a/Documentation/admin-guide/kernel-parameters.txt
++++ b/Documentation/admin-guide/kernel-parameters.txt
+@@ -980,6 +980,9 @@
+ 			The filter can be disabled or changed to another
+ 			driver later using sysfs.
+ 
++	dma32_size=nn[KMG]  [KNL,BOOT,ARM64]
++			Forces the DMA32 zone size of <nn> in MB.
++
+ 	driver_async_probe=  [KNL]
+ 			List of driver names to be probed asynchronously.
+ 			Format: <driver_name1>,<driver_name2>...
+diff --git a/arch/arm64/include/asm/memory.h b/arch/arm64/include/asm/memory.h
+index afa722504bfd..710de08ae8ae 100644
+--- a/arch/arm64/include/asm/memory.h
++++ b/arch/arm64/include/asm/memory.h
+@@ -175,6 +175,8 @@ extern u64			kimage_vaddr;
+ /* the offset between the kernel virtual and physical mappings */
+ extern u64			kimage_voffset;
+ 
++extern phys_addr_t		dma32_zone_size;
++
+ static inline unsigned long kaslr_offset(void)
+ {
+ 	return kimage_vaddr - KIMAGE_VADDR;
+diff --git a/arch/arm64/mm/init.c b/arch/arm64/mm/init.c
+index 481d22c32a2e..fd1b85e131cc 100644
+--- a/arch/arm64/mm/init.c
++++ b/arch/arm64/mm/init.c
+@@ -60,6 +60,9 @@ EXPORT_SYMBOL(physvirt_offset);
+ struct page *vmemmap __ro_after_init;
+ EXPORT_SYMBOL(vmemmap);
+ 
++phys_addr_t dma32_zone_size __ro_after_init;
++EXPORT_SYMBOL(dma32_zone_size);
++
+ /*
+  * We create both ZONE_DMA and ZONE_DMA32. ZONE_DMA covers the first 1G of
+  * memory as some devices, namely the Raspberry Pi 4, have peripherals with
+@@ -189,7 +192,12 @@ static void __init reserve_elfcorehdr(void)
+ static phys_addr_t __init max_zone_phys(unsigned int zone_bits)
+ {
+ 	phys_addr_t offset = memblock_start_of_DRAM() & GENMASK_ULL(63, zone_bits);
+-	return min(offset + (1ULL << zone_bits), memblock_end_of_DRAM());
++	phys_addr_t zone_size = (1ULL << zone_bits);
++
++	if (IS_ENABLED(CONFIG_ZONE_DMA32) && zone_bits == 32 && dma32_zone_size)
++		zone_size = min(zone_size, dma32_zone_size);
++
++	return min(offset + zone_size, memblock_end_of_DRAM());
+ }
+ 
+ static void __init zone_sizes_init(unsigned long min, unsigned long max)
+@@ -242,6 +250,22 @@ static int __init early_mem(char *p)
+ }
+ early_param("mem", early_mem);
+ 
++static int __init setup_dma32_zone(char *p)
++{
++	unsigned long long size = memparse(p, NULL);
++
++	/* DMA32 zone size should never grater than 4G */
++	if (size > SZ_4G)
++		return -EINVAL;
++
++	pr_notice("Setup dma32 zone size to %llu Mb\n", size >> 20);
++	dma32_zone_size = size;
++
++	return 0;
++}
++
++early_param("dma32_size", setup_dma32_zone);
++
+ static int __init early_init_dt_scan_usablemem(unsigned long node,
+ 		const char *uname, int depth, void *data)
+ {
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
