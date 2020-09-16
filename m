@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3626EC433E2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 16:01:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B2753C43461
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 16:01:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CC1E5221E3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 16:01:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 590F4224D2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 16:01:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dyJVxjuU";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="cOltaOc3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC1E5221E3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F5mQSUK5";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="YTeS3iux"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 590F4224D2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AdDkbotZX5HlYa0OG3F1t/qDKDo6V1vRff0o6IE7QLA=; b=dyJVxjuUn5GH2ijgEluB7rPQEU
-	tycoFsycRP/hAbMUTMStVJqqrvW+iR5B2XDYuzYjuVICQIxuZc2xC+iaCT7ONhrpEoJWNcS8jTfMT
-	KWr6xNNJhFqOYbPeDXpwPVA6/VlmYBq4m5/RRNo2YFVllUpYqf2Uxp1SRgxp0//r0tV6AuDNjrLgJ
-	aj049EeJ/JOnD9Aq3ndccQMuiHZo75OFhD5knU0TVZXXzeg8uYSP5P3+cW0NRygcwZFRAuQ9Red83
-	QDwrjinyx62S3OrPZeo2eCn6xuL9qhySiVYtjxf8L6ITs9YWgTFEfbDTAfOZKateui8JXWIcx0xlX
-	ei8d+v8g==;
+	bh=wDeRBPHyTXqPmT/xYzk1GcxMxKEMM6T+YNuaQ1vgDp8=; b=F5mQSUK5uKqWSidTScTvB+uZnh
+	ORpRSQwpxC3aPGTMuCk80entOTBJnHHm3vQyEk0glU4NecuHlfAYewey2iDXbXcEPDWfcEoYnoEBk
+	SeXOpgnlncCcwYWNdj9C1LA45JvvoQDth5oLpj5o9FKWQfn1+GG2cd+dK/i5zfLUINVOGysmEZE9f
+	qartPvJoqsXk9g9fRdx9fdT/ztImvh4P2zMZb6o/2dsEK5FNnDPUIIUooy5AaSH2Pu9gK/ueibcC4
+	5HFEE9dytgTcclsBzTDNt4sovyQV7zNR7oaFdPmaKe6ixzGH2vQrqiqI/TSSl/J19K8391QZkwnUQ
+	f1yExjqA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIZsB-0005U6-Hm; Wed, 16 Sep 2020 16:01:31 +0000
+	id 1kIZsM-0005b1-2f; Wed, 16 Sep 2020 16:01:42 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kIZpu-0004H5-RZ; Wed, 16 Sep 2020 15:59:12 +0000
+ id 1kIZq4-0004KM-Nq; Wed, 16 Sep 2020 15:59:21 +0000
 Received: from kozik-lap.mshome.net (unknown [194.230.155.191])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9921622482;
- Wed, 16 Sep 2020 15:59:01 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id EC99D224BE;
+ Wed, 16 Sep 2020 15:59:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600271949;
- bh=8OnggKDEvaqUI8NVuFZUCiaEESVDd9WWXRjDl36eKaM=;
+ s=default; t=1600271956;
+ bh=nvskr1+D9obXaMbDfZyLjyzIPbiTAGWd9iB4g/+Kc0U=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=cOltaOc37anJGjPGtCeapUvOGK58ezeNsETk2WlnLPh/H9imSvV9ZYiUngP40Qz6H
- LenA5VXXgGBymUBd/S9bxf7yO+jRFyG2gSqTfsnBbFRaAV5+LG+D0Ai1+K19bbdfss
- CQ2vjjndfd/+x0186rpAjHiELOLs8c0Ww7MAhfPA=
+ b=YTeS3iuxG8yxC4hEj6utIjUJUoYa1OQMcJ+8zesYwSyOeN4OONfNJWUOjPI6x6u1K
+ Op+AxGXSn8ZFmnLXPw+XRqaU+dopclTQpu3KAH6HzRuDFk2i7EDl6RtvOlP1/G4a8v
+ 0LGrjW5uqieq+VfZoTXzlj9T5cGhZrws9DM9fz/I=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Linus Walleij <linus.walleij@linaro.org>,
  Bartosz Golaszewski <bgolaszewski@baylibre.com>,
@@ -72,15 +72,16 @@ To: Linus Walleij <linus.walleij@linaro.org>,
  linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
  linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-Subject: [PATCH v3 12/15] ARM: dts: aspeed: align GPIO hog names with dtschema
-Date: Wed, 16 Sep 2020 17:57:12 +0200
-Message-Id: <20200916155715.21009-13-krzk@kernel.org>
+Subject: [PATCH v3 13/15] ARM: dts: dove: fix PCA95xx GPIO expander properties
+ on A510
+Date: Wed, 16 Sep 2020 17:57:13 +0200
+Message-Id: <20200916155715.21009-14-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200916155715.21009-1-krzk@kernel.org>
 References: <20200916155715.21009-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200916_115911_133367_4BECAF5B 
-X-CRM114-Status: GOOD (  14.04  )
+X-CRM114-CacheID: sfid-20200916_115920_922054_3D3B3F61 
+X-CRM114-Status: GOOD (  15.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,103 +100,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-dtschema for pca95xx expects GPIO hogs to end with 'hog' prefix.
+The PCA95xx GPIO expander requires GPIO controller properties to operate
+properly.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 ---
- arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts |  2 +-
- arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts  | 16 ++++++++--------
- 2 files changed, 9 insertions(+), 9 deletions(-)
+ arch/arm/boot/dts/dove-sbc-a510.dts | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts
-index 21ae880c7530..d5ac379c909e 100644
---- a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts
-+++ b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts
-@@ -564,7 +564,7 @@
- 		gpio-controller;
+diff --git a/arch/arm/boot/dts/dove-sbc-a510.dts b/arch/arm/boot/dts/dove-sbc-a510.dts
+index 2bb85a9b7614..df021f9b0117 100644
+--- a/arch/arm/boot/dts/dove-sbc-a510.dts
++++ b/arch/arm/boot/dts/dove-sbc-a510.dts
+@@ -143,6 +143,7 @@
+ 	gpio_ext: gpio@20 {
+ 		compatible = "nxp,pca9555";
+ 		reg = <0x20>;
++		gpio-controller;
  		#gpio-cells = <2>;
- 
--		smbus0 {
-+		smbus0-hog {
- 			gpio-hog;
- 			gpios = <4 GPIO_ACTIVE_HIGH>;
- 			output-high;
-diff --git a/arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts b/arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts
-index cb85168f6761..577c211c469e 100644
---- a/arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts
-+++ b/arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts
-@@ -827,7 +827,7 @@
- 				gpio-controller;
- 				#gpio-cells = <2>;
- 
--				smbus0 {
-+				smbus0-hog {
- 					gpio-hog;
- 					gpios = <4 GPIO_ACTIVE_HIGH>;
- 					output-high;
-@@ -852,7 +852,7 @@
- 				gpio-controller;
- 				#gpio-cells = <2>;
- 
--				smbus1 {
-+				smbus1-hog {
- 					gpio-hog;
- 					gpios = <4 GPIO_ACTIVE_HIGH>;
- 					output-high;
-@@ -900,7 +900,7 @@
- 				gpio-controller;
- 				#gpio-cells = <2>;
- 
--				smbus2 {
-+				smbus2-hog {
- 					gpio-hog;
- 					gpios = <4 GPIO_ACTIVE_HIGH>;
- 					output-high;
-@@ -925,7 +925,7 @@
- 				gpio-controller;
- 				#gpio-cells = <2>;
- 
--				smbus3 {
-+				smbus3-hog {
- 					gpio-hog;
- 					gpios = <4 GPIO_ACTIVE_HIGH>;
- 					output-high;
-@@ -992,7 +992,7 @@
- 				gpio-controller;
- 				#gpio-cells = <2>;
- 
--				smbus4 {
-+				smbus4-hog {
- 					gpio-hog;
- 					gpios = <4 GPIO_ACTIVE_HIGH>;
- 					output-high;
-@@ -1017,7 +1017,7 @@
- 				gpio-controller;
- 				#gpio-cells = <2>;
- 
--				smbus5 {
-+				smbus5-hog {
- 					gpio-hog;
- 					gpios = <4 GPIO_ACTIVE_HIGH>;
- 					output-high;
-@@ -1065,7 +1065,7 @@
- 				gpio-controller;
- 				#gpio-cells = <2>;
- 
--				smbus6 {
-+				smbus6-hog {
- 					gpio-hog;
- 					gpios = <4 GPIO_ACTIVE_HIGH>;
- 					output-high;
-@@ -1090,7 +1090,7 @@
- 				gpio-controller;
- 				#gpio-cells = <2>;
- 
--				smbus7 {
-+				smbus7-hog {
- 					gpio-hog;
- 					gpios = <4 GPIO_ACTIVE_HIGH>;
- 					output-high;
+ 	};
+ };
 -- 
 2.17.1
 
