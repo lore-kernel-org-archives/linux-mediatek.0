@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 98EB4C433E2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 16:00:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 534EDC35256
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 16:00:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 14CFD224B1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 16:00:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E2496221E3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 16:00:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="raQ/FnBs";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="R0qBr5FP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 14CFD224B1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="R4TfM81H";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="kFmrLMvH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E2496221E3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EKdggxLfWOCySEe922Hr61A0tCUGXkNuqQTQ8Y7+xik=; b=raQ/FnBsA5vTIfSjs5fPwiuMGR
-	K9mgsMwakpNXBZw28ZDG7mo5Y+cDdR5aMFJXeRSnkPBJD9XwE6Zt+XaYBHoTCWDYSMVTZ6GB1xdGd
-	yHaH8sRsKrTvUeECtSclEndiZu86PDYzrRnf5yDdLROHzn8TkQyZ2O5SZ/gRurvI7DFMw1GDSh5gQ
-	LyLkfehWp8nFmzCxrR0s72uyKZjaUNPQr0V/gScOG0msl1X6tuPHYiS5mNgXZJ6y9bylGsrvSgGUR
-	TS76be0flGnx94rD25iOv8F1+ysbgyI2kh5ZdqKP3L8QZiYEWJ97vbU1a77M0A9sDZLeMdQYTiD/o
-	m+/ITmcg==;
+	bh=R0D/3FuiiaxQPnyqEaz7FNHngilj/NMY+g6RNEQ1KhA=; b=R4TfM81HRG4I4BPHbBWq3SXwek
+	aqq2vNgV8A7HTdXkVRF/XXL/xzlmkKaDq4wrvI7P68//HcFh0FfQr4Ze/5D7RqLLNI+gP2bawxbgt
+	XTTrhiiIDHCK8Q/DzqwPWEVD2un6+wOABBFG7DJTgPhZptFGFJ4hK9P62nGpvRgpNRid341e7IzTn
+	Nm46kdIhQLaAHV069TgPZ8Zm2ErFrdzQ4JKXEPhl5JvYTYaBW+bmXcnvcmQ2T+mYAMWF8WiHmk474
+	LZMWH7FEGQ6qlNtkX3ol6eepTsMQlrsHpHw53IMItdYGyohvnoaPv5mpU5L4WQZvcSErVKkRMSJz4
+	RvUL7lLQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIZqq-0004hF-VF; Wed, 16 Sep 2020 16:00:09 +0000
+	id 1kIZrN-0004wl-68; Wed, 16 Sep 2020 16:00:41 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kIZpF-0003xp-Oq; Wed, 16 Sep 2020 15:58:30 +0000
+ id 1kIZpN-00041E-Eb; Wed, 16 Sep 2020 15:58:41 +0000
 Received: from kozik-lap.mshome.net (unknown [194.230.155.191])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id DDD862247F;
- Wed, 16 Sep 2020 15:58:21 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 5F04B2245D;
+ Wed, 16 Sep 2020 15:58:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600271908;
- bh=Z5wRBaFYmniCz5bdSyAlyJEj5GnVzIH19M/ATqEsQ3c=;
+ s=default; t=1600271915;
+ bh=wyPmzC4NHbsZu5CEn9G5Z8eCB/nHoC/xFKB5B2bqx3c=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=R0qBr5FPZ/kISCBNje3pqD5b63CHmR/0V5AydWnLKbkdTUasYYZKuNOlHII9w/arZ
- pBCRBnlQW1PEeoKwRVWDwsvzdGvex/repj1lCR6DpJWI+asNzeRh39Qh2EtnUare2K
- eYcQOWiM5Bt5zWED12AosjsB/8YI56QtH9PYPRD4=
+ b=kFmrLMvHie1rZdTr2MQXMcBAEJNhP9kC7phlzQSPUc6Rbu1gF/gl9XyoAFvVHOYcz
+ YKDErYBxNoI8NdNaXX4AS5DmlalS5OaBdgI/Hu4M46Fyf9G5rsj8ETJbN+t/3q+UJP
+ 8HUppa3L8lmRCEKlvCdPbAGCqZs2sleWD0Nu9IEY=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Linus Walleij <linus.walleij@linaro.org>,
  Bartosz Golaszewski <bgolaszewski@baylibre.com>,
@@ -72,16 +72,16 @@ To: Linus Walleij <linus.walleij@linaro.org>,
  linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
  linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-Subject: [PATCH v3 07/15] arm64: dts: xilinx: align GPIO hog names with
- dtschema
-Date: Wed, 16 Sep 2020 17:57:07 +0200
-Message-Id: <20200916155715.21009-8-krzk@kernel.org>
+Subject: [PATCH v3 08/15] ARM: dts: am335x: lxm: fix PCA9539 GPIO expander
+ properties
+Date: Wed, 16 Sep 2020 17:57:08 +0200
+Message-Id: <20200916155715.21009-9-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200916155715.21009-1-krzk@kernel.org>
 References: <20200916155715.21009-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200916_115829_923400_96F69DA3 
-X-CRM114-Status: GOOD (  13.16  )
+X-CRM114-CacheID: sfid-20200916_115838_172566_0AC2EE2D 
+X-CRM114-Status: GOOD (  14.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,48 +100,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The convention for node names is to use hyphens, not underscores.
-dtschema for pca95xx expects GPIO hogs to end with 'hog' prefix.
+The PCA9539 GPIO expander requires GPIO controller properties to operate
+properly.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+Acked-by: Tony Lindgren <tony@atomide.com>
 ---
- arch/arm64/boot/dts/xilinx/zynqmp-zcu102-revA.dts | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ arch/arm/boot/dts/am335x-lxm.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/xilinx/zynqmp-zcu102-revA.dts b/arch/arm64/boot/dts/xilinx/zynqmp-zcu102-revA.dts
-index 4f801721564f..f1255f635dfd 100644
---- a/arch/arm64/boot/dts/xilinx/zynqmp-zcu102-revA.dts
-+++ b/arch/arm64/boot/dts/xilinx/zynqmp-zcu102-revA.dts
-@@ -203,25 +203,25 @@
- 		gpio-line-names = "PS_GTR_LAN_SEL0", "PS_GTR_LAN_SEL1", "PS_GTR_LAN_SEL2", "PS_GTR_LAN_SEL3",
- 				"PCI_CLK_DIR_SEL", "IIC_MUX_RESET_B", "GEM3_EXP_RESET_B",
- 				"", "", "", "", "", "", "", "", "";
--		gtr-sel0 {
-+		gtr-sel0-hog {
- 			gpio-hog;
- 			gpios = <0 0>;
- 			output-low; /* PCIE = 0, DP = 1 */
- 			line-name = "sel0";
- 		};
--		gtr-sel1 {
-+		gtr-sel1-hog {
- 			gpio-hog;
- 			gpios = <1 0>;
- 			output-high; /* PCIE = 0, DP = 1 */
- 			line-name = "sel1";
- 		};
--		gtr-sel2 {
-+		gtr-sel2-hog {
- 			gpio-hog;
- 			gpios = <2 0>;
- 			output-high; /* PCIE = 0, USB0 = 1 */
- 			line-name = "sel2";
- 		};
--		gtr-sel3 {
-+		gtr-sel3-hog {
- 			gpio-hog;
- 			gpios = <3 0>;
- 			output-high; /* PCIE = 0, SATA = 1 */
+diff --git a/arch/arm/boot/dts/am335x-lxm.dts b/arch/arm/boot/dts/am335x-lxm.dts
+index cd55f11260ea..0f078465297a 100644
+--- a/arch/arm/boot/dts/am335x-lxm.dts
++++ b/arch/arm/boot/dts/am335x-lxm.dts
+@@ -160,11 +160,15 @@
+ 	serial_config1: serial_config1@20 {
+ 		compatible = "nxp,pca9539";
+ 		reg = <0x20>;
++		gpio-controller;
++		#gpio-cells = <2>;
+ 	};
+ 
+ 	serial_config2: serial_config2@21 {
+ 		compatible = "nxp,pca9539";
+ 		reg = <0x21>;
++		gpio-controller;
++		#gpio-cells = <2>;
+ 	};
+ 
+ 	tps: tps@2d {
 -- 
 2.17.1
 
