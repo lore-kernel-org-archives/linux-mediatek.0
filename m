@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 534EDC35256
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 16:00:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E7B0CC43461
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 16:01:01 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E2496221E3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 16:00:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 77F1A22261
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 16:01:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="R4TfM81H";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="kFmrLMvH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E2496221E3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="b3AuyvGr";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="HK32OVkY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 77F1A22261
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R0D/3FuiiaxQPnyqEaz7FNHngilj/NMY+g6RNEQ1KhA=; b=R4TfM81HRG4I4BPHbBWq3SXwek
-	aqq2vNgV8A7HTdXkVRF/XXL/xzlmkKaDq4wrvI7P68//HcFh0FfQr4Ze/5D7RqLLNI+gP2bawxbgt
-	XTTrhiiIDHCK8Q/DzqwPWEVD2un6+wOABBFG7DJTgPhZptFGFJ4hK9P62nGpvRgpNRid341e7IzTn
-	Nm46kdIhQLaAHV069TgPZ8Zm2ErFrdzQ4JKXEPhl5JvYTYaBW+bmXcnvcmQ2T+mYAMWF8WiHmk474
-	LZMWH7FEGQ6qlNtkX3ol6eepTsMQlrsHpHw53IMItdYGyohvnoaPv5mpU5L4WQZvcSErVKkRMSJz4
-	RvUL7lLQ==;
+	bh=H+ISzkFDb3ZvVphQGBn1Zkz418oGY3pNBdVktAeI3w8=; b=b3AuyvGr3uxfn5rxa9PaknN1Nk
+	W0mZ7rBFg2q9V8Kzu2g9MR/ZAtkwwOfHt/udfbSA7m5YYmF8EsNLVMRPAhyy1Woe6n2RlrEDyIclf
+	fLH+PYuuA0R4GapyzilKqMOPIDTYR1FgzZJv3uW02JziUWJXTUxuQJu9uwwQdXGYdRo4UWNBzWNG3
+	+Rdamg4NoFpXR6FqhhVKdp2/HTAIlHeQwsponmVNXOaSp63LlubEIx4bPUoxUFi6Guglu3Z0YVtqm
+	Y+je72GnGRgR39I1shbOyzSCYNISVittugkHeUVVXNxkyFtImOeSl04KooGjyeCK88cKNBdnmVbMc
+	LENcNyhg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIZrN-0004wl-68; Wed, 16 Sep 2020 16:00:41 +0000
+	id 1kIZrW-00052Z-Dl; Wed, 16 Sep 2020 16:00:50 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kIZpN-00041E-Eb; Wed, 16 Sep 2020 15:58:41 +0000
+ id 1kIZpV-00044w-Ir; Wed, 16 Sep 2020 15:58:47 +0000
 Received: from kozik-lap.mshome.net (unknown [194.230.155.191])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5F04B2245D;
- Wed, 16 Sep 2020 15:58:29 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6614422470;
+ Wed, 16 Sep 2020 15:58:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600271915;
- bh=wyPmzC4NHbsZu5CEn9G5Z8eCB/nHoC/xFKB5B2bqx3c=;
+ s=default; t=1600271923;
+ bh=z54NT2te4cQqCwvnxGuhIvp2W2PqIQwX8Rfrwo03n6k=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=kFmrLMvHie1rZdTr2MQXMcBAEJNhP9kC7phlzQSPUc6Rbu1gF/gl9XyoAFvVHOYcz
- YKDErYBxNoI8NdNaXX4AS5DmlalS5OaBdgI/Hu4M46Fyf9G5rsj8ETJbN+t/3q+UJP
- 8HUppa3L8lmRCEKlvCdPbAGCqZs2sleWD0Nu9IEY=
+ b=HK32OVkYHkBdJOofLkJ+eUoiFHxyVHCmMnup/A7LJvnMbmFRiwsgEMgYtwJqubXXq
+ JCspG3tYh6jh9B4NAgWMrK96wSIlk+dYeGSlk9dnzukQSbkIiOSIKR8DOI5Es5fyRl
+ 4yJvpL+qxOp5+HXbERF/ET+85d6NF+YAf9Huy1sY=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Linus Walleij <linus.walleij@linaro.org>,
  Bartosz Golaszewski <bgolaszewski@baylibre.com>,
@@ -72,16 +72,16 @@ To: Linus Walleij <linus.walleij@linaro.org>,
  linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
  linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-Subject: [PATCH v3 08/15] ARM: dts: am335x: lxm: fix PCA9539 GPIO expander
- properties
-Date: Wed, 16 Sep 2020 17:57:08 +0200
-Message-Id: <20200916155715.21009-9-krzk@kernel.org>
+Subject: [PATCH v3 09/15] ARM: dts: am335x: t335: align GPIO hog names with
+ dtschema
+Date: Wed, 16 Sep 2020 17:57:09 +0200
+Message-Id: <20200916155715.21009-10-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200916155715.21009-1-krzk@kernel.org>
 References: <20200916155715.21009-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200916_115838_172566_0AC2EE2D 
-X-CRM114-Status: GOOD (  14.09  )
+X-CRM114-CacheID: sfid-20200916_115845_816604_6E8FB076 
+X-CRM114-Status: GOOD (  15.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,35 +100,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The PCA9539 GPIO expander requires GPIO controller properties to operate
-properly.
+The convention for node names is to use hyphens, not underscores.
+dtschema for pca95xx expects GPIO hogs to end with 'hog' prefix.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-Acked-by: Tony Lindgren <tony@atomide.com>
 ---
- arch/arm/boot/dts/am335x-lxm.dts | 4 ++++
- 1 file changed, 4 insertions(+)
+ arch/arm/boot/dts/am335x-sbc-t335.dts | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm/boot/dts/am335x-lxm.dts b/arch/arm/boot/dts/am335x-lxm.dts
-index cd55f11260ea..0f078465297a 100644
---- a/arch/arm/boot/dts/am335x-lxm.dts
-+++ b/arch/arm/boot/dts/am335x-lxm.dts
-@@ -160,11 +160,15 @@
- 	serial_config1: serial_config1@20 {
- 		compatible = "nxp,pca9539";
- 		reg = <0x20>;
-+		gpio-controller;
-+		#gpio-cells = <2>;
- 	};
- 
- 	serial_config2: serial_config2@21 {
- 		compatible = "nxp,pca9539";
- 		reg = <0x21>;
-+		gpio-controller;
-+		#gpio-cells = <2>;
- 	};
- 
- 	tps: tps@2d {
+diff --git a/arch/arm/boot/dts/am335x-sbc-t335.dts b/arch/arm/boot/dts/am335x-sbc-t335.dts
+index a3f6bc4072d9..81e4453687ba 100644
+--- a/arch/arm/boot/dts/am335x-sbc-t335.dts
++++ b/arch/arm/boot/dts/am335x-sbc-t335.dts
+@@ -155,13 +155,13 @@
+ 		gpio-controller;
+ 		#gpio-cells = <2>;
+ 		reg = <0x26>;
+-		dvi_ena {
++		dvi-ena-hog {
+ 			gpio-hog;
+ 			gpios = <13 GPIO_ACTIVE_HIGH>;
+ 			output-high;
+ 			line-name = "dvi-enable";
+ 		};
+-		lcd_ena {
++		lcd-ena-hog {
+ 			gpio-hog;
+ 			gpios = <11 GPIO_ACTIVE_HIGH>;
+ 			output-high;
 -- 
 2.17.1
 
