@@ -2,69 +2,83 @@ Return-Path: <SRS0=dHEP=CZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1379EC43461
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 15:29:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DDB17C433E2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 15:57:46 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 87901223E4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 15:29:36 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 772CF2245C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 15:57:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pdaLtFiK";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="FaM46s0H"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 87901223E4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="a1ggNFbq";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="i3Sqamwn"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 772CF2245C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=xIyQw+KhLVy/m+ZPsupoXAioc6uVPZox0469ecwRjm0=; b=pdaLtFiKyuqiV90Ait1GH6kNy
-	ssCTnE6GGqNg8o490QHlGlNi07bjZwnsuxmorCvHEs1XRd0FouumHJzgtk6PIGIFs7DjWYuzljvaZ
-	oxs2i3T7pjLFUoDLi9vn4zfJwUcwBQjmeQuB/+fSdLFVB2T0/39s9iNNg8Edac7puKYnnWbj4SNpP
-	4YvBluqM5q90XpLiIM8bxtI5qBvYaF0x78G+zP/vhQ9zcsyTfqhXDDk+JC9Jl56KvaaaCrgRd4bFl
-	jPn2TfbS6LP2oylkO9Z607sQTYjcnqFMqxzGdAy0Oj9bqM8iBo74LBqPb38ug/cCVR9DXEMJj7zXV
-	xxRoGFYMw==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4F4+Aft+3Jn6iVVT5zkK4Wfswnx0OeJN9YsnA3QB+28=; b=a1ggNFbqc1/2qdoNtGCPE4xv/l
+	jS242ac3i+/LOMIxr+2wUxzTGGsBunmtcim/hhLK3rS+ohbgTrhvsOchyanFR4XAQPDCXXuWTiFJ+
+	eofpZv9OF68lsS9rVKAoWNeJ3IYXN8oseMPUu15fyB6l0iURXpOJVU3b4KAQ59pnijrUUptovsri4
+	mTmrTNEjRwinaLJWAdw83uSKCeKIg+/usaLjCX/sGo8gIajZGkMSw3LKApYME0uQkvR9XPhYi/jdD
+	fJM3+kDahSOfvht5xX8zLNx82OEE5ex0K++z0SFndAOlAX1sape6dLXVoifwlOgX8Q4rew8cpEy3b
+	Bb6QkEiw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIZNA-0008Am-1g; Wed, 16 Sep 2020 15:29:28 +0000
+	id 1kIZoQ-0003bU-3c; Wed, 16 Sep 2020 15:57:38 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kIZN8-0008AM-6z
- for linux-mediatek@lists.infradead.org; Wed, 16 Sep 2020 15:29:26 +0000
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C8CF9223E0;
- Wed, 16 Sep 2020 15:29:24 +0000 (UTC)
+ id 1kIZoM-0003ah-LH; Wed, 16 Sep 2020 15:57:35 +0000
+Received: from kozik-lap.mshome.net (unknown [194.230.155.191])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 720CD22211;
+ Wed, 16 Sep 2020 15:57:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600270165;
- bh=RB9ft3ey0/nl4nE0DnYdgU8sqKfHQq8asR+gs8IID/k=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=FaM46s0HRSvFNiyCY2F3y9EamTmIzQm6/SIxtjUKZXe7dvMUh9haF+027s6z9G0mP
- vP/kizxamSHBXmDps9zNTLCDTVrKLnyx/pnFpTNsjrYHCNpUn07EXZidSQQVKsmJgC
- E1GnpfLRrWT0Xl+o9MWbmX1yK5zeJk/3i0hpyNlk=
-Date: Wed, 16 Sep 2020 17:29:59 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Frankie Chang <Frankie.Chang@mediatek.com>
-Subject: Re: [PATCH v9] binder: transaction latency tracking for user build
-Message-ID: <20200916152959.GA3020510@kroah.com>
-References: <1599543504.16905.65.camel@mtkswgap22>
- <1599574008-5805-1-git-send-email-Frankie.Chang@mediatek.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1599574008-5805-1-git-send-email-Frankie.Chang@mediatek.com>
+ s=default; t=1600271853;
+ bh=yWzQ6WPjC8rItrDgfGhWQlUAtGLsaZ/R1keRvnf9UxY=;
+ h=From:To:Cc:Subject:Date:From;
+ b=i3SqamwnKOkrcTX1RAKNjivJMdEvwdYD85f3vO+d19vaDDdbvRewgc78OLqj/HMO6
+ tMP6KzAaZgPvEpuNQPo8El740umS7geCOGv8WLOwEXpGnKajjyF/ZfpMxJq5PK8/t0
+ oFPYzFa4hY2ewOq9WDIqWOVBRkg8/oRiQhpVN+oE=
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Linus Walleij <linus.walleij@linaro.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ =?UTF-8?q?Beno=C3=AEt=20Cousson?= <bcousson@baylibre.com>,
+ Tony Lindgren <tony@atomide.com>, Jason Cooper <jason@lakedaemon.net>,
+ Andrew Lunn <andrew@lunn.ch>,
+ Gregory Clement <gregory.clement@bootlin.com>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@aj.id.au>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>, Tero Kristo <t-kristo@ti.com>,
+ Nishanth Menon <nm@ti.com>, Michal Simek <michal.simek@xilinx.com>,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+Subject: [PATCH v3 00/15] ARM: dts: / gpio: Add dtschema for NXP PCA953x and
+ correct dts
+Date: Wed, 16 Sep 2020 17:57:00 +0200
+Message-Id: <20200916155715.21009-1-krzk@kernel.org>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200916_112926_330916_26672DF1 
-X-CRM114-Status: UNSURE (   9.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200916_115734_840888_22D362A8 
+X-CRM114-Status: GOOD (  15.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,30 +90,82 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Jian-Min Liu <Jian-Min.Liu@mediatek.com>, linux-mediatek@lists.infradead.org,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>, Todd Kjos <tkjos@google.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 08, 2020 at 10:06:45PM +0800, Frankie Chang wrote:
-> Change from v9:
->   - rename timestamp to ts in binder_internal.h for conciseness.
->   - change 'struct timeval' to 'struct timespec64' in binder_internal.h.
 
-These just blew up in the 0-day testing, again, so I'm dropping them
-from my tree.
+Hi,
 
-Can you please fix them up and resend when you have them properly
-building?
+Changes since v2:
+1. Add Rob's review,
+2. Minor fixup in patch #1,
+3. Add acks to 11 and 13.
 
-thanks,
+Changes since v1:
+1. Patch 1: Use additionalProperties, Add wakeup-source, Add hogs, Extend example with hogs.
+2. New patches: 3, 4, 5, 6, 7, 9, 10, 12, 14 and 15.
 
-greg k-h
+The patches could be picked up independently if dtschema makes sense.
+The fixes for pins make sense anyway, regardless of dtschema.
+
+Best regards,
+Krzysztof
+
+
+Krzysztof Kozlowski (15):
+  dt-bindings: gpio: convert bindings for NXP PCA953x family to dtschema
+  dt-bindings: gpio: convert bindings for Maxim MAX732x family to
+    dtschema
+  arm64: dts: mediatek: fix tca6416 reset GPIOs in pumpkin
+  arm64: dts: mediatek: align GPIO hog names with dtschema
+  arm64: dts: renesas: align GPIO hog names with dtschema
+  arm64: dts: ti: align GPIO hog names with dtschema
+  arm64: dts: xilinx: align GPIO hog names with dtschema
+  ARM: dts: am335x: lxm: fix PCA9539 GPIO expander properties
+  ARM: dts: am335x: t335: align GPIO hog names with dtschema
+  ARM: dts: am3874: iceboard: fix GPIO expander reset GPIOs
+  ARM: dts: aspeed: fix PCA95xx GPIO expander properties on Portwell
+  ARM: dts: aspeed: align GPIO hog names with dtschema
+  ARM: dts: dove: fix PCA95xx GPIO expander properties on A510
+  ARM: dts: armada: align GPIO hog names with dtschema
+  ARM: dts: imx6q: align GPIO hog names with dtschema
+
+ .../devicetree/bindings/gpio/gpio-max732x.txt |  58 -----
+ .../devicetree/bindings/gpio/gpio-pca953x.txt |  90 -------
+ .../bindings/gpio/gpio-pca95xx.yaml           | 232 ++++++++++++++++++
+ .../devicetree/bindings/trivial-devices.yaml  |   4 -
+ arch/arm/boot/dts/am335x-lxm.dts              |   4 +
+ arch/arm/boot/dts/am335x-sbc-t335.dts         |   4 +-
+ arch/arm/boot/dts/am3874-iceboard.dts         |   8 +-
+ arch/arm/boot/dts/armada-388-clearfog.dts     |   4 +-
+ arch/arm/boot/dts/armada-388-clearfog.dtsi    |  10 +-
+ arch/arm/boot/dts/armada-388-helios4.dts      |   6 +-
+ arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts  |   2 +-
+ arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts   |  16 +-
+ .../boot/dts/aspeed-bmc-portwell-neptune.dts  |   2 +
+ arch/arm/boot/dts/dove-sbc-a510.dts           |   1 +
+ arch/arm/boot/dts/imx6q-b450v3.dts            |  14 +-
+ arch/arm/boot/dts/imx6q-b650v3.dts            |  12 +-
+ arch/arm/boot/dts/imx6q-b850v3.dts            |   4 +-
+ arch/arm/boot/dts/imx6q-bx50v3.dtsi           |  12 +-
+ .../boot/dts/mediatek/pumpkin-common.dtsi     |  28 +--
+ .../boot/dts/renesas/r8a77951-salvator-xs.dts |   2 +-
+ .../boot/dts/renesas/r8a77965-salvator-xs.dts |   2 +-
+ arch/arm64/boot/dts/renesas/ulcb-kf.dtsi      |  14 +-
+ .../dts/ti/k3-j721e-common-proc-board.dts     |   4 +-
+ .../boot/dts/xilinx/zynqmp-zcu102-revA.dts    |   8 +-
+ 24 files changed, 314 insertions(+), 227 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/gpio/gpio-max732x.txt
+ delete mode 100644 Documentation/devicetree/bindings/gpio/gpio-pca953x.txt
+ create mode 100644 Documentation/devicetree/bindings/gpio/gpio-pca95xx.yaml
+
+-- 
+2.17.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
