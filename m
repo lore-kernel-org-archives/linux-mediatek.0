@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-3.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
 	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BF608C43461
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 21:22:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DDCFAC433E2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 21:23:35 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E9CEC20770
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 21:22:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 554B620770
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2020 21:23:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dgAJgNds";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="lF9NC+kf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9CEC20770
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ph/ywYr/";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="IVzVtSCo"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 554B620770
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,65 +26,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=e3mPj/Cploq29/caroJVnUeXmbXuiaiETdxMCL5mqlw=; b=dgAJgNdsgsI7NdrprFpvogDb9
-	uswpXSmmTd2W7j7eJ4KmJGq4urBLE+kTsj5dXC9ZNUQccg5kx/bXZqvmlfpWj5AV9Ek8ZwfLBP1yY
-	QAOg6o0oSx2wW1kW31hJ7USR4vL46r0ZkA0Y8ukDmsR9cm4DH8o7GE6+RIiEgMVoYv+6pQ0i99iYK
-	B2qnm2v3ZRLqlzl0Nox7ExEYs5s8scVFll8YH+9iqXhwoZostNGd/w/qpop7vJyAQnO2AvbnsSJCk
-	Im90Cc/xgtZrOEkUyyt668cD05kop/uFHXPzPSn6Ni1KcqBZ/cj0OLvTNuakzUuvL3TOdxz2LeaHS
-	mJsyzjlyg==;
+	 bh=V8dwMwTzMvREF6qEwwiI57BZ2eLZS7bhKVdVytYKJo8=; b=ph/ywYr/+ndUqkdvKvpycP67K
+	n7ld9ADpNIRZSmfa4bhbEuZ27T756ar3BZhbr8yPnwrTnhR6EA2agZZsyTGuCh+iE6aPgJY+zPk9h
+	IGP5zwEvjQQNv4SjnsqpcTVeAMhdKYSm4dI1TP9HLOfGiG1v7EhwVlsEuiJWJalKNSkAtXw43KnCQ
+	lcQCYtgDNJ3AA4tgUYH+H+qeCcAOAfCKHJ94C60EjPa+hT4LSuAbIvJnWTFSclL4taIXu7F2HeTfW
+	B6M2rXRm8gbEEoQ3ohqhIcTKn0HvKR9r60/wiR+pIGq1KyzTyVZmI93s7tjrkPNzbcMYPsynRd9NL
+	SJnf3Y3hw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIesf-0003Iu-LD; Wed, 16 Sep 2020 21:22:21 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1kIetg-0003OE-Nt; Wed, 16 Sep 2020 21:23:24 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kIesb-0003IK-Lb; Wed, 16 Sep 2020 21:22:18 +0000
-Received: by mail-wr1-x444.google.com with SMTP id t10so8372575wrv.1;
- Wed, 16 Sep 2020 14:22:17 -0700 (PDT)
+ id 1kIetd-0003NT-Oz; Wed, 16 Sep 2020 21:23:22 +0000
+Received: by mail-wr1-x442.google.com with SMTP id t10so8374679wrv.1;
+ Wed, 16 Sep 2020 14:23:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:date:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=rZwJCenpJW1FFkhwXKCJoTS7EbTuiQatdTV3wO3465M=;
- b=lF9NC+kfAULQDzJUeIysMGpU1qmq1uc9cI0WU7ORfR1EU2dLqnh94+0r7StcST6C9p
- br7r/ZmCqXP2ymM4AVq1cinWHtmFK5vh3JULY3m8eB6v/V2CRWr1fL5O9R96OiXUcFEY
- eyFkuJT1gJtJUl0vTpqMzdszq0AMAFJhuNduH4SgHXLhSnJTNS8nVuV9F5+MfurVxEJ/
- G2AlSOMo4/OhGgHvgVKc9ezZwZOknpRQnDxsDCcu9COQpeplvBWnhWOtTF/CS4fmzszO
- xDg4PltxpWlXG2I2IY0Vmx/1agW+6vdK6++hromHbLgQFDnTZ6QKXGtJFu1F6E/QuyL9
- wxdg==
+ bh=uaALsWfF1D9xfoXjRco36/wFZIs5nH3vP9iLlTuBzEI=;
+ b=IVzVtSCo5zE8dA/LZXtqUtUi0zKuFNGC+mJ5LvdUJS7FqoV3PfJBEnOoCwc6voQD8d
+ u4fJYBAdu2skJ4IDhuqAWWiS/qN7qCVr4BZUzeocVw/Yxip385UxSN74cMUb1ZsWEfcw
+ BcLPVu1EInwBAHC9UaQvDV6umf5EGtZYFaga4SQVGJnJyvzoVtrXF65FxxEPNgcAG3s2
+ mxBijNOHmlMQ/TNax2vaCnwxfwLLAvXhI+/50xajOlZ/mCaFGDEKkCoi5DBF+C4Xg+tX
+ Klyu7DCO4cHfkmgHI2l40ia7tICoDXJ8QnOWeCdDgxQIKBjj/vq0MBMdBAEppvb9Z7aI
+ 5J/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:date:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=rZwJCenpJW1FFkhwXKCJoTS7EbTuiQatdTV3wO3465M=;
- b=OioBIIQbMaIDbZnTA29/SlFXNLcUlLrCZg4WyQiJ1dBrA9Hasqj0K+5psUCJgoSqMi
- qjk74dVGeO7xC+sDe6fisM4C91tMEOf7we1mZccWUc0kNHsVDIP8mIdRqTwlfTJck3rN
- SfhsjLLHPfO8nolzRey7ctVcrnRNvcKW7HQQqkFpPXsrgTunUJyHMwGy6Q/mxGHBHW1c
- 3XGOyvqotEAn80uKahT3/4ywCNxy2SvOmeg5Up4gcXLCdAHszM0F2+KEPRdGqKTqNJSb
- YGzdOk63nJCS3mxHAnSWYWEYrFUY2Tc1rQ8Wr42FSjb1LY6nRpdg6OTWB4yZ/D2Isqi/
- QcJA==
-X-Gm-Message-State: AOAM531a0Dd2kcA33Iuc9x0kyKEV50f+46SPy979XlNppvZW6nG9vD9O
- 2YjIxksEbXuWURsMXJEX6Ts=
-X-Google-Smtp-Source: ABdhPJxKuwijj5bY37fOmOmdBmn1qD4Bk+KgvLkkEPSn5wxYikUVEInLjb1qrj8IlMvKQsfEROjXhw==
-X-Received: by 2002:adf:ef45:: with SMTP id c5mr6367417wrp.384.1600291336432; 
- Wed, 16 Sep 2020 14:22:16 -0700 (PDT)
+ bh=uaALsWfF1D9xfoXjRco36/wFZIs5nH3vP9iLlTuBzEI=;
+ b=nwINBYKWJfaQe5X6VMks3Cw+/dy5vwazudPcMEZx7ExaDV8t3y8K3p+z7K+z8kmBWL
+ 2kQWSyR7ps+7avPFgp8ep7p5mp2gSoMij6LZDaBoms0wY1hBpzzlL/89LSkjPXHzfM6g
+ LXQpIiOviJbNz4fEUYudydLtz2X1tBxjRVUMJkyVzgAI5AMtWaqw8UFZUgToPTuVf7Kd
+ sd5FkEsvKZXW7Tku+q5YNQhJbIfw3SFG6E6pLCTMqUrKw/OGecD1xn+xawL8RhmsWLBo
+ A0slLoUTvfyjGUDcwcPy/BvW0YVRW8BzAWJoPR47DeCZ9GOO1dgjxyOvHqYO91tCn+7d
+ gnRg==
+X-Gm-Message-State: AOAM531sYEEBb9mIRcGhh0u23YGYSYmzQS3fSfnasMQoM846rVCQUyv+
+ yJINOQbNvYczOmhJLlJbT90=
+X-Google-Smtp-Source: ABdhPJwAp8siCWVhzUlSaubwjsROnTD/0x1q83znU0D1hEnn3QuMUTNSsnI1iypqQdsZxlO1bIgt3g==
+X-Received: by 2002:a5d:6caf:: with SMTP id a15mr28884355wra.344.1600291395868; 
+ Wed, 16 Sep 2020 14:23:15 -0700 (PDT)
 Received: from lenovo-laptop
  (cpc83661-brig20-2-0-cust443.3-3.cable.virginm.net. [82.28.105.188])
- by smtp.gmail.com with ESMTPSA id t15sm28380498wrp.20.2020.09.16.14.22.15
+ by smtp.gmail.com with ESMTPSA id n10sm7743823wmk.7.2020.09.16.14.23.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Sep 2020 14:22:15 -0700 (PDT)
+ Wed, 16 Sep 2020 14:23:15 -0700 (PDT)
 From: Alex Dewar <alex.dewar90@gmail.com>
 X-Google-Original-From: Alex Dewar <alex.dewar@gmx.co.uk>
-Date: Wed, 16 Sep 2020 22:22:13 +0100
-To: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+Date: Wed, 16 Sep 2020 22:23:13 +0100
+To: Alex Dewar <alex.dewar90@gmail.com>
 Subject: Re: [PATCH] net: dsa: mt7530: Add some return-value checks
-Message-ID: <20200916212213.v2xqqj3ep6v452eh@lenovo-laptop>
+Message-ID: <20200916212313.w727cxx5tzo2ttm7@lenovo-laptop>
 References: <20200916195017.34057-1-alex.dewar90@gmail.com>
- <e46ec744-ec6a-e53a-03e8-1c75c910682f@embeddedor.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <e46ec744-ec6a-e53a-03e8-1c75c910682f@embeddedor.com>
+In-Reply-To: <20200916195017.34057-1-alex.dewar90@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200916_172217_730544_A987E117 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20200916_172321_852162_D1F1F2C3 
+X-CRM114-Status: UNSURE (   9.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,35 +99,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <landen.chao@mediatek.com>,
  Florian Fainelli <f.fainelli@gmail.com>, linux-kernel@vger.kernel.org,
  netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
- Russell King <linux@armlinux.org.uk>, Alex Dewar <alex.dewar90@gmail.com>,
- linux-mediatek@lists.infradead.org, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
+ Russell King <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, Vivien Didelot <vivien.didelot@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[snip] 
-> >  
-> >  	/* Enable Mediatek header mode on the cpu port */
-> >  	mt7530_write(priv, MT7530_PVC_P(port),
-> > @@ -2275,7 +2279,7 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
-> >  {
-> >  	struct mt7530_priv *priv = ds->priv;
-> >  	phy_interface_t interface;
-> > -	int speed;
-> > +	int ret, speed;
-> 
-> Don't do this. Instead, declare each variable on its own line. In this case,
-> speed before ret.
+On Wed, Sep 16, 2020 at 08:50:17PM +0100, Alex Dewar wrote:
+> In mt7531_cpu_port_config(), if the variable port is neither 5 nor 5,
 
-Good point. I'll do this in v2 :-)
-> 
-> Thanks
-> --
-> Gustavo
+This should read "neither 5 nor 6", obviously. I'll fix in v2.
+ 
 
 _______________________________________________
 Linux-mediatek mailing list
