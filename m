@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 41A00C433E2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 16:55:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C486C433E2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 16:55:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D925B20838
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 16:55:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C0BF12078D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 16:55:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HisZ/SfU";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="zpxZ/+ZX"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D925B20838
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jmQkVJOD";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="ZezngZwD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C0BF12078D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=szBug9j+weIbtflmKR6XE6z2LIAXbcbUJY5jdo/vZQs=; b=HisZ/SfUu2T2iQQMT25MSqdnxw
-	RcthCxg8sETpYvk3rBD0ScCLxlyIf0JoKN+2T5NgP8qs+9LPYX6QRsCr68gs89vC1KmSxjr0NmlK5
-	YfmIdCFfhuHz9DsErSyyeccaPcez6rTxnw9mD4yQAycI/tLRRE25xprjUGXJdgw1+3PHuJy7oX/8o
-	138HK1tUaC0/Wb5cBjLXTA3Eiyh+enwFfJLOinYENP2H7S5v79QNXWijCrhpGOw+YTQfVg5LsoLfR
-	Y2XH5JY59elpwambW0u+I/fC/et3Qndtz3ZiqS3GuGFknI582hunf8RhzdQQCaAeA8oxxEgH5jTPf
-	XgmCScgw==;
+	bh=7Jx9bhwbZPv72uUIezd+RvwPGsD7fgU0g3qINsdXFA4=; b=jmQkVJOD0pxkgUTBbVde1ao+57
+	8HG94cTHnQ8TJEH/O35RX1CFDPWRVSFH5WEc42aG72Ii7q23mDtDMUxPUs52wtHQofixtvM6fCKIV
+	xhiavsWq45ssr91SHAw34en7yJqhaNBTbtidlDxHtwVxhKx/hGdxnym3DcmaFOHZQuBUCSXFAyGYZ
+	yBWYVrDFvXdVIiyX8k/4Irz2pkcW+lZttAIcz1pczdrhuEkJ1FE+asVBRH7PClcfvKu36PxaUkAlk
+	/2qfHkfYlMsYA1atFaeBVjrr+b2jTC5h9EDSka6fdX6Ng0e375njA8L7kuWfg2qlmXOxoS8BnqqJR
+	fA3DBiww==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIxBV-00084M-JX; Thu, 17 Sep 2020 16:55:01 +0000
+	id 1kIxC3-0008Jg-4v; Thu, 17 Sep 2020 16:55:35 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kIxBR-00082K-GA; Thu, 17 Sep 2020 16:54:58 +0000
+ id 1kIxBy-0008HY-It; Thu, 17 Sep 2020 16:55:31 +0000
 Received: from kozik-lap.mshome.net (unknown [194.230.155.191])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A726C2220E;
- Thu, 17 Sep 2020 16:54:17 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 647A521D24;
+ Thu, 17 Sep 2020 16:55:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600361696;
- bh=fNcuVWkN1TjhyVwmEX+PcPTSMs1C1wjtAwGI/ZRYd+M=;
+ s=default; t=1600361729;
+ bh=pV5NUEmeW9mZ1TS+/Jc3oFxArHOIVWs9UQjncMMV5dA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=zpxZ/+ZXGlBj5MNaI/974Dki8/8VL5VyYoNaEF/LZxSaNVvXInAY18Uz37fXnnux7
- jL3dTTS6yVo7Kwm3rNyarw+MJZaHMeDWD8JypkrYWvy8w/sFIymtEtQRmXo2sPuFhQ
- K+zaRu6fODRoRA66uRciZ8w7dD7YuswX0ETQb5us=
+ b=ZezngZwDO3KQgBWc5kH7o+363k3VkzXLGbSLbSc0tebpQso6t6pYwNkEyZCDiQPmV
+ SDInDhjroyojBh7Mphf9Czz2rjH6R5ZkFLMbtuCEXnnrfdP8uQrsgKQcvItrVphoK1
+ F0JF12gmB5ueiJxBeEsZOAKj0ouhtPyo/iU8CgBA=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Linus Walleij <linus.walleij@linaro.org>,
  Bartosz Golaszewski <bgolaszewski@baylibre.com>,
@@ -102,16 +102,16 @@ To: Linus Walleij <linus.walleij@linaro.org>,
  linux-media@vger.kernel.org, alsa-devel@alsa-project.org,
  linux-stm32@st-md-mailman.stormreply.com,
  linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-Subject: [PATCH v2 04/13] dt-bindings: gpio: fsl-imx-gpio: add i.MX ARMv6 and
- ARMv7 compatibles
-Date: Thu, 17 Sep 2020 18:52:52 +0200
-Message-Id: <20200917165301.23100-5-krzk@kernel.org>
+Subject: [PATCH v2 06/13] dt-bindings: gpio: gpio-vf610: fix iMX 7ULP
+ compatible matching
+Date: Thu, 17 Sep 2020 18:52:54 +0200
+Message-Id: <20200917165301.23100-7-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200917165301.23100-1-krzk@kernel.org>
 References: <20200917165301.23100-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200917_125457_681522_C60A6BE3 
-X-CRM114-Status: GOOD (  12.57  )
+X-CRM114-CacheID: sfid-20200917_125530_985347_57163333 
+X-CRM114-Status: GOOD (  13.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -130,45 +130,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Several DTSes with ARMv6 and ARMv7 i.MX SoCs introduce their own
-compatibles so add them to fix dtbs_check warnings like:
+The i.MX 7ULP DTSes use two compatibles so update the binding to fix
+dtbs_check warnings like:
 
-  arch/arm/boot/dts/imx35-pdk.dt.yaml: gpio@53fa4000:
-    compatible: ['fsl,imx35-gpio', 'fsl,imx31-gpio'] is not valid under any of the given schemas
+  arch/arm/boot/dts/imx7ulp-com.dt.yaml: gpio@40ae0000:
+    compatible: ['fsl,imx7ulp-gpio', 'fsl,vf610-gpio'] is too long
 
-  arch/arm/boot/dts/imx51-babbage.dt.yaml: gpio@73f90000:
-    compatible: ['fsl,imx51-gpio', 'fsl,imx35-gpio'] is not valid under any of the given schemas
+  arch/arm/boot/dts/imx7ulp-com.dt.yaml: gpio@40ae0000:
+    compatible: Additional items are not allowed ('fsl,vf610-gpio' was unexpected)
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
----
- .../devicetree/bindings/gpio/fsl-imx-gpio.yaml       | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/gpio/fsl-imx-gpio.yaml b/Documentation/devicetree/bindings/gpio/fsl-imx-gpio.yaml
-index 737756e081fb..ad761e2f380a 100644
---- a/Documentation/devicetree/bindings/gpio/fsl-imx-gpio.yaml
-+++ b/Documentation/devicetree/bindings/gpio/fsl-imx-gpio.yaml
-@@ -21,8 +21,20 @@ properties:
-           - fsl,imx31-gpio
-           - fsl,imx35-gpio
-           - fsl,imx7d-gpio
+---
+
+Changes since v1:
+1. New patch
+---
+ Documentation/devicetree/bindings/gpio/gpio-vf610.yaml | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/gpio/gpio-vf610.yaml b/Documentation/devicetree/bindings/gpio/gpio-vf610.yaml
+index 82f3e4b407d1..7a5745255969 100644
+--- a/Documentation/devicetree/bindings/gpio/gpio-vf610.yaml
++++ b/Documentation/devicetree/bindings/gpio/gpio-vf610.yaml
+@@ -22,9 +22,11 @@ allOf:
+ 
+ properties:
+   compatible:
+-    enum:
+-      - fsl,vf610-gpio
+-      - fsl,imx7ulp-gpio
++    oneOf:
++      - const: fsl,vf610-gpio
 +      - items:
-+          - const: fsl,imx35-gpio
-+          - const: fsl,imx31-gpio
-       - items:
-           - enum:
-+              - fsl,imx50-gpio
-+              - fsl,imx51-gpio
-+              - fsl,imx53-gpio
-+              - fsl,imx6q-gpio
-+              - fsl,imx6sl-gpio
-+              - fsl,imx6sll-gpio
-+              - fsl,imx6sx-gpio
-+              - fsl,imx6ul-gpio
-+              - fsl,imx7d-gpio
-               - fsl,imx8mm-gpio
-               - fsl,imx8mn-gpio
-               - fsl,imx8mp-gpio
++          - const: fsl,imx7ulp-gpio
++          - const: fsl,vf610-gpio
+ 
+   reg:
+     description: The first reg tuple represents the PORT module, the second tuple
 -- 
 2.17.1
 
