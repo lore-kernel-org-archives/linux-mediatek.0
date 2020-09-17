@@ -2,90 +2,88 @@ Return-Path: <SRS0=Tto8=C2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.0 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6EE1EC43461
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 08:03:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 806DAC433E2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 10:56:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9BAE8206B2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 08:03:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2AF192074B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 10:56:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LJwa8iVO";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=netronome-com.20150623.gappssmtp.com header.i=@netronome-com.20150623.gappssmtp.com header.b="Xm9muXpL"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9BAE8206B2
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=netronome.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1z0E70Nq";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="QB6L5K88"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2AF192074B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TfByqLccZKTL1U0lUc8U3QYgmxoqZtUf7rvEhPVeNJo=; b=LJwa8iVOu3dRcZDB8arkRJPRx
-	knQClkRST5i+bcJzqB1FfTU4GH95yW+L4WJmb3NaFyjQB+RMUb9mtK8wARdMPDC+jP3ooOTi34pyU
-	kSBUdLneCVnEZBDL/CALE0n26pKDL58THlkxTDsJElujj3Pnd9SeMD3u68fss1MNNm2jULcBqfof6
-	JpoLGzWrecmtLYOSM6Uhr5Adxy4nDcoUTPovJ9BtLiHd/SEF98Ix9eK9C6NeRiLAWJAfPCB1nWnCC
-	MB0qEII7p1y8mwZlRBKXr/0XPIoeG6C0aamiT3FXI3q+t7GdXJep1uDIW7a4ZcAXZnI0utPPNeh2J
-	UPROkWaiQ==;
+	 bh=5BDyIQJHh90s4aszlMoAV11ifu2+rzOLe6dzjEEZo2Y=; b=1z0E70NqYXmCsPOpI8Ef9j/Oz
+	69zkzVFszFpCgng7UB3er7c+NbdDFGBjntEAAGHW03Fxk9pnCLtLaReeDHkIGhfnn8zHcw0tViC9a
+	pGzZ9X7I3RszpUj05PX/zLvEYgwPpnpmQlbX1YR29oYX+D9ARxRx4oOMeuCgDh4hWwmSJ+CucDxw8
+	ipsj1fLH8ns+L4XxKgnSnY8QsTLG5YPbt0JYzHDar6nwG0DPRhQDgPdLcIM57+SMaNJmy8wA34oPo
+	v6UpjudaMxm7Ra/GDqFZ4TlB80A5VnadTuMjgTTvV++TIzeMzyB1M+gkrDWTvWYW2+M3z4QE1WrAb
+	8IWnctpvQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIotO-00054X-2i; Thu, 17 Sep 2020 08:03:46 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1kIraV-0002YQ-8Q; Thu, 17 Sep 2020 10:56:27 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kIotI-00052T-83
- for linux-mediatek@lists.infradead.org; Thu, 17 Sep 2020 08:03:41 +0000
-Received: by mail-wm1-x341.google.com with SMTP id a9so1049392wmm.2
- for <linux-mediatek@lists.infradead.org>; Thu, 17 Sep 2020 01:03:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=netronome-com.20150623.gappssmtp.com; s=20150623;
+ id 1kIraS-0002Xy-Qx; Thu, 17 Sep 2020 10:56:25 +0000
+Received: by mail-wr1-x442.google.com with SMTP id w5so1554112wrp.8;
+ Thu, 17 Sep 2020 03:56:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=TUShtxADeMIRUv08jDyFnIdO2h4AVdi1g89uLOtrWXw=;
- b=Xm9muXpLMfdw+3JTaQ5+6nxJDSneO0K8th2wgQ0VLh2VI2BmK+XWoQ9cDtIn8+KaRJ
- B45Xbntr5JjNU8mF7nIZd8VP+CTHviEtF1Um5VazOhr6GEQCgh9bbRNIM6C+XWioNjmk
- ImuOo8Gi8eD0FtSQ7hHZ1yPAo82BLFHJwGGg0UxKCYs0oMSSpMWIe45dJUN+DzUELaKQ
- JzvvcS8KVPQMZJTfgm/lLBewbBl9UGKGHM3XV6hYGQwunOqgCSfJKO8sQaLl1M6X9BRD
- K+XM2hJttDJQqNZl5Xftk9yd2fnhmTZR2ol6vfSH0itoQkT2+o/FcX7saxpuLl0f47l5
- EzpA==
+ bh=T7o1O276VNvFCMXreEbeFlPYMFMj08O5QtDTtLf9+io=;
+ b=QB6L5K889Bo72oCmXlPEd6RO0QFJaiOuUuQYNXSbkbKHLE0z4jthWl14REa3WCR0Bt
+ 7IHiIFNeD/Ta+yo/4I3eoGqh6G9kDPeQAYogqalpiHtq8aE0N2vVL/nLfC8G7fyUISnI
+ HqZvSuiNmgZzkTOCBFRSXTB+sPRscquK8BzaCBsBZW04/6qzVITT/XTRzNX58D5ubsqj
+ EBCDdFzw/4/+qKJ5jqHMFDrIQ6SPZ7RFWRnZTqbCA2A8CuvrZLIiZY8CyMBMGu+cZPGz
+ +Xk5dHOFs8kS9Gn7mKXA7wGo6jD27ynEwYEI2R76ZDPCy8bCgvVnpggr26rleQIwiHel
+ X5Tg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=TUShtxADeMIRUv08jDyFnIdO2h4AVdi1g89uLOtrWXw=;
- b=keuawI8v8ahslBmINMfnQvTKAe3oJJrqeamdbUW7Um1cDIIJJ9kgotL4PQJ9HPkVc3
- lsyOx/i6NScKY2iXR0WMnT0Ot4NezeSeRx2+4JQGh4okEAfmJPDXcUT9wpzpOSl8Nop7
- 2k6BPZALaAx0K1o+IYpVv1S2YJLJxy0b6/P/itXJdu4/30KgtPNomF1dx5mT4AHkWaem
- 51AxsvuI27ww+aj2w7QP7DxHnrbEEa920flYiQ4GS5iWh+F6wUiVxiYIA1Gk2R1koNhB
- zlj2mSYriS49mj6Flh8GEf+kYBAxWp9GK4QTEDioa0tNjA7ER+7kRP3ZfBnXQpNr7gad
- /z8A==
-X-Gm-Message-State: AOAM5314TEv/tsnujGXYZYAe1zYTBS8G6vpC2KzWIozulc+W+m2ShCJd
- tJsQlB4xG3odbBJXPHkdqXkDgw==
-X-Google-Smtp-Source: ABdhPJzTwzfeJOnCQh65prZummqH9JR09Yxja+zvv2OTSAZpPcom4k7xuvXSyH3Yv50qn/8+2aIWyQ==
-X-Received: by 2002:a1c:e256:: with SMTP id z83mr8793930wmg.33.1600329817598; 
- Thu, 17 Sep 2020 01:03:37 -0700 (PDT)
-Received: from netronome.com ([2001:982:756:703:d63d:7eff:fe99:ac9d])
- by smtp.gmail.com with ESMTPSA id a13sm9836030wme.26.2020.09.17.01.03.36
+ bh=T7o1O276VNvFCMXreEbeFlPYMFMj08O5QtDTtLf9+io=;
+ b=Suzy4JbK+6i/obAyaehZrzYEkMHK43VLxyI64lbt2852U3b9/LerY72vAygSDYixKh
+ NAim55Y22M69KmxVHRr0VuIP2+zvdK+I9xtZJ4xgM3iYZqmpJMQZRiNPKD/xmXVubN3T
+ fBuA0qer1JLjzySw1vkK9oadIHhcprhvszCdu5iMwIrUP0Ep78ed1giMt3lJ2boKiUg6
+ rUOl5G3bKEbyow10wZbbkegieq8yYqcG/NqEWMHZMrqQpf1JaJfn18xVVSUJ+lLNeedV
+ mmLE3D68s6F0KKSqdvfWNfTQ9QnPdvzdbHkwFSLAW7nKAzSiBO8fwOZWUJhc03/rn99A
+ kfxw==
+X-Gm-Message-State: AOAM531dcHWKigHEsASFtx6R6K0n1uQBXwrQzKVFR1soIndXtgjnv5Av
+ dnwp+EMQNxSb+qUkJYhHz6o=
+X-Google-Smtp-Source: ABdhPJwg7nkwQTaRBQuWwl0RcZSkUXHrdUc9WYlLoauvclz9jtCse6f5SG7t61si5y3RH63KecEA/w==
+X-Received: by 2002:adf:e711:: with SMTP id c17mr32158269wrm.359.1600340183749; 
+ Thu, 17 Sep 2020 03:56:23 -0700 (PDT)
+Received: from localhost ([217.111.27.204])
+ by smtp.gmail.com with ESMTPSA id d83sm10820463wmf.23.2020.09.17.03.56.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Sep 2020 01:03:36 -0700 (PDT)
-Date: Thu, 17 Sep 2020 10:03:35 +0200
-From: Simon Horman <simon.horman@netronome.com>
-To: Joe Perches <joe@perches.com>
-Subject: Re: [oss-drivers] [trivial PATCH] treewide: Convert switch/case
- fallthrough; to break;
-Message-ID: <20200917080334.GB5769@netronome.com>
-References: <e6387578c75736d61b2fe70d9783d91329a97eb4.camel@perches.com>
+ Thu, 17 Sep 2020 03:56:22 -0700 (PDT)
+Date: Thu, 17 Sep 2020 12:56:20 +0200
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Thomas Zimmermann <tzimmermann@suse.de>
+Subject: Re: [PATCH v2 14/21] drm/tegra: Introduce GEM object functions
+Message-ID: <20200917105620.GK3515672@ulmo>
+References: <20200915145958.19993-1-tzimmermann@suse.de>
+ <20200915145958.19993-15-tzimmermann@suse.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <e6387578c75736d61b2fe70d9783d91329a97eb4.camel@perches.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20200915145958.19993-15-tzimmermann@suse.de>
+User-Agent: Mutt/1.14.6 (2020-07-11)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200917_040340_366129_6C9E2F69 
-X-CRM114-Status: GOOD (  15.58  )
+X-CRM114-CacheID: sfid-20200917_065624_883186_88149BDA 
+X-CRM114-Status: GOOD (  12.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,73 +95,95 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-wireless@vger.kernel.org, linux-fbdev@vger.kernel.org,
- oss-drivers@netronome.com, nouveau@lists.freedesktop.org,
- alsa-devel <alsa-devel@alsa-project.org>, dri-devel@lists.freedesktop.org,
- linux-mips@vger.kernel.org, linux-ide@vger.kernel.org, dm-devel@redhat.com,
- linux-mtd@lists.infradead.org, linux-i2c@vger.kernel.org,
- sparclinux@vger.kernel.org, kvmarm@lists.cs.columbia.edu,
- linux-rtc@vger.kernel.org, linux-s390@vger.kernel.org,
- linux-scsi@vger.kernel.org, dccp@vger.kernel.org, linux-rdma@vger.kernel.org,
- linux-atm-general@lists.sourceforge.net, linux-afs@lists.infradead.org,
- coreteam@netfilter.org, intel-wired-lan@lists.osuosl.org,
- linux-serial@vger.kernel.org, linux-input@vger.kernel.org,
- linux-mmc@vger.kernel.org, Kees Cook <kees.cook@canonical.com>,
- linux-media@vger.kernel.org, linux-pm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, linux-sctp@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-nvme@lists.infradead.org,
- storagedev@microchip.com, ceph-devel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
- Jiri Kosina <trivial@kernel.org>, linux-parisc@vger.kernel.org,
- netdev@vger.kernel.org, linux-usb@vger.kernel.org,
- Nick Desaulniers <ndesaulniers@google.com>,
- LKML <linux-kernel@vger.kernel.org>, iommu@lists.linux-foundation.org,
- netfilter-devel@vger.kernel.org, linux-crypto@vger.kernel.org,
- bpf@vger.kernel.org, linuxppc-dev@lists.ozlabs.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: hamohammed.sa@gmail.com, heiko@sntech.de, andrey.grodzovsky@amd.com,
+ airlied@linux.ie, nouveau@lists.freedesktop.org,
+ joonas.lahtinen@linux.intel.com, dri-devel@lists.freedesktop.org,
+ michal.simek@xilinx.com, eric@anholt.net, nirmoy.das@amd.com,
+ robdclark@gmail.com, krzk@kernel.org, sam@ravnborg.org,
+ sumit.semwal@linaro.org, emil.velikov@collabora.com,
+ linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com,
+ oleksandr_andrushchenko@epam.com, tomi.valkeinen@ti.com,
+ linux-tegra@vger.kernel.org, linux@armlinux.org.uk,
+ patrik.r.jakobsson@gmail.com, jonathanh@nvidia.com,
+ linux-rockchip@lists.infradead.org, kgene@kernel.org, bskeggs@redhat.com,
+ xen-devel@lists.xenproject.org, intel-gfx@lists.freedesktop.org,
+ matthew.auld@intel.com, chunkuang.hu@kernel.org, andi.shyti@intel.com,
+ daniel@ffwll.ch, linux-arm-msm@vger.kernel.org, marek.olsak@amd.com,
+ tianci.yin@amd.com, maarten.lankhorst@linux.intel.com,
+ etnaviv@lists.freedesktop.org, jani.nikula@linux.intel.com,
+ inki.dae@samsung.com, hdegoede@redhat.com, christian.gmeiner@gmail.com,
+ linux-mediatek@lists.infradead.org, mripard@kernel.org, rodrigo.vivi@intel.com,
+ matthias.bgg@gmail.com, evan.quan@amd.com, sean@poorly.run,
+ linux-arm-kernel@lists.infradead.org, tvrtko.ursulin@linux.intel.com,
+ amd-gfx@lists.freedesktop.org, laurent.pinchart@ideasonboard.com,
+ hyun.kwon@xilinx.com, rodrigosiqueiramelo@gmail.com, aaron.liu@amd.com,
+ Felix.Kuehling@amd.com, xinhui.pan@amd.com, sw0312.kim@samsung.com,
+ hjc@rock-chips.com, chris@chris-wilson.co.uk, kyungmin.park@samsung.com,
+ miaoqinglang@huawei.com, p.zabel@pengutronix.de, alexander.deucher@amd.com,
+ Hawking.Zhang@amd.com, freedreno@lists.freedesktop.org,
+ christian.koenig@amd.com, l.stach@pengutronix.de
+Content-Type: multipart/mixed; boundary="===============6488123330015001982=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 09, 2020 at 01:06:39PM -0700, Joe Perches wrote:
-> fallthrough to a separate case/default label break; isn't very readable.
-> 
-> Convert pseudo-keyword fallthrough; statements to a simple break; when
-> the next label is case or default and the only statement in the next
-> label block is break;
-> 
-> Found using:
-> 
-> $ grep-2.5.4 -rP --include=*.[ch] -n "fallthrough;(\s*(case\s+\w+|default)\s*:\s*){1,7}break;" *
-> 
-> Miscellanea:
-> 
-> o Move or coalesce a couple label blocks above a default: block.
-> 
-> Signed-off-by: Joe Perches <joe@perches.com>
 
-...
+--===============6488123330015001982==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="NqNl6FRZtoRUn5bW"
+Content-Disposition: inline
 
-> diff --git a/drivers/net/ethernet/netronome/nfp/nfpcore/nfp6000_pcie.c b/drivers/net/ethernet/netronome/nfp/nfpcore/nfp6000_pcie.c
-> index 252fe06f58aa..1d5b87079104 100644
-> --- a/drivers/net/ethernet/netronome/nfp/nfpcore/nfp6000_pcie.c
-> +++ b/drivers/net/ethernet/netronome/nfp/nfpcore/nfp6000_pcie.c
-> @@ -345,7 +345,7 @@ static int matching_bar(struct nfp_bar *bar, u32 tgt, u32 act, u32 tok,
->  		baract = NFP_CPP_ACTION_RW;
->  		if (act == 0)
->  			act = NFP_CPP_ACTION_RW;
-> -		fallthrough;
-> +		break;
->  	case NFP_PCIE_BAR_PCIE2CPP_MapType_FIXED:
->  		break;
->  	default:
 
-This is a cascading fall-through handling all map types.
-I don't think this change improves readability.
+--NqNl6FRZtoRUn5bW
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-...
+On Tue, Sep 15, 2020 at 04:59:51PM +0200, Thomas Zimmermann wrote:
+> GEM object functions deprecate several similar callback interfaces in
+> struct drm_driver. This patch replaces the per-driver callbacks with
+> per-instance callbacks in tegra.
+>=20
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> ---
+>  drivers/gpu/drm/tegra/drm.c | 4 ----
+>  drivers/gpu/drm/tegra/gem.c | 8 ++++++++
+>  2 files changed, 8 insertions(+), 4 deletions(-)
+
+Acked-by: Thierry Reding <treding@nvidia.com>
+
+--NqNl6FRZtoRUn5bW
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl9jQNQACgkQ3SOs138+
+s6HfWQ//YmrWsVV1CJUAgb5t2QX4pCrujVRekVE/g1njlA/b4hb8UrTwixaZox4k
+Y6ALc4RAngHpnPoebK9HTtI7eQ6gV3NzTvOZN432iqInp8UuFdrqwY9hkRcS5ak9
+gNSHqMgl0BAkIdZ7VM5EWvVcbSkWsGbOR2uTx45m3hieqf80Jlyto/yqcH8yHm0Y
+dNhlRIxSS23lHF4c79jOtCPyJjF2DaErfz+qFiFLmdV60AjeCfl6LZZSuSNSbSNv
+Ht8OICXXHv9dKx6IbgyAAJIf77DsMDyXHzNC6YxoBH1c1X3JgEinuNaj8h+ZXxrT
+klWtayTZ15xforiBumJH+Zi23DA+95v6eigfHDVje5APtRHxDgdnNOhW6zRF049I
+powiLvCaS10xJVB7+4DlXmvdJTRaw8jNMcOYR0Yyg5fwrbkjkHyFsi2iQyzclBEJ
+KM5kjLzpgBQpaEgpsCqxY0TJ0/bU/VdL532UpAyCK7D9RxN8sdhfU7A4xuwwAeNP
+t63YCPEKs9kd0rKW4W6tUOEm9IeNiHL0CL55oYNDUNk0ddTtmdlQkFKSOfDbGBwe
+X3RtJeu0oG5S40RXucqy2J4BJO5tKcymjFb3xqjaCP8nDF3ozvgmq/Hu4+MWkeL7
+b/rNCCE8o02rDlLqOHqxccc+bQXs6tQBkwI0mESWxpdRfBPoyt8=
+=1YYz
+-----END PGP SIGNATURE-----
+
+--NqNl6FRZtoRUn5bW--
+
+
+--===============6488123330015001982==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============6488123330015001982==--
+
