@@ -2,22 +2,23 @@ Return-Path: <SRS0=Tto8=C2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C65EFC43461
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 07:47:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6EE1EC43461
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 08:03:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4B53A21D41
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 07:47:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9BAE8206B2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 08:03:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TC5vUf28"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4B53A21D41
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=secunet.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LJwa8iVO";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=netronome-com.20150623.gappssmtp.com header.i=@netronome-com.20150623.gappssmtp.com header.b="Xm9muXpL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9BAE8206B2
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=netronome.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -25,59 +26,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jVzhXH/wPLRYQAuUEbqhyxeDo5Z+jkAjKxd2ynWgfCA=; b=TC5vUf28o56az2gb1a+ypljG3
-	yWiCLQmilq8AgWFhLEQZwWE1IDRfqon82wM7fTNDKFZV5yIQTcuAN8ZxLpYf2KZo6JIpbYXFZWbX4
-	xl+qg1lJZwkPZavpNpwvQd67Wbgm5eLYHB3g0AuyaS3jHyTXmW4NkM2TZiJhI1nG26FLp1MxGhJiM
-	42pw6KSeH3HkCWV14pUZDtjlTMl6NFe1RH5h9mH+M+9dWilY0BwwGTvroxnDiEBNVWpSNSvY07+w6
-	aTraVF1PUbLDdHZ0nbk/EkuLfQ+qsk97SXJpoGplFPCWnv7ChND79iWBgmQmW8oyoy78yUPuqXKlZ
-	WA+lAys+g==;
+	 bh=TfByqLccZKTL1U0lUc8U3QYgmxoqZtUf7rvEhPVeNJo=; b=LJwa8iVOu3dRcZDB8arkRJPRx
+	knQClkRST5i+bcJzqB1FfTU4GH95yW+L4WJmb3NaFyjQB+RMUb9mtK8wARdMPDC+jP3ooOTi34pyU
+	kSBUdLneCVnEZBDL/CALE0n26pKDL58THlkxTDsJElujj3Pnd9SeMD3u68fss1MNNm2jULcBqfof6
+	JpoLGzWrecmtLYOSM6Uhr5Adxy4nDcoUTPovJ9BtLiHd/SEF98Ix9eK9C6NeRiLAWJAfPCB1nWnCC
+	MB0qEII7p1y8mwZlRBKXr/0XPIoeG6C0aamiT3FXI3q+t7GdXJep1uDIW7a4ZcAXZnI0utPPNeh2J
+	UPROkWaiQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIod2-0008Ry-Qv; Thu, 17 Sep 2020 07:46:52 +0000
-Received: from a.mx.secunet.com ([62.96.220.36])
+	id 1kIotO-00054X-2i; Thu, 17 Sep 2020 08:03:46 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kIocx-0008PH-SX; Thu, 17 Sep 2020 07:46:49 +0000
-Received: from localhost (localhost [127.0.0.1])
- by a.mx.secunet.com (Postfix) with ESMTP id 7647320538;
- Thu, 17 Sep 2020 09:46:38 +0200 (CEST)
-X-Virus-Scanned: by secunet
-Received: from a.mx.secunet.com ([127.0.0.1])
- by localhost (a.mx.secunet.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CU7cPT3beQvm; Thu, 17 Sep 2020 09:46:38 +0200 (CEST)
-Received: from mail-essen-02.secunet.de (unknown [10.53.40.205])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
- (No client certificate requested)
- by a.mx.secunet.com (Postfix) with ESMTPS id F391E20504;
- Thu, 17 Sep 2020 09:46:37 +0200 (CEST)
-Received: from mbx-essen-01.secunet.de (10.53.40.197) by
- mail-essen-02.secunet.de (10.53.40.205) with Microsoft SMTP Server (TLS) id
- 14.3.487.0; Thu, 17 Sep 2020 09:46:37 +0200
-Received: from gauss2.secunet.de (10.182.7.193) by mbx-essen-01.secunet.de
- (10.53.40.197) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Thu, 17 Sep
- 2020 09:46:37 +0200
-Received: by gauss2.secunet.de (Postfix, from userid 1000)	id 1D4813184337;
- Thu, 17 Sep 2020 09:46:37 +0200 (CEST)
-Date: Thu, 17 Sep 2020 09:46:37 +0200
-From: Steffen Klassert <steffen.klassert@secunet.com>
-To: lina.wang <lina.wang@mediatek.com>
-Subject: Re: [PATCH] xfrm:fragmented ipv4 tunnel packets in inner interface
-Message-ID: <20200917074637.GV20687@gauss3.secunet.de>
-References: <20200909062613.18604-1-lina.wang@mediatek.com>
- <20200915073006.GR20687@gauss3.secunet.de>
- <1600160722.5295.15.camel@mbjsdccf07>
- <20200915093230.GS20687@gauss3.secunet.de>
- <1600172260.2494.2.camel@mbjsdccf07>
+ id 1kIotI-00052T-83
+ for linux-mediatek@lists.infradead.org; Thu, 17 Sep 2020 08:03:41 +0000
+Received: by mail-wm1-x341.google.com with SMTP id a9so1049392wmm.2
+ for <linux-mediatek@lists.infradead.org>; Thu, 17 Sep 2020 01:03:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=netronome-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=TUShtxADeMIRUv08jDyFnIdO2h4AVdi1g89uLOtrWXw=;
+ b=Xm9muXpLMfdw+3JTaQ5+6nxJDSneO0K8th2wgQ0VLh2VI2BmK+XWoQ9cDtIn8+KaRJ
+ B45Xbntr5JjNU8mF7nIZd8VP+CTHviEtF1Um5VazOhr6GEQCgh9bbRNIM6C+XWioNjmk
+ ImuOo8Gi8eD0FtSQ7hHZ1yPAo82BLFHJwGGg0UxKCYs0oMSSpMWIe45dJUN+DzUELaKQ
+ JzvvcS8KVPQMZJTfgm/lLBewbBl9UGKGHM3XV6hYGQwunOqgCSfJKO8sQaLl1M6X9BRD
+ K+XM2hJttDJQqNZl5Xftk9yd2fnhmTZR2ol6vfSH0itoQkT2+o/FcX7saxpuLl0f47l5
+ EzpA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=TUShtxADeMIRUv08jDyFnIdO2h4AVdi1g89uLOtrWXw=;
+ b=keuawI8v8ahslBmINMfnQvTKAe3oJJrqeamdbUW7Um1cDIIJJ9kgotL4PQJ9HPkVc3
+ lsyOx/i6NScKY2iXR0WMnT0Ot4NezeSeRx2+4JQGh4okEAfmJPDXcUT9wpzpOSl8Nop7
+ 2k6BPZALaAx0K1o+IYpVv1S2YJLJxy0b6/P/itXJdu4/30KgtPNomF1dx5mT4AHkWaem
+ 51AxsvuI27ww+aj2w7QP7DxHnrbEEa920flYiQ4GS5iWh+F6wUiVxiYIA1Gk2R1koNhB
+ zlj2mSYriS49mj6Flh8GEf+kYBAxWp9GK4QTEDioa0tNjA7ER+7kRP3ZfBnXQpNr7gad
+ /z8A==
+X-Gm-Message-State: AOAM5314TEv/tsnujGXYZYAe1zYTBS8G6vpC2KzWIozulc+W+m2ShCJd
+ tJsQlB4xG3odbBJXPHkdqXkDgw==
+X-Google-Smtp-Source: ABdhPJzTwzfeJOnCQh65prZummqH9JR09Yxja+zvv2OTSAZpPcom4k7xuvXSyH3Yv50qn/8+2aIWyQ==
+X-Received: by 2002:a1c:e256:: with SMTP id z83mr8793930wmg.33.1600329817598; 
+ Thu, 17 Sep 2020 01:03:37 -0700 (PDT)
+Received: from netronome.com ([2001:982:756:703:d63d:7eff:fe99:ac9d])
+ by smtp.gmail.com with ESMTPSA id a13sm9836030wme.26.2020.09.17.01.03.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 17 Sep 2020 01:03:36 -0700 (PDT)
+Date: Thu, 17 Sep 2020 10:03:35 +0200
+From: Simon Horman <simon.horman@netronome.com>
+To: Joe Perches <joe@perches.com>
+Subject: Re: [oss-drivers] [trivial PATCH] treewide: Convert switch/case
+ fallthrough; to break;
+Message-ID: <20200917080334.GB5769@netronome.com>
+References: <e6387578c75736d61b2fe70d9783d91329a97eb4.camel@perches.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1600172260.2494.2.camel@mbjsdccf07>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-ClientProxiedBy: cas-essen-01.secunet.de (10.53.40.201) To
- mbx-essen-01.secunet.de (10.53.40.197)
-X-EXCLAIMER-MD-CONFIG: 2c86f778-e09b-4440-8b15-867914633a10
+In-Reply-To: <e6387578c75736d61b2fe70d9783d91329a97eb4.camel@perches.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200917_034648_026146_A0852062 
-X-CRM114-Status: GOOD (  18.54  )
+X-CRM114-CacheID: sfid-20200917_040340_366129_6C9E2F69 
+X-CRM114-Status: GOOD (  15.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,39 +97,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Herbert Xu <herbert@gondor.apana.org.au>,
- Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Jakub
- Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>,
- "David S . Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
+Cc: linux-wireless@vger.kernel.org, linux-fbdev@vger.kernel.org,
+ oss-drivers@netronome.com, nouveau@lists.freedesktop.org,
+ alsa-devel <alsa-devel@alsa-project.org>, dri-devel@lists.freedesktop.org,
+ linux-mips@vger.kernel.org, linux-ide@vger.kernel.org, dm-devel@redhat.com,
+ linux-mtd@lists.infradead.org, linux-i2c@vger.kernel.org,
+ sparclinux@vger.kernel.org, kvmarm@lists.cs.columbia.edu,
+ linux-rtc@vger.kernel.org, linux-s390@vger.kernel.org,
+ linux-scsi@vger.kernel.org, dccp@vger.kernel.org, linux-rdma@vger.kernel.org,
+ linux-atm-general@lists.sourceforge.net, linux-afs@lists.infradead.org,
+ coreteam@netfilter.org, intel-wired-lan@lists.osuosl.org,
+ linux-serial@vger.kernel.org, linux-input@vger.kernel.org,
+ linux-mmc@vger.kernel.org, Kees Cook <kees.cook@canonical.com>,
+ linux-media@vger.kernel.org, linux-pm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, linux-sctp@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-nvme@lists.infradead.org,
+ storagedev@microchip.com, ceph-devel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
+ Jiri Kosina <trivial@kernel.org>, linux-parisc@vger.kernel.org,
+ netdev@vger.kernel.org, linux-usb@vger.kernel.org,
+ Nick Desaulniers <ndesaulniers@google.com>,
+ LKML <linux-kernel@vger.kernel.org>, iommu@lists.linux-foundation.org,
+ netfilter-devel@vger.kernel.org, linux-crypto@vger.kernel.org,
+ bpf@vger.kernel.org, linuxppc-dev@lists.ozlabs.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 15, 2020 at 08:17:40PM +0800, lina.wang wrote:
-> We didnot get the router's log, which is some operator's.Actually, after
-> we patched, there is no such issue. Sometimes,router will return
-> packet-too-big, most of times nothing returned,dropped silently
-
-This looks like a broken router, we can't fix that in the code.
-
-> On Tue, 2020-09-15 at 11:32 +0200, Steffen Klassert wrote:
-> > On Tue, Sep 15, 2020 at 05:05:22PM +0800, lina.wang wrote:
-> > > 
-> > > Yes, DF bit is not set.
-> > 
-> > ...
-> > 
-> > > Those two packets are fragmented to one big udp packet, which payload is 1516B.
-> > > After getting rid of tunnel header, it is also a udp packet, which payload is
-> > > 1466 bytes.It didnot get any response for this packet.We guess it is dropped
-> > > by router. Because if we reduced the length, it got response.
-> > 
-> > If the DF bit is not set, the router should fragment the packet. If it
-> > does not do so, it is misconfigured. Do you have access to that router?
+On Wed, Sep 09, 2020 at 01:06:39PM -0700, Joe Perches wrote:
+> fallthrough to a separate case/default label break; isn't very readable.
 > 
+> Convert pseudo-keyword fallthrough; statements to a simple break; when
+> the next label is case or default and the only statement in the next
+> label block is break;
+> 
+> Found using:
+> 
+> $ grep-2.5.4 -rP --include=*.[ch] -n "fallthrough;(\s*(case\s+\w+|default)\s*:\s*){1,7}break;" *
+> 
+> Miscellanea:
+> 
+> o Move or coalesce a couple label blocks above a default: block.
+> 
+> Signed-off-by: Joe Perches <joe@perches.com>
+
+...
+
+> diff --git a/drivers/net/ethernet/netronome/nfp/nfpcore/nfp6000_pcie.c b/drivers/net/ethernet/netronome/nfp/nfpcore/nfp6000_pcie.c
+> index 252fe06f58aa..1d5b87079104 100644
+> --- a/drivers/net/ethernet/netronome/nfp/nfpcore/nfp6000_pcie.c
+> +++ b/drivers/net/ethernet/netronome/nfp/nfpcore/nfp6000_pcie.c
+> @@ -345,7 +345,7 @@ static int matching_bar(struct nfp_bar *bar, u32 tgt, u32 act, u32 tok,
+>  		baract = NFP_CPP_ACTION_RW;
+>  		if (act == 0)
+>  			act = NFP_CPP_ACTION_RW;
+> -		fallthrough;
+> +		break;
+>  	case NFP_PCIE_BAR_PCIE2CPP_MapType_FIXED:
+>  		break;
+>  	default:
+
+This is a cascading fall-through handling all map types.
+I don't think this change improves readability.
+
+...
 
 _______________________________________________
 Linux-mediatek mailing list
