@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 64460C2BBD1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 16:55:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D467C43461
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 16:55:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 04B472078D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 16:55:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4CE2E21D92
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 16:55:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SPjsrBKp";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="iuy5p0+E"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 04B472078D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Y5pro0ZE";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Upx+hOpc"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CE2E21D92
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gIKArYpyWbiXOcYv5CAvirqruC4g+dpOCSPLYhw+YWE=; b=SPjsrBKpCy8bPWht464j7BN9nc
-	IKCwcGv937e+nlA6wihpGW5wxyiGkjvWhljZzYw4JyeQ43ZRJGsI0VfZdrCcPPza2Zi0GqXDvJnsS
-	ogY0GYmdAzbE/y5jpp6tfF/9rpEfBVDDPBlf5qSyblaF6wySFvGJrTM3FUvJAlJwgH7lH+qNu/9Dc
-	qQJp2OumcoN9jW/9sivmEdqs6MDpUbBnTEgt1+QgaeMXnAXzGgn2SqvuB1iZSaAUHkHVefWipEyZl
-	noMLcgcoMXCWWCrkn7W4Ed2mAYN1Z9JurYChhI5oiOcuTo8FuSjpY4TemhdexzdD1bZJCSkECbGfx
-	rMe3uhdA==;
+	bh=s6wtIRrXwT8OIPqM/pmpEu+vHh4R1vZETngntWWTGPc=; b=Y5pro0ZEAwamiygS8diFNy426N
+	aSfWkDVCvaCEvKKCM5hcFKb8IYyYIWw+4Yf3T/Ch6mFPwP8csQ0v/rLls6rAjjSAStmFC4Z3MU4ve
+	VJ2gvTY8nIiSbakenIRdQetJFstIoiuOggxsuf3I4RD3s11PyeVrPCyz636r7BOMyO6jaLJRIs4Ei
+	BPt772xn8UQZW67ahkZUMSBHDQ1xv/WZgLubopkvLj8h4mhEDOBWbsdzGLZjWY9VjiLBpfQI+eAHi
+	fB7nODMFg+aIy3h20iYStmL7RWeetRG4TnzHgpm07hzdPFwEj6ZUfOxJoVbL1CE1ycDzkSvh4tDAy
+	GgZDb1Ow==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIxBm-0008CD-0B; Thu, 17 Sep 2020 16:55:18 +0000
+	id 1kIxCH-0008Rc-CZ; Thu, 17 Sep 2020 16:55:49 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kIxBi-0008AY-OQ; Thu, 17 Sep 2020 16:55:16 +0000
+ id 1kIxCD-0008PA-HQ; Thu, 17 Sep 2020 16:55:47 +0000
 Received: from kozik-lap.mshome.net (unknown [194.230.155.191])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id CE174221E7;
- Thu, 17 Sep 2020 16:54:58 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 58EBE2064B;
+ Thu, 17 Sep 2020 16:55:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600361713;
- bh=HczLzPQr6OtHbam5qOdkdD+vA7dPuNPd8y9fq4tyixw=;
+ s=default; t=1600361744;
+ bh=dFPbOAJ+oeV4JL1+FvEz/lM51pVEtTgDCeXjIbkcrXE=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=iuy5p0+Ez3XMnKjk08wzzH6pMKBcMSmcBzBBWZcw06qb8eATzdQsyeG9aZ85bT4hW
- pzU2ynkwfqqkI3EYoJgoOZJzpq2CFcQ0Gp/XY+1Gpqr1vebfRY/wroBvMS2AHGEVvi
- YCKCmQK5gyP55HfTJ9BhRkNS8uT2a5HUIDR0Sudo=
+ b=Upx+hOpc9J/lcbE9OKI5mOafpckAkFpvyhiPVxHgkbSz/QxP6k6EPmqz7szVNd/39
+ 6eOasWlgoMnY4DHRsjiBftWmNe9v14c9O6l5BB0m6Ua3DO2E5DUk2JBB65TQTF4fN+
+ Sxhxa+BRxFcOEfuTjStNi0ooVufbYHRCNy1c+vnE=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Linus Walleij <linus.walleij@linaro.org>,
  Bartosz Golaszewski <bgolaszewski@baylibre.com>,
@@ -102,15 +102,16 @@ To: Linus Walleij <linus.walleij@linaro.org>,
  linux-media@vger.kernel.org, alsa-devel@alsa-project.org,
  linux-stm32@st-md-mailman.stormreply.com,
  linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-Subject: [PATCH v2 05/13] dt-bindings: gpio: fsl-imx-gpio: add gpio-line-names
-Date: Thu, 17 Sep 2020 18:52:53 +0200
-Message-Id: <20200917165301.23100-6-krzk@kernel.org>
+Subject: [PATCH v2 07/13] dt-bindings: media: include common schema in GPIO
+ controllers
+Date: Thu, 17 Sep 2020 18:52:55 +0200
+Message-Id: <20200917165301.23100-8-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200917165301.23100-1-krzk@kernel.org>
 References: <20200917165301.23100-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200917_125515_040639_BF1C0E8E 
-X-CRM114-Status: GOOD (  14.88  )
+X-CRM114-CacheID: sfid-20200917_125545_743945_9FA69C3E 
+X-CRM114-Status: GOOD (  14.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -129,30 +130,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Describe common "gpio-line-names" property to fix dtbs_check warnings
-like:
-
-  arch/arm/boot/dts/imx53-m53menlo.dt.yaml: gpio@53f84000:
-    'gpio-line-names' does not match any of the regexes: '^(hog-[0-9]+|.+-hog(-[0-9]+)?)$', 'pinctrl-[0-9]+'
+Include the common GPIO schema in GPIO controllers to be sure all common
+properties are properly validated.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
----
- Documentation/devicetree/bindings/gpio/fsl-imx-gpio.yaml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/gpio/fsl-imx-gpio.yaml b/Documentation/devicetree/bindings/gpio/fsl-imx-gpio.yaml
-index ad761e2f380a..347f059d347a 100644
---- a/Documentation/devicetree/bindings/gpio/fsl-imx-gpio.yaml
-+++ b/Documentation/devicetree/bindings/gpio/fsl-imx-gpio.yaml
-@@ -65,7 +65,7 @@ properties:
-     const: 2
+---
+
+Changes since v1:
+1. New patch
+---
+ Documentation/devicetree/bindings/media/i2c/maxim,max9286.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/media/i2c/maxim,max9286.yaml b/Documentation/devicetree/bindings/media/i2c/maxim,max9286.yaml
+index 9ea827092fdd..3f72c37b99f7 100644
+--- a/Documentation/devicetree/bindings/media/i2c/maxim,max9286.yaml
++++ b/Documentation/devicetree/bindings/media/i2c/maxim,max9286.yaml
+@@ -24,6 +24,9 @@ description: |
+   serializer will output it on a local I2C bus. In the other direction all I2C
+   traffic received over GMSL by the MAX9286 is output on the local I2C bus.
  
-   gpio-controller: true
--
-+  gpio-line-names: true
-   gpio-ranges: true
- 
-   power-domains:
++allOf:
++  - $ref: /schemas/gpio/gpio-common.yaml#
++
+ properties:
+   '#address-cells':
+     const: 1
 -- 
 2.17.1
 
