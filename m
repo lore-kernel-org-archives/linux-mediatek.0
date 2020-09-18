@@ -1,69 +1,83 @@
-Return-Path: <SRS0=Tto8=C2=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=3MyJ=C3=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93D92C43463
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 20:13:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6B472C43463
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 01:34:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 245C620707
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2020 20:13:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F064820659
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 01:34:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Fp9zyQ01";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.b="ghKM0GYx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 245C620707
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="G8nllwbv";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="ExnwxyuO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F064820659
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jwq5lrwZeaW8vIxxXRPiq35cq3CAPgjqWQEtgjhaUzY=; b=Fp9zyQ01YXwgeUwl18x4oVKu+
-	j+UXp9aeSUQUQvZLMBWB+nXyLiIKsPUkYzVQ5WpE0qzs5Md0zexZqmyPA+BXESL1Io4FASa6Mxwc4
-	4aXrAQ5+QbLwYxZXVSvklvqgSIw9YC6XMLP7khmHHOSPx+PAYATydpk1yCpgSFf1N4S0PKlsogVd1
-	9f/WL6Hb/88DNeVTEXqxlTTG6K5uIEoM2CUcqWkUIKzsqCW9g6q3NwhCM3ewPIMFfa+vAIUXqP6Xb
-	5JcuxKEcFS3Euh2G81IWI2Ic9QpNXm3LxIR5DUmd7rDyB5RKvlwrvPt5hdZE6I3Ef5ljOAyNsTktC
-	8+NsrLPSw==;
+	 bh=NAVDqicT71J6rcRg4WWITjviDG3jU0SsnXNuFtz3N8Q=; b=G8nllwbv0JyTsKELQ7xJxgnnv
+	kjIzoWiLI+hs77cQxAZnb7ZFYceIYzzkuHogn5eUTpxiaazRFrJf4yzRfi7Yp0gMIV4zC1Z24KMGa
+	o+lMzRDOu8VvlluYy8OuzCOVpj8BvLc82hkF5eLpvvMPTMLJpwga54W5zXshjOVKhQzLk30tgxgRo
+	VxrksXPPsdFadYb2RDmxjqHHJdvQSfnbSsd58HFje8ulAjx1sYQsIm+ATrJLGb+s1H3Qj8c97CxMb
+	IWM9jX0uqa1cj9pF2ytKTXcfe2IFIejcuKMRj9bpuj36oXUNQOW7/PRlsLnSZd9fpfZiW2SXCwp9g
+	zaspRvH5w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kJ0Hq-0002gP-7t; Thu, 17 Sep 2020 20:13:46 +0000
-Received: from perceval.ideasonboard.com
- ([2001:4b98:dc2:55:216:3eff:fef7:d647])
+	id 1kJ5IK-0000P8-Ch; Fri, 18 Sep 2020 01:34:36 +0000
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kJ0Hm-0002fK-9U; Thu, 17 Sep 2020 20:13:43 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
- [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id E541EFED;
- Thu, 17 Sep 2020 22:13:40 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1600373621;
- bh=Lgq9PKRDYhVRmNU7RasyOZL9cSKALVzKVkOgyrxq3OM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ghKM0GYxCHRhO2OzSWfqAhvO7iCRt7cu1MM1uolJIk+nsQMPRL7i+oqzAG17EDXFX
- hXLgKqL8giZLAXpZS4JYEwCm7oygNVuf1gJW1iEqCumOXugar6+RcBIw2vSYE1k5Ma
- eNzDgBcqBKHUcXSs2SWfCLHPqVWYAO4XJE6hsiWs=
-Date: Thu, 17 Sep 2020 23:13:11 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [PATCH v2 02/13] dt-bindings: gpio: include common schema in
- GPIO controllers
-Message-ID: <20200917201311.GH3969@pendragon.ideasonboard.com>
-References: <20200917165301.23100-1-krzk@kernel.org>
- <20200917165301.23100-3-krzk@kernel.org>
+ id 1kJ5IH-0000OG-OB
+ for linux-mediatek@lists.infradead.org; Fri, 18 Sep 2020 01:34:34 +0000
+Received: by mail-io1-xd41.google.com with SMTP id h4so4939134ioe.5
+ for <linux-mediatek@lists.infradead.org>; Thu, 17 Sep 2020 18:34:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=wMfYmzq61BMVuIay6MAmJ92sX7yw34AC1En4dJC49nM=;
+ b=ExnwxyuOZ5QMOqFjrHje1iqNp6G4EN6OIn/hhbVXhERcc2Hj8jQQiDqUgfcjXqbKJR
+ nJC6Iap4LGotN7XE+YqDuuwkJusdLs1MoPK67eMhwgsxsxdb9iVWcyUiJxWREwjcA3BQ
+ 2D7GL9kz6Uw4uAtVWDLsPTZO6/5Vei+rvdiA8Fmit419cA8HElorA4GgkoWcfxv5knOe
+ c8JqlY1WTGcOHnr0Fa8ouqQd0wNtZEgRFFMHM80XqZ3sgimqtx20knjoAmd9Fj16mckd
+ 5hhZoUa1rs/NlRAVfzkDmNM+D8g9FPIcEXYyGYmM6NzLkl13Xkt5M99Ds5lDAe9gS99E
+ xHrQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=wMfYmzq61BMVuIay6MAmJ92sX7yw34AC1En4dJC49nM=;
+ b=Q5spVcJzDhz9ujFrDqoJQ/1Qw/GoaWn9VygeGx/mBW9VdxSX0pEzECQnvLiSCbvwr8
+ Koc0KZY0kMgYsY43eIGv+FusS3/uMOfQGXBQfy8esHlabDyFUkl8sXxvFc0RIEpMON/H
+ OnPRRIYGRHb92TjZrk8FXzGXZ//ivrGqVqK0pgn/W/9zZj7ePVpEO8bmhS5LzmpPkXcz
+ Uuy73atuoJ5k0aG+7YoGwsNE/DhAh+RFWlB7Yvpvvg/EtNNM7fCia9BDctPdk9X+Fo7W
+ rnHBw6+KhPK8+MypMtNXZHacBnbyKCUi1UCv6AOdH175CTh03TS27gCJUFaWZGdn5oIo
+ cxcw==
+X-Gm-Message-State: AOAM531C01vUutKPHcMwgCSsDMmDoMUqqljhGdEHdSGZLL3PnX6zCv8K
+ f2lkM1wCct3Gmy3DynJAkQsb3CkCU5nAG1Pdp7e2Fw==
+X-Google-Smtp-Source: ABdhPJw66SDlFRYI+47lgkH0zEhjVFqIUONt1+UdZYGerOhsCrn5ST22s+desHXe8eF/5qzEZsphVeuuWKzN1TY5lIg=
+X-Received: by 2002:a02:605c:: with SMTP id d28mr28107291jaf.12.1600392870588; 
+ Thu, 17 Sep 2020 18:34:30 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200917165301.23100-3-krzk@kernel.org>
+References: <20200917063047.2875693-1-pihsun@chromium.org>
+In-Reply-To: <20200917063047.2875693-1-pihsun@chromium.org>
+From: Tzung-Bi Shih <tzungbi@google.com>
+Date: Fri, 18 Sep 2020 09:34:19 +0800
+Message-ID: <CA+Px+wVLBgzXm7FucaPpHRZ4+XeH629fPZYBZ33RtPSkaN9Fsg@mail.gmail.com>
+Subject: Re: [PATCH] remoteproc/mediatek: Add support for mt8192 SCP
+To: Pi-Hsun Shih <pihsun@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200917_161342_598981_E1666895 
-X-CRM114-Status: GOOD (  20.35  )
+X-CRM114-CacheID: sfid-20200917_213433_812329_7AE8E6BA 
+X-CRM114-Status: UNSURE (   8.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,292 +89,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Amelie Delaunay <amelie.delaunay@st.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>,
- Linus Walleij <linus.walleij@linaro.org>, alsa-devel@alsa-project.org,
- Stefan Agner <stefan@agner.ch>, Bjorn Andersson <bjorn.andersson@linaro.org>,
- Paul Cercueil <paul@crapouillou.net>,
- Masahiro Yamada <yamada.masahiro@socionext.com>,
- Chris Brandt <chris.brandt@renesas.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- linux-riscv@lists.infradead.org, Fabio Estevam <festevam@gmail.com>,
- linux-stm32@st-md-mailman.stormreply.com,
- Alexandre Torgue <alexandre.torgue@st.com>, linux-renesas-soc@vger.kernel.org,
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
- Anson Huang <Anson.Huang@nxp.com>, Lee Jones <lee.jones@linaro.org>,
- Takashi Iwai <tiwai@suse.com>, Magnus Damm <magnus.damm@gmail.com>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>, Chen-Yu Tsai <wens@csie.org>,
- Andy Gross <agross@kernel.org>, bcm-kernel-feedback-list@broadcom.com,
- NXP Linux Team <linux-imx@nxp.com>, Andy Teng <andy.teng@mediatek.com>,
- Jacopo Mondi <jacopo+renesas@jmondi.org>, Jaroslav Kysela <perex@perex.cz>,
- Sungbo Eo <mans0n@gorani.run>, linux-arm-msm@vger.kernel.org,
- devicetree@vger.kernel.org, Cristian Ciocaltea <cristian.ciocaltea@gmail.com>,
- Charles Keepax <ckeepax@opensource.cirrus.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, Ray Jui <rjui@broadcom.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Sean Wang <sean.wang@mediatek.com>,
- Maxime Ripard <mripard@kernel.org>, linux-gpio@vger.kernel.org,
- Richard Fitzgerald <rf@opensource.cirrus.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Paul Walmsley <paul.walmsley@sifive.com>,
+Cc: Ohad Ben-Cohen <ohad@wizery.com>, Tzung-Bi Shih <tzungbi@chromium.org>,
+ "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
+ <linux-remoteproc@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Sricharan R <sricharan@codeaurora.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hoan Tran <hoan@os.amperecomputing.com>, linux-arm-kernel@lists.infradead.org,
- Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
- Scott Branden <sbranden@broadcom.com>, linux-unisoc@lists.infradead.org,
- - <patches@opensource.cirrus.com>,
- Chris Packham <chris.packham@alliedtelesis.co.nz>,
- Liam Girdwood <lgirdwood@gmail.com>, Serge Semin <fancer.lancer@gmail.com>,
- linux-kernel@vger.kernel.org,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- Yash Shah <yash.shah@sifive.com>,
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Mark Brown <broonie@kernel.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>, linux-media@vger.kernel.org,
- Shawn Guo <shawnguo@kernel.org>,
- Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+On Thu, Sep 17, 2020 at 2:31 PM Pi-Hsun Shih <pihsun@chromium.org> wrote:
+>
+> Add support for mt8192 SCP.
+>
+> Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
 
-Thank you for the patch.
+Has done 1 round review on: https://crrev.com/c/2297082
 
-On Thu, Sep 17, 2020 at 06:52:50PM +0200, Krzysztof Kozlowski wrote:
-> Include the common GPIO schema in GPIO controllers to be sure all common
-> properties are properly validated.
+> +#define MT8192_CORE0_R_GPR1            0x30044
+> +#define MT8192_CORE0_R_GPR2            0x30048
 
-Same comment as for patch 09/13, shouldn't we delete redundant
-properties from all these schemas ?
+Remove them because these 2 macros are unused now.
 
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> 
-> ---
-> 
-> Changes since v1:
-> 1. Fix gpio-mxs.yaml
-> 2. Add snps,dw-apb-gpio.yaml
-> ---
->  .../devicetree/bindings/gpio/brcm,xgs-iproc-gpio.yaml         | 3 +++
->  Documentation/devicetree/bindings/gpio/fsl-imx-gpio.yaml      | 3 +++
->  Documentation/devicetree/bindings/gpio/gpio-mxs.yaml          | 4 ++++
->  Documentation/devicetree/bindings/gpio/gpio-pca9570.yaml      | 3 +++
->  Documentation/devicetree/bindings/gpio/gpio-rda.yaml          | 3 +++
->  Documentation/devicetree/bindings/gpio/gpio-vf610.yaml        | 3 +++
->  Documentation/devicetree/bindings/gpio/mrvl-gpio.yaml         | 1 +
->  Documentation/devicetree/bindings/gpio/qcom,wcd934x-gpio.yaml | 3 +++
->  Documentation/devicetree/bindings/gpio/renesas,em-gio.yaml    | 3 +++
->  Documentation/devicetree/bindings/gpio/renesas,rcar-gpio.yaml | 3 +++
->  Documentation/devicetree/bindings/gpio/sifive,gpio.yaml       | 3 +++
->  Documentation/devicetree/bindings/gpio/snps,dw-apb-gpio.yaml  | 3 +++
->  .../devicetree/bindings/gpio/socionext,uniphier-gpio.yaml     | 3 +++
->  .../devicetree/bindings/gpio/xylon,logicvc-gpio.yaml          | 3 +++
->  14 files changed, 41 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/gpio/brcm,xgs-iproc-gpio.yaml b/Documentation/devicetree/bindings/gpio/brcm,xgs-iproc-gpio.yaml
-> index c213cb9ddb9f..1ac69b9c03f9 100644
-> --- a/Documentation/devicetree/bindings/gpio/brcm,xgs-iproc-gpio.yaml
-> +++ b/Documentation/devicetree/bindings/gpio/brcm,xgs-iproc-gpio.yaml
-> @@ -13,6 +13,9 @@ description: |
->    This controller is the Chip Common A GPIO present on a number of Broadcom
->    switch ASICs with integrated SoCs.
->  
-> +allOf:
-> +  - $ref: gpio-common.yaml#
-> +
->  properties:
->    compatible:
->      const: brcm,iproc-gpio-cca
-> diff --git a/Documentation/devicetree/bindings/gpio/fsl-imx-gpio.yaml b/Documentation/devicetree/bindings/gpio/fsl-imx-gpio.yaml
-> index de0b9b5f6a70..737756e081fb 100644
-> --- a/Documentation/devicetree/bindings/gpio/fsl-imx-gpio.yaml
-> +++ b/Documentation/devicetree/bindings/gpio/fsl-imx-gpio.yaml
-> @@ -9,6 +9,9 @@ title: Freescale i.MX/MXC GPIO controller
->  maintainers:
->    - Anson Huang <Anson.Huang@nxp.com>
->  
-> +allOf:
-> +  - $ref: gpio-common.yaml#
-> +
->  properties:
->    compatible:
->      oneOf:
-> diff --git a/Documentation/devicetree/bindings/gpio/gpio-mxs.yaml b/Documentation/devicetree/bindings/gpio/gpio-mxs.yaml
-> index dfa1133f8c5e..bd0c4f329625 100644
-> --- a/Documentation/devicetree/bindings/gpio/gpio-mxs.yaml
-> +++ b/Documentation/devicetree/bindings/gpio/gpio-mxs.yaml
-> @@ -34,6 +34,10 @@ properties:
->  patternProperties:
->    "gpio@[0-9]+$":
->      type: object
-> +
-> +    allOf:
-> +      - $ref: gpio-common.yaml#
-> +
->      properties:
->        compatible:
->          enum:
-> diff --git a/Documentation/devicetree/bindings/gpio/gpio-pca9570.yaml b/Documentation/devicetree/bindings/gpio/gpio-pca9570.yaml
-> index 338c5312a106..69b12041c893 100644
-> --- a/Documentation/devicetree/bindings/gpio/gpio-pca9570.yaml
-> +++ b/Documentation/devicetree/bindings/gpio/gpio-pca9570.yaml
-> @@ -9,6 +9,9 @@ title: PCA9570 I2C GPO expander
->  maintainers:
->    - Sungbo Eo <mans0n@gorani.run>
->  
-> +allOf:
-> +  - $ref: gpio-common.yaml#
-> +
->  properties:
->    compatible:
->      enum:
-> diff --git a/Documentation/devicetree/bindings/gpio/gpio-rda.yaml b/Documentation/devicetree/bindings/gpio/gpio-rda.yaml
-> index 6ece555f074f..d70c99f463c2 100644
-> --- a/Documentation/devicetree/bindings/gpio/gpio-rda.yaml
-> +++ b/Documentation/devicetree/bindings/gpio/gpio-rda.yaml
-> @@ -9,6 +9,9 @@ title: RDA Micro GPIO controller
->  maintainers:
->    - Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
->  
-> +allOf:
-> +  - $ref: gpio-common.yaml#
-> +
->  properties:
->    compatible:
->      const: rda,8810pl-gpio
-> diff --git a/Documentation/devicetree/bindings/gpio/gpio-vf610.yaml b/Documentation/devicetree/bindings/gpio/gpio-vf610.yaml
-> index 6ac5a78ad3da..82f3e4b407d1 100644
-> --- a/Documentation/devicetree/bindings/gpio/gpio-vf610.yaml
-> +++ b/Documentation/devicetree/bindings/gpio/gpio-vf610.yaml
-> @@ -17,6 +17,9 @@ description: |
->    Note: Each GPIO port should have an alias correctly numbered in "aliases"
->    node.
->  
-> +allOf:
-> +  - $ref: gpio-common.yaml#
-> +
->  properties:
->    compatible:
->      enum:
-> diff --git a/Documentation/devicetree/bindings/gpio/mrvl-gpio.yaml b/Documentation/devicetree/bindings/gpio/mrvl-gpio.yaml
-> index 4db3b8a3332c..e2b7d2d133a8 100644
-> --- a/Documentation/devicetree/bindings/gpio/mrvl-gpio.yaml
-> +++ b/Documentation/devicetree/bindings/gpio/mrvl-gpio.yaml
-> @@ -12,6 +12,7 @@ maintainers:
->    - Rob Herring <robh+dt@kernel.org>
->  
->  allOf:
-> +  - $ref: gpio-common.yaml#
->    - if:
->        properties:
->          compatible:
-> diff --git a/Documentation/devicetree/bindings/gpio/qcom,wcd934x-gpio.yaml b/Documentation/devicetree/bindings/gpio/qcom,wcd934x-gpio.yaml
-> index 32a566ec3558..2eee374e8396 100644
-> --- a/Documentation/devicetree/bindings/gpio/qcom,wcd934x-gpio.yaml
-> +++ b/Documentation/devicetree/bindings/gpio/qcom,wcd934x-gpio.yaml
-> @@ -13,6 +13,9 @@ description: |
->    Qualcomm Technologies Inc WCD9340/WCD9341 Audio Codec has integrated
->    gpio controller to control 5 gpios on the chip.
->  
-> +allOf:
-> +  - $ref: gpio-common.yaml#
-> +
->  properties:
->    compatible:
->      enum:
-> diff --git a/Documentation/devicetree/bindings/gpio/renesas,em-gio.yaml b/Documentation/devicetree/bindings/gpio/renesas,em-gio.yaml
-> index 8bdef812c87c..845689807678 100644
-> --- a/Documentation/devicetree/bindings/gpio/renesas,em-gio.yaml
-> +++ b/Documentation/devicetree/bindings/gpio/renesas,em-gio.yaml
-> @@ -9,6 +9,9 @@ title: Renesas EMMA Mobile General Purpose I/O Interface
->  maintainers:
->    - Magnus Damm <magnus.damm@gmail.com>
->  
-> +allOf:
-> +  - $ref: gpio-common.yaml#
-> +
->  properties:
->    compatible:
->      const: renesas,em-gio
-> diff --git a/Documentation/devicetree/bindings/gpio/renesas,rcar-gpio.yaml b/Documentation/devicetree/bindings/gpio/renesas,rcar-gpio.yaml
-> index 5026662e4508..c116000d579f 100644
-> --- a/Documentation/devicetree/bindings/gpio/renesas,rcar-gpio.yaml
-> +++ b/Documentation/devicetree/bindings/gpio/renesas,rcar-gpio.yaml
-> @@ -9,6 +9,9 @@ title: Renesas R-Car General-Purpose Input/Output Ports (GPIO)
->  maintainers:
->    - Geert Uytterhoeven <geert+renesas@glider.be>
->  
-> +allOf:
-> +  - $ref: gpio-common.yaml#
-> +
->  properties:
->    compatible:
->      oneOf:
-> diff --git a/Documentation/devicetree/bindings/gpio/sifive,gpio.yaml b/Documentation/devicetree/bindings/gpio/sifive,gpio.yaml
-> index a0efd8dc2538..f2d93b40fc7e 100644
-> --- a/Documentation/devicetree/bindings/gpio/sifive,gpio.yaml
-> +++ b/Documentation/devicetree/bindings/gpio/sifive,gpio.yaml
-> @@ -10,6 +10,9 @@ maintainers:
->    - Yash Shah <yash.shah@sifive.com>
->    - Paul Walmsley <paul.walmsley@sifive.com>
->  
-> +allOf:
-> +  - $ref: gpio-common.yaml#
-> +
->  properties:
->    compatible:
->      items:
-> diff --git a/Documentation/devicetree/bindings/gpio/snps,dw-apb-gpio.yaml b/Documentation/devicetree/bindings/gpio/snps,dw-apb-gpio.yaml
-> index b391cc1b4590..459aafe5fd47 100644
-> --- a/Documentation/devicetree/bindings/gpio/snps,dw-apb-gpio.yaml
-> +++ b/Documentation/devicetree/bindings/gpio/snps,dw-apb-gpio.yaml
-> @@ -49,6 +49,9 @@ properties:
->  patternProperties:
->    "^gpio-(port|controller)@[0-9a-f]+$":
->      type: object
-> +    allOf:
-> +      - $ref: gpio-common.yaml#
-> +
->      properties:
->        compatible:
->          const: snps,dw-apb-gpio-port
-> diff --git a/Documentation/devicetree/bindings/gpio/socionext,uniphier-gpio.yaml b/Documentation/devicetree/bindings/gpio/socionext,uniphier-gpio.yaml
-> index c58ff9a94f45..94a911e9c313 100644
-> --- a/Documentation/devicetree/bindings/gpio/socionext,uniphier-gpio.yaml
-> +++ b/Documentation/devicetree/bindings/gpio/socionext,uniphier-gpio.yaml
-> @@ -9,6 +9,9 @@ title: UniPhier GPIO controller
->  maintainers:
->    - Masahiro Yamada <yamada.masahiro@socionext.com>
->  
-> +allOf:
-> +  - $ref: gpio-common.yaml#
-> +
->  properties:
->    $nodename:
->      pattern: "^gpio@[0-9a-f]+$"
-> diff --git a/Documentation/devicetree/bindings/gpio/xylon,logicvc-gpio.yaml b/Documentation/devicetree/bindings/gpio/xylon,logicvc-gpio.yaml
-> index a36aec27069c..0e4581241b3f 100644
-> --- a/Documentation/devicetree/bindings/gpio/xylon,logicvc-gpio.yaml
-> +++ b/Documentation/devicetree/bindings/gpio/xylon,logicvc-gpio.yaml
-> @@ -23,6 +23,9 @@ description: |
->    - EN_VEE (power control) mapped to index 7
->    - V_EN (power control) mapped to index 8
->  
-> +allOf:
-> +  - $ref: gpio-common.yaml#
-> +
->  properties:
->    $nodename:
->      pattern: "^gpio@[0-9a-f]+$"
-
--- 
-Regards,
-
-Laurent Pinchart
+With that,
+Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
 
 _______________________________________________
 Linux-mediatek mailing list
