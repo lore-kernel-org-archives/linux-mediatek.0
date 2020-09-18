@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D3A63C43466
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 02:02:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 743C2C43469
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 02:04:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8A09721734
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 02:02:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 19EF3235FD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 02:04:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XaOqQFf9";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="ZrAyOagF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8A09721734
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="v23EOExO";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="EiaBtlQ4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 19EF3235FD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,38 +26,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=clI2PG8EWDfFSbyvGkVrXznzpZ0nqSXapKhPQyuAhFk=; b=XaOqQFf9L2TS16mfvc/MhRFCJ
-	Ug3I1zdA886EELbhnFOu+rOj4CExlpEnzm3pxDD/yDuj2ONiTm1ghRqppQjQ7G1pBHsoCpc9+eWQx
-	xSbbVwo0E5Z7XTwDoOXAeVPfrBIvMOiCJwruv6oxFkWVhtXyvou9+95XnpwlfXWd7aX6eTnvojitm
-	+V6pg9jF9oiz02yR9vmOyHFHjD+maCnFKzVfmLM3UPEJdzyAPyW8kXhNCZ4/EGDzQszYoaktNH1fF
-	qjd9zVzjQXFG+ZVkchp7uh7lgZ79QQSfQSeVY0EyCJ+opflrIRyqTpyagG53TkFZ/rFbBTOSS0k1U
-	2E6AZEZWA==;
+	 bh=YACprjZBybpFm/bSTVk8TgZFGJh7ED5gzTMOnPr0hVk=; b=v23EOExOs+zpEyzDzR0ido6rE
+	9WMygowXDWHZdjCHMynPX4R+bPrCHygL5pq/sY7HUR+nPLcrmqrqgldQLXJHyO3j44ZozGeiaPl1b
+	wqH5DgKsIYQ2CON0mwTl8d+DUlaRVKysM9YYWddrAmA1FR/lBhYMUh0Sb74b+mFzIditQxAN0Rzdr
+	Npw2Y3gXCcs2SJpvTvc5tEInroC/csBSpBOuKzjjVDEj8t7v5M7xvpZCIEdDgo2kkrfWfy9EKuTUX
+	gQ/+CkUahW/pWZEarJz8ryPNeaIHkF0xzYwtLib2fM1WG7PMt8bCIWHaizJKLTsM2xEWg2stSArFG
+	cNpIYAgFQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kJ5jV-0002Bo-DL; Fri, 18 Sep 2020 02:02:41 +0000
+	id 1kJ5kd-0002ou-PA; Fri, 18 Sep 2020 02:03:51 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kJ5jC-00024A-9c; Fri, 18 Sep 2020 02:02:23 +0000
+ id 1kJ5jq-0002ON-SD; Fri, 18 Sep 2020 02:03:06 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D04A821D40;
- Fri, 18 Sep 2020 02:02:20 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id A8DDB208DB;
+ Fri, 18 Sep 2020 02:03:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600394541;
- bh=sqlLud8CEaAaBFbB3Brfhi39Fv7Pc8MrM/ur4dg+zwM=;
+ s=default; t=1600394582;
+ bh=Ittz/wxGC9/mPG2IeyB9vgmU2CwAvg/OtpsciejW1Ec=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ZrAyOagF5rjmo7wqbC76FUFEPObc84DFE2g1BJ9gz1RKVe49bGVkAtcvsUYM29tYO
- TdRA7aoN36hPqI6QxWEKQ0v9Jm8D/UsVgtkRDyGIomskqYmx/Ctv+Kn3JTkc/ZZWre
- D/Ybk1o9Y9gQTGaHHs43f6KiNM/A5B2VWJ2Ku1ZY=
+ b=EiaBtlQ4mB26wh7aUWvfWbdXEzA5p9n/YC0YP2J8cLEYaTK0TcLcPOo59dmGZCS/D
+ xTYdQapgFXyQfQHqFBtTDj1oyKXio0l7t8o5mtCGNPXK/K/bGhFGMhB+I2QjgeAcI5
+ vfSAXsHcdna8fPoS55sCeTtURzLGuSmi/tMVEXE4=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 059/330] mt76: add missing locking around ampdu
- action
-Date: Thu, 17 Sep 2020 21:56:39 -0400
-Message-Id: <20200918020110.2063155-59-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 092/330] scsi: ufs: Make
+ ufshcd_add_command_trace() easier to read
+Date: Thu, 17 Sep 2020 21:57:12 -0400
+Message-Id: <20200918020110.2063155-92-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200918020110.2063155-1-sashal@kernel.org>
 References: <20200918020110.2063155-1-sashal@kernel.org>
@@ -65,8 +65,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200917_220222_462998_19EE464C 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20200917_220303_012161_57D92DE5 
+X-CRM114-Status: GOOD (  14.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,89 +78,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
+Cc: Sasha Levin <sashal@kernel.org>, Bart Van Assche <bvanassche@acm.org>,
+ "Martin K . Petersen" <martin.petersen@oracle.com>,
+ Avri Altman <avri.altman@wdc.com>, Can Guo <cang@codeaurora.org>,
+ linux-mediatek@lists.infradead.org, Alim Akhtar <alim.akhtar@samsung.com>,
+ linux-scsi@vger.kernel.org, Tomas Winkler <tomas.winkler@intel.com>,
+ Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org,
+ Bean Huo <beanhuo@micron.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Felix Fietkau <nbd@nbd.name>
+From: Bart Van Assche <bvanassche@acm.org>
 
-[ Upstream commit 1a817fa73c3b27a593aadf0029de24db1bbc1a3e ]
+[ Upstream commit e4d2add7fd5bc64ee3e388eabe6b9e081cb42e11 ]
 
-This is needed primarily to avoid races in dealing with rx aggregation
-related data structures
+Since the lrbp->cmd expression occurs multiple times, introduce a new local
+variable to hold that pointer. This patch does not change any
+functionality.
 
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Cc: Bean Huo <beanhuo@micron.com>
+Cc: Can Guo <cang@codeaurora.org>
+Cc: Avri Altman <avri.altman@wdc.com>
+Cc: Stanley Chu <stanley.chu@mediatek.com>
+Cc: Tomas Winkler <tomas.winkler@intel.com>
+Link: https://lore.kernel.org/r/20191224220248.30138-3-bvanassche@acm.org
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Can Guo <cang@codeaurora.org>
+Reviewed-by: Alim Akhtar <alim.akhtar@samsung.com>
+Signed-off-by: Bart Van Assche <bvanassche@acm.org>
+Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7603/main.c  | 2 ++
- drivers/net/wireless/mediatek/mt76/mt7615/main.c  | 2 ++
- drivers/net/wireless/mediatek/mt76/mt76x02_util.c | 2 ++
- 3 files changed, 6 insertions(+)
+ drivers/scsi/ufs/ufshcd.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/main.c b/drivers/net/wireless/mediatek/mt76/mt7603/main.c
-index 25d5b1608bc91..0a5695c3d9241 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/main.c
-@@ -561,6 +561,7 @@ mt7603_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 5e502e1605549..020a93a40a982 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -334,27 +334,27 @@ static void ufshcd_add_command_trace(struct ufs_hba *hba,
+ 	u8 opcode = 0;
+ 	u32 intr, doorbell;
+ 	struct ufshcd_lrb *lrbp = &hba->lrb[tag];
++	struct scsi_cmnd *cmd = lrbp->cmd;
+ 	int transfer_len = -1;
  
- 	mtxq = (struct mt76_txq *)txq->drv_priv;
- 
-+	mutex_lock(&dev->mt76.mutex);
- 	switch (action) {
- 	case IEEE80211_AMPDU_RX_START:
- 		mt76_rx_aggr_start(&dev->mt76, &msta->wcid, tid, ssn,
-@@ -590,6 +591,7 @@ mt7603_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		ieee80211_stop_tx_ba_cb_irqsafe(vif, sta->addr, tid);
- 		break;
+ 	if (!trace_ufshcd_command_enabled()) {
+ 		/* trace UPIU W/O tracing command */
+-		if (lrbp->cmd)
++		if (cmd)
+ 			ufshcd_add_cmd_upiu_trace(hba, tag, str);
+ 		return;
  	}
-+	mutex_unlock(&dev->mt76.mutex);
  
- 	return 0;
- }
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-index 87c748715b5d7..38183aef0eb92 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-@@ -455,6 +455,7 @@ mt7615_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 
- 	mtxq = (struct mt76_txq *)txq->drv_priv;
- 
-+	mutex_lock(&dev->mt76.mutex);
- 	switch (action) {
- 	case IEEE80211_AMPDU_RX_START:
- 		mt76_rx_aggr_start(&dev->mt76, &msta->wcid, tid, ssn,
-@@ -485,6 +486,7 @@ mt7615_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		ieee80211_stop_tx_ba_cb_irqsafe(vif, sta->addr, tid);
- 		break;
- 	}
-+	mutex_unlock(&dev->mt76.mutex);
- 
- 	return 0;
- }
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-index aec73a0295e86..de0d6f21c621c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-@@ -371,6 +371,7 @@ int mt76x02_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 
- 	mtxq = (struct mt76_txq *)txq->drv_priv;
- 
-+	mutex_lock(&dev->mt76.mutex);
- 	switch (action) {
- 	case IEEE80211_AMPDU_RX_START:
- 		mt76_rx_aggr_start(&dev->mt76, &msta->wcid, tid,
-@@ -400,6 +401,7 @@ int mt76x02_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		ieee80211_stop_tx_ba_cb_irqsafe(vif, sta->addr, tid);
- 		break;
- 	}
-+	mutex_unlock(&dev->mt76.mutex);
- 
- 	return 0;
- }
+-	if (lrbp->cmd) { /* data phase exists */
++	if (cmd) { /* data phase exists */
+ 		/* trace UPIU also */
+ 		ufshcd_add_cmd_upiu_trace(hba, tag, str);
+-		opcode = (u8)(*lrbp->cmd->cmnd);
++		opcode = cmd->cmnd[0];
+ 		if ((opcode == READ_10) || (opcode == WRITE_10)) {
+ 			/*
+ 			 * Currently we only fully trace read(10) and write(10)
+ 			 * commands
+ 			 */
+-			if (lrbp->cmd->request && lrbp->cmd->request->bio)
+-				lba =
+-				  lrbp->cmd->request->bio->bi_iter.bi_sector;
++			if (cmd->request && cmd->request->bio)
++				lba = cmd->request->bio->bi_iter.bi_sector;
+ 			transfer_len = be32_to_cpu(
+ 				lrbp->ucd_req_ptr->sc.exp_data_transfer_len);
+ 		}
 -- 
 2.25.1
 
