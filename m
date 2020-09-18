@@ -2,71 +2,78 @@ Return-Path: <SRS0=3MyJ=C3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A0000C43465
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 02:26:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B707C43464
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 03:41:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4D05723600
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 02:26:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0DEC521973
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 03:41:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gRsLXjKU";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="zH/WIS7S"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4D05723600
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nq+wbTz+";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="oZ81HU/V"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0DEC521973
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9sloXd1VodcUonziPhTSV3JebrMKF99W9QtdfSMAGQM=; b=gRsLXjKU87mSrr5RhAC91ILBA
-	GLC6yufliwt3dvLrXoym+M1w/eQaDXpfeaVlNzUP5hwJRY+ycYQyI1XD9Fs4RlSK/Vf9AaC+bIEz+
-	RtMc0ns+0JOpQoApyOVbd2NCSyb0B6z15yLEG9IO9Oj6GNHKNEPuDBsx8sbUaPhN2PtrVEaEOx64s
-	nsF+i+BG7uB2E4jBU1vKTFN65/BszMgwfCRHxEPYYDgJqVsFc1nGF3cQCeI+SfykPKLwdqcYjlCiX
-	xVtrJmA7hxkwS2ZktXFFSbE0pvoV8sUWJ/XcH3i9QS+v8cmjbV56w9setWJRbOu3IOck8kUElhutE
-	u0bk10mTA==;
+	 bh=V9EtbTIO/3ef8DINfy8H8sNnnHRt79Q30LTMzNj1WJs=; b=nq+wbTz+ppYxCYy0htMFbr0vn
+	TYg5ec2bq41+eBgJuae4QbSJ3XE784U5llD7bL5Te9VOhazwayLDzm29B1eO9RrNQT05IcJsXp1eN
+	lhWqL4Pxa/36A0cKRxjqSrCLcSOz4k0xeH1DuO8AKpEc8G5agnQiRTfQqsIWdgWHbEUocC/MOZyfm
+	YYSEPCiP1L7AjwKs5lEKPmZp9a/0XAD0J5gYef2JBtBFWOYBeWJlH8Sva+tbW0knmMfCnZSB1tA7O
+	VJn8OTMLHSMEYvDRA4zA7DUXAgjfksVhs1V6OAyhZGiRAk1aI7IyiTpGNITHjZXzRQUBTq4zVakFJ
+	m/y4lsGSQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kJ65t-0005aj-56; Fri, 18 Sep 2020 02:25:49 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kJ7Gd-0004Ui-HJ; Fri, 18 Sep 2020 03:40:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kJ5qI-0005yr-2M; Fri, 18 Sep 2020 02:09:45 +0000
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 792892395C;
- Fri, 18 Sep 2020 02:09:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600394979;
- bh=lQcexyaZjXVoeH73AvKNhcfC2KEiQeqKqtVo1iyGMso=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=zH/WIS7SM34UKClyiA23KA3J5ftMBEyZFTlAqWWEc75GnD5c3zYH/aXLfUIiWa2cr
- 4fNRnH8brTv01Zn9MdniDMZStblswAehMHFgvTlEaG3qA6beaxJqPOGPN9258pLdmG
- Fx3hsvkLSgwhEk2ibDa3NVATE6MJIj93o/Dh8wN8=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 079/206] mt76: clear skb pointers from rx
- aggregation reorder buffer during cleanup
-Date: Thu, 17 Sep 2020 22:05:55 -0400
-Message-Id: <20200918020802.2065198-79-sashal@kernel.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200918020802.2065198-1-sashal@kernel.org>
-References: <20200918020802.2065198-1-sashal@kernel.org>
+ id 1kJ7GZ-0004TN-8X; Fri, 18 Sep 2020 03:40:56 +0000
+X-UUID: 0e3fd1f737e746e2975bb01fa78d1b19-20200917
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=NJWqmI9Q+3XKGNwrqS5sBa+WygmHxvHtMA8oZ41d8Zk=; 
+ b=oZ81HU/VxH8I4jeR1gBS/Okajoz3Gyi8WPUJOZASUU9aVxXx8fyeJJXKcuJ33c+/8aOfKyA55a2O84NBxZYWV6DBcCfZwhy8DLfLMMlbURXlnQyH5opulRViRLsYvfrxP0EYt63Fu7XRbOM+5GsP2OK4KBgL5pAkobLXDSHzuXU=;
+X-UUID: 0e3fd1f737e746e2975bb01fa78d1b19-20200917
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 81651921; Thu, 17 Sep 2020 19:40:48 -0800
+Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 17 Sep 2020 20:40:46 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N1.mediatek.inc
+ (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 18 Sep 2020 11:40:43 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 18 Sep 2020 11:40:43 +0800
+Message-ID: <1600400313.20602.4.camel@mhfsdcap03>
+Subject: Re: [PATCH 1/7] usb: mtu3: convert to
+ devm_platform_ioremap_resource_byname
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Felipe Balbi <balbi@kernel.org>
+Date: Fri, 18 Sep 2020 11:38:33 +0800
+In-Reply-To: <87d02y1190.fsf@kernel.org>
+References: <1595404275-8449-1-git-send-email-chunfeng.yun@mediatek.com>
+ <87d02y1190.fsf@kernel.org>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+X-TM-SNTS-SMTP: 0CC168B5AFE69E193055849BE7B64D2C4E5C6D83B9F689EBFDF4440AAEA4FFC72000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200917_220943_121656_5842023F 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20200917_234055_470286_0ACA9C53 
+X-CRM114-Status: GOOD (  15.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,44 +85,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Felix Fietkau <nbd@nbd.name>
+Hi Felip,
 
-[ Upstream commit 9379df2fd9234e3b67a23101c2370c99f6af6d77 ]
 
-During the cleanup of the aggregation session, a rx handler (or release timer)
-on another CPU might still hold a pointer to the reorder buffer and could
-attempt to release some packets.
-Clearing pointers during cleanup avoids a theoretical use-after-free bug here.
+On Mon, 2020-09-07 at 10:42 +0300, Felipe Balbi wrote:
+> Hi,
+> 
+> Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
+> > Use devm_platform_ioremap_resource_byname() to simplify code
+> >
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> 
+> why is it so that your patches always come base64 encoded? They look
+> fine on the email client, but when I try to pipe the message to git am
+> it always gives me a lot of trouble and I have to manually decode the
+> body of your messages and recombine with the patch.
+> 
+> Can you try to send your patches as actual plain text without encoding
+> the body with base64?
+Missed the email.
 
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/agg-rx.c | 1 +
- 1 file changed, 1 insertion(+)
+Sorry for inconvenience!
+Is only the commit message base64 encoded, or includes the codes?
 
-diff --git a/drivers/net/wireless/mediatek/mt76/agg-rx.c b/drivers/net/wireless/mediatek/mt76/agg-rx.c
-index d44d57e6eb27a..97df6b3a472b1 100644
---- a/drivers/net/wireless/mediatek/mt76/agg-rx.c
-+++ b/drivers/net/wireless/mediatek/mt76/agg-rx.c
-@@ -278,6 +278,7 @@ static void mt76_rx_aggr_shutdown(struct mt76_dev *dev, struct mt76_rx_tid *tid)
- 		if (!skb)
- 			continue;
- 
-+		tid->reorder_buf[i] = NULL;
- 		tid->nframes--;
- 		dev_kfree_skb(skb);
- 	}
--- 
-2.25.1
-
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
