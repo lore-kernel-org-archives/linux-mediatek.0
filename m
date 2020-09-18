@@ -2,66 +2,83 @@ Return-Path: <SRS0=3MyJ=C3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-3.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 958F5C43463
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 20:45:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F0960C43463
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 20:51:04 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CAC60208DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 20:45:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A1681206A2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 20:51:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="w01BEkkd"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CAC60208DB
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=the-dreams.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="u25sisDY";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="r5aGYz+r"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A1681206A2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LaA8E3aB9n7uL/b5KhzM08U1WHTuqENg5rfnsbjqS54=; b=w01BEkkdv8Vc/CI+ankVu1EfE
-	N1axY6iJD4700sLEnvJ7P7GHJ7CANcvg+HBSe5yzxu1pMCDJXJKnl4VtyYVrpmdBNL8FI/xGG1Akj
-	ZEREZfUm1XUCdC/rdY3FbuQ2zANv080NkIKshr7E3aYH096dJfrTM4K1qBDwVmSJ5KzjBSzz0d0h8
-	bCnJmT+9opoG+Fsnr8N6Ohg5HgF9i8PGjHyoMCvF3As7QUVGmXDYKG96aKhNUKWBbm9IFYDh709zt
-	kVEzi0G6ApkLJ7/ryY0lkrTMZNxZpZJszhbdeyFClIpQN6TogMiB66shlIgYjZO1exIlVEkoW8K6C
-	2/ChltYGw==;
+	 bh=73vKohgpNAGJMQJSshbBnTbYBQGzdaGywKNUcBL/ogM=; b=u25sisDY/qBVBTpj53YNA22bb
+	M8eWyvNhkP5S0JCCLKSOb0JL2l+k8p7O3fzzhBHTbttAllnNjjyN7mYO9szVXVPhFQo55qNk2Z/zT
+	uf1vwkvtTsyOitpVQ+EHYTwhyaL3oPVkPp9/4IkLYWw3xIIkeIzClLo1dzZxO1XZ7mj4u8Vl+HlyR
+	iJES8pTgSzSb1k35xRULwqMDgtsaIxPmYgo0iwoc2x8POW7lMyVD/TMCzf2vAOQ+cvlO9BDCIxDly
+	bxLAG0cU0VJP413bAS+peGFdFb7X8yhqZ+rJfXN+tw3PVcSYKY0z7MVcgoI+OKAwp88PbHnB/iXhX
+	V8lqPqYeg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kJNGI-0001yc-LX; Fri, 18 Sep 2020 20:45:42 +0000
-Received: from sauhun.de ([88.99.104.3] helo=pokefinder.org)
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kJNGE-0001xD-DY; Fri, 18 Sep 2020 20:45:39 +0000
-Received: from localhost (router.4pisysteme.de [80.79.225.122])
- by pokefinder.org (Postfix) with ESMTPSA id 73B1B2C079A;
- Fri, 18 Sep 2020 22:45:35 +0200 (CEST)
-Date: Fri, 18 Sep 2020 22:45:35 +0200
-From: Wolfram Sang <wsa@the-dreams.de>
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Subject: Re: [PATCH] i2c: mediatek: Fix generic definitions for bus frequencies
-Message-ID: <20200918204535.GA52206@kunai>
-Mail-Followup-To: Wolfram Sang <wsa@the-dreams.de>,
- Andy Shevchenko <andy.shevchenko@gmail.com>, qii.wang@mediatek.com,
- linux-i2c <linux-i2c@vger.kernel.org>,
- devicetree <devicetree@vger.kernel.org>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- Leilk Liu <leilk.liu@mediatek.com>
-References: <1599890246-21191-1-git-send-email-qii.wang@mediatek.com>
- <CAHp75VeBuR4fkVk0z=+d7EonHz0h=4=eRj3Wfe8R_8T=eyHaeA@mail.gmail.com>
+	id 1kJNLO-0002s6-UN; Fri, 18 Sep 2020 20:50:59 +0000
+Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kJNLJ-0002ph-5B; Fri, 18 Sep 2020 20:50:54 +0000
+Received: by mail-oi1-x22e.google.com with SMTP id c13so8598547oiy.6;
+ Fri, 18 Sep 2020 13:50:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=LQBTYd/i7TL56jJTVQHkU8FPXDKYu/R4V8hCfAPSzJo=;
+ b=r5aGYz+rFyzfIoItLLPRg0TWqJvXc782/dbNt7PSwOTmfECPgbPftiexIoJkmFTXtY
+ vK4UuJdscGwkJgnTX/t8tlx9Z7Q/eOVC0jbIuSuj/58XQV9sWNdOS+A82CTSgiMta/u7
+ uWQ/AYufjXogcJQpODpjD2prPYEWNCRPkks3c2V8pRp4Vv1LgYC+cVsE+kJPPCw0FBj7
+ U3e2A6CFjMd12j5aCHGLnlMRvVRHngzVR0UYL7Y7dNZk8OYyal5IYSmOiSEQuNazDCAR
+ Qh+MUj5CCTduEz3ESmgu6tb6KIFSCO6DgMyIbu4nv4eveg7nFsKcRcOce2Ou2wCbVKqy
+ bBfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=LQBTYd/i7TL56jJTVQHkU8FPXDKYu/R4V8hCfAPSzJo=;
+ b=rJAaZDZWUUbyN2fDP37tn/lUHuq//6MQMYSMFDD9frL6FGwQoYT4IUtpDH5N8TAGbX
+ MysOyLuderopeeuPCALGRwIiiqzYRjGpd8IQzA/YKYFYJpXOU9ARiBj5l84F2n/ZUPH1
+ donmxOOXzSslBM0ToX4aJCMQqguRgjn/rBsnASeb2x5RXUb96zw0jLnezFtxFNK/QMuS
+ MLZK9W1521A5V3MQCD9HRf/ZS3/i961svXg8dVHwUechZyFhA5jXXxUu+/yRmN7Lu8Kj
+ 7T97dOxS0EMsnRJj5zvaO3YDHmpjKLkoo8fF9X/73VlnJJjfweZnekePr0fDql+ekdNs
+ uRDg==
+X-Gm-Message-State: AOAM532ZO86K5uoWtMZSXM1xAwADpBNZj0ztahL8PjOSRfu04qHcOGiR
+ ND+PtAPGyVyrM2/CWgMc1hKLHpbdhX8YBd+Svi0=
+X-Google-Smtp-Source: ABdhPJwLFCTn89gsNeMXFYjEgZOXfTDO437610Y8/ZpvSrOdjvvz3QGyVx9hb5/bIum5U6OkxJE/NlABUGT6UuwFT+0=
+X-Received: by 2002:aca:5b45:: with SMTP id p66mr11082126oib.39.1600462249606; 
+ Fri, 18 Sep 2020 13:50:49 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAHp75VeBuR4fkVk0z=+d7EonHz0h=4=eRj3Wfe8R_8T=eyHaeA@mail.gmail.com>
+References: <20200910172826.3074357-1-enric.balletbo@collabora.com>
+ <20200910172826.3074357-4-enric.balletbo@collabora.com>
+ <CAOwMV_z9OBpNqStCH+HEcwAK-TwPVeMH4LwJbp78T1P=t9bEKg@mail.gmail.com>
+In-Reply-To: <CAOwMV_z9OBpNqStCH+HEcwAK-TwPVeMH4LwJbp78T1P=t9bEKg@mail.gmail.com>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Date: Fri, 18 Sep 2020 22:50:37 +0200
+Message-ID: <CAFqH_535GA6nFGKTu4wms1FGySfdrJPeZOf0tuFzaYwVwQuucg@mail.gmail.com>
+Subject: Re: [PATCH 03/12] arm64: dts: mediatek: Add mt8173 power domain
+ controller
+To: Fabien Parent <fparent@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200918_164538_594337_5197B70A 
-X-CRM114-Status: UNSURE (   9.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200918_165053_210835_36909104 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,73 +90,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree <devicetree@vger.kernel.org>, qii.wang@mediatek.com,
- srv_heupstream <srv_heupstream@mediatek.com>,
- Leilk Liu <leilk.liu@mediatek.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+Cc: DTML <devicetree@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
+ Weiyi Lu <weiyi.lu@mediatek.com>, linux-kernel <linux-kernel@vger.kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-i2c <linux-i2c@vger.kernel.org>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
-Content-Type: multipart/mixed; boundary="===============3337177418922981047=="
+ Hsin-Yi Wang <hsinyi@chromium.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Collabora Kernel ML <kernel@collabora.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Fabien,
 
---===============3337177418922981047==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="FCuugMFkClbJLl1L"
-Content-Disposition: inline
+Thank you to look at this.
 
+Missatge de Fabien Parent <fparent@baylibre.com> del dia dv., 18 de
+set. 2020 a les 22:24:
+>
+> Hi Enric,
+>
+> > -               scpsys: power-controller@10006000 {
+> > -                       compatible = "mediatek,mt8173-scpsys";
+> > -                       #power-domain-cells = <1>;
+>
+> This change generates a lot of warning when compiling the MT8173 device-trees.
+>
+> Warning (power_domains_property): /soc/mutex@14020000: Missing
+> property '#power-domain-cells' in node /soc/syscon@10006000 or bad
+> phandle (referred from power-domains[0])
 
---FCuugMFkClbJLl1L
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I think that there is a mistake in that patch #power-domain-cells =
+<1>; should not be removed. Anyway, I talked with Matthias and I'm
+going to redefine this part as doesn't really match with the hardware.
+We're thinking on something like this:
 
+scpsys: syscon@10006000 {
+     compatible = "mediatek,mtk-scpsys", "syscon";
+      reg = ...
 
-> > -       if (target_speed > I2C_MAX_FAST_MODE_PLUS_FREQ)
-> > -               target_speed =3D I2C_MAX_FAST_MODE_PLUS_FREQ;
-> > +       if (target_speed > I2C_MAX_HIGH_SPEED_MODE_FREQ)
-> > +               target_speed =3D I2C_MAX_HIGH_SPEED_MODE_FREQ;
->=20
-> Thanks for fixing this. Indeed, somehow I messed these up.
+     power-controller {
+           compatible = "mediatek,mt8173-power-controller";
+           #power-domain-cells = <1>;
 
-I read this as Rev-by for v2. Thanks!
+           <- the list of domains ->
 
-
---FCuugMFkClbJLl1L
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl9lHGsACgkQFA3kzBSg
-Kbb8+Q//d12J/hP68UWUVx1wF2vUsU24vGA8FJZMSyvSlrcOD6QZRalGsA6LR8k1
-w6G70LEDSRlDVe1Q/9NuYJT6enGqXhGKs2up0qnGHAB14N6S5WS7hMQJXSFvc6Mm
-xXnNV4gFGcXfcqZMRgl3er6mDeMKJh+Sa5mnmaDhViT11VegGYkAr+VjFOyg5qLh
-EzR4ZO8NoMCi/hvTkiIu3MQNyKPQy33Xq4SdQqGC/x1ew7DWAwopPmQsooL7zQv2
-dqYd7X4FN6qcd/oF0K6tMyY6bbUVf/XiCfruyJjRf7hSESw/fc8HkFjF4oN8oIKR
-x/sVPceOiMjHpu186UGBK8ieupBQduP5PgewXmFM6Xgsj2hOBV/lwIFF2JoV7wO4
-ETFZJVJUNbLb8XjavbTVRbfaVSHTEa4pR1dGjOARj5sUdpEV6jOGY1ziRGntUh0u
-7DTZK0uZym8qms+6SB2dmHakkkXISGeAi/RNjx7vrmhShh1C4auluXWO8/SbIkGU
-Nm6lrKP4hmEXTAdvAcivMwnLHHZ+MgaWGaAZtSJv3EfqoYpnZRSNTCkFTLiRyAh/
-nkZn0naZnd5tO7jMr7U/43ZSHi7sTDBcPNnmx+e/qE+EZakkDBTXO107YHnks69E
-CQRE6DyZ3jdjeTjG301Y65dMW3n+gJq7ZlpE+pUJZVQUyW9zyz0=
-=/Aw9
------END PGP SIGNATURE-----
-
---FCuugMFkClbJLl1L--
-
-
---===============3337177418922981047==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks,
+  Enric
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============3337177418922981047==--
-
