@@ -2,83 +2,90 @@ Return-Path: <SRS0=3MyJ=C3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 03A26C43466
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 13:10:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A237FC43465
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 13:23:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6DC0A235FD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 13:10:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 28DA621D24
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 13:23:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="B2zGuwm8";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="m/vw0UX8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6DC0A235FD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="g8PojJE5";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="o9jAl37R"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 28DA621D24
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ruB1GWWzcoa/DMVHIrvfo/IXcvtBJg7gM+DG8GWRsjk=; b=B2zGuwm81VUuJrvw1KUvenXTs
-	VrffG6P0AA0r2Q3rKN0v/OoYz3NUYFN142TXmJGG6j2xJ03nAa+cjPh/umOUQ0PmSwCxBXmn48C8I
-	JgQJDDXRbLcaFCcqNsg+Nl3JNhicd8rCEcEG+Ftm6pMhOMNaZtoXVXhHI2o9G4JzKuizwtSp1SNQR
-	HGbpLMW7DN0EJv9juajr3Cw8xZZoaljAbQJe2x27wBFTry67/CA0Y67ITbHFjCzHIetP5ue7g/Hlk
-	/A9rkl9HJfgleySg7A/mUanIkCcRSayQb2OjajPz3pq4K9H4ZWaBJRaEry2m3KyL16T8vlMIwelRJ
-	Qm81BZ/mw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZCLxr8GkkWGmRT/1ISFfk1sWMSWKI9cUmwLdsInwVDk=; b=g8PojJE5XgpxVqcG9tRgPnE/Pr
+	5hDKeZCUDxQe2FNQ0lpG5CI7+l5UwgLukWTzgjqrLDqeLHzko3EsEN2jjjRa2PZKrzz7klYpRg8wz
+	2cUvvaa3EO3n0kj+UfHWw9CSMaTnmthyGStPDiGVlRbp+mrgXW65N3GoxLjYVXpy2apmlAMc9QrZR
+	mXL+K9t3hdYYb36B80qVfRtLVx3ck7tqGFgnONWvBq2MgQcduJw+q1cEzGwYSKETHE14PUhOqr+H/
+	3cRCIHaLJZQ+dVOOvJf1SqY4V4KPfeQdDxh4SxTaUpMz3s+tmC4tpPtc+S24CdZPfXlqaOvNrgKaN
+	7zy3/pcA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kJG9A-0005Vt-I5; Fri, 18 Sep 2020 13:09:52 +0000
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143])
+	id 1kJGM9-0007GW-Dt; Fri, 18 Sep 2020 13:23:17 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kJG92-0005Tk-VB; Fri, 18 Sep 2020 13:09:46 +0000
-Received: by mail-il1-x143.google.com with SMTP id u18so6092141iln.13;
- Fri, 18 Sep 2020 06:09:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=AwYmmTDlWSbIST63rvxFGjm3o83wHP5Fmvwxfhe27kQ=;
- b=m/vw0UX8Eh7f2b7XnK7E4lSCV8SX39EKwxoKBcMzWuhvqZgtda8lj9tjTkOiyFbHpL
- hjqz/1qteZTTTzuiE8H8iAzWEN/9+LD/nvg1dWxcStxfCyng2YlCdzxmV6gpXTlhOupK
- traOX3UvkdRM3VnjXYDccdvhelU2E1dI7JsvVfcOY4O7uA+UCO971IB//rLsmeHxXE5a
- 8Of+uFqA6vDmAzbWAmZFlzOnLcCAbrqwGJo7qCj8nytrRAi7cCBAFJre9p01uJ0susqZ
- 0F2GoOiRpJ9vvMmT9+V+MbcIIIW1F5BhuTlJFalrYDP0FD5BIQKLaTzAzavokqc+2GwY
- sOOw==
+ id 1kJGM3-0007EL-5y
+ for linux-mediatek@lists.infradead.org; Fri, 18 Sep 2020 13:23:14 +0000
+Received: by mail-wr1-x444.google.com with SMTP id z4so5613288wrr.4
+ for <linux-mediatek@lists.infradead.org>; Fri, 18 Sep 2020 06:23:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=E+2fT5wM+IZ7ws6Rc2lCDmiMKB5AnOCmm2bmSr1dNrg=;
+ b=o9jAl37RrSFdIChE9ReD+aXUZk7+TRgDEmYW6GLhpBpcJSxeteQIYXE7n1HoKJWZaU
+ Oj/TWQo2EwXJ5quAP/MiWefyKx3Iba5vCmrqCQXsvgtMy30503kYtXv8NOUKZUj8605G
+ 9Tj5sVVVs/XRGPskbLX6IDgvHxMZQvaFnGuP6jgwosSYw2E6LOyU9/hz7oQnb1rKDLWT
+ 3P3Tl9Gi5RvkvOX1ILGr6yigR+MI3pKHxjWgls5h/QgTaTofnn6nDvL7a5y8Vpr66AH5
+ hB5yTNRLXAH+giirpMgDm6t0784wwhr+I0yE1uqs62SkknrNaxFDX3w+7mRMYlJAPMEZ
+ BFMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=AwYmmTDlWSbIST63rvxFGjm3o83wHP5Fmvwxfhe27kQ=;
- b=Cc/ogJdWublQoMWSbS7OOOZu5Mhg8CJb/8muL/x+Bo7qE2K9+vqhF7dOwmZwkL2opS
- +dloWoHLVbdHAJUYRQonRTg5GnJ/Rg2h+GW5rRQ1Bs4xu9kIXcSEpDdBhIJcbQbajU+O
- wqB4Xy59xBZDv+ooC2drN+D89YoM9RJiq9e/ce4gcEbfRZ4M6FhGXmOfOzrmjXuH4v8L
- ueqQYibFnON8HHcC3lcwEZyfQPAoVxuo7btdtbe0C5Y1H4UTPPlvbse0R3PjPkalWH2Q
- 8u30C6+GW7xzl0FKoSs53em/h86Uujc7uHnOWwbFen+IT21EjSLLi8w00WQAVSBdCZkd
- KAXQ==
-X-Gm-Message-State: AOAM533dnqntQT0ynL+VS5UPimz+ImVa++ERJIHIakgVMavEVym19tMx
- SFD60AQxFxq3/VBo3m76j6l5/p0mwEYAAXku0Yg=
-X-Google-Smtp-Source: ABdhPJzxEIe2mEpThaSZt59Gp6X4dtBHZvPS/ySQQqJ+IhxBYPEiVmEp8osLZw3/wabTdwpQ9/oyZTBuGPGFccSOn8Y=
-X-Received: by 2002:a92:c10c:: with SMTP id p12mr4596560ile.274.1600434581511; 
- Fri, 18 Sep 2020 06:09:41 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=E+2fT5wM+IZ7ws6Rc2lCDmiMKB5AnOCmm2bmSr1dNrg=;
+ b=rBwQKDthQSfhWJPVCUKH0UgWT/i2l6XKVJLugrjYr8C0cmrvVPRjzDI26ICQ7ib0Dz
+ pejZABS2eM70POApzHSP67XDp85JwgqQE8RGeSuVOUwFepUkVRyjtQXRv1/0tcq+PP7N
+ nxIXzCsnSGJ5y8MDwZgqtc9/ISeO7ndR/z/JcTSJMUqSePpvmxYN3IgdEGINA5pu8Pkq
+ xlHQvSFjDC0h8wt6iRfI0Dfa61jQLrHQVKJ1Zn2ZRlp596k8D0tmz+OB0Vn9xxsN1xDu
+ OvqeIXjjxy8yhnxq2xTaGShiXDL+Xrp/963wIU6OogNK8SQLUWRKnLd86PdhCIiwAhLV
+ 553A==
+X-Gm-Message-State: AOAM530oAZhF9MIea0wjDpsGo+LQB3357jZ6LjndzbPNe7gP41W8w7jW
+ 1MVZNpZCGinD7eszdAH8PBKd+VhuTLHPSQ==
+X-Google-Smtp-Source: ABdhPJzESeyjG/+3tK6kmvqZJQ+SOr4mqJxfDabzZh8KvcLlOtPJE4OmYFxENnG6q/vl5mlUx6bxbQ==
+X-Received: by 2002:a05:6000:1c4:: with SMTP id
+ t4mr39179259wrx.350.1600435388245; 
+ Fri, 18 Sep 2020 06:23:08 -0700 (PDT)
+Received: from localhost.localdomain (156.18.23.93.rev.sfr.net. [93.23.18.156])
+ by smtp.gmail.com with ESMTPSA id c16sm5917048wrx.31.2020.09.18.06.23.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 18 Sep 2020 06:23:07 -0700 (PDT)
+From: Fabien Parent <fparent@baylibre.com>
+To: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org
+Subject: [PATCH v2 1/2] dt-bindings: clock: mediatek: add bindings for MT8167
+ clocks
+Date: Fri, 18 Sep 2020 15:23:02 +0200
+Message-Id: <20200918132303.2831815-1-fparent@baylibre.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-References: <20200918083124.3921207-1-ikjn@chromium.org>
- <20200918162834.v2.2.I3de2918f09b817cc2ae6d324f1ece62779ecc7cf@changeid>
-In-Reply-To: <20200918162834.v2.2.I3de2918f09b817cc2ae6d324f1ece62779ecc7cf@changeid>
-From: Chuanhong Guo <gch981213@gmail.com>
-Date: Fri, 18 Sep 2020 21:09:29 +0800
-Message-ID: <CAJsYDV+Um3aEsgW-829BsZSaiVCp3O2LkrTmgCthhFv4fuEnLg@mail.gmail.com>
-Subject: Re: [PATCH v2 2/5] spi: spi-mtk-nor: fix mishandled logics in
- checking SPI memory operation
-To: Ikjoon Jang <ikjn@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200918_090945_028409_F7A42061 
-X-CRM114-Status: GOOD (  28.04  )
+X-CRM114-CacheID: sfid-20200918_092311_364152_2AD67759 
+X-CRM114-Status: GOOD (  14.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,192 +97,260 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>, linux-spi@vger.kernel.org,
- Mark Brown <broonie@kernel.org>, linux-mtd@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>
+Cc: Rob Herring <robh@kernel.org>, Fabien Parent <fparent@baylibre.com>,
+ sboyd@kernel.org, masahiroy@kernel.org, krzk@kernel.org,
+ matthias.bgg@gmail.com, macpaul.lin@mediatek.com, ck.hu@mediatek.com,
+ owen.chen@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi!
+Add binding documentation for topckgen, apmixedsys, infracfg, audsys,
+imgsys, mfgcfg, vdecsys on MT8167 SoC.
 
-On Fri, Sep 18, 2020 at 4:34 PM Ikjoon Jang <ikjn@chromium.org> wrote:
->
-> Fix a simple bug which can limits its transfer size,
-> and add a simple helper function for code cleanups.
->
-> Fixes: a59b2c7c56bf ("spi: spi-mtk-nor: support standard spi properties")
-> Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
->
-> ---
->
-> (no changes since v1)
->
->  drivers/spi/spi-mtk-nor.c | 62 ++++++++++++++++++++++++---------------
->  1 file changed, 38 insertions(+), 24 deletions(-)
->
-> diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
-> index 6e6ca2b8e6c8..54b2c0fde95b 100644
-> --- a/drivers/spi/spi-mtk-nor.c
-> +++ b/drivers/spi/spi-mtk-nor.c
-> @@ -167,52 +167,63 @@ static bool mtk_nor_match_read(const struct spi_mem_op *op)
->         return false;
->  }
->
-> -static int mtk_nor_adjust_op_size(struct spi_mem *mem, struct spi_mem_op *op)
-> +static bool need_bounce(void *cpu_addr, unsigned long len)
->  {
-> -       size_t len;
-> +       return !!(((uintptr_t)cpu_addr) & MTK_NOR_DMA_ALIGN_MASK);
-> +}
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
 
-parameter 'len' isn't used in this function.
+ChangeLog:
+	V2: no changes
 
->
-> +static int mtk_nor_adjust_op_size(struct spi_mem *mem, struct spi_mem_op *op)
-> +{
->         if (!op->data.nbytes)
->                 return 0;
->
->         if ((op->addr.nbytes == 3) || (op->addr.nbytes == 4)) {
-> -               if ((op->data.dir == SPI_MEM_DATA_IN) &&
-> -                   mtk_nor_match_read(op)) {
+ .../arm/mediatek/mediatek,apmixedsys.txt      |   1 +
+ .../bindings/arm/mediatek/mediatek,audsys.txt |   1 +
+ .../bindings/arm/mediatek/mediatek,imgsys.txt |   1 +
+ .../arm/mediatek/mediatek,infracfg.txt        |   1 +
+ .../bindings/arm/mediatek/mediatek,mfgcfg.txt |   1 +
+ .../arm/mediatek/mediatek,topckgen.txt        |   1 +
+ .../arm/mediatek/mediatek,vdecsys.txt         |   1 +
+ include/dt-bindings/clock/mt8167-clk.h        | 131 ++++++++++++++++++
+ 8 files changed, 138 insertions(+)
+ create mode 100644 include/dt-bindings/clock/mt8167-clk.h
 
-I think replacing a if/else if with a two-case switch is more
-of a personal code preference rather than code cleanup.
-I'd prefer only adding need_bounce to replace alignment
-check using a separated commit and leave other stuff
-untouched because:
-1. This "cleanup" made unintended logic changes (see below)
-2. The "cleanup" itself actually becomes the major part of
-    this patch, while the actual fix mentioned in commit
-    message is the minor part.
-3. A fix commit should contain the fix itself. It shouldn't
-    mix with these code changes.
-
-> +               switch (op->data.dir) {
-> +               case SPI_MEM_DATA_IN:
-> +                       if (!mtk_nor_match_read(op))
-> +                               return -EINVAL;
-
-You are changing the code logic here.
-mtk_nor_match_read checks if the operation can be executed
-using controller PIO/DMA reading. Even if it's not supported,
-we can still use PRG mode to execute the operation.
-One example of such an operation is SPI NOR SFDP reading.
-Your change breaks that which then breaks 1_2_2 and 1_4_4
-reading capability because spi-nor driver parses these op formats
-from SFDP table.
-
-> +                       /* check if it's DMAable */
->                         if ((op->addr.val & MTK_NOR_DMA_ALIGN_MASK) ||
-> -                           (op->data.nbytes < MTK_NOR_DMA_ALIGN))
-> +                           (op->data.nbytes < MTK_NOR_DMA_ALIGN)) {
->                                 op->data.nbytes = 1;
-> -                       else if (!((ulong)(op->data.buf.in) &
-> -                                  MTK_NOR_DMA_ALIGN_MASK))
-> +                       } else {
-> +                               if (need_bounce(op->data.buf.in, op->data.nbytes) &&
-> +                                   (op->data.nbytes > MTK_NOR_BOUNCE_BUF_SIZE))
-> +                                       op->data.nbytes = MTK_NOR_BOUNCE_BUF_SIZE;
->                                 op->data.nbytes &= ~MTK_NOR_DMA_ALIGN_MASK;
-> -                       else if (op->data.nbytes > MTK_NOR_BOUNCE_BUF_SIZE)
-> -                               op->data.nbytes = MTK_NOR_BOUNCE_BUF_SIZE;
-
-data length alignment is intentionally done only for DMA reading
-without the bounce buffer.
-My intention here:
-If we use the bounce buffer, we can read more data than needed to.
-Say we want 25 bytes of data, reading 32 bytes using DMA and
-bounce buffer should be faster than reading 16 bytes with DMA
-and another 9 bytes with PIO, because for every single byte of PIO
-reading, adjust_op_size and exec_op is called once, we
-program controller with new cmd/address, and controller need
-to send extra cmd/address to flash.
-I noticed that you removed this part of logic from DMA reading
-execution in 3/5 as well. Please revert the logic change here
-add in DMA reading function (see later comment in 3/5).
-
-> -                       return 0;
-> -               } else if (op->data.dir == SPI_MEM_DATA_OUT) {
-> +                       }
-> +                       break;
-> +               case SPI_MEM_DATA_OUT:
->                         if (op->data.nbytes >= MTK_NOR_PP_SIZE)
->                                 op->data.nbytes = MTK_NOR_PP_SIZE;
->                         else
->                                 op->data.nbytes = 1;
-> -                       return 0;
-> +                       break;
-> +               default:
-> +                       break;
->                 }
-> +       } else {
-> +               u8 len = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes;
-> +
-> +               if (len > MTK_NOR_PRG_MAX_SIZE)
-> +                       return -EINVAL;
-> +               if (op->data.nbytes && !(MTK_NOR_PRG_MAX_SIZE - len))
-> +                       return -EINVAL;
-> +               if (op->data.nbytes > (MTK_NOR_PRG_MAX_SIZE - len))
-> +                       op->data.nbytes = MTK_NOR_PRG_MAX_SIZE - len;
->         }
->
-> -       len = MTK_NOR_PRG_MAX_SIZE - op->cmd.nbytes - op->addr.nbytes -
-> -             op->dummy.nbytes;
-> -       if (op->data.nbytes > len)
-> -               op->data.nbytes = len;
-> -
->         return 0;
->  }
->
->  static bool mtk_nor_supports_op(struct spi_mem *mem,
->                                 const struct spi_mem_op *op)
->  {
-> -       size_t len;
-> -
->         if (op->cmd.buswidth != 1)
->                 return false;
->
->         if ((op->addr.nbytes == 3) || (op->addr.nbytes == 4)) {
-> -               switch(op->data.dir) {
-> +               switch (op->data.dir) {
->                 case SPI_MEM_DATA_IN:
->                         if (!mtk_nor_match_read(op))
->                                 return false;
-> @@ -226,11 +237,14 @@ static bool mtk_nor_supports_op(struct spi_mem *mem,
->                 default:
->                         break;
->                 }
-> +       } else {
-> +               u8 len = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes;
-> +
-> +               if (len > MTK_NOR_PRG_MAX_SIZE)
-> +                       return false;
-> +               if (op->data.nbytes && !(MTK_NOR_PRG_MAX_SIZE - len))
-> +                       return false;
->         }
-> -       len = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes;
-> -       if ((len > MTK_NOR_PRG_MAX_SIZE) ||
-> -           ((op->data.nbytes) && (len == MTK_NOR_PRG_MAX_SIZE)))
-> -               return false;
->
->         return spi_mem_default_supports_op(mem, op);
->  }
-> --
-> 2.28.0.681.g6f77f65b4e-goog
->
-
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+index bd7a0fa5801b..ea827e8763de 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+@@ -15,6 +15,7 @@ Required Properties:
+ 	- "mediatek,mt7623-apmixedsys", "mediatek,mt2701-apmixedsys"
+ 	- "mediatek,mt7629-apmixedsys"
+ 	- "mediatek,mt8135-apmixedsys"
++	- "mediatek,mt8167-apmixedsys", "syscon"
+ 	- "mediatek,mt8173-apmixedsys"
+ 	- "mediatek,mt8183-apmixedsys", "syscon"
+ 	- "mediatek,mt8516-apmixedsys"
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
+index 38309db115f5..b32d374193c7 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
+@@ -11,6 +11,7 @@ Required Properties:
+ 	- "mediatek,mt6779-audio", "syscon"
+ 	- "mediatek,mt7622-audsys", "syscon"
+ 	- "mediatek,mt7623-audsys", "mediatek,mt2701-audsys", "syscon"
++	- "mediatek,mt8167-audiosys", "syscon"
+ 	- "mediatek,mt8183-audiosys", "syscon"
+ 	- "mediatek,mt8516-audsys", "syscon"
+ - #clock-cells: Must be 1
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
+index 1e1f00718a7d..dce4c9241932 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
+@@ -12,6 +12,7 @@ Required Properties:
+ 	- "mediatek,mt6779-imgsys", "syscon"
+ 	- "mediatek,mt6797-imgsys", "syscon"
+ 	- "mediatek,mt7623-imgsys", "mediatek,mt2701-imgsys", "syscon"
++	- "mediatek,mt8167-imgsys", "syscon"
+ 	- "mediatek,mt8173-imgsys", "syscon"
+ 	- "mediatek,mt8183-imgsys", "syscon"
+ - #clock-cells: Must be 1
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
+index 49a968be1a80..eb3523c7a7be 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
+@@ -16,6 +16,7 @@ Required Properties:
+ 	- "mediatek,mt7623-infracfg", "mediatek,mt2701-infracfg", "syscon"
+ 	- "mediatek,mt7629-infracfg", "syscon"
+ 	- "mediatek,mt8135-infracfg", "syscon"
++	- "mediatek,mt8167-infracfg", "syscon"
+ 	- "mediatek,mt8173-infracfg", "syscon"
+ 	- "mediatek,mt8183-infracfg", "syscon"
+ 	- "mediatek,mt8516-infracfg", "syscon"
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
+index ad5f9d2f6818..054424fb64b4 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
+@@ -8,6 +8,7 @@ Required Properties:
+ - compatible: Should be one of:
+ 	- "mediatek,mt2712-mfgcfg", "syscon"
+ 	- "mediatek,mt6779-mfgcfg", "syscon"
++	- "mediatek,mt8167-mfgcfg", "syscon"
+ 	- "mediatek,mt8183-mfgcfg", "syscon"
+ - #clock-cells: Must be 1
+ 
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
+index 9b0394cbbdc9..5ce7578cf274 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
+@@ -15,6 +15,7 @@ Required Properties:
+ 	- "mediatek,mt7623-topckgen", "mediatek,mt2701-topckgen"
+ 	- "mediatek,mt7629-topckgen"
+ 	- "mediatek,mt8135-topckgen"
++	- "mediatek,mt8167-topckgen", "syscon"
+ 	- "mediatek,mt8173-topckgen"
+ 	- "mediatek,mt8183-topckgen", "syscon"
+ 	- "mediatek,mt8516-topckgen"
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
+index 7894558b7a1c..98195169176a 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
+@@ -11,6 +11,7 @@ Required Properties:
+ 	- "mediatek,mt6779-vdecsys", "syscon"
+ 	- "mediatek,mt6797-vdecsys", "syscon"
+ 	- "mediatek,mt7623-vdecsys", "mediatek,mt2701-vdecsys", "syscon"
++	- "mediatek,mt8167-vdecsys", "syscon"
+ 	- "mediatek,mt8173-vdecsys", "syscon"
+ 	- "mediatek,mt8183-vdecsys", "syscon"
+ - #clock-cells: Must be 1
+diff --git a/include/dt-bindings/clock/mt8167-clk.h b/include/dt-bindings/clock/mt8167-clk.h
+new file mode 100644
+index 000000000000..a96158edd817
+--- /dev/null
++++ b/include/dt-bindings/clock/mt8167-clk.h
+@@ -0,0 +1,131 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (c) 2020 MediaTek Inc.
++ * Copyright (c) 2020 BayLibre, SAS.
++ * Author: James Liao <jamesjj.liao@mediatek.com>
++ *         Fabien Parent <fparent@baylibre.com>
++ */
++
++#ifndef _DT_BINDINGS_CLK_MT8167_H
++#define _DT_BINDINGS_CLK_MT8167_H
++
++/* MT8167 is based on MT8516 */
++#include <dt-bindings/clock/mt8516-clk.h>
++
++/* APMIXEDSYS */
++
++#define CLK_APMIXED_TVDPLL		(CLK_APMIXED_NR_CLK + 0)
++#define CLK_APMIXED_LVDSPLL		(CLK_APMIXED_NR_CLK + 1)
++#define CLK_APMIXED_HDMI_REF		(CLK_APMIXED_NR_CLK + 2)
++#define MT8167_CLK_APMIXED_NR_CLK	(CLK_APMIXED_NR_CLK + 3)
++
++/* TOPCKGEN */
++
++#define CLK_TOP_DSI0_LNTC_DSICK		(CLK_TOP_NR_CLK + 0)
++#define CLK_TOP_VPLL_DPIX		(CLK_TOP_NR_CLK + 1)
++#define CLK_TOP_LVDSTX_CLKDIG_CTS	(CLK_TOP_NR_CLK + 2)
++#define CLK_TOP_HDMTX_CLKDIG_CTS	(CLK_TOP_NR_CLK + 3)
++#define CLK_TOP_LVDSPLL			(CLK_TOP_NR_CLK + 4)
++#define CLK_TOP_LVDSPLL_D2		(CLK_TOP_NR_CLK + 5)
++#define CLK_TOP_LVDSPLL_D4		(CLK_TOP_NR_CLK + 6)
++#define CLK_TOP_LVDSPLL_D8		(CLK_TOP_NR_CLK + 7)
++#define CLK_TOP_MIPI_26M		(CLK_TOP_NR_CLK + 8)
++#define CLK_TOP_TVDPLL			(CLK_TOP_NR_CLK + 9)
++#define CLK_TOP_TVDPLL_D2		(CLK_TOP_NR_CLK + 10)
++#define CLK_TOP_TVDPLL_D4		(CLK_TOP_NR_CLK + 11)
++#define CLK_TOP_TVDPLL_D8		(CLK_TOP_NR_CLK + 12)
++#define CLK_TOP_TVDPLL_D16		(CLK_TOP_NR_CLK + 13)
++#define CLK_TOP_PWM_MM			(CLK_TOP_NR_CLK + 14)
++#define CLK_TOP_CAM_MM			(CLK_TOP_NR_CLK + 15)
++#define CLK_TOP_MFG_MM			(CLK_TOP_NR_CLK + 16)
++#define CLK_TOP_SPM_52M			(CLK_TOP_NR_CLK + 17)
++#define CLK_TOP_MIPI_26M_DBG		(CLK_TOP_NR_CLK + 18)
++#define CLK_TOP_SCAM_MM			(CLK_TOP_NR_CLK + 19)
++#define CLK_TOP_SMI_MM			(CLK_TOP_NR_CLK + 20)
++#define CLK_TOP_26M_HDMI_SIFM		(CLK_TOP_NR_CLK + 21)
++#define CLK_TOP_26M_CEC			(CLK_TOP_NR_CLK + 22)
++#define CLK_TOP_32K_CEC			(CLK_TOP_NR_CLK + 23)
++#define CLK_TOP_GCPU_B			(CLK_TOP_NR_CLK + 24)
++#define CLK_TOP_RG_VDEC			(CLK_TOP_NR_CLK + 25)
++#define CLK_TOP_RG_FDPI0		(CLK_TOP_NR_CLK + 26)
++#define CLK_TOP_RG_FDPI1		(CLK_TOP_NR_CLK + 27)
++#define CLK_TOP_RG_AXI_MFG		(CLK_TOP_NR_CLK + 28)
++#define CLK_TOP_RG_SLOW_MFG		(CLK_TOP_NR_CLK + 29)
++#define CLK_TOP_GFMUX_EMI1X_SEL		(CLK_TOP_NR_CLK + 30)
++#define CLK_TOP_CSW_MUX_MFG_SEL		(CLK_TOP_NR_CLK + 31)
++#define CLK_TOP_CAMTG_MM_SEL		(CLK_TOP_NR_CLK + 32)
++#define CLK_TOP_PWM_MM_SEL		(CLK_TOP_NR_CLK + 33)
++#define CLK_TOP_SPM_52M_SEL		(CLK_TOP_NR_CLK + 34)
++#define CLK_TOP_MFG_MM_SEL		(CLK_TOP_NR_CLK + 35)
++#define CLK_TOP_SMI_MM_SEL		(CLK_TOP_NR_CLK + 36)
++#define CLK_TOP_SCAM_MM_SEL		(CLK_TOP_NR_CLK + 37)
++#define CLK_TOP_VDEC_MM_SEL		(CLK_TOP_NR_CLK + 38)
++#define CLK_TOP_DPI0_MM_SEL		(CLK_TOP_NR_CLK + 39)
++#define CLK_TOP_DPI1_MM_SEL		(CLK_TOP_NR_CLK + 40)
++#define CLK_TOP_AXI_MFG_IN_SEL		(CLK_TOP_NR_CLK + 41)
++#define CLK_TOP_SLOW_MFG_SEL		(CLK_TOP_NR_CLK + 42)
++#define MT8167_CLK_TOP_NR_CLK		(CLK_TOP_NR_CLK + 43)
++
++/* MFGCFG */
++
++#define CLK_MFG_BAXI			0
++#define CLK_MFG_BMEM			1
++#define CLK_MFG_BG3D			2
++#define CLK_MFG_B26M			3
++#define CLK_MFG_NR_CLK			4
++
++/* MMSYS */
++
++#define CLK_MM_SMI_COMMON		0
++#define CLK_MM_SMI_LARB0		1
++#define CLK_MM_CAM_MDP			2
++#define CLK_MM_MDP_RDMA			3
++#define CLK_MM_MDP_RSZ0			4
++#define CLK_MM_MDP_RSZ1			5
++#define CLK_MM_MDP_TDSHP		6
++#define CLK_MM_MDP_WDMA			7
++#define CLK_MM_MDP_WROT			8
++#define CLK_MM_FAKE_ENG			9
++#define CLK_MM_DISP_OVL0		10
++#define CLK_MM_DISP_RDMA0		11
++#define CLK_MM_DISP_RDMA1		12
++#define CLK_MM_DISP_WDMA		13
++#define CLK_MM_DISP_COLOR		14
++#define CLK_MM_DISP_CCORR		15
++#define CLK_MM_DISP_AAL			16
++#define CLK_MM_DISP_GAMMA		17
++#define CLK_MM_DISP_DITHER		18
++#define CLK_MM_DISP_UFOE		19
++#define CLK_MM_DISP_PWM_MM		20
++#define CLK_MM_DISP_PWM_26M		21
++#define CLK_MM_DSI_ENGINE		22
++#define CLK_MM_DSI_DIGITAL		23
++#define CLK_MM_DPI0_ENGINE		24
++#define CLK_MM_DPI0_PXL			25
++#define CLK_MM_LVDS_PXL			26
++#define CLK_MM_LVDS_CTS			27
++#define CLK_MM_DPI1_ENGINE		28
++#define CLK_MM_DPI1_PXL			29
++#define CLK_MM_HDMI_PXL			30
++#define CLK_MM_HDMI_SPDIF		31
++#define CLK_MM_HDMI_ADSP_BCK		32
++#define CLK_MM_HDMI_PLL			33
++#define CLK_MM_NR_CLK			34
++
++/* IMGSYS */
++
++#define CLK_IMG_LARB1_SMI		0
++#define CLK_IMG_CAM_SMI			1
++#define CLK_IMG_CAM_CAM			2
++#define CLK_IMG_SEN_TG			3
++#define CLK_IMG_SEN_CAM			4
++#define CLK_IMG_VENC			5
++#define CLK_IMG_NR_CLK			6
++
++/* VDECSYS */
++
++#define CLK_VDEC_CKEN			0
++#define CLK_VDEC_LARB1_CKEN		1
++#define CLK_VDEC_NR_CLK			2
++
++#endif /* _DT_BINDINGS_CLK_MT8167_H */
 -- 
-Regards,
-Chuanhong Guo
+2.28.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
