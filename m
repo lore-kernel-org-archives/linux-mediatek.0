@@ -1,63 +1,64 @@
-Return-Path: <SRS0=3MyJ=C3=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=9Csx=C4=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+X-Spam-Status: No, score=-12.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BDE76C43465
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 20:53:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4FF75C43464
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Sep 2020 02:12:46 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5891421741
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2020 20:53:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C42A52151B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Sep 2020 02:12:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KsQ8sAIs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5891421741
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=the-dreams.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oB+Qa/3h"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C42A52151B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=t8Ifj9D1CaJWRmxTYsypoB3X3OQaeOOHHdhX28eISag=; b=KsQ8sAIsvEAla59fD1P27b67J
-	hYdCiQcFy0tQ90nJA+GMl/b7B8MTCR7qWDzGJSTFQ0Qxr/yyGFLGqQlyVAaVLy3ugWd7tGPRBGN9q
-	sAv2CStRzwInVSySW/K7AUBBvWATFAVxrwLfrEWeQxonuskhO+2ouya9rO/cOTwdzBK6hPNITeDoE
-	zhjewJW+lwnwD7fLFbBMF2zfKUqKYZDgi2bE3A5UKaf5JkoKZTl/xMmGqELm6qOjDPCn+Yrin+shX
-	DSop97+MC9LI7j5Hri1ZYgpjLjX8jbYkBMa5QXUoWnN9WcUZPm0MlgRyaoiGy6cNZofANd2aVxs5B
-	jGyhukGkg==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tuwfQKPymmuNz/q2bwtg6Lj4tGPF/pKGK0UWiTQcpZg=; b=oB+Qa/3hlk0mT2iuwBWJI3U24a
+	HfkK/+srJHTPgguDPjR6bJjMhCkTyXZ5VdnLg7+Y5QZmBgz5j/lzxSx+XDPKc7piNnwi6abTsgaWu
+	+Lq4vbgJF8kVj9Tyr3etylhlhJHjRyKnHMlUvvCUlW86btFkXHzvpkkp1UYclEVunSquNvQRoOgry
+	ntnsWiJBS+3g4W7HpTJmoAaUoujsZX7IlNKxKsfUN/VolsuMTI8bCoAtkMWwUgA+ZJvXlFk5++iU9
+	EAhGKhdz/WF6xQRc7CgPyvRxchga8k6ZVzqKvrlncn4gX9/fdyxhqbi+ySavW9VvtsIbmb2pHQjsw
+	MwnUEKVA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kJNNF-0003IA-Or; Fri, 18 Sep 2020 20:52:53 +0000
-Received: from sauhun.de ([88.99.104.3] helo=pokefinder.org)
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kJNN0-0003DW-PN; Fri, 18 Sep 2020 20:52:39 +0000
-Received: from localhost (router.4pisysteme.de [80.79.225.122])
- by pokefinder.org (Postfix) with ESMTPSA id 470352C1730;
- Fri, 18 Sep 2020 22:52:38 +0200 (CEST)
-Date: Fri, 18 Sep 2020 22:52:38 +0200
-From: <wsa@the-dreams.de>
-To: Qii Wang <qii.wang@mediatek.com>
-Subject: Re: [PATCH 2/2] i2c: mediatek: Send i2c master code at more than 1MHz
-Message-ID: <20200918205238.GC52206@kunai>
-Mail-Followup-To: <wsa@the-dreams.de>, Qii Wang <qii.wang@mediatek.com>,
- <matthias.bgg@gmail.com>, <linux-i2c@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <leilk.liu@mediatek.com>
-References: <1600343742-9731-1-git-send-email-qii.wang@mediatek.com>
- <1600343742-9731-3-git-send-email-qii.wang@mediatek.com>
+	id 1kJSMf-0004sS-43; Sat, 19 Sep 2020 02:12:37 +0000
+Received: from szxga05-in.huawei.com ([45.249.212.191] helo=huawei.com)
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kJSMa-0004rC-JI; Sat, 19 Sep 2020 02:12:33 +0000
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id BF1D77549CDC54B08854;
+ Sat, 19 Sep 2020 10:12:17 +0800 (CST)
+Received: from localhost.localdomain.localdomain (10.175.113.25) by
+ DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
+ 14.3.487.0; Sat, 19 Sep 2020 10:12:10 +0800
+From: Qinglang Miao <miaoqinglang@huawei.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi83@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, "Kalle
+ Valo" <kvalo@codeaurora.org>, "David S. Miller" <davem@davemloft.net>,
+ "Jakub Kicinski" <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH -next v2] mt76: Convert to DEFINE_SHOW_ATTRIBUTE
+Date: Sat, 19 Sep 2020 10:12:42 +0800
+Message-ID: <20200919021242.188703-1-miaoqinglang@huawei.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <1600343742-9731-3-git-send-email-qii.wang@mediatek.com>
+X-Originating-IP: [10.175.113.25]
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200918_165238_965474_B506F9F9 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20200918_221232_910004_EE098E9D 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,69 +70,187 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: srv_heupstream@mediatek.com, leilk.liu@mediatek.com,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-i2c@vger.kernel.org, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============7843137603796800698=="
+Cc: netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Qinglang Miao <miaoqinglang@huawei.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Use DEFINE_SHOW_ATTRIBUTE macro to simplify the code.
 
---===============7843137603796800698==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="TiqCXmo5T1hvSQQg"
-Content-Disposition: inline
+Signed-off-by: Qinglang Miao <miaoqinglang@huawei.com>
+---
+ .../wireless/mediatek/mt76/mt7603/debugfs.c   | 18 +++-------
+ .../wireless/mediatek/mt76/mt7615/debugfs.c   | 17 ++--------
+ .../wireless/mediatek/mt76/mt76x02_debugfs.c  | 34 ++++---------------
+ 3 files changed, 13 insertions(+), 56 deletions(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7603/debugfs.c
+index 8ce6880b2..f52165dff 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/debugfs.c
+@@ -70,7 +70,7 @@ DEFINE_DEBUGFS_ATTRIBUTE(fops_edcca, mt7603_edcca_get,
+ 			 mt7603_edcca_set, "%lld\n");
+ 
+ static int
+-mt7603_ampdu_stat_read(struct seq_file *file, void *data)
++mt7603_ampdu_stat_show(struct seq_file *file, void *data)
+ {
+ 	struct mt7603_dev *dev = file->private;
+ 	int bound[3], i, range;
+@@ -91,18 +91,7 @@ mt7603_ampdu_stat_read(struct seq_file *file, void *data)
+ 	return 0;
+ }
+ 
+-static int
+-mt7603_ampdu_stat_open(struct inode *inode, struct file *f)
+-{
+-	return single_open(f, mt7603_ampdu_stat_read, inode->i_private);
+-}
+-
+-static const struct file_operations fops_ampdu_stat = {
+-	.open = mt7603_ampdu_stat_open,
+-	.read = seq_read,
+-	.llseek = seq_lseek,
+-	.release = single_release,
+-};
++DEFINE_SHOW_ATTRIBUTE(mt7603_ampdu_stat);
+ 
+ void mt7603_init_debugfs(struct mt7603_dev *dev)
+ {
+@@ -112,7 +101,8 @@ void mt7603_init_debugfs(struct mt7603_dev *dev)
+ 	if (!dir)
+ 		return;
+ 
+-	debugfs_create_file("ampdu_stat", 0400, dir, dev, &fops_ampdu_stat);
++	debugfs_create_file("ampdu_stat", 0400, dir, dev,
++			     &mt7603_ampdu_stat_fops);
+ 	debugfs_create_devm_seqfile(dev->mt76.dev, "xmit-queues", dir,
+ 				    mt76_queues_read);
+ 	debugfs_create_file("edcca", 0600, dir, dev, &fops_edcca);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
+index 88931658a..35f9ed574 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
+@@ -221,7 +221,7 @@ mt7615_ampdu_stat_read_phy(struct mt7615_phy *phy,
+ }
+ 
+ static int
+-mt7615_ampdu_stat_read(struct seq_file *file, void *data)
++mt7615_ampdu_stat_show(struct seq_file *file, void *data)
+ {
+ 	struct mt7615_dev *dev = file->private;
+ 
+@@ -235,18 +235,7 @@ mt7615_ampdu_stat_read(struct seq_file *file, void *data)
+ 	return 0;
+ }
+ 
+-static int
+-mt7615_ampdu_stat_open(struct inode *inode, struct file *f)
+-{
+-	return single_open(f, mt7615_ampdu_stat_read, inode->i_private);
+-}
+-
+-static const struct file_operations fops_ampdu_stat = {
+-	.open = mt7615_ampdu_stat_open,
+-	.read = seq_read,
+-	.llseek = seq_lseek,
+-	.release = single_release,
+-};
++DEFINE_SHOW_ATTRIBUTE(mt7615_ampdu_stat);
+ 
+ static void
+ mt7615_radio_read_phy(struct mt7615_phy *phy, struct seq_file *s)
+@@ -393,7 +382,7 @@ int mt7615_init_debugfs(struct mt7615_dev *dev)
+ 					    mt76_queues_read);
+ 	debugfs_create_devm_seqfile(dev->mt76.dev, "acq", dir,
+ 				    mt7615_queues_acq);
+-	debugfs_create_file("ampdu_stat", 0400, dir, dev, &fops_ampdu_stat);
++	debugfs_create_file("ampdu_stat", 0400, dir, dev, &mt7615_ampdu_stat_fops);
+ 	debugfs_create_file("scs", 0600, dir, dev, &fops_scs);
+ 	debugfs_create_file("dbdc", 0600, dir, dev, &fops_dbdc);
+ 	debugfs_create_file("fw_debug", 0600, dir, dev, &fops_fw_debug);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_debugfs.c b/drivers/net/wireless/mediatek/mt76/mt76x02_debugfs.c
+index ff448a1ad..c4fe1c436 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_debugfs.c
+@@ -7,7 +7,7 @@
+ #include "mt76x02.h"
+ 
+ static int
+-mt76x02_ampdu_stat_read(struct seq_file *file, void *data)
++mt76x02_ampdu_stat_show(struct seq_file *file, void *data)
+ {
+ 	struct mt76x02_dev *dev = file->private;
+ 	int i, j;
+@@ -31,11 +31,7 @@ mt76x02_ampdu_stat_read(struct seq_file *file, void *data)
+ 	return 0;
+ }
+ 
+-static int
+-mt76x02_ampdu_stat_open(struct inode *inode, struct file *f)
+-{
+-	return single_open(f, mt76x02_ampdu_stat_read, inode->i_private);
+-}
++DEFINE_SHOW_ATTRIBUTE(mt76x02_ampdu_stat);
+ 
+ static int read_txpower(struct seq_file *file, void *data)
+ {
+@@ -48,15 +44,8 @@ static int read_txpower(struct seq_file *file, void *data)
+ 	return 0;
+ }
+ 
+-static const struct file_operations fops_ampdu_stat = {
+-	.open = mt76x02_ampdu_stat_open,
+-	.read = seq_read,
+-	.llseek = seq_lseek,
+-	.release = single_release,
+-};
+-
+ static int
+-mt76x02_dfs_stat_read(struct seq_file *file, void *data)
++mt76x02_dfs_stat_show(struct seq_file *file, void *data)
+ {
+ 	struct mt76x02_dev *dev = file->private;
+ 	struct mt76x02_dfs_pattern_detector *dfs_pd = &dev->dfs_pd;
+@@ -81,18 +70,7 @@ mt76x02_dfs_stat_read(struct seq_file *file, void *data)
+ 	return 0;
+ }
+ 
+-static int
+-mt76x02_dfs_stat_open(struct inode *inode, struct file *f)
+-{
+-	return single_open(f, mt76x02_dfs_stat_read, inode->i_private);
+-}
+-
+-static const struct file_operations fops_dfs_stat = {
+-	.open = mt76x02_dfs_stat_open,
+-	.read = seq_read,
+-	.llseek = seq_lseek,
+-	.release = single_release,
+-};
++DEFINE_SHOW_ATTRIBUTE(mt76x02_dfs_stat);
+ 
+ static int read_agc(struct seq_file *file, void *data)
+ {
+@@ -150,8 +128,8 @@ void mt76x02_init_debugfs(struct mt76x02_dev *dev)
+ 	debugfs_create_bool("tpc", 0600, dir, &dev->enable_tpc);
+ 
+ 	debugfs_create_file("edcca", 0600, dir, dev, &fops_edcca);
+-	debugfs_create_file("ampdu_stat", 0400, dir, dev, &fops_ampdu_stat);
+-	debugfs_create_file("dfs_stats", 0400, dir, dev, &fops_dfs_stat);
++	debugfs_create_file("ampdu_stat", 0400, dir, dev, &mt76x02_ampdu_stat_fops);
++	debugfs_create_file("dfs_stats", 0400, dir, dev, &mt76x02_dfs_stat_fops);
+ 	debugfs_create_devm_seqfile(dev->mt76.dev, "txpower", dir,
+ 				    read_txpower);
+ 
+-- 
+2.23.0
 
---TiqCXmo5T1hvSQQg
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Sep 17, 2020 at 07:55:42PM +0800, Qii Wang wrote:
-> The master code needs to being sent when the speed is more than
-> I2C_MAX_FAST_MODE_PLUS_FREQ, not I2C_MAX_FAST_MODE_FREQ in the
-> latest I2C-bus specification and user manual.
->=20
-> Signed-off-by: Qii Wang <qii.wang@mediatek.com>
-
-Applied to for-current, thanks!
-
-
---TiqCXmo5T1hvSQQg
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl9lHhYACgkQFA3kzBSg
-KbaJbxAAo4wNNMezn5vLQeKn0+GodAJ4sALS9nvYJO8arUk+0fSCI6MB/+5BOV6O
-HwcsUHUhfqdg3XnJ1m8RcrS8sI2emNrJPrijm8PYs8xNt4CbXtuc44EZO0qKiQMO
-9/fBln1+jfPwymPForcFycETkBAVdBbv7+pYYLcl6qYASyLzeMq64d6TS5V9V9Oz
-USWK4dbr7Ynewi8M6aWL9p4c0wEB3I8bTpf2ZDOOQvWdyGfS547etpDOEy71K1+Q
-9AVDHap40DjgNoysvKow/DyE0iTyI4zzBqqrcZARSguYVYXX/bmlRnmCCXSYKllK
-86ikJeKM6/Tn4GOTo3LJhDT/LD39PdYxmfe+AjUvyjFUwDQ8E771DH0RaiNbLNrU
-hIdeNB45ZD1zqRr+E6ihBrgDO+4e3GYFOtyD+ZaJuhaSaAHF8XUCY8+6m/eP86ix
-wPlnSNvzm6rhCLJWIwQhC0NSlwlWIyOxosMjCfb7C/gx8dMJnn8IEUFnI0Lph8g0
-+bS690O/1V48iT6FSIfGfAebQvdiddulj2T0WMNZxyfuTZoCBlETnE7J8tLNcxAu
-/zEupaGjGgR23I2PpiifPOfLxUZRTn9HdTxPSaN7OiYswNsxtp/7Hcfl+a6NBfdd
-xBfjNHfIkct66H6kzQpyfQyYnMHNzecGxi5bdvtXbfC+b+ztlM4=
-=Fedd
------END PGP SIGNATURE-----
-
---TiqCXmo5T1hvSQQg--
-
-
---===============7843137603796800698==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============7843137603796800698==--
-
