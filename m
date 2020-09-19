@@ -2,78 +2,88 @@ Return-Path: <SRS0=9Csx=C4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 04D57C43463
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Sep 2020 15:27:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A501C43463
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Sep 2020 19:30:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 471BB2100A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Sep 2020 15:27:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 42AAA21707
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Sep 2020 19:30:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XMziWWHi";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="AkC4jDUG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 471BB2100A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DAOAk2fM";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Qf5i6Pqw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 42AAA21707
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dxq2gQkLi8DeSkaq3gLNv633DYp53iACk+Ngq67E9ts=; b=XMziWWHiN9+TFrK3EnJczAHYe
-	vX9+aF5mv0lmkytXLgRZHmep3Msgitn/SOGrElc5Prl7Q64rPVQIcN9yC+wDizexD4uxrDMIBWiB+
-	wKew0ytzLUYZaeAUu+KPaA0A0ZSkuML+2u6PXHL7jtgFiWasI7lDJ4YcQH7NQvbcK6YyACKAClaWT
-	F+IOn45ZrVN99zgSLoORXlLBVJp2igY7Sakl8Pa8cllQd+BIYyXJelbiDRgR8QnRrX+VsHdpF6PQI
-	5peS3dk8vG1c5xbpqQQL7PPkvZRr8W0WFrV1FMSq1MhYCeUgE9UFA4GJ2c/VZwkVPLj9n12lfCw6u
-	lIVXV0nkg==;
+	 bh=DIxeg9GBRorlyp2yJxtyLzBSy/HPJWZaQPxiZcaiGok=; b=DAOAk2fMzgahTvTt6dzZMkMkq
+	Z4HqfQbWcgGHu2p/3I4fnHbc9ODPZZxS7vfr5KYTc+u7sZUVrXuJDBffqX/uTKANvytvj8+nk9naG
+	+oE4w3Rg14x0RtZGYgmwXUH0zKuQk7fIgkb1h3Aae4ww8ebJjqJMmvGCmb+2OZ4pLZmdwhQRmLCyl
+	wQ3jUQUWoaULujoWOF2CQYqc5gSi2QrEf8PtqzulUoZeQdaAOJfMQpdiI+sN7+4EevhLJy3nu2J8p
+	JXG5M/HDwQ20b5YFqW+VALC/cWGDzCnUQ1J32hLe2WN7S2lQta/NbhnP6sD+rFXEYOVNWr+hoqR9q
+	KWcvsSFpw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kJelj-0000ng-25; Sat, 19 Sep 2020 15:27:19 +0000
-Received: from [216.200.240.184] (helo=mailgw01.mediatek.com)
+	id 1kJiYR-0003hL-6H; Sat, 19 Sep 2020 19:29:51 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kJeld-0000j1-3I; Sat, 19 Sep 2020 15:27:15 +0000
-X-UUID: 13ed17d77ef34e06a9bc351a089705f4-20200919
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=IrIcNVhFVMWRbTHiVNPXL4VIQ4/x908yIeAq6qk9Ekc=; 
- b=AkC4jDUGvMpB3L53ZdH1ue0FGSgGFs0n4j/r6cPjzBdoxCITafuHL1+KZakmoORsWbVBlIBD+Z+jxGoFMGRMt3JL8uVKSby43kwv/ZBVGx9o7SRkI4MdleN8ZkXPUF3oVHclKUJDTfdCQial5DRmFTjC0CrOqxeEsQbfCpWVeAQ=;
-X-UUID: 13ed17d77ef34e06a9bc351a089705f4-20200919
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yingjoe.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1125254471; Sat, 19 Sep 2020 07:26:54 -0800
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 19 Sep 2020 08:26:52 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 19 Sep 2020 23:26:50 +0800
-Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 19 Sep 2020 23:26:42 +0800
-Message-ID: <1600529204.7002.0.camel@mtksdaap41>
-Subject: Re: [PATCH v2 4/5] spi: spi-mtk-nor: support 36bit dma addressing
- to mediatek
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-To: Ikjoon Jang <ikjn@chromium.org>
-Date: Sat, 19 Sep 2020 23:26:44 +0800
-In-Reply-To: <20200918162834.v2.4.Id1cb208392928afc7ceed4de06924243c7858cd0@changeid>
-References: <20200918083124.3921207-1-ikjn@chromium.org>
- <20200918162834.v2.4.Id1cb208392928afc7ceed4de06924243c7858cd0@changeid>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kJiYN-0003gg-9E; Sat, 19 Sep 2020 19:29:48 +0000
+Received: by mail-wr1-x442.google.com with SMTP id a17so8830510wrn.6;
+ Sat, 19 Sep 2020 12:29:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=6bE1UCN2SxEtk5wLlW6eDkNj/1eK18tXtibVyotZ7CQ=;
+ b=Qf5i6PqwPm10hX6K72w6i3Ahe+JswP51uGU2ZDhEeloC8zDHKKHbTwO6Oa5pTuCoMO
+ lOPJGpLpgSFa59xdGiw42TqlQdRFGFaYuYbmloe5jp/f4rfBe+bIqnpOEpuwoWpRlurZ
+ HWa5NXPcJ5w1Cyd+tGdMpZ1rT+SIjERTam/2P1MkRvXBPXPxhIwhDqGZdZhxmkduQCsV
+ KMoSYloh1ZHbmWyO+3qbiVZiQbsIenoWoQ5zy67rXJyWijVkDZyeBUx5O6WZLQZ8usV9
+ l/miRQdSM5uvCUx0AwDI5t6k2A6R4w531OvHKxQ8aSwVewKcKoAb93DIO/66PQyQLHjR
+ 15CQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=6bE1UCN2SxEtk5wLlW6eDkNj/1eK18tXtibVyotZ7CQ=;
+ b=Qzh7J0qGFEi9vXyChpYe5AUsFOlWZ2WdPhaUb0LUcAykxoG0jQmuIcCw1xMENRDf7q
+ IHR690j1M34Y/hEt0gAPcCb/zhhOxmNScIYgfuvRao3r/BgoKZOLNNvSqSlzQKWccKKR
+ M2/b5n/kcj9Xyvhh7Gc7voKpi+NPdHeip1V/0BIIE++FYFc00MSf+w5GCA7KIcgoZA+o
+ k3v+R+h8k/MhzirWTLeTIrFZA1+p531W+OGQH6b31SnAoSboxnqlHOvjDM89y03OqlwH
+ qGZ8FG2zd3QXeuJopFilSxRe5yBgfXY0GE47NGjseo7AkVefxaJPFILO7lx9JsleoJSM
+ BsMA==
+X-Gm-Message-State: AOAM531P8Ftsa5to/zrM2C2C7wqigDJRqQLz4FI05c8xF/MWVTIsup8x
+ V861AwwUn6MLFTF8roPvmEA=
+X-Google-Smtp-Source: ABdhPJxJ9woUCR9Om7Bguc63A/yyUADe7XauqnL2X/Pm4GtRnBNgoucoc9eAGjR2SMG2I8/nYhoOeQ==
+X-Received: by 2002:adf:fc0a:: with SMTP id i10mr43825459wrr.111.1600543784422; 
+ Sat, 19 Sep 2020 12:29:44 -0700 (PDT)
+Received: from localhost.localdomain (92.40.169.140.threembb.co.uk.
+ [92.40.169.140])
+ by smtp.gmail.com with ESMTPSA id h2sm12642069wrp.69.2020.09.19.12.29.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 19 Sep 2020 12:29:43 -0700 (PDT)
+From: Alex Dewar <alex.dewar90@gmail.com>
+To: 
+Subject: [PATCH v2] net: dsa: mt7530: Add some return-value checks
+Date: Sat, 19 Sep 2020 20:28:10 +0100
+Message-Id: <20200919192809.29120-1-alex.dewar90@gmail.com>
+X-Mailer: git-send-email 2.28.0
+In-Reply-To: <1600327978.11746.22.camel@mtksdccf07>
+References: <1600327978.11746.22.camel@mtksdccf07>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 46E17E8B4D077AB8C9950FBED0B79A5B30E2719458EBEF71FDC429C6B020E84F2000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200919_112714_156061_BD568686 
-X-CRM114-Status: GOOD (  23.51  )
+X-CRM114-CacheID: sfid-20200919_152947_336900_EEFD40B0 
+X-CRM114-Status: GOOD (  19.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,94 +95,126 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-spi@vger.kernel.org,
- Mark Brown <broonie@kernel.org>, linux-mtd@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <landen.chao@mediatek.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
+ Russell King <linux@armlinux.org.uk>, Alex Dewar <alex.dewar90@gmail.com>,
+ linux-mediatek@lists.infradead.org, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-09-18 at 16:31 +0800, Ikjoon Jang wrote:
-> This patch enables 36bit dma address support to spi-mtk-nor.
-> Currently 36bit dma addressing is enabled only for mt8192-nor.
-> 
-> Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
-> ---
-> 
-> (no changes since v1)
-> 
->  drivers/spi/spi-mtk-nor.c | 19 ++++++++++++++++++-
->  1 file changed, 18 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
-> index e14798a6e7d0..99dd5dca744e 100644
-> --- a/drivers/spi/spi-mtk-nor.c
-> +++ b/drivers/spi/spi-mtk-nor.c
-> @@ -78,6 +78,8 @@
->  #define MTK_NOR_REG_DMA_FADR		0x71c
->  #define MTK_NOR_REG_DMA_DADR		0x720
->  #define MTK_NOR_REG_DMA_END_DADR	0x724
-> +#define MTK_NOR_REG_DMA_DADR_HB		0x738
-> +#define MTK_NOR_REG_DMA_END_DADR_HB	0x73c
->  
->  #define MTK_NOR_PRG_MAX_SIZE		6
->  // Reading DMA src/dst addresses have to be 16-byte aligned
-> @@ -102,6 +104,7 @@ struct mtk_nor {
->  	unsigned int spi_freq;
->  	bool wbuf_en;
->  	bool has_irq;
-> +	bool high_dma;
->  	struct completion op_done;
->  };
->  
-> @@ -291,6 +294,11 @@ static int read_dma(struct mtk_nor *sp, u32 from, unsigned int length,
->  	writel(dma_addr, sp->base + MTK_NOR_REG_DMA_DADR);
->  	writel(dma_addr + length, sp->base + MTK_NOR_REG_DMA_END_DADR);
->  
-> +	if (sp->high_dma) {
-> +		writel(dma_addr >> 32, sp->base + MTK_NOR_REG_DMA_DADR_HB);
-> +		writel((dma_addr + length) >> 32, sp->base + MTK_NOR_REG_DMA_END_DADR_HB);
-> +	}
-> +
->  	if (sp->has_irq) {
->  		reinit_completion(&sp->op_done);
->  		mtk_nor_rmw(sp, MTK_NOR_REG_IRQ_EN, MTK_NOR_IRQ_DMA, 0);
-> @@ -594,7 +602,8 @@ static const struct spi_controller_mem_ops mtk_nor_mem_ops = {
->  };
->  
->  static const struct of_device_id mtk_nor_match[] = {
-> -	{ .compatible = "mediatek,mt8173-nor" },
-> +	{ .compatible = "mediatek,mt8192-nor", .data = (void *)36 },
-> +	{ .compatible = "mediatek,mt8173-nor", .data = (void *)32 },
->  	{ /* sentinel */ }
->  };
->  MODULE_DEVICE_TABLE(of, mtk_nor_match);
-> @@ -607,6 +616,7 @@ static int mtk_nor_probe(struct platform_device *pdev)
->  	u8 *buffer;
->  	struct clk *spi_clk, *ctlr_clk;
->  	int ret, irq;
-> +	unsigned long dma_bits;
->  
->  	base = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(base))
-> @@ -623,6 +633,13 @@ static int mtk_nor_probe(struct platform_device *pdev)
->  	buffer = devm_kmalloc(&pdev->dev,
->  			      MTK_NOR_BOUNCE_BUF_SIZE + MTK_NOR_DMA_ALIGN,
->  			      GFP_KERNEL);
-> +
-> +	dma_bits = (unsigned long)of_device_get_match_data(&pdev->dev);
-> +	if (dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(dma_bits))) {
-> +		dev_err(&pdev->dev, "failed to set dma mask(%lu)\n", dma_bits);
-> +		return -EINVAL;
-> +	}
-> +
+In mt7531_cpu_port_config(), if the variable port is neither 5 nor 6,
+then variable interface will be used uninitialised. Change the function
+to return -EINVAL in this case.
 
-Do we need to set sp->high_dma when we have >32bits DMA?
+As the return value of mt7531_cpu_port_config() is never checked
+(even though it returns an int) add a check in the correct place so that
+the error can be passed up the call stack. Now that we correctly handle
+errors thrown in this function, also check the return value of
+mt7531_mac_config() in case an error occurs here. Also add misisng
+checks to mt7530_setup() and mt7531_setup(), which are another level
+further up the call stack.
 
-Joe.C
+Fixes: c288575f7810 ("net: dsa: mt7530: Add the support of MT7531 switch")
+Addresses-Coverity: 1496993 ("Uninitialized variables")
+Signed-off-by: Alex Dewar <alex.dewar90@gmail.com>
+---
+v2:
+	- fix typo in commit message
+	- split variable declarations onto multiple lines (Gustavo)
+	- add additional checks for mt753*_setup (Landen)
+
+ drivers/net/dsa/mt7530.c | 31 ++++++++++++++++++++++---------
+ 1 file changed, 22 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 61388945d316..cb3efa7de7a8 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -945,10 +945,14 @@ static int
+ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
+ {
+ 	struct mt7530_priv *priv = ds->priv;
++	int ret;
+ 
+ 	/* Setup max capability of CPU port at first */
+-	if (priv->info->cpu_port_config)
+-		priv->info->cpu_port_config(ds, port);
++	if (priv->info->cpu_port_config) {
++		ret = priv->info->cpu_port_config(ds, port);
++		if (ret)
++			return ret;
++	}
+ 
+ 	/* Enable Mediatek header mode on the cpu port */
+ 	mt7530_write(priv, MT7530_PVC_P(port),
+@@ -1631,9 +1635,11 @@ mt7530_setup(struct dsa_switch *ds)
+ 		mt7530_rmw(priv, MT7530_PCR_P(i), PCR_MATRIX_MASK,
+ 			   PCR_MATRIX_CLR);
+ 
+-		if (dsa_is_cpu_port(ds, i))
+-			mt753x_cpu_port_enable(ds, i);
+-		else
++		if (dsa_is_cpu_port(ds, i)) {
++			ret = mt753x_cpu_port_enable(ds, i);
++			if (ret)
++				return ret;
++		} else
+ 			mt7530_port_disable(ds, i);
+ 
+ 		/* Enable consistent egress tag */
+@@ -1785,9 +1791,11 @@ mt7531_setup(struct dsa_switch *ds)
+ 
+ 		mt7530_set(priv, MT7531_DBG_CNT(i), MT7531_DIS_CLR);
+ 
+-		if (dsa_is_cpu_port(ds, i))
+-			mt753x_cpu_port_enable(ds, i);
+-		else
++		if (dsa_is_cpu_port(ds, i)) {
++			ret = mt753x_cpu_port_enable(ds, i);
++			if (ret)
++				return ret;
++		} else
+ 			mt7530_port_disable(ds, i);
+ 
+ 		/* Enable consistent egress tag */
+@@ -2276,6 +2284,7 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
+ 	struct mt7530_priv *priv = ds->priv;
+ 	phy_interface_t interface;
+ 	int speed;
++	int ret;
+ 
+ 	switch (port) {
+ 	case 5:
+@@ -2293,6 +2302,8 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
+ 
+ 		priv->p6_interface = interface;
+ 		break;
++	default:
++		return -EINVAL;
+ 	}
+ 
+ 	if (interface == PHY_INTERFACE_MODE_2500BASEX)
+@@ -2300,7 +2311,9 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
+ 	else
+ 		speed = SPEED_1000;
+ 
+-	mt7531_mac_config(ds, port, MLO_AN_FIXED, interface);
++	ret = mt7531_mac_config(ds, port, MLO_AN_FIXED, interface);
++	if (ret)
++		return ret;
+ 	mt7530_write(priv, MT7530_PMCR_P(port),
+ 		     PMCR_CPU_PORT_SETTING(priv->id));
+ 	mt753x_phylink_mac_link_up(ds, port, MLO_AN_FIXED, interface, NULL,
+-- 
+2.28.0
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
