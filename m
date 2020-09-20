@@ -1,89 +1,80 @@
-Return-Path: <SRS0=9Csx=C4=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=UMOv=C5=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A501C43463
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Sep 2020 19:30:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D0E1C43465
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2020 19:39:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 42AAA21707
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Sep 2020 19:30:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B7AE220866
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2020 19:39:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DAOAk2fM";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Qf5i6Pqw"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 42AAA21707
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Li80BbRl"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B7AE220866
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=DIxeg9GBRorlyp2yJxtyLzBSy/HPJWZaQPxiZcaiGok=; b=DAOAk2fMzgahTvTt6dzZMkMkq
-	Z4HqfQbWcgGHu2p/3I4fnHbc9ODPZZxS7vfr5KYTc+u7sZUVrXuJDBffqX/uTKANvytvj8+nk9naG
-	+oE4w3Rg14x0RtZGYgmwXUH0zKuQk7fIgkb1h3Aae4ww8ebJjqJMmvGCmb+2OZ4pLZmdwhQRmLCyl
-	wQ3jUQUWoaULujoWOF2CQYqc5gSi2QrEf8PtqzulUoZeQdaAOJfMQpdiI+sN7+4EevhLJy3nu2J8p
-	JXG5M/HDwQ20b5YFqW+VALC/cWGDzCnUQ1J32hLe2WN7S2lQta/NbhnP6sD+rFXEYOVNWr+hoqR9q
-	KWcvsSFpw==;
+	 bh=vbVvtkNPGoka8LmcIR5aRl+Wepo94dWDE5o/L7RdaKI=; b=Li80BbRlsuu2Uctiis9lwkCib
+	3NKMJV5CTzrwGJpByfdF6PshPn9c+EIXtm+q9SSTeOWCFqXh63DmJWMR4+c5K5Zpd395F0s0607UB
+	dPlyC6VoF+h0cO08NrU/IN1VOYQmBgYfXb45QmETKrh2QGmQRfCIrpZFT0+1w0Y4wjEVasS9N2/eY
+	afgjZAgf4Rz6MNc9DZASWPuUAvw9F1dXYxjWyGYSdbojCctNxeM8ie0pnpSYTiEG73mM4RICch9P0
+	ZQcKd93OnN49utHLH6Biilgf2Rb8A0OtHqY9fwcvRP0aZLtwMpPVjeN0kR68I/6GXgkvg03bYt2kS
+	HR9BMhSKA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kJiYR-0003hL-6H; Sat, 19 Sep 2020 19:29:51 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1kK5BJ-0004L9-0k; Sun, 20 Sep 2020 19:39:29 +0000
+Received: from mail-ed1-f68.google.com ([209.85.208.68])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kJiYN-0003gg-9E; Sat, 19 Sep 2020 19:29:48 +0000
-Received: by mail-wr1-x442.google.com with SMTP id a17so8830510wrn.6;
- Sat, 19 Sep 2020 12:29:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=6bE1UCN2SxEtk5wLlW6eDkNj/1eK18tXtibVyotZ7CQ=;
- b=Qf5i6PqwPm10hX6K72w6i3Ahe+JswP51uGU2ZDhEeloC8zDHKKHbTwO6Oa5pTuCoMO
- lOPJGpLpgSFa59xdGiw42TqlQdRFGFaYuYbmloe5jp/f4rfBe+bIqnpOEpuwoWpRlurZ
- HWa5NXPcJ5w1Cyd+tGdMpZ1rT+SIjERTam/2P1MkRvXBPXPxhIwhDqGZdZhxmkduQCsV
- KMoSYloh1ZHbmWyO+3qbiVZiQbsIenoWoQ5zy67rXJyWijVkDZyeBUx5O6WZLQZ8usV9
- l/miRQdSM5uvCUx0AwDI5t6k2A6R4w531OvHKxQ8aSwVewKcKoAb93DIO/66PQyQLHjR
- 15CQ==
+ id 1kK5BC-0004JU-GN; Sun, 20 Sep 2020 19:39:23 +0000
+Received: by mail-ed1-f68.google.com with SMTP id n22so10856400edt.4;
+ Sun, 20 Sep 2020 12:39:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=6bE1UCN2SxEtk5wLlW6eDkNj/1eK18tXtibVyotZ7CQ=;
- b=Qzh7J0qGFEi9vXyChpYe5AUsFOlWZ2WdPhaUb0LUcAykxoG0jQmuIcCw1xMENRDf7q
- IHR690j1M34Y/hEt0gAPcCb/zhhOxmNScIYgfuvRao3r/BgoKZOLNNvSqSlzQKWccKKR
- M2/b5n/kcj9Xyvhh7Gc7voKpi+NPdHeip1V/0BIIE++FYFc00MSf+w5GCA7KIcgoZA+o
- k3v+R+h8k/MhzirWTLeTIrFZA1+p531W+OGQH6b31SnAoSboxnqlHOvjDM89y03OqlwH
- qGZ8FG2zd3QXeuJopFilSxRe5yBgfXY0GE47NGjseo7AkVefxaJPFILO7lx9JsleoJSM
- BsMA==
-X-Gm-Message-State: AOAM531P8Ftsa5to/zrM2C2C7wqigDJRqQLz4FI05c8xF/MWVTIsup8x
- V861AwwUn6MLFTF8roPvmEA=
-X-Google-Smtp-Source: ABdhPJxJ9woUCR9Om7Bguc63A/yyUADe7XauqnL2X/Pm4GtRnBNgoucoc9eAGjR2SMG2I8/nYhoOeQ==
-X-Received: by 2002:adf:fc0a:: with SMTP id i10mr43825459wrr.111.1600543784422; 
- Sat, 19 Sep 2020 12:29:44 -0700 (PDT)
-Received: from localhost.localdomain (92.40.169.140.threembb.co.uk.
- [92.40.169.140])
- by smtp.gmail.com with ESMTPSA id h2sm12642069wrp.69.2020.09.19.12.29.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 19 Sep 2020 12:29:43 -0700 (PDT)
-From: Alex Dewar <alex.dewar90@gmail.com>
-To: 
-Subject: [PATCH v2] net: dsa: mt7530: Add some return-value checks
-Date: Sat, 19 Sep 2020 20:28:10 +0100
-Message-Id: <20200919192809.29120-1-alex.dewar90@gmail.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <1600327978.11746.22.camel@mtksdccf07>
-References: <1600327978.11746.22.camel@mtksdccf07>
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=EjOn6uRQVdPuymFl16y3sShxeseL+O0M4hlLdZpwFpM=;
+ b=rpm3DyCrPyzRvwpSmklVjUKTBPXfHk8SawMEFWDDNQjbV1QAE75ijI2VC7EabassIU
+ kzPGw/gwVV0QChvXFIKgiRQoFOYVSVZd0UMnajFtiMGx4ZfDHmBmtG0zQSQmO/UxKVD/
+ EvZKx72S7Qg9lhNfAk6wahDbyqcouIFPEGkZtaeZbTsN4mafb4yhto75PqgqTXjVDhss
+ 4VXSgxByRu6B5Eq/8lDvzw6tnUtbmCy5tVGuQoaHpDWSboVFQdyz12CfdPBKnb9F0Gv7
+ QNp8opZoxgOX/2FWuHCNlyzTj/KNZwKacg6RFZdPOgKDs92UpB+4LO4X/Mo7hTMZxSv9
+ m8Pw==
+X-Gm-Message-State: AOAM530dkoEre4Sq+nkuiqHu6FhIvlwYzWjUcGqR1JosmTPx75YweZEz
+ Z4DhYAgJZuxCGR/HEpgzMTk=
+X-Google-Smtp-Source: ABdhPJxm64DrxO2BCAhB/Z2FKAFGkrjja3e7GI7Mop9Y1YiJS/Mzx02Jc3rgIeVCd0fm8AibxTyTyA==
+X-Received: by 2002:a05:6402:326:: with SMTP id
+ q6mr48977643edw.216.1600630759279; 
+ Sun, 20 Sep 2020 12:39:19 -0700 (PDT)
+Received: from kozik-lap ([194.230.155.191])
+ by smtp.googlemail.com with ESMTPSA id bf25sm6956900edb.95.2020.09.20.12.39.16
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Sun, 20 Sep 2020 12:39:18 -0700 (PDT)
+Date: Sun, 20 Sep 2020 21:39:15 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v2 01/13] dt-bindings: gpio: add common schema for GPIO
+ controllers
+Message-ID: <20200920193915.GA31074@kozik-lap>
+References: <20200917165301.23100-1-krzk@kernel.org>
+ <20200917165301.23100-2-krzk@kernel.org>
+ <CAL_JsqJCLgf6syqV=jNPHPyu02ygwWCDDV+U9VCm0qRpLkirSQ@mail.gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAL_JsqJCLgf6syqV=jNPHPyu02ygwWCDDV+U9VCm0qRpLkirSQ@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200919_152947_336900_EEFD40B0 
-X-CRM114-Status: GOOD (  19.65  )
+X-CRM114-CacheID: sfid-20200920_153922_539018_9781CB70 
+X-CRM114-Status: GOOD (  15.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,124 +86,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <landen.chao@mediatek.com>,
- Florian Fainelli <f.fainelli@gmail.com>, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
- Russell King <linux@armlinux.org.uk>, Alex Dewar <alex.dewar90@gmail.com>,
- linux-mediatek@lists.infradead.org, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
+Cc: Linux-ALSA <alsa-devel@alsa-project.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ linux-riscv <linux-riscv@lists.infradead.org>,
+ Fabio Estevam <festevam@gmail.com>, "moderated list:ARM/STM32 ARCHITECTURE"
+ <linux-stm32@st-md-mailman.stormreply.com>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
+ <bcm-kernel-feedback-list@broadcom.com>, NXP Linux Team <linux-imx@nxp.com>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ devicetree@vger.kernel.org, Ray Jui <rjui@broadcom.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, linux-unisoc@lists.infradead.org,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ Scott Branden <sbranden@broadcom.com>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "open list:MEDIA DRIVERS FOR RENESAS - FCP"
+ <linux-renesas-soc@vger.kernel.org>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Shawn Guo <shawnguo@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mt7531_cpu_port_config(), if the variable port is neither 5 nor 6,
-then variable interface will be used uninitialised. Change the function
-to return -EINVAL in this case.
+On Fri, Sep 18, 2020 at 08:30:02AM -0600, Rob Herring wrote:
+> On Thu, Sep 17, 2020 at 10:53 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
+> >
+> > Convert parts of gpio.txt bindings into common dtschema file for GPIO
+> > controllers.  The schema enforces proper naming of GPIO controller nodes
+> > and GPIO hogs.
+> 
+> Did you not see my previous reply about a common schema? We already
+> have a common GPIO and hog schema in dtschema. Please add to it
+> whatever is missing.
 
-As the return value of mt7531_cpu_port_config() is never checked
-(even though it returns an int) add a check in the correct place so that
-the error can be passed up the call stack. Now that we correctly handle
-errors thrown in this function, also check the return value of
-mt7531_mac_config() in case an error occurs here. Also add misisng
-checks to mt7530_setup() and mt7531_setup(), which are another level
-further up the call stack.
+Indeed, I'll enhance the dt-schema.
 
-Fixes: c288575f7810 ("net: dsa: mt7530: Add the support of MT7531 switch")
-Addresses-Coverity: 1496993 ("Uninitialized variables")
-Signed-off-by: Alex Dewar <alex.dewar90@gmail.com>
----
-v2:
-	- fix typo in commit message
-	- split variable declarations onto multiple lines (Gustavo)
-	- add additional checks for mt753*_setup (Landen)
+The trouble is that each in-kernel YAML file still has to mention
+possible gpio-hogs nodes. Is the proper solution to put them in common
+YAML inside kernel sources?
 
- drivers/net/dsa/mt7530.c | 31 ++++++++++++++++++++++---------
- 1 file changed, 22 insertions(+), 9 deletions(-)
+> 
+> My goal is all common schema end up in dtschema, but I haven't pushed
+> folks to do that yet. Ones I've done are there though. One issue is
+> what's in dtschema should be GPL/BSD and the existing text bindings
+> are default GPL, so there's a relicensing exercise. In some cases, the
+> schema is there but I haven't copied over the descriptions.
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 61388945d316..cb3efa7de7a8 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -945,10 +945,14 @@ static int
- mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
- {
- 	struct mt7530_priv *priv = ds->priv;
-+	int ret;
- 
- 	/* Setup max capability of CPU port at first */
--	if (priv->info->cpu_port_config)
--		priv->info->cpu_port_config(ds, port);
-+	if (priv->info->cpu_port_config) {
-+		ret = priv->info->cpu_port_config(ds, port);
-+		if (ret)
-+			return ret;
-+	}
- 
- 	/* Enable Mediatek header mode on the cpu port */
- 	mt7530_write(priv, MT7530_PVC_P(port),
-@@ -1631,9 +1635,11 @@ mt7530_setup(struct dsa_switch *ds)
- 		mt7530_rmw(priv, MT7530_PCR_P(i), PCR_MATRIX_MASK,
- 			   PCR_MATRIX_CLR);
- 
--		if (dsa_is_cpu_port(ds, i))
--			mt753x_cpu_port_enable(ds, i);
--		else
-+		if (dsa_is_cpu_port(ds, i)) {
-+			ret = mt753x_cpu_port_enable(ds, i);
-+			if (ret)
-+				return ret;
-+		} else
- 			mt7530_port_disable(ds, i);
- 
- 		/* Enable consistent egress tag */
-@@ -1785,9 +1791,11 @@ mt7531_setup(struct dsa_switch *ds)
- 
- 		mt7530_set(priv, MT7531_DBG_CNT(i), MT7531_DIS_CLR);
- 
--		if (dsa_is_cpu_port(ds, i))
--			mt753x_cpu_port_enable(ds, i);
--		else
-+		if (dsa_is_cpu_port(ds, i)) {
-+			ret = mt753x_cpu_port_enable(ds, i);
-+			if (ret)
-+				return ret;
-+		} else
- 			mt7530_port_disable(ds, i);
- 
- 		/* Enable consistent egress tag */
-@@ -2276,6 +2284,7 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
- 	struct mt7530_priv *priv = ds->priv;
- 	phy_interface_t interface;
- 	int speed;
-+	int ret;
- 
- 	switch (port) {
- 	case 5:
-@@ -2293,6 +2302,8 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
- 
- 		priv->p6_interface = interface;
- 		break;
-+	default:
-+		return -EINVAL;
- 	}
- 
- 	if (interface == PHY_INTERFACE_MODE_2500BASEX)
-@@ -2300,7 +2311,9 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
- 	else
- 		speed = SPEED_1000;
- 
--	mt7531_mac_config(ds, port, MLO_AN_FIXED, interface);
-+	ret = mt7531_mac_config(ds, port, MLO_AN_FIXED, interface);
-+	if (ret)
-+		return ret;
- 	mt7530_write(priv, MT7530_PMCR_P(port),
- 		     PMCR_CPU_PORT_SETTING(priv->id));
- 	mt753x_phylink_mac_link_up(ds, port, MLO_AN_FIXED, interface, NULL,
--- 
-2.28.0
+Right, I'll skip the descriptions when posting to dt-schema.
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
