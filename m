@@ -2,79 +2,65 @@ Return-Path: <SRS0=UMOv=C5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D0E1C43465
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2020 19:39:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B37BBC43465
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2020 23:42:55 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B7AE220866
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2020 19:39:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E7143206B7
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2020 23:42:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Li80BbRl"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B7AE220866
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YoZN9Aep";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="VG6dVd0/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E7143206B7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vbVvtkNPGoka8LmcIR5aRl+Wepo94dWDE5o/L7RdaKI=; b=Li80BbRlsuu2Uctiis9lwkCib
-	3NKMJV5CTzrwGJpByfdF6PshPn9c+EIXtm+q9SSTeOWCFqXh63DmJWMR4+c5K5Zpd395F0s0607UB
-	dPlyC6VoF+h0cO08NrU/IN1VOYQmBgYfXb45QmETKrh2QGmQRfCIrpZFT0+1w0Y4wjEVasS9N2/eY
-	afgjZAgf4Rz6MNc9DZASWPuUAvw9F1dXYxjWyGYSdbojCctNxeM8ie0pnpSYTiEG73mM4RICch9P0
-	ZQcKd93OnN49utHLH6Biilgf2Rb8A0OtHqY9fwcvRP0aZLtwMpPVjeN0kR68I/6GXgkvg03bYt2kS
-	HR9BMhSKA==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=C0ihqxdevZ6V4vqmHrZEfZxKvjnPXwPHXopmSDJxHvw=; b=YoZN9AepvxomPAxzRD6vc9CyFP
+	RJUQD1rESBXLgRqznSb3py6v9p82vFul1VouWUE0CsceOO0XeYWm/TRJrCEH1uNxrMaJXbwoib3Gz
+	TcVjYJ9eBl5Zhr6d44u8uFLNIombAc9GCLGi/eTR1/9pKgKiW7d0xnlx4H4uW5Zt8wSM14T/Mr6h6
+	BkFn7e/IILhqHufdYPU6elstCgrzz8I1MU02jx2zRTj6BlqEt5Rz6W+GfhIek9AD8hAq0aL2N2+DS
+	5LYLO9j6czp1LLNUwga44PlJdnPo0vpmGfYpwpQTgkt6lD3Ee9j653gPzIriahWUOSLaA0RRWZEq3
+	OGjYxaqg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kK5BJ-0004L9-0k; Sun, 20 Sep 2020 19:39:29 +0000
-Received: from mail-ed1-f68.google.com ([209.85.208.68])
+	id 1kK8yj-0000Lg-7O; Sun, 20 Sep 2020 23:42:45 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kK5BC-0004JU-GN; Sun, 20 Sep 2020 19:39:23 +0000
-Received: by mail-ed1-f68.google.com with SMTP id n22so10856400edt.4;
- Sun, 20 Sep 2020 12:39:20 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=EjOn6uRQVdPuymFl16y3sShxeseL+O0M4hlLdZpwFpM=;
- b=rpm3DyCrPyzRvwpSmklVjUKTBPXfHk8SawMEFWDDNQjbV1QAE75ijI2VC7EabassIU
- kzPGw/gwVV0QChvXFIKgiRQoFOYVSVZd0UMnajFtiMGx4ZfDHmBmtG0zQSQmO/UxKVD/
- EvZKx72S7Qg9lhNfAk6wahDbyqcouIFPEGkZtaeZbTsN4mafb4yhto75PqgqTXjVDhss
- 4VXSgxByRu6B5Eq/8lDvzw6tnUtbmCy5tVGuQoaHpDWSboVFQdyz12CfdPBKnb9F0Gv7
- QNp8opZoxgOX/2FWuHCNlyzTj/KNZwKacg6RFZdPOgKDs92UpB+4LO4X/Mo7hTMZxSv9
- m8Pw==
-X-Gm-Message-State: AOAM530dkoEre4Sq+nkuiqHu6FhIvlwYzWjUcGqR1JosmTPx75YweZEz
- Z4DhYAgJZuxCGR/HEpgzMTk=
-X-Google-Smtp-Source: ABdhPJxm64DrxO2BCAhB/Z2FKAFGkrjja3e7GI7Mop9Y1YiJS/Mzx02Jc3rgIeVCd0fm8AibxTyTyA==
-X-Received: by 2002:a05:6402:326:: with SMTP id
- q6mr48977643edw.216.1600630759279; 
- Sun, 20 Sep 2020 12:39:19 -0700 (PDT)
-Received: from kozik-lap ([194.230.155.191])
- by smtp.googlemail.com with ESMTPSA id bf25sm6956900edb.95.2020.09.20.12.39.16
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 20 Sep 2020 12:39:18 -0700 (PDT)
-Date: Sun, 20 Sep 2020 21:39:15 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v2 01/13] dt-bindings: gpio: add common schema for GPIO
- controllers
-Message-ID: <20200920193915.GA31074@kozik-lap>
-References: <20200917165301.23100-1-krzk@kernel.org>
- <20200917165301.23100-2-krzk@kernel.org>
- <CAL_JsqJCLgf6syqV=jNPHPyu02ygwWCDDV+U9VCm0qRpLkirSQ@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAL_JsqJCLgf6syqV=jNPHPyu02ygwWCDDV+U9VCm0qRpLkirSQ@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+ id 1kK8yg-0000L8-Re
+ for linux-mediatek@lists.infradead.org; Sun, 20 Sep 2020 23:42:44 +0000
+Received: from DESKTOP-GFFITBK.localdomain (218-161-90-76.HINET-IP.hinet.net
+ [218.161.90.76])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id B2F54206B5;
+ Sun, 20 Sep 2020 23:42:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1600645360;
+ bh=mgDMbfvtNzbst4k3uB+Gk/tPgYe2PUC1BGewW5HBe6o=;
+ h=From:To:Cc:Subject:Date:From;
+ b=VG6dVd0/Fn4VJ50WzoCKAFBFRXnTPT/ye7Ft3GnBqUdVPeQ+zaBtOq8PnznE7Foru
+ 7HlV8S24Gt+0H293nb8SfIdWMJsVnDJ8lldeanNSDsaB8P14uQ/ix33ExOI6NLxDah
+ G4WO2gSTFXWhb2KVJK0qmEeVwUlKZadOyn3bLcLg=
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH] soc: mediatek: cmdq: Remove timeout handler in helper function
+Date: Mon, 21 Sep 2020 07:42:16 +0800
+Message-Id: <20200920234216.16884-1-chunkuang.hu@kernel.org>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200920_153922_539018_9781CB70 
-X-CRM114-Status: GOOD (  15.97  )
+X-CRM114-CacheID: sfid-20200920_194243_107266_66A41279 
+X-CRM114-Status: GOOD (  15.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,60 +72,169 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Linux-ALSA <alsa-devel@alsa-project.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- linux-riscv <linux-riscv@lists.infradead.org>,
- Fabio Estevam <festevam@gmail.com>, "moderated list:ARM/STM32 ARCHITECTURE"
- <linux-stm32@st-md-mailman.stormreply.com>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
- <bcm-kernel-feedback-list@broadcom.com>, NXP Linux Team <linux-imx@nxp.com>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- devicetree@vger.kernel.org, Ray Jui <rjui@broadcom.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, linux-unisoc@lists.infradead.org,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- Scott Branden <sbranden@broadcom.com>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "open list:MEDIA DRIVERS FOR RENESAS - FCP"
- <linux-renesas-soc@vger.kernel.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Shawn Guo <shawnguo@kernel.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 18, 2020 at 08:30:02AM -0600, Rob Herring wrote:
-> On Thu, Sep 17, 2020 at 10:53 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> >
-> > Convert parts of gpio.txt bindings into common dtschema file for GPIO
-> > controllers.  The schema enforces proper naming of GPIO controller nodes
-> > and GPIO hogs.
-> 
-> Did you not see my previous reply about a common schema? We already
-> have a common GPIO and hog schema in dtschema. Please add to it
-> whatever is missing.
+For each client driver, its timeout handler need to dump hardware register
+or its state machine information, so remove timeout handler in helper
+function and let client driver implement its own timeout handler.
 
-Indeed, I'll enhance the dt-schema.
+Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c |  3 +-
+ drivers/soc/mediatek/mtk-cmdq-helper.c  | 41 +------------------------
+ include/linux/soc/mediatek/mtk-cmdq.h   | 11 +------
+ 3 files changed, 3 insertions(+), 52 deletions(-)
 
-The trouble is that each in-kernel YAML file still has to mention
-possible gpio-hogs nodes. Is the proper solution to put them in common
-YAML inside kernel sources?
-
-> 
-> My goal is all common schema end up in dtschema, but I haven't pushed
-> folks to do that yet. Ones I've done are there though. One issue is
-> what's in dtschema should be GPL/BSD and the existing text bindings
-> are default GPL, so there's a relicensing exercise. In some cases, the
-> schema is there but I haven't copied over the descriptions.
-
-Right, I'll skip the descriptions when posting to dt-schema.
-
-Best regards,
-Krzysztof
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 3fc5511330b9..cabeb7fea2be 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -824,8 +824,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+ 	mtk_crtc->cmdq_client =
+ 			cmdq_mbox_create(mtk_crtc->mmsys_dev,
+-					 drm_crtc_index(&mtk_crtc->base),
+-					 2000);
++					 drm_crtc_index(&mtk_crtc->base));
+ 	if (IS_ERR(mtk_crtc->cmdq_client)) {
+ 		dev_dbg(dev, "mtk_crtc %d failed to create mailbox client, writing register by CPU now\n",
+ 			drm_crtc_index(&mtk_crtc->base));
+diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+index dc644cfb6419..4f311f035b59 100644
+--- a/drivers/soc/mediatek/mtk-cmdq-helper.c
++++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+@@ -65,14 +65,7 @@ int cmdq_dev_get_client_reg(struct device *dev,
+ }
+ EXPORT_SYMBOL(cmdq_dev_get_client_reg);
+ 
+-static void cmdq_client_timeout(struct timer_list *t)
+-{
+-	struct cmdq_client *client = from_timer(client, t, timer);
+-
+-	dev_err(client->client.dev, "cmdq timeout!\n");
+-}
+-
+-struct cmdq_client *cmdq_mbox_create(struct device *dev, int index, u32 timeout)
++struct cmdq_client *cmdq_mbox_create(struct device *dev, int index)
+ {
+ 	struct cmdq_client *client;
+ 
+@@ -80,12 +73,6 @@ struct cmdq_client *cmdq_mbox_create(struct device *dev, int index, u32 timeout)
+ 	if (!client)
+ 		return (struct cmdq_client *)-ENOMEM;
+ 
+-	client->timeout_ms = timeout;
+-	if (timeout != CMDQ_NO_TIMEOUT) {
+-		spin_lock_init(&client->lock);
+-		timer_setup(&client->timer, cmdq_client_timeout, 0);
+-	}
+-	client->pkt_cnt = 0;
+ 	client->client.dev = dev;
+ 	client->client.tx_block = false;
+ 	client->client.knows_txdone = true;
+@@ -107,11 +94,6 @@ EXPORT_SYMBOL(cmdq_mbox_create);
+ 
+ void cmdq_mbox_destroy(struct cmdq_client *client)
+ {
+-	if (client->timeout_ms != CMDQ_NO_TIMEOUT) {
+-		spin_lock(&client->lock);
+-		del_timer_sync(&client->timer);
+-		spin_unlock(&client->lock);
+-	}
+ 	mbox_free_channel(client->chan);
+ 	kfree(client);
+ }
+@@ -342,18 +324,6 @@ static void cmdq_pkt_flush_async_cb(struct cmdq_cb_data data)
+ 	struct cmdq_task_cb *cb = &pkt->cb;
+ 	struct cmdq_client *client = (struct cmdq_client *)pkt->cl;
+ 
+-	if (client->timeout_ms != CMDQ_NO_TIMEOUT) {
+-		unsigned long flags = 0;
+-
+-		spin_lock_irqsave(&client->lock, flags);
+-		if (--client->pkt_cnt == 0)
+-			del_timer(&client->timer);
+-		else
+-			mod_timer(&client->timer, jiffies +
+-				  msecs_to_jiffies(client->timeout_ms));
+-		spin_unlock_irqrestore(&client->lock, flags);
+-	}
+-
+ 	dma_sync_single_for_cpu(client->chan->mbox->dev, pkt->pa_base,
+ 				pkt->cmd_buf_size, DMA_TO_DEVICE);
+ 	if (cb->cb) {
+@@ -366,7 +336,6 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
+ 			 void *data)
+ {
+ 	int err;
+-	unsigned long flags = 0;
+ 	struct cmdq_client *client = (struct cmdq_client *)pkt->cl;
+ 
+ 	pkt->cb.cb = cb;
+@@ -377,14 +346,6 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
+ 	dma_sync_single_for_device(client->chan->mbox->dev, pkt->pa_base,
+ 				   pkt->cmd_buf_size, DMA_TO_DEVICE);
+ 
+-	if (client->timeout_ms != CMDQ_NO_TIMEOUT) {
+-		spin_lock_irqsave(&client->lock, flags);
+-		if (client->pkt_cnt++ == 0)
+-			mod_timer(&client->timer, jiffies +
+-				  msecs_to_jiffies(client->timeout_ms));
+-		spin_unlock_irqrestore(&client->lock, flags);
+-	}
+-
+ 	err = mbox_send_message(client->chan, pkt);
+ 	if (err < 0)
+ 		return err;
+diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+index 2249ecaf77e4..175bd89f46f8 100644
+--- a/include/linux/soc/mediatek/mtk-cmdq.h
++++ b/include/linux/soc/mediatek/mtk-cmdq.h
+@@ -11,8 +11,6 @@
+ #include <linux/mailbox/mtk-cmdq-mailbox.h>
+ #include <linux/timer.h>
+ 
+-#define CMDQ_NO_TIMEOUT		0xffffffffu
+-
+ struct cmdq_pkt;
+ 
+ struct cmdq_client_reg {
+@@ -22,12 +20,8 @@ struct cmdq_client_reg {
+ };
+ 
+ struct cmdq_client {
+-	spinlock_t lock;
+-	u32 pkt_cnt;
+ 	struct mbox_client client;
+ 	struct mbox_chan *chan;
+-	struct timer_list timer;
+-	u32 timeout_ms; /* in unit of microsecond */
+ };
+ 
+ /**
+@@ -49,13 +43,10 @@ int cmdq_dev_get_client_reg(struct device *dev,
+  * cmdq_mbox_create() - create CMDQ mailbox client and channel
+  * @dev:	device of CMDQ mailbox client
+  * @index:	index of CMDQ mailbox channel
+- * @timeout:	timeout of a pkt execution by GCE, in unit of microsecond, set
+- *		CMDQ_NO_TIMEOUT if a timer is not used.
+  *
+  * Return: CMDQ mailbox client pointer
+  */
+-struct cmdq_client *cmdq_mbox_create(struct device *dev, int index,
+-				     u32 timeout);
++struct cmdq_client *cmdq_mbox_create(struct device *dev, int index);
+ 
+ /**
+  * cmdq_mbox_destroy() - destroy CMDQ mailbox client and channel
+-- 
+2.17.1
 
 
 _______________________________________________
