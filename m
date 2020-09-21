@@ -2,84 +2,81 @@ Return-Path: <SRS0=GXkz=C6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D4B3C43463
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 04:14:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 745BDC43464
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 06:10:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E860B2078D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 04:14:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 172DE2067D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 06:10:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="v0t7MPBc";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Ax8vlAeB"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E860B2078D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LFmCX2gd";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="QaZvdjqm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 172DE2067D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ShtsjDj1RtKKfNTd+ivyv7BbQKdkTZDhWxxu0opRcIw=; b=v0t7MPBcrjcDVUCo7ttiTUu0AC
-	7yx109Dj54+R8YVlCZbqpgI4ceaWXnlaSvRyE+q22BOnBhE62+XxnBV75U3ZXIPrcF0xdwa/OJ9DP
-	58BMJytBiXAdleWyHMGyJRbIm0317lC4IaEMMBnotPTKB1UlAjc+Cg3QISDPHYzyOliHa7972J6+F
-	A5fCx2AbEiOJEVQi6v0hDE/LvDwmmR4AjLdRF1xF6YKq0NU1ed+v1IqsGDm/iqMfqjJ2dI8chqZx/
-	qG4L5mwQmnDmBfSoaYDnMu4aX3mwBrZstUUImomUHG1dQcxHvM/5EJD9uuru4NCtP2R6+PN4MZtCa
-	4FfrzGJA==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Aub3MnpQJ0gI/XYxUOqYOxFzyeBJQifHfHAMESGkVb4=; b=LFmCX2gdDkQIlGSOsELX1VOEy
+	GEfV9YfJUkZqULgMJy3NtRh0DO51YIXXSA6DI10eQN0PnZJMzE1tzab2nclt1neDGd/4oBwfxINoU
+	yVFfkBsw46kYE0nEtbAiHvZSy5uwK9esBXlUdbwGT1U1PapYCmFZD0LQx99pNVtq9XzAI37w+vMI9
+	lzqmPGC2GQ/LEYll0nw9zRpM7uG8HzN7ZqsGeF9phCf5E2g6hxeNPyMZX4zd+YghftP4ZrYcyxQtz
+	IL9pNR9/4Zol3OrtfdYSXbs/andZHm7ckqETkK+uTuddZb1Onjd7+8xTwlsynmtxahdkqXtSBfGcn
+	SJgdFIa9g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKDDx-00071k-GF; Mon, 21 Sep 2020 04:14:45 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1kKF25-0003wi-NX; Mon, 21 Sep 2020 06:10:37 +0000
+Received: from mail-vk1-xa42.google.com ([2607:f8b0:4864:20::a42])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKDDt-00070N-7Q
- for linux-mediatek@lists.infradead.org; Mon, 21 Sep 2020 04:14:42 +0000
-Received: by mail-pf1-x443.google.com with SMTP id k8so8168426pfk.2
- for <linux-mediatek@lists.infradead.org>; Sun, 20 Sep 2020 21:14:37 -0700 (PDT)
+ id 1kKF22-0003v2-05
+ for linux-mediatek@lists.infradead.org; Mon, 21 Sep 2020 06:10:35 +0000
+Received: by mail-vk1-xa42.google.com with SMTP id e5so3070210vkm.2
+ for <linux-mediatek@lists.infradead.org>; Sun, 20 Sep 2020 23:10:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=v7829AfRT6LvbLjz9XeDro4FUjlC8JvfoISGdbWocU0=;
- b=Ax8vlAeB60K7VxwqjgTm+4y+YjZoqTXAE/+iKq0Gl6phrxj06l4z/57g70tDMdKRnt
- P6f8T6MarPu6KuZv6/zdMpnalFdkdizCNkyMPmLLnYT6jLPMZnFtTsG9+Rsfez/TE70I
- xa/ooqfmxB0pDSrrcWDkVI8TmbOoiYZAg5l74=
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=hi2rPF/VTt+7YBV2OIek85mNirM/1FNuwC783UZ79gY=;
+ b=QaZvdjqmE01vsDCJpv/L3PIhQD9pFvCOGUpf8KQBf3AdasjOy8neTN7t/wRbvEYv1E
+ O1FVTx4IAh2rEkqCtye+7TzvIRzyjesUj2gTs4+Ewbb5W8ANnrCwLRpt5GYWxlXO4ElQ
+ JwwGdQdUvIdzbc2Tp2ibQkb6BgEX3QMwJUSt0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=v7829AfRT6LvbLjz9XeDro4FUjlC8JvfoISGdbWocU0=;
- b=dKx+WZH3WqkXJz67oaaXtgLEICSErugw/rPt0oovMYY3VA5tbmGJa1fK6btrymRRW4
- 1nR906to4awD6CpFuMcRfDZRwTUS5eJSTKjg/fWRN0RSfV5bNNXhT1TNHpEvDQ8zXeDq
- XStOPGN68cRVkoWKQX4gSSedc9Fp+P61vmfdiKDxP6qurfWYLdkMkmPcCymV2Mg3GEHI
- 0NwB45t3UYvTq7QsrVoMdsSkWZ26e4nJGrjusLaxVX77qEG9nxn7VUBPI9jVuF/u9tqb
- elyiYaUo6xyXC21SXOy0bj+2sKJl7VkmBWsyFSVWHcR7UCt80GrxqiO95A5ErPN/Vdp7
- ipeA==
-X-Gm-Message-State: AOAM533JsZD/Dg7s3oKY8Lg3nUhxxymjEVhbySpz6hHgaeTLiIOf97NF
- nXDdjQmw5YbBCvNj6JHg2/8mYA==
-X-Google-Smtp-Source: ABdhPJxF2RiligLadfSfXIzQiHaHina12UJBS42E0zRZ9Ka91X39OXKvsPKp2DU/FWZ/lS6FAXuDog==
-X-Received: by 2002:a63:6782:: with SMTP id
- b124mr37636930pgc.308.1600661676013; 
- Sun, 20 Sep 2020 21:14:36 -0700 (PDT)
-Received: from drinkcat2.tpe.corp.google.com
- ([2401:fa00:1:b:7220:84ff:fe09:41dc])
- by smtp.gmail.com with ESMTPSA id m13sm10439167pfk.103.2020.09.20.21.14.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 20 Sep 2020 21:14:35 -0700 (PDT)
-From: Nicolas Boichat <drinkcat@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [RFC PATCH] arm64: dts: mt8183: Add arm,no-tick-in-suspend
-Date: Mon, 21 Sep 2020 12:14:24 +0800
-Message-Id: <20200921121420.RFC.1.I30d6887e950575eb1fd92ee56ab5d50ff64c97f3@changeid>
-X-Mailer: git-send-email 2.28.0.681.g6f77f65b4e-goog
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=hi2rPF/VTt+7YBV2OIek85mNirM/1FNuwC783UZ79gY=;
+ b=oL6LJquPEzTmthLoOf2dNym1/eK0gK1pzUNXG7iHRGrWVyZxtlFY56z5XTB2nxF36x
+ +dxIXIV3RMswEEvTZcRF6+76dPysvankRyZFaoXYR+jhrkWYm0oVc4maTqKiF3r00muT
+ Vj5jZ/1orhAeu2iZ6bg1KCCQXT4ctIOw/ANV73ZiR30ZetV3FQHA4IheINJE4h9RjuUM
+ 2SjhOuluJRRC243nRtJzUA1N6KJr70/YpjXSBkRGwMYJRgBfp+PzJFZNAZGaIZbz8Dku
+ 3AxwzCOya9KN7B6JxDr6iXHv5JX3NUwHAcjKWVhqZIwqWmmlIHFka2xtNBArlQYIR1FN
+ JIlg==
+X-Gm-Message-State: AOAM530iAvX0n4G88G3M0m0401/0ZxeOcYWpFIxISx5H4cSSy//Ba/QM
+ nB1rcfmjEqqaVStAzVPMrnxScngU0Cz+UtXq+VGrBg==
+X-Google-Smtp-Source: ABdhPJwS1vT6jl1+U7TJLvBVogQi38c1rNUQm4Kcmwy0nzE27iFQkCgHBkdfG6By1N4TLFUCpb7VEZDUgpxahYlWQZM=
+X-Received: by 2002:a1f:1c17:: with SMTP id c23mr17961911vkc.0.1600668630316; 
+ Sun, 20 Sep 2020 23:10:30 -0700 (PDT)
 MIME-Version: 1.0
+References: <20200918083124.3921207-1-ikjn@chromium.org>
+ <20200918162834.v2.2.I3de2918f09b817cc2ae6d324f1ece62779ecc7cf@changeid>
+ <CAJsYDV+Um3aEsgW-829BsZSaiVCp3O2LkrTmgCthhFv4fuEnLg@mail.gmail.com>
+In-Reply-To: <CAJsYDV+Um3aEsgW-829BsZSaiVCp3O2LkrTmgCthhFv4fuEnLg@mail.gmail.com>
+From: Ikjoon Jang <ikjn@chromium.org>
+Date: Mon, 21 Sep 2020 14:10:19 +0800
+Message-ID: <CAATdQgB5UAFbxW6J2no7=Jyn2ddaHXceAxedGaaAxa++gGNDkg@mail.gmail.com>
+Subject: Re: [PATCH v2 2/5] spi: spi-mtk-nor: fix mishandled logics in
+ checking SPI memory operation
+To: Chuanhong Guo <gch981213@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200921_001441_295082_539291F1 
-X-CRM114-Status: GOOD (  14.80  )
+X-CRM114-CacheID: sfid-20200921_021034_097995_3FF111CF 
+X-CRM114-Status: GOOD (  37.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,59 +88,213 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Feng Tang <feng.tang@intel.com>,
- Nicolas Boichat <drinkcat@chromium.org>, Stephen Boyd <sboyd@kernel.org>,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- John Stultz <john.stultz@linaro.org>, linux-mediatek@lists.infradead.org,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org
+Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, linux-spi@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, linux-mtd@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The armv8-timer on MT8183 (kukui family) actually ticks in suspend,
-but its precision is so low (measured 400+ ppm -- 35 seconds/day)
-that it's actually better to use a fallback option (RTC).
+On Fri, Sep 18, 2020 at 9:09 PM Chuanhong Guo <gch981213@gmail.com> wrote:
+>
+> Hi!
+>
+> On Fri, Sep 18, 2020 at 4:34 PM Ikjoon Jang <ikjn@chromium.org> wrote:
+> >
+> > Fix a simple bug which can limits its transfer size,
+> > and add a simple helper function for code cleanups.
+> >
+> > Fixes: a59b2c7c56bf ("spi: spi-mtk-nor: support standard spi properties")
+> > Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+> >
+> > ---
+> >
+> > (no changes since v1)
+> >
+> >  drivers/spi/spi-mtk-nor.c | 62 ++++++++++++++++++++++++---------------
+> >  1 file changed, 38 insertions(+), 24 deletions(-)
+> >
+> > diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
+> > index 6e6ca2b8e6c8..54b2c0fde95b 100644
+> > --- a/drivers/spi/spi-mtk-nor.c
+> > +++ b/drivers/spi/spi-mtk-nor.c
+> > @@ -167,52 +167,63 @@ static bool mtk_nor_match_read(const struct spi_mem_op *op)
+> >         return false;
+> >  }
+> >
+> > -static int mtk_nor_adjust_op_size(struct spi_mem *mem, struct spi_mem_op *op)
+> > +static bool need_bounce(void *cpu_addr, unsigned long len)
+> >  {
+> > -       size_t len;
+> > +       return !!(((uintptr_t)cpu_addr) & MTK_NOR_DMA_ALIGN_MASK);
+> > +}
+>
+> parameter 'len' isn't used in this function.
 
-Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
----
-We asked MTK if there is anything that can be done to make the
-archtimer more precise in suspend, but that does not seem to
-be possible.
+ACK.
 
-Ideally we'd like a arm,tick-in-suspend-but-use-something-else-if-possible
-property, but the rating in [1] cannot be used, as the RTC
-fallback is handled separately [2].
+>
+> >
+> > +static int mtk_nor_adjust_op_size(struct spi_mem *mem, struct spi_mem_op *op)
+> > +{
+> >         if (!op->data.nbytes)
+> >                 return 0;
+> >
+> >         if ((op->addr.nbytes == 3) || (op->addr.nbytes == 4)) {
+> > -               if ((op->data.dir == SPI_MEM_DATA_IN) &&
+> > -                   mtk_nor_match_read(op)) {
+>
+> I think replacing a if/else if with a two-case switch is more
+> of a personal code preference rather than code cleanup.
+> I'd prefer only adding need_bounce to replace alignment
+> check using a separated commit and leave other stuff
+> untouched because:
+> 1. This "cleanup" made unintended logic changes (see below)
+> 2. The "cleanup" itself actually becomes the major part of
+>     this patch, while the actual fix mentioned in commit
+>     message is the minor part.
+> 3. A fix commit should contain the fix itself. It shouldn't
+>     mix with these code changes.
 
-I don't know if this kind of issues happened in the past, one
-possible compromise is to add the option to kukui board only,
-since we _know_ there is an RTC there (which, technically, may
-not be the case on every single MT8183 platform).
+Got it, v3 will only include the fix itself.
 
-A more complete solution would involved quite a bit of
-refactoring in the timekeeping/rtc framework.
+>
+> > +               switch (op->data.dir) {
+> > +               case SPI_MEM_DATA_IN:
+> > +                       if (!mtk_nor_match_read(op))
+> > +                               return -EINVAL;
+>
+> You are changing the code logic here.
+> mtk_nor_match_read checks if the operation can be executed
+> using controller PIO/DMA reading. Even if it's not supported,
+> we can still use PRG mode to execute the operation.
+> One example of such an operation is SPI NOR SFDP reading.
+> Your change breaks that which then breaks 1_2_2 and 1_4_4
+> reading capability because spi-nor driver parses these op formats
+> from SFDP table.
 
-[1] https://elixir.bootlin.com/linux/v5.8/source/kernel/time/clocksource.c#L486
-[2] https://elixir.bootlin.com/linux/v5.8/source/kernel/time/timekeeping.c#L1693
+As you already noticed it, this is a bug from the last patch I made
+and v2 isn't fixing this problem. This should be restored & fixed in v3.
+And will not include other changes in a same patch.
 
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+>
+> > +                       /* check if it's DMAable */
+> >                         if ((op->addr.val & MTK_NOR_DMA_ALIGN_MASK) ||
+> > -                           (op->data.nbytes < MTK_NOR_DMA_ALIGN))
+> > +                           (op->data.nbytes < MTK_NOR_DMA_ALIGN)) {
+> >                                 op->data.nbytes = 1;
+> > -                       else if (!((ulong)(op->data.buf.in) &
+> > -                                  MTK_NOR_DMA_ALIGN_MASK))
+> > +                       } else {
+> > +                               if (need_bounce(op->data.buf.in, op->data.nbytes) &&
+> > +                                   (op->data.nbytes > MTK_NOR_BOUNCE_BUF_SIZE))
+> > +                                       op->data.nbytes = MTK_NOR_BOUNCE_BUF_SIZE;
+> >                                 op->data.nbytes &= ~MTK_NOR_DMA_ALIGN_MASK;
+> > -                       else if (op->data.nbytes > MTK_NOR_BOUNCE_BUF_SIZE)
+> > -                               op->data.nbytes = MTK_NOR_BOUNCE_BUF_SIZE;
+>
+> data length alignment is intentionally done only for DMA reading
+> without the bounce buffer.
+> My intention here:
+> If we use the bounce buffer, we can read more data than needed to.
+> Say we want 25 bytes of data, reading 32 bytes using DMA and
+> bounce buffer should be faster than reading 16 bytes with DMA
+> and another 9 bytes with PIO, because for every single byte of PIO
+> reading, adjust_op_size and exec_op is called once, we
+> program controller with new cmd/address, and controller need
+> to send extra cmd/address to flash.
+> I noticed that you removed this part of logic from DMA reading
+> execution in 3/5 as well. Please revert the logic change here
+> add in DMA reading function (see later comment in 3/5).
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index f9b60e3d085c..ebcb2309017d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -219,6 +219,7 @@ timer {
- 			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW 0>,
- 			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW 0>,
- 			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW 0>;
-+		arm,no-tick-in-suspend;
- 	};
- 
- 	soc {
--- 
-2.28.0.681.g6f77f65b4e-goog
+In v2, I wasn't sure whether this behavior is sane (read more than requested)
+Now I think this is okay, I've missed the fact that flash address is
+also aligned together.
+I'll just keep the previous logics with padding in v3.
 
+Thanks!
+
+>
+> > -                       return 0;
+> > -               } else if (op->data.dir == SPI_MEM_DATA_OUT) {
+> > +                       }
+> > +                       break;
+> > +               case SPI_MEM_DATA_OUT:
+> >                         if (op->data.nbytes >= MTK_NOR_PP_SIZE)
+> >                                 op->data.nbytes = MTK_NOR_PP_SIZE;
+> >                         else
+> >                                 op->data.nbytes = 1;
+> > -                       return 0;
+> > +                       break;
+> > +               default:
+> > +                       break;
+> >                 }
+> > +       } else {
+> > +               u8 len = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes;
+> > +
+> > +               if (len > MTK_NOR_PRG_MAX_SIZE)
+> > +                       return -EINVAL;
+> > +               if (op->data.nbytes && !(MTK_NOR_PRG_MAX_SIZE - len))
+> > +                       return -EINVAL;
+> > +               if (op->data.nbytes > (MTK_NOR_PRG_MAX_SIZE - len))
+> > +                       op->data.nbytes = MTK_NOR_PRG_MAX_SIZE - len;
+> >         }
+> >
+> > -       len = MTK_NOR_PRG_MAX_SIZE - op->cmd.nbytes - op->addr.nbytes -
+> > -             op->dummy.nbytes;
+> > -       if (op->data.nbytes > len)
+> > -               op->data.nbytes = len;
+> > -
+> >         return 0;
+> >  }
+> >
+> >  static bool mtk_nor_supports_op(struct spi_mem *mem,
+> >                                 const struct spi_mem_op *op)
+> >  {
+> > -       size_t len;
+> > -
+> >         if (op->cmd.buswidth != 1)
+> >                 return false;
+> >
+> >         if ((op->addr.nbytes == 3) || (op->addr.nbytes == 4)) {
+> > -               switch(op->data.dir) {
+> > +               switch (op->data.dir) {
+> >                 case SPI_MEM_DATA_IN:
+> >                         if (!mtk_nor_match_read(op))
+> >                                 return false;
+> > @@ -226,11 +237,14 @@ static bool mtk_nor_supports_op(struct spi_mem *mem,
+> >                 default:
+> >                         break;
+> >                 }
+> > +       } else {
+> > +               u8 len = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes;
+> > +
+> > +               if (len > MTK_NOR_PRG_MAX_SIZE)
+> > +                       return false;
+> > +               if (op->data.nbytes && !(MTK_NOR_PRG_MAX_SIZE - len))
+> > +                       return false;
+> >         }
+> > -       len = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes;
+> > -       if ((len > MTK_NOR_PRG_MAX_SIZE) ||
+> > -           ((op->data.nbytes) && (len == MTK_NOR_PRG_MAX_SIZE)))
+> > -               return false;
+> >
+> >         return spi_mem_default_supports_op(mem, op);
+> >  }
+> > --
+> > 2.28.0.681.g6f77f65b4e-goog
+> >
+>
+>
+> --
+> Regards,
+> Chuanhong Guo
 
 _______________________________________________
 Linux-mediatek mailing list
